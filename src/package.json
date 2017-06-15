@@ -1,0 +1,31 @@
+{
+  "name": "amexio-angular-extensions",
+  "version": "0.0.18",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/meta-magic/amexio-ui-widgets"
+  },
+  "author": {
+    "name": "MetMagic Global",
+    "email": "xserviceadmin@metamagic.in"
+  },
+  "keywords": [
+    "angular",
+    "angular components",
+    "ng2-bootstrap",
+    "bootstrap",
+    "typescript",
+    "angular4"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/meta-magic/amexio-ui-widgets/tree/master/metamagic-angular-components/issues"
+  },
+  "module": "amexio-angular-extension.js",
+  "typings": "amexio-angular-extension.d.ts",
+  "peerDependencies": {
+    "@angular/core": "^4.0.0",
+    "rxjs": "^5.1.0",
+    "zone.js": "^0.8.4"
+  }
+}
