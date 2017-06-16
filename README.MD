@@ -27,10 +27,6 @@ import { AppComponent } from './app.component';
 // Import a single module  library
 import { AmexioWidgetsModule } from 'amexio-angular-extension';
 
-/**
-User can select single Module <code>AmexioWidgetsModule</code> which will provide you with all the components or
-you could opt for single component based such as <code>AmexioDataTableModule</code> <code>AmexioCheckBoxModule</code> etc.
-**/
 
 @NgModule({
   declarations: [
@@ -38,39 +34,13 @@ you could opt for single component based such as <code>AmexioDataTableModule</co
   ],
   imports: [
     BrowserModule,
-    AmexioWidgetsModule  // OR Single Module AmexioDataTableModule,etc.
+    AmexioWidgetsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
 ```
-
-List Of Available Modules for specific components :
-
-Component Name         | Module Name
----------------------- | ---------------------
-Amexio Button          | AmexioBtnModule
-Amexio Button Dropdown | AmexioBtnDropdownModule
-Amexio Button Group    | AmexioBtnGroupModule
-Amexio Carousel        | AmexioCarouselModule
-Amexio CheckBox        | AmexioCheckBoxModule
-Amexio DataGrid        | AmexioDataTableModule
-Amexio DropDown        | AmexioDropDownModule
-Amexio Email           | AmexioEmailModule
-Amexio FileUpload      | AmexioFileUploadModule
-Amexio Hidden Field    | AmexioHiddenModule
-Amexio Item Selector   | AmexioItemSelectorModule
-Amexio Number Field    | AmexioNumberModule
-Amexio Password Field  | AmexioPasswordModule
-Amexio Progress Bar    | AmexioProgressModule
-Amexio Radio Field     | AmexioRadioModule
-Amexio Rating Field    | AmexioRatingModule
-Amexio Tab Pane        | AmexioTabPaneModule
-Amexio Text Area       | AmexioTextAreaModule
-Amexio Text Field      | AmexioTextInputModule
-Amexio Tree Table      | AmexioTreeTableModule
-Amexio Tree view       | AmexioTreeModule
 
 
 Once AmexioWidget library is imported, you can use its components in your Angular application:
