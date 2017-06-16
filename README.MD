@@ -83,4 +83,4 @@ Once AmexioWidget library is imported, you can use its components in your Angula
 
 ## License
 Link : <a href="http://13.58.2.29/metamagic-showcase/license.html">License Page</a><br>
-MIT © [MetaMagic Global](mailto:xserviceadmin@metamagic.in)
+Apache 2 License © 2017 [MetaMagic Global](mailto:info@metamagic.in)
