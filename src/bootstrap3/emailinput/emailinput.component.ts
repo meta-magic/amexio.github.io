@@ -18,7 +18,7 @@ import {FormInputBase} from "../baseclass/form.base.class";
 const noop = () => {
 };
 
-export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
+export const CUSTOM_EMAIL_INPUT_CONTROL_VALUE_ACCESSOR: any = {
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => EmailInputComponent),
     multi: true
@@ -71,7 +71,7 @@ declare var $ : any;
 
 
     `,
-    providers : [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR,BASE_IMPL_EMAIL_INPUT]
+    providers : [CUSTOM_EMAIL_INPUT_CONTROL_VALUE_ACCESSOR,BASE_IMPL_EMAIL_INPUT]
 })
 
 export class EmailInputComponent extends FormInputBase implements OnInit,AfterViewInit,ControlValueAccessor {

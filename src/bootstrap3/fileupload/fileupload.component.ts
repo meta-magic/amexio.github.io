@@ -36,7 +36,7 @@ export const BASE_IMPL_FILEUPLOAD_INPUT : any = {
           </label>
       </div>
   `,
-  providers : [BASE_IMPL_FILEUPLOAD_INPUT]
+  providers : [BASE_IMPL_FILEUPLOAD_INPUT,FileUploadService]
 })
 export class FileuploadComponent extends FormInputBase implements OnInit {
 

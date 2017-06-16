@@ -14,7 +14,7 @@
 import {OnInit, SimpleChange, Input, Output, EventEmitter, Component} from "@angular/core";
 import {CheckBoxService} from "./checkbox.service";
 
-export const COLUMN_SIZE = 'col-lg-';
+export const CHECK_COLUMN_SIZE = 'col-lg-';
 @Component({
     selector : 'amexio-checkbox',
     template: `
@@ -32,7 +32,8 @@ export const COLUMN_SIZE = 'col-lg-';
                 </ul>
             </div>
         </div>
-    `
+    `,
+    providers : [CheckBoxService]
 })
 
 export class CheckBoxComponent implements  OnInit{
@@ -81,7 +82,7 @@ export class CheckBoxComponent implements  OnInit{
     }
 
     ngAfterViewInit(){
-      this.column = COLUMN_SIZE+this.column;
+      this.column = CHECK_COLUMN_SIZE+this.column;
         if(this.httpMethod && this.httpUrl){
             this.checkBoxGroupService.fetchData(this,this.httpUrl,this.httpMethod);
         }else if(this.checkBoxGroupDownBindData){

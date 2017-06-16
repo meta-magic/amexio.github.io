@@ -23,7 +23,7 @@ import {ColumnComponent} from "./column.component";
 const noop = () => {
 };
 
-export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
+export const CUSTOM_DATATABLE_INPUT_CONTROL_VALUE_ACCESSOR: any = {
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => DataTableComponent),
     multi: true
@@ -166,7 +166,7 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 
         </table>
     `,
-    providers : [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR, DataTableService]
+    providers : [CUSTOM_DATATABLE_INPUT_CONTROL_VALUE_ACCESSOR, DataTableService]
 })
 
 export class DataTableComponent  implements OnInit {

@@ -18,7 +18,7 @@ import {FormInputBase} from "../baseclass/form.base.class";
 const noop = () => {
 };
 
-export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
+export const CUSTOM_NUMBER_INPUT_CONTROL_VALUE_ACCESSOR: any = {
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => NumberInputComponent),
     multi: true
@@ -77,7 +77,7 @@ declare var $ : any;
 
 
     `,
-    providers : [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR,BASE_IMPL_NUMBER_INPUT]
+    providers : [CUSTOM_NUMBER_INPUT_CONTROL_VALUE_ACCESSOR,BASE_IMPL_NUMBER_INPUT]
 })
 
 export class NumberInputComponent extends FormInputBase implements OnInit,AfterViewInit,ControlValueAccessor {

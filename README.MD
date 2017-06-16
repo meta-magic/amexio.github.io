@@ -1,19 +1,19 @@
-# amexio-ng-extension
+# amexio-ng-extensions
 
 ## Installation
 
 To install this library, run:
 
 ```bash
-$ npm install amexio-angular-extension --save-dev
+$ npm install amexio-ng-extensions --save
 ```
 
-## Consuming Amexio Widget library
+## Consuming your library
 
 Once you have published your library to npm, you can import your library in any Angular application by running:
 
 ```bash
-$ npm install amexio-ng-extension
+$ npm install amexio-ng-extensions
 ```
 
 and then from your Angular `AppModule`:
@@ -24,9 +24,8 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
-// Import a single module  library
-import { AmexioWidgetsModule } from 'amexio-ng-extension';
-
+// Import your library
+import { SampleModule } from 'amexio-ng-extensions';
 
 @NgModule({
   declarations: [
@@ -34,7 +33,9 @@ import { AmexioWidgetsModule } from 'amexio-ng-extension';
   ],
   imports: [
     BrowserModule,
-    AmexioWidgetsModule
+
+    // Specify your library as an import
+    LibraryModule
   ],
   providers: [],
   bootstrap: [AppComponent]
@@ -42,15 +43,30 @@ import { AmexioWidgetsModule } from 'amexio-ng-extension';
 export class AppModule { }
 ```
 
-
-Once AmexioWidget library is imported, you can use its components in your Angular application:
+Once your library is imported, you can use its components, directives and pipes in your Angular application:
 
 ```xml
 <!-- You can now use your library component in app.component.html -->
-<amexio-text-input [label]="'Sample Text'" [(ngModel)]="model.example"></amexio-text-input>
+<h1>
+  {{title}}
+</h1>
+<sampleComponent></sampleComponent>
 ```
 
+## Development
+
+To generate all `*.js`, `*.d.ts` and `*.metadata.json` files:
+
+```bash
+$ npm run build
+```
+
+To lint all `*.ts` files:
+
+```bash
+$ npm run lint
+```
 
 ## License
-Link : <a href="http://13.58.2.29/metamagic-showcase/license.html">License Page</a><br>
-Apache 2 License © 2017 [MetaMagic Global](mailto:info@metamagic.in)
+
+MIT © [MetaMagic Global](mailto:xserviceadmin@metamagic.in)

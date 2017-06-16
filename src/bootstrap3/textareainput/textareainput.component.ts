@@ -18,7 +18,7 @@ import {FormInputBase} from "../baseclass/form.base.class";
 const noop = () => {
 };
 
-export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
+export const CUSTOM_TEXT_AREA_INPUT_CONTROL_VALUE_ACCESSOR: any = {
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => TextAreaComponent),
     multi: true
@@ -76,7 +76,7 @@ export const BASE_IMPL_TEXTAREA_INPUT : any = {
 
     </div>
     `,
-    providers : [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR,BASE_IMPL_TEXTAREA_INPUT]
+    providers : [CUSTOM_TEXT_AREA_INPUT_CONTROL_VALUE_ACCESSOR,BASE_IMPL_TEXTAREA_INPUT]
 })
 
 export class TextAreaComponent extends FormInputBase implements OnInit,ControlValueAccessor {

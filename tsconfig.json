@@ -9,7 +9,6 @@
       "dom"
     ],
     "skipLibCheck": true,
-    "types": [],
-    "allowJs": true
+    "types": []
   }
 }

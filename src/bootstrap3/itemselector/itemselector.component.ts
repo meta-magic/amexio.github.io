@@ -28,7 +28,7 @@ import {ItemSelectorService} from "./itemselector.service";
     </div>
     <div class="col-lg-2">
         <div class="list-group text-center" [ngStyle]="setStyles()">
-          <button type="button" class="list-group-item active" ></button>
+            <button  type="button" class="list-group-item active" style="text-align: center"><span class="glyphicon glyphicon-sound-stereo"></span></button>
           <amexio-btn (onClick)="moveTop()"  [type]="'default'" [tooltipMessage]="'move top'" icon="triangle-top"></amexio-btn>
           <amexio-btn (onClick)="upSwitch()" [type]="'default'" [tooltipMessage]="'move up'" icon="chevron-up"></amexio-btn>
           <amexio-btn (onClick)="leftSwitch()" [type]="'default'" [tooltipMessage]="'move left'" icon="chevron-left"></amexio-btn>
@@ -46,7 +46,8 @@ import {ItemSelectorService} from "./itemselector.service";
       </div>
     </div>
     
-  `
+  `,
+  providers : [ItemSelectorService]
 })
 export class ItemSelectorComponent implements OnInit,AfterViewInit {
 

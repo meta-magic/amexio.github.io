@@ -131,7 +131,7 @@ gulp.task('rollup:umd', function () {
       // The name to use for the module for UMD/IIFE bundles
       // (required for bundles with exports)
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#modulename
-      moduleName: 'amexio-angular-extension',
+      moduleName: 'amexio-ng-extensions',
 
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#globals
       globals: {
@@ -139,7 +139,7 @@ gulp.task('rollup:umd', function () {
       }
 
     }))
-    .pipe(rename('amexio-angular-extension.umd.js'))
+    .pipe(rename('amexio-ng-extensions.umd.js'))
     .pipe(gulp.dest(distFolder));
 });
 

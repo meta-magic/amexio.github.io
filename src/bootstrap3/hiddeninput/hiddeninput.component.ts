@@ -17,7 +17,7 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 const noop = () => {
 };
 
-export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
+export const CUSTOM_HIDDENINPUT_CONTROL_VALUE_ACCESSOR: any = {
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => HiddenInputComponent),
     multi: true
@@ -32,7 +32,7 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 
         >
     `,
-    providers : [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
+    providers : [CUSTOM_HIDDENINPUT_CONTROL_VALUE_ACCESSOR]
 })
 
 export class HiddenInputComponent implements OnInit,ControlValueAccessor {

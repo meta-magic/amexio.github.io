@@ -37,7 +37,8 @@ export const COLUMN_SIZE = 'col-lg-';
 
       </div>
 
-  `
+  `,
+  providers : [RadioGroupService]
 })
 
 export class RadioGroupComponent implements  OnInit{

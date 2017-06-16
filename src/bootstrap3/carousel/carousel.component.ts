@@ -48,7 +48,8 @@ import {CarouselService} from "./carousel.service";
                 </a>
             </div>
         </div>
-    `
+    `,
+    providers : [CarouselService]
 })
 export class CarouselComponent implements OnInit,AfterViewInit {
 

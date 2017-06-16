@@ -21,8 +21,8 @@
     "annotateForClosureCompiler": true,
     "strictMetadataEmit": true,
     "skipTemplateCodegen": true,
-    "flatModuleOutFile": "amexio-angular-extension.js",
-    "flatModuleId": "amexio-angular-extension"
+    "flatModuleOutFile": "amexio-ng-extensions.js",
+    "flatModuleId": "amexio-ng-extensions"
   },
   "files": [
     "./index.ts"

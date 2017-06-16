@@ -18,7 +18,7 @@ import {FormInputBase} from "../baseclass/form.base.class";
 const noop = () => {
 };
 
-export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
+export const CUSTOM_PASSWORD_INPUT_CONTROL_VALUE_ACCESSOR: any = {
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => PasswordInputComponent),
     multi: true
@@ -53,14 +53,16 @@ export const BASE_IMPL_PASSWORD_INPUT : any = {
                    [attr.fieldName] = "fieldName"
                    [attr.id]="elementId"
                    [attr.placeholder]="placeholder"
-                   [attr.maxLength]="maxLength"
-                   [attr.minLength]="minLength"
+                   [attr.max]="maxLength"
+                   [attr.min]="minLength"
                    [attr.disabled] = "disabled ? true: null"
                    [required]="allowBlank ? true: null"
                    [attr.data-error]="errorMsg"
                    [attr.aria-describedby]="spanId"
                    data-toggle="popover" title="Info" data-placement="bottom"  data-trigger="focus"  data-html="true"  [attr.data-content]="helpInfoMsg"
             >
+
+
             <ng-container *ngIf="iconFeedBack">
                 <span [attr.class]="iconClassName" aria-hidden="true"></span>
                 <span [attr.id]="spanId" class="sr-only">({{iconName}})</span>
@@ -75,7 +77,7 @@ export const BASE_IMPL_PASSWORD_INPUT : any = {
         </div>
 
     `,
-    providers : [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR,BASE_IMPL_PASSWORD_INPUT]
+    providers : [CUSTOM_PASSWORD_INPUT_CONTROL_VALUE_ACCESSOR,BASE_IMPL_PASSWORD_INPUT]
 })
 
 export class PasswordInputComponent extends FormInputBase implements OnInit,ControlValueAccessor {

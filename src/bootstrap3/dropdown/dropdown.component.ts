@@ -54,7 +54,7 @@ export const BASE_IMPL_DROPDOWN_INPUT : any = {
       </select>
 
   `,
-  providers : [CUSTOM_DROPDOWN_CONTROL_VALUE_ACCESSOR,BASE_IMPL_DROPDOWN_INPUT]
+  providers : [CUSTOM_DROPDOWN_CONTROL_VALUE_ACCESSOR,BASE_IMPL_DROPDOWN_INPUT,DropDownService]
 })
 export class DropDownComponent extends FormInputBase implements OnInit,AfterViewInit,OnDestroy,AfterViewChecked {
 
