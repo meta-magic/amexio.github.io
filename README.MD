@@ -1,4 +1,4 @@
-# amexio-angular-extension
+# amexio-ng-extension
 
 ## Installation
 
@@ -13,7 +13,7 @@ $ npm install amexio-angular-extension --save-dev
 Once you have published your library to npm, you can import your library in any Angular application by running:
 
 ```bash
-$ npm install amexio-angular-extension
+$ npm install amexio-ng-extension
 ```
 
 and then from your Angular `AppModule`:
@@ -25,7 +25,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 // Import a single module  library
-import { AmexioWidgetsModule } from 'amexio-angular-extension';
+import { AmexioWidgetsModule } from 'amexio-ng-extension';
 
 
 @NgModule({
