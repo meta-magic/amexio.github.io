@@ -1,4 +1,14 @@
-# amexio-ng-extensions
+# Amexio Angular Extensions 
+[![npm version](https://badge.fury.io/js/amexio-ng-extensions.svg)](https://badge.fury.io/js/amexio-ng-extensions.svg)
+[![TeamCity CodeBetter](https://img.shields.io/teamcity/codebetter/bt428.svg)]()
+		[![NPM](https://nodei.co/npm/amexio-ng-extensions.svg.png)](https://npmjs.org/package/amexio-ng-extensions.svg)
+
+## Browsers support 
+
+| [<img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/edge.png" alt="IE / Edge" width="16px" height="16px" />](http://godban.github.io/browsers-support-badges/)</br>IE / Edge | [<img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/firefox.png" alt="Firefox" width="16px" height="16px" />](http://godban.github.io/browsers-support-badges/)</br>Firefox | [<img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/chrome.png" alt="Chrome" width="16px" height="16px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome | [<img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/safari.png" alt="Safari" width="16px" height="16px" />](http://godban.github.io/browsers-support-badges/)</br>Safari |
+| --------- | --------- | --------- | --------- |
+| Edge| last 5 versions| last 5 versions| last 2 versions
+
 
 ## Installation
 
