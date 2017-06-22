@@ -1,8 +1,6 @@
-# Amexio Angular Extensions 
+# Amexio Angular Extensions [![npm version](https://badge.fury.io/js/amexio-ng-extensions.svg)](https://badge.fury.io/js/amexio-ng-extensions.svg)[![TeamCity CodeBetter](https://img.shields.io/teamcity/codebetter/bt428.svg)]()[![npm](https://img.shields.io/npm/dt/amexio-ng-extensions.svg)]()
+<br/>
 [![NPM](https://nodei.co/npm/amexio-ng-extensions.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/amexio-ng-extensions/)
-[![npm version](https://badge.fury.io/js/amexio-ng-extensions.svg)](https://badge.fury.io/js/amexio-ng-extensions.svg)
-[![TeamCity CodeBetter](https://img.shields.io/teamcity/codebetter/bt428.svg)]()
-[![npm](https://img.shields.io/npm/dt/amexio-ng-extensions.svg)]()
 		
 
 ## Browsers support 
