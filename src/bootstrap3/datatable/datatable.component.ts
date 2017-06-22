@@ -58,9 +58,6 @@ export const CUSTOM_DATATABLE_INPUT_CONTROL_VALUE_ACCESSOR: any = {
                           <button type="button" class="btn btn-secondary btn-block dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-id="simple-select"><i class="fa fa-bars"></i>
                             Page - {{currentPage}}
                           </button>
-                            <!--  <ul class="dropdown-menu  dropdown-menu-right">
-                                  <li *ngFor="let row of pageNumbers let pageNo = index " value="{{pageNo+1}}"><a (click)="setPageNo(pageNo+1)">{{pageNo+1}}</a></li>
-                              </ul>-->
                           <div class="dropdown-menu open">
                             <ul class="dropdown-menu inner" role="menu" style="max-height: 445.406px; overflow-y: auto; min-height: 0px;">
                               <li *ngFor="let row of pageNumbers let pageNo = index " value="{{pageNo+1}}"><a (click)="setPageNo(pageNo+1)">{{pageNo+1}}</a></li>
@@ -93,6 +90,7 @@ export const CUSTOM_DATATABLE_INPUT_CONTROL_VALUE_ACCESSOR: any = {
             </tr>
 
             <tr *ngIf="!smallScreen">
+
                 <td *ngIf="checkboxSelect" width="5%"><input type="checkbox" (click)="selectAllVisibleRows()" ></td>
                 <td *ngFor="let cols of columns" [hidden]="cols.hidden" >
                     <!-- Column Header -->
@@ -119,20 +117,24 @@ export const CUSTOM_DATATABLE_INPUT_CONTROL_VALUE_ACCESSOR: any = {
                         </div>
                       </span>
                 </td>
+
             </tr>
 
-            <tr  *ngIf="!smallScreen">
+
+            <tr  *ngIf="!smallScreen && viewRows.length > 0">
                 <td *ngIf="checkboxSelect"  width="5%"></td>
                 <td *ngFor="let cols of columns let colIndex = index " [hidden] ="cols.hidden" >
                     <b>{{summaryData[colIndex]}}</b>
                 </td>
             </tr>
 
+
+
             </thead>
 
             <tbody *ngIf="!smallScreen">
 
-            <tr style="cursor: pointer" *ngFor="let row of viewRows let rowIndex = index " (click)="rowClick(row, rowIndex)" [class.info]="isSelected(rowIndex)">
+            <tr [ngClass]="{'hiderow' : !(viewRows.length > 0),'showrow' : viewRows.length > 0}" style="cursor: pointer" *ngFor="let row of viewRows let rowIndex = index " (click)="rowClick(row, rowIndex)" [class.info]="isSelected(rowIndex)">
                 <td *ngIf="checkboxSelect"  width="5%"><input type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}" [attr.checked]="selectAll? true: null" (click)="setSelectedRow(row, $event)"></td>
 
                 <td *ngFor="let cols of columns" [hidden] ="cols.hidden" >
@@ -141,7 +143,13 @@ export const CUSTOM_DATATABLE_INPUT_CONTROL_VALUE_ACCESSOR: any = {
                     <ng-container *ngIf="!cols?.bodyTemplate">{{row[cols.dataIndex]}}</ng-container>
 
                     <!-- else insert customized code -->
-                    <template *ngIf="cols.bodyTemplate" [ngTemplateOutlet]="cols.bodyTemplate" [ngOutletContext]="{ $implicit: { text : row[cols.dataIndex] }, row: row }"></template>
+                    <ng-template *ngIf="cols.bodyTemplate" [ngTemplateOutlet]="cols.bodyTemplate" [ngOutletContext]="{ $implicit: { text : row[cols.dataIndex] }, row: row }"></ng-template>
+
+                </td>
+            </tr>
+
+            <tr *ngIf="viewRows.length == 0">
+                <td [attr.colspan]="columns.length+1" style="height: 400px;" class="loading-mask">
 
                 </td>
             </tr>
@@ -149,7 +157,7 @@ export const CUSTOM_DATATABLE_INPUT_CONTROL_VALUE_ACCESSOR: any = {
             </tbody>
 
             <tbody *ngIf="smallScreen">
-            <tr style="cursor: pointer" *ngFor="let row of viewRows let rowIndex = index " (click)="rowClick(row, rowIndex)" [class.info]="isSelected(rowIndex)">
+            <tr [ngClass]="{'hiderow' : !(viewRows.length > 0),'showrow' : viewRows.length > 0}" style="cursor: pointer" *ngFor="let row of viewRows let rowIndex = index " (click)="rowClick(row, rowIndex)" [class.info]="isSelected(rowIndex)">
                 <td *ngIf="checkboxSelect"  width="5%"><input type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}" [attr.checked]="selectAll? true: null" (click)="setSelectedRow(row, $event)"></td>
                 <td>
                     <div style="word-wrap: break-word" *ngFor="let cols of columns" [hidden] ="cols.hidden" >
@@ -158,15 +166,82 @@ export const CUSTOM_DATATABLE_INPUT_CONTROL_VALUE_ACCESSOR: any = {
                         <ng-container *ngIf="!cols?.bodyTemplate">{{row[cols.dataIndex]}}</ng-container>
 
                         <!-- else insert customized code -->
-                        <template *ngIf="cols.bodyTemplate" [ngTemplateOutlet]="cols.bodyTemplate" [ngOutletContext]="{ $implicit: { text : row[cols.dataIndex] }, row: row }"></template>
+                        <ng-template *ngIf="cols.bodyTemplate" [ngTemplateOutlet]="cols.bodyTemplate" [ngOutletContext]="{ $implicit: { text : row[cols.dataIndex] }, row: row }"></ng-template>
                     </div>
                 </td>
             </tr>
+
+            <tr *ngIf="viewRows.length == 0">
+                <td [attr.colspan]="columns.length+1" style="height: 100px;" class="loading-mask">
+
+                </td>
+            </tr>
+
             </tbody>
 
         </table>
     `,
-    providers : [CUSTOM_DATATABLE_INPUT_CONTROL_VALUE_ACCESSOR, DataTableService]
+    providers : [CUSTOM_DATATABLE_INPUT_CONTROL_VALUE_ACCESSOR, DataTableService],
+    styles : [`
+        .loading-mask {
+            position: relative;
+        }
+
+        /*
+        Because we set .loading-mask relative, we can span our ::before
+        element over the whole parent element
+        */
+        .loading-mask::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.25);
+        }
+
+        /*
+        Spin animation for .loading-mask::after
+        */
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(359deg);
+            }
+        }
+
+        /*
+        The loading throbber is a single spinning element with three
+        visible borders and a border-radius of 50%.
+        Instead of a border we could also use a font-icon or any
+        image using the content attribute.
+        */
+        .loading-mask::after {
+            content: "";
+            position: absolute;
+            border-width: 3px;
+            border-style: solid;
+            border-color: transparent rgb(255, 255, 255) rgb(255, 255, 255);
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            top: calc(50% - 12px);
+            left: calc(50% - 12px);
+            animation: 1s linear 0s normal none infinite running spin;
+            filter: drop-shadow(0 0 2 rgba(0, 0, 0, 0.33));
+        }
+
+        .hiderow{
+            visibility: hidden
+        }
+
+        .showrow{
+            visibility: visible;
+        }
+    `]
 })
 
 export class DataTableComponent  implements OnInit {
@@ -207,7 +282,7 @@ export class DataTableComponent  implements OnInit {
 
     data : any[];
 
-    viewRows : any[];
+    viewRows : any[] = [];
 
     maxPage : number;
 
@@ -236,6 +311,8 @@ export class DataTableComponent  implements OnInit {
     sortBy : number;
 
     randomIDCheckALL : string;
+
+    responseData : any;
 
     @ContentChildren(ColumnComponent) columnRef : QueryList<ColumnComponent>;
 
@@ -327,7 +404,16 @@ export class DataTableComponent  implements OnInit {
 
     ngAfterViewInit(){
         if(this.httpMethod && this.httpUrl){
-            this.dataTableSevice.fetchData(this,this.httpUrl,this.httpMethod);
+            this.dataTableSevice.fetchData(this.httpUrl,this.httpMethod).subscribe(
+                response=>{
+                    this.responseData = response.json();
+                },
+                error=>{
+                },
+                ()=>{
+                    this.setData(this.responseData);
+                }
+            );
         }
         else if(this.dataTableBindData){
             this.setData(this.dataTableBindData);
@@ -614,6 +700,5 @@ export class DataTableComponent  implements OnInit {
         else{
             this.smallScreen = false;
         }
-        console.log(this.smallScreen);
     }
 }

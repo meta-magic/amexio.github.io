@@ -56,7 +56,7 @@ import {TreeDataTableService} from "./treedatatable.service";
 
         </thead>
 
-        <tr *ngFor="let row of viewRows let rowIndex = index" [hidden]="!row.visible" (click)="setSelectedRow(row, $event)">
+        <tr [ngClass]="{'hiderow' : !(viewRows.length > 0),'showrow' : viewRows.length > 0}"  *ngFor="let row of viewRows let rowIndex = index" [hidden]="!row.visible" (click)="setSelectedRow(row, $event)">
             <td *ngFor="let cols of columns let colIndex = index" [hidden] ="cols.hidden" >
                 <div style="cursor: pointer" *ngIf="colIndex == 0" class="tree-grid-levels"
                      [ngStyle]="{left: row.level*15+'px'}" (click)="toggle(row,rowIndex)">
@@ -70,13 +70,74 @@ import {TreeDataTableService} from "./treedatatable.service";
             </td>
         </tr>
 
+        <tr *ngIf="viewRows.length == 0">
+            <td colspan="3" style="height: 400px;" class="loading-mask">
 
-
+            </td>
+        </tr>
     </table>`,
     providers :[TreeDataTableService],
     styles : [`
       .tree-grid-levels{
         position: relative;
+      }
+      .loading-mask {
+          position: relative;
+      }
+
+      /*
+      Because we set .loading-mask relative, we can span our ::before
+      element over the whole parent element
+      */
+      .loading-mask::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background-color: rgba(0, 0, 0, 0.25);
+      }
+
+      /*
+      Spin animation for .loading-mask::after
+      */
+      @keyframes spin {
+          from {
+              transform: rotate(0deg);
+          }
+          to {
+              transform: rotate(359deg);
+          }
+      }
+
+      /*
+      The loading throbber is a single spinning element with three
+      visible borders and a border-radius of 50%.
+      Instead of a border we could also use a font-icon or any
+      image using the content attribute.
+      */
+      .loading-mask::after {
+          content: "";
+          position: absolute;
+          border-width: 3px;
+          border-style: solid;
+          border-color: transparent rgb(255, 255, 255) rgb(255, 255, 255);
+          border-radius: 50%;
+          width: 24px;
+          height: 24px;
+          top: calc(50% - 12px);
+          left: calc(50% - 12px);
+          animation: 1s linear 0s normal none infinite running spin;
+          filter: drop-shadow(0 0 2 rgba(0, 0, 0, 0.33));
+      }
+
+      .hiderow{
+          visibility: hidden
+      }
+
+      .showrow{
+          visibility: visible;
       }
      `]
 })
@@ -99,14 +160,13 @@ export class TreeDataTableComponent implements  OnInit{
 
     data : any;
 
-    viewRows : any[];
+    viewRows : any[] = [];
 
-    columns : any[];
+    columns : any[] = [];
 
     sortColumn : any;
 
     constructor (private  treeDataTableService : TreeDataTableService){
-        this.columns = [];
         this.columns.push({text:'Task', dataIndex: 'task', hidden: false, dataType : 'string'});
         this.columns.push({text:'Duration', dataIndex: 'duration', hidden: false ,  dataType : 'number'});
         this.columns.push({text:'User', dataIndex: 'user', hidden: false,  dataType : 'string'});

@@ -12,8 +12,9 @@
  */
 
 import {
-  AfterContentInit, AfterViewInit, Component, ContentChildren, ElementRef, EventEmitter, Input, OnInit, Output,
-  QueryList
+    AfterContentInit, AfterViewInit, ChangeDetectorRef, Component, ContentChildren, ElementRef, EventEmitter, Input,
+    OnInit, Output,
+    QueryList
 } from '@angular/core';
 import {TabComponent} from "./tabpill.component";
 declare var $ : any;
@@ -174,14 +175,9 @@ export class TabPaneComponent implements OnInit,AfterContentInit,AfterViewInit {
 
   OPERATION_DELETE = '-';
 
-
-
-
-
-
   elementId : string;
 
-  constructor() {
+  constructor(private cdf : ChangeDetectorRef) {
     this.elementId = 'tabpane-' + new Date().getTime();
   }
 
@@ -203,7 +199,8 @@ export class TabPaneComponent implements OnInit,AfterContentInit,AfterViewInit {
         }
       }
 
-    })
+    });
+    $('#'+this.elementId).scrollingTabs();
   }
 
   ngAfterContentInit() {
@@ -222,7 +219,7 @@ export class TabPaneComponent implements OnInit,AfterContentInit,AfterViewInit {
       if(tab.elementId == tabId)
         tab.active = true;
     });
-
+    this.cdf.detectChanges();
   }
 
   removeTab(){
@@ -244,8 +241,8 @@ export class TabPaneComponent implements OnInit,AfterContentInit,AfterViewInit {
     element.parentNode.removeChild(element);
 
     this.loadTab(previousTabId);
-
     $('.nav-tabs').scrollingTabs('refresh');
+    this.cdf.detectChanges();
   }
 
   changeActiveTab(tab: TabComponent) {
@@ -253,6 +250,7 @@ export class TabPaneComponent implements OnInit,AfterContentInit,AfterViewInit {
     tabs.forEach(tab => tab.active = false);
     tab.active = true;
     this.onSelect.emit(tabs.indexOf(tab));
+    this.cdf.detectChanges();
   }
 
   getIconClass(tab : TabComponent): string{

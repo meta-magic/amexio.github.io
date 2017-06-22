@@ -14,6 +14,7 @@
 
 import{Injectable}   from '@angular/core';
 import {Http, RequestOptions, Headers} from '@angular/http';
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class DataTableService {
@@ -25,38 +26,15 @@ export class DataTableService {
 
     }
 
-    fetchData(parentRef : any, serviceUrl : string, methodType: string){
-        this.parentRef = parentRef;
+    fetchData(serviceUrl : string, methodType: string) : Observable<any>{
         let requestJson = {};
         let headers = new Headers({ 'Content-Type': 'application/json;charset=UTF-8'  });
         let options = new RequestOptions({headers : headers,method : methodType});
         if(methodType == "post"){
-            this._http.post(serviceUrl,requestJson,options).subscribe(
-                response=>{
-                    this.responseData = response.json();
-                },
-                error=>{
-                },
-                ()=>{
-                    this.setData();
-                }
-            );
+            return this._http.post(serviceUrl,requestJson,options)
         }else if(methodType == "get"){
-            this._http.get(serviceUrl,options).subscribe(
-                response=>{
-                    this.responseData = response.json();
-                },
-                error=>{
-                },
-                ()=>{
-                    this.setData();
-                }
-            );
+            return this._http.get(serviceUrl,options)
         }
-    }
-
-    setData (){
-        this.parentRef.setData(this.responseData);
     }
 
 }
