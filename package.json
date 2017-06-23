@@ -1,6 +1,6 @@
 {
   "name": "amexio-ng-extensions",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "scripts": {
     "build": "gulp build",
     "build:watch": "gulp",
@@ -53,7 +53,6 @@
     "core-js": "^2.4.1",
     "del": "^2.2.2",
     "font-awesome": "^4.7.0",
-    "gulp": "^3.9.1",
     "gulp-rename": "^1.2.2",
     "gulp-rollup": "^2.11.0",
     "jasmine-core": "~2.5.2",
@@ -80,5 +79,8 @@
   },
   "engines": {
     "node": ">=6.0.0"
+  },
+  "dependencies": {
+    "gulp": "^3.9.1"
   }
 }
