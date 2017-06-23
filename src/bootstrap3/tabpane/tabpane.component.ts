@@ -178,17 +178,17 @@ export class TabPaneComponent implements OnInit,AfterContentInit,AfterViewInit {
   elementId : string;
 
   constructor(private cdf : ChangeDetectorRef) {
-    this.elementId = 'tabpane-' + new Date().getTime();
+    this.elementId = 'tabpane-' + Math.floor(Math.random()*89999+10000);
   }
 
   ngOnInit() {
   }
 
   ngAfterViewInit(){
+    $('#'+this.elementId).scrollingTabs();
     $('#'+this.elementId).on('click', (e : any)=>{
       this.selectedTabId = e.target.id;  // Need some validation Here!!!
       if(this.selectedTabId !=null && (this.selectedTabId.charAt(0) == '#' ||this.selectedTabId.charAt(0) == '-')){
-        debugger;
         let op = this.selectedTabId.charAt(0);
 
         if(op == this.OPERATION_TOGGLE){
@@ -200,7 +200,6 @@ export class TabPaneComponent implements OnInit,AfterContentInit,AfterViewInit {
       }
 
     });
-    $('#'+this.elementId).scrollingTabs();
   }
 
   ngAfterContentInit() {
