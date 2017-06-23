@@ -35,7 +35,7 @@ export class  TreeViewService {
                 error=>{
                 },
                 ()=>{
-                    this.setData();
+                  this.setData();
                 }
             );
         }else if(methodType == "get"){
@@ -46,7 +46,7 @@ export class  TreeViewService {
                 error=>{
                 },
                 ()=>{
-                    this.setData();
+                 this.setData();
                 }
             );
         }

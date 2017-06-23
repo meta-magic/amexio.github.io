@@ -20,7 +20,13 @@ import {TreeViewService} from "./treeview.service";
 @Component({
     selector : 'amexio-tree-view',
     template : `
-        <ul style="list-style-type: none;">
+      <div *ngIf="data.length== 0">
+        <div class="loading-mask"  style="height: 300px;width: 400px;">
+         
+        </div>
+      </div>
+      
+        <ul style="list-style-type: none;" *ngIf="data.length > 0">
             <li style="cursor: pointer" *ngFor="let treeData of data">
                 <div >
                     <span [ngClass]="{'glyphicon glyphicon-minus': treeData.expanded, 'glyphicon glyphicon-plus': (!treeData.expanded && treeData.children)}" (click)="toggle(treeData)"> </span>
@@ -54,7 +60,67 @@ import {TreeViewService} from "./treeview.service";
                 </div>
             </li>
         </ul>`,
-    providers :[TreeViewService]
+    providers :[TreeViewService],
+    styles : [`
+    .loading-mask {
+      position: relative;
+    }
+
+    /*
+    Because we set .loading-mask relative, we can span our ::before
+    element over the whole parent element
+    */
+    .loading-mask::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.25);
+    }
+
+    /*
+    Spin animation for .loading-mask::after
+    */
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(359deg);
+      }
+    }
+
+    /*
+    The loading throbber is a single spinning element with three
+    visible borders and a border-radius of 50%.
+    Instead of a border we could also use a font-icon or any
+    image using the content attribute.
+    */
+    .loading-mask::after {
+      content: "";
+      position: absolute;
+      border-width: 3px;
+      border-style: solid;
+      border-color: transparent rgb(255, 255, 255) rgb(255, 255, 255);
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      top: calc(50% - 12px);
+      left: calc(50% - 12px);
+      animation: 1s linear 0s normal none infinite running spin;
+      filter: drop-shadow(0 0 2 rgba(0, 0, 0, 0.33));
+    }
+
+    .hiderow{
+      visibility: hidden
+    }
+
+    .showrow{
+      visibility: visible;
+    }
+  `]
 })
 
 export class TreeViewComponent implements  OnInit{
@@ -79,7 +145,7 @@ export class TreeViewComponent implements  OnInit{
 
     @ContentChild('amexioTreeTemplate')   parentTmp : TemplateRef<any>;
 
-    data : any;
+    data : any[] = [];
 
     lazyNode : any;
 
