@@ -13,9 +13,9 @@
 
 import {
     Input, OnInit, forwardRef, Component, ContentChildren, QueryList, AfterContentInit, Output, EventEmitter,
-    SimpleChange, SimpleChanges
+    SimpleChange, SimpleChanges, AfterViewChecked, OnDestroy, ChangeDetectorRef
 } from "@angular/core";
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
+import { NG_VALUE_ACCESSOR} from "@angular/forms";
 import {DataTableService} from "./datatable.service";
 import {ColumnComponent} from "./column.component";
 
@@ -23,15 +23,16 @@ import {ColumnComponent} from "./column.component";
 const noop = () => {
 };
 
-export const CUSTOM_DATATABLE_INPUT_CONTROL_VALUE_ACCESSOR: any = {
+export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => DataTableComponent),
     multi: true
 };
-
+declare var $;
 @Component({
     selector: 'amexio-data-table',
     template : `
+      
         <div>
             <ng-content></ng-content>
         </div>
@@ -44,6 +45,20 @@ export const CUSTOM_DATATABLE_INPUT_CONTROL_VALUE_ACCESSOR: any = {
                     <span style="float: left;">
                       <b>{{title}}</b>
                     </span>
+                  <span *ngIf="groupByColumn">
+                    
+                    <amexio-dropdown [(ngModel)]="groupByColumnIndex"
+                                     [placeholder]="'Choose Column'"
+                                     name="groupByColumnIndex"
+                                     [dataReader]="'response.data'"
+                                     [data]="dropdownData"
+                                     [displayField]="'text'"
+                                     [valueField]="'dataIndex'"
+                                     [width]="'150px'"
+                                     (onSingleSelect)="setColumnData()">
+                    </amexio-dropdown>
+
+                  </span>
                     <span style="float: right">
                        <div class="btn-group">
                         <button type="button" class="btn btn-default" aria-label="Previous" (click)="prev()">
@@ -58,6 +73,9 @@ export const CUSTOM_DATATABLE_INPUT_CONTROL_VALUE_ACCESSOR: any = {
                           <button type="button" class="btn btn-secondary btn-block dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-id="simple-select"><i class="fa fa-bars"></i>
                             Page - {{currentPage}}
                           </button>
+                            <!--  <ul class="dropdown-menu  dropdown-menu-right">
+                                  <li *ngFor="let row of pageNumbers let pageNo = index " value="{{pageNo+1}}"><a (click)="setPageNo(pageNo+1)">{{pageNo+1}}</a></li>
+                              </ul>-->
                           <div class="dropdown-menu open">
                             <ul class="dropdown-menu inner" role="menu" style="max-height: 445.406px; overflow-y: auto; min-height: 0px;">
                               <li *ngFor="let row of pageNumbers let pageNo = index " value="{{pageNo+1}}"><a (click)="setPageNo(pageNo+1)">{{pageNo+1}}</a></li>
@@ -88,22 +106,20 @@ export const CUSTOM_DATATABLE_INPUT_CONTROL_VALUE_ACCESSOR: any = {
                     </span>
                 </td>
             </tr>
-
-            <tr *ngIf="!smallScreen">
-
+              <tr *ngIf="!smallScreen">
                 <td *ngIf="checkboxSelect" width="5%"><input type="checkbox" (click)="selectAllVisibleRows()" ></td>
                 <td *ngFor="let cols of columns" [hidden]="cols.hidden" >
-                    <!-- Column Header -->
-                    <span style="cursor: pointer;" (click)="sortOnColHeaderClick(cols)">
+                  <!-- Column Header -->
+                  <span style="cursor: pointer;" (click)="sortOnColHeaderClick(cols)">
                         
                         <!-- If user hasnt embedded view -->
                         <ng-container *ngIf="!cols?.headerTemplate"><b>{{cols.text}}</b></ng-container>
 
-                        <!--Check if user has embedded view inserted then -->
+                    <!--Check if user has embedded view inserted then -->
                         <ng-template *ngIf="cols?.headerTemplate" [ngTemplateOutlet]="cols?.headerTemplate" [ngOutletContext]="{ $implicit: { header: cols.text } }"></ng-template>
                       </span>
 
-                    <span  style="float: right" class="btn-group" role="group">
+                  <span  style="float: right" class="btn-group" role="group">
                         <span class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           <span class="glyphicon glyphicon-triangle-bottom" style="color:#93a1a1"></span>
                         </span>
@@ -117,134 +133,231 @@ export const CUSTOM_DATATABLE_INPUT_CONTROL_VALUE_ACCESSOR: any = {
                         </div>
                       </span>
                 </td>
-
-            </tr>
-
-
-            <tr  *ngIf="!smallScreen && viewRows.length > 0">
+              </tr>
+            
+            <ng-container *ngIf="!groupByColumn">
+              <tr  *ngIf="!smallScreen">
                 <td *ngIf="checkboxSelect"  width="5%"></td>
                 <td *ngFor="let cols of columns let colIndex = index " [hidden] ="cols.hidden" >
-                    <b>{{summaryData[colIndex]}}</b>
+                  <b>{{summaryData[colIndex]}}</b>
                 </td>
-            </tr>
-
-
-
+              </tr>
+            </ng-container>
+            
             </thead>
 
-            <tbody *ngIf="!smallScreen">
+        
+            <tbody *ngIf="!smallScreen" >
+            <ng-container *ngIf="groupByColumn">
+            
+             <tr [ngClass]="{'hiderow' : !(viewRows.length > 0),'showrow' : viewRows.length > 0}"><td  [attr.colspan]="columns.length + (checkboxSelect? 1: 0)" width="100%">
+               <div class="list-group" *ngFor="let row of viewRows;let i=index;" style="border-bottom: 1px ridge lightgray;">
 
-            <tr [ngClass]="{'hiderow' : !(viewRows.length > 0),'showrow' : viewRows.length > 0}" style="cursor: pointer" *ngFor="let row of viewRows let rowIndex = index " (click)="rowClick(row, rowIndex)" [class.info]="isSelected(rowIndex)">
+                 <span (click)="iconSwitch(row)" style="cursor: pointer;color: black;" data-toggle="collapse" [attr.data-target]="'#'+i" data-parent="#menu">
+                   <span [ngClass]="{'fa-caret-down':row.expanded,'fa-caret-right':!row.expanded}" class="fa " > &nbsp;&nbsp;</span>{{row.group}}<span style="float: right" class="badge">{{row.groupData.length}}</span>
+                 </span>
+
+                 <div [attr.id]="i" class="sublinks collapse">
+                   <table class="table table-bordered">
+                     <tbody>
+                     <tr *ngFor="let rows of row.groupData let rowIndex = index" (click)="rowClick(rows, rowIndex)">
+                       <td *ngIf="checkboxSelect"  width="5%"><input type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}" [attr.checked]="selectAll? true: null" (click)="setSelectedRow(rows, $event)"></td>
+                       <td *ngFor="let cols of columns" [hidden] ="cols.hidden">
+
+                         <!-- If user hasnt specified customized cell use default -->
+                         <ng-container *ngIf="!cols?.bodyTemplate">{{rows[cols.dataIndex]}}</ng-container>
+
+                         <!-- else insert customized code -->
+                         <template *ngIf="cols.bodyTemplate" [ngTemplateOutlet]="cols.bodyTemplate" [ngOutletContext]="{ $implicit: { text : rows[cols.dataIndex] }, row: rows }"></template>
+
+
+                       </td>
+                     </tr>
+                     </tbody>
+                   </table>
+                 </div>
+               </div>
+             </td>
+               
+             </tr>
+
+              <tr *ngIf="viewRows.length == 0">
+                <td [attr.colspan]="columns.length+1" style="height: 100px;" class="loading-mask">
+
+                </td>
+              </tr>
+               
+              
+            </ng-container>
+            <ng-container *ngIf="!groupByColumn">
+              <tr [ngClass]="{'hiderow' : !(viewRows.length > 0),'showrow' : viewRows.length > 0}"  style="cursor: pointer;" *ngFor="let row of viewRows let rowIndex = index " (click)="rowClick(row, rowIndex)" [class.info]="isSelected(rowIndex)">
                 <td *ngIf="checkboxSelect"  width="5%"><input type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}" [attr.checked]="selectAll? true: null" (click)="setSelectedRow(row, $event)"></td>
 
                 <td *ngFor="let cols of columns" [hidden] ="cols.hidden" >
 
+                  <!-- If user hasnt specified customized cell use default -->
+                  <ng-container *ngIf="!cols?.bodyTemplate">{{row[cols.dataIndex]}}</ng-container>
+
+                  <!-- else insert customized code -->
+                  <template *ngIf="cols.bodyTemplate" [ngTemplateOutlet]="cols.bodyTemplate" [ngOutletContext]="{ $implicit: { text : row[cols.dataIndex] }, row: row }"></template>
+
+                </td>
+              </tr>
+
+              <tr *ngIf="viewRows.length == 0">
+                <td [attr.colspan]="columns.length+1" style="height: 100px;" class="loading-mask">
+
+                </td>
+              </tr>
+            </ng-container>
+          
+            </tbody>
+    
+
+        
+            <tbody *ngIf="smallScreen">
+            <ng-container *ngIf="groupByColumn">
+              
+              <tr [ngClass]="{'hiderow' : !(viewRows.length > 0),'showrow' : viewRows.length > 0}">
+                <td  [attr.colspan]="columns.length + (checkboxSelect? 1: 0)" width="100%">
+                <div class="list-group" *ngFor="let row of viewRows;let i=index;" style="border-bottom: 1px ridge lightgray;">
+
+                 <span (click)="iconSwitch(row)" style="cursor: pointer;color: black;" data-toggle="collapse" [attr.data-target]="'#'+i" data-parent="#menu">
+                   <span [ngClass]="{'fa-caret-down':row.expanded,'fa-caret-right':!row.expanded}" class="fa " > &nbsp;&nbsp;</span>{{row.group}}<span style="float: right" class="badge">{{row.groupData.length}}</span>
+                 </span>
+
+                  <div [attr.id]="i" class="sublinks collapse">
+
+
+                    <table class="table table-bordered">
+                      <tbody>
+                      <tr *ngFor="let rows of row.groupData let rowIndex = index" (click)="rowClick(rows, rowIndex)">
+                        <td  *ngIf="checkboxSelect"  width="5%"><input type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}" [attr.checked]="selectAll? true: null" (click)="setSelectedRow(rows, $event)"></td>
+                        <td [attr.colspan]="columns.length-1">
+
+
+
+                          <div style="word-wrap: break-word" *ngFor="let cols of columns" [hidden] ="cols.hidden" >
+                            <b>{{cols.text}}</b> :
+                            <!-- If user hasnt specified customized cell use default -->
+                            <ng-container *ngIf="!cols?.bodyTemplate">{{rows[cols.dataIndex]}}</ng-container>
+
+                            <!-- else insert customized code -->
+                            <template *ngIf="cols.bodyTemplate" [ngTemplateOutlet]="cols.bodyTemplate" [ngOutletContext]="{ $implicit: { text : rows[cols.dataIndex] }, row: rows }"></template>
+                          </div>
+                          
+
+                        </td>
+                      </tr>
+                      </tbody>
+                    </table>
+                    
+              
+                  </div>
+              
+                </div>
+              </td>
+
+              </tr>
+              
+            </ng-container>
+            
+            
+            <ng-container *ngIf="!groupByColumn">
+
+              <tr [ngClass]="{'hiderow' : !(viewRows.length > 0),'showrow' : viewRows.length > 0}" style="cursor: pointer" *ngFor="let row of viewRows let rowIndex = index " (click)="rowClick(row, rowIndex)" [class.info]="isSelected(rowIndex)">
+                <td *ngIf="checkboxSelect"  width="5%"><input type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}" [attr.checked]="selectAll? true: null" (click)="setSelectedRow(row, $event)"></td>
+                <td>
+                  <div style="word-wrap: break-word" *ngFor="let cols of columns" [hidden] ="cols.hidden" >
+                    <b>{{cols.text}}</b> :
                     <!-- If user hasnt specified customized cell use default -->
                     <ng-container *ngIf="!cols?.bodyTemplate">{{row[cols.dataIndex]}}</ng-container>
 
                     <!-- else insert customized code -->
-                    <ng-template *ngIf="cols.bodyTemplate" [ngTemplateOutlet]="cols.bodyTemplate" [ngOutletContext]="{ $implicit: { text : row[cols.dataIndex] }, row: row }"></ng-template>
-
+                    <template *ngIf="cols.bodyTemplate" [ngTemplateOutlet]="cols.bodyTemplate" [ngOutletContext]="{ $implicit: { text : row[cols.dataIndex] }, row: row }"></template>
+                  </div>
                 </td>
-            </tr>
+              </tr>
 
+            </ng-container>
+           
             <tr *ngIf="viewRows.length == 0">
-                <td [attr.colspan]="columns.length+1" style="height: 400px;" class="loading-mask">
+              <td [attr.colspan]="columns.length+1" style="height: 100px;" class="loading-mask">
 
-                </td>
+              </td>
             </tr>
-
+           
             </tbody>
-
-            <tbody *ngIf="smallScreen">
-            <tr [ngClass]="{'hiderow' : !(viewRows.length > 0),'showrow' : viewRows.length > 0}" style="cursor: pointer" *ngFor="let row of viewRows let rowIndex = index " (click)="rowClick(row, rowIndex)" [class.info]="isSelected(rowIndex)">
-                <td *ngIf="checkboxSelect"  width="5%"><input type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}" [attr.checked]="selectAll? true: null" (click)="setSelectedRow(row, $event)"></td>
-                <td>
-                    <div style="word-wrap: break-word" *ngFor="let cols of columns" [hidden] ="cols.hidden" >
-                        <b>{{cols.text}}</b> :
-                        <!-- If user hasnt specified customized cell use default -->
-                        <ng-container *ngIf="!cols?.bodyTemplate">{{row[cols.dataIndex]}}</ng-container>
-
-                        <!-- else insert customized code -->
-                        <ng-template *ngIf="cols.bodyTemplate" [ngTemplateOutlet]="cols.bodyTemplate" [ngOutletContext]="{ $implicit: { text : row[cols.dataIndex] }, row: row }"></ng-template>
-                    </div>
-                </td>
-            </tr>
-
-            <tr *ngIf="viewRows.length == 0">
-                <td [attr.colspan]="columns.length+1" style="height: 100px;" class="loading-mask">
-
-                </td>
-            </tr>
-
-            </tbody>
+         
 
         </table>
+   
+    
     `,
-    providers : [CUSTOM_DATATABLE_INPUT_CONTROL_VALUE_ACCESSOR, DataTableService],
+    providers : [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR, DataTableService],
     styles : [`
-        .loading-mask {
-            position: relative;
-        }
+    .loading-mask {
+      position: relative;
+    }
 
-        /*
-        Because we set .loading-mask relative, we can span our ::before
-        element over the whole parent element
-        */
-        .loading-mask::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            background-color: rgba(0, 0, 0, 0.25);
-        }
+    /*
+    Because we set .loading-mask relative, we can span our ::before
+    element over the whole parent element
+    */
+    .loading-mask::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.25);
+    }
 
-        /*
-        Spin animation for .loading-mask::after
-        */
-        @keyframes spin {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(359deg);
-            }
-        }
+    /*
+    Spin animation for .loading-mask::after
+    */
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(359deg);
+      }
+    }
 
-        /*
-        The loading throbber is a single spinning element with three
-        visible borders and a border-radius of 50%.
-        Instead of a border we could also use a font-icon or any
-        image using the content attribute.
-        */
-        .loading-mask::after {
-            content: "";
-            position: absolute;
-            border-width: 3px;
-            border-style: solid;
-            border-color: transparent rgb(255, 255, 255) rgb(255, 255, 255);
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            top: calc(50% - 12px);
-            left: calc(50% - 12px);
-            animation: 1s linear 0s normal none infinite running spin;
-            filter: drop-shadow(0 0 2 rgba(0, 0, 0, 0.33));
-        }
+    /*
+    The loading throbber is a single spinning element with three
+    visible borders and a border-radius of 50%.
+    Instead of a border we could also use a font-icon or any
+    image using the content attribute.
+    */
+    .loading-mask::after {
+      content: "";
+      position: absolute;
+      border-width: 3px;
+      border-style: solid;
+      border-color: transparent rgb(255, 255, 255) rgb(255, 255, 255);
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      top: calc(50% - 12px);
+      left: calc(50% - 12px);
+      animation: 1s linear 0s normal none infinite running spin;
+      filter: drop-shadow(0 0 2 rgba(0, 0, 0, 0.33));
+    }
 
-        .hiderow{
-            visibility: hidden
-        }
+    .hiderow{
+      visibility: hidden
+    }
 
-        .showrow{
-            visibility: visible;
-        }
-    `]
+    .showrow{
+      visibility: visible;
+    }
+  `]
 })
 
-export class DataTableComponent  implements OnInit {
+export class DataTableComponent  implements OnInit,AfterViewChecked,OnDestroy {
 
     @Input()    title : string;
 
@@ -278,11 +391,17 @@ export class DataTableComponent  implements OnInit {
     @Input()
     width : string;
 
+    @Input()
+    groupByColumn : boolean = false;
+
+    @Input()
+    groupByColumnIndex : string;
+
     columns : any[];
 
     data : any[];
 
-    viewRows : any[] = [];
+    viewRows : any[]=[];
 
     maxPage : number;
 
@@ -312,12 +431,17 @@ export class DataTableComponent  implements OnInit {
 
     randomIDCheckALL : string;
 
+    cloneData : any;
+
+    dropdownData : any;
+
     responseData : any;
+
 
     @ContentChildren(ColumnComponent) columnRef : QueryList<ColumnComponent>;
 
 
-    constructor(private dataTableSevice : DataTableService) {
+    constructor(private dataTableSevice : DataTableService,private cd: ChangeDetectorRef) {
         this.pageNumbers = [];
         this.currentPage = 1;
         this.elementId = "mytable-"+Math.random();
@@ -329,11 +453,19 @@ export class DataTableComponent  implements OnInit {
         this.smallScreen = false;
         this.sortBy = -1;
         this.randomIDCheckALL = 'checkall-'+new Date().getTime() + Math.random();
+
+
     }
 
-    ngOnInit()
-    {
+    ngOnInit(){
+    }
 
+    ngAfterViewChecked(){
+        $('#'+this.elementId).selectpicker('refresh');
+    }
+
+    ngOnDestroy(){
+        $('#'+this.elementId).selectpicker('destroy');
     }
 
     ngAfterContentInit() {
@@ -341,10 +473,8 @@ export class DataTableComponent  implements OnInit {
     }
 
     createConfig(){
-
         this.columns = [];
         this.createColumnConfig();
-
         for(let ir = 0 ; ir<this.columns.length; ir++){
             let column = this.columns[ir];
 
@@ -355,9 +485,12 @@ export class DataTableComponent  implements OnInit {
 
             this.summary.push({summaryType: column.summaryType, summaryCaption : column.summaryCaption, data:[]});
         }
-
+        this.dropdownData={
+            "response":{
+                "data":this.columns
+            }
+        };
     }
-
 
     createColumnConfig(){
         let columnRefArray = [];
@@ -422,7 +555,9 @@ export class DataTableComponent  implements OnInit {
 
     setData(httpResponse: any){
         this.data = this.getResponseData(httpResponse);
-
+        if(this.groupByColumn){
+            this.cloneData = JSON.parse(JSON.stringify(this.data));
+        }
         if(this.data.length > (1 * this.pageSize))
         {
             this.maxPage = Math.floor((this.data.length/this.pageSize));
@@ -440,8 +575,11 @@ export class DataTableComponent  implements OnInit {
 
         this.createSummaryData();
         this.renderData();
-    }
+        if (this.groupByColumn){
+            this.setColumnData();
+        }
 
+    }
 
     createSummaryData (){
         for(let sd = 0 ; sd<this.data.length; sd++){
@@ -506,9 +644,7 @@ export class DataTableComponent  implements OnInit {
             }
         }
 
-        console.log(this.summaryData);
     }
-
 
     getResponseData(httpResponse : any){
         let responsedata = httpResponse;
@@ -518,9 +654,6 @@ export class DataTableComponent  implements OnInit {
         }
         return responsedata;
     }
-
-
-
 
     renderData(){
         if(this.pageSize > 1){
@@ -550,6 +683,7 @@ export class DataTableComponent  implements OnInit {
 
 
 
+
     }
 
     sortData(){
@@ -559,40 +693,73 @@ export class DataTableComponent  implements OnInit {
             if(this.sortColumn.dataIndex && this.sortColumn.dataType){
                 let dataIndex = this.sortColumn.dataIndex;
                 sortColDataIndex = dataIndex;
+
                 if(this.sortColumn.dataType == 'string'){
-                    this.data.sort(function(a,b){
+                    if(this.groupByColumn){
+                        this.data.sort(function(a,b){
+                            let x = a.group.toLowerCase();
+                            let y = b.group.toLowerCase();
 
-                        let x = a[sortColDataIndex].toLowerCase();
-                        let y = b[sortColDataIndex].toLowerCase();
+                            if(sortOrder == 2){
+                                if (x < y) {return 1;}
+                                if (x > y) {return -1;}
+                            }else{
+                                if (x < y) {return -1;}
+                                if (x > y) {return 1;}
+                            }
 
-                        if(sortOrder == 2){
-                            if (x < y) {return 1;}
-                            if (x > y) {return -1;}
-                        }else{
-                            if (x < y) {return -1;}
-                            if (x > y) {return 1;}
-                        }
+                            return 0;
+                        });
+                    }else {
+                        this.data.sort(function(a,b){
+                            let x = a[sortColDataIndex].toLowerCase();
+                            let y = b[sortColDataIndex].toLowerCase();
 
-                        return 0;
-                    });
+                            if(sortOrder == 2){
+                                if (x < y) {return 1;}
+                                if (x > y) {return -1;}
+                            }else{
+                                if (x < y) {return -1;}
+                                if (x > y) {return 1;}
+                            }
+
+                            return 0;
+                        });
+                    }
+
 
                 }
+
                 else if(this.sortColumn.dataType == 'number'){
-                    this.data.sort(function(a,b){
-                        let x = a[sortColDataIndex];
-                        let y = b[sortColDataIndex];
 
-                        if(sortOrder == 2){
-                            return y-x;
-                        }else{
-                            return x-y;
-                        }
+                    if(this.groupByColumn){
+                        this.data.sort(function(a,b){
+                            let  x = a.group;
+                            let  y = b.group;
 
-                    });
+                            if(sortOrder == 2){
+                                return y-x;
+                            }else{
+                                return x-y;
+                            }
 
+                        });
+                    }else {
+                        this.data.sort(function(a,b){
+                            let x = a[sortColDataIndex];
+                            let y = b[sortColDataIndex];
+                            if(sortOrder == 2){
+                                return y-x;
+                            }else{
+                                return x-y;
+                            }
+
+                        });
+                    }
                 }
             }
         }
+
         this.renderData();
     }
 
@@ -624,7 +791,6 @@ export class DataTableComponent  implements OnInit {
     }
 
     setSortColumn(sortCol : any, _sortBy:number){
-
         this.sortBy = _sortBy;
         this.sortColumn = sortCol;
         this.sortData();
@@ -700,5 +866,28 @@ export class DataTableComponent  implements OnInit {
         else{
             this.smallScreen = false;
         }
+    }
+
+    setColumnData(){
+        this.data = this.cloneData;
+        let groups = {};
+        this.data.forEach((option)=>{
+            let groupName = option[this.groupByColumnIndex];
+            if (!groups[groupName]) {
+                groups[groupName] = [];
+            }
+            groups[groupName].push(option);
+        });
+        this.data =[];
+        for (let groupName in groups) {
+            this.data.push({expanded:false,group:groupName, groupData: groups[groupName]});
+        }
+        this.renderData();
+        this.cd.detectChanges();
+    }
+
+    iconSwitch(groupData : any){
+        groupData.expanded =!groupData.expanded;
+
     }
 }
