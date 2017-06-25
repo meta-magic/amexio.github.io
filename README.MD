@@ -19,14 +19,6 @@ To install this library, run:
 $ npm install amexio-ng-extensions --save
 ```
 
-## Consuming your library
-
-Once you have published your library to npm, you can import your library in any Angular application by running:
-
-```bash
-$ npm install amexio-ng-extensions
-```
-
 and then from your Angular `AppModule`:
 
 ```typescript
