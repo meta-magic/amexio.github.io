@@ -13,7 +13,7 @@
 
 import {
     Input, OnInit, forwardRef, Component, ContentChildren, QueryList, AfterContentInit, Output, EventEmitter,
-    SimpleChange, SimpleChanges, AfterViewChecked, OnDestroy, ChangeDetectorRef
+    SimpleChange, SimpleChanges, AfterViewChecked, OnDestroy, ChangeDetectorRef, AfterViewInit
 } from "@angular/core";
 import { NG_VALUE_ACCESSOR} from "@angular/forms";
 import {DataTableService} from "./datatable.service";
@@ -32,34 +32,33 @@ declare var $;
 @Component({
     selector: 'amexio-data-table',
     template : `
-      
+
         <div>
             <ng-content></ng-content>
         </div>
+        <div class="wrap">
+            <table class="table table-hover table-striped table-bordered"  [attr.id]="elementId" (window:resize)="onResize($event)">
+                <thead>
 
-        <table class="table table-hover table-striped table-bordered"  [attr.id]="elementId" (window:resize)="onResize($event)">
-            <thead>
-
-            <tr>
-                <td [attr.colspan]="columns.length + (checkboxSelect? 1: 0)" width="100%" data align="right">
+                <tr>
+                    <td [attr.colspan]="columns.length + (checkboxSelect? 1: 0)" width="100%" data align="right">
                     <span style="float: left;">
                       <b>{{title}}</b>
                     </span>
-                  <span *ngIf="groupByColumn">
-                    
-                    <amexio-dropdown [(ngModel)]="groupByColumnIndex"
-                                     [placeholder]="'Choose Column'"
-                                     name="groupByColumnIndex"
-                                     [dataReader]="'response.data'"
-                                     [data]="dropdownData"
-                                     [displayField]="'text'"
-                                     [valueField]="'dataIndex'"
-                                     [width]="'150px'"
-                                     (onSingleSelect)="setColumnData()">
+                        <span  *ngIf="groupByColumn">
+          <amexio-dropdown [(ngModel)]="groupByColumnIndex"
+                           [placeholder]="'Choose Column'"
+                           name="groupByColumnIndex"
+                           [dataReader]="'response.data'"
+                           [data]="dropdownData"
+                           [displayField]="'text'"
+                           [valueField]="'dataIndex'"
+                           [width]="'150px'"
+                           (onSingleSelect)="setColumnData()">
                     </amexio-dropdown>
 
-                  </span>
-                    <span style="float: right">
+        </span>
+                        <span style="float: right">
                        <div class="btn-group">
                         <button type="button" class="btn btn-default" aria-label="Previous" (click)="prev()">
                           <span aria-hidden="true">&laquo;</span>
@@ -104,22 +103,22 @@ declare var $;
                         <button type="button" class="btn btn-default" aria-label="Next" (click)="next()"><span aria-hidden="true">&raquo;</span></button>
                       </div>
                     </span>
-                </td>
-            </tr>
-              <tr *ngIf="!smallScreen">
-                <td *ngIf="checkboxSelect" width="5%"><input type="checkbox" (click)="selectAllVisibleRows()" ></td>
-                <td *ngFor="let cols of columns" [hidden]="cols.hidden" >
-                  <!-- Column Header -->
-                  <span style="cursor: pointer;" (click)="sortOnColHeaderClick(cols)">
+                    </td>
+                </tr>
+                <tr *ngIf="!smallScreen">
+                    <td *ngIf="checkboxSelect" width="5%"><input type="checkbox" (click)="selectAllVisibleRows()" ></td>
+                    <td *ngFor="let cols of columns" [hidden]="cols.hidden" >
+                        <!-- Column Header -->
+                        <span style="cursor: pointer;" (click)="sortOnColHeaderClick(cols)">
                         
                         <!-- If user hasnt embedded view -->
                         <ng-container *ngIf="!cols?.headerTemplate"><b>{{cols.text}}</b></ng-container>
 
-                    <!--Check if user has embedded view inserted then -->
+                            <!--Check if user has embedded view inserted then -->
                         <ng-template *ngIf="cols?.headerTemplate" [ngTemplateOutlet]="cols?.headerTemplate" [ngOutletContext]="{ $implicit: { header: cols.text } }"></ng-template>
                       </span>
 
-                  <span  style="float: right" class="btn-group" role="group">
+                        <span  style="float: right" class="btn-group" role="group">
                         <span class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           <span class="glyphicon glyphicon-triangle-bottom" style="color:#93a1a1"></span>
                         </span>
@@ -132,232 +131,201 @@ declare var $;
                             </button>                          
                         </div>
                       </span>
-                </td>
-              </tr>
-            
-            <ng-container *ngIf="!groupByColumn">
-              <tr  *ngIf="!smallScreen">
-                <td *ngIf="checkboxSelect"  width="5%"></td>
-                <td *ngFor="let cols of columns let colIndex = index " [hidden] ="cols.hidden" >
-                  <b>{{summaryData[colIndex]}}</b>
-                </td>
-              </tr>
-            </ng-container>
-            
-            </thead>
+                    </td>
+                </tr>
 
-        
-            <tbody *ngIf="!smallScreen" >
-            <ng-container *ngIf="groupByColumn">
-            
-             <tr [ngClass]="{'hiderow' : !(viewRows.length > 0),'showrow' : viewRows.length > 0}"><td  [attr.colspan]="columns.length + (checkboxSelect? 1: 0)" width="100%">
-               <div class="list-group" *ngFor="let row of viewRows;let i=index;" style="border-bottom: 1px ridge lightgray;">
+                <ng-container *ngIf="!groupByColumn">
+                    <tr  *ngIf="!smallScreen">
+                        <td *ngIf="checkboxSelect"  width="5%"></td>
+                        <td *ngFor="let cols of columns let colIndex = index " [hidden] ="cols.hidden" >
+                            <b>{{summaryData[colIndex]}}</b>
+                        </td>
+                    </tr>
+                </ng-container>
 
-                 <span (click)="iconSwitch(row)" style="cursor: pointer;color: black;" data-toggle="collapse" [attr.data-target]="'#'+i" data-parent="#menu">
-                   <span [ngClass]="{'fa-caret-down':row.expanded,'fa-caret-right':!row.expanded}" class="fa " > &nbsp;&nbsp;</span>{{row.group}}<span style="float: right" class="badge">{{row.groupData.length}}</span>
-                 </span>
+                </thead>
+            </table>
 
-                 <div [attr.id]="i" class="sublinks collapse">
-                   <table class="table table-bordered">
-                     <tbody>
-                     <tr *ngFor="let rows of row.groupData let rowIndex = index" (click)="rowClick(rows, rowIndex)">
-                       <td *ngIf="checkboxSelect"  width="5%"><input type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}" [attr.checked]="selectAll? true: null" (click)="setSelectedRow(rows, $event)"></td>
-                       <td *ngFor="let cols of columns" [hidden] ="cols.hidden">
+            <div [ngStyle]="setHeight()">
 
-                         <!-- If user hasnt specified customized cell use default -->
-                         <ng-container *ngIf="!cols?.bodyTemplate">{{rows[cols.dataIndex]}}</ng-container>
+                <table class="table table-hover table-striped table-bordered ">
 
-                         <!-- else insert customized code -->
-                         <template *ngIf="cols.bodyTemplate" [ngTemplateOutlet]="cols.bodyTemplate" [ngOutletContext]="{ $implicit: { text : rows[cols.dataIndex] }, row: rows }"></template>
+                    <tbody *ngIf="!smallScreen" >
+                    <ng-container *ngIf="groupByColumn">
 
-
-                       </td>
-                     </tr>
-                     </tbody>
-                   </table>
-                 </div>
-               </div>
-             </td>
-               
-             </tr>
-
-              <tr *ngIf="viewRows.length == 0">
-                <td [attr.colspan]="columns.length+1" style="height: 100px;" class="loading-mask">
-
-                </td>
-              </tr>
-               
-              
-            </ng-container>
-            <ng-container *ngIf="!groupByColumn">
-              <tr [ngClass]="{'hiderow' : !(viewRows.length > 0),'showrow' : viewRows.length > 0}"  style="cursor: pointer;" *ngFor="let row of viewRows let rowIndex = index " (click)="rowClick(row, rowIndex)" [class.info]="isSelected(rowIndex)">
-                <td *ngIf="checkboxSelect"  width="5%"><input type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}" [attr.checked]="selectAll? true: null" (click)="setSelectedRow(row, $event)"></td>
-
-                <td *ngFor="let cols of columns" [hidden] ="cols.hidden" >
-
-                  <!-- If user hasnt specified customized cell use default -->
-                  <ng-container *ngIf="!cols?.bodyTemplate">{{row[cols.dataIndex]}}</ng-container>
-
-                  <!-- else insert customized code -->
-                  <template *ngIf="cols.bodyTemplate" [ngTemplateOutlet]="cols.bodyTemplate" [ngOutletContext]="{ $implicit: { text : row[cols.dataIndex] }, row: row }"></template>
-
-                </td>
-              </tr>
-
-              <tr *ngIf="viewRows.length == 0">
-                <td [attr.colspan]="columns.length+1" style="height: 100px;" class="loading-mask">
-
-                </td>
-              </tr>
-            </ng-container>
-          
-            </tbody>
-    
-
-        
-            <tbody *ngIf="smallScreen">
-            <ng-container *ngIf="groupByColumn">
-              
-              <tr [ngClass]="{'hiderow' : !(viewRows.length > 0),'showrow' : viewRows.length > 0}">
-                <td  [attr.colspan]="columns.length + (checkboxSelect? 1: 0)" width="100%">
-                <div class="list-group" *ngFor="let row of viewRows;let i=index;" style="border-bottom: 1px ridge lightgray;">
+                        <tr [ngClass]="{'hiderow' : !(viewRows.length > 0),'showrow' : viewRows.length > 0}"><td  [attr.colspan]="columns.length + (checkboxSelect? 1: 0)" width="100%">
+                            <div class="list-group" *ngFor="let row of viewRows;let i=index;" style="border-bottom: 1px ridge lightgray;">
 
                  <span (click)="iconSwitch(row)" style="cursor: pointer;color: black;" data-toggle="collapse" [attr.data-target]="'#'+i" data-parent="#menu">
                    <span [ngClass]="{'fa-caret-down':row.expanded,'fa-caret-right':!row.expanded}" class="fa " > &nbsp;&nbsp;</span>{{row.group}}<span style="float: right" class="badge">{{row.groupData.length}}</span>
                  </span>
 
-                  <div [attr.id]="i" class="sublinks collapse">
+                                <div [attr.id]="i" class="sublinks collapse">
+                                    <table class="table table-bordered">
+                                        <tbody>
+                                        <tr *ngFor="let rows of row.groupData let rowIndex = index" (click)="rowClick(rows, rowIndex)">
+                                            <td *ngIf="checkboxSelect"  width="5%"><input type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}" [attr.checked]="selectAll? true: null" (click)="setSelectedRow(rows, $event)"></td>
+                                            <td *ngFor="let cols of columns" [hidden] ="cols.hidden">
+
+                                                <!-- If user hasnt specified customized cell use default -->
+                                                <ng-container *ngIf="!cols?.bodyTemplate">{{rows[cols.dataIndex]}}</ng-container>
+
+                                                <!-- else insert customized code -->
+                                                <template *ngIf="cols.bodyTemplate" [ngTemplateOutlet]="cols.bodyTemplate" [ngOutletContext]="{ $implicit: { text : rows[cols.dataIndex] }, row: rows }"></template>
 
 
-                    <table class="table table-bordered">
-                      <tbody>
-                      <tr *ngFor="let rows of row.groupData let rowIndex = index" (click)="rowClick(rows, rowIndex)">
-                        <td  *ngIf="checkboxSelect"  width="5%"><input type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}" [attr.checked]="selectAll? true: null" (click)="setSelectedRow(rows, $event)"></td>
-                        <td [attr.colspan]="columns.length-1">
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </td>
+
+                        </tr>
+
+                        <tr *ngIf="viewRows.length == 0">
+                            <td [attr.colspan]="columns.length+1" style="height: 100px;" class="loading-mask">
+
+                            </td>
+                        </tr>
+
+
+                    </ng-container>
+                    <ng-container *ngIf="!groupByColumn">
+                        <tr [ngClass]="{'hiderow' : !(viewRows.length > 0),'showrow' : viewRows.length > 0}"  style="cursor: pointer;" *ngFor="let row of viewRows let rowIndex = index " (click)="rowClick(row, rowIndex)" [class.info]="isSelected(rowIndex)">
+                            <td *ngIf="checkboxSelect"  width="5%"><input type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}" [attr.checked]="selectAll? true: null" (click)="setSelectedRow(row, $event)"></td>
+
+                            <td *ngFor="let cols of columns" [hidden] ="cols.hidden" >
+
+                                <!-- If user hasnt specified customized cell use default -->
+                                <ng-container *ngIf="!cols?.bodyTemplate">{{row[cols.dataIndex]}}</ng-container>
+
+                                <!-- else insert customized code -->
+                                <template *ngIf="cols.bodyTemplate" [ngTemplateOutlet]="cols.bodyTemplate" [ngOutletContext]="{ $implicit: { text : row[cols.dataIndex] }, row: row }"></template>
+
+                            </td>
+                        </tr>
+
+                        <tr *ngIf="viewRows.length == 0">
+                            <td [attr.colspan]="columns.length+1" style="height: 100px;" class="loading-mask">
+
+                            </td>
+                        </tr>
+                    </ng-container>
+
+                    </tbody>
 
 
 
-                          <div style="word-wrap: break-word" *ngFor="let cols of columns" [hidden] ="cols.hidden" >
-                            <b>{{cols.text}}</b> :
-                            <!-- If user hasnt specified customized cell use default -->
-                            <ng-container *ngIf="!cols?.bodyTemplate">{{rows[cols.dataIndex]}}</ng-container>
+                    <tbody *ngIf="smallScreen">
+                    <ng-container *ngIf="groupByColumn">
 
-                            <!-- else insert customized code -->
-                            <template *ngIf="cols.bodyTemplate" [ngTemplateOutlet]="cols.bodyTemplate" [ngOutletContext]="{ $implicit: { text : rows[cols.dataIndex] }, row: rows }"></template>
-                          </div>
-                          
+                        <tr [ngClass]="{'hiderow' : !(viewRows.length > 0),'showrow' : viewRows.length > 0}">
+                            <td  [attr.colspan]="columns.length + (checkboxSelect? 1: 0)" width="100%">
+                                <div class="list-group" *ngFor="let row of viewRows;let i=index;" style="border-bottom: 1px ridge lightgray;">
+
+                 <span (click)="iconSwitch(row)" style="cursor: pointer;color: black;" data-toggle="collapse" [attr.data-target]="'#'+i" data-parent="#menu">
+                   <span [ngClass]="{'fa-caret-down':row.expanded,'fa-caret-right':!row.expanded}" class="fa " > &nbsp;&nbsp;</span>{{row.group}}<span style="float: right" class="badge">{{row.groupData.length}}</span>
+                 </span>
+
+                                    <div [attr.id]="i" class="sublinks collapse">
+
+
+                                        <table class="table table-bordered">
+                                            <tbody>
+                                            <tr *ngFor="let rows of row.groupData let rowIndex = index" (click)="rowClick(rows, rowIndex)">
+                                                <td  *ngIf="checkboxSelect"  width="5%"><input type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}" [attr.checked]="selectAll? true: null" (click)="setSelectedRow(rows, $event)"></td>
+                                                <td [attr.colspan]="columns.length-1">
+
+
+
+                                                    <div style="word-wrap: break-word" *ngFor="let cols of columns" [hidden] ="cols.hidden" >
+                                                        <b>{{cols.text}}</b> :
+                                                        <!-- If user hasnt specified customized cell use default -->
+                                                        <ng-container *ngIf="!cols?.bodyTemplate">{{rows[cols.dataIndex]}}</ng-container>
+
+                                                        <!-- else insert customized code -->
+                                                        <template *ngIf="cols.bodyTemplate" [ngTemplateOutlet]="cols.bodyTemplate" [ngOutletContext]="{ $implicit: { text : rows[cols.dataIndex] }, row: rows }"></template>
+                                                    </div>
+
+
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+
+
+                                    </div>
+
+                                </div>
+                            </td>
+
+                        </tr>
+
+                    </ng-container>
+
+
+                    <ng-container *ngIf="!groupByColumn">
+
+                        <tr [ngClass]="{'hiderow' : !(viewRows.length > 0),'showrow' : viewRows.length > 0}" style="cursor: pointer" *ngFor="let row of viewRows let rowIndex = index " (click)="rowClick(row, rowIndex)" [class.info]="isSelected(rowIndex)">
+                            <td *ngIf="checkboxSelect"  width="5%"><input type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}" [attr.checked]="selectAll? true: null" (click)="setSelectedRow(row, $event)"></td>
+                            <td>
+                                <div style="word-wrap: break-word" *ngFor="let cols of columns" [hidden] ="cols.hidden" >
+                                    <b>{{cols.text}}</b> :
+                                    <!-- If user hasnt specified customized cell use default -->
+                                    <ng-container *ngIf="!cols?.bodyTemplate">{{row[cols.dataIndex]}}</ng-container>
+
+                                    <!-- else insert customized code -->
+                                    <template *ngIf="cols.bodyTemplate" [ngTemplateOutlet]="cols.bodyTemplate" [ngOutletContext]="{ $implicit: { text : row[cols.dataIndex] }, row: row }"></template>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </ng-container>
+
+                    <tr *ngIf="viewRows.length == 0">
+                        <td [attr.colspan]="columns.length+1" style="height: 100px;" class="loading-mask">
 
                         </td>
-                      </tr>
-                      </tbody>
-                    </table>
-                    
-              
-                  </div>
-              
-                </div>
-              </td>
+                    </tr>
 
-              </tr>
-              
-            </ng-container>
-            
-            
-            <ng-container *ngIf="!groupByColumn">
+                    </tbody>
 
-              <tr [ngClass]="{'hiderow' : !(viewRows.length > 0),'showrow' : viewRows.length > 0}" style="cursor: pointer" *ngFor="let row of viewRows let rowIndex = index " (click)="rowClick(row, rowIndex)" [class.info]="isSelected(rowIndex)">
-                <td *ngIf="checkboxSelect"  width="5%"><input type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}" [attr.checked]="selectAll? true: null" (click)="setSelectedRow(row, $event)"></td>
-                <td>
-                  <div style="word-wrap: break-word" *ngFor="let cols of columns" [hidden] ="cols.hidden" >
-                    <b>{{cols.text}}</b> :
-                    <!-- If user hasnt specified customized cell use default -->
-                    <ng-container *ngIf="!cols?.bodyTemplate">{{row[cols.dataIndex]}}</ng-container>
+                </table>
+            </div>
 
-                    <!-- else insert customized code -->
-                    <template *ngIf="cols.bodyTemplate" [ngTemplateOutlet]="cols.bodyTemplate" [ngOutletContext]="{ $implicit: { text : row[cols.dataIndex] }, row: row }"></template>
-                  </div>
-                </td>
-              </tr>
+        </div>
 
-            </ng-container>
-           
-            <tr *ngIf="viewRows.length == 0">
-              <td [attr.colspan]="columns.length+1" style="height: 100px;" class="loading-mask">
 
-              </td>
-            </tr>
-           
-            </tbody>
-         
 
-        </table>
-   
-    
+
     `,
     providers : [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR, DataTableService],
     styles : [`
-    .loading-mask {
-      position: relative;
-    }
+        .wrap {
+            width: 100%;
+        }
 
-    /*
-    Because we set .loading-mask relative, we can span our ::before
-    element over the whole parent element
-    */
-    .loading-mask::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      background-color: rgba(0, 0, 0, 0.25);
-    }
+        .wrap table {
+            width: 100%;
+            table-layout: fixed;
+            margin-bottom: 1px;
+        }
 
-    /*
-    Spin animation for .loading-mask::after
-    */
-    @keyframes spin {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(359deg);
-      }
-    }
+        table tr td {
+            border: 1px solid #eee;
+            word-wrap: break-word;
+        }
 
-    /*
-    The loading throbber is a single spinning element with three
-    visible borders and a border-radius of 50%.
-    Instead of a border we could also use a font-icon or any
-    image using the content attribute.
-    */
-    .loading-mask::after {
-      content: "";
-      position: absolute;
-      border-width: 3px;
-      border-style: solid;
-      border-color: transparent rgb(255, 255, 255) rgb(255, 255, 255);
-      border-radius: 50%;
-      width: 24px;
-      height: 24px;
-      top: calc(50% - 12px);
-      left: calc(50% - 12px);
-      animation: 1s linear 0s normal none infinite running spin;
-      filter: drop-shadow(0 0 2 rgba(0, 0, 0, 0.33));
-    }
+        table.head tr td {
+            background: #eee;
+        }
 
-    .hiderow{
-      visibility: hidden
-    }
-
-    .showrow{
-      visibility: visible;
-    }
-  `]
+    `]
 })
 
-export class DataTableComponent  implements OnInit,AfterViewChecked,OnDestroy {
+export class DataTableComponent  implements OnInit,AfterViewChecked,OnDestroy,AfterViewInit {
 
     @Input()    title : string;
 
@@ -458,6 +426,41 @@ export class DataTableComponent  implements OnInit,AfterViewChecked,OnDestroy {
     }
 
     ngOnInit(){
+
+    }
+
+    ngAfterViewInit(){
+        if(this.httpMethod && this.httpUrl){
+            this.dataTableSevice.fetchData(this.httpUrl,this.httpMethod).subscribe(
+                response=>{
+                    this.responseData = response.json();
+                },
+                error=>{
+                },
+                ()=>{
+                    this.setData(this.responseData);
+                }
+            );
+        }
+        else if(this.dataTableBindData){
+            this.setData(this.dataTableBindData);
+        }
+    }
+
+
+    setHeight(){
+        let height : any;
+        if(this.height){
+            height = this.height+'px';
+        }else {
+            height = '300px';
+        }
+        let tableHeight;
+        tableHeight={
+            "height": height,
+            "overflow-y": "auto"
+        }
+        return tableHeight;
     }
 
     ngAfterViewChecked(){
@@ -535,23 +538,7 @@ export class DataTableComponent  implements OnInit,AfterViewChecked,OnDestroy {
         }
     }
 
-    ngAfterViewInit(){
-        if(this.httpMethod && this.httpUrl){
-            this.dataTableSevice.fetchData(this.httpUrl,this.httpMethod).subscribe(
-                response=>{
-                    this.responseData = response.json();
-                },
-                error=>{
-                },
-                ()=>{
-                    this.setData(this.responseData);
-                }
-            );
-        }
-        else if(this.dataTableBindData){
-            this.setData(this.dataTableBindData);
-        }
-    }
+
 
     setData(httpResponse: any){
         this.data = this.getResponseData(httpResponse);
@@ -680,9 +667,6 @@ export class DataTableComponent  implements OnInit,AfterViewChecked,OnDestroy {
         }
 
         this.selectedRowNo = -1;
-
-
-
 
     }
 
