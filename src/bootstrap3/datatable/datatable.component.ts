@@ -37,8 +37,7 @@ declare var $;
             <ng-content></ng-content>
         </div>
         <div class="wrap">
-            <table class="table table-hover table-striped table-bordered"  [attr.id]="elementId" (window:resize)="onResize($event)">
-                <thead>
+            <table class="table table-hover table-striped table-bordered"  [attr.id]="elementId" (window:resize)="onResize($event)" style="width:100%">
 
                 <tr>
                     <td [attr.colspan]="columns.length + (checkboxSelect? 1: 0)" width="100%" data align="right">
@@ -105,16 +104,41 @@ declare var $;
                     </span>
                     </td>
                 </tr>
+
+
+
+                <!--filtering changes-->
+                <!--  <tr>
+                    <td *ngIf="checkboxSelect" style="width: 10%;"> <input type="checkbox" (click)="selectAllVisibleRows()" ></td>
+                    <td *ngFor="let cols of columns let index=index" [hidden]="cols.hidden">
+                      <filter-component [column]="cols"></filter-component>
+                     
+                     
+                    </td>
+                  </tr>-->
+
+                <ng-container *ngIf="!groupByColumn">
+                    <tr  *ngIf="!smallScreen">
+                        <td *ngIf="checkboxSelect"  width="5%"></td>
+                        <td *ngFor="let cols of columns let colIndex = index " [hidden] ="cols.hidden" >
+                            <b>{{summaryData[colIndex]}}</b>
+                        </td>
+                    </tr>
+                </ng-container>
+
+            </table>
+
+            <table class="table table-hover table-striped table-bordered ">
+
                 <tr *ngIf="!smallScreen">
-                    <td *ngIf="checkboxSelect" width="5%"><input type="checkbox" (click)="selectAllVisibleRows()" ></td>
-                    <td *ngFor="let cols of columns" [hidden]="cols.hidden" >
-                        <!-- Column Header -->
-                        <span style="cursor: pointer;" (click)="sortOnColHeaderClick(cols)">
+                    <td *ngIf="checkboxSelect" style="width: 10%;"> <input type="checkbox" (click)="selectAllVisibleRows()" ></td>
+                    <td *ngFor="let cols of columns let index=index" [hidden]="cols.hidden">
+              <span style="cursor: pointer;" (click)="sortOnColHeaderClick(cols)">
                         
                         <!-- If user hasnt embedded view -->
                         <ng-container *ngIf="!cols?.headerTemplate"><b>{{cols.text}}</b></ng-container>
 
-                            <!--Check if user has embedded view inserted then -->
+                  <!--Check if user has embedded view inserted then -->
                         <ng-template *ngIf="cols?.headerTemplate" [ngTemplateOutlet]="cols?.headerTemplate" [ngOutletContext]="{ $implicit: { header: cols.text } }"></ng-template>
                       </span>
 
@@ -133,18 +157,9 @@ declare var $;
                       </span>
                     </td>
                 </tr>
-
-                <ng-container *ngIf="!groupByColumn">
-                    <tr  *ngIf="!smallScreen">
-                        <td *ngIf="checkboxSelect"  width="5%"></td>
-                        <td *ngFor="let cols of columns let colIndex = index " [hidden] ="cols.hidden" >
-                            <b>{{summaryData[colIndex]}}</b>
-                        </td>
-                    </tr>
-                </ng-container>
-
-                </thead>
             </table>
+
+
 
             <div [ngStyle]="setHeight()">
 
@@ -164,7 +179,7 @@ declare var $;
                                     <table class="table table-bordered">
                                         <tbody>
                                         <tr *ngFor="let rows of row.groupData let rowIndex = index" (click)="rowClick(rows, rowIndex)">
-                                            <td *ngIf="checkboxSelect"  width="5%"><input type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}" [attr.checked]="selectAll? true: null" (click)="setSelectedRow(rows, $event)"></td>
+                                            <td *ngIf="checkboxSelect" style="width: 10%"><input type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}" [attr.checked]="selectAll? true: null" (click)="setSelectedRow(rows, $event)"></td>
                                             <td *ngFor="let cols of columns" [hidden] ="cols.hidden">
 
                                                 <!-- If user hasnt specified customized cell use default -->
@@ -194,9 +209,10 @@ declare var $;
                     </ng-container>
                     <ng-container *ngIf="!groupByColumn">
                         <tr [ngClass]="{'hiderow' : !(viewRows.length > 0),'showrow' : viewRows.length > 0}"  style="cursor: pointer;" *ngFor="let row of viewRows let rowIndex = index " (click)="rowClick(row, rowIndex)" [class.info]="isSelected(rowIndex)">
-                            <td *ngIf="checkboxSelect"  width="5%"><input type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}" [attr.checked]="selectAll? true: null" (click)="setSelectedRow(row, $event)"></td>
+                            <td *ngIf="checkboxSelect"  style="width: 10%"><input type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}" [attr.checked]="selectAll? true: null" (click)="setSelectedRow(row, $event)"></td>
 
-                            <td *ngFor="let cols of columns" [hidden] ="cols.hidden" >
+                            <td *ngFor="let cols of columns let index=index" [hidden] ="cols.hidden" >
+
 
                                 <!-- If user hasnt specified customized cell use default -->
                                 <ng-container *ngIf="!cols?.bodyTemplate">{{row[cols.dataIndex]}}</ng-container>
@@ -235,7 +251,7 @@ declare var $;
                                         <table class="table table-bordered">
                                             <tbody>
                                             <tr *ngFor="let rows of row.groupData let rowIndex = index" (click)="rowClick(rows, rowIndex)">
-                                                <td  *ngIf="checkboxSelect"  width="5%"><input type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}" [attr.checked]="selectAll? true: null" (click)="setSelectedRow(rows, $event)"></td>
+                                                <td  *ngIf="checkboxSelect"  style="width: 10%"><input type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}" [attr.checked]="selectAll? true: null" (click)="setSelectedRow(rows, $event)"></td>
                                                 <td [attr.colspan]="columns.length-1">
 
 
@@ -269,7 +285,7 @@ declare var $;
                     <ng-container *ngIf="!groupByColumn">
 
                         <tr [ngClass]="{'hiderow' : !(viewRows.length > 0),'showrow' : viewRows.length > 0}" style="cursor: pointer" *ngFor="let row of viewRows let rowIndex = index " (click)="rowClick(row, rowIndex)" [class.info]="isSelected(rowIndex)">
-                            <td *ngIf="checkboxSelect"  width="5%"><input type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}" [attr.checked]="selectAll? true: null" (click)="setSelectedRow(row, $event)"></td>
+                            <td *ngIf="checkboxSelect" style="width: 10%"><input type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}" [attr.checked]="selectAll? true: null" (click)="setSelectedRow(row, $event)"></td>
                             <td>
                                 <div style="word-wrap: break-word" *ngFor="let cols of columns" [hidden] ="cols.hidden" >
                                     <b>{{cols.text}}</b> :
@@ -315,6 +331,7 @@ declare var $;
 
         table tr td {
             border: 1px solid #eee;
+            width: 90%;
             word-wrap: break-word;
         }
 
@@ -403,7 +420,11 @@ export class DataTableComponent  implements OnInit,AfterViewChecked,OnDestroy,Af
 
     dropdownData : any;
 
+    filterData: any;
+
     responseData : any;
+
+    testdata : any;
 
 
     @ContentChildren(ColumnComponent) columnRef : QueryList<ColumnComponent>;
@@ -425,6 +446,14 @@ export class DataTableComponent  implements OnInit,AfterViewChecked,OnDestroy,Af
 
     }
 
+    setFilterData(){
+        debugger;
+        console.log(this.testdata);
+        this.data.forEach((option)=>{
+            option.latitude===this.testdata;
+            this.viewRows.push(option);
+        })
+    }
     ngOnInit(){
 
     }
@@ -452,8 +481,6 @@ export class DataTableComponent  implements OnInit,AfterViewChecked,OnDestroy,Af
         let height : any;
         if(this.height){
             height = this.height+'px';
-        }else {
-            height = '300px';
         }
         let tableHeight;
         tableHeight={
@@ -493,6 +520,18 @@ export class DataTableComponent  implements OnInit,AfterViewChecked,OnDestroy,Af
                 "data":this.columns
             }
         };
+        this.filterData={
+            "response":{
+                "data":[
+                    {
+                        "filterName":"Is Equal To"
+                    },
+                    {
+                        "filterName":"Is Not Equal To"
+                    }
+                ]
+            }
+        }
     }
 
     createColumnConfig(){
