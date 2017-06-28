@@ -192,7 +192,7 @@ export class TreeViewComponent implements  OnInit{
             this.setData(this.dataTableBindData);
         }
 
-        if(this.parentTmp != null){
+        if(this.parentTmp!=null){
             this.templates = {treeNodeTemplate : this.parentTmp};
         }
         else if(this.templates != null){
