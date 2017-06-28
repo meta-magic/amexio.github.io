@@ -13,9 +13,10 @@
 
 ## Installation
 
-To install this library, run:
+To install this library, follow the steps given below:
 
 ```bash
+$ cd your-angular-project
 $ npm install amexio-ng-extensions --save
 ```
 
