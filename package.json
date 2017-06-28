@@ -27,7 +27,7 @@
     "typescript",
     "angular4"
   ],
-  "license": "MIT",
+  "license": "Apache 2.0",
   "bugs": {
     "url": "https://github.com/meta-magic/amexio.github.io/issues"
   },
