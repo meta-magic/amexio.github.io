@@ -29,7 +29,7 @@ declare var $;
                       <span class="glyphicon glyphicon-filter" aria-hidden="true"></span>
                   </button>
                   <ul class="dropdown-menu">
-                      <li *ngFor="let opt of filterOptions"><a href="#"  (click)="selectedOption(column,opt)">{{opt.key}}</a></li>
+                      <li *ngFor="let opt of filterOptions"><a (click)="selectedOption(column,opt)">{{opt.key}}</a></li>
                   </ul>
               </div>
           </div>
