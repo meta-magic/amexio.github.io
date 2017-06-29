@@ -14,7 +14,6 @@
 import {Input, OnInit, forwardRef, Component, AfterViewInit} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {FormInputBase} from "../baseclass/form.base.class";
-import {isNull} from "util";
 declare var $;
 
 const noop = () => {
