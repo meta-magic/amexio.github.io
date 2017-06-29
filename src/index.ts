@@ -29,13 +29,17 @@ import {ButtonDropdownComponent} from "./bootstrap3/buttondropdown/button.dropdo
 import {ItemComponent} from "./bootstrap3/buttondropdown/dropdown.item.component";
 import {ButtonComponent} from "./bootstrap3/button/button.component";
 import {ItemSelectorComponent} from "./bootstrap3/itemselector/itemselector.component";
+import {FilterComponent} from "./bootstrap3/datatable/filter-directive";
+import {FilterTreeViewComponent} from "./bootstrap3/treeview/filtertreeview";
 
 
 export * from './bootstrap3/textinput/textinput.component';
+
 export * from './bootstrap3/baseclass/form.base.class';
 
 export * from './bootstrap3/treeview/treeview.component';
 export * from './bootstrap3/treeview/treeview.service';
+export * from './bootstrap3/treeview/filtertreeview';
 
 export * from './bootstrap3/treedatatable/treedatatable.component';
 export * from './bootstrap3/treedatatable/treedatatable.service';
@@ -74,6 +78,7 @@ export * from './bootstrap3/datetimepicker/datetimepicker.component';
 export * from './bootstrap3/datatable/datatable.component';
 export * from './bootstrap3/datatable/column.component';
 export * from './bootstrap3/datatable/datatable.service';
+export * from './bootstrap3/datatable/filter-directive';
 
 export * from './bootstrap3/checkgroup/checkbox.component';
 export * from './bootstrap3/checkgroup/checkbox.service';
@@ -125,7 +130,9 @@ export * from './bootstrap3/itemselector/itemselector.component';
     ButtonDropdownComponent,
     ItemComponent,
     ButtonComponent,
-    ItemSelectorComponent
+    ItemSelectorComponent,
+    FilterComponent,
+    FilterTreeViewComponent
   ],
   exports: [
     TextInputComponent,
@@ -153,7 +160,9 @@ export * from './bootstrap3/itemselector/itemselector.component';
     ButtonDropdownComponent,
     ItemComponent,
     ButtonComponent,
-    ItemSelectorComponent
+    ItemSelectorComponent,
+    FilterComponent,
+    FilterTreeViewComponent
   ]
 })
 export class AmexioWidgetModule {

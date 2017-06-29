@@ -107,25 +107,27 @@ declare var $;
 
 
 
-                <!--filtering changes-->
-                <!--  <tr>
-                    <td *ngIf="checkboxSelect" style="width: 10%;"> <input type="checkbox" (click)="selectAllVisibleRows()" ></td>
-                    <td *ngFor="let cols of columns let index=index" [hidden]="cols.hidden">
-                      <filter-component [column]="cols"></filter-component>
-                     
-                     
-                    </td>
-                  </tr>-->
 
-                <ng-container *ngIf="!groupByColumn">
-                    <tr  *ngIf="!smallScreen">
-                        <td *ngIf="checkboxSelect"  width="5%"></td>
-                        <td *ngFor="let cols of columns let colIndex = index " [hidden] ="cols.hidden" >
+
+                <!--      <ng-container *ngIf="!groupByColumn">
+                        <tr  *ngIf="!smallScreen">
+                          <td *ngIf="checkboxSelect"  width="5%"></td>
+                          <td *ngFor="let cols of columns let colIndex = index " [hidden] ="cols.hidden" >
                             <b>{{summaryData[colIndex]}}</b>
-                        </td>
-                    </tr>
-                </ng-container>
+                          </td>
+                        </tr>
+                      </ng-container>-->
 
+            </table>
+            <!--filtering changes-->
+            <table class="table table-hover table-striped table-bordered ">
+                <tr *ngIf="filtering && !groupByColumn">
+                    <td *ngIf="checkboxSelect" style="width: 10%;"></td>
+                    <td *ngFor="let cols of columns let index=index" [hidden]="cols.hidden">
+                        <filter-component [column]="cols" (filterObject)="getFilteredData($event)"></filter-component>
+
+                    </td>
+                </tr>
             </table>
 
             <table class="table table-hover table-striped table-bordered ">
@@ -382,6 +384,9 @@ export class DataTableComponent  implements OnInit,AfterViewChecked,OnDestroy,Af
     @Input()
     groupByColumnIndex : string;
 
+    @Input()
+    filtering:boolean;
+
     columns : any[];
 
     data : any[];
@@ -420,11 +425,10 @@ export class DataTableComponent  implements OnInit,AfterViewChecked,OnDestroy,Af
 
     dropdownData : any;
 
-    filterData: any;
-
     responseData : any;
 
-    testdata : any;
+    filterCloneData : any;
+
 
 
     @ContentChildren(ColumnComponent) columnRef : QueryList<ColumnComponent>;
@@ -446,14 +450,6 @@ export class DataTableComponent  implements OnInit,AfterViewChecked,OnDestroy,Af
 
     }
 
-    setFilterData(){
-        debugger;
-        console.log(this.testdata);
-        this.data.forEach((option)=>{
-            option.latitude===this.testdata;
-            this.viewRows.push(option);
-        })
-    }
     ngOnInit(){
 
     }
@@ -515,23 +511,15 @@ export class DataTableComponent  implements OnInit,AfterViewChecked,OnDestroy,Af
 
             this.summary.push({summaryType: column.summaryType, summaryCaption : column.summaryCaption, data:[]});
         }
+
+
+
         this.dropdownData={
             "response":{
                 "data":this.columns
             }
         };
-        this.filterData={
-            "response":{
-                "data":[
-                    {
-                        "filterName":"Is Equal To"
-                    },
-                    {
-                        "filterName":"Is Not Equal To"
-                    }
-                ]
-            }
-        }
+
     }
 
     createColumnConfig(){
@@ -566,6 +554,11 @@ export class DataTableComponent  implements OnInit,AfterViewChecked,OnDestroy,Af
             this.columns.push(columnData);
         }
 
+        /*------For column filtering icon switch--------*/
+        this.columns.forEach((opt)=>{
+            opt['filterIcon']=false;
+        });
+
     }
 
     ngOnChanges(change : SimpleChanges){
@@ -597,6 +590,10 @@ export class DataTableComponent  implements OnInit,AfterViewChecked,OnDestroy,Af
         for(let pageNo = 1; pageNo<=this.maxPage; pageNo++)
         {
             this.pageNumbers.push(pageNo);
+        }
+
+        if(this.filtering){
+            this.filterCloneData = JSON.parse(JSON.stringify(this.data));
         }
 
         this.createSummaryData();
@@ -685,7 +682,7 @@ export class DataTableComponent  implements OnInit,AfterViewChecked,OnDestroy,Af
         if(this.pageSize > 1){
             let rowsTemp = this.data;
             let newRows = [];
-            let startIndex = 1;
+            let startIndex = 0;
             let endIndex = this.pageSize;
             if(this.currentPage>1){
                 startIndex  = (this.currentPage-1) * this.pageSize;
@@ -718,6 +715,7 @@ export class DataTableComponent  implements OnInit,AfterViewChecked,OnDestroy,Af
                 sortColDataIndex = dataIndex;
 
                 if(this.sortColumn.dataType == 'string'){
+
                     if(this.groupByColumn){
                         this.data.sort(function(a,b){
                             let x = a.group.toLowerCase();
@@ -755,6 +753,7 @@ export class DataTableComponent  implements OnInit,AfterViewChecked,OnDestroy,Af
 
                 else if(this.sortColumn.dataType == 'number'){
 
+
                     if(this.groupByColumn){
                         this.data.sort(function(a,b){
                             let  x = a.group;
@@ -783,7 +782,10 @@ export class DataTableComponent  implements OnInit,AfterViewChecked,OnDestroy,Af
             }
         }
 
+
         this.renderData();
+
+
     }
 
     next(){
@@ -913,4 +915,46 @@ export class DataTableComponent  implements OnInit,AfterViewChecked,OnDestroy,Af
         groupData.expanded =!groupData.expanded;
 
     }
+
+
+    getFilteredData(filteredObj :any){
+        let status :boolean=false;
+        if(filteredObj.length>0){
+            this.data=[];
+            this.filterCloneData.forEach((option)=>{
+                status = this.filterOpertion(option,filteredObj);
+                if(status){
+                    this.data.push(option);
+                    status=false;
+                }
+            });
+            this.renderData();
+        } else {
+            this.data=this.filterCloneData;
+            this.renderData();
+        }
+
+    }
+
+
+    filterOpertion(data : any,filteredObj : any){
+        let statusArray : any=[];
+        let condition : any;
+        filteredObj.forEach((filterOpt)=>{
+            if(filterOpt.filter=='=='){
+                condition = data[filterOpt.key] == filterOpt.value;
+                statusArray.push(condition);
+            }else if(filterOpt.filter=='!='){
+                condition = data[filterOpt.key] != filterOpt.value;
+                statusArray.push(condition);
+            }
+        });
+        statusArray.forEach((opt)=>{
+            if(opt==false){
+                condition =false;
+            }
+        });
+        return condition;
+    }
+
 }

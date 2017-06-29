@@ -21,6 +21,7 @@ export class DataTableService {
 
     responseData : any;
     parentRef : any;
+    filteredObject : any = [];
 
     constructor(private _http : Http){
 
