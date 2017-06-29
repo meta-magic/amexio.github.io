@@ -41,6 +41,8 @@ import {Http, Headers, RequestOptions} from "@angular/http";
         
         <amexio-tree-view
            [dataTableBindData]="treeData"
+           [enableCheckBox] ="'true'" 
+           (onTreeNodeChecked) = "onCheckSelect($event)"  
            (selectedRecord)="onRowSelect($event)" [templates]="templates">
         </amexio-tree-view>
       </div>
@@ -62,6 +64,11 @@ export class FilterTreeViewComponent implements OnInit{
 
   @Input()
   dataTableBindData: any;
+
+  @Output()
+  selectedRecord : any = new EventEmitter<any>();
+
+  @Output() onTreeNodeChecked : any = new EventEmitter<any>();
 
   treeData : any;
 
@@ -99,7 +106,6 @@ export class FilterTreeViewComponent implements OnInit{
       //this.cdf.detectChanges();
     }
 
-    debugger;
     if(this.httpMethod && this.httpUrl) {
       this.callService();
     } else if(this.dataTableBindData){
@@ -206,5 +212,11 @@ export class FilterTreeViewComponent implements OnInit{
     }
   }
 
+  onRowSelect(data : any){
+    this.selectedRecord.emit(data);
+  }
 
+  onCheckSelect(data : any){
+    this.onTreeNodeChecked.emit(data);
+  }
 }
