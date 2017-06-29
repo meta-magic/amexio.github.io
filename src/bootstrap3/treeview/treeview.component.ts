@@ -253,23 +253,47 @@ export class TreeViewComponent implements  OnInit{
 
     emitCheckedData(checkedData :any){
         checkedData.checked = !checkedData.checked;
-        if(checkedData.hasOwnProperty('children')){
-            checkedData.children.forEach((option)=>{
-                option.checked = !option.checked;
-                if(option.hasOwnProperty('children')){
-                    this.searchObject(option);
-                }
-            });
+
+        if(checkedData.checked){
+            if(checkedData.hasOwnProperty('children')){
+                checkedData.children.forEach((option)=>{
+                    option.checked = true;
+                    if(option.hasOwnProperty('children')){
+                        this.setCheckedStatusFromParent(option);
+                    }
+                });
+            }
+            this.onTreeNodeChecked.emit(this.data)
         }
-        this.onTreeNodeChecked.emit(this.data)
+        else {
+            if(checkedData.hasOwnProperty('children')){
+                checkedData.children.forEach((option)=>{
+                    option.checked = false;
+                    if(option.hasOwnProperty('children')){
+                        this.searchObject(option);
+                    }
+                });
+            }
+            this.onTreeNodeChecked.emit(this.data)
+        }
+
     }
 
 
     searchObject(object : any){
         object.children.forEach((childOption)=>{
-            childOption.checked = !childOption.checked;
+            childOption.checked = false;
             if(childOption.hasOwnProperty('children')){
                 this.searchObject(childOption);
+            }
+        })
+    }
+
+    setCheckedStatusFromParent(object : any){
+        object.children.forEach((childOption)=>{
+            childOption.checked = true;
+            if(childOption.hasOwnProperty('children')){
+                this.setCheckedStatusFromParent(childOption);
             }
         })
     }
