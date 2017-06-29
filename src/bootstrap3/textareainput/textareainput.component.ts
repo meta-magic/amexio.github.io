@@ -11,10 +11,10 @@
  *
  */
 
-import {Input, OnInit, forwardRef, Component} from "@angular/core";
+import {Input, OnInit, forwardRef, Component, AfterViewInit} from "@angular/core";
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {FormInputBase} from "../baseclass/form.base.class";
-
+declare var $;
 const noop = () => {
 };
 
@@ -57,7 +57,7 @@ export const BASE_IMPL_TEXTAREA_INPUT : any = {
                   [required]="allowBlank ? true: null"
                   [attr.data-error]="errorMsg"
                   [attr.aria-describedby]="spanId"
-                  data-toggle="popover" title="Info" data-placement="bottom"  data-trigger="focus"  data-html="true"  [attr.data-content]="helpInfoMsg"
+                  data-toggle="popover" title="Info" [attr.data-placement]="popoverPlacement"  data-trigger="focus"  data-html="true"  [attr.data-content]="helpInfoMsg"
 
         >
 
@@ -79,7 +79,7 @@ export const BASE_IMPL_TEXTAREA_INPUT : any = {
     providers : [CUSTOM_TEXT_AREA_INPUT_CONTROL_VALUE_ACCESSOR,BASE_IMPL_TEXTAREA_INPUT]
 })
 
-export class TextAreaComponent extends FormInputBase implements OnInit,ControlValueAccessor {
+export class TextAreaComponent extends FormInputBase implements OnInit,ControlValueAccessor,AfterViewInit {
 
     @Input()    fieldLabel : string;
 
@@ -110,6 +110,8 @@ export class TextAreaComponent extends FormInputBase implements OnInit,ControlVa
     @Input()   hasLabel : boolean = true;
 
     @Input()   pattern : string;
+
+    @Input()   popoverPlacement : string;
 
     elementId: string;
 
@@ -153,7 +155,13 @@ export class TextAreaComponent extends FormInputBase implements OnInit,ControlVa
         if(this.pattern !=null){
             this.regEx = new RegExp(this.pattern);
         }
+        if(this.popoverPlacement == null){
+            this.popoverPlacement = 'bottom';
+        }
+    }
 
+    ngAfterViewInit(){
+        $('[data-toggle="popover"]').popover();
     }
 
     //The internal dataviews model

@@ -10,9 +10,9 @@
  * Author - Ketan Gote, Pratik Kelwalkar, Dattaram Gawas
  *
  */
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 
-
+declare var $;
 @Component({
   selector: 'amexio-btn',
   template : `
@@ -21,7 +21,7 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges
                   [class]="btnStyleClass"
                   [attr.fieldName] = "fieldName"
                   [attr.disabled] = "disabled ? true: null"
-                  data-toggle="tooltip" data-placement="bottom" [attr.title]="tooltipMessage"
+                  data-toggle="tooltip" [attr.data-placement]="popoverPlacement" [attr.title]="tooltipMessage"
           >
               <ng-container *ngIf="isLoading">
                   <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>&nbsp;&nbsp;&nbsp;
@@ -51,7 +51,7 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges
 }`
   ]
 })
-export class ButtonComponent implements OnInit , OnChanges {
+export class ButtonComponent implements OnInit , OnChanges,AfterViewInit {
 
   @Input()    label : string;
 
@@ -72,6 +72,8 @@ export class ButtonComponent implements OnInit , OnChanges {
   @Input()    block : boolean;
 
   @Input()    fieldName : string;
+
+  @Input()   popoverPlacement : string;
 
   btnStyleClass : string;
 
@@ -121,6 +123,10 @@ export class ButtonComponent implements OnInit , OnChanges {
       this.btnStyleClass = this.btnStyleClass.concat(' btn-block');
     }
 
+      if(this.popoverPlacement == null){
+          this.popoverPlacement = 'bottom';
+      }
+
   }
 
   ngOnChanges(change : SimpleChanges){
@@ -130,8 +136,9 @@ export class ButtonComponent implements OnInit , OnChanges {
       }*/ //TODO : Fix
   }
 
-  ngAfterViewInit(){
-  }
+    ngAfterViewInit(){
+        $('[data-toggle="popover"]').popover();
+    }
 
   btnClick(event : any){
     this.onClick.emit(event);

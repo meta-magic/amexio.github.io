@@ -11,9 +11,9 @@
  *
  */
 
-import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from '@angular/core';
+import {AfterContentInit, AfterViewInit, Component, ContentChildren, Input, OnInit, QueryList} from '@angular/core';
 import {ButtonGroupActionComponent} from "./buttongroup.action.component";
-
+declare var $;
 @Component({
   selector: 'amexio-btn-group',
   template:`    
@@ -22,7 +22,7 @@ import {ButtonGroupActionComponent} from "./buttongroup.action.component";
                 [class]="data.btnStyleClass"
                 [attr.fieldName] = "data.fieldName"
                 [attr.disabled] = "data.disabled ? true: null"
-                data-toggle="tooltip" data-placement="bottom" [attr.title]="data.tooltipMessage"
+                data-toggle="tooltip" [attr.data-placement]="popoverPlacement" [attr.title]="data.tooltipMessage"
         >
           <ng-container *ngIf="data.isLoading">
             <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>&nbsp;&nbsp;&nbsp;
@@ -37,7 +37,7 @@ import {ButtonGroupActionComponent} from "./buttongroup.action.component";
   `,
 
 })
-export class ButtonGroupComponent implements OnInit,AfterContentInit {
+export class ButtonGroupComponent implements OnInit,AfterContentInit,AfterViewInit {
 
   @Input()    size : string;
 
@@ -47,9 +47,15 @@ export class ButtonGroupComponent implements OnInit,AfterContentInit {
 
   buttonData : any[];
 
+  @Input()   popoverPlacement : string;
+
   @ContentChildren(ButtonGroupActionComponent) buttonComponentRef : QueryList<ButtonGroupActionComponent>;
   constructor() {
     this.elementId = 'button-group' + new Date().getTime() + Math.random();
+  }
+
+  ngAfterViewInit(){
+    $('[data-toggle="popover"]').popover();
   }
 
   ngAfterContentInit() {
@@ -65,7 +71,9 @@ export class ButtonGroupComponent implements OnInit,AfterContentInit {
       else if(this.size == 'xsmall')
         this.btnGroupStyleClass = this.btnGroupStyleClass.concat(' btn-group-xs');
     }
-
+    if(this.popoverPlacement == null){
+      this.popoverPlacement = 'bottom';
+    }
   }
 
   createConfig(){

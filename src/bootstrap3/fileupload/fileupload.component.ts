@@ -12,10 +12,10 @@
  */
 
 
-import {Component, forwardRef, Input, OnInit} from '@angular/core';
+import {AfterViewInit, Component, forwardRef, Input, OnInit} from '@angular/core';
 import {FileUploadService} from "./fileupload.service";
 import {FormInputBase} from "../baseclass/form.base.class";
-
+declare var $;
 export const BASE_IMPL_FILEUPLOAD_INPUT : any = {
   provide : FormInputBase,
   useExisting: forwardRef(() => FileuploadComponent)
@@ -28,7 +28,7 @@ export const BASE_IMPL_FILEUPLOAD_INPUT : any = {
           <input type="text" readonly
                  autocomplete="off"
                  class="form-control"
-                 data-placement="bottom"  data-trigger="focus" data-html="true" [attr.value]="fileName+'  '+fileSize">
+                 [attr.data-placement]="popoverPlacement"  data-trigger="focus" data-html="true" [attr.value]="fileName+'  '+fileSize">
       </div>
       <div class="col-lg-3">
           <label class="btn btn-primary btn-file">
@@ -38,7 +38,7 @@ export const BASE_IMPL_FILEUPLOAD_INPUT : any = {
   `,
   providers : [BASE_IMPL_FILEUPLOAD_INPUT,FileUploadService]
 })
-export class FileuploadComponent extends FormInputBase implements OnInit {
+export class FileuploadComponent extends FormInputBase implements OnInit,AfterViewInit {
 
   @Input()    fieldLabel : string;
 
@@ -50,6 +50,8 @@ export class FileuploadComponent extends FormInputBase implements OnInit {
 
   @Input()   multipleFile : string;
 
+  @Input()   popoverPlacement : string;
+
   fileSize    : string = '';
 
   fileName : string = '';
@@ -59,7 +61,14 @@ export class FileuploadComponent extends FormInputBase implements OnInit {
   }
 
   ngOnInit() {
+      if(this.popoverPlacement == null){
+          this.popoverPlacement = 'bottom';
+      }
   }
+
+    ngAfterViewInit(){
+        $('[data-toggle="popover"]').popover();
+    }
 
   uploadFile(event : any) {
     let fileList: FileList = event.target.files;

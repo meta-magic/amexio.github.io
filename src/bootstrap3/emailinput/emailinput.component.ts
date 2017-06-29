@@ -14,7 +14,7 @@
 import {Input, OnInit, forwardRef, Component, AfterViewInit} from "@angular/core";
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {FormInputBase} from "../baseclass/form.base.class";
-
+declare var $;
 const noop = () => {
 };
 
@@ -57,7 +57,7 @@ declare var $ : any;
                    [required]="allowBlank ? true: null"
                    [attr.data-error]="errorMsg"
                    [attr.aria-describedby]="spanId"
-                   data-toggle="popover" title="Info" data-placement="bottom"  data-trigger="focus"  data-html="true"  [attr.data-content]="helpInfoMsg"
+                   data-toggle="popover" title="Info" [attr.data-placement]="popoverPlacement"  data-trigger="focus"  data-html="true"  [attr.data-content]="helpInfoMsg"
             >
 
             <ng-container *ngIf="iconFeedBack">
@@ -102,6 +102,8 @@ export class EmailInputComponent extends FormInputBase implements OnInit,AfterVi
 
     @Input()   pattern : string;
 
+    @Input()   popoverPlacement : string;
+
     elementId: string;
 
     spanId : string;
@@ -140,9 +142,12 @@ export class EmailInputComponent extends FormInputBase implements OnInit,AfterVi
         if(this.pattern !=null){
             this.regEx = new RegExp(this.pattern);
         }
+        if(this.popoverPlacement == null){
+            this.popoverPlacement = 'bottom';
+        }
     }
-    ngAfterViewInit(): void {
-      $('[data-toggle="popover"]').popover();
+    ngAfterViewInit(){
+        $('[data-toggle="popover"]').popover();
     }
 
     //The internal dataviews model

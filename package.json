@@ -1,6 +1,6 @@
 {
   "name": "amexio-ng-extensions",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "scripts": {
     "build": "gulp build",
     "build:watch": "gulp",
@@ -25,7 +25,8 @@
     "ng2-bootstrap",
     "bootstrap",
     "typescript",
-    "angular4"
+    "angular4",
+    "metamagic"
   ],
   "license": "Apache-2.0",
   "bugs": {

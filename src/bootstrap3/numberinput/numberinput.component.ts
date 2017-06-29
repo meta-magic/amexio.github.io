@@ -14,7 +14,7 @@
 import {Input, OnInit, forwardRef, Component, AfterViewInit} from "@angular/core";
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {FormInputBase} from "../baseclass/form.base.class";
-
+declare var $;
 const noop = () => {
 };
 
@@ -58,7 +58,7 @@ declare var $ : any;
                    [required]="allowBlank ? true: null"
                    [attr.data-error]="errorMsg"
                    [attr.aria-describedby]="spanId"
-                   data-toggle="popover" title="Info" data-placement="bottom"  data-trigger="focus"  data-html="true"  [attr.data-content]="helpInfoMsg"
+                   data-toggle="popover" title="Info" [attr.data-placement]="popoverPlacement"  data-trigger="focus"  data-html="true"  [attr.data-content]="helpInfoMsg"
             >
 
 
@@ -80,7 +80,7 @@ declare var $ : any;
     providers : [CUSTOM_NUMBER_INPUT_CONTROL_VALUE_ACCESSOR,BASE_IMPL_NUMBER_INPUT]
 })
 
-export class NumberInputComponent extends FormInputBase implements OnInit,AfterViewInit,ControlValueAccessor {
+export class NumberInputComponent extends FormInputBase implements OnInit,AfterViewInit,ControlValueAccessor,AfterViewInit {
 
     @Input()    fieldLabel : string;
 
@@ -115,6 +115,8 @@ export class NumberInputComponent extends FormInputBase implements OnInit,AfterV
     @Input()   hasLabel : boolean = true;
 
     @Input()   pattern : string;
+
+    @Input()   popoverPlacement : string;
 
     elementId: string;
 
@@ -163,9 +165,12 @@ export class NumberInputComponent extends FormInputBase implements OnInit,AfterV
         if(this.pattern !=null){
             this.regEx = new RegExp(this.pattern);
         }
+        if(this.popoverPlacement == null){
+            this.popoverPlacement = 'bottom';
+        }
 
     }
-      ngAfterViewInit(): void {
+      ngAfterViewInit() {
         $('[data-toggle="popover"]').popover();
       }
 
