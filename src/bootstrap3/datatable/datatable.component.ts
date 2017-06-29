@@ -942,10 +942,19 @@ export class DataTableComponent  implements OnInit,AfterViewChecked,OnDestroy,Af
         let condition : any;
         filteredObj.forEach((filterOpt)=>{
             if(filterOpt.filter=='=='){
-                condition = data[filterOpt.key] == filterOpt.value;
+                if(filterOpt.type=='number'){
+                    condition = data[filterOpt.key] == filterOpt.value;
+                }else {
+                    condition = data[filterOpt.key].toLowerCase() == filterOpt.value.toLowerCase();
+                }
+
                 statusArray.push(condition);
             }else if(filterOpt.filter=='!='){
-                condition = data[filterOpt.key] != filterOpt.value;
+                if(filterOpt.type=='number'){
+                    condition = data[filterOpt.key] != filterOpt.value;
+                }else {
+                    condition = data[filterOpt.key].toLowerCase() != filterOpt.value.toLowerCase();
+                }
                 statusArray.push(condition);
             }
         });
