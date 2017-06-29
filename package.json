@@ -1,6 +1,6 @@
 {
   "name": "amexio-ng-extensions",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "scripts": {
     "build": "gulp build",
     "build:watch": "gulp",
@@ -27,7 +27,7 @@
     "typescript",
     "angular4"
   ],
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/meta-magic/amexio.github.io/issues"
   },
