@@ -122,11 +122,20 @@ declare var $;
             <!--filtering changes-->
             <table class="table table-hover table-striped table-bordered ">
                 <tr *ngIf="filtering && !groupByColumn">
-                    <td *ngIf="checkboxSelect" style="width: 10%;"></td>
-                    <td *ngFor="let cols of columns let index=index" [hidden]="cols.hidden">
-                        <filter-component [column]="cols" (filterObject)="getFilteredData($event)"></filter-component>
+                    <ng-container *ngIf="!smallScreen">
+                        <td *ngIf="checkboxSelect" style="width: 10%;"></td>
+                        <td *ngFor="let cols of columns let index=index" [hidden]="cols.hidden">
+                            <filter-component [column]="cols"  (filterObject)="getFilteredData($event)"></filter-component>
+                        </td>
+                    </ng-container>
+                    <ng-container *ngIf="smallScreen">
+                        <td >
+                            <div style="word-wrap: break-word" *ngFor="let cols of columns" [hidden] ="cols.hidden" >
+                                <filter-component [column]="cols"  (filterObject)="getFilteredData($event)"></filter-component>
+                            </div>
+                        </td>
 
-                    </td>
+                    </ng-container>
                 </tr>
             </table>
 
@@ -210,6 +219,10 @@ declare var $;
 
                     </ng-container>
                     <ng-container *ngIf="!groupByColumn">
+                        <tr *ngIf="viewRows.length==0">
+                            <td style="width: 100%">
+                                <span>No Records Found</span>
+                            </td></tr>
                         <tr [ngClass]="{'hiderow' : !(viewRows.length > 0),'showrow' : viewRows.length > 0}"  style="cursor: pointer;" *ngFor="let row of viewRows let rowIndex = index " (click)="rowClick(row, rowIndex)" [class.info]="isSelected(rowIndex)">
                             <td *ngIf="checkboxSelect"  style="width: 10%"><input type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}" [attr.checked]="selectAll? true: null" (click)="setSelectedRow(row, $event)"></td>
 
@@ -285,6 +298,10 @@ declare var $;
 
 
                     <ng-container *ngIf="!groupByColumn">
+                        <tr *ngIf="viewRows.length==0">
+                            <td style="width: 100%">
+                                <span>No Records Found</span>
+                            </td></tr>
 
                         <tr [ngClass]="{'hiderow' : !(viewRows.length > 0),'showrow' : viewRows.length > 0}" style="cursor: pointer" *ngFor="let row of viewRows let rowIndex = index " (click)="rowClick(row, rowIndex)" [class.info]="isSelected(rowIndex)">
                             <td *ngIf="checkboxSelect" style="width: 10%"><input type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}" [attr.checked]="selectAll? true: null" (click)="setSelectedRow(row, $event)"></td>
@@ -577,6 +594,9 @@ export class DataTableComponent  implements OnInit,AfterViewChecked,OnDestroy,Af
         if(this.groupByColumn){
             this.cloneData = JSON.parse(JSON.stringify(this.data));
         }
+        if(this.filtering){
+            this.filterCloneData = JSON.parse(JSON.stringify(this.data));
+        }
         if(this.data.length > (1 * this.pageSize))
         {
             this.maxPage = Math.floor((this.data.length/this.pageSize));
@@ -592,9 +612,7 @@ export class DataTableComponent  implements OnInit,AfterViewChecked,OnDestroy,Af
             this.pageNumbers.push(pageNo);
         }
 
-        if(this.filtering){
-            this.filterCloneData = JSON.parse(JSON.stringify(this.data));
-        }
+
 
         this.createSummaryData();
         this.renderData();
@@ -782,9 +800,7 @@ export class DataTableComponent  implements OnInit,AfterViewChecked,OnDestroy,Af
             }
         }
 
-
         this.renderData();
-
 
     }
 
@@ -928,9 +944,19 @@ export class DataTableComponent  implements OnInit,AfterViewChecked,OnDestroy,Af
                     status=false;
                 }
             });
-            this.renderData();
+            if(this.data.length > (1 * this.pageSize)){
+                this.pagingRegenration();
+                this.renderData();
+            }else {
+                this.viewRows =this.data;
+                this.currentPage=1;
+                this.maxPage =1;
+                this.cd.detectChanges();
+            }
+
         } else {
             this.data=this.filterCloneData;
+            this.pagingRegenration();
             this.renderData();
         }
 
@@ -942,10 +968,19 @@ export class DataTableComponent  implements OnInit,AfterViewChecked,OnDestroy,Af
         let condition : any;
         filteredObj.forEach((filterOpt)=>{
             if(filterOpt.filter=='=='){
-                condition = data[filterOpt.key] == filterOpt.value;
+                if(filterOpt.type=='number'){
+                    condition = data[filterOpt.key] == filterOpt.value;
+                }else {
+                    condition = data[filterOpt.key].toLowerCase() == filterOpt.value.toLowerCase();
+                }
+
                 statusArray.push(condition);
             }else if(filterOpt.filter=='!='){
-                condition = data[filterOpt.key] != filterOpt.value;
+                if(filterOpt.type=='number'){
+                    condition = data[filterOpt.key] != filterOpt.value;
+                }else {
+                    condition = data[filterOpt.key].toLowerCase() != filterOpt.value.toLowerCase();
+                }
                 statusArray.push(condition);
             }
         });
@@ -955,6 +990,25 @@ export class DataTableComponent  implements OnInit,AfterViewChecked,OnDestroy,Af
             }
         });
         return condition;
+    }
+
+    /*---filter paging-----*/
+
+    pagingRegenration(){
+        this.maxPage = Math.floor((this.data.length/this.pageSize));
+
+        if((this.data.length%this.pageSize)>0)
+        {
+            this.maxPage ++;
+        }
+
+
+        for(let pageNo = 1; pageNo<=this.maxPage; pageNo++)
+        {
+            this.pageNumbers.push(pageNo);
+        }
+        this.cd.detectChanges();
+
     }
 
 }
