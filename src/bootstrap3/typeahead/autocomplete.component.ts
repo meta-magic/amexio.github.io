@@ -59,7 +59,7 @@ export const BASE_IMPL_AUTO_COMPLETE : any = {
       visibility: hidden;
     }
   `],
-  providers : [CUSTOM_AUTO_COMPLETE_CONTROL_VALUE_ACCESSOR,BASE_IMPL_AUTO_COMPLETE]
+  providers : [CUSTOM_AUTO_COMPLETE_CONTROL_VALUE_ACCESSOR,BASE_IMPL_AUTO_COMPLETE,AutoCompleteService]
 })
 
 export class AutoComplete extends FormInputBase  implements OnInit,AfterViewInit {
