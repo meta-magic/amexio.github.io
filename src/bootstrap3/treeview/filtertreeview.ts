@@ -31,10 +31,10 @@ import {Http, Headers, RequestOptions} from "@angular/http";
             <button type="button" class="btn btn-default dropdown-toggle glyphicon glyphicon-filter" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             </button>
             <ul class="dropdown-menu dropdown-menu-right">
-              <li><a href="#" (click)="filterOption('1')">Is equal to</a></li>
-              <li><a href="#" (click)="filterOption('2')">Is not equal to</a></li>
-              <li><a href="#" (click)="filterOption('3')">Starts with</a></li>
-              <li><a href="#" (click)="filterOption('4')">Ends with</a></li>
+              <li><a (click)="filterOption('1')">Is equal to</a></li>
+              <li><a (click)="filterOption('2')">Is not equal to</a></li>
+              <li><a (click)="filterOption('3')">Starts with</a></li>
+              <li><a (click)="filterOption('4')">Ends with</a></li>
             </ul>
           </div><!-- /btn-group -->
         </div><!-- /input-group -->
