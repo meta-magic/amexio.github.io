@@ -31,6 +31,7 @@ import {ButtonComponent} from "./bootstrap3/button/button.component";
 import {ItemSelectorComponent} from "./bootstrap3/itemselector/itemselector.component";
 import {FilterComponent} from "./bootstrap3/datatable/filter-directive";
 import {FilterTreeViewComponent} from "./bootstrap3/treeview/filtertreeview";
+import {AutoComplete} from "./bootstrap3/typeahead/autocomplete.component";
 
 
 export * from './bootstrap3/textinput/textinput.component';
@@ -98,6 +99,9 @@ export * from './bootstrap3/shared/widget.shared.service';
 export * from './bootstrap3/itemselector/itemselector.service';
 export * from './bootstrap3/itemselector/itemselector.component';
 
+export * from './bootstrap3/typeahead/autocomplete.component';
+export * from './bootstrap3/typeahead/autocomplete.service';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -132,7 +136,8 @@ export * from './bootstrap3/itemselector/itemselector.component';
     ButtonComponent,
     ItemSelectorComponent,
     FilterComponent,
-    FilterTreeViewComponent
+    FilterTreeViewComponent,
+    AutoComplete
   ],
   exports: [
     TextInputComponent,
@@ -162,7 +167,8 @@ export * from './bootstrap3/itemselector/itemselector.component';
     ButtonComponent,
     ItemSelectorComponent,
     FilterComponent,
-    FilterTreeViewComponent
+    FilterTreeViewComponent,
+    AutoComplete
   ]
 })
 export class AmexioWidgetModule {
