@@ -41,7 +41,7 @@ import {Http, Headers, RequestOptions} from "@angular/http";
         
         <amexio-tree-view
            [dataTableBindData]="treeData"
-           [enableCheckBox] ="'true'" 
+           [enableCheckBox] ="enableCheckBox" 
            (onTreeNodeChecked) = "onCheckSelect($event)"  
            (selectedRecord)="onRowSelect($event)" [templates]="templates">
         </amexio-tree-view>
@@ -64,6 +64,9 @@ export class FilterTreeViewComponent implements OnInit{
 
   @Input()
   dataTableBindData: any;
+
+  @Input()
+  enableCheckBox : boolean = false;
 
   @Output()
   selectedRecord : any = new EventEmitter<any>();
