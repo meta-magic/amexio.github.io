@@ -468,10 +468,16 @@ export class DataTableComponent  implements OnInit,AfterViewChecked,OnDestroy,Af
     }
 
     ngOnInit(){
-
+        if(window.innerWidth <768){
+            this.smallScreen = true;
+        }
+        else{
+            this.smallScreen = false;
+        }
     }
 
     ngAfterViewInit(){
+
         if(this.httpMethod && this.httpUrl){
             this.dataTableSevice.fetchData(this.httpUrl,this.httpMethod).subscribe(
                 response=>{
@@ -487,6 +493,7 @@ export class DataTableComponent  implements OnInit,AfterViewChecked,OnDestroy,Af
         else if(this.dataTableBindData){
             this.setData(this.dataTableBindData);
         }
+
     }
 
 
@@ -900,7 +907,8 @@ export class DataTableComponent  implements OnInit,AfterViewChecked,OnDestroy,Af
 
     }
 
-    onResize(event : any){
+    onResize(event : any)
+    {
         if(event.target.innerWidth <768){
             this.smallScreen = true;
         }
@@ -921,8 +929,36 @@ export class DataTableComponent  implements OnInit,AfterViewChecked,OnDestroy,Af
         });
         this.data =[];
         for (let groupName in groups) {
+
             this.data.push({expanded:false,group:groupName, groupData: groups[groupName]});
         }
+
+        /*-------Aggregation---------*/
+
+        /* this.data.forEach((groupdata)=>{
+         let aggregateValue :  number;
+         let dummyA={};
+         let k;
+         let arrayIndex;
+         this.columns.forEach((columnOption)=> {
+         if(columnOption.aggregate==true) {
+         k = columnOption.dataIndex;
+         aggregateValue =0;
+         groupdata.groupData.forEach((childData, index) => {
+         aggregateValue = +(aggregateValue + Number(childData[columnOption.dataIndex]));
+         arrayIndex = index;
+
+         });
+         dummyA[k]=aggregateValue;
+         }
+
+         });
+
+         groupdata.groupData[arrayIndex+1]=dummyA;
+
+         });*/
+
+
         this.renderData();
         this.cd.detectChanges();
     }
@@ -967,7 +1003,38 @@ export class DataTableComponent  implements OnInit,AfterViewChecked,OnDestroy,Af
         let statusArray : any=[];
         let condition : any;
         filteredObj.forEach((filterOpt)=>{
-            if(filterOpt.filter=='=='){
+            if(filterOpt.filter=='1'){
+                if(filterOpt.type=='string'){
+                    condition = data[filterOpt.key].toLowerCase().startsWith(filterOpt.value.toLowerCase())
+                }
+            }
+            else if(filterOpt.filter=='2'){
+                if(filterOpt.type=='string'){
+                    condition = data[filterOpt.key].toLowerCase().endsWith(filterOpt.value.toLowerCase());
+                }
+            }
+            else if(filterOpt.filter=='<'){
+                if(filterOpt.type=='number'){
+                    condition = data[filterOpt.key] > filterOpt.value;
+                }
+            }
+            else if(filterOpt.filter=='>'){
+                if(filterOpt.type=='number'){
+                    condition = data[filterOpt.key] < filterOpt.value;
+                }
+            }
+            else if(filterOpt.filter=='>='){
+                if(filterOpt.type=='number'){
+                    condition = data[filterOpt.key] <= filterOpt.value;
+                }
+            }
+            else if(filterOpt.filter=='=<'){
+                if(filterOpt.type=='number'){
+                    condition = data[filterOpt.key] >= filterOpt.value;
+                }
+            }
+
+            else if(filterOpt.filter=='=='){
                 if(filterOpt.type=='number'){
                     condition = data[filterOpt.key] == filterOpt.value;
                 }else {
