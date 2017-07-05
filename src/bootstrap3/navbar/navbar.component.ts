@@ -35,7 +35,7 @@ import {Http, Headers, RequestOptions} from "@angular/http";
               <div class="collapse navbar-collapse js-navbar-collapse">
                   <ul class="nav navbar-nav">
                       <li class="dropdown dropdown-large" id="dd-lr-{{ind}}" *ngFor="let mh of menus let ind = index" >
-                          <a class="dropdown-toggle" data-toggle="dropdown"  (click)="adjustPosition($event, ind)">
+                          <a class="dropdown-toggle" data-toggle="dropdown"  (click)="adjustPosition($event, ind)" style="cursor:pointer">
                               <ng-container *ngIf="headerTemplate==null">
                                   {{mh.text}}
                               </ng-container><ng-template *ngIf="headerTemplate!=null" [ngTemplateOutlet]="headerTemplate" [ngOutletContext]="{ $implicit: {}, navHeader:mh }"></ng-template>
@@ -46,7 +46,7 @@ import {Http, Headers, RequestOptions} from "@angular/http";
                                   <li class="col-sm-4" style="position: static !important" *ngFor="let sm of mh.childrens let ind =index">
                                       <ul style="padding: 0px;margin: 0px;">
                                           <li style="list-style: none;color: #428bca;font-size: 18px;padding: 3px 2px;position: static !important">
-                                              <a  style="text-decoration: none;color: #428bca" (click)="menuClick(sm)">
+                                              <a  style="text-decoration: none;color: #428bca" (click)="menuClick(sm)" style="cursor:pointer">
                                                   <ng-container *ngIf="childTemplate==null">{{sm.text}}</ng-container>
                                                   <ng-template *ngIf="childTemplate!=null" [ngTemplateOutlet]="childTemplate" [ngOutletContext]="{ $implicit: {}, menuHeader:sm }"></ng-template>
                                               </a>

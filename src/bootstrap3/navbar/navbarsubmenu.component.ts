@@ -20,7 +20,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
     <ul style="list-style: none;padding: 1px;">
       <li style="list-style: none; padding: 1px 20px; color: #777"  *ngFor="let sm of subMenuData">
         <ng-container  *ngIf="sm.childrens">
-          <a style="text-decoration: none;color: #777" (click)="menuClick(sm)">
+          <a style="text-decoration: none;color: #777" (click)="menuClick(sm)" style="cursor:pointer">
             <ng-container *ngIf="templates==null">
               {{sm.text}}
             </ng-container>
@@ -28,13 +28,13 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
            </a>
           <ul style="list-style: none;padding: 1px;">
             <ng-container *ngIf="sm.childrens">
-              <li style="list-style: none;padding: 1px; color: #777"  amexio-submenu-view [subMenuData]="sm.childrens" [templates]="templates"></li>
+              <li style="list-style: none;padding: 1px; color: #777" (nodeClick)="menuClick($event)" amexio-submenu-view [subMenuData]="sm.childrens" [templates]="templates"></li>
             </ng-container>
           </ul>
         </ng-container>
         
         <ng-container  *ngIf="!sm.childrens">
-          <a style="text-decoration: none;color: #777" (click)="menuClick(sm)">
+          <a style="text-decoration: none;color: #777" (click)="menuClick(sm)" style="cursor:pointer">
            <ng-container *ngIf="templates==null">
              {{sm.text}}
            </ng-container> 
