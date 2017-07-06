@@ -21,7 +21,7 @@ import {Http, Headers, RequestOptions} from "@angular/http";
 @Component({
   selector: 'amexio-navbar',
   template : `
-      <footer>
+      
           <nav class="navbar navbar-default" [ngClass]="{ 'navbar-fixed-bottom':bottom}">
               <div class="navbar-header">
                   <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
@@ -62,7 +62,7 @@ import {Http, Headers, RequestOptions} from "@angular/http";
                   </ul>
               </div>
           </nav>
-      </footer>
+      
 
 
 

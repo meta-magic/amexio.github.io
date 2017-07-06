@@ -34,6 +34,7 @@ import {FilterTreeViewComponent} from "./bootstrap3/treeview/filtertreeview";
 import {AutoComplete} from "./bootstrap3/typeahead/autocomplete.component";
 import {NavbarComponent} from "./bootstrap3/navbar/navbar.component";
 import {NavbarSubMenuComponent} from "./bootstrap3/navbar/navbarsubmenu.component";
+import {SideNavBarComponent} from "./bootstrap3/navbar/sidenavbar.component";
 
 
 export * from './bootstrap3/textinput/textinput.component';
@@ -106,6 +107,7 @@ export * from './bootstrap3/typeahead/autocomplete.service';
 
 export * from './bootstrap3/navbar/navbar.component';
 export * from './bootstrap3/navbar/navbarsubmenu.component';
+export * from './bootstrap3/navbar/sidenavbar.component';
 
 @NgModule({
   imports: [
@@ -144,7 +146,8 @@ export * from './bootstrap3/navbar/navbarsubmenu.component';
     FilterTreeViewComponent,
     AutoComplete,
     NavbarComponent,
-    NavbarSubMenuComponent
+    NavbarSubMenuComponent,
+    SideNavBarComponent
   ],
   exports: [
     TextInputComponent,
@@ -177,7 +180,8 @@ export * from './bootstrap3/navbar/navbarsubmenu.component';
     FilterTreeViewComponent,
     AutoComplete,
     NavbarComponent,
-    NavbarSubMenuComponent
+    NavbarSubMenuComponent,
+    SideNavBarComponent
   ]
 })
 export class AmexioWidgetModule {
