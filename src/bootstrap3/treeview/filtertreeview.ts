@@ -19,7 +19,7 @@ import {Http, Headers, RequestOptions} from "@angular/http";
 
 
 @Component({
-  selector: 'amexio-filter-tree-view',
+  selector: 'amexio-tree-filter-view',
   template : `
 
     <div class="col-lg-12">
