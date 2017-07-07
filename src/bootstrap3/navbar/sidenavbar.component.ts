@@ -19,7 +19,7 @@ import {Http, Headers, RequestOptions} from "@angular/http";
 
 
 @Component({
-  selector: 'amexio-sidenavbar',
+  selector: 'amexio-sidemenubar',
   template: `
 
       <div [ngClass]="{'sidenavleft':!right, 'sidenavright':right}"  [attr.id]="elementId" (mouseleave)="closeNav();">

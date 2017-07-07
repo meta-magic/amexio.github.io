@@ -19,7 +19,7 @@ import {Http, Headers, RequestOptions} from "@angular/http";
 
 
 @Component({
-  selector: 'amexio-navbar',
+  selector: 'amexio-menubar',
   template : `
       
           <nav class="navbar navbar-default" [ngClass]="{ 'navbar-fixed-bottom':bottom}">
