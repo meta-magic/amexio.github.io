@@ -1007,31 +1007,33 @@ export class DataTableComponent  implements OnInit,AfterViewChecked,OnDestroy,Af
                 if(filterOpt.type=='string'){
                     condition = data[filterOpt.key].toLowerCase().startsWith(filterOpt.value.toLowerCase())
                 }
+                statusArray.push(condition);
             }
             else if(filterOpt.filter=='2'){
                 if(filterOpt.type=='string'){
                     condition = data[filterOpt.key].toLowerCase().endsWith(filterOpt.value.toLowerCase());
                 }
+                statusArray.push(condition);
             }
             else if(filterOpt.filter=='<'){
                 if(filterOpt.type=='number'){
                     condition = data[filterOpt.key] > filterOpt.value;
-                }
+                } statusArray.push(condition);
             }
             else if(filterOpt.filter=='>'){
                 if(filterOpt.type=='number'){
                     condition = data[filterOpt.key] < filterOpt.value;
-                }
+                } statusArray.push(condition);
             }
             else if(filterOpt.filter=='>='){
                 if(filterOpt.type=='number'){
                     condition = data[filterOpt.key] <= filterOpt.value;
-                }
+                } statusArray.push(condition);
             }
             else if(filterOpt.filter=='=<'){
                 if(filterOpt.type=='number'){
                     condition = data[filterOpt.key] >= filterOpt.value;
-                }
+                } statusArray.push(condition);
             }
 
             else if(filterOpt.filter=='=='){
