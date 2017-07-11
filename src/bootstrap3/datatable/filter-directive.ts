@@ -18,36 +18,45 @@ declare var $;
 @Component({
     selector: 'filter-component',
     template:`
-        <div class="row">
-            <div class="col-md-6 col-xs-8">
+
+        <div class="col-md-6 col-xs-8">
+            <div class="row">
                 <ng-container *ngIf="column.dataType==='string'">
                     <div class="input-group">
-                        <input  [attr.id]="column.text"  type="text" class="form-control" [(ngModel)]="filterValue" [attr.placeholder]="column.text" aria-describedby="basic-addon1" (keyup)="keyUpSearch(column)">
+                        <input  [attr.id]="column.text"  type="text" class="form-control input-sm" [(ngModel)]="filterValue" [attr.placeholder]="column.text" aria-describedby="basic-addon1" (keyup)="keyUpSearch(column)">
                     </div>
                 </ng-container>
                 <ng-container *ngIf="column.dataType==='number'">
                     <div class="input-group" >
-                        <input [attr.id]="column.text"  type="number" class="form-control" [(ngModel)]="filterValue" [attr.placeholder]="column.text" aria-describedby="basic-addon1" (keyup)="keyUpSearch(column)">
+                        <input [attr.id]="column.text"  type="number" class="form-control input-sm" [(ngModel)]="filterValue" [attr.placeholder]="column.text" aria-describedby="basic-addon1" (keyup)="keyUpSearch(column)">
                     </div>
                 </ng-container>
             </div>
-            <div class="col-md-2 col-xs-2  ">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+
+        </div>
+        <div class="col-md-2 col-xs-2  ">
+            <div class="row">
+                <div class="btn-group" style="cursor: pointer">
+                    <button type="button" class="btn btn-default btn-sm  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
                         <span class="glyphicon glyphicon-filter" aria-hidden="true"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li *ngFor="let opt of filterOptions"><a (click)="selectedOption(column,opt)" *ngIf="opt.type==column.dataType">{{opt.key}}</a></li>
+                        <li style="cursor: pointer" *ngFor="let opt of filterOptions" [attr.id]="getId()"><a (click)="selectedOption(column,opt)" *ngIf="opt.type==column.dataType">{{opt.key}}&nbsp;<i [class]="opt.checkedStatus" aria-hidden="true"></i></a></li>
                     </ul>
                 </div>
             </div>
-            <div class="col-md-2 col-xs-2 ">
+
+        </div>
+        <div class="col-md-2 col-xs-2 ">
+            <div class="row">
                 <button *ngIf="column.filterIcon" type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)="removeFilter(column)" >
                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                 </button>
             </div>
 
         </div>
+
+
 
 
 
@@ -61,59 +70,73 @@ export class FilterComponent implements OnInit {
     filterValue :any;
 
     filterOptions : any;
+    elementId : any;
+
+
     constructor(private dataTableService : DataTableService) {
+
 
         this.filterOptions=[
             {
                 "key":"Is Equal To",
                 "value":"==",
                 "type":"string",
+                "checkedStatus":""
             },
             {
                 "key":"Is Not Equal To",
                 "value":"!=",
-                "type":"string"
+                "type":"string",
+                "checkedStatus":""
             },
             {
                 "key":"Start With",
                 "value":"1",
-                "type":"string"
+                "type":"string",
+                "checkedStatus":"fa fa-check"
             },
             {
                 "key":"Ends With",
                 "value":"2",
-                "type":"string"
+                "type":"string",
+                "checkedStatus":""
             },
             {
                 "key":"Is Equal To",
                 "value":"==",
                 "type":"number",
+                "checkedStatus":""
             },
             {
                 "key":"Is Not Equal To",
                 "value":"!=",
-                "type":"number"
+                "type":"number",
+                "checkedStatus":""
             },
             {
                 "key":"Is greater Than",
                 "value":"<",
-                "type":"number"
+                "type":"number",
+                "checkedStatus":""
             },
             {
                 "key":"Is less Than",
                 "value":">",
-                "type":"number"
+                "type":"number",
+                "checkedStatus":""
             },
 
             {
                 "key":"Is less Than or equal to",
                 "value":">=",
-                "type":"number"
+                "type":"number",
+                "checkedStatus":""
             },
             {
                 "key":"Is greater Than or equal to",
                 "value":"=<",
-                "type":"number"
+                "type":"number",
+                "checkedStatus":"fa fa-check"
             }
         ]
 
@@ -122,9 +145,15 @@ export class FilterComponent implements OnInit {
     ngOnInit() {
     }
 
+    getId(){
+        return new Date().getTime() + Math.random();
+    }
+
     selectedOption(col : any,opt: any){
+        this.gemoveCheckStatus();
         if(this.filterValue){
             let filter : any = {};
+            opt.checkedStatus='fa fa-check';
             col.filterIcon = true;
             filter['key']=col.dataIndex;
             filter['value']=this.filterValue;
@@ -136,6 +165,7 @@ export class FilterComponent implements OnInit {
                 }
             });
             this.dataTableService.filteredObject.push(filter);
+            console.log(this.dataTableService.filteredObject);
             this.filterObject.emit(this.dataTableService.filteredObject);
         }
     }
@@ -165,6 +195,7 @@ export class FilterComponent implements OnInit {
     }
 
     removeFilter(column : any){
+        this.gemoveCheckStatus();
         column.filterIcon=false;
         $('#'+column.text).val("");
         this.dataTableService.filteredObject.forEach((option,index)=>{
@@ -174,5 +205,11 @@ export class FilterComponent implements OnInit {
         });
         this.filterObject.emit(this.dataTableService.filteredObject);
 
+    }
+
+    gemoveCheckStatus(){
+        this.filterOptions.forEach((opt)=>{
+            opt.checkedStatus='';
+        });
     }
 }

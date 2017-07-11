@@ -1,6 +1,6 @@
 {
   "name": "amexio-ng-extensions",
-  "version": "1.0.33",
+  "version": "1.0.34",
   "scripts": {
     "build": "gulp build",
     "build:watch": "gulp",
