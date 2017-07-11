@@ -141,23 +141,27 @@ export class FilterComponent implements OnInit {
     }
 
     keyUpSearch(col : any){
-        debugger;
-        col.filterIcon = true;
-        let filter : any = {};
-        filter['key']=col.dataIndex;
-        filter['value']=this.filterValue;
-        if(col.dataType=='string')
-            filter['filter']=1;
-        else
-            filter['filter']='=<';
-        filter['type']=col.dataType;
-        this.dataTableService.filteredObject.forEach((option,index)=>{
-            if(option.key==col.dataIndex){
-                this.dataTableService.filteredObject.splice(index,1);
-            }
-        });
-        this.dataTableService.filteredObject.push(filter);
-        this.filterObject.emit(this.dataTableService.filteredObject);
+        if(this.filterValue==null||this.filterValue==''){
+            this.removeFilter(col);
+        }else {
+            col.filterIcon = true;
+            let filter : any = {};
+            filter['key']=col.dataIndex;
+            filter['value']=this.filterValue;
+            if(col.dataType=='string')
+                filter['filter']=1;
+            else
+                filter['filter']='=<';
+            filter['type']=col.dataType;
+            this.dataTableService.filteredObject.forEach((option,index)=>{
+                if(option.key==col.dataIndex){
+                    this.dataTableService.filteredObject.splice(index,1);
+                }
+            });
+            this.dataTableService.filteredObject.push(filter);
+            this.filterObject.emit(this.dataTableService.filteredObject);
+        }
+
     }
 
     removeFilter(column : any){
