@@ -22,31 +22,36 @@ import {Http, Headers, RequestOptions} from "@angular/http";
   selector: 'amexio-tree-filter-view',
   template : `
 
-    <div class="col-lg-12">
       <div class="col-lg-12">
-       
-        <div class="input-group">
-          <input type="text" class="form-control" [(ngModel)]="filterText"  placeholder="Search" (keyup)="filterData()" >
-          <div class="input-group-btn">
-            <button type="button" class="btn btn-default dropdown-toggle glyphicon glyphicon-filter" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            </button>
-            <ul class="dropdown-menu dropdown-menu-right">
-              <li><a (click)="filterOption('1')">Is equal to</a></li>
-              <li><a (click)="filterOption('2')">Is not equal to</a></li>
-              <li><a (click)="filterOption('3')">Starts with</a></li>
-              <li><a (click)="filterOption('4')">Ends with</a></li>
-            </ul>
-          </div><!-- /btn-group -->
-        </div><!-- /input-group -->
-        
-        <amexio-tree-view
-           [dataTableBindData]="treeData"
-           [enableCheckBox] ="enableCheckBox" 
-           (onTreeNodeChecked) = "onCheckSelect($event)"  
-           (selectedRecord)="onRowSelect($event)" [templates]="templates">
-        </amexio-tree-view>
+          <div class="col-lg-12">
+
+              <div class="input-group">
+                  <input type="text" class="form-control" [(ngModel)]="filterText"  placeholder="Search" (keyup)="filterData()" >
+                  <div class="input-group-btn">
+                      <button type="button" class="btn btn-default dropdown-toggle glyphicon glyphicon-filter" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      </button>
+                      <ul class="dropdown-menu dropdown-menu-right">
+                          <li><a (click)="filterOption('1')">Is equal to</a></li>
+                          <li><a (click)="filterOption('2')">Is not equal to</a></li>
+                          <li><a (click)="filterOption('3')">Starts with</a></li>
+                          <li><a (click)="filterOption('4')">Ends with</a></li>
+                      </ul>
+                  </div><!-- /btn-group -->
+              </div><!-- /input-group -->
+              <ng-container *ngIf="isDataFound">
+                  <amexio-tree-view
+                          [dataTableBindData]="treeData"
+                          [enableCheckBox] ="enableCheckBox"
+                          (onTreeNodeChecked) = "onCheckSelect($event)"
+                          (selectedRecord)="onRowSelect($event)" [templates]="templates">
+                  </amexio-tree-view>
+              </ng-container>
+              <ng-container *ngIf="!isDataFound">
+                  <p>No Data Found.</p>
+              </ng-container>
+
+          </div>
       </div>
-    </div>
 
 
   `
@@ -73,6 +78,9 @@ export class FilterTreeViewComponent implements OnInit{
 
   @Output() onTreeNodeChecked : any = new EventEmitter<any>();
 
+  @Input()
+  triggerChar : number;
+
   treeData : any;
 
   orgTreeData : any;
@@ -83,10 +91,15 @@ export class FilterTreeViewComponent implements OnInit{
 
   templates : any ;
 
+  isDataFound : boolean = true;
+
+  onClickSearch : boolean = false;
+
   @ContentChild('amexioTreeTemplate')   parentTmp : TemplateRef<any>;
 
   constructor(private _http : Http, private cdf : ChangeDetectorRef){
     this.filterIndex = 3;
+    this.triggerChar=1;
   }
 
 
@@ -117,12 +130,29 @@ export class FilterTreeViewComponent implements OnInit{
   }
 
   filterData(){
-    this.treeData = this.orgTreeData;
-    if(this.filterText.length>=3){
+    debugger;
+    if(this.filterText.length>=this.triggerChar){
       let tData = JSON.parse(JSON.stringify(this.orgTreeData));
       let treeNodes = this.searchTree(tData, this.filterText);
       this.treeData = treeNodes;
-      console.log(treeNodes)
+      if(this.treeData.length==0)
+        this.isDataFound =false;
+      else
+        this.isDataFound= true;
+      console.log(this.treeData);
+    }else if (this.onClickSearch){
+      let tData = JSON.parse(JSON.stringify(this.orgTreeData));
+      let treeNodes = this.searchTree(tData, this.filterText);
+      this.treeData = treeNodes;
+      this.onClickSearch=false;
+      if(this.treeData.length==0)
+        this.isDataFound =false;
+      else
+        this.isDataFound= true;
+    }
+    else {
+      this.isDataFound= true;
+      this.treeData = this.orgTreeData;
     }
   }
 
@@ -161,6 +191,8 @@ export class FilterTreeViewComponent implements OnInit{
   }
 
   filterOption(fi : any){
+    debugger;
+    this.onClickSearch= true;
     this.filterIndex = fi;
     this.filterData();
   }
@@ -192,25 +224,25 @@ export class FilterTreeViewComponent implements OnInit{
     let options = new RequestOptions({headers : headers,method : this.httpMethod});
     if(this.httpMethod == "post"){
       this._http.post(this.httpUrl,requestJson,options).subscribe(
-        response=>{
-          this.dataTableBindData = response.json();
-        },
-        error=>{
-        },
-        ()=>{
-          this.renderServiceData();
-        }
+          response=>{
+            this.dataTableBindData = response.json();
+          },
+          error=>{
+          },
+          ()=>{
+            this.renderServiceData();
+          }
       );
     }else if(this.httpMethod == "get"){
       this._http.get(this.httpUrl,options).subscribe(
-        response=>{
-          this.dataTableBindData = response.json();
-        },
-        error=>{
-        },
-        ()=>{
-          this.renderServiceData();
-        }
+          response=>{
+            this.dataTableBindData = response.json();
+          },
+          error=>{
+          },
+          ()=>{
+            this.renderServiceData();
+          }
       );
     }
   }

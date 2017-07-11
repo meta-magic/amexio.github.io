@@ -104,7 +104,7 @@ export class AutoComplete extends FormInputBase  implements OnInit,AfterViewInit
 
   ngOnInit() {
     if(this.triggerChar == null){
-      this.triggerChar = 3;
+      this.triggerChar = 1;
     }
   }
 

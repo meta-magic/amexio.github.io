@@ -62,7 +62,6 @@ export const BASE_IMPL_PASSWORD_INPUT : any = {
                    data-toggle="popover" title="Info" [attr.data-placement]="popoverPlacement"  data-trigger="focus"  data-html="true"  [attr.data-content]="helpInfoMsg"
             >
 
-
             <ng-container *ngIf="iconFeedBack">
                 <span [attr.class]="iconClassName" aria-hidden="true"></span>
                 <span [attr.id]="spanId" class="sr-only">({{iconName}})</span>
