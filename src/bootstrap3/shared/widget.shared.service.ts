@@ -22,10 +22,16 @@ declare var Messenger;
 export class WidgetService {
 
   constructor() {
-    Messenger.options = {
-      extraClasses: 'messenger-fixed messenger-on-top messenger-on-right',
-      theme: 'air'
+    if(Messenger != null){
+      Messenger.options = {
+        extraClasses: 'messenger-fixed messenger-on-top messenger-on-right',
+        theme: 'air'
+      }
     }
+    else{
+      console.warn('Please include Messenger js/css in your assets from http://github.hubspot.com/messenger/');
+    }
+
   }
 
   /**
