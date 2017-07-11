@@ -22,12 +22,12 @@ declare var $;
             <div class="col-md-6 col-xs-8">
                 <ng-container *ngIf="column.dataType==='string'">
                     <div class="input-group">
-                        <input  [attr.id]="column.text"  type="text" class="form-control" [(ngModel)]="filterValue" [attr.placeholder]="column.text" aria-describedby="basic-addon1">
+                        <input  [attr.id]="column.text"  type="text" class="form-control" [(ngModel)]="filterValue" [attr.placeholder]="column.text" aria-describedby="basic-addon1" (keyup)="keyUpSearch(column)">
                     </div>
                 </ng-container>
                 <ng-container *ngIf="column.dataType==='number'">
                     <div class="input-group" >
-                        <input [attr.id]="column.text"  type="number" class="form-control" [(ngModel)]="filterValue" [attr.placeholder]="column.text" aria-describedby="basic-addon1">
+                        <input [attr.id]="column.text"  type="number" class="form-control" [(ngModel)]="filterValue" [attr.placeholder]="column.text" aria-describedby="basic-addon1" (keyup)="keyUpSearch(column)">
                     </div>
                 </ng-container>
             </div>
@@ -59,8 +59,6 @@ export class FilterComponent implements OnInit {
     @Output() filterObject: any = new EventEmitter<any>();
 
     filterValue :any;
-
-    ilteredObject : any[];
 
     filterOptions : any;
     constructor(private dataTableService : DataTableService) {
@@ -140,8 +138,26 @@ export class FilterComponent implements OnInit {
             this.dataTableService.filteredObject.push(filter);
             this.filterObject.emit(this.dataTableService.filteredObject);
         }
+    }
 
-
+    keyUpSearch(col : any){
+        debugger;
+        col.filterIcon = true;
+        let filter : any = {};
+        filter['key']=col.dataIndex;
+        filter['value']=this.filterValue;
+        if(col.dataType=='string')
+            filter['filter']=1;
+        else
+            filter['filter']='=<';
+        filter['type']=col.dataType;
+        this.dataTableService.filteredObject.forEach((option,index)=>{
+            if(option.key==col.dataIndex){
+                this.dataTableService.filteredObject.splice(index,1);
+            }
+        });
+        this.dataTableService.filteredObject.push(filter);
+        this.filterObject.emit(this.dataTableService.filteredObject);
     }
 
     removeFilter(column : any){
