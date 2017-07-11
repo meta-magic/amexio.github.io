@@ -136,7 +136,7 @@ export class AutoComplete extends FormInputBase  implements OnInit,AfterViewInit
       let search_term  = keyword.toLowerCase();
       this.data.forEach(item => {
         if(item != null){
-          if(item[this.key].toLowerCase().indexOf(search_term) !== -1 ){
+          if(item[this.key].toLowerCase().startsWith(search_term) ){
             this.filteredResult.push( item );
           }
         }
