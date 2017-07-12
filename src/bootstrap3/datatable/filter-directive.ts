@@ -161,7 +161,6 @@ export class FilterComponent implements OnInit {
                 }
             });
             this.dataTableService.filteredObject.push(filter);
-            console.log(this.dataTableService.filteredObject);
             this.filterObject.emit(this.dataTableService.filteredObject);
         }
     }
@@ -191,7 +190,6 @@ export class FilterComponent implements OnInit {
     }
 
     removeFilter(column : any){
-        debugger;
         this.gemoveCheckStatus();
         column.filterIcon=false;
         $('#'+column.dataIndex).val("");
