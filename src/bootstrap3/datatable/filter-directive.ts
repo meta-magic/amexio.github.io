@@ -23,12 +23,12 @@ declare var $;
             <div class="row">
                 <ng-container *ngIf="column.dataType==='string'">
                     <div class="input-group">
-                        <input  [attr.id]="column.text"  type="text" class="form-control input-sm" [(ngModel)]="filterValue" [attr.placeholder]="column.text" aria-describedby="basic-addon1" (keyup)="keyUpSearch(column)">
+                        <input  [attr.id]="column.dataIndex"  type="text" class="form-control input-sm" [(ngModel)]="filterValue" [attr.placeholder]="column.text" aria-describedby="basic-addon1" (keyup)="keyUpSearch(column)">
                     </div>
                 </ng-container>
                 <ng-container *ngIf="column.dataType==='number'">
                     <div class="input-group" >
-                        <input [attr.id]="column.text"  type="number" class="form-control input-sm" [(ngModel)]="filterValue" [attr.placeholder]="column.text" aria-describedby="basic-addon1" (keyup)="keyUpSearch(column)">
+                        <input [attr.id]="column.dataIndex"  type="number" class="form-control input-sm" [(ngModel)]="filterValue" [attr.placeholder]="column.text" aria-describedby="basic-addon1" (keyup)="keyUpSearch(column)">
                     </div>
                 </ng-container>
             </div>
@@ -41,7 +41,7 @@ declare var $;
                         <span class="glyphicon glyphicon-filter" aria-hidden="true"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li style="cursor: pointer" *ngFor="let opt of filterOptions" [attr.id]="getId()"><a (click)="selectedOption(column,opt)" *ngIf="opt.type==column.dataType">{{opt.key}}&nbsp;<i [class]="opt.checkedStatus" aria-hidden="true"></i></a></li>
+                        <li style="cursor: pointer" *ngFor="let opt of filterOptions" ><a (click)="selectedOption(column,opt)" *ngIf="opt.type==column.dataType">{{opt.key}}&nbsp;<i [class]="opt.checkedStatus" aria-hidden="true"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -145,10 +145,6 @@ export class FilterComponent implements OnInit {
     ngOnInit() {
     }
 
-    getId(){
-        return new Date().getTime() + Math.random();
-    }
-
     selectedOption(col : any,opt: any){
         this.gemoveCheckStatus();
         if(this.filterValue){
@@ -195,9 +191,10 @@ export class FilterComponent implements OnInit {
     }
 
     removeFilter(column : any){
+        debugger;
         this.gemoveCheckStatus();
         column.filterIcon=false;
-        $('#'+column.text).val("");
+        $('#'+column.dataIndex).val("");
         this.dataTableService.filteredObject.forEach((option,index)=>{
             if(option.key==column.dataIndex){
                 this.dataTableService.filteredObject.splice(index,1);
