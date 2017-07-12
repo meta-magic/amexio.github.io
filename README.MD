@@ -60,8 +60,7 @@ import { AmexioWidgetModule } from 'amexio-ng-extensions';
   ],
   imports: [
     BrowserModule,
-    AmexioWidgetModule,
-    LibraryModule
+    AmexioWidgetModule
   ],
   providers: [],
   bootstrap: [AppComponent]
