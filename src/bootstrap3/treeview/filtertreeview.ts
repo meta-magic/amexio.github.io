@@ -35,6 +35,7 @@ import {Http, Headers, RequestOptions} from "@angular/http";
                           <li><a (click)="filterOption('2')">Is not equal to</a></li>
                           <li><a (click)="filterOption('3')">Starts with</a></li>
                           <li><a (click)="filterOption('4')">Ends with</a></li>
+                          <li><a (click)="filterOption('5')">Contains</a></li>
                       </ul>
                   </div><!-- /btn-group -->
               </div><!-- /input-group -->
@@ -130,7 +131,6 @@ export class FilterTreeViewComponent implements OnInit{
   }
 
   filterData(){
-    debugger;
     if(this.filterText.length>=this.triggerChar){
       let tData = JSON.parse(JSON.stringify(this.orgTreeData));
       let treeNodes = this.searchTree(tData, this.filterText);
@@ -139,7 +139,6 @@ export class FilterTreeViewComponent implements OnInit{
         this.isDataFound =false;
       else
         this.isDataFound= true;
-      console.log(this.treeData);
     }else if (this.onClickSearch){
       let tData = JSON.parse(JSON.stringify(this.orgTreeData));
       let treeNodes = this.searchTree(tData, this.filterText);
@@ -156,42 +155,35 @@ export class FilterTreeViewComponent implements OnInit{
     }
   }
 
-  searchTree(element : any[], matchingTitle:string){
-    let filterNodes = [];
-    for (let i =0 ; i<element.length; i++){
-      let node = element[i];
+  searchTree(data : any[], matchingTitle:string){
+    let fi = this.filterIndex;
+    let res = data.filter(function f(node) {
 
-
-      if(this.filterIndex == 3 && node.text.toLowerCase().startsWith(matchingTitle.toLowerCase())){
-        filterNodes.push(node);
-      }
-      if(this.filterIndex == 1 && node.text.toLowerCase() == matchingTitle.toLowerCase()){
-        filterNodes.push(node);
-      }
-      if(this.filterIndex == 2 && node.text.toLowerCase() != matchingTitle.toLowerCase()){
-        filterNodes.push(node);
-      }
-      if(this.filterIndex == 4 && node.text.toLowerCase().endsWith(matchingTitle.toLowerCase())){
-        filterNodes.push(node);
+      if (fi == 5 && node.text.toLowerCase().includes(matchingTitle.toLowerCase())) {
+        return true;
       }
 
-      if (node.children)
-      {
-        var innerFilterNodes = this.searchTree(node.children,matchingTitle);
-
-        if(innerFilterNodes.length>0)
-        {
-          node['children'] = innerFilterNodes;
-          filterNodes.pop();
-          filterNodes.push(node);
-        }
+      if(fi == 3 && node.text.toLowerCase().startsWith(matchingTitle.toLowerCase())){
+        return true;
       }
-    }
-    return filterNodes;
+      if(fi == 1 && node.text.toLowerCase() == matchingTitle.toLowerCase()){
+        return true;
+      }
+      if(fi == 2 && node.text.toLowerCase() != matchingTitle.toLowerCase()){
+        return true;
+      }
+      if(fi == 4 && node.text.toLowerCase().endsWith(matchingTitle.toLowerCase())){
+        return true;
+      }
+
+      if (node.children) {
+        return (node.children = node.children.filter(f)).length;
+      }
+    });
+    return res;
   }
 
   filterOption(fi : any){
-    debugger;
     this.onClickSearch= true;
     this.filterIndex = fi;
     this.filterData();
