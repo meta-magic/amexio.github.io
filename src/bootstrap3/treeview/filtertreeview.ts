@@ -31,11 +31,7 @@ import {Http, Headers, RequestOptions} from "@angular/http";
                       <button type="button" class="btn btn-default dropdown-toggle glyphicon glyphicon-filter" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       </button>
                       <ul class="dropdown-menu dropdown-menu-right">
-                          <li><a (click)="filterOption('1')">Is equal to</a></li>
-                          <li><a (click)="filterOption('2')">Is not equal to</a></li>
-                          <li><a (click)="filterOption('3')">Starts with</a></li>
-                          <li><a (click)="filterOption('4')">Ends with</a></li>
-                          <li><a (click)="filterOption('5')">Contains</a></li>
+                          <li *ngFor="let opt of filterOptionData"><a (click)="filterOption(opt)">{{opt.key}}&nbsp;<i [class]="opt.checkedStatus" aria-hidden="true"></i></a></li>
                       </ul>
                   </div><!-- /btn-group -->
               </div><!-- /input-group -->
@@ -96,11 +92,45 @@ export class FilterTreeViewComponent implements OnInit{
 
   onClickSearch : boolean = false;
 
+  filterOptionData:any;
+
   @ContentChild('amexioTreeTemplate')   parentTmp : TemplateRef<any>;
 
   constructor(private _http : Http, private cdf : ChangeDetectorRef){
     this.filterIndex = 3;
     this.triggerChar=1;
+    this.filterOptionData=[
+      {
+        "key":"Is Equal To",
+        "value":"1",
+        "type":"string",
+        "checkedStatus":""
+      },
+      {
+        "key":"Is Not Equal To",
+        "value":"2",
+        "type":"string",
+        "checkedStatus":""
+      },
+      {
+        "key":"Start With",
+        "value":"3",
+        "type":"string",
+        "checkedStatus":"fa fa-check"
+      },
+      {
+        "key":"Ends With",
+        "value":"4",
+        "type":"string",
+        "checkedStatus":""
+      },
+      {
+        "key":"Contains",
+        "value":"5",
+        "type":"string",
+        "checkedStatus":""
+      },
+    ];
   }
 
 
@@ -183,9 +213,16 @@ export class FilterTreeViewComponent implements OnInit{
     return res;
   }
 
-  filterOption(fi : any){
+  filterOption(data : any){
     this.onClickSearch= true;
-    this.filterIndex = fi;
+    this.filterIndex = data.value;
+    this.filterOptionData.forEach((opt)=>{
+      if(opt.value!=data.value){
+        opt.checkedStatus='';
+      }else {
+        opt.checkedStatus='fa fa-check';
+      }
+    });
     this.filterData();
   }
 

@@ -1003,6 +1003,12 @@ export class DataTableComponent  implements OnInit,AfterViewChecked,OnDestroy,Af
         let statusArray : any=[];
         let condition : any;
         filteredObj.forEach((filterOpt)=>{
+            if(filterOpt.filter=='3'){
+                if(filterOpt.type=='string'){
+                    condition = data[filterOpt.key].toLowerCase().includes(filterOpt.value.toLowerCase())
+                }
+                statusArray.push(condition);
+            }
             if(filterOpt.filter=='1'){
                 if(filterOpt.type=='string'){
                     condition = data[filterOpt.key].toLowerCase().startsWith(filterOpt.value.toLowerCase())

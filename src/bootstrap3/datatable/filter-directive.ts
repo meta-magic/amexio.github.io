@@ -13,12 +13,12 @@
 
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {DataTableService} from "./datatable.service";
+import {el} from "@angular/platform-browser/testing/src/browser_util";
 
 declare var $;
 @Component({
     selector: 'filter-component',
     template:`
-
         <div class="col-md-6 col-xs-8">
             <div class="row">
                 <ng-container *ngIf="column.dataType==='string'">
@@ -102,6 +102,12 @@ export class FilterComponent implements OnInit {
                 "checkedStatus":""
             },
             {
+                "key":"Contains",
+                "value":"3",
+                "type":"string",
+                "checkedStatus":""
+            },
+            {
                 "key":"Is Equal To",
                 "value":"==",
                 "type":"number",
@@ -146,7 +152,7 @@ export class FilterComponent implements OnInit {
     }
 
     selectedOption(col : any,opt: any){
-        this.gemoveCheckStatus();
+        this.checkStatus();
         if(this.filterValue){
             let filter : any = {};
             opt.checkedStatus='fa fa-check';
@@ -168,6 +174,7 @@ export class FilterComponent implements OnInit {
     keyUpSearch(col : any){
         if(this.filterValue==null||this.filterValue==''){
             this.removeFilter(col);
+            this.removeCheckStatus(col);
         }else {
             col.filterIcon = true;
             let filter : any = {};
@@ -190,7 +197,7 @@ export class FilterComponent implements OnInit {
     }
 
     removeFilter(column : any){
-        this.gemoveCheckStatus();
+        this.removeCheckStatus(column);
         column.filterIcon=false;
         $('#'+column.dataIndex).val("");
         this.dataTableService.filteredObject.forEach((option,index)=>{
@@ -202,7 +209,25 @@ export class FilterComponent implements OnInit {
 
     }
 
-    gemoveCheckStatus(){
+    removeCheckStatus(col: any){
+        this.filterOptions.forEach((opt)=>{
+            if(col.dataType=='string'){
+                if(opt.value==1){
+                    opt.checkedStatus='fa fa-check';
+                }else {
+                    opt.checkedStatus='';
+                }
+            }else {
+                if(opt.value=='=<'){
+                    opt.checkedStatus='fa fa-check';
+                }else {
+                    opt.checkedStatus='';
+                }
+            }
+
+        });
+    }
+    checkStatus(){
         this.filterOptions.forEach((opt)=>{
             opt.checkedStatus='';
         });

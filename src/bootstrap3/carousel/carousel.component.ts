@@ -31,7 +31,7 @@ import {CarouselService} from "./carousel.service";
                         <div [innerHTML]="scrollData.content"></div>
                     </ng-container>
                     <ng-container *ngIf="!isContent">
-                        <img [src]="scrollData.img" alt="Los Angeles" style="width:100%;">
+                        <img [src]="scrollData.img" alt="Los Angeles" style="width:100%;" >
                         <div class="carousel-caption">
                             <h3>{{scrollData.caption}}</h3>
                         </div>
