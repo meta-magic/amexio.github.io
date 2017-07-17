@@ -26,7 +26,7 @@ export const CHECK_COLUMN_SIZE = 'col-lg-';
                     <li class="list-group-item" *ngIf="searchBox"><span><input [(ngModel)]="textValue" type="text" class="form-control" placeholder="Please select" (keyup)="filterData($event)"></span></li>
                     <li [attr.class]="'list-group-item '+column" *ngFor="let row of viewData">
                         <label>
-                            <input  type="checkbox"  (click)="setSelectedCheckBox(row, $event)"> {{row[displayField]}}
+                            <input  type="checkbox" [checked]="row[valueField]"  (click)="setSelectedCheckBox(row, $event)"> {{row[displayField]}}
                         </label>
                     </li>
                 </ul>
