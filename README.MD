@@ -89,6 +89,21 @@ To lint all `*.ts` files:
 $ npm run lint
 ```
 
+# Amexio Microsoft Visual Studio Code Extensions
+
+This extension will help the developers of Visual Studio Code with quick code snippet for the Amexio Markup as well as Amexio TypeScript for the Angular Extensions. 
+
+## Usage
+
+Select the Amexio Ui Component
+<img src="https://raw.githubusercontent.com/meta-magic/Amexio-VSC-Extension/master/images/Amexio-VSC-Ex-1.jpg" />
+
+Fill up the required Component Params
+<img src="https://raw.githubusercontent.com/meta-magic/Amexio-VSC-Extension/master/images/Amexio-VSC-Ex-2.jpg" />
+
+
 ## License
 
-[Apache 2.0](http://www.amexio.org/metamagic-showcase/license.html) © MetaMagic Global
+[Apache 2.0](http://www.amexio.org/metamagic-showcase/license.html) © MetaMagic Global (http://www.metamagicglobal.com/), 2017. [Amexio Angular Extensions](http://www.amexio.tech)
+
+**Enjoy!**
