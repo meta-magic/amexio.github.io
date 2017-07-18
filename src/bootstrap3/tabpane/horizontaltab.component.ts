@@ -102,7 +102,10 @@ export class HorizontalTabPaneComponent implements OnInit,AfterViewInit {
   }
 
   ngAfterViewInit(){
-    this.reAdjust();
+    setTimeout(() => { // adjust tab scrolling once its render
+      this.reAdjust();
+    });
+    //this.reAdjust();
   }
 
   ngAfterContentInit() {
