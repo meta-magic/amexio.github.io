@@ -35,6 +35,8 @@ import {AutoComplete} from "./bootstrap3/typeahead/autocomplete.component";
 import {NavbarComponent} from "./bootstrap3/navbar/navbar.component";
 import {NavbarSubMenuComponent} from "./bootstrap3/navbar/navbarsubmenu.component";
 import {SideNavBarComponent} from "./bootstrap3/navbar/sidenavbar.component";
+import {HorizontalTabPaneComponent} from "./bootstrap3/tabpane/horizontaltab.component";
+import {VerticalTabPaneComponent} from "./bootstrap3/tabpane/verticaltab.component";
 
 
 export * from './bootstrap3/textinput/textinput.component';
@@ -52,6 +54,8 @@ export * from './bootstrap3/textareainput/textareainput.component';
 
 export * from './bootstrap3/tabpane/tabpane.component';
 export * from './bootstrap3/tabpane/tabpill.component';
+export * from './bootstrap3/tabpane/horizontaltab.component';
+export * from './bootstrap3/tabpane/verticaltab.component';
 
 export * from './bootstrap3/ratinginput/ratinginput.component';
 
@@ -122,6 +126,8 @@ export * from './bootstrap3/navbar/sidenavbar.component';
     TextAreaComponent,
     TabPaneComponent,
     TabComponent,
+    HorizontalTabPaneComponent,
+    VerticalTabPaneComponent,
     RatingInputComponent,
     RadioGroupComponent,
     ProgressComponent,
@@ -155,6 +161,8 @@ export * from './bootstrap3/navbar/sidenavbar.component';
     TreeDataTableComponent,
     TextAreaComponent,
     TabPaneComponent,
+    HorizontalTabPaneComponent,
+    VerticalTabPaneComponent,
     TabComponent,
     RatingInputComponent,
     RadioGroupComponent,
