@@ -65,8 +65,7 @@ export class TabPaneComponent implements OnInit,AfterContentInit  {
     this.position = 1;
     this.vertical = false;
     this.tapPosition = "left";
-    this.tabPosition = "col-md-2"
-    this.contentCol = "tabcontent";
+    this.contentCol = "tabcontent col-md-12";
     this.verticalText = false;
   }
 
