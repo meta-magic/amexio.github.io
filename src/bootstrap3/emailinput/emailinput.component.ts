@@ -35,7 +35,7 @@ declare var $ : any;
         <div [attr.class]="divCss">
 
             <ng-container *ngIf="hasLabel">
-                <label [attr.for]="elementId"
+                <label [attr.or]="elementId"
                        [style.font-style]="fontStyle"
                        [style.font-family]="fontFamily"
                        [style.font-size]="fontSize"
