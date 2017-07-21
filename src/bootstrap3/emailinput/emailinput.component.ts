@@ -35,7 +35,7 @@ declare var $ : any;
         <div [attr.class]="divCss">
 
             <ng-container *ngIf="hasLabel">
-                <label [attr.or]="elementId"
+                <label [attr.for]="elementId"
                        [style.font-style]="fontStyle"
                        [style.font-family]="fontFamily"
                        [style.font-size]="fontSize"
@@ -121,7 +121,6 @@ export class EmailInputComponent extends FormInputBase implements OnInit,AfterVi
     fieldglyphIcon : string;
 
     regEx : RegExp ;
-
 
     constructor() {
       super();
