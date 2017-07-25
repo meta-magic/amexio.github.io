@@ -21,6 +21,10 @@ import {RadioGroupComponent} from "./radiogroup/radiogroup.component";
 import {RatingInputComponent} from "./ratinginput/ratinginput.component";
 import {TextAreaComponent} from "./textareainput/textareainput.component";
 import {TypeAheadComponent} from "./typeahead/autocomplete.component";
+import {TabPaneComponent} from "./tabpane/tabpane.component";
+import {TabComponent} from "./tabpane/tabpill.component";
+import {VerticalLeftTabPaneComponent} from "./tabpane/verticallefttab.component";
+import {VerticalRightTabPaneComponent} from "./tabpane/verticalrighttab.component";
 
 export * from './button/button.component';
 export * from './common.http.service';
@@ -44,6 +48,13 @@ export * from './buttongroup/buttongroup.component';
 export * from './buttondropdown/dropdown.item.component';
 export * from './buttondropdown/button.dropdown.component';
 export * from './buttondropdown/button.split.dropdown.component';
+
+/*tab exports*/
+
+export * from './tabpane/tabpill.component'
+export * from './tabpane/tabpane.component'
+export * from './tabpane/verticallefttab.component'
+export * from './tabpane/verticalrighttab.component'
 
 @NgModule({
   imports: [
@@ -69,7 +80,11 @@ export * from './buttondropdown/button.split.dropdown.component';
     RadioGroupComponent,
     RatingInputComponent,
     TextAreaComponent,
-    TypeAheadComponent
+    TypeAheadComponent,
+    TabPaneComponent,
+    TabComponent,
+    VerticalLeftTabPaneComponent,
+    VerticalRightTabPaneComponent
   ],
   exports: [
     ButtonComponent,
@@ -89,7 +104,11 @@ export * from './buttondropdown/button.split.dropdown.component';
     RadioGroupComponent,
     RatingInputComponent,
     TextAreaComponent,
-    TypeAheadComponent
+    TypeAheadComponent,
+    TabPaneComponent,
+    TabComponent,
+    VerticalLeftTabPaneComponent,
+    VerticalRightTabPaneComponent
   ]
 })
 export class AmexioWidgetModule {
