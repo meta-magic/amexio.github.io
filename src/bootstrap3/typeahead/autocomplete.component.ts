@@ -54,7 +54,7 @@ export const BASE_IMPL_AUTO_COMPLETE : any = {
       }
     .showIcon{
       visibility: visible;
-    }
+    } 
     .hideIcon{
       visibility: hidden;
     }
@@ -100,6 +100,7 @@ export class AutoComplete extends FormInputBase  implements OnInit,AfterViewInit
   constructor(public autoCompleteService : AutoCompleteService) {
     super();
     this.elementId = 'auto-complete-' + new Date().getTime() + Math.random();
+    //change here
   }
 
   ngOnInit() {
