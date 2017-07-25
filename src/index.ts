@@ -3,9 +3,13 @@ import { CommonModule } from '@angular/common';
 import {FormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 import {ButtonComponent} from "./button/button.component";
+import {CommonHttpService} from "./common.http.service";
+import {TextInputComponent} from "./textinput/textinput.component";
 
 export * from "./button/button.component";
-
+export * from './common.http.service';
+export * from './textinput/textinput.component';
+export * from './baseclass/form.base.class';
 
 @NgModule({
   imports: [
@@ -14,17 +18,19 @@ export * from "./button/button.component";
     HttpModule
   ],
   declarations: [
-    ButtonComponent
+    ButtonComponent,
+    TextInputComponent
   ],
   exports: [
-    ButtonComponent
+    ButtonComponent,
+    TextInputComponent
   ]
 })
 export class AmexioWidgetModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: AmexioWidgetModule,
-      providers: []
+      providers: [CommonHttpService]
     };
   }
 }
