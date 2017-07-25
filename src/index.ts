@@ -10,11 +10,33 @@ import {ButtonSplitDropdownComponent} from './buttondropdown/button.split.dropdo
 import {DropdownItemComponent} from './buttondropdown/dropdown.item.component';
 import {ButtonGroupActionComponent} from './buttongroup/buttongroup.action.component';
 import {ButtonGroupComponent} from './buttongroup/buttongroup.component';
+import {CheckBoxGroup} from "./checkgroup/checkbox.component";
+import {DateTimeComponent} from "./datetimepicker/datetimepicker.component";
+import {DropDownComponent} from "./dropdown/dropdown";
+import {EmailInputComponent} from "./emailinput/emailinput.component";
+import {NumberInputComponent} from "./numberinput/numberinput.component";
+import {PasswordInputComponent} from "./passwordinput/passwordinput.component";
+import {ProgressComponent} from "./progress/progress.component";
+import {RadioGroupComponent} from "./radiogroup/radiogroup.component";
+import {RatingInputComponent} from "./ratinginput/ratinginput.component";
+import {TextAreaComponent} from "./textareainput/textareainput.component";
+import {TypeAheadComponent} from "./typeahead/autocomplete.component";
 
 export * from './button/button.component';
 export * from './common.http.service';
 export * from './textinput/textinput.component';
 export * from './baseclass/form.base.class';
+export * from './checkgroup/checkbox.component';
+export * from './datetimepicker/datetimepicker.component';
+export * from './dropdown/dropdown';
+export * from './emailinput/emailinput.component';
+export * from './numberinput/numberinput.component';
+export * from './passwordinput/passwordinput.component';
+export * from './progress/progress.component';
+export * from './radiogroup/radiogroup.component';
+export * from './ratinginput/ratinginput.component';
+export * from './textareainput/textareainput.component';
+export * from './typeahead/autocomplete.component';
 
 /*Button exports*/
 export * from './buttongroup/buttongroup.action.component'
@@ -36,7 +58,18 @@ export * from './buttondropdown/button.split.dropdown.component';
     ButtonSplitDropdownComponent,
     DropdownItemComponent,
     ButtonGroupActionComponent,
-    ButtonGroupComponent
+    ButtonGroupComponent,
+    CheckBoxGroup,
+    DateTimeComponent,
+    DropDownComponent,
+    EmailInputComponent,
+    NumberInputComponent,
+    PasswordInputComponent,
+    ProgressComponent,
+    RadioGroupComponent,
+    RatingInputComponent,
+    TextAreaComponent,
+    TypeAheadComponent
   ],
   exports: [
     ButtonComponent,
@@ -45,7 +78,18 @@ export * from './buttondropdown/button.split.dropdown.component';
     ButtonSplitDropdownComponent,
     DropdownItemComponent,
     ButtonGroupActionComponent,
-    ButtonGroupComponent
+    ButtonGroupComponent,
+    CheckBoxGroup,
+    DateTimeComponent,
+    DropDownComponent,
+    EmailInputComponent,
+    NumberInputComponent,
+    PasswordInputComponent,
+    ProgressComponent,
+    RadioGroupComponent,
+    RatingInputComponent,
+    TextAreaComponent,
+    TypeAheadComponent
   ]
 })
 export class AmexioWidgetModule {
