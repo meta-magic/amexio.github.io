@@ -7,7 +7,7 @@
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
- * Author - Ketan Gote, Pratik Kelwalkar, Dattaram Gawas
+ * Author -  Dattaram Gawas
  *
  */
 import {AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
@@ -17,18 +17,19 @@ declare var $;
   selector: 'amexio-btn',
   template : `
       <div>
-          <button (click)="btnClick($event)"
+          <button type="button" (click)="btnClick($event)"
                   [class]="btnStyleClass"
                   [attr.fieldName] = "fieldName"
                   [attr.disabled] = "disabled ? true: null"
                   data-toggle="tooltip" [attr.data-placement]="popoverPlacement" [attr.title]="tooltipMessage"
           >
               <ng-container *ngIf="isLoading">
-                  <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>&nbsp;&nbsp;&nbsp;
+                <i class="fa fa-refresh fa-spin " aria-hidden="true"></i>&nbsp;
               </ng-container>
               {{label}}
               <ng-container *ngIf="icon!=null">
-                  &nbsp;<span [class]="iconStyleClass"></span>
+                <i [class]="iconStyleClass" aria-hidden="true"></i>
+                
               </ng-container>
           </button>
       </div>
@@ -51,42 +52,42 @@ declare var $;
 }`
   ]
 })
-export class ButtonComponent implements OnInit , OnChanges,AfterViewInit {
+export class ButtonComponent implements OnInit , OnChanges, AfterViewInit {
 
-  @Input()    label : string;
+  @Input()    label: string;
 
-  @Input()    icon  : string;
+  @Input()    icon: string;
 
-  @Input()    type  : string;
+  @Input()    type: string;
 
-  @Input()    onClickRoute : string;
+  @Input()    onClickRoute: string;
 
-  @Input()    tooltipMessage : string;
+  @Input()    tooltipMessage: string;
 
-  @Input()    disabled : boolean;
+  @Input()    disabled: boolean;
 
-  @Input()    isLoading : boolean;
+  @Input()    isLoading: boolean;
 
-  @Input()    size : string;
+  @Input()    size: string;
 
-  @Input()    block : boolean;
+  @Input()    block: boolean;
 
-  @Input()    fieldName : string;
+  @Input()    fieldName: string;
 
-  @Input()   popoverPlacement : string;
+  @Input()   popoverPlacement: string;
 
-  btnStyleClass : string;
+  btnStyleClass: string;
 
-  iconStyleClass : string;
+  iconStyleClass: string;
 
-  btnSizeStyleClass : string;
+  btnSizeStyleClass: string;
 
-  elementId : any;
+  elementId: any;
 
-  hasToolTip : boolean;
+  hasToolTip: boolean;
 
 
-  @Output()   onClick : EventEmitter<any> = new EventEmitter<any>();
+  @Output()   onClick: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() {
     this.elementId = 'button-' + new Date().getTime() + Math.random();
@@ -95,54 +96,53 @@ export class ButtonComponent implements OnInit , OnChanges,AfterViewInit {
   ngOnInit() {
     this.btnStyleClass = 'btn ';
     this.btnSizeStyleClass = '';
-    if(this.type.toLocaleLowerCase() == 'warning')
+    if (this.type.toLocaleLowerCase() === 'warning') {
       this.btnStyleClass = this.btnStyleClass + 'btn-warning';
-    else if(this.type.toLocaleLowerCase() == 'primary')
+    } else if (this.type.toLocaleLowerCase() === 'primary') {
       this.btnStyleClass = this.btnStyleClass + 'btn-primary';
-    else if(this.type.toLocaleLowerCase() == 'success')
+    } else if (this.type.toLocaleLowerCase() === 'success') {
       this.btnStyleClass = this.btnStyleClass + 'btn-success';
-    else if(this.type.toLocaleLowerCase() == 'danger')
+    } else if (this.type.toLocaleLowerCase() === 'danger') {
       this.btnStyleClass = this.btnStyleClass + 'btn-danger';
-    else
-      this.btnStyleClass = this.btnStyleClass + 'btn-default';
-
-    this.iconStyleClass = 'glyphicon glyphicon-'+this.icon+' pull-right';
-    if(this.tooltipMessage == null)
-      this.hasToolTip = false;
-
-    if(this.size != null){
-      if(this.size == 'large')
-        this.btnStyleClass = this.btnStyleClass.concat(' btn-lg');
-      else if(this.size == 'small')
-        this.btnStyleClass = this.btnStyleClass.concat(' btn-sm');
-      else if(this.size == 'xsmall')
-        this.btnStyleClass = this.btnStyleClass.concat(' btn-xs');
+    } else if (this.type.toLocaleLowerCase() === 'link') {
+      this.btnStyleClass = this.btnStyleClass + 'btn-link';
+    } else {
+      this.btnStyleClass = this.btnStyleClass + 'btn-secondary';
     }
-
-    if(this.block){
+    this.iconStyleClass = 'fa fa-' + this.icon;
+    if (this.tooltipMessage == null) {
+      this.hasToolTip = false;
+    }
+    if (this.size != null) {
+      if (this.size === 'large') {
+        this.btnStyleClass = this.btnStyleClass.concat(' btn-lg');
+      } else if (this.size === 'small') {
+        this.btnStyleClass = this.btnStyleClass.concat(' btn-sm');
+      }
+    }
+    if (this.block) {
       this.btnStyleClass = this.btnStyleClass.concat(' btn-block');
     }
-
-      if(this.popoverPlacement == null){
+      if (this.popoverPlacement == null) {
           this.popoverPlacement = 'bottom';
       }
 
   }
 
-  ngOnChanges(change : SimpleChanges){
+  ngOnChanges(change: SimpleChanges) {
     /*console.log(change.isLoading);
       if(change.isLoading){
         this.disabled = true;
-      }*/ //TODO : Fix
+      }*/ // TODO : Fix
   }
 
-    ngAfterViewInit(){
-        $('[data-toggle="popover"]').popover();
+    ngAfterViewInit() {
+       // $('[data-toggle="popover"]').popover();
     }
 
-  btnClick(event : any){
+  btnClick(event: any) {
     this.onClick.emit(event);
-    if(this.onClickRoute !=null){
+    if (this.onClickRoute != null) {
       // this.router.navigate([this.onClickRoute]);
     }
   }
