@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {TextInputComponent} from "./bootstrap3/textinput/textinput.component";
 import {FormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
+
 import {WidgetService} from "./bootstrap3/shared/widget.shared.service";
 import {TreeViewComponent} from "./bootstrap3/treeview/treeview.component";
 import {TreeDataTableComponent} from "./bootstrap3/treedatatable/treedatatable.component";
