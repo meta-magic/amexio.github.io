@@ -10,21 +10,29 @@ import {ButtonSplitDropdownComponent} from './buttondropdown/button.split.dropdo
 import {DropdownItemComponent} from './buttondropdown/dropdown.item.component';
 import {ButtonGroupActionComponent} from './buttongroup/buttongroup.action.component';
 import {ButtonGroupComponent} from './buttongroup/buttongroup.component';
-import {CheckBoxGroup} from "./checkgroup/checkbox.component";
-import {DateTimeComponent} from "./datetimepicker/datetimepicker.component";
-import {DropDownComponent} from "./dropdown/dropdown";
-import {EmailInputComponent} from "./emailinput/emailinput.component";
-import {NumberInputComponent} from "./numberinput/numberinput.component";
-import {PasswordInputComponent} from "./passwordinput/passwordinput.component";
-import {ProgressComponent} from "./progress/progress.component";
-import {RadioGroupComponent} from "./radiogroup/radiogroup.component";
-import {RatingInputComponent} from "./ratinginput/ratinginput.component";
-import {TextAreaComponent} from "./textareainput/textareainput.component";
-import {TypeAheadComponent} from "./typeahead/autocomplete.component";
-import {TabPaneComponent} from "./tabpane/tabpane.component";
-import {TabComponent} from "./tabpane/tabpill.component";
-import {VerticalLeftTabPaneComponent} from "./tabpane/verticallefttab.component";
-import {VerticalRightTabPaneComponent} from "./tabpane/verticalrighttab.component";
+import {CheckBoxGroup} from './checkgroup/checkbox.component';
+import {DateTimeComponent} from './datetimepicker/datetimepicker.component';
+import {DropDownComponent} from './dropdown/dropdown';
+import {EmailInputComponent} from './emailinput/emailinput.component';
+import {NumberInputComponent} from './numberinput/numberinput.component';
+import {PasswordInputComponent} from './passwordinput/passwordinput.component';
+import {ProgressComponent} from './progress/progress.component';
+import {RadioGroupComponent} from './radiogroup/radiogroup.component';
+import {RatingInputComponent} from './ratinginput/ratinginput.component';
+import {TextAreaComponent} from './textareainput/textareainput.component';
+import {TypeAheadComponent} from './typeahead/autocomplete.component';
+import {TabPaneComponent} from './tabpane/tabpane.component';
+import {TabComponent} from './tabpane/tabpill.component';
+import {VerticalLeftTabPaneComponent} from './tabpane/verticallefttab.component';
+import {VerticalRightTabPaneComponent} from './tabpane/verticalrighttab.component';
+import {DataTableComponent} from './datatable/datatable.component';
+import {ColumnComponent} from './datatable/column.component';
+import {FilterComponent} from './datatable/filter-directive';
+import {CarouselComponent} from './carousel/carousel.component';
+import {ItemSelectorComponent} from './itemselector/itemselector.component';
+import {NavbarComponent} from './navbar/navbar.component';
+import {NavbarSubMenuComponent} from './navbar/navbarsubmenu.component';
+import {SideNavBarComponent} from './navbar/sidenavbar.component';
 
 export * from './button/button.component';
 export * from './common.http.service';
@@ -56,6 +64,18 @@ export * from './tabpane/tabpane.component'
 export * from './tabpane/verticallefttab.component'
 export * from './tabpane/verticalrighttab.component'
 
+export * from './datatable/filter-directive';
+export * from './datatable/datatable.component';
+export * from './datatable/column.component';
+
+export * from './carousel/carousel.component'
+
+export * from './itemselector/itemselector.component'
+
+export * from './navbar/sidenavbar.component';
+export * from './navbar/navbarsubmenu.component';
+export * from './navbar/navbar.component'
+
 @NgModule({
   imports: [
     CommonModule,
@@ -84,7 +104,15 @@ export * from './tabpane/verticalrighttab.component'
     TabPaneComponent,
     TabComponent,
     VerticalLeftTabPaneComponent,
-    VerticalRightTabPaneComponent
+    VerticalRightTabPaneComponent,
+    DataTableComponent,
+    ColumnComponent,
+    FilterComponent,
+    CarouselComponent,
+    ItemSelectorComponent,
+    NavbarComponent,
+    NavbarSubMenuComponent,
+    SideNavBarComponent
   ],
   exports: [
     ButtonComponent,
@@ -108,7 +136,15 @@ export * from './tabpane/verticalrighttab.component'
     TabPaneComponent,
     TabComponent,
     VerticalLeftTabPaneComponent,
-    VerticalRightTabPaneComponent
+    VerticalRightTabPaneComponent,
+    DataTableComponent,
+    ColumnComponent,
+    FilterComponent,
+    CarouselComponent,
+    ItemSelectorComponent,
+    NavbarComponent,
+    NavbarSubMenuComponent,
+    SideNavBarComponent
   ]
 })
 export class AmexioWidgetModule {

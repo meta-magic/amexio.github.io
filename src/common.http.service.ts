@@ -16,6 +16,9 @@ import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class CommonHttpService {
+
+  filteredObject: any = [];
+
   constructor(private http: Http) {
 
   }
