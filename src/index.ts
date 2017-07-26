@@ -33,6 +33,9 @@ import {ItemSelectorComponent} from './itemselector/itemselector.component';
 import {NavbarComponent} from './navbar/navbar.component';
 import {NavbarSubMenuComponent} from './navbar/navbarsubmenu.component';
 import {SideNavBarComponent} from './navbar/sidenavbar.component';
+import {FilterTreeViewComponent} from "./treeview/filtertreeview";
+import {TreeViewComponent} from "./treeview/treeview.component";
+import {TreeDataTableComponent} from "./treedatatable/treedatatable.component";
 
 export * from './button/button.component';
 export * from './common.http.service';
@@ -76,6 +79,10 @@ export * from './navbar/sidenavbar.component';
 export * from './navbar/navbarsubmenu.component';
 export * from './navbar/navbar.component'
 
+export * from './treeview/filtertreeview';
+export * from './treeview/treeview.component';
+export * from './treedatatable/treedatatable.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -112,7 +119,10 @@ export * from './navbar/navbar.component'
     ItemSelectorComponent,
     NavbarComponent,
     NavbarSubMenuComponent,
-    SideNavBarComponent
+    SideNavBarComponent,
+    FilterTreeViewComponent,
+    TreeViewComponent,
+    TreeDataTableComponent
   ],
   exports: [
     ButtonComponent,
@@ -144,7 +154,10 @@ export * from './navbar/navbar.component'
     ItemSelectorComponent,
     NavbarComponent,
     NavbarSubMenuComponent,
-    SideNavBarComponent
+    SideNavBarComponent,
+    FilterTreeViewComponent,
+    TreeViewComponent,
+    TreeDataTableComponent
   ]
 })
 export class AmexioWidgetModule {
