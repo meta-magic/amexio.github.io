@@ -39,24 +39,22 @@ declare var $;
           <table class="table table-sm  table-bordered " [attr.id]="elementId" (window:resize)="onResize($event)" style="width:100%">
             <tr>
               <td [attr.colspan]="columns.length + (checkboxSelect? 1: 0)" width="100%" data align="right">
-      <span style="float: left;">
+        <span style="float: left;">
       <b>{{title}}</b>
       </span>
-      <span *ngIf="groupByColumn">
-          
-         <amexio-dropdown [(ngModel)]="groupByColumnIndex"
-          [placeholder]="'Choose Column'"
-          name="groupByColumnIndex"
-          [dataReader]="'response.data'"
-          [data]="dropdownData"
-          [displayField]="'text'"
-          [valueField]="'dataIndex'"
-          [width]="'150px'"
-          (onSingleSelect)="setColumnData()">
-          </amexio-dropdown>
-      </span>
-      <span style="float: right">
-        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+      <span style="float: right" class="col-xs-12">
+        <div class="btn-group btn-group-sm" role="group" aria-label="Button group with nested dropdown">
+            <ng-container *ngIf="groupByColumn">
+                   <amexio-dropdown [(ngModel)]="groupByColumnIndex"
+                                    [placeholder]="'Choose Column'"
+                                    name="groupByColumnIndex"
+                                    [dataReader]="'response.data'"
+                                    [data]="dropdownData"
+                                    [displayField]="'text'"
+                                    [valueField]="'dataIndex'"
+                                    (onSingleSelect)="setColumnData()">
+                   </amexio-dropdown>
+               </ng-container>
           <button type="button" class="btn btn-secondary" aria-label="Previous" (click)="prev()"><span aria-hidden="true">&laquo;</span></button>
           <button type="button" class="btn btn-secondary">({{currentPage}} of {{maxPage}})</button>
           <div class="input-group-btn">

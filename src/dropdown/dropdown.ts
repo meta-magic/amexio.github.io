@@ -61,7 +61,7 @@ declare var $: any;
    </div>
 
  `,
-  providers : [CUSTOM_DROPDOWN_CONTROL_VALUE_ACCESSOR,BASE_IMPL_DROPDOWN_INPUT],
+  providers : [CUSTOM_DROPDOWN_CONTROL_VALUE_ACCESSOR, BASE_IMPL_DROPDOWN_INPUT, CommonHttpService],
   styles : [`
       .has-feedback-custom {
           position: relative;
