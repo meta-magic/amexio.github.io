@@ -221,7 +221,7 @@ export class SideNavBarComponent implements OnInit, AfterViewInit {
 
   menuClick(nodeData: any) {
     this.selectedNode.emit(nodeData);
-    if (!nodeData.childrens) {
+    if (!nodeData.childrens && !this.expanded) {
       this.closeNav();
     }
   }
