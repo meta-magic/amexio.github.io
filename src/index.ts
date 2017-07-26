@@ -27,15 +27,15 @@ import {VerticalLeftTabPaneComponent} from './tabpane/verticallefttab.component'
 import {VerticalRightTabPaneComponent} from './tabpane/verticalrighttab.component';
 import {DataTableComponent} from './datatable/datatable.component';
 import {ColumnComponent} from './datatable/column.component';
-import {FilterComponent} from './datatable/filter-directive';
+import {FilterComponent} from './datatable/datatable.filter.component';
 import {CarouselComponent} from './carousel/carousel.component';
 import {ItemSelectorComponent} from './itemselector/itemselector.component';
 import {NavbarComponent} from './navbar/navbar.component';
 import {NavbarSubMenuComponent} from './navbar/navbarsubmenu.component';
 import {SideNavBarComponent} from './navbar/sidenavbar.component';
-import {FilterTreeViewComponent} from "./treeview/filtertreeview";
-import {TreeViewComponent} from "./treeview/treeview.component";
-import {TreeDataTableComponent} from "./treedatatable/treedatatable.component";
+import {FilterTreeViewComponent} from './treeview/filtertreeview';
+import {TreeViewComponent} from './treeview/treeview.component';
+import {TreeDataTableComponent} from './treedatatable/treedatatable.component';
 
 export * from './button/button.component';
 export * from './common.http.service';
@@ -67,7 +67,7 @@ export * from './tabpane/tabpane.component'
 export * from './tabpane/verticallefttab.component'
 export * from './tabpane/verticalrighttab.component'
 
-export * from './datatable/filter-directive';
+export * from './datatable/datatable.filter.component';
 export * from './datatable/datatable.component';
 export * from './datatable/column.component';
 

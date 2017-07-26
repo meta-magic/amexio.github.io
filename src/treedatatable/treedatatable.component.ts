@@ -11,9 +11,8 @@
  *
  */
 
-import {OnInit, Input, Component, SimpleChange, EventEmitter, Output} from "@angular/core";
-import {TreeDataTableService} from "./treedatatable.service";
-import {CommonHttpService} from "../common.http.service";
+import {OnInit, Input, Component, SimpleChange, EventEmitter, Output} from '@angular/core';
+import {CommonHttpService} from '../common.http.service';
 
 
 @Component({
@@ -77,7 +76,7 @@ import {CommonHttpService} from "../common.http.service";
             </td>
         </tr>
     </table>`,
-    providers :[CommonHttpService],
+    providers : [CommonHttpService],
     styles : [`
       .tree-grid-levels{
         position: relative;
@@ -170,9 +169,9 @@ export class TreeDataTableComponent implements  OnInit{
     responseData: any;
 
     constructor (private  treeDataTableService : CommonHttpService){
-        this.columns.push({text:'Task', dataIndex: 'task', hidden: false, dataType : 'string'});
-        this.columns.push({text:'Duration', dataIndex: 'duration', hidden: false ,  dataType : 'number'});
-        this.columns.push({text:'User', dataIndex: 'user', hidden: false,  dataType : 'string'});
+        this.columns.push({text: 'Task', dataIndex: 'task', hidden: false, dataType : 'string'});
+        this.columns.push({text: 'Duration', dataIndex: 'duration', hidden: false ,  dataType : 'number'});
+        this.columns.push({text: 'User', dataIndex: 'user', hidden: false,  dataType : 'string'});
     }
 
     ngOnInit(){
@@ -180,7 +179,7 @@ export class TreeDataTableComponent implements  OnInit{
     }
 
     ngAfterViewInit(){
-        if(this.httpMethod && this.httpUrl){
+        if (this.httpMethod && this.httpUrl){
 
             this.treeDataTableService.fetchData(this.httpUrl, this.httpMethod).subscribe(
                 response => {
@@ -196,18 +195,18 @@ export class TreeDataTableComponent implements  OnInit{
     }
 
     ngOnChanges(change : SimpleChange){
-        if(this.dataTableBindData){
+        if (this.dataTableBindData){
             this.setData(this.dataTableBindData);
         }
     }
 
     setData(httpResponse: any){
         let treedata = this.getResponseData(httpResponse);
-        if(treedata){
+        if (treedata){
             this.data = treedata;
         }
 
-        this.viewRows = this.createViewRows(this.data,null);
+        this.viewRows = this.createViewRows(this.data, null);
         this.renderData();
     }
 
@@ -215,28 +214,28 @@ export class TreeDataTableComponent implements  OnInit{
         this.toggleViewRows(rowData, !rowData.expanded, this.viewRows);
     }
 
-    toggleViewRows(rowData : any , expanded1 : boolean, viewData:any){
-        if(!rowData.leaf)
+    toggleViewRows(rowData : any , expanded1 : boolean, viewData: any){
+        if (!rowData.leaf)
             rowData.expanded = expanded1;
 
         let expanded = rowData.expanded;
         let rowId = rowData.rowId;
 
-        if(!rowData.level){
+        if (!rowData.level){
             rowData.level = 0;
         }
 
         for (let cr = 0 ; cr < viewData.length; cr ++) {
             let childRows = viewData[cr];
 
-            if(childRows.parentId == rowId){
+            if (childRows.parentId == rowId){
                 childRows.visible = expanded;
 
                 childRows.level = rowData.level + 1;
-                childRows.tdclass = 'tree-grid-level-'+childRows.level;
+                childRows.tdclass = 'tree-grid-level-' + childRows.level;
 
-                if(childRows.haschildren && !rowData.expanded ){
-                    this.toggleViewRows(childRows, rowData.expanded,viewData);
+                if (childRows.haschildren && !rowData.expanded ){
+                    this.toggleViewRows(childRows, rowData.expanded, viewData);
                 }
             }
 
@@ -247,10 +246,10 @@ export class TreeDataTableComponent implements  OnInit{
     renderData(){
         for (let vr = 0 ; vr < this.viewRows.length; vr ++) {
             let childRows = this.viewRows[vr];
-            if(childRows.parentId)
+            if (childRows.parentId)
                 childRows.visible = false;
 
-            if(!childRows.parentId)
+            if (!childRows.parentId)
                 childRows.visible = true;
         }
     }
@@ -260,7 +259,7 @@ export class TreeDataTableComponent implements  OnInit{
         for (let d = 0 ; d < data.length; d ++){
             let td = JSON.parse(JSON.stringify(data[d]));
             let rowId = Math.random();
-            if(td.children && td.children.length>0){
+            if (td.children && td.children.length > 0){
                 td['leaf'] = false;
                 td['haschildren'] = true;
                 td['visible'] = true;
@@ -274,14 +273,14 @@ export class TreeDataTableComponent implements  OnInit{
             td['level'] = 1;
             td['tdclass'] = 'tree-grid-level-1';
 
-            if(parentId)
+            if (parentId)
                 td['parentId'] = parentId;
 
 
             viewTreeTableData.push(td);
 
-            if(td.children && td.children.length >0){
-                let dataArray : any= this.createViewRows(td.children,rowId);
+            if (td.children && td.children.length > 0){
+                let dataArray : any = this.createViewRows(td.children, rowId);
                 for (let d1 = 0 ; d1 < dataArray.length; d1 ++) {
                     let td1 = dataArray[d1];
                     viewTreeTableData.push(td1);
@@ -297,8 +296,8 @@ export class TreeDataTableComponent implements  OnInit{
 
     getResponseData(httpResponse : any){
         let responsedata = httpResponse;
-        let dr = this.dataReader.split(".");
-        for(let ir = 0 ; ir<dr.length; ir++){
+        let dr = this.dataReader.split('.');
+        for (let ir = 0 ; ir < dr.length; ir++){
             responsedata = responsedata[dr[ir]];
         }
         return responsedata;
@@ -308,36 +307,36 @@ export class TreeDataTableComponent implements  OnInit{
         this.selectedRecord.emit(rowData);
     }
 
-    setSortColumn(col:any){
+    setSortColumn(col: any){
         console.log(col);
         this.sortColumn = col;
         this.sortData();
     }
 
     sortData(){
-        if(this.sortColumn){
-            if(this.sortColumn.dataIndex && this.sortColumn.dataType){
+        if (this.sortColumn){
+            if (this.sortColumn.dataIndex && this.sortColumn.dataType){
                 let dataIndex = this.sortColumn.dataIndex;
                 let sortColDataIndex = dataIndex;
-                if(this.sortColumn.dataType == 'string'){
-                    this.data.sort((a : any,b : any)=>{
+                if (this.sortColumn.dataType == 'string'){
+                    this.data.sort((a : any, b : any) => {
                         debugger;
                         let x = a[sortColDataIndex].toLowerCase();
                         let y = b[sortColDataIndex].toLowerCase();
-                        if (x < y) {return -1;}
-                        if (x > y) {return 1;}
+                        if (x < y) {return -1; }
+                        if (x > y) {return 1; }
                         return 0;
                     });
-                    this.viewRows = this.createViewRows(this.data,null);
+                    this.viewRows = this.createViewRows(this.data, null);
                     this.renderData();
                 }
-                else if(this.sortColumn.dataType == 'number'){
-                    this.data.sort((a:any,b:any)=>{
+                else if (this.sortColumn.dataType == 'number'){
+                    this.data.sort((a: any, b: any) => {
                         let x = a[sortColDataIndex];
                         let y = b[sortColDataIndex];
-                        return x-y;
+                        return x - y;
                     });
-                    this.viewRows = this.createViewRows(this.data,null);
+                    this.viewRows = this.createViewRows(this.data, null);
                     this.renderData();
                 }
             }
@@ -346,9 +345,9 @@ export class TreeDataTableComponent implements  OnInit{
 
 
     setColumnVisiblity(dataIndex : string){
-        for(let ic = 0; ic<this.columns.length;ic++){
+        for (let ic = 0; ic < this.columns.length; ic++){
             let col = this.columns[ic];
-            if(col.dataIndex == dataIndex){
+            if (col.dataIndex == dataIndex){
                 col.hidden = !col.hidden;
             }
         }

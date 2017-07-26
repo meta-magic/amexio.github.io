@@ -43,7 +43,8 @@ declare var $;
       <b>{{title}}</b>
       </span>
       <span *ngIf="groupByColumn">
-       <!--  <amexio-dropdown [(ngModel)]="groupByColumnIndex"
+          
+         <amexio-dropdown [(ngModel)]="groupByColumnIndex"
           [placeholder]="'Choose Column'"
           name="groupByColumnIndex"
           [dataReader]="'response.data'"
@@ -52,7 +53,7 @@ declare var $;
           [valueField]="'dataIndex'"
           [width]="'150px'"
           (onSingleSelect)="setColumnData()">
-          </amexio-dropdown>-->
+          </amexio-dropdown>
       </span>
       <span style="float: right">
         <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
@@ -131,7 +132,7 @@ declare var $;
             </tr>
           </table>
           <div [ngStyle]="setHeight()">
-            <table class="table table-sm table-striped table-hover  table-bordered ">
+            <table class="table table-sm   table-bordered ">
               <tbody *ngIf="!smallScreen">
               <ng-container *ngIf="groupByColumn">
                 <tr [ngClass]="{'hiderow' : !(viewRows.length > 0),'showrow' : viewRows.length > 0}">
@@ -141,7 +142,7 @@ declare var $;
               <span [ngClass]="{'fa-caret-down':row.expanded,'fa-caret-right':!row.expanded}" class="fa " > &nbsp;&nbsp;</span>{{row.group}} <span class="badge badge-pill badge-default" style="float: right">{{row.groupData.length}}</span>
               </span>
                       <div [attr.id]="i" class="sublinks collapse">
-                        <table class="table table-bordered">
+                        <table class="table table-striped table-hover table-bordered">
                           <tbody>
                           <tr *ngFor="let rows of row.groupData let rowIndex = index" (click)="rowClick(rows, rowIndex)">
                             <td *ngIf="checkboxSelect" style="width: 10%">
@@ -275,7 +276,7 @@ declare var $;
     `]
 })
 
-export class DataTableComponent  implements OnInit, AfterViewChecked, OnDestroy, AfterViewInit, AfterContentInit, OnChanges{
+export class DataTableComponent  implements OnInit, AfterContentInit, AfterViewInit, OnChanges {
 
     @Input()
     private title: string;
@@ -414,13 +415,6 @@ export class DataTableComponent  implements OnInit, AfterViewChecked, OnDestroy,
         return tableHeight;
     }
 
-    ngAfterViewChecked() {
-        $('#' + this.elementId).selectpicker('refresh');
-    }
-
-    ngOnDestroy() {
-        $('#' + this.elementId).selectpicker('destroy');
-    }
 
     ngAfterContentInit() {
         this.createConfig();
@@ -886,7 +880,7 @@ export class DataTableComponent  implements OnInit, AfterViewChecked, OnDestroy,
                 }
                 statusArray.push(condition);
             }
-            if (filterOpt.filter === 1) {
+            if (filterOpt.filter === '1') {
                 if (filterOpt.type === 'string') {
                     condition = data[filterOpt.key].toLowerCase().startsWith(filterOpt.value.toLowerCase());
                 }
