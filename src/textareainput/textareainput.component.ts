@@ -76,7 +76,58 @@ export const BASE_IMPL_TEXTAREA_INPUT : any = {
 
     </div>
     `,
-    providers : [CUSTOM_TEXT_AREA_INPUT_CONTROL_VALUE_ACCESSOR,BASE_IMPL_TEXTAREA_INPUT]
+    providers : [CUSTOM_TEXT_AREA_INPUT_CONTROL_VALUE_ACCESSOR,BASE_IMPL_TEXTAREA_INPUT],
+    styles : [`
+        .has-feedback-custom {
+            position: relative;
+        }
+        .has-feedback-custom .form-control {
+            padding-right: 47.5px;
+        }
+
+        .form-control-feedback-custom {
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 2;
+            display: block;
+            width: 38px;
+            height: 38px;
+            line-height: 38px;
+            text-align: center;
+            pointer-events: none;
+        }
+
+        .has-feedback-custom label ~ .form-control-feedback-custom {
+            top: 32px;
+        }
+        .has-feedback-custom label.sr-only ~ .form-control-feedback-custom {
+            top: 0;
+        }
+
+        .searchIconPos{
+            position: absolute;
+            right: 5px;
+            top: 15px;
+            bottom: 0;
+            height: 14px;
+            margin: auto;
+            font-size: 14px;
+            cursor: pointer;
+            color: #ccc;
+        }
+        .showIcon{
+            visibility: visible;
+        }
+        .hideIcon{
+            visibility: hidden;
+        }
+        .scrollable-options {
+            height: auto;
+            max-height: 200px;
+            overflow-x: hidden;
+        }
+    `]
 })
 
 export class TextAreaComponent extends FormInputBase implements OnInit,ControlValueAccessor,AfterViewInit {
