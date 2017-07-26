@@ -22,7 +22,7 @@ import {CommonHttpService} from "../common.http.service";
   selector: 'amexio-sidemenubar',
   template: `
 
-      <div [ngClass]="{'sidenavleft':!right, 'sidenavright':right}"  [attr.id]="elementId" (mouseleave)="expanded?null:closeNav()">
+      <div [style.margin-top]="toPosition" [ngClass]="{'sidenavleft':!right, 'sidenavright':right}"  [attr.id]="elementId" (mouseleave)="expanded?null:closeNav()">
           <ul class="navbar-nav">
             <li *ngIf="filter==true">
               <input type="text" class="form-control" [(ngModel)]="filterText"  placeholder="Search" (keyup)="filterData()"  style="width: 100%;" />
@@ -55,7 +55,7 @@ import {CommonHttpService} from "../common.http.service";
           </ul>
       </div>
 
-      <span [ngClass]="{'sidenavopenleft':!right, 'sidenavopenright':right}"  (click)="openNav()">&#9776;</span>
+      <span [style.margin-top]="toPosition" [ngClass]="{'sidenavopenleft':!right, 'sidenavopenright':right}"  (click)="openNav()">&#9776;</span>
 
   `,
   styles: [`
@@ -148,6 +148,9 @@ export class SideNavBarComponent implements OnInit, AfterViewInit {
   @Input()
   filter: boolean;
 
+  @Input()
+  toPosition: string;
+
   @Output()
   selectedNode: any = new EventEmitter<any>();
 
@@ -176,6 +179,7 @@ export class SideNavBarComponent implements OnInit, AfterViewInit {
 
 
   ngOnInit() {
+      this.toPosition = this.toPosition+'px';
   }
 
   ngAfterViewInit() {
