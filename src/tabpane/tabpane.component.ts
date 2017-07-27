@@ -19,7 +19,7 @@ declare var $: any;
     <div class="wrapper" [attr.id]="'wrapper-'+elementId">
       <ul class="nav nav-tabs" role="tablist" [attr.id]="'list-'+elementId">
         <li class="nav-item" *ngFor="let tab of tabs" >
-          <a [class]="getTabClass(tab)" data-toggle="tab"  role="tab" [ngClass]="{'active':tab.active}" style="cursor: pointer;" (click)="tabActive(tab.elementId)" [attr.id]="tab.elementId" >&nbsp;{{tab.title}}&nbsp;&nbsp;<a *ngIf="closable" id="'closable-'+{{tab.elementId}}" style="vertical-align: top; cursor: pointer;" (click)="closeTab(tab.elementId)">&times;</a></a>
+          <a [class]="getTabClass(tab)" data-toggle="tab"  role="tab" [ngClass]="{'active':tab.active}" style="cursor: pointer;" (click)="activateTab(tab.elementId)" [attr.id]="tab.elementId" >&nbsp;{{tab.title}}&nbsp;&nbsp;<a *ngIf="closable" id="'closable-'+{{tab.elementId}}" style="vertical-align: top; cursor: pointer;" (click)="closeTab(tab.elementId)">&times;</a></a>
         </li>
       </ul>
     </div>
@@ -202,7 +202,7 @@ export class TabPaneComponent implements OnInit, AfterContentInit, AfterViewInit
     return cls;
   }
 
-  tabActive(tabId: string) {
+  activateTab(tabId: string) {
     const tabs = this.tabs;
      tabs.forEach(tab => {
      tab.active = false;
@@ -211,7 +211,6 @@ export class TabPaneComponent implements OnInit, AfterContentInit, AfterViewInit
      }
      });
   }
-
 
 
 }
