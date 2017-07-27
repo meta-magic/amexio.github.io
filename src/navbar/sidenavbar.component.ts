@@ -151,6 +151,9 @@ export class SideNavBarComponent implements OnInit, AfterViewInit {
   @Input()
   toPosition: string;
 
+  @Input()
+  width : string;
+
   @Output()
   selectedNode: any = new EventEmitter<any>();
 
@@ -165,16 +168,18 @@ export class SideNavBarComponent implements OnInit, AfterViewInit {
 
   filterText: string;
 
+
   @ContentChild('amexioNavHeaderTmpl') headerTemplate: TemplateRef<any>;
 
   @ContentChild('amexioMenuHeaderTmpl') childTemplate: TemplateRef<any>;
 
   @ContentChild('amexioSubMenuTmpl') subMenuTemplate: TemplateRef<any>;
 
-  constructor(private _http: Http, private carouselService: CommonHttpService) {
+  constructor(private _http: Http, private navService: CommonHttpService) {
     this.elementId = 'amexio-sidenav-view-' + Math.random() + '-' + new Date().getTime();
     this.expanded = false;
     this.filter = false;
+    this.width = "20%";
   }
 
 
@@ -248,7 +253,7 @@ export class SideNavBarComponent implements OnInit, AfterViewInit {
 
 
     callService() {
-        this.carouselService.fetchData(this.httpUrl, this.httpMethod).subscribe(
+        this.navService.fetchData(this.httpUrl, this.httpMethod).subscribe(
             response => {
                 this.bindData = response.json();
             },
@@ -262,38 +267,9 @@ export class SideNavBarComponent implements OnInit, AfterViewInit {
     }
 
 
- /* callService() {
-
-    let requestJson = {};
-    let headers = new Headers({ 'Content-Type': 'application/json;charset=UTF-8'  });
-    let options = new RequestOptions({headers : headers, method : this.httpMethod});
-    if (this.httpMethod === 'post') {
-      this._http.post(this.httpUrl, requestJson,  options).subscribe(
-          response => {
-            this.bindData = response.json();
-          },
-          error => {
-          },
-          () => {
-            this.renderServiceData();
-          }
-      );
-    }else if (this.httpMethod === 'get') {
-      this._http.get(this.httpUrl, options).subscribe(
-          response => {
-            this.bindData = response.json();
-          },
-          error => {
-          },
-          () => {
-            this.renderServiceData();
-          }
-      );
-    }
-  }*/
 
   openNav() {
-    document.getElementById(this.elementId).style.width = '250px';
+    document.getElementById(this.elementId).style.width = this.width;
   }
 
   closeNav() {
