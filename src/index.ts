@@ -36,6 +36,12 @@ import {SideNavBarComponent} from './navbar/sidenavbar.component';
 import {FilterTreeViewComponent} from './treeview/filtertreeview';
 import {TreeViewComponent} from './treeview/treeview.component';
 import {TreeDataTableComponent} from './treedatatable/treedatatable.component';
+import {PaneActionComponent} from "./panes/paneaction.component";
+import {PaneBodyComponent} from "./panes/panebody.component";
+import {PaneHeaderComponent} from "./panes/paneheader.component";
+import {WindowPaneComponent} from "./panes/windowpane.component";
+import {DialogComponent} from "./panes/dialog.component";
+import {CardComponent} from "./panes/card.component";
 
 export * from './button/button.component';
 export * from './common.http.service';
@@ -83,6 +89,16 @@ export * from './treeview/filtertreeview';
 export * from './treeview/treeview.component';
 export * from './treedatatable/treedatatable.component';
 
+/*pane exports*/
+
+export *  from "./panes/paneaction.component";
+export *  from "./panes/panebody.component";
+export *  from "./panes/paneheader.component";
+export *  from "./panes/windowpane.component";
+export *  from "./panes/dialog.component";
+export *  from "./panes/card.component";
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -122,7 +138,13 @@ export * from './treedatatable/treedatatable.component';
     SideNavBarComponent,
     FilterTreeViewComponent,
     TreeViewComponent,
-    TreeDataTableComponent
+    TreeDataTableComponent,
+    PaneActionComponent,
+    PaneBodyComponent,
+    PaneHeaderComponent,
+    WindowPaneComponent,
+    DialogComponent,
+    CardComponent
   ],
   exports: [
     ButtonComponent,
@@ -157,7 +179,13 @@ export * from './treedatatable/treedatatable.component';
     SideNavBarComponent,
     FilterTreeViewComponent,
     TreeViewComponent,
-    TreeDataTableComponent
+    TreeDataTableComponent,
+    PaneActionComponent,
+    PaneBodyComponent,
+    PaneHeaderComponent,
+    WindowPaneComponent,
+    DialogComponent,
+    CardComponent
   ]
 })
 export class AmexioWidgetModule {
