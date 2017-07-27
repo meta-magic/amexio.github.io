@@ -276,26 +276,19 @@ declare var $;
 
 export class DataTableComponent  implements OnInit, AfterContentInit, AfterViewInit, OnChanges {
 
-    @Input()
-    private title: string;
+    @Input() title: string;
 
-    @Input()
-    private pageSize: number;
+    @Input() pageSize: number;
 
-    @Input()
-    private httpUrl: string;
+    @Input() httpUrl: string;
 
-    @Input()
-    private httpMethod: string;
+    @Input() httpMethod: string;
 
-    @Input()
-    private dataReader: string;
+    @Input() dataReader: string;
 
-    @Input()
-    private checkboxSelect: boolean;
+    @Input() checkboxSelect: boolean;
 
-    @Input()
-    private dataTableBindData: any;
+    @Input() dataTableBindData: any;
 
     @Output()
     rowSelect: any = new EventEmitter <any>();
@@ -303,20 +296,15 @@ export class DataTableComponent  implements OnInit, AfterContentInit, AfterViewI
     @Output()
     selectedRowData: any = new EventEmitter<any>();
 
-    @Input()
-    private height: string;
+    @Input() height: string;
 
-    @Input()
-    private width: string;
+    @Input() width: string;
 
-    @Input()
-    private groupByColumn = false;
+    @Input() groupByColumn = false;
 
-    @Input()
-    private groupByColumnIndex: string;
+    @Input() groupByColumnIndex: string;
 
-    @Input()
-    private filtering: boolean;
+    @Input() filtering: boolean;
 
     columns: any[];
 
