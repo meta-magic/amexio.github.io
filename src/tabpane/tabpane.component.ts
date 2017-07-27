@@ -202,7 +202,7 @@ export class TabPaneComponent implements OnInit, AfterContentInit, AfterViewInit
     return cls;
   }
 
-  activateTab(tabId: string) {
+  tabActive(tabId: string) {
     const tabs = this.tabs;
      tabs.forEach(tab => {
      tab.active = false;
@@ -211,5 +211,7 @@ export class TabPaneComponent implements OnInit, AfterContentInit, AfterViewInit
      }
      });
   }
+
+
 
 }
