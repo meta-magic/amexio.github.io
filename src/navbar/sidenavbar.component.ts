@@ -25,7 +25,9 @@ import {CommonHttpService} from "../common.http.service";
       <div [style.margin-top]="toPosition" [ngClass]="{'sidenavleft':!right, 'sidenavright':right}"  [attr.id]="elementId" (mouseleave)="expanded?null:closeNav()">
           <ul class="navbar-nav">
             <li *ngIf="filter==true">
-              <input type="text" class="form-control" [(ngModel)]="filterText"  placeholder="Search" (keyup)="filterData()"  style="width: 100%;" />
+                <div style="padding-top: 5px;padding-bottom: 5px;">
+                    <input type="text" class="form-control" [(ngModel)]="filterText"  placeholder="Search" (keyup)="filterData()"  style="width: 100%;" />
+                </div>
             </li>
               <li class="nav-item" *ngFor="let header of menus ">
                   <a class="nav-link"  (click)="expandNode(header)">
