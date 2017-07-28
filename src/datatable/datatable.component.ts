@@ -368,9 +368,6 @@ export class DataTableComponent  implements OnInit, AfterContentInit, AfterViewI
         }else {
             this.smallScreen = false;
           }
-    }
-
-    ngAfterViewInit() {
         if (this.httpMethod && this.httpUrl) {
             this.dataTableSevice.fetchData(this.httpUrl, this.httpMethod).subscribe(
                 response => {
@@ -385,6 +382,10 @@ export class DataTableComponent  implements OnInit, AfterContentInit, AfterViewI
         } else if (this.dataTableBindData) {
             this.setData(this.dataTableBindData);
         }
+    }
+
+    ngAfterViewInit() {
+
     }
 
 
