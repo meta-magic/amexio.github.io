@@ -30,12 +30,10 @@ import {CommonHttpService} from "../common.http.service";
               <div class="collapse navbar-collapse " id="navbarNavDropdown">
                   <ul class="nav navbar-nav bg-faded">
                       <li class="dropdown dropdown-large bg-faded" id="{{elementId}}dd-lr-{{ind}}" *ngFor="let mh of menus let ind = index" >
-                          <a class="dropdown-toggle" [ngClass]="{'dropdown-toggle':getToggleClass(mh)}" data-toggle="dropdown"  (click)="adjustPosition($event, ind)" style="cursor:pointer;padding: 10%">
+                          <a [ngClass]="{'dropdown-toggle':getToggleClass(mh)}" data-toggle="dropdown" (click)="adjustPosition($event, ind)">
                               <ng-container *ngIf="headerTemplate==null">
-                                <span style="padding-left: 10px">{{mh.text}}</span>
-                              </ng-container>
-                            <ng-template *ngIf="headerTemplate!=null" [ngTemplateOutlet]="headerTemplate" [ngOutletContext]="{ $implicit: {}, navHeader:mh }"></ng-template>
-                              <b *ngIf="mh.childrens" class="caret" ></b>
+                                  &nbsp;&nbsp;{{mh.text}}
+                              </ng-container><ng-template *ngIf="headerTemplate!=null" [ngTemplateOutlet]="headerTemplate" [ngOutletContext]="{ $implicit: {}, navHeader:mh }"></ng-template>
                           </a>
                           <ng-container *ngIf="mh.childrens">
                               <ul class="dropdown-menu" id="{{elementId}}dd-m-{{ind}}">
