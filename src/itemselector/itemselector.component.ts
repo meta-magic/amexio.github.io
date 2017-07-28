@@ -125,9 +125,6 @@ export class ItemSelectorComponent implements OnInit, AfterViewInit {
       this.smallScreen = false;
       this.itemSelectorWidth = 46 + '%' ;
     }
-  }
-
-  ngAfterViewInit() {
     if (this.httpMethod && this.httpUrl) {
       this.itemSelectorService.fetchData(this.httpUrl, this.httpMethod).subscribe(
           response => {
@@ -142,6 +139,10 @@ export class ItemSelectorComponent implements OnInit, AfterViewInit {
     } else if (this.ItemSelectBindData) {
       this.setData(this.ItemSelectBindData);
     }
+  }
+
+  ngAfterViewInit() {
+
   }
   setData(httpResponse: any) {
     let responsedata = httpResponse;

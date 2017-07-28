@@ -168,7 +168,6 @@ export class FilterComponent implements OnInit {
     }
 
     keyUpSearch(col: any) {
-        debugger;
         if (this.filterValue == null || this.filterValue === '') {
             this.removeFilter(col);
         }else {

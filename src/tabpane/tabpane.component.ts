@@ -10,10 +10,10 @@ declare var $: any;
 
     <div [attr.id]="elementId" (window:resize)="onResize($event)">
     <div (click)="leftClick()" class="scroller scroller-left" >
-      <span style="display: none;"  [attr.id]="'left-'+elementId"><i class="fa fa-caret-left fa-3x" aria-hidden="true"></i></span>
+      <span style="display: none;"  [attr.id]="'left-'+elementId"><i class="fa fa-caret-left fa-2x" aria-hidden="true"></i></span>
     </div>
     <div (click)="rightClick()" class="scroller scroller-right">
-      <span  style="display: block"  [attr.id]="'right-'+elementId"><i class="fa fa-caret-right fa-3x" aria-hidden="true"></i></span>
+      <span  style="display: block"  [attr.id]="'right-'+elementId"><i class="fa fa-caret-right fa-2x" aria-hidden="true"></i></span>
     </div>
     
     <div class="wrapper" [attr.id]="'wrapper-'+elementId">
@@ -91,8 +91,9 @@ export class TabPaneComponent implements OnInit, AfterContentInit, AfterViewInit
   elementId: string;
 
   constructor() {
-    this.elementId = 'tabpane-' + new Date().getTime();
+    this.elementId = 'tabpane-' + new Date().getTime()+"-"+Math.random().toString(36).substr(2, length);
   }
+
 
   ngOnInit() {
 
@@ -170,7 +171,7 @@ export class TabPaneComponent implements OnInit, AfterContentInit, AfterViewInit
     const listWidth1 = Math.round(this.widthOfList()) + 1;
     let listWidth  = Math.round($('#' + this.elementId).outerWidth()) + 10;
 
-    console.log(listWidth + '--' + listWidth1);
+
 
     if (listWidth1 > listWidth) {
       listWidth = listWidth1;

@@ -127,25 +127,26 @@ export class TypeAheadComponent extends FormInputBase  implements OnInit, AfterV
     if(this.triggerChar == null){
       this.triggerChar = 1;
     }
+      if(this.httpMethod && this.httpUrl){
+          this.amxHttp.fetchData(this.httpUrl,this.httpMethod).subscribe(
+              res=>{
+                  this.responseData = res.json();
+              },
+              error=>{
+
+              },
+              ()=>{
+                  this.setData(this.responseData);
+              }
+          );
+      }
+      else if(this.datalist){
+          this.setData(this.datalist);
+      }
   }
 
   ngAfterViewInit(){
-    if(this.httpMethod && this.httpUrl){
-      this.amxHttp.fetchData(this.httpUrl,this.httpMethod).subscribe(
-        res=>{
-          this.responseData = res.json();
-        },
-        error=>{
 
-        },
-        ()=>{
-          this.setData(this.responseData);
-        }
-      );
-    }
-    else if(this.datalist){
-      this.setData(this.datalist);
-    }
   }
 
   onKeyUp(event : any){

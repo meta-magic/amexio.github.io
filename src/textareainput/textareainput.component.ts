@@ -63,11 +63,6 @@ export const BASE_IMPL_TEXTAREA_INPUT : any = {
 
         </textarea>
 
-        <ng-container *ngIf="iconFeedBack">
-            <span [attr.class]="iconClassName" aria-hidden="true"></span>
-            <span [attr.id]="spanId" class="sr-only">({{iconName}})</span>
-        </ng-container>
-
         <ng-container *ngIf="!iconFeedBack">
             <i [class]="fieldglyphIcon"></i>
         </ng-container>

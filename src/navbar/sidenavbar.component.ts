@@ -7,11 +7,11 @@
  *
  * http://www.apache.org/licenses/LICENSE-2.0
  *
- * Created by Ketan Gote on 7/4/17.
+ * Created by Ketan Gote on 7/4/17. 
  */
 
 import {
-  AfterViewInit, Component, ContentChild, EventEmitter, Input, OnInit, Output,
+  AfterViewInit, ChangeDetectorRef, Component, ContentChild, EventEmitter, Input, OnInit, Output,
   TemplateRef
 } from '@angular/core';
 import {Http, Headers, RequestOptions} from '@angular/http';
@@ -177,7 +177,7 @@ export class SideNavBarComponent implements OnInit, AfterViewInit {
 
   @ContentChild('amexioSubMenuTmpl') subMenuTemplate: TemplateRef<any>;
 
-  constructor(private _http: Http, private navService: CommonHttpService) {
+  constructor(private _http: Http, private navService: CommonHttpService,private cdf : ChangeDetectorRef) {
     this.elementId = 'amexio-sidenav-view-' + Math.random() + '-' + new Date().getTime();
     this.expanded = false;
     this.filter = false;
@@ -187,10 +187,6 @@ export class SideNavBarComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
       this.toPosition = this.toPosition+'px';
-  }
-
-  ngAfterViewInit() {
-
     if (this.httpMethod && this.httpUrl) {
       this.callService();
     } else if (this.bindData) {
@@ -203,6 +199,22 @@ export class SideNavBarComponent implements OnInit, AfterViewInit {
         this.openNav();
       });
     }
+  }
+
+  ngAfterViewInit() {
+
+   /* if (this.httpMethod && this.httpUrl) {
+      this.callService();
+    } else if (this.bindData) {
+      this.setData(this.bindData);
+    }
+    // this.openNav();
+
+    if (this.expanded) {
+      setTimeout(() => {
+        this.openNav();
+      });
+    }*/
   }
 
 
@@ -262,7 +274,7 @@ export class SideNavBarComponent implements OnInit, AfterViewInit {
             error => {
             },
             () => { this.renderServiceData();
-
+              this.cdf.markForCheck();
             }
         );
 
