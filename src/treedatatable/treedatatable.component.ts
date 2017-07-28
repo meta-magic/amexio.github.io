@@ -175,10 +175,6 @@ export class TreeDataTableComponent implements  OnInit{
     }
 
     ngOnInit(){
-
-    }
-
-    ngAfterViewInit(){
         if (this.httpMethod && this.httpUrl){
 
             this.treeDataTableService.fetchData(this.httpUrl, this.httpMethod).subscribe(
@@ -192,6 +188,10 @@ export class TreeDataTableComponent implements  OnInit{
                 }
             );
         }
+    }
+
+    ngAfterViewInit(){
+
     }
 
     ngOnChanges(change : SimpleChange){
