@@ -13,28 +13,32 @@
  */
 
 
-import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from '@angular/core';
+import {
+  AfterContentInit, Component, ContentChildren, EventEmitter, Input, OnInit, Output,
+  QueryList
+} from '@angular/core';
 import {DropdownItemComponent} from './dropdown.item.component';
 
 
 @Component({
   selector: 'amexio-btn-split-dropdown',
   template: `
-
+      
     <div [class]="btnGroupStyleClass" [attr.id]="elementId">
-      <button type="button" [class]="btnDropdownStyle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        {{label}}
-      </button>
-      <ul class="dropdown-menu">
-        <ng-container *ngFor="let itemData of dropdownItemData">
-          <a class="dropdown-item" [ngClass]="{'disabled':itemData.disabled}" (click)="itemClick($event,itemData)">
-            {{itemData.label}}
-            <ng-container *ngIf="itemData.icon!=null">
-              <i [class]="itemData.iconStyleClass" aria-hidden="true"></i>
+        <button type="button" [class]="btnStyleClass">{{label}}</button>
+        <button type="button" [class]="btnDropdownStyle" (click)="btnClick($event)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu">
+            <ng-container *ngFor="let itemData of dropdownItemData">
+                <a class="dropdown-item" [ngClass]="{'disabled':itemData.disabled}" (click)="itemClick($event,itemData)">
+                    {{itemData.label}}
+                    <ng-container *ngIf="itemData.icon!=null">
+                        <i [class]="itemData.iconStyleClass" aria-hidden="true"></i>
+                    </ng-container>
+                </a>
             </ng-container>
-          </a>
-        </ng-container>
-      </ul>
+        </ul>
     </div>
     
   `,
@@ -56,6 +60,8 @@ export class ButtonSplitDropdownComponent implements OnInit, AfterContentInit {
   btnDropdownStyle: string;
 
   btnGroupStyleClass: string;
+
+  @Output()   onClick: EventEmitter<any> = new EventEmitter<any>();
 
   @ContentChildren(DropdownItemComponent) dropdownItemRef: QueryList<DropdownItemComponent>;
   constructor() {
@@ -113,5 +119,9 @@ export class ButtonSplitDropdownComponent implements OnInit, AfterContentInit {
     if (itemData.onClickRoute != null) {
       // this.router.navigate([itemData.onClickRoute]);
     }
+  }
+
+  btnClick(clickData: any) {
+    this.onClick.emit(clickData);
   }
 }
