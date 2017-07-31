@@ -142,6 +142,7 @@ export class TextAreaComponent extends FormInputBase implements OnInit,ControlVa
         this.divCss = 'form-group has-feedback';
       else
         this.divCss = 'form-group has-feedback has-feedback-custom';
+
     }
 
     ngOnInit() {
@@ -157,6 +158,9 @@ export class TextAreaComponent extends FormInputBase implements OnInit,ControlVa
         }
         if(this.popoverPlacement == null){
             this.popoverPlacement = 'bottom';
+        }
+        if (this.enablePopOver) {
+            this.popoverField = 'popover';
         }
     }
 
