@@ -13,14 +13,16 @@
 import {Injectable} from '@angular/core';
 import {Http, RequestOptions, Headers} from '@angular/http';
 import {Observable} from "rxjs/Observable";
-
+declare var Messenger;
 @Injectable()
 export class CommonHttpService {
 
   filteredObject: any = [];
 
   constructor(private http: Http) {
-
+    if(Messenger == null){
+      console.log('Please Add Messenger JS & CSS')
+    }
   }
 
   fetchData(serviceUrl : string, methodType: string) : Observable<any>{
@@ -78,11 +80,11 @@ export class CommonHttpService {
     }
 
     if(showMessage)
-     /* Messenger().post({
+      Messenger().post({
         message: showMessage,
         type: 'error',
         showCloseButton: true
-      });*/
+      });
 
     return showMessage;
   }
@@ -107,11 +109,11 @@ export class CommonHttpService {
     }
 
     if(showMessage)
-    /*  Messenger().post({
+      Messenger().post({
         message: showMessage,
         type: 'error',
         showCloseButton: true
-      });*/
+      });
 
     return showMessage;
   }
@@ -119,32 +121,32 @@ export class CommonHttpService {
   toasterDanger(title : string,message : string,timeout : string){
     if(timeout != null)
       timeout = '3';
- /*   Messenger().post({
+    Messenger().post({
       message: message,
       type: 'error',
       showCloseButton: true,
       hideAfter : timeout
-    });*/
+    });
   }
   toasterSuccess(title : string,message : string,timeout : string){
     if(timeout != null)
       timeout = '3';
-   /* Messenger().post({
+    Messenger().post({
       message: message,
       type: 'success',
       showCloseButton: true,
       hideAfter : timeout
-    });*/
+    });
   }
   toasterInfo(title : string,message : string,timeout : string){
     if(timeout != null)
       timeout = '3';
-   /* Messenger().post({
+    Messenger().post({
       message: message,
       type: 'info',
       showCloseButton: true,
       hideAfter : timeout
-    });*/
+    });
   }
 
 
