@@ -12,29 +12,31 @@
  */
 
 
-import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from '@angular/core';
+import {
+  AfterContentInit, Component, ContentChildren, EventEmitter, Input, OnInit, Output,
+  QueryList
+} from '@angular/core';
 import {DropdownItemComponent} from './dropdown.item.component';
 
 @Component({
   selector: 'amexio-btn-dropdown',
   template: `
-    
       <div [class]="btnGroupStyleClass" [attr.id]="elementId">
-        <button type="button" [class]="btnStyleClass">{{label}}</button>
-        <button type="button" [class]="btnDropdownStyle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <span class="sr-only">Toggle Dropdown</span>
-        </button>
-        <ul class="dropdown-menu">
-          <ng-container *ngFor="let itemData of dropdownItemData">
-            <a class="dropdown-item" [ngClass]="{'disabled':itemData.disabled}" (click)="itemClick($event,itemData)">
-              {{itemData.label}}
-              <ng-container *ngIf="itemData.icon!=null">
-                <i [class]="itemData.iconStyleClass" aria-hidden="true"></i>
+          <button type="button" [class]="btnDropdownStyle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{label}}
+          </button>
+          <ul class="dropdown-menu">
+              <ng-container *ngFor="let itemData of dropdownItemData">
+                  <a class="dropdown-item" [ngClass]="{'disabled':itemData.disabled}" (click)="itemClick($event,itemData)">
+                      {{itemData.label}}
+                      <ng-container *ngIf="itemData.icon!=null">
+                          <i [class]="itemData.iconStyleClass" aria-hidden="true"></i>
+                      </ng-container>
+                  </a>
               </ng-container>
-            </a>
-          </ng-container>
-        </ul>
+          </ul>
       </div>
+      
   `,
 })
 export class ButtonDropdownComponent implements OnInit, AfterContentInit {
