@@ -13,16 +13,24 @@
 import {Injectable} from '@angular/core';
 import {Http, RequestOptions, Headers} from '@angular/http';
 import {Observable} from "rxjs/Observable";
+declare var $;
 declare var Messenger;
 @Injectable()
 export class CommonHttpService {
 
   filteredObject: any = [];
 
-  constructor(private http: Http) {
-    if(Messenger == null){
-      console.log('Please Add Messenger JS & CSS')
+  constructor(private http : Http) {
+    if(Messenger != null){
+      Messenger.options = {
+        extraClasses: 'messenger-fixed messenger-on-top messenger-on-right',
+        theme: 'air'
+      }
     }
+    else{
+      console.warn('Please include Messenger js/css in your assets from http://github.hubspot.com/messenger/');
+    }
+
   }
 
   fetchData(serviceUrl : string, methodType: string) : Observable<any>{
