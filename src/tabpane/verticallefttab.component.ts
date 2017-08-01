@@ -15,7 +15,7 @@ declare var $: any;
   template : `
     <table>
       <tr>
-        <td width="10%" valign="top">
+        <td [attr.width]="tabwidth" valign="top">
           <ul [ngClass]="tapPosition">
             <li *ngFor="let tab of tabs" class="nav-item">
               <a (click)="activateTab(tab.elementId)" [ngClass]="{'active':(tab.active && !verticalText), 'inactive':(!tab.active && !verticalText),'activevertical':(tab.active && verticalText), 'inactivevertical':(!tab.active && verticalText)}" class="nav-link " [attr.id]="tab.elementId" style="cursor: pointer;"> <i *ngIf="tab.icon" [ngClass]="tab.icon"></i>&nbsp;{{tab.title}}</a>
@@ -91,6 +91,8 @@ export class VerticalLeftTabPaneComponent implements OnInit, AfterViewInit, Afte
 
   @Input() verticalText: boolean;
 
+  @Input() tabwidth : string;
+
   @ContentChildren(TabComponent)  queryTabs: QueryList<TabComponent>;
 
   elementId: string;
@@ -99,6 +101,7 @@ export class VerticalLeftTabPaneComponent implements OnInit, AfterViewInit, Afte
   constructor() {
     this.elementId = 'vertical-left-tabpane-' + new Date().getTime();
     this.verticalText = false;
+    this.tabwidth = "15%";
 
   }
 
