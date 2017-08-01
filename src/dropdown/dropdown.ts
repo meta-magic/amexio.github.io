@@ -137,8 +137,10 @@ export class DropDownComponent extends FormInputBase implements OnInit, ControlV
         for(let ir = 0 ; ir<dr.length; ir++){
             responsedata = responsedata[dr[ir]];
         }
-        this.filteredOptions = responsedata;
-        this.nonFilteredRowData = responsedata;
+        //Sort Alphabetically
+        let sortedData = responsedata.sort((a, b) => a[this.displayField].toLowerCase() !== b[this.displayField].toLowerCase() ? a[this.displayField].toLowerCase() < b[this.displayField].toLowerCase() ? -1 : 1 : 0);
+        this.filteredOptions = sortedData;
+        this.nonFilteredRowData = sortedData;
 
         if(this.multiSelect){
             let preSelectedMultiValues : string = '';
