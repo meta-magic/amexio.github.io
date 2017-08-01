@@ -16,203 +16,201 @@ import {CommonHttpService} from "../common.http.service";
 
 export const COLUMN_SIZE = 'col-lg-';
 @Component({
-  selector : 'amexio-radio-group',
-  template : `
-      <div class="form-group">
-          <br>
-          <label  [attr.for]="elementId">{{fieldLabel}}</label>
-          <div style="overflow: auto;">
-              <ul class="list-group">
-                  <li class="list-group-item" *ngIf="searchBox"><span>
+    selector : 'amexio-radio-group',
+    template : `
+        <div class="form-group">
+            <br>
+            <label  [attr.for]="elementId">{{fieldLabel}}</label>
+
+            <div class="" [ngClass]="{'row':column || column!='','list-group':!column ||column==''}">
+                <li class="list-group-item col-sm-12" *ngIf="searchBox"><span class="col-sm-12">
               <input [(ngModel)]="textValue" type="text" class="form-control" placeholder="Please select" (keyup)="filterData($event)">
             </span></li>
-                  <li [attr.class]="'list-group-item '+calculatedColSize"  *ngFor="let row of viewData;let i = index">
-                      <label class="custom-control custom-radio">
-                          <input class="custom-control-input" [attr.id]="elementId+'CNT'+i" type="radio" [required]="allowBlank ? true: null"  [attr.name] = "fieldName" (click)="setSelectedCheckBox(row, $event)"> 
-                          <span class="custom-control-indicator"></span>
-                          <span class="custom-control-description">{{row[displayField]}}</span>
-                      </label>
-                  </li>
-              </ul>
-          </div>
+                <li class="list-group-item" [ngClass]="calculatedColSize"  *ngFor="let row of viewData;let i = index">
+                    <label class="custom-control custom-radio">
+                        <input class="custom-control-input" [attr.id]="elementId+'CNT'+i" type="radio" [required]="allowBlank ? true: null"  [attr.name] = "fieldName" (click)="setSelectedCheckBox(row, $event)">
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">{{row[displayField]}}</span>
+                    </label>
+                </li>
+            </div>
 
+        </div>
 
-      </div>
+    `,
+    styles : [`
+        .has-feedback-custom {
+            position: relative;
+        }
+        .has-feedback-custom .form-control {
+            padding-right: 47.5px;
+        }
 
-  `,
-  styles : [`
-      .has-feedback-custom {
-          position: relative;
-      }
-      .has-feedback-custom .form-control {
-          padding-right: 47.5px;
-      }
+        .form-control-feedback-custom {
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 2;
+            display: block;
+            width: 38px;
+            height: 38px;
+            line-height: 38px;
+            text-align: center;
+            pointer-events: none;
+        }
 
-      .form-control-feedback-custom {
-          position: absolute;
-          top: 0;
-          right: 0;
-          z-index: 2;
-          display: block;
-          width: 38px;
-          height: 38px;
-          line-height: 38px;
-          text-align: center;
-          pointer-events: none;
-      }
+        .has-feedback-custom label ~ .form-control-feedback-custom {
+            top: 32px;
+        }
+        .has-feedback-custom label.sr-only ~ .form-control-feedback-custom {
+            top: 0;
+        }
 
-      .has-feedback-custom label ~ .form-control-feedback-custom {
-          top: 32px;
-      }
-      .has-feedback-custom label.sr-only ~ .form-control-feedback-custom {
-          top: 0;
-      }
-
-      .searchIconPos{
-          position: absolute;
-          right: 5px;
-          top: 15px;
-          bottom: 0;
-          height: 14px;
-          margin: auto;
-          font-size: 14px;
-          cursor: pointer;
-          color: #ccc;
-      }
-      .showIcon{
-          visibility: visible;
-      }
-      .hideIcon{
-          visibility: hidden;
-      }
-      .scrollable-options {
-          height: auto;
-          max-height: 200px;
-          overflow-x: hidden;
-      }
-  `]
+        .searchIconPos{
+            position: absolute;
+            right: 5px;
+            top: 15px;
+            bottom: 0;
+            height: 14px;
+            margin: auto;
+            font-size: 14px;
+            cursor: pointer;
+            color: #ccc;
+        }
+        .showIcon{
+            visibility: visible;
+        }
+        .hideIcon{
+            visibility: hidden;
+        }
+        .scrollable-options {
+            height: auto;
+            max-height: 200px;
+            overflow-x: hidden;
+        }
+    `]
 })
 
 export class RadioGroupComponent implements  OnInit{
 
-  @Input()    fieldLabel : string;
+    @Input()    fieldLabel : string;
 
-  @Input()    fieldName : string;
+    @Input()    fieldName : string;
 
-  @Input()    allowBlank : boolean;
+    @Input()    allowBlank : boolean;
 
-  @Input()    dataReader : string;
+    @Input()    dataReader : string;
 
-  @Input()    httpMethod : string;
+    @Input()    httpMethod : string;
 
-  @Input()    httpUrl : string;
+    @Input()    httpUrl : string;
 
-  @Input()    displayField : string;
+    @Input()    displayField : string;
 
-  @Input()    valueField : string;
+    @Input()    valueField : string;
 
-  @Input()    radioGroupBindData : any;
+    @Input()    radioGroupBindData : any;
 
-  @Input()    searchBox : boolean;
+    @Input()    searchBox : boolean;
 
-  @Input()    column: string;
+    @Input()    column: string;
 
-  @Output()   selectedValue : any = new EventEmitter<any>();
+    @Output()   selectedValue : any = new EventEmitter<any>();
 
-  elementId : string;
+    elementId : string;
 
-  data : any[];
+    data : any[];
 
-  viewData : any[];
+    viewData : any[];
 
-  textValue : string;
+    textValue : string;
 
-  selectedCheckBox : any[];
+    selectedCheckBox : any[];
 
-  responseData : any;
+    responseData : any;
 
-  calculatedColSize : any;
+    calculatedColSize : any;
 
 
-  constructor(private amxHttp: CommonHttpService) {
-    this.elementId = "radio-group-"+new Date().getTime();
-    this.selectedCheckBox = [];
-  }
+    constructor(private amxHttp: CommonHttpService) {
+        this.elementId = "radio-group-"+new Date().getTime();
+        this.selectedCheckBox = [];
+    }
 
-  ngOnInit() {
-    this.calculatedColSize = COLUMN_SIZE+this.column;
-    if(this.httpMethod && this.httpUrl){
-      this.amxHttp.fetchData(this.httpUrl,this.httpMethod).subscribe(
-        response=>{
-          this.responseData = response.json();
-        },
-        error=>{
-        },
-        ()=>{
-          this.setData(this.responseData);
+    ngOnInit() {
+        this.calculatedColSize = COLUMN_SIZE+this.column;
+        if(this.httpMethod && this.httpUrl){
+            this.amxHttp.fetchData(this.httpUrl,this.httpMethod).subscribe(
+                response=>{
+                    this.responseData = response.json();
+                },
+                error=>{
+                },
+                ()=>{
+                    this.setData(this.responseData);
+                }
+            );
+        }else if(this.radioGroupBindData){
+            this.setData(this.radioGroupBindData);
         }
-      );
-    }else if(this.radioGroupBindData){
-      this.setData(this.radioGroupBindData);
-    }
-  }
-
-  ngAfterViewInit(){
-
-  }
-
-  setData(httpResponse: any){
-    this.data = this.getResponseData(httpResponse);
-    this.viewData = this.getResponseData(httpResponse);
-  }
-
-
-  getResponseData(httpResponse : any){
-    let responsedata = httpResponse;
-    let dr = this.dataReader.split(".");
-    if(dr!=null){
-      for(let ir = 0 ; ir<dr.length; ir++){
-        responsedata = responsedata[dr[ir]];
-      }
     }
 
-    return responsedata;
-  }
+    ngAfterViewInit(){
 
-  filterData(event : any){
-    if(this.textValue.length>0){
-      this.viewData = [];
-      for(let vd = 0 ; vd<this.data.length;vd++){
-        let displayData = this.data[vd][this.displayField];
-        if(displayData.toLowerCase().startsWith(this.textValue)){
-          this.viewData.push(this.data[vd]);
+    }
+
+    setData(httpResponse: any){
+        this.data = this.getResponseData(httpResponse);
+        this.viewData = this.getResponseData(httpResponse);
+    }
+
+
+    getResponseData(httpResponse : any){
+        let responsedata = httpResponse;
+        let dr = this.dataReader.split(".");
+        if(dr!=null){
+            for(let ir = 0 ; ir<dr.length; ir++){
+                responsedata = responsedata[dr[ir]];
+            }
         }
-      }
-    }else{
-      this.viewData = this.data;
+
+        return responsedata;
     }
 
-  }
+    filterData(event : any){
+        if(this.textValue.length>0){
+            this.viewData = [];
+            for(let vd = 0 ; vd<this.data.length;vd++){
+                let displayData = this.data[vd][this.displayField];
+                if(displayData.toLowerCase().startsWith(this.textValue)){
+                    this.viewData.push(this.data[vd]);
+                }
+            }
+        }else{
+            this.viewData = this.data;
+        }
 
-  setSelectedCheckBox(rowData:any, event:any){
-    if(event.currentTarget.checked){
-      this.selectedCheckBox.push(rowData);
     }
-    else{
-      let indexOf = this.selectedCheckBox.indexOf(rowData);
-      delete this.selectedCheckBox[indexOf];
-    }
-    this.emitSelectedRows();
-  }
 
-  emitSelectedRows(){
-    let sRows = [];
-    for(let sr=0; sr<this.selectedCheckBox.length;sr++){
-      if(this.selectedCheckBox[sr]){
-        sRows.push(this.selectedCheckBox[sr]);
-      }
+    setSelectedCheckBox(rowData:any, event:any){
+        if(event.currentTarget.checked){
+            this.selectedCheckBox.push(rowData);
+        }
+        else{
+            let indexOf = this.selectedCheckBox.indexOf(rowData);
+            delete this.selectedCheckBox[indexOf];
+        }
+        this.emitSelectedRows();
     }
-    this.selectedValue.emit(sRows);
 
-  }
+    emitSelectedRows(){
+        let sRows = [];
+        for(let sr=0; sr<this.selectedCheckBox.length;sr++){
+            if(this.selectedCheckBox[sr]){
+                sRows.push(this.selectedCheckBox[sr]);
+            }
+        }
+        this.selectedValue.emit(sRows);
+
+    }
 }

@@ -21,15 +21,13 @@ export const CHECK_COLUMN_SIZE = 'col-lg-';
         <div [attr.class]="divCss">
             <br>
             <label  [attr.for]="elementId">{{fieldLabel}}</label>
-            <div style="overflow: auto;">
-                <ul class="list-group">
-                    <li class="list-group-item" *ngIf="searchBox"><span><input [(ngModel)]="textValue" type="text" class="form-control" placeholder="Please select" (keyup)="filterData($event)"></span></li>
-                    <li [attr.class]="'list-group-item '+calculatedColSize" *ngFor="let row of viewData">
-                        <label>
-                            <input  type="checkbox" [checked]="row[valueField]"  (click)="setSelectedCheckBox(row, $event)"> {{row[displayField]}}
-                        </label>
-                    </li>
-                </ul>
+            <div class="" [ngClass]="{'row':column || column!='','list-group':!column ||column==''}">
+                <li class="list-group-item col-sm-12" *ngIf="searchBox"><span class="col-sm-12"><input [(ngModel)]="textValue" type="text" class="form-control" placeholder="Please select" (keyup)="filterData($event)"></span></li>
+                <li class="list-group-item" [ngClass]="calculatedColSize" *ngFor="let row of viewData">
+                    <label class="form-check-label">
+                        <input  type="checkbox" [checked]="row[valueField]"  (click)="setSelectedCheckBox(row, $event)"> {{row[displayField]}}
+                    </label>
+                </li>
             </div>
         </div>
     `,
@@ -134,39 +132,39 @@ export class CheckBoxGroup implements  OnInit{
     }
 
     ngOnInit() {
-      this.calculatedColSize = CHECK_COLUMN_SIZE+this.column;
-      if(this.httpMethod && this.httpUrl){
-        this.amxHttp.fetchData(this.httpUrl,this.httpMethod).subscribe(
-          response=>{
-            this.responseData = response.json();
-          },
-          error=>{
-          },
-          ()=>{
-            this.setData(this.responseData);
-          }
-        );
-      }else if(this.checkBoxGroupDownBindData){
-        this.setData(this.checkBoxGroupDownBindData);
-      }
-    }
-
-    ngAfterViewInit(){
-    /*  this.column = CHECK_COLUMN_SIZE+this.column;
+        this.calculatedColSize = CHECK_COLUMN_SIZE+this.column;
         if(this.httpMethod && this.httpUrl){
             this.amxHttp.fetchData(this.httpUrl,this.httpMethod).subscribe(
-              response=>{
-                this.responseData = response.json();
-              },
-              error=>{
-              },
-              ()=>{
-                this.setData(this.responseData);
-              }
+                response=>{
+                    this.responseData = response.json();
+                },
+                error=>{
+                },
+                ()=>{
+                    this.setData(this.responseData);
+                }
             );
         }else if(this.checkBoxGroupDownBindData){
             this.setData(this.checkBoxGroupDownBindData);
-        }*/
+        }
+    }
+
+    ngAfterViewInit(){
+        /*  this.column = CHECK_COLUMN_SIZE+this.column;
+         if(this.httpMethod && this.httpUrl){
+         this.amxHttp.fetchData(this.httpUrl,this.httpMethod).subscribe(
+         response=>{
+         this.responseData = response.json();
+         },
+         error=>{
+         },
+         ()=>{
+         this.setData(this.responseData);
+         }
+         );
+         }else if(this.checkBoxGroupDownBindData){
+         this.setData(this.checkBoxGroupDownBindData);
+         }*/
     }
 
     setData(httpResponse: any){
