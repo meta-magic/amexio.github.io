@@ -31,7 +31,7 @@ declare var $: any;
                (ngModelChange)="onChange($event)"
         />
 
-        <div class="dropdown">
+        <div class="dropdown" [style.width]="width">
 
             <button class="btn btn-secondary dropdown-toggle" type="button" [attr.id]="elementId" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">

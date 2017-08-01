@@ -38,7 +38,7 @@ declare var $;
         <div class="wrap">
           <table class="table table-sm  table-bordered " [attr.id]="elementId" (window:resize)="onResize($event)" style="width:100%">
             <tr>
-              <td [attr.colspan]="columns.length + (checkboxSelect? 1: 0)" width="100%" data align="right">
+              <td [attr.colspan]="columns?.length + (checkboxSelect? 1: 0)" width="100%" data align="right">
         <span style="float: left;">
       <b>{{title}}</b>
       </span>
@@ -133,11 +133,11 @@ declare var $;
             <table class="table table-sm   table-bordered ">
               <tbody *ngIf="!smallScreen">
               <ng-container *ngIf="groupByColumn">
-                <tr [ngClass]="{'hiderow' : !(viewRows.length > 0),'showrow' : viewRows.length > 0}">
-                  <td [attr.colspan]="columns.length + (checkboxSelect? 1: 0)" width="100%">
+                <tr [ngClass]="{'hiderow' : !(viewRows?.length > 0),'showrow' : viewRows?.length > 0}">
+                  <td [attr.colspan]="columns?.length + (checkboxSelect? 1: 0)" width="100%">
                     <div class="list-group" *ngFor="let row of viewRows;let i=index;" style="border-bottom: 1px ridge lightgray;">
               <span (click)="iconSwitch(row)" style="cursor: pointer;color: black;" data-toggle="collapse" [attr.data-target]="'#'+i" data-parent="#menu">
-              <span [ngClass]="{'fa-caret-down':row.expanded,'fa-caret-right':!row.expanded}" class="fa " > &nbsp;&nbsp;</span>{{row.group}} <span class="badge badge-pill badge-default" style="float: right">{{row.groupData.length}}</span>
+              <span [ngClass]="{'fa-caret-down':row.expanded,'fa-caret-right':!row.expanded}" class="fa " > &nbsp;&nbsp;</span>{{row.group}} <span class="badge badge-pill badge-default" style="float: right">{{row.groupData?.length}}</span>
               </span>
                       <div [attr.id]="i" class="sublinks collapse">
                         <table class="table table-striped table-hover table-bordered">
@@ -159,18 +159,18 @@ declare var $;
                     </div>
                   </td>
                 </tr>
-                <tr *ngIf="viewRows.length == 0">
-                  <td [attr.colspan]="columns.length+1" style="height: 100px;" class="loading-mask">
+                <tr *ngIf="viewRows?.length == 0">
+                  <td [attr.colspan]="columns?.length+1" style="height: 100px;" class="loading-mask">
                   </td>
                 </tr>
               </ng-container>
               <ng-container *ngIf="!groupByColumn">
-                <tr *ngIf="viewRows.length==0">
+                <tr *ngIf="viewRows?.length==0">
                   <td style="width: 100%">
                     <span>No Records Found</span>
                   </td>
                 </tr>
-                <tr [ngClass]="{'hiderow' : !(viewRows.length > 0),'showrow' : viewRows.length > 0}" style="cursor: pointer;" *ngFor="let row of viewRows let rowIndex = index " (click)="rowClick(row, rowIndex)" [class.info]="isSelected(rowIndex)">
+                <tr [ngClass]="{'hiderow' : !(viewRows?.length > 0),'showrow' : viewRows?.length > 0}" style="cursor: pointer;" *ngFor="let row of viewRows let rowIndex = index " (click)="rowClick(row, rowIndex)" [class.info]="isSelected(rowIndex)">
                   <td *ngIf="checkboxSelect" style="width: 10%">
                     <input type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}" [attr.checked]="selectAll? true: null" (click)="setSelectedRow(row, $event)">
                   </td>
@@ -181,19 +181,19 @@ declare var $;
                     <ng-template *ngIf="cols.bodyTemplate" [ngTemplateOutlet]="cols.bodyTemplate" [ngOutletContext]="{ $implicit: { text : row[cols.dataIndex] }, row: row }"></ng-template>
                   </td>
                 </tr>
-                <tr *ngIf="viewRows.length == 0">
-                  <td [attr.colspan]="columns.length+1" style="height: 100px;" class="loading-mask">
+                <tr *ngIf="viewRows?.length == 0">
+                  <td [attr.colspan]="columns?.length+1" style="height: 100px;" class="loading-mask">
                   </td>
                 </tr>
               </ng-container>
               </tbody>
               <tbody *ngIf="smallScreen">
               <ng-container *ngIf="groupByColumn">
-                <tr [ngClass]="{'hiderow' : !(viewRows.length > 0),'showrow' : viewRows.length > 0}">
-                  <td [attr.colspan]="columns.length + (checkboxSelect? 1: 0)" width="100%">
+                <tr [ngClass]="{'hiderow' : !(viewRows?.length > 0),'showrow' : viewRows?.length > 0}">
+                  <td [attr.colspan]="columns?.length + (checkboxSelect? 1: 0)" width="100%">
                     <div class="list-group" *ngFor="let row of viewRows;let i=index;" style="border-bottom: 1px ridge lightgray;">
               <span (click)="iconSwitch(row)" style="cursor: pointer;color: black;" data-toggle="collapse" [attr.data-target]="'#'+i" data-parent="#menu">
-              <span [ngClass]="{'fa-caret-down':row.expanded,'fa-caret-right':!row.expanded}" class="fa " > &nbsp;&nbsp;</span>{{row.group}}<span style="float: right" class="badge">{{row.groupData.length}}</span>
+              <span [ngClass]="{'fa-caret-down':row.expanded,'fa-caret-right':!row.expanded}" class="fa " > &nbsp;&nbsp;</span>{{row.group}}<span style="float: right" class="badge">{{row.groupData?.length}}</span>
               </span>
                       <div [attr.id]="i" class="sublinks collapse">
                         <table class="table table-bordered">
@@ -202,7 +202,7 @@ declare var $;
                             <td *ngIf="checkboxSelect" style="width: 10%">
                               <input type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}" [attr.checked]="selectAll? true: null" (click)="setSelectedRow(rows, $event)">
                             </td>
-                            <td [attr.colspan]="columns.length-1">
+                            <td [attr.colspan]="columns?.length-1">
                               <div style="word-wrap: break-word" *ngFor="let cols of columns" [hidden]="cols.hidden">
                                 <b>{{cols.text}}</b> :
                                 <!-- If user hasnt specified customized cell use default -->
@@ -220,12 +220,12 @@ declare var $;
                 </tr>
               </ng-container>
               <ng-container *ngIf="!groupByColumn">
-                <tr *ngIf="viewRows.length==0">
+                <tr *ngIf="viewRows?.length==0">
                   <td style="width: 100%">
                     <span>No Records Found</span>
                   </td>
                 </tr>
-                <tr [ngClass]="{'hiderow' : !(viewRows.length > 0),'showrow' : viewRows.length > 0}" style="cursor: pointer" *ngFor="let row of viewRows let rowIndex = index " (click)="rowClick(row, rowIndex)" [class.info]="isSelected(rowIndex)">
+                <tr [ngClass]="{'hiderow' : !(viewRows?.length > 0),'showrow' : viewRows?.length > 0}" style="cursor: pointer" *ngFor="let row of viewRows let rowIndex = index " (click)="rowClick(row, rowIndex)" [class.info]="isSelected(rowIndex)">
                   <td *ngIf="checkboxSelect" style="width: 10%">
                     <input type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}" [attr.checked]="selectAll? true: null" (click)="setSelectedRow(row, $event)">
                   </td>
@@ -240,8 +240,8 @@ declare var $;
                   </td>
                 </tr>
               </ng-container>
-              <tr *ngIf="viewRows.length == 0">
-                <td [attr.colspan]="columns.length+1" style="height: 100px;" class="loading-mask">
+              <tr *ngIf="viewRows?.length == 0">
+                <td [attr.colspan]="columns?.length+1" style="height: 100px;" class="loading-mask">
                 </td>
               </tr>
               </tbody>
