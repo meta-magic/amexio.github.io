@@ -15,7 +15,7 @@ declare var $: any;
   template : `
     <table>
       <tr>
-        <td width="10%">
+        <td width="10%" valign="top">
           <ul [ngClass]="tapPosition">
             <li *ngFor="let tab of tabs" class="nav-item">
               <a (click)="activateTab(tab.elementId)" [ngClass]="{'active':(tab.active && !verticalText), 'inactive':(!tab.active && !verticalText),'activevertical':(tab.active && verticalText), 'inactivevertical':(!tab.active && verticalText)}" class="nav-link " [attr.id]="tab.elementId" style="cursor: pointer;"> <i *ngIf="tab.icon" [ngClass]="tab.icon"></i>&nbsp;{{tab.title}}</a>
