@@ -84,17 +84,6 @@ export class ProgressComponent implements OnInit{
 
     else
       this.displayText = this.currentValue+'%';
-
-    if(this.progressType != null){
-      if(this.progressType == 'success')
-        this.barColorClass = 'bg-success';
-      else if(this.progressType == 'warning')
-        this.barColorClass = 'bg-warning';
-      else if(this.progressType == 'info')
-        this.barColorClass = 'bg-info';
-      else if(this.progressType == 'danger')
-        this.progressType = 'bg-danger'
-    }
   }
 }
 
