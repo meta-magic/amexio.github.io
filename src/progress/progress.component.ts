@@ -17,8 +17,8 @@ import {Component, Input, OnInit} from '@angular/core';
   template : `      
       
     <div class="progress" *ngIf="showProgress">
-      <div class="progress-bar progress-bar-striped active" role="progressbar" [attr.aria-valuenow]="currentValue" [attr.aria-valuemin]="minValue" [attr.aria-valuemax]="maxValue" style="width: 100%">
-        <span>{{displayText}}<span class="dotdotdot"></span></span>
+      <div class="progress-bar progress-bar-striped {{progressType !=null ? 'bg-'+progressType : ''}} active" role="progressbar" [attr.aria-valuenow]="currentValue" [attr.aria-valuemin]="minValue" [attr.aria-valuemax]="maxValue" style="width: 100%">
+        <span>{{displayText}}<span class="dotdotdot"></span></span> 
       </div>
     </div>
   
@@ -61,7 +61,11 @@ export class ProgressComponent implements OnInit{
 
   @Input()    currentValue : string;
 
+  @Input()    progressType : string;
+
   displayText : string;
+
+  barColorClass : string;
 
 
 
@@ -79,6 +83,17 @@ export class ProgressComponent implements OnInit{
 
     else
       this.displayText = this.currentValue+'%';
+
+    if(this.progressType != null){
+      if(this.progressType == 'success')
+        this.barColorClass = 'bg-success';
+      else if(this.progressType == 'warning')
+        this.barColorClass = 'bg-warning';
+      else if(this.progressType == 'info')
+        this.barColorClass = 'bg-info';
+      else if(this.progressType == 'danger')
+        this.progressType = 'bg-danger'
+    }
   }
 }
 
