@@ -9,6 +9,15 @@
 | --------- | --------- | --------- | --------- | --------- | --------- | --------- |
 | Edge| last 5 versions| last 5 versions| last 3 versions| last 4 versions| last 3 versions| last 3 versions
 
+## Amexio ❤ Bootstrap
+
+We now have support for both the Bootstrap 3.3.7 & Bootstrap 4.0.0 alpha 6
+
+For Documentation Related to both version's use below link
+
+### [Amexio Bootstrap 3](http://www.amexio.org/showcaseapp/v1/index.html)
+### [Amexio Bootstrap 4](http://www.amexio.org/showcaseapp/v2/index.html)
+
 ## Angular CLI - Installation
 
 ### Overview
@@ -40,7 +49,9 @@ To install this library, follow the steps given below:
 
 ```bash
 $ cd your-angular-project
-$ npm install amexio-ng-extensions --save
+(For Bootstrap 4)$ npm install amexio-ng-extensions --save
+OR
+(For Bootstrap 3)$ npm install amexio-ng-extensions@1.0.42 --save
 ```
 
 and then from your Angular `AppModule`:
