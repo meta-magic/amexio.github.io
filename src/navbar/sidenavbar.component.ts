@@ -57,7 +57,7 @@ import {CommonHttpService} from "../common.http.service";
           </ul>
       </div>
 
-      <span [style.margin-top]="toPosition" [ngClass]="{'sidenavopenleft':!right, 'sidenavopenright':right}"  (click)="openNav()">&#9776;</span>
+      <span  [ngClass]="{'sidenavopenleft':!right, 'sidenavopenright':right}"  (click)="openNav()">&#9776;</span>
 
   `,
   styles: [`
