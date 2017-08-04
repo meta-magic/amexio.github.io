@@ -19,8 +19,7 @@ export const CHECK_COLUMN_SIZE = 'col-lg-';
     selector : 'amexio-checkbox',
     template: `
         <div [attr.class]="divCss">
-            <br>
-            <label  [attr.for]="elementId">{{fieldLabel}}</label>
+            <label  *ngIf="fieldLabel" [attr.for]="elementId">{{fieldLabel}}</label>
             <div class="" [ngClass]="{'row':column || column!='','list-group':!column ||column==''}">
                 <li class="list-group-item col-sm-12" *ngIf="searchBox"><span class="col-sm-12"><input [(ngModel)]="textValue" type="text" class="form-control" placeholder="Please select" (keyup)="filterData($event)"></span></li>
                 <li class="list-group-item" [ngClass]="calculatedColSize" *ngFor="let row of viewData">
