@@ -57,7 +57,7 @@ import {CommonHttpService} from "../common.http.service";
           </ul>
       </div>
 
-      <span  [ngClass]="{'sidenavopenleft':!right, 'sidenavopenright':right}"  (click)="openNav()">&#9776;</span>
+      <span *ngIf="enableToggleButton"  [ngClass]="{'sidenavopenleft':!right, 'sidenavopenright':right}"  (click)="openNav()">&#9776;</span>
 
   `,
   styles: [`
@@ -156,6 +156,11 @@ export class SideNavBarComponent implements OnInit, AfterViewInit {
   @Input()
   width : string;
 
+  @Input()
+  enableToggleButton: boolean;
+
+
+
   @Output()
   selectedNode: any = new EventEmitter<any>();
 
@@ -182,6 +187,7 @@ export class SideNavBarComponent implements OnInit, AfterViewInit {
     this.expanded = false;
     this.filter = false;
     this.width = "20%";
+    this.enableToggleButton = true;
   }
 
 
@@ -313,6 +319,15 @@ export class SideNavBarComponent implements OnInit, AfterViewInit {
     });
 
     return res;
+  }
+
+  navToggle(){
+    if(document.getElementById(this.elementId).style.width=='0px'){
+      this.openNav();
+    }else {
+      this.closeNav();
+    }
+
   }
 
 }
