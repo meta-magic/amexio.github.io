@@ -89,7 +89,7 @@ export class ButtonGroupActionComponent implements OnInit {
     } else {
       this.btnStyleClass = this.btnStyleClass + 'btn-secondary';
     }
-    this.iconStyleClass = 'fa fa-' + this.icon;
+    this.iconStyleClass = this.icon;
     if (this.tooltipMessage == null) {
       this.hasToolTip = false;
     }

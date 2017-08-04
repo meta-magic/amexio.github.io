@@ -25,12 +25,12 @@ import {CommonHttpService} from "../common.http.service";
       <div [style.margin-top]="toPosition" [ngClass]="{'sidenavleft':!right, 'sidenavright':right}"  [attr.id]="elementId" (mouseleave)="expanded?null:closeNav()">
           <ul class="navbar-nav">
             <li *ngIf="filter==true">
-                <div style="padding-top: 5px;padding-bottom: 5px;">
+                <div style="padding-top: 5px;padding-bottom: 5px;padding-left: 10px;">
                     <input type="text" class="form-control" [(ngModel)]="filterText"  placeholder="Search" (keyup)="filterData()"  style="width: 100%;" />
                 </div>
             </li>
               <li class="nav-item" *ngFor="let header of menus ">
-                  <a class="nav-link"  (click)="expandNode(header)">
+                  <a class="nav-link"  (click)="expandNode(header)" style="padding-left: 10px">
                       <ng-container *ngIf="headerTemplate==null">{{header.text}}</ng-container>
 
                       <ng-template *ngIf="headerTemplate!=null" [ngTemplateOutlet]="headerTemplate" [ngOutletContext]="{ $implicit: {}, navHeader:header }"></ng-template>
@@ -57,7 +57,7 @@ import {CommonHttpService} from "../common.http.service";
           </ul>
       </div>
 
-      <span *ngIf="enableToggleButton"  [ngClass]="{'sidenavopenleft':!right, 'sidenavopenright':right}"  (click)="openNav()">&#9776;</span>
+      <span *ngIf="enableToggleButton" [style.margin-top]="toPosition"  [ngClass]="{'sidenavopenleft':!right, 'sidenavopenright':right}"  (click)="openNav()">&#9776;</span>
 
   `,
   styles: [`

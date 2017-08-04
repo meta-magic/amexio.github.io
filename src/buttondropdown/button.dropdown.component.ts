@@ -103,7 +103,7 @@ export class ButtonDropdownComponent implements OnInit, AfterContentInit {
     for (let cr = 0 ; cr < itemRefArray.length; cr++) {
       const itemConfig = itemRefArray[cr];
       const data: any = {label : itemConfig.label, disabled: itemConfig.disabled, onItemClick : itemConfig.onItemClick, iconStyleClass: itemConfig.iconStyleClass, icon : itemConfig.icon, onClickRoute: itemConfig.onClickRoute};
-      data.iconStyleClass = 'fa fa-' + data.icon + ' pull-right';
+      data.iconStyleClass = data.icon + ' pull-right';
       this.dropdownItemData.push(data);
     }
   }
