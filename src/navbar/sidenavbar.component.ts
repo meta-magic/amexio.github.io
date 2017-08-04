@@ -30,7 +30,7 @@ import {CommonHttpService} from "../common.http.service";
                 </div>
             </li>
               <li class="nav-item" *ngFor="let header of menus ">
-                  <a class="nav-link"  (click)="expandNode(header)" style="padding-left: 10px">
+                  <a class="nav-link"  (click)="expandNode(header)" style="padding-left: 10px;padding-right: 10px">
                       <ng-container *ngIf="headerTemplate==null">{{header.text}}</ng-container>
 
                       <ng-template *ngIf="headerTemplate!=null" [ngTemplateOutlet]="headerTemplate" [ngOutletContext]="{ $implicit: {}, navHeader:header }"></ng-template>
