@@ -46,12 +46,12 @@ import {CommonHttpService} from '../common.http.service';
       <div class="list-group text-center" style="padding-top: 35%;" [style.height]="itemSelectorHeight">
         <div>  
         <div class="btn-group-vertical" role="group" aria-label="Button group with nested dropdown">
-            <amexio-btn (onClick)="moveTop()"  [type]="'link'" [tooltipMessage]="'move top'" [block]="true" [icon]="'caret-up fa-2x'"></amexio-btn>
-            <amexio-btn (onClick)="upSwitch()" [type]="'link'" [tooltipMessage]="'move up'" [block]="true" [icon]="'arrow-up'"></amexio-btn>
-            <amexio-btn (onClick)="leftSwitch()" [type]="'link'" [tooltipMessage]="'move left'" [block]="true" [icon]="'arrow-left'"></amexio-btn>
-            <amexio-btn (onClick)="rightSwitch()" [type]="'link'" [tooltipMessage]="'move right'" [block]="true" [icon]="'arrow-right'"></amexio-btn>
-            <amexio-btn (onClick)="downSwitch()" [type]="'link'" [tooltipMessage]="'move down'" [block]="true" [icon]="'arrow-down'"></amexio-btn>
-            <amexio-btn (onClick)="moveDown()" [type]="'link'" [tooltipMessage]="'bottom'" [block]="true" [icon]="'caret-down fa-2x '"></amexio-btn>
+            <amexio-btn (onClick)="moveTop()"  [type]="'link'" [tooltipMessage]="'move top'" [block]="true" [icon]="'fa fa-caret-up fa-2x'"></amexio-btn>
+            <amexio-btn (onClick)="upSwitch()" [type]="'link'" [tooltipMessage]="'move up'" [block]="true" [icon]="'fa fa-arrow-up'"></amexio-btn>
+            <amexio-btn (onClick)="leftSwitch()" [type]="'link'" [tooltipMessage]="'move left'" [block]="true" [icon]="'fa fa-arrow-left'"></amexio-btn>
+            <amexio-btn (onClick)="rightSwitch()" [type]="'link'" [tooltipMessage]="'move right'" [block]="true" [icon]="'fa fa-arrow-right'"></amexio-btn>
+            <amexio-btn (onClick)="downSwitch()" [type]="'link'" [tooltipMessage]="'move down'" [block]="true" [icon]="'fa fa-arrow-down'"></amexio-btn>
+            <amexio-btn (onClick)="moveDown()" [type]="'link'" [tooltipMessage]="'bottom'" [block]="true" [icon]="'fa fa-caret-down fa-2x '"></amexio-btn>
           </div>
         </div>
 
