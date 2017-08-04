@@ -52,7 +52,6 @@ declare var $: any;
                     {{row[displayField]}} <i class="fa fa-check pull-right" aria-hidden="true" *ngIf="row?.checked"></i>
                 </a>
 
-
                 <ng-template *ngIf="filteredOptions.length < 1">
                     <a class="dropdown-item disabled">No Options</a>
                 </ng-template>

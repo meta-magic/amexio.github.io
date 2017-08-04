@@ -1,6 +1,6 @@
 {
   "name": "amexio-ng-extensions",
-  "version": "2.0.2",
+  "version": "0.1.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/meta-magic/amexio.github.io"
@@ -10,24 +10,26 @@
     "email": "xserviceadmin@metamagic.in"
   },
   "keywords": [
-    "angular",
-    "angular components",
-    "ng2-bootstrap",
-    "bootstrap",
-    "typescript",
-    "angular4",
-    "metamagic",
-    "betamagic"
+    "angular"
   ],
-  "license": "Apache-2.0",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/meta-magic/amexio.github.io/issues"
   },
+  "main": "amexio-ng-extensions.umd.js",
   "module": "amexio-ng-extensions.js",
+  "jsnext:main": "amexio-ng-extensions.js",
   "typings": "amexio-ng-extensions.d.ts",
   "peerDependencies": {
     "@angular/core": "^4.0.0",
+    "@angular/forms": "^4.0.0",
+    "@angular/http": "^4.0.0",
     "rxjs": "^5.1.0",
-    "zone.js": "^0.8.4"
+    "zone.js": "^0.8.4",
+    "jquery": "^3.2.1",
+    "tether": "^1.4.0",
+    "bootstrap": "^4.0.0-alpha.6",
+    "font-awesome": "^4.7.0"
+
   }
 }

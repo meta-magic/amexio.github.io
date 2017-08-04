@@ -76,8 +76,8 @@ declare var $: any;
 
     `,
     providers : [CUSTOM_EMAIL_INPUT_CONTROL_VALUE_ACCESSOR, BASE_IMPL_EMAIL_INPUT],
-    styles : [`
-        .has-feedback-custom {
+    styles : [
+        `.has-feedback-custom {
             position: relative;
         }
         .has-feedback-custom .form-control {
@@ -125,8 +125,8 @@ declare var $: any;
             height: auto;
             max-height: 200px;
             overflow-x: hidden;
-        }
-    `]
+        }`
+    ]
 })
 
 export class EmailInputComponent extends FormInputBase implements OnInit, AfterViewInit, ControlValueAccessor {

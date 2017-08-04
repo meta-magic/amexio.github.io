@@ -9,7 +9,13 @@
     "docs:serve": "npm run docs:build -- -s",
     "docs:watch": "npm run docs:build -- -s -w",
     "lint": "tslint --type-check --project tsconfig.json src/**/*.ts",
-    "test": "tsc && karma start"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:ci": "jest --runInBand"
+  },
+  "jest": {
+    "preset": "jest-preset-angular",
+    "setupTestFrameworkScriptFile": "<rootDir>/src/jest.ts"
   },
   "repository": {
     "type": "git",
@@ -36,36 +42,22 @@
     "@angular/common": "^4.0.0",
     "@angular/compiler": "^4.0.0",
     "@angular/compiler-cli": "^4.0.0",
+    "@angular/forms": "^4.0.0",
+    "@angular/http": "^4.0.0",
     "@angular/core": "^4.0.0",
-    "@angular/forms": "^4.2.2",
-    "@angular/http": "^4.2.2",
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
-    "@compodoc/compodoc": "^1.0.0-beta.7",
-    "@types/jasmine": "2.5.38",
+    "@compodoc/compodoc": "^1.0.0-beta.10",
     "@types/node": "~6.0.60",
-    "bootstrap": "^3.3.7",
-    "bootstrap-datepicker": "^1.6.4",
-    "bootstrap-select": "^1.12.2",
-    "bootstrap-submenu": "^2.0.4",
-    "bootstrap-timepicker": "^0.5.2",
-    "bootstrap-validator": "^0.11.9",
+    "@types/jest": "^19.2.3",
     "codelyzer": "~2.0.0",
     "core-js": "^2.4.1",
     "del": "^2.2.2",
-    "font-awesome": "^4.7.0",
+    "gulp": "^3.9.1",
     "gulp-rename": "^1.2.2",
     "gulp-rollup": "^2.11.0",
-    "jasmine-core": "~2.5.2",
-    "jasmine-spec-reporter": "~3.2.0",
-    "jquery": "^3.2.1",
-    "jquery-bootstrap-scrolling-tabs": "^0.7.1",
-    "karma": "~1.4.1",
-    "karma-chrome-launcher": "~2.0.0",
-    "karma-cli": "~1.0.1",
-    "karma-coverage-istanbul-reporter": "^0.2.0",
-    "karma-jasmine": "~1.1.0",
-    "karma-jasmine-html-reporter": "^0.2.2",
+    "jest": "^20.0.3",
+    "jest-preset-angular": "^2.0.2",
     "node-sass": "^4.5.2",
     "node-sass-tilde-importer": "^1.0.0",
     "node-watch": "^0.5.2",
@@ -80,8 +72,5 @@
   },
   "engines": {
     "node": ">=6.0.0"
-  },
-  "dependencies": {
-    "gulp": "^3.9.1"
   }
 }
