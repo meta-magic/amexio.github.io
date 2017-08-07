@@ -11,8 +11,8 @@ import {
 @Component({
   selector: 'amexio-window-pane',
   template: `
-  <div class="modal fade"  tabindex="-1" [ngClass]="{'show': visibleAnimate}"
-       [ngStyle]="{'display': showWindow ? 'block' : 'none', 'opacity': visibleAnimate ? 1 : 0}" style="overflow: auto" >
+  <div class="modal fade"   tabindex="-1" [ngClass]="{'show': visibleAnimate}"
+       [ngStyle]="{'display': showWindow ? 'block' : 'none', 'opacity': visibleAnimate ? 1 : 0}" style="overflow: auto;background: #888888;" >
     <div class="modal-dialog " role="document" [ngClass]="{'modal-lg':(size==2),'modal-sm':(size==1)}">
       <div class="modal-content">
         <div class="modal-header">
@@ -28,12 +28,7 @@ import {
       </div>
     </div>
   </div>
-  `,
-  styles:[
-      `.modal {
-        background: #888888;
-      }`
-    ]
+  `
 })
 
 export class WindowPaneComponent implements OnInit{

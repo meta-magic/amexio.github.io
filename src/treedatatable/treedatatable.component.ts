@@ -58,7 +58,7 @@ import {CommonHttpService} from '../common.http.service';
 
         <tr [ngClass]="{'hiderow' : !(viewRows.length > 0),'showrow' : viewRows.length > 0}"  *ngFor="let row of viewRows let rowIndex = index" [hidden]="!row.visible" (click)="setSelectedRow(row, $event)">
             <td *ngFor="let cols of columns let colIndex = index" [hidden] ="cols.hidden" >
-                <div style="cursor: pointer" *ngIf="colIndex == 0" class="amexio-treegrid-levels"
+                <div style="cursor: pointer;position: relative" *ngIf="colIndex == 0" 
                      [ngStyle]="{left: row.level*15+'px'}" (click)="toggle(row,rowIndex)">
                   <span *ngIf="colIndex == 0" class="fa " [ngClass]="{'fa-minus': row.expanded, 'fa-plus': (!row.expanded && row.haschildren)}" aria-hidden="true">
                   </span>
@@ -77,11 +77,6 @@ import {CommonHttpService} from '../common.http.service';
         </tr>
     </table>`,
     providers : [CommonHttpService],
-    styles : [`
-      .amexio-treegrid-levels{
-        position: relative;
-      }
-     `],
     styleUrls: [
         '../baseclass/loading-mask.css'
     ]
