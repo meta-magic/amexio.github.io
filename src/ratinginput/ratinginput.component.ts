@@ -6,7 +6,7 @@ import {CommonModule} from '@angular/common';
   selector: 'amexio-rating-input',
   template: `
     <span (mouseleave)="resetHovered()"
-          class="rating"
+          class="amexio-rating"
           [class.disabled]="disabled"
           [class.readonly]="readonly"
           tabindex="0"
@@ -28,126 +28,10 @@ import {CommonModule} from '@angular/common';
     { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => RatingInputComponent), multi: true },
     { provide: NG_VALIDATORS, useExisting: forwardRef(() => RatingInputComponent), multi: true },
   ],
-  styles: [`
-    span.rating {
-      cursor: pointer;
-      outline: none;
-    }
-    span.rating.readonly {
-      cursor: default;
-    }
-    span.rating.disabled {
-      cursor: not-allowed;
-    }
-    span.rating i{
-      font-style: normal;
-    }
-    .star-icon {
-      color: #666666;
-      font-size: 2em;
-      position: relative;
-      border-color: 1px solid black;
-    }
-    .star-icon:before {
-      color: #FDE16D;
-      content: attr(data-icon) " ";
-      position: absolute;
-      left: 0;
-      overflow: hidden;
-      width: 0;
-    }
-    span.rating.disabled .star-icon:before {
-      color: #ECECEC;
-      text-shadow: none;
-    }
-    .star-icon.half10:before {
-      width: 10%;
-    }
-    .star-icon.half20:before {
-      width: 20%;
-    }
-    .star-icon.half30:before {
-      width: 30%;
-    }
-    .star-icon.half40:before {
-      width: 40%;
-    }
-    .star-icon.half50:before {
-      width: 50%;
-    }
-    .star-icon.half60:before {
-      width: 60%;
-    }
-    .star-icon.half70:before {
-      width: 70%;
-    }
-    .star-icon.half80:before {
-      width: 80%;
-    }
-    .star-icon.half90:before {
-      width: 90%;
-    }
-    .star-icon.half100:before {
-      width: 100%;
-    }
-    @-moz-document url-prefix() { /* Firefox Hack */
-      .star-icon {
-        font-size: 50px;
-        line-height: 34px;
-      }
-    }
-
-    .has-feedback-custom {
-        position: relative;
-    }
-    .has-feedback-custom .form-control {
-        padding-right: 47.5px;
-    }
-
-    .form-control-feedback-custom {
-        position: absolute;
-        top: 0;
-        right: 0;
-        z-index: 2;
-        display: block;
-        width: 38px;
-        height: 38px;
-        line-height: 38px;
-        text-align: center;
-        pointer-events: none;
-    }
-
-    .has-feedback-custom label ~ .form-control-feedback-custom {
-        top: 32px;
-    }
-    .has-feedback-custom label.sr-only ~ .form-control-feedback-custom {
-        top: 0;
-    }
-
-    .searchIconPos{
-        position: absolute;
-        right: 5px;
-        top: 15px;
-        bottom: 0;
-        height: 14px;
-        margin: auto;
-        font-size: 14px;
-        cursor: pointer;
-        color: #ccc;
-    }
-    .showIcon{
-        visibility: visible;
-    }
-    .hideIcon{
-        visibility: hidden;
-    }
-    .scrollable-options {
-        height: auto;
-        max-height: 200px;
-        overflow-x: hidden;
-    }
-      
-  `]
+  styleUrls : [
+    '../baseclass/form.inputs.base.css',
+      'rating.component.css'
+  ]
 })
 export class RatingInputComponent implements OnInit, ControlValueAccessor, Validator {
 
@@ -156,7 +40,7 @@ export class RatingInputComponent implements OnInit, ControlValueAccessor, Valid
   // -------------------------------------------------------------------------
 
   @Input()
-  iconClass = "star-icon";
+  iconClass = "amexio-star-icon";
 
   @Input()
   fullIcon = "★";
