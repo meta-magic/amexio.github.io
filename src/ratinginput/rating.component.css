@@ -5,10 +5,10 @@
 .amexio-rating.readonly {
     cursor: default;
 }
-amexio-rating.disabled {
+.amexio-rating.disabled {
     cursor: not-allowed;
 }
-amexio-rating i{
+.amexio-rating i{
     font-style: normal;
 }
 .amexio-star-icon {
@@ -25,7 +25,7 @@ amexio-rating i{
     overflow: hidden;
     width: 0;
 }
-amexio-rating.disabled .amexio-star-icon:before {
+.amexio-rating.disabled .amexio-star-icon:before {
     color: #ECECEC;
     text-shadow: none;
 }
