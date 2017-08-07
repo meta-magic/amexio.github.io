@@ -28,8 +28,7 @@ declare var $;
               </ng-container>
               {{label}}
               <ng-container *ngIf="icon!=null">
-                <i [class]="iconStyleClass" aria-hidden="true"></i>
-                
+                <i [class]="iconStyleClass" aria-hidden="true"></i>                
               </ng-container>
           </button>
       </div>
