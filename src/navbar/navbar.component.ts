@@ -29,8 +29,8 @@ import {CommonHttpService} from "../common.http.service";
 
               <div class="collapse navbar-collapse " id="navbarNavDropdown">
                   <ul class="nav navbar-nav bg-faded">
-                      <li class="dropdown dropdown-large bg-faded" id="{{elementId}}dd-lr-{{ind}}" *ngFor="let mh of menus let ind = index" >
-                          <a [ngClass]="{'dropdown-toggle':getToggleClass(mh)}" data-toggle="dropdown" (click)="adjustPosition($event, ind)">
+                      <li class="dropdown amexio-navbar-dropdown-large bg-faded" id="{{elementId}}dd-lr-{{ind}}" *ngFor="let mh of menus let ind = index" >
+                          <a class="dropdown-toggle" [ngClass]="{'dropdown-toggle':getToggleClass(mh)}" data-toggle="dropdown" (click)="adjustPosition($event, ind)">
                               <ng-container *ngIf="headerTemplate==null">
                                   &nbsp;&nbsp;{{mh.text}}
                               </ng-container><ng-template *ngIf="headerTemplate!=null" [ngTemplateOutlet]="headerTemplate" [ngOutletContext]="{ $implicit: {}, navHeader:mh }"></ng-template>
@@ -60,34 +60,9 @@ import {CommonHttpService} from "../common.http.service";
               </div>
           </nav>
   `,
-  styles: [
-      `
-          footer .navbar-collapse.in {
-              bottom: 70px;
-              position: absolute;
-              background-color:#333;
-              width: 100%;
-          }
 
-          @media screen and (max-width: 768px) {
-              footer .navbar-collapse {
-                  position: absolute;
-                  bottom: 70px;
-                  width: 100%;
-                  background-color: #303030;
-              }
-          }
-          .dropdown-large {
-              position: static !important;
-          }
-
-          .dropdown-menu-large {
-              padding: 10px 0px;
-          }
-
-    `
-  ],
-    providers:[CommonHttpService]
+    styleUrls: ['navbar.custom.css'],
+    providers: [CommonHttpService]
 
 })
 export class NavbarComponent implements OnInit, AfterViewInit {

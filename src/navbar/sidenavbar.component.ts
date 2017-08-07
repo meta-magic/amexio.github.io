@@ -22,7 +22,7 @@ import {CommonHttpService} from "../common.http.service";
   selector: 'amexio-sidemenubar',
   template: `
 
-      <div [style.margin-top]="toPosition" [ngClass]="{'sidenavleft':!right, 'sidenavright':right}"  [attr.id]="elementId" (mouseleave)="expanded?null:closeNav()">
+      <div [style.margin-top]="toPosition" [ngClass]="{'amexio-sidenavbar-sidenavleft':!right, 'amexio-sidenavbar-sidenavright':right}"  [attr.id]="elementId" (mouseleave)="expanded?null:closeNav()">
           <ul class="navbar-nav">
             <li *ngIf="filter==true">
                 <div style="padding-top: 5px;padding-bottom: 5px;padding-left: 10px;">
@@ -57,76 +57,10 @@ import {CommonHttpService} from "../common.http.service";
           </ul>
       </div>
 
-      <span *ngIf="enableToggleButton" [style.margin-top]="toPosition"  [ngClass]="{'sidenavopenleft':!right, 'sidenavopenright':right}"  (click)="openNav()">&#9776;</span>
+      <span *ngIf="enableToggleButton" [style.margin-top]="toPosition"  [ngClass]="{'amexio-sidenavbar-sidenavopenleft':!right, 'amexio-sidenavbar-sidenavopenright':right}"  (click)="openNav()">&#9776;</span>
 
   `,
-  styles: [`
-
-      ul li{
-          list-style: none;
-          padding: 1px;
-      }
-
-      a{
-          cursor: pointer;
-          text-decoration: none;
-      }
-
-      .sidenavleft {
-          height: 100%;
-          width: 0;
-          position: fixed;
-          z-index: 1;
-          top: 0;
-          left: 0;
-          background-color: #ffffff;
-          overflow-x: hidden;
-          transition: 0.5s;
-          overflow: auto;
-      }
-
-      .sidenavopenleft{
-          position:absolute;
-          top:0;
-          left:0;
-          font-size:30px;
-          cursor:pointer
-      }
-
-      .sidenavleft >ul >li {
-          border-bottom: 1px solid #e7e7e7;
-      }
-
-      .sidenavright {
-          height: 100%;
-          width: 0;
-          position: fixed;
-          z-index: 1;
-          top: 0;
-          right: 0;
-          background-color: #ffffff;
-          overflow-x: hidden;
-          transition: 0.5s;
-          overflow: auto;
-      }
-
-      .sidenavopenright{
-          position:absolute;
-          top:0;
-          right:0;
-          font-size:30px;
-          cursor:pointer
-      }
-
-      .sidenavright >ul >li {
-          border-bottom: 1px solid #e7e7e7;
-      }
-
-      @media screen and (max-height: 450px) {
-          .sidenavleft {padding-top: 15px;}
-      }
-
-  `],
+  styleUrls:['sidenavbar.custom.css'],
     providers: [CommonHttpService]
 })
 

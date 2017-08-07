@@ -1,0 +1,18 @@
+footer .navbar-collapse.in {
+    bottom: 70px;
+    position: absolute;
+    background-color:#333;
+    width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+    footer .navbar-collapse {
+        position: absolute;
+        bottom: 70px;
+        width: 100%;
+        background-color: #303030;
+    }
+}
+.amexio-navbar-dropdown-large {
+    position: static !important;
+}
