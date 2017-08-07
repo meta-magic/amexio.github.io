@@ -8,7 +8,7 @@
 amexio-rating.disabled {
     cursor: not-allowed;
 }
-span.rating i{
+amexio-rating i{
     font-style: normal;
 }
 .amexio-star-icon {
