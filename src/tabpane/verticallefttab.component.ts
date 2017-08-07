@@ -18,7 +18,7 @@ declare var $: any;
         <td [attr.width]="tabwidth" valign="top">
           <ul [ngClass]="tapPosition">
             <li *ngFor="let tab of tabs" class="nav-item">
-              <a (click)="activateTab(tab.elementId)" [ngClass]="{'active':(tab.active && !verticalText), 'inactive':(!tab.active && !verticalText),'activevertical':(tab.active && verticalText), 'inactivevertical':(!tab.active && verticalText)}" class="nav-link " [attr.id]="tab.elementId" style="cursor: pointer;"> <i *ngIf="tab.icon" [ngClass]="tab.icon"></i>&nbsp;{{tab.title}}</a>
+              <a (click)="activateTab(tab.elementId)" [ngClass]="{'amexio-verticallefttab-active':(tab.active && !verticalText), 'amexio-verticallefttab-inactive':(!tab.active && !verticalText),'amexio-verticallefttab-activevertical':(tab.active && verticalText), 'amexio-verticallefttab-inactivevertical':(!tab.active && verticalText)}" class="nav-link " [attr.id]="tab.elementId" style="cursor: pointer;"> <i *ngIf="tab.icon" [ngClass]="tab.icon"></i>&nbsp;{{tab.title}}</a>
             </li>
           </ul>
         </td>
@@ -32,54 +32,8 @@ declare var $: any;
 
     
   `,
-  styles : [
-    `
-
-      .active{
-        border-bottom: 1px solid #ddd;
-        border-top: 1px solid #ddd;
-        border-left: 1px solid #ddd;
-        border-right: none;
-        border-right-color: transparent;
-        display: block;
-      }
-
-      .inactive{
-        border-right: 1px solid #ddd;;
-      }
-
-      .activevertical{
-        border-left: 1px solid #ddd;
-        border-right: 1px solid #ddd;
-        border-top: 1px solid #ddd;
-      }
-
-      .inactivevertical{
-        border-bottom: 1px solid #ddd;
-      }
-      
-      .vertical-text {
-        margin-top:50px;
-        border: none;
-        position: relative;
-      }
-      .vertical-text>li {
-        height: 20px;
-        width: 120px;
-        margin-bottom: 100px;
-      }
-      .vertical-text>li>a {
-        text-align: center;
-        
-        -webkit-transform: rotate(-90deg);
-        -moz-transform: rotate(-90deg);
-        -ms-transform: rotate(-90deg);
-        -o-transform: rotate(-90deg);
-        transform: rotate(-90deg);        
-      }
-
-
-    `
+  styleUrls:[
+      'verticallefttab.custom.css'
   ]
 })
 export class VerticalLeftTabPaneComponent implements OnInit, AfterViewInit, AfterContentInit {
@@ -107,7 +61,7 @@ export class VerticalLeftTabPaneComponent implements OnInit, AfterViewInit, Afte
 
   ngOnInit() {
     if (this.verticalText) {
-      this.tapPosition = 'nav flex-column vertical-text';
+      this.tapPosition = 'nav flex-column amexio-verticallefttab-vertical-text';
     }else {
       this.tapPosition = 'nav flex-column';
     }

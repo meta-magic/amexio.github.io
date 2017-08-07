@@ -9,14 +9,14 @@ declare var $: any;
   template : `
 
     <div [attr.id]="elementId" (window:resize)="onResize($event)">
-    <div (click)="leftClick()" class="scroller scroller-left" >
+    <div (click)="leftClick()" class="amexio-tabpane-scroller amexio-tabpane-scroller-left" >
       <span style="display: none;"  [attr.id]="'left-'+elementId"><i class="fa fa-caret-left fa-2x" aria-hidden="true"></i></span>
     </div>
-    <div (click)="rightClick()" class="scroller scroller-right">
+    <div (click)="rightClick()" class="amexio-tabpane-scroller amexio-tabpane-scroller-right">
       <span  style="display: block"  [attr.id]="'right-'+elementId"><i class="fa fa-caret-right fa-2x" aria-hidden="true"></i></span>
     </div>
     
-    <div class="wrapper" [attr.id]="'wrapper-'+elementId">
+    <div class="amexio-tabpane-wrapper" [attr.id]="'amexio-tabpane-wrapper-'+elementId">
       <ul class="nav nav-tabs" role="tablist" [attr.id]="'list-'+elementId">
         <li class="nav-item" *ngFor="let tab of tabs" >
           <a [class]="getTabClass(tab)" data-toggle="tab"  role="tab" [ngClass]="{'active':tab.active}" style="cursor: pointer;" (click)="activateTab(tab.elementId)" [attr.id]="tab.elementId" >&nbsp;{{tab.title}}&nbsp;&nbsp;<a *ngIf="closable" id="'closable-'+{{tab.elementId}}" style="vertical-align: top; cursor: pointer;" (click)="closeTab(tab.elementId)">&times;</a></a>
@@ -30,51 +30,8 @@ declare var $: any;
     </div>
     
   `,
-  styles: [
-    `
-
-      .list {
-        position:absolute;
-        left:0px;
-        top:0px;
-        margin-left:12px;
-        margin-top:0px;
-      }
-
-      .list li{
-        display:table-cell;
-        position:relative;
-        text-align:center;
-        cursor:grab;
-        cursor:-webkit-grab;
-        color:#efefef;
-        vertical-align:middle;
-      }
-
-      .wrapper {
-        position:relative;
-        margin:0 auto;
-        overflow:hidden;
-        padding:5px;
-        height: 50px;
-      }
-
-      .scroller {
-        text-align:center;
-        cursor:pointer;
-        padding-top:15px;
-        vertical-align: top;
-      }
-
-      .scroller-right{
-        float:right;
-      }
-
-      .scroller-left {
-        float:left;
-      }      
-    
-    `
+  styleUrls: [
+      'tabpane.custom.css'
   ]
 
 })
@@ -150,7 +107,7 @@ export class TabPaneComponent implements OnInit, AfterContentInit, AfterViewInit
   rightClick() {
 
     this.navAdjust('left-' + this.elementId, 'block');
-    const ts = document.getElementById('wrapper-' + this.elementId);
+    const ts = document.getElementById('amexio-tabpane-wrapper-' + this.elementId);
     ts.scrollLeft += 200;
 
     if ((ts.scrollWidth - ts.offsetWidth - ts.scrollLeft ) <= 0) {
@@ -160,7 +117,7 @@ export class TabPaneComponent implements OnInit, AfterContentInit, AfterViewInit
 
   leftClick() {
     this.navAdjust('right-' + this.elementId, 'block');
-    const ts = document.getElementById('wrapper-' + this.elementId);
+    const ts = document.getElementById('amexio-tabpane-wrapper-' + this.elementId);
     ts.scrollLeft -= 200;
     if (ts.scrollLeft == 0 ) {
       this.navAdjust('left-' + this.elementId, 'none');

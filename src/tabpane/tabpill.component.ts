@@ -6,15 +6,7 @@ import {Component, Input, OnInit} from '@angular/core';
     <div role="tabpanel" class="tab-pane active" [attr.id]="elementId">
       <ng-content *ngIf="active"></ng-content>
     </div>
-  `,
-  styles: [
-    `
-      .tabcontent {
-        
-        padding: 0px 12px;
-      }  
-    `
-  ]
+  `
 })
 export class TabComponent implements OnInit {
 
