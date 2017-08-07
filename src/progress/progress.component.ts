@@ -16,38 +16,14 @@ import {Component, Input, OnInit} from '@angular/core';
   selector: 'amexio-progress-bar',
   template : `
 
-      <div class="progress" *ngIf="showProgress">
+      <div class="amexio-progress" *ngIf="showProgress">
           <div class="progress-bar progress-bar-striped {{progressType !=null ? 'bg-'+progressType : ''}} active" role="progressbar" [attr.aria-valuenow]="currentValue" [attr.aria-valuemin]="minValue" [attr.aria-valuemax]="maxValue" [style.width.%]="infinteMode ? 100 : this.currentValue">
               <span>{{infinteMode ? displayText : currentValue+'%'}}<span class="dotdotdot"></span></span>
           </div>
       </div>
 
   `,
-  styles : [`
-      .progress {
-          margin: 15px;
-      }
-
-      .progress .progress-bar.active {
-          font-weight: 700;
-          animation: progress-bar-stripes .5s linear infinite;
-      }
-
-      .dotdotdot:after {
-          font-weight: 300;
-          content: '...';
-          display: inline-block;
-          width: 20px;
-          text-align: left;
-          animation: dotdotdot 1.5s linear infinite;
-      }
-
-      @keyframes dotdotdot {
-          0%   { content: '...'; }
-          25% { content: ''; }
-          50% { content: '.'; }
-          75% { content: '..'; }
-      }`]
+    styleUrls : ['progress.component.css']
 })
 
 export class ProgressComponent implements OnInit{
