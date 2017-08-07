@@ -10,7 +10,7 @@ import {
 @Component({
   selector: 'amexio-dialog',
   template: `
-    <div class="modal fade"  tabindex="-1" [ngClass]="{'show': visibleAnimate}"
+    <div class="modal fade" style="background: #888888;"  tabindex="-1" [ngClass]="{'show': visibleAnimate}"
          [ngStyle]="{'display': showWindow ? 'block' : 'none', 'opacity': visibleAnimate ? 1 : 0}">
       <div class="modal-dialog " role="document">
         <div class="modal-content">
@@ -28,11 +28,6 @@ import {
       </div>
     </div>
   `,
-  styles:[
-      `.modal {
-      background: #888888;
-    }`
-  ]
 })
 
 

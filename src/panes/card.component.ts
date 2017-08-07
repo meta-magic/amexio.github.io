@@ -28,9 +28,6 @@ import {
     </div>
     
   `,
-  styles:[
-      ` `
-  ]
 })
 
 export class CardComponent implements OnInit{
