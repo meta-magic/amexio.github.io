@@ -54,7 +54,7 @@ OR
 (For Bootstrap 3)$ npm install amexio-ng-extensions@1.0.42 --save
 ```
 
-##Installing Dependencies (Required)
+### Installing Dependencies (Required)
 Amexio requires the following libraries to work
 
 1) [bootstrap-datepicker](https://www.npmjs.com/package/bootstrap-datepicker)
