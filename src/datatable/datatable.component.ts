@@ -142,7 +142,7 @@ declare var $;
                       <div [attr.id]="i" class="sublinks collapse">
                         <table class="table table-striped table-hover table-bordered">
                           <tbody>
-                          <tr *ngFor="let rows of row.groupData let rowIndex = index" (click)="rowClick(rows, rowIndex)">
+                          <tr *ngFor="let rows of row.groupData let rowIndex = index" id="{{'row'+rowIndex}}" (click)="rowClick(rows, rowIndex)">
                             <td *ngIf="checkboxSelect" style="width: 10%">
                               <input type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}" [attr.checked]="selectAll? true: null" (click)="setSelectedRow(rows, $event)">
                             </td>
@@ -170,7 +170,7 @@ declare var $;
                     <span>No Records Found</span>
                   </td>
                 </tr>
-                <tr [ngClass]="{'hiderow' : !(viewRows?.length > 0),'showrow' : viewRows?.length > 0}" style="cursor: pointer;" *ngFor="let row of viewRows let rowIndex = index " (click)="rowClick(row, rowIndex)" [class.info]="isSelected(rowIndex)">
+                <tr [ngClass]="{'hiderow' : !(viewRows?.length > 0),'showrow' : viewRows?.length > 0}" style="cursor: pointer;" *ngFor="let row of viewRows let rowIndex = index " id="{{'row'+rowIndex}}" (click)="rowClick(row, rowIndex)" [class.info]="isSelected(rowIndex)">
                   <td *ngIf="checkboxSelect" style="width: 10%" >
                     <input type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}" [attr.checked]="selectAll? true: null" (click)="setSelectedRow(row, $event)">
                   </td>
@@ -198,7 +198,7 @@ declare var $;
                       <div [attr.id]="i" class="sublinks collapse">
                         <table class="table table-bordered">
                           <tbody>
-                          <tr *ngFor="let rows of row.groupData let rowIndex = index" (click)="rowClick(rows, rowIndex)">
+                          <tr *ngFor="let rows of row.groupData let rowIndex = index" id="{{'row'+rowIndex}}" (click)="rowClick(rows, rowIndex)">
                             <td *ngIf="checkboxSelect" style="width: 10%">
                               <input type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}" [attr.checked]="selectAll? true: null" (click)="setSelectedRow(rows, $event)">
                             </td>
@@ -225,7 +225,7 @@ declare var $;
                     <span>No Records Found</span>
                   </td>
                 </tr>
-                <tr [ngClass]="{'hiderow' : !(viewRows?.length > 0),'showrow' : viewRows?.length > 0}" style="cursor: pointer" *ngFor="let row of viewRows let rowIndex = index " (click)="rowClick(row, rowIndex)" [class.info]="isSelected(rowIndex)">
+                <tr [ngClass]="{'hiderow' : !(viewRows?.length > 0),'showrow' : viewRows?.length > 0}" style="cursor: pointer" *ngFor="let row of viewRows let rowIndex = index " id="{{'row'+rowIndex}}" (click)="rowClick(row, rowIndex)" [class.info]="isSelected(rowIndex)">
                   <td *ngIf="checkboxSelect" style="width: 10%" >
                     <input type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}" [attr.checked]="selectAll? true: null" (click)="setSelectedRow(row, $event)">
                   </td>
@@ -327,6 +327,9 @@ export class DataTableComponent  implements OnInit, AfterContentInit, AfterViewI
     responseData: any;
 
     filterCloneData: any;
+
+    rowId : any;
+
     @ContentChildren(ColumnComponent) columnRef: QueryList<ColumnComponent>;
     constructor(private dataTableSevice: CommonHttpService, private cd: ChangeDetectorRef) {
         this.pageNumbers = [];
@@ -702,6 +705,12 @@ export class DataTableComponent  implements OnInit, AfterContentInit, AfterViewI
     }
 
     rowClick(rowData: any, rowIndex: any) {
+        rowIndex = 'row' + rowIndex;
+        if (this.rowId) {
+            document.getElementById(this.rowId).style.backgroundColor = 'white' ;
+             }
+        this.rowId = rowIndex;
+        document.getElementById(rowIndex).style.backgroundColor = 'lightgray' ;
         this.rowSelect.emit(rowData);
         this.selectedRowNo = rowIndex;
     }
