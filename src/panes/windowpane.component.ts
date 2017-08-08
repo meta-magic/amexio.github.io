@@ -20,10 +20,10 @@ import {
           <button *ngIf="closable" type="button" class="close" (click)="close()">&times;</button>
         </div>
         <div class="modal-body" >
-          <ng-template select="amexio-pane-body"></ng-template>
+          <ng-content select="amexio-pane-body"></ng-content>
         </div>
         <div class="modal-footer">
-          <ng-template select="amexio-pane-action"></ng-template>
+          <ng-content select="amexio-pane-action"></ng-content>
         </div>
       </div>
     </div>
