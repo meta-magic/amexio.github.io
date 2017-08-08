@@ -13,7 +13,7 @@ import {
   template: `
     
 
-    <div *ngIf="showCard" style="padding: 2px;">
+    <div *ngIf="showCard" class="amexio-card-padding">
       <div class="card" [ngClass]="cClass">
         <div *ngIf="enableHeader" class="card-header">
           <ng-content select="amexio-pane-header"></ng-content>
@@ -21,16 +21,17 @@ import {
         <div class="card-block">
           <ng-content select="amexio-pane-body"></ng-content>
         </div>
-        <div *ngIf="enableFooter" class="card-footer" style="float: right;">
+        <div *ngIf="enableFooter" class="card-footer amexio-card-footer-float-right" >
           <ng-content select="amexio-pane-action"></ng-content>
         </div>
       </div>
     </div>
     
   `,
+  styleUrls: ['card.custom.css']
 })
 
-export class CardComponent implements OnInit{
+export class CardComponent implements OnInit {
 
   _showCard : boolean;
 
