@@ -27,7 +27,7 @@ declare var $;
                             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-filter" aria-hidden="true"></i>
                             </button>
-                            <div class="dropdown-menu dropdown-menu-right">
+                            <div class="dropdown-menu ">
 
                                 <ng-container *ngFor="let opt of filterOptions">
                                     <ng-container *ngIf="opt.type===column.dataType">
@@ -48,7 +48,7 @@ declare var $;
                             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-filter" aria-hidden="true"></i>
                             </button>
-                            <div class="dropdown-menu dropdown-menu-right ">
+                            <div class="dropdown-menu ">
                                 <ng-container *ngFor="let opt of filterOptions">
                                     <ng-container *ngIf="opt.type===column.dataType">
                                         <a class="dropdown-item" (click)="selectedOption(column,opt)" >{{opt.key}}&nbsp;<i [class]="opt.checkedStatus" aria-hidden="true"></i></a>
