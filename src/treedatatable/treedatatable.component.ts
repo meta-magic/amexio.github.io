@@ -22,11 +22,11 @@ import {CommonHttpService} from '../common.http.service';
         <tr>
             <td [attr.colspan]="columns.length" width="100%" align="right">
 
-          <span style="float: left">
+          <span class="amexio-tredatatable-float-left">
             <b>{{title}}</b>
           </span>
 
-                <span style="float: right">
+                <span class="amexio-tredatatable-float-right">
             <div class="dropdown">
               <a data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-list" aria-hidden="true"></i></a>
                   <ul class="dropdown-menu dropdown-menu-right">
@@ -55,9 +55,9 @@ import {CommonHttpService} from '../common.http.service';
 
         </thead>
 
-        <tr [ngClass]="{'hiderow' : !(viewRows.length > 0),'showrow' : viewRows.length > 0}"  *ngFor="let row of viewRows let rowIndex = index" [hidden]="!row.visible" (click)="setSelectedRow(row, $event)">
+        <tr [ngClass]="{'amexio-treedatatable-hiderow' : !(viewRows.length > 0),'amexio-treedatatable-showrow' : viewRows.length > 0}"  *ngFor="let row of viewRows let rowIndex = index" [hidden]="!row.visible" (click)="setSelectedRow(row, $event)">
             <td *ngFor="let cols of columns let colIndex = index" [hidden] ="cols.hidden" >
-                <div class="amexio-treedatatable-div" *ngIf="colIndex == 0" 
+                <div class="amexio-treedatatable-col-0" *ngIf="colIndex == 0" 
                      [ngStyle]="{left: row.level*15+'px'}" (click)="toggle(row,rowIndex)">
                   <span *ngIf="colIndex == 0" class="fa " [ngClass]="{'fa-minus': row.expanded, 'fa-plus': (!row.expanded && row.haschildren)}" aria-hidden="true">
                   </span>
@@ -70,7 +70,7 @@ import {CommonHttpService} from '../common.http.service';
         </tr>
 
         <tr *ngIf="viewRows.length == 0">
-            <td colspan="3" class="loading-mask amexio-treedatatable-td-height">
+            <td colspan="3" class="loading-mask amexio-treedatatable-loadingmask-height">
 
             </td>
         </tr>

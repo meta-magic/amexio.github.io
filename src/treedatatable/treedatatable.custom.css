@@ -1,7 +1,20 @@
-.amexio-treedatatable-td-height{
+.amexio-treedatatable-loadingmask-height{
     height: 400px;
 }
-.amexio-treedatatable-div{
+.amexio-treedatatable-col-0{
     cursor: pointer;
     position: relative;
+}
+.amexio-treedatatable-hiderow{
+    visibility: hidden
+}
+
+.amexio-treedatatable-showrow{
+    visibility: visible;
+}
+.amexio-tredatatable-float-right{
+    float: right;
+}
+.amexio-tredatatable-float-left{
+  float: left;
 }
