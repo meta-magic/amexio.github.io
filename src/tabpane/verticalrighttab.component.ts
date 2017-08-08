@@ -16,7 +16,7 @@ declare var $: any;
     <table>
       <tr>
         <td valign="top">
-          <div style="padding: 5px;">
+          <div class="amexio-verticalrighttab-td-padding">
             <ng-content ></ng-content>
           </div>
         </td>
@@ -32,7 +32,7 @@ declare var $: any;
 
 
   `,
-  styleUrls:[
+  styleUrls: [
       'verticalrighttab.custom.css'
   ]
 })
@@ -45,7 +45,7 @@ export class VerticalRightTabPaneComponent implements OnInit, AfterViewInit, Aft
 
   @Input() verticalText: boolean;
 
-  @Input() tabwidth : string;
+  @Input() tabwidth: string;
 
   @ContentChildren(TabComponent)  queryTabs: QueryList<TabComponent>;
 
