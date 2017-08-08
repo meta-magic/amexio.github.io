@@ -22,12 +22,11 @@ import {CommonHttpService} from '../common.http.service';
     selector : 'amexio-tree-view',
     template : `
         <div *ngIf="data.length== 0">
-            <div class="loading-mask"  style="height: 300px;width: 400px;">
-
+            <div class="loading-mask amexio-treeview-loadingmask" >
             </div>
         </div>
 
-        <ul style="list-style-type: none;" *ngIf="data.length > 0">
+        <ul class="amexio-treeview-ul" *ngIf="data.length > 0">
             <li style="cursor: pointer" *ngFor="let treeData of data">
                 <div >
                     <span class="fa " [ngClass]="{'fa-minus': treeData.expanded, 'fa-plus': (!treeData.expanded && treeData.children)}" (click)="toggle(treeData)"> </span>
@@ -43,7 +42,7 @@ import {CommonHttpService} from '../common.http.service';
 
                 </div>
                 <div *ngIf="treeData.expanded && treeData.expanded  == true">
-                    <ul style="list-style-type: none;">
+                    <ul class="amexio-treeview-ul">
                         <li style="cursor: pointer" *ngFor="let leaf of treeData.children">
                             <div>
                                 <span class="fa " [ngClass]="{'fa-minus': leaf.expanded, 'fa-plus': (!leaf.expanded && leaf.children)}" (click)="toggle(leaf)"> </span>
@@ -68,7 +67,8 @@ import {CommonHttpService} from '../common.http.service';
         </ul>`,
     providers : [CommonHttpService],
     styleUrls: [
-        '../baseclass/loading-mask.css'
+        '../baseclass/loading-mask.css',
+        'treeview.custom.css'
     ]
 })
 
