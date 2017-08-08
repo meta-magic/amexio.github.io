@@ -25,17 +25,17 @@ import {CommonHttpService} from "../common.http.service";
       <div [style.margin-top]="toPosition" [ngClass]="{'amexio-sidenavbar-sidenavleft':!right, 'amexio-sidenavbar-sidenavright':right}"  [attr.id]="elementId" (mouseleave)="expanded?null:closeNav()">
           <ul class="navbar-nav">
             <li *ngIf="filter==true">
-                <div style="padding-top: 5px;padding-bottom: 5px;padding-left: 10px;">
-                    <input type="text" class="form-control" [(ngModel)]="filterText"  placeholder="Search" (keyup)="filterData()"  style="width: 100%;" />
+                <div class="amexio-sidenavbar-filter">
+                    <input type="text" class="form-control amexio-sidenavbar-input-width" [(ngModel)]="filterText"  placeholder="Search" (keyup)="filterData()" />
                 </div>
             </li>
               <li class="nav-item" *ngFor="let header of menus ">
-                  <a class="nav-link"  (click)="expandNode(header)" style="padding-left: 10px;padding-right: 10px">
+                  <a class="nav-link amexio-sidenavbar-nav-link-a"  (click)="expandNode(header)">
                       <ng-container *ngIf="headerTemplate==null">{{header.text}}</ng-container>
 
                       <ng-template *ngIf="headerTemplate!=null" [ngTemplateOutlet]="headerTemplate" [ngOutletContext]="{ $implicit: {}, navHeader:header }"></ng-template>
 
-                      <span *ngIf="header.childrens "  style="float: right;" class="fa" [ngClass]="{'fa-angle-up':header.expand,'fa-angle-down':!header.expand}"></span>
+                      <span *ngIf="header.childrens " class="amexio-sidenavbar-child-header fa" [ngClass]="{'fa-angle-up':header.expand,'fa-angle-down':!header.expand}"></span>
                   </a>
                   <ng-container *ngIf="header.childrens && header.expand">
                       <div [ngStyle]="header.hstyle" >
@@ -46,7 +46,7 @@ import {CommonHttpService} from "../common.http.service";
                                       <ng-template *ngIf="childTemplate!=null" [ngTemplateOutlet]="childTemplate" [ngOutletContext]="{ $implicit: {}, menuHeader:level1Menu }"></ng-template>
                                   </a>
                                   <ng-container *ngIf="level1Menu.childrens">
-                                      <ul  style="list-style: none; padding:0px;" (nodeClick)="menuClick($event)"  [templates]="subMenuTemplate"  amexio-submenu-view [subMenuData]="level1Menu.childrens"></ul>
+                                      <ul class="amexio-sidenavbar-level1-child" (nodeClick)="menuClick($event)"  [templates]="subMenuTemplate"  amexio-submenu-view [subMenuData]="level1Menu.childrens"></ul>
                                   </ng-container>
                               </li>
                           </ul>
@@ -60,7 +60,7 @@ import {CommonHttpService} from "../common.http.service";
       <span *ngIf="enableToggleButton" [style.margin-top]="toPosition"  [ngClass]="{'amexio-sidenavbar-sidenavopenleft':!right, 'amexio-sidenavbar-sidenavopenright':right}"  (click)="openNav()">&#9776;</span>
 
   `,
-  styleUrls:['sidenavbar.custom.css'],
+  styleUrls: ['sidenavbar.custom.css'],
     providers: [CommonHttpService]
 })
 

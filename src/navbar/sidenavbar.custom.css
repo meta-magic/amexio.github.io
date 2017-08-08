@@ -61,3 +61,23 @@ a{
 @media screen and (max-height: 450px) {
     .amexio-sidenavbar-sidenavleft {padding-top: 15px;}
 }
+.amexio-sidenavbar-filter{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+}
+.amexio-sidenavbar-input-width{
+    width: 100%;
+}
+.amexio-sidenavbar-nav-link-a{
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
+.amexio-sidenavbar-child-header{
+    float: right;
+}
+.amexio-sidenavbar-level1-child{
+    list-style: none;
+    padding:0px;
+}

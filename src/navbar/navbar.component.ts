@@ -38,16 +38,16 @@ import {CommonHttpService} from "../common.http.service";
                           <ng-container *ngIf="mh.childrens">
                               <ul class="dropdown-menu" id="{{elementId}}dd-m-{{ind}}">
                                 <div class="row">
-                                  <li class="col-sm-4" style="position: static !important" *ngFor="let sm of mh.childrens let ind =index">
-                                    <ul style="padding: 0px;margin: 0px;">
-                                      <li style="list-style: none;color: #428bca;font-size: 18px;padding: 3px 2px;position: static !important">
-                                        <a  style="text-decoration: none;color: #428bca" (click)="menuClick(sm)" style="cursor:pointer">
+                                  <li class="col-sm-4 amexio-navbar-li-position" *ngFor="let sm of mh.childrens let ind =index">
+                                    <ul class="amexio-navbar-align">
+                                      <li class="amexio-navbar-li-custom">
+                                        <a (click)="menuClick(sm)">
                                           <ng-container *ngIf="childTemplate==null">{{sm.text}}</ng-container>
                                           <ng-template *ngIf="childTemplate!=null" [ngTemplateOutlet]="childTemplate" [ngOutletContext]="{ $implicit: {}, menuHeader:sm }"></ng-template>
                                         </a>
                                       </li>
                                       <ng-container *ngIf="sm.childrens">
-                                        <li (nodeClick)="menuClick($event)"  style="list-style: none; padding:0px;"  amexio-submenu-view [subMenuData]="sm.childrens"  [templates]="subMenuTemplate"></li>
+                                        <li class="amexio-navbar-ifchild" (nodeClick)="menuClick($event)" amexio-submenu-view [subMenuData]="sm.childrens"  [templates]="subMenuTemplate"></li>
                                       </ng-container>
                                     </ul>
                                   </li>

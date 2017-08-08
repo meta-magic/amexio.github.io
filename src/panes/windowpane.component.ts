@@ -28,21 +28,22 @@ import {
       </div>
     </div>
   </div>
-  `
+  `,
+  styleUrls: ['windowpane.custom.css']
 })
 
 export class WindowPaneComponent implements OnInit{
 
 
-  _showWindow : boolean;
+  _showWindow: boolean;
 
-  visibleAnimate : boolean;
+  visibleAnimate: boolean;
 
-  @Input() title : boolean;
+  @Input() title: boolean;
 
-  @Input() closable : boolean;
+  @Input() closable: boolean;
 
-  @Output() showWindowChange : EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() showWindowChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   @Input() size : number; // 1 is small modal , 2 is large modal
 

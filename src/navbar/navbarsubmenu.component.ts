@@ -17,24 +17,24 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 @Component({
   selector: '[amexio-submenu-view]',
   template : `
-    <ul style="list-style: none;padding: 1px;">
-      <li style="list-style: none; padding: 1px 20px; color: #777"  *ngFor="let sm of subMenuData">
+    <ul class="amexio-navbarsubmenu-ul">
+      <li *ngFor="let sm of subMenuData">
         <ng-container  *ngIf="sm.childrens">
-          <a style="text-decoration: none;color: #777" (click)="menuClick(sm)" style="cursor:pointer">
+          <a class="amexio-navbarsubmenu-a" (click)="menuClick(sm)">
             <ng-container *ngIf="templates==null">
               {{sm.text}}
             </ng-container>
             <ng-template  [ngTemplateOutlet]="templates" [ngOutletContext]="{ $implicit: {}, subMenus:sm }"></ng-template>
            </a>
-          <ul style="list-style: none;padding: 1px;">
+          <ul class="amexio-navbarsubmenu-ul">
             <ng-container *ngIf="sm.childrens">
-              <li style="list-style: none;padding: 1px; color: #777" (nodeClick)="menuClick($event)" amexio-submenu-view [subMenuData]="sm.childrens" [templates]="templates"></li>
+              <li (nodeClick)="menuClick($event)" amexio-submenu-view [subMenuData]="sm.childrens" [templates]="templates"></li>
             </ng-container>
           </ul>
         </ng-container>
         
         <ng-container  *ngIf="!sm.childrens">
-          <a style="text-decoration: none;color: #777" (click)="menuClick(sm)" style="cursor:pointer">
+          <a class="amexio-navbarsubmenu-a" (click)="menuClick(sm)">
            <ng-container *ngIf="templates==null">
              {{sm.text}}
            </ng-container> 
@@ -43,7 +43,8 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
         </ng-container>
       </li>
     </ul>
-  `
+  `,
+  styleUrls: ['navbarsubmenu.custom.css']
 })
 export class NavbarSubMenuComponent implements OnInit {
 
