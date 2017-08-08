@@ -38,3 +38,13 @@
 .amexio-tabpane-scroller-left {
     float:left;
 }
+.amexio-tabpane-hide-span{
+    display: none;
+}
+.amexio-tabpane-display-span{
+    display: block;
+}
+.amexio-tabpane-closeicon-position{
+    vertical-align: top;
+    cursor: pointer;
+}

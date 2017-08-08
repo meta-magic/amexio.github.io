@@ -10,16 +10,16 @@ declare var $: any;
 
     <div [attr.id]="elementId" (window:resize)="onResize($event)">
     <div (click)="leftClick()" class="amexio-tabpane-scroller amexio-tabpane-scroller-left" >
-      <span style="display: none;"  [attr.id]="'left-'+elementId"><i class="fa fa-caret-left fa-2x" aria-hidden="true"></i></span>
+      <span class="amexio-tabpane-hide-span"  [attr.id]="'left-'+elementId"><i class="fa fa-caret-left fa-2x" aria-hidden="true"></i></span>
     </div>
     <div (click)="rightClick()" class="amexio-tabpane-scroller amexio-tabpane-scroller-right">
-      <span  style="display: block"  [attr.id]="'right-'+elementId"><i class="fa fa-caret-right fa-2x" aria-hidden="true"></i></span>
+      <span class="amexio-tabpane-display-span" [attr.id]="'right-'+elementId"><i class="fa fa-caret-right fa-2x" aria-hidden="true"></i></span>
     </div>
     
     <div class="amexio-tabpane-wrapper" [attr.id]="'amexio-tabpane-wrapper-'+elementId">
       <ul class="nav nav-tabs" role="tablist" [attr.id]="'list-'+elementId">
         <li class="nav-item" *ngFor="let tab of tabs" >
-          <a [class]="getTabClass(tab)" data-toggle="tab"  role="tab" [ngClass]="{'active':tab.active}" style="cursor: pointer;" (click)="activateTab(tab.elementId)" [attr.id]="tab.elementId" >&nbsp;{{tab.title}}&nbsp;&nbsp;<a *ngIf="closable" id="'closable-'+{{tab.elementId}}" style="vertical-align: top; cursor: pointer;" (click)="closeTab(tab.elementId)">&times;</a></a>
+          <a [class]="getTabClass(tab)" data-toggle="tab"  role="tab" [ngClass]="{'active':tab.active}" style="cursor: pointer;" (click)="activateTab(tab.elementId)" [attr.id]="tab.elementId" >&nbsp;{{tab.title}}&nbsp;&nbsp;<a *ngIf="closable" id="'closable-'+{{tab.elementId}}" class="amexio-tabpane-closeicon-position" (click)="closeTab(tab.elementId)">&times;</a></a>
         </li>
       </ul>
     </div>
