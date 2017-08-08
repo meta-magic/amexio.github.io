@@ -21,8 +21,7 @@ declare var $;
                   [class]="btnStyleClass"
                   [attr.fieldName] = "fieldName"
                   [attr.disabled] = "disabled ? true: null"
-                  data-toggle="tooltip" [attr.data-placement]="popoverPlacement" [attr.title]="tooltipMessage"
-          >
+                  data-toggle="tooltip" [attr.data-placement]="popoverPlacement" [attr.title]="tooltipMessage">
               <ng-container *ngIf="isLoading">
                 <i class="fa fa-refresh fa-spin " aria-hidden="true"></i>&nbsp;
               </ng-container>
@@ -32,7 +31,6 @@ declare var $;
               </ng-container>
           </button>
       </div>
-
   `,
   styles : [`
   .glyphicon-refresh-animate {

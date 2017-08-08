@@ -48,7 +48,7 @@ export class TabPaneComponent implements OnInit, AfterContentInit, AfterViewInit
   elementId: string;
 
   constructor() {
-    this.elementId = 'tabpane-' + new Date().getTime()+"-"+Math.random().toString(36).substr(2, length);
+    this.elementId = 'tabpane-' + Math.random().toString(36).substr(2, 5);
   }
 
 
