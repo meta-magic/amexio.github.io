@@ -23,7 +23,7 @@ declare var $: any;
           </ul>
         </td>
         <td valign="top">
-          <div style="padding: 5px;">
+          <div class="amexio-verticallefttab-td-padding">
             <ng-content ></ng-content>
           </div>
         </td>

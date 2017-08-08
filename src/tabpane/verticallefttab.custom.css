@@ -40,3 +40,6 @@
     -o-transform: rotate(-90deg);
     transform: rotate(-90deg);
 }
+.amexio-verticallefttab-td-padding{
+    padding: 5px;
+}
