@@ -31,9 +31,6 @@ table.head tr td {
     overflow-y: auto;
     min-height: 0px;
 }
-.amexio-datatable-fullscreen-td{
-    width: 10%;
-}
 .amexio-datatable-small-word-wrap{
     word-wrap: break-word
 }
@@ -45,9 +42,6 @@ table.head tr td {
 }
 .amexio-datatable-pagenumber{
     float: right;
-}
-.amexio-datatable-checkbox{
-    width: 10%;
 }
 .amexio-datatable-loadingmask{
     height: 100px;
