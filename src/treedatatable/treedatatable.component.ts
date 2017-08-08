@@ -19,7 +19,6 @@ import {CommonHttpService} from '../common.http.service';
     selector : 'amexio-tree-data-table',
     template : `<table  class="table table-hover table-bordered ">
         <thead>
-
         <tr>
             <td [attr.colspan]="columns.length" width="100%" align="right">
 
@@ -58,7 +57,7 @@ import {CommonHttpService} from '../common.http.service';
 
         <tr [ngClass]="{'hiderow' : !(viewRows.length > 0),'showrow' : viewRows.length > 0}"  *ngFor="let row of viewRows let rowIndex = index" [hidden]="!row.visible" (click)="setSelectedRow(row, $event)">
             <td *ngFor="let cols of columns let colIndex = index" [hidden] ="cols.hidden" >
-                <div style="cursor: pointer;position: relative" *ngIf="colIndex == 0" 
+                <div class="amexio-treedatatable-div" *ngIf="colIndex == 0" 
                      [ngStyle]="{left: row.level*15+'px'}" (click)="toggle(row,rowIndex)">
                   <span *ngIf="colIndex == 0" class="fa " [ngClass]="{'fa-minus': row.expanded, 'fa-plus': (!row.expanded && row.haschildren)}" aria-hidden="true">
                   </span>
@@ -71,44 +70,45 @@ import {CommonHttpService} from '../common.http.service';
         </tr>
 
         <tr *ngIf="viewRows.length == 0">
-            <td colspan="3" style="height: 400px;" class="loading-mask">
+            <td colspan="3" class="loading-mask amexio-treedatatable-td-height">
 
             </td>
         </tr>
     </table>`,
     providers : [CommonHttpService],
     styleUrls: [
-        '../baseclass/loading-mask.css'
+        '../baseclass/loading-mask.css',
+        'treedatatable.custom.css'
     ]
 })
 
 export class TreeDataTableComponent implements  OnInit{
 
-    @Input()    title : string;
+    @Input()    title: string;
 
-    @Input()    httpUrl : string;
+    @Input()    httpUrl: string;
 
-    @Input()    httpMethod : string;
+    @Input()    httpMethod: string;
 
-    @Input()    dataReader : string;
+    @Input()    dataReader: string;
 
-    @Input()    dataTableBindData : any[];
+    @Input()    dataTableBindData: any[];
 
-    @Input()    pageSize : number;
+    @Input()    pageSize: number;
 
-    @Output()    selectedRecord : any = new EventEmitter<any>();
+    @Output()    selectedRecord: any = new EventEmitter<any>();
 
-    data : any;
+    data: any;
 
-    viewRows : any[] = [];
+    viewRows: any[] = [];
 
-    columns : any[] = [];
+    columns: any[] = [];
 
-    sortColumn : any;
+    sortColumn: any;
 
     responseData: any;
 
-    constructor (private  treeDataTableService : CommonHttpService){
+    constructor (private  treeDataTableService: CommonHttpService){
         this.columns.push({text: 'Task', dataIndex: 'task', hidden: false, dataType : 'string'});
         this.columns.push({text: 'Duration', dataIndex: 'duration', hidden: false ,  dataType : 'number'});
         this.columns.push({text: 'User', dataIndex: 'user', hidden: false,  dataType : 'string'});
@@ -134,7 +134,7 @@ export class TreeDataTableComponent implements  OnInit{
 
     }
 
-    ngOnChanges(change : SimpleChange){
+    ngOnChanges(change: SimpleChange){
         if (this.dataTableBindData){
             this.setData(this.dataTableBindData);
         }
@@ -150,7 +150,7 @@ export class TreeDataTableComponent implements  OnInit{
         this.renderData();
     }
 
-    toggle(rowData : any , rowIndex : number){
+    toggle(rowData: any , rowIndex: number){
         this.toggleViewRows(rowData, !rowData.expanded, this.viewRows);
     }
 
