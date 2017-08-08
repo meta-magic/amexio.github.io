@@ -19,19 +19,19 @@ import {CommonHttpService} from '../common.http.service';
   selector: 'amexio-item-selector',
   template: `
     
-    <div class="row" style="width: 100%; overflow: hidden" (window:resize)="onResize($event)">
+    <div class="row amexio-itemselector" (window:resize)="onResize($event)">
     <div  [style.width]="itemSelectorWidth">
       <div class="list-group" [style.height]="itemSelectorHeight">
-        <button type="button" class="list-group-item" style="background-color:#cecece">Available</button>
-        <div style="height:100%;overflow-y: auto;position:relative;" >
+        <button type="button" class="list-group-item amexio-itemselector-available-btn">Available</button>
+        <div class="amexio-itemselector-action-list" >
           <button type="button" class="list-group-item list-group-item-action"  *ngFor="let data of availableData; let i = index" (click)="itemCkick(data,i)">{{data[displayField]}}</button>
         </div>
        
       </div>
     </div>
       <ng-container *ngIf="smallScreen">
-        <div style="width: 100%">
-          <div style="padding:5% 0 5% 0;" class="btn-group" role="group"  aria-label="Button group with nested dropdown">
+        <div class="amexio-itemselector-width">
+          <div  class="btn-group amexio-itemselector-btn-group" role="group"  aria-label="Button group with nested dropdown">
             <amexio-btn (onClick)="moveTop()"  [type]="'link'" [tooltipMessage]="'move top'" [block]="true" [icon]="'caret-up fa-2x'"></amexio-btn>
             <amexio-btn (onClick)="upSwitch()" [type]="'link'" [tooltipMessage]="'move up'" [block]="true" [icon]="'angle-double-up fa-2x'"></amexio-btn>
             <amexio-btn (onClick)="leftSwitch()" [type]="'link'" [tooltipMessage]="'move left'" [block]="true" [icon]="'arrow-up fa-2x'"></amexio-btn>
@@ -42,8 +42,8 @@ import {CommonHttpService} from '../common.http.service';
         </div>
         
       </ng-container>
-    <div style="width: 8%" *ngIf="!smallScreen">
-      <div class="list-group text-center" style="padding-top: 35%;" [style.height]="itemSelectorHeight">
+    <div class="amexio-itemselector-smallscreen" *ngIf="!smallScreen">
+      <div class="list-group text-center amexio-itemselector-smallscreen-div" [style.height]="itemSelectorHeight">
         <div>  
         <div class="btn-group-vertical" role="group" aria-label="Button group with nested dropdown">
             <amexio-btn (onClick)="moveTop()"  [type]="'link'" [tooltipMessage]="'move top'" [block]="true" [icon]="'fa fa-caret-up fa-2x'"></amexio-btn>
@@ -59,8 +59,8 @@ import {CommonHttpService} from '../common.http.service';
       </div>
     <div [style.width]="itemSelectorWidth">
       <div class="list-group" [style.height]="itemSelectorHeight">
-        <button type="button" class="list-group-item" style="background-color:#cecece">Selected</button>
-        <div style="height:100%;overflow-y: auto;position:relative;" >
+        <button type="button" class="list-group-item amexio-itemselector-available-btn">Selected</button>
+        <div class="amexio-itemselector-action-list" >
         <button type="button" class="list-group-item list-group-item-action"  *ngFor="let data of selectedData; let i = index" (click)="itemCkick(data,i)">{{data[displayField]}}</button>
         </div>
       </div>
@@ -68,6 +68,7 @@ import {CommonHttpService} from '../common.http.service';
     </div>
     
   `,
+  styleUrls: ['itemselector.custom.css'],
   providers: [CommonHttpService]
 })
 export class ItemSelectorComponent implements OnInit, AfterViewInit {
