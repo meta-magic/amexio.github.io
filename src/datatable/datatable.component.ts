@@ -36,13 +36,13 @@ declare var $;
             <ng-content></ng-content>
         </div>
         <div class="wrap">
-            <table class="table table-sm  table-bordered " [attr.id]="elementId" (window:resize)="onResize($event)" style="width:100%">
+            <table class="table table-sm  table-bordered " [attr.id]="elementId" (window:resize)="onResize($event)" class="amexio-grid-full-width">
                 <tr>
-                    <td [attr.colspan]="columns?.length + (checkboxSelect? 1: 0)" width="100%" data align="right">
+                    <td [attr.colspan]="columns?.length + (checkboxSelect? 1: 0)" class="amexio-grid-full-width" data align="right">
         <span style="float: left;">
       <b>{{title}}</b>
       </span>
-                        <span style="float: right" class="col-xs-12">
+                        <span class="amexio-grid-float-right" class="col-xs-12">
         <div class="btn-group btn-group-sm" role="group" aria-label="Button group with nested dropdown">
             <ng-container *ngIf="groupByColumn">
                    <amexio-dropdown [(ngModel)]="groupByColumnIndex"
@@ -61,7 +61,7 @@ declare var $;
             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fa fa-bars"></i> Page - {{currentPage}}
             </button>
-            <div class="dropdown-menu dropdown-menu-right" style="max-height: 445.406px; overflow-y: auto; min-height: 0px;">
+            <div class="dropdown-menu dropdown-menu-right" class="amexio-grid-filter-dropdown">
               <li *ngFor="let row of pageNumbers let pageNo = index " class="dropdown-item" value="{{pageNo+1}}"><a (click)="setPageNo(pageNo+1)">{{pageNo+1}}</a></li>
             </div>
           </div>
@@ -103,7 +103,7 @@ declare var $;
             </table>
             <table class="table table-sm  table-hover  table-bordered ">
                 <tr *ngIf="!smallScreen">
-                    <td *ngIf="checkboxSelect" style="width: 10%;">
+                    <td *ngIf="checkboxSelect" class="amexio-grid-checkbox">
                         <input type="checkbox" (click)="selectAllVisibleRows()">
                     </td>
                     <td *ngFor="let cols of columns let index=index" [hidden]="cols.hidden">
@@ -113,16 +113,16 @@ declare var $;
         <!--Check if user has embedded view inserted then -->
       <ng-template *ngIf="cols?.headerTemplate" [ngTemplateOutlet]="cols?.headerTemplate" [ngOutletContext]="{ $implicit: { header: cols.text } }"></ng-template>
     </span>
-                        <span style="float: right" class="btn-group" role="group">
+                        <span class="amexio-grid-float-right" class="btn-group" role="group">
       <span class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <span class="glyphicon glyphicon-triangle-bottom" style="color:#93a1a1"></span>
       </span>
       <div class="dropdown-menu dropdown-menu-right">
         <button class="btn btn-link" (click)="setSortColumn(cols,1)">
-        <span class="glyphicon glyphicon glyphicon-sort-by-attributes pull-left"></span><span>&nbsp;Sort Ascending</span>
+        <i class="fa fa-sort-amount-asc pull-left" aria-hidden="true"></i><span>&nbsp;Sort Ascending</span>
         </button>
         <button class="btn btn-link" (click)="setSortColumn(cols,2)">
-        <span class="glyphicon glyphicon glyphicon glyphicon-sort-by-attributes-alt pull-left"></span><span>&nbsp;Sort Descending</span>
+        <i class="fa fa-sort-amount-desc pull-left" aria-hidden="true"></i><span>&nbsp;Sort Descending</span>
         </button>
       </div>
     </span>
@@ -250,28 +250,7 @@ declare var $;
         </div>
     `,
     providers : [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR, CommonHttpService],
-    styles : [`
-        .wrap {
-            width: 100%;
-        }
-
-        .wrap table {
-            width: 100%;
-            table-layout: fixed;
-            margin-bottom: 1px;
-        }
-
-        table tr td {
-            border: 1px solid #eee;
-            width: 90%;
-            word-wrap: break-word;
-        }
-
-        table.head tr td {
-            background: #eee;
-        }
-
-    `]
+    styleUrls : ['datatable.component.css']
 })
 
 export class DataTableComponent  implements OnInit, AfterContentInit, AfterViewInit, OnChanges {
