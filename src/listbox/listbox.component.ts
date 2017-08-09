@@ -24,12 +24,12 @@ import {Http} from "@angular/http";
     template : `
         <div style="padding: 10px;" >
             <table class="list-group">
-                <tr *ngIf="(filter == true)" class="list-group-item justify-content-between">
+                <tr *ngIf="(filter == true)" class="list-group-item">
                     <td colspan="2" width="90%">
-                        <input type="text" class="form-control" aria-label="Text input with dropdown button" [(ngModel)]="filterText"  placeholder="Search" (keyup)="filterData()">
+                        <input type="text" class="form-control"  [(ngModel)]="filterText"  placeholder="Search" (keyup)="filterData()">
                     </td>
                 </tr>
-                <tr class="list-group-item justify-content-between" *ngFor="let row of viewData let rowno = index ">
+                <tr class="list-group-item" *ngFor="let row of viewData let rowno = index ">
                     <td *ngIf="(enableCheckbox == true)" style="padding: 10px; ">
                         <input type="checkbox" (click)="selectedCheckBox($event,rowno,row)"/>
                     </td>
