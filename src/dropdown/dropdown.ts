@@ -47,10 +47,10 @@ declare var $: any;
             <div class="dropdown-menu scrollable-options" [attr.aria-labelledby]="elementId">
                 <input *ngIf="searchBox" type="text" class="dropdown-item form-control" (keyup)="onDropDownSearchKeyUp($event)"
                        placeholder="Search"/>
-                <a class="dropdown-item" *ngFor="let row of filteredOptions"
+                <button class="dropdown-item" *ngFor="let row of filteredOptions"
                    (click)="onUserSelectionChange(row[valueField],row[displayField],row)">
                     {{row[displayField]}} <i class="fa fa-check pull-right" aria-hidden="true" *ngIf="row?.checked"></i>
-                </a>
+                </button>
 
                 <ng-template *ngIf="filteredOptions.length < 1">
                     <a class="dropdown-item disabled">No Options</a>
