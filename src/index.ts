@@ -42,6 +42,7 @@ import {PaneHeaderComponent} from "./panes/paneheader.component";
 import {WindowPaneComponent} from "./panes/windowpane.component";
 import {DialogComponent} from "./panes/dialog.component";
 import {CardComponent} from "./panes/card.component";
+import {ListBoxComponent} from "./listbox/listbox.component";
 
 export * from './button/button.component';
 export * from './common.http.service';
@@ -99,6 +100,8 @@ export *  from "./panes/dialog.component";
 export *  from "./panes/card.component";
 
 
+export *  from "./listbox/listbox.component";
+
 @NgModule({
   imports: [
     CommonModule,
@@ -144,7 +147,8 @@ export *  from "./panes/card.component";
     PaneHeaderComponent,
     WindowPaneComponent,
     DialogComponent,
-    CardComponent
+    CardComponent,
+      ListBoxComponent
   ],
   exports: [
     ButtonComponent,
@@ -185,7 +189,8 @@ export *  from "./panes/card.component";
     PaneHeaderComponent,
     WindowPaneComponent,
     DialogComponent,
-    CardComponent
+    CardComponent,
+      ListBoxComponent
   ]
 })
 export class AmexioWidgetModule {
