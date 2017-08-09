@@ -22,8 +22,11 @@ import {Http, Headers, RequestOptions} from "@angular/http";
   selector: 'amexio-sidemenubar',
   template: `
 
-      <div [ngClass]="{'sidenavleft':!right, 'sidenavright':right}"  [attr.id]="elementId" (mouseleave)="closeNav();">
+      <div [ngClass]="{'sidenavleft':!right, 'sidenavright':right}"  [attr.id]="elementId" (mouseleave)="expanded?null:closeNav()">
           <ul class="nav">
+            <li *ngIf="filter==true">
+              <input type="text" class="form-control" [(ngModel)]="filterText"  placeholder="Search" (keyup)="filterData()"  style="width: 100%;" />
+            </li>
               <li *ngFor="let header of menus ">
                   <a (click)="expandNode(header)">
                       <ng-container *ngIf="headerTemplate==null">{{header.text}}</ng-container>
@@ -76,7 +79,7 @@ import {Http, Headers, RequestOptions} from "@angular/http";
           left: 0;
           background-color: #ffffff;
           overflow-x: hidden;
-          transition: 0.5s;
+          transition: 0.1s;
           overflow: auto;
       }
 
@@ -138,15 +141,25 @@ export class SideNavBarComponent implements OnInit{
   @Input()
   bindData: any;
 
+  @Input()
+  expanded: boolean;
+
+  @Input()
+  filter: boolean;
+
   @Output()
   selectedNode : any = new EventEmitter<any>();
 
   menus: any[];
 
+  orgMenus : any[];
+
   @Input()
   right: boolean;
 
   elementId:string;
+
+  filterText: string;
 
   @ContentChild('amexioNavHeaderTmpl') headerTemplate: TemplateRef<any>;
 
@@ -156,6 +169,8 @@ export class SideNavBarComponent implements OnInit{
 
   constructor(private _http : Http){
     this.elementId = "amexio-sidenav-view-"+Math.random()+'-'+new Date().getTime();
+    this.expanded = false;
+    this.filter = false;
   }
 
 
@@ -169,7 +184,11 @@ export class SideNavBarComponent implements OnInit{
     } else if(this.bindData){
       this.setData(this.bindData);
     }
-    //this.openNav();
+    if(this.expanded){
+      setTimeout(()=>{
+        this.openNav();
+      });
+    }
   }
 
 
@@ -195,7 +214,7 @@ export class SideNavBarComponent implements OnInit{
 
   menuClick(nodeData:any){
     this.selectedNode.emit(nodeData);
-    if(!nodeData.childrens)
+    if(!nodeData.childrens && !this.expanded)
       this.closeNav()
   }
 
@@ -205,6 +224,33 @@ export class SideNavBarComponent implements OnInit{
 
   setData(httpResponse: any) {
     this.menus = this.getData(httpResponse);
+    this.orgMenus = JSON.parse(JSON.stringify(this.menus));
+  }
+
+  filterData(){
+    if(this.filterText.length>=1){
+      let mdata = JSON.parse(JSON.stringify(this.orgMenus));
+      let mnodes = this.searchTree(mdata, this.filterText);
+      debugger;
+      this.menus = mnodes;
+    }else{
+      this.menus = JSON.parse(JSON.stringify(this.orgMenus));
+    }
+  }
+
+  searchTree(data : any[], matchingTitle:string){
+    let res = data.filter(function f(node) {
+      node.expand = true;
+      if(node.text.toLowerCase().startsWith(matchingTitle.toLowerCase())){
+        return true;
+      }
+
+      if (node.childrens) {
+        return (node.childrens = node.childrens.filter(f)).length;
+      }
+    });
+
+    return res;
   }
 
   getData(httpResponse : any){
