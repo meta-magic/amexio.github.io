@@ -53,7 +53,7 @@ export class VerticalRightTabPaneComponent implements OnInit, AfterViewInit, Aft
 
 
   constructor() {
-    this.elementId = 'vertical-right-tabpane-' + new Date().getTime();
+    this.elementId = 'vertical-right-tabpane-' + Math.floor(Math.random()*90000) + 10000;
     this.verticalText = false;
     this.tabwidth = "15%";
   }

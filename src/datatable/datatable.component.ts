@@ -342,7 +342,7 @@ export class DataTableComponent  implements OnInit, AfterContentInit, AfterViewI
         this.summary = [];
         this.smallScreen = false;
         this.sortBy = -1;
-        this.randomIDCheckALL = 'checkall-' + new Date().getTime() + Math.random();
+        this.randomIDCheckALL = 'checkall-' + Math.floor(Math.random()*90000) + 10000;
     }
 
     ngOnInit() {

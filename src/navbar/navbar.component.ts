@@ -99,7 +99,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   @ContentChild('amexioSubMenuTmpl') subMenuTemplate: TemplateRef<any>;
 
   constructor(private _http: Http, private carouselService: CommonHttpService) {
-    this.elementId = 'nav-' + new Date().getTime() + Math.round(Math.random()) + '-';
+    this.elementId = 'nav-' + Math.floor(Math.random()*90000) + 10000 + '-';
   }
 
   adjustPosition(event: any, ind: any) {

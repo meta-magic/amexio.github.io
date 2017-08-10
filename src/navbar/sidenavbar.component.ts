@@ -117,7 +117,7 @@ export class SideNavBarComponent implements OnInit, AfterViewInit {
   @ContentChild('amexioSubMenuTmpl') subMenuTemplate: TemplateRef<any>;
 
   constructor(private _http: Http, private navService: CommonHttpService,private cdf : ChangeDetectorRef) {
-    this.elementId = 'amexio-sidenav-view-' + Math.random() + '-' + new Date().getTime();
+    this.elementId = 'amexio-sidenav-view-' + Math.floor(Math.random()*90000) + 10000;
     this.expanded = false;
     this.filter = false;
     this.width = "20%";

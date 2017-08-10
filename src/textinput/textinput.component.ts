@@ -85,7 +85,7 @@ export class TextInputComponent extends FormInputBase implements OnInit, Control
 
     constructor() {
         super();
-        this.elementId = 'input-text-' + new Date().getTime() + Math.random();
+        this.elementId = 'input-text-' + Math.floor(Math.random()*90000) + 10000;
         this.spanId = 'span-msg-' + Math.random();
 
         if (this.iconFeedBack) {
