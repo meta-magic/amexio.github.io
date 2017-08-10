@@ -11,8 +11,11 @@
  *
  */
 
-import {OnInit, Input, Component, SimpleChange, EventEmitter, Output} from '@angular/core';
+import {
+    OnInit, Input, Component, SimpleChange, EventEmitter, Output, QueryList, ContentChildren, AfterContentInit
+} from '@angular/core';
 import {CommonHttpService} from '../common.http.service';
+import {ColumnComponent} from "../datatable/column.component";
 
 
 @Component({
@@ -82,7 +85,7 @@ import {CommonHttpService} from '../common.http.service';
     ]
 })
 
-export class TreeDataTableComponent implements  OnInit{
+export class TreeDataTableComponent implements  OnInit, AfterContentInit{
 
     @Input()    title: string;
 
@@ -108,10 +111,9 @@ export class TreeDataTableComponent implements  OnInit{
 
     responseData: any;
 
-    constructor (private  treeDataTableService: CommonHttpService){
-        this.columns.push({text: 'Task', dataIndex: 'task', hidden: false, dataType : 'string'});
-        this.columns.push({text: 'Duration', dataIndex: 'duration', hidden: false ,  dataType : 'number'});
-        this.columns.push({text: 'User', dataIndex: 'user', hidden: false,  dataType : 'string'});
+    @ContentChildren(ColumnComponent) columnRef: QueryList<ColumnComponent>;
+
+    constructor (private  treeDataTableService: CommonHttpService) {
     }
 
     ngOnInit(){
@@ -130,8 +132,25 @@ export class TreeDataTableComponent implements  OnInit{
         }
     }
 
-    ngAfterViewInit(){
+    ngAfterContentInit() {
+        this.createConfig();
+    }
 
+    createConfig() {
+        let columnRefArray = [];
+        columnRefArray = this.columnRef.toArray();
+        for (let cr = 0 ; cr < columnRefArray.length; cr++) {
+            const columnConfig = columnRefArray[cr];
+            let columnData: any;
+            if (columnConfig.bodyTemplate == null && columnConfig.headerTemplate == null) {
+                columnData = {
+                    text: columnConfig.text, dataIndex: columnConfig.dataIndex,
+                    hidden: columnConfig.hidden, dataType : columnConfig.dataType
+                };
+            }
+
+            this.columns.push(columnData);
+        }
     }
 
     ngOnChanges(change: SimpleChange){
