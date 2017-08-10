@@ -48,7 +48,7 @@ export class TabPaneComponent implements OnInit, AfterContentInit, AfterViewInit
   elementId: string;
 
   constructor() {
-    this.elementId = 'tabpane-' + Math.random().toString(36).substr(2, 5);
+    this.elementId = 'tabpane-' + Math.floor(Math.random()*90000) + 10000;
   }
 
 
