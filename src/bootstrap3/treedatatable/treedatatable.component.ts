@@ -11,8 +11,9 @@
  *
  */
 
-import {OnInit, Input, Component, SimpleChange, EventEmitter, Output} from "@angular/core";
+import {OnInit, Input, Component, SimpleChange, EventEmitter, Output, QueryList, ContentChildren} from "@angular/core";
 import {TreeDataTableService} from "./treedatatable.service";
+import {ColumnComponent} from "../datatable/column.component";
 
 
 @Component({
@@ -166,10 +167,9 @@ export class TreeDataTableComponent implements  OnInit{
 
     sortColumn : any;
 
+    @ContentChildren(ColumnComponent) columnRef: QueryList<ColumnComponent>;
+
     constructor (private  treeDataTableService : TreeDataTableService){
-        this.columns.push({text:'Task', dataIndex: 'task', hidden: false, dataType : 'string'});
-        this.columns.push({text:'Duration', dataIndex: 'duration', hidden: false ,  dataType : 'number'});
-        this.columns.push({text:'User', dataIndex: 'user', hidden: false,  dataType : 'string'});
     }
 
     ngOnInit(){
@@ -179,6 +179,25 @@ export class TreeDataTableComponent implements  OnInit{
     ngAfterViewInit(){
         if(this.httpMethod && this.httpUrl){
             this.treeDataTableService.fetchData(this,this.httpUrl,this.httpMethod);
+        }
+    }
+
+    ngAfterContentInit() {
+        this.createConfig();
+    }
+    createConfig() {
+        let columnRefArray = [];
+        columnRefArray = this.columnRef.toArray();
+        for (let cr = 0 ; cr < columnRefArray.length; cr++) {
+            const columnConfig = columnRefArray[cr];
+            let columnData: any;
+            if (columnConfig.bodyTemplate == null && columnConfig.headerTemplate == null) {
+                columnData = {
+                    text: columnConfig.text, dataIndex: columnConfig.dataIndex,
+                    hidden: columnConfig.hidden, dataType : columnConfig.dataType
+                };
+            }
+            this.columns.push(columnData);
         }
     }
 
