@@ -51,7 +51,7 @@ export class ButtonGroupComponent implements OnInit, AfterContentInit, AfterView
 
   @ContentChildren(ButtonGroupActionComponent) buttonComponentRef: QueryList<ButtonGroupActionComponent>;
   constructor() {
-    this.elementId = 'button-group' + new Date().getTime() + Math.random();
+    this.elementId = 'button-group' + Math.floor(Math.random()*90000) + 10000;
   }
 
   ngAfterViewInit() {

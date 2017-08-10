@@ -1,5 +1,14 @@
-/**
- * Created by pratik on 24/7/17.
+/*
+ * Copyright 2016-2017 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Author - Pratik Kelwalkar
+ *
  */
 import {AfterViewInit, Component, EventEmitter, forwardRef, Input, OnInit, Output} from '@angular/core';
 import {FormInputBase} from "../baseclass/form.base.class";
@@ -103,7 +112,7 @@ export class DropDownComponent extends FormInputBase implements OnInit, ControlV
 
     constructor(private amxHttp: CommonHttpService) {
         super();
-        this.elementId = 'dropdown-' + new Date().getTime() + Math.floor(Math.random()*90000) + 10000;
+        this.elementId = 'dropdown-' + Math.floor(Math.random()*90000) + 10000;
     }
 
 

@@ -85,7 +85,7 @@ export class EmailInputComponent extends FormInputBase implements OnInit, AfterV
 
    constructor() {
       super();
-      this.elementId = 'input-email-' + new Date().getTime() + Math.random();
+      this.elementId = 'input-email-' + Math.floor(Math.random()*90000) + 10000;
       this.spanId = 'span-msg-' + Math.random();
 
       if(this.iconFeedBack)

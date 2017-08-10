@@ -87,7 +87,7 @@ export class ButtonComponent implements OnInit , OnChanges, AfterViewInit {
   @Output()   onClick: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() {
-    this.elementId = 'button-' + new Date().getTime() + Math.random();
+    this.elementId = 'button-' + Math.floor(Math.random()*90000) + 10000;
   }
 
   ngOnInit() {

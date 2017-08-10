@@ -70,7 +70,7 @@ export class ButtonGroupActionComponent implements OnInit {
   @Output()   onClick: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() {
-    this.elementId = 'button-group-action' + new Date().getTime() + Math.random();
+    this.elementId = 'button-group-action' + Math.floor(Math.random()*90000) + 10000;
   }
 
   ngOnInit() {

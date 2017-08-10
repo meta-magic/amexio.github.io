@@ -85,7 +85,7 @@ export class RadioGroupComponent implements  OnInit{
 
 
     constructor(private amxHttp: CommonHttpService) {
-        this.elementId = "radio-group-"+new Date().getTime();
+        this.elementId = "radio-group-"+Math.floor(Math.random()*90000) + 10000;
         this.selectedCheckBox = [];
     }
 

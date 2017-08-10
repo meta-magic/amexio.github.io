@@ -65,7 +65,7 @@ export class ButtonSplitDropdownComponent implements OnInit, AfterContentInit {
 
   @ContentChildren(DropdownItemComponent) dropdownItemRef: QueryList<DropdownItemComponent>;
   constructor() {
-    this.elementId = 'button-dropdown' + new Date().getTime() + Math.random();
+    this.elementId = 'button-dropdown' + Math.floor(Math.random()*90000) + 10000;
   }
 
   ngOnInit() {

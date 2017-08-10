@@ -101,8 +101,8 @@ export class CommonHttpService {
   validateAll(inputTexts: any[]){
     let showMessage = false;
     let errorCounter = 1;
-    let title= "<strong>Please validate following fields</strong><hr>";
-    let validateMsg = "<br>";
+    let title= '<strong>Please validate following fields</strong><hr>';
+    let validateMsg = '<b>'+title+'</b>';
     for (let ic = 0; ic < inputTexts.length; ic++){
 
       let component = inputTexts[ic];
@@ -162,3 +162,6 @@ export class CommonHttpService {
 
 
 }
+
+
+
