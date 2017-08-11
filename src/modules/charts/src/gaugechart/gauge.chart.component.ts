@@ -10,9 +10,10 @@
  * Author - Sagar Jadhav
  *
  */
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ChartBaseClass} from "../baseclass/base.chart.class";
 import {ChartLoaderService} from "../chart.loader.service";
+declare var google: any;
 @Component({
   selector: 'amexio-chart-gauge',
   template: `
@@ -24,7 +25,7 @@ import {ChartLoaderService} from "../chart.loader.service";
   `
 })
 
-export class GaugeChartComponent extends ChartBaseClass {
+export class GaugeChartComponent extends ChartBaseClass implements OnInit{
 
   private options;
   private gaugeData;
@@ -66,5 +67,9 @@ export class GaugeChartComponent extends ChartBaseClass {
     };
     this.chart = this.createGaugeChart(document.getElementById(this.id));
     this.chart.draw(this.gaugeData, this.options);
+  }
+  ngOnInit(): void {
+    //call draw chart method
+    google.charts.setOnLoadCallback(() => this.drawChart());
   }
 }

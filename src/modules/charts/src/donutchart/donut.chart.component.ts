@@ -27,7 +27,7 @@ declare var google: any;
   `
 })
 
-export class DonutChartComponent extends ChartBaseClass implements AfterContentInit {
+export class DonutChartComponent extends ChartBaseClass implements AfterContentInit ,OnInit{
 
   private options;
   private donutData;
@@ -123,5 +123,8 @@ export class DonutChartComponent extends ChartBaseClass implements AfterContentI
       this.chartAreaComponent=this.chartAreaArray.pop();
     }
   }
-
+  ngOnInit(): void {
+    //call draw chart method
+    google.charts.setOnLoadCallback(() => this.drawChart());
+  }
 }

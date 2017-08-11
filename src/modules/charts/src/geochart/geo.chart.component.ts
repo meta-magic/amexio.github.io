@@ -1,7 +1,7 @@
 /**
  * Created by sagar on 10/8/17.
  */
-import {AfterContentInit, Component, ContentChildren, Input, QueryList} from '@angular/core';
+import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from '@angular/core';
 import {ChartBaseClass} from "../baseclass/base.chart.class";
 import {ChartAreaComponent} from "../chartarea/chart.area.component";
 import {ChartLoaderService} from "../chart.loader.service";
@@ -18,7 +18,7 @@ declare var google: any;
   `
 })
 
-export class GeoChartComponent extends ChartBaseClass implements AfterContentInit {
+export class GeoChartComponent extends ChartBaseClass implements AfterContentInit ,OnInit{
 
   private options;
   private geomapData;
@@ -77,5 +77,9 @@ export class GeoChartComponent extends ChartBaseClass implements AfterContentIni
     if(this.chartAreaArray.length==1){
       this.chartAreaComponent=this.chartAreaArray.pop();
     }
+  }
+  ngOnInit(): void {
+    //call draw chart method
+    google.charts.setOnLoadCallback(() => this.drawChart());
   }
 }

@@ -10,7 +10,7 @@
  * Author - Sagar Jadhav
  *
  */
-import {AfterContentInit, Component, ContentChildren, Input, QueryList} from "@angular/core";
+import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from "@angular/core";
 import {ChartTitleComponent} from "../charttitle/chart.title.component";
 import {ChartLegendComponent} from "../chartlegend/chart.legend.component";
 import {ChartLoaderService} from "../chart.loader.service";
@@ -25,7 +25,7 @@ declare var google: any;
     ></div>
   `
 })
-export class PieChartComponent extends ChartBaseClass implements AfterContentInit {
+export class PieChartComponent extends ChartBaseClass implements AfterContentInit,OnInit {
 
   private options;
   private pieData;
@@ -131,6 +131,10 @@ export class PieChartComponent extends ChartBaseClass implements AfterContentIni
     if(this.chartAreaArray.length==1){
       this.chartAreaComponent=this.chartAreaArray.pop();
     }
+  }
+  ngOnInit(): void {
+    //call draw chart method
+    google.charts.setOnLoadCallback(() => this.drawChart());
   }
 }
 

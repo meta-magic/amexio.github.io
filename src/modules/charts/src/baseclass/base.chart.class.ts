@@ -27,8 +27,6 @@ export class ChartBaseClass {
         } else {
             google.charts.load('current', {packages: ['corechart']});
         }
-        //call draw chart method
-        google.charts.setOnLoadCallback(() => this.drawChart());
     }
 
     //draw charts
