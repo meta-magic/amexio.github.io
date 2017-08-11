@@ -92,7 +92,7 @@ export class CommonHttpService {
         message: showMessage,
         type: 'error',
         showCloseButton: true
-      }) : console.warn('Please include Messenger js/css in your assets from http://github.hubspot.com/messenger/')
+      }) : showMessage=null;
     }
 
     return showMessage;
@@ -122,7 +122,7 @@ export class CommonHttpService {
         message: showMessage,
         type: 'error',
         showCloseButton: true
-      }) : console.warn('Please include Messenger js/css in your assets from http://github.hubspot.com/messenger/')
+      }) : showMessage=null;
     }
 
     return showMessage;
