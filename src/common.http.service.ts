@@ -21,7 +21,7 @@ export class CommonHttpService {
   filteredObject: any = [];
 
   constructor(private http : Http) {
-    if(Messenger != null){
+    if(typeof Messenger != 'undefined'){
       Messenger.options = {
         extraClasses: 'messenger-fixed messenger-on-top messenger-on-right',
         theme: 'air'
@@ -88,7 +88,7 @@ export class CommonHttpService {
     }
 
     if(showMessage){
-      Messenger!=null ? Messenger().post({
+      typeof Messenger != 'undefined' ? Messenger().post({
         message: showMessage,
         type: 'error',
         showCloseButton: true
@@ -118,7 +118,7 @@ export class CommonHttpService {
     }
 
     if(showMessage){
-      Messenger!=null ? Messenger().post({
+      typeof Messenger != 'undefined' ? Messenger().post({
         message: showMessage,
         type: 'error',
         showCloseButton: true
@@ -131,7 +131,7 @@ export class CommonHttpService {
   toasterDanger(title : string,message : string,timeout : string){
     if(timeout != null){
       timeout = '3';
-      Messenger!=null ? Messenger().post({
+      typeof Messenger != 'undefined' ? Messenger().post({
         message: message,
         type: 'error',
         showCloseButton: true
@@ -141,7 +141,7 @@ export class CommonHttpService {
   toasterSuccess(title : string,message : string,timeout : string){
     if(timeout != null){
       timeout = '3';
-      Messenger!=null ? Messenger().post({
+      typeof Messenger != 'undefined' ? Messenger().post({
         message: message,
         type: 'success',
         showCloseButton: true
@@ -151,7 +151,7 @@ export class CommonHttpService {
   toasterInfo(title : string,message : string,timeout : string){
     if(timeout != null){
       timeout = '3';
-      Messenger!=null ? Messenger().post({
+      typeof Messenger != 'undefined' ? Messenger().post({
         message: message,
         type: 'info',
         showCloseButton: true
