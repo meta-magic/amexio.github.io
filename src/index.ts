@@ -36,13 +36,15 @@ import {SideNavBarComponent} from './navbar/sidenavbar.component';
 import {FilterTreeViewComponent} from './treeview/filtertreeview';
 import {TreeViewComponent} from './treeview/treeview.component';
 import {TreeDataTableComponent} from './treedatatable/treedatatable.component';
-import {PaneActionComponent} from "./panes/paneaction.component";
-import {PaneBodyComponent} from "./panes/panebody.component";
-import {PaneHeaderComponent} from "./panes/paneheader.component";
-import {WindowPaneComponent} from "./panes/windowpane.component";
-import {DialogComponent} from "./panes/dialog.component";
-import {CardComponent} from "./panes/card.component";
-import {ListBoxComponent} from "./listbox/listbox.component";
+import {PaneActionComponent} from './panes/paneaction.component';
+import {PaneBodyComponent} from './panes/panebody.component';
+import {PaneHeaderComponent} from './panes/paneheader.component';
+import {WindowPaneComponent} from './panes/windowpane.component';
+import {DialogComponent} from './panes/dialog.component';
+import {CardComponent} from './panes/card.component';
+import {ListBoxComponent} from './listbox/listbox.component';
+import {NotifyComponent} from "./notify/notify.component";
+
 
 export * from './button/button.component';
 export * from './common.http.service';
@@ -92,15 +94,18 @@ export * from './treedatatable/treedatatable.component';
 
 /*pane exports*/
 
-export *  from "./panes/paneaction.component";
-export *  from "./panes/panebody.component";
-export *  from "./panes/paneheader.component";
-export *  from "./panes/windowpane.component";
-export *  from "./panes/dialog.component";
-export *  from "./panes/card.component";
+export *  from './panes/paneaction.component';
+export *  from './panes/panebody.component';
+export *  from './panes/paneheader.component';
+export *  from './panes/windowpane.component';
+export *  from './panes/dialog.component';
+export *  from './panes/card.component';
 
 
-export *  from "./listbox/listbox.component";
+export *  from './listbox/listbox.component';
+
+export * from './notify/notify.component';
+
 
 @NgModule({
   imports: [
@@ -148,7 +153,8 @@ export *  from "./listbox/listbox.component";
     WindowPaneComponent,
     DialogComponent,
     CardComponent,
-      ListBoxComponent
+    ListBoxComponent,
+    NotifyComponent
   ],
   exports: [
     ButtonComponent,
@@ -190,7 +196,8 @@ export *  from "./listbox/listbox.component";
     WindowPaneComponent,
     DialogComponent,
     CardComponent,
-      ListBoxComponent
+    ListBoxComponent,
+    NotifyComponent
   ]
 })
 export class AmexioWidgetModule {
