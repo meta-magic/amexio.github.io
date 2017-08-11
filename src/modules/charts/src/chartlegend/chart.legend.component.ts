@@ -14,29 +14,30 @@ import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
     selector: 'amexio-chart-legend',
-    template: ``
+    template: ` `
 })
 export class ChartLegendComponent implements OnInit {
 
-    @Input() legendPosition: string;
 
-    //start,center,end
-    @Input() legendAlignment: string;
+  @Input() legendPosition: string;
 
-    @Input() legendColor: string;
+  //start,center,end
+  @Input() legendAlignment: string;
 
-    @Input() legendFontName: string;
+  @Input() legendColor: string;
 
-    @Input() legendFontSize: string;
+  @Input() legendFontName: string;
 
-    @Input() isLegendBold: boolean = false;
+  @Input() legendFontSize: string;
 
-    //this work only in chart position is top
-    @Input() maxLinesOfLegend: number;
+  @Input() isLegendBold: boolean = false;
 
-    constructor() {
-    }
+  //this work only in chart position is top
+  @Input() maxLinesOfLegend: number;
 
-    ngOnInit() {
-    }
+  constructor() {
+  }
+
+  ngOnInit() {
+  }
 }

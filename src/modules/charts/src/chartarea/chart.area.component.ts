@@ -13,30 +13,24 @@
 import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
-    selector: 'amexio-chart-title',
-    template: ``
+  selector: 'amexio-chart-area-properties',
+  template: `chart area`
 })
+export class ChartAreaComponent implements OnInit {
 
-export class ChartTitleComponent implements OnInit {
+  @Input() chartBackgroundColor: string;
 
-    @Input() title: string;
+  @Input() leftPosition: number;
 
-    @Input() titlePosition: string;
+  @Input() topPosition: number;
 
-    @Input() titleColor:string;
+  @Input() chartWidthInPer: number;
 
-    @Input() titleFontName:string;
+  @Input() chartHeightInper: number;
 
-    @Input() titleFontSize:number;
+  constructor() {
+  }
 
-    @Input() isTitleBold:boolean;
-
-    @Input() isTitleItalic:boolean;
-
-
-    constructor() {
-    }
-
-    ngOnInit() {
-    }
+  ngOnInit() {
+  }
 }
