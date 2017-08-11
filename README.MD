@@ -74,6 +74,8 @@ Once your library is imported, you can use its components, directives and pipes 
 <!-- You can now use your library component in app.component.html -->
 <amexio-text-input></amexio-text-input>
 ```
+## Amexio Charting
+Amexio Charting library is Provided versions upward of v2.1.0, please change the branch accordingly.
 
 ## Development
 
