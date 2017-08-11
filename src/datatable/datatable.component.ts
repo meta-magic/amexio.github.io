@@ -176,7 +176,8 @@ declare var $;
                   </td>
                   <td *ngFor="let cols of columns let index=index" [hidden]="cols.hidden">
                     <!-- If user hasnt specified customized cell use default -->
-                    <ng-container *ngIf="!cols?.bodyTemplate">{{row[cols.dataIndex]}}</ng-container>
+                      <ng-container *ngIf="cols.dataType=='number'"><span style="float: right">{{row[cols.dataIndex]}}</span></ng-container>
+                    <ng-container *ngIf="!cols?.bodyTemplate && cols.dataType=='string'">{{row[cols.dataIndex]}}</ng-container>
                     <!-- else insert customized code -->
                     <ng-template *ngIf="cols.bodyTemplate" [ngTemplateOutlet]="cols.bodyTemplate" [ngOutletContext]="{ $implicit: { text : row[cols.dataIndex] }, row: row }"></ng-template>
                   </td>
