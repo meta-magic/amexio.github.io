@@ -59,7 +59,7 @@ Amexio requires the following libraries to work
 
 1) [bootstrap-datepicker](https://www.npmjs.com/package/bootstrap-datepicker)
 2) [bootstrap-timepicker](https://www.npmjs.com/package/bootstrap-timepicker)
-3) [MessengerJS (Growl Notifications)](https://codeload.github.com/HubSpot/messenger/zip/v1.4.1)
+~~3) [MessengerJS (Growl Notifications)](https://codeload.github.com/HubSpot/messenger/zip/v1.4.1)~~
 
 Include the respective JS & CSS in your app i.e if you are using Angular CLI, add the messenger.js to your "scripts"
  & the messenger.css & messenger-air-theme.css to your "styles" in .angular-cli.json.
@@ -96,6 +96,39 @@ Once your library is imported, you can use its components, directives and pipes 
 ```xml
 <!-- You can now use your library component in app.component.html -->
 <amexio-text-input></amexio-text-input>
+```
+## Amexio Charting Components
+Amexio Charts is provided as a seperate Module as <b>AmexioChartModule</b> available under ```amexio-ng-extensions/charts```
+To begin please add the module to your Component's Module
+
+```typescript
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { AppComponent } from './app.component';
+
+// Import your library
+import { AmexioChartModule } from 'amexio-ng-extensions\charts';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AmexioChartModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+
+Once Amexio Charting library is imported, you could use it ,
+
+```xml
+<!-- You can now use your library component in app.component.html -->
+<amexio-chart-column [data]="employeeData"></amexio-chart-column>
 ```
 
 ## Development
