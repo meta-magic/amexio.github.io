@@ -49,9 +49,14 @@ To install this library, follow the steps given below:
 
 ```bash
 $ cd your-angular-project
-(For Bootstrap 4)$ npm install amexio-ng-extensions --save
-OR
-(For Bootstrap 3)$ npm install amexio-ng-extensions@1.0.42 --save
+```
+## For Bootstrap 4
+```bash
+$ npm install amexio-ng-extensions --save
+```
+## OR For Bootstrap 3
+```bash
+$ npm install amexio-ng-extensions@1.0.42 --save
 ```
 
 ### Installing Dependencies (Required)
