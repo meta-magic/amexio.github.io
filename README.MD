@@ -54,7 +54,7 @@ $ cd your-angular-project
 ```bash
 $ npm install amexio-ng-extensions --save
 ```
-## OR For Bootstrap 3
+## For Bootstrap 3
 ```bash
 $ npm install amexio-ng-extensions@1.0.42 --save
 ```
