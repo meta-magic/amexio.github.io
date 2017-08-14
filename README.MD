@@ -102,7 +102,7 @@ Once your library is imported, you can use its components, directives and pipes 
 <!-- You can now use your library component in app.component.html -->
 <amexio-text-input></amexio-text-input>
 ```
-## Amexio Charting Components
+## Amexio Charts
 Amexio Charts is provided as a seperate Module as <b>AmexioChartModule</b> available under ```amexio-ng-extensions/charts```
 To begin please add the module to your Component's Module
 
