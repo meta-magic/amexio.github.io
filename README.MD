@@ -113,7 +113,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 // Import your library
-import { AmexioChartModule } from 'amexio-ng-extensions\charts';
+import { AmexioChartModule } from 'amexio-ng-extensions/charts';
 
 @NgModule({
   declarations: [
