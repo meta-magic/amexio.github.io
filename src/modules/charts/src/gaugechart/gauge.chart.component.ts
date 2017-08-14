@@ -10,22 +10,21 @@
  * Author - Sagar Jadhav
  *
  */
-import {Component, Input, OnInit} from '@angular/core';
-import {ChartBaseClass} from "../baseclass/base.chart.class";
+import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from '@angular/core';
 import {ChartLoaderService} from "../chart.loader.service";
+import {ChartTitleComponent} from "../charttitle/chart.title.component";
 declare var google: any;
 @Component({
   selector: 'amexio-chart-gauge',
   template: `
-    <div [attr.id]="id"
-         [style.width.px]="width"
-         [style.height.px]="height"
-    >
-    </div>
+      <div [attr.id]="id"
+           [style.width]="width"
+           [style.height]="height">
+      </div>
   `
 })
 
-export class GaugeChartComponent extends ChartBaseClass implements OnInit{
+export class GaugeChartComponent implements AfterContentInit , OnInit{
 
   private options;
   private gaugeData;
@@ -33,9 +32,11 @@ export class GaugeChartComponent extends ChartBaseClass implements OnInit{
 
   id: any;
 
-  @Input() width: number;
+  elementId:string;
 
-  @Input() height: number;
+  @Input() width: string;
+
+  @Input() height: string;
 
   @Input() data: any;
 
@@ -50,12 +51,18 @@ export class GaugeChartComponent extends ChartBaseClass implements OnInit{
   //allow to show minor ticks
   @Input() minorTicks:number;
 
-    constructor(private loader : ChartLoaderService) {
-    super(loader);
-    this.id = 'amexio-chart-gauge' + Math.random();
+  @ContentChildren(ChartTitleComponent) chartTitleComp : QueryList<ChartTitleComponent>;
+
+  chartTitleArray:ChartTitleComponent[];
+
+  chartTitleComponent:ChartTitleComponent;
+
+  constructor(private loader : ChartLoaderService) {
+    this.id = 'amexio-chart-gauge' + Math.floor(Math.random()*90000) + 10000;
+    this.width='100%';
   }
   drawChart() {
-    this.gaugeData = this.createDataTable(this.data);
+    this.gaugeData =  google.visualization.arrayToDataTable(this.data);
     this.options = {
       width: this.width,
       height: this.height,
@@ -65,11 +72,19 @@ export class GaugeChartComponent extends ChartBaseClass implements OnInit{
       yellowTo:this.yellowColorTo,
       minorTicks: this.minorTicks
     };
-    this.chart = this.createGaugeChart(document.getElementById(this.id));
+    this.chart= new google.visualization.Gauge(document.getElementById(this.id));
     this.chart.draw(this.gaugeData, this.options);
+  }
+  ngAfterContentInit(): void {
+    this.chartTitleArray=this.chartTitleComp.toArray();
+    //take first component
+    if(this.chartTitleArray.length==1){
+      this.chartTitleComponent= this.chartTitleArray.pop();
+    }
   }
   ngOnInit(): void {
     //call draw chart method
+    google.charts.load('current', {packages: ['gauge']});
     google.charts.setOnLoadCallback(() => this.drawChart());
   }
 }

@@ -2,7 +2,6 @@
  * Created by sagar on 10/8/17.
  */
 import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from '@angular/core';
-import {ChartBaseClass} from "../baseclass/base.chart.class";
 import {ChartAreaComponent} from "../chartarea/chart.area.component";
 import {ChartLoaderService} from "../chart.loader.service";
 
@@ -10,15 +9,15 @@ declare var google: any;
 @Component({
   selector: 'amexio-chart-geo',
   template: `
-    <div [attr.id]="id"
-         [style.width.px]="width"
-         [style.height.px]="height"
-    >
-    </div>
+      <div [attr.id]="id"
+           [style.width]="width"
+           [style.height]="height"
+      >
+      </div>
   `
 })
 
-export class GeoChartComponent extends ChartBaseClass implements AfterContentInit ,OnInit{
+export class GeoChartComponent implements AfterContentInit ,OnInit{
 
   private options;
   private geomapData;
@@ -26,9 +25,9 @@ export class GeoChartComponent extends ChartBaseClass implements AfterContentIni
 
   id: any;
 
-  @Input() width: number;
+  @Input() width: string;
 
-  @Input() height: number;
+  @Input() height: string;
 
   @Input() data: any;
 
@@ -47,11 +46,11 @@ export class GeoChartComponent extends ChartBaseClass implements AfterContentIni
   chartAreaComponent:ChartAreaComponent;
 
   constructor(private loader : ChartLoaderService) {
-  super(loader);
-  this.id='amexio-map-geomap'+Math.random();
+    this.id='amexio-map-geomap'+ Math.floor(Math.random()*90000) + 10000;
+    this.width='100%';
   }
   drawChart() {
-    this.geomapData = this.createDataTable(this.data);
+    this.geomapData = google.visualization.arrayToDataTable(this.data);
     this.options = {
       displayMode:this.displayCountryName?'text':null,
       region:this.regionCode?this.regionCode:null,
@@ -65,7 +64,7 @@ export class GeoChartComponent extends ChartBaseClass implements AfterContentIni
         width:this.chartAreaComponent.chartWidthInPer?this.chartAreaComponent.chartWidthInPer:null
       }:null,
     };
-    this.chart = this.createGeoMap(document.getElementById(this.id));
+    this.chart = new google.visualization.GeoChart(document.getElementById(this.id));
     this.chart.draw(this.geomapData, this.options);
     google.visualization.events.addListener(this.chart, 'click', this.click);
   }
@@ -80,6 +79,7 @@ export class GeoChartComponent extends ChartBaseClass implements AfterContentIni
   }
   ngOnInit(): void {
     //call draw chart method
+    google.charts.load('current', {packages: ['corechart']});
     google.charts.setOnLoadCallback(() => this.drawChart());
   }
 }

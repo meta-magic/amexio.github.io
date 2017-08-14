@@ -11,7 +11,6 @@
  *
  */
 import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from '@angular/core';
-import {ChartBaseClass} from "../baseclass/base.chart.class";
 import {ChartLegendComponent} from "../chartlegend/chart.legend.component";
 import {ChartTitleComponent} from "../charttitle/chart.title.component";
 import {ChartAreaComponent} from "../chartarea/chart.area.component";
@@ -22,15 +21,15 @@ declare var google: any;
 @Component({
   selector: 'amexio-chart-histogram',
   template: `
-    <div [attr.id]="id"
-         [style.width.px]="width"
-         [style.height.px]="height"
-    >
-    </div>
+      <div [attr.id]="id"
+           [style.width]="width"
+           [style.height]="height"
+      >
+      </div>
   `
 })
 
-export class HistogramChartComponent extends ChartBaseClass implements AfterContentInit,OnInit {
+export class HistogramChartComponent implements AfterContentInit ,OnInit{
 
   private options;
   private histogramData;
@@ -38,9 +37,9 @@ export class HistogramChartComponent extends ChartBaseClass implements AfterCont
 
   id: any;
 
-  @Input() width: number;
+  @Input() width: string;
 
-  @Input() height: number;
+  @Input() height: string;
 
   @Input() data: any;
 
@@ -66,12 +65,12 @@ export class HistogramChartComponent extends ChartBaseClass implements AfterCont
 
 
   constructor(private loader : ChartLoaderService) {
-    super(loader);
-    this.id = 'amexio-chart-line' + Math.random();
+    this.id = 'amexio-chart-line' + Math.floor(Math.random()*90000) + 10000;
+    this.width='100%';
   }
 
   drawChart() {
-    this.histogramData = this.createDataTable(this.data);
+    this.histogramData = google.visualization.arrayToDataTable(this.data);
     this.options = {
       title: this.chartTitleComponent?this.chartTitleComponent.title:null,
       titleTextStyle:this.chartTitleComponent?{
@@ -101,7 +100,7 @@ export class HistogramChartComponent extends ChartBaseClass implements AfterCont
         width:this.chartAreaComponent.chartWidthInPer?this.chartAreaComponent.chartWidthInPer:null
       }:null,
     };
-    this.chart = this.createHistogramChart(document.getElementById(this.id));
+    this.chart = new google.visualization.Histogram(document.getElementById(this.id));
     this.chart.draw(this.histogramData, this.options);
     google.visualization.events.addListener(this.chart, 'click', this.onClick);
   }
@@ -127,6 +126,7 @@ export class HistogramChartComponent extends ChartBaseClass implements AfterCont
   }
   ngOnInit(): void {
     //call draw chart method
+    google.charts.load('current', {packages: ['corechart']});
     google.charts.setOnLoadCallback(() => this.drawChart());
   }
 }

@@ -15,21 +15,20 @@ import {ChartAreaComponent} from "../chartarea/chart.area.component";
 import {ChartLegendComponent} from "../chartlegend/chart.legend.component";
 import {ChartTitleComponent} from "../charttitle/chart.title.component";
 import {ChartLoaderService} from "../chart.loader.service";
-import {ChartBaseClass} from "../baseclass/base.chart.class";
 
 declare var google: any;
 @Component({
   selector: 'amexio-chart-line', template: `
-    <div [attr.id]="id"
-         [style.width.px]="width"
-         [style.height.px]="height"
-    >
-    </div>
+        <div [attr.id]="id"
+             [style.width]="width"
+             [style.height]="height"
+        >
+        </div>
 
   `
 })
 
-export class LineChartComponent extends ChartBaseClass implements AfterContentInit,OnInit {
+export class LineChartComponent implements AfterContentInit,OnInit {
 
   private options;
   private lineData;
@@ -37,9 +36,9 @@ export class LineChartComponent extends ChartBaseClass implements AfterContentIn
 
   id: any;
 
-  @Input() width: number;
+  @Input() width: string;
 
-  @Input() height: number;
+  @Input() height: string;
 
   @Input() data: any;
 
@@ -65,8 +64,8 @@ export class LineChartComponent extends ChartBaseClass implements AfterContentIn
 
 
   constructor(private loader : ChartLoaderService) {
-    super(loader);
-    this.id = 'amexio-chart-line' + Math.random();
+    this.id = 'amexio-chart-line' + Math.floor(Math.random()*90000) + 10000;
+    this.width='100%';
   }
 
   drawChart() {
@@ -100,7 +99,8 @@ export class LineChartComponent extends ChartBaseClass implements AfterContentIn
         width:this.chartAreaComponent.chartWidthInPer?this.chartAreaComponent.chartWidthInPer:null
       }:null,
     };
-    this.chart = this.createLineChart(document.getElementById(this.id));
+    debugger;
+    this.chart = new google.visualization.LineChart(document.getElementById(this.id));
     this.chart.draw(this.lineData, this.options);
     google.visualization.events.addListener(this.chart, 'click', this.onClick);
   }
@@ -124,8 +124,31 @@ export class LineChartComponent extends ChartBaseClass implements AfterContentIn
       this.chartAreaComponent=this.chartAreaArray.pop();
     }
   }
+  /**
+   * This method create data table structure of array and return in required chart data
+   *
+   * */
+  createTable(array: any[]): any {
+    //create Duplicate Array for data arrangement
+    let dupArray=array.slice();
+    let data = new google.visualization.DataTable();
+    let labelObject = dupArray[0];
+    //remove first object of array
+    dupArray.shift();
+
+    labelObject.forEach((dataTypeObject) => {
+      data.addColumn(dataTypeObject.dataType, dataTypeObject.label);
+    });
+    let finalArray: any[] = [];
+    dupArray.forEach((rowObject) => {
+      finalArray.push(rowObject);
+    });
+    data.addRows(finalArray);
+    return data;
+  }
   ngOnInit(): void {
     //call draw chart method
+    google.charts.load('current', {packages: ['corechart']});
     google.charts.setOnLoadCallback(() => this.drawChart());
   }
 }

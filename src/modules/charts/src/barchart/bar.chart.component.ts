@@ -12,38 +12,39 @@
  */
 
 import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from "@angular/core";
-import {ChartBaseClass} from "../baseclass/base.chart.class";
 import {ChartLegendComponent} from "../chartlegend/chart.legend.component";
 import {ChartTitleComponent} from "../charttitle/chart.title.component";
 import {ChartLoaderService} from "../chart.loader.service";
 import {ChartAreaComponent} from "../chartarea/chart.area.component";
-declare var google: any;
+declare var google;
 @Component({
     selector: 'amexio-chart-bar',
     template: `
         <div [attr.id]="id"
-             [style.width.px]="width"
-             [style.height.px]="height">
-
+             [style.width]="width"
+             [style.height]="height">
         </div>
     `
 })
-export class BarChartComponent extends ChartBaseClass implements AfterContentInit ,OnInit{
+export class BarChartComponent implements AfterContentInit,OnInit{
 
     private options;
     private barData;
     private chart;
 
+    elementId:string;
+    chartWidth:string;
+
     id: any;
 
     @Input() data: any;
 
-    @Input() width: number;
+    @Input() width: string;
 
-    @Input() height: number;
+    @Input() height: string;
 
     //showing stack chart
-    @Input() isBarStacked: boolean = false;
+    @Input() isStacked: boolean = false;
 
     @Input() xAxisTitle: string;
 
@@ -51,90 +52,92 @@ export class BarChartComponent extends ChartBaseClass implements AfterContentIni
 
     @Input() backgroundColor: string;
 
-  @ContentChildren(ChartLegendComponent) chartLegendComp: QueryList<ChartLegendComponent>;
+    @ContentChildren(ChartLegendComponent) chartLegendComp: QueryList<ChartLegendComponent>;
 
-  @ContentChildren(ChartTitleComponent) chartTitleComp:QueryList<ChartTitleComponent>;
+    @ContentChildren(ChartTitleComponent) chartTitleComp:QueryList<ChartTitleComponent>;
 
-  @ContentChildren(ChartAreaComponent)  chartAreaComp:QueryList<ChartAreaComponent>;
+    @ContentChildren(ChartAreaComponent)  chartAreaComp:QueryList<ChartAreaComponent>;
 
-  chartAreaArray:ChartAreaComponent[];
+    chartAreaArray:ChartAreaComponent[];
 
-  chartAreaComponent:ChartAreaComponent;
+    chartAreaComponent:ChartAreaComponent;
 
-  chartLegendArray: ChartLegendComponent[];
+    chartLegendArray: ChartLegendComponent[];
 
-  chartLengendComponent: ChartLegendComponent;
+    chartLengendComponent: ChartLegendComponent;
 
-  chartTitleArray:ChartTitleComponent[];
+    chartTitleArray:ChartTitleComponent[];
 
-  chartTitleComponent:ChartTitleComponent;
+    chartTitleComponent:ChartTitleComponent;
 
 
     constructor(private loader : ChartLoaderService) {
-        super(loader);
-        this.id = 'amexio-chart-bar' + Math.random();
+        this.id = 'amexio-chart-bar' + Math.floor(Math.random()*90000) + 10000;
+        this.width='100%';
     }
 
     drawChart() {
         //bind the data
-        this.barData = this.createDataTable(this.data);
+        this.barData = google.visualization.arrayToDataTable(this.data);
+
         this.options = {
-          title: this.chartTitleComponent?this.chartTitleComponent.title:null,
-          titleTextStyle:this.chartTitleComponent?{
-            color:this.chartTitleComponent.titleColor?this.chartTitleComponent.titleColor:null,
-            fontName:this.chartTitleComponent.titleFontName?this.chartTitleComponent.titleFontName:null,
-            fontSize:this.chartTitleComponent.titleFontSize?this.chartTitleComponent.titleFontSize:null,
-            bold:this.chartTitleComponent.isTitleBold?this.chartTitleComponent.isTitleBold:null,
-            italic:this.chartTitleComponent.isTitleItalic?this.chartTitleComponent.isTitleItalic:null
-          }:null,
-          isStacked: this.isBarStacked,
-          backgroundColor: this.backgroundColor,
-          legend: this.chartLengendComponent ? {
-            position: this.chartLengendComponent.legendPosition ? this.chartLengendComponent.legendPosition : null,
-            maxLines: this.chartLengendComponent.maxLinesOfLegend ? this.chartLengendComponent.maxLinesOfLegend : null,
-            textStyle: {
-              color: this.chartLengendComponent.legendColor ? this.chartLengendComponent.legendColor : null,
-              fontSize: this.chartLengendComponent.legendFontSize ? this.chartLengendComponent.legendFontSize : null,
-              fontName: this.chartLengendComponent.legendFontName ? this.chartLengendComponent.legendFontName : null,
-              bold: this.chartLengendComponent.isLegendBold ? this.chartLengendComponent.isLegendBold : null,
-              alignment: this.chartLengendComponent.legendAlignment ? this.chartLengendComponent.legendAlignment : null
+            title: this.chartTitleComponent?this.chartTitleComponent.title:null,
+            titleTextStyle:this.chartTitleComponent?{
+                color:this.chartTitleComponent.titleColor?this.chartTitleComponent.titleColor:null,
+                fontName:this.chartTitleComponent.titleFontName?this.chartTitleComponent.titleFontName:null,
+                fontSize:this.chartTitleComponent.titleFontSize?this.chartTitleComponent.titleFontSize:null,
+                bold:this.chartTitleComponent.isTitleBold?this.chartTitleComponent.isTitleBold:null,
+                italic:this.chartTitleComponent.isTitleItalic?this.chartTitleComponent.isTitleItalic:null
+            }:null,
+            isStacked: this.isStacked,
+            backgroundColor: this.backgroundColor,
+            legend: this.chartLengendComponent ? {
+                position: this.chartLengendComponent.legendPosition ? this.chartLengendComponent.legendPosition : null,
+                maxLines: this.chartLengendComponent.maxLinesOfLegend ? this.chartLengendComponent.maxLinesOfLegend : null,
+                textStyle: {
+                    color: this.chartLengendComponent.legendColor ? this.chartLengendComponent.legendColor : null,
+                    fontSize: this.chartLengendComponent.legendFontSize ? this.chartLengendComponent.legendFontSize : null,
+                    fontName: this.chartLengendComponent.legendFontName ? this.chartLengendComponent.legendFontName : null,
+                    bold: this.chartLengendComponent.isLegendBold ? this.chartLengendComponent.isLegendBold : null,
+                    alignment: this.chartLengendComponent.legendAlignment ? this.chartLengendComponent.legendAlignment : null
+                }
+            } : 'none',
+            chartArea:this.chartAreaComponent?{
+                backgroundColor:this.chartAreaComponent.chartBackgroundColor?this.chartAreaComponent.chartBackgroundColor:null,
+                left:this.chartAreaComponent.leftPosition?this.chartAreaComponent.leftPosition:null,
+                top:this.chartAreaComponent.topPosition?this.chartAreaComponent.topPosition:null,
+                height:this.chartAreaComponent.chartHeightInper?this.chartAreaComponent.chartHeightInper:null,
+                width:this.chartAreaComponent.chartWidthInPer?this.chartAreaComponent.chartWidthInPer:null
+            }:null,
+            hAxis: {
+                title: this.xAxisTitle, minValue: 0
+            },
+            vAxis: {
+                title: this.yAxisTitle
             }
-          } : 'none',
-          chartArea:this.chartAreaComponent?{
-            backgroundColor:this.chartAreaComponent.chartBackgroundColor?this.chartAreaComponent.chartBackgroundColor:null,
-            left:this.chartAreaComponent.leftPosition?this.chartAreaComponent.leftPosition:null,
-            top:this.chartAreaComponent.topPosition?this.chartAreaComponent.topPosition:null,
-            height:this.chartAreaComponent.chartHeightInper?this.chartAreaComponent.chartHeightInper:null,
-            width:this.chartAreaComponent.chartWidthInPer?this.chartAreaComponent.chartWidthInPer:null
-          }:null,
-          hAxis: {
-            title: this.xAxisTitle, minValue: 0
-          },
-          vAxis: {
-            title: this.yAxisTitle
-          }
         };
-        this.chart = this.createBarChart(document.getElementById(this.id));
+        this.chart = new google.visualization.BarChart(document.getElementById(this.id));
         this.chart.draw(this.barData, this.options);
     }
 
     ngAfterContentInit(): void {
-      this.chartLegendArray = this.chartLegendComp.toArray();
-      this.chartTitleArray=this.chartTitleComp.toArray();
-      this.chartAreaArray=this.chartAreaComp.toArray();
-      //take first component
-      if (this.chartLegendArray.length == 1) {
-        this.chartLengendComponent = this.chartLegendArray.pop();
-      }
-      if(this.chartTitleArray.length==1){
-        this.chartTitleComponent= this.chartTitleArray.pop();
-      }
-      if(this.chartAreaArray.length==1){
-        this.chartAreaComponent=this.chartAreaArray.pop();
-      }
+        this.chartLegendArray = this.chartLegendComp.toArray();
+        this.chartTitleArray=this.chartTitleComp.toArray();
+        this.chartAreaArray=this.chartAreaComp.toArray();
+        //take first component
+        if (this.chartLegendArray.length == 1) {
+            this.chartLengendComponent = this.chartLegendArray.pop();
+        }
+        if(this.chartTitleArray.length==1){
+            this.chartTitleComponent= this.chartTitleArray.pop();
+        }
+        if(this.chartAreaArray.length==1){
+            this.chartAreaComponent=this.chartAreaArray.pop();
+        }
     }
     ngOnInit(): void {
         //call draw chart method
+        google.charts.load('current', {packages: ['corechart', 'bar']});
         google.charts.setOnLoadCallback(() => this.drawChart());
     }
 }

@@ -11,7 +11,6 @@
  *
  */
 import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from '@angular/core';
-import {ChartBaseClass} from "../baseclass/base.chart.class";
 import {ChartLegendComponent} from "../chartlegend/chart.legend.component";
 import {ChartTitleComponent} from "../charttitle/chart.title.component";
 import {ChartAreaComponent} from "../chartarea/chart.area.component";
@@ -20,14 +19,14 @@ import {ChartLoaderService} from "../chart.loader.service";
 declare var google: any;
 @Component({
   selector: 'amexio-chart-donut', template: `
-    <div [attr.id]="id"
-         [style.width.px]="width"
-         [style.height.px]="height"
-    ></div>
+        <div [attr.id]="id"
+             [style.width]="width"
+             [style.height]="height"
+        ></div>
   `
 })
 
-export class DonutChartComponent extends ChartBaseClass implements AfterContentInit ,OnInit{
+export class DonutChartComponent  implements AfterContentInit {
 
   private options;
   private donutData;
@@ -35,9 +34,9 @@ export class DonutChartComponent extends ChartBaseClass implements AfterContentI
 
   id: any;
 
-  @Input() width: number;
+  @Input() width: string;
 
-  @Input() height: number;
+  @Input() height: string;
 
   @Input() data: any;
 
@@ -62,12 +61,12 @@ export class DonutChartComponent extends ChartBaseClass implements AfterContentI
   chartTitleComponent:ChartTitleComponent;
 
   constructor(private loader : ChartLoaderService) {
-    super(loader);
-    this.id = 'amexio-chart-donut' + Math.random();
+    this.id = 'amexio-chart-donut' + Math.floor(Math.random()*90000) + 10000;
+    this.width='100%';
   }
 
   drawChart() {
-    this.donutData = this.createDataTable(this.data);
+    this.donutData = google.visualization.arrayToDataTable(this.data);
     this.options = {
       title: this.chartTitleComponent?this.chartTitleComponent.title:null,
       titleTextStyle:this.chartTitleComponent?{
@@ -98,7 +97,7 @@ export class DonutChartComponent extends ChartBaseClass implements AfterContentI
         width:this.chartAreaComponent.chartWidthInPer?this.chartAreaComponent.chartWidthInPer:null
       }:null,
     };
-    this.chart = this.createPieChart(document.getElementById(this.id));
+    this.chart = new google.visualization.PieChart(document.getElementById(this.id));
     this.chart.draw(this.donutData, this.options);
     google.visualization.events.addListener(this.chart, 'click', this.onClick);
   }
@@ -125,6 +124,7 @@ export class DonutChartComponent extends ChartBaseClass implements AfterContentI
   }
   ngOnInit(): void {
     //call draw chart method
+    google.charts.load('current', {packages: ['corechart']});
     google.charts.setOnLoadCallback(() => this.drawChart());
   }
 }

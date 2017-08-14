@@ -11,7 +11,6 @@
  *
  */
 import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from '@angular/core';
-import {ChartBaseClass} from "../baseclass/base.chart.class";
 import {ChartLegendComponent} from "../chartlegend/chart.legend.component";
 import {ChartTitleComponent} from "../charttitle/chart.title.component";
 import {ChartAreaComponent} from "../chartarea/chart.area.component";
@@ -21,13 +20,15 @@ declare var google: any;
 @Component({
   selector: 'amexio-chart-area',
   template: `
-    <div [attr.id]="id"
-         [style.width.px]="width"
-         [style.height.px]="height"
-    ></div>`
+      <div [attr.id]="id"
+           [style.width]="width"
+           [style.height]="height">
+
+      </div>
+  `
 })
 
-export class AreaChartComponent extends ChartBaseClass implements AfterContentInit ,OnInit{
+export class AreaChartComponent  implements AfterContentInit ,OnInit{
 
   private options;
   private areaData;
@@ -35,9 +36,9 @@ export class AreaChartComponent extends ChartBaseClass implements AfterContentIn
 
   id: any;
 
-  @Input() width: number;
+  @Input() width: string;
 
-  @Input() height: number;
+  @Input() height: string;
 
   @Input() data: any;
 
@@ -62,12 +63,12 @@ export class AreaChartComponent extends ChartBaseClass implements AfterContentIn
   chartTitleComponent:ChartTitleComponent;
 
   constructor(private loader : ChartLoaderService) {
-    super(loader);
-    this.id = 'amexio-chart-area' + Math.random();
+    this.id = 'amexio-chart-area' + Math.floor(Math.random()*90000) + 10000;
+    this.width='100%';
   }
 
   drawChart() {
-    this.areaData = this.createDataTable(this.data);
+    this.areaData = google.visualization.arrayToDataTable(this.data);
     this.options = {
       title: this.chartTitleComponent?this.chartTitleComponent.title:null,
       titleTextStyle:this.chartTitleComponent?{
@@ -97,7 +98,7 @@ export class AreaChartComponent extends ChartBaseClass implements AfterContentIn
         width:this.chartAreaComponent.chartWidthInPer?this.chartAreaComponent.chartWidthInPer:null
       }:null,
     };
-    this.chart = this.createAreaChart(document.getElementById(this.id));
+    this.chart =  new google.visualization.AreaChart(document.getElementById(this.id));
     this.chart.draw(this.areaData, this.options);
     google.visualization.events.addListener(this.chart, 'click', this.click)
   }
@@ -107,7 +108,7 @@ export class AreaChartComponent extends ChartBaseClass implements AfterContentIn
   }
 
   //after content init for inner directive is run
-  ngAfterContentInit(): void {
+  ngAfterContentInit(): void{
     this.chartLegendArray = this.chartLegendComp.toArray();
     this.chartTitleArray=this.chartTitleComp.toArray();
     this.chartAreaArray=this.chartAreaComp.toArray();
@@ -122,8 +123,10 @@ export class AreaChartComponent extends ChartBaseClass implements AfterContentIn
       this.chartAreaComponent=this.chartAreaArray.pop();
     }
   }
+
   ngOnInit(): void {
     //call draw chart method
+    google.charts.load('current', {packages: ['corechart']});
     google.charts.setOnLoadCallback(() => this.drawChart());
   }
 }

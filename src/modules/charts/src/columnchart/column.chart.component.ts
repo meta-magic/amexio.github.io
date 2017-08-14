@@ -10,8 +10,7 @@
  * Author - Sagar Jadhav
  *
  */
-import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from '@angular/core';
-import {ChartBaseClass} from "../baseclass/base.chart.class";
+import {AfterContentInit, Component, ContentChildren, Input, QueryList} from '@angular/core';
 import {ChartLegendComponent} from "../chartlegend/chart.legend.component";
 import {ChartTitleComponent} from "../charttitle/chart.title.component";
 import {ChartAreaComponent} from "../chartarea/chart.area.component";
@@ -21,14 +20,14 @@ declare var google: any;
 @Component({
   selector: 'amexio-chart-column',
   template:`
-    <div [attr.id]="id"
-         [style.width.px]="width"
-         [style.height.px]="height"
-    ></div>
+      <div [attr.id]="id"
+           [style.width]="width"
+           [style.height]="height"
+      ></div>
   `
 })
 
-export class ColumnChartComponent extends  ChartBaseClass implements AfterContentInit ,OnInit{
+export class ColumnChartComponent implements AfterContentInit {
 
   private options;
   private columnData;
@@ -36,14 +35,14 @@ export class ColumnChartComponent extends  ChartBaseClass implements AfterConten
 
   id: any;
 
-  @Input() width: number;
+  @Input() width: string;
 
-  @Input() height: number;
+  @Input() height: string;
 
   @Input() data: any;
 
   //showing stack chart
-  @Input() isColumnStacked: boolean = false;
+  @Input() isStacked: boolean = false;
 
   @Input() backgroundColor: string;
 
@@ -65,8 +64,8 @@ export class ColumnChartComponent extends  ChartBaseClass implements AfterConten
 
   chartTitleComponent:ChartTitleComponent;
   constructor(private loader : ChartLoaderService) {
-    super(loader);
-    this.id = 'amexio-chart-column' + Math.random();
+    this.id = 'amexio-chart-column' + Math.floor(Math.random()*90000) + 10000;
+    this.width='100%';
   }
   drawChart() {
     this.columnData = this.createTable(this.data);
@@ -79,7 +78,7 @@ export class ColumnChartComponent extends  ChartBaseClass implements AfterConten
         bold:this.chartTitleComponent.isTitleBold?this.chartTitleComponent.isTitleBold:null,
         italic:this.chartTitleComponent.isTitleItalic?this.chartTitleComponent.isTitleItalic:null
       }:null,
-      isStacked: this.isColumnStacked,
+      isStacked: this.isStacked,
       backgroundColor: this.backgroundColor,
       legend: this.chartLengendComponent ? {
         position: this.chartLengendComponent.legendPosition ? this.chartLengendComponent.legendPosition : null, //this work only in chart position is top
@@ -100,7 +99,7 @@ export class ColumnChartComponent extends  ChartBaseClass implements AfterConten
         width:this.chartAreaComponent.chartWidthInPer?this.chartAreaComponent.chartWidthInPer:null
       }:null,
     };
-    this.chart = this.createColumnChart(document.getElementById(this.id));
+    this.chart = new google.visualization.ColumnChart(document.getElementById(this.id));
     this.chart.draw(this.columnData, this.options);
     google.visualization.events.addListener(this.chart, 'click', this.onClick);
   }
@@ -124,8 +123,31 @@ export class ColumnChartComponent extends  ChartBaseClass implements AfterConten
       this.chartAreaComponent=this.chartAreaArray.pop();
     }
   }
+  /**
+   * This method create data table structure of array and return in required chart data
+   *
+   * */
+  createTable(array: any[]): any {
+    //create Duplicate Array for data arrangement
+    let dupArray=array.slice();
+    let data = new google.visualization.DataTable();
+    let labelObject = dupArray[0];
+    //remove first object of array
+    dupArray.shift();
+
+    labelObject.forEach((dataTypeObject) => {
+      data.addColumn(dataTypeObject.dataType, dataTypeObject.label);
+    });
+    let finalArray: any[] = [];
+    dupArray.forEach((rowObject) => {
+      finalArray.push(rowObject);
+    });
+    data.addRows(finalArray);
+    return data;
+  }
   ngOnInit(): void {
     //call draw chart method
+    google.charts.load('current', {packages: ['corechart']});
     google.charts.setOnLoadCallback(() => this.drawChart());
   }
 }
