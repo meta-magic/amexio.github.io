@@ -44,6 +44,8 @@ import {DialogComponent} from './panes/dialog.component';
 import {CardComponent} from './panes/card.component';
 import {ListBoxComponent} from './listbox/listbox.component';
 import {NotifyComponent} from "./notify/notify.component";
+import {FieldSetComponent} from "./fildset/fieldset.component";
+import {FieldSetBodyComponent} from "./fildset/fieldsetbody.component";
 
 
 export * from './button/button.component';
@@ -106,6 +108,9 @@ export *  from './listbox/listbox.component';
 
 export * from './notify/notify.component';
 
+export * from './fildset/fieldset.component';
+export * from './fildset/fieldsetbody.component';
+
 
 @NgModule({
   imports: [
@@ -154,7 +159,9 @@ export * from './notify/notify.component';
     DialogComponent,
     CardComponent,
     ListBoxComponent,
-    NotifyComponent
+    NotifyComponent,
+    FieldSetComponent,
+    FieldSetBodyComponent
   ],
   exports: [
     ButtonComponent,
@@ -197,7 +204,9 @@ export * from './notify/notify.component';
     DialogComponent,
     CardComponent,
     ListBoxComponent,
-    NotifyComponent
+    NotifyComponent,
+    FieldSetComponent,
+    FieldSetBodyComponent
   ]
 })
 export class AmexioWidgetModule {
