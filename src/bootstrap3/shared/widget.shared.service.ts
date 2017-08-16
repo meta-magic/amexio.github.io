@@ -21,8 +21,7 @@ declare var Messenger;
 @Injectable()
 export class WidgetService {
 
-  constructor() {
-    if(Messenger != null){
+   if(typeof Messenger != 'undefined'){
       Messenger.options = {
         extraClasses: 'messenger-fixed messenger-on-top messenger-on-right',
         theme: 'air'
@@ -77,13 +76,13 @@ export class WidgetService {
       }
     }
 
-    if(showMessage)
-      Messenger().post({
+    if(showMessage){
+      typeof Messenger != 'undefined' ? Messenger().post({
         message: showMessage,
         type: 'error',
         showCloseButton: true
-      });
-
+      }) : showMessage=null;
+    }
     return showMessage;
   }
 
@@ -106,45 +105,45 @@ export class WidgetService {
 
     }
 
-    if(showMessage)
-      Messenger().post({
+    if(showMessage){
+      typeof Messenger != 'undefined' ? Messenger().post({
         message: showMessage,
         type: 'error',
         showCloseButton: true
-      });
-
+      }) : showMessage=null;
+    }
     return showMessage;
   }
 
-  toasterDanger(title : string,message : string,timeout : string){
-    if(timeout != null)
+ toasterDanger(title : string,message : string,timeout : string){
+    if(timeout != null){
       timeout = '3';
-    Messenger().post({
-      message: message,
-      type: 'error',
-      showCloseButton: true,
-      hideAfter : timeout
-    });
+      typeof Messenger != 'undefined' ? Messenger().post({
+        message: message,
+        type: 'error',
+        showCloseButton: true
+      }) : console.warn('Please include Messenger js/css in your assets from http://github.hubspot.com/messenger/')
+    }
   }
   toasterSuccess(title : string,message : string,timeout : string){
-    if(timeout != null)
+    if(timeout != null){
       timeout = '3';
-    Messenger().post({
-      message: message,
-      type: 'success',
-      showCloseButton: true,
-      hideAfter : timeout
-    });
+      typeof Messenger != 'undefined' ? Messenger().post({
+        message: message,
+        type: 'success',
+        showCloseButton: true
+      }) : console.warn('Please include Messenger js/css in your assets from http://github.hubspot.com/messenger/')
+    }
   }
   toasterInfo(title : string,message : string,timeout : string){
-    if(timeout != null)
+    if(timeout != null){
       timeout = '3';
-    Messenger().post({
-      message: message,
-      type: 'info',
-      showCloseButton: true,
-      hideAfter : timeout
-    });
+      typeof Messenger != 'undefined' ? Messenger().post({
+        message: message,
+        type: 'info',
+        showCloseButton: true
+      }) : console.warn('Please include Messenger js/css in your assets from http://github.hubspot.com/messenger/')
+    }
   }
 
 
