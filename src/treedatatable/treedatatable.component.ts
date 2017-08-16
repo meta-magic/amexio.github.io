@@ -79,9 +79,59 @@ import {ColumnComponent} from "../datatable/column.component";
         </tr>
     </table>`,
     providers : [CommonHttpService],
-    styleUrls: [
-        '../baseclass/loading-mask.css',
-        'treedatatable.custom.css'
+    styles: [
+        `/**
+ A Style Sheet for all form inputs common used classes
+ */
+
+        /** Form Validations & Icon Positioning **/
+        .has-feedback-custom {
+            position: relative;
+        }
+        .has-feedback-custom .form-control {
+            padding-right: 47.5px;
+        }
+
+        .form-control-feedback-custom {
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 2;
+            display: block;
+            width: 38px;
+            height: 38px;
+            line-height: 38px;
+            text-align: center;
+            pointer-events: none;
+        }
+
+        .has-feedback-custom label ~ .form-control-feedback-custom {
+            top: 32px;
+        }
+        .has-feedback-custom label.sr-only ~ .form-control-feedback-custom {
+            top: 0;
+        }
+        .amexio-treedatatable-loadingmask-height{
+            height: 400px;
+        }
+        .amexio-treedatatable-col-0{
+            cursor: pointer;
+            position: relative;
+        }
+        .amexio-treedatatable-hiderow{
+            visibility: hidden
+        }
+
+        .amexio-treedatatable-showrow{
+            visibility: visible;
+        }
+        .amexio-tredatatable-float-right{
+            float: right;
+        }
+        .amexio-tredatatable-float-left{
+            float: left;
+        }
+        `
     ]
 })
 

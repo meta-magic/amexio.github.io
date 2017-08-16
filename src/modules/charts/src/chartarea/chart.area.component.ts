@@ -14,7 +14,7 @@ import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'amexio-chart-area-properties',
-  template: `chart area`
+  template: ``
 })
 export class ChartAreaComponent implements OnInit {
 

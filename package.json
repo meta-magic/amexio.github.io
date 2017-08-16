@@ -1,6 +1,6 @@
 {
   "name": "amexio-ng-extensions",
-  "version": "2.1.0",
+  "version": "0.1.0",
   "scripts": {
     "build": "gulp build",
     "build:watch": "gulp",
@@ -26,15 +26,9 @@
     "email": "xserviceadmin@metamagic.in"
   },
   "keywords": [
-    "angular",
-    "angular components",
-    "ng2-bootstrap",
-    "bootstrap",
-    "typescript",
-    "angular4",
-    "metamagic"
+    "angular"
   ],
-  "license": "Apache-2.0",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/meta-magic/amexio.github.io/issues"
   },
@@ -42,9 +36,9 @@
     "@angular/common": "^4.0.0",
     "@angular/compiler": "^4.0.0",
     "@angular/compiler-cli": "^4.0.0",
+    "@angular/core": "^4.0.0",
     "@angular/forms": "^4.0.0",
     "@angular/http": "^4.0.0",
-    "@angular/core": "^4.0.0",
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@compodoc/compodoc": "^1.0.0-beta.10",

@@ -28,7 +28,14 @@ import {
     </div>
     
   `,
-  styleUrls: ['card.custom.css']
+  styles : [`
+      .amexio-card-padding{
+          padding: 2px;
+      }
+      .amexio-card-footer-float-right{
+          float: right;
+      }
+  `]
 })
 
 export class CardComponent implements OnInit {

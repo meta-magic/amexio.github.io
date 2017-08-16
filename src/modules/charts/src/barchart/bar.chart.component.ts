@@ -14,7 +14,6 @@
 import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from "@angular/core";
 import {ChartLegendComponent} from "../chartlegend/chart.legend.component";
 import {ChartTitleComponent} from "../charttitle/chart.title.component";
-import {ChartLoaderService} from "../chart.loader.service";
 import {ChartAreaComponent} from "../chartarea/chart.area.component";
 declare var google;
 @Component({
@@ -71,7 +70,7 @@ export class BarChartComponent implements AfterContentInit,OnInit{
     chartTitleComponent:ChartTitleComponent;
 
 
-    constructor(private loader : ChartLoaderService) {
+    constructor() {
         this.id = 'amexio-chart-bar' + Math.floor(Math.random()*90000) + 10000;
         this.width='100%';
     }

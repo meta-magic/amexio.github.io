@@ -32,9 +32,53 @@ declare var $: any;
 
     
   `,
-  styleUrls:[
-      'verticallefttab.custom.css'
-  ]
+  styles : [`
+      .amexio-verticallefttab-active{
+          border-bottom: 1px solid #ddd;
+          border-top: 1px solid #ddd;
+          border-left: 1px solid #ddd;
+          border-right: none;
+          border-right-color: transparent;
+          display: block;
+      }
+
+      .amexio-verticallefttab-inactive{
+          border-right: 1px solid #ddd;;
+      }
+
+      .amexio-verticallefttab-activevertical{
+          border-left: 1px solid #ddd;
+          border-right: 1px solid #ddd;
+          border-top: 1px solid #ddd;
+      }
+
+      .amexio-verticallefttab-inactivevertical{
+          border-bottom: 1px solid #ddd;
+      }
+
+      .amexio-verticallefttab-vertical-text {
+          margin-top:50px;
+          border: none;
+          position: relative;
+      }
+      .amexio-verticallefttab-vertical-text>li {
+          height: 20px;
+          width: 120px;
+          margin-bottom: 100px;
+      }
+      .amexio-verticallefttab-vertical-text>li>a {
+          text-align: center;
+
+          -webkit-transform: rotate(-90deg);
+          -moz-transform: rotate(-90deg);
+          -ms-transform: rotate(-90deg);
+          -o-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+      }
+      .amexio-verticallefttab-td-padding{
+          padding: 5px;
+      }
+  `]
 })
 export class VerticalLeftTabPaneComponent implements OnInit, AfterViewInit, AfterContentInit {
 

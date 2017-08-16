@@ -68,7 +68,32 @@ import {CommonHttpService} from '../common.http.service';
     </div>
     
   `,
-  styleUrls: ['itemselector.custom.css'],
+  styles : [`
+      .amexio-itemselector{
+          width: 100%;
+          overflow: hidden;
+      }
+      .amexio-itemselector-available-btn{
+          background-color:#cecece;
+      }
+      .amexio-itemselector-action-list{
+          height:100%;
+          overflow-y: auto;
+          position:relative;
+      }
+      .amexio-itemselector-smallscreen{
+          width: 8%;
+      }
+      .amexio-itemselector-smallscreen-div{
+          padding-top: 35%;
+      }
+      .amexio-itemselector-btn-group{
+          padding:5% 0 5% 0;
+      }
+      .amexio-itemselector-width{
+          width: 100%;
+      }
+  `],
   providers: [CommonHttpService]
 })
 export class ItemSelectorComponent implements OnInit, AfterViewInit {

@@ -61,7 +61,49 @@ import {CommonHttpService} from "../common.http.service";
           </nav>
   `,
 
-    styleUrls: ['navbar.custom.css'],
+    styles : [`
+        footer .navbar-collapse.in {
+            bottom: 70px;
+            position: absolute;
+            background-color:#333;
+            width: 100%;
+        }
+
+        @media screen and (max-width: 768px) {
+            footer .navbar-collapse {
+                position: absolute;
+                bottom: 70px;
+                width: 100%;
+                background-color: #303030;
+            }
+        }
+        .amexio-navbar-dropdown-large {
+            position: static !important;
+        }
+        .amexio-navbar-li-position{
+            position: static !important
+        }
+        .amexio-navbar-align{
+            padding: 0px;
+            margin: 0px;
+        }
+        .amexio-navbar-li-custom{
+            list-style: none;
+            color: #428bca;
+            font-size: 18px;
+            padding: 3px 2px;
+            position: static !important
+        }
+        .amexio-navbar-li-custom a{
+            cursor:pointer;
+            text-decoration: none;
+            color: #428bca;
+        }
+        .amexio-navbar-ifchild{
+            list-style: none;
+            padding:0px;
+        }
+    `],
     providers: [CommonHttpService]
 
 })

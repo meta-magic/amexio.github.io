@@ -40,9 +40,106 @@ import {CommonModule} from '@angular/common';
     { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => RatingInputComponent), multi: true },
     { provide: NG_VALIDATORS, useExisting: forwardRef(() => RatingInputComponent), multi: true },
   ],
-  styleUrls : [
-    '../baseclass/form.inputs.base.css',
-      'rating.component.css'
+  styles : [
+    `/**
+ A Style Sheet for all form inputs common used classes
+ */
+
+      /** Form Validations & Icon Positioning **/
+      .has-feedback-custom {
+          position: relative;
+      }
+      .has-feedback-custom .form-control {
+          padding-right: 47.5px;
+      }
+
+      .form-control-feedback-custom {
+          position: absolute;
+          top: 0;
+          right: 0;
+          z-index: 2;
+          display: block;
+          width: 38px;
+          height: 38px;
+          line-height: 38px;
+          text-align: center;
+          pointer-events: none;
+      }
+
+      .has-feedback-custom label ~ .form-control-feedback-custom {
+          top: 32px;
+      }
+      .has-feedback-custom label.sr-only ~ .form-control-feedback-custom {
+          top: 0;
+      }
+      .amexio-rating {
+          cursor: pointer;
+          outline: none;
+      }
+      .amexio-rating.readonly {
+          cursor: default;
+      }
+      .amexio-rating.disabled {
+          cursor: not-allowed;
+      }
+      .amexio-rating i{
+          font-style: normal;
+      }
+      .amexio-star-icon {
+          color: #666666;
+          font-size: 2em;
+          position: relative;
+          border-color: 1px solid black;
+      }
+      .amexio-star-icon:before {
+          color: #FDE16D;
+          content: attr(data-icon) " ";
+          position: absolute;
+          left: 0;
+          overflow: hidden;
+          width: 0;
+      }
+      .amexio-rating.disabled .amexio-star-icon:before {
+          color: #ECECEC;
+          text-shadow: none;
+      }
+      .amexio-star-icon.half10:before {
+          width: 10%;
+      }
+      .amexio-star-icon.half20:before {
+          width: 20%;
+      }
+      .amexio-star-icon.half30:before {
+          width: 30%;
+      }
+      .amexio-star-icon.half40:before {
+          width: 40%;
+      }
+      .amexio-star-icon.half50:before {
+          width: 50%;
+      }
+      .amexio-star-icon.half60:before {
+          width: 60%;
+      }
+      .amexio-star-icon.half70:before {
+          width: 70%;
+      }
+      .amexio-star-icon.half80:before {
+          width: 80%;
+      }
+      .amexio-star-icon.half90:before {
+          width: 90%;
+      }
+      .amexio-star-icon.half100:before {
+          width: 100%;
+      }
+      @-moz-document url-prefix() { /* Firefox Hack */
+          .amexio-star-icon {
+              font-size: 50px;
+              line-height: 34px;
+          }
+      }
+    `
   ]
 })
 export class RatingInputComponent implements OnInit, ControlValueAccessor, Validator {

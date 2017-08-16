@@ -210,10 +210,5 @@ export * from './fildset/fieldsetbody.component';
   ]
 })
 export class AmexioWidgetModule {
-  static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: AmexioWidgetModule,
-      providers: [CommonHttpService]
-    };
-  }
+
 }

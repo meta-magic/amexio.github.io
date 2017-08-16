@@ -44,7 +44,22 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
       </li>
     </ul>
   `,
-  styleUrls: ['navbarsubmenu.custom.css']
+  styles : [`
+      .amexio-navbarsubmenu-ul{
+          list-style: none;
+          padding: 1px;
+      }
+      .amexio-navbarsubmenu-ul li {
+          list-style: none;
+          padding: 1px 20px;
+          color: #777;
+      }
+      .amexio-navbarsubmenu-a {
+          text-decoration: none;
+          color: #777;
+          cursor:pointer;
+      }
+  `]
 })
 export class NavbarSubMenuComponent implements OnInit {
 

@@ -13,7 +13,6 @@
 import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from "@angular/core";
 import {ChartTitleComponent} from "../charttitle/chart.title.component";
 import {ChartLegendComponent} from "../chartlegend/chart.legend.component";
-import {ChartLoaderService} from "../chart.loader.service";
 import {ChartAreaComponent} from "../chartarea/chart.area.component";
 declare var google: any;
 @Component({
@@ -67,7 +66,7 @@ export class PieChartComponent implements AfterContentInit,OnInit {
 
   chartTitleComponent: ChartTitleComponent;
 
-  constructor(private loader: ChartLoaderService) {
+  constructor() {
     this.id = 'amexio-chart-pie' + Math.floor(Math.random()*90000) + 10000;
     this.width='100%';
   }

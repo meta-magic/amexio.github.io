@@ -31,9 +31,39 @@ export const CHECK_COLUMN_SIZE = 'col-lg-';
         </div>
     `,
     providers : [CommonHttpService],
-    styleUrls : [
-        `../baseclass/form.inputs.base.css`
-    ]
+    styles : [`
+        /**
+ A Style Sheet for all form inputs common used classes
+ */
+
+/** Form Validations & Icon Positioning **/
+.has-feedback-custom {
+    position: relative;
+}
+.has-feedback-custom .form-control {
+    padding-right: 47.5px;
+}
+
+.form-control-feedback-custom {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    display: block;
+    width: 38px;
+    height: 38px;
+    line-height: 38px;
+    text-align: center;
+    pointer-events: none;
+}
+
+.has-feedback-custom label ~ .form-control-feedback-custom {
+    top: 32px;
+}
+.has-feedback-custom label.sr-only ~ .form-control-feedback-custom {
+    top: 0;
+}
+    `]
 })
 
 export class CheckBoxGroup implements  OnInit{

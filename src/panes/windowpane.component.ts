@@ -29,7 +29,12 @@ import {
     </div>
   </div>
   `,
-  styleUrls: ['windowpane.custom.css']
+  styles : [`
+      .amexio-window{
+          overflow: auto;
+          background: #888888;
+      }
+  `]
 })
 
 export class WindowPaneComponent implements OnInit{

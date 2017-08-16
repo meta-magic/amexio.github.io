@@ -14,7 +14,6 @@ import {AfterContentInit, Component, ContentChildren, Input, QueryList} from '@a
 import {ChartLegendComponent} from "../chartlegend/chart.legend.component";
 import {ChartTitleComponent} from "../charttitle/chart.title.component";
 import {ChartAreaComponent} from "../chartarea/chart.area.component";
-import {ChartLoaderService} from "../chart.loader.service";
 
 declare var google: any;
 @Component({
@@ -63,7 +62,7 @@ export class ColumnChartComponent implements AfterContentInit {
   chartTitleArray:ChartTitleComponent[];
 
   chartTitleComponent:ChartTitleComponent;
-  constructor(private loader : ChartLoaderService) {
+  constructor() {
     this.id = 'amexio-chart-column' + Math.floor(Math.random()*90000) + 10000;
     this.width='100%';
   }

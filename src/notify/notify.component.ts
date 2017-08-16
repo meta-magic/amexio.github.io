@@ -19,7 +19,32 @@ import {ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
    </div>
   
   `,
- styleUrls: ['notification.custom.css']
+ styles : [`
+     .amexio-messenger-desktop {
+         position: absolute;
+         top: 2%;
+         left: 70%;
+         right: 1%;
+         text-align: center;
+         overflow: hidden;
+         cursor: pointer;
+     }
+     .amexio-messenger-mobile {
+         position: absolute;
+         z-index: 101;
+         top: 2%;
+         left: 20%;
+         right: 1%;
+         text-align: center;
+         overflow: hidden;
+         cursor: pointer;
+     }
+     .amexio-message-color {
+         color: white;
+
+     }
+
+ `]
 })
 
 export class NotifyComponent implements OnInit {

@@ -14,7 +14,6 @@ import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} 
 import {ChartLegendComponent} from "../chartlegend/chart.legend.component";
 import {ChartTitleComponent} from "../charttitle/chart.title.component";
 import {ChartAreaComponent} from "../chartarea/chart.area.component";
-import {ChartLoaderService} from "../chart.loader.service";
 
 declare var google: any;
 
@@ -64,7 +63,7 @@ export class HistogramChartComponent implements AfterContentInit ,OnInit{
   chartTitleComponent:ChartTitleComponent;
 
 
-  constructor(private loader : ChartLoaderService) {
+  constructor() {
     this.id = 'amexio-chart-line' + Math.floor(Math.random()*90000) + 10000;
     this.width='100%';
   }

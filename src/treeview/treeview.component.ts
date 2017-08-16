@@ -66,10 +66,44 @@ import {CommonHttpService} from '../common.http.service';
             </li>
         </ul>`,
     providers : [CommonHttpService],
-    styleUrls: [
-        '../baseclass/loading-mask.css',
-        'treeview.custom.css'
-    ]
+    styles : [`/**
+ A Style Sheet for all form inputs common used classes
+ */
+
+    /** Form Validations & Icon Positioning **/
+    .has-feedback-custom {
+        position: relative;
+    }
+    .has-feedback-custom .form-control {
+        padding-right: 47.5px;
+    }
+
+    .form-control-feedback-custom {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 2;
+        display: block;
+        width: 38px;
+        height: 38px;
+        line-height: 38px;
+        text-align: center;
+        pointer-events: none;
+    }
+
+    .has-feedback-custom label ~ .form-control-feedback-custom {
+        top: 32px;
+    }
+    .has-feedback-custom label.sr-only ~ .form-control-feedback-custom {
+        top: 0;
+    }
+    .amexio-treeview-loadingmask{
+        height: 300px;
+        width: 400px;
+    }
+    .amexio-treeview-ul{
+        list-style-type: none;
+    }`]
 })
 
 export class TreeViewComponent implements  OnInit, AfterViewInit{

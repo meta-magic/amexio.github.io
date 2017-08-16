@@ -23,7 +23,32 @@ import {Component, Input, OnInit} from '@angular/core';
       </div>
 
   `,
-    styleUrls : ['progress.component.css']
+    styles : [`
+        .amexio-progress {
+            margin: 15px;
+        }
+
+        .progress .progress-bar.active {
+            font-weight: 700;
+            animation: progress-bar-stripes .5s linear infinite;
+        }
+
+        .dotdotdot:after {
+            font-weight: 300;
+            content: '...';
+            display: inline-block;
+            width: 20px;
+            text-align: left;
+            animation: dotdotdot 1.5s linear infinite;
+        }
+
+        @keyframes dotdotdot {
+            0%   { content: '...'; }
+            25% { content: ''; }
+            50% { content: '.'; }
+            75% { content: '..'; }
+        }
+    `]
 })
 
 export class ProgressComponent implements OnInit{

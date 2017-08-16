@@ -1,11 +1,11 @@
 {
-  "name": "amexio-charts",
+  "name": "charts",
   "version": "0.1.0",
   "scripts": {
     "build": "gulp build",
     "build:watch": "gulp",
     "docs": "npm run docs:build",
-    "docs:build": "compodoc -p tsconfig.json -n amexio-charts -d docs --hideGenerator",
+    "docs:build": "compodoc -p tsconfig.json -n charts -d docs --hideGenerator",
     "docs:serve": "npm run docs:build -- -s",
     "docs:watch": "npm run docs:build -- -s -w",
     "lint": "tslint --type-check --project tsconfig.json src/**/*.ts",
@@ -22,8 +22,8 @@
     "url": "https://github.com/meta-magic/amexio.github.io"
   },
   "author": {
-    "name": "MetaMagic Global Pvt Ltd.",
-    "email": "xserviceadmin@metamagic.in"
+    "name": "MetaMagic Global",
+    "email": "pratik.kelwalkar@metamagic.in"
   },
   "keywords": [
     "angular"

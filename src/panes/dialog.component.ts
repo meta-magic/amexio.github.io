@@ -28,7 +28,11 @@ import {
       </div>
     </div>
   `,
-  styleUrls: ['dialog.custom.css']
+  styles : [`
+      .amexio-dialog-background-color{
+          background: #888888;
+      }
+  `]
 })
 
 

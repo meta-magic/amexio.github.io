@@ -53,9 +53,44 @@ export const BASE_IMPL_AUTO_COMPLETE : any = {
     </div>
   `,
   providers : [CUSTOM_AUTO_COMPLETE_CONTROL_VALUE_ACCESSOR, BASE_IMPL_AUTO_COMPLETE, CommonHttpService],
-  styleUrls : [
-      '../baseclass/form.inputs.base.css',
-      'autocomplete.component.css'
+  styles : [
+     `.amexio-scrollable-options {
+          height: auto;
+          max-height: 200px;
+          overflow-x: hidden;
+      }
+      /**
+   A Style Sheet for all form inputs common used classes
+   */
+
+      /** Form Validations & Icon Positioning **/
+      .has-feedback-custom {
+          position: relative;
+      }
+      .has-feedback-custom .form-control {
+          padding-right: 47.5px;
+      }
+
+      .form-control-feedback-custom {
+          position: absolute;
+          top: 0;
+          right: 0;
+          z-index: 2;
+          display: block;
+          width: 38px;
+          height: 38px;
+          line-height: 38px;
+          text-align: center;
+          pointer-events: none;
+      }
+
+      .has-feedback-custom label ~ .form-control-feedback-custom {
+          top: 32px;
+      }
+      .has-feedback-custom label.sr-only ~ .form-control-feedback-custom {
+          top: 0;
+      }
+    `
   ]
 })
 
