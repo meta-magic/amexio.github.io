@@ -1,0 +1,32 @@
+import { AfterContentInit, OnInit, QueryList } from "@angular/core";
+import { ChartLegendComponent } from "../chartlegend/chart.legend.component";
+import { ChartTitleComponent } from "../charttitle/chart.title.component";
+import { ChartAreaComponent } from "../chartarea/chart.area.component";
+export declare class BarChartComponent implements AfterContentInit, OnInit {
+    private options;
+    private barData;
+    private chart;
+    elementId: string;
+    chartWidth: string;
+    id: any;
+    data: any;
+    width: string;
+    height: string;
+    isStacked: boolean;
+    xAxisTitle: string;
+    yAxisTitle: string;
+    backgroundColor: string;
+    chartLegendComp: QueryList<ChartLegendComponent>;
+    chartTitleComp: QueryList<ChartTitleComponent>;
+    chartAreaComp: QueryList<ChartAreaComponent>;
+    chartAreaArray: ChartAreaComponent[];
+    chartAreaComponent: ChartAreaComponent;
+    chartLegendArray: ChartLegendComponent[];
+    chartLengendComponent: ChartLegendComponent;
+    chartTitleArray: ChartTitleComponent[];
+    chartTitleComponent: ChartTitleComponent;
+    constructor();
+    drawChart(): void;
+    ngAfterContentInit(): void;
+    ngOnInit(): void;
+}
