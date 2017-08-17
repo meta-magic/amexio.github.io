@@ -12,8 +12,8 @@
  */
 
 import {
-  Input, OnInit, forwardRef, Component, ContentChildren, QueryList, AfterContentInit, Output, EventEmitter,
-   SimpleChanges, AfterViewChecked, OnDestroy, ChangeDetectorRef, AfterViewInit, OnChanges
+    Input, OnInit, forwardRef, Component, ContentChildren, QueryList, AfterContentInit, Output, EventEmitter,
+    SimpleChanges, AfterViewChecked, OnDestroy, ChangeDetectorRef, AfterViewInit, OnChanges
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR} from '@angular/forms';
 import {ColumnComponent} from './column.component';
@@ -33,16 +33,16 @@ declare var $;
     selector: 'amexio-data-table',
     template : `
         <div>
-          <ng-content></ng-content>
+            <ng-content></ng-content>
         </div>
         <div class="amexio-datatable-wrap">
-          <table class="table table-sm  table-bordered amexio-datatable-width" [attr.id]="elementId" (window:resize)="onResize($event)">
-            <tr>
-              <td [attr.colspan]="columns?.length + (checkboxSelect? 1: 0)" width="100%" data align="right">
+            <table class="table table-sm  table-bordered amexio-datatable-width" [attr.id]="elementId" (window:resize)="onResize($event)">
+                <tr>
+                    <td [attr.colspan]="columns?.length + (checkboxSelect? 1: 0)" width="100%" data align="right">
         <span class="amexio-datatable-title">
       <b>{{title}}</b>
       </span>
-      <span class="col-xs-12 amexio-datatable-opertions">
+                        <span class="col-xs-12 amexio-datatable-opertions">
         <div class="btn-group btn-group-sm" role="group" aria-label="Button group with nested dropdown">
             <ng-container *ngIf="groupByColumn">
                    <amexio-dropdown [(ngModel)]="groupByColumnIndex"
@@ -55,14 +55,16 @@ declare var $;
                                     (onSingleSelect)="setColumnData()">
                    </amexio-dropdown>
                </ng-container>
+          <ng-container *ngIf="maxPage > 1">
           <button type="button" class="btn btn-secondary" aria-label="Previous" (click)="prev()"><span aria-hidden="true">&laquo;</span></button>
-          <button type="button" class="btn btn-secondary">({{currentPage}} of {{maxPage}})</button>
+          <button type="button" class="btn btn-secondary" >({{currentPage}} of {{maxPage}})</button>
+         
           <div class="input-group-btn">
             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fa fa-bars"></i> Page - {{currentPage}}
             </button>
             <div class="dropdown-menu dropdown-menu-right amexio-datatable-dropdown-action">
-              <li *ngFor="let row of pageNumbers let pageNo = index " class="dropdown-item" value="{{pageNo+1}}"><a (click)="setPageNo(pageNo+1)">{{pageNo+1}}</a></li>
+              <li *ngFor="let row of pageNumbers let pageNo = index " class="dropdown-item" value="{{pageNo+1}}" (click)="setPageNo(pageNo+1)"><a >{{pageNo+1}}</a></li>
             </div>
           </div>
           <div class="input-group-btn">
@@ -78,42 +80,43 @@ declare var $;
             </div>
           </div>
           <button type="button" class="btn btn-secondary" aria-label="Next" (click)="next()"><span aria-hidden="true">&raquo;</span></button>
+           </ng-container>
         </div>
       </span>
-              </td>
-            </tr>
-          </table>
-          <!--filtering changes-->
-          <table class="table table-sm">
-            <tr *ngIf="filtering && !groupByColumn">
-              <ng-container *ngIf="!smallScreen">
-                <td *ngIf="checkboxSelect" style="width: 10%"></td>
-                <td *ngFor="let cols of columns let index=index" [hidden]="cols.hidden">
-                  <amexio-filter-component [column]="cols" (filterObject)="getFilteredData($event)"></amexio-filter-component>
-                </td>
-              </ng-container>
-              <ng-container *ngIf="smallScreen">
-                <td>
-                  <div class="amexio-datatable-small-word-wrap" *ngFor="let cols of columns" [hidden]="cols.hidden">
-                    <amexio-filter-component [column]="cols" (filterObject)="getFilteredData($event)"></amexio-filter-component>
-                  </div>
-                </td>
-              </ng-container>
-            </tr>
-          </table>
-          <table class="table table-sm  table-hover  table-bordered ">
-            <tr *ngIf="!smallScreen">
-              <td *ngIf="checkboxSelect" style="width: 10%">
-                <input type="checkbox" (click)="selectAllVisibleRows()">
-              </td>
-              <td *ngFor="let cols of columns let index=index" [hidden]="cols.hidden">
+                    </td>
+                </tr>
+            </table>
+            <!--filtering changes-->
+            <table class="table table-sm">
+                <tr *ngIf="filtering && !groupByColumn">
+                    <ng-container *ngIf="!smallScreen">
+                        <td *ngIf="checkboxSelect" style="width: 10%"></td>
+                        <td *ngFor="let cols of columns let index=index" [hidden]="cols.hidden">
+                            <amexio-filter-component [column]="cols" (filterObject)="getFilteredData($event)"></amexio-filter-component>
+                        </td>
+                    </ng-container>
+                    <ng-container *ngIf="smallScreen">
+                        <td>
+                            <div class="amexio-datatable-small-word-wrap" *ngFor="let cols of columns" [hidden]="cols.hidden">
+                                <amexio-filter-component [column]="cols" (filterObject)="getFilteredData($event)"></amexio-filter-component>
+                            </div>
+                        </td>
+                    </ng-container>
+                </tr>
+            </table>
+            <table class="table table-sm  table-hover  table-bordered ">
+                <tr *ngIf="!smallScreen">
+                    <td *ngIf="checkboxSelect" style="width: 10%">
+                        <input type="checkbox" (click)="selectAllVisibleRows()">
+                    </td>
+                    <td *ngFor="let cols of columns let index=index" [hidden]="cols.hidden">
     <span style="cursor: pointer;" (click)="sortOnColHeaderClick(cols)">
       <!-- If user hasnt embedded view -->
       <ng-container *ngIf="!cols?.headerTemplate"><b>{{cols.text}}</b></ng-container>
-      <!--Check if user has embedded view inserted then -->
+        <!--Check if user has embedded view inserted then -->
       <ng-template *ngIf="cols?.headerTemplate" [ngTemplateOutlet]="cols?.headerTemplate" [ngOutletContext]="{ $implicit: { header: cols.text } }"></ng-template>
     </span>
-                <span class="btn-group amexio-datatable-btngroup-span" role="group">
+                        <span class="btn-group amexio-datatable-btngroup-span" role="group">
       <span class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <span class="glyphicon glyphicon-triangle-bottom" style="color:#93a1a1"></span>
       </span>
@@ -126,128 +129,128 @@ declare var $;
         </button>
       </div>
     </span>
-              </td>
-            </tr>
-          </table>
-          <div [ngStyle]="setHeight()">
-            <table class="table table-sm   table-bordered ">
-              <tbody *ngIf="!smallScreen">
-              <ng-container *ngIf="groupByColumn">
-                <tr [ngClass]="{'hiderow' : !(viewRows?.length > 0),'showrow' : viewRows?.length > 0}">
-                  <td [attr.colspan]="columns?.length + (checkboxSelect? 1: 0)" width="100%">
-                    <div class="list-group amexio-datatable-list-group" *ngFor="let row of viewRows;let i=index;">
+                    </td>
+                </tr>
+            </table>
+            <div [ngStyle]="setHeight()">
+                <table class="table table-sm   table-bordered ">
+                    <tbody *ngIf="!smallScreen">
+                    <ng-container *ngIf="groupByColumn">
+                        <tr [ngClass]="{'hiderow' : !(viewRows?.length > 0),'showrow' : viewRows?.length > 0}">
+                            <td [attr.colspan]="columns?.length + (checkboxSelect? 1: 0)" width="100%">
+                                <div class="list-group amexio-datatable-list-group" *ngFor="let row of viewRows;let i=index;">
               <span (click)="iconSwitch(row)" style="cursor: pointer;color: black;" data-toggle="collapse" [attr.data-target]="'#'+i" data-parent="#menu">
               <span [ngClass]="{'fa-caret-down':row.expanded,'fa-caret-right':!row.expanded}" class="fa " > &nbsp;&nbsp;</span>{{row.group}} <span class="badge badge-pill badge-default amexio-datatable-pagenumber">{{row.groupData?.length}}</span>
               </span>
-                      <div [attr.id]="i" class="sublinks collapse">
-                        <table class="table table-striped table-hover table-bordered">
-                          <tbody>
-                          <tr *ngFor="let rows of row.groupData let rowIndex = index" id="{{'row'+rowIndex}}" (click)="rowClick(rows, rowIndex)">
-                            <td *ngIf="checkboxSelect" style="width: 10%">
-                              <input type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}" [attr.checked]="selectAll? true: null" (click)="setSelectedRow(rows, $event)">
+                                    <div [attr.id]="i" class="sublinks collapse">
+                                        <table class="table table-striped table-hover table-bordered">
+                                            <tbody>
+                                            <tr *ngFor="let rows of row.groupData let rowIndex = index" id="{{'row'+rowIndex}}" (click)="rowClick(rows, rowIndex)">
+                                                <td *ngIf="checkboxSelect" style="width: 10%">
+                                                    <input type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}" [attr.checked]="selectAll? true: null" (click)="setSelectedRow(rows, $event)">
+                                                </td>
+                                                <td *ngFor="let cols of columns" [hidden]="cols.hidden">
+                                                    <!-- If user hasnt specified customized cell use default -->
+                                                    <ng-container *ngIf="!cols?.bodyTemplate">{{rows[cols.dataIndex]}}</ng-container>
+                                                    <!-- else insert customized code -->
+                                                    <ng-template *ngIf="cols.bodyTemplate" [ngTemplateOutlet]="cols.bodyTemplate" [ngOutletContext]="{ $implicit: { text : rows[cols.dataIndex] }, row: rows }"></ng-template>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </td>
-                            <td *ngFor="let cols of columns" [hidden]="cols.hidden">
-                              <!-- If user hasnt specified customized cell use default -->
-                              <ng-container *ngIf="!cols?.bodyTemplate">{{rows[cols.dataIndex]}}</ng-container>
-                              <!-- else insert customized code -->
-                              <ng-template *ngIf="cols.bodyTemplate" [ngTemplateOutlet]="cols.bodyTemplate" [ngOutletContext]="{ $implicit: { text : rows[cols.dataIndex] }, row: rows }"></ng-template>
+                        </tr>
+                        <tr *ngIf="viewRows?.length == 0">
+                            <td [attr.colspan]="columns?.length+1" class="loading-mask amexio-datatable-loadingmask">
                             </td>
-                          </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-                <tr *ngIf="viewRows?.length == 0">
-                  <td [attr.colspan]="columns?.length+1" class="loading-mask amexio-datatable-loadingmask">
-                  </td>
-                </tr>
-              </ng-container>
-              <ng-container *ngIf="!groupByColumn">
-                <tr *ngIf="viewRows?.length==0">
-                  <td class="amexio-datatable-width" >
-                    <span>No Records Found</span>
-                  </td>
-                </tr>
-                <tr [ngClass]="{'hiderow' : !(viewRows?.length > 0),'showrow' : viewRows?.length > 0}" style="cursor: pointer;" *ngFor="let row of viewRows let rowIndex = index " id="{{'row'+rowIndex}}" (click)="rowClick(row, rowIndex)" [class.info]="isSelected(rowIndex)">
-                  <td *ngIf="checkboxSelect" style="width: 10%" >
-                    <input type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}" [attr.checked]="selectAll? true: null" (click)="setSelectedRow(row, $event)">
-                  </td>
-                  <td *ngFor="let cols of columns let index=index" [hidden]="cols.hidden">
-                    <!-- If user hasnt specified customized cell use default -->
-                      <ng-container *ngIf="cols.dataType=='number'"><span style="float: right">{{row[cols.dataIndex]}}</span></ng-container>
-                    <ng-container *ngIf="!cols?.bodyTemplate && cols.dataType=='string'">{{row[cols.dataIndex]}}</ng-container>
-                    <!-- else insert customized code -->
-                    <ng-template *ngIf="cols.bodyTemplate" [ngTemplateOutlet]="cols.bodyTemplate" [ngOutletContext]="{ $implicit: { text : row[cols.dataIndex] }, row: row }"></ng-template>
-                  </td>
-                </tr>
-                <tr *ngIf="viewRows?.length == 0">
-                  <td [attr.colspan]="columns?.length+1" class="loading-mask amexio-datatable-loadingmask">
-                  </td>
-                </tr>
-              </ng-container>
-              </tbody>
-              <tbody *ngIf="smallScreen">
-              <ng-container *ngIf="groupByColumn">
-                <tr [ngClass]="{'hiderow' : !(viewRows?.length > 0),'showrow' : viewRows?.length > 0}">
-                  <td [attr.colspan]="columns?.length + (checkboxSelect? 1: 0)" width="100%">
-                    <div class="list-group amexio-datatable-list-group" *ngFor="let row of viewRows;let i=index;">
+                        </tr>
+                    </ng-container>
+                    <ng-container *ngIf="!groupByColumn">
+                        <tr *ngIf="viewRows?.length==0">
+                            <td class="amexio-datatable-width" >
+                                <span>No Records Found</span>
+                            </td>
+                        </tr>
+                        <tr [ngClass]="{'hiderow' : !(viewRows?.length > 0),'showrow' : viewRows?.length > 0}" style="cursor: pointer;" *ngFor="let row of viewRows let rowIndex = index " id="{{'row'+rowIndex}}" (click)="rowClick(row, rowIndex)" [class.info]="isSelected(rowIndex)">
+                            <td *ngIf="checkboxSelect" style="width: 10%" >
+                                <input type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}" [attr.checked]="selectAll? true: null" (click)="setSelectedRow(row, $event)">
+                            </td>
+                            <td *ngFor="let cols of columns let index=index" [hidden]="cols.hidden">
+                                <!-- If user hasnt specified customized cell use default -->
+                                <ng-container *ngIf="cols.dataType=='number'"><span style="float: right">{{row[cols.dataIndex]}}</span></ng-container>
+                                <ng-container *ngIf="!cols?.bodyTemplate && cols.dataType=='string'">{{row[cols.dataIndex]}}</ng-container>
+                                <!-- else insert customized code -->
+                                <ng-template *ngIf="cols.bodyTemplate" [ngTemplateOutlet]="cols.bodyTemplate" [ngOutletContext]="{ $implicit: { text : row[cols.dataIndex] }, row: row }"></ng-template>
+                            </td>
+                        </tr>
+                        <tr *ngIf="viewRows?.length == 0">
+                            <td [attr.colspan]="columns?.length+1" class="loading-mask amexio-datatable-loadingmask">
+                            </td>
+                        </tr>
+                    </ng-container>
+                    </tbody>
+                    <tbody *ngIf="smallScreen">
+                    <ng-container *ngIf="groupByColumn">
+                        <tr [ngClass]="{'hiderow' : !(viewRows?.length > 0),'showrow' : viewRows?.length > 0}">
+                            <td [attr.colspan]="columns?.length + (checkboxSelect? 1: 0)" width="100%">
+                                <div class="list-group amexio-datatable-list-group" *ngFor="let row of viewRows;let i=index;">
               <span (click)="iconSwitch(row)" style="cursor: pointer;color: black;" data-toggle="collapse" [attr.data-target]="'#'+i" data-parent="#menu">
               <span [ngClass]="{'fa-caret-down':row.expanded,'fa-caret-right':!row.expanded}" class="fa " > &nbsp;&nbsp;</span>{{row.group}}<span class="badge amexio-datatable-float-right">{{row.groupData?.length}}</span>
               </span>
-                      <div [attr.id]="i" class="sublinks collapse">
-                        <table class="table table-bordered">
-                          <tbody>
-                          <tr *ngFor="let rows of row.groupData let rowIndex = index" id="{{'row'+rowIndex}}" (click)="rowClick(rows, rowIndex)">
-                            <td *ngIf="checkboxSelect" style="width: 10%">
-                              <input type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}" [attr.checked]="selectAll? true: null" (click)="setSelectedRow(rows, $event)">
+                                    <div [attr.id]="i" class="sublinks collapse">
+                                        <table class="table table-bordered">
+                                            <tbody>
+                                            <tr *ngFor="let rows of row.groupData let rowIndex = index" id="{{'row'+rowIndex}}" (click)="rowClick(rows, rowIndex)">
+                                                <td *ngIf="checkboxSelect" style="width: 10%">
+                                                    <input type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}" [attr.checked]="selectAll? true: null" (click)="setSelectedRow(rows, $event)">
+                                                </td>
+                                                <td [attr.colspan]="columns?.length-1">
+                                                    <div class="amexio-datatable-small-word-wrap" *ngFor="let cols of columns" [hidden]="cols.hidden">
+                                                        <b>{{cols.text}}</b> :
+                                                        <!-- If user hasnt specified customized cell use default -->
+                                                        <ng-container *ngIf="!cols?.bodyTemplate">{{rows[cols.dataIndex]}}</ng-container>
+                                                        <!-- else insert customized code -->
+                                                        <ng-template *ngIf="cols.bodyTemplate" [ngTemplateOutlet]="cols.bodyTemplate" [ngOutletContext]="{ $implicit: { text : rows[cols.dataIndex] }, row: rows }"></ng-template>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </td>
-                            <td [attr.colspan]="columns?.length-1">
-                              <div class="amexio-datatable-small-word-wrap" *ngFor="let cols of columns" [hidden]="cols.hidden">
-                                <b>{{cols.text}}</b> :
-                                <!-- If user hasnt specified customized cell use default -->
-                                <ng-container *ngIf="!cols?.bodyTemplate">{{rows[cols.dataIndex]}}</ng-container>
-                                <!-- else insert customized code -->
-                                <ng-template *ngIf="cols.bodyTemplate" [ngTemplateOutlet]="cols.bodyTemplate" [ngOutletContext]="{ $implicit: { text : rows[cols.dataIndex] }, row: rows }"></ng-template>
-                              </div>
+                        </tr>
+                    </ng-container>
+                    <ng-container *ngIf="!groupByColumn">
+                        <tr *ngIf="viewRows?.length==0">
+                            <td class="amexio-datatable-width">
+                                <span>No Records Found</span>
                             </td>
-                          </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-              </ng-container>
-              <ng-container *ngIf="!groupByColumn">
-                <tr *ngIf="viewRows?.length==0">
-                  <td class="amexio-datatable-width">
-                    <span>No Records Found</span>
-                  </td>
-                </tr>
-                <tr [ngClass]="{'hiderow' : !(viewRows?.length > 0),'showrow' : viewRows?.length > 0}" style="cursor: pointer" *ngFor="let row of viewRows let rowIndex = index " id="{{'row'+rowIndex}}" (click)="rowClick(row, rowIndex)" [class.info]="isSelected(rowIndex)">
-                  <td *ngIf="checkboxSelect" style="width: 10%" >
-                    <input type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}" [attr.checked]="selectAll? true: null" (click)="setSelectedRow(row, $event)">
-                  </td>
-                  <td>
-                    <div class="amexio-datatable-small-word-wrap" *ngFor="let cols of columns" [hidden]="cols.hidden">
-                      <b>{{cols.text}}</b> :
-                      <!-- If user hasnt specified customized cell use default -->
-                      <ng-container *ngIf="!cols?.bodyTemplate">{{row[cols.dataIndex]}}</ng-container>
-                      <!-- else insert customized code -->
-                      <ng-template *ngIf="cols.bodyTemplate" [ngTemplateOutlet]="cols.bodyTemplate" [ngOutletContext]="{ $implicit: { text : row[cols.dataIndex] }, row: row }"></ng-template>
-                    </div>
-                  </td>
-                </tr>
-              </ng-container>
-              <tr *ngIf="viewRows?.length == 0">
-                <td [attr.colspan]="columns?.length+1" class="loading-mask amexio-datatable-loadingmask">
-                </td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
+                        </tr>
+                        <tr [ngClass]="{'hiderow' : !(viewRows?.length > 0),'showrow' : viewRows?.length > 0}" style="cursor: pointer" *ngFor="let row of viewRows let rowIndex = index " id="{{'row'+rowIndex}}" (click)="rowClick(row, rowIndex)" [class.info]="isSelected(rowIndex)">
+                            <td *ngIf="checkboxSelect" style="width: 10%" >
+                                <input type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}" [attr.checked]="selectAll? true: null" (click)="setSelectedRow(row, $event)">
+                            </td>
+                            <td>
+                                <div class="amexio-datatable-small-word-wrap" *ngFor="let cols of columns" [hidden]="cols.hidden">
+                                    <b>{{cols.text}}</b> :
+                                    <!-- If user hasnt specified customized cell use default -->
+                                    <ng-container *ngIf="!cols?.bodyTemplate">{{row[cols.dataIndex]}}</ng-container>
+                                    <!-- else insert customized code -->
+                                    <ng-template *ngIf="cols.bodyTemplate" [ngTemplateOutlet]="cols.bodyTemplate" [ngOutletContext]="{ $implicit: { text : row[cols.dataIndex] }, row: row }"></ng-template>
+                                </div>
+                            </td>
+                        </tr>
+                    </ng-container>
+                    <tr *ngIf="viewRows?.length == 0">
+                        <td [attr.colspan]="columns?.length+1" class="loading-mask amexio-datatable-loadingmask">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     `,
     providers : [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR, CommonHttpService],
@@ -403,7 +406,7 @@ export class DataTableComponent  implements OnInit, AfterContentInit, AfterViewI
             this.smallScreen = true;
         }else {
             this.smallScreen = false;
-          }
+        }
         if (this.httpMethod && this.httpUrl) {
             this.dataTableSevice.fetchData(this.httpUrl, this.httpMethod).subscribe(
                 response => {
@@ -450,7 +453,7 @@ export class DataTableComponent  implements OnInit, AfterContentInit, AfterViewI
             const column = this.columns[ir];
 
             if (column.summaryType && column.dataType && column.dataType === 'number') {
-              this.isSummary = true;
+                this.isSummary = true;
             }
             this.summaryData.push(0);
             this.summary.push({summaryType: column.summaryType, summaryCaption : column.summaryCaption, data: []});
@@ -472,30 +475,30 @@ export class DataTableComponent  implements OnInit, AfterContentInit, AfterViewI
             let columnData: any;
 
             if (columnConfig.headerTemplate != null && columnConfig.bodyTemplate != null) {
-              columnData = {
-                text: columnConfig.text,
-                dataIndex: columnConfig.dataIndex,
-                hidden: columnConfig.hidden,
-                dataType: columnConfig.dataType,
-                headerTemplate: columnConfig.headerTemplate,
-                bodyTemplate: columnConfig.bodyTemplate
-              };
+                columnData = {
+                    text: columnConfig.text,
+                    dataIndex: columnConfig.dataIndex,
+                    hidden: columnConfig.hidden,
+                    dataType: columnConfig.dataType,
+                    headerTemplate: columnConfig.headerTemplate,
+                    bodyTemplate: columnConfig.bodyTemplate
+                };
             } else if (columnConfig.headerTemplate != null && columnConfig.bodyTemplate == null) {
                 columnData = {
-                  text: columnConfig.text, dataIndex: columnConfig.dataIndex,
-                  hidden: columnConfig.hidden, dataType : columnConfig.dataType,
-                  headerTemplate : columnConfig.headerTemplate
+                    text: columnConfig.text, dataIndex: columnConfig.dataIndex,
+                    hidden: columnConfig.hidden, dataType : columnConfig.dataType,
+                    headerTemplate : columnConfig.headerTemplate
                 };
             } else if (columnConfig.bodyTemplate != null && columnConfig.headerTemplate == null) {
                 columnData = {
-                  text: columnConfig.text, dataIndex: columnConfig.dataIndex,
-                  hidden: columnConfig.hidden, dataType : columnConfig.dataType,
-                  bodyTemplate : columnConfig.bodyTemplate
+                    text: columnConfig.text, dataIndex: columnConfig.dataIndex,
+                    hidden: columnConfig.hidden, dataType : columnConfig.dataType,
+                    bodyTemplate : columnConfig.bodyTemplate
                 };
             } else if (columnConfig.bodyTemplate == null && columnConfig.headerTemplate == null) {
                 columnData = {
-                  text: columnConfig.text, dataIndex: columnConfig.dataIndex,
-                  hidden: columnConfig.hidden, dataType : columnConfig.dataType
+                    text: columnConfig.text, dataIndex: columnConfig.dataIndex,
+                    hidden: columnConfig.hidden, dataType : columnConfig.dataType
                 };
             }
             if (columnConfig.summaryType) {
@@ -564,7 +567,7 @@ export class DataTableComponent  implements OnInit, AfterContentInit, AfterViewI
                         if (colData) {
                             const summaryData  = this.summary[ir];
                             if (summaryData && summaryData !== '') {
-                              summaryData.data.push(colData);
+                                summaryData.data.push(colData);
                             }
                         }
                     }
@@ -623,6 +626,7 @@ export class DataTableComponent  implements OnInit, AfterContentInit, AfterViewI
     }
 
     renderData() {
+        debugger;
         if (this.pageSize > 1) {
             const rowsTemp = this.data;
             const newRows = [];
@@ -632,7 +636,7 @@ export class DataTableComponent  implements OnInit, AfterContentInit, AfterViewI
                 startIndex  = (this.currentPage - 1) * this.pageSize;
                 endIndex = startIndex + this.pageSize;
             }
-            while (startIndex <= endIndex) {
+            while (startIndex <= endIndex - 1) {
                 if (rowsTemp[startIndex]) {
                     newRows.push(rowsTemp[startIndex]);
                 }
@@ -640,7 +644,7 @@ export class DataTableComponent  implements OnInit, AfterContentInit, AfterViewI
             }
             this.viewRows = newRows;
 
-        }else{
+        }else {
             this.viewRows = this.data;
         }
         this.selectedRowNo = -1;
@@ -716,6 +720,7 @@ export class DataTableComponent  implements OnInit, AfterContentInit, AfterViewI
     }
 
     next() {
+        debugger;
         if (this.currentPage < this.maxPage) {
             this.currentPage++;
         }
@@ -723,6 +728,7 @@ export class DataTableComponent  implements OnInit, AfterContentInit, AfterViewI
     }
 
     prev() {
+        debugger;
         if (this.currentPage > 1) {
             this.currentPage--;
         }else {
@@ -733,11 +739,11 @@ export class DataTableComponent  implements OnInit, AfterContentInit, AfterViewI
 
     sortOnColHeaderClick(sortCol: any) {
         if (this.sortBy === -1) {
-          this.sortBy = 1;
+            this.sortBy = 1;
         } else if (this.sortBy === 1) {
-          this.sortBy = 2;
+            this.sortBy = 2;
         } else if (this.sortBy === 2) {
-          this.sortBy = 1;
+            this.sortBy = 1;
         }
         this.setSortColumn(sortCol, this.sortBy);
     }
@@ -761,7 +767,7 @@ export class DataTableComponent  implements OnInit, AfterContentInit, AfterViewI
         rowIndex = 'row' + rowIndex;
         if (this.rowId) {
             document.getElementById(this.rowId).style.backgroundColor = 'white' ;
-             }
+        }
         this.rowId = rowIndex;
         document.getElementById(rowIndex).style.backgroundColor = 'lightgray' ;
         this.rowSelect.emit(rowData);
