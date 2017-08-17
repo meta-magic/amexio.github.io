@@ -7,7 +7,7 @@
 </h1>
 
 <div align="center">
-  A Awesome Web Component Library for Angular Apps.
+  An Awesome Web Component Library for Angular Apps.
 </div>
 
 <br />
