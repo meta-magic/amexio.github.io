@@ -2,21 +2,46 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {DashBoardTitle} from "./dashboardtitle/dashboard.title.component";
 import {GaugeChartComponent} from "./gaugechart/gauge.chart.component";
+import {DataPointCenterComponent} from './datapoints/center.component';
+import {DataPointsComponent} from './datapoints/datapoints.component';
+import {DataPointEastComponent} from './datapoints/east.component';
+import {DataPointNorthComponent} from './datapoints/north.component';
+import {DataPointSouthComponent} from './datapoints/south.component';
+import {DataPointWestComponent} from './datapoints/west.component';
 
 export * from './dashboardtitle/dashboard.title.component';
 export * from './gaugechart/gauge.chart.component';
+
+export * from './datapoints/center.component';
+export * from './datapoints/datapoints.component';
+export * from './datapoints/east.component';
+export * from './datapoints/north.component';
+export * from './datapoints/south.component';
+export * from './datapoints/west.component';
 
 @NgModule({
   imports: [
     CommonModule
   ],
   declarations: [
-      DashBoardTitle,
-      GaugeChartComponent
+    DashBoardTitle,
+    GaugeChartComponent,
+    DataPointCenterComponent,
+    DataPointsComponent,
+    DataPointEastComponent,
+    DataPointNorthComponent,
+    DataPointSouthComponent,
+    DataPointWestComponent
   ],
   exports: [
     DashBoardTitle,
-    GaugeChartComponent
+    GaugeChartComponent,
+    DataPointCenterComponent,
+    DataPointsComponent,
+    DataPointEastComponent,
+    DataPointNorthComponent,
+    DataPointSouthComponent,
+    DataPointWestComponent
   ]
 })
 export class AmexioDashboardModule {
