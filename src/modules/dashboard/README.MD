@@ -1,72 +1,25 @@
-# dashboard
+<a href="https://amexio.org/">
+    <img src="https://image.ibb.co/ca0NMa/dashboard.png" alt="Amexio Charts" title="Amexio" align="right" height="60" />
+</a>
 
-## Installation
+Amexio Dashboard Module
+======================
 
-To install this library, run:
+Description
 
-```bash
-$ npm install dashboard --save
-```
+[![Amexio Dashboard demo](https://aimeos.org/fileadmin/user_upload/typo3-demo.jpg)](http://typo3.demo.aimeos.org/)
 
-## Consuming your library
+## Table of content
 
-Once you have published your library to npm, you can import your library in any Angular application by running:
-
-```bash
-$ npm install dashboard
-```
-
-and then from your Angular `AppModule`:
-
-```typescript
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
-
-// Import your library
-import { SampleModule } from 'dashboard';
-
-@NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-
-    // Specify your library as an import
-    LibraryModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
-```
-
-Once your library is imported, you can use its components, directives and pipes in your Angular application:
-
-```xml
-<!-- You can now use your library component in app.component.html -->
-<h1>
-  {{title}}
-</h1>
-<sampleComponent></sampleComponent>
-```
-
-## Development
-
-To generate all `*.js`, `*.d.ts` and `*.metadata.json` files:
-
-```bash
-$ npm run build
-```
-
-To lint all `*.ts` files:
-
-```bash
-$ npm run lint
-```
-
-## License
-
-MIT © [MetaMagic Global](mailto:xserviceadmin@metamagic.in)
+- [Installation](#installation)
+    - [TER](#typo3-extension-repository)
+    - [Composer](#composer)
+- [TYPO3 setup](#typo3-setup)
+    - [Extension](#extension)
+    - [Database](#database)
+- [Page setup](#page-setup)
+    - [Upload the page tree file](#upload-the-page-tree-file)
+    - [Go to the import view](#go-to-the-import-view)
+    - [Import the uploaded page tree file](#import-the-uploaded-page-tree-file)
+- [License](#license)
+- [Links](#links)
