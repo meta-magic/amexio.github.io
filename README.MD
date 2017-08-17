@@ -19,8 +19,13 @@
       alt="NPM version" />
       </a>
   <!-- Downloads -->
-  <a href="https://npmjs.org/package/choo">
+  <a href="https://npmjs.org/package/amexio-ng-extensions">
     <img src="https://img.shields.io/npm/dm/choo.svg?style=flat-square"
+      alt="Downloads" />
+  </a>
+  
+   <a href="https://npmjs.org/package/amexio-ng-extensions">
+    <img src="https://img.shields.io/npm/dt/amexio-ng-extensions.svg"
       alt="Downloads" />
   </a>
 </div>
@@ -121,11 +126,11 @@ $ cd your-angular-project
 ```
 ## For Bootstrap 4
 ```bash
-$ npm install amexio-ng-extensions --save
+$ npm install amexio-ng-extensions@latest --save
 ```
 ## For Bootstrap 3
 ```bash
-$ npm install amexio-ng-extensions@1.0.42 --save
+$ npm install amexio-ng-extensions@1.0.43 --save
 ```
 
 ### Installing Dependencies (Required)
