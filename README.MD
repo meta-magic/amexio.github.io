@@ -76,8 +76,8 @@
 - [Installation](#amexio-angular-extension---installation)
 - [Installing Dependecies](#installing-dependencies-required)
 - [Amexio Charts](#amexio-charts)
-- [Amexio Dashboard](#server-rendering)
-- [Amexio Maps](#optimizations)
+- [Amexio Dashboard](#amexio-dashboard)
+- [Amexio Maps](#amexio-maps)
 - [Visual Studio Code Extension](#amexio-microsoft-visual-studio-code-extensions)
 - [License](#license)
 
