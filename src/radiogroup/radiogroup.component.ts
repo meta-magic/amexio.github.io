@@ -18,24 +18,50 @@ export const COLUMN_SIZE = 'col-lg-';
 @Component({
     selector : 'amexio-radio-group',
     template : `
+      
+      <ng-container  *ngIf="enableBoxStyle">
         <div class="form-group">
-            <br>
-            <label  [attr.for]="elementId">{{fieldLabel}}</label>
+          <br>
+          <label  [attr.for]="elementId">{{fieldLabel}}</label>
 
-            <div class="" [ngClass]="{'row':column || column!='','list-group':!column ||column==''}">
-                <li class="list-group-item col-sm-12" *ngIf="searchBox"><span class="col-sm-12">
+          <div class="" [ngClass]="{'row':column || column!='','list-group':!column ||column==''}">
+            <li class="list-group-item col-sm-12" *ngIf="searchBox"><span class="col-sm-12">
               <input [(ngModel)]="textValue" type="text" class="form-control" placeholder="Please select" (keyup)="filterData($event)">
             </span></li>
-                <li class="list-group-item" [ngClass]="calculatedColSize"  *ngFor="let row of viewData;let i = index">
-                    <label class="custom-control custom-radio">
-                        <input class="custom-control-input" [attr.id]="elementId+'CNT'+i" type="radio" [required]="allowBlank ? true: null"  [attr.name] = "fieldName" (click)="setSelectedCheckBox(row, $event)">
-                        <span class="custom-control-indicator"></span>
-                        <span class="custom-control-description">{{row[displayField]}}</span>
-                    </label>
-                </li>
-            </div>
+            <li class="list-group-item" [ngClass]="calculatedColSize"  *ngFor="let row of viewData;let i = index">
+              <label class="custom-control custom-radio">
+                <input class="custom-control-input" [attr.id]="elementId+'CNT'+i" type="radio" [required]="allowBlank ? true: null"  [attr.name] = "fieldName" (click)="setSelectedCheckBox(row, $event)">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">{{row[displayField]}}</span>
+              </label>
+            </li>
+          </div>
 
         </div>
+      </ng-container>
+
+      <ng-container *ngIf="!enableBoxStyle">
+        <div class="form-group">
+          <br>
+          <label  [attr.for]="elementId">{{fieldLabel}}</label>
+
+          <div class="" [ngClass]="{'row':column || column!='','list-group':!column ||column==''}">
+            <span class="col-sm-12" *ngIf="searchBox"><span class="col-sm-12">
+              <input [(ngModel)]="textValue" type="text" class="form-control" placeholder="Please select" (keyup)="filterData($event)">
+            </span></span>
+            <span class="" [ngClass]="calculatedColSize"  *ngFor="let row of viewData;let i = index">
+              <label class="custom-control custom-radio">
+                <input class="custom-control-input" [attr.id]="elementId+'CNT'+i" type="radio" [required]="allowBlank ? true: null"  [attr.name] = "fieldName" (click)="setSelectedCheckBox(row, $event)">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">{{row[displayField]}}</span>
+              </label>
+            </span>
+          </div>
+
+        </div>
+      </ng-container>
+      
+        
 
     `,
     styles: [`/**
@@ -72,6 +98,8 @@ export const COLUMN_SIZE = 'col-lg-';
 })
 
 export class RadioGroupComponent implements  OnInit{
+
+    @Input()    enableBoxStyle: boolean = false;
 
     @Input()    fieldLabel : string;
 
