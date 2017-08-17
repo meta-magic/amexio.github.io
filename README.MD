@@ -210,18 +210,71 @@ Once Amexio Charting library is imported, you could use it ,
 <amexio-chart-column [data]="employeeData"></amexio-chart-column>
 ```
 
-## Development
+## Amexio Dashboard
+Amexio Dashboard is provided as a seperate Module as <b>AmexioDashboard</b> available under ```amexio-ng-extensions/dashboard```
+To begin please add the module to your Component's Module
 
-To generate all `*.js`, `*.d.ts` and `*.metadata.json` files:
+```typescript
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-```bash
-$ npm run build
+import { AppComponent } from './app.component';
+
+// Import your library
+import { AmexioDashboard } from 'amexio-ng-extensions/dashboard';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AmexioDashboard
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
 ```
 
-To lint all `*.ts` files:
+Once Amexio Dashboard library is imported, you could use it ,
 
-```bash
-$ npm run lint
+```xml
+<!-- You can now use your library component in app.component.html -->
+<amexio-chart-gauge [data]="systemMetrics"></amexio-chart-guage>
+```
+
+## Amexio Maps
+Amexio Maps is provided as a seperate Module as <b>AmexioMapsModule</b> available under ```amexio-ng-extensions/maps```
+To begin please add the module to your Component's Module
+
+```typescript
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { AppComponent } from './app.component';
+
+// Import your library
+import { AmexioDashboard } from 'amexio-ng-extensions/dashboard';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AmexioDashboard
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+Once Amexio Maps library is imported, you could use it ,
+
+```xml
+<!-- You can now use your library component in app.component.html -->
+<amexio-chart-geo [data]="population"></amexio-chart-guage>
 ```
 
 # Amexio Microsoft Visual Studio Code Extensions
