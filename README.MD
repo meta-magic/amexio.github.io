@@ -1,7 +1,67 @@
-# Amexio Angular Extensions [![npm version](https://badge.fury.io/js/amexio-ng-extensions.svg)](https://badge.fury.io/js/amexio-ng-extensions.svg) [![TeamCity CodeBetter](https://img.shields.io/teamcity/codebetter/bt428.svg)]() [![npm](https://img.shields.io/npm/dt/amexio-ng-extensions.svg)]()
+<h1 align="center">
+  <br>
+  <a href="http://www.https://amexio.tech/home.com"><img src="https://img1.wsimg.com/isteam/ip/36e99eeb-f2d4-43e5-ba0f-5ea68df2588f/logo/05dd3107-27d9-4fff-beb6-a860b32f866a.png" alt="Amexio" width="200"></a>
+  <br>
+  Amexio Angular Extensions
+  <br>
+</h1>
+
+<div align="center">
+  A Awesome Web Component Library for Angular Apps.
+</div>
+
+<br />
+
+<div align="center">
+  <!-- NPM version -->
+  <a href="https://npmjs.org/package/amexio-ng-extensions">
+    <img src="https://badge.fury.io/js/amexio-ng-extensions.svg"
+      alt="NPM version" />
+      </a>
+  <!-- Downloads -->
+  <a href="https://npmjs.org/package/amexio-ng-extensions">
+    <img src="https://img.shields.io/npm/dm/choo.svg?style=flat-square"
+      alt="Downloads" />
+  </a>
+  
+   <a href="https://npmjs.org/package/amexio-ng-extensions">
+    <img src="https://img.shields.io/npm/dt/amexio-ng-extensions.svg"
+      alt="Downloads" />
+  </a>
+</div>
+
+<div align="center">
+  <h3>
+    <a href="http://www.https://amexio.tech/home.com">
+      Website
+    </a>
+    <span> | </span>
+    <a href="https://amexio.org">
+      Showcase App
+    </a>
+    <span> | </span>
+    <a href="https://www.metamagicglobal.com/">
+      Company
+    </a>
+    <span> | </span>
+    <a href="http://forum.metamagicglobal.com/">
+      Forum
+    </a>
+  </h3>
+</div>
+
+
+<div align="center">
+  <h3>Amexio ❤ Bootstrap</h3>
+  <sub>We have components for both, the Bootstrap 3.3.7 & Bootstrap 4.0.0 alpha 6
+</div>
 <br/>
 
+<div align="center">
+
 [![NPM](https://nodei.co/npm/amexio-ng-extensions.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/amexio-ng-extensions/)
+</div>
+<br/>
 
 ## Browsers support <sub><sup><sub><sub>made by <a href="https://godban.github.io">godban</a></sub></sub></sup></sub>
 
@@ -9,11 +69,25 @@
 | --------- | --------- | --------- | --------- | --------- | --------- | --------- |
 | Edge| last 5 versions| last 5 versions| last 3 versions| last 4 versions| last 3 versions| last 3 versions
 
-## Amexio ❤ Bootstrap
+## Table of Content
+- [Features](#features)
+- [Overview](#overview)
+- [Getting Started](#getting-started)
+- [Installation](#amexio-angular-extension---installation)
+- [Installing Dependecies](#installing-dependencies-required)
+- [Amexio Charts](#amexio-charts)
+- [Amexio Dashboard](#server-rendering)
+- [Amexio Maps](#optimizations)
+- [Visual Studio Code Extension](#amexio-microsoft-visual-studio-code-extensions)
+- [License](#license)
 
-We now have support for both the Bootstrap 3.3.7 & Bootstrap 4.0.0 alpha 6
+## Features
+- __Bootstrap Support:__ our library supports Bootstrap 4 & 3 out of the box
+- __Highly Customizable:__ Lot of customization can be done easily.
+- __Components, Charts, Dashboard & Maps!!:__ We make sure you're nothing short of while building your app
+- __Modular Support:__ Load Only what you want, amexio is Modular.
 
-For Documentation Related to both version's use below link
+
 
 ### [Amexio Bootstrap 3](http://www.amexio.org/showcaseapp/v1/index.html)
 ### [Amexio Bootstrap 4](http://www.amexio.org/showcaseapp/v2/index.html)
@@ -52,11 +126,11 @@ $ cd your-angular-project
 ```
 ## For Bootstrap 4
 ```bash
-$ npm install amexio-ng-extensions --save
+$ npm install amexio-ng-extensions@latest --save
 ```
 ## For Bootstrap 3
 ```bash
-$ npm install amexio-ng-extensions@1.0.42 --save
+$ npm install amexio-ng-extensions@1.0.43 --save
 ```
 
 ### Installing Dependencies (Required)
