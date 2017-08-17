@@ -88,7 +88,7 @@ declare var $;
                 <tr *ngIf="smallScreen">
                     <td [attr.colspan]="columns.length+1">
                         <ng-container *ngIf="groupByColumn">
-                            <div style="float: right">
+                            <div>
                                 <amexio-dropdown [(ngModel)]="groupByColumnIndex"
                                                  [placeholder]="'Choose Column'"
                                                  name="groupByColumnIndex"
@@ -644,7 +644,6 @@ export class DataTableComponent  implements OnInit, AfterContentInit, AfterViewI
     }
 
     renderData() {
-        debugger;
         if (this.pageSize > 1) {
             const rowsTemp = this.data;
             const newRows = [];
@@ -738,7 +737,6 @@ export class DataTableComponent  implements OnInit, AfterContentInit, AfterViewI
     }
 
     next() {
-        debugger;
         if (this.currentPage < this.maxPage) {
             this.currentPage++;
         }
@@ -746,7 +744,6 @@ export class DataTableComponent  implements OnInit, AfterContentInit, AfterViewI
     }
 
     prev() {
-        debugger;
         if (this.currentPage > 1) {
             this.currentPage--;
         }else {
