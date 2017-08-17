@@ -32,7 +32,7 @@ Simple add this script tag to your index.html
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 ```
 
-##Importing Module
+## Importing Module
 Import the chart module as demonstrated as below
 
 ```typescript
