@@ -12,13 +12,16 @@ Amexio Dashboard Module
     <img src="https://preview.ibb.co/mz1zjv/dashboard.png"
       alt="ScreenShot" />
   </a>
-
-    <a href="http://amexio.org/demoapp/">
-      <img src="https://image.ibb.co/jvE8cF/dashboard_gauge.png"
-        alt="ScreenShot" />
-    </a>
     
 </div>
+
+<div align="center">
+  <a href="http://amexio.org/demoapp/">
+    <img src="https://image.ibb.co/jvE8cF/dashboard_gauge.png"
+      alt="ScreenShot" />
+      </a>
+</div>
+
 
 
 ## Table of content
