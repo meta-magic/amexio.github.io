@@ -209,6 +209,7 @@ Once Amexio Charting library is imported, you could use it ,
 <!-- You can now use your library component in app.component.html -->
 <amexio-chart-column [data]="employeeData"></amexio-chart-column>
 ```
+More On Charts here :  [Charts Docs](https://github.com/meta-magic/amexio.github.io/tree/v2.0/src/modules/charts)
 
 ## Amexio Dashboard
 Amexio Dashboard is provided as a seperate Module as <b>AmexioDashboard</b> available under ```amexio-ng-extensions/dashboard```
@@ -243,6 +244,7 @@ Once Amexio Dashboard library is imported, you could use it ,
 <!-- You can now use your library component in app.component.html -->
 <amexio-chart-gauge [data]="systemMetrics"></amexio-chart-guage>
 ```
+More on Dashboard Module : [Dashboard Docs](https://github.com/meta-magic/amexio.github.io/tree/v2.0/src/modules/dashboard)
 
 ## Amexio Maps
 Amexio Maps is provided as a seperate Module as <b>AmexioMapsModule</b> available under ```amexio-ng-extensions/maps```
@@ -276,7 +278,7 @@ Once Amexio Maps library is imported, you could use it ,
 <!-- You can now use your library component in app.component.html -->
 <amexio-chart-geo [data]="population"></amexio-chart-guage>
 ```
-
+More on Maps Module here : [Maps Docs](https://github.com/meta-magic/amexio.github.io/tree/v2.0/src/modules/maps)
 # Amexio Microsoft Visual Studio Code Extensions
 
 This extension will help the developers of Visual Studio Code with quick code snippet for the Amexio Markup as well as Amexio TypeScript for the Angular Extensions. 
