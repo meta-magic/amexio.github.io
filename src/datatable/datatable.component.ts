@@ -44,7 +44,7 @@ declare var $;
       </span>
                         <span class="col-xs-12 amexio-datatable-opertions">
         <div class="btn-group btn-group-sm" role="group" aria-label="Button group with nested dropdown">
-            <ng-container *ngIf="groupByColumn">
+            <ng-container *ngIf="groupByColumn && !smallScreen">
                    <amexio-dropdown [(ngModel)]="groupByColumnIndex"
                                     [placeholder]="'Choose Column'"
                                     name="groupByColumnIndex"
@@ -83,6 +83,24 @@ declare var $;
            </ng-container>
         </div>
       </span>
+                    </td>
+                </tr>
+                <tr *ngIf="smallScreen">
+                    <td [attr.colspan]="columns.length+1">
+                        <ng-container *ngIf="groupByColumn">
+                            <div style="float: right">
+                                <amexio-dropdown [(ngModel)]="groupByColumnIndex"
+                                                 [placeholder]="'Choose Column'"
+                                                 name="groupByColumnIndex"
+                                                 [dataReader]="'response.data'"
+                                                 [data]="dropdownData"
+                                                 [displayField]="'text'"
+                                                 [valueField]="'dataIndex'"
+                                                 (onSingleSelect)="setColumnData()">
+                                </amexio-dropdown>
+                            </div>
+
+                        </ng-container>
                     </td>
                 </tr>
             </table>
