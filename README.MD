@@ -17,7 +17,7 @@
   <a href="https://npmjs.org/package/amexio-ng-extensions">
     <img src="https://badge.fury.io/js/amexio-ng-extensions.svg"
       alt="NPM version" />
-      </a>
+  </a>
   <!-- Downloads -->
   <a href="https://npmjs.org/package/amexio-ng-extensions">
     <img src="https://img.shields.io/npm/dm/choo.svg?style=flat-square"
@@ -138,7 +138,7 @@ Amexio requires the following libraries to work
 
 1) [bootstrap-datepicker](https://www.npmjs.com/package/bootstrap-datepicker)
 2) [bootstrap-timepicker](https://www.npmjs.com/package/bootstrap-timepicker)
-~~3) [MessengerJS (Growl Notifications)](https://codeload.github.com/HubSpot/messenger/zip/v1.4.1)~~
+3) ~~[MessengerJS (Growl Notifications)](https://codeload.github.com/HubSpot/messenger/zip/v1.4.1)~~
 
 Include the respective JS & CSS in your app i.e if you are using Angular CLI, add the messenger.js to your "scripts"
  & the messenger.css & messenger-air-theme.css to your "styles" in .angular-cli.json.
