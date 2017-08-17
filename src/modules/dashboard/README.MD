@@ -7,15 +7,17 @@ Amexio Dashboard Module
 ======================
 <div align="center">
 <h5 align="left">Sample Screens</h5>
-  <a href="http://amexio.org/demoapp/" align="left">
+
+  <a href="http://amexio.org/demoapp/">
     <img src="https://preview.ibb.co/mz1zjv/dashboard.png"
       alt="ScreenShot" />
   </a>
 
-    <a href="http://amexio.org/demoapp/" align="right">
+    <a href="http://amexio.org/demoapp/">
       <img src="https://image.ibb.co/jvE8cF/dashboard_gauge.png"
         alt="ScreenShot" />
     </a>
+    
 </div>
 
 
