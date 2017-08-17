@@ -41,6 +41,7 @@ export const BASE_IMPL_AUTO_COMPLETE : any = {
         <label [attr.for]="elementId">{{fieldLabel}}</label>
         <input type="search" class="form-control" [attr.aria-expanded]="showDropDown" 
                [attr.id]="elementId"  (keyup)="onKeyUp($event)"
+               [placeholder]="placeholder"
                (blur)="onBlur()"  [(ngModel)]="value" #inp>
 <!--        <span [ngClass]="{'showIcon' : showDropDown,'hideIcon' : !showDropDown}" (click)="clearResult(inp)" class="glyphicon glyphicon-remove-circle searchIconPos"></span>-->
       </div>

@@ -40,10 +40,10 @@ declare var $: any;
                (ngModelChange)="onChange($event)"
         />
 
-        <div class="dropdown" [style.width]="width">
+        <div class="dropdown">
 
             <button class="btn btn-secondary dropdown-toggle" type="button" [attr.id]="elementId" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
+                    aria-haspopup="true" aria-expanded="false" [style.width]="width">
                 <ng-container *ngIf="multiSelect">
                     {{value != null || '' ? getMultiDisplayField(value) : fieldLabel}}
                 </ng-container>
@@ -53,7 +53,7 @@ declare var $: any;
                 </ng-container>
 
             </button>
-            <div class="dropdown-menu scrollable-options" [attr.aria-labelledby]="elementId">
+            <div class="dropdown-menu scrollable-options" [attr.aria-labelledby]="elementId" [style.width]="width">
                 <input *ngIf="searchBox" type="text" class="dropdown-item form-control" (keyup)="onDropDownSearchKeyUp($event)"
                        placeholder="Search"/>
                 <button class="dropdown-item" *ngFor="let row of filteredOptions"

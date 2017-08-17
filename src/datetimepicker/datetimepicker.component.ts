@@ -22,6 +22,7 @@ declare var jQuery : any;
   selector: 'amexio-date-time-picker',
   template: `
     <div class="form-inline ng2-datetime">
+      <label [attr.for]="idDatePicker">{{fieldLabel}}</label>
       <div [ngClass]="{ 'form-group': true, 'input-group': !datepickerOptions.hideIcon, 'date': true }">
         <input id="{{idDatePicker}}" type="text" class="form-control"
                [attr.readonly]="readonly"
@@ -67,6 +68,7 @@ export class DateTimeComponent implements ControlValueAccessor, AfterViewInit, O
   @Input() readonly: boolean;
   @Input() required: boolean;
   @Input() tabindex: string;
+  @Input()   fieldLabel: string;
 
   date: Date; // ngModel
   dateModel: string;
