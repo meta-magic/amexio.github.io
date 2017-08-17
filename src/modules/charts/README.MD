@@ -7,7 +7,7 @@ Amexio Charting Module
 
 Description
 
-[![Amexio Charts demo](https://aimeos.org/fileadmin/user_upload/typo3-demo.jpg)](http://typo3.demo.aimeos.org/)
+[![Amexio Charts demo](https://image.ibb.co/bVDejv/chart1.png)](http://amexio.org/demoapp/)
 
 ## Table of content
 

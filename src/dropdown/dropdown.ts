@@ -34,6 +34,7 @@ declare var $: any;
     selector: 'amexio-dropdown',
     template: `
         <!-- Faux input to handle Bindings -->
+        <label *ngIf="fieldLabel">{{fieldLabel}}</label>
         <input type="hidden"
                (blur)="onBlur()"
                [ngModel]="value"
@@ -42,22 +43,24 @@ declare var $: any;
 
         <div class="dropdown">
 
-            <button class="btn btn-secondary dropdown-toggle" type="button" [attr.id]="elementId" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false" [style.width]="width">
+            <button class="btn btn-secondary "  [style.width]="width" type="button" [attr.id]="elementId" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
                 <ng-container *ngIf="multiSelect">
-                    {{value != null || '' ? getMultiDisplayField(value) : fieldLabel}}
+                    <span style="float: left;"> {{value != null || '' ? getMultiDisplayField(value) : fieldLabel}}</span>
+                    <span class="dropdown-toggle" style="float: right;"></span>
                 </ng-container>
 
                 <ng-container *ngIf="!multiSelect">
-                    {{value != null || '' ? getDisplayField(value) : fieldLabel}}
+                    <span style="float: left;">{{value != null || '' ? getDisplayField(value) : fieldLabel}}</span>
+                    <span class="dropdown-toggle" style="float: right;"></span>
                 </ng-container>
 
             </button>
-            <div class="dropdown-menu scrollable-options" [attr.aria-labelledby]="elementId" [style.width]="width">
+            <div class="dropdown-menu scrollable-options"  [style.width]="width" [attr.aria-labelledby]="elementId">
                 <input *ngIf="searchBox" type="text" class="dropdown-item form-control" (keyup)="onDropDownSearchKeyUp($event)"
                        placeholder="Search"/>
                 <button class="dropdown-item" *ngFor="let row of filteredOptions"
-                   (click)="onUserSelectionChange(row[valueField],row[displayField],row)">
+                        (click)="onUserSelectionChange(row[valueField],row[displayField],row)">
                     {{row[displayField]}} <i class="fa fa-check pull-right" aria-hidden="true" *ngIf="row?.checked"></i>
                 </button>
 
