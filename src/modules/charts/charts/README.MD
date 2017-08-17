@@ -1,22 +1,39 @@
-# charts
+<a href="https://amexio.org/">
+    <img src="https://www.lesarbresdesign.info/images/plotalot/icon_plotalot.png" alt="Amexio Charts" title="Amexio" align="right" height="60" />
+</a>
+
+Amexio Charting Module
+======================
+<div align="center">
+<h5 align="left">Sample Screens</h5>
+  <a href="http://amexio.org/demoapp/">
+    <img src="https://image.ibb.co/ndAycF/chart2_1.png"
+      alt="ScreenShot" />
+      </a>
+</div>
+
+
+## Table of content
+
+- [Installation](#installation)
+    - [Loading Dependency](#dependency-google-chart-js)
+    - [Importing Module](#dependency-google-chart-js)
+- [Available Charts](#available-charts)
+- [License](#license)
+
 
 ## Installation
+To import the Module, you first need to fetch the Amexio Package from npm using command ```bash $ npm install amexio-ng-extensions@latest --save ```
+Note : <b>AmexioChartModule</b> is not available under amexio-ng-extensions@1.x.x Series
 
-To install this library, run:
-
-```bash
-$ npm install charts --save
+## Dependency (Google Chart JS)
+Simple add this script tag to your index.html
+```xml
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 ```
 
-## Consuming your library
-
-Once you have published your library to npm, you can import your library in any Angular application by running:
-
-```bash
-$ npm install charts
-```
-
-and then from your Angular `AppModule`:
+## Importing Module
+Import the chart module as demonstrated as below
 
 ```typescript
 import { BrowserModule } from '@angular/platform-browser';
@@ -25,7 +42,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 // Import your library
-import { SampleModule } from 'charts';
+import { AmexioChartModule } from 'amexio-ng-extensions/charts';
 
 @NgModule({
   declarations: [
@@ -33,9 +50,7 @@ import { SampleModule } from 'charts';
   ],
   imports: [
     BrowserModule,
-
-    // Specify your library as an import
-    LibraryModule
+    AmexioChartModule
   ],
   providers: [],
   bootstrap: [AppComponent]
@@ -43,30 +58,22 @@ import { SampleModule } from 'charts';
 export class AppModule { }
 ```
 
-Once your library is imported, you can use its components, directives and pipes in your Angular application:
+## Available Charts
 
-```xml
-<!-- You can now use your library component in app.component.html -->
-<h1>
-  {{title}}
-</h1>
-<sampleComponent></sampleComponent>
-```
+| Charts        |
+| ------------- |
+| Bar Chart     |
+| Column Chart  |
+| Pie Chart     |
+| Area Chart    |
+| Donut Chart   |
+| Line Chart    |
+| Histogram     |
+| TimeLine      |
 
-## Development
-
-To generate all `*.js`, `*.d.ts` and `*.metadata.json` files:
-
-```bash
-$ npm run build
-```
-
-To lint all `*.ts` files:
-
-```bash
-$ npm run lint
-```
 
 ## License
 
-MIT © [MetaMagic Global](mailto:pratik.kelwalkar@metamagic.in)
+[Apache 2.0](http://www.amexio.org/metamagic-showcase/license.html) © [MetaMagic Global Inc](http://www.metamagicglobal.com/), 2017. [Amexio Angular Extensions](http://www.amexio.tech)
+
+**Enjoy!**

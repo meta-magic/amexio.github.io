@@ -120,6 +120,199 @@ GaugeChartComponent.propDecorators = {
     'chartTitleComp': [{ type: ContentChildren, args: [DashBoardTitle,] },],
 };
 
+/**
+ * Created by ketangote on 7/25/17.
+ */
+var DataPointCenterComponent = (function () {
+    function DataPointCenterComponent() {
+    }
+    /**
+     * @return {?}
+     */
+    DataPointCenterComponent.prototype.ngOnInit = function () {
+    };
+    return DataPointCenterComponent;
+}());
+DataPointCenterComponent.decorators = [
+    { type: Component, args: [{
+                selector: 'amexio-center',
+                template: "\n\n    <div [attr.align]=\"contentalign\" [style.background-color]=\"backgroundColor\" [style.color]=\"fontColor\" [style.width]=\"width\" [style.height]=\"height\">\n      <ng-content></ng-content>\n    </div>\n\n\n  "
+            },] },
+];
+/**
+ * @nocollapse
+ */
+DataPointCenterComponent.ctorParameters = function () { return []; };
+DataPointCenterComponent.propDecorators = {
+    'contentalign': [{ type: Input },],
+    'backgroundColor': [{ type: Input },],
+    'fontColor': [{ type: Input },],
+    'width': [{ type: Input },],
+    'height': [{ type: Input },],
+};
+
+/**
+ * Created by ketangote on 8/16/17.
+ */
+var DataPointsComponent = (function () {
+    function DataPointsComponent() {
+        this.colspan = 1;
+    }
+    /**
+     * @return {?}
+     */
+    DataPointsComponent.prototype.ngOnInit = function () {
+        if (this.west)
+            this.colspan++;
+        if (this.east)
+            this.colspan++;
+    };
+    return DataPointsComponent;
+}());
+DataPointsComponent.decorators = [
+    { type: Component, args: [{
+                selector: 'amexio-datapoints',
+                template: "\n    <table width=\"100%\"  [style.background-color]=\"backgroundColor\" [style.color]=\"fontColor\">\n      <tr *ngIf=\"north\">\n        <td [attr.colspan]=\"colspan\">\n          <ng-content select=\"amexio-north\"></ng-content>\n        </td>\n      </tr>\n      <tr>\n        <td *ngIf=\"west\">\n          <ng-content select=\"amexio-west\"></ng-content>\n        </td>\n        <td *ngIf=\"center\">\n          <ng-content select=\"amexio-center\"></ng-content>\n        </td>\n        <td *ngIf=\"east\">\n          <ng-content select=\"amexio-east\"></ng-content>\n        </td>\n      </tr>\n      <tr  *ngIf=\"south\">\n        <td [attr.colspan]=\"colspan\">\n          <ng-content select=\"amexio-south\"></ng-content>\n        </td>\n      </tr>\n    </table>\n\n\n  "
+            },] },
+];
+/**
+ * @nocollapse
+ */
+DataPointsComponent.ctorParameters = function () { return []; };
+DataPointsComponent.propDecorators = {
+    'north': [{ type: Input },],
+    'south': [{ type: Input },],
+    'west': [{ type: Input },],
+    'center': [{ type: Input },],
+    'east': [{ type: Input },],
+    'backgroundColor': [{ type: Input },],
+    'fontColor': [{ type: Input },],
+};
+
+/**
+ * Created by ketangote on 7/25/17.
+ */
+var DataPointEastComponent = (function () {
+    function DataPointEastComponent() {
+    }
+    /**
+     * @return {?}
+     */
+    DataPointEastComponent.prototype.ngOnInit = function () {
+    };
+    return DataPointEastComponent;
+}());
+DataPointEastComponent.decorators = [
+    { type: Component, args: [{
+                selector: 'amexio-east',
+                template: "\n\n    <div [attr.align]=\"contentalign\" [style.background-color]=\"backgroundColor\" [style.color]=\"fontColor\" [style.width]=\"width\" [style.height]=\"height\">\n      <ng-content></ng-content>\n    </div>\n\n\n  "
+            },] },
+];
+/**
+ * @nocollapse
+ */
+DataPointEastComponent.ctorParameters = function () { return []; };
+DataPointEastComponent.propDecorators = {
+    'contentalign': [{ type: Input },],
+    'backgroundColor': [{ type: Input },],
+    'fontColor': [{ type: Input },],
+    'width': [{ type: Input },],
+    'height': [{ type: Input },],
+};
+
+/**
+ * Created by ketangote on 7/25/17.
+ */
+var DataPointNorthComponent = (function () {
+    function DataPointNorthComponent() {
+    }
+    /**
+     * @return {?}
+     */
+    DataPointNorthComponent.prototype.ngOnInit = function () {
+    };
+    return DataPointNorthComponent;
+}());
+DataPointNorthComponent.decorators = [
+    { type: Component, args: [{
+                selector: 'amexio-north',
+                template: "\n\n    <div [attr.align]=\"contentalign\" [style.background-color]=\"backgroundColor\" [style.color]=\"fontColor\" [style.width]=\"width\" [style.height]=\"height\">\n      <ng-content></ng-content>\n    </div>\n    \n\n\n  "
+            },] },
+];
+/**
+ * @nocollapse
+ */
+DataPointNorthComponent.ctorParameters = function () { return []; };
+DataPointNorthComponent.propDecorators = {
+    'contentalign': [{ type: Input },],
+    'backgroundColor': [{ type: Input },],
+    'fontColor': [{ type: Input },],
+    'width': [{ type: Input },],
+    'height': [{ type: Input },],
+};
+
+/**
+ * Created by ketangote on 7/25/17.
+ */
+var DataPointSouthComponent = (function () {
+    function DataPointSouthComponent() {
+    }
+    /**
+     * @return {?}
+     */
+    DataPointSouthComponent.prototype.ngOnInit = function () {
+    };
+    return DataPointSouthComponent;
+}());
+DataPointSouthComponent.decorators = [
+    { type: Component, args: [{
+                selector: 'amexio-south',
+                template: "\n\n    <div [attr.align]=\"contentalign\" [style.background-color]=\"backgroundColor\" [style.color]=\"fontColor\" [style.width]=\"width\" [style.height]=\"height\">\n      <ng-content></ng-content>\n    </div>\n\n\n  "
+            },] },
+];
+/**
+ * @nocollapse
+ */
+DataPointSouthComponent.ctorParameters = function () { return []; };
+DataPointSouthComponent.propDecorators = {
+    'contentalign': [{ type: Input },],
+    'backgroundColor': [{ type: Input },],
+    'fontColor': [{ type: Input },],
+    'width': [{ type: Input },],
+    'height': [{ type: Input },],
+};
+
+/**
+ * Created by ketangote on 7/25/17.
+ */
+var DataPointWestComponent = (function () {
+    function DataPointWestComponent() {
+    }
+    /**
+     * @return {?}
+     */
+    DataPointWestComponent.prototype.ngOnInit = function () {
+    };
+    return DataPointWestComponent;
+}());
+DataPointWestComponent.decorators = [
+    { type: Component, args: [{
+                selector: 'amexio-west',
+                template: "\n\n    <div [attr.align]=\"contentalign\" [style.background-color]=\"backgroundColor\" [style.color]=\"fontColor\" [style.width]=\"width\" [style.height]=\"height\">\n      <ng-content></ng-content>\n    </div>\n\n\n  "
+            },] },
+];
+/**
+ * @nocollapse
+ */
+DataPointWestComponent.ctorParameters = function () { return []; };
+DataPointWestComponent.propDecorators = {
+    'contentalign': [{ type: Input },],
+    'backgroundColor': [{ type: Input },],
+    'fontColor': [{ type: Input },],
+    'width': [{ type: Input },],
+    'height': [{ type: Input },],
+};
+
 var AmexioDashboardModule = (function () {
     function AmexioDashboardModule() {
     }
@@ -132,11 +325,23 @@ AmexioDashboardModule.decorators = [
                 ],
                 declarations: [
                     DashBoardTitle,
-                    GaugeChartComponent
+                    GaugeChartComponent,
+                    DataPointCenterComponent,
+                    DataPointsComponent,
+                    DataPointEastComponent,
+                    DataPointNorthComponent,
+                    DataPointSouthComponent,
+                    DataPointWestComponent
                 ],
                 exports: [
                     DashBoardTitle,
-                    GaugeChartComponent
+                    GaugeChartComponent,
+                    DataPointCenterComponent,
+                    DataPointsComponent,
+                    DataPointEastComponent,
+                    DataPointNorthComponent,
+                    DataPointSouthComponent,
+                    DataPointWestComponent
                 ]
             },] },
 ];
@@ -145,4 +350,4 @@ AmexioDashboardModule.decorators = [
  */
 AmexioDashboardModule.ctorParameters = function () { return []; };
 
-export { AmexioDashboardModule, DashBoardTitle, GaugeChartComponent };
+export { AmexioDashboardModule, DashBoardTitle, GaugeChartComponent, DataPointCenterComponent, DataPointsComponent, DataPointEastComponent, DataPointNorthComponent, DataPointSouthComponent, DataPointWestComponent };

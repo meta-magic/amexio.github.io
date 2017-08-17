@@ -14,22 +14,12 @@ import {Injectable} from '@angular/core';
 import {Http, RequestOptions, Headers} from '@angular/http';
 import {Observable} from "rxjs/Observable";
 declare var $;
-declare var Messenger;
 @Injectable()
 export class CommonHttpService {
 
   filteredObject: any = [];
 
   constructor(private http : Http) {
-    if(typeof Messenger != 'undefined'){
-      Messenger.options = {
-        extraClasses: 'messenger-fixed messenger-on-top messenger-on-right',
-        theme: 'air'
-      }
-    }
-    else{
-      console.warn('Please include Messenger js/css in your assets from http://github.hubspot.com/messenger/');
-    }
 
   }
 
@@ -87,14 +77,6 @@ export class CommonHttpService {
       }
     }
 
-    if(showMessage){
-      typeof Messenger != 'undefined' ? Messenger().post({
-        message: showMessage,
-        type: 'error',
-        showCloseButton: true
-      }) : showMessage=null;
-    }
-
     return showMessage;
   }
 
@@ -117,47 +99,10 @@ export class CommonHttpService {
 
     }
 
-    if(showMessage){
-      typeof Messenger != 'undefined' ? Messenger().post({
-        message: showMessage,
-        type: 'error',
-        showCloseButton: true
-      }) : showMessage=null;
-    }
-
     return showMessage;
   }
 
-  toasterDanger(title : string,message : string,timeout : string){
-    if(timeout != null){
-      timeout = '3';
-      typeof Messenger != 'undefined' ? Messenger().post({
-        message: message,
-        type: 'error',
-        showCloseButton: true
-      }) : console.warn('Please include Messenger js/css in your assets from http://github.hubspot.com/messenger/')
-    }
-  }
-  toasterSuccess(title : string,message : string,timeout : string){
-    if(timeout != null){
-      timeout = '3';
-      typeof Messenger != 'undefined' ? Messenger().post({
-        message: message,
-        type: 'success',
-        showCloseButton: true
-      }) : console.warn('Please include Messenger js/css in your assets from http://github.hubspot.com/messenger/')
-    }
-  }
-  toasterInfo(title : string,message : string,timeout : string){
-    if(timeout != null){
-      timeout = '3';
-      typeof Messenger != 'undefined' ? Messenger().post({
-        message: message,
-        type: 'info',
-        showCloseButton: true
-      }) : console.warn('Please include Messenger js/css in your assets from http://github.hubspot.com/messenger/')
-    }
-  }
+
 
 
 
