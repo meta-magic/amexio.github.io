@@ -46,12 +46,12 @@ declare var $: any;
             <button class="btn btn-secondary "  [style.width]="width" type="button" [attr.id]="elementId" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                 <ng-container *ngIf="multiSelect">
-                    <span style="float: left;"> {{value != null || '' ? getMultiDisplayField(value) : fieldLabel}}</span>
+                    <span style="float: left;"> {{value != null || '' ? getMultiDisplayField(value) : placeholder}}</span>
                     <span class="dropdown-toggle" style="float: right;"></span>
                 </ng-container>
 
                 <ng-container *ngIf="!multiSelect">
-                    <span style="float: left;">{{value != null || '' ? getDisplayField(value) : fieldLabel}}</span>
+                    <span style="float: left;">{{value != null || '' ? getDisplayField(value) : placeholder}}</span>
                     <span class="dropdown-toggle" style="float: right;"></span>
                 </ng-container>
 
