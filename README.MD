@@ -263,7 +263,7 @@ import { AmexioDashboard } from 'amexio-ng-extensions/dashboard';
   ],
   imports: [
     BrowserModule,
-    AmexioDashboard
+    AmexioMapsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
