@@ -276,7 +276,7 @@ Once Amexio Maps library is imported, you could use it ,
 
 ```xml
 <!-- You can now use your library component in app.component.html -->
-<amexio-chart-geo [data]="population"></amexio-chart-guage>
+<amexio-chart-geo [data]="population"></amexio-chart-geo>
 ```
 More on Maps Module here : [Maps Docs](https://github.com/meta-magic/amexio.github.io/tree/v2.0/src/modules/maps)
 # Amexio Microsoft Visual Studio Code Extensions
