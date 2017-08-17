@@ -45,11 +45,18 @@
   </h3>
 </div>
 
+
 <div align="center">
   <h3>Amexio ❤ Bootstrap</h3>
-  <sub>We now have components for both the Bootstrap 3.3.7 & Bootstrap 4.0.0 alpha 6
+  <sub>We have components for both, the Bootstrap 3.3.7 & Bootstrap 4.0.0 alpha 6
 </div>
+<br/>
 
+<div align="center">
+
+[![NPM](https://nodei.co/npm/amexio-ng-extensions.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/amexio-ng-extensions/)
+</div>
+<br/>
 ## Browsers support <sub><sup><sub><sub>made by <a href="https://godban.github.io">godban</a></sub></sub></sup></sub>
 
 | [<img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/edge.png" alt="IE / Edge" width="16px" height="16px" />](http://godban.github.io/browsers-support-badges/)</br>IE / Edge | [<img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/firefox.png" alt="Firefox" width="16px" height="16px" />](http://godban.github.io/browsers-support-badges/)</br>Firefox | [<img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/chrome.png" alt="Chrome" width="16px" height="16px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome | [<img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/safari.png" alt="Safari" width="16px" height="16px" />](http://godban.github.io/browsers-support-badges/)</br>Safari | [<img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/opera.png" alt="Opera" width="16px" height="16px" />](http://godban.github.io/browsers-support-badges/)</br>Opera | [<img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/safari-ios.png" alt="iOS Safari" width="16px" height="16px" />](http://godban.github.io/browsers-support-badges/)</br>iOS Safari | [<img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/chrome-android.png" alt="Chrome for Android" width="16px" height="16px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome for Android |
@@ -75,14 +82,6 @@
 - __Modular Support:__ Load Only what you want, amexio is Modular.
 
 
-
-
-
-## Amexio ❤ Bootstrap
-
-We now have support for both the Bootstrap 3.3.7 & Bootstrap 4.0.0 alpha 6
-
-For Documentation Related to both version's use below link
 
 ### [Amexio Bootstrap 3](http://www.amexio.org/showcaseapp/v1/index.html)
 ### [Amexio Bootstrap 4](http://www.amexio.org/showcaseapp/v2/index.html)
