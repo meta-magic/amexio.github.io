@@ -28,7 +28,7 @@ Note : <b>AmexioChartModule</b> is not available under amexio-ng-extensions@1.x.
 
 ## Dependency (Google Chart JS)
 Simple add this script tag to your index.html
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+``bash <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> ```
 
 ##Importing Module
 Import the chart module as demonstrated as below
