@@ -10,21 +10,16 @@ Amexio Charting Module
     <img src="https://image.ibb.co/ndAycF/chart2_1.png"
       alt="ScreenShot" />
       </a>
-  <a href="http://amexio.org/demoapp/">
-    <img src="https://image.ibb.co/dk09jv/chart1.png"
-      alt="Downloads" />
-  </a>
 </div>
 
 
 ## Table of content
 
 - [Installation](#installation)
-    - [Loading Dependency](#typo3-extension-repository)
-    - [Importing Module](#composer)
-- [Available Charts](#typo3-setup)
+    - [Loading Dependency](#dependency-google-chart-js)
+    - [Importing Module](#dependency-google-chart-js)
+- [Available Charts](#available-charts)
 - [License](#license)
-- [Links](#links)
 
 
 ## Installation
