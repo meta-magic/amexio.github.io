@@ -224,7 +224,7 @@ import {FormsModule} from "@angular/forms";
 import { AppComponent } from './app.component';
 
 // Import your library
-import { AmexioDashboard } from 'amexio-ng-extensions/dashboard';
+import { AmexioDashboardModule } from 'amexio-ng-extensions/dashboard';
 
 @NgModule({
   declarations: [
@@ -233,7 +233,7 @@ import { AmexioDashboard } from 'amexio-ng-extensions/dashboard';
   imports: [
     BrowserModule,
     FormsModule,
-    AmexioDashboard
+    AmexioDashboardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
@@ -245,7 +245,7 @@ Once Amexio Dashboard library is imported, you could use it ,
 
 ```xml
 <!-- You can now use your library component in app.component.html -->
-<amexio-chart-gauge [data]="systemMetrics"></amexio-chart-guage>
+<amexio-dashboard-gauge [data]="systemMetrics"></amexio-dashboard-gauge>
 ```
 More on Dashboard Module : [Dashboard Docs](https://github.com/meta-magic/amexio.github.io/tree/v2.0/src/modules/dashboard)
 
@@ -260,7 +260,7 @@ import {FormsModule} from "@angular/forms";
 import { AppComponent } from './app.component';
 
 // Import your library
-import { AmexioDashboard } from 'amexio-ng-extensions/dashboard';
+import { AmexioMapsModule } from 'amexio-ng-extensions/dashboard';
 
 @NgModule({
   declarations: [
@@ -280,7 +280,7 @@ Once Amexio Maps library is imported, you could use it ,
 
 ```xml
 <!-- You can now use your library component in app.component.html -->
-<amexio-chart-geo [data]="population"></amexio-chart-geo>
+<amexio-map-geo-chart [data]="population"></amexio-map-geo-chart>
 ```
 More on Maps Module here : [Maps Docs](https://github.com/meta-magic/amexio.github.io/tree/v2.0/src/modules/maps)
 # Amexio Microsoft Visual Studio Code Extensions
