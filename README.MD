@@ -150,7 +150,7 @@ and then from your Angular `AppModule`:
 ```typescript
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {FormsModule} from "@angular/forms";
 import { AppComponent } from './app.component';
 
 // Import your library
@@ -162,6 +162,7 @@ import { AmexioWidgetModule,CommonHttpService } from 'amexio-ng-extensions';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AmexioWidgetModule
   ],
   providers: [CommonHttpService],
@@ -183,7 +184,7 @@ To begin please add the module to your Component's Module
 ```typescript
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {FormsModule} from "@angular/forms";
 import { AppComponent } from './app.component';
 
 // Import your library
@@ -195,6 +196,7 @@ import { AmexioChartModule } from 'amexio-ng-extensions/charts';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AmexioChartModule
   ],
   providers: [],
@@ -218,7 +220,7 @@ To begin please add the module to your Component's Module
 ```typescript
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {FormsModule} from "@angular/forms";
 import { AppComponent } from './app.component';
 
 // Import your library
@@ -230,6 +232,7 @@ import { AmexioDashboard } from 'amexio-ng-extensions/dashboard';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AmexioDashboard
   ],
   providers: [],
@@ -253,7 +256,7 @@ To begin please add the module to your Component's Module
 ```typescript
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {FormsModule} from "@angular/forms";
 import { AppComponent } from './app.component';
 
 // Import your library
@@ -265,6 +268,7 @@ import { AmexioDashboard } from 'amexio-ng-extensions/dashboard';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AmexioMapsModule
   ],
   providers: [],
