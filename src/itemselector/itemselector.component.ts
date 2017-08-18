@@ -18,55 +18,55 @@ import {CommonHttpService} from '../common.http.service';
 @Component({
   selector: 'amexio-item-selector',
   template: `
-    
-    <div class="row amexio-itemselector" (window:resize)="onResize($event)">
-    <div  [style.width]="itemSelectorWidth">
-      <div class="list-group" [style.height]="itemSelectorHeight">
-        <button type="button" class="list-group-item amexio-itemselector-available-btn">Available</button>
-        <div class="amexio-itemselector-action-list" >
-          <button type="button" class="list-group-item list-group-item-action"  *ngFor="let data of availableData; let i = index" (click)="itemCkick(data,i)">{{data[displayField]}}</button>
-        </div>
-       
-      </div>
-    </div>
-      <ng-container *ngIf="smallScreen">
-        <div class="amexio-itemselector-width">
-          <div  class="btn-group amexio-itemselector-btn-group" role="group"  aria-label="Button group with nested dropdown">
-            <amexio-btn (onClick)="moveTop()"  [type]="'link'" [tooltipMessage]="'move top'" [block]="true" [icon]="'caret-up fa-2x'"></amexio-btn>
-            <amexio-btn (onClick)="upSwitch()" [type]="'link'" [tooltipMessage]="'move up'" [block]="true" [icon]="'angle-double-up fa-2x'"></amexio-btn>
-            <amexio-btn (onClick)="leftSwitch()" [type]="'link'" [tooltipMessage]="'move left'" [block]="true" [icon]="'arrow-up fa-2x'"></amexio-btn>
-            <amexio-btn (onClick)="rightSwitch()" [type]="'link'" [tooltipMessage]="'move right'" [block]="true" [icon]="'arrow-down fa-2x'"></amexio-btn>
-            <amexio-btn (onClick)="downSwitch()" [type]="'link'" [tooltipMessage]="'move down'" [block]="true" [icon]="'angle-double-down fa-2x'"></amexio-btn>
-            <amexio-btn (onClick)="moveDown()" [type]="'link'" [tooltipMessage]="'bottom'" [block]="true" [icon]="'caret-down fa-2x'"></amexio-btn>
-          </div>
-        </div>
-        
-      </ng-container>
-    <div class="amexio-itemselector-smallscreen" *ngIf="!smallScreen">
-      <div class="list-group text-center amexio-itemselector-smallscreen-div" [style.height]="itemSelectorHeight">
-        <div>  
-        <div class="btn-group-vertical" role="group" aria-label="Button group with nested dropdown">
-            <amexio-btn (onClick)="moveTop()"  [type]="'link'" [tooltipMessage]="'move top'" [block]="true" [icon]="'fa fa-caret-up fa-2x'"></amexio-btn>
-            <amexio-btn (onClick)="upSwitch()" [type]="'link'" [tooltipMessage]="'move up'" [block]="true" [icon]="'fa fa-arrow-up'"></amexio-btn>
-            <amexio-btn (onClick)="leftSwitch()" [type]="'link'" [tooltipMessage]="'move left'" [block]="true" [icon]="'fa fa-arrow-left'"></amexio-btn>
-            <amexio-btn (onClick)="rightSwitch()" [type]="'link'" [tooltipMessage]="'move right'" [block]="true" [icon]="'fa fa-arrow-right'"></amexio-btn>
-            <amexio-btn (onClick)="downSwitch()" [type]="'link'" [tooltipMessage]="'move down'" [block]="true" [icon]="'fa fa-arrow-down'"></amexio-btn>
-            <amexio-btn (onClick)="moveDown()" [type]="'link'" [tooltipMessage]="'bottom'" [block]="true" [icon]="'fa fa-caret-down fa-2x '"></amexio-btn>
-          </div>
-        </div>
 
+      <div class="row amexio-itemselector" (window:resize)="onResize($event)">
+          <div  [style.width]="itemSelectorWidth">
+              <div class="list-group" [style.height]="itemSelectorHeight">
+                  <button type="button" class="list-group-item amexio-itemselector-available-btn">Available</button>
+                  <div class="amexio-itemselector-action-list" >
+                      <button type="button" class="list-group-item list-group-item-action"  *ngFor="let data of availableData; let i = index" (click)="itemCkick(data,i)">{{data[displayField]}}</button>
+                  </div>
+
+              </div>
+          </div>
+          <ng-container *ngIf="smallScreen">
+              <div class="amexio-itemselector-width">
+                  <div  class="btn-group amexio-itemselector-btn-group " role="group"  aria-label="Button group with nested dropdown">
+                      <amexio-btn (onClick)="moveTop()"  [type]="'link'" [tooltipMessage]="'move top'" [block]="true" [icon]="'fa fa-caret-up'"></amexio-btn>
+                      <amexio-btn (onClick)="upSwitch()" [type]="'link'" [tooltipMessage]="'move up'" [block]="true" [icon]="'fa fa-angle-double-up'"></amexio-btn>
+                      <amexio-btn (onClick)="leftSwitch()" [type]="'link'" [tooltipMessage]="'move left'" [block]="true" [icon]="'fa fa-arrow-up'"></amexio-btn>
+                      <amexio-btn (onClick)="rightSwitch()" [type]="'link'" [tooltipMessage]="'move right'" [block]="true" [icon]="'fa fa-arrow-down'"></amexio-btn>
+                      <amexio-btn (onClick)="downSwitch()" [type]="'link'" [tooltipMessage]="'move down'" [block]="true" [icon]="'fa fa-angle-double-down'"></amexio-btn>
+                      <amexio-btn (onClick)="moveDown()" [type]="'link'" [tooltipMessage]="'bottom'" [block]="true" [icon]="'fa fa-caret-down'"></amexio-btn>
+                  </div>
+              </div>
+
+          </ng-container>
+          <div class="amexio-itemselector-smallscreen" *ngIf="!smallScreen">
+              <div class="list-group text-center amexio-itemselector-smallscreen-div" [style.height]="itemSelectorHeight">
+                  <div>
+                      <div class="btn-group-vertical" role="group" aria-label="Button group with nested dropdown">
+                          <amexio-btn (onClick)="moveTop()"  [type]="'link'" [tooltipMessage]="'move top'" [block]="true" [icon]="'fa fa-caret-up fa-2x'"></amexio-btn>
+                          <amexio-btn (onClick)="upSwitch()" [type]="'link'" [tooltipMessage]="'move up'" [block]="true" [icon]="'fa fa-arrow-up'"></amexio-btn>
+                          <amexio-btn (onClick)="leftSwitch()" [type]="'link'" [tooltipMessage]="'move left'" [block]="true" [icon]="'fa fa-arrow-left'"></amexio-btn>
+                          <amexio-btn (onClick)="rightSwitch()" [type]="'link'" [tooltipMessage]="'move right'" [block]="true" [icon]="'fa fa-arrow-right'"></amexio-btn>
+                          <amexio-btn (onClick)="downSwitch()" [type]="'link'" [tooltipMessage]="'move down'" [block]="true" [icon]="'fa fa-arrow-down'"></amexio-btn>
+                          <amexio-btn (onClick)="moveDown()" [type]="'link'" [tooltipMessage]="'bottom'" [block]="true" [icon]="'fa fa-caret-down fa-2x '"></amexio-btn>
+                      </div>
+                  </div>
+
+              </div>
+          </div>
+          <div [style.width]="itemSelectorWidth">
+              <div class="list-group" [style.height]="itemSelectorHeight">
+                  <button type="button" class="list-group-item amexio-itemselector-available-btn">Selected</button>
+                  <div class="amexio-itemselector-action-list" >
+                      <button type="button" class="list-group-item list-group-item-action"  *ngFor="let data of selectedData; let i = index" (click)="itemCkick(data,i)">{{data[displayField]}}</button>
+                  </div>
+              </div>
+          </div>
       </div>
-      </div>
-    <div [style.width]="itemSelectorWidth">
-      <div class="list-group" [style.height]="itemSelectorHeight">
-        <button type="button" class="list-group-item amexio-itemselector-available-btn">Selected</button>
-        <div class="amexio-itemselector-action-list" >
-        <button type="button" class="list-group-item list-group-item-action"  *ngFor="let data of selectedData; let i = index" (click)="itemCkick(data,i)">{{data[displayField]}}</button>
-        </div>
-      </div>
-    </div>
-    </div>
-    
+
   `,
   styles : [`
       .amexio-itemselector{
@@ -88,7 +88,7 @@ import {CommonHttpService} from '../common.http.service';
           padding-top: 35%;
       }
       .amexio-itemselector-btn-group{
-          padding:5% 0 5% 0;
+          padding:5% 5% 2% 5%;
       }
       .amexio-itemselector-width{
           width: 100%;
@@ -276,8 +276,8 @@ export class ItemSelectorComponent implements OnInit, AfterViewInit {
   }
   onResize(event: any) {
     if (event.target.innerWidth < 768) {
-       this.itemSelectorWidth = 100 + '%' ;
-       this.smallScreen = true;
+      this.itemSelectorWidth = 100 + '%' ;
+      this.smallScreen = true;
     }else {
       this.smallScreen = false;
       this.itemSelectorWidth = 46 + '%' ;

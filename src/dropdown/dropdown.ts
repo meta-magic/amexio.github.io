@@ -121,8 +121,8 @@ export class DropDownComponent extends FormInputBase implements OnInit, ControlV
 
 
     ngOnInit() {
-        if(this.fieldLabel == '' || this.fieldLabel == null)
-            this.fieldLabel = 'Choose Option';
+        if(this.placeholder == '' || this.placeholder == null)
+            this.placeholder = 'Choose Option';
 
         if(this.httpMethod && this.httpUrl){
             this.amxHttp.fetchData(this.httpUrl,this.httpMethod).subscribe(
