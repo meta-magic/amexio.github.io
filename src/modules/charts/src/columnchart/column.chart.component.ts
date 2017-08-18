@@ -21,7 +21,7 @@ declare var google: any;
   template:`
       <div [attr.id]="id"
            [style.width]="width"
-           [style.height]="height"
+           [style.height]="height" (window:resize)="onResize($event)"
       ></div>
   `
 })
@@ -145,8 +145,14 @@ export class ColumnChartComponent implements AfterContentInit {
     return data;
   }
   ngOnInit(): void {
+    this.createChart();
+   }
+  createChart(){
     //call draw chart method
     google.charts.load('current', {packages: ['corechart']});
     google.charts.setOnLoadCallback(() => this.drawChart());
+  }
+  onResize(event){
+    this.createChart();
   }
 }

@@ -20,7 +20,7 @@ declare var google: any;
   selector: 'amexio-chart-donut', template: `
         <div [attr.id]="id"
              [style.width]="width"
-             [style.height]="height"
+             [style.height]="height" (window:resize)="onResize($event)"
         ></div>
   `
 })
@@ -122,8 +122,14 @@ export class DonutChartComponent  implements AfterContentInit {
     }
   }
   ngOnInit(): void {
+    this.createChart();
+   }
+  createChart(){
     //call draw chart method
     google.charts.load('current', {packages: ['corechart']});
     google.charts.setOnLoadCallback(() => this.drawChart());
+  }
+  onResize(event){
+    this.createChart();
   }
 }

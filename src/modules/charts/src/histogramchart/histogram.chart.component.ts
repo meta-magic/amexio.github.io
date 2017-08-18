@@ -22,7 +22,7 @@ declare var google: any;
   template: `
       <div [attr.id]="id"
            [style.width]="width"
-           [style.height]="height"
+           [style.height]="height" (window:resize)="onResize($event)"
       >
       </div>
   `
@@ -124,8 +124,14 @@ export class HistogramChartComponent implements AfterContentInit ,OnInit{
     }
   }
   ngOnInit(): void {
+    this.createChart();
+  }
+  createChart(){
     //call draw chart method
     google.charts.load('current', {packages: ['corechart']});
     google.charts.setOnLoadCallback(() => this.drawChart());
+  }
+  onResize(event){
+    this.createChart();
   }
 }

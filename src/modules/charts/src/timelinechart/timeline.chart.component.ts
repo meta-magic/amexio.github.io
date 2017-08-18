@@ -19,7 +19,7 @@ declare var google: any;
   selector: 'amexio-chart-timeline',
   template: `
     <div [attr.id]="id"
-         [style.width]="width"
+         [style.width]="width" (window:resize)="onResize($event)"
     ></div>
   `
 })
@@ -104,9 +104,15 @@ export class TimeLineChartComponent implements AfterContentInit,OnInit {
     return data;
   }
   ngOnInit(): void {
+  this.createChart();
+  }
+  createChart(){
     //call draw chart method
     google.charts.load('current', {packages: ['timeline']});
     google.charts.setOnLoadCallback(() => this.drawChart());
+  }
+  onResize(event){
+    this.createChart();
   }
 }
 
