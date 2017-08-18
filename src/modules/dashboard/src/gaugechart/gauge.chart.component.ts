@@ -14,7 +14,7 @@ import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} 
 import {DashBoardTitle} from "../dashboardtitle/dashboard.title.component";
 declare var google: any;
 @Component({
-  selector: 'amexio-chart-gauge',
+  selector: 'amexio-dashboard-gauge',
   template: `
       <div [attr.id]="id"
            [style.width]="width"

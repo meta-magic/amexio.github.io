@@ -7,7 +7,7 @@ import {MapProperties} from "../mapproperties/map.properties";
 
 declare var google: any;
 @Component({
-  selector: 'amexio-chart-geo',
+  selector: 'amexio-map-geo-chart',
   template: `
       <div [attr.id]="id"
            [style.width]="width"

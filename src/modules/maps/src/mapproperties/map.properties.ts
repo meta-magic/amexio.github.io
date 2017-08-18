@@ -13,7 +13,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
-    selector: 'map-properties',
+    selector: 'amexio-map-properties',
     template: ``
 })
 export class MapProperties implements OnInit {
