@@ -135,10 +135,14 @@ $ npm install amexio-ng-extensions@1.0.43 --save
 
 ### Installing Dependencies (Required)
 Amexio requires the following libraries to work
+1) jQuery
+2) Bootstrap Alpha 6. (Requires Tether.js & Popper.js)
+3) [bootstrap-datepicker](https://www.npmjs.com/package/bootstrap-datepicker)
+4) [bootstrap-timepicker](https://www.npmjs.com/package/bootstrap-timepicker)
+5) Font Awesome
 
-1) [bootstrap-datepicker](https://www.npmjs.com/package/bootstrap-datepicker)
-2) [bootstrap-timepicker](https://www.npmjs.com/package/bootstrap-timepicker)
-3) ~~[MessengerJS (Growl Notifications)](https://codeload.github.com/HubSpot/messenger/zip/v1.4.1)~~
+Include these in your app's .angular-cli.json
+<img src="https://image.ibb.co/h63pK5/dependecy.png"/>
 
 Include the respective JS & CSS in your app i.e if you are using Angular CLI, add the messenger.js to your "scripts"
  & the messenger.css & messenger-air-theme.css to your "styles" in .angular-cli.json.
