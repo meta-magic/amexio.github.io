@@ -61,7 +61,7 @@ declare var $;
          
           <div class="input-group-btn">
             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fa fa-bars"></i> Page - {{currentPage}}
+             Page - {{currentPage}}
             </button>
             <div class="dropdown-menu dropdown-menu-right amexio-datatable-dropdown-action">
               <li *ngFor="let row of pageNumbers let pageNo = index " class="dropdown-item" value="{{pageNo+1}}" (click)="setPageNo(pageNo+1)"><a >{{pageNo+1}}</a></li>
@@ -85,22 +85,19 @@ declare var $;
       </span>
                     </td>
                 </tr>
-                <tr *ngIf="smallScreen">
+                <tr *ngIf="smallScreen && groupByColumn">
                     <td [attr.colspan]="columns.length+1">
-                        <ng-container *ngIf="groupByColumn">
-                            <div>
-                                <amexio-dropdown [(ngModel)]="groupByColumnIndex"
-                                                 [placeholder]="'Choose Column'"
-                                                 name="groupByColumnIndex"
-                                                 [dataReader]="'response.data'"
-                                                 [data]="dropdownData"
-                                                 [displayField]="'text'"
-                                                 [valueField]="'dataIndex'"
-                                                 (onSingleSelect)="setColumnData()">
-                                </amexio-dropdown>
-                            </div>
-
-                        </ng-container>
+                        <div>
+                            <amexio-dropdown [(ngModel)]="groupByColumnIndex"
+                                             [placeholder]="'Choose Column'"
+                                             name="groupByColumnIndex"
+                                             [dataReader]="'response.data'"
+                                             [data]="dropdownData"
+                                             [displayField]="'text'"
+                                             [valueField]="'dataIndex'"
+                                             (onSingleSelect)="setColumnData()">
+                            </amexio-dropdown>
+                        </div>
                     </td>
                 </tr>
             </table>
@@ -156,12 +153,19 @@ declare var $;
                     <ng-container *ngIf="groupByColumn">
                         <tr [ngClass]="{'hiderow' : !(viewRows?.length > 0),'showrow' : viewRows?.length > 0}">
                             <td [attr.colspan]="columns?.length + (checkboxSelect? 1: 0)" width="100%">
-                                <div class="list-group amexio-datatable-list-group" *ngFor="let row of viewRows;let i=index;">
-              <span (click)="iconSwitch(row)" style="cursor: pointer;color: black;" data-toggle="collapse" [attr.data-target]="'#'+i" data-parent="#menu">
-              <span [ngClass]="{'fa-caret-down':row.expanded,'fa-caret-right':!row.expanded}" class="fa " > &nbsp;&nbsp;</span>{{row.group}} <span class="badge badge-pill badge-default amexio-datatable-pagenumber">{{row.groupData?.length}}</span>
+                                <ul class="list-group amexio-datatable-list-group" *ngFor="let row of viewRows;let i=index;">
+              <span (click)="iconSwitch(row)" style="cursor: pointer;" data-toggle="collapse" [attr.data-target]="'#'+i" data-parent="#menu">
+          
+                 <span style="width: 100%" class="list-group-item justify-content-between fa " [ngClass]="{'fa-caret-down':row.expanded,'fa-caret-right':!row.expanded}">
+                   {{row.group}}
+                      <span style="float: right" class="badge badge-default badge-pill">{{row.groupData?.length}}</span>
+                    </span>
               </span>
+
+
+
                                     <div [attr.id]="i" class="sublinks collapse">
-                                        <table class="table table-striped table-hover table-bordered">
+                                        <table class="table table-hover ">
                                             <tbody>
                                             <tr *ngFor="let rows of row.groupData let rowIndex = index" id="{{'row'+rowIndex}}" (click)="rowClick(rows, rowIndex)">
                                                 <td *ngIf="checkboxSelect" style="width: 10%">
@@ -177,7 +181,7 @@ declare var $;
                                             </tbody>
                                         </table>
                                     </div>
-                                </div>
+                                </ul>
                             </td>
                         </tr>
                         <tr *ngIf="viewRows?.length == 0">
@@ -214,9 +218,13 @@ declare var $;
                         <tr [ngClass]="{'hiderow' : !(viewRows?.length > 0),'showrow' : viewRows?.length > 0}">
                             <td [attr.colspan]="columns?.length + (checkboxSelect? 1: 0)" width="100%">
                                 <div class="list-group amexio-datatable-list-group" *ngFor="let row of viewRows;let i=index;">
-              <span (click)="iconSwitch(row)" style="cursor: pointer;color: black;" data-toggle="collapse" [attr.data-target]="'#'+i" data-parent="#menu">
-              <span [ngClass]="{'fa-caret-down':row.expanded,'fa-caret-right':!row.expanded}" class="fa " > &nbsp;&nbsp;</span>{{row.group}}<span class="badge amexio-datatable-float-right">{{row.groupData?.length}}</span>
+              <span (click)="iconSwitch(row)" style="cursor: pointer;" data-toggle="collapse" [attr.data-target]="'#'+i" data-parent="#menu">
+                <span style="width: 100%" class="list-group-item justify-content-between fa " [ngClass]="{'fa-caret-down':row.expanded,'fa-caret-right':!row.expanded}">
+                  <b>{{row.group}}</b>
+                      <span style="float: right" class="badge badge-default badge-pill">{{row.groupData?.length}}</span>
+                    </span>
               </span>
+
                                     <div [attr.id]="i" class="sublinks collapse">
                                         <table class="table table-bordered">
                                             <tbody>
