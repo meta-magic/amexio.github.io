@@ -154,7 +154,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 // Import your library
-import { AmexioWidgetModule } from 'amexio-ng-extensions';
+import { AmexioWidgetModule,CommonHttpService } from 'amexio-ng-extensions';
 
 @NgModule({
   declarations: [
@@ -164,7 +164,7 @@ import { AmexioWidgetModule } from 'amexio-ng-extensions';
     BrowserModule,
     AmexioWidgetModule
   ],
-  providers: [],
+  providers: [CommonHttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
