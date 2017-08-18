@@ -32,12 +32,12 @@ import {CommonHttpService} from '../common.http.service';
           <ng-container *ngIf="smallScreen">
               <div class="amexio-itemselector-width">
                   <div  class="btn-group amexio-itemselector-btn-group " role="group"  aria-label="Button group with nested dropdown">
-                      <amexio-btn (onClick)="moveTop()"  [type]="'link'" [tooltipMessage]="'move top'" [block]="true" [icon]="'fa fa-caret-up fa-2x'"></amexio-btn>
-                      <amexio-btn (onClick)="upSwitch()" [type]="'link'" [tooltipMessage]="'move up'" [block]="true" [icon]="'fa fa-angle-double-up fa-2x'"></amexio-btn>
-                      <amexio-btn (onClick)="leftSwitch()" [type]="'link'" [tooltipMessage]="'move left'" [block]="true" [icon]="'fa fa-arrow-up fa-2x'"></amexio-btn>
-                      <amexio-btn (onClick)="rightSwitch()" [type]="'link'" [tooltipMessage]="'move right'" [block]="true" [icon]="'fa fa-arrow-down fa-2x'"></amexio-btn>
-                      <amexio-btn (onClick)="downSwitch()" [type]="'link'" [tooltipMessage]="'move down'" [block]="true" [icon]="'fa fa-angle-double-down fa-2x'"></amexio-btn>
-                      <amexio-btn (onClick)="moveDown()" [type]="'link'" [tooltipMessage]="'bottom'" [block]="true" [icon]="'fa fa-caret-down fa-2x'"></amexio-btn>
+                      <amexio-btn (onClick)="moveTop()"  [type]="'link'" [tooltipMessage]="'move top'" [block]="true" [icon]="'fa fa-caret-up'"></amexio-btn>
+                      <amexio-btn (onClick)="upSwitch()" [type]="'link'" [tooltipMessage]="'move up'" [block]="true" [icon]="'fa fa-angle-double-up'"></amexio-btn>
+                      <amexio-btn (onClick)="leftSwitch()" [type]="'link'" [tooltipMessage]="'move left'" [block]="true" [icon]="'fa fa-arrow-up'"></amexio-btn>
+                      <amexio-btn (onClick)="rightSwitch()" [type]="'link'" [tooltipMessage]="'move right'" [block]="true" [icon]="'fa fa-arrow-down'"></amexio-btn>
+                      <amexio-btn (onClick)="downSwitch()" [type]="'link'" [tooltipMessage]="'move down'" [block]="true" [icon]="'fa fa-angle-double-down'"></amexio-btn>
+                      <amexio-btn (onClick)="moveDown()" [type]="'link'" [tooltipMessage]="'bottom'" [block]="true" [icon]="'fa fa-caret-down'"></amexio-btn>
                   </div>
               </div>
 
@@ -72,7 +72,6 @@ import {CommonHttpService} from '../common.http.service';
       .amexio-itemselector{
           width: 100%;
           overflow: hidden;
-          padding: 0 2% 0 5% ;
       }
       .amexio-itemselector-available-btn{
           background-color:#cecece;
@@ -89,7 +88,7 @@ import {CommonHttpService} from '../common.http.service';
           padding-top: 35%;
       }
       .amexio-itemselector-btn-group{
-          padding:0 5% 0 2%;
+          padding:5% 5% 2% 5%;
       }
       .amexio-itemselector-width{
           width: 100%;
