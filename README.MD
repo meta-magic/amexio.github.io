@@ -7,7 +7,7 @@
 </h1>
 
 <div align="center">
-  An Awesome Web Component Library for Angular Apps.
+  An Enterprise grade Comprehensive UI Components, Charts, Dashboards, Maps Library for Angular Apps.
 </div>
 
 <br />
