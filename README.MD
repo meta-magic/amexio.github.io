@@ -28,6 +28,8 @@
     <img src="https://img.shields.io/npm/dt/amexio-ng-extensions.svg"
       alt="Downloads" />
   </a>
+  <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+<script type="IN/FollowCompany" data-id="13316060" data-counter="top"></script>
 </div>
 
 <div align="center">
