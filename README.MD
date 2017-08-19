@@ -36,20 +36,24 @@
 
 <div align="center">
   <h3>
-    <a href="http://www.https://amexio.tech/home.com">
+    <a href="http://www.amexio.tech/">
       Website
     </a>
     <span> | </span>
-    <a href="https://amexio.org">
-      Showcase App
+    <a href="https://www.amexio.org">
+      API Docs
     </a>
     <span> | </span>
-    <a href="https://www.metamagicglobal.com/">
-      Company
+    <a href="https://www.amexio.org/demoapp/">
+      Demo App
     </a>
     <span> | </span>
     <a href="http://forum.metamagicglobal.com/">
       Forum
+    </a>
+    <span> | </span>
+    <a href="https://www.metamagicglobal.com/">
+      MetaMagic Global
     </a>
   </h3>
 </div>
