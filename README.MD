@@ -40,11 +40,11 @@
       Website
     </a>
     <span> | </span>
-    <a href="https://www.amexio.org">
+    <a href="http://www.amexio.org">
       API Docs
     </a>
     <span> | </span>
-    <a href="https://www.amexio.org/demoapp/">
+    <a href="http://www.amexio.org/demoapp/">
       Demo App
     </a>
     <span> | </span>
