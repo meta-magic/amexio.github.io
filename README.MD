@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="http://www.https://amexio.tech/home.com"><img src="https://image.ibb.co/kdy6Ev/logo.png" alt="Amexio" width="200"></a>
+  <a href="http://www.amexio.tech/"><img src="https://image.ibb.co/kdy6Ev/logo.png" alt="Amexio" width="200"></a>
   <br>
   Amexio Angular Extensions
   <br>
