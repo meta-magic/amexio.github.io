@@ -15,6 +15,13 @@ import {HistogramChartComponent} from "./histogramchart/histogram.chart.componen
 import {LineChartComponent} from "./linechart/line.chart.component";
 import {BarChartComponent} from "./barchart/bar.chart.component";
 import {TimeLineChartComponent} from "./timelinechart/timeline.chart.component";
+import {ComboChartComponent} from "./combochart/combo.chart.component";
+import {VerticalAxisComponent} from "./verticalaxis/chart.verticalaxis.component";
+import {HorizontalAxisComponent} from "./horizontalaxis/chart.horizontalaxis.component";
+import {BubbleChartComponent} from "./bubblechart/bubble.chart.component";
+import {ScatterChartComponent} from "./scatterchart/scatter.chart.component";
+import {CandlestickChartComponent} from "./candlestickchart/candlestick.chart.component";
+import {CandlestickWaterfallChartComponent} from "./candlestickwaterfallchart/candlestickwaterfall.chart.component";
 
 export  * from "./chartlegend/chart.legend.component";
 export  * from  "./charttitle/chart.title.component";
@@ -27,6 +34,14 @@ export  * from  "./histogramchart/histogram.chart.component";
 export  * from "./linechart/line.chart.component";
 export  * from  "./barchart/bar.chart.component";
 export * from  "./timelinechart/timeline.chart.component";
+export * from "./combochart/combo.chart.component";
+export * from "./combochart/combo.chart.component";
+export * from "./verticalaxis/chart.verticalaxis.component";
+export * from "./horizontalaxis/chart.horizontalaxis.component";
+export * from "./bubblechart/bubble.chart.component";
+export * from "./scatterchart/scatter.chart.component";
+export * from "./candlestickchart/candlestick.chart.component";
+export * from "./candlestickwaterfallchart/candlestickwaterfall.chart.component";
 
 @NgModule({
   imports: [
@@ -38,12 +53,19 @@ export * from  "./timelinechart/timeline.chart.component";
     AreaChartComponent, BarChartComponent, ChartAreaComponent,
     ChartLegendComponent, ChartTitleComponent, ColumnChartComponent,
     DonutChartComponent, HistogramChartComponent, LineChartComponent,
-    PieChartComponent,TimeLineChartComponent],
+    PieChartComponent,TimeLineChartComponent,ComboChartComponent,
+    VerticalAxisComponent,
+    HorizontalAxisComponent,
+    BubbleChartComponent,
+    ScatterChartComponent,CandlestickChartComponent,CandlestickWaterfallChartComponent],
   exports: [
     AreaChartComponent, BarChartComponent, ChartAreaComponent,
     ChartLegendComponent, ChartTitleComponent, ColumnChartComponent,
     DonutChartComponent, HistogramChartComponent, LineChartComponent, PieChartComponent,
-    TimeLineChartComponent],
+    TimeLineChartComponent,ComboChartComponent,VerticalAxisComponent,
+    HorizontalAxisComponent,
+    BubbleChartComponent,
+    ScatterChartComponent,CandlestickChartComponent,CandlestickWaterfallChartComponent],
 })
 export class AmexioChartModule {
 
