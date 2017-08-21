@@ -5,7 +5,7 @@ import {EventEmitter, Injectable} from '@angular/core';
 import {Observable} from "rxjs/Observable";
 declare var google;
 @Injectable()
-export class ChartLoaderService {
+export class DashboardLoaderService {
     private chartPackage: { [id: string]: string; } = {
         AreaChart: 'corechart',
         Bar: 'bar',

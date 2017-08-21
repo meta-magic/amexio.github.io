@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {ModuleWithProviders, NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {HttpModule} from "@angular/http";
 import {FormsModule} from "@angular/forms";
@@ -22,6 +22,7 @@ import {BubbleChartComponent} from "./bubblechart/bubble.chart.component";
 import {ScatterChartComponent} from "./scatterchart/scatter.chart.component";
 import {CandlestickChartComponent} from "./candlestickchart/candlestick.chart.component";
 import {CandlestickWaterfallChartComponent} from "./candlestickwaterfallchart/candlestickwaterfall.chart.component";
+import {ChartLoaderService} from "./chart.loader.service";
 
 export  * from "./chartlegend/chart.legend.component";
 export  * from  "./charttitle/chart.title.component";
@@ -42,6 +43,7 @@ export * from "./bubblechart/bubble.chart.component";
 export * from "./scatterchart/scatter.chart.component";
 export * from "./candlestickchart/candlestick.chart.component";
 export * from "./candlestickwaterfallchart/candlestickwaterfall.chart.component";
+export * from "./chart.loader.service";
 
 @NgModule({
   imports: [
@@ -65,8 +67,13 @@ export * from "./candlestickwaterfallchart/candlestickwaterfall.chart.component"
     TimeLineChartComponent,ComboChartComponent,VerticalAxisComponent,
     HorizontalAxisComponent,
     BubbleChartComponent,
-    ScatterChartComponent,CandlestickChartComponent,CandlestickWaterfallChartComponent],
+    ScatterChartComponent,CandlestickChartComponent,CandlestickWaterfallChartComponent]
 })
 export class AmexioChartModule {
-
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: AmexioChartModule,
+      providers: [ChartLoaderService]
+    };
+  }
 }

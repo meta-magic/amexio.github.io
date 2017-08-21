@@ -8,6 +8,7 @@ import {DataPointEastComponent} from './datapoints/east.component';
 import {DataPointNorthComponent} from './datapoints/north.component';
 import {DataPointSouthComponent} from './datapoints/south.component';
 import {DataPointWestComponent} from './datapoints/west.component';
+import {DashboardLoaderService} from "./chart.loader.service";
 
 export * from './dashboardtitle/dashboard.title.component';
 export * from './gaugechart/gauge.chart.component';
@@ -18,6 +19,7 @@ export * from './datapoints/east.component';
 export * from './datapoints/north.component';
 export * from './datapoints/south.component';
 export * from './datapoints/west.component';
+export * from "./chart.loader.service";
 
 @NgModule({
   imports: [
@@ -45,4 +47,10 @@ export * from './datapoints/west.component';
   ]
 })
 export class AmexioDashboardModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: AmexioDashboardModule,
+      providers: [DashboardLoaderService]
+    };
+  }
 }
