@@ -27,7 +27,8 @@ export * from "./map.loader.service";
     GeoChartComponent,
     TreeMapComponent,
     MapTitleComponent
-  ]
+  ],
+    providers:[MapLoaderService]
 })
 export class AmexioMapsModule {
     static forRoot(): ModuleWithProviders {

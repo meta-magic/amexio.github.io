@@ -44,7 +44,8 @@ export * from "./chart.loader.service";
     DataPointNorthComponent,
     DataPointSouthComponent,
     DataPointWestComponent
-  ]
+  ],
+  providers:[DashboardLoaderService]
 })
 export class AmexioDashboardModule {
   static forRoot(): ModuleWithProviders {

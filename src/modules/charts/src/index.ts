@@ -67,7 +67,8 @@ export * from "./chart.loader.service";
     TimeLineChartComponent,ComboChartComponent,VerticalAxisComponent,
     HorizontalAxisComponent,
     BubbleChartComponent,
-    ScatterChartComponent,CandlestickChartComponent,CandlestickWaterfallChartComponent]
+    ScatterChartComponent,CandlestickChartComponent,CandlestickWaterfallChartComponent],
+  providers:[ChartLoaderService]
 })
 export class AmexioChartModule {
   static forRoot(): ModuleWithProviders {
