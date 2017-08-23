@@ -142,7 +142,7 @@ export class GeoChartComponent implements AfterContentInit ,OnInit{
 
   @Input() datalessRegionColor:string;
 
-  @ContentChildren(MapProperties)  chartAreaComp:QueryList<MapProperties>;
+    @ContentChildren(MapProperties)  chartAreaComp:QueryList<MapProperties>;
 
   chartAreaArray:MapProperties[];
 
