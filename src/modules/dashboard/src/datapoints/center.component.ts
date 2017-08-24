@@ -13,7 +13,7 @@ import {
   selector: 'amexio-center',
   template: `
 
-    <div [attr.align]="contentalign" [style.background-color]="backgroundColor" [style.color]="fontColor" [style.width]="width" [style.height]="height">
+    <div [ngClass]="cClass" [attr.align]="contentalign" [style.background-color]="backgroundColor" [style.color]="fontColor" [style.width]="width" [style.height]="height">
       <ng-content></ng-content>
     </div>
 
@@ -33,6 +33,7 @@ export class DataPointCenterComponent implements OnInit{
 
   @Input() height : string;
 
+  @Input() cClass:string;
 
   constructor(){
   }
