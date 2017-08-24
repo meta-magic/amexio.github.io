@@ -35,7 +35,7 @@ import {Http} from "@angular/http";
                     </td>
                     <td (click)="onClick(row)" style="cursor: pointer;" >
                         <ng-container *ngIf="!bodyTemplate"> {{row[displayField]}}</ng-container>
-                        <template *ngIf="bodyTemplate" [ngTemplateOutlet]="bodyTemplate" [ngOutletContext]="{ row: row }"></template>
+                        <ng-template *ngIf="bodyTemplate" [ngTemplateOutlet]="bodyTemplate" [ngOutletContext]="{ row: row }"></ng-template>
                     </td>
                 </tr>
             </table>
