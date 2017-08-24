@@ -46,6 +46,7 @@ import {ListBoxComponent} from './listbox/listbox.component';
 import {NotifyComponent} from "./notify/notify.component";
 import {FieldSetComponent} from "./fildset/fieldset.component";
 import {FieldSetBodyComponent} from "./fildset/fieldsetbody.component";
+import {ImageComponent} from "./image/image.component";
 
 
 export * from './button/button.component';
@@ -110,6 +111,7 @@ export * from './notify/notify.component';
 
 export * from './fildset/fieldset.component';
 export * from './fildset/fieldsetbody.component';
+export * from "./image/image.component";
 
 
 @NgModule({
@@ -161,7 +163,8 @@ export * from './fildset/fieldsetbody.component';
     ListBoxComponent,
     NotifyComponent,
     FieldSetComponent,
-    FieldSetBodyComponent
+    FieldSetBodyComponent,
+    ImageComponent
   ],
   exports: [
     ButtonComponent,
@@ -206,7 +209,8 @@ export * from './fildset/fieldsetbody.component';
     ListBoxComponent,
     NotifyComponent,
     FieldSetComponent,
-    FieldSetBodyComponent
+    FieldSetBodyComponent,
+    ImageComponent
   ]
 })
 export class AmexioWidgetModule {

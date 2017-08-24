@@ -149,7 +149,7 @@ export class GeoChartComponent implements AfterContentInit ,OnInit{
   chartAreaComponent:MapProperties;
 
   constructor(private loader : MapLoaderService) {
-    this.id='amexio-map-geomap'+ Math.floor(Math.random()*90000) + 10000;
+    this.id='amexio-map-geo-chart'+ Math.floor(Math.random()*90000) + 10000;
     this.width='100%';
   }
   drawChart() {
