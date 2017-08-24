@@ -21,7 +21,7 @@ import {
         <div class="card-block">
           <ng-content select="amexio-pane-body"></ng-content>
         </div>
-        <div *ngIf="enableFooter" class="card-footer amexio-card-footer-float-right" >
+        <div *ngIf="enableFooter" class="card-footer " >
           <ng-content select="amexio-pane-action"></ng-content>
         </div>
       </div>
@@ -31,9 +31,6 @@ import {
   styles : [`
       .amexio-card-padding{
           padding: 2px;
-      }
-      .amexio-card-footer-float-right{
-          float: right;
       }
   `]
 })

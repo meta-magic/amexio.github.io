@@ -12,9 +12,9 @@ import {
 @Component({
   selector: 'amexio-pane-action',
   template: `
-
-    <ng-content></ng-content>
-
+    <div [ngClass]="actionCClass">
+        <ng-content></ng-content>
+    </div>
 
   `
 })
@@ -22,6 +22,8 @@ import {
 export class PaneActionComponent implements OnInit{
 
   @Input() visible : boolean;
+
+  @Input() actionCClass:string;
 
   constructor(){
     this.visible = true;

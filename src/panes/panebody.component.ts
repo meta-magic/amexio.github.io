@@ -12,8 +12,10 @@ import {
 @Component({
   selector: 'amexio-pane-body',
   template: `
-
-    <ng-content></ng-content>
+    <div [ngClass]="bodyCClass">
+        <ng-content></ng-content>
+    </div>
+   
 
 
   `
@@ -22,6 +24,8 @@ import {
 export class PaneBodyComponent implements OnInit{
 
   @Input() visible : boolean;
+
+  @Input() bodyCClass:string;
 
   constructor(){
     this.visible = true;

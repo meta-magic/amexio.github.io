@@ -12,9 +12,9 @@ import {
 @Component({
   selector: 'amexio-pane-header',
   template: `
-
-    <ng-content></ng-content>
-
+    <div [ngClass]="headerCClass">
+        <ng-content></ng-content>
+    </div>
 
   `
 })
@@ -22,6 +22,8 @@ import {
 export class PaneHeaderComponent implements OnInit{
 
   @Input() visible : boolean;
+
+  @Input() headerCClass:string;
 
   constructor(){
     this.visible = true;
