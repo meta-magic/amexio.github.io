@@ -13,13 +13,12 @@
 import {Component, Input, OnInit} from '@angular/core';
 
 
-
 @Component({
   selector: 'amexio-image',
   template: `    
     <!--Normal image-->
       <ng-container *ngIf="imagePath || (imagePath && imageClass)">
-        <img [src]="imagePath" [attr.class]="amexioStyleClass" >
+        <img [src]="imagePath" [attr.class]="cClass" >
       </ng-container>
       
       <!--this is for material design-->
@@ -41,7 +40,7 @@ export class ImageComponent implements OnInit {
 
   @Input() imageClass:string;
 
-  @Input() amexioStyleClass:string;
+  @Input() cClass:string;
 
   @Input() mdbClass:boolean;
 
