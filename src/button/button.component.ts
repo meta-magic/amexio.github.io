@@ -25,10 +25,11 @@ declare var $;
               <ng-container *ngIf="isLoading">
                 <i class="fa fa-refresh fa-spin " aria-hidden="true"></i>&nbsp;
               </ng-container>
-              {{label}}
+              
               <ng-container *ngIf="icon!=null">
                 <i [class]="iconStyleClass" aria-hidden="true"></i>                
               </ng-container>
+              {{label}}
           </button>
       </div>
   `,
