@@ -37,6 +37,8 @@ export class ColumnComponent {
     @Input()
     summaryCaption: string;
 
+    isColumnSort:boolean;
+
     @ContentChild('amexioHeaderTmpl') headerTemplate: TemplateRef<any>;
 
     @ContentChild('amexioBodyTmpl') bodyTemplate: TemplateRef<any>;

@@ -124,26 +124,20 @@ declare var $;
                     <td *ngIf="checkboxSelect" style="width: 10%">
                         <input type="checkbox" (click)="selectAllVisibleRows()">
                     </td>
-                    <td *ngFor="let cols of columns let index=index" [hidden]="cols.hidden">
-    <span style="cursor: pointer;" (click)="sortOnColHeaderClick(cols)">
+                    <td *ngFor="let cols of columns let index=index" [hidden]="cols.hidden" (click)="sortOnColHeaderClick(cols)">
+        
       <!-- If user hasnt embedded view -->
       <ng-container *ngIf="!cols?.headerTemplate"><b>{{cols.text}}</b></ng-container>
+        <!--for sorting icon of column-->
+        <ng-container *ngIf="this.sortBy==1 && cols.isColumnSort" >
+              <i class="fa fa-arrow-up" ></i>
+        </ng-container>
+        <ng-container *ngIf="this.sortBy==2 && cols.isColumnSort">
+              <i class="fa fa-arrow-down" ></i>
+        </ng-container>
+        
         <!--Check if user has embedded view inserted then -->
       <ng-template *ngIf="cols?.headerTemplate" [ngTemplateOutlet]="cols?.headerTemplate" [ngOutletContext]="{ $implicit: { header: cols.text } }"></ng-template>
-    </span>
-                        <span class="btn-group amexio-datatable-btngroup-span" role="group">
-      <span class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <span class="glyphicon glyphicon-triangle-bottom" style="color:#93a1a1"></span>
-      </span>
-      <div class="dropdown-menu dropdown-menu-right">
-        <button class="btn btn-link" (click)="setSortColumn(cols,1)">
-        <span class="glyphicon glyphicon glyphicon-sort-by-attributes pull-left"></span><span>&nbsp;Sort Ascending</span>
-        </button>
-        <button class="btn btn-link" (click)="setSortColumn(cols,2)">
-        <span class="glyphicon glyphicon glyphicon glyphicon-sort-by-attributes-alt pull-left"></span><span>&nbsp;Sort Descending</span>
-        </button>
-      </div>
-    </span>
                     </td>
                 </tr>
             </table>
@@ -542,7 +536,10 @@ export class DataTableComponent  implements OnInit, AfterContentInit, AfterViewI
         this.columns.forEach((opt) => {
             opt['filterIcon'] = false;
         });
-
+        /*------For column sorting flag --------*/
+        this.columns.forEach((opt) => {
+            opt['isColumnSort'] = false;
+        });
     }
 
     ngOnChanges(change: SimpleChanges) {
@@ -772,8 +769,14 @@ export class DataTableComponent  implements OnInit, AfterContentInit, AfterViewI
     }
 
     setSortColumn(sortCol: any, _sortBy: number) {
+        /*------set column sort false for other column--------*/
+        this.columns.forEach((opt) => {
+            opt['isColumnSort'] = false;
+        });
         this.sortBy = _sortBy;
         this.sortColumn = sortCol;
+        this.sortColumn.isColumnSort=true;
+
         this.sortData();
     }
 
