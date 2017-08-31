@@ -20,7 +20,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
     <ul class="amexio-navbarsubmenu-ul">
       <li *ngFor="let sm of subMenuData">
         <ng-container  *ngIf="sm.childrens">
-          <a class="amexio-navbarsubmenu-a" (click)="menuClick(sm)">
+          <a class="amexio-navbarsubmenu-a"  [ngClass]="sm.selected ? 'amexio-link-selected' : 'amexio-link-notselected'"   (click)="menuClick(sm)">
             <ng-container *ngIf="templates==null">
               {{sm.text}}
             </ng-container>
@@ -34,7 +34,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
         </ng-container>
         
         <ng-container  *ngIf="!sm.childrens">
-          <a class="amexio-navbarsubmenu-a" (click)="menuClick(sm)">
+          <a class="amexio-navbarsubmenu-a"  [ngClass]="sm.selected ? 'amexio-link-selected' : 'amexio-link-notselected'"   (click)="menuClick(sm)">
            <ng-container *ngIf="templates==null">
              {{sm.text}}
            </ng-container> 
@@ -58,6 +58,14 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
           text-decoration: none;
           color: #777;
           cursor:pointer;
+      }
+
+
+      .amexio-link-selected{
+
+      }
+      .amexio-link-notselected{
+
       }
   `]
 })
