@@ -195,12 +195,18 @@ export class TreeViewComponent implements  OnInit, AfterViewInit{
 
   getResponseData(httpResponse : any){
     let responsedata = httpResponse;
-    if ((this.dataReader && this.dataReader.length > 0)){
-      let dr = this.dataReader.split('.');
-      for (let ir = 0 ; ir < dr.length; ir++){
-        responsedata = responsedata[dr[ir]];
-      }
+    if(this.dataReader != null){
+        if ((this.dataReader && this.dataReader.length > 0)){
+            let dr = this.dataReader.split('.');
+            for (let ir = 0 ; ir < dr.length; ir++){
+                responsedata = responsedata[dr[ir]];
+            }
+        }
     }
+    else{
+        responsedata = httpResponse;
+    }
+
     return responsedata;
   }
     toggle(treeData : any){

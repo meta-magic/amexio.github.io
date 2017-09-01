@@ -175,11 +175,16 @@ export class RadioGroupComponent implements  OnInit{
 
     getResponseData(httpResponse : any){
         let responsedata = httpResponse;
-        let dr = this.dataReader.split(".");
-        if(dr!=null){
-            for(let ir = 0 ; ir<dr.length; ir++){
-                responsedata = responsedata[dr[ir]];
+        if(this.dataReader != null){
+            let dr = this.dataReader.split(".");
+            if(dr!=null){
+                for(let ir = 0 ; ir<dr.length; ir++){
+                    responsedata = responsedata[dr[ir]];
+                }
             }
+        }
+        else{
+            responsedata = httpResponse;
         }
 
         return responsedata;

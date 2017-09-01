@@ -305,10 +305,16 @@ export class TreeDataTableComponent implements  OnInit, AfterContentInit{
 
     getResponseData(httpResponse : any){
         let responsedata = httpResponse;
-        let dr = this.dataReader.split('.');
-        for (let ir = 0 ; ir < dr.length; ir++){
-            responsedata = responsedata[dr[ir]];
+        if(this.dataReader != null){
+            let dr = this.dataReader.split('.');
+            for (let ir = 0 ; ir < dr.length; ir++){
+                responsedata = responsedata[dr[ir]];
+            }
         }
+        else{
+            responsedata = httpResponse;
+        }
+
         return responsedata;
     }
 
