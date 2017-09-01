@@ -18,35 +18,35 @@ export const CHECK_COLUMN_SIZE = 'col-lg-';
 @Component({
     selector : 'amexio-checkbox',
     template: `
-      
-      <ng-container *ngIf="enableBoxStyle">
-        <div [attr.class]="divCss">
-          <label  *ngIf="fieldLabel" [attr.for]="elementId">{{fieldLabel}}</label>
-          <div class="" [ngClass]="{'row':column || column!='','list-group':!column ||column==''}">
-            <li class="list-group-item col-sm-12" *ngIf="searchBox"><span class="col-sm-12"><input [(ngModel)]="textValue" type="text" class="form-control" placeholder="Please select" (keyup)="filterData($event)"></span></li>
-            <li class="list-group-item" [ngClass]="calculatedColSize" *ngFor="let row of viewData">
-              <label class="form-check-label">
-                <input  type="checkbox" [checked]="row[valueField]"  (click)="setSelectedCheckBox(row, $event)"> {{row[displayField]}}
-              </label>
-            </li>
-          </div>
-        </div>
-      </ng-container>
 
-      <ng-container *ngIf="!enableBoxStyle">
-        <div [attr.class]="divCss">
-          <label  *ngIf="fieldLabel" [attr.for]="elementId">{{fieldLabel}}</label>
-          <div class="" [ngClass]="{'row':column || column!='','list-group':!column ||column==''}">
-            <span class="col-sm-12" *ngIf="searchBox"><span class="col-sm-12"><input [(ngModel)]="textValue" type="text" class="form-control" placeholder="Please select" (keyup)="filterData($event)"></span></span>
-            <span class="" [ngClass]="calculatedColSize" *ngFor="let row of viewData">
+        <ng-container *ngIf="enableBoxStyle">
+            <div [attr.class]="divCss">
+                <label  *ngIf="fieldLabel" [attr.for]="elementId">{{fieldLabel}}</label>
+                <div class="" [ngClass]="{'row':column || column!='','list-group':!column ||column==''}">
+                    <li class="list-group-item col-sm-12" *ngIf="searchBox"><span class="col-sm-12"><input [(ngModel)]="textValue" type="text" class="form-control" placeholder="Please select" (keyup)="filterData($event)"></span></li>
+                    <li class="list-group-item" [ngClass]="calculatedColSize" *ngFor="let row of viewData">
+                        <label class="form-check-label">
+                            <input  type="checkbox" [checked]="row[valueField]"  (click)="setSelectedCheckBox(row, $event)"> {{row[displayField]}}
+                        </label>
+                    </li>
+                </div>
+            </div>
+        </ng-container>
+
+        <ng-container *ngIf="!enableBoxStyle">
+            <div [attr.class]="divCss">
+                <label  *ngIf="fieldLabel" [attr.for]="elementId">{{fieldLabel}}</label>
+                <div class="" [ngClass]="{'row':column || column!='','list-group':!column ||column==''}">
+                    <span class="col-sm-12" *ngIf="searchBox"><span class="col-sm-12"><input [(ngModel)]="textValue" type="text" class="form-control" placeholder="Please select" (keyup)="filterData($event)"></span></span>
+                    <span class="" [ngClass]="calculatedColSize" *ngFor="let row of viewData">
               <label class="form-check-label">
                 <input  type="checkbox" [checked]="row[valueField]"  (click)="setSelectedCheckBox(row, $event)"> {{row[displayField]}}
               </label>
             </span>
-          </div>
-        </div>
-      </ng-container>
-  
+                </div>
+            </div>
+        </ng-container>
+
     `,
     providers : [CommonHttpService],
     styles : [`
@@ -54,33 +54,33 @@ export const CHECK_COLUMN_SIZE = 'col-lg-';
  A Style Sheet for all form inputs common used classes
  */
 
-/** Form Validations & Icon Positioning **/
-.has-feedback-custom {
-    position: relative;
-}
-.has-feedback-custom .form-control {
-    padding-right: 47.5px;
-}
+        /** Form Validations & Icon Positioning **/
+        .has-feedback-custom {
+            position: relative;
+        }
+        .has-feedback-custom .form-control {
+            padding-right: 47.5px;
+        }
 
-.form-control-feedback-custom {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 2;
-    display: block;
-    width: 38px;
-    height: 38px;
-    line-height: 38px;
-    text-align: center;
-    pointer-events: none;
-}
+        .form-control-feedback-custom {
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 2;
+            display: block;
+            width: 38px;
+            height: 38px;
+            line-height: 38px;
+            text-align: center;
+            pointer-events: none;
+        }
 
-.has-feedback-custom label ~ .form-control-feedback-custom {
-    top: 32px;
-}
-.has-feedback-custom label.sr-only ~ .form-control-feedback-custom {
-    top: 0;
-}
+        .has-feedback-custom label ~ .form-control-feedback-custom {
+            top: 32px;
+        }
+        .has-feedback-custom label.sr-only ~ .form-control-feedback-custom {
+            top: 0;
+        }
     `]
 })
 
@@ -150,23 +150,6 @@ export class CheckBoxGroup implements  OnInit{
         }
     }
 
-    ngAfterViewInit(){
-        /*  this.column = CHECK_COLUMN_SIZE+this.column;
-         if(this.httpMethod && this.httpUrl){
-         this.amxHttp.fetchData(this.httpUrl,this.httpMethod).subscribe(
-         response=>{
-         this.responseData = response.json();
-         },
-         error=>{
-         },
-         ()=>{
-         this.setData(this.responseData);
-         }
-         );
-         }else if(this.checkBoxGroupDownBindData){
-         this.setData(this.checkBoxGroupDownBindData);
-         }*/
-    }
 
     setData(httpResponse: any){
         this.data = this.getResponseData(httpResponse);
@@ -176,10 +159,16 @@ export class CheckBoxGroup implements  OnInit{
 
     getResponseData(httpResponse : any){
         let responsedata = httpResponse;
-        let dr = this.dataReader.split(".");
-        for(let ir = 0 ; ir<dr.length; ir++){
-            responsedata = responsedata[dr[ir]];
+        if(this.dataReader != null){
+            let dr = this.dataReader.split(".");
+            for(let ir = 0 ; ir<dr.length; ir++){
+                responsedata = responsedata[dr[ir]];
+            }
         }
+        else{
+            responsedata = httpResponse;
+        }
+
         return responsedata;
     }
 
