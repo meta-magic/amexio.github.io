@@ -16,33 +16,33 @@ import {CommonHttpService} from '../common.http.service';
 
 @Component({
     selector: 'amexio-carousel',
-    template: `      
+    template: `
         <div [attr.id]="elementId" [attr.class]="className" data-ride="carousel">
-          <ol class="carousel-indicators">
-            <li *ngFor="let scroll of viewData;let i =index"  [attr.data-target]="'#'+elementId" [attr.data-slide-to]="i" class="" [ngClass]="{'active':scroll.active}"></li>
-          </ol>
-          <div class="carousel-inner" role="listbox">
-            <div class="carousel-item" [ngClass]="{'active':scrollData.active}"  *ngFor="let scrollData of viewData">
-              <ng-container *ngIf="isContent">
-                <div [innerHTML]="scrollData.content"></div>
-              </ng-container>
-              <ng-container *ngIf="!isContent">
-                <img class="d-block img-fluid" [src]="scrollData.img" alt="First slide" style="width: 100%">
-                <div class="carousel-caption  d-md-block">
-                  <h3>{{scrollData.title}}</h3>
-                  <p>{{scrollData.caption}}</p>
+            <ol class="carousel-indicators">
+                <li *ngFor="let scroll of viewData;let i =index"  [attr.data-target]="'#'+elementId" [attr.data-slide-to]="i" class="" [ngClass]="{'active':scroll.active}"></li>
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                <div class="carousel-item" [ngClass]="{'active':scrollData.active}"  *ngFor="let scrollData of viewData">
+                    <ng-container *ngIf="isContent">
+                        <div [innerHTML]="scrollData.content"></div>
+                    </ng-container>
+                    <ng-container *ngIf="!isContent">
+                        <img class="d-block img-fluid" [src]="scrollData.img" alt="First slide" style="width: 100%">
+                        <div class="carousel-caption  d-md-block">
+                            <h3>{{scrollData.title}}</h3>
+                            <p>{{scrollData.caption}}</p>
+                        </div>
+                    </ng-container>
                 </div>
-              </ng-container>
             </div>
-          </div>
-          <a class="carousel-control-prev" [attr.href]="'#'+elementId" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" [attr.href]="'#'+elementId" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
+            <a class="carousel-control-prev" [attr.href]="'#'+elementId" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" [attr.href]="'#'+elementId" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
     `,
     providers:[CommonHttpService]
@@ -95,9 +95,14 @@ export class CarouselComponent implements OnInit {
     }
     setData(httpResponse: any) {
         let responsedata = httpResponse;
-        const dr = this.dataReader.split('.');
-        for (let ir = 0 ; ir < dr.length; ir++) {
-            responsedata = responsedata[dr[ir]];
+        if(this.dataReader != null){
+            const dr = this.dataReader.split('.');
+            for (let ir = 0 ; ir < dr.length; ir++) {
+                responsedata = responsedata[dr[ir]];
+            }
+        }
+        else {
+            responsedata = httpResponse;
         }
         this.viewData = responsedata;
     }
