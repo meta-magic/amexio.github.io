@@ -172,13 +172,19 @@ export class ItemSelectorComponent implements OnInit, AfterViewInit {
   }
   setData(httpResponse: any) {
     let responsedata = httpResponse;
-    const dr = this.dataReader.split('.');
-    for (let ir = 0 ; ir < dr.length; ir++) {
-      responsedata = responsedata[dr[ir]];
+    if(this.dataReader != null){
+      const dr = this.dataReader.split('.');
+      for (let ir = 0 ; ir < dr.length; ir++) {
+        responsedata = responsedata[dr[ir]];
+      }
+      responsedata.forEach((option: any, index: any) => {
+        option['isSelected'] = false;
+      });
     }
-    responsedata.forEach((option: any, index: any) => {
-      option['isSelected'] = false;
-    });
+    else{
+      responsedata = httpResponse;
+    }
+
     this.availableData = responsedata;
   }
 

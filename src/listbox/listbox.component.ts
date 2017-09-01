@@ -16,6 +16,7 @@ import {
     TemplateRef
 } from '@angular/core';
 import {Http} from "@angular/http";
+import {CommonHttpService} from "../common.http.service";
 
 
 
@@ -60,6 +61,10 @@ export class ListBoxComponent implements OnInit{
 
     @Output() rowClick : any = new EventEmitter<any>();
 
+    @Input() httpUrl: string;
+
+    @Input() httpMethod: string;
+
     @ContentChild('amexioBodyTmpl') bodyTemplate: TemplateRef<any>;
 
     viewData : any[];
@@ -70,7 +75,9 @@ export class ListBoxComponent implements OnInit{
 
     selectedData : any[];
 
-    constructor(private _http : Http){
+    response : any;
+
+    constructor(private _http : Http,private listBoxService: CommonHttpService){
         this.filter = false;
         this.enableCheckbox = false;
         this.selectedData = [];
@@ -78,18 +85,33 @@ export class ListBoxComponent implements OnInit{
 
 
     ngOnInit(){
-        if(this.data){
+      if (this.httpMethod && this.httpUrl) {
+        this.listBoxService.fetchData(this.httpUrl, this.httpMethod).subscribe(
+          response => {
+            this.response = response.json();
+          },
+          error => {
+          },
+          () => {
+            this.setData(this.response);
+          }
+        );
+      }
+        else if(this.data){
             this.setData(this.data);
         }
-
-        console.log(this.viewData);
     }
 
     setData(httpResponse : any){
         let responsedata = httpResponse;
-        let dr = this.dataReader.split(".");
-        for(let ir = 0 ; ir<dr.length; ir++){
+        if(this.dataReader != null){
+          let dr = this.dataReader.split(".");
+          for(let ir = 0 ; ir<dr.length; ir++){
             responsedata = responsedata[dr[ir]];
+          }
+        }
+        else{
+          responsedata = httpResponse;
         }
         this.viewData = responsedata;
         this.orgData = JSON.parse(JSON.stringify(this.viewData));

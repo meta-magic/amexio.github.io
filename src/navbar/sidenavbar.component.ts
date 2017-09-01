@@ -7,7 +7,7 @@
  *
  * http://www.apache.org/licenses/LICENSE-2.0
  *
- * Created by Ketan Gote on 7/4/17. 
+ * Created by Ketan Gote on 7/4/17.
  */
 
 import {
@@ -288,12 +288,18 @@ export class SideNavBarComponent implements OnInit, AfterViewInit {
 
   getData(httpResponse: any) {
     let responsedata = httpResponse;
-    if ((this.dataReader && this.dataReader.length > 0)) {
-      let dr = this.dataReader.split('.');
-      for (let ir = 0 ; ir < dr.length; ir++) {
-        responsedata = responsedata[dr[ir]];
+    if(this.dataReader != null){
+      if ((this.dataReader && this.dataReader.length > 0)) {
+        let dr = this.dataReader.split('.');
+        for (let ir = 0 ; ir < dr.length; ir++) {
+          responsedata = responsedata[dr[ir]];
+        }
       }
     }
+    else {
+      responsedata = httpResponse;
+    }
+
     return responsedata;
   }
 
