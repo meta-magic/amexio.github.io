@@ -16,7 +16,7 @@ import {Component, Input, OnInit} from '@angular/core';
   selector: 'amexio-progress-bar',
   template : `
 
-      <div class="amexio-progress" *ngIf="showProgress">
+      <div class="progress" *ngIf="showProgress">
           <div class="progress-bar progress-bar-striped {{progressType !=null ? 'bg-'+progressType : ''}} active" role="progressbar" [attr.aria-valuenow]="currentValue" [attr.aria-valuemin]="minValue" [attr.aria-valuemax]="maxValue" [style.width.%]="infinteMode ? 100 : this.currentValue">
               <span>{{infinteMode ? displayText : currentValue+'%'}}<span class="dotdotdot"></span></span>
           </div>
@@ -24,7 +24,7 @@ import {Component, Input, OnInit} from '@angular/core';
 
   `,
     styles : [`
-        .amexio-progress {
+        .progress {
             margin: 15px;
         }
 
