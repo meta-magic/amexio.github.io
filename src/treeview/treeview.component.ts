@@ -26,7 +26,7 @@ import {CommonHttpService} from '../common.http.service';
             </div>
         </div>
 
-        <ul class="amexio-treeview-ul" *ngIf="data.length > 0">
+        <ul [ngClass]="cClass" class="amexio-treeview-ul" *ngIf="data.length > 0">
             <li style="cursor: pointer" *ngFor="let treeData of data">
                 <div >
                     <span class="fa " [ngClass]="{'fa-minus': treeData.expanded, 'fa-plus': (!treeData.expanded && treeData.children)}" (click)="toggle(treeData)"> </span>
@@ -137,6 +137,8 @@ export class TreeViewComponent implements  OnInit, AfterViewInit{
     @ContentChild('amexioTreeTemplate')   parentTmp : TemplateRef<any>;
 
     @Output() onTreeNodeChecked : any = new EventEmitter<any>();
+
+    @Input() cClass:string;
 
     data : any[] = [];
 

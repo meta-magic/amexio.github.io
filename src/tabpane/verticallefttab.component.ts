@@ -13,7 +13,7 @@ declare var $: any;
 @Component({
   selector: 'amexio-vertical-left-tab-pane',
   template : `
-    <table>
+    <table [ngClass]="cClass" >
       <tr>
         <td [attr.width]="tabwidth" valign="top">
           <ul [ngClass]="tapPosition">
@@ -90,6 +90,8 @@ export class VerticalLeftTabPaneComponent implements OnInit, AfterViewInit, Afte
   @Input() verticalText: boolean;
 
   @Input() tabwidth : string;
+
+  @Input() cClass:string;
 
   @ContentChildren(TabComponent)  queryTabs: QueryList<TabComponent>;
 

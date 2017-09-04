@@ -23,7 +23,7 @@ import {CommonHttpService} from "../common.http.service";
   selector: 'amexio-tree-filter-view',
   template : `
 
-      <div class="col-lg-12">
+      <div [ngClass]="cClass" class="col-lg-12">
           <div class="col-lg-12">
             <div class="input-group">
               <input type="text" class="form-control" aria-label="Text input with dropdown button" [(ngModel)]="filterText"  placeholder="Search" (keyup)="filterData()">
@@ -78,6 +78,8 @@ export class FilterTreeViewComponent implements OnInit, AfterViewInit{
 
   @Input()
   triggerChar: number;
+
+  @Input() cClass:string;
 
   treeData: any;
 

@@ -8,7 +8,7 @@ declare var $: any;
   selector: 'amexio-tab-pane',
   template : `
 
-    <div [attr.id]="elementId" (window:resize)="onResize($event)">
+    <div [ngClass]="cClass" [attr.id]="elementId" (window:resize)="onResize($event)">
     <div (click)="leftClick()" class="amexio-tabpane-scroller amexio-tabpane-scroller-left" >
       <span class="amexio-tabpane-hide-span"  [attr.id]="'left-'+elementId"><i class="fa fa-caret-left fa-2x" aria-hidden="true"></i></span>
     </div>
@@ -89,6 +89,8 @@ export class TabPaneComponent implements OnInit, AfterContentInit, AfterViewInit
   @Input() closable: boolean;
 
   @Input() tapPosition: string;
+
+  @Input() cClass:string;
 
   @ContentChildren(TabComponent)  queryTabs: QueryList<TabComponent>;
 

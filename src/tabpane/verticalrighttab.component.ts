@@ -13,7 +13,7 @@ declare var $: any;
 @Component({
   selector: 'amexio-vertical-right-tab-pane',
   template : `
-    <table>
+    <table [ngClass]="cClass">
       <tr>
         <td valign="top">
           <div class="amexio-verticalrighttab-td-padding">
@@ -91,6 +91,8 @@ export class VerticalRightTabPaneComponent implements OnInit, AfterViewInit, Aft
   @Input() verticalText: boolean;
 
   @Input() tabwidth: string;
+
+  @Input() cClass:string;
 
   @ContentChildren(TabComponent)  queryTabs: QueryList<TabComponent>;
 
