@@ -23,7 +23,7 @@ import {CommonHttpService} from "../common.http.service";
 @Component({
     selector: 'amexio-listbox',
     template : `
-        <div style="padding: 10px;" >
+        <div [ngClass]="cClass" style="padding: 10px;" >
             <table class="list-group">
                 <tr *ngIf="(filter == true)" class="list-group-item">
                     <td colspan="2" width="90%">
@@ -64,6 +64,8 @@ export class ListBoxComponent implements OnInit{
     @Input() httpUrl: string;
 
     @Input() httpMethod: string;
+
+    @Input() cClass:string;
 
     @ContentChild('amexioBodyTmpl') bodyTemplate: TemplateRef<any>;
 
