@@ -74,6 +74,8 @@ export class ButtonComponent implements OnInit , OnChanges, AfterViewInit {
 
   @Input()   popoverPlacement: string;
 
+  @Input() cClass:string;
+
   btnStyleClass: string;
 
   iconStyleClass: string;
@@ -92,7 +94,11 @@ export class ButtonComponent implements OnInit , OnChanges, AfterViewInit {
   }
 
   ngOnInit() {
-    this.btnStyleClass = 'btn ';
+    if(this.cClass){
+      this.btnStyleClass = this.cClass+'  btn ';
+    }else{
+      this.btnStyleClass = 'btn ';
+    }
     this.btnSizeStyleClass = '';
     if (this.type.toLocaleLowerCase() === 'warning') {
       this.btnStyleClass = this.btnStyleClass + 'btn-warning';

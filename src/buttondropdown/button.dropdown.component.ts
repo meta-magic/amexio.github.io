@@ -47,6 +47,8 @@ export class ButtonDropdownComponent implements OnInit, AfterContentInit {
 
   @Input()    size: string;
 
+    @Input() cClass:string;
+
   dropdownItemData: any[];
 
   elementId: any;
@@ -63,7 +65,11 @@ export class ButtonDropdownComponent implements OnInit, AfterContentInit {
   }
 
   ngOnInit() {
-    this.btnStyleClass = 'btn ';
+      if(this.cClass){
+          this.btnStyleClass = this.cClass+' btn ';
+      }else{
+          this.btnStyleClass = 'btn ';
+      }
    this.btnDropdownStyle = 'dropdown-toggle dropdown-toggle-split';
     if (this.type !== '' || this.type != null) {
       if (this.type === 'warning') {
