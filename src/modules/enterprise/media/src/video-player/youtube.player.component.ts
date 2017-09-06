@@ -1,7 +1,7 @@
 /**
  * Created by pratik on 28/8/17.
  */
-import {Component, EventEmitter, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {DomSanitizer} from "@angular/platform-browser";
 declare var $;
 @Component({
