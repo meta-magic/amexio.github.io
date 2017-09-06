@@ -1,0 +1,28 @@
+{
+  "name": "media",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/username/repo"
+  },
+  "author": {
+    "name": "DatsGawas",
+    "email": "dattaram.gawas@metamagic.in"
+  },
+  "keywords": [
+    "angular"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/username/repo/issues"
+  },
+  "main": "media.umd.js",
+  "module": "media.js",
+  "jsnext:main": "media.js",
+  "typings": "media.d.ts",
+  "peerDependencies": {
+    "@angular/core": "^4.0.0",
+    "rxjs": "^5.1.0",
+    "zone.js": "^0.8.4"
+  }
+}

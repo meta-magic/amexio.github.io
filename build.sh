@@ -18,6 +18,9 @@ cd ../maps/ && npm run build
 
 echo "Finished Building Dashboard Library"
 
+cd ../enterprise/media/ && npm run build
+
+echo "Finished Building Media Library"
+
 echo "************* Completed Building All Amexio Extension *************"
 
-cd ../../../dist/ && npm pack
