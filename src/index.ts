@@ -47,6 +47,8 @@ import {NotifyComponent} from "./notify/notify.component";
 import {FieldSetComponent} from "./fildset/fieldset.component";
 import {FieldSetBodyComponent} from "./fildset/fieldsetbody.component";
 import {ImageComponent} from "./image/image.component";
+import {StepBlockComponent} from "./steps/step-block";
+import {StepsComponent} from "./steps/steps.component";
 
 
 export * from './button/button.component';
@@ -64,7 +66,8 @@ export * from './radiogroup/radiogroup.component';
 export * from './ratinginput/ratinginput.component';
 export * from './textareainput/textareainput.component';
 export * from './typeahead/autocomplete.component';
-
+export * from "./steps/step-block";
+export * from "./steps/steps.component";
 /*Button exports*/
 export * from './buttongroup/buttongroup.action.component'
 export * from './buttongroup/buttongroup.component';
@@ -164,7 +167,9 @@ export * from "./image/image.component";
     NotifyComponent,
     FieldSetComponent,
     FieldSetBodyComponent,
-    ImageComponent
+    ImageComponent,
+    StepBlockComponent,
+    StepsComponent
   ],
   exports: [
     ButtonComponent,
@@ -210,7 +215,9 @@ export * from "./image/image.component";
     NotifyComponent,
     FieldSetComponent,
     FieldSetBodyComponent,
-    ImageComponent
+    ImageComponent,
+    StepBlockComponent,
+    StepsComponent
   ]
 })
 export class AmexioWidgetModule {
