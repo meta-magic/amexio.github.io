@@ -39,7 +39,6 @@
   <div class="right-arrow" [attr.id]="elementId+'rightarrow'" style="cursor: pointer"> <div [ngClass]="{'controls' : carouselStyle=='horizontal','controls-v' : carouselStyle=='vertical'}" (click)="rightClick();"><i class="fa fa-chevron-right fa-2x" aria-hidden="true"></i></div></div>
 </div>
 
-
 <div [attr.id]="elementId+'carousel-detail-content'" class="collapse" *ngIf="hasDetail">
 
       <amexio-ee-content [bgImgUrl]="currentDetailsImagePath"
