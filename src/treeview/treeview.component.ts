@@ -103,6 +103,7 @@ import {CommonHttpService} from '../common.http.service';
     }
     .amexio-treeview-ul{
         list-style-type: none;
+        padding-left: 0px;
     }`]
 })
 
