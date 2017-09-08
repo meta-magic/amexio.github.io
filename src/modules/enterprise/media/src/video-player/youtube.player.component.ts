@@ -33,6 +33,10 @@ declare var $;
             cursor: pointer;
             padding-left: 98%;color:gray;background: radial-gradient(ellipse at top right,rgba(0,0,0,.4) 0,rgba(0,0,0,0)70%,rgba(0,0,0,0) 100%);
         }
+        .close-button i:hover{
+            color: red;
+            cursor: pointer;
+        }
     `]
 })
 
