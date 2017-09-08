@@ -52,7 +52,6 @@ export class AmexioYoutubePlayerComponent implements OnInit {
     }
 
     routeBackToApp() {
-        debugger;
         this.onCloseVideoPlayer.emit(this.videoId);
     }
 }

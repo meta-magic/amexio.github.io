@@ -3,19 +3,18 @@ import { CommonModule } from '@angular/common';
 import {ContentComponent} from './mediacontents/content.component';
 import {HttpModule} from '@angular/http';
 import {FormsModule} from '@angular/forms';
-/*import { BrowserAnimationsModule } from '@angular/platform-browser/animations';*/
 import {ButtonMediaComponent} from './button/button.component';
 import {RatingMediaComponent} from './ratingmedia/ratingmedia.component';
 
 import {AmexioYoutubePlayerComponent} from './video-player/youtube.player.component';
+import {MultiMediaCarousel} from "./multi-item-carousel/media.ee.carousel.component";
 
 
 
 export * from './mediacontents/content.component';
 export * from './button/button.component';
 export * from './ratingmedia/ratingmedia.component';
-/*export * from './multicarousel/amexio.multicarousel.component';
-export * from './video-player/youtube.player.component';*/
+export * from './multi-item-carousel/media.ee.carousel.component';
 
 @NgModule({
   imports: [
@@ -27,7 +26,8 @@ export * from './video-player/youtube.player.component';*/
     ContentComponent,
     ButtonMediaComponent,
     RatingMediaComponent,
-    AmexioYoutubePlayerComponent
+    AmexioYoutubePlayerComponent,
+    MultiMediaCarousel
   ],
   exports: [
     ContentComponent,
