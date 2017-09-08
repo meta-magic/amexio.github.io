@@ -5,42 +5,54 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {DomSanitizer} from "@angular/platform-browser";
 declare var $;
 @Component({
- selector: 'amexio-ee-youtube-player',
- template: `
-   <div style="background-color: #666666">
-     <div class="pull-right" style="cursor: pointer;" (click)="routeBackToApp()">
-       <i class="fa fa-times fa-2x"  aria-hidden="true"></i>
-     </div>
-     <div class="text-center">
-       <iframe height="98%" width="98%" 
-               style="position: absolute; top: 0; right: 0; bottom: 0; left: 0;padding-top: 30px;padding-left: 30px"
-               [src]="url" frameborder="0"
-               allowfullscreen>
-         
-       </iframe>
-     </div>
-   </div>
- `
+    selector: 'amexio-ee-youtube-player',
+    template: `
+        <div >
+      <span  class="close-button">
+        <i class="fa fa-times fa-lg" (click)="routeBackToApp()" aria-hidden="true"></i>
+      </span>
+            <div class="text-center">
+                <iframe  [height]="height" width="98%"
+                         style="position: absolute; top: 0; right: 0; bottom: 0; left: 0;padding-top: 30px;padding-left: 30px"
+                         [src]="url" frameborder="0"
+                         allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    `,
+    styles:[`
+        .close-button{
+            cursor: pointer;
+            padding-left: 98%;color:gray;background: radial-gradient(ellipse at top right,rgba(0,0,0,.4) 0,rgba(0,0,0,0)70%,rgba(0,0,0,0) 100%);
+        }
+    `]
 })
 
 export class AmexioYoutubePlayerComponent implements OnInit {
 
-  name:string;
-  baseUrl:string = 'https://www.youtube.com/embed/';
-  url: any;
+    name: string;
+    baseUrl: string = 'https://www.youtube.com/embed/';
+    url: any;
 
-  @Input()  videoId: string;
+    @Input()  videoId: string;
 
-  @Output() closeVideo: any = new EventEmitter<any>();
+    @Input() height: any;
 
-  constructor(private sanitizer: DomSanitizer) {
+    @Output() onCloseVideoPlayer: EventEmitter<any>= new EventEmitter<any>();
 
-  }
+    constructor(private sanitizer: DomSanitizer) {
 
-   ngOnInit() {
-     this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.baseUrl + this.videoId);
-   }
-  routeBackToApp() {
-    this.closeVideo.emit(this.videoId);
-  }
+    }
+
+    ngOnInit() {
+        if (this.height == null || this.height === 'undefined') {
+            this.height = '98%' ;
+        }
+        this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.baseUrl + this.videoId);
+    }
+
+    routeBackToApp() {
+        debugger;
+        this.onCloseVideoPlayer.emit(this.videoId);
+    }
 }

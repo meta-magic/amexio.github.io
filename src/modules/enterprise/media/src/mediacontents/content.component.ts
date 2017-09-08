@@ -12,7 +12,7 @@ declare var $;
       </span>
           <div class="col-lg-6 col-sm-12 content-area" style="color: white;padding-left: 30px;">
               <span class="title">{{title}}</span><br>
-              <span class="subtitle"><span class="match">{{matchPercentage}} Match</span> {{releaseYear}} <span class="age">{{ageLimit}}+</span> {{seasonNo}} Season</span><br>
+              <span class="subtitle"><span class="match" *ngIf="matchPercentage">{{matchPercentage}} Match</span> {{releaseYear}} <span class="age" *ngIf="ageLimit">{{ageLimit}}</span> {{seasonNo}}</span><br>
               {{description}}<br>
 
               <ng-container *ngIf="contents">
