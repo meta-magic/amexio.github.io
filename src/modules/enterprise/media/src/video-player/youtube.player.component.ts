@@ -1,8 +1,16 @@
-/**
- * Created by pratik on 28/8/17.
+/*
+ * Copyright 2016-2017 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Author - Pratik Kelwalkar
+ *
  */
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {DomSanitizer} from "@angular/platform-browser";
 declare var $;
 @Component({
     selector: 'amexio-ee-youtube-player',
@@ -31,16 +39,14 @@ declare var $;
 export class AmexioYoutubePlayerComponent implements OnInit {
 
     name: string;
-    baseUrl: string = 'https://www.youtube.com/embed/';
-    url: any;
 
-    @Input()  videoId: string;
+    @Input()  url: string;
 
-    @Input() height: any;
+    @Input()  height: any;
 
     @Output() onCloseVideoPlayer: EventEmitter<any>= new EventEmitter<any>();
 
-    constructor(private sanitizer: DomSanitizer) {
+    constructor() {
 
     }
 
@@ -48,10 +54,9 @@ export class AmexioYoutubePlayerComponent implements OnInit {
         if (this.height == null || this.height === 'undefined') {
             this.height = '98%' ;
         }
-        this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.baseUrl + this.videoId);
     }
 
     routeBackToApp() {
-        this.onCloseVideoPlayer.emit(this.videoId);
+        this.onCloseVideoPlayer.emit(this.url);
     }
 }

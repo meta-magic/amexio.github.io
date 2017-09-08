@@ -33,7 +33,8 @@ export * from './multi-item-carousel/media.ee.carousel.component';
     ContentComponent,
     ButtonMediaComponent,
     RatingMediaComponent,
-    AmexioYoutubePlayerComponent
+    AmexioYoutubePlayerComponent,
+    MultiMediaCarousel
   ]
 })
 export class AmexioMediaModule {
