@@ -22,7 +22,7 @@
     "strictMetadataEmit": true,
     "skipTemplateCodegen": true,
     "flatModuleOutFile": "media.js",
-    "flatModuleId": "media"
+    "flatModuleId": "amexio-ng-extensions/enterprise/media"
   },
   "files": [
     "./index.ts"
