@@ -15,6 +15,7 @@ export * from './mediacontents/content.component';
 export * from './button/button.component';
 export * from './ratingmedia/ratingmedia.component';
 export * from './multi-item-carousel/media.ee.carousel.component';
+export * from './video-player/youtube.player.component';
 
 @NgModule({
   imports: [
