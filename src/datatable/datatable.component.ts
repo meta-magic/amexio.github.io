@@ -13,7 +13,7 @@
 
 import {
     Input, OnInit, forwardRef, Component, ContentChildren, QueryList, AfterContentInit, Output, EventEmitter,
-    SimpleChanges, AfterViewChecked, OnDestroy, ChangeDetectorRef, AfterViewInit, OnChanges
+    SimpleChanges, AfterViewChecked, OnDestroy, ChangeDetectorRef, AfterViewInit, OnChanges, DoCheck
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR} from '@angular/forms';
 import {ColumnComponent} from './column.component';
@@ -330,7 +330,7 @@ declare var $;
 
 })
 
-export class DataTableComponent  implements OnInit, AfterContentInit, AfterViewInit, OnChanges {
+export class DataTableComponent  implements OnInit, AfterContentInit, DoCheck {
 
     @Input() title: string;
 
@@ -406,6 +406,8 @@ export class DataTableComponent  implements OnInit, AfterContentInit, AfterViewI
 
     rowId : any;
 
+    previousValue : any;
+
     @ContentChildren(ColumnComponent) columnRef: QueryList<ColumnComponent>;
     constructor(private dataTableSevice: CommonHttpService, private cd: ChangeDetectorRef) {
         this.pageNumbers = [];
@@ -439,12 +441,15 @@ export class DataTableComponent  implements OnInit, AfterContentInit, AfterViewI
                 }
             );
         } else if (this.dataTableBindData) {
+            this.previousValue = JSON.parse(JSON.stringify(this.dataTableBindData));
             this.setData(this.dataTableBindData);
         }
     }
 
-    ngAfterViewInit() {
-
+    ngDoCheck(){
+        if(this.previousData.toString() != this.dataTableBindData.toString()){
+            this.setData(this.dataTableBindData);
+        }
     }
 
 
@@ -542,14 +547,7 @@ export class DataTableComponent  implements OnInit, AfterContentInit, AfterViewI
         });
     }
 
-    ngOnChanges(change: SimpleChanges) {
-        if (change['dataTableBindData']) {
-            const data: any = change['dataTableBindData'].currentValue;
-            if (data) {
-                this.setData(data);
-            }
-        }
-    }
+
 
     setData(httpResponse: any) {
         this.data = this.getResponseData(httpResponse);
