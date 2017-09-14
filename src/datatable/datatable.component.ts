@@ -23,7 +23,7 @@ import {
     EventEmitter,
     SimpleChanges,
     ChangeDetectorRef,
-    AfterViewInit,
+    DoCheck,
     OnChanges
 } from '@angular/core';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
@@ -451,7 +451,7 @@ declare var $;
 
 })
 
-export class DataTableComponent implements OnInit, AfterContentInit, AfterViewInit, OnChanges {
+export class DataTableComponent implements OnInit, AfterContentInit, DoCheck, OnChanges {
 
     @Input() title: string;
 
@@ -535,6 +535,8 @@ export class DataTableComponent implements OnInit, AfterContentInit, AfterViewIn
 
     headerCheckboxId: string;
 
+    previousData : any;
+
     @ContentChildren(ColumnComponent) columnRef: QueryList<ColumnComponent>;
 
     constructor(private dataTableSevice: CommonHttpService, private cd: ChangeDetectorRef) {
@@ -563,6 +565,7 @@ export class DataTableComponent implements OnInit, AfterContentInit, AfterViewIn
                 this.responseData = response.json();
             }, error => {
             }, () => {
+                this.previousData = JSON.parse(JSON.stringify(this.dataTableBindData));
                 this.setData(this.responseData);
             });
         } else if (this.dataTableBindData) {
@@ -570,8 +573,11 @@ export class DataTableComponent implements OnInit, AfterContentInit, AfterViewIn
         }
     }
 
-    ngAfterViewInit() {
-
+    ngDoCheck(){
+        if(JSON.stringify(this.previousData) != JSON.stringify(this.dataTableBindData)){
+            this.previousData = JSON.parse(JSON.stringify(this.dataTableBindData));
+            this.setData(this.dataTableBindData);
+        }
     }
 
 
