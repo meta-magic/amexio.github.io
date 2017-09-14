@@ -23,8 +23,7 @@ import {
   EventEmitter,
   SimpleChanges,
   ChangeDetectorRef,
-  AfterViewInit,
-  OnChanges
+  OnChanges, DoCheck
 } from '@angular/core';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {ColumnComponent} from './column.component';
@@ -75,6 +74,7 @@ declare var $;
             <input [attr.id]="headerCheckboxId+i" class="amexio-checkbox" type="checkbox"
             (click)="setColumnVisiblity(cols.dataIndex)" [attr.checked]="!cols.hidden ? true: null"> 
             <label [attr.for]="headerCheckboxId+i">{{cols.text + " "}}</label> 
+            </label>
             </label>
             </a>
             </div>
@@ -451,7 +451,7 @@ declare var $;
 
 })
 
-export class DataTableComponent implements OnInit, AfterContentInit, AfterViewInit, OnChanges {
+export class DataTableComponent implements OnInit, AfterContentInit, DoCheck, OnChanges {
 
   @Input() title: string;
 
@@ -535,6 +535,8 @@ export class DataTableComponent implements OnInit, AfterContentInit, AfterViewIn
 
   headerCheckboxId: string;
 
+  previousData : any;
+
   @ContentChildren(ColumnComponent) columnRef: QueryList<ColumnComponent>;
 
   constructor(private dataTableSevice: CommonHttpService, private cd: ChangeDetectorRef) {
@@ -566,12 +568,16 @@ export class DataTableComponent implements OnInit, AfterContentInit, AfterViewIn
         this.setData(this.responseData);
       });
     } else if (this.dataTableBindData) {
+      this.previousData = JSON.parse(JSON.stringify(this.dataTableBindData));
       this.setData(this.dataTableBindData);
     }
   }
 
-  ngAfterViewInit() {
-
+  ngDoCheck(){
+    if(JSON.stringify(this.previousData) != JSON.stringify(this.dataTableBindData)){
+      this.previousData = JSON.parse(JSON.stringify(this.dataTableBindData));
+      this.setData(this.dataTableBindData);
+    }
   }
 
 
