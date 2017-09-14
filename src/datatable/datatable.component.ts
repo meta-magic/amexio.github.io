@@ -448,7 +448,7 @@ export class DataTableComponent  implements OnInit, AfterContentInit, DoCheck {
 
     ngDoCheck(){
         if(this.previousValue.toString() != this.dataTableBindData.toString()){
-            this.previousData = JSON.parse(JSON.stringify(this.dataTableBindData));
+            this.previousValue = JSON.parse(JSON.stringify(this.dataTableBindData));
             this.setData(this.dataTableBindData);
         }
     }
