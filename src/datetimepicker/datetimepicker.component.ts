@@ -21,9 +21,11 @@ declare var jQuery : any;
 @Component({
   selector: 'amexio-date-time-picker',
   template: `
-    <div class="form-inline ng2-datetime">
-      <label [attr.for]="idDatePicker">{{fieldLabel}}</label>
-      <div [ngClass]="{ 'form-group': true, 'input-group': !datepickerOptions.hideIcon, 'date': true }">
+    <div class=" ng2-datetime form-group">
+      <ng-container *ngIf="fieldLabel">
+        <label class="control-label" [attr.for]="idDatePicker">{{fieldLabel}}</label>
+      </ng-container>
+      <div [ngClass]="{ 'input-group': !datepickerOptions.hideIcon, 'date': true }">
         <input id="{{idDatePicker}}" type="text" class="form-control"
                [attr.readonly]="readonly"
                [attr.required]="required"
@@ -38,7 +40,7 @@ declare var jQuery : any;
           <i class="fa fa-calendar" aria-hidden="true"></i>
         </div>
       </div>
-      <div [ngClass]="{ 'form-group': true, 'input-group': !timepickerOptions.hideIcon, 'bootstrap-timepicker timepicker': true }">
+      <div [ngClass]="{ 'input-group': !timepickerOptions.hideIcon, 'bootstrap-timepicker timepicker': true }">
         <input id="{{idTimePicker}}" type="text" class="form-control input-small"
                [attr.readonly]="readonly"
                [attr.required]="required"
@@ -69,7 +71,6 @@ export class DateTimeComponent implements ControlValueAccessor, AfterViewInit, O
   @Input() required: boolean;
   @Input() tabindex: string;
   @Input()   fieldLabel: string;
-
   date: Date; // ngModel
   dateModel: string;
   timeModel: string;

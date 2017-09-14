@@ -36,7 +36,7 @@ export const BASE_IMPL_AUTO_COMPLETE : any = {
 @Component({
   selector: 'amexio-typeahead',
   template : `    
-    <div class="dropdown" data-toggle="dropdown" [ngClass]="{'show': showDropDown}">
+    <div class="form-group dropdown amexio-typeahead " data-toggle="dropdown" [ngClass]="{'show': showDropDown}">
       <div class="row">
           <div class="col-lg-12">
               <label [attr.for]="elementId">{{fieldLabel}}</label>
@@ -94,6 +94,9 @@ export const BASE_IMPL_AUTO_COMPLETE : any = {
       .has-feedback-custom label.sr-only ~ .form-control-feedback-custom {
           top: 0;
       }
+      .amexio-typeahead{
+        
+      }
     `
   ]
 })
@@ -111,6 +114,8 @@ export class TypeAheadComponent extends FormInputBase  implements OnInit, AfterV
   @Input()  key: any;
 
   @Input()  triggerChar: number;
+
+  @Input() placeholder:string;
 
   data: any;
 
@@ -241,16 +246,10 @@ export class TypeAheadComponent extends FormInputBase  implements OnInit, AfterV
 
   getResponseData(httpResponse : any){
     let responsedata = httpResponse;
-    if(this.dataReader != null){
-        let dr = this.dataReader.split(".");
-        for(let ir = 0 ; ir<dr.length; ir++){
-            responsedata = responsedata[dr[ir]];
-        }
+    let dr = this.dataReader.split(".");
+    for(let ir = 0 ; ir<dr.length; ir++){
+      responsedata = responsedata[dr[ir]];
     }
-    else{
-        responsedata = httpResponse;
-    }
-
     return responsedata;
   }
 

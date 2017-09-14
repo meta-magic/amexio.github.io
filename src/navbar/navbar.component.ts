@@ -176,18 +176,12 @@ export class NavbarComponent implements OnInit, AfterViewInit {
 
   getData(httpResponse: any) {
     let responsedata = httpResponse;
-    if(this.dataReader != null){
-      if ((this.dataReader && this.dataReader.length > 0)) {
-        let dr = this.dataReader.split('.');
-        for (let ir = 0 ; ir < dr.length; ir++) {
-          responsedata = responsedata[dr[ir]];
-        }
+    if ((this.dataReader && this.dataReader.length > 0)) {
+      let dr = this.dataReader.split('.');
+      for (let ir = 0 ; ir < dr.length; ir++) {
+        responsedata = responsedata[dr[ir]];
       }
     }
-    else {
-      responsedata = httpResponse;
-    }
-
     return responsedata;
   }
 

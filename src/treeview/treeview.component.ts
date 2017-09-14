@@ -25,11 +25,16 @@ import {CommonHttpService} from '../common.http.service';
             <div class="loading-mask amexio-treeview-loadingmask" >
             </div>
         </div>
-
-        <ul [ngClass]="cClass" class="amexio-treeview-ul" *ngIf="data.length > 0">
+        
+        <ul class="amexio-treeview-ul" *ngIf="data.length > 0">
             <li style="cursor: pointer" *ngFor="let treeData of data">
                 <div >
-                    <span class="fa " [ngClass]="{'fa-minus': treeData.expanded, 'fa-plus': (!treeData.expanded && treeData.children)}" (click)="toggle(treeData)"> </span>
+                    <ng-container *ngIf="(!treeData.expanded && treeData.children)">
+                      <span style="vertical-align: top;font-size: 20px;" (click)="toggle(treeData)">&#x2795;</span>
+                    </ng-container>
+                  <ng-container *ngIf="treeData.expanded">
+                    <span style="vertical-align: top;font-size: 20px;" (click)="toggle(treeData)">&#x2796;</span>
+                  </ng-container>
                     <span *ngIf="enableCheckBox">
                     <input type="checkbox" [checked]="'checked'?treeData.checked:null" (click)="emitCheckedData(treeData)"/>                    
                   </span>
@@ -139,8 +144,6 @@ export class TreeViewComponent implements  OnInit, AfterViewInit{
 
     @Output() onTreeNodeChecked : any = new EventEmitter<any>();
 
-    @Input() cClass:string;
-
     data : any[] = [];
 
     lazyNode : any;
@@ -198,18 +201,12 @@ export class TreeViewComponent implements  OnInit, AfterViewInit{
 
   getResponseData(httpResponse : any){
     let responsedata = httpResponse;
-    if(this.dataReader != null){
-        if ((this.dataReader && this.dataReader.length > 0)){
-            let dr = this.dataReader.split('.');
-            for (let ir = 0 ; ir < dr.length; ir++){
-                responsedata = responsedata[dr[ir]];
-            }
-        }
+    if ((this.dataReader && this.dataReader.length > 0)){
+      let dr = this.dataReader.split('.');
+      for (let ir = 0 ; ir < dr.length; ir++){
+        responsedata = responsedata[dr[ir]];
+      }
     }
-    else{
-        responsedata = httpResponse;
-    }
-
     return responsedata;
   }
     toggle(treeData : any){
