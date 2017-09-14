@@ -43,7 +43,7 @@ declare var $: any;
 
         <div class="dropdown">
 
-            <button class="btn btn-secondary "  [style.width]="width" type="button" [attr.id]="elementId" data-toggle="dropdown"
+            <button [attr.disabled] = "disabled ? true: null" class="btn btn-secondary "  [style.width]="width" type="button" [attr.id]="elementId" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                 <ng-container *ngIf="multiSelect">
                     <span style="float: left;"> {{value != null || '' ? getMultiDisplayField(value) : placeholder}}</span>
@@ -90,6 +90,8 @@ export class DropDownComponent extends FormInputBase implements OnInit, ControlV
     @Input()    data : any;
 
     @Input()    multiSelect : boolean;
+
+    @Input()    disabled: boolean;
     /*
      @Input()    maxMultiSelect : string;
 
