@@ -11,7 +11,7 @@
  *
  */
 
-import {OnInit, SimpleChange, Input, Output, EventEmitter, Component} from '@angular/core';
+import {OnInit, Input, Output, EventEmitter, Component, DoCheck} from '@angular/core';
 import {CommonHttpService} from '../common.http.service';
 
 export const CHECK_COLUMN_SIZE = 'col-lg-';
@@ -93,9 +93,9 @@ export const CHECK_COLUMN_SIZE = 'col-lg-';
     `]
 })
 
-export class CheckBoxGroup implements  OnInit{
+export class CheckBoxGroup implements  OnInit, DoCheck {
 
-    @Input() enableBoxStyle: boolean = false;
+    @Input() enableBoxStyle = false;
 
     @Input() fieldLabel : string;
 
@@ -111,9 +111,9 @@ export class CheckBoxGroup implements  OnInit{
 
     @Input() valueField : string;
 
-    @Input()  searchBox :boolean;
+    @Input()  searchBox : boolean;
 
-    @Input() checkBoxGroupDownBindData : any;
+    @Input()  checkBoxGroupBindData : any;
 
     @Input()    column: string;
 
@@ -135,79 +135,70 @@ export class CheckBoxGroup implements  OnInit{
 
     responseData : any;
 
+    previousValue : any;
 
     constructor(private amxHttp: CommonHttpService) {
-        this.elementId = 'check-box-group-'+ Math.floor(Math.random()*90000) + 10000;
+        this.elementId = 'check-box-group-' + Math.floor(Math.random() * 90000) + 10000;
         this.selectedCheckBox = [];
-        this.divCss="amexio-checkbox-group";
+        this.divCss = 'amexio-checkbox-group';
     }
 
     ngOnInit() {
-        this.calculatedColSize = CHECK_COLUMN_SIZE+this.column;
-        if(this.httpMethod && this.httpUrl){
-            this.amxHttp.fetchData(this.httpUrl,this.httpMethod).subscribe(
-                response=>{
+        this.calculatedColSize = CHECK_COLUMN_SIZE + this.column;
+        if (this.httpMethod && this.httpUrl) {
+            this.amxHttp.fetchData(this.httpUrl, this.httpMethod).subscribe(
+                response => {
                     this.responseData = response.json();
                 },
-                error=>{
+                error => {
                 },
-                ()=>{
+                () => {
                     this.setData(this.responseData);
                 }
             );
-        }else if(this.checkBoxGroupDownBindData){
-            this.setData(this.checkBoxGroupDownBindData);
+        }else if (this. checkBoxGroupBindData) {
+            this.previousValue = JSON.parse(JSON.stringify(this.checkBoxGroupBindData));
+            this.setData(this. checkBoxGroupBindData);
         }
     }
 
-    ngAfterViewInit(){
-        /*  this.column = CHECK_COLUMN_SIZE+this.column;
-         if(this.httpMethod && this.httpUrl){
-         this.amxHttp.fetchData(this.httpUrl,this.httpMethod).subscribe(
-         response=>{
-         this.responseData = response.json();
-         },
-         error=>{
-         },
-         ()=>{
-         this.setData(this.responseData);
-         }
-         );
-         }else if(this.checkBoxGroupDownBindData){
-         this.setData(this.checkBoxGroupDownBindData);
-         }*/
+    ngDoCheck() {
+        if (JSON.stringify(this.previousValue) != JSON.stringify(this.checkBoxGroupBindData)) {
+            this.previousValue = JSON.parse(JSON.stringify(this.checkBoxGroupBindData));
+            this.setData(this.checkBoxGroupBindData);
+        }
     }
 
     setData(httpResponse: any){
         this.data = this.getResponseData(httpResponse);
         this.viewData = this.getResponseData(httpResponse);
-        let viewDataWithIdArray:any[]=[];
+        let viewDataWithIdArray: any[] = [];
         this.viewData.forEach(
-          (viewDataObject)=>{
-            viewDataObject.id='checkbox' + Math.floor(Math.random()*90000) + 10000;
+          (viewDataObject) => {
+            viewDataObject.id = 'checkbox' + Math.floor(Math.random() * 90000) + 10000;
             viewDataWithIdArray.push(viewDataObject);
           }
         );
-        this.viewData=[];
-        this.viewData=viewDataWithIdArray;
+        this.viewData = [];
+        this.viewData = viewDataWithIdArray;
     }
 
 
-    getResponseData(httpResponse : any){
+    getResponseData(httpResponse: any) {
         let responsedata = httpResponse;
-        let dr = this.dataReader.split(".");
-        for(let ir = 0 ; ir<dr.length; ir++){
+        let dr = this.dataReader.split('.');
+        for (let ir = 0 ; ir < dr.length; ir++){
             responsedata = responsedata[dr[ir]];
         }
         return responsedata;
     }
 
-    filterData(event : any){
-        if(this.textValue.length>0){
+    filterData(event: any) {
+        if (this.textValue.length > 0){
             this.viewData = [];
-            for(let vd = 0 ; vd<this.data.length;vd++){
+            for (let vd = 0 ; vd < this.data.length; vd++){
                 let displayData = this.data[vd][this.displayField];
-                if(displayData.toLowerCase().startsWith(this.textValue)){
+                if (displayData.toLowerCase().startsWith(this.textValue)){
                     this.viewData.push(this.data[vd]);
                 }
             }
@@ -217,11 +208,10 @@ export class CheckBoxGroup implements  OnInit{
 
     }
 
-    setSelectedCheckBox(rowData:any, event:any){
-        if(event.currentTarget.checked){
+    setSelectedCheckBox(rowData: any, event: any){
+        if (event.currentTarget.checked){
             this.selectedCheckBox.push(rowData);
-        }
-        else{
+        } else {
             let indexOf = this.selectedCheckBox.indexOf(rowData);
             delete this.selectedCheckBox[indexOf];
         }
@@ -232,8 +222,8 @@ export class CheckBoxGroup implements  OnInit{
     emitSelectedRows(){
         let sRows = [];
       let cloneSelectedChecks = JSON.parse(JSON.stringify(this.selectedCheckBox));
-        for(let sr=0; sr<cloneSelectedChecks.length;sr++){
-            if(cloneSelectedChecks[sr]){
+        for (let sr = 0; sr < cloneSelectedChecks.length; sr++) {
+            if (cloneSelectedChecks[sr]) {
                 //remove id from selected value
                 delete cloneSelectedChecks[sr].id;
                 sRows.push(cloneSelectedChecks[sr]);
