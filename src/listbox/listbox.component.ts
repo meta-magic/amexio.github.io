@@ -16,38 +16,67 @@ import {
     TemplateRef
 } from '@angular/core';
 import {Http} from "@angular/http";
-import {CommonHttpService} from "../common.http.service";
 
 
 
 @Component({
     selector: 'amexio-listbox',
     template : `
-        <div [ngClass]="cClass" style="padding: 10px;" >
-            <table class="list-group">
-                <tr *ngIf="(filter == true)" class="list-group-item">
-                    <td colspan="2" width="90%">
-                        <input type="text" class="form-control"  [(ngModel)]="filterText"  placeholder="Search" (keyup)="filterData()">
-                    </td>
-                </tr>
-                <tr class="list-group-item" *ngFor="let row of viewData let rowno = index ">
-                    <td *ngIf="(enableCheckbox == true)" style="padding: 10px; ">
-                        <input type="checkbox" (click)="selectedCheckBox($event,rowno,row)"/>
-                    </td>
-                    <td (click)="onClick(row)" style="cursor: pointer;" >
-                        <ng-container *ngIf="!bodyTemplate"> {{row[displayField]}}</ng-container>
-                        <ng-template *ngIf="bodyTemplate" [ngTemplateOutlet]="bodyTemplate" [ngOutletContext]="{ row: row }"></ng-template>
-                    </td>
-                </tr>
-            </table>
+
+        <div class="amexio-listbox">
+            <ul  class="list-group amexio-listbox-list">
+                <li  *ngIf="(filter == true)"  class="list-group-item amexio-listbox-list-item amexio-listbox-search">
+                    <input type="text" class="form-control"  [(ngModel)]="filterText"  [placeholder]="searchPlaceHolder" (keyup)="filterData()">
+                </li>
+                <li class="list-group-item  amexio-listbox-list-item" *ngFor="let row of viewData let rowno = index ">
+                    <div>
+                <span *ngIf="(enableCheckbox == true)">
+                  <input type="checkbox" (click)="selectedCheckBox($event,rowno,row)"/>
+                </span>
+                    </div>
+                    <div>
+                <span (click)="onClick(row)" >
+                    <ng-container *ngIf="!bodyTemplate"> {{row[displayField]}}</ng-container>
+                    <template *ngIf="bodyTemplate" [ngTemplateOutlet]="bodyTemplate" [ngOutletContext]="{ row: row }"></template>
+                </span>
+                    </div>
+                </li>
+            </ul>
         </div>
+
+
     `
+
+    ,
+
+    styles:[
+            `
+            .amexio-listbox{
+
+            }
+
+            .amexio-listbox-list{
+
+            }
+
+            .amexio-listbox-list-item{
+
+            }
+
+            .amexio-listbox-search{
+
+            }
+
+        `
+    ]
 
 })
 export class ListBoxComponent implements OnInit{
 
 
     @Input() enableCheckbox : boolean;
+
+    @Input() searchPlaceHolder: string;
 
     @Input() filter : boolean;
 
@@ -61,12 +90,6 @@ export class ListBoxComponent implements OnInit{
 
     @Output() rowClick : any = new EventEmitter<any>();
 
-    @Input() httpUrl: string;
-
-    @Input() httpMethod: string;
-
-    @Input() cClass:string;
-
     @ContentChild('amexioBodyTmpl') bodyTemplate: TemplateRef<any>;
 
     viewData : any[];
@@ -77,43 +100,25 @@ export class ListBoxComponent implements OnInit{
 
     selectedData : any[];
 
-    response : any;
-
-    constructor(private _http : Http,private listBoxService: CommonHttpService){
+    constructor(private _http : Http){
         this.filter = false;
         this.enableCheckbox = false;
         this.selectedData = [];
+        this.searchPlaceHolder = "Search";
     }
 
 
     ngOnInit(){
-      if (this.httpMethod && this.httpUrl) {
-        this.listBoxService.fetchData(this.httpUrl, this.httpMethod).subscribe(
-          response => {
-            this.response = response.json();
-          },
-          error => {
-          },
-          () => {
-            this.setData(this.response);
-          }
-        );
-      }
-        else if(this.data){
+        if(this.data){
             this.setData(this.data);
         }
     }
 
     setData(httpResponse : any){
         let responsedata = httpResponse;
-        if(this.dataReader != null){
-          let dr = this.dataReader.split(".");
-          for(let ir = 0 ; ir<dr.length; ir++){
+        let dr = this.dataReader.split(".");
+        for(let ir = 0 ; ir<dr.length; ir++){
             responsedata = responsedata[dr[ir]];
-          }
-        }
-        else{
-          responsedata = httpResponse;
         }
         this.viewData = responsedata;
         this.orgData = JSON.parse(JSON.stringify(this.viewData));

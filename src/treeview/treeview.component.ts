@@ -28,40 +28,44 @@ import {CommonHttpService} from '../common.http.service';
 
         <ul class="amexio-treeview-ul" *ngIf="data.length > 0">
             <li style="cursor: pointer" *ngFor="let treeData of data">
-                <div >
+                <div class="d-flex">
                     <ng-container *ngIf="(!treeData.expanded && treeData.children)">
-                        <span style="vertical-align: top;font-size: 20px;" (click)="toggle(treeData)">&#x2795;</span>
+                        <span class="amexio-treeview-navigation-icons" (click)="toggle(treeData)">&#x2795;</span>
                     </ng-container>
                     <ng-container *ngIf="treeData.expanded">
-                        <span style="vertical-align: top;font-size: 20px;" (click)="toggle(treeData)">&#x2796;</span>
+                        <span class="amexio-treeview-navigation-icons"  (click)="toggle(treeData)">&#x2796;</span>
                     </ng-container>
                     <span *ngIf="enableCheckBox">
-                    <input type="checkbox" [checked]="'checked'?treeData.checked:null" (click)="emitCheckedData(treeData)"/>                    
-                  </span>
-                    <label style="cursor: pointer" (click)="emitData(treeData)">
+                         <input type="checkbox" [checked]="'checked'?treeData.checked:null" (click)="emitCheckedData(treeData)"/>                    
+                      </span>
+                    <span [ngClass]="(treeData.selected && !treeData.children)? 'amexio-treeview-node-selected' : 'amexio-treeview-node'" (click)="emitData(treeData)">
                         <ng-container *ngIf="templates == null">
-                            {{treeData.text}}
+                          <label >{{treeData.text}}</label>
                         </ng-container>
                         <ng-template *ngIf="templates != null" [ngTemplateOutlet]="parentTmp" [ngOutletContext]="{ $implicit: { text: treeData.text } , icon: treeData.icon,node : treeData }"></ng-template>
-                    </label>
-
+                      </span>
                 </div>
                 <div *ngIf="treeData.expanded && treeData.expanded  == true">
                     <ul class="amexio-treeview-ul">
-                        <li class="amexio-node-padding" *ngFor="let leaf of treeData.children">
-                            <div>
-                                <span class="fa " [ngClass]="{'fa-minus': leaf.expanded, 'fa-plus': (!leaf.expanded && leaf.children)}" (click)="toggle(leaf)"> </span>
+                        <li style="cursor: pointer" *ngFor="let leaf of treeData.children">
+                            <div class="d-flex">
+                                <ng-container *ngIf="(!leaf.expanded && leaf.children)">
+                                    <span class="amexio-treeview-navigation-icons" (click)="toggle(leaf)">&#x2795;</span>
+                                </ng-container>
+                                <ng-container *ngIf="leaf.expanded">
+                                    <span class="amexio-treeview-navigation-icons"  (click)="toggle(leaf)">&#x2796;</span>
+                                </ng-container>
 
                                 <span *ngIf="enableCheckBox"><input type="checkbox" [checked]="'checked'?leaf.checked:null" (click)="emitCheckedData(leaf)"/></span>
 
-                                <label (click)="emitData(leaf)">
-                                    <ng-container *ngIf="templates == null">{{ leaf.text }}</ng-container>
+                                <span [ngClass]="(leaf.selected && !leaf.children)? 'amexio-treeview-node-selected' : 'amexio-treeview-node'" (click)="emitData(leaf)">
+                                    <ng-container *ngIf="templates == null"><label>{{leaf.text}}</label></ng-container>
                                     <ng-template *ngIf="templates != null" [ngTemplateOutlet]="parentTmp" [ngOutletContext]="{ $implicit: { text: leaf.text }, icon: leaf.icon, node : leaf }"></ng-template>
-                                </label>
+                              </span>
 
                             </div>
 
-                            <div *ngIf="leaf.expanded && leaf.expanded  == true" class="amexio-node-padding">
+                            <div *ngIf="leaf.expanded && leaf.expanded  == true">
                                 <amexio-tree-view [dataTableBindData]="leaf" [dataReader]="'children'" (selectedRecord)="setSelectedRecord($event)" [templates]="templates" (onTreeNodeChecked)="this.onTreeNodeCheck($event)" [enableCheckBox]="enableCheckBox"></amexio-tree-view>
                             </div>
                         </li>
@@ -74,6 +78,41 @@ import {CommonHttpService} from '../common.http.service';
     styles : [`/**
  A Style Sheet for all form inputs common used classes
  */
+
+
+    .amexio-treeview-node{
+        width: 100%;
+    }
+
+    .amexio-treeview-node:hover{
+        color: #ffffff;
+        background-color: #dddddd;
+    }
+
+    .amexio-treeview-node-selected{
+        width: 100%;
+        color: #ffffff;
+        background-color: #dddddd;
+    }
+
+    .amexio-treeview-navigation-icons{
+        vertical-align: middle;
+        font-size: 20px;
+        padding-left: 10px;
+    }
+
+    .amexio-treeview-loadingmask{
+        height: 300px;
+        width: 400px;
+    }
+    .amexio-treeview-ul{
+        list-style-type: none;
+        padding-left: 1px;
+    }
+
+    .amexio-treeview-ul li div ul{
+        padding-left: 10px;
+    }
 
     /** Form Validations & Icon Positioning **/
     .has-feedback-custom {
@@ -96,24 +135,15 @@ import {CommonHttpService} from '../common.http.service';
         pointer-events: none;
     }
 
-    .amexio-node-padding{
-        cursor: pointer;padding-left: 20px;
-    }
-
     .has-feedback-custom label ~ .form-control-feedback-custom {
         top: 32px;
     }
     .has-feedback-custom label.sr-only ~ .form-control-feedback-custom {
         top: 0;
     }
-    .amexio-treeview-loadingmask{
-        height: 300px;
-        width: 400px;
-    }
-    .amexio-treeview-ul{
-        list-style-type: none;
-        padding-left: 0px;
-    }`]
+
+
+    `]
 })
 
 export class TreeViewComponent implements  OnInit, AfterViewInit{
@@ -211,8 +241,6 @@ export class TreeViewComponent implements  OnInit, AfterViewInit{
                 responsedata = responsedata[dr[ir]];
             }
         }
-        else
-            responsedata = httpResponse;
         return responsedata;
     }
     toggle(treeData : any){
@@ -243,11 +271,13 @@ export class TreeViewComponent implements  OnInit, AfterViewInit{
         }
     }
     setSelectedRecord(treeData : any){
+
         this.emitData(treeData);
     }
 
     emitData(treeData : any){
         this.selectedRecord.emit(JSON.parse(JSON.stringify(treeData)));
+        this.resetSelected(this.data, treeData.text);
     }
 
     emitCheckedData(checkedData : any){
@@ -299,6 +329,23 @@ export class TreeViewComponent implements  OnInit, AfterViewInit{
 
     onTreeNodeCheck(data : any){
         this.onTreeNodeChecked.emit(this.data);
+    }
+
+    resetSelected(data: any[], text:string) {
+        for (let ir = 0 ; ir < data.length; ir++) {
+
+            if(data[ir].text === "Sample Form"){
+
+            }
+            if(data[ir].text === text){
+                data[ir].selected = true;
+            }else{
+                data[ir].selected = false;
+            }
+            if(data[ir].children){
+                this.resetSelected(data[ir].children, text);
+            }
+        }
     }
 }
 
