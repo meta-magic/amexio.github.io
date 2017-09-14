@@ -87,9 +87,9 @@ export const CHECK_COLUMN_SIZE = 'col-lg-';
 .has-feedback-custom label.sr-only ~ .form-control-feedback-custom {
     top: 0;
 }
-      .amexio-checkbox-group{  
+      /*.amexio-checkbox-group{  
         margin: 12px 0;float: left;
-      }
+      }*/
     `]
 })
 
@@ -140,7 +140,7 @@ export class CheckBoxGroup implements  OnInit, DoCheck {
     constructor(private amxHttp: CommonHttpService) {
         this.elementId = 'check-box-group-' + Math.floor(Math.random() * 90000) + 10000;
         this.selectedCheckBox = [];
-        this.divCss = 'amexio-checkbox-group';
+       // this.divCss = 'amexio-checkbox-group';
     }
 
     ngOnInit() {
