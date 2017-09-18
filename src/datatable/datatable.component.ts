@@ -565,10 +565,10 @@ export class DataTableComponent implements OnInit, AfterContentInit, DoCheck, On
                 this.responseData = response.json();
             }, error => {
             }, () => {
-                this.previousData = JSON.parse(JSON.stringify(this.dataTableBindData));
                 this.setData(this.responseData);
             });
         } else if (this.dataTableBindData) {
+            this.previousData = JSON.parse(JSON.stringify(this.dataTableBindData));
             this.setData(this.dataTableBindData);
         }
     }

@@ -95,10 +95,10 @@ import {CommonHttpService} from "../common.http.service";
           border:1px solid #333333;
       }
       .amexio-link-selected{
-        
+
       }
       .amexio-link-notselected{
-        
+
       }
       .amexio-sidenavbar-sidenavleft {
           height: 100%;
