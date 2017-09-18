@@ -22,7 +22,7 @@ import {CommonHttpService} from "../common.http.service";
   selector: 'amexio-sidemenubar',
   template: `
 
-      <div [style.margin-top]="toPosition" [ngClass]="{'amexio-sidenavbar-sidenavleft':!right, 'amexio-sidenavbar-sidenavright':right}"  [attr.id]="elementId" (mouseleave)="expanded?null:closeNav()">
+      <div [style.margin-top]="toPosition" [ngClass]="{'amexio-sidenavbar-sidenavleft':!right, 'amexio-sidenavbar-sidenavright':right}"  [attr.id]="elementId" (mouseleave)="expanded?null:closeNav()" class="scrollbar">
           <ul class="navbar-nav">
             <li *ngIf="filter==true">
                 <div class="amexio-sidenavbar-filter">
@@ -72,6 +72,28 @@ import {CommonHttpService} from "../common.http.service";
           text-decoration: none;
       }
 
+
+      .scrollbar{
+          background-color:lightgray;
+      }
+
+      .scrollbar::-webkit-scrollbar{
+          width: 9px;
+          background-color:#eaeaea;
+      }
+
+      .scrollbar::-webkit-scrollbar-thumb{
+          background-color:#c3c3c3;
+          border-radius:10px;
+      }
+      .scrollbar::-webkit-scrollbar-thumb:hover{
+          background-color::#c3c3c3;
+          border:1px solid #333333;
+      }
+      .scrollbar::-webkit-scrollbar-thumb:active{
+          background-color::#c3c3c3;
+          border:1px solid #333333;
+      }
       .amexio-link-selected{
         
       }
