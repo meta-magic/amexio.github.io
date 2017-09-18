@@ -29,8 +29,8 @@ import {CommonHttpService} from "../common.http.service";
                     <input type="text" class="form-control amexio-sidenavbar-input-width" [(ngModel)]="filterText"  placeholder="Search" (keyup)="filterData()" />
                 </div>
             </li>
-              <li class="nav-item" *ngFor="let header of menus ">
-                  <a class="nav-link amexio-sidenavbar-nav-link-a" [ngClass]="(header.selected && !header.childrens)? 'amexio-link-selected' : 'amexio-link-notselected'" (click)="expandNode(header)">
+              <li class="nav-item" *ngFor="let header of menus;let i = index;">
+                  <a class="nav-link amexio-sidenavbar-nav-link-a" [ngClass]="(header.selected && !header.childrens)? 'amexio-link-selected' : 'amexio-link-notselected'" (click)="expandNode(header)" data-toggle="collapse" [attr.data-target]="'#'+i+elementId+'sub-menu'" aria-expanded="false" [attr.aria-controls]="i+elementId+'sub-menu'">
                       <ng-container *ngIf="headerTemplate==null">{{header.text}}</ng-container>
 
                       <ng-template *ngIf="headerTemplate!=null" [ngTemplateOutlet]="headerTemplate" [ngOutletContext]="{ $implicit: {}, navHeader:header }"></ng-template>
@@ -38,7 +38,7 @@ import {CommonHttpService} from "../common.http.service";
                       <span *ngIf="header.childrens " class="amexio-sidenavbar-child-header fa" [ngClass]="{'fa-angle-up':header.expand,'fa-angle-down':!header.expand}"></span>
                   </a>
                   <ng-container *ngIf="header.childrens && header.expand">
-                      <div [ngStyle]="header.hstyle" >
+                      <div class="collapse" [attr.id]="i+elementId+'sub-menu'">
                           <ul>
                               <li *ngFor="let level1Menu of header.childrens">
                                   <a (click)="menuClick(level1Menu)" [ngClass]="(level1Menu.selected && !level1Menu.childrens)? 'amexio-link-selected' : 'amexio-link-notselected'" >
