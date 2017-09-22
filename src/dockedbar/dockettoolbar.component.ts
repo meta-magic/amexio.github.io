@@ -21,7 +21,6 @@ import {DockbarComponent} from "./dockbaritem";
 @Component({
   selector: 'amexio-dockbar',
   template : `
-    <div style="background-color: #0c7cd5">
     <div class="amexio-dockbar">
       <ng-container *ngFor="let dockbar of dockbarArray">
         <button [ngClass]="{'active':dockbar.active}" (click)="onClick(dockbar)">
@@ -56,7 +55,6 @@ import {DockbarComponent} from "./dockbaritem";
     <div class="amexio-dockbar-item">
       <ng-content></ng-content>
     </div>
-    </div> 
   `,
   styles:[
     `      
@@ -127,7 +125,7 @@ export class DockedBarToolComponent implements OnInit{
     const tabs = this.dockbarArray;
     tabs.forEach(tab => {
       tab.active = false;
-      if (tab.name == event.name) {
+      if (tab.elementId == event.elementId) {
         tab.active = true;
       }
     });
