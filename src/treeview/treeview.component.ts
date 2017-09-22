@@ -27,8 +27,8 @@ import {CommonHttpService} from '../common.http.service';
         </div>
 
         <ul class="amexio-treeview-ul" *ngIf="data.length > 0">
-            <li style="cursor: pointer" *ngFor="let treeData of data">
-                <div class="d-flex">
+            <li style="cursor: pointer" *ngFor="let treeData of data" >
+                <div class="d-flex" style="padding-left: 10px;">
                     <ng-container *ngIf="(!treeData.expanded && treeData.children)">
                         <span class="amexio-treeview-navigation-icons" (click)="toggle(treeData)">&#x2795;</span>
                     </ng-container>
@@ -45,10 +45,10 @@ import {CommonHttpService} from '../common.http.service';
                         <ng-template *ngIf="templates != null" [ngTemplateOutlet]="parentTmp" [ngOutletContext]="{ $implicit: { text: treeData.text } , icon: treeData.icon,node : treeData }"></ng-template>
                       </span>
                 </div>
-                <div *ngIf="treeData.expanded && treeData.expanded  == true">
+                <div *ngIf="treeData.expanded && treeData.expanded  == true" >
                     <ul class="amexio-treeview-ul">
                         <li style="cursor: pointer" *ngFor="let leaf of treeData.children">
-                            <div class="d-flex">
+                            <div class="d-flex" style="padding-left: 20px;">
                                 <ng-container *ngIf="(!leaf.expanded && leaf.children)">
                                     <span class="amexio-treeview-navigation-icons" (click)="toggle(leaf)">&#x2795;</span>
                                 </ng-container>
@@ -79,7 +79,6 @@ import {CommonHttpService} from '../common.http.service';
  A Style Sheet for all form inputs common used classes
  */
 
-
     .amexio-treeview-node{
         width: 100%;
     }
@@ -107,13 +106,14 @@ import {CommonHttpService} from '../common.http.service';
     }
     .amexio-treeview-ul{
         list-style-type: none;
-        padding-left: 1px;
+        padding-left: 10px;
     }
-
+    .amexio-treeview-ul li{
+        padding-left: 20px;
+    }
     .amexio-treeview-ul li div ul{
         padding-left: 10px;
     }
-
     /** Form Validations & Icon Positioning **/
     .has-feedback-custom {
         position: relative;

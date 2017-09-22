@@ -49,6 +49,8 @@ import {FieldSetBodyComponent} from "./fildset/fieldsetbody.component";
 import {ImageComponent} from "./image/image.component";
 import {StepBlockComponent} from "./steps/step-block";
 import {StepsComponent} from "./steps/steps.component";
+import {DockedBarToolComponent} from "./dockedbar/dockettoolbar.component";
+import {DockbarComponent} from "./dockedbar/dockbaritem";
 
 
 export * from './button/button.component';
@@ -68,6 +70,9 @@ export * from './textareainput/textareainput.component';
 export * from './typeahead/autocomplete.component';
 export * from "./steps/step-block";
 export * from "./steps/steps.component";
+export * from "./dockedbar/dockettoolbar.component";
+export * from "./dockedbar/dockbaritem";
+
 /*Button exports*/
 export * from './buttongroup/buttongroup.action.component'
 export * from './buttongroup/buttongroup.component';
@@ -169,7 +174,9 @@ export * from "./image/image.component";
     FieldSetBodyComponent,
     ImageComponent,
     StepBlockComponent,
-    StepsComponent
+    StepsComponent,
+      DockedBarToolComponent,
+      DockbarComponent
   ],
   exports: [
     ButtonComponent,
@@ -217,7 +224,9 @@ export * from "./image/image.component";
     FieldSetBodyComponent,
     ImageComponent,
     StepBlockComponent,
-    StepsComponent
+    StepsComponent,
+    DockedBarToolComponent,
+    DockbarComponent
   ]
 })
 export class AmexioWidgetModule {
