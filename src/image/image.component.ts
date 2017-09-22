@@ -10,31 +10,33 @@
  * Author - Sagar Jadhav
  *
  */
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 
 @Component({
   selector: 'amexio-image',
-  template: `    
-    <!--Normal image-->
+  template: `
+      <!--Normal image-->
       <ng-container *ngIf="imagePath || (imagePath && imageClass)">
-        <img [src]="imagePath" [attr.class]="cClass" >
+          <img [src]="imagePath" [attr.class]="cClass" (click)="onImageClick($event)" [attr.title]="tooltipMessage">
       </ng-container>
-      
+
       <!--this is for material design-->
       <ng-container *ngIf="imageClass && mdbClass && !imagePath">
-        <i [attr.class]="imageClass">{{mdbClass}}</i>
+          <i [attr.class]="imageClass" [attr.title]="tooltipMessage" (click)="onImageClick($event)"  >{{mdbClass}}</i>
       </ng-container>
-      
+
       <!--this is for fontawesome-->
       <ng-container *ngIf="imageClass && (!imagePath && !mdbClass)">
-        <i [attr.class]="imageClass"></i>
+          <i [attr.class]="imageClass" [attr.title]="tooltipMessage" (click)="onImageClick($event)"></i>
       </ng-container>
-  
+
   `
 })
 
 export class ImageComponent implements OnInit {
+
+  @Input() tooltipMessage:string
 
   @Input() imagePath:string;
 
@@ -44,11 +46,15 @@ export class ImageComponent implements OnInit {
 
   @Input() mdbClass:boolean;
 
+  @Output() onClick:EventEmitter<any>=new EventEmitter<any>();
+
   constructor() {
 
   }
 
-
+  onImageClick(event:any){
+    this.onClick.emit(event);
+  }
   ngOnInit(): void {
   }
 
