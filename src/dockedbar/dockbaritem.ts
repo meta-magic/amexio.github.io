@@ -20,7 +20,7 @@ import {Component, Input, OnInit} from '@angular/core';
   styles:[
     `      
       .amexio-dockbar-item-close-bar{
-        font-size: 20px;
+        font-size: 24px;
         float: right;
         color: black;
         font-weight: 500;
