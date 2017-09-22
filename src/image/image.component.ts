@@ -44,7 +44,7 @@ export class ImageComponent implements OnInit {
 
   @Input() cClass:string;
 
-  @Input() mdbClass:boolean;
+  @Input() mdbClass:string;
 
   @Output() onClick:EventEmitter<any>=new EventEmitter<any>();
 
