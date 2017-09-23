@@ -346,7 +346,9 @@ export class SideNavBarComponent implements OnInit, AfterViewInit {
 
 
     openNav() {
-        document.getElementById(this.elementId).style.width = this.width;
+        if(this.position!='relative') {
+            document.getElementById(this.elementId).style.width = this.width;
+        }
     }
 
     closeNav() {
