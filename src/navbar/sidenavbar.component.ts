@@ -29,23 +29,29 @@ import {CommonHttpService} from "../common.http.service";
                         <input type="text" class="form-control amexio-sidenavbar-input-width" [(ngModel)]="filterText"  placeholder="Search" (keyup)="filterData()" />
                     </div>
                 </li>
-                <li class="nav-item" *ngFor="let header of menus ">
-                    <a class="nav-link amexio-sidenavbar-nav-link-a" [ngClass]="(header.selected && !header.childrens)? 'amexio-link-selected' : 'amexio-link-notselected'" (click)="expandNode(header)">
-                        <ng-container *ngIf="headerTemplate==null">{{header.text}}</ng-container>
+                <li class="nav-item" *ngFor="let header of menus"  [ngClass]="{'amexio-sidenavbar-subheader':header.childrens,  'amexio-link-selected':(header.selected && !header.childrens)  }">
+                    <div (click)="expandNode(header)">
+                        <ng-container *ngIf="headerTemplate==null">
+                            <a [ngClass]="(header.selected && !header.childrens)? 'amexio-link-selected' : 'amexio-link-notselected'" >
+                                {{header.text}}
+                            </a>
+                        </ng-container>
 
                         <ng-template *ngIf="headerTemplate!=null" [ngTemplateOutlet]="headerTemplate" [ngOutletContext]="{ $implicit: {}, navHeader:header }"></ng-template>
 
                         <span *ngIf="header.childrens " class="amexio-sidenavbar-child-header fa" [ngClass]="{'fa-angle-up':header.expand,'fa-angle-down':!header.expand}"></span>
-                    </a>
+                    </div>
                     <ng-container *ngIf="header.childrens && header.expand">
                         <div [ngStyle]="header.hstyle" >
-                            <ul>
-                                <li *ngFor="let level1Menu of header.childrens">
-                                    <a (click)="menuClick(level1Menu)" [ngClass]="(level1Menu.selected && !level1Menu.childrens)? 'amexio-link-selected' : 'amexio-link-notselected'" >
+                            <ul  class="navbar-nav">
+                                <li class="nav-item" *ngFor="let level1Menu of header.childrens" (click)="menuClick(level1Menu);" [ngClass]="{'amexio-link-selected':(level1Menu.selected && !level1Menu.childrens)  }" >
+                                    <ng-container *ngIf="childTemplate==null">
+                                        <a [ngClass]="(level1Menu.selected && !level1Menu.childrens)? 'amexio-link-selected' : 'amexio-link-notselected'" >
+                                            {{level1Menu.text}}
+                                        </a>
+                                    </ng-container>
+                                    <ng-template *ngIf="childTemplate!=null" [ngTemplateOutlet]="childTemplate" [ngOutletContext]="{ $implicit: {}, menuHeader:level1Menu }"></ng-template>
 
-                                        <ng-container *ngIf="childTemplate==null">{{level1Menu.text}}</ng-container>
-                                        <ng-template *ngIf="childTemplate!=null" [ngTemplateOutlet]="childTemplate" [ngOutletContext]="{ $implicit: {}, menuHeader:level1Menu }"></ng-template>
-                                    </a>
                                     <ng-container *ngIf="level1Menu.childrens">
                                         <ul class="amexio-sidenavbar-level1-child" (nodeClick)="menuClick($event)"  [templates]="subMenuTemplate"  amexio-submenu-view [subMenuData]="level1Menu.childrens"></ul>
                                     </ng-container>
@@ -62,15 +68,7 @@ import {CommonHttpService} from "../common.http.service";
 
     `,
     styles : [`
-        ul li{
-            list-style: none;
-            padding: 1px;
-        }
 
-        a{
-            cursor: pointer;
-            text-decoration: none;
-        }
 
         .amexio-link-selected{
 
@@ -92,12 +90,27 @@ import {CommonHttpService} from "../common.http.service";
             width: 0;
             position: fixed;
             z-index: 1;
-            top: 0;
+
             left: 0;
             background-color: #ffffff;
             overflow-x: hidden;
             transition: 0.5s;
             overflow: auto;
+        }
+
+
+        .amexio-sidenavbar-sidenavleft .nav-item{
+            text-align: left;
+            padding: 10px;
+            border-bottom: 1px solid #dddddd;
+        }
+
+        .amexio-sidenavbar-subheader .nav-item{
+            border: none;
+        }
+
+        .amexio-navbarsubmenu-ul li{
+            padding: 10px;
         }
 
         .amexio-sidenavbar-sidenavopenleft{
@@ -108,9 +121,6 @@ import {CommonHttpService} from "../common.http.service";
             cursor:pointer
         }
 
-        .amexio-sidenavbar-sidenavleft >ul >li {
-            border-bottom: 1px solid #e7e7e7;
-        }
 
         .amexio-sidenavbar-sidenavright {
             height: 100%;
@@ -346,13 +356,16 @@ export class SideNavBarComponent implements OnInit, AfterViewInit {
 
 
     openNav() {
-        if(this.position!='relative') {
+        if(document.getElementById(this.elementId) && document.getElementById(this.elementId).style){
             document.getElementById(this.elementId).style.width = this.width;
         }
+
     }
 
     closeNav() {
-        document.getElementById(this.elementId).style.width = '0';
+        if(document.getElementById(this.elementId) && document.getElementById(this.elementId).style) {
+            document.getElementById(this.elementId).style.width = '0';
+        }
     }
 
     filterData() {
