@@ -14,48 +14,60 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 
 @Component({
-  selector: 'amexio-image',
-  template: `
-      <!--Normal image-->
-      <ng-container *ngIf="imagePath || (imagePath && imageClass)">
-          <img [src]="imagePath" [attr.class]="cClass" (click)="onImageClick($event)" [attr.title]="tooltipMessage">
-      </ng-container>
+    selector: 'amexio-image',
+    template: `
+        <!--Normal image-->
+        <ng-container *ngIf="imagePath || (imagePath && imageClass)">
+            <img [src]="imagePath" [attr.class]="cClass" (click)="onImageClick($event)" [attr.title]="tooltipMessage">
+        </ng-container>
 
-      <!--this is for material design-->
-      <ng-container *ngIf="imageClass && mdbClass && !imagePath">
-          <i [attr.class]="imageClass" [attr.title]="tooltipMessage" (click)="onImageClick($event)"  >{{mdbClass}}</i>
-      </ng-container>
+        <!--this is for material design-->
+        <ng-container *ngIf="imageClass && mdbClass && !imagePath">
+            <i [attr.class]="imageClass" [attr.title]="tooltipMessage" (click)="onImageClick($event)"  >{{mdbClass}}</i>
+        </ng-container>
 
-      <!--this is for fontawesome-->
-      <ng-container *ngIf="imageClass && (!imagePath && !mdbClass)">
-          <i [attr.class]="imageClass" [attr.title]="tooltipMessage" (click)="onImageClick($event)"></i>
-      </ng-container>
+        <!--this is for fontawesome-->
+        <ng-container *ngIf="imageClass && (!imagePath && !mdbClass)">
+            <i [attr.class]="imageClass" [attr.title]="tooltipMessage" (click)="onImageClick($event)"></i>
+        </ng-container>
 
-  `
+        <ng-container *ngIf=" title ">
+            <span class="amexio-image-title">{{title}}</span>
+        </ng-container>
+    `,
+    styles:[
+            `
+            .amexio-image-title{
+                font-size: medium;
+            }
+        `
+    ]
 })
 
 export class ImageComponent implements OnInit {
 
-  @Input() tooltipMessage:string
+    @Input() tooltipMessage:string;
 
-  @Input() imagePath:string;
+    @Input() title:string;
 
-  @Input() imageClass:string;
+    @Input() imagePath:string;
 
-  @Input() cClass:string;
+    @Input() imageClass:string;
 
-  @Input() mdbClass:string;
+    @Input() cClass:string;
 
-  @Output() onClick:EventEmitter<any>=new EventEmitter<any>();
+    @Input() mdbClass:string;
 
-  constructor() {
+    @Output() onClick:EventEmitter<any>=new EventEmitter<any>();
 
-  }
+    constructor() {
 
-  onImageClick(event:any){
-    this.onClick.emit(event);
-  }
-  ngOnInit(): void {
-  }
+    }
+
+    onImageClick(event:any){
+        this.onClick.emit(event);
+    }
+    ngOnInit(): void {
+    }
 
 }
