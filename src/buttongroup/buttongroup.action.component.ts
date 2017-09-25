@@ -56,6 +56,8 @@ export class ButtonGroupActionComponent implements OnInit {
 
   @Input()    fieldName: string;
 
+  @Input() iconClass:string;
+
   btnStyleClass: string;
 
   iconStyleClass: string;

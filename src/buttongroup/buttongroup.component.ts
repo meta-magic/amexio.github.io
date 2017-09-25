@@ -29,7 +29,16 @@ declare var $;
           </ng-container>
           
           <ng-container *ngIf="data.iconStyleClass!=null">
-            <i [class]="data.iconStyleClass" aria-hidden="true"></i>
+            <!--this is for material design-->
+            <ng-container *ngIf="data.iconStyleClass && data.iconClass">
+              <i [attr.class]="data.iconClass" >{{data.iconStyleClass}}</i>
+            </ng-container>
+
+            <!--this is for fontawesome-->
+            <ng-container *ngIf="data.iconStyleClass && !data.iconClass">
+              <i [attr.class]="data.iconStyleClass"></i>
+            </ng-container>
+            
           </ng-container>
             {{data.label}}
         </button>
@@ -41,8 +50,6 @@ declare var $;
 export class ButtonGroupComponent implements OnInit, AfterContentInit, AfterViewInit {
 
   @Input()    size: string;
-
-  @Input() cClass:string;
 
   btnGroupStyleClass: string;
 
@@ -65,11 +72,7 @@ export class ButtonGroupComponent implements OnInit, AfterContentInit, AfterView
     this.createConfig();
   }
   ngOnInit() {
-    if(this.cClass){
-      this.btnGroupStyleClass = this.cClass+' btn-group ';
-    }else{
-      this.btnGroupStyleClass = 'btn-group ';
-    }
+    this.btnGroupStyleClass = 'btn-group ';
     if (this.size != null) {
       if (this.size === 'large') {
         this.btnGroupStyleClass = this.btnGroupStyleClass.concat(' btn-group-lg');
@@ -102,6 +105,7 @@ export class ButtonGroupComponent implements OnInit, AfterContentInit, AfterView
       let data : any = {
         label : buttonConfig.label, onClick : buttonConfig.onClick,
         icon : buttonConfig.icon, type: buttonConfig.type,
+        iconClass:buttonConfig.iconClass,
         tooltipMessage: buttonConfig.tooltipMessage, onClickRoute: buttonConfig.onClickRoute,
         disabled: buttonConfig.disabled, isLoading: buttonConfig.isLoading,
         fieldName: buttonConfig.fieldName, btnStyleClass: buttonConfig.btnStyleClass,

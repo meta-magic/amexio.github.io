@@ -27,7 +27,16 @@ declare var $;
               </ng-container>
               
               <ng-container *ngIf="icon!=null">
-                <i [class]="iconStyleClass" aria-hidden="true"></i>                
+                
+                <!--this is for material design-->
+                <ng-container *ngIf="iconName && iconClass">
+                  <i [attr.class]="iconClass" >{{iconName}}</i>
+                </ng-container>
+
+                <!--this is for fontawesome-->
+                <ng-container *ngIf="iconName && !iconClass">
+                  <i [attr.class]="iconName"></i>
+                </ng-container>
               </ng-container>
               {{label}}
           </button>
@@ -74,11 +83,11 @@ export class ButtonComponent implements OnInit , OnChanges, AfterViewInit {
 
   @Input()   popoverPlacement: string;
 
-  @Input() cClass:string;
+  @Input() iconClass:string;
+
+  iconName:string;
 
   btnStyleClass: string;
-
-  iconStyleClass: string;
 
   btnSizeStyleClass: string;
 
@@ -94,11 +103,7 @@ export class ButtonComponent implements OnInit , OnChanges, AfterViewInit {
   }
 
   ngOnInit() {
-    if(this.cClass){
-      this.btnStyleClass = this.cClass+'  btn ';
-    }else{
-      this.btnStyleClass = 'btn ';
-    }
+    this.btnStyleClass = 'btn ';
     this.btnSizeStyleClass = '';
     if (this.type.toLocaleLowerCase() === 'warning') {
       this.btnStyleClass = this.btnStyleClass + 'btn-warning';
@@ -113,7 +118,6 @@ export class ButtonComponent implements OnInit , OnChanges, AfterViewInit {
     } else {
       this.btnStyleClass = this.btnStyleClass + 'btn-secondary';
     }
-    this.iconStyleClass =  this.icon;
     if (this.tooltipMessage == null) {
       this.hasToolTip = false;
     }
@@ -130,6 +134,11 @@ export class ButtonComponent implements OnInit , OnChanges, AfterViewInit {
       if (this.popoverPlacement == null) {
           this.popoverPlacement = 'bottom';
       }
+
+  //  assign mdbClass to imageClass
+    if(this.icon){
+      this.iconName=this.icon;
+    }
 
   }
 
