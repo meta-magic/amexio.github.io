@@ -18,7 +18,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
     template: `
         <!--Normal image-->
         <ng-container *ngIf="imagePath || (imagePath && imageClass)">
-            <img [src]="imagePath" [attr.class]="cClass" (click)="onImageClick($event)" [attr.title]="tooltipMessage">
+            <img class="img-fluid" [src]="imagePath" [attr.class]="cClass" (click)="onImageClick($event)" [attr.title]="tooltipMessage">
         </ng-container>
 
         <!--this is for material design-->
