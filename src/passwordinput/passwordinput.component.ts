@@ -207,20 +207,22 @@ export class PasswordInputComponent extends FormInputBase implements OnInit,Cont
 
     isValidInput(){
         var hasError = false;
-        if((this.allowBlank && (!this.value || this.value.length==0))){
-            hasError = true;
-        }else if(this.minLength > this.value.length){
-            hasError = true;
-        }else if(this.maxLength < this.value.length){
-            hasError = true;
-        }
-        else if(this.pattern != null && !this.regEx.test(this.value)){
-            hasError = true;
-        }
-        if(hasError){
-          this.setValidClassNames();
-        }else{
-          this.setInvalidatedClassNames();
+        if(this.value != null){
+            if((this.allowBlank && (!this.value || this.value.length==0))){
+                hasError = true;
+            }else if(this.minLength > this.value.length){
+                hasError = true;
+            }else if(this.maxLength < this.value.length){
+                hasError = true;
+            }
+            else if(this.pattern != null && !this.regEx.test(this.value)){
+                hasError = true;
+            }
+            if(hasError){
+                this.setValidClassNames();
+            }else{
+                this.setInvalidatedClassNames();
+            }
         }
 
         return hasError;

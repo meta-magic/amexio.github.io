@@ -77,20 +77,7 @@ export class FormInputBase {
 
   regEx : RegExp ;
 
-    constructor() {
-       /* if (Messenger != null){
-            Messenger.options = {
-                extraClasses: 'messenger-fixed messenger-on-top messenger-on-right',
-                theme: 'air'
-            };
-        }
-        else{
-          console.warn('Please Include Messenger JS Library from http://github.hubspot.com/messenger/docs/welcome/');
-        }
-*/
-
-
-    }
+    constructor() {}
 
   validate(){
     this.isValid = this.isValidInput();
