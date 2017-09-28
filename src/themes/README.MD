@@ -1,5 +1,5 @@
 # Amexio Themes (Material / Bootstrap)
-Choose from a variety of options Material and Bootstrap themes
+Choose from a variety of options Material and Bootstrap themes.
 ## Available Material Themes
 
 | Material Theme Name| 
