@@ -1,5 +1,18 @@
 # Amexio Themes (Material / Bootstrap)
 Choose from a variety of options material and Bootstrap themes
+## Available Material Themes
+
+| Material Theme Name| 
+| ------------- |
+| Amber |
+| BlueGrey   |
+| Brown |
+| Indigo  |
+| Light Blue    |
+
+## Step to add 
+1.Add respective theme CSS file in your app i.e if you are using Angular CLI add it in .angular-cli.json. If not using cli then simply add it to the index.html head.
+
 <div align="center">
 <h3> Material - AMBER </h3>
 <img src="https://preview.ibb.co/ctarEQ/amber.png" alt="amber" border="0">
