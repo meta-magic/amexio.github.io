@@ -298,7 +298,7 @@ More on Maps Module here : [Maps Docs](https://github.com/meta-magic/amexio.gith
 Amexio themes is integrated with Material and bootstrap.
 <img src="https://preview.ibb.co/cCV58k/theme_MAT_indigo.png" alt="theme_MAT_indigo" border="0">
 
-More on Amexio themes here : [Amexio themes](https://github.com/meta-magic/amexio.github.io/src/themes)
+More on Amexio themes here : [Amexio themes](https://github.com/meta-magic/amexio.github.io/tree/v2.0/src/themes)
 
 # Amexio Microsoft Visual Studio Code Extensions
 

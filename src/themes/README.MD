@@ -1,76 +1,38 @@
-<a href="https://amexio.org/">
-    <img src="https://www.lesarbresdesign.info/images/plotalot/icon_plotalot.png" alt="Amexio Charts" title="Amexio" align="right" height="60" />
-</a>
+# Amexio Themes (Material / Bootstrap)
+Choose from a variety of options material and Bootstrap themes
+## Available Material Themes
 
-Amexio Charting Module
-======================
-<div align="center">
-<h5 align="left">Sample Screens</h5>
-  <a href="http://amexio.org/demoapp/">
-    <img src="https://image.ibb.co/ndAycF/chart2_1.png"
-      alt="ScreenShot" />
-      </a>
-</div>
-
-
-## Table of content
-
-- [Installation](#installation)
-    - [Loading Dependency](#dependency-google-chart-js)
-    - [Importing Module](#dependency-google-chart-js)
-- [Available Charts](#available-charts)
-- [License](#license)
-
-
-## Installation
-To import the Module, you first need to fetch the Amexio Package from npm using command ```bash $ npm install amexio-ng-extensions@latest --save ```
-Note : <b>AmexioChartModule</b> is not available under amexio-ng-extensions@1.x.x Series
-
-## Dependency (Google Chart JS)
-Simple add this script tag to your index.html
-```xml
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-```
-
-## Importing Module
-Import the chart module as demonstrated as below
-
-```typescript
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
-
-// Import your library
-import { AmexioChartModule } from 'amexio-ng-extensions/charts';
-
-@NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    AmexioChartModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
-```
-
-## Available Charts
-
-| Charts        |
+| Material Theme Name| 
 | ------------- |
-| Bar Chart     |
-| Column Chart  |
-| Pie Chart     |
-| Area Chart    |
-| Donut Chart   |
-| Line Chart    |
-| Histogram     |
-| TimeLine      |
+| Amber |
+| BlueGrey   |
+| Brown |
+| Indigo  |
+| Light Blue    |
 
+## Step to add 
+1.Add respective theme CSS file in your app i.e if you are using Angular CLI add it in .angular-cli.json. If not using cli then simply add it to the index.html head.
+
+<div align="center">
+<h3> Material - AMBER </h3>
+<img src="https://preview.ibb.co/ctarEQ/amber.png" alt="amber" border="0">
+  </div>
+  <div align="center">
+<h3> Material - Light-Blue </h3>
+<img src="https://preview.ibb.co/eVScok/light_blue.png" alt="light_blue" border="0">
+  </div>
+  <div align="center">
+<h3> Material - Blue-Grey </h3> 
+<img src="https://preview.ibb.co/dmk8uQ/bluegey.png" alt="bluegey" border="0">
+  </div>
+  <div align="center">
+<h3> Material - Indigo </h3>
+<img src="https://preview.ibb.co/jRbsM5/indigo.png" alt="indigo" border="0">
+  </div>
+  <div align="center">
+<h3> Material - Brown </h3>
+<img src="https://preview.ibb.co/eW0PZQ/brown.png" alt="brown" border="0">
+  </div>
 
 ## License
 
