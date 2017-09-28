@@ -174,7 +174,7 @@ declare var $;
                                                            [attr.checked]="selectAll? true: null" (click)="setSelectedRow(rows, $event)">
                                                     <label for="checkbox-{{elementId}}-{{rowIndex}}"></label>
                                                 </td>
-                                                <td *ngFor="let cols of columns" [hidden]="cols.hidden">
+                                                <td *ngFor="let cols of columns" [hidden]="cols.hidden" style="vertical-align: middle !important;">
                                                     <!-- If user hasnt specified customized cell use default -->
                                                     <ng-container *ngIf="!cols?.bodyTemplate">{{rows[cols.dataIndex]}}</ng-container>
                                                     <!-- else insert customized code -->
