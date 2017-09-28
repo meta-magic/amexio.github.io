@@ -281,7 +281,15 @@ import { AmexioMapsModule } from 'amexio-ng-extensions/dashboard';
     BrowserModule,
     FormsModule,
     AmexioMapsModule
-  ],
+  ],## Available Material Themes
+
+| Material Theme Name| 
+| ------------- |
+| Amber |
+| BlueGrey   |
+| Brown |
+| Indigo  |
+| Light Blue    |
   providers: [],
   bootstrap: [AppComponent]
 })
@@ -296,6 +304,16 @@ Once Amexio Maps library is imported, you could use it ,
 More on Maps Module here : [Maps Docs](https://github.com/meta-magic/amexio.github.io/tree/v2.0/src/modules/maps)
 # Amexio Themes (Material / Bootstrap)
 Amexio themes is integrated with Material and bootstrap.
+<h3> Available Material Themes</h3>
+
+| Material Theme Name| 
+| ------------- |
+| Amber |
+| BlueGrey   |
+| Brown |
+| Indigo  |
+| Light Blue    |
+
 <img src="https://preview.ibb.co/cCV58k/theme_MAT_indigo.png" alt="theme_MAT_indigo" border="0">
 
 More on Amexio themes here : [Amexio themes](https://github.com/meta-magic/amexio.github.io/tree/v2.0/src/themes)
