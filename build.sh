@@ -4,6 +4,8 @@ echo "Begining Amexio Build Process..."
 
 npm run build
 
+cp -r src/themes dist/
+
 echo "Finished Amexio Build Process..."
 
 cd src/modules/charts/ && npm run build

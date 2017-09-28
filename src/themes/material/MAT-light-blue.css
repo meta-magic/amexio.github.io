@@ -1,0 +1,966 @@
+body{
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+  color: #6F6F6F;
+  /*background-image: url(../../themes/M-LB-Background.png);*/
+}
+/* ----------------------------------- */
+/* MATERIAL ICONS - CSS */
+/* ----------------------------------- */
+/* Rules for sizing the icon. */
+.material-icons.md-18{
+  font-size: 18px;
+}
+.material-icons.md-24{ font-size: 24px; }
+.material-icons.md-36{ font-size: 36px; }
+.material-icons.md-48{ font-size: 48px; }
+
+/* Rules for using icons as black on a light background. */
+.material-icons.md-dark { color: #6F6F6F; }
+.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+
+/* Rules for using icons as white on a dark background. */
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
+.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
+/* ----------------------------------- */
+/* START OF NAVBAR COMPONENT */
+/* ----------------------------------- */
+.bg-inverse {
+  background-color: #81D4FA !important;
+}
+/* ----------------------------------- */
+/* START OF CARD COMPONENT */
+/* ----------------------------------- */
+.card{
+  border-radius: 0px;
+  color: #FFFFFF;
+}
+.card .card-header{
+  background-color: #E1F5FE;
+  border-radius: 0px;
+  font-size: 20px;
+  padding: 20px 24px;
+  overflow: auto;
+  font-weight: 300;
+  text-transform: capitalize;
+  color: #0277BD;
+}
+.card .card-block{
+  border-radius: 0px;
+  color: rgba(0,0,0,0.87);
+  font-size: 13px;
+  line-height: 24px;
+  font-weight: 400;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+.card .card-footer{
+  border-radius: 0px;
+  border: none;
+  background-color: #FFFFFF;
+
+}
+
+/* ----------------------------------- */
+/* COMPONENT - NAVIGATION */
+/* ----------------------------------- */
+.sidenavbox{
+  min-height: 1000px;
+  border-right: 1px solid #ddd;
+}
+.amexio-sidenavbar-sidenavleft{
+  width: 100%;
+  height: 100%;
+  overflow:hidden;
+  float: left;
+  /* IMPLEMENTED */
+  background-color: #fff;
+}
+.amexio-sidenavbar-sidenavleft .navbar-nav{
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+.amexio-sidenavbar-sidenavleft .nav-item{
+  list-style: none;
+  display: block;
+  font-size: 14px !important;
+  text-align: left;
+  padding: 13px 0px 13px 17px!important;;
+  font-weight: 500!important;
+  width: 100%!important;
+}
+.amexio-sidenavbar-sidenavleft  .nav-item:hover {
+  background-color: #eee;
+  cursor: pointer;
+}
+.amexio-sidenavbar-sidenavleft  .amexio-sidenavbar-subheader{
+  border-top: solid 1px #E0E0E0 !important;
+  /*border-bottom: solid 1px  #E0E0E0 !important;*/
+}
+
+.amexio-sidenavbar-sidenavleft  .amexio-sidenavbar-subheader:last-child{
+  border-bottom: solid 1px  #E0E0E0 !important;
+}
+
+.amexio-sidenavbar-sidenavleft  .amexio-sidenavbar-subheader span{
+  padding-right: 5px;
+}
+
+.amexio-sidenavbar-sidenavleft .amexio-sidenavbar-subheader:hover  {
+  background-color: #ffffff;
+}
+.amexio-sidenavbar-sidenavleft  .nav-item{
+  border-bottom: none!important;
+}
+.amexio-sidenavbar-sidenavleft  .nav-item a{
+  text-decoration: none;
+  color: rgba(0,0,0,0.87);
+}
+.amexio-sidenavbar-sidenavleft  .nav-item i{
+    padding-right: 38px;
+}
+.amexio-link-selected{
+  background-color: #eee!important;
+}
+
+.amexio-link-selected a{
+  color: #0277BD!important;
+}
+
+.amexio-link-selected i{
+  color: #0277BD!important;
+}
+
+.amexio-link-selected:hover {
+  background-color: #eee;
+}
+
+/* ----------------------------------- */
+/* COMPONENT - CONTACT LIST -IN PROFILE AND EMAIL PAGE*/
+/* ----------------------------------- */
+
+.contactlist{
+  padding: 0px !important;
+}
+
+.contactlist .card-block{
+  padding: 0px !important;
+}
+
+.amexio-listbox-list-item  li{
+  display: block;
+  width: 100%;
+  height: 80px;
+  border-bottom: 1px solid #E0E0E0;
+  padding: 14px 16px;
+  cursor: pointer;
+}
+
+.amexio-listbox .list-group-item {
+  margin-bottom:0px;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+}
+
+.amexio-listbox-list li img{
+  width: 52px;
+  height: 52px;
+  border-radius: 200px;
+  margin-right: 20px;
+  float: left;
+}
+
+.amexio-listbox-list li .title{
+  float: left;
+  font-size: 18px;
+  color: rgba(0,0,0,0.87);
+  padding-top: 8px;
+
+}
+.amexio-listbox-list .title a{
+  font-size: 18px;
+  color: aqua;
+  color: rgba(0,0,0,0.54);
+}
+
+/* ----------------------------------- */
+/* GRID DATA COMPONENT */
+/* ----------------------------------- */
+
+.headerStyle{
+  background-color: #E1F5FE;
+  color: #FFFFFF;
+  font-size: 15px;
+  padding: 20px 24px;
+  overflow: auto;
+  font-weight: 300;
+  text-transform: capitalize;
+  color: #0277BD;
+
+}
+
+.gridStyle{
+  font-size: 13px;
+  line-height: 15px;
+  color: rgba(0,0,0,0.87);
+
+}
+
+.headerStyleColumn{
+  line-height: 15px;
+  color: rgba(0,0,0,0.87);
+  height:48px;
+  border-bottom: 1px solid #E0E0E0;
+  font-weight: 500;
+  padding: 0px 24px 0px 24px!important;
+  text-align: left;
+
+}
+.datagridrow{
+  height:48px;
+  border-bottom: 1px solid #E0E0E0;
+  background-color: #fff;
+}
+
+.datagridrow td{
+  padding: 0px 24px 0px 24px!important;
+}
+.datagridrow:hover{
+  background-color: #eee;
+}
+.groupbyseperator{
+  height:48px;
+  border-bottom: 1px solid #E0E0E0!important;
+  padding: 12px 24px 0px 24px;
+  color: #6F6F6F;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.amexio-datatable-groupbyseperator{
+  color: #6F6F6F!important;
+}
+
+/* ----------------------------------- */
+/* CUSTOM CHECKBOX */
+/* ----------------------------------- */
+.amexio-checkbox[type="checkbox"] {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 10px;
+  position: absolute;
+  width: 1px;
+}
+
+.amexio-datatable-wrap .table-cell {
+  float: left;
+  padding: 0 20px;
+}
+.amexio-checkbox[type="checkbox"]:active + label:before {
+  transition-duration: 0s;
+}
+.amexio-checkbox[type="checkbox"] + label {
+  position: relative;
+  padding-left: 2em;
+  vertical-align: middle;
+  user-select: none;
+  cursor: pointer;
+}
+.amexio-checkbox[type="checkbox"] + label:before {
+  box-sizing: content-box;
+  content: '';
+  color: #4f8196;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  margin-top: -9px;
+  border: 2px solid #000;
+  text-align: center;
+  transition: all 0.4s ease;
+}
+.amexio-checkbox[type="checkbox"]:checked + label:before {
+  border: 2px solid #0277BD;
+}
+.amexio-checkbox[type="checkbox"] + label:after {
+  box-sizing: content-box;
+  content: '';
+  background-color: #4f8196;
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  width: 10px;
+  height: 10px;
+  margin-top: -5px;
+  transform: scale(0);
+  transform-origin: 50%;
+  transition: transform 200ms ease-out;
+}
+.amexio-checkbox[type="checkbox"]:disabled + label:before {
+  border-color: #cccccc;
+}
+.amexio-checkbox[type="checkbox"]:disabled:focus + label:before, .amexio-checkbox input[type="checkbox"]:disabled:hover + label:before {
+  background-color: inherit;
+}
+.amexio-checkbox[type="checkbox"]:disabled:checked + label:before {
+  background-color: #cccccc;
+}
+.amexio-checkbox[type="checkbox"] + label:after {
+  background-color: transparent;
+  top: 50%;
+  left: 4px;
+  width: 8px;
+  height: 3px;
+  margin-top: -4px;
+  border-style: solid;
+  border-color: #ffffff;
+  border-width: 0 0 3px 3px;
+  border-image: none;
+  transform: rotate(-45deg) scale(0);
+}
+.amexio-checkbox[type="checkbox"]:checked + label:after {
+  content: '';
+  transform: rotate(-45deg) scale(1);
+  transition: transform 200ms ease-out;
+}
+.amexio-checkbox[type="radio"]:checked + label:before {
+  animation: borderscale 300ms ease-in;
+  background-color: white;
+}
+.amexio-checkbox[type="radio"]:checked + label:after {
+  transform: scale(1);
+}
+.amexio-checkbox[type="radio"] + label:before {
+  border-radius: 50%;
+}
+.amexio-checkbox[type="checkbox"]:checked + label:before {
+  animation: borderscale 200ms ease-in;
+  background: #0277BD;
+}
+.amexio-checkbox[type="checkbox"]:checked + label:after {
+  transform: rotate(-45deg) scale(1);
+}
+.amexio-checkbox-group{
+  margin: 12px 0!important;float: left;
+}
+
+/*check box label*/
+.form-check-label{
+  border-bottom: 1px solid #f2f2f2;
+  width: 100%;
+  padding: 10px 20px!important;
+  width: 100%;
+}
+.select {
+  font-family: inherit;
+  background-color: transparent;
+  width: 100%;
+  padding: 4px 8px;
+  font-size: 16px;
+  color: rgba(0,0,0,0.87)!important;
+  border: none;
+  border-bottom: 2px solid rgba(0,0,0,0.42);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+}
+
+/* ----------------------------------- */
+/* COMPONENT - TAB */
+/* ----------------------------------- */
+.nav-tabs .nav-link{
+  border: 0px solid transparent !important;
+  display: block!important;
+  color: #00695C!important;
+  padding: 12px!important;
+  font-size: 14px!important;
+  text-transform: uppercase;
+  text-decoration:none;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-link.active{
+  border-bottom: 2px solid #00695C !important;
+}
+.nav-item dropdown a nav-link{
+  border-bottom:none!important;
+}
+
+.nav-tabs {
+  border-bottom: 1px solid rgba(0,0,0,0.42) !important;
+  margin-bottom: 20px;
+}
+
+.amexio-tabpane-wrapper {
+  height: 70px!important;
+}
+
+/* ----------------------------------- */
+/* COMPONENT - BUTTON */
+/* ----------------------------------- */
+
+.btn {
+  -moz-user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857;
+  margin-bottom: 0;
+  padding: 6px 12px;
+  text-align: center;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-transform: uppercase
+}
+.btn-primary {
+  background-color: #0277BD;
+  border-color: transparent;
+  color: #fff;
+}
+.btn-link {
+  background-color: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  color: #0277BD;
+  font-weight: 400;
+}
+.btn-link:hover {
+  color: #FF8F00;
+  text-decoration: none;
+}
+.btn,.btn-group-sm>.btn, .btn-sm{
+  border-radius: 0px;
+  position: relative;
+  overflow: hidden;
+}
+
+/****Button RIPPLE EFFECT****/
+
+.btn:after
+{
+  content:"";display:block;position:absolute;width:100%;height:100%;top:0;left:0;pointer-events:none;
+  background-image:radial-gradient(circle,#000 10%,transparent 10.01%);
+  background-repeat:no-repeat;
+  background-position:50%;
+  transform:scale(10,10);
+  opacity:0;
+  transition:transform .5s,opacity 1s
+}
+
+.btn:active:after
+{
+  transform:scale(0,0);opacity:.2;transition:0s
+}
+
+/* ----------------------------------- */
+/* LOGIN PAGE  */
+/* ----------------------------------- */
+
+.login-card {
+  width: 400px;
+  margin: 0;
+}
+.mainpanel {
+  width: 100%;
+  padding: 19px 16px 19px 16px;
+  overflow: hidden;
+  color: rgba(0,0,0,0.87);
+  font-size: 13px;
+  line-height: 24px;
+  font-weight: 400;
+}
+.mainpanel .title {
+  font-size: 24px!important;
+  line-height: 28px!important;
+  color: #0277BD;
+  margin-bottom: 10px!important;
+  display: block
+}
+.mainpanel .subtitle {
+  color: rgba(0,0,0,0.54) !important;
+  line-height: 18px!important;
+  font-size: 14px!important;
+}
+.mainpanel a {
+  color: rgba(0,0,0,0.87);
+}
+
+.login-form {
+  height: 200px;
+  margin: 50px 0
+}
+.forgot-password{
+  margin-top:20px;
+}
+.forgot-password a{
+  color: #FF8F00!important;
+}
+.forgot-password a:hover{
+  text-decoration: none;
+}
+
+/* ----------------------------------- */
+/* FORM COMPONENT STYLE  */
+/* ----------------------------------- */
+.form-control{
+  border: none;
+  border-bottom: 2px solid rgba(0,0,0,0.42);
+  color: rgba(0,0,0,0.87)!important;
+  display: block;
+  line-height: 1.42857;
+  padding: 2px 12px;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 500!important;
+  border-radius: 0px!important;
+}
+
+.form-group {
+  margin: 12px 0;
+  width: 100%;
+  float: left;
+  height: 65px
+}
+.form-group:before, .form-group:after {
+  content: "";
+  display: table
+}
+.form-group:after {
+  clear: both
+}
+.form-group.last {
+  margin-bottom: 0
+}
+
+.form-group input::placeholder{
+  color: #dddddd;
+  font-size:15px;
+}
+
+.form-group textarea::placeholder{
+  color: #dddddd;
+  font-size:15px;
+}
+
+.register-contr a {
+  color: #26A69A!important;
+}
+.full-height {
+  height: 100vh
+}
+.workspace {
+  width: auto;
+  overflow: hidden;
+  background-color: #FAFAFA;
+  padding: 24px 14px 24px 255px;
+}
+.field-align-contr {
+  padding: 0 12px;
+  width:100%;
+  float:left
+}
+
+/* ----------------------------------- */
+/* LABEL */
+/* ----------------------------------- */
+label {
+  display: inline-block;
+  margin-bottom: 5px;
+  max-width: 100%;
+  color: rgba(0,0,0,0.54);
+  font-weight: 500;
+  padding: 0 12px;
+  line-height: none;
+  font-weight: 500;
+  margin-bottom: 0;
+  font-size: 14px;
+}
+
+/* ----------------------------------- */
+/* COMPONENT - DROPDOWN */
+/* ----------------------------------- */
+.dropdown{
+  border-bottom: 2px solid rgba(0,0,0,0.42) !important;
+}
+.dropdown-item:hover{
+}
+
+.input-group-addon{
+  border: none;
+  background: transparent;
+  margin-top: 25px;
+  padding: 0px;
+}
+
+
+
+/* ----------------------------------- */
+/* PROFILE */
+/* ----------------------------------- */
+.img-responsive {
+  max-width: 100%;
+  width: 100%;
+}
+.imagepanel {
+  background-color: cornflowerblue;
+}
+.half {
+  float: left;
+  overflow: hidden;
+}
+.first-35 {
+  padding: 0px 10px 10px 0px;
+  width: 35%;
+}
+
+/*panel action*/
+.actionpanel {
+  padding: 12px 16px 12px 16px;
+  height: 48px;
+}
+.actionpanel .iconbuttons {
+  float: left;
+  text-align: left;
+  display: block;
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  text-align: center;
+  padding: 4px;
+}
+.actionpanel .links {
+  float: right;
+  text-align: right;
+  padding-top: 5px
+}
+.actionpanel .links a {
+  font-size: 13px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #0277BD;
+}
+/* ----------------------------------- */
+/* ICON FOR PROFILE ex.CAKE..*/
+/* ----------------------------------- */
+.material-icons.md-dark {
+  color: #6F6F6F;
+}
+
+/* ----------------------------------- */
+/* COMPONENT - CONTACT LIST - MINI */
+/* ----------------------------------- */
+
+.contact-list-mini .title {
+  float: left;
+  padding-top: 8px;
+  font-size: 13px!important;
+  color: rgba(0,0,0,0.87);
+  font-weight: 500!important;
+}
+.contact-list-mini img {
+  width: 52px;
+  height: 52px;
+  border-radius: 200px;
+  margin-right: 20px;
+  float: left;
+}
+
+
+/* ----------------------------------- */
+/* COMPONENT - TREEVIEW */
+/* ----------------------------------- */
+.amexio-treeview-ul{
+  padding-left: 10px!important;
+}
+
+.amexio-treeview-node{
+  text-decoration: none !important;
+  color: rgba(0,0,0,0.87) !important;
+  display: table-cell!important;
+  vertical-align: middle!important;
+  padding: 13px 0px 13px 17px;
+  font-weight: 400;
+  font-size: 13px;
+}
+
+.amexio-treeview-navigation-icons{
+  padding-top: 13px!important;
+}
+
+.amexio-treeview-node div i{
+  padding-right: 20px;
+}
+/* CSS for Selected Item in Tree */
+.amexio-treeview-node-selected{
+  text-decoration: none !important;
+  color: #0277BD !important;
+  display: table-cell!important;
+  vertical-align: middle!important;
+  padding: 13px 0px 13px 17px;
+  font-weight: 400;
+  font-size: 13px;
+  background-color: #F3F3F3 !important;
+}
+
+.amexio-treeview-node-selected div i{
+  padding-right: 20px;
+  color: #0277BD !important;
+}
+
+.amexio-treeview-node:hover{
+  background-color: #eee!important;
+}
+
+
+/* ----------------------------------- */
+/* COMPONENT - TYPEHEAD in simple form */
+/* ----------------------------------- */
+.amexio-typeahead .form-control{
+  border-bottom: none;
+}
+
+/* ----------------------------------- */
+/* EMAIL PAGE  */
+/* ----------------------------------- */
+.email-page{
+  padding:0px;
+}
+
+.email-page .row .col-lg-3{
+  padding: 0px !important;
+}
+
+.email-page .row .col-lg-9{
+  padding: 0px !important;
+}
+
+.email-page .card-block{
+  padding-left: 15px !important;
+}
+
+.email-page .list-group{
+  border: none!important;
+}
+
+.email-page .list-group .list-group-item{
+  border: none!important;
+}
+
+
+/* ----------------------------------- */
+/* DATA GRID PAGINATION*/
+/* ----------------------------------- */
+
+pagination-outer {
+  width: 100%;
+  text-align: right;
+  margin-top: 5px!important;
+  float: right!important;
+}
+.pagination {
+  color: rgba(0, 0, 0, 0.54);
+  float: right!important;
+}
+.pagination span{
+  margin-right: 20px;
+  display: inline-block;
+  color: rgba(0,0,0,0.54);
+  float: left
+}
+
+/* ----------------------------------- */
+/* DATA GRID CHECKBOX */
+/* ----------------------------------- */
+.amexio-datatable-checkbox{
+  padding-left: 25px!important;
+  width: 50px!important;
+}
+
+/*for datatable navigation arrow color*/
+.amexio-datatable-navigation-arrow label{
+}
+
+/*--------------------
+DROPDOWN MENU OPTIONS STYLE
+---------------------*/
+.dropdown-menu{
+  border-radius: 0px;
+}
+
+
+/*------------------
+  Side Navbar RIPPLE EFFECT--NOT WORKING
+----------------------------*/
+.amexio-sidenavbar-nav-link-a:after
+{
+  content:"";
+  display:block;
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  pointer-events:none;
+  background-image:radial-gradient(circle,#000 10%,transparent 10.01%);
+
+  transform:scale(10,10);
+  opacity:0;
+  transition:transform .5s,opacity 1s
+}
+
+.amexio-sidenavbar-nav-link-a:active:after
+{
+  transform:scale(0,0);opacity:.2;transition:0s
+}
+
+.amexio-navbarsubmenu-a:after
+{
+  content:"";
+  display:block;
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  pointer-events:none;
+  background-image:radial-gradient(circle,#000 10%,transparent 10.01%);
+
+  transform:scale(10,10);
+  opacity:0;
+  transition:transform .5s,opacity 1s
+}
+
+.amexio-navbarsubmenu-a:active:after
+{
+  transform:scale(0,0);opacity:.2;transition:0s
+}
+
+
+/*------------------
+ TAB NAVBAR RIPPLE EFFECT
+----------------------------*/
+
+.nav-tabs .nav-link:after
+{
+  content:"";
+  display:block;
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  pointer-events:none;
+  background-image:radial-gradient(circle,#000 10%,transparent 10.01%);
+
+  transform:scale(10,10);
+  opacity:0;
+  transition:transform .5s,opacity 1s;
+
+}
+
+.nav-tabs .nav-link:active:after
+{
+  transform:scale(0,0);opacity:.2;transition:0s
+}
+
+
+/* popover style - displayed when input get focus */
+.popover{
+  border-radius: 0px;
+}
+
+.popover-title {
+  background-color: #81D4FA;
+  color: #FFFFFF;
+  font-size: 20px;
+  border: none;
+  border-radius: 0px;
+}
+.popover-content {
+  color: #455A64;
+  border-radius: 0px;
+  color: rgba(0,0,0,0.87);
+  font-size: 13px;
+  font-size: 10px;
+  border-radius: 0px;
+}
+
+
+/*ITEM SELECTOR HEADER IN SIMPLE FORM*/
+
+.list-group-item:first-child {
+   border-top-right-radius: 0rem;
+   border-top-left-radius: 0rem;
+}
+
+
+/*-----------------------
+*** COMPONENT- DATAPOINTS ***
+-------------------------*/
+.datapoints{
+  background-color: #E1F5FE;
+  color: #0277BD;
+}
+.datapoints-north{
+  color: #0277BD; font-size: 36px; font-weight: bold;
+}
+
+.datapoints-center{
+  font-size: 20px;
+}
+
+.datapoint-south{
+  background-color: #81D4FA;
+  color: #ffffff;
+}
+
+.datapoint-west{
+  background-color: #E1F5FE;
+}
+
+.datapoints-center-issue{
+  font-size: 36px; font-weight: bold;
+}
+.ee-bullet-point{
+  padding-left: 50px;
+}
+.ee-bullet-point ul li{
+  font-size: medium;
+  font-weight: 400;
+}
+/*Landing page navbar color*/
+.landing-page-navbar .bg-inverse{
+  background-color: #292b2c!important;
+}
+
+/*LANDING PAGE IMAGE*/
+.theme-image{
+  border: 1px solid rgba(0, 0, 0, .125);
+  border-radius: .0rem;
+  box-shadow: 5px 5px 5px #888888;
+
+}
+.theme-image:hover{
+  transform: scale(1.1);
+  box-shadow: 2px 2px 2px #000000;
+  z-index: 1;
+  transition: all 200ms ease-in;
+}
