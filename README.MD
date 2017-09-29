@@ -304,7 +304,7 @@ Once Amexio Maps library is imported, you could use it ,
 ```
 More on Maps Module here : [Maps Docs](https://github.com/meta-magic/amexio.github.io/tree/v2.0/src/modules/maps)
 # Amexio Themes (Material / Bootstrap)
-Amexio themes is integrated with Material and bootstrap.
+
 <h3> Available Material Themes</h3>
 
 | Material Theme Name| 
