@@ -83,6 +83,7 @@
 - [Getting Started](#getting-started)
 - [Installation](#amexio-angular-extension---installation)
 - [Installing Dependecies](#installing-dependencies-required)
+- [Amexio Themes](#amexio-themes-material--bootstrap)
 - [Amexio Charts](#amexio-charts)
 - [Amexio Dashboard](#amexio-dashboard)
 - [Amexio Maps](#amexio-maps)
@@ -145,12 +146,12 @@ $ npm install amexio-ng-extensions@1.0.43 --save
 Amexio requires the following libraries to work
 1) [jQuery](https://www.npmjs.com/package/jquery)
 2) [Bootstrap Alpha 6](https://www.npmjs.com/package/bootstrap). (Requires Tether.js & Popper.js)
-3) [bootstrap-datepicker](https://www.npmjs.com/package/bootstrap-datepicker)
-4) [bootstrap-timepicker](https://www.npmjs.com/package/bootstrap-timepicker)
+3) <strike>[bootstrap-datepicker](https://www.npmjs.com/package/bootstrap-datepicker) </strike> Deprecated from V 3.0
+4) <strike> [bootstrap-timepicker](https://www.npmjs.com/package/bootstrap-timepicker) </strike> Deprecated from V 3.0
 5) [Font Awesome](https://www.npmjs.com/package/font-awesome)
 
 Include these in your app's .angular-cli.json
-<img src="https://image.ibb.co/h63pK5/dependecy.png"/>
+<img src="https://preview.ibb.co/b4F1gG/dependecy.png" alt="dependecy" border="0">
 
 Include the respective JS & CSS in your app i.e if you are using Angular CLI add it in .angular-cli.json.
  If not using cli then simply add it to the index.html head.
@@ -281,7 +282,15 @@ import { AmexioMapsModule } from 'amexio-ng-extensions/dashboard';
     BrowserModule,
     FormsModule,
     AmexioMapsModule
-  ],
+  ],## Available Material Themes
+
+| Material Theme Name| 
+| ------------- |
+| Amber |
+| BlueGrey   |
+| Brown |
+| Indigo  |
+| Light Blue    |
   providers: [],
   bootstrap: [AppComponent]
 })
@@ -296,6 +305,16 @@ Once Amexio Maps library is imported, you could use it ,
 More on Maps Module here : [Maps Docs](https://github.com/meta-magic/amexio.github.io/tree/v2.0/src/modules/maps)
 # Amexio Themes (Material / Bootstrap)
 Amexio themes is integrated with Material and bootstrap.
+<h3> Available Material Themes</h3>
+
+| Material Theme Name| 
+| ------------- |
+| Amber |
+| BlueGrey   |
+| Brown |
+| Indigo  |
+| Light Blue    |
+
 <img src="https://preview.ibb.co/cCV58k/theme_MAT_indigo.png" alt="theme_MAT_indigo" border="0">
 
 More on Amexio themes here : [Amexio themes](https://github.com/meta-magic/amexio.github.io/tree/v2.0/src/themes)
