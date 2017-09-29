@@ -146,8 +146,8 @@ $ npm install amexio-ng-extensions@1.0.43 --save
 Amexio requires the following libraries to work
 1) [jQuery](https://www.npmjs.com/package/jquery)
 2) [Bootstrap Alpha 6](https://www.npmjs.com/package/bootstrap). (Requires Tether.js & Popper.js)
-3) <strike>[bootstrap-datepicker](https://www.npmjs.com/package/bootstrap-datepicker) </strike> Deprecated from V2.1.7
-4) <strike> [bootstrap-timepicker](https://www.npmjs.com/package/bootstrap-timepicker) </strike> Deprecated from V2.1.7
+3) <strike>[bootstrap-datepicker](https://www.npmjs.com/package/bootstrap-datepicker) </strike> Deprecated from v2.1.7
+4) <strike> [bootstrap-timepicker](https://www.npmjs.com/package/bootstrap-timepicker) </strike> Deprecated from v2.1.7
 5) [Font Awesome](https://www.npmjs.com/package/font-awesome)
 
 Include these in your app's .angular-cli.json
