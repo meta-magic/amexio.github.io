@@ -1,5 +1,5 @@
 # Amexio Themes (Material / Bootstrap)
-Choose from a variety of options Material and Bootstrap themes.
+Choose different Amexio theme based of google material design or boostrap.
 ## Available Material Themes
 
 | Material Theme Name| 
@@ -11,7 +11,7 @@ Choose from a variety of options Material and Bootstrap themes.
 | Light Blue    |
 
 ## Step to add 
-1.Add respective theme CSS file in your app i.e if you are using Angular CLI add it in .angular-cli.json. If not using cli then simply add it to the index.html head.
+Add respective theme CSS file in your app i.e if you are using Angular CLI add it in .angular-cli.json. 
 
 <div align="center">
 <h3> Material - AMBER </h3>
