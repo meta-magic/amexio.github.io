@@ -83,6 +83,7 @@
 - [Getting Started](#getting-started)
 - [Installation](#amexio-angular-extension---installation)
 - [Installing Dependecies](#installing-dependencies-required)
+- [Amexio Themes](#amexio-themes)
 - [Amexio Charts](#amexio-charts)
 - [Amexio Dashboard](#amexio-dashboard)
 - [Amexio Maps](#amexio-maps)
