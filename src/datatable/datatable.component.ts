@@ -382,6 +382,7 @@ declare var $;
 
         .amexio-datatable-opertions {
             float: right;
+            cursor: pointer;
         }
 
         .amexio-datatable-dropdown-action {
