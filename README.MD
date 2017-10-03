@@ -6,7 +6,6 @@
   <br>
 </h1>
 
-
 <div align="center">
   An Enterprise grade Comprehensive UI Components, Charts, Dashboards, Maps Library for Web 2.0 Apps based on Angular 4 and powered by Bootstrap 4 for responsive design.
 </div>
