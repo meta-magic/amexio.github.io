@@ -351,8 +351,8 @@ declare var $;
           {{(pageSize * (currentPage - 1)) + 1}} - {{this.data.length}} of {{this.data.length}}
           </ng-container>
           </span>
-          <span style="font-size: 18px;margin-left: 10px;padding-top: 10px;" (click)="prev()">&#x276E;</span>
-          <span style="font-size: 18px;padding-top: 10px;" (click)="next()">&#x2771;</span>
+          <span style="font-size: 18px;margin-left: 10px;padding-top: 10px;cursor: pointer" (click)="prev()">&#x276E;</span>
+          <span style="font-size: 18px;padding-top: 10px;cursor: pointer" (click)="next()">&#x2771;</span>
           </ng-container>
           </div>
           </span>
@@ -445,6 +445,16 @@ declare var $;
             border-left: 0;
             border-right: 0;
             word-wrap: break-word;
+        }
+        .pagination {
+            color: #rgba(0, 0, 0, 0.54);
+            float: right!important;
+        }
+        .pagination span{
+            margin-right: 20px;
+            display: inline-block;
+            color: rgba(0,0,0,0.54);
+            float:left;
         }
 
     `]
