@@ -103,7 +103,7 @@ export class CommonHttpService {
           invalidMsg['errorMsg'] = component.errorMsg;
         }
         invalidComponent.push({'componentName': component.fieldLabel , 'errorMsgs': invalidMsg});
-        invalidMsg = [];
+        invalidMsg = {};
         this.isValid = false;
         errorCounter++;
       }
