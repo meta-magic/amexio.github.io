@@ -14,7 +14,7 @@ import {StepBlockComponent} from "./step-block";
             <div class="amexio-stepwizard-row setup-panel">
                 <div *ngFor="let stepBlock of stepBlockArray; let i = index" class="amexio-stepwizard-step">
                     <button type="button" [ngClass]="{'disabled':!stepBlock.active,'active':stepBlock.active}" class="btn btn-info btn-circle"
-                            (click)="onClick(stepBlock)">{{i + 1}}
+                            (click)="onClick(stepBlock,$event)">{{i + 1}}
                     </button>
                     <ng-container *ngIf="stepBlock.label && !stepBlock.active">
                         <p>{{stepBlock.label}}</p>
@@ -33,12 +33,12 @@ import {StepBlockComponent} from "./step-block";
                 <div *ngFor="let stepBlock of stepBlockArray; let i = index" class="amexio-stepwizard-step">
                     <!--this is for material design-->
                     <ng-container *ngIf="stepBlock.icon && stepBlock.mdbClass ">
-                        <i [attr.class]="'material-icons'" (click)="onClick(stepBlock)">{{stepBlock.icon}}</i>
+                        <i [attr.class]="'material-icons'" (click)="onClick(stepBlock,$event)">{{stepBlock.icon}}</i>
                     </ng-container>
 
                     <!--this is for fontawesome-->
                     <ng-container *ngIf="stepBlock.icon && !stepBlock.mdbClass">
-                        <i [attr.class]="stepBlock.icon" (click)="onClick(stepBlock)"></i>
+                        <i [attr.class]="stepBlock.icon" (click)="onClick(stepBlock,$event)"></i>
                     </ng-container>
 
                     <ng-container *ngIf="stepBlock.icon=='' || !stepBlock.icon">
@@ -60,17 +60,17 @@ import {StepBlockComponent} from "./step-block";
         <ul *ngIf="showBlockBox" class="nav nav-pills nav-justified ">
             <li *ngFor="let stepBlock of stepBlockArray; let i = index" class="nav-item " style="padding-right:2px;">
                 <a class="nav-link amexio-step-box" [ngClass]="{'disabled':!stepBlock.active,'active':stepBlock.active}"
-                   (click)="onClick(stepBlock)">
+                   (click)="onClick(stepBlock,$event)">
                     <ng-container *ngIf="showIndex">
                         {{i + 1}}<br>
                     </ng-container>
 
                     <ng-container *ngIf="showIcon && stepBlock.icon && stepBlock.mdbClass ">
-                        <i [attr.class]="'material-icons'" (click)="onClick(stepBlock)">{{stepBlock.icon}}</i>
+                        <i [attr.class]="'material-icons'" (click)="onClick(stepBlock,$event)">{{stepBlock.icon}}</i>
                     </ng-container>
                     <!--this is for fontawesome-->
                     <ng-container *ngIf="showIcon && stepBlock.icon && !stepBlock.mdbClass">
-                        <i [attr.class]="stepBlock.icon" (click)="onClick(stepBlock)"></i>
+                        <i [attr.class]="stepBlock.icon" (click)="onClick(stepBlock,$event)"></i>
                     </ng-container>
 
                     <ng-container *ngIf="stepBlock.label && !stepBlock.active">
@@ -159,6 +159,8 @@ export class StepsComponent implements OnInit, AfterContentInit {
 
   @Output() onBlockClick: EventEmitter<any> = new EventEmitter<any>();
 
+  @Output() onBlockClickEvent: EventEmitter<any> = new EventEmitter<any>();
+
   @ContentChildren(StepBlockComponent) stepBlocks: QueryList<StepBlockComponent>;
 
   stepBlockArray: StepBlockComponent[];
@@ -169,8 +171,9 @@ export class StepsComponent implements OnInit, AfterContentInit {
 
   }
 
-  onClick(event: any) {
-    this.onBlockClick.emit(event);
+  onClick(data: any, ev: any) {
+    this.onBlockClick.emit(data);
+    this.onBlockClickEvent.emit(ev);
   }
 
   ngAfterContentInit() {
