@@ -1,7 +1,10 @@
 /**
  * Created by sagar on 6/9/17.
  */
-import {Component, ContentChildren, EventEmitter, Input, OnInit, Output, QueryList} from '@angular/core';
+import {
+  AfterContentInit, Component, ContentChildren, EventEmitter, Input, OnInit, Output,
+  QueryList
+} from '@angular/core';
 import {StepBlockComponent} from "./step-block";
 
 @Component({
@@ -146,7 +149,7 @@ import {StepBlockComponent} from "./step-block";
   `]
 })
 
-export class StepsComponent implements OnInit {
+export class StepsComponent implements OnInit, AfterContentInit {
 
   @Input() showIndex: boolean;
 
@@ -160,6 +163,7 @@ export class StepsComponent implements OnInit {
 
   stepBlockArray: StepBlockComponent[];
 
+  @Input() stepBlockLocalData: any[];
 
   constructor() {
 
@@ -170,7 +174,11 @@ export class StepsComponent implements OnInit {
   }
 
   ngAfterContentInit() {
-    this.stepBlockArray = this.stepBlocks.toArray();
+    if (this.stepBlockLocalData.length > 0) {
+      this.stepBlockArray = this.stepBlockLocalData;
+    } else {
+      this.stepBlockArray = this.stepBlocks.toArray();
+    }
   }
 
   ngOnInit() {
