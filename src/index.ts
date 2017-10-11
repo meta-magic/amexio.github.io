@@ -51,6 +51,7 @@ import {StepBlockComponent} from "./steps/step-block";
 import {StepsComponent} from "./steps/steps.component";
 import {DockedBarToolComponent} from "./dockedbar/dockettoolbar.component";
 import {DockbarComponent} from "./dockedbar/dockbaritem";
+import {FileuploadComponent} from "./fileupload/fileupload.component";
 
 
 export * from './button/button.component';
@@ -120,8 +121,7 @@ export * from './notify/notify.component';
 export * from './fildset/fieldset.component';
 export * from './fildset/fieldsetbody.component';
 export * from "./image/image.component";
-
-
+export * from "./fileupload/fileupload.component";
 @NgModule({
   imports: [
     CommonModule,
@@ -176,7 +176,8 @@ export * from "./image/image.component";
     StepBlockComponent,
     StepsComponent,
       DockedBarToolComponent,
-      DockbarComponent
+      DockbarComponent,
+    FileuploadComponent
   ],
   exports: [
     ButtonComponent,
@@ -226,7 +227,8 @@ export * from "./image/image.component";
     StepBlockComponent,
     StepsComponent,
     DockedBarToolComponent,
-    DockbarComponent
+    DockbarComponent,
+    FileuploadComponent
   ]
 })
 export class AmexioWidgetModule {
