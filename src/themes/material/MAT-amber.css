@@ -27,17 +27,17 @@ body{
 /* ----------------------------------- */
 /* START OF NAVBAR COMPONENT */
 /* ----------------------------------- */
-.bg-inverse {
+.amexio-appbar {
   background-color: #FFA000 !important;
 }
 /* ----------------------------------- */
 /* START OF CARD COMPONENT */
 /* ----------------------------------- */
-.card{
+.amexio-card{
   border-radius: 0px;
-  color: #FFFFFF;
+  color: black;
 }
-.card .card-header{
+.amexio-card .card-header{
   background-color: #FFC107;
   border-radius: 0px;
   font-size: 20px;
@@ -46,7 +46,7 @@ body{
   font-weight: 300;
   text-transform: capitalize;
 }
-.card .card-block{
+.amexio-card .card-block{
   border-radius: 0px;
   color: rgba(0,0,0,0.87);
   font-size: 13px;
@@ -55,7 +55,7 @@ body{
   padding-left: 16px;
   padding-right: 16px;
 }
-.card .card-footer{
+.amexio-card .card-footer{
   border-radius: 0px;
   border: none;
   background-color: #FFFFFF;
@@ -100,25 +100,25 @@ body{
   /*border-bottom: solid 1px  #E0E0E0 !important;*/
 }
 
-.amexio-sidenavbar-sidenavleft  .amexio-sidenavbar-subheader:last-child{
+.amexio-sidenav-left  .amexio-sidenavbar-subheader:last-child{
   border-bottom: solid 1px  #E0E0E0 !important;
 }
 
-.amexio-sidenavbar-sidenavleft  .amexio-sidenavbar-subheader span{
+.amexio-sidenav-left  .amexio-sidenavbar-subheader span{
   padding-right: 5px;
 }
 
-.amexio-sidenavbar-sidenavleft .amexio-sidenavbar-subheader:hover  {
+.amexio-sidenav-left .amexio-sidenavbar-subheader:hover  {
   background-color: #ffffff;
 }
-.amexio-sidenavbar-sidenavleft  .nav-item{
+.amexio-sidenav-left  .nav-item{
   border-bottom: none!important;
 }
-.amexio-sidenavbar-sidenavleft  .nav-item a{
+.amexio-sidenav-left  .nav-item a{
   text-decoration: none;
   color: rgba(0,0,0,0.87);
 }
-.amexio-sidenavbar-sidenavleft  .nav-item i{
+.amexio-sidenav-left  .nav-item i{
     padding-right: 38px;
 }
 .amexio-link-selected{
@@ -199,6 +199,11 @@ body{
   font-weight: 300;
   text-transform: capitalize;
 
+}
+
+.headerStyle .form-group {
+  margin:0px!important;
+  height: 0px!important;
 }
 
 .gridStyle{
@@ -911,28 +916,28 @@ DROPDOWN MENU OPTIONS STYLE
 /*-----------------------
 *** COMPONENT- DATAPOINTS ***
 -------------------------*/
-.datapoints{
+.amexio-datapoints{
   background-color: #FFF8E1;
   color: #FFC107;
 }
-.datapoints-north{
+.amexio-datapoints-title{
   color: #FFC107; font-size: 36px; font-weight: bold;
 }
 
-.datapoints-center{
+.amexio-datapoints-subtitle{
   font-size: 20px;
 }
 
-.datapoint-south{
+.amexio-datapoints-footer{
   background-color: #FFC107;
-  color: #ffffff;
+  color: black;
 }
 
-.datapoint-west{
+.amexio-datapoints-visual{
   background-color: #FFF8E1;
 }
 
-.datapoints-center-issue{
+.amexio-datapoints-subtitle-issue{
   font-size: 36px; font-weight: bold;
 }
 .ee-bullet-point{
@@ -942,22 +947,3 @@ DROPDOWN MENU OPTIONS STYLE
   font-size: medium;
   font-weight: 400;
 }
-/*Landing page navbar color*/
-.landing-page-navbar .bg-inverse{
-  background-color: #292b2c!important;
-}
-
-/*LANDING PAGE IMAGE*/
-.theme-image{
-  border: 1px solid rgba(0, 0, 0, .125);
-  border-radius: .0rem;
-  box-shadow: 5px 5px 5px #888888;
-
-}
-.theme-image:hover{
-  transform: scale(1.1);
-  box-shadow: 2px 2px 2px #000000;
-  z-index: 1;
-  transition: all 200ms ease-in;
-}
-
