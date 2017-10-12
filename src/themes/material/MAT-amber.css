@@ -69,7 +69,7 @@ body{
   min-height: 1000px;
   border-right: 1px solid #ddd;
 }
-.amexio-sidenavbar-sidenavleft{
+.amexio-sidenav-left{
   width: 100%;
   height: 100%;
   overflow:hidden;
@@ -77,12 +77,12 @@ body{
   /* IMPLEMENTED */
   background-color: #fff;
 }
-.amexio-sidenavbar-sidenavleft .navbar-nav{
+.amexio-sidenav-left .navbar-nav{
   width: 100%;
   margin: 0px;
   padding: 0px;
 }
-.amexio-sidenavbar-sidenavleft .nav-item{
+.amexio-sidenav-left .nav-item{
   list-style: none;
   display: block;
   font-size: 14px !important;
@@ -91,11 +91,11 @@ body{
   font-weight: 500!important;
   width: 100%!important;
 }
-.amexio-sidenavbar-sidenavleft  .nav-item:hover {
+.amexio-sidenav-left  .nav-item:hover {
   background-color: #eee;
   cursor: pointer;
 }
-.amexio-sidenavbar-sidenavleft  .amexio-sidenavbar-subheader{
+.amexio-sidenav-left  .amexio-sidenavbar-subheader{
   border-top: solid 1px #E0E0E0 !important;
   /*border-bottom: solid 1px  #E0E0E0 !important;*/
 }

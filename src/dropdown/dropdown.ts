@@ -34,44 +34,54 @@ declare var $: any;
     selector: 'amexio-dropdown',
     template: `
         <!-- Faux input to handle Bindings -->
-        <label *ngIf="fieldLabel">{{fieldLabel}}</label>
-        <input type="hidden"
-               (blur)="onBlur()"
-               [ngModel]="value"
-               (ngModelChange)="onChange($event)"
-        />
+        <div class="form-group amexio-dropdown">
+            <label *ngIf="fieldLabel">{{fieldLabel}}</label>
+            <input type="hidden"
+                   (blur)="onBlur()"
+                   [ngModel]="value"
+                   (ngModelChange)="onChange($event)"
+            />
 
-        <div class="dropdown">
+            <div class="dropdown">
 
-            <button [attr.disabled] = "disabled ? true: null" class="btn btn-secondary "  [style.width]="width" type="button" [attr.id]="elementId" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                <ng-container *ngIf="multiSelect">
-                    <span style="float: left;"> {{value != null || '' ? getMultiDisplayField(value) : placeholder}}</span>
-                    <span class="dropdown-toggle" style="float: right;"></span>
-                </ng-container>
+                <button [attr.disabled] = "disabled ? true: null" class="btn btn-secondary "  [style.width]="width" type="button" [attr.id]="elementId" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                    <ng-container *ngIf="multiSelect">
+                        <span style="float: left;"> {{value != null || '' ? getMultiDisplayField(value) : placeholder}}</span>
+                        <span class="dropdown-toggle" style="float: right;"></span>
+                    </ng-container>
 
-                <ng-container *ngIf="!multiSelect">
-                    <span style="float: left;">{{value != null || '' ? getDisplayField(value) : placeholder}}</span>
-                    <span class="dropdown-toggle" style="float: right;"></span>
-                </ng-container>
+                    <ng-container *ngIf="!multiSelect">
+                        <span style="float: left;">{{value != null || '' ? getDisplayField(value) : placeholder}}</span>
+                        <span class="dropdown-toggle" style="float: right;"></span>
+                    </ng-container>
 
-            </button>
-            <div class="dropdown-menu scrollable-options"  [style.width]="width" [attr.aria-labelledby]="elementId">
-                <input *ngIf="searchBox" type="text" class="dropdown-item form-control" (keyup)="onDropDownSearchKeyUp($event)"
-                       placeholder="Search"/>
-                <button class="dropdown-item" *ngFor="let row of filteredOptions"
-                        (click)="onUserSelectionChange(row[valueField],row[displayField],row)">
-                    {{row[displayField]}} <i class="fa fa-check pull-right" aria-hidden="true" *ngIf="row?.checked"></i>
                 </button>
+                <div class="dropdown-menu scrollable-options"  [style.width]="width" [attr.aria-labelledby]="elementId">
+                    <input *ngIf="searchBox" type="text" class="dropdown-item form-control" (keyup)="onDropDownSearchKeyUp($event)"
+                           placeholder="Search"/>
+                    <button class="dropdown-item" *ngFor="let row of filteredOptions"
+                            (click)="onUserSelectionChange(row[valueField],row[displayField],row)">
+                        {{row[displayField]}} <i class="fa fa-check pull-right" aria-hidden="true" *ngIf="row?.checked"></i>
+                    </button>
 
-                <ng-template *ngIf="filteredOptions.length < 1">
-                    <a class="dropdown-item disabled">No Options</a>
-                </ng-template>
+                    <ng-template *ngIf="filteredOptions.length < 1">
+                        <a class="dropdown-item disabled">No Options</a>
+                    </ng-template>
 
+                </div>
             </div>
         </div>
+      
 
     `,
+    styles:[
+        `            
+            .amexio-dropdown{
+                
+            }
+        `
+    ] ,
     providers : [CUSTOM_DROPDOWN_CONTROL_VALUE_ACCESSOR,BASE_IMPL_DROPDOWN_INPUT]
 })
 

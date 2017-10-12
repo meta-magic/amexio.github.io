@@ -14,7 +14,7 @@ import {
     
 
     <div *ngIf="showCard" class="amexio-card-padding">
-      <div class="card" [ngClass]="cClass">
+      <div class="card amexio-card" [ngClass]="cClass">
         <div *ngIf="enableHeader" class="card-header">
           <ng-content select="amexio-pane-header"></ng-content>
         </div>

@@ -22,6 +22,7 @@ export const BASE_IMPL_DATEPICKER_INPUT: any = {
 @Component({
   selector: 'amexio-date-time-picker',
   template: `
+      <div class="form-group">
     <ng-container *ngIf="fieldLabel">
       <label class="control-label">{{fieldLabel}}</label>
     </ng-container>
@@ -190,7 +191,7 @@ export const BASE_IMPL_DATEPICKER_INPUT: any = {
       </ng-container>
     </div>
 
-
+      </div>
 
   `, providers: [CUSTOM_DATEPICKER_INPUT_CONTROL_VALUE_ACCESSOR, BASE_IMPL_DATEPICKER_INPUT], styles: [`
 
@@ -246,8 +247,8 @@ export const BASE_IMPL_DATEPICKER_INPUT: any = {
       color: #adadad;
     }
     .amexio-datepicker-icon-style {
-      font-size: 20px;
-      padding: 5px;
+        font-size: 20px;
+        padding: 2px;
     }
   `]
 })

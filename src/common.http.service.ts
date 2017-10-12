@@ -19,7 +19,8 @@ export class CommonHttpService {
 
   filteredObject: any = [];
   isValid: boolean;
-
+  responseData : any;
+  parentRef : any;
   constructor(private http: Http) {
 
   }
@@ -102,7 +103,7 @@ export class CommonHttpService {
           invalidMsg['errorMsg'] = component.errorMsg;
         }
         invalidComponent.push({'componentName': component.fieldLabel , 'errorMsgs': invalidMsg});
-        invalidMsg = [];
+        invalidMsg = {};
         this.isValid = false;
         errorCounter++;
       }
@@ -111,7 +112,29 @@ export class CommonHttpService {
     return validationData;
   }
 
+  uploadFile(parentRef :any, serviceUrl: string, methodType:string,requestData: any){
+    this.parentRef = parentRef;
+    let requestJson = requestData;
+    let headers = new Headers({ "Access-Control-Allow-Origin":"*"});
+    let options = new RequestOptions({headers : headers,method : methodType});
+    if(methodType.toUpperCase() == "POST"){
+      this.http.post(serviceUrl,requestJson,options).subscribe(
+          response=>{
+            this.responseData = response.json();
+          },
+          error=>{
+          },
+          ()=>{
+            this.setData();
+          }
+      );
+    }
 
+  }
+
+  setData(){
+    this.parentRef.setData(this.responseData);
+  }
 
 
 
