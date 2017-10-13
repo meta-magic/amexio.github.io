@@ -177,7 +177,7 @@ export class StepsComponent implements OnInit, AfterContentInit {
   }
 
   ngAfterContentInit() {
-    if (this.stepBlockLocalData.length > 0) {
+    if (this.stepBlockLocalData && this.stepBlockLocalData.length > 0) {
       this.stepBlockArray = this.stepBlockLocalData;
     } else {
       this.stepBlockArray = this.stepBlocks.toArray();
