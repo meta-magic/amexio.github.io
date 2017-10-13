@@ -368,6 +368,9 @@ font-size: 100%;
   text-decoration:none;
   padding: 12px!important;
 }
+.nav-tabs .nav-link:hover{
+  border-color: transparent;
+}
 /*FOR ACTIVE TAB - SAGAR*/
 .nav-link.active{
   /* Background */
@@ -888,6 +891,6 @@ label{
 }
 
 /*DATE-TIME -COMPONENT*/
-.amexio-datepicker ,.dropdown-item{
+.amexio-datepicker ,.dropdown-item ,.dropdown-menu{
   color: rgba(255,255,255,0.70)!important;
 }
