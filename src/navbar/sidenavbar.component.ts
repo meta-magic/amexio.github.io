@@ -85,7 +85,7 @@ import {CommonHttpService} from "../common.http.service";
             transition: 0.5s;
             overflow: auto;
         }
-        .amexio-sidenavbar-sidenavleft {
+        .amexio-sidenav-left {
             height: 100%;
             width: 0;
             position: fixed;
@@ -99,7 +99,7 @@ import {CommonHttpService} from "../common.http.service";
         }
 
 
-        .amexio-sidenavbar-sidenavleft .nav-item{
+        .amexio-sidenav-left .nav-item{
             text-align: left;
             padding: 10px;
             border-bottom: 1px solid #dddddd;
@@ -148,7 +148,7 @@ import {CommonHttpService} from "../common.http.service";
         }
 
         @media screen and (max-height: 450px) {
-            .amexio-sidenavbar-sidenavleft {padding-top: 15px;}
+            .amexio-sidenav-left {padding-top: 15px;}
         }
         .amexio-sidenavbar-filter{
             padding-top: 5px;
@@ -265,7 +265,7 @@ export class SideNavBarComponent implements OnInit, AfterViewInit {
     //this is method is for loading css class for side menu position
     getSideNavbarClass(){
         if(!this.right && this.position!='relative' ){
-            this.amexioSidenavbarStr='amexio-sidenavbar-sidenavleft';
+            this.amexioSidenavbarStr='amexio-sidenav-left';
         }else if(this.right){
             this.amexioSidenavbarStr='amexio-sidenavbar-sidenavright';
         }else if(this.position=="relative"){

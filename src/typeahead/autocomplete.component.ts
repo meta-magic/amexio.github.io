@@ -35,19 +35,19 @@ export const BASE_IMPL_AUTO_COMPLETE : any = {
 
 @Component({
   selector: 'amexio-typeahead',
-  template : `    
-    <div class="form-group dropdown amexio-typeahead " data-toggle="dropdown" [ngClass]="{'show': showDropDown}">
-      <div class="row">
-          <div class="col-lg-12">
-              <label [attr.for]="elementId">{{fieldLabel}}</label>
-              <input type="search" class="form-control" [attr.aria-expanded]="showDropDown"
-                     [attr.id]="elementId"  (keyup)="onKeyUp($event)"
-                     [placeholder]="placeholder"
-                     (blur)="onBlur()"  [(ngModel)]="value" #inp>
-          </div>
-      
-<!--        <span [ngClass]="{'showIcon' : showDropDown,'hideIcon' : !showDropDown}" (click)="clearResult(inp)" class="glyphicon glyphicon-remove-circle searchIconPos"></span>-->
-      </div>
+  template : `
+      <div class="form-group">
+          
+     
+      <ng-container *ngIf="fieldLabel">
+          <label [attr.for]="elementId">{{fieldLabel}}</label>
+      </ng-container>
+    
+    <div class="dropdown amexio-typeahead " data-toggle="dropdown" [ngClass]="{'show': showDropDown}">
+        <input type="search" class="form-control" [attr.aria-expanded]="showDropDown"
+               [attr.id]="elementId"  (keyup)="onKeyUp($event)"
+               [placeholder]="placeholder"
+               (blur)="onBlur()"  [(ngModel)]="value" #inp>
      
       <ul class="dropdown-menu amexio-scrollable-options" style="width: 100%">
         <li *ngFor="let item of filteredResult" (click)="setValue(item[key],inp)" style="cursor: pointer;">
@@ -55,6 +55,7 @@ export const BASE_IMPL_AUTO_COMPLETE : any = {
         </li>
       </ul>
     </div>
+      </div>
   `,
   providers : [CUSTOM_AUTO_COMPLETE_CONTROL_VALUE_ACCESSOR, BASE_IMPL_AUTO_COMPLETE, CommonHttpService],
   styles : [
@@ -95,7 +96,10 @@ export const BASE_IMPL_AUTO_COMPLETE : any = {
           top: 0;
       }
       .amexio-typeahead{
-        
+          
+      }
+      .amexio-typeahead .form-control{
+          border: none;
       }
     `
   ]

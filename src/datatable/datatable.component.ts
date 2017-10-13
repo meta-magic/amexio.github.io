@@ -973,7 +973,7 @@ export class DataTableComponent implements OnInit, AfterContentInit, DoCheck, On
     rowClick(rowData: any, rowIndex: any) {
         rowIndex = 'row' + rowIndex;
         if (this.rowId) {
-            document.getElementById(this.rowId).style.backgroundColor = 'white';
+              document.getElementById(this.rowId).style.backgroundColor = 'white';
         }
         this.rowId = rowIndex;
         document.getElementById(rowIndex).style.backgroundColor = 'lightgray';
