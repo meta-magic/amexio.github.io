@@ -62,6 +62,8 @@ export class FileuploadComponent extends FormInputBase implements OnInit, AfterV
 
   @Input() popoverPlacement: string;
 
+  @Input() requestParamName :string;
+
   uploadedFileName: string;
 
   constructor(private commonHttpService: CommonHttpService) {
@@ -80,7 +82,10 @@ export class FileuploadComponent extends FormInputBase implements OnInit, AfterV
     let fileList: FileList = event.target.files;
     let formData = new FormData();
     for (let i = 0; i < fileList.length; i++) {
-      formData.append('file', fileList[i]);
+      if(!this.requestParamName){
+        this.requestParamName="file";
+      }
+      formData.append(this.requestParamName, fileList[i]);
     }
     this.commonHttpService.uploadFile(this, this.httpUrl, this.httpMethod, formData);
     if (fileList.length == 1) {
