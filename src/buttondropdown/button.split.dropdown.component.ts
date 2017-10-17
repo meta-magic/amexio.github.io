@@ -31,7 +31,7 @@ import {DropdownItemComponent} from './dropdown.item.component';
         </button>
         <ul class="dropdown-menu">
             <ng-container *ngFor="let itemData of dropdownItemData">
-                <a class="dropdown-item" [ngClass]="{'disabled':itemData.disabled}" (click)="itemClick($event,itemData)">
+                <a class="dropdown-item amexio-dropdown-records" [ngClass]="{'disabled':itemData.disabled}" (click)="itemClick($event,itemData)">
                     {{itemData.label}}
                     <ng-container *ngIf="itemData.icon!=null">
                         <i [class]="itemData.iconStyleClass" aria-hidden="true"></i>
@@ -41,7 +41,13 @@ import {DropdownItemComponent} from './dropdown.item.component';
         </ul>
     </div>
     
-  `,
+  `,styles:[
+      `
+    .amexio-dropdown-records{
+    }
+        
+    `
+  ]
 })
 export class ButtonSplitDropdownComponent implements OnInit, AfterContentInit {
 

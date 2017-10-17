@@ -51,7 +51,7 @@ declare var $;
       <b>{{title}}</b>
       </span>
                         <!--Datatable Top Toolbar-->
-                        <span class="col-xs-12 amexio-datatable-opertions">
+                        <span class="col-xs-12 amexio-grid-opertions">
             <div class="btn-group btn-group-sm" role="group" aria-label="Button group with nested dropdown">
                <ng-container *ngIf="groupByColumn && !smallScreen">
             <amexio-dropdown [(ngModel)]="groupByColumnIndex"
@@ -69,8 +69,8 @@ declare var $;
                aria-expanded="false">
             <span style="font-size: 18px;">&#x2630;</span>
             </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" *ngFor="let cols of columns;let i = index;">
+            <div class="dropdown-menu amexio-dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item amexio-dropdown-records" *ngFor="let cols of columns;let i = index;">
             <label class="form-check-label">
             <input [attr.id]="headerCheckboxId+i" class="amexio-checkbox" type="checkbox"
                    (click)="setColumnVisiblity(cols.dataIndex)" [attr.checked]="!cols.hidden ? true: null"> 
@@ -104,7 +104,7 @@ declare var $;
             <table class="table table-sm">
                 <tr [ngClass]="tableHeadercClass" *ngIf="filtering && !groupByColumn">
                     <ng-container *ngIf="!smallScreen">
-                        <td *ngIf="checkboxSelect" class="amexio-datatable-checkbox"></td>
+                        <td *ngIf="checkboxSelect" class="amexio-grid-checkbox"></td>
                         <td *ngFor="let cols of columns let index=index" [hidden]="cols.hidden">
                             <amexio-filter-component [column]="cols"
                                                      (filterObject)="getFilteredData($event)"></amexio-filter-component>
@@ -122,7 +122,7 @@ declare var $;
             </table>
             <table class="table table-sm  table-hover  table-bordered ">
                 <tr *ngIf="!smallScreen">
-                    <td *ngIf="checkboxSelect" class="amexio-datatable-checkbox">
+                    <td *ngIf="checkboxSelect" class="amexio-grid-checkbox">
                         <input [attr.id]="headerCheckboxId" class="amexio-checkbox" type="checkbox"
                                (click)="selectAllVisibleRows()">
                         <label [attr.for]="headerCheckboxId"></label>
@@ -154,7 +154,7 @@ declare var $;
                         <tr  [ngClass]="{'hiderow' : !(viewRows?.length > 0),'showrow' : viewRows?.length > 0}">
                             <td [attr.colspan]="columns?.length + (checkboxSelect? 1: 0)" width="100%">
                                 <div class="list-group" *ngFor="let row of viewRows;let i=index;">
-                                    <div class="amexio-datatable-groupbyseperator" (click)="iconSwitch(row)" style="cursor: pointer;" data-toggle="collapse" [attr.data-target]="'#'+i" data-parent="#menu">
+                                    <div class="amexio-grid-groupby-seperator" (click)="iconSwitch(row)" style="cursor: pointer;" data-toggle="collapse" [attr.data-target]="'#'+i" data-parent="#menu">
                                         <ng-container *ngIf="!row.expanded">&#x25B6;</ng-container>
                                         <ng-container *ngIf="row.expanded">&#x25BC;</ng-container>
                                         <label>{{row.group}}</label>
@@ -169,7 +169,7 @@ declare var $;
                                             <tr [ngClass]="tableDatacClass"  *ngFor="let rows of row.groupData let rowIndex = index"
                                                 id="{{'row'+i+rowIndex}}"
                                                 (click)="rowClick(rows, i+''+rowIndex)">
-                                                <td *ngIf="checkboxSelect" class="amexio-datatable-checkbox">
+                                                <td *ngIf="checkboxSelect" class="amexio-grid-checkbox">
                                                     <input class="amexio-checkbox" type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}"
                                                            [attr.checked]="selectAll? true: null" (click)="setSelectedRow(rows, $event)">
                                                     <label for="checkbox-{{elementId}}-{{rowIndex}}"></label>
@@ -204,7 +204,7 @@ declare var $;
                             style="cursor: pointer; height: 50px;" *ngFor="let row of viewRows let rowIndex = index "
                             id="{{'row'+rowIndex}}"
                             (click)="rowClick(row, rowIndex)" [class.info]="isSelected(rowIndex)">
-                            <td *ngIf="checkboxSelect" class="amexio-datatable-checkbox">
+                            <td *ngIf="checkboxSelect" class="amexio-grid-checkbox">
                                 <input class="amexio-checkbox" type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}"
                                        [attr.checked]="selectAll? true: null"
                                        (click)="setSelectedRow(row, $event)">
@@ -235,7 +235,7 @@ declare var $;
                                 <div class="list-group amexio-datatable-list-group" *ngFor="let row of viewRows;let i=index;">
               <span (click)="iconSwitch(row)" style="cursor: pointer;" data-toggle="collapse" [attr.data-target]="'#'+i"
                     data-parent="#menu">
-                <span style="width: 100%" class="fa amexio-datatable-groupbyseperator"
+                <span style="width: 100%" class="fa amexio-grid-groupby-seperator"
                       [ngClass]="{'fa-caret-down':row.expanded,'fa-caret-right':!row.expanded}">
                   {{row.group}}
                       <span style="float: right" class="badge badge-default badge-pill">{{row.groupData?.length}}</span>
@@ -248,7 +248,7 @@ declare var $;
                                             <tr class="amexio-datatable-row" *ngFor="let rows of row.groupData let rowIndex = index"
                                                 id="{{'row'+i+rowIndex}}"
                                                 (click)="rowClick(rows, i+''+rowIndex)">
-                                                <td *ngIf="checkboxSelect" class="amexio-datatable-checkbox">
+                                                <td *ngIf="checkboxSelect" class="amexio-grid-checkbox">
                                                     <input class="amexio-checkbox" type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}"
                                                            [attr.checked]="selectAll? true: null" (click)="setSelectedRow(rows, $event)">
                                                     <label for="checkbox-{{elementId}}-{{rowIndex}}"></label>
@@ -281,7 +281,7 @@ declare var $;
                         <tr [ngClass]="{'hiderow' : !(viewRows?.length > 0),'showrow' : viewRows?.length > 0}"
                             style="cursor: pointer" *ngFor="let row of viewRows let rowIndex = index " id="{{'row'+rowIndex}}"
                             (click)="rowClick(row, rowIndex)" [class.info]="isSelected(rowIndex)">
-                            <td *ngIf="checkboxSelect" class="amexio-datatable-checkbox">
+                            <td *ngIf="checkboxSelect" class="amexio-grid-checkbox">
                                 <input class="amexio-checkbox" type="checkbox" id="checkbox-{{elementId}}-{{rowIndex}}"
                                        [attr.checked]="selectAll? true: null"
                                        (click)="setSelectedRow(row, $event)">
@@ -309,21 +309,21 @@ declare var $;
 
             <!--Datatable Bottom ToolBar-->
             <div *ngIf="(data && data.length > pageSize)" class="row pagination-outer" style="float: right;">
-                <div class="pagination"> <span style="padding-top: 10px">Page no</span>
-                    <span class="col-xs-12 amexio-datatable-opertions">
+                <div class="amexio-grid-pagination"> <span style="padding-top: 10px">Page no</span>
+                    <span class="col-xs-12 amexio-grid-opertions">
           <div class="btn-group btn-group-sm dropup" role="group" aria-label="Button group with nested dropdown">
           <ng-container *ngIf="maxPage > 1">
          <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                  aria-expanded="false">
           {{currentPage}}
           </button>
-          <div class="dropdown-menu">
-          <a *ngFor="let row of pageNumbers let pageNo = index " class="dropdown-item"
+          <div class="dropdown-menu amexio-dropdown-menu">
+          <a *ngFor="let row of pageNumbers let pageNo = index " class="dropdown-item amexio-dropdown-records"
              (click)="setPageNo(pageNo+1)">{{pageNo + 1}}</a>
           </div>
           <span style="padding-top: 10px;padding-left: 5px">
             
-            <!--Pagination Group By Column -->
+            <!--amexio-grid-pagination Group By Column -->
           <ng-container *ngIf="currentPage==1 && groupByColumn">
           1- {{pageSize}} of {{this.data.length}}
           </ng-container>
@@ -337,7 +337,7 @@ declare var $;
           {{(pageSize * (currentPage - 1)) + 1}} - {{this.data.length}} of {{this.data.length}}
           </ng-container>
 
-              <!--Pagination without Group By Column -->
+              <!--amexio-grid-pagination without Group By Column -->
             <ng-container *ngIf="currentPage==1 && !groupByColumn">
           1- {{pageSize}} of {{this.data.length}}
           </ng-container>
@@ -380,7 +380,7 @@ declare var $;
             font-size: large;
         }
 
-        .amexio-datatable-opertions {
+        .amexio-grid-opertions {
             float: right;
             cursor: pointer;
         }
@@ -426,7 +426,7 @@ declare var $;
             background-color: #eee;
         }
 
-        .amexio-datatable-groupbyseperator {
+        .amexio-grid-groupby-seperator {
             height: 40px;
             border-bottom: 1px solid #E0E0E0 !important;
             padding: 12px 24px 0px 5px;
@@ -437,7 +437,7 @@ declare var $;
             line-height: 16px;
         }
 
-        .amexio-datatable-checkbox {
+        .amexio-grid-checkbox {
             width: 50px !important;
             vertical-align: middle !important;
         }
@@ -447,15 +447,20 @@ declare var $;
             border-right: 0;
             word-wrap: break-word;
         }
-        .pagination {
+        .amexio-grid-pagination {
             color: #rgba(0, 0, 0, 0.54);
             float: right!important;
         }
-        .pagination span{
+        .amexio-grid-pagination span{
             margin-right: 20px;
             display: inline-block;
             color: rgba(0,0,0,0.54);
             float:left;
+        }
+        .amexio-dropdown-menu{
+            
+        }
+        .amexio-dropdown-records{
         }
 
     `]

@@ -31,7 +31,7 @@ import {CommonHttpService} from "../common.http.service";
                 <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
-                  <a class="dropdown-item" *ngFor="let opt of filterOptionData" (click)="filterOption(opt)">{{opt.key}}&nbsp;<i [class]="opt.checkedStatus" aria-hidden="true"></i></a>
+                  <a class="dropdown-item amexio-dropdown-records" *ngFor="let opt of filterOptionData" (click)="filterOption(opt)">{{opt.key}}&nbsp;<i [class]="opt.checkedStatus" aria-hidden="true"></i></a>
                 </div>
               </div>
             </div>
@@ -51,7 +51,12 @@ import {CommonHttpService} from "../common.http.service";
       </div>
 
 
-  `,
+  `,styles:[
+      `
+        .amexio-dropdown-records{
+        }
+    `
+  ],
   providers: [CommonHttpService]
 })
 export class FilterTreeViewComponent implements OnInit, AfterViewInit{

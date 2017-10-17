@@ -22,9 +22,9 @@ import {CommonHttpService} from '../common.http.service';
       <div class="row amexio-itemselector" (window:resize)="onResize($event)">
           <div  [style.width]="itemSelectorWidth">
               <div class="list-group" [style.height]="itemSelectorHeight">
-                  <button type="button" class="list-group-item amexio-itemselector-available-btn">Available</button>
+                  <button type="button" class="list-group-item amexio-itemselector-header">Available</button>
                   <div class="amexio-itemselector-action-list" >
-                      <button type="button" class="list-group-item list-group-item-action"  *ngFor="let data of availableData; let i = index" (click)="itemCkick(data,i)">{{data[displayField]}}</button>
+                      <button type="button" class="list-group-item list-group-item-action amexio-itemselector-records"  *ngFor="let data of availableData; let i = index" (click)="itemCkick(data,i)">{{data[displayField]}}</button>
                   </div>
 
               </div>
@@ -59,9 +59,9 @@ import {CommonHttpService} from '../common.http.service';
           </div>
           <div [style.width]="itemSelectorWidth">
               <div class="list-group" [style.height]="itemSelectorHeight">
-                  <button type="button" class="list-group-item amexio-itemselector-available-btn">Selected</button>
+                  <button type="button" class="list-group-item amexio-itemselector-header">Selected</button>
                   <div class="amexio-itemselector-action-list" >
-                      <button type="button" class="list-group-item list-group-item-action"  *ngFor="let data of selectedData; let i = index" (click)="itemCkick(data,i)">{{data[displayField]}}</button>
+                      <button type="button" class="list-group-item list-group-item-action amexio-itemselector-records"  *ngFor="let data of selectedData; let i = index" (click)="itemCkick(data,i)">{{data[displayField]}}</button>
                   </div>
               </div>
           </div>
@@ -73,7 +73,7 @@ import {CommonHttpService} from '../common.http.service';
           width: 100%;
           overflow: hidden;
       }
-      .amexio-itemselector-available-btn{
+      .amexio-itemselector-header{
           background-color:#cecece;
       }
       .amexio-itemselector-action-list{
@@ -92,6 +92,9 @@ import {CommonHttpService} from '../common.http.service';
       }
       .amexio-itemselector-width{
           width: 100%;
+      }
+      .amexio-itemselector-records{
+          
       }
   `],
   providers: [CommonHttpService]

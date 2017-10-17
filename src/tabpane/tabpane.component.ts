@@ -17,7 +17,7 @@ declare var $: any;
     </div>
     
     <div class="amexio-tabpane-wrapper" [attr.id]="'amexio-tabpane-wrapper-'+elementId">
-      <ul class="nav nav-tabs" role="tablist" [attr.id]="'list-'+elementId">
+      <ul class="nav nav-tabs amexio-tabs" role="tablist" [attr.id]="'list-'+elementId">
         <li class="nav-item" *ngFor="let tab of tabs" >
           <a [class]="getTabClass(tab)" data-toggle="tab"  role="tab" [ngClass]="{'active':tab.active}" style="cursor: pointer;" (click)="activateTab(tab.elementId)" [attr.id]="tab.elementId" >&nbsp;{{tab.title}}&nbsp;&nbsp;<a *ngIf="closable" id="'closable-'+{{tab.elementId}}" class="amexio-tabpane-closeicon-position" (click)="closeTab(tab.elementId)">&times;</a></a>
         </li>
@@ -80,6 +80,9 @@ declare var $: any;
       .amexio-tabpane-closeicon-position{
           vertical-align: top;
           cursor: pointer;
+      }
+      .amexio-tabs{
+          
       }
   `]
 
