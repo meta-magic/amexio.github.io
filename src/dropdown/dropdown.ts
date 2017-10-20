@@ -57,16 +57,16 @@ declare var $: any;
                     </ng-container>
 
                 </button>
-                <div class="dropdown-menu scrollable-options"  [style.width]="width" [attr.aria-labelledby]="elementId">
-                    <input *ngIf="searchBox" type="text" class="dropdown-item form-control" (keyup)="onDropDownSearchKeyUp($event)"
+                <div class="dropdown-menu amexio-dropdown-menu scrollable-options"  [style.width]="width" [attr.aria-labelledby]="elementId">
+                    <input *ngIf="searchBox" type="text" class="dropdown-item amexio-dropdown-records form-control" (keyup)="onDropDownSearchKeyUp($event)"
                            placeholder="Search"/>
-                    <button class="dropdown-item" *ngFor="let row of filteredOptions"
+                    <button class="dropdown-item amexio-dropdown-records" *ngFor="let row of filteredOptions"
                             (click)="onUserSelectionChange(row[valueField],row[displayField],row)">
                         {{row[displayField]}} <i class="fa fa-check pull-right" aria-hidden="true" *ngIf="row?.checked"></i>
                     </button>
 
                     <ng-template *ngIf="filteredOptions.length < 1">
-                        <a class="dropdown-item disabled">No Options</a>
+                        <a class="dropdown-item amexio-dropdown-records disabled">No Options</a>
                     </ng-template>
 
                 </div>
@@ -79,6 +79,11 @@ declare var $: any;
         `            
             .amexio-dropdown{
                 
+            }
+            .amexio-dropdown-menu{
+                
+            }
+            .amexio-dropdown-records{
             }
         `
     ] ,

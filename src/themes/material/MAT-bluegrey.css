@@ -31,6 +31,11 @@ body{
 .material-icons.md-light { color: rgba(255, 255, 255, 1); }
 .material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
 
+/*feedBack icon For form-fields*/
+.has-feedback-custom{
+  position: static!important;
+}
+
 /* ----------------------------------- */
 /* START OF CARD COMPONENT */
 /* ----------------------------------- */
@@ -601,7 +606,7 @@ label {
 .dropdown{
   border-bottom: 2px solid rgba(0,0,0,0.42) !important;
 }
-.dropdown-item:hover{
+.amexio-dropdown-records:hover{
 }
 
 .input-group-addon{
@@ -790,7 +795,7 @@ pagination-outer {
 /* ----------------------------------- */
 /* DATA GRID CHECKBOX */
 /* ----------------------------------- */
-.amexio-datatable-checkbox{
+.amexio-grid-checkbox{
   padding-left: 25px!important;
   width: 50px!important;
 }

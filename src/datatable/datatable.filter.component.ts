@@ -31,7 +31,7 @@ declare var $;
 
                                 <ng-container *ngFor="let opt of filterOptions">
                                     <ng-container *ngIf="opt.type===column.dataType">
-                                        <a class="dropdown-item" (click)="selectedOption(column,opt)" >{{opt.key}}&nbsp;<i [class]="opt.checkedStatus" aria-hidden="true"></i></a>
+                                        <a class="dropdown-item amexio-dropdown-records" (click)="selectedOption(column,opt)" >{{opt.key}}&nbsp;<i [class]="opt.checkedStatus" aria-hidden="true"></i></a>
                                     </ng-container>
                                 </ng-container>
                             </div>
@@ -51,7 +51,7 @@ declare var $;
                             <div class="dropdown-menu dropdown-menu-right">
                                 <ng-container *ngFor="let opt of filterOptions">
                                     <ng-container *ngIf="opt.type===column.dataType">
-                                        <a class="dropdown-item" (click)="selectedOption(column,opt)" >{{opt.key}}&nbsp;<i [class]="opt.checkedStatus" aria-hidden="true"></i></a>
+                                        <a class="dropdown-item amexio-dropdown-records" (click)="selectedOption(column,opt)" >{{opt.key}}&nbsp;<i [class]="opt.checkedStatus" aria-hidden="true"></i></a>
                                     </ng-container>
                                 </ng-container>
                             </div>
@@ -63,7 +63,12 @@ declare var $;
                 </ng-container>
             </div>
         </div>
-    `,
+    `,styles:[
+        `
+            .amexio-dropdown-records{
+            }
+        `
+    ]
 })
 export class FilterComponent implements OnInit {
     @Input() column: any;

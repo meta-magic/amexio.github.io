@@ -266,7 +266,7 @@ font-size: 100%;
   padding: 0px 24px 0px 24px!important;
   text-align: left;
 }
-.amexio-datatable-checkbox{
+.amexio-grid-checkbox{
   padding-left: 25px!important;
   width: 50px!important;
 }
@@ -367,6 +367,9 @@ font-size: 100%;
   text-transform: uppercase;
   text-decoration:none;
   padding: 12px!important;
+}
+.nav-tabs .nav-link:hover{
+  border-color: transparent;
 }
 /*FOR ACTIVE TAB - SAGAR*/
 .nav-link.active{
@@ -888,6 +891,6 @@ label{
 }
 
 /*DATE-TIME -COMPONENT*/
-.amexio-datepicker ,.dropdown-item{
+.amexio-datepicker ,.amexio-dropdown-records ,.dropdown-menu{
   color: rgba(255,255,255,0.70)!important;
 }

@@ -38,7 +38,7 @@ import {CommonHttpService} from '../common.http.service';
                     <span *ngIf="enableCheckBox">
                          <input type="checkbox" [checked]="'checked'?treeData.checked:null" (click)="emitCheckedData(treeData)"/>                    
                       </span>
-                    <span [ngClass]="(treeData.selected && !treeData.children)? 'amexio-treeview-node-selected' : 'amexio-treeview-node'" (click)="emitData(treeData)">
+                    <span [ngClass]="(treeData.selected && !treeData.children)? 'amexio-treeview-records-selected' : 'amexio-treeview-records'" (click)="emitData(treeData)">
                         <ng-container *ngIf="templates == null">
                           <label >{{treeData.text}}</label>
                         </ng-container>
@@ -58,7 +58,7 @@ import {CommonHttpService} from '../common.http.service';
 
                                 <span *ngIf="enableCheckBox"><input type="checkbox" [checked]="'checked'?leaf.checked:null" (click)="emitCheckedData(leaf)"/></span>
 
-                                <span [ngClass]="(leaf.selected && !leaf.children)? 'amexio-treeview-node-selected' : 'amexio-treeview-node'" (click)="emitData(leaf)">
+                                <span [ngClass]="(leaf.selected && !leaf.children)? 'amexio-treeview-records-selected' : 'amexio-treeview-records'" (click)="emitData(leaf)">
                                     <ng-container *ngIf="templates == null"><label>{{leaf.text}}</label></ng-container>
                                     <ng-template *ngIf="templates != null" [ngTemplateOutlet]="parentTmp" [ngOutletContext]="{ $implicit: { text: leaf.text }, icon: leaf.icon, node : leaf }"></ng-template>
                               </span>
@@ -79,16 +79,16 @@ import {CommonHttpService} from '../common.http.service';
  A Style Sheet for all form inputs common used classes
  */
 
-    .amexio-treeview-node{
+    .amexio-treeview-records{
         width: 100%;
     }
 
-    .amexio-treeview-node:hover{
+    .amexio-treeview-records:hover{
         color: #ffffff;
         background-color: #dddddd;
     }
 
-    .amexio-treeview-node-selected{
+    .amexio-treeview-records-selected{
         width: 100%;
         color: #ffffff;
         background-color: #dddddd;

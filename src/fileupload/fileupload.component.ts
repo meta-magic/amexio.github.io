@@ -81,18 +81,21 @@ export class FileuploadComponent extends FormInputBase implements OnInit, AfterV
   uploadFile(event: any) {
     let fileList: FileList = event.target.files;
     let formData = new FormData();
-    for (let i = 0; i < fileList.length; i++) {
-      if(!this.requestParamName){
-        this.requestParamName="file";
+    if(fileList){
+      for (let i = 0; i < fileList.length; i++) {
+        if(!this.requestParamName){
+          this.requestParamName="file";
+        }
+        formData.append(this.requestParamName, fileList[i]);
       }
-      formData.append(this.requestParamName, fileList[i]);
+      this.commonHttpService.uploadFile(this, this.httpUrl, this.httpMethod, formData);
+      if (fileList.length == 1) {
+        this.uploadedFileName = fileList[0].name;
+      } else if (fileList.length > 1) {
+        this.uploadedFileName = fileList.length + ' files';
+      }
     }
-    this.commonHttpService.uploadFile(this, this.httpUrl, this.httpMethod, formData);
-    if (fileList.length == 1) {
-      this.uploadedFileName = fileList[0].name;
-    } else if (fileList.length > 1) {
-      this.uploadedFileName = fileList.length + ' files';
-    }
+
   }
 
 }

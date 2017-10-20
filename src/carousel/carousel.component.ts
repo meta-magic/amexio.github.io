@@ -74,7 +74,7 @@ export class CarouselComponent implements OnInit {
 
     constructor(private carouselService: CommonHttpService) {
         this.elementId = 'scroll' + Math.round(Math.random() * 200);
-        this.className = 'carousel slide';
+        this.className = 'carousel amexio-carousel slide';
     }
 
     ngOnInit() {
