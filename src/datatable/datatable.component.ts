@@ -128,7 +128,7 @@ declare var $;
                         <label [attr.for]="headerCheckboxId"></label>
                     </td>
                     <td style="height: 50px;vertical-align: middle" [ngClass]="tableHeadercClass"
-                        *ngFor="let cols of columns let index=index" [hidden]="cols.hidden" (click)="sortOnColHeaderClick(cols)">
+                        *ngFor="let cols of columns let index=index" [hidden]="cols.hidden" (click)="sortOnColHeaderClick(cols, $event)">
 
                         <!-- If user hasnt embedded view -->
                         <ng-container *ngIf="!cols?.headerTemplate"><b>{{cols.text}}</b></ng-container>
@@ -516,6 +516,12 @@ export class DataTableComponent implements OnInit, AfterContentInit, DoCheck, On
 
     @Input() tableDatacClass: string;
 
+    @Input() localColumnData: any;
+
+    @Output() onColumnClickEvent: EventEmitter<any> = new EventEmitter<any>();
+
+    @Output() columnDataEvent: EventEmitter<any> = new EventEmitter<any>();
+
     columns: any[];
 
     data: any[];
@@ -564,6 +570,8 @@ export class DataTableComponent implements OnInit, AfterContentInit, DoCheck, On
 
     previousData : any;
 
+    columnPreviewData: any;
+
     @ContentChildren(ColumnComponent) columnRef: QueryList<ColumnComponent>;
 
     constructor(private dataTableSevice: CommonHttpService, private cd: ChangeDetectorRef) {
@@ -578,7 +586,7 @@ export class DataTableComponent implements OnInit, AfterContentInit, DoCheck, On
         this.smallScreen = false;
         this.sortBy = -1;
         this.randomIDCheckALL = 'checkall-' + Math.floor(Math.random() * 90000) + 10000;
-        this.headerCheckboxId = "checkbox-header" + Math.floor(Math.random() * 90000) + 10000;
+        this.headerCheckboxId = 'checkbox-header' + Math.floor(Math.random() * 90000) + 10000;
     }
 
     ngOnInit() {
@@ -598,12 +606,20 @@ export class DataTableComponent implements OnInit, AfterContentInit, DoCheck, On
             this.previousData = JSON.parse(JSON.stringify(this.dataTableBindData));
             this.setData(this.dataTableBindData);
         }
+        if (this.localColumnData && this.localColumnData.length > 0 ) {
+            this.columnPreviewData = JSON.parse(JSON.stringify(this.localColumnData));
+            this.columns = this.localColumnData;
+        }
     }
 
     ngDoCheck(){
-        if(JSON.stringify(this.previousData) != JSON.stringify(this.dataTableBindData)){
+        if (JSON.stringify(this.previousData) != JSON.stringify(this.dataTableBindData)){
             this.previousData = JSON.parse(JSON.stringify(this.dataTableBindData));
             this.setData(this.dataTableBindData);
+        }
+        if (JSON.stringify(this.columnPreviewData) != JSON.stringify(this.localColumnData)) {
+            this.columnPreviewData = JSON.parse(JSON.stringify(this.localColumnData));
+            this.columns = this.localColumnData;
         }
     }
 
@@ -622,7 +638,17 @@ export class DataTableComponent implements OnInit, AfterContentInit, DoCheck, On
 
 
     ngAfterContentInit() {
-        this.createConfig();
+        if (this.localColumnData && this.localColumnData.length > 0) {
+            this.columns = this.localColumnData;
+        } else {
+            this.createConfig();
+        }
+        this.dropdownData = {
+            'response': {
+                'data': this.columns
+            }
+        };
+
     }
 
     createConfig() {
@@ -637,11 +663,6 @@ export class DataTableComponent implements OnInit, AfterContentInit, DoCheck, On
             this.summaryData.push(0);
             this.summary.push({summaryType: column.summaryType, summaryCaption: column.summaryCaption, data: []});
         }
-        this.dropdownData = {
-            'response': {
-                'data': this.columns
-            }
-        };
 
     }
 
@@ -818,8 +839,8 @@ export class DataTableComponent implements OnInit, AfterContentInit, DoCheck, On
     renderData() {
         //calculate page no for pagination
         if (this.data) {
-            this.maxPage=0;
-            this.pageNumbers=[];
+            this.maxPage = 0;
+            this.pageNumbers = [];
             if (this.data.length > (1 * this.pageSize)) {
                 this.maxPage = Math.floor((this.data.length / this.pageSize));
                 if ((this.data.length % this.pageSize) > 0) {
@@ -954,7 +975,9 @@ export class DataTableComponent implements OnInit, AfterContentInit, DoCheck, On
         this.renderData();
     }
 
-    sortOnColHeaderClick(sortCol: any) {
+    sortOnColHeaderClick(sortCol: any, event: any) {
+       this.onColumnClickEvent.emit(event);
+       this.columnDataEvent.emit(sortCol);
         if (this.sortBy === -1) {
             this.sortBy = 1;
         } else if (this.sortBy === 1) {
