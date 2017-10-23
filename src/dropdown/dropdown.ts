@@ -10,7 +10,7 @@
  * Author - Pratik Kelwalkar
  *
  */
-import {AfterViewInit, Component, EventEmitter, forwardRef, Input, OnInit, Output} from '@angular/core';
+import {AfterViewInit, Component, DoCheck, EventEmitter, forwardRef, Input, OnInit, Output} from '@angular/core';
 import {FormInputBase} from "../baseclass/form.base.class";
 import {CommonHttpService} from "../common.http.service";
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
@@ -90,7 +90,7 @@ declare var $: any;
     providers : [CUSTOM_DROPDOWN_CONTROL_VALUE_ACCESSOR,BASE_IMPL_DROPDOWN_INPUT]
 })
 
-export class DropDownComponent extends FormInputBase implements OnInit, ControlValueAccessor {
+export class DropDownComponent extends FormInputBase implements OnInit, ControlValueAccessor,DoCheck {
 
     @Input()    dataReader : string;
 
@@ -107,14 +107,8 @@ export class DropDownComponent extends FormInputBase implements OnInit, ControlV
     @Input()    multiSelect : boolean;
 
     @Input()    disabled: boolean;
-    /*
-     @Input()    maxMultiSelect : string;
-
-     @Input()    multiSelectHelp : boolean;*/
 
     @Input()    searchBox : boolean;
-
-    /*  @Input()    multiCountDisplay : string;*/
 
     @Input()    width     : string;
 
@@ -129,6 +123,8 @@ export class DropDownComponent extends FormInputBase implements OnInit, ControlV
     responseData : any;
 
     nonFilteredRowData : any[] = [];
+
+    previousData : any;
 
     constructor(private amxHttp: CommonHttpService) {
         super();
@@ -154,6 +150,14 @@ export class DropDownComponent extends FormInputBase implements OnInit, ControlV
             );
 
         }else if(this.data){
+            this.previousData = JSON.parse(JSON.stringify(this.data));
+            this.setData(this.data);
+        }
+    }
+
+    ngDoCheck(){
+        if(JSON.stringify(this.previousData) != JSON.stringify(this.data)){
+            this.previousData = JSON.parse(JSON.stringify(this.data));
             this.setData(this.data);
         }
     }
