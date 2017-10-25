@@ -143,7 +143,9 @@ export class CheckBoxGroup implements  OnInit, DoCheck {
     }
 
     ngOnInit() {
-        this.calculatedColSize = CHECK_COLUMN_SIZE + this.column;
+        if(this.column){
+            this.calculatedColSize = CHECK_COLUMN_SIZE + this.column;
+        }
         if (this.httpMethod && this.httpUrl) {
             this.amxHttp.fetchData(this.httpUrl, this.httpMethod).subscribe(
                 response => {
