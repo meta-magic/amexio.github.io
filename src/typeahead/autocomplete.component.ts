@@ -43,14 +43,14 @@ export const BASE_IMPL_AUTO_COMPLETE : any = {
           <label [attr.for]="elementId">{{fieldLabel}}</label>
       </ng-container>
     
-    <div class="dropdown amexio-typeahead " data-toggle="dropdown" [ngClass]="{'show': showDropDown}">
+    <div class="dropdown amexio-dropdown amexio-typeahead " data-toggle="dropdown" [ngClass]="{'show': showDropDown}">
         <input type="search" class="form-control" [attr.aria-expanded]="showDropDown"
                [attr.id]="elementId"  (keyup)="onKeyUp($event)"
                [placeholder]="placeholder"
                (blur)="onBlur()"  [(ngModel)]="value" #inp>
      
-      <ul class="dropdown-menu amexio-scrollable-options" style="width: 100%">
-        <li *ngFor="let item of filteredResult" (click)="setValue(item[key],inp)" style="cursor: pointer;">
+      <ul class="dropdown-menu amexio-dropdown-menu amexio-scrollable-options" style="width: 100%">
+        <li class="amexio-dropdown-records" *ngFor="let item of filteredResult" (click)="setValue(item[key],inp)" style="cursor: pointer;">
             {{item[key]}}
         </li>
       </ul>

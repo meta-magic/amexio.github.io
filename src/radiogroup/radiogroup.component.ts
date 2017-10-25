@@ -21,7 +21,6 @@ export const COLUMN_SIZE = 'col-lg-';
 
         <ng-container  *ngIf="enableBoxStyle">
             <div class="form-group">
-                <br>
                 <label  [attr.for]="elementId">{{fieldLabel}}</label>
 
                 <div class="" [ngClass]="{'row':column || column!='','list-group':!column ||column==''}">
@@ -42,7 +41,6 @@ export const COLUMN_SIZE = 'col-lg-';
 
         <ng-container *ngIf="!enableBoxStyle">
             <div class="form-group">
-                <br>
                 <label  [attr.for]="elementId">{{fieldLabel}}</label>
 
                 <div class="" [ngClass]="{'row':column || column!='','list-group':!column ||column==''}">

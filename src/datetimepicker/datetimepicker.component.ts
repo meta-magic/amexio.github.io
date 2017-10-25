@@ -213,7 +213,7 @@ export const BASE_IMPL_DATEPICKER_INPUT: any = {
     }
 
     .amexio-datepicker table tr td:hover {
-      background-color: #dddddd;
+        font-weight: bold;
     }
 
     .amexio-datepicker .currentMonth {
