@@ -47,10 +47,11 @@ input:checked + .amexio-slider:before {
 }
 
 /* Rounded sliders */
-.amexio-slider {
+.round {
   border-radius: 34px;
 }
 
-.amexio-slider:before {
+.round:before {
   border-radius: 50%;
 }
+

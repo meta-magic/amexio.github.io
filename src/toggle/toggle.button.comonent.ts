@@ -31,14 +31,14 @@ export const BASE_IMPL_TOGGLE_INPUT: any = {
   selector: 'amexio-toggle',
   template : `    
     <label>{{fieldLabel}}</label>
-    <label class="amexio-toggle" style="">
+    <label class="amexio-toggle">
       <input type="checkbox" checked
              name="value"
              #rangeHndl
              (blur)="onBlur()"
              [(ngModel)]="value"
              (change)="onToggle()">
-      <span class="amexio-slider"></span>
+      <span class="amexio-slider {{shape}}"></span>
     </label>
   `,
    styleUrls : ['toggle.component.style.css'],
@@ -47,13 +47,17 @@ export const BASE_IMPL_TOGGLE_INPUT: any = {
 
 export class AmexioToggleComponent extends FormInputBase implements OnInit {
 
+  @Input()    shape : string;
+
   @Output()   onChange  : EventEmitter<any> = new EventEmitter<any>();
 
   constructor() {
     super();
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.shape == '' || this.shape == null ? this.shape = 'round' : 0;
+  }
 
   onToggle(){
     this.onChange.emit(this.value);

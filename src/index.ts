@@ -52,6 +52,9 @@ import {StepsComponent} from "./steps/steps.component";
 import {DockedBarToolComponent} from "./dockedbar/dockettoolbar.component";
 import {DockbarComponent} from "./dockedbar/dockbaritem";
 import {FileuploadComponent} from "./fileupload/fileupload.component";
+import {AmexioRangeInputComponent} from "./rangeinput/range.input.component";
+import {AmexioToggleComponent} from "./toggle/toggle.button.comonent";
+import {AmexioPaginatorComponent} from "./paginator/paginator.component";
 
 
 export * from './button/button.component';
@@ -122,6 +125,9 @@ export * from './fildset/fieldset.component';
 export * from './fildset/fieldsetbody.component';
 export * from "./image/image.component";
 export * from "./fileupload/fileupload.component";
+export * from "./rangeinput/range.input.component";
+export * from "./toggle/toggle.button.comonent";
+export  * from "./paginator/paginator.component";
 @NgModule({
   imports: [
     CommonModule,
@@ -129,6 +135,9 @@ export * from "./fileupload/fileupload.component";
     HttpModule
   ],
   declarations: [
+      AmexioRangeInputComponent,
+      AmexioToggleComponent,
+      AmexioPaginatorComponent,
     ButtonComponent,
     TextInputComponent,
     ButtonDropdownComponent,
@@ -180,6 +189,9 @@ export * from "./fileupload/fileupload.component";
     FileuploadComponent
   ],
   exports: [
+    AmexioRangeInputComponent,
+    AmexioToggleComponent,
+    AmexioPaginatorComponent,
     ButtonComponent,
     TextInputComponent,
     ButtonDropdownComponent,
