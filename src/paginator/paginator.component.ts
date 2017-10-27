@@ -52,8 +52,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
      </ul>
   
  
- `,
-  styleUrls : ['paginator.style.css']
+ `
 })
 
 export class AmexioPaginatorComponent implements OnInit {
