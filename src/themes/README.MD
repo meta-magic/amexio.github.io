@@ -41,26 +41,26 @@ Add respective theme CSS file in your app i.e if you are using Angular CLI add i
   </div>
 <h3 align="left">Bootstrap Themes </h3>
 <div align="center">
-    <h2> Bootstrap - Cyan </h2>
+    <h3> Bootstrap - Cyan </h3>
 <img src="http://preview.ibb.co/d1NRAm/cyan.png" alt="brown" border="0"><br>
  <h5 >Cli Path<h5>
  <img src="http://preview.ibb.co/cdocGR/cyan_link.png" alt="indigo_url" border="0">
   </div>
  
 <div align="center">
-    <h2> Bootstrap - Orange </h2>
+    <h3> Bootstrap - Orange </h3>
 <img src="http://preview.ibb.co/cWgmAm/orange.png" alt="brown" border="0"><br>
  <h5 >Cli Path<h5>
  <img src="http://preview.ibb.co/cgyuwR/orange_link.png" alt="indigo_url" border="0">
   </div>
 <div align="center">
-    <h2> Bootstrap - Polygon </h2>
+    <h3> Bootstrap - Polygon </h3>
 <img src="http://preview.ibb.co/eimmAm/polygon.png" alt="brown" border="0"><br>
  <h5 >Cli Path<h5>
  <img src="http://preview.ibb.co/kn0zD6/polygon_link.png" alt="indigo_url" border="0">
   </div>
 <div align="center">
-    <h2> Bootstrap - Polygon </h2>
+    <h3> Bootstrap - Polygon </h3>
 <img src="http://preview.ibb.co/mKBxGR/red.png" alt="brown" border="0"><br>
  <h5 >Cli Path<h5>
  <img src="http://preview.ibb.co/dQNqLm/red_link.png" alt="indigo_url" border="0">
