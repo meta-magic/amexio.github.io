@@ -2,13 +2,7 @@
 Choose different Amexio theme based of google material design or boostrap.
 ## Available Material Themes
 
-| Material Theme Name| 
-| ------------- |
-| Amber |
-| BlueGrey   |
-| Brown |
-| Indigo  |
-| Light Blue    |
+<table> <tr><th>Material Themes</th><th>Bootstrap Themes</th></tr><tr><td>Amber</td><td>Cyan</td></tr><tr><td>BlueGrey</td><td>Orange</td></tr><tr><td>Brown</td><td>Polygon</td></tr><tr><td>Indigo</td><td>Red</td></tr><tr><td>Light Blue</td></tr>  </table>
 
 ## Step to add 
 Add respective theme CSS file in your app i.e if you are using Angular CLI add it in .angular-cli.json. 
