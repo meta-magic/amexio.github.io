@@ -18,13 +18,13 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
    
      <ul class="pagination justify-content-center" [ngClass]="{'pagination-lg' : size =='large','pagination-md' : size =='medium','pagination-sm' : size =='small'}" style="background-color: f6f7f9;border: 1px solid #d9d9d9;">
        <li class="page-item " (click)="onFirstClick()">
-         <a class="page-link" href="#" aria-label="Previous">
+         <a class="page-link" aria-label="Previous">
            <span aria-hidden="true">&laquo;</span>
            <span class="sr-only">First</span>
          </a>
        </li>
        <li class="page-item {{activePageIndex == 0 ? 'disabled' : ''}}" (click)="onPrevious()">
-         <a class="page-link" href="#" aria-label="Previous">
+         <a class="page-link"  aria-label="Previous">
            <span aria-hidden="true">&#x3C;</span>
            <span class="sr-only">Previous</span>
          </a>
@@ -37,13 +37,13 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
        </ng-container>
 
        <li class="page-item {{activePageIndex == pagesArray.length ? 'disabled' : ''}}" (click)="onNext()">
-         <a class="page-link" href="#" aria-label="Next">
+         <a class="page-link" aria-label="Next">
            <span aria-hidden="true">&#x3E;</span>
            <span class="sr-only">Next</span>
          </a>
        </li>
        <li class="page-item" (click)="onLastClick()">
-         <a class="page-link" href="#" aria-label="Next">
+         <a class="page-link" aria-label="Next">
            <span aria-hidden="true">&raquo;</span>
            <span class="sr-only">Last</span>
          </a>

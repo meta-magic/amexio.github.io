@@ -11,7 +11,10 @@
  *
  */
 
-import {Input, OnInit, forwardRef, Component, AfterViewInit, Output, EventEmitter} from "@angular/core";
+import {
+  Input, OnInit, forwardRef, Component, AfterViewInit, Output, EventEmitter,
+  ViewEncapsulation
+} from "@angular/core";
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {FormInputBase} from "../baseclass/form.base.class";
 const noop = () => {
@@ -42,7 +45,8 @@ export const BASE_IMPL_TOGGLE_INPUT: any = {
     </label>
   `,
    styleUrls : ['toggle.component.style.css'],
-  providers : [BASE_IMPL_TOGGLE_INPUT,CUSTOM_TOGGLE_INPUT_CONTROL_VALUE_ACCESSOR]
+  providers : [BASE_IMPL_TOGGLE_INPUT,CUSTOM_TOGGLE_INPUT_CONTROL_VALUE_ACCESSOR],
+  encapsulation: ViewEncapsulation.None
  })
 
 export class AmexioToggleComponent extends FormInputBase implements OnInit {
