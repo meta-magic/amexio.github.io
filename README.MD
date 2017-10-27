@@ -290,6 +290,13 @@ import { AmexioMapsModule } from 'amexio-ng-extensions/dashboard';
 | Brown |
 | Indigo  |
 | Light Blue    |
+
+| Bootstrap Theme Name| 
+| ------------- |
+| Cyan |
+| Orange   |
+| Polygon |
+| Red  |
   providers: [],
   bootstrap: [AppComponent]
 })
