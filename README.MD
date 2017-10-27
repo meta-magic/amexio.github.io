@@ -306,6 +306,8 @@ More on Maps Module here : [Maps Docs](https://github.com/meta-magic/amexio.gith
 | Indigo  |
 | Light Blue    |
 
+<h3> Available Bootstrap Themes</h3>
+
 | Bootstrap Theme Name| 
 | ------------- |
 | Cyan |
