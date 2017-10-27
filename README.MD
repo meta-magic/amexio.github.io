@@ -297,6 +297,10 @@ More on Maps Module here : [Maps Docs](https://github.com/meta-magic/amexio.gith
 # Amexio Themes (Material / Bootstrap)
 
 <h3> Available Material Themes</h3>
+|Table 1|Table 2|
+|--|--|
+
+|<table> <tr><th>Material Themes</th><th>Amber</th></tr><tr><td>Row 1 Column 1</td></tr> </table>| <table> <tr><th>Table 2 Heading 1</th><th>Table 2 Heading 2</th></tr><tr><td>Row 1 Column 1</td><td>Row 1 Column 2</td></tr> </table>|
 
 | Material Theme Name| 
 | ------------- |
