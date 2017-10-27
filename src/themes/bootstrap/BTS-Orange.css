@@ -60,10 +60,7 @@ body{
     /* Background */
     background-color: #F58338 !important; /* For browsers that do not support gradients */
     background: linear-gradient(#F58338, #E84C1A) !important;
-    background: -webkit-linear-gradient(#40434D, #000000)!important; /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(#40434D, #000000)!important; /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(#40434D, #000000)!important; /* For Firefox 3.6 to 15 */
-    background: linear-gradient(#40434D, #000000)!important; /* Standard syntax */
+
     /* Font */
     font-size: 100%;
 }
