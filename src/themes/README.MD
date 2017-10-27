@@ -45,7 +45,7 @@ Add respective theme CSS file in your app i.e if you are using Angular CLI add i
  <h5 >Cli Path<h5>
  <img src="https://preview.ibb.co/cCd6g5/brown_url.png" alt="brown_url" border="0">
   </div>
-<h3>Bootstrap Theme </h3>
+<h3 align="left">Bootstrap Theme </h3>
 <div align="center">
     <h2> Bootstrap - Cyan </h2>
 <img src="http://preview.ibb.co/d1NRAm/cyan.png" alt="brown" border="0"><br>
