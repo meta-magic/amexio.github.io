@@ -2,17 +2,23 @@
 /*            GLOBAL SETTINGS          */
 /* ----------------------------------- */
 body{
-    /* Background */
-    background-color: #1b1d22;
-    /* Fonts */
-    font-family: 'Ubuntu Condensed', sans-serif;
-    font-size: 16px;
-    color: rgba(255,255,255,0.70)!important;
-    letter-spacing: 0.2px;
-    text-transform: capitalize;
-    /* Others */
-    margin: 0px;
-    padding: 0px;
+  /* Background */
+  background-color: #D33134;
+  background-image:url(../images/red_bg.png);
+  background-repeat: repeat-y;
+  background-attachment: fixed;
+  /* Fonts */
+  font-family: 'Shadows Into Light', cursive;
+/* font-family: 'PT Serif', serif;*/
+  font-size: 16px;
+  color: #043963!important;
+  letter-spacing: 0.4px;
+  text-transform: capitalize;
+  font-weight: bold;
+
+  /* Others */
+  margin: 0px;
+  padding: 0px;
 }
 /* ----------------------------------- */
 /*              ICONOGRAPHY            */
@@ -58,58 +64,64 @@ body{
 /* ----------------------------------- */
 .amexio-appbar {
     /* Background */
-    background-color: #F58338 !important; /* For browsers that do not support gradients */
-    background: linear-gradient(#F58338, #E84C1A) !important;
-    background: -webkit-linear-gradient(#40434D, #000000)!important; /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(#40434D, #000000)!important; /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(#40434D, #000000)!important; /* For Firefox 3.6 to 15 */
-    background: linear-gradient(#40434D, #000000)!important; /* Standard syntax */
+
     /* Font */
-    font-size: 100%;
+  /*font-size: 42px;*/
+    font-weight: bold;
+    color: #FFFFFF;
 }
 /*For appbar Please change color -SAGAR*/
-/*For Appbar Title*/
 .amexio-appbar .navbar-brand{
+  color: white !important;
+  font-size: 30px!important;
 }
-/*For Appbar John Doe*/
 .amexio-appbar .nav-item{
+  color: white !important;
+  font-size: 18px!important;
 }
 /*For Appbar icon*/
 .amexio-appbar i{
+  color: white !important;
 }
 /* ----------------------------------- */
 /*           CARD COMPONENT            */
 /* ----------------------------------- */
 .amexio-card{
-    border-radius: 10px;
-    color: #FFFFFF;
-    background-color: #3A3C42;
-    border: 2px solid #E84C1A;
+    border-radius: 0px;
+    color: #043963;
+    background-color: transparent !important;
+    border: none;
 }
 .amexio-card a{
-    color: rgba(255,255,255,0.70)!important;
+  color: #043963!important;
 }
 .amexio-card .card-header{
     /* Background */
-    padding: 20px 24px;
-    background: #000000; /* For browsers that do not support gradients */
-    background: linear-gradient(#40434D, #000000);
-    background: -webkit-linear-gradient(#40434D, #000000); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(#40434D, #000000); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(#40434D, #000000); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(#40434D, #000000); /* Standard syntax */
+    background-image:url('/assets/images/theme/bootstrap/PageFold.png');
+    background-color: transparent !important;
+    padding: 20px 24px 12px 56px;
     /* Border */
-    border-radius: 10px;
-    border-bottom: 2px solid #E84C1A;
+    border-radius: 0px;
+    border-right: 3px solid #8d7d26;
+    border-bottom: none;
     /* Font */
-    font-size: 125%;
-    color: #F2870C;
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 30px;
+    font-weight: bold;
+    color: rgb(126, 6, 6);
+    text-align: left;
+    line-height: 24px;
     /* Others */
     overflow: auto;
+
 }
 .amexio-card .card-block{
+    background-color: rgb(255, 229, 120);
     border-radius: 0px;
-    color: rgba(0,0,0,0.87);
+    border-right: 3px solid #8d7d26;
+    border-left: 3px solid #8d7d26;
+    border-bottom: 3px solid #8d7d26;
+    color: #000000;
     font-size: 14px;
     line-height: 24px;
     font-weight: 400;
@@ -117,38 +129,42 @@ body{
     padding-right: 16px;
 }
 .amexio-card .card-footer{
+    background-color: transparent!important;
     border-radius: 0px;
     border: none;
-    background: #1b1d22 !important;
-    border-radius: 10px;
+    border-radius: 0px;
 }
 /* ----------------------------------- */
 /*        DATAPOINTS COMPONENT         */
 /* ----------------------------------- */
 .amexio-datapoints{
-    background-color: #3A3C42;
-    color: #F2870C;
-    font-size: 125%;
+    background-color: rgb(255, 229, 120);
+    color: #601221;
+    font-size: 30px;
     /* Border */
-    border-radius: 10px;
-    border: 2px solid #E84C1A;
+    border-radius: 0px;
+    border: 3px solid #8d7d26;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
 }
 .amexio-datapoints-title{
-    font-size: 200%;
+    font-size: 32px;
+    line-height: 18px;
     font-weight: bold;
 }
 .amexio-datapoints-footer{
     /* Background */
-    background: #000;
-    border-radius: 5px;
-    font-size: 100%;
-    padding: 5px;
+    padding: 0px;
+    border-radius: 0px;
+    border: none;
+    font-size: 20px;
+    padding: 0px;
     margin: 1px;
+    color: #02195F;
+    vertical-align: top;
 }
 .amexio-datapoints-visual{
     padding: 5px;
-    font-size: 24px;
-    font-weight: bold;
+    font-size: 18px;
 }
 /* ----------------------------------- */
 /*           SIDE NAVIGATION           */
@@ -161,134 +177,134 @@ body{
     height: 100%;
     overflow:hidden;
     float: left;
-    border-right: 2px solid #E84C1A;
-    background-color: #24262D!important;
+    background-color: transparent!important;
+     color: #421F26!important;
 }
 .amexio-sidenav-left .nav-item{
     list-style: none;
     display: block;
-    font-size: 14px !important;
+    font-size: 18px !important;
     text-align: left;
     padding: 13px 0px 13px 17px!important;
     width: 100%!important;
-    border: 1px solid #111111;
-    border-bottom: none!important;
+    border: none!important;
+
 }
 .amexio-sidenav-left .nav-item:hover {
-    background-color: #1b1d22!important;
+    background-color: #421F26!important;
     cursor: pointer;
+    color: #ffffff!important;
 }
 .amexio-sidenav-left .nav-item a{
     text-decoration: none;
-    color: #F8F1F1;
+    color: #ffffff!important;
 }
 .amexio-sidenav-left .nav-item i{
     padding-right: 38px;
 }
 /* Styling for selected nav element */
 .amexio-link-selected{
-    background-color: #1b1d22!important;
+    color: #FFFFFF;
 }
 .amexio-link-selected a{
-    color: #F2870C!important;
+
 }
 .amexio-link-selected i{
-    color: #F2870C!important;
+    color: #FFFFFF!important;
 }
 /* Styling for subheaders between nav elements */
 .amexio-sidenav-left .amexio-sidenavbar-subheader{
-    border-top: solid 1px #111111 !important;
+    border-top: solid 1px #421F26 !important;
 }
 .amexio-sidenav-left .amexio-sidenavbar-subheader:last-child{
-    border-bottom: solid 1px #111111 !important;
+    border-top: solid 1px #421F26 !important;
+    border-bottom: solid 1px #421F26 !important;
 }
 .amexio-sidenav-left  .amexio-sidenavbar-subheader span{
     padding-right: 5px;
 }
 .amexio-sidenav-left .amexio-sidenavbar-subheader:hover {
-    background: #24262D!important;
+    background: none!important;
 }
 /* ----------------------------------- */
 /*              DATA GRID              */
 /* ----------------------------------- */
 .amexio-grid-header{
-    background: #000000; /* For browsers that do not support gradients */
-    background: linear-gradient(#40434D, #000000);
-    background: -webkit-linear-gradient(#40434D, #000000); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(#40434D, #000000); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(#40434D, #000000); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(#40434D, #000000); /* Standard syntax */
-    font-size: 15px;
+    /* Background */
+    font-size: 30px;
+    font-weight: bold;
     padding: 20px 24px;
     overflow: auto;
-    color: #F5A623;
+    color: #043963;
 }
 .amexio-grid-header .form-group{
     height: inherit;
     margin:0px!important;
     height: 0px!important;
+    border: none;
 }
 .amexio-grid-recordheader{
     line-height: 15px;
-    color: #ffffff;
+    color: #043963;
     height:48px;
     padding: 0px 24px 0px 24px!important;
     text-align: left;
-    background-color: #1b1d22!important;
+    background-color: rgba(66, 31, 38, 0.4);
 }
 .amexio-grid-record{
-  height:48px;
-  font-size: 14px;
-  line-height: 15px;
-  color: rgba(255,255,255,0.70);
-  background-color: #1b1d22;
+    height:48px;
+    font-size: 16px;
+    line-height: 15px;
+    color: #000000;
+    border-left: none;
+    border-right: none;
 }
 .amexio-grid-record td{
     padding: 0px 24px 0px 24px!important;
+
 }
 .amexio-grid-record:hover{
-    background-color: #24262D;
+    color: rgb(126, 6, 6);
+    background-color: rgba(66, 31, 38, 0.4);
 }
 .amexio-grid-checkbox{
     padding-left: 25px!important;
     width: 50px!important;
+    text-align: center;
 }
 .amexio-grid-bordered td{
-    border-bottom: 1px solid #111111!important;
-    border-right: 1px solid #111111!important;
-    border-left: 1px solid #111111!important;
+    border: 1px solid #CCCCCC;
 }
 /* Pagination CSS begins here */
 /* Container */
 .amexio-grid-pagination-outer{
-    background-color: #1b1d22!important;
+    background-color: rgb(255, 229, 120)!important;
     height: 50px;
-    border-top: 1px solid #ffffff!important;
-    border-bottom: 1px solid #ffffff!important;
+    font-size: 16px;
 }
 .amexio-grid-pagination {
-
+    border: none!important;
 }
 .amexio-grid-pagination span{
-    color: rgba(255,255,255,0.70)!important;
+    color: #043963!important;
     margin-right: 20px;
     display: inline-block;
     float: left;
 }
 /* Dropdown of numbers */
 .amexio-grid-pagination span button{
-    color: #1b1d22!important;
-    background: rgba(255,255,255,0.70)!important;
-    border: none;
+    color: #043963!important;
+    background: rgb(255, 229, 120)!important;
+    border: 1px solid #043963;
 }
 /* This is page level flyout */
 .amexio-grid-opertions .amexio-dropdown-menu{
-    color: rgba(255,255,255,0.70)!important;
-    background-color: #1b1d22!important;
-    border: solid 1px rgba(255,255,255,0.70);
+    color: #043963!important;
+  background-color: rgba(187, 150, 87, 1)!important;
+    border: 1px solid #043963;
 }
 .amexio-grid-groupby-seperator{
-    color: #6F6F6F!important;
+    color: #043963!important;
 }
 /* ----------------------------------- */
 /*            CONTACT LIST             */
@@ -311,36 +327,36 @@ body{
     border-bottom: none;
     border-left: none;
     border-right: none;
-    border-bottom: 1px solid #1b1d22;
+    border-bottom: 1px solid #000000;
 }
 .amexio-listbox .list-group-item:last-child {
     border-bottom: none;
 }
 .amexio-listbox-list li img{
-    width: 48px;
-    height: 48px;
+    width: 60px;
+    height: 60px;
     border-radius: 200px;
     margin-right: 20px;
     float: left;
-    border: 2px solid #E84C1A;
+    border: 3px solid #043963;
 }
 .amexio-listbox-list li .title{
     float: left;
-    font-size: 18px;
-    color: #E84C1A;
+    font-size: 16px;
+    color: #043963;
     padding-top: 8px;
 }
 .amexio-listbox-list li .title a{
-    font-size: 16px;
-    color: rgba(255,255,255,0.70);
+    color: #000000!important;
     text-transform: lowercase;
+    text-decoration: underline;
 }
 /* ----------------------------------- */
 /*                 TABS                */
 /* ----------------------------------- */
 .amexio-tabs {
-    border-bottom: 2px solid #E84C1A !important;
     margin-bottom: 20px;
+    border: none!important;
 }
 .amexio-tabs .nav-link{
     position: relative;
@@ -349,9 +365,10 @@ body{
     text-transform: uppercase;
     text-decoration:none;
     padding: 12px!important;
+    border: none!important;
 }
 .amexio-tabs .nav-link:hover{
-    border-color: transparent;
+    border: none;
 }
 .amexio-tabs .nav-link:after{
     content:"";
@@ -369,13 +386,10 @@ body{
 }
 .nav-link.active{
     /* Background */
-    background: #000000; /* For browsers that do not support gradients */
-    background: linear-gradient(#40434D, #000000);
-    background: -webkit-linear-gradient(#40434D, #000000); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(#40434D, #000000); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(#40434D, #000000); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(#40434D, #000000); /* Standard syntax */
-    border: 2px solid #E84C1A !important;
+    background-color: transparent!important;
+    border-bottom: 4px solid #F10897 !important;
+    /*Font*/
+    color: #F10897 !important;
 }
 .amexio-tabs .nav-link:active:after{
     transform:scale(0,0);opacity:.2;transition:0s
@@ -388,34 +402,34 @@ body{
 /* ----------------------------------- */
 .amexio-treeview-records{
     text-decoration: none !important;
-    color: rgba(255,255,255,0.70)!important;
     display: table-cell!important;
     vertical-align: middle!important;
     padding: 13px 0px 13px 17px;
-    border-bottom: solid 1px #111111;
+  color: #043963!important;
 }
 .amexio-treeview-records i{
     padding-right: 20px;
-    color: #ffffff;
+    color: #043963!important;
 }
 .amexio-treeview-records:hover{
     background-color: #1b1d22!important;
+  color: #043963!important;
 }
 .amexio-treeview-navigation-icons{
     padding-top: 13px!important;
 }
 .amexio-treeview-records-selected{
-    text-decoration: none !important;
-    color: rgba(255,255,255,0.70)!important;
+    color: #043963!important;
+    text-decoration: underline!important;
     display: table-cell!important;
     vertical-align: middle!important;
     padding: 13px 0px 13px 17px;
-    border-bottom: solid 1px #111111;
-    background-color: #1b1d22!important;
+    /* Background */
+    background-color: rgba(66, 31, 38, 0.4) !important;
 }
 .amexio-treeview-records-selected i{
     padding-right: 20px;
-    color: #F2870C;
+    color: rgb(126, 6, 6);
 }
 .amexio-treeview-ul li{
   padding-left: 0px!important;
@@ -424,7 +438,9 @@ body{
 /*              CAROUSEL               */
 /* ----------------------------------- */
 .amexio-carousel{
-    color: rgba(255,255,255,0.70)!important;
+    color: #000000!important;
+    font-size: 18px;
+    font-weight: bold;
 }
 .amexio-carousel-backgound{
     background-color: transparent !important;
@@ -442,7 +458,9 @@ body{
 /* ----------------------------------- */
 /* CSS for Form Labels */
 label {
-    color: rgba(255,255,255,0.70)!important;
+    color: rgb(126, 6, 6)!important;
+    font-size: 18px;
+    font-weight: 700;
     display: inline-block;
     margin-top: 5px;
     margin-bottom: 5px;
@@ -455,12 +473,14 @@ label {
     width: 100%;
     padding: 2px 12px;
     /* Text Properties */
-    font-family: 'Ubuntu Condensed', sans-serif;
+    font-family: 'PT Serif', serif;
+    font-size: 16px;
+    color: rgb(126, 6, 6)!important;
     line-height: 2;
     /* Border and Background */
-    border: 2px solid #666666;
+    border: solid 2px rgb(126, 6, 6);
     border-radius: 4px!important;
-    background-color: #1b1d22;
+    background-color: rgba(66, 31, 38, 0.4);
 }
 /* ----------------------------------- */
 /*        TEXT FIELD COMPONENT         */
@@ -477,14 +497,17 @@ label {
 /*        AUTOSUGGEST COMPONENT        */
 /* ----------------------------------- */
 .amexio-typeahead .form-control{
-  border: 2px solid #666666!important;
+    border: 2px solid rgb(126, 6, 6)!important;
+    border-radius: 4px!important;
+    color: rgb(126, 6, 6)!important;
+    background-color: rgba(66, 31, 38, 0.4);
 }
 /* ----------------------------------- */
 /*         VALIDATION POPOVER          */
 /* ----------------------------------- */
 .popover{
     border-radius: 0px;
-    font-family: 'Ubuntu Condensed', sans-serif;
+  font-family: 'Shadows Into Light', cursive;
 }
 .popover-title {
     background-color: #3A3C42;
@@ -504,21 +527,22 @@ label {
 /*      DROP DOWN FORM COMPONENT       */
 /* ----------------------------------- */
 .amexio-dropdown .btn{
-    border: 2px solid #666666;
+  border: 2px solid rgb(126, 6, 6);
     border-radius: 4px!important;
-    color: #464a4c!important;
-    background-color: #1b1d22;
+    color: rgb(126, 6, 6)!important;
+    background-color: rgba(66, 31, 38, 0.4);
 }
 .amexio-dropdown-menu{
-    background-color: #1b1d22!important;
+  background-color: rgba(179, 150, 81, 1);
     border: 2px solid #666666;
     border-radius: 0px;
     padding: 10px;
 }
 .amexio-dropdown-records{
     border: 1px solid #111;
-  color: rgba(255,255,255,0.70)!important;
+  color: rgb(126, 6, 6)!important;
     padding: 5px;
+  font-family: 'Shadows Into Light', cursive;
 }
 .amexio-dropdown-records:hover{
     background-color: #000000!important;
@@ -529,14 +553,14 @@ label {
 /*Date and Time Action Trigger Icons */
 .input-group-addon{
     background: transparent;
-    color: rgba(255,255,255,0.70);
+  color: rgb(126, 6, 6)!important;
     padding-left: 5px;
     border: none!important;
 }
 /*DATE PICKER COMPONENT-SAGAR*/
 .amexio-datepicker{
-  background-color: #1b1d22;
-  color: rgba(255,255,255,0.70)!important;
+  background-color: rgba(179, 150, 81, 1);
+  color: rgb(126, 6, 6)!important;
 }
 .amexio-datepicker .dateSelected{
   background-color: rgba(255,255,255,0.70)!important;
@@ -546,50 +570,41 @@ label {
 /*       ITEM SELECTOR COMPONENT       */
 /* ----------------------------------- */
 /* Backgound */
-.amexio-itemselector{
-  background-color: #1b1d22!important;
-  border: 2px solid #666666;
-  padding: 10px;
-  border-radius: 4px;
+ .amexio-itemselector{
+
 }
 /* Action Buttons*/
 .amexio-itemselector .fa{
-  padding: 5px;
-  color: rgba(255,255,255,0.70)!important;
-  padding-left: 5px;
-  border: solid 2px #666666!important;
-  border-radius: 4px;
-  background-color: #1b1d22;
+    padding: 5px;
+    color: #8d7d26!important;
+    padding-left: 5px;
+    border: solid 2px #8d7d26!important;
+    border-radius: 4px;
 }
 .amexio-itemselector-header{
-  font-family: 'Ubuntu Condensed', sans-serif;
-  border: solid 1px #111111;
-  border-radius: 4px;
-  line-height: 15px;
-  color: #F2870C;
-  height:48px;
-  text-align: left;
-  background: #000000; /* For browsers that do not support gradients */
-  background: linear-gradient(#40434D, #000000);
-  background: -webkit-linear-gradient(#40434D, #000000); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#40434D, #000000); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#40434D, #000000); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#40434D, #000000); /* Standard syntax */
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 15px;
+    color: rgb(126, 6, 6)!important;
+    height:48px;
+    padding: 0px!important;
+    text-align: left;
+    background: none!important;
 }
 .amexio-itemselector-records{
-  font-family: 'Ubuntu Condensed', sans-serif;
-  border: 1px solid #111111;
-  color: rgba(255,255,255,0.70);
-
+    font-family: 'Shadows Into Light', cursive;
+    border: 1px solid #111111;
+    font-size: 16px;
 }
 /*ITEM SELECTOR RECORD-SAGAR*/
 .amexio-itemselector-records-selected{
-  background-color: #000000 !important;
-  color: #ffffff;
+  background-color: #24262D !important;
+  color: rgba(255,255,255,0.70)!important;
 }
 .amexio-itemselector-records:hover{
-  background-color: #24262D !important;
-  color: #ffffff;
+    background-color: rgba(66, 31, 38, 0.4)!important;
+  color: rgba(255,255,255,0.70)!important;
 }
 /* ----------------------------------- */
 /*         CHECKBOX COMPONENT          */
@@ -688,7 +703,7 @@ label {
 }
 .amexio-checkbox[type="checkbox"]:checked + label:before {
     animation: borderscale 200ms ease-in;
-    background: none;
+    background: #795548;
 }
 .amexio-checkbox[type="checkbox"]:checked + label:after {
     transform: rotate(-45deg) scale(1);
@@ -698,7 +713,7 @@ label {
 }
 /* Check Box Label (Open Issues)*/
 .form-check-label{
-   border-bottom: 1px solid #111111;
+   border-bottom: none;
    width: 100%;
    padding: 10px 20px!important;
    width: 100%;
@@ -707,7 +722,7 @@ label {
 /*          COMPONENT - BUTTON         */
 /* ----------------------------------- */
 .btn {
-    font-family: 'Ubuntu Condensed', sans-serif;
+  font-family: 'Shadows Into Light', cursive;
     -moz-user-select: none;
     background-image: none;
     border: 1px solid transparent;
@@ -725,13 +740,8 @@ label {
     text-transform: uppercase
 }
 .btn-primary {
-    background-color: #F58338 !important; /* For browsers that do not support gradients */
-    background: linear-gradient(#F58338, #E84C1A) !important;
-    background: -webkit-linear-gradient(#40434D, #000000)!important; /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(#40434D, #000000)!important; /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(#40434D, #000000)!important; /* For Firefox 3.6 to 15 */
-    background: linear-gradient(#40434D, #000000)!important; /* Standard syntax */
-    border-radius: 4px;
+    background-color: #F10897 !important;
+    border-radius: 0px;
     color: #fff;
 }
 .btn-link {
@@ -784,21 +794,26 @@ label {
 .mainpanel {
     width: 100%;
     overflow: hidden;
-    color: rgba(255,255,255,0.70);
+    color: #043963;
+    font-size: 16px;
 }
 .mainpanel .title {
     font-size: 24px!important;
     line-height: 28px!important;
-    color: #E84C1A;
-    display: block
+    color: rgb(126, 6, 6);
+    display: block;
+    font-weight: 700;
 }
 .mainpanel .subtitle {
-    font-size: 16px!important;
+    font-size: 18px!important;
     line-height: 28px!important;
+    font-weight: 700;
+    color: #043963;
 }
 .mainpanel a {
-    color: rgba(255,255,255,0.70);
+    color: #043963!important;
     text-transform: lowercase;
+    text-decoration: underline;
 }
 .mainpanel a :hover{
     text-decoration: underline;
@@ -858,7 +873,7 @@ label {
 /* ---------------------------------------------------------------------- */
 /* ---------------------------------------------------------------------- */
 /*For Bootstrap row */
- .row,.list-group-item,.col-lg-2{
+.row, .list-group-item,.col-lg-2{
     background-color: transparent!important;
 }
 /* ----------------------------------- */
