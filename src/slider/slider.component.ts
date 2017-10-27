@@ -18,17 +18,17 @@ const noop = () => {
 
 export const CUSTOM_RANGE_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => AmexioRangeInputComponent),
+  useExisting: forwardRef(() => AmexioSliderComponent),
   multi: true
 };
 
 export const BASE_IMPL_RANGE_INPUT: any = {
   provide : FormInputBase,
-  useExisting: forwardRef(() => AmexioRangeInputComponent)
+  useExisting: forwardRef(() => AmexioSliderComponent)
 };
 
 @Component({
- selector: 'amexio-range-input',
+ selector: 'amexio-slider',
  template: `
    <div class="amexio-range">
     <input type="range"
@@ -142,7 +142,7 @@ export const BASE_IMPL_RANGE_INPUT: any = {
   providers : [CUSTOM_RANGE_INPUT_CONTROL_VALUE_ACCESSOR, BASE_IMPL_RANGE_INPUT],
 })
 
-export class AmexioRangeInputComponent extends FormInputBase implements OnInit, ControlValueAccessor{
+export class AmexioSliderComponent extends FormInputBase implements OnInit, ControlValueAccessor{
 
   @Input()  minValue  : any;
 
