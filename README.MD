@@ -281,22 +281,7 @@ import { AmexioMapsModule } from 'amexio-ng-extensions/dashboard';
     BrowserModule,
     FormsModule,
     AmexioMapsModule
-  ],## Available Material Themes
-
-| Material Theme Name| 
-| ------------- |
-| Amber |
-| BlueGrey   |
-| Brown |
-| Indigo  |
-| Light Blue    |
-
-| Bootstrap Theme Name| 
-| ------------- |
-| Cyan |
-| Orange   |
-| Polygon |
-| Red  |
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
@@ -320,6 +305,13 @@ More on Maps Module here : [Maps Docs](https://github.com/meta-magic/amexio.gith
 | Brown |
 | Indigo  |
 | Light Blue    |
+
+| Bootstrap Theme Name| 
+| ------------- |
+| Cyan |
+| Orange   |
+| Polygon |
+| Red  |
 
 <img src="https://preview.ibb.co/cCV58k/theme_MAT_indigo.png" alt="theme_MAT_indigo" border="0">
 
