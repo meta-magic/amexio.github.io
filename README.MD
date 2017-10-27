@@ -296,10 +296,6 @@ Once Amexio Maps library is imported, you could use it ,
 More on Maps Module here : [Maps Docs](https://github.com/meta-magic/amexio.github.io/tree/v2.0/src/modules/maps)
 # Amexio Themes (Material / Bootstrap)
 
-<h3> Available Material Themes</h3>
-<table> <tr><th>Material Themes</th></tr><tr><td>Amber</td></tr><tr><td>BlueGrey</td></tr><tr><td>Brown</td></tr><tr><td>Indigo</td></tr><tr><td>Light Blue</td></tr> </table>| <table> <tr><th>Bootstrap Themes</th></tr><tr><td>Cyan</td></tr>
-<tr><td>Orange</td></tr><tr><td>Polygon</td></tr><tr><td>Red</td></tr></table>|
-
 <table> <tr><th>Material Themes</th><th>Bootstrap Themes</th></tr><tr><td>Amber</td><td>Cyan</td></tr><tr><td>BlueGrey</td><td>Orange</td></tr><tr><td>Brown</td><td>Polygon</td></tr><tr><td>Indigo</td><td>Red</td></tr><tr><td>Light Blue</td></tr>  </table>
 
 <img src="https://preview.ibb.co/cCV58k/theme_MAT_indigo.png" alt="theme_MAT_indigo" border="0">
