@@ -46,9 +46,21 @@ Add respective theme CSS file in your app i.e if you are using Angular CLI add i
  <img src="https://preview.ibb.co/cCd6g5/brown_url.png" alt="brown_url" border="0">
   </div>
 <h3>Bootstrap Theme </h3>
+<div align="center">
+    <h2> Bootstrap - Cyan </h2>
 <img src="http://preview.ibb.co/d1NRAm/cyan.png" alt="brown" border="0"><br>
-
+ <h5 >Cli Path<h5>
+ <img src="https://image.ibb.co/hbqNok/indigo_url.png" alt="indigo_url" border="0">
+  </div>
+ 
+<div align="center">
+    <h2> Bootstrap - Orange </h2>
 <img src="http://preview.ibb.co/cWgmAm/orange.png" alt="brown" border="0"><br>
+ <h5 >Cli Path<h5>
+ <img src="https://image.ibb.co/hbqNok/indigo_url.png" alt="indigo_url" border="0">
+  </div>
+
+
 ## License
 
 [Apache 2.0](http://www.amexio.org/metamagic-showcase/license.html) © [MetaMagic Global Inc](http://www.metamagicglobal.com/), 2017. [Amexio Angular Extensions](http://www.amexio.tech)
