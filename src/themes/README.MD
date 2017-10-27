@@ -12,7 +12,7 @@ Choose different Amexio theme based of google material design or boostrap.
 
 ## Step to add 
 Add respective theme CSS file in your app i.e if you are using Angular CLI add it in .angular-cli.json. 
-
+<h3 align="left">Material Themes</h3>
 <div align="center">
 <h3> Material - AMBER </h3>
 <img src="https://preview.ibb.co/ctarEQ/amber.png" alt="amber" border="0"><br><br>
