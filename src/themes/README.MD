@@ -49,7 +49,7 @@ Add respective theme CSS file in your app i.e if you are using Angular CLI add i
  
 <div align="center">
     <h3> Bootstrap - Orange </h3>
-<img src="http://preview.ibb.co/cWgmAm/orange.png" alt="brown" border="0"><br>
+<img src="http://preview.ibb.co/msVcGR/orange.png" alt="brown" border="0"><br>
  <h5 >Cli Path<h5>
  <img src="http://preview.ibb.co/cgyuwR/orange_link.png" alt="indigo_url" border="0">
   </div>
