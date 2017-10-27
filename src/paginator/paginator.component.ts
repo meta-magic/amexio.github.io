@@ -16,7 +16,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
  selector: 'amexio-paginator',
  template: `
    
-     <ul class="pagination justify-content-center" [ngClass]="{'pagination-lg' : size =='large','pagination-md' : size =='medium','pagination-sm' : size =='small'}" style="background-color: f6f7f9;border: 1px solid #d9d9d9;">
+     <ul class="pagination justify-content-center" [ngClass]="{'pagination-lg' : size =='large','pagination-md' : size =='medium','pagination-sm' : size =='small'}" style="background-color: #d9d9d9;border: 1px solid #d9d9d9;">
        <li class="page-item " (click)="onFirstClick()">
          <a class="page-link" aria-label="Previous">
            <span aria-hidden="true">&laquo;</span>
