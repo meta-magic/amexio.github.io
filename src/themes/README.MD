@@ -59,8 +59,18 @@ Add respective theme CSS file in your app i.e if you are using Angular CLI add i
  <h5 >Cli Path<h5>
  <img src="https://image.ibb.co/hbqNok/indigo_url.png" alt="indigo_url" border="0">
   </div>
-
-
+<div align="center">
+    <h2> Bootstrap - Polygon </h2>
+<img src="http://preview.ibb.co/eimmAm/polygon.png" alt="brown" border="0"><br>
+ <h5 >Cli Path<h5>
+ <img src="https://image.ibb.co/hbqNok/indigo_url.png" alt="indigo_url" border="0">
+  </div>
+<div align="center">
+    <h2> Bootstrap - Polygon </h2>
+<img src="http://preview.ibb.co/mKBxGR/red.png" alt="brown" border="0"><br>
+ <h5 >Cli Path<h5>
+ <img src="https://image.ibb.co/hbqNok/indigo_url.png" alt="indigo_url" border="0">
+  </div>
 ## License
 
 [Apache 2.0](http://www.amexio.org/metamagic-showcase/license.html) © [MetaMagic Global Inc](http://www.metamagicglobal.com/), 2017. [Amexio Angular Extensions](http://www.amexio.tech)
