@@ -300,8 +300,7 @@ More on Maps Module here : [Maps Docs](https://github.com/meta-magic/amexio.gith
 <table> <tr><th>Material Themes</th></tr><tr><td>Amber</td></tr><tr><td>BlueGrey</td></tr><tr><td>Brown</td></tr><tr><td>Indigo</td></tr><tr><td>Light Blue</td></tr> </table>| <table> <tr><th>Bootstrap Themes</th></tr><tr><td>Cyan</td></tr>
 <tr><td>Orange</td></tr><tr><td>Polygon</td></tr><tr><td>Red</td></tr></table>|
 
-
-|<table> <tr><th>Table 1 Heading 1</th><th>Table 1 Heading 2</th></tr><tr><td>Row 1 Column 1</td><td>Row 1 Column 2</td></tr> </table>| <table> <tr><th>Table 2 Heading 1</th><th>Table 2 Heading 2</th></tr><tr><td>Row 1 Column 1</td><td>Row 1 Column 2</td></tr> </table>|
+<table> <tr><th>Material Themes</th><th>Bootstrap Themes</th></tr><tr><td>Amber</td><td>Cyan</td></tr><tr><td>BlueGrey</td><td>Orange</td></tr><tr><td>Brown</td><td>Polygon</td></tr><tr><td>Indigo</td><td>Red</td></tr><tr><td>Light Blue</td></tr>  </table>
 
 <img src="https://preview.ibb.co/cCV58k/theme_MAT_indigo.png" alt="theme_MAT_indigo" border="0">
 
