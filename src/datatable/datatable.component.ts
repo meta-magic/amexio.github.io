@@ -355,7 +355,7 @@ declare var $;
           </ng-container>
           </span>
           <span style="font-size: 18px;margin-left: 10px;padding-top: 10px;cursor: pointer" (click)="prev()">&#x276E;</span>
-          <span style="font-size: 18px;padding-top: 10px;cursor: pointer" (click)="next()">&#x2771;</span>
+          <span style="font-size: 18px;padding-top: 10px;cursor: pointer" (click)="next()">&#x276F;</span>
           </ng-container>
           </div>
           </span>
