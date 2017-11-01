@@ -55,6 +55,9 @@ import {FileuploadComponent} from "./fileupload/fileupload.component";
 import {AmexioSliderComponent} from "./slider/slider.component";
 import {AmexioToggleComponent} from "./toggle/toggle.button.comonent";
 import {AmexioPaginatorComponent} from "./paginator/paginator.component";
+import {VerticalButtonbarComponent} from "./buttonbar/vertical.bar.component";
+import {HorizontalButtonComponent} from "./buttonbar/horizontal.bar.component";
+import {TagInputComponent} from "./taginput/tag.input.component";
 
 
 export * from './button/button.component';
@@ -128,6 +131,9 @@ export * from "./fileupload/fileupload.component";
 export * from "./slider/slider.component";
 export * from "./toggle/toggle.button.comonent";
 export  * from "./paginator/paginator.component";
+export * from './buttonbar/horizontal.bar.component';
+export * from './buttonbar/vertical.bar.component';
+export * from './taginput/tag.input.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -186,7 +192,10 @@ export  * from "./paginator/paginator.component";
     StepsComponent,
       DockedBarToolComponent,
       DockbarComponent,
-    FileuploadComponent
+    FileuploadComponent,
+      VerticalButtonbarComponent,
+      HorizontalButtonComponent,
+      TagInputComponent
   ],
   exports: [
     AmexioSliderComponent,
@@ -240,7 +249,10 @@ export  * from "./paginator/paginator.component";
     StepsComponent,
     DockedBarToolComponent,
     DockbarComponent,
-    FileuploadComponent
+    FileuploadComponent,
+    VerticalButtonbarComponent,
+    HorizontalButtonComponent,
+    TagInputComponent
   ]
 })
 export class AmexioWidgetModule {
