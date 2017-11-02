@@ -298,7 +298,7 @@ More on Maps Module here : [Maps Docs](https://github.com/meta-magic/amexio.gith
 
 <table> <tr><th>Material Themes</th><th>Bootstrap Themes</th></tr><tr><td>Amber</td><td>Cyan</td></tr><tr><td>BlueGrey</td><td>Orange</td></tr><tr><td>Brown</td><td>Polygon</td></tr><tr><td>Indigo</td><td>Red</td></tr><tr><td>Light Blue</td></tr>  </table>
 
-<img src="https://preview.ibb.co/cCV58k/theme_MAT_indigo.png" alt="theme_MAT_indigo" border="0">
+<img src="https://preview.ibb.co/nhn0tG/themecss.png" alt="theme_MAT_indigo" border="0">
 
 More on Amexio themes here : [Amexio themes](https://github.com/meta-magic/amexio.github.io/tree/v2.0/src/themes)
 
