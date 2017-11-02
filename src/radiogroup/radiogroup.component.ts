@@ -29,7 +29,7 @@ export const COLUMN_SIZE = 'col-lg-';
             </span></li>
                     <li class="list-group-item" [ngClass]="calculatedColSize"  *ngFor="let row of viewData;let i = index">
                         <label class="custom-control custom-radio">
-                            <input class="custom-control-input" [attr.id]="elementId+'CNT'+i" type="radio" [required]="allowBlank ? true: null"  [attr.name] = "fieldName" (click)="setSelectedRadio(row)">
+                            <input class="custom-control-input" [attr.id]="elementId+'CNT'+i" type="radio" [required]="allowBlank ? true: null"  [attr.name] = "fieldName" (click)="setSelectedRadio(row)" [checked]="row[valueField] == defaultSelectedValue ? true : false">
                             <span class="custom-control-indicator"></span>
                             <span class="custom-control-description">{{row[displayField]}}</span>
                         </label>
@@ -49,7 +49,7 @@ export const COLUMN_SIZE = 'col-lg-';
             </span></span>
                     <span class="" [ngClass]="calculatedColSize"  *ngFor="let row of viewData;let i = index">
               <label class="custom-control custom-radio">
-                <input class="custom-control-input" [attr.id]="elementId+'CNT'+i" type="radio" [required]="allowBlank ? true: null"  [attr.name] = "fieldName" (click)="setSelectedRadio(row)">
+                <input class="custom-control-input" [attr.id]="elementId+'CNT'+i" type="radio" [required]="allowBlank ? true: null"  [attr.name] = "fieldName" (click)="setSelectedRadio(row)" [checked]="row[valueField] == defaultSelectedValue ? true : false">
                 <span class="custom-control-indicator"></span>
                 <span class="custom-control-description">{{row[displayField]}}</span>
               </label>
@@ -122,6 +122,8 @@ export class RadioGroupComponent implements  OnInit{
     @Input()    column: string;
 
     @Output()   selectedValue : any = new EventEmitter<any>();
+
+    @Input()    defaultSelectedValue : any;
 
     elementId : string;
 
