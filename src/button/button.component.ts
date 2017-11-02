@@ -105,19 +105,22 @@ export class ButtonComponent implements OnInit , OnChanges, AfterViewInit {
   ngOnInit() {
     this.btnStyleClass = 'btn ';
     this.btnSizeStyleClass = '';
-    if (this.type.toLocaleLowerCase() === 'warning') {
-      this.btnStyleClass = this.btnStyleClass + 'btn-warning';
-    } else if (this.type.toLocaleLowerCase() === 'primary') {
-      this.btnStyleClass = this.btnStyleClass + 'btn-primary';
-    } else if (this.type.toLocaleLowerCase() === 'success') {
-      this.btnStyleClass = this.btnStyleClass + 'btn-success';
-    } else if (this.type.toLocaleLowerCase() === 'danger') {
-      this.btnStyleClass = this.btnStyleClass + 'btn-danger';
-    } else if (this.type.toLocaleLowerCase() === 'link') {
-      this.btnStyleClass = this.btnStyleClass + 'btn-link';
-    } else {
-      this.btnStyleClass = this.btnStyleClass + 'btn-secondary';
+    if (this.type == null) {
+      if (this.type.toLocaleLowerCase() === 'warning') {
+        this.btnStyleClass = this.btnStyleClass + 'btn-warning';
+      } else if (this.type.toLocaleLowerCase() === 'primary') {
+        this.btnStyleClass = this.btnStyleClass + 'btn-primary';
+      } else if (this.type.toLocaleLowerCase() === 'success') {
+        this.btnStyleClass = this.btnStyleClass + 'btn-success';
+      } else if (this.type.toLocaleLowerCase() === 'danger') {
+        this.btnStyleClass = this.btnStyleClass + 'btn-danger';
+      } else if (this.type.toLocaleLowerCase() === 'link') {
+        this.btnStyleClass = this.btnStyleClass + 'btn-link';
+      } else {
+        this.btnStyleClass = this.btnStyleClass + 'btn-secondary';
+      }
     }
+
     if (this.tooltipMessage == null) {
       this.hasToolTip = false;
     }
