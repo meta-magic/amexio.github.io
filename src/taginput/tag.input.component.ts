@@ -36,89 +36,93 @@ export const BASE_IMPL_TAG_INPUT : any = {
 @Component({
   selector: 'amexio-tag-input',
   template : `
-    <div class="dropdown" data-toggle="dropdown" [ngClass]="{'show': showDropDown}">
-      <div class="row">
-        <div class="col-lg-12">
-          <label [attr.for]="elementId">{{fieldLabel}}</label>
-          <div class="amexio-tagsinput">
-            <span *ngFor="let item of selectedValues" style="padding-right: 2px;" class="badge badge-pill badge-primary">&nbsp; {{item[key]}} &nbsp;&nbsp;<i (click)="removePill(item)" style="cursor: pointer" class="fa fa-times" aria-hidden="true"></i>&nbsp;</span>
-            <input type="text" class="form-control" [attr.aria-expanded]="showDropDown"
-                   [attr.id]="elementId"  (keyup)="onKeyUp($event)" #inp>
+      <div class="form-group amexio-tagsinput-dropdown">
+          <ng-container *ngIf="fieldLabel">
+              <label [attr.for]="elementId">{{fieldLabel}}</label>
+          </ng-container>
+          <div data-toggle="dropdown" [ngClass]="{'show': showDropDown}">
+              <div class="amexio-tagsinput" [ngStyle]="{width:width}">
+                  <span *ngFor="let item of selectedValues" style="padding-right: 2px;" class="badge badge-pill badge-primary">&nbsp; {{item[key]}} &nbsp;&nbsp;<i (click)="removePill(item)" style="cursor: pointer" class="fa fa-times" aria-hidden="true"></i>&nbsp;</span>
+                  <input type="text" class="form-control" [attr.aria-expanded]="showDropDown"
+                         [attr.id]="elementId"  (keyup)="onKeyUp($event)" #inp>
+              </div>
+              <ul class="amexio-scrollable-options" [ngStyle]="{width:width}">
+                  <li *ngFor="let item of filteredResult" (click)="setValue(item,inp)" style="cursor: pointer;">
+                      {{item[key]}}
+                  </li>
+              </ul>
           </div>
-          
-        </div>
 
-        <!--        <span [ngClass]="{'showIcon' : showDropDown,'hideIcon' : !showDropDown}" (click)="clearResult(inp)" class="glyphicon glyphicon-remove-circle searchIconPos"></span>-->
+          <!--        <span [ngClass]="{'showIcon' : showDropDown,'hideIcon' : !showDropDown}" (click)="clearResult(inp)" class="glyphicon glyphicon-remove-circle searchIconPos"></span>-->
+
       </div>
-
-      <ul class="dropdown-menu amexio-scrollable-options" style="width: 100%">
-        <li *ngFor="let item of filteredResult" (click)="setValue(item,inp)" style="cursor: pointer;">
-          {{item[key]}}
-        </li>
-      </ul>
-    </div>
   `,
   providers : [CUSTOM_TAG_INPUT_CONTROL_VALUE_ACCESSOR, BASE_IMPL_TAG_INPUT, CommonHttpService],
   styles : [
       `
-      .amexio-tagsinput {
-        background-color: #fff;
-        border: 1px solid #ccc;
-        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-        display: inline-block;
-        padding: 4px 6px;
-        color: #555;
-        vertical-align: middle;
-        border-radius: 4px;
-        max-width: 100%;
-        line-height: 22px;
-        cursor: text;
-      }
-      .amexio-tagsinput input {
-        border: none;
-        box-shadow: none;
-        outline: none;
-        background-color: transparent;
-        padding: 0 6px;
-        margin: 0;
-        width: auto;
-        max-width: inherit;
-      }
-      .amexio-tagsinput.form-control input::-moz-placeholder {
-        color: #777;
-        opacity: 1;
-      }
-      .amexio-tagsinput.form-control input:-ms-input-placeholder {
-        color: #777;
-      }
-      .amexio-tagsinput.form-control input::-webkit-input-placeholder {
-        color: #777;
-      }
-      .amexio-tagsinput input:focus {
-        border: none;
-        box-shadow: none;
-      }
-      .amexio-tagsinput .tag {
-        margin-right: 2px;
-        color: white;
-      }
+          .amexio-tagsinput-dropdown ul{
+              padding-left: 10px;
+              overflow: auto;
+          }
+          .amexio-tagsinput {
+              background-color: #fff;
+              border: 1px solid #ccc;
+              box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+              display: inline-block;
+              padding: 4px 6px;
+              color: #555;
+              vertical-align: middle;
+              border-radius: 4px;
+              max-width: 100%;
+              line-height: 22px;
+              cursor: text;
+          }
+          .amexio-tagsinput input {
+              border: none;
+              box-shadow: none;
+              outline: none;
+              background-color: transparent;
+              padding: 0 6px;
+              margin: 0;
+              width: auto;
+              max-width: inherit;
+          }
+          .amexio-tagsinput.form-control input::-moz-placeholder {
+              color: #777;
+              opacity: 1;
+          }
+          .amexio-tagsinput.form-control input:-ms-input-placeholder {
+              color: #777;
+          }
+          .amexio-tagsinput.form-control input::-webkit-input-placeholder {
+              color: #777;
+          }
+          .amexio-tagsinput input:focus {
+              border: none;
+              box-shadow: none;
+          }
+          .amexio-tagsinput .tag {
+              margin-right: 2px;
+              color: white;
+          }
 
 
-      .amexio-scrollable-options {
-      height: auto;
-      max-height: 200px;
-      overflow-x: hidden;
-    }
-    /**
- A Style Sheet for all form inputs common used classes
- */
+          .amexio-scrollable-options {
+              height: auto;
+              max-height: 200px;
+              overflow-x: hidden;
+              list-style: none;
+          }
+          /**
+       A Style Sheet for all form inputs common used classes
+       */
 
-   .has-feedback-custom label ~ .form-control-feedback-custom {
-      top: 32px;
-    }
-    .has-feedback-custom label.sr-only ~ .form-control-feedback-custom {
-      top: 0;
-    }
+          .has-feedback-custom label ~ .form-control-feedback-custom {
+              top: 32px;
+          }
+          .has-feedback-custom label.sr-only ~ .form-control-feedback-custom {
+              top: 0;
+          }
     `
   ]
 })
@@ -134,6 +138,8 @@ export class TagInputComponent extends FormInputBase  implements OnInit, AfterVi
   @Input()  datalist: any;
 
   @Input()  key: any;
+
+  @Input() width: any;
 
   @Input()  triggerChar: number;
 
@@ -159,20 +165,23 @@ export class TagInputComponent extends FormInputBase  implements OnInit, AfterVi
   }
 
   ngOnInit() {
+    if(!this.width) {
+      this.width = '250px';
+    }
     if(this.triggerChar == null){
       this.triggerChar = 1;
     }
     if(this.httpMethod && this.httpUrl){
       this.amxHttp.fetchData(this.httpUrl,this.httpMethod).subscribe(
-        res=>{
-          this.responseData = res.json();
-        },
-        error=>{
+          res=>{
+            this.responseData = res.json();
+          },
+          error=>{
 
-        },
-        ()=>{
-          this.setData(this.responseData);
-        }
+          },
+          ()=>{
+            this.setData(this.responseData);
+          }
       );
     }
     else if(this.datalist){
