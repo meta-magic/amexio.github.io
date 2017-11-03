@@ -55,8 +55,6 @@ import {FileuploadComponent} from "./fileupload/fileupload.component";
 import {AmexioSliderComponent} from "./slider/slider.component";
 import {AmexioToggleComponent} from "./toggle/toggle.button.comonent";
 import {AmexioPaginatorComponent} from "./paginator/paginator.component";
-import {VerticalButtonbarComponent} from "./buttonbar/vertical.bar.component";
-import {HorizontalButtonComponent} from "./buttonbar/horizontal.bar.component";
 import {TagInputComponent} from "./taginput/tag.input.component";
 import {AmexioVideoPlayerComponent} from "./video-player/video.player.component";
 
@@ -132,8 +130,6 @@ export * from "./fileupload/fileupload.component";
 export * from "./slider/slider.component";
 export * from "./toggle/toggle.button.comonent";
 export  * from "./paginator/paginator.component";
-export * from './buttonbar/horizontal.bar.component';
-export * from './buttonbar/vertical.bar.component';
 export * from './taginput/tag.input.component';
 export * from './video-player/video.player.component';
 
@@ -196,8 +192,6 @@ export * from './video-player/video.player.component';
       DockedBarToolComponent,
       DockbarComponent,
     FileuploadComponent,
-      VerticalButtonbarComponent,
-      HorizontalButtonComponent,
       TagInputComponent,
       AmexioVideoPlayerComponent
   ],
@@ -254,8 +248,6 @@ export * from './video-player/video.player.component';
     DockedBarToolComponent,
     DockbarComponent,
     FileuploadComponent,
-    VerticalButtonbarComponent,
-    HorizontalButtonComponent,
     TagInputComponent,
     AmexioVideoPlayerComponent
   ]

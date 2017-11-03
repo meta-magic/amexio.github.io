@@ -51,6 +51,8 @@ export class ButtonGroupComponent implements OnInit, AfterContentInit, AfterView
 
   @Input()    size: string;
 
+  @Input()    vertical : boolean;
+
   btnGroupStyleClass: string;
 
   elementId: any;
@@ -72,7 +74,7 @@ export class ButtonGroupComponent implements OnInit, AfterContentInit, AfterView
     this.createConfig();
   }
   ngOnInit() {
-    this.btnGroupStyleClass = 'btn-group ';
+    this.vertical ? this.btnGroupStyleClass = 'btn-group-vertical' : this.btnGroupStyleClass = 'btn-group ';
     if (this.size != null) {
       if (this.size === 'large') {
         this.btnGroupStyleClass = this.btnGroupStyleClass.concat(' btn-group-lg');
