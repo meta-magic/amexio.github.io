@@ -58,6 +58,7 @@ import {AmexioPaginatorComponent} from "./paginator/paginator.component";
 import {VerticalButtonbarComponent} from "./buttonbar/vertical.bar.component";
 import {HorizontalButtonComponent} from "./buttonbar/horizontal.bar.component";
 import {TagInputComponent} from "./taginput/tag.input.component";
+import {AmexioVideoPlayerComponent} from "./video-player/video.player.component";
 
 
 export * from './button/button.component';
@@ -134,6 +135,8 @@ export  * from "./paginator/paginator.component";
 export * from './buttonbar/horizontal.bar.component';
 export * from './buttonbar/vertical.bar.component';
 export * from './taginput/tag.input.component';
+export * from './video-player/video.player.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -195,7 +198,8 @@ export * from './taginput/tag.input.component';
     FileuploadComponent,
       VerticalButtonbarComponent,
       HorizontalButtonComponent,
-      TagInputComponent
+      TagInputComponent,
+      AmexioVideoPlayerComponent
   ],
   exports: [
     AmexioSliderComponent,
@@ -252,7 +256,8 @@ export * from './taginput/tag.input.component';
     FileuploadComponent,
     VerticalButtonbarComponent,
     HorizontalButtonComponent,
-    TagInputComponent
+    TagInputComponent,
+    AmexioVideoPlayerComponent
   ]
 })
 export class AmexioWidgetModule {
