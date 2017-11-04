@@ -105,7 +105,7 @@ export class ButtonComponent implements OnInit , OnChanges, AfterViewInit {
   ngOnInit() {
     this.btnStyleClass = 'btn ';
     this.btnSizeStyleClass = '';
-    if (this.type == null) {
+    if (this.type != null) {
       if (this.type.toLocaleLowerCase() === 'warning') {
         this.btnStyleClass = this.btnStyleClass + 'btn-warning';
       } else if (this.type.toLocaleLowerCase() === 'primary') {
