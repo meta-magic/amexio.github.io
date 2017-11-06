@@ -5,7 +5,7 @@ body{
   /* Background */
   background-color: #F0EEE9;
   background-image:url(../images/DeepOrange-bg.jpg);
-  background-repeat: repeat-x;
+  background-repeat: repeat;
   background-attachment: fixed;
   /* Fonts */
   font-family: 'Quicksand', sans-serif;

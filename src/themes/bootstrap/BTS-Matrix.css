@@ -5,7 +5,7 @@ body{
     /* Background */
   background-color: #1b1d22;
   background-image:url(../images/matrix-bg.png);
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   background-attachment: fixed;
   /* Fonts */
   font-family: 'Ubuntu Condensed', sans-serif;

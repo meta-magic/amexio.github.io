@@ -5,7 +5,7 @@ body{
   /* Background */
   background-color: #F0EEE9;
   background-image:url(../images/Pyramid-bg.png);
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   background-attachment: fixed;
   /* Fonts */
   font-family: 'Quicksand', sans-serif;
