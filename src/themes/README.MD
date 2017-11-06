@@ -67,7 +67,7 @@ Add respective theme CSS file in your app i.e if you are using Angular CLI add i
   </div>
      <div align="center">
     <h3> Bootstrap - Lime Green </h3>
-<img src="https://preview.ibb.co/g7g9qw/limegreen.png" alt="brown" border="0"><br>
+<img src="https://preview.ibb.co/hjTQxb/limegreen.png" alt="brown" border="0"><br>
  <h5 >Cli Path<h5>
  <img src="https://preview.ibb.co/g7g9qw/limegreen.png" alt="indigo_url" border="0">
   </div>
