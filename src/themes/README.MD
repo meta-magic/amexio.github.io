@@ -73,15 +73,21 @@ Add respective theme CSS file in your app i.e if you are using Angular CLI add i
   </div>
      <div align="center">
     <h3> Bootstrap - Matrix </h3>
-<img src="http://preview.ibb.co/mKBxGR/red.png" alt="brown" border="0"><br>
+<img src="https://preview.ibb.co/nj8VVw/matrix.png" alt="brown" border="0"><br>
  <h5 >Cli Path<h5>
  <img src="https://preview.ibb.co/i5Sccb/matrix.png" alt="indigo_url" border="0">
   </div>
      <div align="center">
     <h3> Bootstrap - Pyramid </h3>
-<img src="http://preview.ibb.co/mKBxGR/red.png" alt="brown" border="0"><br>
+<img src="https://preview.ibb.co/mHRCcb/pyramid.png" alt="brown" border="0"><br>
  <h5 >Cli Path<h5>
  <img src="https://preview.ibb.co/m6TiHb/pyramid.png" alt="indigo_url" border="0">
+  </div>
+      <div align="center">
+    <h3> Bootstrap - Pyramid </h3>
+<img src="https://preview.ibb.co/b72eOG/deep_orange.png" alt="brown" border="0"><br>
+ <h5 >Cli Path<h5>
+ <img src="https://preview.ibb.co/ikq2Aw/deeporange.png" alt="indigo_url" border="0">
   </div>
 ## License
 
