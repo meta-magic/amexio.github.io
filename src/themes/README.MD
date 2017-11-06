@@ -60,7 +60,7 @@ Add respective theme CSS file in your app i.e if you are using Angular CLI add i
  <img src="http://preview.ibb.co/kn0zD6/polygon_link.png" alt="indigo_url" border="0">
   </div>
 <div align="center">
-    <h3> Bootstrap - Polygon </h3>
+    <h3> Bootstrap - Red </h3>
 <img src="http://preview.ibb.co/mKBxGR/red.png" alt="brown" border="0"><br>
  <h5 >Cli Path<h5>
  <img src="http://preview.ibb.co/dQNqLm/red_link.png" alt="indigo_url" border="0">
