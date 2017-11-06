@@ -17,7 +17,7 @@ Add respective theme CSS file in your app i.e if you are using Angular CLI add i
 <h3> Material - Light-Blue </h3>
 <img src="https://preview.ibb.co/eVScok/light_blue.png" alt="light_blue" border="0"><br>
       <h5 >Cli Path<h5>
- <img src="ttps://preview.ibb.co/jwYaxb/light_blue.png" alt="lightblue_url" border="0">
+ <img src="https://preview.ibb.co/jwYaxb/light_blue.png" alt="lightblue_url" border="0">
   </div>
   <div align="center">
 <h3> Material - Blue-Grey </h3> 
