@@ -65,6 +65,24 @@ Add respective theme CSS file in your app i.e if you are using Angular CLI add i
  <h5 >Cli Path<h5>
  <img src="http://preview.ibb.co/dQNqLm/red_link.png" alt="indigo_url" border="0">
   </div>
+     <div align="center">
+    <h3> Bootstrap - Lime Green </h3>
+<img src="https://preview.ibb.co/g7g9qw/limegreen.png" alt="brown" border="0"><br>
+ <h5 >Cli Path<h5>
+ <img src="https://preview.ibb.co/g7g9qw/limegreen.png" alt="indigo_url" border="0">
+  </div>
+     <div align="center">
+    <h3> Bootstrap - Matrix </h3>
+<img src="http://preview.ibb.co/mKBxGR/red.png" alt="brown" border="0"><br>
+ <h5 >Cli Path<h5>
+ <img src="https://preview.ibb.co/i5Sccb/matrix.png" alt="indigo_url" border="0">
+  </div>
+     <div align="center">
+    <h3> Bootstrap - Pyramid </h3>
+<img src="http://preview.ibb.co/mKBxGR/red.png" alt="brown" border="0"><br>
+ <h5 >Cli Path<h5>
+ <img src="https://preview.ibb.co/m6TiHb/pyramid.png" alt="indigo_url" border="0">
+  </div>
 ## License
 
 [Apache 2.0](http://www.amexio.org/metamagic-showcase/license.html) © [MetaMagic Global Inc](http://www.metamagicglobal.com/), 2017. [Amexio Angular Extensions](http://www.amexio.tech)
