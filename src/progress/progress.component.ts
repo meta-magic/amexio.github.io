@@ -17,15 +17,16 @@ import {Component, Input, OnInit} from '@angular/core';
   template : `
 
       <div class="progress" *ngIf="showProgress">
-          <div class="progress-bar progress-bar-striped {{progressType !=null ? 'bg-'+progressType : ''}} active" role="progressbar" [attr.aria-valuenow]="currentValue" [attr.aria-valuemin]="minValue" [attr.aria-valuemax]="maxValue" [style.width.%]="infinteMode ? 100 : this.currentValue">
-              <span>{{infinteMode ? displayText : currentValue+'%'}}<span class="dotdotdot"></span></span>
+          <div class="progress-bar {{stripped ? 'progress-bar-striped' : ''}} {{progressType !=null ? 'bg-'+progressType : ''}} active" role="progressbar" [attr.aria-valuenow]="currentValue" [attr.aria-valuemin]="minValue" [attr.aria-valuemax]="maxValue" [style.width.%]="infinteMode ? 100 : this.currentValue" [style.height.px]="height">
+              <span *ngIf="label == '' || label == null">{{infinteMode ? displayText : currentValue+'%'}}<span class="dotdotdot"></span></span>
+              <span *ngIf="label != null">{{label}}<span class="dotdotdot"></span></span>
           </div>
       </div>
 
   `,
     styles : [`
         .progress {
-            margin: 15px;
+            
         }
 
         .progress .progress-bar.active {
@@ -64,6 +65,12 @@ export class ProgressComponent implements OnInit{
   @Input()    currentValue : string;
 
   @Input()    progressType : string;
+
+  @Input()    label : any;
+
+  @Input()    height : any;
+
+  @Input()    stripped : boolean;
 
   displayText : string;
 
