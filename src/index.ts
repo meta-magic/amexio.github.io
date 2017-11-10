@@ -60,8 +60,6 @@ import {AmexioVideoPlayerComponent} from "./video-player/video.player.component"
 import {AmexioAccordionComponent} from "./accordion/accodrion.component";
 import {AmexioAccordionTabComponent} from "./accordion/amexio-accordion-tab";
 import {SingleCheckbox} from "./singlecheckbox/single.checkbox";
-import {DynamicTabComponent} from "./dynamictabs/dynamictab.component";
-import {RouterModule} from "@angular/router";
 
 
 export * from './button/button.component';
@@ -204,8 +202,7 @@ export * from './singlecheckbox/single.checkbox';
       AmexioVideoPlayerComponent,
     AmexioAccordionComponent,
       AmexioAccordionTabComponent,
-      SingleCheckbox,
-      DynamicTabComponent
+      SingleCheckbox
   ],
   exports: [
     AmexioSliderComponent,
