@@ -57,6 +57,9 @@ import {AmexioToggleComponent} from "./toggle/toggle.button.comonent";
 import {AmexioPaginatorComponent} from "./paginator/paginator.component";
 import {TagInputComponent} from "./taginput/tag.input.component";
 import {AmexioVideoPlayerComponent} from "./video-player/video.player.component";
+import {AmexioAccordionComponent} from "./accordion/accodrion.component";
+import {AmexioAccordionTabComponent} from "./accordion/amexio-accordion-tab";
+import {SingleCheckbox} from "./singlecheckbox/single.checkbox";
 
 
 export * from './button/button.component';
@@ -132,6 +135,9 @@ export * from "./toggle/toggle.button.comonent";
 export  * from "./paginator/paginator.component";
 export * from './taginput/tag.input.component';
 export * from './video-player/video.player.component';
+export * from './accordion/accodrion.component';
+export * from './accordion/amexio-accordion-tab';
+export * from './singlecheckbox/single.checkbox';
 
 @NgModule({
   imports: [
@@ -193,7 +199,10 @@ export * from './video-player/video.player.component';
       DockbarComponent,
     FileuploadComponent,
       TagInputComponent,
-      AmexioVideoPlayerComponent
+      AmexioVideoPlayerComponent,
+    AmexioAccordionComponent,
+      AmexioAccordionTabComponent,
+      SingleCheckbox
   ],
   exports: [
     AmexioSliderComponent,
@@ -249,7 +258,10 @@ export * from './video-player/video.player.component';
     DockbarComponent,
     FileuploadComponent,
     TagInputComponent,
-    AmexioVideoPlayerComponent
+    AmexioVideoPlayerComponent,
+    AmexioAccordionComponent,
+    AmexioAccordionTabComponent,
+      SingleCheckbox
   ]
 })
 export class AmexioWidgetModule {
