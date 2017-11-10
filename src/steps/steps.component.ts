@@ -2,8 +2,7 @@
  * Created by sagar on 6/9/17.
  */
 import {
-  AfterContentInit, Component, ContentChildren, EventEmitter, Input, OnInit, Output,
-  QueryList
+    AfterContentInit, Component, ContentChildren, DoCheck, EventEmitter, Input, OnInit, Output, QueryList
 } from '@angular/core';
 import {StepBlockComponent} from "./step-block";
 
@@ -149,7 +148,7 @@ import {StepBlockComponent} from "./step-block";
   `]
 })
 
-export class StepsComponent implements OnInit, AfterContentInit {
+export class StepsComponent implements OnInit, AfterContentInit, DoCheck {
 
   @Input() showIndex: boolean;
 
@@ -166,6 +165,8 @@ export class StepsComponent implements OnInit, AfterContentInit {
   stepBlockArray: StepBlockComponent[];
 
   @Input() stepBlockLocalData: any[];
+
+  stepPreviewData: any;
 
   constructor() {
 
@@ -184,7 +185,17 @@ export class StepsComponent implements OnInit, AfterContentInit {
     }
   }
 
+    ngDoCheck() {
+        if (JSON.stringify(this.stepPreviewData) != JSON.stringify(this.stepBlockLocalData)) {
+            this.stepPreviewData = JSON.parse(JSON.stringify(this.stepBlockLocalData));
+            this.stepBlockArray = this.stepBlockLocalData;
+        }
+    }
   ngOnInit() {
+      if (this.stepBlockLocalData && this.stepBlockLocalData.length > 0 ) {
+          this.stepPreviewData = JSON.parse(JSON.stringify(this.stepBlockLocalData));
+          this.stepBlockArray = this.stepBlockLocalData;
+      }
 
   }
 }
