@@ -61,6 +61,7 @@ import {AmexioAccordionComponent} from "./accordion/accodrion.component";
 import {AmexioAccordionTabComponent} from "./accordion/amexio-accordion-tab";
 import {SingleCheckbox} from "./singlecheckbox/single.checkbox";
 import {DynamicTabComponent} from "./dynamictabs/dynamictab.component";
+import {RouterModule} from "@angular/router";
 
 
 export * from './button/button.component';
@@ -139,7 +140,6 @@ export * from './video-player/video.player.component';
 export * from './accordion/accodrion.component';
 export * from './accordion/amexio-accordion-tab';
 export * from './singlecheckbox/single.checkbox';
-export * from './dynamictabs/dynamictab.component';
 
 @NgModule({
   imports: [
@@ -264,8 +264,7 @@ export * from './dynamictabs/dynamictab.component';
     AmexioVideoPlayerComponent,
     AmexioAccordionComponent,
     AmexioAccordionTabComponent,
-      SingleCheckbox,
-      DynamicTabComponent
+      SingleCheckbox
   ]
 })
 export class AmexioWidgetModule {
