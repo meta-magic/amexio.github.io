@@ -60,6 +60,7 @@ import {AmexioVideoPlayerComponent} from "./video-player/video.player.component"
 import {AmexioAccordionComponent} from "./accordion/accodrion.component";
 import {AmexioAccordionTabComponent} from "./accordion/amexio-accordion-tab";
 import {SingleCheckbox} from "./singlecheckbox/single.checkbox";
+import {ProgressMultiComponent} from "./progress/progress.bar";
 
 
 export * from './button/button.component';
@@ -73,6 +74,7 @@ export * from './emailinput/emailinput.component';
 export * from './numberinput/numberinput.component';
 export * from './passwordinput/passwordinput.component';
 export * from './progress/progress.component';
+export * from './progress/progress.bar';
 export * from './radiogroup/radiogroup.component';
 export * from './ratinginput/ratinginput.component';
 export * from './textareainput/textareainput.component';
@@ -202,7 +204,8 @@ export * from './singlecheckbox/single.checkbox';
       AmexioVideoPlayerComponent,
     AmexioAccordionComponent,
       AmexioAccordionTabComponent,
-      SingleCheckbox
+      SingleCheckbox,
+      ProgressMultiComponent
   ],
   exports: [
     AmexioSliderComponent,
@@ -261,7 +264,8 @@ export * from './singlecheckbox/single.checkbox';
     AmexioVideoPlayerComponent,
     AmexioAccordionComponent,
     AmexioAccordionTabComponent,
-      SingleCheckbox
+      SingleCheckbox,
+    ProgressMultiComponent
   ]
 })
 export class AmexioWidgetModule {

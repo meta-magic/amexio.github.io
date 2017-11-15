@@ -11,20 +11,31 @@
  *
  */
 
-import {Component, Input, OnInit} from '@angular/core';
+import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList, ViewChildren} from '@angular/core';
+import {ProgressMultiComponent} from "./progress.bar";
 @Component({
   selector: 'amexio-progress-bar',
   template : `
 
-      <div class="progress" *ngIf="showProgress">
+      <div class="progress" *ngIf="showProgress && !multi">
           <div class="progress-bar {{stripped ? 'progress-bar-striped' : ''}} {{progressType !=null ? 'bg-'+progressType : ''}} active" role="progressbar" [attr.aria-valuenow]="currentValue" [attr.aria-valuemin]="minValue" [attr.aria-valuemax]="maxValue" [style.width.%]="infinteMode ? 100 : this.currentValue" [style.height.px]="height">
               <span *ngIf="label == '' || label == null">{{infinteMode ? displayText : currentValue+'%'}}<span class="dotdotdot"></span></span>
               <span *ngIf="label != null">{{label}}<span class="dotdotdot"></span></span>
           </div>
       </div>
+    
+    <div class="progress" *ngIf="multi">
+      <div *ngFor="let bar of barData" class="progress-bar" [ngClass]="{'bg-success' : bar.type=='success','bg-info' : bar.type == 'info'}"
+           role="progressbar" [style.width.%]="bar.value" [attr.aria-valuenow]="bar.value" [attr.aria-valuemin]="bar.minValue"
+           [attr.aria-valuemax]="bar.maxValue">
+
+      </div>
+    </div>
+    
+    <ng-content></ng-content>
 
   `,
-    styles : [`
+    styles : [`            
         .progress {
             
         }
@@ -52,7 +63,7 @@ import {Component, Input, OnInit} from '@angular/core';
     `]
 })
 
-export class ProgressComponent implements OnInit{
+export class ProgressComponent implements OnInit,AfterContentInit{
 
   @Input()    showProgress : boolean = true;
 
@@ -72,11 +83,15 @@ export class ProgressComponent implements OnInit{
 
   @Input()    stripped : boolean;
 
+  @Input()    multi : boolean;
+
   displayText : string;
 
   barColorClass : string;
 
+  @ContentChildren(ProgressMultiComponent)  bars : QueryList<ProgressMultiComponent>;
 
+  barData : any[]= [];
 
   constructor(){
 
@@ -92,6 +107,27 @@ export class ProgressComponent implements OnInit{
 
     else
       this.displayText = this.currentValue+'%';
+  }
+
+  ngAfterContentInit(){
+    if(this.multi){
+      this.createBarConfig();
+    }
+  }
+
+  createBarConfig() {
+    let barRefArray = [];
+    debugger;
+    barRefArray = this.bars.toArray();
+    for (let cr = 0 ; cr < barRefArray.length; cr++) {
+      let barConfig = barRefArray[cr];
+      let data : any = {
+        type : barConfig.type,
+        value : barConfig.value, minValue: barConfig.minValue,
+        maxValue:barConfig.maxValue
+      };
+      this.barData.push(data);
+    }
   }
 }
 
