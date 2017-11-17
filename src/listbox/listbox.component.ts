@@ -14,7 +14,6 @@
 import {
     Component, ContentChild, DoCheck, EventEmitter, Input, OnInit, Output, TemplateRef
 } from '@angular/core';
-import {Http} from "@angular/http";
 import {CommonHttpService} from "../common.http.service";
 
 
@@ -30,7 +29,7 @@ import {CommonHttpService} from "../common.http.service";
                 </li>
                 <li class="list-group-item  amexio-listbox-list-item" *ngFor="let row of viewData let rowno = index ">
                     <div>
-                <span *ngIf="(enableCheckbox == true)">
+                <span *ngIf="(enableCheckBox == true)">
                   <input type="checkbox" (click)="selectedCheckBox($event,rowno,row)"/>
                 </span>
                     </div>
@@ -68,51 +67,50 @@ import {CommonHttpService} from "../common.http.service";
             }
 
         `
-    ]
+    ],
+    providers: [CommonHttpService]
 
 })
 export class ListBoxComponent implements OnInit, DoCheck{
 
 
-    @Input() enableCheckbox : boolean;
+    @Input() enableCheckBox : boolean;
 
     @Input() searchPlaceHolder: string;
 
     @Input() filter : boolean;
 
-    @Input() data : any;
+    @Input() data: any;
 
-    @Input() dataReader : string;
+    @Input() httpUrl: string;
+
+    @Input() dataReader: string;
+
+    @Input() httpMethod: string;
 
     @Input() displayField: string;
 
-    @Output() selectedRows : any = new EventEmitter<any>();
+    @Output() selectedRows: any = new EventEmitter<any>();
 
-    @Output() rowClick : any = new EventEmitter<any>();
-
-    @Input() httpMethod : string;
-
-    @Input() httpUrl : string;
-
-    @Input() valueField : string;
+    @Output() rowClick: any = new EventEmitter<any>();
 
     @ContentChild('amexioBodyTmpl') bodyTemplate: TemplateRef<any>;
 
-    viewData : any[];
+    viewData: any[];
 
-    orgData : any[];
+    orgData: any[];
 
     filterText: string;
 
-    selectedData : any[];
+    response: any;
 
-    previousData : any;
+    selectedData: any[];
 
-    responseData : any;
+    previousData: any;
 
-    constructor(private _http : Http,private amxHttp: CommonHttpService){
+    constructor(private listBoxService: CommonHttpService){
         this.filter = false;
-        this.enableCheckbox = false;
+        this.enableCheckBox = false;
         this.selectedData = [];
         this.searchPlaceHolder = "Search";
     }
@@ -120,18 +118,13 @@ export class ListBoxComponent implements OnInit, DoCheck{
 
     ngOnInit(){
         if (this.httpMethod && this.httpUrl) {
-            this.amxHttp.fetchData(this.httpUrl, this.httpMethod).subscribe(
-                response => {
-                    this.responseData = response.json();
-                },
-                error => {
-                },
-                () => {
-                    this.setData(this.responseData);
-                }
-            );
-        }
-        if (this.data ) {
+            this.listBoxService.fetchData(this.httpUrl, this.httpMethod).subscribe(response => {
+                this.response = response.json();
+            }, error => {
+            }, () => {
+                this.setData(this.response);
+            });
+        } else if (this.data ) {
             this.previousData = JSON.parse(JSON.stringify(this.data));
             this.setData(this.data);
         }
