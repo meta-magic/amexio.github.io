@@ -10,7 +10,7 @@
  * Author -  Pratik Kelwalkar
  *
  */
-import {AfterViewInit, Component, forwardRef, Input, OnInit} from '@angular/core';
+import {AfterViewInit, Component, DoCheck, forwardRef, Input, OnInit} from '@angular/core';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {FormInputBase} from '../baseclass/form.base.class';
 import {CommonHttpService} from '../common.http.service';
@@ -105,7 +105,7 @@ export const BASE_IMPL_AUTO_COMPLETE : any = {
   ]
 })
 
-export class TypeAheadComponent extends FormInputBase  implements OnInit, AfterViewInit {
+export class TypeAheadComponent extends FormInputBase  implements OnInit, AfterViewInit, DoCheck {
 
   @Input()  httpUrl: string;
 
@@ -128,6 +128,8 @@ export class TypeAheadComponent extends FormInputBase  implements OnInit, AfterV
   filteredResult: any[] = [];
 
   showDropDown:  boolean = false;
+
+  previousValue: any;
 
 
 
@@ -154,9 +156,17 @@ export class TypeAheadComponent extends FormInputBase  implements OnInit, AfterV
           );
       }
       else if(this.datalist){
+          this.previousValue = JSON.parse(JSON.stringify(this.datalist));
           this.setData(this.datalist);
       }
   }
+
+    ngDoCheck() {
+        if (JSON.stringify(this.previousValue) != JSON.stringify(this.datalist)) {
+            this.previousValue = JSON.parse(JSON.stringify(this.datalist));
+            this.setData(this.datalist);
+        }
+    }
 
   ngAfterViewInit(){
 

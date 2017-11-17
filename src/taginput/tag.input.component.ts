@@ -10,7 +10,10 @@
  * Author -  Pratik Kelwalkar
  *
  */
-import {AfterViewInit, Component, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {
+    AfterViewInit, Component, DoCheck, EventEmitter, forwardRef, Input, OnInit, Output,
+    ViewChild
+} from '@angular/core';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {FormInputBase} from '../baseclass/form.base.class';
 import {CommonHttpService} from '../common.http.service';
@@ -127,7 +130,7 @@ export const BASE_IMPL_TAG_INPUT : any = {
   ]
 })
 
-export class TagInputComponent extends FormInputBase  implements OnInit, AfterViewInit {
+export class TagInputComponent extends FormInputBase  implements OnInit, AfterViewInit, DoCheck {
 
   @Input()  httpUrl: string;
 
@@ -157,6 +160,7 @@ export class TagInputComponent extends FormInputBase  implements OnInit, AfterVi
 
   selectedValues : any[] = [];
 
+    previousValue: any;
 
 
   constructor(public amxHttp: CommonHttpService) {
@@ -185,9 +189,17 @@ export class TagInputComponent extends FormInputBase  implements OnInit, AfterVi
       );
     }
     else if(this.datalist){
+        this.previousValue = JSON.parse(JSON.stringify(this.datalist));
       this.setData(this.datalist);
     }
   }
+
+    ngDoCheck() {
+        if (JSON.stringify(this.previousValue) != JSON.stringify(this.datalist)) {
+            this.previousValue = JSON.parse(JSON.stringify(this.datalist));
+            this.setData(this.datalist);
+        }
+    }
 
   ngAfterViewInit(){
 

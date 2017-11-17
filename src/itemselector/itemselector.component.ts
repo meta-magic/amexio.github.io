@@ -11,7 +11,7 @@
  *
  */
 
-import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output,} from '@angular/core';
+import {AfterViewInit, Component, DoCheck, EventEmitter, Input, OnInit, Output,} from '@angular/core';
 import {CommonHttpService} from "../common.http.service";
 
 
@@ -152,7 +152,7 @@ import {CommonHttpService} from "../common.http.service";
 
     `], providers: [CommonHttpService]
 })
-export class ItemSelectorComponent implements OnInit, AfterViewInit {
+export class ItemSelectorComponent implements OnInit, AfterViewInit, DoCheck {
 
     @Input() height: any;
 
@@ -189,6 +189,8 @@ export class ItemSelectorComponent implements OnInit, AfterViewInit {
 
     response: any;
 
+    previousValue: any;
+
 
     constructor(private itemSelectorService: CommonHttpService) {
         this.selectedData = [];
@@ -215,6 +217,14 @@ export class ItemSelectorComponent implements OnInit, AfterViewInit {
                 this.setData(this.response);
             });
         } else if (this.ItemSelectBindData) {
+            this.previousValue = JSON.parse(JSON.stringify(this.ItemSelectBindData));
+            this.setData(this.ItemSelectBindData);
+        }
+    }
+
+    ngDoCheck() {
+        if (JSON.stringify(this.previousValue) != JSON.stringify(this.ItemSelectBindData)) {
+            this.previousValue = JSON.parse(JSON.stringify(this.ItemSelectBindData));
             this.setData(this.ItemSelectBindData);
         }
     }

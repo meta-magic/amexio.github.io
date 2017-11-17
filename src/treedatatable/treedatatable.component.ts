@@ -12,7 +12,7 @@
  */
 
 import {
-    OnInit, Input, Component, SimpleChange, EventEmitter, Output, QueryList, ContentChildren, AfterContentInit
+    OnInit, Input, Component, SimpleChange, EventEmitter, Output, QueryList, ContentChildren, AfterContentInit, DoCheck
 } from '@angular/core';
 import {CommonHttpService} from '../common.http.service';
 import {ColumnComponent} from "../datatable/column.component";
@@ -135,7 +135,7 @@ import {ColumnComponent} from "../datatable/column.component";
     ]
 })
 
-export class TreeDataTableComponent implements  OnInit, AfterContentInit{
+export class TreeDataTableComponent implements  OnInit, AfterContentInit, DoCheck{
 
     @Input()    title: string;
 
@@ -161,6 +161,8 @@ export class TreeDataTableComponent implements  OnInit, AfterContentInit{
 
     responseData: any;
 
+    previousValue: any;
+
     @ContentChildren(ColumnComponent) columnRef: QueryList<ColumnComponent>;
 
     constructor (private  treeDataTableService: CommonHttpService) {
@@ -179,6 +181,9 @@ export class TreeDataTableComponent implements  OnInit, AfterContentInit{
                     this.setData(this.responseData);
                 }
             );
+        } else if (this.dataTableBindData) {
+            this.previousValue = JSON.parse(JSON.stringify(this.dataTableBindData));
+            this.setData(this.dataTableBindData);
         }
     }
 
@@ -203,8 +208,9 @@ export class TreeDataTableComponent implements  OnInit, AfterContentInit{
         }
     }
 
-    ngOnChanges(change: SimpleChange){
-        if (this.dataTableBindData){
+    ngDoCheck() {
+        if (JSON.stringify(this.previousValue) != JSON.stringify(this.dataTableBindData)) {
+            this.previousValue = JSON.parse(JSON.stringify(this.dataTableBindData));
             this.setData(this.dataTableBindData);
         }
     }

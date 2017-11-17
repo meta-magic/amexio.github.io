@@ -12,8 +12,7 @@
 
 
 import {
-  AfterViewInit, ChangeDetectorRef, Component, ContentChild, EventEmitter, Input, OnInit, Output,
-  TemplateRef
+  AfterViewInit, ChangeDetectorRef, Component, ContentChild, DoCheck, EventEmitter, Input, OnInit, Output, TemplateRef
 } from '@angular/core';
 import {Http, Headers, RequestOptions} from '@angular/http';
 import {CommonHttpService} from "../common.http.service";
@@ -59,7 +58,7 @@ import {CommonHttpService} from "../common.http.service";
   ],
   providers: [CommonHttpService]
 })
-export class FilterTreeViewComponent implements OnInit, AfterViewInit{
+export class FilterTreeViewComponent implements OnInit, AfterViewInit, DoCheck {
 
   @Input()
   httpUrl: string;
@@ -99,6 +98,8 @@ export class FilterTreeViewComponent implements OnInit, AfterViewInit{
   onClickSearch= false;
 
   filterOptionData: any;
+
+  previousValue: any;
 
   @ContentChild('amexioTreeTemplate')   parentTmp: TemplateRef<any>;
 
@@ -160,6 +161,14 @@ export class FilterTreeViewComponent implements OnInit, AfterViewInit{
     if (this.httpMethod && this.httpUrl) {
       this.callService();
     } else if (this.dataTableBindData) {
+      this.previousValue = JSON.parse(JSON.stringify(this.dataTableBindData));
+      this.setData(this.dataTableBindData);
+    }
+  }
+
+  ngDoCheck() {
+    if (JSON.stringify(this.previousValue) != JSON.stringify(this.dataTableBindData)) {
+      this.previousValue = JSON.parse(JSON.stringify(this.dataTableBindData));
       this.setData(this.dataTableBindData);
     }
   }

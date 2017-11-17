@@ -516,7 +516,7 @@ export class DataTableComponent implements OnInit, AfterContentInit, DoCheck, On
 
     @Input() tableDatacClass: string;
 
-    @Input() localColumnData: any;
+    @Input() columnLocalData: any;
 
     @Output() onColumnClickEvent: EventEmitter<any> = new EventEmitter<any>();
 
@@ -606,9 +606,9 @@ export class DataTableComponent implements OnInit, AfterContentInit, DoCheck, On
             this.previousData = JSON.parse(JSON.stringify(this.dataTableBindData));
             this.setData(this.dataTableBindData);
         }
-        if (this.localColumnData && this.localColumnData.length > 0 ) {
-            this.columnPreviewData = JSON.parse(JSON.stringify(this.localColumnData));
-            this.columns = this.localColumnData;
+        if (this.columnLocalData && this.columnLocalData.length > 0 ) {
+            this.columnPreviewData = JSON.parse(JSON.stringify(this.columnLocalData));
+            this.columns = this.columnLocalData;
         }
     }
 
@@ -617,9 +617,9 @@ export class DataTableComponent implements OnInit, AfterContentInit, DoCheck, On
             this.previousData = JSON.parse(JSON.stringify(this.dataTableBindData));
             this.setData(this.dataTableBindData);
         }
-        if (JSON.stringify(this.columnPreviewData) != JSON.stringify(this.localColumnData)) {
-            this.columnPreviewData = JSON.parse(JSON.stringify(this.localColumnData));
-            this.columns = this.localColumnData;
+        if (JSON.stringify(this.columnPreviewData) != JSON.stringify(this.columnLocalData)) {
+            this.columnPreviewData = JSON.parse(JSON.stringify(this.columnLocalData));
+            this.columns = this.columnLocalData;
         }
     }
 
@@ -638,8 +638,8 @@ export class DataTableComponent implements OnInit, AfterContentInit, DoCheck, On
 
 
     ngAfterContentInit() {
-        if (this.localColumnData && this.localColumnData.length > 0) {
-            this.columns = this.localColumnData;
+        if (this.columnLocalData && this.columnLocalData.length > 0) {
+            this.columns = this.columnLocalData;
         } else {
             this.createConfig();
         }

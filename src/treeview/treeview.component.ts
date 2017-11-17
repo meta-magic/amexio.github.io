@@ -14,7 +14,7 @@
 
 import {
     OnInit, Input, Component, EventEmitter, Output, SimpleChanges, ContentChild, TemplateRef, ChangeDetectorRef,
-    AfterViewInit
+    AfterViewInit, DoCheck
 } from '@angular/core';
 import {CommonHttpService} from '../common.http.service';
 
@@ -146,7 +146,7 @@ import {CommonHttpService} from '../common.http.service';
     `]
 })
 
-export class TreeViewComponent implements  OnInit, AfterViewInit{
+export class TreeViewComponent implements  OnInit, AfterViewInit, DoCheck {
 
     @Input()
     httpUrl : string;
@@ -184,6 +184,8 @@ export class TreeViewComponent implements  OnInit, AfterViewInit{
 
     responseData: any;
 
+    previousValue: any;
+
     constructor (private  treeViewService : CommonHttpService, private cdf : ChangeDetectorRef){}
 
     ngOnInit(){
@@ -204,7 +206,8 @@ export class TreeViewComponent implements  OnInit, AfterViewInit{
                 }
             );
         }
-        else if (this.dataTableBindData){
+        else if (this.dataTableBindData) {
+            this.previousValue = JSON.parse(JSON.stringify(this.dataTableBindData));
             this.setData(this.dataTableBindData);
         }
 
@@ -217,12 +220,10 @@ export class TreeViewComponent implements  OnInit, AfterViewInit{
         }
     }
 
-    ngOnChanges(change : SimpleChanges){
-        if (change['dataTableBindData']){
-            let data = change['dataTableBindData'].currentValue;
-            if (data){
-                this.setData(data);
-            }
+    ngDoCheck() {
+        if (JSON.stringify(this.previousValue) != JSON.stringify(this.dataTableBindData)) {
+            this.previousValue = JSON.parse(JSON.stringify(this.dataTableBindData));
+            this.setData(this.dataTableBindData);
         }
     }
 
