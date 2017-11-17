@@ -67,7 +67,8 @@ import {CommonHttpService} from "../common.http.service";
             }
 
         `
-    ]
+    ],
+    providers: [CommonHttpService]
 
 })
 export class ListBoxComponent implements OnInit, DoCheck{
