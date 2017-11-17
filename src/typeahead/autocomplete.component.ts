@@ -10,7 +10,7 @@
  * Author -  Pratik Kelwalkar
  *
  */
-import {AfterViewInit, Component, DoCheck, forwardRef, Input, OnInit} from '@angular/core';
+import {AfterViewInit, Component, DoCheck, EventEmitter, forwardRef, Input, OnInit, Output} from '@angular/core';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {FormInputBase} from '../baseclass/form.base.class';
 import {CommonHttpService} from '../common.http.service';
@@ -47,6 +47,9 @@ export const BASE_IMPL_AUTO_COMPLETE : any = {
         <input type="search" class="form-control" [attr.aria-expanded]="showDropDown"
                [attr.id]="elementId"  (keyup)="onKeyUp($event)"
                [placeholder]="placeholder"
+               (change)="onChange()"
+               (input)="onInput()"
+               (focus)="onFocus()" 
                (blur)="onBlur()"  [(ngModel)]="value" #inp>
      
       <ul class="dropdown-menu amexio-dropdown-menu amexio-scrollable-options" style="width: 100%">
@@ -121,6 +124,11 @@ export class TypeAheadComponent extends FormInputBase  implements OnInit, AfterV
 
   @Input() placeholder:string;
 
+    @Output() blur : EventEmitter<any> = new EventEmitter<any>();
+    @Output() change : EventEmitter<any> = new EventEmitter<any>();
+    @Output() input : EventEmitter<any> = new EventEmitter<any>();
+    @Output() focus : EventEmitter<any> = new EventEmitter<any>();
+
   data: any;
 
   responseData: any;
@@ -160,6 +168,18 @@ export class TypeAheadComponent extends FormInputBase  implements OnInit, AfterV
           this.setData(this.datalist);
       }
   }
+
+    onChange(){
+        this.change.emit();
+    }
+
+    onInput(){
+        this.input.emit();
+    }
+
+    onFocus(){
+        this.focus.emit();
+    }
 
     ngDoCheck() {
         if (JSON.stringify(this.previousValue) != JSON.stringify(this.datalist)) {
@@ -224,6 +244,7 @@ export class TypeAheadComponent extends FormInputBase  implements OnInit, AfterV
   //Set touched on blur
   onBlur() {
     this.onTouchedCallback();
+    this.blur.emit();
   }
 
   //From ControlValueAccessor interface

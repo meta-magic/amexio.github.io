@@ -11,7 +11,7 @@
  *
  */
 
-import {Input, OnInit, forwardRef, Component, AfterViewInit} from "@angular/core";
+import {Input, OnInit, forwardRef, Component, AfterViewInit, Output, EventEmitter} from "@angular/core";
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {FormInputBase} from "../baseclass/form.base.class";
 declare var $;
@@ -45,6 +45,9 @@ export const BASE_IMPL_TEXTAREA_INPUT : any = {
 
         <textarea type="text"
                   (blur)="onBlur()"
+                  (change)="onChange()"
+                  (input)="onInput()"
+                  (focus)="onFocus()"
                   autocomplete="off"
                   class="form-control"
                   [(ngModel)]="value"
@@ -115,6 +118,11 @@ export class TextAreaComponent extends FormInputBase implements OnInit,ControlVa
 
     @Input()    noOfCols : number;
 
+    @Output() blur : EventEmitter<any> = new EventEmitter<any>();
+    @Output() change : EventEmitter<any> = new EventEmitter<any>();
+    @Output() input : EventEmitter<any> = new EventEmitter<any>();
+    @Output() focus : EventEmitter<any> = new EventEmitter<any>();
+
     constructor() {
       super();
       this.elementId = 'input-text-' + Math.floor(Math.random()*90000) + 10000;
@@ -150,6 +158,18 @@ export class TextAreaComponent extends FormInputBase implements OnInit,ControlVa
         $('[data-toggle="popover"]').popover();
     }
 
+    onChange(){
+        this.change.emit();
+    }
+
+    onInput(){
+        this.input.emit();
+    }
+
+    onFocus(){
+        this.focus.emit();
+    }
+
     //The internal dataviews model
     private innerValue: any = '';
 
@@ -175,6 +195,7 @@ export class TextAreaComponent extends FormInputBase implements OnInit,ControlVa
     onBlur() {
         this.onTouchedCallback();
         this.validate();
+        this.blur.emit();
     }
 
     //From ControlValueAccessor interface

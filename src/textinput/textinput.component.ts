@@ -11,7 +11,7 @@
  *
  */
 
-import {Input, OnInit, forwardRef, Component, AfterViewInit} from '@angular/core';
+import {Input, OnInit, forwardRef, Component, AfterViewInit, Output, EventEmitter} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {FormInputBase} from '../baseclass/form.base.class';
 
@@ -111,6 +111,10 @@ export const BASE_IMPL_TEXT_INPUT: any = {
 
 export class TextInputComponent extends FormInputBase implements OnInit, ControlValueAccessor, AfterViewInit{
 
+    @Output() blur : EventEmitter<any> = new EventEmitter<any>();
+    @Output() change : EventEmitter<any> = new EventEmitter<any>();
+    @Output() input : EventEmitter<any> = new EventEmitter<any>();
+    @Output() focus : EventEmitter<any> = new EventEmitter<any>();
 
     constructor() {
         super();

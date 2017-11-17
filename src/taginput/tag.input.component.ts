@@ -47,6 +47,8 @@ export const BASE_IMPL_TAG_INPUT : any = {
               <div class="amexio-tagsinput" [ngStyle]="{width:width}">
                   <span *ngFor="let item of selectedValues" style="padding-right: 2px;" class="badge badge-pill badge-primary">&nbsp; {{item[key]}} &nbsp;&nbsp;<i (click)="removePill(item)" style="cursor: pointer" class="fa fa-times" aria-hidden="true"></i>&nbsp;</span>
                   <input type="text" class="form-control" [attr.aria-expanded]="showDropDown"
+                         (input)="onInput()"
+                         (focus)="onFocus()"
                          [attr.id]="elementId"  (keyup)="onKeyUp($event)" #inp>
               </div>
               <ul class="amexio-scrollable-options" [ngStyle]="{width:width}">
@@ -150,6 +152,10 @@ export class TagInputComponent extends FormInputBase  implements OnInit, AfterVi
 
   @ViewChild('inp')  inpHandle : any;
 
+    @Output() blur : EventEmitter<any> = new EventEmitter<any>();
+    @Output() input : EventEmitter<any> = new EventEmitter<any>();
+    @Output() focus : EventEmitter<any> = new EventEmitter<any>();
+
   data: any;
 
   responseData: any;
@@ -204,6 +210,14 @@ export class TagInputComponent extends FormInputBase  implements OnInit, AfterVi
   ngAfterViewInit(){
 
   }
+
+    onInput(){
+        this.input.emit();
+    }
+
+    onFocus(){
+        this.focus.emit();
+    }
 
   removePill(item : any){
     let indexToRemove : number = null;
@@ -267,6 +281,7 @@ export class TagInputComponent extends FormInputBase  implements OnInit, AfterVi
   //Set touched on blur
   onBlur() {
     this.onTouchedCallback();
+    this.blur.emit();
   }
 
   //From ControlValueAccessor interface

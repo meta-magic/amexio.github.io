@@ -11,7 +11,7 @@
  *
  */
 
-import {Input, OnInit, forwardRef, Component, AfterViewInit} from "@angular/core";
+import {Input, OnInit, forwardRef, Component, AfterViewInit, Output, EventEmitter} from "@angular/core";
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {FormInputBase} from "../baseclass/form.base.class";
 declare var $;
@@ -46,6 +46,9 @@ declare var $ : any;
 
             <input type="number"
                    (blur)="onBlur()"
+                   (change)="onChange()"
+                   (input)="onInput()"
+                   (focus)="onFocus()"
                    autocomplete="off"
                    class="form-control"
                    [(ngModel)]="value"
@@ -118,6 +121,10 @@ export class NumberInputComponent extends FormInputBase implements OnInit,AfterV
 
     @Input()    maxValue : number;
 
+    @Output() blur : EventEmitter<any> = new EventEmitter<any>();
+    @Output() change : EventEmitter<any> = new EventEmitter<any>();
+    @Output() input : EventEmitter<any> = new EventEmitter<any>();
+    @Output() focus : EventEmitter<any> = new EventEmitter<any>();
 
     constructor() {
       super();
@@ -159,6 +166,19 @@ export class NumberInputComponent extends FormInputBase implements OnInit,AfterV
         $('[data-toggle="popover"]').popover();
       }
 
+    onChange(){
+        this.change.emit();
+    }
+
+    onInput(){
+        this.input.emit();
+    }
+
+    onFocus(){
+        this.focus.emit();
+    }
+
+
     //The internal dataviews model
     private innerValue: any = '';
 
@@ -184,6 +204,7 @@ export class NumberInputComponent extends FormInputBase implements OnInit,AfterV
     onBlur() {
         this.onTouchedCallback();
         this.validate();
+        this.blur.emit();
     }
 
     //From ControlValueAccessor interface

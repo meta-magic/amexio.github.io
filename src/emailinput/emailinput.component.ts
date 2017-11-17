@@ -11,7 +11,7 @@
  *
  */
 
-import {Input, OnInit, forwardRef, Component, AfterViewInit} from "@angular/core";
+import {Input, OnInit, forwardRef, Component, AfterViewInit, Output, EventEmitter} from "@angular/core";
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {FormInputBase} from "../baseclass/form.base.class";
 declare var $;
@@ -47,6 +47,9 @@ declare var $: any;
         <input type="email"
                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
                (blur)="onBlur()"
+               (change)="onChange()"
+               (input)="onInput()"
+               (focus)="onFocus()"
                [(ngModel)]="value"
                [attr.fieldName] = "fieldName"
                [attr.id]="elementId"
@@ -113,6 +116,10 @@ declare var $: any;
 
 export class EmailInputComponent extends FormInputBase implements OnInit, AfterViewInit, ControlValueAccessor {
 
+    @Output() blur : EventEmitter<any> = new EventEmitter<any>();
+    @Output() change : EventEmitter<any> = new EventEmitter<any>();
+    @Output() input : EventEmitter<any> = new EventEmitter<any>();
+    @Output() focus : EventEmitter<any> = new EventEmitter<any>();
    constructor() {
       super();
       this.elementId = 'input-email-' + Math.floor(Math.random()*90000) + 10000;
@@ -143,6 +150,18 @@ export class EmailInputComponent extends FormInputBase implements OnInit, AfterV
         $('[data-toggle="popover"]').popover();
     }
 
+    onChange(){
+        this.change.emit();
+    }
+
+    onInput(){
+        this.input.emit();
+    }
+
+    onFocus(){
+        this.focus.emit();
+    }
+
     //The internal dataviews model
     private innerValue: any = '';
 
@@ -168,6 +187,7 @@ export class EmailInputComponent extends FormInputBase implements OnInit, AfterV
     onBlur() {
         this.onTouchedCallback();
         this.validate();
+        this.blur.emit();
     }
 
     //From ControlValueAccessor interface

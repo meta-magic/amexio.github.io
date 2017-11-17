@@ -2,7 +2,7 @@
  * Created by ketangote on 7/25/17.
  */
 import {
-  Component, forwardRef, Input, OnInit
+  Component, EventEmitter, forwardRef, Input, OnInit, Output
 } from '@angular/core';
 import {NG_VALUE_ACCESSOR} from "@angular/forms";
 import {FormInputBase} from "../baseclass/form.base.class";
@@ -266,6 +266,12 @@ export class DateTimeComponent implements OnInit {
   @Input() readonly: boolean;
 
   @Input() required: boolean;
+
+  @Output() blur : EventEmitter<any> = new EventEmitter<any>();
+  @Output() change : EventEmitter<any> = new EventEmitter<any>();
+  @Output() input : EventEmitter<any> = new EventEmitter<any>();
+  @Output() focus : EventEmitter<any> = new EventEmitter<any>();
+
 
   elementId: string;
 

@@ -12,7 +12,7 @@
  */
 
 
-import {AfterViewInit, Component, forwardRef, Input, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {FormInputBase} from "../baseclass/form.base.class";
 import {CommonHttpService} from "../common.http.service";
 export const BASE_IMPL_FILEUPLOAD_INPUT: any = {
@@ -93,6 +93,11 @@ export class FileuploadComponent extends FormInputBase implements OnInit, AfterV
   @Input() droppable : boolean;
 
   @ViewChild('inp')   inpHandle : any;
+
+    @Output() blur : EventEmitter<any> = new EventEmitter<any>();
+    @Output() change : EventEmitter<any> = new EventEmitter<any>();
+    @Output() input : EventEmitter<any> = new EventEmitter<any>();
+    @Output() focus : EventEmitter<any> = new EventEmitter<any>();
 
   uploadedFileName: string;
 

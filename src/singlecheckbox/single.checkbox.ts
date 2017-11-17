@@ -10,7 +10,7 @@
  * Author - Pratik Kelwalkar
  *
  */
-import {Input, OnInit, forwardRef, Component, AfterViewInit} from '@angular/core';
+import {Input, OnInit, forwardRef, Component, AfterViewInit, Output, EventEmitter} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {FormInputBase} from '../baseclass/form.base.class';
 
@@ -37,7 +37,15 @@ export const BASE_IMPL_CHECKBOX: any = {
    <label class="custom-control custom-checkbox">
      <input type="checkbox"  
             (blur)="onBlur()"
-            [(ngModel)]="value" 
+            (change)="onChange()"
+            (input)="onInput()"
+            (focus)="onFocus()"
+            [(ngModel)]="value"
+            [attr.disabled] = "disabled ? true: null"
+            [required]="allowBlank ? true: null"
+            [attr.data-error]="errorMsg"
+            [attr.aria-describedby]="spanId"
+            data-toggle="popover" title="Info" [attr.data-placement]="popoverPlacement"  data-trigger="focus"
             class="custom-control-input">
      <span class="custom-control-indicator"></span>
      <span class="custom-control-description">{{fieldLabel}}</span>
@@ -47,12 +55,52 @@ export const BASE_IMPL_CHECKBOX: any = {
 })
 
 export class SingleCheckbox extends FormInputBase implements OnInit, ControlValueAccessor{
+
+    @Output() blur : EventEmitter<any> = new EventEmitter<any>();
+    @Output() change : EventEmitter<any> = new EventEmitter<any>();
+    @Output() input : EventEmitter<any> = new EventEmitter<any>();
+    @Output() focus : EventEmitter<any> = new EventEmitter<any>();
  constructor() {
    super();
    this.elementId = 'input-text-' + Math.floor(Math.random()*90000) + 10000;
  }
 
- ngOnInit() { }
+    ngOnInit() {
+        if(this.errorMsg)
+            this.helpInfoMsg = this.errorMsg +'<br/>';
+
+        if(this.minErrorMsg)
+            this.helpInfoMsg = this.helpInfoMsg + 'Min Length: '+this.minErrorMsg+'<br/>';
+
+        if(this.maxErrorMsg)
+            this.helpInfoMsg = this.helpInfoMsg + 'Max Length: '+this.maxErrorMsg;
+
+        if(!this.iconFeedBack)
+            this.fieldglyphIcon = 'form-control-feedback glyphicon glyphicon-'+this.fieldIcon;
+
+        if (this.enablePopOver) {
+            this.popoverField = 'popover';
+        }
+        if(this.popoverPlacement == null){
+            this.popoverPlacement = 'bottom';
+        }
+
+    }
+    ngAfterViewInit() {
+        $('[data-toggle="popover"]').popover();
+    }
+
+    onChange(){
+        this.change.emit();
+    }
+
+    onInput(){
+        this.input.emit();
+    }
+
+    onFocus(){
+        this.focus.emit();
+    }
 
   // The internal dataviews model
   private innerValue: any = '';
@@ -78,6 +126,7 @@ export class SingleCheckbox extends FormInputBase implements OnInit, ControlValu
   //Set touched on blur
   onBlur() {
     this.onTouchedCallback();
+    this.blur.emit();
   }
 
   //From ControlValueAccessor interface
