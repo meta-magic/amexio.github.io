@@ -14,7 +14,7 @@
 import {
     Component, ContentChild, DoCheck, EventEmitter, Input, OnInit, Output, TemplateRef
 } from '@angular/core';
-import {Http} from "@angular/http";
+import {CommonHttpService} from "../common.http.service";
 
 
 
@@ -79,29 +79,35 @@ export class ListBoxComponent implements OnInit, DoCheck{
 
     @Input() filter : boolean;
 
-    @Input() data : any;
+    @Input() data: any;
 
-    @Input() dataReader : string;
+    @Input() httpUrl: string;
+
+    @Input() dataReader: string;
+
+    @Input() httpMethod: string;
 
     @Input() displayField: string;
 
-    @Output() selectedRows : any = new EventEmitter<any>();
+    @Output() selectedRows: any = new EventEmitter<any>();
 
-    @Output() rowClick : any = new EventEmitter<any>();
+    @Output() rowClick: any = new EventEmitter<any>();
 
     @ContentChild('amexioBodyTmpl') bodyTemplate: TemplateRef<any>;
 
-    viewData : any[];
+    viewData: any[];
 
-    orgData : any[];
+    orgData: any[];
 
     filterText: string;
 
-    selectedData : any[];
+    response: any;
 
-    previousData : any;
+    selectedData: any[];
 
-    constructor(private _http : Http){
+    previousData: any;
+
+    constructor(private listBoxService: CommonHttpService){
         this.filter = false;
         this.enableCheckbox = false;
         this.selectedData = [];
@@ -110,7 +116,14 @@ export class ListBoxComponent implements OnInit, DoCheck{
 
 
     ngOnInit(){
-        if (this.data ) {
+        if (this.httpMethod && this.httpUrl) {
+            this.listBoxService.fetchData(this.httpUrl, this.httpMethod).subscribe(response => {
+                this.response = response.json();
+            }, error => {
+            }, () => {
+                this.setData(this.response);
+            });
+        } else if (this.data ) {
             this.previousData = JSON.parse(JSON.stringify(this.data));
             this.setData(this.data);
         }
