@@ -29,7 +29,7 @@ import {CommonHttpService} from "../common.http.service";
                 </li>
                 <li class="list-group-item  amexio-listbox-list-item" *ngFor="let row of viewData let rowno = index ">
                     <div>
-                <span *ngIf="(enableCheckbox == true)">
+                <span *ngIf="(enableCheckBox == true)">
                   <input type="checkbox" (click)="selectedCheckBox($event,rowno,row)"/>
                 </span>
                     </div>
@@ -74,7 +74,7 @@ import {CommonHttpService} from "../common.http.service";
 export class ListBoxComponent implements OnInit, DoCheck{
 
 
-    @Input() enableCheckbox : boolean;
+    @Input() enableCheckBox : boolean;
 
     @Input() searchPlaceHolder: string;
 
@@ -110,7 +110,7 @@ export class ListBoxComponent implements OnInit, DoCheck{
 
     constructor(private listBoxService: CommonHttpService){
         this.filter = false;
-        this.enableCheckbox = false;
+        this.enableCheckBox = false;
         this.selectedData = [];
         this.searchPlaceHolder = "Search";
     }
