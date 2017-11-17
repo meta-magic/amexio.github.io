@@ -11,7 +11,7 @@
  *
  */
 
-import {OnInit, SimpleChange, Input, Output, EventEmitter, Component} from "@angular/core";
+import {OnInit, SimpleChange, Input, Output, EventEmitter, Component, DoCheck} from "@angular/core";
 import {CommonHttpService} from "../common.http.service";
 
 export const COLUMN_SIZE = 'col-lg-';
@@ -95,7 +95,7 @@ export const COLUMN_SIZE = 'col-lg-';
     }`]
 })
 
-export class RadioGroupComponent implements  OnInit{
+export class RadioGroupComponent implements  OnInit, DoCheck{
 
     @Input()    enableBoxStyle: boolean = false;
 
@@ -137,6 +137,8 @@ export class RadioGroupComponent implements  OnInit{
 
     calculatedColSize : any;
 
+    previousValue: any;
+
 
     constructor(private amxHttp: CommonHttpService) {
         this.elementId = "radio-group-"+Math.floor(Math.random()*90000) + 10000;
@@ -156,13 +158,17 @@ export class RadioGroupComponent implements  OnInit{
                     this.setData(this.responseData);
                 }
             );
-        }else if(this.radioGroupBindData){
+        }else if (this.radioGroupBindData) {
+            this.previousValue = JSON.parse(JSON.stringify(this.radioGroupBindData));
             this.setData(this.radioGroupBindData);
         }
     }
 
-    ngAfterViewInit(){
-
+    ngDoCheck() {
+        if (JSON.stringify(this.previousValue) != JSON.stringify(this.radioGroupBindData)) {
+            this.previousValue = JSON.parse(JSON.stringify(this.radioGroupBindData));
+            this.setData(this.radioGroupBindData);
+        }
     }
 
     setData(httpResponse: any){
