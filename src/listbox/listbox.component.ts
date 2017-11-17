@@ -12,8 +12,7 @@
 
 
 import {
-    Component, ContentChild, EventEmitter, Input, OnInit, Output,
-    TemplateRef
+    Component, ContentChild, DoCheck, EventEmitter, Input, OnInit, Output, TemplateRef
 } from '@angular/core';
 import {Http} from "@angular/http";
 
@@ -71,7 +70,7 @@ import {Http} from "@angular/http";
     ]
 
 })
-export class ListBoxComponent implements OnInit{
+export class ListBoxComponent implements OnInit, DoCheck{
 
 
     @Input() enableCheckbox : boolean;
@@ -100,6 +99,8 @@ export class ListBoxComponent implements OnInit{
 
     selectedData : any[];
 
+    previousData : any;
+
     constructor(private _http : Http){
         this.filter = false;
         this.enableCheckbox = false;
@@ -109,7 +110,15 @@ export class ListBoxComponent implements OnInit{
 
 
     ngOnInit(){
-        if(this.data){
+        if (this.data ) {
+            this.previousData = JSON.parse(JSON.stringify(this.data));
+            this.setData(this.data);
+        }
+    }
+
+    ngDoCheck(){
+        if (JSON.stringify(this.previousData) != JSON.stringify(this.data)){
+            this.previousData = JSON.parse(JSON.stringify(this.data));
             this.setData(this.data);
         }
     }
