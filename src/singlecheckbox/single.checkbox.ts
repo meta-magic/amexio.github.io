@@ -45,7 +45,7 @@ export const BASE_IMPL_CHECKBOX: any = {
             [required]="allowBlank ? true: null"
             [attr.data-error]="errorMsg"
             [attr.aria-describedby]="spanId"
-            data-toggle="popover" title="Info" [attr.data-placement]="popoverPlacement"  data-trigger="focus"
+            [attr.data-toggle]="popoverField" title="Info" [attr.data-placement]="popoverPlacement"  data-trigger="focus"  data-html="true"  [attr.data-content]="helpInfoMsg"
             class="custom-control-input">
      <span class="custom-control-indicator"></span>
      <span class="custom-control-description">{{fieldLabel}}</span>

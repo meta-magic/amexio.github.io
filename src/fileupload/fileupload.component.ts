@@ -21,7 +21,7 @@ export const BASE_IMPL_FILEUPLOAD_INPUT: any = {
 
 @Component({
   selector: 'amexio-file-upload', template: `
-        <div class="form-group">
+        <div class="form-group" *ngIf="!droppable">
             <ng-container *ngIf="hasLabel">
                 <label [attr.for]="elementId"
                        [style.font-style]="fontStyle"
@@ -47,6 +47,7 @@ export const BASE_IMPL_FILEUPLOAD_INPUT: any = {
             <div class="amexio-upload-drop-zone {{dropClass}}" (drop)="onFileDrop($event)" (dragover)="onDragOver($event)" (dragleave)="dropClass = '';" #drpZone>
                 Just drag and drop files here
             </div>
+            <span class="text-success">File Name : {{uploadedFileName}}</span>
         </ng-container>
 
   `, styles: [`
