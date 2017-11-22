@@ -61,7 +61,7 @@ declare var $ : any;
                    [required]="allowBlank ? true: null"
                    [attr.data-error]="errorMsg"
                    [attr.aria-describedby]="spanId"
-                   data-toggle="popover" title="Info" [attr.data-placement]="popoverPlacement"  data-trigger="focus"  data-html="true"  [attr.data-content]="helpInfoMsg"
+                   [attr.data-toggle]="popoverField" title="Info" [attr.data-placement]="popoverPlacement"  data-trigger="focus"  data-html="true"  [attr.data-content]="helpInfoMsg"
             >
 
 
@@ -156,10 +156,11 @@ export class NumberInputComponent extends FormInputBase implements OnInit,AfterV
         }
         if (this.enablePopOver) {
           this.popoverField = 'popover';
+            if (this.popoverPlacement == null) {
+                this.popoverPlacement = 'bottom';
+            }
         }
-        if(this.popoverPlacement == null){
-            this.popoverPlacement = 'bottom';
-        }
+
 
     }
       ngAfterViewInit() {

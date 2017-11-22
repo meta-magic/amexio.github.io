@@ -48,6 +48,9 @@ export const BASE_IMPL_TEXT_INPUT: any = {
 
       <input type="text"
              (blur)="onBlur()"
+             (change)="onChange()"
+             (input)="onInput()"
+             (focus)="onFocus()"
              [(ngModel)]="value"
              [attr.fieldName] = "fieldName"
              [attr.id]="elementId"
@@ -148,12 +151,24 @@ export class TextInputComponent extends FormInputBase implements OnInit, Control
         if (this.pattern != null) {
             this.regEx = new RegExp(this.pattern);
         }
-        if(this.popoverPlacement == null){
-            this.popoverPlacement = 'bottom';
-        }
         if (this.enablePopOver) {
           this.popoverField = 'popover';
+            if (this.popoverPlacement == null) {
+                this.popoverPlacement = 'bottom';
+            }
         }
+    }
+
+    onChange() {
+        this.change.emit();
+    }
+
+    onInput() {
+        this.input.emit();
+    }
+
+    onFocus() {
+        this.focus.emit();
     }
 
     ngAfterViewInit(){
@@ -185,6 +200,7 @@ export class TextInputComponent extends FormInputBase implements OnInit, Control
     onBlur() {
         this.onTouchedCallback();
         this.validate();
+        this.blur.emit();
     }
 
     //From ControlValueAccessor interface
