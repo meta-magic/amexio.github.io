@@ -213,7 +213,7 @@ export class TextInputComponent extends FormInputBase implements OnInit, Control
           valueLength = this.value.length;
         }
 
-        if((this.allowBlank && (!this.value || valueLength==0))){
+        if((!this.allowBlank && (!this.value || valueLength==0))){
             hasError = true;
         }else if(this.pattern != null && !this.regEx.test(this.value)){
             hasError = true;
