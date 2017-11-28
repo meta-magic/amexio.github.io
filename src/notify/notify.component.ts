@@ -30,7 +30,7 @@ import {ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
  styles : [`
      .amexio-messenger-desktop {
          position: absolute;
-         top: 2%;
+         top: 8%;
          left: 70%;
          right: 1%;
          text-align: center;
@@ -59,23 +59,28 @@ export class NotifyComponent implements OnInit {
 
   @Input()messageData: any;
 
+  @Input() timeOut: number;
+
   icon: string;
 
   msgStylClass: string;
 
   constructor(private ref: ChangeDetectorRef) {
 
-    if ( this.messageData !== null ) {
-      setInterval(() => {
-        this.messageData.shift();
-        this.ref.markForCheck();
-      }, 1500);
-    }
 
   }
 
   ngOnInit() {
    this.changeStyle();
+    if (this.timeOut === null ) {
+      this.timeOut = 7000;
+    }
+    if ( this.messageData !== null ) {
+      setInterval(() => {
+        this.messageData.shift();
+        this.ref.markForCheck();
+      }, this.timeOut);
+    }
   }
 
   closePopup(index: number) {
