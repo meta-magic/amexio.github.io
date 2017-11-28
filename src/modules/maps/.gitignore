@@ -29,4 +29,7 @@ Desktop.ini
 **/*.ngfactory.ts
 
 # Build files
-maps/*
+dist/*
+
+# Playground tmp files
+.playground

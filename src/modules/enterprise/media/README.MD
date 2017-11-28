@@ -1,11 +1,11 @@
-# media
+# amexio-enterprise
 
 ## Installation
 
 To install this library, run:
 
 ```bash
-$ npm install media --save
+$ npm install amexio-enterprise --save
 ```
 
 ## Consuming your library
@@ -13,7 +13,7 @@ $ npm install media --save
 Once you have published your library to npm, you can import your library in any Angular application by running:
 
 ```bash
-$ npm install media
+$ npm install amexio-enterprise
 ```
 
 and then from your Angular `AppModule`:
@@ -25,7 +25,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 // Import your library
-import { SampleModule } from 'media';
+import { SampleModule } from 'amexio-enterprise';
 
 @NgModule({
   declarations: [
@@ -69,4 +69,4 @@ $ npm run lint
 
 ## License
 
-MIT © [DatsGawas](mailto:dattaram.gawas@metamagic.in)
+MIT © [MetaMagic](mailto:pratik.kelwalkar@metamagic.in)

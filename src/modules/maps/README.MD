@@ -1,39 +1,22 @@
-<a href="https://amexio.org/">
-    <img src="https://image.ibb.co/hdtZ1a/worldwide_1.png" alt="Amexio Maps" title="Amexio" align="right" height="60" />
-</a>
-
-Amexio Maps Module
-======================
-<div align="center">
-<h5 align="left">Sample Screens</h5>
-  <a href="http://amexio.org/demoapp/">
-    <img src="https://preview.ibb.co/cMrh4v/map.png"
-      alt="ScreenShot" />
-      </a>
-</div>
-
-
-## Table of content
-
-- [Installation](#installation)
-    - [Loading Dependency](#dependency-google-chart-js)
-    - [Importing Module](#dependency-google-chart-js)
-- [Available Charts](#available-charts)
-- [License](#license)
-
+# amexio-maps
 
 ## Installation
-To import the Module, you first need to fetch the Amexio Package from npm using command ```bash $ npm install amexio-ng-extensions@latest --save ```
-Note : <b>AmexioMapsModule</b> is not available under amexio-ng-extensions@1.x.x Series
 
-## Dependency (Google Chart JS)
-Simple add this script tag to your index.html
-```xml
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+To install this library, run:
+
+```bash
+$ npm install amexio-maps --save
 ```
 
-## Importing Module
-Import the chart module as demonstrated as below
+## Consuming your library
+
+Once you have published your library to npm, you can import your library in any Angular application by running:
+
+```bash
+$ npm install amexio-maps
+```
+
+and then from your Angular `AppModule`:
 
 ```typescript
 import { BrowserModule } from '@angular/platform-browser';
@@ -42,7 +25,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 // Import your library
-import { AmexioMapsModule } from 'amexio-ng-extensions/maps';
+import { SampleModule } from 'amexio-maps';
 
 @NgModule({
   declarations: [
@@ -50,7 +33,9 @@ import { AmexioMapsModule } from 'amexio-ng-extensions/maps';
   ],
   imports: [
     BrowserModule,
-    AmexioMapsModule
+
+    // Specify your library as an import
+    LibraryModule
   ],
   providers: [],
   bootstrap: [AppComponent]
@@ -58,16 +43,30 @@ import { AmexioMapsModule } from 'amexio-ng-extensions/maps';
 export class AppModule { }
 ```
 
-## Available Charts
+Once your library is imported, you can use its components, directives and pipes in your Angular application:
 
-| Charts        |
-| ------------- |
-| Geo Chart     |
+```xml
+<!-- You can now use your library component in app.component.html -->
+<h1>
+  {{title}}
+</h1>
+<sampleComponent></sampleComponent>
+```
 
+## Development
 
+To generate all `*.js`, `*.d.ts` and `*.metadata.json` files:
+
+```bash
+$ npm run build
+```
+
+To lint all `*.ts` files:
+
+```bash
+$ npm run lint
+```
 
 ## License
 
-[Apache 2.0](http://www.amexio.org/metamagic-showcase/license.html) © [MetaMagic Global Inc](http://www.metamagicglobal.com/), 2017. [Amexio Angular Extensions](http://www.amexio.tech)
-
-**Enjoy!**
+MIT © [MetaMagic Global](mailto:pratik.kelwalkar@metamagic.in)

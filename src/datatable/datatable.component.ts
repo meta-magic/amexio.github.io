@@ -142,7 +142,7 @@ declare var $;
 
                         <!--Check if user has embedded view inserted then -->
                         <ng-template *ngIf="cols?.headerTemplate" [ngTemplateOutlet]="cols?.headerTemplate"
-                                     [ngOutletContext]="{ $implicit: { header: cols.text } }"></ng-template>
+                                     [ngTemplateOutletContext]="{ $implicit: { header: cols.text } }"></ng-template>
                     </td>
                 </tr>
             </table>
@@ -179,7 +179,7 @@ declare var $;
                                                     <ng-container *ngIf="!cols?.bodyTemplate">{{rows[cols.dataIndex]}}</ng-container>
                                                     <!-- else insert customized code -->
                                                     <ng-template *ngIf="cols.bodyTemplate" [ngTemplateOutlet]="cols.bodyTemplate"
-                                                                 [ngOutletContext]="{ $implicit: { text : rows[cols.dataIndex] }, row: rows }"></ng-template>
+                                                                 [ngTemplateOutletContext]="{ $implicit: { text : rows[cols.dataIndex] }, row: rows }"></ng-template>
                                                 </td>
                                             </tr>
                                             </tbody>
@@ -219,7 +219,7 @@ declare var $;
                                 </ng-container>
                                 <!-- else insert customized code -->
                                 <ng-template *ngIf="cols.bodyTemplate" [ngTemplateOutlet]="cols.bodyTemplate"
-                                             [ngOutletContext]="{ $implicit: { text : row[cols.dataIndex] }, row: row }"></ng-template>
+                                             [ngTemplateOutletContext]="{ $implicit: { text : row[cols.dataIndex] }, row: row }"></ng-template>
                             </td>
                         </tr>
                         <tr *ngIf="viewRows?.length == 0">
@@ -261,7 +261,7 @@ declare var $;
                                                         <ng-container *ngIf="!cols?.bodyTemplate">{{rows[cols.dataIndex]}}</ng-container>
                                                         <!-- else insert customized code -->
                                                         <ng-template *ngIf="cols.bodyTemplate" [ngTemplateOutlet]="cols.bodyTemplate"
-                                                                     [ngOutletContext]="{ $implicit: { text : rows[cols.dataIndex] }, row: rows }"></ng-template>
+                                                                     [ngTemplateOutletContext]="{ $implicit: { text : rows[cols.dataIndex] }, row: rows }"></ng-template>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -294,7 +294,7 @@ declare var $;
                                     <ng-container *ngIf="!cols?.bodyTemplate">{{row[cols.dataIndex]}}</ng-container>
                                     <!-- else insert customized code -->
                                     <ng-template *ngIf="cols.bodyTemplate" [ngTemplateOutlet]="cols.bodyTemplate"
-                                                 [ngOutletContext]="{ $implicit: { text : row[cols.dataIndex] }, row: row }"></ng-template>
+                                                 [ngTemplateOutletContext]="{ $implicit: { text : row[cols.dataIndex] }, row: row }"></ng-template>
                                 </div>
                             </td>
                         </tr>

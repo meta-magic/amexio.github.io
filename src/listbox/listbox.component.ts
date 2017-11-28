@@ -36,7 +36,7 @@ import {CommonHttpService} from "../common.http.service";
                     <div>
                 <span (click)="onClick(row)" >
                     <ng-container *ngIf="!bodyTemplate"> {{row[displayField]}}</ng-container>
-                    <ng-template *ngIf="bodyTemplate" [ngTemplateOutlet]="bodyTemplate" [ngOutletContext]="{ row: row }"></ng-template>
+                    <ng-template *ngIf="bodyTemplate" [ngTemplateOutlet]="bodyTemplate" [ngTemplateOutletContext]="{ row: row }"></ng-template>
                 </span>
                     </div>
                 </li>

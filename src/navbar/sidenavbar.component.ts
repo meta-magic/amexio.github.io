@@ -37,7 +37,7 @@ import {CommonHttpService} from "../common.http.service";
                             </a>
                         </ng-container>
 
-                        <ng-template *ngIf="headerTemplate!=null" [ngTemplateOutlet]="headerTemplate" [ngOutletContext]="{ $implicit: {}, navHeader:header }"></ng-template>
+                        <ng-template *ngIf="headerTemplate!=null" [ngTemplateOutlet]="headerTemplate" [ngTemplateOutletContext]="{ $implicit: {}, navHeader:header }"></ng-template>
 
                         <span *ngIf="header.childrens " class="amexio-sidenavbar-child-header fa" [ngClass]="{'fa-angle-up':header.expand,'fa-angle-down':!header.expand}"></span>
                     </div>
@@ -50,7 +50,7 @@ import {CommonHttpService} from "../common.http.service";
                                             {{level1Menu.text}}
                                         </a>
                                     </ng-container>
-                                    <ng-template *ngIf="childTemplate!=null" [ngTemplateOutlet]="childTemplate" [ngOutletContext]="{ $implicit: {}, menuHeader:level1Menu }"></ng-template>
+                                    <ng-template *ngIf="childTemplate!=null" [ngTemplateOutlet]="childTemplate" [ngTemplateOutletContext]="{ $implicit: {}, menuHeader:level1Menu }"></ng-template>
 
                                     <ng-container *ngIf="level1Menu.childrens">
                                         <ul class="amexio-sidenavbar-level1-child" (nodeClick)="menuClick($event)"  [templates]="subMenuTemplate"  amexio-submenu-view [subMenuData]="level1Menu.childrens"></ul>

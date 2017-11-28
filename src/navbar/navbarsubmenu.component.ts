@@ -24,7 +24,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
             <ng-container *ngIf="templates==null">
               {{sm.text}}
             </ng-container>
-            <ng-template  [ngTemplateOutlet]="templates" [ngOutletContext]="{ $implicit: {}, subMenus:sm }"></ng-template>
+            <ng-template  [ngTemplateOutlet]="templates" [ngTemplateOutletContext]="{ $implicit: {}, subMenus:sm }"></ng-template>
            </a>
           <ul class="amexio-navbarsubmenu-ul">
             <ng-container *ngIf="sm.childrens">
@@ -38,7 +38,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
            <ng-container *ngIf="templates==null">
              {{sm.text}}
            </ng-container> 
-            <ng-template *ngIf="templates!=null"  [ngTemplateOutlet]="templates" [ngOutletContext]="{ $implicit: {}, subMenus:sm }"></ng-template>
+            <ng-template *ngIf="templates!=null"  [ngTemplateOutlet]="templates" [ngTemplateOutletContext]="{ $implicit: {}, subMenus:sm }"></ng-template>
           </a>
         </ng-container>
       </li>

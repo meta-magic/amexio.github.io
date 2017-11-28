@@ -1,5 +1,7 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+
 import {DashBoardTitle} from "./dashboardtitle/dashboard.title.component";
 import {GaugeChartComponent} from "./gaugechart/gauge.chart.component";
 import {DataPointCenterComponent} from './datapoints/center.component';
@@ -21,31 +23,23 @@ export * from './datapoints/south.component';
 export * from './datapoints/west.component';
 export * from "./chart.loader.service";
 
+const DASHBOARD = [
+  DashBoardTitle,
+  GaugeChartComponent,
+  DataPointCenterComponent,
+  DataPointsComponent,
+  DataPointEastComponent,
+  DataPointNorthComponent,
+  DataPointSouthComponent,
+  DataPointWestComponent
+];
+
 @NgModule({
   imports: [
     CommonModule
   ],
-  declarations: [
-    DashBoardTitle,
-    GaugeChartComponent,
-    DataPointCenterComponent,
-    DataPointsComponent,
-    DataPointEastComponent,
-    DataPointNorthComponent,
-    DataPointSouthComponent,
-    DataPointWestComponent
-  ],
-  exports: [
-    DashBoardTitle,
-    GaugeChartComponent,
-    DataPointCenterComponent,
-    DataPointsComponent,
-    DataPointEastComponent,
-    DataPointNorthComponent,
-    DataPointSouthComponent,
-    DataPointWestComponent
-  ],
-  providers:[DashboardLoaderService]
+  declarations: DASHBOARD,
+  exports: DASHBOARD
 })
 export class AmexioDashboardModule {
   static forRoot(): ModuleWithProviders {

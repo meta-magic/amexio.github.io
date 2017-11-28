@@ -42,7 +42,7 @@ import {CommonHttpService} from '../common.http.service';
                         <ng-container *ngIf="templates == null">
                           <label >{{treeData.text}}</label>
                         </ng-container>
-                        <ng-template *ngIf="templates != null" [ngTemplateOutlet]="parentTmp" [ngOutletContext]="{ $implicit: { text: treeData.text } , icon: treeData.icon,node : treeData }"></ng-template>
+                        <ng-template *ngIf="templates != null" [ngTemplateOutlet]="parentTmp" [ngTemplateOutletContext]="{ $implicit: { text: treeData.text } , icon: treeData.icon,node : treeData }"></ng-template>
                       </span>
                 </div>
                 <div *ngIf="treeData.expanded && treeData.expanded  == true" >
@@ -60,7 +60,7 @@ import {CommonHttpService} from '../common.http.service';
 
                                 <span [ngClass]="(leaf.selected && !leaf.children)? 'amexio-treeview-records-selected' : 'amexio-treeview-records'" (click)="emitData(leaf)">
                                     <ng-container *ngIf="templates == null"><label>{{leaf.text}}</label></ng-container>
-                                    <ng-template *ngIf="templates != null" [ngTemplateOutlet]="parentTmp" [ngOutletContext]="{ $implicit: { text: leaf.text }, icon: leaf.icon, node : leaf }"></ng-template>
+                                    <ng-template *ngIf="templates != null" [ngTemplateOutlet]="parentTmp" [ngTemplateOutletContext]="{ $implicit: { text: leaf.text }, icon: leaf.icon, node : leaf }"></ng-template>
                               </span>
 
                             </div>

@@ -22,7 +22,7 @@
     <img src="https://img.shields.io/npm/dm/choo.svg?style=flat-square"
       alt="Downloads" />
   </a>
-  
+
    <a href="https://npmjs.org/package/amexio-ng-extensions">
     <img src="https://img.shields.io/npm/dt/amexio-ng-extensions.svg"
       alt="Downloads" />
@@ -304,7 +304,7 @@ More on Amexio themes here : [Amexio themes](https://github.com/meta-magic/amexi
 
 # Amexio Microsoft Visual Studio Code Extensions
 
-This extension will help the developers of Visual Studio Code with quick code snippet for the Amexio Markup as well as Amexio TypeScript for the Angular Extensions. 
+This extension will help the developers of Visual Studio Code with quick code snippet for the Amexio Markup as well as Amexio TypeScript for the Angular Extensions.
 
 ## Usage
 

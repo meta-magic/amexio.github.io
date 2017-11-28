@@ -33,7 +33,7 @@ import {CommonHttpService} from "../common.http.service";
                           <a class="dropdown-toggle" [ngClass]="{'dropdown-toggle':getToggleClass(mh)}" data-toggle="dropdown" (click)="adjustPosition($event, ind)">
                               <ng-container *ngIf="headerTemplate==null">
                                   &nbsp;&nbsp;{{mh.text}}
-                              </ng-container><ng-template *ngIf="headerTemplate!=null" [ngTemplateOutlet]="headerTemplate" [ngOutletContext]="{ $implicit: {}, navHeader:mh }"></ng-template>
+                              </ng-container><ng-template *ngIf="headerTemplate!=null" [ngTemplateOutlet]="headerTemplate" [ngTemplateOutletContext]="{ $implicit: {}, navHeader:mh }"></ng-template>
                           </a>
                           <ng-container *ngIf="mh.childrens">
                               <ul class="dropdown-menu" id="{{elementId}}dd-m-{{ind}}">
@@ -43,7 +43,7 @@ import {CommonHttpService} from "../common.http.service";
                                       <li class="amexio-navbar-li-custom">
                                         <a (click)="menuClick(sm)">
                                           <ng-container *ngIf="childTemplate==null">{{sm.text}}</ng-container>
-                                          <ng-template *ngIf="childTemplate!=null" [ngTemplateOutlet]="childTemplate" [ngOutletContext]="{ $implicit: {}, menuHeader:sm }"></ng-template>
+                                          <ng-template *ngIf="childTemplate!=null" [ngTemplateOutlet]="childTemplate" [ngTemplateOutletContext]="{ $implicit: {}, menuHeader:sm }"></ng-template>
                                         </a>
                                       </li>
                                       <ng-container *ngIf="sm.childrens">

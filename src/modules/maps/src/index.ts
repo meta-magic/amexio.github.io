@@ -1,5 +1,6 @@
-import {ModuleWithProviders, NgModule} from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 import {MapProperties} from "./mapproperties/map.properties";
 import {GeoChartComponent} from "./geochart/geo.chart.component";
 import {TreeMapComponent} from "./treemap/treemap.map.component";
@@ -12,29 +13,25 @@ export * from "./treemap/treemap.map.component";
 export * from "./maptitle/map.title.component";
 export * from "./map.loader.service";
 
+const MAPS = [
+  MapProperties,
+  GeoChartComponent,
+  TreeMapComponent,
+  MapTitleComponent
+];
+
 @NgModule({
   imports: [
     CommonModule
   ],
-  declarations: [
-      MapProperties,
-      GeoChartComponent,
-      TreeMapComponent,
-      MapTitleComponent
-  ],
-  exports: [
-    MapProperties,
-    GeoChartComponent,
-    TreeMapComponent,
-    MapTitleComponent
-  ],
-    providers:[MapLoaderService]
+  declarations: MAPS,
+  exports: MAPS
 })
 export class AmexioMapsModule {
-    static forRoot(): ModuleWithProviders {
-        return {
-            ngModule: AmexioMapsModule,
-            providers: [MapLoaderService]
-        };
-    }
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: AmexioMapsModule,
+      providers: [MapLoaderService]
+    };
+  }
 }

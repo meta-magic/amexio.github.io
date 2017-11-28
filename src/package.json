@@ -12,7 +12,7 @@
   "keywords": [
     "angular"
   ],
-  "license": "Apache-2.0",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/meta-magic/amexio.github.io/issues"
   },
@@ -21,17 +21,11 @@
   "jsnext:main": "amexio-ng-extensions.js",
   "typings": "amexio-ng-extensions.d.ts",
   "peerDependencies": {
-    "@angular/core": "^4.0.0",
-    "@angular/forms": "^4.0.0",
-    "@angular/http": "^4.0.0",
-    "rxjs": "^5.1.0",
+    "@angular/core": "5.0.0",
+    "@angular/forms": "5.0.0",
+    "@angular/http": "5.0.0",
+    "rxjs": "^5.5.2",
     "zone.js": "^0.8.4",
-    "jquery": "^3.2.1",
-    "tether": "^1.4.0",
-    "bootstrap": "^4.0.0-alpha.6",
-    "font-awesome": "^4.7.0"
-  },
-  "dependencies": {
     "jquery": "^3.2.1",
     "tether": "^1.4.0",
     "bootstrap": "^4.0.0-alpha.6",
