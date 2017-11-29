@@ -59,6 +59,8 @@ import {TypeAheadComponent} from "./typeahead/autocomplete.component";
 import {AmexioVideoPlayerComponent} from "./video-player/video.player.component";
 import {TreeViewComponent} from "./treeview/treeview.component";
 import {VerticalLeftTabPaneComponent} from './tabpane/verticallefttab.component';
+import {CheckBoxGroup} from './checkgroup/checkbox.component';
+import {AmexioAccordionComponent} from './accordion/accodrion.component';
 
 export * from './common.http.service';
 export * from './baseclass/form.base.class';
@@ -140,7 +142,8 @@ export * from './treeview/filtertreeview';
 export * from './treeview/treeview.component';
 export * from './typeahead/autocomplete.component';
 export * from './video-player/video.player.component';
-
+export * from './checkgroup/checkbox.component';
+export * from './accordion/accodrion.component';
 
 
 
@@ -148,6 +151,7 @@ export * from './video-player/video.player.component';
 const COMPONENTS = [
   TextInputComponent,
   AmexioAccordionTabComponent,
+  AmexioAccordionComponent,
   ButtonComponent,
   ButtonDropdownComponent,
   ButtonSplitDropdownComponent,
@@ -187,6 +191,7 @@ const COMPONENTS = [
   RadioGroupComponent,
   RatingInputComponent,
   SingleCheckbox,
+  CheckBoxGroup,
   AmexioSliderComponent,
   StepBlockComponent,
   StepsComponent,

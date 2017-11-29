@@ -7,6 +7,7 @@ import {RatingMediaComponent} from './ratingmedia/ratingmedia.component';
 import {AmexioYoutubePlayerComponent} from './video-player/youtube.player.component';
 import {MultiMediaCarousel} from "./multi-item-carousel/media.ee.carousel.component";
 import {ContentComponent} from './mediacontents/content.component';
+import {FormsModule} from '@angular/forms';
 
 
 
@@ -22,11 +23,12 @@ const MEDIA = [
   RatingMediaComponent,
   AmexioYoutubePlayerComponent,
   MultiMediaCarousel
-]
+];
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   declarations: MEDIA,
   exports: MEDIA
