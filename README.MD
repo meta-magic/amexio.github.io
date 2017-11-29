@@ -7,7 +7,7 @@
 </h1>
 
 <div align="center">
-  An Enterprise grade Comprehensive UI Components, Charts, Dashboards, Maps Library for Web 2.0 Apps based on Angular 4 and powered by Bootstrap 4 for responsive design.
+  An Enterprise grade Comprehensive UI Components, Charts, Dashboards, Maps Library for Web 2.0 Apps based on Angular and powered by Bootstrap 4 for responsive design.
 </div>
 <br/>
 
@@ -90,6 +90,7 @@
 - [License](#license)
 
 ## Features
+- __Angular 5:__ our library supports Angular 5!
 - __Bootstrap Support:__ our library supports Bootstrap 4 & 3 out of the box
 - __Highly Customizable:__ Lot of customization can be done easily.
 - __Components, Charts, Dashboard & Maps!!:__ We make sure you're nothing short of while building your app
