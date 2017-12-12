@@ -605,10 +605,37 @@ label {
 /* ----------------------------------- */
 /* COMPONENT - DROPDOWN */
 /* ----------------------------------- */
-.dropdown{
-  border-bottom: 2px solid rgba(0,0,0,0.42) !important;
+/* ----------------------------------- */
+/*      DROP DOWN FORM COMPONENT       */
+/* ----------------------------------- */
+.amexio-dropdown .btn{
+  font-family: 'Roboto', sans-serif;
+  line-height: 2;
+  font-size: 14px;
+  text-transform: capitalize;
+  color: rgba(0,0,0,0.54)!important;
+  text-transform: capitalize;
+  border-bottom: 2px solid #DDDDDD;
+  border-radius: 0px!important;
+  background-color: #FFFFFF;
 }
-.dropdown-item:hover{
+.amexio-dropdown-menu{
+  border: 2px solid #DDDDDD;
+  border-radius: 0px;
+  padding: 10px;
+}
+.amexio-dropdown-records{
+  border: 1px solid #DDDDDD;
+  border-bottom: none;
+  color: rgba(0,0,0,0.54)!important;
+  padding: 5px;
+  font-size: 14px;
+}
+.amexio-dropdown-records:last-child{
+  border: 1px solid #DDDDDD;
+}
+.amexio-dropdown-records:hover{
+  background-color: #EEEEEE!important;
 }
 
 .input-group-addon{
