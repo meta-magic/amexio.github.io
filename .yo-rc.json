@@ -1,0 +1,38 @@
+{
+  "generator-ngx-library": {
+    "version": "5.3.0",
+    "authorName": "MetaMagic Global",
+    "authorEmail": "xserviceadmin@metamagic.in",
+    "githubUsername": "metamagicglobal",
+    "githubRepoName": "amexio",
+    "projectName": "amexio-ng-extensions",
+    "projectVersion": "0.0.1",
+    "projectDescription": "Angular library built with ❤ using ngx-library yeoman generator.",
+    "projectKeywords": [
+      "amexio",
+      "metamagic",
+      "angular",
+      "ng",
+      "ng5",
+      "html",
+      "js",
+      "css"
+    ],
+    "ngVersion": "5.0.0",
+    "ngModules": [
+      "core",
+      "common",
+      "forms",
+      "http",
+      "language-service",
+      "platform-browser"
+    ],
+    "otherDependencies": [],
+    "dependenciesRange": "^",
+    "ngPrefix": "amexio",
+    "useGreenkeeper": true,
+    "useCompodoc": true,
+    "enforceNgGitCommitMsg": true,
+    "exclusions": []
+  }
+}

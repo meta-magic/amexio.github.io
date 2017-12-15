@@ -1,0 +1,72 @@
+/**HELPER CLASS STARTS**/
+.helperHidden{
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.inline-block{
+  display: inline-block;
+}
+
+.float-right {
+  float: right;
+}
+
+.float-left {
+  float: left;
+}
+
+.border-bottom{
+  border-bottom: 1px solid #cccccc;
+}
+
+.border-top{
+  border-top: 1px solid #cccccc;
+}
+
+.border-left{
+  border-left: 1px solid #cccccc;
+}
+
+.border-right{
+  border-right: 1px solid #cccccc;
+}
+
+
+/**HEADER STYLE STARTS **/
+.header {
+  background-color: $primaryBGColor;
+  color: $primaryColor;
+  padding: 10px;
+  overflow: hidden;
+}
+
+.header .title {
+  float: left;
+}
+
+/**HEADER STYLE ENDS **/
+
+
+
+/**TABLE**/
+.table{
+  display: table;
+  padding: 5px;
+}
+
+.table .tablerow{
+  display: table-row;
+}
+
+.table .tablerow .tablecol{
+  display: table-cell;
+  padding-right: 5px;
+}
+

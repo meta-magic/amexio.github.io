@@ -1,0 +1,22 @@
+<div class="paginator">
+      <span class="paginator-pages">
+        <a class="paginator-page" (click)="onPrevious()">&lt;</a>
+        <a class="paginator-page" (click)="onFirstClick()">&lt;&lt;</a>
+      </span>
+  <span class="paginator-pages" *ngFor="let page of activePages;let i = index">
+        <a class="paginator-page" [ngClass]="{'active' : activePageIndex == i  }" (click)="onPageClick(page,i)">{{page}}</a>
+      </span>
+  <span class="paginator-pages">
+        <a class="paginator-page" (click)="onLastClick()">&gt;&gt;</a>
+        <a class="paginator-page" (click)="onNext()">&gt;</a>
+      </span>
+  <span class="paginator-pages">
+        <a class="paginator-page" (click)="showColumnOptions()" style=" cursor: pointer;">{{currentRow}} &nbsp;  &#9660;</a>
+        <span *ngIf="show" class="dropdown" style="width: 50px;">
+            <ul class="dropdown-list">
+              <li class="list-items" *ngFor="let row of pageIndex;let i = index" (click)="changeRows(row,i)"><div>{{row}}</div></li>
+            </ul>
+        </span>
+      </span>
+
+</div>

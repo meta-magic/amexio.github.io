@@ -1,0 +1,92 @@
+/** DATATABLE STARTS**/
+
+.title{
+  font-size: 1.5em;
+  margin: .1em 0 .35em;
+}
+
+.datatable {
+  display: table;
+  border: $borderSize solid $borderColor;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.datatable .title {
+  font-size: 1.5em;
+  margin: .5em 0 .75em;
+}
+
+
+.datatable .datatable-header{
+  display: table-header-group;
+  background-color: #ced4da;
+}
+
+
+.datatable .datatable-row{
+  border: $borderSize solid $borderColor;
+  display: table-row;
+}
+
+.datatable .datatable-row:hover{
+  background-color: darken($backgroundcolor,5%);
+}
+
+
+.datatable .datatable-col{
+  display: table-cell;
+  padding: .625em;
+}
+
+.footer{
+  margin: .1em 0 .35em;
+  cursor: pointer;
+  text-align: center;
+}
+
+
+
+@media screen and (max-width: 600px) {
+
+  .datatable {
+    border: 0;
+  }
+
+
+  .datatable .datatable-header{
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+
+  .datatable .datatable-row{
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+
+  .datatable .datatable-col{
+    border-bottom: $borderSize solid $borderColor;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+
+  .datatable .datatable-col:before{
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+  }
+}
+
+/** DATATABLE ENDS**/

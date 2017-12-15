@@ -1,0 +1,45 @@
+<div class="inputgroup">
+
+  <label [style.font-style]="fontStyle" [style.font-family]="fontFamily" [style.font-size]="fontSize">
+    {{fieldLabel}}
+  </label>
+
+
+  <input type="hidden"
+         [ngModel]="value"
+         (ngModelChange)="onChange($event)"
+         #inp="ngModel"
+  />
+
+  <input type="text" class="input-control"
+         [ngClass]="{'input-control-error' : inp.invalid && (inp.dirty || inp.touched),'input-control-success' : inp.valid && (inp.dirty || inp.touched)}"
+         [value]="displayValue == undefined ? '' : displayValue"
+         (blur)="onBlur()"
+         (focus)="onFocus()"
+         (keyup)="onKeyUp($event)"
+         [attr.fieldName]="fieldName"
+         [attr.placeholder]="placeholder"
+         [attr.disabled]="disabled ? true: null"
+         [required]="allowBlank ? true: null"/>
+
+
+
+  <span *ngIf="showToolTip" class="dropdown">
+        <ul class="dropdown-list">
+          <li class="list-items" *ngFor="let item of filteredResult" (click)="onItemSelect(item)"><div>{{item[displayField]}}</div></li>
+        </ul>
+      </span>
+
+</div>
+
+
+<span *ngIf="iconFeedBack && (inp.invalid && (inp.dirty || inp.touched) || inp.valid)"
+      class="input-control-feedback">
+        <span *ngIf="inp.invalid && (inp.dirty || inp.touched)">&#9888;</span>
+        <span *ngIf="inp.valid && (inp.dirty || inp.touched)"> &#10004;</span>
+
+    </span>
+
+<span *ngIf="showToolTip && enablePopOver" class="tooltiptext">
+        <div [innerHTML]="helpInfoMsg"></div>
+</span>

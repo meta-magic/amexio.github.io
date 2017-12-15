@@ -1,0 +1,30 @@
+
+<div class="inputgroup ">
+
+  <label [style.font-style]="fontStyle" [style.font-family]="fontFamily" [style.font-size]="fontSize">
+    {{fieldLabel}}
+  </label>
+
+  <input type="number" class="input-control"
+         [(ngModel)]="value"
+         #inp="ngModel"
+         [ngClass]="{'input-control-error' : inp.invalid && (inp.dirty || inp.touched),'input-control-success' : inp.valid && (inp.dirty || inp.touched)}"
+         (blur)="onBlur()"
+         (focus)="onFocus()"
+         [attr.placeholder]="placeholder"
+         [attr.max]="maxValue"
+         [attr.min]="minValue"
+         [attr.disabled] = "disabled ? true: null"
+         [attr.required]="!allowBlank"/>
+
+  <span *ngIf="iconFeedBack && (inp.invalid && (inp.dirty || inp.touched) || inp.valid)" class="input-control-feedback">
+        <span *ngIf="inp.invalid && (inp.dirty || inp.touched)">&#9888;</span>
+        <span *ngIf="inp.valid && (inp.dirty || inp.touched)"> &#10004;</span>
+
+      </span>
+
+  <span *ngIf="showToolTip && enablePopOver" class="tooltiptext">
+        <div  [innerHTML]="helpInfoMsg"></div>
+  </span>
+
+</div>

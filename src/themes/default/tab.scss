@@ -1,0 +1,105 @@
+.tabwrapper{
+
+}
+
+.tab {
+  position:relative;
+  overflow:hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.tab li{
+  display:table-cell;
+  position:relative;
+}
+
+.tablink{
+  display: table-cell;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 17px;
+  border-radius: 0px;
+  border-bottom: $tabBorderSize solid $tabBorderColor;
+  white-space: nowrap;
+
+}
+
+.tablink span{
+
+}
+
+.activetab {
+  border-bottom: $tabBorderSize+2 solid $tabActiveBorder;
+}
+
+.tabnavigation{
+  padding: 10px 16px;
+  cursor: pointer;
+}
+
+.tabcontent{
+  width: 100%;
+  position: relative;
+  //float: left;
+  padding: 10px;
+}
+
+
+
+/**VERTICAL TABS**/
+
+.verticalnavtab{
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+}
+
+.verticalnavtab ul {
+  list-style: none;
+  padding: 0;
+  margin:0;
+}
+
+.verticalnavtab ul li {
+  // padding-left: 20px;
+}
+
+
+
+.verticalnavtab .defaultnode{
+  cursor: pointer;
+  background-color: $sidenavHeaderBGColor;
+  color: $sidenavHeaderColor;
+  padding: 10px;
+
+}
+
+.verticalnavtab .defaultnode:hover {
+  background-color: $tabActiveBGColor;
+
+
+}
+
+.verticalnavtab .leftactivetab {
+  background-color: $tabActiveBGColor;
+  border-left: $tabActiveBorderSize solid $tabActiveBorder;
+}
+
+.verticalnavtab .rightactivetab {
+  background-color: $tabActiveBGColor;
+  border-right: $tabActiveBorderSize solid $tabActiveBorder;
+}
+
+
+.verticalnavtab-left{
+  border-right: $tabBorderSize solid $tabBorderColor;
+}
+
+.verticalnavtab-right{
+  border-left: $tabBorderSize solid $tabBorderColor;
+}

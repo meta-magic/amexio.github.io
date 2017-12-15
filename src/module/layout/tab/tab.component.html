@@ -1,0 +1,28 @@
+<div class="tabwrapper">
+  <div *ngIf="showprev" class="tabnavigation float-left" (click)="previous()"><i class="fa fa-angle-left fa-2x" aria-hidden="true"></i></div>
+  <div *ngIf="shownext" class="tabnavigation float-right" (click)="next()"><i class="fa fa-angle-right  fa-2x" aria-hidden="true"></i></div>
+  <ul #tab class="tab">
+    <li class="tablistitems">
+      <div *ngFor="let tabnode of tabCollection"  class="tablink activetab" [ngClass]="{'activetab':tabnode.active}" (click)="onTabClick(tabnode)">
+        <div class="table">
+          <div class="tablerow">
+            <div *ngIf="tabnode.icon" class="tablecol">
+              <span *ngIf="tabnode.icon" [ngClass]="tabnode.icon"  aria-hidden="true"></span>
+            </div>
+            <div class="tablecol">
+              {{tabnode.title}}
+            </div>
+            <div *ngIf="closable" class="tablecol" >
+              <i class="fa fa-times" aria-hidden="true" (click)="closeTab(tabnode)"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+
+<div class="tabcontent">
+  <ng-content></ng-content>
+</div>

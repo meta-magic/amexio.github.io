@@ -1,0 +1,56 @@
+<div class="inputgroup">
+
+  <label [style.font-style]="fontStyle" [style.font-family]="fontFamily" [style.font-size]="fontSize">
+    {{fieldLabel}}
+  </label>
+
+  <input type="hidden"
+         [ngModel]="value"
+         (ngModelChange)="onChange($event)"
+         #inp="ngModel"
+  />
+
+  <input type="text" class="input-control"
+         [value]="getDisplayText()"
+         [ngClass]="{'input-control-error' : inp.invalid && (inp.dirty || inp.touched),'input-control-success' : inp.valid && (inp.dirty || inp.touched)}"
+         (blur)="onBlur()"
+         (focus)="onFocus()"
+         [attr.fieldName]="fieldName"
+         [attr.placeholder]="placeholder"
+         [attr.disabled]="disabled ? true: null"
+         [required]="allowBlank ? true: null"/>
+
+
+  <span class="drodown-caret-down">
+        <i class="fa fa-chevron-down" aria-hidden="true"></i>
+      </span>
+
+  <span *ngIf="showToolTip" class="dropdown">
+        <ul class="dropdown-list">
+          <li class="list-items" *ngIf="searchBox">
+            <input type="text" class="input-control" placeholder="search" (keyup)="onDropDownSearchKeyUp($event)"/>
+          </li>
+          <li class="list-items" *ngFor="let item of filteredOptions" (click)="onItemSelect(item)">
+            <span>{{item[displayField]}}</span>
+            <span style="float : right">{{item?.checked ? '&#10004;': ''}}</span>
+          </li>
+           <ng-template *ngIf="filteredOptions.length < 1">
+             <li class="list-items">No Options</li>
+           </ng-template>
+        </ul>
+      </span>
+
+</div>
+
+
+<span *ngIf="iconFeedBack && (inp.invalid && (inp.dirty || inp.touched) || inp.valid)"
+      class="input-control-feedback">
+        <span *ngIf="inp.invalid && (inp.dirty || inp.touched)">&#9888;</span>
+        <span *ngIf="inp.valid && (inp.dirty || inp.touched)"> &#10004;</span>
+
+      </span>
+
+<span *ngIf="showToolTip && enablePopOver" class="tooltiptext">
+        <div [innerHTML]="helpInfoMsg"></div>
+</span>
+

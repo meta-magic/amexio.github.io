@@ -1,0 +1,37 @@
+
+
+/***CHECKBOX & RADIOGROUP STYLE STARTS***/
+
+.input-box {
+  display: inline-block;
+  cursor: pointer;
+  vertical-align: middle;
+  margin-right: .25em;
+}
+
+.input-box .checkbox {
+  width: 1.125em;
+  height: 1.125em;
+  line-height: 1em;
+  text-align: center;
+  border-radius: $borderRadius;
+}
+
+.input-box .radiobox {
+  width: 1.125em;
+  height: 1.125em;
+  line-height: 1.125em;
+  text-align: center;
+  border-radius: 100%;
+}
+
+.input-box .default {
+  border: $borderSize solid $borderColor;
+  background: $backgroundcolor;
+}
+
+.input-box .active{
+  border: $borderSize solid $borderColor;
+  background: $primaryBGColor;
+  color: $primaryColor;
+}

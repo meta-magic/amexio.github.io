@@ -1,0 +1,110 @@
+
+
+$horizontalnodecolor: #cccccc;
+$horizontalnode-gutter: 100px;
+$border-radius: 10px;
+$horizontalnode-entry-min-height: 60px;
+
+$horizontalnode-label-width: 150px;
+$horizontalnode-label-height: 30px;
+$horizontalnode-label-border-radius: 5px;
+
+
+.horizontaltreeview {
+  position: relative;
+  overflow: auto;
+}
+
+.horizontaltreeview-node {
+  position: relative;
+  margin-left: $horizontalnode-gutter + $horizontalnode-label-width;
+  &:before {
+    content: "";
+    width: $horizontalnode-gutter / 2;
+    border-top: 2px solid $horizontalnodecolor;
+    position: absolute;
+    left: -$horizontalnode-gutter;
+    top: 50%;
+    margin-top: 1px;
+  }
+}
+
+.horizontaltreeview-node-entry {
+  position: relative;
+  min-height: $horizontalnode-entry-min-height;
+  &:before {
+    content: "";
+    height: 100%;
+    border-left: 2px solid $horizontalnodecolor;
+    position: absolute;
+    left: -($horizontalnode-gutter / 2);
+  }
+  &:after {
+    content: "";
+    width: $horizontalnode-gutter / 2;
+    border-top: 2px solid $horizontalnodecolor;
+    position: absolute;
+    left: -($horizontalnode-gutter / 2);
+    top: 50%;
+    margin-top: 1px;
+  }
+  &:first-child {
+    &:before {
+      width: $border-radius;
+      height: 50%;
+      top: 50%;
+      margin-top: 2px;
+      border-radius: $border-radius 0 0 0;
+    }
+    &:after {
+      height: $border-radius;
+      border-radius: $border-radius 0 0 0;
+    }
+  }
+  &:last-child {
+    &:before {
+      width: $border-radius;
+      height: 50%;
+      border-radius: 0 0 0 $border-radius;
+    }
+    &:after {
+      height: $border-radius;
+      border-top: none;
+      border-bottom: 2px solid $horizontalnodecolor;
+      border-radius: 0 0 0 $border-radius;
+      margin-top: -$border-radius + 1px;
+    }
+  }
+  &.sole {
+    &:before {
+      display: none;
+    }
+    &:after {
+      width: $horizontalnode-gutter / 2;
+      height: 0;
+      margin-top: 1px;
+      border-radius: 0;
+    }
+  }
+}
+
+.horizontaltreeview-node-label {
+  display: block;
+  min-width: $horizontalnode-label-width;
+  padding: 5px 10px;
+  line-height: $horizontalnode-label-height - 5px * 2;
+  text-align: center;
+  border: 2px solid $horizontalnodecolor;
+  border-radius: $horizontalnode-label-border-radius;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin-top: -($horizontalnode-label-height / 2);
+  background-color: $horizontalnodecolor;
+  cursor: pointer;
+}
+
+.horizontaltreeview-node-label:hover{
+  border-color:  darken($horizontalnodecolor,10%);
+  background-color: darken($horizontalnodecolor,10%);
+}

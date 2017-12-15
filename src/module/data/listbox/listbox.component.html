@@ -1,0 +1,19 @@
+
+<div class="listbox">
+  <div class="header">
+    <div class="title">{{header}}</div>
+    <div class="float-right" *ngIf="(filter == true)">
+      <input type="text" [(ngModel)]="filterText"  [placeholder]="searchPlaceHolder" (keyup)="filterData()"  class="search "/>
+    </div>
+  </div>
+
+
+  <ul class="list">
+    <li class="list-items" *ngFor="let row of viewData let rowno = index ">
+      <div (click)="onClick(row)">
+        <ng-container *ngIf="!bodyTemplate"> {{row[displayField]}}</ng-container>
+        <ng-template *ngIf="bodyTemplate" [ngTemplateOutlet]="bodyTemplate" [ngTemplateOutletContext]="{ row: row }"></ng-template></div>
+    </li>
+  </ul>
+
+</div>

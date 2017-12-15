@@ -1,0 +1,6 @@
+<ul>
+  <li  *ngFor="let node of data">
+    <div class="defaultnode" [ngClass]="{'activenode':node.active}" (click)="onClick(node)">{{node.text}}</div>
+    <amexio-sidenav-node  *ngIf="node.children && (node.children.length>0)"  [data]="node.children" (nodeclick)="onClick($event)"></amexio-sidenav-node>
+  </li>
+</ul>

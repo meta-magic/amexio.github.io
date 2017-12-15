@@ -1,0 +1,38 @@
+/** PAGINATOR STARTS**/
+
+.paginator{
+  padding: 10px;
+}
+
+.paginator .paginator-pages{
+  display: inline-block;
+  padding: .125em .375em;
+  zoom: 1;
+  margin-left: .063em;
+  margin-right: .063em;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.paginator .paginator-pages .paginator-page{
+  display: inline-block;
+  padding: .125em .375em;
+  zoom: 1;
+  margin-left: .063em;
+  margin-right: .063em;
+  text-decoration: none;
+  vertical-align: middle;
+  border: $borderSize solid $borderColor;
+  border-radius: $borderRadius;
+}
+
+.paginator .paginator-pages .paginator-page:hover{
+  background-color: $hoverBGColor;
+  color: $hoverColor;
+}
+
+.paginator .paginator-pages .active{
+  background-color: darken($hoverBGColor,10%);
+  color: $hoverColor;
+}

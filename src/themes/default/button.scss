@@ -1,0 +1,167 @@
+/**BUTTON**/
+
+.button {
+  display: inline-block;
+  position: relative;
+  padding: 0;
+  margin-right: .1em;
+  cursor: pointer;
+  text-align: center;
+  zoom: 1;
+  overflow: visible;
+  border-radius: $borderRadius;
+}
+
+.button-text {
+  display: inline-block;
+}
+
+
+.button-small{
+  padding: .25rem .5rem;
+  font-size: .875rem;
+}
+
+.button-default{
+  padding: .5rem 1rem;
+  font-size: 1rem;
+}
+
+.button-large{
+  padding: .75rem 1.5rem;
+  font-size: 1.25rem;
+}
+
+.button-secondary{
+  background-color: $secondaryBGColor;
+  border-color: $borderColor;
+  color: $secondaryColor;
+}
+
+
+.button-secondary:hover{
+  background-color: darken($secondaryBGColor, 10%);
+}
+
+.button-primary {
+  background-color: $primaryBGColor;
+  border-color: $primaryBGColor;
+  color: $primaryColor;
+}
+
+
+.button-primary:hover{
+  background-color: darken($primaryBGColor, 10%);
+}
+
+.button-success {
+  background-color: $successBGColor;
+  border-color: $successBGColor;
+  color: $successColor;
+
+}
+
+.button-success:hover{
+  background-color: darken($successBGColor, 10%);
+}
+
+.button-danger {
+  background-color: $dangerBGColor;
+  border-color: $dangerBGColor;
+  color: $dangerColor;
+}
+
+.button-danger:hover{
+  background-color: darken($dangerBGColor, 10%);
+}
+
+.button-warning {
+  background-color: $warningBGColor;
+  border-color: $warningBGColor;
+  color: $warningColor;
+}
+
+.button-warning:hover{
+  background-color: darken($warningBGColor, 10%);
+}
+
+/**
+Toggle Button styles
+ */
+.amexio-toggle {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  vertical-align: middle
+}
+
+.amexio-toggle input {display:none;}
+
+.amexio-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.amexio-slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .amexio-slider {
+  background-color: #2196F3;
+}
+
+input:focus + .amexio-slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .amexio-slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.round {
+  border-radius: 34px;
+}
+
+.round:before {
+  border-radius: 50%;
+}
+
+
+/**Button group **/
+.btn-group span {
+  border: 1px solid black; /* Green border */
+  padding: 10px 24px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  float: left; /* Float the buttons side by side */
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.btn-group span:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+

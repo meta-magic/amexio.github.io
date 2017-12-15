@@ -1,0 +1,88 @@
+
+
+
+
+.sidenav{
+  //height: 100%;
+  //position: relative;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  box-shadow: 0 0 5px 0 $borderColor;
+  background-color: $sidenavBGColor;
+  color: $sidenavColor;
+  //width: 90%;
+  //border: 2px solid Black;
+  //padding: 15px 15px 15px 15px;
+  //margin: 20px 20px 20px 20px;
+  //background: #A4D3EE;
+  //overflow: visible;
+  //box-shadow: 5px 5px 2px #888888;
+
+}
+
+.left {
+  left: 0;
+  position: fixed;
+  //width: 20%;
+}
+
+.right{
+  right:0;
+  position: fixed;
+  //width: 20%;
+}
+
+.sidenav ul {
+  list-style: none;
+  padding: 0;
+  margin:0;
+}
+
+.sidenav ul li {
+  padding-left: 20px;
+}
+
+.sidenav .title{
+  cursor: pointer;
+  background-color: $primaryBGColor;
+  color: $primaryColor;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 100%;
+  margin-left: -100%;
+}
+
+.sidenav .headernode{
+  cursor: pointer;
+  background-color: $sidenavHeaderBGColor;
+  color: $sidenavHeaderColor;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 100%;
+  margin-left: -100%;
+}
+
+
+.sidenav .defaultnode{
+  cursor: pointer;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 100%;
+  margin-left: -100%;
+;
+}
+
+.sidenav .defaultnode:hover {
+  background-color: #eee;
+}
+
+.sidenav .activenode {
+  background-color: #eee;
+}
+
+.sidenav .border{
+  padding-left: 100%;
+  margin-left: -100%;
+  border-bottom: $borderSize solid $borderColor;
+}

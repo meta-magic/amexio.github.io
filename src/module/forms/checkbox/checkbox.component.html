@@ -1,0 +1,17 @@
+<div class="inputgroup " [ngClass]="{'inline-block':horizontal}">
+  <div class="input-box" (click)="onClick()">
+    <input type="checkbox"
+           (blur)="onBlur()"
+           [(ngModel)]="value"
+           #inp="ngModel"
+           [attr.disabled] = "disabled ? true: null"
+           [attr.required]="!allowBlank"
+           hidden/>
+    <div *ngIf="!value" class="checkbox default">
+    </div>
+    <div *ngIf="value" class="checkbox active">
+      &#10004;
+    </div>
+ </div>
+  <label>{{fieldLabel}}</label>
+</div>

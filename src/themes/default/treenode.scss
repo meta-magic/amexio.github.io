@@ -1,0 +1,51 @@
+
+
+/**TREE NODE STARTS**/
+
+.treeview{
+  height: 100%;
+  margin: 0;
+  overflow: auto;
+  padding: .25em;
+  white-space: nowrap;
+}
+
+.treenode{
+  transition: .5s;
+  background-attachment: scroll;
+  background-color: transparent;
+  background-image: none;
+  background-position: 0 0;
+  background-repeat: repeat-y;
+  list-style: none outside none;
+  margin: 0;
+  padding: .125em 0 0 0;
+}
+
+.treenode-content{
+
+}
+
+.treenode-toggler{
+  cursor: pointer;
+}
+
+.treenode-label {
+  padding: 0 .25em;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.treenode-children {
+  margin: 0;
+  padding: 0 0 0 1em;
+  -moz-transition: expand .5s;
+  -ms-transition: expand .5s;
+  -o-transition: expand .5s;
+  -webkit-transition: expand .5s;
+  transition: expand .5s;
+}
+
+/**TREE NODE ENDS**/
+
+

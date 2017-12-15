@@ -1,0 +1,32 @@
+
+/**LISTBOX STARTS**/
+
+.listbox{
+  margin-bottom: 1rem;
+  border: $borderSize solid $borderColor;
+}
+
+
+.listbox .list{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  text-decoration: none;
+  font-size: 100%;
+  list-style: none;
+}
+
+.listbox .list .list-items{
+  list-style: none;
+  border-bottom: $borderSize solid $borderColor;
+  cursor: pointer;
+  font-weight: 400;
+  margin: 1px 0;
+  padding: 10px;
+  text-align: left;
+}
+
+.listbox .list .list-items:hover{
+  background-color: darken($backgroundcolor, 5%);
+}

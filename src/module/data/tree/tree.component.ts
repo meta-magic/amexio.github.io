@@ -1,0 +1,153 @@
+/**
+ * Created by ketangote on 11/23/17.
+ */
+
+import {ChangeDetectorRef, Component, ContentChild, EventEmitter, Input, Output, TemplateRef} from '@angular/core';
+import {CommonDataService} from "../../services/data/common.data.service";
+
+@Component({
+  selector: 'amexio-treeview',
+  templateUrl : './tree.component.html',
+  styleUrls : ['./tree.component.scss']
+})
+export class AmexioTreeViewComponent {
+
+  @Input() data : any[];
+
+  @Input()
+  httpUrl: string;
+
+  @Input()
+  httpMethod: string;
+
+  @Input()
+  dataReader: string;
+
+  @Output()
+  nodeClick: any = new EventEmitter<any>();
+
+  @Input()  enableCheckBox = false;
+
+  @Input()
+  templates : any ;
+
+
+  @ContentChild('amexioTreeTemplate')   parentTmp : TemplateRef<any>;
+
+  @Output() onTreeNodeChecked : any = new EventEmitter<any>();
+
+  previousValue : any;
+
+  responseData : any;
+
+  constructor(public dataService : CommonDataService,private cdf : ChangeDetectorRef){
+
+  }
+
+  ngOnInit(){
+    if (this.httpMethod && this.httpUrl) {
+      this.dataService.fetchData(this.httpUrl,this.httpMethod).subscribe(
+        response=>{
+          this.responseData = response.json();
+        },
+        error=>{
+        },
+        ()=>{
+          this.setData(this.responseData);
+        }
+      );
+    }
+  }
+
+  ngAfterViewInit(){
+    setTimeout(() => {
+      if (this.parentTmp != null){
+        this.templates = {treeNodeTemplate : this.parentTmp};
+      }
+      else if (this.templates != null){
+        this.parentTmp = this.templates.treeNodeTemplate;
+      }
+    });
+    this.cdf.detectChanges();
+  }
+
+  ngDoCheck() {
+    if (JSON.stringify(this.previousValue) != JSON.stringify(this.data) && this.previousValue!=null && this.data != null) {
+      this.previousValue = JSON.parse(JSON.stringify(this.data));
+      this.setData(this.data);
+    }
+  }
+
+  onClick(node :any){
+    node.expand=!node.expand;
+  }
+
+  onNodeClick(node : any){
+    this.nodeClick.emit(node);
+  }
+  setData(httpResponse : any) {
+    //Check if key is added?
+    let responsedata = httpResponse;
+    if (this.dataReader != null) {
+      let dr = this.dataReader.split(".");
+      for (let ir = 0; ir < dr.length; ir++) {
+        responsedata = responsedata[dr[ir]];
+      }
+    }
+    else {
+      responsedata = httpResponse;
+    }
+    this.data = responsedata;
+  }
+
+  emitCheckedData(checkedData : any){
+    checkedData.checked = !checkedData.checked;
+
+    if (checkedData.checked){
+      if (checkedData.hasOwnProperty('children')){
+        checkedData.children.forEach((option : any) => {
+          option.checked = true;
+          if (option.hasOwnProperty('children')){
+            this.setCheckedStatusFromParent(option);
+          }
+        });
+      }
+      this.onTreeNodeChecked.emit(this.data);
+    }
+    else {
+      if (checkedData.hasOwnProperty('children')){
+        checkedData.children.forEach((option: any) => {
+          option.checked = false;
+          if (option.hasOwnProperty('children')){
+            this.searchObject(option);
+          }
+        });
+      }
+      this.onTreeNodeChecked.emit(this.data);
+    }
+
+  }
+
+  searchObject(object : any){
+    object.children.forEach((childOption : any) => {
+      childOption.checked = false;
+      if (childOption.hasOwnProperty('children')){
+        this.searchObject(childOption);
+      }
+    });
+  }
+
+
+  setCheckedStatusFromParent(object : any){
+    object.children.forEach((childOption : any) => {
+      childOption.checked = true;
+      if (childOption.hasOwnProperty('children')){
+        this.setCheckedStatusFromParent(childOption);
+      }
+    });
+  }
+
+  onTreeNodeCheck(data : any){
+    this.onTreeNodeChecked.emit(this.data);
+  }
+}

@@ -1,0 +1,24 @@
+
+<div class="table">
+  <div class="tablerow">
+    <div class="tablecol">
+      <div class="tabcontent">
+        <ng-content></ng-content>
+      </div>
+    </div>
+
+    <div class="tablecol">
+      <div class="verticalnavtab verticalnavtab-right">
+        <ul>
+          <li *ngFor="let tabnode of tabCollection">
+            <div class="defaultnode" [ngClass]="{'rightactivetab':tabnode.active}"    (click)="onTabClick(tabnode)">
+              <span *ngIf="tabnode.icon" [ngClass]="tabnode.icon"  aria-hidden="true"></span>
+              <span>{{tabnode.title}}</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>

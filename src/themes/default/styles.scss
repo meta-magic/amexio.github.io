@@ -1,0 +1,96 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+$color: #404c51;
+
+$oppColor: white;
+
+$backgroundcolor: #ffffff;
+
+$borderSize : 1px;
+
+$borderRadius : 2px;
+
+$borderColor : #ced4da;
+
+$borderColor-focus: #5cb3fd;
+
+$primaryBGColor: #0275d8;
+
+$secondaryBGColor: #ffffff;
+
+$successBGColor : #5cb85c;
+
+$dangerBGColor : #d9534f;
+
+$warningBGColor : #f0ad4e;
+
+$primaryColor: $oppColor;
+
+$secondaryColor: $color;
+
+$successColor : $oppColor;
+
+$dangerColor : $oppColor;
+
+$warningColor : $oppColor;
+
+$success: $successBGColor;
+
+$error : $dangerBGColor;
+
+$hoverColor : $primaryColor;
+
+$hoverBGColor : $primaryBGColor;
+
+
+$sidenavHeaderBGColor: $borderColor;
+$sidenavHeaderColor: $color;
+$sidenavBGColor : white;
+$sidenavColor: black;
+
+
+$tabBorderSize: $borderSize;
+$tabBorderColor : $borderColor;
+$tabActiveBorder : red;
+$tabActiveBGColor : $borderColor;
+$tabActiveBorderSize : 3px;
+
+
+body {
+  background: $backgroundcolor;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-family: Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
+  font-weight: 400;
+  color: $color;
+  font-size: 1em;
+}
+
+@import "common.scss";
+
+@import "input.scss";
+
+@import "button.scss";
+
+@import "dropdown.scss";
+
+@import "paginator.scss";
+
+@import "inputbox.scss";
+
+@import "datatable.scss";
+
+@import "treenode.scss";
+
+@import "listbox.scss";
+
+@import "horizontaltreeview.scss";
+
+@import "sidenav.scss";
+
+
+@import "tab.scss";
+
+@import "fieldset.scss";
