@@ -18,6 +18,7 @@ import {AmexioWindowPaneComponent} from "./window/window.pane.component";
 import {AmexioWindowBodyComponent} from "./window/pane.action.body";
 import {AmexioWindowFooterComponent} from "./window/pane.action.footer";
 import {AmexioWindowHeader} from "./window/pane.action.header";
+import {AmexioCardComponent} from "./card/card.component";
 
 export * from '../services/data/common.data.service';
 export * from '../services/device/device.query.service';
@@ -38,6 +39,8 @@ export * from './window/pane.action.body';
 export * from './window/pane.action.footer';
 export * from './window/pane.action.footer';
 
+export * from './card/card.component';
+
 const LAYOUT_COMPONENTS = [
   AmexioTabComponent,
   AmexioTabPill,
@@ -49,7 +52,8 @@ const LAYOUT_COMPONENTS = [
   AmexioWindowPaneComponent,
   AmexioWindowBodyComponent,
   AmexioWindowFooterComponent,
-  AmexioWindowHeader
+  AmexioWindowHeader,
+  AmexioCardComponent
 ];
 
 @NgModule({
