@@ -1,0 +1,46 @@
+.wizard .wizard-list {
+  background-color: #E4E4E4;
+  border-radius: 5px;
+  display: inline;
+  padding: 10px 30px 10px 40px;
+  margin-right: -7px;
+  width: auto;
+}
+
+.wizard .wizard-list::before, .wizard .wizard-list::after {
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  border-color: transparent;
+  border-left-color: #fff;
+  border-radius: 10px;
+}
+
+.wizard .wizard-list::before {
+  border-width: 25px;
+  margin-top: -16px;
+  margin-left: 84px;
+}
+
+
+.wizard .wizard-list::after {
+  border-left-color: #E4E4E4;
+  border-width: 21px;
+  margin-top: -12px;
+  margin-left: 24px;
+}
+
+.wizard .wizard-list.selected {
+  background-color: #FF4F65;
+  color: #fff;
+}
+
+.wizard .wizard-list.selected::after {
+  border-left-color: #FF4F65;
+}
+
+.wizard .wizard-list:last-child::after {
+  border-left-color: transparent;
+}

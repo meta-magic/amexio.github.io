@@ -10,17 +10,23 @@ import {AmexioSideNav} from "./sidenav/sidenav.component";
 import {SideNavNodeComponent} from "./sidenav/sidenavnode.component";
 import {AmexioPaginatorComponent} from "./paginator/paginator.component";
 import {DeviceQueryService} from "../services/device/device.query.service";
+import {AmexioDockBarItem} from "./dockbar/dockbaritem";
+import {AmexioDockbarComponent} from "./dockbar/dockbar.component";
 
 export * from '../services/data/common.data.service';
 export * from '../services/device/device.query.service';
 export * from './sidenav/sidenav.component';
 export * from './sidenav/sidenavnode.component';
 export * from './paginator/paginator.component';
+export * from './dockbar/dockbaritem';
+export * from './dockbar/dockbar.component';
 
 const NAV_COMPONENTS = [
   AmexioPaginatorComponent,
   AmexioSideNav,
-  SideNavNodeComponent
+  SideNavNodeComponent,
+  AmexioDockbarComponent,
+  AmexioDockBarItem
 ];
 
 @NgModule({

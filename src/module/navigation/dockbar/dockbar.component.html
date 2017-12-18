@@ -1,0 +1,29 @@
+<div class="amexio-dockbar" [style.min-height]="height">
+  <ng-container *ngFor="let dockbar of dockbarArray">
+    <button [ngClass]="{'active':dockbar.active}" (click)="onClick(dockbar)">
+
+      <!--Normal image-->
+      <ng-container *ngIf="dockbar.imagePath">
+        <img [src]="dockbar.imagePath">
+      </ng-container>
+
+      <!--this is for fontawesome-->
+      <ng-container *ngIf="(!(dockbar.icon && dockbar.mdbClass) && dockbar.icon)">
+        <amexio-image [imageClass]="dockbar.icon" [cClass]=""></amexio-image>
+      </ng-container>
+
+      <!--if dockbar have label instead of icon -->
+      <ng-container *ngIf="dockbar.label && dockbar.active">
+        <p><strong class="amexio-dockbar-label-highlight">{{dockbar.label}}</strong></p>
+      </ng-container>
+
+      <ng-container *ngIf="dockbar.label && !dockbar.active">
+        <p>{{dockbar.label}}</p>
+      </ng-container>
+
+    </button>
+  </ng-container>
+</div>
+<div class="amexio-dockbar-item" [style.min-height]="height">
+  <ng-content></ng-content>
+</div>
