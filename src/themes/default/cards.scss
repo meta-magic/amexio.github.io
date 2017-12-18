@@ -1,0 +1,30 @@
+
+
+.card-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: $borderSize solid $borderColor;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14);
+}
+
+.card-container > * {
+  padding: 10px;
+  -webkit-flex: 1 100%;
+  flex: 1 100%;
+  text-align:left;
+}
+
+.card-header{
+  background-color: $cardHeaderColor;
+  border-bottom: $borderSize solid $borderColor;
+  display: flex;
+}
+
+
+.card-footer{
+  display: flex;
+  background-color: $cardFooterColor;
+  border-top: $borderSize solid $borderColor;
+}
+

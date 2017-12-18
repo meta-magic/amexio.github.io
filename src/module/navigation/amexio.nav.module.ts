@@ -12,6 +12,7 @@ import {AmexioPaginatorComponent} from "./paginator/paginator.component";
 import {DeviceQueryService} from "../services/device/device.query.service";
 import {AmexioDockBarItem} from "./dockbar/dockbaritem";
 import {AmexioDockbarComponent} from "./dockbar/dockbar.component";
+import {AmexioNavbarComponent} from "./navbar/navbar.component";
 
 export * from '../services/data/common.data.service';
 export * from '../services/device/device.query.service';
@@ -26,7 +27,8 @@ const NAV_COMPONENTS = [
   AmexioSideNav,
   SideNavNodeComponent,
   AmexioDockbarComponent,
-  AmexioDockBarItem
+  AmexioDockBarItem,
+  AmexioNavbarComponent
 ];
 
 @NgModule({

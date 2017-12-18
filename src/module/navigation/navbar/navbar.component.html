@@ -1,0 +1,58 @@
+ <div class="menubar">
+    <ul class="menuheader">
+      <li *ngFor="let node of data" class="menulink">
+        <a (click)="onClick(node)"><i *ngIf="node.icon" [ngClass]="node.icon" aria-hidden="true"></i>&nbsp;&nbsp;{{node.text}}</a>
+        <ng-container *ngIf="(node.childrens && node.childrens[0].childrens)" >
+
+          <div *ngIf="(node.childrens && node.childrens.length>0)" class="menu-content" [ngClass]="{'menu-content-display':node.expand,' menu-content-left': (node.childrens && node.childrens.length>3)}">
+            <ul class="menu-content-cols">
+
+              <li class="col-menu-nodes"
+                  [ngClass]="{'col-menu-nodes-fixed': (node.childrens && node.childrens.length<4),
+                      'col-menu-nodes-percentage': (node.childrens && node.childrens.length>3)}" *ngFor="let subnode of node.childrens">
+                <div class="content">
+                  <div *ngIf="(subnode.text && subnode.text.length>0)" class="menu-links-header">
+                    <i *ngIf="subnode.icon" [ngClass]="subnode.icon" aria-hidden="true"></i>&nbsp;&nbsp;{{subnode.text}}
+                  </div>
+                  <div *ngIf="subnode.image" style="padding: 10px;">
+                    <img  src="{{subnode?.image}}">
+                  </div>
+                  <ul  class="menu-content-cols">
+                    <li *ngFor="let subinnernode of subnode.childrens" class="menulinks">
+                      <div *ngIf="subinnernode.image" style="padding: 10px;">
+                        <img  src="{{subinnernode?.image}}">
+                      </div>
+                      <i *ngIf="subinnernode.icon" class="fa fa-ravelry" aria-hidden="true"></i>&nbsp;&nbsp;{{subinnernode.text}}{{subinnernode.template}}</li>
+                  </ul>
+                </div>
+              </li>
+
+            </ul>
+          </div>
+
+        </ng-container>
+
+
+        <ng-container  *ngIf="(node.childrens && !node.childrens[0].childrens)" >
+          <div class="menu-content" [ngClass]="{'menu-content-display':node.expand}">
+            <ul class="menu-content-cols">
+              <li class="col-menu-nodes col-menu-nodes-fixed">
+                <div class="content">
+                  <ul  class="menu-content-cols">
+                    <li *ngFor="let subnode of node.childrens" class="menulinks">
+                      <div *ngIf="subnode.image" style="padding: 10px;">
+                        <img  src="http://placehold.it/230x120">
+                      </div>
+                      <i *ngIf="subnode.icon" class="fa fa-ravelry" aria-hidden="true"></i>&nbsp;&nbsp;{{subnode.text}}</li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </ng-container>
+
+
+      </li>
+    </ul>
+  </div>
+</div>

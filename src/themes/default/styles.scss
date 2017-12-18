@@ -56,6 +56,17 @@ $tabActiveBorder : red;
 $tabActiveBGColor : $borderColor;
 $tabActiveBorderSize : 3px;
 
+$tabActiveBorderSize : 3px;
+
+$menubarBGColor : #3498DB;
+$menubarColor : white;
+$menuHoverColor: orange;
+$subMenuCotentBGColor : white;
+$subMenuCotentColor : #777;
+
+$modalBGColor: lighten(black,50%);
+$cardHeaderColor: lighten($borderColor,10%);
+$cardFooterColor: lighten($borderColor,10%);
 
 body {
   background: $backgroundcolor;
@@ -99,3 +110,9 @@ body {
 @import "dockbar.scss";
 
 @import "accordion.scss";
+
+@import "nav.scss";
+
+@import "cards.scss";
+
+@import "window.scss";

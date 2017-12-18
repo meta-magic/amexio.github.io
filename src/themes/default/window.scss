@@ -1,0 +1,57 @@
+.modal-window{
+  flex-direction: column;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* Enable scroll if needed */
+  background-color: $modalBGColor; /* Black w/ opacity */
+}
+
+
+.modal-window-content{
+  //position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0px;
+  border: 1px solid #888;
+  width: 80%;
+  height: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.modal-window-max{
+  padding-top: 0px;
+}
+
+.modal-window-content > * {
+  padding: 10px;
+}
+
+
+.modal-window-content-max{
+  width: 100%;
+  height: 100%;
+}
+
+
+
+
+.modal-window-header{
+  background-color: $cardHeaderColor;
+  border-bottom: $borderSize solid $borderColor;
+}
+
+.modal-window-middle{
+  height: auto !important;
+  min-height: 85% !important;
+}
+
+.modal-window-footer{
+  background-color: $cardFooterColor;
+  border-top: $borderSize solid $borderColor;
+  display: flex;
+}

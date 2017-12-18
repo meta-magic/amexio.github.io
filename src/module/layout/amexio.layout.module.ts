@@ -14,6 +14,10 @@ import {AmexioRightVerticalTabComponent} from "./tab/right-vertical-tab/right.ve
 import {AmexioFieldSetComponent} from "./fieldset/fieldset.component";
 import {AmexioAccordionTabComponent} from "./accordion/accordion.component";
 import {AmexioAccordionComponent} from "./accordion/accordion.item";
+import {AmexioWindowPaneComponent} from "./window/window.pane.component";
+import {AmexioWindowBodyComponent} from "./window/pane.action.body";
+import {AmexioWindowFooterComponent} from "./window/pane.action.footer";
+import {AmexioWindowHeader} from "./window/pane.action.header";
 
 export * from '../services/data/common.data.service';
 export * from '../services/device/device.query.service';
@@ -29,6 +33,11 @@ export * from './fieldset/fieldset.component';
 export * from './accordion/accordion.component';
 export * from './accordion/accordion.item';
 
+export * from './window/window.pane.component';
+export * from './window/pane.action.body';
+export * from './window/pane.action.footer';
+export * from './window/pane.action.footer';
+
 const LAYOUT_COMPONENTS = [
   AmexioTabComponent,
   AmexioTabPill,
@@ -36,7 +45,11 @@ const LAYOUT_COMPONENTS = [
   AmexioRightVerticalTabComponent,
   AmexioFieldSetComponent,
   AmexioAccordionTabComponent,
-  AmexioAccordionComponent
+  AmexioAccordionComponent,
+  AmexioWindowPaneComponent,
+  AmexioWindowBodyComponent,
+  AmexioWindowFooterComponent,
+  AmexioWindowHeader
 ];
 
 @NgModule({
