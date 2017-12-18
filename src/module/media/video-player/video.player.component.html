@@ -1,0 +1,15 @@
+<div class="player">
+  <video class="video-element" #videoRef (timeupdate)="onTimeUpdate()" (volumechange)="updateMuteUI()">
+    <source [attr.src]="path">
+  </video>
+  <div class="controls">
+    <progress class="progress-bar" min='0' max='100' value='0' #progressbar>0% played</progress>
+    <button class="player-button" style="vertical-align: middle" class='replay' title='replay' accesskey="R" (click)='replayVideo();'>Replay</button>
+    <button class="player-button" [ngClass]="{'play' : !isPlaying, 'pause' : isPlaying}" style="vertical-align: middle" (click)="onPlay()">Play</button>
+    <button class="player-button stop" style="vertical-align: middle" (click)="resetPlayer()">Stop</button>
+    <input type="range" class="volume-bar"  min="0" max="1" step="0.1" value="1" (input)="onVolumeChange($event)" #volumebar>
+    <button class="player-button" (click)="onMute()" [ngClass]="{'mute' : !isMuted,'unmute' : isMuted}" title='mute' style="vertical-align: middle">Mute</button>
+    <button class="player-button fullscreen" title='toggle full screen' accesskey="T" style="vertical-align: top" (click)="onFullScreen()">[&nbsp;&nbsp;]</button>
+  </div>
+</div>
+<div style="clear:both"></div>
