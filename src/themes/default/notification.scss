@@ -1,0 +1,39 @@
+.toastbar{
+  position: fixed;
+  z-index: 1;
+}
+
+.toast-left{
+
+}
+
+.toast-right{
+  right:0px;
+}
+
+.toast-top{
+  top:10px;
+}
+
+.toast-center{
+  top:50%;
+  left: 50%;
+}
+
+.toast-bottom{
+  bottom:10px;
+}
+
+
+.toast {
+  margin:10px;
+  padding: 10px;
+  min-width: 250px;
+  background-color: $toastBGColor;
+  color: $toastColor;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  z-index: 1;
+  display: block;
+}

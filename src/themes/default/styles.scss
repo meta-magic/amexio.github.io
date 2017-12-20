@@ -68,6 +68,9 @@ $modalBGColor: lighten(black,50%);
 $cardHeaderColor: lighten($borderColor,10%);
 $cardFooterColor: lighten($borderColor,10%);
 
+$toastBGColor : $primaryBGColor;
+$toastColor : $primaryColor;
+
 body {
   background: $backgroundcolor;
   min-height: 100%;
@@ -116,3 +119,5 @@ body {
 @import "cards.scss";
 
 @import "window.scss";
+
+@import "notification.scss";

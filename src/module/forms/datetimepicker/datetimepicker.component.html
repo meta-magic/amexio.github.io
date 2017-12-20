@@ -1,0 +1,203 @@
+<div class="inputgroup">
+
+  <label [style.font-style]="fontStyle" [style.font-family]="fontFamily" [style.font-size]="fontSize">
+    {{fieldLabel}}
+  </label>
+
+
+  <input type="hidden"
+         [ngModel]="value"
+         (ngModelChange)="onChange($event)"
+         #inp="ngModel"
+  />
+
+  <ng-container *ngIf="readonly && datepicker">
+    <input type="text" class="input-control"
+           [ngClass]="{'input-control-error' : inp.invalid && (inp.dirty || inp.touched),'input-control-success' : inp.valid && (inp.dirty || inp.touched)}"
+           value="{{dateModel|date:dateFormat}}"
+           (blur)="onBlur()"
+           (focus)="onFocus()"
+           [attr.placeholder]="placeholder"
+           [attr.disabled]="disabled ? true: null"
+           [required]="allowBlank ? true: null"/>
+  </ng-container>
+
+  <ng-container *ngIf="!readonly && datepicker">
+    <ng-container *ngIf="!timepicker">
+      <input type="text" class="input-control"
+             [ngClass]="{'input-control-error' : inp.invalid && (inp.dirty || inp.touched),'input-control-success' : inp.valid && (inp.dirty || inp.touched)}"
+             value="{{dateModel|date:dateFormat}}"
+             (blur)="onBlur()"
+             (focus)="onFocus()"
+             [attr.placeholder]="placeholder"
+             [attr.disabled]="disabled ? true: null"
+             [required]="allowBlank ? true: null"/>
+    </ng-container>
+
+    <ng-container *ngIf="timepicker">
+      <input type="text" class="input-control"
+             [ngClass]="{'input-control-error' : inp.invalid && (inp.dirty || inp.touched),'input-control-success' : inp.valid && (inp.dirty || inp.touched)}"
+             value="{{dateModel|date:dateFormat}} {{hrs + ' : ' + min}}"
+             (blur)="onBlur()"
+             (focus)="onFocus()"
+             [attr.placeholder]="placeholder"
+             [attr.disabled]="disabled ? true: null"
+             [required]="allowBlank ? true: null"/>
+    </ng-container>
+
+
+    <span *ngIf="showToolTip" class="dropdown">
+          <ul class="dropdown-list">
+            <div class="datepicker" (click)="onCalendarClick()">
+          <table class="table">
+            <thead>
+            <td class="navigation" (click)="prevYear($event)">&#8882;</td>
+            <td class="navigation" (click)="prevMonth($event)">&#x22B4;</td>
+
+            <!--if timepicker is true-->
+            <ng-container *ngIf="timepicker">
+              <td colspan="3">{{selectedDate | date:'MMMM y'}}<br/>{{hrs + ':' + min}}</td>
+            </ng-container>
+
+            <ng-container *ngIf="!timepicker">
+              <td colspan="3">{{selectedDate | date:'MMMM y'}}<br/></td>
+            </ng-container>
+
+            <td class="navigation" (click)="nextMonth($event)">&#x22B5;</td>
+            <td class="navigation" (click)="nextYear($event)">&#x22B3;</td>
+            </thead>
+            <tr>
+              <td class="daysHeader" *ngFor="let dayTitle of daysTitle">
+                <div>{{dayTitle.text}}</div>
+              </td>
+            </tr>
+            <tr *ngFor="let dayArray of daysArray">
+              <td *ngFor="let day of dayArray"
+                  [ngClass]="{'dateSelected':day.selected, 'currentMonth':day.isCurrentMonth, 'notCurrentMonth':!day.isCurrentMonth}">
+                <div (click)="onDateClick(day.date)">{{ day.date | date:'d' }}</div>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="7" style="padding-top: 10px;">
+                <button type="button" class="btn btn-primary" (click)="setToday()">TODAY</button>
+              </td>
+            </tr>
+
+            <!--if picker is true-->
+            <ng-container *ngIf="timepicker">
+              <tr>
+                <td colspan="7" class="navigation">
+                  &#9719;
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                </td>
+                <td (click)="plus('hrs', $event);">&#9650;</td>
+                <td></td>
+                <td (click)="plus('min', $event);">&#9650;</td>
+                <td colspan="2">
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                </td>
+                <td>{{hrs}}</td>
+                <td>:</td>
+                <td>{{min}}</td>
+                <td colspan="2">
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                </td>
+                <td (click)="minus('hrs', $event);">&#9660;</td>
+                <td></td>
+                <td (click)="minus('min', $event);">&#9660;</td>
+                <td colspan="2">
+                </td>
+              </tr>
+            </ng-container>
+
+          </table>
+        </div>
+          </ul>
+        </span>
+
+  </ng-container>
+
+  <ng-container *ngIf="!datepicker">
+    <input type="text" class="input-control"
+           [ngClass]="{'input-control-error' : inp.invalid && (inp.dirty || inp.touched),'input-control-success' : inp.valid && (inp.dirty || inp.touched)}"
+           value="{{hrs + ' : ' + min}}"
+           (blur)="onBlur()"
+           (focus)="onFocus()"
+           [attr.placeholder]="placeholder"
+           [attr.disabled]="disabled ? true: null"
+           [required]="allowBlank ? true: null"/>
+
+    <span *ngIf="showToolTip" class="dropdown">
+          <ul class="dropdown-list">
+            <div class="datepicker" [attr.id]="elementId">
+          <table class="table">
+            <!--if picker is true-->
+            <tr>
+              <td colspan="2">
+              </td>
+              <td (click)="plus('hrs', $event);">&#9650;</td>
+              <td></td>
+              <td (click)="plus('min', $event);">&#9650;</td>
+              <td colspan="2">
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+              </td>
+              <td>{{hrs}}</td>
+              <td>:</td>
+              <td>{{min}}</td>
+              <td colspan="2">
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+              </td>
+              <td (click)="minus('hrs', $event);">&#9660;</td>
+              <td></td>
+              <td (click)="minus('min', $event);">&#9660;</td>
+              <td colspan="2">
+              </td>
+            </tr>
+
+          </table>
+        </div>
+          </ul>
+        </span>
+  </ng-container>
+
+  <span class="input-control-feedback">
+          <i class="fa fa-calendar" aria-hidden="true"></i>
+      </span>
+
+  <!-- <span *ngIf="showToolTip" class="dropdown">
+     <ul class="dropdown-list">
+       &lt;!&ndash;<li class="list-items" *ngFor="let item of filteredResult" (click)="onItemSelect(item)"><div>{{item[displayField]}}</div></li>&ndash;&gt;
+       Calendar here
+     </ul>
+   </span>-->
+
+</div>
+
+
+<!--   <span *ngIf="iconFeedBack && (inp.invalid && (inp.dirty || inp.touched) || inp.valid)"
+         class="input-control-feedback">
+       <span *ngIf="inp.invalid && (inp.dirty || inp.touched)">&#9888;</span>
+       <span *ngIf="inp.valid && (inp.dirty || inp.touched)"> &#10004;</span>
+
+   </span>
+
+   <span *ngIf="showToolTip && enablePopOver" class="tooltiptext">
+       <div [innerHTML]="helpInfoMsg"></div>
+   </span>-->
+
+
