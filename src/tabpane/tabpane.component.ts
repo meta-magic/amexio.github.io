@@ -1,6 +1,6 @@
 
 import {
-  AfterContentInit, AfterViewInit, Component, ContentChildren, Input, OnInit, Output, QueryList
+  AfterContentInit, AfterViewInit, Component, ContentChildren, EventEmitter, Input, OnInit, Output, QueryList
 } from '@angular/core';
 import {TabComponent} from './tabpill.component';
 declare var $: any;
@@ -19,7 +19,18 @@ declare var $: any;
     <div class="amexio-tabpane-wrapper" [attr.id]="'amexio-tabpane-wrapper-'+elementId">
       <ul class="nav nav-tabs amexio-tabs" role="tablist" [attr.id]="'list-'+elementId">
         <li class="nav-item" *ngFor="let tab of tabs" >
-          <a [class]="getTabClass(tab)" data-toggle="tab"  role="tab" [ngClass]="{'active':tab.active}" style="cursor: pointer;" (click)="activateTab(tab.elementId)" [attr.id]="tab.elementId" >&nbsp;{{tab.title}}&nbsp;&nbsp;<a *ngIf="closable" id="'closable-'+{{tab.elementId}}" class="amexio-tabpane-closeicon-position" (click)="closeTab(tab.elementId)">&times;</a></a>
+            <ng-container *ngIf="tab.disabled">
+                <a [class]="getTabClass(tab)" data-toggle="tab" role="tab" [ngClass]="{'active':tab.active}" [attr.id]="tab.elementId">&nbsp;{{tab.title}}&nbsp;&nbsp;<a
+                        *ngIf="closable" id="'closable-'+{{tab.elementId}}"
+                        class="amexio-tabpane-closeicon-position" (click)="closeTab(tab.elementId)">&times;</a></a>
+            </ng-container>
+            <ng-container *ngIf="!tab.disabled">
+                <a [class]="getTabClass(tab)" data-toggle="tab" role="tab" [ngClass]="{'active':tab.active}"
+                   style="cursor: pointer;" (click)="activateTab(tab.elementId)" [attr.id]="tab.elementId">&nbsp;{{tab.title}}&nbsp;&nbsp;<a
+                        *ngIf="closable" id="'closable-'+{{tab.elementId}}"
+                        class="amexio-tabpane-closeicon-position" (click)="closeTab(tab.elementId)">&times;</a></a>
+            </ng-container>
+
         </li>
       </ul>
     </div>
@@ -31,6 +42,12 @@ declare var $: any;
     
   `,
   styles : [`
+      .isDisabled{
+          color: inherit!important;
+          cursor: not-allowed!important;
+          opacity: 0.5!important;
+          text-decoration: none!important;
+      }
       .amexio-tab-list {
           position:absolute;
           left:0px;
@@ -94,6 +111,8 @@ export class TabPaneComponent implements OnInit, AfterContentInit, AfterViewInit
   @Input() tapPosition: string;
 
   @Input() cClass:string;
+
+  @Output() activatedTab: any = new EventEmitter<any>();
 
   @ContentChildren(TabComponent)  queryTabs: QueryList<TabComponent>;
 
@@ -205,6 +224,9 @@ export class TabPaneComponent implements OnInit, AfterContentInit, AfterViewInit
 
   getTabClass(tab: any) {
     let cls = 'nav-link ';
+    if(tab.disabled && tab.disabled==true){
+      cls = cls +' isDisabled ';
+    }
     if (tab.active && tab.active == true) {
       cls = cls + ' active';
     }
@@ -216,12 +238,13 @@ export class TabPaneComponent implements OnInit, AfterContentInit, AfterViewInit
 
   activateTab(tabId: string) {
     const tabs = this.tabs;
-     tabs.forEach(tab => {
-     tab.active = false;
-     if (tab.elementId == tabId) {
-       tab.active = true;
-     }
-     });
+    tabs.forEach(tab => {
+      tab.active = false;
+      if (tab.elementId == tabId) {
+        tab.active = true;
+        this.activatedTab.emit(tab);
+      }
+    });
   }
 
 
