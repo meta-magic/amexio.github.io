@@ -20,8 +20,6 @@ import {DateTimeComponent} from "./datetimepicker/datetimepicker.component";
 import {DockbarComponent} from "./dockedbar/dockbaritem";
 import {DockedBarToolComponent} from "./dockedbar/dockettoolbar.component";
 import {EmailInputComponent} from "./emailinput/emailinput.component";
-import {FieldSetComponent} from "./fieldset/fieldset.component";
-import {FieldSetBodyComponent} from "./fieldset/fieldsetbody.component";
 import {FileuploadComponent} from "./fileupload/fileupload.component";
 import {ImageComponent} from "./image/image.component";
 import {ItemSelectorComponent} from "./itemselector/itemselector.component";
@@ -61,6 +59,8 @@ import {TreeViewComponent} from "./treeview/treeview.component";
 import {VerticalLeftTabPaneComponent} from './tabpane/verticallefttab.component';
 import {CheckBoxGroup} from './checkgroup/checkbox.component';
 import {AmexioAccordionComponent} from './accordion/accodrion.component';
+import {FieldSetComponent} from './fieldset/fieldset.component';
+import {FieldSetBodyComponent} from  './fieldset/fieldsetbody.component';
 
 export * from './common.http.service';
 export * from './baseclass/form.base.class';
@@ -91,8 +91,6 @@ export * from './dockedbar/dockbaritem';
 export * from './dockedbar/dockettoolbar.component';
 export * from './emailinput/emailinput.component';
 
-export * from './fieldset/fieldset.component';
-export * from './fieldset/fieldsetbody.component';
 
 export * from './fileupload/fileupload.component';
 
@@ -146,6 +144,8 @@ export * from './checkgroup/checkbox.component';
 export * from './accordion/accodrion.component';
 
 
+export * from './fieldset/fieldset.component';
+export * from './fieldset/fieldsetbody.component';
 
 
 const COMPONENTS = [
@@ -167,8 +167,6 @@ const COMPONENTS = [
   DockbarComponent,
   DockedBarToolComponent,
   EmailInputComponent,
-  FieldSetComponent,
-  FieldSetBodyComponent,
   FileuploadComponent,
   ImageComponent,
   ItemSelectorComponent,
@@ -206,7 +204,9 @@ const COMPONENTS = [
   FilterTreeViewComponent,
   TreeViewComponent,
   TypeAheadComponent,
-  AmexioVideoPlayerComponent
+  AmexioVideoPlayerComponent,
+    FieldSetComponent,
+    FieldSetBodyComponent
 ];
 
 @NgModule({

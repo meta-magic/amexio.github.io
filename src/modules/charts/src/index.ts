@@ -1,4 +1,4 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import {ModuleWithProviders, NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {HttpModule} from "@angular/http";
 import {FormsModule} from "@angular/forms";
@@ -45,7 +45,13 @@ export * from "./candlestickchart/candlestick.chart.component";
 export * from "./candlestickwaterfallchart/candlestickwaterfall.chart.component";
 export * from "./chart.loader.service";
 
-const CHARTS = [
+@NgModule({
+  imports: [
+    CommonModule,
+    HttpModule,
+    FormsModule
+  ],
+  declarations: [
     AreaChartComponent, BarChartComponent, ChartAreaComponent,
     ChartLegendComponent, ChartTitleComponent, ColumnChartComponent,
     DonutChartComponent, HistogramChartComponent, LineChartComponent,
@@ -53,16 +59,16 @@ const CHARTS = [
     VerticalAxisComponent,
     HorizontalAxisComponent,
     BubbleChartComponent,
-    ScatterChartComponent,CandlestickChartComponent,CandlestickWaterfallChartComponent];
-
-@NgModule({
-  imports: [
-    CommonModule,
-    HttpModule,
-    FormsModule
-  ],
-  declarations: CHARTS,
-  exports: CHARTS
+    ScatterChartComponent,CandlestickChartComponent,CandlestickWaterfallChartComponent],
+  exports: [
+    AreaChartComponent, BarChartComponent, ChartAreaComponent,
+    ChartLegendComponent, ChartTitleComponent, ColumnChartComponent,
+    DonutChartComponent, HistogramChartComponent, LineChartComponent, PieChartComponent,
+    TimeLineChartComponent,ComboChartComponent,VerticalAxisComponent,
+    HorizontalAxisComponent,
+    BubbleChartComponent,
+    ScatterChartComponent,CandlestickChartComponent,CandlestickWaterfallChartComponent],
+  providers:[ChartLoaderService]
 })
 export class AmexioChartModule {
   static forRoot(): ModuleWithProviders {

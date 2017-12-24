@@ -30,6 +30,3 @@ Desktop.ini
 
 # Build files
 dist/*
-
-# Playground tmp files
-.playground
