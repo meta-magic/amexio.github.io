@@ -829,9 +829,11 @@ export class DataTableComponent implements OnInit, AfterContentInit, DoCheck, On
 
     getResponseData(httpResponse: any) {
         let responsedata = httpResponse;
-        const dr = this.dataReader.split('.');
-        for (let ir = 0; ir < dr.length; ir++) {
-            responsedata = responsedata[dr[ir]];
+        if(this.dataReader!=null){
+            const dr = this.dataReader.split('.');
+            for (let ir = 0; ir < dr.length; ir++) {
+                responsedata = responsedata[dr[ir]];
+            }
         }
         return responsedata;
     }
