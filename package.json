@@ -134,18 +134,9 @@
     ]
   },
   "commitplease": {
-    "style": "angular",
+    "style": "",
     "types": [
-      "feat",
-      "fix",
-      "docs",
-      "style",
-      "refactor",
-      "perf",
-      "test",
-      "chore",
-      "revert",
-      "demo"
+
     ],
     "scope": "\\S+.*"
   }
