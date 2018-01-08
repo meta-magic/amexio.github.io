@@ -1,0 +1,79 @@
+/*
+.navbar-wrapper {
+  position: fixed;
+  margin: 0;
+  right: 0;
+  left: 0;
+  top:0;
+  z-index: 1;
+  background: $menubarBGColor;
+  // color: white;
+  line-height: 1.5;
+}
+
+.navbarcontainer{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbaritem{
+  padding: 15px;
+  //color: $menubarColor;
+}
+
+.navbaritem a{
+  display: block;
+  color: $menubarColor;
+}
+
+
+.navbaritem .inputgroup label{
+  display: none;
+}
+
+.navbaritem .input-control{
+  padding: 0px;
+  border: none;
+  border-radius: 0;
+}
+*/
+
+.navbar-wrapper {
+  position: fixed;
+  margin: 0;
+  right: 0;
+  left: 0;
+  top:0;
+  z-index: 1;
+  background: $menubarBGColor;
+  // color: white;
+  line-height: 1.5;
+}
+
+.navbarcontainer{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbaritem{
+  padding: 15px;
+  //color: $menubarColor;
+}
+
+.navbaritem a{
+  display: block;
+  color: $menubarColor;
+}
+
+
+.navbaritem .inputgroup label{
+  display: none;
+}
+
+.navbaritem .input-control{
+  padding: 0px;
+  border: none;
+  border-radius: 0;
+}

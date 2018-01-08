@@ -12,13 +12,14 @@ import {AmexioTabPill} from "./tab/tab.pill.component";
 import {AmexioVerticalTabComponent} from "./tab/vertical-tab/vertical.tab.component";
 import {AmexioRightVerticalTabComponent} from "./tab/right-vertical-tab/right.vertical.component";
 import {AmexioFieldSetComponent} from "./fieldset/fieldset.component";
-import {AmexioAccordionTabComponent} from "./accordion/accordion.component";
-import {AmexioAccordionComponent} from "./accordion/accordion.item";
-import {AmexioWindowPaneComponent} from "./window/window.pane.component";
-import {AmexioWindowBodyComponent} from "./window/pane.action.body";
-import {AmexioWindowFooterComponent} from "./window/pane.action.footer";
-import {AmexioWindowHeader} from "./window/pane.action.header";
+import {AmexioWindowBodyComponent} from "./panes/pane.action.body";
+import {AmexioWindowHeader} from "./panes/pane.action.header";
+import {AmexioWindowFooterComponent} from "./panes/pane.action.footer";
 import {AmexioCardComponent} from "./card/card.component";
+import {AmexioAccordionTabComponent} from "./accordion/accordion.pane";
+import {AmexioAccordionComponent} from "./accordion/accordion.component";
+import {AmexioRowComponent} from "./rows/row.component";
+import {AmexioColumnComponent} from "./columns/column.component";
 
 export * from '../services/data/common.data.service';
 export * from '../services/device/device.query.service';
@@ -31,15 +32,13 @@ export * from './tab/right-vertical-tab/right.vertical.component';
 
 export * from './fieldset/fieldset.component';
 
-export * from './accordion/accordion.component';
-export * from './accordion/accordion.item';
-
-export * from './window/window.pane.component';
-export * from './window/pane.action.body';
-export * from './window/pane.action.footer';
-export * from './window/pane.action.footer';
-
+export * from './panes/pane.action.footer';
+export * from './panes/pane.action.body';
+export * from './panes/pane.action.header';
 export * from './card/card.component';
+
+export * from './rows/row.component';
+export * from './columns/column.component';
 
 const LAYOUT_COMPONENTS = [
   AmexioTabComponent,
@@ -47,13 +46,14 @@ const LAYOUT_COMPONENTS = [
   AmexioVerticalTabComponent,
   AmexioRightVerticalTabComponent,
   AmexioFieldSetComponent,
-  AmexioAccordionTabComponent,
-  AmexioAccordionComponent,
-  AmexioWindowPaneComponent,
   AmexioWindowBodyComponent,
   AmexioWindowFooterComponent,
   AmexioWindowHeader,
-  AmexioCardComponent
+  AmexioCardComponent,
+  AmexioAccordionTabComponent,
+  AmexioAccordionComponent,
+  AmexioRowComponent,
+  AmexioColumnComponent
 ];
 
 @NgModule({

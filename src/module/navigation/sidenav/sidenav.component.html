@@ -1,25 +1,28 @@
-<div>
-  <div *ngIf="(position !='relative' && (smalldevice && !sidenavexpandedinsmalldevice))" [ngClass]="{'left':(position=='left' && position!='relative'),'right':(position=='right' && position!='relative')}" style="padding:10px; position: absolute;" (click)="toggleSideNav()">
-    <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
-  </div>
-  <div class="sidenav"  [ngStyle]="{'width':width}" [ngClass]="{'left':(position=='left' && position!='relative'),'right':(position=='right' && position!='relative')}">
-    <ul>
-      <li>
-        <div *ngIf="sidenavtitle" class="title">
-          <span><span>{{sidenavtitle}}</span></span>
-          <span *ngIf="sidenavexpandedinsmalldevice" style="padding-right: 10px; float: right" (click)="close()"><i class="fa fa-window-close" aria-hidden="true"></i></span>
-        </div>
-      </li>
-      <li  *ngFor="let node of data">
-        <div class="headernode" (click)="onClick(node)">
-          <span><span>{{node.text}}</span></span>
-          <span style="padding-right: 10px; float: right" *ngIf="node.expand"><i class="fa fa-angle-up" aria-hidden="true"></i></span>
-          <span style="padding-right: 10px;float: right" *ngIf="!node.expand"><i class="fa fa-angle-down" aria-hidden="true"></i></span>
-        </div>
-        <amexio-sidenav-node  *ngIf="node.expand && node.children && (node.children.length>0)" [data]="node.children" (nodeclick)="onNodeClick($event)">
-        </amexio-sidenav-node>
-        <div class="border"></div>
-      </li>
-    </ul>
-  </div>
+<div *ngIf="(position !='relative' && (smalldevice && !sidenavexpandedinsmalldevice))" [ngClass]="{'left':(position=='left' && position!='relative'),'right':(position=='right' && position!='relative')}" style="padding:10px; position: absolute;" (click)="toggleSideNav()">
+  <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+</div>
+<div class="sidenav"  [ngStyle]="{'width':width}" [ngClass]="{'left':(position=='left' && position!='relative'),'right':(position=='right' && position!='relative')}">
+  <ul>
+    <li>
+      <div *ngIf="sidenavtitle" class="title">
+        <ng-container *ngIf="titleimage">
+          <p><img [attr.src]="titleimage" style="width: 60px;height: 60px;padding-left: 80px;"/></p>
+        </ng-container>
+        <ng-container *ngIf="sidenavtitle">
+          <p>{{sidenavtitle}}</p>
+        </ng-container>
+        <span *ngIf="sidenavexpandedinsmalldevice" style="padding-right: 10px; float: right" (click)="close()"><i class="fa fa-window-close" aria-hidden="true"></i></span>
+      </div>
+    </li>
+    <li  *ngFor="let node of data">
+      <div class="headernode" (click)="onClick(node)">
+        <span><span>{{node.text}}</span></span>
+        <span style="padding-right: 10px; float: right" *ngIf="node.expand"><i class="fa fa-angle-up" aria-hidden="true"></i></span>
+        <span style="padding-right: 10px;float: right" *ngIf="!node.expand"><i class="fa fa-angle-down" aria-hidden="true"></i></span>
+      </div>
+      <amexio-sidenav-node  *ngIf="node.expand && node.children && (node.children.length>0)" [data]="node.children" (nodeclick)="onClick($event)">
+      </amexio-sidenav-node>
+      <div class="border"></div>
+    </li>
+  </ul>
 </div>

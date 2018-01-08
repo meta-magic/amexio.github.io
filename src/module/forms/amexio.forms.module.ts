@@ -20,10 +20,6 @@ import {AmexioRatingComponent} from "./rating/rating.component";
 import {AmexioButtonComponent} from "./buttons/button.component";
 import {AmexioButtonGroupComponent} from "./buttongroup/button.group.component";
 import {AmexioCheckBoxGroupComponent} from "./checkbox-group/checkbox.group.component";
-import {AmexioSpiltButtonDropdownComponent} from "./button-dropdown/split.button.dropdown";
-import {AmexioButtonDropdownComponent} from "./button-dropdown/button.dropdown";
-import {AmexioButtonDropDownItemComponent} from "./button-dropdown/button.dropdown.item";
-
 
 export * from '../services/data/common.data.service';
 
@@ -41,10 +37,7 @@ const FORM_COMPONENTS = [
   AmexioRatingComponent,
   AmexioButtonComponent,
   AmexioButtonGroupComponent,
-  AmexioCheckBoxGroupComponent,
-  AmexioSpiltButtonDropdownComponent,
-  AmexioButtonDropdownComponent,
-  AmexioButtonDropDownItemComponent
+  AmexioCheckBoxGroupComponent
 ];
 
 @NgModule({

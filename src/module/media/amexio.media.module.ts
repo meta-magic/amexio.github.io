@@ -8,14 +8,12 @@ import {CommonDataService} from "../services/data/common.data.service";
 import {HttpModule} from "@angular/http";
 import {DeviceQueryService} from "../services/device/device.query.service";
 import {AmexioVideoPlayerComponent} from "./video-player/video.player.component";
-import {AmexioImageComponent} from "./image/image.component";
 
 export * from './video-player/video.player.component';
 
 
 const MEDIA_COMPONENTS = [
-  AmexioVideoPlayerComponent,
-  AmexioImageComponent
+  AmexioVideoPlayerComponent
 ];
 
 @NgModule({

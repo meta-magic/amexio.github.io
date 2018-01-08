@@ -30,6 +30,8 @@ export class AmexioSideNav  implements  OnInit{
 
   @Input() position: string;
 
+  @Input() titleimage: string;
+
   @Output()
   nodeClick: any = new EventEmitter<any>();
 
@@ -56,7 +58,6 @@ export class AmexioSideNav  implements  OnInit{
      this.matchMediaService.OnPhone(
      function (mediaQueryList: MediaQueryList)
      {
-     debugger;
      that.handleDeviceSettings(false);
      }
      );
@@ -97,6 +98,9 @@ export class AmexioSideNav  implements  OnInit{
 
   onClick(node:any){
     node.expand=!node.expand;
+    if(node.hasOwnProperty('link')){
+      this.nodeClick.emit(node);
+    }
   }
 
   setData(httpResponse : any) {
@@ -161,7 +165,6 @@ export class AmexioSideNav  implements  OnInit{
       }else{
         this.width = "20%";
         this.smalldevice = false;
-        console.log(this.smalldevice);
       }
     }
   }

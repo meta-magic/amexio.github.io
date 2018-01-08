@@ -1,5 +1,5 @@
 fieldset {
-  border: 2px solid #ccc;
+  border: $fieldSetBorderSize solid $fieldSetBorderColor;
   border-radius: 2px;
 }
 
@@ -8,7 +8,6 @@ fieldset {
   padding: 5px 10px;
   font-size: 13px;
   margin-left: 20px;
-  padding: 5px;
   box-shadow: none;
   border: 0;
   font-weight: bold;

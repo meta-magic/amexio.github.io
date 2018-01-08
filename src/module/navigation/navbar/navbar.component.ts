@@ -4,12 +4,13 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CommonDataService} from "../../services/data/common.data.service";
 import {DeviceQueryService} from "../../services/device/device.query.service";
+
 @Component({
   selector: 'amexio-nav',
-  templateUrl : './navbar.component.html',
-  styleUrls : ['./navbar.component.scss']
+  templateUrl : 'navbar.component.html',
+  styleUrls : ['navbar.component.scss']
 })
-export class AmexioNavbarComponent implements  OnInit{
+export class AmexioMenuBarComponent implements  OnInit{
 
 
   @Input() data : any[];
@@ -78,7 +79,7 @@ export class AmexioNavbarComponent implements  OnInit{
     else {
       responsedata = httpResponse;
     }
-    this.data = responsedata;
+    this.data = httpResponse;
   }
 
 }

@@ -56,8 +56,6 @@ $tabActiveBorder : red;
 $tabActiveBGColor : $borderColor;
 $tabActiveBorderSize : 3px;
 
-$tabActiveBorderSize : 3px;
-
 $menubarBGColor : #3498DB;
 $menubarColor : white;
 $menuHoverColor: orange;
@@ -104,20 +102,24 @@ body {
 
 @import "sidenav.scss";
 
-@import "media.scss";
-
-@import "tab.scss";
-
-@import "fieldset.scss";
-
-@import "dockbar.scss";
-
 @import "accordion.scss";
 
 @import "nav.scss";
+
+@import "navbar.scss";
+
+@import "tab.scss";
+
+@import "steps.scss";
+
+@import "notification.scss";
 
 @import "cards.scss";
 
 @import "window.scss";
 
-@import "notification.scss";
+@import "carousel.scss";
+
+.material-icons{
+  font-size: inherit !important;
+}
