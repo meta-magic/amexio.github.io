@@ -1,4 +1,3 @@
-/*
 .navbar-wrapper {
   position: fixed;
   margin: 0;
@@ -7,73 +6,67 @@
   top:0;
   z-index: 1;
   background: $menubarBGColor;
-  // color: white;
   line-height: 1.5;
-}
-
-.navbarcontainer{
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.navbaritem{
-  padding: 15px;
-  //color: $menubarColor;
-}
-
-.navbaritem a{
-  display: block;
   color: $menubarColor;
+
+  .navbar-mobile-bars{
+    display: none;
+  }
 }
 
-
-.navbaritem .inputgroup label{
-  display: none;
-}
-
-.navbaritem .input-control{
-  padding: 0px;
-  border: none;
-  border-radius: 0;
-}
-*/
-
-.navbar-wrapper {
-  position: fixed;
-  margin: 0;
-  right: 0;
-  left: 0;
-  top:0;
-  z-index: 1;
-  background: $menubarBGColor;
-  // color: white;
-  line-height: 1.5;
-}
-
-.navbarcontainer{
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.navbaritem{
-  padding: 15px;
-  //color: $menubarColor;
-}
-
-.navbaritem a{
-  display: block;
+.nav-bar {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   color: $menubarColor;
+  padding: 0px 10px;
+
+  .nav-item{
+    display: flex;
+
+    .menu{
+      padding: 0px 10px 0px 10px;
+
+    }
+    .submenus{
+      height: auto;
+      max-height: 510px;
+      overflow: auto;
+      box-shadow: 2px 1px 1px  black;
+      box-sizing: border-box;
+      background: $subMenuCotentBGColor;
+    }
+
+
+  }
 }
 
 
-.navbaritem .inputgroup label{
-  display: none;
-}
+@media only screen and (max-width: 500px) {
 
-.navbaritem .input-control{
-  padding: 0px;
-  border: none;
-  border-radius: 0;
+  .navbar-wrapper {
+    .navbar-mobile-bars{
+      display: block;
+      padding: 10px 10px;
+    }
+
+  }
+
+  .nav-bar{
+    flex-direction: column;
+
+    .nav-item{
+      flex-direction: column;
+      padding-bottom: 10px;
+
+      .menu{
+        padding-bottom: 10px;
+      }
+    }
+    .menu-mobile-bars{
+      display: none;
+      cursor: pointer;
+    }
+  }
 }

@@ -68,7 +68,37 @@ $cardFooterColor: lighten($borderColor,10%);
 
 $toastBGColor : $primaryBGColor;
 $toastColor : $primaryColor;
+/* You can add global styles to this file, and also import other style files */
 
+.float-right {
+  float: right;
+}
+
+.float-left {
+  float: left;
+}
+
+
+$borderLayoutBorder : 1px;
+$borderLayoutBorderColor : red;
+
+$menubarBGColor : black;
+$menubarColor : white;
+$menuHoverColor: orange;
+
+$subMenuCotentBGColor : white;
+$subMenuCotentColor : #777;
+$menuborderColor:#ced4da;
+$menuborderSize:1px;
+
+/*
+@import "borderlayout.scss";
+@import "rowcol.scss";
+@import "menubar.scss";
+@import "navbar.scss";
+*/
+
+@import "navbar.scss";
 body {
   background: $backgroundcolor;
   min-height: 100%;
