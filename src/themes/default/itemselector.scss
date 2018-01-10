@@ -1,0 +1,62 @@
+
+.left-card{
+  width: 40%;
+  height: 50px;
+  display: table-cell;
+  vertical-align: top;
+
+}
+
+.icon-card-center{
+  width: 10%;
+  display: table-cell;
+  vertical-align: top;
+  padding-left: 23px;
+
+}
+
+.icon-bar{
+  width: 50px;
+  background-color: #ced4da;
+}
+
+.icon-bar div {
+  display: block;
+  text-align: center;
+  padding: 16px;
+  transition: all 0.3s ease;
+  color: white;
+}
+
+.icon-bar div:hover {
+  cursor : pointer;
+  background-color: #000;
+}
+
+.right-card{
+  width: 40%;
+  height: 50px;
+  display: table-cell;
+  vertical-align: top;
+
+}
+
+/** List Styling **/
+.list{
+  list-style-type: none;
+}
+
+.list li {
+  padding: 8px 1px;
+  border-bottom: 1px solid #ddd;
+  width: 80%;
+}
+
+li {
+  display: list-item;
+  text-align: -webkit-match-parent;
+}
+
+.list-item-active{
+  background-color: #cecece;
+}
