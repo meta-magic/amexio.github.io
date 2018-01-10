@@ -24,6 +24,7 @@ import {AmexioWidgetModule} from "amexio-ng-extensions";
         AppRoutingModule,
         AppSharedModule,
         HomeModule,
+      AmexioWidgetModule
 
     ],
     providers: [],
