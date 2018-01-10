@@ -63,8 +63,12 @@ $subMenuCotentBGColor : white;
 $subMenuCotentColor : #777;
 
 $modalBGColor: lighten(black,50%);
-$cardHeaderColor: lighten($borderColor,10%);
-$cardFooterColor: lighten($borderColor,10%);
+
+$cardHeaderBGColor: #455A64;
+$cardHeaderColor: #FFFFFF;
+$cardFooterBGColor: #455A64;
+$cardFooterColor: #FFFFFF;
+$cardBorderColor: $borderColor;
 
 $toastBGColor : $primaryBGColor;
 $toastColor : $primaryColor;

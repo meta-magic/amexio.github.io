@@ -4,7 +4,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  border: $borderSize solid $borderColor;
+  border: $borderSize solid $cardBorderColor;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14);
 }
 
@@ -16,16 +16,22 @@
 }
 
 .card-header{
-  background-color: $cardHeaderColor;
-  border-bottom: $borderSize solid $borderColor;
   display: flex;
-  padding: 0px 10px;
+  padding: 20px 24px;
+  background: $cardHeaderBGColor;
+  border-bottom: $borderSize solid $cardBorderColor;
+  font-size: 20px;
+  color: $cardHeaderColor;
+  font-weight: 300;
+  text-transform: capitalize;
+  overflow: auto;
 }
 
 
 .card-footer{
   display: flex;
-  background-color: $cardFooterColor;
-  border-top: $borderSize solid $borderColor;
+  background-color: $cardFooterBGColor;
+  color: $cardFooterColor;
+  border-top: $borderSize solid $cardBorderColor;
 }
 
