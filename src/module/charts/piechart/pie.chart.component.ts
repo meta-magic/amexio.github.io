@@ -130,9 +130,9 @@ declare var google: any;
 })
 export class PieChartComponent implements AfterContentInit,OnInit {
 
-  private options;
-  private pieData;
-  private chart;
+  private options : any;
+  private pieData : any;
+  private chart : any;
 
   id: any;
 
@@ -218,7 +218,7 @@ export class PieChartComponent implements AfterContentInit,OnInit {
     google.visualization.events.addListener(this.chart, 'click', this.onClick);
   }
 
-  onClick(e) {
+  onClick(e : any) {
   }
 
   //after content init for inner directive is run
@@ -250,7 +250,7 @@ export class PieChartComponent implements AfterContentInit,OnInit {
     );
   }
 
-  onResize(event){
+  onResize(event : any){
     this.drawChart();
   }
 }

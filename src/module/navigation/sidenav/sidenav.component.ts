@@ -98,9 +98,7 @@ export class AmexioSideNav  implements  OnInit{
 
   onClick(node:any){
     node.expand=!node.expand;
-    if(node.hasOwnProperty('link')){
-      this.nodeClick.emit(node);
-    }
+    this.nodeClick.emit(node);
   }
 
   setData(httpResponse : any) {

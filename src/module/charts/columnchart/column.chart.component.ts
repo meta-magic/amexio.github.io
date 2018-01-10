@@ -132,9 +132,9 @@ declare var google: any;
 
 export class ColumnChartComponent implements AfterContentInit {
 
-  private options;
-  private columnData;
-  private chart;
+  private options : any;
+  private columnData : any;
+  private chart : any;
 
   id: any;
 
@@ -210,7 +210,7 @@ export class ColumnChartComponent implements AfterContentInit {
     google.visualization.events.addListener(this.chart, 'click', this.onClick);
   }
 
-  onClick(e){
+  onClick(e : any){
 
   }
   //after content init for inner directive is run
@@ -241,7 +241,7 @@ export class ColumnChartComponent implements AfterContentInit {
     //remove first object of array
     dupArray.shift();
 
-    labelObject.forEach((dataTypeObject) => {
+    labelObject.forEach((dataTypeObject : any) => {
       data.addColumn(dataTypeObject.dataType, dataTypeObject.label);
     });
     let finalArray: any[] = [];
@@ -262,7 +262,7 @@ export class ColumnChartComponent implements AfterContentInit {
       }
     );
   }
-  onResize(event){
+  onResize(event : any){
     this.drawChart();
   }
 }
