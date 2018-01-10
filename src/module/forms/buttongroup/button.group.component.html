@@ -1,4 +1,4 @@
 
 <div class="btn-group">
-  <button class="button button-default button-primary" *ngFor="let button of buttons">{{button.label}}</button>
+  <button [ngClass]="{'button-default': size=='default' || size ==null,'button-small': size=='small','button-large' : size=='large','button-primary' : type == 'primary' || type == null,'button-success' : type == 'success',' button-danger' : type=='danger','button-warning' : type=='warning'}" *ngFor="let button of buttons">{{button.label}}</button>
 </div>

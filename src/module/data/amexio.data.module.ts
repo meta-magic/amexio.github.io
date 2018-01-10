@@ -7,6 +7,7 @@ import {AmexioTreeViewComponent} from "./tree/tree.component";
 import {AmexioListBoxComponent} from "./listbox/listbox.component";
 import {AmexioDatagridComponent} from "./datagrid/datagrid.component";
 import {DataGridFilterComponent} from "./datagrid/datagrid.filter.component";
+import {AmexioLayoutModule} from "../layout/amexio.layout.module";
 
 export * from '../services/data/common.data.service';
 export * from './listbox/listbox.component';
@@ -23,7 +24,8 @@ const DATA_COMPONENTS = [
   imports: [
     CommonModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    AmexioLayoutModule
   ],
   exports: DATA_COMPONENTS,
   declarations: DATA_COMPONENTS

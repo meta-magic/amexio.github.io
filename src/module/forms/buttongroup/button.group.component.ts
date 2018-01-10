@@ -10,6 +10,8 @@ export class AmexioButtonGroupComponent implements AfterContentInit{
 
   @Input()    label: string;
 
+  @Input()    size : string;
+
   @ContentChildren(AmexioButtonComponent)   btns : QueryList<AmexioButtonComponent>;
 
   buttons : AmexioButtonComponent[] = [];
