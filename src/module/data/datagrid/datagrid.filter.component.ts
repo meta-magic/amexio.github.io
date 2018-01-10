@@ -134,7 +134,7 @@ export class DataGridFilterComponent implements OnInit {
       filter['key'] = col.dataIndex;
       filter['value'] = this.filterValue;
       filter['type'] = col.dataType;
-      this.filterOptions.forEach((opt) => {
+      this.filterOptions.forEach((opt : any) => {
         if (opt.checkedStatus === 'fa fa-check') {
           if (col.dataType === opt.type) {
             filter['filter'] = opt.value;
