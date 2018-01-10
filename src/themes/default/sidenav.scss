@@ -6,6 +6,7 @@
   box-shadow: 0 0 5px 0 $borderColor;
   background-color: $sidenavBGColor;
   color: $sidenavColor;
+  z-index: 1;
 }
 
 .left {
