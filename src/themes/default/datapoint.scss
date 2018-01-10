@@ -1,0 +1,33 @@
+
+.datapoints{
+  background: $datapointBGColor;
+  color: $datapointColor;
+  font-size: 125%;
+  /* Border */
+  border-radius: 0px;
+  border: 1px solid $datapointBorderColor;
+  padding: 0px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+
+
+  .title{
+    font-size: 36px;
+    font-weight: bold;
+    color: $datapointColor;
+  }
+  .footer{
+    /* Background */
+    background-color: $datapointColor;
+    color: $datapointBGColor;
+    border-radius: 0px;
+    font-size: 20px;
+    padding: 5px;
+    margin: 1px;
+  }
+  .visual{
+    padding: 5px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+}

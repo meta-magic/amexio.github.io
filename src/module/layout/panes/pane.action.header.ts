@@ -4,13 +4,13 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
- selector: 'amexio-pane-header',
+ selector: 'amexio-header',
  template: `
   <ng-content></ng-content>
  `
 })
 
-export class AmexioWindowHeader implements OnInit {
+export class AmexioHeaderComponent implements OnInit {
  constructor() { }
 
  ngOnInit() { }

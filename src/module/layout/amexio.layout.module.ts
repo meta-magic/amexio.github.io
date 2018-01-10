@@ -12,9 +12,6 @@ import {AmexioTabPill} from "./tab/tab.pill.component";
 import {AmexioVerticalTabComponent} from "./tab/vertical-tab/vertical.tab.component";
 import {AmexioRightVerticalTabComponent} from "./tab/right-vertical-tab/right.vertical.component";
 import {AmexioFieldSetComponent} from "./fieldset/fieldset.component";
-import {AmexioWindowBodyComponent} from "./panes/pane.action.body";
-import {AmexioWindowHeader} from "./panes/pane.action.header";
-import {AmexioWindowFooterComponent} from "./panes/pane.action.footer";
 import {AmexioCardComponent} from "./card/card.component";
 import {AmexioAccordionTabComponent} from "./accordion/accordion.pane";
 import {AmexioAccordionComponent} from "./accordion/accordion.component";
@@ -22,6 +19,9 @@ import {AmexioRowComponent} from "./rows/row.component";
 import {AmexioColumnComponent} from "./columns/column.component";
 import {AmexioBorderLayoutItemComponent} from "./border/borderlayoutitem.component";
 import {AmexioBorderLayoutComponent} from "./border/borderlayout.component";
+import {AmexioHeaderComponent} from "./panes/pane.action.header";
+import {AmexioFooterComponent} from "./panes/pane.action.footer";
+import {AmexioBodyComponent} from "./panes/pane.action.body";
 
 export * from '../services/data/common.data.service';
 export * from '../services/device/device.query.service';
@@ -51,9 +51,9 @@ const LAYOUT_COMPONENTS = [
   AmexioVerticalTabComponent,
   AmexioRightVerticalTabComponent,
   AmexioFieldSetComponent,
-  AmexioWindowBodyComponent,
-  AmexioWindowFooterComponent,
-  AmexioWindowHeader,
+  AmexioBodyComponent,
+  AmexioFooterComponent,
+  AmexioHeaderComponent,
   AmexioCardComponent,
   AmexioAccordionTabComponent,
   AmexioAccordionComponent,

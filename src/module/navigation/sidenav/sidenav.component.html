@@ -1,4 +1,4 @@
-<div *ngIf="(position !='relative' && (smalldevice && !sidenavexpandedinsmalldevice))" [ngClass]="{'left':(position=='left' && position!='relative'),'right':(position=='right' && position!='relative')}" style="padding:10px; position: absolute;" (click)="toggleSideNav()">
+<div *ngIf="(position !='relative' && (smalldevice && !sidenavexpandedinsmalldevice))" [ngClass]="{'left':(position=='left' && position!='relative'),'right':(position=='right' && position!='relative')}" style="padding:10px; position: relative;" (click)="toggleSideNav()">
   <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
 </div>
 <div class="sidenav"  [ngStyle]="{'width':width}" [ngClass]="{'left':(position=='left' && position!='relative'),'right':(position=='right' && position!='relative')}">

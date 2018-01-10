@@ -4,11 +4,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
- selector: 'amexio-pane-action',
+ selector: 'amexio-action',
  template: '<ng-content></ng-content>'
 })
 
-export class AmexioWindowFooterComponent implements OnInit {
+export class AmexioFooterComponent implements OnInit {
  constructor() { }
 
  ngOnInit() { }

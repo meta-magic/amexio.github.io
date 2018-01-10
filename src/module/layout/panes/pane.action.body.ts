@@ -4,11 +4,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
- selector: 'amexio-pane-body',
+ selector: 'amexio-body',
  template: '<ng-content></ng-content>'
 })
 
-export class AmexioWindowBodyComponent implements OnInit {
+export class AmexioBodyComponent implements OnInit {
  constructor() { }
 
  ngOnInit() { }

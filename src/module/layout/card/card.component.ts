@@ -14,13 +14,13 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
   template: `    
     <div class="card-container">
       <header class="card-header" *ngIf="enableHeader" [ngClass]="{'flex-start':(headeralign=='left'),'flex-end':(headeralign=='right'),'flex-center':(headeralign=='center')}">
-        <ng-content select="amexio-pane-header"></ng-content>
+        <ng-content select="amexio-header"></ng-content>
       </header>
       <div>
-        <ng-content select="amexio-pane-body"></ng-content>
+        <ng-content select="amexio-body"></ng-content>
       </div>
       <footer  class="card-footer" *ngIf="enableFooter"  [ngClass]="{'flex-start':(footeralign=='left'),'flex-end':(footeralign=='right'),'flex-center':(footeralign=='center')}">
-        <ng-content select="amexio-pane-action"></ng-content>
+        <ng-content select="amexio-action"></ng-content>
       </footer>
     </div>
 

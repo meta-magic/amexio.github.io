@@ -12,7 +12,7 @@ import {
   selector: 'amexio-datapoints',
   template: `      
       
-  <div  class="amexio-datapoints">
+  <div  class="datapoints">
     <table width="100%"  [style.background-color]="backgroundColor" [style.color]="fontColor">
       <tr *ngIf="north">
         <td [attr.colspan]="colspan">
