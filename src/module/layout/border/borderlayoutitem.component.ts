@@ -11,7 +11,7 @@ import {Component, Input, OnInit} from '@angular/core';
     '[class]': 'positionClass'
   },
 })
-export class BorderLayoutItemComponent implements  OnInit{
+export class AmexioBorderLayoutItemComponent implements  OnInit{
 
 
   @Input() position : string;

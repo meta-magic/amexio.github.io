@@ -3,18 +3,18 @@
  */
 
 import {Component, ContentChildren, OnInit, QueryList} from '@angular/core';
-import {BorderLayoutItemComponent} from "./borderlayoutitem.component";
+import {AmexioBorderLayoutItemComponent} from "./borderlayoutitem.component";
 
 @Component({
   selector: 'amexio-borderlayout',
   templateUrl: './borderlayout.component.html'
 })
-export class BorderLayoutComponent implements OnInit{
+export class AmexioBorderLayoutComponent implements OnInit{
 
 
-  @ContentChildren(BorderLayoutItemComponent) layout :QueryList<BorderLayoutItemComponent>;
+  @ContentChildren(AmexioBorderLayoutItemComponent) layout :QueryList<AmexioBorderLayoutItemComponent>;
 
-  layoutitems : BorderLayoutItemComponent[];
+  layoutitems : AmexioBorderLayoutItemComponent[];
 
   borderclass : string ="borderlayout-container";
 
