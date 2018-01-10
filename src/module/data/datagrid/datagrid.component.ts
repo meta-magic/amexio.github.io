@@ -73,7 +73,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
    
 
    <div style="text-align: center">
-     <amexio-paginator [pages]="50" [rows]="pageSize"></amexio-paginator>
+       <amexio-paginator [pages]="50" [rows]="pageSize"></amexio-paginator>
    </div>
  -->
    <div>
@@ -204,7 +204,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
 
    <div>
      <div class="footer">
-       <ng-container *ngIf="pageSize">
+       <ng-container *ngIf="pageSize"> 
          <ng-container *ngIf="totalPages!=null">
            <amexio-paginator [pages]="totalPages" [rows]="pageSize" (onPageChange)="loadPageData($event)"></amexio-paginator>
          </ng-container>  
