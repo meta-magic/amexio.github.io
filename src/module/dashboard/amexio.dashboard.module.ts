@@ -20,7 +20,7 @@ export * from './datapoints/east.component';
 export * from  './datapoints/north.component';
 export * from './datapoints/south.component';
 export * from './datapoints/west.component';
-export * from 'chart.loader.service';
+export * from './chart.loader.service';
 
 const DASHBOARD = [
   DashBoardTitle,
