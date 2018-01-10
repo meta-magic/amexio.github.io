@@ -131,9 +131,9 @@ declare var google: any;
 
 export class DonutChartComponent  implements AfterContentInit {
 
-  private options;
-  private donutData;
-  private chart;
+  private options : any;
+  private donutData : any;
+  private chart : any;
 
   id: any;
 
@@ -208,7 +208,7 @@ export class DonutChartComponent  implements AfterContentInit {
     google.visualization.events.addListener(this.chart, 'click', this.onClick);
   }
 
-  onClick(e) {
+  onClick(e : any) {
 
   }
 
@@ -239,7 +239,7 @@ export class DonutChartComponent  implements AfterContentInit {
       }
     );
   }
-  onResize(event){
+  onResize(event : any){
     this.drawChart();
   }
 }

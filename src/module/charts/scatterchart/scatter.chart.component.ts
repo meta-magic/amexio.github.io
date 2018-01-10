@@ -133,9 +133,9 @@ declare var google: any;
 
 export class ScatterChartComponent  implements AfterContentInit ,OnInit{
 
-  private options;
-  private scatterData;
-  private chart;
+  private options : any;
+  private scatterData : any;
+  private chart: any;
 
   id: any;
 
@@ -223,7 +223,7 @@ export class ScatterChartComponent  implements AfterContentInit ,OnInit{
     google.visualization.events.addListener(this.chart, 'click', this.click)
   }
 
-  click(e) {
+  click(e : any) {
 
   }
 
@@ -262,7 +262,7 @@ export class ScatterChartComponent  implements AfterContentInit ,OnInit{
       }
     );
   }
-  onResize(event){
+  onResize(event: any){
     this.drawChart();
   }
 }

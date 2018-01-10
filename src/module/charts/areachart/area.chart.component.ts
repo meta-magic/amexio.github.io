@@ -131,9 +131,9 @@ declare var google: any;
 
 export class AreaChartComponent  implements AfterContentInit ,OnInit{
 
-  private options;
-  private areaData;
-  private chart;
+  private options : any;
+  private areaData : any;
+  private chart : any;
   hasLoaded:boolean;
   id: any;
 
@@ -205,7 +205,7 @@ export class AreaChartComponent  implements AfterContentInit ,OnInit{
     google.visualization.events.addListener(this.chart, 'click', this.click)
   }
 
-  click(e) {
+  click(e : any) {
 
   }
 
@@ -236,7 +236,7 @@ export class AreaChartComponent  implements AfterContentInit ,OnInit{
       }
     );
   }
-  onResize(event){
+  onResize(event : any){
     this.drawChart();
   }
 }

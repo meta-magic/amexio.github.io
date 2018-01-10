@@ -13,13 +13,13 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
   selector: 'amexio-card',
   template: `    
     <div class="card-container">
-      <header class="card-header" [ngClass]="{'flex-start':(headeralign=='left'),'flex-end':(headeralign=='right'),'flex-center':(headeralign=='center')}">
+      <header class="card-header" *ngIf="enableHeader" [ngClass]="{'flex-start':(headeralign=='left'),'flex-end':(headeralign=='right'),'flex-center':(headeralign=='center')}">
         <ng-content select="amexio-pane-header"></ng-content>
       </header>
       <div>
         <ng-content select="amexio-pane-body"></ng-content>
       </div>
-      <footer  class="card-footer"  [ngClass]="{'flex-start':(footeralign=='left'),'flex-end':(footeralign=='right'),'flex-center':(footeralign=='center')}">
+      <footer  class="card-footer" *ngIf="enableFooter"  [ngClass]="{'flex-start':(footeralign=='left'),'flex-end':(footeralign=='right'),'flex-center':(footeralign=='center')}">
         <ng-content select="amexio-pane-action"></ng-content>
       </footer>
     </div>
@@ -30,6 +30,11 @@ export class AmexioCardComponent implements  OnInit{
 
 
   @Input() headeralign: string;
+
+  @Input() enableHeader : boolean;
+
+  @Input() enableFooter : boolean;
+
   @Input() footeralign: string;
 
 

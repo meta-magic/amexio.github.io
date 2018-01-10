@@ -3,7 +3,7 @@
  */
 import {EventEmitter, Injectable} from '@angular/core';
 import {Observable} from "rxjs/Observable";
-declare var google;
+declare var google : any;
 @Injectable()
 export class MapLoaderService {
     private chartPackage: { [id: string]: string; } = {
