@@ -44,7 +44,7 @@ export class AmexioAccordionTabComponent implements OnInit {
   }
 
   onTabClick(btn : any){
-    btn.classList.toggle('active');
+    btn.classList.toggle('active-accordion');
     let panel = btn.nextElementSibling;
     // let icon = btn.children[0].children[0];
 

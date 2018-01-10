@@ -133,9 +133,9 @@ declare var google: any;
 
 export class HistogramChartComponent implements AfterContentInit ,OnInit{
 
-  private options;
-  private histogramData;
-  private chart;
+  private options : any;
+  private histogramData : any;
+  private chart : any;
 
   hasLoaded:boolean;
 
@@ -210,7 +210,7 @@ export class HistogramChartComponent implements AfterContentInit ,OnInit{
     google.visualization.events.addListener(this.chart, 'click', this.onClick);
   }
 
-  onClick(e){
+  onClick(e : any){
 
   }
   //after content init for inner directive is run

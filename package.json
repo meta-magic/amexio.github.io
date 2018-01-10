@@ -132,12 +132,5 @@
       "@angular/animations",
       "@types/jasmine"
     ]
-  },
-  "commitplease": {
-    "style": "",
-    "types": [
-
-    ],
-    "scope": "\\S+.*"
   }
 }
