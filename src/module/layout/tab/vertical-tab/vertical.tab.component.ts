@@ -6,7 +6,7 @@
 
 import {
   AfterContentInit,
-  AfterViewInit, Component, ContentChildren, ElementRef, Input, OnInit, QueryList, Renderer2,
+  AfterViewInit, Component, ContentChildren, ElementRef, EventEmitter, Input, OnInit, Output, QueryList, Renderer2,
   ViewChild
 } from '@angular/core';
 import {AmexioTabPill} from "../tab.pill.component";
@@ -21,6 +21,8 @@ export class AmexioVerticalTabComponent  implements  OnInit, AfterViewInit,After
   @ViewChild('tab', { read: ElementRef }) public tabs: ElementRef;
 
   @ContentChildren(AmexioTabPill)  queryTabs: QueryList<AmexioTabPill>;
+
+  @Output() activatedTab: any = new EventEmitter<any>();
 
   tabCollection: AmexioTabPill[];
 
@@ -45,6 +47,7 @@ export class AmexioVerticalTabComponent  implements  OnInit, AfterViewInit,After
     for(let i=0;i<this.tabCollection.length;i++){
       if(this.tabCollection[i]=== tab){
         this.tabCollection[i]['active'] = true;
+        this.activatedTab.emit(tab);
       }else{
         this.tabCollection[i]['active'] = false;
       }

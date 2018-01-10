@@ -1,7 +1,7 @@
 /**
  * Created by pratik on 8/12/17.
  */
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'amexio-tab',
