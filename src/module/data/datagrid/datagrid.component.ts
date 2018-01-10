@@ -334,9 +334,9 @@ export class AmexioDatagridComponent implements OnInit,AfterContentInit {
           this.setData(this.responseData);
         }
       );
-    } else if (this.data) {
+    } else if (this.dataTableBindData) {
       // this.previousValue = JSON.parse(JSON.stringify(this.data));
-      this.setData(this.data);
+      this.setData(this.dataTableBindData);
     }
   }
 
