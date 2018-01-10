@@ -1,11 +1,22 @@
-<div class="navbar-wrapper">
-  <div class="navbar-mobile-bars">
-    <i class="fa fa-bars fa-2x" (click)="toggleMenu()"></i>
+
+<nav class="navbar-container">
+
+  <div class="navbar-logo-unit">
+    <a class="fa fa-bars fa-1x navbar-mobile-bars" (click)="toggleMenu()"></a>
+    <a><img  *ngIf="logo" [attr.src]="logo" class="navbar-logo">{{title}}</a>
   </div>
 
   <ul class="nav-bar"  *ngIf="showmenu">
-    <li class="nav-item"> <ng-content select="[position-left]"></ng-content> </li>
-    <li class="nav-item"> <ng-content select="[position-center]"></ng-content>  </li>
-    <li class="nav-item"> <ng-content select="[position-right]"></ng-content>  </li>
+    <li class="nav-item">
+      <ng-content select="[position-left]"></ng-content>
+    </li>
+    <li class="nav-item">
+      <ng-content select="[position-center]"></ng-content>
+    </li>
+    <li class="nav-item">
+      <ng-content select="[position-right]"></ng-content>
+    </li>
   </ul>
-</div>
+
+
+</nav>

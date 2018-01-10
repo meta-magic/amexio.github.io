@@ -1,72 +1,78 @@
-.navbar-wrapper {
+
+.navbar-container
+{
+  width: 100%;
+  background-color: $navbarBGColor;
+  vertical-align: middle;
+  padding : 0px 15px;
+  box-shadow: 0px 0px 2px 2px $navbarBoxShadow;
   position: fixed;
-  margin: 0;
-  right: 0;
-  left: 0;
-  top:0;
-  z-index: 1;
-  background: $menubarBGColor;
-  line-height: 1.5;
-  color: $menubarColor;
+  z-index: 3;
 
-  .navbar-mobile-bars{
-    display: none;
-  }
-}
-
-.nav-bar {
-  list-style: none;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  color: $menubarColor;
-  padding: 0px 10px;
+  color: $navbarColor;
 
-  .nav-item{
-    display: flex;
+  .navbar-logo{ vertical-align:middle}
+  .navbar-logo-unit a{ color:#fff;vertical-align:middle}
 
-    .menu{
-      padding: 0px 10px 0px 10px;
+  .navbar-logo-unit{
+    font-size: 24px;
+    line-height:64px;
+    padding: 0px;
+  }
 
-    }
-    .submenus{
-      height: auto;
-      max-height: 510px;
-      overflow: auto;
-      box-shadow: 2px 1px 1px  black;
-      box-sizing: border-box;
-      background: $subMenuCotentBGColor;
-    }
-
+  .navbar-mobile-bars{
+    display: none;
+    cursor: pointer;
 
   }
+
+
 }
 
+.nav-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 25px;
+  vertical-align: bottom;
+  list-style: none;
 
-@media only screen and (max-width: 500px) {
-
-  .navbar-wrapper {
-    .navbar-mobile-bars{
-      display: block;
-      padding: 10px 10px;
-    }
-
+  .nav-item{
+    //padding-left: 15px;
   }
 
-  .nav-bar{
+
+}
+
+@media only screen and (max-width: 500px) {
+  .navbar-container{
     flex-direction: column;
 
-    .nav-item{
-      flex-direction: column;
-      padding-bottom: 10px;
+    .navbar-mobile-bars{
+      display: inline-block;
+    }
+  }
 
-      .menu{
-        padding-bottom: 10px;
-      }
+
+
+  .nav-bar{
+    display: block;
+    margin:0;
+    padding: 0px;
+  }
+  .nav-item{
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+
+    *{
+      padding-bottom:10px;
     }
-    .menu-mobile-bars{
-      display: none;
-      cursor: pointer;
-    }
+  }
+  .navbar-mobile-bars{
+    display: block;
   }
 }

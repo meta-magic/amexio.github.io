@@ -5,7 +5,7 @@ $color: #404c51;
 
 $oppColor: white;
 
-$backgroundcolor: #ffffff;
+$backgroundcolor: #ECEFF1;
 
 $borderSize : 1px;
 
@@ -91,14 +91,12 @@ $subMenuCotentColor : #777;
 $menuborderColor:#ced4da;
 $menuborderSize:1px;
 
-/*
-@import "borderlayout.scss";
-@import "rowcol.scss";
-@import "menubar.scss";
-@import "navbar.scss";
-*/
+$navbarBGColor : #90A4AE;
+$navbarBoxShadow:#666;
+$navbarColor : white;
 
-@import "navbar.scss";
+
+
 body {
   background: $backgroundcolor;
   min-height: 100%;
@@ -108,6 +106,9 @@ body {
   font-weight: 400;
   color: $color;
   font-size: 1em;
+  margin: 0px;
+  padding: 0px;
+
 }
 
 @import "common.scss";
@@ -149,6 +150,8 @@ body {
 @import "window.scss";
 
 @import "carousel.scss";
+
+@import "navbar.scss";
 
 .material-icons{
   font-size: inherit !important;
