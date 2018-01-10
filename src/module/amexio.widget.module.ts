@@ -20,7 +20,13 @@ export * from './services/device/device.query.service';
     AmexioLayoutModule,
     AmexioMediaModule
   ],
-  exports: [],
+  exports: [
+    AmexioFormsModule,
+    AmexioNavModule,
+    AmexioDataModule,
+    AmexioLayoutModule,
+    AmexioMediaModule
+  ],
   declarations: []
 })
 export class AmexioWidgetModule {
