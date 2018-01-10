@@ -8,6 +8,7 @@
   <textarea type="text" class="input-control"
          [(ngModel)]="value"
          #inp="ngModel"
+
          [ngClass]="{'input-control-error' : inp.invalid && (inp.dirty || inp.touched),'input-control-success' : inp.valid && (inp.dirty || inp.touched)}"
          (blur)="onBlur()"
          (focus)="onFocus()"
