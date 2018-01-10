@@ -121,9 +121,9 @@ declare var google: any;
 
 export class TreeMapComponent implements AfterContentInit ,OnInit{
 
-  private options;
-  private treemapData;
-  private chart;
+  private options : any;
+  private treemapData : any;
+  private chart : any;
   hasLoaded:boolean;
   id: any;
 
@@ -179,7 +179,7 @@ export class TreeMapComponent implements AfterContentInit ,OnInit{
     google.visualization.events.addListener(this.chart, 'click', this.click);
   }
 
-  click(e){
+  click(e : any){
   }
   ngAfterContentInit(): void {
     this.mapTitleArray=this.maptleComp.toArray();
@@ -197,7 +197,7 @@ export class TreeMapComponent implements AfterContentInit ,OnInit{
       }
     );
   }
-  onResize(event){
+  onResize(event : any){
     this.drawChart();
   }
 }

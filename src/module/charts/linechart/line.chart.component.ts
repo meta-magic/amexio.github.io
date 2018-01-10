@@ -132,9 +132,9 @@ declare var google: any;
 
 export class LineChartComponent implements AfterContentInit,OnInit {
 
-  private options;
-  private lineData;
-  private chart;
+  private options : any;
+  private lineData : any;
+  private chart : any;
 
   id: any;
 
@@ -210,7 +210,7 @@ export class LineChartComponent implements AfterContentInit,OnInit {
     google.visualization.events.addListener(this.chart, 'click', this.onClick);
   }
 
-  onClick(e){
+  onClick(e : any){
 
   }
   //after content init for inner directive is run
@@ -241,11 +241,11 @@ export class LineChartComponent implements AfterContentInit,OnInit {
     //remove first object of array
     dupArray.shift();
 
-    labelObject.forEach((dataTypeObject) => {
+    labelObject.forEach((dataTypeObject : any) => {
       data.addColumn(dataTypeObject.dataType, dataTypeObject.label);
     });
     let finalArray: any[] = [];
-    dupArray.forEach((rowObject) => {
+    dupArray.forEach((rowObject : any) => {
       finalArray.push(rowObject);
     });
     data.addRows(finalArray);
@@ -263,7 +263,7 @@ export class LineChartComponent implements AfterContentInit,OnInit {
       }
     );
   }
-  onResize(event){
+  onResize(event : any){
     this.drawChart();
   }
 

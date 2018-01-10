@@ -133,9 +133,9 @@ declare var google: any;
 
 export class CandlestickChartComponent  implements AfterContentInit ,OnInit{
 
-  private options;
-  private candlestickData;
-  private chart;
+  private options : any;
+  private candlestickData : any;
+  private chart : any;
 
   id: any;
 
@@ -208,7 +208,7 @@ export class CandlestickChartComponent  implements AfterContentInit ,OnInit{
     google.visualization.events.addListener(this.chart, 'click', this.click)
   }
 
-  click(e) {
+  click(e : any) {
 
   }
 
@@ -244,7 +244,7 @@ export class CandlestickChartComponent  implements AfterContentInit ,OnInit{
       }
     );
   }
-  onResize(event){
+  onResize(event : any){
     this.drawChart();
   }
 }

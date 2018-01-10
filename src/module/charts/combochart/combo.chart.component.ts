@@ -133,9 +133,9 @@ declare var google: any;
 
 export class ComboChartComponent  implements AfterContentInit ,OnInit{
 
-  private options;
-  private comboData;
-  private chart;
+  private options : any;
+  private comboData : any;
+  private chart : any;
 
   id: any;
 
@@ -225,7 +225,7 @@ export class ComboChartComponent  implements AfterContentInit ,OnInit{
     google.visualization.events.addListener(this.chart, 'click', this.click)
   }
 
-  click(e) {
+  click(e : any) {
 
   }
 
@@ -264,7 +264,7 @@ export class ComboChartComponent  implements AfterContentInit ,OnInit{
       }
     );
   }
-  onResize(event){
+  onResize(event : any){
     this.drawChart();
   }
 }
