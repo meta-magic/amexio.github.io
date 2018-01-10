@@ -12,8 +12,7 @@ import {AmexioTabPill} from "../tab.pill.component";
 
 @Component({
   selector: 'amexio-right-vertical-tab-view',
-  templateUrl : './right.vertical.component.html',
-  styleUrls : ['../tab.component.scss']
+  templateUrl : './right.vertical.component.html'
 })
 export class AmexioRightVerticalTabComponent  implements  OnInit, AfterViewInit{
 

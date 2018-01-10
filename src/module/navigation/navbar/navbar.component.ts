@@ -1,21 +1,14 @@
 /**
  * Created by ketangote on 12/8/17.
  */
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DeviceQueryService} from "../../services/device/device.query.service";
 
 @Component({
-  selector: 'amexio-nav', templateUrl: 'navbar.component.html', styleUrls: ['navbar.component.scss']
+  selector: 'amexio-nav', templateUrl: 'navbar.component.html'
 })
-export class AmexioNavBarComponent implements OnInit {
-
-  showmenu : boolean = true;
-
-  mobile : boolean = false;
-
-  @Input() title : string;
-
-  @Input() logo : string;
+export class AmexioNavbarComponent implements OnInit {
+  showmenu: boolean = true;
 
   constructor(public matchMediaService: DeviceQueryService) {
   }
@@ -23,15 +16,11 @@ export class AmexioNavBarComponent implements OnInit {
   ngOnInit() {
   }
 
-
   ngAfterContentInit() {
-    if(this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone()){
-      this.showmenu = false;
-      this.mobile = true;
-    }
+
   }
 
-  toggleMenu(){
+  toggleMenu() {
     this.showmenu = !this.showmenu;
   }
 }

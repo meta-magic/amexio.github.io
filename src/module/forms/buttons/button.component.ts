@@ -5,8 +5,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'amexio-button',
-  templateUrl : './button.component.html',
-  styleUrls : ['./button.component.scss']
+  templateUrl : './button.component.html'
 })
 export class AmexioButtonComponent {
 

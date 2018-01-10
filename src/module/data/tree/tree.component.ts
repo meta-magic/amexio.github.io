@@ -7,8 +7,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
 
 @Component({
   selector: 'amexio-treeview',
-  templateUrl : './tree.component.html',
-  styleUrls : ['./tree.component.scss']
+  templateUrl : './tree.component.html'
 })
 export class AmexioTreeViewComponent {
 

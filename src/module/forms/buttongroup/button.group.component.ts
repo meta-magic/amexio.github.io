@@ -3,8 +3,7 @@ import {AmexioButtonComponent} from "../buttons/button.component";
 
 @Component({
   selector: 'amexio-btn-group',
-  templateUrl : './button.group.component.html',
-  styleUrls : ['./button.group.component.scss']
+  templateUrl : './button.group.component.html'
 })
 export class AmexioButtonGroupComponent implements AfterContentInit{
 

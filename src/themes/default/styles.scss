@@ -5,7 +5,7 @@ $color: #404c51;
 
 $oppColor: white;
 
-$backgroundcolor: #ECEFF1;
+$backgroundcolor: #ffffff;
 
 $borderSize : 1px;
 
@@ -44,11 +44,11 @@ $hoverColor : $primaryColor;
 $hoverBGColor : $primaryBGColor;
 
 
-$sidenavHeaderBGColor: white;
+$sidenavHeaderBGColor: $borderColor;
 $sidenavHeaderColor: $color;
 $sidenavBGColor : white;
 $sidenavColor: black;
-$sidenavactive:#eee;
+
 
 $tabBorderSize: $borderSize;
 $tabBorderColor : $borderColor;
@@ -91,12 +91,14 @@ $subMenuCotentColor : #777;
 $menuborderColor:#ced4da;
 $menuborderSize:1px;
 
-$navbarBGColor : #90A4AE;
-$navbarBoxShadow:#666;
-$navbarColor : white;
+/*
+@import "borderlayout.scss";
+@import "rowcol.scss";
+@import "menubar.scss";
+@import "navbar.scss";
+*/
 
-
-
+@import "navbar.scss";
 body {
   background: $backgroundcolor;
   min-height: 100%;
@@ -106,9 +108,6 @@ body {
   font-weight: 400;
   color: $color;
   font-size: 1em;
-  margin: 0px;
-  padding: 0px;
-
 }
 
 @import "common.scss";
@@ -151,7 +150,7 @@ body {
 
 @import "carousel.scss";
 
-@import "navbar.scss";
+@import "itemselector.scss";
 
 .material-icons{
   font-size: inherit !important;

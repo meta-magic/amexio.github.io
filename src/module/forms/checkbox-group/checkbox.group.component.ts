@@ -8,8 +8,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
 
 @Component({
   selector: 'amexio-checkbox-group',
-  templateUrl : './checkbox.group.component.html',
-  styleUrls : ['./checkbox.group.component.scss']
+  templateUrl : './checkbox.group.component.html'
 })
 export class AmexioCheckBoxGroupComponent{
   @Input() enableBoxStyle = false;

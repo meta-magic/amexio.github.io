@@ -14,7 +14,6 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   selector: 'amexio-text-input',
   templateUrl: './textinput.component.html',
   providers : [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
-  styleUrls: ['./textinput.component.scss'],
   encapsulation : ViewEncapsulation.None
 })
 

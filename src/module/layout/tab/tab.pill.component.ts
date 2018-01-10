@@ -5,8 +5,7 @@ import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'amexio-tab',
-  templateUrl : './tab.pill.component.html',
-  styleUrls : ['./tab.component.scss']
+  templateUrl : './tab.pill.component.html'
 })
 export class AmexioTabPill implements OnInit {
 

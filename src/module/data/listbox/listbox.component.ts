@@ -8,8 +8,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
 
 @Component({
   selector : 'amexio-listbox',
-  templateUrl : './listbox.component.html',
-  styleUrls: ['./listbox.component.scss']
+  templateUrl : './listbox.component.html'
 })
 export class AmexioListBoxComponent implements OnInit, AfterViewInit{
 

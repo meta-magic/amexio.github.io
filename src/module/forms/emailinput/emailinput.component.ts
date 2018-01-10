@@ -13,8 +13,7 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 @Component({
   selector: 'amexio-email-input',
   templateUrl: './emailinput.component.html',
-  providers : [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
-  styleUrls: ['./emailinput.component.scss']
+  providers : [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
 })
 export class AmexioEmailInputComponent implements ControlValueAccessor{
 

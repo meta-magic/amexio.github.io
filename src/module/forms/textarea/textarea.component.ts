@@ -13,8 +13,7 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 @Component({
   selector: 'amexio-textarea-input',
   templateUrl: './textarea.component.html',
-  providers : [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
-  styleUrls: ['./textarea.component.scss']
+  providers : [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
 })
 export class AmexioTextAreaComponent implements ControlValueAccessor{
 

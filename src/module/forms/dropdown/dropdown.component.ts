@@ -23,7 +23,6 @@ export const CUSTOM_DROPDOWN_CONTROL_VALUE_ACCESSOR: any = {
 @Component({
   selector : 'amexio-dropdown',
   templateUrl:'./dropdown.component.html' ,
-  styleUrls : ['./dropdown.component.scss'],
   providers : [CUSTOM_DROPDOWN_CONTROL_VALUE_ACCESSOR]
 })
 export class AmexioDropDownComponent implements OnInit, DoCheck,ControlValueAccessor{
@@ -146,9 +145,6 @@ export class AmexioDropDownComponent implements OnInit, DoCheck,ControlValueAcce
     else{
       responsedata = httpResponse;
     }
-
-
-    // this.viewData = responsedata;
     this.viewData = responsedata.sort((a : any, b : any) => a[this.displayField].toLowerCase() !== b[this.displayField].toLowerCase() ? a[this.displayField].toLowerCase() < b[this.displayField].toLowerCase() ? -1 : 1 : 0);
     this.filteredOptions = this.viewData;
 
