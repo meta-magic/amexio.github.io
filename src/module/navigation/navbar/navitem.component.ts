@@ -6,7 +6,7 @@ import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'amexio-nav-item',
-  templateUrl: 'navitem.component.html', styleUrls: ['navbar.component.scss']
+  templateUrl: 'navitem.component.html'
 })
 export class AmexioNavItemComponent implements  OnInit{
 
