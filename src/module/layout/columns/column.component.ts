@@ -25,7 +25,7 @@ export class AmexioColumnComponent implements OnInit {
 
   ngOnInit(){
     this.percentage = COLUMNS_SIZE_MAPS.DEFAULT[this.size];
-    let computedStyle = "padding:5px;box-sizing: border-box;flex: 1 1 100%;max-width : "+this.percentage+"%";
+    let computedStyle = "box-sizing: border-box;flex: 1 1 100%;max-width : "+this.percentage+"%";
     this.sty = this.sanitizer.bypassSecurityTrustStyle(computedStyle);
   }
 
