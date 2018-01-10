@@ -20,6 +20,8 @@ import {AmexioAccordionTabComponent} from "./accordion/accordion.pane";
 import {AmexioAccordionComponent} from "./accordion/accordion.component";
 import {AmexioRowComponent} from "./rows/row.component";
 import {AmexioColumnComponent} from "./columns/column.component";
+import {BorderLayoutItemComponent} from "./border/borderlayoutitem.component";
+import {BorderLayoutComponent} from "./border/borderlayout.component";
 
 export * from '../services/data/common.data.service';
 export * from '../services/device/device.query.service';
@@ -53,7 +55,9 @@ const LAYOUT_COMPONENTS = [
   AmexioAccordionTabComponent,
   AmexioAccordionComponent,
   AmexioRowComponent,
-  AmexioColumnComponent
+  AmexioColumnComponent,
+  BorderLayoutItemComponent,
+  BorderLayoutComponent
 ];
 
 @NgModule({

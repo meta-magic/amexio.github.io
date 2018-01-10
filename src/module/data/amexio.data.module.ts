@@ -5,6 +5,8 @@ import {CommonDataService} from "../services/data/common.data.service";
 import {HttpModule} from "@angular/http";
 import {AmexioTreeViewComponent} from "./tree/tree.component";
 import {AmexioListBoxComponent} from "./listbox/listbox.component";
+import {AmexioDatagridComponent} from "./datagrid/datagrid.component";
+import {DataGridFilterComponent} from "./datagrid/datagrid.filter.component";
 
 export * from '../services/data/common.data.service';
 export * from './listbox/listbox.component';
@@ -12,7 +14,9 @@ export * from './tree/tree.component';
 
 const DATA_COMPONENTS = [
   AmexioTreeViewComponent,
-  AmexioListBoxComponent
+  AmexioListBoxComponent,
+  AmexioDatagridComponent,
+  DataGridFilterComponent
 ];
 
 @NgModule({
