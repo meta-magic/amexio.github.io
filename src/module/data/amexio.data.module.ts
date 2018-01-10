@@ -9,6 +9,7 @@ import {AmexioDatagridComponent} from "./datagrid/datagrid.component";
 import {DataGridFilterComponent} from "./datagrid/datagrid.filter.component";
 import {AmexioLayoutModule} from "../layout/amexio.layout.module";
 import {AmexioPaginatorComponent} from "./paginator/paginator.component";
+import {AmexioGridColumnComponent} from "./datagrid/data.grid.column";
 
 export * from '../services/data/common.data.service';
 export * from './listbox/listbox.component';
@@ -20,7 +21,8 @@ const DATA_COMPONENTS = [
   AmexioListBoxComponent,
   AmexioDatagridComponent,
   DataGridFilterComponent,
-  AmexioPaginatorComponent
+  AmexioPaginatorComponent,
+  AmexioGridColumnComponent
 ];
 
 @NgModule({
