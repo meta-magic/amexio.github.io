@@ -5,7 +5,7 @@ import {
   AfterContentInit, Component, ContentChildren, EventEmitter, Input, OnInit, Output,
   QueryList
 } from '@angular/core';
-import {AmexioGridColumnComponent} from "../treegrid/column.component";
+import {AmexioGridColumnComponent} from "./data.grid.column";
 import {CommonDataService} from "../../services/data/common.data.service";
 
 @Component({

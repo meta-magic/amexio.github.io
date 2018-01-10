@@ -7,7 +7,6 @@ import {AmexioTreeViewComponent} from "./tree/tree.component";
 import {AmexioListBoxComponent} from "./listbox/listbox.component";
 import {AmexioDatagridComponent} from "./datagrid/datagrid.component";
 import {DataGridFilterComponent} from "./datagrid/datagrid.filter.component";
-import {AmexioLayoutModule} from "../layout/amexio.layout.module";
 import {AmexioPaginatorComponent} from "./paginator/paginator.component";
 import {AmexioGridColumnComponent} from "./datagrid/data.grid.column";
 
