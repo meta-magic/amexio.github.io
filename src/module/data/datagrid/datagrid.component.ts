@@ -73,7 +73,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
    
 
    <div style="text-align: center">
-     <amexio-paginator [pages]="50" [rows]="pageSize"></amexio-paginator>
+       <amexio-paginator [pages]="50" [rows]="pageSize"></amexio-paginator>
    </div>
  -->
    <div>
@@ -98,12 +98,15 @@ import {CommonDataService} from "../../services/data/common.data.service";
              </div>
            </div>
          </ng-container>
-         <ng-container *ngFor="let cols of columns">
-           <div class="datatable-col">
-             <data-grid-filter [column]="cols"
-                               (filterObject)="getFilteredData($event)"></data-grid-filter>
-           </div>
+         <ng-container *ngIf="columnToggle">
+           <ng-container *ngFor="let cols of columns">
+             <div class="datatable-col">
+               <data-grid-filter [column]="cols"
+                                 (filterObject)="getFilteredData($event)"></data-grid-filter>
+             </div>
+           </ng-container>  
          </ng-container>
+         
        </div>
      </ng-container>
      
@@ -201,9 +204,12 @@ import {CommonDataService} from "../../services/data/common.data.service";
 
    <div>
      <div class="footer">
-       <ng-container *ngIf="totalPages!=null">
-         <amexio-paginator [pages]="totalPages" [rows]="pageSize" (onPageChange)="loadPageData($event)"></amexio-paginator>  
+       <ng-container *ngIf="pageSize"> 
+         <ng-container *ngIf="totalPages!=null">
+           <amexio-paginator [pages]="totalPages" [rows]="pageSize" (onPageChange)="loadPageData($event)"></amexio-paginator>
+         </ng-container>  
        </ng-container>
+       
        
      </div>
    </div>
@@ -253,6 +259,8 @@ export class AmexioDatagridComponent implements OnInit,AfterContentInit {
   @Output() onColumnClickEvent: EventEmitter<any> = new EventEmitter<any>();
 
   @Output() columnDataEvent: EventEmitter<any> = new EventEmitter<any>();
+
+  @Input()  columnToggle: boolean;
 
   columns: any[] = [];
 
@@ -326,9 +334,9 @@ export class AmexioDatagridComponent implements OnInit,AfterContentInit {
           this.setData(this.responseData);
         }
       );
-    } else if (this.data) {
+    } else if (this.dataTableBindData) {
       // this.previousValue = JSON.parse(JSON.stringify(this.data));
-      this.setData(this.data);
+      this.setData(this.dataTableBindData);
     }
   }
 
