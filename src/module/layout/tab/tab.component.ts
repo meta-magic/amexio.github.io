@@ -13,8 +13,7 @@ import {AmexioTabPill} from "./tab.pill.component";
 
 @Component({
   selector: 'amexio-tab-view',
-  templateUrl : './tab.component.html',
-  styleUrls : ['tab.component.scss']
+  templateUrl : './tab.component.html'
 })
 export class AmexioTabComponent  implements  OnInit, AfterViewInit,AfterContentInit{
 

@@ -8,8 +8,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'amexio-paginator',
-  templateUrl : './paginator.component.html',
-  styleUrls : ['./paginator.component.scss']
+  templateUrl : './paginator.component.html'
 })
 export class AmexioPaginatorComponent {
 

@@ -17,7 +17,6 @@ import {CommonModule} from '@angular/common';
 @Component({
   selector: 'amexio-rating-input',
   templateUrl: './rating.component.html',
-  styleUrls :['./rating.component.scss'],
   providers: [
     { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioRatingComponent), multi: true },
     { provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioRatingComponent), multi: true },

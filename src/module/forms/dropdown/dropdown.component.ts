@@ -23,7 +23,6 @@ export const CUSTOM_DROPDOWN_CONTROL_VALUE_ACCESSOR: any = {
 @Component({
   selector : 'amexio-dropdown',
   templateUrl:'./dropdown.component.html' ,
-  styleUrls : ['./dropdown.component.scss'],
   providers : [CUSTOM_DROPDOWN_CONTROL_VALUE_ACCESSOR]
 })
 export class AmexioDropDownComponent implements OnInit, DoCheck,ControlValueAccessor{

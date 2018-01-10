@@ -7,8 +7,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
 
 @Component({
   selector: 'amexio-radio-group',
-  templateUrl : './radiogroup.component.html',
-  styleUrls : ['./radiogroup.component.scss']
+  templateUrl : './radiogroup.component.html'
 })
 export class AmexioRadioGroupComponent {
 

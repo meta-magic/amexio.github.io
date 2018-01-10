@@ -13,8 +13,7 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 @Component({
   selector: 'amexio-number-input',
   templateUrl: './numberinput.component.html',
-  providers : [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
-  styleUrls: ['./numberinput.component.scss']
+  providers : [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
 })
 export class AmexioNumberInputComponent implements ControlValueAccessor{
 

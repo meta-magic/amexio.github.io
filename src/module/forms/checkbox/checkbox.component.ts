@@ -17,8 +17,7 @@ export const CUSTOM_CHECKBOX_CONTROL_VALUE_ACCESSOR: any = {
 @Component({
   selector: 'amexio-checkbox',
   templateUrl : './checkbox.component.html',
-  providers : [CUSTOM_CHECKBOX_CONTROL_VALUE_ACCESSOR],
-  styleUrls : ['./checkbox.component.scss']
+  providers : [CUSTOM_CHECKBOX_CONTROL_VALUE_ACCESSOR]
 })
 export class AmexioCheckBoxComponent implements ControlValueAccessor{
 

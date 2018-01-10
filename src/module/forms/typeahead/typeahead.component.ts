@@ -19,7 +19,6 @@ export const CUSTOM_TYPEAHEAD_CONTROL_VALUE_ACCESSOR: any = {
 @Component({
   selector : 'amexio-typeahead',
   templateUrl : './typeahead.component.html',
-  styleUrls : ['./typeahead.component.scss'],
   providers : [CUSTOM_TYPEAHEAD_CONTROL_VALUE_ACCESSOR]
 })
 export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor,DoCheck{

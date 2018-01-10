@@ -29,7 +29,6 @@ export const CUSTOM_tOGGLE_CONTROL_VALUE_ACCESSOR: any = {
 @Component({
   selector: 'amexio-toggle',
   templateUrl : './toggle.component.html',
-  styleUrls :['./toggle.component.scss'],
   providers : [CUSTOM_tOGGLE_CONTROL_VALUE_ACCESSOR],
   encapsulation: ViewEncapsulation.None
 })
