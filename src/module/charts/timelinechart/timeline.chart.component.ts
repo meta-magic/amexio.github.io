@@ -129,7 +129,7 @@ declare var google: any;
 })
 export class TimeLineChartComponent implements AfterContentInit,OnInit {
 
-  private chart;
+  private chart : any;
 
   id: any;
 
@@ -169,7 +169,7 @@ export class TimeLineChartComponent implements AfterContentInit,OnInit {
     google.visualization.events.addListener(this.chart, 'click', this.onClick);
   }
 
-  onClick(e) {
+  onClick(e : any) {
   }
 
   //after content init for inner directive is run
@@ -200,11 +200,11 @@ export class TimeLineChartComponent implements AfterContentInit,OnInit {
     //remove first object of array
     dupArray.shift();
 
-    labelObject.forEach((dataTypeObject) => {
+    labelObject.forEach((dataTypeObject : any) => {
       data.addColumn(dataTypeObject.dataType, dataTypeObject.label);
     });
     let finalArray: any[] = [];
-    dupArray.forEach((rowObject) => {
+    dupArray.forEach((rowObject : any) => {
       finalArray.push(rowObject);
     });
     data.addRows(finalArray);

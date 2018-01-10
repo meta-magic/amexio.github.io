@@ -46,7 +46,7 @@ export * from "./candlestickchart/candlestick.chart.component";
 export * from "./candlestickwaterfallchart/candlestickwaterfall.chart.component";
 
 export * from '../services/data/common.data.service';
-export * from 'chart.loader.service';
+export * from './chart.loader.service';
 
 const CHART_COMPONENTS = [
   AreaChartComponent, BarChartComponent, ChartAreaComponent,

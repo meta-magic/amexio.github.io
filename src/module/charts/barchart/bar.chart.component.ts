@@ -16,7 +16,7 @@ import {ChartLegendComponent} from "../chartlegend/chart.legend.component";
 import {ChartTitleComponent} from "../charttitle/chart.title.component";
 import {ChartLoaderService} from "../chart.loader.service";
 import {ChartAreaComponent} from "../chartarea/chart.area.component";
-declare var google;
+declare var google : any;
 @Component({
     selector: 'amexio-chart-bar',
     template: `
@@ -130,9 +130,9 @@ declare var google;
 })
 export class BarChartComponent implements AfterContentInit,OnInit{
 
-    private options;
-    private barData;
-    private chart;
+    private options : any;
+    private barData : any;
+    private chart : any;
 
      hasLoaded:boolean;
     id: any;
@@ -247,7 +247,7 @@ export class BarChartComponent implements AfterContentInit,OnInit{
         }
       );
     }
-    onResize(event){
+    onResize(event : any){
       this.drawChart();
     }
 
