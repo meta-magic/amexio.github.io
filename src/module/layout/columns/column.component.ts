@@ -7,45 +7,36 @@ import {DomSanitizer} from "@angular/platform-browser";
 @Component({
  selector: 'amexio-column',
  templateUrl: 'column.component.html',
- host: {
-    '[attr.fxflex]': 'percentage',
-    '[attr.style]': 'sty',
+  host: {
+    '[class]': 'colclass'
   }
 })
 
 export class AmexioColumnComponent implements OnInit {
 
-  @Input() size : number;
 
-  percentage : string;
+  size_ : string;
 
-  sty : any;
+  colclass : string;
 
-  constructor(public sanitizer : DomSanitizer) {}
+  constructor()
+  {
+
+  }
+
+  @Input()
+  set size(value: any) {
+    this.size_ = value;
+    this.colclass = "flex-col flex-col-"+value;
+  }
+
+  get size() {
+    return this.size_;
+  }
 
   ngOnInit(){
-    this.percentage = COLUMNS_SIZE_MAPS.DEFAULT[this.size];
-    let computedStyle = "padding:5px;box-sizing: border-box;flex: 1 1 100%;max-width : "+this.percentage+"%";
-    this.sty = this.sanitizer.bypassSecurityTrustStyle(computedStyle);
+
   }
 
-}
 
-
-
-export namespace COLUMNS_SIZE_MAPS{
-  export const DEFAULT = {
-    1 : 8.3,
-    2 : 16.7,
-    3 : 25,
-    4 : 33.3,
-    5 : 41.6,
-    6 : 50,
-    7 : 58.3,
-    8 : 66.8,
-    9 : 75,
-    10 : 83.3,
-    11 : 91.6,
-    12 : 100
-  }
 }
