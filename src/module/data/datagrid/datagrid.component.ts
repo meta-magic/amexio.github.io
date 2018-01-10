@@ -80,13 +80,13 @@ import {CommonDataService} from "../../services/data/common.data.service";
      
      <div class="title">
        <span> {{title}} </span>
-         <span class="float-right" (click)="showToolTip = !showToolTip" style=" cursor: pointer;">
+         <span *ngIf="columnToggle ? true:false" class="float-right" (click)="showToolTip = !showToolTip" style=" cursor: pointer;">
             <span *ngIf="!show">&#9776;</span>
             <span *ngIf="show">&#9747;</span>
           </span>
      </div>
      
-     <ng-container *ngIf="filtering">
+     <ng-container *ngIf="filtering ? true : false">
        <div class="datatable datatable-row">
          <ng-container *ngIf="checkboxSelect">
            <div class="datatable-col">
@@ -98,7 +98,8 @@ import {CommonDataService} from "../../services/data/common.data.service";
              </div>
            </div>
          </ng-container>
-         <ng-container *ngIf="columnToggle">
+         
+         <ng-container *ngIf="filtering ? true : false">
            <ng-container *ngFor="let cols of columns">
              <div class="datatable-col">
                <data-grid-filter [column]="cols"
@@ -112,7 +113,8 @@ import {CommonDataService} from "../../services/data/common.data.service";
      
      <div>
        
-      <span *ngIf="showToolTip" class="dropdown dropdown-right" style="width: 250px;">
+       <ng-container *ngIf="columnToggle ? true : false" >
+          <span *ngIf="showToolTip" class="dropdown dropdown-right" style="width: 250px;">
         <ul class="dropdown-list">
           <li class="list-items" *ngFor="let cols of columns;let i = index;" (click)="showToolTip = !showToolTip">
             <div>
@@ -122,6 +124,8 @@ import {CommonDataService} from "../../services/data/common.data.service";
           </li>
          </ul>
       </span>
+       </ng-container>
+     
        
      </div>
    </div>
