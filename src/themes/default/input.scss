@@ -1,5 +1,20 @@
 /** INPUT FORM CONTROL STYLES STARTS**/
 
+::placeholder {
+  padding-left: 15px;
+  color: $borderColor;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  padding-left: 15px;
+  color: $borderColor;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  padding-left: 15px;
+  color: $borderColor;
+}
+
 .inputgroup {
   position: relative;
 }
