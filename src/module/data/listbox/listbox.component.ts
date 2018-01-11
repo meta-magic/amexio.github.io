@@ -117,7 +117,7 @@ export class AmexioListBoxComponent implements OnInit, AfterViewInit{
       delete this.selectedData[indexOf];
     }
 
-    const sdata = []
+    const sdata = [];
 
     for(var i=0;i<this.selectedData.length;i++){
 
