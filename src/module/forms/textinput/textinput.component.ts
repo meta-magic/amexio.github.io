@@ -1,4 +1,4 @@
-import {Component, forwardRef, Input, ViewEncapsulation} from '@angular/core';
+import {Component, ElementRef, forwardRef, Input, ViewChild, ViewEncapsulation} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
 const noop = () => {
@@ -14,12 +14,10 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   selector: 'amexio-text-input',
   templateUrl: './textinput.component.html',
   providers : [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
-  styleUrls: ['./textinput.component.scss'],
   encapsulation : ViewEncapsulation.None
 })
 
 export class AmexioTextInputComponent implements ControlValueAccessor{
-
 
   @Input()   fieldLabel: string;
 
@@ -83,6 +81,8 @@ export class AmexioTextInputComponent implements ControlValueAccessor{
 
   @Input()   hasLabel: boolean = true;
 
+
+
   _pattern : string;
 
   get pattern() : string{
@@ -97,9 +97,17 @@ export class AmexioTextInputComponent implements ControlValueAccessor{
 
   @Input()   enablePopOver : boolean;
 
+  regex : RegExp;
+
+  isValid : boolean;
+
+  @ViewChild('ref', { read: ElementRef }) public inputRef: ElementRef;
+
   constructor() {
     this.showToolTip = false;
   }
+
+  ngOnInit(){}
 
   // The internal dataviews model
   private innerValue: any = '';
@@ -146,6 +154,20 @@ export class AmexioTextInputComponent implements ControlValueAccessor{
   //From ControlValueAccessor interface
   registerOnTouched(fn: any) {
     this.onTouchedCallback = fn;
+  }
+
+  getValidationClasses(inp :  any) : any{
+    let classObj;
+    if(inp.touched && !this.allowBlank && (this.value == '' || this.value == null)){
+      classObj = {'input-control-error' : true};
+      this.isValid = false;
+    }
+    else{
+      classObj =  {'input-control-error' : inp.invalid && (inp.dirty || inp.touched),'input-control-success' : inp.valid && (inp.dirty || inp.touched)};
+      if(inp.valid && (inp.dirty || inp.touched))
+        this.isValid = true;
+    }
+    return classObj;
   }
 
 }

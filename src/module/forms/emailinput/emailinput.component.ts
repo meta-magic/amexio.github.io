@@ -91,6 +91,8 @@ export class AmexioEmailInputComponent implements ControlValueAccessor{
 
   @Input()   enablePopOver : boolean;
 
+  isValid : boolean;
+
   constructor() {
     this.showToolTip = false;
   }
@@ -140,6 +142,20 @@ export class AmexioEmailInputComponent implements ControlValueAccessor{
   //From ControlValueAccessor interface
   registerOnTouched(fn: any) {
     this.onTouchedCallback = fn;
+  }
+
+  getValidationClasses(inp :  any) : any{
+    let classObj;
+    if(inp.touched && !this.allowBlank && (this.value == '' || this.value == null)){
+      classObj = {'input-control-error' : true};
+      this.isValid = false;
+    }
+    else{
+      classObj =  {'input-control-error' : inp.invalid && (inp.dirty || inp.touched),'input-control-success' : inp.valid && (inp.dirty || inp.touched)};
+      if(inp.valid && (inp.dirty || inp.touched))
+        this.isValid = true;
+    }
+    return classObj;
   }
 
 }
