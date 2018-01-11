@@ -11,11 +11,13 @@ import {AmexioPaginatorComponent} from "./paginator/paginator.component";
 import {AmexioGridColumnComponent} from "./datagrid/data.grid.column";
 import {AmexioProgressMultiBarComponent} from "./progress/bar.component";
 import {AmexioProgressBarComponent} from "./progress/progress.component";
+import {IconLoaderService} from "../services/icon/icon.service";
 
 export * from '../services/data/common.data.service';
 export * from './listbox/listbox.component';
 export * from './tree/tree.component';
 export * from './paginator/paginator.component';
+export * from '../services/icon/icon.service';
 
 const DATA_COMPONENTS = [
   AmexioTreeViewComponent,
@@ -41,7 +43,7 @@ export class AmexioDataModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: AmexioDataModule,
-      providers: [CommonDataService]
+      providers: [CommonDataService,IconLoaderService]
     };
   }
 }

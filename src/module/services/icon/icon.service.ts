@@ -8,10 +8,15 @@ import {Icon, default as ICON_MAPS} from "./icon.mapping.config";
 @Injectable()
 export class IconLoaderService {
   get iconToUse(): Icon {
-    if(this._iconToUse.toString() == null)
-      return Icon.fontawesome;      // Default to be loaded
-    else
-      return this._iconToUse;
+    let iconToUse;
+    if(this._iconToUse == null){
+      iconToUse = Icon.fontawesome;
+    }
+    else{
+      if(this._iconToUse!=null && this._iconToUse.toString() == null)
+        iconToUse =  this._iconToUse
+    }
+      return iconToUse;
   }
 
   set iconToUse(value: Icon) {

@@ -10,8 +10,8 @@ import {CommonDataService} from "../../services/data/common.data.service";
   
    <div class="left-card">
      <amexio-card>
-       <amexio-pane-header><b>Available</b></amexio-pane-header>
-       <amexio-pane-body>
+       <amexio-header><b>Available</b></amexio-header>
+       <amexio-body>
          <div [style.height.px]="height" style="overflow: auto">
            <ul class="list">
              <div *ngFor="let data of availableData; let i = index" (click)="itemClick(data,i)">
@@ -19,7 +19,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
              </div>
            </ul>
          </div>
-       </amexio-pane-body>
+       </amexio-body>
      </amexio-card>
    </div>
    
@@ -49,8 +49,8 @@ import {CommonDataService} from "../../services/data/common.data.service";
    
    <div class="right-card">
      <amexio-card>
-       <amexio-pane-header><b>Selected</b></amexio-pane-header>
-       <amexio-pane-body>
+       <amexio-header><b>Selected</b></amexio-header>
+       <amexio-body>
          <div [style.height.px]="height" style="overflow: auto">
            <ul class="list">
              <div *ngFor="let data of selectedData; let i = index" (click)="itemClick(data,i)">
@@ -58,7 +58,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
              </div>
            </ul>
          </div>
-       </amexio-pane-body>
+       </amexio-body>
      </amexio-card>
    </div>
  `
@@ -146,7 +146,6 @@ export class AmexioItemSelectorComponent implements OnInit {
 
 
   itemClick(data: any, index: any) {
-    debugger;
     this.switchingObject = data;
     this.objectIndex = index;
 

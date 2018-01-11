@@ -7,9 +7,11 @@ import {AmexioDataModule} from "./data/amexio.data.module";
 import {DeviceQueryService} from "./services/device/device.query.service";
 import {AmexioLayoutModule} from "./layout/amexio.layout.module";
 import {AmexioMediaModule} from "./media/amexio.media.module";
+import {IconLoaderService} from "./services/icon/icon.service";
 
 export * from './services/data/common.data.service';
 export * from './services/device/device.query.service';
+export * from './services/icon/icon.service';
 
 @NgModule({
   imports: [
@@ -33,7 +35,7 @@ export class AmexioWidgetModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: AmexioWidgetModule,
-      providers: [CommonDataService,DeviceQueryService]
+      providers: [CommonDataService,DeviceQueryService,IconLoaderService]
     };
   }
 }

@@ -20,8 +20,13 @@ import {AmexioRatingComponent} from "./rating/rating.component";
 import {AmexioButtonComponent} from "./buttons/button.component";
 import {AmexioButtonGroupComponent} from "./buttongroup/button.group.component";
 import {AmexioCheckBoxGroupComponent} from "./checkbox-group/checkbox.group.component";
+import {AmexioItemSelectorComponent} from "./itemselector/item.selector.component";
+import {AmexioLayoutModule} from "../layout/amexio.layout.module";
+import {AmexioIconComponent} from "./icon/icon.component";
+import {IconLoaderService} from "../services/icon/icon.service";
 
 export * from '../services/data/common.data.service';
+export * from '../services/icon/icon.service';
 
 const FORM_COMPONENTS = [
   AmexioTextInputComponent,
@@ -37,14 +42,17 @@ const FORM_COMPONENTS = [
   AmexioRatingComponent,
   AmexioButtonComponent,
   AmexioButtonGroupComponent,
-  AmexioCheckBoxGroupComponent
+  AmexioCheckBoxGroupComponent,
+  AmexioItemSelectorComponent,
+  AmexioIconComponent
 ];
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    AmexioLayoutModule
   ],
   exports: FORM_COMPONENTS,
   declarations: FORM_COMPONENTS
@@ -53,7 +61,7 @@ export class AmexioFormsModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: AmexioFormsModule,
-      providers: [CommonDataService]
+      providers: [CommonDataService,IconLoaderService]
     };
   }
 }
