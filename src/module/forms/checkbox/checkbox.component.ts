@@ -2,7 +2,7 @@
  * Created by ketangote on 11/21/17.
  */
 
-import {Component, forwardRef, Input} from '@angular/core';
+import {Component, EventEmitter, forwardRef, Input, Output} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
 const noop = () => {
@@ -30,12 +30,15 @@ export class AmexioCheckBoxComponent implements ControlValueAccessor{
 
   @Input()   allowBlank: string;
 
+  @Output() selectedValue : any = new EventEmitter<any>();
+
   constructor(){
 
   }
 
   onClick(){
     this.value = !this.value;
+    this.selectedValue.emit(this.value);
   }
 
   // The internal dataviews model

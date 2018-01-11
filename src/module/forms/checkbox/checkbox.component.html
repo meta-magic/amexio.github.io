@@ -1,3 +1,4 @@
+<!--
 <div class="inputgroup " [ngClass]="{'inline-block':horizontal}">
   <div class="input-box" (click)="onClick()">
     <input type="checkbox"
@@ -14,4 +15,17 @@
     </div>
  </div>
   <label>{{fieldLabel}}</label>
+</div>
+
+-->
+
+
+<div class="inputgroup " >
+
+  <label class="input-box-container">{{fieldLabel}}
+    <input type="checkbox" *ngIf="value" checked="checked" (click)="onClick()" [attr.disabled] = "disabled ? true: null" [attr.required]="!allowBlank">
+    <input type="checkbox" *ngIf="!value" (click)="onClick()" [attr.disabled] = "disabled ? true: null" [attr.required]="!allowBlank">
+    <span class="input-box-checkbox-label"></span>
+  </label>
+
 </div>
