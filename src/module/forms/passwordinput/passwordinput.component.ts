@@ -81,11 +81,6 @@ export class AmexioPasswordComponent implements ControlValueAccessor{
 
   @Input()   hasLabel: boolean = true;
 
-
-  @Input()   minLength: number;
-
-  @Input()   maxLength: number;
-
   _pattern : string;
 
   isValid : boolean;
