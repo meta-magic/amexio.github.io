@@ -1,10 +1,13 @@
+<div class="inputgroup ">
+
 <label>{{fieldLabel}}</label>
-<label class="amexio-toggle">
+<label class="toggle">
   <input type="checkbox" checked
          name="value"
          #rangeHndl
          (blur)="onBlur()"
          [(ngModel)]="value"
          (change)="onToggle()">
-  <span class="amexio-slider {{shape}}"></span>
+  <span class="toggle-slider {{shape}}"></span>
 </label>
+</div>
