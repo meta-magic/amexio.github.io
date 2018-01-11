@@ -1,10 +1,20 @@
-<div class="inputgroup" [ngClass]="{'inline-block':horizontal}" *ngFor="let row of viewData;">
-  <div class="input-box" (click)="onClick(row)">
-    <div *ngIf="!row.selected" class="radiobox default">
-    </div>
-    <div *ngIf="row.selected" class="radiobox active">
-      &#9679;
-    </div>
+
+<div class="inputgroup">
+
+  <div *ngIf="fieldLabel">
+    <label>{{fieldLabel}}</label>
   </div>
-  <label>{{row[displayField]}}</label>
+
+  <div  [ngClass]="{'inline-block':horizontal}" *ngFor="let row of viewData;">
+    <div class="input-box" (click)="onClick(row)">
+      <div *ngIf="!row.selected" class="radiobox default">
+      </div>
+      <div *ngIf="row.selected" class="radiobox active">
+        &#9679;
+      </div>
+    </div>
+
+    <label>{{row[displayField]}}&nbsp;</label>
+
+  </div>
 </div>

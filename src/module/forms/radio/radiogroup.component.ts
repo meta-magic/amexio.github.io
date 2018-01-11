@@ -1,8 +1,9 @@
 /**
  * Created by pratik on 27/11/17.
+ * Update Ketan Gote on 11/2/2018 - Field Label and Data Rendering changes.
  */
 
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {CommonDataService} from "../../services/data/common.data.service";
 
 @Component({
@@ -13,6 +14,8 @@ import {CommonDataService} from "../../services/data/common.data.service";
 export class AmexioRadioGroupComponent {
 
   @Input()    allowBlank : boolean;
+
+  @Input()    fieldLabel : string;
 
   @Input()    dataReader : string;
 
@@ -27,6 +30,8 @@ export class AmexioRadioGroupComponent {
   @Input()    horizontal: boolean;
 
   @Input()    data : any;
+
+  @Output() selectedValue : any = new EventEmitter<any>();
 
   viewData : any;
 
@@ -48,7 +53,7 @@ export class AmexioRadioGroupComponent {
         }
       );
     }else if (this.data != null){
-      this.viewData = this.data;
+      this.viewData = this.getResponseData(this.data);
     }
   }
 
@@ -70,13 +75,14 @@ export class AmexioRadioGroupComponent {
   }
 
   onClick(row : any){
-    for (let r = 0 ; r < this.data.length; r++){
-      if(this.data[r] == row){
-        this.data[r]['selected']=true;
+    for (let r = 0 ; r < this.viewData.length; r++){
+      if(this.viewData[r] == row){
+        this.viewData[r]['selected']=true;
       }else{
-        this.data[r]['selected']=false;
+        this.viewData[r]['selected']=false;
       }
     }
+    this.selectedValue.emit(row);
   }
 
 

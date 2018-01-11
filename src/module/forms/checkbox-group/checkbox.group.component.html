@@ -1,12 +1,17 @@
-<div class="inputgroup " [ngClass]="{'inline-block':horizontal}">
-  <ng-container *ngFor="let row of viewData">
-    <div class="input-box" (click)="setSelectedCheckBox(row, $event)">
-      <div *ngIf="!row[valueField]" class="checkbox default">
+<div class="inputgroup " >
+  <div *ngIf="fieldLabel">
+    <label>{{fieldLabel}}</label>
+  </div>
+  <div [ngClass]="{'inline-block':horizontal}">
+    <ng-container *ngFor="let row of viewData">
+      <div class="input-box" (click)="setSelectedCheckBox(row, $event)">
+        <div *ngIf="!row[valueField]" class="checkbox default">
+        </div>
+        <div *ngIf="row[valueField]" class="checkbox active">
+          &#10004;
+        </div>
       </div>
-      <div *ngIf="row[valueField]" class="checkbox active">
-        &#10004;
-      </div>
-    </div>
-    <label>{{row[displayField]}}</label>
-  </ng-container>
+      <label>{{row[displayField]}}</label>
+    </ng-container>
+  </div>
 </div>
