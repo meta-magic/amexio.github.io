@@ -25,6 +25,6 @@
           </span>
   </div>
   <ul class="treenode-children" style="display: block;" *ngIf="node.expand && node.children && (node.children.length>0)">
-    <amexio-test-treeview [data]="node.children" (nodeClick)="onNodeClick($event)" [templates]="templates" [enableCheckBox]="enableCheckBox" (onTreeNodeChecked)="onTreeNodeCheck($event)" ></amexio-test-treeview>
+    <amexio-treeview [data]="node.children" (nodeClick)="onNodeClick($event)" [templates]="templates" [enableCheckBox]="enableCheckBox" (onTreeNodeChecked)="onTreeNodeCheck($event)" ></amexio-treeview>
   </ul>
 </li>

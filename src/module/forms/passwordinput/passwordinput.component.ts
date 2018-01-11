@@ -126,6 +126,12 @@ export class AmexioPasswordComponent implements ControlValueAccessor{
   onBlur() {
     this.onTouchedCallback();
     this.showToolTip = false;
+    if(this.value.length < this.minLength){
+      this.isValid = false;
+    }
+    else {
+      this.isValid = true;
+    }
   }
 
   onFocus(){
