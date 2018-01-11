@@ -184,21 +184,28 @@ export class AmexioItemSelectorComponent implements OnInit {
   }
 
   leftSwitch() {
-    if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected')) {
-      if (this.switchingObject['isSelected']) {
-        this.availableData.push(this.switchingObject);
-        this.switchingObject['isSelected'] = false;
-        this.selectedData.forEach((option, index) => {
-          if (!option['isSelected']) {
-            this.selectedData.splice(index, 1);
-          }
-        });
-        this.switchingObject = null;
-        this.dataEmitter();
+    let flag : boolean;
+
+    for (let ir = 0; ir < this.availableData.length; ir++) {
+      if((this.availableData[ir])[this.valueField] === this.switchingObject[this.valueField]){
+        flag = true
       }
     }
-
-
+    if(!flag){
+      if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected')) {
+        if (this.switchingObject['isSelected']) {
+          this.availableData.push(this.switchingObject);
+          this.switchingObject['isSelected'] = false;
+          this.selectedData.forEach((option, index) => {
+            if (!option['isSelected']) {
+              this.selectedData.splice(index, 1);
+            }
+          });
+          this.switchingObject = null;
+          this.dataEmitter();
+        }
+      }
+    }
   }
 
   upSwitch() {
