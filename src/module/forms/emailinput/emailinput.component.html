@@ -8,16 +8,19 @@
   <input type="email" class="input-control"
          [(ngModel)]="value"
          #inp="ngModel"
-         [ngClass]="{'input-control-error' : inp.invalid && (inp.dirty || inp.touched),'input-control-success' : inp.valid && (inp.dirty || inp.touched)}"
+         [ngClass]="getValidationClasses(inp)"
          (blur)="onBlur()"
          (focus)="onFocus()"
+         name="name"
+         [pattern]="regEx"
+         #ref
          [attr.placeholder]="placeholder"
          [attr.disabled] = "disabled ? true: null"
          [attr.required]="!allowBlank"/>
 
   <span *ngIf="iconFeedBack && (inp.invalid && (inp.dirty || inp.touched) || inp.valid)" class="input-control-feedback">
-        <span *ngIf="inp.invalid && (inp.dirty || inp.touched)">&#9888;</span>
-        <span *ngIf="inp.valid && (inp.dirty || inp.touched)"> &#10004;</span>
+        <span *ngIf="!isValid">&#9888;</span>
+        <span *ngIf="isValid"> &#10004;</span>
 
       </span>
 
