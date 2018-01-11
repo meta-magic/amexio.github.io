@@ -81,6 +81,11 @@ export class AmexioPasswordComponent implements ControlValueAccessor{
 
   @Input()   hasLabel: boolean = true;
 
+
+  @Input()   minLength: number;
+
+  @Input()   maxLength: number;
+
   _pattern : string;
 
   isValid : boolean;
@@ -153,6 +158,11 @@ export class AmexioPasswordComponent implements ControlValueAccessor{
     let classObj;
     if(inp.touched && !this.allowBlank && (this.value == '' || this.value == null)){
       classObj = {'input-control-error' : true};
+      this.isValid = false;
+    }
+    else if(inp.touched && this.minLength != null){
+      if(this.value.length < this.minLength)
+        classObj = {'input-control-error' : true};
       this.isValid = false;
     }
     else{

@@ -162,6 +162,11 @@ export class AmexioTextInputComponent implements ControlValueAccessor{
       classObj = {'input-control-error' : true};
       this.isValid = false;
     }
+    else if(inp.touched && this.minLength != null){
+      if(this.value.length < this.minLength)
+        classObj = {'input-control-error' : true};
+      this.isValid = false;
+    }
     else{
       classObj =  {'input-control-error' : inp.invalid && (inp.dirty || inp.touched),'input-control-success' : inp.valid && (inp.dirty || inp.touched)};
       if(inp.valid && (inp.dirty || inp.touched))

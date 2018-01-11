@@ -12,7 +12,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 @Component({
   selector: 'amexio-card',
   template: `    
-    <div class="card-container">
+    <div class="card-container" *ngIf="showCard">
       <header class="card-header" *ngIf="enableHeader" [ngClass]="{'flex-start':(headeralign=='left'),'flex-end':(headeralign=='right'),'flex-center':(headeralign=='center')}">
         <ng-content select="amexio-header"></ng-content>
       </header>
@@ -36,6 +36,8 @@ export class AmexioCardComponent implements  OnInit{
   @Input() enableFooter : boolean;
 
   @Input() footeralign: string;
+
+  @Input() showCard: boolean = true;
 
 
 
