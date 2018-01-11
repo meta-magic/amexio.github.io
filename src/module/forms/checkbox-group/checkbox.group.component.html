@@ -1,17 +1,50 @@
+<!--<div class="inputgroup " >-->
+  <!--<div *ngIf="fieldLabel">-->
+    <!--<label>{{fieldLabel}}</label>-->
+  <!--</div>-->
+  <!--<div [ngClass]="{'inline-block':horizontal}">-->
+    <!--<ng-container *ngFor="let row of viewData">-->
+      <!--<div class="input-box" (click)="setSelectedCheckBox(row, $event)">-->
+        <!--<div *ngIf="!row[valueField]" class="checkbox default">-->
+        <!--</div>-->
+        <!--<div *ngIf="row[valueField]" class="checkbox active">-->
+          <!--&#10004;-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<label>{{row[displayField]}}</label>-->
+    <!--</ng-container>-->
+  <!--</div>-->
+<!--</div>-->
+
+
 <div class="inputgroup " >
   <div *ngIf="fieldLabel">
     <label>{{fieldLabel}}</label>
   </div>
-  <div [ngClass]="{'inline-block':horizontal}">
+
+  <ng-container *ngIf="horizontal">
     <ng-container *ngFor="let row of viewData">
-      <div class="input-box" (click)="setSelectedCheckBox(row, $event)">
-        <div *ngIf="!row[valueField]" class="checkbox default">
-        </div>
-        <div *ngIf="row[valueField]" class="checkbox active">
-          &#10004;
-        </div>
-      </div>
-      <label>{{row[displayField]}}</label>
+
+      <label class="input-box-container"  >{{row[displayField]}}
+        <input type="checkbox" *ngIf="row[valueField]" checked="checked" (click)="setSelectedCheckBox(row, $event)">
+        <input type="checkbox" *ngIf="!row[valueField]" (click)="setSelectedCheckBox(row, $event)">
+        <span class="input-box-checkbox-label"></span>
+      </label>
+
     </ng-container>
-  </div>
+  </ng-container>
+
+  <ng-container *ngIf="!horizontal">
+    <ng-container *ngFor="let row of viewData">
+      <div>
+        <label class="input-box-container">{{row[displayField]}}
+          <input type="checkbox" *ngIf="row[valueField]" checked="checked" (click)="setSelectedCheckBox(row, $event)">
+          <input type="checkbox" *ngIf="!row[valueField]" (click)="setSelectedCheckBox(row, $event)">
+          <span class="input-box-checkbox-label"></span>
+        </label>
+      </div>
+
+    </ng-container>
+  </ng-container>
+
 </div>

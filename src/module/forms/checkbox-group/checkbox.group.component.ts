@@ -12,6 +12,9 @@ import {CommonDataService} from "../../services/data/common.data.service";
   styleUrls : ['./checkbox.group.component.scss']
 })
 export class AmexioCheckBoxGroupComponent{
+
+  @Input() horizontal : boolean;
+
   @Input() enableBoxStyle = false;
 
   @Input() fieldLabel : string;
