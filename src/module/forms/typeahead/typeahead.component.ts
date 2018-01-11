@@ -93,6 +93,10 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor,Do
     if(this.placeholder == '' || this.placeholder == null)
       this.placeholder = 'Choose Option';
 
+    if(!this.triggerChar){
+      this.triggerChar = 1;
+    }
+
     if(this.httpMethod && this.httpUrl){
       this.dataService.fetchData(this.httpUrl,this.httpMethod).subscribe(
         response=>{
