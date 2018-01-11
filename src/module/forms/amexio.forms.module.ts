@@ -24,6 +24,7 @@ import {AmexioItemSelectorComponent} from "./itemselector/item.selector.componen
 import {AmexioLayoutModule} from "../layout/amexio.layout.module";
 import {AmexioIconComponent} from "./icon/icon.component";
 import {IconLoaderService} from "../services/icon/icon.service";
+import {AmexioSliderComponent} from "./slider/slider.component";
 
 export * from '../services/data/common.data.service';
 export * from '../services/icon/icon.service';
@@ -44,7 +45,8 @@ const FORM_COMPONENTS = [
   AmexioButtonGroupComponent,
   AmexioCheckBoxGroupComponent,
   AmexioItemSelectorComponent,
-  AmexioIconComponent
+  AmexioIconComponent,
+  AmexioSliderComponent
 ];
 
 @NgModule({
