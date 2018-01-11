@@ -26,22 +26,28 @@ import {CommonDataService} from "../../services/data/common.data.service";
    <div class="icon-card-center">
      <div class="icon-bar">
         <div (click)="moveTop()">
-          <amexio-icon key="itemselector_caretup"></amexio-icon>
+          <!--<amexio-icon key="itemselector_caretup"></amexio-icon>-->
+          <i class="fa fa-caret-up"></i>
         </div>
        <div (click)="upSwitch()">
-         <amexio-icon key="itemselector_arrowup"></amexio-icon>
+         <!--<amexio-icon key="itemselector_arrowup"></amexio-icon>-->
+         <i class="fa fa-arrow-up"></i>
        </div>
        <div (click)="leftSwitch()">
-         <amexio-icon key="itemselector_arrowleft"></amexio-icon>
+         <!--<amexio-icon key="itemselector_arrowleft"></amexio-icon>-->
+         <i class="fa fa-arrow-left"></i>
        </div> 
        <div (click)="rightSwitch()">
-         <amexio-icon key="itemselector_arrowright"></amexio-icon>
+         <!--<amexio-icon key="itemselector_arrowright"></amexio-icon>-->
+         <i class="fa fa-arrow-right"></i>
        </div> 
        <div (click)="downSwitch()">
-         <amexio-icon key="itemselector_arrowdown"></amexio-icon>
+         <!--<amexio-icon key="itemselector_arrowdown"></amexio-icon>-->
+         <i class="fa fa-arrow-down"></i>
        </div>
        <div (click)="moveDown()">
-         <amexio-icon key="itemselector_caretdown"></amexio-icon>
+         <!--<amexio-icon key="itemselector_caretdown"></amexio-icon>-->
+         <i class="fa fa-caret-down"></i>
        </div>
      </div>
      
@@ -151,9 +157,9 @@ export class AmexioItemSelectorComponent implements OnInit {
 
     for (let ir = 0; ir < this.availableData.length; ir++) {
       if((this.availableData[ir])[this.valueField] === data[this.valueField]){
-        this.availableData[ir].isSelected = true;
+        this.availableData[ir]['isSelected'] = true;
       }else{
-        this.availableData[ir].isSelected = false;
+        this.availableData[ir]['isSelected'] = false;
       }
 
 
@@ -161,13 +167,12 @@ export class AmexioItemSelectorComponent implements OnInit {
   }
 
   rightSwitch() {
-    debugger;
-    if (this.switchingObject != null) {
-      if (this.switchingObject.isSelected) {
+    if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected')) {
+      if (this.switchingObject['isSelected']) {
         this.selectedData.push(this.switchingObject);
-        this.switchingObject.isSelected = true;
+        this.switchingObject['isSelected'] = true;
         this.availableData.forEach((option, index) => {
-          if (option.isSelected) {
+          if (option['isSelected']) {
             this.availableData.splice(index, 1);
           }
         });
@@ -179,12 +184,12 @@ export class AmexioItemSelectorComponent implements OnInit {
   }
 
   leftSwitch() {
-    if (this.switchingObject != null) {
-      if (this.switchingObject.isSelected) {
+    if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected')) {
+      if (this.switchingObject['isSelected']) {
         this.availableData.push(this.switchingObject);
-        this.switchingObject.isSelected = false;
+        this.switchingObject['isSelected'] = false;
         this.selectedData.forEach((option, index) => {
-          if (!option.isSelected) {
+          if (!option['isSelected']) {
             this.selectedData.splice(index, 1);
           }
         });
@@ -197,8 +202,8 @@ export class AmexioItemSelectorComponent implements OnInit {
   }
 
   upSwitch() {
-    if (this.switchingObject != null) {
-      if (this.switchingObject.isSelected) {
+    if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected')) {
+      if (this.switchingObject['isSelected']) {
         const index = this.selectedData[this.objectIndex];
         this.selectedData[this.objectIndex] = this.selectedData[this.objectIndex - 1];
         this.selectedData[this.objectIndex - 1] = index;
@@ -209,8 +214,8 @@ export class AmexioItemSelectorComponent implements OnInit {
   }
 
   downSwitch() {
-    if (this.switchingObject != null) {
-      if (this.switchingObject.isSelected) {
+    if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected')) {
+      if (this.switchingObject['isSelected']) {
         if (this.selectedData.length - 1 !== this.objectIndex) {
           const index = this.selectedData[this.objectIndex];
           this.selectedData[this.objectIndex] = this.selectedData[this.objectIndex + 1];
@@ -225,7 +230,7 @@ export class AmexioItemSelectorComponent implements OnInit {
 
   moveTop() {
     const tempArray: any = [];
-    if (this.switchingObject != null && this.switchingObject.isSelected) {
+    if (this.switchingObject != null && this.switchingObject['isSelected']) {
       if (this.selectedData.length > 1) {
         tempArray[0] = this.selectedData[this.objectIndex];
         this.selectedData.splice(this.objectIndex, 1);
@@ -240,8 +245,8 @@ export class AmexioItemSelectorComponent implements OnInit {
   }
 
   moveDown() {
-    if (this.switchingObject != null) {
-      if (this.switchingObject.isSelected && this.selectedData.length > 1) {
+    if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected')) {
+      if (this.switchingObject['isSelected'] && this.selectedData.length > 1) {
         this.selectedData.splice(this.objectIndex, 1);
         this.selectedData[this.selectedData.length] = this.switchingObject;
       }

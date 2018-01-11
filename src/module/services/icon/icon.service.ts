@@ -7,10 +7,10 @@ import {Icon, default as ICON_MAPS} from "./icon.mapping.config";
 
 @Injectable()
 export class IconLoaderService {
-  get iconToUse(): Icon {
+  get iconToUse(): any {
     let iconToUse;
     if(this._iconToUse == null){
-      iconToUse = Icon.fontawesome;
+      iconToUse = 'fa';
     }
     else{
       if(this._iconToUse!=null && this._iconToUse.toString() == null)
@@ -19,7 +19,7 @@ export class IconLoaderService {
       return iconToUse;
   }
 
-  set iconToUse(value: Icon) {
+  set iconToUse(value: any) {
     this._iconToUse = value;
     if(this._iconToUse != null){
       this.iconMappings = ICON_MAPS;
