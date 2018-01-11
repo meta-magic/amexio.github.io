@@ -19,8 +19,8 @@
          [attr.required]="!allowBlank"/>
 
   <span *ngIf="iconFeedBack && (inp.invalid && (inp.dirty || inp.touched) || inp.valid)" class="input-control-feedback">
-        <span *ngIf="!isValid">&#9888;</span>
-        <span *ngIf="isValid"> &#10004;</span>
+        <span *ngIf="!isValid && inp.touched">&#9888;</span>
+        <span *ngIf="isValid && inp.touched"> &#10004;</span>
 
       </span>
 
