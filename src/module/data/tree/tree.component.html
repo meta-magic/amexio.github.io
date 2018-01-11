@@ -5,9 +5,11 @@
             <span *ngIf="node.expand">&#9662;</span>
             <span *ngIf="!node.expand">&#9656;</span>
           </span>
-    <span class="treenode-label">
+    <span class="treenode-label" [ngClass]="{'treenode-label-active':node.active}">
             <span *ngIf="enableCheckBox">
               <input type="checkbox" [checked]="'checked'?node.checked:null" (click)="emitCheckedData(node)"/>
+            </span>
+            <span *ngIf="node.icon" [ngClass]="node.icon" aria-hidden="true">
             </span>
             <span (click)="onNodeClick(node)">
 
@@ -23,6 +25,6 @@
           </span>
   </div>
   <ul class="treenode-children" style="display: block;" *ngIf="node.expand && node.children && (node.children.length>0)">
-    <amexio-treeview [data]="node.children" (nodeClick)="onNodeClick($event)" [templates]="templates" [enableCheckBox]="enableCheckBox" (onTreeNodeChecked)="onTreeNodeCheck($event)" ></amexio-treeview>
+    <amexio-test-treeview [data]="node.children" (nodeClick)="onNodeClick($event)" [templates]="templates" [enableCheckBox]="enableCheckBox" (onTreeNodeChecked)="onTreeNodeCheck($event)" ></amexio-test-treeview>
   </ul>
 </li>

@@ -1,7 +1,5 @@
 
 
-/**TREE NODE STARTS**/
-
 .treeview{
   height: 100%;
   margin: 0;
@@ -11,6 +9,8 @@
 }
 
 .treenode{
+  width: 100%;
+
   transition: .5s;
   background-attachment: scroll;
   background-color: transparent;
@@ -31,9 +31,19 @@
 }
 
 .treenode-label {
-  padding: 0 .25em;
+  width: 90%;
+  padding: 10px;
   display: inline-block;
   vertical-align: middle;
+}
+
+.treenode-label:hover
+{
+  background-color: red;
+}
+
+.treenode-label-active{
+  background-color: red;
 }
 
 .treenode-children {
@@ -45,7 +55,3 @@
   -webkit-transition: expand .5s;
   transition: expand .5s;
 }
-
-/**TREE NODE ENDS**/
-
-
