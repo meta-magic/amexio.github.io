@@ -15,6 +15,8 @@ export class AmexioRadioGroupComponent {
 
   @Input()    allowBlank : boolean;
 
+  @Input()    name : boolean;
+
   @Input()    fieldLabel : string;
 
   @Input()    dataReader : string;

@@ -1,3 +1,4 @@
+<!--
 
 <div class="inputgroup">
 
@@ -17,4 +18,38 @@
     <label>{{row[displayField]}}&nbsp;</label>
 
   </div>
+</div>
+-->
+
+
+<div class="inputgroup " >
+  <div *ngIf="fieldLabel">
+    <label>{{fieldLabel}}</label>
+  </div>
+
+  <ng-container *ngIf="horizontal">
+    <ng-container *ngFor="let row of viewData">
+
+      <label class="input-box-container"  >{{row[displayField]}}
+        <input type="radio" *ngIf="row.selected"  [attr.name]="name" checked="checked" (click)="onClick(row)">
+        <input type="radio" *ngIf="!row.selected"  [attr.name]="name" (click)="onClick(row)">
+        <span class="input-box-radiobox-label"></span>
+      </label>
+
+    </ng-container>
+  </ng-container>
+
+  <ng-container *ngIf="!horizontal">
+    <ng-container *ngFor="let row of viewData">
+      <div>
+        <label class="input-box-container">{{row[displayField]}}
+          <input type="radio" *ngIf="row.selected"  [attr.name]="name" checked="checked" (click)="onClick(row)">
+          <input type="radio" *ngIf="!row.selected"  [attr.name]="name" (click)="onClick(row)">
+          <span class="input-box-radiobox-label"></span>
+        </label>
+      </div>
+
+    </ng-container>
+  </ng-container>
+
 </div>
