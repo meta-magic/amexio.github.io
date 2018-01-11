@@ -51,6 +51,10 @@ $sidenavBGColor : white;
 $sidenavColor: black;
 $sidenavactive:#eee;
 
+$treeNodeActiveBGColor : $sidenavactive;
+$treeNodeActiveColor : $sidenavColor;
+
+
 $tabBorderSize: $borderSize;
 $tabBorderColor : $borderColor;
 $tabActiveBorder : red;
