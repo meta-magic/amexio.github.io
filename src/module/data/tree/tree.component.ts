@@ -56,6 +56,8 @@ export class AmexioTreeViewComponent {
           this.setData(this.responseData);
         }
       );
+    }else if(this.dataReader && this.data){
+      this.setData(this.data);
     }
   }
 
@@ -84,7 +86,23 @@ export class AmexioTreeViewComponent {
 
   onNodeClick(node : any){
     this.nodeClick.emit(node);
+    this.activateNode(this.data,node);
   }
+
+  activateNode(data:any[],node : any){
+    for(let i=0;i<data.length;i++){
+      if(node === data[i] && !data[i]['children']){
+        data[i]['active']=true;
+      }else{
+        data[i]['active']=false;
+      }
+
+      if(data[i]['children']){
+        this.activateNode(data[i]['children'],node);
+      }
+    }
+  }
+
   setData(httpResponse : any) {
     //Check if key is added?
     let responsedata = httpResponse;
@@ -98,6 +116,7 @@ export class AmexioTreeViewComponent {
       responsedata = httpResponse;
     }
     this.data = responsedata;
+    this.activateNode(this.data,null);
   }
 
   emitCheckedData(checkedData : any){

@@ -28,22 +28,26 @@
 
 .treenode-toggler{
   cursor: pointer;
+  position: fixed;
+  padding-top: 10px;
+
 }
 
 .treenode-label {
-  width: 90%;
   padding: 10px;
   display: inline-block;
   vertical-align: middle;
+  cursor: pointer;
 }
 
 .treenode-label:hover
 {
-  background-color: red;
+  background-color: $treeNodeActiveBGColor;
 }
 
 .treenode-label-active{
-  background-color: red;
+  background-color: $treeNodeActiveBGColor;
+  color:$treeNodeActiveColor;
 }
 
 .treenode-children {

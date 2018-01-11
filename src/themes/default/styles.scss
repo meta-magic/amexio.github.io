@@ -92,8 +92,8 @@ $toastColor : $primaryColor;
 
 
 
-$borderLayoutBorder : 1px;
-$borderLayoutBorderColor : red;
+$borderLayoutBorder : 0px;
+$borderLayoutBorderColor : none;
 
 $menubarBGColor : black;
 $menubarColor : white;
@@ -181,3 +181,4 @@ body {
 
 @import "toggle.scss";
 
+@import "borderlayout.scss";
