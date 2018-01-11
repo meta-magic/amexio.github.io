@@ -71,6 +71,10 @@ export class AmexioNumberInputComponent implements ControlValueAccessor{
 
   @Input()   placeholder: string;
 
+  @Input()   minLength: number;
+
+  @Input()   maxLength: number;
+
   @Input()   disabled: boolean;
 
   @Input()   iconFeedBack: boolean;
@@ -152,6 +156,11 @@ export class AmexioNumberInputComponent implements ControlValueAccessor{
     let classObj;
     if(inp.touched && !this.allowBlank && (this.value == '' || this.value == null)){
       classObj = {'input-control-error' : true};
+      this.isValid = false;
+    }
+    else if(inp.touched && this.minLength != null){
+      if(this.value.length < this.minLength)
+        classObj = {'input-control-error' : true};
       this.isValid = false;
     }
     else{

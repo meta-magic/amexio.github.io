@@ -23,6 +23,10 @@ export class AmexioEmailInputComponent implements ControlValueAccessor{
 
   @Input()   allowBlank: string;
 
+  @Input()   minLength: number;
+
+  @Input()   maxLength: number;
+
   helpInfoMsg: string;
 
   regEx : RegExp ;
@@ -148,6 +152,11 @@ export class AmexioEmailInputComponent implements ControlValueAccessor{
     let classObj;
     if(inp.touched && !this.allowBlank && (this.value == '' || this.value == null)){
       classObj = {'input-control-error' : true};
+      this.isValid = false;
+    }
+    else if(inp.touched && this.minLength != null){
+      if(this.value.length < this.minLength)
+        classObj = {'input-control-error' : true};
       this.isValid = false;
     }
     else{
