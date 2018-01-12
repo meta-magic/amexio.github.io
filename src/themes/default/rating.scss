@@ -14,13 +14,13 @@
   font-style: normal;
 }
 .star-icon {
-  color: $startBorderColor;
+  color: $ratingBorderColor;
   font-size: 2em;
   position: relative;
   border-color: $borderSize solid $borderColor;
 }
 .star-icon:before {
-  color: $startActiveColor;
+  color: $ratingActiveColor;
   content: attr(data-icon) " ";
   position: absolute;
   left: 0;
