@@ -18,7 +18,7 @@
          [attr.fieldName]="fieldName"
          [attr.placeholder]="placeholder"
          [attr.disabled]="disabled ? true: null"
-         [required]="allowBlank ? true: null"/>
+         [required]="allowBlank ? true: null" (keyup)="onDropDownSearchKeyUp($event)"/>
 
 
   <span class="drodown-caret-down">
@@ -27,9 +27,11 @@
 
   <span *ngIf="showToolTip" class="dropdown">
         <ul class="dropdown-list">
+<!--
           <li class="list-items" *ngIf="searchBox">
             <input type="text" class="input-control" placeholder="search" (keyup)="onDropDownSearchKeyUp($event)"/>
           </li>
+-->
           <li class="list-items" *ngFor="let item of filteredOptions" (click)="onItemSelect(item)">
             <span>{{item[displayField]}}</span>
             <span style="float : right">{{item?.checked ? '&#10004;': ''}}</span>

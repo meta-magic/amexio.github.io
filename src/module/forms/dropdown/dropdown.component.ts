@@ -227,19 +227,24 @@ export class AmexioDropDownComponent implements OnInit, DoCheck,ControlValueAcce
   }
 
   onDropDownSearchKeyUp(event : any){
-    let keyword = event.target.value;
-    if(keyword != null && keyword != '' && keyword!= ' '){
-      this.filteredOptions = [];
-      let search_Term = keyword.toLowerCase();
-      this.viewData.forEach( (row : any)=>{
-        if(row[this.displayField].toLowerCase().startsWith(search_Term)){
-          this.filteredOptions.push(row);
-        }
-      });
+
+    if(this.searchBox)
+    {
+      let keyword = event.target.value;
+      if(keyword != null && keyword != '' && keyword!= ' '){
+        this.filteredOptions = [];
+        let search_Term = keyword.toLowerCase();
+        this.viewData.forEach( (row : any)=>{
+          if(row[this.displayField].toLowerCase().startsWith(search_Term)){
+            this.filteredOptions.push(row);
+          }
+        });
+      }
+      if(keyword == ''){
+        this.filteredOptions = this.viewData;
+      }
     }
-    if(keyword == ''){
-      this.filteredOptions = this.viewData;
-    }
+
   }
 
 
