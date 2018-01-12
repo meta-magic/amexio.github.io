@@ -25,7 +25,7 @@
         <span *ngIf="isValid && inp.touched"><i class="fa fa-check"></i></span>
 
   </span>
-
+{{'isValid : '+isValid+ ' touched :'+inp.touched}}
   <span *ngIf="showToolTip && enablePopOver" class="tooltiptext">
         <div  [innerHTML]="helpInfoMsg"></div>
   </span>

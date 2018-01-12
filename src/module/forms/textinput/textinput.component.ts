@@ -134,6 +134,7 @@ export class AmexioTextInputComponent implements ControlValueAccessor{
   onBlur() {
     this.onTouchedCallback();
     this.showToolTip = false;
+    debugger;
     if(this.value.length < this.minLength){
       this.isValid = false;
     }
@@ -169,9 +170,13 @@ export class AmexioTextInputComponent implements ControlValueAccessor{
       this.isValid = false;
     }
     else if(inp.touched && this.minLength != null){
-      if(this.value.length < this.minLength)
+      if(this.value.length < this.minLength){
         classObj = {'input-control-error' : true};
-      this.isValid = false;
+        this.isValid = false;
+      }
+      else {
+        this.isValid = true;
+      }
     }
     else{
       classObj =  {'input-control-error' : inp.invalid && (inp.dirty || inp.touched),'input-control-success' : inp.valid && (inp.dirty || inp.touched)};
