@@ -1,0 +1,41 @@
+
+
+.tag-input{
+  position: absolute;
+  top: 30px;
+  left: 1px;
+  z-index: 2;
+  display: block;
+  text-align: center;
+
+  .tag {
+    display: inline-block;
+    padding: 0 13px;
+    height: 30px;
+    font-size: 11px;
+    line-height: 30px;
+    background-color: $primaryBGColor;
+    color: $primaryColor;
+
+    .closebtn {
+      padding-left: 10px;
+      font-weight: bold;
+      float: right;
+      font-size: 20px;
+      cursor: pointer;
+      color: darken($primaryColor,20);
+    }
+
+    .closebtn:hover {
+      color: $primaryColor;
+    }
+  }
+
+
+
+
+
+
+}
+
+

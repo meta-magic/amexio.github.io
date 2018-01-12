@@ -137,58 +137,6 @@ input[type='range']::-webkit-slider-thumb {
 
 
 
-/** Chip css **/
-.chip {
-  display: inline-block;
-  padding: 0 13px;
-  height: 30px;
-  font-size: 11px;
-  line-height: 30px;
-  border-radius: 20px;
-  background-color: #3498DB;
-}
-
-.closebtn {
-  padding-left: 10px;
-  color: #4C4C4C;
-  font-weight: bold;
-  float: right;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.closebtn:hover {
-  color: #000;
-}
-
-.amexio-tagsinput {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  display: inline-block;
-  padding: 4px 6px;
-  color: #555;
-  vertical-align: middle;
-  border-radius: 4px;
-  max-width: 100%;
-  line-height: 22px;
-  cursor: text;
-}
-
-.chip-input{
-  position: absolute;
-  top: 30px;
-  left: 1px;
-  z-index: 2;
-  display: block;
-  /* width: 38px;
-   height: 38px;*/
-  //line-height: 38px;
-  text-align: center;
-}
-
-
-
 
 /** new date picker **/
 .date-icon{

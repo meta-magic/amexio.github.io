@@ -14,8 +14,8 @@ import {CommonDataService} from "../../services/data/common.data.service";
      </label>
 
 
-     <div class="chip-input">
-       <div class="chip" *ngFor="let item of selectedValues">
+     <div class="tag-input">
+       <div class="tag" *ngFor="let item of selectedValues">
          {{item[key]}}
          <span class="closebtn" (click)="removePill(item)">&times;</span>
        </div>
@@ -105,8 +105,6 @@ export class AmexioTagsInputComponent implements OnInit {
   @Input()   fontFamily: string;
 
   @Input()   fontSize: string;
-
-  @Input()   hasLabel: boolean = true;
 
   @Input()   enablePopOver : boolean;
 
