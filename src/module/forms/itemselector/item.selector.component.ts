@@ -5,69 +5,8 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CommonDataService} from "../../services/data/common.data.service";
 
 @Component({
- selector: 'amexio-item-selector',
- template: `
-  
-   <div class="left-card">
-     <amexio-card>
-       <amexio-header><b>Available</b></amexio-header>
-       <amexio-body>
-         <div [style.height.px]="height" style="overflow: auto">
-           <ul class="list">
-             <div *ngFor="let data of availableData; let i = index" (click)="itemClick(data,i)">
-               <li [ngClass]="data['isSelected'] ? 'list-item-active':''">{{data[displayField]}}</li>
-             </div>
-           </ul>
-         </div>
-       </amexio-body>
-     </amexio-card>
-   </div>
-   
-   <div class="icon-card-center">
-     <div class="icon-bar">
-        <div (click)="moveTop()">
-          <!--<amexio-icon key="itemselector_caretup"></amexio-icon>-->
-          <i class="fa fa-caret-up"></i>
-        </div>
-       <div (click)="upSwitch()">
-         <!--<amexio-icon key="itemselector_arrowup"></amexio-icon>-->
-         <i class="fa fa-arrow-up"></i>
-       </div>
-       <div (click)="leftSwitch()">
-         <!--<amexio-icon key="itemselector_arrowleft"></amexio-icon>-->
-         <i class="fa fa-arrow-left"></i>
-       </div> 
-       <div (click)="rightSwitch()">
-         <!--<amexio-icon key="itemselector_arrowright"></amexio-icon>-->
-         <i class="fa fa-arrow-right"></i>
-       </div> 
-       <div (click)="downSwitch()">
-         <!--<amexio-icon key="itemselector_arrowdown"></amexio-icon>-->
-         <i class="fa fa-arrow-down"></i>
-       </div>
-       <div (click)="moveDown()">
-         <!--<amexio-icon key="itemselector_caretdown"></amexio-icon>-->
-         <i class="fa fa-caret-down"></i>
-       </div>
-     </div>
-     
-   </div>
-   
-   <div class="right-card">
-     <amexio-card>
-       <amexio-header><b>Selected</b></amexio-header>
-       <amexio-body>
-         <div [style.height.px]="height" style="overflow: auto">
-           <ul class="list">
-             <div *ngFor="let data of selectedData; let i = index" (click)="itemClick(data,i)">
-               <li [ngClass]="data['isSelected'] ? 'list-item-active':''">{{data[displayField]}}</li>
-             </div>
-           </ul>
-         </div>
-       </amexio-body>
-     </amexio-card>
-   </div>
- `
+  selector: 'amexio-item-selector',
+  templateUrl:'./item.selector.component.html'
 })
 
 export class AmexioItemSelectorComponent implements OnInit {
@@ -98,32 +37,31 @@ export class AmexioItemSelectorComponent implements OnInit {
 
   objectIndex: any;
 
-  itemSelectorWidth: any;
+  leftactive : boolean = true;
 
-  itemSelectorHeight: any;
+  rightactive : boolean = true;
 
-  smallScreen: boolean;
 
   response: any;
 
   previousValue: any;
 
 
-   constructor(public itemSelectorService : CommonDataService) { }
+  constructor(public itemSelectorService : CommonDataService) { }
 
-   ngOnInit() {
-     if (this.httpMethod && this.httpUrl) {
-       this.itemSelectorService.fetchData(this.httpUrl, this.httpMethod).subscribe(response => {
-         this.response = response.json();
-       }, error => {
-       }, () => {
-         this.setData(this.response);
-       });
-     } else if (this.data) {
-       this.previousValue = JSON.parse(JSON.stringify(this.data));
-       this.setData(this.data);
-     }
-   }
+  ngOnInit() {
+    if (this.httpMethod && this.httpUrl) {
+      this.itemSelectorService.fetchData(this.httpUrl, this.httpMethod).subscribe(response => {
+        this.response = response.json();
+      }, error => {
+      }, () => {
+        this.setData(this.response);
+      });
+    } else if (this.data) {
+      this.previousValue = JSON.parse(JSON.stringify(this.data));
+      this.setData(this.data);
+    }
+  }
 
   ngDoCheck() {
     if (JSON.stringify(this.previousValue) != JSON.stringify(this.data)) {
@@ -151,7 +89,10 @@ export class AmexioItemSelectorComponent implements OnInit {
   }
 
 
-  itemClick(data: any, index: any) {
+  itemClick(data: any, index: any, left:boolean, right:boolean) {
+    this.leftactive   = left;
+    this.rightactive  = right;
+
     this.switchingObject = data;
     this.objectIndex = index;
 
@@ -186,9 +127,11 @@ export class AmexioItemSelectorComponent implements OnInit {
   leftSwitch() {
     let flag : boolean;
 
-    for (let ir = 0; ir < this.availableData.length; ir++) {
-      if((this.availableData[ir])[this.valueField] === this.switchingObject[this.valueField]){
-        flag = true
+    if(this.switchingObject && this.availableData){
+      for (let ir = 0; ir < this.availableData.length; ir++) {
+        if((this.availableData[ir])[this.valueField] === this.switchingObject[this.valueField]){
+          flag = true
+        }
       }
     }
     if(!flag){
@@ -251,7 +194,7 @@ export class AmexioItemSelectorComponent implements OnInit {
     }
   }
 
-  moveDown() {
+  moveBottom() {
     if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected')) {
       if (this.switchingObject['isSelected'] && this.selectedData.length > 1) {
         this.selectedData.splice(this.objectIndex, 1);
@@ -267,13 +210,4 @@ export class AmexioItemSelectorComponent implements OnInit {
     this.selectedRecords.emit(this.selectedData);
   }
 
-  onResize(event: any) {
-    if (event.target.innerWidth < 768) {
-      this.itemSelectorWidth = 100 + '%';
-      this.smallScreen = true;
-    } else {
-      this.smallScreen = false;
-      this.itemSelectorWidth = 46 + '%';
-    }
-  }
 }

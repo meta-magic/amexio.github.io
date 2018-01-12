@@ -1,62 +1,91 @@
 
-.left-card{
-  width: 40%;
-  height: 50px;
-  display: table-cell;
-  vertical-align: top;
+.flex-col-45pt{
+  max-width: 45%;
+}
+
+.flex-col-10pt{
+  max-width: 10%;
+}
+
+
+.item-selector-action-panel{
+
+  .actionbar{
+    display: flex; flex-direction: column;
+
+    .actionbarinner{
+      align-self: center;
+      display: flex; flex-direction: column;
+      justify-content: space-between;
+
+      .action{
+        background-color: $primaryBGColor;
+        color: $primaryColor;
+        width: 50px;
+        height: 30px;
+        text-align: center;
+        cursor: pointer;
+      }
+
+      .actiondisable{
+        background-color: lighten($primaryBGColor,50);
+      }
+
+      .movetop{  display: block; }
+      .moveup{  display: block;}
+      .moveleft{  display: block;}
+      .moveright{  display: block;}
+      .movedown{  display: block;}
+      .movebottom{  display: block;}
+
+    }
+
+
+  }
+}
+
+
+
+
+@media only screen and (max-width: 500px) {
+
+  .flex-col-45pt,.flex-col-10pt{
+    max-width: 100%;
+  }
+
+  .item-selector-action-panel{
+
+    .card-header{
+      display: none;
+    }
+    .actionbar{
+      flex-direction: row;
+
+      .actionbarinner{
+        max-height: 30px;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100%;
+
+        .movetop{  display: none; }
+        .moveup{  display: none;}
+        .moveleft{  display: block;}
+        .moveright{  display: block;}
+        .movedown{  display: none;}
+        .movebottom{  display: none;}
+
+        .action{
+          transform: rotate(90deg);
+        }
+      }
+
+
+    }
+  }
 
 }
 
-.icon-card-center{
-  width: 10%;
-  display: table-cell;
-  vertical-align: top;
-  padding-left: 23px;
-
-}
-
-.icon-bar{
-  width: 50px;
-  background-color: #ced4da;
-}
-
-.icon-bar div {
-  display: block;
-  text-align: center;
-  padding: 16px;
-  transition: all 0.3s ease;
-  color: white;
-}
-
-.icon-bar div:hover {
-  cursor : pointer;
-  background-color: #000;
-}
-
-.right-card{
-  width: 40%;
-  height: 50px;
-  display: table-cell;
-  vertical-align: top;
-
-}
-
-/** List Styling **/
-.list{
-  list-style-type: none;
-}
-
-.list li {
-  padding: 8px 1px;
-  border-bottom: 1px solid #ddd;
-  width: 80%;
-}
-
-li {
-  display: list-item;
-  text-align: -webkit-match-parent;
-}
 
 .list-item-active{
-  background-color: #cecece;
+  background-color: lighten($primaryBGColor,30);
 }
