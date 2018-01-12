@@ -6,7 +6,7 @@ import {
   QueryList
 } from '@angular/core';
 import {AmexioGridColumnComponent} from "./data.grid.column";
-import {CommonDataService} from "amexio-ng-extensions";
+import {CommonDataService} from "../../services/data/common.data.service";
 
 @Component({
   selector: 'amexio-datagrid',
