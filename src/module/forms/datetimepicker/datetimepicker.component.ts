@@ -1,4 +1,4 @@
-import {Component, EventEmitter, forwardRef, Input, OnInit, Output} from '@angular/core';
+import {Component, ElementRef, EventEmitter, forwardRef, HostListener, Input, OnInit, Output} from '@angular/core';
 import {NG_VALUE_ACCESSOR} from "@angular/forms";
 
 const noop = () => {
@@ -11,96 +11,7 @@ export const CUSTOM_DATETIME_Style_CONTROL_VALUE_ACCESSOR: any = {
 };
 @Component({
   selector: 'amexio-date-time-picker',
-  template: `
-    <div class="input-group">
-
-      <ng-container *ngIf="datepicker && !timepicker">
-        <input type="text"
-               value="{{dateModel|date:dateFormat}}"
-               (blur)="onBlur()"
-               (focus)="onFocus()"
-               class="input-control" placeholder="Choose Date"/>
-      </ng-container>
-
-      <ng-container *ngIf="timepicker">
-        <input type="text"
-               value="{{dateModel|date:dateFormat}} {{hrs + ' : ' + min}}"
-               (blur)="onBlur()"
-               (focus)="onFocus()"
-               class="input-control" placeholder="Choose Time"/>
-      </ng-container>
-
-
-      <span class="input-control-feedback date-icon">
-          <i class="fa fa-calendar" aria-hidden="true"></i>
-   </span>
-
-    </div>
-
-    <div style="width: 42%;padding-top: 2px;" *ngIf="showToolTip">
-      <div class="month">
-        <ul style="list-style: none;">
-          <li class="prev"><!--<amexio-icon key="datepicker_previous"></amexio-icon>-->
-            <i (click)="prevYear($event)" class="fa fa fa-step-backward" aria-hidden="true"></i>
-            <i (click)="prevMonth($event)" class="fa fa-chevron-left"></i>
-          </li>
-          <li class="next"><!--<amexio-icon key="datepicker_next"></amexio-icon>-->
-            <i (click)="nextMonth($event)" class="fa fa-chevron-right"></i>
-            <i (click)="nextYear($event)" class="fa fa-step-forward" aria-hidden="true"></i>
-          </li>
-          <li style="cursor:pointer;">{{selectedDate | date:'MMMM'}}<br>
-            <span style="font-size:18px;cursor:pointer;">{{selectedDate | date:'y'}}</span>
-          </li>
-        </ul>
-      </div>
-
-
-
-      <ul class="weekdays">
-        <li *ngFor="let dayTitle of daysTitle">{{dayTitle.text}}</li>
-        <!-- Time Picker Div Here -->
-      </ul>
-
-      <ul (click)="onSelect()" class="days">
-        <ng-container *ngFor="let dayArray of daysArray">
-          <li *ngFor="let day of dayArray" (click)="onDateClick(day.date)" ><span [ngClass]="{'active':day.selected, 'currentMonth':day.isCurrentMonth, 'notCurrentMonth':!day.isCurrentMonth}">{{ day.date | date:'d' }}</span></li>
-        </ng-container>
-        <li class="date-today"><amexio-button label="TODAY" (onClick)="setToday()" size="small"></amexio-button></li>
-        <table class="table datepicker" align="center" *ngIf="timepicker" style="cursor : pointer;text-align: center;padding: 5px;">
-          <!--if picker is true-->
-          <tr style="padding: 10px;">
-            <td colspan="2">
-            </td>
-            <td (click)="plus('hrs', $event);">&#9650;</td>
-            <td></td>
-            <td (click)="plus('min', $event);">&#9650;</td>
-            <td colspan="2">
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-            </td>
-            <td>{{hrs}}</td>
-            <td>:</td>
-            <td>{{min}}</td>
-            <td colspan="2">
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-            </td>
-            <td (click)="minus('hrs', $event);">&#9660;</td>
-            <td></td>
-            <td (click)="minus('min', $event);">&#9660;</td>
-            <td colspan="2">
-            </td>
-          </tr>
-
-        </table>
-      </ul>
-
-    </div>
-  `,
+  templateUrl:'./datetimepicker.component.html' ,
   providers : [CUSTOM_DATETIME_Style_CONTROL_VALUE_ACCESSOR]
 })
 
@@ -142,7 +53,7 @@ export class AmexioDateTimePicker implements OnInit {
 
 
 
-  constructor() {
+  constructor(public element: ElementRef) {
     this.elementId = new Date().getTime() + "";
     this.selectedDate = new Date();
     this.currrentDate = new Date();
@@ -218,6 +129,7 @@ export class AmexioDateTimePicker implements OnInit {
     this.resetSelection(dateObj);
     this.dateModel = this.selectedDate;
     this.value = this.selectedDate;
+    this.showToolTip = !this.showToolTip;
   }
 
   resetSelection(dateObj: any) {
@@ -378,4 +290,18 @@ export class AmexioDateTimePicker implements OnInit {
     this.showToolTip = false;
   }
 
+  @HostListener('document:click', ['$event.target'])
+  @HostListener('document: touchstart', ['$event.target'])
+  public onElementOutClick(targetElement : HTMLElement) {
+    let parentFound = false;
+    while (targetElement != null && !parentFound) {
+      if (targetElement === this.element.nativeElement) {
+        parentFound = true;
+      }
+      targetElement = targetElement.parentElement;
+    }
+    if (!parentFound) {
+      this.showToolTip = false;
+    }
+  }
 }
