@@ -112,7 +112,7 @@ export class AmexioPaginatorComponent {
     else{
       //load next rows
       let sIndx = this.fullPageSet.indexOf(this.activePage) + 1;
-      if(sIndx < this.fullPageSet.length){
+      if(sIndx < this.fullPageSet.length-1){
         this.changeRows(this.pageIndex[this.currentRowIndex+1],this.currentRowIndex+1);
         this.activePageIndex = 1;
         this.activePage = this.activePages[1];
@@ -123,15 +123,24 @@ export class AmexioPaginatorComponent {
 
 
   changeRows(rowNumber: number,inDx : number){
-    this.currentRow = rowNumber;
+    /* If page size is less then row*/
+    this.activePages = [];
+    if(this.pages < rowNumber) {
+      this.currentRow = this.pages;
+      for(let i = this.currentRow - this.rows+1;i<=this.currentRow;i++){
+        if(i != 0)
+          this.activePages.push(i);
+      }
+    } else {
+      this.currentRow = rowNumber;
+      for(let i = this.currentRow - this.rows;i<=this.currentRow;i++){
+        if(i != 0)
+          this.activePages.push(i);
+      }
+    }
     this.currentRowIndex = inDx;
     this.onRowChange.emit(this.currentRow);
 
-    this.activePages = [];
-    for(let i = this.currentRow - this.rows;i<=this.currentRow;i++){
-      if(i != 0)
-        this.activePages.push(i);
-    }
     this.setBoundaries();
     this.activePageIndex = 0;
     this.activePage = this.activePages[0];
@@ -160,8 +169,12 @@ export class AmexioPaginatorComponent {
 
   setRows(rowNumber : number){
     this.activePages = [];
-    this.currentRow = rowNumber;
-    for(let i = 0 ; i < rowNumber; i++){
+    if(rowNumber > this.pages) {
+      this.currentRow = this.pages;
+    } else {
+      this.currentRow = rowNumber;
+    }
+    for(let i = 0 ; i < this.currentRow; i++){
       this.activePages.push(i+1);
     }
 

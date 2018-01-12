@@ -11,6 +11,7 @@ import {DataPointNorthComponent} from "./datapoints/north.component";
 import {DataPointSouthComponent} from "./datapoints/south.component";
 import {DataPointWestComponent} from "./datapoints/west.component";
 import {DashboardLoaderService} from "./chart.loader.service";
+import {GaugeChartComponent} from "./gaugechart/gauge.chart.component";
 
 export * from '../services/data/common.data.service';
 export * from './dashboardtitle/dashboard.title.component';
@@ -21,7 +22,7 @@ export * from  './datapoints/north.component';
 export * from './datapoints/south.component';
 export * from './datapoints/west.component';
 export * from './chart.loader.service';
-
+export * from './gaugechart/gauge.chart.component';
 const DASHBOARD = [
   DashBoardTitle,
   DataPointCenterComponent,
@@ -29,7 +30,8 @@ const DASHBOARD = [
   DataPointEastComponent,
   DataPointNorthComponent,
   DataPointSouthComponent,
-  DataPointWestComponent
+  DataPointWestComponent,
+  GaugeChartComponent
 ];
 
 @NgModule({

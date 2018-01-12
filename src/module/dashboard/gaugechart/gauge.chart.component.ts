@@ -128,9 +128,9 @@ declare var google: any;
 
 export class GaugeChartComponent implements AfterContentInit , OnInit{
 
-  private options;
-  private gaugeData;
-  private chart;
+  private options:any;
+  private gaugeData:any;
+  private chart:any;
 
   id: any;
   hasLoaded:boolean;
@@ -198,7 +198,7 @@ export class GaugeChartComponent implements AfterContentInit , OnInit{
       }
     );
   }
-  onResize(event){
+  onResize(event:any){
     this.drawChart();
   }
 }

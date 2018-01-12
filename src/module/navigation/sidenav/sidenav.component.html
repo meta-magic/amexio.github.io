@@ -17,7 +17,7 @@
     <li  *ngFor="let node of data">
       <div *ngIf="node.children && (node.children.length>0)" class="border"></div>
       <div class="headernode" [ngClass]="{'activenode':node.active}"  (click)="onNodeClick(node)">
-        <span><i class="node-icon" [ngClass]="node.icon" aria-hidden="true"></i></span>
+        <span *ngIf="node.icon"><i class="node-icon" [ngClass]="node.icon" aria-hidden="true"></i></span>
         <span (click)="onClick(node)">{{node.text}}</span>
         <ng-container *ngIf="node.children && (node.children.length>0)">
           <span style="padding-right: 10px; float: right" *ngIf="node.expand"  (click)="onClick(node)"><i class="fa fa-angle-up" aria-hidden="true"></i></span>
