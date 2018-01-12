@@ -14,7 +14,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
           <div class="table" style="width: 100%;">
             <div class="tablerow">
               <div class="tablecol" >
-                <ng-content select="amexio-pane-header"></ng-content>
+                <ng-content select="amexio-header"></ng-content>
               </div>
               <div  class="tablecol float-right">
                 <i *ngIf="(!isFullWindow && maximize)" class="fa fa-window-maximize" aria-hidden="true" (click)="sizeChange()"></i>
@@ -25,10 +25,10 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
           </div>
         </header>
         <div class="modal-window-middle">
-          <ng-content select="amexio-pane-body"></ng-content>
+          <ng-content select="amexio-body"></ng-content>
         </div>
         <footer class="modal-window-footer"   [ngClass]="{'flex-start':(footeralign=='left'),'flex-end':(footeralign=='right'),'flex-center':(footeralign=='center')}">
-          <ng-content select="amexio-pane-action"></ng-content>
+          <ng-content select="amexio-action"></ng-content>
         </footer>
       </div>
 
