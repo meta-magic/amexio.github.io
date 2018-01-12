@@ -162,7 +162,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
           <div class="datatable-col">
             <div class="inputgroup">
               <div class="input-box">
-                <div  (click)="setSelectedRow(row, check)" class="{{selectAll ? 'checkbox active' : 'checkbox default'}}" #check>{{(check.classList.value == 'checkbox active' || selectAll )? '&#10004;' : ''}}</div>
+                <div (click)="setSelectedRow(row, check)" class="{{selectAll ? 'checkbox active' : 'checkbox default'}}" #check>{{((check.classList.value == 'checkbox active' || selectAll) && (check.classList.value == 'checkbox active' && selectAll) )? '&#10004;' : ''}}</div>
               </div>
             </div>
           </div>
