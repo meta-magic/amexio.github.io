@@ -92,7 +92,7 @@ import {CommonHttpService} from "../common.http.service";
                         <tbody>
                         <tr *ngFor="let data of selectedData; let i = index" (click)="itemClick(data,i)">
                             <td class="amexio-itemselector-records" [ngClass]="data['isSelected'] ? 'amexio-itemselector-records-selected':''">{{data[displayField]}}</td>
-                        </tr>
+                        </tr> 
                         </tbody>
                     </table>
                 </div>
@@ -261,8 +261,6 @@ export class ItemSelectorComponent implements OnInit, AfterViewInit, DoCheck {
             }else{
                 this.availableData[ir].isSelected = false;
             }
-
-
         }
     }
 

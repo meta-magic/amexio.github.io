@@ -90,23 +90,27 @@ export class CommonHttpService {
     let errorCounter = 1;
     for (let ic = 0; ic < inputTexts.length; ic++) {
       const component = inputTexts[ic];
-      const isValid = component.isValidInput();
+      console.log(typeof (component as any).isValidInput === 'function');
+      if (typeof (component as any).isValidInput === 'function') {
+        const isValid = component.isValidInput();
 
-      if (isValid) {
-        if (component.minErrorMsg) {
-          invalidMsg['minErrorMsg'] = component.minErrorMsg;
+        if (isValid) {
+          if (component.minErrorMsg) {
+            invalidMsg['minErrorMsg'] = component.minErrorMsg;
+          }
+          if (component.maxErrorMsg) {
+            invalidMsg['maxErrorMsg'] =  component.maxErrorMsg;
+          }
+          if (component.errorMsg) {
+            invalidMsg['errorMsg'] = component.errorMsg;
+          }
+          invalidComponent.push({'componentName': component.fieldLabel , 'errorMsgs': invalidMsg});
+          invalidMsg = {};
+          this.isValid = false;
+          errorCounter++;
         }
-        if (component.maxErrorMsg) {
-          invalidMsg['maxErrorMsg'] =  component.maxErrorMsg;
-        }
-        if (component.errorMsg) {
-          invalidMsg['errorMsg'] = component.errorMsg;
-        }
-        invalidComponent.push({'componentName': component.fieldLabel , 'errorMsgs': invalidMsg});
-        invalidMsg = {};
-        this.isValid = false;
-        errorCounter++;
       }
+
     }
     validationData = {'ValidationStatus': this.isValid , 'invalidComponent': invalidComponent};
     return validationData;
