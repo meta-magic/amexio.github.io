@@ -6,7 +6,7 @@ import {
   QueryList
 } from '@angular/core';
 import {AmexioGridColumnComponent} from "./data.grid.column";
-import {CommonDataService} from "../../services/data/common.data.service";
+import {CommonDataService} from "amexio-ng-extensions";
 
 @Component({
   selector: 'amexio-datagrid',
@@ -162,7 +162,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
           <div class="datatable-col">
             <div class="inputgroup">
               <div class="input-box">
-                <div (click)="setSelectedRow(row, check)" class="{{selectAll ? 'checkbox active' : 'checkbox default'}}" #check>{{((check.classList.value == 'checkbox active' || selectAll) && (check.classList.value == 'checkbox active' && selectAll) )? '&#10004;' : ''}}</div>
+                <div  (click)="setSelectedRow(row, check)" [class]="setCheckBoxSelectClass(check)" #check>{{((setCheckBoxSelectClass(check) == 'checkbox active') && (check.classList.value == 'checkbox active')) || ((setCheckBoxSelectClass(check) == 'checkbox default') && (check.classList.value == 'checkbox active')) ? '&#10004;' : ''}}</div>
               </div>
             </div>
           </div>
@@ -286,7 +286,7 @@ export class AmexioDatagridComponent implements OnInit,AfterContentInit {
 
   selectedRowNo: number;
 
-  selectAll: boolean;
+  selectAll = false;
 
   selectedRows: any[];
 
@@ -600,4 +600,11 @@ export class AmexioDatagridComponent implements OnInit,AfterContentInit {
   }
 
 
+  setCheckBoxSelectClass(event: any) {
+    if(this.selectAll) {
+      return 'checkbox active';
+    } else if(!this.selectAll) {
+      return 'checkbox default';
+    }
+  }
 }
