@@ -30,7 +30,7 @@ export class AmexioRatingComponent implements OnInit, ControlValueAccessor, Vali
   // -------------------------------------------------------------------------
 
   @Input()
-  iconClass = "amexio-star-icon";
+  iconClass = "star-icon";
 
   @Input()
   fullIcon = "★";

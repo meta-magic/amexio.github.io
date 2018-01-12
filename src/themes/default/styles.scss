@@ -115,6 +115,9 @@ $datapointBorderColor : $borderColor;
 
 $componentBGColor: #ffffff;
 
+$ratingBorderColor : $borderColor;
+$ratingActiveColor : $primaryBGColor;
+
 body {
   background: $backgroundcolor;
   min-height: 100%;
@@ -182,3 +185,5 @@ body {
 @import "toggle.scss";
 
 @import "borderlayout.scss";
+
+@import "rating.scss";

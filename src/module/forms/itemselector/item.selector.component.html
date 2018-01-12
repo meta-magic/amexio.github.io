@@ -1,0 +1,71 @@
+
+<amexio-row>
+  <amexio-column [size]="'45pt'">
+    <amexio-card [enableHeader]="true">
+      <amexio-header>Available</amexio-header>
+      <amexio-body>
+        <div [style.height.px]="height" style="overflow: auto">
+          <ul class="dropdown-list">
+            <li class="list-items" [ngClass]="data['isSelected'] ? 'list-item-active':''"
+                *ngFor="let data of availableData; let i = index" (click)="itemClick(data,i, true,false)">
+              {{data[displayField]}}
+            </li>
+          </ul>
+        </div>
+      </amexio-body>
+    </amexio-card>
+  </amexio-column>
+
+  <amexio-column [size]="'10pt'">
+
+    <div class="item-selector-action-panel">
+
+      <amexio-card [enableHeader]="true">
+        <amexio-header>&nbsp;</amexio-header>
+        <amexio-body>
+          <div class="actionbar">
+            <div [style.height.px]="height"  class="actionbarinner">
+              <div [ngClass]="{'actiondisable':!rightactive}" (click)="moveTop()" class="action movetop ">
+                <i class="fa fa-caret-up"></i>
+              </div>
+              <div  [ngClass]="{'actiondisable':!rightactive}" (click)="upSwitch()"  class="action moveup">
+                <i class="fa fa-arrow-up"></i>
+              </div>
+              <div  [ngClass]="{'actiondisable':!rightactive}" (click)="leftSwitch()"  class="action moveleft">
+                <i class="fa fa-arrow-left"></i>
+              </div>
+              <div  [ngClass]="{'actiondisable':!leftactive}"  (click)="rightSwitch()"  class="action moveright">
+                <i class="fa fa-arrow-right"></i>
+              </div>
+              <div  [ngClass]="{'actiondisable':!rightactive}" (click)="downSwitch()"  class="action movedown">
+                <i class="fa fa-arrow-down"></i>
+              </div>
+              <div  [ngClass]="{'actiondisable':!rightactive}" (click)="moveBottom()"  class="action movebottom">
+                <i class="fa fa-caret-down"></i>
+              </div>
+            </div>
+          </div>
+        </amexio-body>
+      </amexio-card>
+    </div>
+
+  </amexio-column>
+
+  <amexio-column [size]="'45pt'">
+    <amexio-card [enableHeader]="true">
+      <amexio-header>Selected</amexio-header>
+      <amexio-body>
+        <div [style.height.px]="height" style="overflow: auto">
+          <ul class="dropdown-list">
+            <li class="list-items"
+                *ngFor="let data of selectedData; let i = index"
+                (click)="itemClick(data,i, false,true)" [ngClass]="data['isSelected'] ? 'list-item-active':''">
+              {{data[displayField]}}
+            </li>
+          </ul>
+        </div>
+      </amexio-body>
+    </amexio-card>
+
+  </amexio-column>
+</amexio-row>
