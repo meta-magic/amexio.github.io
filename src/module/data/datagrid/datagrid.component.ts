@@ -9,86 +9,50 @@ import {AmexioGridColumnComponent} from "./data.grid.column";
 import {CommonDataService} from "../../services/data/common.data.service";
 
 @Component({
- selector: 'amexio-datagrid',
- template: `
-   <!--<div class="datatable">
-       <div class="datatable-header">
-         <div class="datatable-col header">
-           {{title}}
-         </div>
-         <div class="datatable-col header">
-           <i class="fa fa-bars" aria-hidden="true" (click)="showToolTip = !showToolTip"  style="float : right;"></i>
-           <div style="padding-left: 30%">
-            <span *ngIf="showToolTip" class="dropdown" style="width: 20%;">
-              <ul class="dropdown-list">
-                <li class="list-items" style="background-color: lightgray" *ngFor="let cols of columns;let i = index;" (click)="showToolTip = !showToolTip">
-                  <input type="checkbox"  [attr.checked]="!cols.hidden ? true: null" (click)="onColumnCheck(cols)"/>
-                  <label>{{cols.text}}</label>
-                </li>
-              </ul>
-           </span>  
+  selector: 'amexio-datagrid',
+  template: `
+    <!--<div class="datatable">
+        <div class="datatable-header">
+          <div class="datatable-col header">
+            {{title}}
+          </div>
+          <div class="datatable-col header">
+            <i class="fa fa-bars" aria-hidden="true" (click)="showToolTip = !showToolTip"  style="float : right;"></i>
+            <div style="padding-left: 30%">
+             <span *ngIf="showToolTip" class="dropdown" style="width: 20%;">
+               <ul class="dropdown-list">
+                 <li class="list-items" style="background-color: lightgray" *ngFor="let cols of columns;let i = index;" (click)="showToolTip = !showToolTip">
+                   <input type="checkbox"  [attr.checked]="!cols.hidden ? true: null" (click)="onColumnCheck(cols)"/>
+                   <label>{{cols.text}}</label>
+                 </li>
+               </ul>
+            </span>  
+            </div>
+          </div>
+ 
+        </div>
+      
+      <div class="datatable-row" style="background-color: lightgray">
+        <ng-container *ngIf="checkboxSelect">
+         <div class="datatable-col">
+           <div class="inputgroup">
+             <div class="input-box">
+               <div  *ngIf="!selectAll" (click)="selectAll = !selectAll" class="checkbox default"></div>
+               <div *ngIf="selectAll" (click)="selectAll = !selectAll" class="checkbox active">&#10004;</div>
+             </div>
            </div>
          </div>
-
-       </div>
-     
-     <div class="datatable-row" style="background-color: lightgray">
-       <ng-container *ngIf="checkboxSelect">
-        <div class="datatable-col">
-          <div class="inputgroup">
-            <div class="input-box">
-              <div  *ngIf="!selectAll" (click)="selectAll = !selectAll" class="checkbox default"></div>
-              <div *ngIf="selectAll" (click)="selectAll = !selectAll" class="checkbox active">&#10004;</div>
-            </div>
-          </div>
+        </ng-container>
+        <div class="datatable-col " *ngFor="let cols of columns">
+          <ng-container *ngIf="!cols.hidden">{{cols.text}}</ng-container>
         </div>
-       </ng-container>
-       <div class="datatable-col " *ngFor="let cols of columns">
-         <ng-container *ngIf="!cols.hidden">{{cols.text}}</ng-container>
-       </div>
-     </div>
-     
-     
+      </div>
       
-     <div class="datatable">
-      <ng-container *ngIf="checkboxSelect">
-        <div class="datatable-row" *ngFor="let row of viewRows;let i=index">
-          <div class="datatable-col">
-            <div class="inputgroup">
-              <div class="input-box">
-                <div  *ngIf="!selectAll" (click)="selectAll = !selectAll" class="checkbox default"></div>
-                <div *ngIf="selectAll" (click)="selectAll = !selectAll" class="checkbox active">&#10004;</div>
-              </div>
-            </div>
-          </div>
-          <div class="datatable-col" *ngFor="let cols of columns;let colIndex = index">
-            <ng-container *ngIf="!cols.hidden">
-              {{row[cols.dataIndex]}}
-            </ng-container>
-          </div>
-        </div>
-      </ng-container>
-     </div>
-     
-   
-
-   <div style="text-align: center">
-       <amexio-paginator [pages]="50" [rows]="pageSize"></amexio-paginator>
-   </div>
- -->
-   <div>
-     
-     <div class="title">
-       <span> {{title}} </span>
-         <span *ngIf="columnToggle ? true:false" class="float-right" (click)="showToolTip = !showToolTip" style=" cursor: pointer;">
-            <span *ngIf="!show">&#9776;</span>
-            <span *ngIf="show">&#9747;</span>
-          </span>
-     </div>
-     
-     <ng-container *ngIf="filtering ? true : false">
-       <div class="datatable datatable-row">
-         <ng-container *ngIf="checkboxSelect">
+      
+       
+      <div class="datatable">
+       <ng-container *ngIf="checkboxSelect">
+         <div class="datatable-row" *ngFor="let row of viewRows;let i=index">
            <div class="datatable-col">
              <div class="inputgroup">
                <div class="input-box">
@@ -97,23 +61,59 @@ import {CommonDataService} from "../../services/data/common.data.service";
                </div>
              </div>
            </div>
-         </ng-container>
-         
-         <ng-container *ngIf="filtering ? true : false">
-           <ng-container *ngFor="let cols of columns">
-             <div class="datatable-col">
-               <data-grid-filter [column]="cols"
-                                 (filterObject)="getFilteredData($event)"></data-grid-filter>
-             </div>
-           </ng-container>  
-         </ng-container>
-         
-       </div>
-     </ng-container>
-     
-     <div>
-       
-       <ng-container *ngIf="columnToggle ? true : false" >
+           <div class="datatable-col" *ngFor="let cols of columns;let colIndex = index">
+             <ng-container *ngIf="!cols.hidden">
+               {{row[cols.dataIndex]}}
+             </ng-container>
+           </div>
+         </div>
+       </ng-container>
+      </div>
+      
+    
+ 
+    <div style="text-align: center">
+        <amexio-paginator [pages]="50" [rows]="pageSize"></amexio-paginator>
+    </div>
+  -->
+    <div>
+
+      <div class="title">
+        <span> {{title}} </span>
+        <span *ngIf="columnToggle ? true:false" class="float-right" (click)="showToolTip = !showToolTip" style=" cursor: pointer;">
+            <span *ngIf="!show">&#9776;</span>
+            <span *ngIf="show">&#9747;</span>
+          </span>
+      </div>
+
+      <ng-container *ngIf="filtering ? true : false">
+        <div class="datatable datatable-row">
+          <ng-container *ngIf="checkboxSelect">
+            <div class="datatable-col">
+              <div class="inputgroup">
+                <div class="input-box">
+                  <div  *ngIf="!selectAll" (click)="selectAll = !selectAll" class="checkbox default"></div>
+                  <div *ngIf="selectAll" (click)="selectAll = !selectAll" class="checkbox active">&#10004;</div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="filtering ? true : false">
+            <ng-container *ngFor="let cols of columns">
+              <div class="datatable-col">
+                <data-grid-filter [column]="cols"
+                                  (filterObject)="getFilteredData($event)"></data-grid-filter>
+              </div>
+            </ng-container>
+          </ng-container>
+
+        </div>
+      </ng-container>
+
+      <div>
+
+        <ng-container *ngIf="columnToggle ? true : false" >
           <span *ngIf="showToolTip" class="dropdown dropdown-right" style="width: 250px;">
         <ul class="dropdown-list">
           <li class="list-items" *ngFor="let cols of columns;let i = index;" (click)="showToolTip = !showToolTip">
@@ -124,100 +124,100 @@ import {CommonDataService} from "../../services/data/common.data.service";
           </li>
          </ul>
       </span>
-       </ng-container>
-     
-       
-     </div>
-   </div>
+        </ng-container>
 
-   <div class="datatable">
-     <div class="datatable-header">
-       <ng-container *ngIf="checkboxSelect">
-       <div class="datatable-col">
-         <div class="inputgroup">
-           <div class="input-box">
-             <div  *ngIf="!selectAll" (click)="selectAll = !selectAll" class="checkbox default"></div>
-             <div *ngIf="selectAll" (click)="selectAll = !selectAll" class="checkbox active">&#10004;</div>
-           </div>
-         </div>
-       </div>
-       </ng-container>
-       
-       <ng-container *ngFor="let cols of columns">
-         <ng-container *ngIf="!cols.hidden">
-           <div class="datatable-col">
-             {{cols.text}}
-           </div>
-         </ng-container>
-       </ng-container>
-      
-       <!--<div class="datatable-col header"> COL 3 <span>&#x2191;</span></div>-->
-     </div>
-   </div>
-   <div class="datatable">
-     <div class="datatable-row" *ngFor="let row of viewRows;let i=index">
 
-       <ng-container *ngIf="checkboxSelect">
-         <div class="datatable-col">
-           <div class="inputgroup">
-             <div class="input-box">
-               <div  *ngIf="!selectAll" (click)="selectAll = !selectAll" class="checkbox default"></div>
-               <div *ngIf="selectAll" (click)="selectAll = !selectAll" class="checkbox active">&#10004;</div>
-             </div>
-           </div>
-         </div>
-       </ng-container>
-       
-       <ng-container *ngFor="let cols of columns;let colIndex = index">
-         <ng-container *ngIf="!cols.hidden">
-           <div class="datatable-col" scope="row" [attr.data-label]="cols.text">
-             {{row[cols.dataIndex]}}
-           </div>
-         </ng-container>
-       </ng-container>
-       
-       <!--<div class="datatable-col" data-label="col 2">02/01/2016</div>
-       <div class="datatable-col" scope="row" data-label="COL 3">Visa - 3412</div>
-       <div class="datatable-col" data-label="COL 4">02/01/2016</div>-->
-     </div>
-   </div>
+      </div>
+    </div>
 
-   <!--<div>
-     <span>Column Group</span>
-     <div class="datatable">
-       <div class="datatable-row">
-         <div class="datatable-col" scope="row" data-label="col 1">Visa - 3412</div>
-         <div class="datatable-col" data-label="col 2">02/01/2016</div>
-         <div class="datatable-col" scope="row" data-label="COL 3">Visa - 3412</div>
-         <div class="datatable-col" data-label="COL 4">02/01/2016</div>
-       </div>
-       <div class="datatable-row">
-         <div class="datatable-col" scope="row" data-label="COL 1">Visa - 34</div>
-         <div class="datatable-col" data-label="COL 2">02/01/2017</div>
-         <div class="datatable-col" scope="row" data-label="COL 3">Visa - 34</div>
-         <div class="datatable-col" data-label="COL 4">02/01/2017</div>
-       </div>
-       <div class="datatable-row">
-         <div class="datatable-col" scope="row" data-label="COL 1">Visa - 35</div>
-         <div class="datatable-col" data-label="COL 2">02/01/2018</div>
-         <div class="datatable-col" scope="row" data-label="COL 3">Visa - 35</div>
-         <div class="datatable-col" data-label="COL 4">02/01/2018</div>
-       </div>
-     </div>
-   </div>-->
+    <div class="datatable">
+      <div class="datatable-header">
+        <ng-container *ngIf="checkboxSelect">
+          <div class="datatable-col">
+            <div class="inputgroup">
+              <div class="input-box">
+                <div  *ngIf="!selectAll" (click)="selectAllVisibleRows()" class="checkbox default"></div>
+                <div *ngIf="selectAll" (click)="selectAllVisibleRows()"  class="checkbox active">&#10004;</div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
 
-   <div>
-     <div class="footer">
-       <ng-container *ngIf="pageSize"> 
-         <ng-container *ngIf="totalPages!=null">
-           <amexio-paginator [pages]="totalPages" [rows]="pageSize" (onPageChange)="loadPageData($event)"></amexio-paginator>
-         </ng-container>  
-       </ng-container>
-       
-       
-     </div>
-   </div>
- `
+        <ng-container *ngFor="let cols of columns">
+          <ng-container *ngIf="!cols.hidden">
+            <div class="datatable-col">
+              {{cols.text}}
+            </div>
+          </ng-container>
+        </ng-container>
+
+        <!--<div class="datatable-col header"> COL 3 <span>&#x2191;</span></div>-->
+      </div>
+    </div>
+
+    <div class="datatable">
+      <div class="datatable-row" *ngFor="let row of viewRows;let i=index" id="{{'row'+i}}" (click)="rowClick(row, i)">
+
+        <ng-container *ngIf="checkboxSelect">
+          <div class="datatable-col">
+            <div class="inputgroup">
+              <div class="input-box">
+                <div  (click)="setSelectedRow(row, check)" class="{{selectAll ? 'checkbox active' : 'checkbox default'}}" #check>{{(check.classList.value == 'checkbox active' || selectAll )? '&#10004;' : ''}}</div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngFor="let cols of columns;let colIndex = index">
+          <ng-container *ngIf="!cols.hidden">
+            <div  class="datatable-col" scope="row" [attr.data-label]="cols.text">
+              {{row[cols.dataIndex]}}
+            </div>
+          </ng-container>
+        </ng-container>
+
+        <!--<div class="datatable-col" data-label="col 2">02/01/2016</div>
+        <div class="datatable-col" scope="row" data-label="COL 3">Visa - 3412</div>
+        <div class="datatable-col" data-label="COL 4">02/01/2016</div>-->
+      </div>
+    </div>
+
+    <!--<div>
+      <span>Column Group</span>
+      <div class="datatable">
+        <div class="datatable-row">
+          <div class="datatable-col" scope="row" data-label="col 1">Visa - 3412</div>
+          <div class="datatable-col" data-label="col 2">02/01/2016</div>
+          <div class="datatable-col" scope="row" data-label="COL 3">Visa - 3412</div>
+          <div class="datatable-col" data-label="COL 4">02/01/2016</div>
+        </div>
+        <div class="datatable-row">
+          <div class="datatable-col" scope="row" data-label="COL 1">Visa - 34</div>
+          <div class="datatable-col" data-label="COL 2">02/01/2017</div>
+          <div class="datatable-col" scope="row" data-label="COL 3">Visa - 34</div>
+          <div class="datatable-col" data-label="COL 4">02/01/2017</div>
+        </div>
+        <div class="datatable-row">
+          <div class="datatable-col" scope="row" data-label="COL 1">Visa - 35</div>
+          <div class="datatable-col" data-label="COL 2">02/01/2018</div>
+          <div class="datatable-col" scope="row" data-label="COL 3">Visa - 35</div>
+          <div class="datatable-col" data-label="COL 4">02/01/2018</div>
+        </div>
+      </div>
+    </div>-->
+
+    <div>
+      <div class="footer">
+        <ng-container *ngIf="pageSize">
+          <ng-container *ngIf="totalPages!=null">
+            <amexio-paginator [pages]="totalPages" [rows]="pageSize" (onPageChange)="loadPageData($event)"></amexio-paginator>
+          </ng-container>
+        </ng-container>
+
+
+      </div>
+    </div>
+  `
 })
 
 export class AmexioDatagridComponent implements OnInit,AfterContentInit {
@@ -257,6 +257,8 @@ export class AmexioDatagridComponent implements OnInit,AfterContentInit {
   @Input() tableTitlecClass: string;
 
   @Input() tableDatacClass: string;
+
+  @Input() tableRowSelectedColor: string;
 
   @Input() columnLocalData: any;
 
@@ -323,9 +325,14 @@ export class AmexioDatagridComponent implements OnInit,AfterContentInit {
   @ContentChildren(AmexioGridColumnComponent) columnRef: QueryList<AmexioGridColumnComponent>;
 
 
-  constructor(public dataTableService : CommonDataService) { }
+  constructor(public dataTableService : CommonDataService) {
+    this.selectedRows = [];
+  }
 
   ngOnInit() {
+    if (this.tableRowSelectedColor == null || this.tableRowSelectedColor == '') {
+      this.tableRowSelectedColor = '#dcecf7';
+    }
     if (this.httpMethod && this.httpUrl){
 
       this.dataTableService.fetchData(this.httpUrl, this.httpMethod).subscribe(
@@ -365,7 +372,6 @@ export class AmexioDatagridComponent implements OnInit,AfterContentInit {
       this.columns.push(columnData);
     }
   }
-
 
   setData(httpResponse: any){
     this.viewRows = this.getResponseData(httpResponse);
@@ -436,6 +442,17 @@ export class AmexioDatagridComponent implements OnInit,AfterContentInit {
 
   onColumnCheck(column : any){
     column.hidden = !column.hidden;
+  }
+
+  rowClick(rowData: any, rowIndex: any) {
+    rowIndex = 'row' + rowIndex;
+    if (this.rowId) {
+      document.getElementById(this.rowId).style.backgroundColor = 'white';
+    }
+    this.rowId = rowIndex;
+    document.getElementById(rowIndex).style.backgroundColor = this.tableRowSelectedColor;
+    this.rowSelect.emit(rowData);
+    this.selectedRowNo = rowIndex;
   }
 
 
@@ -546,5 +563,41 @@ export class AmexioDatagridComponent implements OnInit,AfterContentInit {
     }
     // this.cd.detectChanges();
   }
+
+  selectAllVisibleRows() {
+    this.selectAll = !this.selectAll;
+    if (this.selectAll) {
+      for (let vr = 0; vr < this.viewRows.length; vr++) {
+        this.selectedRows.push(this.viewRows[vr]);
+      }
+    } else {
+      this.selectedRows = [];
+    }
+    this.emitSelectedRows();
+  }
+
+  setSelectedRow(rowData: any, event: any) {
+    if (event.classList.value == 'checkbox default') {
+      this.selectedRows.push(rowData);
+      event.classList.value = 'checkbox active';
+    } else {
+      const indexOf = this.selectedRows.indexOf(rowData);
+      delete this.selectedRows[indexOf];
+      event.classList.value = 'checkbox default';
+    }
+    this.emitSelectedRows();
+  }
+
+  emitSelectedRows() {
+    const sRows = [];
+    for (let sr = 0; sr < this.selectedRows.length; sr++) {
+      if (this.selectedRows[sr]) {
+        sRows.push(this.selectedRows[sr]);
+      }
+    }
+    this.selectedRowData.emit(sRows);
+
+  }
+
 
 }
