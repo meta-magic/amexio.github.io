@@ -12,6 +12,8 @@ import {AmexioGridColumnComponent} from "./datagrid/data.grid.column";
 import {AmexioProgressMultiBarComponent} from "./progress/bar.component";
 import {AmexioProgressBarComponent} from "./progress/progress.component";
 import {IconLoaderService} from "../services/icon/icon.service";
+import {HorizontalTreeViewNodeComponent} from "./tree/horizontalnode.component";
+import {HorizontalTreeViewComponent} from "./tree/horizontaltreeview.component";
 
 export * from '../services/data/common.data.service';
 export * from './listbox/listbox.component';
@@ -27,7 +29,9 @@ const DATA_COMPONENTS = [
   AmexioPaginatorComponent,
   AmexioGridColumnComponent,
   AmexioProgressMultiBarComponent,
-  AmexioProgressBarComponent
+  AmexioProgressBarComponent,
+  HorizontalTreeViewNodeComponent,
+  HorizontalTreeViewComponent
 ];
 
 @NgModule({
