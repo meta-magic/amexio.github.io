@@ -1,285 +1,110 @@
-/**
- * Created by pratik on 20/12/17.
- */
-/**
- * Created by ketangote on 7/25/17.
- */
-import {
-  Component, EventEmitter, forwardRef, Input, OnInit, Output
-} from '@angular/core';
+import {Component, EventEmitter, forwardRef, Input, OnInit, Output} from '@angular/core';
 import {NG_VALUE_ACCESSOR} from "@angular/forms";
 
 const noop = () => {
 };
 
-export const CUSTOM_DATETIME_CONTROL_VALUE_ACCESSOR: any = {
+export const CUSTOM_DATETIME_Style_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => AmexioDateTimeComponent),
+  useExisting: forwardRef(() => AmexioDateTimePicker),
   multi: true
 };
-
 @Component({
   selector: 'amexio-date-time-picker',
   template: `
-    <div class="inputgroup">
+    <div class="input-group">
 
-      <label [style.font-style]="fontStyle" [style.font-family]="fontFamily" [style.font-size]="fontSize">
-        {{fieldLabel}}
-      </label>
-
-
-      <input type="hidden"
-             [ngModel]="value"
-             (ngModelChange)="onChange($event)"
-             #inp="ngModel"
-      />
-
-      <ng-container *ngIf="readonly && datepicker">
-        <input type="text" class="input-control"
-               [ngClass]="{'input-control-error' : inp.invalid && (inp.dirty || inp.touched),'input-control-success' : inp.valid && (inp.dirty || inp.touched)}"
+      <ng-container *ngIf="datepicker && !timepicker">
+        <input type="text"
                value="{{dateModel|date:dateFormat}}"
                (blur)="onBlur()"
                (focus)="onFocus()"
-               [attr.placeholder]="placeholder"
-               [attr.disabled]="disabled ? true: null"
-               [required]="allowBlank ? true: null"/>
+               class="input-control" placeholder="Choose Date"/>
       </ng-container>
 
-      <ng-container *ngIf="!readonly && datepicker">
-        <ng-container *ngIf="!timepicker">
-          <input type="text" class="input-control"
-                 [ngClass]="{'input-control-error' : inp.invalid && (inp.dirty || inp.touched),'input-control-success' : inp.valid && (inp.dirty || inp.touched)}"
-                 value="{{dateModel|date:dateFormat}}"
-                 (blur)="onBlur()"
-                 (focus)="onFocus()"
-                 [attr.placeholder]="placeholder"
-                 [attr.disabled]="disabled ? true: null"
-                 [required]="allowBlank ? true: null"/>
-        </ng-container>
-
-        <ng-container *ngIf="timepicker">
-          <input type="text" class="input-control"
-                 [ngClass]="{'input-control-error' : inp.invalid && (inp.dirty || inp.touched),'input-control-success' : inp.valid && (inp.dirty || inp.touched)}"
-                 value="{{dateModel|date:dateFormat}} {{hrs + ' : ' + min}}"
-                 (blur)="onBlur()"
-                 (focus)="onFocus()"
-                 [attr.placeholder]="placeholder"
-                 [attr.disabled]="disabled ? true: null"
-                 [required]="allowBlank ? true: null"/>
-        </ng-container>
-
-
-        <span *ngIf="showToolTip" class="dropdown-datetime">
-          <ul class="dropdown-list">
-            <div class="datepicker" (click)="onCalendarClick()">
-          <table class="table">
-            <thead>
-            <td class="navigation" (click)="prevYear($event)">&#8882;</td>
-            <td class="navigation" (click)="prevMonth($event)">&#x22B4;</td>
-
-            <!--if timepicker is true-->
-            <ng-container *ngIf="timepicker">
-              <td colspan="3">{{selectedDate | date:'MMMM y'}}<br/>{{hrs + ':' + min}}</td>
-            </ng-container>
-
-            <ng-container *ngIf="!timepicker">
-              <td colspan="3">{{selectedDate | date:'MMMM y'}}<br/></td>
-            </ng-container>
-
-            <td class="navigation" (click)="nextMonth($event)">&#x22B5;</td>
-            <td class="navigation" (click)="nextYear($event)">&#x22B3;</td>
-            </thead>
-            <tr>
-              <td class="daysHeader" *ngFor="let dayTitle of daysTitle">
-                <div>{{dayTitle.text}}</div>
-              </td>
-            </tr>
-            <tr *ngFor="let dayArray of daysArray">
-              <td *ngFor="let day of dayArray"
-                  [ngClass]="{'dateSelected':day.selected, 'currentMonth':day.isCurrentMonth, 'notCurrentMonth':!day.isCurrentMonth}">
-                <div (click)="onDateClick(day.date)">{{ day.date | date:'d' }}</div>
-              </td>
-            </tr>
-            <tr>
-              <td colspan="7" style="padding-top: 10px;">
-                <button type="button" class="btn btn-primary" (click)="setToday()">TODAY</button>
-              </td>
-            </tr>
-
-            <!--if picker is true-->
-            <ng-container *ngIf="timepicker">
-              <tr>
-                <td colspan="7" class="navigation">
-                  &#9719;
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2">
-                </td>
-                <td (click)="plus('hrs', $event);">&#9650;</td>
-                <td></td>
-                <td (click)="plus('min', $event);">&#9650;</td>
-                <td colspan="2">
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2">
-                </td>
-                <td>{{hrs}}</td>
-                <td>:</td>
-                <td>{{min}}</td>
-                <td colspan="2">
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2">
-                </td>
-                <td (click)="minus('hrs', $event);">&#9660;</td>
-                <td></td>
-                <td (click)="minus('min', $event);">&#9660;</td>
-                <td colspan="2">
-                </td>
-              </tr>
-            </ng-container>
-
-          </table>
-        </div>
-          </ul>
-        </span>
-
-      </ng-container>
-
-      <ng-container *ngIf="!datepicker">
-        <input type="text" class="input-control"
-               [ngClass]="{'input-control-error' : inp.invalid && (inp.dirty || inp.touched),'input-control-success' : inp.valid && (inp.dirty || inp.touched)}"
-               value="{{hrs + ' : ' + min}}"
+      <ng-container *ngIf="timepicker">
+        <input type="text"
+               value="{{dateModel|date:dateFormat}} {{hrs + ' : ' + min}}"
                (blur)="onBlur()"
                (focus)="onFocus()"
-               [attr.placeholder]="placeholder"
-               [attr.disabled]="disabled ? true: null"
-               [required]="allowBlank ? true: null"/>
-
-        <span *ngIf="showToolTip" class="dropdown-datetime">
-          <ul class="dropdown-list">
-            <div class="datepicker" [attr.id]="elementId">
-          <table class="table">
-            <!--if picker is true-->
-            <tr>
-              <td colspan="2">
-              </td>
-              <td (click)="plus('hrs', $event);">&#9650;</td>
-              <td></td>
-              <td (click)="plus('min', $event);">&#9650;</td>
-              <td colspan="2">
-              </td>
-            </tr>
-            <tr>
-              <td colspan="2">
-              </td>
-              <td>{{hrs}}</td>
-              <td>:</td>
-              <td>{{min}}</td>
-              <td colspan="2">
-              </td>
-            </tr>
-            <tr>
-              <td colspan="2">
-              </td>
-              <td (click)="minus('hrs', $event);">&#9660;</td>
-              <td></td>
-              <td (click)="minus('min', $event);">&#9660;</td>
-              <td colspan="2">
-              </td>
-            </tr>
-
-          </table>
-        </div>
-          </ul>
-        </span>
+               class="input-control" placeholder="Choose Time"/>
       </ng-container>
 
-      <span class="input-control-feedback">
-          <i class="fa fa-calendar" aria-hidden="true"></i>
-      </span>
 
-      <!-- <span *ngIf="showToolTip" class="dropdown">
-         <ul class="dropdown-list">
-           &lt;!&ndash;<li class="list-items" *ngFor="let item of filteredResult" (click)="onItemSelect(item)"><div>{{item[displayField]}}</div></li>&ndash;&gt;
-           Calendar here
-         </ul>
-       </span>-->
+      <span class="input-control-feedback date-icon">
+          <i class="fa fa-calendar" aria-hidden="true"></i>
+   </span>
 
     </div>
 
+    <div style="width: 42%;padding-top: 2px;" *ngIf="showToolTip">
+      <div class="month">
+        <ul style="list-style: none;">
+          <li class="prev"><!--<amexio-icon key="datepicker_previous"></amexio-icon>-->
+            <i (click)="prevYear($event)" class="fa fa fa-step-backward" aria-hidden="true"></i>
+            <i (click)="prevMonth($event)" class="fa fa-chevron-left"></i>
+          </li>
+          <li class="next"><!--<amexio-icon key="datepicker_next"></amexio-icon>-->
+            <i (click)="nextMonth($event)" class="fa fa-chevron-right"></i>
+            <i (click)="nextYear($event)" class="fa fa-step-forward" aria-hidden="true"></i>
+          </li>
+          <li style="cursor:pointer;">{{selectedDate | date:'MMMM'}}<br>
+            <span style="font-size:18px;cursor:pointer;">{{selectedDate | date:'y'}}</span>
+          </li>
+        </ul>
+      </div>
 
-    <!--   <span *ngIf="iconFeedBack && (inp.invalid && (inp.dirty || inp.touched) || inp.valid)"
-             class="input-control-feedback">
-           <span *ngIf="inp.invalid && (inp.dirty || inp.touched)">&#9888;</span>
-           <span *ngIf="inp.valid && (inp.dirty || inp.touched)"> &#10004;</span>
-   
-       </span>
-   
-       <span *ngIf="showToolTip && enablePopOver" class="tooltiptext">
-           <div [innerHTML]="helpInfoMsg"></div>
-       </span>-->
 
 
+      <ul class="weekdays">
+        <li *ngFor="let dayTitle of daysTitle">{{dayTitle.text}}</li>
+        <!-- Time Picker Div Here -->
+      </ul>
 
+      <ul (click)="onSelect()" class="days">
+        <ng-container *ngFor="let dayArray of daysArray">
+          <li *ngFor="let day of dayArray" (click)="onDateClick(day.date)" ><span [ngClass]="{'active':day.selected, 'currentMonth':day.isCurrentMonth, 'notCurrentMonth':!day.isCurrentMonth}">{{ day.date | date:'d' }}</span></li>
+        </ng-container>
+        <li class="date-today"><amexio-button label="TODAY" (onClick)="setToday()" size="small"></amexio-button></li>
+        <table class="table datepicker" align="center" *ngIf="timepicker" style="cursor : pointer;text-align: center;padding: 5px;">
+          <!--if picker is true-->
+          <tr style="padding: 10px;">
+            <td colspan="2">
+            </td>
+            <td (click)="plus('hrs', $event);">&#9650;</td>
+            <td></td>
+            <td (click)="plus('min', $event);">&#9650;</td>
+            <td colspan="2">
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+            </td>
+            <td>{{hrs}}</td>
+            <td>:</td>
+            <td>{{min}}</td>
+            <td colspan="2">
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+            </td>
+            <td (click)="minus('hrs', $event);">&#9660;</td>
+            <td></td>
+            <td (click)="minus('min', $event);">&#9660;</td>
+            <td colspan="2">
+            </td>
+          </tr>
 
-  `, providers: [CUSTOM_DATETIME_CONTROL_VALUE_ACCESSOR],
-  styles: [`
+        </table>
+      </ul>
 
-
-    .datepicker {
-      padding: 10px 10px 0px 10px;
-      width: 40vh;
-      display: flex;
-      justify-content: center;
-    }
-
-    .datepicker table, tr {
-
-    }
-
-    .datepicker table, tr, td {
-      text-align: center;
-      padding: 5px;
-    }
-
-    .datepicker table tr td:hover {
-      font-weight: bold;
-    }
-
-    .datepicker .currentMonth {
-      font-weight: bold;
-    }
-
-    .datepicker .notCurrentMonth {
-      font-weight: inherit;
-    }
-
-    .datepicker .dateSelected {
-      font-weight: bold;
-      background-color: #dddddd;
-    }
-
-    .daysHeader {
-      font-weight: bold;
-    }
-
-    .datepicker table, tr, td div {
-      cursor: pointer;
-    }
-
-    .datepicker .navigation {
-      font-size: 20px;
-      font-weight: bold;
-    }
-    
-  `]
+    </div>
+  `,
+  providers : [CUSTOM_DATETIME_Style_CONTROL_VALUE_ACCESSOR]
 })
 
-export class AmexioDateTimeComponent implements OnInit {
+export class AmexioDateTimePicker implements OnInit {
 
   @Input() dateFormat: string;
 
@@ -315,6 +140,8 @@ export class AmexioDateTimeComponent implements OnInit {
   hrs: number;
   min: number;
 
+
+
   constructor() {
     this.elementId = new Date().getTime() + "";
     this.selectedDate = new Date();
@@ -340,6 +167,7 @@ export class AmexioDateTimeComponent implements OnInit {
     this.daysTitle.push({"text": "We"});
     this.daysTitle.push({"text": "Th"});
     this.daysTitle.push({"text": "Fr"});
+
     this.daysTitle.push({"text": "Sa"});
     this.daysTitle.push({"text": "Su"});
   }
@@ -357,11 +185,11 @@ export class AmexioDateTimeComponent implements OnInit {
     while (1) {
       let rowDays = [];
       for (let i = 0; i < 7; i++) {
-        let day = {
+        let day : any = {
           'date': null, 'selected': false, 'isCurrentMonth': null
         };
 
-        let isCurrentMonth = ((date.getMonth() === selectedPeriod.getMonth()));
+        let isCurrentMonth : any = ((date.getMonth() === selectedPeriod.getMonth()));
 
         day.date = new Date(date.getTime());
         day.isCurrentMonth = isCurrentMonth;
@@ -497,6 +325,7 @@ export class AmexioDateTimeComponent implements OnInit {
     event.stopPropagation();
   }
 
+
   //The internal dataviews model
   private innerValue: any = '';
 
@@ -545,7 +374,7 @@ export class AmexioDateTimeComponent implements OnInit {
     this.showToolTip = true;
   }
 
-  onCalendarClick(){
+  onSelect(){
     this.showToolTip = false;
   }
 

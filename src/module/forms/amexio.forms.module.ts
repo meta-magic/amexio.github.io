@@ -26,6 +26,7 @@ import {AmexioIconComponent} from "./icon/icon.component";
 import {IconLoaderService} from "../services/icon/icon.service";
 import {AmexioSliderComponent} from "./slider/slider.component";
 import {AmexioTagsInputComponent} from "./tagsinput/tags.input.component";
+import {AmexioDateTimePicker} from "./datetimepicker/datetimepicker.component";
 
 export * from '../services/data/common.data.service';
 export * from '../services/icon/icon.service';
@@ -48,7 +49,8 @@ const FORM_COMPONENTS = [
   AmexioItemSelectorComponent,
   AmexioIconComponent,
   AmexioSliderComponent,
-  AmexioTagsInputComponent
+  AmexioTagsInputComponent,
+  AmexioDateTimePicker
 ];
 
 @NgModule({
