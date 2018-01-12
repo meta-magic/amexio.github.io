@@ -39,7 +39,6 @@
 
 
 
-
 .input-box-container {
   display: block;
   position: relative;
@@ -61,8 +60,8 @@
   position: absolute;
   top: 0;
   left: 0;
-  height: 25px;
-  width: 25px;
+  height: 20px;
+  width: 20px;
   border: $borderSize solid $borderColor;
 }
 
@@ -86,8 +85,8 @@
 
 /* Style the input-box-container-label/indicator */
 .input-box-container .input-box-checkbox-label:after {
-  left: 9px;
-  top: 5px;
+  left: 5px;
+  top: 1px;
   width: 5px;
   height: 10px;
   border: solid white;
@@ -104,8 +103,8 @@
   position: absolute;
   top: 0;
   left: 0;
-  height: 25px;
-  width: 25px;
+  height: 20px;
+  width: 20px;
   border: $borderSize solid $borderColor;
   border-radius: 50%;
 }
@@ -130,11 +129,12 @@
 
 /* Style the input-box-container-label/indicator */
 .input-box-container .input-box-radiobox-label:after {
-  top: 9px;
-  left: 9px;
+  top: 6px;
+  left: 6px;
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: white;
+  background-color: white;
 }
+
 
