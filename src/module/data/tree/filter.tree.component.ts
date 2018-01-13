@@ -6,6 +6,7 @@ import {
   AfterViewInit, ChangeDetectorRef, Component, ContentChild, DoCheck, EventEmitter, Input, OnInit, Output, TemplateRef
 } from '@angular/core';
 import {Http, Headers, RequestOptions} from '@angular/http';
+import {CommonDataService} from "../../services/data/common.data.service";
 
 
 @Component({
@@ -43,7 +44,6 @@ import {Http, Headers, RequestOptions} from '@angular/http';
 
 
   `
-  ]
 })
 export class AmexioFilterTreeComponent implements OnInit, AfterViewInit, DoCheck {
 
@@ -219,7 +219,7 @@ export class AmexioFilterTreeComponent implements OnInit, AfterViewInit, DoCheck
   filterOption(data: any) {
     this.onClickSearch = true;
     this.filterIndex = data.value;
-    this.filterOptionData.forEach((opt) => {
+    this.filterOptionData.forEach((opt : any) => {
       if (opt.value!=data.value) {
         opt.checkedStatus = '';
       }else {
@@ -242,7 +242,7 @@ export class AmexioFilterTreeComponent implements OnInit, AfterViewInit, DoCheck
   }
 
   getData(httpResponse: any){
-    let responsedata = httpResponse;
+    let responsedata  : any= httpResponse;
     let dr = this.dataReader.split('.');
     for (let ir = 0 ; ir < dr.length; ir++) {
       responsedata = responsedata[dr[ir]];
@@ -254,8 +254,6 @@ export class AmexioFilterTreeComponent implements OnInit, AfterViewInit, DoCheck
     this.treeViewFilterService.fetchData(this.httpUrl, this.httpMethod).subscribe(
       response => {
         this.dataTableBindData = response.json();
-      },
-      error => {
       },
       () => {
         this.renderServiceData();
