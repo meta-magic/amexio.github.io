@@ -3,6 +3,7 @@
 .rating {
   cursor: pointer;
   outline: none;
+  padding: .375rem .375rem;
 }
 .rating.readonly {
   cursor: default;
