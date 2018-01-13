@@ -1,4 +1,7 @@
-import {Component, ElementRef, forwardRef, Input, ViewChild, ViewEncapsulation} from '@angular/core';
+import {
+  Component, ElementRef, EventEmitter, forwardRef, Input, Output, ViewChild,
+  ViewEncapsulation
+} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
 const noop = () => {
@@ -103,6 +106,14 @@ export class AmexioTextInputComponent implements ControlValueAccessor{
 
   @ViewChild('ref', { read: ElementRef }) public inputRef: ElementRef;
 
+  @Output()   onBlur : any = new EventEmitter<any>();
+
+  @Output()   input : any = new EventEmitter<any>();
+
+  @Output()   focus : any = new EventEmitter<any>();
+
+  @Output()   change : any = new EventEmitter<any>();
+
   constructor() {
     this.showToolTip = false;
   }
@@ -131,7 +142,7 @@ export class AmexioTextInputComponent implements ControlValueAccessor{
   }
 
   //Set touched on blur
-  onBlur() {
+  onblur() {
     this.onTouchedCallback();
     this.showToolTip = false;
     if(this.value.length < this.minLength){
@@ -140,10 +151,20 @@ export class AmexioTextInputComponent implements ControlValueAccessor{
     else {
       this.isValid = true;
     }
+    this.onBlur.emit(this.value);
   }
 
   onFocus(){
     this.showToolTip = true;
+    this.focus.emit(this.value);
+  }
+
+  onInput(){
+    this.input.emit(this.value);
+  }
+
+  onChangeEv(){
+    this.change.emit(this.value);
   }
   //From ControlValueAccessor interface
   writeValue(value: any) {

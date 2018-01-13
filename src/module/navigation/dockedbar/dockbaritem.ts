@@ -16,24 +16,7 @@ import {Component, Input, OnInit} from '@angular/core';
       <ng-content >
       </ng-content>
     </div>
-  `,
-  styles:[
-    `      
-      .amexio-dockbar-item-close-bar{
-        font-size: 24px;
-        float: right;
-        color: black;
-        font-weight: 500;
-      }
-      .amexio-dockbar-title{
-        box-sizing: border-box;
-        font-size: 17px;
-        font-weight: 500;
-        padding: 15px 10px 10px 90px;
-        border-bottom: 1px solid #c7c7c7;
-      }
-    `
-  ]
+  `
 })
 
 export class DockbarComponent implements OnInit{

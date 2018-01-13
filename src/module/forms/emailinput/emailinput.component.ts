@@ -1,4 +1,4 @@
-import {Component, forwardRef, Input} from '@angular/core';
+import {Component, EventEmitter, forwardRef, Input, Output} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
 const noop = () => {
@@ -95,6 +95,14 @@ export class AmexioEmailInputComponent implements ControlValueAccessor{
 
   @Input()   enablePopOver : boolean;
 
+  @Output()   onBlur : any = new EventEmitter<any>();
+
+  @Output()   input : any = new EventEmitter<any>();
+
+  @Output()   focus : any = new EventEmitter<any>();
+
+  @Output()   change : any = new EventEmitter<any>();
+
   isValid : boolean;
 
   constructor() {
@@ -123,14 +131,25 @@ export class AmexioEmailInputComponent implements ControlValueAccessor{
   }
 
   //Set touched on blur
-  onBlur() {
+  onblur() {
     this.onTouchedCallback();
     this.showToolTip = false;
+    this.onBlur.emit(this.value);
   }
 
   onFocus(){
     this.showToolTip = true;
+    this.focus.emit(this.value);
   }
+
+  onInput(){
+    this.input.emit(this.value);
+  }
+
+  onChangeEv(){
+    this.change.emit(this.value);
+  }
+
   //From ControlValueAccessor interface
   writeValue(value: any) {
     if (value !== this.innerValue) {

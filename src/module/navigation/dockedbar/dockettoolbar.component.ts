@@ -50,57 +50,7 @@ import {DockbarComponent} from "./dockbaritem";
     <div class="amexio-dockbar-item" [style.min-height]="height">
       <ng-content></ng-content>
     </div>
-  `,
-  styles:[
-    `      
-      .amexio-dockbar {
-        float: left;
-        width: 70px;
-        border: 1px solid #f1f1f1;
-        background-color: #dee0e3;
-        position: relative;
-      }
-      
-      .amexio-dockbar-item{
-        background-color: #f1f1f1;
-      }
-      
-      /* Style the buttons inside the tab */
-      .amexio-dockbar button {
-        display: block;
-        background-color: inherit;
-        color: #adadad;
-        padding: 5px;
-        width: 100%;
-        border: none;
-        outline: none;
-        text-align: center;
-        cursor: pointer;
-        transition: 0.3s;
-        font-size: 17px;
-        border-bottom: 1px solid #c7c7c7;
-        border-left: 5px solid #dee0e3;
-        height: 50px;
-      }
-
-      /* Change background color of buttons on hover */
-      .amexio-dockbar button:hover {
-        background-color: #f1f1f1;
-      }
-
-      /* Create an active/current "tab button" class */
-      .amexio-dockbar button.active {
-        background-color: #f1f1f1;
-        color: black;
-        border-left: 5px solid #3192e1;
-      }
-      
-      .amexio-dockbar-label-highlight {
-        color: black;
-        font-weight: bold;
-      }
-    `
-  ]
+  `
 
 })
 export class DockedBarToolComponent implements OnInit{

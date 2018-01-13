@@ -8,8 +8,6 @@ import {AmexioButtonComponent} from "../buttons/button.component";
 })
 export class AmexioButtonGroupComponent implements AfterContentInit{
 
-  @Input()    label: string;
-
   @Input()    size : string;
 
   @ContentChildren(AmexioButtonComponent)   btns : QueryList<AmexioButtonComponent>;
