@@ -35,9 +35,9 @@ import {CommonDataService} from "../../services/data/common.data.service";
             <ng-container *ngFor="let cols of columns">
               <ng-container *ngIf="!cols.hidden">
                 <div class="datatable-col">
-                  <data-grid-filter-1 [column]="cols"
+                  <data-grid-filter [column]="cols"
                                       (filterObject)="getFilteredData($event)">
-                  </data-grid-filter-1>
+                  </data-grid-filter>
                 </div>
               </ng-container>
             </ng-container>
