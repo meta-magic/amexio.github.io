@@ -27,6 +27,8 @@ import {IconLoaderService} from "../services/icon/icon.service";
 import {AmexioSliderComponent} from "./slider/slider.component";
 import {AmexioTagsInputComponent} from "./tagsinput/tags.input.component";
 import {AmexioDateTimePicker} from "./datetimepicker/datetimepicker.component";
+import {AmexioButtonDropdownComponent} from "./button-dropdown/button.dropdown";
+import {AmexioSpiltButtonDropdownComponent} from "./button-dropdown/split.button.dropdown";
 
 export * from '../services/data/common.data.service';
 export * from '../services/icon/icon.service';
@@ -51,6 +53,9 @@ const FORM_COMPONENTS = [
   AmexioSliderComponent,
   AmexioTagsInputComponent,
   AmexioDateTimePicker,
+  AmexioButtonDropDownItemComponent,
+  AmexioButtonDropdownComponent,
+  AmexioSpiltButtonDropdownComponent
 ];
 
 @NgModule({
