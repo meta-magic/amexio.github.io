@@ -1,8 +1,8 @@
 <li class="treenode" *ngFor="let node of data" >
   <div class="treenode-content">
           <span class="treenode-toggler" (click)="onClick(node)" *ngIf="node.children && (node.children.length>0)">
-            <span *ngIf="node.expand"><amexio-icon key="tree_expand"></amexio-icon></span>
-            <span *ngIf="!node.expand"><amexio-icon key="tree_collapse"></amexio-icon></span>
+            <span *ngIf="node.expand"><!--<amexio-icon key="tree_expand"></amexio-icon>--><i class="fa fa-chevron-down"></i> </span>
+            <span *ngIf="!node.expand"><!--<amexio-icon key="tree_collapse"></amexio-icon>--><i class="fa fa-chevron-right"></i> </span>
           </span>
     <span class="treenode-label">
             <span *ngIf="enableCheckBox">
