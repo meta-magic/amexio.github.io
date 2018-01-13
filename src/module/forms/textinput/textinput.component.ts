@@ -134,7 +134,6 @@ export class AmexioTextInputComponent implements ControlValueAccessor{
   onBlur() {
     this.onTouchedCallback();
     this.showToolTip = false;
-    debugger;
     if(this.value.length < this.minLength){
       this.isValid = false;
     }
