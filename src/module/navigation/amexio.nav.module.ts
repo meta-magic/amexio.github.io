@@ -12,6 +12,9 @@ import {DeviceQueryService} from "../services/device/device.query.service";
 import { AmexioNavBarComponent} from "./navbar/navbar.component";
 import {AmexioNavItemComponent} from "./navbar/navitem.component";
 import {AmexioNotificationComponent} from "./notification/notification.component";
+import {AmexioMediaModule} from "../media/amexio.media.module";
+import {DockbarComponent} from "./dockedbar/dockbaritem";
+import {DockedBarToolComponent} from "./dockedbar/dockettoolbar.component";
 
 export * from '../services/data/common.data.service';
 export * from '../services/device/device.query.service';
@@ -25,14 +28,17 @@ const NAV_COMPONENTS = [
   SideNavNodeComponent,
   AmexioNavBarComponent,
   AmexioNavItemComponent,
-  AmexioNotificationComponent
+  AmexioNotificationComponent,
+  DockbarComponent,
+  DockedBarToolComponent
 ];
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    AmexioMediaModule
   ],
   exports: NAV_COMPONENTS,
   declarations: NAV_COMPONENTS
