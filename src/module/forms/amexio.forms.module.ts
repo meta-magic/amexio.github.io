@@ -29,6 +29,7 @@ import {AmexioTagsInputComponent} from "./tagsinput/tags.input.component";
 import {AmexioDateTimePicker} from "./datetimepicker/datetimepicker.component";
 import {AmexioButtonDropdownComponent} from "./button-dropdown/button.dropdown";
 import {AmexioSpiltButtonDropdownComponent} from "./button-dropdown/split.button.dropdown";
+import {AmexioButtonDropDownItemComponent} from "./button-dropdown/button.dropdown.item";
 
 export * from '../services/data/common.data.service';
 export * from '../services/icon/icon.service';
