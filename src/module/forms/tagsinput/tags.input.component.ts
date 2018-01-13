@@ -6,53 +6,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
 
 @Component({
   selector: 'amexio-tag-input',
-  template: `    
-   <div class="inputgroup">
-
-     <label [style.font-style]="fontStyle" [style.font-family]="fontFamily" [style.font-size]="fontSize">
-       {{fieldLabel}}
-     </label>
-
-
-     <div class="tag-input">
-       <div class="tag" *ngFor="let item of selectedValues">
-         {{item[key]}}
-         <span class="closebtn" (click)="removePill(item)">&times;</span>
-       </div>
-     </div>
-     
-     <input type="text" class="input-control"
-            [ngClass]="{'input-control-error' : inp.invalid && (inp.dirty || inp.touched),'input-control-success' : inp.valid && (inp.dirty || inp.touched)}"
-            (keyup)="onKeyUp($event)"
-            (focus)="onFocus()"
-            [attr.fieldName]="fieldName"
-            [attr.placeholder]="placeholder"
-            [attr.disabled]="disabled ? true: null"
-            [required]="allowBlank ? true: null"
-            #inp/>
-     
-     <span *ngIf="showToolTip" class="dropdown">
-        <ul class="dropdown-list">
-          <li class="list-items" *ngFor="let item of filteredResult" (click)="setValue(item,inp)"><div>{{item[displayField]}}</div></li>
-        </ul>
-      </span>
-
-   </div>
-
-
-   <span *ngIf="iconFeedBack && (inp.invalid && (inp.dirty || inp.touched) || inp.valid)"
-         class="input-control-feedback">
-        <span *ngIf="inp.invalid && (inp.dirty || inp.touched)">&#9888;</span>
-        <span *ngIf="inp.valid && (inp.dirty || inp.touched)"> &#10004;</span>
-
-    </span>
-
-   <span *ngIf="showToolTip && enablePopOver" class="tooltiptext">
-        <div [innerHTML]="helpInfoMsg"></div>
-</span>
-
-
-  `
+  templateUrl: './tags.input.component.html'
 })
 
 export class AmexioTagsInputComponent implements OnInit {

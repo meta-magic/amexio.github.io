@@ -5,7 +5,7 @@
   border: $borderSize solid $borderColor;
   position: absolute;
   box-shadow: 0 1px 3px 0 $borderColor;
-
+  z-index: 1;
 
   .datetimepickertopbar {
     padding: 10px 25px;
