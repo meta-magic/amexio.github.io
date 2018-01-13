@@ -7,19 +7,28 @@ import {AmexioButtonDropDownItemComponent} from "./button.dropdown.item";
 @Component({
   selector: 'amexio-btn-dropdown',
   template: `
-  <div class="dropdown-button">
-    <button class="button"  [attr.disabled] = "disabled ? true: null"
-            [ngClass]="{'button-default': size=='default' || size ==null,'button-small': size=='small','button-large' : size=='large','button-primary' : type == 'primary' || type == null,'button-success' : type == 'success',' button-danger' : type=='danger','button-warning' : type=='warning'}" (click)="onClick()">{{label}}</button>
-    <div class="dropdown-button-content" [ngStyle]="{'display' : openContent ? 'block' : 'none'}">
-      <ul class="dropdown-list">
+
+    <div class="button-group">
+
+      <button  (click)="onClick()" [ngClass]="{'button-default': size=='default' || size ==null,'button-small': size=='small','button-large' : size=='large','button-primary' : type == 'primary' || type == null,'button-success' : type == 'success',' button-danger' : type=='danger','button-warning' : type=='warning'}" >
+        <span [attr.disabled] = "disabled ? true: null">{{label}} &nbsp;&nbsp;</span>
+        <i class="fa fa-caret-down" style="float:right;" ></i>
+      </button>
+
+      <div style="position: absolute;" [ngStyle]="{'display' : openContent ? 'block' : 'none'}">
         <ng-container *ngFor="let itemData of dropdownItemData">
-          <li class="list-items" [ngClass]="{'disabled':itemData.disabled}" (click)="itemClick($event,itemData)">{{itemData.label}}  <ng-container *ngIf="itemData.icon!=null">
-            <i [class]="itemData.iconStyleClass" aria-hidden="true"></i>
-          </ng-container></li>
+          <div>
+            <button (click)="itemClick($event,itemData)" [ngClass]="{'button-default': size=='default' || size ==null,'button-small': size=='small','button-large' : size=='large','button-primary' : type == 'primary' || type == null,'button-success' : type == 'success',' button-danger' : type=='danger','button-warning' : type=='warning'}" >
+              <span [attr.disabled] = "itemData.disabled ? true: null">{{itemData.label}}&nbsp;&nbsp;</span>
+              <i [class]="itemData.iconStyleClass" aria-hidden="true" style="float:right;" ></i>
+            </button>
+
+          </div>
+
         </ng-container>
-      </ul>
+      </div>
+
     </div>
-  </div>
     
   `
 })
@@ -65,5 +74,6 @@ export class AmexioButtonDropdownComponent implements AfterContentInit {
 
   itemClick(event: any, itemData: any) {
     itemData.onItemClick.emit(event);
+    this.openContent = !this.openContent;
   }
 }
