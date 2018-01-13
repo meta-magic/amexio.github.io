@@ -51,6 +51,9 @@ export class AmexioRatingComponent implements OnInit, ControlValueAccessor, Vali
   float: boolean;
 
   @Input()
+  fieldLabel: string;
+
+  @Input()
   titles: string[] = [];
 
   // -------------------------------------------------------------------------
