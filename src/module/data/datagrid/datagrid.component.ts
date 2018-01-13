@@ -2,15 +2,14 @@
  * Created by pratik on 1/1/18.
  */
 import {
-  AfterContentInit, Component, ContentChildren, EventEmitter, Input, OnInit, Output,
-  QueryList
+  AfterContentInit, Component, ContentChildren, DoCheck, EventEmitter, Input, OnInit, Output, QueryList
 } from '@angular/core';
 import {AmexioGridColumnComponent} from "./data.grid.column";
 import {CommonDataService} from "../../services/data/common.data.service";
 
 @Component({
   selector: 'amexio-datagrid',
-  template: `    
+  template: `
     <div>
       <div class="title">
         <span> {{title}} </span>
@@ -138,7 +137,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
   `
 })
 
-export class AmexioDatagridComponent implements OnInit,AfterContentInit {
+export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoCheck {
 
   @Input() title: string;
 
@@ -178,7 +177,7 @@ export class AmexioDatagridComponent implements OnInit,AfterContentInit {
 
   @Input() tableRowSelectedColor: string;
 
-  @Input() columnLocalData: any;
+  @Input() columnDefinition: any;
 
   @Output() onColumnClickEvent: EventEmitter<any> = new EventEmitter<any>();
 
@@ -198,8 +197,6 @@ export class AmexioDatagridComponent implements OnInit,AfterContentInit {
 
   pageNumbers: number[];
 
-  elementId: string;
-
   selectedRowNo: number;
 
   selectAll = false;
@@ -212,23 +209,15 @@ export class AmexioDatagridComponent implements OnInit,AfterContentInit {
 
   isSummary: boolean;
 
-  smallScreen: boolean;
-
   sortBy: number;
 
-  randomIDCheckALL: string;
-
   cloneData: any;
-
-  dropdownData: any;
 
   responseData: any;
 
   filterCloneData: any;
 
   rowId: any;
-
-  headerCheckboxId: string;
 
   previousData : any;
 
@@ -237,6 +226,7 @@ export class AmexioDatagridComponent implements OnInit,AfterContentInit {
   showToolTip : boolean;
 
   totalPages : number;
+
 
   @ContentChildren(AmexioGridColumnComponent) columnRef: QueryList<AmexioGridColumnComponent>;
 
@@ -251,7 +241,6 @@ export class AmexioDatagridComponent implements OnInit,AfterContentInit {
       this.tableRowSelectedColor = '#dcecf7';
     }
     if (this.httpMethod && this.httpUrl){
-
       this.dataTableService.fetchData(this.httpUrl, this.httpMethod).subscribe(
         response => {
           this.responseData = response.json();
@@ -263,14 +252,32 @@ export class AmexioDatagridComponent implements OnInit,AfterContentInit {
         }
       );
     } else if (this.data) {
-      // this.previousValue = JSON.parse(JSON.stringify(this.data));
+      this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
+    }
+    if (this.columnDefinition && this.columnDefinition.length > 0 ) {
+      this.columnPreviewData = JSON.parse(JSON.stringify(this.columnDefinition));
+      this.columns = this.columnDefinition;
     }
   }
 
+  ngDoCheck() {
+    if (this.previousData != null && JSON.stringify(this.previousData) != JSON.stringify(this.data)){
+      this.previousData = JSON.parse(JSON.stringify(this.data));
+      this.setData(this.data);
+    }
+    if (this.columnPreviewData != null && JSON.stringify(this.columnPreviewData) != JSON.stringify(this.columnDefinition)) {
+      this.columnPreviewData = JSON.parse(JSON.stringify(this.columnDefinition));
+      this.columns = this.columnDefinition;
+    }
+  }
 
   ngAfterContentInit() {
-    this.createConfig();
+    if (this.columnDefinition && this.columnDefinition.length > 0) {
+      this.columns = this.columnDefinition;
+    } else {
+      this.createConfig();
+    }
   }
 
   createConfig() {
@@ -550,7 +557,6 @@ export class AmexioDatagridComponent implements OnInit,AfterContentInit {
 
   }
 
-
   setCheckBoxSelectClass(event: any) {
     if(this.selectAll) {
       return 'checkbox active';
@@ -668,7 +674,4 @@ export class AmexioDatagridComponent implements OnInit,AfterContentInit {
     }
     this.renderData();
   }
-
-
-
 }
