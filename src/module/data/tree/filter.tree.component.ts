@@ -17,15 +17,16 @@ import {CommonDataService} from "../../services/data/common.data.service";
       <div>
         <div class="input-group">
           <input type="text" class="form-control" aria-label="Text input with dropdown button" [(ngModel)]="filterText"  placeholder="Search" (keyup)="filterData()">
-          <div class="input-group-btn">
-            <button type="button" class="btn" data-toggle="dropdown" (click)="showToolTip = !showToolTip" aria-haspopup="true" aria-expanded="false">
-            </button>
+          <i class="fa fa-filter" aria-hidden="true" (click)="showToolTip = !showToolTip"></i>
+        <!--  <div class="input-group-btn">-->
+           <!-- <button type="button" class="btn" data-toggle="dropdown" (click)="showToolTip = !showToolTip" aria-haspopup="true" aria-expanded="false">
+            </button>-->
             <span *ngIf="showToolTip" class="dropdown">
               <ul class="dropdown-list">
                 <li class="list-items"*ngFor="let opt of filterOptionData" (click)="filterOption(opt)">{{opt.key}}&nbsp;<i [class]="opt.checkedStatus" aria-hidden="true"></i></li>
               </ul>
             </span>
-          </div>
+         <!-- </div>-->
         </div>
         <ng-container *ngIf="isDataFound">
           <amexio-treeview
@@ -163,6 +164,7 @@ export class AmexioFilterTreeComponent implements OnInit, AfterViewInit, DoCheck
   }
 
   filterData() {
+    this.showToolTip = false;
     if (this.filterText.length >= this.triggerChar) {
       const tData = JSON.parse(JSON.stringify(this.orgTreeData));
       const treeNodes = this.searchTree(tData, this.filterText);
@@ -227,6 +229,7 @@ export class AmexioFilterTreeComponent implements OnInit, AfterViewInit, DoCheck
       }
     });
     this.filterData();
+    this.showToolTip = false;
   }
 
   renderServiceData() {
