@@ -9,8 +9,10 @@
          [(ngModel)]="value"
          #inp="ngModel"
          [ngClass]="getValidationClasses(inp)"
-         (blur)="onBlur()"
+         (blur)="onblur()"
          (focus)="onFocus()"
+         (input)="onInput()"
+         (change)="onChangeEv()"
          name="name"
          [pattern]="regEx"
          #ref

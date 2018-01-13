@@ -93,6 +93,11 @@
   float: left; /* Float the buttons side by side */
 }
 
+
+.btn-group button{
+  padding-right: 10px;
+}
+
 /* Clear floats (clearfix hack) */
 .btn-group:after {
   content: "";
