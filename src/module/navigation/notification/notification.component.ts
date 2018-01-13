@@ -8,14 +8,7 @@ import {ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'amexio-notification',
-  template: `
-    <div class="toastbar" [ngClass]="positionclass">
-      <div class="toast" *ngFor="let msg of messageData">
-        <span>{{msg}}</span>
-        <span class="float-right" (click)="close(msg)"><i *ngIf="closable" class="fa fa-times" aria-hidden="true"></i></span>
-      </div>
-    </div>
-  `
+  templateUrl : './notification.component.html'
 })
 export class AmexioNotificationComponent implements  OnInit{
 
@@ -27,22 +20,34 @@ export class AmexioNotificationComponent implements  OnInit{
 
   @Input() messageData: any[];
 
+  @Input() autodismissmsg : boolean;
+
+  @Input() autodismissmsginterval : number;
+
   data : any[];
 
   positionclass:string;
 
   constructor(private ref : ChangeDetectorRef){
-   if ( this.messageData !== null ) {
-      setInterval(() => {
-        this.messageData.shift();
-        this.ref.markForCheck();
-      }, 1500);
-    }
+
 
   }
 
 
   ngOnInit(){
+
+    if(this.autodismissmsg){
+      if(!this.autodismissmsginterval){
+        this.autodismissmsginterval = 1500;
+      }
+      if ( this.messageData !== null ) {
+        setInterval(() => {
+          this.messageData.shift();
+          this.ref.markForCheck();
+        },  this.autodismissmsginterval);
+      }
+    }
+
 
     if(this.verticalposition == null){
       this.verticalposition = 'top';
@@ -52,19 +57,17 @@ export class AmexioNotificationComponent implements  OnInit{
     }
 
     this.positionclass="toast-"+this.verticalposition+" toast-"+this.horizontalposition;
-    // this.data = JSON.parse(JSON.stringify(this.messageData));
   }
 
 
-  close(msg:any){
-    const count = this.data.length;
+  closeNotification(msg:any){
+    const count = this.messageData.length;
     for(let i=0; i<count; i++){
-      if(this.data[i] === msg){
-        this.data.splice(msg,1);
+      if(this.messageData[i] === msg){
+        this.messageData.splice(msg,1);
       }
     }
   }
-
 
 }
 
