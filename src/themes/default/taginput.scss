@@ -1,12 +1,11 @@
 
 
 .tag-input{
-  position: absolute;
   top: 30px;
   left: 1px;
   z-index: 2;
   display: block;
-  text-align: center;
+  text-align: left;
 
   .tag {
     display: inline-block;
@@ -16,6 +15,7 @@
     line-height: 30px;
     background-color: $primaryBGColor;
     color: $primaryColor;
+    border: $borderSize solid $borderColor;
 
     .closebtn {
       padding-left: 10px;
@@ -30,11 +30,6 @@
       color: $primaryColor;
     }
   }
-
-
-
-
-
 
 }
 

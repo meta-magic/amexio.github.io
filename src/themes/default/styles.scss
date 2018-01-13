@@ -118,6 +118,11 @@ $componentBGColor: #ffffff;
 $ratingBorderColor : $borderColor;
 $ratingActiveColor : $primaryBGColor;
 
+
+$datetimepickerBGColor : white;
+$datetimepickertopbarBGColor : $primaryBGColor;
+$datetimepickerActiveColor : $datetimepickerBGColor;
+
 body {
   background: $backgroundcolor;
   min-height: 100%;
@@ -189,3 +194,5 @@ body {
 @import "rating.scss";
 
 @import "taginput.scss";
+
+@import "datetime.scss";
