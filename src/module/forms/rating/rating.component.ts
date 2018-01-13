@@ -193,7 +193,7 @@ export class AmexioRatingComponent implements OnInit, ControlValueAccessor, Vali
   rate(value: number) {
     if (!this.readonly && !this.disabled && value >= 0 && value <= this.ratingRange.length) {
       const newValue = this.hoveredPercent ? (value - 1) + this.hoveredPercent / 100 : value;
-      // this.onChange(newValue);
+      this.onChange(newValue);
       this.model = newValue;
     }
   }

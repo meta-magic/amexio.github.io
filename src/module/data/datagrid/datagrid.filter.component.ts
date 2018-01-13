@@ -5,17 +5,19 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CommonDataService} from "../../services/data/common.data.service";
 @Component({
   selector: 'data-grid-filter',
-  template: `    
-      <input type="text" [(ngModel)]="filterValue" [attr.placeholder]="column.text" (keyup)="keyUpSearch(column)" type="{{column.dataType==='string' ? 'text' : 'number'}}" class="form-control" aria-label="Text input with dropdown button">
-      <i class="fa fa-filter" aria-hidden="true" (click)="showToolTip = !showToolTip"></i>
+  template: `
+    <input type="text" [(ngModel)]="filterValue" [attr.placeholder]="column.text" (keyup)="keyUpSearch(column)" type="{{column.dataType==='string' ? 'text' : 'number'}}" class="form-control" aria-label="Text input with dropdown button">
+    <i class="fa fa-filter" aria-hidden="true" (click)="showToolTip = !showToolTip"></i>
 
-      <span *ngIf="showToolTip" class="dropdown" style="width: 250px;">
-        <ul class="dropdown-list">
-          <li class="list-items" *ngFor="let opt of filterOptions">
-            <div *ngIf="opt.type===column.dataType"  (click)="selectedOption(column,opt)">
+    <span *ngIf="showToolTip" class="dropdown" style="width: 250px;">
+        <ul class="dropdown-list" *ngFor="let opt of filterOptions">
+          <ng-container *ngIf="opt.type===column.dataType">
+          <li class="list-items" >
+              <div (click)="selectedOption(column,opt)">
               {{opt.key}}&nbsp;<i [class]="opt.checkedStatus" aria-hidden="true"></i>
             </div>
           </li>
+          </ng-container>
          </ul>
       </span>
   `
@@ -123,9 +125,11 @@ export class DataGridFilterComponent implements OnInit {
       col.filterIcon = true;
       this.filterDataObject(filter, col);
     }
+    this.showToolTip = false;
   }
 
   keyUpSearch(col: any) {
+    this.showToolTip = false;
     if (this.filterValue == null || this.filterValue === '') {
       this.removeFilter(col);
     }else {

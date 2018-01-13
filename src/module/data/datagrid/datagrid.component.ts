@@ -19,7 +19,6 @@ import {CommonDataService} from "../../services/data/common.data.service";
             <span *ngIf="show">&#9747;</span>
           </span>
       </div>
-
       <ng-container *ngIf="filtering ? true : false">
         <div class="datatable datatable-row">
           <ng-container *ngIf="checkboxSelect">
@@ -37,7 +36,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
             <ng-container *ngFor="let cols of columns">
               <div class="datatable-col">
                 <data-grid-filter [column]="cols"
-                                  (filterObject)="getFilteredData($event)"></data-grid-filter>
+                                    (filterObject)="getFilteredData($event)"></data-grid-filter>
               </div>
             </ng-container>
           </ng-container>
@@ -79,12 +78,17 @@ import {CommonDataService} from "../../services/data/common.data.service";
 
         <ng-container *ngFor="let cols of columns">
           <ng-container *ngIf="!cols.hidden">
-            <div class="datatable-col">
-              {{cols.text}}
+            <div class="datatable-col" (click)="sortOnColHeaderClick(cols, $event)">
+              {{cols.text}} &nbsp;
+              <ng-container *ngIf="this.sortBy==1 && cols.isColumnSort">
+                &nbsp; <i class="fa fa-arrow-up"></i>
+              </ng-container>
+              <ng-container *ngIf="this.sortBy==2 && cols.isColumnSort">
+                &nbsp;<i class="fa fa-arrow-down"></i>
+              </ng-container>
             </div>
           </ng-container>
         </ng-container>
-        
       </div>
     </div>
 
@@ -121,15 +125,14 @@ import {CommonDataService} from "../../services/data/common.data.service";
         </ng-container>
       </div>
     </div>
+
     <div>
       <div class="footer">
-        <ng-container *ngIf="pageSize">
+        <ng-container *ngIf="pageSize && (data && data.length > pageSize)">
           <ng-container *ngIf="totalPages!=null">
             <amexio-paginator [pages]="totalPages" [rows]="pageSize" (onPageChange)="loadPageData($event)"></amexio-paginator>
           </ng-container>
         </ng-container>
-
-
       </div>
     </div>
   `
@@ -240,6 +243,7 @@ export class AmexioDatagridComponent implements OnInit,AfterContentInit {
 
   constructor(public dataTableService : CommonDataService) {
     this.selectedRows = [];
+    this.sortBy = -1;
   }
 
   ngOnInit() {
@@ -545,6 +549,8 @@ export class AmexioDatagridComponent implements OnInit,AfterContentInit {
     this.selectedRowData.emit(sRows);
 
   }
+
+
   setCheckBoxSelectClass(event: any) {
     if(this.selectAll) {
       return 'checkbox active';
@@ -552,4 +558,117 @@ export class AmexioDatagridComponent implements OnInit,AfterContentInit {
       return 'checkbox default';
     }
   }
+
+  sortOnColHeaderClick(sortCol: any, event: any) {
+    this.onColumnClickEvent.emit(event);
+    this.columnDataEvent.emit(sortCol);
+    if (this.sortBy === -1) {
+      this.sortBy = 1;
+    } else if (this.sortBy === 1) {
+      this.sortBy = 2;
+    } else if (this.sortBy === 2) {
+      this.sortBy = 1;
+    }
+    this.setSortColumn(sortCol, this.sortBy);
+  }
+
+  setSortColumn(sortCol: any, _sortBy: number) {
+    /*------set column sort false for other column--------*/
+    this.columns.forEach((opt) => {
+      opt['isColumnSort'] = false;
+    });
+    this.sortBy = _sortBy;
+    this.sortColumn = sortCol;
+    this.sortColumn.isColumnSort = true;
+
+    this.sortData();
+  }
+
+  sortData() {
+    if (this.sortColumn) {
+      let sortColDataIndex: any;
+      const sortOrder = this.sortBy;
+      if (this.sortColumn.dataIndex && this.sortColumn.dataType) {
+        const dataIndex = this.sortColumn.dataIndex;
+        sortColDataIndex = dataIndex;
+        if (this.sortColumn.dataType === 'string') {
+
+          if (this.groupByColumn) {
+            this.data.sort(function (a, b) {
+              const x = a.group.toLowerCase();
+              const y = b.group.toLowerCase();
+
+              if (sortOrder === 2) {
+                if (x < y) {
+                  return 1;
+                }
+                if (x > y) {
+                  return -1;
+                }
+              } else {
+                if (x < y) {
+                  return -1;
+                }
+                if (x > y) {
+                  return 1;
+                }
+              }
+
+              return 0;
+            });
+          } else {
+            this.data.sort(function (a, b) {
+              const x = a[sortColDataIndex].toLowerCase();
+              const y = b[sortColDataIndex].toLowerCase();
+
+              if (sortOrder === 2) {
+                if (x < y) {
+                  return 1;
+                }
+                if (x > y) {
+                  return -1;
+                }
+              } else {
+                if (x < y) {
+                  return -1;
+                }
+                if (x > y) {
+                  return 1;
+                }
+              }
+              return 0;
+            });
+          }
+        } else if (this.sortColumn.dataType === 'number') {
+          if (this.groupByColumn) {
+            this.data.sort(function (a, b) {
+              const x = a.group;
+              const y = b.group;
+
+              if (sortOrder === 2) {
+                return y - x;
+              } else {
+                return x - y;
+              }
+
+            });
+          } else {
+            this.data.sort(function (a, b) {
+              const x = a[sortColDataIndex];
+              const y = b[sortColDataIndex];
+              if (sortOrder === 2) {
+                return y - x;
+              } else {
+                return x - y;
+              }
+            });
+          }
+        }
+      }
+    }
+    this.renderData();
+  }
+
+
+
 }
