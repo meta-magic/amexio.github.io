@@ -123,6 +123,9 @@ $datetimepickerBGColor : white;
 $datetimepickertopbarBGColor : $primaryBGColor;
 $datetimepickerActiveColor : $datetimepickerBGColor;
 
+$fieldSetBorderSize : $borderSize;
+$fieldSetBorderColor : $borderColor;
+
 body {
   background: $backgroundcolor;
   min-height: 100%;
@@ -184,7 +187,6 @@ body {
 @import "itemselector.scss";
 
 @import "datapoint.scss";
-
 
 @import "fieldset.scss";
 
