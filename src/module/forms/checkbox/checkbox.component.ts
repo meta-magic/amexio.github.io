@@ -24,11 +24,9 @@ export class AmexioCheckBoxComponent implements ControlValueAccessor{
 
   @Input() fieldLabel : string;
 
-  @Input() horizontal: boolean;
-
   @Input()   disabled: boolean;
 
-  @Input()   allowBlank: string;
+  @Input()   required: string;
 
   @Output() selectedValue : any = new EventEmitter<any>();
 
