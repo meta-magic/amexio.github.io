@@ -50,7 +50,7 @@ const FORM_COMPONENTS = [
   AmexioIconComponent,
   AmexioSliderComponent,
   AmexioTagsInputComponent,
-  AmexioDateTimePicker
+  AmexioDateTimePicker,
 ];
 
 @NgModule({
