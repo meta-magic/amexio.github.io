@@ -57,6 +57,9 @@ const FORM_COMPONENTS = [
   AmexioSliderComponent,
   AmexioTagsInputComponent,
   AmexioDateTimePicker,
+  AmexioButtonDropDownItemComponent,
+  AmexioButtonDropdownComponent,
+  AmexioSpiltButtonDropdownComponent
 ];
 
 @NgModule({

@@ -6,7 +6,7 @@
            [(ngModel)]="value"
            #inp="ngModel"
            [attr.disabled] = "disabled ? true: null"
-           [attr.required]="!allowBlank"
+           [attr.required]="!required"
            hidden/>
     <div *ngIf="!value" class="checkbox default">
     </div>
@@ -23,8 +23,8 @@
 <div class="inputgroup " >
 
   <label class="input-box-container">{{fieldLabel}}
-    <input type="checkbox" *ngIf="value" checked="checked" (click)="onClick()" [attr.disabled] = "disabled ? true: null" [attr.required]="!allowBlank">
-    <input type="checkbox" *ngIf="!value" (click)="onClick()" [attr.disabled] = "disabled ? true: null" [attr.required]="!allowBlank">
+    <input type="checkbox" *ngIf="value" checked="checked" (click)="onClick()" [attr.disabled] = "disabled ? true: null" [attr.required]="!required">
+    <input type="checkbox" *ngIf="!value" (click)="onClick()" [attr.disabled] = "disabled ? true: null" [attr.required]="!required">
     <span class="input-box-checkbox-label"></span>
   </label>
 

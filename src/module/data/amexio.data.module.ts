@@ -14,6 +14,7 @@ import {AmexioProgressBarComponent} from "./progress/progress.component";
 import {IconLoaderService} from "../services/icon/icon.service";
 import {HorizontalTreeViewNodeComponent} from "./tree/horizontalnode.component";
 import {HorizontalTreeViewComponent} from "./tree/horizontaltreeview.component";
+import {AmexioFilterTreeComponent} from "./tree/filter.tree.component";
 
 export * from '../services/data/common.data.service';
 export * from './listbox/listbox.component';
@@ -31,7 +32,8 @@ const DATA_COMPONENTS = [
   AmexioProgressMultiBarComponent,
   AmexioProgressBarComponent,
   HorizontalTreeViewNodeComponent,
-  HorizontalTreeViewComponent
+  HorizontalTreeViewComponent,
+  AmexioFilterTreeComponent
 ];
 
 @NgModule({
