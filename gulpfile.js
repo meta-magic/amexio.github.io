@@ -85,7 +85,7 @@ const config = {
   demoDir: 'demo/',
   buildDir: 'tmp/',
   outputDir: 'dist/',
-  outputDirTheme : 'dist/themes/',
+  outputDirTheme : 'dist/styles/',
   outputDemoDir: 'demo/dist/browser/',
   coverageDir: 'coverage/'
 };
@@ -348,7 +348,7 @@ gulp.task('npm-package', (cb) => {
  * Copy themes from src to /dist
  */
 gulp.task('copy-themes', function () {
-  return gulp.src('src/themes/**')
+  return gulp.src('src/styles/**')
     .pipe(gulp.dest(distThemeFolder));
 });
 
