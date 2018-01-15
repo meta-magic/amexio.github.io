@@ -117,6 +117,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor,Do
 
 
   onKeyUp(event : any){
+    debugger;
     this.filteredResult = [];
     this.showToolTip = false;
     let keyword : any = event.target.value;

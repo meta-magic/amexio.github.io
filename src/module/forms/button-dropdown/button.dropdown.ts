@@ -1,7 +1,10 @@
 /**
  * Created by pratik on 13/12/17.
  */
-import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from '@angular/core';
+import {
+  AfterContentInit, Component, ContentChildren, EventEmitter, Input, OnInit, Output,
+  QueryList
+} from '@angular/core';
 import {AmexioButtonDropDownItemComponent} from "./button.dropdown.item";
 
 @Component({
@@ -49,6 +52,8 @@ export class AmexioButtonDropdownComponent implements AfterContentInit {
 
   @Input()    size: string;
 
+  @Output()   click : any = new EventEmitter<any>();
+
 
   constructor() {
   }
@@ -70,6 +75,7 @@ export class AmexioButtonDropdownComponent implements AfterContentInit {
 
   onClick(){
     this.openContent = !this.openContent;
+    this.click.emit();
   }
 
   itemClick(event: any, itemData: any) {

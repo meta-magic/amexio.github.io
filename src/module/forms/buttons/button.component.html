@@ -1,6 +1,6 @@
 <button class="button"
         [attr.disabled] = "disabled ? true: null"
-        [ngClass]="{'button-default': size=='default' || size ==null,'button-small': size=='small','button-large' : size=='large','button-primary' : type == 'primary' || type == null,'button-success' : type == 'success',' button-danger' : type=='danger','button-warning' : type=='warning','disabled' : disabled}"
+        [ngClass]="{'button-default': size=='default' || size ==null,'button-small': size=='small','button-large' : size=='large','button-primary' : type == 'primary','button-success' : type == 'success',' button-danger' : type=='danger','button-warning' : type=='warning','disabled' : disabled,'button-default':type == null}"
         (click)="onClick.emit($event)">
-  <span class="button-text">{{label}}</span>
+  <span class="button-text"><i class="{{icon}}" aria-hidden="true"></i>{{label}}</span>
 </button>
