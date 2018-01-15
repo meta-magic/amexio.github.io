@@ -1,3 +1,6 @@
+//@import "../node_modules/amexio-ng-extensions/styles/mdb/mdb-blueberry.scss";
+
+
 $defaultBGColor : white;
 
 $defaultColor : black;
@@ -12,7 +15,7 @@ $backgroundcolor: #ECEFF1;
 $componentBGColor: white;
 
 
-$themeBGColor :  #455A64;
+$themeBGColor :  #5C6BC0;
 $themeColor :  white;
 
 $primaryBGColor: $themeBGColor;
@@ -43,8 +46,8 @@ $borderColor : #ced4da;
 $borderColor-focus: $focusColor;
 
 
-$navbarBGColor : lighten($themeBGColor,20);
-$navbarBoxShadow: darken($themeBGColor,10);
+$navbarBGColor : #9FA8DA ;
+$navbarBoxShadow: $borderColor;
 $navbarColor : $themeColor;
 
 $sidenavHeaderBGColor: $defaultBGColor;
@@ -105,13 +108,12 @@ $fieldSetBorderSize : $borderSize;
 $fieldSetBorderColor : $borderColor;
 
 
-@import "../node_modules/amexio-ng-extensions/styles/default/common.scss";
-
-@import "../node_modules/amexio-ng-extensions/styles/default/amexio.components.scss";
-@import "../node_modules/amexio-ng-extensions/styles/default/amexio.data.scss";
-@import "../node_modules/amexio-ng-extensions/styles/default/amexio.layouts.scss";
-@import "../node_modules/amexio-ng-extensions/styles/default/amexio.nav.scss";
-@import "../node_modules/amexio-ng-extensions/styles/default/amexio.panes.scss";
+@import "../default/common.scss";
+@import "../default/amexio.components.scss";
+@import "../default/amexio.data.scss";
+@import "../default/amexio.layouts.scss";
+@import "../default/amexio.nav.scss";
+@import "../default/amexio.panes.scss";
 
 
 body {
@@ -188,10 +190,6 @@ button.app-button {
 
 
 
-/* ----------------------------------- */
-/*        DATATABLE COMPONENT         */
-/* ----------------------------------- */
-
 .datatable .datatable-row{
   height: 50px;
 }
@@ -230,10 +228,9 @@ button.app-button {
 }
 
 
-
-/* ----------------------------------- */
-/*        DATAPOINTS COMPONENT         */
-/* ----------------------------------- */
+.datatable-row:nth-child(odd){
+  background-color: #E8EAF6;
+}
 
 .datapoints{
   .datapoints{
@@ -248,7 +245,7 @@ button.app-button {
 }
 
 .datapoint-south{
-  /* Background */
+
   background-color: $primaryBGColor;
   color: $primaryColor;
   border-radius: 0px;
@@ -264,7 +261,7 @@ button.app-button {
 }
 
 
-/**LIST BOX STYLE**/
+
 
 .listbox .list{
   background-color: white;
@@ -282,14 +279,18 @@ button.app-button {
   }
 }
 
-
-/**SIDE NAV **/
-.sidenav .activenode{
-  color: #00695C;
+/** NAVBAR **/
+.navbar-container {
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
 }
 
 
-/**PROFILE IMAGE**/
+.sidenav .activenode{
+  color: darken($themeBGColor, 20);
+}
+
+
+
 .image-responsive{
   max-width: 100%;
   width: 100%;
@@ -298,15 +299,6 @@ button.app-button {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-
-
-/***APP SPECIFIC STYLE****/
-
-/* ----------------------------------- */
-/*        LAYOUT COMPONENT             */
-/* ----------------------------------- */
-
-
 
 .flex-col-2pt5{
   max-width: 20.8333325%;
