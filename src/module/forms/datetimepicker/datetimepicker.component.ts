@@ -59,7 +59,6 @@ export class AmexioDateTimePicker implements OnInit {
     this.currrentDate = new Date();
     this.daysTitle = [];
     this.daysArray = [];
-    this.dateFormat = "yMMMMd";
     this.timepicker = false;
     this.hrs = this.currrentDate.getHours();
     this.min = this.currrentDate.getMinutes();
@@ -69,6 +68,9 @@ export class AmexioDateTimePicker implements OnInit {
 
 
   ngOnInit() {
+    if(this.dateFormat != null){
+      this.dateFormat = "dd/MM/yyyy";
+    }
   }
 
 
