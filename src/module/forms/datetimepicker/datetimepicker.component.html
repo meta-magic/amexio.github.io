@@ -10,6 +10,7 @@
     <ng-container *ngIf="datepicker && !timepicker">
       <input type="text"
              value="{{dateModel|date:dateFormat}}"
+             [attr.disabled]="readonly ? true: null"
              (blur)="onBlur()"
              (focus)="onFocus()"
              class="input-control" placeholder="Choose Date"/>
@@ -18,6 +19,7 @@
     <ng-container *ngIf="timepicker">
       <input type="text"
              value="{{dateModel|date:dateFormat}} {{hrs + ' : ' + min}}"
+             [attr.disabled]="readonly ? true: null"
              (blur)="onBlur()"
              (focus)="onFocus()"
              class="input-control" placeholder="Choose Time"/>
@@ -30,7 +32,7 @@
 
     <div *ngIf="showToolTip" class="datetimepicker">
 
-      <div class="datetimepickertopbar">
+      <div class="datetimepickertopbar" *ngIf="datepicker">
         <ul>
           <li class="prev">
             <i (click)="prevYear($event)" class="fa fa fa-step-backward" aria-hidden="true"></i>
@@ -46,11 +48,11 @@
         </ul>
       </div>
 
-      <ul class="weekdays">
+      <ul class="weekdays" *ngIf="datepicker">
         <li *ngFor="let dayTitle of daysTitle">{{dayTitle.text}}</li>
       </ul>
 
-      <ul  class="days">
+      <ul  class="days" *ngIf="datepicker">
 
         <ng-container *ngFor="let dayArray of daysArray">
           <li *ngFor="let day of dayArray" >
