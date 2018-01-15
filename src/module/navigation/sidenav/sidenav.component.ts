@@ -28,7 +28,7 @@ export class AmexioSideNav  implements  OnInit{
   @Input()
   dataReader: string;
 
-  @Input() position: string;
+  @Input() position: any;
 
   @Input() titleimage: string;
 
