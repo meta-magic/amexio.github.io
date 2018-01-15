@@ -30,16 +30,6 @@ export const CUSTOM_SLIDER_CONTROL_VALUE_ACCESSOR: any = {
           orient="vertical"
           value="15" [ngStyle]="{'background-image' : '-webkit-gradient(linear, left top, right top,color-stop(' + val + ', #94A14E),color-stop(' + val + ', #C5C5C5)'}">
 
-   <span *ngIf="iconFeedBack && (inp.invalid && (inp.dirty || inp.touched) || inp.valid)" class="input-control-feedback">
-        <span *ngIf="inp.invalid && (inp.dirty || inp.touched)">&#9888;</span>
-        <span *ngIf="inp.valid && (inp.dirty || inp.touched)"> &#10004;</span>
-
-      </span>
-
-   <span *ngIf="showToolTip && enablePopOver" class="tooltiptext">
-        <div  [innerHTML]="helpInfoMsg"></div>
-  </span>
-
  `,
   providers : [CUSTOM_SLIDER_CONTROL_VALUE_ACCESSOR]
 })

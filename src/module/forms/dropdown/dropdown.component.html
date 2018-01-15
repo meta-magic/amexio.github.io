@@ -15,7 +15,6 @@
          [ngClass]="{'input-control-error' : inp.invalid && (inp.dirty || inp.touched),'input-control-success' : inp.valid && (inp.dirty || inp.touched)}"
          (blur)="onBlur()"
          (focus)="onFocus()"
-         [attr.fieldName]="fieldName"
          [attr.placeholder]="placeholder"
          [attr.disabled]="disabled ? true: null"
          [required]="allowBlank ? true: null" (keyup)="onDropDownSearchKeyUp($event)"/>
