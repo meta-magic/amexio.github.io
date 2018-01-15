@@ -12,16 +12,15 @@
  */
 
 import {
-  OnInit, Input, Component, SimpleChange, EventEmitter, Output, QueryList, ContentChildren, AfterContentInit, DoCheck,
-  ViewChildren
+  OnInit, Input, Component, QueryList, ContentChildren
 } from '@angular/core';
-import {AmexioGridColumnComponent} from "./column.component";
 import {CommonDataService} from "../../services/data/common.data.service";
+import {AmexioGridColumnComponent} from "../datagrid/data.grid.column";
 
 @Component({
   selector : 'amexio-tree-data-table',
   template : `
-    
+
     <div class="datatable">
       <div class="datatable-header">
         <ng-container *ngFor="let cols of columns;let i = index">
@@ -33,29 +32,27 @@ import {CommonDataService} from "../../services/data/common.data.service";
     <div class="datatable">
       <div class="datatable-row" *ngFor="let row of viewRows;let i=index">
 
-          <div class="datatable-col" *ngFor="let cols of columns;let colIndex = index">
-            <ng-container *ngIf="colIndex == 0">
+        <div class="datatable-col" *ngFor="let cols of columns;let colIndex = index">
+          <ng-container *ngIf="colIndex == 0">
               <span [ngStyle]="{'padding-left':(20*row.level)+'px'}">
                     <i *ngIf="!row.expanded && row.children" class="fa fa-plus" aria-hidden="true" (click)="toogle(row,i)"></i>
                     <i *ngIf="row.expanded && row.children" class="fa fa-minus" aria-hidden="true" (click)="toogle(row,i)"></i>
                      {{row[cols.dataIndex]}}
                </span>
-            </ng-container>
+          </ng-container>
 
-           <ng-container *ngIf="colIndex > 0" >
-              {{row[cols.dataIndex]}}
-            </ng-container>
-          </div>
+          <ng-container *ngIf="colIndex > 0" >
+            {{row[cols.dataIndex]}}
+          </ng-container>
+        </div>
       </div>
     </div>
-
-
 
   `,
 
 })
 
-export class TreeDataTableComponent1 implements  OnInit{
+export class TreeDataTableComponent implements  OnInit{
 
   @Input()    data : any;
 
@@ -127,7 +124,7 @@ export class TreeDataTableComponent1 implements  OnInit{
   setData(httpResponse: any){
     let treedata = this.getResponseData(httpResponse);
     this.viewRows = treedata;
-    this.viewRows.forEach((row : any,index)=>{
+    this.viewRows.forEach((row : any,index : any)=>{
       this.viewRows[index].level=1;
       this.viewRows[index].expand=false;
     });
@@ -157,7 +154,7 @@ export class TreeDataTableComponent1 implements  OnInit{
     }
   }
 
-  addRows(row,index:number){
+  addRows(row : any,index:number){
     for(let i=0;i<row.children.length;i++){
       let node = row.children[i];
       if(!row.level){
@@ -171,7 +168,7 @@ export class TreeDataTableComponent1 implements  OnInit{
     }
   }
 
-  removeRows(node){
+  removeRows(node : any){
     for(let i=0;i<node.children.length;i++){
 
       for(let j=0; j<this.viewRows.length; j++){
