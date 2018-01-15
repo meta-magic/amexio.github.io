@@ -1,4 +1,18 @@
 /**HELPER CLASS STARTS**/
+
+body {
+  background: $backgroundcolor;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-weight: 400;
+  color: $color;
+  font-size: 1em;
+  margin: 0px;
+  padding: 0px;
+}
+
+
 .helperHidden{
   border: 0;
   clip: rect(0 0 0 0);

@@ -1,65 +1,57 @@
+$defaultBGColor : white;
 
+$defaultColor : black;
 
+$color: $defaultColor;
 
-$color: #404c51;
+$oppColor: $defaultBGColor;
 
-$oppColor: white;
 
 $backgroundcolor: #ECEFF1;
 
-$borderSize : 1px;
+$componentBGColor: white;
 
-$borderRadius : 2px;
 
-$borderColor : #ced4da;
+$themeBGColor :  #455A64;
+$themeColor :  white;
 
-$borderColor-focus: #5cb3fd;
-
-$primaryBGColor: #455A64;
-
+$primaryBGColor: $themeBGColor;
 $secondaryBGColor: #ffffff;
-
 $successBGColor : #5cb85c;
-
 $dangerBGColor : #d9534f;
-
 $warningBGColor : #f0ad4e;
 
 
-$primaryColor: #FFFFFF;
-
+$primaryColor: $themeColor;
 $secondaryColor: $color;
-
 $successColor : $oppColor;
-
 $dangerColor : $oppColor;
-
 $warningColor : $oppColor;
 
+
 $success: $successBGColor;
-
 $error : $dangerBGColor;
+$focusColor : #5cb3fd;
 
-$hoverColor : $primaryColor;
+$hoverColor : $themeColor;
+$hoverBGColor : $themeBGColor;
 
-$hoverBGColor : $primaryBGColor;
+
+$borderSize : 1px;
+$borderRadius : 2px;
+$borderColor : #ced4da;
+$borderColor-focus: $focusColor;
 
 
-$sidenavHeaderBGColor: white;
+$navbarBGColor : lighten($themeBGColor,20);
+$navbarBoxShadow: darken($themeBGColor,10);
+$navbarColor : $themeColor;
+
+$sidenavHeaderBGColor: $defaultBGColor;
 $sidenavHeaderColor: $color;
-$sidenavBGColor : white;
-$sidenavColor: black;
+$sidenavBGColor : $defaultBGColor;
+$sidenavColor: $defaultColor;
 $sidenavactive:#eee;
-
-$treeNodeActiveBGColor : $sidenavactive;
-$treeNodeActiveColor : $sidenavColor;
-
-
-$tabBorderSize: $borderSize;
-$tabBorderColor : $borderColor;
-$tabActiveBorder : red;
-$tabActiveBGColor : $borderColor;
-$tabActiveBorderSize : 3px;
 
 $menubarBGColor : #3498DB;
 $menubarColor : white;
@@ -67,86 +59,64 @@ $menuHoverColor: orange;
 $subMenuCotentBGColor : white;
 $subMenuCotentColor : #777;
 
-$modalBGColor: lighten(black,50%);
-
-$cardBGColor: #FFFFFF;
-$cardColor: black;
-
-$cardHeaderBGColor: #455A64;
-$cardHeaderColor: #FFFFFF;
-$cardFooterBGColor: #455A64;
-$cardFooterColor: #FFFFFF;
-$cardBorderColor: $borderColor;
-
-$toastBGColor : $primaryBGColor;
-$toastColor : $primaryColor;
-/* You can add global styles to this file, and also import other style files */
-
-.float-right {
-  float: right;
-}
-
-.float-left {
-  float: left;
-}
-
-
-
-$borderLayoutBorder : 0px;
-$borderLayoutBorderColor : none;
-
-$menubarBGColor : black;
-$menubarColor : white;
-$menuHoverColor: orange;
-
 $subMenuCotentBGColor : white;
 $subMenuCotentColor : #777;
 $menuborderColor:#ced4da;
 $menuborderSize:1px;
 
-$navbarBGColor : #90A4AE;
-$navbarBoxShadow:#666;
-$navbarColor : white;
+$treeNodeActiveBGColor : $sidenavactive;
+$treeNodeActiveColor : $sidenavColor;
 
+$tabBorderSize: $borderSize;
+$tabBorderColor : $borderColor;
+$tabActiveBorder : darken($themeBGColor,10);
+$tabActiveBGColor : $borderColor;
+$tabActiveBorderSize : 3px;
 
-$datapointBGColor : #ffffff;
-$datapointColor : #455A64;
+$modalBGColor: lighten(black,50%);
+
+$cardBGColor: $defaultBGColor;
+$cardColor: $color;
+
+$cardHeaderBGColor: $themeBGColor;
+$cardHeaderColor: $themeColor;
+$cardFooterBGColor: $themeBGColor;
+$cardFooterColor: $themeColor;
+$cardBorderColor: $borderColor;
+
+$toastBGColor : $themeBGColor;
+$toastColor : $themeColor;
+
+$borderLayoutBorder : 0px;
+$borderLayoutBorderColor : none;
+
+$datapointBGColor : $defaultBGColor;
+$datapointColor : $themeBGColor;
 $datapointBorderColor : $borderColor;
-
-$componentBGColor: #ffffff;
 
 $ratingBorderColor : $borderColor;
 $ratingActiveColor : $primaryBGColor;
 
-
-$datetimepickerBGColor : white;
+$datetimepickerBGColor : $defaultBGColor;
 $datetimepickertopbarBGColor : $primaryBGColor;
 $datetimepickerActiveColor : $datetimepickerBGColor;
 
 $fieldSetBorderSize : $borderSize;
 $fieldSetBorderColor : $borderColor;
 
+
+@import "../node_modules/amexio-ng-extensions/styles/default/common.scss";
+
+@import "../node_modules/amexio-ng-extensions/styles/default/amexio.components.scss";
+@import "../node_modules/amexio-ng-extensions/styles/default/amexio.data.scss";
+@import "../node_modules/amexio-ng-extensions/styles/default/amexio.layouts.scss";
+@import "../node_modules/amexio-ng-extensions/styles/default/amexio.nav.scss";
+@import "../node_modules/amexio-ng-extensions/styles/default/amexio.panes.scss";
+
+
 body {
-  background: $backgroundcolor;
-  min-height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
   font-family: Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
-  font-weight: 400;
-  color: $color;
-  font-size: 1em;
-  margin: 0px;
-  padding: 0px;
-
 }
-
-@import "../default/common";
-
-@import "../default/amexio.components.scss";
-@import "../default/amexio.data.scss";
-@import "../default/amexio.layouts.scss";
-@import "../default/amexio.nav.scss";
-@import "../default/amexio.panes.scss";
 
 
 
