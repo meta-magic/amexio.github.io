@@ -89,4 +89,9 @@
   }
 }
 
+
+.datatable-row:nth-child(odd){
+  background-color: lighten($primaryBGColor, 60);
+}
+
 /** DATATABLE ENDS**/
