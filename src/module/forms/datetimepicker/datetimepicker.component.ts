@@ -285,7 +285,8 @@ export class AmexioDateTimePicker implements OnInit {
   }
 
   onFocus(){
-    this.showToolTip = true;
+    if(!this.readonly)
+      this.showToolTip = true;
   }
 
   onSelect(){

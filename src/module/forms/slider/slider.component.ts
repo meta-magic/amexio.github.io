@@ -1,7 +1,7 @@
 /**
  * Created by pratik on 28/12/17.
  */
-import {Component, forwardRef, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, forwardRef, Input, OnInit, Output} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 
 const noop = () => {
@@ -20,7 +20,8 @@ export const CUSTOM_SLIDER_CONTROL_VALUE_ACCESSOR: any = {
           [(ngModel)]="value"
           #inp="ngModel"
           [ngClass]="{'input-control-error' : inp.invalid && (inp.dirty || inp.touched),'input-control-success' : inp.valid && (inp.dirty || inp.touched)}"
-          (blur)="onBlur()"
+          (input)="onInput()"
+          (blur)="onblur()"
           (focus)="onFocus()"
           (change)="onChange($event)" 
           [attr.min]="minValue" 
@@ -52,6 +53,14 @@ export class AmexioSliderComponent implements OnInit, ControlValueAccessor {
   @Input()  stepValue : number;
 
   @Input()   iconFeedBack: boolean;
+
+  @Output()   onBlur : any = new EventEmitter<any>();
+
+  @Output()   input : any = new EventEmitter<any>();
+
+  @Output()   focus : any = new EventEmitter<any>();
+
+  @Output()   change : any = new EventEmitter<any>();
 
   val : any;
 
@@ -86,13 +95,15 @@ export class AmexioSliderComponent implements OnInit, ControlValueAccessor {
   }
 
   //Set touched on blur
-  onBlur() {
+  onblur() {
     this.onTouchedCallback();
     // this.showToolTip = false;
+    this.onBlur.emit();
   }
 
   onFocus(){
     // this.showToolTip = true;
+    this.change.emit();
   }
   //From ControlValueAccessor interface
   writeValue(value: any) {
@@ -111,4 +122,7 @@ export class AmexioSliderComponent implements OnInit, ControlValueAccessor {
     this.onTouchedCallback = fn;
   }
 
+  onInput(){
+    this.input.emit();
+  }
 }
