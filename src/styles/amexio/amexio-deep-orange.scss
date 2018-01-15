@@ -1,20 +1,22 @@
 
-$defaultBGColor : white;
 
-$defaultColor : black;
+
+$defaultBGColor : #292b2c;
+
+$defaultColor : rgba(255,255,255,0.70);
 
 $color: $defaultColor;
 
 $oppColor: $defaultBGColor;
 
 
-$backgroundcolor: #ECEFF1;
+$backgroundcolor: #1b1d22;
 
-$componentBGColor: white;
+$componentBGColor: $backgroundcolor;
 
 
-$themeBGColor :  #BCAAA4;
-$themeColor :  white;
+$themeBGColor :  $backgroundcolor;
+$themeColor :  #E84C1A;
 
 $primaryBGColor: $themeBGColor;
 $secondaryBGColor: #ffffff;
@@ -38,22 +40,22 @@ $hoverColor : $themeColor;
 $hoverBGColor : $themeBGColor;
 
 
-$borderSize : 1px;
-$borderRadius : 2px;
-$borderColor : #ced4da;
+$borderSize : 2px;
+$borderRadius : 2 px;
+$borderColor : #666666;
 $borderColor-focus: $focusColor;
 
 
-$navbarBGColor : darken($themeBGColor, 30);
+$navbarBGColor : $themeBGColor ;
 $navbarBoxShadow: $borderColor;
-$navbarColor : $themeColor;
+$navbarColor : white;
 
 $sidenavHeaderBGColor: $defaultBGColor;
 $sidenavHeaderColor: $color;
 $sidenavBGColor : $defaultBGColor;
 $sidenavColor: $defaultColor;
-$sidenavactive:#eee;
-$sidenavBorderColor: $borderColor;
+$sidenavactive:$themeBGColor;
+$sidenavBorderColor: #E84C1A;
 
 $menubarBGColor : #3498DB;
 $menubarColor : white;
@@ -84,7 +86,7 @@ $cardHeaderBGColor: $themeBGColor;
 $cardHeaderColor: $themeColor;
 $cardFooterBGColor: $themeBGColor;
 $cardFooterColor: $themeColor;
-$cardBorderColor: $borderColor;
+$cardBorderColor: #E84C1A;
 
 $toastBGColor : $themeBGColor;
 $toastColor : $themeColor;
@@ -94,7 +96,7 @@ $borderLayoutBorderColor : none;
 
 $datapointBGColor : $defaultBGColor;
 $datapointColor : $themeBGColor;
-$datapointBorderColor : $borderColor;
+$datapointBorderColor : $cardBorderColor;
 
 $ratingBorderColor : $borderColor;
 $ratingActiveColor : $primaryBGColor;
@@ -126,27 +128,39 @@ body {
 /*----------------------------------------------------------------------*/
 
 
+
 .input-control {
-  border-radius: 0px;
+  border-radius: 4px;
   line-height: 2;
   font-size: 14px;
-  border: none;
-  border-bottom: 2px solid $borderColor;
-  background-color: #FFFFFF;
+  border: 2px solid #666666;
+  border-radius: 4px!important;
+  background-color: #1b1d22;
   color: $color;
 }
 
 .input-control-success {
-  border-bottom-color:$success;
+  border-color:$success;
 }
 
 .input-control-error {
-  border-bottom-color:$error;
+  border-color:$error;
 }
 
 
 .inputgroup label {
   margin-bottom: 0rem;
+}
+
+.dropdown{
+  border: 2px solid #666666;
+  box-shadow: 0 1px 3px 0 #666666;
+}
+
+
+.datetimepicker {
+  border: $borderSize solid #666666;
+  box-shadow: 0 1px 3px 0 #666666;
 }
 
 label {
@@ -188,9 +202,10 @@ button.app-button {
 
 
 
-
 .datatable .datatable-row{
   height: 50px;
+  border-top: none;
+  border-bottom: 2px solid #666666;
 }
 
 .datatable .datatable-header .datatable-col{
@@ -199,9 +214,25 @@ button.app-button {
 }
 
 .datatable .datatable-header{
-  background-color: darken($backgroundcolor,5%);
+  background: linear-gradient(#40434D, #000000);
   font-size: larger;
+  color: white!important;
 }
+
+
+.datatable .datatable-row:hover{
+  background-color: $themeBGColor;
+}
+
+.datatable .datatable-row-active{
+  background-color: $themeBGColor!important;
+}
+
+
+.datatable-row:nth-child(odd){
+  background-color: $themeBGColor;
+}
+
 
 .datatable .datatable-col{
   vertical-align: middle;
@@ -224,11 +255,6 @@ button.app-button {
 
 .datatable .datatable-col{
   vertical-align: middle;
-}
-
-
-.datatable-row:nth-child(odd){
-  background-color: #EFEBE9;
 }
 
 
@@ -238,17 +264,19 @@ button.app-button {
     border: none;
     box-shadow: none;
   }
+  color: #F2870C;
+  border-radius: 10px;
 }
 .datapoints-north{
   font-size: 36px;
   font-weight: bold;
-  color: $primaryBGColor;
+  color: #F2870C;
 }
 
 .datapoint-south{
 
   background-color: $primaryBGColor;
-  color: $primaryColor;
+  color: #F2870C;
   border-radius: 0px;
   font-size: 20px;
   padding: 5px;
@@ -265,29 +293,65 @@ button.app-button {
 
 
 .listbox .list{
-  background-color: white;
+  background-color: $defaultBGColor;
 
   .title {
     float: left;
     font-size: 18px;
-    color: rgba(0,0,0,0.87);
+    color: $defaultColor;
     padding-top: 8px;
     a {
       font-size: 16px;
-      color: rgba(0,0,0,0.54) !important;
+      color: $defaultColor;
       text-transform: lowercase;
     }
   }
 }
 
+.card-container {
+  border-radius: 10px;
+
+  .card-header {
+    border-radius: 10px;
+    background: linear-gradient(#40434D, #000000);
+  }
+  .card-footer{
+    border-radius: 10px;
+  }
+}
+
+.listbox{
+  border-radius: 10px;
+
+  .listbox .list .title {
+    color: #E84C1A !important;
+  }
+
+  .header{
+    border-radius: 10px;
+    border-bottom: $borderSize solid $borderColor;
+  }
+
+  .list .list-items{
+    border-bottom: 1px solid #1b1d22;
+  }
+}
 
 /** NAVBAR **/
 .navbar-container {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+  background-color: #F58338;
+  background: linear-gradient(#F58338, #E84C1A);
+}
+
+.sidenav{
+  border-right: $borderSize solid $cardBorderColor;
+  box-shadow:none;
 }
 
 .sidenav .activenode{
-  color: darken($themeBGColor, 20);
+  color: $themeColor;
+  background-color: $backgroundcolor;
 }
 
 
@@ -317,7 +381,13 @@ button.app-button {
 }
 
 .email {
-  background-color: white;
+  background-color: #3A3C42;
+  border: $borderSize solid $cardBorderColor;
+  border-radius: 10px;
+  .card-header{
+    background: linear-gradient(#40434D, #000000);
+    border-radius: 10px;
+  }
 }
 
 
@@ -330,4 +400,5 @@ div.profile-image img {
 
 div.profile-image a{
   text-transform: capitalize;
+  color: $defaultColor;
 }

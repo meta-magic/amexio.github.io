@@ -3,7 +3,7 @@
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
-  box-shadow: 0 0 5px 0 $borderColor;
+  box-shadow: 0 0 5px 0 $sidenavBorderColor;
   background-color: $sidenavBGColor;
   color: $sidenavColor;
   z-index: 1;
@@ -72,7 +72,7 @@
 .sidenav .border{
   padding-left: 100%;
   margin-left: -100%;
-  border-bottom: $borderSize solid $borderColor;
+  border-bottom: $borderSize solid $sidenavBorderColor;
 }
 
 

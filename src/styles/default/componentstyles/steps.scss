@@ -1,4 +1,3 @@
-/*
 .wizard .wizard-list {
   background-color: #E4E4E4;
   border-radius: 5px;
@@ -44,74 +43,4 @@
 
 .wizard .wizard-list:last-child::after {
   border-left-color: transparent;
-}
-*/
-
-.amexio-step-label-highlight {
-  color: black;
-  font-weight: bold;
-}
-.amexio-stepwizard-step p {
-  margin-top: 0px;
-  color: #666;
-}
-.amexio-stepwizard-row {
-  display: table-row;
-}
-.amexio-stepwizard {
-  display: table;
-  width: 100%;
-  position: relative;
-}
-.amexio-stepwizard-row:before {
-  top: 14px;
-  bottom: 0;
-  position: absolute;
-  content: " ";
-  width: 100%;
-  height: 1px;
-  background-color: $backgroundcolor;
-  z-index: 0;
-}
-.amexio-stepwizard-step {
-  display: table-cell;
-  text-align: center;
-  position: relative;
-}
-.btn-circle {
-  width: 30px;
-  height: 30px;
-  text-align: center;
-  padding: 6px 0;
-  font-size: 12px;
-  line-height: 1.428571429;
-  border-radius: 15px;
-}
-
-
-.step-box-sqaure{
-  width: 100%;
-  display: table;
-  table-layout: fixed;
-}
-.step-box-table{
-  display: table-row;
-}
-.step-box-table-item{
-  width: 2px;
-  display: table-cell;
-  background-color: lightgray;
-  text-align: center;
-  vertical-align: middle;
-  line-height: 15px;
-  border: 1px solid black;
-  font-weight: bolder;
-}
-
-.step-box-table-item.active{
-  background-color: $menubarBGColor;
-}
-.step-box-table-item.disbaled{
-  background-color: lighten($menubarBGColor,50%);
-  cursor : not-allowed;
 }
