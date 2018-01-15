@@ -30,6 +30,7 @@ import {AmexioDateTimePicker} from "./datetimepicker/datetimepicker.component";
 import {AmexioButtonDropdownComponent} from "./button-dropdown/button.dropdown";
 import {AmexioSpiltButtonDropdownComponent} from "./button-dropdown/split.button.dropdown";
 import {AmexioButtonDropDownItemComponent} from "./button-dropdown/button.dropdown.item";
+import {AmexioFileUploadComponent} from "./fileupload/fileupload.component";
 
 export * from '../services/data/common.data.service';
 export * from '../services/icon/icon.service';
@@ -59,7 +60,8 @@ const FORM_COMPONENTS = [
   AmexioDateTimePicker,
   AmexioButtonDropDownItemComponent,
   AmexioButtonDropdownComponent,
-  AmexioSpiltButtonDropdownComponent
+  AmexioSpiltButtonDropdownComponent,
+  AmexioFileUploadComponent
 ];
 
 @NgModule({
