@@ -140,64 +140,10 @@ body {
 
 }
 
-@import "common.scss";
+@import "common";
 
-@import "input.scss";
-
-@import "button.scss";
-
-@import "dropdown.scss";
-
-@import "paginator.scss";
-
-@import "inputbox.scss";
-
-@import "datatable.scss";
-
-@import "treenode.scss";
-
-@import "listbox.scss";
-
-@import "horizontaltreeview.scss";
-
-@import "sidenav.scss";
-
-@import "accordion.scss";
-
-@import "nav.scss";
-
-@import "navbar.scss";
-
-@import "tab.scss";
-
-@import "steps.scss";
-
-@import "notification.scss";
-
-@import "cards.scss";
-
-@import "window.scss";
-
-@import "carousel.scss";
-
-@import "navbar.scss";
-
-@import "rowcol.scss";
-
-@import "itemselector.scss";
-
-@import "datapoint.scss";
-
-@import "fieldset.scss";
-
-@import "progress.scss";
-
-@import "toggle.scss";
-
-@import "borderlayout.scss";
-
-@import "rating.scss";
-
-@import "taginput.scss";
-
-@import "datetime.scss";
+@import "amexio.components.scss";
+@import "amexio.data.scss";
+@import "amexio.layouts.scss";
+@import "amexio.nav.scss";
+@import "amexio.panes.scss";

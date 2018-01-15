@@ -135,16 +135,3 @@ input[type='range']::-webkit-slider-thumb {
 }*/
 
 
-
-/** Fileupload drop zone css **/
-.upload-drop-zone {
-  color: $backgroundcolor;
-  border-style: dashed;
-  border-color: $backgroundcolor;
-  line-height: 200px;
-  text-align: center
-}
-.upload-drop-zone.drop {
-  color: #222;
-  border-color: #222;
-}
