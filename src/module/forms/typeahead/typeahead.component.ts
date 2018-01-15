@@ -3,7 +3,7 @@
  */
 
 
-import {Component, DoCheck, forwardRef, Input, OnInit} from '@angular/core';
+import {Component, DoCheck, EventEmitter, forwardRef, Input, OnInit, Output} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {CommonDataService} from "../../services/data/common.data.service";
 
@@ -39,6 +39,15 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor,Do
   @Input()    displayField : string;
 
   @Input()    valueField : string;
+
+  @Output()   onBlur : any = new EventEmitter<any>();
+
+  @Output()   input : any = new EventEmitter<any>();
+
+  @Output()   focus : any = new EventEmitter<any>();
+
+  @Output()   change : any = new EventEmitter<any>();
+
 
   displayValue : any;
 
@@ -141,6 +150,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor,Do
 
   onChange(event : any){
     this.value = event;
+    this.change.emit(this.value);
   }
 
 
@@ -195,12 +205,17 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor,Do
   }
 
   //Set touched on blur
-  onBlur() {
+  onblur() {
     this.onTouchedCallback();
+    this.onBlur.emit(this.value);
   }
 
   onFocus(){
     this.showToolTip = true;
+    this.focus.emit(this.value);
+  }
+  onInput(){
+    this.input.emit(this.value);
   }
   //From ControlValueAccessor interface
   writeValue(value: any) {

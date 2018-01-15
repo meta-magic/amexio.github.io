@@ -23,10 +23,6 @@ export class AmexioEmailInputComponent implements ControlValueAccessor{
 
   @Input()   allowBlank: string;
 
-  @Input()   minLength: number;
-
-  @Input()   maxLength: number;
-
   helpInfoMsg: string;
 
   regEx : RegExp ;
@@ -44,29 +40,6 @@ export class AmexioEmailInputComponent implements ControlValueAccessor{
     this.helpInfoMsg = value + '<br/>';
   }
 
-  _minErrorMsg : string;
-
-  get minErrorMsg() : string{
-    return this._minErrorMsg;
-  }
-
-  @Input('minErrorMsg')
-  set minErrorMsg(value : string){
-    this.helpInfoMsg = this.helpInfoMsg + '<b>Min Length<b/>: ' + value + '<br/>';
-  }
-
-  _maxErrorMsg : string;
-
-  get maxErrorMsg() : string{
-    return this._maxErrorMsg;
-  }
-
-  @Input('maxErrorMsg')
-  set maxErrorMsg(value : string){
-    this.helpInfoMsg = this.helpInfoMsg + 'Max Length: ' + value;
-  }
-
-
   @Input()   placeholder: string;
 
   @Input()   disabled: boolean;
@@ -79,7 +52,7 @@ export class AmexioEmailInputComponent implements ControlValueAccessor{
 
   @Input()   fontSize: string;
 
-  @Input()   hasLabel: boolean = true;
+  emailpatter:any=/\S+@\S+\.\S+/;
 
   _pattern : string;
 
@@ -135,6 +108,12 @@ export class AmexioEmailInputComponent implements ControlValueAccessor{
     this.onTouchedCallback();
     this.showToolTip = false;
     this.onBlur.emit(this.value);
+    if(!this.emailpatter.test(this.value)){
+      this.isValid = false;
+    }
+    else {
+      this.isValid = true;
+    }
   }
 
   onFocus(){
@@ -173,8 +152,8 @@ export class AmexioEmailInputComponent implements ControlValueAccessor{
       classObj = {'input-control-error' : true};
       this.isValid = false;
     }
-    else if(inp.touched && this.minLength != null){
-      if(this.value.length < this.minLength){
+    else if(inp.touched ){
+      if(!this.emailpatter.test(this.value)){
         classObj = {'input-control-error' : true};
         this.isValid = false;
       }
