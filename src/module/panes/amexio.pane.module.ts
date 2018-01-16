@@ -22,6 +22,7 @@ import {AmexioVerticalTabComponent} from "./tab/vertical-tab/vertical.tab.compon
 import {AmexioRightVerticalTabComponent} from "./tab/right-vertical-tab/right.vertical.component";
 import {AmexioCarouselComponent} from "./carousel/carousel.component";
 import {AmexioTemplate, AmexioTemplateWrapper} from "./carousel/carousel.template";
+import {StepBlockComponent} from "./steps/step-block";
 
 export * from './accordion/accordion.component';
 export * from './accordion/accordion.pane';
@@ -63,7 +64,8 @@ const PANE_COMPONENTS = [
   AmexioRightVerticalTabComponent,
   AmexioCarouselComponent,
   AmexioTemplate,
-  AmexioTemplateWrapper
+  AmexioTemplateWrapper,
+  StepBlockComponent
 ];
 
 @NgModule({
