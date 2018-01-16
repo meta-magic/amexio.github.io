@@ -16,6 +16,12 @@ import {AmexioBodyComponent} from "./body/pane.action.body";
 import {AmexioFieldSetComponent} from "./fieldset/fieldset.component";
 import {AmexioWindowPaneComponent} from "./window/window.pane.component";
 import {AmexioStepsComponent} from "./steps/steps.component";
+import {AmexioTabComponent} from "./tab/tab.component";
+import {AmexioTabPill} from "./tab/tab.pill.component";
+import {AmexioVerticalTabComponent} from "./tab/vertical-tab/vertical.tab.component";
+import {AmexioRightVerticalTabComponent} from "./tab/right-vertical-tab/right.vertical.component";
+import {AmexioCarouselComponent} from "./carousel/carousel.component";
+import {AmexioTemplate, AmexioTemplateWrapper} from "./carousel/carousel.template";
 
 export * from './accordion/accordion.component';
 export * from './accordion/accordion.pane';
@@ -33,6 +39,14 @@ export * from './window/window.pane.component';
 export * from './steps/steps.component';
 export * from './steps/step-block';
 
+export * from './tab/tab.pill.component';
+export * from './tab/tab.component';
+export * from './tab/right-vertical-tab/right.vertical.component';
+export * from './tab/vertical-tab/vertical.tab.component';
+
+export * from './carousel/carousel.component';
+export * from './carousel/carousel.template';
+
 const PANE_COMPONENTS = [
   AmexioAccordionComponent,
   AmexioAccordionTabComponent,
@@ -42,7 +56,14 @@ const PANE_COMPONENTS = [
   AmexioBodyComponent,
   AmexioFieldSetComponent,
   AmexioWindowPaneComponent,
-  AmexioStepsComponent
+  AmexioStepsComponent,
+  AmexioTabPill,
+  AmexioTabComponent,
+  AmexioVerticalTabComponent,
+  AmexioRightVerticalTabComponent,
+  AmexioCarouselComponent,
+  AmexioTemplate,
+  AmexioTemplateWrapper
 ];
 
 @NgModule({
