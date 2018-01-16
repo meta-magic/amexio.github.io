@@ -137,7 +137,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
             <ng-container *ngIf="!cols.hidden">
               <ng-container *ngIf="cols.dataType=='number'">
                 <div class="datatable-col" scope="row" [attr.data-label]="cols.text">
-               <span style="float: right">
+               <span>
                  {{row[cols.dataIndex]}}
                </span>
                 </div>
@@ -171,20 +171,24 @@ import {CommonDataService} from "../../services/data/common.data.service";
               </div>
             </div>
           </ng-container>
-          <div class="datatable-col" *ngFor="let cols of columns;let colIndex = index">
+          <ng-container *ngFor="let cols of columns;let colIndex = index">
             <ng-container *ngIf="colIndex == 0">
               <ng-container *ngIf="isGroupChecking(row)">
-                <i *ngIf="!row.expanded" class="fa fa-caret-right" aria-hidden="true" (click)="toogle(row,i)"></i>
-                <i *ngIf="row.expanded" class="fa fa-caret-down" aria-hidden="true" (click)="toogle(row,i)"></i>
-                {{row.group}}
+                <div class="datatable-col">
+                  <i *ngIf="!row.expanded" class="fa fa-caret-right" aria-hidden="true" (click)="toogle(row,i)"></i>
+                  <i *ngIf="row.expanded" class="fa fa-caret-down" aria-hidden="true" (click)="toogle(row,i)"></i>
+                  {{row.group}}
+                </div>
               </ng-container>
             </ng-container>
             <ng-container *ngIf="!isGroupChecking(row)">
+              <div class="datatable-col">
                <span style="padding-left: 20px">
               {{row[cols.dataIndex]}}
                </span>
+              </div>
             </ng-container>
-          </div>
+          </ng-container>
         </div>
       </div>
 
@@ -195,7 +199,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
         <ng-container *ngIf="pageSize && (data && data.length > pageSize)">
           <ng-container *ngIf="totalPages!=null">
             <amexio-paginator [pages]="totalPages" [rows]="pageSize"
-                              (onPageChange)="loadPageData($event)"></amexio-paginator>
+                                (onPageChange)="loadPageData($event)"></amexio-paginator>
           </ng-container>
         </ng-container>
       </div>
@@ -428,7 +432,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
   }
 
   setSelectedFlag(viewRows: any) {
-    viewRows.forEach((row: any) => {
+    viewRows.forEach((row) => {
       if (!row.hasOwnProperty('isSelected')) {
         row['isSelected'] = false;
       }
@@ -551,16 +555,16 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
 
     if (this.groupByColumn) {
       if (!this.selectAll) {
-        this.viewRows.forEach((row: any) => {
+        this.viewRows.forEach((row) => {
           row.isSelected = false;
-          row.groupData.forEach((node: any) => {
+          row.groupData.forEach((node) => {
             node.isSelected = false;
           });
         });
       } else {
-        this.viewRows.forEach((row: any) => {
+        this.viewRows.forEach((row) => {
           row.isSelected = true;
-          row.groupData.forEach((node: any) => {
+          row.groupData.forEach((node) => {
             node.isSelected = true;
           });
         });
@@ -903,7 +907,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
   selectParent(row: any) {
     if (this.groupByColumn) {
       row.isSelected = !row.isSelected;
-      row.groupData.forEach((node: any) => {
+      row.groupData.forEach((node) => {
         node.isSelected = !node.isSelected;
       });
       this.selectedRows = [];
