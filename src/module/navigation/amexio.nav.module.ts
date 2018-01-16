@@ -16,6 +16,7 @@ import {AmexioMediaModule} from "../media/amexio.media.module";
 import {DockbarComponent} from "./dockedbar/dockbaritem";
 import {DockedBarToolComponent} from "./dockedbar/dockettoolbar.component";
 import {AmexioMenuBarComponent} from "./menubar/menubar.component";
+import {AmexioLayoutModule} from "../layout/amexio.layout.module";
 
 export * from '../services/data/common.data.service';
 export * from '../services/device/device.query.service';
@@ -40,7 +41,8 @@ const NAV_COMPONENTS = [
     CommonModule,
     FormsModule,
     HttpModule,
-    AmexioMediaModule
+    AmexioMediaModule,
+    AmexioLayoutModule
   ],
   exports: NAV_COMPONENTS,
   declarations: NAV_COMPONENTS
