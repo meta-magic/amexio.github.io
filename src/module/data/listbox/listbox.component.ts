@@ -31,6 +31,8 @@ export class AmexioListBoxComponent implements OnInit, AfterViewInit{
 
   @Input() displayField: string;
 
+  @Input() height: any;
+
   @Output() selectedRows: any = new EventEmitter<any>();
 
   @Output() rowClick: any = new EventEmitter<any>();

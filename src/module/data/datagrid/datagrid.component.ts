@@ -12,7 +12,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
   selector: 'amexio-datagrid',
   template: `
     <div>
-      <div class="title">
+      <div class="datatabletitle">
         <span> {{title}} </span>
         <span *ngIf="columnToggle ? true:false" class="float-right"
               (click)="showToolTip = !showToolTip ; showGroupByColumn = false"
