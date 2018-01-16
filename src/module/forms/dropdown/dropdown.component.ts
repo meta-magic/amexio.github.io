@@ -71,7 +71,9 @@ export class AmexioDropDownComponent implements OnInit, DoCheck,ControlValueAcce
 
   @Output()   focus : any = new EventEmitter<any>();
 
-  @Output()   change : any = new EventEmitter<any>();
+  @Output()   onSingleSelect : any = new EventEmitter<any>();
+
+  @Output()   onMultiSelect : any = new EventEmitter<any>();
 
   @Output()   click : any = new EventEmitter<any>();
 
@@ -171,6 +173,7 @@ export class AmexioDropDownComponent implements OnInit, DoCheck,ControlValueAcce
       });
       this.value = optionsChecked;
       this.displayValue = preSelectedMultiValues;
+      this.onMultiSelect.emit(this.multiSelectValues);
     }
 
     //Set user selection
@@ -182,7 +185,8 @@ export class AmexioDropDownComponent implements OnInit, DoCheck,ControlValueAcce
       this.viewData.forEach((item : any)=>{
         if(item[valueKey] == val)
           this.displayValue = item[displayKey];
-      })
+      });
+      this.onSingleSelect.emit(this.value);
     }
   }
 
@@ -242,10 +246,6 @@ export class AmexioDropDownComponent implements OnInit, DoCheck,ControlValueAcce
 
   onInput(event : any){
     this.input.emit();
-  }
-
-  dropdownChange(){
-    this.change.emit(this.value);
   }
 
   onDropDownSearchKeyUp(event : any){
