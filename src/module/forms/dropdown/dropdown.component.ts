@@ -238,11 +238,14 @@ export class AmexioDropDownComponent implements OnInit, DoCheck,ControlValueAcce
 
   onChange(event : any){
     this.value = event;
-    this.change.emit(event);
   }
 
   onInput(event : any){
     this.input.emit();
+  }
+
+  dropdownChange(){
+    this.change.emit(this.value);
   }
 
   onDropDownSearchKeyUp(event : any){
