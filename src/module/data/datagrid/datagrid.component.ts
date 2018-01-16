@@ -2,9 +2,10 @@
  * Created by pratik on 1/1/18.
  */
 import {
-  AfterContentInit, Component, ContentChildren, DoCheck, EventEmitter, Input, OnInit, Output, QueryList
+  AfterContentInit, ChangeDetectorRef, Component, ContentChildren, DoCheck, EventEmitter, Input, OnInit, Output,
+  QueryList
 } from '@angular/core';
-import {AmexioGridColumnComponent} from "./data.grid.column";
+import {AmexioGridColumnComponent} from './data.grid.column';
 import {CommonDataService} from "../../services/data/common.data.service";
 
 @Component({
@@ -13,9 +14,17 @@ import {CommonDataService} from "../../services/data/common.data.service";
     <div>
       <div class="title">
         <span> {{title}} </span>
-        <span *ngIf="columnToggle ? true:false" class="float-right" (click)="showToolTip = !showToolTip" style=" cursor: pointer;">
-            <span *ngIf="!show">&#9776;</span>
+        <span *ngIf="columnToggle ? true:false" class="float-right"
+              (click)="showToolTip = !showToolTip ; showGroupByColumn = false"
+              style=" cursor: pointer;">
+            &nbsp;&nbsp;<span *ngIf="!show">&#9776;</span>
             <span *ngIf="show">&#9747;</span>
+          </span>
+
+        <span *ngIf="groupByColumn ? true : false" class="float-right"
+              (click)="showGroupByColumn = !showGroupByColumn; showToolTip = false"
+              style=" cursor: pointer;">
+            <span class="fa fa-th-list"></span>
           </span>
       </div>
       <ng-container *ngIf="filtering ? true : false">
@@ -24,8 +33,8 @@ import {CommonDataService} from "../../services/data/common.data.service";
             <div class="datatable-col">
               <div class="inputgroup">
                 <div class="input-box">
-                  <div  *ngIf="!selectAll" (click)="selectAll = !selectAll" class="checkbox default"></div>
-                  <div *ngIf="selectAll" (click)="selectAll = !selectAll" class="checkbox active">&#10004;</div>
+                  <div *ngIf="!selectAll" (click)="selectAllRecord()" class="checkbox default"></div>
+                  <div *ngIf="selectAll" (click)="selectAllRecord()" class="checkbox active">&#10004;</div>
                 </div>
               </div>
             </div>
@@ -47,13 +56,25 @@ import {CommonDataService} from "../../services/data/common.data.service";
       </ng-container>
 
       <div>
-
-        <ng-container *ngIf="columnToggle ? true : false" >
+        <ng-container *ngIf="columnToggle ? true : false">
           <span *ngIf="showToolTip" class="dropdown dropdown-right" style="width: 250px;">
         <ul class="dropdown-list">
           <li class="list-items" *ngFor="let cols of columns;let i = index;" (click)="showToolTip = !showToolTip">
             <div>
-             <input type="checkbox"  [attr.checked]="!cols.hidden ? true: null" (click)="onColumnCheck(cols)"/>
+             <input type="checkbox" [attr.checked]="!cols.hidden ? true: null" (click)="onColumnCheck(cols)"/>
+             <label>{{cols.text}}</label>
+            </div>
+          </li>
+         </ul>
+      </span>
+        </ng-container>
+
+        <ng-container *ngIf="groupByColumn ? true : false">
+          <span *ngIf="showGroupByColumn" class="dropdown dropdown-right" style="width: 250px;">
+        <ul class="dropdown-list">
+          <li class="list-items" *ngFor="let cols of columns;let i = index;"
+              (click)="showGroupByColumn = !showGroupByColumn">
+            <div (click)="setGroupByColumn(cols)">
              <label>{{cols.text}}</label>
             </div>
           </li>
@@ -71,8 +92,8 @@ import {CommonDataService} from "../../services/data/common.data.service";
           <div class="datatable-col">
             <div class="inputgroup">
               <div class="input-box">
-                <div  *ngIf="!selectAll" (click)="selectAllVisibleRows()" class="checkbox default"></div>
-                <div *ngIf="selectAll" (click)="selectAllVisibleRows()"  class="checkbox active">&#10004;</div>
+                <div *ngIf="!selectAll" (click)="selectAllRecord()" class="checkbox default"></div>
+                <div *ngIf="selectAll" (click)="selectAllRecord()" class="checkbox active">&#10004;</div>
               </div>
             </div>
           </div>
@@ -94,45 +115,87 @@ import {CommonDataService} from "../../services/data/common.data.service";
       </div>
     </div>
 
-    <div class="datatable">
-      <div class="datatable-row" *ngFor="let row of viewRows;let i=index" id="{{'row'+i}}" (click)="rowClick(row, i)">
 
-        <ng-container *ngIf="checkboxSelect">
-          <div class="datatable-col">
-            <div class="inputgroup">
-              <div class="input-box">
-                <div  (click)="setSelectedRow(row, check)" [class]="setCheckBoxSelectClass(check)" #check>{{((setCheckBoxSelectClass(check) == 'checkbox active') && (check.classList.value == 'checkbox active')) || ((setCheckBoxSelectClass(check) == 'checkbox default') && (check.classList.value == 'checkbox active')) ? '&#10004;' : ''}}</div>
+    <ng-container *ngIf="!groupByColumn">
+      <div class="datatable">
+        <div class="datatable-row" *ngFor="let row of viewRows;let i=index" id="{{'row'+i}}" [ngClass]="rowBgColor"
+             (click)="rowClick(row, i)">
+
+          <ng-container *ngIf="checkboxSelect">
+            <div class="datatable-col">
+              <div class="inputgroup">
+                <div class="input-box">
+                  <div (click)="setSelectedRow(row, check)" [class]="setCheckBoxSelectClass(check)" #check>
+                    {{((setCheckBoxSelectClass(check) == 'checkbox active') && (check.classList.value == 'checkbox active')) || ((setCheckBoxSelectClass(check) == 'checkbox default') && (check.classList.value == 'checkbox active')) ? '&#10004;' : ''}}
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </ng-container>
+          </ng-container>
 
-        <ng-container *ngFor="let cols of columns;let colIndex = index">
-          <ng-container *ngIf="!cols.hidden">
-            <ng-container *ngIf="cols.dataType=='number'">
-              <div  class="datatable-col" scope="row" [attr.data-label]="cols.text">
+          <ng-container *ngFor="let cols of columns;let colIndex = index">
+            <ng-container *ngIf="!cols.hidden">
+              <ng-container *ngIf="cols.dataType=='number'">
+                <div class="datatable-col" scope="row" [attr.data-label]="cols.text">
                <span style="float: right">
                  {{row[cols.dataIndex]}}
                </span>
-              </div>
+                </div>
+              </ng-container>
+              <ng-container *ngIf="!cols?.bodyTemplate && cols.dataType=='string'">
+                <div class="datatable-col" scope="row" [attr.data-label]="cols.text">
+                  {{row[cols.dataIndex]}}
+                </div>
+              </ng-container>
+              <ng-template *ngIf="cols.bodyTemplate" [ngTemplateOutlet]="cols.bodyTemplate"
+                           [ngTemplateOutletContext]="{ $implicit: { text : row[cols.dataIndex] }, row: row }"></ng-template>
             </ng-container>
-            <ng-container *ngIf="!cols?.bodyTemplate && cols.dataType=='string'">
-              <div  class="datatable-col" scope="row" [attr.data-label]="cols.text">
-                {{row[cols.dataIndex]}}
-              </div>
-            </ng-container>
-            <ng-template *ngIf="cols.bodyTemplate" [ngTemplateOutlet]="cols.bodyTemplate"
-                         [ngTemplateOutletContext]="{ $implicit: { text : row[cols.dataIndex] }, row: row }"></ng-template>
           </ng-container>
-        </ng-container>
+        </div>
       </div>
-    </div>
+    </ng-container>
+
+    <!--Group BY datagrid-->
+
+    <ng-container *ngIf="groupByColumn && !filtering">
+      <div class="datatable">
+        <div class="datatable-row" *ngFor="let row of viewRows;let i=index" id="{{'row'+i}}" (click)="rowClick(row, i)">
+          <ng-container *ngIf="checkboxSelect">
+            <div class="datatable-col">
+              <div class="inputgroup">
+                <div class="input-box">
+                  <div (click)="selectParent(row)" [class]="row.isSelected ?'checkbox active':'checkbox default'">
+                    {{row.isSelected ? '&#10004;' : ''}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+          <div class="datatable-col" *ngFor="let cols of columns;let colIndex = index">
+            <ng-container *ngIf="colIndex == 0">
+              <ng-container *ngIf="isGroupChecking(row)">
+                <i *ngIf="!row.expanded" class="fa fa-caret-right" aria-hidden="true" (click)="toogle(row,i)"></i>
+                <i *ngIf="row.expanded" class="fa fa-caret-down" aria-hidden="true" (click)="toogle(row,i)"></i>
+                {{row.group}}
+              </ng-container>
+            </ng-container>
+            <ng-container *ngIf="!isGroupChecking(row)">
+               <span style="padding-left: 20px">
+              {{row[cols.dataIndex]}}
+               </span>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+
+    </ng-container>
 
     <div>
       <div class="footer">
         <ng-container *ngIf="pageSize && (data && data.length > pageSize)">
           <ng-container *ngIf="totalPages!=null">
-            <amexio-paginator [pages]="totalPages" [rows]="pageSize" (onPageChange)="loadPageData($event)"></amexio-paginator>
+            <amexio-paginator [pages]="totalPages" [rows]="pageSize"
+                              (onPageChange)="loadPageData($event)"></amexio-paginator>
           </ng-container>
         </ng-container>
       </div>
@@ -222,24 +285,36 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
 
   rowId: any;
 
-  previousData : any;
+  previousData: any;
 
   columnPreviewData: any;
 
-  showToolTip : boolean;
+  showToolTip: boolean;
 
-  totalPages : number;
+  showGroupByColumn: boolean;
+
+  totalPages: number;
+
+  /*group by column attribute*/
+
+  iconClassKey: string;
+
+  isExpanded = false;
 
 
   @ContentChildren(AmexioGridColumnComponent) columnRef: QueryList<AmexioGridColumnComponent>;
 
 
-  constructor(public dataTableService : CommonDataService) {
+  constructor(public dataTableService: CommonDataService,  private cd: ChangeDetectorRef) {
     this.selectedRows = [];
     this.sortBy = -1;
   }
 
   ngOnInit() {
+
+    this.isExpanded = true;
+    this.iconClassKey = 'fa fa-plus';
+
     if (this.tableRowSelectedColor == null || this.tableRowSelectedColor == '') {
       this.tableRowSelectedColor = '#dcecf7';
     }
@@ -336,16 +411,77 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
 
   setData(httpResponse: any){
     this.viewRows = this.getResponseData(httpResponse);
+    this.setSelectedFlag(this.viewRows);
     this.data = this.viewRows;
-    this.renderData();
-    this.totalPages = this.pageNumbers.length;
-
     if (this.groupByColumn) {
       this.cloneData = JSON.parse(JSON.stringify(this.data));
     }
     if (this.filtering) {
       this.filterCloneData = JSON.parse(JSON.stringify(this.data));
     }
+    this.renderData();
+    if (this.groupByColumn) {
+      this.setColumnData();
+    }
+    this.totalPages = this.pageNumbers.length;
+
+  }
+
+  setSelectedFlag(viewRows: any) {
+    viewRows.forEach((row) => {
+      if (!row.hasOwnProperty('isSelected')) {
+        row['isSelected'] = false;
+      }
+    });
+  }
+
+  setGroupByColumn(col: any) {
+    this.groupByColumnIndex = col.dataIndex;
+    this.selectAll = false;
+    this.setColumnData();
+  }
+
+  setColumnData() {
+    this.data = this.cloneData;
+    const groups = {};
+    this.data.forEach((option) => {
+      const groupName = option[this.groupByColumnIndex];
+      if (!groups[groupName]) {
+        groups[groupName] = [];
+      }
+      groups[groupName].push(option);
+    });
+    this.data = [];
+    for (const groupName in groups) {
+      this.data.push({expanded: false, isSelected: false, group: groupName, groupData: groups[groupName]});
+    }
+
+    /*-------Aggregation---------*/
+
+    /* this.data.forEach((groupdata)=>{
+     let aggregateValue :  number;
+     let dummyA={};
+     let k;
+     let arrayIndex;
+     this.columns.forEach((columnOption)=> {
+     if(columnOption.aggregate==true) {
+     k = columnOption.dataIndex;
+     aggregateValue =0;
+     groupdata.groupData.forEach((childData, index) => {
+     aggregateValue = +(aggregateValue + Number(childData[columnOption.dataIndex]));
+     arrayIndex = index;
+
+     });
+     dummyA[k]=aggregateValue;
+     }
+
+     });
+
+     groupdata.groupData[arrayIndex+1]=dummyA;
+
+     });*/
+    this.renderData();
+    this.cd.detectChanges();
   }
 
   renderData() {
@@ -386,10 +522,10 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
     this.selectedRowNo = -1;
   }
 
-  getResponseData(httpResponse : any){
+  getResponseData(httpResponse: any){
     let responsedata = httpResponse;
-    if(this.dataReader != null){
-      let dr = this.dataReader.split('.');
+    if (this.dataReader != null){
+      const dr = this.dataReader.split('.');
       for (let ir = 0 ; ir < dr.length; ir++){
         responsedata = responsedata[dr[ir]];
       }
@@ -401,7 +537,38 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
     return responsedata;
   }
 
-  onColumnCheck(column : any){
+  selectAllRecord() {
+    this.selectAll = !this.selectAll;
+
+    if (this.selectAll) {
+      for (let vr = 0; vr < this.viewRows.length; vr++) {
+        this.selectedRows.push(this.viewRows[vr]);
+      }
+    } else {
+      this.selectedRows = [];
+    }
+    this.emitSelectedRows();
+
+    if (this.groupByColumn) {
+      if (!this.selectAll) {
+        this.viewRows.forEach((row) => {
+          row.isSelected = false;
+          row.groupData.forEach((node) => {
+            node.isSelected = false;
+          });
+        });
+      } else {
+        this.viewRows.forEach((row) => {
+          row.isSelected = true;
+          row.groupData.forEach((node) => {
+            node.isSelected = true;
+          });
+        });
+      }
+    }
+  }
+
+  onColumnCheck(column: any){
     column.hidden = !column.hidden;
   }
 
@@ -417,7 +584,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
   }
 
 
-  loadPageData(pageNumber : number){
+  loadPageData(pageNumber: number){
     this.currentPage = pageNumber;
     this.renderData();
   }
@@ -426,7 +593,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
     let status = false;
     if (filteredObj.length > 0) {
       this.data = [];
-      this.filterCloneData.forEach((option : any) => {
+      this.filterCloneData.forEach((option: any) => {
         status = this.filterOpertion(option, filteredObj);
         if (status) {
           this.data.push(option);
@@ -453,7 +620,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
   filterOpertion(data: any, filteredObj: any) {
     const statusArray: any = [];
     let condition: any;
-    filteredObj.forEach((filterOpt : any) => {
+    filteredObj.forEach((filterOpt: any) => {
       if (filterOpt.filter === '3') {
         if (filterOpt.type === 'string') {
           condition = data[filterOpt.key].toLowerCase().includes(filterOpt.value.toLowerCase());
@@ -506,7 +673,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
         statusArray.push(condition);
       }
     });
-    statusArray.forEach((opt : any) => {
+    statusArray.forEach((opt: any) => {
       if (opt === false) {
         condition = false;
       }
@@ -523,18 +690,6 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
       this.pageNumbers.push(pageNo);
     }
     // this.cd.detectChanges();
-  }
-
-  selectAllVisibleRows() {
-    this.selectAll = !this.selectAll;
-    if (this.selectAll) {
-      for (let vr = 0; vr < this.viewRows.length; vr++) {
-        this.selectedRows.push(this.viewRows[vr]);
-      }
-    } else {
-      this.selectedRows = [];
-    }
-    this.emitSelectedRows();
   }
 
   setSelectedRow(rowData: any, event: any) {
@@ -561,9 +716,9 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
   }
 
   setCheckBoxSelectClass(event: any) {
-    if(this.selectAll) {
+    if (this.selectAll) {
       return 'checkbox active';
-    } else if(!this.selectAll) {
+    } else if (!this.selectAll) {
       return 'checkbox default';
     }
   }
@@ -676,5 +831,88 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
       }
     }
     this.renderData();
+  }
+
+  /*grouby column methods*/
+
+  onTabClick(btn: any){
+    btn.classList.toggle('active-accordion');
+    const panel = btn.nextElementSibling;
+    // let icon = btn.children[0].children[0];
+
+    if (this.iconClassKey == 'fa fa-plus'){
+      this.iconClassKey = 'fa fa-minus';
+    }
+    else if (this.iconClassKey == 'fa fa-minus'){
+      this.iconClassKey = 'fa fa-plus';
+    }
+
+    if (panel.style.maxHeight){
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + 'px';
+    }
+  }
+
+
+  toogle(row: any, index: number) {
+    row.expanded = !row.expanded;
+    if (row.expanded){
+      this.addRows(row, index);
+    }else{
+      this.removeRows(row);
+    }
+  }
+
+  addRows(row: any, index: number) {
+    row.level =  Math.floor(Math.random() * 900) + 100;
+    row.groupData.forEach((node: any, index1: any) => {
+      node.level = row.level;
+      this.viewRows.splice(index + (index1 + 1), 0 , node);
+    });
+    console.log(this.viewRows);
+  }
+
+  removeRows(row: any) {
+    let count = 0;
+    this.viewRows.forEach((node: any) => {
+      if (!node.hasOwnProperty('group') && node.level == row.level) {
+        count ++;
+      }
+    });
+    this.viewRows.forEach((node: any, index: any) => {
+      if (!node.hasOwnProperty('group') && node.level == row.level) {
+        this.viewRows.splice(index, count);
+      }
+    });
+  }
+
+  isGroupChecking(row: any) {
+    if (row.hasOwnProperty('group')) {
+      return true;
+    }else {
+      return false;
+    }
+  }
+
+  getCheckboxStyle(row: any) {
+    const status = false;
+    return status;
+  }
+
+  selectParent(row: any) {
+    if (this.groupByColumn) {
+      row.isSelected = !row.isSelected;
+      row.groupData.forEach((node) => {
+        node.isSelected = !node.isSelected;
+      });
+      this.selectedRows = [];
+      this.viewRows.forEach((rows) => {
+        if (rows.isSelected) {
+          this.selectedRows.push(rows);
+        }
+      });
+      this.emitSelectedRows();
+    }
   }
 }
