@@ -91,6 +91,9 @@ $cardBorderColor: #E84C1A;
 $toastBGColor : $themeBGColor;
 $toastColor : $themeColor;
 
+$accordionBGColor:$cardBGColor;
+$accordionColor:$cardColor;
+
 $borderLayoutBorder : 0px;
 $borderLayoutBorderColor : none;
 
@@ -107,7 +110,7 @@ $datetimepickerActiveColor : $datetimepickerBGColor;
 
 $fieldSetBorderSize : $borderSize;
 $fieldSetBorderColor : $borderColor;
-
+$collapsibleLegendColor : $themeColor;
 
 @import "../default/common.scss";
 @import "../default/amexio.components.scss";

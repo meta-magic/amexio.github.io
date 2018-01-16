@@ -80,6 +80,8 @@ $cardBorderColor: $borderColor;
 
 $toastBGColor : $primaryBGColor;
 $toastColor : $primaryColor;
+
+
 /* You can add global styles to this file, and also import other style files */
 
 .float-right {
@@ -90,7 +92,8 @@ $toastColor : $primaryColor;
   float: left;
 }
 
-
+$accordionBGColor:$cardBGColor
+$accordionColor:$cardColor
 
 $borderLayoutBorder : 0px;
 $borderLayoutBorderColor : none;
@@ -125,6 +128,7 @@ $datetimepickerActiveColor : $datetimepickerBGColor;
 
 $fieldSetBorderSize : $borderSize;
 $fieldSetBorderColor : $borderColor;
+$collapsibleLegendColor : $themeColor;
 
 body {
   background: $backgroundcolor;

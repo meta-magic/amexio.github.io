@@ -119,7 +119,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
     <ng-container *ngIf="!groupByColumn">
       <div class="datatable">
         <div class="datatable-row" *ngFor="let row of viewRows;let i=index" id="{{'row'+i}}" [ngClass]="rowBgColor"
-             (click)="rowClick(row, i)">
+             (click)="rowClick(row, i,rowData)" #rowData>
 
           <ng-container *ngIf="checkboxSelect">
             <div class="datatable-col">
@@ -159,7 +159,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
 
     <ng-container *ngIf="groupByColumn && !filtering">
       <div class="datatable">
-        <div class="datatable-row" *ngFor="let row of viewRows;let i=index" id="{{'row'+i}}" (click)="rowClick(row, i)">
+        <div class="datatable-row" *ngFor="let row of viewRows;let i=index" id="{{'row'+i}}" (click)="rowClick(row, i, rowData)" #rowData>
           <ng-container *ngIf="checkboxSelect">
             <div class="datatable-col">
               <div class="inputgroup">
@@ -172,14 +172,14 @@ import {CommonDataService} from "../../services/data/common.data.service";
             </div>
           </ng-container>
           <ng-container *ngFor="let cols of columns;let colIndex = index">
-            <ng-container *ngIf="colIndex == 0">
-              <ng-container *ngIf="isGroupChecking(row)">
-                <div class="datatable-col">
+            <ng-container *ngIf="isGroupChecking(row)">
+              <div class="datatable-col" >
+                <ng-container *ngIf="colIndex == 0">
                   <i *ngIf="!row.expanded" class="fa fa-caret-right" aria-hidden="true" (click)="toogle(row,i)"></i>
                   <i *ngIf="row.expanded" class="fa fa-caret-down" aria-hidden="true" (click)="toogle(row,i)"></i>
                   {{row.group}}
-                </div>
-              </ng-container>
+                </ng-container>
+              </div>
             </ng-container>
             <ng-container *ngIf="!isGroupChecking(row)">
               <div class="datatable-col">
@@ -244,8 +244,6 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
   @Input() tableTitlecClass: string;
 
   @Input() tableDatacClass: string;
-
-  @Input() tableRowSelectedColor: string;
 
   @Input() columnDefinition: any;
 
@@ -318,10 +316,6 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
 
     this.isExpanded = true;
     this.iconClassKey = 'fa fa-plus';
-
-    if (this.tableRowSelectedColor == null || this.tableRowSelectedColor == '') {
-      this.tableRowSelectedColor = '#dcecf7';
-    }
     if (this.httpMethod && this.httpUrl){
       this.dataTableService.fetchData(this.httpUrl, this.httpMethod).subscribe(
         response => {
@@ -576,13 +570,14 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
     column.hidden = !column.hidden;
   }
 
-  rowClick(rowData: any, rowIndex: any) {
-    rowIndex = 'row' + rowIndex;
-    if (this.rowId) {
-      document.getElementById(this.rowId).style.backgroundColor = 'white';
+  rowClick(rowData: any, rowIndex: any, rowRef: any) {
+    if(rowRef.classList.contains('datatable-row-active')){
+      rowRef.classList.remove('datatable-row-active');
+    } else {
+      rowRef.classList.add('datatable-row-active');
     }
+    rowIndex = 'row' + rowIndex;
     this.rowId = rowIndex;
-    document.getElementById(rowIndex).style.backgroundColor = this.tableRowSelectedColor;
     this.rowSelect.emit(rowData);
     this.selectedRowNo = rowIndex;
   }

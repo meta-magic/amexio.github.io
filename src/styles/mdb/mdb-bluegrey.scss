@@ -86,7 +86,10 @@ $cardFooterColor: $themeColor;
 $cardBorderColor: $borderColor;
 
 $toastBGColor : $themeBGColor;
-$toastColor : $themeColor;
+$toastColor : $themeColor
+
+$accordionBGColor:$cardBGColor;
+$accordionColor:$cardColor;
 
 $borderLayoutBorder : 0px;
 $borderLayoutBorderColor : none;
@@ -104,7 +107,7 @@ $datetimepickerActiveColor : $datetimepickerBGColor;
 
 $fieldSetBorderSize : $borderSize;
 $fieldSetBorderColor : $borderColor;
-
+$collapsibleLegendColor : $themeColor;
 
 @import "../default/common.scss";
 

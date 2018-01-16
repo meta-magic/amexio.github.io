@@ -415,8 +415,15 @@ button.app-button {
   background: none;
 }
 
+
+.sidenav .headernode:hover {
+  color: white;
+  background-color: $sidenavactive;
+}
+
 .sidenav .defaultnode:hover {
   color: white;
+  background-color: $sidenavactive;
 }
 
 
