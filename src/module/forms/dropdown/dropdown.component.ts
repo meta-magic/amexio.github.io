@@ -210,7 +210,7 @@ export class AmexioDropDownComponent implements OnInit, DoCheck,ControlValueAcce
           }
         });
         this.value = optionsChecked;
-        // this.onMultiSelect.emit(this.multiSelectValues);
+        this.onMultiSelect.emit(this.multiSelectValues);
       }
     }
     else {
@@ -218,6 +218,7 @@ export class AmexioDropDownComponent implements OnInit, DoCheck,ControlValueAcce
       this.displayValue = row[this.displayField];
 
       this.multiSelect ? this.showToolTip= true : this.showToolTip = false;
+      this.onSingleSelect.emit(this.value);
     }
   }
 

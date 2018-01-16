@@ -26,9 +26,9 @@ import {AmexioTemplate} from "./carousel.template";
 
 export class AmexioCarouselComponent implements OnInit,AfterContentInit {
 
- @Input() header : string;
+ @Input() headerName : string;
 
- @Input() mode : 'single' | 'multiple' = 'single';
+ @Input() mode : 'single' | 'multiple';
 
  @Input() data : any;
 
@@ -43,6 +43,9 @@ export class AmexioCarouselComponent implements OnInit,AfterContentInit {
  constructor() { }
 
  ngOnInit() {
+   if(this.mode == null){
+     this.mode = 'single';
+   }
    if(this.autoShuffleTime != null){
      setInterval(()=>{
        let carouselItemPosix = this.tabs.nativeElement;
@@ -59,7 +62,7 @@ export class AmexioCarouselComponent implements OnInit,AfterContentInit {
  }
 
  ngAfterContentInit(){
-   this.templates.forEach((item) => {
+   this.templates.forEach((item :any) => {
      switch(item.getType()) {
        case 'item':
          this.itemTemplate = item.template;
