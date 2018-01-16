@@ -13,6 +13,7 @@ import {AmexioCardComponent} from "./card/card.component";
 import {AmexioHeaderComponent} from "./header/pane.action.header";
 import {AmexioFooterComponent} from "./action/pane.action.footer";
 import {AmexioBodyComponent} from "./body/pane.action.body";
+import {AmexioFieldSetComponent} from "./fieldset/fieldset.component";
 
 export * from './accordion/accordion.component';
 export * from './accordion/accordion.pane';
@@ -23,13 +24,16 @@ export * from './header/pane.action.header';
 export * from './action/pane.action.footer';
 export * from './body/pane.action.body';
 
+export * from './fieldset/fieldset.component';
+
 const PANE_COMPONENTS = [
   AmexioAccordionComponent,
   AmexioAccordionTabComponent,
   AmexioCardComponent,
   AmexioHeaderComponent,
   AmexioFooterComponent,
-  AmexioBodyComponent
+  AmexioBodyComponent,
+  AmexioFieldSetComponent
 ];
 
 @NgModule({

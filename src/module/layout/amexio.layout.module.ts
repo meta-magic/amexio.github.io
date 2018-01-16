@@ -11,7 +11,6 @@ import {AmexioTabComponent} from "./tab/tab.component";
 import {AmexioTabPill} from "./tab/tab.pill.component";
 import {AmexioVerticalTabComponent} from "./tab/vertical-tab/vertical.tab.component";
 import {AmexioRightVerticalTabComponent} from "./tab/right-vertical-tab/right.vertical.component";
-import {AmexioFieldSetComponent} from "./fieldset/fieldset.component";
 import {AmexioRowComponent} from "./rows/row.component";
 import {AmexioColumnComponent} from "./columns/column.component";
 import {AmexioBorderLayoutItemComponent} from "./border/borderlayoutitem.component";
@@ -29,8 +28,6 @@ export * from './tab/tab.pill.component';
 export * from './tab/vertical-tab/vertical.tab.component';
 export * from './tab/right-vertical-tab/right.vertical.component';
 
-export * from './fieldset/fieldset.component';
-
 export * from './rows/row.component';
 export * from './columns/column.component';
 export * from './border/borderlayoutitem.component';
@@ -42,7 +39,6 @@ const LAYOUT_COMPONENTS = [
   AmexioTabPill,
   AmexioVerticalTabComponent,
   AmexioRightVerticalTabComponent,
-  AmexioFieldSetComponent,
   AmexioRowComponent,
   AmexioColumnComponent,
   AmexioBorderLayoutItemComponent,
