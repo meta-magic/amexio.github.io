@@ -4,7 +4,7 @@
 
 
 import {
-  Component, DoCheck, ElementRef, forwardRef, HostListener, Input, OnInit,
+  Component, DoCheck, ElementRef, EventEmitter, forwardRef, HostListener, Input, OnInit, Output,
   Renderer2
 } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
@@ -64,6 +64,16 @@ export class AmexioDropDownComponent implements OnInit, DoCheck,ControlValueAcce
   set errorMsg(value: string) {
     this.helpInfoMsg = value + '<br/>';
   }
+
+  @Output()   onBlur : any = new EventEmitter<any>();
+
+  @Output()   input : any = new EventEmitter<any>();
+
+  @Output()   focus : any = new EventEmitter<any>();
+
+  @Output()   change : any = new EventEmitter<any>();
+
+  @Output()   click : any = new EventEmitter<any>();
 
   showToolTip : boolean;
 
@@ -222,8 +232,17 @@ export class AmexioDropDownComponent implements OnInit, DoCheck,ControlValueAcce
       return this.displayValue == undefined ? '' : this.displayValue
   }
 
+  onClick(event : any){
+    this.click.emit(event);
+  }
+
   onChange(event : any){
     this.value = event;
+    this.change.emit(event);
+  }
+
+  onInput(event : any){
+    this.input.emit();
   }
 
   onDropDownSearchKeyUp(event : any){
@@ -270,12 +289,14 @@ export class AmexioDropDownComponent implements OnInit, DoCheck,ControlValueAcce
   }
 
   //Set touched on blur
-  onBlur() {
+  onblur() {
     this.onTouchedCallback();
+    this.onBlur.emit();
   }
 
   onFocus(){
     this.showToolTip = true;
+    this.focus.emit();
   }
   //From ControlValueAccessor interface
   writeValue(value: any) {
