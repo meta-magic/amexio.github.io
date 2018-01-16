@@ -17,7 +17,6 @@ import {AmexioBorderLayoutItemComponent} from "./border/borderlayoutitem.compone
 import {AmexioBorderLayoutComponent} from "./border/borderlayout.component";
 import {AmexioStepsComponent} from "./steps/steps.component";
 import {StepBlockComponent} from "./steps/step-block";
-import {AmexioWindowPaneComponent} from "./window/window.pane.component";
 
 export * from '../services/data/common.data.service';
 export * from '../services/device/device.query.service';
@@ -44,8 +43,7 @@ const LAYOUT_COMPONENTS = [
   AmexioBorderLayoutItemComponent,
   AmexioBorderLayoutComponent,
   AmexioStepsComponent,
-  StepBlockComponent,
-  AmexioWindowPaneComponent
+  StepBlockComponent
 ];
 
 @NgModule({

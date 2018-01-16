@@ -14,6 +14,7 @@ import {AmexioHeaderComponent} from "./header/pane.action.header";
 import {AmexioFooterComponent} from "./action/pane.action.footer";
 import {AmexioBodyComponent} from "./body/pane.action.body";
 import {AmexioFieldSetComponent} from "./fieldset/fieldset.component";
+import {AmexioWindowPaneComponent} from "./window/window.pane.component";
 
 export * from './accordion/accordion.component';
 export * from './accordion/accordion.pane';
@@ -26,6 +27,8 @@ export * from './body/pane.action.body';
 
 export * from './fieldset/fieldset.component';
 
+export * from './window/window.pane.component';
+
 const PANE_COMPONENTS = [
   AmexioAccordionComponent,
   AmexioAccordionTabComponent,
@@ -33,7 +36,8 @@ const PANE_COMPONENTS = [
   AmexioHeaderComponent,
   AmexioFooterComponent,
   AmexioBodyComponent,
-  AmexioFieldSetComponent
+  AmexioFieldSetComponent,
+  AmexioWindowPaneComponent
 ];
 
 @NgModule({
