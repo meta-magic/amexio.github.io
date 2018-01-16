@@ -61,6 +61,8 @@
   }
 
 
+
+
   .datatable .datatable-header{
     border: none;
     clip: rect(0 0 0 0);
@@ -77,8 +79,12 @@
     border-bottom: 3px solid #ddd;
     display: block;
     margin-bottom: .625em;
+    height: auto!important;
   }
-
+  .datatable .datatable-header .datatable-col{
+    height: auto!important;
+    font-weight: 500;
+  }
   .datatable .datatable-col{
     border-bottom: $borderSize solid $borderColor;
     display: block;
