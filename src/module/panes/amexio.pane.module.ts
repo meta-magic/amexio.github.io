@@ -10,9 +10,9 @@ import {HttpModule} from "@angular/http";
 import {AmexioAccordionComponent} from "./accordion/accordion.component";
 import {AmexioAccordionTabComponent} from "./accordion/accordion.pane";
 import {AmexioCardComponent} from "./card/card.component";
-import {AmexioHeaderComponent} from "../layout/panes/pane.action.header";
-import {AmexioFooterComponent} from "../layout/panes/pane.action.footer";
-import {AmexioBodyComponent} from "../layout/panes/pane.action.body";
+import {AmexioHeaderComponent} from "./header/pane.action.header";
+import {AmexioFooterComponent} from "./action/pane.action.footer";
+import {AmexioBodyComponent} from "./body/pane.action.body";
 
 export * from './accordion/accordion.component';
 export * from './accordion/accordion.pane';
