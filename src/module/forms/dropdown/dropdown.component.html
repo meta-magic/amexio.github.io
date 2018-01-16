@@ -13,8 +13,10 @@
   <input type="text" class="input-control"
          [value]="getDisplayText()"
          [ngClass]="{'input-control-error' : inp.invalid && (inp.dirty || inp.touched),'input-control-success' : inp.valid && (inp.dirty || inp.touched)}"
-         (blur)="onBlur()"
+         (blur)="onblur()"
+         (click)="onClick($event)"
          (focus)="onFocus()"
+         (input)="onInput()"
          [attr.placeholder]="placeholder"
          [attr.disabled]="disabled ? true: null"
          [required]="allowBlank ? true: null" (keyup)="onDropDownSearchKeyUp($event)"/>
