@@ -15,8 +15,6 @@ import {AmexioRowComponent} from "./rows/row.component";
 import {AmexioColumnComponent} from "./columns/column.component";
 import {AmexioBorderLayoutItemComponent} from "./border/borderlayoutitem.component";
 import {AmexioBorderLayoutComponent} from "./border/borderlayout.component";
-import {AmexioStepsComponent} from "./steps/steps.component";
-import {StepBlockComponent} from "./steps/step-block";
 
 export * from '../services/data/common.data.service';
 export * from '../services/device/device.query.service';
@@ -41,9 +39,7 @@ const LAYOUT_COMPONENTS = [
   AmexioRowComponent,
   AmexioColumnComponent,
   AmexioBorderLayoutItemComponent,
-  AmexioBorderLayoutComponent,
-  AmexioStepsComponent,
-  StepBlockComponent
+  AmexioBorderLayoutComponent
 ];
 
 @NgModule({
