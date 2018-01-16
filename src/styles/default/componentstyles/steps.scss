@@ -1,46 +1,69 @@
-.wizard .wizard-list {
-  background-color: #E4E4E4;
-  border-radius: 5px;
-  display: inline;
-  padding: 10px 30px 10px 40px;
-  margin-right: -7px;
-  width: auto;
-}
 
-.wizard .wizard-list::before, .wizard .wizard-list::after {
-  border: solid transparent;
-  content: " ";
-  height: 0;
-  width: 0;
+.step-label-highlight {
+  color: black;
+  font-weight: bold;
+}
+.stepwizard-step p {
+  margin-top: 0px;
+  color: #666;
+}
+.stepwizard-row {
+  display: table-row;
+}
+.stepwizard {
+  display: table;
+  width: 100%;
+  position: relative;
+}
+.stepwizard-row:before {
+  top: 14px;
+  bottom: 0;
   position: absolute;
-  border-color: transparent;
-  border-left-color: #fff;
-  border-radius: 10px;
+  content: " ";
+  width: 100%;
+  height: 1px;
+  background-color: $backgroundcolor;
+  z-index: 0;
+}
+.stepwizard-step {
+  display: table-cell;
+  text-align: center;
+  position: relative;
+}
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
 }
 
-.wizard .wizard-list::before {
-  border-width: 25px;
-  margin-top: -16px;
-  margin-left: 84px;
+
+.step-box-sqaure{
+  width: 100%;
+  display: table;
+  table-layout: fixed;
+}
+.step-box-table{
+  display: table-row;
+}
+.step-box-table-item{
+  width: 2px;
+  display: table-cell;
+  background-color: lightgray;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 15px;
+  border: 1px solid black;
+  font-weight: bolder;
 }
 
-
-.wizard .wizard-list::after {
-  border-left-color: #E4E4E4;
-  border-width: 21px;
-  margin-top: -12px;
-  margin-left: 24px;
+.step-box-table-item.active{
+  background-color: $menubarBGColor;
 }
-
-.wizard .wizard-list.selected {
-  background-color: #FF4F65;
-  color: #fff;
-}
-
-.wizard .wizard-list.selected::after {
-  border-left-color: #FF4F65;
-}
-
-.wizard .wizard-list:last-child::after {
-  border-left-color: transparent;
+.step-box-table-item.disbaled{
+  background-color: lighten($menubarBGColor,50%);
+  cursor : not-allowed;
 }
