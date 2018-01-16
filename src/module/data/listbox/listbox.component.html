@@ -7,13 +7,13 @@
     </div>
   </div>
 
-
-  <ul class="list">
-    <li class="list-items" *ngFor="let row of viewData let rowno = index ">
-      <div (click)="onClick(row)">
-        <ng-container *ngIf="!bodyTemplate"> {{row[displayField]}}</ng-container>
-        <ng-template *ngIf="bodyTemplate" [ngTemplateOutlet]="bodyTemplate" [ngTemplateOutletContext]="{ row: row }"></ng-template></div>
-    </li>
-  </ul>
-
+  <div class="listbox-height" [style.height.px]="height">
+    <ul class="list">
+      <li class="list-items" *ngFor="let row of viewData let rowno = index ">
+        <div (click)="onClick(row)">
+          <ng-container *ngIf="!bodyTemplate"> {{row[displayField]}}</ng-container>
+          <ng-template *ngIf="bodyTemplate" [ngTemplateOutlet]="bodyTemplate" [ngTemplateOutletContext]="{ row: row }"></ng-template></div>
+      </li>
+    </ul>
+  </div>
 </div>
