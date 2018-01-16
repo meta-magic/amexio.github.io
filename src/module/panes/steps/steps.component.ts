@@ -7,9 +7,9 @@ import {StepBlockComponent} from "./step-block";
 @Component({
   selector: 'amexio-steps',
   template: `
-    <div class="amexio-stepwizard" *ngIf="(showIndex && !showBlockBox && !showIcon)">
-      <div class="amexio-stepwizard-row setup-panel">
-        <div *ngFor="let stepBlock of stepBlockArray; let i = index" class="amexio-stepwizard-step">
+    <div class="stepwizard" *ngIf="(showIndex && !showBlockBox && !showIcon)">
+      <div class="stepwizard-row setup-panel">
+        <div *ngFor="let stepBlock of stepBlockArray; let i = index" class="stepwizard-step">
           <button type="button" [ngClass]="{'disabled':!stepBlock.active,'active':stepBlock.active}" class="btn-circle button button-primary"
                   (click)="onClick(stepBlock,$event)">{{i + 1}}
           </button>
@@ -17,16 +17,16 @@ import {StepBlockComponent} from "./step-block";
             <p>{{stepBlock.label}}</p>
           </ng-container>
           <ng-container *ngIf="stepBlock.label && stepBlock.active">
-            <p><strong class="amexio-step-label-highlight">{{stepBlock.label}}</strong></p>
+            <p><strong class="step-label-highlight">{{stepBlock.label}}</strong></p>
           </ng-container>
         </div>
       </div>
     </div>
 
     <!--this code use when user give showIcon true bydefault it is false-->
-    <div class="amexio-stepwizard" *ngIf="(showIcon && !showIndex && !showBlockBox)">
-      <div class="amexio-stepwizard-row setup-panel">
-        <div *ngFor="let stepBlock of stepBlockArray; let i = index" class="amexio-stepwizard-step">
+    <div class="stepwizard" *ngIf="(showIcon && !showIndex && !showBlockBox)">
+      <div class="stepwizard-row setup-panel">
+        <div *ngFor="let stepBlock of stepBlockArray; let i = index" class="stepwizard-step">
           <!--this is for material design-->
           <ng-container *ngIf="stepBlock.icon && stepBlock.mdbClass ">
             <i [attr.class]="'material-icons'" (click)="onClick(stepBlock,$event)">{{stepBlock.icon}}</i>
@@ -42,7 +42,7 @@ import {StepBlockComponent} from "./step-block";
             <p>{{stepBlock.label}}</p>
           </ng-container>
           <ng-container *ngIf="stepBlock.label && stepBlock.active">
-            <p><strong class="amexio-step-label-highlight">11{{stepBlock.label}}</strong></p>
+            <p><strong class="step-label-highlight">11{{stepBlock.label}}</strong></p>
           </ng-container>
         </div>
       </div>
