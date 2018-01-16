@@ -73,13 +73,13 @@ export class AmexioPaginatorComponent {
 
   onFirstClick(){
     this.activePageIndex = 0;
-    this.changeRows(this.pageIndex[0],0);
+    this.changeRows(this.pageIndex[0],0,null);
   }
 
 
   onLastClick(){
     this.activePageIndex = this.activePages.length - 1;
-    this.changeRows(this.pageIndex[this.pageIndex.length - 1],this.pageIndex.length - 1);
+    this.changeRows(this.pageIndex[this.pageIndex.length - 1],this.pageIndex.length - 1,null);
     this.activePageIndex = this.activePages.length-1;
     this.activePage = this.activePages[this.activePages.length-1];
     this.onPageChange.emit(this.activePage);
@@ -93,9 +93,14 @@ export class AmexioPaginatorComponent {
     }
     else{
       // load prev rows
-      let sIndx = this.fullPageSet.indexOf(this.activePage) - 1;
+      let sIndx
+      if(this.fullPageSet.indexOf(this.activePage) == 1) {
+        sIndx = this.fullPageSet.indexOf(this.activePage);
+      } else {
+        sIndx = this.fullPageSet.indexOf(this.activePage) - 1;
+      }
       if(sIndx>0){
-        this.changeRows(this.pageIndex[this.currentRowIndex-1],this.currentRowIndex-1);
+        this.changeRows(this.pageIndex[this.currentRowIndex-1],this.currentRowIndex-1,null);
         this.activePageIndex = this.activePages.length-2;
         this.activePage = this.activePages[this.activePages.length-2];
         this.onPageChange.emit(this.activePage);
@@ -112,8 +117,8 @@ export class AmexioPaginatorComponent {
     else{
       //load next rows
       let sIndx = this.fullPageSet.indexOf(this.activePage) + 1;
-      if(sIndx < this.fullPageSet.length-1){
-        this.changeRows(this.pageIndex[this.currentRowIndex+1],this.currentRowIndex+1);
+      if(sIndx <= this.fullPageSet.length-1){
+        this.changeRows(this.pageIndex[this.currentRowIndex+1],this.currentRowIndex+1,null);
         this.activePageIndex = 1;
         this.activePage = this.activePages[1];
         this.onPageChange.emit(this.activePage);
@@ -122,29 +127,35 @@ export class AmexioPaginatorComponent {
   }
 
 
-  changeRows(rowNumber: number,inDx : number){
+  changeRows(rowNumber: number,inDx : number, event: any){
     /* If page size is less then row*/
-    this.activePages = [];
-    if(this.pages < rowNumber) {
-      this.currentRow = this.pages;
-      for(let i = this.currentRow - this.rows+1;i<=this.currentRow;i++){
-        if(i != 0)
-          this.activePages.push(i);
+    if(rowNumber != null) {
+      this.activePages = [];
+      if(this.pages < rowNumber) {
+        this.currentRow = this.pages;
+        for(let i = this.currentRow - this.rows+1;i<=this.currentRow;i++){
+          if(i != 0)
+            this.activePages.push(i);
+        }
+      } else {
+        this.currentRow = rowNumber;
+        for(let i = this.currentRow - this.rows;i<=this.currentRow;i++){
+          if(i != 0)
+            this.activePages.push(i);
+        }
       }
-    } else {
-      this.currentRow = rowNumber;
-      for(let i = this.currentRow - this.rows;i<=this.currentRow;i++){
-        if(i != 0)
-          this.activePages.push(i);
+      this.currentRowIndex = inDx;
+      this.onRowChange.emit(this.currentRow);
+
+      this.setBoundaries();
+      this.activePageIndex = 0;
+      this.activePage = this.activePages[0];
+      this.onPageChange.emit(this.activePage);
+      if(event) {
+        this.show = !this.show;
       }
     }
-    this.currentRowIndex = inDx;
-    this.onRowChange.emit(this.currentRow);
 
-    this.setBoundaries();
-    this.activePageIndex = 0;
-    this.activePage = this.activePages[0];
-    this.onPageChange.emit(this.activePage);
   }
 
   onPageClick(page : number,index : number){

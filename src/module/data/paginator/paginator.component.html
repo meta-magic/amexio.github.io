@@ -14,9 +14,8 @@
         <a class="paginator-page" (click)="showColumnOptions()" style=" cursor: pointer;">{{currentRow}} &nbsp;  &#9660;</a>
         <span *ngIf="show" class="dropdown" style="width: 50px;">
             <ul class="dropdown-list">
-              <li class="list-items" *ngFor="let row of pageIndex;let i = index" (click)="changeRows(row,i)"><div>{{row}}</div></li>
+              <li class="list-items" *ngFor="let row of pageIndex;let i = index" (click)="changeRows(row,i, $event)"><div>{{row}}</div></li>
             </ul>
         </span>
       </span>
-
 </div>
