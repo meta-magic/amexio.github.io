@@ -94,6 +94,11 @@ $cardFooterColor: $themeColor;
 $toastBGColor : $themeBGColor;
 $toastColor : $themeColor;
 
+$accordionBGColor:lighten($cardHeaderBGColor,20%);
+$accordionColor:$cardHeaderColor;
+$accordionActiveBGColor:$cardHeaderBGColor;
+$accordionActiveColor:$cardHeaderColor;
+
 $borderLayoutBorder : 0px;
 $borderLayoutBorderColor : none;
 
