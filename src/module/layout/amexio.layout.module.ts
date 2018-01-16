@@ -13,8 +13,6 @@ import {AmexioVerticalTabComponent} from "./tab/vertical-tab/vertical.tab.compon
 import {AmexioRightVerticalTabComponent} from "./tab/right-vertical-tab/right.vertical.component";
 import {AmexioFieldSetComponent} from "./fieldset/fieldset.component";
 import {AmexioCardComponent} from "./card/card.component";
-import {AmexioAccordionTabComponent} from "./accordion/accordion.pane";
-import {AmexioAccordionComponent} from "./accordion/accordion.component";
 import {AmexioRowComponent} from "./rows/row.component";
 import {AmexioColumnComponent} from "./columns/column.component";
 import {AmexioBorderLayoutItemComponent} from "./border/borderlayoutitem.component";
@@ -58,8 +56,6 @@ const LAYOUT_COMPONENTS = [
   AmexioFooterComponent,
   AmexioHeaderComponent,
   AmexioCardComponent,
-  AmexioAccordionTabComponent,
-  AmexioAccordionComponent,
   AmexioRowComponent,
   AmexioColumnComponent,
   AmexioBorderLayoutItemComponent,

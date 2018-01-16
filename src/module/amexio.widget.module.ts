@@ -8,6 +8,7 @@ import {DeviceQueryService} from "./services/device/device.query.service";
 import {AmexioLayoutModule} from "./layout/amexio.layout.module";
 import {AmexioMediaModule} from "./media/amexio.media.module";
 import {IconLoaderService} from "./services/icon/icon.service";
+import {AmexioPaneModule} from "./panes/amexio.pane.module";
 
 export * from './services/data/common.data.service';
 export * from './services/device/device.query.service';
@@ -20,14 +21,16 @@ export * from './services/icon/icon.service';
     AmexioNavModule,
     AmexioDataModule,
     AmexioLayoutModule,
-    AmexioMediaModule
+    AmexioMediaModule,
+    AmexioPaneModule
   ],
   exports: [
     AmexioFormsModule,
     AmexioNavModule,
     AmexioDataModule,
     AmexioLayoutModule,
-    AmexioMediaModule
+    AmexioMediaModule,
+    AmexioPaneModule
   ],
   declarations: []
 })
