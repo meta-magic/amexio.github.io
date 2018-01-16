@@ -98,3 +98,10 @@ body {
   padding-right: 5px;
 }
 
+
+/** Disabled **/
+input:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
