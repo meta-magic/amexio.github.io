@@ -11,20 +11,12 @@ import {AmexioTabComponent} from "./tab/tab.component";
 import {AmexioTabPill} from "./tab/tab.pill.component";
 import {AmexioVerticalTabComponent} from "./tab/vertical-tab/vertical.tab.component";
 import {AmexioRightVerticalTabComponent} from "./tab/right-vertical-tab/right.vertical.component";
-import {AmexioFieldSetComponent} from "./fieldset/fieldset.component";
-import {AmexioCardComponent} from "./card/card.component";
-import {AmexioAccordionTabComponent} from "./accordion/accordion.pane";
-import {AmexioAccordionComponent} from "./accordion/accordion.component";
 import {AmexioRowComponent} from "./rows/row.component";
 import {AmexioColumnComponent} from "./columns/column.component";
 import {AmexioBorderLayoutItemComponent} from "./border/borderlayoutitem.component";
 import {AmexioBorderLayoutComponent} from "./border/borderlayout.component";
-import {AmexioHeaderComponent} from "./panes/pane.action.header";
-import {AmexioFooterComponent} from "./panes/pane.action.footer";
-import {AmexioBodyComponent} from "./panes/pane.action.body";
 import {AmexioStepsComponent} from "./steps/steps.component";
 import {StepBlockComponent} from "./steps/step-block";
-import {AmexioWindowPaneComponent} from "./window/window.pane.component";
 
 export * from '../services/data/common.data.service';
 export * from '../services/device/device.query.service';
@@ -34,13 +26,6 @@ export * from './tab/tab.pill.component';
 
 export * from './tab/vertical-tab/vertical.tab.component';
 export * from './tab/right-vertical-tab/right.vertical.component';
-
-export * from './fieldset/fieldset.component';
-
-export * from './panes/pane.action.footer';
-export * from './panes/pane.action.body';
-export * from './panes/pane.action.header';
-export * from './card/card.component';
 
 export * from './rows/row.component';
 export * from './columns/column.component';
@@ -53,20 +38,12 @@ const LAYOUT_COMPONENTS = [
   AmexioTabPill,
   AmexioVerticalTabComponent,
   AmexioRightVerticalTabComponent,
-  AmexioFieldSetComponent,
-  AmexioBodyComponent,
-  AmexioFooterComponent,
-  AmexioHeaderComponent,
-  AmexioCardComponent,
-  AmexioAccordionTabComponent,
-  AmexioAccordionComponent,
   AmexioRowComponent,
   AmexioColumnComponent,
   AmexioBorderLayoutItemComponent,
   AmexioBorderLayoutComponent,
   AmexioStepsComponent,
-  StepBlockComponent,
-  AmexioWindowPaneComponent
+  StepBlockComponent
 ];
 
 @NgModule({

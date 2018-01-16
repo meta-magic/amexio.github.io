@@ -1,8 +1,0 @@
-<fieldset>
-  <legend class="collapsible-legend" (click)="onLegendClick()">
-    <i *ngIf="collapsible" class="fa" [ngClass]="{'fa-plus' : !isActive,'fa-minus' : isActive}" aria-hidden="true"></i> {{title}}
-  </legend>
-  <div class="collapsible-fieldset" [ngClass]="{'active' : isActive}">
-    <ng-content></ng-content>
-  </div>
-</fieldset>
