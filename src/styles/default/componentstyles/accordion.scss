@@ -47,8 +47,8 @@
 }
 */
 .accordion {
-  background-color: #eee;
-  color: #444;
+  background-color: $accordionBGColor;
+  color: $accordionColor;
   cursor: pointer;
   padding: 18px;
   width: 100%;
