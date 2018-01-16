@@ -428,7 +428,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
   }
 
   setSelectedFlag(viewRows: any) {
-    viewRows.forEach((row) => {
+    viewRows.forEach((row: any) => {
       if (!row.hasOwnProperty('isSelected')) {
         row['isSelected'] = false;
       }
@@ -551,16 +551,16 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
 
     if (this.groupByColumn) {
       if (!this.selectAll) {
-        this.viewRows.forEach((row) => {
+        this.viewRows.forEach((row: any) => {
           row.isSelected = false;
-          row.groupData.forEach((node) => {
+          row.groupData.forEach((node: any) => {
             node.isSelected = false;
           });
         });
       } else {
-        this.viewRows.forEach((row) => {
+        this.viewRows.forEach((row: any) => {
           row.isSelected = true;
-          row.groupData.forEach((node) => {
+          row.groupData.forEach((node: any) => {
             node.isSelected = true;
           });
         });
@@ -903,7 +903,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
   selectParent(row: any) {
     if (this.groupByColumn) {
       row.isSelected = !row.isSelected;
-      row.groupData.forEach((node) => {
+      row.groupData.forEach((node: any) => {
         node.isSelected = !node.isSelected;
       });
       this.selectedRows = [];

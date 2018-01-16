@@ -12,7 +12,8 @@
  */
 
 import {
-  OnInit, Input, Component, QueryList, ContentChildren
+  OnInit, Input, Component, SimpleChange, EventEmitter, Output, QueryList, ContentChildren, AfterContentInit, DoCheck,
+  ViewChildren
 } from '@angular/core';
 import {CommonDataService} from "../../services/data/common.data.service";
 import {AmexioGridColumnComponent} from "../datagrid/data.grid.column";
@@ -20,7 +21,6 @@ import {AmexioGridColumnComponent} from "../datagrid/data.grid.column";
 @Component({
   selector : 'amexio-tree-data-table',
   template : `
-
     <div class="datatable">
       <div class="datatable-header">
         <ng-container *ngFor="let cols of columns;let i = index">
@@ -124,7 +124,7 @@ export class TreeDataTableComponent implements  OnInit{
   setData(httpResponse: any){
     let treedata = this.getResponseData(httpResponse);
     this.viewRows = treedata;
-    this.viewRows.forEach((row : any,index : any)=>{
+    this.viewRows.forEach((row: any ,index: any)=>{
       this.viewRows[index].level=1;
       this.viewRows[index].expand=false;
     });
@@ -154,7 +154,7 @@ export class TreeDataTableComponent implements  OnInit{
     }
   }
 
-  addRows(row : any,index:number){
+  addRows(row: any,index:number){
     for(let i=0;i<row.children.length;i++){
       let node = row.children[i];
       if(!row.level){
@@ -168,7 +168,7 @@ export class TreeDataTableComponent implements  OnInit{
     }
   }
 
-  removeRows(node : any){
+  removeRows(node: any){
     for(let i=0;i<node.children.length;i++){
 
       for(let j=0; j<this.viewRows.length; j++){
