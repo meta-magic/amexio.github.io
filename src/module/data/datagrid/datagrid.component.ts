@@ -731,7 +731,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
   }
 
   sortOnColHeaderClick(sortCol: any, event: any) {
-    this.onHeaderClick.emit({event: event, data: sortCol);
+    this.onHeaderClick.emit({event: event, data: sortCol});
     if (this.sortBy === -1) {
       this.sortBy = 1;
     } else if (this.sortBy === 1) {
