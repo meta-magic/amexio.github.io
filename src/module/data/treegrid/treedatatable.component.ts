@@ -30,7 +30,7 @@ import {AmexioGridColumnComponent} from "../datagrid/data.grid.column";
     </div>
 
     <div class="datatable">
-      <div class="datatable-row" *ngFor="let row of viewRows;let i=index">
+      <div class="datatable-row" *ngFor="let row of viewRows;let i=index" (click)="setSelectedRow(row, $event)">
 
         <div class="datatable-col" *ngFor="let cols of columns;let colIndex = index">
           <ng-container *ngIf="colIndex == 0">
@@ -65,6 +65,8 @@ export class TreeDataTableComponent implements  OnInit{
   @Input()    displayField : string;
 
   @Input()    valueField : string;
+
+  @Output()    selectedRecord: any = new EventEmitter<any>();
 
   responseData : any;
 
@@ -182,6 +184,10 @@ export class TreeDataTableComponent implements  OnInit{
         }
       }
     }
+  }
+
+  setSelectedRow(rowData : any, event: any){
+    this.selectedRecord.emit(rowData);
   }
 
 }

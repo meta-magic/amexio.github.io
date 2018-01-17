@@ -231,8 +231,6 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
 
   @Input() height: string;
 
-  @Input() width: string;
-
   @Input() groupByColumn = false;
 
   @Input() groupByColumnIndex: string;
