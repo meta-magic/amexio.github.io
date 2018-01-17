@@ -75,7 +75,7 @@ export class AmexioDropDownComponent implements OnInit, DoCheck,ControlValueAcce
 
   @Output()   onMultiSelect : any = new EventEmitter<any>();
 
-  @Output()   click : any = new EventEmitter<any>();
+  @Output()   onClick : any = new EventEmitter<any>();
 
   showToolTip : boolean;
 
@@ -237,8 +237,8 @@ export class AmexioDropDownComponent implements OnInit, DoCheck,ControlValueAcce
       return this.displayValue == undefined ? '' : this.displayValue
   }
 
-  onClick(event : any){
-    this.click.emit(event);
+  onDropDownClick(event : any){
+    this.onClick.emit(event);
   }
 
   onChange(event : any){

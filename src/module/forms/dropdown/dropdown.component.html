@@ -14,7 +14,7 @@
          [value]="getDisplayText()"
          [ngClass]="{'input-control-error' : inp.invalid && (inp.dirty || inp.touched),'input-control-success' : inp.valid && (inp.dirty || inp.touched)}"
          (blur)="onblur()"
-         (click)="onClick($event)"
+         (click)="onDropDownClick($event)"
          (focus)="onFocus()"
          (input)="onInput()"
          [attr.placeholder]="placeholder"
