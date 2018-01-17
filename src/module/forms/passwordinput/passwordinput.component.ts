@@ -19,13 +19,13 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 export class AmexioPasswordComponent implements ControlValueAccessor{
 
 
-  @Input()   fieldLabel: string;
+  @Input()   fieldlabel: string;
 
-  @Input()   minLength: number;
+  @Input()   minlength: number;
 
-  @Input()   maxLength: number;
+  @Input()   maxlength: number;
 
-  @Input()   allowBlank: string;
+  @Input()   allowblank: string;
 
   @Output()   onBlur : any = new EventEmitter<any>();
 
@@ -41,36 +41,36 @@ export class AmexioPasswordComponent implements ControlValueAccessor{
 
   showToolTip : boolean;
 
-  _errorMsg : string;
+  _errormsg : string;
 
-  get errorMsg(): string {
-    return this._errorMsg;
+  get errormsg(): string {
+    return this._errormsg;
   }
 
-  @Input('errorMsg')
-  set errorMsg(value: string) {
+  @Input('errormsg')
+  set errormsg(value: string) {
     this.helpInfoMsg = value + '<br/>';
   }
 
-  _minErrorMsg : string;
+  _minerrormsg : string;
 
-  get minErrorMsg() : string{
-    return this._minErrorMsg;
+  get minerrormsg() : string{
+    return this._minerrormsg;
   }
 
-  @Input('minErrorMsg')
-  set minErrorMsg(value : string){
+  @Input('minerrormsg')
+  set minerrormsg(value : string){
     this.helpInfoMsg = this.helpInfoMsg + '<b>Min Length<b/>: ' + value + '<br/>';
   }
 
-  _maxErrorMsg : string;
+  _maxerrormsg : string;
 
-  get maxErrorMsg() : string{
-    return this._maxErrorMsg;
+  get maxerrormsg() : string{
+    return this._maxerrormsg;
   }
 
-  @Input('maxErrorMsg')
-  set maxErrorMsg(value : string){
+  @Input('maxerrormsg')
+  set maxerrormsg(value : string){
     this.helpInfoMsg = this.helpInfoMsg + 'Max Length: ' + value;
   }
 
@@ -79,15 +79,15 @@ export class AmexioPasswordComponent implements ControlValueAccessor{
 
   @Input()   disabled: boolean;
 
-  @Input()   iconFeedBack: boolean;
+  @Input()   iconfeedback: boolean;
 
-  @Input()   fontStyle: string;
+  @Input()   fontstyle: string;
 
-  @Input()   fontFamily: string;
+  @Input()   fontfamily: string;
 
-  @Input()   fontSize: string;
+  @Input()   fontsize: string;
 
-  @Input()   hasLabel: boolean = true;
+  @Input()   haslabel: boolean = true;
 
   _pattern : string;
 
@@ -103,7 +103,7 @@ export class AmexioPasswordComponent implements ControlValueAccessor{
       this.regEx = new RegExp(this.pattern);
   }
 
-  @Input()   enablePopOver : boolean;
+  @Input()   enablepopover : boolean;
 
   constructor() {
     this.showToolTip = false;
@@ -134,7 +134,7 @@ export class AmexioPasswordComponent implements ControlValueAccessor{
   onblur() {
     this.onTouchedCallback();
     this.showToolTip = false;
-    if(this.value.length < this.minLength){
+    if(this.value.length < this.minlength){
       this.isValid = false;
     }
     else {
@@ -176,12 +176,12 @@ export class AmexioPasswordComponent implements ControlValueAccessor{
 
   getValidationClasses(inp :  any) : any{
     let classObj;
-    if(inp.touched && !this.allowBlank && (this.value == '' || this.value == null)){
+    if(inp.touched && !this.allowblank && (this.value == '' || this.value == null)){
       classObj = {'input-control-error' : true};
       this.isValid = false;
     }
-    else if(inp.touched && this.minLength != null){
-      if(this.value.length < this.minLength)
+    else if(inp.touched && this.minlength != null){
+      if(this.value.length < this.minlength)
         classObj = {'input-control-error' : true};
       this.isValid = false;
     }

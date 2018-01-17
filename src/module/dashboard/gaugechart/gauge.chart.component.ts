@@ -143,16 +143,16 @@ export class GaugeChartComponent implements AfterContentInit , OnInit{
 
   @Input() data: any;
 
-  @Input() redColorFrom:number;
+  @Input() redcolorfrom:number;
 
-  @Input() redColorTo:number;
+  @Input() redcolorto:number;
 
-  @Input() yellowColorFrom:number;
+  @Input() yellowcolorfrom:number;
 
-  @Input() yellowColorTo:number;
+  @Input() yellowcolorto:number;
 
   //allow to show minor ticks
-  @Input() minorTicks:number;
+  @Input() scalevalue:number;
 
   @ContentChildren(DashBoardTitle) chartTitleComp : QueryList<DashBoardTitle>;
 
@@ -169,11 +169,11 @@ export class GaugeChartComponent implements AfterContentInit , OnInit{
     this.options = {
       width: this.width,
       height: this.height,
-      redFrom: this.redColorFrom,
-      redTo: this.redColorTo,
-      yellowFrom:this.yellowColorFrom,
-      yellowTo:this.yellowColorTo,
-      minorTicks: this.minorTicks
+      redFrom: this.redcolorfrom,
+      redTo: this.redcolorto,
+      yellowFrom:this.yellowcolorfrom,
+      yellowTo:this.yellowcolorto,
+      scalevalue: this.scalevalue
     };
     this.chart= new google.visualization.Gauge(document.getElementById(this.id));
     this.hasLoaded=true;

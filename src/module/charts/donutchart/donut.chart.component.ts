@@ -143,7 +143,7 @@ export class DonutChartComponent  implements AfterContentInit {
 
   @Input() data: any;
 
-  @Input() backgroundColor: string;
+  @Input() backgroundcolor: string;
 
   hasLoaded:boolean;
 
@@ -175,31 +175,31 @@ export class DonutChartComponent  implements AfterContentInit {
     this.options = {
       title: this.chartTitleComponent?this.chartTitleComponent.title:null,
       titleTextStyle:this.chartTitleComponent?{
-        color:this.chartTitleComponent.titleColor?this.chartTitleComponent.titleColor:null,
-        fontName:this.chartTitleComponent.titleFontName?this.chartTitleComponent.titleFontName:null,
-        fontSize:this.chartTitleComponent.titleFontSize?this.chartTitleComponent.titleFontSize:null,
-        bold:this.chartTitleComponent.isTitleBold?this.chartTitleComponent.isTitleBold:null,
-        italic:this.chartTitleComponent.isTitleItalic?this.chartTitleComponent.isTitleItalic:null
+        color:this.chartTitleComponent.color?this.chartTitleComponent.color:null,
+        fontName:this.chartTitleComponent.fontname?this.chartTitleComponent.fontname:null,
+        fontsize:this.chartTitleComponent.fontsize?this.chartTitleComponent.fontsize:null,
+        bold:this.chartTitleComponent.bold?this.chartTitleComponent.bold:null,
+        italic:this.chartTitleComponent.italic?this.chartTitleComponent.italic:null
       }:null,
-      pieHole: 0.4,
-      backgroundColor: this.backgroundColor,
+      piehole: 0.4,
+      backgroundcolor: this.backgroundcolor,
       legend: this.chartLengendComponent ? {
-        position: this.chartLengendComponent.legendPosition ? this.chartLengendComponent.legendPosition : null, //this work only in chart position is top
-        maxLines: this.chartLengendComponent.maxLinesOfLegend ? this.chartLengendComponent.maxLinesOfLegend : null,
+        position: this.chartLengendComponent.position ? this.chartLengendComponent.position : null, //this work only in chart position is top
+        maxLines: this.chartLengendComponent.maxlines ? this.chartLengendComponent.maxlines : null,
         textStyle: {
-          color: this.chartLengendComponent.legendColor ? this.chartLengendComponent.legendColor : null,
-          fontSize: this.chartLengendComponent.legendFontSize ? this.chartLengendComponent.legendFontSize : null,
-          fontName: this.chartLengendComponent.legendFontName ? this.chartLengendComponent.legendFontName : null,
-          bold: this.chartLengendComponent.isLegendBold ? this.chartLengendComponent.isLegendBold : null,
-          alignment: this.chartLengendComponent.legendAlignment ? this.chartLengendComponent.legendAlignment : null
+          color: this.chartLengendComponent.color ? this.chartLengendComponent.color : null,
+          fontsize: this.chartLengendComponent.fontsize ? this.chartLengendComponent.fontsize : null,
+          fontName: this.chartLengendComponent.fontname ? this.chartLengendComponent.fontname : null,
+          bold: this.chartLengendComponent.bold ? this.chartLengendComponent.bold : null,
+          alignment: this.chartLengendComponent.alignment ? this.chartLengendComponent.alignment : null
         }
       } : 'none',
       chartArea:this.chartAreaComponent?{
-        backgroundColor:this.chartAreaComponent.chartBackgroundColor?this.chartAreaComponent.chartBackgroundColor:null,
-        left:this.chartAreaComponent.leftPosition?this.chartAreaComponent.leftPosition:null,
-        top:this.chartAreaComponent.topPosition?this.chartAreaComponent.topPosition:null,
-        height:this.chartAreaComponent.chartHeightInper?this.chartAreaComponent.chartHeightInper:null,
-        width:this.chartAreaComponent.chartWidthInPer?this.chartAreaComponent.chartWidthInPer:null
+        backgroundcolor:this.chartAreaComponent.chartbackgroundcolor?this.chartAreaComponent.chartbackgroundcolor:null,
+        left:this.chartAreaComponent.leftposition?this.chartAreaComponent.leftposition:null,
+        top:this.chartAreaComponent.topposition?this.chartAreaComponent.topposition:null,
+        height:this.chartAreaComponent.chartheight?this.chartAreaComponent.chartheight:null,
+        width:this.chartAreaComponent.chartwidth?this.chartAreaComponent.chartwidth:null
       }:null,
     };
     this.chart = new google.visualization.PieChart(document.getElementById(this.id));

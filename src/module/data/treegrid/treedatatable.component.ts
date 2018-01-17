@@ -37,12 +37,12 @@ import {AmexioGridColumnComponent} from "../datagrid/data.grid.column";
               <span [ngStyle]="{'padding-left':(20*row.level)+'px'}">
                     <i *ngIf="!row.expanded && row.children" class="fa fa-plus" aria-hidden="true" (click)="toogle(row,i)"></i>
                     <i *ngIf="row.expanded && row.children" class="fa fa-minus" aria-hidden="true" (click)="toogle(row,i)"></i>
-                     {{row[cols.dataIndex]}}
+                     {{row[cols.dataindex]}}
                </span>
           </ng-container>
 
           <ng-container *ngIf="colIndex > 0" >
-            {{row[cols.dataIndex]}}
+            {{row[cols.dataindex]}}
           </ng-container>
         </div>
       </div>
@@ -56,15 +56,15 @@ export class TreeDataTableComponent implements  OnInit{
 
   @Input()    data : any;
 
-  @Input()    dataReader : string;
+  @Input()    datareader : string;
 
-  @Input()    httpMethod : string;
+  @Input()    httpmethod : string;
 
-  @Input()    httpUrl : string;
+  @Input()    httpurl : string;
 
-  @Input()    displayField : string;
+  @Input()    displayfield : string;
 
-  @Input()    valueField : string;
+  @Input()    valuefield : string;
 
   @Output()    selectedRecord: any = new EventEmitter<any>();
 
@@ -84,9 +84,9 @@ export class TreeDataTableComponent implements  OnInit{
 
   ngOnInit(){
 
-    if (this.httpMethod && this.httpUrl){
+    if (this.httpmethod && this.httpurl){
 
-      this.treeDataTableService.fetchData(this.httpUrl, this.httpMethod).subscribe(
+      this.treeDataTableService.fetchData(this.httpurl, this.httpmethod).subscribe(
         response => {
           this.responseData = response.json();
         },
@@ -114,8 +114,8 @@ export class TreeDataTableComponent implements  OnInit{
       let columnData: any;
       if (columnConfig.bodyTemplate == null && columnConfig.headerTemplate == null) {
         columnData = {
-          text: columnConfig.text, dataIndex: columnConfig.dataIndex,
-          hidden: columnConfig.hidden, dataType : columnConfig.dataType
+          text: columnConfig.text, dataindex: columnConfig.dataindex,
+          hidden: columnConfig.hidden, datatype : columnConfig.datatype
         };
       }
 
@@ -134,8 +134,8 @@ export class TreeDataTableComponent implements  OnInit{
 
   getResponseData(httpResponse : any){
     let responsedata = httpResponse;
-    if(this.dataReader != null){
-      let dr = this.dataReader.split('.');
+    if(this.datareader != null){
+      let dr = this.datareader.split('.');
       for (let ir = 0 ; ir < dr.length; ir++){
         responsedata = responsedata[dr[ir]];
       }

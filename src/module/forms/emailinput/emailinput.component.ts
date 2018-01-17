@@ -19,9 +19,9 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 export class AmexioEmailInputComponent implements ControlValueAccessor{
 
 
-  @Input()   fieldLabel: string;
+  @Input()   fieldlabel: string;
 
-  @Input()   allowBlank: string;
+  @Input()   allowblank: string;
 
   helpInfoMsg: string;
 
@@ -29,14 +29,14 @@ export class AmexioEmailInputComponent implements ControlValueAccessor{
 
   showToolTip : boolean;
 
-  _errorMsg : string;
+  _errormsg : string;
 
-  get errorMsg(): string {
-    return this._errorMsg;
+  get errormsg(): string {
+    return this._errormsg;
   }
 
-  @Input('errorMsg')
-  set errorMsg(value: string) {
+  @Input('errormsg')
+  set errormsg(value: string) {
     this.helpInfoMsg = value + '<br/>';
   }
 
@@ -44,13 +44,13 @@ export class AmexioEmailInputComponent implements ControlValueAccessor{
 
   @Input()   disabled: boolean;
 
-  @Input()   iconFeedBack: boolean;
+  @Input()   iconfeedback: boolean;
 
-  @Input()   fontStyle: string;
+  @Input()   fontstyle: string;
 
-  @Input()   fontFamily: string;
+  @Input()   fontfamily: string;
 
-  @Input()   fontSize: string;
+  @Input()   fontsize: string;
 
   emailpatter:any=/\S+@\S+\.\S+/;
 
@@ -66,7 +66,7 @@ export class AmexioEmailInputComponent implements ControlValueAccessor{
       this.regEx = new RegExp(this.pattern);
   }
 
-  @Input()   enablePopOver : boolean;
+  @Input()   enablepopover : boolean;
 
   @Output()   onBlur : any = new EventEmitter<any>();
 
@@ -148,7 +148,7 @@ export class AmexioEmailInputComponent implements ControlValueAccessor{
 
   getValidationClasses(inp :  any) : any{
     let classObj;
-    if(inp.touched && !this.allowBlank && (this.value == '' || this.value == null)){
+    if(inp.touched && !this.allowblank && (this.value == '' || this.value == null)){
       classObj = {'input-control-error' : true};
       this.isValid = false;
     }

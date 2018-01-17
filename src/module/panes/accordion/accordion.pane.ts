@@ -19,7 +19,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
   selector: 'amexio-accordion-tab',
   template: `
 
-    <button class="accordion" #btn1 (click)="onTabClick(btn1)">{{header}}<div style="float: right"><i [class]="iconClassKey" aria-hidden="true"></i></div> </button>
+    <button class="accordion" #btn1 (click)="onTabClick(btn1)">{{header}}<div style="float: right"><i [class]="iconclassKey" aria-hidden="true"></i></div> </button>
     <div class="panel">
       <ng-content></ng-content>
     </div>
@@ -34,13 +34,13 @@ export class AmexioAccordionTabComponent implements OnInit {
 
   @Output() onClick : EventEmitter<any> = new EventEmitter();
 
-  iconClassKey : string;
+  iconclassKey : string;
 
   isExpanded : boolean;
 
   ngOnInit() {
     this.isExpanded = this.expanded;
-    this.iconClassKey = 'fa fa-plus';
+    this.iconclassKey = 'fa fa-plus';
   }
 
   onTabClick(btn : any){
@@ -48,11 +48,11 @@ export class AmexioAccordionTabComponent implements OnInit {
     let panel = btn.nextElementSibling;
     // let icon = btn.children[0].children[0];
 
-    if(this.iconClassKey == 'fa fa-plus'){
-      this.iconClassKey = 'fa fa-minus';
+    if(this.iconclassKey == 'fa fa-plus'){
+      this.iconclassKey = 'fa fa-minus';
     }
-    else if(this.iconClassKey == 'fa fa-minus'){
-      this.iconClassKey = 'fa fa-plus';
+    else if(this.iconclassKey == 'fa fa-minus'){
+      this.iconclassKey = 'fa fa-plus';
     }
 
     if (panel.style.maxHeight){

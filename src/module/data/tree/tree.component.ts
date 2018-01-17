@@ -15,13 +15,13 @@ export class AmexioTreeViewComponent {
   @Input() data : any[];
 
   @Input()
-  httpUrl: string;
+  httpurl: string;
 
   @Input()
-  httpMethod: string;
+  httpmethod: string;
 
   @Input()
-  dataReader: string;
+  datareader: string;
 
   @Output()
   nodeClick: any = new EventEmitter<any>();
@@ -45,8 +45,8 @@ export class AmexioTreeViewComponent {
   }
 
   ngOnInit(){
-    if (this.httpMethod && this.httpUrl) {
-      this.dataService.fetchData(this.httpUrl,this.httpMethod).subscribe(
+    if (this.httpmethod && this.httpurl) {
+      this.dataService.fetchData(this.httpurl,this.httpmethod).subscribe(
         response=>{
           this.responseData = response.json();
         },
@@ -56,7 +56,7 @@ export class AmexioTreeViewComponent {
           this.setData(this.responseData);
         }
       );
-    }else if(this.dataReader && this.data){
+    }else if(this.datareader && this.data){
       this.setData(this.data);
     }
   }
@@ -106,8 +106,8 @@ export class AmexioTreeViewComponent {
   setData(httpResponse : any) {
     //Check if key is added?
     let responsedata = httpResponse;
-    if (this.dataReader != null) {
-      let dr = this.dataReader.split(".");
+    if (this.datareader != null) {
+      let dr = this.datareader.split(".");
       for (let ir = 0; ir < dr.length; ir++) {
         responsedata = responsedata[dr[ir]];
       }

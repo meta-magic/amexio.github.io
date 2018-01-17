@@ -7,7 +7,7 @@ import {StepBlockComponent} from "./step-block";
 @Component({
   selector: 'amexio-steps',
   template: `
-    <div class="stepwizard" *ngIf="(showIndex && !showBlockBox && !showIcon)">
+    <div class="stepwizard" *ngIf="(index && !block && !icon)">
       <div class="stepwizard-row setup-panel">
         <div *ngFor="let stepBlock of stepBlockArray; let i = index" class="stepwizard-step">
           <button type="button" [ngClass]="{'disabled':!stepBlock.active,'active':stepBlock.active}" class="btn-circle button button-primary"
@@ -23,16 +23,16 @@ import {StepBlockComponent} from "./step-block";
       </div>
     </div>
 
-    <!--this code use when user give showIcon true bydefault it is false-->
-    <div class="stepwizard" *ngIf="(showIcon && !showIndex && !showBlockBox)">
+    <!--this code use when user give icon true bydefault it is false-->
+    <div class="stepwizard" *ngIf="(icon && !index && !block)">
       <div class="stepwizard-row setup-panel">
         <div *ngFor="let stepBlock of stepBlockArray; let i = index" class="stepwizard-step">
           <!--this is for material design-->
-          <ng-container *ngIf="stepBlock.icon && stepBlock.mdbClass ">
+          <ng-container *ngIf="stepBlock.icon && stepBlock.mdb ">
             <i [attr.class]="'material-icons'" (click)="onClick(stepBlock,$event)">{{stepBlock.icon}}</i>
           </ng-container>
           <!--this is for fontawesome-->
-          <ng-container *ngIf="stepBlock.icon && !stepBlock.mdbClass">
+          <ng-container *ngIf="stepBlock.icon && !stepBlock.mdb">
             <i [attr.class]="stepBlock.icon" (click)="onClick(stepBlock,$event)"></i>
           </ng-container>
           <ng-container *ngIf="stepBlock.icon=='' || !stepBlock.icon">
@@ -49,21 +49,21 @@ import {StepBlockComponent} from "./step-block";
     </div>
 
     <!--This code use for steps of boxes-->
-    <div *ngIf="showBlockBox">
-      <div *ngIf="showBlockBox" class="step-box-sqaure">
+    <div *ngIf="block">
+      <div *ngIf="block" class="step-box-sqaure">
         <div class="step-box-table">
           <ng-container *ngFor="let stepBlock of stepBlockArray; let i = index">
             <div class="step-box-table-item" [ngClass]="{'disabled':!stepBlock.active,'active':stepBlock.active}">
               <a style="padding-top: 10px;"
                  (click)="onClick(stepBlock,$event)">
-                <ng-container *ngIf="showIndex">
+                <ng-container *ngIf="index">
                   {{i + 1}}<br>
                 </ng-container>
-                <ng-container *ngIf="showIcon && stepBlock.icon && stepBlock.mdbClass ">
+                <ng-container *ngIf="icon && stepBlock.icon && stepBlock.mdb ">
                   <i [attr.class]="'material-icons'" (click)="onClick(stepBlock,$event)">{{stepBlock.icon}}</i>
                 </ng-container>
 
-                <ng-container *ngIf="showIcon && stepBlock.icon && !stepBlock.mdbClass">
+                <ng-container *ngIf="icon && stepBlock.icon && !stepBlock.mdb">
                   <i [attr.class]="stepBlock.icon" (click)="onClick(stepBlock,$event)"></i>
                 </ng-container>
                 <ng-container *ngIf="stepBlock.label && !stepBlock.active">
@@ -85,11 +85,11 @@ import {StepBlockComponent} from "./step-block";
 
 export class AmexioStepsComponent implements OnInit {
 
-  @Input() showIndex: boolean;
+  @Input() index: boolean;
 
-  @Input() showIcon: boolean;
+  @Input() icon: boolean;
 
-  @Input() showBlockBox: boolean;
+  @Input() block: boolean;
 
   @Output() onBlockClick: EventEmitter<any> = new EventEmitter<any>();
 
@@ -99,7 +99,7 @@ export class AmexioStepsComponent implements OnInit {
 
   stepBlockArray: StepBlockComponent[];
 
-  @Input() stepBlockLocalData: any[];
+  @Input() data: any[];
 
   stepPreviewData: any;
 
@@ -114,23 +114,23 @@ export class AmexioStepsComponent implements OnInit {
   }
 
   ngAfterContentInit() {
-    if (this.stepBlockLocalData && this.stepBlockLocalData.length > 0) {
-      this.stepBlockArray = this.stepBlockLocalData;
+    if (this.data && this.data.length > 0) {
+      this.stepBlockArray = this.data;
     } else {
       this.stepBlockArray = this.stepBlocks.toArray();
     }
   }
 
   ngDoCheck() {
-    if (JSON.stringify(this.stepPreviewData) != JSON.stringify(this.stepBlockLocalData)) {
-      this.stepPreviewData = JSON.parse(JSON.stringify(this.stepBlockLocalData));
-      this.stepBlockArray = this.stepBlockLocalData;
+    if (JSON.stringify(this.stepPreviewData) != JSON.stringify(this.data)) {
+      this.stepPreviewData = JSON.parse(JSON.stringify(this.data));
+      this.stepBlockArray = this.data;
     }
   }
   ngOnInit() {
-    if (this.stepBlockLocalData && this.stepBlockLocalData.length > 0 ) {
-      this.stepPreviewData = JSON.parse(JSON.stringify(this.stepBlockLocalData));
-      this.stepBlockArray = this.stepBlockLocalData;
+    if (this.data && this.data.length > 0 ) {
+      this.stepPreviewData = JSON.parse(JSON.stringify(this.data));
+      this.stepBlockArray = this.data;
     }
 
   }

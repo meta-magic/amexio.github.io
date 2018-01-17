@@ -1,11 +1,11 @@
 <!--Normal image-->
-<ng-container *ngIf="imagePath || (imagePath && imageClass)">
-  <img [src]="imagePath" [attr.class]="cClass" (click)="onImageClick($event)" [attr.title]="tooltipMessage">
+<ng-container *ngIf="path || (path && iconclass)">
+  <img [src]="path" [attr.class]="cclass" (click)="onImageClick($event)" [attr.title]="tooltip">
 </ng-container>
 
 <!--this is for fontawesome-->
-<ng-container *ngIf="imageClass && (!imagePath && !mdbClass)">
-  <i [attr.class]="imageClass" [attr.title]="tooltipMessage" (click)="onImageClick($event)"></i>
+<ng-container *ngIf="iconclass && (!path && !mdb)">
+  <i [attr.class]="iconclass" [attr.title]="tooltip" (click)="onImageClick($event)"></i>
 </ng-container>
 
 <ng-container *ngIf=" title ">

@@ -22,7 +22,7 @@ export const CUSTOM_CHECKBOX_CONTROL_VALUE_ACCESSOR: any = {
 })
 export class AmexioCheckBoxComponent implements ControlValueAccessor{
 
-  @Input() fieldLabel : string;
+  @Input() fieldlabel : string;
 
   @Input()   disabled: boolean;
 

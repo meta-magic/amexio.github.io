@@ -15,15 +15,15 @@ export class AmexioItemSelectorComponent implements OnInit {
 
   @Input()    height : any;
 
-  @Input()    dataReader : string;
+  @Input()    datareader : string;
 
-  @Input()    httpMethod : string;
+  @Input()    httpmethod : string;
 
-  @Input()    httpUrl : string;
+  @Input()    httpurl : string;
 
-  @Input()    displayField : string;
+  @Input()    displayfield : string;
 
-  @Input()    valueField : string;
+  @Input()    valuefield : string;
 
   @Output() availableRecords: any = new EventEmitter<any>();
 
@@ -50,8 +50,8 @@ export class AmexioItemSelectorComponent implements OnInit {
   constructor(public itemSelectorService : CommonDataService) { }
 
   ngOnInit() {
-    if (this.httpMethod && this.httpUrl) {
-      this.itemSelectorService.fetchData(this.httpUrl, this.httpMethod).subscribe(response => {
+    if (this.httpmethod && this.httpurl) {
+      this.itemSelectorService.fetchData(this.httpurl, this.httpmethod).subscribe(response => {
         this.response = response.json();
       }, error => {
       }, () => {
@@ -73,8 +73,8 @@ export class AmexioItemSelectorComponent implements OnInit {
 
   setData(httpResponse : any){
     let responsedata = httpResponse;
-    if (this.dataReader != null) {
-      const dr = this.dataReader.split('.');
+    if (this.datareader != null) {
+      const dr = this.datareader.split('.');
       for (let ir = 0; ir < dr.length; ir++) {
         responsedata = responsedata[dr[ir]];
       }
@@ -97,7 +97,7 @@ export class AmexioItemSelectorComponent implements OnInit {
     this.objectIndex = index;
 
     for (let ir = 0; ir < this.availableData.length; ir++) {
-      if((this.availableData[ir])[this.valueField] === data[this.valueField]){
+      if((this.availableData[ir])[this.valuefield] === data[this.valuefield]){
         this.availableData[ir]['isSelected'] = true;
       }else{
         this.availableData[ir]['isSelected'] = false;
@@ -129,7 +129,7 @@ export class AmexioItemSelectorComponent implements OnInit {
 
     if(this.switchingObject && this.availableData){
       for (let ir = 0; ir < this.availableData.length; ir++) {
-        if((this.availableData[ir])[this.valueField] === this.switchingObject[this.valueField]){
+        if((this.availableData[ir])[this.valuefield] === this.switchingObject[this.valuefield]){
           flag = true
         }
       }

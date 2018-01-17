@@ -28,7 +28,7 @@
               </div>
             </div>&nbsp;
           </ng-container>
-          <ng-container *ngIf="!bodyTemplate"> {{row[displayField]}}</ng-container>
+          <ng-container *ngIf="!bodyTemplate"> {{row[displayfield]}}</ng-container>
           <ng-template *ngIf="bodyTemplate" [ngTemplateOutlet]="bodyTemplate" [ngTemplateOutletContext]="{ row: row }"></ng-template></div>
       </li>
     </ul>

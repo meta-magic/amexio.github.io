@@ -11,7 +11,7 @@ import {AmexioTemplate} from "./carousel.template";
 @Component({
  selector: 'amexio-carousel',
  template: `   
-<h4>{{headerName}}</h4>
+<h4>{{header}}</h4>
    <div class="tabwrapper">
      <div class="carouselnavigation float-left" (click)="previous()"><i class="fa fa-angle-left fa-2x" aria-hidden="true"></i></div>
      <div class="carouselnavigation float-right" (click)="next()"><i class="fa fa-angle-right  fa-2x" aria-hidden="true"></i></div>
@@ -26,13 +26,13 @@ import {AmexioTemplate} from "./carousel.template";
 
 export class AmexioCarouselComponent implements OnInit,AfterContentInit {
 
- @Input() headerName : string;
+ @Input() header : string;
 
  @Input() mode : 'single' | 'multiple';
 
  @Input() data : any;
 
- @Input() autoShuffleTime : number;
+ @Input() shuffleinterval : number;
 
   public itemTemplate: TemplateRef<any>;
 
@@ -46,7 +46,7 @@ export class AmexioCarouselComponent implements OnInit,AfterContentInit {
    if(this.mode == null){
      this.mode = 'single';
    }
-   if(this.autoShuffleTime != null){
+   if(this.shuffleinterval != null){
      setInterval(()=>{
        let carouselItemPosix = this.tabs.nativeElement;
        if( !((carouselItemPosix.scrollWidth - carouselItemPosix.offsetWidth - carouselItemPosix.scrollLeft ) <= 0)){
@@ -57,7 +57,7 @@ export class AmexioCarouselComponent implements OnInit,AfterContentInit {
          //go previous
          carouselItemPosix.scrollLeft=carouselItemPosix.scrollLeft-200;
        }
-     },this.autoShuffleTime);
+     },this.shuffleinterval);
    }
  }
 

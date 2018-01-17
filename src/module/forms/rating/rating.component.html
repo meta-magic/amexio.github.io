@@ -1,7 +1,7 @@
 <div class="inputgroup">
 
   <label>
-    {{fieldLabel}}
+    {{fieldlabel}}
   </label>
 
   <div (mouseleave)="resetHovered()"
@@ -17,9 +17,9 @@
           <i (mouseenter)="setHovered(item)"
              (mousemove)="changeHovered($event)"
              (click)="rate(item)"
-             [attr.data-icon]="fullIcon"
-             class="{{ iconClass }} half{{ calculateWidth(item) }}"
-             [title]="titles[index] || item">{{ emptyIcon }}</i>
+             [attr.data-icon]="fullicon"
+             class="{{ iconclass }} half{{ calculateWidth(item) }}"
+             [title]="titles[index] || item">{{ emptyicon }}</i>
       </span>
   </div>
 </div>

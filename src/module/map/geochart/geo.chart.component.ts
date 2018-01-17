@@ -134,13 +134,13 @@ export class GeoChartComponent implements AfterContentInit ,OnInit{
 
   @Input() data: any;
 
-  @Input() displayCountryName:boolean=false;
+  @Input() countryname:boolean=false;
 
-  @Input() regionCode:string;
+  @Input() regioncode:string;
 
-  @Input() backgroundColor:string;
+  @Input() backgroundcolor:string;
 
-  @Input() datalessRegionColor:string;
+  @Input() unusedregioncolor:string;
 
     @ContentChildren(MapProperties)  chartAreaComp:QueryList<MapProperties>;
 
@@ -155,16 +155,16 @@ export class GeoChartComponent implements AfterContentInit ,OnInit{
   drawChart() {
     this.geomapData = google.visualization.arrayToDataTable(this.data);
     this.options = {
-      displayMode:this.displayCountryName?'text':null,
-      region:this.regionCode?this.regionCode:null,
-      backgroundColor:this.backgroundColor?this.backgroundColor:null,
-      datalessRegionColor:this.datalessRegionColor?this.datalessRegionColor:null,
+      displayMode:this.countryname?'text':null,
+      region:this.regioncode?this.regioncode:null,
+      backgroundcolor:this.backgroundcolor?this.backgroundcolor:null,
+      unusedregioncolor:this.unusedregioncolor?this.unusedregioncolor:null,
       chartArea:this.chartAreaComponent?{
-        backgroundColor:this.chartAreaComponent.chartBackgroundColor?this.chartAreaComponent.chartBackgroundColor:null,
-        left:this.chartAreaComponent.leftPosition?this.chartAreaComponent.leftPosition:null,
-        top:this.chartAreaComponent.topPosition?this.chartAreaComponent.topPosition:null,
-        height:this.chartAreaComponent.chartHeightInper?this.chartAreaComponent.chartHeightInper:null,
-        width:this.chartAreaComponent.chartWidthInPer?this.chartAreaComponent.chartWidthInPer:null
+        backgroundcolor:this.chartAreaComponent.chartbackgroundcolor?this.chartAreaComponent.chartbackgroundcolor:null,
+        left:this.chartAreaComponent.leftposition?this.chartAreaComponent.leftposition:null,
+        top:this.chartAreaComponent.topposition?this.chartAreaComponent.topposition:null,
+        height:this.chartAreaComponent.chartheight?this.chartAreaComponent.chartheight:null,
+        width:this.chartAreaComponent.chartwidth?this.chartAreaComponent.chartwidth:null
       }:null,
     };
     this.chart = new google.visualization.GeoChart(document.getElementById(this.id));

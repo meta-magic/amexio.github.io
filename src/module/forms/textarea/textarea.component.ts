@@ -19,13 +19,13 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 export class AmexioTextAreaComponent implements ControlValueAccessor{
 
 
-  @Input()   fieldLabel: string;
+  @Input()   fieldlabel: string;
 
-  @Input()    noOfrows : number;
+  @Input()    rows : number;
 
-  @Input()    noOfCols : number;
+  @Input()    columns : number;
 
-  @Input()   allowBlank: string;
+  @Input()   allowblank: string;
 
   helpInfoMsg: string;
 
@@ -33,36 +33,36 @@ export class AmexioTextAreaComponent implements ControlValueAccessor{
 
   showToolTip : boolean;
 
-  _errorMsg : string;
+  _errormsg : string;
 
-  get errorMsg(): string {
-    return this._errorMsg;
+  get errormsg(): string {
+    return this._errormsg;
   }
 
-  @Input('errorMsg')
-  set errorMsg(value: string) {
+  @Input('errormsg')
+  set errormsg(value: string) {
     this.helpInfoMsg = value + '<br/>';
   }
 
-  _minErrorMsg : string;
+  _minerrormsg : string;
 
-  get minErrorMsg() : string{
-    return this._minErrorMsg;
+  get minerrormsg() : string{
+    return this._minerrormsg;
   }
 
-  @Input('minErrorMsg')
-  set minErrorMsg(value : string){
+  @Input('minerrormsg')
+  set minerrormsg(value : string){
     this.helpInfoMsg = this.helpInfoMsg + '<b>Min Length<b/>: ' + value + '<br/>';
   }
 
-  _maxErrorMsg : string;
+  _maxerrormsg : string;
 
-  get maxErrorMsg() : string{
-    return this._maxErrorMsg;
+  get maxerrormsg() : string{
+    return this._maxerrormsg;
   }
 
-  @Input('maxErrorMsg')
-  set maxErrorMsg(value : string){
+  @Input('maxerrormsg')
+  set maxerrormsg(value : string){
     this.helpInfoMsg = this.helpInfoMsg + 'Max Length: ' + value;
   }
 
@@ -71,15 +71,15 @@ export class AmexioTextAreaComponent implements ControlValueAccessor{
 
   @Input()   disabled: boolean;
 
-  @Input()   iconFeedBack: boolean;
+  @Input()   iconfeedback: boolean;
 
-  @Input()   fontStyle: string;
+  @Input()   fontstyle: string;
 
-  @Input()   fontFamily: string;
+  @Input()   fontfamily: string;
 
-  @Input()   fontSize: string;
+  @Input()   fontsize: string;
 
-  @Input()   hasLabel: boolean = true;
+  @Input()   haslabel: boolean = true;
 
   _pattern : string;
 
@@ -95,7 +95,7 @@ export class AmexioTextAreaComponent implements ControlValueAccessor{
       this.regEx = new RegExp(this.pattern);
   }
 
-  @Input()   enablePopOver : boolean;
+  @Input()   enablepopover : boolean;
 
   constructor() {
     this.showToolTip = false;
@@ -150,7 +150,7 @@ export class AmexioTextAreaComponent implements ControlValueAccessor{
 
   getValidationClasses(inp :  any) : any{
     let classObj;
-    if(inp.touched && !this.allowBlank && (this.value == '' || this.value == null)){
+    if(inp.touched && !this.allowblank && (this.value == '' || this.value == null)){
       classObj = {'input-control-error' : true};
       this.isValid = false;
     }

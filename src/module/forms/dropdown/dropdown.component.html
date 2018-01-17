@@ -1,7 +1,7 @@
 <div class="inputgroup">
 
-  <label [style.font-style]="fontStyle" [style.font-family]="fontFamily" [style.font-size]="fontSize">
-    {{fieldLabel}}
+  <label [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
+    {{fieldlabel}}
   </label>
 
   <input type="hidden"
@@ -19,7 +19,7 @@
          (input)="onInput()"
          [attr.placeholder]="placeholder"
          [attr.disabled]="disabled ? true: null"
-         [required]="allowBlank ? true: null" (keyup)="onDropDownSearchKeyUp($event)"/>
+         [required]="allowblank ? true: null" (keyup)="onDropDownSearchKeyUp($event)"/>
 
 
   <span class="drodown-caret-down">
@@ -29,12 +29,12 @@
   <span *ngIf="showToolTip" class="dropdown">
         <ul class="dropdown-list">
 <!--
-          <li class="list-items" *ngIf="searchBox">
+          <li class="list-items" *ngIf="search">
             <input type="text" class="input-control" placeholder="search" (keyup)="onDropDownSearchKeyUp($event)"/>
           </li>
 -->
           <li class="list-items" *ngFor="let item of filteredOptions" (click)="onItemSelect(item)">
-            <span>{{item[displayField]}}</span>
+            <span>{{item[displayfield]}}</span>
             <span style="float : right">{{item?.checked ? '&#10004;': ''}}</span>
           </li>
            <ng-template *ngIf="filteredOptions.length < 1">
@@ -46,14 +46,14 @@
 </div>
 
 
-<span *ngIf="iconFeedBack && (inp.invalid && (inp.dirty || inp.touched) || inp.valid)"
+<span *ngIf="iconfeedback && (inp.invalid && (inp.dirty || inp.touched) || inp.valid)"
       class="input-control-feedback">
         <span *ngIf="inp.invalid && (inp.dirty || inp.touched)">&#9888;</span>
         <span *ngIf="inp.valid && (inp.dirty || inp.touched)"> &#10004;</span>
 
       </span>
 
-<span *ngIf="showToolTip && enablePopOver" class="tooltiptext">
+<span *ngIf="showToolTip && enablepopover" class="tooltiptext">
         <div [innerHTML]="helpInfoMsg"></div>
 </span>
 

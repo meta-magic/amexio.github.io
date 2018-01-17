@@ -30,13 +30,13 @@ export class AmexioRatingComponent implements OnInit, ControlValueAccessor, Vali
   // -------------------------------------------------------------------------
 
   @Input()
-  iconClass = "star-icon";
+  iconclass = "star-icon";
 
   @Input()
-  fullIcon = "★";
+  fullicon = "★";
 
   @Input()
-  emptyIcon = "☆";
+  emptyicon = "☆";
 
   @Input()
   readonly: boolean;
@@ -51,7 +51,7 @@ export class AmexioRatingComponent implements OnInit, ControlValueAccessor, Vali
   float: boolean;
 
   @Input()
-  fieldLabel: string;
+  fieldlabel: string;
 
   @Input()
   titles: string[] = [];

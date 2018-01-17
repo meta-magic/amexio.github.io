@@ -17,13 +17,13 @@ export const CUSTOM_DATETIME_Style_CONTROL_VALUE_ACCESSOR: any = {
 
 export class AmexioDateTimePicker implements OnInit {
 
-  @Input() dateFormat: string;
+  @Input() dateformat: string;
 
   @Input() datepicker: boolean;
 
   @Input() timepicker: boolean;
 
-  @Input() fieldLabel: string;
+  @Input() fieldlabel: string;
 
   @Input() readonly: boolean;
 
@@ -68,8 +68,8 @@ export class AmexioDateTimePicker implements OnInit {
 
 
   ngOnInit() {
-    if(this.dateFormat != null){
-      this.dateFormat = "dd/MM/yyyy";
+    if(this.dateformat != null){
+      this.dateformat = "dd/MM/yyyy";
     }
   }
 

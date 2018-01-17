@@ -18,15 +18,15 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class ChartAreaComponent implements OnInit {
 
-  @Input() chartBackgroundColor: string;
+  @Input() chartbackgroundcolor: string;
 
-  @Input() leftPosition: number;
+  @Input() leftposition: number;
 
-  @Input() topPosition: number;
+  @Input() topposition: number;
 
-  @Input() chartWidthInPer: number;
+  @Input() chartwidth: number;
 
-  @Input() chartHeightInper: number;
+  @Input() chartheight: number;
 
   constructor() {
   }

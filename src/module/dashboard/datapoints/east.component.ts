@@ -13,7 +13,7 @@ import {
   selector: 'amexio-east',
   template: `
 
-    <div [ngClass]="cClass" [attr.align]="contentalign" [style.background-color]="backgroundColor" [style.color]="fontColor" [style.width]="width" [style.height]="height">
+    <div [ngClass]="cclass" [attr.align]="contentalign" [style.background-color]="backgroundcolor" [style.color]="fontcolor" [style.width]="width" [style.height]="height">
       <ng-content></ng-content>
     </div>
 
@@ -25,15 +25,15 @@ export class DataPointEastComponent implements OnInit{
 
   @Input() contentalign : string;
 
-  @Input() backgroundColor : string;
+  @Input() backgroundcolor : string;
 
-  @Input() fontColor : string;
+  @Input() fontcolor : string;
 
   @Input() width : string;
 
   @Input() height : string;
 
-  @Input() cClass:string;
+  @Input() cclass:string;
 
   constructor(){
   }

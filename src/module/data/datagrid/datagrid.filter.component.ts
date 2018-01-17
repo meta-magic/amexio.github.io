@@ -6,12 +6,12 @@ import {CommonDataService} from "../../services/data/common.data.service";
 @Component({
   selector: 'data-grid-filter',
   template: `
-    <input type="text" [(ngModel)]="filterValue" [attr.placeholder]="column.text" (keyup)="keyUpSearch(column)" type="{{column.dataType==='string' ? 'text' : 'number'}}" class="form-control" aria-label="Text input with dropdown button">
+    <input type="text" [(ngModel)]="filterValue" [attr.placeholder]="column.text" (keyup)="keyUpSearch(column)" type="{{column.datatype==='string' ? 'text' : 'number'}}" class="form-control" aria-label="Text input with dropdown button">
     <i class="fa fa-filter" aria-hidden="true" (click)="showToolTip = !showToolTip"></i>
 
     <span *ngIf="showToolTip" class="dropdown" style="width: 250px;">
         <ul class="dropdown-list" *ngFor="let opt of filterOptions">
-          <ng-container *ngIf="opt.type===column.dataType">
+          <ng-container *ngIf="opt.type===column.datatype">
           <li class="list-items" >
               <div (click)="selectedOption(column,opt)">
               {{opt.key}}&nbsp;<i [class]="opt.checkedStatus" aria-hidden="true"></i>
@@ -117,10 +117,10 @@ export class DataGridFilterComponent implements OnInit {
     this.checkStatus();
     let filter: any = {};
     opt.checkedStatus = 'fa fa-check';
-    filter['key'] = col.dataIndex;
+    filter['key'] = col.dataindex;
     filter['value'] = this.filterValue;
     filter['filter'] = opt.value;
-    filter['type'] = col.dataType;
+    filter['type'] = col.datatype;
     if (this.filterValue) {
       col.filterIcon = true;
       this.filterDataObject(filter, col);
@@ -135,12 +135,12 @@ export class DataGridFilterComponent implements OnInit {
     }else {
       col.filterIcon = true;
       const filter: any = {};
-      filter['key'] = col.dataIndex;
+      filter['key'] = col.dataindex;
       filter['value'] = this.filterValue;
-      filter['type'] = col.dataType;
+      filter['type'] = col.datatype;
       this.filterOptions.forEach((opt : any) => {
         if (opt.checkedStatus === 'fa fa-check') {
-          if (col.dataType === opt.type) {
+          if (col.datatype === opt.type) {
             filter['filter'] = opt.value;
           }
         }
@@ -151,9 +151,9 @@ export class DataGridFilterComponent implements OnInit {
   removeFilter(column: any) {
     this.filterValue = '';
     column.filterIcon = false;
-    // $('#' + column.dataIndex).val('');
+    // $('#' + column.dataindex).val('');
     this.dataTableService.filteredObject.forEach((option : any, index : any) => {
-      if (option.key === column.dataIndex) {
+      if (option.key === column.dataindex) {
         this.dataTableService.filteredObject.splice(index, 1);
       }
     });
@@ -166,7 +166,7 @@ export class DataGridFilterComponent implements OnInit {
   }
   filterDataObject(filter: any, col: any) {
     this.dataTableService.filteredObject.forEach((option : any, index : any) => {
-      if (option.key == col.dataIndex) {
+      if (option.key == col.dataindex) {
         this.dataTableService.filteredObject.splice(index, 1);
       }
     });

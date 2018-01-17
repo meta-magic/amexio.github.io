@@ -16,7 +16,7 @@ export class AmexioButtonComponent {
 
   @Input()    type: string;
 
-  @Input()    tooltipMessage: string;
+  @Input()    tooltip: string;
 
   @Input()    disabled: boolean;
 

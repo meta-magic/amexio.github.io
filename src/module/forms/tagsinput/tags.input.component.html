@@ -1,7 +1,7 @@
 <div class="inputgroup">
 
-  <label [style.font-style]="fontStyle" [style.font-family]="fontFamily" [style.font-size]="fontSize">
-    {{fieldLabel}}
+  <label [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
+    {{fieldlabel}}
   </label>
 
 
@@ -17,7 +17,7 @@
            (focus)="onFocus()"
            [attr.placeholder]="placeholder"
            [attr.disabled]="disabled ? true: null"
-           [required]="allowBlank ? true: null"
+           [required]="allowblank ? true: null"
            #inp/>
 
   </div>
@@ -25,20 +25,20 @@
 
   <span *ngIf="showToolTip" class="dropdown">
     <ul class="dropdown-list">
-      <li class="list-items" *ngFor="let item of filteredResult" (click)="setValue(item,inp)"><div>{{item[displayField]}}</div></li>
+      <li class="list-items" *ngFor="let item of filteredResult" (click)="setValue(item,inp)"><div>{{item[displayfield]}}</div></li>
     </ul>
   </span>
 
 </div>
 
 
-<span *ngIf="iconFeedBack && (inp.invalid && (inp.dirty || inp.touched) || inp.valid)"
+<span *ngIf="iconfeedback && (inp.invalid && (inp.dirty || inp.touched) || inp.valid)"
       class="input-control-feedback">
         <span *ngIf="inp.invalid && (inp.dirty || inp.touched)">&#9888;</span>
         <span *ngIf="inp.valid && (inp.dirty || inp.touched)"> &#10004;</span>
 
 </span>
 
-<span *ngIf="showToolTip && enablePopOver" class="tooltiptext">
+<span *ngIf="showToolTip && enablepopover" class="tooltiptext">
         <div [innerHTML]="helpInfoMsg"></div>
 </span>

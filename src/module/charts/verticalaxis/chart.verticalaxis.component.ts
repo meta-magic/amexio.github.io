@@ -21,7 +21,7 @@ export class VerticalAxisComponent implements OnInit {
 
   @Input() title:string;
 
-  @Input() titleTextColor:string;
+  @Input() titlecolor:string;
 
   constructor() {
   }

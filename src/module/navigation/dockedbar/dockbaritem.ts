@@ -27,13 +27,13 @@ export class DockbarComponent implements OnInit{
 
   @Input() icon:string;
 
-  @Input() mdbClass:string;
+  @Input() mdb:string;
 
   @Input() width:string;
 
   @Input() title:string;
 
-  @Input() imagePath:any;
+  @Input() path:any;
 
   elementId:string;
 

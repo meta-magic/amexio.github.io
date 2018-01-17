@@ -23,17 +23,17 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 export class AmexioImageComponent implements OnInit {
 
-  @Input() tooltipMessage:string;
+  @Input() tooltip:string;
 
   @Input() title:string;
 
-  @Input() imagePath:string;
+  @Input() path:string;
 
-  @Input() imageClass:string;
+  @Input() iconclass:string;
 
-  @Input() cClass:string;
+  @Input() cclass:string;
 
-  @Input() mdbClass:string;
+  @Input() mdb:string;
 
   @Output() onClick:EventEmitter<any>=new EventEmitter<any>();
 

@@ -1,33 +1,33 @@
 <!--<div class="inputgroup " >-->
-  <!--<div *ngIf="fieldLabel">-->
-    <!--<label>{{fieldLabel}}</label>-->
+  <!--<div *ngIf="fieldlabel">-->
+    <!--<label>{{fieldlabel}}</label>-->
   <!--</div>-->
   <!--<div [ngClass]="{'inline-block':horizontal}">-->
     <!--<ng-container *ngFor="let row of viewData">-->
       <!--<div class="input-box" (click)="setSelectedCheckBox(row, $event)">-->
-        <!--<div *ngIf="!row[valueField]" class="checkbox default">-->
+        <!--<div *ngIf="!row[valuefield]" class="checkbox default">-->
         <!--</div>-->
-        <!--<div *ngIf="row[valueField]" class="checkbox active">-->
+        <!--<div *ngIf="row[valuefield]" class="checkbox active">-->
           <!--&#10004;-->
         <!--</div>-->
       <!--</div>-->
-      <!--<label>{{row[displayField]}}</label>-->
+      <!--<label>{{row[displayfield]}}</label>-->
     <!--</ng-container>-->
   <!--</div>-->
 <!--</div>-->
 
 
 <div class="inputgroup " >
-  <div *ngIf="fieldLabel">
-    <label>{{fieldLabel}}</label>
+  <div *ngIf="fieldlabel">
+    <label>{{fieldlabel}}</label>
   </div>
 
   <ng-container *ngIf="horizontal">
     <ng-container *ngFor="let row of viewData">
 
-      <label class="input-box-container"  >{{row[displayField]}}
-        <input type="checkbox" *ngIf="row[valueField]" checked="checked" (click)="setSelectedCheckBox(row, $event)">
-        <input type="checkbox" *ngIf="!row[valueField]" (click)="setSelectedCheckBox(row, $event)">
+      <label class="input-box-container"  >{{row[displayfield]}}
+        <input type="checkbox" *ngIf="row[valuefield]" checked="checked" (click)="setSelectedCheckBox(row, $event)">
+        <input type="checkbox" *ngIf="!row[valuefield]" (click)="setSelectedCheckBox(row, $event)">
         <span class="input-box-checkbox-label"></span>
       </label>
 
@@ -37,9 +37,9 @@
   <ng-container *ngIf="!horizontal">
     <ng-container *ngFor="let row of viewData">
       <div>
-        <label class="input-box-container">{{row[displayField]}}
-          <input type="checkbox" *ngIf="row[valueField]" checked="checked" (click)="setSelectedCheckBox(row, $event)">
-          <input type="checkbox" *ngIf="!row[valueField]" (click)="setSelectedCheckBox(row, $event)">
+        <label class="input-box-container">{{row[displayfield]}}
+          <input type="checkbox" *ngIf="row[valuefield]" checked="checked" (click)="setSelectedCheckBox(row, $event)">
+          <input type="checkbox" *ngIf="!row[valuefield]" (click)="setSelectedCheckBox(row, $event)">
           <span class="input-box-checkbox-label"></span>
         </label>
       </div>

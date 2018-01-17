@@ -24,21 +24,21 @@ export const CUSTOM_TYPEAHEAD_CONTROL_VALUE_ACCESSOR: any = {
 })
 export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor,DoCheck{
 
-  @Input()    fieldLabel: string;
+  @Input()    fieldlabel: string;
 
-  @Input()    allowBlank: string;
+  @Input()    allowblank: string;
 
   @Input()    data : any;
 
-  @Input()    dataReader : string;
+  @Input()    datareader : string;
 
-  @Input()    httpMethod : string;
+  @Input()    httpmethod : string;
 
-  @Input()    httpUrl : string;
+  @Input()    httpurl : string;
 
-  @Input()    displayField : string;
+  @Input()    displayfield : string;
 
-  @Input()    valueField : string;
+  @Input()    valuefield : string;
 
   @Output()   onBlur : any = new EventEmitter<any>();
 
@@ -55,14 +55,14 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor,Do
 
   helpInfoMsg: string;
 
-  _errorMsg : string;
+  _errormsg : string;
 
-  get errorMsg(): string {
-    return this._errorMsg;
+  get errormsg(): string {
+    return this._errormsg;
   }
 
-  @Input('errorMsg')
-  set errorMsg(value: string) {
+  @Input('errormsg')
+  set errormsg(value: string) {
     this.helpInfoMsg = value + '<br/>';
   }
 
@@ -72,17 +72,17 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor,Do
 
   @Input()   disabled: boolean;
 
-  @Input()   iconFeedBack: boolean;
+  @Input()   iconfeedback: boolean;
 
-  @Input()   fontStyle: string;
+  @Input()   fontstyle: string;
 
-  @Input()   fontFamily: string;
+  @Input()   fontfamily: string;
 
-  @Input()   fontSize: string;
+  @Input()   fontsize: string;
 
-  @Input()   hasLabel: boolean = true;
+  @Input()   haslabel: boolean = true;
 
-  @Input()   enablePopOver : boolean;
+  @Input()   enablepopover : boolean;
 
   responseData : any;
 
@@ -108,8 +108,8 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor,Do
       this.triggerChar = 1;
     }
 
-    if(this.httpMethod && this.httpUrl){
-      this.dataService.fetchData(this.httpUrl,this.httpMethod).subscribe(
+    if(this.httpmethod && this.httpurl){
+      this.dataService.fetchData(this.httpurl,this.httpmethod).subscribe(
         response=>{
           this.responseData = response.json();
         },
@@ -162,8 +162,8 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor,Do
   setData(httpResponse : any){
     //Check if key is added?
     let responsedata = httpResponse;
-    if(this.dataReader!= null){
-      let dr = this.dataReader.split(".");
+    if(this.datareader!= null){
+      let dr = this.datareader.split(".");
       for(let ir = 0 ; ir<dr.length; ir++){
         responsedata = responsedata[dr[ir]];
       }
@@ -183,8 +183,8 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor,Do
   }
 
   onItemSelect(row : any){
-    this.value = row[this.valueField];
-    this.displayValue = row[this.displayField];
+    this.value = row[this.valuefield];
+    this.displayValue = row[this.displayfield];
     this.showToolTip = false;
   }
 

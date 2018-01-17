@@ -1,14 +1,14 @@
 
 <amexio-row>
   <amexio-column [size]="'45pt'">
-    <amexio-card [enableHeader]="true">
+    <amexio-card [header]="true">
       <amexio-header>Available</amexio-header>
       <amexio-body>
         <div [style.height.px]="height" style="overflow: auto">
           <ul class="dropdown-list">
             <li class="list-items" [ngClass]="data['isSelected'] ? 'list-item-active':''"
                 *ngFor="let data of availableData; let i = index" (click)="itemClick(data,i, true,false)">
-              {{data[displayField]}}
+              {{data[displayfield]}}
             </li>
           </ul>
         </div>
@@ -20,7 +20,7 @@
 
     <div class="item-selector-action-panel">
 
-      <amexio-card [enableHeader]="true">
+      <amexio-card [header]="true">
         <amexio-header>&nbsp;</amexio-header>
         <amexio-body>
           <div class="actionbar">
@@ -52,7 +52,7 @@
   </amexio-column>
 
   <amexio-column [size]="'45pt'">
-    <amexio-card [enableHeader]="true">
+    <amexio-card [header]="true">
       <amexio-header>Selected</amexio-header>
       <amexio-body>
         <div [style.height.px]="height" style="overflow: auto">
@@ -60,7 +60,7 @@
             <li class="list-items"
                 *ngFor="let data of selectedData; let i = index"
                 (click)="itemClick(data,i, false,true)" [ngClass]="data['isSelected'] ? 'list-item-active':''">
-              {{data[displayField]}}
+              {{data[displayfield]}}
             </li>
           </ul>
         </div>

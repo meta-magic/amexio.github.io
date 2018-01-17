@@ -133,15 +133,15 @@ export class TreeMapComponent implements AfterContentInit ,OnInit{
 
   @Input() data: any;
 
-  @Input() minColor:string;
+  @Input() mincolor:string;
 
-  @Input() midColor:string;
+  @Input() midcolor:string;
 
-  @Input() maxColor:string;
+  @Input() maxcolor:string;
 
-  @Input() showScale:boolean;
+  @Input() showscale:boolean;
 
-  @Input() maxPostDepth:number;
+  @Input() maxpostdepth:number;
 
   @ContentChildren(MapTitleComponent) maptleComp:QueryList<MapTitleComponent>;
 
@@ -159,19 +159,19 @@ export class TreeMapComponent implements AfterContentInit ,OnInit{
     this.options = {
       title: this.mapTitleComponent?this.mapTitleComponent.title:null,
       titleTextStyle:this.mapTitleComponent?{
-        color:this.mapTitleComponent.titleColor?this.mapTitleComponent.titleColor:null,
-        fontName:this.mapTitleComponent.titleFontName?this.mapTitleComponent.titleFontName:null,
-        fontSize:this.mapTitleComponent.titleFontSize?this.mapTitleComponent.titleFontSize:null,
-        bold:this.mapTitleComponent.isTitleBold?this.mapTitleComponent.isTitleBold:null,
-        italic:this.mapTitleComponent.isTitleItalic?this.mapTitleComponent.isTitleItalic:null
+        color:this.mapTitleComponent.color?this.mapTitleComponent.color:null,
+        fontName:this.mapTitleComponent.fontname?this.mapTitleComponent.fontname:null,
+        fontsize:this.mapTitleComponent.fontsize?this.mapTitleComponent.fontsize:null,
+        bold:this.mapTitleComponent.bold?this.mapTitleComponent.bold:null,
+        italic:this.mapTitleComponent.italic?this.mapTitleComponent.italic:null
       }:null,
-      minColor: this.minColor?this.minColor:null,
-      midColor: this.midColor?this.midColor:null,
-      maxColor: this.maxColor?this.maxColor:null,
+      mincolor: this.mincolor?this.mincolor:null,
+      midcolor: this.midcolor?this.midcolor:null,
+      maxcolor: this.maxcolor?this.maxcolor:null,
       headerHeight: 15,
-      fontColor: 'black',
-      showScale: this.showScale ?this.showScale :false,
-      maxPostDepth:this.maxPostDepth ?this.maxPostDepth:1
+      fontcolor: 'black',
+      showscale: this.showscale ?this.showscale :false,
+      maxpostdepth:this.maxpostdepth ?this.maxpostdepth:1
     };
     this.chart = new google.visualization.TreeMap(document.getElementById(this.id));
     this.hasLoaded=true;

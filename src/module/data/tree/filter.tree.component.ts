@@ -49,13 +49,13 @@ import {CommonDataService} from "../../services/data/common.data.service";
 export class AmexioFilterTreeComponent implements OnInit, AfterViewInit, DoCheck {
 
   @Input()
-  httpUrl: string;
+  httpurl: string;
 
   @Input()
-  httpMethod: string;
+  httpmethod: string;
 
   @Input()
-  dataReader: string;
+  datareader: string;
 
   @Input()
   data: any;
@@ -148,7 +148,7 @@ export class AmexioFilterTreeComponent implements OnInit, AfterViewInit, DoCheck
       // this.cdf.detectChanges();
     }
 
-    if (this.httpMethod && this.httpUrl) {
+    if (this.httpmethod && this.httpurl) {
       this.callService();
     } else if (this.data) {
       this.previousValue = JSON.parse(JSON.stringify(this.data));
@@ -246,7 +246,7 @@ export class AmexioFilterTreeComponent implements OnInit, AfterViewInit, DoCheck
 
   getData(httpResponse: any){
     let responsedata  : any= httpResponse;
-    let dr = this.dataReader.split('.');
+    let dr = this.datareader.split('.');
     for (let ir = 0 ; ir < dr.length; ir++) {
       responsedata = responsedata[dr[ir]];
     }
@@ -254,7 +254,7 @@ export class AmexioFilterTreeComponent implements OnInit, AfterViewInit, DoCheck
   }
 
   callService(){
-    this.treeViewFilterService.fetchData(this.httpUrl, this.httpMethod).subscribe(
+    this.treeViewFilterService.fetchData(this.httpurl, this.httpmethod).subscribe(
       response => {
         this.data = response.json();
       },

@@ -4,12 +4,12 @@
   <div class="inputgroup">
 
     <label>
-      {{fieldLabel}}
+      {{fieldlabel}}
     </label>
 
     <ng-container *ngIf="datepicker && !timepicker">
       <input type="text"
-             value="{{dateModel|date:dateFormat}}"
+             value="{{dateModel|date:dateformat}}"
              [attr.disabled]="readonly ? true: null"
              (blur)="onBlur()"
              (focus)="onFocus()"
@@ -19,7 +19,7 @@
 
     <ng-container *ngIf="timepicker">
       <input type="text"
-             value="{{dateModel|date:dateFormat}} {{hrs + ' : ' + min}}"
+             value="{{dateModel|date:dateformat}} {{hrs + ' : ' + min}}"
              [attr.disabled]="readonly ? true: null"
              (blur)="onBlur()"
              (focus)="onFocus()"

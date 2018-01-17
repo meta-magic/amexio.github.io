@@ -28,40 +28,40 @@ export const CUSTOM_DROPDOWN_CONTROL_VALUE_ACCESSOR: any = {
 })
 export class AmexioDropDownComponent implements OnInit, DoCheck,ControlValueAccessor{
 
-  @Input()    fieldLabel: string;
+  @Input()    fieldlabel: string;
 
-  @Input()    allowBlank: string;
+  @Input()    allowblank: string;
 
   @Input()    data : any;
 
-  @Input()    dataReader : string;
+  @Input()    datareader : string;
 
-  @Input()    httpMethod : string;
+  @Input()    httpmethod : string;
 
-  @Input()    httpUrl : string;
+  @Input()    httpurl : string;
 
-  @Input()    displayField : string;
+  @Input()    displayfield : string;
 
-  @Input()    valueField : string;
+  @Input()    valuefield : string;
 
-  @Input()    searchBox : boolean;
+  @Input()    search : boolean;
 
-  @Input()    multiSelect : boolean;
+  @Input()    multiselect : boolean;
 
   helpInfoMsg: string;
 
   displayValue : any;
 
-  _errorMsg : string;
+  _errormsg : string;
 
   filteredOptions : any[] = [];
 
-  get errorMsg(): string {
-    return this._errorMsg;
+  get errormsg(): string {
+    return this._errormsg;
   }
 
-  @Input('errorMsg')
-  set errorMsg(value: string) {
+  @Input('errormsg')
+  set errormsg(value: string) {
     this.helpInfoMsg = value + '<br/>';
   }
 
@@ -83,17 +83,17 @@ export class AmexioDropDownComponent implements OnInit, DoCheck,ControlValueAcce
 
   @Input()   disabled: boolean;
 
-  @Input()   iconFeedBack: boolean;
+  @Input()   iconfeedback: boolean;
 
-  @Input()   fontStyle: string;
+  @Input()   fontstyle: string;
 
-  @Input()   fontFamily: string;
+  @Input()   fontfamily: string;
 
-  @Input()   fontSize: string;
+  @Input()   fontsize: string;
 
-  @Input()   hasLabel: boolean = true;
+  @Input()   haslabel: boolean = true;
 
-  @Input()   enablePopOver : boolean;
+  @Input()   enablepopover : boolean;
 
 
 
@@ -118,7 +118,7 @@ export class AmexioDropDownComponent implements OnInit, DoCheck,ControlValueAcce
 
   viewData : any;
 
-  multiSelectValues : any[] = [];
+  multiselectValues : any[] = [];
 
   constructor(public dataService : CommonDataService,public element: ElementRef,public renderer: Renderer2){}
 
@@ -126,8 +126,8 @@ export class AmexioDropDownComponent implements OnInit, DoCheck,ControlValueAcce
     if(this.placeholder == '' || this.placeholder == null)
       this.placeholder = 'Choose Option';
 
-    if(this.httpMethod && this.httpUrl){
-      this.dataService.fetchData(this.httpUrl,this.httpMethod).subscribe(
+    if(this.httpmethod && this.httpurl){
+      this.dataService.fetchData(this.httpurl,this.httpmethod).subscribe(
         response=>{
           this.responseData = response.json();
         },
@@ -148,9 +148,9 @@ export class AmexioDropDownComponent implements OnInit, DoCheck,ControlValueAcce
   setData(httpResponse : any){
     //Check if key is added?
     let responsedata = httpResponse;
-    if(this.dataReader!= null){
-      this.multiSelectValues = [];
-      let dr = this.dataReader.split(".");
+    if(this.datareader!= null){
+      this.multiselectValues = [];
+      let dr = this.datareader.split(".");
       for(let ir = 0 ; ir<dr.length; ir++){
         responsedata = responsedata[dr[ir]];
       }
@@ -158,28 +158,28 @@ export class AmexioDropDownComponent implements OnInit, DoCheck,ControlValueAcce
     else{
       responsedata = httpResponse;
     }
-    this.viewData = responsedata.sort((a : any, b : any) => a[this.displayField].toLowerCase() !== b[this.displayField].toLowerCase() ? a[this.displayField].toLowerCase() < b[this.displayField].toLowerCase() ? -1 : 1 : 0);
+    this.viewData = responsedata.sort((a : any, b : any) => a[this.displayfield].toLowerCase() !== b[this.displayfield].toLowerCase() ? a[this.displayfield].toLowerCase() < b[this.displayfield].toLowerCase() ? -1 : 1 : 0);
     this.filteredOptions = this.viewData;
 
-    if(this.multiSelect){
+    if(this.multiselect){
       let preSelectedMultiValues : string = '';
       let optionsChecked  : any [] = [];
       this.viewData.forEach( (row : any)=>{
         if(row.hasOwnProperty('checked') && row.checked){
-          optionsChecked.push(row[this.valueField]);
-          this.multiSelectValues.push(row);
-          preSelectedMultiValues == '' ? preSelectedMultiValues += row[this.displayField] : preSelectedMultiValues += ','+row[this.displayField];
+          optionsChecked.push(row[this.valuefield]);
+          this.multiselectValues.push(row);
+          preSelectedMultiValues == '' ? preSelectedMultiValues += row[this.displayfield] : preSelectedMultiValues += ','+row[this.displayfield];
         }
       });
       this.value = optionsChecked;
       this.displayValue = preSelectedMultiValues;
-      this.onMultiSelect.emit(this.multiSelectValues);
+      this.onMultiSelect.emit(this.multiselectValues);
     }
 
     //Set user selection
     if(this.value != null){
-      let valueKey = this.valueField;
-      let displayKey = this.displayField;
+      let valueKey = this.valuefield;
+      let displayKey = this.displayfield;
       let val = this.value;
 
       this.viewData.forEach((item : any)=>{
@@ -198,38 +198,38 @@ export class AmexioDropDownComponent implements OnInit, DoCheck,ControlValueAcce
   }
 
   onItemSelect(row : any){
-    if(this.multiSelect){
+    if(this.multiselect){
       let optionsChecked  : any [] = [];
-      this.multiSelectValues = [];
+      this.multiselectValues = [];
       if(row.hasOwnProperty('checked')){
         row.checked = !row.checked;
         this.filteredOptions.forEach( (row : any)=>{
           if(row.checked){
-            optionsChecked.push(row[this.valueField]);
-            this.multiSelectValues.push(row);
+            optionsChecked.push(row[this.valuefield]);
+            this.multiselectValues.push(row);
           }
         });
         this.value = optionsChecked;
-        this.onMultiSelect.emit(this.multiSelectValues);
+        this.onMultiSelect.emit(this.multiselectValues);
       }
     }
     else {
-      this.value = row[this.valueField];  //Issue here?
-      this.displayValue = row[this.displayField];
+      this.value = row[this.valuefield];  //Issue here?
+      this.displayValue = row[this.displayfield];
 
-      this.multiSelect ? this.showToolTip= true : this.showToolTip = false;
+      this.multiselect ? this.showToolTip= true : this.showToolTip = false;
       this.onSingleSelect.emit(this.value);
     }
   }
 
   getDisplayText(): string{
-    if(this.multiSelect){
-      let multiSelectDisplayString : any = '';
-      this.multiSelectValues.forEach( (row : any)=>{
-        multiSelectDisplayString== '' ? multiSelectDisplayString += row[this.displayField] : multiSelectDisplayString += ','+row[this.displayField];
+    if(this.multiselect){
+      let multiselectDisplayString : any = '';
+      this.multiselectValues.forEach( (row : any)=>{
+        multiselectDisplayString== '' ? multiselectDisplayString += row[this.displayfield] : multiselectDisplayString += ','+row[this.displayfield];
       });
-      if(this.multiSelectValues.length > 0)
-        return multiSelectDisplayString;
+      if(this.multiselectValues.length > 0)
+        return multiselectDisplayString;
       else
         return 'Choose Options';
     }
@@ -251,14 +251,14 @@ export class AmexioDropDownComponent implements OnInit, DoCheck,ControlValueAcce
 
   onDropDownSearchKeyUp(event : any){
 
-    if(this.searchBox)
+    if(this.search)
     {
       let keyword = event.target.value;
       if(keyword != null && keyword != '' && keyword!= ' '){
         this.filteredOptions = [];
         let search_Term = keyword.toLowerCase();
         this.viewData.forEach( (row : any)=>{
-          if(row[this.displayField].toLowerCase().startsWith(search_Term)){
+          if(row[this.displayfield].toLowerCase().startsWith(search_Term)){
             this.filteredOptions.push(row);
           }
         });

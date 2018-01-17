@@ -1,8 +1,8 @@
 
 <div class="inputgroup ">
 
-  <label [style.font-style]="fontStyle" [style.font-family]="fontFamily" [style.font-size]="fontSize">
-    {{fieldLabel}}
+  <label [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
+    {{fieldlabel}}
   </label>
 
   <input type="text" class="input-control"
@@ -17,17 +17,17 @@
          [pattern]="regEx"
          #ref
          [attr.placeholder]="placeholder"
-         [attr.maxLength]="maxLength"
-         [attr.minLength]="minLength"
+         [attr.maxlength]="maxlength"
+         [attr.minlength]="minlength"
          [attr.disabled] = "disabled ? true: null"
-         [attr.required]="!allowBlank"/>
+         [attr.required]="!allowblank"/>
 
-  <span *ngIf="iconFeedBack && (inp.invalid && (inp.dirty || inp.touched) || inp.valid)" class="input-control-feedback">
+  <span *ngIf="iconfeedback && (inp.invalid && (inp.dirty || inp.touched) || inp.valid)" class="input-control-feedback">
         <span *ngIf="!isValid && inp.touched"><i class="fa fa-times"></i></span>
         <span *ngIf="isValid && inp.touched"><i class="fa fa-check"></i></span>
 
   </span>
-  <span *ngIf="showToolTip && enablePopOver" class="tooltiptext">
+  <span *ngIf="showToolTip && enablepopover" class="tooltiptext">
         <div  [innerHTML]="helpInfoMsg"></div>
   </span>
 

@@ -15,23 +15,23 @@ export class AmexioCheckBoxGroupComponent{
 
   @Input() horizontal : boolean;
 
-  @Input() enableBoxStyle = false;
+  @Input() boxstyle = false;
 
-  @Input() fieldLabel : string;
+  @Input() fieldlabel : string;
 
-  @Input() fieldName : string;
+  @Input() fieldname : string;
 
-  @Input() dataReader : string;
+  @Input() datareader : string;
 
-  @Input() httpMethod : string;
+  @Input() httpmethod : string;
 
-  @Input() httpUrl : string;
+  @Input() httpurl : string;
 
-  @Input() displayField : string;
+  @Input() displayfield : string;
 
-  @Input() valueField : string;
+  @Input() valuefield : string;
 
-  @Input()  searchBox : boolean;
+  @Input()  search : boolean;
 
   @Input()  data : any;
 
@@ -58,8 +58,8 @@ export class AmexioCheckBoxGroupComponent{
   }
 
   ngOnInit() {
-    if (this.httpMethod && this.httpUrl) {
-      this.amxHttp.fetchData(this.httpUrl, this.httpMethod).subscribe(
+    if (this.httpmethod && this.httpurl) {
+      this.amxHttp.fetchData(this.httpurl, this.httpmethod).subscribe(
         response => {
           this.responseData = response.json();
         },
@@ -99,7 +99,7 @@ export class AmexioCheckBoxGroupComponent{
 
   getResponseData(httpResponse: any) {
     let responsedata = httpResponse;
-    let dr = this.dataReader.split('.');
+    let dr = this.datareader.split('.');
     for (let ir = 0 ; ir < dr.length; ir++){
       responsedata = responsedata[dr[ir]];
     }
@@ -110,7 +110,7 @@ export class AmexioCheckBoxGroupComponent{
     if (this.textValue.length > 0){
       this.viewData = [];
       for (let vd = 0 ; vd < this.responseData.length; vd++){
-        let displayData = this.responseData[vd][this.displayField];
+        let displayData = this.responseData[vd][this.displayfield];
         if (displayData.toLowerCase().startsWith(this.textValue)){
           this.viewData.push(this.responseData[vd]);
         }
@@ -123,9 +123,9 @@ export class AmexioCheckBoxGroupComponent{
 
   setSelectedCheckBox(rowData: any, event: any){
 
-    rowData[this.valueField] = !rowData[this.valueField];
+    rowData[this.valuefield] = !rowData[this.valuefield];
 
-    if (rowData[this.valueField]){
+    if (rowData[this.valuefield]){
       this.selectedCheckBox.push(rowData);
     } else {
       let indexOf = this.selectedCheckBox.indexOf(rowData);

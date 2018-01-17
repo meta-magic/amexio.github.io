@@ -26,19 +26,19 @@ export class AmexioGridColumnComponent {
   text: string;
 
   @Input()
-  dataIndex: string;
+  dataindex: string;
 
   @Input()
   hidden: boolean = false;
 
   @Input()
-  dataType: string;
+  datatype: string;
 
   @Input()
-  summaryType: string;
+  summarytype: string;
 
   @Input()
-  summaryCaption: string;
+  summarycaption: string;
 
   @Input()
   width: string;

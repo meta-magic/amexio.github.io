@@ -23,13 +23,13 @@ export class AmexioListBoxComponent implements OnInit, AfterViewInit{
 
   @Input() data: any;
 
-  @Input() httpUrl: string;
+  @Input() httpurl: string;
 
-  @Input() dataReader: string;
+  @Input() datareader: string;
 
-  @Input() httpMethod: string;
+  @Input() httpmethod: string;
 
-  @Input() displayField: string;
+  @Input() displayfield: string;
 
   @Input() height: any;
 
@@ -62,8 +62,8 @@ export class AmexioListBoxComponent implements OnInit, AfterViewInit{
   }
 
   ngOnInit() {
-    if (this.httpMethod && this.httpUrl) {
-      this.dataService.fetchData(this.httpUrl, this.httpMethod).subscribe(response => {
+    if (this.httpmethod && this.httpurl) {
+      this.dataService.fetchData(this.httpurl, this.httpmethod).subscribe(response => {
         this.response = response.json();
       }, error => {
       }, () => {
@@ -84,7 +84,7 @@ export class AmexioListBoxComponent implements OnInit, AfterViewInit{
 
   setData(httpResponse : any){
     let responsedata = httpResponse;
-    let dr = this.dataReader.split(".");
+    let dr = this.datareader.split(".");
     for(let ir = 0 ; ir<dr.length; ir++){
       responsedata = responsedata[dr[ir]];
     }
@@ -108,7 +108,7 @@ export class AmexioListBoxComponent implements OnInit, AfterViewInit{
   }
 
   searchTree(data: any[], matchingTitle: string) {
-    let disp = this.displayField;
+    let disp = this.displayfield;
     let res = data.filter(function f(node) {
 
       if (node[disp].toLowerCase().startsWith(matchingTitle.toLowerCase())) {

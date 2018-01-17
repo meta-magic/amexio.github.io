@@ -24,9 +24,9 @@ export const CUSTOM_SLIDER_CONTROL_VALUE_ACCESSOR: any = {
           (blur)="onblur()"
           (focus)="onFocus()"
           (change)="onChange($event)" 
-          [attr.min]="minValue" 
-          [attr.max]="maxValue" 
-          [attr.step]="stepValue"
+          [attr.min]="minvalue" 
+          [attr.max]="maxvalue" 
+          [attr.step]="stepvalue"
           orient="vertical"
           value="15" [ngStyle]="{'background-image' : '-webkit-gradient(linear, left top, right top,color-stop(' + val + ', #94A14E),color-stop(' + val + ', #C5C5C5)'}">
 
@@ -36,13 +36,13 @@ export const CUSTOM_SLIDER_CONTROL_VALUE_ACCESSOR: any = {
 
 export class AmexioSliderComponent implements OnInit, ControlValueAccessor {
 
-  @Input()  minValue  : number;
+  @Input()  minvalue  : number;
 
-  @Input()  maxValue  : number;
+  @Input()  maxvalue  : number;
 
-  @Input()  stepValue : number;
+  @Input()  stepvalue : number;
 
-  @Input()   iconFeedBack: boolean;
+  @Input()   iconfeedback: boolean;
 
   @Output()   onBlur : any = new EventEmitter<any>();
 
@@ -59,7 +59,7 @@ export class AmexioSliderComponent implements OnInit, ControlValueAccessor {
   ngOnInit() { }
 
   onChange(event : any){
-    this.val = (this.value - this.minValue) / (this.maxValue - this.minValue);
+    this.val = (this.value - this.minvalue) / (this.maxvalue - this.minvalue);
   }
 
 

@@ -13,7 +13,7 @@ import {
   template: `      
       
   <div  class="datapoints">
-    <table width="100%"  [style.background-color]="backgroundColor" [style.color]="fontColor">
+    <table width="100%"  [style.background-color]="backgroundcolor" [style.color]="fontcolor">
       <tr *ngIf="north">
         <td [attr.colspan]="colspan">
           <ng-content select="amexio-north"></ng-content>
@@ -60,9 +60,9 @@ export class DataPointsComponent implements OnInit {
 
   @Input() east : boolean;
 
-  @Input() backgroundColor : string;
+  @Input() backgroundcolor : string;
 
-  @Input() fontColor : string;
+  @Input() fontcolor : string;
 
   colspan : number;
 

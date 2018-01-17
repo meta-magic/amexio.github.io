@@ -19,21 +19,21 @@ import {Component, Input, OnInit} from '@angular/core';
 export class ChartLegendComponent implements OnInit {
 
 
-  @Input() legendPosition: string;
+  @Input() position: string;
 
   //start,center,end
-  @Input() legendAlignment: string;
+  @Input() alignment: string;
 
-  @Input() legendColor: string;
+  @Input() color: string;
 
-  @Input() legendFontName: string;
+  @Input() fontname: string;
 
-  @Input() legendFontSize: string;
+  @Input() fontsize: string;
 
-  @Input() isLegendBold: boolean = false;
+  @Input() bold: boolean = false;
 
   //this work only in chart position is top
-  @Input() maxLinesOfLegend: number;
+  @Input() maxlines: number;
 
   constructor() {
   }

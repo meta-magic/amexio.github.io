@@ -28,7 +28,7 @@ describe('amexio-checkbox' , ()=> {
   //Check if correct field label is applied
   it('should display correct label',()=>{
     let labelValue = 'UserName';
-    comp.fieldLabel = labelValue;     // => Set the field label
+    comp.fieldlabel = labelValue;     // => Set the field label
     fixture.detectChanges();        // Fire Change
     expect(el.textContent).toContain(labelValue);  // check ?
   });

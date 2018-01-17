@@ -20,17 +20,17 @@ export class MapTitleComponent implements OnInit {
 
   @Input() title: string;
 
-  @Input() titlePosition: string;
+  @Input() position: string;
 
-  @Input() titleColor:string;
+  @Input() color:string;
 
-  @Input() titleFontName:string;
+  @Input() fontname:string;
 
-  @Input() titleFontSize:number;
+  @Input() fontsize:number;
 
-  @Input() isTitleBold:boolean;
+  @Input() bold:boolean;
 
-  @Input() isTitleItalic:boolean;
+  @Input() italic:boolean;
 
   constructor() {
   }

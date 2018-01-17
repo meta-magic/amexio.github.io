@@ -14,22 +14,22 @@ import {CommonDataService} from "../../services/data/common.data.service";
     <div>
       <div class="title">
         <span> {{title}} </span>
-        <span *ngIf="columnToggle ? true:false" class="float-right"
+        <span *ngIf="enablecolumnfiter ? true:false" class="float-right"
               (click)="showToolTip = !showToolTip ; showGroupByColumn = false"
               style=" cursor: pointer;">
             &nbsp;&nbsp;<span *ngIf="!show">&#9776;</span>
             <span *ngIf="show">&#9747;</span>
           </span>
 
-        <span *ngIf="groupByColumn ? true : false" class="float-right"
+        <span *ngIf="groupby ? true : false" class="float-right"
               (click)="showGroupByColumn = !showGroupByColumn; showToolTip = false"
               style=" cursor: pointer;">
             <span class="fa fa-th-list"></span>
           </span>
       </div>
-      <ng-container *ngIf="filtering ? true : false">
+      <ng-container *ngIf="enabledatafilter ? true : false">
         <div class="datatable datatable-row">
-          <ng-container *ngIf="checkboxSelect">
+          <ng-container *ngIf="enablecheckbox">
             <div class="datatable-col">
               <div class="inputgroup">
                 <div class="input-box">
@@ -40,7 +40,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
             </div>
           </ng-container>
 
-          <ng-container *ngIf="filtering ? true : false">
+          <ng-container *ngIf="enabledatafilter ? true : false">
             <ng-container *ngFor="let cols of columns">
               <ng-container *ngIf="!cols.hidden">
                 <div class="datatable-col">
@@ -56,7 +56,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
       </ng-container>
 
       <div>
-        <ng-container *ngIf="columnToggle ? true : false">
+        <ng-container *ngIf="enablecolumnfiter ? true : false">
           <span *ngIf="showToolTip" class="dropdown dropdown-right" style="width: 250px;">
         <ul class="dropdown-list">
           <li class="list-items" *ngFor="let cols of columns;let i = index;" (click)="showToolTip = !showToolTip">
@@ -69,7 +69,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
       </span>
         </ng-container>
 
-        <ng-container *ngIf="groupByColumn ? true : false">
+        <ng-container *ngIf="groupby ? true : false">
           <span *ngIf="showGroupByColumn" class="dropdown dropdown-right" style="width: 250px;">
         <ul class="dropdown-list">
           <li class="list-items" *ngFor="let cols of columns;let i = index;"
@@ -86,7 +86,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
 
     <div class="datatable">
       <div class="datatable-header">
-        <ng-container *ngIf="checkboxSelect">
+        <ng-container *ngIf="enablecheckbox">
           <div class="datatable-col datatable-checkbox-width">
             <div class="inputgroup">
               <div class="input-box">
@@ -114,13 +114,13 @@ import {CommonDataService} from "../../services/data/common.data.service";
     </div>
 
 
-    <ng-container *ngIf="!groupByColumn">
+    <ng-container *ngIf="!groupby">
       <div class="datatable-height" [style.height.px]="height">
         <div class="datatable">
           <div class="datatable-row" *ngFor="let row of viewRows;let i=index" id="{{'row'+i}}" [ngClass]="rowBgColor"
                (click)="rowClick(row, i,rowData)" #rowData>
 
-            <ng-container *ngIf="checkboxSelect">
+            <ng-container *ngIf="enablecheckbox">
               <div class="datatable-col datatable-checkbox-width">
                 <div class="inputgroup">
                   <div class="input-box">
@@ -134,20 +134,20 @@ import {CommonDataService} from "../../services/data/common.data.service";
 
             <ng-container *ngFor="let cols of columns;let colIndex = index">
               <ng-container *ngIf="!cols.hidden">
-                <ng-container *ngIf="cols.dataType=='number'">
+                <ng-container *ngIf="cols.datatype=='number'">
                   <div class="datatable-col"  [style.width.%]="cols.width"  scope="row" [attr.data-label]="cols.text">
                <span>
-                 {{row[cols.dataIndex]}}
+                 {{row[cols.dataindex]}}
                </span>
                   </div>
                 </ng-container>
-                <ng-container *ngIf="!cols?.bodyTemplate && cols.dataType=='string'">
+                <ng-container *ngIf="!cols?.bodyTemplate && cols.datatype=='string'">
                   <div class="datatable-col" [style.width.%]="cols.width" scope="row" [attr.data-label]="cols.text">
-                    {{row[cols.dataIndex]}}
+                    {{row[cols.dataindex]}}
                   </div>
                 </ng-container>
                 <ng-template *ngIf="cols.bodyTemplate" [ngTemplateOutlet]="cols.bodyTemplate"
-                             [ngTemplateOutletContext]="{ $implicit: { text : row[cols.dataIndex] }, row: row }"></ng-template>
+                             [ngTemplateOutletContext]="{ $implicit: { text : row[cols.dataindex] }, row: row }"></ng-template>
               </ng-container>
             </ng-container>
           </div>
@@ -158,11 +158,11 @@ import {CommonDataService} from "../../services/data/common.data.service";
 
     <!--Group BY datagrid start-->
 
-    <ng-container *ngIf="groupByColumn && !filtering">
+    <ng-container *ngIf="groupby && !enabledatafilter">
       <div class="datatable-height" [style.height.px]="height">
         <div class="datatable">
           <div class="datatable-row" *ngFor="let row of viewRows;let i=index" id="{{'row'+i}}" (click)="rowClick(row, i, rowData)" #rowData>
-            <ng-container *ngIf="checkboxSelect">
+            <ng-container *ngIf="enablecheckbox">
               <div class="datatable-col" style="width: 10%">
                 <div class="inputgroup">
                   <div class="input-box">
@@ -186,7 +186,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
               <ng-container *ngIf="!isGroupChecking(row)">
                 <div class="datatable-col" [style.width.%]="cols.width">
                <span style="padding-left: 20px">
-              {{row[cols.dataIndex]}}
+              {{row[cols.dataindex]}}
                </span>
                 </div>
               </ng-container>
@@ -197,9 +197,9 @@ import {CommonDataService} from "../../services/data/common.data.service";
     </ng-container>
     <!--Group BY datagrid end-->
     <div class="footer">
-      <ng-container *ngIf="pageSize && (data && data.length > pageSize)">
+      <ng-container *ngIf="pagesize && (data && data.length > pagesize)">
         <ng-container *ngIf="totalPages!=null">
-          <amexio-paginator [pages]="totalPages" [rows]="pageSize"
+          <amexio-paginator [pages]="totalPages" [rows]="pagesize"
                               (onPageChange)="loadPageData($event)"></amexio-paginator>
         </ng-container>
       </ng-container>
@@ -211,15 +211,15 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
 
   @Input() title: string;
 
-  @Input() pageSize: number;
+  @Input() pagesize: number;
 
-  @Input() httpUrl: string;
+  @Input() httpurl: string;
 
-  @Input() httpMethod: string;
+  @Input() httpmethod: string;
 
-  @Input() dataReader: string;
+  @Input() datareader: string;
 
-  @Input() checkboxSelect: boolean;
+  @Input() enablecheckbox: boolean;
 
   @Input() data: any[];
 
@@ -231,25 +231,25 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
 
   @Input() height: string;
 
-  @Input() groupByColumn = false;
+  @Input() groupby = false;
 
-  @Input() groupByColumnIndex: string;
+  @Input() groupbydataindex: string;
 
-  @Input() filtering: boolean;
+  @Input() enabledatafilter: boolean;
 
-  @Input() cClass: string;
+  @Input() cclass: string;
 
-  @Input() tableHeadercClass: string;
+  @Input() tableHeadercclass: string;
 
-  @Input() tableTitlecClass: string;
+  @Input() tableTitlecclass: string;
 
-  @Input() tableDatacClass: string;
+  @Input() tableDatacclass: string;
 
-  @Input() tableRowSelectedColor: string;
+  @Input() selectedrowcolor: string;
 
-  @Input() columnDefinition: any;
+  @Input() columndefintion: any;
 
-  @Input()  columnToggle: boolean;
+  @Input()  enablecolumnfiter: boolean;
 
   columns: any[] = [];
 
@@ -297,7 +297,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
 
   /*group by column attribute*/
 
-  iconClassKey: string;
+  iconclassKey: string;
 
   isExpanded = false;
 
@@ -313,13 +313,13 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
   ngOnInit() {
 
     this.isExpanded = true;
-    this.iconClassKey = 'fa fa-plus';
+    this.iconclassKey = 'fa fa-plus';
 
-    if (this.tableRowSelectedColor == null || this.tableRowSelectedColor == '') {
-      this.tableRowSelectedColor = '#dcecf7';
+    if (this.selectedrowcolor == null || this.selectedrowcolor == '') {
+      this.selectedrowcolor = '#dcecf7';
     }
-    if (this.httpMethod && this.httpUrl){
-      this.dataTableService.fetchData(this.httpUrl, this.httpMethod).subscribe(
+    if (this.httpmethod && this.httpurl){
+      this.dataTableService.fetchData(this.httpurl, this.httpmethod).subscribe(
         response => {
           this.responseData = response.json();
         },
@@ -333,9 +333,9 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
       this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
     }
-    if (this.columnDefinition && this.columnDefinition.length > 0 ) {
-      this.columnPreviewData = JSON.parse(JSON.stringify(this.columnDefinition));
-      this.columns = this.columnDefinition;
+    if (this.columndefintion && this.columndefintion.length > 0 ) {
+      this.columnPreviewData = JSON.parse(JSON.stringify(this.columndefintion));
+      this.columns = this.columndefintion;
     }
   }
 
@@ -344,15 +344,15 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
       this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
     }
-    if (this.columnPreviewData != null && JSON.stringify(this.columnPreviewData) != JSON.stringify(this.columnDefinition)) {
-      this.columnPreviewData = JSON.parse(JSON.stringify(this.columnDefinition));
-      this.columns = this.columnDefinition;
+    if (this.columnPreviewData != null && JSON.stringify(this.columnPreviewData) != JSON.stringify(this.columndefintion)) {
+      this.columnPreviewData = JSON.parse(JSON.stringify(this.columndefintion));
+      this.columns = this.columndefintion;
     }
   }
 
   ngAfterContentInit() {
-    if (this.columnDefinition && this.columnDefinition.length > 0) {
-      this.columns = this.columnDefinition;
+    if (this.columndefintion && this.columndefintion.length > 0) {
+      this.columns = this.columndefintion;
     } else {
       this.createConfig();
     }
@@ -367,9 +367,9 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
       if (columnConfig.headerTemplate != null && columnConfig.bodyTemplate != null) {
         columnData = {
           text: columnConfig.text,
-          dataIndex: columnConfig.dataIndex,
+          dataindex: columnConfig.dataindex,
           hidden: columnConfig.hidden,
-          dataType: columnConfig.dataType,
+          datatype: columnConfig.datatype,
           headerTemplate: columnConfig.headerTemplate,
           width: columnConfig.width,
           bodyTemplate: columnConfig.bodyTemplate
@@ -377,36 +377,36 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
       } else if (columnConfig.headerTemplate != null && columnConfig.bodyTemplate == null) {
         columnData = {
           text: columnConfig.text,
-          dataIndex: columnConfig.dataIndex,
+          dataindex: columnConfig.dataindex,
           hidden: columnConfig.hidden,
-          dataType: columnConfig.dataType,
+          datatype: columnConfig.datatype,
           width: columnConfig.width,
           headerTemplate: columnConfig.headerTemplate
         };
       } else if (columnConfig.bodyTemplate != null && columnConfig.headerTemplate == null) {
         columnData = {
           text: columnConfig.text,
-          dataIndex: columnConfig.dataIndex,
+          dataindex: columnConfig.dataindex,
           hidden: columnConfig.hidden,
-          dataType: columnConfig.dataType,
+          datatype: columnConfig.datatype,
           width: columnConfig.width,
           bodyTemplate: columnConfig.bodyTemplate
         };
       } else if (columnConfig.bodyTemplate == null && columnConfig.headerTemplate == null) {
         columnData = {
           text: columnConfig.text,
-          dataIndex: columnConfig.dataIndex,
+          dataindex: columnConfig.dataindex,
           hidden: columnConfig.hidden,
           width: columnConfig.width,
-          dataType: columnConfig.dataType
+          datatype: columnConfig.datatype
         };
       }
-      if (columnConfig.summaryType) {
-        columnData['summaryType'] = columnConfig.summaryType;
+      if (columnConfig.summarytype) {
+        columnData['summarytype'] = columnConfig.summarytype;
       }
 
-      if (columnConfig.summaryCaption) {
-        columnData['summaryCaption'] = columnConfig.summaryCaption;
+      if (columnConfig.summarycaption) {
+        columnData['summarycaption'] = columnConfig.summarycaption;
       }
 
       this.columns.push(columnData);
@@ -417,14 +417,14 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
     this.viewRows = this.getResponseData(httpResponse);
     this.setSelectedFlag(this.viewRows);
     this.data = this.viewRows;
-    if (this.groupByColumn) {
+    if (this.groupby) {
       this.cloneData = JSON.parse(JSON.stringify(this.data));
     }
-    if (this.filtering) {
+    if (this.enabledatafilter) {
       this.filterCloneData = JSON.parse(JSON.stringify(this.data));
     }
     this.renderData();
-    if (this.groupByColumn) {
+    if (this.groupby) {
       this.setColumnData();
     }
     this.totalPages = this.pageNumbers.length;
@@ -440,7 +440,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
   }
 
   setGroupByColumn(col: any) {
-    this.groupByColumnIndex = col.dataIndex;
+    this.groupbydataindex = col.dataindex;
     this.selectAll = false;
     this.setColumnData();
   }
@@ -449,7 +449,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
     this.data = this.cloneData;
     const groups = {};
     this.data.forEach((option) => {
-      const groupName = option[this.groupByColumnIndex];
+      const groupName = option[this.groupbydataindex];
       if (!groups[groupName]) {
         groups[groupName] = [];
       }
@@ -469,10 +469,10 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
      let arrayIndex;
      this.columns.forEach((columnOption)=> {
      if(columnOption.aggregate==true) {
-     k = columnOption.dataIndex;
+     k = columnOption.dataindex;
      aggregateValue =0;
      groupdata.groupData.forEach((childData, index) => {
-     aggregateValue = +(aggregateValue + Number(childData[columnOption.dataIndex]));
+     aggregateValue = +(aggregateValue + Number(childData[columnOption.dataindex]));
      arrayIndex = index;
 
      });
@@ -493,9 +493,9 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
     if (this.data) {
       this.maxPage = 0;
       this.pageNumbers = [];
-      if (this.data.length > (1 * this.pageSize)) {
-        this.maxPage = Math.floor((this.data.length / this.pageSize));
-        if ((this.data.length % this.pageSize) > 0) {
+      if (this.data.length > (1 * this.pagesize)) {
+        this.maxPage = Math.floor((this.data.length / this.pagesize));
+        if ((this.data.length % this.pagesize) > 0) {
           this.maxPage++;
         }
       }
@@ -503,14 +503,14 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
         this.pageNumbers.push(pageNo);
       }
     }
-    if (this.pageSize >= 1) {
+    if (this.pagesize >= 1) {
       const rowsTemp = this.data;
       const newRows = [];
       let startIndex = 0;
-      let endIndex = this.pageSize;
+      let endIndex = this.pagesize;
       if (this.currentPage > 1) {
-        startIndex = (this.currentPage - 1) * this.pageSize;
-        endIndex = startIndex + this.pageSize;
+        startIndex = (this.currentPage - 1) * this.pagesize;
+        endIndex = startIndex + this.pagesize;
       }
       while (startIndex <= endIndex - 1) {
         if (rowsTemp[startIndex]) {
@@ -528,8 +528,8 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
 
   getResponseData(httpResponse: any){
     let responsedata = httpResponse;
-    if (this.dataReader != null){
-      const dr = this.dataReader.split('.');
+    if (this.datareader != null){
+      const dr = this.datareader.split('.');
       for (let ir = 0 ; ir < dr.length; ir++){
         responsedata = responsedata[dr[ir]];
       }
@@ -553,7 +553,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
     }
     this.emitSelectedRows();
 
-    if (this.groupByColumn) {
+    if (this.groupby) {
       if (!this.selectAll) {
         this.viewRows.forEach((row) => {
           row.isSelected = false;
@@ -605,7 +605,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
           status = false;
         }
       });
-      if (this.data.length > (1 * this.pageSize)) {
+      if (this.data.length > (1 * this.pagesize)) {
         this.pagingRegenration();
         this.renderData();
       } else {
@@ -687,8 +687,8 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
   }
 
   pagingRegenration() {
-    this.maxPage = Math.floor((this.data.length / this.pageSize));
-    if ((this.data.length % this.pageSize) > 0) {
+    this.maxPage = Math.floor((this.data.length / this.pagesize));
+    if ((this.data.length % this.pagesize) > 0) {
       this.maxPage++;
     }
     for (let pageNo = 1; pageNo <= this.maxPage; pageNo++) {
@@ -756,12 +756,12 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
     if (this.sortColumn) {
       let sortColDataIndex: any;
       const sortOrder = this.sortBy;
-      if (this.sortColumn.dataIndex && this.sortColumn.dataType) {
-        const dataIndex = this.sortColumn.dataIndex;
-        sortColDataIndex = dataIndex;
-        if (this.sortColumn.dataType === 'string') {
+      if (this.sortColumn.dataindex && this.sortColumn.datatype) {
+        const dataindex = this.sortColumn.dataindex;
+        sortColDataIndex = dataindex;
+        if (this.sortColumn.datatype === 'string') {
 
-          if (this.groupByColumn) {
+          if (this.groupby) {
             this.data.sort(function (a, b) {
               const x = a.group.toLowerCase();
               const y = b.group.toLowerCase();
@@ -807,8 +807,8 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
               return 0;
             });
           }
-        } else if (this.sortColumn.dataType === 'number') {
-          if (this.groupByColumn) {
+        } else if (this.sortColumn.datatype === 'number') {
+          if (this.groupby) {
             this.data.sort(function (a, b) {
               const x = a.group;
               const y = b.group;
@@ -844,11 +844,11 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
     const panel = btn.nextElementSibling;
     // let icon = btn.children[0].children[0];
 
-    if (this.iconClassKey == 'fa fa-plus'){
-      this.iconClassKey = 'fa fa-minus';
+    if (this.iconclassKey == 'fa fa-plus'){
+      this.iconclassKey = 'fa fa-minus';
     }
-    else if (this.iconClassKey == 'fa fa-minus'){
-      this.iconClassKey = 'fa fa-plus';
+    else if (this.iconclassKey == 'fa fa-minus'){
+      this.iconclassKey = 'fa fa-plus';
     }
 
     if (panel.style.maxHeight){
@@ -905,7 +905,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
   }
 
   selectParent(row: any) {
-    if (this.groupByColumn) {
+    if (this.groupby) {
       row.isSelected = !row.isSelected;
       row.groupData.forEach((node: any) => {
         node.isSelected = !node.isSelected;

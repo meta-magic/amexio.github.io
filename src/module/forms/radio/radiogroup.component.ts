@@ -13,21 +13,21 @@ import {CommonDataService} from "../../services/data/common.data.service";
 })
 export class AmexioRadioGroupComponent {
 
-  @Input()    allowBlank : boolean;
+  @Input()    allowblank : boolean;
 
   @Input()    name : boolean;
 
-  @Input()    fieldLabel : string;
+  @Input()    fieldlabel : string;
 
-  @Input()    dataReader : string;
+  @Input()    datareader : string;
 
-  @Input()    httpMethod : string;
+  @Input()    httpmethod : string;
 
-  @Input()    httpUrl : string;
+  @Input()    httpurl : string;
 
-  @Input()    displayField : string;
+  @Input()    displayfield : string;
 
-  @Input()    valueField : string;
+  @Input()    valuefield : string;
 
   @Input()    horizontal: boolean;
 
@@ -43,8 +43,8 @@ export class AmexioRadioGroupComponent {
   }
 
   ngOnInit() {
-    if(this.httpMethod && this.httpUrl){
-      this.amxHttp.fetchData(this.httpUrl,this.httpMethod).subscribe(
+    if(this.httpmethod && this.httpurl){
+      this.amxHttp.fetchData(this.httpurl,this.httpmethod).subscribe(
         response=>{
           this.responseData = response.json();
         },
@@ -61,8 +61,8 @@ export class AmexioRadioGroupComponent {
 
   getResponseData(httpResponse : any){
     let responsedata = httpResponse;
-    if(this.dataReader != null){
-      let dr = this.dataReader.split(".");
+    if(this.datareader != null){
+      let dr = this.datareader.split(".");
       if(dr!=null){
         for(let ir = 0 ; ir<dr.length; ir++){
           responsedata = responsedata[dr[ir]];

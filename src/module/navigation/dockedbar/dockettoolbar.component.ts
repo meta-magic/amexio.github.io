@@ -26,13 +26,13 @@ import {DockbarComponent} from "./dockbaritem";
         <button [ngClass]="{'active':dockbar.active}" (click)="onClick(dockbar)">
 
           <!--Normal image-->
-          <ng-container *ngIf="dockbar.imagePath">
-            <img [src]="dockbar.imagePath">
+          <ng-container *ngIf="dockbar.path">
+            <img [src]="dockbar.path">
           </ng-container>
 
           <!--this is for fontawesome-->
-          <ng-container *ngIf="(!(dockbar.icon && dockbar.mdbClass) && dockbar.icon)">
-            <amexio-image [imageClass]="dockbar.icon" [cClass]=""></amexio-image>
+          <ng-container *ngIf="(!(dockbar.icon && dockbar.mdb) && dockbar.icon)">
+            <amexio-image [iconclass]="dockbar.icon" [cclass]=""></amexio-image>
           </ng-container>
           
           <!--if dockbar have label instead of icon -->

@@ -38,7 +38,7 @@ export class AmexioToggleComponent implements OnInit, ControlValueAccessor{
 
   @Input()    shape : string;
 
-  @Input()    fieldLabel : string;
+  @Input()    fieldlabel : string;
 
   @Output()   onChange  : EventEmitter<any> = new EventEmitter<any>();
 

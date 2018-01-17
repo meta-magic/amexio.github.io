@@ -9,8 +9,8 @@ import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angula
    <div class="input-group">
      <label>Choose File</label>
      <input type="file" class="input-control"
-            [attr.accept]="fileType" (change)="uploadFile($event)"
-            [attr.multiple]="multipleFile" #inp>
+            [attr.accept]="filetype" (change)="uploadFile($event)"
+            [attr.multiple]="multiplefile" #inp>
    </div>
    <ng-container *ngIf="droppable">
      <h5>Drag and DropFiles below</h5>
@@ -25,19 +25,19 @@ import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angula
 
 export class AmexioFileUploadComponent implements OnInit {
 
-  @Input() fieldLabel: string;
+  @Input() fieldlabel: string;
 
-  @Input() httpUrl: string;
+  @Input() httpurl: string;
 
-  @Input() httpMethod: string;
+  @Input() httpmethod: string;
 
-  @Input() fileType: string;
+  @Input() filetype: string;
 
-  @Input() multipleFile: string;
+  @Input() multiplefile: string;
 
-  @Input() popoverPlacement: string;
+  @Input() popoverposition: string;
 
-  @Input() requestParamName :string;
+  @Input() paramname :string;
 
   @Input() droppable : boolean;
 
@@ -95,12 +95,12 @@ export class AmexioFileUploadComponent implements OnInit {
     let formData = new FormData();
     if(fileList){
       for (let i = 0; i < fileList.length; i++) {
-        if(!this.requestParamName){
-          this.requestParamName="file";
+        if(!this.paramname){
+          this.paramname="file";
         }
-        formData.append(this.requestParamName, fileList[i]);
+        formData.append(this.paramname, fileList[i]);
       }
-      // this.commonHttpService.uploadFile(this, this.httpUrl, this.httpMethod, formData);
+      // this.commonHttpService.uploadFile(this, this.httpurl, this.httpmethod, formData);
       if (fileList.length == 1) {
         this.uploadedFileName = fileList[0].name;
       } else if (fileList.length > 1) {

@@ -200,8 +200,8 @@ export class TimeLineChartComponent implements AfterContentInit,OnInit {
     //remove first object of array
     dupArray.shift();
 
-    labelObject.forEach((dataTypeObject : any) => {
-      data.addColumn(dataTypeObject.dataType, dataTypeObject.label);
+    labelObject.forEach((datatypeObject : any) => {
+      data.addColumn(datatypeObject.datatype, datatypeObject.label);
     });
     let finalArray: any[] = [];
     dupArray.forEach((rowObject : any) => {
