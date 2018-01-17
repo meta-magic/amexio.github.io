@@ -12,7 +12,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
   selector: 'amexio-datagrid',
   template: `
     <div>
-      <div class="datatabletitle">
+      <div class="title">
         <span> {{title}} </span>
         <span *ngIf="columnToggle ? true:false" class="float-right"
               (click)="showToolTip = !showToolTip ; showGroupByColumn = false"
@@ -81,15 +81,13 @@ import {CommonDataService} from "../../services/data/common.data.service";
          </ul>
       </span>
         </ng-container>
-
-
       </div>
     </div>
 
     <div class="datatable">
       <div class="datatable-header">
         <ng-container *ngIf="checkboxSelect">
-          <div class="datatable-col">
+          <div class="datatable-col datatable-checkbox-width">
             <div class="inputgroup">
               <div class="input-box">
                 <div *ngIf="!selectAll" (click)="selectAllRecord()" class="checkbox default"></div>
@@ -101,7 +99,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
 
         <ng-container *ngFor="let cols of columns">
           <ng-container *ngIf="!cols.hidden">
-            <div class="datatable-col" (click)="sortOnColHeaderClick(cols, $event)">
+            <div class="datatable-col" [style.width.%]="cols.width" (click)="sortOnColHeaderClick(cols, $event)">
               {{cols.text}} &nbsp;
               <ng-container *ngIf="this.sortBy==1 && cols.isColumnSort">
                 &nbsp; <i class="fa fa-arrow-up"></i>
@@ -123,7 +121,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
                (click)="rowClick(row, i,rowData)" #rowData>
 
             <ng-container *ngIf="checkboxSelect">
-              <div class="datatable-col">
+              <div class="datatable-col datatable-checkbox-width">
                 <div class="inputgroup">
                   <div class="input-box">
                     <div (click)="setSelectedRow(row, check)" [class]="setCheckBoxSelectClass(check)" #check>
@@ -137,14 +135,14 @@ import {CommonDataService} from "../../services/data/common.data.service";
             <ng-container *ngFor="let cols of columns;let colIndex = index">
               <ng-container *ngIf="!cols.hidden">
                 <ng-container *ngIf="cols.dataType=='number'">
-                  <div class="datatable-col" scope="row" [attr.data-label]="cols.text">
+                  <div class="datatable-col"  [style.width.%]="cols.width"  scope="row" [attr.data-label]="cols.text">
                <span>
                  {{row[cols.dataIndex]}}
                </span>
                   </div>
                 </ng-container>
                 <ng-container *ngIf="!cols?.bodyTemplate && cols.dataType=='string'">
-                  <div class="datatable-col" scope="row" [attr.data-label]="cols.text">
+                  <div class="datatable-col" [style.width.%]="cols.width" scope="row" [attr.data-label]="cols.text">
                     {{row[cols.dataIndex]}}
                   </div>
                 </ng-container>
@@ -165,7 +163,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
         <div class="datatable">
           <div class="datatable-row" *ngFor="let row of viewRows;let i=index" id="{{'row'+i}}" (click)="rowClick(row, i, rowData)" #rowData>
             <ng-container *ngIf="checkboxSelect">
-              <div class="datatable-col">
+              <div class="datatable-col" style="width: 10%">
                 <div class="inputgroup">
                   <div class="input-box">
                     <div (click)="selectParent(row)" [class]="row.isSelected ?'checkbox active':'checkbox default'">
@@ -177,7 +175,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
             </ng-container>
             <ng-container *ngFor="let cols of columns;let colIndex = index">
               <ng-container *ngIf="isGroupChecking(row)">
-                <div class="datatable-col" >
+                <div class="datatable-col" style="width: 90%" >
                   <ng-container *ngIf="colIndex == 0">
                     <i *ngIf="!row.expanded" class="fa fa-caret-right" aria-hidden="true" (click)="toogle(row,i)"></i>
                     <i *ngIf="row.expanded" class="fa fa-caret-down" aria-hidden="true" (click)="toogle(row,i)"></i>
@@ -186,7 +184,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
                 </div>
               </ng-container>
               <ng-container *ngIf="!isGroupChecking(row)">
-                <div class="datatable-col">
+                <div class="datatable-col" [style.width.%]="cols.width">
                <span style="padding-left: 20px">
               {{row[cols.dataIndex]}}
                </span>
@@ -198,15 +196,13 @@ import {CommonDataService} from "../../services/data/common.data.service";
       </div>
     </ng-container>
     <!--Group BY datagrid end-->
-    <div>
-      <div class="footer">
-        <ng-container *ngIf="pageSize && (data && data.length > pageSize)">
-          <ng-container *ngIf="totalPages!=null">
-            <amexio-paginator [pages]="totalPages" [rows]="pageSize"
-                                (onPageChange)="loadPageData($event)"></amexio-paginator>
-          </ng-container>
+    <div class="footer">
+      <ng-container *ngIf="pageSize && (data && data.length > pageSize)">
+        <ng-container *ngIf="totalPages!=null">
+          <amexio-paginator [pages]="totalPages" [rows]="pageSize"
+                              (onPageChange)="loadPageData($event)"></amexio-paginator>
         </ng-container>
-      </div>
+      </ng-container>
     </div>
   `
 })
@@ -379,6 +375,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
           hidden: columnConfig.hidden,
           dataType: columnConfig.dataType,
           headerTemplate: columnConfig.headerTemplate,
+          width: columnConfig.width,
           bodyTemplate: columnConfig.bodyTemplate
         };
       } else if (columnConfig.headerTemplate != null && columnConfig.bodyTemplate == null) {
@@ -387,6 +384,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
           dataIndex: columnConfig.dataIndex,
           hidden: columnConfig.hidden,
           dataType: columnConfig.dataType,
+          width: columnConfig.width,
           headerTemplate: columnConfig.headerTemplate
         };
       } else if (columnConfig.bodyTemplate != null && columnConfig.headerTemplate == null) {
@@ -395,6 +393,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
           dataIndex: columnConfig.dataIndex,
           hidden: columnConfig.hidden,
           dataType: columnConfig.dataType,
+          width: columnConfig.width,
           bodyTemplate: columnConfig.bodyTemplate
         };
       } else if (columnConfig.bodyTemplate == null && columnConfig.headerTemplate == null) {
@@ -402,6 +401,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
           text: columnConfig.text,
           dataIndex: columnConfig.dataIndex,
           hidden: columnConfig.hidden,
+          width: columnConfig.width,
           dataType: columnConfig.dataType
         };
       }
