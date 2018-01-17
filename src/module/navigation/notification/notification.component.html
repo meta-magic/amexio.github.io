@@ -1,6 +1,11 @@
 <div class="toastbar" [ngClass]="positionclass">
   <div class="toast" *ngFor="let msg of messageData">
     <span>{{msg}}</span>
-    <span class="float-right" (click)="closeNotification(msg)"><i *ngIf="closable" class="fa fa-times" aria-hidden="true"></i></span>
+    <span class="float-right" (click)="closeNotification(msg)">
+      <!--<i *ngIf="closable" class="fa fa-times" aria-hidden="true"></i>-->
+      <ng-container *ngIf="closable">
+        <amexio-nav-icon key="notify_close"></amexio-nav-icon>
+      </ng-container>
+    </span>
   </div>
 </div>

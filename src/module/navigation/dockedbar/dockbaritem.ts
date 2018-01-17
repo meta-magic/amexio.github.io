@@ -10,7 +10,9 @@ import {Component, Input, OnInit} from '@angular/core';
       <ng-container *ngIf="active && title">
         <div class="amexio-dockbar-title">
           {{title}}
-          <span class="amexio-dockbar-item-close-bar" (click)="onBarIconClick()">&#9747;</span>
+          <span class="amexio-dockbar-item-close-bar" (click)="onBarIconClick()">
+            <amexio-nav-icon key="dockbar_close"></amexio-nav-icon>
+          </span>
         </div>
       </ng-container>
       <ng-content >

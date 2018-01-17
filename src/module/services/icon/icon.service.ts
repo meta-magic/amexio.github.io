@@ -155,6 +155,26 @@ let ICON_MAPPING =
       "component": "carousel_next",
       "fa" : "fa fa-angle-right  fa-2x"
     },
+    {
+      "component" : "dockbar_close",
+      "fa" : "fa fa-times",
+      "mat" : "close"
+    },
+    {
+      "component" : "notify_close",
+      "fa" : "fa fa-times",
+      "mat" : "close"
+    },
+    {
+      "component" : "sidenav_bar",
+      "fa" : "fa fa-bars fa-2x",
+      "mat" : "menu"
+    },
+    {
+      "component" : "sidenav_close",
+      "fa" : "fa fa-times",
+      "mat" : "close"
+    }
 
   ]
 ;
