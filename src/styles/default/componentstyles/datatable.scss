@@ -15,6 +15,10 @@
   table-layout: fixed;
 }
 
+.datatable-checkbox-width {
+  width: 5%;
+}
+
 .datatable-height {
   overflow-y: auto;
   overflow-x: hidden;
@@ -46,13 +50,13 @@
 .datatable .datatable-header{
   display: table-header-group;
   background-color: #ced4da;
+  text-align: left;
 }
 
 
 .datatable .datatable-row{
   border: $borderSize solid $borderColor;
   display: table-row;
-  cursor: pointer;
 }
 
 
@@ -67,6 +71,7 @@
 .datatable .datatable-col{
   display: table-cell;
   padding: .625em;
+  text-align: left;
 }
 
 .footer{
@@ -111,6 +116,7 @@
     display: block;
     font-size: .8em;
     text-align: right;
+    width: auto!important;
   }
 
   .datatable .datatable-col:before{
