@@ -13,6 +13,7 @@
              [attr.disabled]="readonly ? true: null"
              (blur)="onBlur()"
              (focus)="onFocus()"
+             (change)="change.emit()"
              class="input-control" placeholder="Choose Date"/>
     </ng-container>
 
@@ -22,6 +23,7 @@
              [attr.disabled]="readonly ? true: null"
              (blur)="onBlur()"
              (focus)="onFocus()"
+             (change)="change.emit()"
              class="input-control" placeholder="Choose Time"/>
     </ng-container>
 

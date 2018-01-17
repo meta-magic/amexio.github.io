@@ -19,7 +19,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
               <div  class="tablecol float-right">
                 <i *ngIf="(!isFullWindow && maximize)" class="fa fa-window-maximize" aria-hidden="true" (click)="sizeChange()"></i>
                 <i *ngIf="(isFullWindow && maximize)" class="fa fa-window-restore" aria-hidden="true"  (click)="sizeChange()"></i>
-                <i class="fa fa-window-close-o" aria-hidden="true" (click)="onCloseClick($event)" ></i>
+                <i class="fa fa-window-close-o" *ngIf="closable" aria-hidden="true" (click)="onCloseClick($event)" ></i>
               </div>
             </div>
           </div>
@@ -48,14 +48,24 @@ export class AmexioWindowPaneComponent implements  OnInit{
 
   @Input()  closable : boolean;
 
+  @Input()  type : 'dialog' | 'window';
+
   constructor(){
-    this.footeralign = "right";
-    this.isFullWindow = false;
-    this.maximize = false;
+
   }
 
 
   ngOnInit(){
+    if(this.maximize == null){
+      this.maximize = false;
+      this.isFullWindow = false;
+    }
+    else if(this.maximize){
+      this.isFullWindow = true;
+    }
+    if(this.footeralign == null)
+      this.footeralign = "right";
+
   }
 
   sizeChange(){

@@ -227,6 +227,8 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
 
   @Output() selectedRowData: any = new EventEmitter<any>();
 
+  @Output() onHeaderClick: any = new EventEmitter<any>();
+
   @Input() height: string;
 
   @Input() width: string;
@@ -248,10 +250,6 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
   @Input() tableRowSelectedColor: string;
 
   @Input() columnDefinition: any;
-
-  @Output() onColumnClickEvent: EventEmitter<any> = new EventEmitter<any>();
-
-  @Output() columnDataEvent: EventEmitter<any> = new EventEmitter<any>();
 
   @Input()  columnToggle: boolean;
 
@@ -733,8 +731,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
   }
 
   sortOnColHeaderClick(sortCol: any, event: any) {
-    this.onColumnClickEvent.emit(event);
-    this.columnDataEvent.emit(sortCol);
+    this.onHeaderClick.emit({event: event, data: sortCol);
     if (this.sortBy === -1) {
       this.sortBy = 1;
     } else if (this.sortBy === 1) {

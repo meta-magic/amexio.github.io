@@ -18,6 +18,7 @@
          (focus)="onFocus()"
          (input)="onInput()"
          (keyup)="onKeyUp($event)"
+         (click)="onclick()"
          [attr.placeholder]="placeholder"
          [attr.disabled]="disabled ? true: null"
          [required]="allowBlank ? true: null"/>
