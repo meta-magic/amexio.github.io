@@ -45,6 +45,8 @@ export class AmexioListBoxComponent implements OnInit, AfterViewInit{
 
   filterText: string;
 
+  selectAll = false;
+
   response: any;
 
   selectedData: any[];
@@ -87,7 +89,16 @@ export class AmexioListBoxComponent implements OnInit, AfterViewInit{
       responsedata = responsedata[dr[ir]];
     }
     this.viewData = responsedata;
+    this.setSelectedFlag(this.viewData);
     this.orgData = JSON.parse(JSON.stringify(this.viewData));
+  }
+
+  setSelectedFlag(viewRows: any) {
+    viewRows.forEach((row: any) => {
+      if (!row.hasOwnProperty('isSelected')) {
+        row['isSelected'] = false;
+      }
+    });
   }
 
   filterData(){
@@ -110,25 +121,33 @@ export class AmexioListBoxComponent implements OnInit, AfterViewInit{
     return res;
   }
 
-  selectedCheckBox(event:any,rowno: number,data:any){
-    if(event.currentTarget.checked){
-      this.selectedData.push(data);
-    }
-    else{
-      var indexOf = this.selectedData.indexOf(data);
-      delete this.selectedData[indexOf];
-    }
-
-    const sdata = [];
-
-    for(var i=0;i<this.selectedData.length;i++){
-
-      if(this.selectedData[i]){
-        sdata.push(this.selectedData[i]);
+  selectedCheckBox(rowData: any) {
+    rowData.isSelected = !rowData.isSelected;
+    this.selectedData = [];
+    this.viewData.forEach((node) => {
+      if (node.isSelected) {
+        this.selectedData.push(node);
       }
+    });
+
+    this.selectedRows.emit(this.selectedData);
+  }
+
+  selectAllRecord() {
+    this.selectedData =[];
+    this.selectAll = !this.selectAll;
+    if (this.selectAll) {
+      this.viewData.forEach((node) => {
+        node.isSelected = true;
+      });
+      this.selectedData = this.viewData;
+    } else {
+      this.viewData.forEach((node) => {
+        node.isSelected = false;
+      });
     }
 
-    this.selectedRows.emit(sdata);
+    this.selectedRows.emit(this.selectedData);
   }
 
   onClick(data:any){
