@@ -48,6 +48,8 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor,Do
 
   @Output()   change : any = new EventEmitter<any>();
 
+  @Output()   onClick : any = new EventEmitter<any>();
+
 
   displayValue : any;
 
@@ -122,6 +124,10 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor,Do
       this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
     }
+  }
+
+  onclick(){
+    this.onClick.emit();
   }
 
 
