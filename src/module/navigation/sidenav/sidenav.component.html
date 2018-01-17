@@ -1,6 +1,6 @@
 <div *ngIf="(position !='relative' && (smalldevice && !sidenavexpandedinsmalldevice))" [ngClass]="{'left':(position=='left' && position!='relative'),'right':(position=='right' && position!='relative')}" style="padding:10px; position: relative;" (click)="toggleSideNav()">
   <!--<i class="fa fa-bars fa-2x" aria-hidden="true"></i>-->
-  <amexio-pane-icon key="sidenav_bar"></amexio-pane-icon>
+  <amexio-nav-icon key="sidenav_bar"></amexio-nav-icon>
 </div>
 <div class="sidenav"  [ngStyle]="{'width':width}" [ngClass]="{'left':(position=='left' && position!='relative'),'right':(position=='right' && position!='relative')}">
   <ul>
@@ -14,7 +14,7 @@
         </ng-container>
         <span *ngIf="sidenavexpandedinsmalldevice" style="padding-right: 10px; float: right" (click)="close()">
           <!--<i class="fa fa-window-close" aria-hidden="true"></i>-->
-          <amexio-pane-icon key="sidenav_close"></amexio-pane-icon>
+          <amexio-nav-icon key="sidenav_close"></amexio-nav-icon>
         </span>
       </div>
     </li>
