@@ -1,33 +1,30 @@
 
 
 
+$defaultBGColor : rgba(255,255,255,0.70);
 
-$defaultBGColor : #D33134;
-
-$defaultColor : #601221;
+$defaultColor :  #603A63;
 
 $color: $defaultColor;
 
 $oppColor: $defaultBGColor;
 
-
 $backgroundcolor: $defaultBGColor;
 
 $componentBGColor: $backgroundcolor;
 
-$panelBGColor : #ffe578;
 
-$themeBGColor :  $defaultBGColor;
-$themeColor :    $defaultColor;
+$themeBGColor :  rgba(55, 20, 2, 0.50);
+$themeColor :  $defaultColor;
 
-$primaryBGColor: $themeColor;
-$secondaryBGColor: #ffffff;
+$primaryBGColor: #F3C22A;
+$secondaryBGColor: $themeColor;
 $successBGColor : #5cb85c;
 $dangerBGColor : #d9534f;
 $warningBGColor : #f0ad4e;
 
 
-$primaryColor: $themeBGColor;
+$primaryColor: white;
 $secondaryColor: $color;
 $successColor : $oppColor;
 $dangerColor : $oppColor;
@@ -38,27 +35,26 @@ $success: $successBGColor;
 $error : $dangerBGColor;
 $focusColor : #5cb3fd;
 
-$hoverColor : #043963;
-$hoverBGColor : rgba(66, 31, 38, 0.4);
+$hoverColor : $themeColor;
+$hoverBGColor : $themeBGColor;
 
 
-$borderSize : 3px;
-$borderRadius : 0 px;
-$borderColor : $defaultColor;
+$borderSize : 2px;
+$borderRadius : 5px;
+$borderColor : #3C1D5F;
 $borderColor-focus: $focusColor;
 
 
-$navbarBGColor : none ;
-$navbarBoxShadow: none;
+$navbarBGColor : $themeBGColor ;
+$navbarBoxShadow: $borderColor;
 $navbarColor : white;
 
-
-$sidenavHeaderBGColor: none;
-$sidenavHeaderColor: $defaultColor;
-$sidenavBGColor : none;
-$sidenavColor: $defaultColor;
-$sidenavactive:$themeColor;
-$sidenavBorderColor: $themeColor;
+$sidenavBGColor : transperent;
+$sidenavColor: white;
+$sidenavHeaderBGColor: $sidenavBGColor;
+$sidenavHeaderColor: $sidenavColor;
+$sidenavactive:$themeBGColor;
+$sidenavBorderColor: $borderColor;
 
 $menubarBGColor : #3498DB;
 $menubarColor : white;
@@ -75,38 +71,38 @@ $treeNodeActiveBGColor : $sidenavactive;
 $treeNodeActiveColor : $sidenavColor;
 
 $tabBorderSize: $borderSize;
-$tabBorderColor : $themeColor;
-$tabActiveBorder : $panelBGColor;
-$tabActiveBGColor : $themeColor;
+$tabBorderColor : $borderColor;
+$tabActiveBorder : darken($themeBGColor,10);
+$tabActiveBGColor : $borderColor;
 $tabActiveBorderSize : 3px;
 
 $modalBGColor: lighten(black,50%);
 
-$cardBGColor: transparent;
-$cardColor: $color;
-$cardBorderColor: rgb(141, 125, 38);
+$cardBGColor: white;
+$cardColor: $themeColor;
 
-$cardHeaderBGColor: transparent;
-$cardHeaderColor: $themeColor;
-$cardFooterBGColor: $panelBGColor;
-$cardFooterColor: $themeColor;
+$cardHeaderBGColor: none;
+$cardHeaderColor: white;
+$cardFooterBGColor: $themeColor;
+$cardFooterColor: white;
+$cardBorderColor: $borderColor;
 
 $toastBGColor : $themeBGColor;
 $toastColor : $themeColor;
 
-$accordionBGColor:$cardFooterBGColor;
-$accordionColor:$cardFooterColor;
-$accordionActiveBGColor:$cardFooterBGColor;
-$accordionActiveColor:$cardFooterColor;
-$accordionPanelBGColor:lighten($accordionActiveBGColor,20%);
-$accordionPanelColor: $accordionColor;
+$accordionBGColor:lighten($themeBGColor,30%);
+$accordionColor:white;
+$accordionActiveBGColor:$themeBGColor;
+$accordionActiveColor:white;
+$accordionPanelBGColor:$cardBGColor;
+$accordionPanelColor: $cardColor;
 
 $borderLayoutBorder : 0px;
 $borderLayoutBorderColor : none;
 
-$datapointBGColor : rgb(255, 229, 120);
-$datapointColor : $themeColor;
-$datapointBorderColor : rgb(141, 125, 38);
+$datapointBGColor : $themeBGColor;
+$datapointColor : white;
+$datapointBorderColor : $borderColor;
 
 $ratingBorderColor : $borderColor;
 $ratingActiveColor : $primaryBGColor;
@@ -118,6 +114,7 @@ $datetimepickerActiveColor : $datetimepickerBGColor;
 $fieldSetBorderSize : $borderSize;
 $fieldSetBorderColor : $borderColor;
 
+$collapsibleLegendColor : $themeColor;
 
 @import "../default/common.scss";
 @import "../default/amexio.components.scss";
@@ -127,19 +124,18 @@ $fieldSetBorderColor : $borderColor;
 @import "../default/amexio.panes.scss";
 
 
-
-
 body {
-  background-color: #D33134;
-  color: #043963;
-  background-image: url(/assets/images/theme/bootstrap/red_bg.png);
-  font-size: 16px;
-  background-repeat: repeat-y;
+  background-image: url(/assets/images/theme/bootstrap/DeepOrange-bg.jpg);
+  background-repeat: repeat-x;
   background-attachment: fixed;
-  font-family: 'Shadows Into Light', cursive;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.3px;
+  text-transform: capitalize;
+  margin: 0px;
+  padding: 0px;
+
 }
-
-
 
 
 
@@ -150,12 +146,11 @@ body {
 
 
 .input-control {
-  border-radius: 4px;
+  border-radius: $borderRadius;
   line-height: 2;
   font-size: 14px;
-  border-radius: 4px!important;
-  color: $hoverColor;
-  background-color: $hoverBGColor;
+  border: 2px solid #FF8B00;
+  color: $themeColor;
 }
 
 .input-control-success {
@@ -172,15 +167,17 @@ body {
 }
 
 .dropdown{
-  border: 2px solid $borderColor;
-  box-shadow: 0 1px 3px 0 $borderColor;
-  background-color: $panelBGColor;
+  border: 1px solid #FF8B00;
+  border-radius: $border-radius;
+  box-shadow: 0 1px 3px 0 #FF8B00;
+  background-color: white;
 }
 
 
 .datetimepicker {
-  border: $borderSize solid $borderColor;
-  box-shadow: 0 1px 3px 0 $borderColor;
+  border: 1px solid #FF8B00;
+  border-radius: $border-radius;
+  box-shadow: 0 1px 3px 0 #FF8B00;
 }
 
 label {
@@ -195,8 +192,10 @@ label {
 
 
 a {
-  color: $themeColor;
+  font-size: 14px;
+  text-decoration: none;
   text-transform: lowercase;
+
 }
 
 
@@ -222,47 +221,43 @@ button.app-button {
 
 
 
+
 .datatable {
   display: table;
   border: none;
+  margin-bottom: 2px;
+  .datatable-col{
+    border: 1px solid #eceeef;
+  }
+}
+
+
+.datatable .datatable-header{
+  background-color: white;
+  font-size: larger;
+
 }
 
 .datatable .datatable-row{
   height: 50px;
-  border: none;
-  border-bottom: 1px solid $themeColor;
-}
+  border:none!important;
 
-.datatable .datatable-header .datatable-col{
-  height: 50px;
-  font-weight: 500;
 }
-
-.datatable .datatable-header{
-  color: #043963!important;
-  background-color: rgba(66, 31, 38, 0.4)!important;
-}
-
 
 .datatable .datatable-row:hover{
-  color: #043963!important;
-  background-color: rgba(66, 31, 38, 0.4)!important;
+  //color: $themeBGColor;
+  background-color: lighten($primaryBGColor,20%);
 }
 
 .datatable .datatable-row-active{
-  color: #043963!important;
-  background-color: rgba(66, 31, 38, 0.4)!important;
+
+  background-color: $primaryBGColor;
 }
-
-
 
 
 .datatable-row:nth-child(odd){
-  background:none;
-
+  background:lighten($primaryBGColor,40%);
 }
-
-
 
 
 .datatable .datatable-col{
@@ -276,12 +271,6 @@ button.app-button {
 .datatable .datatable-header .datatable-col{
   height: 50px;
   font-weight: 500;
-}
-
-.datatable .datatable-header{
-  background-color: $primaryBGColor;
-  font-size: larger;
-  color: $primaryColor;
 }
 
 .datatable .datatable-col{
@@ -291,10 +280,13 @@ button.app-button {
 
 
 .datapoints{
+  border-radius: $borderRadius;
   .datapoints{
+    background: none;
     border: none;
     box-shadow: none;
   }
+
 }
 .datapoints-north{
   font-size: 36px;
@@ -302,8 +294,10 @@ button.app-button {
 }
 
 .datapoint-south{
+  background-color: white;
+  color: #603A63;
 
-  color: rgb(2, 25, 95);
+  border-radius: $borderRadius;
   font-size: 20px;
   padding: 5px;
   margin: 1px;
@@ -316,110 +310,88 @@ button.app-button {
 }
 
 
-
-
-.listbox {
+.listbox{
+  background-color: rgba(55, 20, 2, 0.70);
+  padding: 16px;
   .list{
-    //background-color: $defaultBGColor;
-    background: rgba(255, 255, 255, 0.6);
-    border: none;
-
+    background-color: white;
+    border: $borderSize solid $borderColor;
+    border-radius: $borderRadius;
+    //margin: 16px;
     .title {
       float: left;
-      font-size: 18px;
-      color: $datapointColor;
+      font-size: 16px;
+      font-weight: bold;
       padding-top: 8px;
-      a {
-        font-size: 16px;
-        color: $defaultColor;
-        text-transform: lowercase;
+      color: #FF8B00 !important;
+      a{
+        color:#603A63;
+        font-weight: 300;
       }
     }
-
-    .list-items:hover{
-      background-color: $hoverBGColor;
+    .list-items{
+      border-bottom: 1px solid $borderColor;
     }
-
-  }
-
-
-
-}
-
-.card-container {
-  border: none;
-  box-shadow: none;
-  .card-header {
-    font-size: 20px;
-    font-weight: 700;
-    border: none;
-    background-image: url(/assets/images/theme/bootstrap/PageFold.png);
-    border-right: $borderSize solid $cardBorderColor;
-    padding: 20px 24px 12px 56px;
-  }
-
-  .card-body{
-    border-left: $borderSize solid $cardBorderColor;
-    border-right: $borderSize solid $cardBorderColor;
-    border-bottom: $borderSize solid $cardBorderColor;
-    background-color: $panelBGColor;
-  }
-
-  .card-footer{
-    border-top: none;
-    border: $borderSize solid $cardBorderColor;
-  }
-}
-
-
-
-.listbox{
-  border: none;
-
-  .listbox .list .title {
-    color: red !important;
+    .list-items:hover{
+      background-color: lighten($themeColor,70%);
+    }
   }
 
   .header{
-    background-color: transparent;
-    border: none;
-    background-image: url(/assets/images/theme/bootstrap/PageFold.png);
-    border-right: $borderSize solid $cardBorderColor;
-    padding: 20px 24px 12px 56px;
-    color: $themeColor !important;
+    background: none;
+    color: $cardHeaderColor;
+    font-weight: bold;
   }
 
-  .list{
-    background-color: $panelBGColor;
-    border-left: $borderSize solid $cardBorderColor;
-    border-right: $borderSize solid $cardBorderColor;
-    border-bottom: $borderSize solid $cardBorderColor;
+
+
+}
+
+
+.card-container {
+  border-radius: $borderRadius;
+  background-color: rgba(55, 20, 2, 0.70);
+  padding: 16px;
+  .card-header {
+
+    font-size: 20px;
+    font-weight: bold;
+    border:none;
 
   }
 
-  .list .list-items{
-    border-bottom: 1px solid #1b1d22;
+  .card-body{
+    border-radius: $borderRadius;
+    background-color: white;
+  }
+
+  .card-footer{
+    background: none;
+    border:none;
+    border-top:none;
   }
 }
+
 
 /** NAVBAR **/
 .navbar-container {
-  font-size: 100%;
+
+  .navbar-logo-unit a{
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+
 }
 
 .sidenav{
-  box-shadow:none;
+  top: 70px;
 }
-
-
-.sidenav .border{
-  border-bottom: 1px solid $sidenavBorderColor;
-}
-
 
 .sidenav .activenode{
   color: white;
-  background: none;
+  //background-color: $themeColor;
+  border-right: $borderSize solid $borderColor;
 }
 
 
@@ -432,6 +404,7 @@ button.app-button {
   color: white;
   background-color: $sidenavactive;
 }
+
 
 
 .image-responsive{
@@ -459,39 +432,53 @@ button.app-button {
 }
 
 .email {
-  .card-header{
-    border: none;
-    background-image: url(/assets/images/theme/bootstrap/PageFold.png);
-    border-right: $borderSize solid $cardBorderColor;
-    padding: 20px 24px 12px 56px;
-  }
+  border: $borderSize solid $cardBorderColor;
+  border-radius: $borderRadius;
+  background-color: rgba(55, 20, 2, 0.70);
 
+
+  .card-header {
+    font-size: 20px;
+    font-weight: bold;
+    border:none;
+  }
   .borderlayout-container-N-E-C-S{
     padding: 0px;
-
     grid-gap: 0px;
   }
+
   .borderlayout-E{
-    background-color:  $panelBGColor;
+    margin-left: 16px;
+    background-color: white;
     border-left: $borderSize solid $cardBorderColor;
+    border-top: $borderSize solid $cardBorderColor;
     border-bottom: $borderSize solid $cardBorderColor;
+
   }
   .borderlayout-C{
-    background-color:  $panelBGColor;
+    margin-right: 16px;
+    background-color: white;
     border-right: $borderSize solid $cardBorderColor;
+    border-top: $borderSize solid $cardBorderColor;
     border-bottom: $borderSize solid $cardBorderColor;
   }
+
   .listbox {
     border:none;
+    background: none;
+
 
     .header{
-      border: none;
-      background: none;
-      border-bottom: $borderSize solid $borderColor;
+      color:#603A63;
+      border-bottom: 1px solid $borderColor;
     }
 
     .list{
       border: none;
+
+      .list-items{
+        border-bottom: 1px solid $borderColor;
+      }
     }
   }
 }
@@ -506,6 +493,5 @@ div.profile-image img {
 
 div.profile-image a{
   text-transform: capitalize;
-  color: $datapointColor;
+  color: #FF8B00 !important;
 }
-

@@ -52,7 +52,7 @@ export class AmexioNumberInputComponent implements ControlValueAccessor{
 
   @Input('minErrorMsg')
   set minErrorMsg(value : string){
-    this.helpInfoMsg = this.helpInfoMsg + '<b>Min Length<b/>: ' + value + '<br/>';
+    this.helpInfoMsg = this.helpInfoMsg + 'Min value: ' + value + '<br/>';
   }
 
   _maxErrorMsg : string;
@@ -63,7 +63,7 @@ export class AmexioNumberInputComponent implements ControlValueAccessor{
 
   @Input('maxErrorMsg')
   set maxErrorMsg(value : string){
-    this.helpInfoMsg = this.helpInfoMsg + 'Max Length: ' + value;
+    this.helpInfoMsg = this.helpInfoMsg + 'Max value: ' + value;
   }
 
   isValid : boolean;

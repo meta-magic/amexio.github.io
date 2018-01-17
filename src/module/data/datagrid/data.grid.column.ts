@@ -40,6 +40,9 @@ export class AmexioGridColumnComponent {
   @Input()
   summaryCaption: string;
 
+  @Input()
+  width: string;
+
   isColumnSort:boolean;
 
   @ContentChild('amexioHeaderTmpl') headerTemplate: TemplateRef<any>;

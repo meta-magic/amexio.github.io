@@ -58,7 +58,7 @@ export class AmexioFilterTreeComponent implements OnInit, AfterViewInit, DoCheck
   dataReader: string;
 
   @Input()
-  dataTableBindData: any;
+  data: any;
 
   @Input()
   enableCheckBox = false;
@@ -150,16 +150,16 @@ export class AmexioFilterTreeComponent implements OnInit, AfterViewInit, DoCheck
 
     if (this.httpMethod && this.httpUrl) {
       this.callService();
-    } else if (this.dataTableBindData) {
-      this.previousValue = JSON.parse(JSON.stringify(this.dataTableBindData));
-      this.setData(this.dataTableBindData);
+    } else if (this.data) {
+      this.previousValue = JSON.parse(JSON.stringify(this.data));
+      this.setData(this.data);
     }
   }
 
   ngDoCheck() {
-    if (JSON.stringify(this.previousValue) != JSON.stringify(this.dataTableBindData)) {
-      this.previousValue = JSON.parse(JSON.stringify(this.dataTableBindData));
-      this.setData(this.dataTableBindData);
+    if (JSON.stringify(this.previousValue) != JSON.stringify(this.data)) {
+      this.previousValue = JSON.parse(JSON.stringify(this.data));
+      this.setData(this.data);
     }
   }
 
@@ -233,7 +233,7 @@ export class AmexioFilterTreeComponent implements OnInit, AfterViewInit, DoCheck
   }
 
   renderServiceData() {
-    this.setData(this.dataTableBindData);
+    this.setData(this.data);
   }
 
   setData(httpResponse: any){
@@ -256,7 +256,7 @@ export class AmexioFilterTreeComponent implements OnInit, AfterViewInit, DoCheck
   callService(){
     this.treeViewFilterService.fetchData(this.httpUrl, this.httpMethod).subscribe(
       response => {
-        this.dataTableBindData = response.json();
+        this.data = response.json();
       },
       () => {
         this.renderServiceData();
