@@ -1,0 +1,341 @@
+
+
+$defaultBGColor : white;
+
+$defaultColor : black;
+
+$color: $defaultColor;
+
+$oppColor: $defaultBGColor;
+
+
+$backgroundcolor: #ECEFF1;
+
+$componentBGColor: white;
+
+
+//$themeBGColor :  #7C0A02;
+
+$themeBGColor :  #98BF98;
+$navbarBGColor : #29AB87;
+
+$themeColor :  white;
+
+$primaryBGColor: $themeBGColor;
+$secondaryBGColor: #ffffff;
+$successBGColor : #5cb85c;
+$dangerBGColor : #d9534f;
+$warningBGColor : #f0ad4e;
+
+
+$primaryColor: $themeColor;
+$secondaryColor: $color;
+$successColor : $oppColor;
+$dangerColor : $oppColor;
+$warningColor : $oppColor;
+
+
+$success: $successBGColor;
+$error : $dangerBGColor;
+$focusColor : #5cb3fd;
+
+$hoverColor : $themeColor;
+$hoverBGColor : $themeBGColor;
+
+
+$borderSize : 1px;
+$borderRadius : 2px;
+$borderColor : #ced4da;
+$borderColor-focus: $focusColor;
+
+
+
+$navbarBoxShadow: $borderColor;
+$navbarColor : $themeColor;
+
+$sidenavHeaderBGColor: $defaultBGColor;
+$sidenavHeaderColor: $color;
+$sidenavBGColor : $defaultBGColor;
+$sidenavColor: $defaultColor;
+$sidenavactive:#eee;
+$sidenavBorderColor: $borderColor;
+
+$menubarBGColor : #3498DB;
+$menubarColor : white;
+$menuHoverColor: orange;
+$subMenuCotentBGColor : white;
+$subMenuCotentColor : #777;
+
+$subMenuCotentBGColor : white;
+$subMenuCotentColor : #777;
+$menuborderColor:#ced4da;
+$menuborderSize:1px;
+
+$treeNodeActiveBGColor : $sidenavactive;
+$treeNodeActiveColor : $sidenavColor;
+
+$tabBorderSize: $borderSize;
+$tabBorderColor : $borderColor;
+$tabActiveBorder : darken($themeBGColor,10);
+$tabActiveBGColor : $borderColor;
+$tabActiveBorderSize : 3px;
+
+$modalBGColor: lighten(black,50%);
+
+$cardBGColor: $defaultBGColor;
+$cardColor: $color;
+
+$cardHeaderBGColor: $themeBGColor;
+$cardHeaderColor: $themeColor;
+$cardFooterBGColor: $themeBGColor;
+$cardFooterColor: $themeColor;
+$cardBorderColor: $borderColor;
+
+$toastBGColor : $themeBGColor;
+$toastColor : $themeColor;
+
+$accordionBGColor:lighten($cardHeaderBGColor,20%);
+$accordionColor:$cardHeaderColor;
+$accordionActiveBGColor:$cardHeaderBGColor;
+$accordionActiveColor:$cardHeaderColor;
+$accordionPanelBGColor:$cardBGColor;
+$accordionPanelColor: $cardColor;
+
+$borderLayoutBorder : 0px;
+$borderLayoutBorderColor : none;
+
+$datapointBGColor : $defaultBGColor;
+$datapointColor : $themeBGColor;
+$datapointBorderColor : $borderColor;
+
+$ratingBorderColor : $borderColor;
+$ratingActiveColor : $primaryBGColor;
+
+$datetimepickerBGColor : $defaultBGColor;
+$datetimepickertopbarBGColor : $primaryBGColor;
+$datetimepickerActiveColor : $datetimepickerBGColor;
+
+$fieldSetBorderSize : $borderSize;
+$fieldSetBorderColor : $borderColor;
+$collapsibleLegendColor : $themeColor;
+
+@import "../default/common.scss";
+@import "../default/amexio.components.scss";
+@import "../default/amexio.data.scss";
+@import "../default/amexio.layouts.scss";
+@import "../default/amexio.nav.scss";
+@import "../default/amexio.panes.scss";
+
+
+body {
+  font-family: Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
+}
+
+
+
+/*----------------------------------------------------------------------*/
+/*        INPUT/LABEL/A/BUTTON/DROPDOWN COMPONENT         */
+/*----------------------------------------------------------------------*/
+
+
+.input-control {
+  border-radius: 0px;
+  line-height: 2;
+  font-size: 14px;
+  border: none;
+  border-bottom: 2px solid $borderColor;
+  background-color: #FFFFFF;
+  color: $color;
+}
+
+.input-control-success {
+  border-bottom-color:$success;
+}
+
+.input-control-error {
+  border-bottom-color:$error;
+}
+
+
+.inputgroup label {
+  margin-bottom: 0rem;
+}
+
+label {
+  display: inline-block;
+  margin-top: 5px;
+  max-width: 100%;
+  padding: 0 12px;
+  font-size: 14px;
+  font-weight: 500;
+
+}
+
+
+a {
+  color: rgba(0, 0, 0, 0.87);
+  text-transform: lowercase;
+}
+
+
+.navbar-logo-unit a{
+  text-transform: capitalize;
+}
+
+
+
+button.app-button {
+  border-radius: 8px;
+}
+
+.btn-group button{
+  border-right: 1px solid white;
+
+}
+
+.drodown-caret-down{
+  top: 35px;
+  color: $borderColor;
+}
+
+
+
+
+.datatable .datatable-row{
+  height: 50px;
+}
+
+.datatable .datatable-header .datatable-col{
+  height: 50px;
+  font-weight: 500;
+}
+
+.datatable .datatable-header{
+  background-color: darken($backgroundcolor,5%);
+  font-size: larger;
+}
+
+.datatable .datatable-col{
+  vertical-align: middle;
+}
+
+.datatable .datatable-row{
+  height: 50px;
+}
+
+.datatable .datatable-header .datatable-col{
+  height: 50px;
+  font-weight: 500;
+}
+
+.datatable .datatable-header{
+  background-color: $primaryBGColor;
+  font-size: larger;
+  color: $primaryColor;
+}
+
+.datatable .datatable-col{
+  vertical-align: middle;
+}
+
+
+
+.datapoints{
+  .datapoints{
+    border: none;
+    box-shadow: none;
+  }
+  color: $themeBGColor;
+}
+.datapoints-north{
+  font-size: 36px;
+  font-weight: bold;
+  color: $themeBGColor;
+}
+
+.datapoint-south{
+
+  background-color: $primaryBGColor;
+  color: $primaryColor;
+  border-radius: 0px;
+  font-size: 20px;
+  padding: 5px;
+  margin: 1px;
+}
+
+.datapoint-west{
+  padding: 5px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+
+
+
+.listbox .list{
+  background-color: white;
+
+  .title {
+    float: left;
+    font-size: 18px;
+    color: rgba(0,0,0,0.87);
+    padding-top: 8px;
+    a {
+      font-size: 16px;
+      color: rgba(0,0,0,0.54) !important;
+      text-transform: lowercase;
+    }
+  }
+}
+
+/** NAVBAR **/
+.navbar-container {
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+}
+
+
+.sidenav .activenode{
+  color: $navbarBGColor;
+}
+
+
+
+.image-responsive{
+  max-width: 100%;
+  width: 100%;
+  border-top: 1px solid #1b1d22;
+  border-bottom: 1px solid #1b1d22;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.flex-col-2pt5{
+  max-width: 20.8333325%;
+}
+
+.flex-col-9pt5{
+  max-width: 79.1666635%;
+}
+
+@media only screen and (max-width: 500px) {
+
+  .flex-col-2pt5,.flex-col-9pt5{
+    max-width: 100%;
+  }
+}
+
+.email {
+  background-color: white;
+}
+
+
+div.profile-image img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+div.profile-image a{
+  text-transform: capitalize;
+}
