@@ -12,3 +12,4 @@ export * from './module/services/icon/icon.service';
 export * from './module/charts/chart.loader.service';
 export * from './module/dashboard/chart.loader.service';
 export * from './module/map/map.loader.service';
+export * from './module/services/icon/icon.mapping.config';

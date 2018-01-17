@@ -1,6 +1,17 @@
 <fieldset>
   <legend class="collapsible-legend" (click)="onLegendClick()">
-    <i *ngIf="collapsible" class="fa" [ngClass]="{'fa-plus' : !isActive,'fa-minus' : isActive}" aria-hidden="true"></i> {{title}}
+    <!--<i *ngIf="collapsible" class="fa" [ngClass]="{'fa-plus' : !isActive,'fa-minus' : isActive}" aria-hidden="true"></i> {{title}}-->
+    <ng-container *ngIf="collapsible">
+
+      <ng-container *ngIf="!isActive">
+        <amexio-pane-icon key="fieldset_expand"></amexio-pane-icon>
+      </ng-container>
+
+      <ng-container *ngIf="isActive">
+        <amexio-pane-icon key="fieldset_collpase"></amexio-pane-icon>
+      </ng-container>
+
+    </ng-container>
   </legend>
   <div class="collapsible-fieldset" [ngClass]="{'active' : isActive}">
     <ng-content></ng-content>

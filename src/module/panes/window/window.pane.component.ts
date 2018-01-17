@@ -17,9 +17,18 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
                 <ng-content select="amexio-header"></ng-content>
               </div>
               <div  class="tablecol float-right">
-                <i *ngIf="(!isFullWindow && maximize)" class="fa fa-window-maximize" aria-hidden="true" (click)="sizeChange()"></i>
-                <i *ngIf="(isFullWindow && maximize)" class="fa fa-window-restore" aria-hidden="true"  (click)="sizeChange()"></i>
-                <i class="fa fa-window-close-o" *ngIf="closable" aria-hidden="true" (click)="onCloseClick($event)" ></i>
+                <ng-container *ngIf="(!isFullWindow && maximize)">
+                  <amexio-pane-icon [key]="'window_maximize'" (onClick)="sizeChange()"></amexio-pane-icon>
+                </ng-container>
+                <ng-container *ngIf="(isFullWindow && maximize)" >
+                  <amexio-pane-icon [key]="'window_restore'" (click)="sizeChange()"></amexio-pane-icon>
+                </ng-container>
+                <!--<i  class="fa fa-window-maximize" aria-hidden="true" (click)="sizeChange()"></i>-->
+                <!--<i *ngIf="(isFullWindow && maximize)" class="fa fa-window-restore" aria-hidden="true"  (click)="sizeChange()"></i>-->
+                <!--<i class="fa fa-window-close-o" *ngIf="closable" aria-hidden="true" (click)="onCloseClick($event)" ></i>-->
+                <ng-container *ngIf="closable">
+                  <amexio-pane-icon [key]="'window_close'" (onClick)="onCloseClick($event)"></amexio-pane-icon>
+                </ng-container>
               </div>
             </div>
           </div>

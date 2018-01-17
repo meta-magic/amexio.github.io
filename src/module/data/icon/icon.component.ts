@@ -17,7 +17,7 @@ import {IconLoaderService} from "../../services/icon/icon.service";
  `
 })
 
-export class AmexioFormIconComponent implements OnInit {
+export class AmexioDataIconComponent implements OnInit {
 
  @Input()   key : string;
 

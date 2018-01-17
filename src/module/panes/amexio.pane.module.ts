@@ -23,6 +23,8 @@ import {AmexioRightVerticalTabComponent} from "./tab/right-vertical-tab/right.ve
 import {AmexioCarouselComponent} from "./carousel/carousel.component";
 import {AmexioTemplate, AmexioTemplateWrapper} from "./carousel/carousel.template";
 import {StepBlockComponent} from "./steps/step-block";
+import {IconLoaderService} from "../services/icon/icon.service";
+import {AmexioIconPane} from "./icon/icon.component";
 
 export * from './accordion/accordion.component';
 export * from './accordion/accordion.pane';
@@ -65,7 +67,8 @@ const PANE_COMPONENTS = [
   AmexioCarouselComponent,
   AmexioTemplate,
   AmexioTemplateWrapper,
-  StepBlockComponent
+  StepBlockComponent,
+  AmexioIconPane
 ];
 
 @NgModule({
@@ -81,7 +84,7 @@ export class AmexioPaneModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: AmexioPaneModule,
-      providers: [CommonDataService,DeviceQueryService]
+      providers: [CommonDataService,DeviceQueryService,IconLoaderService]
     };
   }
 }
