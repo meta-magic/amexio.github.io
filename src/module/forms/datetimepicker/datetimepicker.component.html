@@ -29,7 +29,8 @@
 
 
     <div class="drodown-caret-down">
-      <i class="fa fa-calendar" aria-hidden="true"></i>
+      <!--<i class="fa fa-calendar" aria-hidden="true"></i>-->
+      <amexio-form-icon key="datepicker_calendar"></amexio-form-icon>
     </div>
 
     <div *ngIf="showToolTip" class="datetimepicker">
@@ -37,12 +38,16 @@
       <div class="datetimepickertopbar" *ngIf="datepicker">
         <ul>
           <li class="prev">
-            <i (click)="prevYear($event)" class="fa fa fa-step-backward" aria-hidden="true"></i>
-            <i (click)="prevMonth($event)" class="fa fa-chevron-left"></i>
+            <!--<i (click)="prevYear($event)" class="fa fa fa-step-backward" aria-hidden="true"></i>-->
+            <amexio-form-icon key="datepicker_previous_fast" (onClick)="prevYear($event)"></amexio-form-icon>
+            <!--<i (click)="prevMonth($event)" class="fa fa-chevron-left"></i>-->
+            <amexio-form-icon key="datepicker_previous" (onClick)="prevMonth($event)"></amexio-form-icon>
           </li>
           <li class="next">
-            <i (click)="nextMonth($event)" class="fa fa-chevron-right"></i>
-            <i (click)="nextYear($event)" class="fa fa-step-forward" aria-hidden="true"></i>
+            <!--<i (click)="nextMonth($event)" class="fa fa-chevron-right"></i>-->
+            <amexio-form-icon key="datepicker_next" (onClick)="nextMonth($event)"></amexio-form-icon>
+            <!--<i (click)="nextYear($event)" class="fa fa-step-forward" aria-hidden="true"></i>-->
+            <amexio-form-icon key="datepicker_next_fast" (onClick)="nextYear($event)"></amexio-form-icon>
           </li>
           <li>{{selectedDate | date:'MMMM'}}<br>
             <span class="title">{{selectedDate | date:'y'}}</span>

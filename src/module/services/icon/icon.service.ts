@@ -13,18 +13,23 @@ let ICON_MAPPING =
       "mat": "keyboard_arrow_left"
     },
     {
+      "component": "datepicker_calendar",
+      "fa": "fa fa-calendar",
+      "mat": "date_range"
+    },
+    {
       "component" : "datepicker_next",
       "fa" : "fa fa-chevron-right",
       "mat" : "keyboard_arrow_right"
     },
     {
       "component" : "datepicker_previous_fast",
-      "fa" : "fa fa-fast-backward",
+      "fa" : "fa fa-step-backward",
       "mat" : "fast_rewind"
     },
     {
       "component" : "datepicker_next_fast",
-      "fa" : "fa fa-fast-forward",
+      "fa" : "fa fa-step-forward",
       "mat" : "fast_forward"
     },
     {
