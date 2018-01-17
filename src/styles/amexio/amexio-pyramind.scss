@@ -90,10 +90,12 @@ $cardBorderColor: $borderColor;
 $toastBGColor : $themeBGColor;
 $toastColor : $themeColor;
 
-$accordionBGColor:lighten($cardHeaderBGColor,20%);
-$accordionColor:$cardHeaderColor;
-$accordionActiveBGColor:$cardHeaderBGColor;
-$accordionActiveColor:$cardHeaderColor;
+$accordionBGColor:$cardBGColor;
+$accordionColor:$cardColor;
+$accordionActiveBGColor:$cardBGColor;
+$accordionActiveColor:$cardColor;
+$accordionPanelBGColor:$cardBGColor;
+$accordionPanelColor: $cardColor;
 
 $borderLayoutBorder : 0px;
 $borderLayoutBorderColor : none;

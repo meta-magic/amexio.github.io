@@ -95,6 +95,8 @@ $accordionBGColor:lighten($cardHeaderBGColor,20%);
 $accordionColor:$cardHeaderColor;
 $accordionActiveBGColor:$cardHeaderBGColor;
 $accordionActiveColor:$cardHeaderColor;
+$accordionPanelBGColor:$cardBGColor;
+$accordionPanelColor: $cardColor;
 
 $borderLayoutBorder : 0px;
 $borderLayoutBorderColor : none;
