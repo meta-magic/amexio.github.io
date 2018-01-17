@@ -179,6 +179,21 @@ let ICON_MAPPING =
       "component" : "sidenav_close",
       "fa" : "fa fa-times",
       "mat" : "close"
+    },
+    {
+      "component" : "datagrid_list",
+      "fa" : "fa fa-th-list",
+      "mat" : "view_list"
+    },
+    {
+      "component" : "datagrid_expand",
+      "fa" : "fa fa-caret-right",
+      "mat" : ""
+    },
+    {
+      "component" : "datagrid_collapse",
+      "fa" : "fa fa-caret-down",
+      "mat" : "arrow_drop_down"
     }
 
   ]
