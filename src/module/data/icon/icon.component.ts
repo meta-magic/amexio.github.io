@@ -8,10 +8,27 @@ import {IconLoaderService} from "../../services/icon/icon.service";
  selector: 'amexio-data-icon',
  template: `
    <ng-container *ngIf="iconLoaderService.iconToUse == 'fa'">
-     <i class="{{getIconClass()}}" aria-hidden="true" (click)="onClick.emit($event)"></i>  
+
+     <ng-container *ngIf="customclass != null">
+       <i class="{{customclass}}" aria-hidden="true" (click)="onClick.emit($event)"></i>
+     </ng-container>
+     <ng-container *ngIf="customclass == null">
+       <i class="{{getIconClass()}}" aria-hidden="true" (click)="onClick.emit($event)"></i>
+     </ng-container>
+
    </ng-container>
+
    <ng-container *ngIf="iconLoaderService.iconToUse == 'mat'">
-     <i class="material-icons" (click)="onClick.emit($event)">{{getIconClass()}}</i>
+
+     <ng-container *ngIf="customclass != null">
+       <i class="material-icons" (click)="onClick.emit($event)">{{customclass}}</i>
+     </ng-container>
+
+     <ng-container *ngIf="customclass == null">
+       <i class="material-icons" (click)="onClick.emit($event)">{{getIconClass()}}</i>
+     </ng-container>
+
+
    </ng-container>
    
  `
@@ -22,6 +39,8 @@ export class AmexioDataIconComponent implements OnInit {
  @Input()   key : string;
 
  @Output()  onClick : EventEmitter<any> = new EventEmitter<any>();
+
+  @Input()   customclass : string;
 
  constructor(public iconLoaderService : IconLoaderService) {
 
