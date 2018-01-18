@@ -1,0 +1,31 @@
+
+input[type="range"]{
+  -webkit-appearance: none;
+  -moz-apperance: none;
+  border-radius: 6px;
+  height: 6px;
+  background-image: -webkit-gradient(
+      linear,
+      left top,
+      right top,
+      color-stop(0.15, #94A14E),
+      color-stop(0.15, #C5C5C5)
+  );
+}
+
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none !important;
+  background-color: #E9E9E9;
+  border: 1px solid #CECECE;
+  height: 15px;
+  width: 15px;
+}
+
+/** For vertical style **/
+/*input[type=range][orient=vertical]{
+  writing-mode: bt-lr; !* IE *!
+  -webkit-appearance: slider-vertical; !* WebKit *!
+  width: 8px;
+  height: 175px;
+  padding: 0 5px;
+}*/

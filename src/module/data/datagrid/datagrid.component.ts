@@ -31,7 +31,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
       <ng-container *ngIf="enabledatafilter ? true : false">
         <div class="datatable datatable-row">
           <ng-container *ngIf="enablecheckbox">
-            <div class="datatable-col">
+            <div class="datatable-col datatable-checkbox-width">
               <div class="inputgroup">
                 <div class="input-box">
                   <div *ngIf="!selectAll" (click)="selectAllRecord()" class="checkbox default"></div>
@@ -44,7 +44,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
           <ng-container *ngIf="enabledatafilter ? true : false">
             <ng-container *ngFor="let cols of columns">
               <ng-container *ngIf="!cols.hidden">
-                <div class="datatable-col">
+                <div class="datatable-col" [style.width.%]="cols.width">
                   <data-grid-filter [column]="cols"
                                       (filterObject)="getFilteredData($event)">
                   </data-grid-filter>
@@ -637,54 +637,54 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
     const statusArray: any = [];
     let condition: any;
     filteredObj.forEach((filterOpt: any) => {
-      if (filterOpt.filter === '3') {
-        if (filterOpt.type === 'string') {
+      if (filterOpt.filter == '3') {
+        if (filterOpt.type == 'string') {
           condition = data[filterOpt.key].toLowerCase().includes(filterOpt.value.toLowerCase());
         }
         statusArray.push(condition);
       }
-      if (filterOpt.filter === '1') {
-        if (filterOpt.type === 'string') {
+      if (filterOpt.filter == '1') {
+        if (filterOpt.type == 'string') {
           condition = data[filterOpt.key].toLowerCase().startsWith(filterOpt.value.toLowerCase());
         }
         statusArray.push(condition);
-      } else if (filterOpt.filter === '2') {
-        if (filterOpt.type === 'string') {
+      } else if (filterOpt.filter == '2') {
+        if (filterOpt.type == 'string') {
           condition = data[filterOpt.key].toLowerCase().endsWith(filterOpt.value.toLowerCase());
         }
         statusArray.push(condition);
-      } else if (filterOpt.filter === '<') {
-        if (filterOpt.type === 'number') {
+      } else if (filterOpt.filter == '<') {
+        if (filterOpt.type == 'number') {
           condition = data[filterOpt.key] > filterOpt.value;
         }
         statusArray.push(condition);
-      } else if (filterOpt.filter === '>') {
-        if (filterOpt.type === 'number') {
+      } else if (filterOpt.filter == '>') {
+        if (filterOpt.type == 'number') {
           condition = data[filterOpt.key] < filterOpt.value;
         }
         statusArray.push(condition);
-      } else if (filterOpt.filter === '>=') {
-        if (filterOpt.type === 'number') {
+      } else if (filterOpt.filter == '>=') {
+        if (filterOpt.type == 'number') {
           condition = data[filterOpt.key] <= filterOpt.value;
         }
         statusArray.push(condition);
-      } else if (filterOpt.filter === '=<') {
-        if (filterOpt.type === 'number') {
+      } else if (filterOpt.filter == '=<') {
+        if (filterOpt.type == 'number') {
           condition = data[filterOpt.key] >= filterOpt.value;
         }
         statusArray.push(condition);
-      } else if (filterOpt.filter === '==') {
-        if (filterOpt.type === 'number') {
-          condition = data[filterOpt.key] === filterOpt.value;
+      } else if (filterOpt.filter == '==') {
+        if (filterOpt.type == 'number') {
+          condition = data[filterOpt.key] == filterOpt.value;
         } else {
-          condition = data[filterOpt.key].toLowerCase() === filterOpt.value.toLowerCase();
+          condition = data[filterOpt.key].toLowerCase() == filterOpt.value.toLowerCase();
         }
         statusArray.push(condition);
-      } else if (filterOpt.filter === '!=') {
-        if (filterOpt.type === 'number') {
-          condition = data[filterOpt.key] !== filterOpt.value;
+      } else if (filterOpt.filter == '!=') {
+        if (filterOpt.type == 'number') {
+          condition = data[filterOpt.key] != filterOpt.value;
         } else {
-          condition = data[filterOpt.key].toLowerCase() !== filterOpt.value.toLowerCase();
+          condition = data[filterOpt.key].toLowerCase() != filterOpt.value.toLowerCase();
         }
         statusArray.push(condition);
       }
