@@ -211,7 +211,9 @@ export class AmexioDateTimePicker implements OnInit {
     this.selectedDate.setHours(this.hrs);
     this.selectedDate.setMinutes(this.min);
     this.value = this.selectedDate;
+    this.change.emit(this.value);
     event.stopPropagation();
+
   }
 
 
@@ -235,7 +237,7 @@ export class AmexioDateTimePicker implements OnInit {
     this.selectedDate.setHours(this.hrs);
     this.selectedDate.setMinutes(this.min);
     this.value = this.selectedDate;
-
+    this.change.emit(this.value);
     event.stopPropagation();
   }
 
