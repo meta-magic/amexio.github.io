@@ -100,12 +100,12 @@ let ICON_MAPPING =
     {
       "component" : "itemselector_caretup",
       "fa" : "fa fa-caret-up",
-      "mat" : ""
+      "mat" : "keyboard_arrow_up"
     },
     {
       "component" : "itemselector_caretdown",
       "fa" : "fa fa-caret-down",
-      "mat" : ""
+      "mat" : "keyboard_arrow_down"
     },
     {
       "component" : "itemselector_arrowup",
@@ -120,12 +120,12 @@ let ICON_MAPPING =
     {
       "component" : "itemselector_arrowleft",
       "fa" : "fa fa-arrow-left",
-      "mat" : ""
+      "mat" : "keyboard_arrow_left"
     },
     {
       "component" : "itemselector_arrowright",
       "fa" : "fa fa-arrow-right",
-      "mat" : ""
+      "mat" : "keyboard_arrow_right"
     },
     {
       "component" : "tab_previous",
@@ -181,6 +181,16 @@ let ICON_MAPPING =
       "mat" : "close"
     },
     {
+      "component" : "datagrid_arrowdown",
+      "fa" : "fa fa-arrow-down",
+      "mat" : "arrow_downward"
+    },
+    {
+      "component" : "datagrid_arrowup",
+      "fa" : "fa fa-arrow-up",
+      "mat" : "arrow_upward"
+    },
+    {
       "component" : "datagrid_list",
       "fa" : "fa fa-th-list",
       "mat" : "view_list"
@@ -194,8 +204,27 @@ let ICON_MAPPING =
       "component" : "datagrid_collapse",
       "fa" : "fa fa-caret-down",
       "mat" : "arrow_drop_down"
+    },
+    {
+      "component" : "datagrid_collapse",
+      "fa" : "fa fa-caret-down",
+      "mat" : "arrow_drop_down"
+    },
+    {
+      "component" : "datagrid_filter",
+      "fa" : "fa fa-filter",
+      "mat" : "filter_list"
+    },
+    {
+      "component" : "tree_filter",
+      "fa" : "fa fa-filter",
+      "mat" : "filter_list"
+    },
+    {
+      "component" : "data_check",
+      "fa" : "fa fa-check",
+      "mat" : "check"
     }
-
   ]
 ;
 

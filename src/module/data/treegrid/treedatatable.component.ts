@@ -43,7 +43,7 @@ import {AmexioGridColumnComponent} from "../datagrid/data.grid.column";
                     
                   <!--<i *ngIf="row.expanded && row.children" class="fa fa-minus" aria-hidden="true" (click)="toogle(row,i)"></i>-->
                 <ng-container *ngIf="row.expanded && row.children">
-                  <amexio-data-icon key="tree_collapse"></amexio-data-icon>
+                  <amexio-data-icon key="tree_collapse" (onClick)="toogle(row,i)"></amexio-data-icon>
                 </ng-container>
                      {{row[cols.dataindex]}}
                </span>

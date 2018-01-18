@@ -7,8 +7,8 @@ import {CommonDataService} from "../../services/data/common.data.service";
   selector: 'data-grid-filter',
   template: `
     <input type="text" [(ngModel)]="filterValue" [attr.placeholder]="column.text" (keyup)="keyUpSearch(column)" type="{{column.datatype==='string' ? 'text' : 'number'}}" class="form-control" aria-label="Text input with dropdown button">
-    <i class="fa fa-filter" aria-hidden="true" (click)="showToolTip = !showToolTip"></i>
-
+    <!--<i class="fa fa-filter" aria-hidden="true" (click)="showToolTip = !showToolTip"></i>-->
+    <amexio-data-icon key="datagrid_filter" (click)="showToolTip = !showToolTip"></amexio-data-icon>
     <span *ngIf="showToolTip" class="dropdown" style="width: 250px;">
         <ul class="dropdown-list" *ngFor="let opt of filterOptions">
           <ng-container *ngIf="opt.type===column.datatype">
