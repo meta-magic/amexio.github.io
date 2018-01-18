@@ -10,6 +10,7 @@ import {DeviceQueryService} from "../services/device/device.query.service";
 import {MultiMediaCarousel} from "./ee-carousel/ee.carousel.component";
 import {ContentComponent} from "./ee-content/ee.content";
 import {AmexioYoutubePlayerComponent} from "./youtube-player/youtube.player.component";
+import {AmexioFormsModule} from "../forms/amexio.forms.module";
 
 export * from '../services/data/common.data.service';
 export * from '../services/device/device.query.service';
@@ -28,7 +29,8 @@ const ENTERPRISE_COMPONENTS = [
   imports: [
     CommonModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    AmexioFormsModule
   ],
   exports: ENTERPRISE_COMPONENTS,
   declarations: ENTERPRISE_COMPONENTS
