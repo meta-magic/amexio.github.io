@@ -85,7 +85,7 @@ export class MultiMediaCarousel implements OnInit,OnChanges {
 
 
   closeDetailPage(){
-    this.data.forEach( (item)=>{
+    this.data.forEach( (item : any)=>{
       item.selected = null;
     });
     this.displayDetail = false;
@@ -102,7 +102,7 @@ export class MultiMediaCarousel implements OnInit,OnChanges {
     this.ageLimit = item.ageLimit;
     this.releaseYear = item.releaseYear;
 
-    this.data.forEach( (item)=>{
+    this.data.forEach( (item :any)=>{
       item.selected = null;
     });
 
@@ -111,7 +111,7 @@ export class MultiMediaCarousel implements OnInit,OnChanges {
   }
 
 
-  loadVideo(item){
+  loadVideo(item : any){
     this.onVideoLoad.emit(item.video);
   }
 
