@@ -13,8 +13,8 @@ import {AmexioTemplate} from "./carousel.template";
  template: `   
 <h4>{{header}}</h4>
    <div class="tabwrapper">
-     <div class="carouselnavigation float-left" (click)="previous()"><i class="fa fa-angle-left fa-2x" aria-hidden="true"></i></div>
-     <div class="carouselnavigation float-right" (click)="next()"><i class="fa fa-angle-right  fa-2x" aria-hidden="true"></i></div>
+     <div class="carouselnavigation float-left" (click)="previous()"><amexio-pane-icon key="carousel_previous"></amexio-pane-icon></div>
+     <div class="carouselnavigation float-right" (click)="next()"><amexio-pane-icon key="carousel_next"></amexio-pane-icon></div>
          <ul #tab class="tab">
            <li class="tablistitems" *ngFor="let item of data">
               <ng-template [amexioTemplateWrapper]="itemTemplate" [item]="item"></ng-template>

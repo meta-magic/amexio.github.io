@@ -5,7 +5,7 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angula
 import {IconLoaderService} from "../../services/icon/icon.service";
 
 @Component({
- selector: 'amexio-form-icon',
+ selector: 'amexio-data-icon',
  template: `
    <ng-container *ngIf="iconLoaderService.iconToUse == 'fa'">
      <i class="{{getIconClass()}}" aria-hidden="true" (click)="onClick.emit($event)"></i>  
@@ -17,7 +17,7 @@ import {IconLoaderService} from "../../services/icon/icon.service";
  `
 })
 
-export class AmexioFormIconComponent implements OnInit {
+export class AmexioDataIconComponent implements OnInit {
 
  @Input()   key : string;
 

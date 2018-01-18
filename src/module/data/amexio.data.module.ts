@@ -16,6 +16,7 @@ import {HorizontalTreeViewNodeComponent} from "./tree/horizontalnode.component";
 import {HorizontalTreeViewComponent} from "./tree/horizontaltreeview.component";
 import {AmexioFilterTreeComponent} from "./tree/filter.tree.component";
 import {TreeDataTableComponent} from "./treegrid/treedatatable.component";
+import {AmexioDataIconComponent} from "./icon/icon.component";
 
 export * from '../services/data/common.data.service';
 export * from './listbox/listbox.component';
@@ -36,7 +37,8 @@ const DATA_COMPONENTS = [
   HorizontalTreeViewNodeComponent,
   HorizontalTreeViewComponent,
   AmexioFilterTreeComponent,
-  TreeDataTableComponent
+  TreeDataTableComponent,
+  AmexioDataIconComponent
 ];
 
 @NgModule({

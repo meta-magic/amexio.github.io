@@ -17,6 +17,8 @@ import {DockbarComponent} from "./dockedbar/dockbaritem";
 import {DockedBarToolComponent} from "./dockedbar/dockettoolbar.component";
 import {AmexioMenuBarComponent} from "./menubar/menubar.component";
 import {AmexioLayoutModule} from "../layout/amexio.layout.module";
+import {AmexioNavIconPane} from "./icon/icon.component";
+import {IconLoaderService} from "../services/icon/icon.service";
 
 export * from '../services/data/common.data.service';
 export * from '../services/device/device.query.service';
@@ -33,7 +35,8 @@ const NAV_COMPONENTS = [
   AmexioNotificationComponent,
   DockbarComponent,
   DockedBarToolComponent,
-  AmexioMenuBarComponent
+  AmexioMenuBarComponent,
+  AmexioNavIconPane
 ];
 
 @NgModule({
@@ -51,7 +54,7 @@ export class AmexioNavModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: AmexioNavModule,
-      providers: [CommonDataService,DeviceQueryService]
+      providers: [CommonDataService,DeviceQueryService,IconLoaderService]
     };
   }
 }

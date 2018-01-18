@@ -35,8 +35,16 @@ import {AmexioGridColumnComponent} from "../datagrid/data.grid.column";
         <div class="datatable-col" *ngFor="let cols of columns;let colIndex = index">
           <ng-container *ngIf="colIndex == 0">
               <span [ngStyle]="{'padding-left':(20*row.level)+'px'}">
-                    <i *ngIf="!row.expanded && row.children" class="fa fa-plus" aria-hidden="true" (click)="toogle(row,i)"></i>
-                    <i *ngIf="row.expanded && row.children" class="fa fa-minus" aria-hidden="true" (click)="toogle(row,i)"></i>
+                    
+                <!--<i *ngIf="!row.expanded && row.children" class="fa fa-plus" aria-hidden="true" (click)="toogle(row,i)"></i>-->
+                <ng-container *ngIf="!row.expanded && row.children">
+                  <amexio-data-icon key="tree_expand" (onClick)="toogle(row,i)"></amexio-data-icon>
+                </ng-container>
+                    
+                  <!--<i *ngIf="row.expanded && row.children" class="fa fa-minus" aria-hidden="true" (click)="toogle(row,i)"></i>-->
+                <ng-container *ngIf="row.expanded && row.children">
+                  <amexio-data-icon key="tree_collapse"></amexio-data-icon>
+                </ng-container>
                      {{row[cols.dataindex]}}
                </span>
           </ng-container>

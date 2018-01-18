@@ -1,6 +1,6 @@
 <div class="tabwrapper">
-  <div *ngIf="showprev" class="tabnavigation float-left" (click)="previous()"><i class="fa fa-angle-left fa-2x" aria-hidden="true"></i></div>
-  <div *ngIf="shownext" class="tabnavigation float-right" (click)="next()"><i class="fa fa-angle-right  fa-2x" aria-hidden="true"></i></div>
+  <div *ngIf="showprev" class="tabnavigation float-left" (click)="previous()"><amexio-pane-icon key="tab_previous"></amexio-pane-icon><!--<i class="fa fa-angle-left fa-2x" aria-hidden="true"></i>--></div>
+  <div *ngIf="shownext" class="tabnavigation float-right" (click)="next()"><amexio-pane-icon key="tab_next"></amexio-pane-icon><!--<i class="fa fa-angle-right  fa-2x" aria-hidden="true"></i>--></div>
   <ul #tab class="tab">
     <li class="tablistitems">
       <div *ngFor="let tabnode of tabCollection"  class="tablink activetab" [ngClass]="{'activetab':tabnode.active}" (click)="onTabClick(tabnode)">
@@ -13,7 +13,8 @@
               {{tabnode.title}}
             </div>
             <div *ngIf="closable" class="tablecol" >
-              <i class="fa fa-times" aria-hidden="true" (click)="closeTab(tabnode)"></i>
+              <!--<i class="fa fa-times" aria-hidden="true" (click)="closeTab(tabnode)"></i>-->
+              <amexio-pane-icon key="tab_close" (onClick)="closeTab(tabnode)"></amexio-pane-icon>
             </div>
           </div>
         </div>

@@ -5,7 +5,7 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angula
 import {IconLoaderService} from "../../services/icon/icon.service";
 
 @Component({
- selector: 'amexio-form-icon',
+ selector: 'amexio-nav-icon',
  template: `
    <ng-container *ngIf="iconLoaderService.iconToUse == 'fa'">
      <i class="{{getIconClass()}}" aria-hidden="true" (click)="onClick.emit($event)"></i>  
@@ -13,11 +13,10 @@ import {IconLoaderService} from "../../services/icon/icon.service";
    <ng-container *ngIf="iconLoaderService.iconToUse == 'mat'">
      <i class="material-icons" (click)="onClick.emit($event)">{{getIconClass()}}</i>
    </ng-container>
-   
  `
 })
 
-export class AmexioFormIconComponent implements OnInit {
+export class AmexioNavIconPane implements OnInit {
 
  @Input()   key : string;
 
@@ -31,6 +30,7 @@ export class AmexioFormIconComponent implements OnInit {
 
   getIconClass() : string{
    if(this.iconLoaderService.iconMappings != null){
+
      let iconObject = this.iconLoaderService.iconMappings.find((obj : any) => obj.component == this.key);
      if(iconObject != null)
        return iconObject[this.iconLoaderService.iconToUse.toString()];

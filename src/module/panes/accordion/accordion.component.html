@@ -1,4 +1,8 @@
-<button class="accordion" #btn1 (click)="onTabClick(btn1)">{{header}}<div style="float: right"><i class="fa fa-plus" aria-hidden="true"></i></div> </button>
+<button class="accordion" #btn1 (click)="onTabClick(btn1)">{{header}}
+  <div style="float: right">
+    <i class="fa fa-plus" aria-hidden="true"></i>
+  </div>
+</button>
 <div class="panel">
   <ng-content></ng-content>
 </div>

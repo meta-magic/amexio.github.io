@@ -24,7 +24,8 @@ import {CommonDataService} from "../../services/data/common.data.service";
         <span *ngIf="groupby ? true : false" class="float-right"
               (click)="showGroupByColumn = !showGroupByColumn; showToolTip = false"
               style=" cursor: pointer;">
-            <span class="fa fa-th-list"></span>
+            <!--<span class="fa fa-th-list"></span>-->
+          <amexio-data-icon key="datagrid_list"></amexio-data-icon>
           </span>
       </div>
       <ng-container *ngIf="enabledatafilter ? true : false">
@@ -177,8 +178,16 @@ import {CommonDataService} from "../../services/data/common.data.service";
               <ng-container *ngIf="isGroupChecking(row)">
                 <div class="datatable-col" style="width: 90%" >
                   <ng-container *ngIf="colIndex == 0">
-                    <i *ngIf="!row.expanded" class="fa fa-caret-right" aria-hidden="true" (click)="toogle(row,i)"></i>
-                    <i *ngIf="row.expanded" class="fa fa-caret-down" aria-hidden="true" (click)="toogle(row,i)"></i>
+                    
+                    <!--<i *ngIf="!row.expanded" class="fa fa-caret-right" aria-hidden="true" (click)="toogle(row,i)"></i>-->
+                    <ng-container *ngIf="!row.expanded">
+                      <amexio-data-icon key="datagrid_expand" (onClick)="toogle(row,i)"></amexio-data-icon>
+                    </ng-container>
+                    
+                    <!--<i *ngIf="row.expanded" class="fa fa-caret-down" aria-hidden="true" (click)="toogle(row,i)"></i>-->
+                    <ng-container *ngIf="row.expanded">
+                      <amexio-data-icon key="datagrid_collapse" (onClick)="toogle(row,i)"></amexio-data-icon>
+                    </ng-container>
                     {{row.group}}
                   </ng-container>
                 </div>
