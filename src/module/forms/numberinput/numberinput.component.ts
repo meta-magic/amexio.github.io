@@ -128,9 +128,10 @@ export class AmexioNumberInputComponent implements ControlValueAccessor{
 
   //Set touched on blur
   onBlur() {
+    debugger;
     this.onTouchedCallback();
     this.showToolTip = false;
-    if(this.value.length < this.minlength){
+    if(this.value < this.minvalue){
       this.isValid = false;
     }
     else {
@@ -163,17 +164,28 @@ export class AmexioNumberInputComponent implements ControlValueAccessor{
     if(inp.touched && !this.allowblank && (this.value == '' || this.value == null)){
       classObj = {'input-control-error' : true};
       this.isValid = false;
-    }
-    else if(inp.touched && this.minlength != null){
-      if(this.value.length < this.minlength) {
+    }else if(inp.touched && this.minvalue != null && this.maxvalue != null) {
+      if(this.value < this.minvalue || this.value > this.maxvalue) {
         classObj = {'input-control-error' : true};
         this.isValid = false;
-      }
-    else {
+      } else {
         this.isValid = true;
       }
-    }
-    else{
+    } else if (inp.touched && this.minvalue != null && this.maxvalue == null) {
+      if(this.value < this.minvalue) {
+        classObj = {'input-control-error' : true};
+        this.isValid = false;
+      } else {
+        this.isValid = true;
+      }
+    } else if (inp.touched && this.minvalue == null && this.maxvalue != null) {
+      if(this.value > this.maxvalue) {
+        classObj = {'input-control-error' : true};
+        this.isValid = false;
+      } else {
+        this.isValid = true;
+      }
+    } else{
       classObj =  {'input-control-error' : inp.invalid && (inp.dirty || inp.touched),'input-control-success' : inp.valid && (inp.dirty || inp.touched)};
       if(inp.valid && (inp.dirty || inp.touched))
         this.isValid = true;

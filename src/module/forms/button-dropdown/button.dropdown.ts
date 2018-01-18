@@ -22,7 +22,7 @@ import {AmexioButtonDropDownItemComponent} from "./button.dropdown.item";
       <div style="position: absolute;" [ngStyle]="{'display' : openContent ? 'block' : 'none'}">
         <ng-container *ngFor="let itemData of dropdownItemData">
           <div>
-            <button (click)="itemClick($event,itemData)" [ngClass]="{'button-default': size=='default' || size ==null,'button-small': size=='small','button-large' : size=='large','button-primary' : type == 'primary' || type == null,'button-success' : type == 'success',' button-danger' : type=='danger','button-warning' : type=='warning'}" >
+            <button [ngStyle]="{'cursor': itemData.disabled ? 'not-allowed':'pointer'}" (click)="itemClick($event,itemData)" [ngClass]="{'button-default': size=='default' || size ==null,'button-small': size=='small','button-large' : size=='large','button-primary' : type == 'primary' || type == null,'button-success' : type == 'success',' button-danger' : type=='danger','button-warning' : type=='warning'}" >
               <span [attr.disabled] = "itemData.disabled ? true: null">{{itemData.label}}&nbsp;&nbsp;</span>
               <!--<i [class]="itemData.iconStyleClass" aria-hidden="true" style="float:right;" ></i>-->
               <amexio-form-icon style="float:right;" [customclass]="itemData.iconStyleClass"></amexio-form-icon>
@@ -81,7 +81,10 @@ export class AmexioButtonDropdownComponent implements AfterContentInit {
   }
 
   itemClick(event: any, itemData: any) {
-    itemData.onItemClick.emit(event);
-    this.openContent = !this.openContent;
+    if(!itemData.disabled) {
+      itemData.onItemClick.emit(event);
+      this.openContent = !this.openContent;
+    }
+
   }
 }

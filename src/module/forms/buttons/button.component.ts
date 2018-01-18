@@ -29,6 +29,12 @@ export class AmexioButtonComponent {
 
   }
 
+  buttonClick(event: any) {
+    if(!this.disabled) {
+      this.onClick.emit(event);
+    }
+  }
+
 
 
 }
