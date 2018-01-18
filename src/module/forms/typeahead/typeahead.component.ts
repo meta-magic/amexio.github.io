@@ -94,7 +94,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor,Do
 
   @Input()  key: any;
 
-  @Input()  triggerChar: number;
+  @Input()  triggerchar: number;
 
   constructor(public dataService : CommonDataService){
 
@@ -104,8 +104,8 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor,Do
     if(this.placeholder == '' || this.placeholder == null)
       this.placeholder = 'Choose Option';
 
-    if(!this.triggerChar){
-      this.triggerChar = 1;
+    if(!this.triggerchar){
+      this.triggerchar = 1;
     }
 
     if(this.httpmethod && this.httpurl){
@@ -135,7 +135,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor,Do
     this.filteredResult = [];
     this.showToolTip = false;
     let keyword : any = event.target.value;
-    if(keyword != null && keyword != ' ' && keyword.length >= this.triggerChar){
+    if(keyword != null && keyword != ' ' && keyword.length >= this.triggerchar){
       let search_term  = keyword.toLowerCase();
       this.viewData.forEach((item: any) => {
         if(item != null){

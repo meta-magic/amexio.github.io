@@ -7,8 +7,8 @@ import {Component, Input, OnInit} from '@angular/core';
   selector: 'amexio-progress-bar',
   template: `
     <div *ngIf="showProgress" class="meter" [ngClass]="{'nostripes' : stripped,'success' : type == null || type?.toLocaleLowerCase() == 'success' ,'warning' : type?.toLocaleLowerCase() == 'warning','danger' : type?.toLocaleLowerCase() == 'danger'}">
-        <span *ngIf="infinteMode" style="width: 100%;">{{label != null ? label : 'Loading...'}}</span>
-        <span *ngIf="!infinteMode" [ngStyle]="{'width.%' : currentValue}"></span>
+        <span *ngIf="infinite" style="width: 100%;">{{label != null ? label : 'Loading...'}}</span>
+        <span *ngIf="!infinite" [ngStyle]="{'width.%' : currentvalue}"></span>
 		</div>
   `
 })
@@ -17,11 +17,11 @@ export class AmexioProgressBarComponent implements OnInit {
 
   @Input()    showProgress : boolean = true;
 
-  @Input()    infinteMode : boolean;
+  @Input()    infinite : boolean;
 
   @Input()    type : string;
 
-  @Input()    currentValue : string;
+  @Input()    currentvalue : string;
 
   @Input()    progressType : string;
 

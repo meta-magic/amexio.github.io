@@ -72,7 +72,7 @@ export class AmexioTagsInputComponent implements OnInit {
 
   @Input()  key: any;
 
-  @Input()  triggerChar: number;
+  @Input()  triggerchar: number;
 
   @ViewChild('inp')  inpHandle : any;
 
@@ -84,8 +84,8 @@ export class AmexioTagsInputComponent implements OnInit {
     if(this.placeholder == '' || this.placeholder == null)
       this.placeholder = 'Choose Option';
 
-    if(!this.triggerChar){
-      this.triggerChar = 1;
+    if(!this.triggerchar){
+      this.triggerchar = 1;
     }
 
     if(this.httpmethod && this.httpurl){
@@ -111,7 +111,7 @@ export class AmexioTagsInputComponent implements OnInit {
     this.filteredResult = [];
     this.showToolTip = false;
     let keyword : any = event.target.value;
-    if(keyword != null && keyword != ' ' && keyword.length >= this.triggerChar){
+    if(keyword != null && keyword != ' ' && keyword.length >= this.triggerchar){
       let search_term  = keyword.toLowerCase();
       this.viewData.forEach((item: any) => {
         if(item != null){

@@ -13,11 +13,11 @@ import {CommonDataService} from "../../services/data/common.data.service";
 })
 export class AmexioListBoxComponent implements OnInit, AfterViewInit{
 
-  @Input() enableCheckBox : boolean;
+  @Input() enablecheckbox : boolean;
 
   @Input() header : string;
 
-  @Input() searchPlaceHolder: string;
+  @Input() searchplaceholder: string;
 
   @Input() filter : boolean;
 
@@ -56,9 +56,9 @@ export class AmexioListBoxComponent implements OnInit, AfterViewInit{
 
   constructor(public dataService : CommonDataService) {
     this.filter = false;
-    this.enableCheckBox = false;
+    this.enablecheckbox = false;
     this.selectedData = [];
-    this.searchPlaceHolder = "Search";
+    this.searchplaceholder = "Search";
   }
 
   ngOnInit() {

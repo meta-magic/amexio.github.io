@@ -26,7 +26,7 @@ export class AmexioTreeViewComponent {
   @Output()
   nodeClick: any = new EventEmitter<any>();
 
-  @Input()  enableCheckBox = false;
+  @Input()  enablecheckbox = false;
 
   @Input()
   templates : any ;

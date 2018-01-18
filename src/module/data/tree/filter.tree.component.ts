@@ -31,7 +31,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
         <ng-container *ngIf="isDataFound">
           <amexio-treeview
             [data]="treeData"
-            [enableCheckBox] ="enableCheckBox"
+            [enablecheckbox] ="enablecheckbox"
             (onTreeNodeChecked) = "onCheckSelect($event)"
             (selectedRecord)="onRowSelect($event)" [templates]="templates">
           </amexio-treeview>
@@ -61,7 +61,7 @@ export class AmexioFilterTreeComponent implements OnInit, AfterViewInit, DoCheck
   data: any;
 
   @Input()
-  enableCheckBox = false;
+  enablecheckbox = false;
 
   @Output()
   selectedRecord: any = new EventEmitter<any>();
@@ -69,7 +69,7 @@ export class AmexioFilterTreeComponent implements OnInit, AfterViewInit, DoCheck
   @Output() onTreeNodeChecked: any = new EventEmitter<any>();
 
   @Input()
-  triggerChar: number;
+  triggerchar: number;
 
   treeData: any;
 
@@ -95,7 +95,7 @@ export class AmexioFilterTreeComponent implements OnInit, AfterViewInit, DoCheck
 
   constructor(private _http: Http, private cdf: ChangeDetectorRef, private  treeViewFilterService : CommonDataService){
     this.filterIndex = 3;
-    this.triggerChar=1;
+    this.triggerchar=1;
     this.filterOptionData=[
       {
         "key":"Is Equal To",
@@ -165,7 +165,7 @@ export class AmexioFilterTreeComponent implements OnInit, AfterViewInit, DoCheck
 
   filterData() {
     this.showToolTip = false;
-    if (this.filterText.length >= this.triggerChar) {
+    if (this.filterText.length >= this.triggerchar) {
       const tData = JSON.parse(JSON.stringify(this.orgTreeData));
       const treeNodes = this.searchTree(tData, this.filterText);
       this.treeData = treeNodes;

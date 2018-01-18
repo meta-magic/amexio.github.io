@@ -1,7 +1,7 @@
 
 <div class="listbox">
   <div class="header">
-    <ng-container *ngIf="enableCheckBox">
+    <ng-container *ngIf="enablecheckbox">
       <div class="inputgroup" style="float: left">
         <div class="input-box">
           <div *ngIf="!selectAll" (click)="selectAllRecord()" class="checkbox default"></div>
@@ -11,7 +11,7 @@
     </ng-container>
     <div class="title">{{header}}</div>
     <div class="float-right" *ngIf="(filter == true)">
-      <input type="text" [(ngModel)]="filterText"  [placeholder]="searchPlaceHolder" (keyup)="filterData()"  class="search "/>
+      <input type="text" [(ngModel)]="filterText"  [placeholder]="searchplaceholder" (keyup)="filterData()"  class="search "/>
     </div>
   </div>
 
@@ -19,7 +19,7 @@
     <ul class="list">
       <li class="list-items" *ngFor="let row of viewData let rowno = index ">
         <div (click)="onClick(row)">
-          <ng-container *ngIf="enableCheckBox">
+          <ng-container *ngIf="enablecheckbox">
             <div class="inputgroup" style="float: left">
               <div class="input-box">
                 <div (click)="selectedCheckBox(row)" [class]="row.isSelected ?'checkbox active':'checkbox default'">
