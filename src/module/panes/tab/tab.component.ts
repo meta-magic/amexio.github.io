@@ -28,7 +28,7 @@ export class AmexioTabComponent  implements  OnInit, AfterViewInit,AfterContentI
 
   tabCollection: AmexioTabPill[];
 
-  @Output() activatedTab: any = new EventEmitter<any>();
+  @Output() onClick: any = new EventEmitter<any>();
 
   showprev : boolean = false;
 
@@ -56,7 +56,7 @@ export class AmexioTabComponent  implements  OnInit, AfterViewInit,AfterContentI
     for(let i=0;i<this.tabCollection.length;i++){
       if(this.tabCollection[i]=== tab){
         this.tabCollection[i]['active'] = true;
-        this.activatedTab.emit(tab);
+        this.onClick.emit(tab);
       }else{
         this.tabCollection[i]['active'] = false;
       }

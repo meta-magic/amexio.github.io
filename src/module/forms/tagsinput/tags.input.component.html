@@ -6,7 +6,7 @@
 
 
   <div class="tag-input">
-    <div class="tag" *ngFor="let item of selectedValues">
+    <div class="tag" *ngFor="let item of onSelections">
       {{item[key]}}
       <span class="closebtn" (click)="removePill(item)">&times;</span>
     </div>

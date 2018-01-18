@@ -28,7 +28,7 @@ export class AmexioCheckBoxComponent implements ControlValueAccessor{
 
   @Input()   required: string;
 
-  @Output() selectedValue : any = new EventEmitter<any>();
+  @Output() onSelection : any = new EventEmitter<any>();
 
   constructor(){
 
@@ -36,7 +36,7 @@ export class AmexioCheckBoxComponent implements ControlValueAccessor{
 
   onClick(){
     this.value = !this.value;
-    this.selectedValue.emit(this.value);
+    this.onSelection.emit(this.value);
   }
 
   // The internal dataviews model

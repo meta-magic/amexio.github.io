@@ -33,7 +33,7 @@ export class AmexioRadioGroupComponent {
 
   @Input()    data : any;
 
-  @Output() selectedValue : any = new EventEmitter<any>();
+  @Output() onSelection : any = new EventEmitter<any>();
 
   viewData : any;
 
@@ -84,7 +84,7 @@ export class AmexioRadioGroupComponent {
         this.viewData[r]['selected']=false;
       }
     }
-    this.selectedValue.emit(row);
+    this.onSelection.emit(row);
   }
 
 

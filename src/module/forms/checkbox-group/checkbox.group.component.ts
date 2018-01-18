@@ -37,7 +37,7 @@ export class AmexioCheckBoxGroupComponent{
 
   @Input()    column: string;
 
-  @Output() selectedValue : any = new EventEmitter<any>();
+  @Output() onSelection : any = new EventEmitter<any>();
 
   calculatedColSize : any;
 
@@ -145,7 +145,7 @@ export class AmexioCheckBoxGroupComponent{
         sRows.push(cloneSelectedChecks[sr]);
       }
     }
-    this.selectedValue.emit(sRows);
+    this.onSelection.emit(sRows);
   }
 
 

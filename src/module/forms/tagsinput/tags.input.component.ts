@@ -29,7 +29,7 @@ export class AmexioTagsInputComponent implements OnInit {
   @Output()   onChange  : EventEmitter<any> = new EventEmitter<any>();
 
 
-  selectedValues : any[] = [];
+  onSelections : any[] = [];
 
   displayValue : any;
 
@@ -153,20 +153,20 @@ export class AmexioTagsInputComponent implements OnInit {
 
   setValue(value : any, ref : any){
     this.inpHandle.nativeElement.value= '';
-    this.selectedValues.push(value);
-    this.onChange.emit(this.selectedValues);
+    this.onSelections.push(value);
+    this.onChange.emit(this.onSelections);
     this.showToolTip = false;
 
   }
 
   removePill(item : any){
     let indexToRemove : number = null;
-    this.selectedValues.forEach((selectedVal,index)=>{
+    this.onSelections.forEach((selectedVal,index)=>{
       if(selectedVal == item)
         indexToRemove = index;
     });
-    this.selectedValues.splice(indexToRemove,1);
-    this.onChange.emit(this.selectedValues);
+    this.onSelections.splice(indexToRemove,1);
+    this.onChange.emit(this.onSelections);
   }
 
 

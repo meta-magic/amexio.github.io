@@ -22,7 +22,7 @@ export class AmexioVerticalTabComponent  implements  OnInit, AfterViewInit,After
 
   @ContentChildren(AmexioTabPill)  queryTabs: QueryList<AmexioTabPill>;
 
-  @Output() activatedTab: any = new EventEmitter<any>();
+  @Output() onClick: any = new EventEmitter<any>();
 
   tabCollection: AmexioTabPill[];
 
@@ -47,7 +47,7 @@ export class AmexioVerticalTabComponent  implements  OnInit, AfterViewInit,After
     for(let i=0;i<this.tabCollection.length;i++){
       if(this.tabCollection[i]=== tab){
         this.tabCollection[i]['active'] = true;
-        this.activatedTab.emit(tab);
+        this.onClick.emit(tab);
       }else{
         this.tabCollection[i]['active'] = false;
       }

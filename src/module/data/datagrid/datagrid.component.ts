@@ -121,7 +121,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
       <div class="datatable-height" [style.height.px]="height">
         <div class="datatable">
           <div class="datatable-row" *ngFor="let row of viewRows;let i=index" id="{{'row'+i}}" [ngClass]="rowBgColor"
-               (click)="rowClick(row, i,rowData)" #rowData>
+               (click)="onRowClick(row, i,rowData)" #rowData>
 
             <ng-container *ngIf="enablecheckbox">
               <div class="datatable-col datatable-checkbox-width">
@@ -164,7 +164,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
     <ng-container *ngIf="groupby && !enabledatafilter">
       <div class="datatable-height" [style.height.px]="height">
         <div class="datatable">
-          <div class="datatable-row" *ngFor="let row of viewRows;let i=index" id="{{'row'+i}}" (click)="rowClick(row, i, rowData)" #rowData>
+          <div class="datatable-row" *ngFor="let row of viewRows;let i=index" id="{{'row'+i}}" (click)="onRowClick(row, i, rowData)" #rowData>
             <ng-container *ngIf="enablecheckbox">
               <div class="datatable-col" style="width: 10%">
                 <div class="inputgroup">
@@ -587,7 +587,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
     column.hidden = !column.hidden;
   }
 
-  rowClick(rowData: any, rowIndex: any, rowRef: any) {
+  onRowClick(rowData: any, rowIndex: any, rowRef: any) {
     if(rowRef.classList.contains('datatable-row-active')){
       rowRef.classList.remove('datatable-row-active');
     } else {

@@ -35,7 +35,7 @@ export class AmexioListBoxComponent implements OnInit, AfterViewInit{
 
   @Output() selectedRows: any = new EventEmitter<any>();
 
-  @Output() rowClick: any = new EventEmitter<any>();
+  @Output() onRowClick: any = new EventEmitter<any>();
 
   @ContentChild('amexioBodyTmpl') bodyTemplate: TemplateRef<any>;
 
@@ -151,7 +151,7 @@ export class AmexioListBoxComponent implements OnInit, AfterViewInit{
   }
 
   onClick(data:any){
-    this.rowClick.emit(data);
+    this.onRowClick.emit(data);
   }
 
   ngAfterViewInit(){
