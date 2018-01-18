@@ -27,13 +27,9 @@ import {StepBlockComponent} from "./step-block";
     <div class="stepwizard" *ngIf="(icon && !index && !block)">
       <div class="stepwizard-row setup-panel">
         <div *ngFor="let stepBlock of stepBlockArray; let i = index" class="stepwizard-step">
-          <!--this is for material design-->
-          <ng-container *ngIf="stepBlock.icon && stepBlock.mdb ">
-            <i [attr.class]="'material-icons'" (click)="onClick(stepBlock,$event)">{{stepBlock.icon}}</i>
-          </ng-container>
-          <!--this is for fontawesome-->
-          <ng-container *ngIf="stepBlock.icon && !stepBlock.mdb">
-            <i [attr.class]="stepBlock.icon" (click)="onClick(stepBlock,$event)"></i>
+      
+          <ng-container *ngIf="stepBlock.icon">
+            <amexio-pane-icon [customclass]="stepBlock.icon" (onClick)="onClick(stepBlock,$event)"></amexio-pane-icon>
           </ng-container>
           <ng-container *ngIf="stepBlock.icon=='' || !stepBlock.icon">
             <br>
@@ -59,12 +55,8 @@ import {StepBlockComponent} from "./step-block";
                 <ng-container *ngIf="index">
                   {{i + 1}}<br>
                 </ng-container>
-                <ng-container *ngIf="icon && stepBlock.icon && stepBlock.mdb ">
-                  <i [attr.class]="'material-icons'" (click)="onClick(stepBlock,$event)">{{stepBlock.icon}}</i>
-                </ng-container>
-
-                <ng-container *ngIf="icon && stepBlock.icon && !stepBlock.mdb">
-                  <i [attr.class]="stepBlock.icon" (click)="onClick(stepBlock,$event)"></i>
+                 <ng-container *ngIf="icon && stepBlock.icon">
+                   <amexio-pane-icon [customclass]="stepBlock.icon" (onClick)="onClick(stepBlock,$event)"></amexio-pane-icon>
                 </ng-container>
                 <ng-container *ngIf="stepBlock.label && !stepBlock.active">
                   <p>{{stepBlock.label}}</p>

@@ -1,6 +1,12 @@
 <button class="accordion" #btn1 (click)="onTabClick(btn1)">{{header}}
   <div style="float: right">
-    <i class="fa fa-plus" aria-hidden="true"></i>
+    <ng-container *ngIf="expanded;else notExpanded">
+      <amexio-pane-icon key="accordion_collapse"></amexio-pane-icon>
+    </ng-container>
+    <ng-template #accordion_collapse>
+      <amexio-pane-icon key="accordion_expand"></amexio-pane-icon>
+    </ng-template>
+    <!--<i class="fa fa-plus" aria-hidden="true"></i>-->
   </div>
 </button>
 <div class="panel">

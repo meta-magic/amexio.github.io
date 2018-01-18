@@ -1,7 +1,8 @@
 <ul>
   <li  *ngFor="let node of data">
 
-    <div class="defaultnode" [ngClass]="{'activenode':node.active}" (click)="onClick(node)"> <span *ngIf="node.icon"><i class="node-icon" [ngClass]="node.icon" aria-hidden="true"></i></span>{{node.text}}</div>
+    <div class="defaultnode" [ngClass]="{'activenode':node.active}" (click)="onClick(node)"> <span *ngIf="node.icon"><amexio-nav-icon class="node-icon" [customclass]="node.icon"></amexio-nav-icon></span>{{node.text}}</div>
+    <!--<i class="node-icon" [ngClass]="node.icon" aria-hidden="true"></i>-->
     <amexio-sidenav-node  *ngIf="node.children && (node.children.length>0)"  [data]="node.children" (nodeclick)="onClick($event)"></amexio-sidenav-node>
   </li>
 </ul>

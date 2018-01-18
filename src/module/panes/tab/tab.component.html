@@ -7,7 +7,8 @@
         <div class="table">
           <div class="tablerow">
             <div *ngIf="tabnode.icon" class="tablecol">
-              <span *ngIf="tabnode.icon" [ngClass]="tabnode.icon"  aria-hidden="true"></span>
+              <amexio-pane-icon *ngIf="tabnode.icon" [customclass]="tabnode.icon"></amexio-pane-icon>
+              <!--<span *ngIf="tabnode.icon" [ngClass]="tabnode.icon"  aria-hidden="true"></span>-->
             </div>
             <div class="tablecol">
               {{tabnode.title}}

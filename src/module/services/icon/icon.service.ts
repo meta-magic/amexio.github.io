@@ -97,25 +97,27 @@ let ICON_MAPPING =
       "fa" : "fa fa-angle-double-right",
       "mat" :"last_page"
     },
+
+
     {
       "component" : "itemselector_caretup",
       "fa" : "fa fa-caret-up",
-      "mat" : "keyboard_arrow_up"
+      "mat" : "arrow_drop_up"
     },
     {
       "component" : "itemselector_caretdown",
       "fa" : "fa fa-caret-down",
-      "mat" : "keyboard_arrow_down"
+      "mat" : "arrow_drop_down"
     },
     {
       "component" : "itemselector_arrowup",
       "fa" : "fa fa-arrow-up",
-      "mat" : ""
+      "mat" : "arrow_upward"
     },
     {
       "component" : "itemselector_arrowdown",
       "fa" : "fa fa-arrow-down",
-      "mat" : ""
+      "mat" : "arrow_downward"
     },
     {
       "component" : "itemselector_arrowleft",
@@ -127,6 +129,8 @@ let ICON_MAPPING =
       "fa" : "fa fa-arrow-right",
       "mat" : "keyboard_arrow_right"
     },
+
+
     {
       "component" : "tab_previous",
       "fa" : "fa fa-angle-left fa-2x",
@@ -224,6 +228,31 @@ let ICON_MAPPING =
       "component" : "data_check",
       "fa" : "fa fa-check",
       "mat" : "check"
+    },
+
+
+
+
+    {
+      "component" : "button_caret-down",
+      "fa" : "fa fa-caret-down",
+      "mat" : "arrow_drop_down"
+    },
+
+    {
+      "component" : "menubar_ravelry",
+      "fa" : "fa fa-ravelry",
+      "mat" : "done"
+    },
+    {
+      "component" : "sidenav-angle-up",
+      "fa" : "fa fa-angle-up",
+      "mat" : "keyboard_arrow_up"
+    },
+    {
+      "component" : "sidenav-angle-down",
+      "fa" : "fa fa-angle-down",
+      "mat" : "keyboard_arrow_down"
     }
   ]
 ;

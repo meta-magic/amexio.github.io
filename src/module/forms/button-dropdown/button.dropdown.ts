@@ -15,7 +15,8 @@ import {AmexioButtonDropDownItemComponent} from "./button.dropdown.item";
 
       <button  (click)="onClick()" [ngClass]="{'button-default': size=='default' || size ==null,'button-small': size=='small','button-large' : size=='large','button-primary' : type == 'primary' || type == null,'button-success' : type == 'success',' button-danger' : type=='danger','button-warning' : type=='warning'}" >
         <span [attr.disabled] = "disabled ? true: null">{{label}} &nbsp;&nbsp;</span>
-        <i class="fa fa-caret-down" style="float:right;" ></i>
+        <!--<i class="fa fa-caret-down" style="float:right;" ></i>-->
+        <amexio-form-icon style="float:right;" key="button_caret-down"></amexio-form-icon>
       </button>
 
       <div style="position: absolute;" [ngStyle]="{'display' : openContent ? 'block' : 'none'}">
@@ -23,7 +24,8 @@ import {AmexioButtonDropDownItemComponent} from "./button.dropdown.item";
           <div>
             <button (click)="itemClick($event,itemData)" [ngClass]="{'button-default': size=='default' || size ==null,'button-small': size=='small','button-large' : size=='large','button-primary' : type == 'primary' || type == null,'button-success' : type == 'success',' button-danger' : type=='danger','button-warning' : type=='warning'}" >
               <span [attr.disabled] = "itemData.disabled ? true: null">{{itemData.label}}&nbsp;&nbsp;</span>
-              <i [class]="itemData.iconStyleClass" aria-hidden="true" style="float:right;" ></i>
+              <!--<i [class]="itemData.iconStyleClass" aria-hidden="true" style="float:right;" ></i>-->
+              <amexio-form-icon style="float:right;" [customclass]="itemData.iconStyleClass"></amexio-form-icon>
             </button>
 
           </div>
@@ -68,7 +70,7 @@ export class AmexioButtonDropdownComponent implements AfterContentInit {
     for (let cr = 0 ; cr < itemRefArray.length; cr++) {
       const itemConfig = itemRefArray[cr];
       const data: any = {label : itemConfig.label, disabled: itemConfig.disabled, onItemClick : itemConfig.onItemClick, iconStyleClass: itemConfig.iconStyleClass, icon : itemConfig.icon, onClickRoute: itemConfig.onClickRoute};
-      data.iconStyleClass = data.icon + ' right-icon';
+      data.iconStyleClass = data.icon;
       this.dropdownItemData.push(data);
     }
   }
