@@ -101,6 +101,15 @@ $accordionActiveColor:$cardHeaderColor;
 $accordionPanelBGColor:$cardBGColor;
 $accordionPanelColor: $accordionColor;
 
+$dockBarBGColor: $defaultColor;
+$dockBarColor: white;
+$dockBarContentBGColor : $cardBGColor;
+$dockBarSize: $tabBorderSize;
+$dockBarActiveBorderColor: $tabActiveBorder;
+$dockBarActiveBorderSize: $tabActiveBorderSize;
+$dockBarActiveColor:$dockBarBGColor;
+$dockBarActiveBGColor:$dockBarColor;
+
 $borderLayoutBorder : 0px;
 $borderLayoutBorderColor : none;
 

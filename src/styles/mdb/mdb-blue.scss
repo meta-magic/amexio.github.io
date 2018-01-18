@@ -89,6 +89,16 @@ $cardFooterBGColor: $themeBGColor;
 $cardFooterColor: $themeColor;
 $cardBorderColor: $borderColor;
 
+$dockBarBGColor: $cardHeaderBGColor;
+$dockBarColor: $cardHeaderColor;
+$dockBarContentBGColor : $cardBGColor;
+$dockBarSize: $tabBorderSize;
+$dockBarColor : $tabBorderColor;
+$dockBarActiveBorderColor: $tabActiveBorder;
+$dockBarActiveBorderSize: $tabActiveBorderSize;
+$dockBarActiveColor:$cardHeaderColor;
+$dockBarActiveBGColor:lighten($cardHeaderBGColor,20%);
+
 $toastBGColor : $themeBGColor;
 $toastColor : $themeColor;
 

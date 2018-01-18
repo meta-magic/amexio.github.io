@@ -97,6 +97,15 @@ $accordionActiveColor:white;
 $accordionPanelBGColor:$cardBGColor;
 $accordionPanelColor: $cardColor;
 
+$dockBarBGColor: rgba(55, 20, 2, 0.70);
+$dockBarColor: white;
+$dockBarContentBGColor : $cardBGColor;
+$dockBarSize: none;
+$dockBarActiveBorderColor: $dockBarBGColor;
+$dockBarActiveBorderSize: $tabActiveBorderSize;
+$dockBarActiveColor:$dockBarBGColor;
+$dockBarActiveBGColor:$dockBarColor;
+
 $borderLayoutBorder : 0px;
 $borderLayoutBorderColor : none;
 

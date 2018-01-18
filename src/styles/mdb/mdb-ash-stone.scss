@@ -94,6 +94,16 @@ $cardBorderColor: $borderColor;
 $toastBGColor : $themeBGColor;
 $toastColor : $themeColor;
 
+$dockBarBGColor: $cardHeaderBGColor;
+$dockBarColor: $cardHeaderColor;
+$dockBarContentBGColor : $cardBGColor;
+$dockBarSize: $tabBorderSize;
+$dockBarColor : $tabBorderColor;
+$dockBarActiveBorderColor: $tabActiveBorder;
+$dockBarActiveBorderSize: $tabActiveBorderSize;
+$dockBarActiveColor:$cardHeaderColor;
+$dockBarActiveBGColor:lighten($cardHeaderBGColor,20%);
+
 $accordionBGColor:lighten($cardHeaderBGColor,20%);
 $accordionColor:$cardHeaderColor;
 $accordionActiveBGColor:$cardHeaderBGColor;

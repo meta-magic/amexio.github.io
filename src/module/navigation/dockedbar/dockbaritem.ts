@@ -5,13 +5,16 @@ import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'amexio-dockbar-item',
-  template: `    
-    <div *ngIf="active" [style.width]="width">
+  template: `
+    <div *ngIf="active" [style.width]="width" class="dockbar-active-content" [style.min-height]="height">
       <ng-container *ngIf="active && title">
-        <div class="amexio-dockbar-title">
+        <div class="dockbar-title">
           {{title}}
-          <span class="amexio-dockbar-item-close-bar" (click)="onBarIconClick()">
+          <span class="dockbar-item-close-bar" (click)="onBarIconClick()">
             <amexio-nav-icon key="dockbar_close"></amexio-nav-icon>
+            <!--
+                        <i class="fa fa-times" aria-hidden="true"></i>
+            -->
           </span>
         </div>
       </ng-container>
@@ -36,6 +39,8 @@ export class DockbarComponent implements OnInit{
   @Input() title:string;
 
   @Input() path:any;
+
+  @Input() height :string;
 
   elementId:string;
 

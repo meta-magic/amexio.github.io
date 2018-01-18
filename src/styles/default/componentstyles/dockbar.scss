@@ -1,20 +1,22 @@
-.amexio-dockbar {
+.dockbar {
   float: left;
   width: 70px;
-  border: 1px solid #f1f1f1;
-  background-color: #dee0e3;
+  //border: $borderSize solid $borderColor;
+  background-color: $dockBarBGColor;
+  color: $dockBarColor;
   position: relative;
+  border-top: $dockBarSize solid $dockBarColor;
 }
 
-.amexio-dockbar-item{
-  background-color: #f1f1f1;
+.dockbar-content{
+  background-color: $dockBarContentBGColor;
 }
 
 /* Style the buttons inside the tab */
-.amexio-dockbar button {
+.dockbar button {
   display: block;
   background-color: inherit;
-  color: #adadad;
+  color: $dockBarColor;
   padding: 5px;
   width: 100%;
   border: none;
@@ -23,40 +25,48 @@
   cursor: pointer;
   transition: 0.3s;
   font-size: 17px;
-  border-bottom: 1px solid #c7c7c7;
-  border-left: 5px solid #dee0e3;
+  border-bottom: $dockBarSize solid $dockBarColor;
+  border-left: $dockBarSize solid $dockBarColor;
   height: 50px;
 }
 
 /* Change background color of buttons on hover */
-.amexio-dockbar button:hover {
-  background-color: #f1f1f1;
+.dockbar button:hover {
+  background-color: $dockBarActiveBGColor;
+  color:$dockBarActiveColor;
 }
 
 /* Create an active/current "tab button" class */
-.amexio-dockbar button.active {
-  background-color: #f1f1f1;
-  color: black;
-  border-left: 5px solid #3192e1;
+.dockbar button.active {
+  background-color: $dockBarActiveBGColor;
+  color:$dockBarActiveColor;
+  border-left: $dockBarActiveBorderSize solid $dockBarActiveBorderColor;
 }
 
-.amexio-dockbar-label-highlight {
+.dockbar-label-highlight {
   color: black;
   font-weight: bold;
 }
 
-.amexio-dockbar-item-close-bar{
+.dockbar-item-close-bar{
   font-size: 24px;
   float: right;
-  color: black;
+  color: $dockBarActiveBorderColor;
   font-weight: 500;
+  cursor: pointer;
 }
-.amexio-dockbar-title{
-  box-sizing: border-box;
+.dockbar-title{
   font-size: 17px;
   font-weight: 500;
   padding: 15px 10px 10px 90px;
-  border-bottom: 1px solid #c7c7c7;
+  border-bottom: 1px solid $dockBarActiveBorderColor;
 }
 
 
+.dockbar-active-content{
+  border-top: $dockBarActiveBorderSize solid $dockBarActiveBorderColor;
+  border-right: $dockBarActiveBorderSize solid $dockBarActiveBorderColor;
+  border-bottom: $dockBarActiveBorderSize solid $dockBarActiveBorderColor;
+  height: 100%;
+
+}
