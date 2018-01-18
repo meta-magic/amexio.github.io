@@ -33,7 +33,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
             [data]="treeData"
             [enablecheckbox] ="enablecheckbox"
             (onTreeNodeChecked) = "onCheckSelect($event)"
-            (selectedRecord)="onRowSelect($event)" [templates]="templates">
+            (nodeClick)="onRowSelect($event)" [templates]="templates">
           </amexio-treeview>
         </ng-container>
         <ng-container *ngIf="!isDataFound">
