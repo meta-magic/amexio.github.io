@@ -1,15 +1,22 @@
 /**BUTTON**/
 
-.button {
+button {
+
   display: inline-block;
-  position: relative;
-  padding: 0;
-  margin-right: .1em;
-  cursor: pointer;
+  font-weight: 400;
+  line-height: 1.25;
   text-align: center;
-  zoom: 1;
-  overflow: visible;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid $borderColor;
+  padding: .5rem 1rem;
   border-radius: $borderRadius;
+  transition: all .2s ease-in-out;
+
 }
 
 .button-text {
@@ -96,6 +103,7 @@
 
 .btn-group button{
   padding-right: 10px;
+
 }
 
 /* Clear floats (clearfix hack) */

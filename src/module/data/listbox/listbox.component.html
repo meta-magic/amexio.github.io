@@ -18,6 +18,7 @@
   <div class="listbox-height" [style.height.px]="height">
     <ul class="list">
       <li class="list-items" *ngFor="let row of viewData let rowno = index ">
+        <!--
         <div class="datatable">
           <div class="datatable-row">
             <div class="datatable-col" *ngIf="enablecheckbox" style="width: 5%;">
@@ -34,9 +35,9 @@
               <ng-template *ngIf="bodyTemplate" [ngTemplateOutlet]="bodyTemplate" [ngTemplateOutletContext]="{ row: row }"></ng-template>
             </div>
           </div>
-        </div>
+        </div>-->
 
-        <!--
+
         <div (click)="onClick(row)">
           <ng-container *ngIf="enablecheckbox">
             <div class="inputgroup" style="float: left; height: 100%;background-color: red;">
@@ -50,7 +51,7 @@
           <ng-container *ngIf="!bodyTemplate"> {{row[displayfield]}}</ng-container>
           <ng-template *ngIf="bodyTemplate" [ngTemplateOutlet]="bodyTemplate" [ngTemplateOutletContext]="{ row: row }"></ng-template>
         </div>
-        -->
+
       </li>
     </ul>
   </div>

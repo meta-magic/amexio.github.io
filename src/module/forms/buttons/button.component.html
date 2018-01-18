@@ -2,7 +2,9 @@
         [attr.disabled] = "disabled ? true: null"
         [ngClass]="{'button-default': size=='default' || size ==null,'button-small': size=='small','button-large' : size=='large','button-primary' : type == 'primary','button-success' : type == 'success',' button-danger' : type=='danger','button-warning' : type=='warning','disabled' : disabled}"
         (click)="buttonClick($event)">
-  <span class="button-text">
-    <!--<i class="{{icon}}" style="padding-right: 5px; " aria-hidden="true"></i>-->
-    <span style="padding-right: 5px; "><amexio-form-icon [customclass]="icon" ></amexio-form-icon></span>{{label}}</span>
+        <span class="button-text">
+          <!--<i class="{{icon}}" style="padding-right: 5px; " aria-hidden="true"></i>-->
+          <span style="padding-right: 5px;" *ngIf="icon"><amexio-form-icon [customclass]="icon" ></amexio-form-icon></span>
+          {{label}}
+        </span>
 </button>
