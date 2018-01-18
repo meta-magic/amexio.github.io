@@ -10,7 +10,8 @@ import {CommonDataService} from "../../services/data/common.data.service";
 
 
 @Component({
-  selector: 'amexio-tree-filter-view', template: `
+  selector: 'amexio-tree-filter-view',
+  template : `
 
     <div>
       <div>
@@ -52,21 +53,28 @@ import {CommonDataService} from "../../services/data/common.data.service";
 })
 export class AmexioFilterTreeComponent implements OnInit, AfterViewInit, DoCheck {
 
-  @Input() httpurl: string;
+  @Input()
+  httpurl: string;
 
-  @Input() httpmethod: string;
+  @Input()
+  httpmethod: string;
 
-  @Input() datareader: string;
+  @Input()
+  datareader: string;
 
-  @Input() data: any;
+  @Input()
+  data: any;
 
-  @Input() enablecheckbox = false;
+  @Input()
+  enablecheckbox = false;
 
-  @Output() selectedRecord: any = new EventEmitter<any>();
+  @Output()
+  selectedRecord: any = new EventEmitter<any>();
 
   @Output() onTreeNodeChecked: any = new EventEmitter<any>();
 
-  @Input() triggerchar: number;
+  @Input()
+  triggerchar: number;
 
   treeData: any;
 
@@ -76,40 +84,61 @@ export class AmexioFilterTreeComponent implements OnInit, AfterViewInit, DoCheck
 
   filterIndex: number;
 
-  templates: any;
+  templates: any ;
 
-  isDataFound = true;
+  isDataFound= true;
 
-  onClickSearch = false;
+  onClickSearch= false;
 
   filterOptionData: any;
 
   previousValue: any;
 
-  showToolTip: boolean;
+  showToolTip : boolean;
 
-  @ContentChild('amexioTreeTemplate') parentTmp: TemplateRef<any>;
+  @ContentChild('amexioTreeTemplate')   parentTmp: TemplateRef<any>;
 
-  constructor(private _http: Http, private cdf: ChangeDetectorRef, private  treeViewFilterService: CommonDataService) {
+  constructor(private _http: Http, private cdf: ChangeDetectorRef, private  treeViewFilterService : CommonDataService){
     this.filterIndex = 3;
-    this.triggerchar = 1;
-    this.filterOptionData = [{
-      "key": "Is Equal To", "value": "1", "type": "string", "checkedStatus": ""
-    }, {
-      "key": "Is Not Equal To", "value": "2", "type": "string", "checkedStatus": ""
-    }, {
-      "key": "Start With", "value": "3", "type": "string", "checkedStatus": "data_check"
-    }, {
-      "key": "Ends With", "value": "4", "type": "string", "checkedStatus": ""
-    }, {
-      "key": "Contains", "value": "5", "type": "string", "checkedStatus": ""
-    },];
+    this.triggerchar=1;
+    this.filterOptionData=[
+      {
+        "key":"Is Equal To",
+        "value":"1",
+        "type":"string",
+        "checkedStatus":""
+      },
+      {
+        "key":"Is Not Equal To",
+        "value":"2",
+        "type":"string",
+        "checkedStatus":""
+      },
+      {
+        "key":"Start With",
+        "value":"3",
+        "type":"string",
+        "checkedStatus":"fa fa-check"
+      },
+      {
+        "key":"Ends With",
+        "value":"4",
+        "type":"string",
+        "checkedStatus":""
+      },
+      {
+        "key":"Contains",
+        "value":"5",
+        "type":"string",
+        "checkedStatus":""
+      },
+    ];
   }
 
 
   ngOnInit() {
     if (this.parentTmp != null) {
-      this.templates = {treeNodeTemplate: this.parentTmp};
+      this.templates = {treeNodeTemplate : this.parentTmp};
     } else if (this.templates != null) {
       this.parentTmp = this.templates.treeNodeTemplate;
       // this.cdf.detectChanges();
@@ -118,7 +147,7 @@ export class AmexioFilterTreeComponent implements OnInit, AfterViewInit, DoCheck
 
   ngAfterViewInit() {
     if (this.parentTmp != null) {
-      this.templates = {treeNodeTemplate: this.parentTmp};
+      this.templates = {treeNodeTemplate : this.parentTmp};
     } else if (this.templates != null) {
       this.parentTmp = this.templates.treeNodeTemplate;
       // this.cdf.detectChanges();
@@ -150,7 +179,7 @@ export class AmexioFilterTreeComponent implements OnInit, AfterViewInit, DoCheck
       } else {
         this.isDataFound = true;
       }
-    } else if (this.onClickSearch) {
+    }else if (this.onClickSearch) {
       let tData = JSON.parse(JSON.stringify(this.orgTreeData));
       let treeNodes = this.searchTree(tData, this.filterText);
       this.treeData = treeNodes;
@@ -197,10 +226,10 @@ export class AmexioFilterTreeComponent implements OnInit, AfterViewInit, DoCheck
   filterOption(data: any) {
     this.onClickSearch = true;
     this.filterIndex = data.value;
-    this.filterOptionData.forEach((opt: any) => {
-      if (opt.value != data.value) {
+    this.filterOptionData.forEach((opt : any) => {
+      if (opt.value!=data.value) {
         opt.checkedStatus = '';
-      } else {
+      }else {
         opt.checkedStatus = 'fa fa-check';
       }
     });
@@ -212,7 +241,7 @@ export class AmexioFilterTreeComponent implements OnInit, AfterViewInit, DoCheck
     this.setData(this.data);
   }
 
-  setData(httpResponse: any) {
+  setData(httpResponse: any){
     let tdata = this.getData(httpResponse);
     if (tdata) {
       this.orgTreeData = JSON.parse(JSON.stringify(tdata));
@@ -220,21 +249,24 @@ export class AmexioFilterTreeComponent implements OnInit, AfterViewInit, DoCheck
     }
   }
 
-  getData(httpResponse: any) {
-    let responsedata: any = httpResponse;
+  getData(httpResponse: any){
+    let responsedata  : any= httpResponse;
     let dr = this.datareader.split('.');
-    for (let ir = 0; ir < dr.length; ir++) {
+    for (let ir = 0 ; ir < dr.length; ir++) {
       responsedata = responsedata[dr[ir]];
     }
     return responsedata;
   }
 
-  callService() {
-    this.treeViewFilterService.fetchData(this.httpurl, this.httpmethod).subscribe(response => {
-      this.data = response.json();
-    }, () => {
-      this.renderServiceData();
-    });
+  callService(){
+    this.treeViewFilterService.fetchData(this.httpurl, this.httpmethod).subscribe(
+      response => {
+        this.data = response.json();
+      },
+      () => {
+        this.renderServiceData();
+      }
+    );
   }
 
   onRowSelect(data: any) {
