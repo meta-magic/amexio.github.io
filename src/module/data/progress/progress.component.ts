@@ -23,8 +23,6 @@ export class AmexioProgressBarComponent implements OnInit {
 
   @Input()    currentvalue : string;
 
-  @Input()    progressType : string;
-
   @Input()    label : any;
 
   @Input()    height : any;
