@@ -10,10 +10,10 @@ import {IconLoaderService} from "../../services/icon/icon.service";
    <ng-container *ngIf="iconLoaderService.iconToUse == 'fa'">
      
      <ng-container *ngIf="customclass != null">
-       <i class="{{customclass}}" aria-hidden="true" (click)="onClick.emit($event)"></i>
+       <i class="{{customclass}}" aria-hidden="true" (click)="onClick.emit($event)" style="cursor: pointer;"></i>
      </ng-container>
      <ng-container *ngIf="customclass == null">
-       <i class="{{getIconClass()}}" aria-hidden="true" (click)="onClick.emit($event)"></i>
+       <i class="{{getIconClass()}}" aria-hidden="true" (click)="onClick.emit($event)" style="cursor: pointer;"></i>
      </ng-container>
        
    </ng-container>
@@ -21,11 +21,11 @@ import {IconLoaderService} from "../../services/icon/icon.service";
    <ng-container *ngIf="iconLoaderService.iconToUse == 'mat'">
      
      <ng-container *ngIf="customclass != null">
-       <i class="material-icons" (click)="onClick.emit($event)">{{customclass}}</i>
+       <i class="material-icons" (click)="onClick.emit($event)" style="cursor: pointer;">{{customclass}}</i>
      </ng-container>
      
      <ng-container *ngIf="customclass == null">
-       <i class="material-icons" (click)="onClick.emit($event)">{{getIconClass()}}</i>  
+       <i class="material-icons" (click)="onClick.emit($event)" style="cursor: pointer;">{{getIconClass()}}</i>  
      </ng-container>
      
      
