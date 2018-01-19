@@ -157,7 +157,6 @@ export class AmexioSideNav  implements  OnInit{
         }
         else{
           this.width = "0%";
-          console.log(this.smalldevice);
           this.sidenavexpandedinsmalldevice = false;
         }
       }else{
