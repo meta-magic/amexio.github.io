@@ -7,8 +7,8 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 @Component({
   selector: 'amexio-window',
   template: `
-
-    <div class="modal-window" [ngClass]="{'modal-window-max':isFullWindow}" [ngStyle]="{'display' : showWindow ? 'block' : 'none'}">
+    <div class="root-window" [ngClass]="{'modal-window-max':isFullWindow}" [ngStyle]="{'display' : showWindow ? 'block' : 'none'}"> 
+      <div class="modal-window-{{dialog ? 'sm' : 'lg'}}">
       <div class="modal-window-content" [ngClass]="{'modal-window-content-max':isFullWindow}">
         <header class="modal-window-header">
           <div class="table" style="width: 100%;">
@@ -42,7 +42,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
       </div>
 
     </div>
-
+    </div>
   `
 })
 export class AmexioWindowPaneComponent implements  OnInit{
@@ -54,6 +54,8 @@ export class AmexioWindowPaneComponent implements  OnInit{
   isFullWindow : boolean;
 
   @Input() maximize: boolean;
+
+  @Input()  dialog : boolean;
 
   @Input()  closable : boolean;
 
