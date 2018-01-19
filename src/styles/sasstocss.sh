@@ -18,9 +18,9 @@ sass mda/at-md-hot-pink-fuchsia.scss:css/at-md-hot-pink-fuchsia.css;
 
 sass mda/at-md-indigo.scss:css/at-md-indigo.css;
 
-sass mda/mda-jungle-mint.scss:css/mda-jungle-mint.css;
+sass mda/at-md-jungle-mint.scss:css/at-md-jungle-mint.css;
 
-sass mda/at-md-lightblue.scss:css/at-md-lightblue.css;
+sass mda/at-md-maya.scss:css/at-md-maya.css;
 
 sass mda/at-md-mahogany-barny-red.scss:css/at-md-mahogany-barny-red.css;
 sass mda/at-md-navy-egyptian.scss:css/at-md-navy-egyptian.css;

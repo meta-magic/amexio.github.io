@@ -206,27 +206,27 @@ export class AppModule { }
 <th>Amexio Themes</th>
 </tr>
 <tr>
- <td>Amber</td>AT-MD-Gold-Amber
- <td>Cyan</td>AT-AM-Ocean-Blue
+ <td>AT-MD-Gold-Amber</td>
+ <td>AT-AM-Ocean-Blue</td>
 </tr>
 <tr>
- <td>Army-Olive</td>AT-MD-Army-Olive
- <td>Deep Orange</td>AT-AM-Tiger
+ <td>AT-MD-Army-Olive</td>
+ <td>AT-AM-Tiger</td>
 </tr>
 <tr>
-<td>Ash Stone Black</td>AT-MD-Ash Stone Black
-<td>Lime Green</td> ??
+<td>AT-MD-Ash Stone Black</td>
+<td>AT-AM-Lime Green</td> ??
 </tr>
 <tr>
- <td>Black</td>AT-MD-Black
- <td>Matrix</td>AT-AM-Matrix
+ <td>AT-MD-Black</td>AT-MD-Black
+ <td>AT-AM-Matrix</td>
 </tr>
 <tr>
- <td>Blue</td>AT-MD-Blue
- <td>Orange</td>AT-AM-Spicy-Apricot
+ <td>AT-MD-Blue</td>
+ <td>AT-AM-Spicy-Apricot</td>
 </tr>
 <tr>
-	<td>Blue Grey</td>AT-MD-Blue-Grey
+	<td>AT-MD-Blue Grey</td>AT-MD-Blue-Grey
 	<td>Polygon</td>AT-AM-Byzantine-Crystal
 </tr>
 <tr>
