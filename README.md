@@ -1,3 +1,4 @@
+# New Document
 <h1 align="center">
   <br>
   <a href="http://www.amexio.tech/"><img src="https://image.ibb.co/kdy6Ev/logo.png" alt="Amexio" width="200"></a>
@@ -57,11 +58,6 @@
   </h3>
 </div>
 
-
-<div align="center">
-  <h3>Amexio ❤ Bootstrap</h3>
-  <sub>We have components for both, the Bootstrap 3.3.7 & Bootstrap 4.0.0 alpha 6
-</div>
 <br/>
 
 <div align="center">
@@ -81,25 +77,17 @@
 - [Overview](#overview)
 - [Getting Started](#getting-started)
 - [Installation](#amexio-angular-extension---installation)
-- [Installing Dependecies](#installing-dependencies-required)
+- [Amexio Modules](#amexio-modules)
 - [Amexio Themes](#amexio-themes-material--bootstrap)
-- [Amexio Charts](#amexio-charts)
-- [Amexio Dashboard](#amexio-dashboard)
-- [Amexio Maps](#amexio-maps)
-- [Visual Studio Code Extension](#amexio-microsoft-visual-studio-code-extensions)
 - [License](#license)
 
 ## Features
-- __Angular 5:__ our library supports Angular 5!
-- __Bootstrap Support:__ our library supports Bootstrap 4 & 3 out of the box
-- __Highly Customizable:__ Lot of customization can be done easily.
-- __Components, Charts, Dashboard & Maps!!:__ We make sure you're nothing short of while building your app
+- __Pure TypeScript:__ Amexio is a pure Typescript library with 0 Dependencies & Angular 5 Support.
+- __Server Rending Support:__ Components support & optimized for server side rendering.
+- __Highly Customizable Styling:__ Lot of customization can be done easily using the Amexio SCSS files.
+- __80+ High Grade Components:__ We make sure you're nothing short of while building your app
 - __Modular Support:__ Load Only what you want, amexio is Modular.
 
-
-
-### [Amexio Bootstrap 3](http://www.amexio.org/showcaseapp/v1/index.html)
-### [Amexio Bootstrap 4](http://www.amexio.org/showcaseapp/v2/index.html)
 
 ## Angular CLI - Installation
 
@@ -133,29 +121,6 @@ To install this library, follow the steps given below:
 ```bash
 $ cd your-angular-project
 ```
-## For Bootstrap 4
-```bash
-$ npm install amexio-ng-extensions@latest --save
-```
-## For Bootstrap 3
-```bash
-$ npm install amexio-ng-extensions@1.0.43 --save
-```
-
-### Installing Dependencies (Required)
-Amexio requires the following libraries to work
-1) [jQuery](https://www.npmjs.com/package/jquery)
-2) [Bootstrap Alpha 6](https://www.npmjs.com/package/bootstrap). (Requires Tether.js & Popper.js)
-3) <strike>[bootstrap-datepicker](https://www.npmjs.com/package/bootstrap-datepicker) </strike> Deprecated from v3.0
-4) <strike> [bootstrap-timepicker](https://www.npmjs.com/package/bootstrap-timepicker) </strike> Deprecated from v3.0
-5) [Font Awesome](https://www.npmjs.com/package/font-awesome)
-
-Include these in your app's .angular-cli.json
-<img src="https://preview.ibb.co/b4F1gG/dependecy.png" alt="dependecy" border="0">
-
-Include the respective JS & CSS in your app i.e if you are using Angular CLI add it in .angular-cli.json.
- If not using cli then simply add it to the index.html head.
-
 
 and then from your Angular `AppModule`:
 
@@ -166,7 +131,7 @@ import {FormsModule} from "@angular/forms";
 import { AppComponent } from './app.component';
 
 // Import your library
-import { AmexioWidgetModule,CommonHttpService } from 'amexio-ng-extensions';
+import { AmexioWidgetModule,CommonDataService } from 'amexio-ng-extensions';
 
 @NgModule({
   declarations: [
@@ -177,144 +142,174 @@ import { AmexioWidgetModule,CommonHttpService } from 'amexio-ng-extensions';
     FormsModule,
     AmexioWidgetModule
   ],
-  providers: [CommonHttpService],
+  providers: [CommonDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
 ```
+# Amexio Modules
+<table> 
+<tr>
+<th>Amexio Modules</th>
+</tr>
 
-Once your library is imported, you can use its components, directives and pipes in your Angular application:
+<tr>
+<td>AmexioWidgetModule</td>
+</tr>
 
-```xml
-<!-- You can now use your library component in app.component.html -->
-<amexio-text-input></amexio-text-input>
-```
-## Amexio Charts
-Amexio Charts is provided as a seperate Module as <b>AmexioChartModule</b> available under ```amexio-ng-extensions/charts```
-To begin please add the module to your Component's Module
+<tr>
+<td>AmexioFormsModule</td>
+</tr>
 
-```typescript
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import {FormsModule} from "@angular/forms";
-import { AppComponent } from './app.component';
+<tr>
+<td>AmexioDataModule</td>
+</tr>
 
-// Import your library
-import { AmexioChartModule } from 'amexio-ng-extensions/charts';
+<tr>
+<td>AmexioLayoutModule</td>
+</tr>
 
-@NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    AmexioChartModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
-```
+<tr>
+<td>AmexioPaneModule</td>
+</tr>
 
-Once Amexio Charting library is imported, you could use it ,
+<tr>
+<td>AmexioNavModule</td>
+</tr>
 
-```xml
-<!-- You can now use your library component in app.component.html -->
-<amexio-chart-column [data]="employeeData"></amexio-chart-column>
-```
-More On Charts here :  [Charts Docs](https://github.com/meta-magic/amexio.github.io/tree/v2.0/src/modules/charts)
+<tr>
+<td>AmexioMediaModule</td>
+</tr>
 
-## Amexio Dashboard
-Amexio Dashboard is provided as a seperate Module as <b>AmexioDashboard</b> available under ```amexio-ng-extensions/dashboard```
-To begin please add the module to your Component's Module
+<tr>
+<td>AmexioMapsModule</td>
+</tr>
 
-```typescript
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import {FormsModule} from "@angular/forms";
-import { AppComponent } from './app.component';
+<tr>
+<td>AmexioChartsModule</td>
+</tr>
 
-// Import your library
-import { AmexioDashboardModule } from 'amexio-ng-extensions/dashboard';
+<tr>
+<td>AmexioDashBoardModule</td>
+</tr>
 
-@NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    AmexioDashboardModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
-```
+<tr>
+<td>AmexioEnterpriseEEModule</td>
+</tr>
 
-Once Amexio Dashboard library is imported, you could use it ,
+</table>
 
-```xml
-<!-- You can now use your library component in app.component.html -->
-<amexio-dashboard-gauge [data]="systemMetrics"></amexio-dashboard-gauge>
-```
-More on Dashboard Module : [Dashboard Docs](https://github.com/meta-magic/amexio.github.io/tree/v2.0/src/modules/dashboard)
+# Amexio Themes (Amexio / Amexio Material)
 
-## Amexio Maps
-Amexio Maps is provided as a seperate Module as <b>AmexioMapsModule</b> available under ```amexio-ng-extensions/maps```
-To begin please add the module to your Component's Module
+<table> 
+<tr>
+<th>Amexio Material Themes</th>
+<th>Amexio Themes</th>
+</tr>
+<tr>
+ <td>Amber</td>
+ <td>Cyan</td>
+</tr>
+<tr>
+ <td>Army Olive</td>
+ <td>Deep Orange</td>
+</tr>
+<tr>
+<td>Ash Stone Black</td>
+<td>Lime Green</td>
+</tr>
+<tr>
+ <td>Black</td>
+ <td>Matrix</td>
+</tr>
+<tr>
+ <td>Blue</td>
+ <td>Orange</td>
+</tr>
+<tr>
+	<td>Blue Grey</td>
+	<td>Polygon</td>
+</tr>
+<tr>
+	<td>Brown</td>
+	<td>Pyramid</td>
+</tr>
+<tr>
+	<td>Cerise Magneta</td>
+	<td>Red</td>
+</tr>
+<tr>
+	<td>Charcoal Russet</td>
+	<td></td>
+</tr>
+<tr>
+	<td>Fern Lime</td>
+	<td></td>
+</tr>
+<tr>
+ <td>Frenchrose-mulberry</td>
+ <td></td>
+</tr>
+<tr>
+ <td>Grape Voliet</td>
+ <td></td>
+</tr>
 
-```typescript
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import {FormsModule} from "@angular/forms";
-import { AppComponent } from './app.component';
+<tr>
+ <td>Hot Pint Fuchsia</td>
+ <td></td>
+</tr>
 
-// Import your library
-import { AmexioMapsModule } from 'amexio-ng-extensions/dashboard';
+<tr>
+ <td>Indigo</td>
+ <td></td>
+</tr>
 
-@NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    AmexioMapsModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
-```
-Once Amexio Maps library is imported, you could use it ,
+<tr>
+ <td>Jungle Mint</td>
+ <td></td>
+</tr>
 
-```xml
-<!-- You can now use your library component in app.component.html -->
-<amexio-map-geo-chart [data]="population"></amexio-map-geo-chart>
-```
-More on Maps Module here : [Maps Docs](https://github.com/meta-magic/amexio.github.io/tree/v2.0/src/modules/maps)
-# Amexio Themes (Material / Bootstrap)
+<tr>
+ <td>Light Blue</td>
+ <td></td>
+</tr>
 
-<table> <tr><th>Material Themes</th><th>Bootstrap Themes</th></tr><tr><td>Amber</td><td>Cyan</td></tr><tr><td>Blue Grey</td><td>Deep Orange</td></tr><tr><td>Brown</td><td>Lime Green</td></tr><tr><td>Indigo</td><td>Matrix</td></tr><tr><td>Light Blue</td><td>Orange</td></tr><tr><td></td><td>Polygon</td></tr><tr><td></td><td>Pyramid</td></tr><tr><td></td><td>Red</td></tr></table>
+<tr>
+ <td>Mahogany Barny Red</td>
+ <td></td>
+</tr>
 
-<img src="https://preview.ibb.co/nhn0tG/themecss.png" alt="theme_MAT_indigo" border="0">
+<tr>
+ <td>Navy Egyptian</td>
+ <td></td>
+</tr>
 
-More on Amexio themes here : [Amexio themes](https://github.com/meta-magic/amexio.github.io/tree/v2.0/src/themes)
+<tr>
+ <td>Raspberry Sangria</td>
+ <td></td>
+</tr>
 
-# Amexio Microsoft Visual Studio Code Extensions
 
-This extension will help the developers of Visual Studio Code with quick code snippet for the Amexio Markup as well as Amexio TypeScript for the Angular Extensions.
+<tr>
+ <td>Red Maroon</td>
+ <td></td>
+</tr>
 
-## Usage
+<tr>
+ <td>Sacremento Jado</td>
+ <td></td>
+</tr>
 
-Select the Amexio Ui Component
-<img src="https://raw.githubusercontent.com/meta-magic/Amexio-VSC-Extension/master/images/Amexio-VSC-Ex-1.jpg" />
+<tr>
+ <td>Yale Azure</td>
+ <td></td>
+</tr>
 
-Fill up the required Component Params
-<img src="https://raw.githubusercontent.com/meta-magic/Amexio-VSC-Extension/master/images/Amexio-VSC-Ex-2.jpg" />
 
+</table>
+
+More on Amexio themes here : [Amexio themes](https://github.com/meta-magic/amexio.github.io/tree/v4.0/src/modules/styles)
 
 ## License
 
