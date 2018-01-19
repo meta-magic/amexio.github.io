@@ -1781,7 +1781,7 @@ input[type='range']::-webkit-slider-thumb {
 
 .card-header {
   display: flex;
-  padding: 20px 24px;
+  padding: 10px 24px;
   background: none;
   border-bottom: 3px solid #70196F;
   font-size: 20px;
@@ -2068,7 +2068,6 @@ button.app-button {
   border-bottom: 2px solid #666666; }
 
 .datatable .datatable-header .datatable-col {
-  height: 50px;
   font-weight: 500; }
 
 .datatable .datatable-header {
