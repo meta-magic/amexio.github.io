@@ -1886,7 +1886,7 @@ fieldset {
   font-weight: bolder; }
 
 .step-box-table-item.active {
-  background-color: #800000 !important; }
+  background-color: #ff8080 !important; }
 
 .step-box-table-item.disbaled {
   background-color: gray;

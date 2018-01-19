@@ -127,7 +127,7 @@ $fieldSetBorderSize : $borderSize;
 $fieldSetBorderColor : $borderColor;
 $collapsibleLegendColor : $themeColor;
 
-$stepsActiveBGColor : $themeBGColor;
+$stepsActiveBGColor : lighten($themeBGColor,50%);
 $stepsColor : $themeColor;
 $stepsBGColor : $backgroundcolor;
 $stepsLabelHighlight : darken($defaultColor, 30);
