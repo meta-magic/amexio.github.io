@@ -125,7 +125,7 @@ $fieldSetBorderSize : $borderSize;
 $fieldSetBorderColor : $borderColor;
 $collapsibleLegendColor : $themeColor;
 
-$stepsActiveBGColor : $themeBGColor;
+$stepsActiveBGColor : lighten($themeBGColor,50%);
 $stepsColor : $themeColor;
 $stepsBGColor : $backgroundcolor;
 $stepsLabelHighlight : darken($defaultColor, 30);
@@ -219,7 +219,7 @@ button.app-button {
 }
 
 .datatable .datatable-header .datatable-col{
-  height: 50px;
+  //height: 50px;
   font-weight: 500;
 }
 

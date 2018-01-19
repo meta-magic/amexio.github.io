@@ -1781,7 +1781,7 @@ input[type='range']::-webkit-slider-thumb {
 
 .card-header {
   display: flex;
-  padding: 20px 24px;
+  padding: 10px 24px;
   background: #2B1700;
   border-bottom: 1px solid #ced4da;
   font-size: 20px;
@@ -1886,7 +1886,7 @@ fieldset {
   font-weight: bolder; }
 
 .step-box-table-item.active {
-  background-color: #2B1700 !important; }
+  background-color: #ff9c2b !important; }
 
 .step-box-table-item.disbaled {
   background-color: gray;
@@ -2057,7 +2057,6 @@ button.app-button {
   height: 50px; }
 
 .datatable .datatable-header .datatable-col {
-  height: 50px;
   font-weight: 500; }
 
 .datatable .datatable-header {
