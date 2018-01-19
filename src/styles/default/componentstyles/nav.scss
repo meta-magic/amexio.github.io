@@ -2,7 +2,7 @@
 
 .menu-container {
   margin: 0 auto;
-  
+
 }
 
 .menubar .menuheader {
@@ -42,7 +42,9 @@
   }
 
 }
-
+.menulink:hover{
+  background-color: $menuHoverColor;;
+}
 
 .menu-content {
   display: none;
