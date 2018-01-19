@@ -11,8 +11,8 @@ import {CommonDataService} from "../../services/data/common.data.service";
 @Component({
   selector: 'amexio-datagrid',
   template: `
-    <div>
-      <div class="title">
+    <div class="datagrid">
+      <div class="datatabletitle">
         <span> {{title}} </span>
         <span *ngIf="enablecolumnfiter ? true:false" class="float-right"
               (click)="showToolTip = !showToolTip ; showGroupByColumn = false"
