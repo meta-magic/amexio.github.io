@@ -1,31 +1,38 @@
-sass mda/mda-amber.scss:css/mda-amber.css;
-sass mda/mda-army-olive.scss:css/mda-army-olive.css;
-sass mda/mda-ash-stone.scss:css/mda-ash-stone.css;
-sass mda/mda-black.scss:css/mda-black.css;
-sass mda/mda-blue.scss:css/mda-blue.css;
-sass mda/mda-bluegrey.scss:css/mda-bluegrey.css;
-sass mda/mda-brown.scss:css/mda-brown.css;
-sass mda/mda-cerise-magenta.scss:css/mda-cerise-magenta.css;
-sass mda/mda-charcoal-iron.scss:css/mda-charcoal-iron.css;
-sass mda/mda-chocolate-russet.scss:css/mda-chocolate-russet.css;
-sass mda/mda-fern-lime.scss:css/mda-fern-lime.css;
-sass mda/mda-frenchrose-mulberry.scss:css/mda-frenchrose-mulberry.css;
-sass mda/mda-grape-voliet.scss:css/mda-grape-voliet.css;
-sass mda/mda-hot-pint-fuchsia.scss:css/mda-hot-pint-fuchsia.css;
-sass mda/mda-indigo.scss:css/mda-indigo.css;
-sass mda/mda-jungle-mint.scss:css/mda-jungle-mint.css;
-sass mda/mda-lightblue.scss:css/mda-lightblue.css;
-sass mda/mda-mahogany-barny-red.scss:css/mda-mahogany-barny-red.css;
-sass mda/mda-navy-egyptian.scss:css/mda-navy-egyptian.css;
-sass mda/mda-rasberry-sangria.scss:css/mda-rasberry-sangria.css;
-sass mda/mda-red-maroon.scss:css/mda-red-maroon.css;
-sass mda/mda-sacramento-jade.scss:css/mda-sacramento-jade.css;
+sass mda/at-md-gold-amber.scss:css/at-md-gold-amber.css;
 
-sass amexio/amexio-cyan.scss:css/amexio-cyan.css;
-sass amexio/amexio-deep-orange.scss:css/amexio-deep-orange.css;
-sass amexio/amexio-limegreen.scss:css/amexio-limegreen.css;
-sass amexio/amexio-matrix.scss:css/amexio-matrix.css;
-sass amexio/amexio-orange.scss:css/amexio-orange.css;
-sass amexio/amexio-polygon.scss:css/amexio-polygon.css;
-sass amexio/amexio-pyramind.scss:css/amexio-pyramind.css;
-sass amexio/amexio-red.scss:css/amexio-red.css;
+sass mda/at-md-army-olive.scss:css/at-md-army-olive.css;
+sass mda/at-md-ash-stone-black.scss:css/at-md-ash-stone-black.css;
+sass mda/at-md-black.scss:css/at-md-black.css;
+sass mda/at-md-blue.scss:css/at-md-blue.css;
+
+sass mda/at-md-blue-grey.scss:css/at-md-blue-grey.css;
+sass mda/at-md-gingerbread.scss:css/at-md-gingerbread.css;
+
+sass mda/at-md-cerise-magenta.scss:css/at-md-cerise-magenta.css;
+sass mda/at-md-charcoal-iron.scss:css/at-md-charcoal-iron.css;
+sass mda/at-md-chocolate-russet.scss:css/at-md-chocolate-russet.css;
+sass mda/at-md-fern-lime.scss:css/at-md-fern-lime.css;
+sass mda/at-md-frenchrose-mulberry.scss:css/at-md-frenchrose-mulberry.css;
+sass mda/at-md-grape-voliet.scss:css/at-md-grape-voliet.css;
+sass mda/at-md-hot-pink-fuchsia.scss:css/at-md-hot-pink-fuchsia.css;
+
+sass mda/at-md-indigo.scss:css/at-md-indigo.css;
+
+sass mda/mda-jungle-mint.scss:css/mda-jungle-mint.css;
+
+sass mda/at-md-lightblue.scss:css/at-md-lightblue.css;
+
+sass mda/at-md-mahogany-barny-red.scss:css/at-md-mahogany-barny-red.css;
+sass mda/at-md-navy-egyptian.scss:css/at-md-navy-egyptian.css;
+sass mda/at-md-rasberry-sangria.scss:css/at-md-rasberry-sangria.css;
+sass mda/at-md-red-maroon.scss:css/at-md-red-maroon.css;
+sass mda/at-md-sacramento-jade.scss:css/at-md-sacramento-jade.css;
+
+sass amexio/at-am-ocean-blue.scss:css/at-am-ocean-blue.css;
+sass amexio/at-am-tiger.scss:css/at-am-tiger.css;
+sass amexio/at-am-limegreen.scss:css/at-am-limegreen.css;
+sass amexio/at-am-matrix.scss:css/at-am-matrix.css;
+sass amexio/at-am-spicy-apricot.scss:css/at-am-spicy-apricot.css;
+sass amexio/at-am-byzantine-crystal.scss:css/at-am-byzantine-crystal.css;
+sass amexio/at-am-honey-prussian.scss:css/at-am-honey-prussian.css;
+sass amexio/at-am-persian-laguna.scss:css/at-am-persian-laguna.css;

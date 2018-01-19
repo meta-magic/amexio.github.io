@@ -206,102 +206,102 @@ export class AppModule { }
 <th>Amexio Themes</th>
 </tr>
 <tr>
- <td>Amber</td>
- <td>Cyan</td>
+ <td>Amber</td>AT-MD-Gold-Amber
+ <td>Cyan</td>AT-AM-Ocean-Blue
 </tr>
 <tr>
- <td>Army Olive</td>
- <td>Deep Orange</td>
+ <td>Army-Olive</td>AT-MD-Army-Olive
+ <td>Deep Orange</td>AT-AM-Tiger
 </tr>
 <tr>
-<td>Ash Stone Black</td>
-<td>Lime Green</td>
+<td>Ash Stone Black</td>AT-MD-Ash Stone Black
+<td>Lime Green</td> ??
 </tr>
 <tr>
- <td>Black</td>
- <td>Matrix</td>
+ <td>Black</td>AT-MD-Black
+ <td>Matrix</td>AT-AM-Matrix
 </tr>
 <tr>
- <td>Blue</td>
- <td>Orange</td>
+ <td>Blue</td>AT-MD-Blue
+ <td>Orange</td>AT-AM-Spicy-Apricot
 </tr>
 <tr>
-	<td>Blue Grey</td>
-	<td>Polygon</td>
+	<td>Blue Grey</td>AT-MD-Blue-Grey
+	<td>Polygon</td>AT-AM-Byzantine-Crystal
 </tr>
 <tr>
-	<td>Brown</td>
-	<td>Pyramid</td>
+	<td>Brown</td>AT-MD-Ginger-Bread
+	<td>Pyramid</td>AT-AM-Honey-Prussian
 </tr>
 <tr>
-	<td>Cerise Magneta</td>
-	<td>Red</td>
+	<td>Cerise Magneta</td>AT-MD-Cerise Magneta
+	<td>Red</td>AT-AM-Persian-Laguna
 </tr>
 <tr>
-	<td>Charcoal Russet</td>
+	<td>Charcoal Russet</td>AT-MD-Charcoal Russet
 	<td></td>
 </tr>
 <tr>
-	<td>Fern Lime</td>
+	<td>Fern Lime</td>AT-MD-
 	<td></td>
 </tr>
 <tr>
- <td>Frenchrose-mulberry</td>
+ <td>Frenchrose-mulberry</td>AT-MD-
  <td></td>
 </tr>
 <tr>
- <td>Grape Voliet</td>
- <td></td>
-</tr>
-
-<tr>
- <td>Hot Pint Fuchsia</td>
+ <td>Grape Voliet</td>AT-MD-
  <td></td>
 </tr>
 
 <tr>
- <td>Indigo</td>
+ <td>Hot Pink Fuchsia</td>AT-MD-
  <td></td>
 </tr>
 
 <tr>
- <td>Jungle Mint</td>
+ <td>Indigo</td>AT-MD-Saphire
  <td></td>
 </tr>
 
 <tr>
- <td>Light Blue</td>
+ <td>Jungle Mint</td>AT-MD-
  <td></td>
 </tr>
 
 <tr>
- <td>Mahogany Barny Red</td>
+ <td>Light Blue</td>AT-MD-Maya
  <td></td>
 </tr>
 
 <tr>
- <td>Navy Egyptian</td>
+ <td>Mahogany Barny Red</td>AT-MD-Mahogany Barny Red
  <td></td>
 </tr>
 
 <tr>
- <td>Raspberry Sangria</td>
+ <td>Navy Egyptian</td>AT-MD-Navy Egyptian
+ <td></td>
+</tr>
+
+<tr>
+ <td>Raspberry Sangria</td>AT-MD-Raspberry Sangria
  <td></td>
 </tr>
 
 
 <tr>
- <td>Red Maroon</td>
+ <td>Red Maroon</td>AT-MD-Red Maroon
  <td></td>
 </tr>
 
 <tr>
- <td>Sacremento Jado</td>
+ <td>Sacremento Jado</td>AT-MD-Sacremento Jado
  <td></td>
 </tr>
 
 <tr>
- <td>Yale Azure</td>
+ <td>Yale Azure</td>AT-MD-Yale Azure
  <td></td>
 </tr>
 
