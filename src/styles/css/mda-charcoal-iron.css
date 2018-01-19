@@ -166,9 +166,6 @@ button {
   float: left;
   /* Float the buttons side by side */ }
 
-.btn-group button {
-  padding-right: 10px; }
-
 /* Clear floats (clearfix hack) */
 .btn-group:after {
   content: "";
@@ -1378,7 +1375,10 @@ input[type='range']::-webkit-slider-thumb {
   .menubar .menuheader .menulink:hover .menu-content {
     display: block; }
   .menubar .menuheader .menulink:hover a {
-    color: black; }
+    color: blue; }
+
+.menulink:hover {
+  color: blue; }
 
 .menu-content {
   display: none;
@@ -1426,7 +1426,7 @@ input[type='range']::-webkit-slider-thumb {
   color: black; }
 
 .menu-content .menu-content-cols .content .menu-links-header:hover {
-  color: black; }
+  color: blue; }
 
 .menu-content .menu-content-cols .content .menulinks {
   width: 100%;
@@ -1435,7 +1435,7 @@ input[type='range']::-webkit-slider-thumb {
   color: black; }
 
 .menu-content .menu-content-cols .content .menulinks:hover {
-  color: black; }
+  color: blue; }
 
 @media only screen and (max-width: 959px) {
   .menu-content .menu-content-cols .col-menu-nodes {
@@ -1462,7 +1462,7 @@ input[type='range']::-webkit-slider-thumb {
     .menubar .menuheader .menulink:hover .menu-content {
       display: none; }
     .menubar .menuheader .menulink:hover a {
-      color: black; } }
+      color: blue; } }
 /**Dockbar **/
 .amexio-dockbar-item-close-bar {
   font-size: 24px;
@@ -1960,7 +1960,78 @@ fieldset {
 .verticalnavtab-right {
   border-left: 1px solid #ced4da; }
 
-.modal-window {
+/*
+.modal-window{
+  flex-direction: column;
+  position: fixed; !* Stay in place *!
+  z-index: 1; !* Sit on top *!
+  padding-top: 100px; !* Location of the box *!
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; !* Enable scroll if needed *!
+  background-color: $modalBGColor; !* Black w/ opacity *!
+}
+
+.modal-window-content{
+  //position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0px;
+  border: 1px solid #888;
+  width: 80%;
+  height: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.modal-window-max{
+  padding-top: 0px;
+}
+
+.modal-window-content > * {
+  padding: 10px;
+}
+
+
+.modal-window-content-max{
+  width: 100%;
+  height: 100%;
+}
+
+
+
+
+.modal-window-header{
+  background-color: $cardHeaderColor;
+  border-bottom: $borderSize solid $borderColor;
+}
+
+.modal-window-middle{
+  height: auto !important;
+  min-height: 85% !important;
+}
+
+.modal-window-footer{
+  background-color: $cardFooterColor;
+  border-top: $borderSize solid $borderColor;
+  display: flex;
+}
+*/
+.root-window {
+  flex-direction: column;
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  background-color: gray;
+  /* Black w/ opacity */
+  width: 100%;
+  height: 100vh;
+  left: 0;
+  top: 0; }
+
+.modal-window-lg {
   flex-direction: column;
   position: fixed;
   /* Stay in place */
@@ -1968,14 +2039,23 @@ fieldset {
   /* Sit on top */
   padding-top: 100px;
   /* Location of the box */
-  left: 0;
-  top: 0;
   width: 100%;
   height: 100%;
   overflow: auto;
+  /* Enable scroll if needed */ }
+
+.modal-window-sm {
+  flex-direction: column;
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  padding-top: 80px;
+  /* Location of the box */
+  width: 50%;
+  height: 50%;
   /* Enable scroll if needed */
-  background-color: gray;
-  /* Black w/ opacity */ }
+  padding-left: 25%; }
 
 .modal-window-content {
   background-color: #fefefe;
@@ -1990,7 +2070,7 @@ fieldset {
   padding-top: 0px; }
 
 .modal-window-content > * {
-  padding: 10px; }
+  padding: 0px; }
 
 .modal-window-content-max {
   width: 100%;
@@ -2068,10 +2148,6 @@ button.app-button {
 
 .datatable .datatable-row {
   height: 50px; }
-
-.datatable .datatable-header .datatable-col {
-  height: 50px;
-  font-weight: 500; }
 
 .datatable .datatable-header {
   background-color: #48494B;
