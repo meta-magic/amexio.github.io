@@ -163,10 +163,10 @@ import {CommonDataService} from "../../services/data/common.data.service";
 
     <ng-container *ngIf="groupby && !enabledatafilter">
       <div class="datatable-height" [style.height.px]="height">
-        <div class="datatable">
-          <div class="datatable-row" *ngFor="let row of viewRows;let i=index" id="{{'row'+i}}" (click)="onRowClick(row, i, rowData)" #rowData>
+        <div class="datatable"  style="table-layout: auto">
+          <div class="datatable-row"  *ngFor="let row of viewRows;let i=index" id="{{'row'+i}}" (click)="onRowClick(row, i, rowData)" #rowData>
             <ng-container *ngIf="enablecheckbox">
-              <div class="datatable-col" style="width: 10%">
+              <div class="datatable-col datatable-checkbox-width">
                 <div class="inputgroup">
                   <div class="input-box">
                     <div (click)="selectParent(row)" [class]="row.isSelected ?'checkbox active':'checkbox default'">
@@ -178,14 +178,14 @@ import {CommonDataService} from "../../services/data/common.data.service";
             </ng-container>
             <ng-container *ngFor="let cols of columns;let colIndex = index">
               <ng-container *ngIf="isGroupChecking(row)">
-                <div class="datatable-col" style="width: 90%" >
+                <div class="datatable-col" style="width:inherit">
                   <ng-container *ngIf="colIndex == 0">
-                    
+
                     <!--<i *ngIf="!row.expanded" class="fa fa-caret-right" aria-hidden="true" (click)="toogle(row,i)"></i>-->
                     <ng-container *ngIf="!row.expanded">
                       <amexio-data-icon key="datagrid_expand" (onClick)="toogle(row,i)"></amexio-data-icon>
                     </ng-container>
-                    
+
                     <!--<i *ngIf="row.expanded" class="fa fa-caret-down" aria-hidden="true" (click)="toogle(row,i)"></i>-->
                     <ng-container *ngIf="row.expanded">
                       <amexio-data-icon key="datagrid_collapse" (onClick)="toogle(row,i)"></amexio-data-icon>
@@ -195,10 +195,11 @@ import {CommonDataService} from "../../services/data/common.data.service";
                 </div>
               </ng-container>
               <ng-container *ngIf="!isGroupChecking(row)">
-                <div class="datatable-col" [style.width.%]="cols.width">
-               <span style="padding-left: 20px">
-              {{row[cols.dataindex]}}
-               </span>
+                <div class="datatable-col" [style.width.%]="cols.width"  [attr.data-label]="cols.text">
+                   <span style="padding-left: 20px">
+                     {{row[cols.dataindex]}}
+                   </span>
+
                 </div>
               </ng-container>
             </ng-container>
