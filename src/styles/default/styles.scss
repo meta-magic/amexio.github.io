@@ -144,10 +144,4 @@ body {
 
 }
 
-@import "common";
-
-@import "amexio.components.scss";
-@import "amexio.data.scss";
-@import "amexio.layouts.scss";
-@import "amexio.nav.scss";
-@import "amexio.panes.scss";
+@import "../mda/mda-blue";   // Default Theme to load
