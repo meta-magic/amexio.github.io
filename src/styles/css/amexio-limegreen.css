@@ -1878,18 +1878,18 @@ fieldset {
 .step-box-table-item {
   width: 2px;
   display: table-cell;
-  background-color: lightgray;
+  background-color: #F0EEE9;
   text-align: center;
   vertical-align: middle;
   line-height: 15px;
-  border: 1px solid black;
+  border: 1px solid #417505;
   font-weight: bolder; }
 
 .step-box-table-item.active {
-  background-color: #F0EEE9; }
+  background-color: #417505 !important; }
 
 .step-box-table-item.disbaled {
-  background-color: white;
+  background-color: gray;
   cursor: not-allowed; }
 
 .tab {

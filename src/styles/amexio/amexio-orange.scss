@@ -13,7 +13,6 @@ $backgroundcolor: $defaultBGColor;
 
 $componentBGColor: $backgroundcolor;
 
-
 $themeBGColor :  rgba(55, 20, 2, 0.50);
 $themeColor :  $defaultColor;
 
@@ -23,13 +22,11 @@ $successBGColor : #5cb85c;
 $dangerBGColor : #d9534f;
 $warningBGColor : #f0ad4e;
 
-
 $primaryColor: white;
 $secondaryColor: $color;
 $successColor : $oppColor;
 $dangerColor : $oppColor;
 $warningColor : $oppColor;
-
 
 $success: $successBGColor;
 $error : $dangerBGColor;
@@ -122,6 +119,13 @@ $fieldSetBorderSize : $borderSize;
 $fieldSetBorderColor : $borderColor;
 
 $collapsibleLegendColor : $themeColor;
+
+$stepsActiveBGColor : $themeBGColor;
+$stepsColor : $themeColor;
+$stepsBGColor : $backgroundcolor;
+$stepsLabelHighlight : darken($defaultColor, 30);
+$stepsBorderColor:$borderColor;
+$stepsDisabled : lighten($menubarColor,50%);
 
 @import "../default/common.scss";
 @import "../default/amexio.components.scss";
