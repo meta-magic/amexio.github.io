@@ -1,4 +1,3 @@
-# New Document
 <h1 align="center">
   <br>
   <a href="http://www.amexio.tech/"><img src="https://image.ibb.co/kdy6Ev/logo.png" alt="Amexio" width="200"></a>
@@ -8,7 +7,7 @@
 </h1>
 
 <div align="center">
-  An Enterprise grade Comprehensive UI Components, Charts, Dashboards, Maps Library for Web 2.0 Apps based on Angular and powered by Bootstrap 4 for responsive design.
+  Amexio (Angular MetaMagic EXtensions for Inputs and Outputs) is a pure Typescript Compnent Library of Angular. We provide modular import for using our rich set of components,charts, maps , dashboard, forms, data, media, layout etc and can be easily configured and implemented in a project. Check out the Demo App built using Amexio. For the Amexio UI Library refer API documentation.
 </div>
 <br/>
 
