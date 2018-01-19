@@ -121,6 +121,13 @@ $fieldSetBorderSize : $borderSize;
 $fieldSetBorderColor : $borderColor;
 $collapsibleLegendColor : $themeColor;
 
+$stepsActiveBGColor : $themeBGColor;
+$stepsColor : $themeColor;
+$stepsBGColor : $backgroundcolor;
+$stepsLabelHighlight : darken($defaultColor, 30);
+$stepsBorderColor:$borderColor;
+$stepsDisabled : lighten($menubarColor,50%);
+
 @import "../default/common.scss";
 
 @import "../default/amexio.components.scss";

@@ -1,6 +1,6 @@
 
 .step-label-highlight {
-  color: black;
+  color: $stepsLabelHighlight;
   font-weight: bold;
 }
 .stepwizard-step p {
@@ -22,7 +22,7 @@
   content: " ";
   width: 100%;
   height: 1px;
-  background-color: $backgroundcolor;
+  background-color: $stepsBGColor;
   z-index: 0;
 }
 .stepwizard-step {
@@ -49,21 +49,23 @@
 .step-box-table{
   display: table-row;
 }
+
 .step-box-table-item{
   width: 2px;
   display: table-cell;
-  background-color: lightgray;
+  background-color: $stepsBGColor;
   text-align: center;
   vertical-align: middle;
   line-height: 15px;
-  border: 1px solid black;
+  border: 1px solid $stepsBorderColor;
   font-weight: bolder;
 }
 
 .step-box-table-item.active{
-  background-color: $menubarBGColor;
+  background-color: $stepsActiveBGColor!important;
 }
+
 .step-box-table-item.disbaled{
-  background-color: lighten($menubarBGColor,50%);
+  background-color: $stepsDisabled;
   cursor : not-allowed;
 }

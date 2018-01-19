@@ -1828,7 +1828,7 @@ fieldset {
   height: auto; }
 
 .step-label-highlight {
-  color: black;
+  color: rgba(179, 179, 179, 0.7);
   font-weight: bold; }
 
 .stepwizard-step p {
@@ -1878,18 +1878,18 @@ fieldset {
 .step-box-table-item {
   width: 2px;
   display: table-cell;
-  background-color: lightgray;
+  background-color: #000000;
   text-align: center;
   vertical-align: middle;
   line-height: 15px;
-  border: 1px solid black;
+  border: 1px solid #16E73C;
   font-weight: bolder; }
 
 .step-box-table-item.active {
-  background-color: #000000; }
+  background-color: #16E73C !important; }
 
 .step-box-table-item.disbaled {
-  background-color: gray;
+  background-color: rgba(255, 255, 255, 0.7);
   cursor: not-allowed; }
 
 .tab {
