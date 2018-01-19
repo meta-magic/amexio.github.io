@@ -46,8 +46,10 @@ export class AmexioItemSelectorComponent implements OnInit {
 
   previousValue: any;
 
+  check: any;
 
-  constructor(public itemSelectorService : CommonDataService) { }
+
+  constructor(public itemSelectorService: CommonDataService) { }
 
   ngOnInit() {
     if (this.httpmethod && this.httpurl) {
@@ -95,16 +97,25 @@ export class AmexioItemSelectorComponent implements OnInit {
 
     this.switchingObject = data;
     this.objectIndex = index;
-
     for (let ir = 0; ir < this.availableData.length; ir++) {
-      if((this.availableData[ir])[this.valuefield] === data[this.valuefield]){
+      if ((this.availableData[ir])[this.valuefield] === data[this.valuefield]) {
         this.availableData[ir]['isSelected'] = true;
-      }else{
+      } else {
         this.availableData[ir]['isSelected'] = false;
       }
 
-
     }
+
+    if(right) {
+      for (let ir = 0; ir < this.selectedData.length; ir++) {
+        if ((this.selectedData[ir])[this.valuefield] === data[this.valuefield]) {
+          this.selectedData[ir]['selectedClick'] = true;
+        } else {
+          this.selectedData[ir]['selectedClick'] = false;
+        }
+      }
+    }
+
   }
 
   rightSwitch() {
@@ -130,7 +141,7 @@ export class AmexioItemSelectorComponent implements OnInit {
     if(this.switchingObject && this.availableData){
       for (let ir = 0; ir < this.availableData.length; ir++) {
         if((this.availableData[ir])[this.valuefield] === this.switchingObject[this.valuefield]){
-          flag = true
+          flag = true;
         }
       }
     }
@@ -154,11 +165,19 @@ export class AmexioItemSelectorComponent implements OnInit {
   upSwitch() {
     if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected')) {
       if (this.switchingObject['isSelected']) {
-        const index = this.selectedData[this.objectIndex];
-        this.selectedData[this.objectIndex] = this.selectedData[this.objectIndex - 1];
-        this.selectedData[this.objectIndex - 1] = index;
-        this.switchingObject = null;
-        this.dataEmitter();
+        this.selectedData.forEach((opt: any, i: any) => {
+          if (opt[this.valuefield] === this.switchingObject[this.valuefield]) {
+            this.objectIndex = i;
+          }
+        });
+        if(this.objectIndex != 0){
+          const index = this.selectedData[this.objectIndex];
+          this.selectedData[this.objectIndex] = this.selectedData[this.objectIndex - 1];
+          this.selectedData[this.objectIndex - 1] = index;
+          // this.switchingObject = null;
+          this.dataEmitter();
+        }
+
       }
     }
   }
@@ -166,11 +185,16 @@ export class AmexioItemSelectorComponent implements OnInit {
   downSwitch() {
     if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected')) {
       if (this.switchingObject['isSelected']) {
+        this.selectedData.forEach((opt: any, i: any) => {
+          if (opt[this.valuefield] === this.switchingObject[this.valuefield]) {
+            this.objectIndex = i;
+          }
+        });
         if (this.selectedData.length - 1 !== this.objectIndex) {
           const index = this.selectedData[this.objectIndex];
           this.selectedData[this.objectIndex] = this.selectedData[this.objectIndex + 1];
           this.selectedData[this.objectIndex + 1] = index;
-          this.switchingObject = null;
+          // this.switchingObject = null;
           this.dataEmitter();
         }
       }
@@ -181,6 +205,11 @@ export class AmexioItemSelectorComponent implements OnInit {
   moveTop() {
     const tempArray: any = [];
     if (this.switchingObject != null && this.switchingObject['isSelected']) {
+      this.selectedData.forEach((opt: any, i: any) => {
+        if (opt[this.valuefield] === this.switchingObject[this.valuefield]) {
+          this.objectIndex = i;
+        }
+      });
       if (this.selectedData.length > 1) {
         tempArray[0] = this.selectedData[this.objectIndex];
         this.selectedData.splice(this.objectIndex, 1);
@@ -188,7 +217,7 @@ export class AmexioItemSelectorComponent implements OnInit {
           tempArray.push(option);
         });
         this.selectedData = tempArray;
-        this.switchingObject = null;
+        // this.switchingObject = null;
         this.dataEmitter();
       }
     }
@@ -196,12 +225,17 @@ export class AmexioItemSelectorComponent implements OnInit {
 
   moveBottom() {
     if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected')) {
+      this.selectedData.forEach((opt: any, i: any) => {
+        if (opt[this.valuefield] === this.switchingObject[this.valuefield]) {
+          this.objectIndex = i;
+        }
+      });
       if (this.switchingObject['isSelected'] && this.selectedData.length > 1) {
         this.selectedData.splice(this.objectIndex, 1);
         this.selectedData[this.selectedData.length] = this.switchingObject;
       }
     }
-    this.switchingObject = null;
+    // this.switchingObject = null;
     this.dataEmitter();
   }
 

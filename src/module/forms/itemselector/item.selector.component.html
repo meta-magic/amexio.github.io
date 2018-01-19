@@ -26,7 +26,7 @@
           <div class="actionbar">
             <div [style.height.px]="height"  class="actionbarinner">
               <div [ngClass]="{'actiondisable':!rightactive}" (click)="moveTop()" class="action movetop ">
-              <amexio-form-icon key="itemselector_caretup"></amexio-form-icon>
+                <amexio-form-icon key="itemselector_caretup"></amexio-form-icon>
                 <!--<i class="fa fa-caret-up"></i>-->
               </div>
               <div  [ngClass]="{'actiondisable':!rightactive}" (click)="upSwitch()"  class="action moveup">
@@ -65,7 +65,7 @@
           <ul class="dropdown-list">
             <li class="list-items"
                 *ngFor="let data of selectedData; let i = index"
-                (click)="itemClick(data,i, false,true)" [ngClass]="data['isSelected'] ? 'list-item-active':''">
+                (click)="itemClick(data,i, false,true)" [ngClass]="data['selectedClick'] ? 'list-item-active':''">
               {{data[displayfield]}}
             </li>
           </ul>

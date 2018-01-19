@@ -16,7 +16,7 @@ import {AmexioTemplate} from "./carousel.template";
      <div class="carouselnavigation float-left" (click)="previous()"><amexio-pane-icon key="carousel_previous"></amexio-pane-icon></div>
      <div class="carouselnavigation float-right" (click)="next()"><amexio-pane-icon key="carousel_next"></amexio-pane-icon></div>
          <ul #tab class="tab">
-           <li class="tablistitems" *ngFor="let item of data">
+           <li class="tablistitems" *ngFor="let item of data" (mouseover)="stopTimeInterval($event)" (mouseleave)="startTimeInterval($event)">
               <ng-template [amexioTemplateWrapper]="itemTemplate" [item]="item"></ng-template>
            </li>
          </ul>
@@ -26,13 +26,15 @@ import {AmexioTemplate} from "./carousel.template";
 
 export class AmexioCarouselComponent implements OnInit,AfterContentInit {
 
- @Input() header : string;
+  @Input() header : string;
 
- @Input() mode : 'single' | 'multiple';
+  @Input() mode : 'single' | 'multiple';
 
- @Input() data : any;
+  @Input() data : any;
 
- @Input() shuffleinterval : number;
+  @Input() shuffleinterval : number;
+
+  timeInterval: any;
 
   public itemTemplate: TemplateRef<any>;
 
@@ -40,40 +42,44 @@ export class AmexioCarouselComponent implements OnInit,AfterContentInit {
 
   @ViewChild('tab', { read: ElementRef }) public tabs: ElementRef;
 
- constructor() { }
+  constructor() { }
 
- ngOnInit() {
-   if(this.mode == null){
-     this.mode = 'single';
-   }
-   if(this.shuffleinterval != null){
-     setInterval(()=>{
-       let carouselItemPosix = this.tabs.nativeElement;
-       if( !((carouselItemPosix.scrollWidth - carouselItemPosix.offsetWidth - carouselItemPosix.scrollLeft ) <= 0)){
-         //go next
-         carouselItemPosix.scrollLeft=carouselItemPosix.scrollLeft+200;
-       }
-       else if (carouselItemPosix.scrollLeft > 0 ) {
-         //go previous
-         carouselItemPosix.scrollLeft=carouselItemPosix.scrollLeft-200;
-       }
-     },this.shuffleinterval);
-   }
- }
+  ngOnInit() {
+    if(this.mode == null){
+      this.mode = 'single';
+    }
+    if(this.shuffleinterval != null){
+      this.timeInterval = setInterval(()=>{
+        let carouselItemPosix = this.tabs.nativeElement;
+        if( !((carouselItemPosix.scrollWidth - carouselItemPosix.offsetWidth - carouselItemPosix.scrollLeft ) <= 0)){
+          //go next
+          carouselItemPosix.scrollLeft=carouselItemPosix.scrollLeft+200;
+        }
+        else if (carouselItemPosix.scrollLeft > 0 ) {
+          //go previous
+          carouselItemPosix.scrollLeft=carouselItemPosix.scrollLeft-200;
+        }
+      },this.shuffleinterval);
+    }
+  }
 
- ngAfterContentInit(){
-   this.templates.forEach((item :any) => {
-     switch(item.getType()) {
-       case 'item':
-         this.itemTemplate = item.template;
-         break;
+  ngAfterContentInit(){
+    this.templates.forEach((item :any) => {
+      switch(item.getType()) {
+        case 'item':
+          this.itemTemplate = item.template;
+          break;
 
-       default:
-         this.itemTemplate = item.template;
-         break;
-     }
-   });
- }
+        default:
+          this.itemTemplate = item.template;
+          break;
+      }
+    });
+  }
+
+  scrollData(){
+
+  }
 
   next(){
     let nxt = this.tabs.nativeElement;
@@ -89,5 +95,25 @@ export class AmexioCarouselComponent implements OnInit,AfterContentInit {
 
 
   }
+
+  stopTimeInterval() {
+    clearTimeout(this.timeInterval);
+  }
+  startTimeInterval() {
+    if(this.shuffleinterval != null){
+      this.timeInterval = setInterval(()=>{
+        let carouselItemPosix = this.tabs.nativeElement;
+        if( !((carouselItemPosix.scrollWidth - carouselItemPosix.offsetWidth - carouselItemPosix.scrollLeft ) <= 0)){
+          //go next
+          carouselItemPosix.scrollLeft=carouselItemPosix.scrollLeft+200;
+        }
+        else if (carouselItemPosix.scrollLeft > 0 ) {
+          //go previous
+          carouselItemPosix.scrollLeft=carouselItemPosix.scrollLeft-200;
+        }
+      },this.shuffleinterval);
+    }
+  }
+
 
 }

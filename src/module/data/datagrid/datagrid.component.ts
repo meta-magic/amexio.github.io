@@ -196,10 +196,14 @@ import {CommonDataService} from "../../services/data/common.data.service";
               </ng-container>
               <ng-container *ngIf="!isGroupChecking(row)">
                 <div class="datatable-col" [style.width.%]="cols.width"  [attr.data-label]="cols.text">
+                  <ng-container *ngIf="colIndex == 0">
                    <span style="padding-left: 20px">
                      {{row[cols.dataindex]}}
                    </span>
-
+                  </ng-container>
+                  <ng-container *ngIf="colIndex != 0">
+                    {{row[cols.dataindex]}}
+                  </ng-container>
                 </div>
               </ng-container>
             </ng-container>
