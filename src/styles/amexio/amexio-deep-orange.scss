@@ -57,15 +57,13 @@ $sidenavColor: $defaultColor;
 $sidenavactive:$themeBGColor;
 $sidenavBorderColor: #E84C1A;
 
-$menubarBGColor : #3498DB;
-$menubarColor : white;
-$menuHoverColor: orange;
-$subMenuCotentBGColor : white;
-$subMenuCotentColor : #777;
+$menubarBGColor : $defaultBGColor;
+$menubarColor : $color;
+$menuHoverColor: darken($defaultColor, 30);
+$subMenuCotentBGColor : $defaultBGColor;
+$subMenuCotentColor : $color;
 
-$subMenuCotentBGColor : white;
-$subMenuCotentColor : #777;
-$menuborderColor:#ced4da;
+$menuborderColor:#E84C1A;
 $menuborderSize:1px;
 
 $treeNodeActiveBGColor : $sidenavactive;

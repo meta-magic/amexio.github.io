@@ -60,15 +60,13 @@ $sidenavColor: $defaultColor;
 $sidenavactive:$themeColor;
 $sidenavBorderColor: $themeColor;
 
-$menubarBGColor : #3498DB;
-$menubarColor : white;
-$menuHoverColor: orange;
-$subMenuCotentBGColor : white;
-$subMenuCotentColor : #777;
+$menubarBGColor : $defaultBGColor;
+$menubarColor : $color;
+$menuHoverColor: darken($defaultColor, 30);
+$subMenuCotentBGColor : $defaultBGColor;
+$subMenuCotentColor : $color;
 
-$subMenuCotentBGColor : white;
-$subMenuCotentColor : #777;
-$menuborderColor:#ced4da;
+$menuborderColor:$themeColor;
 $menuborderSize:1px;
 
 $treeNodeActiveBGColor : $sidenavactive;
@@ -518,4 +516,3 @@ div.profile-image a{
   text-transform: capitalize;
   color: $datapointColor;
 }
-
