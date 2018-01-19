@@ -197,8 +197,18 @@ a:hover {
 
 .right-arrow{
   width: 2%;
-
+  float: right;
+  z-index: 1;
+  margin-top: -340px;
 }
+
+.right-arrow-tall{
+  width: 2%;
+  float: right;
+  z-index: 1;
+  margin-top: -700px;
+}
+
 
 .controls{
   padding-top: 125px;
