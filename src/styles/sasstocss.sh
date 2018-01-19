@@ -13,7 +13,7 @@ sass mda/at-md-charcoal-iron.scss:css/at-md-charcoal-iron.css;
 sass mda/at-md-chocolate-russet.scss:css/at-md-chocolate-russet.css;
 sass mda/at-md-fern-lime.scss:css/at-md-fern-lime.css;
 sass mda/at-md-frenchrose-mulberry.scss:css/at-md-frenchrose-mulberry.css;
-sass mda/at-md-grape-voliet.scss:css/at-md-grape-voliet.css;
+sass mda/at-md-grape-violet.scss:css/at-md-grape-violet.css;
 sass mda/at-md-hot-pink-fuchsia.scss:css/at-md-hot-pink-fuchsia.css;
 
 sass mda/at-md-indigo.scss:css/at-md-indigo.css;

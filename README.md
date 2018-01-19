@@ -226,82 +226,82 @@ export class AppModule { }
  <td>AT-AM-Spicy-Apricot</td>
 </tr>
 <tr>
-	<td>AT-MD-Blue Grey</td>AT-MD-Blue-Grey
-	<td>Polygon</td>AT-AM-Byzantine-Crystal
+	<td>AT-MD-Blue-Grey</td>
+	<td>AT-AM-Byzantine-Crystal</td>
 </tr>
 <tr>
-	<td>Brown</td>AT-MD-Ginger-Bread
-	<td>Pyramid</td>AT-AM-Honey-Prussian
+	<td>AT-MD-Ginger-Bread</td>
+	<td>AT-AM-Honey-Prussian</td>
 </tr>
 <tr>
-	<td>Cerise Magneta</td>AT-MD-Cerise Magneta
-	<td>Red</td>AT-AM-Persian-Laguna
+	<td>AT-MD-Cerise Magneta</td>
+	<td>AT-AM-Persian-Laguna</td>
 </tr>
 <tr>
-	<td>Charcoal Russet</td>AT-MD-Charcoal Russet
+	<td>AT-MD-Charcoal Russet</td>
 	<td></td>
 </tr>
 <tr>
-	<td>Fern Lime</td>AT-MD-
+	<td>AT-MD-Fern-Lime</td>
 	<td></td>
 </tr>
 <tr>
- <td>Frenchrose-mulberry</td>AT-MD-
+ <td>AT-MD-Frenchrose-mulberry</td>AT-MD-
  <td></td>
 </tr>
 <tr>
- <td>Grape Voliet</td>AT-MD-
- <td></td>
-</tr>
-
-<tr>
- <td>Hot Pink Fuchsia</td>AT-MD-
+ <td>AT-MD-Grape-Voliet</td>AT-MD-
  <td></td>
 </tr>
 
 <tr>
- <td>Indigo</td>AT-MD-Saphire
+ <td>AT-MD-Hot-Pink-Fuchsia</td>AT-MD-
  <td></td>
 </tr>
 
 <tr>
- <td>Jungle Mint</td>AT-MD-
+ <td>AT-MD-Saphire</td>
  <td></td>
 </tr>
 
 <tr>
- <td>Light Blue</td>AT-MD-Maya
+ <td>AT-MD-Jungle-Mint</td>
  <td></td>
 </tr>
 
 <tr>
- <td>Mahogany Barny Red</td>AT-MD-Mahogany Barny Red
+ <td>AT-MD-Maya-Light-Blue</td>
  <td></td>
 </tr>
 
 <tr>
- <td>Navy Egyptian</td>AT-MD-Navy Egyptian
+ <td>AT-MD-Mahogany Barny Red</td>
  <td></td>
 </tr>
 
 <tr>
- <td>Raspberry Sangria</td>AT-MD-Raspberry Sangria
+ <td>AT-MD-Navy Egyptian</td>
+ <td></td>
+</tr>
+
+<tr>
+ <td>AT-MD-Raspberry Sangria</td>
  <td></td>
 </tr>
 
 
 <tr>
- <td>Red Maroon</td>AT-MD-Red Maroon
+ <td>AT-MD-Red Maroon</td>
  <td></td>
 </tr>
 
 <tr>
- <td>Sacremento Jado</td>AT-MD-Sacremento Jado
+ <td>AT-MD-Sacremento Jado</td>
  <td></td>
 </tr>
 
 <tr>
- <td>Yale Azure</td>AT-MD-Yale Azure
+ <td>AT-MD-Yale Azure</td>
  <td></td>
 </tr>
 
