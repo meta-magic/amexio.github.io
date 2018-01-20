@@ -1,0 +1,28 @@
+<li class="treenode" *ngFor="let node of data" >
+  <div class="treenode-content">
+          <span class="treenode-toggler" (click)="onClick(node)" *ngIf="node.children && (node.children.length>0)">
+            <span *ngIf="node.expand"><amexio-data-icon key="tree_expand"></amexio-data-icon><!--<i class="fa fa-chevron-down"></i>--> </span>
+            <span *ngIf="!node.expand"><amexio-data-icon key="tree_collapse"></amexio-data-icon><!--<i class="fa fa-chevron-right"></i> --></span>
+          </span>
+    <span class="treenode-label">
+            <span *ngIf="enablecheckbox">
+              <input type="checkbox" [checked]="'checked'?node.checked:null" (click)="emitCheckedData(node)"/>
+            </span>
+            <span (click)="onNodeClick(node)">
+
+              <ng-container *ngIf="templates == null">
+                <span *ngIf="node.icon" [ngClass]="node.icon" aria-hidden="true"> </span>
+                <label >{{node.text}}</label>
+              </ng-container>
+
+              <ng-template *ngIf="templates != null"
+                           [ngTemplateOutlet]="parentTmp"
+                           [ngTemplateOutletContext]="{ $implicit: { text: node.text } , icon: node.icon,node : node }">
+              </ng-template>
+            </span>
+          </span>
+  </div>
+  <ul class="treenode-children" style="display: block;" *ngIf="node.expand && node.children && (node.children.length>0)">
+    <amexio-treeview [data]="node.children" (nodeClick)="onNodeClick($event)" [templates]="templates" [enable-checkbox]="enablecheckbox" (onTreeNodeChecked)="this.onTreeNodeCheck($event)" ></amexio-treeview>
+  </ul>
+</li>

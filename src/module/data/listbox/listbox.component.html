@@ -57,7 +57,7 @@
               </div>&nbsp;
             </div>
             <div class="datatable-col"  (click)="onClick(row)">
-              <ng-container *ngIf="!bodyTemplate"> {{row[displayfield]}}</ng-container>
+              <ng-container *ngIf="!bodyTemplate"> {{rowdisplay-field}}</ng-container>
               <ng-template *ngIf="bodyTemplate" [ngTemplateOutlet]="bodyTemplate" [ngTemplateOutletContext]="{ row: row }"></ng-template>
             </div>
           </div>

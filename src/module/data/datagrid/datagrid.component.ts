@@ -227,15 +227,15 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
 
   @Input() title: string;
 
-  @Input() pagesize: number;
+  @Input('page-size') pagesize: number;
 
-  @Input() httpurl: string;
+  @Input('http-url') httpurl: string;
 
-  @Input() httpmethod: string;
+  @Input('http-method') httpmethod: string;
 
-  @Input() datareader: string;
+  @Input('data-reader') datareader: string;
 
-  @Input() enablecheckbox: boolean;
+  @Input('enable-checkbox') enablecheckbox: boolean;
 
   @Input() data: any[];
 
@@ -249,11 +249,11 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
 
   @Input() groupby = false;
 
-  @Input() groupbydataindex: string;
+  @Input('groupby-data-index') groupbydataindex: string;
 
-  @Input() enabledatafilter: boolean;
+  @Input('enable-data-filter') enabledatafilter: boolean;
 
-  @Input() cclass: string;
+  @Input('c-class') cclass: string;
 
   @Input() tableHeadercclass: string;
 
@@ -261,11 +261,11 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
 
   @Input() tableDatacclass: string;
 
-  @Input() selectedrowcolor: string;
+  @Input('selected-row-color') selectedrowcolor: string;
 
-  @Input() columndefintion: any;
+  @Input('column-defintion') columndefintion: any;
 
-  @Input()  enablecolumnfiter: boolean;
+  @Input('enable-column-fiter')  enablecolumnfiter: boolean;
 
   columns: any[] = [];
 
