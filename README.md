@@ -217,7 +217,7 @@ export class AppModule { }
 # Amexio Themes (Amexio / Amexio Material)
 
 To use the default theme import the
-`../node_module/amexio-ng-extensions/styles/mda/mda-blue.scss`
+`../node_module/amexio-ng-extensions/styles/mda/at-md-blue.scss`
 in your app styles.scss
 Or refer the below table for other themes provided.
 
@@ -330,6 +330,19 @@ Or refer the below table for other themes provided.
 </table>
 
 More on Amexio themes here : [Amexio themes](https://github.com/meta-magic/amexio.github.io/tree/v4.0/src/modules/styles)
+
+# Amexio Microsoft Visual Studio Code Extensions(Not available for V4.0)
+
+This extension will help the developers of Visual Studio Code with quick code snippet for the Amexio Markup as well as Amexio TypeScript for the Angular Extensions.
+
+## Usage
+
+Select the Amexio Ui Component
+<img src="https://raw.githubusercontent.com/meta-magic/Amexio-VSC-Extension/master/images/Amexio-VSC-Ex-1.jpg" />
+
+Fill up the required Component Params
+<img src="https://raw.githubusercontent.com/meta-magic/Amexio-VSC-Extension/master/images/Amexio-VSC-Ex-2.jpg" />
+
 
 ## License
 
