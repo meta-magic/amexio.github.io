@@ -260,39 +260,39 @@ Or refer the below table for other themes provided.
 </tr>
 <tr>
 	<td>AT-MD-Charcoal Russet</td>
-	<td></td>
+	<td>AT-AM-Burgandy-Magenta</td>
 </tr>
 <tr>
 	<td>AT-MD-Fern-Lime</td>
-	<td></td>
+	<td>AT-AM-Navy-Grape</td>
 </tr>
 <tr>
  <td>AT-MD-Frenchrose-mulberry</td>
- <td></td>
+ <td>AT-AM-Matrix-Amber</td>
 </tr>
 <tr>
  <td>AT-MD-Grape-Voliet</td>
- <td></td>
+ <td>AT-AM-Matrix-Cream</td>
 </tr>
 
 <tr>
  <td>AT-MD-Hot-Pink-Fuchsia</td>
- <td></td>
+ <td>AT-AM-Matrix-Maya</td>
 </tr>
 
 <tr>
  <td>AT-MD-Saphire</td>
- <td></td>
+ <td>AT-AM-Matrix-Ultra</td>
 </tr>
 
 <tr>
  <td>AT-MD-Jungle-Mint</td>
- <td></td>
+ <td>AT-AM-Royal-Kelly</td>
 </tr>
 
 <tr>
  <td>AT-MD-Maya-Light-Blue</td>
- <td></td>
+ <td>AT-AM-Royal-Pineapple</td>
 </tr>
 
 <tr>
@@ -323,6 +323,36 @@ Or refer the below table for other themes provided.
 
 <tr>
  <td>AT-MD-Yale Azure</td>
+ <td></td>
+</tr>
+
+<tr>
+ <td>At-MD-Tronbone Royal</td>
+ <td></td>
+</tr>
+
+<tr>
+ <td>AT-MD-Pineapple-Flaxen</td>
+ <td></td>
+</tr>
+
+<tr>
+ <td>AT-MD-Pumpkin-Fire</td>
+ <td></td>
+</tr>
+
+<tr>
+ <td>AT-MD-Mauve-Orchid</td>
+ <td></td>
+</tr>
+
+<tr>
+ <td>AT-MD-Honey-Mustard</td>
+ <td></td>
+</tr>
+
+<tr>
+ <td>AT-MD-Bruntor-Tangerine</td>
  <td></td>
 </tr>
 
