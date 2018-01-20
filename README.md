@@ -355,11 +355,7 @@ Or refer the below table for other themes provided.
  <td>AT-MD-Bruntor-Tangerine</td>
  <td></td>
 </tr>
-
-
 </table>
-
-More on Amexio themes here : [Amexio themes](https://github.com/meta-magic/amexio.github.io/tree/v4.0/src/modules/styles)
 
 # Amexio Microsoft Visual Studio Code Extensions(Not available for V4.0)
 
