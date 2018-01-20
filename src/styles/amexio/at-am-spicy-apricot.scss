@@ -258,6 +258,7 @@ button.app-button {
 .datatable .datatable-row:hover{
   //color: $themeBGColor;
   background-color: lighten($primaryBGColor,20%);
+  font-weight: bold;
 }
 
 .datatable .datatable-row-active{
