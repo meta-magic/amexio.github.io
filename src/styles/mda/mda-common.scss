@@ -1,0 +1,62 @@
+/* Ripple magic */
+
+button{
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, .4);
+}
+
+button:after {
+  content: '';
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, .5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 1;
+  }
+  20% {
+    transform: scale(25, 25);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(40, 40);
+  }
+}
+
+button:focus:not(:active)::after {
+  animation: ripple 1s ease-out;
+}
+
+
+
+/* the focus ripple
+-----------------------------------------------*/
+input[type="checkbox"]+label::before {
+  content: '';
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, .1);
+  position: absolute;
+  box-sizing: border-box;
+  top: 50%;
+  right: -10px;
+  transform: translate(-50%, -50%) scale(0);
+  width: 1.8px;
+  height: 1.8px;
+}
+
+input[type="checkbox"]:focus+label::before {
+  animation: ripple 1s ease-out;
+}
+
+
