@@ -1,0 +1,427 @@
+
+
+
+$defaultBGColor : #292b2c;
+
+$defaultColor : rgba(255,255,255,0.70);
+
+$color: $defaultColor;
+
+$oppColor: $defaultBGColor;
+
+
+$backgroundcolor: #1b1d22;
+
+$componentBGColor: $backgroundcolor;
+
+
+$themeBGColor :  $backgroundcolor;
+$themeColor :  #4CBB17;
+
+$primaryBGColor: $themeBGColor;
+$secondaryBGColor: #ffffff;
+$successBGColor : #5cb85c;
+$dangerBGColor : #d9534f;
+$warningBGColor : #f0ad4e;
+
+
+$primaryColor: $themeColor;
+$secondaryColor: $color;
+$successColor : $oppColor;
+$dangerColor : white;
+$warningColor : $oppColor;
+
+
+$success: $successBGColor;
+$error : $dangerBGColor;
+$focusColor : #5cb3fd;
+
+$hoverColor : $themeColor;
+$hoverBGColor : $themeBGColor;
+
+
+$borderSize : 2px;
+$borderRadius : 2 px;
+$borderColor : #666666;
+$borderColor-focus: $focusColor;
+
+
+$navbarBGColor : $themeBGColor ;
+$navbarBoxShadow: $borderColor;
+$navbarColor : black;
+
+$sidenavHeaderBGColor: $defaultBGColor;
+$sidenavHeaderColor: $color;
+$sidenavBGColor : $defaultBGColor;
+$sidenavColor: $defaultColor;
+$sidenavactive:$themeBGColor;
+$sidenavBorderColor: #4CBB17;
+
+$menubarBGColor : $defaultBGColor;
+$menubarColor : $color;
+$menuHoverColor: blue;
+$subMenuCotentBGColor : $defaultBGColor;
+$subMenuCotentColor : $color;
+
+$menuborderColor:#4CBB17;
+$menuborderSize:1px;
+
+$treeNodeActiveBGColor : $sidenavactive;
+$treeNodeActiveColor : $sidenavColor;
+
+$tabBorderSize: $borderSize;
+$tabBorderColor : $borderColor;
+$tabActiveBorder : $menuborderColor;
+$tabActiveBGColor : $menuborderColor;
+$tabActiveBorderSize : 3px;
+
+$modalBGColor: lighten(black,50%);
+
+$cardBGColor: $defaultBGColor;
+$cardColor: $color;
+
+$cardHeaderBGColor: $themeBGColor;
+$cardHeaderColor: $themeColor;
+$cardFooterBGColor: $themeBGColor;
+$cardFooterColor: $themeColor;
+$cardBorderColor: #4CBB17;
+
+$toastBGColor : $themeBGColor;
+$toastColor : $themeColor;
+
+$accordionBGColor:$cardBGColor;
+$accordionColor:$cardHeaderColor;
+$accordionActiveBGColor:$cardHeaderBGColor;
+$accordionActiveColor:$cardHeaderColor;
+$accordionPanelBGColor:lighten($cardHeaderBGColor,20%);
+$accordionPanelColor: $cardColor;
+
+$dockBarBGColor: $cardHeaderBGColor;
+$dockBarColor: $cardHeaderColor;
+$dockBarContentBGColor : $cardBGColor;
+$dockBarSize: $tabBorderSize;
+$dockBarColor : $tabBorderColor;
+$dockBarActiveBorderColor: $tabActiveBorder;
+$dockBarActiveBorderSize: $tabActiveBorderSize;
+$dockBarActiveColor:$cardHeaderColor;
+$dockBarActiveBGColor:lighten($cardHeaderBGColor,20%);
+
+$borderLayoutBorder : 0px;
+$borderLayoutBorderColor : none;
+
+$datapointBGColor : $defaultBGColor;
+$datapointColor : #98FB98;
+$datapointBorderColor : $cardBorderColor;
+
+$ratingBorderColor : $borderColor;
+$ratingActiveColor : $datapointColor;
+
+$datetimepickerBGColor : $defaultBGColor;
+$datetimepickertopbarBGColor : $primaryBGColor;
+$datetimepickerActiveColor : $datetimepickerBGColor;
+
+$fieldSetBorderSize : $borderSize;
+$fieldSetBorderColor : $borderColor;
+$collapsibleLegendColor : $themeColor;
+
+$stepsActiveBGColor : $cardBorderColor;
+$stepsColor : $themeColor;
+$stepsBGColor : $themeBGColor;
+$stepsLabelHighlight : darken($defaultColor, 30);
+$stepsBorderColor:$borderColor;
+$stepsDisabled : lighten($menubarColor,50%);
+
+@import "../default/common.scss";
+@import "../default/amexio.components.scss";
+@import "../default/amexio.data.scss";
+@import "../default/amexio.layouts.scss";
+@import "../default/amexio.nav.scss";
+@import "../default/amexio.panes.scss";
+
+
+body {
+  font-family: Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
+}
+
+
+
+/*----------------------------------------------------------------------*/
+/*        INPUT/LABEL/A/BUTTON/DROPDOWN COMPONENT         */
+/*----------------------------------------------------------------------*/
+
+
+
+.input-control {
+  border-radius: 4px;
+  line-height: 2;
+  font-size: 14px;
+  border: 2px solid #666666;
+  border-radius: 4px!important;
+  background-color: #1b1d22;
+  color: $color;
+}
+
+.input-control-success {
+  border-color:$success;
+}
+
+.input-control-error {
+  border-color:$error;
+}
+
+
+.inputgroup label {
+  margin-bottom: 0rem;
+}
+
+.dropdown{
+  border: 2px solid #666666;
+  box-shadow: 0 1px 3px 0 #666666;
+}
+
+
+.datetimepicker {
+  border: $borderSize solid #666666;
+  box-shadow: 0 1px 3px 0 #666666;
+}
+
+label {
+  display: inline-block;
+  margin-top: 5px;
+  max-width: 100%;
+  //padding: 0 12px;
+  font-size: 14px;
+  font-weight: 500;
+
+}
+
+
+a {
+  color: rgba(0, 0, 0, 0.87);
+  //text-transform: lowercase;
+}
+
+
+.navbar-logo-unit a{
+  text-transform: capitalize;
+}
+
+
+
+button.app-button {
+  border-radius: 8px;
+}
+
+.btn-group button{
+  //border-right: 1px solid white;
+
+}
+
+.drodown-caret-down{
+  top: 35px;
+  color: $borderColor;
+}
+
+
+
+.datatable .datatable-row{
+  height: 50px;
+  border-top: none;
+  border-bottom: 2px solid #666666;
+}
+
+.datatable .datatable-header .datatable-col{
+  //height: 50px;
+  font-weight: 500;
+}
+
+.datatable .datatable-header{
+  background: linear-gradient(#40434D, #000000);
+  font-size: larger;
+  color: white!important;
+}
+
+
+.datatable .datatable-row:hover{
+  background-color: $themeBGColor;
+}
+
+.datatable .datatable-row-active{
+  background-color: $themeBGColor!important;
+}
+
+
+.datatable-row:nth-child(odd){
+  background-color: $themeBGColor;
+}
+
+
+.datatable .datatable-col{
+  vertical-align: middle;
+}
+
+.datatable .datatable-row{
+  height: 50px;
+}
+
+.datatable .datatable-header{
+  background-color: $primaryBGColor;
+  font-size: larger;
+  color: $primaryColor;
+}
+
+.datatable .datatable-col{
+  vertical-align: middle;
+}
+
+
+
+.datapoints{
+  .datapoints{
+    border: none;
+    box-shadow: none;
+  }
+  //color: #F2870C;
+  border-radius: 10px;
+}
+.datapoints-north{
+  font-size: 36px;
+  font-weight: bold;
+  //color: #F2870C;
+}
+
+.datapoint-south{
+
+  background-color: $primaryBGColor;
+  //color: #F2870C;
+  border-radius: 0px;
+  font-size: 20px;
+  padding: 5px;
+  margin: 1px;
+}
+
+.datapoint-west{
+  padding: 5px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+
+
+
+.listbox .list{
+  background-color: $defaultBGColor;
+
+  .title {
+    float: left;
+    font-size: 18px;
+    color: $defaultColor;
+    //padding-top: 8px;
+    a {
+      font-size: 16px;
+      color: $defaultColor;
+      text-transform: lowercase;
+    }
+  }
+}
+
+.card-container {
+  border-radius: 10px;
+
+  .card-header {
+    border-radius: 10px;
+    background: linear-gradient(#40434D, #000000);
+  }
+  .card-footer{
+    border-radius: 10px;
+  }
+}
+
+.listbox{
+  border-radius: 10px;
+  border: $borderSize solid $themeColor;
+
+  .listbox .list .title {
+    color: #4CBB17 !important;
+  }
+
+  .header{
+    border-radius: 10px;
+    border-bottom: $borderSize solid $themeColor;
+  }
+
+  .list .list-items{
+    border-bottom: 1px solid #1b1d22;
+  }
+}
+
+/** NAVBAR **/
+.navbar-container {
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+  background-color: #4CBB17;
+  background: linear-gradient(#98FB98, #4CBB17);
+}
+
+.sidenav{
+  border-right: $borderSize solid $cardBorderColor;
+  box-shadow:none;
+}
+
+.sidenav .activenode{
+  color: $themeColor;
+  background-color: $backgroundcolor;
+}
+
+
+
+.image-responsive{
+  max-width: 100%;
+  width: 100%;
+  border-top: 1px solid #1b1d22;
+  border-bottom: 1px solid #1b1d22;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.flex-col-2pt5{
+  max-width: 20.8333325%;
+}
+
+.flex-col-9pt5{
+  max-width: 79.1666635%;
+}
+
+@media only screen and (max-width: 500px) {
+
+  .flex-col-2pt5,.flex-col-9pt5{
+    max-width: 100%;
+  }
+}
+
+.email {
+  background-color: #3A3C42;
+  border: $borderSize solid $cardBorderColor;
+  border-radius: 10px;
+  .card-header{
+    background: linear-gradient(#40434D, #000000);
+    border-radius: 10px;
+  }
+}
+
+
+div.profile-image img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+div.profile-image a{
+  text-transform: capitalize;
+  color: $defaultColor;
+}
+
+
+.defaultcolor{
+  color: $themeColor;
+}
