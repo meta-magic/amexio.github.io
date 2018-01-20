@@ -84,26 +84,30 @@
 }
 
 .verticalnavtab .defaultnode:hover {
-  background-color: $tabActiveBGColor;
-
+  //background-color: $tabActiveBGColor;
+  font-weight: bold;
 
 }
 
 .verticalnavtab .leftactivetab {
-  background-color: $tabActiveBGColor;
-  border-left: $tabActiveBorderSize solid $tabActiveBorder;
+  //background-color: $tabActiveBGColor;
+  font-weight: bold;
+  border-right: $tabActiveBorderSize solid $tabActiveBorder;
 }
 
 .verticalnavtab .rightactivetab {
-  background-color: $tabActiveBGColor;
-  border-right: $tabActiveBorderSize solid $tabActiveBorder;
+  //background-color: $tabActiveBGColor;
+  font-weight: bold;
+  border-left: $tabActiveBorderSize solid $tabActiveBorder;
 }
 
 
 .verticalnavtab-left{
+  font-weight: bold;
   border-right: $tabBorderSize solid $tabBorderColor;
 }
 
 .verticalnavtab-right{
+  font-weight: bold;
   border-left: $tabBorderSize solid $tabBorderColor;
 }

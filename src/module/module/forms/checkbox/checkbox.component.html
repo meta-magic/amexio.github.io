@@ -1,0 +1,31 @@
+<!--
+<div class="inputgroup " [ngClass]="{'inline-block':horizontal}">
+  <div class="input-box" (click)="onClick()">
+    <input type="checkbox"
+           (blur)="onBlur()"
+           [(ngModel)]="value"
+           #inp="ngModel"
+           [attr.disabled] = "disabled ? true: null"
+           [attr.required]="!required"
+           hidden/>
+    <div *ngIf="!value" class="checkbox default">
+    </div>
+    <div *ngIf="value" class="checkbox active">
+      &#10004;
+    </div>
+ </div>
+  <label>{{fieldlabel}}</label>
+</div>
+
+-->
+
+
+<div class="inputgroup " >
+
+  <label class="input-box-container" [ngStyle]="{'cursor': disabled ? 'not-allowed':'pointer'}">{{fieldlabel}}
+    <input type="checkbox" *ngIf="value" checked="checked" (click)="onClick()" [attr.disabled] = "disabled ? true: null" [attr.required]="!required">
+    <input type="checkbox" *ngIf="!value" (click)="onClick()" [attr.disabled] = "disabled ? true: null" [attr.required]="!required">
+    <span class="input-box-checkbox-label"></span>
+  </label>
+
+</div>

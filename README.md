@@ -132,6 +132,18 @@ import { AppComponent } from './app.component';
 // Import your library
 import { AmexioWidgetModule,CommonDataService } from 'amexio-ng-extensions';
 
+// To import Charts
+import { AmexioChartsModule } from 'amexio-ng-extensions';
+
+//To import Maps 
+import { AmexioMapsModule } from 'amexio-ng-extensions';
+
+// To import Dashboard
+import { AmexioDashboardModule } from 'amexio-ng-extensions';
+
+
+// To import Enterprise
+import { AmexioEnterpriseEEModule } from 'amexio-ng-extensions';
 @NgModule({
   declarations: [
     AppComponent
@@ -139,7 +151,11 @@ import { AmexioWidgetModule,CommonDataService } from 'amexio-ng-extensions';
   imports: [
     BrowserModule,
     FormsModule,
-    AmexioWidgetModule
+    AmexioWidgetModule,
+    AmexioChartsModule,
+    AmexioMapsModule,
+    AmexioDashboardModule,
+    AmexioEnterpriseEEModule
   ],
   providers: [CommonDataService],
   bootstrap: [AppComponent]
@@ -200,6 +216,11 @@ export class AppModule { }
 
 # Amexio Themes (Amexio / Amexio Material)
 
+To use the default theme import the
+`../node_module/amexio-ng-extensions/styles/mda/at-md-blue.scss`
+in your app styles.scss
+Or refer the below table for other themes provided.
+
 <table> 
 <tr>
 <th>Amexio Material Themes</th>
@@ -215,10 +236,10 @@ export class AppModule { }
 </tr>
 <tr>
 <td>AT-MD-Ash Stone Black</td>
-<td>AT-AM-Lime Green</td> ??
+<td>AT-AM-Lime Green</td> 
 </tr>
 <tr>
- <td>AT-MD-Black</td>AT-MD-Black
+ <td>AT-MD-Black</td>
  <td>AT-AM-Matrix</td>
 </tr>
 <tr>
@@ -239,39 +260,39 @@ export class AppModule { }
 </tr>
 <tr>
 	<td>AT-MD-Charcoal Russet</td>
-	<td></td>
+	<td>AT-AM-Burgandy-Magenta</td>
 </tr>
 <tr>
 	<td>AT-MD-Fern-Lime</td>
-	<td></td>
+	<td>AT-AM-Navy-Grape</td>
 </tr>
 <tr>
- <td>AT-MD-Frenchrose-mulberry</td>AT-MD-
- <td></td>
+ <td>AT-MD-Frenchrose-mulberry</td>
+ <td>AT-AM-Matrix-Amber</td>
 </tr>
 <tr>
- <td>AT-MD-Grape-Voliet</td>AT-MD-
- <td></td>
+ <td>AT-MD-Grape-Voliet</td>
+ <td>AT-AM-Matrix-Cream</td>
 </tr>
 
 <tr>
- <td>AT-MD-Hot-Pink-Fuchsia</td>AT-MD-
- <td></td>
+ <td>AT-MD-Hot-Pink-Fuchsia</td>
+ <td>AT-AM-Matrix-Maya</td>
 </tr>
 
 <tr>
  <td>AT-MD-Saphire</td>
- <td></td>
+ <td>AT-AM-Matrix-Ultra</td>
 </tr>
 
 <tr>
  <td>AT-MD-Jungle-Mint</td>
- <td></td>
+ <td>AT-AM-Royal-Kelly</td>
 </tr>
 
 <tr>
  <td>AT-MD-Maya-Light-Blue</td>
- <td></td>
+ <td>AT-AM-Royal-Pineapple</td>
 </tr>
 
 <tr>
@@ -305,10 +326,49 @@ export class AppModule { }
  <td></td>
 </tr>
 
+<tr>
+ <td>At-MD-Tronbone Royal</td>
+ <td></td>
+</tr>
 
+<tr>
+ <td>AT-MD-Pineapple-Flaxen</td>
+ <td></td>
+</tr>
+
+<tr>
+ <td>AT-MD-Pumpkin-Fire</td>
+ <td></td>
+</tr>
+
+<tr>
+ <td>AT-MD-Mauve-Orchid</td>
+ <td></td>
+</tr>
+
+<tr>
+ <td>AT-MD-Honey-Mustard</td>
+ <td></td>
+</tr>
+
+<tr>
+ <td>AT-MD-Bruntor-Tangerine</td>
+ <td></td>
+</tr>
 </table>
 
-More on Amexio themes here : [Amexio themes](https://github.com/meta-magic/amexio.github.io/tree/v4.0/src/modules/styles)
+# Amexio Microsoft Visual Studio Code Extensions(Not available for V4.0)
+
+This extension will help the developers of Visual Studio Code with quick code snippet for the Amexio Markup as well as Amexio TypeScript for the Angular Extensions.
+
+## Usage
+
+Select the Amexio Ui Component
+<img src="https://raw.githubusercontent.com/meta-magic/Amexio-VSC-Extension/master/images/Amexio-VSC-Ex-1.jpg" />
+
+Fill up the required Component Params
+<img src="https://raw.githubusercontent.com/meta-magic/Amexio-VSC-Extension/master/images/Amexio-VSC-Ex-2.jpg" />
+
 
 ## License
 

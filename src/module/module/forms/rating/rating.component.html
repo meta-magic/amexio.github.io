@@ -1,0 +1,25 @@
+<div class="inputgroup">
+
+  <label>
+    {{fieldlabel}}
+  </label>
+
+  <div (mouseleave)="resetHovered()"
+        class="rating"
+        [class.disabled]="disabled"
+        [class.readonly]="readonly"
+        tabindex="0"
+        role="slider"
+        aria-valuemin="0"
+        [attr.aria-valuemax]="ratingRange.length"
+        [attr.aria-valuenow]="model">
+      <span *ngFor="let item of ratingRange; let index = index">
+          <i (mouseenter)="setHovered(item)"
+             (mousemove)="changeHovered($event)"
+             (click)="rate(item)"
+             [attr.data-icon]="fullicon"
+             class="{{ iconclass }} half{{ calculateWidth(item) }}"
+             [title]="titles[index] || item">{{ emptyicon }}</i>
+      </span>
+  </div>
+</div>
