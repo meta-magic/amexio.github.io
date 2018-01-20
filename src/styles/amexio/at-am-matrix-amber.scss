@@ -238,15 +238,18 @@ button.app-button {
   background-color: $hoverBGColor!important;
 }
 
-
-
-
-
 .datatable .datatable-row:hover{
-  //background-color: $themeBGColor;
-  background-color: $hoverBGColor;
-
+  background-color: lighten($themeColor,30);
+  color: $themeColor!important;
+  font-weight :bold;
 }
+
+//
+// .datatable .datatable-row:hover{
+//   //background-color: $themeBGColor;
+//   background-color: $hoverBGColor;
+//
+// }
 
 .datatable .datatable-row-active{
   background-color: $themeBGColor!important;
