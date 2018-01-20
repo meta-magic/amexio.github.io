@@ -1,34 +1,29 @@
 
-
 $defaultBGColor : white;
 
-$defaultColor : black;
+$defaultColor : #8D021F;
 
 $color: $defaultColor;
 
 $oppColor: $defaultBGColor;
 
 
-$backgroundcolor: #ECEFF1;
+$backgroundcolor: $defaultBGColor;
 
-$componentBGColor: white;
+$componentBGColor: $backgroundcolor;
 
 
-//$themeBGColor :  #7C0A02;
+$themeBGColor :  $defaultBGColor;
+$themeColor :    $defaultColor;
 
-$themeBGColor :  #98BF98;
-$navbarBGColor : #29AB87;
-
-$themeColor :  black;
-
-$primaryBGColor: $themeBGColor;
+$primaryBGColor: $themeColor;
 $secondaryBGColor: #ffffff;
 $successBGColor : #5cb85c;
 $dangerBGColor : #d9534f;
 $warningBGColor : #f0ad4e;
 
 
-$primaryColor: $themeColor;
+$primaryColor: $themeBGColor;
 $secondaryColor: $color;
 $successColor : $oppColor;
 $dangerColor : $oppColor;
@@ -39,26 +34,27 @@ $success: $successBGColor;
 $error : $dangerBGColor;
 $focusColor : #5cb3fd;
 
-$hoverColor : $themeColor;
-$hoverBGColor : $themeBGColor;
+$hoverColor : $themeBGColor;
+$hoverBGColor : $themeColor;
 
 
-$borderSize : 1px;
-$borderRadius : 2px;
-$borderColor : #ced4da;
+$borderSize : 3px;
+$borderRadius : 0 px;
+$borderColor : $defaultColor;
 $borderColor-focus: $focusColor;
 
 
-
+$navbarBGColor : $themeBGColor ;
 $navbarBoxShadow: $borderColor;
-$navbarColor : white;
+$navbarColor : $themeColor;
 
-$sidenavHeaderBGColor: $defaultBGColor;
-$sidenavHeaderColor: $color;
-$sidenavBGColor : $defaultBGColor;
+
+$sidenavHeaderBGColor: none;
+$sidenavHeaderColor: $defaultColor;
+$sidenavBGColor : rgba(255, 255, 255, 0.8);
 $sidenavColor: $defaultColor;
-$sidenavactive:#eee;
-$sidenavBorderColor: $borderColor;
+$sidenavactive:$defaultBGColor;
+$sidenavBorderColor: $themeColor;
 
 $menubarBGColor : $defaultBGColor;
 $menubarColor : $color;
@@ -66,24 +62,24 @@ $menuHoverColor: blue;
 $subMenuCotentBGColor : $defaultBGColor;
 $subMenuCotentColor : $color;
 
-$menuborderColor:$borderColor;
+$menuborderColor: $themeColor;
 $menuborderSize:1px;
 
 $treeNodeActiveBGColor : $sidenavactive;
 $treeNodeActiveColor : $sidenavColor;
 
 $tabBorderSize: $borderSize;
-$tabBorderColor : $borderColor;
-$tabActiveBorder : darken($themeBGColor,10);
-$tabActiveBGColor : $borderColor;
+$tabBorderColor : lighten($themeColor,30);
+$tabActiveBorder : $themeColor;
+$tabActiveBGColor : $themeColor;
 $tabActiveBorderSize : 3px;
 
 $modalBGColor: lighten(black,50%);
 
-$cardBGColor: $defaultBGColor;
+$cardBGColor: none;
 $cardColor: $color;
 
-$cardHeaderBGColor: $themeBGColor;
+$cardHeaderBGColor: none;
 $cardHeaderColor: $themeColor;
 $cardFooterBGColor: $themeBGColor;
 $cardFooterColor: $themeColor;
@@ -92,29 +88,28 @@ $cardBorderColor: $borderColor;
 $toastBGColor : $themeBGColor;
 $toastColor : $themeColor;
 
-$accordionBGColor:lighten($cardHeaderBGColor,20%);
+$accordionBGColor:$cardHeaderBGColor;
 $accordionColor:$cardHeaderColor;
 $accordionActiveBGColor:$cardHeaderBGColor;
 $accordionActiveColor:$cardHeaderColor;
 $accordionPanelBGColor:$cardBGColor;
-$accordionPanelColor: $cardColor;
+$accordionPanelColor: $accordionColor;
 
-$dockBarBGColor: $cardHeaderBGColor;
-$dockBarColor: $cardHeaderColor;
+$dockBarBGColor: $defaultColor;
+$dockBarColor: white;
 $dockBarContentBGColor : $cardBGColor;
 $dockBarSize: $tabBorderSize;
-$dockBarColor : $tabBorderColor;
 $dockBarActiveBorderColor: $tabActiveBorder;
 $dockBarActiveBorderSize: $tabActiveBorderSize;
-$dockBarActiveColor:$cardHeaderColor;
-$dockBarActiveBGColor:lighten($cardHeaderBGColor,20%);
+$dockBarActiveColor:$dockBarBGColor;
+$dockBarActiveBGColor:$dockBarColor;
 
 $borderLayoutBorder : 0px;
 $borderLayoutBorderColor : none;
 
 $datapointBGColor : $defaultBGColor;
-$datapointColor : $themeBGColor;
-$datapointBorderColor : $borderColor;
+$datapointColor : #FF0090;
+$datapointBorderColor : $cardBorderColor;
 
 $ratingBorderColor : $borderColor;
 $ratingActiveColor : $primaryBGColor;
@@ -125,14 +120,15 @@ $datetimepickerActiveColor : $datetimepickerBGColor;
 
 $fieldSetBorderSize : $borderSize;
 $fieldSetBorderColor : $borderColor;
-$collapsibleLegendColor : $themeColor;
 
-$stepsActiveBGColor : $themeBGColor;
+
+$stepsActiveBGColor : $borderColor;
 $stepsColor : $themeColor;
-$stepsBGColor : $backgroundcolor;
+$stepsBGColor : lighten($borderColor,50%);
 $stepsLabelHighlight : darken($defaultColor, 30);
 $stepsBorderColor:$borderColor;
 $stepsDisabled : lighten($menubarColor,50%);
+
 
 @import "../default/common.scss";
 @import "../default/amexio.components.scss";
@@ -142,9 +138,15 @@ $stepsDisabled : lighten($menubarColor,50%);
 @import "../default/amexio.panes.scss";
 
 
+
+
+
 body {
   font-family: Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
+  background-image:url('/assets/images/theme/bootstrap/polygon_bg.jpg');
 }
+
+
 
 
 
@@ -153,27 +155,39 @@ body {
 /*----------------------------------------------------------------------*/
 
 
+
 .input-control {
-  border-radius: 0px;
+  border-radius: 4px;
   line-height: 2;
   font-size: 14px;
   border: none;
   border-bottom: 2px solid $borderColor;
-  background-color: #FFFFFF;
+  border-radius: 4px!important;
   color: $color;
 }
 
 .input-control-success {
-  border-bottom-color:$success;
+  border-color:$success;
 }
 
 .input-control-error {
-  border-bottom-color:$error;
+  border-color:$error;
 }
 
 
 .inputgroup label {
   margin-bottom: 0rem;
+}
+
+.dropdown{
+  border: 2px solid $themeColor;
+  box-shadow: 0 1px 3px 0 #666666;
+}
+
+
+.datetimepicker {
+  border: $borderSize solid $themeColor;
+  box-shadow: 0 1px 3px 0 #666666;
 }
 
 label {
@@ -188,7 +202,7 @@ label {
 
 
 a {
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.7);
   //text-transform: lowercase;
 }
 
@@ -215,9 +229,10 @@ button.app-button {
 
 
 
-
 .datatable .datatable-row{
   height: 50px;
+  border-top: none;
+  border-bottom: 2px solid #666666;
 }
 
 .datatable .datatable-header .datatable-col{
@@ -226,9 +241,32 @@ button.app-button {
 }
 
 .datatable .datatable-header{
-  background-color: darken($backgroundcolor,5%);
+  background-color: $themeBGColor!important;
   font-size: larger;
+  color: $themeColor!important;
 }
+
+
+.datatable .datatable-row:hover{
+  background-color: lighten($themeColor,70);
+  color: $themeColor!important;
+}
+
+.datatable .datatable-row-active{
+  background-color: $themeColor;
+  color: $themeBGColor!important;
+}
+
+
+
+
+.datatable-row:nth-child(odd){
+  background-color: lighten($themeColor,70) !important;
+
+}
+
+
+
 
 .datatable .datatable-col{
   vertical-align: middle;
@@ -237,7 +275,6 @@ button.app-button {
 .datatable .datatable-row{
   height: 50px;
 }
-
 
 .datatable .datatable-header{
   background-color: $primaryBGColor;
@@ -252,23 +289,23 @@ button.app-button {
 
 
 .datapoints{
+  border-radius: 5px;
   .datapoints{
     border: none;
     box-shadow: none;
   }
-  color: $themeBGColor;
 }
 .datapoints-north{
   font-size: 36px;
   font-weight: bold;
-  color: $themeBGColor;
+  //color: $themeColor;
 }
 
 .datapoint-south{
 
-  background-color: $primaryBGColor;
-  color: $primaryColor;
-  border-radius: 0px;
+  background-color: $themeColor;
+  color: $themeBGColor;
+  border-radius: 5px;
   font-size: 20px;
   padding: 5px;
   margin: 1px;
@@ -283,31 +320,101 @@ button.app-button {
 
 
 
-.listbox .list{
-  background-color: white;
+.listbox {
+  //border:none;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.6);
+  .list{
+    //background-color: $defaultBGColor;
+    background: rgba(255, 255, 255, 0.6);
+    border: none;
 
-  .title {
-    float: left;
-    font-size: 18px;
-    color: rgba(0,0,0,0.87);
-    //padding-top: 8px;
-    a {
-      font-size: 16px;
-      color: rgba(0,0,0,0.54) !important;
-      text-transform: lowercase;
+    .title {
+      float: left;
+      font-size: 18px;
+      color: $datapointColor;
+      //padding-top: 8px;
+      a {
+        font-size: 16px;
+        color: $defaultColor;
+        text-transform: lowercase;
+      }
     }
+  }
+}
+
+.card-container {
+  border:none;
+  box-shadow : none;
+  .card-header {
+    border:none;
+    font-size: 20px;
+    font-weight: 700;
+  }
+  .card-footer{
+    border-top: none;
+    border: $borderSize solid $cardBorderColor;
+    border-radius: 5px;
+  }
+}
+
+
+.card-body{
+  background:rgba(255, 255, 255, 0.6);
+  border: $borderSize solid $cardBorderColor;
+  border-radius: 5px;
+}
+
+.listbox{
+
+  .listbox .list .title {
+    color: $themeColor !important;
+  }
+
+  .header{
+    border-bottom: $borderSize solid $borderColor;
+    background: none;
+    color: $themeColor !important;
+  }
+
+  .list{
+    background: none;
+  }
+  .list .list-items{
+    border-bottom: 1px solid #1b1d22;
   }
 }
 
 /** NAVBAR **/
 .navbar-container {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+  border-bottom: solid 3px $borderColor;
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 100%;
 }
 
+.sidenav{
+  border-right: $borderSize solid $cardBorderColor;
+  box-shadow:none;
+}
 
 .sidenav .activenode{
-  color: $navbarBGColor;
+  color: $defaultBGColor;
+  background: $defaultColor;
 }
+
+
+.sidenav .headernode:hover {
+  color: $defaultBGColor;
+  background: $defaultColor;
+}
+
+.sidenav .defaultnode:hover {
+  color: $defaultBGColor;
+  background: $defaultColor;
+}
+
+
 
 
 
@@ -336,7 +443,22 @@ button.app-button {
 }
 
 .email {
-  background-color: white;
+  //border: $borderSize solid $cardBorderColor;
+  background-color:  rgba(255, 255, 255, 0.8);
+  .card-header{
+    $cardHeaderBGColor: $themeBGColor;
+    $cardHeaderColor: $themeColor;
+  }
+
+  .borderlayout-container-N-E-C-S{
+    padding: 0px;
+    border: $borderSize solid $cardBorderColor;
+    border-radius: 5px;
+  }
+
+  .listbox {
+    border:none;
+  }
 }
 
 
@@ -349,4 +471,5 @@ div.profile-image img {
 
 div.profile-image a{
   text-transform: capitalize;
+  color: $datapointColor;
 }

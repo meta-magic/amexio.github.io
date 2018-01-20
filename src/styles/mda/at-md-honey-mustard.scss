@@ -13,11 +13,8 @@ $backgroundcolor: #ECEFF1;
 
 $componentBGColor: white;
 
-
-//$themeBGColor :  #7C0A02;
-
-$themeBGColor :  #98BF98;
-$navbarBGColor : #29AB87;
+$navbarBGColor : #EB9605;
+$themeBGColor :  #FEDC56;
 
 $themeColor :  black;
 
@@ -84,7 +81,7 @@ $cardBGColor: $defaultBGColor;
 $cardColor: $color;
 
 $cardHeaderBGColor: $themeBGColor;
-$cardHeaderColor: $themeColor;
+$cardHeaderColor: black;
 $cardFooterBGColor: $themeBGColor;
 $cardFooterColor: $themeColor;
 $cardBorderColor: $borderColor;
@@ -204,7 +201,7 @@ button.app-button {
 }
 
 .btn-group button{
-  //border-right: 1px solid white;
+  //border-right: 1px solid black;
 
 }
 
@@ -289,7 +286,7 @@ button.app-button {
   .title {
     float: left;
     font-size: 18px;
-    color: rgba(0,0,0,0.87);
+    //color: rgba(0,0,0,0.87);
     //padding-top: 8px;
     a {
       font-size: 16px;

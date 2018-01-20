@@ -36,3 +36,21 @@ sass amexio/at-am-spicy-apricot.scss:css/at-am-spicy-apricot.css;
 sass amexio/at-am-byzantine-crystal.scss:css/at-am-byzantine-crystal.css;
 sass amexio/at-am-honey-prussian.scss:css/at-am-honey-prussian.css;
 sass amexio/at-am-persian-laguna.scss:css/at-am-persian-laguna.css;
+
+sass amexio/at-am-burgandy-magenta.scss:css/at-am-burgandy-magenta.css;
+sass amexio/at-am-navy-grape.scss:css/at-am-navy-grape.css;
+sass amexio/at-am-matrix-amber.scss:css/at-am-matrix-amber.css;
+sass amexio/at-am-matrix-cream.scss:css/at-am-matrix-cream.css;
+sass amexio/at-am-matrix-maya.scss:css/at-am-matrix-maya.css;
+sass amexio/at-am-matrix-ultra.scss:css/at-am-matrix-ultra.css;
+sass amexio/at-am-royal-kelly.scss:css/at-am-royal-kelly.css;
+sass amexio/at-am-royal-pineapple.scss:css/at-am-royal-pineapple.css;
+
+sass mda/at-md-tronbone-royal.scss:css/at-md-tronbone-royal.css;
+sass mda/at-md-pineapple-flaxen.scss:css/at-md-pineapple-flaxen.css;
+sass mda/at-md-pumpkin-fire.scss:css/at-md-pumpkin-fire.css;
+sass mda/at-md-mauve-orchid.scss:css/at-md-mauve-orchid.css;
+sass mda/at-md-honey-mustard.scss:css/at-md-honey-mustard.css;
+sass mda/at-md-bruntor-tangerine.scss:css/at-md-bruntor-tangerine.css;
+
+
