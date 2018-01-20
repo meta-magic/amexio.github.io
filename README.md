@@ -132,6 +132,18 @@ import { AppComponent } from './app.component';
 // Import your library
 import { AmexioWidgetModule,CommonDataService } from 'amexio-ng-extensions';
 
+// To import Charts
+import { AmexioChartsModule } from 'amexio-ng-extensions';
+
+//To import Maps 
+import { AmexioMapsModule } from 'amexio-ng-extensions';
+
+// To import Dashboard
+import { AmexioDashboardModule } from 'amexio-ng-extensions';
+
+
+// To import Enterprise
+import { AmexioEnterpriseEEModule } from 'amexio-ng-extensions';
 @NgModule({
   declarations: [
     AppComponent
@@ -139,7 +151,11 @@ import { AmexioWidgetModule,CommonDataService } from 'amexio-ng-extensions';
   imports: [
     BrowserModule,
     FormsModule,
-    AmexioWidgetModule
+    AmexioWidgetModule,
+    AmexioChartsModule,
+    AmexioMapsModule,
+    AmexioDashboardModule,
+    AmexioEnterpriseEEModule
   ],
   providers: [CommonDataService],
   bootstrap: [AppComponent]
@@ -200,6 +216,11 @@ export class AppModule { }
 
 # Amexio Themes (Amexio / Amexio Material)
 
+To use the default theme import the
+`../node_module/amexio-ng-extensions/styles/mda/mda-blue.scss`
+in your app styles.scss
+Or refer the below table for other themes provided.
+
 <table> 
 <tr>
 <th>Amexio Material Themes</th>
@@ -215,10 +236,10 @@ export class AppModule { }
 </tr>
 <tr>
 <td>AT-MD-Ash Stone Black</td>
-<td>AT-AM-Lime Green</td> ??
+<td>AT-AM-Lime Green</td> 
 </tr>
 <tr>
- <td>AT-MD-Black</td>AT-MD-Black
+ <td>AT-MD-Black</td>
  <td>AT-AM-Matrix</td>
 </tr>
 <tr>
@@ -246,16 +267,16 @@ export class AppModule { }
 	<td></td>
 </tr>
 <tr>
- <td>AT-MD-Frenchrose-mulberry</td>AT-MD-
+ <td>AT-MD-Frenchrose-mulberry</td>
  <td></td>
 </tr>
 <tr>
- <td>AT-MD-Grape-Voliet</td>AT-MD-
+ <td>AT-MD-Grape-Voliet</td>
  <td></td>
 </tr>
 
 <tr>
- <td>AT-MD-Hot-Pink-Fuchsia</td>AT-MD-
+ <td>AT-MD-Hot-Pink-Fuchsia</td>
  <td></td>
 </tr>
 
