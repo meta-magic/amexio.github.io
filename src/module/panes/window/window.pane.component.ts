@@ -68,6 +68,7 @@ export class AmexioWindowPaneComponent implements OnInit {
 
   constructor() {
     this.header = true;
+    this.closable = true;
 
   }
 
