@@ -98,6 +98,9 @@ export class DeviceQueryService
 
   };
 
+  browserWindow = function(){
+    return window;
+  };
 
   /**********************************************
    EVENT LISTENERS BY TYPE

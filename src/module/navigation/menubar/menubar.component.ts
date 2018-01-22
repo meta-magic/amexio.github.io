@@ -5,20 +5,21 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CommonDataService} from "../../services/data/common.data.service";
 import {DeviceQueryService} from "../../services/device/device.query.service";
 @Component({
-  selector: 'amexio-menu', template: `
+  selector: 'amexio-menu',
+  template: `
     <div class="menu-container">
       <div class="menubar">
         <ul class="menuheader">
           <li class="menulink">{{label}}</li>
           <div>
             <li *ngFor="let node of data" class="menulink">
-              <a (click)="onClick(node)">
+              <a (click)="onClick(node)"  (mouseover)="onMouseOver($event)">
                 <amexio-nav-icon *ngIf="node.icon" [customclass]="node.icon"></amexio-nav-icon>&nbsp;&nbsp;{{node.text}}</a>
               <!--<i *ngIf="node.icon" [ngClass]="node.icon" aria-hidden="true"></i>-->
               <ng-container *ngIf="(node.children && node.children[0].children)">
 
                 <div *ngIf="(node.children && node.children.length>0)" class="menu-content"
-                     [ngClass]="{'menu-content-display':node.expand,' menu-content-left': (node.children && node.children.length>3)}">
+                     [ngClass]="{'menu-content-display':node.expand,' menu-content-left': (node.children && node.children.length>3),'menu-right':xposition}">
                   <ul class="menu-content-cols">
 
                     <li class="col-menu-nodes"
@@ -97,6 +98,8 @@ export class AmexioMenuBarComponent implements OnInit {
 
   @Output() nodeClick: any = new EventEmitter<any>();
 
+  xposition : boolean = false;
+
   responseData: any;
 
   expand: boolean;
@@ -146,5 +149,16 @@ export class AmexioMenuBarComponent implements OnInit {
     this.data = httpResponse;
   }
 
+  onMouseOver(event:any){
+    if (!(this.matchMediaService.IsPhone() || this.matchMediaService.IsTablet())) {
+      if((this.matchMediaService.browserWindow().innerWidth - event.clientX)<200){
+        this.xposition = true;
+      }else{
+        this.xposition = false;
+      }
+    }else{
+      this.xposition = false;
+    }
+  }
 }
 
