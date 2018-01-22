@@ -10,7 +10,7 @@
 
 .treenode{
   width: 100%;
-
+  padding-left: 20px;
   transition: .5s;
   background-attachment: scroll;
   background-color: transparent;
@@ -31,6 +31,10 @@
   position: relative;
   padding-top: 10px;
 
+}
+
+.treenode-empty-space {
+  padding-left: 15px;
 }
 
 .treenode-label {
