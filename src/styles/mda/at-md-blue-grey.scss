@@ -68,9 +68,12 @@ $treeNodeActiveColor : $sidenavColor;
 
 $tabBorderSize: $borderSize;
 $tabBorderColor : $borderColor;
+$tabColor : $sidenavHeaderColor;
+$tabBGColor : $sidenavHeaderBGColor;
 $tabActiveBorder : darken($themeBGColor,10);
-$tabActiveBGColor : $borderColor;
+$tabActiveBGColor : $themeBGColor;
 $tabActiveBorderSize : 3px;
+$tabActiveColor : $themeColor;
 
 $modalBGColor: lighten(black,50%);
 
@@ -217,6 +220,17 @@ button.app-button {
 
 .datatable .datatable-row{
   height: 50px;
+}
+
+
+
+.datatable .datatable-row:hover{
+  background-color: lighten($primaryBGColor,30%);
+  cursor: pointer;
+}
+
+.datatable .datatable-row-active{
+  background-color: lighten($primaryBGColor,30%);
 }
 
 .datatable .datatable-header .datatable-col{
