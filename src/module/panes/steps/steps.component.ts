@@ -50,16 +50,14 @@ import {StepBlockComponent} from "./step-block";
       <div *ngIf="block" class="step-box-sqaure">
         <div class="step-box-table">
           <ng-container *ngFor="let stepBlock of stepBlockArray; let i = index">
-            <div class="step-box-table-item"  [ngClass]="{'disabled':!stepBlock.active,'active':stepBlock.active}">
-              <a style="padding-top: 10px;"
-                 (click)="onStepClick(stepBlock,$event)">
+            <div class="step-box-table-item"  style="padding-top: 10px;" [ngClass]="{'disabled':!stepBlock.active,'active':stepBlock.active}">
+              <a (click)="onStepClick(stepBlock,$event)">
                 <ng-container *ngIf="index">
                   {{i + 1}}<br>
                 </ng-container>
                 <ng-container *ngIf="icon && stepBlock.icon">
-                  <p><amexio-pane-icon [customclass]="stepBlock.icon"
+                  <amexio-pane-icon [customclass]="stepBlock.icon"
                                     (onClick)="onStepClick(stepBlock,$event)"></amexio-pane-icon>
-                  </p>
                 </ng-container>
                 <ng-container *ngIf="stepBlock.label && !stepBlock.active">
                   <p>{{stepBlock.label}}</p>
