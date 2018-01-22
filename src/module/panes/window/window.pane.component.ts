@@ -6,11 +6,11 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'amexio-window', template: `
-    <div class="root-window" [ngClass]="{'modal-window-max':isFullWindow}"
+    <div class="root-window" [ngClass]="{'modal-window-max': isFullWindow,'modal-window-min': !isFullWindow}"
          [ngStyle]="{'display' : showWindow ? 'block' : 'none'}">
       <div class="modal-window-{{dialog ? 'sm' : 'lg'}}">
         <div class="modal-window-content" [ngClass]="{'modal-window-content-max':isFullWindow}">
-          <header class="modal-window-header">
+          <header class="modal-window-header" *ngIf="header">
             <div class="table" style="width: 100%;">
               <div class="tablerow">
                 <div class="tablecol">
@@ -36,7 +36,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
           <div class="modal-window-middle">
             <ng-content select="amexio-body"></ng-content>
           </div>
-          <footer class="modal-window-footer"
+          <footer *ngIf="footer" class="modal-window-footer"
                   [ngClass]="{'flex-start':(footeralign=='left'),'flex-end':(footeralign=='right'),'flex-center':(footeralign=='center')}">
             <ng-content select="amexio-action"></ng-content>
           </footer>
@@ -60,9 +60,14 @@ export class AmexioWindowPaneComponent implements OnInit {
 
   @Input() closable: boolean;
 
+  @Input() header: boolean;
+
+  @Input() footer: boolean;
+
   @Input() type: 'dialog' | 'window';
 
   constructor() {
+    this.header = true;
 
   }
 

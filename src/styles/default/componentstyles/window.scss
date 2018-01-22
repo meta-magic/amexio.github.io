@@ -57,13 +57,19 @@
 }
 */
 
+
+
+
+
+
+
 .root-window{
   flex-direction: column;
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  z-index: 3; /* Sit on top */
   background-color: $modalBGColor; /* Black w/ opacity */
   width: 100%;
-  height: 100vh;
+  height: 100%;
   left: 0;
   top: 0;
 }
@@ -71,18 +77,18 @@
   flex-direction: column;
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
+  //padding-top: 100px; /* Location of the box */
   width: 100%;
-  height: 100%;
-  overflow: auto; /* Enable scroll if needed */
+  height: 98%;
+  // overflow: auto; /* Enable scroll if needed */
 }
 .modal-window-sm{
   flex-direction: column;
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  padding-top: 80px; /* Location of the box */
+  padding-top: 30px; /* Location of the box */
   width: 50%;
-  height: 50%; /* Enable scroll if needed */
+  //min-height: 50%; /* Enable scroll if needed */
   padding-left: 25%;
 }
 
@@ -98,8 +104,14 @@
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
+
+
 .modal-window-max{
-  padding-top: 0px;
+
+}
+
+.modal-window-min{
+  padding-top: 70px;
 }
 
 .modal-window-content > * {
@@ -112,18 +124,53 @@
   height: 100%;
 }
 
+
 .modal-window-header{
-  background-color: $cardHeaderColor;
-  border-bottom: $borderSize solid $borderColor;
+  display: flex;
+  padding: 10px 24px;
+  background: $cardHeaderBGColor;
+  border-bottom: $borderSize solid $cardBorderColor;
+  font-size: 20px;
+  color: $cardHeaderColor;
+  font-weight: 300;
+  text-transform: capitalize;
+  overflow: auto;
 }
 
 .modal-window-middle{
-  height: auto !important;
-  min-height: 85% !important;
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 400;
+  padding-left: 16px;
+  padding-right: 16px;
+  height: 80% ;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
-.modal-window-footer{
-  background-color: $cardFooterColor;
-  border-top: $borderSize solid $borderColor;
-  display: flex;
+.modal-window-middle::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #F5F5F5;
 }
+
+.modal-window-middle::-webkit-scrollbar
+{
+  width: 6px;
+  background-color: #F5F5F5;
+}
+
+.modal-window-middle::-webkit-scrollbar-thumb
+{
+  background-color: $themeBGColor;
+}
+
+
+.modal-window-footer{
+  display: flex;
+  padding: 10px;
+  background-color: $cardFooterBGColor;
+  color: $cardFooterColor;
+  border-top: $borderSize solid $cardBorderColor;
+}
+
