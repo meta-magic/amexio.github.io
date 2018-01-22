@@ -111,3 +111,19 @@ input:disabled {
 .defaultcolor{
   color: $defaultColor;
 }
+
+
+.verticalalign-tableft{
+  vertical-align: top !important;
+  border-right: $tabBorderSize solid $tabBorderColor !important;
+}
+
+.verticalalign-tabright{
+  vertical-align: top !important;
+  border-left: $tabBorderSize solid $tabBorderColor !important;
+}
+
+.verticalalign-tabcontent
+{
+  vertical-align: top !important;
+}

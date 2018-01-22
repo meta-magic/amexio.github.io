@@ -1,7 +1,7 @@
 <div class="table">
   <div class="tablerow">
-    <div class="tablecol">
-      <div class="verticalnavtab verticalnavtab-left">
+    <div class="tablecol verticalalign-tableft">
+      <div class="verticalnavtab verticalnavtab-left ">
         <ul>
           <li *ngFor="let tabnode of tabCollection">
             <div class="defaultnode" [ngClass]="{'leftactivetab':tabnode.active}"    (click)="onTabClick(tabnode)">
@@ -13,7 +13,7 @@
       </div>
     </div>
 
-    <div class="tablecol">
+    <div class="tablecol verticalalign-tabcontent">
       <div class="tabcontent">
         <ng-content></ng-content>
       </div>
