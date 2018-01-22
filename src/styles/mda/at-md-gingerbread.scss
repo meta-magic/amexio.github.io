@@ -214,6 +214,16 @@ button.app-button {
 
 
 
+.datatable .datatable-row:hover{
+  background-color: lighten($primaryBGColor,30%);
+  cursor: pointer;
+}
+
+.datatable .datatable-row-active{
+  background-color: lighten($primaryBGColor,30%);
+}
+
+
 .datatable .datatable-row{
   height: 50px;
 }
