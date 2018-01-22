@@ -4,11 +4,11 @@
     <ng-container *ngIf="collapsible">
 
       <ng-container *ngIf="!isActive">
-        <amexio-pane-icon key="fieldset_expand"></amexio-pane-icon>
+        <amexio-pane-icon key="fieldset_expand"></amexio-pane-icon>{{title}}
       </ng-container>
 
       <ng-container *ngIf="isActive">
-        <amexio-pane-icon key="fieldset_collpase"></amexio-pane-icon>
+        <amexio-pane-icon key="fieldset_collpase"></amexio-pane-icon>{{title}}
       </ng-container>
 
     </ng-container>
