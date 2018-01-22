@@ -74,9 +74,12 @@ $treeNodeActiveColor : $sidenavColor;
 
 $tabBorderSize: $borderSize;
 $tabBorderColor : lighten($themeColor,30);
+$tabColor : $sidenavHeaderColor;
+$tabBGColor : $sidenavHeaderBGColor;
 $tabActiveBorder : $themeColor;
 $tabActiveBGColor : $themeColor;
 $tabActiveBorderSize : 3px;
+$tabActiveColor : $primaryColor;
 
 $modalBGColor: lighten(black,50%);
 
