@@ -114,7 +114,9 @@ export class AmexioSideNav implements OnInit {
   onNodeClick(node: any) {
     this.activateNode(this.data, node);
     this.nodeClick.emit(node);
-    this.handleDeviceSettings(false);
+    if(!node.children){
+      this.handleDeviceSettings(false);
+    }
   }
 
   toggleSideNav() {

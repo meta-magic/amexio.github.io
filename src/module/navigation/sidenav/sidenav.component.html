@@ -20,14 +20,14 @@
     </li>
     <li  *ngFor="let node of data">
       <div *ngIf="node.children && (node.children.length>0)" class="border"></div>
-      <div class="headernode" [ngClass]="{'activenode':node.active}"  (click)="onNodeClick(node)">
+      <div class="headernode" [ngClass]="{'activenode':node.active}"  (click)="onNodeClick(node)" (click)="onClick(node)">
         <span *ngIf="node.icon"><amexio-nav-icon class="node-icon" [customclass]="node.icon"></amexio-nav-icon></span>
         <!--<i class="node-icon" [ngClass]="node.icon" aria-hidden="true"></i>-->
-        <span (click)="onClick(node)">{{node.text}}</span>
+        <span>{{node.text}}</span>
         <ng-container *ngIf="node.children && (node.children.length>0)">
-          <span style="padding-right: 10px; float: right" *ngIf="node.expand"  (click)="onClick(node)"><amexio-nav-icon key="sidenav-angle-up"></amexio-nav-icon></span>
+          <span style="padding-right: 10px; float: right" *ngIf="node.expand" ><amexio-nav-icon key="sidenav-angle-up"></amexio-nav-icon></span>
           <!--<i class="fa fa-angle-up" aria-hidden="true"></i>-->
-          <span style="padding-right: 10px;float: right" *ngIf="!node.expand"  (click)="onClick(node)"><amexio-nav-icon key="sidenav-angle-down"></amexio-nav-icon></span>
+          <span style="padding-right: 10px;float: right" *ngIf="!node.expand" ><amexio-nav-icon key="sidenav-angle-down"></amexio-nav-icon></span>
           <!--<i class="fa fa-angle-down" aria-hidden="true"></i>-->
         </ng-container>
       </div>
