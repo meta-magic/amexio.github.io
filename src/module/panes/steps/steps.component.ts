@@ -39,7 +39,7 @@ import {StepBlockComponent} from "./step-block";
             <p>{{stepBlock.label}}</p>
           </ng-container>
           <ng-container *ngIf="stepBlock.label && stepBlock.active">
-            <p><strong class="step-label-highlight">11{{stepBlock.label}}</strong></p>
+            <p><strong class="step-label-highlight">{{stepBlock.label}}</strong></p>
           </ng-container>
         </div>
       </div>
