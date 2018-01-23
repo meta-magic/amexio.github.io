@@ -136,7 +136,7 @@
   border: $borderLayoutBorder solid $borderLayoutBorderColor;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 767px) {
 
   .borderlayout-container-N-E-C-W-S{
     grid-template-areas:

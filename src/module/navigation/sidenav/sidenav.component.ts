@@ -3,7 +3,7 @@
  */
 
 
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output} from '@angular/core';
 import {CommonDataService} from "../../services/data/common.data.service";
 import {DeviceQueryService} from "../../services/device/device.query.service";
 
@@ -40,7 +40,7 @@ export class AmexioSideNav implements OnInit {
 
   responseData: any;
 
-  constructor(public dataService: CommonDataService, public matchMediaService: DeviceQueryService) {
+  constructor(public dataService: CommonDataService, public matchMediaService: DeviceQueryService,public element: ElementRef) {
     this.position = "left";
     this.smalldevice = false;
     this.sidenavexpandedinsmalldevice = false;
@@ -135,7 +135,7 @@ export class AmexioSideNav implements OnInit {
 
   handleDeviceSettings(expand: boolean) {
     if (this.position != "relative") {
-      if (this.matchMediaService.IsPhone() || this.matchMediaService.IsTablet()) {
+      if (this.matchMediaService.IsPhone()) {
         this.smalldevice = true;
         if (expand) {
           this.width = "80%";
@@ -148,6 +148,20 @@ export class AmexioSideNav implements OnInit {
         this.width = "20%";
         this.smalldevice = false;
       }
+    }
+  }
+
+  @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
+  public onElementOutClick(targetElement: HTMLElement) {
+    let parentFound = false;
+    while (targetElement != null && !parentFound) {
+      if (targetElement === this.element.nativeElement) {
+        parentFound = true;
+      }
+      targetElement = targetElement.parentElement;
+    }
+    if (!parentFound) {
+      this.close();
     }
   }
 }

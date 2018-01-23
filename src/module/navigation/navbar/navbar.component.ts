@@ -24,15 +24,23 @@ export class AmexioNavBarComponent implements OnInit {
   }
 
 
+
   ngAfterContentInit() {
-    if (this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone()) {
-      this.showmenu = false;
-      this.mobile = true;
-    }
+    this.handleDeviceSetting();
   }
 
   toggleMenu() {
     this.showmenu = !this.showmenu;
+  }
+
+  handleDeviceSetting(){
+    if (this.matchMediaService.IsPhone()) {
+      this.showmenu = false;
+      this.mobile = true;
+    }
+  }
+  onResize(event:any){
+    this.handleDeviceSetting();
   }
 }
 

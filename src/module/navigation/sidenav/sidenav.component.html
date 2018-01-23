@@ -1,8 +1,11 @@
-<div *ngIf="(position !='relative' && (smalldevice && !sidenavexpandedinsmalldevice))" [ngClass]="{'left':(position=='left' && position!='relative'),'right':(position=='right' && position!='relative')}" style="padding:10px; position: relative;" (click)="toggleSideNav()">
-  <!--<i class="fa fa-bars fa-2x" aria-hidden="true"></i>-->
+<div *ngIf="(position !='relative' && smalldevice)"
+     [ngClass]="{'left':(position=='left' && position!='relative'),'right':(position=='right' && position!='relative')}"
+     class="sidenav-mobile-bar" (click)="toggleSideNav()">
   <amexio-nav-icon key="sidenav_bar"></amexio-nav-icon>
 </div>
-<div class="sidenav"  [ngStyle]="{'width':width,'height':height}" [ngClass]="{'left':(position=='left' && position!='relative'),'right':(position=='right' && position!='relative')}">
+
+
+<div class="sidenav"  [ngStyle]="{'width':width, 'height':height}" [ngClass]="{'left':(position=='left' && position!='relative'),'right':(position=='right' && position!='relative')}">
   <ul>
     <li>
       <div *ngIf="sidenavtitle" class="title">
@@ -13,22 +16,18 @@
           <p>{{sidenavtitle}}</p>
         </ng-container>
         <span *ngIf="sidenavexpandedinsmalldevice" style="padding-right: 10px; float: right" (click)="close()">
-          <!--<i class="fa fa-window-close" aria-hidden="true"></i>-->
-          <amexio-nav-icon key="sidenav_close"></amexio-nav-icon>
-        </span>
+            <amexio-nav-icon key="sidenav_close"></amexio-nav-icon>
+          </span>
       </div>
     </li>
     <li  *ngFor="let node of data">
       <div *ngIf="node.children && (node.children.length>0)" class="border"></div>
       <div class="headernode" [ngClass]="{'activenode':node.active}"  (click)="onNodeClick(node)" (click)="onClick(node)">
         <span *ngIf="node.icon"><amexio-nav-icon class="node-icon" [customclass]="node.icon"></amexio-nav-icon></span>
-        <!--<i class="node-icon" [ngClass]="node.icon" aria-hidden="true"></i>-->
         <span>{{node.text}}</span>
         <ng-container *ngIf="node.children && (node.children.length>0)">
           <span style="padding-right: 10px; float: right" *ngIf="node.expand" ><amexio-nav-icon key="sidenav-angle-up"></amexio-nav-icon></span>
-          <!--<i class="fa fa-angle-up" aria-hidden="true"></i>-->
           <span style="padding-right: 10px;float: right" *ngIf="!node.expand" ><amexio-nav-icon key="sidenav-angle-down"></amexio-nav-icon></span>
-          <!--<i class="fa fa-angle-down" aria-hidden="true"></i>-->
         </ng-container>
       </div>
       <amexio-sidenav-node  *ngIf="node.expand && node.children && (node.children.length>0)" [data]="node.children" (nodeclick)="onNodeClick($event)">
@@ -37,3 +36,4 @@
     </li>
   </ul>
 </div>
+

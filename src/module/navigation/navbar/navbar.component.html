@@ -1,9 +1,10 @@
 
-<nav class="navbar-container">
+<nav class="navbar-container" (window:resize)="onResize($event)">
 
   <div class="navbar-logo-unit">
-    <a class="fa fa-bars fa-1x navbar-mobile-bars" (click)="toggleMenu()"></a>
     <a><img  *ngIf="logo" [attr.src]="logo" class="navbar-logo">{{title}}</a>
+    <a *ngIf="!showmenu" class="fa fa-caret-down navbar-mobile-bars" (click)="toggleMenu()"></a>
+    <a *ngIf="showmenu" class="fa fa-caret-up navbar-mobile-bars" (click)="toggleMenu()"></a>
   </div>
 
   <ul class="nav-bar"  *ngIf="showmenu">
