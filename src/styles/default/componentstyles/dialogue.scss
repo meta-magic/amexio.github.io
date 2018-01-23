@@ -1,0 +1,113 @@
+
+.root-window{
+  flex-direction: column;
+  position: fixed; /* Stay in place */
+  z-index: 3; /* Sit on top */
+  background-color: $modalBGColor; /* Black w/ opacity */
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+.dialogue-sm{
+  flex-direction: column;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 9%; /* Location of the box */
+  width: 30%;
+  //min-height: 50%; /* Enable scroll if needed */
+  padding-left: 35%;
+}
+
+
+.dialogue-content{
+  //position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0px;
+  border: 1px solid #888;
+  width: 80%;
+  height: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.dialogue-min{
+  padding-top: 70px;
+}
+
+.dialogue-content > * {
+  padding: 0px;
+}
+
+
+.dialogue-header{
+  display: flex;
+  padding: 10px 24px;
+  background: $cardHeaderBGColor;
+  border-bottom: $borderSize solid $cardBorderColor;
+  font-size: 20px;
+  color: $cardHeaderColor;
+  font-weight: 300;
+  text-transform: capitalize;
+}
+
+.dialogue-middle{
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 400;
+  padding-left: 16px;
+  padding-right: 16px;
+  min-height: 80% ;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.dialogue-middle::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #F5F5F5;
+}
+
+.dialogue-middle::-webkit-scrollbar
+{
+  width: 6px;
+  background-color: #F5F5F5;
+}
+
+.dialogue-middle::-webkit-scrollbar-thumb
+{
+  background-color: $themeBGColor;
+}
+
+
+.dialogue-footer{
+  display: flex;
+  padding: 10px;
+  background-color: $cardFooterBGColor;
+  color: $cardFooterColor;
+  border-top: $borderSize solid $cardBorderColor;
+}
+
+.dialogue-message {
+  display: flex;
+  font-size: 20px;
+  font-weight: 300;
+  text-transform: capitalize;
+}
+
+.dialogue-icon {
+  float: left;
+  padding-top: 10px;
+  display: flex;
+}
+
+.dialogue-success {
+  color: $successBGColor;
+}
+.dialogue-danger {
+  color: $dangerBGColor;
+}
+.dialogue-warning {
+  color: $warningBGColor;
+}
+

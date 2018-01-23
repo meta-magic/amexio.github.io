@@ -253,7 +253,28 @@ let ICON_MAPPING =
       "component" : "sidenav-angle-down",
       "fa" : "fa fa-angle-down",
       "mat" : "keyboard_arrow_down"
+    },
+    {
+      "component" : "window-msgtype-error",
+      "fa" : "fa fa-exclamation-triangle fa-2x fa-fw",
+      "mat" : "keyboard_arrow_down" /*need to check icon*/
+    },
+    {
+      "component" : "window-msgtype-warning",
+      "fa" : "fa fa-exclamation-triangle fa-2x fa-fw",
+      "mat" : "keyboard_arrow_down" /*need to check icon*/
+    },
+    {
+      "component" : "window-msgtype-help",
+      "fa" : "fa fa-question-circle fa-2x fa-fw",
+      "mat" : "keyboard_arrow_down" /*need to check icon*/
+    },
+    {
+      "component" : "window-msgtype-confirm",
+      "fa" : "fa fa-check-circle fa-2x fa-fw",
+      "mat" : "keyboard_arrow_down" /*need to check icon*/
     }
+
   ]
 ;
 

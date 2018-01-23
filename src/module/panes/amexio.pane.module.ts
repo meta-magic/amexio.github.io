@@ -25,6 +25,8 @@ import {AmexioTemplate, AmexioTemplateWrapper} from "./carousel/carousel.templat
 import {StepBlockComponent} from "./steps/step-block";
 import {IconLoaderService} from "../services/icon/icon.service";
 import {AmexioIconPane} from "./icon/icon.component";
+import {AmexioFormsModule} from "../module/forms/amexio.forms.module";
+import {AmexiodialoguePaneComponent} from "./dialogue/dialogue.pane.component";
 
 export * from './accordion/accordion.component';
 export * from './accordion/accordion.pane';
@@ -38,6 +40,7 @@ export * from './body/pane.action.body';
 export * from './fieldset/fieldset.component';
 
 export * from './window/window.pane.component';
+export * from './dialogue/dialogue.pane.component';
 
 export * from './steps/steps.component';
 export * from './steps/step-block';
@@ -49,6 +52,7 @@ export * from './tab/vertical-tab/vertical.tab.component';
 
 export * from './carousel/carousel.component';
 export * from './carousel/carousel.template';
+export * from '../services/icon/icon.service';
 
 const PANE_COMPONENTS = [
   AmexioAccordionComponent,
@@ -68,13 +72,15 @@ const PANE_COMPONENTS = [
   AmexioTemplate,
   AmexioTemplateWrapper,
   StepBlockComponent,
-  AmexioIconPane
+  AmexioIconPane,
+  AmexiodialoguePaneComponent
 ];
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    AmexioFormsModule,
     HttpModule
   ],
   exports: PANE_COMPONENTS,

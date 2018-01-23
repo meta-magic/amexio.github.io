@@ -86,10 +86,10 @@
   flex-direction: column;
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  padding-top: 30px; /* Location of the box */
-  width: 50%;
+  padding-top: 9%; /* Location of the box */
+  width: 30%;
   //min-height: 50%; /* Enable scroll if needed */
-  padding-left: 25%;
+  padding-left: 35%;
 }
 
 
@@ -174,3 +174,6 @@
   border-top: $borderSize solid $cardBorderColor;
 }
 
+.dialog-message {
+
+}

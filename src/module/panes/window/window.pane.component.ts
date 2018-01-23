@@ -8,7 +8,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
   selector: 'amexio-window', template: `
     <div class="root-window" [ngClass]="{'modal-window-max': isFullWindow,'modal-window-min': !isFullWindow}"
          [ngStyle]="{'display' : showWindow ? 'block' : 'none'}">
-      <div class="modal-window-{{dialog ? 'sm' : 'lg'}}">
+      <div class="modal-window-lg">
         <div class="modal-window-content" [ngClass]="{'modal-window-content-max':isFullWindow}">
           <header class="modal-window-header" *ngIf="header">
             <div class="table" style="width: 100%;">
@@ -23,11 +23,8 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
                   <ng-container *ngIf="(isFullWindow && maximize)">
                     <amexio-pane-icon [key]="'window_restore'" (click)="sizeChange()"></amexio-pane-icon>
                   </ng-container>
-                  <!--<i  class="fa fa-window-maximize" aria-hidden="true" (click)="sizeChange()"></i>-->
-                  <!--<i *ngIf="(isFullWindow && maximize)" class="fa fa-window-restore" aria-hidden="true"  (click)="sizeChange()"></i>-->
-                  <!--<i class="fa fa-window-close-o" *ngIf="closable" aria-hidden="true" (click)="onCloseClick($event)" ></i>-->
                   <ng-container *ngIf="closable">
-                    <amexio-pane-icon [key]="'window_close'" (onClick)="onCloseClick($event)"></amexio-pane-icon>
+                    <amexio-pane-icon [key]="'window_close'" (onClick)="onCloseClick()"></amexio-pane-icon>
                   </ng-container>
                 </div>
               </div>
@@ -56,22 +53,19 @@ export class AmexioWindowPaneComponent implements OnInit {
 
   @Input() maximize: boolean;
 
-  @Input() dialog: boolean;
-
   @Input() closable: boolean;
 
   @Input() header: boolean;
 
   @Input() footer: boolean;
 
-  @Input() type: 'dialog' | 'window';
+  @Output() actionStatus : EventEmitter<any> = new EventEmitter<any>();
 
   constructor() {
     this.header = true;
     this.closable = true;
 
   }
-
 
   ngOnInit() {
     if (this.maximize == null) {
@@ -88,10 +82,15 @@ export class AmexioWindowPaneComponent implements OnInit {
     this.isFullWindow = !this.isFullWindow;
   }
 
-  onCloseClick(event: any) {
+  onCloseClick() {
     if (this.closable) {
       this.showWindow = !this.showWindow;
     }
+  }
+
+  getStatus(v : any){
+    this.onCloseClick();
+    this.actionStatus.emit(v);
   }
 
 }
