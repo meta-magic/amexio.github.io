@@ -11,12 +11,12 @@ button {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+  outline: none;
   user-select: none;
   border: 1px solid $borderColor;
   padding: .5rem 1rem;
   border-radius: $borderRadius;
   transition: all .2s ease-in-out;
-
 }
 
 .button-text {
