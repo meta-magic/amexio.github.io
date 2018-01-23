@@ -18,11 +18,10 @@ import {AmexioButtonDropDownItemComponent} from "./button.dropdown.item";
         <ul class="dropdown-list">
           <ng-container *ngFor="let itemData of dropdownItemData">
             <li class="list-items" [ngClass]="{'disabled':itemData.disabled}" (click)="itemClick($event,itemData)">
-              {{itemData.label}}
-              <ng-container *ngIf="itemData.icon!=null">
-                <!--<i [class]="itemData.iconStyleClass" aria-hidden="true"></i>-->
-                <amexio-form-icon style="float:right;" [customclass]="itemData.iconStyleClass"></amexio-form-icon>
-              </ng-container>
+            <ng-container *ngIf="itemData.icon!=null">
+              <!--<i [class]="itemData.iconStyleClass" aria-hidden="true"></i>-->
+              <amexio-form-icon style="padding-right: 5px;" [customclass]="itemData.iconStyleClass"></amexio-form-icon>
+            </ng-container>{{itemData.label}}
             </li>
           </ng-container>
         </ul>

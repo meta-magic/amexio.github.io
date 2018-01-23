@@ -13,9 +13,12 @@ import {AmexioButtonDropDownItemComponent} from "./button.dropdown.item";
 
       <button (click)="onClick()"
               [ngClass]="{'button-default': size=='default' || size ==null,'button-small': size=='small','button-large' : size=='large','button-primary' : type == 'primary' || type == null,'button-success' : type == 'success',' button-danger' : type=='danger','button-warning' : type=='warning'}">
-        <span [attr.disabled]="disabled ? true: null">{{label}} &nbsp;&nbsp;</span>
+
+      <amexio-form-icon style="float:right;" key="button_caret-down"></amexio-form-icon>
+
+      <span [attr.disabled]="disabled ? true: null">{{label}} &nbsp;&nbsp;</span>
         <!--<i class="fa fa-caret-down" style="float:right;" ></i>-->
-        <amexio-form-icon style="float:right;" key="button_caret-down"></amexio-form-icon>
+
       </button>
 
       <div style="position: absolute;" [ngStyle]="{'display' : openContent ? 'block' : 'none'}">
@@ -24,11 +27,10 @@ import {AmexioButtonDropDownItemComponent} from "./button.dropdown.item";
             <button [ngStyle]="{'cursor': itemData.disabled ? 'not-allowed':'pointer'}"
                     (click)="itemClick($event,itemData)"
                     [ngClass]="{'button-default': size=='default' || size ==null,'button-small': size=='small','button-large' : size=='large','button-primary' : type == 'primary' || type == null,'button-success' : type == 'success',' button-danger' : type=='danger','button-warning' : type=='warning'}">
-              <span [attr.disabled]="itemData.disabled ? true: null">{{itemData.label}}&nbsp;&nbsp;</span>
+            <amexio-form-icon style="padding-right: 5px;" [customclass]="itemData.iconStyleClass"></amexio-form-icon>
+            <span [attr.disabled]="itemData.disabled ? true: null">{{itemData.label}}&nbsp;&nbsp;</span>
               <!--<i [class]="itemData.iconStyleClass" aria-hidden="true" style="float:right;" ></i>-->
-              <amexio-form-icon style="float:right;" [customclass]="itemData.iconStyleClass"></amexio-form-icon>
             </button>
-
           </div>
 
         </ng-container>

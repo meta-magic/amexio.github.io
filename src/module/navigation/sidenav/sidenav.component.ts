@@ -30,6 +30,8 @@ export class AmexioSideNav implements OnInit {
 
   @Input() width: string;
 
+  @Input() height: string;
+
   @Input() sidenavtitle: string;
 
   smalldevice: boolean;
@@ -73,6 +75,10 @@ export class AmexioSideNav implements OnInit {
 
     if (this.position == null) {
       this.position = 'left';
+    }
+
+    if(!this.height){
+      this.height = "100%";
     }
   }
 

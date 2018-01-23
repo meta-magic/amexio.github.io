@@ -61,12 +61,12 @@
 
 
 .datatable .datatable-row:hover{
-  background-color: lighten($themeBGColor,40%);
+  background-color: lighten($themeColor,40%);
   cursor: pointer;
 }
 
 .datatable .datatable-row-active{
-  background-color: lighten($themeBGColor,40%);
+  background-color: lighten($themeColor,40%);
 }
 
 .datatable .datatable-col{
