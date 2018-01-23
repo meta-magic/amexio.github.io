@@ -7,7 +7,6 @@
   background-color: $sidenavBGColor;
   color: $sidenavColor;
   z-index: 1;
-
 }
 
 .sidenav::-webkit-scrollbar-track
@@ -31,13 +30,11 @@
 .left {
   left: 0;
   position: fixed;
-  bottom: 2px;
 }
 
 .right{
   right:0;
   position: fixed;
-  bottom: 2px;
 }
 
 .sidenav ul {
