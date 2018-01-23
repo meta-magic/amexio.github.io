@@ -45,6 +45,7 @@ export class AmexioImageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.cclass=this.cclass+" img-fluid";
   }
 
 }
