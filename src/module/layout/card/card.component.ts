@@ -29,13 +29,13 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 export class AmexioCardComponent implements OnInit {
 
 
-  @Input() headeralign: string;
+  @Input('header-align') headeralign: string;
 
   @Input() header: boolean;
 
   @Input() footer: boolean;
 
-  @Input() footeralign: string;
+  @Input('footer-align') footeralign: string;
 
   @Input() show: boolean = true;
 

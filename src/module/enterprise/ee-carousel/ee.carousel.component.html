@@ -47,11 +47,11 @@
 </div>
 
 <div [attr.id]="elementId+'carousel-detail-content'" class="collapse" *ngIf="hasDetail && displayDetail">
-  <amexio-ee-content [bgImgUrl]="currentDetailsImagePath"
+  <amexio-ee-content [bg-image-url]="currentDetailsImagePath"
                      [title]="currentDetailsTitle" [description]="currentDetailsDesc"
-                     [contents]="currentContent" [videoLink]="videoUrl"
+                     [contents]="currentContent" [link]="videoUrl"
                      (onWatchClick)="playVideo(videoUrl)" (onCloseClick)="closeDetailPage()"
-                     [rate]="rate" [enableWatch]="true" [enableMyList]="true"
-                     [closeEnable]="true" [seasonNo]="seasonNo" [releaseYear]="releaseYear" [ageLimit]="ageLimit" [matchPercentage]="matchPercentage"
+                     [rate]="rate" [watch]="true" [mylist]="true"
+                     [close]="true" [seasonNo]="seasonNo" [release-year]="releaseYear" [age-limit]="ageLimit" [matchPercentage]="matchPercentage"
   ></amexio-ee-content>
 </div>

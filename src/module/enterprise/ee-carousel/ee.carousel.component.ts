@@ -24,9 +24,9 @@ export class MultiMediaCarousel implements OnInit, OnChanges {
 
   @Input() data: any;
 
-  @Input() carouselStyle: any;
+  @Input('carousel-type') carouselStyle: any;
 
-  @Input() hasDetail: boolean = true;
+  @Input('has-details') hasDetail: boolean = true;
 
   @Input() title: string;
 

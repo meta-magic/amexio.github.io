@@ -38,7 +38,7 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
     this.helpInfoMsg = value + '<br/>';
   }
 
-  @Input() placeholder: string;
+  @Input('place-holder') placeholder: string;
 
   @Input() disabled: boolean;
 

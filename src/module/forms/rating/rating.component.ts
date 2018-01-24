@@ -34,7 +34,7 @@ export class AmexioRatingComponent implements OnInit, ControlValueAccessor, Vali
 
   @Input('empty-icon') emptyicon = "☆";
 
-  @Input() readonly: boolean;
+  @Input('read-only') readonly: boolean;
 
   @Input() disabled: boolean;
 

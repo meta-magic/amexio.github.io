@@ -59,9 +59,9 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 export class AmexiodialoguePaneComponent implements OnInit {
 
-  @Input() footeralign: string;
+  @Input('footer-align') footeralign: string;
 
-  @Input() showWindow: boolean;
+  @Input('show-window') showWindow: boolean;
 
   @Input() closable: boolean;
 

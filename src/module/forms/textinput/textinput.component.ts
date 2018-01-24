@@ -67,7 +67,7 @@ export class AmexioTextInputComponent implements ControlValueAccessor {
   }
 
 
-  @Input() placeholder: string;
+  @Input('place-holder') placeholder: string;
 
   @Input() disabled: boolean;
 

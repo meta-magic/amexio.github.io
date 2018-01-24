@@ -66,7 +66,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
 
   showToolTip: boolean;
 
-  @Input() placeholder: string;
+  @Input('place-holder') placeholder: string;
 
   @Input() disabled: boolean;
 

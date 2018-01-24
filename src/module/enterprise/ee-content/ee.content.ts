@@ -41,7 +41,7 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges
         <ng-container *ngIf="rate && max">
           <amexio-rating-input [(ngModel)]="rate"
                                [max]="max" name="rate"
-                               [readonly]="isReadonly">
+                               [read-only]="isReadonly">
           </amexio-rating-input>
         </ng-container>
       </div>
@@ -267,7 +267,7 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges
 
 export class ContentComponent implements OnInit, OnChanges {
 
-  @Input() bgImgUrl: any;
+  @Input('bg-image-url') bgImgUrl: any;
 
   @Input() title: string;
 
@@ -275,7 +275,7 @@ export class ContentComponent implements OnInit, OnChanges {
 
   @Input() contents: any;
 
-  @Input() videoLink: any;
+  @Input('link') videoLink: any;
 
   @Input() rate: any;
 
@@ -283,19 +283,19 @@ export class ContentComponent implements OnInit, OnChanges {
 
   @Input() isReadonly: boolean;
 
-  @Input() enableWatch = false;
+  @Input('watch') enableWatch = false;
 
-  @Input() enableMyList = false;
+  @Input('mylist') enableMyList = false;
 
-  @Input() ageLimit: any;
+  @Input('age-limit') ageLimit: any;
 
-  @Input() releaseYear: any;
+  @Input('release-year') releaseYear: any;
 
   @Input() seasonNo: number;
 
   @Input() matchPercentage: any;
 
-  @Input() closeEnable: boolean;
+  @Input('close') closeEnable: boolean;
 
   @Output() onWatchClick: EventEmitter<any> = new EventEmitter<any>();
 

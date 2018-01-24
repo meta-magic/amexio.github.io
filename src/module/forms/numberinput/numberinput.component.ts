@@ -67,7 +67,7 @@ export class AmexioNumberInputComponent implements ControlValueAccessor {
   isValid: boolean;
 
 
-  @Input() placeholder: string;
+  @Input('place-holder') placeholder: string;
 
   @Input('min-length') minlength: number;
 
