@@ -135,7 +135,7 @@ export class AmexioSideNav implements OnInit {
 
   handleDeviceSettings(expand: boolean) {
     if (this.position != "relative") {
-      if (this.matchMediaService.IsPhone()) {
+      if (this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone()) {
         this.smalldevice = true;
         if (expand) {
           this.width = "80%";

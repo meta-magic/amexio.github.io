@@ -25,8 +25,8 @@ import {AmexioTemplate, AmexioTemplateWrapper} from "./carousel/carousel.templat
 import {StepBlockComponent} from "./steps/step-block";
 import {IconLoaderService} from "../services/icon/icon.service";
 import {AmexioIconPane} from "./icon/icon.component";
-import {AmexioFormsModule} from "../module/forms/amexio.forms.module";
 import {AmexiodialoguePaneComponent} from "./dialogue/dialogue.pane.component";
+import {AmexioFormsModule} from "../forms/amexio.forms.module";
 
 export * from './accordion/accordion.component';
 export * from './accordion/accordion.pane';
