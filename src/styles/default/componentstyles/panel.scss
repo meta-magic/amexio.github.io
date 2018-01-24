@@ -10,6 +10,7 @@
   outline: none;
   font-size: 15px;
   transition: 0.4s;
+
 }
 
 .active-accordion, .accordion:hover {
@@ -34,4 +35,9 @@
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
+}
+
+.panel-box {
+  border: 2px solid $accordionActiveBGColor;
+  width: 100%;
 }

@@ -139,9 +139,9 @@ import {CommonDataService} from "../../services/data/common.data.service";
               <ng-container *ngIf="!cols.hidden">
                 <ng-container *ngIf="cols.datatype=='number'">
                   <div class="datatable-col"  [style.width.%]="cols.width"  scope="row" [attr.data-label]="cols.text">
-               <span>
-                 {{row[cols.dataindex]}}
-               </span>
+                   <span>
+                     {{row[cols.dataindex]}}
+                   </span>
                   </div>
                 </ng-container>
                 <ng-container *ngIf="!cols?.bodyTemplate && cols.datatype=='string'">
@@ -149,9 +149,14 @@ import {CommonDataService} from "../../services/data/common.data.service";
                     {{row[cols.dataindex]}}
                   </div>
                 </ng-container>
-                <ng-template *ngIf="cols.bodyTemplate" [ngTemplateOutlet]="cols.bodyTemplate"
-                             [ngTemplateOutletContext]="{ $implicit: { text : row[cols.dataindex] }, row: row }"></ng-template>
-              </ng-container>
+                <ng-container *ngIf="cols.bodyTemplate">
+                  <div class="datatable-col" [style.width.%]="cols.width" scope="row" [attr.data-label]="cols.text">
+                    <ng-template  [ngTemplateOutlet]="cols.bodyTemplate"
+                                  [ngTemplateOutletContext]="{ $implicit: { text : row[cols.dataindex] }, row: row }"></ng-template>
+                  </div>
+                </ng-container>
+                </ng-container>
+              
             </ng-container>
           </div>
         </div>
