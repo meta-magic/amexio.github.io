@@ -20,7 +20,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
     <div class="panel-box">
       <ng-container *ngIf="header">
-        <div class="accordion" #btn1 >
+        <div class="panel-accordion" #btn1 >
           <ng-container *ngIf="customheader; else elseBolck">
             <header
               [ngClass]="{'flex-start':(headeralign=='left'),'flex-end':(headeralign=='right'),'flex-center':(headeralign=='center')}">
