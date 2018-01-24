@@ -95,3 +95,9 @@ button{
 button:focus:not(:active)::after {
   animation: ripple $rippleTime ease-out;
 }
+
+//hover color of treeview
+.horizontaltreeview-node-label:hover{
+  border-color: $hoverColor;
+  background-color: $hoverBGColor;
+}
