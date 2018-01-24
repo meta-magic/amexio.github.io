@@ -1,4 +1,5 @@
 /* Ripple magic */
+$rippleTime : 1s;
 
 button{
   box-shadow: 2px 2px 4px rgba(0, 0, 0, .4);
@@ -92,5 +93,5 @@ button{
 }
 
 button:focus:not(:active)::after {
-  animation: ripple 1s ease-out;
+  animation: ripple $rippleTime ease-out;
 }
