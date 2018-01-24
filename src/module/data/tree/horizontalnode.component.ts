@@ -7,7 +7,13 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
   selector: 'amexio-horizontal-treeviewnode', template: `
     <div class="horizontaltreeview-node">
       <div class="horizontaltreeview-node-entry" [ngClass]="{'sole':data.length==1}" *ngFor="let node of data">
-        <span class="horizontaltreeview-node-label" (click)="onClick(node)">{{node.text}}</span>
+        <span class="horizontaltreeview-node-label" (click)="onClick(node)">{{node.text}}
+        <ng-container
+          *ngIf="node.expand && node.children"><amexio-data-icon key="horizontal-tree-collapse"></amexio-data-icon>
+        </ng-container>
+          <ng-container *ngIf="!node.expand && node.children"><amexio-data-icon key="horizontal-tree-expanded">
+          </amexio-data-icon></ng-container>
+        </span>
         <amexio-horizontal-treeviewnode *ngIf="node.expand && node.children && (node.children.length>0)"
                                         [data]="node.children"
                                         (onNodeClick)="onInnerClick($event)"></amexio-horizontal-treeviewnode>

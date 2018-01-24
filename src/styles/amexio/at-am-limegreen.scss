@@ -484,3 +484,9 @@ div.profile-image a{
 .defaultcolor{
   color: $themeColor;
 }
+
+//hover color of treeview
+.horizontaltreeview-node-label:hover{
+  border-color: $hoverColor;
+  background-color: $hoverBGColor;
+}

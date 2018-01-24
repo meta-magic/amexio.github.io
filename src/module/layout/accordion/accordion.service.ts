@@ -9,8 +9,8 @@ import {Observable} from "rxjs/Observable";
 export class AccordionService {
   private subject = new Subject<any>();
 
-  onClickEvent(data: number) {
-    this.subject.next({ id: data });
+  onClickEvent(data: number,parent : number) {
+    this.subject.next({ id: data,parent : parent });
   }
 
   clearEvents() {
