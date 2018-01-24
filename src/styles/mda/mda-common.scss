@@ -6,14 +6,70 @@ button{
   overflow: hidden;
 }
 
-button:after {
+.button-success:after {
   content: '';
   position: absolute;
   top: 50%;
   left: 50%;
   width: 5px;
   height: 5px;
-  background: rgba(255, 255, 255, .5);
+  background: $rippleSuccessColor;
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+.button-primary:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: $ripplePrimaryColor;
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+.button-danger:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: $rippleDangerColor;
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+.button-warning:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: $rippleWarningColor;
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+.button-secondary:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: $rippleSecondaryColor;
   opacity: 0;
   border-radius: 100%;
   transform: scale(1, 1) translate(-50%);
@@ -35,11 +91,6 @@ button:after {
   }
 }
 
-
 button:focus:not(:active)::after {
   animation: ripple 1s ease-out;
 }
-
-
-
-

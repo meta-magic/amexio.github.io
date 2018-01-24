@@ -137,13 +137,20 @@ $stepsLabelHighlight : darken($defaultColor, 30);
 $stepsBorderColor:$borderColor;
 $stepsDisabled : lighten($menubarColor,50%);
 
+
+$ripplePrimaryColor : $primaryBGColor;
+$rippleSecondaryColor: $secondaryBGColor;
+$rippleSuccessColor: $successBGColor;
+$rippleDangerColor : $dangerBGColor;
+$rippleWarningColor : $warningBGColor;
+
 @import "../default/common.scss";
 @import "../default/amexio.components.scss";
 @import "../default/amexio.data.scss";
 @import "../default/amexio.layouts.scss";
 @import "../default/amexio.nav.scss";
 @import "../default/amexio.panes.scss";
-
+@import "../mda/mda-common.scss";
 
 body {
   font-family: Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;

@@ -68,7 +68,7 @@ module.exports = function (config) {
     failOnEmptyTestSuite: false,
     autoWatch: false,
     browsers: ['Chrome'],
-    singleRun: false
+    singleRun: true
   };
 
   config.set(_config);

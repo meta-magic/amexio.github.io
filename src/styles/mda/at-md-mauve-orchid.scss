@@ -134,6 +134,13 @@ $stepsLabelHighlight : darken($defaultColor, 30);
 $stepsBorderColor:$borderColor;
 $stepsDisabled : lighten($menubarColor,50%);
 
+$ripplePrimaryColor : $primaryBGColor;
+$rippleSecondaryColor: $secondaryBGColor;
+$rippleSuccessColor: $successBGColor;
+$rippleDangerColor : $dangerBGColor;
+$rippleWarningColor : $warningBGColor;
+
+@import "../mda/mda-common.scss";
 @import "../default/common.scss";
 @import "../default/amexio.components.scss";
 @import "../default/amexio.data.scss";
