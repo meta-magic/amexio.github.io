@@ -1,6 +1,11 @@
 <!--Normal image-->
 <ng-container *ngIf="path || (path && iconclass)">
-  <img [src]="path" [attr.class]="cclass" (click)="onImageClick($event)" [attr.title]="tooltip">
+  <ng-container *ngIf="!(width || height)">
+    <img [src]="path" [attr.class]="cclass" (click)="onImageClick($event)" [attr.title]="tooltip">
+  </ng-container>
+  <ng-container *ngIf="width || height">
+    <img [ngStyle]="{'width':width,'height':height}" [src]="path" (click)="onImageClick($event)" [attr.title]="tooltip">
+  </ng-container>
 </ng-container>
 
 <!--this is for fontawesome-->
