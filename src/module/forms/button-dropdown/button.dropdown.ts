@@ -23,7 +23,7 @@ import {AmexioButtonDropDownItemComponent} from "./button.dropdown.item";
 
       <div style="position: absolute;" [ngStyle]="{'display' : openContent ? 'block' : 'none'}">
         <ng-container *ngFor="let itemData of dropdownItemData">
-          <div>
+          <div [ngClass]="{'button-default': size=='default' || size ==null,'button-small': size=='small','button-large' : size=='large','button-primary' : type == 'primary' || type == null,'button-success' : type == 'success',' button-danger' : type=='danger','button-warning' : type=='warning'}">
             <button [ngStyle]="{'cursor': itemData.disabled ? 'not-allowed':'pointer'}"
                     (click)="itemClick($event,itemData)"
                     [ngClass]="{'button-default': size=='default' || size ==null,'button-small': size=='small','button-large' : size=='large','button-primary' : type == 'primary' || type == null,'button-success' : type == 'success',' button-danger' : type=='danger','button-warning' : type=='warning'}">

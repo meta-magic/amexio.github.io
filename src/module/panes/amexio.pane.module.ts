@@ -27,6 +27,7 @@ import {IconLoaderService} from "../services/icon/icon.service";
 import {AmexioIconPane} from "./icon/icon.component";
 import {AmexiodialoguePaneComponent} from "./dialogue/dialogue.pane.component";
 import {AmexioFormsModule} from "../forms/amexio.forms.module";
+import {AmexioPanelComponent} from "./panel/panel.component";
 
 /*export * from './accordion/accordion.component';
 export * from './accordion/accordion.pane';
@@ -69,6 +70,7 @@ const PANE_COMPONENTS = [
   AmexioTemplate,
   AmexioTemplateWrapper,
   StepBlockComponent,
+  AmexioPanelComponent,
   AmexioIconPane,
   AmexiodialoguePaneComponent
 ];

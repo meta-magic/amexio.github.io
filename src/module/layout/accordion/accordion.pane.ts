@@ -13,55 +13,58 @@
  * Author - Pratik Kelwalkar
  *
  */
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
+import {AccordionService} from "./accordion.service";
 
 @Component({
-  selector: 'amexio-accordion-tab', template: `
-
-    <button class="accordion" #btn1 (click)="onTabClick(btn1)">{{header}}
-      <div style="float: right"><i [class]="iconclassKey" aria-hidden="true"></i></div>
+  selector: 'amexio-accordion-tab', template: `    
+    <button class="accordion {{active ? 'active-accordion' : ''}}" #btn1 (click)="onTabClick(btn1)">{{header}}
+      <div style="float: right"><i class="fa" [ngClass]="{'fa-plus' : !active,'fa-minus' : active}" aria-hidden="true"></i></div>
     </button>
-    <div class="panel">
+    <div class="panel" #contentPanel>
       <ng-content></ng-content>
     </div>
   `
 })
 
-export class AmexioAccordionTabComponent implements OnInit {
+export class AmexioAccordionTabComponent implements AfterViewInit {
 
   @Input() header: any;
 
-  @Input() expanded: boolean;
+  @Input() active: boolean;
 
   @Output() onClick: EventEmitter<any> = new EventEmitter();
 
+  @ViewChild('contentPanel') content : any;
+
   iconclassKey: string;
 
-  isExpanded: boolean;
+  paneId : number;
 
-  ngOnInit() {
-    this.isExpanded = this.expanded;
-    this.iconclassKey = 'fa fa-plus';
+  parentId : number;
+
+  constructor(private acc : AccordionService){
+    this.paneId = Math.floor(Math.random() * 90000) + 10000;
+  }
+
+  ngAfterViewInit() {
+    if(this.active){
+      this.content.nativeElement.style.maxHeight = this.content.nativeElement.scrollHeight + 'px';
+    }
   }
 
   onTabClick(btn: any) {
-    btn.classList.toggle('active-accordion');
-    let panel = btn.nextElementSibling;
-    // let icon = btn.children[0].children[0];
-
-    if (this.iconclassKey == 'fa fa-plus') {
-      this.iconclassKey = 'fa fa-minus';
-    } else if (this.iconclassKey == 'fa fa-minus') {
-      this.iconclassKey = 'fa fa-plus';
-    }
-
-    if (panel.style.maxHeight) {
-      panel.style.maxHeight = null;
+    // btn.classList.toggle('');
+    this.active = !this.active;
+    if (this.content.nativeElement.style.maxHeight) {
+      this.content.nativeElement.style.maxHeight = null;
     } else {
-      panel.style.maxHeight = panel.scrollHeight + 'px';
+      this.content.nativeElement.style.maxHeight = this.content.nativeElement.scrollHeight + 'px';
     }
 
-    this.onClick.emit()
+    this.onClick.emit();
+    // this.acc.onClick.next();
+    this.acc.onClickEvent(this.paneId,this.parentId);
   }
 
 }
