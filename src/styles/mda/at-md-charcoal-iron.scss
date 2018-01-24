@@ -339,17 +339,21 @@ button.app-button {
   margin-bottom: 10px;
 }
 
+
 .flex-col-2pt5{
+  flex: 1 1 20.8333325%;
   max-width: 20.8333325%;
 }
 
 .flex-col-9pt5{
+  flex: 1 1 79.1666635%;
   max-width: 79.1666635%;
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 1024px) {
 
   .flex-col-2pt5,.flex-col-9pt5{
+    flex: 1 1 100%;
     max-width: 100%;
   }
 }
