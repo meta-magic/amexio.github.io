@@ -11,6 +11,9 @@ import {AmexioRowComponent} from "./rows/row.component";
 import {AmexioColumnComponent} from "./columns/column.component";
 import {AmexioBorderLayoutItemComponent} from "./border/borderlayoutitem.component";
 import {AmexioBorderLayoutComponent} from "./border/borderlayout.component";
+import {AmexioCardComponent} from "./card/card.component";
+import {AmexioAccordionTabComponent} from "./accordion/accordion.pane";
+import {AmexioAccordionComponent} from "./accordion/accordion.component";
 
 export * from '../services/data/common.data.service';
 export * from '../services/device/device.query.service';
@@ -20,12 +23,19 @@ export * from './columns/column.component';
 export * from './border/borderlayoutitem.component';
 export * from './border/borderlayout.component';
 
+export * from './accordion/accordion.pane';
+export * from './accordion/accordion.component';
+export * from './card/card.component';
+
 
 const LAYOUT_COMPONENTS = [
   AmexioRowComponent,
   AmexioColumnComponent,
   AmexioBorderLayoutItemComponent,
-  AmexioBorderLayoutComponent
+  AmexioBorderLayoutComponent,
+  AmexioCardComponent,
+  AmexioAccordionTabComponent,
+  AmexioAccordionComponent
 ];
 
 @NgModule({
