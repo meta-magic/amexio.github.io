@@ -11,7 +11,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
       <div class="dialogue-sm">
         <div class="dialogue-content">
           <header class="dialogue-header">
-            <div class="table" style="width: 100%;">
+            <div class="dialogue-table">
               <div class="tablerow">
                 <div class="tablecol">
                   {{title}}
@@ -48,8 +48,8 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
           </footer>
           <footer *ngIf="!custom" class="dialogue-footer"
                   [ngClass]="{'flex-start':(footeralign=='left'),'flex-end':(footeralign=='right'),'flex-center':(footeralign=='center')}">
-            <amexio-button *ngIf="type =='confirm'" [label]="secondaryActionLabel" [type]="'default'" (onClick)="getStatus('cancel')"></amexio-button>
-            <amexio-button *ngIf="type =='confirm' || type == 'alert'" [label]="primaryActionLabel" [type]="'primary'" (onClick)="getStatus('ok')"></amexio-button>
+            <amexio-button *ngIf="type =='confirm'"  [size]="'small'" [label]="secondaryActionLabel" [type]="'default'" (onClick)="getStatus('cancel')"></amexio-button>
+            <amexio-button *ngIf="type =='confirm' || type == 'alert'"   [size]="'small'" [label]="primaryActionLabel" [type]="'primary'" (onClick)="getStatus('ok')"></amexio-button>
           </footer>
         </div>
 

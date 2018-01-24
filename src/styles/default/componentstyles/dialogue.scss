@@ -36,7 +36,7 @@
 }
 
 .dialogue-content > * {
-  padding: 0px;
+  padding: 10px;
 }
 
 
@@ -82,7 +82,6 @@
 
 .dialogue-footer{
   display: flex;
-  padding: 10px;
   background-color: $cardFooterBGColor;
   color: $cardFooterColor;
   border-top: $borderSize solid $cardBorderColor;
@@ -97,7 +96,6 @@
 
 .dialogue-icon {
   float: left;
-  padding-top: 10px;
   display: flex;
 }
 
@@ -110,4 +108,20 @@
 .dialogue-warning {
   color: $warningBGColor;
 }
+
+
+.dialogue-table{
+  display: table;
+  width: 100%;
+}
+
+.dialogue-table .tablerow{
+  display: table-row;
+}
+
+.dialogue-table .tablerow .tablecol{
+  display: table-cell;
+  vertical-align: middle;
+}
+
 

@@ -11,7 +11,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
       <div class="modal-window-lg">
         <div class="modal-window-content" [ngClass]="{'modal-window-content-max':isFullWindow}">
           <header class="modal-window-header" *ngIf="header">
-            <div class="table" style="width: 100%;">
+            <div class="modal-window-table">
               <div class="tablerow">
                 <div class="tablecol">
                   <ng-content select="amexio-header"></ng-content>
