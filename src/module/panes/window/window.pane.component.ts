@@ -45,9 +45,9 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 export class AmexioWindowPaneComponent implements OnInit {
 
-  @Input() footeralign: string;
+  @Input('footer-align') footeralign: string;
 
-  @Input() showWindow: boolean;
+  @Input('show-window') showWindow: boolean;
 
   isFullWindow: boolean;
 

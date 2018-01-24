@@ -35,10 +35,10 @@ const ENTERPRISE_COMPONENTS = [
   exports: ENTERPRISE_COMPONENTS,
   declarations: ENTERPRISE_COMPONENTS
 })
-export class AmexioEnterpriseEEModule {
+export class AmexioEnterpriseModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: AmexioEnterpriseEEModule,
+      ngModule: AmexioEnterpriseModule,
       providers: [CommonDataService,DeviceQueryService]
     };
   }

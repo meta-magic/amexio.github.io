@@ -16,15 +16,15 @@ $componentBGColor: #000000;
 $themeBGColor :  $backgroundcolor;
 $themeColor :  #73C2FB;
 
-$primaryBGColor: $themeBGColor;
-$secondaryBGColor: #ffffff;
+$primaryBGColor: $themeColor;
+$secondaryBGColor: lighten($themeBGColor,50%);
 $successBGColor : #5cb85c;
 $dangerBGColor : #d9534f;
 $warningBGColor : #f0ad4e;
 
 
-$primaryColor: $themeColor;
-$secondaryColor: $color;
+$primaryColor: $themeBGColor;
+$secondaryColor: $oppColor;
 $successColor : $oppColor;
 $dangerColor : white;
 $warningColor : $oppColor;

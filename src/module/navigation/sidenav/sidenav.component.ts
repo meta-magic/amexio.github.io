@@ -32,7 +32,7 @@ export class AmexioSideNav implements OnInit {
 
   @Input() height: string;
 
-  @Input() sidenavtitle: string;
+  @Input('title') sidenavtitle: string;
 
   smalldevice: boolean;
 

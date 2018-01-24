@@ -17,13 +17,13 @@ export class AmexioDateTimePicker implements OnInit {
 
   @Input('date-format') dateformat: string;
 
-  @Input() datepicker: boolean;
+  @Input('date-picker') datepicker: boolean;
 
-  @Input() timepicker: boolean;
+  @Input('time-picker') timepicker: boolean;
 
   @Input('field-label') fieldlabel: string;
 
-  @Input() readonly: boolean;
+  @Input('read-only') readonly: boolean;
 
   @Input() required: boolean;
 

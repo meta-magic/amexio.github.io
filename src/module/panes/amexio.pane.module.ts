@@ -6,10 +6,10 @@ import {CommonDataService} from "../services/data/common.data.service";
 import {DeviceQueryService} from "../services/device/device.query.service";
 import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
-import {HttpModule} from "@angular/http";
+import {HttpModule} from "@angular/http";/*
 import {AmexioAccordionComponent} from "./accordion/accordion.component";
-import {AmexioAccordionTabComponent} from "./accordion/accordion.pane";
-import {AmexioCardComponent} from "./card/card.component";
+import {AmexioAccordionTabComponent} from "./accordion/accordion.pane";*/
+// import {AmexioCardComponent} from "./card/card.component";
 import {AmexioHeaderComponent} from "./header/pane.action.header";
 import {AmexioFooterComponent} from "./action/pane.action.footer";
 import {AmexioBodyComponent} from "./body/pane.action.body";
@@ -25,13 +25,13 @@ import {AmexioTemplate, AmexioTemplateWrapper} from "./carousel/carousel.templat
 import {StepBlockComponent} from "./steps/step-block";
 import {IconLoaderService} from "../services/icon/icon.service";
 import {AmexioIconPane} from "./icon/icon.component";
-import {AmexioFormsModule} from "../module/forms/amexio.forms.module";
 import {AmexiodialoguePaneComponent} from "./dialogue/dialogue.pane.component";
+import {AmexioFormsModule} from "../forms/amexio.forms.module";
 
-export * from './accordion/accordion.component';
+/*export * from './accordion/accordion.component';
 export * from './accordion/accordion.pane';
 
-export * from './card/card.component';
+export * from './card/card.component';*/
 
 export * from './header/pane.action.header';
 export * from './action/pane.action.footer';
@@ -55,9 +55,6 @@ export * from './carousel/carousel.template';
 export * from '../services/icon/icon.service';
 
 const PANE_COMPONENTS = [
-  AmexioAccordionComponent,
-  AmexioAccordionTabComponent,
-  AmexioCardComponent,
   AmexioHeaderComponent,
   AmexioFooterComponent,
   AmexioBodyComponent,

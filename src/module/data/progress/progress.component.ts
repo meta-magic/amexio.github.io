@@ -15,7 +15,7 @@ import {Component, Input, OnInit} from '@angular/core';
 
 export class AmexioProgressBarComponent implements OnInit {
 
-  @Input() showProgress: boolean = true;
+  @Input('show') showProgress: boolean = true;
 
   @Input() infinite: boolean;
 

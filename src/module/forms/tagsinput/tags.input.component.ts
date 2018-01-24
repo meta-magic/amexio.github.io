@@ -47,7 +47,7 @@ export class AmexioTagsInputComponent implements OnInit {
 
   showToolTip: boolean;
 
-  @Input() placeholder: string;
+  @Input('place-holder') placeholder: string;
 
   @Input() disabled: boolean;
 

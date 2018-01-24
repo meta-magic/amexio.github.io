@@ -76,7 +76,7 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
 
   showToolTip: boolean;
 
-  @Input() placeholder: string;
+  @Input('place-holder') placeholder: string;
 
   @Input() disabled: boolean;
 

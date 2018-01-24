@@ -34,6 +34,10 @@ export class AmexioImageComponent implements OnInit {
 
   @Input() mdb: string;
 
+  @Input() width:string;
+
+  @Input() height:string;
+
   @Output() onClick: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() {
@@ -45,7 +49,9 @@ export class AmexioImageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.cclass=this.cclass+" img-fluid";
+    if(!(this.width || this.height)){
+      this.cclass=this.cclass+" img-fluid";
+    }
   }
 
 }

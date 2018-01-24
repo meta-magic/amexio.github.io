@@ -19,14 +19,14 @@ $themeBGColor :  $backgroundcolor;
 $themeColor :  #4CBB17;
 
 $primaryBGColor: $themeBGColor;
-$secondaryBGColor: #ffffff;
+$secondaryBGColor: lighten($themeBGColor,50%);;
 $successBGColor : #5cb85c;
 $dangerBGColor : #d9534f;
 $warningBGColor : #f0ad4e;
 
 
 $primaryColor: $themeColor;
-$secondaryColor: $color;
+$secondaryColor: $oppColor;
 $successColor : $oppColor;
 $dangerColor : white;
 $warningColor : $oppColor;

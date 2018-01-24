@@ -20,7 +20,6 @@ import {AmexioRatingComponent} from "./rating/rating.component";
 import {AmexioButtonComponent} from "./buttons/button.component";
 import {AmexioButtonGroupComponent} from "./buttongroup/button.group.component";
 import {AmexioCheckBoxGroupComponent} from "./checkbox-group/checkbox.group.component";
-import {AmexioItemSelectorComponent} from "./itemselector/item.selector.component";
 import {AmexioLayoutModule} from "../layout/amexio.layout.module";
 import {AmexioFormIconComponent} from "./icon/icon.component";
 import {IconLoaderService} from "../services/icon/icon.service";
@@ -31,8 +30,6 @@ import {AmexioButtonDropdownComponent} from "./button-dropdown/button.dropdown";
 import {AmexioSpiltButtonDropdownComponent} from "./button-dropdown/split.button.dropdown";
 import {AmexioButtonDropDownItemComponent} from "./button-dropdown/button.dropdown.item";
 import {AmexioFileUploadComponent} from "./fileupload/fileupload.component";
-import {AmexioPaneModule} from "../panes/amexio.pane.module";
-
 export * from '../services/data/common.data.service';
 export * from '../services/icon/icon.service';
 
@@ -54,7 +51,6 @@ const FORM_COMPONENTS = [
   AmexioSpiltButtonDropdownComponent,
   AmexioButtonDropDownItemComponent,
   AmexioCheckBoxGroupComponent,
-  AmexioItemSelectorComponent,
   AmexioFormIconComponent,
   AmexioSliderComponent,
   AmexioTagsInputComponent,
@@ -70,8 +66,7 @@ const FORM_COMPONENTS = [
     CommonModule,
     FormsModule,
     HttpModule,
-    AmexioLayoutModule,
-    AmexioPaneModule
+    AmexioLayoutModule
   ],
   exports: FORM_COMPONENTS,
   declarations: FORM_COMPONENTS

@@ -12,15 +12,15 @@ export class AmexioNotificationComponent implements OnInit {
 
   @Input() closable: boolean = true;
 
-  @Input() verticalposition: string;
+  @Input('vertical-position') verticalposition: string;
 
-  @Input() horizontalposition: string;
+  @Input('horizontal-position') horizontalposition: string;
 
-  @Input() messageData: any[];
+  @Input('data') messageData: any[];
 
-  @Input() autodismissmsg: boolean;
+  @Input('auto-dismiss-msg') autodismissmsg: boolean;
 
-  @Input() autodismissmsginterval: number;
+  @Input('auto-dismiss-msg-interval') autodismissmsginterval: number;
 
   data: any[];
 
