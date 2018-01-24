@@ -137,13 +137,20 @@ $stepsLabelHighlight : darken($defaultColor, 30);
 $stepsBorderColor:$borderColor;
 $stepsDisabled : lighten($menubarColor,50%);
 
+
+$ripplePrimaryColor : $primaryBGColor;
+$rippleSecondaryColor: $secondaryBGColor;
+$rippleSuccessColor: $successBGColor;
+$rippleDangerColor : $dangerBGColor;
+$rippleWarningColor : $warningBGColor;
+
 @import "../default/common.scss";
 @import "../default/amexio.components.scss";
 @import "../default/amexio.data.scss";
 @import "../default/amexio.layouts.scss";
 @import "../default/amexio.nav.scss";
 @import "../default/amexio.panes.scss";
-
+@import "../mda/mda-common.scss";
 
 body {
   font-family: Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
@@ -331,17 +338,21 @@ button.app-button {
   margin-bottom: 10px;
 }
 
+
 .flex-col-2pt5{
+  flex: 1 1 20.8333325%;
   max-width: 20.8333325%;
 }
 
 .flex-col-9pt5{
+  flex: 1 1 79.1666635%;
   max-width: 79.1666635%;
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 1024px) {
 
   .flex-col-2pt5,.flex-col-9pt5{
+    flex: 1 1 100%;
     max-width: 100%;
   }
 }
