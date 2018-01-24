@@ -16,7 +16,10 @@ export class AmexioAccordionComponent {
 
   @ContentChildren(AmexioAccordionTabComponent)  panes : QueryList<AmexioAccordionTabComponent>;
 
+  rootId : number;
+
   constructor(private acc : AccordionService){
+    this.rootId = Math.floor(Math.random() * 90000) + 10000;
     this.acc.getEvents().subscribe(
       event=>{
         this.togglePanes(event);
@@ -30,19 +33,17 @@ export class AmexioAccordionComponent {
   }
 
   togglePanes(id : any){
-    if(this.expandAll){
+    if(id.parent == this.rootId){
+      if(!this.expandAll){
+        this.panes.forEach((pane : AmexioAccordionTabComponent)=>{
+          if(id.id != pane.paneId){
+            pane.active= false;
+            pane.content.nativeElement.style.maxHeight = null;
+          }
 
+        });
+      }
     }
-    else {
-      this.panes.forEach((pane : AmexioAccordionTabComponent)=>{
-        if(id.id != pane.paneId){
-          pane.active= false;
-          pane.content.nativeElement.style.maxHeight = null;
-        }
-
-      });
-    }
-
   }
 
   expandAllPanes(){

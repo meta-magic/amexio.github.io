@@ -41,6 +41,8 @@ export class AmexioAccordionTabComponent implements AfterViewInit {
 
   paneId : number;
 
+  parentId : number;
+
   constructor(private acc : AccordionService){
     this.paneId = Math.floor(Math.random() * 90000) + 10000;
   }
@@ -62,7 +64,7 @@ export class AmexioAccordionTabComponent implements AfterViewInit {
 
     this.onClick.emit();
     // this.acc.onClick.next();
-    this.acc.onClickEvent(this.paneId);
+    this.acc.onClickEvent(this.paneId,this.parentId);
   }
 
 }
