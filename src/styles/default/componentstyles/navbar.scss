@@ -53,12 +53,17 @@
 @media only screen and (max-width: 767px) {
   .navbar-container{
     flex-direction: column;
-
+    width: 92%;
     .navbar-logo-unit{
       padding-left: 40px;
+      display: flex;
+      justify-content: space-between;
 
       .navbar-mobile-bars{
-        display: inline-block;
+        display: block;
+        top: 10px;
+        padding: 10px;
+        position: relative;
       }
 
     }
