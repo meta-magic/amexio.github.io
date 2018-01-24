@@ -282,7 +282,9 @@ gulp.task('compile', (cb) => {
 
 // Build the 'dist' folder (without publishing it to NPM)
 gulp.task('build', ['clean'], (cb) => {
-  runSequence('compile', 'test', 'npm-package', 'rollup-bundle','copy-themes', cb);
+  runSequence('compile', 'test', 'npm-package', 'rollup-bundle','copy-themes', ()=>{
+    process.exit(0)
+});
 });
 
 // Same as 'build' but without cleaning temp folders (to avoid breaking demo app, if currently being served)
