@@ -34,7 +34,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
           </ng-template>
         </div>
       </ng-container>
-      <div class="panel" [style.min-height.px]="height" >
+      <div class="panel" [style.max-height.px]="height">
         <ng-content></ng-content>
       </div>
     </div>
@@ -61,12 +61,15 @@ export class AmexioPanelComponent implements OnInit {
   isExpanded: boolean;
 
   ngOnInit() {
-
     this.isExpanded = this.expanded;
     this.iconclassKey = 'fa fa-caret-right';
-    if (!this.header) {
+    if (!this.header && this.height == null) {
       this.height = 200;
     }
+    if(this.height){
+      this.height = this.height;
+    }
+
   }
 
   onTabClick(btn: any) {
