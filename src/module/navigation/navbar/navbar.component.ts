@@ -37,6 +37,9 @@ export class AmexioNavBarComponent implements OnInit {
     if (this.matchMediaService.IsPhone()) {
       this.showmenu = false;
       this.mobile = true;
+    }else{
+      this.showmenu = true;
+      this.mobile = false;
     }
   }
   onResize(event:any){
