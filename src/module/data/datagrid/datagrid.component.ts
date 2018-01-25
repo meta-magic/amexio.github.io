@@ -100,17 +100,34 @@ import {CommonDataService} from "../../services/data/common.data.service";
 
         <ng-container *ngFor="let cols of columns">
           <ng-container *ngIf="!cols.hidden">
-            <div class="datatable-col" [style.width.%]="cols.width" (click)="sortOnColHeaderClick(cols, $event)">
-              {{cols.text}} &nbsp;
-              <ng-container *ngIf="this.sortBy==1 && cols.isColumnSort">
-                <amexio-data-icon key="datagrid_arrowup"></amexio-data-icon>
-                <!--&nbsp; <i class="fa fa-arrow-up"></i>-->
-              </ng-container>
-              <ng-container *ngIf="this.sortBy==2 && cols.isColumnSort">
-                <!--&nbsp;<i class="fa fa-arrow-down"></i>-->
-                <amexio-data-icon key="datagrid_arrowdown"></amexio-data-icon>
-              </ng-container>
-            </div>
+            <ng-container *ngIf="cols.datatype=='string'">
+              <div class="datatable-col" [style.width.%]="cols.width" (click)="sortOnColHeaderClick(cols, $event)">
+                {{cols.text}} &nbsp;
+                <ng-container *ngIf="this.sortBy==1 && cols.isColumnSort">
+                  <amexio-data-icon key="datagrid_arrowup"></amexio-data-icon>
+                  <!--&nbsp; <i class="fa fa-arrow-up"></i>-->
+                </ng-container>
+                <ng-container *ngIf="this.sortBy==2 && cols.isColumnSort">
+                  <!--&nbsp;<i class="fa fa-arrow-down"></i>-->
+                  <amexio-data-icon key="datagrid_arrowdown"></amexio-data-icon>
+                </ng-container>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="cols.datatype=='number'">
+              <div class="datatable-col" [style.width.%]="cols.width" (click)="sortOnColHeaderClick(cols, $event)">
+                <span style="float: right;">
+                   {{cols.text}} &nbsp;
+                    <ng-container *ngIf="this.sortBy==1 && cols.isColumnSort">
+                  <amexio-data-icon key="datagrid_arrowup"></amexio-data-icon>
+                      <!--&nbsp; <i class="fa fa-arrow-up"></i>-->
+                </ng-container>
+                <ng-container *ngIf="this.sortBy==2 && cols.isColumnSort">
+                  <!--&nbsp;<i class="fa fa-arrow-down"></i>-->
+                  <amexio-data-icon key="datagrid_arrowdown"></amexio-data-icon>
+                </ng-container>
+                </span>
+              </div>
+            </ng-container>
           </ng-container>
         </ng-container>
       </div>
@@ -139,7 +156,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
               <ng-container *ngIf="!cols.hidden">
                 <ng-container *ngIf="cols.datatype=='number'">
                   <div class="datatable-col"  [style.width.%]="cols.width"  scope="row" [attr.data-label]="cols.text">
-                   <span>
+                   <span style="float: right">
                      {{row[cols.dataindex]}}
                    </span>
                   </div>
