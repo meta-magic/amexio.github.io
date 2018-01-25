@@ -144,6 +144,9 @@ $rippleSuccessColor: $successBGColor;
 $rippleDangerColor : $dangerBGColor;
 $rippleWarningColor : $warningBGColor;
 
+$datatableRowActiveBG : lighten($primaryBGColor,20%);
+$datatableRowHoverBG : lighten($primaryBGColor,30%);
+
 @import "../mda/mda-common.scss";
 @import "../default/common.scss";
 @import "../default/amexio.components.scss";
@@ -261,12 +264,12 @@ button.app-button {
 }
 
 .datatable .datatable-row:hover{
-  background-color: lighten($primaryBGColor,20%);
+  background-color: $datatableRowHoverBG;
   cursor: pointer;
 }
 
 .datatable .datatable-row-active{
-  background-color: lighten($primaryBGColor,30%);
+  background-color: $datatableRowActiveBG;
 }
 
 .datapoints{

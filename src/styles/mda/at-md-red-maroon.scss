@@ -228,12 +228,12 @@ button.app-button {
 
 
 .datatable .datatable-row:hover{
-  background-color: lighten($primaryBGColor,30%);
+  background-color: lighten($primaryBGColor,60%);
   cursor: pointer;
 }
 
 .datatable .datatable-row-active{
-  background-color: lighten($primaryBGColor,30%);
+  background-color: lighten($primaryBGColor,50%);
 }
 
 
