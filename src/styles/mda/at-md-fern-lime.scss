@@ -116,7 +116,7 @@ $borderLayoutBorder : 0px;
 $borderLayoutBorderColor : none;
 
 $datapointBGColor : $defaultBGColor;
-$datapointColor : $themeBGColor;
+$datapointColor : $navbarBGColor;
 $datapointBorderColor : $borderColor;
 
 $ratingBorderColor : $borderColor;
@@ -275,12 +275,12 @@ button.app-button {
     border: none;
     box-shadow: none;
   }
-  color: $themeBGColor;
+  color: $datapointColor;
 }
 .datapoints-north{
   font-size: 36px;
   font-weight: bold;
-  color: $themeBGColor;
+  color: $datapointColor;
 }
 
 .datapoint-south{
@@ -374,4 +374,3 @@ div.profile-image img {
 div.profile-image a{
   text-transform: capitalize;
 }
-

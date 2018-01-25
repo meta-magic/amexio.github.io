@@ -64,7 +64,7 @@ let ICON_MAPPING =
     },
     {
       "component" : "window_close",
-      "fa" : "fa fa-window-close-o",
+      "fa" : "fa fa-times",
       "mat" : "close"
     },
     {

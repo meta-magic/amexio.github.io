@@ -251,7 +251,7 @@ button.app-button {
 }
 
 .datatable .datatable-row-active{
-  background-color: $themeBGColor!important;
+  background-color: lighten($themeBGColor,40%)!important;
 }
 
 
@@ -277,8 +277,6 @@ button.app-button {
 .datatable .datatable-col{
   vertical-align: middle;
 }
-
-
 
 .datapoints{
   .datapoints{
@@ -433,4 +431,3 @@ div.profile-image a{
 .defaultcolor{
   color: $themeColor;
 }
-
