@@ -62,7 +62,7 @@ export class AmexioPanelComponent implements OnInit {
 
   ngOnInit() {
     this.isExpanded = this.expanded;
-    this.iconclassKey = 'fa fa-caret-right';
+    this.iconclassKey = 'fa fa-caret-down';
     if (!this.header && this.height == null) {
       this.height = 200;
     }
@@ -75,10 +75,10 @@ export class AmexioPanelComponent implements OnInit {
   onTabClick(btn: any) {
     btn.classList.toggle('active-accordion');
     let panel = btn.nextElementSibling;
-    if (this.iconclassKey == 'fa fa-caret-right') {
+    if (this.iconclassKey == 'fa fa-caret-down') {
+      this.iconclassKey = 'fa fa-caret-up';
+    } else if (this.iconclassKey == 'fa fa-caret-up') {
       this.iconclassKey = 'fa fa-caret-down';
-    } else if (this.iconclassKey == 'fa fa-caret-down') {
-      this.iconclassKey = 'fa fa-caret-right';
     }
     if (panel.style.maxHeight) {
       this.height = null;
