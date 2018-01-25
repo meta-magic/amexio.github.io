@@ -242,7 +242,8 @@ button.app-button {
 }
 
 .datatable .datatable-row:hover{
-  background-color: lighten($themeColor,30);
+  //background-color: lighten($themeColor,40);
+  background: $hoverBGColor;
   color: $themeColor!important;
   font-weight :bold;
 }
@@ -255,7 +256,7 @@ button.app-button {
 // }
 
 .datatable .datatable-row-active{
-  background-color: $themeBGColor!important;
+  background-color: lighten($themeBGColor,40%)!important;
 }
 
 
@@ -427,5 +428,3 @@ div.profile-image a{
 .defaultcolor{
   color: $themeColor;
 }
-
-
