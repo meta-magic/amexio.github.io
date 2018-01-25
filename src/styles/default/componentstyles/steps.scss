@@ -30,6 +30,7 @@
   text-align: center;
   position: relative;
 }
+
 .btn-circle {
   width: 30px;
   height: 30px;
@@ -38,6 +39,25 @@
   font-size: 12px;
   line-height: 1.428571429;
   border-radius: 15px;
+  
+  background-color: $primaryBGColor;
+  border-color: $primaryBGColor;
+  color: $primaryColor;
+  display: inline-block;
+  font-weight: 400;
+  line-height: 1.25;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  outline: none;
+  user-select: none;
+  border: 1px solid $borderColor;
+  padding: .5rem 1rem;
+  border-radius: $borderRadius;
+  transition: all .2s ease-in-out;
 }
 
 

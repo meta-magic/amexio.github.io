@@ -257,8 +257,8 @@ button.app-button {
 }
 
 .datatable .datatable-row-active{
-  background-color: $themeColor;
-  color: $themeBGColor!important;
+  //background-color: lightnen($themeColor,60);
+  color: $datapointColor!important;
 }
 
 
