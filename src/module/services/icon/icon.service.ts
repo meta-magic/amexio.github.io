@@ -273,6 +273,15 @@ let ICON_MAPPING =
       "component" : "window-msgtype-confirm",
       "fa" : "fa fa-check-circle fa-2x fa-fw",
       "mat" : "keyboard_arrow_down" /*need to check icon*/
+    },{
+    "component" : "horizontal-tree-expanded",
+    "fa" : "fa fa-caret-right fa-fw",
+    "mat" : "keyboard_arrow_right"
+  },
+    {
+      "component" : "horizontal-tree-collapse",
+      "fa" : "fa fa-caret-left fa-fw",
+      "mat" : "keyboard_arrow_left"
     }
 
   ]

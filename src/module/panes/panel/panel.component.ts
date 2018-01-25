@@ -34,7 +34,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
           </ng-template>
         </div>
       </ng-container>
-      <div class="panel" [style.min-height.px]="height" >
+      <div class="panel" [style.max-height.px]="height">
         <ng-content></ng-content>
       </div>
     </div>
@@ -61,21 +61,24 @@ export class AmexioPanelComponent implements OnInit {
   isExpanded: boolean;
 
   ngOnInit() {
-
     this.isExpanded = this.expanded;
-    this.iconclassKey = 'fa fa-caret-right';
-    if (!this.header) {
+    this.iconclassKey = 'fa fa-caret-down';
+    if (!this.header && this.height == null) {
       this.height = 200;
     }
+    if(this.height){
+      this.height = this.height;
+    }
+
   }
 
   onTabClick(btn: any) {
     btn.classList.toggle('active-accordion');
     let panel = btn.nextElementSibling;
-    if (this.iconclassKey == 'fa fa-caret-right') {
+    if (this.iconclassKey == 'fa fa-caret-down') {
+      this.iconclassKey = 'fa fa-caret-up';
+    } else if (this.iconclassKey == 'fa fa-caret-up') {
       this.iconclassKey = 'fa fa-caret-down';
-    } else if (this.iconclassKey == 'fa fa-caret-down') {
-      this.iconclassKey = 'fa fa-caret-right';
     }
     if (panel.style.maxHeight) {
       this.height = null;

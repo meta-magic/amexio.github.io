@@ -94,7 +94,7 @@ $horizontalnode-label-border-radius: 5px;
   padding: 5px 10px;
   line-height: $horizontalnode-label-height - 5px * 2;
   text-align: center;
-  border: 2px solid $horizontalnodecolor;
+ // border: 2px solid $horizontalnodecolor;
   border-radius: $horizontalnode-label-border-radius;
   position: absolute;
   left: 0;
@@ -107,4 +107,9 @@ $horizontalnode-label-border-radius: 5px;
 .horizontaltreeview-node-label:hover{
   border-color:  darken($horizontalnodecolor,10%);
   background-color: darken($horizontalnodecolor,10%);
+}
+
+.horizontaltreeview-node-label:hover {
+  color: $hoverColor;
+  background-color: $hoverBGColor;
 }

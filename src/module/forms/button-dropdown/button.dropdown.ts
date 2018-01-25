@@ -14,30 +14,29 @@ import {AmexioButtonDropDownItemComponent} from "./button.dropdown.item";
       <button (click)="onClick()"
               [ngClass]="{'button-default': size=='default' || size ==null,'button-small': size=='small','button-large' : size=='large','button-primary' : type == 'primary' || type == null,'button-success' : type == 'success',' button-danger' : type=='danger','button-warning' : type=='warning'}">
 
-      <amexio-form-icon style="float:right;" key="button_caret-down"></amexio-form-icon>
+        <amexio-form-icon style="float:right;" key="button_caret-down"></amexio-form-icon>
 
-      <span [attr.disabled]="disabled ? true: null">{{label}} &nbsp;&nbsp;</span>
+        <span [attr.disabled]="disabled ? true: null">{{label}} &nbsp;&nbsp;</span>
         <!--<i class="fa fa-caret-down" style="float:right;" ></i>-->
 
       </button>
 
-      <div style="position: absolute;" [ngStyle]="{'display' : openContent ? 'block' : 'none'}">
+      <div class="button-dropdown"  style="position: absolute;" [ngStyle]="{'display' : openContent ? 'block' : 'none'}">
         <ng-container *ngFor="let itemData of dropdownItemData">
-          <div [ngClass]="{'button-default': size=='default' || size ==null,'button-small': size=='small','button-large' : size=='large','button-primary' : type == 'primary' || type == null,'button-success' : type == 'success',' button-danger' : type=='danger','button-warning' : type=='warning'}">
-            <button [ngStyle]="{'cursor': itemData.disabled ? 'not-allowed':'pointer'}"
-                    (click)="itemClick($event,itemData)"
-                    [ngClass]="{'button-default': size=='default' || size ==null,'button-small': size=='small','button-large' : size=='large','button-primary' : type == 'primary' || type == null,'button-success' : type == 'success',' button-danger' : type=='danger','button-warning' : type=='warning'}">
-            <amexio-form-icon style="padding-right: 5px;" [customclass]="itemData.iconStyleClass"></amexio-form-icon>
-            <span [attr.disabled]="itemData.disabled ? true: null">{{itemData.label}}&nbsp;&nbsp;</span>
+          <div [ngClass]="{'button-default': size=='default' || size ==null,'button-small': size=='small','button-large' : size=='large'}">
+            <div [ngStyle]="{'cursor': itemData.disabled ? 'not-allowed':'pointer'}"
+                 (click)="itemClick($event,itemData)">
+              <amexio-form-icon style="padding-right: 5px;" [customclass]="itemData.iconStyleClass"></amexio-form-icon>
+              <span [attr.disabled]="itemData.disabled ? true: null">{{itemData.label}}&nbsp;&nbsp;</span>
               <!--<i [class]="itemData.iconStyleClass" aria-hidden="true" style="float:right;" ></i>-->
-            </button>
+            </div>
           </div>
 
         </ng-container>
       </div>
 
     </div>
-
+    
   `
 })
 
