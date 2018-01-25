@@ -17,9 +17,9 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
                   {{title}}
                 </div>
                 <div class="tablecol float-right">
-                  <ng-container *ngIf="closable">
+                  <div *ngIf="closable" class="icon-style">
                     <amexio-pane-icon [key]="'window_close'" (onClick)="onCloseClick()"></amexio-pane-icon>
-                  </ng-container>
+                  </div>
                 </div>
               </div>
             </div>
@@ -48,7 +48,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
           </footer>
           <footer *ngIf="!custom" class="dialogue-footer"
                   [ngClass]="{'flex-start':(footeralign=='left'),'flex-end':(footeralign=='right'),'flex-center':(footeralign=='center')}">
-            <amexio-button *ngIf="type =='confirm'"  [size]="'small'" [label]="secondaryActionLabel" [type]="'default'" (onClick)="getStatus('cancel')"></amexio-button>
+            <amexio-button *ngIf="type =='confirm'"  [size]="'small'" [label]="secondaryActionLabel" [type]="'default'" (onClick)="getStatus('cancel')"></amexio-button>&nbsp;&nbsp;
             <amexio-button *ngIf="type =='confirm' || type == 'alert'"   [size]="'small'" [label]="primaryActionLabel" [type]="'primary'" (onClick)="getStatus('ok')"></amexio-button>
           </footer>
         </div>
