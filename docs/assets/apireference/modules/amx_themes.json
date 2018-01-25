@@ -1,0 +1,71 @@
+{
+  "properties": [
+    {
+      "name": "at-am-byzantine-crystal",
+      "description":"../node_modules/amexio-ng-extensions/styles/amexio/at-am-byzantine-crystal.scss"
+    },
+    {
+      "name" : "at-am-honey-prussian",
+      "description" : "../node_modules/amexio-ng-extensions/styles/amexio/at-am-honey-prussian.scss"
+    },
+    {
+      "name" : "at-am-limegreen",
+      "description" : "../node_modules/amexio-ng-extensions/styles/amexio/at-am-limegreen.scss"
+    },
+    {
+      "name" : "at-am-matrix",
+      "description" : "../node_modules/amexio-ng-extensions/styles/amexio/at-am-matrix.scss"
+    },
+    {
+      "name" : "at-am-ocean-blue",
+      "description" : "../node_modules/amexio-ng-extensions/styles/amexio/at-am-ocean-blue.scss"
+    },
+    {
+      "name" : "at-am-persian-laguna",
+      "description" : "../node_modules/amexio-ng-extensions/styles/amexio/at-am-persian-laguna.scss"
+    },
+    {
+      "name" : "at-am-spicy-apricot",
+      "description" : "../node_modules/amexio-ng-extensions/styles/amexio/at-am-spicy-apricot.scss"
+    },
+    {
+      "name": "at-am-tiger",
+      "description": "../node_modules/amexio-ng-extensions/styles/amexio/at-am-tiger.scss"
+    },
+    {
+      "name": "at-am-burgandy-magenta",
+      "description": "../node_modules/amexio-ng-extensions/styles/amexio/at-am-burgandy-magenta.scss"
+    },
+    {
+      "name": "at-am-navy-grape",
+      "description": "../node_modules/amexio-ng-extensions/styles/amexio/at-am-navy-grape.scss"
+    },
+
+
+    {
+      "name": "at-am-matrix-amber",
+      "description": "../node_modules/amexio-ng-extensions/styles/amexio/at-am-matrix-amber.scss"
+    },
+    {
+      "name": "at-am-matrix-cream",
+      "description": "../node_modules/amexio-ng-extensions/styles/amexio/at-am-matrix-cream.scss"
+    },
+    {
+      "name": "at-am-matrix-maya",
+      "description": "../node_modules/amexio-ng-extensions/styles/amexio/at-am-matrix-maya.scss"
+    },
+    {
+      "name": "at-am-matrix-ultra",
+      "description": "../node_modules/amexio-ng-extensions/styles/amexio/at-am-matrix-ultra.scss"
+    },
+    {
+      "name": "at-am-royal-kelly",
+      "description": "../node_modules/amexio-ng-extensions/styles/amexio/at-am-royal-kelly.scss"
+    },
+    {
+      "name": "at-am-royal-pineapple",
+      "description": "../node_modules/amexio-ng-extensions/styles/amexio/at-am-royal-pineapple.scss"
+    }
+
+  ]
+}

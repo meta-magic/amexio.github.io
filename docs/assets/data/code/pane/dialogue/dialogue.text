@@ -1,0 +1,32 @@
+
+export class DialogDemoComponent {
+  showDialog: boolean;
+  confirmDialog: boolean;
+  errorDialog: boolean;
+  warningDialog: boolean;
+  helpDialog: boolean;
+  customDialog: boolean;
+
+  constructor() {}
+  toggleConfirm() {
+    this.confirmDialog = !this.confirmDialog;
+  }
+
+  toggleError() {
+    this.errorDialog = !this.errorDialog;
+  }
+
+  toggleWarning() {
+    this.warningDialog = !this.warningDialog;
+  }
+
+  toggleHelp() {
+    this.helpDialog = !this.helpDialog;
+  }
+
+  toggleCustom() {
+    this.customDialog = !this.customDialog;
+  }
+
+
+}

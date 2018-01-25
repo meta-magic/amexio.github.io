@@ -1,0 +1,134 @@
+{
+  "properties": [
+    {
+      "name": "AT-MD-Army-olive",
+      "description":"../node_modules/amexio-ng-extensions/styles/mda/at-md-army-olive.scss"
+    },
+    {
+      "name" : "AT-MD-Ash-stone-black",
+      "description" : "../node_modules/amexio-ng-extensions/styles/mda/at-md-ash-stone-black.scss"
+    },
+    {
+      "name" : "AT-MD-Black",
+      "description" : "../node_modules/amexio-ng-extensions/styles/mda/at-md-black.scss"
+    },
+    {
+      "name" : "AT-MD-Blue",
+      "description" : "../node_modules/amexio-ng-extensions/styles/mda/at-md-blue.scss"
+    },
+    {
+      "name" : "AT-MD-blue-grey",
+      "description" : "../node_modules/amexio-ng-extensions/styles/mda/at-md-blue-grey.scss"
+    },
+    {
+      "name" : "AT-MD-Cerise-magenta",
+      "description" : "../node_modules/amexio-ng-extensions/styles/mda/at-md-cerise-magenta.scss"
+    },
+    {
+      "name" : "AT-MD-charcoal-iron",
+      "description" : "../node_modules/amexio-ng-extensions/styles/mda/at-md-charcoal-iron.scss"
+    },
+    {
+      "name" : "AT-MD-chocolate-russet",
+      "description" : "../node_modules/amexio-ng-extensions/styles/mda/at-md-chocolate-russet.scss"
+    },
+    {
+      "name" : "AT-MD-fern-lime",
+      "description" : "../node_modules/amexio-ng-extensions/styles/mda/at-md-fern-lime.scss"
+    },
+    {
+      "name" : "At-MD-frenchrose-mulberry",
+      "description" : "../node_modules/amexio-ng-extensions/styles/mda/at-md-frenchrose-mulberry.scss"
+    },
+    {
+      "name" : "AT-MD-gingerbread",
+      "description" : "../node_modules/amexio-ng-extensions/styles/mda/at-md-gingerbread.scss"
+    }
+  ,
+    {
+      "name" : "AT-MD-gold-amber",
+      "description" : "../node_modules/amexio-ng-extensions/styles/mda/at-md-gold-amber.scss"
+    }
+  ,
+    {
+      "name" : "AT-MD-grape-violet",
+      "description" : "../node_modules/amexio-ng-extensions/styles/mda/at-md-grape-violet.scss"
+    }
+  ,
+    {
+      "name" : "AT-MD-hot-pink-fuchsia",
+      "description" : "../node_modules/amexio-ng-extensions/styles/mda/at-md-hot-pink-fuchsia.scss"
+    }
+  ,
+    {
+      "name" : "AT-MD-indigo",
+      "description" : "../node_modules/amexio-ng-extensions/styles/mda/at-md-indigo.scss"
+    }
+  ,
+    {
+      "name" : "AT-MD-jungle-mint",
+      "description" : "../node_modules/amexio-ng-extensions/styles/mda/at-md-jungle-mint.scss"
+    },
+    {
+      "name" : "at-md-mahogany-barny-red",
+      "description" : "../node_modules/amexio-ng-extensions/styles/mda/at-md-mahogany-barny-red.scss"
+    }
+  ,
+    {
+      "name" : "at-md-maya",
+      "description" : "../node_modules/amexio-ng-extensions/styles/mda/at-md-maya.scss"
+    }
+  ,
+    {
+      "name" : "at-md-navy-egyptian",
+      "description" : "../node_modules/amexio-ng-extensions/styles/mda/at-md-navy-egyptian.scss"
+    }
+  ,
+    {
+      "name" : "at-md-rasberry-sangria",
+      "description" : "../node_modules/amexio-ng-extensions/styles/mda/at-md-rasberry-sangria.scss"
+    }
+  ,
+    {
+      "name" : "at-md-red-maroon",
+      "description" : "../node_modules/amexio-ng-extensions/styles/mda/at-md-red-maroon.scss"
+    },
+    {
+      "name" : "at-md-sacramento-jade",
+      "description" : "../node_modules/amexio-ng-extensions/styles/mda/at-md-sacramento-jade.scss"
+    },
+    {
+      "name" : "at-md-yale-azure",
+      "description" : "../node_modules/amexio-ng-extensions/styles/mda/at-md-yale-azure.scss"
+    },
+
+
+
+    {
+      "name" : "at-md-tronbone-royal",
+      "description" : "../node_modules/amexio-ng-extensions/styles/mda/at-md-tronbone-royal.scss"
+    },
+    {
+      "name" : "at-md-pineapple-flaxen",
+      "description" : "../node_modules/amexio-ng-extensions/styles/mda/at-md-pineapple-flaxen.scss"
+    },
+    {
+      "name" : "at-md-pumpkin-fire",
+      "description" : "../node_modules/amexio-ng-extensions/styles/mda/at-md-pumpkin-fire.scss"
+    },
+    {
+      "name" : "at-md-mauve-orchid",
+      "description" : "../node_modules/amexio-ng-extensions/styles/mda/at-md-mauve-orchid.scss"
+    },
+    {
+      "name" : "at-md-honey-mustard",
+      "description" : "../node_modules/amexio-ng-extensions/styles/mda/at-md-honey-mustard.scss"
+    },
+    {
+      "name" : "at-md-bruntor-tangerine",
+      "description" : "../node_modules/amexio-ng-extensions/styles/mda/at-md-bruntor-tangerine.scss"
+    }
+
+
+  ]
+}

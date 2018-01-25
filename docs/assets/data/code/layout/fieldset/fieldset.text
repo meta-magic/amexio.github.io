@@ -1,0 +1,10 @@
+import {Component, OnInit} from '@angular/core';
+
+@Component({
+  selector : 'fieldset-demo',
+  templateUrl : 'fieldset.demo.html'
+})
+export class FieldSet {
+constructor() {
+}
+}

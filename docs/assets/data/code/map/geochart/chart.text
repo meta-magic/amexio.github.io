@@ -1,0 +1,16 @@
+export class GeoChartDemoComponent {
+  geoChartData:any;
+  constructor() {
+    this.geoChartData=[
+      ['Country', 'Popularity'],
+      ['Germany', 200],
+      ['United States', 300],
+      ['Brazil', 400],
+      ['Canada', 500],
+      ['France', 550],
+      ['RU', 350],
+      ['India',700]
+    ];
+  }
+
+}

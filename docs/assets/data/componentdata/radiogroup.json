@@ -1,0 +1,10 @@
+{
+  "data":[{
+    "gender":"Male",
+    "genderId":"male"
+  },{
+    "gender":"Female",
+    "genderId":"female"
+  }
+  ]
+}

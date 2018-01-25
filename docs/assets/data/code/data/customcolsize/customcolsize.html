@@ -1,0 +1,33 @@
+<!--data grid with template-->
+
+<amexio-datagrid  title="Country Grid"
+                  [http-method]="'get'"
+                  [http-url]="'assets/data/componentdata/gridtemplate.json'"
+                  [data-reader]="'data'"
+                  [page-size] = "10"
+                  [enable-data-filter]="false"
+                  (rowSelect)="getRowData($event)">
+  <amexio-data-table-column [width]="70"
+                            [data-index]="'name_official'"
+                            [data-type]="'string'"
+                            [hidden]="false"
+                            [text]="'Name'">
+    <ng-template #amexioBodyTmpl let-column let-row="row">
+      <span>
+        <amexio-image [path]="'http://amexio.org/showcaseapp/v3/assets/images/flags/flags/'+row.flag_32"></amexio-image>&nbsp;{{row.name}} ( {{row.name_official}} )
+      </span>
+    </ng-template>
+  </amexio-data-table-column>
+  <amexio-data-table-column [width]="15"
+                            [data-index]="'latitude'"
+                            [data-type]="'string'"
+                            [hidden]="false"
+                            [text]="'Latitude'">
+  </amexio-data-table-column>
+  <amexio-data-table-column [width]="15"
+                            [data-index]="'longitude'"
+                            [data-type]="'number'"
+                            [hidden]="false"
+                            [text]="'Longitude'">
+  </amexio-data-table-column>
+</amexio-datagrid>

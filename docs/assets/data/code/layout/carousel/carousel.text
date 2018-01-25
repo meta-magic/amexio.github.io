@@ -1,0 +1,10 @@
+import {Component, OnInit} from '@angular/core';
+
+@Component({
+  selector : 'carousel-demo',
+  templateUrl : 'carousel.demo.html'
+})
+export class CarouselDemo {
+constructor() {
+}
+}

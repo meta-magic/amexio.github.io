@@ -1,0 +1,15 @@
+<!--Simple file upload-->
+<amexio-fileupload [http-url]="'/upload'"
+                   [http-method]="'POST'"
+                   [file-type]="'image/*'"
+                   [multiple-file]="'*'"
+                   [field-label]="'Photo Upload'">
+</amexio-fileupload>
+
+<!--Drag drop zone-->
+<amexio-fileupload [http-url]="'/upload'"
+                   [http-method]="'POST'"
+                   [file-type]="'image/*'"
+                   [field-label]="'Photo Upload'"
+                   droppable="true">
+</amexio-fileupload>

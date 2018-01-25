@@ -1,0 +1,26 @@
+{
+  "properties": [
+    {
+      "name": "pages",
+      "type": "number",
+      "default": "",
+      "description":"Total Number of records"
+    },
+    {
+      "name": "rows",
+      "type": "number",
+      "default": "",
+      "description":"number of records on one page"
+    }
+  ],
+  "events":[
+    {
+      "name": "onRowChange",
+      "description":"if you click on '<<' will get 1st record and if you click on '>>' will get last record."
+    },
+    {
+      "name": "onPageChange",
+      "description":"It will gives you current page number"
+    }
+  ]
+}

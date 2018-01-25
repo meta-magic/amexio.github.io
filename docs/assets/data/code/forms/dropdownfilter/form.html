@@ -1,0 +1,13 @@
+<!--Simple dropdown filter with http url-->
+<amexio-dropdown [(ngModel)]="countryCode1"
+                 [place-holder]="'Choose'"
+                 name="countryCode1"
+                 [search]="true"
+                 [data-reader]="'data'"
+                 [field-label]="'Choose Country'"
+                 [http-url]="'assets/data/componentdata/country.json'"
+                 [http-method]="'get'"
+                 [display-field]="'countryName'"
+                 [value-field]="'countryCode1'"
+                 (onSingleSelect)="getSingleVal($event)">
+</amexio-dropdown>

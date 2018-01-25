@@ -1,0 +1,45 @@
+{
+  "dashboard": [
+    {
+      "name": "height",
+      "type": "number",
+      "default": "",
+      "description":"Height of chart"
+    },{
+      "name": "width",
+      "type": "number",
+      "default": "",
+      "description":"Width of chart"
+    },{
+      "name": "data",
+      "type": "Array",
+      "default": "",
+      "description":"Local data for gauge chart"
+    },{
+      "name": "red-color-from",
+      "type": "number",
+      "default": "",
+      "description":"The lowest value for a range marked by a red color."
+    },{
+      "name": "red-color-to",
+      "type": "number",
+      "default": "",
+      "description":"The highest value for a range marked by a red color."
+    },{
+      "name": "yellow-color-from",
+      "type": "number",
+      "default": "",
+      "description":"The lowest value for a range marked by a yellow color."
+    },{
+      "name": "yellow-color-to",
+      "type": "number",
+      "default": "",
+      "description":"The highest value for a range marked by a yellow color."
+    },{
+      "name": "scale-value",
+      "type": "number",
+      "default": "",
+      "description":"The number of minor tick section in each major tick section."
+    }
+  ]
+}
