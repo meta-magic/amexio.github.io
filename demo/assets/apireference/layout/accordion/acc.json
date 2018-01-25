@@ -1,0 +1,33 @@
+{
+  "properties": [
+    {
+      "name": "header",
+      "type": "string",
+      "default": "",
+      "description":"User can bind title for accordion tab."
+    },
+    {
+      "name": "expanded",
+      "type": "boolean",
+      "default": "false",
+      "description":"Pane will expand or collapse based on the boolean."
+    },
+    {
+      "name": "footer",
+      "type": "boolean",
+      "default": "false",
+      "description":"User can enable footer of card by setting this flag to true."
+    },
+    {
+      "name": "header-align",
+      "type": "string",
+      "default": "",
+      "description":"Align of item elements inside card header example : right,center,left."
+    },{
+      "name": "footer-align",
+      "type": "string",
+      "default": "",
+      "description":"Align of item elements inside card footer example : right,center,left."
+    }
+  ]
+}

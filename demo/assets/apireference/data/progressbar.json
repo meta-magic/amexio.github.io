@@ -1,0 +1,46 @@
+{
+  "properties": [
+    {
+      "name": "show",
+      "type": "boolean",
+      "default": "true",
+      "description":"Shows / Hides the progress bar."
+    },
+    {
+      "name": "infinite",
+      "type": "boolean",
+      "default": "false",
+      "description":"Enable/Disable Infinite Mode."
+    },
+    {
+      "name": "type",
+      "type": "number",
+      "default": "",
+      "description":"Total Number of records."
+    },
+    {
+      "name": "current-value",
+      "type": "number",
+      "default": "",
+      "description":"Current Position of progress."
+    },
+    {
+      "name": "label",
+      "type": "number",
+      "default": "",
+      "description":"Custom labels on bar."
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "default": "",
+      "description":"Height of bar."
+    },
+    {
+      "name": "stripped",
+      "type": "boolean",
+      "default": "false",
+      "description":"Bar styled stripped."
+    }
+  ]
+}

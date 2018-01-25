@@ -1,0 +1,22 @@
+{
+  "chart": [
+    {
+      "name": "height",
+      "type": "number",
+      "default": "",
+      "description": "Height of chart"
+    },
+    {
+      "name": "width",
+      "type": "number",
+      "default": "",
+      "description": "Width of chart"
+    },
+    {
+      "name": "data",
+      "type": "array",
+      "default": "",
+      "description": "Local data for GeoChart"
+    }
+  ]
+}

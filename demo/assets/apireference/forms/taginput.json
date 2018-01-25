@@ -1,0 +1,65 @@
+{
+  "properties": [
+    {
+      "name": "field-label",
+      "type": "string",
+      "default": "",
+      "description": "The label of this field"
+    },
+    {
+      "name": "key",
+      "type": "string",
+      "default": "",
+      "description": "The key that must be used while searching in data provided"
+    },
+    {
+      "name": "trigger-char",
+      "type": "number",
+      "default": "1",
+      "description": "The number of characters to trigger search"
+    },
+    {
+      "name": "http-url",
+      "type": "string",
+      "default": "",
+      "description": "REST url for fetching datasource."
+    },
+    {
+      "name": "http-method",
+      "type": "string",
+      "default": "",
+      "description": "Type of HTTP call, POST,GET."
+    },
+    {
+      "name": "data-reader",
+      "type": "string",
+      "default": "",
+      "description": "Key in JSON datasource for records"
+    },
+    {
+      "name": "display-field",
+      "type": "string",
+      "default": "",
+      "description": "Name of key inside response data to display on ui."
+    },
+    {
+      "name": "value-field",
+      "type": "string",
+      "default": "",
+      "description": "Name of key inside response data.use to send to backend"
+    },{
+      "name": "data",
+      "type": "any",
+      "default": "",
+      "description": "Local data for Tag Input"
+    }
+  ],
+  "events": [
+    {
+      "name": "onChange",
+      "description": "Fire when select value from input tag "
+    }
+  ],
+  "css": [
+  ]
+}

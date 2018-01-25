@@ -1,0 +1,29 @@
+{
+  "properties": [
+    {
+      "name": "http-url",
+      "type": "string",
+      "default": "",
+      "description": "REST url for fetching datasource."
+    },
+    {
+      "name": "http-method",
+      "type": "string",
+      "default": "",
+      "description": "Type of HTTP call, POST,GET."
+    },
+   {
+      "name": "data",
+      "type": "any",
+      "default": "",
+      "description": "Local data for menubar."
+    }
+  ],
+  "events":[
+    {
+      "name": "nodeClick",
+      "description": "Fire when menubar bar click."
+
+    }
+  ]
+}

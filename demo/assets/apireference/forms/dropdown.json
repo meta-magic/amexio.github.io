@@ -1,0 +1,86 @@
+{
+  "properties": [
+    {
+      "name": "field-label",
+      "type": "string",
+      "default": "",
+      "description": "The label of this field"
+    },
+    {
+      "name": "place-holder",
+      "type": "string",
+      "default": "",
+      "description": "Show place-holder inside dropdown component"
+    },
+
+    {
+      "name": "http-url",
+      "type": "string",
+      "default": "",
+      "description": "REST url for fetching datasource."
+    },
+    {
+      "name": "http-method",
+      "type": "string",
+      "default": "",
+      "description": "Type of HTTP call, POST,GET."
+    },
+    {
+      "name": "display-field",
+      "type": "string",
+      "default": "",
+      "description": "Name of key inside response data to display on ui."
+    },
+    {
+      "name": "value-field",
+      "type": "string",
+      "default": "",
+      "description": "Name of key inside response data.use to send to backend"
+    },{
+      "name": "data",
+      "type": "any",
+      "default": "",
+      "description": "Local data for dropdown."
+    },
+    {
+      "name": "data-reader",
+      "type": "string",
+      "default": "",
+      "description": "Key in JSON datasource for records"
+    },
+    {
+      "name": "search",
+      "type": "boolean",
+      "default": "false",
+      "description": "true for search box enable"
+    },{
+      "name": "multi-select",
+      "type": "boolean",
+      "default": "false",
+      "description": "true for select multiple options"
+
+    }
+  ],
+  "events": [
+    {
+      "name": "onBlur",
+      "description":"On blur event"
+    },
+    {
+      "name": "input",
+      "description":"On input event field."
+    },{
+      "name": "onClick",
+      "description":"On record select event.this event is only for normal dropdown."
+    },{
+      "name": "onSingleSelect",
+      "description":"Fire when drop down item selected."
+    },
+    {
+      "name": "onMultiSelect",
+      "description":"Fire when multiple record select in drop down.this event is only applied when multi-select=true"
+    }
+  ],
+  "css": [
+  ]
+}

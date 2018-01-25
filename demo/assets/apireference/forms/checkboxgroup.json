@@ -1,0 +1,64 @@
+{
+  "properties": [
+    {
+      "name": "field-label",
+      "type": "string",
+      "default": "",
+      "description": "The label of this field"
+    },
+    {
+      "name": "column",
+      "type": "string",
+      "default": "",
+      "description": "Divide checkbox option into equal column."
+    }, {
+      "name": "horizontal",
+      "type": "boolean",
+      "default": "false",
+      "description": "Set true for horizontal checkbox "
+    },
+    {
+      "name": "http-url",
+      "type": "string",
+      "default": "",
+      "description": "REST url for fetching datasource."
+    },
+    {
+      "name": "http-method",
+      "type": "string",
+      "default": "",
+      "description": "Type of HTTP call, POST,GET."
+    },
+    {
+      "name": "display-field",
+      "type": "string",
+      "default": "",
+      "description": "Name of key inside response data to display on ui."
+    },
+    {
+      "name": "value-field",
+      "type": "string",
+      "default": "",
+      "description": "Name of key inside response data.use to send to backend"
+    },{
+      "name": "data",
+      "type": "any",
+      "default": "",
+      "description": "Local data for checkboxGroup."
+    },
+    {
+      "name": "data-reader",
+      "type": "string",
+      "default": "",
+      "description": "Key in JSON datasource for records"
+    }
+  ],
+  "events": [
+    {
+      "name": "onSelection",
+      "description": "fire when check box click "
+    }
+  ],
+  "css": [
+  ]
+}

@@ -1,0 +1,19 @@
+
+<amexio-chart-bar [data]="barChartData"
+                  [height]="'400px'"
+                  [width]="'100%'" >
+            <amexio-chart-title [title]="'Population of Largest U.S. Cities'">
+            </amexio-chart-title>
+            <amexio-chart-legend [position]="'bottom'">
+            </amexio-chart-legend>
+</amexio-chart-bar>
+
+<amexio-chart-bar [data]="barStackChartData"
+                  [height]="'400px'"
+                  [width]="'100%'"
+                  [stacked]="true">
+                  <amexio-chart-title [title]="'Company Performance'">
+                  </amexio-chart-title>
+                  <amexio-chart-legend [position]="'bottom'">
+                  </amexio-chart-legend>
+</amexio-chart-bar>

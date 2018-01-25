@@ -1,0 +1,89 @@
+{
+  "properties": [
+    {
+      "name": "bg-image-url",
+      "type": "string",
+      "default": "",
+      "description": "Background image from content."
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "default": "",
+      "description": "Set title."
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "default": "",
+      "description": "Set Description."
+    },
+    {
+      "name": "contents",
+      "type": "array[]",
+      "default": "",
+      "description": "Array of content must be in key value pair."
+    },
+    {
+      "name": "link",
+      "type": "string",
+      "default": "",
+      "description": "Set video link."
+    }, {
+      "name": "watch",
+      "type": "boolean",
+      "default": "false",
+      "description": "Enable watch button."
+    },
+    {
+      "name": "mylist",
+      "type": "boolean",
+      "default": "false",
+      "description": "Enable MyList button."
+    }, {
+      "name": "age-limit",
+      "type": "string",
+      "default": "",
+      "description": "Set age limit."
+    }, {
+      "name": "release-year",
+      "type": "string",
+      "default": "",
+      "description": "Set release Year."
+    }
+,{
+      "name": "close",
+      "type": "boolean",
+      "default": "false",
+      "description": "Enable close content."
+    }
+,{
+      "name": "rating parameter rate, max",
+      "type": "string",
+      "default": "",
+      "description": "Set rating max value(max=5) and current rating(rate=3)."
+    }
+
+
+  ],
+  "events": [
+    {
+      "name": "onWatchClick",
+      "description": "Get watch button click."
+    }, {
+      "name": "onAddListClick",
+      "description": "Get add list button click."
+    }, {
+      "name": "onLikeClick",
+      "description": "Get like click."
+    }, {
+      "name": "onUnlikeLikeClick",
+      "description": "Get unlike click."
+    }, {
+      "name": "onCloseClick",
+      "description": "Get close content click."
+    }
+  ],
+  "css": [
+  ]
+}

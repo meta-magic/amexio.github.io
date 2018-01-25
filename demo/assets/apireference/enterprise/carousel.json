@@ -1,0 +1,33 @@
+{
+  "properties": [
+    {
+      "name": "title",
+      "type": "string",
+      "default": "",
+      "description": "Title for the Carousel"
+    },
+    {
+      "name": "data",
+      "type": "Array",
+      "default": "",
+      "description": "Data Containing Image Path, Information and Video URL Refer the DataSource Tab"
+    },
+    {
+      "name": "carousel-type",
+      "type": "string",
+      "default": "",
+      "description": "Stlyed Carousel for Vertical or Horizontal Media"
+    },{
+      "name": "has-details",
+      "type": "boolean",
+      "default": "false",
+      "description": "Provide a embedded view for more information on the media"
+    }
+  ],
+  "events": [
+    {
+      "name": "onVideoLoad",
+      "description": "Emits with a video id to play."
+    }
+  ]
+}

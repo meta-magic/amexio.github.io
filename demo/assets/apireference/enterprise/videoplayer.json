@@ -1,0 +1,17 @@
+{
+  "properties": [
+    {
+      "name": "video-id",
+      "type": "string",
+      "default": "",
+      "description": "Set video Id."
+    },
+    {
+      "name": "height",
+      "type": "string",
+      "default": "",
+      "description": "Height should be in Px Ex.500px"
+    }
+
+  ]
+}

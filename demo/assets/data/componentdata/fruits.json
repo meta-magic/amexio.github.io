@@ -1,0 +1,11 @@
+{
+  "data": [
+    {"fruitName": "Apple","code": "Apple","checked":false},
+    {"fruitName": "Oranges","code": "Oranges","checked":false},
+    {"fruitName": "Watermelon","code": "Watermelon","checked":false},
+    {"fruitName": "Avacado","code": "Avacado","checked":false},
+    {"fruitName": "Grapes","code": "Grapes","checked":false},
+    {"fruitName": "Mango","code": "Mango","checked":false},
+    {"fruitName": "Banana","code": "Banana","checked":false}
+  ]
+}
