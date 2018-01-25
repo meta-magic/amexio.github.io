@@ -2,8 +2,8 @@
  * Created by pratik on 14/12/17.
  */
 import {Component, ContentChildren, Input, QueryList} from '@angular/core';
-import {AmexioAccordionTabComponent} from "./accordion.pane";
 import {AccordionService} from "./accordion.service";
+import {AmexioAccordionTabComponent} from "./accordion.pane";
 
 @Component({
   selector: 'amexio-accordion', template: `
@@ -12,6 +12,7 @@ import {AccordionService} from "./accordion.service";
 })
 
 export class AmexioAccordionComponent {
+
   @Input('expand-all') expandAll : boolean;
 
   @ContentChildren(AmexioAccordionTabComponent)  panes : QueryList<AmexioAccordionTabComponent>;
@@ -28,8 +29,15 @@ export class AmexioAccordionComponent {
   }
 
   ngAfterContentInit(){
+    this.setParent();
     if(this.expandAll != null && this.expandAll)
       this.expandAllPanes();
+  }
+
+  setParent(){
+    this.panes.toArray().forEach((pane : any)=>{
+      pane.parentId = this.rootId;
+    });
   }
 
   togglePanes(id : any){

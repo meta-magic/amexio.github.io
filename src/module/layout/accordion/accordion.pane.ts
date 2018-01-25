@@ -17,7 +17,8 @@ import {AfterViewInit, Component, EventEmitter, Input, Output, ViewChild} from '
 import {AccordionService} from "./accordion.service";
 
 @Component({
-  selector: 'amexio-accordion-tab', template: `    
+  selector: 'amexio-accordion-tab', template: `
+
     <button class="accordion {{active ? 'active-accordion' : ''}}" #btn1 (click)="onTabClick(btn1)">{{header}}
       <div style="float: right"><i class="fa" [ngClass]="{'fa-plus' : !active,'fa-minus' : active}" aria-hidden="true"></i></div>
     </button>
@@ -48,13 +49,11 @@ export class AmexioAccordionTabComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    if(this.active){
+    if(this.active)
       this.content.nativeElement.style.maxHeight = this.content.nativeElement.scrollHeight + 'px';
-    }
   }
 
   onTabClick(btn: any) {
-    // btn.classList.toggle('');
     this.active = !this.active;
     if (this.content.nativeElement.style.maxHeight) {
       this.content.nativeElement.style.maxHeight = null;
