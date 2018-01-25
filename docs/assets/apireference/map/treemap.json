@@ -1,0 +1,81 @@
+{
+  "chart": [
+    {
+      "name": "height",
+      "type": "number",
+      "default": "",
+      "description": "Height of chart."
+    },
+    {
+      "name": "width",
+      "type": "number",
+      "default": "",
+      "description": "Width of chart."
+    },
+    {
+      "name": "data",
+      "type": "array",
+      "default": "",
+      "description": "Local data for TreeMap."
+    },{
+      "name": "max-color",
+      "type": "string",
+      "default": "",
+      "description": "The color for a rectangle with a column 3 value of max-colorValue. Specify an HTML color value. "
+    },{
+      "name": "mid-color",
+      "type": "string",
+      "default": "",
+      "description": "The color for a rectangle with a column 3 value midway between max-colorValue and min-colorValue. Specify an HTML color value."
+    },{
+      "name": "min-color",
+      "type": "string",
+      "default": "",
+      "description": "The color for a rectangle with the column 3 value of min-colorValue. Specify an HTML color value."
+    },{
+      "name": "max-post-depth",
+      "type": "number",
+      "default": "",
+      "description": "How many levels of nodes beyond maxDepth to show in 'hinted' fashion."
+    },{
+      "name": "show-scale",
+      "type": "boolean",
+      "default": "false",
+      "description": "Whether or not to show a color gradient scale from min-color to max-color along the top of the chart. Specify true to show the scale."
+    }
+  ],
+  "chartTitle":[
+    {
+      "name": "title",
+      "type": "string",
+      "default": "",
+      "description": "Title to display above the chart."
+    },  {
+      "name": "color",
+      "type": "string",
+      "default": "",
+      "description": "Color of chart title."
+    },  {
+      "name": "font-name",
+      "type": "string",
+      "default": "",
+      "description": "Font name of chart title."
+    },  {
+      "name": "font-size",
+      "type": "number",
+      "default": "",
+      "description": "Font size of chart title."
+    },  {
+      "name": "bold",
+      "type": "boolean",
+      "default": "false",
+      "description": "Set true for title with bold font."
+    },
+    {
+      "name": "italic",
+      "type": "string",
+      "default": "false",
+      "description": "Set true for title text in italic style."
+    }
+  ]
+}

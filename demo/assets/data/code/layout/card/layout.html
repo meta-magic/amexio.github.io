@@ -1,0 +1,43 @@
+<amexio-button [label]="'Hide/UnHide Card'" [type]="'primary'"
+               [tooltip]="'Hide/UnHide Card'"
+               (click)="toggle()"></amexio-button>
+<amexio-card [header]="true" [footer]="true" [show]="flag"
+             [footer-align]="'right'">
+  <amexio-header>
+    <h5> Employee Registration</h5>
+  </amexio-header>
+  <amexio-body>
+    <amexio-row>
+      <amexio-column [size]="6">
+        <amexio-text-input [field-label]="'Name'" name="name"
+                           [place-holder]="'Enter name'"
+                           [icon-feedback]="true">
+        </amexio-text-input>
+      </amexio-column>
+      <amexio-column [size]="6">
+        <amexio-text-input [field-label]="'Address'" name="address"
+                           [place-holder]="'Enter address'"
+                           [icon-feedback]="true">
+        </amexio-text-input>
+      </amexio-column>
+    </amexio-row>
+    <amexio-row>
+      <amexio-column [size]="6">
+        <amexio-number-input [field-label]="'Number Input'"
+                             [place-holder]="'Enter Age'">
+        </amexio-number-input>
+      </amexio-column>
+      <amexio-column [size]="6">
+        <amexio-email-input [field-label]="'Email Id'" name="email"
+                            [place-holder]="'Enter Email Id'"
+                            [allow-blank]="false" [error-msg]="'Please Enter Email Id'"
+                            [enable-popover]="true"
+                            [icon-feedback]="true">
+        </amexio-email-input>
+      </amexio-column>
+    </amexio-row>
+  </amexio-body>
+  <amexio-action>
+    <amexio-button [label]="'Save'" [type]="'primary'"></amexio-button>
+  </amexio-action>
+</amexio-card>

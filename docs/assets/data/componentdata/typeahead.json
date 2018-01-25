@@ -1,0 +1,10 @@
+{
+  "data": [
+    {"sportName": "Cricket","code": "Ck"},
+    {"sportName": "Swimming","code": "Sw"},
+    {"sportName": "Golf","code": "Glf"},
+    {"sportName": "Hockey","code": "Hky"},
+    {"sportName": "Soccer","code": "Scr"},
+    {"sportName": "Formula One","code": "F1"}
+  ]
+}

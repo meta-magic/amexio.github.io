@@ -1,0 +1,50 @@
+{
+  "properties": [
+    {
+      "name": "height",
+      "type": "string",
+      "default": "",
+      "description": "Height of image."
+    },
+    {
+      "name": "width",
+      "type": "string",
+      "default": "",
+      "description": "Width of image."
+    },
+    {
+      "name": "path",
+      "type": "string",
+      "default": "",
+      "description": "Specifies the URL of an image.This attribute is useful only for images."
+    },
+    {
+      "name": "tooltip",
+      "type": "string",
+      "default": "",
+      "description": "TooltipMessage on image / icon."
+    },
+    {
+      "name": "icon-class",
+      "type": "string",
+      "default": "",
+      "description": "Material icon class name.Material Example:icon-class='material-icons' mdb='cloud' Fontawesome Example:icon-class='fa fa-address-book fa-lg'"
+    },
+    {
+      "name": "mdb",
+      "type": "string",
+      "default": "",
+      "description": "This attribute is useful for only material icons.Material Example:mdb='cloud'"
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "default": "",
+      "description": "Title of image."
+    }
+  ],
+  "events":[  {
+    "name": "onClick",
+    "description": "Get image / icon click event."
+  }]
+}

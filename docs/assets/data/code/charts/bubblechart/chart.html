@@ -1,0 +1,18 @@
+
+<amexio-chart-bubble [height]="'400px'"
+                     [width]="'100%'"
+                     [data]="bubbleChartData">
+                     <amexio-chart-title [title]="'Correlation between life expectancy, fertility rate'">
+                     </amexio-chart-title>
+                     <amexio-chart-horizontal-axis [title]="'Life Expectancy'">
+                     </amexio-chart-horizontal-axis>
+                     <amexio-chart-vertical-axis [title]="'Fertility Rate'">
+                     </amexio-chart-vertical-axis>
+</amexio-chart-bubble>
+
+<!-- Color Axis Example-->
+<amexio-chart-bubble [height]="'400px'"
+                     [width]="'100%'"
+                     [data]="bubbleChartColorAxis"
+                     [axis-color]="['yellow', 'red']">
+</amexio-chart-bubble>

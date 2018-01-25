@@ -112,7 +112,7 @@ $borderLayoutBorder : 0px;
 $borderLayoutBorderColor : none;
 
 $datapointBGColor : $defaultBGColor;
-$datapointColor : $themeBGColor;
+$datapointColor : $navbarBGColor;
 $datapointBorderColor : $borderColor;
 
 $ratingBorderColor : $borderColor;
@@ -266,7 +266,7 @@ button.app-button {
 
 
 .datatable .datatable-row:hover{
-  background-color: lighten($primaryBGColor,30%);
+  background-color: lighten($primaryBGColor,40%);
   cursor: pointer;
 }
 
@@ -287,7 +287,7 @@ button.app-button {
 .datapoints-north{
   font-size: 36px;
   font-weight: bold;
-  color: $primaryBGColor;
+  color: $datapointColor;
 }
 
 .datapoint-south{
@@ -391,4 +391,3 @@ div.profile-image img {
 div.profile-image a{
   text-transform: capitalize;
 }
-

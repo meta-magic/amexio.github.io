@@ -1,0 +1,7 @@
+export class SimpleTreeDemo {
+  constructor() {}
+
+  getNodeData(data: any) {
+      /*Do Operation on data*/
+  }
+}

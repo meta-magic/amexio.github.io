@@ -1,0 +1,9 @@
+<!--ITEM SELECTOR WITH HTTP URL-->
+<amexio-item-selector [height]="250"
+                      [display-field]="'countryName'"
+                      [value-field]="'countryId'"
+                      (selectedRecords)="getSelectedData($event)"
+                      [http-url]="'assets/data/componentdata/selectordata.json'"
+                      [http-method]="'get'"
+                      [data-reader]="'data'" >
+</amexio-item-selector>

@@ -1,0 +1,44 @@
+<amexio-fieldset [collapsible]="true" title="Employee Registration">
+  <amexio-row>
+    <amexio-column [size]="6">
+      <amexio-text-input [field-label]="'Name'" name="country"
+                         [place-holder]="'Enter name'"
+                         [enable-popover]="true"
+                         [icon-feedback]="true"
+                         [allow-blank]="false" [error-msg]="'Please enter name'"
+                         [min-length]="3" [max-length]="15" [min-error-msg]="'Name should be minimum 3 characters'"
+                         [max-error-msg]="'Name should be less than 15 characters'"
+      >
+      </amexio-text-input>
+    </amexio-column>
+    <amexio-column [size]="6">
+      <amexio-text-input [field-label]="'Surname'" name="name"
+                         [place-holder]="'Enter surname'"
+                         [enable-popover]="true"
+                         [icon-feedback]="true"
+                         [allow-blank]="false" [error-msg]="'Please enter Surname'"
+                         [min-length]="3" [max-length]="15" [min-error-msg]="'Surname should be minimum 3 characters'"
+                         [max-error-msg]="'Surname should be less than 15 characters'"
+      >
+      </amexio-text-input>
+    </amexio-column>
+  </amexio-row>
+  <amexio-row>
+    <amexio-column [size]="6">
+
+      <amexio-textarea-input [field-label]="'Address'" name="Address"
+                             [place-holder]="'Enter address'"
+                             [error-msg]="'Please enter address'"
+                             [icon-feedback]="true"
+                             [rows]="'1'" [columns]="'2'"
+                             [allow-blank]="false" [enable-popover]="true"
+
+      >
+      </amexio-textarea-input>
+
+
+    </amexio-column>
+
+  </amexio-row>
+
+</amexio-fieldset>

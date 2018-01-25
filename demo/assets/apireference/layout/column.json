@@ -1,0 +1,10 @@
+{
+  "properties": [
+    {
+      "name": "size",
+      "type": "number",
+      "default": "",
+      "description":"Column size"
+    }
+  ]
+}

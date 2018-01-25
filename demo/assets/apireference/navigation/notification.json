@@ -1,0 +1,39 @@
+{
+  "properties": [
+    {
+      "name": "data",
+      "type": "Array",
+      "default": "",
+      "description": "List of notification with key msg."
+    },
+    {
+      "name": "closable",
+      "type": "boolean",
+      "default": "true",
+      "description": "Closable icon on notification."
+    },
+    {
+      "name": "vertical-position",
+      "type": "string",
+      "default": "",
+      "description": "Vertical position of notification.Example:top,center,bottom."
+    },
+    {
+      "name": "horizontal-position",
+      "type": "string",
+      "default": "",
+      "description": "Horizontal position of notification.Example:right,center,left."
+    }, {
+      "name": "auto-dismiss-msg",
+      "type": "boolean",
+      "default": "false",
+      "description": "Set true to Automatically dismiss notification."
+    },
+    {
+      "name": "auto-dismiss-msg-interval",
+      "type": "number",
+      "default": "",
+      "description": "Add time interval(in ms) for shown msg."
+    }
+  ]
+}

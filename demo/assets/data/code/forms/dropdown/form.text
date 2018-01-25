@@ -1,0 +1,8 @@
+export class DropDownDemo {
+constructor() {
+}
+//selected doprdown item event
+  getSingleVal(data:any){
+  //some operation
+  }
+}

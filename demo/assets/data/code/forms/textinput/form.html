@@ -1,0 +1,65 @@
+<!--Basic Text Field-->
+
+<amexio-text-input field-label="Name"
+                   name="name"
+                   place-holder="Enter name"
+                   icon-feedback="true"
+></amexio-text-input>
+
+<!--Input Without Label and Icon feedback-->
+
+<amexio-text-input name="name"
+                   place-holder="Enter name"
+                   icon-feedback="false"
+                   has-label="false"
+></amexio-text-input>
+
+<!--Min/Max Validations-->
+
+<amexio-text-input enable-popover="true"
+                   field-label="Name"
+                   name="name"
+                   place-holder="Enter name"
+                   allow-blank="false"
+                   error-msg="Please enter last name"
+                   min-length="1"
+                   min-error-msg="Minimum 1 char required"
+                   max-length="10"
+                   max-error-msg="Maximum 10 char allowed"
+                   icon-feedback="true"
+></amexio-text-input>
+
+<!--Disabled Text Field-->
+
+<amexio-text-input name="name"
+                   field-label="Name"
+                   place-holder="Enter name"
+                   disabled="true"
+></amexio-text-input>
+
+<!--Font Styling-->
+
+<amexio-text-input field-label="Name"
+                   name="name"
+                   place-holder="Enter name"
+                   icon-feedback="true"
+                   font-style="italic"
+></amexio-text-input>
+
+<!-- Family Styling-->
+
+<amexio-text-input [field-label]="'Name'"
+                    name="name"
+                   [place-holder]="'Enter name'"
+                   [icon-feedback]="true"
+                   [font-style]="'italic'"
+></amexio-text-input>
+
+<!--Font Size -->
+
+<amexio-text-input [field-label]="'Name'"
+                    name="name"
+                   [place-holder]="'Enter name'"
+                   [icon-feedback]="true"
+                   [font-size]="'large'"
+></amexio-text-input>

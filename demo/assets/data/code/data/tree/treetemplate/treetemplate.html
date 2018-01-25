@@ -1,0 +1,8 @@
+<!--tree with template-->
+<amexio-treeview [data-reader]="'data'"
+                 [http-url]="'assets/data/componentdata/sidenav.json'"
+                 [http-method]="'get'" (nodeClick)="getNodeData($event)">
+  <ng-template #amexioTreeTemplate let-tree let-icon="icon" let-node="node">
+    <i [attr.class]="node.icon"></i> &nbsp; &nbsp;&nbsp;{{tree.text}}
+  </ng-template>
+</amexio-treeview>

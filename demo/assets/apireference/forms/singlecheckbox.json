@@ -1,0 +1,28 @@
+{
+  "properties": [
+    {
+      "name": "field-label",
+      "type": "string",
+      "default": "",
+      "description":"The label of this field"
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "default": "false",
+      "description":"If true will not react on any user events and show disable icon over"
+    },
+    {
+      "name": "required",
+      "type": "boolean",
+      "default": "false",
+      "description":"Validate field"
+    }
+  ],
+  "events":[
+    {
+      "name": "onSelection",
+      "description":"Event fired on checkbox click."
+    }
+  ]
+}

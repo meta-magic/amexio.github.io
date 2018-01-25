@@ -1,0 +1,20 @@
+export class WindowDemoComponent {
+  showBasicWindow : boolean;
+  showMaxWindow : boolean;
+  showClosable : boolean;
+  constructor() {
+  }
+
+  toggleBasicWindow(){
+   this.showBasicWindow = !this.showBasicWindow;
+  }
+
+  toggleMaxWindow(){
+    this.showMaxWindow = !this.showMaxWindow;
+  }
+
+  toggleClosable(){
+    this.showClosable = !this.showClosable;
+  }
+
+}

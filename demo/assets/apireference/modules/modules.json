@@ -1,0 +1,48 @@
+{
+  "properties": [
+    {
+      "name": "AmexioWidgetModule",
+      "description":"Provides all component across different modules through a single import"
+    },
+    {
+      "name" : "AmexioFormsModule",
+      "description" : "This Module provide all the form components"
+    },
+    {
+      "name" : "AmexioDataModule",
+      "description" : "All variation of Data grid,Tree are provided in this module"
+    },
+    {
+      "name" : "AmexioLayoutModule",
+      "description" : "Different Layout components are provided under this module"
+    },
+    {
+      "name" : "AmexioMediaModule",
+      "description" : "Media related components like image and video player available in this module"
+    },
+    {
+      "name" : "AmexioNavModule",
+      "description" : "App Navigation components are available through this module"
+    },
+    {
+      "name" : "AmexioPaneModule",
+      "description" : "Different Panes are provided in this module"
+    },
+    {
+      "name" : "AmexioChartsModule",
+      "description" : "Different Charts provided under this module"
+    },
+    {
+      "name" : "AmexioDashBoardModule",
+      "description" : "Many Components required by the dashboard are provided in this module"
+    },
+    {
+      "name" : "AmexioEnterpriseEEModule",
+      "description" : "Enterprise grade components provided under this module"
+    },
+    {
+      "name" : "AmexioMapModule",
+      "description" : "Plot data on maps using this Module"
+    }
+  ]
+}

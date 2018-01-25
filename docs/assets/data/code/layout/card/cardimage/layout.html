@@ -1,0 +1,32 @@
+<!--CARD WITHOUT HEADER-->
+<amexio-card [header]="false" [footer]="true" [footer-align]="'right'">
+  <amexio-body>
+    <amexio-image path="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%2840%29.jpg">
+    </amexio-image>
+    <br/>
+    <h5 class="red-text"><i class="fa fa-money"></i> Business</h5>
+    <h4 class="card-title">Let your startup grow!</h4>
+    <p class="card-text">Ut enim ad minima veniam, quis nostrum exercitationem
+      ullam corporis suscipit laboriosam,
+      nisi ut aliquid ex ea commodi.</p>
+  </amexio-body>
+  <amexio-action>
+    <amexio-button [label]="'Button'" [type]="'primary'"></amexio-button>
+  </amexio-action>
+</amexio-card>
+
+<!--CARD WITH HEADER-->
+<amexio-card [header]="true" [footer]="false" [header-align]="'center'">
+  <amexio-header>
+    <h4>Hi, Amexio</h4>
+  </amexio-header>
+  <amexio-body>
+    <amexio-image path="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%2842%29.jpg" >
+    </amexio-image>
+
+    <br/><br/>
+    <p class="card-text">Temporibus autem quibusdam et aut officiis debitis aut rerum
+      necessitatibus saepe eveniet
+      ut et voluptates.</p>
+  </amexio-body>
+</amexio-card>

@@ -1,0 +1,20 @@
+<!-- Column Chart -->
+<amexio-chart-column [data]="columnChartData"
+                     [height]="'400px'"
+                     [width]="'100%'">
+                     <amexio-chart-title [title]="'Motivation and Energy Level Throughout the Day'">
+                     </amexio-chart-title>
+                     <amexio-chart-legend [position]="'bottom'">
+                     </amexio-chart-legend>
+</amexio-chart-column>
+
+<!-- Column Bar Chart-->
+<amexio-chart-column [data]="columnStackChartData"
+                     [height]="'400px'"
+                     [width]="'100%'"
+                     [stacked]="true">
+                     <amexio-chart-title [title]="'Motivation Level Throughout the Day'">
+                     </amexio-chart-title>
+                     <amexio-chart-legend [position]="'bottom'">
+                     </amexio-chart-legend>
+</amexio-chart-column>

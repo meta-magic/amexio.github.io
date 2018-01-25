@@ -1,0 +1,21 @@
+<!--Checkbox group with local data-->
+<amexio-checkbox-group [field-label]="'Horizontal Checkbox'"
+                       name="language"
+                       [data-reader]="'response.data'"
+                       [display-field]="'language'"
+                       [horizontal]="true"
+                       [value-field]="'checked'"
+                       (onSelection)="selectedCheckboxgroup($event)"
+                       [data]="checkboxGroupdata"
+                       [column]="'4'">
+</amexio-checkbox-group>
+
+<!--checkbox group with http url-->
+<amexio-checkbox-group [field-label]="'Vertical Checkbox'"
+                       name="language"
+                       [data-reader]="'data'"
+                       [display-field]="'language'"
+                       [value-field]="'checked'"
+                       [http-method]="'get'"
+                       [http-url]="'assets/data/componentdata/checkgroup.json'">
+</amexio-checkbox-group>

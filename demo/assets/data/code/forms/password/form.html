@@ -1,0 +1,25 @@
+<!--Password With Min/Max Validation-->
+<amexio-password-input [enable-popover]="true"
+                       [field-label]="'Password Input'"
+                       name ="password"
+                       [place-holder]="'Enter Password'"
+                       [allow-blank]="false"
+                       [error-msg] ="'Please enter password'"
+                       [min-length]="6"
+                       [min-error-msg]="'Minimum 6 char required'"
+                       [max-length]="32"
+                       [max-error-msg]="'Maximum 32 char allowed'"
+                       [icon-feedback]="true">
+</amexio-password-input>
+<!--Password Input With disable field label-->
+<amexio-password-input name ="password"
+                       [place-holder]="'Enter Password'"
+                       [allow-blank]="false"
+                       [error-msg] ="'Please enter password'"
+                       [min-length]="6"
+                       [min-error-msg]="'Minimum 6 char required'"
+                       [max-length]="32"
+                       [max-error-msg]="'Maximum 32 char allowed'"
+                       [icon-feedback]="true"
+                       [has-label]="false">
+</amexio-password-input>

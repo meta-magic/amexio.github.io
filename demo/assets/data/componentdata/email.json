@@ -1,0 +1,47 @@
+[
+  {
+    "text": "Inbox",
+    "expanded": false,
+    "checked": false,
+    "selected": true,
+    "icon": "fa fa-inbox"
+  },
+  {
+    "text": "Sent",
+    "expanded": false,
+    "checked": false,
+    "icon": "fa fa-envelope-o"
+  },
+  {
+    "text": "Trash",
+    "expanded": false,
+    "checked": false,
+    "icon": "fa fa-trash-o"
+  },
+  {
+    "text": "Labels",
+    "expanded": false,
+    "checked": false,
+    "icon": "fa fa-tag",
+    "children": [
+      {
+        "text": "High",
+        "expanded": false,
+        "checked": false,
+        "icon": "fa fa-tag fa-lg"
+      },
+      {
+        "text": "Medium",
+        "expanded": false,
+        "checked": false,
+        "icon": "fa fa-tag fa-md"
+      },
+      {
+        "text": "Low",
+        "expanded": false,
+        "checked": false,
+        "icon": "fa fa-tag "
+      }
+    ]
+  }
+]

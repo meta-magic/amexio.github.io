@@ -1,0 +1,149 @@
+[
+  {
+    "text": "HOME",
+    "icon" : "fa fa-home"
+  },
+  {
+    "text": "ELECTRONICS",
+    "icon" : "fa fa-simplybuilt",
+    "children": [
+      {
+        "text": "Accessories",
+        "icon" : "fa fa-sitemap",
+        "children": [
+          {
+            "text": "Mobile",
+            "icon" : "fa fa-mobile",
+            "children": [
+
+              {
+                "text": "Powerbank",
+                "icon" : "fa fa-hdd-o"
+              },
+              {
+                "text": "Headphone",
+                "icon" : "fa fa-headphones"
+              }
+            ]
+          },
+          {
+            "text": "Laptops",
+            "icon" : "fa fa-laptop",
+            "children": [
+              {
+                "text": "Bag" ,
+                "icon" : "fa fa-briefcase"
+              },
+              {
+                "text": "Charger",
+                "icon" : "fa fa-plug"
+              },
+              {
+                "text": "Harddrive",
+                "icon" : "fa fa-hdd-o"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "Camera",
+        "icon" : "fa fa-camera",
+        "children": [
+          {
+            "text": "DSLR",
+            "icon" : "fa fa-camera-retro"
+          },
+          {
+            "text": "Digital",
+            "icon" : "fa fa-camera"
+          },
+          {
+            "text": "Camcorder",
+            "icon" : "fa fa-camera-retro"
+          }
+        ]
+      },
+      {
+        "text": "Mobile",
+        "icon" : "fa fa-mobile",
+        "header": true,
+        "children": [
+          {
+            "text": "Samsung",
+            "icon" : "fa fa-building"
+          },
+          {
+            "text": "Lenovo",
+            "icon" : "fa fa-mobile"
+          },
+          {
+            "text": "Motorolo",
+            "icon" : "fa fa-building"
+
+          },
+          {
+            "text": "Apple",
+            "icon" : "fa fa-apple"
+
+          },
+          {
+            "text": "Asus",
+            "icon" : "fa fa-mobile"
+          }
+        ]
+      }
+
+    ]
+  },
+  {
+    "text": "APPLIANCE",
+    "icon" : "fa fa-sitemap",
+    "children": [
+      {
+        "text": "TV",
+        "icon" : "fa fa-desktop",
+        "children": [
+          {
+            "text": "Sony",
+            "icon" : "fa fa-television"
+          },
+          {
+            "text": "Samsung",
+            "icon" : "fa fa-television"
+          },
+          {
+            "text": "Toshiba",
+            "icon" : "fa fa-television"
+          },
+          {
+            "text": "LG",
+            "icon" : "fa fa-laptop"
+          },
+          {
+            "text": "Cloudwalker",
+            "icon" : "fa fa-desktop"
+          }
+        ]
+      },
+      {
+        "text": "Refrigerator",
+        "icon" : "fa fa-building",
+        "children": [
+          {
+            "text": "Singledoor",
+            "icon" : "fa fa-building-o"
+          },
+          {
+            "text": "Doubledoor",
+            "icon" : "fa fa-building-o"
+          },
+          {
+            "text": "Tripledoor",
+            "icon" : "fa fa-building-o"
+          }
+        ]
+      }
+    ]
+  }
+]

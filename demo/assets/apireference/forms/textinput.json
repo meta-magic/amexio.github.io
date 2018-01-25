@@ -1,0 +1,120 @@
+{
+  "properties": [
+    {
+      "name": "field-label",
+      "type": "string",
+      "default": "",
+      "description":"The label of this field"
+    },
+    {
+      "name": "max-length",
+      "type": "number",
+      "default": "",
+      "description":"The largest positive representable number. The largest negative representable number is max-length."
+    },
+    {
+      "name": "max-error-msg",
+      "type": "string",
+      "default": "",
+      "description":"Error Message required to displayed after validation of max-length "
+    },   {
+      "name": "min-length",
+      "type": "number",
+      "default": "",
+      "description":"The smallest positive representable number -- that is, the positive number closest to zero (without actually being zero). The smallest negative representable number is -min-length. "
+    },
+    {
+      "name": "min-error-msg",
+      "type": "string",
+      "default": "",
+      "description":"Error Message required to displayed after validation of min-length"
+    },
+    {
+      "name": "field-name",
+      "type": "string",
+      "default": "",
+      "description":"Field name for text input."
+    }, {
+      "name": "pattern",
+      "type": "string",
+      "default": "",
+      "description":"Accept RegEx patterns for text fields.example pattern=[a-z0-9]"
+    },{
+      "name": "allow-blank",
+      "type": "boolean",
+      "default": "false",
+      "description":"true to make this field required."
+    },
+    {
+      "name": "place-holder",
+      "type": "string",
+      "default": "",
+      "description":"A string value displayed in the input (if supported) when the control is empty."
+    },{
+      "name": "disabled",
+      "type": "boolean",
+      "default": "false",
+      "description":"true to disable the field."
+    },
+    {
+      "name": "error-msg",
+      "type": "string",
+      "default": "",
+      "description":"Error Message required to displayed after validation"
+    },
+    {
+      "name": "icon-feedback",
+      "type": "boolean",
+      "default": "false",
+      "description":"Enable/Disabled validation icon"
+    },{
+      "name": "font-style",
+      "type": "string",
+      "default": "",
+      "description":"Set font-style to field"
+    },{
+      "name": "font-family",
+      "type": "string",
+      "default": "",
+      "description":"Set font family to field"
+    },
+    {
+      "name": "font-size",
+      "type": "string",
+      "default": "",
+      "description":"Set font size to field"
+    }, {
+      "name": "has-label",
+      "type": "boolean",
+      "default": "false",
+      "description":"Hide/unhide field label"
+    },{
+      "name": "enable-popover",
+      "type": "boolean",
+      "default": "false",
+      "description":"Set enable / disable popover."
+    }
+  ],
+  "events":[
+    {
+      "name": "onBlur",
+      "description":"On blur event"
+    },
+    {
+      "name": "input",
+      "description":"On input event field."
+    },{
+      "name": "focus",
+      "description":"On field focus event"
+    },{
+      "name": "change",
+      "description":"On field value change event"
+    }
+  ],
+  "css": [
+    {
+      "name": "input-control",
+      "description":"extual form controls—like <input>s,<textarea>s—are styled with the .input-control class"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "properties": [
+    {
+      "name": "header",
+      "type": "boolean",
+      "default": "true",
+      "description":"Enable/Disabled header."
+    },
+    {
+      "name": "expanded",
+      "type": "boolean",
+      "default": "false",
+      "description":"Pane will expand or collapse based on the boolean."
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "default": "",
+      "description":"Title for panel."
+    },
+    {
+      "name": "custom-header",
+      "type": "boolean",
+      "default": "false",
+      "description":"User can customize header using <amexio-header></amexio-header>"
+    },{
+      "name": "height",
+      "type": "number",
+      "default": "",
+      "description":"Height of panel must be in px ex.100, 250."
+    }
+  ]
+}

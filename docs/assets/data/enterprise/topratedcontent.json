@@ -1,0 +1,591 @@
+[
+  {
+    "title" : "Marco Polo",
+    "img" : "assets/images/tvshows/marcopolo/marco_polo_main_img.jpg",
+    "details_img": "assets/images/tvshows/marcopolo/marco_polo_details.jpg",
+    "desc" : "Set in a world of greed, betrayal, sexual intrigue and rivalry, “Marco Polo” is based on the famed explorer’s adventures in Kublai Khan’s court.",
+    "video" : "hB-ltNasHVw",
+    "matchPercentage" : "90",
+    "release-year" : "2017",
+    "age-limit" : "16",
+    "seasonNo" : "1",
+    "content" : [
+      {
+        "key": "Creator",
+        "value": "John Fusco"
+      },
+      {
+        "key": "Cast",
+        "value": "Chin Han, Joan Chen, Zhu Zhu, Tom Wu"
+      },
+      {
+        "key": "Genres",
+        "value": "TV Programmes"
+      },
+      {
+        "key": "Subtitles",
+        "value": "English [CC]"
+      },
+      {
+        "key": "Audio Languages",
+        "value": "English"
+      }
+    ],
+    "episode":[{
+      "img" : "assets/images/tvshows/narcos/episode/n1.jpg",
+      "title":"Descenso",
+      "video" : "U7elNhHwgBU",
+      "desc":"Chilean drug chemist Cockroach brings his product to Colombian smuggler Pablo Escobar. DEA agent Steve Murphy joins the war on drugs in Bogotá."
+    },{
+      "img" : "assets/images/tvshows/narcos/episode/n2.jpg",
+      "video" : "U7elNhHwgBU",
+      "title":"The Sword of Simón Bolívar",
+      "desc":"Communist radical group M-19 makes a move against the narcos, while Murphy gets an education in Colombian law enforcement from his new partner Peña."
+    },{
+      "img" : "assets/images/tvshows/narcos/episode/n3.jpg",
+      "title":"The Men of Always",
+      "video" : "U7elNhHwgBU",
+      "desc":"Murphy encounters the depths of government corruption when he and Peña try to derail Escobar's political ambitions by proving he's a narco."
+    },{
+      "img" : "assets/images/tvshows/narcos/episode/n4.jpg",
+      "title":"The Palace in Flames",
+      "video" : "U7elNhHwgBU",
+      "desc":"Despite a new extradition treaty, the U.S. puts more money into fighting communism, creating new challenges for Murphy and Peña in the hunt for Pablo."
+    },{
+      "img" : "assets/images/tvshows/narcos/episode/n5.jpg",
+      "title":"There Will Be a Future",
+      "video" : "U7elNhHwgBU",
+      "desc":"Pablo's extreme methods put the narcos on the brink of war with Carrillo and the government. Peña tries to protect his witness, Elisa."
+    },{
+      "img" : "assets/images/tvshows/narcos/episode/n6.jpg",
+      "title":"Explosivos",
+      "video" : "U7elNhHwgBU",
+      "desc":"Peña and Carrillo close in on Gacha, while Murphy tries to protect pro-extradition candidate Gaviria from a notorious assassin connected to Pablo."
+    },{
+      "img" : "assets/images/tvshows/narcos/episode/n7.jpg",
+      "title":"You Will Cry Tears of Blood",
+      "video" : "U7elNhHwgBU",
+      "desc":"Pablo goes into hiding as the political tide turns against him, but he finds a way to strike back. Murphy and Peña finally get the CIA to help them."
+    },{
+      "img" : "assets/images/tvshows/narcos/episode/n8.jpg",
+      "title":"La Gran Mentira",
+      "video" : "U7elNhHwgBU",
+      "desc":"A tragic mistake forces the government to change tactics in the fight against Pablo. But Pablo faces bigger threats from inside his empire."
+    },{
+      "img" : "assets/images/tvshows/narcos/episode/n9.jpg",
+      "title":"La Catedral",
+      "video" : "U7elNhHwgBU",
+      "desc":"The hunt for Pablo seems to be over after he makes a deal with the government, but Murphy and Peña -- and the Cali Cartel -- have other plans."
+    },{
+      "img" : "assets/images/tvshows/narcos/episode/n10.jpg",
+      "title":"Despegue",
+      "video" : "U7elNhHwgBU",
+      "desc":"Pablo's activities in prison provoke the government into taking extreme action. Murphy and Peña face a situation of their own."
+    }]
+  },
+  {
+    "title" : "Narcos",
+    "img" : "assets/images/tvshows/narcos/Narcos_main_img.jpg",
+    "details_img": "assets/images/tvshows/narcos/narcos_details.jpg",
+    "desc" : "The true story of Colombia's infamously violent and powerful drug cartels fuels this gritty gangster drama series.",
+    "video" : "U7elNhHwgBU",
+    "matchPercentage" : "95",
+    "release-year" : "2017",
+    "age-limit" : "16",
+    "seasonNo" : "3",
+    "content" : [
+      {
+        "key": "Director",
+        "value": "Clint Eastwood"
+      },
+      {
+        "key": "Starring",
+        "value": "Tom Hanks, Aaron Eckhart, Laura Linney"
+      },
+      {
+        "key": "Genres",
+        "value": "Drama: Biography"
+      },
+      {
+        "key": "Subtitles",
+        "value": "English [CC]"
+      },
+      {
+        "key": "Audio Languages",
+        "value": "English"
+      }
+    ],
+    "episode":[{
+      "img" : "assets/images/tvshows/narcos/episode/n10.jpg",
+      "title":"Descenso",
+      "video" : "U7elNhHwgBU",
+      "desc":"Chilean drug chemist Cockroach brings his product to Colombian smuggler Pablo Escobar. DEA agent Steve Murphy joins the war on drugs in Bogotá."
+    },{
+      "img" : "assets/images/tvshows/narcos/episode/n9.jpg",
+      "video" : "U7elNhHwgBU",
+      "title":"The Sword of Simón Bolívar",
+      "desc":"Communist radical group M-19 makes a move against the narcos, while Murphy gets an education in Colombian law enforcement from his new partner Peña."
+    },{
+      "img" : "assets/images/tvshows/narcos/episode/n8.jpg",
+      "title":"The Men of Always",
+      "video" : "U7elNhHwgBU",
+      "desc":"Murphy encounters the depths of government corruption when he and Peña try to derail Escobar's political ambitions by proving he's a narco."
+    },{
+      "img" : "assets/images/tvshows/narcos/episode/n7.jpg",
+      "title":"The Palace in Flames",
+      "video" : "U7elNhHwgBU",
+      "desc":"Despite a new extradition treaty, the U.S. puts more money into fighting communism, creating new challenges for Murphy and Peña in the hunt for Pablo."
+    },{
+      "img" : "assets/images/tvshows/narcos/episode/n6.jpg",
+      "title":"There Will Be a Future",
+      "video" : "U7elNhHwgBU",
+      "desc":"Pablo's extreme methods put the narcos on the brink of war with Carrillo and the government. Peña tries to protect his witness, Elisa."
+    },{
+      "img" : "assets/images/tvshows/narcos/episode/n5.jpg",
+      "title":"Explosivos",
+      "video" : "U7elNhHwgBU",
+      "desc":"Peña and Carrillo close in on Gacha, while Murphy tries to protect pro-extradition candidate Gaviria from a notorious assassin connected to Pablo."
+    },{
+      "img" : "assets/images/tvshows/narcos/episode/n4.jpg",
+      "title":"You Will Cry Tears of Blood",
+      "video" : "U7elNhHwgBU",
+      "desc":"Pablo goes into hiding as the political tide turns against him, but he finds a way to strike back. Murphy and Peña finally get the CIA to help them."
+    },{
+      "img" : "assets/images/tvshows/narcos/episode/n3.jpg",
+      "title":"La Gran Mentira",
+      "video" : "U7elNhHwgBU",
+      "desc":"A tragic mistake forces the government to change tactics in the fight against Pablo. But Pablo faces bigger threats from inside his empire."
+    },{
+      "img" : "assets/images/tvshows/narcos/episode/n2.jpg",
+      "title":"La Catedral",
+      "video" : "U7elNhHwgBU",
+      "desc":"The hunt for Pablo seems to be over after he makes a deal with the government, but Murphy and Peña -- and the Cali Cartel -- have other plans."
+    },{
+      "img" : "assets/images/tvshows/narcos/episode/n1.jpg",
+      "title":"Despegue",
+      "video" : "U7elNhHwgBU",
+      "desc":"Pablo's activities in prison provoke the government into taking extreme action. Murphy and Peña face a situation of their own."
+    }]
+  },
+  {
+    "title" : "Shooter",
+    "img" : "assets/images/tvshows/shooters/Shooter_main_img.jpg",
+    "details_img": "assets/images/tvshows/shooters/shooter_details.jpg",
+    "desc" : "A highly decorated ex-Marine sniper returns to action to foil an assassination plot targeting the president, but soon finds himself framed for murder. ",
+    "video" : "X2x6IR3FhbQ",
+    "matchPercentage" : "94",
+    "release-year" : "2015",
+    "age-limit" : "13",
+    "seasonNo" : "2",
+    "content" : [
+      {
+        "key": "Cast",
+        "value": "Rayan Phillepe, Omar Epps, Tom Sizemore"
+      },
+      {
+        "key": "Genres",
+        "value": "TV Programmes"
+      },
+      {
+        "key": "Subtitles",
+        "value": "English [CC]"
+      },
+      {
+        "key": "Audio Languages",
+        "value": "English"
+      }
+    ]
+  },
+  {
+    "title" : "House Of Cards",
+    "img" : "assets/images/tvshows/house_of_cards/HOC_main_img.jpg",
+    "details_img": "assets/images/tvshows/house_of_cards/house_of_cards_details.jpg",
+    "desc" : "A ruthless politician will stop at nothing to conquer Washington, D.C., in this Emmy and Golden Globe-winning political drama.",
+    "video" : "ULwUzF1q5w4",
+    "matchPercentage" : "90",
+    "release-year" : "2017",
+    "age-limit" : "16",
+    "seasonNo" : "1",
+    "content" : [
+      {
+        "key": "Creator",
+        "value": "Beau William"
+      },
+      {
+        "key": "Cast",
+        "value": "Kevin Spacey, Robin Wright,Kate Mara"
+      },
+      {
+        "key": "Genres",
+        "value": "TV Programmes"
+      },
+      {
+        "key": "Subtitles",
+        "value": "English [CC]"
+      },
+      {
+        "key": "Audio Languages",
+        "value": "English"
+      }
+    ]
+  },
+  {
+    "title" : "Designated Survivor",
+    "img" : "assets/images/tvshows/designatedsurvivor/DS_main_img.jpg",
+    "details_img": "assets/images/tvshows/designatedsurvivor/dc_details.jpg",
+    "desc" : "While the conspirators make a surprise move, the FBI scrambles to arrest the ringleader. Kirkman asks Aaron to smoke out the White House traitor.",
+    "video" : "N_f1v0Nx5Sw",
+    "matchPercentage" : "94",
+    "release-year" : "2015",
+    "age-limit" : "13",
+    "seasonNo" : "2",
+    "content" : [
+      {
+        "key": "Creator",
+        "value": "David Guggenheim"
+      },
+      {
+        "key": "Cast",
+        "value": "Kiefer Sutherland, Maggie Q, Kal Penn"
+      },
+      {
+        "key": "Genres",
+        "value": "TV Programmes"
+      },
+      {
+        "key": "Subtitles",
+        "value": "English [CC]"
+      },
+      {
+        "key": "Audio Languages",
+        "value": "English"
+      }
+    ]
+  },
+  {
+    "title" : "Ozark",
+    "img" : "assets/images/tvshows/ozark/Ozark_main_img.jpg",
+    "details_img": "assets/images/tvshows/ozark/ozark_details.jpg",
+    "desc" : "A financial adviser drags his family from Chicago to the Missouri Ozarks, where he must launder $500 million in five years to appease a drug boss.",
+    "video" : "5hAXVqrljbs",
+    "matchPercentage" : "95",
+    "release-year" : "2017",
+    "age-limit" : "16",
+    "seasonNo" : "3",
+    "content" : [
+      {
+        "key":"Creator",
+        "value":"Mark Williams"
+      },
+      {
+        "key": "Cast",
+        "value": "Jason Bateman, Lasy Emery"
+      },
+      {
+        "key": "Genres",
+        "value": "TV Programmes"
+      },
+      {
+        "key": "Subtitles",
+        "value": " English [CC]"
+      },
+      {
+        "key": "Audio Languages",
+        "value": "English"
+      }
+    ]
+  },
+  {
+    "title" : "Crown",
+    "img" : "assets/images/tvshows/crown/Crown_main_img.jpg",
+    "details_img": "assets/images/tvshows/crown/crown_details.jpg",
+    "desc" : "This drama follows the political rivalries and romance of Queen Elizabeth II's reign and the events that shaped the second half of the 20th century.",
+    "video" : "JWtnJjn6ng0",
+    "matchPercentage" : "94",
+    "release-year" : "2015",
+    "age-limit" : "13",
+    "seasonNo" : "2",
+    "content" : [
+      {
+        "key":"Creator",
+        "value":"Peter Morgan"
+      },
+      {
+        "key": "Cast",
+        "value": "Claire Foy, Matt Smith, Jared Hamilton"
+      },
+      {
+        "key": "Genres",
+        "value": "TV Programmes"
+      },
+      {
+        "key": "Subtitles",
+        "value": "English [CC]"
+      },
+      {
+        "key": "Audio Languages",
+        "value": "English"
+      }
+    ]
+  },
+  {
+    "title" : "13 Reasons Why",
+    "img" : "assets/images/tvshows/shows/13_reasons_why_img.jpg",
+    "details_img": "assets/images/tvshows/shows/13_reasons_details.jpg",
+    "desc" : "After a teenage girl's perplexing suicide, a classmate receives a series of tapes that unravel the mystery of her tragic choice.",
+    "video" : "hB-ltNasHVw",
+    "matchPercentage" : "90",
+    "release-year" : "2017",
+    "age-limit" : "16",
+    "seasonNo" : "1",
+    "content" : [
+      {
+        "key": "Creator",
+        "value": "Adam Wingard"
+      },
+      {
+        "key": "Cast",
+        "value": "Nat Wolf, Jason Lilles"
+      },
+      {
+        "key": "Genres",
+        "value": "TV Programmes"
+      },
+      {
+        "key": "Subtitles",
+        "value": "English [CC]"
+      },
+      {
+        "key": "Audio Languages",
+        "value": "English"
+      }
+    ]
+  },
+  {
+    "title" : "Death Note",
+    "img" : "assets/images/tvshows/shows/death_note.jpg",
+    "details_img": "assets/images/tvshows/shows/death_notes_details.jpg",
+    "desc" : "Light Turner finds a supernatural notebook and uses it to mete out death, attracting the attention of a detective, a demon and a girl in his class.",
+    "video" : "hB-ltNasHVw",
+    "matchPercentage" : "90",
+    "release-year" : "2017",
+    "age-limit" : "16",
+    "seasonNo" : "1",
+    "content" : [
+      {
+        "key": "Creator",
+        "value": "Adam Wingard"
+      },
+      {
+        "key": "Cast",
+        "value": "Nat Wolf, Jason Lilles"
+      },
+      {
+        "key": "Genres",
+        "value": "TV Programmes"
+      },
+      {
+        "key": "Subtitles",
+        "value": "English [CC]"
+      },
+      {
+        "key": "Audio Languages",
+        "value": "English"
+      }
+    ]
+  },
+  {
+    "title" : "Little Evil",
+    "img" : "assets/images/tvshows/shows/little_evil_img.jpg",
+    "details_img": "assets/images/tvshows/shows/little_evil_details.jpg",
+    "desc" : "In this horror-comedy, a recently married man who wants to bond with his stepson begins to fear that the boy is a demon.",
+    "video" : "X2x6IR3FhbQ",
+    "matchPercentage" : "94",
+    "release-year" : "2015",
+    "age-limit" : "13",
+    "seasonNo" : "2",
+    "content" : [
+      {
+        "key": "Cast",
+        "value": "Rayan Phillepe, Omar Epps, Tom Sizemore"
+      },
+      {
+        "key": "Genres",
+        "value": "TV Programmes"
+      },
+      {
+        "key": "Subtitles",
+        "value": "English [CC]"
+      },
+      {
+        "key": "Audio Languages",
+        "value": "English"
+      }
+    ]
+  },
+  {
+    "title" : "Orange Black",
+    "img" : "assets/images/tvshows/shows/orange_black.jpg",
+    "details_img": "assets/images/tvshows/shows/the_orange_details.jpg",
+    "desc" : "A privileged New Yorker ends up in a women's prison when a past crime catches up with her in this Emmy-winning series from the creator of Weeds.",
+    "video" : "ULwUzF1q5w4",
+    "matchPercentage" : "90",
+    "release-year" : "2017",
+    "age-limit" : "16",
+    "seasonNo" : "1",
+    "content" : [
+      {
+        "key": "Creator",
+        "value": "Beau William"
+      },
+      {
+        "key": "Cast",
+        "value": "Kevin Spacey, Robin Wright,Kate Mara"
+      },
+      {
+        "key": "Genres",
+        "value": "TV Programmes"
+      },
+      {
+        "key": "Subtitles",
+        "value": "English [CC]"
+      },
+      {
+        "key": "Audio Languages",
+        "value": "English"
+      }
+    ]
+  },
+  {
+    "title" : "Aditi Mittal",
+    "img" : "assets/images/tvshows/shows/aditi_mittal.jpg",
+    "details_img": "assets/images/tvshows/shows/aditi_mittal_details.jpg",
+    "desc" : "Trailblazing comic Aditi Mittal mixes topical stand-up with frank talk about being single, wearing thongs and the awkwardness of Indian movie ratings.",
+    "video" : "D_6J9BqgonU",
+    "matchPercentage" : "94",
+    "release-year" : "2015",
+    "age-limit" : "13",
+    "seasonNo" : "2",
+    "content" : [
+      {
+        "key": "Creator",
+        "value": "David Guggenheim"
+      },
+      {
+        "key": "Cast",
+        "value": "Kiefer Sutherland, Maggie Q, Kal Penn"
+      },
+      {
+        "key": "Genres",
+        "value": "TV Programmes"
+      },
+      {
+        "key": "Subtitles",
+        "value": "English [CC]"
+      },
+      {
+        "key": "Audio Languages",
+        "value": "English"
+      }
+    ]
+  },
+  {
+    "title" : "Fauda",
+    "img" : "assets/images/tvshows/shows/fauda.jpg",
+    "details_img": "assets/images/tvshows/shows/fauda_details.jpg",
+    "desc" : "A top Israeli agent comes out of retirement to hunt for a Palestinian militant he thought he'd killed, setting a chaotic chain of events into motion.",
+    "video" : "5hAXVqrljbs",
+    "matchPercentage" : "95",
+    "release-year" : "2017",
+    "age-limit" : "16",
+    "seasonNo" : "3",
+    "content" : [
+      {
+        "key":"Creator",
+        "value":"Mark Williams"
+      },
+      {
+        "key": "Cast",
+        "value": "Jason Bateman, Lasy Emery"
+      },
+      {
+        "key": "Genres",
+        "value": "TV Programmes"
+      },
+      {
+        "key": "Subtitles",
+        "value": "English [CC]"
+      },
+      {
+        "key": "Audio Languages",
+        "value": "English"
+      }
+    ]
+  },
+  {
+    "title" : "The Mist",
+    "img" : "assets/images/tvshows/shows/the_mist.jpg",
+    "details_img": "assets/images/tvshows/shows/the_mist_details.jpg",
+    "desc" : "Trapped by a mysterious fog, residents of a Maine village discover that it hides nightmarish creatures. A new series based on Stephen King's novella.",
+    "video" : "JWtnJjn6ng0",
+    "matchPercentage" : "94",
+    "release-year" : "2015",
+    "age-limit" : "13",
+    "seasonNo" : "2",
+    "content" : [
+      {
+        "key":"Creator",
+        "value":"Peter Morgan"
+      },
+      {
+        "key": "Cast",
+        "value": "Claire Foy, Matt Smith, Jared Hamilton"
+      },
+      {
+        "key": "Genres",
+        "value": "TV Programmes"
+      },
+      {
+        "key": "Subtitles",
+        "value": "English [CC]"
+      },
+      {
+        "key": "Audio Languages",
+        "value": "English"
+      }
+    ]
+  },
+  {
+    "title" : "The Siege",
+    "img" : "assets/images/tvshows/shows/the_siege.jpg",
+    "details_img": "assets/images/tvshows/shows/the_seige_details.jpg",
+    "desc" : "Besieged by overwhelming enemy forces, Irish soldiers on a U.N. peacekeeping mission in Africa valiantly defend their outpost in this true story.",
+    "video" : "nIgeVoVMv90",
+    "matchPercentage" : "90",
+    "release-year" : "2017",
+    "age-limit" : "16",
+    "seasonNo" : "1",
+    "content" : [
+      {
+        "key":"Starring",
+        "value":"Marlon Wayans, Dennis, Eliza"
+      },
+      {
+        "key":"Creator",
+        "value":"Michale Tiddes"
+      },
+      {
+        "key": "Genres",
+        "value": "International Movie, Comedies"
+      },
+      {
+        "key": "Subtitles",
+        "value": "English [CC]"
+      },
+      {
+        "key": "Audio Languages",
+        "value": "English"
+      }
+    ]
+  }
+]
