@@ -7,7 +7,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 @Component({
   selector: 'amexio-dialogue', template: `
     <div class="root-window"
-         [ngStyle]="{'display' : showWindow ? 'block' : 'none'}">
+         [ngStyle]="{'display' : showdialogue  ? 'block' : 'none'}">
       <div class="dialogue-sm">
         <div class="dialogue-content">
           <header class="dialogue-header">
@@ -27,9 +27,9 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
           <div class="dialogue-middle">
             <span class="dialogue-icon">
               <span 
-                [ngClass]="{'dialogue-success': messageType == 'help','dialogue-danger':messageType == 'error','dialogue-warning': messageType == 'warning'}"
-                *ngIf="messageType || messageType != '' ">
-                <amexio-pane-icon [key]="'window-msgtype-'+ messageType"></amexio-pane-icon>
+                [ngClass]="{'dialogue-success': messagetype  == 'help','dialogue-danger':messagetype  == 'error','dialogue-warning': messagetype  == 'warning'}"
+                *ngIf="messagetype  || messagetype  != '' ">
+                <amexio-pane-icon [key]="'window-msgtype-'+ messagetype "></amexio-pane-icon>
               </span>
                <ng-container *ngIf="!custom">
                  <span class="dialogue-message">
@@ -48,8 +48,8 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
           </footer>
           <footer *ngIf="!custom" class="dialogue-footer"
                   [ngClass]="{'flex-start':(footeralign=='left'),'flex-end':(footeralign=='right'),'flex-center':(footeralign=='center')}">
-            <amexio-button *ngIf="type =='confirm'"  [size]="'small'" [label]="secondaryActionLabel" [type]="'default'" (onClick)="getStatus('cancel')"></amexio-button>&nbsp;&nbsp;
-            <amexio-button *ngIf="type =='confirm' || type == 'alert'"   [size]="'small'" [label]="primaryActionLabel" [type]="'primary'" (onClick)="getStatus('ok')"></amexio-button>
+            <amexio-button *ngIf="type =='confirm'"  [size]="'small'" [label]="secondaryactionlabel " [type]="'default'" (onClick)="getStatus('cancel')"></amexio-button>&nbsp;&nbsp;
+            <amexio-button *ngIf="type =='confirm' || type == 'alert'"   [size]="'small'" [label]="primaryactionlabel  " [type]="'primary'" (onClick)="getStatus('ok')"></amexio-button>
           </footer>
         </div>
 
@@ -61,7 +61,7 @@ export class AmexiodialoguePaneComponent implements OnInit {
 
   @Input('footer-align') footeralign: string;
 
-  @Input('show-window') showWindow: boolean;
+  @Input('show-dialogue') showdialogue : boolean;
 
   @Input() closable: boolean;
 
@@ -73,18 +73,18 @@ export class AmexiodialoguePaneComponent implements OnInit {
 
   @Input() type: 'confirm'| 'alert';
 
-  @Input() primaryActionLabel : string;
+  @Input('primary-action-label') primaryactionlabel   : string;
 
-  @Input() secondaryActionLabel : string;
+  @Input('secondary-action-label') secondaryactionlabel  : string;
 
-  @Input() messageType : string;
+  @Input('message-type') messagetype  : string;
 
   @Output() actionStatus : EventEmitter<any> = new EventEmitter<any>();
 
   constructor() {
     this.closable = true;
-    this.secondaryActionLabel = 'No';
-    this.primaryActionLabel = 'Yes';
+    this.secondaryactionlabel  = 'No';
+    this.primaryactionlabel   = 'Yes';
     this.custom = false;
 
   }
@@ -95,7 +95,7 @@ export class AmexiodialoguePaneComponent implements OnInit {
 
   onCloseClick() {
     if (this.closable) {
-      this.showWindow = !this.showWindow;
+      this.showdialogue  = !this.showdialogue ;
     }
   }
 
