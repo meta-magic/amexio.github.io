@@ -1,0 +1,7 @@
+export class CustomColSizeDemo {
+  constructor() {}
+
+  getRowData(data: any) {
+      /*Do Operation on data*/
+  }
+}

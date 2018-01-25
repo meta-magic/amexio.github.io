@@ -1,0 +1,10 @@
+import {Component, OnInit} from '@angular/core';
+
+@Component({
+  selector : 'border-demo',
+  templateUrl : 'border.demo.html'
+})
+export class BorderDemo {
+constructor() {
+}
+}

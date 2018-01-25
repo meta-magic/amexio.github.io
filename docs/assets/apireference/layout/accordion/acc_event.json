@@ -1,0 +1,10 @@
+{
+  "properties": [
+    {
+      "name": "onClick",
+      "type": "Event",
+      "default": "",
+      "description":"Fires the on accordion pane click event."
+    }
+  ]
+}

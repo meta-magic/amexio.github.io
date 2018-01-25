@@ -1,0 +1,48 @@
+{
+  "properties": [
+    {
+      "name": "label",
+      "type": "string",
+      "default": "",
+      "description": "Label on button"
+    },
+    {
+      "name": "type",
+      "type": "string",
+      "default": "",
+      "description": "Type of button : default, primary, success , danger & warning"
+    },
+    {
+      "name": "icon",
+      "type": "string",
+      "default": "",
+      "description": "Fa icon class name"
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "default": "false",
+      "description": "Enable/Disables the button"
+    },
+    {
+      "name": "size",
+      "type": "string",
+      "default": "",
+      "description": "Different Sizes of Buttons availabe : large, default, small & xsmall"
+    },
+    {
+      "name": "tooltip",
+      "type": "string",
+      "default": "",
+      "description": "Showing tooltip over button"
+    }
+  ],
+  "events": [
+    {
+      "name": "onClick",
+      "description": "Fire when button click "
+    }
+  ],
+  "css": [
+  ]
+}

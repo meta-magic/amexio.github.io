@@ -1,0 +1,64 @@
+{
+  "properties": [
+    {
+      "name": "footer-align",
+      "type": "string",
+      "default": "right",
+      "description":"Alignment of footer contents to right or left."
+    },
+    {
+      "name": "show-window",
+      "type": "boolean",
+      "default": "false",
+      "description":"Show / Hide Window."
+    },
+    {
+      "name": "closable",
+      "type": "boolean",
+      "default": "",
+      "description":"User can close the window."
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "default": "",
+      "description":"Title for dialog."
+    },
+    {
+      "name": "message",
+      "type": "string",
+      "default": "",
+      "description":"Alert or confirm message."
+    },
+    {
+      "name": "message-type",
+      "type": "string",
+      "default": "",
+      "description":"Type of message like error,warning,help."
+    },
+    {
+      "name": "type",
+      "type": "string",
+      "default": "",
+      "description":"Mode to open, alert or dialogue mode."
+    },
+    {
+      "name": "custom",
+      "type": "boolean",
+      "default": "false",
+      "description":"User can custom dialogue box."
+    },
+    {
+      "name": "primaryActionLabel",
+      "type": "string",
+      "default": "",
+      "description":"Label to be displayed for primary action."
+    },
+    {
+      "name": "secondaryActionLabel",
+      "type": "string",
+      "default": "",
+      "description":"Label to be displayed for secondary action."
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "properties": [
+    {
+      "name": "position",
+      "type": "string",
+      "default": "",
+      "description":"Layout the contents to North , East , West , Center & South positions"
+    }
+  ]
+}
