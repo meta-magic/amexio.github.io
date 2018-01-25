@@ -5,12 +5,13 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CommonDataService} from "../../services/data/common.data.service";
 @Component({
   selector: 'data-grid-filter', template: `
-    <input type="text" [(ngModel)]="filterValue" [attr.placeholder]="column.text" (keyup)="keyUpSearch(column)"
-           type="{{column.datatype==='string' ? 'text' : 'number'}}" class="form-control"
-           aria-label="Text input with dropdown button">
-    <!--<i class="fa fa-filter" aria-hidden="true" (click)="showToolTip = !showToolTip"></i>-->
-    <amexio-data-icon key="datagrid_filter" (click)="showToolTip = !showToolTip"></amexio-data-icon>
-    <span *ngIf="showToolTip" class="dropdown" style="width: 250px;">
+    <ng-container *ngIf="column.datatype==='string'">
+      <input type="text" [(ngModel)]="filterValue" [attr.placeholder]="column.text" (keyup)="keyUpSearch(column)"
+             type="text" class="form-control"
+             aria-label="Text input with dropdown button">
+      <!--<i class="fa fa-filter" aria-hidden="true" (click)="showToolTip = !showToolTip"></i>-->
+      <amexio-data-icon key="datagrid_filter" (click)="showToolTip = !showToolTip"></amexio-data-icon>
+      <span *ngIf="showToolTip" class="dropdown" style="width: 250px;">
         <ul class="dropdown-list" *ngFor="let opt of filterOptions">
           <ng-container *ngIf="opt.type===column.datatype">
           <li class="list-items">
@@ -21,6 +22,30 @@ import {CommonDataService} from "../../services/data/common.data.service";
           </ng-container>
          </ul>
       </span>
+    </ng-container>
+    
+    <ng-container *ngIf="column.datatype==='number'">
+      <span style="float: right">
+        <input type="text" [(ngModel)]="filterValue" [attr.placeholder]="column.text" (keyup)="keyUpSearch(column)"
+               type="number" class="form-control"
+               aria-label="Text input with dropdown button">
+        <!--<i class="fa fa-filter" aria-hidden="true" (click)="showToolTip = !showToolTip"></i>-->
+      <amexio-data-icon key="datagrid_filter" (click)="showToolTip = !showToolTip"></amexio-data-icon>
+      <span *ngIf="showToolTip" class="dropdown" style="width: 250px;">
+        <ul class="dropdown-list" *ngFor="let opt of filterOptions">
+          <ng-container *ngIf="opt.type===column.datatype">
+          <li class="list-items">
+              <div (click)="selectedOption(column,opt)">
+              {{opt.key}}&nbsp;<i [class]="opt.checkedStatus" aria-hidden="true"></i>
+            </div>
+          </li>
+          </ng-container>
+         </ul>
+      </span>
+      </span>
+      
+    </ng-container>
+    
   `
 })
 
