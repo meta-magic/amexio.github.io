@@ -35,7 +35,29 @@
   font-weight: 400;
   padding-left: 16px;
   padding-right: 16px;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
+
+
+.cardbody::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #F5F5F5;
+}
+
+.cardbody::-webkit-scrollbar
+{
+  width: 6px;
+  background-color: #F5F5F5;
+}
+
+.cardbody::-webkit-scrollbar-thumb
+{
+  background-color: $themeBGColor;
+}
+
+
 .card-footer{
   display: flex;
   background-color: $cardFooterBGColor;
