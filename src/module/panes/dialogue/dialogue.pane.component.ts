@@ -83,8 +83,8 @@ export class AmexiodialoguePaneComponent implements OnInit {
 
   constructor() {
     this.closable = true;
-    this.secondaryactionlabel  = 'No';
-    this.primaryactionlabel   = 'Yes';
+    this.secondaryactionlabel  = 'Cancel';
+    this.primaryactionlabel   = 'Ok';
     this.custom = false;
 
   }
