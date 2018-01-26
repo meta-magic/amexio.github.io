@@ -39,7 +39,7 @@
   font-size: 12px;
   line-height: 1.428571429;
   border-radius: 15px;
-  
+
   background-color: $primaryBGColor;
   border-color: $primaryBGColor;
   color: $primaryColor;
@@ -80,6 +80,7 @@
   border: 1px solid $stepsBorderColor;
   font-weight: bolder;
   padding-top: 5px;
+  cursor: pointer;
 }
 
 .step-box-table-item.active{
