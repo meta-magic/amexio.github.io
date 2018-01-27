@@ -357,9 +357,13 @@ Or refer the below table for other themes provided.
 </tr>
 </table>
 
-# Amexio Microsoft Visual Studio Code Extensions(Not available for V4.0)
+# Amexio Microsoft Visual Studio Code Extensions
 
 This extension will help the developers of Visual Studio Code with quick code snippet for the Amexio Markup as well as Amexio TypeScript for the Angular Extensions.
+<ul>
+<li>Available for v3.x series</li>
+<li>Plugin for v4.0 will be available in the first week of Feb 2018.</li>
+</ul>
 
 ## Usage
 
