@@ -1,0 +1,32 @@
+version: 0.1
+environment_variables:
+    plaintext:
+        S3_BUCKET: "s3code"
+        BUILD_ENV: "prod"
+phases:
+    install:
+        commands:
+            - npm install
+            - npm install -g @angular/cli
+            - npm cache clean -f
+            - npm install -g n
+            - n stable
+            - n latest
+            - npm install 
+            - npm install --global gulp
+            - npm i node-sass --save-dev
+            - gulp -v
+    build:
+        commands:
+            - echo Build started on `date`
+            - gulp build
+            - cd dist && npm pack
+    post_build:
+         commands:
+            - aws s3 cp dist s3://s3code --recursive
+            - echo Build completed on `date`
+artifacts:
+    files:
+        - '**/*'
+    base-directory: 'dist*'
+    discard-paths: yes
