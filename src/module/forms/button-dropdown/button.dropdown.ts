@@ -2,7 +2,7 @@
  * Created by pratik on 13/12/17.
  */
 import {
-  AfterContentInit, Component, ContentChildren, EventEmitter, Input, OnInit, Output, QueryList
+  AfterContentInit, Component, ContentChildren, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, QueryList
 } from '@angular/core';
 import {AmexioButtonDropDownItemComponent} from "./button.dropdown.item";
 
@@ -11,7 +11,7 @@ import {AmexioButtonDropDownItemComponent} from "./button.dropdown.item";
 
     <div class="button-group">
 
-      <button (click)="onClick()"
+      <button class="button-dropdown-main" (click)="onClick()"
               [ngClass]="{'button-default': size=='default' || size ==null,'button-small': size=='small','button-large' : size=='large','button-primary' : type == 'primary' || type == null,'button-success' : type == 'success',' button-danger' : type=='danger','button-warning' : type=='warning'}">
 
         <amexio-form-icon style="float:right;" key="button_caret-down"></amexio-form-icon>
@@ -21,7 +21,7 @@ import {AmexioButtonDropDownItemComponent} from "./button.dropdown.item";
 
       </button>
 
-      <div class="button-dropdown"  style="position: absolute;" [ngStyle]="{'display' : openContent ? 'block' : 'none'}">
+      <div class="button-dropdown"  [ngStyle]="{'display' : openContent ? 'block' : 'none'}">
         <ng-container *ngFor="let itemData of dropdownItemData">
           <div [ngClass]="{'button-default': size=='default' || size ==null,'button-small': size=='small','button-large' : size=='large'}">
             <div [ngStyle]="{'cursor': itemData.disabled ? 'not-allowed':'pointer'}"
@@ -59,7 +59,7 @@ export class AmexioButtonDropdownComponent implements AfterContentInit {
   @Output() click: any = new EventEmitter<any>();
 
 
-  constructor() {
+  constructor(public element: ElementRef) {
   }
 
   ngAfterContentInit() {
@@ -95,5 +95,19 @@ export class AmexioButtonDropdownComponent implements AfterContentInit {
       this.openContent = !this.openContent;
     }
 
+  }
+
+  @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
+  public onElementOutClick(targetElement: HTMLElement) {
+    let parentFound = false;
+    while (targetElement != null && !parentFound) {
+      if (targetElement === this.element.nativeElement) {
+        parentFound = true;
+      }
+      targetElement = targetElement.parentElement;
+    }
+    if (!parentFound) {
+      this.openContent = false;
+    }
   }
 }
