@@ -1,4 +1,7 @@
-/** INPUT FORM CONTROL STYLES STARTS**/
+
+/*----------------------------------------------------------------------*/
+/*        INPUT CONTROL COMPONENT         */
+/*----------------------------------------------------------------------*/
 
 ::placeholder {
   //padding-left: 15px;
@@ -77,13 +80,13 @@
   padding-left:5px;
 
 }
-
+/****************************************************/
 /** INPUT FORM CONTROL STYLES ENDS**/
+/****************************************************/
 
-
-
+/****************************************************/
 /**COLLAPSIBLE SEARCH STARTS **/
-
+/****************************************************/
 
 .search{
   background: #ededed url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
@@ -98,9 +101,9 @@
   background-color: #fff;
   border-color: #66CC75;
 }
-
+/****************************************************/
 /**COLLAPSIBLE SEARCH ENDS **/
-
+/****************************************************/
 
 .upload-drop-zone {
   color: #ccc;
@@ -113,5 +116,3 @@
   color: #222;
   border-color: #222;
 }
-
-

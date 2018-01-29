@@ -8,11 +8,9 @@ $color: $defaultColor;
 
 $oppColor: $defaultBGColor;
 
-
 $backgroundcolor: #ECEFF1;
 
 $componentBGColor: white;
-
 
 //$themeBGColor :  #7C0A02;
 
@@ -27,13 +25,11 @@ $successBGColor : #5cb85c;
 $dangerBGColor : #d9534f;
 $warningBGColor : #f0ad4e;
 
-
 $primaryColor: $themeColor;
 $secondaryColor: $color;
 $successColor : $oppColor;
 $dangerColor : $oppColor;
 $warningColor : $oppColor;
-
 
 $success: $successBGColor;
 $error : $dangerBGColor;
@@ -42,13 +38,10 @@ $focusColor : #5cb3fd;
 $hoverColor : $themeColor;
 $hoverBGColor : $themeBGColor;
 
-
 $borderSize : 1px;
 $borderRadius : 2px;
 $borderColor : #ced4da;
 $borderColor-focus: $focusColor;
-
-
 
 $navbarBoxShadow: $borderColor;
 $navbarColor : $themeColor;
@@ -137,7 +130,6 @@ $stepsLabelHighlight : darken($defaultColor, 30);
 $stepsBorderColor:$borderColor;
 $stepsDisabled : lighten($menubarColor,50%);
 
-
 $ripplePrimaryColor : $primaryBGColor;
 $rippleSecondaryColor: $secondaryBGColor;
 $rippleSuccessColor: $successBGColor;
@@ -154,18 +146,15 @@ $datatableRowHoverBG : lighten($primaryBGColor,30%);
 @import "../default/amexio.layouts.scss";
 @import "../default/amexio.nav.scss";
 @import "../default/amexio.panes.scss";
-
+@import "../default/amexio.media.query.scss";
 
 body {
   font-family: Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
 }
 
-
-
 /*----------------------------------------------------------------------*/
 /*        INPUT/LABEL/A/BUTTON/DROPDOWN COMPONENT         */
 /*----------------------------------------------------------------------*/
-
 
 .input-control {
   border-radius: 0px;
@@ -185,7 +174,6 @@ body {
   border-bottom-color:$error;
 }
 
-
 .inputgroup label {
   margin-bottom: 0rem;
 }
@@ -200,18 +188,14 @@ label {
 
 }
 
-
 a {
   color: rgba(0, 0, 0, 0.87);
   //text-transform: lowercase;
 }
 
-
 .navbar-logo-unit a{
   text-transform: capitalize;
 }
-
-
 
 button.app-button {
   border-radius: 8px;
@@ -219,15 +203,15 @@ button.app-button {
 
 .btn-group button{
   //border-right: 1px solid white;
-
 }
 
 .drodown-caret-down{
   top: 35px;
   color: $borderColor;
 }
-
-
+/*----------------------------------------------------------------------*/
+/*                          DATATABLE COMPONENT         */
+/*----------------------------------------------------------------------*/
 
 
 .datatable .datatable-row{
@@ -252,7 +236,6 @@ button.app-button {
   height: 50px;
 }
 
-
 .datatable .datatable-header{
   background-color: $primaryBGColor;
   font-size: larger;
@@ -271,6 +254,9 @@ button.app-button {
 .datatable .datatable-row-active{
   background-color: $datatableRowActiveBG;
 }
+/*----------------------------------------------------------------------*/
+/*                    DATAPOINTS COMPONENT         */
+/*----------------------------------------------------------------------*/
 
 .datapoints{
   .datapoints{
@@ -279,6 +265,11 @@ button.app-button {
   }
   color: $themeBGColor;
 }
+
+.datapoints-issue{
+  padding: 10px;
+}
+
 .datapoints-north{
   font-size: 36px;
   font-weight: bold;
@@ -301,7 +292,9 @@ button.app-button {
   font-weight: bold;
 }
 
-
+/*----------------------------------------------------------------------*/
+/*        LISTBOX COMPONENT         */
+/*----------------------------------------------------------------------*/
 
 
 .listbox .list{
@@ -320,16 +313,21 @@ button.app-button {
   }
 }
 
-/** NAVBAR **/
+/*----------------------------------------------------------------------*/
+/*        NAVBAR COMPONENT         */
+/*----------------------------------------------------------------------*/
+
 .navbar-container {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
 }
-
 
 .sidenav .activenode{
   color: $navbarBGColor;
 }
 
+/*----------------------------------------------------------------------*/
+/*        IMAGE COMPONENT         */
+/*----------------------------------------------------------------------*/
 
 
 .image-responsive{
@@ -349,14 +347,6 @@ button.app-button {
 .flex-col-9pt5{
   flex: 1 1 79.1666635%;
   max-width: 79.1666635%;
-}
-
-@media only screen and (max-width: 1024px) {
-
-  .flex-col-2pt5,.flex-col-9pt5{
-    flex: 1 1 100%;
-    max-width: 100%;
-  }
 }
 
 .email {

@@ -1,3 +1,8 @@
+
+/*----------------------------------------------------------------------*/
+/*        ROW-COLUMN COMPONENT         */
+/*----------------------------------------------------------------------*/
+
 .flex-row{
   flex-direction: row; box-sizing: border-box; display: flex;
   flex-wrap: wrap;
@@ -69,17 +74,4 @@
 .flex-col-12{
   flex: 0 0 100%;
   max-width: 100%;
-}
-
-@media only screen and (max-width: 767px) {
-  .flex-row{
-    flex-direction: column;
-  }
-  .flex-col {
-
-  }
-  .flex-col-1,.flex-col-2,.flex-col-3,.flex-col-4,.flex-col-5,.flex-col-6,.flex-col-7,.flex-col-8,.flex-col-9,.flex-col-10,.flex-col-11,.flex-col-12{
-    max-width: 100%;
-    flex: 0 0 100%;
-  }
 }

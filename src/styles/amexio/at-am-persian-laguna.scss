@@ -48,7 +48,7 @@ $borderColor : $defaultColor;
 $borderColor-focus: $focusColor;
 
 
-$navbarBGColor : none ;
+$navbarBGColor : $oppColor ;
 $navbarBoxShadow: none;
 $navbarColor : white;
 
@@ -143,7 +143,7 @@ $stepsDisabled : lighten($menubarColor,50%);
 @import "../default/amexio.layouts.scss";
 @import "../default/amexio.nav.scss";
 @import "../default/amexio.panes.scss";
-
+@import "../default/amexio.media.query.scss";
 
 
 
@@ -468,15 +468,6 @@ button.app-button {
   max-width: 79.1666635%;
 }
 
-@media only screen and (max-width: 1024px) {
-
-  .flex-col-2pt5,.flex-col-9pt5{
-    flex: 1 1 100%;
-    max-width: 100%;
-  }
-}
-
-
 .email {
   .card-header{
     border: none;
@@ -527,5 +518,3 @@ div.profile-image a{
   text-transform: capitalize;
   color: $datapointColor;
 }
-
-

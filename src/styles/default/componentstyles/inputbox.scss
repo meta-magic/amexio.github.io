@@ -1,6 +1,7 @@
 
-
+/*----------------------------------------------------------------------*/
 /***CHECKBOX & RADIOGROUP STYLE STARTS***/
+/*----------------------------------------------------------------------*/
 
 .input-box {
   display: inline-block;
@@ -35,9 +36,6 @@
   background: $primaryBGColor;
   color: $primaryColor;
 }
-
-
-
 
 .input-box-container {
   display: block;
@@ -94,10 +92,9 @@
   border-width: 0 3px 3px 0;
   transform: rotate(45deg);
 }
-
-/***RADIO***/
-
-
+/****************************************************/
+/***                  RADIO                        ***/
+/****************************************************/
 
 /* Create a custom checkbox */
 .input-box-radiobox-label {
@@ -137,5 +134,3 @@
   border-radius: 50%;
   background-color: white;
 }
-
-
