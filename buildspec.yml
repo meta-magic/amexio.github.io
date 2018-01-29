@@ -17,7 +17,7 @@ phases:
             - npm i node-sass --save-dev
             - sudo apt-get -y update
             - sudo apt-get -y install curl
-            - sudo apt-get install ruby-full
+            - sudo apt-get -y install ruby-full
             - ruby -v
             - gem install bundler
             - gem -v
