@@ -139,7 +139,7 @@ $stepsDisabled : lighten($menubarColor,50%);
 @import "../default/amexio.layouts.scss";
 @import "../default/amexio.nav.scss";
 @import "../default/amexio.panes.scss";
-
+@import "../default/amexio.media.query.scss";
 
 body {
   font-family: Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
@@ -391,15 +391,6 @@ button.app-button {
   flex: 1 1 79.1666635%;
   max-width: 79.1666635%;
 }
-
-@media only screen and (max-width: 1024px) {
-
-  .flex-col-2pt5,.flex-col-9pt5{
-    flex: 1 1 100%;
-    max-width: 100%;
-  }
-}
-
 
 .email {
   border: $borderSize solid $cardBorderColor;

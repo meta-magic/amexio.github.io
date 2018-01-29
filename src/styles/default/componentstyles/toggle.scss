@@ -1,7 +1,9 @@
 
-/**
-Toggle Button styles
- */
+
+/*----------------------------------------------------------------------*/
+/*        TOGGEL BUTTON CONTROL COMPONENT         */
+/*----------------------------------------------------------------------*/
+
 .toggle {
   position: relative;
   display: inline-block;
@@ -58,4 +60,3 @@ input:checked + .toggle-slider:before {
 .round:before {
   border-radius: 50%;
 }
-
