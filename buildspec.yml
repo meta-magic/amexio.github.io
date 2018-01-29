@@ -18,6 +18,7 @@ phases:
             - sudo apt-get -y update
             - sudo apt-get -y install curl
             - sudo apt-get -y install ruby-full
+            - sudo apt install ruby-sass
             - ruby -v
             - gem install bundler
             - gem -v
