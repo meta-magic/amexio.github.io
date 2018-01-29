@@ -185,7 +185,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
 
     <ng-container *ngIf="groupby && !enabledatafilter">
       <div class="datatable-height" [style.height.px]="height">
-        <div class="datatable"  style="table-layout: auto">
+        <div class="datatable">
           <div class="datatable-row"  *ngFor="let row of viewRows;let i=index" id="{{'row'+i}}" (click)="onRowClick(row, i, rowData)" #rowData>
             <ng-container *ngIf="enablecheckbox">
               <div class="datatable-col datatable-checkbox-width">
