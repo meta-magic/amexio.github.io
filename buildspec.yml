@@ -14,7 +14,7 @@ phases:
             - n latest
             - npm install 
             - npm install --global gulp
-            - npm i node-sass --save-dev
+            - npm install node-sass
             - sudo apt-get -y update
             - sudo apt-get -y install curl
             - sudo apt-get -y install ruby-full
