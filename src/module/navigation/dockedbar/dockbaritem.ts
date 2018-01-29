@@ -5,7 +5,7 @@ import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'amexio-dockbar-item', template: `
-    <div *ngIf="active" [style.width]="width" class="dockbar-active-content" [style.min-height]="height">
+    <div *ngIf="active"  [style.width]="width" class="dockbar-active-content" [style.min-height]="height"  [style.max-height]="height">
       <ng-container *ngIf="active && title">
         <div class="dockbar-title">
           {{title}}
