@@ -15,7 +15,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
               [ngClass]="{'flex-start':(headeralign=='left'),'flex-end':(headeralign=='right'),'flex-center':(headeralign=='center')}">
         <ng-content select="amexio-header"></ng-content>
       </header>
-      <div class="card-body cardbody" [ngStyle]="{'height.px' : height}">
+      <div class="card-body cardbody" [ngStyle]="{'height.px' : height,'overflow-y' : height!= null ? 'auto' : '','min-height.px' : minHeight}">
         <ng-content select="amexio-body"></ng-content>
       </div>
       <footer class="card-footer" *ngIf="footer"
@@ -40,6 +40,8 @@ export class AmexioCardComponent implements OnInit {
   @Input() show: boolean = true;
 
   @Input()  height : any;
+
+  @Input('min-height')  minHeight : any;
 
 
   constructor() {

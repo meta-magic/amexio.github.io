@@ -55,7 +55,7 @@
   display: none;
   background: $subMenuCotentBGColor;
   padding: 10px;
-  position: absolute;
+  position: fixed;
   z-index: 99;
   box-shadow: 0 0 5px 0 $borderColor;
 }
