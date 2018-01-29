@@ -30,7 +30,8 @@ const MAP_COMPONENTS = [
     HttpModule
   ],
   exports: MAP_COMPONENTS,
-  declarations: MAP_COMPONENTS
+  declarations: MAP_COMPONENTS,
+  providers : [CommonDataService, MapLoaderService]
 })
 export class AmexioMapModule {
   static forRoot(): ModuleWithProviders {

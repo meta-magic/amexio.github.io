@@ -69,7 +69,8 @@ const FORM_COMPONENTS = [
     AmexioLayoutModule
   ],
   exports: FORM_COMPONENTS,
-  declarations: FORM_COMPONENTS
+  declarations: FORM_COMPONENTS,
+  providers : [CommonDataService,IconLoaderService]
 })
 export class AmexioFormsModule {
   static forRoot(): ModuleWithProviders {

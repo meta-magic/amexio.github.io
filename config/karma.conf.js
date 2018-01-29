@@ -67,7 +67,14 @@ module.exports = function (config) {
     logLevel: config.LOG_INFO,
     failOnEmptyTestSuite: false,
     autoWatch: false,
-    browsers: ['Chrome'],
+    browsers: ['ChromeNoSandbox'],
+
+    customLaunchers: {
+      ChromeNoSandbox: {
+        base: 'Chrome',
+        flags: ['--no-sandbox']
+      }
+    },
     singleRun: true
   };
 

@@ -54,7 +54,8 @@ const DATA_COMPONENTS = [
     AmexioLayoutModule
   ],
   exports: DATA_COMPONENTS,
-  declarations: DATA_COMPONENTS
+  declarations: DATA_COMPONENTS,
+  providers: [CommonDataService,IconLoaderService]
 })
 export class AmexioDataModule {
   static forRoot(): ModuleWithProviders {

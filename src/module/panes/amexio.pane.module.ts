@@ -83,7 +83,8 @@ const PANE_COMPONENTS = [
     HttpModule
   ],
   exports: PANE_COMPONENTS,
-  declarations: PANE_COMPONENTS
+  declarations: PANE_COMPONENTS,
+  providers : [CommonDataService,DeviceQueryService,IconLoaderService]
 })
 export class AmexioPaneModule {
   static forRoot(): ModuleWithProviders {

@@ -66,7 +66,8 @@ const CHART_COMPONENTS = [
     HttpModule
   ],
   exports: CHART_COMPONENTS,
-  declarations: CHART_COMPONENTS
+  declarations: CHART_COMPONENTS,
+  providers: [CommonDataService,ChartLoaderService]
 })
 export class AmexioChartsModule {
   static forRoot(): ModuleWithProviders {
