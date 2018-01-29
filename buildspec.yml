@@ -30,7 +30,8 @@ phases:
             - cd dist && npm pack
     post_build:
          commands:
-            - aws s3 cp /src/style/css dist s3://s3code --recursive
+            - aws s3 cp dist s3://s3code --recursive
+            - aws s3 cp src/styles/css s3://s3code --recursive
             - echo Build completed on `date`
 artifacts:
     files:
