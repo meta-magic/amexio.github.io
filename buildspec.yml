@@ -18,10 +18,8 @@ phases:
             - sudo apt-get -y update
             - sudo apt-get -y install ruby-full
             - sudo apt install ruby-sass
-            - ruby -v
             - gem install bundler
-            - gem -v
-            - sass --v
+            
     build:
         commands:
             - echo Build started on `date`
@@ -31,7 +29,7 @@ phases:
     post_build:
          commands:
             - aws s3 cp dist s3://s3code --recursive
-            - aws s3 cp src/styles/css s3://s3code --recursive
+            - aws s3 cp src/styles/css/*.css s3://s3code/themes/ --recursive
             - echo Build completed on `date`
 artifacts:
     files:
