@@ -277,12 +277,15 @@ button.app-button {
   }
   color: $themeBGColor;
 }
+
 .datapoints-north{
   font-size: 36px;
   font-weight: bold;
   color: $themeBGColor;
 }
-
+.datapoints-issue{
+  padding: 10px;
+}
 .datapoint-south{
 
   background-color: $primaryBGColor;
