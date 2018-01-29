@@ -230,18 +230,19 @@ import {CommonDataService} from "../../services/data/common.data.service";
                   </div>
                 </ng-container>
                 <ng-container *ngIf="cols.datatype=='number'">
-                  <span style="float: right">
-                     <div class="datatable-col" [style.width.%]="cols.width"  [attr.data-label]="cols.text">
+                  
+                  <div class="datatable-col" [style.width.%]="cols.width"  [attr.data-label]="cols.text">
+                       
                     <ng-container *ngIf="colIndex == 0">
-                   <span style="padding-left: 20px">
-                     {{row[cols.dataindex]}}
-                   </span>
+                      <span style="padding-left: 20px">
+                        {{row[cols.dataindex]}}
+                       </span>
                     </ng-container>
                     <ng-container *ngIf="colIndex != 0">
-                      {{row[cols.dataindex]}}
+                      <span class="float-right">{{row[cols.dataindex]}}</span>
                     </ng-container>
+                       
                   </div>
-                  </span>
                  
                 </ng-container>
                 
