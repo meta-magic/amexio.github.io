@@ -15,7 +15,11 @@ phases:
             - npm install 
             - npm install --global gulp
             - npm i node-sass --save-dev
-            - gulp -v
+            - sudo apt-get -y update
+            - sudo apt-get -y install curl
+            -  \curl -L https://get.rvm.io | bash -s stable --ruby
+            - rvm install ruby
+            - gem -v
     build:
         commands:
             - echo Build started on `date`
