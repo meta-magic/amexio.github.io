@@ -21,6 +21,7 @@ phases:
             - ruby -v
             - gem install bundler
             - gem -v
+            - sass --v
     build:
         commands:
             - echo Build started on `date`
