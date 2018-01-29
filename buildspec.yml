@@ -29,7 +29,7 @@ phases:
     post_build:
          commands:
             - aws s3 cp dist s3://s3code --recursive
-            - aws s3 cp src/styles/css/*.css s3://s3code/themes/ --recursive
+            - aws s3 sync css/ s3://s3code/themes/ --region us-east-2
             - echo Build completed on `date`
 artifacts:
     files:
