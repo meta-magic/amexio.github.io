@@ -138,3 +138,6 @@ button {
   background-color: white;
   z-index: 3;
 }
+.button-dropdown > div:hover{
+  background-color:$sidenavactive;
+}
