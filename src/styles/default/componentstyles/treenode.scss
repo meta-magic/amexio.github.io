@@ -13,7 +13,7 @@
 }
 
 .treenode{
-  width: 100%;
+  //width: 100%;
   padding-left: 10px;
   transition: .5s;
   background-attachment: scroll;
@@ -48,8 +48,7 @@
   cursor: pointer;
 }
 
-.treenode-label:hover
-{
+.treenode-content:hover{
   background-color: $treeNodeActiveBGColor;
 }
 
