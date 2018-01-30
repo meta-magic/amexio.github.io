@@ -136,6 +136,7 @@ $stepsBGColor : $sidenavBGColor;
 $stepsLabelHighlight : darken($defaultColor, 30);
 $stepsBorderColor:$borderColor;
 $stepsDisabled : lighten($menubarColor,50%);
+$stepsInActiveBGColor:$hoverBGColor;
 
 
 $datatableRowActiveBG : rgba(66, 31, 38, 0.4)!important;

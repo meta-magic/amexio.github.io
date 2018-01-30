@@ -48,7 +48,7 @@ button {
 }
 
 
-.button-secondary:hover{
+.button-secondary:hover:enabled{
   background-color: darken($secondaryBGColor, 10%);
 }
 
@@ -59,7 +59,7 @@ button {
 }
 
 
-.button-primary:hover{
+.button-primary:hover:enabled{
   background-color: darken($primaryBGColor, 10%);
 }
 
@@ -70,7 +70,7 @@ button {
 
 }
 
-.button-success:hover{
+.button-success:hover:enabled{
   background-color: darken($successBGColor, 10%);
 }
 
@@ -80,7 +80,7 @@ button {
   color: $dangerColor;
 }
 
-.button-danger:hover{
+.button-danger:hover:enabled{
   background-color: darken($dangerBGColor, 10%);
 }
 
@@ -90,7 +90,7 @@ button {
   color: $warningColor;
 }
 
-.button-warning:hover{
+.button-warning:hover:enabled{
   background-color: darken($warningBGColor, 10%);
 }
 

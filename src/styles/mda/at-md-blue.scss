@@ -99,6 +99,8 @@ $dockBarActiveBorderColor: $tabActiveBorder;
 $dockBarActiveBorderSize: $tabActiveBorderSize;
 $dockBarActiveColor:$cardHeaderColor;
 $dockBarActiveBGColor:lighten($cardHeaderBGColor,20%);
+$dockBarInActiveBGColor:$hoverBGColor;
+
 
 $toastBGColor : $themeBGColor;
 $toastColor : $themeColor;
@@ -134,6 +136,7 @@ $stepsBGColor : $backgroundcolor;
 $stepsLabelHighlight : darken($defaultColor, 30);
 $stepsBorderColor:$borderColor;
 $stepsDisabled : lighten($menubarColor,50%);
+$stepsInActiveBGColor:$hoverBGColor;
 
 $ripplePrimaryColor : $primaryBGColor;
 $rippleSecondaryColor: $secondaryBGColor;
