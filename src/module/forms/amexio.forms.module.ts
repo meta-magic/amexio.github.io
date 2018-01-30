@@ -30,6 +30,7 @@ import {AmexioButtonDropdownComponent} from "./button-dropdown/button.dropdown";
 import {AmexioSpiltButtonDropdownComponent} from "./button-dropdown/split.button.dropdown";
 import {AmexioButtonDropDownItemComponent} from "./button-dropdown/button.dropdown.item";
 import {AmexioFileUploadComponent} from "./fileupload/fileupload.component";
+import {DomHandler} from "./slider/slider.handler";
 export * from '../services/data/common.data.service';
 export * from '../services/icon/icon.service';
 
@@ -70,7 +71,7 @@ const FORM_COMPONENTS = [
   ],
   exports: FORM_COMPONENTS,
   declarations: FORM_COMPONENTS,
-  providers : [CommonDataService,IconLoaderService]
+  providers : [CommonDataService,IconLoaderService,DomHandler]
 })
 export class AmexioFormsModule {
   static forRoot(): ModuleWithProviders {
