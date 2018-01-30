@@ -141,7 +141,7 @@ button {
   border-color: #417505;
   color: black; }
 
-.button-secondary:hover {
+.button-secondary:hover:enabled {
   background-color: #e6e6e6; }
 
 .button-primary {
@@ -149,7 +149,7 @@ button {
   border-color: #417505;
   color: white; }
 
-.button-primary:hover {
+.button-primary:hover:enabled {
   background-color: #264403; }
 
 .button-success {
@@ -157,7 +157,7 @@ button {
   border-color: #5cb85c;
   color: #F0EEE9; }
 
-.button-success:hover {
+.button-success:hover:enabled {
   background-color: #449d44; }
 
 .button-danger {
@@ -165,7 +165,7 @@ button {
   border-color: #d9534f;
   color: #F0EEE9; }
 
-.button-danger:hover {
+.button-danger:hover:enabled {
   background-color: #c9302c; }
 
 .button-warning {
@@ -173,7 +173,7 @@ button {
   border-color: #f0ad4e;
   color: #F0EEE9; }
 
-.button-warning:hover {
+.button-warning:hover:enabled {
   background-color: #ec971f; }
 
 /*----------------------------------------------------------------------*/
@@ -1106,10 +1106,13 @@ input:checked + .toggle-slider:before {
 
 .datatable .datatable-row:hover {
   background-color: #91f51e;
-  cursor: pointer; }
+  cursor: pointer;
+  color: #417505 !important;
+  font-weight: bold; }
 
 .datatable .datatable-row-active {
-  background-color: #c1fa7f; }
+  background-color: #c1fa7f;
+  color: #417505; }
 
 .datatable .datatable-col {
   display: table-cell;
@@ -2098,11 +2101,20 @@ fieldset {
   cursor: pointer; }
 
 .step-box-table-item.active {
-  background-color: #417505 !important; }
+  background-color: #C4E800 !important;
+  cursor: not-allowed; }
 
 .step-box-table-item.disbaled {
   background-color: gray;
   cursor: not-allowed; }
+
+.index-step-inactive {
+  background-color: #ecff82;
+  cursor: not-allowed; }
+
+.step-box-table-item-hover:hover {
+  background-color: #ecff82;
+  cursor: pointer; }
 
 /*----------------------------------------------------------------------*/
 /*        TABL COMPONENT         */
@@ -2406,17 +2418,39 @@ fieldset {
   float: right;
   margin-left: 5px; }
 
-.panel {
+.panel-panel {
   padding: 0 18px;
   background-color: white;
   color: black;
-  max-height: 0;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   transition: max-height 0.2s ease-out; }
 
 .panel-box {
   border: 2px solid none;
   width: 100%; }
+
+.panel-panel::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #F5F5F5; }
+
+.panel-panel::-webkit-scrollbar {
+  width: 6px;
+  background-color: #F5F5F5; }
+
+.panel-panel::-webkit-scrollbar-thumb {
+  background-color: #C4E800; }
+
+.panel-header {
+  display: flex;
+  justify-content: space-between; }
+
+.custom-header {
+  display: flex;
+  vertical-align: middle; }
+
+.panel-icon {
+  padding-left: 5px; }
 
 /*----------------------------------------------------------------------*/
 /*        BORDER LAYOUT Media Q COMPONENT         */

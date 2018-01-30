@@ -141,7 +141,7 @@ button {
   border-color: #F3C22A;
   color: #02468D; }
 
-.button-secondary:hover {
+.button-secondary:hover:enabled {
   background-color: #012d5b; }
 
 .button-primary {
@@ -149,7 +149,7 @@ button {
   border-color: #F3C22A;
   color: white; }
 
-.button-primary:hover {
+.button-primary:hover:enabled {
   background-color: #deab0c; }
 
 .button-success {
@@ -157,7 +157,7 @@ button {
   border-color: #5cb85c;
   color: rgba(0, 43, 87, 0.7); }
 
-.button-success:hover {
+.button-success:hover:enabled {
   background-color: #449d44; }
 
 .button-danger {
@@ -165,7 +165,7 @@ button {
   border-color: #d9534f;
   color: rgba(0, 43, 87, 0.7); }
 
-.button-danger:hover {
+.button-danger:hover:enabled {
   background-color: #c9302c; }
 
 .button-warning {
@@ -173,7 +173,7 @@ button {
   border-color: #f0ad4e;
   color: rgba(0, 43, 87, 0.7); }
 
-.button-warning:hover {
+.button-warning:hover:enabled {
   background-color: #ec971f; }
 
 /*----------------------------------------------------------------------*/
@@ -1105,11 +1105,14 @@ input:checked + .toggle-slider:before {
   height: 50px; }
 
 .datatable .datatable-row:hover {
-  background-color: #f5faff;
-  cursor: pointer; }
+  background-color: #2c92fc;
+  cursor: pointer;
+  color: #02468D !important;
+  font-weight: bold; }
 
 .datatable .datatable-row-active {
-  background-color: white; }
+  background-color: #5eacfd;
+  color: #02468D; }
 
 .datatable .datatable-col {
   display: table-cell;
@@ -2098,11 +2101,20 @@ fieldset {
   cursor: pointer; }
 
 .step-box-table-item.active {
-  background-color: #F3C22A !important; }
+  background-color: rgba(0, 43, 87, 0.7) !important;
+  cursor: not-allowed; }
 
 .step-box-table-item.disbaled {
   background-color: #91c6fd;
   cursor: not-allowed; }
+
+.index-step-inactive {
+  background-color: rgba(0, 119, 240, 0.7);
+  cursor: not-allowed; }
+
+.step-box-table-item-hover:hover {
+  background-color: rgba(0, 119, 240, 0.7);
+  cursor: pointer; }
 
 /*----------------------------------------------------------------------*/
 /*        TABL COMPONENT         */
@@ -2406,17 +2418,39 @@ fieldset {
   float: right;
   margin-left: 5px; }
 
-.panel {
+.panel-panel {
   padding: 0 18px;
   background-color: rgba(0, 43, 87, 0.7);
   color: #1FBCD2;
-  max-height: 0;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   transition: max-height 0.2s ease-out; }
 
 .panel-box {
   border: 2px solid rgba(0, 43, 87, 0.7);
   width: 100%; }
+
+.panel-panel::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #F5F5F5; }
+
+.panel-panel::-webkit-scrollbar {
+  width: 6px;
+  background-color: #F5F5F5; }
+
+.panel-panel::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 43, 87, 0.7); }
+
+.panel-header {
+  display: flex;
+  justify-content: space-between; }
+
+.custom-header {
+  display: flex;
+  vertical-align: middle; }
+
+.panel-icon {
+  padding-left: 5px; }
 
 /*----------------------------------------------------------------------*/
 /*        BORDER LAYOUT Media Q COMPONENT         */

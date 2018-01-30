@@ -136,6 +136,7 @@ $stepsInActiveBGColor:$hoverBGColor;
 $datatableRowActiveBG : lighten($themeBGColor,40%)!important;
 $datatableRowHoverBG : $hoverBGColor;
 $datatableRowHover : $themeColor!important; /**/
+$datatableRowActive : none;
 $datatableBorderSize : 1px;
 $datatableBorderColor : $themeColor;
 $datatableHeaderColor :$primaryColor;

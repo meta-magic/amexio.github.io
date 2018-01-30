@@ -147,6 +147,9 @@ $datatableBorderColor : $borderColor;
 $datatableHeaderColor : $primaryColor;
 $datatableHeaderBGColor : $primaryBGColor;
 $datatableOddRowColor : lighten($themeBGColor, 45);
+$datatableFontBold : none;
+$datatableRowHover : none;
+$datatableRowActive : none;
 
 @import "../mda/mda-common.scss";
 @import "../default/common.scss";

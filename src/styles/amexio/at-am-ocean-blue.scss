@@ -149,6 +149,8 @@ $datatableHeaderColor : $primaryBGColor!important;;
 $datatableHeaderBGColor : $primaryColor!important;;
 $datatableOddRowColor : lighten($defaultBGColor,40) !important;
 $datatableFontBold : "true";
+$datatableRowHover : none;
+$datatableRowActive : none;
 
 @import "../default/common.scss";
 @import "../default/amexio.components.scss";

@@ -143,6 +143,8 @@ $datatableHeaderColor : $themeBGColor!important;;
 $datatableHeaderBGColor : $themeColor!important;;
 $datatableOddRowColor : $themeBGColor;
 $datatableFontBold : "true";
+$datatableRowHover : none;
+$datatableRowActive : none;
 
 @import "../default/common.scss";
 @import "../default/amexio.components.scss";

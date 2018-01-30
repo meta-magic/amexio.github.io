@@ -223,7 +223,7 @@ button {
   border-color: #ced4da;
   color: black; }
 
-.button-secondary:hover {
+.button-secondary:hover:enabled {
   background-color: #e6e6e6; }
 
 .button-primary {
@@ -231,7 +231,7 @@ button {
   border-color: #D21F3C;
   color: white; }
 
-.button-primary:hover {
+.button-primary:hover:enabled {
   background-color: #a6182f; }
 
 .button-success {
@@ -239,7 +239,7 @@ button {
   border-color: #5cb85c;
   color: white; }
 
-.button-success:hover {
+.button-success:hover:enabled {
   background-color: #449d44; }
 
 .button-danger {
@@ -247,7 +247,7 @@ button {
   border-color: #d9534f;
   color: white; }
 
-.button-danger:hover {
+.button-danger:hover:enabled {
   background-color: #c9302c; }
 
 .button-warning {
@@ -255,7 +255,7 @@ button {
   border-color: #f0ad4e;
   color: white; }
 
-.button-warning:hover {
+.button-warning:hover:enabled {
   background-color: #ec971f; }
 
 /*----------------------------------------------------------------------*/
@@ -1188,10 +1188,13 @@ input:checked + .toggle-slider:before {
 
 .datatable .datatable-row:hover {
   background-color: #f7c6ce;
-  cursor: pointer; }
+  cursor: pointer;
+  color: none;
+  font-weight: bold; }
 
 .datatable .datatable-row-active {
-  background-color: #f09aa8; }
+  background-color: #f09aa8;
+  color: none; }
 
 .datatable .datatable-col {
   display: table-cell;
@@ -2180,11 +2183,20 @@ fieldset {
   cursor: pointer; }
 
 .step-box-table-item.active {
-  background-color: #D21F3C !important; }
+  background-color: #D21F3C !important;
+  cursor: not-allowed; }
 
 .step-box-table-item.disbaled {
   background-color: gray;
   cursor: not-allowed; }
+
+.index-step-inactive {
+  background-color: #f09aa8;
+  cursor: not-allowed; }
+
+.step-box-table-item-hover:hover {
+  background-color: #f09aa8;
+  cursor: pointer; }
 
 /*----------------------------------------------------------------------*/
 /*        TABL COMPONENT         */
@@ -2488,17 +2500,39 @@ fieldset {
   float: right;
   margin-left: 5px; }
 
-.panel {
+.panel-panel {
   padding: 0 18px;
   background-color: white;
   color: black;
-  max-height: 0;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   transition: max-height 0.2s ease-out; }
 
 .panel-box {
   border: 2px solid #D21F3C;
   width: 100%; }
+
+.panel-panel::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #F5F5F5; }
+
+.panel-panel::-webkit-scrollbar {
+  width: 6px;
+  background-color: #F5F5F5; }
+
+.panel-panel::-webkit-scrollbar-thumb {
+  background-color: #D21F3C; }
+
+.panel-header {
+  display: flex;
+  justify-content: space-between; }
+
+.custom-header {
+  display: flex;
+  vertical-align: middle; }
+
+.panel-icon {
+  padding-left: 5px; }
 
 /*----------------------------------------------------------------------*/
 /*        BORDER LAYOUT Media Q COMPONENT         */

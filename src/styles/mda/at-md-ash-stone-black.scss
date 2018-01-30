@@ -151,6 +151,9 @@ $datatableBorderColor : $borderColor;
 $datatableHeaderColor : $primaryColor;
 $datatableHeaderBGColor : $primaryBGColor;
 $datatableOddRowColor : #ECEFF1;
+$datatableFontBold : none;
+$datatableRowHover : none;
+$datatableRowActive : none;
 
 @import "../default/common.scss";
 @import "../default/amexio.components.scss";
