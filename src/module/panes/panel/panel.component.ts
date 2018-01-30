@@ -66,7 +66,11 @@ export class AmexioPanelComponent implements OnInit {
     if (!this.header){
       this.expanded = true;
     }
-    this.iconclassKey = 'fa fa-caret-down';
+    if (this.expanded) {
+      this.iconclassKey = 'fa fa-caret-up';
+    } else {
+      this.iconclassKey = 'fa fa-caret-down';
+    }
     if(this.height){
       this.height = this.height;
     }
