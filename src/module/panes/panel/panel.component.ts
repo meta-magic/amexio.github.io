@@ -21,22 +21,25 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
     <div class="panel-box">
       <ng-container *ngIf="header">
         <div class="panel-accordion" #btn1 >
-          <ng-container *ngIf="customheader; else elseBolck">
-            <header
-              [ngClass]="{'flex-start':(headeralign=='left'),'flex-end':(headeralign=='right'),'flex-center':(headeralign=='center')}">
-              <ng-content select="amexio-header"></ng-content>
-              <div style="float: right" (click)="onTabClick(btn1)"><i [class]="iconclassKey" aria-hidden="true"></i></div>
-            </header>
+          <ng-container *ngIf="customheader">
+            <div class="panel-header">
+              {{title}}
+              <div class="custom-header">
+                <ng-content select="amexio-header"></ng-content>
+                <div class="panel-icon" (click)="onTabClick(btn1)">
+                  <i [class]="iconclassKey" aria-hidden="true"></i>
+                </div>
+              </div>
+            </div>
           </ng-container>
-          <ng-template #elseBolck>
-            {{title}}
-            <div style="float: right" (click)="onTabClick(btn1)"><i [class]="iconclassKey" aria-hidden="true"></i></div>
-          </ng-template>
         </div>
       </ng-container>
-      <div class="panel" [style.max-height.px]="height">
-        <ng-content></ng-content>
-      </div>
+      <ng-container *ngIf="expanded">
+        <div class="panel-panel" [style.max-height.px]="height">
+          <ng-content></ng-content>
+        </div>
+      </ng-container>
+
     </div>
 
   `
@@ -58,18 +61,15 @@ export class AmexioPanelComponent implements OnInit {
 
   iconclassKey: string;
 
-  isExpanded: boolean;
 
   ngOnInit() {
-    this.isExpanded = this.expanded;
-    this.iconclassKey = 'fa fa-caret-down';
-    if (!this.header && this.height == null) {
-      this.height = 200;
+    if (!this.header){
+      this.expanded = true;
     }
+    this.iconclassKey = 'fa fa-caret-down';
     if(this.height){
       this.height = this.height;
     }
-
   }
 
   onTabClick(btn: any) {
@@ -80,13 +80,8 @@ export class AmexioPanelComponent implements OnInit {
     } else if (this.iconclassKey == 'fa fa-caret-up') {
       this.iconclassKey = 'fa fa-caret-down';
     }
-    if (panel.style.maxHeight) {
-      this.height = null;
-      panel.style.maxHeight = null;
-    } else {
-      panel.style.maxHeight = panel.scrollHeight + 'px';
-    }
 
+    this.expanded = !this.expanded;
     this.onClick.emit()
   }
 
