@@ -96,6 +96,6 @@
 
 //Step Box inactive hover effect
 .step-box-table-item-hover:hover{
-  background-color: lighten($dockBarInActiveBGColor,30%);
+  background-color: lighten($stepsInActiveBGColor,30%);
   cursor: pointer;
 }
