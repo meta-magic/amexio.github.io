@@ -131,6 +131,7 @@ button {
 
 
 .button-dropdown {
+  position: absolute;
   padding: .5rem 1rem;
   font-size: 1rem;
   border: $borderSize solid $borderColor;
