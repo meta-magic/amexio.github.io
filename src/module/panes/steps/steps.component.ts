@@ -27,9 +27,12 @@ import {StepBlockComponent} from "./step-block";
     <div class="stepwizard" *ngIf="(icon && !index && !block)">
       <div class="stepwizard-row setup-panel" >
         <div *ngFor="let stepBlock of stepBlockArray; let i = index" class="stepwizard-step" >
-
-          <ng-container *ngIf="stepBlock.icon">
+ 
+          <ng-container *ngIf="stepBlock.icon && stepBlock.active">
             <amexio-pane-icon [customclass]="stepBlock.icon" (onClick)="onStepClick(stepBlock,$event)"></amexio-pane-icon>
+          </ng-container>
+          <ng-container *ngIf="stepBlock.icon && !stepBlock.active">
+            <amexio-pane-icon style="color: #666;" [customclass]="stepBlock.icon" (onClick)="onStepClick(stepBlock,$event)"></amexio-pane-icon>
           </ng-container>
           <ng-container *ngIf="stepBlock.icon=='' || !stepBlock.icon">
             <br>
