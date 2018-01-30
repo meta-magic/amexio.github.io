@@ -1,3 +1,6 @@
+/*----------------------------------------------------------------------*/
+/*        STEPS COMPONENT         */
+/*----------------------------------------------------------------------*/
 
 .step-label-highlight {
   color: $stepsLabelHighlight;
@@ -30,14 +33,27 @@
   text-align: center;
   position: relative;
 }
+
 .btn-circle {
-  width: 30px;
-  height: 30px;
   text-align: center;
-  padding: 6px 0;
+  vertical-align: middle;
   font-size: 12px;
-  line-height: 1.428571429;
-  border-radius: 15px;
+  border-radius: 50%;
+
+  display: inline-block;
+  font-weight: 400;
+  line-height: 1.25;
+
+  white-space: nowrap;
+  outline: none;
+  user-select: none;
+  border: 1px solid $borderColor;
+  transition: all .2s ease-in-out;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+
 }
 
 
@@ -60,6 +76,7 @@
   border: 1px solid $stepsBorderColor;
   font-weight: bolder;
   padding-top: 5px;
+  cursor: pointer;
 }
 
 .step-box-table-item.active{

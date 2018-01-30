@@ -8,10 +8,10 @@ import {StepBlockComponent} from "./step-block";
   selector: 'amexio-steps', template: `
     <div class="stepwizard" *ngIf="(index && !block && !icon)">
       <div class="stepwizard-row setup-panel">
-        <div *ngFor="let stepBlock of stepBlockArray; let i = index" class="stepwizard-step">
+        <div *ngFor="let stepBlock of stepBlockArray; let i = index" class="stepwizard-step" (click)="onStepClick(stepBlock,$event)">
           <button type="button" [ngClass]="{'disabled':!stepBlock.active,'active':stepBlock.active}"
                   class="btn-circle button button-primary"
-                  (click)="onStepClick(stepBlock,$event)">{{i + 1}}
+                  >{{i + 1}}
           </button>
           <ng-container *ngIf="stepBlock.label && !stepBlock.active">
             <p>{{stepBlock.label}}</p>

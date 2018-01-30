@@ -12,7 +12,6 @@ import {DomSanitizer} from "@angular/platform-browser";
       </span>
       <div class="text-center">
         <iframe [height]="height" width="98%"
-                style="position: absolute; top: 0; right: 0; bottom: 0; left: 0;padding-top: 30px;padding-left: 30px"
                 [src]="sanitizedUrl" frameborder="0"
                 allowfullscreen>
         </iframe>

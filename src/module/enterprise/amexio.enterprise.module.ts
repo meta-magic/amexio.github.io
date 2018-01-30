@@ -33,7 +33,8 @@ const ENTERPRISE_COMPONENTS = [
     AmexioFormsModule
   ],
   exports: ENTERPRISE_COMPONENTS,
-  declarations: ENTERPRISE_COMPONENTS
+  declarations: ENTERPRISE_COMPONENTS,
+  providers : [CommonDataService,DeviceQueryService]
 })
 export class AmexioEnterpriseModule {
   static forRoot(): ModuleWithProviders {

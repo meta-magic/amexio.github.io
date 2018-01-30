@@ -32,16 +32,24 @@ import {AmexioGridColumnComponent} from "../datagrid/data.grid.column";
     <div class="datatable">
       <div class="datatable-header">
         <ng-container *ngFor="let cols of columns;let i = index">
-          <div class="datatable-col" [ngClass]="{'header' : i == 0}"> {{cols.text}}</div>
+          <ng-container *ngIf="cols.datatype=='string'">
+            <div class="datatable-col" [ngClass]="{'header' : i == 0}"> {{cols.text}}</div>
+          </ng-container>
+          <ng-container *ngIf="cols.datatype=='number'">
+            <span style="float: right">
+               <div class="datatable-col" [ngClass]="{'header' : i == 0}"> {{cols.text}}</div>
+            </span>
+          </ng-container>
         </ng-container>
       </div>
     </div>
 
     <div class="datatable">
       <div class="datatable-row" *ngFor="let row of viewRows;let i=index" (click)="setSelectedRow(row, $event)">
-
-        <div class="datatable-col" *ngFor="let cols of columns;let colIndex = index">
-          <ng-container *ngIf="colIndex == 0">
+        <ng-container *ngFor="let cols of columns;let colIndex = index">
+          <ng-container *ngIf="cols.datatype=='string'">
+            <div class="datatable-col" >
+              <ng-container *ngIf="colIndex == 0">
               <span [ngStyle]="{'padding-left':(20*row.level)+'px'}">
                     
                 <!--<i *ngIf="!row.expanded && row.children" class="fa fa-plus" aria-hidden="true" (click)="toogle(row,i)"></i>-->
@@ -55,12 +63,42 @@ import {AmexioGridColumnComponent} from "../datagrid/data.grid.column";
                 </ng-container>
                      {{row[cols.dataindex]}}
                </span>
-          </ng-container>
+              </ng-container>
 
-          <ng-container *ngIf="colIndex > 0">
-            {{row[cols.dataindex]}}
+              <ng-container *ngIf="colIndex > 0">
+                {{row[cols.dataindex]}}
+              </ng-container>
+            </div>
           </ng-container>
-        </div>
+          <ng-container *ngIf="cols.datatype=='number'">
+            <span style="float: right">
+               <div class="datatable-col" >
+              <ng-container *ngIf="colIndex == 0">
+              <span [ngStyle]="{'padding-left':(20*row.level)+'px'}">
+                    
+                <!--<i *ngIf="!row.expanded && row.children" class="fa fa-plus" aria-hidden="true" (click)="toogle(row,i)"></i>-->
+                <ng-container *ngIf="!row.expanded && row.children">
+                  <amexio-data-icon key="tree_collapse" (onClick)="toogle(row,i)"></amexio-data-icon>
+                </ng-container>
+
+                <!--<i *ngIf="row.expanded && row.children" class="fa fa-minus" aria-hidden="true" (click)="toogle(row,i)"></i>-->
+                <ng-container *ngIf="row.expanded && row.children">
+                  <amexio-data-icon key="tree_expand" (onClick)="toogle(row,i)"></amexio-data-icon>
+                </ng-container>
+                     {{row[cols.dataindex]}}
+               </span>
+              </ng-container>
+
+              <ng-container *ngIf="colIndex > 0">
+                {{row[cols.dataindex]}}
+              </ng-container>
+            </div>
+            </span>
+           
+          </ng-container>
+        </ng-container>
+       
+       
       </div>
     </div>
 

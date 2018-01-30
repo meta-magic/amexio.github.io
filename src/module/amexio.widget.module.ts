@@ -33,7 +33,8 @@ export * from './services/icon/icon.mapping.config';
     AmexioMediaModule,
     AmexioPaneModule
   ],
-  declarations: []
+  declarations: [],
+  providers : [CommonDataService,DeviceQueryService,IconLoaderService]
 })
 export class AmexioWidgetModule {
   static forRoot(): ModuleWithProviders {

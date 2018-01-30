@@ -1,4 +1,8 @@
 
+/*----------------------------------------------------------------------*/
+/*        MENU COMPONENT         */
+/*----------------------------------------------------------------------*/
+
 .menu-right{
   right:10px;
 }
@@ -55,7 +59,7 @@
   display: none;
   background: $subMenuCotentBGColor;
   padding: 10px;
-  position: absolute;
+  position: fixed;
   z-index: 99;
   box-shadow: 0 0 5px 0 $borderColor;
 }
@@ -125,47 +129,9 @@
   color: $menuHoverColor;
 }
 
-@media only screen and (max-width: 959px) {
-  .menu-content .menu-content-cols .col-menu-nodes{
-    width: 100%;
-  }
-
-  .menu-content{
-    width:100%;
-  }
-  .menubar  .menuheader .menulink {
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    border-bottom: 1px solid $borderColor;
-
-  }
-  .menubar  .menuheader .menulink a {
-    //width: 100%;
-  }
-
-  .menu-content .menu-content-cols{
-    width: 100%;
-    padding: 0px;
-  }
-
-  .menu-content .menu-content-cols .col-menu-nodes{
-    width: 100%;
-  }
-
-
-  .menubar .menuheader .menulink:hover {
-    display: block;
-    .menu-content{
-      display: none;
-    }
-    a{
-      color: $menuHoverColor;
-    }
-  }
-}
-
+/**************************************************************************/
 /**Dockbar **/
+/**************************************************************************/
 .amexio-dockbar-item-close-bar{
   font-size: 24px;
   float: right;

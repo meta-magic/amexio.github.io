@@ -185,7 +185,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
 
     <ng-container *ngIf="groupby && !enabledatafilter">
       <div class="datatable-height" [style.height.px]="height">
-        <div class="datatable"  style="table-layout: auto">
+        <div class="datatable">
           <div class="datatable-row"  *ngFor="let row of viewRows;let i=index" id="{{'row'+i}}" (click)="onRowClick(row, i, rowData)" #rowData>
             <ng-container *ngIf="enablecheckbox">
               <div class="datatable-col datatable-checkbox-width">
@@ -217,16 +217,35 @@ import {CommonDataService} from "../../services/data/common.data.service";
                 </div>
               </ng-container>
               <ng-container *ngIf="!isGroupChecking(row)">
-                <div class="datatable-col" [style.width.%]="cols.width"  [attr.data-label]="cols.text">
-                  <ng-container *ngIf="colIndex == 0">
+                <ng-container *ngIf="cols.datatype=='string'">
+                  <div class="datatable-col" [style.width.%]="cols.width"  [attr.data-label]="cols.text">
+                    <ng-container *ngIf="colIndex == 0">
                    <span style="padding-left: 20px">
                      {{row[cols.dataindex]}}
                    </span>
-                  </ng-container>
-                  <ng-container *ngIf="colIndex != 0">
-                    {{row[cols.dataindex]}}
-                  </ng-container>
-                </div>
+                    </ng-container>
+                    <ng-container *ngIf="colIndex != 0">
+                      {{row[cols.dataindex]}}
+                    </ng-container>
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="cols.datatype=='number'">
+                  
+                  <div class="datatable-col" [style.width.%]="cols.width"  [attr.data-label]="cols.text">
+                       
+                    <ng-container *ngIf="colIndex == 0">
+                      <span style="padding-left: 20px">
+                        {{row[cols.dataindex]}}
+                       </span>
+                    </ng-container>
+                    <ng-container *ngIf="colIndex != 0">
+                      <span class="float-right">{{row[cols.dataindex]}}</span>
+                    </ng-container>
+                       
+                  </div>
+                 
+                </ng-container>
+                
               </ng-container>
             </ng-container>
           </div>

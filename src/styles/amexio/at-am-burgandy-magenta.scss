@@ -138,19 +138,12 @@ $stepsDisabled : lighten($menubarColor,50%);
 @import "../default/amexio.layouts.scss";
 @import "../default/amexio.nav.scss";
 @import "../default/amexio.panes.scss";
-
-
-
-
+@import "../default/amexio.media.query.scss";
 
 body {
   font-family: Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
   background-image:url('/assets/images/theme/bootstrap/polygon_bg.jpg');
 }
-
-
-
-
 
 /*----------------------------------------------------------------------*/
 /*        INPUT/LABEL/A/BUTTON/DROPDOWN COMPONENT         */
@@ -250,14 +243,14 @@ button.app-button {
 
 
 .datatable .datatable-row:hover{
-  background-color: lighten($themeColor,70);
+  background-color: lighten($themeColor,50);
   color: $themeColor!important;
   font-weight: bold;
 }
 
 .datatable .datatable-row-active{
-  background-color: $themeColor;
-  color: $themeBGColor!important;
+  background-color: lighten($datapointColor,50);
+  color: $datapointColor!important;
 }
 
 
@@ -319,9 +312,9 @@ button.app-button {
   font-size: 24px;
   font-weight: bold;
 }
-
-
-
+.datapoints-issue{
+  padding: 10px;
+}
 
 .listbox {
   //border:none;
@@ -417,10 +410,6 @@ button.app-button {
   background: $defaultColor;
 }
 
-
-
-
-
 .image-responsive{
   max-width: 100%;
   width: 100%;
@@ -441,15 +430,6 @@ button.app-button {
   max-width: 79.1666635%;
 }
 
-@media only screen and (max-width: 1024px) {
-
-  .flex-col-2pt5,.flex-col-9pt5{
-    flex: 1 1 100%;
-    max-width: 100%;
-  }
-}
-
-
 .email {
   //border: $borderSize solid $cardBorderColor;
   background-color:  rgba(255, 255, 255, 0.8);
@@ -469,7 +449,6 @@ button.app-button {
   }
 }
 
-
 div.profile-image img {
   width: 50px;
   height: 50px;
@@ -477,8 +456,7 @@ div.profile-image img {
   vertical-align: middle;
 }
 
-div.profile-image a{
+div.profile-image a {
   text-transform: capitalize;
   color: $datapointColor;
 }
-

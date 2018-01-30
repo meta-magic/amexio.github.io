@@ -48,7 +48,8 @@ const NAV_COMPONENTS = [
     AmexioLayoutModule
   ],
   exports: NAV_COMPONENTS,
-  declarations: NAV_COMPONENTS
+  declarations: NAV_COMPONENTS,
+  providers: [CommonDataService,DeviceQueryService,IconLoaderService]
 })
 export class AmexioNavModule {
   static forRoot(): ModuleWithProviders {

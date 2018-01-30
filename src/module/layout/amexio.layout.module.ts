@@ -48,7 +48,7 @@ const LAYOUT_COMPONENTS = [
   ],
   exports: LAYOUT_COMPONENTS,
   declarations: LAYOUT_COMPONENTS,
-  providers : [AccordionService]
+  providers : [AccordionService,CommonDataService,DeviceQueryService]
 })
 export class AmexioLayoutModule {
   static forRoot(): ModuleWithProviders {

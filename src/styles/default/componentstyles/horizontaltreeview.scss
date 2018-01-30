@@ -1,4 +1,8 @@
 
+/*----------------------------------------------------------------------*/
+/*        HORIZONTAL TREE COMPONENT         */
+/*----------------------------------------------------------------------*/
+
 
 $horizontalnodecolor: #cccccc;
 $horizontalnode-gutter: 100px;
@@ -102,6 +106,10 @@ $horizontalnode-label-border-radius: 5px;
   margin-top: -($horizontalnode-label-height / 2);
   background-color: $horizontalnodecolor;
   cursor: pointer;
+
+  span{
+    padding-right: 5px;
+  }
 }
 
 .horizontaltreeview-node-label:hover{

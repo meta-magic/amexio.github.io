@@ -41,7 +41,8 @@ const DASHBOARD = [
     HttpModule
   ],
   exports: DASHBOARD,
-  declarations: DASHBOARD
+  declarations: DASHBOARD,
+  providers: [CommonDataService,DashboardLoaderService]
 })
 export class AmexioDashBoardModule {
   static forRoot(): ModuleWithProviders {
