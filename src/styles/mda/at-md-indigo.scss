@@ -140,6 +140,14 @@ $rippleSuccessColor: $successBGColor;
 $rippleDangerColor : $dangerBGColor;
 $rippleWarningColor : $warningBGColor;
 
+$datatableRowActiveBG : lighten($primaryBGColor,15%);
+$datatableRowHoverBG : lighten($primaryBGColor,20%);
+$datatableBorderSize : $borderSize;
+$datatableBorderColor : $borderColor;
+$datatableHeaderColor : $primaryColor;
+$datatableHeaderBGColor : $primaryBGColor;
+$datatableOddRowColor : #E8EAF6;
+
 @import "../mda/mda-common.scss";
 @import "../default/common.scss";
 @import "../default/amexio.components.scss";
@@ -231,45 +239,45 @@ button.app-button {
   background-color: lighten($primaryBGColor,30%);
 }
 
-
-
-.datatable .datatable-row{
-  height: 50px;
-}
-
-.datatable .datatable-header .datatable-col{
-  //height: 50px;
-  font-weight: 500;
-}
-
-.datatable .datatable-header{
-  background-color: darken($backgroundcolor,5%);
-  font-size: larger;
-}
-
-.datatable .datatable-col{
-  vertical-align: middle;
-}
-
-.datatable .datatable-row{
-  height: 50px;
-}
-
-
-.datatable .datatable-header{
-  background-color: $primaryBGColor;
-  font-size: larger;
-  color: $primaryColor;
-}
-
-.datatable .datatable-col{
-  vertical-align: middle;
-}
-
-
-.datatable-row:nth-child(odd){
-  background-color: #E8EAF6;
-}
+//
+//
+// .datatable .datatable-row{
+//   height: 50px;
+// }
+//
+// .datatable .datatable-header .datatable-col{
+//   //height: 50px;
+//   font-weight: 500;
+// }
+//
+// .datatable .datatable-header{
+//   background-color: darken($backgroundcolor,5%);
+//   font-size: larger;
+// }
+//
+// .datatable .datatable-col{
+//   vertical-align: middle;
+// }
+//
+// .datatable .datatable-row{
+//   height: 50px;
+// }
+//
+//
+// .datatable .datatable-header{
+//   background-color: $primaryBGColor;
+//   font-size: larger;
+//   color: $primaryColor;
+// }
+//
+// .datatable .datatable-col{
+//   vertical-align: middle;
+// }
+//
+//
+// .datatable-row:nth-child(odd){
+//   background-color: #E8EAF6;
+// }
 
 .datapoints{
   .datapoints{
@@ -343,15 +351,6 @@ button.app-button {
 }
 
 
-.flex-col-2pt5{
-  flex: 1 1 20.8333325%;
-  max-width: 20.8333325%;
-}
-
-.flex-col-9pt5{
-  flex: 1 1 79.1666635%;
-  max-width: 79.1666635%;
-}
 
 .email {
   background-color: white;

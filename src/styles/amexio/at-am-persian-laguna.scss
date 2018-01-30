@@ -137,6 +137,18 @@ $stepsLabelHighlight : darken($defaultColor, 30);
 $stepsBorderColor:$borderColor;
 $stepsDisabled : lighten($menubarColor,50%);
 
+
+$datatableRowActiveBG : rgba(66, 31, 38, 0.4)!important;
+$datatableRowHoverBG : lighten(rgba(66, 31, 38, 0.4),20)!important;
+$datatableRowHover : #043963!important; /**/
+$datatableRowActive : #043963!important; /**/
+$datatableBorderSize : 1px;
+$datatableBorderColor : $themeColor;
+$datatableHeaderColor : $themeBGColor!important;;
+$datatableHeaderBGColor : $themeColor!important;;
+$datatableOddRowColor : none;
+$datatableFontBold : "true";
+
 @import "../default/common.scss";
 @import "../default/amexio.components.scss";
 @import "../default/amexio.data.scss";
@@ -238,59 +250,59 @@ button.app-button {
   color: $borderColor;
 }
 
-
-
-.datatable {
-  display: table;
-  border: none;
-}
-
-.datatable .datatable-row{
-  height: 50px;
-  border: none;
-  border-bottom: 1px solid $themeColor;
-}
-
-.datatable .datatable-header .datatable-col{
-  //height: 50px;
-  font-weight: 500;
-}
-
-.datatable .datatable-header{
-  color: #043963!important;
-  background-color: rgba(66, 31, 38, 0.4)!important;
-}
-
-.datatable .datatable-row:hover{
-  color: #043963!important;
-  background-color: rgba(66, 31, 38, 0.4)!important;
-  font-weight: bold;
-}
-
-.datatable .datatable-row-active{
-  color: #043963!important;
-  background-color: rgba(66, 31, 38, 0.4)!important;
-}
-
-
-
-
-.datatable-row:nth-child(odd){
-  background:none;
-
-}
-
-
-
-
-.datatable .datatable-col{
-  vertical-align: middle;
-}
-
-.datatable .datatable-row{
-  height: 50px;
-}
-
+//
+//
+// .datatable {
+//   display: table;
+//   border: none;
+// }
+//
+// .datatable .datatable-row{
+//   height: 50px;
+//   border: none;
+//   border-bottom: 1px solid $themeColor;
+// }
+//
+// .datatable .datatable-header .datatable-col{
+//   //height: 50px;
+//   font-weight: 500;
+// }
+//
+// .datatable .datatable-header{
+//   color: #043963!important;
+//   background-color: rgba(66, 31, 38, 0.4)!important;
+// }
+//
+// .datatable .datatable-row:hover{
+//   color: #043963!important;
+//   background-color: rgba(66, 31, 38, 0.4)!important;
+//   font-weight: bold;
+// }
+//
+// .datatable .datatable-row-active{
+//   color: #043963!important;
+//   background-color: rgba(66, 31, 38, 0.4)!important;
+// }
+//
+//
+//
+//
+// .datatable-row:nth-child(odd){
+//   background:none;
+//
+// }
+//
+//
+//
+//
+// .datatable .datatable-col{
+//   vertical-align: middle;
+// }
+//
+// .datatable .datatable-row{
+//   height: 50px;
+// }
+//
 
 .datatable .datatable-header{
   background-color: $primaryBGColor;
@@ -458,17 +470,6 @@ button.app-button {
   border-bottom: 1px solid #1b1d22;
   margin-top: 10px;
   margin-bottom: 10px;
-}
-
-
-.flex-col-2pt5{
-  flex: 1 1 20.8333325%;
-  max-width: 20.8333325%;
-}
-
-.flex-col-9pt5{
-  flex: 1 1 79.1666635%;
-  max-width: 79.1666635%;
 }
 
 .email {

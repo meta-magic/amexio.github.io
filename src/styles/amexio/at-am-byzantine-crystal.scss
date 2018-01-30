@@ -9,9 +9,7 @@ $oppColor: $defaultBGColor;
 
 
 $backgroundcolor: $defaultBGColor;
-
 $componentBGColor: $backgroundcolor;
-
 
 $themeBGColor :  $defaultBGColor;
 $themeColor :    $defaultColor;
@@ -133,6 +131,17 @@ $stepsBorderColor:$borderColor;
 $stepsDisabled : lighten($menubarColor,50%);
 
 
+$datatableRowActiveBG : lighten($datapointColor,50);
+$datatableRowHoverBG : lighten($themeColor,50);
+$datatableRowHover : $themeColor!important; /**/
+$datatableRowActive : $datapointColor!important; /**/
+$datatableBorderSize : 2px;
+$datatableBorderColor : #666666;
+$datatableHeaderColor : $primaryColor;
+$datatableHeaderBGColor : $primaryBGColor;
+$datatableOddRowColor : lighten($themeColor,70) !important;
+$datatableFontBold : "true";
+
 @import "../default/common.scss";
 @import "../default/amexio.components.scss";
 @import "../default/amexio.data.scss";
@@ -231,63 +240,63 @@ button.app-button {
 }
 
 
-
-.datatable .datatable-row{
-  height: 50px;
-  border-top: none;
-  border-bottom: 2px solid #666666;
-}
-
-.datatable .datatable-header .datatable-col{
-  //height: 50px;
-  font-weight: 500;
-}
-
-.datatable .datatable-header{
-  background-color: $themeBGColor!important;
-  font-size: larger;
-  color: $themeColor!important;
-}
-
-.datatable .datatable-row:hover{
-  background-color: lighten($themeColor,50);
-  color: $themeColor!important;
-  font-weight :bold;
-}
-
-.datatable .datatable-row-active{
-  background-color: lighten($datapointColor,50);
-  color: $datapointColor!important;
-}
-
-
-
-
-.datatable-row:nth-child(odd){
-  background-color: lighten($themeColor,70) !important;
-
-}
-
-
-
-
-.datatable .datatable-col{
-  vertical-align: middle;
-}
-
-.datatable .datatable-row{
-  height: 50px;
-}
-
-.datatable .datatable-header{
-  background-color: $primaryBGColor;
-  font-size: larger;
-  color: $primaryColor;
-}
-
-.datatable .datatable-col{
-  vertical-align: middle;
-}
+//
+// .datatable .datatable-row{
+//   height: 50px;
+//   border-top: none;
+//   border-bottom: 2px solid #666666;
+// }
+//
+// .datatable .datatable-header .datatable-col{
+//   //height: 50px;
+//   font-weight: 500;
+// }
+//
+// .datatable .datatable-header{
+//   background-color: $themeBGColor!important;
+//   font-size: larger;
+//   color: $themeColor!important;
+// }
+//
+// .datatable .datatable-row:hover{
+//   background-color: lighten($themeColor,50);
+//   color: $themeColor!important;
+//   font-weight :bold;
+// }
+//
+// .datatable .datatable-row-active{
+//   background-color: lighten($datapointColor,50);
+//   color: $datapointColor!important;
+// }
+//
+//
+//
+//
+// .datatable-row:nth-child(odd){
+//   background-color: lighten($themeColor,70) !important;
+//
+// }
+//
+//
+//
+//
+// .datatable .datatable-col{
+//   vertical-align: middle;
+// }
+//
+// .datatable .datatable-row{
+//   height: 50px;
+// }
+//
+// .datatable .datatable-header{
+//   background-color: $primaryBGColor;
+//   font-size: larger;
+//   color: $primaryColor;
+// }
+//
+// .datatable .datatable-col{
+//   vertical-align: middle;
+// }
 
 
 
@@ -417,17 +426,6 @@ button.app-button {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-
-.flex-col-2pt5{
-  flex: 1 1 20.8333325%;
-  max-width: 20.8333325%;
-}
-
-.flex-col-9pt5{
-  flex: 1 1 79.1666635%;
-  max-width: 79.1666635%;
-}
-
 
 
 .email {

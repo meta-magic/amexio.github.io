@@ -142,6 +142,14 @@ $rippleSuccessColor: $successBGColor;
 $rippleDangerColor : $dangerBGColor;
 $rippleWarningColor : $warningBGColor;
 
+$datatableRowActiveBG : lighten($primaryBGColor,30%);
+$datatableRowHoverBG : lighten($primaryBGColor,40%);
+$datatableBorderSize : $borderSize;
+$datatableBorderColor : $borderColor;
+$datatableHeaderColor : $primaryColor;
+$datatableHeaderBGColor : $primaryBGColor;
+$datatableOddRowColor : #ECEFF1;
+
 @import "../mda/mda-common.scss";
 @import "../default/common.scss";
 @import "../default/amexio.components.scss";
@@ -222,53 +230,53 @@ button.app-button {
   color: $borderColor;
 }
 
-
-
-.datatable .datatable-row:hover{
-  background-color: lighten($primaryBGColor,40%);
-  cursor: pointer;
-}
-
-.datatable .datatable-row-active{
-  background-color: lighten($primaryBGColor,30%);
-}
-
-
-
-.datatable .datatable-row{
-  height: 50px;
-}
-
-.datatable .datatable-header .datatable-col{
-  //height: 50px;
-  font-weight: 500;
-}
-
-.datatable .datatable-header{
-  background-color: darken($backgroundcolor,5%);
-  font-size: larger;
-}
-
-.datatable .datatable-col{
-  vertical-align: middle;
-}
-
-.datatable .datatable-row{
-  height: 50px;
-}
-
-
-.datatable .datatable-header{
-  background-color: $primaryBGColor;
-  font-size: larger;
-  color: $primaryColor;
-}
-
-.datatable .datatable-col{
-  vertical-align: middle;
-}
-
-
+//
+//
+// .datatable .datatable-row:hover{
+//   background-color: lighten($primaryBGColor,40%);
+//   cursor: pointer;
+// }
+//
+// .datatable .datatable-row-active{
+//   background-color: lighten($primaryBGColor,30%);
+// }
+//
+//
+//
+// .datatable .datatable-row{
+//   height: 50px;
+// }
+//
+// .datatable .datatable-header .datatable-col{
+//   //height: 50px;
+//   font-weight: 500;
+// }
+//
+// .datatable .datatable-header{
+//   background-color: darken($backgroundcolor,5%);
+//   font-size: larger;
+// }
+//
+// .datatable .datatable-col{
+//   vertical-align: middle;
+// }
+//
+// .datatable .datatable-row{
+//   height: 50px;
+// }
+//
+//
+// .datatable .datatable-header{
+//   background-color: $primaryBGColor;
+//   font-size: larger;
+//   color: $primaryColor;
+// }
+//
+// .datatable .datatable-col{
+//   vertical-align: middle;
+// }
+//
+//
 
 .datapoints{
   .datapoints{
@@ -342,16 +350,6 @@ button.app-button {
   margin-bottom: 10px;
 }
 
-
-.flex-col-2pt5{
-  flex: 1 1 20.8333325%;
-  max-width: 20.8333325%;
-}
-
-.flex-col-9pt5{
-  flex: 1 1 79.1666635%;
-  max-width: 79.1666635%;
-}
 
 .email {
   background-color: white;

@@ -130,6 +130,15 @@ $stepsLabelHighlight : darken($defaultColor, 30);
 $stepsBorderColor:$borderColor;
 $stepsDisabled : lighten($menubarColor,50%);
 
+$datatableRowActiveBG : $primaryBGColor;
+$datatableRowHoverBG : lighten($primaryBGColor,20%);
+$datatableBorderSize : 1px;
+$datatableBorderColor : #eceeef;
+$datatableHeaderColor : $themeBGColor!important;;
+$datatableHeaderBGColor : $themeColor!important;;
+$datatableOddRowColor : lighten($primaryBGColor,40%);
+$datatableFontBold : "true";
+
 @import "../default/common.scss";
 @import "../default/amexio.components.scss";
 @import "../default/amexio.data.scss";
@@ -234,64 +243,64 @@ button.app-button {
 }
 
 
-
-
-.datatable {
-  display: table;
-  border: none;
-  margin-bottom: 2px;
-  .datatable-col{
-    border: 1px solid #eceeef;
-  }
-}
-
-
-.datatable .datatable-header{
-  background-color: white;
-  font-size: larger;
-
-}
-
-.datatable .datatable-row{
-  height: 50px;
-  border:none!important;
-
-}
-
-.datatable .datatable-row:hover{
-  //color: $themeBGColor;
-  background-color: lighten($primaryBGColor,20%);
-  font-weight: bold;
-}
-
-.datatable .datatable-row-active{
-
-  background-color: $primaryBGColor;
-}
-
-
-.datatable-row:nth-child(odd){
-  background:lighten($primaryBGColor,40%);
-}
-
-
-.datatable .datatable-col{
-  vertical-align: middle;
-}
-
-.datatable .datatable-row{
-  height: 50px;
-}
-
-.datatable .datatable-header .datatable-col{
-  //height: 50px;
-  font-weight: 500;
-}
-
-.datatable .datatable-col{
-  vertical-align: middle;
-}
-
+//
+//
+// .datatable {
+//   display: table;
+//   border: none;
+//   margin-bottom: 2px;
+//   .datatable-col{
+//     border: 1px solid #eceeef;
+//   }
+// }
+//
+//
+// .datatable .datatable-header{
+//   background-color: white;
+//   font-size: larger;
+//
+// }
+//
+// .datatable .datatable-row{
+//   height: 50px;
+//   border:none!important;
+//
+// }
+//
+// .datatable .datatable-row:hover{
+//   //color: $themeBGColor;
+//   background-color: lighten($primaryBGColor,20%);
+//   font-weight: bold;
+// }
+//
+// .datatable .datatable-row-active{
+//
+//   background-color: $primaryBGColor;
+// }
+//
+//
+// .datatable-row:nth-child(odd){
+//   background:lighten($primaryBGColor,40%);
+// }
+//
+//
+// .datatable .datatable-col{
+//   vertical-align: middle;
+// }
+//
+// .datatable .datatable-row{
+//   height: 50px;
+// }
+//
+// .datatable .datatable-header .datatable-col{
+//   //height: 50px;
+//   font-weight: 500;
+// }
+//
+// .datatable .datatable-col{
+//   vertical-align: middle;
+// }
+//
 
 
 .datapoints{
@@ -434,16 +443,6 @@ button.app-button {
   margin-bottom: 10px;
 }
 
-
-.flex-col-2pt5{
-  flex: 1 1 20.8333325%;
-  max-width: 20.8333325%;
-}
-
-.flex-col-9pt5{
-  flex: 1 1 79.1666635%;
-  max-width: 79.1666635%;
-}
 
 .email {
   border: $borderSize solid $cardBorderColor;

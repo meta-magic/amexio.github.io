@@ -10,7 +10,7 @@
 
 .datatable {
   display: table;
-  border: $borderSize solid $borderColor;
+  border: $datatableBorderSize solid $datatableBorderColor;
   border-collapse: collapse;
   margin: 0;
   padding: 0;
@@ -52,25 +52,52 @@
 
 .datatable .datatable-header{
   display: table-header-group;
-  background-color: #ced4da;
+  background-color: $datatableHeaderBGColor;
   text-align: left;
+  color : $datatableHeaderColor;
+  font-size: larger;
   cursor: pointer;
+}
+.datatable .datatable-col{
+  vertical-align: middle;
 }
 
 
 .datatable .datatable-row{
-  border: $borderSize solid $borderColor;
+  border: $datatableBorderSize solid $datatableBorderColor;
   display: table-row;
+  height: 50px;
 }
 
 
 .datatable .datatable-row:hover{
-  background-color: lighten($themeColor,40%);
+  background-color: $datatableRowHoverBG;
   cursor: pointer;
+  @mixin for_row_hover() {
+  $datatableRowHover: false !default;
+
+    @if $datatableRowHover {
+      color: $datatableRowHover;
+    }
+  }
+  @mixin for_row_bold() {
+  $datatableFontBold: false !default;
+
+    @if $datatableFontBold {
+      font-weight :bold;
+    }
+  }
 }
 
 .datatable .datatable-row-active{
-  background-color: lighten($themeColor,40%);
+  background-color: $datatableRowActiveBG;
+  @mixin for_row_active() {
+  $datatableRowActive: false !default;
+
+    @if $datatableRowActive {
+      color: $datatableRowActive;
+    }
+  }
 }
 
 .datatable .datatable-col{
@@ -86,5 +113,5 @@
 }
 
 .datatable-row:nth-child(odd){
-  background-color: #ECEFF1;
+  background-color: $datatableOddRowColor;
 }

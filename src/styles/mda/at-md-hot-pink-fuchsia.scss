@@ -144,6 +144,15 @@ $rippleSuccessColor: $successBGColor;
 $rippleDangerColor : $dangerBGColor;
 $rippleWarningColor : $warningBGColor;
 
+
+$datatableRowActiveBG : lighten($primaryBGColor,30%);
+$datatableRowHoverBG : lighten($primaryBGColor,40%);
+$datatableBorderSize : $borderSize;
+$datatableBorderColor : $borderColor;
+$datatableHeaderColor : $primaryColor;
+$datatableHeaderBGColor : $primaryBGColor;
+$datatableOddRowColor : #ECEFF1;
+
 @import "../mda/mda-common.scss";
 @import "../default/common.scss";
 @import "../default/amexio.components.scss";
@@ -345,15 +354,6 @@ button.app-button {
 }
 
 
-.flex-col-2pt5{
-  flex: 1 1 20.8333325%;
-  max-width: 20.8333325%;
-}
-
-.flex-col-9pt5{
-  flex: 1 1 79.1666635%;
-  max-width: 79.1666635%;
-}
 
 .email {
   background-color: white;
