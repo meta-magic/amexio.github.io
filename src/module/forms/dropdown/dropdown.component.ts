@@ -218,7 +218,7 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
       });
       if (this.multiselectValues.length > 0)
         return multiselectDisplayString; else
-        return 'Choose Options';
+        return '';
     } else
       return this.displayValue == undefined ? '' : this.displayValue
   }
