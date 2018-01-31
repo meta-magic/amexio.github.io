@@ -31,7 +31,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
       <ng-container *ngIf="enabledatafilter ? true : false">
         <div class="datatable datatable-row">
           <ng-container *ngIf="enablecheckbox">
-            <div class="datatable-col datatable-checkbox-width">
+            <div class="datatable-col col-group datatable-checkbox-width">
               <div class="inputgroup">
                 <div class="input-box">
                   <div *ngIf="!selectAll" (click)="selectAllRecord()" class="checkbox default"></div>
@@ -44,7 +44,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
           <ng-container *ngIf="enabledatafilter ? true : false">
             <ng-container *ngFor="let cols of columns">
               <ng-container *ngIf="!cols.hidden">
-                <div class="datatable-col" [style.width.%]="cols.width">
+                <div class="datatable-col col-group" [style.width.%]="cols.width">
                   <data-grid-filter [column]="cols"
                                       (filterObject)="getFilteredData($event)">
                   </data-grid-filter>
@@ -88,7 +88,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
     <div class="datatable">
       <div class="datatable-header">
         <ng-container *ngIf="enablecheckbox">
-          <div class="datatable-col datatable-checkbox-width">
+          <div class="datatable-col datatable-checkbox-width checkbox-col">
             <div class="inputgroup">
               <div class="input-box">
                 <div *ngIf="!selectAll" (click)="selectAllRecord()" class="checkbox default"></div>
@@ -115,7 +115,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
             </ng-container>
             <ng-container *ngIf="cols.datatype=='number'">
               <div class="datatable-col" [style.width.%]="cols.width" (click)="sortOnColHeaderClick(cols, $event)">
-                <span style="float: right;">
+                <span class="float-right">
                    {{cols.text}} &nbsp;
                     <ng-container *ngIf="this.sortBy==1 && cols.isColumnSort">
                   <amexio-data-icon key="datagrid_arrowup"></amexio-data-icon>
@@ -141,7 +141,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
                (click)="onRowClick(row, i,rowData)" #rowData>
 
             <ng-container *ngIf="enablecheckbox">
-              <div class="datatable-col datatable-checkbox-width">
+              <div class="datatable-col datatable-checkbox-width checkbox-col">
                 <div class="inputgroup">
                   <div class="input-box">
                     <div (click)="setSelectedRow(row, check)" [class]="setCheckBoxSelectClass(check)" #check>
@@ -156,7 +156,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
               <ng-container *ngIf="!cols.hidden">
                 <ng-container *ngIf="cols.datatype=='number'">
                   <div class="datatable-col"  [style.width.%]="cols.width"  scope="row" [attr.data-label]="cols.text">
-                   <span style="float: right">
+                   <span class="float-right">
                      {{row[cols.dataindex]}}
                    </span>
                   </div>
@@ -188,7 +188,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
         <div class="datatable">
           <div class="datatable-row"  *ngFor="let row of viewRows;let i=index" id="{{'row'+i}}" (click)="onRowClick(row, i, rowData)" #rowData>
             <ng-container *ngIf="enablecheckbox">
-              <div class="datatable-col datatable-checkbox-width">
+              <div class="datatable-col datatable-checkbox-width checkbox-col">
                 <div class="inputgroup">
                   <div class="input-box">
                     <div (click)="selectParent(row)" [class]="row.isSelected ?'checkbox active':'checkbox default'">

@@ -25,7 +25,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
     </ng-container>
     
     <ng-container *ngIf="column.datatype==='number'">
-      <span style="float: right">
+      <span class="float-right">
         <input type="text" [(ngModel)]="filterValue" [attr.placeholder]="column.text" (keyup)="keyUpSearch(column)"
                type="number" class="form-control"
                aria-label="Text input with dropdown button">
@@ -43,7 +43,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
          </ul>
       </span>
       </span>
-      
+        
     </ng-container>
     
   `
