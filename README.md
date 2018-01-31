@@ -2,7 +2,7 @@
   <br>
   <a href="http://www.amexio.tech/"><img src="https://image.ibb.co/kdy6Ev/logo.png" alt="Amexio" width="200"></a>
   <br>
-  Amexio Angular Extensions
+  Amexio Angular EXtensions
   <br>
 </h1>
 
@@ -376,6 +376,6 @@ Fill up the required Component Params
 
 ## License
 
-[Apache 2.0](http://www.amexio.org/metamagic-showcase/license.html) © [MetaMagic Global Inc](http://www.metamagicglobal.com/), 2017. [Amexio Angular Extensions](http://www.amexio.tech)
+[Apache 2.0](http://www.amexio.org/metamagic-showcase/license.html) © [MetaMagic Global Inc](http://www.metamagicglobal.com/), 2017. [Amexio Angular EXtensions](http://www.amexio.tech)
 
 **Enjoy!**
