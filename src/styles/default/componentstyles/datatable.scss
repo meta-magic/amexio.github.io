@@ -74,14 +74,14 @@
   background-color: $datatableRowHoverBG;
   cursor: pointer;
   @mixin for_row_hover() {
-  $datatableRowHover: false !default;
+    $datatableRowHover: false !default;
 
     @if $datatableRowHover {
       color: $datatableRowHover;
     }
   }
   @mixin for_row_bold() {
-  $datatableFontBold: false !default;
+    $datatableFontBold: false !default;
 
     @if $datatableFontBold {
       font-weight :bold;
@@ -92,7 +92,7 @@
 .datatable .datatable-row-active{
   background-color: $datatableRowActiveBG;
   @mixin for_row_active() {
-  $datatableRowActive: false !default;
+    $datatableRowActive: false !default;
 
     @if $datatableRowActive {
       color: $datatableRowActive;
@@ -115,3 +115,10 @@
 .datatable-row:nth-child(odd){
   background-color: $datatableOddRowColor;
 }
+
+.col-group {
+  text-align: left!important;
+}
+
+
+

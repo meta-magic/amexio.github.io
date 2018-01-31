@@ -38,11 +38,18 @@
     font-size: .8em;
     text-align: right;
     width: auto!important;
+
+    .float-right{
+      float: unset!important;
+    }
   }
 
   .datatable .datatable-col:before{
     content: attr(data-label);
     float: left;
     font-weight: bold;
+  }
+  .col-hidden {
+    display: none!important;
   }
 }
