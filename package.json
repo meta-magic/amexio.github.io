@@ -11,7 +11,7 @@
     "type": "git",
     "url": "git://github.com/meta-magic/amexio.github.io"
   },
-  "license": "MIT",
+  "license": "Apache 2.0",
   "keywords": [
     "amexio",
     "metamagic",
