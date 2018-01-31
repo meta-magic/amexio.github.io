@@ -30,8 +30,10 @@
           <span style="padding-right: 10px;float: right" *ngIf="!node.expand" ><amexio-nav-icon key="sidenav-angle-down"></amexio-nav-icon></span>
         </ng-container>
       </div>
-      <amexio-sidenav-node  *ngIf="node.expand && node.children && (node.children.length>0)" [data]="node.children" (nodeclick)="onNodeClick($event)">
-      </amexio-sidenav-node>
+      <div class="sidenav-submenu-details" [ngClass]="{'sidenav-submenu-expanded':node.expand}">
+        <amexio-sidenav-node  *ngIf="node.expand && node.children && (node.children.length>0)" [data]="node.children" (nodeclick)="onNodeClick($event)">
+        </amexio-sidenav-node>
+      </div>
 
     </li>
   </ul>
