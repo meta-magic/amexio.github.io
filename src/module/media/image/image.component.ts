@@ -41,7 +41,6 @@ export class AmexioImageComponent implements OnInit {
   @Output() onClick: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() {
-
   }
 
   onImageClick(event: any) {
