@@ -59,7 +59,7 @@ export class AmexioWindowPaneComponent implements OnInit {
 
   @Input() footer: boolean;
 
-  @Output() actionStatus : EventEmitter<any> = new EventEmitter<any>();
+  @Output() close : EventEmitter<any> = new EventEmitter<any>();
 
   constructor() {
     this.header = true;
@@ -85,13 +85,10 @@ export class AmexioWindowPaneComponent implements OnInit {
   onCloseClick() {
     if (this.closable) {
       this.showWindow = !this.showWindow;
+      this.close.emit(this.showWindow);
     }
   }
 
-  getStatus(v : any){
-    this.onCloseClick();
-    this.actionStatus.emit(v);
-  }
 
 }
 

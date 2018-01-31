@@ -211,6 +211,9 @@ button {
   background-color: white;
   z-index: 3; }
 
+.button-dropdown > div:hover {
+  background-color: #1C2949; }
+
 /*----------------------------------------------------------------------*/
 /*        DATETIME COMPONENT         */
 /*----------------------------------------------------------------------*/
@@ -1012,7 +1015,7 @@ input:checked + .toggle-slider:before {
   width: 17px !important;
   height: 21px !important;
   cursor: default;
-  background: url(slider_handles.png) 0 0 no-repeat;
+  background: url(assets/images/components/slider.png) 0 0 no-repeat;
   outline: none;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
@@ -2179,7 +2182,9 @@ fieldset {
   border-right: 3px solid #13b8d2; }
 
 .verticalnavtab .rightactivetab {
+  background-color: #2CD2EC;
   font-weight: bold;
+  color: #1C2949;
   border-left: 3px solid #13b8d2; }
 
 .verticalnavtab-left {

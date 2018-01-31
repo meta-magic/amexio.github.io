@@ -96,7 +96,9 @@
 
 .verticalnavtab .rightactivetab {
   //background-color: $tabActiveBGColor;
+  background-color: $tabActiveBGColor;
   font-weight: bold;
+  color : $tabActiveColor;
   border-left: $tabActiveBorderSize solid $tabActiveBorder;
 }
 
