@@ -21,7 +21,6 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
     <div class="panel-box">
       <ng-container *ngIf="header">
         <div class="panel-accordion" #btn1 >
-          <ng-container *ngIf="customheader">
             <div class="panel-header">
               {{title}}
               <div class="custom-header">
@@ -31,7 +30,6 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
                 </div>
               </div>
             </div>
-          </ng-container>
         </div>
       </ng-container>
       <ng-container *ngIf="expanded">
@@ -54,8 +52,6 @@ export class AmexioPanelComponent implements OnInit {
   @Input() expanded: boolean;
 
   @Input() height: number;
-
-  @Input('custom-header') customheader: boolean;
 
   @Output() onClick: EventEmitter<any> = new EventEmitter();
 
