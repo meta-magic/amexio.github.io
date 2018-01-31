@@ -2,7 +2,8 @@
  * Created by pratik on 13/12/17.
  */
 import {
-  AfterContentInit, Component, ContentChildren, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, QueryList
+  AfterContentInit, Component, ContentChildren, ElementRef, EventEmitter, HostListener, Input, OnInit, Output,
+  QueryList, ViewChild, ViewContainerRef
 } from '@angular/core';
 import {AmexioButtonDropDownItemComponent} from "./button.dropdown.item";
 
@@ -10,17 +11,15 @@ import {AmexioButtonDropDownItemComponent} from "./button.dropdown.item";
   selector: 'amexio-btn-dropdown', template: `
 
     <div class="button-group">
+       <button class="button-dropdown-main" (click)="onClick()" #btnRef
+               [ngClass]="{'button-default': size=='default' || size ==null,'button-small': size=='small','button-large' : size=='large','button-primary' : type == 'primary' || type == null,'button-success' : type == 'success',' button-danger' : type=='danger','button-warning' : type=='warning'}">
 
-      <button class="button-dropdown-main" (click)="onClick()"
-              [ngClass]="{'button-default': size=='default' || size ==null,'button-small': size=='small','button-large' : size=='large','button-primary' : type == 'primary' || type == null,'button-success' : type == 'success',' button-danger' : type=='danger','button-warning' : type=='warning'}">
+         <amexio-form-icon style="float:right;" key="button_caret-down"></amexio-form-icon>
 
-        <amexio-form-icon style="float:right;" key="button_caret-down"></amexio-form-icon>
+         <span [attr.disabled]="disabled ? true: null">{{label}} &nbsp;&nbsp;</span>
+         <!--<i class="fa fa-caret-down" style="float:right;" ></i>-->
 
-        <span [attr.disabled]="disabled ? true: null">{{label}} &nbsp;&nbsp;</span>
-        <!--<i class="fa fa-caret-down" style="float:right;" ></i>-->
-
-      </button>
-
+       </button>
       <div class="button-dropdown"  [ngStyle]="{'display' : openContent ? 'block' : 'none'}">
         <ng-container *ngFor="let itemData of dropdownItemData">
           <div [ngClass]="{'button-default': size=='default' || size ==null,'button-small': size=='small','button-large' : size=='large'}">
@@ -37,10 +36,12 @@ import {AmexioButtonDropDownItemComponent} from "./button.dropdown.item";
 
     </div>
     
-  `
+  `,
 })
 
 export class AmexioButtonDropdownComponent implements AfterContentInit {
+
+  @ViewChild('btnRef')  btnReference: any;
 
   @Input() label: string;
 
@@ -57,7 +58,6 @@ export class AmexioButtonDropdownComponent implements AfterContentInit {
   @Input() size: string;
 
   @Output() click: any = new EventEmitter<any>();
-
 
   constructor(public element: ElementRef) {
   }
@@ -101,7 +101,7 @@ export class AmexioButtonDropdownComponent implements AfterContentInit {
   public onElementOutClick(targetElement: HTMLElement) {
     let parentFound = false;
     while (targetElement != null && !parentFound) {
-      if (targetElement === this.element.nativeElement) {
+      if (targetElement === this.btnReference.nativeElement) {
         parentFound = true;
       }
       targetElement = targetElement.parentElement;
