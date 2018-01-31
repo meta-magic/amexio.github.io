@@ -11,8 +11,9 @@
 <!--this is for fontawesome-->
 <ng-container *ngIf="iconclass && (!path && !mdb)">
   <i [attr.class]="iconclass" [attr.title]="tooltip" (click)="onImageClick($event)"></i>
+  <label class="image-title" *ngIf="title">{{title}}</label>
 </ng-container>
 
-<ng-container *ngIf=" title ">
+<ng-container *ngIf=" title && !iconclass">
   <span style="font-size: medium">{{title}}</span>
 </ng-container>
