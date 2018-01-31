@@ -263,7 +263,6 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
   }
 
   getListPosition(elementRef : any) :boolean{
-    debugger;
     let dropdownHeight : number = 325; //must be same in dropdown.scss
     if(window.screen.height - (elementRef.getBoundingClientRect().bottom) < dropdownHeight){
       return true;
