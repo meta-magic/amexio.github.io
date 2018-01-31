@@ -182,7 +182,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
     </ng-container>
 
     <!--Group BY datagrid start-->
-
+    
     <ng-container *ngIf="groupby && !enabledatafilter">
       <div class="datatable-height" [style.height.px]="height">
         <div class="datatable">
@@ -200,21 +200,24 @@ import {CommonDataService} from "../../services/data/common.data.service";
             </ng-container>
             <ng-container *ngFor="let cols of columns;let colIndex = index">
               <ng-container *ngIf="isGroupChecking(row)">
-                <div class="datatable-col" style="width:inherit">
-                  <ng-container *ngIf="colIndex == 0">
-
-                    <!--<i *ngIf="!row.expanded" class="fa fa-caret-right" aria-hidden="true" (click)="toogle(row,i)"></i>-->
-                    <ng-container *ngIf="!row.expanded">
-                      <amexio-data-icon key="datagrid_expand" (onClick)="toogle(row,i)"></amexio-data-icon>
-                    </ng-container>
-
-                    <!--<i *ngIf="row.expanded" class="fa fa-caret-down" aria-hidden="true" (click)="toogle(row,i)"></i>-->
-                    <ng-container *ngIf="row.expanded">
-                      <amexio-data-icon key="datagrid_collapse" (onClick)="toogle(row,i)"></amexio-data-icon>
-                    </ng-container>
-                    {{row.group}}
+                
+                <ng-container *ngIf="colIndex == 0">
+                  <div class="datatable-col col-group">
+                  <!--<i *ngIf="!row.expanded" class="fa fa-caret-right" aria-hidden="true" (click)="toogle(row,i)"></i>-->
+                  <ng-container *ngIf="!row.expanded">
+                    <amexio-data-icon key="datagrid_expand" (onClick)="toogle(row,i)"></amexio-data-icon>
                   </ng-container>
-                </div>
+                  <ng-container *ngIf="row.expanded">
+                    <amexio-data-icon key="datagrid_collapse" (onClick)="toogle(row,i)"></amexio-data-icon>
+                  </ng-container>
+                  {{row.group}}
+                  </div>
+                </ng-container>
+
+                <ng-container *ngIf="colIndex != 0">
+                  <div class="datatable-col col-hidden">
+                  </div>
+                </ng-container>
               </ng-container>
               <ng-container *ngIf="!isGroupChecking(row)">
                 <ng-container *ngIf="cols.datatype=='string'">
@@ -231,7 +234,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
                 </ng-container>
                 <ng-container *ngIf="cols.datatype=='number'">
                   
-                  <div class="datatable-col" [style.width.%]="cols.width"  [attr.data-label]="cols.text">
+                  <div class="datatable-col"  [style.width.%]="cols.width"  [attr.data-label]="cols.text">
                        
                     <ng-container *ngIf="colIndex == 0">
                       <span style="padding-left: 20px">
