@@ -4,7 +4,7 @@
 /*----------------------------------------------------------------------*/
 
 .panel-accordion {
-  background-color: $accordionBGColor;
+  background-color: $accordionActiveBGColor;
   color: $accordionColor;
   cursor: pointer;
   padding: 10px;
@@ -14,11 +14,6 @@
   font-size: 15px;
   transition: 0.4s;
 
-}
-
-.active-accordion, .panel-accordion:hover {
-  background-color: $accordionActiveBGColor;
-  color: $accordionActiveColor;
 }
 
 .panel-accordion:after {
@@ -32,7 +27,7 @@
 }
 
 .panel-panel {
-  padding: 10px 16px;
+  padding: 0 16px;
   background-color: $accordionPanelBGColor;
   color: $accordionPanelColor;
   overflow-y: auto;
