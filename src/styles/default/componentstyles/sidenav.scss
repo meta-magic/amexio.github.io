@@ -114,3 +114,15 @@
 .sidenav .defaultnode .node-icon{
   padding-right: 20px;
 }
+
+.sidenav-submenu-details {
+  overflow:hidden;
+  height: auto;
+  max-height: 0;
+  transition: max-height 0.5s ease-in-out;
+}
+
+.sidenav-submenu-expanded {
+  max-height: 1000px;
+  overflow: auto;
+}

@@ -1,4 +1,4 @@
-<div class="inputgroup">
+<div class="inputgroup" #rootDiv>
 
   <label [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
     {{fieldlabel}}
@@ -15,7 +15,7 @@
          [ngClass]="{'input-control-error' : inp.invalid && (inp.dirty || inp.touched),'input-control-success' : inp.valid && (inp.dirty || inp.touched)}"
          [value]="displayValue == undefined ? '' : displayValue"
          (blur)="onblur()"
-         (focus)="onFocus()"
+         (focus)="onFocus(rootDiv)"
          (input)="onInput()"
          (keyup)="onKeyUp($event)"
          (click)="onclick()"
@@ -25,12 +25,14 @@
 
 
 
-  <span *ngIf="showToolTip" class="dropdown">
+  <span [ngClass]="{'dropdown-up' : posixUp, 'dropdown' : !posixUp}" [ngStyle]="{'display': showToolTip ? 'block' : 'none'}" #dpList>
         <ul class="dropdown-list">
-          <li class="list-items" *ngFor="let item of filteredResult" (click)="onItemSelect(item)"><div>{{item[displayfield]}}</div></li>
+          <li class="list-items"   [ngClass]="{'list-items-active':item['active']}"
+              *ngFor="let item of filteredResult"  (click)="onItemSelect(item)">
+              <div>{{item[displayfield]}}</div>
+          </li>
         </ul>
-      </span>
-
+    </span>
 </div>
 
 

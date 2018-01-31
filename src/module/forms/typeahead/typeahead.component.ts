@@ -3,7 +3,7 @@
  */
 
 
-import {Component, DoCheck, EventEmitter, forwardRef, Input, OnInit, Output} from '@angular/core';
+import {Component, DoCheck, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {CommonDataService} from "../../services/data/common.data.service";
 
@@ -48,6 +48,13 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
 
   @Output() onClick: any = new EventEmitter<any>();
 
+  @ViewChild('dpList') dpList : any;
+
+  posixUp : boolean;
+
+  activeindex : number =0;
+
+  currentActive : any;
 
   displayValue: any;
 
@@ -94,6 +101,8 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
 
   @Input('trigger-char') triggerchar: number;
 
+  @ViewChild('rootDiv') rootDiv : any;
+
   constructor(public dataService: CommonDataService) {
 
   }
@@ -125,6 +134,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
 
 
   onKeyUp(event: any) {
+    let maxScrollHeight : number = this.dpList.nativeElement.scrollHeight;
     this.filteredResult = [];
     this.showToolTip = false;
     let keyword: any = event.target.value;
@@ -140,6 +150,24 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
       if (this.filteredResult.length > 0) this.showToolTip = true; else {
         this.showToolTip = false;
       }
+    }else if(event.keyCode){
+      if(event.keyCode === 40){
+        let currentScroll = this.dpList.nativeElement.scrollTop;
+        let scrollByValue = this.activeindex % 5 == 0 ? 120: 0;
+        this.showAllData(this.activeindex);
+        this.activeindex++;
+        if(currentScroll < maxScrollHeight)
+          this.dpList.nativeElement.scrollBy(0,scrollByValue);
+      }
+      if(event.keyCode === 38){
+        let scrollByValue = this.activeindex % 5 == 0 ? -120: 0;
+        this.activeindex--;
+        this.showAllData(this.activeindex);
+        this.dpList.nativeElement.scrollBy(0,scrollByValue);
+      }else  if(event.keyCode === 13){
+        this.showToolTip = false;
+        this.onItemSelect(this.currentActive);
+      }
     }
 
   }
@@ -147,6 +175,29 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
   onChange(event: any) {
     this.value = event;
     this.change.emit(this.value);
+  }
+
+  showAllData(activerow:number){
+    let i = 0 ;
+    this.viewData.forEach((item: any) => {
+      if (item != null) {
+
+        if(i === activerow){
+          item.active = true;
+          this.currentActive = item;
+        }else{
+          item.active = false;
+        }
+        item.activerow = activerow;
+        this.filteredResult.push(item);
+      }
+      i++;
+    });
+
+    if (this.filteredResult.length > 0){
+      this.showToolTip = true;
+    }
+
   }
 
 
@@ -205,9 +256,21 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
     this.onBlur.emit(this.value);
   }
 
-  onFocus() {
+  onFocus(elem : any) {
     this.showToolTip = true;
+    this.posixUp = this.getListPosition(elem);
     this.focus.emit(this.value);
+  }
+
+  getListPosition(elementRef : any) :boolean{
+    let dropdownHeight : number = 325; //must be same in dropdown.scss
+    if(window.screen.height - (elementRef.getBoundingClientRect().bottom) < dropdownHeight){
+      return true;
+      //  return false;
+    }
+    else{
+      return false;
+    }
   }
 
   onInput() {
