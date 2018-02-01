@@ -57,7 +57,7 @@
   </div>
 
   <div class="listbox-height" [style.height.px]="height">
-    <ul class="list">
+    <ul class="list" [ngClass]="{'loading-mask' : maskloader}">
       <li class="list-items" *ngFor="let row of viewData let rowno = index ">
         <!--
         <div class="datatable">

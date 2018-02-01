@@ -103,6 +103,8 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
 
   @ViewChild('rootDiv') rootDiv : any;
 
+  maskloader:boolean=true;
+
   constructor(public dataService: CommonDataService) {
 
   }
@@ -126,6 +128,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
       this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
     }
+    this.maskloader=false;
   }
 
   onclick() {

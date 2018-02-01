@@ -51,6 +51,7 @@ export class AmexioListBoxComponent implements OnInit, AfterViewInit {
 
   previousData: any;
 
+  maskloader:boolean=true;
 
   constructor(public dataService: CommonDataService) {
     this.filter = false;
@@ -71,6 +72,7 @@ export class AmexioListBoxComponent implements OnInit, AfterViewInit {
       this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
     }
+    this.maskloader=false;
   }
 
   ngDoCheck() {
