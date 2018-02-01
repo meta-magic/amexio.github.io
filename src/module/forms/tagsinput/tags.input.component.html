@@ -5,7 +5,7 @@
   </label>
 
 
-  <div class="tag-input">
+  <div class="tag-input" [ngClass]="{'loading-mask' : maskloader}">
     <div class="tag" *ngFor="let item of onSelections">
       {{item[key]}}
       <span class="closebtn" (click)="removePill(item)">&times;</span>

@@ -86,6 +86,8 @@ export class AmexioTagsInputComponent implements OnInit {
 
   @ViewChild('tagDropRef') tagDropRef: any;
 
+  maskloader:boolean=true;
+
   constructor(public dataService: CommonDataService) {
 
   }
@@ -109,6 +111,7 @@ export class AmexioTagsInputComponent implements OnInit {
       this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
     }
+    this.maskloader=false;
   }
 
 
