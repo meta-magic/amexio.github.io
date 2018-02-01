@@ -143,7 +143,7 @@ import { AmexioDashboardModule } from 'amexio-ng-extensions';
 
 
 // To import Enterprise
-import { AmexioEnterpriseEEModule } from 'amexio-ng-extensions';
+import { AmexioEnterpriseModule } from 'amexio-ng-extensions';
 @NgModule({
   declarations: [
     AppComponent
@@ -155,7 +155,7 @@ import { AmexioEnterpriseEEModule } from 'amexio-ng-extensions';
     AmexioChartsModule,
     AmexioMapsModule,
     AmexioDashboardModule,
-    AmexioEnterpriseEEModule
+    AmexioEnterpriseModule
   ],
   providers: [CommonDataService],
   bootstrap: [AppComponent]
@@ -209,7 +209,7 @@ export class AppModule { }
 </tr>
 
 <tr>
-<td>AmexioEnterpriseEEModule</td>
+<td>AmexioEnterpriseModule</td>
 </tr>
 
 </table>
