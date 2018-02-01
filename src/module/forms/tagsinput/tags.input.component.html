@@ -1,4 +1,4 @@
-<div class="inputgroup">
+<div class="inputgroup" #rootDiv>
 
   <label [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
     {{fieldlabel}}
@@ -13,7 +13,7 @@
 
     <input type="text" class="input-control"
            [ngClass]="{'input-control-error' : inp.invalid && (inp.dirty || inp.touched),'input-control-success' : inp.valid && (inp.dirty || inp.touched)}"
-           (focus)="onFocus()"
+           (focus)="onFocus(rootDiv)"
            (keyup)="onKeyUp($event)"
            [attr.placeholder]="placeholder"
            [attr.disabled]="disabled ? true: null"

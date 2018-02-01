@@ -51,7 +51,7 @@
       <div class="title">&nbsp;&nbsp;{{header}}</div>
     </div>
 
-    <div>
+    <div *ngIf="(filter == true)">
       <input type="text" [(ngModel)]="filterText" [placeholder]="searchplaceholder" (keyup)="filterData()" class="search "/>
     </div>
   </div>
