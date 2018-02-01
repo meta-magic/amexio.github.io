@@ -1,5 +1,14 @@
-/**
- * Created by pratik on 14/12/17.
+/*
+ * Copyright 2016-2017 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Author - Pratik Kelwalkar
+ *
  */
 import {Component, ContentChildren, Input, QueryList} from '@angular/core';
 import {AccordionService} from "./accordion.service";
@@ -14,6 +23,10 @@ import {AmexioAccordionTabComponent} from "./accordion.pane";
 export class AmexioAccordionComponent {
 
   @Input('expand-all') expandAll : boolean;
+
+  @Input('transparent') isTransparent : boolean;
+
+  @Input('angle-icon') angleIcon : boolean;
 
   @ContentChildren(AmexioAccordionTabComponent)  panes : QueryList<AmexioAccordionTabComponent>;
 
@@ -36,6 +49,8 @@ export class AmexioAccordionComponent {
 
   setParent(){
     this.panes.toArray().forEach((pane : any)=>{
+      pane.isTransparent = this.isTransparent;
+      this.angleIcon ? pane.angleIcon = this.angleIcon : pane.angleIcon = pane.angleIcon;
       pane.parentId = this.rootId;
     });
   }

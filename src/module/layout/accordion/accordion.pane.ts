@@ -13,14 +13,22 @@
  * Author - Pratik Kelwalkar
  *
  */
+
 import {AfterViewInit, Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 import {AccordionService} from "./accordion.service";
 
 @Component({
   selector: 'amexio-accordion-tab', template: `
 
-    <button class="accordion {{active ? 'active-accordion' : ''}}" #btn1 (click)="onTabClick(btn1)">{{header}}
-      <div style="float: right"><i class="fa" [ngClass]="{'fa-plus' : !active,'fa-minus' : active}" aria-hidden="true"></i></div>
+    <button class="{{isTransparent ? 'accordion-transparent' : 'accordion'}} {{active ? 'active-accordion' : ''}}" #btn1 (click)="onTabClick(btn1)">
+      <div style="float: left;" *ngIf="leftIcon">
+        <i class="fa {{leftIcon}}"></i>
+      </div>
+      {{header}}
+      <div style="float: right">
+        <i *ngIf="!angleIcon" class="fa" [ngClass]="{'fa-plus' : !active,'fa-minus' : active}" aria-hidden="true"></i>
+        <i *ngIf="angleIcon" class="fa" [ngClass]="{'fa-angle-down' : !active,'fa-angle-up' : active}" aria-hidden="true"></i>
+      </div>
     </button>
     <div class="panel" #contentPanel>
       <ng-content></ng-content>
@@ -34,9 +42,15 @@ export class AmexioAccordionTabComponent implements AfterViewInit {
 
   @Input() active: boolean;
 
+  @Input('left-icon') leftIcon: string;
+
   @Output() onClick: EventEmitter<any> = new EventEmitter();
 
   @ViewChild('contentPanel') content : any;
+
+  @Input('angle-icon') angleIcon : boolean;
+
+  isTransparent : boolean;
 
   iconclassKey: string;
 

@@ -92,8 +92,8 @@ $toastColor : $primaryColor;
   float: left;
 }
 
-$accordionBGColor:$cardBGColor;
-$accordionColor:$cardColor;
+$accordionBGColor:$cardHeaderBGColor;
+$accordionColor:$cardHeaderColor;
 
 $borderLayoutBorder : 0px;
 $borderLayoutBorderColor : none;

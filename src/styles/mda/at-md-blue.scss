@@ -104,7 +104,7 @@ $dockBarActiveBGColor:lighten($cardHeaderBGColor,20%);
 $toastBGColor : $themeBGColor;
 $toastColor : $themeColor;
 
-$accordionBGColor:lighten($cardHeaderBGColor,20%);
+$accordionBGColor:$cardHeaderBGColor;
 $accordionColor:$cardHeaderColor;
 $accordionActiveBGColor:$cardHeaderBGColor;
 $accordionActiveColor:$cardHeaderColor;
