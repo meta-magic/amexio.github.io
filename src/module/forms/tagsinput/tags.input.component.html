@@ -13,8 +13,8 @@
 
     <input type="text" class="input-control"
            [ngClass]="{'input-control-error' : inp.invalid && (inp.dirty || inp.touched),'input-control-success' : inp.valid && (inp.dirty || inp.touched)}"
-           (keyup)="onKeyUp($event)"
            (focus)="onFocus()"
+           (keyup)="onKeyUp($event)"
            [attr.placeholder]="placeholder"
            [attr.disabled]="disabled ? true: null"
            [required]="allowblank ? true: null"
@@ -23,9 +23,11 @@
   </div>
 
 
-  <span *ngIf="showToolTip" class="dropdown">
+  <span  [ngClass]="{'dropdown-up' : posixUp, 'dropdown' : !posixUp}" [ngStyle]="{'display': showToolTip ? 'block' : 'none'}" #tagDropRef>
     <ul class="dropdown-list">
-      <li class="list-items" *ngFor="let item of filteredResult" (click)="setValue(item,inp)"><div>{{item[displayfield]}}</div></li>
+      <li class="list-items" [ngClass]="{'list-items-active':item['active']}"
+          *ngFor="let item of filteredResult"
+          (click)="setValue(item,inp)"><div>{{item[displayfield]}}</div></li>
     </ul>
   </span>
 

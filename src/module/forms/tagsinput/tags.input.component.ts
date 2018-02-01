@@ -1,7 +1,8 @@
 /**
  * Created by pratik on 20/12/17.
  */
-import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, EventEmitter, HostListener, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {noop} from "rxjs/util/noop";
 import {CommonDataService} from "../../services/data/common.data.service";
 
 @Component({
@@ -27,14 +28,22 @@ export class AmexioTagsInputComponent implements OnInit {
 
   @Output() onChange: EventEmitter<any> = new EventEmitter<any>();
 
+  @Output() focus: any = new EventEmitter<any>();
+
 
   onSelections: any[] = [];
 
   displayValue: any;
 
+  activeindex : number =0;
+
+  currentActive : any;
+
   helpInfoMsg: string;
 
   _errormsg: string;
+
+  posixUp : boolean;
 
   get errormsg(): string {
     return this._errormsg;
@@ -75,6 +84,8 @@ export class AmexioTagsInputComponent implements OnInit {
 
   @ViewChild('inp') inpHandle: any;
 
+  @ViewChild('tagDropRef') tagDropRef: any;
+
   constructor(public dataService: CommonDataService) {
 
   }
@@ -102,6 +113,7 @@ export class AmexioTagsInputComponent implements OnInit {
 
 
   onKeyUp(event: any) {
+    let maxScrollHeight : number = this.tagDropRef.nativeElement.scrollHeight;
     this.filteredResult = [];
     this.showToolTip = false;
     let keyword: any = event.target.value;
@@ -117,13 +129,101 @@ export class AmexioTagsInputComponent implements OnInit {
       if (this.filteredResult.length > 0) this.showToolTip = true; else {
         this.showToolTip = false;
       }
+    }else if(event.keyCode){
+      if(event.keyCode === 40){
+        this.showToolTip = true;
+        let currentScroll = this.tagDropRef.nativeElement.scrollTop;
+        let scrollByValue = this.activeindex % 6 == 0 ? 180: 0;
+        this.showAllData(this.activeindex);
+        this.activeindex++;
+        if(currentScroll < maxScrollHeight)
+          this.tagDropRef.nativeElement.scrollBy(0,scrollByValue);
+      }
+      if(event.keyCode === 38){
+        this.showToolTip = true;
+        let scrollByValue = this.activeindex % 6 == 0 ? -180: 0;
+        this.activeindex--;
+        this.showAllData(this.activeindex);
+        this.tagDropRef.nativeElement.scrollBy(0,scrollByValue);
+      }else  if(event.keyCode === 13){
+        this.showToolTip = false;
+        this.onItemSelect(this.currentActive);
+      }
+    }
+
+  }
+
+  showAllData(activerow:number){
+    let i = 0 ;
+    this.viewData.forEach((item: any) => {
+      if (item != null) {
+
+        if(i === activerow){
+          item.active = true;
+          this.currentActive = item;
+        }else{
+          item.active = false;
+        }
+        item.activerow = activerow;
+        this.filteredResult.push(item);
+      }
+      i++;
+    });
+
+    if (this.filteredResult.length > 0){
+      this.showToolTip = true;
     }
 
   }
 
 
-  onFocus() {
+  onItemSelect(row: any) {
+    this.value = row[this.valuefield];
+    this.displayValue = row[this.displayfield];
+    this.showToolTip = false;
+  }
+
+  // The internal dataviews model
+  private innerValue: any = '';
+
+  //Placeholders for the callbacks which are later provided
+  //by the Control Value Accessor
+  private onTouchedCallback: () => void = noop;
+  private onChangeCallback: (_: any) => void = noop;
+
+  //get accessor
+  get value(): any {
+    return this.innerValue;
+  }
+
+  //set accessor including call the onchange callback
+  set value(v: any) {
+    if (v !== this.innerValue) {
+      this.innerValue = v;
+      this.onChangeCallback(v);
+    }
+  }
+
+  onFocus(elem : any) {
     this.inpHandle.nativeElement.placeholder = '';
+    this.showToolTip = true;
+    this.posixUp = this.getListPosition(elem);
+    this.focus.emit(this.value);
+  }
+
+  getListPosition(elementRef : any) :boolean{
+
+    let dropdownHeight : number = 325; //must be same in dropdown.scss
+    if(elementRef) {
+      if(window.screen.height - (elementRef.getBoundingClientRect().bottom) < dropdownHeight){
+        return true;
+        //  return false;
+      }
+      else{
+        return false;
+      }
+    }
+
   }
 
 
@@ -159,11 +259,4 @@ export class AmexioTagsInputComponent implements OnInit {
     this.onChange.emit(this.onSelections);
   }
 
-
-  ngDoCheck() {
-    if (JSON.stringify(this.previousData) != JSON.stringify(this.data)) {
-      this.previousData = JSON.parse(JSON.stringify(this.data));
-      this.setData(this.data);
-    }
-  }
 }
