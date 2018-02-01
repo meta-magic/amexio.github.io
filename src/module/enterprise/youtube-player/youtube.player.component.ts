@@ -11,7 +11,7 @@ import {DomSanitizer} from "@angular/platform-browser";
         <i class="fa fa-times fa-lg" (click)="routeBackToApp()" aria-hidden="true"></i>
       </span>
       <div class="text-center">
-        <iframe [height]="height" [width]="width+'%'"
+        <iframe [height]="height+'px'" [width]="width+'%'"
                 [src]="sanitizedUrl" frameborder="0"
                 allowfullscreen>
         </iframe>
@@ -36,7 +36,7 @@ export class AmexioYoutubePlayerComponent implements OnInit {
 
   @Input() url: any;
 
-  @Input() height: any;
+  @Input() height: number;
 
   @Input() width : number;
 
@@ -51,8 +51,8 @@ export class AmexioYoutubePlayerComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.height == null || this.height === 'undefined') {
-      this.height = '98%';
+    if (this.height == null) {
+      this.height = 450;
     }
     if (this.width == null) {
       this.width = 98;
