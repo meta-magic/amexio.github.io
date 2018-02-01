@@ -22,7 +22,7 @@
          [required]="allowblank ? true: null" (keyup)="onDropDownSearchKeyUp($event)"/>
 
 
-  <span class="drodown-caret-down">
+  <span class="drodown-caret-down" [ngClass]="{'loading-mask' : maskloader}">
         <!--<i class="fa fa-chevron-down" aria-hidden="true"></i>-->
     <amexio-form-icon key="dropdown_caret"></amexio-form-icon>
   </span>

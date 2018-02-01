@@ -115,12 +115,13 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
 
   multiselectValues: any[] = [];
 
+  maskloader:boolean=true;
+
   constructor(public dataService: CommonDataService, public element: ElementRef, public renderer: Renderer2) {
   }
 
   ngOnInit() {
     if (this.placeholder == '' || this.placeholder == null) this.placeholder = 'Choose Option';
-
     if (this.httpmethod && this.httpurl) {
       this.dataService.fetchData(this.httpurl, this.httpmethod).subscribe(response => {
         this.responseData = response.json();
@@ -133,6 +134,7 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
       this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
     }
+    this.maskloader=false;
   }
 
 
