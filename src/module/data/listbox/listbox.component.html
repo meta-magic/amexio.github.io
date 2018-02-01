@@ -1,7 +1,7 @@
 
 <div class="listbox">
 
-  <div class="header">
+  <!--<div class="header">
 
     <div class="table" style="width:100%;">
       <div class="tablerow">
@@ -25,7 +25,7 @@
       </div>
 
     </div>
-  <!--
+  &lt;!&ndash;
     <ng-container *ngIf="enablecheckbox">
       <div class="inputgroup" style="float: left">
         <div class="input-box">
@@ -37,8 +37,23 @@
     <div class="title">{{header}}</div>
     <div class="float-right" *ngIf="(filter == true)">
       <input type="text" [(ngModel)]="filterText"  [placeholder]="searchplaceholder" (keyup)="filterData()"  class="search "/>
-    </div>-->
+    </div>&ndash;&gt;
 
+  </div>-->
+
+
+  <div class="header" style="display: flex; justify-content: space-between">
+    <div style="display: flex;justify-content: flex-start;">
+      <div *ngIf="enablecheckbox"  class="input-box">
+        <div *ngIf="!selectAll" (click)="selectAllRecord()" class="checkbox default"></div>
+        <div *ngIf="selectAll" (click)="selectAllRecord()" class="checkbox active">&#10004;</div>
+      </div>
+      <div class="title">&nbsp;&nbsp;{{header}}</div>
+    </div>
+
+    <div>
+      <input type="text" [(ngModel)]="filterText" [placeholder]="searchplaceholder" (keyup)="filterData()" class="search "/>
+    </div>
   </div>
 
   <div class="listbox-height" [style.height.px]="height">

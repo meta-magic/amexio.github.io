@@ -109,7 +109,7 @@ export class AmexioListBoxComponent implements OnInit, AfterViewInit {
     let disp = this.displayfield;
     let res = data.filter(function f(node) {
 
-      if (node[disp].toLowerCase().startsWith(matchingTitle.toLowerCase())) {
+      if (node[disp] && node[disp].toLowerCase().startsWith(matchingTitle.toLowerCase())) {
         return true;
       }
       if (node.children) {

@@ -91,13 +91,13 @@
 .search{
   background: #ededed url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
   border: solid 1px #ccc;
-  padding: 9px 10px 9px 32px;
+  padding: 9px 10px 0px 32px;
   transition: all .5s;
   width: 55px;
 }
 
 .search:focus {
-  width: 300px;
+  width: 150px;
   background-color: #fff;
   border-color: #66CC75;
 }

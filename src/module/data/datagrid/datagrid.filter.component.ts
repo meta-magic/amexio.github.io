@@ -98,12 +98,13 @@ export class DataGridFilterComponent implements OnInit {
 
   selectedOption(col: any, opt: any) {
     this.checkStatus();
-    let filter: any = {};
+    let filter: any = {
+      key : col.dataindex,
+      value : this.filterValue,
+      filter : opt.value,
+      type : col.datatype
+    };
     opt.checkedStatus = 'fa fa-check';
-    filter['key'] = col.dataindex;
-    filter['value'] = this.filterValue;
-    filter['filter'] = opt.value;
-    filter['type'] = col.datatype;
     if (this.filterValue) {
       col.filterIcon = true;
       this.filterDataObject(filter, col);
@@ -117,10 +118,11 @@ export class DataGridFilterComponent implements OnInit {
       this.removeFilter(col);
     } else {
       col.filterIcon = true;
-      const filter: any = {};
-      filter['key'] = col.dataindex;
-      filter['value'] = this.filterValue;
-      filter['type'] = col.datatype;
+      let filter: any = {
+        key : col.dataindex,
+        value : this.filterValue,
+        type : col.datatype
+      };
       this.filterOptions.forEach((opt: any) => {
         if (opt.checkedStatus === 'fa fa-check') {
           if (col.datatype === opt.type) {
