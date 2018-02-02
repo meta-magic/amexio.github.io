@@ -958,7 +958,6 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
       node.level = row.level;
       this.viewRows.splice(index + (index1 + 1), 0 , node);
     });
-    console.log(this.viewRows);
   }
 
   removeRows(row: any) {
