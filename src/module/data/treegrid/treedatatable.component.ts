@@ -36,7 +36,7 @@ import {AmexioGridColumnComponent} from "../datagrid/data.grid.column";
             <div class="datatable-col" [ngClass]="{'header' : i == 0}"> {{cols.text}}</div>
           </ng-container>
           <ng-container *ngIf="cols.datatype=='number'">
-            <span style="float: right">
+            <span class="float-right">
                <div class="datatable-col" [ngClass]="{'header' : i == 0}"> {{cols.text}}</div>
             </span>
           </ng-container>
@@ -48,7 +48,7 @@ import {AmexioGridColumnComponent} from "../datagrid/data.grid.column";
       <div class="datatable-row" *ngFor="let row of viewRows;let i=index" (click)="setSelectedRow(row, $event)">
         <ng-container *ngFor="let cols of columns;let colIndex = index">
           <ng-container *ngIf="cols.datatype=='string'">
-            <div class="datatable-col" >
+            <div class="datatable-col" [attr.data-label]="cols.text">
               <ng-container *ngIf="colIndex == 0">
               <span [ngStyle]="{'padding-left':(20*row.level)+'px'}">
                     
@@ -71,8 +71,7 @@ import {AmexioGridColumnComponent} from "../datagrid/data.grid.column";
             </div>
           </ng-container>
           <ng-container *ngIf="cols.datatype=='number'">
-            <span style="float: right">
-               <div class="datatable-col" >
+            <div class="datatable-col" [attr.data-label]="cols.text" >
               <ng-container *ngIf="colIndex == 0">
               <span [ngStyle]="{'padding-left':(20*row.level)+'px'}">
                     
@@ -85,15 +84,19 @@ import {AmexioGridColumnComponent} from "../datagrid/data.grid.column";
                 <ng-container *ngIf="row.expanded && row.children">
                   <amexio-data-icon key="tree_expand" (onClick)="toogle(row,i)"></amexio-data-icon>
                 </ng-container>
+                 <span class="float-right">
                      {{row[cols.dataindex]}}
+                 </span>
                </span>
               </ng-container>
 
               <ng-container *ngIf="colIndex > 0">
+               <span class="float-right">
                 {{row[cols.dataindex]}}
+               </span>
               </ng-container>
             </div>
-            </span>
+              
            
           </ng-container>
         </ng-container>
