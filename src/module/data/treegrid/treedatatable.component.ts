@@ -61,12 +61,22 @@ import {AmexioGridColumnComponent} from "../datagrid/data.grid.column";
                 <ng-container *ngIf="row.expanded && row.children">
                   <amexio-data-icon key="tree_expand" (onClick)="toogle(row,i)"></amexio-data-icon>
                 </ng-container>
-                     {{row[cols.dataindex]}}
+                 <ng-container *ngIf="row[cols.dataindex]!= null && row[cols.dataindex]!= '' ;else elseBlock">
+                      {{row[cols.dataindex]}}
+                    </ng-container>
+                    <ng-template #elseBlock>
+                      &nbsp;
+                    </ng-template>
                </span>
               </ng-container>
 
               <ng-container *ngIf="colIndex > 0">
-                {{row[cols.dataindex]}}
+                <ng-container *ngIf="row[cols.dataindex]!= null && row[cols.dataindex]!= '' ;else elseBlock">
+                  {{row[cols.dataindex]}}
+                </ng-container>
+                <ng-template #elseBlock>
+                  &nbsp;
+                </ng-template>
               </ng-container>
             </div>
           </ng-container>
@@ -85,14 +95,24 @@ import {AmexioGridColumnComponent} from "../datagrid/data.grid.column";
                   <amexio-data-icon key="tree_expand" (onClick)="toogle(row,i)"></amexio-data-icon>
                 </ng-container>
                  <span class="float-right">
-                     {{row[cols.dataindex]}}
+                    <ng-container *ngIf="row[cols.dataindex]!= null;else elseBlock">
+                      {{row[cols.dataindex]}}
+                    </ng-container>
+                    <ng-template #elseBlock>
+                      &nbsp;
+                    </ng-template>
                  </span>
                </span>
               </ng-container>
 
               <ng-container *ngIf="colIndex > 0">
                <span class="float-right">
-                {{row[cols.dataindex]}}
+               <ng-container *ngIf="row[cols.dataindex]!= null;else elseBlock">
+                      {{row[cols.dataindex]}}
+               </ng-container>
+                 <ng-template #elseBlock>
+                      &nbsp;
+                 </ng-template>
                </span>
               </ng-container>
             </div>
