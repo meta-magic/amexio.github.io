@@ -11,6 +11,8 @@
   color: $dockBarColor;
   position: relative;
   border-top: $dockBarSize solid $dockBarColor;
+  border-bottom: 5px solid $dockBarBGColor;
+
 }
 
 .dockbar-content{
@@ -73,5 +75,27 @@
   border-right: $dockBarActiveBorderSize solid $dockBarActiveBorderColor;
   border-bottom: $dockBarActiveBorderSize solid $dockBarActiveBorderColor;
   height: 100%;
+  overflow-y: auto;
+}
 
+
+.dockbar-height {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.dockbar-height::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #F5F5F5;
+}
+
+.dockbar-height::-webkit-scrollbar
+{
+  width: 6px;
+  background-color: #F5F5F5;
+}
+
+.dockbar-height::-webkit-scrollbar-thumb
+{
+  background-color: $themeBGColor;
 }
