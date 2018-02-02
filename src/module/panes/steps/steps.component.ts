@@ -61,10 +61,10 @@ import {StepBlockComponent} from "./step-block";
                   <amexio-pane-icon [customclass]="stepBlock.icon"></amexio-pane-icon>
                 </ng-container>
                 <ng-container *ngIf="stepBlock.label && !stepBlock.active">
-                  <p>{{stepBlock.label}}</p>
+                  <p style="word-wrap: break-word;">{{stepBlock.label}}</p>
                 </ng-container>
                 <ng-container *ngIf="stepBlock.label && stepBlock.active">
-                  <p><strong>{{stepBlock.label}}</strong></p>
+                  <p style="word-wrap: break-word;"><strong>{{stepBlock.label}}</strong></p>
                 </ng-container>
               </a>
             </div>

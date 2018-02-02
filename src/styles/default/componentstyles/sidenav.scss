@@ -18,7 +18,7 @@
   box-shadow: 0 0 5px 0 $sidenavBorderColor;
   background-color: $sidenavBGColor;
   color: $sidenavColor;
-  z-index: 1;
+  z-index: 200;
 }
 
 .sidenav::-webkit-scrollbar-track
