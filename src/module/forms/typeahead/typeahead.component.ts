@@ -3,7 +3,10 @@
  */
 
 
-import {Component, DoCheck, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {
+  Component, DoCheck, ElementRef, EventEmitter, forwardRef, HostListener, Input, OnInit, Output, Renderer2,
+  ViewChild
+} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {CommonDataService} from "../../services/data/common.data.service";
 
@@ -105,7 +108,22 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
 
   maskloader:boolean=true;
 
-  constructor(public dataService: CommonDataService) {
+
+  @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
+  public onElementOutClick(targetElement: HTMLElement) {
+    let parentFound = false;
+    while (targetElement != null && !parentFound) {
+      if (targetElement === this.element.nativeElement) {
+        parentFound = true;
+      }
+      targetElement = targetElement.parentElement;
+    }
+    if (!parentFound) {
+      this.showToolTip = false;
+    }
+  }
+
+  constructor(public dataService: CommonDataService,public element: ElementRef, public renderer: Renderer2) {
 
   }
 
