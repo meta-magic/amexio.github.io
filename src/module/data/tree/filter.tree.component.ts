@@ -15,10 +15,12 @@ import {CommonDataService} from "../../services/data/common.data.service";
     <div>
       <div>
         <div class="input-group">
-          <input type="text" class="form-control" aria-label="Text input with dropdown button" [(ngModel)]="filterText"
+          <input type="text" class="form-control text-input-width" aria-label="Text input with dropdown button" [(ngModel)]="filterText"
                  placeholder="Search" (keyup)="filterData()">
           <!--<i class="fa fa-filter" aria-hidden="true" (click)="showToolTip = !showToolTip"></i>-->
+          <span class="tree-icon-right">
           <amexio-data-icon key="tree_filter" (click)="showToolTip = !showToolTip"></amexio-data-icon>
+          </span>
           <!--  <div class="input-group-btn">-->
           <!-- <button type="button" class="btn" data-toggle="dropdown" (click)="showToolTip = !showToolTip" aria-haspopup="true" aria-expanded="false">
            </button>-->
