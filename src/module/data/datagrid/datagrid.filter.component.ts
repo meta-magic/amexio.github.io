@@ -7,10 +7,12 @@ import {CommonDataService} from "../../services/data/common.data.service";
   selector: 'data-grid-filter', template: `
     <ng-container *ngIf="column.datatype==='string'">
       <input type="text" [(ngModel)]="filterValue" [attr.placeholder]="column.text" (keyup)="keyUpSearch(column)"
-             type="text" class="form-control"
+             type="text" class="form-control text-input-width"
              aria-label="Text input with dropdown button">
       <!--<i class="fa fa-filter" aria-hidden="true" (click)="showToolTip = !showToolTip"></i>-->
-      <amexio-data-icon key="datagrid_filter" (click)="showToolTip = !showToolTip"></amexio-data-icon>
+      <span class="datatable-icon-right">
+        <amexio-data-icon key="datagrid_filter" (click)="showToolTip = !showToolTip"></amexio-data-icon>
+      </span>
       <span *ngIf="showToolTip" class="dropdown" style="width: 250px;">
         <ul class="dropdown-list" *ngFor="let opt of filterOptions">
           <ng-container *ngIf="opt.type===column.datatype">
@@ -27,11 +29,13 @@ import {CommonDataService} from "../../services/data/common.data.service";
     <ng-container *ngIf="column.datatype==='number'">
       <span class="float-right">
         <input type="text" [(ngModel)]="filterValue" [attr.placeholder]="column.text" (keyup)="keyUpSearch(column)"
-               type="number" class="form-control"
+               type="number" class="form-control text-input-width"
                aria-label="Text input with dropdown button">
         <!--<i class="fa fa-filter" aria-hidden="true" (click)="showToolTip = !showToolTip"></i>-->
+     <span class="datatable-icon-right">
       <amexio-data-icon key="datagrid_filter" (click)="showToolTip = !showToolTip"></amexio-data-icon>
-      <span *ngIf="showToolTip" class="dropdown" style="width: 250px;">
+     </span>
+       <span *ngIf="showToolTip" class="dropdown" style="width: 250px;">
         <ul class="dropdown-list" *ngFor="let opt of filterOptions">
           <ng-container *ngIf="opt.type===column.datatype">
           <li class="list-items">
