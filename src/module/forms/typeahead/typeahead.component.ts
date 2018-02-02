@@ -3,7 +3,10 @@
  */
 
 
-import {Component, DoCheck, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {
+  Component, DoCheck, ElementRef, EventEmitter, forwardRef, HostListener, Input, OnInit, Output, Renderer2,
+  ViewChild
+} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {CommonDataService} from "../../services/data/common.data.service";
 
@@ -105,7 +108,22 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
 
   maskloader:boolean=true;
 
-  constructor(public dataService: CommonDataService) {
+
+  @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
+  public onElementOutClick(targetElement: HTMLElement) {
+    let parentFound = false;
+    while (targetElement != null && !parentFound) {
+      if (targetElement === this.element.nativeElement) {
+        parentFound = true;
+      }
+      targetElement = targetElement.parentElement;
+    }
+    if (!parentFound) {
+      this.showToolTip = false;
+    }
+  }
+
+  constructor(public dataService: CommonDataService,public element: ElementRef, public renderer: Renderer2) {
 
   }
 
@@ -153,26 +171,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
       if (this.filteredResult.length > 0) this.showToolTip = true; else {
         this.showToolTip = false;
       }
-    }else if(event.keyCode){
-      if(event.keyCode === 40){
-        let currentScroll = this.dpList.nativeElement.scrollTop;
-        let scrollByValue = this.activeindex % 5 == 0 ? 120: 0;
-        this.showAllData(this.activeindex);
-        this.activeindex++;
-        if(currentScroll < maxScrollHeight)
-          this.dpList.nativeElement.scrollBy(0,scrollByValue);
-      }
-      if(event.keyCode === 38){
-        let scrollByValue = this.activeindex % 5 == 0 ? -120: 0;
-        this.activeindex--;
-        this.showAllData(this.activeindex);
-        this.dpList.nativeElement.scrollBy(0,scrollByValue);
-      }else  if(event.keyCode === 13){
-        this.showToolTip = false;
-        this.onItemSelect(this.currentActive);
-      }
     }
-
   }
 
   onChange(event: any) {

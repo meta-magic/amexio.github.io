@@ -1,7 +1,10 @@
 /**
  * Created by pratik on 20/12/17.
  */
-import {Component, EventEmitter, HostListener, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {
+  Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, Renderer2,
+  ViewChild
+} from '@angular/core';
 import {noop} from "rxjs/util/noop";
 import {CommonDataService} from "../../services/data/common.data.service";
 
@@ -29,6 +32,21 @@ export class AmexioTagsInputComponent implements OnInit {
   @Output() onChange: EventEmitter<any> = new EventEmitter<any>();
 
   @Output() focus: any = new EventEmitter<any>();
+
+  @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
+  public onElementOutClick(targetElement: HTMLElement) {
+    let parentFound = false;
+    while (targetElement != null && !parentFound) {
+      if (targetElement === this.element.nativeElement) {
+        parentFound = true;
+      }
+      targetElement = targetElement.parentElement;
+    }
+    if (!parentFound) {
+      this.showToolTip = false;
+    }
+  }
+
 
 
   onSelections: any[] = [];
@@ -88,7 +106,7 @@ export class AmexioTagsInputComponent implements OnInit {
 
   maskloader:boolean=true;
 
-  constructor(public dataService: CommonDataService) {
+  constructor(public dataService: CommonDataService,public element: ElementRef, public renderer: Renderer2) {
 
   }
 
@@ -131,26 +149,6 @@ export class AmexioTagsInputComponent implements OnInit {
       });
       if (this.filteredResult.length > 0) this.showToolTip = true; else {
         this.showToolTip = false;
-      }
-    }else if(event.keyCode){
-      if(event.keyCode === 40){
-        this.showToolTip = true;
-        let currentScroll = this.tagDropRef.nativeElement.scrollTop;
-        let scrollByValue = this.activeindex % 6 == 0 ? 180: 0;
-        this.showAllData(this.activeindex);
-        this.activeindex++;
-        if(currentScroll < maxScrollHeight)
-          this.tagDropRef.nativeElement.scrollBy(0,scrollByValue);
-      }
-      if(event.keyCode === 38){
-        this.showToolTip = true;
-        let scrollByValue = this.activeindex % 6 == 0 ? -180: 0;
-        this.activeindex--;
-        this.showAllData(this.activeindex);
-        this.tagDropRef.nativeElement.scrollBy(0,scrollByValue);
-      }else  if(event.keyCode === 13){
-        this.showToolTip = false;
-        this.onItemSelect(this.currentActive);
       }
     }
 

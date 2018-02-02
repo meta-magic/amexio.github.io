@@ -92,6 +92,8 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
 
   @Input('enable-popover') enablepopover: boolean;
 
+  posixUp : boolean;
+
 
   @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
   public onElementOutClick(targetElement: HTMLElement) {
@@ -285,9 +287,21 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
     this.onBlur.emit();
   }
 
-  onFocus() {
+  onFocus(elem : any) {
     this.showToolTip = true;
+    this.posixUp = this.getListPosition(elem);
     this.focus.emit();
+  }
+
+  getListPosition(elementRef : any) :boolean{
+    let dropdownHeight : number = 325; //must be same in dropdown.scss
+    if(window.screen.height - (elementRef.getBoundingClientRect().bottom) < dropdownHeight){
+      return true;
+      //  return false;
+    }
+    else{
+      return false;
+    }
   }
 
   //From ControlValueAccessor interface

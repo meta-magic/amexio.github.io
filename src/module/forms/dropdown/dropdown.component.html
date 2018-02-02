@@ -1,4 +1,4 @@
-<div class="inputgroup">
+<div class="inputgroup" #rootDiv>
 
   <label [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
     {{fieldlabel}}
@@ -15,7 +15,7 @@
          [ngClass]="{'input-control-error' : inp.invalid && (inp.dirty || inp.touched),'input-control-success' : inp.valid && (inp.dirty || inp.touched)}"
          (blur)="onblur()"
          (click)="onDropDownClick($event)"
-         (focus)="onFocus()"
+         (focus)="onFocus(rootDiv)"
          (input)="onInput()"
          [attr.placeholder]="placeholder"
          [attr.disabled]="disabled ? true: null"
@@ -23,17 +23,12 @@
 
 
   <span class="drodown-caret-down" [ngClass]="{'loading-mask' : maskloader}">
-        <!--<i class="fa fa-chevron-down" aria-hidden="true"></i>-->
     <amexio-form-icon key="dropdown_caret"></amexio-form-icon>
   </span>
 
-  <span *ngIf="showToolTip" class="dropdown">
+  <span [ngClass]="{'dropdown-up' : posixUp, 'dropdown' : !posixUp}" [ngStyle]="{'display': showToolTip ? 'block' : 'none'}">
         <ul class="dropdown-list">
-<!--
-          <li class="list-items" *ngIf="search">
-            <input type="text" class="input-control" placeholder="search" (keyup)="onDropDownSearchKeyUp($event)"/>
-          </li>
--->
+
           <li class="list-items" *ngFor="let item of filteredOptions" (click)="onItemSelect(item)">
             <span>{{item[displayfield]}}</span>
             <span style="float : right">{{item?.checked ? '&#10004;': ''}}</span>

@@ -157,13 +157,24 @@ import {CommonDataService} from "../../services/data/common.data.service";
                 <ng-container *ngIf="cols.datatype=='number'">
                   <div class="datatable-col"  [style.width.%]="cols.width"  scope="row" [attr.data-label]="cols.text">
                    <span class="float-right">
-                     {{row[cols.dataindex]}}
+                     <ng-container *ngIf="row[cols.dataindex]!= null;else elseBlock">
+                        {{row[cols.dataindex]}}
+                     </ng-container>
+                     <ng-template #elseBlock>
+                       &nbsp;
+                     </ng-template>
+                    
                    </span>
                   </div>
                 </ng-container>
                 <ng-container *ngIf="!cols?.bodyTemplate && cols.datatype=='string'">
                   <div class="datatable-col" [style.width.%]="cols.width" scope="row" [attr.data-label]="cols.text">
-                    {{row[cols.dataindex]}}
+                    <ng-container *ngIf="row[cols.dataindex]!= null && row[cols.dataindex]!= '' ;else elseBlock">
+                      {{row[cols.dataindex]}}
+                    </ng-container>
+                    <ng-template #elseBlock>
+                      &nbsp;
+                    </ng-template>
                   </div>
                 </ng-container>
                 <ng-container *ngIf="cols.bodyTemplate">
@@ -238,11 +249,24 @@ import {CommonDataService} from "../../services/data/common.data.service";
                        
                     <ng-container *ngIf="colIndex == 0">
                       <span style="padding-left: 20px">
-                        {{row[cols.dataindex]}}
+                          <ng-container *ngIf="row[cols.dataindex]!= null ;else elseBlock">
+                     {{row[cols.dataindex]}}
+                    </ng-container>
+                    <ng-template #elseBlock>
+                      &nbsp;
+                    </ng-template>
+                        
                        </span>
                     </ng-container>
                     <ng-container *ngIf="colIndex != 0">
-                      <span class="float-right">{{row[cols.dataindex]}}</span>
+                      <span class="float-right">
+                        <ng-container *ngIf="row[cols.dataindex]!= null ;else elseBlock">
+                     {{row[cols.dataindex]}}
+                    </ng-container>
+                    <ng-template #elseBlock>
+                      &nbsp;
+                    </ng-template>
+                      </span>
                     </ng-container>
                        
                   </div>
