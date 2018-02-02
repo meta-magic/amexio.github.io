@@ -18,8 +18,16 @@
     padding: 0px;
     //width: 92%;
     .nav-bar{
-      padding: 10px;
+      //padding: 10px;
       background-color: lighten($navbarBGColor,20%);
+
+      .nav-item amexio-nav-item{
+        border-bottom: 1px solid $navbarColor;
+        cursor: pointer;
+        *{
+          vertical-align: middle;
+        }
+      }
     }
 
     .navbar-logo-unit{
@@ -50,7 +58,7 @@
       padding: 0px;
 
       *{
-        padding-bottom:10px;
+        padding:10px;
       }
     }
   }
