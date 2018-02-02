@@ -26,7 +26,7 @@
     <amexio-form-icon key="dropdown_caret"></amexio-form-icon>
   </span>
 
-  <span [ngClass]="{'dropdown-up' : posixUp, 'dropdown' : !posixUp}" [ngStyle]="{'display': showToolTip ? 'block' : 'none'}">
+  <span class="dropdown" [ngClass]="{'dropdown-up' : posixUp}" [ngStyle]="{'display': showToolTip ? 'block' : 'none'}">
         <ul class="dropdown-list">
 
           <li class="list-items" *ngFor="let item of filteredOptions" (click)="onItemSelect(item)">

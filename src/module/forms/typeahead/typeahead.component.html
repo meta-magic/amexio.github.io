@@ -25,7 +25,7 @@
 
 
 
-  <span [ngClass]="{'dropdown-up' : posixUp, 'dropdown' : !posixUp}" [ngClass]="{'loading-mask' : maskloader}" [ngStyle]="{'display': showToolTip ? 'block' : 'none'}" #dpList>
+  <span class="dropdown" [ngClass]="{'dropdown-up' : posixUp}" [ngClass]="{'loading-mask' : maskloader}" [ngStyle]="{'display': showToolTip ? 'block' : 'none'}" #dpList>
         <ul class="dropdown-list">
           <li class="list-items"   [ngClass]="{'list-items-active':item['active']}"
               *ngFor="let item of filteredResult"  (click)="onItemSelect(item)">
