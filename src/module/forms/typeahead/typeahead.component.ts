@@ -153,26 +153,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
       if (this.filteredResult.length > 0) this.showToolTip = true; else {
         this.showToolTip = false;
       }
-    }else if(event.keyCode){
-      if(event.keyCode === 40){
-        let currentScroll = this.dpList.nativeElement.scrollTop;
-        let scrollByValue = this.activeindex % 5 == 0 ? 120: 0;
-        this.showAllData(this.activeindex);
-        this.activeindex++;
-        if(currentScroll < maxScrollHeight)
-          this.dpList.nativeElement.scrollBy(0,scrollByValue);
-      }
-      if(event.keyCode === 38){
-        let scrollByValue = this.activeindex % 5 == 0 ? -120: 0;
-        this.activeindex--;
-        this.showAllData(this.activeindex);
-        this.dpList.nativeElement.scrollBy(0,scrollByValue);
-      }else  if(event.keyCode === 13){
-        this.showToolTip = false;
-        this.onItemSelect(this.currentActive);
-      }
     }
-
   }
 
   onChange(event: any) {

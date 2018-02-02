@@ -132,26 +132,6 @@ export class AmexioTagsInputComponent implements OnInit {
       if (this.filteredResult.length > 0) this.showToolTip = true; else {
         this.showToolTip = false;
       }
-    }else if(event.keyCode){
-      if(event.keyCode === 40){
-        this.showToolTip = true;
-        let currentScroll = this.tagDropRef.nativeElement.scrollTop;
-        let scrollByValue = this.activeindex % 6 == 0 ? 180: 0;
-        this.showAllData(this.activeindex);
-        this.activeindex++;
-        if(currentScroll < maxScrollHeight)
-          this.tagDropRef.nativeElement.scrollBy(0,scrollByValue);
-      }
-      if(event.keyCode === 38){
-        this.showToolTip = true;
-        let scrollByValue = this.activeindex % 6 == 0 ? -180: 0;
-        this.activeindex--;
-        this.showAllData(this.activeindex);
-        this.tagDropRef.nativeElement.scrollBy(0,scrollByValue);
-      }else  if(event.keyCode === 13){
-        this.showToolTip = false;
-        this.onItemSelect(this.currentActive);
-      }
     }
 
   }
