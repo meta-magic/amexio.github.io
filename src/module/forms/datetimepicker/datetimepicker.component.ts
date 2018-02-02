@@ -286,16 +286,26 @@ export class AmexioDateTimePicker implements OnInit {
   }
 
   onFocus(elem : any) {
-    if (!this.readonly) this.showToolTip = true;
-    this.posixUp = this.getListPosition(elem);
+    // if (!this.readonly)
+      // this.showToolTip = true;
+    // this.posixUp = this.getListPosition(elem);
   }
 
+  onFocusOut(value : any){
+    if(isNaN(Date.parse(value.value)))
+      value.value = '';
+    else
+      this.value = Date.parse(value.value);
+  }
+
+  openPicker(elem : any){
+    this.showToolTip = true;
+    this.posixUp = this.getListPosition(elem);
+  }
   getListPosition(elementRef : any) :boolean{
-    debugger;
     let dropdownHeight : number = 350; //must be same in dropdown.scss
     if(window.screen.height - (elementRef.getBoundingClientRect().bottom) < dropdownHeight){
       return true;
-      //  return false;
     }
     else{
       return false;

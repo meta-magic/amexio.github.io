@@ -11,7 +11,7 @@ import {AmexioButtonDropDownItemComponent} from "./button.dropdown.item";
   selector: 'amexio-btn-dropdown', template: `
 
     <div class="button-group" #rootDiv>
-       <button class="button-dropdown-main" (click)="onClick()" #btnRef
+       <button class="button-dropdown-main" (click)="onClick(rootDiv)" #btnRef
                [ngClass]="{'button-default': size=='default' || size ==null,'button-small': size=='small','button-large' : size=='large','button-primary' : type == 'primary' || type == null,'button-success' : type == 'success',' button-danger' : type=='danger','button-warning' : type=='warning'}">
 
          <amexio-form-icon style="float:right;" key="button_caret-down"></amexio-form-icon>

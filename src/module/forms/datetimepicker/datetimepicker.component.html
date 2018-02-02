@@ -9,10 +9,12 @@
 
     <ng-container *ngIf="datepicker && !timepicker">
       <input type="text"
+             #pickerDt
              value="{{dateModel|date:dateformat}}"
              [attr.disabled]="readonly ? true: null"
              (blur)="onBlur()"
              (focus)="onFocus(rootDiv)"
+             (focusout)="onFocusOut(pickerDt)"
              (change)="change.emit()"
              class="input-control" placeholder="Choose Date"/>
     </ng-container>
@@ -28,7 +30,7 @@
     </ng-container>
 
 
-    <div class="drodown-caret-down">
+    <div class="drodown-caret-down" style="cursor: pointer" (click)="openPicker(rootDiv)">
       <!--<i class="fa fa-calendar" aria-hidden="true"></i>-->
       <amexio-form-icon key="datepicker_calendar"></amexio-form-icon>
     </div>
