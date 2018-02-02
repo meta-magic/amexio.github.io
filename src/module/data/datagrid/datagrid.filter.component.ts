@@ -6,11 +6,12 @@ import {CommonDataService} from "../../services/data/common.data.service";
 @Component({
   selector: 'data-grid-filter', template: `
     <ng-container *ngIf="column.datatype==='string'">
+      <div class="inputgroup">
       <input type="text" [(ngModel)]="filterValue" [attr.placeholder]="column.text" (keyup)="keyUpSearch(column)"
-             type="text" class="form-control text-input-width"
+             type="text" class="input-control"
              aria-label="Text input with dropdown button">
       <!--<i class="fa fa-filter" aria-hidden="true" (click)="showToolTip = !showToolTip"></i>-->
-      <span class="datatable-icon-right">
+      <span class="datatable-filter-icon">
         <amexio-data-icon key="datagrid_filter" (click)="showToolTip = !showToolTip"></amexio-data-icon>
       </span>
       <span *ngIf="showToolTip" class="dropdown" style="width: 250px;">
@@ -24,15 +25,17 @@ import {CommonDataService} from "../../services/data/common.data.service";
           </ng-container>
          </ul>
       </span>
+      </div>
     </ng-container>
     
     <ng-container *ngIf="column.datatype==='number'">
-      <span class="float-right">
+              <div class="inputgroup float-right">
+
         <input type="text" [(ngModel)]="filterValue" [attr.placeholder]="column.text" (keyup)="keyUpSearch(column)"
-               type="number" class="form-control text-input-width"
+               type="number" class="input-control"
                aria-label="Text input with dropdown button">
         <!--<i class="fa fa-filter" aria-hidden="true" (click)="showToolTip = !showToolTip"></i>-->
-     <span class="datatable-icon-right">
+     <span class="datatable-filter-icon">
       <amexio-data-icon key="datagrid_filter" (click)="showToolTip = !showToolTip"></amexio-data-icon>
      </span>
        <span *ngIf="showToolTip" class="dropdown" style="width: 250px;">
@@ -46,8 +49,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
           </ng-container>
          </ul>
       </span>
-      </span>
-        
+              </div>
     </ng-container>
     
   `
