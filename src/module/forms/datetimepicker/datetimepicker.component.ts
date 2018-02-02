@@ -27,6 +27,8 @@ export class AmexioDateTimePicker implements OnInit {
 
   @Input() required: boolean;
 
+  posixUp : boolean;
+
   @Output() blur: EventEmitter<any> = new EventEmitter<any>();
   @Output() change: EventEmitter<any> = new EventEmitter<any>();
   @Output() input: EventEmitter<any> = new EventEmitter<any>();
@@ -283,8 +285,21 @@ export class AmexioDateTimePicker implements OnInit {
     this.onTouchedCallback = fn;
   }
 
-  onFocus() {
+  onFocus(elem : any) {
     if (!this.readonly) this.showToolTip = true;
+    this.posixUp = this.getListPosition(elem);
+  }
+
+  getListPosition(elementRef : any) :boolean{
+    debugger;
+    let dropdownHeight : number = 350; //must be same in dropdown.scss
+    if(window.screen.height - (elementRef.getBoundingClientRect().bottom) < dropdownHeight){
+      return true;
+      //  return false;
+    }
+    else{
+      return false;
+    }
   }
 
   onSelect() {

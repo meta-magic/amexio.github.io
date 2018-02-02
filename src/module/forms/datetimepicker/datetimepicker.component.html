@@ -1,7 +1,7 @@
 
 
 <div >
-  <div class="inputgroup">
+  <div class="inputgroup" #rootDiv>
 
     <label>
       {{fieldlabel}}
@@ -12,7 +12,7 @@
              value="{{dateModel|date:dateformat}}"
              [attr.disabled]="readonly ? true: null"
              (blur)="onBlur()"
-             (focus)="onFocus()"
+             (focus)="onFocus(rootDiv)"
              (change)="change.emit()"
              class="input-control" placeholder="Choose Date"/>
     </ng-container>
@@ -22,7 +22,7 @@
              value="{{dateModel|date:dateformat}} {{hrs + ' : ' + min}}"
              [attr.disabled]="readonly ? true: null"
              (blur)="onBlur()"
-             (focus)="onFocus()"
+             (focus)="onFocus(rootDiv)"
              (change)="change.emit()"
              class="input-control" placeholder="Choose Time"/>
     </ng-container>
@@ -33,9 +33,9 @@
       <amexio-form-icon key="datepicker_calendar"></amexio-form-icon>
     </div>
 
-    <div *ngIf="showToolTip" class="datetimepicker">
+    <div [ngStyle]="{'display': showToolTip ? 'block' : 'none','bottom' : posixUp ? '100%' : 'none'}" class="datetimepicker">
 
-      <div class="datetimepickertopbar" *ngIf="datepicker">
+      <div class="datetimepickertopbar" [ngStyle]="{'display': datepicker ? 'block' : 'none'}">
         <ul>
           <li class="prev">
             <!--<i (click)="prevYear($event)" class="fa fa fa-step-backward" aria-hidden="true"></i>-->
@@ -55,11 +55,11 @@
         </ul>
       </div>
 
-      <ul class="weekdays" *ngIf="datepicker">
+      <ul class="weekdays" [ngStyle]="{'display': datepicker ? 'block' : 'none'}">
         <li *ngFor="let dayTitle of daysTitle">{{dayTitle.text}}</li>
       </ul>
 
-      <ul  class="days" *ngIf="datepicker">
+      <ul  class="days" [ngStyle]="{'display': datepicker ? 'block' : 'none'}">
 
         <ng-container *ngFor="let dayArray of daysArray">
           <li *ngFor="let day of dayArray" >
@@ -77,7 +77,7 @@
 
       </ul>
 
-      <table class="table" align="center" *ngIf="timepicker" style="cursor : pointer;text-align: center;padding: 5px;">
+      <table class="table" align="center" [ngStyle]="{'display': timepicker ? 'block' : 'none'}" style="cursor : pointer;text-align: center;padding: 5px;">
         <!--if picker is true-->
         <tr style="padding: 10px;">
           <td colspan="2"></td>

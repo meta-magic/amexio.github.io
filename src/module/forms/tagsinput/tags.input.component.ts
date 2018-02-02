@@ -1,7 +1,10 @@
 /**
  * Created by pratik on 20/12/17.
  */
-import {Component, EventEmitter, HostListener, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {
+  Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, Renderer2,
+  ViewChild
+} from '@angular/core';
 import {noop} from "rxjs/util/noop";
 import {CommonDataService} from "../../services/data/common.data.service";
 
@@ -29,6 +32,21 @@ export class AmexioTagsInputComponent implements OnInit {
   @Output() onChange: EventEmitter<any> = new EventEmitter<any>();
 
   @Output() focus: any = new EventEmitter<any>();
+
+  @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
+  public onElementOutClick(targetElement: HTMLElement) {
+    let parentFound = false;
+    while (targetElement != null && !parentFound) {
+      if (targetElement === this.element.nativeElement) {
+        parentFound = true;
+      }
+      targetElement = targetElement.parentElement;
+    }
+    if (!parentFound) {
+      this.showToolTip = false;
+    }
+  }
+
 
 
   onSelections: any[] = [];
@@ -88,7 +106,7 @@ export class AmexioTagsInputComponent implements OnInit {
 
   maskloader:boolean=true;
 
-  constructor(public dataService: CommonDataService) {
+  constructor(public dataService: CommonDataService,public element: ElementRef, public renderer: Renderer2) {
 
   }
 
