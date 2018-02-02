@@ -98,7 +98,7 @@
 
     .date-today{
       padding-top: 1%;
-      padding-left: 45%;
+      padding-left: 42%;
     }
 
     .currentMonth{
@@ -115,4 +115,12 @@
 
 .datetimepicker-up{
   bottom: 100%;
+}
+
+
+@media screen and (max-width: 600px) {
+  .datetimepicker .days .date-today{
+    padding-top: 1%;
+    padding-left: 36%;
+  }
 }

@@ -181,6 +181,7 @@ export class AmexioDateTimePicker implements OnInit {
   setToday() {
     this.currrentDate = new Date();
     this.initDate();
+    this.showToolTip = !this.showToolTip;
   }
 
   initDate() {
