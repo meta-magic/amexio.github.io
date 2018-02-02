@@ -354,3 +354,35 @@ input[type=range]:focus::-ms-fill-upper {
   background: #276c30;
 }
 
+
+
+
+
+
+@media screen and (max-width: 600px) {
+  #player {
+    float:left;
+    padding:1em 1em .5em;
+    border:2px solid darkgreen;
+    border-radius: 9px;
+    width: 89%;
+  }
+
+  #controls {
+    width: 98%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 10px;
+    padding-bottom: 1px;
+    border-radius: 7px;
+  }
+
+  video {
+    border:1px solid darkgreen;
+    width:98%;
+    height:231px;
+    background:black;
+  }
+}
+
