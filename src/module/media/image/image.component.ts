@@ -32,7 +32,7 @@ export class AmexioImageComponent implements OnInit {
 
   @Input('c-class') cclass: string;
 
-  @Input() mdb: string;
+  @Input() mda: string;
 
   @Input() width:string;
 

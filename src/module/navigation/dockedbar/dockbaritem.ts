@@ -31,7 +31,7 @@ export class DockbarComponent implements OnInit {
 
   @Input() icon: string;
 
-  @Input() mdb: string;
+  @Input() mda: string;
 
   @Input() width: string;
 

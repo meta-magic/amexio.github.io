@@ -30,7 +30,7 @@ import {DockbarComponent} from "./dockbaritem";
           </ng-container>
 
           <!--this is for fontawesome-->
-          <ng-container *ngIf="(!(dockbar.icon && dockbar.mdb) && dockbar.icon)">
+          <ng-container *ngIf="(!(dockbar.icon && dockbar.mda) && dockbar.icon)">
             <amexio-image [icon-class]="dockbar.icon" [c-class]=""></amexio-image>
             <!--<i [ngClass]="dockbar.icon"></i>-->
           </ng-container>
