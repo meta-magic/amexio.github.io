@@ -35,7 +35,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
           </div>
           <footer *ngIf="footer" class="modal-window-footer"
                   [ngClass]="{'modal-window-footer-max': isFullWindow && maximize,'flex-start':(footeralign =='left'),'flex-end':(footeralign=='right'),'flex-center':(footeralign=='center')}">
-            <div [ngStyle]="{'padding-right':(isFullWindow && maximize)? '7px' : '0px'}">
+            <div [ngClass]="{'footer-right-align': (isFullWindow && maximize)}">
               <ng-content select="amexio-action"></ng-content>
             </div>
           </footer>
