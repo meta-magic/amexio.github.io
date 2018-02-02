@@ -45,21 +45,17 @@ import {AmexioGridColumnComponent} from "../datagrid/data.grid.column";
     </div>
 
     <div class="datatable">
-      <div class="datatable-row" *ngFor="let row of viewRows;let i=index" (click)="setSelectedRow(row, $event)">
+      <div class="datatable-row" (click)="toogle(row,i)" *ngFor="let row of viewRows;let i=index" (click)="setSelectedRow(row, $event)">
         <ng-container *ngFor="let cols of columns;let colIndex = index">
           <ng-container *ngIf="cols.datatype=='string'">
             <div class="datatable-col" [attr.data-label]="cols.text">
               <ng-container *ngIf="colIndex == 0">
               <span [ngStyle]="{'padding-left':(20*row.level)+'px'}">
-                    
-                <!--<i *ngIf="!row.expanded && row.children" class="fa fa-plus" aria-hidden="true" (click)="toogle(row,i)"></i>-->
                 <ng-container *ngIf="!row.expanded && row.children">
-                  <amexio-data-icon key="tree_collapse" (onClick)="toogle(row,i)"></amexio-data-icon>
+                  <amexio-data-icon key="tree_collapse"></amexio-data-icon>
                 </ng-container>
-
-                <!--<i *ngIf="row.expanded && row.children" class="fa fa-minus" aria-hidden="true" (click)="toogle(row,i)"></i>-->
                 <ng-container *ngIf="row.expanded && row.children">
-                  <amexio-data-icon key="tree_expand" (onClick)="toogle(row,i)"></amexio-data-icon>
+                  <amexio-data-icon key="tree_expand"></amexio-data-icon>
                 </ng-container>
                  <ng-container *ngIf="row[cols.dataindex]!= null && row[cols.dataindex]!= '' ;else elseBlock">
                       {{row[cols.dataindex]}}
@@ -84,15 +80,11 @@ import {AmexioGridColumnComponent} from "../datagrid/data.grid.column";
             <div class="datatable-col" [attr.data-label]="cols.text" >
               <ng-container *ngIf="colIndex == 0">
               <span [ngStyle]="{'padding-left':(20*row.level)+'px'}">
-                    
-                <!--<i *ngIf="!row.expanded && row.children" class="fa fa-plus" aria-hidden="true" (click)="toogle(row,i)"></i>-->
                 <ng-container *ngIf="!row.expanded && row.children">
-                  <amexio-data-icon key="tree_collapse" (onClick)="toogle(row,i)"></amexio-data-icon>
+                  <amexio-data-icon key="tree_collapse"></amexio-data-icon>
                 </ng-container>
-
-                <!--<i *ngIf="row.expanded && row.children" class="fa fa-minus" aria-hidden="true" (click)="toogle(row,i)"></i>-->
                 <ng-container *ngIf="row.expanded && row.children">
-                  <amexio-data-icon key="tree_expand" (onClick)="toogle(row,i)"></amexio-data-icon>
+                  <amexio-data-icon key="tree_expand"></amexio-data-icon>
                 </ng-container>
                  <span class="float-right">
                     <ng-container *ngIf="row[cols.dataindex]!= null;else elseBlock">
