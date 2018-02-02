@@ -42,6 +42,14 @@ export class AmexioNavBarComponent implements OnInit {
       this.mobile = false;
     }
   }
+  open(){
+  this.showmenu=true;
+  }
+  close(){
+    if(this.mobile){
+      this.showmenu=false;
+    }
+  }
   onResize(event:any){
     this.handleDeviceSetting();
   }

@@ -11,7 +11,7 @@
 <!--this is for fontawesome-->
 <ng-container *ngIf="iconclass && (!path && !mda)">
   <i [attr.class]="iconclass" [attr.title]="tooltip" (click)="onImageClick($event)"></i>
-  <label class="image-title" *ngIf="title">{{title}}</label>
+  <label class="image-title" *ngIf="title" (click)="onImageClick($event)" style="cursor: pointer">{{title}}</label>
 </ng-container>
 
 <ng-container *ngIf=" title && !iconclass">
