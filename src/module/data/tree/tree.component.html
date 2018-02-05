@@ -1,8 +1,4 @@
-<div style="height: 300px;" *ngIf="mask">
-  <div class="spinner"></div>
-</div>
-<ng-container *ngIf="!mask">
-  <li class="treenode" *ngFor="let node of data" >
+ <li class="treenode" *ngFor="let node of data" [ngStyle]="{'display' : !mask ? 'block' : 'hidden'}">
     <div class="treenode-content">
 
     <span class="treenode-toggler" (click)="onClick(node)" *ngIf="node.children && (node.children.length>0)">
@@ -36,5 +32,4 @@
       <amexio-treeview [data]="node.children" (nodeClick)="onNodeClick($event)" [templates]="templates" [enable-checkbox]="enablecheckbox" (onTreeNodeChecked)="this.onTreeNodeCheck($event)" ></amexio-treeview>
     </ul>
   </li>
-</ng-container>
 

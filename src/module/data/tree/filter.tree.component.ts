@@ -11,7 +11,6 @@ import {CommonDataService} from "../../services/data/common.data.service";
 
 @Component({
   selector: 'amexio-tree-filter-view', template: `
-
     <div>
       <div>
         <div class="inputgroup">
@@ -89,6 +88,8 @@ export class AmexioFilterTreeComponent implements OnInit, AfterViewInit, DoCheck
   previousValue: any;
 
   showToolTip: boolean;
+
+  mask: boolean = true;
 
   @ContentChild('amexioTreeTemplate') parentTmp: TemplateRef<any>;
 
@@ -220,6 +221,7 @@ export class AmexioFilterTreeComponent implements OnInit, AfterViewInit, DoCheck
       this.orgTreeData = JSON.parse(JSON.stringify(tdata));
       this.treeData = tdata;
     }
+    this.mask = false;
   }
 
   getData(httpResponse: any) {
