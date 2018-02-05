@@ -1,10 +1,10 @@
-<ng-container *ngIf="data.length == 0">
+<ng-container *ngIf="data?.length == 0">
   <div style="height: 300px;" *ngIf="mask">
     <div class="spinner"></div>
   </div>
 </ng-container>
 
-<ng-container *ngIf="data.length > 0">
+<ng-container *ngIf="data?.length > 0">
   <li class="treenode" *ngFor="let node of data">
     <div class="treenode-content">
 
