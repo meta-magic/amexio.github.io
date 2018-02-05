@@ -10,7 +10,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
 })
 export class AmexioTreeViewComponent {
 
-  @Input() data: any[];
+  @Input() data: any[] = [];
 
   @Input('http-url') httpurl: string;
 
