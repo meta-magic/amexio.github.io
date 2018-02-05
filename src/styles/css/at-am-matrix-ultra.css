@@ -478,7 +478,7 @@ button {
 /**COLLAPSIBLE SEARCH STARTS **/
 /****************************************************/
 .search {
-  background: #ededed url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+  background: #ededed url("search-icon.png") no-repeat 9px center;
   border: solid 1px #ccc;
   padding: 9px 10px 0px 32px;
   transition: all .5s;
@@ -1069,7 +1069,7 @@ input:checked + .toggle-slider:before {
   width: 17px !important;
   height: 21px !important;
   cursor: default;
-  background: url(assets/images/components/slider.png) 0 0 no-repeat;
+  background: url("slider.png") 0 0 no-repeat;
   outline: none;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
