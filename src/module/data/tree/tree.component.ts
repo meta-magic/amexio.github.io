@@ -10,7 +10,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
 })
 export class AmexioTreeViewComponent {
 
-  @Input() data: any[] = [];
+  @Input() data: any[];
 
   @Input('http-url') httpurl: string;
 
@@ -32,8 +32,6 @@ export class AmexioTreeViewComponent {
   previousValue: any;
 
   responseData: any;
-
-  mask : boolean = true;
 
   constructor(public dataService: CommonDataService, private cdf: ChangeDetectorRef) {
 
@@ -106,7 +104,6 @@ export class AmexioTreeViewComponent {
     }
     this.data = responsedata;
     this.activateNode(this.data, null);
-    this.mask = false;
   }
 
   emitCheckedData(checkedData: any) {
