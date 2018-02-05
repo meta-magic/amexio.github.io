@@ -136,7 +136,7 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
       this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
     }
-    this.maskloader=false;
+
   }
 
 
@@ -181,6 +181,7 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
       });
       this.onSingleSelect.emit(this.value);
     }
+    this.maskloader=false;
   }
 
   ngDoCheck() {

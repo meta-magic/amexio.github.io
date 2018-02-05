@@ -129,7 +129,7 @@ export class AmexioTagsInputComponent implements OnInit {
       this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
     }
-    this.maskloader=false;
+
   }
 
 
@@ -241,6 +241,7 @@ export class AmexioTagsInputComponent implements OnInit {
     }
 
     this.viewData = responsedata;
+    this.maskloader=false;
   }
 
   setValue(value: any, ref: any) {

@@ -146,7 +146,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
       this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
     }
-    this.maskloader=false;
+
   }
 
   onclick() {
@@ -216,6 +216,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
     }
 
     this.viewData = responsedata;
+    this.maskloader=false;
   }
 
   ngDoCheck() {

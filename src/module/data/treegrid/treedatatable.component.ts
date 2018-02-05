@@ -45,11 +45,15 @@ import {AmexioGridColumnComponent} from "../datagrid/data.grid.column";
     </div>
 
     <div class="datatable">
-      <div class="datatable-row" (click)="toogle(row,i)" *ngFor="let row of viewRows;let i=index" (click)="setSelectedRow(row, $event)">
-        <ng-container *ngFor="let cols of columns;let colIndex = index">
-          <ng-container *ngIf="cols.datatype=='string'">
-            <div class="datatable-col" [attr.data-label]="cols.text">
-              <ng-container *ngIf="colIndex == 0">
+      <div style="height: 300px;" *ngIf="mask">
+        <div class="spinner"></div>
+      </div>
+      <ng-container *ngIf="!mask">
+        <div class="datatable-row" (click)="toogle(row,i)" *ngFor="let row of viewRows;let i=index" (click)="setSelectedRow(row, $event)">
+          <ng-container *ngFor="let cols of columns;let colIndex = index">
+            <ng-container *ngIf="cols.datatype=='string'">
+              <div class="datatable-col" [attr.data-label]="cols.text">
+                <ng-container *ngIf="colIndex == 0">
               <span [ngStyle]="{'padding-left':(20*row.level)+'px'}">
                 <ng-container *ngIf="!row.expanded && row.children">
                   <amexio-data-icon key="tree_collapse"></amexio-data-icon>
@@ -64,21 +68,21 @@ import {AmexioGridColumnComponent} from "../datagrid/data.grid.column";
                       &nbsp;
                     </ng-template>
                </span>
-              </ng-container>
-
-              <ng-container *ngIf="colIndex > 0">
-                <ng-container *ngIf="row[cols.dataindex]!= null && row[cols.dataindex]!= '' ;else elseBlock">
-                  {{row[cols.dataindex]}}
                 </ng-container>
-                <ng-template #elseBlock>
-                  &nbsp;
-                </ng-template>
-              </ng-container>
-            </div>
-          </ng-container>
-          <ng-container *ngIf="cols.datatype=='number'">
-            <div class="datatable-col" [attr.data-label]="cols.text" >
-              <ng-container *ngIf="colIndex == 0">
+
+                <ng-container *ngIf="colIndex > 0">
+                  <ng-container *ngIf="row[cols.dataindex]!= null && row[cols.dataindex]!= '' ;else elseBlock">
+                    {{row[cols.dataindex]}}
+                  </ng-container>
+                  <ng-template #elseBlock>
+                    &nbsp;
+                  </ng-template>
+                </ng-container>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="cols.datatype=='number'">
+              <div class="datatable-col" [attr.data-label]="cols.text" >
+                <ng-container *ngIf="colIndex == 0">
               <span [ngStyle]="{'padding-left':(20*row.level)+'px'}">
                 <ng-container *ngIf="!row.expanded && row.children">
                   <amexio-data-icon key="tree_collapse"></amexio-data-icon>
@@ -95,9 +99,9 @@ import {AmexioGridColumnComponent} from "../datagrid/data.grid.column";
                     </ng-template>
                  </span>
                </span>
-              </ng-container>
+                </ng-container>
 
-              <ng-container *ngIf="colIndex > 0">
+                <ng-container *ngIf="colIndex > 0">
                <span class="float-right">
                <ng-container *ngIf="row[cols.dataindex]!= null;else elseBlock">
                       {{row[cols.dataindex]}}
@@ -106,15 +110,17 @@ import {AmexioGridColumnComponent} from "../datagrid/data.grid.column";
                       &nbsp;
                  </ng-template>
                </span>
-              </ng-container>
-            </div>
-              
-           
+                </ng-container>
+              </div>
+
+
+            </ng-container>
           </ng-container>
-        </ng-container>
-       
-       
-      </div>
+
+
+        </div>
+      </ng-container>
+      
     </div>
 
   `,
@@ -144,6 +150,8 @@ export class TreeDataTableComponent implements OnInit {
   previousValue: any;
 
   viewRows: any;
+
+  mask : boolean = true;
 
   @ContentChildren(AmexioGridColumnComponent) columnRef: QueryList<AmexioGridColumnComponent>;
 
@@ -197,6 +205,7 @@ export class TreeDataTableComponent implements OnInit {
       this.viewRows[index].level = 1;
       this.viewRows[index].expand = false;
     });
+    this.mask = false;
   }
 
   getResponseData(httpResponse: any) {

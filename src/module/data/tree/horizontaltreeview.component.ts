@@ -9,7 +9,10 @@ import {CommonDataService} from "../../services/data/common.data.service";
 
     <div class="horizontaltreeview">
       <span class="horizontaltreeview-node-label">{{label}}</span>
-      <amexio-horizontal-treeviewnode [data]="data" (onNodeClick)="nodeclick($event)"></amexio-horizontal-treeviewnode>
+      <div style="height: 300px;" *ngIf="mask">
+        <div class="spinner"></div>
+      </div>
+      <amexio-horizontal-treeviewnode *ngIf="!mask" [data]="data" (onNodeClick)="nodeclick($event)"></amexio-horizontal-treeviewnode>
     </div>
   `
 })
@@ -28,6 +31,8 @@ export class HorizontalTreeViewComponent {
   @Output() nodeClick: any = new EventEmitter<any>();
 
   responseData: any;
+
+  mask : boolean = true;
 
   constructor(public dataService: CommonDataService) {
 
@@ -56,6 +61,7 @@ export class HorizontalTreeViewComponent {
       responsedata = httpResponse;
     }
     this.data = responsedata;
+    this.mask = false;
   }
 
   nodeclick(node: any) {

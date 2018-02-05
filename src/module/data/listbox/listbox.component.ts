@@ -72,7 +72,6 @@ export class AmexioListBoxComponent implements OnInit, AfterViewInit {
       this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
     }
-    this.maskloader=false;
   }
 
   ngDoCheck() {
@@ -99,6 +98,8 @@ export class AmexioListBoxComponent implements OnInit, AfterViewInit {
         row['isSelected'] = false;
       }
     });
+
+    this.maskloader=false;
   }
 
   filterData() {

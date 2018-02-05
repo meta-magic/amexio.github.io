@@ -137,25 +137,29 @@ import {CommonDataService} from "../../services/data/common.data.service";
     <ng-container *ngIf="!groupby">
       <div class="datatable-height" [style.height.px]="height">
         <div class="datatable">
-          <div class="datatable-row" *ngFor="let row of viewRows;let i=index" id="{{'row'+i}}" [ngClass]="rowBgColor"
-               (click)="onRowClick(row, i,rowData)" #rowData>
+          <div style="height: 300px;" *ngIf="mask">
+            <div class="spinner"></div>
+          </div>
+          <ng-container *ngIf="!mask">
+            <div class="datatable-row" *ngFor="let row of viewRows;let i=index" id="{{'row'+i}}" [ngClass]="rowBgColor"
+                 (click)="onRowClick(row, i,rowData)" #rowData>
 
-            <ng-container *ngIf="enablecheckbox">
-              <div class="datatable-col datatable-checkbox-width checkbox-col">
-                <div class="inputgroup">
-                  <div class="input-box">
-                    <div (click)="setSelectedRow(row, check)" [class]="setCheckBoxSelectClass(check)" #check>
-                      {{((setCheckBoxSelectClass(check) == 'checkbox active') && (check.classList.value == 'checkbox active')) || ((setCheckBoxSelectClass(check) == 'checkbox default') && (check.classList.value == 'checkbox active')) ? '&#10004;' : ''}}
+              <ng-container *ngIf="enablecheckbox">
+                <div class="datatable-col datatable-checkbox-width checkbox-col">
+                  <div class="inputgroup">
+                    <div class="input-box">
+                      <div (click)="setSelectedRow(row, check)" [class]="setCheckBoxSelectClass(check)" #check>
+                        {{((setCheckBoxSelectClass(check) == 'checkbox active') && (check.classList.value == 'checkbox active')) || ((setCheckBoxSelectClass(check) == 'checkbox default') && (check.classList.value == 'checkbox active')) ? '&#10004;' : ''}}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </ng-container>
+              </ng-container>
 
-            <ng-container *ngFor="let cols of columns;let colIndex = index">
-              <ng-container *ngIf="!cols.hidden">
-                <ng-container *ngIf="cols.datatype=='number'">
-                  <div class="datatable-col"  [style.width.%]="cols.width"  scope="row" [attr.data-label]="cols.text">
+              <ng-container *ngFor="let cols of columns;let colIndex = index">
+                <ng-container *ngIf="!cols.hidden">
+                  <ng-container *ngIf="cols.datatype=='number'">
+                    <div class="datatable-col"  [style.width.%]="cols.width"  scope="row" [attr.data-label]="cols.text">
                    <span class="float-right">
                      <ng-container *ngIf="row[cols.dataindex]!= null;else elseBlock">
                         {{row[cols.dataindex]}}
@@ -165,28 +169,30 @@ import {CommonDataService} from "../../services/data/common.data.service";
                      </ng-template>
                     
                    </span>
-                  </div>
+                    </div>
+                  </ng-container>
+                  <ng-container *ngIf="!cols?.bodyTemplate && cols.datatype=='string'">
+                    <div class="datatable-col" [style.width.%]="cols.width" scope="row" [attr.data-label]="cols.text">
+                      <ng-container *ngIf="row[cols.dataindex]!= null && row[cols.dataindex]!= '' ;else elseBlock">
+                        {{row[cols.dataindex]}}
+                      </ng-container>
+                      <ng-template #elseBlock>
+                        &nbsp;
+                      </ng-template>
+                    </div>
+                  </ng-container>
+                  <ng-container *ngIf="cols.bodyTemplate">
+                    <div class="datatable-col" [style.width.%]="cols.width" scope="row" [attr.data-label]="cols.text">
+                      <ng-template  [ngTemplateOutlet]="cols.bodyTemplate"
+                                    [ngTemplateOutletContext]="{ $implicit: { text : row[cols.dataindex] }, row: row }"></ng-template>
+                    </div>
+                  </ng-container>
                 </ng-container>
-                <ng-container *ngIf="!cols?.bodyTemplate && cols.datatype=='string'">
-                  <div class="datatable-col" [style.width.%]="cols.width" scope="row" [attr.data-label]="cols.text">
-                    <ng-container *ngIf="row[cols.dataindex]!= null && row[cols.dataindex]!= '' ;else elseBlock">
-                      {{row[cols.dataindex]}}
-                    </ng-container>
-                    <ng-template #elseBlock>
-                      &nbsp;
-                    </ng-template>
-                  </div>
-                </ng-container>
-                <ng-container *ngIf="cols.bodyTemplate">
-                  <div class="datatable-col" [style.width.%]="cols.width" scope="row" [attr.data-label]="cols.text">
-                    <ng-template  [ngTemplateOutlet]="cols.bodyTemplate"
-                                  [ngTemplateOutletContext]="{ $implicit: { text : row[cols.dataindex] }, row: row }"></ng-template>
-                  </div>
-                </ng-container>
-                </ng-container>
-              
-            </ng-container>
-          </div>
+
+              </ng-container>
+            </div>
+          </ng-container>
+       
         </div>
       </div>
 
@@ -197,57 +203,61 @@ import {CommonDataService} from "../../services/data/common.data.service";
     <ng-container *ngIf="groupby && !enabledatafilter">
       <div class="datatable-height" [style.height.px]="height">
         <div class="datatable" style="table-layout: inherit !important;">
-          <div class="datatable-row" (click)="toogle(row,i)"  *ngFor="let row of viewRows;let i=index" id="{{'row'+i}}" (click)="onRowClick(row, i, rowData)" #rowData>
-            <ng-container *ngIf="enablecheckbox">
-              <div class="datatable-col datatable-checkbox-width checkbox-col">
-                <div class="inputgroup">
-                  <div class="input-box">
-                    <div (click)="selectParent(row)" [class]="row.isSelected ?'checkbox active':'checkbox default'">
-                      {{row.isSelected ? '&#10004;' : ''}}
+          <div style="height: 300px;" *ngIf="mask">
+            <div class="spinner"></div>
+          </div>
+          <ng-container *ngIf="!mask">
+            <div class="datatable-row" (click)="toogle(row,i)"  *ngFor="let row of viewRows;let i=index" id="{{'row'+i}}" (click)="onRowClick(row, i, rowData)" #rowData>
+              <ng-container *ngIf="enablecheckbox">
+                <div class="datatable-col datatable-checkbox-width checkbox-col">
+                  <div class="inputgroup">
+                    <div class="input-box">
+                      <div (click)="selectParent(row)" [class]="row.isSelected ?'checkbox active':'checkbox default'">
+                        {{row.isSelected ? '&#10004;' : ''}}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </ng-container>
-            <ng-container *ngFor="let cols of columns;let colIndex = index">
-              <ng-container *ngIf="isGroupChecking(row)">
-                
-                <ng-container *ngIf="colIndex == 0">
-                  <div class="datatable-col col-group">
-                  <!--<i *ngIf="!row.expanded" class="fa fa-caret-right" aria-hidden="true" (click)="toogle(row,i)"></i>-->
-                  <ng-container *ngIf="!row.expanded">
-                    <amexio-data-icon key="datagrid_expand"></amexio-data-icon>
-                  </ng-container>
-                  <ng-container *ngIf="row.expanded">
-                    <amexio-data-icon key="datagrid_collapse"></amexio-data-icon>
-                  </ng-container>
-                  {{row.group}}
-                  </div>
-                </ng-container>
-
-                <ng-container *ngIf="colIndex != 0">
-                  <div class="datatable-col col-hidden">
-                  </div>
-                </ng-container>
               </ng-container>
-              <ng-container *ngIf="!isGroupChecking(row)">
-                <ng-container *ngIf="cols.datatype=='string'">
-                  <div class="datatable-col" [style.width.%]="cols.width"  [attr.data-label]="cols.text">
-                    <ng-container *ngIf="colIndex == 0">
+              <ng-container *ngFor="let cols of columns;let colIndex = index">
+                <ng-container *ngIf="isGroupChecking(row)">
+
+                  <ng-container *ngIf="colIndex == 0">
+                    <div class="datatable-col col-group">
+                      <!--<i *ngIf="!row.expanded" class="fa fa-caret-right" aria-hidden="true" (click)="toogle(row,i)"></i>-->
+                      <ng-container *ngIf="!row.expanded">
+                        <amexio-data-icon key="datagrid_expand"></amexio-data-icon>
+                      </ng-container>
+                      <ng-container *ngIf="row.expanded">
+                        <amexio-data-icon key="datagrid_collapse"></amexio-data-icon>
+                      </ng-container>
+                      {{row.group}}
+                    </div>
+                  </ng-container>
+
+                  <ng-container *ngIf="colIndex != 0">
+                    <div class="datatable-col col-hidden">
+                    </div>
+                  </ng-container>
+                </ng-container>
+                <ng-container *ngIf="!isGroupChecking(row)">
+                  <ng-container *ngIf="cols.datatype=='string'">
+                    <div class="datatable-col" [style.width.%]="cols.width"  [attr.data-label]="cols.text">
+                      <ng-container *ngIf="colIndex == 0">
                    <span style="padding-left: 20px">
                      {{row[cols.dataindex]}}
                    </span>
-                    </ng-container>
-                    <ng-container *ngIf="colIndex != 0">
-                      {{row[cols.dataindex]}}
-                    </ng-container>
-                  </div>
-                </ng-container>
-                <ng-container *ngIf="cols.datatype=='number'">
-                  
-                  <div class="datatable-col"  [style.width.%]="cols.width"  [attr.data-label]="cols.text">
-                       
-                    <ng-container *ngIf="colIndex == 0">
+                      </ng-container>
+                      <ng-container *ngIf="colIndex != 0">
+                        {{row[cols.dataindex]}}
+                      </ng-container>
+                    </div>
+                  </ng-container>
+                  <ng-container *ngIf="cols.datatype=='number'">
+
+                    <div class="datatable-col"  [style.width.%]="cols.width"  [attr.data-label]="cols.text">
+
+                      <ng-container *ngIf="colIndex == 0">
                       <span style="padding-left: 20px">
                           <ng-container *ngIf="row[cols.dataindex]!= null ;else elseBlock">
                      {{row[cols.dataindex]}}
@@ -257,8 +267,8 @@ import {CommonDataService} from "../../services/data/common.data.service";
                     </ng-template>
                         
                        </span>
-                    </ng-container>
-                    <ng-container *ngIf="colIndex != 0">
+                      </ng-container>
+                      <ng-container *ngIf="colIndex != 0">
                       <span class="float-right">
                         <ng-container *ngIf="row[cols.dataindex]!= null ;else elseBlock">
                      {{row[cols.dataindex]}}
@@ -267,15 +277,17 @@ import {CommonDataService} from "../../services/data/common.data.service";
                       &nbsp;
                     </ng-template>
                       </span>
-                    </ng-container>
-                       
-                  </div>
-                 
+                      </ng-container>
+
+                    </div>
+
+                  </ng-container>
+
                 </ng-container>
-                
               </ng-container>
-            </ng-container>
-          </div>
+            </div>
+          </ng-container>
+          
         </div>
       </div>
     </ng-container>
@@ -385,6 +397,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
 
   isExpanded = false;
 
+  mask : boolean = true;
 
   @ContentChildren(AmexioGridColumnComponent) columnRef: QueryList<AmexioGridColumnComponent>;
 
@@ -512,7 +525,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
       this.setColumnData();
     }
     this.totalPages = this.pageNumbers.length;
-
+    this.mask = false;
   }
 
   setSelectedFlag(viewRows: any) {

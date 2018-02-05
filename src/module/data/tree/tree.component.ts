@@ -33,6 +33,8 @@ export class AmexioTreeViewComponent {
 
   responseData: any;
 
+  mask : boolean = true;
+
   constructor(public dataService: CommonDataService, private cdf: ChangeDetectorRef) {
 
   }
@@ -104,6 +106,7 @@ export class AmexioTreeViewComponent {
     }
     this.data = responsedata;
     this.activateNode(this.data, null);
+    this.mask = false;
   }
 
   emitCheckedData(checkedData: any) {
