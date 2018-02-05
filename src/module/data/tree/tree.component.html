@@ -1,3 +1,6 @@
+<div *ngIf="data == null" style="height: 300px;width: 300px;">
+  <div class="spinner"></div>
+</div>
 <li class="treenode" *ngFor="let node of data" >
   <div class="treenode-content">
           <span class="treenode-toggler" (click)="onClick(node)" *ngIf="node.children && (node.children.length>0)">
