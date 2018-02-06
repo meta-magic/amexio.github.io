@@ -1,41 +1,44 @@
 <div *ngIf="(position !='relative' && smalldevice)"
-     [ngClass]="{'left':(position=='left' && position!='relative'),'right':(position=='right' && position!='relative')}"
+     [ngClass]="{'sidenav-mobile-bar-left':(position=='left' && position!='relative'),'sidenav-mobile-bar-right':(position=='right' && position!='relative')}"
      class="sidenav-mobile-bar" (click)="toggleSideNav()">
   <amexio-nav-icon key="sidenav_bar"></amexio-nav-icon>
 </div>
 
 
-<div class="sidenav"  [ngStyle]="{'width':width, 'height':height}" [ngClass]="{'left':(position=='left' && position!='relative'),'right':(position=='right' && position!='relative')}">
-  <ul>
-    <li>
-      <div *ngIf="sidenavtitle" class="title">
-        <ng-container *ngIf="titleimage">
-          <p><img [attr.src]="titleimage" style="width: 60px;height: 60px;padding-left: 80px;"/></p>
-        </ng-container>
-        <ng-container *ngIf="sidenavtitle">
-          <p>{{sidenavtitle}}</p>
-        </ng-container>
-        <span *ngIf="sidenavexpandedinsmalldevice" style="padding-right: 10px; float: right" (click)="close()">
+<div [ngStyle]="{'width':width}" style="height: 100%" [ngClass]="{'left':(position=='left' && position!='relative'),'right':(position=='right' && position!='relative')}">
+  <div class="sidenav" [ngStyle]="{'height':height}">
+    <ul>
+      <li>
+        <div *ngIf="sidenavtitle" class="title">
+          <ng-container *ngIf="titleimage">
+            <p><img [attr.src]="titleimage" style="width: 60px;height: 60px;padding-left: 80px;"/></p>
+          </ng-container>
+          <ng-container *ngIf="sidenavtitle">
+            <p>{{sidenavtitle}}</p>
+          </ng-container>
+          <span *ngIf="sidenavexpandedinsmalldevice" style="padding-right: 10px; float: right" (click)="close()">
             <amexio-nav-icon key="sidenav_close"></amexio-nav-icon>
           </span>
-      </div>
-    </li>
-    <li  *ngFor="let node of data">
-      <div *ngIf="node.children && (node.children.length>0)" class="border"></div>
-      <div class="headernode" [ngClass]="{'activenode':node.active}"  (click)="onNodeClick(node)" (click)="onClick(node)">
-        <span *ngIf="node.icon"><amexio-nav-icon class="node-icon" [customclass]="node.icon"></amexio-nav-icon></span>
-        <span>{{node.text}}</span>
-        <ng-container *ngIf="node.children && (node.children.length>0)">
-          <span style="padding-right: 10px; float: right" *ngIf="node.expand" ><amexio-nav-icon key="sidenav-angle-up"></amexio-nav-icon></span>
-          <span style="padding-right: 10px;float: right" *ngIf="!node.expand" ><amexio-nav-icon key="sidenav-angle-down"></amexio-nav-icon></span>
-        </ng-container>
-      </div>
-      <div class="sidenav-submenu-details" [ngClass]="{'sidenav-submenu-expanded':node.expand}">
-        <amexio-sidenav-node  *ngIf="node.expand && node.children && (node.children.length>0)" [data]="node.children" (nodeclick)="onNodeClick($event)">
-        </amexio-sidenav-node>
-      </div>
+        </div>
+      </li>
+      <li  *ngFor="let node of data">
+        <div *ngIf="node.children && (node.children.length>0)" class="border"></div>
+        <div class="headernode" [ngClass]="{'activenode':node.active}"  (click)="onNodeClick(node)" (click)="onClick(node)">
+          <span *ngIf="node.icon"><amexio-nav-icon class="node-icon" [customclass]="node.icon"></amexio-nav-icon></span>
+          <span>{{node.text}}</span>
+          <ng-container *ngIf="node.children && (node.children.length>0)">
+            <span style="padding-right: 10px; float: right" *ngIf="node.expand" ><amexio-nav-icon key="sidenav-angle-up"></amexio-nav-icon></span>
+            <span style="padding-right: 10px;float: right" *ngIf="!node.expand" ><amexio-nav-icon key="sidenav-angle-down"></amexio-nav-icon></span>
+          </ng-container>
+        </div>
+        <div class="sidenav-submenu-details" [ngClass]="{'sidenav-submenu-expanded':node.expand}">
+          <amexio-sidenav-node  *ngIf="node.expand && node.children && (node.children.length>0)" [data]="node.children" (nodeclick)="onNodeClick($event)">
+          </amexio-sidenav-node>
+        </div>
 
-    </li>
-  </ul>
+      </li>
+    </ul>
+  </div>
 </div>
+
 

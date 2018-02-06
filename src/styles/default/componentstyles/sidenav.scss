@@ -11,11 +11,27 @@
   z-index: 3;
 }
 
+.sidenav-mobile-bar-left {
+  top: 10px;
+  padding: 10px;
+  position: fixed;
+  color: white;
+  z-index: 3;
+  left: 0;
+}
+
+.sidenav-mobile-bar-right {
+  top: 10px;
+  padding: 10px;
+  position: fixed;
+  color: white;
+  z-index: 3;
+  right: 0;
+}
+
 .sidenav{
   //height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
-  box-shadow: 0 0 5px 0 $sidenavBorderColor;
+  overflow: auto;
   background-color: $sidenavBGColor;
   color: $sidenavColor;
   z-index: 1;
@@ -42,11 +58,19 @@
 .left {
   left: 0;
   position: fixed;
+  overflow: auto;
+  background-color: $sidenavBGColor;
+  z-index: 1;
+  box-shadow: 0 0 5px 0 $sidenavBorderColor;
 }
 
 .right{
   right:0;
   position: fixed;
+  overflow: auto;
+  background-color: $sidenavBGColor;
+  z-index: 1;
+  box-shadow: 0 0 5px 0 $sidenavBorderColor;
 }
 
 .sidenav ul {
@@ -126,3 +150,7 @@
   max-height: 1000px;
   overflow: auto;
 }
+
+
+
+
