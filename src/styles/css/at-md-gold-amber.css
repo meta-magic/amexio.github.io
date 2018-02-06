@@ -232,6 +232,26 @@ image using the content attribute.
   animation: 2s linear 0s normal none infinite running spin;
   filter: drop-shadow(0 0 2 rgba(0, 0, 0, 0.33)); }
 
+/** **/
+@keyframes spinner {
+  to {
+    transform: rotate(360deg); } }
+.spinner:before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: #FFC107;
+  border-bottom-color: #FFC107;
+  animation: spinner .8s ease infinite; }
+
 /*----------------------------------------------------------------------*/
 /*        BUTTON COMPONENT         */
 /*----------------------------------------------------------------------*/
@@ -1918,10 +1938,24 @@ input:checked + .toggle-slider:before {
   color: white;
   z-index: 3; }
 
+.sidenav-mobile-bar-left {
+  top: 10px;
+  padding: 10px;
+  position: fixed;
+  color: white;
+  z-index: 3;
+  left: 0; }
+
+.sidenav-mobile-bar-right {
+  top: 10px;
+  padding: 10px;
+  position: fixed;
+  color: white;
+  z-index: 3;
+  right: 0; }
+
 .sidenav {
-  overflow-x: hidden;
-  overflow-y: auto;
-  box-shadow: 0 0 5px 0 #ced4da;
+  overflow: auto;
   background-color: white;
   color: black;
   z-index: 1; }
@@ -1939,11 +1973,19 @@ input:checked + .toggle-slider:before {
 
 .left {
   left: 0;
-  position: fixed; }
+  position: fixed;
+  overflow: auto;
+  background-color: white;
+  z-index: 1;
+  box-shadow: 0 0 5px 0 #ced4da; }
 
 .right {
   right: 0;
-  position: fixed; }
+  position: fixed;
+  overflow: auto;
+  background-color: white;
+  z-index: 1;
+  box-shadow: 0 0 5px 0 #ced4da; }
 
 .sidenav ul {
   list-style: none;
