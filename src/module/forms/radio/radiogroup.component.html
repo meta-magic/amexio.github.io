@@ -21,7 +21,7 @@
     <ng-container *ngFor="let row of viewData">
       <div>
         <label class="input-box-container">{{row[displayfield]}}
-          <input type="radio" *ngIf="row.selected"  [attr.name]="name" checked="checked" (click)="onClick(row)">
+          <input type="radio" *ngIf="row[valuefield] == defaultSelectedValue || row.selected"  [attr.name]="name" checked="checked" (click)="onClick(row)">
           <input type="radio" *ngIf="!row.selected"  [attr.name]="name" (click)="onClick(row)">
           <span class="input-box-radiobox-label"></span>
         </label>
