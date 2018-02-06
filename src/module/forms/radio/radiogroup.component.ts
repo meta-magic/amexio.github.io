@@ -27,6 +27,8 @@ export class AmexioRadioGroupComponent {
 
   @Input('value-field') valuefield: string;
 
+  @Input('default-value') defaultSelectedValue: string;
+
   @Input() horizontal: boolean;
 
   @Input() data: any;
