@@ -38,7 +38,8 @@ export class DataPointWestComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    if(this.cclass == null)
+      this.cclass = 'datapoint-west';
   }
 
 

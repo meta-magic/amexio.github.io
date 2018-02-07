@@ -11,7 +11,7 @@ import {
 @Component({
   selector: 'amexio-east', template: `
 
-    <div [ngClass]="cclass" [attr.align]="contentalign" [style.background-color]="backgroundcolor"
+    <div [ngClass]="cclass" class="datapoint-east" [attr.align]="contentalign" [style.background-color]="backgroundcolor"
          [style.color]="fontcolor" [style.width]="width" [style.height]="height">
       <ng-content></ng-content>
     </div>
@@ -38,7 +38,8 @@ export class DataPointEastComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    if(this.cclass == null)
+      this.cclass = 'datapoint-east';
   }
 
 
