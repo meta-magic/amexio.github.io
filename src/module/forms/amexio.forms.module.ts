@@ -31,6 +31,7 @@ import {AmexioSpiltButtonDropdownComponent} from "./button-dropdown/split.button
 import {AmexioButtonDropDownItemComponent} from "./button-dropdown/button.dropdown.item";
 import {AmexioFileUploadComponent} from "./fileupload/fileupload.component";
 import {DomHandler} from "./slider/slider.handler";
+import {AmexioLabelComponent} from "./label/label.component";
 export * from '../services/data/common.data.service';
 export * from '../services/icon/icon.service';
 
@@ -59,7 +60,8 @@ const FORM_COMPONENTS = [
   AmexioButtonDropDownItemComponent,
   AmexioButtonDropdownComponent,
   AmexioSpiltButtonDropdownComponent,
-  AmexioFileUploadComponent
+  AmexioFileUploadComponent,
+  AmexioLabelComponent
 ];
 
 @NgModule({
