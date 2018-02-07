@@ -14,7 +14,7 @@ import {Component, Input, OnInit} from '@angular/core';
 
 export class AmexioLabelComponent implements OnInit {
 
- @Input('style')  styleClass : 'large' | 'medium' | 'small' | 'bold' | 'large-bold' | 'medium-bold' | 'small-bold';
+ @Input('size')  styleClass : 'large' | 'medium' | 'small' | 'bold' | 'large-bold' | 'medium-bold' | 'small-bold';
 
  @Input('font-color')   fontColor : string;
 
