@@ -16,8 +16,10 @@
   <!--</div>-->
 <!--</div>-->
 
-
-<div class="inputgroup " >
+<div style="height: 300px;" *ngIf="mask">
+  <div class="spinner"></div>
+</div>
+<div class="inputgroup " *ngIf="!mask">
   <div *ngIf="fieldlabel">
     <label>{{fieldlabel}}</label>
   </div>
