@@ -4,7 +4,10 @@
     <amexio-card [header]="true">
       <amexio-header>Available</amexio-header>
       <amexio-body>
-        <div [style.height.px]="height" style="overflow: auto">
+        <div style="height: 220px;" *ngIf="mask">
+          <div class="spinner"></div>
+        </div>
+        <div [style.height.px]="height" *ngIf="!mask" style="overflow: auto">
           <ul class="dropdown-list">
             <li class="list-items" [ngClass]="data['isSelected'] ? 'list-item-active':''"
                 *ngFor="let data of availableData; let i = index" (click)="itemClick(data,i, true,false)">

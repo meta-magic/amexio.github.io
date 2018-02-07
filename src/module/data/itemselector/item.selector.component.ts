@@ -14,6 +14,8 @@ export class AmexioItemSelectorComponent implements OnInit {
 
   @Input() height: any;
 
+  mask : boolean = true;
+
   @Input('data-reader') datareader: string;
 
   @Input('http-method') httpmethod: string;
@@ -88,6 +90,7 @@ export class AmexioItemSelectorComponent implements OnInit {
     }
 
     this.availableData = responsedata;
+    this.mask = false;
   }
 
 

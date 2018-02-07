@@ -285,7 +285,7 @@ export class ContentComponent implements OnInit, OnChanges {
 
   @Input('watch') enableWatch = false;
 
-  @Input('mylist') enableMyList = false;
+  @Input('my-list') enableMyList = false;
 
   @Input('age-limit') ageLimit: any;
 

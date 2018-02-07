@@ -37,6 +37,8 @@ export class AmexioCheckBoxGroupComponent {
 
   @Input() column: string;
 
+  mask : boolean = true;
+
   @Output() onSelection: any = new EventEmitter<any>();
 
   calculatedColSize: any;
@@ -88,6 +90,7 @@ export class AmexioCheckBoxGroupComponent {
     });
     this.viewData = [];
     this.viewData = viewDataWithIdArray;
+    this.mask = false;
   }
 
 
