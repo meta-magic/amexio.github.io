@@ -1,4 +1,3 @@
-
 /*----------------------------------------------------------------------*/
 /*        DATAPOINTS COMPONENT         */
 /*----------------------------------------------------------------------*/
@@ -12,26 +11,30 @@
   border: $borderSize solid $datapointBorderColor;
   padding: 0px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-
-
-  .title{
-    font-size: 36px;
-    font-weight: bold;
-    color: $datapointColor;
+  .datapoints{
+    border: none;
+    box-shadow: none;
   }
-  .footer{
-    /* Background */
-    background-color: $datapointColor;
-    color: $datapointBGColor;
+
+  .datapoints-north{
+    color: $themeBGColor;
+  }
+
+  .datapoint-south{
     border-radius: 0px;
-    font-size: 20px;
+    background-color: $primaryBGColor;
+    color: $primaryColor;
     padding: 5px;
     margin: 1px;
   }
-  .visual{
+
+  .datapoint-west{
     padding: 5px;
-    font-size: 24px;
-    font-weight: bold;
   }
+
+  .datapoint-eas{
+    padding: 5px;
+  }
+
 
 }

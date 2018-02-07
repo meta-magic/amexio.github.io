@@ -1,103 +1,32 @@
-@media only screen and (min-width: 768px) {
-  /* tablets and desktop */
-  .label-content{
+.label-content{
 
-  }
-
-  .large{
-    font-size: 36px;
-  }
-
-  .medium{
-    font-size: 20px;
-  }
-
-  .small{
-    font-size: 18px;
-  }
-
-
-
-  .large-bold{
-    font-size: 36px;
-    font-weight: bold;
-  }
-
-  .medium-bold{
-    font-size: 28px;
-    font-weight: bold;
-  }
-
-  .small-bold{
-    font-size: 18px;
-    font-weight: bold;
-  }
 }
 
-@media only screen and (max-width: 767px) {
-  /* phones */
-  .label-content{
-
-  }
-
-  .large{
-    font-size: 29px;
-  }
-
-  .medium{
-    font-size: 19px;
-  }
-
-  .small{
-    font-size: 16px;
-  }
-
-  .large-bold{
-    font-size: 29px;
-    font-weight: bold;
-  }
-
-  .medium-bold{
-    font-size: 19px;
-    font-weight: bold;
-  }
-
-  .small-bold{
-    font-size: 16px;
-    font-weight: bold;
-  }
+.large{
+  font-size: 36px;
 }
 
-@media only screen and (max-width: 767px) and (orientation: portrait) {
-  /* portrait phones */
-  .label-content{
+.medium{
+  font-size: 20px;
+}
 
-  }
+.small{
+  font-size: 18px;
+}
 
-  .large{
-    font-size: 31px;
-  }
 
-  .medium{
-    font-size: 19px;
-  }
 
-  .small{
-    font-size: 17px;
-  }
+.large-bold{
+  font-size: 36px;
+  font-weight: bold;
+}
 
-  .large-bold{
-    font-size: 31px;
-    font-weight: bold;
-  }
+.medium-bold{
+  font-size: 20px;
+  font-weight: bold;
+}
 
-  .medium-bold{
-    font-size: 19px;
-    font-weight: bold;
-  }
-
-  .small-bold{
-    font-size: 17px;
-    font-weight: bold;
-  }
+.small-bold{
+  font-size: 18px;
+  font-weight: bold;
 }
