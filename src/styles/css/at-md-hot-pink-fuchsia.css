@@ -527,7 +527,7 @@ button {
 .inputgroup {
   position: relative; }
 
-.inputgroup label {
+.inputgroup > label {
   display: inline-block;
   margin-bottom: .5rem; }
 
@@ -583,8 +583,9 @@ button {
 .search {
   background: #ededed url("search-icon.png") no-repeat 9px center;
   border: solid 1px #ccc;
-  padding: 9px 10px 0px 32px;
+  padding: 9px 10px 9px 32px;
   transition: all .5s;
+  outline: none;
   width: 55px; }
 
 .search:focus {
@@ -1179,6 +1180,27 @@ input:checked + .toggle-slider:before {
   border-radius: 0;
   border: none; }
 
+.large {
+  font-size: 36px; }
+
+.medium {
+  font-size: 20px; }
+
+.small {
+  font-size: 18px; }
+
+.large-bold {
+  font-size: 36px;
+  font-weight: bold; }
+
+.medium-bold {
+  font-size: 20px;
+  font-weight: bold; }
+
+.small-bold {
+  font-size: 18px;
+  font-weight: bold; }
+
 /*----------------------------------------------------------------------*/
 /*        DATAPOINTS COMPONENT         */
 /*----------------------------------------------------------------------*/
@@ -1191,22 +1213,21 @@ input:checked + .toggle-slider:before {
   border: 1px solid #ced4da;
   padding: 0px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); }
-  .datapoints .title {
-    font-size: 36px;
-    font-weight: bold;
+  .datapoints .datapoints {
+    border: none;
+    box-shadow: none; }
+  .datapoints .datapoints-north {
     color: #FF00FF; }
-  .datapoints .footer {
-    /* Background */
+  .datapoints .datapoint-south {
+    border-radius: 0px;
     background-color: #FF00FF;
     color: white;
-    border-radius: 0px;
-    font-size: 20px;
     padding: 5px;
     margin: 1px; }
-  .datapoints .visual {
-    padding: 5px;
-    font-size: 24px;
-    font-weight: bold; }
+  .datapoints .datapoint-west {
+    padding: 5px; }
+  .datapoints .datapoint-east {
+    padding: 5px; }
 
 /*----------------------------------------------------------------------*/
 /*        DATATABLE COMPONENT         */
@@ -2921,6 +2942,71 @@ fieldset {
 @media screen and (max-width: 600px) {
   .footer-right-align {
     padding-right: 15px; } }
+@media screen and (max-width: 600px) {
+  .card-header {
+    display: flex;
+    padding: 10px 24px;
+    background: #FF00FF;
+    border-bottom: 1px solid #ced4da;
+    font-size: 18px;
+    color: white;
+    font-weight: 300;
+    text-transform: capitalize;
+    overflow: auto; } }
+@media screen and (max-width: 768px) {
+  .card-header {
+    display: flex;
+    padding: 10px 24px;
+    background: #FF00FF;
+    border-bottom: 1px solid #ced4da;
+    font-size: 18px;
+    color: white;
+    font-weight: 300;
+    text-transform: capitalize;
+    overflow: auto; } }
+@media only screen and (min-width: 768px) {
+  .large {
+    font-size: 36px; }
+
+  .medium {
+    font-size: 20px; }
+
+  .small {
+    font-size: 18px; }
+
+  .large-bold {
+    font-size: 36px;
+    font-weight: bold; }
+
+  .medium-bold {
+    font-size: 20px;
+    font-weight: bold; }
+
+  .small-bold {
+    font-size: 18px;
+    font-weight: bold; } }
+@media only screen and (max-width: 450px) {
+  /* phones */
+  .large {
+    font-size: 32px; }
+
+  .medium {
+    font-size: 18px; }
+
+  .small {
+    font-size: 16px; }
+
+  .large-bold {
+    font-size: 32px;
+    font-weight: bold; }
+
+  .medium-bold {
+    font-size: 18px;
+    font-weight: bold; }
+
+  .small-bold {
+    font-size: 16px;
+    font-weight: bold; } }
 body {
   font-family: Roboto,Trebuchet MS,Arial,Helvetica,sans-serif; }
 
