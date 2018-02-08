@@ -20,7 +20,7 @@
                 <div style="cursor: pointer" (click)="loadVideo(item)" class="playbutton"><i class="fa fa-play" aria-hidden="true"></i></div>
               </div>
 
-              <span class="title" *ngIf="item.title">{{item.title}}</span><br>
+              <span class="carousel-title" *ngIf="item.title">{{item.title}}</span><br>
               <span class="match">{{item.matchPercentage}} Match</span> {{item.releaseYear}} <span class="age mini">{{item.ageLimit}}</span> {{item.seasonNo}}<br>
               <div class="subtitle">{{item.desc}}</div>
 

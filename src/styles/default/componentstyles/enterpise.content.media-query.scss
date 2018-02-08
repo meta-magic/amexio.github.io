@@ -27,12 +27,8 @@
 
 @media (max-width: 480px) {
 
-  img {
-    width: 170px;
-    height: 35px;
-  }
 
-  .title {
+  .content-title {
     width: 100%;
     font-size: 180%;
     font-weight: 700;
@@ -40,6 +36,7 @@
     color: #fff;
     text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
   }
+  /*
 
   h3 {
     font-size: 9pt;
@@ -56,12 +53,13 @@
   li {
     font-size: 6pt;
   }
+  */
 
   .maincontent {
     position: relative;
     width: 100%; /* for IE 6 */
     height: 35vh;
-    width: 100%;
+    width: 100%;c
     background-size: 100% 100%;
     background-repeat: no-repeat;
   }
