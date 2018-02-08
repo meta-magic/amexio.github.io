@@ -23,7 +23,7 @@ import {
 
 export class DataPointNorthComponent implements OnInit {
 
-  @Input() contentalign: string;
+  @Input('content-align') contentalign: string;
 
   @Input('background-color') backgroundcolor: string;
 

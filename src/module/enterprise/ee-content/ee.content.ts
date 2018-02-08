@@ -22,11 +22,11 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges
         </ng-container>
         <ul class="inline-list">
           <li *ngIf="enableWatch">
-            <button class="content-button" (click)="playVideo()"><i class="fa fa-play"></i> &nbsp;&nbsp; Play</button>
+            <span class="content-button" (click)="playVideo()"><i class="fa fa-play"></i> &nbsp;&nbsp; Play</span>
             <!--<amexio-ee-btn [cClass]="'buttoncustom'" [label]="'Play'" [type]="'danger'" [icon]="'fa fa-play'" [tooltipMessage]="'play'" [size]="size" (onClick)="playVideo()"></amexio-ee-btn>-->
           </li>
           <li *ngIf="enableMyList">
-            <button class="content-button" (click)="addToList()"><i class="fa fa-plus"></i>&nbsp;&nbsp; MY LIST</button>
+            <span class="content-button" (click)="addToList()"><i class="fa fa-plus"></i>&nbsp;&nbsp; MY LIST</span>
             <!--<amexio-ee-btn [cClass]="'secondarybutton'" [label]="'MY LIST'" [icon]="'fa fa-plus'" [type]="'secondary'" [tooltipMessage]="'My List'" [size]="size" (onClick)="addToList()"></amexio-ee-btn>-->
           </li>
           <li>
@@ -74,9 +74,9 @@ export class ContentComponent implements OnInit, OnChanges {
 
   @Input('release-year') releaseYear: any;
 
-  @Input() seasonNo: number;
+  @Input('season-no') seasonNo: number;
 
-  @Input() matchPercentage: any;
+  @Input('match-percentage') matchPercentage: any;
 
   @Input('close') closeEnable: boolean;
 

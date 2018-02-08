@@ -96,6 +96,18 @@ header .billboard .content-area .credits strong {
 }*/
 
 /* Button Related CSS */
+.content-button {
+  display: inline-block;
+  margin-right: .75em;
+  margin-top: 20px;
+  padding: 5px 20px;
+  font-size: 70%;
+  font-weight: 500;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #fff;    //theme color?
+}
+
 header .billboard .content-button {
   display: inline-block;
   margin-right: .75em;
@@ -114,7 +126,7 @@ header .billboard .content-button {
   margin-top: 20px;
   width: 40px;
   height: 40px;
-  padding: 10px 0 0 11px;
+  padding: 15px 0 0 23px;
   border: solid 2px rgba(255, 255, 255, .4);    //theme color?
   border-radius: 100px;
   font-size: 18px;
