@@ -13,7 +13,6 @@ import {DeviceQueryService} from "../../services/device/device.query.service";
 })
 export class AmexioSideNav implements OnInit {
 
-
   @Input() data: any[];
 
   @Input('http-url') httpurl: string;
@@ -118,6 +117,7 @@ export class AmexioSideNav implements OnInit {
   }
 
   onNodeClick(node: any) {
+    debugger;
     this.activateNode(this.data, node);
     this.nodeClick.emit(node);
     if(!node.children){
