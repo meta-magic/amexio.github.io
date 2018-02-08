@@ -1247,6 +1247,17 @@ header .billboard .content-area .credits strong {
   color: #fff;    //theme color?
 }*/
 /* Button Related CSS */
+.content-button {
+  display: inline-block;
+  margin-right: .75em;
+  margin-top: 20px;
+  padding: 5px 20px;
+  font-size: 70%;
+  font-weight: 500;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #fff; }
+
 header .billboard .content-button {
   display: inline-block;
   margin-right: .75em;
@@ -1261,13 +1272,13 @@ header .billboard .content-button {
 .content-button i {
   display: inline-block;
   margin-top: 20px;
-  width: 40px;
-  height: 40px;
-  padding: 10px 0 0 11px;
+  width: 20px;
+  height: 20px;
+  padding: 8px 0 0 13px;
   border: solid 2px rgba(255, 255, 255, 0.4);
-  border-radius: 100px;
-  font-size: 18px;
-  font-weight: 500;
+  border-radius: 40px;
+  font-size: 10px;
+  font-weight: 300;
   text-decoration: none;
   text-transform: uppercase;
   color: #fff;
