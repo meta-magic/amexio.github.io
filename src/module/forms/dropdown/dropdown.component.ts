@@ -211,7 +211,7 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
       this.displayValue = row[this.displayfield];
 
       this.multiselect ? this.showToolTip = true : this.showToolTip = false;
-      this.onSingleSelect.emit(this.value);
+      this.onSingleSelect.emit(row);
     }
   }
 
