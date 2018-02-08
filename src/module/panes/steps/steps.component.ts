@@ -29,9 +29,12 @@ import {StepBlockComponent} from "./step-block";
         <div *ngFor="let stepBlock of stepBlockArray; let i = index" class="stepwizard-step" >
  
           <ng-container *ngIf="stepBlock.icon && stepBlock.active">
+          <span [ngClass]="{'step-box-icon-active':stepBlock.active}">
             <amexio-pane-icon [customclass]="stepBlock.icon" (onClick)="onStepClick(stepBlock,$event)"></amexio-pane-icon>
-          </ng-container>
+          </span>
+            </ng-container>
           <ng-container *ngIf="stepBlock.icon && !stepBlock.active">
+  
             <amexio-pane-icon style="color: #666;" [customclass]="stepBlock.icon" (onClick)="onStepClick(stepBlock,$event)"></amexio-pane-icon>
           </ng-container>
           <ng-container *ngIf="stepBlock.icon=='' || !stepBlock.icon">
@@ -41,7 +44,7 @@ import {StepBlockComponent} from "./step-block";
             <p (onClick)="onStepClick(stepBlock,$event)">{{stepBlock.label}}</p>
           </ng-container>
           <ng-container *ngIf="stepBlock.label && stepBlock.active">
-            <p><strong class="step-label-highlight">{{stepBlock.label}}</strong></p>
+            <p><strong class="step-label-highlight" [ngClass]="{'step-box-label-active':stepBlock.active}">{{stepBlock.label}}</strong></p>
           </ng-container>
         </div>
       </div>
@@ -58,13 +61,15 @@ import {StepBlockComponent} from "./step-block";
                   {{i + 1}}<br>
                 </ng-container>
                 <ng-container *ngIf="icon && stepBlock.icon">
-                  <amexio-pane-icon [customclass]="stepBlock.icon"></amexio-pane-icon>
+                <amexio-pane-icon [customclass]="stepBlock.icon"></amexio-pane-icon>
+ 
                 </ng-container>
                 <ng-container *ngIf="stepBlock.label && !stepBlock.active">
                   <p style="word-wrap: break-word;">{{stepBlock.label}}</p>
                 </ng-container>
                 <ng-container *ngIf="stepBlock.label && stepBlock.active">
-                  <p style="word-wrap: break-word;"><strong>{{stepBlock.label}}</strong></p>
+                <p style="word-wrap: break-word;"><strong>{{stepBlock.label}}</strong></p>
+                  
                 </ng-container>
               </a>
             </div>

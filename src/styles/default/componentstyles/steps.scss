@@ -99,3 +99,10 @@
   background-color: lighten($stepsInActiveBGColor,30%);
   cursor: pointer;
 }
+
+.step-box-icon-active .fa{
+  color: $stepsActiveBGColor;
+}
+.step-box-label-active{
+  color: $stepsActiveBGColor !important;
+}
