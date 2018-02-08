@@ -1,15 +1,5 @@
-<div id='player'>
-  <video id='video-element' #videoRef (timeupdate)="onTimeUpdate()" (volumechange)="updateMuteUI()">
-    <source [attr.src]="path">
+
+  <video width="{{width}}" controls>
+      <source [attr.src]="path">
+      Your browser does not support HTML5 video.
   </video>
-  <div id='controls'>
-    <progress id='progress-bar' min='0' max='100' value='0' #progressbar>0% played</progress>
-    <span id='btnReplay' style="vertical-align: middle" class='replay' title='replay' accesskey="R" (click)='replayVideo();'><i class="fa fa-repeat"></i></span>
-    <span id='btnPlayPause' [ngClass]="{'play' : !isPlaying, 'pause' : isPlaying}" style="vertical-align: middle" (click)="onPlay()"><i class="fa" [ngClass]="{'fa-play-circle' : !isPlaying,'fa-pause-circle' : isPlaying}"></i></span>
-    <span id='btnStop' class='stop' style="vertical-align: middle" (click)="resetPlayer()"><i class="fa fa-stop-circle"></i></span>
-    <input type="range" id="volume-bar"  min="0" max="1" step="0.1" value="1" (input)="onVolumeChange($event)" #volumebar>
-    <span id='btnMute' (click)="onMute()" [ngClass]="{'mute' : !isMuted,'unmute' : isMuted}" title='mute' style="vertical-align: middle"><i class="fa fa-volume-off"></i></span>
-    <span id='btnFullScreen' class='fullscreen' title='toggle full screen' accesskey="T" style="vertical-align: top" (click)="onFullScreen()">[&nbsp;&nbsp;]</span>
-  </div>
-</div>
-<div style="clear:both"></div>
