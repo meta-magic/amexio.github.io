@@ -17,18 +17,7 @@ import {DomSanitizer} from "@angular/platform-browser";
         </iframe>
       </div>
     </div>
-  `, styles: [`
-    .close-button {
-      cursor: pointer;
-      color: gray;
-      background: radial-gradient(ellipse at top right, rgba(0, 0, 0, .4) 0, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 100%);
-    }
-
-    .close-button i:hover {
-      color: red;
-      cursor: pointer;
-    }
-  `]
+  `
 })
 
 export class AmexioYoutubePlayerComponent implements OnInit {
