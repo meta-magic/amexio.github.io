@@ -30,11 +30,11 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges
             <!--<amexio-ee-btn [cClass]="'secondarybutton'" [label]="'MY LIST'" [icon]="'fa fa-plus'" [type]="'secondary'" [tooltipMessage]="'My List'" [size]="size" (onClick)="addToList()"></amexio-ee-btn>-->
           </li>
           <li>
-            <a [ngClass]="getClassName()" (click)="likeClick()"><i class="fa fa-thumbs-o-up fa-lg"
+            <a style="color: white!important;" [ngClass]="getClassName()" (click)="likeClick()"><i class="fa fa-thumbs-o-up fa-lg"
                                                                    aria-hidden="true"></i>
             </a>
           </li>
-          <li><a [ngClass]="getClassName()" (click)="unlikeClick()"><i class="fa fa-thumbs-o-down fa-lg "
+          <li><a style="color: white!important;" [ngClass]="getClassName()" (click)="unlikeClick()"><i class="fa fa-thumbs-o-down fa-lg "
                                                                        aria-hidden="true"></i></a></li>
 
         </ul>
