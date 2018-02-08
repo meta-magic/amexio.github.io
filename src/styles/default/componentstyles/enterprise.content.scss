@@ -124,16 +124,16 @@ header .billboard .content-button {
 .content-button i {
   display: inline-block;
   margin-top: 20px;
-  width: 40px;
-  height: 40px;
-  padding: 15px 0 0 23px;
-  border: solid 2px rgba(255, 255, 255, .4);    //theme color?
-  border-radius: 100px;
-  font-size: 18px;
-  font-weight: 500;
+  width: 20px;
+  height: 20px;
+  padding: 8px 0 0 13px;
+  border: solid 2px rgba(255, 255, 255, 0.4);
+  border-radius: 40px;
+  font-size: 10px;
+  font-weight: 300;
   text-decoration: none;
   text-transform: uppercase;
-  color: #fff;    //theme color?
+  color: #fff;
   transition: transform 0.5s;
 }
 
