@@ -96,7 +96,7 @@ header .billboard .content-area .credits strong {
 }*/
 
 /* Button Related CSS */
-header .billboard .button {
+header .billboard .content-button {
   display: inline-block;
   margin-right: .75em;
   margin-top: 20px;
@@ -130,7 +130,7 @@ header .billboard .button {
   transform: scale(1.1);
 }
 
-.button-small i {
+.content-button-small i {
   display: inline-block;
   width: 25px;
   height: 25px;
