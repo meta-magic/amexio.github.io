@@ -3,8 +3,6 @@
      class="sidenav-mobile-bar" (click)="toggleSideNav()">
   <amexio-nav-icon key="sidenav_bar"></amexio-nav-icon>
 </div>
-
-
 <div [ngStyle]="{'width':width}" style="height: 100%" [ngClass]="{'left':(position=='left' && position!='relative'),'right':(position=='right' && position!='relative')}">
   <div class="sidenav" [ngStyle]="{'height':height}">
     <ul>

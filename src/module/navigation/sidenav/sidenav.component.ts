@@ -117,7 +117,6 @@ export class AmexioSideNav implements OnInit {
   }
 
   onNodeClick(node: any) {
-    debugger;
     this.activateNode(this.data, node);
     this.nodeClick.emit(node);
     if(!node.children){

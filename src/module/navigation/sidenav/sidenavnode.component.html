@@ -15,8 +15,8 @@
         </ng-container>
     </div>
     <div class="submenu-details"  [ngClass]="{'sidenav-submenu-expanded':node.expand}" >
-    <amexio-sidenav-node-1  *ngIf="node.children && (node.children.length>0)"  [data]="node.children"  (nodeClick)="getOnNodeClick($event)" (onClick)="getOnClick($event)">
-    </amexio-sidenav-node-1>
+    <amexio-sidenav-node  *ngIf="node.children && (node.children.length>0)"  [data]="node.children"  (nodeClick)="getOnNodeClick($event)" (onClick)="getOnClick($event)">
+    </amexio-sidenav-node>
     </div>
     </li>
 </ul>
