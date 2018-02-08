@@ -1165,7 +1165,7 @@ header .billboard .content-area .credits strong {
   color: #fff;    //theme color?
 }*/
 /* Button Related CSS */
-header .billboard .button {
+header .billboard .content-button {
   display: inline-block;
   margin-right: .75em;
   margin-top: 20px;
@@ -1176,7 +1176,7 @@ header .billboard .button {
   text-transform: uppercase;
   color: #fff; }
 
-.button i {
+.content-button i {
   display: inline-block;
   margin-top: 20px;
   width: 40px;
@@ -1195,7 +1195,7 @@ header .billboard .button {
   border: solid 2px #fff;
   transform: scale(1.1); }
 
-.button-small i {
+.content-button-small i {
   display: inline-block;
   width: 25px;
   height: 25px;
@@ -1426,7 +1426,7 @@ a:hover {
   color: white;
   background-color: transparent; }
 
-.title {
+.carousel-title {
   font-size: 10pt;
   font-weight: 600; }
 
@@ -3324,11 +3324,7 @@ fieldset {
   .maincontent > div > table {
     height: 50px; } }
 @media (max-width: 480px) {
-  img {
-    width: 170px;
-    height: 35px; }
-
-  .title {
+  .content-title {
     width: 100%;
     font-size: 180%;
     font-weight: 700;
@@ -3336,18 +3332,24 @@ fieldset {
     color: #fff;
     text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3); }
 
+  /*
+
   h3 {
-    font-size: 9pt; }
+    font-size: 9pt;
+  }
 
   span {
-    font-size: 6pt; }
+    font-size: 6pt;
+  }
 
   li b {
-    font-size: 6pt; }
+    font-size: 6pt;
+  }
 
   li {
-    font-size: 6pt; }
-
+    font-size: 6pt;
+  }
+  */
   .maincontent {
     position: relative;
     width: 100%;
