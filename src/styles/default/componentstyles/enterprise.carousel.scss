@@ -140,15 +140,7 @@ a:hover {
   z-index: 1;
 }
 .tile__details_v:before {
-  /* content: '▶';
-   left: 0;
-   width: 100%;
-   font-size: 30px;
-   margin-left: 7px;
-   margin-top: -24px;
-   text-align: center;
-   z-index: 2;
-   color: red;*/
+
 }
 
 .tile:hover .tile__details_v {
@@ -206,7 +198,15 @@ a:hover {
   padding-top: 125px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-/* content: '▶';
+  left: 0;
+  width: 100%;
+  font-size: 30px;
+  margin-left: 7px;
+  margin-top: -24px;
+  text-align: center;
+  z-index: 2;
+  color: red;*/t: center;
   color: dimgrey;
   font-size: 1em;
 }
@@ -216,7 +216,15 @@ a:hover {
   padding-top: 250px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-/* content: '▶';
+  left: 0;
+  width: 100%;
+  font-size: 30px;
+  margin-left: 7px;
+  margin-top: -24px;
+  text-align: center;
+  z-index: 2;
+  color: red;*/t: center;
   color: dimgrey;
   font-size: 1em;
 }
