@@ -24,6 +24,8 @@ export class AmexioVideoPlayerComponent implements OnInit {
 
   @Input() extension: any;
 
+  @Input() width : any;  
+
   @ViewChild('videoRef') videoPlayer: any;
 
   @ViewChild('progressbar') progressBar: any;
