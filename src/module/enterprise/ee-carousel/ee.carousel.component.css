@@ -1,4 +1,4 @@
-* {
+/** {
   box-sizing: border-box;
 }
 h1,
@@ -22,7 +22,7 @@ a:visited {
 a:hover {
   color: #7f8c8d;
   text-decoration: underline;
-}
+}*/
 .contain {
   width: 100%;
 }

@@ -4,7 +4,7 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 @Component({
   selector: 'amexio-ee-content', template: `
-    <div class="maincontent" [ngStyle]="{'background-image':'url('+bgImgUrl+')'}" (window:resize)="onResize($event)">
+    <div class="main-content" [ngStyle]="{'background-image':'url('+bgImgUrl+')'}" (window:resize)="onResize($event)">
        <span *ngIf="closeEnable" class="close-button">
         <i class="fa fa-times fa-lg" (click)="closeDetailPage()" aria-hidden="true"></i>
       </span>
@@ -22,11 +22,11 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges
         </ng-container>
         <ul class="inline-list">
           <li *ngIf="enableWatch">
-            <button class="content-button" (click)="playVideo()"><i class="fa fa-play"></i> &nbsp;&nbsp; Play</button>
+            <button (click)="playVideo()"><i class="fa fa-play"></i> &nbsp;&nbsp; Play</button>
             <!--<amexio-ee-btn [cClass]="'buttoncustom'" [label]="'Play'" [type]="'danger'" [icon]="'fa fa-play'" [tooltipMessage]="'play'" [size]="size" (onClick)="playVideo()"></amexio-ee-btn>-->
           </li>
           <li *ngIf="enableMyList">
-            <button class="content-button" (click)="addToList()"><i class="fa fa-plus"></i>&nbsp;&nbsp; MY LIST</button>
+            <button (click)="addToList()"><i class="fa fa-plus"></i>&nbsp;&nbsp; MY LIST</button>
             <!--<amexio-ee-btn [cClass]="'secondarybutton'" [label]="'MY LIST'" [icon]="'fa fa-plus'" [type]="'secondary'" [tooltipMessage]="'My List'" [size]="size" (onClick)="addToList()"></amexio-ee-btn>-->
           </li>
           <li>
@@ -141,7 +141,7 @@ export class ContentComponent implements OnInit, OnChanges {
 
   getClassName() {
     if (this.smallScreen) {
-      return 'buttonSmall';
+      return 'button-small';
     } else {
       return 'button';
     }

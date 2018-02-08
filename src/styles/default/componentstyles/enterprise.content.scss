@@ -1,10 +1,13 @@
+.inline-list{
+  padding-left: 0;
+}
 .inline-list > li{
   display : inline;
   list-style-type: none;
   padding-left: 0;
 }
 
-.maincontent {
+.main-content {
   position: relative;
   width: 100%; /* for IE 6 */
   height: 65vh;
@@ -12,7 +15,7 @@
   background-repeat: no-repeat;
 }
 
-.maincontent > div {
+.main-content > div {
   position: absolute;
   top: 10px;
   left: 0;
@@ -105,9 +108,6 @@ header .billboard .button {
   color: #fff;    //theme color?
 }
 
-.content-button{
-  color: $primaryBGColor;
-}
 
 .button i {
   display: inline-block;
@@ -130,7 +130,7 @@ header .billboard .button {
   transform: scale(1.1);
 }
 
-.buttonSmall i {
+.button-small i {
   display: inline-block;
   width: 25px;
   height: 25px;
@@ -145,7 +145,7 @@ header .billboard .button {
   transition: transform 0.5s;
 }
 
-.buttonSmall i:hover {
+.button-small i:hover {
   border: solid 2px #fff;   //theme color?
   transform: scale(1.1);
 }
