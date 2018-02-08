@@ -1,8 +1,22 @@
 <ul>
   <li  *ngFor="let node of data">
 
-    <div class="defaultnode" [ngClass]="{'activenode':node.active}" (click)="onClick(node)"> <span *ngIf="node.icon"><amexio-nav-icon class="node-icon" [customclass]="node.icon"></amexio-nav-icon></span>{{node.text}}</div>
-    <!--<i class="node-icon" [ngClass]="node.icon" aria-hidden="true"></i>-->
-    <amexio-sidenav-node  *ngIf="node.children && (node.children.length>0)"  [data]="node.children" (nodeclick)="onClick($event)"></amexio-sidenav-node>
-  </li>
+    <div class="defaultnode" [ngClass]="{'activenode':node.active}" (click)="getOnNodeClick(node)" (click)="getOnClick(node)"> 
+      <span *ngIf="node.icon">
+        <amexio-nav-icon class="node-icon" [customclass]="node.icon"></amexio-nav-icon>
+      </span>
+      <span>{{node.text}}</span>
+      <ng-container *ngIf="node.children && (node.children.length>0)">
+          <span style="padding-right: 10px; float: right" *ngIf="node.expand" ><amexio-nav-icon key="sidenav-angle-up"></amexio-nav-icon></span>
+
+          <span  style="padding-right: 10px;float: right;" *ngIf="!node.expand" >
+            <amexio-nav-icon key="sidenav-angle-down"></amexio-nav-icon>
+          </span>
+        </ng-container>
+    </div>
+    <div class="submenu-details"  [ngClass]="{'sidenav-submenu-expanded':node.expand}" >
+    <amexio-sidenav-node  *ngIf="node.children && (node.children.length>0)"  [data]="node.children"  (nodeClick)="getOnNodeClick($event)" (onClick)="getOnClick($event)">
+    </amexio-sidenav-node>
+    </div>
+    </li>
 </ul>

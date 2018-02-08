@@ -3,8 +3,6 @@
      class="sidenav-mobile-bar" (click)="toggleSideNav()">
   <amexio-nav-icon key="sidenav_bar"></amexio-nav-icon>
 </div>
-
-
 <div [ngStyle]="{'width':width}" style="height: 100%" [ngClass]="{'left':(position=='left' && position!='relative'),'right':(position=='right' && position!='relative')}">
   <div class="sidenav" [ngStyle]="{'height':height}">
     <ul>
@@ -32,7 +30,7 @@
           </ng-container>
         </div>
         <div class="sidenav-submenu-details" [ngClass]="{'sidenav-submenu-expanded':node.expand}">
-          <amexio-sidenav-node  *ngIf="node.expand && node.children && (node.children.length>0)" [data]="node.children" (nodeclick)="onNodeClick($event)">
+          <amexio-sidenav-node  *ngIf="node.expand && node.children && (node.children.length>0)" [data]="node.children" (nodeClick)="onNodeClick($event)" (onClick)="onClick($event)">
           </amexio-sidenav-node>
         </div>
 
