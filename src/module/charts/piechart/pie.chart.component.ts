@@ -189,7 +189,7 @@ export class PieChartComponent implements AfterContentInit,OnInit {
         bold: this.chartTitleComponent.bold ? this.chartTitleComponent.bold : null,
         italic: this.chartTitleComponent.italic ? this.chartTitleComponent.italic : null
       }:null,
-      is3d: this.is3d,
+      is3D: this.is3d,
       piehole: this.piehole,
       startangle: this.startangle,
       backgroundcolor: this.backgroundcolor,
