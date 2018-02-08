@@ -7,9 +7,9 @@
       </span>
       <span >{{node.text}}</span>
       <ng-container *ngIf="node.children && (node.children.length>0)">
-          <span style="padding-right: 10px; float: right" *ngIf="node.expand" >
           <span  style="padding-right: 10px;float: right;" *ngIf="!node.expand" >
-            <amexio-nav-icon key="itemselector_caretup"></amexio-nav-icon></span>
+            <amexio-nav-icon key="itemselector_caretup"></amexio-nav-icon>
+          </span>
           <span  style="padding-right: 10px;float: right;" *ngIf="!node.expand" >
             <amexio-nav-icon key="itemselector_caretdown"></amexio-nav-icon>
           </span>
