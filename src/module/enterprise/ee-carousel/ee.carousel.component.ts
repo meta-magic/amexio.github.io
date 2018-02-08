@@ -16,8 +16,7 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 @Component({
   selector: 'amexio-media-ee-carousel',
-  templateUrl: 'ee.carousel.component.html',
-  styleUrls: ['ee.carousel.component.css']
+  templateUrl: 'ee.carousel.component.html'
 })
 
 export class MultiMediaCarousel implements OnInit, OnChanges {

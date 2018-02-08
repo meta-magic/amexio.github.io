@@ -9,8 +9,8 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges
         <i class="fa fa-times fa-lg" (click)="closeDetailPage()" aria-hidden="true"></i>
       </span>
       <div class="content-area" >
-        <span class="title">{{title}}</span><br>
-        <span class="subtitle"><span class="match" *ngIf="matchPercentage">{{matchPercentage}} Match</span> {{releaseYear}} <span
+        <span class="content-title">{{title}}</span><br>
+        <span><span class="match" *ngIf="matchPercentage">{{matchPercentage}} Match</span> {{releaseYear}} <span
           class="age" *ngIf="ageLimit">{{ageLimit}}</span> {{seasonNo}}</span><br>
         <p style="word-wrap: break-word;">{{description}}<br>
 
