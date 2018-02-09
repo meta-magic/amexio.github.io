@@ -1,3 +1,7 @@
+
+cp mda/search-icon.png css/;
+cp mda/slider.png css/;
+
 sass mda/at-md-gold-amber.scss:css/at-md-gold-amber.css;
 
 sass mda/at-md-army-olive.scss:css/at-md-army-olive.css;
@@ -52,5 +56,6 @@ sass mda/at-md-pumpkin-fire.scss:css/at-md-pumpkin-fire.css;
 sass mda/at-md-mauve-orchid.scss:css/at-md-mauve-orchid.css;
 sass mda/at-md-honey-mustard.scss:css/at-md-honey-mustard.css;
 sass mda/at-md-bruntor-tangerine.scss:css/at-md-bruntor-tangerine.css;
+
 
 
