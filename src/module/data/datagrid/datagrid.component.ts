@@ -674,8 +674,13 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
   }
 
   onRowClick(rowData: any, rowIndex: any) {
-    this.data.forEach((opt) =>{
+    this.data.forEach((opt: any) =>{
       opt.isSelected = false;
+      if(opt.hasOwnProperty('groupData')) {
+        opt.groupData.forEach((optChild: any) =>{
+          optChild.isSelected = false;
+        })
+      }
     });
     rowData.isSelected = !rowData.isSelected;
     /* if(rowRef.classList.contains('datatable-row-active')){
@@ -963,9 +968,13 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
   toogle(row: any, index: number) {
     row.expanded = !row.expanded;
     if (row.expanded){
-      this.addRows(row, index);
+      if(row.hasOwnProperty('groupData')) {
+        this.addRows(row, index);
+      }
     }else{
-      this.removeRows(row);
+      if(row.hasOwnProperty('groupData')) {
+        this.removeRows(row);
+      }
     }
   }
 
