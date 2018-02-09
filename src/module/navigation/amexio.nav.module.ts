@@ -19,6 +19,7 @@ import {AmexioMenuBarComponent} from "./menubar/menubar.component";
 import {AmexioLayoutModule} from "../layout/amexio.layout.module";
 import {AmexioNavIconPane} from "./icon/icon.component";
 import {IconLoaderService} from "../services/icon/icon.service";
+import {AmexioFormsModule} from "../forms/amexio.forms.module";
 
 export * from '../services/data/common.data.service';
 export * from '../services/device/device.query.service';
@@ -45,7 +46,8 @@ const NAV_COMPONENTS = [
     FormsModule,
     HttpModule,
     AmexioMediaModule,
-    AmexioLayoutModule
+    AmexioLayoutModule,
+    AmexioFormsModule
   ],
   exports: NAV_COMPONENTS,
   declarations: NAV_COMPONENTS,
