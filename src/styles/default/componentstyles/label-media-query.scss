@@ -67,3 +67,37 @@
   }
 }
 
+@media only screen and (max-width: 300px) {
+  /* phones */
+  .label-content{
+
+  }
+
+  .large{
+    font-size: 18px;
+  }
+
+  .medium{
+    font-size: 12px;
+  }
+
+  .small{
+    font-size: 10px;
+  }
+
+  .large-bold{
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .medium-bold{
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  .small-bold{
+    font-size: 10px;
+    font-weight: bold;
+  }
+}
+
