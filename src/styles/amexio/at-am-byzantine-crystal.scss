@@ -418,6 +418,17 @@ button.app-button {
   background: $defaultColor;
 }
 
+.sidenav .defaultnode:hover {
+  color: $defaultBGColor;
+  background: $defaultColor;
+}
+
+.sidenav .headernode:hover {
+  color: $defaultBGColor;
+  background: $defaultColor;
+}
+
+
 .image-responsive{
   max-width: 100%;
   width: 100%;
