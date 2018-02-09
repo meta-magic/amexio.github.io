@@ -90,7 +90,7 @@
 }
 
 .datatable .datatable-row-active{
-  background-color: $datatableRowActiveBG;
+  background-color: $datatableRowActiveBG!important;
   @mixin for_row_active() {
     $datatableRowActive: false !default;
 

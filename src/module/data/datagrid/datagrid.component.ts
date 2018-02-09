@@ -5,7 +5,7 @@ import {
   AfterContentInit, ChangeDetectorRef, Component, ContentChildren, DoCheck, EventEmitter, Input, OnInit, Output,
   QueryList
 } from '@angular/core';
-import {AmexioGridColumnComponent} from './data.grid.column';
+import {AmexioGridColumnComponent} from "./data.grid.column";
 import {CommonDataService} from "../../services/data/common.data.service";
 
 @Component({
@@ -141,8 +141,8 @@ import {CommonDataService} from "../../services/data/common.data.service";
             <div class="spinner"></div>
           </div>
           <ng-container *ngIf="!mask">
-            <div class="datatable-row" *ngFor="let row of viewRows;let i=index" id="{{'row'+i}}" [ngClass]="rowBgColor"
-                 (click)="onRowClick(row, i,rowData)" #rowData>
+            <div class="datatable-row" *ngFor="let row of viewRows;let i=index" id="{{'row'+i}}" [ngClass]="{'datatable-row-active':row.isSelected}"
+                 (click)="onRowClick(row, i)">
 
               <ng-container *ngIf="enablecheckbox">
                 <div class="datatable-col datatable-checkbox-width checkbox-col">
@@ -192,14 +192,14 @@ import {CommonDataService} from "../../services/data/common.data.service";
               </ng-container>
             </div>
           </ng-container>
-       
+
         </div>
       </div>
 
     </ng-container>
 
     <!--Group BY datagrid start-->
-    
+
     <ng-container *ngIf="groupby && !enabledatafilter">
       <div class="datatable-height" [style.height.px]="height">
         <div class="datatable" style="table-layout: inherit !important;">
@@ -207,7 +207,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
             <div class="spinner"></div>
           </div>
           <ng-container *ngIf="!mask">
-            <div class="datatable-row" (click)="toogle(row,i)"  *ngFor="let row of viewRows;let i=index" id="{{'row'+i}}" (click)="onRowClick(row, i, rowData)" #rowData>
+            <div class="datatable-row" (click)="toogle(row,i)"  *ngFor="let row of viewRows;let i=index" id="{{'row'+i}}" [ngClass]="{'datatable-row-active':row.isSelected}" (click)="onRowClick(row, i)">
               <ng-container *ngIf="enablecheckbox">
                 <div class="datatable-col datatable-checkbox-width checkbox-col">
                   <div class="inputgroup">
@@ -287,7 +287,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
               </ng-container>
             </div>
           </ng-container>
-          
+
         </div>
       </div>
     </ng-container>
@@ -296,7 +296,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
       <ng-container *ngIf="pagesize && (data && data.length > pagesize)">
         <ng-container *ngIf="totalPages!=null">
           <amexio-paginator [pages]="totalPages" [rows]="pagesize"
-                              (onPageChange)="loadPageData($event)"></amexio-paginator>
+                            (onPageChange)="loadPageData($event)"></amexio-paginator>
         </ng-container>
       </ng-container>
     </div>
@@ -673,12 +673,16 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
     column.hidden = !column.hidden;
   }
 
-  onRowClick(rowData: any, rowIndex: any, rowRef: any) {
-    if(rowRef.classList.contains('datatable-row-active')){
-      rowRef.classList.remove('datatable-row-active');
-    } else {
-      rowRef.classList.add('datatable-row-active');
-    }
+  onRowClick(rowData: any, rowIndex: any) {
+    this.data.forEach((opt) =>{
+      opt.isSelected = false;
+    });
+    rowData.isSelected = !rowData.isSelected;
+    /* if(rowRef.classList.contains('datatable-row-active')){
+     rowRef.classList.remove('datatable-row-active');
+     } else {
+     rowRef.classList.add('datatable-row-active');
+     }*/
     rowIndex = 'row' + rowIndex;
     this.rowId = rowIndex;
     this.rowSelect.emit(rowData);
