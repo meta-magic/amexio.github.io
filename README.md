@@ -39,12 +39,16 @@
       Website
     </a>
     <span> | </span>
-    <a href="http://www.amexio.org">
+    <a href="http://api.amexio.tech">
       API Docs
     </a>
     <span> | </span>
-    <a href="http://www.amexio.org/demoapp/">
-      Demo App
+    <a href="http://demo.amexio.tech/">
+      Demo SE
+    </a>
+    <span> | </span>
+    <a href="http://eedemo.amexio.tech/">
+      Demo EE
     </a>
     <span> | </span>
     <a href="http://forum.metamagicglobal.com/">
