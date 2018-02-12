@@ -8,9 +8,6 @@ import {Observable} from "rxjs/Observable";
 @Injectable()
 export class CommonDataService {
   filteredObject: any = [];
-  parentRef : any;
-  responseData:any;
-  
   constructor(private _http: Http) {
   }
 
@@ -25,28 +22,14 @@ export class CommonDataService {
     }
   }
 
-   uploadFile(parentRef :any, serviceUrl: string, methodType:string,requestData: any){
-    this.parentRef = parentRef;
+uploadFile(serviceUrl: string, methodType:string,requestData: any): Observable<any> {
     let requestJson = requestData;
     let headers = new Headers({ "Access-Control-Allow-Origin":"*"});
     let options = new RequestOptions({headers : headers,method : methodType});
-    if(methodType.toUpperCase() == "POST"){
-      this._http.post(serviceUrl,requestJson,options).subscribe(
-          response=>{
-            this.responseData = response.json();
-          },
-          error=>{
-          },
-          ()=>{
-            //this.setData();
-          }
-      );
+if(methodType.toUpperCase() == 'POST'){
+return this._http.post(serviceUrl,requestJson,options);
     }
-
   }
 
-  setData(){
-    this.parentRef.setData(this.responseData);
-  }
 
 }
