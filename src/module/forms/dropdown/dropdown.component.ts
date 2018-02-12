@@ -165,7 +165,7 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
           preSelectedMultiValues == '' ? preSelectedMultiValues += row[this.displayfield] : preSelectedMultiValues += ',' + row[this.displayfield];
         }
       });
-      this.value = optionsChecked;
+      //this.value = optionsChecked;
       this.displayValue = preSelectedMultiValues;
       this.onMultiSelect.emit(this.multiselectValues);
     }
@@ -183,6 +183,8 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
     }
     this.maskloader=false;
   }
+
+
 
   ngDoCheck() {
     if (JSON.stringify(this.previousData) != JSON.stringify(this.data)) {
@@ -215,17 +217,45 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
     }
   }
 
-  getDisplayText(): string {
-    if (this.multiselect) {
-      let multiselectDisplayString: any = '';
-      this.multiselectValues.forEach((row: any) => {
-        multiselectDisplayString == '' ? multiselectDisplayString += row[this.displayfield] : multiselectDisplayString += ',' + row[this.displayfield];
+  setMultiSelectData () {
+    this.multiselectValues = [];
+    if(this.value.length > 0){
+      let modelValue = this.value;
+      this.filteredOptions.forEach((test)=>{
+        modelValue.forEach((mdValue)=>{
+          if(test[this.valuefield] == mdValue) {
+            if(test.hasOwnProperty('checked')) {
+              test.checked = true;
+            }
+            this.multiselectValues.push(test);
+          }
+        });
       });
-      if (this.multiselectValues.length > 0)
-        return multiselectDisplayString; else
-        return '';
-    } else
-      return this.displayValue == undefined ? '' : this.displayValue
+    }
+  }
+
+
+  getDisplayText(): string {
+    if(this.value != null) {
+      if (this.multiselect) {
+        this.setMultiSelectData();
+        let multiselectDisplayString: any = '';
+        this.multiselectValues.forEach((row: any) => {
+          multiselectDisplayString == '' ? multiselectDisplayString += row[this.displayfield] : multiselectDisplayString += ',' + row[this.displayfield];
+        });
+        if (this.multiselectValues.length > 0)
+          return multiselectDisplayString; else
+          return '';
+      } else {
+        this.filteredOptions.forEach((test) => {
+          if (test[this.valuefield] == this.value) {
+            this.displayValue = test[this.displayfield];
+          }
+        });
+        return this.displayValue == undefined ? '' : this.displayValue
+      }
+    }
+
   }
 
   onDropDownClick(event: any) {
