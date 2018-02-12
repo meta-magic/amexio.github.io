@@ -221,7 +221,7 @@ export class AppModule { }
 # Amexio Themes (Amexio / Amexio Material)
 
 To use the default theme import the
-`../node_module/amexio-ng-extensions/styles/mda/at-md-blue.scss`
+`../node_modules/amexio-ng-extensions/styles/mda/at-md-blue.scss`
 in your app styles.scss
 Or refer the below table for other themes provided.
 
