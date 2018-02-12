@@ -278,6 +278,15 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
   set value(v: any) {
     if (v !== this.innerValue) {
       this.innerValue = v;
+	  
+      let valueKey = this.valuefield;
+      let displayKey = this.displayfield;
+     
+      this.viewData.forEach((item: any) => {
+        if (item[valueKey] == this.innerValue) this.displayValue = item[displayKey];
+      });
+      this.onSingleSelect.emit(this.value);
+    
       this.onChangeCallback(v);
     }
   }
@@ -309,6 +318,13 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
   writeValue(value: any) {
     if (value !== this.innerValue) {
       this.innerValue = value;
+	  let valueKey = this.valuefield;
+      let displayKey = this.displayfield;
+     
+      this.viewData.forEach((item: any) => {
+        if (item[valueKey] == this.innerValue) this.displayValue = item[displayKey];
+      });
+      this.onSingleSelect.emit(this.value);
     }
   }
 
