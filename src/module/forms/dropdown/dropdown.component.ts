@@ -177,9 +177,13 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
       let val = this.value;
 
       this.viewData.forEach((item: any) => {
-        if (item[valueKey] == val) this.displayValue = item[displayKey];
+        if (item[valueKey] == val)
+        {
+          this.displayValue = item[displayKey];
+          this.onSingleSelect.emit(item);
+        }
       });
-      this.onSingleSelect.emit(this.value);
+
     }
     this.maskloader=false;
   }
@@ -254,6 +258,8 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
         });
         return this.displayValue == undefined ? '' : this.displayValue
       }
+    } else {
+      this.value = '';
     }
 
   }
