@@ -222,7 +222,7 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
     if(this.value.length > 0){
       let modelValue = this.value;
       this.filteredOptions.forEach((test)=>{
-        modelValue.forEach((mdValue)=>{
+        modelValue.forEach((mdValue: any)=>{
           if(test[this.valuefield] == mdValue) {
             if(test.hasOwnProperty('checked')) {
               test.checked = true;
