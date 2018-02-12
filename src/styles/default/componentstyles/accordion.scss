@@ -78,3 +78,8 @@
   overflow: hidden;
   transition: max-height 0.2s ease-out;
 }
+
+.accordion-disable{
+  opacity: 0.55;
+  cursor: not-allowed;
+}

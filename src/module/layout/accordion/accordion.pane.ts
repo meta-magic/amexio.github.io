@@ -20,7 +20,7 @@ import {AccordionService} from "./accordion.service";
 @Component({
   selector: 'amexio-accordion-tab', template: `
 
-    <button class="{{isTransparent ? 'accordion-transparent' : 'accordion'}} {{active ? 'active-accordion' : ''}}" #btn1 (click)="onTabClick(btn1)">
+    <button class="{{isTransparent ? 'accordion-transparent' : 'accordion'}} {{active ? 'active-accordion' : ''}} {{disabled ? 'accordion-disable' : ''}}" #btn1 (click)="onTabClick(btn1)">
       <div style="float: left;" *ngIf="leftIcon">
         <i class="fa {{leftIcon}}"></i>
       </div>
@@ -58,6 +58,8 @@ export class AmexioAccordionTabComponent implements AfterViewInit {
 
   parentId : number;
 
+  @Input('disabled') disabled : boolean;
+
   constructor(private acc : AccordionService){
     this.paneId = Math.floor(Math.random() * 90000) + 10000;
   }
@@ -68,16 +70,18 @@ export class AmexioAccordionTabComponent implements AfterViewInit {
   }
 
   onTabClick(btn: any) {
-    this.active = !this.active;
-    if (this.content.nativeElement.style.maxHeight) {
-      this.content.nativeElement.style.maxHeight = null;
-    } else {
-      this.content.nativeElement.style.maxHeight = this.content.nativeElement.scrollHeight + 'px';
-    }
+    if(!this.disabled){
+      this.active = !this.active;
+      if (this.content.nativeElement.style.maxHeight) {
+        this.content.nativeElement.style.maxHeight = null;
+      } else {
+        this.content.nativeElement.style.maxHeight = this.content.nativeElement.scrollHeight + 'px';
+      }
 
-    this.onClick.emit();
-    // this.acc.onClick.next();
-    this.acc.onClickEvent(this.paneId,this.parentId);
+      this.onClick.emit();
+      // this.acc.onClick.next();
+      this.acc.onClickEvent(this.paneId,this.parentId);
+    }
   }
 
 }

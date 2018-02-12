@@ -109,6 +109,12 @@ body {
 input:disabled {
   opacity: 0.55;
   cursor: not-allowed;
+  background-color: #EBEBE4;
+}
+
+.disable-component{
+  opacity: 0.55;
+  pointer-events: none;
 }
 
 .defaultcolor{

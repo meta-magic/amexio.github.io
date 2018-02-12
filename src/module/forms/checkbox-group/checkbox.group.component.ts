@@ -119,17 +119,18 @@ export class AmexioCheckBoxGroupComponent {
   }
 
   setSelectedCheckBox(rowData: any, event: any) {
+    if(rowData.hasOwnProperty('disabled') && !rowData.disabled){
+      rowData[this.valuefield] = !rowData[this.valuefield];
 
-    rowData[this.valuefield] = !rowData[this.valuefield];
+      if (rowData[this.valuefield]) {
+        this.selectedCheckBox.push(rowData);
+      } else {
+        let indexOf = this.selectedCheckBox.indexOf(rowData);
+        delete this.selectedCheckBox[indexOf];
+      }
 
-    if (rowData[this.valuefield]) {
-      this.selectedCheckBox.push(rowData);
-    } else {
-      let indexOf = this.selectedCheckBox.indexOf(rowData);
-      delete this.selectedCheckBox[indexOf];
+      this.emitSelectedRows();
     }
-
-    this.emitSelectedRows();
   }
 
   emitSelectedRows() {
