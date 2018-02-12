@@ -2,11 +2,12 @@
  * Created by pratik on 15/1/18.
  */
 import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {CommonDataService} from "../../services/data/common.data.service";
 
 @Component({
   selector: 'amexio-fileupload', template: `
     <div class="input-group">
-      <label>Choose File</label>
+      <label>{{fieldlabel}}</label>
       <input type="file" class="input-control"
              [attr.accept]="filetype" (change)="uploadFile($event)"
              [attr.multiple]="multiplefile" #inp>
@@ -52,7 +53,7 @@ export class AmexioFileUploadComponent implements OnInit {
 
   dropClass: string;
 
-  constructor() {
+  constructor(private commonHttpService:CommonDataService) {
 
   }
 
@@ -100,7 +101,7 @@ export class AmexioFileUploadComponent implements OnInit {
         }
         formData.append(this.paramname, fileList[i]);
       }
-      // this.commonHttpService.uploadFile(this, this.httpurl, this.httpmethod, formData);
+      this.commonHttpService.uploadFile(this, this.httpurl, this.httpmethod, formData);
       if (fileList.length == 1) {
         this.uploadedFileName = fileList[0].name;
       } else if (fileList.length > 1) {
