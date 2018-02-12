@@ -179,6 +179,19 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
     this.change.emit(this.value);
   }
 
+  getDisplayValue(val : any) : string{
+    if(this.value == null)
+      return '';
+    else if(this.viewData != null){
+      let displayText : any = '';
+      this.viewData.forEach((row : any)=>{
+        if(this.value == row[this.valuefield])
+          displayText = row[this.displayfield];
+      });
+      return displayText;
+    }
+  }
+
   showAllData(activerow:number){
     let i = 0 ;
     this.viewData.forEach((item: any) => {
