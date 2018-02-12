@@ -352,5 +352,9 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
     this.onTouchedCallback = fn;
   }
 
+  onIconClick() {
+    this.showToolTip = ! this.showToolTip;
+  }
+
 }
 
