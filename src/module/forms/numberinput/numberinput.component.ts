@@ -125,7 +125,6 @@ export class AmexioNumberInputComponent implements ControlValueAccessor {
 
   //Set touched on blur
   onBlur() {
-    debugger;
     this.onTouchedCallback();
     this.showToolTip = false;
     if (this.value < this.minvalue) {
