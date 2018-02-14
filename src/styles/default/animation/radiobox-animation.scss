@@ -1,0 +1,25 @@
+/****************************************************/
+/***                  RADIO-Animation          ***/
+/****************************************************/
+
+@keyframes radioripple {
+  0% {
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.0);
+  }
+  50% { 
+    box-shadow: 0px 0px 0px 15px rgba(0, 0, 0, 0.1);
+  }
+  100% {
+    box-shadow: 0px 0px 0px 15px rgba(0, 0, 0, 0);
+  }
+}
+
+/* Show the input-box-container-label when checked */
+.input-box-container input:checked ~ .input-box-radiobox-label:after {
+  animation: radioripple 0.3s linear forwards; 
+}
+
+/* Style the input-box-container-label/indicator */
+.input-box-container .input-box-radiobox-label:after {
+  transform: scale(1);
+}

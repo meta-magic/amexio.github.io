@@ -1,0 +1,21 @@
+
+/*----------------------------------------------------------------------*/
+/*** CHECKBOX -Animation
+/*----------------------------------------------------------------------*/
+
+@keyframes checkboxripple {
+  0% {
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.0);
+  }
+  50% { 
+    box-shadow: 0px 0px 0px 15px rgba(0, 0, 0, 0.1);
+  }
+  100% {
+    box-shadow: 0px 0px 0px 15px rgba(0, 0, 0, 0);
+  }
+}
+
+/* Show the input-box-container-label when checked */
+.input-box-container input:checked ~ .input-box-checkbox-label:after {
+  animation: checkboxripple .3s ease-in;
+}

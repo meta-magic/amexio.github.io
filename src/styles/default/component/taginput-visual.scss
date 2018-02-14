@@ -1,0 +1,38 @@
+
+/*----------------------------------------------------------------------*/
+/*        TAGINPUT CONTROL COMPONENT  -Visual       */
+/*----------------------------------------------------------------------*/
+
+
+
+.tag-input{
+  // top: 30px;
+  // left: 1px;
+  // z-index: 2;
+  // display: block;
+  // text-align: left;
+
+  .tag {
+    // display: inline-block;
+    // padding: 0 13px;
+    // height: 30px;
+     font-size: $taginputFontSize;
+    // line-height: 30px;
+     background-color: $taginputBGColor;
+     color: $taginputColor;
+    // border: $borderSize solid $borderColor;
+
+    .closebtn {
+      // padding-left: 10px;
+      // font-weight: bold;
+      // float: right;
+      font-size: $closeBtnFontSize;
+      //cursor: pointer;
+      color: $closeBtnColor;
+    }
+
+    .closebtn:hover {
+      color: $closeBtnHoverColor;
+    }
+  }
+}

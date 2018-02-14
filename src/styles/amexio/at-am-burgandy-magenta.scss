@@ -1,149 +1,4 @@
-
-$defaultBGColor : white;
-
-$defaultColor : #8D021F;
-
-$color: $defaultColor;
-
-$oppColor: $defaultBGColor;
-
-
-$backgroundcolor: $defaultBGColor;
-
-$componentBGColor: $backgroundcolor;
-
-
-$themeBGColor :  $defaultBGColor;
-$themeColor :    $defaultColor;
-
-$primaryBGColor: $themeColor;
-$secondaryBGColor: #ffffff;
-$successBGColor : #5cb85c;
-$dangerBGColor : #d9534f;
-$warningBGColor : #f0ad4e;
-
-
-$primaryColor: $themeBGColor;
-$secondaryColor: $color;
-$successColor : $oppColor;
-$dangerColor : $oppColor;
-$warningColor : $oppColor;
-
-
-$success: $successBGColor;
-$error : $dangerBGColor;
-$focusColor : #5cb3fd;
-
-$hoverColor : $themeBGColor;
-$hoverBGColor : $themeColor;
-
-
-$borderSize : 3px;
-$borderRadius : 0 px;
-$borderColor : $defaultColor;
-$borderColor-focus: $focusColor;
-
-
-$navbarBGColor : $themeBGColor ;
-$navbarBoxShadow: $borderColor;
-$navbarColor : $themeColor;
-
-
-$sidenavHeaderBGColor: none;
-$sidenavHeaderColor: $defaultColor;
-$sidenavBGColor : rgba(255, 255, 255, 0.8);
-$sidenavColor: $defaultColor;
-$sidenavactive:$defaultBGColor;
-$sidenavBorderColor: $themeColor;
-
-$menubarBGColor : $defaultBGColor;
-$menubarColor : $color;
-$menuHoverColor: blue;
-$subMenuCotentBGColor : $defaultBGColor;
-$subMenuCotentColor : $color;
-
-$menuborderColor: $themeColor;
-$menuborderSize:1px;
-
-$treeNodeActiveBGColor : $sidenavactive;
-$treeNodeActiveColor : $sidenavColor;
-
-$tabBorderSize: $borderSize;
-$tabBorderColor : lighten($themeColor,30);
-$tabColor : $sidenavHeaderColor;
-$tabBGColor : $sidenavHeaderBGColor;
-$tabActiveBorder : $themeColor;
-$tabActiveBGColor : $themeColor;
-$tabActiveBorderSize : 3px;
-$tabActiveColor : $primaryColor;
-
-$modalBGColor: lighten(black,50%);
-
-$cardBGColor: none;
-$cardColor: $color;
-
-$cardHeaderBGColor: none;
-$cardHeaderColor: $themeColor;
-$cardFooterBGColor: $themeBGColor;
-$cardFooterColor: $themeColor;
-$cardBorderColor: $borderColor;
-
-$toastBGColor : $themeBGColor;
-$toastColor : $themeColor;
-
-$accordionBGColor:$cardHeaderBGColor;
-$accordionColor:$cardHeaderColor;
-$accordionActiveBGColor:$cardHeaderBGColor;
-$accordionActiveColor:$cardHeaderColor;
-$accordionPanelBGColor:$cardBGColor;
-$accordionPanelColor: $accordionColor;
-
-$dockBarBGColor: $defaultColor;
-$dockBarColor: white;
-$dockBarContentBGColor : $cardBGColor;
-$dockBarSize: $tabBorderSize;
-$dockBarActiveBorderColor: $tabActiveBorder;
-$dockBarActiveBorderSize: $tabActiveBorderSize;
-$dockBarActiveColor:$dockBarBGColor;
-$dockBarActiveBGColor:$dockBarColor;
-
-$borderLayoutBorder : 0px;
-$borderLayoutBorderColor : none;
-
-$datapointBGColor : $defaultBGColor;
-$datapointColor : #FF0090;
-$datapointBorderColor : $cardBorderColor;
-
-$ratingBorderColor : $borderColor;
-$ratingActiveColor : $primaryBGColor;
-
-$datetimepickerBGColor : $defaultBGColor;
-$datetimepickertopbarBGColor : $primaryBGColor;
-$datetimepickerActiveColor : $datetimepickerBGColor;
-
-$fieldSetBorderSize : $borderSize;
-$fieldSetBorderColor : $borderColor;
-
-
-$stepsActiveBGColor : $borderColor;
-$stepsColor : $themeColor;
-$stepsBGColor : lighten($borderColor,50%);
-$stepsLabelHighlight : darken($defaultColor, 30);
-$stepsBorderColor:$borderColor;
-$stepsDisabled : lighten($menubarColor,50%);
-$stepsInActiveBGColor:$hoverBGColor;
-
-$datatableRowActiveBG : lighten($datapointColor,50);
-$datatableRowHoverBG : lighten($themeColor,50);
-$datatableRowHover : $themeColor!important; /**/
-$datatableRowActive : $datapointColor!important; /**/
-$datatableBorderSize : 2px;
-$datatableBorderColor : #666666;
-$datatableHeaderColor : $themeBGColor!important;;
-$datatableHeaderBGColor : $themeColor!important;;
-$datatableOddRowColor : lighten($themeColor,70) !important;
-$datatableFontBold : "true";
-
+@import "../amexio/at-am-burgandy-magenta-init.scss";
 @import "../default/common.scss";
 @import "../default/amexio.components.scss";
 @import "../default/amexio.data.scss";
@@ -152,312 +7,307 @@ $datatableFontBold : "true";
 @import "../default/amexio.panes.scss";
 @import "../default/amexio.media.query.scss";
 
-body {
-  font-family: Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
-  background-image:url('/assets/images/theme/bootstrap/polygon_bg.jpg');
-}
-
 /*----------------------------------------------------------------------*/
 /*        INPUT/LABEL/A/BUTTON/DROPDOWN COMPONENT         */
 /*----------------------------------------------------------------------*/
 
 
 
-.input-control {
-  border-radius: 4px;
-  line-height: 2;
-  font-size: 14px;
-  border: none;
-  border-bottom: 2px solid $borderColor;
-  border-radius: 4px!important;
-  color: $color;
-}
+// .input-control {
+//   border-radius: 4px;
+//   line-height: 2;
+//   font-size: 14px;
+//   border: none;
+//   border-bottom: 2px solid $borderColor;
+//   border-radius: 4px!important;
+//   color: $color;
+// }
 
-.input-control-success {
-  border-color:$success;
-}
+// .input-control-success {
+//   border-color:$success;
+// }
 
-.input-control-error {
-  border-color:$error;
-}
-
-
-.inputgroup label {
-  margin-bottom: 0rem;
-}
-
-.dropdown{
-  border: 2px solid $themeColor;
-  box-shadow: 0 1px 3px 0 #666666;
-}
+// .input-control-error {
+//   border-color:$error;
+// }
 
 
-.datetimepicker {
-  border: $borderSize solid $themeColor;
-  box-shadow: 0 1px 3px 0 #666666;
-}
+// .inputgroup label {
+//   margin-bottom: 0rem;
+// }
 
-label {
-  display: inline-block;
-  margin-top: 5px;
-  max-width: 100%;
-  //padding: 0 12px;
-  font-size: 14px;
-  font-weight: 500;
-
-}
+// .dropdown{
+//   border: 2px solid $themeColor;
+//   box-shadow: 0 1px 3px 0 #666666;
+// }
 
 
-a {
-  color: rgba(255, 255, 255, 0.7);
-  //text-transform: lowercase;
-}
+// .datetimepicker {
+//   border: $borderSize solid $themeColor;
+//   box-shadow: 0 1px 3px 0 #666666;
+// }
+
+// label {
+//   display: inline-block;
+//   margin-top: 5px;
+//   max-width: 100%;
+//   //padding: 0 12px;
+//   font-size: 14px;
+//   font-weight: 500;
+
+// }
 
 
-.navbar-logo-unit a{
-  text-transform: capitalize;
-}
+// a {
+//   color: rgba(255, 255, 255, 0.7);
+//   //text-transform: lowercase;
+// }
+
+
+// .navbar-logo-unit a{
+//   text-transform: capitalize;
+// }
 
 
 
-button.app-button {
-  border-radius: 8px;
-}
+// button.app-button {
+//   border-radius: 8px;
+// }
 
-.btn-group button{
-  //border-right: 1px solid white;
+// .btn-group button{
+//   //border-right: 1px solid white;
 
-}
+// }
 
-.drodown-caret-down{
-  top: 35px;
-  color: $borderColor;
-}
+// .drodown-caret-down{
+//   top: 35px;
+//   color: $borderColor;
+// }
 
-//
-//
+
+
 // .datatable .datatable-row{
 //   height: 50px;
 //   border-top: none;
 //   border-bottom: 2px solid #666666;
 // }
-//
+
 // .datatable .datatable-header .datatable-col{
 //   //height: 50px;
 //   font-weight: 500;
 // }
-//
+
 // .datatable .datatable-header{
 //   background-color: $themeBGColor!important;
 //   font-size: larger;
 //   color: $themeColor!important;
 // }
-//
-//
+
+
 // .datatable .datatable-row:hover{
 //   background-color: lighten($themeColor,50);
 //   color: $themeColor!important;
 //   font-weight: bold;
 // }
-//
+
 // .datatable .datatable-row-active{
 //   background-color: lighten($datapointColor,50);
 //   color: $datapointColor!important;
 // }
-//
-//
-//
-//
+
+
+
+
 // .datatable-row:nth-child(odd){
 //   background-color: lighten($themeColor,70) !important;
-//
+
 // }
-//
+
 
 
 
 // .datatable .datatable-col{
 //   vertical-align: middle;
 // }
-//
+
 // .datatable .datatable-row{
 //   height: 50px;
 // }
-//
+
 // .datatable .datatable-header{
 //   background-color: $primaryBGColor;
 //   font-size: larger;
 //   color: $primaryColor;
 // }
-//
+
 // .datatable .datatable-col{
 //   vertical-align: middle;
 // }
-//
 
 
-.datapoints{
-  border-radius: 5px;
-  .datapoints{
-    border: none;
-    box-shadow: none;
-  }
-}
-.datapoints-north{
-  font-size: 36px;
-  font-weight: bold;
-  //color: $themeColor;
-}
 
-.datapoint-south{
+// .datapoints{
+//   border-radius: 5px;
+//   .datapoints{
+//     border: none;
+//     box-shadow: none;
+//   }
+// }
+// .datapoints-north{
+//   font-size: 36px;
+//   font-weight: bold;
+//   //color: $themeColor;
+// }
 
-  background-color: $themeColor;
-  color: $themeBGColor;
-  border-radius: 5px;
-  font-size: 20px;
-  padding: 5px;
-  margin: 1px;
-}
+// .datapoint-south{
 
-.datapoint-west{
-  padding: 5px;
-  font-size: 24px;
-  font-weight: bold;
-}
-.datapoints-issue{
-  padding: 10px;
-}
+//   background-color: $themeColor;
+//   color: $themeBGColor;
+//   border-radius: 5px;
+//   font-size: 20px;
+//   padding: 5px;
+//   margin: 1px;
+// }
 
-.listbox {
-  //border:none;
-  border-radius: 5px;
-  background: rgba(255, 255, 255, 0.6);
-  .list{
-    //background-color: $defaultBGColor;
-    background: rgba(255, 255, 255, 0.6);
-    border: none;
+// .datapoint-west{
+//   padding: 5px;
+//   font-size: 24px;
+//   font-weight: bold;
+// }
+// .datapoints-issue{
+//   padding: 10px;
+// }
 
-    .title {
-      float: left;
-      font-size: 18px;
-      color: $datapointColor;
-      //padding-top: 8px;
-      a {
-        font-size: 16px;
-        color: $defaultColor;
-        text-transform: lowercase;
-      }
-    }
-  }
-}
+// .listbox {
+//   //border:none;
+//   border-radius: 5px;
+//   background: rgba(255, 255, 255, 0.6);
+//   .list{
+//     //background-color: $defaultBGColor;
+//     background: rgba(255, 255, 255, 0.6);
+//     border: none;
 
-.card-container {
-  border:none;
-  box-shadow : none;
-  .card-header {
-    border:none;
-    font-size: 20px;
-    font-weight: 700;
-  }
-  .card-footer{
-    border-top: none;
-    border: $borderSize solid $cardBorderColor;
-    border-radius: 5px;
-  }
-}
+//     .title {
+//       float: left;
+//       font-size: 18px;
+//       color: $datapointColor;
+//       //padding-top: 8px;
+//       a {
+//         font-size: 16px;
+//         color: $defaultColor;
+//         text-transform: lowercase;
+//       }
+//     }
+//   }
+// }
 
-
-.card-body{
-  background:rgba(255, 255, 255, 0.6);
-  border: $borderSize solid $cardBorderColor;
-  border-radius: 5px;
-}
-
-.listbox{
-
-  .listbox .list .title {
-    color: $themeColor !important;
-  }
-
-  .header{
-    border-bottom: $borderSize solid $borderColor;
-    background: none;
-    color: $themeColor !important;
-  }
-
-  .list{
-    background: none;
-  }
-  .list .list-items{
-    border-bottom: 1px solid #1b1d22;
-  }
-}
-
-/** NAVBAR **/
-.navbar-container {
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
-  border-bottom: solid 3px $borderColor;
-  background-color: rgba(255, 255, 255, 0.8);
-  font-size: 100%;
-}
-
-.sidenav{
-  border-right: $borderSize solid $cardBorderColor;
-  box-shadow:none;
-}
-
-.sidenav .activenode{
-  color: $defaultBGColor;
-  background: $defaultColor;
-}
+// .card-container {
+//   border:none;
+//   box-shadow : none;
+//   .card-header {
+//     border:none;
+//     font-size: 20px;
+//     font-weight: 700;
+//   }
+//   .card-footer{
+//     border-top: none;
+//     border: $borderSize solid $cardBorderColor;
+//     border-radius: 5px;
+//   }
+// }
 
 
-.sidenav .headernode:hover {
-  color: $defaultBGColor;
-  background: $defaultColor;
-}
+// .card-body{
+//   background:rgba(255, 255, 255, 0.6);
+//   border: $borderSize solid $cardBorderColor;
+//   border-radius: 5px;
+// }
 
-.sidenav .defaultnode:hover {
-  color: $defaultBGColor;
-  background: $defaultColor;
-}
+// .listbox{
 
-.image-responsive{
-  max-width: 100%;
-  width: 100%;
-  border-top: 1px solid #1b1d22;
-  border-bottom: 1px solid #1b1d22;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
+//   .listbox .list .title {
+//     color: $themeColor !important;
+//   }
 
-.email {
-  //border: $borderSize solid $cardBorderColor;
-  background-color:  rgba(255, 255, 255, 0.8);
-  .card-header{
-    $cardHeaderBGColor: $themeBGColor;
-    $cardHeaderColor: $themeColor;
-  }
+//   .header{
+//     border-bottom: $borderSize solid $borderColor;
+//     background: none;
+//     color: $themeColor !important;
+//   }
 
-  .borderlayout-container-N-E-C-S{
-    padding: 0px;
-    border: $borderSize solid $cardBorderColor;
-    border-radius: 5px;
-  }
+//   .list{
+//     background: none;
+//   }
+//   .list .list-items{
+//     border-bottom: 1px solid #1b1d22;
+//   }
+// }
 
-  .listbox {
-    border:none;
-  }
-}
+// /** NAVBAR **/
+// .navbar-container {
+//   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+//   border-bottom: solid 3px $borderColor;
+//   background-color: rgba(255, 255, 255, 0.8);
+//   font-size: 100%;
+// }
 
-div.profile-image img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  vertical-align: middle;
-}
+// .sidenav{
+//   border-right: $borderSize solid $cardBorderColor;
+//   box-shadow:none;
+// }
 
-div.profile-image a {
-  text-transform: capitalize;
-  color: $datapointColor;
-}
+// .sidenav .activenode{
+//   color: $defaultBGColor;
+//   background: $defaultColor;
+// }
+
+
+// .sidenav .headernode:hover {
+//   color: $defaultBGColor;
+//   background: $defaultColor;
+// }
+
+// .sidenav .defaultnode:hover {
+//   color: $defaultBGColor;
+//   background: $defaultColor;
+// }
+
+// .image-responsive{
+//   max-width: 100%;
+//   width: 100%;
+//   border-top: 1px solid #1b1d22;
+//   border-bottom: 1px solid #1b1d22;
+//   margin-top: 10px;
+//   margin-bottom: 10px;
+// }
+
+// .email {
+//   //border: $borderSize solid $cardBorderColor;
+//   background-color:  rgba(255, 255, 255, 0.8);
+//   .card-header{
+//     $cardHeaderBGColor: $themeBGColor;
+//     $cardHeaderColor: $themeColor;
+//   }
+
+//   .borderlayout-container-N-E-C-S{
+//     padding: 0px;
+//     border: $borderSize solid $cardBorderColor;
+//     border-radius: 5px;
+//   }
+
+//   .listbox {
+//     border:none;
+//   }
+// }
+
+// div.profile-image img {
+//   width: 50px;
+//   height: 50px;
+//   border-radius: 50%;
+//   vertical-align: middle;
+// }
+
+// div.profile-image a {
+//   text-transform: capitalize;
+//   color: $datapointColor;
+// }

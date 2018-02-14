@@ -1,0 +1,59 @@
+
+/*----------------------------------------------------------------------*/
+/*        ACCORDION COMPONENT - Structure        */
+/*----------------------------------------------------------------------*/
+
+.accordion {
+  
+  cursor: pointer;
+  padding: 10px;
+  width: 100%;
+  text-align: left;
+  outline: none;  
+  transition: 0.4s;
+}
+
+
+.accordion:after {
+  float: right;
+  margin-left: 5px;
+}
+
+
+.panel {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+/** Transparent Styling **/
+.accordion-transparent{
+  cursor: pointer;
+  padding: 10px;
+  width: 100%;
+  text-align: left;
+  outline: none;
+  
+  transition: 0.4s;
+  box-shadow: none;
+  border-top: $accordionBorderSize solid $accordionBorderColor;
+}
+
+.accordion-transparent:after {
+  float: right;
+  margin-left: 5px;
+}
+
+.panel {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+.accordion-disable{
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+

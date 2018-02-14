@@ -1,0 +1,53 @@
+
+/*----------------------------------------------------------------------*/
+/*        ITEM SELECTOR COMPONENT         */
+/*----------------------------------------------------------------------*/
+
+.flex-col-45pt{
+  max-width: 45%;
+}
+
+.flex-col-10pt{
+  max-width: 10%;
+}
+
+
+.item-selector-action-panel{
+
+  .actionbar{
+    display: flex; flex-direction: column;
+
+    .actionbarinner{
+      align-self: center;
+      display: flex; flex-direction: column;
+      justify-content: space-between;
+
+      .action{
+        background-color: $primaryBGColor;
+        color: $primaryColor;
+        width: 50px;
+        height: 30px;
+        text-align: center;
+        cursor: pointer;
+      }
+
+      .actiondisable{
+        background-color: lighten($primaryBGColor,50);
+      }
+
+      .movetop{  display: block; }
+      .moveup{  display: block;}
+      .moveleft{  display: block;}
+      .moveright{  display: block;}
+      .movedown{  display: block;}
+      .movebottom{  display: block;}
+
+    }
+
+
+  }
+}
+
+.list-item-active{
+  background-color: lighten($primaryBGColor,30);
+}

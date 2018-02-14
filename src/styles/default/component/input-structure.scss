@@ -1,0 +1,135 @@
+
+/*----------------------------------------------------------------------*/
+/*        INPUT CONTROL COMPONENT -Structure      */
+/*----------------------------------------------------------------------*/
+
+::placeholder {
+  //padding-left: 15px;
+//color: $borderColor;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  //padding-left: 15px;
+ // color: $borderColor;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+ // padding-left: 15px;
+ // color: $borderColor;
+}
+
+.inputgroup {
+  position: relative;
+}
+
+
+.inputgroup > label {
+  display: inline-block;
+  margin-bottom: .5rem;
+}
+
+.input-control {
+  width: 100%;
+  padding: .375rem 0;
+ // font-size: 1rem;
+  line-height: 1.5;
+  border: $borderSize solid $borderColor;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  border-radius: $borderRadius;
+}
+
+.input-control:focus {
+ // border-color: $borderColor-focus;
+  outline: none;
+}
+
+.input-control-success {
+//  border-color:$success;
+}
+
+.input-control-error {
+//  border-color:$error;
+}
+
+.input-control-feedback{
+  position: absolute;
+  top: 30px;
+  right: 0;
+  //z-index: 2;
+  display: block;
+  width: 38px;
+  height: 38px;
+  line-height: 38px;
+  text-align: center;
+  pointer-events: none;
+}
+
+.input-control-feedback .success {
+//  color: $success;;
+}
+
+.input-control-feedback .error {
+//  color: $error;
+}
+
+.inputgroup .tooltiptext {
+//  background-color: $backgroundcolor;
+  border: $borderSize solid $borderColor;
+  position: absolute;
+  z-index: 1;
+  padding-left:5px;
+
+}
+/****************************************************/
+/** INPUT FORM CONTROL STYLES ENDS**/
+/****************************************************/
+
+/****************************************************/
+/**COLLAPSIBLE SEARCH STARTS **/
+/****************************************************/
+
+.search{
+//  background: #ededed url('search-icon.png') no-repeat 9px center;
+  border: solid 1px #ccc;
+  padding: 9px 10px 9px 32px;
+  outline: none;
+  transition: all .5s;
+  width: 55px;
+}
+
+.search:focus {
+  width: 150px;
+// background-color: #fff;
+}
+/****************************************************/
+/**COLLAPSIBLE SEARCH ENDS **/
+/****************************************************/
+
+.upload-drop-zone {
+//color: #ccc;
+  border-style: dashed;
+//  border-color: #ccc;
+  line-height: 200px;
+  text-align: center
+}
+.upload-drop-zone.drop {
+//  color: #222;
+//  border-color: #222;
+}
+
+
+
+/**SPECIAL SETTING REQUIRED FOR FIREFOX***/
+
+input:required {
+  box-shadow:none;
+}
+
+textarea:required{
+  box-shadow:none;
+}
+
+//
+.image-title{
+  display: none;
+}

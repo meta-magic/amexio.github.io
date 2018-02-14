@@ -1,0 +1,30 @@
+/*----------------------------------------------------------------------*/
+/*        BUTTONGROUP COMPONENT -Structure       */
+/*----------------------------------------------------------------------*/
+
+.btn-group span {
+  border: 1px solid black; /* Green border */
+  padding: 10px 24px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  float: left; /* Float the buttons side by side */
+}
+
+.btn-group button{
+  //padding-right: 10px;
+  cursor: pointer;
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.btn-group span:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+
+.button-group{
+  position: relative;
+}

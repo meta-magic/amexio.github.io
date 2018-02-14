@@ -1,0 +1,75 @@
+
+/*----------------------------------------------------------------------*/
+/*        Enterprise Carousel - Structure COMPONENT         */
+/*----------------------------------------------------------------------*/
+
+
+.row__inner {  
+  font-size: 0;
+}
+.tile {
+  font-size: $tileFontSize;
+}
+
+.tile__details {
+  font-size: $tileDetFontSize;
+}
+.tile__details:after,
+.tile__details:before {
+  display: $eeTitleDisplay;
+}
+.tile__details_v { 
+  font-size: $tileDetFontSize;  
+}
+.tile__details_v:after,
+.tile__details_v:before {
+    display: $eeTitleDisplay;
+}
+.tile__title {
+  color: $eeTitleColor;
+}
+.controls{
+  color:$controlColor;
+  font-size: $controlFontSize;
+}
+.controls-v{
+  color:$controlColor;
+  font-size: $controlFontSize;
+}
+.textonly{  
+  color: $textColor;
+  background-color: $textBGColor;
+}
+.carousel-title{
+ font-size: $tileDetFontSize;  
+}
+.subtitle{
+  font-size: $subtitleFontSize;  
+}
+.match{
+  color: $matchColor;
+}
+.age{
+  // display: inline-block;
+  // border: solid 2px #666;
+  // padding: 0 10px 0 10px;
+  font-size: 100%;
+  color: $textColor;
+}
+.actionpanel{  
+  color: $actionColor;
+  background-color: $actionBGColor;
+}
+.section-header{  
+  font-size: 150%;
+  color: $eeTitleColor; 
+}
+.playpanel .playbutton{
+  color: $eeTitleColor;
+}
+.playpanel .playbutton:hover{
+  color: $actionColor;
+}
+.selected{
+  color: $eeTitleColor;
+}

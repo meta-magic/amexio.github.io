@@ -1,0 +1,70 @@
+
+/*----------------------------------------------------------------------*/
+/*        CARD COMPONENT -Structure*/
+/*----------------------------------------------------------------------*/
+
+.card-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: $cardBorderSize solid $cardBorderColor;
+  box-shadow: 0 2px 2px 0$cardBorderShadow;
+  //background-color: $cardBGColor;
+  //color: $cardColor;
+  //z-index: 1;
+}
+
+.card-container > * {
+  padding: 10px;
+  -webkit-flex: 1 100%;
+  flex: 1 100%;
+  text-align:left;
+}
+
+.card-header{
+  display: flex;
+  padding: 10px 24px;
+  //background: $cardHeaderBGColor;
+  border-bottom: $cardBorderSize solid $cardBorderColor;
+  //font-size: 20px;
+  //color: $cardHeaderColor;
+  //font-weight: 300;
+  text-transform: capitalize;
+  overflow: auto;
+}
+
+.card-body{
+  //font-size: 14px;
+  line-height: 24px;
+  //font-weight: 400;
+  padding-left: 16px;
+  padding-right: 16px;
+  //overflow-x: hidden; /**This is affecting menus.**/
+  //overflow-y: auto;
+}
+
+
+.cardbody::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+//  background-color: #F5F5F5;
+}
+
+.cardbody::-webkit-scrollbar
+{
+  width: 6px;
+//  background-color: #F5F5F5;
+}
+
+.cardbody::-webkit-scrollbar-thumb
+{
+//  background-color: $themeBGColor;
+}
+
+
+.card-footer{
+  display: flex;
+  //background-color: $cardFooterBGColor;
+  //color: $cardFooterColor;
+  border-top: $cardBorderSize solid $cardBorderColor;
+}

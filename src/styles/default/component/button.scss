@@ -1,0 +1,149 @@
+
+/*----------------------------------------------------------------------*/
+/*        BUTTON COMPONENT         */
+/*----------------------------------------------------------------------*/
+button {
+
+  display: inline-block;
+  font-weight: 400;
+  line-height: 1.25;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  outline: none;
+  user-select: none;
+  border: 1px solid $borderColor;
+  padding: .5rem 1rem;
+  border-radius: $borderRadius;
+  transition: all .2s ease-in-out;
+}
+
+.button-text {
+  display: inline-block;
+}
+
+
+.button-small{
+  padding: .25rem .5rem;
+  font-size: .875rem;
+}
+
+.button-default{
+  padding: .5rem 1rem;
+  font-size: 1rem;
+}
+
+.button-large{
+  padding: .75rem 1.5rem;
+  font-size: 1.25rem;
+}
+
+.button-secondary{
+  background-color: $secondaryBGColor;
+  border-color: $borderColor;
+  color: $secondaryColor;
+}
+
+
+.button-secondary:hover:enabled{
+  background-color: darken($secondaryBGColor, 10%);
+}
+
+.button-primary {
+  background-color: $primaryBGColor;
+  border-color: $primaryBGColor;
+  color: $primaryColor;
+}
+
+
+.button-primary:hover:enabled{
+  background-color: darken($primaryBGColor, 10%);
+}
+
+.button-success {
+  background-color: $successBGColor;
+  border-color: $successBGColor;
+  color: $successColor;
+
+}
+
+.button-success:hover:enabled{
+  background-color: darken($successBGColor, 10%);
+}
+
+.button-danger {
+  background-color: $dangerBGColor;
+  border-color: $dangerBGColor;
+  color: $dangerColor;
+}
+
+.button-danger:hover:enabled{
+  background-color: darken($dangerBGColor, 10%);
+}
+
+.button-warning {
+  background-color: $warningBGColor;
+  border-color: $warningBGColor;
+  color: $warningColor;
+}
+
+.button-warning:hover:enabled{
+  background-color: darken($warningBGColor, 10%);
+}
+
+/*----------------------------------------------------------------------*/
+/*        BUTTONGROUP COMPONENT         */
+/*----------------------------------------------------------------------*/
+
+.btn-group span {
+  border: 1px solid black; /* Green border */
+  padding: 10px 24px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  float: left; /* Float the buttons side by side */
+}
+
+
+.btn-group button{
+  //padding-right: 10px;
+  cursor: pointer;
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.btn-group span:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+
+.button-group{
+  position: relative;
+}
+/*----------------------------------------------------------------------*/
+/*        BUTTON DROPDOWN COMPONENT         */
+/*----------------------------------------------------------------------*/
+
+
+.button-dropdown {
+  position: absolute;
+  padding: .5rem 1rem;
+  font-size: 1rem;
+  border: $borderSize solid $borderColor;
+  background-color: white;
+  z-index: 3;
+}
+
+.button-dropdown-up{
+  bottom: 100%;
+}
+
+
+.button-dropdown > div:hover{
+  background-color:$sidenavactive;
+}

@@ -1,15 +1,7 @@
-//media query scss
-@import "componentstyles/borderlayout-media-query.scss";
-@import "componentstyles/datatable-media-query.scss";
-@import "componentstyles/itemselector-media-query.scss";
-@import "componentstyles/nav-media-query.scss";
-@import "componentstyles/navbar-media-query.scss";
-@import "componentstyles/rowcol-media-query.scss";
-@import "componentstyles/sidenav-media-query.scss";
-@import "componentstyles/image-media-query.scss";
-@import "componentstyles/dialogue-media-query.scss";
-@import "componentstyles/treenode-media-query.scss";
-@import "componentstyles/window-media-query.scss";
-@import "componentstyles/card-media-query.scss";
-@import "componentstyles/label-media-query.scss";
-@import "componentstyles/enterpise.content.media-query.scss";
+
+@import "media/amexio-mq-mx-width-375.scss";
+@import "media/amexio-mq-mx-width-450.scss";
+@import "media/amexio-mq-mx-width-1024.scss";
+@import "media/amexio-mq-mx-width-767.scss";
+@import "media/amexio-mq-mx-width-1440.scss";
+@import "media/amexio-mq-gt-width-1440.scss";

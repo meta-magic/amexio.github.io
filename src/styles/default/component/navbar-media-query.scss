@@ -1,0 +1,67 @@
+/*----------------------------------------------------------------------*/
+/*        NAVBAR Media-Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+
+@media only screen and (max-width: 1024px) {
+  .navbar-container{
+    padding: 0px;
+    .navbar-logo-unit {
+      padding-left: 40px;
+    }
+
+  }
+
+}
+@media only screen and (max-width: 767px) {
+  .navbar-container{
+    flex-direction: column;
+    padding: 0px;
+    //width: 92%;
+    .nav-bar{
+      //padding: 10px;
+      background-color: lighten($navbarBGColor,20%);
+
+      .nav-item amexio-nav-item{
+        border-bottom: 1px solid $navbarColor;
+        cursor: pointer;
+        *{
+          vertical-align: middle;
+        }
+      }
+    }
+
+    .navbar-logo-unit{
+      padding-left: 40px;
+      display: flex;
+      justify-content: space-between;
+
+      .navbar-mobile-bars{
+        display: block;
+        top: 10px;
+        margin-right: 25px;
+        position: relative;
+      }
+
+    }
+
+  }
+
+
+  .nav-bar{
+    display: block;
+    margin:0;
+    padding: 0px;
+
+    .nav-item{
+      display: flex;
+      flex-direction: column;
+      padding: 0px;
+
+      > *{
+        padding:10px;
+      }
+    }
+  }
+
+
+}

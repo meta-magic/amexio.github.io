@@ -12,6 +12,15 @@ body {
   padding: 0px;
 }
 
+body {
+  font-family: Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
+  @if(isAmexio){
+     background-image: $themeBGImage;
+  }
+  @else{
+    background-image: none;
+  }
+}
 
 .helperHidden{
   border: 0;
@@ -212,7 +221,7 @@ image using the content attribute.
   margin-top: -10px;
   margin-left: -10px;
   border-radius: 50%;
-  border: 2px solid transparent;
+  bordaer: 2px solid transparent;
   border-top-color: $primaryBGColor;
   border-bottom-color: $primaryBGColor;
   animation: spinner .8s ease infinite;

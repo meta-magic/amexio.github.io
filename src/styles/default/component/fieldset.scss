@@ -1,0 +1,28 @@
+
+/*----------------------------------------------------------------------*/
+/*        fieldset COMPONENT         */
+/*----------------------------------------------------------------------*/
+
+fieldset {
+  border: $fieldSetBorderSize solid $fieldSetBorderColor;
+  border-radius: 2px;
+}
+
+.collapsible-legend {
+  padding: 5px 10px;
+  font-size: 13px;
+  margin-left: 20px;
+  box-shadow: none;
+  border: 0;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.collapsible-fieldset {
+  height: 0;
+  overflow: hidden;
+}
+
+.collapsible-fieldset.active {
+  height: auto;
+}

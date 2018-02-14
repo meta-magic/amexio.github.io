@@ -1,0 +1,128 @@
+
+/*----------------------------------------------------------------------*/
+/*        DATETIME COMPONENT -Visual     */
+/*----------------------------------------------------------------------*/
+
+
+.datetimepicker{
+  //display: block;
+  background: $datetimepickerBGColor;
+  //border: $borderSize solid $borderColor;
+  //position: absolute;
+  //box-shadow: 0 1px 3px 0 $borderColor;
+  //z-index: 3;
+
+  .datetimepickertopbar {
+    //padding: 10px 25px;
+    background: $datetimepickertopbarBGColor;
+    //text-align: center;
+
+    .title{
+      font-size:$datetimepickerFontSize;
+      //cursor:pointer;
+    }
+
+    ul {
+      // margin: 0;
+      // padding: 0;
+      // list-style: none;
+    }
+
+    ul li {
+      color:$datetimepickerTopBarColor;
+      font-size: $datetimepickerFontSize;
+      //text-transform: uppercase;
+      //letter-spacing: 3px;
+    }
+
+
+    .prev {
+      //float: left;
+      //padding-top: 10px;
+      //cursor:pointer;
+    }
+
+    .next {
+      //float: right;
+      //padding-top: 10px;
+      //cursor : pointer;
+    }
+  }
+
+
+  .weekdays {
+    //margin: 0;
+    //padding: 10px 0;
+
+    //list-style: none;
+    li {
+      //display: inline-block;
+      //width: 13.6%;
+      //text-align: center;
+    }
+  }
+
+
+
+  .days {
+    //padding: 10px 0;
+    background: lighten($datetimepickertopbarBGColor,60);
+    //margin: 0;
+    //cursor : pointer;
+    //list-style: none;
+
+    li {
+      //list-style-type: none;
+      //display: inline-block;
+      //width: 13.6%;
+      //height: 20px;
+      //text-align: center;
+      //margin-bottom: 5px;
+      font-size:$datetimepickerDaysFontSize;
+      color:$datetimepickerDaysColor;
+    //  cursor: pointer;
+
+    }
+
+
+    li:hover {
+      color: $datetimepickertopbarBGColor;
+    }
+
+
+    .active {
+    //  border-radius: 135px;
+    //  padding: 5px;
+      background: $datetimepickertopbarBGColor;
+      color: $datetimepickerActiveColor;
+    }
+
+
+    .date-today{
+    //  padding-top: 1%;
+    //  padding-left: 42%;
+    }
+
+    .currentMonth{
+      font-weight:bold;
+    }
+
+    .notCurrentMonth{
+    }
+
+  }
+
+
+}
+
+.datetimepicker-up{
+  bottom: 100%;
+}
+
+
+@media screen and (max-width: 600px) {
+  .datetimepicker .days .date-today{
+    padding-top: 1%;
+    padding-left: 36%;
+  }
+}

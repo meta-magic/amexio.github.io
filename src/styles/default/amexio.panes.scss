@@ -1,10 +1,27 @@
-//components scss
-@import "componentstyles/accordion.scss";
-@import "componentstyles/cards.scss";
-@import "componentstyles/carousel.scss";
-@import "componentstyles/fieldset.scss";
-@import "componentstyles/steps.scss";
-@import "componentstyles/tab.scss";
-@import "componentstyles/window.scss";
-@import "componentstyles/dialogue.scss";
-@import "componentstyles/panel.scss";
+@import "component/accordion-visual.scss";
+
+@import "component/accordion-structure.scss";
+@import "component/cards-visual.scss";
+
+@import "component/cards-structure.scss";
+@import "component/carousel-visual.scss";
+
+@import "component/carousel-structure.scss";
+@import "component/fieldset-visual.scss";
+
+@import "component/fieldset-structure.scss";
+@import "component/steps-visual.scss";
+
+@import "component/steps-structure.scss";
+@import "component/tab-visual.scss";
+
+@import "component/tab-structure.scss";
+@import "component/window-visual.scss";
+
+@import "component/window-structure.scss";
+@import "component/dialogue-visual.scss";
+
+@import "component/dialogue-structure.scss";
+
+@import "component/panel-visual.scss";
+@import "component/panel-structure.scss";

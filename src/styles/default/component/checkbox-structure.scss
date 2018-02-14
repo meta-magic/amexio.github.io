@@ -1,0 +1,96 @@
+
+/*----------------------------------------------------------------------*/
+/***CHECKBOX -Structure
+/*----------------------------------------------------------------------*/
+
+.input-box {
+  display: inline-block;
+  cursor: pointer;
+  vertical-align: middle;
+  margin-right: .25em;
+}
+
+.input-box .checkbox {
+  width: 1.125em;
+  height: 1.125em;
+  line-height: 1em;
+  text-align: center;
+  border-radius: $borderRadius;
+}
+
+.input-box .radiobox {
+  width: 1.125em;
+  height: 1.125em;
+  line-height: 1.125em;
+  text-align: center;
+  border-radius: 100%;
+}
+
+.input-box .default {
+  border: $borderSize solid $borderColor;
+  //background: $backgroundcolor;
+}
+
+.input-box .active{
+  border: $borderSize solid $borderColor;
+  //background: $primaryBGColor;
+  //color: $primaryColor;
+}
+
+.input-box-container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  padding-bottom: 10px;
+  margin-bottom: 12px;
+  padding-right: 15px;
+  cursor: pointer;
+}
+
+/* Hide the browser's default checkbox */
+.input-box-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.input-box-checkbox-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  border: $borderSize solid $borderColor;
+}
+
+
+/* When the checkbox is checked, add a blue background */
+.input-box-container input:checked ~ .input-box-checkbox-label {
+  //background-color: $primaryBGColor;
+  
+}
+
+/* Create the input-box-container-label/indicator (hidden when not checked) */
+.input-box-checkbox-label:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the input-box-container-label when checked */
+.input-box-container input:checked ~ .input-box-checkbox-label:after {
+  display: block;
+  //animation: checkboxripple .3s ease-in;
+}
+
+/* Style the input-box-container-label/indicator */
+.input-box-container .input-box-checkbox-label:after {
+  left: 5px;
+  top: 1px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+  }

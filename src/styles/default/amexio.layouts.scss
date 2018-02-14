@@ -1,3 +1,5 @@
 //layouts
-@import "componentstyles/borderlayout.scss";
-@import "componentstyles/rowcol.scss";
+@import "component/borderlayout-visual.scss";
+@import "component/borderlayout-structure.scss";
+@import "component/rowcol-visual.scss";
+@import "component/rowcol-structure.scss";

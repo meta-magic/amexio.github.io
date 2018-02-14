@@ -1,0 +1,130 @@
+
+/*----------------------------------------------------------------------*/
+/*        TABL COMPONENT  - Structure       */
+/*----------------------------------------------------------------------*/
+
+.tabwrapper{
+
+}
+
+.tab {
+  position:relative;
+  overflow:hidden;
+  margin: 0;
+  padding: 0;
+  border-bottom: $tabBorderSize solid $tabBorderColor;
+}
+
+.tab li{
+  display:table-cell;
+  position:relative;
+}
+
+.tablink{
+  display: table-cell;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 10px;
+  //font-size: 17px;
+  border-radius: 0px;
+  //border-bottom: $tabBorderSize solid $tabBorderColor;
+  white-space: nowrap;
+
+}
+
+.tablink span{
+
+}
+
+.activetab {
+  border-bottom: $tabBorderSize+2 solid $tabActiveBorder;
+}
+
+.tabnavigation{
+  padding: 10px 16px;
+  cursor: pointer;
+}
+
+.tabcontent{
+  width: 100%;
+  position: relative;
+  vertical-align: top !important;
+  //float: left;
+  //padding: 10px;
+  padding: 20px 20px 10px 0px;
+}
+
+/**VERTICAL TABS**/
+
+.verticalnavtab{
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+//  border-right: $tabActiveBorderSize solid $tabActiveBorder;
+}
+
+.verticalnavtab ul {
+  list-style: none;
+  padding: 0;
+  margin:0;
+}
+
+.verticalnavtab ul li {
+  // padding-left: 20px;
+}
+
+.verticalnavtab .defaultnode{
+  cursor: pointer;
+  //background-color: $tabBGColor;
+  color: $tabColor;
+  padding: 10px;
+}
+
+.verticalnavtab .defaultnode:hover {
+  //background-color: $tabActiveBGColor;
+  font-weight: bold;
+}
+
+.verticalnavtab .leftactivetab {
+  //background-color: $tabActiveBGColor;
+  font-weight: bold;
+  //color : $tabActiveColor;
+  border-right: $tabActiveBorderSize solid $tabActiveBorder;
+}
+
+.verticalnavtab .rightactivetab {
+  //background-color: $tabActiveBGColor;
+  //background-color: $tabActiveBGColor;
+  font-weight: bold;
+  //color : $tabActiveColor;
+  border-left: $tabActiveBorderSize solid $tabActiveBorder;
+}
+
+
+.verticalnavtab-left{
+  font-weight: bold;
+  //border-right: $tabBorderSize solid $tabBorderColor;
+}
+
+.verticalnavtab-right{
+  font-weight: bold;
+//  border-left: $tabBorderSize solid $tabBorderColor;
+}
+
+
+.verticalalign-tableft{
+  vertical-align: top !important;
+  border-right: $tabBorderSize solid $tabBorderColor !important;
+}
+
+.verticalalign-tabright{
+  vertical-align: top !important;
+  border-left: $tabBorderSize solid $tabBorderColor !important;
+}
+
+.verticalalign-tabcontent
+{
+  vertical-align: top !important;
+}

@@ -1,8 +1,14 @@
 //components scss
 
-@import "componentstyles/datapoint.scss";
-@import "componentstyles/datatable.scss";
-@import "componentstyles/horizontaltreeview.scss";
-@import "componentstyles/itemselector.scss";
-@import "componentstyles/listbox.scss";
-@import "componentstyles/treenode.scss";
+@import "component/datapoint-visual.scss";
+@import "component/datapoint-structure.scss";
+@import "component/datatable-visual.scss";
+@import "component/datatable-structure.scss";
+@import "component/horizontaltreeview-visual.scss";
+@import "component/horizontaltreeview-structure.scss";
+@import "component/itemselector-visual.scss";
+@import "component/itemselector-structure.scss";
+@import "component/listbox-visual.scss";
+@import "component/listbox-structure.scss";
+@import "component/treenode-structure.scss";
+@import "component/treenode-visual.scss";

@@ -1,0 +1,66 @@
+
+/*----------------------------------------------------------------------*/
+/*        PROGRESS COMPONENT - Visual      */
+/*----------------------------------------------------------------------*/
+
+.meter {
+  //height: 20px; /* Can be anything */
+  position: relative;
+  background:$progressBGColor ;
+}
+
+.meter > span {
+  // text-align: center;
+  // display: block;
+  // height: 100%;
+  background-color: $progressBGColor;
+  // position: relative;
+  // overflow: hidden;
+}
+
+.meter > span:after, .animate > span > span {
+  // content: "";
+  // position: absolute;
+  // top: 0;
+  // left: 0;
+  // bottom: 0;
+  // right: 0;
+  // z-index: 1;
+  // overflow: hidden;
+}
+
+.animate > span:after {
+  //display: none;
+}
+
+@-webkit-keyframes move {
+  0% {
+  //  background-position: 0 0;
+  }
+  100% {
+  //  background-position: 50px 50px;
+  }
+}
+
+.success > span {
+  background-color: $progressBGSuccess; /* Add Varaibles here */
+}
+
+.warning > span {
+  background-color: $progressBGWarning;
+}
+
+.danger > span {
+  background-color: $progressBGDanger;
+}
+
+
+.red > span {
+  background-color: $progressBGDangerImg1;
+
+}
+
+.nostripes > span > span, .nostripes > span:after {
+  //-webkit-animation: none;
+  background-image: $progressBGImgNoStripes;
+}

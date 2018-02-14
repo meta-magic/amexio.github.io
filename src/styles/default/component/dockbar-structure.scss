@@ -1,0 +1,99 @@
+
+/*----------------------------------------------------------------------*/
+/*        DOCKBAR COMPONENT -Structure      */
+/*----------------------------------------------------------------------*/
+
+.dockbar {
+  float: left;
+  width: 70px;
+  //border: $borderSize solid $borderColor;
+  //background-color: $dockBarBGColor;
+  //color: $dockBarColor;
+  position: relative;
+  border-top: $dockBarSize solid $dockBarColor;
+  border-bottom: 5px solid $dockBarBGColor;
+}
+
+.dockbar-content{
+  //background-color: $dockBarContentBGColor;
+}
+
+/* Style the buttons inside the tab */
+.dockbar button {
+  display: block;
+  //background-color: inherit;
+  //color: $dockBarColor;
+  padding: 5px;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+  //font-size: 17px;
+  border-bottom: $dockBarSize solid $dockBarColor;
+  border-left: $dockBarSize solid $dockBarColor;
+  height: 50px;
+}
+
+/* Change background color of buttons on hover */
+.dockbar button:hover {
+//  background-color: $dockBarActiveBGColor;
+//  color:$dockBarActiveColor;
+}
+
+/* Create an active/current "tab button" class */
+.dockbar button.active {
+//  background-color: $dockBarActiveBGColor;
+//  color:$dockBarActiveColor;
+  border-left: $dockBarActiveBorderSize solid $dockBarActiveBorderColor;
+}
+
+.dockbar-label-highlight {
+//  color: black;
+//  font-weight: bold;
+}
+
+.dockbar-item-close-bar{
+//  font-size: 24px;
+  float: right;
+//  color: $dockBarActiveBorderColor;
+  font-weight: 500;
+  cursor: pointer;
+}
+.dockbar-title{
+//  font-size: 17px;
+//  font-weight: 500;
+  padding: 15px 10px 10px 10px;
+  border-bottom: 1px solid $dockBarActiveBorderColor;
+}
+
+
+.dockbar-active-content{
+  border-top: $dockBarActiveBorderSize solid $dockBarActiveBorderColor;
+  border-right: $dockBarActiveBorderSize solid $dockBarActiveBorderColor;
+  border-bottom: $dockBarActiveBorderSize solid $dockBarActiveBorderColor;
+  height: 100%;
+}
+
+
+.dockbar-height {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.dockbar-height::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+//  background-color: #F5F5F5;
+}
+
+.dockbar-height::-webkit-scrollbar
+{
+  width: 6px;
+//  background-color: #F5F5F5;
+}
+
+.dockbar-height::-webkit-scrollbar-thumb
+{
+//  background-color: $themeBGColor;
+}

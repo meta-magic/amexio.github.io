@@ -1,0 +1,120 @@
+
+/*----------------------------------------------------------------------*/
+/*        DIALOGUE COMPONENT -Structure       */
+/*----------------------------------------------------------------------*/
+
+.root-window{
+  flex-direction: column;
+  position: fixed; /* Stay in place */
+  z-index: 3; /* Sit on top */
+  // background-color: $modalBGColor; /* Black w/ opacity */
+  //background: rgba(128,127,127,0.6);
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+.dialogue-sm{
+  flex-direction: column;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 18%; /* Location of the box */
+  width: 30%;
+  //min-height: 50%; /* Enable scroll if needed */
+  padding-left: 35%;
+}
+
+
+.dialogue-content{
+  //position: relative;
+  //background-color: #fefefe;
+  margin: auto;
+  padding: 0px;
+  border: $dialogueContentBorderSize solid $dialogueContentBorderColor;
+  width: 80%;
+  height: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.dialogue-min{
+  padding-top: 70px;
+}
+
+.dialogue-content > * {
+  padding: 5px;
+}
+
+
+.dialogue-header{
+  display: flex;
+  /* padding: 10px 24px;*/
+  //background: $cardHeaderBGColor;
+  border-bottom: $dialogueBorderSize solid $dialogueBorderColor;
+  //font-size: 20px;
+  //color: $cardHeaderColor;
+  //font-weight: 300;
+  text-transform: capitalize;
+}
+
+.dialogue-middle{
+  //font-size: 14px;
+  line-height: 24px;
+  //font-weight: 400;
+  padding-left: 16px;
+  padding-right: 16px;
+  min-height: 80% ;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  text-align: center;
+}
+
+
+.dialogue-footer{
+  display: flex;
+  // background-color: $cardFooterBGColor;
+  //color: $cardFooterColor;
+  border-top: $dialogueBorderSize solid $dialogueBorderColor;
+}
+
+.dialogue-message {
+  display: flex;
+  //font-size: 20px;
+  //font-weight: 300;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.dialogue-icon {
+  float: left;
+  display: flex;
+  text-align: center;
+}
+
+.dialogue-success {
+ // color: $successBGColor;
+}
+.dialogue-danger {
+ // color: $dangerBGColor;
+}
+.dialogue-warning {
+ // color: $warningBGColor;
+}
+
+
+.dialogue-table{
+  display: table;
+  width: 100%;
+}
+
+.dialogue-table .tablerow{
+  display: table-row;
+}
+
+.dialogue-table .tablerow .tablecol{
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.icon-style {
+  //font-size: 15px;
+}

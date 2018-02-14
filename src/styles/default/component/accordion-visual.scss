@@ -1,0 +1,46 @@
+
+/*----------------------------------------------------------------------*/
+/*        ACCORDION COMPONENT - Visual      */
+/*----------------------------------------------------------------------*/
+
+.accordion {
+  background-color: $accordionBGColor;
+  color: $accordionColor;
+  border-color: $accordionBorder;
+  font-size: $accordionFontSize;
+}
+
+
+.accordion .active-accordion, .accordion:hover {
+  background-color: $accordionActiveBGColor;
+  color: $accordionActiveColor;
+}
+
+.accordion:after {
+  color:$accordionTransparentColor;
+  font-weight: $accordionTransparentFontWeight;
+}
+
+.panel {
+ 
+  background-color: $accordionPanelBGColor;
+  color: $accordionPanelColor;
+}
+
+/** Transparent Styling **/
+.accordion-transparent{
+  
+  background:$accordionTransparentBG;
+  border-color:$accordionTransparentBorder;
+  font-size: $accordionFontSize;
+}
+
+.accordion-transparent:after {
+  color:$accordionTransparentColor;
+  font-weight: $accordionTransparentFontWeight;
+}
+
+.panel {
+  background-color: $accordionPanelBGColor;
+  color: $accordionPanelColor;
+}

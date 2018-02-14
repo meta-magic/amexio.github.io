@@ -1,0 +1,110 @@
+
+/*----------------------------------------------------------------------*/
+/*        DIALOGUE COMPONENT -Visual        */
+/*----------------------------------------------------------------------*/
+
+.root-window{
+  // flex-direction: column;
+  // position: fixed; /* Stay in place */
+  // z-index: 3; /* Sit on top */
+  // background-color: $modalBGColor; /* Black w/ opacity */
+  background:$dialogueBG;
+  // width: 100%;
+  // height: 100%;
+  // left: 0;
+  // top: 0;
+}
+.dialogue-sm{
+  // flex-direction: column;
+  // position: fixed; /* Stay in place */
+  // z-index: 1; /* Sit on top */
+  // padding-top: 18%; /* Location of the box */
+  // width: 30%;
+  // //min-height: 50%; /* Enable scroll if needed */
+  // padding-left: 35%;
+}
+.dialogue-content{
+  //position: relative;
+  background-color: $dialogueContentBG;
+  //margin: auto;
+  //padding: 0px;
+  //border: $dialogueContentBorderSize solid $dialogueContentBorderColor;
+  //width: 80%;
+  //height: 80%;
+  //box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.dialogue-min{
+  //padding-top: 70px;
+}
+.dialogue-content > * {
+  padding: 5px;
+}
+.dialogue-header{
+  //display: flex;
+  /* padding: 10px 24px;*/
+  background: $dialogueHeaderBG;
+  //border-bottom: $borderSize solid $cardBorderColor;
+  font-size: $dialogueHeaderFontSize;
+  color: $dialogueHeaderColor;
+  font-weight: $dialogueHeaderFontWeight;
+  //text-transform: capitalize;
+}
+.dialogue-middle{
+  font-size: $dialogueMiddleFontSize;
+  line-height: 24px;
+  font-weight: $dialogueMiddleFontWeight;
+  //padding-left: 16px;
+  //padding-right: 16px;
+  // min-height: 80% ;
+  // overflow-y: hidden;
+  // overflow-x: hidden;
+  // text-align: center;
+}
+.dialogue-footer{
+  //display: flex;
+  // background-color: $cardFooterBGColor;
+  color: $cardFooterColor;
+  //border-top: $borderSize solid $cardBorderColor;
+}
+.dialogue-message {
+  //display: flex;
+  font-size: 20px;
+  font-weight: 300;
+  //text-transform: capitalize;
+  //text-align: center;
+}
+
+.dialogue-icon {
+  //float: left;
+  //display: flex;
+  //text-align: center;
+}
+
+.dialogue-success {
+  color: $dialogueSuccessColor;
+}
+.dialogue-danger {
+  color: $dialogueDangerColor;
+}
+.dialogue-warning {
+  color: $dialogueWarningColor;
+}
+
+
+.dialogue-table{
+  // display: table;
+  // width: 100%;
+}
+
+.dialogue-table .tablerow{
+  // display: table-row;
+}
+
+.dialogue-table .tablerow .tablecol{
+  // display: table-cell;
+  // vertical-align: middle;
+}
+
+.icon-style {
+  font-size: $dialogueIconFontSize;
+}

@@ -1,0 +1,124 @@
+
+/*----------------------------------------------------------------------*/
+/*        WINDOW COMPONENT - Strucure       */
+/*----------------------------------------------------------------------*/
+
+.root-window{
+  flex-direction: column;
+  position: fixed; /* Stay in place */
+  z-index: 3; /* Sit on top */
+  //background-color: $modalBGColor; /* Black w/ opacity */
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+.modal-window-lg{
+  flex-direction: column;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  //padding-top: 100px; /* Location of the box */
+  width: 100%;
+  height: 100%;
+  // overflow: auto; /* Enable scroll if needed */
+}
+
+.modal-window-content{
+  //position: relative;
+ // background-color: #fefefe;
+  margin: auto;
+  padding: 0px;
+  border: 1px solid #888;
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.modal-window-max{
+
+}
+
+.modal-window-min{
+  padding-top: 70px;
+}
+
+.modal-window-content > * {
+  padding: 10px;
+  min-height: auto!important;
+}
+
+
+.modal-window-content-max{
+  width: 100%;
+  height: 100%;
+}
+
+
+.modal-window-header{
+  display: flex;
+  //background: $cardHeaderBGColor;
+  border-bottom: $borderSize solid $cardBorderColor;
+  // font-size: 20px;
+  // color: $cardHeaderColor;
+  font-weight: 300;
+  text-transform: capitalize;
+}
+
+.modal-window-middle{
+  //font-size: 14px;
+  line-height: 24px;
+  font-weight: 400;
+  padding-left: 16px;
+  padding-right: 16px;
+  height: 80% ;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.modal-window-middle::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+//  background-color: #F5F5F5;
+}
+
+.modal-window-middle::-webkit-scrollbar
+{
+  width: 6px;
+//  background-color: #F5F5F5;
+}
+
+.modal-window-middle::-webkit-scrollbar-thumb
+{
+ // background-color: $themeBGColor;
+}
+
+
+.modal-window-footer{
+  display: flex;
+  // background-color: $cardFooterBGColor;
+  // color: $cardFooterColor;
+  border-top: $borderSize solid $cardBorderColor;
+}
+
+.modal-window-table{
+  // display: table;
+  // width: 100%;
+}
+
+.modal-window-table .tablerow{
+ // display: table-row;
+}
+
+.modal-window-table .tablerow .tablecol{
+  // display: table-cell;
+  // vertical-align: middle;
+
+}
+
+.modal-window-footer-max {
+  // bottom: 0px;
+  // position: absolute;
+  // width: 99%;
+}
+.footer-right-align {
+  // padding-right: 7px;
+}

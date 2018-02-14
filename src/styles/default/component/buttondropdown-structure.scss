@@ -1,0 +1,21 @@
+/*----------------------------------------------------------------------*/
+/*        BUTTON DROPDOWN COMPONENT -Structure        */
+/*----------------------------------------------------------------------*/
+
+.button-dropdown {
+  position: absolute;
+  padding: .5rem 1rem;
+  //font-size: 1rem;
+  border: $btnDropdownBorderSize solid $btnDropdownBorderColor;
+  //background-color: white;
+  z-index: 3;
+}
+
+.button-dropdown-up{
+  bottom: 100%;
+}
+
+
+.button-dropdown > div:hover{
+  //background-color:$sidenavactive;
+}

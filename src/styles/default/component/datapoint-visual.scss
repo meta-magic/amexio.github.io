@@ -1,0 +1,28 @@
+/*----------------------------------------------------------------------*/
+/*        DATAPOINTS COMPONENT - Visual         */
+/*----------------------------------------------------------------------*/
+
+.datapoints{
+  background: $datapointBGColor;
+  color: $datapointColor;
+  
+  
+  .datapoints-north{
+   color: $datapointColor;
+  }
+
+  .datapoint-south{
+   background-color: $datapointsBGColorS;
+   color: $datapointsColorS;   
+  }
+
+  .datapoint-west{
+    padding: 5px;
+  }
+
+  .datapoint-east{
+    padding: 5px;
+  }
+
+
+}
