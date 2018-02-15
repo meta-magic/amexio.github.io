@@ -275,7 +275,8 @@ $youtubeHoverColor : red;
 $fieldsetFontSize : 13px;
 $fieldsetFontWeight : bold;
 
-$horizontalnodeColor: lighten($primaryBGColor,30%);
+$horizontalnodeColor: lighten($primaryBGColor,20%);
+$horizontalTreeviewColor: darken($themeBGColor, 20%);
 $horizontalnodeGutter: 100px;
 $horizontalnodeBorderRadius: 10px;
 $horizontalnodeEntryMinHeight: 60px;
@@ -286,8 +287,8 @@ $horizontalnodeLabelBorderRadius: 5px;
 
 
 
-$horizontaltreeviewLabelHoverColor:$hoverColor;
-$horizontaltreeviewLabelHoverBGColor:$hoverBGColor;
+$horizontaltreeviewLabelHoverColor:$defaultBGColor;
+$horizontaltreeviewLabelHoverBGColor:lighten($themeBGColor,10%);
 $placeholderColor : $borderColor;
 $inputFontSize:1rem;
 $inputTooltipBGColor : lighten($primaryBGColor,30%);

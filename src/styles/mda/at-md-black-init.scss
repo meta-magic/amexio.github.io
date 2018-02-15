@@ -282,7 +282,8 @@ $youtubeHoverColor : red;
 $fieldsetFontSize : 13px;
 $fieldsetFontWeight : bold;
 
-$horizontalnodeColor: #cccccc;
+$horizontalnodeColor: lighten($primaryBGColor,40%);;
+$horizontalTreeviewColor: $defaultColor;
 $horizontalnodeGutter: 100px;
 $horizontalnodeBorderRadius: 10px;
 $horizontalnodeEntryMinHeight: 60px;
@@ -291,15 +292,6 @@ $horizontalnodeLabelWidth: 150px;
 $horizontalnodeLabelHeight: 30px;
 $horizontalnodeLabelBorderRadius: 5px;
 
-
-$horizontalnodeColor: #cccccc;
-$horizontalnodeGutter: 100px;
-$horizontalnodeBorderRadius: 10px;
-$horizontalnodeEntryMinHeight: 60px;
-
-$horizontalnodeLabelWidth: 150px;
-$horizontalnodeLabelHeight: 30px;
-$horizontalnodeLabelBorderRadius: 5px;
 
 $horizontaltreeviewLabelHoverColor:$hoverColor;
 $horizontaltreeviewLabelHoverBGColor:$hoverBGColor;

@@ -39,7 +39,7 @@ $error : $dangerBGColor;
 $focusColor : #5cb3fd;
 
 $hoverColor : $themeColor;
-$hoverBGColor : rgba(255,111,255, 0.6);
+$hoverBGColor : rgba(189, 127, 189, 0.6);
 
 
 $borderSize : 2px;
@@ -276,7 +276,8 @@ $youtubeHoverColor : red;
 $fieldsetFontSize : 13px;
 $fieldsetFontWeight : bold;
 
-$horizontalnodeColor: lighten($primaryBGColor,30%);
+$horizontalnodeColor: lighten($themeColor,30%);
+$horizontalTreeviewColor: $backgroundcolor;
 $horizontalnodeGutter: 100px;
 $horizontalnodeBorderRadius: 10px;
 $horizontalnodeEntryMinHeight: 60px;

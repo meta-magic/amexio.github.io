@@ -1,6 +1,6 @@
 $isAmexio : true;
 $themeBGImage : url('/assets/images/theme/bootstrap/Pyramid-bg.png');
-$aColorTransprency: #00C4FF !important;
+$aColorTransprency: #00C4FF;
 $defaultBGColor : rgba(0, 43, 87, 0.7);
 
 $defaultColor :  #02468D;
@@ -141,16 +141,15 @@ $stepsInActiveBGColor:$hoverBGColor;
 
 $datatableRowActiveBG : lighten($themeColor,40);
 $datatableRowHoverBG : lighten($themeColor,30);
-$datatableRowHover : $themeColor!important; /**/
-$datatableRowActive : $themeColor; /**/
+$datatableRowHover : $themeColor;
+$datatableRowActive : $themeColor;
 $datatableBorderSize : 1px;
 $datatableBorderColor : white;
-$datatableHeaderColor : $themeBGColor!important;;
-$datatableHeaderBGColor : $themeColor!important;;
+$datatableHeaderColor : $themeBGColor;
+$datatableHeaderBGColor : $themeColor;
 $datatableOddRowColor : none;
 $datatableFontBold : "true";
-$datatableRowHover : none;
-$datatableRowActive : none;
+
 $datapointsColor : $themeBGColor;
 $datapointsBGColorS : $primaryBGColor;
 $datapointsColorS : $primaryColor;
@@ -277,7 +276,8 @@ $youtubeHoverColor : red;
 $fieldsetFontSize : 13px;
 $fieldsetFontWeight : bold;
 
-$horizontalnodeColor: lighten($primaryBGColor,30%);
+$horizontalnodeColor: lighten($themeColor,50);
+$horizontalTreeviewColor: $defaultColor;
 $horizontalnodeGutter: 100px;
 $horizontalnodeBorderRadius: 10px;
 $horizontalnodeEntryMinHeight: 60px;
@@ -287,7 +287,7 @@ $horizontalnodeLabelHeight: 30px;
 $horizontalnodeLabelBorderRadius: 5px;
 
 
-$horizontaltreeviewLabelHoverColor:$hoverColor;
+$horizontaltreeviewLabelHoverColor:$primaryColor;
 $horizontaltreeviewLabelHoverBGColor:$hoverBGColor;
 $placeholderColor : $borderColor;
 $inputFontSize:1rem;

@@ -277,7 +277,8 @@ $youtubeHoverColor : red;
 $fieldsetFontSize : 13px;
 $fieldsetFontWeight : bold;
 
-$horizontalnodeColor: lighten($primaryBGColor,30%);
+$horizontalnodeColor: lighten($themeColor,50%);
+$horizontalTreeviewColor: $defaultColor;
 $horizontalnodeGutter: 100px;
 $horizontalnodeBorderRadius: 10px;
 $horizontalnodeEntryMinHeight: 60px;
