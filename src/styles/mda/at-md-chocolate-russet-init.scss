@@ -76,7 +76,7 @@ $subMenuCotentColor : $color;
 $menuborderColor:$borderColor;
 $menuborderSize:1px;
 
-$treeNodeActiveBGColor : $sidenavactive;
+$treeNodeActiveBGColor :  lighten($primaryBGColor,50%);;
 $treeNodeActiveColor : $sidenavColor;
 
 $tabBorderSize: $borderSize;
@@ -191,7 +191,7 @@ $chcekboxBGColor : $backgroundcolor;
 $chcekboxActiveBGColor : $primaryBGColor;
 $chcekboxActiveColor : $primaryColor;
 
-$accordionBorderSize : $borderSize; 
+$accordionBorderSize : $borderSize;
 $accordionBorderColor : $borderColor;
 $accordionBorder : $borderColor;
 $accordionFontSize : 15px;
@@ -266,7 +266,7 @@ $eeTitleColor1 : rgba(0,0,0,0.9);
 $eeTitleColor2 : rgba(0,0,0,0);
 $eeTitleColor1 : rgba(0,0,0,0.9);
 $eeTitleColor2 : rgba(0,0,0,0);
-$eeTitleDisplay : #000; 
+$eeTitleDisplay : #000;
 $eeTitleColor : white;
 $tileFontSize : 20px;
 $tileDetFontSize : 10px;
@@ -313,10 +313,10 @@ $placeholderColor : $borderColor;
 $inputFontSize:1rem;
 $inputTooltipBGColor : $backgroundcolor ;
 $searchBGColor : #fff;
-$uploadDropZoneColor :#ccc; 
+$uploadDropZoneColor :#ccc;
 $uploadDropZoneColorDrop : #222;
 
-$itemselectorActionBGColor : $primaryBGColor ; 
+$itemselectorActionBGColor : $primaryBGColor ;
 $itemselectorActionColor : $primaryColor;
 $itemselectorActionDisableBGColor : lighten($primaryBGColor,50);
 $itemselectorListActiveBGColor : lighten($primaryBGColor,30);

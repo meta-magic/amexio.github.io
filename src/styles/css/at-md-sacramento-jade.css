@@ -2202,10 +2202,10 @@ header .billboard .content-button {
   background-color: transparent; }
 
 .treenode-content:hover {
-  background-color: #eee; }
+  background-color: #0ec889; }
 
 .treenode-label-active {
-  background-color: #eee;
+  background-color: #0ec889;
   color: black; }
 
 /*----------------------------------------------------------------------*/
