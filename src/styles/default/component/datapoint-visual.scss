@@ -4,16 +4,21 @@
 
 .datapoints{
   background: $datapointBGColor;
-  color: $datapointColor;
-  
+  color: $datapointColor; 
   
   .datapoints-north{
    color: $datapointColor;
   }
 
   .datapoint-south{
-   background-color: $datapointsBGColorS;
-   color: $datapointsColorS;   
+    // @if(isMatrix)
+    // {
+    //   background-color: $datapointsColorS;
+    //   color: $datapointsBGColorS;   
+    // }@else {
+      background-color: $datapointsBGColorS;
+      color: $datapointsColorS;   
+   // }
   }
 
   .datapoint-west{

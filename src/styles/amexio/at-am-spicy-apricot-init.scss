@@ -148,9 +148,10 @@ $datatableOddRowColor : lighten($primaryBGColor,40%);
 $datatableFontBold : "true";
 $datatableRowHover : none;
 $datatableRowActive : none;
+
 $datapointsColor : $themeBGColor;
 $datapointsBGColorS : $primaryBGColor;
-$datapointsColorS : $primaryColor;
+$datapointsColorS : #603A63;
 
 $listBoxBGColor : white;
 $listBoxColor : rgba(0,0,0,0.87);

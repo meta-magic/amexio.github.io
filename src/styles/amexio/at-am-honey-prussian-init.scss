@@ -112,7 +112,7 @@ $dockBarActiveBorderSize: $tabActiveBorderSize;
 $dockBarActiveColor:$cardBGColor;
 $dockBarActiveBGColor:$dockBarColor;
 
-$datapointBGColor : none;
+$datapointBGColor : $themeBGColor;
 $datapointColor : $borderColor;
 $datapointBorderColor : $borderColor;
 
@@ -148,6 +148,7 @@ $datatableOddRowColor : none;
 $datatableFontBold : "true";
 $datatableRowHover : none;
 $datatableRowActive : none;
+$isDatapointBorderRadius : true;
 $datapointsColor : $themeBGColor;
 $datapointsBGColorS : $primaryBGColor;
 $datapointsColorS : $primaryColor;
