@@ -1,6 +1,7 @@
 $isAmexio : true;
 $themeBGImage : url('/assets/images/theme/bootstrap/red_bg.png');
 
+
 $defaultBGColor : #D33134;
 
 $defaultColor : #601221;
@@ -18,6 +19,8 @@ $panelBGColor : #ffe578;
 
 $themeBGColor :  $defaultBGColor;
 $themeColor :    $defaultColor;
+
+$aColorTransprency : $themeColor;
 
 $primaryBGColor: $themeColor;
 $secondaryBGColor: #ffffff;
