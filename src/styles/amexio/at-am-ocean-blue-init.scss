@@ -57,10 +57,11 @@ $sidenavHeaderBGColor: none;
 $sidenavHeaderColor: $color;
 $sidenavBGColor : none;
 $sidenavColor: $defaultColor;
-$sidenavactive:$backgroundcolor;
+$sidenavactive:$themeBGColor;
+$sidenavactiveColor: $themeColor;
 $sidenavBorderColor: rgb(241, 8, 151);
 
-$sidenavBGHoverColor: $defaultColor;
+$sidenavBGHoverColor: $defaultBGColor;
 $sidenavHoverColor: white;
 
 $menubarBGColor : $defaultBGColor;
