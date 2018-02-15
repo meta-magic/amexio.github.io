@@ -1,5 +1,6 @@
 $isAmexio : true;
 $themeBGImage : url('/assets/images/theme/bootstrap/cyan_bg.jpg');
+$aColorTransprency : rgba(255, 255, 255, 0.7);
 
 $defaultBGColor : #1C2949;
 
@@ -58,6 +59,9 @@ $sidenavBGColor : none;
 $sidenavColor: $defaultColor;
 $sidenavactive:$backgroundcolor;
 $sidenavBorderColor: rgb(241, 8, 151);
+
+$sidenavBGHoverColor: $defaultColor;
+$sidenavHoverColor: white;
 
 $menubarBGColor : $defaultBGColor;
 $menubarColor : $color;

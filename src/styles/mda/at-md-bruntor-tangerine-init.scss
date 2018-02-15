@@ -2,6 +2,7 @@
 $isAmexio : false;
 $themeBGImage :none;
 $bodyFamily :  Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
+$aColorTransprency :  rgba(0, 0, 0, 0.87);
 
 $defaultBGColor : white;
 
@@ -62,6 +63,8 @@ $sidenavBGColor : $defaultBGColor;
 $sidenavColor: $defaultColor;
 $sidenavactive:#eee;
 $sidenavBorderColor: $borderColor;
+$sidenavBGHoverColor: #eee;
+$sidenavHoverColor: $defaultColor;
 
 $menubarBGColor : $defaultBGColor;
 $menubarColor : $color;

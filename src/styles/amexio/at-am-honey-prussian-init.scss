@@ -1,6 +1,6 @@
 $isAmexio : true;
 $themeBGImage : url('/assets/images/theme/bootstrap/Pyramid-bg.png');
-
+$aColorTransprency: #00C4FF !important;
 $defaultBGColor : rgba(0, 43, 87, 0.7);
 
 $defaultColor :  #02468D;
@@ -55,6 +55,8 @@ $sidenavHeaderBGColor: $sidenavBGColor;
 $sidenavHeaderColor: $sidenavColor;
 $sidenavactive:$themeColor;
 $sidenavBorderColor: #dddddd;
+$sidenavBGHoverColor: $defaultColor;
+$sidenavHoverColor: white;
 
 $menubarBGColor : $defaultBGColor;
 $menubarColor : $color;

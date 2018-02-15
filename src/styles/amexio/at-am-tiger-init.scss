@@ -1,5 +1,6 @@
 $isAmexio : true;
 $themeBGImage : none;
+$aColorTransprency :  rgba(0, 0, 0, 0.87);
 
 $defaultBGColor : #292b2c;
 
@@ -56,6 +57,9 @@ $sidenavBGColor : $defaultBGColor;
 $sidenavColor: $defaultColor;
 $sidenavactive:$themeBGColor;
 $sidenavBorderColor: #E84C1A;
+
+$sidenavBGHoverColor: $defaultColor;
+$sidenavHoverColor: white;
 
 $menubarBGColor : $defaultBGColor;
 $menubarColor : $color;

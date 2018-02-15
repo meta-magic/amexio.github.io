@@ -1,5 +1,7 @@
 $isAmexio : true;
 $themeBGImage : url('/assets/images/theme/bootstrap/DeepOrange-bg.jpg');
+$aColorTransprency :  rgba(0, 0, 0, 0.87);
+$isSpicyApricot : true;
 
 $defaultBGColor : rgba(255,255,255,0.70);
 
@@ -52,6 +54,9 @@ $sidenavHeaderBGColor: $sidenavBGColor;
 $sidenavHeaderColor: $sidenavColor;
 $sidenavactive:$themeBGColor;
 $sidenavBorderColor: $borderColor;
+
+$sidenavBGHoverColor: $defaultColor;
+$sidenavHoverColor: white;
 
 $menubarBGColor : $defaultBGColor;
 $menubarColor : $color;

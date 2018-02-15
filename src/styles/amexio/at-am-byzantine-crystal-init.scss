@@ -1,5 +1,6 @@
 $isAmexio : true;
 $themeBGImage : url('/assets/images/theme/bootstrap/polygon_bg.jpg');
+$aColorTransprency : rgba(255, 255, 255, 0.7);
 
 $defaultBGColor : white;
 
@@ -52,9 +53,11 @@ $navbarColor : $themeColor;
 $sidenavHeaderBGColor: none;
 $sidenavHeaderColor: $defaultColor;
 $sidenavBGColor : rgba(255, 255, 255, 0.8);
-$sidenavColor: $defaultColor;
-$sidenavactive:$defaultBGColor;
+$sidenavColor: $defaultBGColor;
+$sidenavactive:$defaultColor;
 $sidenavBorderColor: $themeColor;
+$sidenavBGHoverColor: $defaultColor;
+$sidenavHoverColor: $defaultBGColor;
 
 $menubarBGColor : $defaultBGColor;
 $menubarColor : $color;

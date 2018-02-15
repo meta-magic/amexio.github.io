@@ -137,6 +137,17 @@ Spin animation for .loading-mask::after
     transform: rotate(0deg); }
   to {
     transform: rotate(359deg); } }
+label {
+  display: inline-block;
+  margin-top: 5px;
+  max-width: 100%;
+  font-size: 14px;
+  font-weight: 500; }
+
+a {
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 14px; }
+
 /*
 The loading throbber is a single spinning element with three
 visible borders and a border-radius of 50%.
@@ -2202,10 +2213,10 @@ header .billboard .content-button {
   background-color: transparent; }
 
 .treenode-content:hover {
-  background-color: #c46900; }
+  background-color: #ff9c2b; }
 
 .treenode-label-active {
-  background-color: #c46900;
+  background-color: #ff9c2b;
   color: black; }
 
 /*----------------------------------------------------------------------*/

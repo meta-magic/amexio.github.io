@@ -183,6 +183,25 @@ Spin animation for .loading-mask::after
     transform: rotate(359deg);
   }
 }
+label {
+  display: inline-block;
+  margin-top: 5px;
+  max-width: 100%;
+  //padding: 0 12px;
+  font-size: 14px;
+  font-weight: 500;
+
+}
+
+a {
+  color: $aColorTransprency;
+  //text-transform: lowercase;
+  @if(isAmexio){
+    @if(isSpicyAproicot){
+      font-size: 14px;
+    }
+  }
+}
 
 /*
 The loading throbber is a single spinning element with three
@@ -230,3 +249,5 @@ image using the content attribute.
 .row-disabled{
   opacity: 0.55;
 }
+
+

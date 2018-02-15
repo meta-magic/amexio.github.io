@@ -137,6 +137,17 @@ Spin animation for .loading-mask::after
     transform: rotate(0deg); }
   to {
     transform: rotate(359deg); } }
+label {
+  display: inline-block;
+  margin-top: 5px;
+  max-width: 100%;
+  font-size: 14px;
+  font-weight: 500; }
+
+a {
+  color: #999999;
+  font-size: 14px; }
+
 /*
 The loading throbber is a single spinning element with three
 visible borders and a border-radius of 50%.

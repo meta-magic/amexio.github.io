@@ -9,6 +9,7 @@ $color: $defaultColor;
 
 $oppColor: $defaultBGColor;
 
+$aColorTransprency :  $color;
 
 $backgroundcolor: $defaultBGColor;
 
@@ -56,6 +57,9 @@ $sidenavBGColor : $defaultBGColor;
 $sidenavColor: $sidenavHeaderColor;
 $sidenavactive:white;
 $sidenavBorderColor: darken($backgroundcolor, 20);
+
+$sidenavBGHoverColor: $defaultColor;
+$sidenavHoverColor: white;
 
 $menubarBGColor : $defaultBGColor;
 $menubarColor : $color;
