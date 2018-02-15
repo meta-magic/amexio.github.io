@@ -104,7 +104,13 @@
 }
 
 .sidenav .headernode:hover {
-  background-color: $sidenavactive;
+  background-color: $sidenavBGHoverColor;
+  @if(isAmexio){
+    color: $sidenavHoverColor;
+ }
+  @else{
+    color: inherit;
+ }
 }
 
 
@@ -117,7 +123,13 @@
 }
 
 .sidenav .defaultnode:hover {
-  background-color: $sidenavactive;
+  background-color: $sidenavBGHoverColor;
+  @if(isAmexio){
+    color: $sidenavHoverColor;
+ }
+  @else{
+    color: inherit;
+ }
 }
 
 .sidenav .activenode {
