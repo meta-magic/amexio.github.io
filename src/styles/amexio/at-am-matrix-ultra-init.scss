@@ -56,6 +56,7 @@ $sidenavHeaderColor: $color;
 $sidenavBGColor : $defaultBGColor;
 $sidenavColor: $defaultColor;
 $sidenavactive:$themeBGColor;
+$sidenavactiveColor: $themeColor;
 $sidenavBorderColor: $themeColor;
 
 $menubarBGColor : $defaultBGColor;
@@ -367,8 +368,8 @@ $sidenavScrollThumbColor : $themeColor;
 $sidenavTitleColor:$primaryColor;
 $sidenavTitleBGColor : $primaryBGColor;
 
-$sidenavBGHoverColor: $defaultColor;
-$sidenavHoverColor: white;
+$sidenavBGHoverColor: $defaultBGColor;
+$sidenavHoverColor: $defaultColor;
 
 $steppColor : #666;
 $stepsFontSize  : 12px;

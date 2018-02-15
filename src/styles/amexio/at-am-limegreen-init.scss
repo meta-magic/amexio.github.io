@@ -51,14 +51,15 @@ $navbarBoxShadow: $borderColor;
 $navbarColor : $themeColor;
 
 $sidenavHeaderBGColor: $defaultBGColor;
-$sidenavHeaderColor: black;
+$sidenavHeaderColor: $defaultColor;
 $sidenavBGColor : $defaultBGColor;
 $sidenavColor: $sidenavHeaderColor;
 $sidenavactive:white;
+$sidenavactiveColor: $themeColor;
 $sidenavBorderColor: darken($backgroundcolor, 20);
 
-$sidenavBGHoverColor: $defaultColor;
-$sidenavHoverColor: white;
+$sidenavBGHoverColor: $defaultBGColor;
+$sidenavHoverColor: $defaultColor;
 
 $menubarBGColor : $defaultBGColor;
 $menubarColor : $color;

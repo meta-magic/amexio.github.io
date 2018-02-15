@@ -5,6 +5,8 @@ $defaultBGColor : rgba(0, 43, 87, 0.7);
 
 $defaultColor :  #02468D;
 
+$oppColor1: white;
+
 $color: $defaultColor;
 
 $oppColor: $defaultBGColor;
@@ -54,9 +56,10 @@ $sidenavColor: #02468D;
 $sidenavHeaderBGColor: $sidenavBGColor;
 $sidenavHeaderColor: $sidenavColor;
 $sidenavactive:$themeColor;
+$sidenavactiveColor: $oppColor1;
 $sidenavBorderColor: #dddddd;
 $sidenavBGHoverColor: $defaultColor;
-$sidenavHoverColor: white;
+$sidenavHoverColor: $oppColor1;
 
 $menubarBGColor : $defaultBGColor;
 $menubarColor : $color;

@@ -55,9 +55,10 @@ $sidenavHeaderColor: $color;
 $sidenavBGColor : $defaultBGColor;
 $sidenavColor: $defaultColor;
 $sidenavactive:$themeBGColor;
-$sidenavBorderColor: #FEE12B;
+$sidenavactiveColor: $themeColor;
+$sidenavBorderColor: $themeColor;
 
-$sidenavBGHoverColor: $defaultColor;
+$sidenavBGHoverColor: $themeBGColor;
 $sidenavHoverColor: white;
 
 $menubarBGColor : $defaultBGColor;
@@ -66,7 +67,7 @@ $menuHoverColor: blue;
 $subMenuCotentBGColor : $defaultBGColor;
 $subMenuCotentColor : $color;
 
-$menuborderColor:#FEE12B;
+$menuborderColor: $themeColor;
 $menuborderSize:1px;
 
 $treeNodeActiveBGColor : $sidenavactive;

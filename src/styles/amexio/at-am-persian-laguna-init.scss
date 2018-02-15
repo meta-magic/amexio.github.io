@@ -56,7 +56,8 @@ $sidenavHeaderBGColor: none;
 $sidenavHeaderColor: $defaultColor;
 $sidenavBGColor : none;
 $sidenavColor: $defaultColor;
-$sidenavactive:$themeColor;
+$sidenavactive:$defaultBGColor;
+$sidenavactiveColor: $panelBGColor;
 $sidenavBorderColor: $themeColor;
 
 $sidenavBGHoverColor: $defaultColor;
