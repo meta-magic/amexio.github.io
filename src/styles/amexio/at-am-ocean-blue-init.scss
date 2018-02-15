@@ -50,7 +50,7 @@ $borderColor-focus: $focusColor;
 
 $navbarBGColor : $themeBGColor ;
 $navbarBoxShadow: $borderColor;
-$navbarColor : white;
+$navbarColor : $color;
 
 
 $sidenavHeaderBGColor: none;
@@ -62,7 +62,7 @@ $sidenavactiveColor: $themeColor;
 $sidenavBorderColor: rgb(241, 8, 151);
 
 $sidenavBGHoverColor: $defaultBGColor;
-$sidenavHoverColor: white;
+$sidenavHoverColor: $color;
 
 $menubarBGColor : $defaultBGColor;
 $menubarColor : $color;
@@ -75,7 +75,7 @@ $menuborderSize:1px;
 
 
 $treeNodeActiveBGColor : $sidenavactive;
-$treeNodeActiveColor : $sidenavColor;
+$treeNodeActiveColor : black;
 
 $tabBorderSize: $borderSize;
 $tabBorderColor : $borderColor;
@@ -160,7 +160,7 @@ $datapointsColor : $themeBGColor;
 $datapointsBGColorS : $primaryBGColor;
 $datapointsColorS : $primaryColor;
 
-$listBoxBGColor : white;
+$listBoxBGColor : $color;
 $listBoxColor : rgba(0,0,0,0.87);
 $listTitleFontSize : 18px;
 $listTitleAFontSize : 16px;
@@ -189,8 +189,8 @@ $accordionBorderSize : $borderSize;
 $accordionBorderColor : $borderColor;
 $accordionBorder : $borderColor;
 $accordionFontSize : 15px;
-$accordionTransparentBG:white;
-$accordionTransparentBorder:white;
+$accordionTransparentBG: $color;
+$accordionTransparentBorder:$color;
 $accordionTransparentFontWeight:bold;
 $accordionTransparentColor : red;
 
@@ -211,7 +211,7 @@ $datatableScrollThumbBG : $themeBGColor;
 $datetimepickerBorderSize : $borderSize;
 $datetimepickerBorderColor : $borderColor;
 $datetimepickerFontSize : 18px;
-$datetimepickerTopBarColor :white;
+$datetimepickerTopBarColor : $color;
 $datetimepickerDaysColor : #777;
 $datetimepickerDaysFontSize : 14px;
 
@@ -261,13 +261,13 @@ $eeTitleColor2 : rgba(0,0,0,0);
 $eeTitleColor1 : rgba(0,0,0,0.9);
 $eeTitleColor2 : rgba(0,0,0,0);
 $eeTitleDisplay : #000; 
-$eeTitleColor : white;
+$eeTitleColor : $color;
 $tileFontSize : 20px;
 $tileDetFontSize : 10px;
 $controlColor : dimgrey;
 $controlFontSize  : 1em;
 $subtitleFontSize : 6pt;
-$textColor:white;
+$textColor: $color;
 $textBGColor : transparent;
 $matchColor : lightgreen;
 $actionColor : red;
@@ -351,7 +351,7 @@ $progressBGDangerImg1:#f0a3a3;
 $progressBGImgNoStripes : none;
 
 $radioBGColor : $primaryBGColor;
-$radioLabelBGColor : white;
+$radioLabelBGColor : $color;
 
 
 $rangeSliderFontSize : .7em;
@@ -372,7 +372,7 @@ $ratingDisabledColor : #ECECEC;
 $ratingIconFontSize : 50px;
 
 $sidenavColorMob : $navbarColor ;
-$sidenavMobileColor : white;
+$sidenavMobileColor : $color;
 $sidenavScrollColor : #f5f5f5;
 $sidenavScrollThumbColor : $themeColor;
 $sidenavTitleColor:$primaryColor;
@@ -391,7 +391,7 @@ $closeBtnColor : darken($primaryColor,20);
 $closeBtnHoverColor : $primaryColor;
 
 $toggleBGColor : #ccc;
-$toggleBGBeforeColor : white;
+$toggleBGBeforeColor : $color;
 $toggleBGChecked :$primaryBGColor;
 
 $treenodeBGColor : transparent;

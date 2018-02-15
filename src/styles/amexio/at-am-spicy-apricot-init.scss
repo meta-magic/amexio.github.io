@@ -68,8 +68,8 @@ $subMenuCotentColor : $color;
 $menuborderColor:$borderColor;
 $menuborderSize:1px;
 
-$treeNodeActiveBGColor : $sidenavactive;
-$treeNodeActiveColor : $sidenavColor;
+$treeNodeActiveBGColor : lighten($primaryBGColor,20%);
+$treeNodeActiveColor : $borderColor;
 
 $tabBorderSize: $borderSize;
 $tabBorderColor : $borderColor;
@@ -276,7 +276,7 @@ $fieldsetFontSize : 13px;
 $fieldsetFontWeight : bold;
 
 $horizontalnodeColor: lighten($primaryBGColor,20%);
-$horizontalTreeviewColor: darken($themeBGColor, 20%);
+$horizontalTreeviewColor: darken($themeBGColor, 40%);
 $horizontalnodeGutter: 100px;
 $horizontalnodeBorderRadius: 10px;
 $horizontalnodeEntryMinHeight: 60px;
@@ -285,10 +285,8 @@ $horizontalnodeLabelWidth: 150px;
 $horizontalnodeLabelHeight: 30px;
 $horizontalnodeLabelBorderRadius: 5px;
 
-
-
-$horizontaltreeviewLabelHoverColor:$defaultBGColor;
-$horizontaltreeviewLabelHoverBGColor:lighten($themeBGColor,10%);
+$horizontaltreeviewLabelHoverColor:$defaultColor;
+$horizontaltreeviewLabelHoverBGColor: $primaryBGColor;
 $placeholderColor : $borderColor;
 $inputFontSize:1rem;
 $inputTooltipBGColor : lighten($primaryBGColor,30%);
