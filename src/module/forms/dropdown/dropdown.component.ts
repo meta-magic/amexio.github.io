@@ -24,7 +24,6 @@ export const CUSTOM_DROPDOWN_CONTROL_VALUE_ACCESSOR: any = {
   providers: [CUSTOM_DROPDOWN_CONTROL_VALUE_ACCESSOR]
 })
 export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAccessor {
-
   @Input('field-label') fieldlabel: string;
 
   @Input('allow-blank') allowblank: string;
@@ -269,7 +268,7 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
   }
 
   onChange(event: any) {
-    this.value = event;
+    //this.value = event;
   }
 
   onInput() {
@@ -312,10 +311,16 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
 
   //set accessor including call the onchange callback
   set value(v: any) {
-    if (v !== this.innerValue) {
-      this.innerValue = v;
-      this.onChangeCallback(v);
+    debugger;
+
+    if(v!=null) {
+      if (v !== this.innerValue) {
+        this.innerValue = v;
+        this.onChangeCallback(v);
+      }
     }
+
+
   }
 
   //Set touched on blur
@@ -343,9 +348,12 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
 
   //From ControlValueAccessor interface
   writeValue(value: any) {
-    if (value !== this.innerValue) {
-      this.innerValue = value;
+    if(value != null) {
+      if (value !== this.innerValue) {
+        this.innerValue = value;
+      }
     }
+
   }
 
   //From ControlValueAccessor interface
