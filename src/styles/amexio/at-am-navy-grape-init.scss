@@ -48,8 +48,9 @@ $borderColor-focus: $focusColor;
 
 
 $navbarBGColor : $themeBGColor ;
-$navbarBoxShadow: $borderColor;
 $navbarColor : $themeColor;
+$navbarBackground :  linear-gradient(#80E6F5, #0CB5CF) ;
+$navbarBoxShadow : 2px 2px 5px rgba(0, 0, 0, 0.6);
 
 
 $sidenavHeaderBGColor: none;
@@ -72,7 +73,7 @@ $menuborderColor: $themeColor;
 $menuborderSize:1px;
 
 $treeNodeActiveBGColor : $sidenavactive;
-$treeNodeActiveColor : $sidenavColor;
+$treeNodeActiveColor : $defaultBGColor;
 
 $tabBorderSize: $borderSize;
 $tabBorderColor : lighten($themeColor,30);
@@ -277,7 +278,8 @@ $youtubeHoverColor : red;
 $fieldsetFontSize : 13px;
 $fieldsetFontWeight : bold;
 
-$horizontalnodeColor: lighten($primaryBGColor,30%);
+$horizontalnodeColor: lighten($themeColor,50%);
+$horizontalTreeviewColor: $defaultColor;
 $horizontalnodeGutter: 100px;
 $horizontalnodeBorderRadius: 10px;
 $horizontalnodeEntryMinHeight: 60px;

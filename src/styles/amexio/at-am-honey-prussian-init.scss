@@ -1,6 +1,7 @@
 $isAmexio : true;
+$isHoneyPrussian : true;
 $themeBGImage : url('/assets/images/theme/bootstrap/Pyramid-bg.png');
-$aColorTransprency: #00C4FF !important;
+$aColorTransprency: #00C4FF;
 $defaultBGColor : rgba(0, 43, 87, 0.7);
 
 $defaultColor :  #02468D;
@@ -49,7 +50,8 @@ $borderColor-focus: $focusColor;
 
 $navbarBGColor : $themeBGColor ;
 $navbarBoxShadow: $borderColor;
-$navbarColor : $themeColor;
+$navbarColor : white;
+$navbarBackground : linear-gradient(to right, #FFFFFF, #FEFEFE, rgba(1, 114, 184, 0.8), rgba(0, 33, 76, 0.7));
 
 $sidenavBGColor : transperent;
 $sidenavColor: #02468D;
@@ -71,7 +73,7 @@ $menuborderColor:#dddddd;
 $menuborderSize:1px;
 
 $treeNodeActiveBGColor : $sidenavactive;
-$treeNodeActiveColor : $sidenavColor;
+$treeNodeActiveColor : $oppColor1;
 
 $tabBorderSize: $borderSize;
 $tabBorderColor : $borderColor;
@@ -141,16 +143,15 @@ $stepsInActiveBGColor:$hoverBGColor;
 
 $datatableRowActiveBG : lighten($themeColor,40);
 $datatableRowHoverBG : lighten($themeColor,30);
-$datatableRowHover : $themeColor!important; /**/
-$datatableRowActive : $themeColor; /**/
+$datatableRowHover : $themeColor;
+$datatableRowActive : $themeColor;
 $datatableBorderSize : 1px;
 $datatableBorderColor : white;
-$datatableHeaderColor : $themeBGColor!important;;
-$datatableHeaderBGColor : $themeColor!important;;
+$datatableHeaderColor : $themeBGColor;
+$datatableHeaderBGColor : $themeColor;
 $datatableOddRowColor : none;
 $datatableFontBold : "true";
-$datatableRowHover : none;
-$datatableRowActive : none;
+
 $isDatapointBorderRadius : true;
 $datapointsColor : $themeBGColor;
 $datapointsBGColorS : $primaryBGColor;
@@ -278,7 +279,8 @@ $youtubeHoverColor : red;
 $fieldsetFontSize : 13px;
 $fieldsetFontWeight : bold;
 
-$horizontalnodeColor: lighten($primaryBGColor,30%);
+$horizontalnodeColor: lighten($themeColor,50);
+$horizontalTreeviewColor: $defaultColor;
 $horizontalnodeGutter: 100px;
 $horizontalnodeBorderRadius: 10px;
 $horizontalnodeEntryMinHeight: 60px;
@@ -288,7 +290,7 @@ $horizontalnodeLabelHeight: 30px;
 $horizontalnodeLabelBorderRadius: 5px;
 
 
-$horizontaltreeviewLabelHoverColor:$hoverColor;
+$horizontaltreeviewLabelHoverColor:$primaryColor;
 $horizontaltreeviewLabelHoverBGColor:$hoverBGColor;
 $placeholderColor : $borderColor;
 $inputFontSize:1rem;

@@ -1,5 +1,3 @@
-/**/
-/**/
 /**HELPER CLASS STARTS**/
 body {
   background: white;
@@ -319,7 +317,7 @@ button {
   background-color: white; }
 
 .button-dropdown > div:hover {
-  background-color: white; }
+  background-color: #8D021F; }
 
 /*----------------------------------------------------------------------*/
 /*        BUTTON DROPDOWN COMPONENT -Structure        */
@@ -1830,7 +1828,7 @@ header .billboard .content-button {
 .datapoints {
   font-size: 125%;
   /* Border */
-  border-radius: 0px;
+  border-radius: 5px;
   border: 3px solid #8D021F;
   padding: 0px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); }
@@ -1868,8 +1866,8 @@ header .billboard .content-button {
   font-size: 1.5em; }
 
 .datatable .datatable-header {
-  background-color: #8D021F !important;
-  color: white !important;
+  background-color: #8D021F;
+  color: white;
   font-size: larger; }
 
 .datatable .datatable-row:hover {
@@ -1880,7 +1878,7 @@ header .billboard .content-button {
   background-color: white; }
 
 .datatable-row:nth-child(odd) {
-  background-color: #fff5f7 !important; }
+  background-color: #fff5f7; }
 
 /*----------------------------------------------------------------------*/
 /*        DATATABLE COMPONENT - Structure         */
@@ -1956,13 +1954,11 @@ header .billboard .content-button {
 /*        HORIZONTAL TREE COMPONENT -Visual     */
 /*----------------------------------------------------------------------*/
 .horizontaltreeview-node-label {
-  background-color: #fc2c57; }
+  background-color: #fd91a7;
+  color: #8D021F; }
 
 .horizontaltreeview-node-label:hover {
-  border-color: #f20335;
-  background-color: #f20335; }
-
-.horizontaltreeview-node-label:hover {
+  border-color: #fd5e7f;
   color: white;
   background-color: #8D021F; }
 
@@ -1979,7 +1975,7 @@ header .billboard .content-button {
   .horizontaltreeview-node:before {
     content: "";
     width: 50px;
-    border-top: 2px solid #fc2c57;
+    border-top: 2px solid #fd91a7;
     position: absolute;
     left: -100px;
     top: 50%;
@@ -1991,13 +1987,13 @@ header .billboard .content-button {
   .horizontaltreeview-node-entry:before {
     content: "";
     height: 100%;
-    border-left: 2px solid #fc2c57;
+    border-left: 2px solid #fd91a7;
     position: absolute;
     left: -50px; }
   .horizontaltreeview-node-entry:after {
     content: "";
     width: 50px;
-    border-top: 2px solid #fc2c57;
+    border-top: 2px solid #fd91a7;
     position: absolute;
     left: -50px;
     top: 50%;
@@ -2018,7 +2014,7 @@ header .billboard .content-button {
   .horizontaltreeview-node-entry:last-child:after {
     height: 10px;
     border-top: none;
-    border-bottom: 2px solid #fc2c57;
+    border-bottom: 2px solid #fd91a7;
     border-radius: 0 0 0 10px;
     margin-top: -9px; }
   .horizontaltreeview-node-entry.sole:before {
@@ -2215,11 +2211,12 @@ header .billboard .content-button {
   background-color: transparent; }
 
 .treenode-content:hover {
-  background-color: white; }
+  background-color: #8D021F;
+  color: white; }
 
 .treenode-label-active {
-  background-color: white;
-  color: #8D021F; }
+  background-color: #8D021F;
+  color: white; }
 
 /*----------------------------------------------------------------------*/
 /*        BORDER LAYOUT COMPONENT -Visual        */
@@ -2522,6 +2519,7 @@ header .billboard .content-button {
 /*----------------------------------------------------------------------*/
 .navbar-container {
   background-color: white;
+  background: white;
   color: #8D021F; }
   .navbar-container .navbar-logo {
     vertical-align: middle; }
@@ -2650,13 +2648,15 @@ header .billboard .content-button {
   color: #8D021F; }
 
 .sidenav .headernode:hover {
-  background-color: white; }
+  background-color: #8D021F;
+  color: white; }
 
 .sidenav .defaultnode:hover {
-  background-color: white; }
+  background-color: #8D021F;
+  color: white; }
 
 .sidenav .activenode {
-  background-color: white;
+  background-color: #8D021F;
   color: white; }
 
 .sidenav .border {

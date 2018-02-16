@@ -105,7 +105,7 @@
 
 .sidenav .headernode:hover {
   background-color: $sidenavBGHoverColor;
-  @if(isAmexio){
+  @if($isAmexio){
     color: $sidenavHoverColor;
  }
   @else{
@@ -124,7 +124,7 @@
 
 .sidenav .defaultnode:hover {
   background-color: $sidenavBGHoverColor;
-  @if(isAmexio){
+  @if($isAmexio){
     color: $sidenavHoverColor;
  }
   @else{

@@ -47,9 +47,10 @@ $borderColor : #666666;
 $borderColor-focus: $focusColor;
 
 
-$navbarBGColor : $themeBGColor ;
-$navbarBoxShadow: $borderColor;
+$navbarBGColor : #FEE12B ;
 $navbarColor : black;
+$navbarBackground: linear-gradient(#FCF4A3, #FEE12B);
+$navbarBoxShadow : 2px 2px 5px rgba(0, 0, 0, 0.6);
 
 $sidenavHeaderBGColor: $defaultBGColor;
 $sidenavHeaderColor: $color;
@@ -72,7 +73,7 @@ $menuborderColor: $themeColor;
 $menuborderSize:1px;
 
 $treeNodeActiveBGColor : $sidenavactive;
-$treeNodeActiveColor : $sidenavColor;
+$treeNodeActiveColor : $themeColor;
 
 $tabBorderSize: $borderSize;
 $tabBorderColor : $borderColor;
@@ -280,6 +281,7 @@ $fieldsetFontSize : 13px;
 $fieldsetFontWeight : bold;
 
 $horizontalnodeColor: lighten($primaryBGColor,30%);
+$horizontalTreeviewColor: $defaultColor;
 $horizontalnodeGutter: 100px;
 $horizontalnodeBorderRadius: 10px;
 $horizontalnodeEntryMinHeight: 60px;

@@ -51,6 +51,7 @@ $borderColor-focus: $focusColor;
 $navbarBGColor : $themeBGColor ;
 $navbarBoxShadow: $themeColor;
 $navbarColor : #FFBF00;
+$navbarBackground: $navbarBGColor;
 
 $sidenavHeaderBGColor: $defaultBGColor;
 $sidenavHeaderColor: $color;
@@ -72,8 +73,8 @@ $subMenuCotentColor : $color;
 $menuborderColor:$themeColor;
 $menuborderSize:1px;
 
-$treeNodeActiveBGColor : $sidenavactive;
-$treeNodeActiveColor : $sidenavColor;
+$treeNodeActiveBGColor : $hoverBGColor;
+$treeNodeActiveColor : white;
 
 $tabBorderSize: $borderSize;
 $tabBorderColor : $borderColor;
@@ -151,8 +152,6 @@ $datatableHeaderColor :$primaryColor;
 $datatableHeaderBGColor : $primaryBGColor;
 $datatableOddRowColor : $themeBGColor;
 $datatableFontBold : "true";
-$datatableRowHover : none;
-$datatableRowActive : none;
 $datapointsColor : $themeBGColor;
 $datapointsBGColorS : $primaryBGColor;
 $datapointsColorS : $primaryColor;
@@ -281,6 +280,7 @@ $fieldsetFontSize : 13px;
 $fieldsetFontWeight : bold;
 
 $horizontalnodeColor: lighten($primaryBGColor,30%);
+$horizontalTreeviewColor: $backgroundcolor;
 $horizontalnodeGutter: 100px;
 $horizontalnodeBorderRadius: 10px;
 $horizontalnodeEntryMinHeight: 60px;
@@ -288,8 +288,6 @@ $horizontalnodeEntryMinHeight: 60px;
 $horizontalnodeLabelWidth: 150px;
 $horizontalnodeLabelHeight: 30px;
 $horizontalnodeLabelBorderRadius: 5px;
-
-
 
 $horizontaltreeviewLabelHoverColor:$hoverColor;
 $horizontaltreeviewLabelHoverBGColor:$hoverBGColor;

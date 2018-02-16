@@ -50,6 +50,7 @@ $borderColor-focus: $focusColor;
 $navbarBGColor : $themeBGColor ;
 $navbarBoxShadow: $borderColor;
 $navbarColor : $themeColor;
+$navbarBackground: linear-gradient(#C4E800, #92CD00) !important;;
 
 $sidenavHeaderBGColor: $defaultBGColor;
 $sidenavHeaderColor: $defaultColor;
@@ -71,8 +72,8 @@ $subMenuCotentColor : $color;
 $menuborderColor:darken($backgroundcolor, 20);;
 $menuborderSize:1px;
 
-$treeNodeActiveBGColor : $sidenavactive;
-$treeNodeActiveColor : $sidenavColor;
+$treeNodeActiveBGColor : $themeBGColor;
+$treeNodeActiveColor : $defaultColor;
 
 $tabBorderSize: $borderSize;
 $tabBorderColor : $borderColor;
@@ -280,7 +281,8 @@ $youtubeHoverColor : red;
 $fieldsetFontSize : 13px;
 $fieldsetFontWeight : bold;
 
-$horizontalnodeColor: lighten($primaryBGColor,30%);
+$horizontalnodeColor: $defaultBGColor;
+$horizontalTreeviewColor: $defaultColor;
 $horizontalnodeGutter: 100px;
 $horizontalnodeBorderRadius: 10px;
 $horizontalnodeEntryMinHeight: 60px;
@@ -289,10 +291,8 @@ $horizontalnodeLabelWidth: 150px;
 $horizontalnodeLabelHeight: 30px;
 $horizontalnodeLabelBorderRadius: 5px;
 
-
-
-$horizontaltreeviewLabelHoverColor:$hoverColor;
-$horizontaltreeviewLabelHoverBGColor:$hoverBGColor;
+$horizontaltreeviewLabelHoverColor:$themeColor;
+$horizontaltreeviewLabelHoverBGColor:$themeBGColor;
 $placeholderColor : $borderColor;
 $inputFontSize:1rem;
 $inputTooltipBGColor : lighten($primaryBGColor,30%);

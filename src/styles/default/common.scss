@@ -14,7 +14,7 @@ body {
 
 body {
   font-family: Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
-  @if(isAmexio){
+  @if($isAmexio){
      background-image: $themeBGImage;
   }
   @else{
@@ -196,10 +196,8 @@ label {
 a {
   color: $aColorTransprency;
   //text-transform: lowercase;
-  @if(isAmexio){
-    @if(isSpicyAproicot){
+  @if(spicyApricotFontSize){
       font-size: 14px;
-    }
   }
 }
 

@@ -1779,7 +1779,7 @@ header .billboard .content-button {
 /*        Image COMPONENT - Visual        */
 /*----------------------------------------------------------------------*/
 .profile-image a {
-  color: #1b1d22; }
+  color: #F2870C; }
 
 /*----------------------------------------------------------------------*/
 /*        Image COMPONENT - Structure        */
@@ -1811,9 +1811,9 @@ header .billboard .content-button {
 /*----------------------------------------------------------------------*/
 .datapoints {
   background: #292b2c;
-  color: #1b1d22; }
+  color: #F2870C; }
   .datapoints .datapoints-north {
-    color: #1b1d22; }
+    color: #F2870C; }
   .datapoints .datapoint-south {
     background-color: #1b1d22;
     color: #E84C1A; }
@@ -1828,7 +1828,7 @@ header .billboard .content-button {
 .datapoints {
   font-size: 125%;
   /* Border */
-  border-radius: 0px;
+  border-radius: 5px;
   border: 2px solid #E84C1A;
   padding: 0px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); }
@@ -1954,13 +1954,11 @@ header .billboard .content-button {
 /*        HORIZONTAL TREE COMPONENT -Visual     */
 /*----------------------------------------------------------------------*/
 .horizontaltreeview-node-label {
-  background-color: #5f6677; }
+  background-color: #5f6677;
+  color: rgba(255, 255, 255, 0.7); }
 
 .horizontaltreeview-node-label:hover {
   border-color: #484d5b;
-  background-color: #484d5b; }
-
-.horizontaltreeview-node-label:hover {
   color: #E84C1A;
   background-color: #1b1d22; }
 
@@ -2213,11 +2211,12 @@ header .billboard .content-button {
   background-color: transparent; }
 
 .treenode-content:hover {
-  background-color: #1b1d22; }
+  background-color: #1b1d22;
+  color: #E84C1A; }
 
 .treenode-label-active {
   background-color: #1b1d22;
-  color: rgba(255, 255, 255, 0.7); }
+  color: #E84C1A; }
 
 /*----------------------------------------------------------------------*/
 /*        BORDER LAYOUT COMPONENT -Visual        */
@@ -2519,7 +2518,8 @@ header .billboard .content-button {
 /*        NAVBAR COMPONENT    -Visual     */
 /*----------------------------------------------------------------------*/
 .navbar-container {
-  background-color: #1b1d22;
+  background-color: #F58338;
+  background: linear-gradient(#F58338, #E84C1A);
   color: white; }
   .navbar-container .navbar-logo {
     vertical-align: middle; }
@@ -2537,7 +2537,7 @@ header .billboard .content-button {
   width: 100%;
   vertical-align: middle;
   padding: 0px 15px;
-  box-shadow: 0px 0px 2px 2px #666666;
+  box-shadow: 0px 0px 2px 2px 2px 2px 5px rgba(0, 0, 0, 0.6);
   position: fixed;
   z-index: 2;
   display: flex;
@@ -2648,14 +2648,16 @@ header .billboard .content-button {
   color: rgba(255, 255, 255, 0.7); }
 
 .sidenav .headernode:hover {
-  background-color: #1b1d22; }
+  background-color: #1b1d22;
+  color: white; }
 
 .sidenav .defaultnode:hover {
-  background-color: #1b1d22; }
+  background-color: #1b1d22;
+  color: white; }
 
 .sidenav .activenode {
   background-color: #1b1d22;
-  color: #1b1d22; }
+  color: #E84C1A; }
 
 .sidenav .border {
   border-bottom: 2px solid #E84C1A; }
@@ -4095,7 +4097,7 @@ fieldset {
     flex-direction: column;
     padding: 0px; }
     .navbar-container .nav-bar {
-      background-color: #484d5b; }
+      background-color: #fac099; }
       .navbar-container .nav-bar .nav-item amexio-nav-item {
         border-bottom: 1px solid white;
         cursor: pointer; }
@@ -4324,7 +4326,7 @@ fieldset {
     flex-direction: column;
     padding: 0px; }
     .navbar-container .nav-bar {
-      background-color: #484d5b; }
+      background-color: #fac099; }
       .navbar-container .nav-bar .nav-item amexio-nav-item {
         border-bottom: 1px solid white;
         cursor: pointer; }
@@ -4553,7 +4555,7 @@ fieldset {
     flex-direction: column;
     padding: 0px; }
     .navbar-container .nav-bar {
-      background-color: #484d5b; }
+      background-color: #fac099; }
       .navbar-container .nav-bar .nav-item amexio-nav-item {
         border-bottom: 1px solid white;
         cursor: pointer; }
@@ -4782,7 +4784,7 @@ fieldset {
     flex-direction: column;
     padding: 0px; }
     .navbar-container .nav-bar {
-      background-color: #484d5b; }
+      background-color: #fac099; }
       .navbar-container .nav-bar .nav-item amexio-nav-item {
         border-bottom: 1px solid white;
         cursor: pointer; }

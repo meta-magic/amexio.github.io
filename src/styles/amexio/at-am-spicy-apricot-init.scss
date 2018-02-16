@@ -1,7 +1,7 @@
 $isAmexio : true;
 $themeBGImage : url('/assets/images/theme/bootstrap/DeepOrange-bg.jpg');
 $aColorTransprency :  rgba(0, 0, 0, 0.87);
-$isSpicyApricot : true;
+$spicyApricotFontSize : 14px;
 
 $defaultBGColor : rgba(255,255,255,0.70);
 
@@ -47,6 +47,9 @@ $borderColor-focus: $focusColor;
 $navbarBGColor : $themeBGColor ;
 $navbarBoxShadow: $borderColor;
 $navbarColor : white;
+$navbarBackground: $themeBGColor;
+
+
 
 $sidenavBGColor : transperent;
 $sidenavColor: $navbarColor;
@@ -68,8 +71,8 @@ $subMenuCotentColor : $color;
 $menuborderColor:$borderColor;
 $menuborderSize:1px;
 
-$treeNodeActiveBGColor : $sidenavactive;
-$treeNodeActiveColor : $sidenavColor;
+$treeNodeActiveBGColor : lighten($primaryBGColor,20%);
+$treeNodeActiveColor : $borderColor;
 
 $tabBorderSize: $borderSize;
 $tabBorderColor : $borderColor;
@@ -276,7 +279,8 @@ $youtubeHoverColor : red;
 $fieldsetFontSize : 13px;
 $fieldsetFontWeight : bold;
 
-$horizontalnodeColor: lighten($primaryBGColor,30%);
+$horizontalnodeColor: lighten($primaryBGColor,20%);
+$horizontalTreeviewColor: darken($themeBGColor, 40%);
 $horizontalnodeGutter: 100px;
 $horizontalnodeBorderRadius: 10px;
 $horizontalnodeEntryMinHeight: 60px;
@@ -285,10 +289,8 @@ $horizontalnodeLabelWidth: 150px;
 $horizontalnodeLabelHeight: 30px;
 $horizontalnodeLabelBorderRadius: 5px;
 
-
-
-$horizontaltreeviewLabelHoverColor:$hoverColor;
-$horizontaltreeviewLabelHoverBGColor:$hoverBGColor;
+$horizontaltreeviewLabelHoverColor:$defaultColor;
+$horizontaltreeviewLabelHoverBGColor: $primaryBGColor;
 $placeholderColor : $borderColor;
 $inputFontSize:1rem;
 $inputTooltipBGColor : lighten($primaryBGColor,30%);

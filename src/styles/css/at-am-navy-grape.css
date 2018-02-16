@@ -319,7 +319,7 @@ button {
   background-color: white; }
 
 .button-dropdown > div:hover {
-  background-color: white; }
+  background-color: #000080; }
 
 /*----------------------------------------------------------------------*/
 /*        BUTTON DROPDOWN COMPONENT -Structure        */
@@ -1830,7 +1830,7 @@ header .billboard .content-button {
 .datapoints {
   font-size: 125%;
   /* Border */
-  border-radius: 0px;
+  border-radius: 5px;
   border: 3px solid #000080;
   padding: 0px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); }
@@ -1956,13 +1956,11 @@ header .billboard .content-button {
 /*        HORIZONTAL TREE COMPONENT -Visual     */
 /*----------------------------------------------------------------------*/
 .horizontaltreeview-node-label {
-  background-color: #1a1aff; }
+  background-color: #8080ff;
+  color: #000080; }
 
 .horizontaltreeview-node-label:hover {
-  border-color: #0000e6;
-  background-color: #0000e6; }
-
-.horizontaltreeview-node-label:hover {
+  border-color: #4d4dff;
   color: white;
   background-color: #000080; }
 
@@ -1979,7 +1977,7 @@ header .billboard .content-button {
   .horizontaltreeview-node:before {
     content: "";
     width: 50px;
-    border-top: 2px solid #1a1aff;
+    border-top: 2px solid #8080ff;
     position: absolute;
     left: -100px;
     top: 50%;
@@ -1991,13 +1989,13 @@ header .billboard .content-button {
   .horizontaltreeview-node-entry:before {
     content: "";
     height: 100%;
-    border-left: 2px solid #1a1aff;
+    border-left: 2px solid #8080ff;
     position: absolute;
     left: -50px; }
   .horizontaltreeview-node-entry:after {
     content: "";
     width: 50px;
-    border-top: 2px solid #1a1aff;
+    border-top: 2px solid #8080ff;
     position: absolute;
     left: -50px;
     top: 50%;
@@ -2018,7 +2016,7 @@ header .billboard .content-button {
   .horizontaltreeview-node-entry:last-child:after {
     height: 10px;
     border-top: none;
-    border-bottom: 2px solid #1a1aff;
+    border-bottom: 2px solid #8080ff;
     border-radius: 0 0 0 10px;
     margin-top: -9px; }
   .horizontaltreeview-node-entry.sole:before {
@@ -2215,11 +2213,12 @@ header .billboard .content-button {
   background-color: transparent; }
 
 .treenode-content:hover {
-  background-color: white; }
+  background-color: #000080;
+  color: white; }
 
 .treenode-label-active {
-  background-color: white;
-  color: #000080; }
+  background-color: #000080;
+  color: white; }
 
 /*----------------------------------------------------------------------*/
 /*        BORDER LAYOUT COMPONENT -Visual        */
@@ -2522,6 +2521,7 @@ header .billboard .content-button {
 /*----------------------------------------------------------------------*/
 .navbar-container {
   background-color: white;
+  background: linear-gradient(#80E6F5, #0CB5CF);
   color: #000080; }
   .navbar-container .navbar-logo {
     vertical-align: middle; }
@@ -2539,7 +2539,7 @@ header .billboard .content-button {
   width: 100%;
   vertical-align: middle;
   padding: 0px 15px;
-  box-shadow: 0px 0px 2px 2px #000080;
+  box-shadow: 0px 0px 2px 2px 2px 2px 5px rgba(0, 0, 0, 0.6);
   position: fixed;
   z-index: 2;
   display: flex;
@@ -2650,13 +2650,15 @@ header .billboard .content-button {
   color: #000080; }
 
 .sidenav .headernode:hover {
-  background-color: white; }
+  background-color: #000080;
+  color: white; }
 
 .sidenav .defaultnode:hover {
-  background-color: white; }
+  background-color: #000080;
+  color: white; }
 
 .sidenav .activenode {
-  background-color: white;
+  background-color: #000080;
   color: white; }
 
 .sidenav .border {

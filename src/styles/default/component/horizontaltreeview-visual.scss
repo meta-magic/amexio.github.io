@@ -95,6 +95,7 @@
 //   top: 50%;
 //   margin-top: -($horizontalnodeLabelHeight / 2);
   background-color: $horizontalnodeColor;
+  color: $horizontalTreeviewColor;
 //  cursor: pointer;
 
   span{
@@ -103,10 +104,6 @@
 }
 .horizontaltreeview-node-label:hover{
   border-color:  darken($horizontalnodeColor,10%);
-  background-color: darken($horizontalnodeColor,10%);
-}
-
-.horizontaltreeview-node-label:hover {
   color: $horizontaltreeviewLabelHoverColor;
   background-color: $horizontaltreeviewLabelHoverBGColor;
 }

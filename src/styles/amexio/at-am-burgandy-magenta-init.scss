@@ -49,6 +49,7 @@ $borderColor-focus: $focusColor;
 $navbarBGColor : $themeBGColor ;
 $navbarBoxShadow: $borderColor;
 $navbarColor : $themeColor;
+$navbarBackground : $navbarBGColor;
 
 $sidenavHeaderBGColor: none;
 $sidenavHeaderColor: $defaultColor;
@@ -70,7 +71,7 @@ $menuborderColor: $themeColor;
 $menuborderSize:1px;
 
 $treeNodeActiveBGColor : $sidenavactive;
-$treeNodeActiveColor : $sidenavColor;
+$treeNodeActiveColor : $defaultBGColor;
 
 $tabBorderSize: $borderSize;
 $tabBorderColor : lighten($themeColor,30);
@@ -139,17 +140,15 @@ $stepsInActiveBGColor:$hoverBGColor;
 
 $datatableRowActiveBG : lighten($datapointColor,50);
 $datatableRowHoverBG : lighten($themeColor,50);
-$datatableRowHover : $themeColor!important; /**/
-$datatableRowActive : $datapointColor!important; /**/
+$datatableRowHover : $themeColor;
+$datatableRowActive : $datapointColor;
 $datatableBorderSize : 2px;
 $isDatapointBorderRadius : "true";
 $datatableBorderColor : #666666;
-$datatableHeaderColor : $themeBGColor!important;;
-$datatableHeaderBGColor : $themeColor!important;;
-$datatableOddRowColor : lighten($themeColor,70) !important;
+$datatableHeaderColor : $themeBGColor;
+$datatableHeaderBGColor : $themeColor;
+$datatableOddRowColor : lighten($themeColor,70);
 $datatableFontBold : "true";
-$datatableRowHover : none;
-$datatableRowActive : none;
 $datapointsColor : $themeBGColor;
 $datapointsBGColorS : $primaryBGColor;
 $datapointsColorS : $primaryColor;
@@ -276,7 +275,8 @@ $youtubeHoverColor : red;
 $fieldsetFontSize : 13px;
 $fieldsetFontWeight : bold;
 
-$horizontalnodeColor: lighten($primaryBGColor,30%);
+$horizontalnodeColor: lighten($themeColor,50);
+$horizontalTreeviewColor: $defaultColor;
 $horizontalnodeGutter: 100px;
 $horizontalnodeBorderRadius: 10px;
 $horizontalnodeEntryMinHeight: 60px;

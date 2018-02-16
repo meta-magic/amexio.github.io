@@ -1828,7 +1828,7 @@ header .billboard .content-button {
 .datapoints {
   font-size: 125%;
   /* Border */
-  border-radius: 0px;
+  border-radius: 5px;
   border: 1px solid #ced4da;
   padding: 0px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); }
@@ -1954,13 +1954,11 @@ header .billboard .content-button {
 /*        HORIZONTAL TREE COMPONENT -Visual     */
 /*----------------------------------------------------------------------*/
 .horizontaltreeview-node-label {
-  background-color: #cccccc; }
+  background-color: #ffe6e4;
+  color: black; }
 
 .horizontaltreeview-node-label:hover {
-  border-color: #b3b3b3;
-  background-color: #b3b3b3; }
-
-.horizontaltreeview-node-label:hover {
+  border-color: #feb7b2;
   color: white;
   background-color: #7C0A02; }
 
@@ -1977,7 +1975,7 @@ header .billboard .content-button {
   .horizontaltreeview-node:before {
     content: "";
     width: 50px;
-    border-top: 2px solid #cccccc;
+    border-top: 2px solid #ffe6e4;
     position: absolute;
     left: -100px;
     top: 50%;
@@ -1989,13 +1987,13 @@ header .billboard .content-button {
   .horizontaltreeview-node-entry:before {
     content: "";
     height: 100%;
-    border-left: 2px solid #cccccc;
+    border-left: 2px solid #ffe6e4;
     position: absolute;
     left: -50px; }
   .horizontaltreeview-node-entry:after {
     content: "";
     width: 50px;
-    border-top: 2px solid #cccccc;
+    border-top: 2px solid #ffe6e4;
     position: absolute;
     left: -50px;
     top: 50%;
@@ -2016,7 +2014,7 @@ header .billboard .content-button {
   .horizontaltreeview-node-entry:last-child:after {
     height: 10px;
     border-top: none;
-    border-bottom: 2px solid #cccccc;
+    border-bottom: 2px solid #ffe6e4;
     border-radius: 0 0 0 10px;
     margin-top: -9px; }
   .horizontaltreeview-node-entry.sole:before {
@@ -2213,7 +2211,8 @@ header .billboard .content-button {
   background-color: transparent; }
 
 .treenode-content:hover {
-  background-color: #fb2a1c; }
+  background-color: #fb2a1c;
+  color: black; }
 
 .treenode-label-active {
   background-color: #fb2a1c;
@@ -2520,6 +2519,7 @@ header .billboard .content-button {
 /*----------------------------------------------------------------------*/
 .navbar-container {
   background-color: #420D09;
+  background: none;
   color: white; }
   .navbar-container .navbar-logo {
     vertical-align: middle; }
@@ -2648,10 +2648,12 @@ header .billboard .content-button {
   color: black; }
 
 .sidenav .headernode:hover {
-  background-color: #eee; }
+  background-color: #eee;
+  color: inherit; }
 
 .sidenav .defaultnode:hover {
-  background-color: #eee; }
+  background-color: #eee;
+  color: inherit; }
 
 .sidenav .activenode {
   background-color: #eee;
