@@ -50,7 +50,6 @@ $borderColor-focus: $focusColor;
 $navbarBGColor : $themeBGColor ;
 $navbarBoxShadow: $themeColor;
 $navbarColor : #73C2FB;
-$navbarBackground: $navbarBGColor;
 
 $sidenavHeaderBGColor: $defaultBGColor;
 $sidenavHeaderColor: $color;
@@ -186,9 +185,9 @@ $accordionBorderColor : $borderColor;
 $accordionBorder : $borderColor;
 $accordionFontSize : 15px;
 $accordionTransparentBG: transparent;
-$accordionTransparentBorder:white;
+$accordionTransparentBorder:transparent;
 $accordionTransparentFontWeight:bold;
-$accordionTransparentColor : red;
+$accordionTransparentColor : $accordionColor;
 
 $cardBorderSize:$borderSize;
 $cardBorderShadow : rgba(0,0,0,0.14);
