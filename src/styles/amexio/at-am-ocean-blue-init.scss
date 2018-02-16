@@ -189,10 +189,10 @@ $accordionBorderSize : $borderSize;
 $accordionBorderColor : $borderColor;
 $accordionBorder : $borderColor;
 $accordionFontSize : 15px;
-$accordionTransparentBG: $color;
-$accordionTransparentBorder:$color;
+$accordionTransparentBG:  transparent;
+$accordionTransparentBorder: transparent;
 $accordionTransparentFontWeight:bold;
-$accordionTransparentColor : red;
+$accordionTransparentColor : $themeBGColor;
 
 $cardBorderSize:$borderSize;
 $cardBorderShadow : rgba(0,0,0,0.14);
