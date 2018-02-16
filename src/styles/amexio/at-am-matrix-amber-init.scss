@@ -1,4 +1,5 @@
 $isAmexio : true;
+$isMatrix :true;
 $themeBGImage : url('/assets/images/theme/bootstrap/matrix-bg.png');
 $aColorTransprency :  rgb(153, 153, 153);
 
@@ -50,6 +51,7 @@ $borderColor-focus: $focusColor;
 $navbarBGColor : $themeBGColor ;
 $navbarBoxShadow: $themeColor;
 $navbarColor : #FFBF00;
+$navbarBackground: $navbarBGColor;
 
 $sidenavHeaderBGColor: $defaultBGColor;
 $sidenavHeaderColor: $color;
@@ -153,6 +155,7 @@ $datatableFontBold : "true";
 $datapointsColor : $themeBGColor;
 $datapointsBGColorS : $primaryBGColor;
 $datapointsColorS : $primaryColor;
+
 
 $listBoxBGColor : white;
 $listBoxColor : rgba(0,0,0,0.87);

@@ -51,8 +51,9 @@ $borderColor-focus: $focusColor;
 
 
 $navbarBGColor : $oppColor ;
-$navbarBoxShadow: none;
 $navbarColor : white;
+$navbarBackground: $oppColor;
+$navbarBoxShadow : none;
 
 
 $sidenavHeaderBGColor: none;
@@ -157,6 +158,7 @@ $datatableOddRowColor : none;
 $datatableFontBold : "true";
 $datatableRowHover : none;
 $datatableRowActive : none;
+
 $datapointsColor : $themeBGColor;
 $datapointsBGColorS : $primaryBGColor;
 $datapointsColorS : $primaryColor;

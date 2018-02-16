@@ -1,4 +1,5 @@
 $isAmexio : true;
+$isHoneyPrussian : true;
 $themeBGImage : url('/assets/images/theme/bootstrap/Pyramid-bg.png');
 $aColorTransprency: #00C4FF;
 $defaultBGColor : rgba(0, 43, 87, 0.7);
@@ -49,7 +50,8 @@ $borderColor-focus: $focusColor;
 
 $navbarBGColor : $themeBGColor ;
 $navbarBoxShadow: $borderColor;
-$navbarColor : $themeColor;
+$navbarColor : white;
+$navbarBackground : linear-gradient(to right, #FFFFFF, #FEFEFE, rgba(1, 114, 184, 0.8), rgba(0, 33, 76, 0.7));
 
 $sidenavBGColor : transperent;
 $sidenavColor: #02468D;
@@ -115,7 +117,7 @@ $dockBarActiveBorderSize: $tabActiveBorderSize;
 $dockBarActiveColor:$cardBGColor;
 $dockBarActiveBGColor:$dockBarColor;
 
-$datapointBGColor : none;
+$datapointBGColor : $themeBGColor;
 $datapointColor : $borderColor;
 $datapointBorderColor : $borderColor;
 
@@ -149,6 +151,8 @@ $datatableHeaderColor : $themeBGColor;
 $datatableHeaderBGColor : $themeColor;
 $datatableOddRowColor : none;
 $datatableFontBold : "true";
+
+$isDatapointBorderRadius : true;
 
 $datapointsColor : $themeBGColor;
 $datapointsBGColorS : $primaryBGColor;

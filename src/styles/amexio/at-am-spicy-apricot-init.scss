@@ -1,7 +1,7 @@
 $isAmexio : true;
 $themeBGImage : url('/assets/images/theme/bootstrap/DeepOrange-bg.jpg');
 $aColorTransprency :  rgba(0, 0, 0, 0.87);
-$isSpicyApricot : true;
+$spicyApricotFontSize : 14px;
 
 $defaultBGColor : rgba(255,255,255,0.70);
 
@@ -47,6 +47,9 @@ $borderColor-focus: $focusColor;
 $navbarBGColor : $themeBGColor ;
 $navbarBoxShadow: $borderColor;
 $navbarColor : white;
+$navbarBackground: $themeBGColor;
+
+
 
 $sidenavBGColor : transperent;
 $sidenavColor: $navbarColor;
@@ -149,9 +152,10 @@ $datatableOddRowColor : lighten($primaryBGColor,40%);
 $datatableFontBold : "true";
 $datatableRowHover : none;
 $datatableRowActive : none;
+
 $datapointsColor : $themeBGColor;
 $datapointsBGColorS : $primaryBGColor;
-$datapointsColorS : $primaryColor;
+$datapointsColorS : #603A63;
 
 $listBoxBGColor : white;
 $listBoxColor : rgba(0,0,0,0.87);

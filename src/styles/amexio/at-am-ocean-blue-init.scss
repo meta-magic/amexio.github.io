@@ -49,10 +49,12 @@ $borderColor-focus: $focusColor;
 
 
 $navbarBGColor : $themeBGColor ;
+$navbarColor : white;
+$navbarBackground :  linear-gradient(#80E6F5, #0CB5CF) ;
+$navbarBoxShadow : 2px 2px 5px rgba(0, 0, 0, 0.6);
+
 $navbarBoxShadow: $borderColor;
 $navbarColor : $color;
-
-
 $sidenavHeaderBGColor: none;
 $sidenavHeaderColor: $color;
 $sidenavBGColor : none;
@@ -156,6 +158,7 @@ $datatableOddRowColor : lighten($defaultBGColor,40) !important;
 $datatableFontBold : "true";
 $datatableRowHover : none;
 $datatableRowActive : none;
+
 $datapointsColor : $themeBGColor;
 $datapointsBGColorS : $primaryBGColor;
 $datapointsColorS : $primaryColor;

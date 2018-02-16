@@ -317,7 +317,7 @@ button {
   background-color: white; }
 
 .button-dropdown > div:hover {
-  background-color: #1C2949; }
+  background-color: #2CD2EC; }
 
 /*----------------------------------------------------------------------*/
 /*        BUTTON DROPDOWN COMPONENT -Structure        */
@@ -1828,7 +1828,7 @@ header .billboard .content-button {
 .datapoints {
   font-size: 125%;
   /* Border */
-  border-radius: 0px;
+  border-radius: 5px;
   border: 3px solid #2CD2EC;
   padding: 0px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); }
@@ -1954,13 +1954,11 @@ header .billboard .content-button {
 /*        HORIZONTAL TREE COMPONENT -Visual     */
 /*----------------------------------------------------------------------*/
 .horizontaltreeview-node-label {
-  background-color: #b8f0f9; }
+  background-color: #b8f0f9;
+  color: #1C2949; }
 
 .horizontaltreeview-node-label:hover {
   border-color: #8ae6f4;
-  background-color: #8ae6f4; }
-
-.horizontaltreeview-node-label:hover {
   color: #1C2949;
   background-color: #2CD2EC; }
 
@@ -2213,11 +2211,12 @@ header .billboard .content-button {
   background-color: transparent; }
 
 .treenode-content:hover {
-  background-color: #1C2949; }
+  background-color: #2CD2EC;
+  color: black; }
 
 .treenode-label-active {
-  background-color: #1C2949;
-  color: rgba(255, 255, 255, 0.7); }
+  background-color: #2CD2EC;
+  color: black; }
 
 /*----------------------------------------------------------------------*/
 /*        BORDER LAYOUT COMPONENT -Visual        */
@@ -2520,6 +2519,7 @@ header .billboard .content-button {
 /*----------------------------------------------------------------------*/
 .navbar-container {
   background-color: #2CD2EC;
+  background: linear-gradient(#80E6F5, #0CB5CF);
   color: white; }
   .navbar-container .navbar-logo {
     vertical-align: middle; }
@@ -2648,14 +2648,16 @@ header .billboard .content-button {
   color: white; }
 
 .sidenav .headernode:hover {
-  background-color: #1C2949; }
+  background-color: #1C2949;
+  color: white; }
 
 .sidenav .defaultnode:hover {
-  background-color: #1C2949; }
+  background-color: #1C2949;
+  color: white; }
 
 .sidenav .activenode {
-  background-color: #1C2949;
-  color: #2CD2EC; }
+  background-color: #2CD2EC;
+  color: #1C2949; }
 
 .sidenav .border {
   border-bottom: 3px solid #f10897; }

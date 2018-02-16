@@ -47,9 +47,11 @@ $borderColor : #666666;
 $borderColor-focus: $focusColor;
 
 
-$navbarBGColor : $themeBGColor ;
-$navbarBoxShadow: $borderColor;
+$navbarBGColor : #F58338 ;
 $navbarColor : white;
+$navbarBackground: linear-gradient(#F58338, #E84C1A);
+$navbarBoxShadow : 2px 2px 5px rgba(0, 0, 0, 0.6);
+
 
 $sidenavHeaderBGColor: $defaultBGColor;
 $sidenavHeaderColor: $color;
@@ -118,7 +120,7 @@ $borderLayoutBorder : 0px;
 $borderLayoutBorderColor : none;
 
 $datapointBGColor : $defaultBGColor;
-$datapointColor : $themeBGColor;
+$datapointColor : #F2870C;
 $datapointBorderColor : $cardBorderColor;
 
 $ratingBorderColor : $borderColor;

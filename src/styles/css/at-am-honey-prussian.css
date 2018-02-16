@@ -1,5 +1,3 @@
-/**/
-/**/
 /**HELPER CLASS STARTS**/
 body {
   background: rgba(0, 43, 87, 0.7);
@@ -147,7 +145,7 @@ label {
   font-weight: 500; }
 
 a {
-  color: #00C4FF !important;
+  color: #00C4FF;
   font-size: 14px; }
 
 /*
@@ -1812,7 +1810,7 @@ header .billboard .content-button {
 /*        DATAPOINTS COMPONENT - Visual         */
 /*----------------------------------------------------------------------*/
 .datapoints {
-  background: none;
+  background: rgba(0, 43, 87, 0.7);
   color: #F3C22A; }
   .datapoints .datapoints-north {
     color: #F3C22A; }
@@ -1830,7 +1828,7 @@ header .billboard .content-button {
 .datapoints {
   font-size: 125%;
   /* Border */
-  border-radius: 0px;
+  border-radius: 5px;
   border: 2px solid #F3C22A;
   padding: 0px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); }
@@ -1868,8 +1866,8 @@ header .billboard .content-button {
   font-size: 1.5em; }
 
 .datatable .datatable-header {
-  background-color: #02468D !important;
-  color: rgba(0, 43, 87, 0.7) !important;
+  background-color: #02468D;
+  color: rgba(0, 43, 87, 0.7);
   font-size: larger; }
 
 .datatable .datatable-row:hover {
@@ -1956,14 +1954,12 @@ header .billboard .content-button {
 /*        HORIZONTAL TREE COMPONENT -Visual     */
 /*----------------------------------------------------------------------*/
 .horizontaltreeview-node-label {
-  background-color: #fbebbb; }
+  background-color: #91c6fd;
+  color: #02468D; }
 
 .horizontaltreeview-node-label:hover {
-  border-color: #f8de8b;
-  background-color: #f8de8b; }
-
-.horizontaltreeview-node-label:hover {
-  color: #02468D;
+  border-color: #5eacfd;
+  color: white;
   background-color: rgba(0, 43, 87, 0.7); }
 
 /*----------------------------------------------------------------------*/
@@ -1979,7 +1975,7 @@ header .billboard .content-button {
   .horizontaltreeview-node:before {
     content: "";
     width: 50px;
-    border-top: 2px solid #fbebbb;
+    border-top: 2px solid #91c6fd;
     position: absolute;
     left: -100px;
     top: 50%;
@@ -1991,13 +1987,13 @@ header .billboard .content-button {
   .horizontaltreeview-node-entry:before {
     content: "";
     height: 100%;
-    border-left: 2px solid #fbebbb;
+    border-left: 2px solid #91c6fd;
     position: absolute;
     left: -50px; }
   .horizontaltreeview-node-entry:after {
     content: "";
     width: 50px;
-    border-top: 2px solid #fbebbb;
+    border-top: 2px solid #91c6fd;
     position: absolute;
     left: -50px;
     top: 50%;
@@ -2018,7 +2014,7 @@ header .billboard .content-button {
   .horizontaltreeview-node-entry:last-child:after {
     height: 10px;
     border-top: none;
-    border-bottom: 2px solid #fbebbb;
+    border-bottom: 2px solid #91c6fd;
     border-radius: 0 0 0 10px;
     margin-top: -9px; }
   .horizontaltreeview-node-entry.sole:before {
@@ -2215,11 +2211,12 @@ header .billboard .content-button {
   background-color: transparent; }
 
 .treenode-content:hover {
-  background-color: #02468D; }
+  background-color: #02468D;
+  color: white; }
 
 .treenode-label-active {
   background-color: #02468D;
-  color: #02468D; }
+  color: white; }
 
 /*----------------------------------------------------------------------*/
 /*        BORDER LAYOUT COMPONENT -Visual        */
@@ -2522,11 +2519,12 @@ header .billboard .content-button {
 /*----------------------------------------------------------------------*/
 .navbar-container {
   background-color: rgba(0, 43, 87, 0.7);
-  color: #02468D; }
+  background: linear-gradient(to right, #FFFFFF, #FEFEFE, rgba(1, 114, 184, 0.8), rgba(0, 33, 76, 0.7));
+  color: white; }
   .navbar-container .navbar-logo {
     vertical-align: middle; }
   .navbar-container .navbar-logo-unit a {
-    color: #02468D; }
+    color: white; }
   .navbar-container .navbar-logo-unit {
     font-size: 24px; }
     .navbar-container .navbar-logo-unit .navbar-mobile-bars {
@@ -2614,7 +2612,7 @@ header .billboard .content-button {
 /*        SIDENAV COMPONENT -Visual       */
 /*----------------------------------------------------------------------*/
 .sidenav-mobile-bar {
-  color: #02468D; }
+  color: white; }
 
 .sidenav-mobile-bar-left {
   color: white; }
@@ -2650,14 +2648,16 @@ header .billboard .content-button {
   color: #02468D; }
 
 .sidenav .headernode:hover {
-  background-color: #02468D; }
+  background-color: #02468D;
+  color: white; }
 
 .sidenav .defaultnode:hover {
-  background-color: #02468D; }
+  background-color: #02468D;
+  color: white; }
 
 .sidenav .activenode {
   background-color: #02468D;
-  color: rgba(0, 43, 87, 0.7); }
+  color: white; }
 
 .sidenav .border {
   border-bottom: 2px solid #dddddd; }
@@ -4099,7 +4099,7 @@ fieldset {
     .navbar-container .nav-bar {
       background-color: rgba(0, 93, 189, 0.7); }
       .navbar-container .nav-bar .nav-item amexio-nav-item {
-        border-bottom: 1px solid #02468D;
+        border-bottom: 1px solid white;
         cursor: pointer; }
         .navbar-container .nav-bar .nav-item amexio-nav-item * {
           vertical-align: middle; }
@@ -4328,7 +4328,7 @@ fieldset {
     .navbar-container .nav-bar {
       background-color: rgba(0, 93, 189, 0.7); }
       .navbar-container .nav-bar .nav-item amexio-nav-item {
-        border-bottom: 1px solid #02468D;
+        border-bottom: 1px solid white;
         cursor: pointer; }
         .navbar-container .nav-bar .nav-item amexio-nav-item * {
           vertical-align: middle; }
@@ -4557,7 +4557,7 @@ fieldset {
     .navbar-container .nav-bar {
       background-color: rgba(0, 93, 189, 0.7); }
       .navbar-container .nav-bar .nav-item amexio-nav-item {
-        border-bottom: 1px solid #02468D;
+        border-bottom: 1px solid white;
         cursor: pointer; }
         .navbar-container .nav-bar .nav-item amexio-nav-item * {
           vertical-align: middle; }
@@ -4786,7 +4786,7 @@ fieldset {
     .navbar-container .nav-bar {
       background-color: rgba(0, 93, 189, 0.7); }
       .navbar-container .nav-bar .nav-item amexio-nav-item {
-        border-bottom: 1px solid #02468D;
+        border-bottom: 1px solid white;
         cursor: pointer; }
         .navbar-container .nav-bar .nav-item amexio-nav-item * {
           vertical-align: middle; }

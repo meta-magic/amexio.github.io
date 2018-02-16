@@ -1,6 +1,6 @@
 $isAmexio : true;
-$themeBGImage : url('/assets/images/theme/bootstrap/Header.png');
-
+//$themeBGImage : url('/assets/images/theme/bootstrap/Header.png');
+$themeBGImage : none;
 $defaultBGColor : #F0EEE9;
 
 $defaultColor :black;
@@ -50,6 +50,7 @@ $borderColor-focus: $focusColor;
 $navbarBGColor : $themeBGColor ;
 $navbarBoxShadow: $borderColor;
 $navbarColor : $themeColor;
+$navbarBackground: linear-gradient(#C4E800, #92CD00) !important;;
 
 $sidenavHeaderBGColor: $defaultBGColor;
 $sidenavHeaderColor: $defaultColor;
@@ -156,6 +157,7 @@ $datatableRowActive : none;
 $datapointsColor : $themeBGColor;
 $datapointsBGColorS : $primaryBGColor;
 $datapointsColorS : $primaryColor;
+$isDatapointBorderRadius : false;
 
 $listBoxBGColor : white;
 $listBoxColor : rgba(0,0,0,0.87);

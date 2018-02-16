@@ -319,7 +319,7 @@ button {
   background-color: white; }
 
 .button-dropdown > div:hover {
-  background-color: #601221; }
+  background-color: #D33134; }
 
 /*----------------------------------------------------------------------*/
 /*        BUTTON DROPDOWN COMPONENT -Structure        */
@@ -1830,7 +1830,7 @@ header .billboard .content-button {
 .datapoints {
   font-size: 125%;
   /* Border */
-  border-radius: 0px;
+  border-radius: 5px;
   border: 3px solid #8d7d26;
   padding: 0px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); }
@@ -1956,13 +1956,11 @@ header .billboard .content-button {
 /*        HORIZONTAL TREE COMPONENT -Visual     */
 /*----------------------------------------------------------------------*/
 .horizontaltreeview-node-label {
-  background-color: #d93252; }
+  background-color: #d93252;
+  color: #601221; }
 
 .horizontaltreeview-node-label:hover {
   border-color: #b6223f;
-  background-color: #b6223f; }
-
-.horizontaltreeview-node-label:hover {
   color: #043963;
   background-color: rgba(66, 31, 38, 0.4); }
 
@@ -2215,11 +2213,12 @@ header .billboard .content-button {
   background-color: transparent; }
 
 .treenode-content:hover {
-  background-color: #601221; }
+  background-color: #601221;
+  color: white; }
 
 .treenode-label-active {
   background-color: #601221;
-  color: #601221; }
+  color: white; }
 
 /*----------------------------------------------------------------------*/
 /*        BORDER LAYOUT COMPONENT -Visual        */
@@ -2522,6 +2521,7 @@ header .billboard .content-button {
 /*----------------------------------------------------------------------*/
 .navbar-container {
   background-color: #D33134;
+  background: #D33134;
   color: white; }
   .navbar-container .navbar-logo {
     vertical-align: middle; }
@@ -2650,14 +2650,16 @@ header .billboard .content-button {
   color: #601221; }
 
 .sidenav .headernode:hover {
-  background-color: #601221; }
+  background-color: #601221;
+  color: white; }
 
 .sidenav .defaultnode:hover {
-  background-color: #601221; }
+  background-color: #601221;
+  color: white; }
 
 .sidenav .activenode {
-  background-color: #601221;
-  color: #D33134; }
+  background-color: #D33134;
+  color: #ffe578; }
 
 .sidenav .border {
   border-bottom: 3px solid #601221; }

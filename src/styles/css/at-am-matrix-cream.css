@@ -1828,7 +1828,7 @@ header .billboard .content-button {
 .datapoints {
   font-size: 125%;
   /* Border */
-  border-radius: 0px;
+  border-radius: 5px;
   border: 2px solid #FFFDD0;
   padding: 0px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); }
@@ -1954,13 +1954,11 @@ header .billboard .content-button {
 /*        HORIZONTAL TREE COMPONENT -Visual     */
 /*----------------------------------------------------------------------*/
 .horizontaltreeview-node-label {
-  background-color: white; }
+  background-color: white;
+  color: #000000; }
 
 .horizontaltreeview-node-label:hover {
   border-color: #fffdcc;
-  background-color: #fffdcc; }
-
-.horizontaltreeview-node-label:hover {
   color: #FFFDD0;
   background-color: rgba(255, 253, 208, 0.4); }
 
@@ -2213,11 +2211,12 @@ header .billboard .content-button {
   background-color: transparent; }
 
 .treenode-content:hover {
-  background-color: #000000; }
+  background-color: rgba(255, 253, 208, 0.4);
+  color: #FFFDD0; }
 
 .treenode-label-active {
-  background-color: #000000;
-  color: rgba(255, 255, 255, 0.7); }
+  background-color: rgba(255, 253, 208, 0.4);
+  color: #FFFDD0; }
 
 /*----------------------------------------------------------------------*/
 /*        BORDER LAYOUT COMPONENT -Visual        */
@@ -2520,6 +2519,7 @@ header .billboard .content-button {
 /*----------------------------------------------------------------------*/
 .navbar-container {
   background-color: #000000;
+  background: #000000;
   color: #FFFDD0; }
   .navbar-container .navbar-logo {
     vertical-align: middle; }
@@ -2648,14 +2648,16 @@ header .billboard .content-button {
   color: rgba(255, 255, 255, 0.7); }
 
 .sidenav .headernode:hover {
-  background-color: #000000; }
+  background-color: #000000;
+  color: rgba(255, 255, 255, 0.7); }
 
 .sidenav .defaultnode:hover {
-  background-color: #000000; }
+  background-color: #000000;
+  color: rgba(255, 255, 255, 0.7); }
 
 .sidenav .activenode {
   background-color: #000000;
-  color: #000000; }
+  color: #FFFDD0; }
 
 .sidenav .border {
   border-bottom: 2px solid #FFFDD0; }

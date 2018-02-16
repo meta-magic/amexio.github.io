@@ -438,11 +438,11 @@ button {
 
 .dropdown-list .list-items:hover {
   color: #FF6FFF;
-  background-color: rgba(255, 111, 255, 0.6); }
+  background-color: rgba(189, 127, 189, 0.6); }
 
 .dropdown-list .list-items-active {
   color: #FF6FFF;
-  background-color: rgba(255, 111, 255, 0.6); }
+  background-color: rgba(189, 127, 189, 0.6); }
 
 .drodown-caret-down {
   color: #FF6FFF; }
@@ -1829,7 +1829,7 @@ header .billboard .content-button {
 .datapoints {
   font-size: 125%;
   /* Border */
-  border-radius: 0px;
+  border-radius: 5px;
   border: 2px solid #FF6FFF;
   padding: 0px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); }
@@ -1872,7 +1872,7 @@ header .billboard .content-button {
   font-size: larger; }
 
 .datatable .datatable-row:hover {
-  background-color: rgba(255, 111, 255, 0.6);
+  background-color: rgba(189, 127, 189, 0.6);
   cursor: pointer; }
 
 .datatable .datatable-row-active {
@@ -1955,15 +1955,13 @@ header .billboard .content-button {
 /*        HORIZONTAL TREE COMPONENT -Visual     */
 /*----------------------------------------------------------------------*/
 .horizontaltreeview-node-label {
-  background-color: white; }
+  background-color: white;
+  color: #000000; }
 
 .horizontaltreeview-node-label:hover {
   border-color: #ffccff;
-  background-color: #ffccff; }
-
-.horizontaltreeview-node-label:hover {
   color: #FF6FFF;
-  background-color: rgba(255, 111, 255, 0.6); }
+  background-color: rgba(189, 127, 189, 0.6); }
 
 /*----------------------------------------------------------------------*/
 /*        HORIZONTAL TREE COMPONENT -Visual     */
@@ -2214,11 +2212,12 @@ header .billboard .content-button {
   background-color: transparent; }
 
 .treenode-content:hover {
-  background-color: #000000; }
+  background-color: rgba(189, 127, 189, 0.6);
+  color: white; }
 
 .treenode-label-active {
-  background-color: #000000;
-  color: rgba(255, 255, 255, 0.7); }
+  background-color: rgba(189, 127, 189, 0.6);
+  color: white; }
 
 /*----------------------------------------------------------------------*/
 /*        BORDER LAYOUT COMPONENT -Visual        */
@@ -2521,6 +2520,7 @@ header .billboard .content-button {
 /*----------------------------------------------------------------------*/
 .navbar-container {
   background-color: #000000;
+  background: #000000;
   color: #FF6FFF; }
   .navbar-container .navbar-logo {
     vertical-align: middle; }
@@ -2575,11 +2575,11 @@ header .billboard .content-button {
   color: inherit; }
 
 .paginator .paginator-pages .paginator-page:hover {
-  background-color: rgba(255, 111, 255, 0.6);
+  background-color: rgba(189, 127, 189, 0.6);
   color: #FF6FFF; }
 
 .paginator .paginator-pages .active {
-  background-color: rgba(255, 60, 255, 0.6);
+  background-color: rgba(172, 93, 172, 0.6);
   color: #FF6FFF; }
 
 /*----------------------------------------------------------------------*/
@@ -2649,14 +2649,16 @@ header .billboard .content-button {
   color: rgba(255, 255, 255, 0.7); }
 
 .sidenav .headernode:hover {
-  background-color: #000000; }
+  background-color: #000000;
+  color: rgba(255, 255, 255, 0.7); }
 
 .sidenav .defaultnode:hover {
-  background-color: #000000; }
+  background-color: #000000;
+  color: rgba(255, 255, 255, 0.7); }
 
 .sidenav .activenode {
   background-color: #000000;
-  color: #000000; }
+  color: #FF6FFF; }
 
 .sidenav .border {
   border-bottom: 2px solid #FF6FFF; }
@@ -3076,16 +3078,16 @@ fieldset {
   background-color: #000000; }
 
 .step-box-table-item.active {
-  background-color: rgba(255, 111, 255, 0.6) !important; }
+  background-color: rgba(189, 127, 189, 0.6) !important; }
 
 .step-box-table-item.disbaled {
   background-color: rgba(255, 255, 255, 0.7); }
 
 .index-step-inactive {
-  background-color: rgba(255, 255, 255, 0.6); }
+  background-color: rgba(241, 228, 241, 0.6); }
 
 .step-box-table-item-hover:hover {
-  background-color: rgba(255, 255, 255, 0.6); }
+  background-color: rgba(241, 228, 241, 0.6); }
 
 /*----------------------------------------------------------------------*/
 /*        STEPS COMPONENT  - Structure       */
