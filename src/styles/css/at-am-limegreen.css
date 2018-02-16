@@ -14,7 +14,7 @@ body {
 
 body {
   font-family: Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
-  background-image: url("/assets/images/theme/bootstrap/Header.png"); }
+  background-image: none; }
 
 .helperHidden {
   border: 0;

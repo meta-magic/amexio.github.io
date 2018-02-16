@@ -55,7 +55,7 @@ $borderColor-focus: $focusColor;
 
 $navbarBoxShadow: $borderColor;
 $navbarColor : $themeColor;
-$navbarBackground : none;
+$navbarBackground : $navbarBGColor;;
 
 $sidenavHeaderBGColor: $defaultBGColor;
 $sidenavHeaderColor: $color;

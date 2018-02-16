@@ -2519,7 +2519,7 @@ header .billboard .content-button {
 /*----------------------------------------------------------------------*/
 .navbar-container {
   background-color: black;
-  background: none;
+  background: black;
   color: white; }
   .navbar-container .navbar-logo {
     vertical-align: middle; }

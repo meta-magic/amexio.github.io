@@ -2537,7 +2537,7 @@ header .billboard .content-button {
   width: 100%;
   vertical-align: middle;
   padding: 0px 15px;
-  box-shadow: 0px 0px 2px 2px 2px 2px 5px rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 0px 2px 2px #2CD2EC;
   position: fixed;
   z-index: 2;
   display: flex;
