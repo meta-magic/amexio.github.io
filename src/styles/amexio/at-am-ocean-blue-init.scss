@@ -53,6 +53,8 @@ $navbarColor : white;
 $navbarBackground :  linear-gradient(#80E6F5, #0CB5CF) ;
 $navbarBoxShadow : 2px 2px 5px rgba(0, 0, 0, 0.6);
 
+$navbarBoxShadow: $borderColor;
+$navbarColor : $color;
 $sidenavHeaderBGColor: none;
 $sidenavHeaderColor: $color;
 $sidenavBGColor : none;
