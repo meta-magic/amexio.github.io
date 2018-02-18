@@ -1,0 +1,22 @@
+/****************************************************/
+/**File Upload Structure **/
+/****************************************************/
+
+.upload-drop-zone {
+  border-style: dashed;
+  line-height: 200px;
+  text-align: center
+}
+/**SPECIAL SETTING REQUIRED FOR FIREFOX***/
+
+input:required {
+  box-shadow:none;
+}
+
+textarea:required{
+  box-shadow:none;
+}
+
+.image-title{
+  display: none;
+}

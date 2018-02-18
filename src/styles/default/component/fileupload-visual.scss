@@ -1,0 +1,37 @@
+
+/****************************************************/
+/**File upload -Visual **/
+/****************************************************/
+
+.upload-drop-zone {
+  color: $uploadDropZoneColor;
+  //border-style: dashed;
+  border-color: $uploadDropZoneColor;
+  //line-height: 200px;
+  //text-align: center
+}
+.upload-drop-zone.drop {
+  color:$uploadDropZoneColorDrop;
+  border-color:$uploadDropZoneColorDrop;
+}
+// .input-control {
+//   border-radius: 0px;
+//   line-height: 2;
+//   font-size: 14px;
+//   border: none;
+//   border-bottom: 2px solid $borderColor;
+//   background-color: #FFFFFF;
+//   color: $color;
+// }
+
+// .input-control-success {
+//   border-bottom-color:$success;
+// }
+
+// .input-control-error {
+//   border-bottom-color:$error;
+// }
+
+// .inputgroup label {
+//   margin-bottom: 0rem;
+// }

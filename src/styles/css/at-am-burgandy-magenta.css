@@ -534,23 +534,6 @@ button {
 .inputgroup .tooltiptext {
   background-color: white; }
 
-/****************************************************/
-/**COLLAPSIBLE SEARCH  **/
-/****************************************************/
-.search:focus {
-  background-color: #fff; }
-
-/****************************************************/
-/**File upload  **/
-/****************************************************/
-.upload-drop-zone {
-  color: #ccc;
-  border-color: #ccc; }
-
-.upload-drop-zone.drop {
-  color: #222;
-  border-color: #222; }
-
 /*----------------------------------------------------------------------*/
 /*        INPUT CONTROL COMPONENT -Structure      */
 /*----------------------------------------------------------------------*/
@@ -591,20 +574,18 @@ button {
   padding-left: 5px; }
 
 /****************************************************/
-/**COLLAPSIBLE SEARCH  **/
+/**File upload -Visual **/
 /****************************************************/
-.search {
-  border: solid 1px #ccc;
-  padding: 9px 10px 9px 32px;
-  outline: none;
-  transition: all .5s;
-  width: 55px; }
+.upload-drop-zone {
+  color: #ccc;
+  border-color: #ccc; }
 
-.search:focus {
-  width: 150px; }
+.upload-drop-zone.drop {
+  color: #222;
+  border-color: #222; }
 
 /****************************************************/
-/**File Upload  **/
+/**File Upload Structure **/
 /****************************************************/
 .upload-drop-zone {
   border-style: dashed;
@@ -620,6 +601,25 @@ textarea:required {
 
 .image-title {
   display: none; }
+
+/****************************************************/
+/**COLLAPSIBLE SEARCH  -Visual**/
+/****************************************************/
+.search:focus {
+  background-color: #fff; }
+
+/****************************************************/
+/**COLLAPSIBLE SEARCH-Structure**/
+/****************************************************/
+.search {
+  border: solid 1px #ccc;
+  padding: 9px 10px 9px 32px;
+  outline: none;
+  transition: all .5s;
+  width: 55px; }
+
+.search:focus {
+  width: 150px; }
 
 /****************************************************/
 /***                  RADIO -Visual                     ***/

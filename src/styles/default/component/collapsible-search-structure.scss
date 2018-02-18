@@ -1,0 +1,17 @@
+
+
+/****************************************************/
+/**COLLAPSIBLE SEARCH-Structure**/
+/****************************************************/
+
+.search{
+  border: solid 1px #ccc;
+  padding: 9px 10px 9px 32px;
+  outline: none;
+  transition: all .5s;
+  width: 55px;
+}
+
+.search:focus {
+  width: 150px;
+}
