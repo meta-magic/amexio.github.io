@@ -502,6 +502,11 @@ button {
 /*----------------------------------------------------------------------*/
 /*        INPUT CONTROL COMPONENT -Visual      */
 /*----------------------------------------------------------------------*/
+.input-control {
+  font-size: 14px;
+  background-color: white;
+  color: black; }
+
 ::placeholder {
   color: #417505; }
 
@@ -513,9 +518,6 @@ button {
   /* Microsoft Edge */
   color: #417505; }
 
-.input-control {
-  font-size: 1rem; }
-
 .input-control:focus {
   border-color: #5cb3fd; }
 
@@ -523,7 +525,7 @@ button {
   border-color: #5cb85c; }
 
 .input-control-error {
-  border-color: #d9534f; }
+  border-color: #d9534f !important; }
 
 .input-control-feedback .success {
   color: #5cb85c; }
@@ -534,35 +536,14 @@ button {
 .inputgroup .tooltiptext {
   background-color: #91f51e; }
 
-.input-control {
-  border-radius: 0px;
-  line-height: 2;
-  font-size: 14px;
-  border: none;
-  border-bottom: 2px solid #417505;
-  background-color: #FFFFFF;
-  color: black; }
-
-.input-control-success {
-  border-bottom-color: #5cb85c; }
-
-.input-control-error {
-  border-bottom-color: #d9534f; }
-
-.inputgroup label {
-  margin-bottom: 0rem; }
-
 /****************************************************/
-/** INPUT FORM CONTROL STYLES ENDS**/
-/****************************************************/
-/****************************************************/
-/**COLLAPSIBLE SEARCH STARTS **/
+/**COLLAPSIBLE SEARCH  **/
 /****************************************************/
 .search:focus {
   background-color: #fff; }
 
 /****************************************************/
-/**COLLAPSIBLE SEARCH ENDS **/
+/**File upload  **/
 /****************************************************/
 .upload-drop-zone {
   color: #ccc;
@@ -572,16 +553,9 @@ button {
   color: #222;
   border-color: #222; }
 
-/**SPECIAL SETTING REQUIRED FOR FIREFOX***/
 /*----------------------------------------------------------------------*/
 /*        INPUT CONTROL COMPONENT -Structure      */
 /*----------------------------------------------------------------------*/
-:-ms-input-placeholder {
-  /* Internet Explorer 10-11 */ }
-
-::-ms-input-placeholder {
-  /* Microsoft Edge */ }
-
 .inputgroup {
   position: relative; }
 
@@ -593,9 +567,10 @@ button {
   width: 100%;
   padding: .375rem 0;
   line-height: 1.5;
-  border: 2px solid #417505;
-  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-  border-radius: 0px; }
+  border-radius: 4px;
+  border: none;
+  border-bottom: 2px solid #417505;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s; }
 
 .input-control:focus {
   outline: none; }
@@ -618,10 +593,7 @@ button {
   padding-left: 5px; }
 
 /****************************************************/
-/** INPUT FORM CONTROL STYLES ENDS**/
-/****************************************************/
-/****************************************************/
-/**COLLAPSIBLE SEARCH STARTS **/
+/**COLLAPSIBLE SEARCH  **/
 /****************************************************/
 .search {
   border: solid 1px #ccc;
@@ -634,7 +606,7 @@ button {
   width: 150px; }
 
 /****************************************************/
-/**COLLAPSIBLE SEARCH ENDS **/
+/**File Upload  **/
 /****************************************************/
 .upload-drop-zone {
   border-style: dashed;
@@ -1956,11 +1928,11 @@ header .billboard .content-button {
 /*        HORIZONTAL TREE COMPONENT -Visual     */
 /*----------------------------------------------------------------------*/
 .horizontaltreeview-node-label {
-  background-color: #F0EEE9;
+  background-color: #dbd7cb;
   color: black; }
 
 .horizontaltreeview-node-label:hover {
-  border-color: #dbd7cb;
+  border-color: #c7bfac;
   color: #417505;
   background-color: #C4E800; }
 
@@ -1977,7 +1949,7 @@ header .billboard .content-button {
   .horizontaltreeview-node:before {
     content: "";
     width: 50px;
-    border-top: 2px solid #F0EEE9;
+    border-top: 2px solid #dbd7cb;
     position: absolute;
     left: -100px;
     top: 50%;
@@ -1989,13 +1961,13 @@ header .billboard .content-button {
   .horizontaltreeview-node-entry:before {
     content: "";
     height: 100%;
-    border-left: 2px solid #F0EEE9;
+    border-left: 2px solid #dbd7cb;
     position: absolute;
     left: -50px; }
   .horizontaltreeview-node-entry:after {
     content: "";
     width: 50px;
-    border-top: 2px solid #F0EEE9;
+    border-top: 2px solid #dbd7cb;
     position: absolute;
     left: -50px;
     top: 50%;
@@ -2016,7 +1988,7 @@ header .billboard .content-button {
   .horizontaltreeview-node-entry:last-child:after {
     height: 10px;
     border-top: none;
-    border-bottom: 2px solid #F0EEE9;
+    border-bottom: 2px solid #dbd7cb;
     border-radius: 0 0 0 10px;
     margin-top: -9px; }
   .horizontaltreeview-node-entry.sole:before {
@@ -2090,7 +2062,7 @@ header .billboard .content-button {
       display: block; }
 
 /*----------------------------------------------------------------------*/
-/*        LISTBOX COMPONENT         */
+/*        LISTBOX COMPONENT -Visual       */
 /*----------------------------------------------------------------------*/
 .listbox-height::-webkit-scrollbar-track {
   background-color: #F5f5f5; }
@@ -2122,7 +2094,7 @@ header .billboard .content-button {
       color: rgba(0, 0, 0, 0.87) !important; }
 
 /*----------------------------------------------------------------------*/
-/*        LISTBOX COMPONENT         */
+/*        LISTBOX COMPONENT - Structure     */
 /*----------------------------------------------------------------------*/
 .listbox {
   margin-bottom: 1rem;
@@ -2879,7 +2851,7 @@ header .billboard .content-button {
   color: #417505; }
 
 .accordion:after {
-  color: red;
+  color: #417505;
   font-weight: bold; }
 
 .panel {
@@ -2888,12 +2860,13 @@ header .billboard .content-button {
 
 /** Transparent Styling **/
 .accordion-transparent {
-  background: white;
-  border-color: white;
+  background: transparent;
+  color: #417505;
+  border-color: transparent;
   font-size: 15px; }
 
 .accordion-transparent:after {
-  color: red;
+  color: #417505;
   font-weight: bold; }
 
 .panel {
@@ -4837,12 +4810,58 @@ fieldset {
 /*----------------------------------------------------------------------*/
 body {
   font-family: 'PT-Sans', sans-serif;
-  font-size: 16px;
   letter-spacing: 0.3px;
   text-transform: capitalize; }
 
 /*----------------------------------------------------------------------*/
-/*        INPUT/LABEL/A/BUTTON/DROPDOWN COMPONENT         */
+/*        Limegreen -Structure      */
 /*----------------------------------------------------------------------*/
+.listbox {
+  background-repeat: repeat-x;
+  padding: 0px 16px 16px 16px; }
+  .listbox .list {
+    border: 2px solid #417505; }
+    .listbox .list .list-items {
+      border-bottom: 1px solid #417505; }
+
+.card-container {
+  padding: 0px 16px 16px 16px; }
+  .card-container .card-header {
+    border-radius: 0px;
+    font-weight: bold;
+    border: none; }
+  .card-container .card-body {
+    border: 2px solid #417505; }
+  .card-container .card-footer {
+    border: 2px solid #417505;
+    border-top: none; }
+
+.navbar-container .navbar-logo-unit a {
+  font-weight: bold; }
+
+body {
+  font-size: 16px; }
+
+/*----------------------------------------------------------------------*/
+/*        Limegreen -Structure      */
+/*----------------------------------------------------------------------*/
+.listbox {
+  background-image: url(/assets/images/theme/bootstrap/Header.png);
+  background-repeat: repeat-x;
+  background-color: white; }
+  .listbox .list .title {
+    color: #417505 !important; }
+  .listbox .header {
+    background: none;
+    color: #417505; }
+
+.card-container {
+  background-image: url(/assets/images/theme/bootstrap/Header.png);
+  background-repeat: repeat-x; }
+  .card-container .card-header {
+    font-size: 20px; }
+
+.navbar-container .navbar-logo-unit a {
+  font-size: 24px; }
 
 /*# sourceMappingURL=at-am-limegreen.css.map */

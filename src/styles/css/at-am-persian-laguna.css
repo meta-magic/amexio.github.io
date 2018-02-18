@@ -502,6 +502,11 @@ button {
 /*----------------------------------------------------------------------*/
 /*        INPUT CONTROL COMPONENT -Visual      */
 /*----------------------------------------------------------------------*/
+.input-control {
+  font-size: 14px;
+  background-color: white;
+  color: #601221; }
+
 ::placeholder {
   color: #601221; }
 
@@ -513,9 +518,6 @@ button {
   /* Microsoft Edge */
   color: #601221; }
 
-.input-control {
-  font-size: 1rem; }
-
 .input-control:focus {
   border-color: #5cb3fd; }
 
@@ -523,7 +525,7 @@ button {
   border-color: #5cb85c; }
 
 .input-control-error {
-  border-color: #d9534f; }
+  border-color: #d9534f !important; }
 
 .input-control-feedback .success {
   color: #5cb85c; }
@@ -534,35 +536,14 @@ button {
 .inputgroup .tooltiptext {
   background-color: #d93252; }
 
-.input-control {
-  border-radius: 0px;
-  line-height: 2;
-  font-size: 14px;
-  border: none;
-  border-bottom: 2px solid #601221;
-  background-color: #FFFFFF;
-  color: #601221; }
-
-.input-control-success {
-  border-bottom-color: #5cb85c; }
-
-.input-control-error {
-  border-bottom-color: #d9534f; }
-
-.inputgroup label {
-  margin-bottom: 0rem; }
-
 /****************************************************/
-/** INPUT FORM CONTROL STYLES ENDS**/
-/****************************************************/
-/****************************************************/
-/**COLLAPSIBLE SEARCH STARTS **/
+/**COLLAPSIBLE SEARCH  **/
 /****************************************************/
 .search:focus {
   background-color: #fff; }
 
 /****************************************************/
-/**COLLAPSIBLE SEARCH ENDS **/
+/**File upload  **/
 /****************************************************/
 .upload-drop-zone {
   color: #ccc;
@@ -572,16 +553,9 @@ button {
   color: #222;
   border-color: #222; }
 
-/**SPECIAL SETTING REQUIRED FOR FIREFOX***/
 /*----------------------------------------------------------------------*/
 /*        INPUT CONTROL COMPONENT -Structure      */
 /*----------------------------------------------------------------------*/
-:-ms-input-placeholder {
-  /* Internet Explorer 10-11 */ }
-
-::-ms-input-placeholder {
-  /* Microsoft Edge */ }
-
 .inputgroup {
   position: relative; }
 
@@ -593,9 +567,10 @@ button {
   width: 100%;
   padding: .375rem 0;
   line-height: 1.5;
-  border: 3px solid #601221;
-  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-  border-radius: 0 px; }
+  border-radius: 4px;
+  border: none;
+  border-bottom: 2px solid #601221;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s; }
 
 .input-control:focus {
   outline: none; }
@@ -618,10 +593,7 @@ button {
   padding-left: 5px; }
 
 /****************************************************/
-/** INPUT FORM CONTROL STYLES ENDS**/
-/****************************************************/
-/****************************************************/
-/**COLLAPSIBLE SEARCH STARTS **/
+/**COLLAPSIBLE SEARCH  **/
 /****************************************************/
 .search {
   border: solid 1px #ccc;
@@ -634,7 +606,7 @@ button {
   width: 150px; }
 
 /****************************************************/
-/**COLLAPSIBLE SEARCH ENDS **/
+/**File Upload  **/
 /****************************************************/
 .upload-drop-zone {
   border-style: dashed;
@@ -2090,7 +2062,7 @@ header .billboard .content-button {
       display: block; }
 
 /*----------------------------------------------------------------------*/
-/*        LISTBOX COMPONENT         */
+/*        LISTBOX COMPONENT -Visual       */
 /*----------------------------------------------------------------------*/
 .listbox-height::-webkit-scrollbar-track {
   background-color: #F5f5f5; }
@@ -2122,7 +2094,7 @@ header .billboard .content-button {
       color: rgba(0, 0, 0, 0.87) !important; }
 
 /*----------------------------------------------------------------------*/
-/*        LISTBOX COMPONENT         */
+/*        LISTBOX COMPONENT - Structure     */
 /*----------------------------------------------------------------------*/
 .listbox {
   margin-bottom: 1rem;
@@ -2879,7 +2851,7 @@ header .billboard .content-button {
   color: #601221; }
 
 .accordion:after {
-  color: red;
+  color: #601221;
   font-weight: bold; }
 
 .panel {
@@ -2888,12 +2860,13 @@ header .billboard .content-button {
 
 /** Transparent Styling **/
 .accordion-transparent {
-  background: white;
-  border-color: white;
+  background: transparent;
+  color: #601221;
+  border-color: transparent;
   font-size: 15px; }
 
 .accordion-transparent:after {
-  color: red;
+  color: #601221;
   font-weight: bold; }
 
 .panel {
@@ -4836,13 +4809,93 @@ fieldset {
 /*        Window LAYOUT Media Q COMPONENT         */
 /*----------------------------------------------------------------------*/
 body {
+  font-family: 'Shadows Into Light', cursive; }
+
+/*----------------------------------------------------------------------*/
+/*       Persian Laguna - Structure       */
+/*----------------------------------------------------------------------*/
+.listbox .list {
+  border: none; }
+  .listbox .list .title {
+    float: left; }
+    .listbox .list .title a {
+      text-transform: lowercase; }
+
+.card-container {
+  border: none;
+  box-shadow: none; }
+  .card-container .card-header {
+    font-weight: 700;
+    border: none;
+    border-right: 3px solid #8d7d26;
+    padding: 20px 24px 12px 56px; }
+  .card-container .card-body {
+    border-left: 3px solid #8d7d26;
+    border-right: 3px solid #8d7d26;
+    border-bottom: 3px solid #8d7d26; }
+  .card-container .card-footer {
+    border-top: none;
+    border: 3px solid #8d7d26; }
+
+.listbox {
+  border: none; }
+  .listbox .header {
+    border: none;
+    border-right: 3px solid #8d7d26;
+    padding: 20px 24px 12px 56px; }
+  .listbox .list {
+    border-left: 3px solid #8d7d26;
+    border-right: 3px solid #8d7d26;
+    border-bottom: 3px solid #8d7d26; }
+  .listbox .list .list-items {
+    border-bottom: 1px solid #1b1d22; }
+
+body {
   background-color: #D33134;
   color: #043963;
   background-image: url("/assets/images/theme/bootstrap/red_bg.png");
   font-size: 16px;
   background-repeat: repeat-y;
-  background-attachment: fixed;
-  font-family: 'Shadows Into Light', cursive; }
+  background-attachment: fixed; }
+
+/*----------------------------------------------------------------------*/
+/*       Persian Laguna - Visual       */
+/*----------------------------------------------------------------------*/
+.listbox .list {
+  background-color: #ffe578 !important;
+  background: rgba(255, 255, 255, 0.6); }
+  .listbox .list .title {
+    font-size: 18px;
+    color: #601221; }
+    .listbox .list .title a {
+      font-size: 16px;
+      color: #601221; }
+  .listbox .list .list-items:hover {
+    background-color: rgba(66, 31, 38, 0.4); }
+
+.card-container {
+  background-image: url(/assets/images/theme/bootstrap/PageFold.png); }
+  .card-container .card-header {
+    font-size: 20px;
+    background-image: url(/assets/images/theme/bootstrap/PageFold.png); }
+  .card-container .card-body {
+    background-color: #ffe578; }
+  .card-container .card-footer {
+    background-color: #ffe578; }
+
+.listbox .listbox .list .title {
+  color: red !important; }
+.listbox .header {
+  background-color: transparent;
+  background-image: url(/assets/images/theme/bootstrap/PageFold.png);
+  color: #601221 !important; }
+.listbox .list {
+  background-color: #fff9de; }
+.listbox .list .list-items {
+  background-color: #ffe578 !important; }
+
+.navbar-container {
+  font-size: 100%; }
 
 /*----------------------------------------------------------------------*/
 /*        INPUT/LABEL/A/BUTTON/DROPDOWN COMPONENT         */

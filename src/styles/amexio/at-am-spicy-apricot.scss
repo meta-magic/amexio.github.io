@@ -6,19 +6,23 @@
 @import "../default/amexio.nav.scss";
 @import "../default/amexio.panes.scss";
 @import "../default/amexio.media.query.scss";
+@import "../amexio/at-am-spicy-apricot-structure.scss";
+@import "../amexio/at-am-spicy-apricot-visual.scss";
 
-body {
-  background-image: $themeBGImage;
-  background-repeat: repeat-x;
-  background-attachment: fixed;
-  font-family: 'Quicksand', sans-serif;
-  font-size: 16px;
-  letter-spacing: 0.3px;
-  text-transform: capitalize;
-  margin: 0px;
-  padding: 0px;
+@import "../amexio/at-am-spicy-apricot-structure.scss";
+@import "../amexio/at-am-spicy-apricot-visual.scss";
+// body {
+//   background-image: $themeBGImage;
+//   background-repeat: repeat-x;
+//   background-attachment: fixed;
+//   font-family: 'Quicksand', sans-serif;
+//   font-size: 16px;
+//   letter-spacing: 0.3px;
+//   text-transform: capitalize;
+//   margin: 0px;
+//   padding: 0px;
 
-}
+// }
 
 
 

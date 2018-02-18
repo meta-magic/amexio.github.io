@@ -1,0 +1,138 @@
+body {
+  background-color: #F0EEE9;
+  color: rgba(255,255,255,0.70)!important;
+
+  background-image: $themeBGImage;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  font-size: 16px;
+}
+
+/*----------------------------------------------------------------------*/
+/*        Honey Prussian -Visual                                     */
+/*----------------------------------------------------------------------*/
+
+
+
+// .input-control {
+//   border-radius: $borderRadius;
+//   line-height: 2;
+//   font-size: 14px;
+//   border: 2px solid $themeColor;
+//   color: $themeColor;
+// }
+
+// .input-control-success {
+//   border-color:$success;
+// }
+
+// .input-control-error {
+//   border-color:$error;
+// }
+
+
+// .inputgroup label {
+//   margin-bottom: 0rem;
+// }
+
+// .dropdown{
+//   border: 2px solid $themeColor;
+//   border-radius: $border-radius;
+//   box-shadow: 0 1px 3px 0 $themeColor;
+//   background-color: white;
+// }
+
+
+// .datetimepicker {
+//   border-radius: $border-radius;
+//   border: $borderSize solid $themeColor;
+//   box-shadow: 0 1px 3px 0 $themeColor;
+// }
+
+// label {
+//   display: inline-block;
+//   margin-top: 5px;
+//   max-width: 100%;
+//   //padding: 0 12px;
+//   font-size: 14px;
+//   font-weight: 500;
+
+// }
+.listbox{
+
+  .list{
+    
+    .title {
+      font-size: 16px;    
+      //padding-top: 8px;
+      color: #1FBCD2 !important;
+    }
+    .list-items{
+      background:#00517b;
+    }
+    
+    .list-items:hover{
+      background-color: lighten($themeColor,70%);
+    }
+  }
+
+  .header{
+    background: none;
+    color: $cardHeaderColor;
+  }
+}
+
+
+.card-container {
+  .card-header {
+    font-size: 20px;
+  }
+
+  .card-body{
+  }
+
+  .card-footer{
+    background: none;
+    
+  }
+}
+
+
+// /** NAVBAR **/
+ .navbar-container {
+//   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+//   color: white;
+//   background-color: $themeBGColor;
+//   background-image:linear-gradient(to right, #FFFFFF, #FEFEFE, rgba(1, 114, 184, 0.8), rgba(0, 33, 76, 0.7));
+
+  .navbar-logo-unit a{
+    font-size: 24px;
+    font-weight: bold;
+    color: #02468D;
+  }
+}
+
+.sidenav{
+  background-image: linear-gradient(to bottom, #FFFFFF, #0EAFD5, #4AD4BD);
+}
+
+// .sidenav .activenode{
+//   color: white;
+//   background-color: $themeColor;
+//   border-right: $borderSize solid $themeColor;
+// }
+
+
+// .sidenav .headernode:hover {
+//   color: white;
+//   background-color: $sidenavactive;
+// }
+
+// .sidenav .defaultnode:hover {
+//   color: white;
+//   background-color: $sidenavactive;
+// }
+
+
+

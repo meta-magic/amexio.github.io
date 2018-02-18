@@ -1,9 +1,8 @@
 $isAmexio : true;
 $themeBGImage : url('/assets/images/theme/bootstrap/polygon_bg.jpg');
-$aColorTransprency : rgba(255, 255, 255, 0.7);
+$aColorTransprency : #E84C1A;
 
 $defaultBGColor : white;
-
 $defaultColor : #70196F;
 
 $color: $defaultColor;
@@ -291,6 +290,9 @@ $horizontaltreeviewLabelHoverBGColor:$hoverBGColor;
 $placeholderColor : $borderColor;
 $inputFontSize:1rem;
 $inputTooltipBGColor : lighten($primaryBGColor,30%);
+$inputControlColor : $color;
+$inputControlBGColor : white;
+$inputFontSize : 14px;
 $searchBGColor : #fff;
 $uploadDropZoneColor :#ccc; 
 $uploadDropZoneColorDrop : #222;

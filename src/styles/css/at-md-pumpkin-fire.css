@@ -500,6 +500,11 @@ button {
 /*----------------------------------------------------------------------*/
 /*        INPUT CONTROL COMPONENT -Visual      */
 /*----------------------------------------------------------------------*/
+.input-control {
+  font-size: 14px;
+  background-color: white;
+  color: black; }
+
 ::placeholder {
   color: #ced4da; }
 
@@ -511,9 +516,6 @@ button {
   /* Microsoft Edge */
   color: #ced4da; }
 
-.input-control {
-  font-size: 1rem; }
-
 .input-control:focus {
   border-color: #5cb3fd; }
 
@@ -521,7 +523,7 @@ button {
   border-color: #5cb85c; }
 
 .input-control-error {
-  border-color: #d9534f; }
+  border-color: #d9534f !important; }
 
 .input-control-feedback .success {
   color: #5cb85c; }
@@ -532,35 +534,14 @@ button {
 .inputgroup .tooltiptext {
   background-color: #ECEFF1; }
 
-.input-control {
-  border-radius: 0px;
-  line-height: 2;
-  font-size: 14px;
-  border: none;
-  border-bottom: 2px solid #ced4da;
-  background-color: #FFFFFF;
-  color: black; }
-
-.input-control-success {
-  border-bottom-color: #5cb85c; }
-
-.input-control-error {
-  border-bottom-color: #d9534f; }
-
-.inputgroup label {
-  margin-bottom: 0rem; }
-
 /****************************************************/
-/** INPUT FORM CONTROL STYLES ENDS**/
-/****************************************************/
-/****************************************************/
-/**COLLAPSIBLE SEARCH STARTS **/
+/**COLLAPSIBLE SEARCH  **/
 /****************************************************/
 .search:focus {
   background-color: #fff; }
 
 /****************************************************/
-/**COLLAPSIBLE SEARCH ENDS **/
+/**File upload  **/
 /****************************************************/
 .upload-drop-zone {
   color: #ccc;
@@ -570,16 +551,9 @@ button {
   color: #222;
   border-color: #222; }
 
-/**SPECIAL SETTING REQUIRED FOR FIREFOX***/
 /*----------------------------------------------------------------------*/
 /*        INPUT CONTROL COMPONENT -Structure      */
 /*----------------------------------------------------------------------*/
-:-ms-input-placeholder {
-  /* Internet Explorer 10-11 */ }
-
-::-ms-input-placeholder {
-  /* Microsoft Edge */ }
-
 .inputgroup {
   position: relative; }
 
@@ -590,10 +564,11 @@ button {
 .input-control {
   width: 100%;
   padding: .375rem 0;
-  line-height: 1.5;
-  border: 1px solid #ced4da;
-  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-  border-radius: 2px; }
+  line-height: 2;
+  border-radius: 0px;
+  border: none;
+  border-bottom: 2px solid #ced4da;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s; }
 
 .input-control:focus {
   outline: none; }
@@ -616,10 +591,7 @@ button {
   padding-left: 5px; }
 
 /****************************************************/
-/** INPUT FORM CONTROL STYLES ENDS**/
-/****************************************************/
-/****************************************************/
-/**COLLAPSIBLE SEARCH STARTS **/
+/**COLLAPSIBLE SEARCH  **/
 /****************************************************/
 .search {
   border: solid 1px #ccc;
@@ -632,7 +604,7 @@ button {
   width: 150px; }
 
 /****************************************************/
-/**COLLAPSIBLE SEARCH ENDS **/
+/**File Upload  **/
 /****************************************************/
 .upload-drop-zone {
   border-style: dashed;
@@ -2088,7 +2060,7 @@ header .billboard .content-button {
       display: block; }
 
 /*----------------------------------------------------------------------*/
-/*        LISTBOX COMPONENT         */
+/*        LISTBOX COMPONENT -Visual       */
 /*----------------------------------------------------------------------*/
 .listbox-height::-webkit-scrollbar-track {
   background-color: #F5f5f5; }
@@ -2120,7 +2092,7 @@ header .billboard .content-button {
       color: rgba(0, 0, 0, 0.87) !important; }
 
 /*----------------------------------------------------------------------*/
-/*        LISTBOX COMPONENT         */
+/*        LISTBOX COMPONENT - Structure     */
 /*----------------------------------------------------------------------*/
 .listbox {
   margin-bottom: 1rem;
@@ -2877,7 +2849,7 @@ header .billboard .content-button {
   color: black; }
 
 .accordion:after {
-  color: red;
+  color: black;
   font-weight: bold; }
 
 .panel {
@@ -2887,11 +2859,12 @@ header .billboard .content-button {
 /** Transparent Styling **/
 .accordion-transparent {
   background: white;
+  color: black;
   border-color: white;
   font-size: 15px; }
 
 .accordion-transparent:after {
-  color: red;
+  color: black;
   font-weight: bold; }
 
 .panel {

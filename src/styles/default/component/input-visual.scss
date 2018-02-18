@@ -3,120 +3,50 @@
 /*        INPUT CONTROL COMPONENT -Visual      */
 /*----------------------------------------------------------------------*/
 
+.input-control {
+  font-size: $inputFontSize;  
+  background-color: $inputControlBGColor;
+  color: $inputControlColor;
+}
 
 ::placeholder {
-  //padding-left: 15px;
   color: $placeholderColor;
 }
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
-  //padding-left: 15px;
   color: $placeholderColor;
 }
 ::-ms-input-placeholder { /* Microsoft Edge */
  // padding-left: 15px;
   color: $placeholderColor;
 }
-.inputgroup {
-  //position: relative;
-}
-.inputgroup label {
-//  display: inline-block;
-//  margin-bottom: .5rem;
-}
-.input-control {
-  // width: 100%;
-  // padding: .375rem 0;
-  font-size: 1rem;
-  // line-height: 1.5;
-  // border: $borderSize solid $borderColor;
-  // transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-  // border-radius: $borderRadius;
-}
 .input-control:focus {
   border-color: $borderColor-focus;
-  //outline: none;
 }
 .input-control-success {
   border-color:$success;
 }
 .input-control-error {
-  border-color:$error;
+  border-color:$error!important;
 }
-.input-control-feedback{
-  // position: absolute;
-  // top: 30px;
-  // right: 0;
-  // //z-index: 2;
-  // display: block;
-  // width: 38px;
-  // height: 38px;
-  // line-height: 38px;
-  // text-align: center;
-  // pointer-events: none;
-}
-
 .input-control-feedback .success {
   color: $success;;
 }
-
 .input-control-feedback .error {
   color: $error;
 }
-
 .inputgroup .tooltiptext {
   background-color: $inputTooltipBGColor;
-  // border: $borderSize solid $borderColor;
-  // position: absolute;
-  // z-index: 1;
-  // padding-left:5px;
-
-}
-
-//from css
-.input-control {
-  border-radius: 0px;
-  line-height: 2;
-  font-size: 14px;
-  border: none;
-  border-bottom: 2px solid $borderColor;
-  background-color: #FFFFFF;
-  color: $color;
-}
-
-.input-control-success {
-  border-bottom-color:$success;
-}
-
-.input-control-error {
-  border-bottom-color:$error;
-}
-
-.inputgroup label {
-  margin-bottom: 0rem;
 }
 
 /****************************************************/
-/** INPUT FORM CONTROL STYLES ENDS**/
+/**COLLAPSIBLE SEARCH  **/
 /****************************************************/
-
-/****************************************************/
-/**COLLAPSIBLE SEARCH STARTS **/
-/****************************************************/
-
-.search{
-  //background: #ededed url('search-icon.png') no-repeat 9px center;
-  // border: solid 1px #ccc;
-  // padding: 9px 10px 0px 32px;
-  // transition: all .5s;
-  // width: 55px;
-}
 
 .search:focus {
-  //width: 150px;
   background-color: $searchBGColor;
 }
 /****************************************************/
-/**COLLAPSIBLE SEARCH ENDS **/
+/**File upload  **/
 /****************************************************/
 
 .upload-drop-zone {
@@ -130,22 +60,6 @@
   color:$uploadDropZoneColorDrop;
   border-color:$uploadDropZoneColorDrop;
 }
-
-/**SPECIAL SETTING REQUIRED FOR FIREFOX***/
-
-input:required {
-  //box-shadow:none;
-}
-
-textarea:required{
-  //box-shadow:none;
-}
-
-//
-.image-title{
-  //display: none;
-}
-
 // .input-control {
 //   border-radius: 0px;
 //   line-height: 2;

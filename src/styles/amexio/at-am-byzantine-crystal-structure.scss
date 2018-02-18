@@ -1,0 +1,63 @@
+/*----------------------------------------------------------------------*/
+/*       Byzantine Crystal -Structural         */
+/*----------------------------------------------------------------------*/
+
+// .dropdown{
+//   border: 2px solid $themeColor;
+//   box-shadow: 0 1px 3px 0 #666666;
+// }
+
+
+// .datetimepicker {
+//   border: $borderSize solid $themeColor;
+//   box-shadow: 0 1px 3px 0 #666666;
+// }
+
+.listbox {
+  
+  border-radius: 5px;
+  .list{
+    border: none;
+
+    .title {
+      float: left;
+      a {
+        text-transform: lowercase;
+      }
+    }
+  }
+}
+
+.card-container {
+  border:none;
+  box-shadow : none;
+  .card-header {
+    border:none;
+    
+    font-weight: 700;
+  }
+  .card-footer{
+    border-top: none;
+    border: $borderSize solid $cardBorderColor;
+    border-radius: 5px;
+  }
+}
+
+
+.card-body{
+  border: $borderSize solid $cardBorderColor;
+  border-radius: 5px;
+}
+
+.listbox{
+
+  .header{
+    border-bottom: $borderSize solid $borderColor;
+  }
+
+  
+  .list .list-items{
+    border-bottom: 1px solid #1b1d22;
+  }
+}
+

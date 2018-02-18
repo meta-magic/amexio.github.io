@@ -7,23 +7,8 @@
 @import "../default/amexio.panes.scss";
 @import "../default/amexio.media.query.scss";
 
-
-body {
-  background-color: #F0EEE9;
-  color: rgba(255,255,255,0.70)!important;
-
-
-  background-image: $themeBGImage;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  font-family: 'Quicksand', sans-serif;
-  font-size: 16px;
-
-  letter-spacing: 0.3px;
-  text-transform: capitalize;
-  margin: 0px;
-  padding: 0px;
-}
+@import "../amexio/at-am-honey-prussian-structure.scss";
+@import "../amexio/at-am-honey-prussian-visual.scss";
 
 /*----------------------------------------------------------------------*/
 /*        INPUT/LABEL/A/BUTTON/DROPDOWN COMPONENT         */

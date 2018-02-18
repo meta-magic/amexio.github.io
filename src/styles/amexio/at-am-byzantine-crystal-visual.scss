@@ -1,0 +1,66 @@
+/*----------------------------------------------------------------------*/
+/*       Byzantine Crystal -Structural         */
+/*----------------------------------------------------------------------*/
+
+// .dropdown{
+//   border: 2px solid $themeColor;
+//   box-shadow: 0 1px 3px 0 #666666;
+// }
+
+
+// .datetimepicker {
+//   border: $borderSize solid $themeColor;
+//   box-shadow: 0 1px 3px 0 #666666;
+// }
+
+.listbox {
+  background: rgba(255, 255, 255, 0.6);
+  .list{
+
+    background: rgba(255, 255, 255, 0.6);
+
+    .title {
+
+      font-size: 18px;
+      color: $datapointColor;
+      //padding-top: 8px;
+      a {
+        font-size: 16px;
+        color: $defaultColor;
+      }
+    }
+  }
+}
+
+.card-container {
+  
+  .card-header {
+  
+    font-size: 20px;
+  
+  }
+  
+}
+
+
+.card-body{
+  background:rgba(255, 255, 255, 0.6);
+}
+
+.listbox{
+
+  .listbox .list .title {
+    color: $themeColor !important;
+  }
+
+  .header{
+    background: none;
+    color: $themeColor !important;
+  }
+
+  .list{
+    background: none;
+  }
+  
+}
+

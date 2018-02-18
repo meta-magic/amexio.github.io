@@ -7,17 +7,18 @@
 @import "../default/amexio.panes.scss";
 @import "../default/amexio.media.query.scss";
 
+@import "../amexio/at-am-persian-laguna-structure.scss";
+@import "../amexio/at-am-persian-laguna-visual.scss";
 
-
-body {
-  background-color: #D33134;
-  color: #043963;
-  background-image: $themeBGImage;
-  font-size: 16px;
-  background-repeat: repeat-y;
-  background-attachment: fixed;
-  font-family: 'Shadows Into Light', cursive;
-}
+// body {
+//   background-color: #D33134;
+//   color: #043963;
+//   background-image: $themeBGImage;
+//   font-size: 16px;
+//   background-repeat: repeat-y;
+//   background-attachment: fixed;
+//   font-family: 'Shadows Into Light', cursive;
+// }
 
 /*----------------------------------------------------------------------*/
 /*        INPUT/LABEL/A/BUTTON/DROPDOWN COMPONENT         */

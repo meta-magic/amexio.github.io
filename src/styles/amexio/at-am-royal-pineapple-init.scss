@@ -159,7 +159,7 @@ $datapointsBGColorS : $primaryBGColor;
 $datapointsColorS : $primaryColor;
 
 $listBoxBGColor : white;
-$listBoxColor : rgba(0,0,0,0.87);
+$listBoxColor : $color;
 $listTitleFontSize : 18px;
 $listTitleAFontSize : 16px;
 
@@ -296,6 +296,9 @@ $horizontaltreeviewLabelHoverBGColor:$hoverBGColor;
 $placeholderColor : $borderColor;
 $inputFontSize:1rem;
 $inputTooltipBGColor : lighten($primaryBGColor,30%);
+$inputControlColor : $color;
+$inputControlBGColor : white;
+$inputFontSize : 14px;
 $searchBGColor : #fff;
 $uploadDropZoneColor :#ccc; 
 $uploadDropZoneColorDrop : #222;

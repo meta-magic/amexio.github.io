@@ -500,6 +500,11 @@ button {
 /*----------------------------------------------------------------------*/
 /*        INPUT CONTROL COMPONENT -Visual      */
 /*----------------------------------------------------------------------*/
+.input-control {
+  font-size: 14px;
+  background-color: white;
+  color: #603A63; }
+
 ::placeholder {
   color: #3C1D5F; }
 
@@ -511,9 +516,6 @@ button {
   /* Microsoft Edge */
   color: #3C1D5F; }
 
-.input-control {
-  font-size: 1rem; }
-
 .input-control:focus {
   border-color: #5cb3fd; }
 
@@ -521,7 +523,7 @@ button {
   border-color: #5cb85c; }
 
 .input-control-error {
-  border-color: #d9534f; }
+  border-color: #d9534f !important; }
 
 .input-control-feedback .success {
   color: #5cb85c; }
@@ -532,35 +534,14 @@ button {
 .inputgroup .tooltiptext {
   background-color: #fbebbb; }
 
-.input-control {
-  border-radius: 0px;
-  line-height: 2;
-  font-size: 14px;
-  border: none;
-  border-bottom: 2px solid #3C1D5F;
-  background-color: #FFFFFF;
-  color: #603A63; }
-
-.input-control-success {
-  border-bottom-color: #5cb85c; }
-
-.input-control-error {
-  border-bottom-color: #d9534f; }
-
-.inputgroup label {
-  margin-bottom: 0rem; }
-
 /****************************************************/
-/** INPUT FORM CONTROL STYLES ENDS**/
-/****************************************************/
-/****************************************************/
-/**COLLAPSIBLE SEARCH STARTS **/
+/**COLLAPSIBLE SEARCH  **/
 /****************************************************/
 .search:focus {
   background-color: #fff; }
 
 /****************************************************/
-/**COLLAPSIBLE SEARCH ENDS **/
+/**File upload  **/
 /****************************************************/
 .upload-drop-zone {
   color: #ccc;
@@ -570,16 +551,9 @@ button {
   color: #222;
   border-color: #222; }
 
-/**SPECIAL SETTING REQUIRED FOR FIREFOX***/
 /*----------------------------------------------------------------------*/
 /*        INPUT CONTROL COMPONENT -Structure      */
 /*----------------------------------------------------------------------*/
-:-ms-input-placeholder {
-  /* Internet Explorer 10-11 */ }
-
-::-ms-input-placeholder {
-  /* Microsoft Edge */ }
-
 .inputgroup {
   position: relative; }
 
@@ -591,9 +565,10 @@ button {
   width: 100%;
   padding: .375rem 0;
   line-height: 1.5;
-  border: 2px solid #3C1D5F;
-  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-  border-radius: 5px; }
+  border-radius: 4px;
+  border: none;
+  border-bottom: 2px solid #3C1D5F;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s; }
 
 .input-control:focus {
   outline: none; }
@@ -616,10 +591,7 @@ button {
   padding-left: 5px; }
 
 /****************************************************/
-/** INPUT FORM CONTROL STYLES ENDS**/
-/****************************************************/
-/****************************************************/
-/**COLLAPSIBLE SEARCH STARTS **/
+/**COLLAPSIBLE SEARCH  **/
 /****************************************************/
 .search {
   border: solid 1px #ccc;
@@ -632,7 +604,7 @@ button {
   width: 150px; }
 
 /****************************************************/
-/**COLLAPSIBLE SEARCH ENDS **/
+/**File Upload  **/
 /****************************************************/
 .upload-drop-zone {
   border-style: dashed;
@@ -2088,7 +2060,7 @@ header .billboard .content-button {
       display: block; }
 
 /*----------------------------------------------------------------------*/
-/*        LISTBOX COMPONENT         */
+/*        LISTBOX COMPONENT -Visual       */
 /*----------------------------------------------------------------------*/
 .listbox-height::-webkit-scrollbar-track {
   background-color: #F5f5f5; }
@@ -2120,7 +2092,7 @@ header .billboard .content-button {
       color: rgba(0, 0, 0, 0.87) !important; }
 
 /*----------------------------------------------------------------------*/
-/*        LISTBOX COMPONENT         */
+/*        LISTBOX COMPONENT - Structure     */
 /*----------------------------------------------------------------------*/
 .listbox {
   margin-bottom: 1rem;
@@ -2877,7 +2849,7 @@ header .billboard .content-button {
   color: white; }
 
 .accordion:after {
-  color: red;
+  color: #3C1D5F;
   font-weight: bold; }
 
 .panel {
@@ -2886,12 +2858,13 @@ header .billboard .content-button {
 
 /** Transparent Styling **/
 .accordion-transparent {
-  background: white;
-  border-color: white;
+  background: transparent;
+  color: #3C1D5F;
+  border-color: #3C1D5F;
   font-size: 15px; }
 
 .accordion-transparent:after {
-  color: red;
+  color: #3C1D5F;
   font-weight: bold; }
 
 .panel {
@@ -4834,15 +4807,176 @@ fieldset {
 /*        Window LAYOUT Media Q COMPONENT         */
 /*----------------------------------------------------------------------*/
 body {
-  background-image: url("/assets/images/theme/bootstrap/DeepOrange-bg.jpg");
-  background-repeat: repeat-x;
-  background-attachment: fixed;
   font-family: 'Quicksand', sans-serif;
-  font-size: 16px;
   letter-spacing: 0.3px;
   text-transform: capitalize;
   margin: 0px;
   padding: 0px; }
+
+/*----------------------------------------------------------------------*/
+/*        Spicy Apricot  -Visual                       */
+/*----------------------------------------------------------------------*/
+.listbox {
+  padding: 16px; }
+  .listbox .list {
+    border: 2px solid #3C1D5F;
+    border-radius: 5px; }
+    .listbox .list .title {
+      float: left;
+      font-weight: bold; }
+      .listbox .list .title a {
+        font-weight: 300; }
+    .listbox .list .list-items {
+      border-bottom: 1px solid #3C1D5F; }
+    .listbox .list .list-items:hover {
+      background-color: white; }
+  .listbox .header {
+    font-weight: bold; }
+
+.card-container {
+  border-radius: 5px;
+  padding: 16px; }
+  .card-container .card-header {
+    font-weight: bold;
+    border: none; }
+  .card-container .card-body {
+    border-radius: 5px; }
+  .card-container .card-footer {
+    border: none;
+    border-top: none; }
+
+/** NAVBAR **/
+.navbar-container .navbar-logo-unit a {
+  font-weight: bold; }
+
+.sidenav {
+  top: 70px; }
+
+body {
+  background-image: url("/assets/images/theme/bootstrap/DeepOrange-bg.jpg");
+  background-repeat: repeat-x;
+  background-attachment: fixed;
+  font-size: 16px; }
+
+/*----------------------------------------------------------------------*/
+/*        Spicy Apricot  -Visual                       */
+/*----------------------------------------------------------------------*/
+.listbox {
+  background-color: rgba(55, 20, 2, 0.7); }
+  .listbox .list .title {
+    font-size: 16px;
+    color: #FF8B00 !important; }
+    .listbox .list .title a {
+      color: #603A63; }
+  .listbox .list .list-items:hover {
+    background-color: white; }
+  .listbox .header {
+    background: none;
+    color: white; }
+
+.card-container {
+  border-radius: 5px;
+  background-color: rgba(55, 20, 2, 0.7);
+  padding: 16px; }
+  .card-container .card-header {
+    font-weight: bold;
+    border: none; }
+  .card-container .card-body {
+    border-radius: 5px;
+    background-color: white; }
+  .card-container .card-footer {
+    border: none;
+    border-top: none; }
+
+/** NAVBAR **/
+.navbar-container .navbar-logo-unit a {
+  font-size: 24px; }
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  letter-spacing: 0.3px;
+  text-transform: capitalize;
+  margin: 0px;
+  padding: 0px; }
+
+/*----------------------------------------------------------------------*/
+/*        Spicy Apricot  -Visual                       */
+/*----------------------------------------------------------------------*/
+.listbox {
+  padding: 16px; }
+  .listbox .list {
+    border: 2px solid #3C1D5F;
+    border-radius: 5px; }
+    .listbox .list .title {
+      float: left;
+      font-weight: bold; }
+      .listbox .list .title a {
+        font-weight: 300; }
+    .listbox .list .list-items {
+      border-bottom: 1px solid #3C1D5F; }
+    .listbox .list .list-items:hover {
+      background-color: white; }
+  .listbox .header {
+    font-weight: bold; }
+
+.card-container {
+  border-radius: 5px;
+  padding: 16px; }
+  .card-container .card-header {
+    font-weight: bold;
+    border: none; }
+  .card-container .card-body {
+    border-radius: 5px; }
+  .card-container .card-footer {
+    border: none;
+    border-top: none; }
+
+/** NAVBAR **/
+.navbar-container .navbar-logo-unit a {
+  font-weight: bold; }
+
+.sidenav {
+  top: 70px; }
+
+body {
+  background-image: url("/assets/images/theme/bootstrap/DeepOrange-bg.jpg");
+  background-repeat: repeat-x;
+  background-attachment: fixed;
+  font-size: 16px; }
+
+/*----------------------------------------------------------------------*/
+/*        Spicy Apricot  -Visual                       */
+/*----------------------------------------------------------------------*/
+.listbox {
+  background-color: rgba(55, 20, 2, 0.7); }
+  .listbox .list .title {
+    font-size: 16px;
+    color: #FF8B00 !important; }
+    .listbox .list .title a {
+      color: #603A63; }
+  .listbox .list .list-items:hover {
+    background-color: white; }
+  .listbox .header {
+    background: none;
+    color: white; }
+
+.card-container {
+  border-radius: 5px;
+  background-color: rgba(55, 20, 2, 0.7);
+  padding: 16px; }
+  .card-container .card-header {
+    font-weight: bold;
+    border: none; }
+  .card-container .card-body {
+    border-radius: 5px;
+    background-color: white; }
+  .card-container .card-footer {
+    border: none;
+    border-top: none; }
+
+/** NAVBAR **/
+.navbar-container .navbar-logo-unit a {
+  font-size: 24px; }
 
 /*----------------------------------------------------------------------*/
 /*        INPUT/LABEL/A/BUTTON/DROPDOWN COMPONENT         */

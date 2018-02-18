@@ -501,6 +501,11 @@ button {
 /*----------------------------------------------------------------------*/
 /*        INPUT CONTROL COMPONENT -Visual      */
 /*----------------------------------------------------------------------*/
+.input-control {
+  font-size: 14px;
+  background-color: white;
+  color: rgba(255, 255, 255, 0.7); }
+
 ::placeholder {
   color: #16E73C; }
 
@@ -512,9 +517,6 @@ button {
   /* Microsoft Edge */
   color: #16E73C; }
 
-.input-control {
-  font-size: 1rem; }
-
 .input-control:focus {
   border-color: #5cb3fd; }
 
@@ -522,7 +524,7 @@ button {
   border-color: #5cb85c; }
 
 .input-control-error {
-  border-color: #d9534f; }
+  border-color: #d9534f !important; }
 
 .input-control-feedback .success {
   color: #5cb85c; }
@@ -533,35 +535,14 @@ button {
 .inputgroup .tooltiptext {
   background-color: #43ed62; }
 
-.input-control {
-  border-radius: 0px;
-  line-height: 2;
-  font-size: 14px;
-  border: none;
-  border-bottom: 2px solid #16E73C;
-  background-color: #FFFFFF;
-  color: rgba(255, 255, 255, 0.7); }
-
-.input-control-success {
-  border-bottom-color: #5cb85c; }
-
-.input-control-error {
-  border-bottom-color: #d9534f; }
-
-.inputgroup label {
-  margin-bottom: 0rem; }
-
 /****************************************************/
-/** INPUT FORM CONTROL STYLES ENDS**/
-/****************************************************/
-/****************************************************/
-/**COLLAPSIBLE SEARCH STARTS **/
+/**COLLAPSIBLE SEARCH  **/
 /****************************************************/
 .search:focus {
   background-color: #fff; }
 
 /****************************************************/
-/**COLLAPSIBLE SEARCH ENDS **/
+/**File upload  **/
 /****************************************************/
 .upload-drop-zone {
   color: #ccc;
@@ -571,16 +552,9 @@ button {
   color: #222;
   border-color: #222; }
 
-/**SPECIAL SETTING REQUIRED FOR FIREFOX***/
 /*----------------------------------------------------------------------*/
 /*        INPUT CONTROL COMPONENT -Structure      */
 /*----------------------------------------------------------------------*/
-:-ms-input-placeholder {
-  /* Internet Explorer 10-11 */ }
-
-::-ms-input-placeholder {
-  /* Microsoft Edge */ }
-
 .inputgroup {
   position: relative; }
 
@@ -592,9 +566,10 @@ button {
   width: 100%;
   padding: .375rem 0;
   line-height: 1.5;
-  border: 2px solid #16E73C;
-  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-  border-radius: 2 px; }
+  border-radius: 4px;
+  border: none;
+  border-bottom: 2px solid #16E73C;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s; }
 
 .input-control:focus {
   outline: none; }
@@ -617,10 +592,7 @@ button {
   padding-left: 5px; }
 
 /****************************************************/
-/** INPUT FORM CONTROL STYLES ENDS**/
-/****************************************************/
-/****************************************************/
-/**COLLAPSIBLE SEARCH STARTS **/
+/**COLLAPSIBLE SEARCH  **/
 /****************************************************/
 .search {
   border: solid 1px #ccc;
@@ -633,7 +605,7 @@ button {
   width: 150px; }
 
 /****************************************************/
-/**COLLAPSIBLE SEARCH ENDS **/
+/**File Upload  **/
 /****************************************************/
 .upload-drop-zone {
   border-style: dashed;
@@ -2089,7 +2061,7 @@ header .billboard .content-button {
       display: block; }
 
 /*----------------------------------------------------------------------*/
-/*        LISTBOX COMPONENT         */
+/*        LISTBOX COMPONENT -Visual       */
 /*----------------------------------------------------------------------*/
 .listbox-height::-webkit-scrollbar-track {
   background-color: #F5f5f5; }
@@ -2115,13 +2087,13 @@ header .billboard .content-button {
   background-color: white; }
   .listbox .list .title {
     font-size: 18px;
-    color: rgba(0, 0, 0, 0.87); }
+    color: rgba(255, 255, 255, 0.7) !important; }
     .listbox .list .title a {
       font-size: 16px;
-      color: rgba(0, 0, 0, 0.87) !important; }
+      color: rgba(255, 255, 255, 0.7) !important !important; }
 
 /*----------------------------------------------------------------------*/
-/*        LISTBOX COMPONENT         */
+/*        LISTBOX COMPONENT - Structure     */
 /*----------------------------------------------------------------------*/
 .listbox {
   margin-bottom: 1rem;
@@ -2878,7 +2850,7 @@ header .billboard .content-button {
   color: #16E73C; }
 
 .accordion:after {
-  color: red;
+  color: #16E73C;
   font-weight: bold; }
 
 .panel {
@@ -2887,12 +2859,13 @@ header .billboard .content-button {
 
 /** Transparent Styling **/
 .accordion-transparent {
-  background: white;
-  border-color: white;
+  background: transparent;
+  color: #16E73C;
+  border-color: transparent;
   font-size: 15px; }
 
 .accordion-transparent:after {
-  color: red;
+  color: #16E73C;
   font-weight: bold; }
 
 .panel {
@@ -4834,6 +4807,42 @@ fieldset {
 /*----------------------------------------------------------------------*/
 /*        Window LAYOUT Media Q COMPONENT         */
 /*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*        Matrix Amber Structure        */
+/*----------------------------------------------------------------------*/
+.listbox .list .title {
+  float: left; }
+  .listbox .list .title a {
+    text-transform: lowercase; }
+
+.listbox .header {
+  border-bottom: 2px solid #16E73C; }
+.listbox .list .list-items {
+  border-bottom: 1px solid #1b1d22; }
+
+.defaultcolor {
+  color: #16E73C; }
+
+/*----------------------------------------------------------------------*/
+/*        Matrix Amber Visual        */
+/*----------------------------------------------------------------------*/
+.listbox .list {
+  background-color: black; }
+  .listbox .list .title {
+    font-size: 18px;
+    color: #6bac80; }
+    .listbox .list .title a {
+      font-size: 16px; }
+
+.card-container .card-header {
+  background-color: rgba(41, 105, 70, 0.4); }
+
+.listbox .listbox .list .title {
+  color: red !important; }
+
+.defaultcolor {
+  color: #16E73C; }
+
 /*----------------------------------------------------------------------*/
 /*        INPUT/LABEL/A/BUTTON/DROPDOWN COMPONENT         */
 /*----------------------------------------------------------------------*/
