@@ -4925,4 +4925,29 @@ button {
 button:focus:not(:active)::after {
   animation: ripple 1s ease-out; }
 
+.inputfieldbar {
+  position: relative;
+  display: block;
+  width: 100%; }
+
+.inputfieldbar:before, .inputfieldbar:after {
+  content: '';
+  height: 2px;
+  width: 0;
+  bottom: 1px;
+  position: absolute;
+  background: #5cb3fd;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all; }
+
+.inputfieldbar:before {
+  left: 50%; }
+
+.inputfieldbar:after {
+  right: 50%; }
+
+input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
+  width: 50%; }
+
 /*# sourceMappingURL=at-md-jungle-mint.css.map */

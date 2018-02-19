@@ -34,12 +34,12 @@ body {
 //   margin-bottom: 0rem;
 // }
 
-// .dropdown{
-//   border: 2px solid $themeColor;
-//   border-radius: $border-radius;
-//   box-shadow: 0 1px 3px 0 $themeColor;
-//   background-color: white;
-// }
+.dropdown{
+  border: 2px solid $themeColor;
+  border-radius: $borderRadius;
+  box-shadow: 0 1px 3px 0 $themeColor;
+  //background-color: white;
+}
 
 
 // .datetimepicker {

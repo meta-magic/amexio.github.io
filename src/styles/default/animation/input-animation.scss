@@ -1,0 +1,22 @@
+.inputfieldbar  { position:relative; display:block; width:100%; }
+.inputfieldbar:before, .inputfieldbar:after   {
+  content:'';
+  height:2px; 
+  width:0;
+  bottom:1px; 
+  position:absolute;
+  background:$borderColor-focus; 
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+.inputfieldbar:before {
+  left:50%;
+}
+.inputfieldbar:after {
+  right:50%; 
+}
+
+input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
+  width:50%;
+}
