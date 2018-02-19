@@ -1271,6 +1271,37 @@ input:checked + .toggle-slider:before {
   font-weight: bold; }
 
 /*----------------------------------------------------------------------*/
+/*        Image COMPONENT - Visual        */
+/*----------------------------------------------------------------------*/
+.profile-image a {
+  color: #D21F3C; }
+
+/*----------------------------------------------------------------------*/
+/*        Image COMPONENT - Structure        */
+/*----------------------------------------------------------------------*/
+.profile-image img {
+  width: 50px;
+  height: 50px;
+  vertical-align: middle; }
+
+.profile-image a {
+  text-transform: capitalize; }
+
+.profile-image-round img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  vertical-align: middle; }
+
+.image-responsive {
+  max-width: 100%;
+  width: 100%;
+  border-top: 1px solid #1b1d22;
+  border-bottom: 1px solid #1b1d22;
+  margin-top: 10px;
+  margin-bottom: 10px; }
+
+/*----------------------------------------------------------------------*/
 /*        Enterprise - Visual COMPONENT         */
 /*----------------------------------------------------------------------*/
 .content-title {
@@ -1746,37 +1777,6 @@ header .billboard .content-button {
   padding: 0px;
   height: 5px;
   border-top: 3px solid white; }
-
-/*----------------------------------------------------------------------*/
-/*        Image COMPONENT - Visual        */
-/*----------------------------------------------------------------------*/
-.profile-image a {
-  color: #D21F3C; }
-
-/*----------------------------------------------------------------------*/
-/*        Image COMPONENT - Structure        */
-/*----------------------------------------------------------------------*/
-.profile-image img {
-  width: 50px;
-  height: 50px;
-  vertical-align: middle; }
-
-.profile-image a {
-  text-transform: capitalize; }
-
-.profile-image-round img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  vertical-align: middle; }
-
-.image-responsive {
-  max-width: 100%;
-  width: 100%;
-  border-top: 1px solid #1b1d22;
-  border-bottom: 1px solid #1b1d22;
-  margin-top: 10px;
-  margin-bottom: 10px; }
 
 /*----------------------------------------------------------------------*/
 /*        DATAPOINTS COMPONENT - Visual         */
@@ -3521,1292 +3521,6 @@ fieldset {
   padding-left: 5px; }
 
 /*----------------------------------------------------------------------*/
-/*        BORDER LAYOUT Media Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
-/*        Card MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media screen and (max-width: 600px) {
-  .card-header {
-    display: flex;
-    padding: 10px 24px;
-    background: #D21F3C;
-    border-bottom: 1px solid #ced4da;
-    font-size: 18px;
-    color: white;
-    font-weight: 300;
-    text-transform: capitalize;
-    overflow: auto; } }
-/*----------------------------------------------------------------------*/
-/*        DATATABLE MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media screen and (max-width: 600px) {
-  .datatable {
-    border: 0; }
-
-  .datatable .datatable-header {
-    border: none;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px; }
-
-  .datatable .datatable-row {
-    border-bottom: 3px solid #ddd;
-    display: block;
-    margin-bottom: .625em;
-    height: auto !important; }
-
-  .datatable .datatable-header .datatable-col {
-    height: auto !important;
-    font-weight: 500; }
-
-  .datatable .datatable-col {
-    border-bottom: 1px solid #ced4da;
-    display: block;
-    font-size: .8em;
-    text-align: right;
-    width: auto !important; }
-    .datatable .datatable-col .float-right {
-      float: unset !important; }
-
-  .datatable .datatable-col:before {
-    content: attr(data-label);
-    float: left;
-    font-weight: bold; }
-
-  .col-hidden {
-    display: none !important; }
-
-  .checkbox-col {
-    text-align: unset !important; }
-
-  .datatable-icon-right {
-    float: right; }
-
-  .text-input-width {
-    width: 92%; } }
-/*----------------------------------------------------------------------*/
-/*        Datetime Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media screen and (max-width: 600px) {
-  .datetimepicker .days .date-today {
-    padding-top: 1%;
-    padding-left: 36%; } }
-/*----------------------------------------------------------------------*/
-/*        Dialogue Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media screen and (max-width: 600px) {
-  .dialogue-sm {
-    flex-direction: column;
-    position: fixed;
-    /* Stay in place */
-    z-index: 1;
-    /* Sit on top */
-    padding-top: 60%;
-    /* Location of the box */
-    width: 100%;
-    padding-left: 0px; } }
-/*----------------------------------------------------------------------*/
-/*        Enterprise Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media (max-width: 480px) {
-  .content-title {
-    width: 100%;
-    font-size: 180%;
-    font-weight: 700;
-    line-height: 130%;
-    color: #fff;
-    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3); }
-
-  /*
-
-  h3 {
-    font-size: 9pt;
-  }
-
-  span {
-    font-size: 6pt;
-  }
-
-  li b {
-    font-size: 6pt;
-  }
-
-  li {
-    font-size: 6pt;
-  }
-  */
-  .maincontent {
-    position: relative;
-    width: 100%;
-    /* for IE 6 */
-    height: 35vh;
-    width: 100%;
-    background-size: 100% 100%;
-    background-repeat: no-repeat; } }
-/*----------------------------------------------------------------------*/
-/*        Image Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
-/*        ITEM SELECTOR Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
-/*        Label Media COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media only screen and (max-width: 450px) {
-  /* phones */
-  .large {
-    font-size: 32px; }
-
-  .medium {
-    font-size: 18px; }
-
-  .small {
-    font-size: 16px; }
-
-  .large-bold {
-    font-size: 32px;
-    font-weight: bold; }
-
-  .medium-bold {
-    font-size: 18px;
-    font-weight: bold; }
-
-  .small-bold {
-    font-size: 16px;
-    font-weight: bold; } }
-/*----------------------------------------------------------------------*/
-/*        MENU COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
-/*        NAVBAR Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media only screen and (max-width: 1024px) {
-  .navbar-container {
-    padding: 0px; }
-    .navbar-container .navbar-logo-unit {
-      padding-left: 40px; } }
-/*----------------------------------------------------------------------*/
-/*        ROW-COLUMN MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
-/*        SIDENAV MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
-/*        Window Treenode Media Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
-/*        Window LAYOUT Media Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media screen and (max-width: 600px) {
-  .footer-right-align {
-    padding-right: 15px; } }
-/*----------------------------------------------------------------------*/
-/*        BORDER LAYOUT Media Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
-/*        Card MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media screen and (max-width: 600px) {
-  .card-header {
-    display: flex;
-    padding: 10px 24px;
-    background: #D21F3C;
-    border-bottom: 1px solid #ced4da;
-    font-size: 18px;
-    color: white;
-    font-weight: 300;
-    text-transform: capitalize;
-    overflow: auto; } }
-/*----------------------------------------------------------------------*/
-/*        DATATABLE MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media screen and (max-width: 600px) {
-  .datatable {
-    border: 0; }
-
-  .datatable .datatable-header {
-    border: none;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px; }
-
-  .datatable .datatable-row {
-    border-bottom: 3px solid #ddd;
-    display: block;
-    margin-bottom: .625em;
-    height: auto !important; }
-
-  .datatable .datatable-header .datatable-col {
-    height: auto !important;
-    font-weight: 500; }
-
-  .datatable .datatable-col {
-    border-bottom: 1px solid #ced4da;
-    display: block;
-    font-size: .8em;
-    text-align: right;
-    width: auto !important; }
-    .datatable .datatable-col .float-right {
-      float: unset !important; }
-
-  .datatable .datatable-col:before {
-    content: attr(data-label);
-    float: left;
-    font-weight: bold; }
-
-  .col-hidden {
-    display: none !important; }
-
-  .checkbox-col {
-    text-align: unset !important; }
-
-  .datatable-icon-right {
-    float: right; }
-
-  .text-input-width {
-    width: 92%; } }
-/*----------------------------------------------------------------------*/
-/*        Datetime Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media screen and (max-width: 600px) {
-  .datetimepicker .days .date-today {
-    padding-top: 1%;
-    padding-left: 36%; } }
-/*----------------------------------------------------------------------*/
-/*        Dialogue Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media screen and (max-width: 600px) {
-  .dialogue-sm {
-    flex-direction: column;
-    position: fixed;
-    /* Stay in place */
-    z-index: 1;
-    /* Sit on top */
-    padding-top: 60%;
-    /* Location of the box */
-    width: 100%;
-    padding-left: 0px; } }
-/*----------------------------------------------------------------------*/
-/*        Enterprise Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media (max-width: 480px) {
-  .content-title {
-    width: 100%;
-    font-size: 180%;
-    font-weight: 700;
-    line-height: 130%;
-    color: #fff;
-    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3); }
-
-  /*
-
-  h3 {
-    font-size: 9pt;
-  }
-
-  span {
-    font-size: 6pt;
-  }
-
-  li b {
-    font-size: 6pt;
-  }
-
-  li {
-    font-size: 6pt;
-  }
-  */
-  .maincontent {
-    position: relative;
-    width: 100%;
-    /* for IE 6 */
-    height: 35vh;
-    width: 100%;
-    background-size: 100% 100%;
-    background-repeat: no-repeat; } }
-/*----------------------------------------------------------------------*/
-/*        Image Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
-/*        ITEM SELECTOR Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
-/*        Label Media COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media only screen and (max-width: 450px) {
-  /* phones */
-  .large {
-    font-size: 32px; }
-
-  .medium {
-    font-size: 18px; }
-
-  .small {
-    font-size: 16px; }
-
-  .large-bold {
-    font-size: 32px;
-    font-weight: bold; }
-
-  .medium-bold {
-    font-size: 18px;
-    font-weight: bold; }
-
-  .small-bold {
-    font-size: 16px;
-    font-weight: bold; } }
-/*----------------------------------------------------------------------*/
-/*        MENU COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
-/*        NAVBAR Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media only screen and (max-width: 1024px) {
-  .navbar-container {
-    padding: 0px; }
-    .navbar-container .navbar-logo-unit {
-      padding-left: 40px; } }
-/*----------------------------------------------------------------------*/
-/*        ROW-COLUMN MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
-/*        SIDENAV MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
-/*        Window Treenode Media Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
-/*        Window LAYOUT Media Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media screen and (max-width: 600px) {
-  .footer-right-align {
-    padding-right: 15px; } }
-/*----------------------------------------------------------------------*/
-/*        BORDER LAYOUT Media Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media only screen and (max-width: 767px) {
-  .borderlayout-container-N-E-C-W-S {
-    grid-template-areas: 'north north north north north north' 'east east east east east east ' 'center center center center center center' 'west west west west west west' 'south south south south south south'; }
-
-  .borderlayout-container-N-E-C-S {
-    grid-template-areas: 'north north north north north north' 'east east east east east east ' 'center center center center center center' 'south south south south south south'; }
-
-  .borderlayout-container-N-C-W-S {
-    grid-template-areas: 'north north north north north north' 'center center center center center center' 'west west west west west west' 'south south south south south south'; }
-
-  .borderlayout-container-E-C-W-S {
-    display: grid;
-    grid-template-areas: 'east east east east east east ' 'center center center center center center' 'west west west west west west' 'south south south south south south'; }
-
-  .borderlayout-container-E-C-S {
-    display: grid;
-    grid-template-areas: 'east east east east east east ' 'center center center center center center' 'south south south south south south'; }
-
-  .borderlayout-container-C-W-S {
-    display: grid;
-    grid-template-areas: 'center center center center center center' 'west west west west west west' 'south south south south south south'; } }
-/*----------------------------------------------------------------------*/
-/*        Card MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media screen and (max-width: 768px) {
-  .card-header {
-    display: flex;
-    padding: 10px 24px;
-    background: #D21F3C;
-    border-bottom: 1px solid #ced4da;
-    font-size: 18px;
-    color: white;
-    font-weight: 300;
-    text-transform: capitalize;
-    overflow: auto; } }
-/*----------------------------------------------------------------------*/
-/*        DATATABLE MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
-/*        Datetime Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
-/*        Dialogue Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media screen and (max-width: 768px) {
-  .dialogue-sm {
-    flex-direction: column;
-    position: fixed;
-    /* Stay in place */
-    z-index: 1;
-    /* Sit on top */
-    padding-top: 60%;
-    /* Location of the box */
-    width: 80%;
-    padding-left: 10%; } }
-/*----------------------------------------------------------------------*/
-/*        Enterprise Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media screen and (min-width: 1400px) {
-  .maincontent > div {
-    height: 32vw;
-    padding-bottom: 20px; } }
-@media (max-width: 799px) {
-  .maincontent div {
-    font-size: 11px; }
-
-  .maincontent > div {
-    top: 10px;
-    width: 33vw;
-    min-width: 330px;
-    color: #999;
-    line-height: 1.3; }
-
-  .maincontent > div > table {
-    height: 50px; } }
-/*----------------------------------------------------------------------*/
-/*        Image Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media only screen and (max-width: 767px) {
-  .image-title {
-    display: -webkit-inline-box; } }
-/*----------------------------------------------------------------------*/
-/*        ITEM SELECTOR Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media only screen and (max-width: 767px) {
-  .flex-col-45pt, .flex-col-10pt {
-    max-width: 100%; }
-
-  .item-selector-action-panel .card-header {
-    display: none; }
-  .item-selector-action-panel .actionbar {
-    flex-direction: row; }
-    .item-selector-action-panel .actionbar .actionbarinner {
-      max-height: 30px;
-      flex-direction: row;
-      justify-content: space-around;
-      width: 100%; }
-      .item-selector-action-panel .actionbar .actionbarinner .movetop {
-        display: none; }
-      .item-selector-action-panel .actionbar .actionbarinner .moveup {
-        display: none; }
-      .item-selector-action-panel .actionbar .actionbarinner .moveleft {
-        display: block; }
-      .item-selector-action-panel .actionbar .actionbarinner .moveright {
-        display: block; }
-      .item-selector-action-panel .actionbar .actionbarinner .movedown {
-        display: none; }
-      .item-selector-action-panel .actionbar .actionbarinner .movebottom {
-        display: none; }
-      .item-selector-action-panel .actionbar .actionbarinner .action {
-        transform: rotate(90deg); } }
-@media only screen and (min-width: 768px) {
-  .large {
-    font-size: 36px; }
-
-  .medium {
-    font-size: 20px; }
-
-  .small {
-    font-size: 18px; }
-
-  .large-bold {
-    font-size: 36px;
-    font-weight: bold; }
-
-  .medium-bold {
-    font-size: 20px;
-    font-weight: bold; }
-
-  .small-bold {
-    font-size: 18px;
-    font-weight: bold; } }
-/*----------------------------------------------------------------------*/
-/*        Label Media COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
-/*        MENU COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media only screen and (max-width: 959px) {
-  .menu-content .menu-content-cols .col-menu-nodes {
-    width: 100%; }
-
-  .menu-content {
-    width: 100%; }
-
-  .menubar .menuheader .menulink {
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    border-bottom: 1px solid #ced4da; }
-
-  .menu-content .menu-content-cols {
-    width: 100%;
-    padding: 0px; }
-
-  .menu-content .menu-content-cols .col-menu-nodes {
-    width: 100%; }
-
-  .menubar .menuheader .menulink:hover {
-    display: block; }
-    .menubar .menuheader .menulink:hover .menu-content {
-      display: none; }
-    .menubar .menuheader .menulink:hover a {
-      color: blue; } }
-/*----------------------------------------------------------------------*/
-/*        NAVBAR Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media only screen and (max-width: 1024px) {
-  .navbar-container {
-    padding: 0px; }
-    .navbar-container .navbar-logo-unit {
-      padding-left: 40px; } }
-@media only screen and (max-width: 767px) {
-  .navbar-container {
-    flex-direction: column;
-    padding: 0px; }
-    .navbar-container .nav-bar {
-      background-color: #b22f26; }
-      .navbar-container .nav-bar .nav-item amexio-nav-item {
-        border-bottom: 1px solid white;
-        cursor: pointer; }
-        .navbar-container .nav-bar .nav-item amexio-nav-item * {
-          vertical-align: middle; }
-    .navbar-container .navbar-logo-unit {
-      padding-left: 40px;
-      display: flex;
-      justify-content: space-between; }
-      .navbar-container .navbar-logo-unit .navbar-mobile-bars {
-        display: block;
-        top: 10px;
-        margin-right: 25px;
-        position: relative; }
-
-  .nav-bar {
-    display: block;
-    margin: 0;
-    padding: 0px; }
-    .nav-bar .nav-item {
-      display: flex;
-      flex-direction: column;
-      padding: 0px; }
-      .nav-bar .nav-item > * {
-        padding: 10px; } }
-/*----------------------------------------------------------------------*/
-/*        ROW-COLUMN MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media only screen and (max-width: 767px) {
-  .flex-row {
-    flex-direction: column; }
-
-  .flex-col-1, .flex-col-2, .flex-col-3, .flex-col-4, .flex-col-5, .flex-col-6, .flex-col-7, .flex-col-8, .flex-col-9, .flex-col-10, .flex-col-11, .flex-col-12 {
-    max-width: 100%;
-    flex: 0 0 100%; } }
-@media only screen and (max-width: 1024px) {
-  .flex-col-2pt5, .flex-col-9pt5 {
-    flex: 0 0 100%;
-    max-width: 100%; } }
-/*----------------------------------------------------------------------*/
-/*        SIDENAV MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
-/*        Window Treenode Media Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
-/*        Window LAYOUT Media Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
-/*        BORDER LAYOUT Media Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media only screen and (max-width: 767px) {
-  .borderlayout-container-N-E-C-W-S {
-    grid-template-areas: 'north north north north north north' 'east east east east east east ' 'center center center center center center' 'west west west west west west' 'south south south south south south'; }
-
-  .borderlayout-container-N-E-C-S {
-    grid-template-areas: 'north north north north north north' 'east east east east east east ' 'center center center center center center' 'south south south south south south'; }
-
-  .borderlayout-container-N-C-W-S {
-    grid-template-areas: 'north north north north north north' 'center center center center center center' 'west west west west west west' 'south south south south south south'; }
-
-  .borderlayout-container-E-C-W-S {
-    display: grid;
-    grid-template-areas: 'east east east east east east ' 'center center center center center center' 'west west west west west west' 'south south south south south south'; }
-
-  .borderlayout-container-E-C-S {
-    display: grid;
-    grid-template-areas: 'east east east east east east ' 'center center center center center center' 'south south south south south south'; }
-
-  .borderlayout-container-C-W-S {
-    display: grid;
-    grid-template-areas: 'center center center center center center' 'west west west west west west' 'south south south south south south'; } }
-/*----------------------------------------------------------------------*/
-/*        Card MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media screen and (max-width: 768px) {
-  .card-header {
-    display: flex;
-    padding: 10px 24px;
-    background: #D21F3C;
-    border-bottom: 1px solid #ced4da;
-    font-size: 18px;
-    color: white;
-    font-weight: 300;
-    text-transform: capitalize;
-    overflow: auto; } }
-/*----------------------------------------------------------------------*/
-/*        DATATABLE MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
-/*        Datetime Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
-/*        Dialogue Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media screen and (max-width: 768px) {
-  .dialogue-sm {
-    flex-direction: column;
-    position: fixed;
-    /* Stay in place */
-    z-index: 1;
-    /* Sit on top */
-    padding-top: 60%;
-    /* Location of the box */
-    width: 80%;
-    padding-left: 10%; } }
-/*----------------------------------------------------------------------*/
-/*        Enterprise Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media screen and (min-width: 1400px) {
-  .maincontent > div {
-    height: 32vw;
-    padding-bottom: 20px; } }
-@media (max-width: 799px) {
-  .maincontent div {
-    font-size: 11px; }
-
-  .maincontent > div {
-    top: 10px;
-    width: 33vw;
-    min-width: 330px;
-    color: #999;
-    line-height: 1.3; }
-
-  .maincontent > div > table {
-    height: 50px; } }
-/*----------------------------------------------------------------------*/
-/*        Image Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media only screen and (max-width: 767px) {
-  .image-title {
-    display: -webkit-inline-box; } }
-/*----------------------------------------------------------------------*/
-/*        ITEM SELECTOR Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media only screen and (max-width: 767px) {
-  .flex-col-45pt, .flex-col-10pt {
-    max-width: 100%; }
-
-  .item-selector-action-panel .card-header {
-    display: none; }
-  .item-selector-action-panel .actionbar {
-    flex-direction: row; }
-    .item-selector-action-panel .actionbar .actionbarinner {
-      max-height: 30px;
-      flex-direction: row;
-      justify-content: space-around;
-      width: 100%; }
-      .item-selector-action-panel .actionbar .actionbarinner .movetop {
-        display: none; }
-      .item-selector-action-panel .actionbar .actionbarinner .moveup {
-        display: none; }
-      .item-selector-action-panel .actionbar .actionbarinner .moveleft {
-        display: block; }
-      .item-selector-action-panel .actionbar .actionbarinner .moveright {
-        display: block; }
-      .item-selector-action-panel .actionbar .actionbarinner .movedown {
-        display: none; }
-      .item-selector-action-panel .actionbar .actionbarinner .movebottom {
-        display: none; }
-      .item-selector-action-panel .actionbar .actionbarinner .action {
-        transform: rotate(90deg); } }
-@media only screen and (min-width: 768px) {
-  .large {
-    font-size: 36px; }
-
-  .medium {
-    font-size: 20px; }
-
-  .small {
-    font-size: 18px; }
-
-  .large-bold {
-    font-size: 36px;
-    font-weight: bold; }
-
-  .medium-bold {
-    font-size: 20px;
-    font-weight: bold; }
-
-  .small-bold {
-    font-size: 18px;
-    font-weight: bold; } }
-/*----------------------------------------------------------------------*/
-/*        Label Media COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
-/*        MENU COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media only screen and (max-width: 959px) {
-  .menu-content .menu-content-cols .col-menu-nodes {
-    width: 100%; }
-
-  .menu-content {
-    width: 100%; }
-
-  .menubar .menuheader .menulink {
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    border-bottom: 1px solid #ced4da; }
-
-  .menu-content .menu-content-cols {
-    width: 100%;
-    padding: 0px; }
-
-  .menu-content .menu-content-cols .col-menu-nodes {
-    width: 100%; }
-
-  .menubar .menuheader .menulink:hover {
-    display: block; }
-    .menubar .menuheader .menulink:hover .menu-content {
-      display: none; }
-    .menubar .menuheader .menulink:hover a {
-      color: blue; } }
-/*----------------------------------------------------------------------*/
-/*        NAVBAR Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media only screen and (max-width: 1024px) {
-  .navbar-container {
-    padding: 0px; }
-    .navbar-container .navbar-logo-unit {
-      padding-left: 40px; } }
-@media only screen and (max-width: 767px) {
-  .navbar-container {
-    flex-direction: column;
-    padding: 0px; }
-    .navbar-container .nav-bar {
-      background-color: #b22f26; }
-      .navbar-container .nav-bar .nav-item amexio-nav-item {
-        border-bottom: 1px solid white;
-        cursor: pointer; }
-        .navbar-container .nav-bar .nav-item amexio-nav-item * {
-          vertical-align: middle; }
-    .navbar-container .navbar-logo-unit {
-      padding-left: 40px;
-      display: flex;
-      justify-content: space-between; }
-      .navbar-container .navbar-logo-unit .navbar-mobile-bars {
-        display: block;
-        top: 10px;
-        margin-right: 25px;
-        position: relative; }
-
-  .nav-bar {
-    display: block;
-    margin: 0;
-    padding: 0px; }
-    .nav-bar .nav-item {
-      display: flex;
-      flex-direction: column;
-      padding: 0px; }
-      .nav-bar .nav-item > * {
-        padding: 10px; } }
-/*----------------------------------------------------------------------*/
-/*        ROW-COLUMN MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media only screen and (max-width: 767px) {
-  .flex-row {
-    flex-direction: column; }
-
-  .flex-col-1, .flex-col-2, .flex-col-3, .flex-col-4, .flex-col-5, .flex-col-6, .flex-col-7, .flex-col-8, .flex-col-9, .flex-col-10, .flex-col-11, .flex-col-12 {
-    max-width: 100%;
-    flex: 0 0 100%; } }
-@media only screen and (max-width: 1024px) {
-  .flex-col-2pt5, .flex-col-9pt5 {
-    flex: 0 0 100%;
-    max-width: 100%; } }
-/*----------------------------------------------------------------------*/
-/*        SIDENAV MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
-/*        Window Treenode Media Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
-/*        Window LAYOUT Media Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
-/*        BORDER LAYOUT Media Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media only screen and (max-width: 767px) {
-  .borderlayout-container-N-E-C-W-S {
-    grid-template-areas: 'north north north north north north' 'east east east east east east ' 'center center center center center center' 'west west west west west west' 'south south south south south south'; }
-
-  .borderlayout-container-N-E-C-S {
-    grid-template-areas: 'north north north north north north' 'east east east east east east ' 'center center center center center center' 'south south south south south south'; }
-
-  .borderlayout-container-N-C-W-S {
-    grid-template-areas: 'north north north north north north' 'center center center center center center' 'west west west west west west' 'south south south south south south'; }
-
-  .borderlayout-container-E-C-W-S {
-    display: grid;
-    grid-template-areas: 'east east east east east east ' 'center center center center center center' 'west west west west west west' 'south south south south south south'; }
-
-  .borderlayout-container-E-C-S {
-    display: grid;
-    grid-template-areas: 'east east east east east east ' 'center center center center center center' 'south south south south south south'; }
-
-  .borderlayout-container-C-W-S {
-    display: grid;
-    grid-template-areas: 'center center center center center center' 'west west west west west west' 'south south south south south south'; } }
-/*----------------------------------------------------------------------*/
-/*        Card MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media screen and (max-width: 768px) {
-  .card-header {
-    display: flex;
-    padding: 10px 24px;
-    background: #D21F3C;
-    border-bottom: 1px solid #ced4da;
-    font-size: 18px;
-    color: white;
-    font-weight: 300;
-    text-transform: capitalize;
-    overflow: auto; } }
-/*----------------------------------------------------------------------*/
-/*        DATATABLE MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
-/*        Datetime Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
-/*        Dialogue Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media screen and (max-width: 768px) {
-  .dialogue-sm {
-    flex-direction: column;
-    position: fixed;
-    /* Stay in place */
-    z-index: 1;
-    /* Sit on top */
-    padding-top: 60%;
-    /* Location of the box */
-    width: 80%;
-    padding-left: 10%; } }
-/*----------------------------------------------------------------------*/
-/*        Enterprise Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media screen and (min-width: 1400px) {
-  .maincontent > div {
-    height: 32vw;
-    padding-bottom: 20px; } }
-@media (max-width: 799px) {
-  .maincontent div {
-    font-size: 11px; }
-
-  .maincontent > div {
-    top: 10px;
-    width: 33vw;
-    min-width: 330px;
-    color: #999;
-    line-height: 1.3; }
-
-  .maincontent > div > table {
-    height: 50px; } }
-/*----------------------------------------------------------------------*/
-/*        Image Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media only screen and (max-width: 767px) {
-  .image-title {
-    display: -webkit-inline-box; } }
-/*----------------------------------------------------------------------*/
-/*        ITEM SELECTOR Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media only screen and (max-width: 767px) {
-  .flex-col-45pt, .flex-col-10pt {
-    max-width: 100%; }
-
-  .item-selector-action-panel .card-header {
-    display: none; }
-  .item-selector-action-panel .actionbar {
-    flex-direction: row; }
-    .item-selector-action-panel .actionbar .actionbarinner {
-      max-height: 30px;
-      flex-direction: row;
-      justify-content: space-around;
-      width: 100%; }
-      .item-selector-action-panel .actionbar .actionbarinner .movetop {
-        display: none; }
-      .item-selector-action-panel .actionbar .actionbarinner .moveup {
-        display: none; }
-      .item-selector-action-panel .actionbar .actionbarinner .moveleft {
-        display: block; }
-      .item-selector-action-panel .actionbar .actionbarinner .moveright {
-        display: block; }
-      .item-selector-action-panel .actionbar .actionbarinner .movedown {
-        display: none; }
-      .item-selector-action-panel .actionbar .actionbarinner .movebottom {
-        display: none; }
-      .item-selector-action-panel .actionbar .actionbarinner .action {
-        transform: rotate(90deg); } }
-@media only screen and (min-width: 768px) {
-  .large {
-    font-size: 36px; }
-
-  .medium {
-    font-size: 20px; }
-
-  .small {
-    font-size: 18px; }
-
-  .large-bold {
-    font-size: 36px;
-    font-weight: bold; }
-
-  .medium-bold {
-    font-size: 20px;
-    font-weight: bold; }
-
-  .small-bold {
-    font-size: 18px;
-    font-weight: bold; } }
-/*----------------------------------------------------------------------*/
-/*        Label Media COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
-/*        MENU COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media only screen and (max-width: 959px) {
-  .menu-content .menu-content-cols .col-menu-nodes {
-    width: 100%; }
-
-  .menu-content {
-    width: 100%; }
-
-  .menubar .menuheader .menulink {
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    border-bottom: 1px solid #ced4da; }
-
-  .menu-content .menu-content-cols {
-    width: 100%;
-    padding: 0px; }
-
-  .menu-content .menu-content-cols .col-menu-nodes {
-    width: 100%; }
-
-  .menubar .menuheader .menulink:hover {
-    display: block; }
-    .menubar .menuheader .menulink:hover .menu-content {
-      display: none; }
-    .menubar .menuheader .menulink:hover a {
-      color: blue; } }
-/*----------------------------------------------------------------------*/
-/*        NAVBAR Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media only screen and (max-width: 1024px) {
-  .navbar-container {
-    padding: 0px; }
-    .navbar-container .navbar-logo-unit {
-      padding-left: 40px; } }
-@media only screen and (max-width: 767px) {
-  .navbar-container {
-    flex-direction: column;
-    padding: 0px; }
-    .navbar-container .nav-bar {
-      background-color: #b22f26; }
-      .navbar-container .nav-bar .nav-item amexio-nav-item {
-        border-bottom: 1px solid white;
-        cursor: pointer; }
-        .navbar-container .nav-bar .nav-item amexio-nav-item * {
-          vertical-align: middle; }
-    .navbar-container .navbar-logo-unit {
-      padding-left: 40px;
-      display: flex;
-      justify-content: space-between; }
-      .navbar-container .navbar-logo-unit .navbar-mobile-bars {
-        display: block;
-        top: 10px;
-        margin-right: 25px;
-        position: relative; }
-
-  .nav-bar {
-    display: block;
-    margin: 0;
-    padding: 0px; }
-    .nav-bar .nav-item {
-      display: flex;
-      flex-direction: column;
-      padding: 0px; }
-      .nav-bar .nav-item > * {
-        padding: 10px; } }
-/*----------------------------------------------------------------------*/
-/*        ROW-COLUMN MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media only screen and (max-width: 767px) {
-  .flex-row {
-    flex-direction: column; }
-
-  .flex-col-1, .flex-col-2, .flex-col-3, .flex-col-4, .flex-col-5, .flex-col-6, .flex-col-7, .flex-col-8, .flex-col-9, .flex-col-10, .flex-col-11, .flex-col-12 {
-    max-width: 100%;
-    flex: 0 0 100%; } }
-@media only screen and (max-width: 1024px) {
-  .flex-col-2pt5, .flex-col-9pt5 {
-    flex: 0 0 100%;
-    max-width: 100%; } }
-/*----------------------------------------------------------------------*/
-/*        SIDENAV MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
-/*        Window Treenode Media Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
-/*        Window LAYOUT Media Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
-/*        BORDER LAYOUT Media Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media only screen and (max-width: 767px) {
-  .borderlayout-container-N-E-C-W-S {
-    grid-template-areas: 'north north north north north north' 'east east east east east east ' 'center center center center center center' 'west west west west west west' 'south south south south south south'; }
-
-  .borderlayout-container-N-E-C-S {
-    grid-template-areas: 'north north north north north north' 'east east east east east east ' 'center center center center center center' 'south south south south south south'; }
-
-  .borderlayout-container-N-C-W-S {
-    grid-template-areas: 'north north north north north north' 'center center center center center center' 'west west west west west west' 'south south south south south south'; }
-
-  .borderlayout-container-E-C-W-S {
-    display: grid;
-    grid-template-areas: 'east east east east east east ' 'center center center center center center' 'west west west west west west' 'south south south south south south'; }
-
-  .borderlayout-container-E-C-S {
-    display: grid;
-    grid-template-areas: 'east east east east east east ' 'center center center center center center' 'south south south south south south'; }
-
-  .borderlayout-container-C-W-S {
-    display: grid;
-    grid-template-areas: 'center center center center center center' 'west west west west west west' 'south south south south south south'; } }
-/*----------------------------------------------------------------------*/
-/*        Card MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media screen and (max-width: 768px) {
-  .card-header {
-    display: flex;
-    padding: 10px 24px;
-    background: #D21F3C;
-    border-bottom: 1px solid #ced4da;
-    font-size: 18px;
-    color: white;
-    font-weight: 300;
-    text-transform: capitalize;
-    overflow: auto; } }
-/*----------------------------------------------------------------------*/
-/*        DATATABLE MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
-/*        Datetime Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
-/*        Dialogue Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media screen and (max-width: 768px) {
-  .dialogue-sm {
-    flex-direction: column;
-    position: fixed;
-    /* Stay in place */
-    z-index: 1;
-    /* Sit on top */
-    padding-top: 60%;
-    /* Location of the box */
-    width: 80%;
-    padding-left: 10%; } }
-/*----------------------------------------------------------------------*/
-/*        Enterprise Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media screen and (min-width: 1400px) {
-  .maincontent > div {
-    height: 32vw;
-    padding-bottom: 20px; } }
-@media (max-width: 799px) {
-  .maincontent div {
-    font-size: 11px; }
-
-  .maincontent > div {
-    top: 10px;
-    width: 33vw;
-    min-width: 330px;
-    color: #999;
-    line-height: 1.3; }
-
-  .maincontent > div > table {
-    height: 50px; } }
-/*----------------------------------------------------------------------*/
-/*        Image Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media only screen and (max-width: 767px) {
-  .image-title {
-    display: -webkit-inline-box; } }
-/*----------------------------------------------------------------------*/
-/*        ITEM SELECTOR Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media only screen and (max-width: 767px) {
-  .flex-col-45pt, .flex-col-10pt {
-    max-width: 100%; }
-
-  .item-selector-action-panel .card-header {
-    display: none; }
-  .item-selector-action-panel .actionbar {
-    flex-direction: row; }
-    .item-selector-action-panel .actionbar .actionbarinner {
-      max-height: 30px;
-      flex-direction: row;
-      justify-content: space-around;
-      width: 100%; }
-      .item-selector-action-panel .actionbar .actionbarinner .movetop {
-        display: none; }
-      .item-selector-action-panel .actionbar .actionbarinner .moveup {
-        display: none; }
-      .item-selector-action-panel .actionbar .actionbarinner .moveleft {
-        display: block; }
-      .item-selector-action-panel .actionbar .actionbarinner .moveright {
-        display: block; }
-      .item-selector-action-panel .actionbar .actionbarinner .movedown {
-        display: none; }
-      .item-selector-action-panel .actionbar .actionbarinner .movebottom {
-        display: none; }
-      .item-selector-action-panel .actionbar .actionbarinner .action {
-        transform: rotate(90deg); } }
-@media only screen and (min-width: 768px) {
-  .large {
-    font-size: 36px; }
-
-  .medium {
-    font-size: 20px; }
-
-  .small {
-    font-size: 18px; }
-
-  .large-bold {
-    font-size: 36px;
-    font-weight: bold; }
-
-  .medium-bold {
-    font-size: 20px;
-    font-weight: bold; }
-
-  .small-bold {
-    font-size: 18px;
-    font-weight: bold; } }
-/*----------------------------------------------------------------------*/
-/*        Label Media COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
-/*        MENU COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media only screen and (max-width: 959px) {
-  .menu-content .menu-content-cols .col-menu-nodes {
-    width: 100%; }
-
-  .menu-content {
-    width: 100%; }
-
-  .menubar .menuheader .menulink {
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    border-bottom: 1px solid #ced4da; }
-
-  .menu-content .menu-content-cols {
-    width: 100%;
-    padding: 0px; }
-
-  .menu-content .menu-content-cols .col-menu-nodes {
-    width: 100%; }
-
-  .menubar .menuheader .menulink:hover {
-    display: block; }
-    .menubar .menuheader .menulink:hover .menu-content {
-      display: none; }
-    .menubar .menuheader .menulink:hover a {
-      color: blue; } }
-/*----------------------------------------------------------------------*/
-/*        NAVBAR Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media only screen and (max-width: 1024px) {
-  .navbar-container {
-    padding: 0px; }
-    .navbar-container .navbar-logo-unit {
-      padding-left: 40px; } }
-@media only screen and (max-width: 767px) {
-  .navbar-container {
-    flex-direction: column;
-    padding: 0px; }
-    .navbar-container .nav-bar {
-      background-color: #b22f26; }
-      .navbar-container .nav-bar .nav-item amexio-nav-item {
-        border-bottom: 1px solid white;
-        cursor: pointer; }
-        .navbar-container .nav-bar .nav-item amexio-nav-item * {
-          vertical-align: middle; }
-    .navbar-container .navbar-logo-unit {
-      padding-left: 40px;
-      display: flex;
-      justify-content: space-between; }
-      .navbar-container .navbar-logo-unit .navbar-mobile-bars {
-        display: block;
-        top: 10px;
-        margin-right: 25px;
-        position: relative; }
-
-  .nav-bar {
-    display: block;
-    margin: 0;
-    padding: 0px; }
-    .nav-bar .nav-item {
-      display: flex;
-      flex-direction: column;
-      padding: 0px; }
-      .nav-bar .nav-item > * {
-        padding: 10px; } }
-/*----------------------------------------------------------------------*/
-/*        ROW-COLUMN MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
-@media only screen and (max-width: 767px) {
-  .flex-row {
-    flex-direction: column; }
-
-  .flex-col-1, .flex-col-2, .flex-col-3, .flex-col-4, .flex-col-5, .flex-col-6, .flex-col-7, .flex-col-8, .flex-col-9, .flex-col-10, .flex-col-11, .flex-col-12 {
-    max-width: 100%;
-    flex: 0 0 100%; } }
-@media only screen and (max-width: 1024px) {
-  .flex-col-2pt5, .flex-col-9pt5 {
-    flex: 0 0 100%;
-    max-width: 100%; } }
-/*----------------------------------------------------------------------*/
-/*        SIDENAV MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
-/*        Window Treenode Media Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
-/*        Window LAYOUT Media Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
 /*** CHECKBOX -Animation
 /*----------------------------------------------------------------------*/
 @keyframes checkboxripple {
@@ -4949,5 +3663,1292 @@ button:focus:not(:active)::after {
 
 input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
   width: 50%; }
+
+/*----------------------------------------------------------------------*/
+/*        BORDER LAYOUT Media Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*        Card MediaQ COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media screen and (max-width: 600px) {
+  .card-header {
+    display: flex;
+    padding: 10px 24px;
+    background: #D21F3C;
+    border-bottom: 1px solid #ced4da;
+    font-size: 18px;
+    color: white;
+    font-weight: 300;
+    text-transform: capitalize;
+    overflow: auto; } }
+/*----------------------------------------------------------------------*/
+/*        DATATABLE MediaQ COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media screen and (max-width: 600px) {
+  .datatable {
+    border: 0; }
+
+  .datatable .datatable-header {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px; }
+
+  .datatable .datatable-row {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+    height: auto !important; }
+
+  .datatable .datatable-header .datatable-col {
+    height: auto !important;
+    font-weight: 500; }
+
+  .datatable .datatable-col {
+    border-bottom: 1px solid #ced4da;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+    width: auto !important; }
+    .datatable .datatable-col .float-right {
+      float: unset !important; }
+
+  .datatable .datatable-col:before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold; }
+
+  .col-hidden {
+    display: none !important; }
+
+  .checkbox-col {
+    text-align: unset !important; }
+
+  .datatable-icon-right {
+    float: right; }
+
+  .text-input-width {
+    width: 92%; } }
+/*----------------------------------------------------------------------*/
+/*        Datetime Media-Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media screen and (max-width: 600px) {
+  .datetimepicker .days .date-today {
+    padding-top: 1%;
+    padding-left: 36%; } }
+/*----------------------------------------------------------------------*/
+/*        Dialogue Media-Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media screen and (max-width: 600px) {
+  .dialogue-sm {
+    flex-direction: column;
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 60%;
+    /* Location of the box */
+    width: 100%;
+    padding-left: 0px; } }
+/*----------------------------------------------------------------------*/
+/*        Enterprise Media-Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media (max-width: 480px) {
+  .content-title {
+    width: 100%;
+    font-size: 180%;
+    font-weight: 700;
+    line-height: 130%;
+    color: #fff;
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3); }
+
+  /*
+
+  h3 {
+    font-size: 9pt;
+  }
+
+  span {
+    font-size: 6pt;
+  }
+
+  li b {
+    font-size: 6pt;
+  }
+
+  li {
+    font-size: 6pt;
+  }
+  */
+  .maincontent {
+    position: relative;
+    width: 100%;
+    /* for IE 6 */
+    height: 35vh;
+    width: 100%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat; } }
+/*----------------------------------------------------------------------*/
+/*        Image Media-Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*        ITEM SELECTOR Media-Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*        Label Media COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media only screen and (max-width: 450px) {
+  /* phones */
+  .large {
+    font-size: 32px; }
+
+  .medium {
+    font-size: 18px; }
+
+  .small {
+    font-size: 16px; }
+
+  .large-bold {
+    font-size: 32px;
+    font-weight: bold; }
+
+  .medium-bold {
+    font-size: 18px;
+    font-weight: bold; }
+
+  .small-bold {
+    font-size: 16px;
+    font-weight: bold; } }
+/*----------------------------------------------------------------------*/
+/*        MENU COMPONENT         */
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*        NAVBAR Media-Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media only screen and (max-width: 1024px) {
+  .navbar-container {
+    padding: 0px; }
+    .navbar-container .navbar-logo-unit {
+      padding-left: 40px; } }
+/*----------------------------------------------------------------------*/
+/*        ROW-COLUMN MediaQ COMPONENT         */
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*        SIDENAV MediaQ COMPONENT         */
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*        Window Treenode Media Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*        Window LAYOUT Media Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media screen and (max-width: 600px) {
+  .footer-right-align {
+    padding-right: 15px; } }
+/*----------------------------------------------------------------------*/
+/*        BORDER LAYOUT Media Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*        Card MediaQ COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media screen and (max-width: 600px) {
+  .card-header {
+    display: flex;
+    padding: 10px 24px;
+    background: #D21F3C;
+    border-bottom: 1px solid #ced4da;
+    font-size: 18px;
+    color: white;
+    font-weight: 300;
+    text-transform: capitalize;
+    overflow: auto; } }
+/*----------------------------------------------------------------------*/
+/*        DATATABLE MediaQ COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media screen and (max-width: 600px) {
+  .datatable {
+    border: 0; }
+
+  .datatable .datatable-header {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px; }
+
+  .datatable .datatable-row {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+    height: auto !important; }
+
+  .datatable .datatable-header .datatable-col {
+    height: auto !important;
+    font-weight: 500; }
+
+  .datatable .datatable-col {
+    border-bottom: 1px solid #ced4da;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+    width: auto !important; }
+    .datatable .datatable-col .float-right {
+      float: unset !important; }
+
+  .datatable .datatable-col:before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold; }
+
+  .col-hidden {
+    display: none !important; }
+
+  .checkbox-col {
+    text-align: unset !important; }
+
+  .datatable-icon-right {
+    float: right; }
+
+  .text-input-width {
+    width: 92%; } }
+/*----------------------------------------------------------------------*/
+/*        Datetime Media-Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media screen and (max-width: 600px) {
+  .datetimepicker .days .date-today {
+    padding-top: 1%;
+    padding-left: 36%; } }
+/*----------------------------------------------------------------------*/
+/*        Dialogue Media-Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media screen and (max-width: 600px) {
+  .dialogue-sm {
+    flex-direction: column;
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 60%;
+    /* Location of the box */
+    width: 100%;
+    padding-left: 0px; } }
+/*----------------------------------------------------------------------*/
+/*        Enterprise Media-Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media (max-width: 480px) {
+  .content-title {
+    width: 100%;
+    font-size: 180%;
+    font-weight: 700;
+    line-height: 130%;
+    color: #fff;
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3); }
+
+  /*
+
+  h3 {
+    font-size: 9pt;
+  }
+
+  span {
+    font-size: 6pt;
+  }
+
+  li b {
+    font-size: 6pt;
+  }
+
+  li {
+    font-size: 6pt;
+  }
+  */
+  .maincontent {
+    position: relative;
+    width: 100%;
+    /* for IE 6 */
+    height: 35vh;
+    width: 100%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat; } }
+/*----------------------------------------------------------------------*/
+/*        Image Media-Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*        ITEM SELECTOR Media-Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*        Label Media COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media only screen and (max-width: 450px) {
+  /* phones */
+  .large {
+    font-size: 32px; }
+
+  .medium {
+    font-size: 18px; }
+
+  .small {
+    font-size: 16px; }
+
+  .large-bold {
+    font-size: 32px;
+    font-weight: bold; }
+
+  .medium-bold {
+    font-size: 18px;
+    font-weight: bold; }
+
+  .small-bold {
+    font-size: 16px;
+    font-weight: bold; } }
+/*----------------------------------------------------------------------*/
+/*        MENU COMPONENT         */
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*        NAVBAR Media-Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media only screen and (max-width: 1024px) {
+  .navbar-container {
+    padding: 0px; }
+    .navbar-container .navbar-logo-unit {
+      padding-left: 40px; } }
+/*----------------------------------------------------------------------*/
+/*        ROW-COLUMN MediaQ COMPONENT         */
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*        SIDENAV MediaQ COMPONENT         */
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*        Window Treenode Media Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*        Window LAYOUT Media Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media screen and (max-width: 600px) {
+  .footer-right-align {
+    padding-right: 15px; } }
+/*----------------------------------------------------------------------*/
+/*        BORDER LAYOUT Media Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media only screen and (max-width: 767px) {
+  .borderlayout-container-N-E-C-W-S {
+    grid-template-areas: 'north north north north north north' 'east east east east east east ' 'center center center center center center' 'west west west west west west' 'south south south south south south'; }
+
+  .borderlayout-container-N-E-C-S {
+    grid-template-areas: 'north north north north north north' 'east east east east east east ' 'center center center center center center' 'south south south south south south'; }
+
+  .borderlayout-container-N-C-W-S {
+    grid-template-areas: 'north north north north north north' 'center center center center center center' 'west west west west west west' 'south south south south south south'; }
+
+  .borderlayout-container-E-C-W-S {
+    display: grid;
+    grid-template-areas: 'east east east east east east ' 'center center center center center center' 'west west west west west west' 'south south south south south south'; }
+
+  .borderlayout-container-E-C-S {
+    display: grid;
+    grid-template-areas: 'east east east east east east ' 'center center center center center center' 'south south south south south south'; }
+
+  .borderlayout-container-C-W-S {
+    display: grid;
+    grid-template-areas: 'center center center center center center' 'west west west west west west' 'south south south south south south'; } }
+/*----------------------------------------------------------------------*/
+/*        Card MediaQ COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media screen and (max-width: 768px) {
+  .card-header {
+    display: flex;
+    padding: 10px 24px;
+    background: #D21F3C;
+    border-bottom: 1px solid #ced4da;
+    font-size: 18px;
+    color: white;
+    font-weight: 300;
+    text-transform: capitalize;
+    overflow: auto; } }
+/*----------------------------------------------------------------------*/
+/*        DATATABLE MediaQ COMPONENT         */
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*        Datetime Media-Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*        Dialogue Media-Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media screen and (max-width: 768px) {
+  .dialogue-sm {
+    flex-direction: column;
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 60%;
+    /* Location of the box */
+    width: 80%;
+    padding-left: 10%; } }
+/*----------------------------------------------------------------------*/
+/*        Enterprise Media-Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media screen and (min-width: 1400px) {
+  .maincontent > div {
+    height: 32vw;
+    padding-bottom: 20px; } }
+@media (max-width: 799px) {
+  .maincontent div {
+    font-size: 11px; }
+
+  .maincontent > div {
+    top: 10px;
+    width: 33vw;
+    min-width: 330px;
+    color: #999;
+    line-height: 1.3; }
+
+  .maincontent > div > table {
+    height: 50px; } }
+/*----------------------------------------------------------------------*/
+/*        Image Media-Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media only screen and (max-width: 767px) {
+  .image-title {
+    display: -webkit-inline-box; } }
+/*----------------------------------------------------------------------*/
+/*        ITEM SELECTOR Media-Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media only screen and (max-width: 767px) {
+  .flex-col-45pt, .flex-col-10pt {
+    max-width: 100%; }
+
+  .item-selector-action-panel .card-header {
+    display: none; }
+  .item-selector-action-panel .actionbar {
+    flex-direction: row; }
+    .item-selector-action-panel .actionbar .actionbarinner {
+      max-height: 30px;
+      flex-direction: row;
+      justify-content: space-around;
+      width: 100%; }
+      .item-selector-action-panel .actionbar .actionbarinner .movetop {
+        display: none; }
+      .item-selector-action-panel .actionbar .actionbarinner .moveup {
+        display: none; }
+      .item-selector-action-panel .actionbar .actionbarinner .moveleft {
+        display: block; }
+      .item-selector-action-panel .actionbar .actionbarinner .moveright {
+        display: block; }
+      .item-selector-action-panel .actionbar .actionbarinner .movedown {
+        display: none; }
+      .item-selector-action-panel .actionbar .actionbarinner .movebottom {
+        display: none; }
+      .item-selector-action-panel .actionbar .actionbarinner .action {
+        transform: rotate(90deg); } }
+@media only screen and (min-width: 768px) {
+  .large {
+    font-size: 36px; }
+
+  .medium {
+    font-size: 20px; }
+
+  .small {
+    font-size: 18px; }
+
+  .large-bold {
+    font-size: 36px;
+    font-weight: bold; }
+
+  .medium-bold {
+    font-size: 20px;
+    font-weight: bold; }
+
+  .small-bold {
+    font-size: 18px;
+    font-weight: bold; } }
+/*----------------------------------------------------------------------*/
+/*        Label Media COMPONENT         */
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*        MENU COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media only screen and (max-width: 959px) {
+  .menu-content .menu-content-cols .col-menu-nodes {
+    width: 100%; }
+
+  .menu-content {
+    width: 100%; }
+
+  .menubar .menuheader .menulink {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border-bottom: 1px solid #ced4da; }
+
+  .menu-content .menu-content-cols {
+    width: 100%;
+    padding: 0px; }
+
+  .menu-content .menu-content-cols .col-menu-nodes {
+    width: 100%; }
+
+  .menubar .menuheader .menulink:hover {
+    display: block; }
+    .menubar .menuheader .menulink:hover .menu-content {
+      display: none; }
+    .menubar .menuheader .menulink:hover a {
+      color: blue; } }
+/*----------------------------------------------------------------------*/
+/*        NAVBAR Media-Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media only screen and (max-width: 1024px) {
+  .navbar-container {
+    padding: 0px; }
+    .navbar-container .navbar-logo-unit {
+      padding-left: 40px; } }
+@media only screen and (max-width: 767px) {
+  .navbar-container {
+    flex-direction: column;
+    padding: 0px; }
+    .navbar-container .nav-bar {
+      background-color: #b22f26; }
+      .navbar-container .nav-bar .nav-item amexio-nav-item {
+        border-bottom: 1px solid white;
+        cursor: pointer; }
+        .navbar-container .nav-bar .nav-item amexio-nav-item * {
+          vertical-align: middle; }
+    .navbar-container .navbar-logo-unit {
+      padding-left: 40px;
+      display: flex;
+      justify-content: space-between; }
+      .navbar-container .navbar-logo-unit .navbar-mobile-bars {
+        display: block;
+        top: 10px;
+        margin-right: 25px;
+        position: relative; }
+
+  .nav-bar {
+    display: block;
+    margin: 0;
+    padding: 0px; }
+    .nav-bar .nav-item {
+      display: flex;
+      flex-direction: column;
+      padding: 0px; }
+      .nav-bar .nav-item > * {
+        padding: 10px; } }
+/*----------------------------------------------------------------------*/
+/*        ROW-COLUMN MediaQ COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media only screen and (max-width: 767px) {
+  .flex-row {
+    flex-direction: column; }
+
+  .flex-col-1, .flex-col-2, .flex-col-3, .flex-col-4, .flex-col-5, .flex-col-6, .flex-col-7, .flex-col-8, .flex-col-9, .flex-col-10, .flex-col-11, .flex-col-12 {
+    max-width: 100%;
+    flex: 0 0 100%; } }
+@media only screen and (max-width: 1024px) {
+  .flex-col-2pt5, .flex-col-9pt5 {
+    flex: 0 0 100%;
+    max-width: 100%; } }
+/*----------------------------------------------------------------------*/
+/*        SIDENAV MediaQ COMPONENT         */
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*        Window Treenode Media Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*        Window LAYOUT Media Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*        BORDER LAYOUT Media Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media only screen and (max-width: 767px) {
+  .borderlayout-container-N-E-C-W-S {
+    grid-template-areas: 'north north north north north north' 'east east east east east east ' 'center center center center center center' 'west west west west west west' 'south south south south south south'; }
+
+  .borderlayout-container-N-E-C-S {
+    grid-template-areas: 'north north north north north north' 'east east east east east east ' 'center center center center center center' 'south south south south south south'; }
+
+  .borderlayout-container-N-C-W-S {
+    grid-template-areas: 'north north north north north north' 'center center center center center center' 'west west west west west west' 'south south south south south south'; }
+
+  .borderlayout-container-E-C-W-S {
+    display: grid;
+    grid-template-areas: 'east east east east east east ' 'center center center center center center' 'west west west west west west' 'south south south south south south'; }
+
+  .borderlayout-container-E-C-S {
+    display: grid;
+    grid-template-areas: 'east east east east east east ' 'center center center center center center' 'south south south south south south'; }
+
+  .borderlayout-container-C-W-S {
+    display: grid;
+    grid-template-areas: 'center center center center center center' 'west west west west west west' 'south south south south south south'; } }
+/*----------------------------------------------------------------------*/
+/*        Card MediaQ COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media screen and (max-width: 768px) {
+  .card-header {
+    display: flex;
+    padding: 10px 24px;
+    background: #D21F3C;
+    border-bottom: 1px solid #ced4da;
+    font-size: 18px;
+    color: white;
+    font-weight: 300;
+    text-transform: capitalize;
+    overflow: auto; } }
+/*----------------------------------------------------------------------*/
+/*        DATATABLE MediaQ COMPONENT         */
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*        Datetime Media-Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*        Dialogue Media-Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media screen and (max-width: 768px) {
+  .dialogue-sm {
+    flex-direction: column;
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 60%;
+    /* Location of the box */
+    width: 80%;
+    padding-left: 10%; } }
+/*----------------------------------------------------------------------*/
+/*        Enterprise Media-Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media screen and (min-width: 1400px) {
+  .maincontent > div {
+    height: 32vw;
+    padding-bottom: 20px; } }
+@media (max-width: 799px) {
+  .maincontent div {
+    font-size: 11px; }
+
+  .maincontent > div {
+    top: 10px;
+    width: 33vw;
+    min-width: 330px;
+    color: #999;
+    line-height: 1.3; }
+
+  .maincontent > div > table {
+    height: 50px; } }
+/*----------------------------------------------------------------------*/
+/*        Image Media-Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media only screen and (max-width: 767px) {
+  .image-title {
+    display: -webkit-inline-box; } }
+/*----------------------------------------------------------------------*/
+/*        ITEM SELECTOR Media-Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media only screen and (max-width: 767px) {
+  .flex-col-45pt, .flex-col-10pt {
+    max-width: 100%; }
+
+  .item-selector-action-panel .card-header {
+    display: none; }
+  .item-selector-action-panel .actionbar {
+    flex-direction: row; }
+    .item-selector-action-panel .actionbar .actionbarinner {
+      max-height: 30px;
+      flex-direction: row;
+      justify-content: space-around;
+      width: 100%; }
+      .item-selector-action-panel .actionbar .actionbarinner .movetop {
+        display: none; }
+      .item-selector-action-panel .actionbar .actionbarinner .moveup {
+        display: none; }
+      .item-selector-action-panel .actionbar .actionbarinner .moveleft {
+        display: block; }
+      .item-selector-action-panel .actionbar .actionbarinner .moveright {
+        display: block; }
+      .item-selector-action-panel .actionbar .actionbarinner .movedown {
+        display: none; }
+      .item-selector-action-panel .actionbar .actionbarinner .movebottom {
+        display: none; }
+      .item-selector-action-panel .actionbar .actionbarinner .action {
+        transform: rotate(90deg); } }
+@media only screen and (min-width: 768px) {
+  .large {
+    font-size: 36px; }
+
+  .medium {
+    font-size: 20px; }
+
+  .small {
+    font-size: 18px; }
+
+  .large-bold {
+    font-size: 36px;
+    font-weight: bold; }
+
+  .medium-bold {
+    font-size: 20px;
+    font-weight: bold; }
+
+  .small-bold {
+    font-size: 18px;
+    font-weight: bold; } }
+/*----------------------------------------------------------------------*/
+/*        Label Media COMPONENT         */
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*        MENU COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media only screen and (max-width: 959px) {
+  .menu-content .menu-content-cols .col-menu-nodes {
+    width: 100%; }
+
+  .menu-content {
+    width: 100%; }
+
+  .menubar .menuheader .menulink {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border-bottom: 1px solid #ced4da; }
+
+  .menu-content .menu-content-cols {
+    width: 100%;
+    padding: 0px; }
+
+  .menu-content .menu-content-cols .col-menu-nodes {
+    width: 100%; }
+
+  .menubar .menuheader .menulink:hover {
+    display: block; }
+    .menubar .menuheader .menulink:hover .menu-content {
+      display: none; }
+    .menubar .menuheader .menulink:hover a {
+      color: blue; } }
+/*----------------------------------------------------------------------*/
+/*        NAVBAR Media-Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media only screen and (max-width: 1024px) {
+  .navbar-container {
+    padding: 0px; }
+    .navbar-container .navbar-logo-unit {
+      padding-left: 40px; } }
+@media only screen and (max-width: 767px) {
+  .navbar-container {
+    flex-direction: column;
+    padding: 0px; }
+    .navbar-container .nav-bar {
+      background-color: #b22f26; }
+      .navbar-container .nav-bar .nav-item amexio-nav-item {
+        border-bottom: 1px solid white;
+        cursor: pointer; }
+        .navbar-container .nav-bar .nav-item amexio-nav-item * {
+          vertical-align: middle; }
+    .navbar-container .navbar-logo-unit {
+      padding-left: 40px;
+      display: flex;
+      justify-content: space-between; }
+      .navbar-container .navbar-logo-unit .navbar-mobile-bars {
+        display: block;
+        top: 10px;
+        margin-right: 25px;
+        position: relative; }
+
+  .nav-bar {
+    display: block;
+    margin: 0;
+    padding: 0px; }
+    .nav-bar .nav-item {
+      display: flex;
+      flex-direction: column;
+      padding: 0px; }
+      .nav-bar .nav-item > * {
+        padding: 10px; } }
+/*----------------------------------------------------------------------*/
+/*        ROW-COLUMN MediaQ COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media only screen and (max-width: 767px) {
+  .flex-row {
+    flex-direction: column; }
+
+  .flex-col-1, .flex-col-2, .flex-col-3, .flex-col-4, .flex-col-5, .flex-col-6, .flex-col-7, .flex-col-8, .flex-col-9, .flex-col-10, .flex-col-11, .flex-col-12 {
+    max-width: 100%;
+    flex: 0 0 100%; } }
+@media only screen and (max-width: 1024px) {
+  .flex-col-2pt5, .flex-col-9pt5 {
+    flex: 0 0 100%;
+    max-width: 100%; } }
+/*----------------------------------------------------------------------*/
+/*        SIDENAV MediaQ COMPONENT         */
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*        Window Treenode Media Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*        Window LAYOUT Media Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*        BORDER LAYOUT Media Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media only screen and (max-width: 767px) {
+  .borderlayout-container-N-E-C-W-S {
+    grid-template-areas: 'north north north north north north' 'east east east east east east ' 'center center center center center center' 'west west west west west west' 'south south south south south south'; }
+
+  .borderlayout-container-N-E-C-S {
+    grid-template-areas: 'north north north north north north' 'east east east east east east ' 'center center center center center center' 'south south south south south south'; }
+
+  .borderlayout-container-N-C-W-S {
+    grid-template-areas: 'north north north north north north' 'center center center center center center' 'west west west west west west' 'south south south south south south'; }
+
+  .borderlayout-container-E-C-W-S {
+    display: grid;
+    grid-template-areas: 'east east east east east east ' 'center center center center center center' 'west west west west west west' 'south south south south south south'; }
+
+  .borderlayout-container-E-C-S {
+    display: grid;
+    grid-template-areas: 'east east east east east east ' 'center center center center center center' 'south south south south south south'; }
+
+  .borderlayout-container-C-W-S {
+    display: grid;
+    grid-template-areas: 'center center center center center center' 'west west west west west west' 'south south south south south south'; } }
+/*----------------------------------------------------------------------*/
+/*        Card MediaQ COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media screen and (max-width: 768px) {
+  .card-header {
+    display: flex;
+    padding: 10px 24px;
+    background: #D21F3C;
+    border-bottom: 1px solid #ced4da;
+    font-size: 18px;
+    color: white;
+    font-weight: 300;
+    text-transform: capitalize;
+    overflow: auto; } }
+/*----------------------------------------------------------------------*/
+/*        DATATABLE MediaQ COMPONENT         */
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*        Datetime Media-Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*        Dialogue Media-Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media screen and (max-width: 768px) {
+  .dialogue-sm {
+    flex-direction: column;
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 60%;
+    /* Location of the box */
+    width: 80%;
+    padding-left: 10%; } }
+/*----------------------------------------------------------------------*/
+/*        Enterprise Media-Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media screen and (min-width: 1400px) {
+  .maincontent > div {
+    height: 32vw;
+    padding-bottom: 20px; } }
+@media (max-width: 799px) {
+  .maincontent div {
+    font-size: 11px; }
+
+  .maincontent > div {
+    top: 10px;
+    width: 33vw;
+    min-width: 330px;
+    color: #999;
+    line-height: 1.3; }
+
+  .maincontent > div > table {
+    height: 50px; } }
+/*----------------------------------------------------------------------*/
+/*        Image Media-Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media only screen and (max-width: 767px) {
+  .image-title {
+    display: -webkit-inline-box; } }
+/*----------------------------------------------------------------------*/
+/*        ITEM SELECTOR Media-Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media only screen and (max-width: 767px) {
+  .flex-col-45pt, .flex-col-10pt {
+    max-width: 100%; }
+
+  .item-selector-action-panel .card-header {
+    display: none; }
+  .item-selector-action-panel .actionbar {
+    flex-direction: row; }
+    .item-selector-action-panel .actionbar .actionbarinner {
+      max-height: 30px;
+      flex-direction: row;
+      justify-content: space-around;
+      width: 100%; }
+      .item-selector-action-panel .actionbar .actionbarinner .movetop {
+        display: none; }
+      .item-selector-action-panel .actionbar .actionbarinner .moveup {
+        display: none; }
+      .item-selector-action-panel .actionbar .actionbarinner .moveleft {
+        display: block; }
+      .item-selector-action-panel .actionbar .actionbarinner .moveright {
+        display: block; }
+      .item-selector-action-panel .actionbar .actionbarinner .movedown {
+        display: none; }
+      .item-selector-action-panel .actionbar .actionbarinner .movebottom {
+        display: none; }
+      .item-selector-action-panel .actionbar .actionbarinner .action {
+        transform: rotate(90deg); } }
+@media only screen and (min-width: 768px) {
+  .large {
+    font-size: 36px; }
+
+  .medium {
+    font-size: 20px; }
+
+  .small {
+    font-size: 18px; }
+
+  .large-bold {
+    font-size: 36px;
+    font-weight: bold; }
+
+  .medium-bold {
+    font-size: 20px;
+    font-weight: bold; }
+
+  .small-bold {
+    font-size: 18px;
+    font-weight: bold; } }
+/*----------------------------------------------------------------------*/
+/*        Label Media COMPONENT         */
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*        MENU COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media only screen and (max-width: 959px) {
+  .menu-content .menu-content-cols .col-menu-nodes {
+    width: 100%; }
+
+  .menu-content {
+    width: 100%; }
+
+  .menubar .menuheader .menulink {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border-bottom: 1px solid #ced4da; }
+
+  .menu-content .menu-content-cols {
+    width: 100%;
+    padding: 0px; }
+
+  .menu-content .menu-content-cols .col-menu-nodes {
+    width: 100%; }
+
+  .menubar .menuheader .menulink:hover {
+    display: block; }
+    .menubar .menuheader .menulink:hover .menu-content {
+      display: none; }
+    .menubar .menuheader .menulink:hover a {
+      color: blue; } }
+/*----------------------------------------------------------------------*/
+/*        NAVBAR Media-Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media only screen and (max-width: 1024px) {
+  .navbar-container {
+    padding: 0px; }
+    .navbar-container .navbar-logo-unit {
+      padding-left: 40px; } }
+@media only screen and (max-width: 767px) {
+  .navbar-container {
+    flex-direction: column;
+    padding: 0px; }
+    .navbar-container .nav-bar {
+      background-color: #b22f26; }
+      .navbar-container .nav-bar .nav-item amexio-nav-item {
+        border-bottom: 1px solid white;
+        cursor: pointer; }
+        .navbar-container .nav-bar .nav-item amexio-nav-item * {
+          vertical-align: middle; }
+    .navbar-container .navbar-logo-unit {
+      padding-left: 40px;
+      display: flex;
+      justify-content: space-between; }
+      .navbar-container .navbar-logo-unit .navbar-mobile-bars {
+        display: block;
+        top: 10px;
+        margin-right: 25px;
+        position: relative; }
+
+  .nav-bar {
+    display: block;
+    margin: 0;
+    padding: 0px; }
+    .nav-bar .nav-item {
+      display: flex;
+      flex-direction: column;
+      padding: 0px; }
+      .nav-bar .nav-item > * {
+        padding: 10px; } }
+/*----------------------------------------------------------------------*/
+/*        ROW-COLUMN MediaQ COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media only screen and (max-width: 767px) {
+  .flex-row {
+    flex-direction: column; }
+
+  .flex-col-1, .flex-col-2, .flex-col-3, .flex-col-4, .flex-col-5, .flex-col-6, .flex-col-7, .flex-col-8, .flex-col-9, .flex-col-10, .flex-col-11, .flex-col-12 {
+    max-width: 100%;
+    flex: 0 0 100%; } }
+@media only screen and (max-width: 1024px) {
+  .flex-col-2pt5, .flex-col-9pt5 {
+    flex: 0 0 100%;
+    max-width: 100%; } }
+/*----------------------------------------------------------------------*/
+/*        SIDENAV MediaQ COMPONENT         */
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*        Window Treenode Media Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*        Window LAYOUT Media Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*        BORDER LAYOUT Media Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media only screen and (max-width: 767px) {
+  .borderlayout-container-N-E-C-W-S {
+    grid-template-areas: 'north north north north north north' 'east east east east east east ' 'center center center center center center' 'west west west west west west' 'south south south south south south'; }
+
+  .borderlayout-container-N-E-C-S {
+    grid-template-areas: 'north north north north north north' 'east east east east east east ' 'center center center center center center' 'south south south south south south'; }
+
+  .borderlayout-container-N-C-W-S {
+    grid-template-areas: 'north north north north north north' 'center center center center center center' 'west west west west west west' 'south south south south south south'; }
+
+  .borderlayout-container-E-C-W-S {
+    display: grid;
+    grid-template-areas: 'east east east east east east ' 'center center center center center center' 'west west west west west west' 'south south south south south south'; }
+
+  .borderlayout-container-E-C-S {
+    display: grid;
+    grid-template-areas: 'east east east east east east ' 'center center center center center center' 'south south south south south south'; }
+
+  .borderlayout-container-C-W-S {
+    display: grid;
+    grid-template-areas: 'center center center center center center' 'west west west west west west' 'south south south south south south'; } }
+/*----------------------------------------------------------------------*/
+/*        Card MediaQ COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media screen and (max-width: 768px) {
+  .card-header {
+    display: flex;
+    padding: 10px 24px;
+    background: #D21F3C;
+    border-bottom: 1px solid #ced4da;
+    font-size: 18px;
+    color: white;
+    font-weight: 300;
+    text-transform: capitalize;
+    overflow: auto; } }
+/*----------------------------------------------------------------------*/
+/*        DATATABLE MediaQ COMPONENT         */
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*        Datetime Media-Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*        Dialogue Media-Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media screen and (max-width: 768px) {
+  .dialogue-sm {
+    flex-direction: column;
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 60%;
+    /* Location of the box */
+    width: 80%;
+    padding-left: 10%; } }
+/*----------------------------------------------------------------------*/
+/*        Enterprise Media-Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media screen and (min-width: 1400px) {
+  .maincontent > div {
+    height: 32vw;
+    padding-bottom: 20px; } }
+@media (max-width: 799px) {
+  .maincontent div {
+    font-size: 11px; }
+
+  .maincontent > div {
+    top: 10px;
+    width: 33vw;
+    min-width: 330px;
+    color: #999;
+    line-height: 1.3; }
+
+  .maincontent > div > table {
+    height: 50px; } }
+/*----------------------------------------------------------------------*/
+/*        Image Media-Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media only screen and (max-width: 767px) {
+  .image-title {
+    display: -webkit-inline-box; } }
+/*----------------------------------------------------------------------*/
+/*        ITEM SELECTOR Media-Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media only screen and (max-width: 767px) {
+  .flex-col-45pt, .flex-col-10pt {
+    max-width: 100%; }
+
+  .item-selector-action-panel .card-header {
+    display: none; }
+  .item-selector-action-panel .actionbar {
+    flex-direction: row; }
+    .item-selector-action-panel .actionbar .actionbarinner {
+      max-height: 30px;
+      flex-direction: row;
+      justify-content: space-around;
+      width: 100%; }
+      .item-selector-action-panel .actionbar .actionbarinner .movetop {
+        display: none; }
+      .item-selector-action-panel .actionbar .actionbarinner .moveup {
+        display: none; }
+      .item-selector-action-panel .actionbar .actionbarinner .moveleft {
+        display: block; }
+      .item-selector-action-panel .actionbar .actionbarinner .moveright {
+        display: block; }
+      .item-selector-action-panel .actionbar .actionbarinner .movedown {
+        display: none; }
+      .item-selector-action-panel .actionbar .actionbarinner .movebottom {
+        display: none; }
+      .item-selector-action-panel .actionbar .actionbarinner .action {
+        transform: rotate(90deg); } }
+@media only screen and (min-width: 768px) {
+  .large {
+    font-size: 36px; }
+
+  .medium {
+    font-size: 20px; }
+
+  .small {
+    font-size: 18px; }
+
+  .large-bold {
+    font-size: 36px;
+    font-weight: bold; }
+
+  .medium-bold {
+    font-size: 20px;
+    font-weight: bold; }
+
+  .small-bold {
+    font-size: 18px;
+    font-weight: bold; } }
+/*----------------------------------------------------------------------*/
+/*        Label Media COMPONENT         */
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*        MENU COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media only screen and (max-width: 959px) {
+  .menu-content .menu-content-cols .col-menu-nodes {
+    width: 100%; }
+
+  .menu-content {
+    width: 100%; }
+
+  .menubar .menuheader .menulink {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border-bottom: 1px solid #ced4da; }
+
+  .menu-content .menu-content-cols {
+    width: 100%;
+    padding: 0px; }
+
+  .menu-content .menu-content-cols .col-menu-nodes {
+    width: 100%; }
+
+  .menubar .menuheader .menulink:hover {
+    display: block; }
+    .menubar .menuheader .menulink:hover .menu-content {
+      display: none; }
+    .menubar .menuheader .menulink:hover a {
+      color: blue; } }
+/*----------------------------------------------------------------------*/
+/*        NAVBAR Media-Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media only screen and (max-width: 1024px) {
+  .navbar-container {
+    padding: 0px; }
+    .navbar-container .navbar-logo-unit {
+      padding-left: 40px; } }
+@media only screen and (max-width: 767px) {
+  .navbar-container {
+    flex-direction: column;
+    padding: 0px; }
+    .navbar-container .nav-bar {
+      background-color: #b22f26; }
+      .navbar-container .nav-bar .nav-item amexio-nav-item {
+        border-bottom: 1px solid white;
+        cursor: pointer; }
+        .navbar-container .nav-bar .nav-item amexio-nav-item * {
+          vertical-align: middle; }
+    .navbar-container .navbar-logo-unit {
+      padding-left: 40px;
+      display: flex;
+      justify-content: space-between; }
+      .navbar-container .navbar-logo-unit .navbar-mobile-bars {
+        display: block;
+        top: 10px;
+        margin-right: 25px;
+        position: relative; }
+
+  .nav-bar {
+    display: block;
+    margin: 0;
+    padding: 0px; }
+    .nav-bar .nav-item {
+      display: flex;
+      flex-direction: column;
+      padding: 0px; }
+      .nav-bar .nav-item > * {
+        padding: 10px; } }
+/*----------------------------------------------------------------------*/
+/*        ROW-COLUMN MediaQ COMPONENT         */
+/*----------------------------------------------------------------------*/
+@media only screen and (max-width: 767px) {
+  .flex-row {
+    flex-direction: column; }
+
+  .flex-col-1, .flex-col-2, .flex-col-3, .flex-col-4, .flex-col-5, .flex-col-6, .flex-col-7, .flex-col-8, .flex-col-9, .flex-col-10, .flex-col-11, .flex-col-12 {
+    max-width: 100%;
+    flex: 0 0 100%; } }
+@media only screen and (max-width: 1024px) {
+  .flex-col-2pt5, .flex-col-9pt5 {
+    flex: 0 0 100%;
+    max-width: 100%; } }
+/*----------------------------------------------------------------------*/
+/*        SIDENAV MediaQ COMPONENT         */
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*        Window Treenode Media Q COMPONENT         */
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+/*        Window LAYOUT Media Q COMPONENT         */
+/*----------------------------------------------------------------------*/
 
 /*# sourceMappingURL=at-md-rasberry-sangria.css.map */

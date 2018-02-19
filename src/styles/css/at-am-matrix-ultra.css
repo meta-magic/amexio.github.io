@@ -1272,6 +1272,37 @@ input:checked + .toggle-slider:before {
   font-weight: bold; }
 
 /*----------------------------------------------------------------------*/
+/*        Image COMPONENT - Visual        */
+/*----------------------------------------------------------------------*/
+.profile-image a {
+  color: #FF6FFF; }
+
+/*----------------------------------------------------------------------*/
+/*        Image COMPONENT - Structure        */
+/*----------------------------------------------------------------------*/
+.profile-image img {
+  width: 50px;
+  height: 50px;
+  vertical-align: middle; }
+
+.profile-image a {
+  text-transform: capitalize; }
+
+.profile-image-round img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  vertical-align: middle; }
+
+.image-responsive {
+  max-width: 100%;
+  width: 100%;
+  border-top: 1px solid #1b1d22;
+  border-bottom: 1px solid #1b1d22;
+  margin-top: 10px;
+  margin-bottom: 10px; }
+
+/*----------------------------------------------------------------------*/
 /*        Enterprise - Visual COMPONENT         */
 /*----------------------------------------------------------------------*/
 .content-title {
@@ -1747,37 +1778,6 @@ header .billboard .content-button {
   padding: 0px;
   height: 5px;
   border-top: 3px solid white; }
-
-/*----------------------------------------------------------------------*/
-/*        Image COMPONENT - Visual        */
-/*----------------------------------------------------------------------*/
-.profile-image a {
-  color: #FF6FFF; }
-
-/*----------------------------------------------------------------------*/
-/*        Image COMPONENT - Structure        */
-/*----------------------------------------------------------------------*/
-.profile-image img {
-  width: 50px;
-  height: 50px;
-  vertical-align: middle; }
-
-.profile-image a {
-  text-transform: capitalize; }
-
-.profile-image-round img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  vertical-align: middle; }
-
-.image-responsive {
-  max-width: 100%;
-  width: 100%;
-  border-top: 1px solid #1b1d22;
-  border-bottom: 1px solid #1b1d22;
-  margin-top: 10px;
-  margin-bottom: 10px; }
 
 /*----------------------------------------------------------------------*/
 /*        DATAPOINTS COMPONENT - Visual         */
