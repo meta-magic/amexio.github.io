@@ -109,6 +109,12 @@ body {
 input:disabled {
   opacity: 0.55;
   cursor: not-allowed;
+  background-color: #EBEBE4;
+}
+
+.disable-component{
+  opacity: 0.55;
+  pointer-events: none;
 }
 
 .defaultcolor{
@@ -212,3 +218,6 @@ image using the content attribute.
   animation: spinner .8s ease infinite;
 }
 
+.row-disabled{
+  opacity: 0.55;
+}

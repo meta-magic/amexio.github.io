@@ -119,7 +119,7 @@ export class AmexioCheckBoxGroupComponent {
   }
 
   setSelectedCheckBox(rowData: any, event: any) {
-
+    if(rowData.hasOwnProperty('disabled') && !rowData.disabled){
     rowData[this.valuefield] = !rowData[this.valuefield];
 
     if (rowData[this.valuefield]) {
@@ -130,6 +130,7 @@ export class AmexioCheckBoxGroupComponent {
     }
 
     this.emitSelectedRows();
+  }
   }
 
   emitSelectedRows() {

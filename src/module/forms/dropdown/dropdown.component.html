@@ -22,7 +22,7 @@
          [required]="allowblank ? true: null" (keyup)="onDropDownSearchKeyUp($event)"/>
 
 
-  <span class="drodown-caret-down">
+  <span class="drodown-caret-down" (click)="onIconClick()">
     <amexio-form-icon key="dropdown_caret" *ngIf="!maskloader"></amexio-form-icon>
     <i class="fa fa-spinner fa-spin" *ngIf="maskloader"></i>
   </span>

@@ -59,11 +59,12 @@ export class AmexioAccordionComponent {
     if(id.parent == this.rootId){
       if(!this.expandAll){
         this.panes.forEach((pane : AmexioAccordionTabComponent)=>{
+          if(!pane.disabled){
           if(id.id != pane.paneId){
             pane.active= false;
             pane.content.nativeElement.style.maxHeight = null;
           }
-
+          }
         });
       }
     }
@@ -71,8 +72,10 @@ export class AmexioAccordionComponent {
 
   expandAllPanes(){
     this.panes.forEach( (pane : AmexioAccordionTabComponent)=>{
+      if(!pane.disabled){
       pane.active = true;
       pane.content.nativeElement.style.maxHeight = pane.content.nativeElement.scrollHeight + 'px';
+      }
     })
   }
 }

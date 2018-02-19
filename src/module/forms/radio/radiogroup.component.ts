@@ -33,6 +33,8 @@ export class AmexioRadioGroupComponent {
 
   @Input() data: any;
 
+  @Input() disabled: any;
+
   @Output() onSelection: any = new EventEmitter<any>();
 
   viewData: any;

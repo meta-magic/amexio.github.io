@@ -1,6 +1,6 @@
 
 
-<div class="inputgroup " >
+<div class="inputgroup " [ngClass]="{'disable-component' : disabled}" >
   <div *ngIf="fieldlabel">
     <label>{{fieldlabel}}</label>
   </div>
@@ -8,9 +8,9 @@
   <ng-container *ngIf="horizontal">
     <ng-container *ngFor="let row of viewData">
 
-      <label class="input-box-container"  >{{row[displayfield]}}
-        <input type="radio" *ngIf="row[valuefield] == defaultSelectedValue || row.selected"  [attr.name]="name" checked="checked" (click)="onClick(row)">
-        <input type="radio" *ngIf="!row.selected"  [attr.name]="name" (click)="onClick(row)">
+      <label class="input-box-container" [ngClass]="{'radio-disabled' : row?.disabled}">{{row[displayfield]}}
+        <input type="radio" *ngIf="row[valuefield] == defaultSelectedValue || row.selected" [attr.disabled] = "row?.disabled ? true: null"  [attr.name]="name" checked="checked" (click)="onClick(row)">
+        <input type="radio" *ngIf="!row.selected"  [attr.name]="name" [attr.disabled] = "row?.disabled ? true: null" (click)="onClick(row)" [ngClass]="{'radio-disabled' : row?.disabled}">
         <span class="input-box-radiobox-label"></span>
       </label>
 
@@ -20,9 +20,9 @@
   <ng-container *ngIf="!horizontal">
     <ng-container *ngFor="let row of viewData">
       <div>
-        <label class="input-box-container">{{row[displayfield]}}
-          <input type="radio" *ngIf="row[valuefield] == defaultSelectedValue || row.selected"  [attr.name]="name" checked="checked" (click)="onClick(row)">
-          <input type="radio" *ngIf="!row.selected"  [attr.name]="name" (click)="onClick(row)">
+        <label class="input-box-container" [ngClass]="{'radio-disabled' : row?.disabled}">{{row[displayfield]}}
+          <input type="radio" *ngIf="row[valuefield] == defaultSelectedValue || row.selected" [attr.disabled] = "row?.disabled ? true: null"   [attr.name]="name" checked="checked" (click)="onClick(row)">
+          <input type="radio" *ngIf="!row.selected"  [attr.name]="name" [attr.disabled] = "row?.disabled ? true: null"  (click)="onClick(row)" [ngClass]="{'radio-disabled' : row?.disabled}">
           <span class="input-box-radiobox-label"></span>
         </label>
       </div>

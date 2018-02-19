@@ -166,7 +166,12 @@ body {
 /** Disabled **/
 input:disabled {
   opacity: 0.55;
-  cursor: not-allowed; }
+  cursor: not-allowed;
+  background-color: #EBEBE4; }
+
+.disable-component {
+  opacity: 0.55;
+  pointer-events: none; }
 
 .defaultcolor {
   color: black; }
@@ -251,6 +256,9 @@ image using the content attribute.
   border-top-color: #043927;
   border-bottom-color: #043927;
   animation: spinner .8s ease infinite; }
+
+.row-disabled {
+  opacity: 0.55; }
 
 /*----------------------------------------------------------------------*/
 /*        BUTTON COMPONENT         */
@@ -616,6 +624,10 @@ textarea:required {
 .image-title {
   display: none; }
 
+/**This Class is for radio disabled***/
+.radio-disabled {
+  color: gray; }
+
 /*----------------------------------------------------------------------*/
 /***CHECKBOX & RADIOGROUP STYLE STARTS***/
 /*----------------------------------------------------------------------*/
@@ -925,7 +937,7 @@ textarea:required {
 .toggle {
   position: relative;
   display: inline-block;
-  width: 40px;
+  width: 60px;
   height: 34px;
   vertical-align: middle; }
 
@@ -1309,12 +1321,12 @@ header .billboard .content-button {
   cursor: pointer;
   padding-left: 98%;
   color: gray;
-  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, transparent 70%, transparent 100%); }
+  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 100%); }
 
 .close-button {
   cursor: pointer;
   color: gray;
-  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, transparent 70%, transparent 100%); }
+  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 100%); }
 
 .close-button i:hover {
   color: red;
@@ -1393,8 +1405,8 @@ a:hover {
   top: 0;
   font-size: 10px;
   opacity: 0;
-  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
   -webkit-transition: 450ms opacity;
   transition: 450ms opacity; }
 
@@ -1426,8 +1438,8 @@ a:hover {
   top: 50%;
   font-size: 10px;
   opacity: 0;
-  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
   -webkit-transition: 450ms opacity;
   transition: 450ms opacity; }
 
@@ -2597,6 +2609,10 @@ a:hover {
   overflow: hidden;
   transition: max-height 0.2s ease-out; }
 
+.accordion-disable {
+  opacity: 0.55;
+  cursor: not-allowed; }
+
 /*----------------------------------------------------------------------*/
 /*        CARD COMPONENT         */
 /*----------------------------------------------------------------------*/
@@ -3397,6 +3413,28 @@ fieldset {
 
   .small-bold {
     font-size: 16px;
+    font-weight: bold; } }
+@media only screen and (max-width: 320px) {
+  /* phones */
+  .large {
+    font-size: 18px; }
+
+  .medium {
+    font-size: 12px; }
+
+  .small {
+    font-size: 10px; }
+
+  .large-bold {
+    font-size: 18px;
+    font-weight: bold; }
+
+  .medium-bold {
+    font-size: 12px;
+    font-weight: bold; }
+
+  .small-bold {
+    font-size: 10px;
     font-weight: bold; } }
 @media screen and (min-width: 1400px) {
   .maincontent > div {

@@ -22,7 +22,7 @@
 
 <div class="inputgroup " >
 
-  <label class="input-box-container" [ngStyle]="{'cursor': disabled ? 'not-allowed':'pointer'}">{{fieldlabel}}
+  <label class="input-box-container" [ngClass]="{'disable-component' : disabled}">{{fieldlabel}}
     <input type="checkbox" *ngIf="value" checked="checked" (click)="onClick()" [attr.disabled] = "disabled ? true: null" [attr.required]="!required">
     <input type="checkbox" *ngIf="!value" (click)="onClick()" [attr.disabled] = "disabled ? true: null" [attr.required]="!required">
     <span class="input-box-checkbox-label"></span>

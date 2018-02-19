@@ -24,7 +24,6 @@ export const CUSTOM_DROPDOWN_CONTROL_VALUE_ACCESSOR: any = {
   providers: [CUSTOM_DROPDOWN_CONTROL_VALUE_ACCESSOR]
 })
 export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAccessor {
-
   @Input('field-label') fieldlabel: string;
 
   @Input('allow-blank') allowblank: string;
@@ -165,7 +164,7 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
           preSelectedMultiValues == '' ? preSelectedMultiValues += row[this.displayfield] : preSelectedMultiValues += ',' + row[this.displayfield];
         }
       });
-      this.value = optionsChecked;
+      //this.value = optionsChecked;
       this.displayValue = preSelectedMultiValues;
       this.onMultiSelect.emit(this.multiselectValues);
     }
@@ -177,12 +176,18 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
       let val = this.value;
 
       this.viewData.forEach((item: any) => {
-        if (item[valueKey] == val) this.displayValue = item[displayKey];
+        if (item[valueKey] == val)
+        {
+          this.displayValue = item[displayKey];
+          this.onSingleSelect.emit(item);
+        }
       });
-      this.onSingleSelect.emit(this.value);
+
     }
     this.maskloader=false;
   }
+
+
 
   ngDoCheck() {
     if (JSON.stringify(this.previousData) != JSON.stringify(this.data)) {
@@ -215,8 +220,28 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
     }
   }
 
+  setMultiSelectData () {
+    this.multiselectValues = [];
+    if(this.value.length > 0){
+      let modelValue = this.value;
+      this.filteredOptions.forEach((test)=>{
+        modelValue.forEach((mdValue: any)=>{
+          if(test[this.valuefield] == mdValue) {
+            if(test.hasOwnProperty('checked')) {
+              test.checked = true;
+            }
+            this.multiselectValues.push(test);
+          }
+        });
+      });
+    }
+  }
+
+
   getDisplayText(): string {
+    if(this.value != null) {
     if (this.multiselect) {
+        this.setMultiSelectData();
       let multiselectDisplayString: any = '';
       this.multiselectValues.forEach((row: any) => {
         multiselectDisplayString == '' ? multiselectDisplayString += row[this.displayfield] : multiselectDisplayString += ',' + row[this.displayfield];
@@ -224,8 +249,18 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
       if (this.multiselectValues.length > 0)
         return multiselectDisplayString; else
         return '';
-    } else
+      } else {
+        this.filteredOptions.forEach((test) => {
+          if (test[this.valuefield] == this.value) {
+            this.displayValue = test[this.displayfield];
+          }
+        });
       return this.displayValue == undefined ? '' : this.displayValue
+  }
+    } else {
+      this.value = '';
+    }
+
   }
 
   onDropDownClick(event: any) {
@@ -233,7 +268,7 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
   }
 
   onChange(event: any) {
-    this.value = event;
+    //this.value = event;
   }
 
   onInput() {
@@ -276,19 +311,16 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
 
   //set accessor including call the onchange callback
   set value(v: any) {
+    //debugger;
+
+    if(v!=null) {
     if (v !== this.innerValue) {
       this.innerValue = v;
-	  
-      let valueKey = this.valuefield;
-      let displayKey = this.displayfield;
-     
-      this.viewData.forEach((item: any) => {
-        if (item[valueKey] == this.innerValue) this.displayValue = item[displayKey];
-      });
-      this.onSingleSelect.emit(this.value);
-    
       this.onChangeCallback(v);
     }
+  }
+
+
   }
 
   //Set touched on blur
@@ -316,16 +348,12 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
 
   //From ControlValueAccessor interface
   writeValue(value: any) {
+    if(value != null) {
     if (value !== this.innerValue) {
       this.innerValue = value;
-	  let valueKey = this.valuefield;
-      let displayKey = this.displayfield;
-     
-      this.viewData.forEach((item: any) => {
-        if (item[valueKey] == this.innerValue) this.displayValue = item[displayKey];
-      });
-      this.onSingleSelect.emit(this.value);
     }
+  }
+
   }
 
   //From ControlValueAccessor interface
@@ -336,6 +364,10 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
   //From ControlValueAccessor interface
   registerOnTouched(fn: any) {
     this.onTouchedCallback = fn;
+  }
+
+  onIconClick() {
+    this.showToolTip = ! this.showToolTip;
   }
 
 }
