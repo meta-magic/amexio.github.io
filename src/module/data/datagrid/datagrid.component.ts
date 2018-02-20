@@ -427,8 +427,8 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
         }
       );
     } else if (this.data) {
-      this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
+      this.previousData = JSON.parse(JSON.stringify(this.data));
     }
     if (this.columndefintion && this.columndefintion.length > 0 ) {
       this.columnPreviewData = JSON.parse(JSON.stringify(this.columndefintion));
