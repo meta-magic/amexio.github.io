@@ -81,6 +81,8 @@ export class AmexiodialoguePaneComponent implements OnInit {
 
   @Output() actionStatus : EventEmitter<any> = new EventEmitter<any>();
 
+  @Output() close : EventEmitter<any> = new EventEmitter<any>();
+
   constructor() {
     this.closable = true;
     this.secondaryactionlabel  = 'Cancel';
@@ -96,6 +98,7 @@ export class AmexiodialoguePaneComponent implements OnInit {
   onCloseClick() {
     if (this.closable) {
       this.showdialogue  = !this.showdialogue ;
+      this.close.emit(this.showdialogue);
     }
   }
 
