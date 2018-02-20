@@ -127,7 +127,7 @@ export class AmexioNumberInputComponent implements ControlValueAccessor {
   onBlur() {
     this.onTouchedCallback();
     this.showToolTip = false;
-    if (this.value < this.minvalue) {
+    if (this.value && (this.value < this.minvalue)) {
       this.isValid = false;
     } else {
       this.isValid = true;
