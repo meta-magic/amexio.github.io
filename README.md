@@ -75,6 +75,8 @@
 | --------- | --------- | --------- | --------- | --------- | --------- | --------- |
 | Edge| last 5 versions| last 5 versions| last 3 versions| last 4 versions| last 3 versions| last 3 versions
 
+<img src="http://amexio.org/images/Desire-3D-Blue-Qube.jpg" />
+
 ## Table of Content
 - [Features](#features)
 - [Overview](#overview)
