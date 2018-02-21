@@ -17,6 +17,9 @@
             <amexio-form-icon [customclass]="icon" >
             </amexio-form-icon>
           </span>
+           <span style="padding-right: 5px;" *ngIf="loading">
+            <amexio-form-icon key="button-loading-icon"></amexio-form-icon>
+          </span>
           {{label}}
         </span>
 </button>
