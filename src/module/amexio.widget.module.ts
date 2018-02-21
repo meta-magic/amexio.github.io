@@ -9,6 +9,7 @@ import {AmexioLayoutModule} from "./layout/amexio.layout.module";
 import {AmexioMediaModule} from "./media/amexio.media.module";
 import {IconLoaderService} from "./services/icon/icon.service";
 import {AmexioPaneModule} from "./panes/amexio.pane.module";
+import {HttpClientModule} from "@angular/common/http";
 
 export * from './services/data/common.data.service';
 export * from './services/device/device.query.service';
@@ -23,7 +24,8 @@ export * from './services/icon/icon.mapping.config';
     AmexioDataModule,
     AmexioLayoutModule,
     AmexioMediaModule,
-    AmexioPaneModule
+    AmexioPaneModule,
+    HttpClientModule
   ],
   exports: [
     AmexioFormsModule,
