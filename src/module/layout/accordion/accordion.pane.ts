@@ -28,7 +28,7 @@ export class AmexioAccordionTabComponent  {
     
   }
 
-  private emitEvent() {
+  emitEvent() {
     if(!this.disabled)
       this.emittedEvent.emit(this);
   }
