@@ -31,15 +31,13 @@
 
 .active:after {
 }
-
 .panel {
-  padding: 0 18px;
+  padding: 18px;
   background-color: $accordionPanelBGColor;
   color: $accordionPanelColor;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
+  overflow: auto;
 }
+
 
 /** Transparent Styling **/
 .accordion-transparent{
@@ -69,16 +67,7 @@
 
 .active:after {
 }
-
-.panel {
-  padding: 0 18px;
-  background-color: $accordionPanelBGColor;
-  color: $accordionPanelColor;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-}
-
+ 
 .accordion-disable{
   opacity: 0.55;
   cursor: not-allowed;
