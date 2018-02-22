@@ -48,14 +48,14 @@ export class AmexioAccordionComponent implements OnInit, AfterContentInit {
   }
 
   activateAccordionPane(node: AmexioAccordionTabComponent){
-     this.accordionCollections.forEach(tab => {
-      tab.active = false;
-      
-      if (tab == node) {
-         tab.active = true ;
-       }
-     });
-  }
+    this.accordionCollections.forEach(tab => {
+     if (tab == node) {
+        tab.active = node.active ;
+      }else{
+       tab.active = false;
+      }
+    });
+ }
 
 
  
