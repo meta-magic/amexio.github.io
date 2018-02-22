@@ -112,7 +112,7 @@ export class AmexioMenuBarComponent implements OnInit {
   ngOnInit() {
     if (this.httpmethod && this.httpurl) {
       this.dataService.fetchData(this.httpurl, this.httpmethod).subscribe(response => {
-        this.responseData = response.json();
+        this.responseData = response;
       }, error => {
       }, () => {
         this.setData(this.responseData);
