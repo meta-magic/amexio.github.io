@@ -24,6 +24,7 @@ export const CUSTOM_DROPDOWN_CONTROL_VALUE_ACCESSOR: any = {
   providers: [CUSTOM_DROPDOWN_CONTROL_VALUE_ACCESSOR]
 })
 export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAccessor {
+
   @Input('field-label') fieldlabel: string;
 
   @Input('allow-blank') allowblank: string;
@@ -125,7 +126,7 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
     if (this.placeholder == '' || this.placeholder == null) this.placeholder = 'Choose Option';
     if (this.httpmethod && this.httpurl) {
       this.dataService.fetchData(this.httpurl, this.httpmethod).subscribe(response => {
-        this.responseData = response.json();
+        this.responseData = response;
       }, error => {
       }, () => {
         this.setData(this.responseData);
@@ -145,14 +146,19 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
     if (this.datareader != null) {
       this.multiselectValues = [];
       let dr = this.datareader.split(".");
-      for (let ir = 0; ir < dr.length; ir++) {
-        responsedata = responsedata[dr[ir]];
+      if(dr){
+        for (let ir = 0; ir < dr.length; ir++) {
+          responsedata = responsedata[dr[ir]];
+        }
       }
     } else {
       responsedata = httpResponse;
     }
-    this.viewData = responsedata.sort((a: any, b: any) => a[this.displayfield].toLowerCase() !== b[this.displayfield].toLowerCase() ? a[this.displayfield].toLowerCase() < b[this.displayfield].toLowerCase() ? -1 : 1 : 0);
-    this.filteredOptions = this.viewData;
+    if(responsedata) {
+      this.viewData = responsedata.sort((a: any, b: any) => a[this.displayfield].toLowerCase() !== b[this.displayfield].toLowerCase() ? a[this.displayfield].toLowerCase() < b[this.displayfield].toLowerCase() ? -1 : 1 : 0);
+      this.filteredOptions = this.viewData;
+    }
+
 
     if (this.multiselect) {
       let preSelectedMultiValues: string = '';
@@ -222,7 +228,7 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
 
   setMultiSelectData () {
     this.multiselectValues = [];
-    if(this.value && (this.value.length > 0)){
+    if(this.value && this.value.length > 0){
       let modelValue = this.value;
       this.filteredOptions.forEach((test)=>{
         modelValue.forEach((mdValue: any)=>{
@@ -246,7 +252,7 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
         this.multiselectValues.forEach((row: any) => {
           multiselectDisplayString == '' ? multiselectDisplayString += row[this.displayfield] : multiselectDisplayString += ',' + row[this.displayfield];
         });
-        if (this.multiselectValues.length > 0)
+        if (this.multiselectValues && this.multiselectValues.length > 0)
           return multiselectDisplayString; else
           return '';
       } else {
@@ -268,7 +274,7 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
   }
 
   onChange(event: any) {
-    //this.value = event;
+    this.value = event;
   }
 
   onInput() {
@@ -311,16 +317,10 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
 
   //set accessor including call the onchange callback
   set value(v: any) {
-    debugger;
-
-    if(v!=null) {
-      if (v !== this.innerValue) {
-        this.innerValue = v;
-        this.onChangeCallback(v);
-      }
+    if (v !== this.innerValue) {
+      this.innerValue = v;
+      this.onChangeCallback(v);
     }
-
-
   }
 
   //Set touched on blur
@@ -348,12 +348,9 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
 
   //From ControlValueAccessor interface
   writeValue(value: any) {
-    if(value != null) {
-      if (value !== this.innerValue) {
-        this.innerValue = value;
-      }
+    if (value !== this.innerValue) {
+      this.innerValue = value;
     }
-
   }
 
   //From ControlValueAccessor interface
