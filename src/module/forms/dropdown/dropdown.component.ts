@@ -126,7 +126,7 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
     if (this.placeholder == '' || this.placeholder == null) this.placeholder = 'Choose Option';
     if (this.httpmethod && this.httpurl) {
       this.dataService.fetchData(this.httpurl, this.httpmethod).subscribe(response => {
-        this.responseData = response.json();
+        this.responseData = response;
       }, error => {
       }, () => {
         this.setData(this.responseData);

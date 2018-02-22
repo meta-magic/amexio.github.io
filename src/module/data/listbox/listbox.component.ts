@@ -63,7 +63,7 @@ export class AmexioListBoxComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     if (this.httpmethod && this.httpurl) {
       this.dataService.fetchData(this.httpurl, this.httpmethod).subscribe(response => {
-        this.response = response.json();
+        this.response = response;
       }, error => {
       }, () => {
         this.setData(this.response);

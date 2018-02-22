@@ -56,7 +56,7 @@ export class AmexioItemSelectorComponent implements OnInit {
   ngOnInit() {
     if (this.httpmethod && this.httpurl) {
       this.itemSelectorService.fetchData(this.httpurl, this.httpmethod).subscribe(response => {
-        this.response = response.json();
+        this.response = response;
       }, error => {
       }, () => {
         this.setData(this.response);

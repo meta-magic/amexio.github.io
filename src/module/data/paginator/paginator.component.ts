@@ -87,7 +87,7 @@ export class AmexioPaginatorComponent {
       this.onPageChange.emit(this.activePage);
     } else {
       // load prev rows
-      let sIndx
+      let sIndx;
       if (this.fullPageSet.indexOf(this.activePage) == 1) {
         sIndx = this.fullPageSet.indexOf(this.activePage);
       } else {

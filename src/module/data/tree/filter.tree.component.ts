@@ -5,8 +5,9 @@
 import {
   AfterViewInit, ChangeDetectorRef, Component, ContentChild, DoCheck, EventEmitter, Input, OnInit, Output, TemplateRef
 } from '@angular/core';
-import {Http, Headers, RequestOptions} from '@angular/http';
+// import {Http, Headers, RequestOptions} from '@angular/http';
 import {CommonDataService} from "../../services/data/common.data.service";
+import {HttpClient} from "@angular/common/http";
 
 
 @Component({
@@ -93,7 +94,7 @@ export class AmexioFilterTreeComponent implements OnInit, AfterViewInit, DoCheck
 
   @ContentChild('amexioTreeTemplate') parentTmp: TemplateRef<any>;
 
-  constructor(private _http: Http, private cdf: ChangeDetectorRef, private  treeViewFilterService: CommonDataService) {
+  constructor(private _http: HttpClient, private cdf: ChangeDetectorRef, private  treeViewFilterService: CommonDataService) {
     this.filterIndex = 3;
     this.triggerchar = 1;
     this.filterOptionData = [{
@@ -235,7 +236,7 @@ export class AmexioFilterTreeComponent implements OnInit, AfterViewInit, DoCheck
 
   callService() {
     this.treeViewFilterService.fetchData(this.httpurl, this.httpmethod).subscribe(response => {
-      this.data = response.json();
+      this.data = response;
     }, () => {
       this.renderServiceData();
     });

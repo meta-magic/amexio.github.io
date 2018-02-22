@@ -418,7 +418,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
     if (this.httpmethod && this.httpurl){
       this.dataTableService.fetchData(this.httpurl, this.httpmethod).subscribe(
         response => {
-          this.responseData = response.json();
+          this.responseData = response;
         },
         error => {
         },

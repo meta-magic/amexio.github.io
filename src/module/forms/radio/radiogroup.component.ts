@@ -47,7 +47,7 @@ export class AmexioRadioGroupComponent {
   ngOnInit() {
     if (this.httpmethod && this.httpurl) {
       this.amxHttp.fetchData(this.httpurl, this.httpmethod).subscribe(response => {
-        this.responseData = response.json();
+        this.responseData = response;
       }, error => {
       }, () => {
         this.viewData = this.getResponseData(this.responseData);

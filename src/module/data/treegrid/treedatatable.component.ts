@@ -164,7 +164,7 @@ export class TreeDataTableComponent implements OnInit {
     if (this.httpmethod && this.httpurl) {
 
       this.treeDataTableService.fetchData(this.httpurl, this.httpmethod).subscribe(response => {
-        this.responseData = response.json();
+        this.responseData = response;
       }, error => {
       }, () => {
         this.setData(this.responseData);

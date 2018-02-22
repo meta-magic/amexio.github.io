@@ -62,7 +62,7 @@ export class AmexioCheckBoxGroupComponent {
   ngOnInit() {
     if (this.httpmethod && this.httpurl) {
       this.amxHttp.fetchData(this.httpurl, this.httpmethod).subscribe(response => {
-        this.responseData = response.json();
+        this.responseData = response;
       }, error => {
       }, () => {
         this.setData(this.responseData);
