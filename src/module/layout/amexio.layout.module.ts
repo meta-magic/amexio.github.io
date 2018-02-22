@@ -13,7 +13,6 @@ import {AmexioBorderLayoutComponent} from "./border/borderlayout.component";
 import {AmexioCardComponent} from "./card/card.component";
 import {AmexioAccordionTabComponent} from "./accordion/accordion.pane";
 import {AmexioAccordionComponent} from "./accordion/accordion.component";
-import {AccordionService} from "./accordion/accordion.service";
 import {HttpClientModule} from "@angular/common/http";
 
 export * from '../services/data/common.data.service';
@@ -48,13 +47,13 @@ const LAYOUT_COMPONENTS = [
   ],
   exports: LAYOUT_COMPONENTS,
   declarations: LAYOUT_COMPONENTS,
-  providers : [AccordionService,CommonDataService,DeviceQueryService]
+  providers : [CommonDataService,DeviceQueryService]
 })
 export class AmexioLayoutModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: AmexioLayoutModule,
-      providers: [CommonDataService,DeviceQueryService,AccordionService]
+      providers: [CommonDataService,DeviceQueryService]
     };
   }
 }
