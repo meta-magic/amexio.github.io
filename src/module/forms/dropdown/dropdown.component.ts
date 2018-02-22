@@ -146,14 +146,19 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
     if (this.datareader != null) {
       this.multiselectValues = [];
       let dr = this.datareader.split(".");
-      for (let ir = 0; ir < dr.length; ir++) {
-        responsedata = responsedata[dr[ir]];
+      if(dr){
+        for (let ir = 0; ir < dr.length; ir++) {
+          responsedata = responsedata[dr[ir]];
+        }
       }
     } else {
       responsedata = httpResponse;
     }
-    this.viewData = responsedata.sort((a: any, b: any) => a[this.displayfield].toLowerCase() !== b[this.displayfield].toLowerCase() ? a[this.displayfield].toLowerCase() < b[this.displayfield].toLowerCase() ? -1 : 1 : 0);
-    this.filteredOptions = this.viewData;
+    if(responsedata) {
+      this.viewData = responsedata.sort((a: any, b: any) => a[this.displayfield].toLowerCase() !== b[this.displayfield].toLowerCase() ? a[this.displayfield].toLowerCase() < b[this.displayfield].toLowerCase() ? -1 : 1 : 0);
+      this.filteredOptions = this.viewData;
+    }
+
 
     if (this.multiselect) {
       let preSelectedMultiValues: string = '';
@@ -223,7 +228,7 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
 
   setMultiSelectData () {
     this.multiselectValues = [];
-    if(this.value.length > 0){
+    if(this.value && this.value.length > 0){
       let modelValue = this.value;
       this.filteredOptions.forEach((test)=>{
         modelValue.forEach((mdValue: any)=>{
@@ -247,7 +252,7 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
         this.multiselectValues.forEach((row: any) => {
           multiselectDisplayString == '' ? multiselectDisplayString += row[this.displayfield] : multiselectDisplayString += ',' + row[this.displayfield];
         });
-        if (this.multiselectValues.length > 0)
+        if (this.multiselectValues && this.multiselectValues.length > 0)
           return multiselectDisplayString; else
           return '';
       } else {
