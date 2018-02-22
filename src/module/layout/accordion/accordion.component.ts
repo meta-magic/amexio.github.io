@@ -1,81 +1,63 @@
-/*
- * Copyright 2016-2017 the original author or authors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Author - Pratik Kelwalkar
- *
- */
-import {Component, ContentChildren, Input, QueryList} from '@angular/core';
-import {AccordionService} from "./accordion.service";
-import {AmexioAccordionTabComponent} from "./accordion.pane";
+
+import {Component, ContentChildren, Input, QueryList, AfterViewInit, OnInit, DebugElement, AfterContentInit} from '@angular/core';
+import { AmexioAccordionTabComponent } from './accordion.pane';
 
 @Component({
-  selector: 'amexio-accordion', template: `
-    <ng-content></ng-content>
-  `
+  selector: 'amexio-accordion', templateUrl :'./accordion.component.html'
 })
 
-export class AmexioAccordionComponent {
+export class AmexioAccordionComponent implements OnInit, AfterContentInit {
 
   @Input('expand-all') expandAll : boolean;
-
+  
   @Input('transparent') isTransparent : boolean;
 
   @Input('angle-icon') angleIcon : boolean;
 
-  @ContentChildren(AmexioAccordionTabComponent)  panes : QueryList<AmexioAccordionTabComponent>;
+  @ContentChildren(AmexioAccordionTabComponent) queryTabs: QueryList<AmexioAccordionTabComponent>;
 
-  rootId : number;
+  accordionCollections: AmexioAccordionTabComponent[];
 
-  constructor(private acc : AccordionService){
-    this.rootId = Math.floor(Math.random() * 90000) + 10000;
-    this.acc.getEvents().subscribe(
-      event=>{
-        this.togglePanes(event);
-      }
-    );
+  constructor(){
+  }
+
+  ngOnInit(){
+
   }
 
   ngAfterContentInit(){
-    this.setParent();
-    if(this.expandAll != null && this.expandAll)
-      this.expandAllPanes();
-  }
+    this.accordionCollections = this.queryTabs.toArray();
+    this.accordionCollections.forEach(node => node.emittedEvent.subscribe((eventdata:any) => this.activateAccordionPane(eventdata)));
 
-  setParent(){
-    this.panes.toArray().forEach((pane : any)=>{
-      pane.isTransparent = this.isTransparent;
-      this.angleIcon ? pane.angleIcon = this.angleIcon : pane.angleIcon = pane.angleIcon;
-      pane.parentId = this.rootId;
+    this.accordionCollections.forEach(node => {
+      if(this.expandAll)
+        node.active = true;
+      else if(node.active)
+        node.active = true;
+      else
+        node.active = false;
+
+      if(this.isTransparent)
+        node.isTransparent = true;     
+        
+      if(this.angleIcon)
+        node.angleIcon = true;  
+ 
     });
+    
   }
 
-  togglePanes(id : any){
-    if(id.parent == this.rootId){
-      if(!this.expandAll){
-        this.panes.forEach((pane : AmexioAccordionTabComponent)=>{
-          if(!pane.disabled){
-            if(id.id != pane.paneId){
-              pane.active= false;
-              pane.content.nativeElement.style.maxHeight = null;
-            }
-          }
-        });
-      }
-    }
+  activateAccordionPane(node: AmexioAccordionTabComponent){
+     this.accordionCollections.forEach(tab => {
+      tab.active = false;
+      
+      if (tab == node) {
+         tab.active = true ;
+       }
+     });
   }
 
-  expandAllPanes(){
-    this.panes.forEach( (pane : AmexioAccordionTabComponent)=>{
-      if(!pane.disabled){
-        pane.active = true;
-        pane.content.nativeElement.style.maxHeight = pane.content.nativeElement.scrollHeight + 'px';
-      }
-    })
-  }
+
+ 
+
 }
