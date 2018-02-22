@@ -1,15 +1,16 @@
+/*
 
-/*----------------------------------------------------------------------*/
-/*        ACCORDION COMPONENT - Structure        */
-/*----------------------------------------------------------------------*/
+!*----------------------------------------------------------------------*!
+!*        ACCORDION COMPONENT - Structure        *!
+!*----------------------------------------------------------------------*!
 
 .accordion {
-  
+
   cursor: pointer;
   padding: 10px;
   width: 100%;
   text-align: left;
-  outline: none;  
+  outline: none;
   transition: 0.4s;
 }
 
@@ -27,14 +28,14 @@
   transition: max-height 0.2s ease-out;
 }
 
-/** Transparent Styling **/
+!** Transparent Styling **!
 .accordion-transparent{
   cursor: pointer;
   padding: 10px;
   width: 100%;
   text-align: left;
   outline: none;
-  
+
   transition: 0.4s;
   box-shadow: none;
   border-top: $accordionBorderSize solid $accordionBorderColor;
@@ -57,3 +58,4 @@
   cursor: not-allowed;
 }
 
+*/

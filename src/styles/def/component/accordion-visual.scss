@@ -1,7 +1,8 @@
+/*
 
-/*----------------------------------------------------------------------*/
-/*        ACCORDION COMPONENT - Visual      */
-/*----------------------------------------------------------------------*/
+!*----------------------------------------------------------------------*!
+!*        ACCORDION COMPONENT - Visual      *!
+!*----------------------------------------------------------------------*!
 
 .accordion {
   background-color: $accordionBGColor;
@@ -22,14 +23,14 @@
 }
 
 .panel {
- 
+
   background-color: $accordionPanelBGColor;
   color: $accordionPanelColor;
 }
 
-/** Transparent Styling **/
+!** Transparent Styling **!
 .accordion-transparent{
-  
+
   background:$accordionTransparentBG;
   color:$accordionTransparentColor;
   border-color:$accordionTransparentBorder;
@@ -44,4 +45,78 @@
 .panel {
   background-color: $accordionPanelBGColor;
   color: $accordionPanelColor;
+}
+*/
+/*----------------------------------------------------------------------*/
+/*        ACCORDION COMPONENT         */
+/*----------------------------------------------------------------------*/
+
+.accordion {
+  background-color: $accordionBGColor;
+  color: $accordionColor;
+  cursor: pointer;
+  padding: 10px;
+  width: 100%;
+  border-color: $borderColor;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+
+.accordion .active-accordion, .accordion:hover {
+  background-color: $accordionActiveBGColor;
+  color: $accordionActiveColor;
+}
+
+.accordion:after {
+  color: red;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+}
+.panel {
+  padding: 18px;
+  background-color: $accordionPanelBGColor;
+  color: $accordionPanelColor;
+  overflow: auto;
+}
+
+
+/** Transparent Styling **/
+.accordion-transparent{
+  cursor: pointer;
+  padding: 10px;
+  width: 100%;
+  background: white;
+  border-color: white;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+  box-shadow: none;
+  border-top: $borderSize solid $borderColor;
+}
+
+.accordion-transparent .active-accordion, .accordion-transparent:hover {
+
+}
+
+.accordion-transparent:after {
+  color: red;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+}
+
+.accordion-disable{
+  opacity: 0.55;
+  cursor: not-allowed;
 }
