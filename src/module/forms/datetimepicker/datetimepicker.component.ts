@@ -29,6 +29,8 @@ export class AmexioDateTimePicker implements OnInit {
 
   posixUp : boolean;
 
+  positionClass : any;
+
   @Output() blur: EventEmitter<any> = new EventEmitter<any>();
   @Output() change: EventEmitter<any> = new EventEmitter<any>();
   @Output() input: EventEmitter<any> = new EventEmitter<any>();
@@ -305,10 +307,26 @@ export class AmexioDateTimePicker implements OnInit {
   }
   getListPosition(elementRef : any) :boolean{
     let dropdownHeight : number = 350; //must be same in dropdown.scss
-    if(window.screen.height - (elementRef.getBoundingClientRect().bottom) < dropdownHeight){
+    if(window.innerHeight - (elementRef.getBoundingClientRect().bottom) < dropdownHeight){
+      
+      if((elementRef.getBoundingClientRect().top - dropdownHeight - elementRef.getBoundingClientRect().height)>0){
+        this.positionClass={
+          'top' : (elementRef.getBoundingClientRect().top - dropdownHeight - elementRef.getBoundingClientRect().height)+'px'
+        };
+      }
+      else if((dropdownHeight - elementRef.getBoundingClientRect().top)>0){
+        this.positionClass={
+          'top' : (dropdownHeight - elementRef.getBoundingClientRect().top)+'px'
+        };
+      }else if((elementRef.getBoundingClientRect().top- dropdownHeight)>0){
+        this.positionClass={
+          'top' : (elementRef.getBoundingClientRect().top-dropdownHeight)+'px'
+        };
+      }
       return true;
     }
     else{
+      this.positionClass ={};
       return false;
     }
   }
