@@ -257,6 +257,9 @@ image using the content attribute.
   border-bottom-color: #5C6BC0;
   animation: spinner .8s ease infinite; }
 
+.row-disabled {
+  opacity: 0.55; }
+
 /*----------------------------------------------------------------------*/
 /*        BUTTON COMPONENT         */
 /*----------------------------------------------------------------------*/
@@ -621,6 +624,10 @@ textarea:required {
 .image-title {
   display: none; }
 
+/**This Class is for radio disabled***/
+.radio-disabled {
+  color: gray; }
+
 /*----------------------------------------------------------------------*/
 /***CHECKBOX & RADIOGROUP STYLE STARTS***/
 /*----------------------------------------------------------------------*/
@@ -930,7 +937,7 @@ textarea:required {
 .toggle {
   position: relative;
   display: inline-block;
-  width: 40px;
+  width: 60px;
   height: 34px;
   vertical-align: middle; }
 
@@ -2567,12 +2574,10 @@ a:hover {
   margin-left: 5px; }
 
 .panel {
-  padding: 0 18px;
+  padding: 18px;
   background-color: white;
   color: black;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out; }
+  overflow: auto; }
 
 /** Transparent Styling **/
 .accordion-transparent {
@@ -2593,14 +2598,6 @@ a:hover {
   font-weight: bold;
   float: right;
   margin-left: 5px; }
-
-.panel {
-  padding: 0 18px;
-  background-color: white;
-  color: black;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out; }
 
 .accordion-disable {
   opacity: 0.55;
