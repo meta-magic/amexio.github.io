@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {CommonDataService} from "../services/data/common.data.service";
-import {HttpModule} from "@angular/http";
 
 
 import {ChartLegendComponent} from "./chartlegend/chart.legend.component";
@@ -24,6 +23,7 @@ import {ScatterChartComponent} from "./scatterchart/scatter.chart.component";
 import {CandlestickChartComponent} from "./candlestickchart/candlestick.chart.component";
 import {CandlestickWaterfallChartComponent} from "./candlestickwaterfallchart/candlestickwaterfall.chart.component";
 import {ChartLoaderService} from "./chart.loader.service";
+import {HttpClientModule} from "@angular/common/http";
 
 export  * from "./chartlegend/chart.legend.component";
 export  * from  "./charttitle/chart.title.component";
@@ -63,7 +63,7 @@ const CHART_COMPONENTS = [
   imports: [
     CommonModule,
     FormsModule,
-    HttpModule
+    HttpClientModule
   ],
   exports: CHART_COMPONENTS,
   declarations: CHART_COMPONENTS,

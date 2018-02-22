@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {CommonDataService} from "../services/data/common.data.service";
-import {HttpModule} from "@angular/http";
 import {AmexioTreeViewComponent} from "./tree/tree.component";
 import {AmexioListBoxComponent} from "./listbox/listbox.component";
 import {AmexioDatagridComponent} from "./datagrid/datagrid.component";
@@ -20,6 +19,7 @@ import {AmexioDataIconComponent} from "./icon/icon.component";
 import {AmexioItemSelectorComponent} from "./itemselector/item.selector.component";
 import {AmexioPaneModule} from "../panes/amexio.pane.module";
 import {AmexioLayoutModule} from "../layout/amexio.layout.module";
+import {HttpClientModule} from "@angular/common/http";
 
 export * from '../services/data/common.data.service';
 export * from './listbox/listbox.component';
@@ -49,9 +49,9 @@ const DATA_COMPONENTS = [
   imports: [
     CommonModule,
     FormsModule,
-    HttpModule,
     AmexioPaneModule,
-    AmexioLayoutModule
+    AmexioLayoutModule,
+    HttpClientModule
   ],
   exports: DATA_COMPONENTS,
   declarations: DATA_COMPONENTS,

@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {CommonDataService} from "../services/data/common.data.service";
-import {HttpModule} from "@angular/http";
 import {AmexioSideNav} from "./sidenav/sidenav.component";
 import {SideNavNodeComponent} from "./sidenav/sidenavnode.component";
 import {DeviceQueryService} from "../services/device/device.query.service";
@@ -20,6 +19,7 @@ import {AmexioLayoutModule} from "../layout/amexio.layout.module";
 import {AmexioNavIconPane} from "./icon/icon.component";
 import {IconLoaderService} from "../services/icon/icon.service";
 import {AmexioFormsModule} from "../forms/amexio.forms.module";
+import {HttpClientModule} from "@angular/common/http";
 
 export * from '../services/data/common.data.service';
 export * from '../services/device/device.query.service';
@@ -44,10 +44,10 @@ const NAV_COMPONENTS = [
   imports: [
     CommonModule,
     FormsModule,
-    HttpModule,
     AmexioMediaModule,
     AmexioLayoutModule,
-    AmexioFormsModule
+    AmexioFormsModule,
+    HttpClientModule
   ],
   exports: NAV_COMPONENTS,
   declarations: NAV_COMPONENTS,

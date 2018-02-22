@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {CommonDataService} from "../services/data/common.data.service";
-import {HttpModule} from "@angular/http";
 import {DeviceQueryService} from "../services/device/device.query.service";
 import {AmexioRowComponent} from "./rows/row.component";
 import {AmexioColumnComponent} from "./columns/column.component";
@@ -15,6 +14,7 @@ import {AmexioCardComponent} from "./card/card.component";
 import {AmexioAccordionTabComponent} from "./accordion/accordion.pane";
 import {AmexioAccordionComponent} from "./accordion/accordion.component";
 import {AccordionService} from "./accordion/accordion.service";
+import {HttpClientModule} from "@angular/common/http";
 
 export * from '../services/data/common.data.service';
 export * from '../services/device/device.query.service';
@@ -44,7 +44,7 @@ const LAYOUT_COMPONENTS = [
   imports: [
     CommonModule,
     FormsModule,
-    HttpModule
+    HttpClientModule
   ],
   exports: LAYOUT_COMPONENTS,
   declarations: LAYOUT_COMPONENTS,

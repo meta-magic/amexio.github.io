@@ -9,7 +9,6 @@ import {AmexioTextInputComponent} from "./textinput/textinput.component";
 import {AmexioCheckBoxComponent} from "./checkbox/checkbox.component";
 import {AmexioDropDownComponent} from "./dropdown/dropdown.component";
 import {AmexioTypeAheadComponent} from "./typeahead/typeahead.component";
-import {HttpModule} from "@angular/http";
 import {AmexioRadioGroupComponent} from "./radio/radiogroup.component";
 import {AmexioEmailInputComponent} from "./emailinput/emailinput.component";
 import {AmexioNumberInputComponent} from "./numberinput/numberinput.component";
@@ -32,6 +31,7 @@ import {AmexioButtonDropDownItemComponent} from "./button-dropdown/button.dropdo
 import {AmexioFileUploadComponent} from "./fileupload/fileupload.component";
 import {DomHandler} from "./slider/slider.handler";
 import {AmexioLabelComponent} from "./label/label.component";
+import {HttpClientModule} from "@angular/common/http";
 export * from '../services/data/common.data.service';
 export * from '../services/icon/icon.service';
 
@@ -68,8 +68,8 @@ const FORM_COMPONENTS = [
   imports: [
     CommonModule,
     FormsModule,
-    HttpModule,
-    AmexioLayoutModule
+    AmexioLayoutModule,
+    HttpClientModule
   ],
   exports: FORM_COMPONENTS,
   declarations: FORM_COMPONENTS,

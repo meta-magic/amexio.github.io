@@ -5,12 +5,12 @@ import { CommonModule } from '@angular/common';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {CommonDataService} from "../services/data/common.data.service";
-import {HttpModule} from "@angular/http";
 import {DeviceQueryService} from "../services/device/device.query.service";
 import {MultiMediaCarousel} from "./ee-carousel/ee.carousel.component";
 import {ContentComponent} from "./ee-content/ee.content";
 import {AmexioYoutubePlayerComponent} from "./youtube-player/youtube.player.component";
 import {AmexioFormsModule} from "../forms/amexio.forms.module";
+import {HttpClientModule} from "@angular/common/http";
 
 export * from '../services/data/common.data.service';
 export * from '../services/device/device.query.service';
@@ -29,8 +29,8 @@ const ENTERPRISE_COMPONENTS = [
   imports: [
     CommonModule,
     FormsModule,
-    HttpModule,
-    AmexioFormsModule
+    AmexioFormsModule,
+    HttpClientModule
   ],
   exports: ENTERPRISE_COMPONENTS,
   declarations: ENTERPRISE_COMPONENTS,

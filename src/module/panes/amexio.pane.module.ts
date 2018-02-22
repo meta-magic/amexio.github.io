@@ -28,6 +28,7 @@ import {AmexioIconPane} from "./icon/icon.component";
 import {AmexiodialoguePaneComponent} from "./dialogue/dialogue.pane.component";
 import {AmexioFormsModule} from "../forms/amexio.forms.module";
 import {AmexioPanelComponent} from "./panel/panel.component";
+import {HttpClientModule} from "@angular/common/http";
 
 /*export * from './accordion/accordion.component';
 export * from './accordion/accordion.pane';
@@ -80,7 +81,7 @@ const PANE_COMPONENTS = [
     CommonModule,
     FormsModule,
     AmexioFormsModule,
-    HttpModule
+    HttpClientModule
   ],
   exports: PANE_COMPONENTS,
   declarations: PANE_COMPONENTS,

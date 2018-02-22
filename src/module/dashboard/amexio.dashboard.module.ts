@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {CommonDataService} from "../services/data/common.data.service";
-import {HttpModule} from "@angular/http";
 import {DashBoardTitle} from "./dashboardtitle/dashboard.title.component";
 import {DataPointCenterComponent} from "./datapoints/center.component";
 import {DataPointsComponent} from "./datapoints/datapoints.component";
@@ -12,6 +11,7 @@ import {DataPointSouthComponent} from "./datapoints/south.component";
 import {DataPointWestComponent} from "./datapoints/west.component";
 import {DashboardLoaderService} from "./chart.loader.service";
 import {GaugeChartComponent} from "./gaugechart/gauge.chart.component";
+import {HttpClientModule} from "@angular/common/http";
 
 export * from '../services/data/common.data.service';
 export * from './dashboardtitle/dashboard.title.component';
@@ -38,7 +38,7 @@ const DASHBOARD = [
   imports: [
     CommonModule,
     FormsModule,
-    HttpModule
+    HttpClientModule
   ],
   exports: DASHBOARD,
   declarations: DASHBOARD,
