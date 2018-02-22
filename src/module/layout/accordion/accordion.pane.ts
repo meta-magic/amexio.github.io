@@ -28,9 +28,12 @@ export class AmexioAccordionTabComponent  {
     
   }
 
-  emitEvent() {
-    if(!this.disabled)
-      this.emittedEvent.emit(this);
-  }
 
+  emitEvent() {
+    if(!this.disabled){
+      this.active=!this.active;
+      this.emittedEvent.emit(this);
+    }
+      
+  }
 }
