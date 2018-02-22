@@ -37,7 +37,7 @@
 
 
   </div>
-  <div [ngStyle]="{'display': showToolTip ? 'block' : 'none'}" class="datetimepicker" [ngClass]="{'datetimepicker-up' : posixUp}">
+  <div *ngIf="showToolTip" [ngStyle]="positionClass" class="datetimepicker">
 
       <div class="datetimepickertopbar" [ngStyle]="{'display': datepicker ? 'block' : 'none'}">
         <ul>
