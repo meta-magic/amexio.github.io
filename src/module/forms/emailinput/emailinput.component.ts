@@ -19,6 +19,9 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
 
   @Input('field-label') fieldlabel: string;
 
+  @Input('has-label') hasLabel: boolean = true;
+
+
   @Input('allow-blank') allowblank: string;
 
   helpInfoMsg: string;
