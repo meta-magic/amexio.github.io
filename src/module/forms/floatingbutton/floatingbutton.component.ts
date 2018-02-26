@@ -30,6 +30,8 @@ export class AmexioFloatingButtonComponent implements OnInit{
 
   @Input('disabled') disabled : string;
 
+  @Input('relative') relative : boolean = false;
+
   @Output() onClick : any = new EventEmitter<any>();
 
   positionclass : string;
@@ -42,18 +44,26 @@ export class AmexioFloatingButtonComponent implements OnInit{
 
   ngOnInit()
   {
-
+    debugger;
       if(this.top || this.bottom || this.right || this.left){
         this.absoluteposition = true;
       }  
 
-      if(!this.absoluteposition){
+      this.positionclass = ""
+
+      if(this.relative){
+        this.positionclass = " floatingbutton-relative "
+      }else{
+        this.positionclass = " floatingbutton-fixed "
+      }
+
+      if(!this.absoluteposition && !this.relative){
         if (this.verticalposition == null) {
             this.verticalposition = 'top';
           } else if (this.horizontalposition == null) {
             this.horizontalposition = 'right'
           }
-          this.positionclass = "floatingbutton-" + this.verticalposition + " floatingbutton-" + this.horizontalposition+" floatingbutton-default";
+          this.positionclass = this.positionclass+ " floatingbutton-" + this.verticalposition + " floatingbutton-" + this.horizontalposition+" floatingbutton-default";
       }  
       if(this.block === "circle"){
           this.positionclass = this.positionclass +" floatingbutton-circle";
