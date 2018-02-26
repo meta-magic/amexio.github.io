@@ -1,0 +1,65 @@
+
+$floatingPrimaryBgColor : $primaryBGColor;
+$floatingPrimaryColor : $primaryColor;
+
+$floatingSuccessBgColor :$successBGColor;
+$floatingSuccessColor : $successColor;
+
+$floatingDangerBgColor :  $dangerBGColor;
+$floatingDangerColor : $dangerColor;
+
+$floatingWarningBgColor : $warningBGColor;
+$floatingWarningColor : $warningColor;
+    
+
+.floatingbutton-default{
+    background-color: #ffffff; 
+}
+
+.floatingbutton-primary{
+    background-color: $floatingPrimaryBgColor;
+    color: $floatingPrimaryColor;
+}
+
+.floatingbutton-success{
+    background-color: $floatingSuccessBgColor;
+    color: $floatingSuccessColor;
+}
+
+.floatingbutton-danger{
+    background-color: $floatingDangerBgColor;
+    color: $floatingDangerColor;
+}
+
+.floatingbutton-warning{
+    background-color: $floatingWarningBgColor;
+    color: $floatingWarningColor;
+}
+
+// Disabled
+
+.floatingbutton-default-disabled{
+    background-color: #ffffff; 
+    color: lightgray;
+}
+
+.floatingbutton-primary-disabled{
+    background-color: lighten($floatingPrimaryBgColor,20);
+    color: $floatingPrimaryColor;
+}
+
+.floatingbutton-success-disabled{
+    background-color:  lighten($floatingSuccessBgColor,20);
+    color: $floatingSuccessColor;
+}
+
+.floatingbutton-danger-disabled{
+    background-color:  lighten($floatingDangerBgColor,20);
+    color: $floatingDangerColor;
+}
+
+.floatingbutton-warning-disabled{
+    background-color:  lighten($floatingWarningBgColor,20);
+    color: $floatingWarningColor;
+}
+

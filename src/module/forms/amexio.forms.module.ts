@@ -32,6 +32,7 @@ import {AmexioFileUploadComponent} from "./fileupload/fileupload.component";
 import {DomHandler} from "./slider/slider.handler";
 import {AmexioLabelComponent} from "./label/label.component";
 import {HttpClientModule} from "@angular/common/http";
+import { AmexioFloatingButtonComponent } from './floatingbutton/floatingbutton.component';
 export * from '../services/data/common.data.service';
 export * from '../services/icon/icon.service';
 
@@ -61,7 +62,8 @@ const FORM_COMPONENTS = [
   AmexioButtonDropdownComponent,
   AmexioSpiltButtonDropdownComponent,
   AmexioFileUploadComponent,
-  AmexioLabelComponent
+  AmexioLabelComponent,
+  AmexioFloatingButtonComponent
 ];
 
 @NgModule({

@@ -1,0 +1,9 @@
+
+<div class="floatingbutton" 
+[ngClass]="positionclass" 
+[ngStyle]="{'top':top,'bottom':bottom,'left':left,'right':right}"
+(click)="buttonClick($event)">
+<amexio-form-icon *ngIf="icon" [customclass]="icon" >
+</amexio-form-icon>
+{{label}}
+</div>

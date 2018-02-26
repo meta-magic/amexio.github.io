@@ -1,0 +1,43 @@
+
+.floatingbutton{
+    position: fixed!important;
+    z-index: 3;
+    text-align:center;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    border-color: #ced4da;
+    cursor: pointer;
+  }
+  
+  .floatingbutton-left{
+    left:5%;
+  }
+  
+  .floatingbutton-right{
+    right:5%;
+  }
+  
+  .floatingbutton-top{
+    top:10%;
+  }
+  
+
+  .floatingbutton-bottom{
+    bottom:10%;
+  }
+
+  .floatingbutton-center{
+    top:50%;
+    left: 50%;
+  }
+   
+
+  .floatingbutton-circle{
+      border-radius: 50px;
+      width:60px;
+      height:60px;
+      line-height: 60px;
+  }
+
+.floatingbutton-square{
+    padding: .5rem 1rem;
+}
