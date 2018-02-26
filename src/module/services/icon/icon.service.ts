@@ -282,6 +282,10 @@ let ICON_MAPPING =
       "component" : "horizontal-tree-collapse",
       "fa" : "fa fa-caret-left fa-fw",
       "mat" : "keyboard_arrow_left"
+    },{
+      "component" : "button-loading-icon",
+      "fa" : "fa fa-refresh fa-spin",
+      "mat" : "cached"
     }
 
   ]
