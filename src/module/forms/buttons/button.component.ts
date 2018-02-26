@@ -24,6 +24,7 @@ export class AmexioButtonComponent {
 
   @Output() onClick: any = new EventEmitter<any>();
 
+  @Input() block: boolean;
 
   constructor() {
 

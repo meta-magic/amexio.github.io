@@ -1,94 +1,98 @@
+/*----------------------------------------------------------------------*/
+
+
+/*        BUTTON COMPONENT - Structure       */
+
 
 /*----------------------------------------------------------------------*/
-/*        BUTTON COMPONENT - Structure       */
-/*----------------------------------------------------------------------*/
+
 button {
-  display: inline-block;
-  //font-weight: 400;
-  line-height: 1.25;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  outline: none;
-  user-select: none;
-  border: 1px solid $buttonBorderColor;
-  padding: .5rem 1rem;
-  border-radius: $buttonBorderRadius;
-  transition: all .2s ease-in-out;
+    display: inline-block;
+    //font-weight: 400;
+    line-height: 1.25;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    outline: none;
+    user-select: none;
+    border: 1px solid $buttonBorderColor;
+    padding: .5rem 1rem;
+    border-radius: $buttonBorderRadius;
+    transition: all .2s ease-in-out;
 }
 
 .button-text {
-  display: inline-block;
+    display: inline-block;
 }
 
-
-.button-small{
-  padding: .25rem .5rem;
+.button-small {
+    padding: .25rem .5rem;
 }
 
-.button-default{
-  padding: .5rem 1rem;
- // font-size: 1rem;
+.button-default {
+    padding: .5rem 1rem;
+    // font-size: 1rem;
 }
 
-.button-large{
-  padding: .75rem 1.5rem;
- // font-size: 1.25rem;
+.button-large {
+    padding: .75rem 1.5rem;
+    // font-size: 1.25rem;
 }
 
-.button-secondary{
-  // background-color: $secondaryBGColor;
-  // border-color: $borderColor;
-  // color: $secondaryColor;
+.button-secondary {
+    // background-color: $secondaryBGColor;
+    // border-color: $borderColor;
+    // color: $secondaryColor;
 }
 
-
-.button-secondary:hover:enabled{
- // background-color: darken($secondaryBGColor, 10%);
+.button-secondary:hover:enabled {
+    // background-color: darken($secondaryBGColor, 10%);
 }
 
 .button-primary {
-  // background-color: $primaryBGColor;
-  // border-color: $primaryBGColor;
-  // color: $primaryColor;
+    // background-color: $primaryBGColor;
+    // border-color: $primaryBGColor;
+    // color: $primaryColor;
 }
 
-
-.button-primary:hover:enabled{
-//  background-color: darken($primaryBGColor, 10%);
+.button-primary:hover:enabled {
+    //  background-color: darken($primaryBGColor, 10%);
 }
 
 .button-success {
-  // background-color: $successBGColor;
-  // border-color: $successBGColor;
-  // color: $successColor;
-
+    // background-color: $successBGColor;
+    // border-color: $successBGColor;
+    // color: $successColor;
 }
 
-.button-success:hover:enabled{
-//  background-color: darken($successBGColor, 10%);
+.button-success:hover:enabled {
+    //  background-color: darken($successBGColor, 10%);
 }
 
 .button-danger {
-  // background-color: $dangerBGColor;
-  // border-color: $dangerBGColor;
-  // color: $dangerColor;
+    // background-color: $dangerBGColor;
+    // border-color: $dangerBGColor;
+    // color: $dangerColor;
 }
 
-.button-danger:hover:enabled{
-//  background-color: darken($dangerBGColor, 10%);
+.button-danger:hover:enabled {
+    //  background-color: darken($dangerBGColor, 10%);
 }
 
 .button-warning {
-  // background-color: $warningBGColor;
-  // border-color: $warningBGColor;
-  // color: $warningColor;
+    // background-color: $warningBGColor;
+    // border-color: $warningBGColor;
+    // color: $warningColor;
 }
 
-.button-warning:hover:enabled{
-//  background-color: darken($warningBGColor, 10%);
+.button-warning:hover:enabled {
+    //  background-color: darken($warningBGColor, 10%);
 }
 
+.button-block {
+    display: block;
+    width: 100%;
+}
