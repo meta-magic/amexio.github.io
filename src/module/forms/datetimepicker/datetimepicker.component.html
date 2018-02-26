@@ -25,6 +25,7 @@
              [attr.disabled]="readonly ? true: null"
              (blur)="onBlur()"
              (focus)="onFocus(rootDiv)"
+             (input)="onInput($event)"
              (change)="change.emit()"
              class="input-control" placeholder="Choose Time"/>
     </ng-container>
