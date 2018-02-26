@@ -135,6 +135,23 @@ export class AmexioDateTimePicker implements OnInit {
     this.showToolTip = !this.showToolTip;
   }
 
+  onInput(event : any){
+    if(event.target.value != null && event.target.value != ''){
+      let timeValue = event.target.value.split(':');
+      if(timeValue != null){
+        let hrs = parseInt(timeValue[0].trim());
+        let mins = parseInt(timeValue[1].trim());
+        this.selectedDate.setHours(hrs);
+        this.selectedDate.setMinutes(mins);
+        this.hrs = hrs;
+        this.min = mins;
+        this.value = this.selectedDate;
+        this.change.emit(this.value);
+        event.stopPropagation();
+      }
+    }
+  }
+
   resetSelection(dateObj: any) {
     for (let i = 0; i < this.daysArray.length; i++) {
       for (let j = 0; j < this.daysArray[i].length; j++) {
@@ -308,7 +325,7 @@ export class AmexioDateTimePicker implements OnInit {
   getListPosition(elementRef : any) :boolean{
     let dropdownHeight : number = 350; //must be same in dropdown.scss
     if(window.innerHeight - (elementRef.getBoundingClientRect().bottom) < dropdownHeight){
-      
+
       if((elementRef.getBoundingClientRect().top - dropdownHeight - elementRef.getBoundingClientRect().height)>0){
         this.positionClass={
           'top' : (elementRef.getBoundingClientRect().top - dropdownHeight - elementRef.getBoundingClientRect().height)+'px'
