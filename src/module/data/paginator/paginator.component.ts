@@ -69,6 +69,7 @@ export class AmexioPaginatorComponent {
   onFirstClick() {
     this.activePageIndex = 0;
     this.changeRows(this.pageIndex[0], 0, null);
+    this.onPageChange.emit(this.activePage);
   }
 
 
