@@ -398,7 +398,7 @@ gulp.task('rollup-bundle', (cb) => {
 
     };
     const rollupBaseConfig = {
-      name: _.camelCase(config.libraryName),
+      name: 'amexio-ng-extensions',
       sourcemap: true,
       globals: globals,
       external: Object.keys(globals),
