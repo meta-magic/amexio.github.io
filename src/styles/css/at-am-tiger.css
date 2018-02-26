@@ -277,6 +277,10 @@ button {
 .button-large {
   padding: .75rem 1.5rem; }
 
+.button-block {
+  display: block;
+  width: 100%; }
+
 /*----------------------------------------------------------------------*/
 /*        BUTTONGROUP COMPONENT - Visual*/
 /*----------------------------------------------------------------------*/
@@ -1005,7 +1009,7 @@ input:checked + .toggle-slider {
 .toggle {
   position: relative;
   display: inline-block;
-  width: 40px;
+  width: 60px;
   height: 34px;
   vertical-align: middle; }
 
@@ -1476,7 +1480,7 @@ header .billboard .content-button {
 .close-button {
   cursor: pointer;
   padding-left: 98%;
-  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, transparent 70%, transparent 100%); }
+  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 100%); }
 
 /*----------------------------------------------------------------------*/
 /*        Enterprise youtube COMPONENT - Structure     */
@@ -1493,7 +1497,7 @@ header .billboard .content-button {
 /*----------------------------------------------------------------------*/
 .close-button {
   cursor: pointer;
-  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, transparent 70%, transparent 100%); }
+  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 100%); }
 
 .close-button i:hover {
   cursor: pointer; }
@@ -1615,8 +1619,8 @@ header .billboard .content-button {
   right: 0;
   top: 0;
   opacity: 0;
-  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
   -webkit-transition: 450ms opacity;
   transition: 450ms opacity; }
 
@@ -1646,8 +1650,8 @@ header .billboard .content-button {
   right: 0;
   top: 50%;
   opacity: 0;
-  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
   -webkit-transition: 450ms opacity;
   transition: 450ms opacity; }
 
@@ -2835,88 +2839,171 @@ header .billboard .content-button {
 .dockbar-height::-webkit-scrollbar {
   width: 6px; }
 
+/*
+
+!*----------------------------------------------------------------------*!
+!*        ACCORDION COMPONENT - Visual      *!
+!*----------------------------------------------------------------------*!
+
+.accordion {
+  background-color: $accordionBGColor;
+  color: $accordionColor;
+  border-color: $accordionBorder;
+  font-size: $accordionFontSize;
+}
+
+
+.accordion .active-accordion, .accordion:hover {
+  background-color: $accordionActiveBGColor;
+  color: $accordionActiveColor;
+}
+
+.accordion:after {
+  color:$accordionTransparentColor;
+  font-weight: $accordionTransparentFontWeight;
+}
+
+.panel {
+
+  background-color: $accordionPanelBGColor;
+  color: $accordionPanelColor;
+}
+
+!** Transparent Styling **!
+.accordion-transparent{
+
+  background:$accordionTransparentBG;
+  color:$accordionTransparentColor;
+  border-color:$accordionTransparentBorder;
+  font-size: $accordionFontSize;
+}
+
+.accordion-transparent:after {
+  color:$accordionTransparentColor;
+  font-weight: $accordionTransparentFontWeight;
+}
+
+.panel {
+  background-color: $accordionPanelBGColor;
+  color: $accordionPanelColor;
+}
+*/
 /*----------------------------------------------------------------------*/
-/*        ACCORDION COMPONENT - Visual      */
+/*        ACCORDION COMPONENT         */
 /*----------------------------------------------------------------------*/
 .accordion {
   background-color: #292b2c;
   color: #E84C1A;
+  cursor: pointer;
+  padding: 10px;
+  width: 100%;
   border-color: #666666;
-  font-size: 15px; }
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s; }
 
 .accordion .active-accordion, .accordion:hover {
   background-color: #1b1d22;
   color: #E84C1A; }
 
 .accordion:after {
-  color: #E84C1A;
-  font-weight: bold; }
-
-.panel {
-  background-color: #484d5b;
-  color: rgba(255, 255, 255, 0.7); }
-
-/** Transparent Styling **/
-.accordion-transparent {
-  background: transparent;
-  color: #E84C1A;
-  border-color: transparent;
-  font-size: 15px; }
-
-.accordion-transparent:after {
-  color: #E84C1A;
-  font-weight: bold; }
-
-.panel {
-  background-color: #484d5b;
-  color: rgba(255, 255, 255, 0.7); }
-
-/*----------------------------------------------------------------------*/
-/*        ACCORDION COMPONENT - Structure        */
-/*----------------------------------------------------------------------*/
-.accordion {
-  cursor: pointer;
-  padding: 10px;
-  width: 100%;
-  text-align: left;
-  outline: none;
-  transition: 0.4s; }
-
-.accordion:after {
+  color: red;
+  font-weight: bold;
   float: right;
   margin-left: 5px; }
 
 .panel {
-  padding: 0 18px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out; }
+  padding: 18px;
+  background-color: #484d5b;
+  color: rgba(255, 255, 255, 0.7);
+  overflow: auto; }
 
 /** Transparent Styling **/
 .accordion-transparent {
+  cursor: pointer;
+  padding: 10px;
+  width: 100%;
+  background: white;
+  border-color: white;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+  box-shadow: none;
+  border-top: 2px solid #666666; }
+
+.accordion-transparent:after {
+  color: red;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px; }
+
+.accordion-disable {
+  opacity: 0.55;
+  cursor: not-allowed; }
+
+/*
+
+!*----------------------------------------------------------------------*!
+!*        ACCORDION COMPONENT - Structure        *!
+!*----------------------------------------------------------------------*!
+
+.accordion {
+
   cursor: pointer;
   padding: 10px;
   width: 100%;
   text-align: left;
   outline: none;
   transition: 0.4s;
-  box-shadow: none;
-  border-top: 2px solid #666666; }
+}
 
-.accordion-transparent:after {
+
+.accordion:after {
   float: right;
-  margin-left: 5px; }
+  margin-left: 5px;
+}
+
 
 .panel {
   padding: 0 18px;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.2s ease-out; }
+  transition: max-height 0.2s ease-out;
+}
 
-.accordion-disable {
+!** Transparent Styling **!
+.accordion-transparent{
+  cursor: pointer;
+  padding: 10px;
+  width: 100%;
+  text-align: left;
+  outline: none;
+
+  transition: 0.4s;
+  box-shadow: none;
+  border-top: $accordionBorderSize solid $accordionBorderColor;
+}
+
+.accordion-transparent:after {
+  float: right;
+  margin-left: 5px;
+}
+
+.panel {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+.accordion-disable{
   opacity: 0.55;
-  cursor: not-allowed; }
+  cursor: not-allowed;
+}
 
+*/
 /*----------------------------------------------------------------------*/
 /*        CARD COMPONENT   -Visual    */
 /*----------------------------------------------------------------------*/
@@ -3286,7 +3373,8 @@ fieldset {
   z-index: 1;
   /* Sit on top */
   width: 100%;
-  height: 100%; }
+  overflow: auto;
+  /* Enable scroll if needed */ }
 
 .modal-window-content {
   margin: auto;
