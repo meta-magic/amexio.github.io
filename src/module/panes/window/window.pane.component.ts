@@ -8,8 +8,8 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
   selector: 'amexio-window', template: `
     <div class="root-window" [ngClass]="{'modal-window-max': isFullWindow,'modal-window-min': !isFullWindow}"
          [ngStyle]="{'display' : showWindow ? 'block' : 'none'}">
-      <div class="modal-window-lg">
-        <div class="modal-window-content" [ngClass]="{'modal-window-content-max':isFullWindow}">
+      <div class="modal-window-lg" [ngStyle]="{'height': bodyHeight ? '100%':auto}">
+        <div class="modal-window-content" [ngStyle]="{'height': bodyHeight+'%'}" [ngClass]="{'modal-window-content-max':isFullWindow}">
           <header class="modal-window-header" *ngIf="header">
             <div class="modal-window-table">
               <div class="tablerow">
@@ -51,6 +51,8 @@ export class AmexioWindowPaneComponent implements OnInit {
 
   @Input('show-window') showWindow: boolean;
 
+  @Input('body-height') bodyHeight:string;
+
   isFullWindow: boolean;
 
   @Input() maximize: boolean;
@@ -75,6 +77,7 @@ export class AmexioWindowPaneComponent implements OnInit {
       this.isFullWindow = false;
     } else if (this.maximize) {
       this.isFullWindow = true;
+      this.bodyHeight = "100%";
     }
     if (this.footeralign == null) this.footeralign = "right";
 
