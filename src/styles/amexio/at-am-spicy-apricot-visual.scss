@@ -1,15 +1,8 @@
 
 body {
-  background-image: $themeBGImage;
+  background-image: $appBackgroundImage;
   background-repeat: repeat-x;
   background-attachment: fixed;
-  //font-family: 'Quicksand', sans-serif;
-  font-size: 16px;
-  // letter-spacing: 0.3px;
-  // text-transform: capitalize;
-  // margin: 0px;
-  // padding: 0px;
-
 }
 
 
@@ -25,7 +18,7 @@ body {
 //   line-height: 2;
 //   font-size: 14px;
 //   border: 2px solid #FF8B00;
-//   color: $themeColor;
+//   color: $themePrimaryColor;
 // }
 
 // .input-control-success {
@@ -84,7 +77,7 @@ body {
   //    border-bottom: 1px solid $borderColor;
     }
     .list-items:hover{
-      background-color: lighten($themeColor,70%);
+      background-color: lighten($themePrimaryColor,70%);
     }
   }
 
@@ -137,7 +130,7 @@ body {
 
 // .sidenav .activenode{
 //   color: white;
-//   //background-color: $themeColor;
+//   //background-color: $themePrimaryColor;
 //   border-right: $borderSize solid $borderColor;
 // }
 

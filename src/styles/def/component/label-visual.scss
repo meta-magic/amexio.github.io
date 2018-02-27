@@ -1,30 +1,9 @@
-.label-content{
 
-}
+/*----------------------------------------------------------------------*/
+/*        Label COMPONENT -Visual        */
+/*----------------------------------------------------------------------*/
 
-.large{
-  font-size: 36px;
-}
-
-.medium{
-  font-size: 20px;
-}
-
-.small{
-  font-size: 18px;
-}
-
-.large-bold{
-  font-size: 36px;
-  font-weight: bold;
-}
-
-.medium-bold{
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.small-bold{
-  font-size: 18px;
-  font-weight: bold;
+.highlight{
+  color:$themeFontColor;;
+  background-color:#ffeb3b;
 }

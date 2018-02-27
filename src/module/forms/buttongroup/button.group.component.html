@@ -4,7 +4,9 @@
     <button  [attr.disabled] = "button.disabled ? true: null" (click)="buttonClick($event,button)" 
     [ngClass]="{'button-default': button.size=='default'
     || button.size ==null,'button-small': button.size=='small','button-large' : button.size=='large','button-primary' : button.type == 'primary','button-secondary' : button.type == 'secondary'
-    || button.type == null,'button-success' : button.type == 'success',' button-danger' : button.type=='danger','button-warning' : button.type=='warning','disabled' : button.disabled}">
+    || button.type == null,'button-success' : button.type == 'success',' button-danger' : button.type=='danger',
+    'button-warning' : button.type=='warning','button-transparent' : button.type=='transparent',
+    'disabled' : button.disabled}">
       <!-- <i class="{{button.icon}}" aria-hidden="true"></i> -->
       <ng-container *ngIf="button.icon!=null">
         <amexio-form-icon style="padding-right: 5px;" [customclass]="button.icon"></amexio-form-icon>

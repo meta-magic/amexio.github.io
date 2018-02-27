@@ -2,7 +2,16 @@
 /*----------------------------------------------------------------------*/
 /*        WINDOW COMPONENT -Visual     */
 /*----------------------------------------------------------------------*/
-
+//$modalBGColor: lighten(black,50%);
+$modalBGColor : $componentBGColor;
+$modalHeaderBGColor : $componentHeaderBGColor;
+$modalHeaderFontSize : 20px;
+$modalHeaderColor : $componentHeaderFontColor;
+$modalWindowFontSize : 14px;
+$modalWindowScrollColor : $scrollBGColor;
+$modalWindowScrollThumbColor : $scrollThumbColor;
+$modalFooterBGColor : $componentFooterBGColor;
+$modalFooterColor : $componentFooterFontColor;
 
 .root-window{
   // flex-direction: column;

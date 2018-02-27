@@ -2,6 +2,15 @@
 /*----------------------------------------------------------------------*/
 /*        DROPDOWN COMPONENT         */
 /*----------------------------------------------------------------------*/
+$dropdownListFontSize : 100%;
+$dropdownListFontWeight : 400;
+$dropdownBG: $componentBGColor;
+$dropdownColor : $borderColor;
+$dropdownActiveColor : $componentActiveFontColor;
+$dropdownActiveBGColor : $componentActiveBGColor;
+
+$dropdownHoverColor : $componentHoverFontColor;
+$dropdownHoverBGColor : $componentHoverBGColor;
 
 .dropdown{
   // display: block;
@@ -48,8 +57,8 @@
 }
 
 .dropdown-list .list-items-active{
-  color: $dropdownHoverColor;
-  background-color: $dropdownHoverBGColor;
+  color: $dropdownActiveColor;
+  background-color: $dropdownActiveBGColor;
 }
 
 .drodown-caret-down{

@@ -1,8 +1,370 @@
-/**/
+/* Component Specific Variables */
+/* Misc Variables */
+/*
+$navbarBGColor : $themeBGColor ;
+$navbarBoxShadow: $themeColor;
+$navbarColor : white;
+$navbarBackground: $navbarBGColor;
+
+$sidenavHeaderBGColor: $defaultBGColor;
+$sidenavHeaderColor: $color;
+$sidenavBGColor : $defaultBGColor;
+$sidenavColor: $defaultColor;
+$sidenavactive:$themeBGColor;
+$sidenavactiveColor: $themeColor;
+$sidenavBorderColor: $themeColor;
+
+$sidenavBGHoverColor: $defaultBGColor;
+$sidenavHoverColor: $defaultColor;
+
+$menubarBGColor : $defaultBGColor;
+$menubarColor : $color;
+$menuHoverColor: blue;
+$subMenuCotentBGColor : $defaultBGColor;
+$subMenuCotentColor : $color;
+
+$menuborderColor:$themeColor;
+$menuborderSize:1px;
+
+$treeNodeActiveBGColor : $hoverBGColor;
+$treeNodeActiveColor : $navbarColor;
+
+$tabBorderSize: $borderSize;
+$tabBorderColor : $borderColor;
+$tabColor : $sidenavHeaderColor;
+$tabBGColor : $sidenavHeaderBGColor;
+$tabActiveBorder : darken($themeBGColor,10);
+$tabActiveBGColor : $sidenavHeaderColor;
+$tabActiveBorderSize : 3px;
+$tabActiveColor : $themeColor;
+
+$modalBGColor: lighten(black,50%);
+
+$cardBGColor: rgba(0, 0, 0, 0.6);
+$cardColor: $color;
+
+$cardHeaderBGColor: $themeBGColor;
+$cardHeaderColor: $themeColor;
+$cardFooterBGColor: $themeBGColor;
+$cardFooterColor: $themeColor;
+$cardBorderColor: $themeColor;
+
+$toastBGColor : $themeBGColor;
+$toastColor : $themeColor;
+
+$accordionBGColor:lighten($cardHeaderBGColor,20%);
+$accordionColor:$cardHeaderColor;
+$accordionActiveBGColor:$cardHeaderBGColor;
+$accordionActiveColor:$cardHeaderColor;
+$accordionPanelBGColor:lighten($cardBGColor,50%);
+$accordionPanelColor: $accordionColor;
+
+$dockBarBGColor: $cardHeaderBGColor;
+$dockBarColor: $cardHeaderColor;
+$dockBarContentBGColor : $cardBGColor;
+$dockBarSize: none;
+$dockBarColor : $tabBorderColor;
+$dockBarActiveBorderColor: $tabActiveBorder;
+$dockBarActiveBorderSize: $tabActiveBorderSize;
+$dockBarActiveColor:$cardHeaderColor;
+$dockBarActiveBGColor:lighten($cardHeaderBGColor,20%);
+
+$borderLayoutBorder : 0px;
+$borderLayoutBorderColor : none;
+
+$datapointBGColor : $defaultBGColor;
+$datapointColor : $themeColor;
+$datapointBorderColor : $cardBorderColor;
+
+$ratingBorderColor : $borderColor;
+$ratingActiveColor : $themeColor;
+
+$datetimepickerBGColor : $defaultBGColor;
+$datetimepickertopbarBGColor : $primaryBGColor;
+$datetimepickerActiveColor : $datetimepickerBGColor;
+
+$fieldSetBorderSize : $borderSize;
+$fieldSetBorderColor : $borderColor;
+$collapsibleLegendColor : $themeColor;
+
+$stepsActiveBGColor : $borderColor;
+$stepsColor : $themeColor;
+$stepsBGColor : $backgroundcolor;
+$stepsLabelHighlight : darken($defaultColor, 30);
+$stepsBorderColor:$borderColor;
+$stepsDisabled : lighten($menubarColor,50%);
+$stepsInActiveBGColor:$hoverBGColor;
+
+$datatableRowActiveBG : lighten($themeBGColor,40%)!important;
+$datatableRowHoverBG : $hoverBGColor;
+$datatableRowHover : $themeColor!important; 
+$datatableRowActive : none;
+$datatableBorderSize : 1px;
+$datatableBorderColor : $themeColor;
+$datatableHeaderColor :$primaryColor;
+$datatableHeaderBGColor : $primaryBGColor;
+$datatableOddRowColor : $themeBGColor;
+$datatableFontBold : "true";
+$datatableRowHover : none;
+$datatableRowActive : none;
+
+$datapointsColor : $themeBGColor;
+$datapointsBGColorS : $primaryBGColor;
+$datapointsColorS : $primaryColor;
+
+$listBoxBGColor : white;
+$listBoxColor : $color !important;
+$listTitleFontSize : 18px;
+$listTitleAFontSize : 16px;
+
+$buttonBorderColor : $borderColor;
+$buttonBorderRadius : $borderRadius;
+$buttonFontWeight : 400;
+$buttonSmallFontSize : .875rem;
+$buttonDefaultFontSize : 1rem;
+$buttonLargeFontSize : 1.25rem;
+
+$btnDropdownBorderSize: $borderSize;
+$btnDropdownBorderColor : $borderColor;
+$buttonDropdownHoverBG:$sidenavactive;
+$buttonDropdownBG:white;
+$buttonDropdownFontSize : 1rem;
+
+$btnGrpBorderColor:black;
+$btnGrpBorderSize : 1px;
+
+$chcekboxBGColor : $backgroundcolor;
+$chcekboxActiveBGColor : $primaryBGColor;
+$chcekboxActiveColor : $primaryColor;
+
+$accordionBorderSize : $borderSize; 
+$accordionBorderColor : $borderColor;
+$accordionBorder : $borderColor;
+$accordionFontSize : 15px;
+$accordionTransparentBG: transparent;
+$accordionTransparentBorder:transparent;
+$accordionTransparentFontWeight:bold;
+$accordionTransparentColor : $themeColor;
+
+$cardBorderSize:$borderSize;
+$cardBorderShadow : rgba(0,0,0,0.14);
+$cardHeaderFontSize : 20px;
+$cardHeaderFontWeight : 300;
+$cardBodyFontSize : 14px;
+$cardBodyFontWeight : 400;
+$cardBodyScrollBGColor : #F5F5F5;
+$cardBodyScrollThumbColor : $themeBGColor;
+
+$datatableTitleFontSize : 1.5em;
+$datatableScrollBG : #F5F5F5;
+$datatableHeaderFontSize : larger;
+$datatableScrollThumbBG : $themeBGColor;
+
+$datetimepickerBorderSize : $borderSize;
+$datetimepickerBorderColor : $borderColor;
+$datetimepickerFontSize : 18px;
+$datetimepickerTopBarColor :white;
+$datetimepickerDaysColor : #777;
+$datetimepickerDaysFontSize : 14px;
+
+$dialogueContentBorderColor : #888;
+$dialogueContentBorderSize : 1px;
+$dialogueBorderColor : $cardBorderColor;
+$dialogueBorderSize :$borderSize;
+$dialogueBG:rgba(128,127,127,0.6);
+$dialogueContentBG:#fefefe;
+$dialogueHeaderBG: $cardHeaderBGColor;
+$dialogueHeaderFontSize : 20px;
+$dialogueHeaderColor : $cardHeaderColor;
+$dialogueHeaderFontWeight : 300;
+
+$dialogueMiddleFontSize : 14px;
+$dialogueMiddleFontWeight : 400;
+
+$dialogueIconFontSize:15px;
+
+$dialogueFooterColor : $cardFooterColor;
+$dialogueMessageFontSize : 20px;
+$dialogueMessageFontWeight : 300;
+
+$dialogueSuccessColor : $successBGColor;
+$dialogueWarningColor : $warningBGColor;
+$dialogueDangerColor : $dangerBGColor;
+
+$dockbarBtnBGColor : inherit;
+$dockbarFontSize : 24px;
+$dockbarLabelHighlight : black;
+$dockbarLabelFontWeight : bold;
+$dockbarCloseBarFontSize : 24px ;
+$dockbarTitleFontSize : 17px;
+$dockbarTitleFontWight : 500;
+$dockbarScrollBGColor : #F5F5F5;
+$dockbarScrollThumbBGColor : $themeBGColor;
+
+$dropdownListFontSize : 100%;
+$dropdownListFontWeight : 400;
+$dropdownBG: $componentBGColor;
+$dropdownColor : $borderColor;
+$dropdownHoverColor : $hoverColor;
+$dropdownHoverBGColor : $hoverBGColor;
+
+$eeTitleColor1 : rgba(0,0,0,0.9);
+$eeTitleColor2 : rgba(0,0,0,0);
+$eeTitleColor1 : rgba(0,0,0,0.9);
+$eeTitleColor2 : rgba(0,0,0,0);
+$eeTitleDisplay : #000; 
+$eeTitleColor : white;
+$tileFontSize : 20px;
+$tileDetFontSize : 10px;
+$controlColor : dimgrey;
+$controlFontSize  : 1em;
+$subtitleFontSize : 6pt;
+$textColor:white;
+$textBGColor : transparent;
+$matchColor : lightgreen;
+$actionColor : red;
+$actionBGColor : transparent;
+
+$eeContentColor : #fff;
+$eeContentTitleFontSize : 180%;
+
+$youtubeColor : grey;
+$youtubeHoverColor : red;
+
+$fieldsetFontSize : 13px;
+$fieldsetFontWeight : bold;
+
+$horizontalnodeColor: lighten($primaryBGColor,30%);
+$horizontalTreeviewColor: $backgroundcolor;
+$horizontalnodeGutter: 100px;
+$horizontalnodeBorderRadius: 10px;
+$horizontalnodeEntryMinHeight: 60px;
+
+$horizontalnodeLabelWidth: 150px;
+$horizontalnodeLabelHeight: 30px;
+$horizontalnodeLabelBorderRadius: 5px;
+
+
+$horizontaltreeviewLabelHoverColor:$hoverColor;
+$horizontaltreeviewLabelHoverBGColor:$hoverBGColor;
+$placeholderColor : $borderColor;
+$inputFontSize:1rem;
+$inputTooltipBGColor : lighten($primaryBGColor,30%);
+$inputControlColor : $color;
+$inputControlBGColor : white;
+$inputFontSize : 14px;
+$searchBGColor : #fff;
+$uploadDropZoneColor :#ccc; 
+$uploadDropZoneColorDrop : #222;
+
+$itemselectorActionBGColor : $primaryBGColor ; 
+$itemselectorActionColor : $primaryColor;
+$itemselectorActionDisableBGColor : lighten($primaryBGColor,50);
+$itemselectorListActiveBGColor : lighten($primaryBGColor,30);
+
+$listScrollBGColor : #F5f5f5;
+$listScrollThumbBGColor : $themeBGColor;
+$listBoxFontSize:100%;
+$listBoxFontWeight : 400;
+$listBoxListHoverBGColor : darken($backgroundcolor, 5%);
+$listBoxBGColorOdd : none;
+
+$menuBGColor : none;
+$menuHeaderFontWeight : bold;
+
+$navbarFontSize : 24px;
+
+$paginatorHoverBGColor : $hoverBGColor;
+$paginatorHoverColor : $hoverColor;
+$paginatorColor : inherit;
+$paginatorActiveBGColor : darken($hoverBGColor,10%);
+$paginatorActiveColor : $hoverColor;
+
+$panelBoxBorder : $accordionActiveBGColor;
+$panelBorder : $borderColor;
+
+$panelAccBGColor : $accordionActiveBGColor;
+$panelAccColor : $accordionColor;
+$panelBGColor : $accordionActiveBGColor;
+$panelColor : $accordionColor;
+$panelFontSize : 15px;
+$panelAfterColor : red;
+$panelFontWeight : bold;
+$panelBGColor:$accordionPanelBGColor;
+$panelColor:$accordionPanelColor;
+$panelScrollBG : #f5f5f5;
+$panelScrollThumbBG : $themeBGColor;
+
+$progressBGColor :#ECEFF1;
+$progressBGImg1: rgb(43, 194, 83);
+
+$progressBGSuccess : #5cb85c;
+$progressBGWarning : #f0ad4e;
+$progressBGDanger : #d9534f;
+$progressBGDangerImg1:#f0a3a3;
+$progressBGImgNoStripes : none;
+
+$radioBGColor : $primaryBGColor;
+$radioLabelBGColor : white;
+
+
+$rangeSliderFontSize : .7em;
+$sliderWidgetBGColor : grey;
+$sliderWidgetColor: #222222;
+$sliderWidgetFontSize :1em;
+$rangeSliderBGColor :$cardHeaderBGColor;
+
+$rangeWidgetBG1:#f6f7f9;
+$rangeWidgetBG2:#ebedf0;
+$rangeHeaderColor : #1b1d1f;
+$rangeHeaderFontWeight : normal;
+
+$ratingStarColor : $ratingBorderColor;
+$ratingStarFontSize : 2em;
+$ratingIconColor : $ratingActiveColor;
+$ratingDisabledColor : #ECECEC;
+$ratingIconFontSize : 50px;
+
+$sidenavColorMob : $navbarColor ;
+$sidenavMobileColor : white;
+$sidenavScrollColor : #f5f5f5;
+$sidenavScrollThumbColor : $themeColor;
+$sidenavTitleColor:$primaryColor;
+$sidenavTitleBGColor : $primaryBGColor;
+
+$steppColor : #666;
+$stepsFontSize  : 12px;
+
+$tabFontSize : 17px;
+
+$taginputBGColor : $primaryBGColor;
+$taginputColor : $primaryColor;
+$taginputFontSize : 11px;
+$closeBtnFontSize : 20px;
+$closeBtnColor : darken($primaryColor,20);
+$closeBtnHoverColor : $primaryColor;
+
+$toggleBGColor : #ccc;
+$toggleBGBeforeColor : white;
+$toggleBGChecked :$primaryBGColor;
+
+$treenodeBGColor : transparent;
+
+$modalBGColor : #fefefe;
+$modalHeaderBGColor : $cardHeaderBGColor;
+$modalHeaderFontSize : 20px;
+$modalHeaderColor : $cardHeaderColor;
+$modalWindowFontSize : 14px;
+$modalWindowScrollColor : #F5F5F5;
+$modalWindowScrollThumbColor : $themeBGColor;
+$modalFooterBGColor : $cardFooterBGColor;
+$modalFooterColor : $cardFooterColor;*/
+/* Misc Variables */
 /**HELPER CLASS STARTS**/
 body {
   background: #000000;
   min-height: 100%;
+  height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
   font-weight: 400;
@@ -10,6 +372,10 @@ body {
   font-size: 1em;
   margin: 0px;
   padding: 0px; }
+
+html {
+  height: 100%;
+  width: 100%; }
 
 body {
   font-family: Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
@@ -57,8 +423,8 @@ body {
 
 /**HEADER STYLE STARTS **/
 .header {
-  background-color: #0d8a24;
-  color: #000000;
+  background-color: rgba(41, 105, 70, 0.4);
+  color: #16E73C;
   padding: 10px;
   overflow: hidden; }
 
@@ -99,11 +465,11 @@ input:disabled {
 
 .verticalalign-tableft {
   vertical-align: top !important;
-  border-right: 2px solid #16E73C !important; }
+  border-right: 1px solid #ced4da !important; }
 
 .verticalalign-tabright {
   vertical-align: top !important;
-  border-left: 2px solid #16E73C !important; }
+  border-left: 1px solid #ced4da !important; }
 
 .verticalalign-tabcontent {
   vertical-align: top !important; }
@@ -146,7 +512,7 @@ label {
   font-weight: 500; }
 
 a {
-  color: #999999;
+  color: rgba(0, 0, 0, 0.87);
   font-size: 14px; }
 
 /*
@@ -160,7 +526,7 @@ image using the content attribute.
   position: absolute;
   border-width: 3px;
   border-style: solid;
-  border-color: transparent #0d8a24 #0d8a24;
+  border-color: transparent #16E73C #16E73C;
   border-radius: 50%;
   width: 24px;
   height: 24px;
@@ -184,9 +550,9 @@ image using the content attribute.
   margin-top: -10px;
   margin-left: -10px;
   border-radius: 50%;
-  bordaer: 2px solid transparent;
-  border-top-color: #0d8a24;
-  border-bottom-color: #0d8a24;
+  border: 2px solid transparent;
+  border-top-color: #16E73C;
+  border-bottom-color: #16E73C;
   animation: spinner .8s ease infinite; }
 
 .row-disabled {
@@ -208,25 +574,25 @@ button {
   font-size: 1.25rem; }
 
 .button-secondary {
-  background-color: gray;
-  border-color: #16E73C;
-  color: #000000; }
+  background-color: #ffffff;
+  border-color: #ced4da;
+  color: rgba(255, 255, 255, 0.7); }
 
 .button-secondary:hover:enabled {
-  background-color: #666666; }
+  background-color: #e6e6e6; }
 
 .button-primary {
-  background-color: #0d8a24;
-  border-color: #0d8a24;
-  color: #000000; }
+  background-color: #16E73C;
+  border-color: #16E73C;
+  color: white; }
 
 .button-primary:hover:enabled {
-  background-color: #095b18; }
+  background-color: #12b830; }
 
 .button-success {
   background-color: #5cb85c;
   border-color: #5cb85c;
-  color: #000000; }
+  color: white; }
 
 .button-success:hover:enabled {
   background-color: #449d44; }
@@ -234,7 +600,7 @@ button {
 .button-danger {
   background-color: #d9534f;
   border-color: #d9534f;
-  color: #000000; }
+  color: white; }
 
 .button-danger:hover:enabled {
   background-color: #c9302c; }
@@ -242,10 +608,14 @@ button {
 .button-warning {
   background-color: #f0ad4e;
   border-color: #f0ad4e;
-  color: #000000; }
+  color: white; }
 
 .button-warning:hover:enabled {
   background-color: #ec971f; }
+
+.button-transparent {
+  background: #000000;
+  color: rgba(255, 255, 255, 0.7); }
 
 /*----------------------------------------------------------------------*/
 /*        BUTTON COMPONENT - Structure       */
@@ -261,9 +631,9 @@ button {
   -ms-user-select: none;
   outline: none;
   user-select: none;
-  border: 1px solid #16E73C;
+  border: 1px solid #ced4da;
   padding: .5rem 1rem;
-  border-radius: 2 px;
+  border-radius: 2px;
   transition: all .2s ease-in-out; }
 
 .button-text {
@@ -281,6 +651,10 @@ button {
 .button-block {
   display: block;
   width: 100%; }
+
+.button-transparent {
+  border: none !important;
+  box-shadow: none !important; }
 
 /*----------------------------------------------------------------------*/
 /*        BUTTONGROUP COMPONENT - Visual*/
@@ -319,10 +693,10 @@ button {
 /*----------------------------------------------------------------------*/
 .button-dropdown {
   font-size: 1rem;
-  background-color: white; }
+  background-color: #000000; }
 
 .button-dropdown > div:hover {
-  background-color: #000000; }
+  background-color: rgba(41, 105, 70, 0.4); }
 
 /*----------------------------------------------------------------------*/
 /*        BUTTON DROPDOWN COMPONENT -Structure        */
@@ -330,7 +704,7 @@ button {
 .button-dropdown {
   position: absolute;
   padding: .5rem 1rem;
-  border: 2px solid #16E73C;
+  border: 1px solid #ced4da;
   z-index: 3; }
 
 .button-dropdown-up {
@@ -342,22 +716,22 @@ button {
 .datetimepicker {
   background: #000000; }
   .datetimepicker .datetimepickertopbar {
-    background: #0d8a24; }
+    background: rgba(41, 105, 70, 0.4); }
     .datetimepicker .datetimepickertopbar .title {
       font-size: 18px; }
     .datetimepicker .datetimepickertopbar ul li {
-      color: white;
+      color: #16E73C;
       font-size: 18px; }
   .datetimepicker .days {
-    background: #cffad7; }
+    background: rgba(213, 239, 225, 0.4); }
     .datetimepicker .days li {
       font-size: 14px;
       color: #777; }
     .datetimepicker .days li:hover {
-      color: #0d8a24; }
+      color: rgba(41, 105, 70, 0.4); }
     .datetimepicker .days .active {
-      background: #0d8a24;
-      color: #000000; }
+      background: rgba(41, 105, 70, 0.4);
+      color: #16E73C; }
     .datetimepicker .days .currentMonth {
       font-weight: bold; }
 
@@ -373,9 +747,9 @@ button {
 /*----------------------------------------------------------------------*/
 .datetimepicker {
   display: block;
-  border: 2px solid #16E73C;
+  border: 1px solid #ced4da;
   position: absolute;
-  box-shadow: 0 1px 3px 0 #16E73C;
+  box-shadow: 0 1px 3px 0 #ced4da;
   z-index: 3; }
   .datetimepicker .datetimepickertopbar {
     padding: 10px 25px;
@@ -442,14 +816,14 @@ button {
 
 .dropdown-list .list-items:hover {
   color: #16E73C;
-  background-color: rgba(41, 105, 70, 0.6); }
+  background-color: rgba(41, 105, 70, 0.4); }
 
 .dropdown-list .list-items-active {
   color: #16E73C;
-  background-color: rgba(41, 105, 70, 0.6); }
+  background-color: rgba(41, 105, 70, 0.4); }
 
 .drodown-caret-down {
-  color: #16E73C; }
+  color: #ced4da; }
 
 /*----------------------------------------------------------------------*/
 /*        DROPDOWN COMPONENT - Structure      */
@@ -464,7 +838,7 @@ button {
   width: 100%;
   max-height: 200px;
   opacity: 1.01;
-  box-shadow: 0 1px 3px 0 #16E73C; }
+  box-shadow: 0 1px 3px 0 #ced4da; }
 
 .dropdown-up {
   bottom: 100%; }
@@ -507,19 +881,19 @@ button {
 /*----------------------------------------------------------------------*/
 .input-control {
   font-size: 14px;
-  background-color: white;
+  background-color: #000000;
   color: rgba(255, 255, 255, 0.7); }
 
 ::placeholder {
-  color: #16E73C; }
+  color: #ced4da; }
 
 :-ms-input-placeholder {
   /* Internet Explorer 10-11 */
-  color: #16E73C; }
+  color: #ced4da; }
 
 ::-ms-input-placeholder {
   /* Microsoft Edge */
-  color: #16E73C; }
+  color: #ced4da; }
 
 .input-control:focus {
   border-color: #5cb3fd; }
@@ -537,7 +911,7 @@ button {
   color: #d9534f; }
 
 .inputgroup .tooltiptext {
-  background-color: #43ed62; }
+  background-color: rgba(41, 105, 70, 0.4); }
 
 /*----------------------------------------------------------------------*/
 /*        INPUT CONTROL COMPONENT -Structure      */
@@ -552,10 +926,10 @@ button {
 .input-control {
   width: 100%;
   padding: .375rem 0;
-  line-height: 1.5;
-  border-radius: 4px;
+  line-height: 2;
+  border-radius: 0px;
   border: none;
-  border-bottom: 2px solid #16E73C;
+  border-bottom: 2px solid #ced4da;
   transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s; }
 
 .input-control:focus {
@@ -573,7 +947,7 @@ button {
   pointer-events: none; }
 
 .inputgroup .tooltiptext {
-  border: 2px solid #16E73C;
+  border: 1px solid #ced4da;
   position: absolute;
   z-index: 1;
   padding-left: 5px; }
@@ -582,12 +956,12 @@ button {
 /**File upload -Visual **/
 /****************************************************/
 .upload-drop-zone {
-  color: #ccc;
-  border-color: #ccc; }
+  color: rgba(41, 105, 70, 0.4);
+  border-color: rgba(41, 105, 70, 0.4); }
 
 .upload-drop-zone.drop {
-  color: #222;
-  border-color: #222; }
+  color: rgba(255, 255, 255, 0.7);
+  border-color: rgba(255, 255, 255, 0.7); }
 
 /****************************************************/
 /**File Upload Structure **/
@@ -611,13 +985,13 @@ textarea:required {
 /**COLLAPSIBLE SEARCH  -Visual**/
 /****************************************************/
 .search:focus {
-  background-color: #fff; }
+  background-color: #000000; }
 
 /****************************************************/
 /**COLLAPSIBLE SEARCH-Structure**/
 /****************************************************/
 .search {
-  border: solid 1px #ccc;
+  border: solid 1px #ced4da;
   padding: 9px 10px 9px 32px;
   outline: none;
   transition: all .5s;
@@ -632,13 +1006,13 @@ textarea:required {
 /* Create a custom checkbox */
 /* When the checkbox is checked, add a blue background */
 .input-box-container input:checked ~ .input-box-radiobox-label {
-  background-color: #0d8a24; }
+  background-color: rgba(41, 105, 70, 0.4); }
 
 /* Create the input-box-container-label/indicator (hidden when not checked) */
 /* Show the input-box-container-label when checked */
 /* Style the input-box-container-label/indicator */
 .input-box-container .input-box-radiobox-label:after {
-  background-color: white; }
+  background-color: #000000; }
 
 /****************************************************/
 /***                  RADIO    Structure          ***/
@@ -650,7 +1024,7 @@ textarea:required {
   left: 0;
   height: 20px;
   width: 20px;
-  border: 2px solid #16E73C;
+  border: 1px solid #ced4da;
   border-radius: 50%; }
 
 /* When the checkbox is checked, add a blue background */
@@ -679,20 +1053,20 @@ textarea:required {
   background: #000000; }
 
 .input-box .active {
-  background: #0d8a24;
-  color: #000000; }
+  background: rgba(41, 105, 70, 0.4);
+  color: #16E73C; }
 
 /* Hide the browser's default checkbox */
 /* Create a custom checkbox */
 /* When the checkbox is checked, add a blue background */
 .input-box-container input:checked ~ .input-box-checkbox-label {
-  background-color: #0d8a24; }
+  background-color: rgba(41, 105, 70, 0.4); }
 
 /* Create the input-box-container-label/indicator (hidden when not checked) */
 /* Show the input-box-container-label when checked */
 /* Style the input-box-container-label/indicator */
 /*----------------------------------------------------------------------*/
-/***CHECKBOX -Structure
+/* CHECKBOX -Structure
 /*----------------------------------------------------------------------*/
 .input-box {
   display: inline-block;
@@ -705,7 +1079,7 @@ textarea:required {
   height: 1.125em;
   line-height: 1em;
   text-align: center;
-  border-radius: 2 px; }
+  border-radius: 2px; }
 
 .input-box .radiobox {
   width: 1.125em;
@@ -715,10 +1089,10 @@ textarea:required {
   border-radius: 100%; }
 
 .input-box .default {
-  border: 2px solid #16E73C; }
+  border: 1px solid #ced4da; }
 
 .input-box .active {
-  border: 2px solid #16E73C; }
+  border: 1px solid #ced4da; }
 
 .input-box-container {
   display: block;
@@ -742,7 +1116,7 @@ textarea:required {
   left: 0;
   height: 20px;
   width: 20px;
-  border: 2px solid #16E73C; }
+  border: 1px solid #ced4da; }
 
 /* When the checkbox is checked, add a blue background */
 /* Create the input-box-container-label/indicator (hidden when not checked) */
@@ -770,13 +1144,13 @@ textarea:required {
 /*----------------------------------------------------------------------*/
 .tag-input .tag {
   font-size: 11px;
-  background-color: #0d8a24;
-  color: #000000; }
+  background-color: #000000;
+  color: rgba(255, 255, 255, 0.7); }
   .tag-input .tag .closebtn {
     font-size: 20px;
-    color: black; }
+    color: rgba(41, 105, 70, 0.4); }
   .tag-input .tag .closebtn:hover {
-    color: #000000; }
+    color: rgba(41, 105, 70, 0.4); }
 
 /*----------------------------------------------------------------------*/
 /*        TAGINPUT CONTROL COMPONENT  - Structure      */
@@ -792,7 +1166,7 @@ textarea:required {
     padding: 0 13px;
     height: 30px;
     line-height: 30px;
-    border: 2px solid #16E73C; }
+    border: 1px solid #ced4da; }
     .tag-input .tag .closebtn {
       padding-left: 10px;
       font-weight: bold;
@@ -804,7 +1178,7 @@ textarea:required {
 /*----------------------------------------------------------------------*/
 .toast {
   background-color: #000000;
-  color: #16E73C; }
+  color: rgba(255, 255, 255, 0.7); }
 
 /*----------------------------------------------------------------------*/
 /*        NOTIFICATION CONTROL COMPONENT  -Structure       */
@@ -846,10 +1220,10 @@ textarea:required {
 /*----------------------------------------------------------------------*/
 .meter {
   position: relative;
-  background: #ECEFF1; }
+  background: #000000; }
 
 .meter > span {
-  background-color: #ECEFF1; }
+  background-color: #000000; }
 
 @-webkit-keyframes move {}
 .success > span {
@@ -912,11 +1286,11 @@ textarea:required {
   font-style: normal; }
 
 .star-icon {
-  color: #16E73C;
+  color: #ced4da;
   font-size: 2em; }
 
 .star-icon:before {
-  color: #16E73C; }
+  color: rgba(41, 105, 70, 0.4); }
 
 .rating.disabled .star-icon:before {
   color: #ECECEC; }
@@ -943,9 +1317,9 @@ textarea:required {
   font-style: normal; }
 
 .star-icon {
-  color: #16E73C;
+  color: #ced4da;
   position: relative;
-  border-color: 2px solid #16E73C; }
+  border-color: 1px solid #ced4da; }
 
 .star-icon:before {
   content: attr(data-icon) " ";
@@ -998,10 +1372,10 @@ textarea:required {
   background-color: #ccc; }
 
 .toggle-slider:before {
-  background-color: white; }
+  background-color: #000000; }
 
 input:checked + .toggle-slider {
-  background-color: #0d8a24; }
+  background-color: #000000; }
 
 /* Rounded sliders */
 /*----------------------------------------------------------------------*/
@@ -1038,7 +1412,7 @@ input:checked + .toggle-slider {
   transition: .4s; }
 
 input:focus + .toggle-slider {
-  box-shadow: 0 0 1px #16E73C; }
+  box-shadow: 0 0 1px #ced4da; }
 
 input:checked + .toggle-slider:before {
   -webkit-transform: translateX(26px);
@@ -1062,8 +1436,8 @@ input:checked + .toggle-slider:before {
   background: #838688; }
 
 .ui-widget-content {
-  background: grey;
-  color: #222222; }
+  background: #000000;
+  color: rgba(255, 255, 255, 0.7); }
 
 .ui-widget {
   font-size: 1em; }
@@ -1073,21 +1447,21 @@ input:checked + .toggle-slider:before {
 
 .ui-slider .ui-slider-range {
   font-size: 0.7em;
-  background: #000000;
+  background: rgba(41, 105, 70, 0.4);
   /** use card header here **/ }
 
 .ui-widget-header {
-  background: #f6f7f9 0 0 repeat-x;
-  background: -moz-linear-gradient(top, #f6f7f9 0%, #ebedf0 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f6f7f9), color-stop(100%, #ebedf0));
-  background: -webkit-linear-gradient(top, #f6f7f9 0%, #ebedf0 100%);
-  background: -o-linear-gradient(top, #f6f7f9 0%, #ebedf0 100%);
-  background: -ms-linear-gradient(top, #f6f7f9 0%, #ebedf0 100%);
-  background: linear-gradient(to bottom, #f6f7f9 0%, #ebedf0 100%); }
+  background: #000000 0 0 repeat-x;
+  background: -moz-linear-gradient(top, #000000 0%, #000000 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #000000), color-stop(100%, #000000));
+  background: -webkit-linear-gradient(top, #000000 0%, #000000 100%);
+  background: -o-linear-gradient(top, #000000 0%, #000000 100%);
+  background: -ms-linear-gradient(top, #000000 0%, #000000 100%);
+  background: linear-gradient(to bottom, #000000 0%, #000000 100%); }
 
 .ui-widget-header {
-  background: #f6f7f9;
-  color: #1b1d1f;
+  background: #000000;
+  color: #16E73C;
   font-weight: normal; }
 
 /****************************************************/
@@ -1233,6 +1607,16 @@ input:checked + .toggle-slider:before {
   border-radius: 0;
   border: none; }
 
+/*----------------------------------------------------------------------*/
+/*        Label COMPONENT -Visual        */
+/*----------------------------------------------------------------------*/
+.highlight {
+  color: rgba(255, 255, 255, 0.7);
+  background-color: #ffeb3b; }
+
+/*----------------------------------------------------------------------*/
+/*        Label COMPONENT -Structure        */
+/*----------------------------------------------------------------------*/
 .large {
   font-size: 36px; }
 
@@ -1254,32 +1638,23 @@ input:checked + .toggle-slider:before {
   font-size: 18px;
   font-weight: bold; }
 
-.large {
-  font-size: 36px; }
+.topbar {
+  border-top: 1px solid #ced4da; }
 
-.medium {
-  font-size: 20px; }
+.bottombar {
+  border-bottom: 1px solid #ced4da; }
 
-.small {
-  font-size: 18px; }
+.leftbar {
+  border-left: 1px solid #ced4da; }
 
-.large-bold {
-  font-size: 36px;
-  font-weight: bold; }
-
-.medium-bold {
-  font-size: 20px;
-  font-weight: bold; }
-
-.small-bold {
-  font-size: 18px;
-  font-weight: bold; }
+.rightbar {
+  border-right: 1px solid #ced4da; }
 
 /*----------------------------------------------------------------------*/
 /*        Image COMPONENT - Visual        */
 /*----------------------------------------------------------------------*/
 .profile-image a {
-  color: #16E73C; }
+  color: rgba(255, 255, 255, 0.7); }
 
 /*----------------------------------------------------------------------*/
 /*        Image COMPONENT - Structure        */
@@ -1306,31 +1681,108 @@ input:checked + .toggle-slider:before {
   margin-top: 10px;
   margin-bottom: 10px; }
 
+.floatingbutton {
+  z-index: 3;
+  text-align: center;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  border-color: #ced4da;
+  cursor: pointer; }
+
+.floatingbutton-relative {
+  position: relative; }
+
+.floatingbutton-fixed {
+  position: fixed; }
+
+.floatingbutton-left {
+  left: 5%; }
+
+.floatingbutton-right {
+  right: 5%; }
+
+.floatingbutton-top {
+  top: 10%; }
+
+.floatingbutton-bottom {
+  bottom: 10%; }
+
+.floatingbutton-center {
+  top: 50%;
+  left: 50%; }
+
+.floatingbutton-circle {
+  border-radius: 50px;
+  width: 60px;
+  height: 60px;
+  line-height: 60px; }
+
+.floatingbutton-square {
+  padding: .5rem 1rem; }
+
+.floatingbutton-default {
+  background-color: #ffffff; }
+
+.floatingbutton-primary {
+  background-color: #16E73C;
+  color: white; }
+
+.floatingbutton-success {
+  background-color: #5cb85c;
+  color: white; }
+
+.floatingbutton-danger {
+  background-color: #d9534f;
+  color: white; }
+
+.floatingbutton-warning {
+  background-color: #f0ad4e;
+  color: white; }
+
+.floatingbutton-default-disabled {
+  background-color: #ffffff;
+  color: lightgray; }
+
+.floatingbutton-primary-disabled {
+  background-color: #71f289;
+  color: white; }
+
+.floatingbutton-success-disabled {
+  background-color: #a3d7a3;
+  color: white; }
+
+.floatingbutton-danger-disabled {
+  background-color: #eba5a3;
+  color: white; }
+
+.floatingbutton-warning-disabled {
+  background-color: #f8d9ac;
+  color: white; }
+
 /*----------------------------------------------------------------------*/
 /*        Enterprise - Visual COMPONENT         */
 /*----------------------------------------------------------------------*/
 .content-title {
   font-size: 180%;
-  color: #fff; }
+  color: #16E73C; }
 
 .content-area {
-  color: #fff; }
+  color: #16E73C; }
 
 /* Button Related CSS */
 .content-button {
-  color: #fff; }
+  color: #16E73C; }
 
 header .billboard .content-button {
   font-size: 70%;
-  color: #fff; }
+  color: #16E73C; }
 
 .content-button i {
   font-size: 10px;
-  color: #fff; }
+  color: #16E73C; }
 
 .content-button-small i {
   font-size: 12px;
-  color: #fff; }
+  color: #16E73C; }
 
 .close-button {
   color: gray; }
@@ -1481,7 +1933,7 @@ header .billboard .content-button {
 .close-button {
   cursor: pointer;
   padding-left: 98%;
-  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 100%); }
+  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, transparent 70%, transparent 100%); }
 
 /*----------------------------------------------------------------------*/
 /*        Enterprise youtube COMPONENT - Structure     */
@@ -1498,7 +1950,7 @@ header .billboard .content-button {
 /*----------------------------------------------------------------------*/
 .close-button {
   cursor: pointer;
-  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 100%); }
+  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, transparent 70%, transparent 100%); }
 
 .close-button i:hover {
   cursor: pointer; }
@@ -1538,7 +1990,7 @@ header .billboard .content-button {
   font-size: 1em; }
 
 .textonly {
-  color: white;
+  color: #16E73C;
   background-color: transparent; }
 
 .carousel-title {
@@ -1552,7 +2004,7 @@ header .billboard .content-button {
 
 .age {
   font-size: 100%;
-  color: white; }
+  color: #16E73C; }
 
 .actionpanel {
   color: red;
@@ -1620,8 +2072,8 @@ header .billboard .content-button {
   right: 0;
   top: 0;
   opacity: 0;
-  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
   -webkit-transition: 450ms opacity;
   transition: 450ms opacity; }
 
@@ -1651,8 +2103,8 @@ header .billboard .content-button {
   right: 0;
   top: 50%;
   opacity: 0;
-  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
   -webkit-transition: 450ms opacity;
   transition: 450ms opacity; }
 
@@ -1792,8 +2244,8 @@ header .billboard .content-button {
   .datapoints .datapoints-north {
     color: #16E73C; }
   .datapoints .datapoint-south {
-    background-color: #0d8a24;
-    color: #000000; }
+    background-color: rgba(41, 105, 70, 0.4);
+    color: #16E73C; }
   .datapoints .datapoint-west {
     padding: 5px; }
   .datapoints .datapoint-east {
@@ -1805,8 +2257,8 @@ header .billboard .content-button {
 .datapoints {
   font-size: 125%;
   /* Border */
-  border-radius: 5px;
-  border: 2px solid #16E73C;
+  border-radius: 0px;
+  border: 1px solid #ced4da;
   padding: 0px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); }
   .datapoints .datapoints {
@@ -1828,13 +2280,13 @@ header .billboard .content-button {
   font-size: 1.5em; }
 
 .datatable {
-  border: 1px solid #16E73C; }
+  border: 1px solid #ced4da; }
 
 .datatable-height::-webkit-scrollbar-track {
-  background-color: #F5F5F5; }
+  background-color: #f5f5f5; }
 
 .datatable-height::-webkit-scrollbar {
-  background-color: #F5F5F5; }
+  background-color: #f5f5f5; }
 
 .datatable-height::-webkit-scrollbar-thumb {
   background-color: #000000; }
@@ -1843,16 +2295,16 @@ header .billboard .content-button {
   font-size: 1.5em; }
 
 .datatable .datatable-header {
-  background-color: #0d8a24;
-  color: #000000;
+  background-color: rgba(41, 105, 70, 0.4);
+  color: #16E73C;
   font-size: larger; }
 
 .datatable .datatable-row:hover {
-  background-color: rgba(41, 105, 70, 0.6);
+  background-color: rgba(41, 105, 70, 0.4);
   cursor: pointer; }
 
 .datatable .datatable-row-active {
-  background-color: #666666 !important; }
+  background-color: rgba(41, 105, 70, 0.4); }
 
 .datatable-row:nth-child(odd) {
   background-color: #000000; }
@@ -1865,7 +2317,7 @@ header .billboard .content-button {
 
 .datatable {
   display: table;
-  border: 1px solid #16E73C;
+  border: 1px solid #ced4da;
   border-collapse: collapse;
   margin: 0;
   padding: 0;
@@ -1897,7 +2349,7 @@ header .billboard .content-button {
   vertical-align: middle; }
 
 .datatable .datatable-row {
-  border: 1px solid #16E73C;
+  border: 1px solid #ced4da;
   display: table-row;
   height: 50px; }
 
@@ -1931,13 +2383,13 @@ header .billboard .content-button {
 /*        HORIZONTAL TREE COMPONENT -Visual     */
 /*----------------------------------------------------------------------*/
 .horizontaltreeview-node-label {
-  background-color: #43ed62;
-  color: #000000; }
+  background-color: rgba(41, 105, 70, 0.4);
+  color: #16E73C; }
 
 .horizontaltreeview-node-label:hover {
-  border-color: #16e73c;
+  border-color: rgba(27, 68, 46, 0.4);
   color: #16E73C;
-  background-color: rgba(41, 105, 70, 0.6); }
+  background-color: rgba(41, 105, 70, 0.4); }
 
 /*----------------------------------------------------------------------*/
 /*        HORIZONTAL TREE COMPONENT -Visual     */
@@ -1952,7 +2404,7 @@ header .billboard .content-button {
   .horizontaltreeview-node:before {
     content: "";
     width: 50px;
-    border-top: 2px solid #43ed62;
+    border-top: 2px solid rgba(41, 105, 70, 0.4);
     position: absolute;
     left: -100px;
     top: 50%;
@@ -1964,13 +2416,13 @@ header .billboard .content-button {
   .horizontaltreeview-node-entry:before {
     content: "";
     height: 100%;
-    border-left: 2px solid #43ed62;
+    border-left: 2px solid rgba(41, 105, 70, 0.4);
     position: absolute;
     left: -50px; }
   .horizontaltreeview-node-entry:after {
     content: "";
     width: 50px;
-    border-top: 2px solid #43ed62;
+    border-top: 2px solid rgba(41, 105, 70, 0.4);
     position: absolute;
     left: -50px;
     top: 50%;
@@ -1991,7 +2443,7 @@ header .billboard .content-button {
   .horizontaltreeview-node-entry:last-child:after {
     height: 10px;
     border-top: none;
-    border-bottom: 2px solid #43ed62;
+    border-bottom: 2px solid rgba(41, 105, 70, 0.4);
     border-radius: 0 0 0 10px;
     margin-top: -9px; }
   .horizontaltreeview-node-entry.sole:before {
@@ -2021,13 +2473,16 @@ header .billboard .content-button {
 /*        ITEM SELECTOR COMPONENT -Visual        */
 /*----------------------------------------------------------------------*/
 .item-selector-action-panel .actionbar .actionbarinner .action {
-  background-color: #0d8a24;
-  color: #000000; }
+  background-color: rgba(41, 105, 70, 0.4);
+  color: #16E73C; }
 .item-selector-action-panel .actionbar .actionbarinner .actiondisable {
-  background-color: #a0f6b0; }
+  background-color: #a09e9e; }
 
-.list-item-active {
-  background-color: #43ed62; }
+.itemselector-list-active {
+  background-color: rgba(41, 105, 70, 0.4); }
+
+.itemselector-list:hover {
+  background-color: rgba(41, 105, 70, 0.4); }
 
 /*----------------------------------------------------------------------*/
 /*        ITEM SELECTOR COMPONENT  -Structure       */
@@ -2064,14 +2519,22 @@ header .billboard .content-button {
     .item-selector-action-panel .actionbar .actionbarinner .movebottom {
       display: block; }
 
+.itemselector-list {
+  list-style: none;
+  cursor: pointer;
+  font-weight: 400;
+  margin: 1px 0;
+  padding: 5px;
+  text-align: left; }
+
 /*----------------------------------------------------------------------*/
 /*        LISTBOX COMPONENT -Visual       */
 /*----------------------------------------------------------------------*/
 .listbox-height::-webkit-scrollbar-track {
-  background-color: #F5f5f5; }
+  background-color: rgba(41, 105, 70, 0.4); }
 
 .listbox-height::-webkit-scrollbar {
-  background-color: #F5f5f5; }
+  background-color: rgba(41, 105, 70, 0.4); }
 
 .listbox-height::-webkit-scrollbar-thumb {
   background-color: #000000; }
@@ -2085,23 +2548,23 @@ header .billboard .content-button {
     background: none; }
 
 .listbox .list .list-items:hover {
-  background-color: black; }
+  background-color: rgba(41, 105, 70, 0.4); }
 
 .listbox .list {
-  background-color: white; }
+  background-color: #000000; }
   .listbox .list .title {
     font-size: 18px;
-    color: rgba(255, 255, 255, 0.7) !important; }
+    color: rgba(0, 0, 0, 0.87); }
     .listbox .list .title a {
       font-size: 16px;
-      color: rgba(255, 255, 255, 0.7) !important !important; }
+      color: rgba(0, 0, 0, 0.87) !important; }
 
 /*----------------------------------------------------------------------*/
 /*        LISTBOX COMPONENT - Structure     */
 /*----------------------------------------------------------------------*/
 .listbox {
   margin-bottom: 1rem;
-  border: 2px solid #16E73C; }
+  border: 1px solid #ced4da; }
 
 .listbox-height {
   overflow-y: auto;
@@ -2123,7 +2586,7 @@ header .billboard .content-button {
 
 .listbox .list .list-items {
   list-style: none;
-  border-bottom: 2px solid #16E73C;
+  border-bottom: 1px solid #ced4da;
   cursor: pointer;
   margin: 1px 0;
   padding: 10px;
@@ -2188,12 +2651,12 @@ header .billboard .content-button {
   background-color: transparent; }
 
 .treenode-content:hover {
-  background-color: rgba(41, 105, 70, 0.6);
-  color: white; }
+  background-color: rgba(41, 105, 70, 0.4);
+  color: #16E73C; }
 
 .treenode-label-active {
-  background-color: rgba(41, 105, 70, 0.6);
-  color: white; }
+  background-color: rgba(41, 105, 70, 0.4);
+  color: #16E73C; }
 
 /*----------------------------------------------------------------------*/
 /*        BORDER LAYOUT COMPONENT -Visual        */
@@ -2387,10 +2850,11 @@ header .billboard .content-button {
   color: rgba(255, 255, 255, 0.7); }
 
 .menubar .menuheader .menulink:hover a {
-  color: blue; }
+  color: rgba(255, 255, 255, 0.7); }
 
 .menulink:hover {
-  color: blue; }
+  background-color: rgba(41, 105, 70, 0.4);
+  color: rgba(255, 255, 255, 0.7); }
 
 .menu-content {
   background: #000000; }
@@ -2403,13 +2867,15 @@ header .billboard .content-button {
   color: rgba(255, 255, 255, 0.7); }
 
 .menu-content .menu-content-cols .content .menu-links-header:hover {
-  color: blue; }
+  color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(41, 105, 70, 0.4); }
 
 .menu-content .menu-content-cols .content .menulinks {
   color: rgba(255, 255, 255, 0.7); }
 
 .menu-content .menu-content-cols .content .menulinks:hover {
-  color: blue; }
+  color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(41, 105, 70, 0.4); }
 
 /*----------------------------------------------------------------------*/
 /*        MENU COMPONENT  -Structure     */
@@ -2450,7 +2916,7 @@ header .billboard .content-button {
   padding: 10px;
   position: fixed;
   z-index: 99;
-  box-shadow: 0 0 5px 0 #16E73C; }
+  box-shadow: 0 0 5px 0 #ced4da; }
 
 .menu-content-display {
   display: block !important; }
@@ -2482,7 +2948,7 @@ header .billboard .content-button {
   padding-right: 10px; }
 
 .menu-content .menu-content-cols .content .menu-links-header {
-  border-bottom: 2px solid #16E73C;
+  border-bottom: 1px solid #ced4da;
   padding: 10px;
   cursor: pointer; }
 
@@ -2496,7 +2962,6 @@ header .billboard .content-button {
 /*----------------------------------------------------------------------*/
 .navbar-container {
   background-color: #000000;
-  background: #000000;
   color: white; }
   .navbar-container .navbar-logo {
     vertical-align: middle; }
@@ -2514,7 +2979,7 @@ header .billboard .content-button {
   width: 100%;
   vertical-align: middle;
   padding: 0px 15px;
-  box-shadow: 0px 0px 2px 2px #16E73C;
+  box-shadow: 0px 0px 2px 2px #ced4da;
   position: fixed;
   z-index: 2;
   display: flex;
@@ -2527,6 +2992,7 @@ header .billboard .content-button {
   .navbar-container .navbar-logo-unit a {
     vertical-align: middle; }
   .navbar-container .navbar-logo-unit {
+    font-size: 24px;
     line-height: 64px; }
     .navbar-container .navbar-logo-unit a {
       cursor: pointer; }
@@ -2551,11 +3017,11 @@ header .billboard .content-button {
   color: inherit; }
 
 .paginator .paginator-pages .paginator-page:hover {
-  background-color: rgba(41, 105, 70, 0.6);
+  background-color: rgba(41, 105, 70, 0.4);
   color: #16E73C; }
 
 .paginator .paginator-pages .active {
-  background-color: rgba(27, 68, 46, 0.6);
+  background-color: rgba(41, 105, 70, 0.4);
   color: #16E73C; }
 
 /*----------------------------------------------------------------------*/
@@ -2582,20 +3048,20 @@ header .billboard .content-button {
   margin-right: .063em;
   text-decoration: none;
   vertical-align: middle;
-  border: 2px solid #16E73C;
-  border-radius: 2 px; }
+  border: 1px solid #ced4da;
+  border-radius: 2px; }
 
 /*----------------------------------------------------------------------*/
 /*        SIDENAV COMPONENT -Visual       */
 /*----------------------------------------------------------------------*/
 .sidenav-mobile-bar {
-  color: white; }
+  color: rgba(255, 255, 255, 0.7); }
 
 .sidenav-mobile-bar-left {
-  color: white; }
+  color: #16E73C; }
 
 .sidenav-mobile-bar-right {
-  color: white; }
+  color: #16E73C; }
 
 .sidenav {
   background-color: #000000;
@@ -2608,7 +3074,7 @@ header .billboard .content-button {
   background-color: #f5f5f5; }
 
 .sidenav::-webkit-scrollbar-thumb {
-  background-color: #16E73C; }
+  background-color: #000000; }
 
 .left {
   background-color: #000000; }
@@ -2617,27 +3083,27 @@ header .billboard .content-button {
   background-color: #000000; }
 
 .sidenav .title {
-  background-color: #0d8a24;
-  color: #000000; }
+  background-color: #000000;
+  color: rgba(255, 255, 255, 0.7); }
 
 .sidenav .headernode {
   background-color: #000000;
   color: rgba(255, 255, 255, 0.7); }
 
 .sidenav .headernode:hover {
-  background-color: #000000;
+  background-color: rgba(41, 105, 70, 0.4);
   color: rgba(255, 255, 255, 0.7); }
 
 .sidenav .defaultnode:hover {
-  background-color: #000000;
+  background-color: rgba(41, 105, 70, 0.4);
   color: rgba(255, 255, 255, 0.7); }
 
 .sidenav .activenode {
-  background-color: #000000;
-  color: #16E73C; }
+  background-color: rgba(41, 105, 70, 0.4);
+  color: inherit; }
 
 .sidenav .border {
-  border-bottom: 2px solid #16E73C; }
+  border-bottom: 1px solid #ced4da; }
 
 /*----------------------------------------------------------------------*/
 /*        SIDENAV COMPONENT  -Structure       */
@@ -2674,14 +3140,14 @@ header .billboard .content-button {
   position: fixed;
   overflow: auto;
   z-index: 1;
-  box-shadow: 0 0 5px 0 #16E73C; }
+  box-shadow: 0 0 5px 0 #ced4da; }
 
 .right {
   right: 0;
   position: fixed;
   overflow: auto;
   z-index: 1;
-  box-shadow: 0 0 5px 0 #16E73C; }
+  box-shadow: 0 0 5px 0 #ced4da; }
 
 .sidenav ul {
   list-style: none;
@@ -2713,7 +3179,7 @@ header .billboard .content-button {
 .sidenav .border {
   padding-left: 100%;
   margin-left: -100%;
-  border-bottom: 2px solid #16E73C; }
+  border-bottom: 1px solid #ced4da; }
 
 .sidenav .headernode .node-icon {
   padding-right: 20px; }
@@ -2737,30 +3203,30 @@ header .billboard .content-button {
   overflow: auto; }
 
 /*----------------------------------------------------------------------*/
-/*        DOCKBAR COMPONENT         */
+/*        DOCKBAR COMPONENT  -Visual       */
 /*----------------------------------------------------------------------*/
 .dockbar {
-  background-color: #000000;
-  color: #16E73C; }
+  background-color: #16E73C;
+  color: #ced4da; }
 
 .dockbar-content {
-  background-color: rgba(0, 0, 0, 0.6); }
+  background-color: #000000; }
 
 /* Style the buttons inside the tab */
 .dockbar button {
   background-color: inherit;
-  color: #16E73C;
+  color: #ced4da;
   font-size: 24px;
   height: 50px; }
 
 /* Change background color of buttons on hover */
 .dockbar button:hover {
-  background-color: #333333;
+  background-color: rgba(41, 105, 70, 0.4);
   color: #16E73C; }
 
 /* Create an active/current "tab button" class */
 .dockbar button.active {
-  background-color: #333333;
+  background-color: rgba(41, 105, 70, 0.4);
   color: #16E73C; }
 
 .dockbar-label-highlight {
@@ -2769,7 +3235,7 @@ header .billboard .content-button {
 
 .dockbar-item-close-bar {
   font-size: 24px;
-  color: black;
+  color: #16E73C;
   font-weight: 500; }
 
 .dockbar-title {
@@ -2777,11 +3243,11 @@ header .billboard .content-button {
   font-weight: 500; }
 
 .dockbar-height::-webkit-scrollbar-track {
-  background-color: #F5F5F5; }
+  background-color: #f5f5f5; }
 
 .dockbar-height::-webkit-scrollbar {
   width: 6px;
-  background-color: #F5F5F5; }
+  background-color: #f5f5f5; }
 
 .dockbar-height::-webkit-scrollbar-thumb {
   background-color: #000000; }
@@ -2793,8 +3259,8 @@ header .billboard .content-button {
   float: left;
   width: 70px;
   position: relative;
-  border-top: none solid #16E73C;
-  border-bottom: 5px solid #000000; }
+  border-top: 1px solid #ced4da;
+  border-bottom: 5px solid #16E73C; }
 
 /* Style the buttons inside the tab */
 .dockbar button {
@@ -2806,14 +3272,14 @@ header .billboard .content-button {
   text-align: center;
   cursor: pointer;
   transition: 0.3s;
-  border-bottom: none solid #16E73C;
-  border-left: none solid #16E73C;
+  border-bottom: 1px solid #ced4da;
+  border-left: 1px solid #ced4da;
   height: 50px; }
 
 /* Change background color of buttons on hover */
 /* Create an active/current "tab button" class */
 .dockbar button.active {
-  border-left: 3px solid black; }
+  border-left: 3px solid #16E73C; }
 
 .dockbar-item-close-bar {
   float: right;
@@ -2822,12 +3288,12 @@ header .billboard .content-button {
 
 .dockbar-title {
   padding: 15px 10px 10px 10px;
-  border-bottom: 1px solid black; }
+  border-bottom: 1px solid #16E73C; }
 
 .dockbar-active-content {
-  border-top: 3px solid black;
-  border-right: 3px solid black;
-  border-bottom: 3px solid black;
+  border-top: 3px solid #16E73C;
+  border-right: 3px solid #16E73C;
+  border-bottom: 3px solid #16E73C;
   height: 100%; }
 
 .dockbar-height {
@@ -2893,19 +3359,19 @@ header .billboard .content-button {
 /*        ACCORDION COMPONENT         */
 /*----------------------------------------------------------------------*/
 .accordion {
-  background-color: #333333;
+  background-color: rgba(41, 105, 70, 0.4);
   color: #16E73C;
   cursor: pointer;
   padding: 10px;
   width: 100%;
-  border-color: #16E73C;
+  border-color: #ced4da;
   text-align: left;
   outline: none;
   font-size: 15px;
   transition: 0.4s; }
 
 .accordion .active-accordion, .accordion:hover {
-  background-color: #000000;
+  background-color: rgba(41, 105, 70, 0.4);
   color: #16E73C; }
 
 .accordion:after {
@@ -2916,8 +3382,8 @@ header .billboard .content-button {
 
 .panel {
   padding: 18px;
-  background-color: rgba(128, 128, 128, 0.6);
-  color: #16E73C;
+  background-color: #000000;
+  color: rgba(255, 255, 255, 0.7);
   overflow: auto; }
 
 /** Transparent Styling **/
@@ -2932,7 +3398,7 @@ header .billboard .content-button {
   font-size: 15px;
   transition: 0.4s;
   box-shadow: none;
-  border-top: 2px solid #16E73C; }
+  border-top: 1px solid #ced4da; }
 
 .accordion-transparent:after {
   color: red;
@@ -2949,6 +3415,21 @@ header .billboard .content-button {
 !*----------------------------------------------------------------------*!
 !*        ACCORDION COMPONENT - Structure        *!
 !*----------------------------------------------------------------------*!
+$accordionBGColor: $componentHeaderBGColor;
+$accordionColor: $componentHeaderFontColor;
+$accordionActiveBGColor:$componentActiveBGColor;
+$accordionActiveColor:$componentHeaderFontColor;
+$accordionPanelBGColor:$componentHeaderBGColor;
+$accordionPanelColor: $componentHeaderFontColor;
+
+$accordionBorderSize : $borderSize;
+$accordionBorderColor : $borderColor;
+$accordionBorder : $borderColor;
+$accordionFontSize : 15px;
+$accordionTransparentBG:$componentBGColor;
+$accordionTransparentBorder:$componentBGColor;
+$accordionTransparentFontWeight:bold;
+$accordionTransparentColor : $componentFontColor;
 
 .accordion {
 
@@ -3009,11 +3490,11 @@ header .billboard .content-button {
 /*        CARD COMPONENT   -Visual    */
 /*----------------------------------------------------------------------*/
 .card-container {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: #000000;
   color: rgba(255, 255, 255, 0.7); }
 
 .card-header {
-  background: #000000;
+  background: rgba(41, 105, 70, 0.4);
   font-size: 20px;
   color: #16E73C;
   font-weight: 300; }
@@ -3023,10 +3504,10 @@ header .billboard .content-button {
   font-weight: 400; }
 
 .cardbody::-webkit-scrollbar-track {
-  background-color: #F5F5F5; }
+  background-color: #f5f5f5; }
 
 .cardbody::-webkit-scrollbar {
-  background-color: #F5F5F5; }
+  background-color: #f5f5f5; }
 
 .cardbody::-webkit-scrollbar-thumb {
   background-color: #000000; }
@@ -3042,7 +3523,7 @@ header .billboard .content-button {
   position: relative;
   display: flex;
   flex-direction: column;
-  border: 2px solid #16E73C;
+  border: 1px solid #ced4da;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14); }
 
 .card-container > * {
@@ -3054,7 +3535,7 @@ header .billboard .content-button {
 .card-header {
   display: flex;
   padding: 10px 24px;
-  border-bottom: 2px solid #16E73C;
+  border-bottom: 1px solid #ced4da;
   text-transform: capitalize;
   overflow: auto; }
 
@@ -3071,7 +3552,7 @@ header .billboard .content-button {
 
 .card-footer {
   display: flex;
-  border-top: 2px solid #16E73C; }
+  border-top: 1px solid #ced4da; }
 
 /*----------------------------------------------------------------------*/
 /*        CAROUSEL COMPONENT- View*/
@@ -3101,7 +3582,7 @@ header .billboard .content-button {
 /*        fieldset COMPONENT  - Structure      */
 /*----------------------------------------------------------------------*/
 fieldset {
-  border: 2px solid #16E73C;
+  border: 1px solid #ced4da;
   border-radius: 2px; }
 
 .collapsible-legend {
@@ -3122,11 +3603,11 @@ fieldset {
 /*        STEPS COMPONENT - Visual   */
 /*----------------------------------------------------------------------*/
 .step-label-highlight {
-  color: rgba(179, 179, 179, 0.7);
+  color: rgba(41, 105, 70, 0.4);
   font-weight: bold; }
 
 .stepwizard-step p {
-  color: #666; }
+  color: #a09e9e; }
 
 .stepwizard-row:before {
   background-color: #000000; }
@@ -3135,19 +3616,21 @@ fieldset {
   font-size: 12px; }
 
 .step-box-table-item {
-  background-color: #000000; }
+  background-color: #000000;
+  color: rgba(255, 255, 255, 0.7); }
 
 .step-box-table-item.active {
-  background-color: rgba(41, 105, 70, 0.6) !important; }
+  background-color: rgba(41, 105, 70, 0.4) !important; }
 
 .step-box-table-item.disbaled {
-  background-color: rgba(255, 255, 255, 0.7); }
+  background-color: #a09e9e; }
 
 .index-step-inactive {
-  background-color: rgba(103, 196, 145, 0.6); }
+  background-color: rgba(103, 196, 145, 0.4);
+  color: inherit; }
 
 .step-box-table-item-hover:hover {
-  background-color: rgba(103, 196, 145, 0.6); }
+  background-color: rgba(41, 105, 70, 0.4); }
 
 /*----------------------------------------------------------------------*/
 /*        STEPS COMPONENT  - Structure       */
@@ -3186,7 +3669,7 @@ fieldset {
   white-space: nowrap;
   outline: none;
   user-select: none;
-  border: 1px solid #16E73C;
+  border: 1px solid #ced4da;
   transition: all .2s ease-in-out;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -3206,7 +3689,7 @@ fieldset {
   text-align: center;
   vertical-align: middle;
   line-height: 15px;
-  border: 1px solid #16E73C;
+  border: 1px solid #ced4da;
   padding-top: 5px;
   cursor: pointer; }
 
@@ -3234,11 +3717,12 @@ fieldset {
   color: rgba(255, 255, 255, 0.7); }
 
 .verticalnavtab .leftactivetab {
+  background-color: rgba(41, 105, 70, 0.4);
   font-weight: bold;
   color: #16E73C; }
 
 .verticalnavtab .rightactivetab {
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(41, 105, 70, 0.4);
   color: #16E73C; }
 
 /*----------------------------------------------------------------------*/
@@ -3249,7 +3733,7 @@ fieldset {
   overflow: hidden;
   margin: 0;
   padding: 0;
-  border-bottom: 2px solid #16E73C; }
+  border-bottom: 1px solid #ced4da; }
 
 .tab li {
   display: table-cell;
@@ -3266,7 +3750,7 @@ fieldset {
   white-space: nowrap; }
 
 .activetab {
-  border-bottom: 4px solid black; }
+  border-bottom: 3px solid #16E73C; }
 
 .tabnavigation {
   padding: 10px 16px;
@@ -3299,11 +3783,11 @@ fieldset {
 
 .verticalnavtab .leftactivetab {
   font-weight: bold;
-  border-right: 3px solid black; }
+  border-right: 3px solid #16E73C; }
 
 .verticalnavtab .rightactivetab {
   font-weight: bold;
-  border-left: 3px solid black; }
+  border-left: 3px solid #16E73C; }
 
 .verticalnavtab-left {
   font-weight: bold; }
@@ -3313,11 +3797,11 @@ fieldset {
 
 .verticalalign-tableft {
   vertical-align: top !important;
-  border-right: 2px solid #16E73C !important; }
+  border-right: 1px solid #ced4da !important; }
 
 .verticalalign-tabright {
   vertical-align: top !important;
-  border-left: 2px solid #16E73C !important; }
+  border-left: 1px solid #ced4da !important; }
 
 .verticalalign-tabcontent {
   vertical-align: top !important; }
@@ -3326,14 +3810,14 @@ fieldset {
 /*        WINDOW COMPONENT -Visual     */
 /*----------------------------------------------------------------------*/
 .root-window {
-  background-color: #fefefe;
+  background-color: #000000;
   /* Black w/ opacity */ }
 
 .modal-window-content {
-  background-color: #fefefe; }
+  background-color: #000000; }
 
 .modal-window-header {
-  background: #000000;
+  background: rgba(41, 105, 70, 0.4);
   font-size: 20px;
   color: #16E73C; }
 
@@ -3341,16 +3825,16 @@ fieldset {
   font-size: 14px; }
 
 .modal-window-middle::-webkit-scrollbar-track {
-  background-color: #F5F5F5; }
+  background-color: #f5f5f5; }
 
 .modal-window-middle::-webkit-scrollbar {
-  background-color: #F5F5F5; }
+  background-color: #f5f5f5; }
 
 .modal-window-middle::-webkit-scrollbar-thumb {
   background-color: #000000; }
 
 .modal-window-footer {
-  background-color: #000000;
+  background-color: rgba(41, 105, 70, 0.4);
   color: #16E73C; }
 
 /*----------------------------------------------------------------------*/
@@ -3374,6 +3858,7 @@ fieldset {
   z-index: 1;
   /* Sit on top */
   width: 100%;
+  height: 100%;
   overflow: auto;
   /* Enable scroll if needed */ }
 
@@ -3397,7 +3882,7 @@ fieldset {
 
 .modal-window-header {
   display: flex;
-  border-bottom: 2px solid #16E73C;
+  border-bottom: 1px solid #ced4da;
   font-weight: 300;
   text-transform: capitalize; }
 
@@ -3418,7 +3903,7 @@ fieldset {
 
 .modal-window-footer {
   display: flex;
-  border-top: 2px solid #16E73C; }
+  border-top: 1px solid #ced4da; }
 
 /*----------------------------------------------------------------------*/
 /*        DIALOGUE COMPONENT -Visual        */
@@ -3427,16 +3912,16 @@ fieldset {
   background: rgba(128, 127, 127, 0.6); }
 
 .dialogue-content {
-  background-color: #fefefe; }
+  background-color: #000000; }
 
 .dialogue-content > * {
   padding: 5px; }
 
 .dialogue-header {
   /* padding: 10px 24px;*/
-  background: #000000;
+  background: rgba(41, 105, 70, 0.4);
   font-size: 20px;
-  color: #16E73C;
+  color: rgba(255, 255, 255, 0.7);
   font-weight: 300; }
 
 .dialogue-middle {
@@ -3505,7 +3990,7 @@ fieldset {
 .dialogue-header {
   display: flex;
   /* padding: 10px 24px;*/
-  border-bottom: 2px solid #16E73C;
+  border-bottom: 1px solid #ced4da;
   text-transform: capitalize; }
 
 .dialogue-middle {
@@ -3519,7 +4004,7 @@ fieldset {
 
 .dialogue-footer {
   display: flex;
-  border-top: 2px solid #16E73C; }
+  border-top: 1px solid #ced4da; }
 
 .dialogue-message {
   display: flex;
@@ -3546,7 +4031,7 @@ fieldset {
 /*        PANEL COMPONENT - Visual     */
 /*----------------------------------------------------------------------*/
 .panel-accordion {
-  background-color: #000000;
+  background-color: rgba(41, 105, 70, 0.4);
   color: #16E73C;
   font-size: 15px; }
 
@@ -3555,8 +4040,8 @@ fieldset {
   font-weight: bold; }
 
 .panel-panel {
-  background-color: rgba(128, 128, 128, 0.6);
-  color: #16E73C; }
+  background-color: #000000;
+  color: rgba(255, 255, 255, 0.7); }
 
 .panel-panel::-webkit-scrollbar-track {
   background-color: #f5f5f5; }
@@ -3573,7 +4058,7 @@ fieldset {
 .panel-accordion {
   cursor: pointer;
   padding: 10px;
-  border-color: #16E73C;
+  border-color: #ced4da;
   text-align: left;
   outline: none;
   transition: 0.4s; }
@@ -3589,7 +4074,7 @@ fieldset {
   transition: max-height 0.2s ease-out; }
 
 .panel-box {
-  border: 2px solid #000000;
+  border: 2px solid #16E73C;
   width: 100%; }
 
 .panel-panel::-webkit-scrollbar-track {
@@ -3619,8 +4104,8 @@ fieldset {
   .card-header {
     display: flex;
     padding: 10px 24px;
-    background: #000000;
-    border-bottom: 2px solid #16E73C;
+    background: rgba(41, 105, 70, 0.4);
+    border-bottom: 1px solid #ced4da;
     font-size: 18px;
     color: #16E73C;
     font-weight: 300;
@@ -3654,7 +4139,7 @@ fieldset {
     font-weight: 500; }
 
   .datatable .datatable-col {
-    border-bottom: 2px solid #16E73C;
+    border-bottom: 1px solid #ced4da;
     display: block;
     font-size: .8em;
     text-align: right;
@@ -3804,8 +4289,8 @@ fieldset {
   .card-header {
     display: flex;
     padding: 10px 24px;
-    background: #000000;
-    border-bottom: 2px solid #16E73C;
+    background: rgba(41, 105, 70, 0.4);
+    border-bottom: 1px solid #ced4da;
     font-size: 18px;
     color: #16E73C;
     font-weight: 300;
@@ -3839,7 +4324,7 @@ fieldset {
     font-weight: 500; }
 
   .datatable .datatable-col {
-    border-bottom: 2px solid #16E73C;
+    border-bottom: 1px solid #ced4da;
     display: block;
     font-size: .8em;
     text-align: right;
@@ -4010,8 +4495,8 @@ fieldset {
   .card-header {
     display: flex;
     padding: 10px 24px;
-    background: #000000;
-    border-bottom: 2px solid #16E73C;
+    background: rgba(41, 105, 70, 0.4);
+    border-bottom: 1px solid #ced4da;
     font-size: 18px;
     color: #16E73C;
     font-weight: 300;
@@ -4131,7 +4616,7 @@ fieldset {
     width: 100%;
     padding: 0;
     margin: 0;
-    border-bottom: 1px solid #16E73C; }
+    border-bottom: 1px solid #ced4da; }
 
   .menu-content .menu-content-cols {
     width: 100%;
@@ -4145,7 +4630,7 @@ fieldset {
     .menubar .menuheader .menulink:hover .menu-content {
       display: none; }
     .menubar .menuheader .menulink:hover a {
-      color: blue; } }
+      color: rgba(255, 255, 255, 0.7); } }
 /*----------------------------------------------------------------------*/
 /*        NAVBAR Media-Q COMPONENT         */
 /*----------------------------------------------------------------------*/
@@ -4239,8 +4724,8 @@ fieldset {
   .card-header {
     display: flex;
     padding: 10px 24px;
-    background: #000000;
-    border-bottom: 2px solid #16E73C;
+    background: rgba(41, 105, 70, 0.4);
+    border-bottom: 1px solid #ced4da;
     font-size: 18px;
     color: #16E73C;
     font-weight: 300;
@@ -4360,7 +4845,7 @@ fieldset {
     width: 100%;
     padding: 0;
     margin: 0;
-    border-bottom: 1px solid #16E73C; }
+    border-bottom: 1px solid #ced4da; }
 
   .menu-content .menu-content-cols {
     width: 100%;
@@ -4374,7 +4859,7 @@ fieldset {
     .menubar .menuheader .menulink:hover .menu-content {
       display: none; }
     .menubar .menuheader .menulink:hover a {
-      color: blue; } }
+      color: rgba(255, 255, 255, 0.7); } }
 /*----------------------------------------------------------------------*/
 /*        NAVBAR Media-Q COMPONENT         */
 /*----------------------------------------------------------------------*/
@@ -4468,8 +4953,8 @@ fieldset {
   .card-header {
     display: flex;
     padding: 10px 24px;
-    background: #000000;
-    border-bottom: 2px solid #16E73C;
+    background: rgba(41, 105, 70, 0.4);
+    border-bottom: 1px solid #ced4da;
     font-size: 18px;
     color: #16E73C;
     font-weight: 300;
@@ -4589,7 +5074,7 @@ fieldset {
     width: 100%;
     padding: 0;
     margin: 0;
-    border-bottom: 1px solid #16E73C; }
+    border-bottom: 1px solid #ced4da; }
 
   .menu-content .menu-content-cols {
     width: 100%;
@@ -4603,7 +5088,7 @@ fieldset {
     .menubar .menuheader .menulink:hover .menu-content {
       display: none; }
     .menubar .menuheader .menulink:hover a {
-      color: blue; } }
+      color: rgba(255, 255, 255, 0.7); } }
 /*----------------------------------------------------------------------*/
 /*        NAVBAR Media-Q COMPONENT         */
 /*----------------------------------------------------------------------*/
@@ -4697,8 +5182,8 @@ fieldset {
   .card-header {
     display: flex;
     padding: 10px 24px;
-    background: #000000;
-    border-bottom: 2px solid #16E73C;
+    background: rgba(41, 105, 70, 0.4);
+    border-bottom: 1px solid #ced4da;
     font-size: 18px;
     color: #16E73C;
     font-weight: 300;
@@ -4818,7 +5303,7 @@ fieldset {
     width: 100%;
     padding: 0;
     margin: 0;
-    border-bottom: 1px solid #16E73C; }
+    border-bottom: 1px solid #ced4da; }
 
   .menu-content .menu-content-cols {
     width: 100%;
@@ -4832,7 +5317,7 @@ fieldset {
     .menubar .menuheader .menulink:hover .menu-content {
       display: none; }
     .menubar .menuheader .menulink:hover a {
-      color: blue; } }
+      color: rgba(255, 255, 255, 0.7); } }
 /*----------------------------------------------------------------------*/
 /*        NAVBAR Media-Q COMPONENT         */
 /*----------------------------------------------------------------------*/
@@ -4904,31 +5389,51 @@ fieldset {
     text-transform: lowercase; }
 
 .listbox .header {
-  border-bottom: 2px solid #16E73C; }
+  border-bottom: 1px solid #ced4da; }
 .listbox .list .list-items {
   border-bottom: 1px solid #1b1d22; }
-
-.defaultcolor {
-  color: #16E73C; }
 
 /*----------------------------------------------------------------------*/
 /*        Matrix Amber Visual        */
 /*----------------------------------------------------------------------*/
-.listbox .list {
-  background-color: black; }
-  .listbox .list .title {
-    font-size: 18px;
-    color: #6bac80; }
-    .listbox .list .title a {
-      font-size: 16px; }
+.listbox .list .title {
+  font-size: 18px;
+  color: #16E73C; }
+  .listbox .list .title a {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.7) !important; }
+
+.listbox .header {
+  background-color: #16E73C;
+  color: #000000; }
 
 .card-container .card-header {
   background-color: rgba(41, 105, 70, 0.4); }
 
 .listbox .listbox .list .title {
-  color: red !important; }
+  color: #16E73C !important; }
+
+.sidenav .activenode {
+  color: #16E73C; }
+
+.datapoints .datapoint-south {
+  background-color: #16E73C;
+  color: #000000; }
 
 .defaultcolor {
+  color: #16E73C; }
+
+.datatable .datatable-header {
+  background-color: #16E73C;
+  color: #000000; }
+
+.star-icon:before {
+  color: #16E73C; }
+
+.input-control {
+  background-color: rgba(41, 105, 70, 0.4); }
+
+.itemselector-list-active {
   color: #16E73C; }
 
 /*----------------------------------------------------------------------*/

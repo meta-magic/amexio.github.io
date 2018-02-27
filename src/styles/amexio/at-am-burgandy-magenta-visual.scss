@@ -25,12 +25,12 @@
 // }
 
 // .dropdown{
-//   border: 2px solid $themeColor;
+//   border: 2px solid $themeSecondaryColor;
 //   box-shadow: 0 1px 3px 0 #666666;
 // }
 
 // .datetimepicker {
-//   border: $borderSize solid $themeColor;
+//   border: $borderSize solid $themeSecondaryColor;
 //   box-shadow: 0 1px 3px 0 #666666;
 // }
 
@@ -40,49 +40,62 @@
 // }
 
 .listbox {
-  
+
   background: rgba(255, 255, 255, 0.6);
   .list{
-    
+
     background: rgba(255, 255, 255, 0.6);
-  
+
     .title {
       font-size: 18px;
-      color: $datapointColor;
-  
+      color: $themePrimaryColor;
+
       a {
         font-size: 16px;
-        color: $defaultColor;
+        color: $themeSecondaryColor;
       }
     }
   }
 }
 
 .card-container {
-  
+  background:  none;
   .card-header {
     font-size: 20px;
+    background:none;
+    color:$componentHeaderBGColor;
   }
-
+  .card-body{
+    background:rgba(255, 255, 255, 0.6);
+  }
+  
 }
 
-
-.card-body{
-  background:rgba(255, 255, 255, 0.6);
-}
 
 .listbox{
 
   .listbox .list .title {
-    color: $themeColor !important;
+    color: $themeSecondaryColor !important;
   }
 
   .header{
     background: none;
-    color: $themeColor !important;
+    color: $themeSecondaryColor !important;
   }
 
   .list{
     background: none;
   }
+}
+
+.navbar-container {
+  background-color: $componentBGColor;
+  .navbar-container .navbar-logo-unit a {
+    color: $themeSecondaryColor;
+  }
+}
+
+.datapoints .datapoint-south {
+  background-color: $themeSecondaryColor;
+  color: $componentBGColor;
 }

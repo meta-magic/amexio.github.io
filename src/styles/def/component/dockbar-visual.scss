@@ -1,7 +1,27 @@
 
 /*----------------------------------------------------------------------*/
-/*        DOCKBAR COMPONENT         */
+/*        DOCKBAR COMPONENT  -Visual       */
 /*----------------------------------------------------------------------*/
+
+$dockBarBGColor: $primaryBGColor;
+$dockBarColor: $primaryColor;
+$dockBarContentBGColor : $componentBGColor;
+$dockBarSize: $borderSize;
+$dockBarColor : $borderColor;
+$dockBarActiveBorderColor: $themePrimaryColor;
+$dockBarActiveBorderSize: 3px;
+$dockBarActiveColor:$componentActiveFontColor;
+$dockBarActiveBGColor:$componentActiveBGColor;
+
+$dockbarBtnBGColor : inherit;
+$dockbarFontSize : 24px;
+$dockbarLabelHighlight : black;
+$dockbarLabelFontWeight : bold;
+$dockbarCloseBarFontSize : 24px ;
+$dockbarTitleFontSize : 17px;
+$dockbarTitleFontWight : 500;
+$dockbarScrollBGColor : $scrollBGColor;
+$dockbarScrollThumbBGColor : $scrollThumbColor;
 
 .dockbar {
   // float: left;

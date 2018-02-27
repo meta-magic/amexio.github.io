@@ -2,6 +2,16 @@
 /*----------------------------------------------------------------------*/
 /*        DATETIME COMPONENT - Structure         */
 /*----------------------------------------------------------------------*/
+$datetimepickerBGColor : $componentBGColor;
+$datetimepickertopbarBGColor : $componentActiveBGColor;
+$datetimepickerActiveColor : $themePrimaryColor;
+
+$datetimepickerBorderSize : $borderSize;
+$datetimepickerBorderColor : $borderColor;
+$datetimepickerFontSize : 18px;
+$datetimepickerTopBarColor :$componentHeaderFontColor;
+$datetimepickerDaysColor : #777;
+$datetimepickerDaysFontSize : 14px;
 
 .datetimepicker{
   display: block;
@@ -117,4 +127,3 @@
 .datetimepicker-up{
   bottom: 100%;
 }
-

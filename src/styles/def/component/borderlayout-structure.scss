@@ -3,6 +3,9 @@
 /*        BORDER LAYOUT COMPONENT - Structure       */
 /*----------------------------------------------------------------------*/
 
+$borderLayoutBorder : 0px;
+$borderLayoutBorderColor : none;
+
 .borderlayout-N { grid-area: north; }
 .borderlayout-S { grid-area: south; }
 .borderlayout-E { grid-area: east; }

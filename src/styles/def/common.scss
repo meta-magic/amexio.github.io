@@ -1,25 +1,57 @@
-/**HELPER CLASS STARTS**/
+/* Misc Variables */
+$appTransprency :  rgba(0, 0, 0, 0.87);
 
+$borderSize : 1px;
+$borderSize2 : 2px;
+$borderSize3 : 3px;
+
+$borderRadius : 2px;
+$borderRadius2 : 3px;
+$borderRadius3 : 4px;
+
+$scrollBGColor : #f5f5f5;
+$scrollThumbColor : $componentBGColor;
+
+$borderColor : #ced4da;
+
+$primaryBGColor: $themeSecondaryColor;
+$secondaryBGColor: #ffffff;
+$successBGColor : #5cb85c;
+$dangerBGColor : #d9534f;
+$warningBGColor : #f0ad4e;
+
+$primaryColor: white;
+$secondaryColor:$componentFontColor;
+$successColor : white;
+$dangerColor : white;
+$warningColor : white;
+
+$success: $successBGColor;
+$error : $dangerBGColor;
+$focusColor : #5cb3fd;
+$borderColorFocus: $focusColor;
+
+/**HELPER CLASS STARTS**/
 body {
-  background: $backgroundcolor;
+  background: $appBackground;
   min-height: 100%;
+  height :100%;
   overflow-x: hidden;
   overflow-y: auto;
   font-weight: 400;
-  color: $color;
+  color: $themeFontColor;
   font-size: 1em;
   margin: 0px;
   padding: 0px;
 }
 
+html {
+  height :100%;
+  width :100%;
+}
 body {
   font-family: Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
-  @if($isAmexio){
-     background-image: $themeBGImage;
-  }
-  @else{
-    background-image: none;
-  }
+  background-image: $appBackgroundImage;
 }
 
 .helperHidden{
@@ -78,8 +110,8 @@ body {
 
 /**HEADER STYLE STARTS **/
 .header {
-  background-color: $primaryBGColor;
-  color: $primaryColor;
+  background-color: $componentHeaderBGColor;
+  color: $componentHeaderFontColor;
   padding: 10px;
   overflow: hidden;
 }
@@ -127,18 +159,18 @@ input:disabled {
 }
 
 .defaultcolor{
-  color: $defaultColor;
+  color: $themeFontColor;
 }
 
 
 .verticalalign-tableft{
   vertical-align: top !important;
-  border-right: $tabBorderSize solid $tabBorderColor !important;
+  border-right: $borderSize solid $borderColor !important;
 }
 
 .verticalalign-tabright{
   vertical-align: top !important;
-  border-left: $tabBorderSize solid $tabBorderColor !important;
+  border-left: $borderSize solid $borderColor !important;
 }
 
 .verticalalign-tabcontent
@@ -194,7 +226,7 @@ label {
 }
 
 a {
-  color: $aColorTransprency;
+  color: $appTransprency;
   //text-transform: lowercase;
   @if(spicyApricotFontSize){
       font-size: 14px;
@@ -212,7 +244,7 @@ image using the content attribute.
   position: absolute;
   border-width: 3px;
   border-style: solid;
-  border-color: transparent $primaryBGColor $primaryBGColor;
+  border-color: transparent $themeSecondaryColor $themeSecondaryColor;
   border-radius: 50%;
   width: 24px;
   height: 24px;
@@ -238,14 +270,12 @@ image using the content attribute.
   margin-top: -10px;
   margin-left: -10px;
   border-radius: 50%;
-  bordaer: 2px solid transparent;
-  border-top-color: $primaryBGColor;
-  border-bottom-color: $primaryBGColor;
+  border: 2px solid transparent;
+  border-top-color: $themeSecondaryColor;
+  border-bottom-color: $themeSecondaryColor;
   animation: spinner .8s ease infinite;
 }
 
 .row-disabled{
   opacity: 0.55;
 }
-
-

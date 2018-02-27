@@ -1,7 +1,11 @@
 
 /*----------------------------------------------------------------------*/
-/***CHECKBOX -Structure
+/* CHECKBOX -Structure
 /*----------------------------------------------------------------------*/
+
+$checkboxBGColor : $appBackground;
+$checkboxActiveBGColor : $componentActiveBGColor;
+$checkboxActiveColor : $componentActiveFontColor;
 
 .input-box {
   display: inline-block;

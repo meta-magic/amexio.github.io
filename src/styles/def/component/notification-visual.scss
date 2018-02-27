@@ -3,6 +3,9 @@
 /*        NOTIFICATION CONTROL COMPONENT -Visual      */
 /*----------------------------------------------------------------------*/
 
+$toastBGColor : $componentBGColor;
+$toastColor : $componentFontColor;
+
 .toastbar{
 //position: fixed;
 //  z-index: 3;

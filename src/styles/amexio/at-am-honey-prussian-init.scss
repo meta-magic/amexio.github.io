@@ -1,53 +1,124 @@
 $isAmexio : true;
-$isHoneyPrussian : true;
-$themeBGImage : url('/assets/images/theme/bootstrap/Pyramid-bg.png');
-$aColorTransprency: #00C4FF;
-$defaultBGColor : rgba(0, 43, 87, 0.7);
+$isDatapointBorderRadius :false;
+$appTransprency :#00C4FF;
 
-$defaultColor :  #02468D;
+$themePrimaryColor: #F3C22A;
+$themeSecondaryColor : #02468D;
+$themeFontColor : white;
+$themeFontFamily: 'Quicksand', sans-serif;
+// background-color: #F0EEE9;
+// color: rgba(255,255,255,0.70)!important;
 
-$oppColor1: white;
+$appBackground :  rgba(0, 43, 87, 0.7);
+$appBackgroundImage : url('/assets/images/theme/bootstrap/Pyramid-bg.png');
 
-$color: $defaultColor;
+$appHeaderBGColor : rgba(0, 43, 87, 0.7);
+$appHeaderFontColor : $themePrimaryColor;
 
-$oppColor: $defaultBGColor;
+$appHeaderHoverBGColor : none;
+$appHeaderHoverFontColor : none;
+/* Component Specific Variables */
+$componentHoverBGColor : lighten($themePrimaryColor,20%);
+$componentHoverFontColor : $themeFontColor;
+$componentActiveBGColor : lighten($themePrimaryColor,30%);
+$componentActiveFontColor : $themeFontColor;
+$componentDisabledBGColor : rgb(160, 158, 158);
+$componentDisabledFontColor : $themeSecondaryColor;
 
-$backgroundcolor: $defaultBGColor;
+$componentBGColor : rgba(0, 43, 87, 0.7);
+$componentFontColor : #1FBCD2;
 
-$componentBGColor: $backgroundcolor;
+$componentHeaderBGColor : none;
+$componentHeaderFontColor : $themePrimaryColor;
+$componentFooterBGColor :none;
+$componentFooterFontColor : $themePrimaryColor;
+
+$componentDataBGColor : none;
+$componentDataFontColor : $themePrimaryColor;
+/* Misc Variables */
+$borderSize1 : 1px;
+$borderSize2 : 2px;
+$borderSize3 : 3px;
 
 
-$themeBGColor :  $defaultBGColor;
-$themeColor :  $defaultColor;
+$borderRadius2 : 3px;
+$borderRadius3 : 5px;
 
-$primaryBGColor: #F3C22A;
-$secondaryBGColor: $themeColor;
+$borderSize : $borderSize1;
+$borderRadius : $borderRadius3;
+
+$scrollBGColor : #f5f5f5;
+$scrollThumbColor : $componentBGColor;
+
+$borderColor :$themePrimaryColor;
+
+$primaryBGColor : $themeSecondaryColor;
+$secondaryBGColor: #ffffff;
 $successBGColor : #5cb85c;
 $dangerBGColor : #d9534f;
 $warningBGColor : #f0ad4e;
 
-
-$primaryColor: white;
-$secondaryColor: $color;
-$successColor : $oppColor;
-$dangerColor : $oppColor;
-$warningColor : $oppColor;
-
+$primaryColor:$themePrimaryColor;
+$secondaryColor : $themePrimaryColor;
+$successColor : white;
+$dangerColor : white;
+$warningColor : white;
 
 $success: $successBGColor;
 $error : $dangerBGColor;
 $focusColor : #5cb3fd;
+$borderColorFocus: $focusColor;
 
-$hoverColor : $themeColor;
-$hoverBGColor : $themeBGColor;
+// $isAmexio : true;
+// $isHoneyPrussian : true;
+// $themeBGImage : url('/assets/images/theme/bootstrap/Pyramid-bg.png');
+// $aColorTransprency: #00C4FF;
+// $defaultBGColor : rgba(0, 43, 87, 0.7);
+
+// $defaultColor :  #02468D;
+
+// $oppColor1: white;
+
+// $color: $defaultColor;
+
+// $oppColor: $defaultBGColor;
+
+// $backgroundcolor: $defaultBGColor;
+
+// $componentBGColor: $backgroundcolor;
 
 
-$borderSize : 2px;
-$borderRadius : 5px;
-$borderColor : $primaryBGColor;
-$borderColor-focus: $focusColor;
+// $themeBGColor :  $defaultBGColor;
+// $themeColor :  $defaultColor;
+
+// $primaryBGColor: #F3C22A;
+// $secondaryBGColor: $themeColor;
+// $successBGColor : #5cb85c;
+// $dangerBGColor : #d9534f;
+// $warningBGColor : #f0ad4e;
 
 
+// $primaryColor: white;
+// $secondaryColor: $color;
+// $successColor : $oppColor;
+// $dangerColor : $oppColor;
+// $warningColor : $oppColor;
+
+
+// $success: $successBGColor;
+// $error : $dangerBGColor;
+// $focusColor : #5cb3fd;
+
+// $hoverColor : $themeColor;
+// $hoverBGColor : $themeBGColor;
+
+
+// $borderSize : 2px;
+// $borderRadius : 5px;
+// $borderColor : $primaryBGColor;
+// $borderColor-focus: $focusColor;
+
+/*
 $navbarBGColor : $themeBGColor ;
 $navbarBoxShadow: $borderColor;
 $navbarColor : white;
@@ -404,4 +475,4 @@ $modalWindowFontSize : 14px;
 $modalWindowScrollColor : #F5F5F5;
 $modalWindowScrollThumbColor : $themeBGColor;
 $modalFooterBGColor : $cardFooterBGColor;
-$modalFooterColor : $cardFooterColor;
+$modalFooterColor : $cardFooterColor;*/

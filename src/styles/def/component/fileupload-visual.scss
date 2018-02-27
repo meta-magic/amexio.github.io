@@ -2,6 +2,8 @@
 /****************************************************/
 /**File upload -Visual **/
 /****************************************************/
+$uploadDropZoneColor :$componentHeaderBGColor;
+$uploadDropZoneColorDrop :$themeFontColor;
 
 .upload-drop-zone {
   color: $uploadDropZoneColor;

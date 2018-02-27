@@ -1,3 +1,8 @@
+
+/*----------------------------------------------------------------------*/
+/*        Label COMPONENT -Structure        */
+/*----------------------------------------------------------------------*/
+
 .label-content{
 }
 
@@ -27,3 +32,17 @@
   font-size: 18px;
   font-weight: bold;
 }
+
+.topbar{
+  border-top:$borderSize solid $borderColor;
+}
+.bottombar{
+  border-bottom:$borderSize solid $borderColor;
+}
+.leftbar{
+  border-left:$borderSize solid $borderColor;
+}
+.rightbar{
+  border-right:$borderSize solid $borderColor;
+}
+

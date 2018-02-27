@@ -3,6 +3,17 @@
 /*        TABL COMPONENT   -Visual      */
 /*----------------------------------------------------------------------*/
 
+$tabFontSize : 17px;
+
+$tabBorderSize: $borderSize;
+$tabBorderColor : $borderColor;
+$tabColor : $componentFontColor;
+$tabBGColor : $componentBGColor;
+$tabActiveBorder : $themePrimaryColor;
+$tabActiveBGColor : $componentActiveBGColor;
+$tabActiveBorderSize : 3px;
+$tabActiveColor : $componentActiveFontColor;
+
 .tabwrapper{
 
 }
@@ -88,14 +99,13 @@
 }
 
 .verticalnavtab .leftactivetab {
-  //background-color: $tabActiveBGColor;
+  background-color: $tabActiveBGColor;
   font-weight: bold;
   color : $tabActiveColor;
   //border-right: $tabActiveBorderSize solid $tabActiveBorder;
 }
 
 .verticalnavtab .rightactivetab {
-  //background-color: $tabActiveBGColor;
   background-color: $tabActiveBGColor;
   //font-weight: bold;
   color : $tabActiveColor;
