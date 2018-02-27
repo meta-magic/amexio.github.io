@@ -1,3 +1,5 @@
+$borderColorFocus: $focusColor;
+
 .inputfieldbar  { position:relative; display:block; width:100%; }
 .inputfieldbar:before, .inputfieldbar:after   {
   content:'';
@@ -5,7 +7,7 @@
   width:0;
   bottom:1px; 
   position:absolute;
-  background:$borderColor-focus; 
+  background:$borderColorFocus; 
   transition:0.2s ease all; 
   -moz-transition:0.2s ease all; 
   -webkit-transition:0.2s ease all;

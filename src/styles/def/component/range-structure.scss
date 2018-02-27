@@ -1,6 +1,17 @@
 /****************************************************/
 /***                  Range - Structure                     ***/
 /****************************************************/
+$rangeSliderFontSize : .7em;
+$sliderWidgetBGColor : $componentBGColor;
+$sliderWidgetColor: $themeFontColor;
+$sliderWidgetFontSize :1em;
+$rangeSliderBGColor :$componentBGColor;
+
+$rangeWidgetBG1:$componentBGColor;
+$rangeWidgetBG2:$componentBGColor;
+$rangeHeaderColor : $componentHeaderFontColor;
+$rangeHeaderFontWeight : normal;
+
 
 .ui-slider {
   position: relative;

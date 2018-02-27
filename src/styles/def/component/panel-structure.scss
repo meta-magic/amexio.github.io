@@ -3,6 +3,21 @@
 /*        PANEL COMPONENT -Structure     */
 /*----------------------------------------------------------------------*/
 
+$panelBoxBorder : $themeSecondaryColor;
+$panelBorder : $borderColor;
+
+$panelAccBGColor : $componentHeaderBGColor;
+$panelAccColor : $componentHeaderFontColor;
+
+$panelBGColor : $componentBGColor;
+$panelColor : $componentFontColor;
+
+$panelFontSize : 15px;
+$panelAfterColor : red;
+$panelFontWeight : bold;
+$panelScrollBG : $scrollBGColor;
+$panelScrollThumbBG : $scrollThumbColor;
+
 .panel-accordion {
   // background-color: $accordionActiveBGColor;
   // color: $accordionColor;

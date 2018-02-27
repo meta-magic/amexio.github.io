@@ -3,6 +3,9 @@
 /*        NOTIFICATION CONTROL COMPONENT  -Structure       */
 /*----------------------------------------------------------------------*/
 
+$toastBGColor : $componentHoverBGColor;
+$toastColor : $componentFontColor;
+
 .toastbar{
   position: fixed;
   z-index: 3;
@@ -28,7 +31,6 @@ left:10px;
 .toast-bottom{
   bottom:10px;
 }
-
 
 .toast {
   margin:10px;

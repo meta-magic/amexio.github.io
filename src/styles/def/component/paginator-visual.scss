@@ -2,6 +2,12 @@
 /*----------------------------------------------------------------------*/
 /*        PAGINATOR COMPONENT  -Visual      */
 /*----------------------------------------------------------------------*/
+$paginatorHoverBGColor : $componentHoverBGColor;
+$paginatorHoverColor : $componentHoverFontColor;
+$paginatorColor : inherit;
+$paginatorActiveBGColor : $componentActiveBGColor;
+$paginatorActiveColor : $componentActiveFontColor;
+
 
 .paginator{
   //padding: 10px;

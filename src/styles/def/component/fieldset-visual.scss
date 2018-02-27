@@ -3,6 +3,13 @@
 /*        fieldset COMPONENT         */
 /*----------------------------------------------------------------------*/
 
+$fieldsetFontSize : 13px;
+$fieldsetFontWeight : bold;
+
+$fieldSetBorderSize : $borderSize;
+$fieldSetBorderColor : $borderColor;
+
+$collapsibleLegendColor : $componentFontColor;
 
 fieldset {
   // border: $fieldSetBorderSize solid $fieldSetBorderColor;

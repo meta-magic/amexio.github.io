@@ -1,11 +1,6 @@
 body {
-  background-color: #F0EEE9;
-  color: rgba(255,255,255,0.70)!important;
-
-  background-image: $themeBGImage;
   background-repeat: no-repeat;
   background-attachment: fixed;
-
   font-size: 16px;
 }
 
@@ -40,7 +35,7 @@ body {
   // border: 2px solid $themeColor;
   // border-radius: $border-radius;
   // box-shadow: 0 1px 3px 0 $themeColor;
-  background-color: white;
+  // background-color: white;
 }
 
 
@@ -60,79 +55,76 @@ body {
 
 // }
 .listbox{
-
   .list{
-    
-    .title {
+      .title {
       font-size: 16px;    
-      //padding-top: 8px;
-      color: #1FBCD2 !important;
+      color: $componentFontColor !important;
     }
     .list-items{
-      background:#00517b;
+      background:$componentBGColor;
+      color: $componentFontColor !important;
     }
     
     .list-items:hover{
-      background-color: lighten($themeColor,70%);
+      background-color: $componentHoverBGColor;
     }
   }
 
   .header{
-    background: none;
-    color: $cardHeaderColor;
+    background-color: $componentHeaderBGColor;
+    color: $themeSecondaryColor;
   }
 }
 
+.listbox .list .title a {
+  color: $componentFontColor !important;
+}
 
 .card-container {
+  color : white;
   .card-header {
     font-size: 20px;
+    color : $themePrimaryColor;
+    background-color: $componentHeaderBGColor;
   }
 
   .card-body{
   }
 
   .card-footer{
-    background: none;
+    background: $componentFooterBGColor;
     
   }
 }
 
-
 // /** NAVBAR **/
  .navbar-container {
-//   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
-//   color: white;
-//   background-color: $themeBGColor;
-//   background-image:linear-gradient(to right, #FFFFFF, #FEFEFE, rgba(1, 114, 184, 0.8), rgba(0, 33, 76, 0.7));
+   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+   color:$componentBGColor;
+   background-color: $appBackground;
+   background-image:linear-gradient(to right, #FFFFFF, #FEFEFE, rgba(1, 114, 184, 0.8), rgba(0, 33, 76, 0.7));
 
   .navbar-logo-unit a{
     font-size: 24px;
     font-weight: bold;
-    color: #02468D;
+    color: $themeSecondaryColor;
   }
+}
+.navbar-container{
+  color : white;
 }
 
 .sidenav{
-  background-image: linear-gradient(to bottom, #FFFFFF, #0EAFD5, #4AD4BD);
+  background-image: linear-gradient(to bottom, #FFFFFF, #0EAFD5, #4AD4BD); 
+  color : $themeSecondaryColor!important;
 }
 
-// .sidenav .activenode{
-//   color: white;
-//   background-color: $themeColor;
-//   border-right: $borderSize solid $themeColor;
-// }
+.sidenav .headernode{
+  background-color: $componentHeaderBGColor !important;
+  color : $themeSecondaryColor!important;
+}
 
-
-// .sidenav .headernode:hover {
-//   color: white;
-//   background-color: $sidenavactive;
-// }
-
-// .sidenav .defaultnode:hover {
-//   color: white;
-//   background-color: $sidenavactive;
-// }
-
-
-
+.datapoints .datapoint-south {
+  color : $componentBGColor;
+  background-color: $themePrimaryColor;
+}

@@ -2,6 +2,11 @@
 /***                  RADIO    Structure          ***/
 /****************************************************/
 
+
+$radioBGColor : $componentHeaderBGColor;
+$radioLabelBGColor : $componentBGColor;
+
+
 /* Create a custom checkbox */
 .input-box-radiobox-label {
   position: absolute;

@@ -3,6 +3,16 @@
 /*        ITEM SELECTOR COMPONENT  -Structure       */
 /*----------------------------------------------------------------------*/
 
+$itemselectorActionBGColor : $componentHeaderBGColor ;
+$itemselectorActionColor : $componentFontColor;
+$itemselectorActionDisableBGColor : $componentDisabledBGColor;
+$itemselectorListActiveBGColor : $componentActiveBGColor;
+$itemselectorListHoverBGColor : $componentHoverBGColor;
+$itemselectorListActiveColor : $componentHoverFontColor;
+$itemselectorListHoverColor : $componentHoverFontColor;
+
+$itemselectorFontWeight : 400 ;
+
 .flex-col-45pt{
   max-width: 45%;
 }
@@ -23,18 +33,13 @@
       justify-content: space-between;
 
       .action{
-      //  background-color: $primaryBGColor;
-      //  color: $primaryColor;
         width: 50px;
         height: 30px;
         text-align: center;
         cursor: pointer;
       }
 
-      .actiondisable{
-      //  background-color: lighten($primaryBGColor,50);
-      }
-
+     
       .movetop{  display: block; }
       .moveup{  display: block;}
       .moveleft{  display: block;}
@@ -48,6 +53,13 @@
   }
 }
 
-.list-item-active{
-//  background-color: lighten($primaryBGColor,30);
-}
+.itemselector-list{
+  list-style: none;
+  //border-bottom: $borderSize solid $borderColor;
+  cursor: pointer;
+  font-weight: $itemselectorFontWeight;
+  margin: 1px 0;
+  padding: 5px;
+  text-align: left;
+}  
+

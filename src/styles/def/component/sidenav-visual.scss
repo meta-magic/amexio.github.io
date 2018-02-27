@@ -3,6 +3,22 @@
 /*        SIDENAV COMPONENT -Visual       */
 /*----------------------------------------------------------------------*/
 
+$sidenavHeaderBGColor:$componentBGColor;
+$sidenavHeaderColor:$componentFontColor;
+$sidenavBGColor : $componentBGColor;
+$sidenavColor: $componentFontColor;
+$sidenavactive:$componentActiveBGColor;
+$sidenavactiveColor: $themePrimaryColor;
+$sidenavBorderColor: $borderColor;
+$sidenavBGHoverColor:$componentHoverBGColor;
+$sidenavHoverColor: $componentFontColor;
+
+$sidenavColorMob : $componentFontColor;
+$sidenavMobileColor : $componentActiveFontColor;
+$sidenavScrollColor : $scrollBGColor;
+$sidenavScrollThumbColor : $scrollThumbColor;
+$sidenavTitleColor:$componentFontColor;
+$sidenavTitleBGColor : $componentBGColor;
 
 .sidenav-mobile-bar{
   // top: 10px;
@@ -105,12 +121,7 @@
 
 .sidenav .headernode:hover {
   background-color: $sidenavBGHoverColor;
-  @if($isAmexio){
-    color: $sidenavHoverColor;
- }
-  @else{
-    color: inherit;
- }
+  color: $sidenavHoverColor;
 }
 
 
@@ -124,17 +135,12 @@
 
 .sidenav .defaultnode:hover {
   background-color: $sidenavBGHoverColor;
-  @if($isAmexio){
-    color: $sidenavHoverColor;
- }
-  @else{
-    color: inherit;
- }
+  color: $sidenavHoverColor;
 }
 
 .sidenav .activenode {
   background-color: $sidenavactive;
-  color: $sidenavactiveColor;
+  color: inherit;
 }
 
 .sidenav .border{

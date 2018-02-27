@@ -1,4 +1,73 @@
 $isAmexio : true;
+
+$appTransprency :rgb(153, 153, 153);
+
+$themePrimaryColor: #FF6FFF ;
+$themeSecondaryColor : #FF6FFF;
+$themeFontColor : rgba(255,255,255,0.70);;
+$themeFontFamily: Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
+
+$appBackground :#000000;
+$appBackgroundImage : url('/assets/images/theme/bootstrap/matrix-bg.png');
+
+$appHeaderBGColor :#000000;
+$appHeaderFontColor : white;
+
+$appHeaderHoverBGColor : none;
+$appHeaderHoverFontColor : none;
+/* Component Specific Variables */
+$componentHoverBGColor :  rgba(189, 127, 189, 0.6);
+$componentHoverFontColor : $themeSecondaryColor;
+$componentActiveBGColor : rgba(189, 127, 189, 0.6);
+$componentActiveFontColor : $themeSecondaryColor;
+$componentDisabledBGColor : rgb(160, 158, 158);
+$componentDisabledFontColor : $themeSecondaryColor;
+
+$componentBGColor :#000000;
+$componentFontColor : $themeFontColor;
+
+$componentHeaderBGColor : rgba(189, 127, 189, 0.6);
+$componentHeaderFontColor : $themePrimaryColor;
+$componentFooterBGColor :rgba(189, 127, 189, 0.6);
+$componentFooterFontColor : $themePrimaryColor;
+
+$componentDataBGColor : none;
+$componentDataFontColor : $themePrimaryColor;
+/* Misc Variables */
+
+$borderSize2 : 2px;
+$borderSize3 : 3px;
+
+
+$borderRadius2 : 3px;
+$borderRadius3 : 5px;
+
+$borderSize : $borderSize3;
+$borderRadius : $borderRadius3;
+
+$scrollBGColor : #f5f5f5;
+$scrollThumbColor : $componentBGColor;
+
+$borderColor : $themeSecondaryColor;
+
+$primaryBGColor: $themeSecondaryColor;
+$secondaryBGColor: #ffffff;
+$successBGColor : #5cb85c;
+$dangerBGColor : #d9534f;
+$warningBGColor : #f0ad4e;
+
+$primaryColor: black;
+$secondaryColor:black;
+$successColor : white;
+$dangerColor : white;
+$warningColor : white;
+
+$success: $successBGColor;
+$error : $dangerBGColor;
+$focusColor : #5cb3fd;
+$borderColorFocus: $focusColor;
+
+/*$isAmexio : true;
 $themeBGImage : url('/assets/images/theme/bootstrap/matrix-bg.png');
 $aColorTransprency : rgb(153, 153, 153);
 
@@ -46,8 +115,8 @@ $borderSize : 2px;
 $borderRadius : 2 px;
 $borderColor : $themeColor;
 $borderColor-focus: $focusColor;
-
-
+*/
+/*
 $navbarBGColor : $themeBGColor ;
 $navbarBoxShadow: $themeColor;
 $navbarColor : #FF6FFF;
@@ -141,7 +210,7 @@ $stepsInActiveBGColor:$hoverBGColor;
 
 $datatableRowActiveBG : lighten($themeBGColor,40%)!important;
 $datatableRowHoverBG : $hoverBGColor;
-$datatableRowHover : $themeColor!important; /**/
+$datatableRowHover : $themeColor!important; 
 $datatableRowActive : none;
 $datatableBorderSize : 1px;
 $datatableBorderColor : $themeColor;
@@ -403,4 +472,4 @@ $modalWindowFontSize : 14px;
 $modalWindowScrollColor : #F5F5F5;
 $modalWindowScrollThumbColor : $themeBGColor;
 $modalFooterBGColor : $cardFooterBGColor;
-$modalFooterColor : $cardFooterColor;
+$modalFooterColor : $cardFooterColor;*/

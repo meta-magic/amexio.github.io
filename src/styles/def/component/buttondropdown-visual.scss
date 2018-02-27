@@ -2,7 +2,11 @@
 /*        BUTTON DROPDOWN COMPONENT -Visual     */
 /*----------------------------------------------------------------------*/
 
-
+$btnDropdownBorderSize: $borderSize;
+$btnDropdownBorderColor : $borderColor;
+$buttonDropdownHoverBG:$componentHoverBGColor;
+$buttonDropdownBG:$componentBGColor;
+$buttonDropdownFontSize : 1rem;
 .button-dropdown {
 //position: absolute;
 //  padding: .5rem 1rem;

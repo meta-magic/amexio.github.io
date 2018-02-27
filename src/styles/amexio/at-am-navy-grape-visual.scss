@@ -54,57 +54,99 @@
 // }
 
 
+// .input-control {
+//   border-radius: 4px;
+//   line-height: 2;
+//   font-size: 14px;
+//   border: none;
+//   border-bottom: 2px solid $borderColor;
+//   border-radius: 4px!important;
+//   color: $color;
+// }
+
+// .input-control-success {
+//   border-color:$success;
+// }
+
+// .input-control-error {
+//   border-color:$error;
+// }
+
+// .inputgroup label {
+//   margin-bottom: 0rem;
+// }
+
+// .dropdown{
+//   border: 2px solid $themeSecondaryColor;
+//   box-shadow: 0 1px 3px 0 #666666;
+// }
+
+// .datetimepicker {
+//   border: $borderSize solid $themeSecondaryColor;
+//   box-shadow: 0 1px 3px 0 #666666;
+// }
+
+// .drodown-caret-down{
+//   top: 35px;
+//   color: $borderColor;
+// }
 .listbox {
-    
+
+  background: rgba(255, 255, 255, 0.6);
+  .list{
+
     background: rgba(255, 255, 255, 0.6);
-    .list{
-      
-      background: rgba(255, 255, 255, 0.6);
-      
-  
-      .title {
-        
-        font-size: 18px;
-        color: $datapointColor;
-        
-        a {
-          font-size: 16px;
-          color: $defaultColor;
-        }
+
+    .title {
+      font-size: 18px;
+      color: $themePrimaryColor;
+
+      a {
+        font-size: 16px;
+        color: $themeSecondaryColor;
       }
     }
   }
-  
-  .card-container {
-    
-    .card-header {
-        font-size: 20px;
-    }
-    
+}
+
+.card-container {
+  background:  none;
+  .card-header {
+    font-size: 20px;
+    background:none;
+    color:$componentHeaderBGColor;
   }
-  
-  
   .card-body{
     background:rgba(255, 255, 255, 0.6);
-    
   }
   
-  .listbox{
-  
-    .listbox .list .title {
-      color: $themeColor !important;
-    }
-  
-    .header{
-      
-      background: none;
-      color: $themeColor !important;
-    }
-  
-    .list{
-      background: none;
-    }
-    
+}
+
+
+.listbox{
+
+  .listbox .list .title {
+    color: $themeSecondaryColor !important;
   }
-  
-  
+
+  .header{
+    background: none;
+    color: $themeSecondaryColor !important;
+  }
+
+  .list{
+    background: none;
+  }
+}
+
+.navbar-container {
+  background-color: $componentBGColor;
+  .navbar-container .navbar-logo-unit a {
+    color: $themeSecondaryColor;
+  }
+}
+
+.datapoints .datapoint-south {
+  background-color: $themeSecondaryColor;
+  color: $componentBGColor;
+}

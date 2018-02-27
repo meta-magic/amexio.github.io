@@ -2,6 +2,9 @@
 /*        Enterprise - Visual COMPONENT         */
 /*----------------------------------------------------------------------*/
 
+$eeContentColor : $componentActiveFontColor;
+$eeContentTitleFontSize : 180%;
+
 .content-title {
   //width: 100%;
   font-size: $eeContentTitleFontSize; 

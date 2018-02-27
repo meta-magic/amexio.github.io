@@ -3,49 +3,41 @@
 /*        ITEM SELECTOR COMPONENT -Visual        */
 /*----------------------------------------------------------------------*/
 
-.flex-col-45pt{
-//  max-width: 45%;
-}
+$itemselectorActionBGColor : $componentHeaderBGColor ;
+$itemselectorActionColor : $componentHeaderFontColor;
+$itemselectorActionDisableBGColor : $componentDisabledBGColor;
+$itemselectorListActiveBGColor : $componentActiveBGColor;
+$itemselectorListHoverBGColor : $componentHoverBGColor;
+$itemselectorListActiveColor : $componentActiveFontColor;
+$itemselectorListHoverColor : $componentHoverFontColor;
 
-.flex-col-10pt{
-//  max-width: 10%;
-}
-
+$itemselectorFontWeight : 400 ;
 
 .item-selector-action-panel{
 
   .actionbar{
-  //  display: flex; flex-direction: column;
 
     .actionbarinner{
-    //  align-self: center;
-    //  display: flex; flex-direction: column;
-    //  justify-content: space-between;
-
-      .action{
+    .action{
         background-color: $itemselectorActionBGColor;
         color: $itemselectorActionColor;
-        // width: 50px;
-        // height: 30px;
-        // text-align: center;
-        // cursor: pointer;
       }
 
       .actiondisable{
         background-color: $itemselectorActionDisableBGColor;
       }
-
-      // .movetop{  display: block; }
-      // .moveup{  display: block;}
-      // .moveleft{  display: block;}
-      // .moveright{  display: block;}
-      // .movedown{  display: block;}
-      // .movebottom{  display: block;}
-
     }
   }
 }
 
-.list-item-active{
+.itemselector-list-active{
   background-color: $itemselectorListActiveBGColor;
+  //color : $itemselectorListActiveColor;
+}  
+  
+.itemselector-list:hover{
+    background-color: $itemselectorListHoverBGColor;
+    //color : $itemselectorListHoverColor;
 }
+  
+

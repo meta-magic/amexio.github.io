@@ -8,12 +8,13 @@
           <div class="spinner"></div>
         </div>
         <div [style.height.px]="height" *ngIf="!mask" style="overflow: auto">
-          <ul class="dropdown-list">
-            <li class="list-items" [ngClass]="data['isSelected'] ? 'list-item-active':''"
+          <!-- <ul class="dropdown-list"> -->
+          <!-- <ul>   -->
+            <li class="itemselector-list" [ngClass]="data['isSelected'] ? 'itemselector-list-active':''"
                 *ngFor="let data of availableData; let i = index" (click)="itemClick(data,i, true,false)">
               {{data[displayfield]}}
             </li>
-          </ul>
+          <!-- </ul> -->
         </div>
       </amexio-body>
     </amexio-card>
@@ -65,16 +66,16 @@
       <amexio-header>Selected</amexio-header>
       <amexio-body>
         <div [style.height.px]="height" style="overflow: auto">
-          <ul class="dropdown-list">
-            <li class="list-items"
+          <!-- <ul class="dropdown-list"> -->
+          <!-- <ul> -->
+            <li class="itemselector-list"
                 *ngFor="let data of selectedData; let i = index"
-                (click)="itemClick(data,i, false,true)" [ngClass]="data['selectedClick'] ? 'list-item-active':''">
+                (click)="itemClick(data,i, false,true)" [ngClass]="data['selectedClick'] ? 'itemselector-list-active':''">
               {{data[displayfield]}}
             </li>
-          </ul>
+          <!-- </ul> -->
         </div>
       </amexio-body>
     </amexio-card>
-
   </amexio-column>
 </amexio-row>

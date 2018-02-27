@@ -3,9 +3,19 @@
 /*----------------------------------------------------------------------*/
 /*        RATING COMPONENT -Visual   */
 /*----------------------------------------------------------------------*/
+$ratingStarColor : $borderColor;
+$ratingStarFontSize : 2em;
+$ratingIconColor : $componentHeaderBGColor;
+$ratingDisabledColor : $componentDisabledBGColor;
+$ratingIconFontSize : 50px;
+
+$ratingBorderColor : $borderColor;
+$ratingActiveColor : $componentHeaderBGColor;
+
 .rating i{
   font-style: normal;
 }
+
 .star-icon {
   color: $ratingStarColor;
   font-size: $ratingStarFontSize;

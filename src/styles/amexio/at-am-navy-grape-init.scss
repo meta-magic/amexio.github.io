@@ -1,52 +1,120 @@
 $isAmexio : true;
-$themeBGImage : url('/assets/images/theme/bootstrap/polygon_bg.jpg');
-$aColorTransprency :  #6F2DA8;
+$isDatapointBorderRadius :false;
+$appTransprency :#6F2DA8;
 
-$defaultBGColor : white;
+$themePrimaryColor: #6F2DA8;
+$themeSecondaryColor : #000080;
+$themeFontColor : #000080;
+$themeFontFamily: Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
 
-$defaultColor : #000080;
+$appBackground :#ECEFF1;
+$appBackgroundImage : url('/assets/images/theme/bootstrap/polygon_bg.jpg');
 
-$color: $defaultColor;
+$appHeaderBGColor : white;
+$appHeaderFontColor : $themePrimaryColor;
 
-$oppColor: $defaultBGColor;
+$appHeaderHoverBGColor : none;
+$appHeaderHoverFontColor : none;
+/* Component Specific Variables */
+$componentHoverBGColor : lighten($themeSecondaryColor,50%);
+$componentHoverFontColor : $themeFontColor;
+$componentActiveBGColor : lighten($themePrimaryColor,50%);
+$componentActiveFontColor : $themeFontColor;
+$componentDisabledBGColor : rgb(160, 158, 158);
+$componentDisabledFontColor : $themeSecondaryColor;
+
+$componentBGColor : white;
+$componentFontColor : $themeFontColor;
+
+$componentHeaderBGColor : $themeSecondaryColor;
+$componentHeaderFontColor : white;
+$componentFooterBGColor :$themeSecondaryColor;
+$componentFooterFontColor : white;
 
 
-$backgroundcolor: $defaultBGColor;
+$componentDataBGColor : none;
+$componentDataFontColor : $themePrimaryColor;
+/* Misc Variables */
+$borderSize2 : 2px;
+$borderSize3 : 3px;
 
-$componentBGColor: $backgroundcolor;
+$borderRadius2 : 3px;
+$borderRadius3 : 5px;
 
+$borderSize : $borderSize3;
+$borderRadius : $borderRadius3;
 
-$themeBGColor :  $defaultBGColor;
-$themeColor :    $defaultColor;
+$scrollBGColor : #f5f5f5;
+$scrollThumbColor : $componentBGColor;
 
-$primaryBGColor: $themeColor;
+$borderColor : $themeSecondaryColor;
+
+$primaryBGColor: $themeSecondaryColor;
 $secondaryBGColor: #ffffff;
 $successBGColor : #5cb85c;
 $dangerBGColor : #d9534f;
 $warningBGColor : #f0ad4e;
 
-
-$primaryColor: $themeBGColor;
-$secondaryColor: $color;
-$successColor : $oppColor;
-$dangerColor : $oppColor;
-$warningColor : $oppColor;
-
+$primaryColor: white;
+$secondaryColor:$componentFontColor;
+$successColor : white;
+$dangerColor : white;
+$warningColor : white;
 
 $success: $successBGColor;
 $error : $dangerBGColor;
 $focusColor : #5cb3fd;
+$borderColorFocus: $focusColor;
 
-$hoverColor : $themeBGColor;
-$hoverBGColor : $themeColor;
+// $isAmexio : true;
+// $themeBGImage : url('/assets/images/theme/bootstrap/polygon_bg.jpg');
+// $aColorTransprency :  #6F2DA8;
+
+// $defaultBGColor : white;
+
+// $defaultColor : #000080;
+
+// $color: $defaultColor;
+
+// $oppColor: $defaultBGColor;
 
 
-$borderSize : 3px;
-$borderRadius : 0 px;
-$borderColor : $defaultColor;
-$borderColor-focus: $focusColor;
+// $backgroundcolor: $defaultBGColor;
+
+// $componentBGColor: $backgroundcolor;
 
 
+// $themeBGColor :  $defaultBGColor;
+// $themeColor :    $defaultColor;
+
+// $primaryBGColor: $themeColor;
+// $secondaryBGColor: #ffffff;
+// $successBGColor : #5cb85c;
+// $dangerBGColor : #d9534f;
+// $warningBGColor : #f0ad4e;
+
+
+// $primaryColor: $themeBGColor;
+// $secondaryColor: $color;
+// $successColor : $oppColor;
+// $dangerColor : $oppColor;
+// $warningColor : $oppColor;
+
+
+// $success: $successBGColor;
+// $error : $dangerBGColor;
+// $focusColor : #5cb3fd;
+
+// $hoverColor : $themeBGColor;
+// $hoverBGColor : $themeColor;
+
+
+// $borderSize : 3px;
+// $borderRadius : 0 px;
+// $borderColor : $defaultColor;
+// $borderColor-focus: $focusColor;
+
+/*
 $navbarBGColor : $themeBGColor ;
 $navbarColor : $themeColor;
 $navbarBackground :  linear-gradient(#80E6F5, #0CB5CF) ;
@@ -140,9 +208,9 @@ $stepsBorderColor:$borderColor;
 $stepsDisabled : lighten($menubarColor,50%);
 $stepsInActiveBGColor:$hoverBGColor;
 
-$datatableRowActiveBG : lighten($themeColor,70); /**/
+$datatableRowActiveBG : lighten($themeColor,70); 
 $datatableRowHoverBG : lighten($themeColor,60);
-$datatableRowActive : $datapointColor!important; /**/
+$datatableRowActive : $datapointColor!important; 
 $datatableRowHover : $themeColor!important;
 $datatableBorderSize : 1px;
 $datatableBorderColor : $themeColor;
@@ -155,251 +223,4 @@ $datatableRowActive : none;
 $datapointsColor : $themeBGColor;
 $datapointsBGColorS : $primaryBGColor;
 $datapointsColorS : $primaryColor;
-
-$listBoxBGColor : white;
-$listBoxColor : rgba(0,0,0,0.87);
-$listTitleFontSize : 18px;
-$listTitleAFontSize : 16px;
-
-$buttonBorderColor : $borderColor;
-$buttonBorderRadius : $borderRadius;
-$buttonFontWeight : 400;
-$buttonSmallFontSize : .875rem;
-$buttonDefaultFontSize : 1rem;
-$buttonLargeFontSize : 1.25rem;
-
-$btnDropdownBorderSize: $borderSize;
-$btnDropdownBorderColor : $borderColor;
-$buttonDropdownHoverBG:$sidenavactive;
-$buttonDropdownBG:white;
-$buttonDropdownFontSize : 1rem;
-
-$btnGrpBorderColor:black;
-$btnGrpBorderSize : 1px;
-
-$chcekboxBGColor : $backgroundcolor;
-$chcekboxActiveBGColor : $primaryBGColor;
-$chcekboxActiveColor : $primaryColor;
-
-$accordionBorderSize : $borderSize; 
-$accordionBorderColor : $borderColor;
-$accordionBorder : $borderColor;
-$accordionFontSize : 15px;
-$accordionTransparentBG: transparent;
-$accordionTransparentBorder:transparent;
-$accordionTransparentFontWeight:bold;
-$accordionTransparentColor : $cardHeaderColor;
-
-$cardBorderSize:$borderSize;
-$cardBorderShadow : rgba(0,0,0,0.14);
-$cardHeaderFontSize : 20px;
-$cardHeaderFontWeight : 300;
-$cardBodyFontSize : 14px;
-$cardBodyFontWeight : 400;
-$cardBodyScrollBGColor : #F5F5F5;
-$cardBodyScrollThumbColor : $themeBGColor;
-
-$datatableTitleFontSize : 1.5em;
-$datatableScrollBG : #F5F5F5;
-$datatableHeaderFontSize : larger;
-$datatableScrollThumbBG : $themeBGColor;
-
-$datetimepickerBorderSize : $borderSize;
-$datetimepickerBorderColor : $borderColor;
-$datetimepickerFontSize : 18px;
-$datetimepickerTopBarColor :white;
-$datetimepickerDaysColor : #777;
-$datetimepickerDaysFontSize : 14px;
-
-$dialogueContentBorderColor : #888;
-$dialogueContentBorderSize : 1px;
-$dialogueBorderColor : $cardBorderColor;
-$dialogueBorderSize :$borderSize;
-$dialogueBG:rgba(128,127,127,0.6);
-$dialogueContentBG:#fefefe;
-$dialogueHeaderBG: $cardHeaderBGColor;
-$dialogueHeaderFontSize : 20px;
-$dialogueHeaderColor : $cardHeaderColor;
-$dialogueHeaderFontWeight : 300;
-
-$dialogueMiddleFontSize : 14px;
-$dialogueMiddleFontWeight : 400;
-
-$dialogueIconFontSize:15px;
-
-$dialogueFooterColor : $cardFooterColor;
-$dialogueMessageFontSize : 20px;
-$dialogueMessageFontWeight : 300;
-
-$dialogueSuccessColor : $successBGColor;
-$dialogueWarningColor : $warningBGColor;
-$dialogueDangerColor : $dangerBGColor;
-
-$dockbarBtnBGColor : inherit;
-$dockbarFontSize : 24px;
-$dockbarLabelHighlight : black;
-$dockbarLabelFontWeight : bold;
-$dockbarCloseBarFontSize : 24px ;
-$dockbarTitleFontSize : 17px;
-$dockbarTitleFontWight : 500;
-$dockbarScrollBGColor : #F5F5F5;
-$dockbarScrollThumbBGColor : $themeBGColor;
-
-$dropdownListFontSize : 100%;
-$dropdownListFontWeight : 400;
-$dropdownBG: $componentBGColor;
-$dropdownColor : $borderColor;
-$dropdownHoverColor : $hoverColor;
-$dropdownHoverBGColor : $hoverBGColor;
-
-$eeTitleColor1 : rgba(0,0,0,0.9);
-$eeTitleColor2 : rgba(0,0,0,0);
-$eeTitleColor1 : rgba(0,0,0,0.9);
-$eeTitleColor2 : rgba(0,0,0,0);
-$eeTitleDisplay : #000; 
-$eeTitleColor : white;
-$tileFontSize : 20px;
-$tileDetFontSize : 10px;
-$controlColor : dimgrey;
-$controlFontSize  : 1em;
-$subtitleFontSize : 6pt;
-$textColor:white;
-$textBGColor : transparent;
-$matchColor : lightgreen;
-$actionColor : red;
-$actionBGColor : transparent;
-
-$eeContentColor : #fff;
-$eeContentTitleFontSize : 180%;
-
-$youtubeColor : grey;
-$youtubeHoverColor : red;
-
-$fieldsetFontSize : 13px;
-$fieldsetFontWeight : bold;
-
-$horizontalnodeColor: lighten($themeColor,50%);
-$horizontalTreeviewColor: $defaultColor;
-$horizontalnodeGutter: 100px;
-$horizontalnodeBorderRadius: 10px;
-$horizontalnodeEntryMinHeight: 60px;
-
-$horizontalnodeLabelWidth: 150px;
-$horizontalnodeLabelHeight: 30px;
-$horizontalnodeLabelBorderRadius: 5px;
-
-
-$horizontaltreeviewLabelHoverColor:$hoverColor;
-$horizontaltreeviewLabelHoverBGColor:$hoverBGColor;
-$placeholderColor : $borderColor;
-$inputFontSize:1rem;
-$inputTooltipBGColor : lighten($primaryBGColor,30%);
-$inputControlColor : $color;
-$inputControlBGColor : white;
-$inputFontSize : 14px;
-$searchBGColor : #fff;
-$uploadDropZoneColor :#ccc; 
-$uploadDropZoneColorDrop : #222;
-
-$itemselectorActionBGColor : $primaryBGColor ; 
-$itemselectorActionColor : $primaryColor;
-$itemselectorActionDisableBGColor : lighten($primaryBGColor,50);
-$itemselectorListActiveBGColor : lighten($primaryBGColor,30);
-
-$listScrollBGColor : #F5f5f5;
-$listScrollThumbBGColor : $themeBGColor;
-$listBoxFontSize:100%;
-$listBoxFontWeight : 400;
-$listBoxListHoverBGColor : darken($backgroundcolor, 5%);
-$listBoxBGColorOdd : none;
-
-$menuBGColor : none;
-$menuHeaderFontWeight : bold;
-
-$navbarFontSize : 24px;
-
-$paginatorHoverBGColor : $hoverBGColor;
-$paginatorHoverColor : $hoverColor;
-$paginatorColor : inherit;
-$paginatorActiveBGColor : darken($hoverBGColor,10%);
-$paginatorActiveColor : $hoverColor;
-
-$panelBoxBorder : $accordionActiveBGColor;
-$panelBorder : $borderColor;
-
-$panelAccBGColor : $accordionActiveBGColor;
-$panelAccColor : $accordionColor;
-$panelBGColor : $accordionActiveBGColor;
-$panelColor : $accordionColor;
-$panelFontSize : 15px;
-$panelAfterColor : red;
-$panelFontWeight : bold;
-$panelBGColor:$accordionPanelBGColor;
-$panelColor:$accordionPanelColor;
-$panelScrollBG : #f5f5f5;
-$panelScrollThumbBG : $themeBGColor;
-
-$progressBGColor :#ECEFF1;
-$progressBGImg1: rgb(43, 194, 83);
-
-$progressBGSuccess : #5cb85c;
-$progressBGWarning : #f0ad4e;
-$progressBGDanger : #d9534f;
-$progressBGDangerImg1:#f0a3a3;
-$progressBGImgNoStripes : none;
-
-$radioBGColor : $primaryBGColor;
-$radioLabelBGColor : white;
-
-
-$rangeSliderFontSize : .7em;
-$sliderWidgetBGColor : grey;
-$sliderWidgetColor: #222222;
-$sliderWidgetFontSize :1em;
-$rangeSliderBGColor :$cardHeaderBGColor;
-
-$rangeWidgetBG1:#f6f7f9;
-$rangeWidgetBG2:#ebedf0;
-$rangeHeaderColor : #1b1d1f;
-$rangeHeaderFontWeight : normal;
-
-$ratingStarColor : $ratingBorderColor;
-$ratingStarFontSize : 2em;
-$ratingIconColor : $ratingActiveColor;
-$ratingDisabledColor : #ECECEC;
-$ratingIconFontSize : 50px;
-
-$sidenavColorMob : $navbarColor ;
-$sidenavMobileColor : white;
-$sidenavScrollColor : #f5f5f5;
-$sidenavScrollThumbColor : $themeColor;
-$sidenavTitleColor:$primaryColor;
-$sidenavTitleBGColor : $primaryBGColor;
-
-$steppColor : #666;
-$stepsFontSize  : 12px;
-
-$tabFontSize : 17px;
-
-$taginputBGColor : $primaryBGColor;
-$taginputColor : $primaryColor;
-$taginputFontSize : 11px;
-$closeBtnFontSize : 20px;
-$closeBtnColor : darken($primaryColor,20);
-$closeBtnHoverColor : $primaryColor;
-
-$toggleBGColor : #ccc;
-$toggleBGBeforeColor : white;
-$toggleBGChecked :$primaryBGColor;
-
-$treenodeBGColor : transparent;
-
-$modalBGColor : #fefefe;
-$modalHeaderBGColor : $cardHeaderBGColor;
-$modalHeaderFontSize : 20px;
-$modalHeaderColor : $cardHeaderColor;
-$modalWindowFontSize : 14px;
-$modalWindowScrollColor : #F5F5F5;
-$modalWindowScrollThumbColor : $themeBGColor;
-$modalFooterBGColor : $cardFooterBGColor;
-$modalFooterColor : $cardFooterColor;
+*/

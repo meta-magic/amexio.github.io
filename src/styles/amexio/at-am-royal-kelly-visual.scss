@@ -4,74 +4,22 @@
 /*----------------------------------------------------------------------*/
 
 
-
-// .input-control {
-//   border-radius: 4px;
-//   line-height: 2;
-//   font-size: 14px;
-//   border: 2px solid #666666;
-//   border-radius: 4px!important;
-//   background-color: #1b1d22;
-//   color: $color;
-// }
-
-// .input-control-success {
-//   border-color:$success;
-// }
-
-// .input-control-error {
-//   border-color:$error;
-// }
-
-
-// .inputgroup label {
-//   margin-bottom: 0rem;
-// }
-
-// .dropdown{
-//   border: 2px solid #666666;
-//   box-shadow: 0 1px 3px 0 #666666;
-// }
-
-
-// .datetimepicker {
-//   border: $borderSize solid #666666;
-//   box-shadow: 0 1px 3px 0 #666666;
-// }
-
-// label {
-//   display: inline-block;
-//   margin-top: 5px;
-//   max-width: 100%;
-//   //padding: 0 12px;
-//   font-size: 14px;
-//   font-weight: 500;
-
-// }
-
-
-// a {
-//   color: rgba(0, 0, 0, 0.87);
-//   //text-transform: lowercase;
-// }
-
-
-// .navbar-logo-unit a{
-//   text-transform: capitalize;
-// }
+.navbar-container {
+  background:  linear-gradient(#98FB98, #4CBB17);
+}
 
 .listbox .list{
-    background-color:  $defaultBGColor;
+    background-color:  $componentBGColor;
   
     .title {
-    //  float: left;
-    //  font-size: 18px;
-      color: $defaultColor;
+      //float: left;
+      font-size: 18px;
+      color: $themeFontColor;
       //padding-top: 8px;
       a {
         font-size: 16px;
-        color: $defaultColor;
-    //    text-transform: lowercase;
+        color: $themeFontColor;
+        //text-transform: lowercase;
       }
     }
   }
@@ -80,43 +28,33 @@
     //border-radius: 10px;
   
     .card-header {
-      //border-radius: 10px;
+    //  border-radius: 10px;
       background: linear-gradient(#40434D, #000000);
     }
     .card-footer{
-      //border-radius: 10px;
+    //  border-radius: 10px;
     }
   }
   
   .listbox{
     //border-radius: 10px;
-    //border: $borderSize solid $themeColor;
   
     .listbox .list .title {
-      color: #4CBB17 !important;
+      color: $themeSecondaryColor !important;
     }
   
     .header{
-      // border-radius: 10px;
-      // border-bottom: $borderSize solid $themeColor;
+      //border-radius: 10px;
+      //border-bottom: $borderSize solid $borderColor;
     }
   
     .list .list-items{
       //border-bottom: 1px solid #1b1d22;
-      background-color: $defaultBGColor;
+      background-color: $componentBGColor;
     }
   }
   
-  // .sidenav{
-  //   border-right: $borderSize solid $cardBorderColor;
-  //   box-shadow:none;
-  // }
-  
-  // .sidenav .activenode{
-  //   color: $themeColor;
-  //   background-color: $backgroundcolor;
-  // }
   .defaultcolor{
-    color: $themeColor;
+    color: $themeSecondaryColor;
   }
   

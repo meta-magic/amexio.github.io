@@ -3,8 +3,19 @@
 /*        BUTTON COMPONENT -Visual       */
 /*----------------------------------------------------------------------*/
 
+$buttonBorderColor : $borderColor;
+$buttonBorderRadius : $borderRadius;
+$buttonFontWeight : 400;
+$buttonSmallFontSize : .875rem;
+$buttonDefaultFontSize : 1rem;
+$buttonLargeFontSize : 1.25rem;
+
+$closeBtnFontSize : 20px;
+$closeBtnColor : $componentHoverBGColor;
+$closeBtnHoverColor : $componentActiveBGColor;
+
 button {
-  font-weight: $buttonFontWeight;  
+  font-weight: $buttonFontWeight;
 }
 
 .button-text {
@@ -78,4 +89,11 @@ button {
 
 .button-warning:hover:enabled{
   background-color: darken($warningBGColor, 10%);
+}
+
+.button-transparent {
+  background: $componentBGColor;
+  color : $componentFontColor;
+  //border : none !important;
+  //box-shadow: none !important;
 }

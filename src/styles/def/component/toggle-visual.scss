@@ -4,6 +4,10 @@
 /*        TOGGEL BUTTON CONTROL COMPONENT   -Visual      */
 /*----------------------------------------------------------------------*/
 
+$toggleBGColor : #ccc;
+$toggleBGBeforeColor : $componentBGColor;
+$toggleBGChecked :$componentBGColor;
+
 
 .toggle {
   // position: relative;

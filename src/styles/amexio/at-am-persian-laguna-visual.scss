@@ -3,7 +3,7 @@
 body {
   background-color: #D33134;
   color: #043963;
-  background-image: $themeBGImage;
+  background-image: $appBackgroundImage;
   font-size: 16px;
   background-repeat: repeat-y;
   background-attachment: fixed;
@@ -74,13 +74,13 @@ body {
       //padding-top: 8px;
       a {
         font-size: 16px;
-        color: $defaultColor;
+        color: $componentFontColor;
         //text-transform: lowercase;
       }
     }
 
     .list-items:hover{
-      background-color: $hoverBGColor;
+      background-color: $componentHoverBGColor;
     }
 
   }
@@ -89,12 +89,12 @@ body {
 .card-container {
   // border: none;
   // box-shadow: none;
-  background-image: url(/assets/images/theme/bootstrap/PageFold.png);
+  background-image: url('/assets/images/theme/bootstrap/PageFold.png');
   .card-header {
     font-size: 20px;
   //  font-weight: 700;
   //  border: none;
-    background-image: url(/assets/images/theme/bootstrap/PageFold.png);
+    background-image: url('/assets/images/theme/bootstrap/PageFold.png');
     // border-right: $borderSize solid $cardBorderColor;
     // padding: 20px 24px 12px 56px;
   }
@@ -125,10 +125,10 @@ body {
   .header{
     background-color: transparent;
     //border: none;
-    background-image: url(/assets/images/theme/bootstrap/PageFold.png);
+    background-image: url('/assets/images/theme/bootstrap/PageFold.png');
     //border-right: $borderSize solid $cardBorderColor;
     //padding: 20px 24px 12px 56px;
-    color: $themeColor !important;
+    color: $themeSecondaryColor !important;
   }
 
   .list{

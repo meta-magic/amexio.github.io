@@ -2,6 +2,15 @@
 /*        DATAPOINTS COMPONENT - Visual         */
 /*----------------------------------------------------------------------*/
 
+
+$datapointsColor : $componentFontColor;
+$datapointsBGColorS : $componentHeaderBGColor;
+$datapointsColorS : $componentHeaderFontColor;
+
+$datapointBGColor : $componentBGColor;
+$datapointColor : $componentDataFontColor;
+$datapointBorderColor : $borderColor;
+
 .datapoints{
   background: $datapointBGColor;
   color: $datapointColor; 
@@ -11,14 +20,8 @@
   }
 
   .datapoint-south{
-    // @if(isMatrix)
-    // {
-    //   background-color: $datapointsColorS;
-    //   color: $datapointsBGColorS;   
-    // }@else {
       background-color: $datapointsBGColorS;
       color: $datapointsColorS;   
-   // }
   }
 
   .datapoint-west{
@@ -28,6 +31,4 @@
   .datapoint-east{
     padding: 5px;
   }
-
-
 }

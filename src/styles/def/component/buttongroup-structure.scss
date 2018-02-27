@@ -2,6 +2,9 @@
 /*        BUTTONGROUP COMPONENT -Structure       */
 /*----------------------------------------------------------------------*/
 
+$btnGrpBorderColor:black;
+$btnGrpBorderSize : 1px;
+
 .btn-group span {
   border: 1px solid black; /* Green border */
   padding: 10px 24px; /* Some padding */
