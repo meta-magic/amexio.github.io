@@ -1,0 +1,22 @@
+
+<amexio-floating-button (onClick)="onFloatingButtonClick($event)" 
+        [vertical-position]="verticalposition" [horizontal-position]="horizontalposition" 
+        [icon]="icon" 
+        [type]="type"
+        [disabled]="disabled"
+        [relative]="relative"
+        [position-top]="top"
+        [position-bottom]="bottom"
+        [position-left]="left"
+        [position-right]="right">
+</amexio-floating-button>                
+    
+
+<div class="floatinggroup"  *ngIf="togglefloatinggroup" [ngStyle]="{'top':floatinggroupyposition, 'left':floatinggroupxposition}">
+    <div class="floatinggroupitems" *ngFor="let node of data" >
+        <div *ngIf="node.icon" class="floatingbutton-circle" [ngClass]="node.typeclass" (click)="onButtonClick(node,$event)">
+            <amexio-form-icon [customclass]="node.icon" >
+            </amexio-form-icon>
+        </div>
+    </div>
+</div>
