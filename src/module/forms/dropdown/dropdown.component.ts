@@ -222,7 +222,7 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
 
   setMultiSelectData () {
     this.multiselectValues = [];
-    if(this.value.length > 0){
+    if(this.value && (this.value.length > 0)){
       let modelValue = this.value;
       this.filteredOptions.forEach((test)=>{
         modelValue.forEach((mdValue: any)=>{
@@ -371,4 +371,3 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
   }
 
 }
-

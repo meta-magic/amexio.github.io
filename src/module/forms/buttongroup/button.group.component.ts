@@ -17,7 +17,9 @@ export class AmexioButtonGroupComponent implements AfterContentInit {
   constructor() {
 
   }
-
+  buttonClick(event: any, btnObj: any) {
+    btnObj.onClick.emit(event);
+  }
   ngAfterContentInit() {
     this.buttons = this.btns.toArray();
   }

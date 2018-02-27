@@ -299,6 +299,10 @@ button {
 .button-dropdown > div:hover {
   background-color: white; }
 
+.button-block {
+  display: block;
+  width: 100%; }
+
 /*----------------------------------------------------------------------*/
 /*        DATETIME COMPONENT         */
 /*----------------------------------------------------------------------*/
@@ -2492,12 +2496,10 @@ a:hover {
   margin-left: 5px; }
 
 .panel {
-  padding: 0 18px;
+  padding: 18px;
   background-color: white;
   color: black;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out; }
+  overflow: auto; }
 
 /** Transparent Styling **/
 .accordion-transparent {
@@ -2518,14 +2520,6 @@ a:hover {
   font-weight: bold;
   float: right;
   margin-left: 5px; }
-
-.panel {
-  padding: 0 18px;
-  background-color: white;
-  color: black;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out; }
 
 .accordion-disable {
   opacity: 0.55;
@@ -2816,7 +2810,8 @@ fieldset {
   z-index: 1;
   /* Sit on top */
   width: 100%;
-  height: 100%; }
+  overflow: auto;
+  /* Enable scroll if needed */ }
 
 .modal-window-content {
   background-color: #fefefe;
