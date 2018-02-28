@@ -10,20 +10,43 @@ export class AmexioButtonGroupComponent implements AfterContentInit {
 
   @Input() size: string;
 
+  previousData: any;
+
+  @Input() buttonGroupLocalData: any;
+
+  buttonGroupPreviewData: any;
+
+
   @ContentChildren(AmexioButtonComponent) btns: QueryList<AmexioButtonComponent>;
 
   buttons: AmexioButtonComponent[] = [];
 
   constructor() {
-
   }
-  
+
+  ngDoCheck() {
+    if (JSON.stringify(this.buttonGroupPreviewData) != JSON.stringify(this.buttonGroupLocalData)) {
+      this.buttonGroupPreviewData = JSON.parse(JSON.stringify(this.buttonGroupLocalData));
+      this.buttons = this.buttonGroupLocalData;
+      console.log('IN button group DO Check');
+      console.log(this.buttons);
+    }
+  }
+
  buttonClick(event: any, btnObj: any) {
     btnObj.onClick.emit(event);
   }
-  
+
   ngAfterContentInit() {
-    this.buttons = this.btns.toArray();
+    if (this.buttonGroupLocalData && this.buttonGroupLocalData.length > 0 ) {
+      this.buttonGroupPreviewData = JSON.parse(JSON.stringify(this.buttonGroupLocalData));
+      this.buttons = this.buttonGroupLocalData;
+      console.log('IN button group');
+      console.log(this.buttons);
+    } else {
+      this.buttons = this.btns.toArray();
+    }
+
   }
 
 
