@@ -4306,10 +4306,6 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
 /*----------------------------------------------------------------------*/
 /*        Datetime Media-Q COMPONENT         */
 /*----------------------------------------------------------------------*/
-@media screen and (max-width: 600px) {
-  .datetimepicker .days .date-today {
-    padding-top: 1%;
-    padding-left: 36%; } }
 /*----------------------------------------------------------------------*/
 /*        Dialogue Media-Q COMPONENT         */
 /*----------------------------------------------------------------------*/
