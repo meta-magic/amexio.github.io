@@ -28,8 +28,6 @@ export class AmexioButtonGroupComponent implements AfterContentInit {
     if (JSON.stringify(this.buttonGroupPreviewData) != JSON.stringify(this.buttonGroupLocalData)) {
       this.buttonGroupPreviewData = JSON.parse(JSON.stringify(this.buttonGroupLocalData));
       this.buttons = this.buttonGroupLocalData;
-      console.log('IN button group DO Check');
-      console.log(this.buttons);
     }
   }
 
@@ -41,8 +39,6 @@ export class AmexioButtonGroupComponent implements AfterContentInit {
     if (this.buttonGroupLocalData && this.buttonGroupLocalData.length > 0 ) {
       this.buttonGroupPreviewData = JSON.parse(JSON.stringify(this.buttonGroupLocalData));
       this.buttons = this.buttonGroupLocalData;
-      console.log('IN button group');
-      console.log(this.buttons);
     } else {
       this.buttons = this.btns.toArray();
     }
