@@ -1,7 +1,7 @@
 /**
  * Created by ketangote on 26/2/2018.
  */
-import {Component, EventEmitter, Input, Output, OnInit, ElementRef} from '@angular/core';
+import {Component, EventEmitter, Input, Output, OnInit, ElementRef, HostListener} from '@angular/core';
 
 @Component({
   selector: 'amexio-floating-group-button', templateUrl: './floatinggroupbutton.component.html'
@@ -88,6 +88,22 @@ export class AmexioFloatingGroupButtonComponent implements OnInit{
   onButtonClick(node:any,event:any){
     this.togglefloatinggroup = !this.togglefloatinggroup ;
     this.onClick.emit({'this':node,'parent':this, 'event':event});
+  }
+
+  @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
+  public onElementOutClick(targetElement: HTMLElement) {
+    debugger;
+    let parentFound = false;
+    while (targetElement != null && !parentFound) {
+      if (targetElement === this.elementref.nativeElement) {
+        parentFound = true;
+      }
+      targetElement = targetElement.parentElement;
+    }
+
+    if (!parentFound) {
+       this.togglefloatinggroup = false;
+     }
   }
 
 }
