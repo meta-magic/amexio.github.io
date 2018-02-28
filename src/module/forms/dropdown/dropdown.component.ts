@@ -146,11 +146,12 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
     if (this.datareader != null) {
       this.multiselectValues = [];
       let dr = this.datareader.split(".");
-      if(dr){
+      if(dr) {
         for (let ir = 0; ir < dr.length; ir++) {
           responsedata = responsedata[dr[ir]];
         }
       }
+
     } else {
       responsedata = httpResponse;
     }
@@ -158,8 +159,6 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
       this.viewData = responsedata.sort((a: any, b: any) => a[this.displayfield].toLowerCase() !== b[this.displayfield].toLowerCase() ? a[this.displayfield].toLowerCase() < b[this.displayfield].toLowerCase() ? -1 : 1 : 0);
       this.filteredOptions = this.viewData;
     }
-
-
     if (this.multiselect) {
       let preSelectedMultiValues: string = '';
       let optionsChecked: any [] = [];
@@ -228,7 +227,7 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
 
   setMultiSelectData () {
     this.multiselectValues = [];
-    if(this.value && this.value.length > 0){
+    if(this.value.length > 0){
       let modelValue = this.value;
       this.filteredOptions.forEach((test)=>{
         modelValue.forEach((mdValue: any)=>{
@@ -245,14 +244,17 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
 
 
   getDisplayText(): string {
-    if(this.value != null) {
+    if(this.value == null || this.value == '') {
+      this.value = '';
+      return this.displayValue = '';
+    } else {
       if (this.multiselect) {
         this.setMultiSelectData();
         let multiselectDisplayString: any = '';
         this.multiselectValues.forEach((row: any) => {
           multiselectDisplayString == '' ? multiselectDisplayString += row[this.displayfield] : multiselectDisplayString += ',' + row[this.displayfield];
         });
-        if (this.multiselectValues && this.multiselectValues.length > 0)
+        if (this.multiselectValues.length > 0)
           return multiselectDisplayString; else
           return '';
       } else {
@@ -263,10 +265,7 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
         });
         return this.displayValue == undefined ? '' : this.displayValue
       }
-    } else {
-      this.value = '';
     }
-
   }
 
   onDropDownClick(event: any) {
@@ -317,10 +316,14 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
 
   //set accessor including call the onchange callback
   set value(v: any) {
-    if (v !== this.innerValue) {
-      this.innerValue = v;
-      this.onChangeCallback(v);
+    if(v!=null) {
+      if (v !== this.innerValue) {
+        this.innerValue = v;
+        this.onChangeCallback(v);
+      }
     }
+
+
   }
 
   //Set touched on blur
@@ -348,8 +351,12 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
 
   //From ControlValueAccessor interface
   writeValue(value: any) {
-    if (value !== this.innerValue) {
-      this.innerValue = value;
+    if(value != null) {
+      if (value !== this.innerValue) {
+        this.innerValue = value;
+      }
+    } else {
+      this.value = '';
     }
   }
 
