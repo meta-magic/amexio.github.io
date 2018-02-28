@@ -4,11 +4,11 @@
 
 
 $datapointsColor : $componentFontColor;
-$datapointsBGColorS : $componentHeaderBGColor;
-$datapointsColorS : $componentHeaderFontColor;
+$datapointsBGColorS : $componentDataBGColor;
+$datapointsColorS : $componentDataFontColor;
 
 $datapointBGColor : $componentBGColor;
-$datapointColor : $componentDataFontColor;
+$datapointColor : $componentDataBGColor;
 $datapointBorderColor : $borderColor;
 
 .datapoints{

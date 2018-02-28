@@ -25,5 +25,5 @@ $componentHeaderFontColor :darken($themePrimaryColor,30%);
 $componentFooterBGColor :$themeSecondaryColor;
 $componentFooterFontColor : darken($themePrimaryColor,30%);
 
-$componentDataBGColor : none;
-$componentDataFontColor : $themePrimaryColor;
+$componentDataBGColor : $themePrimaryColor;
+$componentDataFontColor : $appHeaderFontColor;

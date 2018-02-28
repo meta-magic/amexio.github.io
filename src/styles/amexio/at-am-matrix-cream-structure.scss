@@ -4,34 +4,33 @@
 /*----------------------------------------------------------------------*/
 
 
+
+.input-control {
+
+  border: 2px solid #666666;
+  border-radius: 4px !important;
+}
+
 .listbox .list{
-  //background-color: $defaultBGColor;
+   
+ 
+   .title {
+     float: left;
 
-  .title {
-    float: left;
-    //font-size: 18px;
-    //color: rgb(107, 172, 128);
-    //padding-top: 8px;
-    a {
-      //font-size: 16px;
-      //color: rgb(153, 153, 153);
-      text-transform: lowercase;
-    }
-  }
-}
-
-.card-container {
-  .card-header{
-    //background-color: rgba(255,191,0,0.4);
-  }
-}
-.listbox{
-
-  .header{
-    border-bottom: $borderSize solid $borderColor;
-  }
-
-  .list .list-items{
-    border-bottom: 1px solid #1b1d22;
-  }
-}
+     a {
+       text-transform: lowercase;
+     }
+   }
+ }
+ 
+ .listbox{
+  
+   .header{
+     border-bottom: $borderSize solid $borderColor;
+   }
+ 
+   .list .list-items{
+     border-bottom: 1px solid #1b1d22;
+   }
+ }
+ 

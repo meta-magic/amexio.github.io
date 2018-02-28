@@ -2,29 +2,10 @@
 /*        Ocean blue -Visual        */
 /*----------------------------------------------------------------------*/
 
-// .input-control {
-//   border-radius: 4px;
-//   line-height: 2;
-//   font-size: 14px;
-//   border: none;
-//   border-bottom: 2px solid $borderColor;
-//   border-radius: 4px!important;
-//   background-color: #1b1d22;
-//   color: $color;
-// }
-
-// .input-control-success {
-//   border-color:$success;
-// }
-
-// .input-control-error {
-//   border-color:$error;
-// }
-
-
-// .inputgroup label {
-//   margin-bottom: 0rem;
-// }
+.input-control {
+  background-color: #1b1d22;
+  color: white;
+}
 
 // .dropdown{
 //   border: 2px solid #666666;
@@ -81,7 +62,7 @@
     .title {
    //   float: left;
       font-size: 18px;
-      color: $datapointColor;
+      color: $componentDataBGColor;
       //padding-top: 8px;
       a {
         font-size: 16px;
@@ -94,13 +75,12 @@
   .card-container {
   
     .card-header {
-      background-color: #80E6F5 ;
+      background-color: $themeSecondaryColor ;
       background: linear-gradient(#80E6F5, #0CB5CF) ;
     }
   }
   
-  .listbox{
-  
+  .listbox{  
     .listbox .list .title {
       color: #E84C1A !important;
     }
@@ -117,11 +97,9 @@
   
   // /** NAVBAR **/
    .navbar-container {
-  //   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
-  //   background-color: #80E6F5 ;
-  //   background: linear-gradient(#80E6F5, #0CB5CF) ;
-  //   border-bottom: solid 3px #2CD2EC;
-  //   color: #02195F;
+     background-color: $themeSecondaryColor ;
+     background: linear-gradient(#80E6F5, #0CB5CF) ;
+     color: $appHeaderFontColor;
      font-size: 100%;
    }
   

@@ -13,8 +13,12 @@ $appHeaderBGColor : white;
 $appHeaderFontColor : #02195F;
 
 /* Component Specific Variables */
-$componentDataBGColor : none;
-$componentDataFontColor : #f10897;
+
+$componentDataBGColor : $themePrimaryColor;
+$componentDataFontColor : $appHeaderFontColor;
+
+$componentDataBGColor : #f10897;
+$componentDataFontColor : $themePrimaryColor;
 
 $componentHoverBGColor : lighten($themePrimaryColor,50%);
 $componentHoverFontColor : $themeFontColor;

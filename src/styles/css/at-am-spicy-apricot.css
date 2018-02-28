@@ -1,375 +1,15 @@
 /* Component Specific Variables */
 /* Misc Variables */
-/*
-$navbarBGColor : $themeBGColor ;
-$navbarBoxShadow: $borderColor;
-$navbarColor : white;
-$navbarBackground: $themeBGColor;
-
-
-
-$sidenavBGColor : transperent;
-$sidenavColor: $navbarColor;
-$sidenavHeaderBGColor: $sidenavBGColor;
-$sidenavHeaderColor: $sidenavColor;
-$sidenavactive:$themeBGColor;
-$sidenavactiveColor: $navbarColor;
-$sidenavBorderColor: $borderColor;
-
-$sidenavBGHoverColor: $themeBGColor;
-$sidenavHoverColor: $navbarColor;
-
-$menubarBGColor : $defaultBGColor;
-$menubarColor : $color;
-$menuHoverColor: blue;
-$subMenuCotentBGColor : $defaultBGColor;
-$subMenuCotentColor : $color;
-
-$menuborderColor:$borderColor;
-$menuborderSize:1px;
-
-$treeNodeActiveBGColor : lighten($primaryBGColor,20%);
-$treeNodeActiveColor : $borderColor;
-
-$tabBorderSize: $borderSize;
-$tabBorderColor : $borderColor;
-$tabColor : $sidenavHeaderColor;
-$tabBGColor : $themeBGColor;
-$tabActiveBorder : darken($themeBGColor,10);
-$tabActiveBGColor : $themeColor;
-$tabActiveBorderSize : 3px;
-$tabActiveColor : $primaryColor;
-
-$modalBGColor: lighten(black,50%);
-
-$cardBGColor: white;
-$cardColor: $themeColor;
-
-$cardHeaderBGColor: none;
-$cardHeaderColor: white;
-$cardFooterBGColor: $themeColor;
-$cardFooterColor: white;
-$cardBorderColor: $borderColor;
-
-$toastBGColor : $themeBGColor;
-$toastColor : $themeColor;
-
-$accordionBGColor:lighten($themeBGColor,30%);
-$accordionColor:white;
-$accordionActiveBGColor:$themeBGColor;
-$accordionActiveColor:white;
-$accordionPanelBGColor:$cardBGColor;
-$accordionPanelColor: $cardColor;
-
-$dockBarBGColor: rgba(55, 20, 2, 0.70);
-$dockBarColor: white;
-$dockBarContentBGColor : $cardBGColor;
-$dockBarSize: none;
-$dockBarActiveBorderColor: $dockBarBGColor;
-$dockBarActiveBorderSize: $tabActiveBorderSize;
-$dockBarActiveColor:$dockBarBGColor;
-$dockBarActiveBGColor:$dockBarColor;
-
-$borderLayoutBorder : 0px;
-$borderLayoutBorderColor : none;
-
-$datapointBGColor : $themeBGColor;
-$datapointColor : white;
-$datapointBorderColor : $borderColor;
-
-$ratingBorderColor : $borderColor;
-$ratingActiveColor : $primaryBGColor;
-
-$datetimepickerBGColor : $defaultBGColor;
-$datetimepickertopbarBGColor : $primaryBGColor;
-$datetimepickerActiveColor : $datetimepickerBGColor;
-
-$fieldSetBorderSize : $borderSize;
-$fieldSetBorderColor : $borderColor;
-
-$collapsibleLegendColor : $themeColor;
-
-$stepsActiveBGColor : $themeBGColor;
-$stepsColor : $themeColor;
-$stepsBGColor : $backgroundcolor;
-$stepsLabelHighlight : darken($defaultColor, 30);
-$stepsBorderColor:$borderColor;
-$stepsDisabled : lighten($menubarColor,50%);
-$stepsInActiveBGColor:$hoverBGColor;
-
-$datatableRowActiveBG : $primaryBGColor;
-$datatableRowHoverBG : lighten($primaryBGColor,20%);
-$datatableRowHover : none;
-$datatableRowActive : none;
-$datatableBorderSize : 1px;
-$datatableBorderColor : #eceeef;
-$datatableHeaderColor : $themeBGColor!important;;
-$datatableHeaderBGColor : $themeColor!important;;
-$datatableOddRowColor : lighten($primaryBGColor,40%);
-$datatableFontBold : "true";
-$datatableRowHover : none;
-$datatableRowActive : none;
-
-$datapointsColor : $themeBGColor;
-$datapointsBGColorS : $primaryBGColor;
-$datapointsColorS : #603A63;
-
-$listBoxBGColor : white;
-$listBoxColor : rgba(0,0,0,0.87);
-$listTitleFontSize : 18px;
-$listTitleAFontSize : 16px;
-
-$buttonBorderColor : $borderColor;
-$buttonBorderRadius : $borderRadius;
-$buttonFontWeight : 400;
-$buttonSmallFontSize : .875rem;
-$buttonDefaultFontSize : 1rem;
-$buttonLargeFontSize : 1.25rem;
-
-$btnDropdownBorderSize: $borderSize;
-$btnDropdownBorderColor : $borderColor;
-$buttonDropdownHoverBG:$sidenavactive;
-$buttonDropdownBG:white;
-$buttonDropdownFontSize : 1rem;
-
-$btnGrpBorderColor:black;
-$btnGrpBorderSize : 1px;
-
-$chcekboxBGColor : $backgroundcolor;
-$chcekboxActiveBGColor : $primaryBGColor;
-$chcekboxActiveColor : $primaryColor;
-
-$accordionBorderSize : $borderSize; 
-$accordionBorderColor : $borderColor;
-$accordionBorder : $borderColor;
-$accordionFontSize : 15px;
-$accordionTransparentBG: transparent;
-$accordionTransparentBorder:$accordionBorder;
-$accordionTransparentFontWeight:bold;
-$accordionTransparentColor : $accordionBorder;
-
-$cardBorderSize:$borderSize;
-$cardBorderShadow : rgba(0,0,0,0.14);
-$cardHeaderFontSize : 20px;
-$cardHeaderFontWeight : 300;
-$cardBodyFontSize : 14px;
-$cardBodyFontWeight : 400;
-$cardBodyScrollBGColor : #F5F5F5;
-$cardBodyScrollThumbColor : $themeBGColor;
-
-$datatableTitleFontSize : 1.5em;
-$datatableScrollBG : #F5F5F5;
-$datatableHeaderFontSize : larger;
-$datatableScrollThumbBG : $themeBGColor;
-
-$datetimepickerBorderSize : $borderSize;
-$datetimepickerBorderColor : $borderColor;
-$datetimepickerFontSize : 18px;
-$datetimepickerTopBarColor :white;
-$datetimepickerDaysColor : #777;
-$datetimepickerDaysFontSize : 14px;
-
-$dialogueContentBorderColor : #888;
-$dialogueContentBorderSize : 1px;
-$dialogueBorderColor : $cardBorderColor;
-$dialogueBorderSize :$borderSize;
-$dialogueBG:rgba(128,127,127,0.6);
-$dialogueContentBG:#fefefe;
-$dialogueHeaderBG: $cardHeaderBGColor;
-$dialogueHeaderFontSize : 20px;
-$dialogueHeaderColor : $cardHeaderColor;
-$dialogueHeaderFontWeight : 300;
-
-$dialogueMiddleFontSize : 14px;
-$dialogueMiddleFontWeight : 400;
-
-$dialogueIconFontSize:15px;
-
-$dialogueFooterColor : $cardFooterColor;
-$dialogueMessageFontSize : 20px;
-$dialogueMessageFontWeight : 300;
-
-$dialogueSuccessColor : $successBGColor;
-$dialogueWarningColor : $warningBGColor;
-$dialogueDangerColor : $dangerBGColor;
-
-$dockbarBtnBGColor : inherit;
-$dockbarFontSize : 24px;
-$dockbarLabelHighlight : black;
-$dockbarLabelFontWeight : bold;
-$dockbarCloseBarFontSize : 24px ;
-$dockbarTitleFontSize : 17px;
-$dockbarTitleFontWight : 500;
-$dockbarScrollBGColor : #F5F5F5;
-$dockbarScrollThumbBGColor : $themeBGColor;
-
-$dropdownListFontSize : 100%;
-$dropdownListFontWeight : 400;
-$dropdownBG: $componentBGColor;
-$dropdownColor : $borderColor;
-$dropdownHoverColor : $hoverColor;
-$dropdownHoverBGColor : $hoverBGColor;
-
-$eeTitleColor1 : rgba(0,0,0,0.9);
-$eeTitleColor2 : rgba(0,0,0,0);
-$eeTitleColor1 : rgba(0,0,0,0.9);
-$eeTitleColor2 : rgba(0,0,0,0);
-$eeTitleDisplay : #000; 
-$eeTitleColor : white;
-$tileFontSize : 20px;
-$tileDetFontSize : 10px;
-$controlColor : dimgrey;
-$controlFontSize  : 1em;
-$subtitleFontSize : 6pt;
-$textColor:white;
-$textBGColor : transparent;
-$matchColor : lightgreen;
-$actionColor : red;
-$actionBGColor : transparent;
-
-$eeContentColor : #fff;
-$eeContentTitleFontSize : 180%;
-
-$youtubeColor : grey;
-$youtubeHoverColor : red;
-
-$fieldsetFontSize : 13px;
-$fieldsetFontWeight : bold;
-
-$horizontalnodeColor: lighten($primaryBGColor,20%);
-$horizontalTreeviewColor: darken($themeBGColor, 40%);
-$horizontalnodeGutter: 100px;
-$horizontalnodeBorderRadius: 10px;
-$horizontalnodeEntryMinHeight: 60px;
-
-$horizontalnodeLabelWidth: 150px;
-$horizontalnodeLabelHeight: 30px;
-$horizontalnodeLabelBorderRadius: 5px;
-
-$horizontaltreeviewLabelHoverColor:$defaultColor;
-$horizontaltreeviewLabelHoverBGColor: $primaryBGColor;
-$placeholderColor : $borderColor;
-$inputFontSize:1rem;
-$inputTooltipBGColor : lighten($primaryBGColor,30%);
-$inputControlColor : $color;
-$inputControlBGColor : white;
-$inputFontSize : 14px;
-$searchBGColor : #fff;
-$uploadDropZoneColor :#ccc; 
-$uploadDropZoneColorDrop : #222;
-
-$itemselectorActionBGColor : $primaryBGColor ; 
-$itemselectorActionColor : $primaryColor;
-$itemselectorActionDisableBGColor : lighten($primaryBGColor,50);
-$itemselectorListActiveBGColor : lighten($primaryBGColor,30);
-
-$listScrollBGColor : #F5f5f5;
-$listScrollThumbBGColor : $themeBGColor;
-$listBoxFontSize:100%;
-$listBoxFontWeight : 400;
-$listBoxListHoverBGColor : darken($backgroundcolor, 5%);
-$listBoxBGColorOdd : none;
-
-$menuBGColor : none;
-$menuHeaderFontWeight : bold;
-
-$navbarFontSize : 24px;
-
-$paginatorHoverBGColor : $hoverBGColor;
-$paginatorHoverColor : $hoverColor;
-$paginatorColor : inherit;
-$paginatorActiveBGColor : darken($hoverBGColor,10%);
-$paginatorActiveColor : $hoverColor;
-
-$panelBoxBorder : $accordionActiveBGColor;
-$panelBorder : $borderColor;
-
-$panelAccBGColor : $accordionActiveBGColor;
-$panelAccColor : $accordionColor;
-$panelBGColor : $accordionActiveBGColor;
-$panelColor : $accordionColor;
-$panelFontSize : 15px;
-$panelAfterColor : red;
-$panelFontWeight : bold;
-$panelBGColor:$accordionPanelBGColor;
-$panelColor:$accordionPanelColor;
-$panelScrollBG : #f5f5f5;
-$panelScrollThumbBG : $themeBGColor;
-
-$progressBGColor :#ECEFF1;
-$progressBGImg1: rgb(43, 194, 83);
-
-$progressBGSuccess : #5cb85c;
-$progressBGWarning : #f0ad4e;
-$progressBGDanger : #d9534f;
-$progressBGDangerImg1:#f0a3a3;
-$progressBGImgNoStripes : none;
-
-$radioBGColor : $primaryBGColor;
-$radioLabelBGColor : white;
-
-
-$rangeSliderFontSize : .7em;
-$sliderWidgetBGColor : grey;
-$sliderWidgetColor: #222222;
-$sliderWidgetFontSize :1em;
-$rangeSliderBGColor :$cardHeaderBGColor;
-
-$rangeWidgetBG1:#f6f7f9;
-$rangeWidgetBG2:#ebedf0;
-$rangeHeaderColor : #1b1d1f;
-$rangeHeaderFontWeight : normal;
-
-$ratingStarColor : $ratingBorderColor;
-$ratingStarFontSize : 2em;
-$ratingIconColor : $ratingActiveColor;
-$ratingDisabledColor : #ECECEC;
-$ratingIconFontSize : 50px;
-
-$sidenavColorMob : $navbarColor ;
-$sidenavMobileColor : white;
-$sidenavScrollColor : #f5f5f5;
-$sidenavScrollThumbColor : $themeColor;
-$sidenavTitleColor:$primaryColor;
-$sidenavTitleBGColor : $primaryBGColor;
-
-$steppColor : #666;
-$stepsFontSize  : 12px;
-
-$tabFontSize : 17px;
-
-$taginputBGColor : $primaryBGColor;
-$taginputColor : $primaryColor;
-$taginputFontSize : 11px;
-$closeBtnFontSize : 20px;
-$closeBtnColor : darken($primaryColor,20);
-$closeBtnHoverColor : $primaryColor;
-
-$toggleBGColor : #ccc;
-$toggleBGBeforeColor : white;
-$toggleBGChecked :$primaryBGColor;
-
-$treenodeBGColor : transparent;
-
-$modalBGColor : #fefefe;
-$modalHeaderBGColor : $cardHeaderBGColor;
-$modalHeaderFontSize : 20px;
-$modalHeaderColor : $cardHeaderColor;
-$modalWindowFontSize : 14px;
-$modalWindowScrollColor : #F5F5F5;
-$modalWindowScrollThumbColor : $themeBGColor;
-$modalFooterBGColor : $cardFooterBGColor;
-$modalFooterColor : $cardFooterColor;*/
 /* Misc Variables */
 /**HELPER CLASS STARTS**/
 body {
-  background: #292b2c;
+  background: rgba(55, 20, 2, 0.5);
   min-height: 100%;
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.7);
+  color: #603A63;
   font-size: 1em;
   margin: 0px;
   padding: 0px; }
@@ -425,7 +65,7 @@ body {
 /**HEADER STYLE STARTS **/
 .header {
   background-color: linear-gradient(#40434D, #000000);
-  color: #603A63;
+  color: white;
   padding: 10px;
   overflow: hidden; }
 
@@ -455,14 +95,14 @@ body {
 input:disabled {
   opacity: 0.55;
   cursor: not-allowed;
-  background-color: #EBEBE4; }
+  background-color: #a09e9e; }
 
 .disable-component {
   opacity: 0.55;
   pointer-events: none; }
 
 .defaultcolor {
-  color: rgba(255, 255, 255, 0.7); }
+  color: #603A63; }
 
 .verticalalign-tableft {
   vertical-align: top !important;
@@ -513,8 +153,7 @@ label {
   font-weight: 500; }
 
 a {
-  color: rgba(0, 0, 0, 0.87);
-  font-size: 14px; }
+  color: rgba(0, 0, 0, 0.87); }
 
 /*
 The loading throbber is a single spinning element with three
@@ -575,9 +214,9 @@ button {
   font-size: 1.25rem; }
 
 .button-secondary {
-  background-color: #ffffff;
+  background-color: white;
   border-color: #ced4da;
-  color: rgba(255, 255, 255, 0.7); }
+  color: #603A63; }
 
 .button-secondary:hover:enabled {
   background-color: #e6e6e6; }
@@ -616,7 +255,7 @@ button {
 
 .button-transparent {
   background: white;
-  color: rgba(255, 255, 255, 0.7); }
+  color: #603A63; }
 
 /*----------------------------------------------------------------------*/
 /*        BUTTON COMPONENT - Structure       */
@@ -721,13 +360,13 @@ button {
     .datetimepicker .datetimepickertopbar .title {
       font-size: 18px; }
     .datetimepicker .datetimepickertopbar ul li {
-      color: #603A63;
+      color: white;
       font-size: 18px; }
   .datetimepicker .days {
-    background: #afb4c0; }
+    background: rgba(255, 253, 208, 0.4); }
     .datetimepicker .days li {
       font-size: 14px;
-      color: #777; }
+      color: #603A63; }
     .datetimepicker .days li:hover {
       color: #1b1d22; }
     .datetimepicker .days .active {
@@ -816,7 +455,7 @@ button {
   font-weight: 400; }
 
 .dropdown-list .list-items:hover {
-  color: rgba(255, 255, 255, 0.7);
+  color: #603A63;
   background-color: rgba(255, 253, 208, 0.4); }
 
 .dropdown-list .list-items-active {
@@ -883,7 +522,7 @@ button {
 .input-control {
   font-size: 14px;
   background-color: white;
-  color: rgba(255, 255, 255, 0.7); }
+  color: #603A63; }
 
 ::placeholder {
   color: #ced4da; }
@@ -961,8 +600,8 @@ button {
   border-color: linear-gradient(#40434D, #000000); }
 
 .upload-drop-zone.drop {
-  color: rgba(255, 255, 255, 0.7);
-  border-color: rgba(255, 255, 255, 0.7); }
+  color: #603A63;
+  border-color: #603A63; }
 
 /****************************************************/
 /**File Upload Structure **/
@@ -1007,13 +646,13 @@ textarea:required {
 /* Create a custom checkbox */
 /* When the checkbox is checked, add a blue background */
 .input-box-container input:checked ~ .input-box-radiobox-label {
-  background-color: linear-gradient(#40434D, #000000); }
+  background-color: #1b1d22; }
 
 /* Create the input-box-container-label/indicator (hidden when not checked) */
 /* Show the input-box-container-label when checked */
 /* Style the input-box-container-label/indicator */
 .input-box-container .input-box-radiobox-label:after {
-  background-color: white; }
+  background-color: #F2870C; }
 
 /****************************************************/
 /***                  RADIO    Structure          ***/
@@ -1051,7 +690,7 @@ textarea:required {
 /***CHECKBOX -Visual
 /*----------------------------------------------------------------------*/
 .input-box .default {
-  background: #292b2c; }
+  background: rgba(55, 20, 2, 0.5); }
 
 .input-box .active {
   background: linear-gradient(#40434D, #000000);
@@ -1146,7 +785,7 @@ textarea:required {
 .tag-input .tag {
   font-size: 11px;
   background-color: white;
-  color: rgba(255, 255, 255, 0.7); }
+  color: #603A63; }
   .tag-input .tag .closebtn {
     font-size: 20px;
     color: rgba(255, 253, 208, 0.4); }
@@ -1179,7 +818,7 @@ textarea:required {
 /*----------------------------------------------------------------------*/
 .toast {
   background-color: white;
-  color: rgba(255, 255, 255, 0.7); }
+  color: #603A63; }
 
 /*----------------------------------------------------------------------*/
 /*        NOTIFICATION CONTROL COMPONENT  -Structure       */
@@ -1221,10 +860,10 @@ textarea:required {
 /*----------------------------------------------------------------------*/
 .meter {
   position: relative;
-  background: #292b2c; }
+  background: rgba(55, 20, 2, 0.5); }
 
 .meter > span {
-  background-color: #292b2c; }
+  background-color: rgba(55, 20, 2, 0.5); }
 
 @-webkit-keyframes move {}
 .success > span {
@@ -1438,7 +1077,7 @@ input:checked + .toggle-slider:before {
 
 .ui-widget-content {
   background: white;
-  color: rgba(255, 255, 255, 0.7); }
+  color: #603A63; }
 
 .ui-widget {
   font-size: 1em; }
@@ -1462,7 +1101,7 @@ input:checked + .toggle-slider:before {
 
 .ui-widget-header {
   background: white;
-  color: #603A63;
+  color: white;
   font-weight: normal; }
 
 /****************************************************/
@@ -1612,8 +1251,11 @@ input:checked + .toggle-slider:before {
 /*        Label COMPONENT -Visual        */
 /*----------------------------------------------------------------------*/
 .highlight {
-  color: rgba(255, 255, 255, 0.7);
+  color: #603A63;
   background-color: #ffeb3b; }
+
+.default {
+  color: #603A63; }
 
 /*----------------------------------------------------------------------*/
 /*        Label COMPONENT -Structure        */
@@ -1655,7 +1297,7 @@ input:checked + .toggle-slider:before {
 /*        Image COMPONENT - Visual        */
 /*----------------------------------------------------------------------*/
 .profile-image a {
-  color: rgba(255, 255, 255, 0.7); }
+  color: #603A63; }
 
 /*----------------------------------------------------------------------*/
 /*        Image COMPONENT - Structure        */
@@ -1758,6 +1400,19 @@ input:checked + .toggle-slider:before {
 .floatingbutton-warning-disabled {
   background-color: #f8d9ac;
   color: white; }
+
+.floatinggroup {
+  position: fixed;
+  padding-bottom: 20px;
+  z-index: 3; }
+
+.floatinggroup .floatinggroupitems {
+  list-style: none;
+  margin-bottom: 10px; }
+
+.floatingbutton-circle {
+  text-align: center;
+  cursor: pointer; }
 
 /*----------------------------------------------------------------------*/
 /*        Enterprise - Visual COMPONENT         */
@@ -2245,8 +1900,8 @@ header .billboard .content-button {
   .datapoints .datapoints-north {
     color: #F2870C; }
   .datapoints .datapoint-south {
-    background-color: linear-gradient(#40434D, #000000);
-    color: #603A63; }
+    background-color: #F2870C;
+    color: white; }
   .datapoints .datapoint-west {
     padding: 5px; }
   .datapoints .datapoint-east {
@@ -2284,10 +1939,10 @@ header .billboard .content-button {
   border: 1px solid #ced4da; }
 
 .datatable-height::-webkit-scrollbar-track {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .datatable-height::-webkit-scrollbar {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .datatable-height::-webkit-scrollbar-thumb {
   background-color: white; }
@@ -2297,7 +1952,7 @@ header .billboard .content-button {
 
 .datatable .datatable-header {
   background-color: linear-gradient(#40434D, #000000);
-  color: #603A63;
+  color: white;
   font-size: larger; }
 
 .datatable .datatable-row:hover {
@@ -2308,7 +1963,7 @@ header .billboard .content-button {
   background-color: #1b1d22; }
 
 .datatable-row:nth-child(odd) {
-  background-color: #292b2c; }
+  background-color: rgba(55, 20, 2, 0.5); }
 
 /*----------------------------------------------------------------------*/
 /*        DATATABLE COMPONENT - Structure         */
@@ -2389,7 +2044,7 @@ header .billboard .content-button {
 
 .horizontaltreeview-node-label:hover {
   border-color: #040506;
-  color: rgba(255, 255, 255, 0.7);
+  color: #603A63;
   background-color: rgba(255, 253, 208, 0.4); }
 
 /*----------------------------------------------------------------------*/
@@ -2475,7 +2130,7 @@ header .billboard .content-button {
 /*----------------------------------------------------------------------*/
 .item-selector-action-panel .actionbar .actionbarinner .action {
   background-color: linear-gradient(#40434D, #000000);
-  color: #603A63; }
+  color: white; }
 .item-selector-action-panel .actionbar .actionbarinner .actiondisable {
   background-color: #a09e9e; }
 
@@ -2848,14 +2503,14 @@ header .billboard .content-button {
 /*        MENU COMPONENT   -Visual      */
 /*----------------------------------------------------------------------*/
 .menubar .menuheader .menulink a {
-  color: rgba(255, 255, 255, 0.7); }
+  color: #603A63; }
 
 .menubar .menuheader .menulink:hover a {
-  color: rgba(255, 255, 255, 0.7); }
+  color: #603A63; }
 
 .menulink:hover {
   background-color: rgba(255, 253, 208, 0.4);
-  color: rgba(255, 255, 255, 0.7); }
+  color: #603A63; }
 
 .menu-content {
   background: white; }
@@ -2865,17 +2520,17 @@ header .billboard .content-button {
 
 .menu-content .menu-content-cols .content .menu-links-header {
   font-weight: bold;
-  color: rgba(255, 255, 255, 0.7); }
+  color: #603A63; }
 
 .menu-content .menu-content-cols .content .menu-links-header:hover {
-  color: rgba(255, 255, 255, 0.7);
+  color: #603A63;
   background-color: rgba(255, 253, 208, 0.4); }
 
 .menu-content .menu-content-cols .content .menulinks {
-  color: rgba(255, 255, 255, 0.7); }
+  color: #603A63; }
 
 .menu-content .menu-content-cols .content .menulinks:hover {
-  color: rgba(255, 255, 255, 0.7);
+  color: #603A63;
   background-color: rgba(255, 253, 208, 0.4); }
 
 /*----------------------------------------------------------------------*/
@@ -3019,7 +2674,7 @@ header .billboard .content-button {
 
 .paginator .paginator-pages .paginator-page:hover {
   background-color: rgba(255, 253, 208, 0.4);
-  color: rgba(255, 255, 255, 0.7); }
+  color: #603A63; }
 
 .paginator .paginator-pages .active {
   background-color: #1b1d22;
@@ -3056,7 +2711,7 @@ header .billboard .content-button {
 /*        SIDENAV COMPONENT -Visual       */
 /*----------------------------------------------------------------------*/
 .sidenav-mobile-bar {
-  color: rgba(255, 255, 255, 0.7); }
+  color: #603A63; }
 
 .sidenav-mobile-bar-left {
   color: #603A63; }
@@ -3066,13 +2721,13 @@ header .billboard .content-button {
 
 .sidenav {
   background-color: white;
-  color: rgba(255, 255, 255, 0.7); }
+  color: #603A63; }
 
 .sidenav::-webkit-scrollbar-track {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .sidenav::-webkit-scrollbar {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .sidenav::-webkit-scrollbar-thumb {
   background-color: white; }
@@ -3085,19 +2740,19 @@ header .billboard .content-button {
 
 .sidenav .title {
   background-color: white;
-  color: rgba(255, 255, 255, 0.7); }
+  color: #603A63; }
 
 .sidenav .headernode {
   background-color: white;
-  color: rgba(255, 255, 255, 0.7); }
+  color: #603A63; }
 
 .sidenav .headernode:hover {
   background-color: rgba(255, 253, 208, 0.4);
-  color: rgba(255, 255, 255, 0.7); }
+  color: #603A63; }
 
 .sidenav .defaultnode:hover {
   background-color: rgba(255, 253, 208, 0.4);
-  color: rgba(255, 255, 255, 0.7); }
+  color: #603A63; }
 
 .sidenav .activenode {
   background-color: #1b1d22;
@@ -3244,11 +2899,11 @@ header .billboard .content-button {
   font-weight: 500; }
 
 .dockbar-height::-webkit-scrollbar-track {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .dockbar-height::-webkit-scrollbar {
   width: 6px;
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .dockbar-height::-webkit-scrollbar-thumb {
   background-color: white; }
@@ -3361,7 +3016,7 @@ header .billboard .content-button {
 /*----------------------------------------------------------------------*/
 .accordion {
   background-color: linear-gradient(#40434D, #000000);
-  color: #603A63;
+  color: white;
   cursor: pointer;
   padding: 10px;
   width: 100%;
@@ -3373,7 +3028,7 @@ header .billboard .content-button {
 
 .accordion .active-accordion, .accordion:hover {
   background-color: #1b1d22;
-  color: #603A63; }
+  color: white; }
 
 .accordion:after {
   color: red;
@@ -3384,7 +3039,7 @@ header .billboard .content-button {
 .panel {
   padding: 18px;
   background-color: white;
-  color: rgba(255, 255, 255, 0.7);
+  color: #603A63;
   overflow: auto; }
 
 /** Transparent Styling **/
@@ -3492,12 +3147,12 @@ $accordionTransparentColor : $componentFontColor;
 /*----------------------------------------------------------------------*/
 .card-container {
   background-color: white;
-  color: rgba(255, 255, 255, 0.7); }
+  color: #603A63; }
 
 .card-header {
   background: linear-gradient(#40434D, #000000);
   font-size: 20px;
-  color: #603A63;
+  color: white;
   font-weight: 300; }
 
 .card-body {
@@ -3505,17 +3160,17 @@ $accordionTransparentColor : $componentFontColor;
   font-weight: 400; }
 
 .cardbody::-webkit-scrollbar-track {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .cardbody::-webkit-scrollbar {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .cardbody::-webkit-scrollbar-thumb {
   background-color: white; }
 
 .card-footer {
   background-color: white;
-  color: #603A63; }
+  color: white; }
 
 /*----------------------------------------------------------------------*/
 /*        CARD COMPONENT -Structure*/
@@ -3611,14 +3266,14 @@ fieldset {
   color: #a09e9e; }
 
 .stepwizard-row:before {
-  background-color: #292b2c; }
+  background-color: rgba(55, 20, 2, 0.5); }
 
 .btn-circle {
   font-size: 12px; }
 
 .step-box-table-item {
-  background-color: #292b2c;
-  color: rgba(255, 255, 255, 0.7); }
+  background-color: rgba(55, 20, 2, 0.5);
+  color: #603A63; }
 
 .step-box-table-item.active {
   background-color: #1b1d22 !important; }
@@ -3715,7 +3370,7 @@ fieldset {
 /**VERTICAL TABS**/
 .verticalnavtab .defaultnode {
   background-color: white;
-  color: rgba(255, 255, 255, 0.7); }
+  color: #603A63; }
 
 .verticalnavtab .leftactivetab {
   background-color: #1b1d22;
@@ -3776,7 +3431,7 @@ fieldset {
 
 .verticalnavtab .defaultnode {
   cursor: pointer;
-  color: rgba(255, 255, 255, 0.7);
+  color: #603A63;
   padding: 10px; }
 
 .verticalnavtab .defaultnode:hover {
@@ -3820,23 +3475,23 @@ fieldset {
 .modal-window-header {
   background: linear-gradient(#40434D, #000000);
   font-size: 20px;
-  color: #603A63; }
+  color: white; }
 
 .modal-window-middle {
   font-size: 14px; }
 
 .modal-window-middle::-webkit-scrollbar-track {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .modal-window-middle::-webkit-scrollbar {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .modal-window-middle::-webkit-scrollbar-thumb {
   background-color: white; }
 
 .modal-window-footer {
   background-color: linear-gradient(#40434D, #000000);
-  color: #603A63; }
+  color: white; }
 
 /*----------------------------------------------------------------------*/
 /*        WINDOW COMPONENT - Strucure       */
@@ -3922,7 +3577,7 @@ fieldset {
   /* padding: 10px 24px;*/
   background: linear-gradient(#40434D, #000000);
   font-size: 20px;
-  color: rgba(255, 255, 255, 0.7);
+  color: #603A63;
   font-weight: 300; }
 
 .dialogue-middle {
@@ -3931,7 +3586,7 @@ fieldset {
   font-weight: 400; }
 
 .dialogue-footer {
-  color: #603A63; }
+  color: white; }
 
 .dialogue-message {
   font-size: 20px;
@@ -4033,7 +3688,7 @@ fieldset {
 /*----------------------------------------------------------------------*/
 .panel-accordion {
   background-color: linear-gradient(#40434D, #000000);
-  color: #603A63;
+  color: white;
   font-size: 15px; }
 
 .panel-accordion:after {
@@ -4042,13 +3697,13 @@ fieldset {
 
 .panel-panel {
   background-color: white;
-  color: rgba(255, 255, 255, 0.7); }
+  color: #603A63; }
 
 .panel-panel::-webkit-scrollbar-track {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .panel-panel::-webkit-scrollbar {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .panel-panel::-webkit-scrollbar-thumb {
   background-color: white; }
@@ -4108,7 +3763,7 @@ fieldset {
     background: linear-gradient(#40434D, #000000);
     border-bottom: 1px solid #ced4da;
     font-size: 18px;
-    color: #603A63;
+    color: white;
     font-weight: 300;
     text-transform: capitalize;
     overflow: auto; } }
@@ -4293,7 +3948,7 @@ fieldset {
     background: linear-gradient(#40434D, #000000);
     border-bottom: 1px solid #ced4da;
     font-size: 18px;
-    color: #603A63;
+    color: white;
     font-weight: 300;
     text-transform: capitalize;
     overflow: auto; } }
@@ -4499,7 +4154,7 @@ fieldset {
     background: linear-gradient(#40434D, #000000);
     border-bottom: 1px solid #ced4da;
     font-size: 18px;
-    color: #603A63;
+    color: white;
     font-weight: 300;
     text-transform: capitalize;
     overflow: auto; } }
@@ -4509,6 +4164,10 @@ fieldset {
 /*----------------------------------------------------------------------*/
 /*        Datetime Media-Q COMPONENT         */
 /*----------------------------------------------------------------------*/
+@media screen and (max-width: 600px) {
+  .datetimepicker .days .date-today {
+    padding-top: 1%;
+    padding-left: 36%; } }
 /*----------------------------------------------------------------------*/
 /*        Dialogue Media-Q COMPONENT         */
 /*----------------------------------------------------------------------*/
@@ -4631,7 +4290,7 @@ fieldset {
     .menubar .menuheader .menulink:hover .menu-content {
       display: none; }
     .menubar .menuheader .menulink:hover a {
-      color: rgba(255, 255, 255, 0.7); } }
+      color: #603A63; } }
 /*----------------------------------------------------------------------*/
 /*        NAVBAR Media-Q COMPONENT         */
 /*----------------------------------------------------------------------*/
@@ -4728,7 +4387,7 @@ fieldset {
     background: linear-gradient(#40434D, #000000);
     border-bottom: 1px solid #ced4da;
     font-size: 18px;
-    color: #603A63;
+    color: white;
     font-weight: 300;
     text-transform: capitalize;
     overflow: auto; } }
@@ -4860,7 +4519,7 @@ fieldset {
     .menubar .menuheader .menulink:hover .menu-content {
       display: none; }
     .menubar .menuheader .menulink:hover a {
-      color: rgba(255, 255, 255, 0.7); } }
+      color: #603A63; } }
 /*----------------------------------------------------------------------*/
 /*        NAVBAR Media-Q COMPONENT         */
 /*----------------------------------------------------------------------*/
@@ -4957,7 +4616,7 @@ fieldset {
     background: linear-gradient(#40434D, #000000);
     border-bottom: 1px solid #ced4da;
     font-size: 18px;
-    color: #603A63;
+    color: white;
     font-weight: 300;
     text-transform: capitalize;
     overflow: auto; } }
@@ -5089,7 +4748,7 @@ fieldset {
     .menubar .menuheader .menulink:hover .menu-content {
       display: none; }
     .menubar .menuheader .menulink:hover a {
-      color: rgba(255, 255, 255, 0.7); } }
+      color: #603A63; } }
 /*----------------------------------------------------------------------*/
 /*        NAVBAR Media-Q COMPONENT         */
 /*----------------------------------------------------------------------*/
@@ -5186,7 +4845,7 @@ fieldset {
     background: linear-gradient(#40434D, #000000);
     border-bottom: 1px solid #ced4da;
     font-size: 18px;
-    color: #603A63;
+    color: white;
     font-weight: 300;
     text-transform: capitalize;
     overflow: auto; } }
@@ -5318,7 +4977,7 @@ fieldset {
     .menubar .menuheader .menulink:hover .menu-content {
       display: none; }
     .menubar .menuheader .menulink:hover a {
-      color: rgba(255, 255, 255, 0.7); } }
+      color: #603A63; } }
 /*----------------------------------------------------------------------*/
 /*        NAVBAR Media-Q COMPONENT         */
 /*----------------------------------------------------------------------*/
@@ -5382,177 +5041,128 @@ fieldset {
 /*        Window LAYOUT Media Q COMPONENT         */
 /*----------------------------------------------------------------------*/
 body {
+  font-family: "Quicksand", sans-serif;
   font-size: 16px;
   letter-spacing: 0.3px;
   text-transform: capitalize;
   margin: 0px;
   padding: 0px; }
 
-/*----------------------------------------------------------------------*/
-/*        Spicy Apricot  -Visual                       */
-/*----------------------------------------------------------------------*/
+.input-control {
+  border-radius: 4px;
+  line-height: 2;
+  font-size: 14px;
+  border: 2px solid #603A63; }
+
+.input-control-success {
+  border-color: #5cb85c; }
+
+.input-control-error {
+  border-color: #d9534f; }
+
+.inputgroup label {
+  margin-bottom: 0rem; }
+
+.dropdown {
+  border: 1px solid #F2870C;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px 0 #F2870C; }
+
+.datetimepicker {
+  border: 1px solid #F2870C;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px 0 #F2870C; }
+
+.navbar-container {
+  width: 100%;
+  vertical-align: middle;
+  padding: 0px 15px;
+  box-shadow: 0px 0px 2px 2px #603A63;
+  position: fixed;
+  z-index: 2;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; }
+
 .listbox {
   padding: 16px; }
   .listbox .list {
     border: 1px solid #ced4da;
-    border-radius: 2px; }
+    border-radius: 4px; }
     .listbox .list .title {
       float: left;
+      font-size: 16px;
       font-weight: bold; }
       .listbox .list .title a {
         font-weight: 300; }
     .listbox .list .list-items {
       border-bottom: 1px solid #ced4da; }
-    .listbox .list .list-items:hover {
-      background-color: white; }
   .listbox .header {
     font-weight: bold; }
 
 .card-container {
-  border-radius: 2px;
+  border-radius: 4px;
   padding: 16px; }
   .card-container .card-header {
+    font-size: 20px;
     font-weight: bold;
-    border: none; }
-  .card-container .card-body {
-    border-radius: 2px; }
-  .card-container .card-footer {
     border: none;
-    border-top: none; }
+    border-radius: 5px; }
+  .card-container .card-body {
+    border-radius: 4px; }
 
 /** NAVBAR **/
 .navbar-container .navbar-logo-unit a {
+  font-size: 24px;
   font-weight: bold; }
 
-.sidenav {
-  top: 70px; }
+.datapoints {
+  border-radius: 4px; }
 
 body {
   background-image: url("/assets/images/theme/bootstrap/DeepOrange-bg.jpg");
   background-repeat: repeat-x;
   background-attachment: fixed; }
 
-/*----------------------------------------------------------------------*/
-/*        Spicy Apricot  -Visual                       */
-/*----------------------------------------------------------------------*/
+.input-control {
+  color: #603A63; }
+
+.dropdown {
+  background-color: white; }
+
+.navbar-container {
+  background-color: rgba(55, 20, 2, 0.5);
+  color: white; }
+
 .listbox {
-  background-color: rgba(55, 20, 2, 0.7); }
-  .listbox .list .title {
-    font-size: 16px;
-    color: #FF8B00 !important; }
-    .listbox .list .title a {
-      color: #603A63; }
-  .listbox .list .list-items:hover {
+  background-color: rgba(55, 20, 2, 0.5); }
+  .listbox .list {
     background-color: white; }
+    .listbox .list .title {
+      color: #F2870C !important; }
+      .listbox .list .title a {
+        color: #603A63; }
+    .listbox .list .list-items:hover {
+      background-color: rgba(255, 253, 208, 0.4); }
   .listbox .header {
     background: none;
-    color: #603A63; }
+    color: white; }
 
 .card-container {
-  border-radius: 2px;
-  background-color: rgba(55, 20, 2, 0.7);
-  padding: 16px; }
-  .card-container .card-header {
-    font-weight: bold;
-    border: none; }
+  background-color: rgba(55, 20, 2, 0.7) !important;
+  color: #603A63; }
   .card-container .card-body {
-    border-radius: 2px;
     background-color: white; }
-  .card-container .card-footer {
-    border: none;
-    border-top: none; }
-
-/** NAVBAR **/
-.navbar-container .navbar-logo-unit a {
-  font-size: 24px; }
-
-body {
-  font-size: 16px;
-  letter-spacing: 0.3px;
-  text-transform: capitalize;
-  margin: 0px;
-  padding: 0px; }
-
-/*----------------------------------------------------------------------*/
-/*        Spicy Apricot  -Visual                       */
-/*----------------------------------------------------------------------*/
-.listbox {
-  padding: 16px; }
-  .listbox .list {
-    border: 1px solid #ced4da;
-    border-radius: 2px; }
-    .listbox .list .title {
-      float: left;
-      font-weight: bold; }
-      .listbox .list .title a {
-        font-weight: 300; }
-    .listbox .list .list-items {
-      border-bottom: 1px solid #ced4da; }
-    .listbox .list .list-items:hover {
-      background-color: white; }
-  .listbox .header {
-    font-weight: bold; }
-
-.card-container {
-  border-radius: 2px;
-  padding: 16px; }
-  .card-container .card-header {
-    font-weight: bold;
-    border: none; }
-  .card-container .card-body {
-    border-radius: 2px; }
-  .card-container .card-footer {
-    border: none;
-    border-top: none; }
-
-/** NAVBAR **/
-.navbar-container .navbar-logo-unit a {
-  font-weight: bold; }
 
 .sidenav {
-  top: 70px; }
+  background-color: white;
+  color: #F2870C;
+  background-image: url("/assets/images/theme/bootstrap/DeepOrange-bg.jpg"); }
 
-body {
-  background-image: url("/assets/images/theme/bootstrap/DeepOrange-bg.jpg");
-  background-repeat: repeat-x;
-  background-attachment: fixed; }
+.sidenav .headernode {
+  background: none; }
 
-/*----------------------------------------------------------------------*/
-/*        Spicy Apricot  -Visual                       */
-/*----------------------------------------------------------------------*/
-.listbox {
-  background-color: rgba(55, 20, 2, 0.7); }
-  .listbox .list .title {
-    font-size: 16px;
-    color: #FF8B00 !important; }
-    .listbox .list .title a {
-      color: #603A63; }
-  .listbox .list .list-items:hover {
-    background-color: white; }
-  .listbox .header {
-    background: none;
-    color: #603A63; }
-
-.card-container {
-  border-radius: 2px;
-  background-color: rgba(55, 20, 2, 0.7);
-  padding: 16px; }
-  .card-container .card-header {
-    font-weight: bold;
-    border: none; }
-  .card-container .card-body {
-    border-radius: 2px;
-    background-color: white; }
-  .card-container .card-footer {
-    border: none;
-    border-top: none; }
-
-/** NAVBAR **/
-.navbar-container .navbar-logo-unit a {
-  font-size: 24px; }
-
-/*----------------------------------------------------------------------*/
-/*        INPUT/LABEL/A/BUTTON/DROPDOWN COMPONENT         */
-/*----------------------------------------------------------------------*/
+.datatable .datatable-header {
+  background-color: #F2870C; }
 
 /*# sourceMappingURL=at-am-spicy-apricot.css.map */

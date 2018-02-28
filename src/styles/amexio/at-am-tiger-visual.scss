@@ -1,64 +1,19 @@
 
 /*----------------------------------------------------------------------*/
-/*       Royal Tiger -Structure */
+/*       Royal Tiger -Visual */
 /*----------------------------------------------------------------------*/
 
-
-
-// .input-control {
-//   border-radius: 4px;
-//   line-height: 2;
-//   font-size: 14px;
-//   border: 2px solid #666666;
-//   border-radius: 4px!important;
-//   background-color: #1b1d22;
-//   color: $color;
-// }
-
-// .input-control-success {
-//   border-color:$success;
-// }
-
-// .input-control-error {
-//   border-color:$error;
-// }
-
-
-// .inputgroup label {
-//   margin-bottom: 0rem;
-// }
-
-// .dropdown{
-//   border: 2px solid #666666;
-//   box-shadow: 0 1px 3px 0 #666666;
-// }
-
-
-// .datetimepicker {
-//   border: $borderSize solid #666666;
-//   box-shadow: 0 1px 3px 0 #666666;
-// }
-
-// label {
-//   display: inline-block;
-//   margin-top: 5px;
-//   max-width: 100%;
-//   //padding: 0 12px;
-//   font-size: 14px;
-//   font-weight: 500;
-
-// }
-
-
-// .drodown-caret-down{
-//   top: 35px;
-//   color: $borderColor;
-// }
-
-navbar-container {
+.navbar-container {
   background: linear-gradient(#F58338, #E84C1A);
 }
-
+.input-control {
+  border-radius: 4px;
+  line-height: 2;
+  font-size: 14px;
+  border: 2px solid #666666;
+  border-radius: 4px!important;
+  
+}
 .listbox .list{
     background-color:  $componentBGColor;
   
@@ -104,8 +59,13 @@ navbar-container {
       background-color: $componentBGColor;
     }
   }
-  
-  .defaultcolor{
-    color: $themeSecondaryColor;
+
+  .item-selector-action-panel .actionbar .actionbarinner .action {
+    background-color: #40434D;
   }
+
   
+.datatable .datatable-header{
+  background-color:$themeSecondaryColor;
+  color: $componentBGColor;
+}

@@ -454,7 +454,7 @@ body {
 input:disabled {
   opacity: 0.55;
   cursor: not-allowed;
-  background-color: #EBEBE4; }
+  background-color: #a09e9e; }
 
 .disable-component {
   opacity: 0.55;
@@ -512,8 +512,7 @@ label {
   font-weight: 500; }
 
 a {
-  color: rgba(0, 0, 0, 0.87);
-  font-size: 14px; }
+  color: rgba(0, 0, 0, 0.87); }
 
 /*
 The loading throbber is a single spinning element with three
@@ -574,17 +573,17 @@ button {
   font-size: 1.25rem; }
 
 .button-secondary {
-  background-color: #ffffff;
+  background-color: #292b2c;
   border-color: #ced4da;
   color: rgba(255, 255, 255, 0.7); }
 
 .button-secondary:hover:enabled {
-  background-color: #e6e6e6; }
+  background-color: #101112; }
 
 .button-primary {
   background-color: #4CBB17;
   border-color: #4CBB17;
-  color: white; }
+  color: #292b2c; }
 
 .button-primary:hover:enabled {
   background-color: #3a8e11; }
@@ -592,7 +591,7 @@ button {
 .button-success {
   background-color: #5cb85c;
   border-color: #5cb85c;
-  color: white; }
+  color: #292b2c; }
 
 .button-success:hover:enabled {
   background-color: #449d44; }
@@ -600,7 +599,7 @@ button {
 .button-danger {
   background-color: #d9534f;
   border-color: #d9534f;
-  color: white; }
+  color: #292b2c; }
 
 .button-danger:hover:enabled {
   background-color: #c9302c; }
@@ -608,7 +607,7 @@ button {
 .button-warning {
   background-color: #f0ad4e;
   border-color: #f0ad4e;
-  color: white; }
+  color: #292b2c; }
 
 .button-warning:hover:enabled {
   background-color: #ec971f; }
@@ -723,10 +722,10 @@ button {
       color: #4CBB17;
       font-size: 18px; }
   .datetimepicker .days {
-    background: #afb4c0; }
+    background: rgba(255, 253, 208, 0.4); }
     .datetimepicker .days li {
       font-size: 14px;
-      color: #777; }
+      color: #4CBB17; }
     .datetimepicker .days li:hover {
       color: #1b1d22; }
     .datetimepicker .days .active {
@@ -1006,13 +1005,13 @@ textarea:required {
 /* Create a custom checkbox */
 /* When the checkbox is checked, add a blue background */
 .input-box-container input:checked ~ .input-box-radiobox-label {
-  background-color: linear-gradient(#40434D, #000000); }
+  background-color: #1b1d22; }
 
 /* Create the input-box-container-label/indicator (hidden when not checked) */
 /* Show the input-box-container-label when checked */
 /* Style the input-box-container-label/indicator */
 .input-box-container .input-box-radiobox-label:after {
-  background-color: #292b2c; }
+  background-color: #98FB98; }
 
 /****************************************************/
 /***                  RADIO    Structure          ***/
@@ -1614,6 +1613,9 @@ input:checked + .toggle-slider:before {
   color: rgba(255, 255, 255, 0.7);
   background-color: #ffeb3b; }
 
+.default {
+  color: rgba(255, 255, 255, 0.7); }
+
 /*----------------------------------------------------------------------*/
 /*        Label COMPONENT -Structure        */
 /*----------------------------------------------------------------------*/
@@ -1724,19 +1726,19 @@ input:checked + .toggle-slider:before {
 
 .floatingbutton-primary {
   background-color: #4CBB17;
-  color: white; }
+  color: #292b2c; }
 
 .floatingbutton-success {
   background-color: #5cb85c;
-  color: white; }
+  color: #292b2c; }
 
 .floatingbutton-danger {
   background-color: #d9534f;
-  color: white; }
+  color: #292b2c; }
 
 .floatingbutton-warning {
   background-color: #f0ad4e;
-  color: white; }
+  color: #292b2c; }
 
 .floatingbutton-default-disabled {
   background-color: #ffffff;
@@ -1744,19 +1746,32 @@ input:checked + .toggle-slider:before {
 
 .floatingbutton-primary-disabled {
   background-color: #81e94f;
-  color: white; }
+  color: #292b2c; }
 
 .floatingbutton-success-disabled {
   background-color: #a3d7a3;
-  color: white; }
+  color: #292b2c; }
 
 .floatingbutton-danger-disabled {
   background-color: #eba5a3;
-  color: white; }
+  color: #292b2c; }
 
 .floatingbutton-warning-disabled {
   background-color: #f8d9ac;
-  color: white; }
+  color: #292b2c; }
+
+.floatinggroup {
+  position: fixed;
+  padding-bottom: 20px;
+  z-index: 3; }
+
+.floatinggroup .floatinggroupitems {
+  list-style: none;
+  margin-bottom: 10px; }
+
+.floatingbutton-circle {
+  text-align: center;
+  cursor: pointer; }
 
 /*----------------------------------------------------------------------*/
 /*        Enterprise - Visual COMPONENT         */
@@ -2244,8 +2259,8 @@ header .billboard .content-button {
   .datapoints .datapoints-north {
     color: #98FB98; }
   .datapoints .datapoint-south {
-    background-color: linear-gradient(#40434D, #000000);
-    color: #4CBB17; }
+    background-color: #98FB98;
+    color: white; }
   .datapoints .datapoint-west {
     padding: 5px; }
   .datapoints .datapoint-east {
@@ -2283,10 +2298,10 @@ header .billboard .content-button {
   border: 1px solid #ced4da; }
 
 .datatable-height::-webkit-scrollbar-track {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .datatable-height::-webkit-scrollbar {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .datatable-height::-webkit-scrollbar-thumb {
   background-color: #292b2c; }
@@ -3068,10 +3083,10 @@ header .billboard .content-button {
   color: rgba(255, 255, 255, 0.7); }
 
 .sidenav::-webkit-scrollbar-track {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .sidenav::-webkit-scrollbar {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .sidenav::-webkit-scrollbar-thumb {
   background-color: #292b2c; }
@@ -3243,11 +3258,11 @@ header .billboard .content-button {
   font-weight: 500; }
 
 .dockbar-height::-webkit-scrollbar-track {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .dockbar-height::-webkit-scrollbar {
   width: 6px;
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .dockbar-height::-webkit-scrollbar-thumb {
   background-color: #292b2c; }
@@ -3391,8 +3406,8 @@ header .billboard .content-button {
   cursor: pointer;
   padding: 10px;
   width: 100%;
-  background: white;
-  border-color: white;
+  background: #292b2c;
+  border-color: #292b2c;
   text-align: left;
   outline: none;
   font-size: 15px;
@@ -3504,10 +3519,10 @@ $accordionTransparentColor : $componentFontColor;
   font-weight: 400; }
 
 .cardbody::-webkit-scrollbar-track {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .cardbody::-webkit-scrollbar {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .cardbody::-webkit-scrollbar-thumb {
   background-color: #292b2c; }
@@ -3825,10 +3840,10 @@ fieldset {
   font-size: 14px; }
 
 .modal-window-middle::-webkit-scrollbar-track {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .modal-window-middle::-webkit-scrollbar {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .modal-window-middle::-webkit-scrollbar-thumb {
   background-color: #292b2c; }
@@ -4044,10 +4059,10 @@ fieldset {
   color: rgba(255, 255, 255, 0.7); }
 
 .panel-panel::-webkit-scrollbar-track {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .panel-panel::-webkit-scrollbar {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .panel-panel::-webkit-scrollbar-thumb {
   background-color: #292b2c; }
@@ -4508,6 +4523,10 @@ fieldset {
 /*----------------------------------------------------------------------*/
 /*        Datetime Media-Q COMPONENT         */
 /*----------------------------------------------------------------------*/
+@media screen and (max-width: 600px) {
+  .datetimepicker .days .date-today {
+    padding-top: 1%;
+    padding-left: 36%; } }
 /*----------------------------------------------------------------------*/
 /*        Dialogue Media-Q COMPONENT         */
 /*----------------------------------------------------------------------*/
@@ -5383,6 +5402,19 @@ fieldset {
 /*----------------------------------------------------------------------*/
 /*        Royal Kelly  -  Structure      */
 /*----------------------------------------------------------------------*/
+.input-control {
+  background-color: #1b1d22;
+  color: rgba(255, 255, 255, 0.7); }
+
+.input-control-success {
+  border-color: #5cb85c; }
+
+.input-control-error {
+  border-color: #d9534f; }
+
+.inputgroup label {
+  margin-bottom: 0rem; }
+
 .listbox .list .title {
   float: left; }
   .listbox .list .title a {
@@ -5390,7 +5422,7 @@ fieldset {
 
 .card-container {
   border-radius: 10px;
-  border: #4CBB17; }
+  border: 2px solid #4CBB17; }
   .card-container .card-header {
     border-radius: 10px; }
   .card-container .card-footer {
@@ -5400,15 +5432,26 @@ fieldset {
   border-radius: 10px; }
   .listbox .header {
     border-radius: 10px;
-    border-bottom: 1px solid #ced4da; }
+    border-bottom: 1px solid #4CBB17; }
   .listbox .list .list-items {
     border-bottom: 1px solid #1b1d22; }
+
+.sidenav {
+  box-shadow: none;
+  border-right: 2px solid #4CBB17; }
 
 /*----------------------------------------------------------------------*/
 /*        Royal Kelly  -  Visual      */
 /*----------------------------------------------------------------------*/
 .navbar-container {
   background: linear-gradient(#98FB98, #4CBB17); }
+
+.input-control {
+  border-radius: 4px;
+  line-height: 2;
+  font-size: 14px;
+  border: 2px solid #666666;
+  border-radius: 4px !important; }
 
 .listbox .list {
   background-color: #292b2c; }
@@ -5427,8 +5470,12 @@ fieldset {
 .listbox .list .list-items {
   background-color: #292b2c; }
 
-.defaultcolor {
-  color: #4CBB17; }
+.item-selector-action-panel .actionbar .actionbarinner .action {
+  background-color: #40434D; }
+
+.datatable .datatable-header {
+  background-color: #4CBB17;
+  color: #292b2c; }
 
 /*----------------------------------------------------------------------*/
 /*        INPUT/LABEL/A/BUTTON/DROPDOWN COMPONENT         */

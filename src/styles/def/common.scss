@@ -9,22 +9,22 @@ $borderRadius : 2px;
 $borderRadius2 : 3px;
 $borderRadius3 : 4px;
 
-$scrollBGColor : #f5f5f5;
+$scrollBGColor : $componentDisabledBGColor;
 $scrollThumbColor : $componentBGColor;
 
 $borderColor : #ced4da;
 
 $primaryBGColor: $themeSecondaryColor;
-$secondaryBGColor: #ffffff;
+$secondaryBGColor: $componentBGColor;
 $successBGColor : #5cb85c;
 $dangerBGColor : #d9534f;
 $warningBGColor : #f0ad4e;
 
-$primaryColor: white;
+$primaryColor: $componentBGColor;
 $secondaryColor:$componentFontColor;
-$successColor : white;
-$dangerColor : white;
-$warningColor : white;
+$successColor : $componentBGColor;
+$dangerColor : $componentBGColor;
+$warningColor : $componentBGColor;
 
 $success: $successBGColor;
 $error : $dangerBGColor;
@@ -49,6 +49,7 @@ html {
   height :100%;
   width :100%;
 }
+
 body {
   font-family: Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
   background-image: $appBackgroundImage;
@@ -150,7 +151,7 @@ body {
 input:disabled {
   opacity: 0.55;
   cursor: not-allowed;
-  background-color: #EBEBE4;
+  background-color: $componentDisabledBGColor;
 }
 
 .disable-component{
@@ -215,6 +216,7 @@ Spin animation for .loading-mask::after
     transform: rotate(359deg);
   }
 }
+
 label {
   display: inline-block;
   margin-top: 5px;
@@ -228,9 +230,6 @@ label {
 a {
   color: $appTransprency;
   //text-transform: lowercase;
-  @if(spicyApricotFontSize){
-      font-size: 14px;
-  }
 }
 
 /*

@@ -1,5 +1,3 @@
-$isAmexio : true;
-$isDatapointBorderRadius :false;
 $appTransprency :#E84C1A;
 
 $themePrimaryColor: #E84C1A;
@@ -31,8 +29,8 @@ $componentHeaderFontColor : white;
 $componentFooterBGColor :$themeSecondaryColor;
 $componentFooterFontColor : white;
 
-$componentDataBGColor : none;
-$componentDataFontColor : $themePrimaryColor;
+$componentDataBGColor : $themePrimaryColor;
+$componentDataFontColor : $appHeaderFontColor;
 
 /* Misc Variables */
 $borderSize2 : 2px;
@@ -66,149 +64,3 @@ $success: $successBGColor;
 $error : $dangerBGColor;
 $focusColor : #5cb3fd;
 $borderColorFocus: $focusColor;
-
-
-// $defaultBGColor : white;
-// $defaultColor : #70196F;
-// $backgroundcolor: $defaultBGColor;
-// $componentBGColor: $backgroundcolor;
-
-// $themeBGColor :  $defaultBGColor;
-// $themeColor :    $defaultColor;
-
-// $primaryBGColor: $themeColor;
-// $secondaryBGColor: #ffffff;
-// $successBGColor : #5cb85c;
-// $dangerBGColor : #d9534f;
-// $warningBGColor : #f0ad4e;
-
-
-// $primaryColor: $themeBGColor;
-// $secondaryColor: $color;
-// $successColor : $oppColor;
-// $dangerColor : $oppColor;
-// $warningColor : $oppColor;
-
-
-// $success: $successBGColor;
-// $error : $dangerBGColor;
-// $focusColor : #5cb3fd;
-
-// $hoverColor : $themeBGColor;
-// $hoverBGColor : $themeColor;
-
-
-// $borderSize : 3px;
-// $borderRadius : 0 px;
-// $borderColor : $defaultColor;
-// $borderColor-focus: $focusColor;
-
-/*
-$navbarBGColor : $themeBGColor ;
-$navbarBoxShadow: $borderColor;
-$navbarColor : $themeColor;
-$navbarBackground : $navbarBGColor;
-
-
-$sidenavHeaderBGColor: none;
-$sidenavHeaderColor: $defaultColor;
-$sidenavBGColor : rgba(255, 255, 255, 0.8);
-$sidenavColor: $defaultColor;
-$sidenavactive:$defaultColor;
-$sidenavactiveColor: $defaultBGColor;
-$sidenavBorderColor: $themeColor;
-$sidenavBGHoverColor: $defaultColor;
-$sidenavHoverColor: $defaultBGColor;
-
-$menubarBGColor : $defaultBGColor;
-$menubarColor : $color;
-$menuHoverColor: blue;
-$subMenuCotentBGColor : $defaultBGColor;
-$subMenuCotentColor : $color;
-
-$menuborderColor: $themeColor;
-$menuborderSize:1px;
-
-$treeNodeActiveBGColor : $sidenavactive;
-$treeNodeActiveColor : $defaultBGColor;
-
-$tabBorderSize: $borderSize;
-$tabBorderColor : lighten($themeColor,30);
-$tabColor : $sidenavHeaderColor;
-$tabBGColor : $sidenavHeaderBGColor;
-$tabActiveBorder : $themeColor;
-$tabActiveBGColor : $themeColor;
-$tabActiveBorderSize : 3px;
-$tabActiveColor : $primaryColor;
-
-$modalBGColor: lighten(black,50%);
-
-$cardBGColor: none;
-$cardColor: $color;
-
-$cardHeaderBGColor: none;
-$cardHeaderColor: $themeColor;
-$cardFooterBGColor: $themeBGColor;
-$cardFooterColor: $themeColor;
-$cardBorderColor: $borderColor;
-
-$toastBGColor : $themeBGColor;
-$toastColor : $themeColor;
-
-$accordionBGColor:$cardHeaderBGColor;
-$accordionColor:$cardHeaderColor;
-$accordionActiveBGColor:$cardHeaderBGColor;
-$accordionActiveColor:$cardHeaderColor;
-$accordionPanelBGColor:$cardBGColor;
-$accordionPanelColor: $accordionColor;
-
-$dockBarBGColor: $defaultColor;
-$dockBarColor: white;
-$dockBarContentBGColor : $cardBGColor;
-$dockBarSize: $tabBorderSize;
-$dockBarActiveBorderColor: $tabActiveBorder;
-$dockBarActiveBorderSize: $tabActiveBorderSize;
-$dockBarActiveColor:$dockBarBGColor;
-$dockBarActiveBGColor:$dockBarColor;
-
-$borderLayoutBorder : 0px;
-$borderLayoutBorderColor : none;
-
-$datapointBGColor : $defaultBGColor;
-$datapointColor : #E84C1A;
-$datapointBorderColor : $cardBorderColor;
-
-$ratingBorderColor : $borderColor;
-$ratingActiveColor : $primaryBGColor;
-
-$datetimepickerBGColor : $defaultBGColor;
-$datetimepickertopbarBGColor : $primaryBGColor;
-$datetimepickerActiveColor : $datetimepickerBGColor;
-
-$fieldSetBorderSize : $borderSize;
-$fieldSetBorderColor : $borderColor;
-
-
-$stepsActiveBGColor : $borderColor;
-$stepsColor : $themeColor;
-$stepsBGColor : lighten($borderColor,50%);
-$stepsLabelHighlight : darken($defaultColor, 30);
-$stepsBorderColor:$borderColor;
-$stepsDisabled : lighten($menubarColor,50%);
-$stepsInActiveBGColor:$hoverBGColor;
-
-$datatableRowActiveBG : lighten($datapointColor,50);
-$datatableRowHoverBG : lighten($themeColor,50);
-$datatableRowHover : $themeColor;
-$datatableRowActive : $datapointColor;
-$datatableBorderSize : 2px;
-$datatableBorderColor : #666666;
-$datatableHeaderColor : $primaryColor;
-$datatableHeaderBGColor : $primaryBGColor;
-$datatableOddRowColor : lighten($themeColor,70);
-$datatableFontBold : "true";
-$isDatapointBorderRadius : true;
-$datapointsColor : $themeBGColor;
-$datapointsBGColorS : $primaryBGColor;
-$datapointsColorS : $primaryColor;
-*/

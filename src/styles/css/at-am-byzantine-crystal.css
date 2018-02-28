@@ -1,114 +1,5 @@
 /* Component Specific Variables */
 /* Misc Variables */
-/*
-$navbarBGColor : $themeBGColor ;
-$navbarBoxShadow: $borderColor;
-$navbarColor : $themeColor;
-$navbarBackground : $navbarBGColor;
-
-
-$sidenavHeaderBGColor: none;
-$sidenavHeaderColor: $defaultColor;
-$sidenavBGColor : rgba(255, 255, 255, 0.8);
-$sidenavColor: $defaultColor;
-$sidenavactive:$defaultColor;
-$sidenavactiveColor: $defaultBGColor;
-$sidenavBorderColor: $themeColor;
-$sidenavBGHoverColor: $defaultColor;
-$sidenavHoverColor: $defaultBGColor;
-
-$menubarBGColor : $defaultBGColor;
-$menubarColor : $color;
-$menuHoverColor: blue;
-$subMenuCotentBGColor : $defaultBGColor;
-$subMenuCotentColor : $color;
-
-$menuborderColor: $themeColor;
-$menuborderSize:1px;
-
-$treeNodeActiveBGColor : $sidenavactive;
-$treeNodeActiveColor : $defaultBGColor;
-
-$tabBorderSize: $borderSize;
-$tabBorderColor : lighten($themeColor,30);
-$tabColor : $sidenavHeaderColor;
-$tabBGColor : $sidenavHeaderBGColor;
-$tabActiveBorder : $themeColor;
-$tabActiveBGColor : $themeColor;
-$tabActiveBorderSize : 3px;
-$tabActiveColor : $primaryColor;
-
-$modalBGColor: lighten(black,50%);
-
-$cardBGColor: none;
-$cardColor: $color;
-
-$cardHeaderBGColor: none;
-$cardHeaderColor: $themeColor;
-$cardFooterBGColor: $themeBGColor;
-$cardFooterColor: $themeColor;
-$cardBorderColor: $borderColor;
-
-$toastBGColor : $themeBGColor;
-$toastColor : $themeColor;
-
-$accordionBGColor:$cardHeaderBGColor;
-$accordionColor:$cardHeaderColor;
-$accordionActiveBGColor:$cardHeaderBGColor;
-$accordionActiveColor:$cardHeaderColor;
-$accordionPanelBGColor:$cardBGColor;
-$accordionPanelColor: $accordionColor;
-
-$dockBarBGColor: $defaultColor;
-$dockBarColor: white;
-$dockBarContentBGColor : $cardBGColor;
-$dockBarSize: $tabBorderSize;
-$dockBarActiveBorderColor: $tabActiveBorder;
-$dockBarActiveBorderSize: $tabActiveBorderSize;
-$dockBarActiveColor:$dockBarBGColor;
-$dockBarActiveBGColor:$dockBarColor;
-
-$borderLayoutBorder : 0px;
-$borderLayoutBorderColor : none;
-
-$datapointBGColor : $defaultBGColor;
-$datapointColor : #E84C1A;
-$datapointBorderColor : $cardBorderColor;
-
-$ratingBorderColor : $borderColor;
-$ratingActiveColor : $primaryBGColor;
-
-$datetimepickerBGColor : $defaultBGColor;
-$datetimepickertopbarBGColor : $primaryBGColor;
-$datetimepickerActiveColor : $datetimepickerBGColor;
-
-$fieldSetBorderSize : $borderSize;
-$fieldSetBorderColor : $borderColor;
-
-
-$stepsActiveBGColor : $borderColor;
-$stepsColor : $themeColor;
-$stepsBGColor : lighten($borderColor,50%);
-$stepsLabelHighlight : darken($defaultColor, 30);
-$stepsBorderColor:$borderColor;
-$stepsDisabled : lighten($menubarColor,50%);
-$stepsInActiveBGColor:$hoverBGColor;
-
-$datatableRowActiveBG : lighten($datapointColor,50);
-$datatableRowHoverBG : lighten($themeColor,50);
-$datatableRowHover : $themeColor;
-$datatableRowActive : $datapointColor;
-$datatableBorderSize : 2px;
-$datatableBorderColor : #666666;
-$datatableHeaderColor : $primaryColor;
-$datatableHeaderBGColor : $primaryBGColor;
-$datatableOddRowColor : lighten($themeColor,70);
-$datatableFontBold : "true";
-$isDatapointBorderRadius : true;
-$datapointsColor : $themeBGColor;
-$datapointsBGColorS : $primaryBGColor;
-$datapointsColorS : $primaryColor;
-*/
 /* Misc Variables */
 /**HELPER CLASS STARTS**/
 body {
@@ -204,7 +95,7 @@ body {
 input:disabled {
   opacity: 0.55;
   cursor: not-allowed;
-  background-color: #EBEBE4; }
+  background-color: #a09e9e; }
 
 .disable-component {
   opacity: 0.55;
@@ -262,8 +153,7 @@ label {
   font-weight: 500; }
 
 a {
-  color: rgba(0, 0, 0, 0.87);
-  font-size: 14px; }
+  color: rgba(0, 0, 0, 0.87); }
 
 /*
 The loading throbber is a single spinning element with three
@@ -324,7 +214,7 @@ button {
   font-size: 1.25rem; }
 
 .button-secondary {
-  background-color: #ffffff;
+  background-color: white;
   border-color: #ced4da;
   color: #70196F; }
 
@@ -473,10 +363,10 @@ button {
       color: white;
       font-size: 18px; }
   .datetimepicker .days {
-    background: white; }
+    background: #e99fe9; }
     .datetimepicker .days li {
       font-size: 14px;
-      color: #777; }
+      color: #70196F; }
     .datetimepicker .days li:hover {
       color: white; }
     .datetimepicker .days .active {
@@ -756,7 +646,7 @@ textarea:required {
 /* Create a custom checkbox */
 /* When the checkbox is checked, add a blue background */
 .input-box-container input:checked ~ .input-box-radiobox-label {
-  background-color: #70196F; }
+  background-color: white; }
 
 /* Create the input-box-container-label/indicator (hidden when not checked) */
 /* Show the input-box-container-label when checked */
@@ -1364,6 +1254,9 @@ input:checked + .toggle-slider:before {
   color: #70196F;
   background-color: #ffeb3b; }
 
+.default {
+  color: #70196F; }
+
 /*----------------------------------------------------------------------*/
 /*        Label COMPONENT -Structure        */
 /*----------------------------------------------------------------------*/
@@ -1507,6 +1400,19 @@ input:checked + .toggle-slider:before {
 .floatingbutton-warning-disabled {
   background-color: #f8d9ac;
   color: white; }
+
+.floatinggroup {
+  position: fixed;
+  padding-bottom: 20px;
+  z-index: 3; }
+
+.floatinggroup .floatinggroupitems {
+  list-style: none;
+  margin-bottom: 10px; }
+
+.floatingbutton-circle {
+  text-align: center;
+  cursor: pointer; }
 
 /*----------------------------------------------------------------------*/
 /*        Enterprise - Visual COMPONENT         */
@@ -1994,8 +1900,8 @@ header .billboard .content-button {
   .datapoints .datapoints-north {
     color: #E84C1A; }
   .datapoints .datapoint-south {
-    background-color: #70196F;
-    color: white; }
+    background-color: #E84C1A;
+    color: #E84C1A; }
   .datapoints .datapoint-west {
     padding: 5px; }
   .datapoints .datapoint-east {
@@ -2033,10 +1939,10 @@ header .billboard .content-button {
   border: 1px solid #ced4da; }
 
 .datatable-height::-webkit-scrollbar-track {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .datatable-height::-webkit-scrollbar {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .datatable-height::-webkit-scrollbar-thumb {
   background-color: white; }
@@ -2818,10 +2724,10 @@ header .billboard .content-button {
   color: #70196F; }
 
 .sidenav::-webkit-scrollbar-track {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .sidenav::-webkit-scrollbar {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .sidenav::-webkit-scrollbar-thumb {
   background-color: white; }
@@ -2993,11 +2899,11 @@ header .billboard .content-button {
   font-weight: 500; }
 
 .dockbar-height::-webkit-scrollbar-track {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .dockbar-height::-webkit-scrollbar {
   width: 6px;
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .dockbar-height::-webkit-scrollbar-thumb {
   background-color: white; }
@@ -3254,10 +3160,10 @@ $accordionTransparentColor : $componentFontColor;
   font-weight: 400; }
 
 .cardbody::-webkit-scrollbar-track {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .cardbody::-webkit-scrollbar {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .cardbody::-webkit-scrollbar-thumb {
   background-color: white; }
@@ -3575,10 +3481,10 @@ fieldset {
   font-size: 14px; }
 
 .modal-window-middle::-webkit-scrollbar-track {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .modal-window-middle::-webkit-scrollbar {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .modal-window-middle::-webkit-scrollbar-thumb {
   background-color: white; }
@@ -3794,10 +3700,10 @@ fieldset {
   color: #70196F; }
 
 .panel-panel::-webkit-scrollbar-track {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .panel-panel::-webkit-scrollbar {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .panel-panel::-webkit-scrollbar-thumb {
   background-color: white; }
@@ -4258,6 +4164,10 @@ fieldset {
 /*----------------------------------------------------------------------*/
 /*        Datetime Media-Q COMPONENT         */
 /*----------------------------------------------------------------------*/
+@media screen and (max-width: 600px) {
+  .datetimepicker .days .date-today {
+    padding-top: 1%;
+    padding-left: 36%; } }
 /*----------------------------------------------------------------------*/
 /*        Dialogue Media-Q COMPONENT         */
 /*----------------------------------------------------------------------*/

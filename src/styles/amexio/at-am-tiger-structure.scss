@@ -4,29 +4,28 @@
 /*----------------------------------------------------------------------*/
 
 
+.input-control {
+  // border-radius: 4px;
+  // line-height: 2;
+  // font-size: 14px;
+  // border: 2px solid #666666;
+  // border-radius: 4px!important;
+  background-color: #1b1d22;
+  color: $themeFontColor;
+}
 
-// .input-control {
-//   border-radius: 4px;
-//   line-height: 2;
-//   font-size: 14px;
-//   border: 2px solid #666666;
-//   border-radius: 4px!important;
-//   background-color: #1b1d22;
-//   color: $color;
-// }
+.input-control-success {
+  border-color:$success;
+}
 
-// .input-control-success {
-//   border-color:$success;
-// }
-
-// .input-control-error {
-//   border-color:$error;
-// }
+.input-control-error {
+  border-color:$error;
+}
 
 
-// .inputgroup label {
-//   margin-bottom: 0rem;
-// }
+.inputgroup label {
+  margin-bottom: 0rem;
+}
 
 // .dropdown{
 //   border: 2px solid #666666;
@@ -73,7 +72,8 @@
 
 .card-container {
   border-radius: 10px;
-  border : $themeSecondaryColor;
+  border: 2px solid $themeSecondaryColor;
+  
   .card-header {
     border-radius: 10px;
     //background: linear-gradient(#40434D, #000000);
@@ -92,7 +92,7 @@
 
   .header{
     border-radius: 10px;
-    border-bottom: $borderSize solid $borderColor;
+    border-bottom: $borderSize solid $themeSecondaryColor;
   }
 
   .list .list-items{
@@ -102,4 +102,9 @@
 
 .defaultcolor{
   //color: $themeColor;
+}
+
+.sidenav{
+  box-shadow: none;
+  border-right: 2px solid $themeSecondaryColor;
 }

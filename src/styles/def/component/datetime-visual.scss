@@ -11,7 +11,8 @@ $datetimepickerBorderSize : $borderSize;
 $datetimepickerBorderColor : $borderColor;
 $datetimepickerFontSize : 18px;
 $datetimepickerTopBarColor :$componentHeaderFontColor;
-$datetimepickerDaysColor : #777;
+$datetimepickerDaysColor : $componentDisabledFontColor;
+$datetimepickerDaysBGColor : $componentHoverBGColor;
 $datetimepickerDaysFontSize : 14px;
 
 .datetimepicker{
@@ -76,7 +77,7 @@ $datetimepickerDaysFontSize : 14px;
 
   .days {
     //padding: 10px 0;
-    background: lighten($datetimepickertopbarBGColor,60);
+    background: $datetimepickerDaysBGColor;
     //margin: 0;
     //cursor : pointer;
     //list-style: none;

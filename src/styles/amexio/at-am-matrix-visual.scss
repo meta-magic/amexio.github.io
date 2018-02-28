@@ -1,19 +1,16 @@
 
 /*----------------------------------------------------------------------*/
-/*        Matrix Amber Visual        */
+/*        Matrix Visual        */
 /*----------------------------------------------------------------------*/
 
 .listbox .list{
    
     .title {
-      //float: left;
       font-size: 18px;
-      color:$themeSecondaryColor;
-      //padding-top: 8px;
+      color:$appHeaderFontColor !important;
       a {
         font-size: 16px;
-        color: $themeFontColor!important;
-        //text-transform: lowercase;
+        color: $themeFontColor !important;
       }
     }
   }
@@ -31,12 +28,12 @@
   
   .listbox{  
     .listbox .list .title {
-      color:$themeSecondaryColor !important;
+      color:$appHeaderFontColor !important;
     }
     
   }
   .sidenav .activenode {
-     color: $themeSecondaryColor;
+     color:$appHeaderFontColor;
 }
   
 
@@ -45,21 +42,23 @@
   color: $componentBGColor;
 }
 
-  .defaultcolor{
-    color: $themeSecondaryColor;
-  }
-  
-.datatable .datatable-header {
-    background-color: $componentHeaderFontColor;
-    color: $componentBGColor;
+.defaultcolor{
+  color:$appHeaderFontColor;
 }
 
 .star-icon:before {
-  color: $themeSecondaryColor;
+  color:$appHeaderFontColor;
 }
+
 .input-control {
- background-color: $componentHeaderBGColor;
+ background-color: rgba(41, 105, 70, 0.4);
+ color : $themeSecondaryColor;
 }
+
 .itemselector-list-active {
- color: $themeSecondaryColor;
+ color:$appHeaderFontColor;
+}
+
+.accordion-transparent {
+  color:$appHeaderFontColor;
 }

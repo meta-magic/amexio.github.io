@@ -1,411 +1,5 @@
 /* Component Specific Variables */
 /* Misc Variables */
-/*$isAmexio : true;
-$themeBGImage : none;
-$aColorTransprency :  rgba(0, 0, 0, 0.87);
-
-$defaultBGColor : #292b2c;
-
-$defaultColor : rgba(255,255,255,0.70);
-
-$color: $defaultColor;
-
-$oppColor: $defaultBGColor;
-
-
-$backgroundcolor: #1b1d22;
-
-$componentBGColor: $backgroundcolor;
-
-
-$themeBGColor :  $backgroundcolor;
-$themeColor :  #E84C1A;
-
-$primaryBGColor: $themeBGColor;
-$secondaryBGColor: lighten($themeBGColor,50%);;
-$successBGColor : #5cb85c;
-$dangerBGColor : #d9534f;
-$warningBGColor : #f0ad4e;
-
-
-$primaryColor: $themeColor;
-$secondaryColor: $color;
-$successColor : $oppColor;
-$dangerColor : $oppColor;
-$warningColor : $oppColor;
-
-
-$success: $successBGColor;
-$error : $dangerBGColor;
-$focusColor : #5cb3fd;
-
-$hoverColor : $themeColor;
-$hoverBGColor : $themeBGColor;
-
-
-$borderSize : 2px;
-$borderRadius : 2 px;
-$borderColor : #666666;
-$borderColor-focus: $focusColor;
-
-
-$navbarBGColor : #F58338 ;
-$navbarColor : white;
-$navbarBackground: linear-gradient(#F58338, #E84C1A);
-$navbarBoxShadow : 2px 2px 5px rgba(0, 0, 0, 0.6);
-
-
-$sidenavHeaderBGColor: $defaultBGColor;
-$sidenavHeaderColor: $color;
-$sidenavBGColor : $defaultBGColor;
-$sidenavColor: $defaultColor;
-$sidenavactive:$themeBGColor;
-$sidenavactiveColor: $themeColor;
-$sidenavBorderColor: $themeColor;
-
-$sidenavBGHoverColor: $themeBGColor;
-$sidenavHoverColor: white;
-
-$menubarBGColor : $defaultBGColor;
-$menubarColor : $color;
-$menuHoverColor: blue;
-$subMenuCotentBGColor : $defaultBGColor;
-$subMenuCotentColor : $color;
-
-$menuborderColor:#E84C1A;
-$menuborderSize:1px;
-
-$treeNodeActiveBGColor : $sidenavactive;
-$treeNodeActiveColor : $themeColor;
-
-$tabBorderSize: $borderSize;
-$tabBorderColor : $borderColor;
-$tabColor : $sidenavHeaderColor;
-$tabBGColor : $sidenavHeaderBGColor;
-$tabActiveBorder : darken($themeBGColor,10);
-$tabActiveBGColor : $borderColor;
-$tabActiveBorderSize : 3px;
-$tabActiveColor : $primaryColor;
-
-$modalBGColor: lighten(black,50%);
-
-$cardBGColor: $defaultBGColor;
-$cardColor: $color;
-
-$cardHeaderBGColor: $themeBGColor;
-$cardHeaderColor: $themeColor;
-$cardFooterBGColor: $themeBGColor;
-$cardFooterColor: $themeColor;
-$cardBorderColor: #E84C1A;
-
-$toastBGColor : $themeBGColor;
-$toastColor : $themeColor;
-
-$accordionBGColor:$cardBGColor;
-$accordionColor:$cardHeaderColor;
-$accordionActiveBGColor:$cardHeaderBGColor;
-$accordionActiveColor:$cardHeaderColor;
-$accordionPanelBGColor:lighten($cardHeaderBGColor,20%);
-$accordionPanelColor: $cardColor;
-
-$dockBarBGColor: $cardHeaderBGColor;
-$dockBarColor: $cardHeaderColor;
-$dockBarContentBGColor : $cardBGColor;
-$dockBarSize: $tabBorderSize;
-$dockBarColor : $tabBorderColor;
-$dockBarActiveBorderColor: $tabActiveBorder;
-$dockBarActiveBorderSize: $tabActiveBorderSize;
-$dockBarActiveColor:$cardHeaderColor;
-$dockBarActiveBGColor:lighten($cardHeaderBGColor,20%);
-
-$borderLayoutBorder : 0px;
-$borderLayoutBorderColor : none;
-
-$datapointBGColor : $defaultBGColor;
-$datapointColor : #F2870C;
-$datapointBorderColor : $cardBorderColor;
-
-$ratingBorderColor : $borderColor;
-$ratingActiveColor : $primaryBGColor;
-
-$datetimepickerBGColor : $defaultBGColor;
-$datetimepickertopbarBGColor : $primaryBGColor;
-$datetimepickerActiveColor : $datetimepickerBGColor;
-
-$fieldSetBorderSize : $borderSize;
-$fieldSetBorderColor : $borderColor;
-$collapsibleLegendColor : $themeColor;
-
-$stepsActiveBGColor : $cardBorderColor;
-$stepsColor : $themeColor;
-$stepsBGColor : $themeBGColor;
-$stepsLabelHighlight : darken($defaultColor, 30);
-$stepsBorderColor:$borderColor;
-$stepsDisabled : lighten($menubarColor,50%);
-$stepsInActiveBGColor:$hoverBGColor;
-
-$datatableRowActiveBG : lighten($themeBGColor,40%)!important;
-$datatableRowHoverBG : lighten($themeBGColor,30%)!important;
-$datatableBorderSize : 2px;
-$datatableBorderColor : #666666;
-$datatableHeaderColor : $themeBGColor!important;;
-$datatableHeaderBGColor : $themeColor!important;;
-$datatableOddRowColor : $themeBGColor;
-$datatableFontBold : "true";
-$datatableRowHover : none;
-$datatableRowActive : none;
-
-$datapointsColor : $themeBGColor;
-$datapointsBGColorS : $primaryBGColor;
-$datapointsColorS : $primaryColor;
-
-$listBoxBGColor : white;
-$listBoxColor : $color;
-$listTitleFontSize : 18px;
-$listTitleAFontSize : 16px;
-
-$buttonBorderColor : $borderColor;
-$buttonBorderRadius : $borderRadius;
-$buttonFontWeight : 400;
-$buttonSmallFontSize : .875rem;
-$buttonDefaultFontSize : 1rem;
-$buttonLargeFontSize : 1.25rem;
-
-$btnDropdownBorderSize: $borderSize;
-$btnDropdownBorderColor : $borderColor;
-$buttonDropdownHoverBG:$sidenavactive;
-$buttonDropdownBG:white;
-$buttonDropdownFontSize : 1rem;
-
-$btnGrpBorderColor:black;
-$btnGrpBorderSize : 1px;
-
-$chcekboxBGColor : $backgroundcolor;
-$chcekboxActiveBGColor : $primaryBGColor;
-$chcekboxActiveColor : $primaryColor;
-
-$accordionBorderSize : $borderSize; 
-$accordionBorderColor : $borderColor;
-$accordionBorder : $borderColor;
-$accordionFontSize : 15px;
-$accordionTransparentBG: transparent;
-$accordionTransparentBorder:transparent;
-$accordionTransparentFontWeight:bold;
-$accordionTransparentColor : $themeColor;
-
-$cardBorderSize:$borderSize;
-$cardBorderShadow : rgba(0,0,0,0.14);
-$cardHeaderFontSize : 20px;
-$cardHeaderFontWeight : 300;
-$cardBodyFontSize : 14px;
-$cardBodyFontWeight : 400;
-$cardBodyScrollBGColor : #F5F5F5;
-$cardBodyScrollThumbColor : $themeBGColor;
-
-$datatableTitleFontSize : 1.5em;
-$datatableScrollBG : #F5F5F5;
-$datatableHeaderFontSize : larger;
-$datatableScrollThumbBG : $themeBGColor;
-
-$datetimepickerBorderSize : $borderSize;
-$datetimepickerBorderColor : $borderColor;
-$datetimepickerFontSize : 18px;
-$datetimepickerTopBarColor :white;
-$datetimepickerDaysColor : #777;
-$datetimepickerDaysFontSize : 14px;
-
-$dialogueContentBorderColor : #888;
-$dialogueContentBorderSize : 1px;
-$dialogueBorderColor : $cardBorderColor;
-$dialogueBorderSize :$borderSize;
-$dialogueBG:rgba(128,127,127,0.6);
-$dialogueContentBG:#fefefe;
-$dialogueHeaderBG: $cardHeaderBGColor;
-$dialogueHeaderFontSize : 20px;
-$dialogueHeaderColor : $cardHeaderColor;
-$dialogueHeaderFontWeight : 300;
-
-$dialogueMiddleFontSize : 14px;
-$dialogueMiddleFontWeight : 400;
-
-$dialogueIconFontSize:15px;
-
-$dialogueFooterColor : $cardFooterColor;
-$dialogueMessageFontSize : 20px;
-$dialogueMessageFontWeight : 300;
-
-$dialogueSuccessColor : $successBGColor;
-$dialogueWarningColor : $warningBGColor;
-$dialogueDangerColor : $dangerBGColor;
-
-$dockbarBtnBGColor : inherit;
-$dockbarFontSize : 24px;
-$dockbarLabelHighlight : black;
-$dockbarLabelFontWeight : bold;
-$dockbarCloseBarFontSize : 24px ;
-$dockbarTitleFontSize : 17px;
-$dockbarTitleFontWight : 500;
-$dockbarScrollBGColor : #F5F5F5;
-$dockbarScrollThumbBGColor : $themeBGColor;
-
-$dropdownListFontSize : 100%;
-$dropdownListFontWeight : 400;
-$dropdownBG: $componentBGColor;
-$dropdownColor : $borderColor;
-$dropdownHoverColor : $hoverColor;
-$dropdownHoverBGColor : $hoverBGColor;
-
-$eeTitleColor1 : rgba(0,0,0,0.9);
-$eeTitleColor2 : rgba(0,0,0,0);
-$eeTitleColor1 : rgba(0,0,0,0.9);
-$eeTitleColor2 : rgba(0,0,0,0);
-$eeTitleDisplay : #000; 
-$eeTitleColor : white;
-$tileFontSize : 20px;
-$tileDetFontSize : 10px;
-$controlColor : dimgrey;
-$controlFontSize  : 1em;
-$subtitleFontSize : 6pt;
-$textColor:white;
-$textBGColor : transparent;
-$matchColor : lightgreen;
-$actionColor : red;
-$actionBGColor : transparent;
-
-$eeContentColor : #fff;
-$eeContentTitleFontSize : 180%;
-
-$youtubeColor : grey;
-$youtubeHoverColor : red;
-
-$fieldsetFontSize : 13px;
-$fieldsetFontWeight : bold;
-
-$horizontalnodeColor: lighten($primaryBGColor,30%);
-$horizontalTreeviewColor: $defaultColor;
-$horizontalnodeGutter: 100px;
-$horizontalnodeBorderRadius: 10px;
-$horizontalnodeEntryMinHeight: 60px;
-
-$horizontalnodeLabelWidth: 150px;
-$horizontalnodeLabelHeight: 30px;
-$horizontalnodeLabelBorderRadius: 5px;
-
-
-$horizontaltreeviewLabelHoverColor:$hoverColor;
-$horizontaltreeviewLabelHoverBGColor:$hoverBGColor;
-$placeholderColor : $borderColor;
-$inputFontSize:1rem;
-$inputTooltipBGColor : lighten($primaryBGColor,30%);
-$inputControlColor : $color;
-$inputControlBGColor : white;
-$inputFontSize : 14px;
-$searchBGColor : #fff;
-$uploadDropZoneColor :#ccc; 
-$uploadDropZoneColorDrop : #222;
-
-$itemselectorActionBGColor : $primaryBGColor ; 
-$itemselectorActionColor : $primaryColor;
-$itemselectorActionDisableBGColor : lighten($primaryBGColor,50);
-$itemselectorListActiveBGColor : lighten($primaryBGColor,30);
-
-$listScrollBGColor : #F5f5f5;
-$listScrollThumbBGColor : $themeBGColor;
-$listBoxFontSize:100%;
-$listBoxFontWeight : 400;
-$listBoxListHoverBGColor : darken($backgroundcolor, 5%);
-$listBoxBGColorOdd : none;
-
-$menuBGColor : none;
-$menuHeaderFontWeight : bold;
-
-$navbarFontSize : 24px;
-
-$paginatorHoverBGColor : $hoverBGColor;
-$paginatorHoverColor : $hoverColor;
-$paginatorColor : inherit;
-$paginatorActiveBGColor : darken($hoverBGColor,10%);
-$paginatorActiveColor : $hoverColor;
-
-$panelBoxBorder : $accordionActiveBGColor;
-$panelBorder : $borderColor;
-
-$panelAccBGColor : $accordionActiveBGColor;
-$panelAccColor : $accordionColor;
-$panelBGColor : $accordionActiveBGColor;
-$panelColor : $accordionColor;
-$panelFontSize : 15px;
-$panelAfterColor : red;
-$panelFontWeight : bold;
-$panelBGColor:$accordionPanelBGColor;
-$panelColor:$accordionPanelColor;
-$panelScrollBG : #f5f5f5;
-$panelScrollThumbBG : $themeBGColor;
-
-$progressBGColor :#ECEFF1;
-$progressBGImg1: rgb(43, 194, 83);
-
-$progressBGSuccess : #5cb85c;
-$progressBGWarning : #f0ad4e;
-$progressBGDanger : #d9534f;
-$progressBGDangerImg1:#f0a3a3;
-$progressBGImgNoStripes : none;
-
-$radioBGColor : $primaryBGColor;
-$radioLabelBGColor : white;
-
-
-$rangeSliderFontSize : .7em;
-$sliderWidgetBGColor : grey;
-$sliderWidgetColor: #222222;
-$sliderWidgetFontSize :1em;
-$rangeSliderBGColor :$cardHeaderBGColor;
-
-$rangeWidgetBG1:#f6f7f9;
-$rangeWidgetBG2:#ebedf0;
-$rangeHeaderColor : #1b1d1f;
-$rangeHeaderFontWeight : normal;
-
-$ratingStarColor : $ratingBorderColor;
-$ratingStarFontSize : 2em;
-$ratingIconColor : $ratingActiveColor;
-$ratingDisabledColor : #ECECEC;
-$ratingIconFontSize : 50px;
-
-$sidenavColorMob : $navbarColor ;
-$sidenavMobileColor : white;
-$sidenavScrollColor : #f5f5f5;
-$sidenavScrollThumbColor : $themeColor;
-$sidenavTitleColor:$primaryColor;
-$sidenavTitleBGColor : $primaryBGColor;
-
-$steppColor : #666;
-$stepsFontSize  : 12px;
-
-$tabFontSize : 17px;
-
-$taginputBGColor : $primaryBGColor;
-$taginputColor : $primaryColor;
-$taginputFontSize : 11px;
-$closeBtnFontSize : 20px;
-$closeBtnColor : darken($primaryColor,20);
-$closeBtnHoverColor : $primaryColor;
-
-$toggleBGColor : #ccc;
-$toggleBGBeforeColor : white;
-$toggleBGChecked :$primaryBGColor;
-
-$treenodeBGColor : transparent;
-
-$modalBGColor : #fefefe;
-$modalHeaderBGColor : $cardHeaderBGColor;
-$modalHeaderFontSize : 20px;
-$modalHeaderColor : $cardHeaderColor;
-$modalWindowFontSize : 14px;
-$modalWindowScrollColor : #F5F5F5;
-$modalWindowScrollThumbColor : $themeBGColor;
-$modalFooterBGColor : $cardFooterBGColor;
-$modalFooterColor : $cardFooterColor;*/
 /* Misc Variables */
 /**HELPER CLASS STARTS**/
 body {
@@ -501,7 +95,7 @@ body {
 input:disabled {
   opacity: 0.55;
   cursor: not-allowed;
-  background-color: #EBEBE4; }
+  background-color: #a09e9e; }
 
 .disable-component {
   opacity: 0.55;
@@ -559,8 +153,7 @@ label {
   font-weight: 500; }
 
 a {
-  color: rgba(0, 0, 0, 0.87);
-  font-size: 14px; }
+  color: rgba(0, 0, 0, 0.87); }
 
 /*
 The loading throbber is a single spinning element with three
@@ -621,17 +214,17 @@ button {
   font-size: 1.25rem; }
 
 .button-secondary {
-  background-color: #ffffff;
+  background-color: #292b2c;
   border-color: #ced4da;
   color: rgba(255, 255, 255, 0.7); }
 
 .button-secondary:hover:enabled {
-  background-color: #e6e6e6; }
+  background-color: #101112; }
 
 .button-primary {
   background-color: #E84C1A;
   border-color: #E84C1A;
-  color: white; }
+  color: #292b2c; }
 
 .button-primary:hover:enabled {
   background-color: #bc3c13; }
@@ -639,7 +232,7 @@ button {
 .button-success {
   background-color: #5cb85c;
   border-color: #5cb85c;
-  color: white; }
+  color: #292b2c; }
 
 .button-success:hover:enabled {
   background-color: #449d44; }
@@ -647,7 +240,7 @@ button {
 .button-danger {
   background-color: #d9534f;
   border-color: #d9534f;
-  color: white; }
+  color: #292b2c; }
 
 .button-danger:hover:enabled {
   background-color: #c9302c; }
@@ -655,7 +248,7 @@ button {
 .button-warning {
   background-color: #f0ad4e;
   border-color: #f0ad4e;
-  color: white; }
+  color: #292b2c; }
 
 .button-warning:hover:enabled {
   background-color: #ec971f; }
@@ -770,10 +363,10 @@ button {
       color: #E84C1A;
       font-size: 18px; }
   .datetimepicker .days {
-    background: #afb4c0; }
+    background: rgba(255, 253, 208, 0.4); }
     .datetimepicker .days li {
       font-size: 14px;
-      color: #777; }
+      color: #E84C1A; }
     .datetimepicker .days li:hover {
       color: #1b1d22; }
     .datetimepicker .days .active {
@@ -1053,13 +646,13 @@ textarea:required {
 /* Create a custom checkbox */
 /* When the checkbox is checked, add a blue background */
 .input-box-container input:checked ~ .input-box-radiobox-label {
-  background-color: linear-gradient(#40434D, #000000); }
+  background-color: #1b1d22; }
 
 /* Create the input-box-container-label/indicator (hidden when not checked) */
 /* Show the input-box-container-label when checked */
 /* Style the input-box-container-label/indicator */
 .input-box-container .input-box-radiobox-label:after {
-  background-color: #292b2c; }
+  background-color: #F2870C; }
 
 /****************************************************/
 /***                  RADIO    Structure          ***/
@@ -1661,6 +1254,9 @@ input:checked + .toggle-slider:before {
   color: rgba(255, 255, 255, 0.7);
   background-color: #ffeb3b; }
 
+.default {
+  color: rgba(255, 255, 255, 0.7); }
+
 /*----------------------------------------------------------------------*/
 /*        Label COMPONENT -Structure        */
 /*----------------------------------------------------------------------*/
@@ -1771,19 +1367,19 @@ input:checked + .toggle-slider:before {
 
 .floatingbutton-primary {
   background-color: #E84C1A;
-  color: white; }
+  color: #292b2c; }
 
 .floatingbutton-success {
   background-color: #5cb85c;
-  color: white; }
+  color: #292b2c; }
 
 .floatingbutton-danger {
   background-color: #d9534f;
-  color: white; }
+  color: #292b2c; }
 
 .floatingbutton-warning {
   background-color: #f0ad4e;
-  color: white; }
+  color: #292b2c; }
 
 .floatingbutton-default-disabled {
   background-color: #ffffff;
@@ -1791,19 +1387,32 @@ input:checked + .toggle-slider:before {
 
 .floatingbutton-primary-disabled {
   background-color: #f19477;
-  color: white; }
+  color: #292b2c; }
 
 .floatingbutton-success-disabled {
   background-color: #a3d7a3;
-  color: white; }
+  color: #292b2c; }
 
 .floatingbutton-danger-disabled {
   background-color: #eba5a3;
-  color: white; }
+  color: #292b2c; }
 
 .floatingbutton-warning-disabled {
   background-color: #f8d9ac;
-  color: white; }
+  color: #292b2c; }
+
+.floatinggroup {
+  position: fixed;
+  padding-bottom: 20px;
+  z-index: 3; }
+
+.floatinggroup .floatinggroupitems {
+  list-style: none;
+  margin-bottom: 10px; }
+
+.floatingbutton-circle {
+  text-align: center;
+  cursor: pointer; }
 
 /*----------------------------------------------------------------------*/
 /*        Enterprise - Visual COMPONENT         */
@@ -2291,8 +1900,8 @@ header .billboard .content-button {
   .datapoints .datapoints-north {
     color: #F2870C; }
   .datapoints .datapoint-south {
-    background-color: linear-gradient(#40434D, #000000);
-    color: #E84C1A; }
+    background-color: #F2870C;
+    color: white; }
   .datapoints .datapoint-west {
     padding: 5px; }
   .datapoints .datapoint-east {
@@ -2330,10 +1939,10 @@ header .billboard .content-button {
   border: 1px solid #ced4da; }
 
 .datatable-height::-webkit-scrollbar-track {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .datatable-height::-webkit-scrollbar {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .datatable-height::-webkit-scrollbar-thumb {
   background-color: #292b2c; }
@@ -3115,10 +2724,10 @@ header .billboard .content-button {
   color: rgba(255, 255, 255, 0.7); }
 
 .sidenav::-webkit-scrollbar-track {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .sidenav::-webkit-scrollbar {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .sidenav::-webkit-scrollbar-thumb {
   background-color: #292b2c; }
@@ -3290,11 +2899,11 @@ header .billboard .content-button {
   font-weight: 500; }
 
 .dockbar-height::-webkit-scrollbar-track {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .dockbar-height::-webkit-scrollbar {
   width: 6px;
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .dockbar-height::-webkit-scrollbar-thumb {
   background-color: #292b2c; }
@@ -3438,8 +3047,8 @@ header .billboard .content-button {
   cursor: pointer;
   padding: 10px;
   width: 100%;
-  background: white;
-  border-color: white;
+  background: #292b2c;
+  border-color: #292b2c;
   text-align: left;
   outline: none;
   font-size: 15px;
@@ -3551,10 +3160,10 @@ $accordionTransparentColor : $componentFontColor;
   font-weight: 400; }
 
 .cardbody::-webkit-scrollbar-track {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .cardbody::-webkit-scrollbar {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .cardbody::-webkit-scrollbar-thumb {
   background-color: #292b2c; }
@@ -3872,10 +3481,10 @@ fieldset {
   font-size: 14px; }
 
 .modal-window-middle::-webkit-scrollbar-track {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .modal-window-middle::-webkit-scrollbar {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .modal-window-middle::-webkit-scrollbar-thumb {
   background-color: #292b2c; }
@@ -4091,10 +3700,10 @@ fieldset {
   color: rgba(255, 255, 255, 0.7); }
 
 .panel-panel::-webkit-scrollbar-track {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .panel-panel::-webkit-scrollbar {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .panel-panel::-webkit-scrollbar-thumb {
   background-color: #292b2c; }
@@ -4555,6 +4164,10 @@ fieldset {
 /*----------------------------------------------------------------------*/
 /*        Datetime Media-Q COMPONENT         */
 /*----------------------------------------------------------------------*/
+@media screen and (max-width: 600px) {
+  .datetimepicker .days .date-today {
+    padding-top: 1%;
+    padding-left: 36%; } }
 /*----------------------------------------------------------------------*/
 /*        Dialogue Media-Q COMPONENT         */
 /*----------------------------------------------------------------------*/
@@ -5430,6 +5043,19 @@ fieldset {
 /*----------------------------------------------------------------------*/
 /*       Royal Tiger -Structure */
 /*----------------------------------------------------------------------*/
+.input-control {
+  background-color: #1b1d22;
+  color: rgba(255, 255, 255, 0.7); }
+
+.input-control-success {
+  border-color: #5cb85c; }
+
+.input-control-error {
+  border-color: #d9534f; }
+
+.inputgroup label {
+  margin-bottom: 0rem; }
+
 .listbox .list .title {
   float: left; }
   .listbox .list .title a {
@@ -5437,7 +5063,7 @@ fieldset {
 
 .card-container {
   border-radius: 10px;
-  border: #E84C1A; }
+  border: 2px solid #E84C1A; }
   .card-container .card-header {
     border-radius: 10px; }
   .card-container .card-footer {
@@ -5447,15 +5073,26 @@ fieldset {
   border-radius: 10px; }
   .listbox .header {
     border-radius: 10px;
-    border-bottom: 1px solid #ced4da; }
+    border-bottom: 1px solid #E84C1A; }
   .listbox .list .list-items {
     border-bottom: 1px solid #1b1d22; }
 
+.sidenav {
+  box-shadow: none;
+  border-right: 2px solid #E84C1A; }
+
 /*----------------------------------------------------------------------*/
-/*       Royal Tiger -Structure */
+/*       Royal Tiger -Visual */
 /*----------------------------------------------------------------------*/
-navbar-container {
+.navbar-container {
   background: linear-gradient(#F58338, #E84C1A); }
+
+.input-control {
+  border-radius: 4px;
+  line-height: 2;
+  font-size: 14px;
+  border: 2px solid #666666;
+  border-radius: 4px !important; }
 
 .listbox .list {
   background-color: #292b2c; }
@@ -5474,8 +5111,12 @@ navbar-container {
 .listbox .list .list-items {
   background-color: #292b2c; }
 
-.defaultcolor {
-  color: #E84C1A; }
+.item-selector-action-panel .actionbar .actionbarinner .action {
+  background-color: #40434D; }
+
+.datatable .datatable-header {
+  background-color: #E84C1A;
+  color: #292b2c; }
 
 /*----------------------------------------------------------------------*/
 /*        INPUT/LABEL/A/BUTTON/DROPDOWN COMPONENT         */

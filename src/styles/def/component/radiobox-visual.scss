@@ -2,8 +2,8 @@
 /***                  RADIO -Visual                     ***/
 /****************************************************/
 
-$radioBGColor : $componentHeaderBGColor;
-$radioLabelBGColor : $componentBGColor;
+$radioBGColor : $componentActiveBGColor;
+$radioLabelBGColor : $appHeaderBGColor;
 
 /* Create a custom checkbox */
 .input-box-radiobox-label {

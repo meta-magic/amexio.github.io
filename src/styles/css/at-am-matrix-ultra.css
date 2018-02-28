@@ -471,7 +471,7 @@ body {
 /**HEADER STYLE STARTS **/
 .header {
   background-color: rgba(189, 127, 189, 0.6);
-  color: #FF6FFF;
+  color: #000000;
   padding: 10px;
   overflow: hidden; }
 
@@ -501,7 +501,7 @@ body {
 input:disabled {
   opacity: 0.55;
   cursor: not-allowed;
-  background-color: #EBEBE4; }
+  background-color: #a09e9e; }
 
 .disable-component {
   opacity: 0.55;
@@ -559,8 +559,7 @@ label {
   font-weight: 500; }
 
 a {
-  color: rgba(0, 0, 0, 0.87);
-  font-size: 14px; }
+  color: rgba(0, 0, 0, 0.87); }
 
 /*
 The loading throbber is a single spinning element with three
@@ -621,17 +620,17 @@ button {
   font-size: 1.25rem; }
 
 .button-secondary {
-  background-color: #ffffff;
+  background-color: #000000;
   border-color: #ced4da;
   color: rgba(255, 255, 255, 0.7); }
 
 .button-secondary:hover:enabled {
-  background-color: #e6e6e6; }
+  background-color: black; }
 
 .button-primary {
   background-color: #FF6FFF;
   border-color: #FF6FFF;
-  color: white; }
+  color: #000000; }
 
 .button-primary:hover:enabled {
   background-color: #ff3cff; }
@@ -639,7 +638,7 @@ button {
 .button-success {
   background-color: #5cb85c;
   border-color: #5cb85c;
-  color: white; }
+  color: #000000; }
 
 .button-success:hover:enabled {
   background-color: #449d44; }
@@ -647,7 +646,7 @@ button {
 .button-danger {
   background-color: #d9534f;
   border-color: #d9534f;
-  color: white; }
+  color: #000000; }
 
 .button-danger:hover:enabled {
   background-color: #c9302c; }
@@ -655,7 +654,7 @@ button {
 .button-warning {
   background-color: #f0ad4e;
   border-color: #f0ad4e;
-  color: white; }
+  color: #000000; }
 
 .button-warning:hover:enabled {
   background-color: #ec971f; }
@@ -767,13 +766,13 @@ button {
     .datetimepicker .datetimepickertopbar .title {
       font-size: 18px; }
     .datetimepicker .datetimepickertopbar ul li {
-      color: #FF6FFF;
+      color: #000000;
       font-size: 18px; }
   .datetimepicker .days {
-    background: rgba(255, 255, 255, 0.6); }
+    background: rgba(189, 127, 189, 0.6); }
     .datetimepicker .days li {
       font-size: 14px;
-      color: #777; }
+      color: #FF6FFF; }
     .datetimepicker .days li:hover {
       color: rgba(189, 127, 189, 0.6); }
     .datetimepicker .days .active {
@@ -1508,7 +1507,7 @@ input:checked + .toggle-slider:before {
 
 .ui-widget-header {
   background: #000000;
-  color: #FF6FFF;
+  color: #000000;
   font-weight: normal; }
 
 /****************************************************/
@@ -1661,6 +1660,9 @@ input:checked + .toggle-slider:before {
   color: rgba(255, 255, 255, 0.7);
   background-color: #ffeb3b; }
 
+.default {
+  color: rgba(255, 255, 255, 0.7); }
+
 /*----------------------------------------------------------------------*/
 /*        Label COMPONENT -Structure        */
 /*----------------------------------------------------------------------*/
@@ -1771,19 +1773,19 @@ input:checked + .toggle-slider:before {
 
 .floatingbutton-primary {
   background-color: #FF6FFF;
-  color: white; }
+  color: #000000; }
 
 .floatingbutton-success {
   background-color: #5cb85c;
-  color: white; }
+  color: #000000; }
 
 .floatingbutton-danger {
   background-color: #d9534f;
-  color: white; }
+  color: #000000; }
 
 .floatingbutton-warning {
   background-color: #f0ad4e;
-  color: white; }
+  color: #000000; }
 
 .floatingbutton-default-disabled {
   background-color: #ffffff;
@@ -1791,19 +1793,32 @@ input:checked + .toggle-slider:before {
 
 .floatingbutton-primary-disabled {
   background-color: #ffd5ff;
-  color: white; }
+  color: #000000; }
 
 .floatingbutton-success-disabled {
   background-color: #a3d7a3;
-  color: white; }
+  color: #000000; }
 
 .floatingbutton-danger-disabled {
   background-color: #eba5a3;
-  color: white; }
+  color: #000000; }
 
 .floatingbutton-warning-disabled {
   background-color: #f8d9ac;
-  color: white; }
+  color: #000000; }
+
+.floatinggroup {
+  position: fixed;
+  padding-bottom: 20px;
+  z-index: 3; }
+
+.floatinggroup .floatinggroupitems {
+  list-style: none;
+  margin-bottom: 10px; }
+
+.floatingbutton-circle {
+  text-align: center;
+  cursor: pointer; }
 
 /*----------------------------------------------------------------------*/
 /*        Enterprise - Visual COMPONENT         */
@@ -2291,7 +2306,7 @@ header .billboard .content-button {
   .datapoints .datapoints-north {
     color: #FF6FFF; }
   .datapoints .datapoint-south {
-    background-color: rgba(189, 127, 189, 0.6);
+    background-color: #FF6FFF;
     color: #FF6FFF; }
   .datapoints .datapoint-west {
     padding: 5px; }
@@ -2330,10 +2345,10 @@ header .billboard .content-button {
   border: 1px solid #ced4da; }
 
 .datatable-height::-webkit-scrollbar-track {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .datatable-height::-webkit-scrollbar {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .datatable-height::-webkit-scrollbar-thumb {
   background-color: #000000; }
@@ -2343,7 +2358,7 @@ header .billboard .content-button {
 
 .datatable .datatable-header {
   background-color: rgba(189, 127, 189, 0.6);
-  color: #FF6FFF;
+  color: #000000;
   font-size: larger; }
 
 .datatable .datatable-row:hover {
@@ -2521,7 +2536,7 @@ header .billboard .content-button {
 /*----------------------------------------------------------------------*/
 .item-selector-action-panel .actionbar .actionbarinner .action {
   background-color: rgba(189, 127, 189, 0.6);
-  color: #FF6FFF; }
+  color: #000000; }
 .item-selector-action-panel .actionbar .actionbarinner .actiondisable {
   background-color: #a09e9e; }
 
@@ -3009,11 +3024,11 @@ header .billboard .content-button {
 /*----------------------------------------------------------------------*/
 .navbar-container {
   background-color: #000000;
-  color: white; }
+  color: #FF6FFF; }
   .navbar-container .navbar-logo {
     vertical-align: middle; }
   .navbar-container .navbar-logo-unit a {
-    color: white; }
+    color: #FF6FFF; }
   .navbar-container .navbar-logo-unit {
     font-size: 24px; }
     .navbar-container .navbar-logo-unit .navbar-mobile-bars {
@@ -3115,10 +3130,10 @@ header .billboard .content-button {
   color: rgba(255, 255, 255, 0.7); }
 
 .sidenav::-webkit-scrollbar-track {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .sidenav::-webkit-scrollbar {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .sidenav::-webkit-scrollbar-thumb {
   background-color: #000000; }
@@ -3290,11 +3305,11 @@ header .billboard .content-button {
   font-weight: 500; }
 
 .dockbar-height::-webkit-scrollbar-track {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .dockbar-height::-webkit-scrollbar {
   width: 6px;
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .dockbar-height::-webkit-scrollbar-thumb {
   background-color: #000000; }
@@ -3407,7 +3422,7 @@ header .billboard .content-button {
 /*----------------------------------------------------------------------*/
 .accordion {
   background-color: rgba(189, 127, 189, 0.6);
-  color: #FF6FFF;
+  color: #000000;
   cursor: pointer;
   padding: 10px;
   width: 100%;
@@ -3419,7 +3434,7 @@ header .billboard .content-button {
 
 .accordion .active-accordion, .accordion:hover {
   background-color: rgba(189, 127, 189, 0.6);
-  color: #FF6FFF; }
+  color: #000000; }
 
 .accordion:after {
   color: red;
@@ -3438,8 +3453,8 @@ header .billboard .content-button {
   cursor: pointer;
   padding: 10px;
   width: 100%;
-  background: white;
-  border-color: white;
+  background: #000000;
+  border-color: #000000;
   text-align: left;
   outline: none;
   font-size: 15px;
@@ -3543,7 +3558,7 @@ $accordionTransparentColor : $componentFontColor;
 .card-header {
   background: rgba(189, 127, 189, 0.6);
   font-size: 20px;
-  color: #FF6FFF;
+  color: #000000;
   font-weight: 300; }
 
 .card-body {
@@ -3551,17 +3566,17 @@ $accordionTransparentColor : $componentFontColor;
   font-weight: 400; }
 
 .cardbody::-webkit-scrollbar-track {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .cardbody::-webkit-scrollbar {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .cardbody::-webkit-scrollbar-thumb {
   background-color: #000000; }
 
 .card-footer {
   background-color: #000000;
-  color: #FF6FFF; }
+  color: #000000; }
 
 /*----------------------------------------------------------------------*/
 /*        CARD COMPONENT -Structure*/
@@ -3866,23 +3881,23 @@ fieldset {
 .modal-window-header {
   background: rgba(189, 127, 189, 0.6);
   font-size: 20px;
-  color: #FF6FFF; }
+  color: #000000; }
 
 .modal-window-middle {
   font-size: 14px; }
 
 .modal-window-middle::-webkit-scrollbar-track {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .modal-window-middle::-webkit-scrollbar {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .modal-window-middle::-webkit-scrollbar-thumb {
   background-color: #000000; }
 
 .modal-window-footer {
   background-color: rgba(189, 127, 189, 0.6);
-  color: #FF6FFF; }
+  color: #000000; }
 
 /*----------------------------------------------------------------------*/
 /*        WINDOW COMPONENT - Strucure       */
@@ -3977,7 +3992,7 @@ fieldset {
   font-weight: 400; }
 
 .dialogue-footer {
-  color: #FF6FFF; }
+  color: #000000; }
 
 .dialogue-message {
   font-size: 20px;
@@ -4079,7 +4094,7 @@ fieldset {
 /*----------------------------------------------------------------------*/
 .panel-accordion {
   background-color: rgba(189, 127, 189, 0.6);
-  color: #FF6FFF;
+  color: #000000;
   font-size: 15px; }
 
 .panel-accordion:after {
@@ -4091,10 +4106,10 @@ fieldset {
   color: rgba(255, 255, 255, 0.7); }
 
 .panel-panel::-webkit-scrollbar-track {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .panel-panel::-webkit-scrollbar {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .panel-panel::-webkit-scrollbar-thumb {
   background-color: #000000; }
@@ -4154,7 +4169,7 @@ fieldset {
     background: rgba(189, 127, 189, 0.6);
     border-bottom: 1px solid #ced4da;
     font-size: 18px;
-    color: #FF6FFF;
+    color: #000000;
     font-weight: 300;
     text-transform: capitalize;
     overflow: auto; } }
@@ -4339,7 +4354,7 @@ fieldset {
     background: rgba(189, 127, 189, 0.6);
     border-bottom: 1px solid #ced4da;
     font-size: 18px;
-    color: #FF6FFF;
+    color: #000000;
     font-weight: 300;
     text-transform: capitalize;
     overflow: auto; } }
@@ -4545,7 +4560,7 @@ fieldset {
     background: rgba(189, 127, 189, 0.6);
     border-bottom: 1px solid #ced4da;
     font-size: 18px;
-    color: #FF6FFF;
+    color: #000000;
     font-weight: 300;
     text-transform: capitalize;
     overflow: auto; } }
@@ -4555,6 +4570,10 @@ fieldset {
 /*----------------------------------------------------------------------*/
 /*        Datetime Media-Q COMPONENT         */
 /*----------------------------------------------------------------------*/
+@media screen and (max-width: 600px) {
+  .datetimepicker .days .date-today {
+    padding-top: 1%;
+    padding-left: 36%; } }
 /*----------------------------------------------------------------------*/
 /*        Dialogue Media-Q COMPONENT         */
 /*----------------------------------------------------------------------*/
@@ -4693,7 +4712,7 @@ fieldset {
     .navbar-container .nav-bar {
       background-color: #333333; }
       .navbar-container .nav-bar .nav-item amexio-nav-item {
-        border-bottom: 1px solid white;
+        border-bottom: 1px solid #FF6FFF;
         cursor: pointer; }
         .navbar-container .nav-bar .nav-item amexio-nav-item * {
           vertical-align: middle; }
@@ -4774,7 +4793,7 @@ fieldset {
     background: rgba(189, 127, 189, 0.6);
     border-bottom: 1px solid #ced4da;
     font-size: 18px;
-    color: #FF6FFF;
+    color: #000000;
     font-weight: 300;
     text-transform: capitalize;
     overflow: auto; } }
@@ -4922,7 +4941,7 @@ fieldset {
     .navbar-container .nav-bar {
       background-color: #333333; }
       .navbar-container .nav-bar .nav-item amexio-nav-item {
-        border-bottom: 1px solid white;
+        border-bottom: 1px solid #FF6FFF;
         cursor: pointer; }
         .navbar-container .nav-bar .nav-item amexio-nav-item * {
           vertical-align: middle; }
@@ -5003,7 +5022,7 @@ fieldset {
     background: rgba(189, 127, 189, 0.6);
     border-bottom: 1px solid #ced4da;
     font-size: 18px;
-    color: #FF6FFF;
+    color: #000000;
     font-weight: 300;
     text-transform: capitalize;
     overflow: auto; } }
@@ -5151,7 +5170,7 @@ fieldset {
     .navbar-container .nav-bar {
       background-color: #333333; }
       .navbar-container .nav-bar .nav-item amexio-nav-item {
-        border-bottom: 1px solid white;
+        border-bottom: 1px solid #FF6FFF;
         cursor: pointer; }
         .navbar-container .nav-bar .nav-item amexio-nav-item * {
           vertical-align: middle; }
@@ -5232,7 +5251,7 @@ fieldset {
     background: rgba(189, 127, 189, 0.6);
     border-bottom: 1px solid #ced4da;
     font-size: 18px;
-    color: #FF6FFF;
+    color: #000000;
     font-weight: 300;
     text-transform: capitalize;
     overflow: auto; } }
@@ -5380,7 +5399,7 @@ fieldset {
     .navbar-container .nav-bar {
       background-color: #333333; }
       .navbar-container .nav-bar .nav-item amexio-nav-item {
-        border-bottom: 1px solid white;
+        border-bottom: 1px solid #FF6FFF;
         cursor: pointer; }
         .navbar-container .nav-bar .nav-item amexio-nav-item * {
           vertical-align: middle; }
@@ -5445,7 +5464,7 @@ fieldset {
 /*----------------------------------------------------------------------*/
 .listbox .list .title {
   font-size: 18px;
-  color: #FF6FFF; }
+  color: #FF6FFF !important; }
   .listbox .list .title a {
     font-size: 16px;
     color: rgba(255, 255, 255, 0.7) !important; }
@@ -5470,17 +5489,17 @@ fieldset {
 .defaultcolor {
   color: #FF6FFF; }
 
-.datatable .datatable-header {
-  background-color: #FF6FFF;
-  color: #000000; }
-
 .star-icon:before {
   color: #FF6FFF; }
 
 .input-control {
-  background-color: rgba(189, 127, 189, 0.6); }
+  background-color: rgba(255, 111, 255, 0.4);
+  color: #FF6FFF; }
 
 .itemselector-list-active {
+  color: #FF6FFF; }
+
+.accordion-transparent {
   color: #FF6FFF; }
 
 /*----------------------------------------------------------------------*/

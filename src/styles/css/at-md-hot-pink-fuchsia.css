@@ -94,7 +94,7 @@ body {
 input:disabled {
   opacity: 0.55;
   cursor: not-allowed;
-  background-color: #EBEBE4; }
+  background-color: #a09e9e; }
 
 .disable-component {
   opacity: 0.55;
@@ -152,8 +152,7 @@ label {
   font-weight: 500; }
 
 a {
-  color: rgba(0, 0, 0, 0.87);
-  font-size: 14px; }
+  color: rgba(0, 0, 0, 0.87); }
 
 /*
 The loading throbber is a single spinning element with three
@@ -214,7 +213,7 @@ button {
   font-size: 1.25rem; }
 
 .button-secondary {
-  background-color: #ffffff;
+  background-color: white;
   border-color: #ced4da;
   color: black; }
 
@@ -363,10 +362,10 @@ button {
       color: white;
       font-size: 18px; }
   .datetimepicker .days {
-    background: white; }
+    background: #ffccff; }
     .datetimepicker .days li {
       font-size: 14px;
-      color: #777; }
+      color: black; }
     .datetimepicker .days li:hover {
       color: #ff99ff; }
     .datetimepicker .days .active {
@@ -646,13 +645,13 @@ textarea:required {
 /* Create a custom checkbox */
 /* When the checkbox is checked, add a blue background */
 .input-box-container input:checked ~ .input-box-radiobox-label {
-  background-color: #FF00FF; }
+  background-color: #ff99ff; }
 
 /* Create the input-box-container-label/indicator (hidden when not checked) */
 /* Show the input-box-container-label when checked */
 /* Style the input-box-container-label/indicator */
 .input-box-container .input-box-radiobox-label:after {
-  background-color: white; }
+  background-color: #F81894; }
 
 /****************************************************/
 /***                  RADIO    Structure          ***/
@@ -1254,6 +1253,9 @@ input:checked + .toggle-slider:before {
   color: black;
   background-color: #ffeb3b; }
 
+.default {
+  color: black; }
+
 /*----------------------------------------------------------------------*/
 /*        Label COMPONENT -Structure        */
 /*----------------------------------------------------------------------*/
@@ -1397,6 +1399,19 @@ input:checked + .toggle-slider:before {
 .floatingbutton-warning-disabled {
   background-color: #f8d9ac;
   color: white; }
+
+.floatinggroup {
+  position: fixed;
+  padding-bottom: 20px;
+  z-index: 3; }
+
+.floatinggroup .floatinggroupitems {
+  list-style: none;
+  margin-bottom: 10px; }
+
+.floatingbutton-circle {
+  text-align: center;
+  cursor: pointer; }
 
 /*----------------------------------------------------------------------*/
 /*        Enterprise - Visual COMPONENT         */
@@ -1884,7 +1899,7 @@ header .billboard .content-button {
   .datapoints .datapoints-north {
     color: #F81894; }
   .datapoints .datapoint-south {
-    background-color: #FF00FF;
+    background-color: #F81894;
     color: white; }
   .datapoints .datapoint-west {
     padding: 5px; }
@@ -1923,10 +1938,10 @@ header .billboard .content-button {
   border: 1px solid #ced4da; }
 
 .datatable-height::-webkit-scrollbar-track {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .datatable-height::-webkit-scrollbar {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .datatable-height::-webkit-scrollbar-thumb {
   background-color: white; }
@@ -2708,10 +2723,10 @@ header .billboard .content-button {
   color: black; }
 
 .sidenav::-webkit-scrollbar-track {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .sidenav::-webkit-scrollbar {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .sidenav::-webkit-scrollbar-thumb {
   background-color: white; }
@@ -2883,11 +2898,11 @@ header .billboard .content-button {
   font-weight: 500; }
 
 .dockbar-height::-webkit-scrollbar-track {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .dockbar-height::-webkit-scrollbar {
   width: 6px;
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .dockbar-height::-webkit-scrollbar-thumb {
   background-color: white; }
@@ -3144,10 +3159,10 @@ $accordionTransparentColor : $componentFontColor;
   font-weight: 400; }
 
 .cardbody::-webkit-scrollbar-track {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .cardbody::-webkit-scrollbar {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .cardbody::-webkit-scrollbar-thumb {
   background-color: white; }
@@ -3465,10 +3480,10 @@ fieldset {
   font-size: 14px; }
 
 .modal-window-middle::-webkit-scrollbar-track {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .modal-window-middle::-webkit-scrollbar {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .modal-window-middle::-webkit-scrollbar-thumb {
   background-color: white; }
@@ -3684,10 +3699,10 @@ fieldset {
   color: black; }
 
 .panel-panel::-webkit-scrollbar-track {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .panel-panel::-webkit-scrollbar {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .panel-panel::-webkit-scrollbar-thumb {
   background-color: white; }
@@ -3834,7 +3849,7 @@ button {
   left: 50%;
   width: 5px;
   height: 5px;
-  background: #ffffff;
+  background: white;
   opacity: 0;
   border-radius: 100%;
   transform: scale(1, 1) translate(-50%);
@@ -4292,6 +4307,10 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
 /*----------------------------------------------------------------------*/
 /*        Datetime Media-Q COMPONENT         */
 /*----------------------------------------------------------------------*/
+@media screen and (max-width: 600px) {
+  .datetimepicker .days .date-today {
+    padding-top: 1%;
+    padding-left: 36%; } }
 /*----------------------------------------------------------------------*/
 /*        Dialogue Media-Q COMPONENT         */
 /*----------------------------------------------------------------------*/

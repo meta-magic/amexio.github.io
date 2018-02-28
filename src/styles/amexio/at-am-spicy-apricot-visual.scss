@@ -1,147 +1,73 @@
 
 body {
-  background-image: $appBackgroundImage;
-  background-repeat: repeat-x;
-  background-attachment: fixed;
-}
-
-
-
-/*----------------------------------------------------------------------*/
-/*        Spicy Apricot  -Visual                       */
-/*----------------------------------------------------------------------*/
-
-
-
-// .input-control {
-//   border-radius: $borderRadius;
-//   line-height: 2;
-//   font-size: 14px;
-//   border: 2px solid #FF8B00;
-//   color: $themePrimaryColor;
-// }
-
-// .input-control-success {
-//   border-color:$success;
-// }
-
-// .input-control-error {
-//   border-color:$error;
-// }
-
-
-// .inputgroup label {
-//   margin-bottom: 0rem;
-// }
-
-// .dropdown{
-//   border: 1px solid #FF8B00;
-//   border-radius: $border-radius;
-//   box-shadow: 0 1px 3px 0 #FF8B00;
-//   background-color: white;
-// }
-
-
-// .datetimepicker {
-//   border: 1px solid #FF8B00;
-//   border-radius: $border-radius;
-//   box-shadow: 0 1px 3px 0 #FF8B00;
-
-
-
-// .navbar-logo-unit a{
-//   text-transform: capitalize;
-// }
-
-
-.listbox{
-  background-color: rgba(55, 20, 2, 0.70);
-  //padding: 16px;
-  .list{
-    //background-color: white;
-    //border: $borderSize solid $borderColor;
-    //border-radius: $borderRadius;
-    //margin: 16px;
-    .title {
-    //  float: left;
-      font-size: 16px;
-    //  font-weight: bold;
-      //padding-top: 8px;
-      color: #FF8B00 !important;
-      a{
-        color:#603A63;
-    //    font-weight: 300;
-      }
-    }
-    .list-items{
-  //    border-bottom: 1px solid $borderColor;
-    }
-    .list-items:hover{
-      background-color: lighten($themePrimaryColor,70%);
-    }
+    background-image: $appBackgroundImage;
+    background-repeat: repeat-x;
+    background-attachment: fixed;
+    
   }
-
-  .header{
-    background: none;
-    color: $cardHeaderColor;
-//    font-weight: bold;
+  
+  .input-control {
+    color: $themeSecondaryColor;
   }
-}
-
-
-.card-container {
-  border-radius: $borderRadius;
-  background-color: rgba(55, 20, 2, 0.70);
-  padding: 16px;
-  .card-header {
-
-    //font-size: 20px;
-    font-weight: bold;
-    border:none;
-  }
-
-  .card-body{
-    border-radius: $borderRadius;
+  
+  .dropdown{
     background-color: white;
   }
-
-  .card-footer{
-    //background: none;
-    border:none;
-    border-top:none;
+  
+  
+  
+  .navbar-container {
+      background-color: $appBackground;
+      color: white;
   }
-}
-
-
-/** NAVBAR **/
-.navbar-container {
-
-  .navbar-logo-unit a{
-    font-size: 24px;
-    //font-weight: bold;
+  .listbox{
+    background-color: $appBackground;
+    .list{
+      background-color: white;
+      .title {
+        color: $themePrimaryColor !important;
+        a{
+          color:$themeSecondaryColor;
+        }
+      }
+      .list-items:hover{
+        background-color: $componentHoverBGColor;
+      }
+    }
+  
+    .header{
+      background: none;
+      color: $componentHeaderFontColor;
+    }
+  }
+  
+  
+  .card-container {
+    background-color: rgba(55, 20, 2, 0.70)!important;
+    color:$themeFontColor;
+    .card-header {
+  
+    }
+  
+    .card-body{
+      background-color: white;
+    }
+  
+  }
+  
+  .navbar-container {
+  
+  }
+  .sidenav {
+      background-color: white;
+      color: $themePrimaryColor;
+      background-image: $appBackgroundImage;
+  }
+  .sidenav .headernode{
+      background: none;
   }
 
-
-}
-
-.sidenav{
-  //top: 70px;
-}
-
-// .sidenav .activenode{
-//   color: white;
-//   //background-color: $themePrimaryColor;
-//   border-right: $borderSize solid $borderColor;
-// }
-
-
-// .sidenav .headernode:hover {
-//   color: white;
-//   background-color: $sidenavactive;
-// }
-
-// .sidenav .defaultnode:hover {
-//   color: white;
-//   background-color: $sidenavactive;
-// }
-
+  .datatable .datatable-header{
+    background-color:$themePrimaryColor;
+  }
+  

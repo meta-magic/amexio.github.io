@@ -56,9 +56,9 @@ body {
 // }
 .listbox{
   .list{
-      .title {
+    .title {
       font-size: 16px;    
-      color: $componentFontColor !important;
+      color: $themeFontColor !important;
     }
     .list-items{
       background:$componentBGColor;

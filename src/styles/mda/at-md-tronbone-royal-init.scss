@@ -25,5 +25,5 @@ $componentHeaderFontColor : black;
 $componentFooterBGColor :$themeSecondaryColor;
 $componentFooterFontColor : black;
 
-$componentDataBGColor : none;
-$componentDataFontColor : $themePrimaryColor;
+$componentDataBGColor : $themePrimaryColor;
+$componentDataFontColor : $appHeaderFontColor;

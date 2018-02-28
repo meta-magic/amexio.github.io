@@ -7,6 +7,14 @@
   background: linear-gradient(#FCF4A3, #FEE12B);
 }
 
+.input-control {
+  border-radius: 4px;
+  line-height: 2;
+  font-size: 14px;
+  border: 2px solid #666666;
+  border-radius: 4px!important;
+  
+}
 .listbox .list{
     background-color:  $componentBGColor;
   
@@ -52,8 +60,13 @@
       background-color: $componentBGColor;
     }
   }
-  
-  .defaultcolor{
-    color: $themeSecondaryColor;
+
+  .item-selector-action-panel .actionbar .actionbarinner .action {
+    background-color: #40434D;
   }
+
   
+.datatable .datatable-header{
+  background-color:$themeSecondaryColor;
+  color: $componentBGColor;
+}

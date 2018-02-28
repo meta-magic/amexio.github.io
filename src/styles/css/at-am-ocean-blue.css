@@ -95,7 +95,7 @@ body {
 input:disabled {
   opacity: 0.55;
   cursor: not-allowed;
-  background-color: #EBEBE4; }
+  background-color: #a09e9e; }
 
 .disable-component {
   opacity: 0.55;
@@ -153,8 +153,7 @@ label {
   font-weight: 500; }
 
 a {
-  color: rgba(0, 0, 0, 0.87);
-  font-size: 14px; }
+  color: rgba(0, 0, 0, 0.87); }
 
 /*
 The loading throbber is a single spinning element with three
@@ -215,17 +214,17 @@ button {
   font-size: 1.25rem; }
 
 .button-secondary {
-  background-color: #ffffff;
+  background-color: #1C2949;
   border-color: #ced4da;
   color: white; }
 
 .button-secondary:hover:enabled {
-  background-color: #e6e6e6; }
+  background-color: #0e1424; }
 
 .button-primary {
   background-color: #2CD2EC;
   border-color: #2CD2EC;
-  color: white; }
+  color: #1C2949; }
 
 .button-primary:hover:enabled {
   background-color: #13b8d2; }
@@ -233,7 +232,7 @@ button {
 .button-success {
   background-color: #5cb85c;
   border-color: #5cb85c;
-  color: white; }
+  color: #1C2949; }
 
 .button-success:hover:enabled {
   background-color: #449d44; }
@@ -241,7 +240,7 @@ button {
 .button-danger {
   background-color: #d9534f;
   border-color: #d9534f;
-  color: white; }
+  color: #1C2949; }
 
 .button-danger:hover:enabled {
   background-color: #c9302c; }
@@ -249,7 +248,7 @@ button {
 .button-warning {
   background-color: #f0ad4e;
   border-color: #f0ad4e;
-  color: white; }
+  color: #1C2949; }
 
 .button-warning:hover:enabled {
   background-color: #ec971f; }
@@ -364,10 +363,10 @@ button {
       color: #1C2949;
       font-size: 18px; }
   .datetimepicker .days {
-    background: white; }
+    background: #90a4d4; }
     .datetimepicker .days li {
       font-size: 14px;
-      color: #777; }
+      color: #2CD2EC; }
     .datetimepicker .days li:hover {
       color: #6b85c6; }
     .datetimepicker .days .active {
@@ -647,13 +646,13 @@ textarea:required {
 /* Create a custom checkbox */
 /* When the checkbox is checked, add a blue background */
 .input-box-container input:checked ~ .input-box-radiobox-label {
-  background-color: #2CD2EC; }
+  background-color: #6b85c6; }
 
 /* Create the input-box-container-label/indicator (hidden when not checked) */
 /* Show the input-box-container-label when checked */
 /* Style the input-box-container-label/indicator */
 .input-box-container .input-box-radiobox-label:after {
-  background-color: #1C2949; }
+  background-color: white; }
 
 /****************************************************/
 /***                  RADIO    Structure          ***/
@@ -1255,6 +1254,9 @@ input:checked + .toggle-slider:before {
   color: white;
   background-color: #ffeb3b; }
 
+.default {
+  color: white; }
+
 /*----------------------------------------------------------------------*/
 /*        Label COMPONENT -Structure        */
 /*----------------------------------------------------------------------*/
@@ -1365,19 +1367,19 @@ input:checked + .toggle-slider:before {
 
 .floatingbutton-primary {
   background-color: #2CD2EC;
-  color: white; }
+  color: #1C2949; }
 
 .floatingbutton-success {
   background-color: #5cb85c;
-  color: white; }
+  color: #1C2949; }
 
 .floatingbutton-danger {
   background-color: #d9534f;
-  color: white; }
+  color: #1C2949; }
 
 .floatingbutton-warning {
   background-color: #f0ad4e;
-  color: white; }
+  color: #1C2949; }
 
 .floatingbutton-default-disabled {
   background-color: #ffffff;
@@ -1385,19 +1387,32 @@ input:checked + .toggle-slider:before {
 
 .floatingbutton-primary-disabled {
   background-color: #8ae6f4;
-  color: white; }
+  color: #1C2949; }
 
 .floatingbutton-success-disabled {
   background-color: #a3d7a3;
-  color: white; }
+  color: #1C2949; }
 
 .floatingbutton-danger-disabled {
   background-color: #eba5a3;
-  color: white; }
+  color: #1C2949; }
 
 .floatingbutton-warning-disabled {
   background-color: #f8d9ac;
-  color: white; }
+  color: #1C2949; }
+
+.floatinggroup {
+  position: fixed;
+  padding-bottom: 20px;
+  z-index: 3; }
+
+.floatinggroup .floatinggroupitems {
+  list-style: none;
+  margin-bottom: 10px; }
+
+.floatingbutton-circle {
+  text-align: center;
+  cursor: pointer; }
 
 /*----------------------------------------------------------------------*/
 /*        Enterprise - Visual COMPONENT         */
@@ -1885,7 +1900,7 @@ header .billboard .content-button {
   .datapoints .datapoints-north {
     color: #f10897; }
   .datapoints .datapoint-south {
-    background-color: #2CD2EC;
+    background-color: #f10897;
     color: #1C2949; }
   .datapoints .datapoint-west {
     padding: 5px; }
@@ -1924,10 +1939,10 @@ header .billboard .content-button {
   border: 1px solid #ced4da; }
 
 .datatable-height::-webkit-scrollbar-track {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .datatable-height::-webkit-scrollbar {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .datatable-height::-webkit-scrollbar-thumb {
   background-color: #1C2949; }
@@ -2709,10 +2724,10 @@ header .billboard .content-button {
   color: white; }
 
 .sidenav::-webkit-scrollbar-track {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .sidenav::-webkit-scrollbar {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .sidenav::-webkit-scrollbar-thumb {
   background-color: #1C2949; }
@@ -2884,11 +2899,11 @@ header .billboard .content-button {
   font-weight: 500; }
 
 .dockbar-height::-webkit-scrollbar-track {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .dockbar-height::-webkit-scrollbar {
   width: 6px;
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .dockbar-height::-webkit-scrollbar-thumb {
   background-color: #1C2949; }
@@ -3032,8 +3047,8 @@ header .billboard .content-button {
   cursor: pointer;
   padding: 10px;
   width: 100%;
-  background: white;
-  border-color: white;
+  background: #1C2949;
+  border-color: #1C2949;
   text-align: left;
   outline: none;
   font-size: 15px;
@@ -3145,10 +3160,10 @@ $accordionTransparentColor : $componentFontColor;
   font-weight: 400; }
 
 .cardbody::-webkit-scrollbar-track {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .cardbody::-webkit-scrollbar {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .cardbody::-webkit-scrollbar-thumb {
   background-color: #1C2949; }
@@ -3466,10 +3481,10 @@ fieldset {
   font-size: 14px; }
 
 .modal-window-middle::-webkit-scrollbar-track {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .modal-window-middle::-webkit-scrollbar {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .modal-window-middle::-webkit-scrollbar-thumb {
   background-color: #1C2949; }
@@ -3685,10 +3700,10 @@ fieldset {
   color: white; }
 
 .panel-panel::-webkit-scrollbar-track {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .panel-panel::-webkit-scrollbar {
-  background-color: #f5f5f5; }
+  background-color: #a09e9e; }
 
 .panel-panel::-webkit-scrollbar-thumb {
   background-color: #1C2949; }
@@ -4149,6 +4164,10 @@ fieldset {
 /*----------------------------------------------------------------------*/
 /*        Datetime Media-Q COMPONENT         */
 /*----------------------------------------------------------------------*/
+@media screen and (max-width: 600px) {
+  .datetimepicker .days .date-today {
+    padding-top: 1%;
+    padding-left: 36%; } }
 /*----------------------------------------------------------------------*/
 /*        Dialogue Media-Q COMPONENT         */
 /*----------------------------------------------------------------------*/
@@ -5024,6 +5043,14 @@ fieldset {
 /*----------------------------------------------------------------------*/
 /*        Ocean blue -Strcture        */
 /*----------------------------------------------------------------------*/
+.input-control {
+  border-radius: 4px;
+  line-height: 2;
+  font-size: 14px;
+  border: none;
+  border-bottom: 2px solid #ced4da;
+  border-radius: 4px !important; }
+
 .listbox .list .title {
   float: left; }
   .listbox .list .title a {
@@ -5035,11 +5062,17 @@ fieldset {
   border-bottom: 1px solid #1b1d22; }
 
 .navbar-container {
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+  border-bottom: solid 3px #2CD2EC;
   font-size: 100%; }
 
 /*----------------------------------------------------------------------*/
 /*        Ocean blue -Visual        */
 /*----------------------------------------------------------------------*/
+.input-control {
+  background-color: #1b1d22;
+  color: white; }
+
 .listbox .list {
   background-color: #02468D; }
   .listbox .list .title {
@@ -5050,7 +5083,7 @@ fieldset {
       color: white !important; }
 
 .card-container .card-header {
-  background-color: #80E6F5;
+  background-color: #2CD2EC;
   background: linear-gradient(#80E6F5, #0CB5CF); }
 
 .listbox .listbox .list .title {
@@ -5059,6 +5092,9 @@ fieldset {
   background-color: #1C2949; }
 
 .navbar-container {
+  background-color: #2CD2EC;
+  background: linear-gradient(#80E6F5, #0CB5CF);
+  color: #02195F;
   font-size: 100%; }
 
 /*----------------------------------------------------------------------*/

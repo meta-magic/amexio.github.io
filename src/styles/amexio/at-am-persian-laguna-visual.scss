@@ -13,6 +13,10 @@ body {
 /*----------------------------------------------------------------------*/
 /*       Persian Laguna - Visual       */
 /*----------------------------------------------------------------------*/
+.input-control {
+  background-color: rgba(66, 31, 38, 0.4);
+}
+
 
 // .input-control {
 //   border-radius: 4px;
@@ -94,6 +98,7 @@ body {
     font-size: 20px;
   //  font-weight: 700;
   //  border: none;
+    background-color: transparent;
     background-image: url('/assets/images/theme/bootstrap/PageFold.png');
     // border-right: $borderSize solid $cardBorderColor;
     // padding: 20px 24px 12px 56px;
@@ -109,7 +114,7 @@ body {
   .card-footer{
   //  border-top: none;
   //  border: $borderSize solid $cardBorderColor;
-  background-color: #ffe578;
+    background-color: #ffe578;
   }
 }
 
