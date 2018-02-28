@@ -1,60 +1,25 @@
 /*----------------------------------------------------------------------*/
 /*        NAVBAR COMPONENT    -Visual     */
 /*----------------------------------------------------------------------*/
-
+$navbarBGColor : $appHeaderBGColor;
+$navbarBoxShadow: $borderColor;
+$navbarColor : $appHeaderFontColor;
+$navbarFontSize : 24px;
 
 .navbar-container
 {
-  //width: 100%;
   background-color: $navbarBGColor;
-  // vertical-align: middle;
-  // padding : 0px 15px;
-  // box-shadow: 0px 0px 2px 2px $navbarBoxShadow;
-  // position: fixed;
-  // z-index: 2;
-  @if($navbarBackground){
-    background: $navbarBackground;
-  }
-  // display: flex;
-  // flex-direction: row;
-  // justify-content: space-between;
   color: $navbarColor;
 
   .navbar-logo{ vertical-align:middle}
   .navbar-logo-unit a{
     color:$navbarColor;
-    // vertical-align:middle
   }
 
   .navbar-logo-unit{
     font-size: $navbarFontSize;
-    // line-height:64px;
-
-    a{
-    //  cursor: pointer;
-    }
-
     .navbar-mobile-bars{
       display: none;
-      //background-color: yellow;
     }
-
   }
-
-}
-
-
-.nav-bar {
-  // display: flex;
-  // flex-direction: row;
-  // justify-content: space-between;
-  // margin: 25px;
-  // vertical-align: bottom;
-  // list-style: none;
-
-  .nav-item{
-    //padding-left: 15px;
-  }
-
-
 }

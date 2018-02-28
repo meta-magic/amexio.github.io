@@ -3,6 +3,21 @@
 !*----------------------------------------------------------------------*!
 !*        ACCORDION COMPONENT - Structure        *!
 !*----------------------------------------------------------------------*!
+$accordionBGColor: $componentHeaderBGColor;
+$accordionColor: $componentHeaderFontColor;
+$accordionActiveBGColor:$componentActiveBGColor;
+$accordionActiveColor:$componentHeaderFontColor;
+$accordionPanelBGColor:$componentHeaderBGColor;
+$accordionPanelColor: $componentHeaderFontColor;
+
+$accordionBorderSize : $borderSize;
+$accordionBorderColor : $borderColor;
+$accordionBorder : $borderColor;
+$accordionFontSize : 15px;
+$accordionTransparentBG:$componentBGColor;
+$accordionTransparentBorder:$componentBGColor;
+$accordionTransparentFontWeight:bold;
+$accordionTransparentColor : $componentFontColor;
 
 .accordion {
 

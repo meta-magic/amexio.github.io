@@ -3,6 +3,9 @@
 /***CHECKBOX -Visual
 /*----------------------------------------------------------------------*/
 
+$checkboxBGColor : $appBackground;
+$checkboxActiveBGColor : $componentHeaderBGColor;
+$checkboxActiveColor : $componentActiveFontColor;
 
 .input-box {
   // display: inline-block;
@@ -29,13 +32,13 @@
 
 .input-box .default {
   //border: $borderSize solid $borderColor;
-  background: $chcekboxBGColor;
+  background: $checkboxBGColor;
 }
 
 .input-box .active{
   //border: $borderSize solid $borderColor;
-  background: $chcekboxActiveBGColor;
-  color: $chcekboxActiveColor;
+  background: $checkboxActiveBGColor;
+  color: $checkboxActiveColor;
 }
 
 .input-box-container {
@@ -68,7 +71,7 @@
 
 /* When the checkbox is checked, add a blue background */
 .input-box-container input:checked ~ .input-box-checkbox-label {
-  background-color: $chcekboxActiveBGColor;
+  background-color: $checkboxActiveBGColor;
 }
 
 /* Create the input-box-container-label/indicator (hidden when not checked) */

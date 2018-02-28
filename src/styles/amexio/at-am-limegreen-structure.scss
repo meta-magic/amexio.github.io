@@ -1,6 +1,6 @@
 
 body {
-  font-family: 'PT-Sans', sans-serif;
+  //font-family: 'PT-Sans', sans-serif;
   //font-size: 16px;
   letter-spacing: 0.3px;
   text-transform: capitalize;
@@ -16,8 +16,8 @@ body {
 //   border-radius: $borderRadius;
 //   line-height: 2;
 //   font-size: 14px;
-//   border: 2px solid $themeColor;
-//   color: $themeColor;
+//   border: 2px solid $themePrimaryColor;
+//   color: $themePrimaryColor;
 // }
 
 // .input-control-success {
@@ -34,17 +34,17 @@ body {
 // }
 
 // .dropdown{
-//   border: 2px solid $themeColor;
+//   border: 2px solid $themePrimaryColor;
 //   border-radius: $border-radius;
-//   box-shadow: 0 1px 3px 0 $themeColor;
+//   box-shadow: 0 1px 3px 0 $themePrimaryColor;
 //   background-color: white;
 // }
 
 
 // .datetimepicker {
 //   border-radius: $border-radius;
-//   border: $borderSize solid $themeColor;
-//   box-shadow: 0 1px 3px 0 $themeColor;
+//   border: $borderSize solid $themePrimaryColor;
+//   box-shadow: 0 1px 3px 0 $themePrimaryColor;
 // }
 
 // label {
@@ -73,13 +73,13 @@ body {
   .list{
     border: $borderSize solid $borderColor;
     .title {
-    //  color: $themeColor !important;
+    //  color: $themePrimaryColor !important;
     }
     .list-items{
       border-bottom: 1px solid $borderColor;
     }
     .list-items:hover{
-      //background-color: lighten($themeColor,70%);
+      //background-color: lighten($themePrimaryColor,70%);
     }
   }
 
@@ -94,12 +94,13 @@ body {
 //  background-image: url(/assets/images/theme/bootstrap/Header.png);
 //  background-repeat: repeat-x;
   padding: 0px 16px 16px 16px;
-
+  border-color: $themePrimaryColor;
   .card-header {
     border-radius: $borderRadius;
   //  font-size: 20px;
     font-weight: bold;
     border:none;
+    color: $themePrimaryColor;
   }
 
   .card-body{
@@ -115,13 +116,13 @@ body {
 
 // /** NAVBAR **/
 .navbar-container {
-//   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
-//   color: $themeColor;
-//   background-color: $themeBGColor;
+   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+//   color: $themePrimaryColor;
+//   background-color: $themeSecondaryColor;
 //   background: linear-gradient(#C4E800, #92CD00) !important;
 
   .navbar-logo-unit a{
-  //  font-size: 24px;
+    font-size: 24px;
     font-weight: bold;
   }
 }
@@ -132,7 +133,7 @@ body {
 // }
 
 // .sidenav .activenode{
-//   color: $themeColor;
+//   color: $themePrimaryColor;
 //   background-color: white;
-//   border-right: $borderSize solid $themeColor;
+//   border-right: $borderSize solid $themePrimaryColor;
 // }

@@ -67,16 +67,13 @@
     border: $borderSize solid $cardBorderColor;
     border-radius: 5px;
   }
+  .card-body{
+    border: $borderSize solid $cardBorderColor;
+    border-radius: 5px;
+  }
 }
 
-
-.card-body{
-  border: $borderSize solid $cardBorderColor;
-  border-radius: 5px;
-}
-
-.listbox{
-
+.listbox{ 
   .header{
     border-bottom: $borderSize solid $borderColor;
   }
@@ -84,3 +81,4 @@
     border-bottom: 1px solid #1b1d22;
   }
 }
+

@@ -1,7 +1,4 @@
-body {
-  
-  font-family: 'Quicksand', sans-serif;
-  
+body {  
   letter-spacing: 0.3px;
   text-transform: capitalize;
   margin: 0px;
@@ -17,8 +14,8 @@ body {
 //   border-radius: $borderRadius;
 //   line-height: 2;
 //   font-size: 14px;
-//   border: 2px solid $themeColor;
-//   color: $themeColor;
+//   border: 2px solid $themeSecondaryColor;
+//   color: $themeSecondaryColor;
 // }
 
 // .input-control-success {
@@ -35,17 +32,17 @@ body {
 // }
 
 .dropdown{
-  border: 2px solid $themeColor;
+  border: 2px solid $themeSecondaryColor;
   border-radius: $borderRadius;
-  box-shadow: 0 1px 3px 0 $themeColor;
+  box-shadow: 0 1px 3px 0 $themeSecondaryColor;
   //background-color: white;
 }
 
 
 // .datetimepicker {
 //   border-radius: $border-radius;
-//   border: $borderSize solid $themeColor;
-//   box-shadow: 0 1px 3px 0 $themeColor;
+//   border: $borderSize solid $themeSecondaryColor;
+//   box-shadow: 0 1px 3px 0 $themeSecondaryColor;
 // }
 
 // label {
@@ -70,10 +67,10 @@ body {
       //color: #1FBCD2 !important;
     }
     .list-items{
-      border-bottom: 1px solid $borderColor;
+      border-bottom: 1px solid $themeSecondaryColor;
     }
     .list-items:hover{
-      //background-color: lighten($themeColor,70%);
+      //background-color: lighten($themeSecondaryColor,70%);
     }
   }
 
@@ -92,11 +89,11 @@ body {
       //color: #1FBCD2 !important;
     }
     .list-items{
-      border-bottom: 1px solid $borderColor;
+      border-bottom: 1px solid $themeSecondaryColor;
       //background-color: $defaultBGColor;
     }
     .list-items:hover{
-      //background-color: lighten($themeColor,70%);
+      //background-color: lighten($themeSecondaryColor,70%);
     }
   }
 

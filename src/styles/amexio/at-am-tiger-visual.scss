@@ -55,17 +55,21 @@
 //   color: $borderColor;
 // }
 
+navbar-container {
+  background: linear-gradient(#F58338, #E84C1A);
+}
+
 .listbox .list{
-    background-color:  $defaultBGColor;
+    background-color:  $componentBGColor;
   
     .title {
       //float: left;
       font-size: 18px;
-      color: $defaultColor;
+      color: $themeFontColor;
       //padding-top: 8px;
       a {
         font-size: 16px;
-        color: $defaultColor;
+        color: $themeFontColor;
         //text-transform: lowercase;
       }
     }
@@ -87,7 +91,7 @@
     //border-radius: 10px;
   
     .listbox .list .title {
-      color: #E84C1A !important;
+      color: $themeSecondaryColor !important;
     }
   
     .header{
@@ -97,11 +101,11 @@
   
     .list .list-items{
       //border-bottom: 1px solid #1b1d22;
-      background-color: $defaultBGColor;
+      background-color: $componentBGColor;
     }
   }
   
   .defaultcolor{
-    color: $themeColor;
+    color: $themeSecondaryColor;
   }
   

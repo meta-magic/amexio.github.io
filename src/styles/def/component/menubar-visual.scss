@@ -2,6 +2,17 @@
 /*----------------------------------------------------------------------*/
 /*        MENU COMPONENT   -Visual      */
 /*----------------------------------------------------------------------*/
+
+$menubarBGColor :$componentBGColor;
+$menubarColor : $componentFontColor;
+$menuHoverColor: $componentFontColor;
+$menuHoverBGColor : $componentHoverBGColor;
+$subMenuCotentBGColor : $componentBGColor;
+$subMenuCotentColor : $componentFontColor;
+
+$menuborderColor:$borderColor;
+$menuborderSize:1px;
+
 $menuBGColor : none;
 $menuHeaderFontWeight : bold;
 
@@ -53,7 +64,7 @@ $menuHeaderFontWeight : bold;
 
 }
 .menulink:hover{
-  //background-color: $menuHoverColor;;
+  background-color: $menuHoverBGColor;;
   color: $menuHoverColor;
 }
 
@@ -116,6 +127,7 @@ $menuHeaderFontWeight : bold;
 
 .menu-content .menu-content-cols .content .menu-links-header:hover{
   color: $menuHoverColor;
+  background-color: $menuHoverBGColor;;
 }
 
 .menu-content .menu-content-cols .content .menu-links-header .menutitle{
@@ -130,5 +142,6 @@ $menuHeaderFontWeight : bold;
 
 .menu-content .menu-content-cols .content .menulinks:hover{
   color: $menuHoverColor;
+  background-color: $menuHoverBGColor;
 }
 

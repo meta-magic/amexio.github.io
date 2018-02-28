@@ -1,47 +1,72 @@
 $isAmexio : true;
-$themeBGImage : url('/assets/images/theme/bootstrap/polygon_bg.jpg');
-$aColorTransprency :#FF008F;
-$defaultBGColor : white;
+$isDatapointBorderRadius :false;
+$appTransprency :#FF008F;
 
-$defaultColor : #8D021F;
+$themePrimaryColor: #FF0090;
+$themeSecondaryColor : #8D021F;
+$themeFontColor : #8D021F;
+$themeFontFamily: Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
 
-$color: $defaultColor;
+$appBackground :#ECEFF1;
+$appBackgroundImage : url('/assets/images/theme/bootstrap/polygon_bg.jpg');
 
-$oppColor: $defaultBGColor;
+$appHeaderBGColor : white;
+$appHeaderFontColor : $themePrimaryColor;
+
+$appHeaderHoverBGColor : none;
+$appHeaderHoverFontColor : none;
+/* Component Specific Variables */
+$componentHoverBGColor : lighten($themeSecondaryColor,50%);
+$componentHoverFontColor : $themeFontColor;
+$componentActiveBGColor : lighten($themePrimaryColor,50%);
+$componentActiveFontColor : $themeFontColor;
+$componentDisabledBGColor : rgb(160, 158, 158);
+$componentDisabledFontColor : $themeSecondaryColor;
+
+$componentBGColor : white;
+$componentFontColor : $themeFontColor;
+
+$componentHeaderBGColor : $themeSecondaryColor;
+$componentHeaderFontColor : white;
+$componentFooterBGColor :$themeSecondaryColor;
+$componentFooterFontColor : white;
+
+$componentDataBGColor : none;
+$componentDataFontColor : $themePrimaryColor;
+/* Misc Variables */
+
+$borderSize2 : 2px;
+$borderSize3 : 3px;
 
 
-$backgroundcolor: $defaultBGColor;
+$borderRadius2 : 3px;
+$borderRadius3 : 5px;
 
-$componentBGColor: $backgroundcolor;
+$borderSize : $borderSize3;
+$borderRadius : $borderRadius3;
 
+$scrollBGColor : #f5f5f5;
+$scrollThumbColor : $componentBGColor;
 
-$themeBGColor :  $defaultBGColor;
-$themeColor :    $defaultColor;
+$borderColor : $themeSecondaryColor;
 
-$primaryBGColor: $themeColor;
+$primaryBGColor: $themeSecondaryColor;
 $secondaryBGColor: #ffffff;
 $successBGColor : #5cb85c;
 $dangerBGColor : #d9534f;
 $warningBGColor : #f0ad4e;
 
-$primaryColor: $themeBGColor;
-$secondaryColor: $color;
-$successColor : $oppColor;
-$dangerColor : $oppColor;
-$warningColor : $oppColor;
+$primaryColor: white;
+$secondaryColor:$componentFontColor;
+$successColor : white;
+$dangerColor : white;
+$warningColor : white;
 
 $success: $successBGColor;
 $error : $dangerBGColor;
 $focusColor : #5cb3fd;
-
-$hoverColor : $themeBGColor;
-$hoverBGColor : $themeColor;
-
-$borderSize : 3px;
-$borderRadius : 0 px;
-$borderColor : $defaultColor;
-$borderColor-focus: $focusColor;
-
+$borderColorFocus: $focusColor;
+/*
 
 $navbarBGColor : $themeBGColor ;
 $navbarBoxShadow: $borderColor;
@@ -149,7 +174,8 @@ $datatableFontBold : "true";
 $datapointsColor : $themeBGColor;
 $datapointsBGColorS : $primaryBGColor;
 $datapointsColorS : $primaryColor;
-
+*/
+/*
 $listBoxBGColor : white;
 $listBoxColor : rgba(0,0,0,0.87);
 $listTitleFontSize : 18px;
@@ -175,7 +201,7 @@ $chcekboxBGColor : $backgroundcolor;
 $chcekboxActiveBGColor : $primaryBGColor;
 $chcekboxActiveColor : $primaryColor;
 
-$accordionBorderSize : $borderSize; 
+$accordionBorderSize : $borderSize;
 $accordionBorderColor : $borderColor;
 $accordionBorder : $borderColor;
 $accordionFontSize : 15px;
@@ -250,7 +276,7 @@ $eeTitleColor1 : rgba(0,0,0,0.9);
 $eeTitleColor2 : rgba(0,0,0,0);
 $eeTitleColor1 : rgba(0,0,0,0.9);
 $eeTitleColor2 : rgba(0,0,0,0);
-$eeTitleDisplay : #000; 
+$eeTitleDisplay : #000;
 $eeTitleColor : white;
 $tileFontSize : 20px;
 $tileDetFontSize : 10px;
@@ -294,10 +320,10 @@ $inputFontSize : 14px;
 $inputTooltipBGColor : $backgroundcolor ;
 
 $searchBGColor : #fff;
-$uploadDropZoneColor :#ccc; 
+$uploadDropZoneColor :#ccc;
 $uploadDropZoneColorDrop : #222;
 
-$itemselectorActionBGColor : $primaryBGColor ; 
+$itemselectorActionBGColor : $primaryBGColor ;
 $itemselectorActionColor : $primaryColor;
 $itemselectorActionDisableBGColor : lighten($primaryBGColor,50);
 $itemselectorListActiveBGColor : lighten($primaryBGColor,30);
@@ -399,3 +425,4 @@ $modalWindowScrollColor : #F5F5F5;
 $modalWindowScrollThumbColor : $themeBGColor;
 $modalFooterBGColor : $cardFooterBGColor;
 $modalFooterColor : $cardFooterColor;
+*/

@@ -3,6 +3,12 @@
 /*        BUTTON COMPONENT - Animation       */
 /*----------------------------------------------------------------------*/
 /* Ripple magic */
+$ripplePrimaryColor : $componentBGColor;
+$rippleSecondaryColor: $secondaryBGColor;
+$rippleSuccessColor: $successBGColor;
+$rippleDangerColor : $dangerBGColor;
+$rippleWarningColor : $warningBGColor;
+
 $rippleTime : 1s;
 
 button{

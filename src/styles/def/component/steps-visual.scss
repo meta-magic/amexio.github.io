@@ -2,6 +2,17 @@
 /*        STEPS COMPONENT - Visual   */
 /*----------------------------------------------------------------------*/
 
+$steppColor : $componentDisabledBGColor;
+$stepsFontSize  : 12px;
+
+$stepsActiveBGColor : $componentActiveBGColor;
+$stepsHoverBGColor : $componentHoverBGColor;
+$stepsColor : $componentFontColor;
+$stepsBGColor : $appBackground;
+$stepsLabelHighlight : $componentHeaderBGColor;
+$stepsBorderColor:$borderColor;
+$stepsDisabled : $componentDisabledBGColor;
+$stepsInActiveBGColor:$componentDisabledBGColor;
 
 .step-label-highlight {
   color: $stepsLabelHighlight;
@@ -71,6 +82,7 @@
   // width: 2px;
   // display: table-cell;
   background-color: $stepsBGColor;
+  color: $stepsColor;
   // text-align: center;
   // vertical-align: middle;
   // line-height: 15px;
@@ -81,7 +93,7 @@
 }
 
 .step-box-table-item.active{
-  background-color: $stepsInActiveBGColor!important;
+  background-color: $stepsActiveBGColor!important;
   //cursor : not-allowed;
 }
 
@@ -91,12 +103,12 @@
 }
 //STEP INDEX INACTIVE
 .index-step-inactive{
-  background-color: lighten($stepsInActiveBGColor,30%);
-  //cursor: not-allowed;
+  background-color: lighten($stepsActiveBGColor,30%);
+  color : inherit;
 }
 
 //Step Box inactive hover effect
 .step-box-table-item-hover:hover{
-  background-color: lighten($stepsInActiveBGColor,30%);
+  background-color: $stepsHoverBGColor;
   //cursor: pointer;
 }

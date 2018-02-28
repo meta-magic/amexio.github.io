@@ -3,6 +3,10 @@
 /*----------------------------------------------------------------------*/
 /*        TREE-VIEW COMPONENT - Visual        */
 /*----------------------------------------------------------------------*/
+$treeNodeActiveBGColor : $componentActiveBGColor;
+$treeNodeActiveColor : $componentActiveFontColor;
+
+$treenodeBGColor : transparent;
 
 .treeview{
   // height: 100%;

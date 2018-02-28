@@ -85,7 +85,7 @@
       //padding-top: 8px;
       a {
         font-size: 16px;
-        color: $defaultColor !important;
+        color: $componentFontColor !important;
      //   text-transform: lowercase;
       }
     }
@@ -111,7 +111,7 @@
   
     .list .list-items{
      // border-bottom: 1px solid #1b1d22;
-     background-color: $defaultBGColor;
+     background-color: $componentBGColor;
     }
   }
   
@@ -132,7 +132,7 @@
   // }
   
   // .sidenav .activenode{
-  //   color: $themeColor;
+  //   color: $themeSecondaryColor;
   //   background: linear-gradient(#80E6F5, #0CB5CF);
   // }
   

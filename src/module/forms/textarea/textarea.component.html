@@ -1,7 +1,7 @@
 
 <div class="inputgroup ">
 
-  <label [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
+  <label *ngIf="haslabel" [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
     {{fieldlabel}}
   </label>
 
@@ -29,5 +29,5 @@
   <span *ngIf="showToolTip && enablepopover" class="dropdown tooltiptext">
         <div  [innerHTML]="helpInfoMsg"></div>
   </span>
-
+  <span class="inputfieldbar"></span>
 </div>

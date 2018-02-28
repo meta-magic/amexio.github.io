@@ -2,6 +2,7 @@
 /****************************************************/
 /**COLLAPSIBLE SEARCH  -Visual**/
 /****************************************************/
+$searchBGColor : $componentBGColor;
 
 .search:focus {
   background-color: $searchBGColor;

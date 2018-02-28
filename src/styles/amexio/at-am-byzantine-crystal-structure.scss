@@ -14,13 +14,14 @@
 // }
 
 .listbox {
-  
   border-radius: 5px;
+  
   .list{
     border: none;
 
     .title {
       float: left;
+      
       a {
         text-transform: lowercase;
       }
@@ -33,7 +34,6 @@
   box-shadow : none;
   .card-header {
     border:none;
-    
     font-weight: 700;
   }
   .card-footer{
@@ -41,21 +41,16 @@
     border: $borderSize solid $cardBorderColor;
     border-radius: 5px;
   }
+  .card-body{
+    border: $borderSize solid $cardBorderColor;
+    border-radius: 5px;
+  }
 }
 
-
-.card-body{
-  border: $borderSize solid $cardBorderColor;
-  border-radius: 5px;
-}
-
-.listbox{
-
+.listbox{ 
   .header{
     border-bottom: $borderSize solid $borderColor;
   }
-
-  
   .list .list-items{
     border-bottom: 1px solid #1b1d22;
   }

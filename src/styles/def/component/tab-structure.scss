@@ -3,6 +3,18 @@
 /*        TABL COMPONENT  - Structure       */
 /*----------------------------------------------------------------------*/
 
+$tabFontSize : 17px;
+
+$tabBorderSize: $borderSize;
+$tabBorderColor : $borderColor;
+$tabColor : $componentFontColor;
+$tabBGColor : $componentBGColor;
+$tabActiveBorder : $themePrimaryColor;
+$tabActiveBGColor : $componentActiveBGColor;
+$tabActiveBorderSize : 3px;
+$tabActiveColor : $componentActiveFontColor;
+
+
 .tabwrapper{
 
 }

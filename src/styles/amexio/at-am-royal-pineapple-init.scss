@@ -1,52 +1,120 @@
+// $isAmexio : true;
+// $themeBGImage : none;
+// $aColorTransprency :  rgba(0, 0, 0, 0.87);
+
+// $defaultBGColor : #292b2c;
+
+// $defaultColor : rgba(255,255,255,0.70);
+
+// $color: $defaultColor;
+
+// $oppColor: $defaultBGColor;
+
+
+// $backgroundcolor: #1b1d22;
+
+// $componentBGColor: $backgroundcolor;
+
+
+// $themeBGColor :  $backgroundcolor;
+// $themeColor :  #FEE12B;
+
+// $primaryBGColor: $themeBGColor;
+// $secondaryBGColor: lighten($themeBGColor,50%);;
+// $successBGColor : #5cb85c;
+// $dangerBGColor : #d9534f;
+// $warningBGColor : #f0ad4e;
+
+
+// $primaryColor: $themeColor;
+// $secondaryColor: $color;
+// $successColor : $oppColor;
+// $dangerColor : white;
+// $warningColor : $oppColor;
+
+
+// $success: $successBGColor;
+// $error : $dangerBGColor;
+// $focusColor : #5cb3fd;
+
+// $hoverColor : $themeColor;
+// $hoverBGColor : $themeBGColor;
+
+
+// $borderSize : 2px;
+// $borderRadius : 2 px;
+// $borderColor : #666666;
+// $borderColor-focus: $focusColor;
 $isAmexio : true;
-$themeBGImage : none;
-$aColorTransprency :  rgba(0, 0, 0, 0.87);
 
-$defaultBGColor : #292b2c;
+$appTransprency : rgba(0, 0, 0, 0.87);
 
-$defaultColor : rgba(255,255,255,0.70);
+$themePrimaryColor: #FCF4A3; ;
+$themeSecondaryColor : #FEE12B;
+$themeFontColor : rgba(255,255,255,0.70);;
+$themeFontFamily: Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
 
-$color: $defaultColor;
+$appBackground :#292b2c;
+$appBackgroundImage : none;
 
-$oppColor: $defaultBGColor;
+$appHeaderBGColor :$themePrimaryColor;
+$appHeaderFontColor : white;
 
+$appHeaderHoverBGColor : none;
+$appHeaderHoverFontColor : none;
+/* Component Specific Variables */
+$componentHoverBGColor :  rgba(255,253,208,0.4);
+$componentHoverFontColor : $themeFontColor;
+$componentActiveBGColor :#1b1d22;
+$componentActiveFontColor : $themeSecondaryColor;
+$componentDisabledBGColor : rgb(160, 158, 158);
+$componentDisabledFontColor : $themeSecondaryColor;
 
-$backgroundcolor: #1b1d22;
+$componentBGColor :#292b2c;
+$componentFontColor : $themeFontColor;
 
-$componentBGColor: $backgroundcolor;
+$componentHeaderBGColor : linear-gradient(#40434D, #000000);
+$componentHeaderFontColor : $themeSecondaryColor;
+$componentFooterBGColor :linear-gradient(#40434D, #000000);
+$componentFooterFontColor : $themeSecondaryColor;
 
+$componentDataBGColor : none;
+$componentDataFontColor : $themePrimaryColor;
+/* Misc Variables */
 
-$themeBGColor :  $backgroundcolor;
-$themeColor :  #FEE12B;
+$borderSize2 : 2px;
+$borderSize3 : 3px;
 
-$primaryBGColor: $themeBGColor;
-$secondaryBGColor: lighten($themeBGColor,50%);;
+$borderRadius1 : 2px;
+$borderRadius2 : 3px;
+$borderRadius3 : 5px;
+
+$borderSize : $borderSize2;
+$borderRadius : $borderRadius1;
+
+$scrollBGColor : #f5f5f5;
+$scrollThumbColor : $componentBGColor;
+
+$borderColor : #666666;
+
+$primaryBGColor: $themePrimaryColor;
+$secondaryBGColor: #767e93;
 $successBGColor : #5cb85c;
 $dangerBGColor : #d9534f;
 $warningBGColor : #f0ad4e;
 
-
-$primaryColor: $themeColor;
-$secondaryColor: $color;
-$successColor : $oppColor;
-$dangerColor : white;
-$warningColor : $oppColor;
-
+$primaryColor:black;
+$secondaryColor:$themePrimaryColor;
+$successColor : black;
+$dangerColor : black;
+$warningColor : black;
 
 $success: $successBGColor;
 $error : $dangerBGColor;
 $focusColor : #5cb3fd;
+$borderColorFocus: $focusColor;
 
-$hoverColor : $themeColor;
-$hoverBGColor : $themeBGColor;
-
-
-$borderSize : 2px;
-$borderRadius : 2 px;
-$borderColor : #666666;
-$borderColor-focus: $focusColor;
-
-
+/*
 $navbarBGColor : #FEE12B ;
 $navbarColor : black;
 $navbarBackground: linear-gradient(#FCF4A3, #FEE12B);
@@ -405,3 +473,4 @@ $modalWindowScrollColor : #F5F5F5;
 $modalWindowScrollThumbColor : $themeBGColor;
 $modalFooterBGColor : $cardFooterBGColor;
 $modalFooterColor : $cardFooterColor;
+*/
