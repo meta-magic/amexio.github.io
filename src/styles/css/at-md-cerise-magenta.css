@@ -2586,22 +2586,12 @@ header .billboard .content-button {
   padding: 5px 10px 0px 10px;
   cursor: pointer; }
 
-/*----------------------------------------------------------------------*/
-/*        NAVBAR COMPONENT    -Visual     */
-/*----------------------------------------------------------------------*/
 .topnav {
   background-color: #de3163;
   color: #1f050c; }
 
-.topnav-mobile {
-  flex-direction: column;
-  padding: 0px; }
-
-.topnav * {
-  vertical-align: middle; }
-
 .top-nav-button {
-  background-color: #fff;
+  background-color: #de3163;
   color: #1f050c; }
 
 .topnav a {
@@ -2625,12 +2615,12 @@ header .billboard .content-button {
 .nav-dropdown:hover {
   background-color: #ff6bbf; }
 
+.topnavmainbarinneritems-mobile .top-nav-input-control {
+  width: 100%; }
+
 .mobilebar {
   color: #1f050c; }
 
-/*----------------------------------------------------------------------*/
-/*        NAVBAR COMPONENT - Structure   */
-/*----------------------------------------------------------------------*/
 .topnav {
   overflow: hidden;
   position: fixed;
