@@ -10,7 +10,10 @@ $floatingDangerColor : $dangerColor;
 
 $floatingWarningBgColor : $warningBGColor;
 $floatingWarningColor : $warningColor;
-    
+
+$floatingDisabledBgColor : $componentDisabledBGColor;
+$floatingDisabledColor : $componentDisabledFontColor;
+
 
 .floatingbutton-default{
     background-color: #ffffff; 
@@ -39,8 +42,8 @@ $floatingWarningColor : $warningColor;
 // Disabled
 
 .floatingbutton-default-disabled{
-    background-color: #ffffff; 
-    color: lightgray;
+    background-color: $floatingDisabledBgColor; 
+    color: $floatingDisabledColor;
 }
 
 .floatingbutton-primary-disabled{

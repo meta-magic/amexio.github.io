@@ -8,8 +8,11 @@ import {CommonDataService} from "../services/data/common.data.service";
 import {AmexioSideNav} from "./sidenav/sidenav.component";
 import {SideNavNodeComponent} from "./sidenav/sidenavnode.component";
 import {DeviceQueryService} from "../services/device/device.query.service";
-import { AmexioNavBarComponent} from "./navbar/navbar.component";
+import {AmexioNavBarComponent} from "./navbar/navbar.component";
 import {AmexioNavItemComponent} from "./navbar/navitem.component";
+import {AmexioNavActionComponent } from './navbar/navaction.component';  
+import {AmexioNavMenuComponent} from './navbar/navmenu.component';
+import {AmexioNavTextFieldComponent } from './navbar/navtextfield.component';
 import {AmexioNotificationComponent} from "./notification/notification.component";
 import {AmexioMediaModule} from "../media/amexio.media.module";
 import {DockbarComponent} from "./dockedbar/dockbaritem";
@@ -34,6 +37,10 @@ const NAV_COMPONENTS = [
   AmexioNavBarComponent,
   AmexioNavItemComponent,
   AmexioNotificationComponent,
+  AmexioNavActionComponent,
+  AmexioNavTextFieldComponent,
+  AmexioNavMenuComponent,
+  AmexioNavItemComponent,
   DockbarComponent,
   DockedBarToolComponent,
   AmexioMenuBarComponent,

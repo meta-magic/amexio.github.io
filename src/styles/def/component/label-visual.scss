@@ -3,11 +3,28 @@
 /*        Label COMPONENT -Visual        */
 /*----------------------------------------------------------------------*/
 
-.highlight{
-  color:$themeFontColor;;
+.bg-yellow{
+  color : $themeFontColor;
   background-color:#ffeb3b;
 }
 
-.default{
-  color:$themeFontColor;
+.bg-light-grey{
+color : $themeFontColor;
+  background-color:#f1f1f1;
+}
+.bg-pale-red{
+color : $themeFontColor;
+  background-color:#ffdddd;
+}
+.bg-pale-green{
+color : $themeFontColor;
+  background-color:#ddffdd;
+}
+.bg-pale-yellow{
+color : $themeFontColor;
+  background-color:#ffffcc;
+}
+.bg-pale-blue{
+  color : $themeFontColor;
+  background-color:#ddffff;
 }
