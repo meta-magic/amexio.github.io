@@ -8,7 +8,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
   selector: 'amexio-window', template: `
     <div class="root-window" [ngClass]="{'modal-window-max': isFullWindow,'modal-window-min': !isFullWindow}"
          [ngStyle]="{'display' : showWindow ? 'block' : 'none'}">
-      <div class="modal-window-lg" [ngStyle]="{'height': bodyHeight ? '100%':auto}">
+      <div class="modal-window-lg" [ngStyle]="{'height': bodyHeight ? '100%':'auto'}">
         <div class="modal-window-content" [ngStyle]="{'height': bodyHeight+'%'}" [ngClass]="{'modal-window-content-max':isFullWindow}">
           <header class="modal-window-header" *ngIf="header">
             <div class="modal-window-table">
