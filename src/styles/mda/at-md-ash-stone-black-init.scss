@@ -1,30 +1,60 @@
+/** 
+  Copyright (c) 2018 MetaMagic Global Inc, NJ, USA 
 
-/* Theme Specific Variables */
-$themePrimaryColor: #544C4A;
-$themeSecondaryColor : #877F7D;
-$themeFontColor : black;
-$themeFontFamily:Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
 
-$appBackground :#ECEFF1;
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  THE SOFTWARE.
+
+  This program and the accompanying materials are licensed under
+  the terms of the Apache 2 License version 2.0 as published by the Apache
+  Software Foundation.
+*/
+
+$appTransparency : rgba(0,0,0,0.87);
+
+/** Theme Color Variables ------------------------ */
+$themePrimaryColor :#544c4a;
+$themeSecondaryColor :#877f7d;
+$theme3rdColor :#ff7f50;
+$theme4thColor :#00fa9a;
+$theme5thColor :#f5f5f5;
+$theme6thColor :#fffafa;
+$themeFontColor :#380b00;
+$themeFontFamily :Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
+
+/** App Color Variables ------------------------ */
+$appBackground :#f5f5f5;
 $appBackgroundImage : none;
-$appHeaderBGColor : $themePrimaryColor;
-$appHeaderFontColor : white;
-$appHeaderHoverBGColor : none;
-$appHeaderHoverFontColor : none;
-/* Component Specific Variables */
-$componentHoverBGColor : lighten($themeSecondaryColor,30%);
-$componentHoverFontColor : white;
-$componentActiveBGColor : lighten($themeSecondaryColor,20%);
-$componentActiveFontColor : white;
-$componentDisabledBGColor : rgb(160, 158, 158);
-$componentDisabledFontColor : black;
+$appForegroundColor :#121212;
+$appHeaderBGColor :#544c4a;
+$appHeaderFontColor :#f8f7f7;
+$appHeaderHoverBGColor :#fafafa;
+$appHeaderHoverFontColor :#e0dcdc;
 
-$componentBGColor : white;
-$componentFontColor : $themeFontColor;
-$componentHeaderBGColor : $themeSecondaryColor;
-$componentHeaderFontColor : white;
-$componentFooterBGColor :$themeSecondaryColor;
-$componentFooterFontColor : white;
+/** Component Color Variables ------------------------ */
+$componentBGColor :#fffafa;
+$componentFontColor :#240000;
+$componentHeaderBGColor :#877f7d;
+$componentHeaderFontColor :#131111;
+$componentFooterBGColor :#131111;
+$componentFooterFontColor :#877f7d;
+$componentDataBGColor :#1f0600;
+$componentDataFontColor :#ffb19e;
+$componentHoverBGColor :#ffc6b8;
+$componentHoverFontColor :#521000;
+$componentActiveBGColor :#ff896b;
+$componentActiveFontColor :#1f0600;
+$componentDisabledBGColor :#dbc7c2;
+$componentDisabledFontColor :#a36f62;
 
-$componentDataBGColor : $themePrimaryColor;
-$componentDataFontColor : $appHeaderFontColor;

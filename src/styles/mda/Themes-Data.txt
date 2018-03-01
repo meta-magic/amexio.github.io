@@ -1,0 +1,48 @@
+// Amexio Themes v4.0 - Jan 31, 2018
+// Design-Type : Material Design
+// Theme-Version : 4.0
+army-olive,#4B5320,#708238
+ash-stone-black,#544C4A,#877F7D
+black,#000000,#290500
+blue-grey,#153746,#455A64
+blue,#1565C0,#2196F3
+bruntor-tangerine,#964000,#CF912A
+cerise-magenta,#DE3163,#FF0090
+charcoal-iron,#222021,#48494B
+chocolate-russet,#7F461B,#2B1700
+fern-lime,#4F7942,#C7EA46
+frenchrose-mulberry,#F64A84,#C64B8C
+gingerbread,#BCAAA4,#BCAAA4
+gold-amber,#FFA000,#FFC107
+grape-violet,#6F2DA8,#B200ED
+honey-mustard,#EB9605,#FEDC56
+hot-pink-fuchsia,#F81894,#FF00FF
+indigo,#9FA8DA,#5C6BC0
+jungle-mint,#29AB87,#98BF98
+mahogany-barny-red,#420D09,#7C0A02
+mauve-orchid,#784B84,#AF69EE
+maya,#4ddfe8,#81D4F9
+navy-egyptian,#000080,#1134A6
+pineapple-flaxen,#FEE12B,#D5B85A
+pumpkin-fire,#FF7417,#FDA50F
+rasberry-sangria,#5E1914,#D21F3C
+red-maroon,#800000,#D30000
+sacramento-jade,#043927,#00A86B
+tronbone-royal,#D2B558,#FADA5E
+yale-azure,#0E4C92,#2196F3
+// Amexio Themes v4.1 - Feb 28, 2018
+// Theme-Version : 4.0
+hot-pink-violetred,#F81894,#C71585
+orangered-tomato,#FF4500,#FF6347
+rebeccapurple-orchid,#663399,#BA55D3
+indigo-darkviolet,#4B0082,#9400D3
+indigo-slateblue,#4B0082,#483D8B
+darkgreen-teal,#006400,#008080
+royalblue-dodgerblue,#4169E1,#1E90FF
+mediumblue-slateblue,#0000CD,#7B68EE
+sienna-rosybrown,#A0522D,#BC8F8F
+darkslategray-dimgray,#2F4F4F,#696969
+mediumblue-deepskyblue,#0000CD,#00BFFF
+darkturquoise-aquamarine,#00CED1,#7FFFD4
+darkkhaki-moccasin,#BDB76B,#FFE4B5
+indianred-salmon,#CD5C5C,#FA8072
