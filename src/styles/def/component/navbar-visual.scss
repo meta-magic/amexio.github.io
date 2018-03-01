@@ -1,0 +1,49 @@
+$navbarBGColor : $appHeaderBGColor;
+$navbarBGBoxShadow : rgba(0, 0, 0, 0.6);
+$navbarBorder : $borderColor;
+$navbarColor : $appHeaderFontColor;
+$navbarActiveBG : $componentActiveBGColor;
+
+.topnav {
+    background-color: $navbarBGColor;
+    color: $navbarColor;
+}
+
+.top-nav-button{
+    background-color: $navbarBGColor;
+    color: $navbarColor;
+}
+.topnav a{
+    color : $navbarColor
+}
+.topnav a label{
+    color: $navbarColor;
+}
+.topnavbarunit2-mobile{
+    background-color: $navbarActiveBG;
+}
+.topnavmainbarinneritems .nav-dropdown-content { 
+    //display: none;
+    background-color: $navbarActiveBG;
+}
+
+.topnavmainbarinneritems-mobile .nav-dropdown-content{
+    background-color: $navbarActiveBG;
+}
+
+.topnavmainbarinneritems .nav-dropdown-content a {
+    color: $navbarColor!important;
+}
+
+.nav-dropdown:hover {
+    background-color: $navbarActiveBG;
+}
+
+
+.topnavmainbarinneritems-mobile .top-nav-input-control{
+    width: 100%;
+}
+
+.mobilebar{
+    color: $navbarColor;
+}

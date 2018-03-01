@@ -1,0 +1,186 @@
+$navbarBGColor : $appHeaderBGColor;
+$navbarBGBoxShadow : rgba(0, 0, 0, 0.6);
+$navbarBorder : $borderColor;
+$navbarColor : $appHeaderFontColor;
+$navbarActiveBG : $componentActiveBGColor;
+
+.topnav {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    //background-color: $navbarBGColor;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 2px 2px 5px $navbarBGBoxShadow;
+    z-index: 2;
+}
+
+.topnav-mobile{
+    flex-direction: column;
+    padding: 0px;
+}
+
+.topnav *{
+    vertical-align: middle;
+}
+
+.top-nav-input-control {
+    border-radius: 0px;
+    border: none;
+    border-bottom: 2px solid $navbarBorder;
+    font-size: 1rem;
+    line-height: 1.5;
+    outline: none;
+}
+.top-nav-button{
+    //background-color: #fff;
+    border-color: $navbarBorder;
+    //color: $navbarColor;
+    cursor: pointer;
+    //padding: .5rem 1rem;
+    font-size: 1rem;
+}
+.topnav a{
+    cursor: pointer;
+    //color : $navbarColor
+}
+.topnav a label{
+    //color: $navbarColor;
+}
+.topnavbarunit1{
+    line-height: 50px;
+}
+
+.topnavbarunit1-mobile{
+    width: 100%;
+    padding: 5px;
+}
+.topnavbarunit2{
+    //background-color: grey;
+    width: 80%;
+    line-height: 50px;
+}
+.topnavbarunit2-mobile{
+    width: 100%;
+    //padding: 5px;
+    box-shadow: 0px 0px 2px 0px $navbarBorder;
+    //background-color: $navbarActiveBG;
+}
+
+.topnavmainbar{
+    display: flex; justify-content: space-between;
+}
+
+.topnavmainbar-mobile{
+    flex-direction: column;
+}
+
+.topnavmainbaritems{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.topnavmainbaritems-mobile{
+    flex-direction: column;
+}
+
+.topnavmainbarinneritems{
+    display: inline-block;
+    padding: 0px 10px;
+}
+
+.topnavmainbarinneritems-mobile{
+    width: 100%;
+    border-bottom: 1px solid $navbarBorder;
+}
+
+.topnavmainbarinneritems .nav-dropdown {
+    float: left;
+    overflow: hidden;
+    
+}
+
+
+.topnavmainbarinneritems-mobile .nav-dropdown {
+    width: 100%;
+}
+
+.topnavmainbarinneritems-mobile .nav-dropdown .nav-dropbtn .dropdownicon{
+    float: right;
+    margin-right: 20px;
+    line-height: 50px;
+}
+
+
+.nav-dropdown .nav-dropbtn {
+    padding: 0px 8px;
+}
+ 
+.topnavmainbarinneritems .nav-dropdown-content { 
+    //display: none;
+    position: fixed;
+    //background-color: $navbarActiveBG;
+    min-width: 160px;
+    z-index: 3; 
+    padding: 5px;
+    box-shadow: 0px 5px 5px $navbarBGBoxShadow;
+
+    transition: all 0.3s ease;
+    transform: scale(0);
+    transform-origin: 0 0;
+}
+
+.topnavmainbarinneritems-mobile .nav-dropdown-content{
+    display: none;
+    margin: 0px 5px;
+    padding: 0px 5px;
+    position: relative;
+    //background-color: $navbarActiveBG;
+    box-shadow: 0px 0px 0px $navbarBGBoxShadow;
+}
+
+.topnavmainbarinneritems .nav-dropdown-content a {
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    //color: $navbarColor!important;
+}
+
+.nav-dropdown:hover {
+    //background-color: $navbarActiveBG;
+    .nav-dropbtn .dropdownicon{
+        transform: rotate(180deg);
+    }
+
+    .nav-dropdown-content {
+        display: block;
+        transform: scale(1);
+    }
+    
+}
+
+
+.topnavmainbarinneritems-mobile .top-nav-input-control{
+    width: 100%;
+}
+
+.mobilebar{
+    display:inline-block;
+    float :right;
+    //color: $navbarColor;
+    padding-right : 10px;
+    cursor: pointer;
+}
+
+
+.topnavmainbaritems amexio-nav-item1:last-child {
+    .topnavmainbarinneritems .nav-dropdown-content { 
+       right: 10px;
+    }
+}
+
+.nav-dropdown-content-right .nav-dropdown-content {
+    right: 10px;
+    
+}
