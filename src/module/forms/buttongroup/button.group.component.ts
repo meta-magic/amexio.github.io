@@ -1,4 +1,4 @@
-import {AfterContentInit, Component, ContentChildren, Input, QueryList} from '@angular/core';
+import {AfterContentInit, Component, ContentChildren, EventEmitter, Input, Output, QueryList} from '@angular/core';
 import {AmexioButtonComponent} from "../buttons/button.component";
 
 @Component({
@@ -16,6 +16,7 @@ export class AmexioButtonGroupComponent implements AfterContentInit {
 
   buttonGroupPreviewData: any;
 
+  @Output() getButton: any = new EventEmitter<any>();
 
   @ContentChildren(AmexioButtonComponent) btns: QueryList<AmexioButtonComponent>;
 
@@ -31,8 +32,14 @@ export class AmexioButtonGroupComponent implements AfterContentInit {
     }
   }
 
- buttonClick(event: any, btnObj: any) {
-    btnObj.onClick.emit(event);
+  buttonGroupClick(event: any, btnObj: any) {
+    if(this.buttonGroupLocalData  || this.buttonGroupLocalData.length > 0) {
+      this.getButton.emit({event:event,buttonObject:btnObj});
+    } else {
+      btnObj.onClick.emit(event);
+    }
+
+
   }
 
   ngAfterContentInit() {
