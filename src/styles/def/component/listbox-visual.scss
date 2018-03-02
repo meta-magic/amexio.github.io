@@ -1,39 +1,11 @@
 
-/*----------------------------------------------------------------------*/
-/*        LISTBOX COMPONENT -Visual       */
-/*----------------------------------------------------------------------*/
-
-$listScrollBGColor : $componentHeaderBGColor;
-$listScrollThumbBGColor : $scrollThumbColor;
-$listBoxFontSize:100%;
-$listBoxFontWeight : 400;
-$listBoxListHoverBGColor : $componentHoverBGColor;
-$listBoxBGColorOdd : none;
-
-$listBoxBGColor : $componentBGColor;
-$listBoxColor : rgba(0,0,0,0.87);
-$listTitleFontSize : 18px;
-$listTitleAFontSize : 16px;
-
-.listbox{
-  // margin-bottom: 1rem;
-  // border: $borderSize solid $borderColor;
-}
-
-.listbox-height {
-  // overflow-y: auto;
-  // overflow-x: hidden;
-}
-
 .listbox-height::-webkit-scrollbar-track
 {
-  // -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
   background-color:$listScrollBGColor;
 }
 
 .listbox-height::-webkit-scrollbar
 {
-  //width: 6px;
   background-color:$listScrollBGColor;
 }
 
@@ -43,30 +15,7 @@ $listTitleAFontSize : 16px;
 }
 
 
-.listbox .list{
-  // margin: 0;
-  // padding: 0;
-  // border: 0;
-  // outline: 0;
-  // text-decoration: none;
-  font-size: $listBoxFontSize;
-  //list-style: none;
-}
-
 .listbox .list .list-items{
-  // list-style: none;
-  // border-bottom: $borderSize solid $borderColor;
-  // cursor: pointer;
-  font-weight: $listBoxFontWeight;
-  // margin: 1px 0;
-  // padding: 10px;
-  // text-align: left;
-
-  .datatable{
-    // border: none;
-    // border-collapse:inherit;
-  }
-
   .datatable-row:nth-child(odd){
     background: $listBoxBGColorOdd;
   }
@@ -80,14 +29,10 @@ $listTitleAFontSize : 16px;
   background-color: $listBoxBGColor;
 
   .title {
-    //float: left;
-    font-size: $listTitleFontSize;
     color: $listBoxColor;
-    //padding-top: 8px;
+    
     a {
-      font-size: $listTitleAFontSize;
       color: $listBoxColor !important;
-      //text-transform: lowercase;
     }
   }
 }

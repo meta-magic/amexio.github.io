@@ -1,26 +1,4 @@
 
-/*----------------------------------------------------------------------*/
-/*        Enterprise Carousel - Structure COMPONENT         */
-/*----------------------------------------------------------------------*/
-
-$eeTitleColor1 : rgba(0,0,0,0.9);
-$eeTitleColor2 : rgba(0,0,0,0);
-$eeTitleColor1 : rgba(0,0,0,0.9);
-$eeTitleColor2 : rgba(0,0,0,0);
-$eeTitleDisplay : #000;
-$eeTitleColor : white;
-
-$tileFontSize : 20px;
-$tileDetFontSize : 10px;
-$controlColor : dimgrey;
-$controlFontSize  : 1em;
-$subtitleFontSize : 6pt;
-$textColor:$componentActiveFontColor;
-$textBGColor : transparent;
-$matchColor : lightgreen;
-$actionColor : red;
-$actionBGColor : transparent;
-
 .contain {
   width: 100%;
 }
@@ -50,7 +28,7 @@ $actionBGColor : transparent;
   width: 250px;
   /*height: 140.625px;*/
   margin-right: 10px;
-  //font-size: 20px;
+  font-size: 20px;
   cursor: pointer;
   -webkit-transition: 450ms all;
   transition: 450ms all;
@@ -70,10 +48,8 @@ $actionBGColor : transparent;
   left: 0;
   right: 0;
   top: 0;
-  //font-size: 10px;
-  opacity: 0;
-  background: -webkit-linear-gradient(bottom, $eeTitleColor1 0%, $eeTitleColor2 100%);
-  background: linear-gradient(to top, $eeTitleColor1 0%, $eeTitleColor2 100%);
+  font-size: 10px;
+  opacity: 0;  
   -webkit-transition: 450ms opacity;
   transition: 450ms opacity;
 }
@@ -83,7 +59,6 @@ $actionBGColor : transparent;
   position: absolute;
   top: 50%;
   left: 50%;
-  //display: $eeTitleDisplay;
 }
 .tile__details:after {
   margin-top: -25px;
@@ -94,11 +69,7 @@ $actionBGColor : transparent;
   line-height: 50px;
   text-align: center;
   border-radius: 100%;
-  /*background: rgba(0,0,0,0.5);*/
   z-index: 1;
-}
-.tile__details:before {
-
 }
 
 .tile__details_v {
@@ -107,10 +78,8 @@ $actionBGColor : transparent;
   left: 0;
   right: 0;
   top: 50%;
-  //font-size: 10px;
+  font-size: 10px;
   opacity: 0;
-  background: -webkit-linear-gradient(bottom, $eeTitleColor1 0%, $eeTitleColor2 100%);
-  background: linear-gradient(to top, $eeTitleColor1 0%, $eeTitleColor2 100%);
   -webkit-transition: 450ms opacity;
   transition: 450ms opacity;
 }
@@ -148,7 +117,6 @@ $actionBGColor : transparent;
   position: absolute;
   bottom: 0;
   padding: 10px;
-  //color: $eeTitleColor;
 }
 .row__inner:hover {
   -webkit-transform: translate3d(-62.5px, 0, 0);
@@ -187,14 +155,12 @@ $actionBGColor : transparent;
   margin-top: -700px;
 }
 
-
 .controls{
   padding-top: 125px;
   display: flex;
   align-items: center;
   justify-content: center;
-  //color: dimgrey;
-  //font-size: 1em;
+  font-size: 1em;
 }
 
 
@@ -203,8 +169,7 @@ $actionBGColor : transparent;
   display: flex;
   align-items: center;
   justify-content: center;
- //color: dimgrey;
-//  font-size: 1em;
+  font-size: 1em;
 }
 
 

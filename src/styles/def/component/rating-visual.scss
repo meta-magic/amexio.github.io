@@ -1,17 +1,4 @@
 
-
-/*----------------------------------------------------------------------*/
-/*        RATING COMPONENT -Visual   */
-/*----------------------------------------------------------------------*/
-$ratingStarColor : $borderColor;
-$ratingStarFontSize : 2em;
-$ratingIconColor : $componentHeaderBGColor;
-$ratingDisabledColor : $componentDisabledBGColor;
-$ratingIconFontSize : 50px;
-
-$ratingBorderColor : $borderColor;
-$ratingActiveColor : $componentHeaderBGColor;
-
 .rating i{
   font-style: normal;
 }
@@ -24,7 +11,7 @@ $ratingActiveColor : $componentHeaderBGColor;
   color: $ratingActiveColor;
 }
 .rating.disabled .star-icon:before {
-  color: #ECECEC;
+  color: $ratingDisabledColor;
 }
 @-moz-document url-prefix() { /* Firefox Hack */
   .star-icon {

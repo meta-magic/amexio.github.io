@@ -1,16 +1,4 @@
 
-/*----------------------------------------------------------------------*/
-/*        DATAPOINTS COMPONENT - Structure         */
-/*----------------------------------------------------------------------*/
-
-$datapointsColor : $componentFontColor;
-$datapointsBGColorS : $componentHeaderBGColor;
-$datapointsColorS : $componentHeaderFontColor;
-
-$datapointBGColor : $componentBGColor;
-$datapointColor : $componentDataFontColor;
-$datapointBorderColor : $borderColor;
-
 .datapoints{
 
   font-size: 125%;
@@ -37,6 +25,4 @@ $datapointBorderColor : $borderColor;
   .datapoint-east{
     padding: 5px;
   }
-
-
 }

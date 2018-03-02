@@ -1,17 +1,4 @@
 
-/*----------------------------------------------------------------------*/
-/*        PROGRESS COMPONENT -Structure   */
-/*----------------------------------------------------------------------*/
-$progressBGColor :$appBackground;
-$progressBGImg1: rgb(43, 194, 83);
-
-$progressBGSuccess : #5cb85c;
-$progressBGWarning : #f0ad4e;
-$progressBGDanger : #d9534f;
-$progressBGDangerImg1:#f0a3a3;
-$progressBGImgNoStripes : none;
-
-
 .meter {
   height: 20px; /* Can be anything */
   position: relative;
@@ -24,20 +11,6 @@ $progressBGImgNoStripes : none;
   display: block;
   height: 100%;
 
-  //background-color: rgb(43, 194, 83);
-  // background-image: -webkit-gradient(
-  //     linear,
-  //     left bottom,
-  //     left top,
-  //     color-stop(0, rgb(43, 194, 83)),
-  //     color-stop(1, rgb(84, 240, 84))
-  // );
-  // background-image: -moz-linear-gradient(
-  //     center bottom,
-  //     rgb(43, 194, 83) 37%,
-  //     rgb(84, 240, 84) 69%
-  // );
-  
   position: relative;
   overflow: hidden;
 }
@@ -68,30 +41,6 @@ $progressBGImgNoStripes : none;
   }
 }
 
-.success > span {
-//  background-color: #5cb85c; /* Add Varaibles here */
-}
-
-.warning > span {
-  // background-color: #f0ad4e;
-  // background-image: -moz-linear-gradient(top, #f1a165, #f36d0a);
-  // background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f1a165), color-stop(1, #f36d0a));
-  // background-image: -webkit-linear-gradient(#f1a165, #f36d0a);
-}
-
-.danger > span {
-  // background-color: #d9534f;
-  // background-image: -moz-linear-gradient(top, #f0a3a3, #f42323);
-  // background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f0a3a3), color-stop(1, #f42323));
-  // background-image: -webkit-linear-gradient(#f0a3a3, #f42323);
-}
-
-
-.red > span {
-  //background-color: #f0a3a3;
-}
-
 .nostripes > span > span, .nostripes > span:after {
   -webkit-animation: none;
-//  background-image: none;
 }

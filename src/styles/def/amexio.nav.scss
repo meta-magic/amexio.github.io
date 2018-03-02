@@ -1,12 +1,30 @@
-//components scss
-
+/** menubar **/
+@import "component/menubar-vars.scss";
+/** menubar visual**/
 @import "component/menubar-visual.scss";
+/** menubar -structure**/
 @import "component/menubar-structure.scss";
+/** navbar **/
+@import "component/navbar-vars.scss";
+/** navbar visual**/
 @import "component/navbar-visual.scss";
+/** navbar -structure**/
 @import "component/navbar-structure.scss";
+/** paginator **/
+@import "component/paginator-vars.scss";
+/** paginator visual**/
 @import "component/paginator-visual.scss";
+/** paginator -structure**/
 @import "component/paginator-structure.scss";
+/** sidenav **/
+@import "component/sidenav-vars.scss";
+/** sidenav visual**/
 @import "component/sidenav-visual.scss";
+/** sidenav -structure**/
 @import "component/sidenav-structure.scss";
+/** dockbar **/
+@import "component/dockbar-vars.scss";
+/** dockbar visual**/
 @import "component/dockbar-visual.scss";
+/** dockbar -structure**/
 @import "component/dockbar-structure.scss";

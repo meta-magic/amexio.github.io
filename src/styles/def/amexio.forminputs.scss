@@ -1,41 +1,128 @@
-//components scss
+/** button **/
+@import "component/button-vars.scss";
+/** button visual**/
 @import "component/button-visual.scss";
+/** button -structure**/
 @import "component/button-structure.scss";
+
+/** buttongroup **/
+@import "component/buttongroup-vars.scss";
+/** buttongroup visual**/
 @import "component/buttongroup-visual.scss";
+/** buttongroup -structure**/
 @import "component/buttongroup-structure.scss";
+
+/** buttondropdown **/
+@import "component/buttondropdown-vars.scss";
+/** buttondropdown visual**/
 @import "component/buttondropdown-visual.scss";
+/** buttondropdown -structure**/
 @import "component/buttondropdown-structure.scss";
+/** datetime **/
+@import "component/datetime-vars.scss";
+/** datetime visual**/
 @import "component/datetime-visual.scss";
+/** datetime -structure**/
 @import "component/datetime-structure.scss";
+/** dropdown **/
+@import "component/dropdown-vars.scss";
+/** dropdown visual**/
 @import "component/dropdown-visual.scss";
+/** dropdown -structure**/
 @import "component/dropdown-structure.scss";
+/** input **/
+@import "component/input-vars.scss";
+/** input visual**/
 @import "component/input-visual.scss";
+/** input -structure**/
 @import "component/input-structure.scss";
+/** fileupload **/
+@import "component/fileupload-vars.scss";
+/** fileupload visual**/
 @import "component/fileupload-visual.scss";
+/** fileupload -structure**/
 @import "component/fileupload-structure.scss";
+/** collapsible-search **/
+@import "component/collapsible-search-vars.scss";
+/** collapsible-search visual**/
 @import "component/collapsible-search-visual.scss";
+/** collapsible-search -structure**/
 @import "component/collapsible-search-structure.scss";
+/** radiobox **/
+@import "component/radiobox-vars.scss";
+/** radiobox visual**/
 @import "component/radiobox-visual.scss";
+/** radiobox -structure**/
 @import "component/radiobox-structure.scss";
+/** checkbox **/
+@import "component/checkbox-vars.scss";
+/** checkbox visual**/
 @import "component/checkbox-visual.scss";
+/** checkbox -structure**/
 @import "component/checkbox-structure.scss";
+/** taginput **/
+@import "component/taginput-vars.scss";
+/** taginput visual**/
 @import "component/taginput-visual.scss";
+/** taginput -structure**/
 @import "component/taginput-structure.scss";
+/** notification **/
+@import "component/notification-vars.scss";
+/** notification visual**/
 @import "component/notification-visual.scss";
+/** notification -structure**/
 @import "component/notification-structure.scss";
+/** progress **/
+@import "component/progress-vars.scss";
+/** progress visual**/
 @import "component/progress-visual.scss";
+/** progress -structure**/
 @import "component/progress-structure.scss";
+/** rating **/
+@import "component/rating-vars.scss";
+/** rating visual**/
 @import "component/rating-visual.scss";
+/** rating -structure**/
 @import "component/rating-structure.scss";
+/** toggle **/
+@import "component/toggle-vars.scss";
+/** toggle visual**/
 @import "component/toggle-visual.scss";
+/** toggle -structure**/
 @import "component/toggle-structure.scss";
+/** range **/
+@import "component/range-vars.scss";
+/** range visual**/
 @import "component/range-visual.scss";
+/** range -structure**/
 @import "component/range-structure.scss";
+/** label **/
+@import "component/label-vars.scss";
+/** label visual**/
 @import "component/label-visual.scss";
+/** label -structure**/
 @import "component/label-structure.scss";
+/** image **/
+@import "component/image-vars.scss";
+/** image visual**/
 @import "component/image-visual.scss";
+/** image -structure**/
 @import "component/image-structure.scss";
-@import "component/floatingbutton-structure.scss";
+/** float-button **/
+@import "component/float-button-vars.scss";
+/** float-button visual**/
+@import "component/float-button-visual.scss";
+/** float-button -structure**/
+@import "component/float-button-structure.scss";
+/** floatingbutton **/
+@import "component/floatingbutton-vars.scss";
+/** floatingbutton visual**/
 @import "component/floatingbutton-visual.scss";
-@import "component/floatingbuttongroup-structure.scss";
+/** floatingbutton -structure**/
+@import "component/floatingbutton-structure.scss";
+/** floatingbuttongroup **/
+@import "component/floatingbuttongroup-vars.scss";
+/** floatingbuttongroup visual**/
 @import "component/floatingbuttongroup-visual.scss";
+/** floatingbuttongroup -structure**/
+@import "component/floatingbuttongroup-structure.scss";

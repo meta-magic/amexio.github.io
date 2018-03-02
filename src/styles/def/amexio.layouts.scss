@@ -1,5 +1,12 @@
-//layouts
+/** borderlayout **/
+@import "component/borderlayout-vars.scss";
+/** borderlayout visual**/
 @import "component/borderlayout-visual.scss";
+/** borderlayout -structure**/
 @import "component/borderlayout-structure.scss";
+/** rowcol **/
+@import "component/rowcol-vars.scss";
+/** rowcol visual**/
 @import "component/rowcol-visual.scss";
+/** rowcol -structure**/
 @import "component/rowcol-structure.scss";

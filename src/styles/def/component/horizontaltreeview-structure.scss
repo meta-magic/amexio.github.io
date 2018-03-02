@@ -1,21 +1,4 @@
 
-/*----------------------------------------------------------------------*/
-/*        HORIZONTAL TREE COMPONENT -Visual     */
-/*----------------------------------------------------------------------*/
-$horizontalnodeColor: $componentActiveBGColor;
-$horizontalTreeviewColor: $componentActiveFontColor;
-$horizontalnodeGutter: 100px;
-$horizontalnodeBorderRadius: 10px;
-$horizontalnodeEntryMinHeight: 60px;
-
-$horizontalnodeLabelWidth: 150px;
-$horizontalnodeLabelHeight: 30px;
-$horizontalnodeLabelBorderRadius: 5px;
-
-$horizontaltreeviewLabelHoverColor:$componentHoverFontColor;
-$horizontaltreeviewLabelHoverBGColor:$componentHoverBGColor;
-
-
 .horizontaltreeview {
   position: relative;
   overflow: auto;
@@ -112,14 +95,4 @@ $horizontaltreeviewLabelHoverBGColor:$componentHoverBGColor;
   span{
     padding-right: 5px;
   }
-}
-
-.horizontaltreeview-node-label:hover{
-//  border-color:  darken($horizontalnodeColor,10%);
-//  background-color: darken($horizontalnodeColor,10%);
-}
-
-.horizontaltreeview-node-label:hover {
-//  color: $hoverColor;
-//  background-color: $hoverBGColor;
 }

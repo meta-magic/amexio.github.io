@@ -1,13 +1,4 @@
 
-
-/*----------------------------------------------------------------------*/
-/*        TOGGEL BUTTON CONTROL COMPONENT  -Structure       */
-/*----------------------------------------------------------------------*/
-
-$toggleBGColor : #ccc;
-$toggleBGBeforeColor : $componentBGColor;
-$toggleBGChecked :$componentBGColor;
-
 .toggle {
   position: relative;
   display: inline-block;

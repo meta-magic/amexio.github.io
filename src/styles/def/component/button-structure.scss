@@ -1,24 +1,7 @@
-/*----------------------------------------------------------------------*/
-
-
-/*        BUTTON COMPONENT - Structure       */
-
-
-/*----------------------------------------------------------------------*/
-$buttonBorderColor : $borderColor;
-$buttonBorderRadius : $borderRadius;
-$buttonFontWeight : 400;
-$buttonSmallFontSize : .875rem;
-$buttonDefaultFontSize : 1rem;
-$buttonLargeFontSize : 1.25rem;
-
-$closeBtnFontSize : 20px;
-$closeBtnColor : $componentHoverBGColor;
-$closeBtnHoverColor : $componentActiveBGColor;
 
 button {
     display: inline-block;
-    //font-weight: 400;
+    font-weight: 400;
     line-height: 1.25;
     text-align: center;
     white-space: nowrap;
@@ -45,62 +28,12 @@ button {
 
 .button-default{
     padding: .5rem 1rem;
-    // font-size: 1rem;
+    font-size: 1rem;
 }
 
 .button-large{
     padding: .75rem 1.5rem;
-    // font-size: 1.25rem;
-}
-
-.button-secondary{
-    // background-color: $secondaryBGColor;
-    // border-color: $borderColor;
-    // color: $secondaryColor;
-}
-
-.button-secondary:hover:enabled{
-    // background-color: darken($secondaryBGColor, 10%);
-}
-
-.button-primary {
-    // background-color: $primaryBGColor;
-    // border-color: $primaryBGColor;
-    // color: $primaryColor;
-}
-
-.button-primary:hover:enabled{
-    //  background-color: darken($primaryBGColor, 10%);
-}
-
-.button-success {
-    // background-color: $successBGColor;
-    // border-color: $successBGColor;
-    // color: $successColor;
-}
-
-.button-success:hover:enabled{
-    //  background-color: darken($successBGColor, 10%);
-}
-
-.button-danger {
-    // background-color: $dangerBGColor;
-    // border-color: $dangerBGColor;
-    // color: $dangerColor;
-}
-
-.button-danger:hover:enabled{
-    //  background-color: darken($dangerBGColor, 10%);
-}
-
-.button-warning {
-    // background-color: $warningBGColor;
-    // border-color: $warningBGColor;
-    // color: $warningColor;
-}
-
-.button-warning:hover:enabled{
-    //  background-color: darken($warningBGColor, 10%);
+    font-size: 1.25rem;
 }
 
 .button-block {
@@ -108,9 +41,7 @@ button {
     width: 100%;
 }
 
-
 .button-transparent {
-
     border : none !important;
     box-shadow: none !important;
   }

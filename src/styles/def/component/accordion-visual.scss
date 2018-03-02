@@ -1,85 +1,7 @@
-/*
-
-!*----------------------------------------------------------------------*!
-!*        ACCORDION COMPONENT - Visual      *!
-!*----------------------------------------------------------------------*!
-
 .accordion {
   background-color: $accordionBGColor;
   color: $accordionColor;
-  border-color: $accordionBorder;
-  font-size: $accordionFontSize;
 }
-
-
-.accordion .active-accordion, .accordion:hover {
-  background-color: $accordionActiveBGColor;
-  color: $accordionActiveColor;
-}
-
-.accordion:after {
-  color:$accordionTransparentColor;
-  font-weight: $accordionTransparentFontWeight;
-}
-
-.panel {
-
-  background-color: $accordionPanelBGColor;
-  color: $accordionPanelColor;
-}
-
-!** Transparent Styling **!
-.accordion-transparent{
-
-  background:$accordionTransparentBG;
-  color:$accordionTransparentColor;
-  border-color:$accordionTransparentBorder;
-  font-size: $accordionFontSize;
-}
-
-.accordion-transparent:after {
-  color:$accordionTransparentColor;
-  font-weight: $accordionTransparentFontWeight;
-}
-
-.panel {
-  background-color: $accordionPanelBGColor;
-  color: $accordionPanelColor;
-}
-*/
-/*----------------------------------------------------------------------*/
-/*        ACCORDION COMPONENT         */
-/*----------------------------------------------------------------------*/
-$accordionBGColor: $componentHeaderBGColor;
-$accordionColor: $componentHeaderFontColor;
-$accordionActiveBGColor:$componentActiveBGColor;
-$accordionActiveColor:$componentHeaderFontColor;
-$accordionPanelBGColor:$componentBGColor;
-$accordionPanelColor: $componentFontColor;
-
-$accordionBorderSize : $borderSize;
-$accordionBorderColor : $borderColor;
-$accordionBorder : $borderColor;
-$accordionFontSize : 15px;
-$accordionTransparentBG:$componentBGColor;
-$accordionTransparentBorder:$componentBGColor;
-$accordionTransparentFontWeight:bold;
-$accordionTransparentColor : $componentFontColor;
-
-.accordion {
-  background-color: $accordionBGColor;
-  color: $accordionColor;
-  cursor: pointer;
-  padding: 10px;
-  width: 100%;
-  border-color: $borderColor;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-  transition: 0.4s;
-}
-
-
 .accordion .active-accordion, .accordion:hover {
   background-color: $accordionActiveBGColor;
   color: $accordionActiveColor;
@@ -87,34 +9,19 @@ $accordionTransparentColor : $componentFontColor;
 
 .accordion:after {
   color: red;
-  font-weight: bold;
-  float: right;
-  margin-left: 5px;
 }
 
 .active:after {
 }
 .panel {
-  padding: 18px;
   background-color: $accordionPanelBGColor;
   color: $accordionPanelColor;
-  overflow: auto;
 }
 
 
 /** Transparent Styling **/
 .accordion-transparent{
-  cursor: pointer;
-  padding: 10px;
-  width: 100%;
   background:$accordionTransparentBG;
-  border-color:$accordionTransparentBorder;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-  transition: 0.4s;
-  box-shadow: none;
-  border-top: $borderSize solid $borderColor;
 }
 
 .accordion-transparent .active-accordion, .accordion-transparent:hover {
@@ -123,15 +30,5 @@ $accordionTransparentColor : $componentFontColor;
 
 .accordion-transparent:after {
   color: red;
-  font-weight: bold;
-  float: right;
-  margin-left: 5px;
 }
 
-.active:after {
-}
-
-.accordion-disable{
-  opacity: 0.55;
-  cursor: not-allowed;
-}

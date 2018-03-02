@@ -1,12 +1,6 @@
-/*----------------------------------------------------------------------*/
-/*        BUTTONGROUP COMPONENT -Structure       */
-/*----------------------------------------------------------------------*/
-
-$btnGrpBorderColor:black;
-$btnGrpBorderSize : 1px;
 
 .btn-group span {
-  border: 1px solid black; /* Green border */
+  border: $btnGrpBorderSize solid $btnGrpBorderColor; 
   padding: 10px 24px; /* Some padding */
   cursor: pointer; /* Pointer/hand icon */
   float: left; /* Float the buttons side by side */

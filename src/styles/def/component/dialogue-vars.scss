@@ -1,0 +1,25 @@
+
+
+$dialogueContentBorderColor : $borderColor;
+$dialogueContentBorderSize : 1px;
+$dialogueBorderColor : $borderColor;
+$dialogueBorderSize :$borderSize;
+$dialogueBG:rgba(128,127,127,0.6);
+$dialogueContentBG:$componentBGColor;
+$dialogueHeaderBG: $componentHeaderBGColor;
+$dialogueHeaderFontSize : 20px;
+$dialogueHeaderColor : $componentFontColor;
+$dialogueHeaderFontWeight : 300;
+
+$dialogueMiddleFontSize : 14px;
+$dialogueMiddleFontWeight : 400;
+
+$dialogueIconFontSize:15px;
+
+$dialogueFooterColor : $componentFooterFontColor;
+$dialogueMessageFontSize : 20px;
+$dialogueMessageFontWeight : 300;
+
+$dialogueSuccessColor : $successBGColor;
+$dialogueWarningColor : $warningBGColor;
+$dialogueDangerColor : $dangerBGColor;

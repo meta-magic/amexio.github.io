@@ -1,49 +1,9 @@
 
-/*----------------------------------------------------------------------*/
-/*        BUTTON COMPONENT -Visual       */
-/*----------------------------------------------------------------------*/
-
-$buttonBorderColor : $borderColor;
-$buttonBorderRadius : $borderRadius;
-$buttonFontWeight : 400;
-$buttonSmallFontSize : .875rem;
-$buttonDefaultFontSize : 1rem;
-$buttonLargeFontSize : 1.25rem;
-
-$closeBtnFontSize : 20px;
-$closeBtnColor : $componentHoverBGColor;
-$closeBtnHoverColor : $componentActiveBGColor;
-
-button {
-  font-weight: $buttonFontWeight;
-}
-
-.button-text {
-  //display: inline-block;
-}
-
-
-.button-small {
-  //padding: .25rem .5rem;
-  font-size: $buttonSmallFontSize;
-}
-
-.button-default{
-  //padding: .5rem 1rem;
-  font-size: $buttonDefaultFontSize;
-}
-
-.button-large{
-  //padding: .75rem 1.5rem;
-  font-size: $buttonLargeFontSize;
-}
-
 .button-secondary{
   background-color: $secondaryBGColor;
   border-color: $borderColor;
   color: $secondaryColor;
 }
-
 
 .button-secondary:hover:enabled{
   background-color: darken($secondaryBGColor, 10%);
@@ -94,6 +54,4 @@ button {
 .button-transparent {
   background: $componentBGColor;
   color : $componentFontColor;
-  //border : none !important;
-  //box-shadow: none !important;
 }

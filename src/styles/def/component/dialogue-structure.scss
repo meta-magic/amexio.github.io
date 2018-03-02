@@ -1,38 +1,8 @@
 
-/*----------------------------------------------------------------------*/
-/*        DIALOGUE COMPONENT -Structure       */
-/*----------------------------------------------------------------------*/
-
-$dialogueContentBorderColor : #888;
-$dialogueContentBorderSize : 1px;
-$dialogueBorderColor : $borderColor;
-$dialogueBorderSize :$borderSize;
-$dialogueBG:rgba(128,127,127,0.6);
-$dialogueContentBG:$componentBGColor;
-$dialogueHeaderBG: $componentHeaderBGColor;
-$dialogueHeaderFontSize : 20px;
-$dialogueHeaderColor : $componentFontColor;
-$dialogueHeaderFontWeight : 300;
-
-$dialogueMiddleFontSize : 14px;
-$dialogueMiddleFontWeight : 400;
-
-$dialogueIconFontSize:15px;
-
-$dialogueFooterColor : $componentFooterFontColor;
-$dialogueMessageFontSize : 20px;
-$dialogueMessageFontWeight : 300;
-
-$dialogueSuccessColor : $successBGColor;
-$dialogueWarningColor : $warningBGColor;
-$dialogueDangerColor : $dangerBGColor;
-
 .root-window{
   flex-direction: column;
   position: fixed; /* Stay in place */
   z-index: 3; /* Sit on top */
-  // background-color: $modalBGColor; /* Black w/ opacity */
-  //background: rgba(128,127,127,0.6);
   width: 100%;
   height: 100%;
   left: 0;
@@ -50,8 +20,6 @@ $dialogueDangerColor : $dangerBGColor;
 
 
 .dialogue-content{
-  //position: relative;
-  //background-color: #fefefe;
   margin: auto;
   padding: 0px;
   border: $dialogueContentBorderSize solid $dialogueContentBorderColor;
@@ -72,18 +40,16 @@ $dialogueDangerColor : $dangerBGColor;
 .dialogue-header{
   display: flex;
   /* padding: 10px 24px;*/
-  //background: $cardHeaderBGColor;
   border-bottom: $dialogueBorderSize solid $dialogueBorderColor;
-  //font-size: 20px;
-  //color: $cardHeaderColor;
-  //font-weight: 300;
+  font-size: 20px;
+  font-weight: 300;
   text-transform: capitalize;
 }
 
 .dialogue-middle{
-  //font-size: 14px;
+  font-size: 14px;
   line-height: 24px;
-  //font-weight: 400;
+  font-weight: 400;
   padding-left: 16px;
   padding-right: 16px;
   min-height: 80% ;
@@ -92,18 +58,15 @@ $dialogueDangerColor : $dangerBGColor;
   text-align: center;
 }
 
-
 .dialogue-footer{
   display: flex;
-  // background-color: $cardFooterBGColor;
-  //color: $cardFooterColor;
   border-top: $dialogueBorderSize solid $dialogueBorderColor;
 }
 
 .dialogue-message {
   display: flex;
-  //font-size: 20px;
-  //font-weight: 300;
+  font-size: 20px;
+  font-weight: 300;
   text-transform: capitalize;
   text-align: center;
 }
@@ -113,32 +76,17 @@ $dialogueDangerColor : $dangerBGColor;
   display: flex;
   text-align: center;
 }
-
-.dialogue-success {
- // color: $successBGColor;
-}
-.dialogue-danger {
- // color: $dangerBGColor;
-}
-.dialogue-warning {
- // color: $warningBGColor;
-}
-
-
 .dialogue-table{
   display: table;
   width: 100%;
 }
-
 .dialogue-table .tablerow{
   display: table-row;
 }
-
 .dialogue-table .tablerow .tablecol{
   display: table-cell;
   vertical-align: middle;
 }
-
 .icon-style {
-  //font-size: 15px;
+  font-size: 15px;
 }

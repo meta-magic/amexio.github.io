@@ -1,18 +1,4 @@
 
-/*----------------------------------------------------------------------*/
-/*        ITEM SELECTOR COMPONENT  -Structure       */
-/*----------------------------------------------------------------------*/
-
-$itemselectorActionBGColor : $componentHeaderBGColor ;
-$itemselectorActionColor : $componentFontColor;
-$itemselectorActionDisableBGColor : $componentDisabledBGColor;
-$itemselectorListActiveBGColor : $componentActiveBGColor;
-$itemselectorListHoverBGColor : $componentHoverBGColor;
-$itemselectorListActiveColor : $componentHoverFontColor;
-$itemselectorListHoverColor : $componentHoverFontColor;
-
-$itemselectorFontWeight : 400 ;
-
 .flex-col-45pt{
   max-width: 45%;
 }

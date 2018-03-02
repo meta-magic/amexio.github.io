@@ -1,23 +1,6 @@
 
-/*----------------------------------------------------------------------*/
-/*        DATETIME COMPONENT - Structure         */
-/*----------------------------------------------------------------------*/
-
-$datetimepickerBGColor : $componentBGColor;
-$datetimepickertopbarBGColor : $componentActiveBGColor;
-$datetimepickerActiveColor : $themePrimaryColor;
-
-$datetimepickerBorderSize : $borderSize;
-$datetimepickerBorderColor : $borderColor;
-$datetimepickerFontSize : 18px;
-$datetimepickerTopBarColor :$componentHeaderFontColor;
-$datetimepickerDaysColor : $componentDisabledFontColor;
-$datetimepickerDaysFontSize : 14px;
-
-
 .datetimepicker{
   display: block;
-  //background: $datetimepickerBGColor;
   border: $datetimepickerBorderSize solid $datetimepickerBorderColor;
   position: absolute;
   box-shadow: 0 1px 3px 0 $datetimepickerBorderColor;
@@ -25,11 +8,10 @@ $datetimepickerDaysFontSize : 14px;
 
   .datetimepickertopbar {
     padding: 10px 25px;
-    //background: $datetimepickertopbarBGColor;
     text-align: center;
 
     .title{
-      //font-size:18px;
+      font-size:18px;
       cursor:pointer;
     }
 
@@ -40,8 +22,7 @@ $datetimepickerDaysFontSize : 14px;
     }
 
     ul li {
-      //color: white;
-      //font-size: 18px;
+      font-size: 18px;
       text-transform: uppercase;
       letter-spacing: 3px;
     }
@@ -60,7 +41,6 @@ $datetimepickerDaysFontSize : 14px;
     }
   }
 
-
   .weekdays {
     margin: 0;
     padding: 10px 0;
@@ -73,11 +53,8 @@ $datetimepickerDaysFontSize : 14px;
     }
   }
 
-
-
   .days {
     padding: 10px 0;
-    //background: lighten($datetimepickertopbarBGColor,60);
     margin: 0;
     cursor : pointer;
     list-style: none;
@@ -89,23 +66,13 @@ $datetimepickerDaysFontSize : 14px;
       height: 20px;
       text-align: center;
       margin-bottom: 5px;
-      //font-size:12px;
-      //color: #777;
+      font-size:12px;
       cursor: pointer;
-
     }
-
-
-    li:hover {
-    //  color: $datetimepickertopbarBGColor;
-    }
-
 
     .active {
       border-radius: 135px;
       padding: 5px;
-      //background: $datetimepickertopbarBGColor;
-      //color: $datetimepickerActiveColor;
     }
 
 
@@ -113,17 +80,7 @@ $datetimepickerDaysFontSize : 14px;
       padding-top: 1%;
       padding-left: 42%;
     }
-
-    .currentMonth{
-      //font-weight:bold;
-    }
-
-    .notCurrentMonth{
-    }
-
   }
-
-
 }
 
 .datetimepicker-up{

@@ -1,11 +1,4 @@
 
-/*----------------------------------------------------------------------*/
-/*        NOTIFICATION CONTROL COMPONENT  -Structure       */
-/*----------------------------------------------------------------------*/
-
-$toastBGColor : $componentHoverBGColor;
-$toastColor : $componentFontColor;
-
 .toastbar{
   position: fixed;
   z-index: 3;

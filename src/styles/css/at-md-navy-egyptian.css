@@ -246,21 +246,8 @@ image using the content attribute.
   opacity: 0.55; }
 
 /** Initialze Component variables ------------ */
-/*----------------------------------------------------------------------*/
-/*        BUTTON COMPONENT -Visual       */
-/*----------------------------------------------------------------------*/
-button {
-  font-weight: 400; }
-
-.button-small {
-  font-size: 0.875rem; }
-
-.button-default {
-  font-size: 1rem; }
-
-.button-large {
-  font-size: 1.25rem; }
-
+/** button **/
+/** button visual**/
 .button-secondary {
   background-color: #fffafa;
   border-color: #ced4da;
@@ -305,11 +292,10 @@ button {
   background: #fffafa;
   color: #240000; }
 
-/*----------------------------------------------------------------------*/
-/*        BUTTON COMPONENT - Structure       */
-/*----------------------------------------------------------------------*/
+/** button -structure**/
 button {
   display: inline-block;
+  font-weight: 400;
   line-height: 1.25;
   text-align: center;
   white-space: nowrap;
@@ -331,10 +317,12 @@ button {
   padding: .25rem .5rem; }
 
 .button-default {
-  padding: .5rem 1rem; }
+  padding: .5rem 1rem;
+  font-size: 1rem; }
 
 .button-large {
-  padding: .75rem 1.5rem; }
+  padding: .75rem 1.5rem;
+  font-size: 1.25rem; }
 
 .button-block {
   display: block;
@@ -344,15 +332,11 @@ button {
   border: none !important;
   box-shadow: none !important; }
 
-/*----------------------------------------------------------------------*/
-/*        BUTTONGROUP COMPONENT - Visual*/
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
-/*        BUTTONGROUP COMPONENT -Structure       */
-/*----------------------------------------------------------------------*/
+/** buttongroup **/
+/** buttongroup visual**/
+/** buttongroup -structure**/
 .btn-group span {
   border: 1px solid black;
-  /* Green border */
   padding: 10px 24px;
   /* Some padding */
   cursor: pointer;
@@ -376,44 +360,36 @@ button {
 .button-group {
   position: relative; }
 
-/*----------------------------------------------------------------------*/
-/*        BUTTON DROPDOWN COMPONENT -Visual     */
-/*----------------------------------------------------------------------*/
+/** buttondropdown **/
+/** buttondropdown visual**/
 .button-dropdown {
-  font-size: 1rem;
   background-color: #fffafa; }
 
 .button-dropdown > div:hover {
   background-color: #b8c8ff; }
 
-/*----------------------------------------------------------------------*/
-/*        BUTTON DROPDOWN COMPONENT -Structure        */
-/*----------------------------------------------------------------------*/
+/** buttondropdown -structure**/
 .button-dropdown {
   position: absolute;
   padding: .5rem 1rem;
+  font-size: 1rem;
   border: 1px solid #ced4da;
   z-index: 3; }
 
 .button-dropdown-up {
   bottom: 100%; }
 
-/*----------------------------------------------------------------------*/
-/*        DATETIME COMPONENT -Visual     */
-/*----------------------------------------------------------------------*/
+/** datetime **/
+/** datetime visual**/
 .datetimepicker {
   background: #fffafa; }
   .datetimepicker .datetimepickertopbar {
     background: #6b8eff; }
-    .datetimepicker .datetimepickertopbar .title {
-      font-size: 18px; }
     .datetimepicker .datetimepickertopbar ul li {
-      color: #f1f4fe;
-      font-size: 18px; }
+      color: #f1f4fe; }
   .datetimepicker .days {
     background: #b8c8ff; }
     .datetimepicker .days li {
-      font-size: 14px;
       color: #6271a3; }
     .datetimepicker .days li:hover {
       color: #6b8eff; }
@@ -430,9 +406,7 @@ button {
   .datetimepicker .days .date-today {
     padding-top: 1%;
     padding-left: 36%; } }
-/*----------------------------------------------------------------------*/
-/*        DATETIME COMPONENT - Structure         */
-/*----------------------------------------------------------------------*/
+/** datetime -structure**/
 .datetimepicker {
   display: block;
   border: 1px solid #ced4da;
@@ -443,12 +417,14 @@ button {
     padding: 10px 25px;
     text-align: center; }
     .datetimepicker .datetimepickertopbar .title {
+      font-size: 18px;
       cursor: pointer; }
     .datetimepicker .datetimepickertopbar ul {
       margin: 0;
       padding: 0;
       list-style: none; }
     .datetimepicker .datetimepickertopbar ul li {
+      font-size: 18px;
       text-transform: uppercase;
       letter-spacing: 3px; }
     .datetimepicker .datetimepickertopbar .prev {
@@ -479,6 +455,7 @@ button {
       height: 20px;
       text-align: center;
       margin-bottom: 5px;
+      font-size: 12px;
       cursor: pointer; }
     .datetimepicker .days .active {
       border-radius: 135px;
@@ -490,17 +467,10 @@ button {
 .datetimepicker-up {
   bottom: 100%; }
 
-/*----------------------------------------------------------------------*/
-/*        DROPDOWN COMPONENT         */
-/*----------------------------------------------------------------------*/
+/** dropdown **/
+/** dropdown visual**/
 .dropdown {
   background-color: #fffafa; }
-
-.dropdown-list {
-  font-size: 100%; }
-
-.dropdown-list .list-items {
-  font-weight: 400; }
 
 .dropdown-list .list-items:hover {
   color: #001352;
@@ -513,13 +483,10 @@ button {
 .drodown-caret-down {
   color: #ced4da; }
 
-/*----------------------------------------------------------------------*/
-/*        DROPDOWN COMPONENT - Structure      */
-/*----------------------------------------------------------------------*/
+/** dropdown -structure**/
 .dropdown {
   display: block;
   z-index: 1003;
-  /*top: -105px;*/
   opacity: 1;
   overflow: auto;
   position: absolute;
@@ -537,12 +504,14 @@ button {
   border: 0;
   outline: 0;
   text-decoration: none;
+  font-size: 100%;
   list-style: none; }
 
 .dropdown-list .list-items {
   list-style: none;
   border: 0 none;
   cursor: pointer;
+  font-weight: 400;
   margin: 1px 0;
   padding: .186em .313em;
   text-align: left; }
@@ -564,9 +533,11 @@ button {
 .drodown-caret-down {
   top: 35px; }
 
+/** input **/
 /*----------------------------------------------------------------------*/
 /*        INPUT CONTROL COMPONENT -Visual      */
 /*----------------------------------------------------------------------*/
+/** input visual**/
 .input-control {
   font-size: 14px;
   background-color: #fffafa;
@@ -601,9 +572,7 @@ button {
 .inputgroup .tooltiptext {
   background-color: #b8c8ff; }
 
-/*----------------------------------------------------------------------*/
-/*        INPUT CONTROL COMPONENT -Structure      */
-/*----------------------------------------------------------------------*/
+/** input -structure**/
 .inputgroup {
   position: relative; }
 
@@ -640,9 +609,8 @@ button {
   z-index: 1;
   padding-left: 5px; }
 
-/****************************************************/
-/**File upload -Visual **/
-/****************************************************/
+/** fileupload **/
+/** fileupload visual**/
 .upload-drop-zone {
   color: #1134a6;
   border-color: #1134a6; }
@@ -651,9 +619,7 @@ button {
   color: #000038;
   border-color: #000038; }
 
-/****************************************************/
-/**File Upload Structure **/
-/****************************************************/
+/** fileupload -structure**/
 .upload-drop-zone {
   border-style: dashed;
   line-height: 200px;
@@ -669,15 +635,12 @@ textarea:required {
 .image-title {
   display: none; }
 
-/****************************************************/
-/**COLLAPSIBLE SEARCH  -Visual**/
-/****************************************************/
+/** collapsible-search **/
+/** collapsible-search visual**/
 .search:focus {
   background-color: #fffafa; }
 
-/****************************************************/
-/**COLLAPSIBLE SEARCH-Structure**/
-/****************************************************/
+/** collapsible-search -structure**/
 .search {
   border: solid 1px #ced4da;
   padding: 9px 10px 9px 32px;
@@ -688,23 +651,20 @@ textarea:required {
 .search:focus {
   width: 150px; }
 
+/** radiobox **/
 /****************************************************/
 /***                  RADIO -Visual                     ***/
 /****************************************************/
-/* Create a custom checkbox */
+/** radiobox visual**/
 /* When the checkbox is checked, add a blue background */
 .input-box-container input:checked ~ .input-box-radiobox-label {
   background-color: #6b8eff; }
 
-/* Create the input-box-container-label/indicator (hidden when not checked) */
-/* Show the input-box-container-label when checked */
 /* Style the input-box-container-label/indicator */
 .input-box-container .input-box-radiobox-label:after {
   background-color: #000080; }
 
-/****************************************************/
-/***                  RADIO    Structure          ***/
-/****************************************************/
+/** radiobox -structure**/
 /* Create a custom checkbox */
 .input-box-radiobox-label {
   position: absolute;
@@ -715,7 +675,6 @@ textarea:required {
   border: 1px solid #ced4da;
   border-radius: 50%; }
 
-/* When the checkbox is checked, add a blue background */
 /* Create the input-box-container-label/indicator (hidden when not checked) */
 .input-box-radiobox-label:after {
   content: "";
@@ -734,9 +693,8 @@ textarea:required {
   height: 8px;
   border-radius: 50%; }
 
-/*----------------------------------------------------------------------*/
-/***CHECKBOX -Visual
-/*----------------------------------------------------------------------*/
+/** checkbox **/
+/** checkbox visual**/
 .input-box .default {
   background: #f5f5f5; }
 
@@ -744,18 +702,11 @@ textarea:required {
   background: #1134a6;
   color: #00071f; }
 
-/* Hide the browser's default checkbox */
-/* Create a custom checkbox */
 /* When the checkbox is checked, add a blue background */
 .input-box-container input:checked ~ .input-box-checkbox-label {
   background-color: #1134a6; }
 
-/* Create the input-box-container-label/indicator (hidden when not checked) */
-/* Show the input-box-container-label when checked */
-/* Style the input-box-container-label/indicator */
-/*----------------------------------------------------------------------*/
-/* CHECKBOX -Structure
-/*----------------------------------------------------------------------*/
+/** checkbox -structure**/
 .input-box {
   display: inline-block;
   cursor: pointer;
@@ -823,13 +774,12 @@ textarea:required {
   top: 1px;
   width: 5px;
   height: 10px;
-  border: solid white;
+  border: solid #ced4da;
   border-width: 0 3px 3px 0;
   transform: rotate(45deg); }
 
-/*----------------------------------------------------------------------*/
-/*        TAGINPUT CONTROL COMPONENT  -Visual       */
-/*----------------------------------------------------------------------*/
+/** taginput **/
+/** taginput visual**/
 .tag-input .tag {
   font-size: 11px;
   background-color: #fffafa;
@@ -840,9 +790,7 @@ textarea:required {
   .tag-input .tag .closebtn:hover {
     color: #6b8eff; }
 
-/*----------------------------------------------------------------------*/
-/*        TAGINPUT CONTROL COMPONENT  - Structure      */
-/*----------------------------------------------------------------------*/
+/** taginput -structure**/
 .tag-input {
   top: 30px;
   left: 1px;
@@ -861,16 +809,13 @@ textarea:required {
       float: right;
       cursor: pointer; }
 
-/*----------------------------------------------------------------------*/
-/*        NOTIFICATION CONTROL COMPONENT -Visual      */
-/*----------------------------------------------------------------------*/
+/** notification **/
+/** notification visual**/
 .toast {
   background-color: #fffafa;
   color: #240000; }
 
-/*----------------------------------------------------------------------*/
-/*        NOTIFICATION CONTROL COMPONENT  -Structure       */
-/*----------------------------------------------------------------------*/
+/** notification -structure**/
 .toastbar {
   position: fixed;
   z-index: 3; }
@@ -903,6 +848,8 @@ textarea:required {
   .toast i {
     cursor: pointer; }
 
+/** progress **/
+/** progress visual**/
 /*----------------------------------------------------------------------*/
 /*        PROGRESS COMPONENT - Visual      */
 /*----------------------------------------------------------------------*/
@@ -930,9 +877,7 @@ textarea:required {
 .nostripes > span > span, .nostripes > span:after {
   background-image: none; }
 
-/*----------------------------------------------------------------------*/
-/*        PROGRESS COMPONENT -Structure   */
-/*----------------------------------------------------------------------*/
+/** progress -structure**/
 .meter {
   height: 20px;
   /* Can be anything */
@@ -967,9 +912,8 @@ textarea:required {
 .nostripes > span > span, .nostripes > span:after {
   -webkit-animation: none; }
 
-/*----------------------------------------------------------------------*/
-/*        RATING COMPONENT -Visual   */
-/*----------------------------------------------------------------------*/
+/** rating **/
+/** rating visual**/
 .rating i {
   font-style: normal; }
 
@@ -981,15 +925,13 @@ textarea:required {
   color: #1134a6; }
 
 .rating.disabled .star-icon:before {
-  color: #ECECEC; }
+  color: #c2c8db; }
 
 @-moz-document url-prefix() {
   /* Firefox Hack */
   .star-icon {
     font-size: 50px; } }
-/*----------------------------------------------------------------------*/
-/*        RATING COMPONENT  - Structure     */
-/*----------------------------------------------------------------------*/
+/** rating -structure**/
 .rating {
   cursor: pointer;
   outline: none;
@@ -1053,11 +995,10 @@ textarea:required {
   /* Firefox Hack */
   .star-icon {
     line-height: 34px; } }
-/*----------------------------------------------------------------------*/
-/*        TOGGEL BUTTON CONTROL COMPONENT   -Visual      */
-/*----------------------------------------------------------------------*/
+/** toggle **/
+/** toggle visual**/
 .toggle-slider {
-  background-color: #ccc; }
+  background-color: #fffafa; }
 
 .toggle-slider:before {
   background-color: #fffafa; }
@@ -1065,10 +1006,7 @@ textarea:required {
 input:checked + .toggle-slider {
   background-color: #fffafa; }
 
-/* Rounded sliders */
-/*----------------------------------------------------------------------*/
-/*        TOGGEL BUTTON CONTROL COMPONENT  -Structure       */
-/*----------------------------------------------------------------------*/
+/** toggle -structure**/
 .toggle {
   position: relative;
   display: inline-block;
@@ -1114,9 +1052,8 @@ input:checked + .toggle-slider:before {
 .round:before {
   border-radius: 50%; }
 
-/****************************************************/
-/***                  Range -Visual                     ***/
-/****************************************************/
+/** range **/
+/** range visual**/
 .ui-slider .ui-slider-range {
   font-size: 0.7em; }
 
@@ -1152,9 +1089,7 @@ input:checked + .toggle-slider:before {
   color: #f1f4fe;
   font-weight: normal; }
 
-/****************************************************/
-/***                  Range - Structure                     ***/
-/****************************************************/
+/** range -structure**/
 .ui-slider {
   position: relative;
   text-align: left; }
@@ -1295,9 +1230,8 @@ input:checked + .toggle-slider:before {
   border-radius: 0;
   border: none; }
 
-/*----------------------------------------------------------------------*/
-/*        Label COMPONENT -Visual        */
-/*----------------------------------------------------------------------*/
+/** label **/
+/** label visual**/
 .bg-yellow {
   color: #000038;
   background-color: #ffeb3b; }
@@ -1322,9 +1256,7 @@ input:checked + .toggle-slider:before {
   color: #000038;
   background-color: #ddffff; }
 
-/*----------------------------------------------------------------------*/
-/*        Label COMPONENT -Structure        */
-/*----------------------------------------------------------------------*/
+/** label -structure**/
 .large {
   font-size: 36px; }
 
@@ -1451,15 +1383,12 @@ input:checked + .toggle-slider:before {
 .border-pale-blue {
   border-color: #e7ffff; }
 
-/*----------------------------------------------------------------------*/
-/*        Image COMPONENT - Visual        */
-/*----------------------------------------------------------------------*/
+/** image **/
+/** image visual**/
 .profile-image a {
   color: #240000; }
 
-/*----------------------------------------------------------------------*/
-/*        Image COMPONENT - Structure        */
-/*----------------------------------------------------------------------*/
+/** image -structure**/
 .profile-image img {
   width: 50px;
   height: 50px;
@@ -1482,44 +1411,26 @@ input:checked + .toggle-slider:before {
   margin-top: 10px;
   margin-bottom: 10px; }
 
-.floatingbutton {
-  z-index: 3;
+/** float-button **/
+/** float-button visual**/
+.button-float {
+  background-color: #1134a6;
+  color: #f1f4fe; }
+
+/** float-button -structure**/
+.button-float {
+  border: none;
+  padding: 15px;
   text-align: center;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
-  border-color: #ced4da;
-  cursor: pointer; }
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 8px 20px 0 rgba(0, 0, 0, 0.25); }
 
-.floatingbutton-relative {
-  position: relative; }
-
-.floatingbutton-fixed {
-  position: fixed; }
-
-.floatingbutton-left {
-  left: 5%; }
-
-.floatingbutton-right {
-  right: 5%; }
-
-.floatingbutton-top {
-  top: 10%; }
-
-.floatingbutton-bottom {
-  bottom: 10%; }
-
-.floatingbutton-center {
-  top: 50%;
-  left: 50%; }
-
-.floatingbutton-circle {
-  border-radius: 50px;
-  width: 60px;
-  height: 60px;
-  line-height: 60px; }
-
-.floatingbutton-square {
-  padding: .5rem 1rem; }
-
+/** floatingbutton **/
+/** floatingbutton visual**/
 .floatingbutton-default {
   background-color: #ffffff; }
 
@@ -1559,6 +1470,48 @@ input:checked + .toggle-slider:before {
   background-color: #f8d9ac;
   color: #fffafa; }
 
+/** floatingbutton -structure**/
+.floatingbutton {
+  z-index: 3;
+  text-align: center;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  border-color: #ced4da;
+  cursor: pointer; }
+
+.floatingbutton-relative {
+  position: relative; }
+
+.floatingbutton-fixed {
+  position: fixed; }
+
+.floatingbutton-left {
+  left: 5%; }
+
+.floatingbutton-right {
+  right: 5%; }
+
+.floatingbutton-top {
+  top: 10%; }
+
+.floatingbutton-bottom {
+  bottom: 10%; }
+
+.floatingbutton-center {
+  top: 50%;
+  left: 50%; }
+
+.floatingbutton-circle {
+  border-radius: 50px;
+  width: 60px;
+  height: 60px;
+  line-height: 60px; }
+
+.floatingbutton-square {
+  padding: .5rem 1rem; }
+
+/** floatingbuttongroup **/
+/** floatingbuttongroup visual**/
+/** floatingbuttongroup -structure**/
 .floatinggroup {
   position: fixed;
   padding-bottom: 20px;
@@ -1572,11 +1525,9 @@ input:checked + .toggle-slider:before {
   text-align: center;
   cursor: pointer; }
 
-/*----------------------------------------------------------------------*/
-/*        Enterprise - Visual COMPONENT         */
-/*----------------------------------------------------------------------*/
+/** enterprise-content **/
+/** enterprise-content visual**/
 .content-title {
-  font-size: 180%;
   color: #00071f; }
 
 .content-area {
@@ -1587,23 +1538,18 @@ input:checked + .toggle-slider:before {
   color: #00071f; }
 
 header .billboard .content-button {
-  font-size: 70%;
   color: #00071f; }
 
 .content-button i {
-  font-size: 10px;
   color: #00071f; }
 
 .content-button-small i {
-  font-size: 12px;
   color: #00071f; }
 
 .close-button {
   color: gray; }
 
-/*----------------------------------------------------------------------*/
-/*        Enterprise COMPONENT - Structure     */
-/*----------------------------------------------------------------------*/
+/** enterprise-content -structure**/
 .inline-list {
   padding-left: 0; }
 
@@ -1628,6 +1574,7 @@ header .billboard .content-button {
 
 .content-title {
   width: 100%;
+  font-size: 180%;
   font-weight: 700;
   line-height: 130%;
   text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3); }
@@ -1699,6 +1646,7 @@ header .billboard .content-area .credits strong {
   margin-right: .75em;
   margin-top: 20px;
   padding: 5px 20px;
+  font-size: 70%;
   font-weight: 500;
   text-decoration: none;
   text-transform: uppercase; }
@@ -1708,6 +1656,7 @@ header .billboard .content-button {
   margin-right: .75em;
   margin-top: 20px;
   padding: 5px 20px;
+  font-size: 70%;
   font-weight: 500;
   text-decoration: none;
   text-transform: uppercase; }
@@ -1720,6 +1669,7 @@ header .billboard .content-button {
   padding: 8px 0 0 13px;
   border: solid 2px rgba(255, 255, 255, 0.4);
   border-radius: 40px;
+  font-size: 10px;
   font-weight: 300;
   text-decoration: none;
   text-transform: uppercase;
@@ -1735,6 +1685,7 @@ header .billboard .content-button {
   padding: 7px 0 0 5px;
   border: solid 2px rgba(255, 255, 255, 0.4);
   border-radius: 100px;
+  font-size: 12px;
   font-weight: 500;
   text-decoration: none;
   text-transform: uppercase;
@@ -1749,29 +1700,24 @@ header .billboard .content-button {
   padding-left: 98%;
   background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, transparent 70%, transparent 100%); }
 
-/*----------------------------------------------------------------------*/
-/*        Enterprise youtube COMPONENT - Structure     */
-/*----------------------------------------------------------------------*/
+/** enterprise-youtube **/
+/** enterprise-youtube visual**/
 .close-button {
-  cursor: pointer;
-  color: grey; }
+  color: grey;
+  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, transparent 70%, transparent 100%); }
 
 .close-button i:hover {
   color: red; }
 
-/*----------------------------------------------------------------------*/
-/*        Enterprise youtube COMPONENT - Structure     */
-/*----------------------------------------------------------------------*/
+/** enterprise-youtube -structure**/
 .close-button {
-  cursor: pointer;
-  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, transparent 70%, transparent 100%); }
+  cursor: pointer; }
 
 .close-button i:hover {
   cursor: pointer; }
 
-/*----------------------------------------------------------------------*/
-/*        Enterprise Carousel - Structure COMPONENT         */
-/*----------------------------------------------------------------------*/
+/** enterprise-carousel **/
+/** enterprise-carousel visual**/
 .row__inner {
   font-size: 0; }
 
@@ -1779,14 +1725,17 @@ header .billboard .content-button {
   font-size: 20px; }
 
 .tile__details {
-  font-size: 10px; }
+  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%); }
 
 .tile__details:after,
 .tile__details:before {
   display: #000; }
 
 .tile__details_v {
-  font-size: 10px; }
+  font-size: 10px;
+  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%); }
 
 .tile__details_v:after,
 .tile__details_v:before {
@@ -1796,28 +1745,19 @@ header .billboard .content-button {
   color: white; }
 
 .controls {
-  color: dimgrey;
-  font-size: 1em; }
+  color: dimgrey; }
 
 .controls-v {
-  color: dimgrey;
-  font-size: 1em; }
+  color: dimgrey; }
 
 .textonly {
   color: #00071f;
   background-color: transparent; }
 
-.carousel-title {
-  font-size: 10px; }
-
-.subtitle {
-  font-size: 6pt; }
-
 .match {
   color: lightgreen; }
 
 .age {
-  font-size: 100%;
   color: #00071f; }
 
 .actionpanel {
@@ -1825,7 +1765,6 @@ header .billboard .content-button {
   background-color: transparent; }
 
 .section-header {
-  font-size: 150%;
   color: white; }
 
 .playpanel .playbutton {
@@ -1837,9 +1776,7 @@ header .billboard .content-button {
 .selected {
   color: white; }
 
-/*----------------------------------------------------------------------*/
-/*        Enterprise Carousel - Structure COMPONENT         */
-/*----------------------------------------------------------------------*/
+/** enterprise-carousel -structure**/
 .contain {
   width: 100%; }
 
@@ -1867,6 +1804,7 @@ header .billboard .content-button {
   width: 250px;
   /*height: 140.625px;*/
   margin-right: 10px;
+  font-size: 20px;
   cursor: pointer;
   -webkit-transition: 450ms all;
   transition: 450ms all;
@@ -1885,9 +1823,8 @@ header .billboard .content-button {
   left: 0;
   right: 0;
   top: 0;
+  font-size: 10px;
   opacity: 0;
-  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
   -webkit-transition: 450ms opacity;
   transition: 450ms opacity; }
 
@@ -1907,7 +1844,6 @@ header .billboard .content-button {
   line-height: 50px;
   text-align: center;
   border-radius: 100%;
-  /*background: rgba(0,0,0,0.5);*/
   z-index: 1; }
 
 .tile__details_v {
@@ -1916,9 +1852,8 @@ header .billboard .content-button {
   left: 0;
   right: 0;
   top: 50%;
+  font-size: 10px;
   opacity: 0;
-  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
   -webkit-transition: 450ms opacity;
   transition: 450ms opacity; }
 
@@ -1989,13 +1924,15 @@ header .billboard .content-button {
   padding-top: 125px;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 1em; }
 
 .controls-v {
   padding-top: 250px;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 1em; }
 
 .textonly {
   padding: 0px 7px 2px 7px;
@@ -2049,9 +1986,8 @@ header .billboard .content-button {
   height: 5px;
   border-top: 3px solid white; }
 
-/*----------------------------------------------------------------------*/
-/*        DATAPOINTS COMPONENT - Visual         */
-/*----------------------------------------------------------------------*/
+/** Datapoints**/
+/** Datapoints -visual**/
 .datapoints {
   background: #fffafa;
   color: #00071f; }
@@ -2065,9 +2001,7 @@ header .billboard .content-button {
   .datapoints .datapoint-east {
     padding: 5px; }
 
-/*----------------------------------------------------------------------*/
-/*        DATAPOINTS COMPONENT - Structure         */
-/*----------------------------------------------------------------------*/
+/** Datapoints -structure**/
 .datapoints {
   font-size: 125%;
   /* Border */
@@ -2087,15 +2021,8 @@ header .billboard .content-button {
   .datapoints .datapoint-east {
     padding: 5px; }
 
-/*----------------------------------------------------------------------*/
-/*        DATATABLE COMPONENT  -Visual       */
-/*----------------------------------------------------------------------*/
-.datatabletitle {
-  font-size: 1.5em; }
-
-.datatable {
-  border: 1px solid #ced4da; }
-
+/** Datatable**/
+/** Datatable -structure**/
 .datatable-height::-webkit-scrollbar-track {
   background-color: #c2c8db; }
 
@@ -2105,13 +2032,9 @@ header .billboard .content-button {
 .datatable-height::-webkit-scrollbar-thumb {
   background-color: #fffafa; }
 
-.datatable .title {
-  font-size: 1.5em; }
-
 .datatable .datatable-header {
   background-color: #1134a6;
-  color: #f1f4fe;
-  font-size: larger; }
+  color: #f1f4fe; }
 
 .datatable .datatable-row:hover {
   background-color: #b8c8ff;
@@ -2123,10 +2046,9 @@ header .billboard .content-button {
 .datatable-row:nth-child(odd) {
   background-color: #f5f5f5; }
 
-/*----------------------------------------------------------------------*/
-/*        DATATABLE COMPONENT - Structure         */
-/*----------------------------------------------------------------------*/
+/** Datatable -visual**/
 .datatabletitle {
+  font-size: 1.5em;
   margin: .1em 0 .35em; }
 
 .datatable {
@@ -2157,6 +2079,7 @@ header .billboard .content-button {
 .datatable .datatable-header {
   display: table-header-group;
   text-align: left;
+  font-size: larger;
   cursor: pointer; }
 
 .datatable .datatable-col {
@@ -2193,9 +2116,8 @@ header .billboard .content-button {
   line-height: 38px;
   text-align: center; }
 
-/*----------------------------------------------------------------------*/
-/*        HORIZONTAL TREE COMPONENT -Visual     */
-/*----------------------------------------------------------------------*/
+/** Horizontaltreeview **/
+/** Horizontaltreeview -visual**/
 .horizontaltreeview-node-label {
   background-color: #6b8eff;
   color: #00071f; }
@@ -2205,9 +2127,7 @@ header .billboard .content-button {
   color: #001352;
   background-color: #b8c8ff; }
 
-/*----------------------------------------------------------------------*/
-/*        HORIZONTAL TREE COMPONENT -Visual     */
-/*----------------------------------------------------------------------*/
+/** Horizontaltreeview -structure**/
 .horizontaltreeview {
   position: relative;
   overflow: auto; }
@@ -2283,9 +2203,8 @@ header .billboard .content-button {
   .horizontaltreeview-node-label span {
     padding-right: 5px; }
 
-/*----------------------------------------------------------------------*/
-/*        ITEM SELECTOR COMPONENT -Visual        */
-/*----------------------------------------------------------------------*/
+/** Itemselector **/
+/** Itemselector visual**/
 .item-selector-action-panel .actionbar .actionbarinner .action {
   background-color: #1134a6;
   color: #f1f4fe; }
@@ -2298,9 +2217,7 @@ header .billboard .content-button {
 .itemselector-list:hover {
   background-color: #b8c8ff; }
 
-/*----------------------------------------------------------------------*/
-/*        ITEM SELECTOR COMPONENT  -Structure       */
-/*----------------------------------------------------------------------*/
+/** Itemselector structure**/
 .flex-col-45pt {
   max-width: 45%; }
 
@@ -2341,9 +2258,8 @@ header .billboard .content-button {
   padding: 5px;
   text-align: left; }
 
-/*----------------------------------------------------------------------*/
-/*        LISTBOX COMPONENT -Visual       */
-/*----------------------------------------------------------------------*/
+/** Listbox **/
+/** Listbox visual**/
 .listbox-height::-webkit-scrollbar-track {
   background-color: #1134a6; }
 
@@ -2353,13 +2269,8 @@ header .billboard .content-button {
 .listbox-height::-webkit-scrollbar-thumb {
   background-color: #fffafa; }
 
-.listbox .list {
-  font-size: 100%; }
-
-.listbox .list .list-items {
-  font-weight: 400; }
-  .listbox .list .list-items .datatable-row:nth-child(odd) {
-    background: none; }
+.listbox .list .list-items .datatable-row:nth-child(odd) {
+  background: none; }
 
 .listbox .list .list-items:hover {
   background-color: #b8c8ff; }
@@ -2367,15 +2278,11 @@ header .billboard .content-button {
 .listbox .list {
   background-color: #fffafa; }
   .listbox .list .title {
-    font-size: 18px;
     color: rgba(0, 0, 0, 0.87); }
     .listbox .list .title a {
-      font-size: 16px;
       color: rgba(0, 0, 0, 0.87) !important; }
 
-/*----------------------------------------------------------------------*/
-/*        LISTBOX COMPONENT - Structure     */
-/*----------------------------------------------------------------------*/
+/** Listbox structure**/
 .listbox {
   margin-bottom: 1rem;
   border: 1px solid #ced4da; }
@@ -2396,12 +2303,14 @@ header .billboard .content-button {
   border: 0;
   outline: 0;
   text-decoration: none;
+  font-size: 100%;
   list-style: none; }
 
 .listbox .list .list-items {
   list-style: none;
   border-bottom: 1px solid #ced4da;
   cursor: pointer;
+  font-weight: 400;
   margin: 1px 0;
   padding: 10px;
   text-align: left;
@@ -2411,13 +2320,26 @@ header .billboard .content-button {
     border-collapse: inherit; }
 
 .listbox .list .title {
-  float: left; }
+  float: left;
+  font-size: 18px; }
   .listbox .list .title a {
+    font-size: 16px;
     text-transform: lowercase; }
 
-/*----------------------------------------------------------------------*/
-/*        TREE-VIEW COMPONENT   -Structure      */
-/*----------------------------------------------------------------------*/
+/** Treenode **/
+/** Treenode visual**/
+.treenode {
+  background-color: transparent; }
+
+.treenode-content:hover {
+  background-color: #6b8eff;
+  color: #00071f; }
+
+.treenode-label-active {
+  background-color: #6b8eff;
+  color: #00071f; }
+
+/** Treenode -structure**/
 .treeview {
   height: 100%;
   margin: 0;
@@ -2458,23 +2380,8 @@ header .billboard .content-button {
   -webkit-transition: expand .5s;
   transition: expand .5s; }
 
-/*----------------------------------------------------------------------*/
-/*        TREE-VIEW COMPONENT - Visual        */
-/*----------------------------------------------------------------------*/
-.treenode {
-  background-color: transparent; }
-
-.treenode-content:hover {
-  background-color: #6b8eff;
-  color: #00071f; }
-
-.treenode-label-active {
-  background-color: #6b8eff;
-  color: #00071f; }
-
-/*----------------------------------------------------------------------*/
-/*        MENU COMPONENT   -Visual      */
-/*----------------------------------------------------------------------*/
+/** menubar **/
+/** menubar visual**/
 .menubar .menuheader .menulink a {
   color: #240000; }
 
@@ -2506,9 +2413,7 @@ header .billboard .content-button {
   color: #240000;
   background-color: #b8c8ff; }
 
-/*----------------------------------------------------------------------*/
-/*        MENU COMPONENT  -Structure     */
-/*----------------------------------------------------------------------*/
+/** menubar -structure**/
 .menu-right {
   right: 10px; }
 
@@ -2586,6 +2491,8 @@ header .billboard .content-button {
   padding: 5px 10px 0px 10px;
   cursor: pointer; }
 
+/** navbar **/
+/** navbar visual**/
 .topnav {
   background-color: #000080;
   color: #f0f0ff; }
@@ -2621,6 +2528,7 @@ header .billboard .content-button {
 .mobilebar {
   color: #f0f0ff; }
 
+/** navbar -structure**/
 .topnav {
   overflow: hidden;
   position: fixed;
@@ -2750,9 +2658,8 @@ header .billboard .content-button {
 .nav-dropdown-content-right .nav-dropdown-content {
   right: 10px; }
 
-/*----------------------------------------------------------------------*/
-/*        PAGINATOR COMPONENT  -Visual      */
-/*----------------------------------------------------------------------*/
+/** paginator **/
+/** paginator visual**/
 .paginator .paginator-pages .paginator-page {
   color: inherit; }
 
@@ -2764,9 +2671,7 @@ header .billboard .content-button {
   background-color: #6b8eff;
   color: #00071f; }
 
-/*----------------------------------------------------------------------*/
-/*        PAGINATOR COMPONENT - Structure       */
-/*----------------------------------------------------------------------*/
+/** paginator -structure**/
 .paginator {
   padding: 10px; }
 
@@ -2791,9 +2696,8 @@ header .billboard .content-button {
   border: 1px solid #ced4da;
   border-radius: 2px; }
 
-/*----------------------------------------------------------------------*/
-/*        SIDENAV COMPONENT -Visual       */
-/*----------------------------------------------------------------------*/
+/** sidenav **/
+/** sidenav visual**/
 .sidenav-mobile-bar {
   color: #240000; }
 
@@ -2845,9 +2749,7 @@ header .billboard .content-button {
 .sidenav .border {
   border-bottom: 1px solid #ced4da; }
 
-/*----------------------------------------------------------------------*/
-/*        SIDENAV COMPONENT  -Structure       */
-/*----------------------------------------------------------------------*/
+/** sidenav -structure**/
 .sidenav-mobile-bar {
   top: 10px;
   padding: 10px;
@@ -2942,9 +2844,8 @@ header .billboard .content-button {
   max-height: 1000px;
   overflow: auto; }
 
-/*----------------------------------------------------------------------*/
-/*        DOCKBAR COMPONENT  -Visual       */
-/*----------------------------------------------------------------------*/
+/** dockbar **/
+/** dockbar visual**/
 .dockbar {
   background-color: #1134a6;
   color: #ced4da; }
@@ -2955,9 +2856,7 @@ header .billboard .content-button {
 /* Style the buttons inside the tab */
 .dockbar button {
   background-color: inherit;
-  color: #ced4da;
-  font-size: 24px;
-  height: 50px; }
+  color: #ced4da; }
 
 /* Change background color of buttons on hover */
 .dockbar button:hover {
@@ -2970,31 +2869,21 @@ header .billboard .content-button {
   color: #00071f; }
 
 .dockbar-label-highlight {
-  color: black;
-  font-weight: bold; }
+  color: black; }
 
 .dockbar-item-close-bar {
-  font-size: 24px;
-  color: #000080;
-  font-weight: 500; }
-
-.dockbar-title {
-  font-size: 17px;
-  font-weight: 500; }
+  color: #000080; }
 
 .dockbar-height::-webkit-scrollbar-track {
   background-color: #c2c8db; }
 
 .dockbar-height::-webkit-scrollbar {
-  width: 6px;
   background-color: #c2c8db; }
 
 .dockbar-height::-webkit-scrollbar-thumb {
   background-color: #fffafa; }
 
-/*----------------------------------------------------------------------*/
-/*        DOCKBAR COMPONENT -Structure      */
-/*----------------------------------------------------------------------*/
+/** dockbar -structure**/
 .dockbar {
   float: left;
   width: 70px;
@@ -3012,21 +2901,27 @@ header .billboard .content-button {
   text-align: center;
   cursor: pointer;
   transition: 0.3s;
+  font-size: 17px;
   border-bottom: 1px solid #ced4da;
   border-left: 1px solid #ced4da;
   height: 50px; }
 
-/* Change background color of buttons on hover */
 /* Create an active/current "tab button" class */
 .dockbar button.active {
   border-left: 3px solid #000080; }
 
+.dockbar-label-highlight {
+  font-weight: bold; }
+
 .dockbar-item-close-bar {
+  font-size: 24px;
   float: right;
   font-weight: 500;
   cursor: pointer; }
 
 .dockbar-title {
+  font-size: 17px;
+  font-weight: 500;
   padding: 15px 10px 10px 10px;
   border-bottom: 1px solid #000080; }
 
@@ -3047,61 +2942,32 @@ header .billboard .content-button {
   width: 6px; }
 
 /** Initialze Panels and Layouts variables ------------ */
-/*
-
-!*----------------------------------------------------------------------*!
-!*        ACCORDION COMPONENT - Visual      *!
-!*----------------------------------------------------------------------*!
-
-.accordion {
-  background-color: $accordionBGColor;
-  color: $accordionColor;
-  border-color: $accordionBorder;
-  font-size: $accordionFontSize;
-}
-
-
-.accordion .active-accordion, .accordion:hover {
-  background-color: $accordionActiveBGColor;
-  color: $accordionActiveColor;
-}
-
-.accordion:after {
-  color:$accordionTransparentColor;
-  font-weight: $accordionTransparentFontWeight;
-}
-
-.panel {
-
-  background-color: $accordionPanelBGColor;
-  color: $accordionPanelColor;
-}
-
-!** Transparent Styling **!
-.accordion-transparent{
-
-  background:$accordionTransparentBG;
-  color:$accordionTransparentColor;
-  border-color:$accordionTransparentBorder;
-  font-size: $accordionFontSize;
-}
-
-.accordion-transparent:after {
-  color:$accordionTransparentColor;
-  font-weight: $accordionTransparentFontWeight;
-}
-
-.panel {
-  background-color: $accordionPanelBGColor;
-  color: $accordionPanelColor;
-}
-*/
-/*----------------------------------------------------------------------*/
-/*        ACCORDION COMPONENT         */
-/*----------------------------------------------------------------------*/
+/** accordion **/
+/** accordion visual**/
 .accordion {
   background-color: #1134a6;
-  color: #f1f4fe;
+  color: #f1f4fe; }
+
+.accordion .active-accordion, .accordion:hover {
+  background-color: #6b8eff;
+  color: #f1f4fe; }
+
+.accordion:after {
+  color: red; }
+
+.panel {
+  background-color: #fffafa;
+  color: #240000; }
+
+/** Transparent Styling **/
+.accordion-transparent {
+  background: #fffafa; }
+
+.accordion-transparent:after {
+  color: red; }
+
+/** accordion -structure**/
+.accordion {
   cursor: pointer;
   padding: 10px;
   width: 100%;
@@ -3111,20 +2977,13 @@ header .billboard .content-button {
   font-size: 15px;
   transition: 0.4s; }
 
-.accordion .active-accordion, .accordion:hover {
-  background-color: #6b8eff;
-  color: #f1f4fe; }
-
 .accordion:after {
-  color: red;
   font-weight: bold;
   float: right;
   margin-left: 5px; }
 
 .panel {
   padding: 18px;
-  background-color: #fffafa;
-  color: #240000;
   overflow: auto; }
 
 /** Transparent Styling **/
@@ -3132,7 +2991,6 @@ header .billboard .content-button {
   cursor: pointer;
   padding: 10px;
   width: 100%;
-  background: #fffafa;
   border-color: #fffafa;
   text-align: left;
   outline: none;
@@ -3142,7 +3000,6 @@ header .billboard .content-button {
   border-top: 1px solid #ced4da; }
 
 .accordion-transparent:after {
-  color: red;
   font-weight: bold;
   float: right;
   margin-left: 5px; }
@@ -3151,98 +3008,15 @@ header .billboard .content-button {
   opacity: 0.55;
   cursor: not-allowed; }
 
-/*
-
-!*----------------------------------------------------------------------*!
-!*        ACCORDION COMPONENT - Structure        *!
-!*----------------------------------------------------------------------*!
-$accordionBGColor: $componentHeaderBGColor;
-$accordionColor: $componentHeaderFontColor;
-$accordionActiveBGColor:$componentActiveBGColor;
-$accordionActiveColor:$componentHeaderFontColor;
-$accordionPanelBGColor:$componentHeaderBGColor;
-$accordionPanelColor: $componentHeaderFontColor;
-
-$accordionBorderSize : $borderSize;
-$accordionBorderColor : $borderColor;
-$accordionBorder : $borderColor;
-$accordionFontSize : 15px;
-$accordionTransparentBG:$componentBGColor;
-$accordionTransparentBorder:$componentBGColor;
-$accordionTransparentFontWeight:bold;
-$accordionTransparentColor : $componentFontColor;
-
-.accordion {
-
-  cursor: pointer;
-  padding: 10px;
-  width: 100%;
-  text-align: left;
-  outline: none;
-  transition: 0.4s;
-}
-
-
-.accordion:after {
-  float: right;
-  margin-left: 5px;
-}
-
-
-.panel {
-  padding: 0 18px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-}
-
-!** Transparent Styling **!
-.accordion-transparent{
-  cursor: pointer;
-  padding: 10px;
-  width: 100%;
-  text-align: left;
-  outline: none;
-
-  transition: 0.4s;
-  box-shadow: none;
-  border-top: $accordionBorderSize solid $accordionBorderColor;
-}
-
-.accordion-transparent:after {
-  float: right;
-  margin-left: 5px;
-}
-
-.panel {
-  padding: 0 18px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-}
-
-.accordion-disable{
-  opacity: 0.55;
-  cursor: not-allowed;
-}
-
-*/
-/*----------------------------------------------------------------------*/
-/*        CARD COMPONENT   -Visual    */
-/*----------------------------------------------------------------------*/
+/** cards **/
+/** cards visual**/
 .card-container {
   background-color: #fffafa;
   color: #240000; }
 
 .card-header {
   background: #1134a6;
-  font-size: 20px;
-  color: #f1f4fe;
-  font-weight: 300; }
-
-.card-body {
-  font-size: 14px;
-  font-weight: 400; }
+  color: #f1f4fe; }
 
 .cardbody::-webkit-scrollbar-track {
   background-color: #c2c8db; }
@@ -3257,15 +3031,14 @@ $accordionTransparentColor : $componentFontColor;
   background-color: #fffafa;
   color: #1134a6; }
 
-/*----------------------------------------------------------------------*/
-/*        CARD COMPONENT -Structure*/
-/*----------------------------------------------------------------------*/
+/** cards -structure**/
 .card-container {
   position: relative;
   display: flex;
   flex-direction: column;
   border: 1px solid #ced4da;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14); }
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
+  z-index: 1; }
 
 .card-container > * {
   padding: 10px;
@@ -3277,11 +3050,15 @@ $accordionTransparentColor : $componentFontColor;
   display: flex;
   padding: 10px 24px;
   border-bottom: 1px solid #ced4da;
+  font-size: 20px;
+  font-weight: 300;
   text-transform: capitalize;
   overflow: auto; }
 
 .card-body {
+  font-size: 14px;
   line-height: 24px;
+  font-weight: 400;
   padding-left: 16px;
   padding-right: 16px; }
 
@@ -3295,42 +3072,27 @@ $accordionTransparentColor : $componentFontColor;
   display: flex;
   border-top: 1px solid #ced4da; }
 
-/*----------------------------------------------------------------------*/
-/*        CAROUSEL COMPONENT- View*/
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
-/*        CAROUSEL COMPONENT - Structure        */
-/*----------------------------------------------------------------------*/
+/** carousel **/
+/** carousel visual**/
+/** carousel -structure**/
 .carouselnavigation {
   padding: 125px 16px;
   cursor: pointer; }
 
-/*----------------------------------------------------------------------*/
-/*        fieldset COMPONENT         */
-/*----------------------------------------------------------------------*/
-.collapsible-legend {
-  font-size: 13px;
-  font-weight: bold; }
-
-.collapsible-fieldset {
-  height: 0;
-  overflow: hidden; }
-
-.collapsible-fieldset.active {
-  height: auto; }
-
-/*----------------------------------------------------------------------*/
-/*        fieldset COMPONENT  - Structure      */
-/*----------------------------------------------------------------------*/
+/** fieldset **/
+/** fieldset visual**/
+/** fieldset -structure**/
 fieldset {
   border: 1px solid #ced4da;
   border-radius: 2px; }
 
 .collapsible-legend {
   padding: 5px 10px;
+  font-size: 13px;
   margin-left: 20px;
   box-shadow: none;
   border: 0;
+  font-weight: bold;
   cursor: pointer; }
 
 .collapsible-fieldset {
@@ -3340,9 +3102,8 @@ fieldset {
 .collapsible-fieldset.active {
   height: auto; }
 
-/*----------------------------------------------------------------------*/
-/*        STEPS COMPONENT - Visual   */
-/*----------------------------------------------------------------------*/
+/** steps **/
+/** steps visual**/
 .step-label-highlight {
   color: #1134a6;
   font-weight: bold; }
@@ -3373,9 +3134,7 @@ fieldset {
 .step-box-table-item-hover:hover {
   background-color: #b8c8ff; }
 
-/*----------------------------------------------------------------------*/
-/*        STEPS COMPONENT  - Structure       */
-/*----------------------------------------------------------------------*/
+/** steps -structure**/
 .stepwizard-step p {
   margin-top: 0px; }
 
@@ -3446,13 +3205,8 @@ fieldset {
 .step-box-table-item-hover:hover {
   cursor: pointer; }
 
-/*----------------------------------------------------------------------*/
-/*        TABL COMPONENT   -Visual      */
-/*----------------------------------------------------------------------*/
-.tablink {
-  font-size: 17px; }
-
-/**VERTICAL TABS**/
+/** tab **/
+/** tab visual**/
 .verticalnavtab .defaultnode {
   background-color: #fffafa;
   color: #240000; }
@@ -3466,9 +3220,7 @@ fieldset {
   background-color: #6b8eff;
   color: #00071f; }
 
-/*----------------------------------------------------------------------*/
-/*        TABL COMPONENT  - Structure       */
-/*----------------------------------------------------------------------*/
+/** tab -structure**/
 .tab {
   position: relative;
   overflow: hidden;
@@ -3547,9 +3299,8 @@ fieldset {
 .verticalalign-tabcontent {
   vertical-align: top !important; }
 
-/*----------------------------------------------------------------------*/
-/*        WINDOW COMPONENT -Visual     */
-/*----------------------------------------------------------------------*/
+/** window **/
+/** window visual**/
 .root-window {
   background-color: #fffafa;
   /* Black w/ opacity */ }
@@ -3578,9 +3329,7 @@ fieldset {
   background-color: #f1f4fe;
   color: #1134a6; }
 
-/*----------------------------------------------------------------------*/
-/*        WINDOW COMPONENT - Strucure       */
-/*----------------------------------------------------------------------*/
+/** window -structure**/
 .root-window {
   flex-direction: column;
   position: fixed;
@@ -3646,36 +3395,21 @@ fieldset {
   display: flex;
   border-top: 1px solid #ced4da; }
 
-/*----------------------------------------------------------------------*/
-/*        DIALOGUE COMPONENT -Visual        */
-/*----------------------------------------------------------------------*/
+/** dialogue **/
+/** dialogue visual**/
 .root-window {
   background: rgba(128, 127, 127, 0.6); }
 
 .dialogue-content {
   background-color: #fffafa; }
 
-.dialogue-content > * {
-  padding: 5px; }
-
 .dialogue-header {
-  /* padding: 10px 24px;*/
   background: #1134a6;
-  font-size: 20px;
-  color: #240000;
-  font-weight: 300; }
-
-.dialogue-middle {
-  font-size: 14px;
-  line-height: 24px;
-  font-weight: 400; }
+  color: #240000; }
 
 .dialogue-footer {
+  background-color: #fffafa;
   color: #1134a6; }
-
-.dialogue-message {
-  font-size: 20px;
-  font-weight: 300; }
 
 .dialogue-success {
   color: #5cb85c; }
@@ -3686,12 +3420,7 @@ fieldset {
 .dialogue-warning {
   color: #f0ad4e; }
 
-.icon-style {
-  font-size: 15px; }
-
-/*----------------------------------------------------------------------*/
-/*        DIALOGUE COMPONENT -Structure       */
-/*----------------------------------------------------------------------*/
+/** dialogue -structure**/
 .root-window {
   flex-direction: column;
   position: fixed;
@@ -3717,7 +3446,7 @@ fieldset {
 .dialogue-content {
   margin: auto;
   padding: 0px;
-  border: 1px solid #888;
+  border: 1px solid #ced4da;
   width: 80%;
   height: 80%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
@@ -3732,10 +3461,14 @@ fieldset {
   display: flex;
   /* padding: 10px 24px;*/
   border-bottom: 1px solid #ced4da;
+  font-size: 20px;
+  font-weight: 300;
   text-transform: capitalize; }
 
 .dialogue-middle {
+  font-size: 14px;
   line-height: 24px;
+  font-weight: 400;
   padding-left: 16px;
   padding-right: 16px;
   min-height: 80%;
@@ -3749,6 +3482,8 @@ fieldset {
 
 .dialogue-message {
   display: flex;
+  font-size: 20px;
+  font-weight: 300;
   text-transform: capitalize;
   text-align: center; }
 
@@ -3768,9 +3503,11 @@ fieldset {
   display: table-cell;
   vertical-align: middle; }
 
-/*----------------------------------------------------------------------*/
-/*        PANEL COMPONENT - Visual     */
-/*----------------------------------------------------------------------*/
+.icon-style {
+  font-size: 15px; }
+
+/** panel **/
+/** panel visual**/
 .panel-accordion {
   background-color: #1134a6;
   color: #f1f4fe;
@@ -3793,9 +3530,7 @@ fieldset {
 .panel-panel::-webkit-scrollbar-thumb {
   background-color: #fffafa; }
 
-/*----------------------------------------------------------------------*/
-/*        PANEL COMPONENT -Structure     */
-/*----------------------------------------------------------------------*/
+/** panel -structure**/
 .panel-accordion {
   cursor: pointer;
   padding: 10px;
@@ -3835,12 +3570,9 @@ fieldset {
 .panel-icon {
   padding-left: 5px; }
 
-/*----------------------------------------------------------------------*/
-/*        BORDER LAYOUT COMPONENT -Visual        */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
-/*        BORDER LAYOUT COMPONENT - Structure       */
-/*----------------------------------------------------------------------*/
+/** borderlayout **/
+/** borderlayout visual**/
+/** borderlayout -structure**/
 .borderlayout-N {
   grid-area: north; }
 
@@ -3946,9 +3678,9 @@ fieldset {
 .borderlayout-container-C-S aside {
   border: 0px solid none; }
 
-/*----------------------------------------------------------------------*/
-/*        ROW-COLUMN COMPONENT   -Visual      */
-/*----------------------------------------------------------------------*/
+/** rowcol **/
+/** rowcol visual**/
+/** rowcol -structure**/
 /*----------------------------------------------------------------------*/
 /*        ROW-COLUMN COMPONENT  - Structure       */
 /*----------------------------------------------------------------------*/

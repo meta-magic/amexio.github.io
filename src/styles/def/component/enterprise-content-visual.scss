@@ -1,13 +1,5 @@
-/*----------------------------------------------------------------------*/
-/*        Enterprise - Visual COMPONENT         */
-/*----------------------------------------------------------------------*/
-
-$eeContentColor : $componentActiveFontColor;
-$eeContentTitleFontSize : 180%;
 
 .content-title {
-  //width: 100%;
-  font-size: $eeContentTitleFontSize; 
   color: $eeContentColor;    //theme color?
 }
 
@@ -17,22 +9,18 @@ $eeContentTitleFontSize : 180%;
 
 /* Button Related CSS */
 .content-button {
-//  font-size: 70%;
   color: $eeContentColor;    //theme color?
 }
 
 header .billboard .content-button {
-  font-size: 70%;
   color: $eeContentColor;    //theme color?
 }
 
 .content-button i {
-  font-size: 10px;
   color: $eeContentColor;
 }
 
 .content-button-small i {  
-  font-size: 12px;
   color: $eeContentColor;      //theme color?
   
 }

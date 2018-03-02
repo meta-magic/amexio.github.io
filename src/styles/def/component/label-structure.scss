@@ -1,50 +1,45 @@
 
-/*----------------------------------------------------------------------*/
-/*        Label COMPONENT -Structure        */
-/*----------------------------------------------------------------------*/
-
 .label-content{
 }
 
 .large{
-  font-size: 36px;
+  font-size: $largeFontSize;
 }
 
 .medium{
-  font-size: 20px;
+  font-size: $mediumFontSize;
 }
 
 .small{
-  font-size: 18px;
+  font-size: $smallFontSize;
 }
 
 .large-bold{
-  font-size: 36px;
+  font-size: $largeFontSize;
   font-weight: bold;
 }
 
 .medium-bold{
-  font-size: 20px;
+  font-size: $mediumFontSize;
   font-weight: bold;
 }
 
 .small-bold{
-  font-size: 18px;
+  font-size: $smallFontSize;
   font-weight: bold;
 }
 
-
 .border-topbar{
-  border-top:6px solid $borderColor;
+  border-top:$labelBorderSize solid $borderColor;
 }
 .border-bottombar{
-  border-bottom:6px solid $borderColor;
+  border-bottom:$labelBorderSize solid $borderColor;
 }
 .border-leftbar{
-  border-left:6px solid $borderColor;
+  border-left:$labelBorderSize solid $borderColor;
 }
 .border-rightbar{
-  border-right:6px solid $borderColor;
+  border-right:$labelBorderSize solid $borderColor;
 }
 
 

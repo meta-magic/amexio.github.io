@@ -1,14 +1,36 @@
-//components scss
-
+/** Datapoints**/
+@import "component/datapoint-vars.scss";
+/** Datapoints -visual**/
 @import "component/datapoint-visual.scss";
+/** Datapoints -structure**/
 @import "component/datapoint-structure.scss";
+/** Datatable**/
+@import "component/datatable-vars.scss";
+/** Datatable -structure**/
 @import "component/datatable-visual.scss";
+/** Datatable -visual**/
 @import "component/datatable-structure.scss";
+/** Horizontaltreeview **/
+@import "component/horizontaltreeview-vars.scss";
+/** Horizontaltreeview -visual**/
 @import "component/horizontaltreeview-visual.scss";
+/** Horizontaltreeview -structure**/
 @import "component/horizontaltreeview-structure.scss";
+/** Itemselector **/
+@import "component/itemselector-vars.scss";
+/** Itemselector visual**/
 @import "component/itemselector-visual.scss";
+/** Itemselector structure**/
 @import "component/itemselector-structure.scss";
+/** Listbox **/
+@import "component/listbox-vars.scss";
+/** Listbox visual**/
 @import "component/listbox-visual.scss";
+/** Listbox structure**/
 @import "component/listbox-structure.scss";
-@import "component/treenode-structure.scss";
+/** Treenode **/
+@import "component/treenode-vars.scss";
+/** Treenode visual**/
 @import "component/treenode-visual.scss";
+/** Treenode -structure**/
+@import "component/treenode-structure.scss";

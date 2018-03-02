@@ -1,26 +1,4 @@
 
-/*----------------------------------------------------------------------*/
-/*        Enterprise Carousel - Structure COMPONENT         */
-/*----------------------------------------------------------------------*/
-
-$eeTitleColor1 : rgba(0,0,0,0.9);
-$eeTitleColor2 : rgba(0,0,0,0);
-$eeTitleColor1 : rgba(0,0,0,0.9);
-$eeTitleColor2 : rgba(0,0,0,0);
-$eeTitleDisplay : #000;
-$eeTitleColor : white;
-
-$tileFontSize : 20px;
-$tileDetFontSize : 10px;
-$controlColor : dimgrey;
-$controlFontSize  : 1em;
-$subtitleFontSize : 6pt;
-$textColor:$componentActiveFontColor;
-$textBGColor : transparent;
-$matchColor : lightgreen;
-$actionColor : red;
-$actionBGColor : transparent;
-
 .row__inner {  
   font-size: 0;
 }
@@ -29,7 +7,8 @@ $actionBGColor : transparent;
 }
 
 .tile__details {
-  font-size: $tileDetFontSize;
+  background: -webkit-linear-gradient(bottom, $eeTitleColor1 0%, $eeTitleColor2 100%);
+  background: linear-gradient(to top, $eeTitleColor1 0%, $eeTitleColor2 100%);
 }
 .tile__details:after,
 .tile__details:before {
@@ -37,6 +16,8 @@ $actionBGColor : transparent;
 }
 .tile__details_v { 
   font-size: $tileDetFontSize;  
+  background: -webkit-linear-gradient(bottom, $eeTitleColor1 0%, $eeTitleColor2 100%);
+  background: linear-gradient(to top, $eeTitleColor1 0%, $eeTitleColor2 100%);
 }
 .tile__details_v:after,
 .tile__details_v:before {
@@ -47,30 +28,18 @@ $actionBGColor : transparent;
 }
 .controls{
   color:$controlColor;
-  font-size: $controlFontSize;
 }
 .controls-v{
   color:$controlColor;
-  font-size: $controlFontSize;
 }
 .textonly{  
   color: $textColor;
   background-color: $textBGColor;
 }
-.carousel-title{
- font-size: $tileDetFontSize;  
-}
-.subtitle{
-  font-size: $subtitleFontSize;  
-}
 .match{
   color: $matchColor;
 }
 .age{
-  // display: inline-block;
-  // border: solid 2px #666;
-  // padding: 0 10px 0 10px;
-  font-size: 100%;
   color: $textColor;
 }
 .actionpanel{  
@@ -78,7 +47,6 @@ $actionBGColor : transparent;
   background-color: $actionBGColor;
 }
 .section-header{  
-  font-size: 150%;
   color: $eeTitleColor; 
 }
 .playpanel .playbutton{

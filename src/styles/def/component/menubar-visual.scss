@@ -1,21 +1,4 @@
 
-/*----------------------------------------------------------------------*/
-/*        MENU COMPONENT   -Visual      */
-/*----------------------------------------------------------------------*/
-
-$menubarBGColor :$componentBGColor;
-$menubarColor : $componentFontColor;
-$menuHoverColor: $componentFontColor;
-$menuHoverBGColor : $componentHoverBGColor;
-$subMenuCotentBGColor : $componentBGColor;
-$subMenuCotentColor : $componentFontColor;
-
-$menuborderColor:$borderColor;
-$menuborderSize:1px;
-
-$menuBGColor : none;
-$menuHeaderFontWeight : bold;
-
 .menu-right{
   //right:10px;
 }

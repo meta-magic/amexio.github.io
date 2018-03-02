@@ -1,11 +1,3 @@
-/****************************************************/
-/***                  RADIO    Structure          ***/
-/****************************************************/
-
-
-$radioBGColor : $componentHeaderBGColor;
-$radioLabelBGColor : $componentBGColor;
-
 
 /* Create a custom checkbox */
 .input-box-radiobox-label {
@@ -19,11 +11,6 @@ $radioLabelBGColor : $componentBGColor;
 }
 
 
-/* When the checkbox is checked, add a blue background */
-.input-box-container input:checked ~ .input-box-radiobox-label {
- // background-color: $primaryBGColor;
-}
-
 /* Create the input-box-container-label/indicator (hidden when not checked) */
 .input-box-radiobox-label:after {
   content: "";
@@ -34,7 +21,6 @@ $radioLabelBGColor : $componentBGColor;
 /* Show the input-box-container-label when checked */
 .input-box-container input:checked ~ .input-box-radiobox-label:after {
   display: block;
-  //animation: radioripple 0.3s linear forwards; 
 }
 
 /* Style the input-box-container-label/indicator */
@@ -44,6 +30,4 @@ $radioLabelBGColor : $componentBGColor;
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  //background-color: white;
-  //transform: scale(1);
 }

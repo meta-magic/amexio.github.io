@@ -1,86 +1,25 @@
 
-/*----------------------------------------------------------------------*/
-/*        WINDOW COMPONENT -Visual     */
-/*----------------------------------------------------------------------*/
-//$modalBGColor: lighten(black,50%);
-$modalBGColor : $componentBGColor;
-$modalHeaderBGColor : $componentHeaderBGColor;
-$modalHeaderFontSize : 20px;
-$modalHeaderColor : $componentHeaderFontColor;
-$modalWindowFontSize : 14px;
-$modalWindowScrollColor : $scrollBGColor;
-$modalWindowScrollThumbColor : $scrollThumbColor;
-$modalFooterBGColor : $componentFooterBGColor;
-$modalFooterColor : $componentFooterFontColor;
 
-.root-window{
-  // flex-direction: column;
-  // position: fixed; /* Stay in place */
-  // z-index: 3; /* Sit on top */
-  background-color: $modalBGColor; /* Black w/ opacity */
-  // width: 100%;
-  // height: 100%;
-  // left: 0;
-  // top: 0;
-}
-.modal-window-lg{
-  // flex-direction: column;
-  // position: fixed; /* Stay in place */
-  // z-index: 1; /* Sit on top */
-  // //padding-top: 100px; /* Location of the box */
-  // width: 100%;
-  // height: 100%;
-  // overflow: auto; /* Enable scroll if needed */
+.root-window{  
+  background-color: $modalBGColor; /* Black w/ opacity */  
 }
 .modal-window-content{
-  //position: relative;
   background-color: $modalBGColor;
-  // margin: auto;
-  // padding: 0px;
-  // border: 1px solid #888;
-  // width: 80%;
-  // box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-}
-.modal-window-max{
-}
-.modal-window-min{
-  // padding-top: 70px;
-}
-.modal-window-content > * {
-  // padding: 10px;
-  // min-height: auto!important;
-}
-.modal-window-content-max{
-  // width: 100%;
-  // height: 100%;
 }
 .modal-window-header{
-  //display: flex;
   background: $modalHeaderBGColor;
-  //border-bottom: $borderSize solid $cardBorderColor;
   font-size: $modalHeaderFontSize;
   color: $modalHeaderColor;
-  //font-weight: 300;
-  //text-transform: capitalize;
 }
 .modal-window-middle{
   font-size: $modalWindowFontSize;
-  // line-height: 24px;
-  // font-weight: 400;
-  // padding-left: 16px;
-  // padding-right: 16px;
-  // height: 80% ;
-  // overflow-y: auto;
-  // overflow-x: hidden;
 }
 .modal-window-middle::-webkit-scrollbar-track
 {
-  //-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
   background-color: $modalWindowScrollColor;
 }
 .modal-window-middle::-webkit-scrollbar
 {
-  //width: 6px;
   background-color: $modalWindowScrollColor;
 }
 .modal-window-middle::-webkit-scrollbar-thumb
@@ -88,31 +27,6 @@ $modalFooterColor : $componentFooterFontColor;
   background-color: $modalWindowScrollThumbColor;
 }
 .modal-window-footer{
-  //display: flex;
   background-color: $modalFooterBGColor;
   color: $modalFooterColor;
-  //border-top: $borderSize solid $cardBorderColor;
-}
-
-.modal-window-table{
-  // display: table;
-  // width: 100%;
-}
-
-.modal-window-table .tablerow{
-  // display: table-row;
-}
-
-.modal-window-table .tablerow .tablecol{
-  // display: table-cell;
-  // vertical-align: middle;
-}
-
-.modal-window-footer-max {
-  // bottom: 0px;
-  // position: absolute;
-  // width: 99%;
-}
-.footer-right-align {
-  // padding-right: 7px;
 }

@@ -1,12 +1,4 @@
 
-/*----------------------------------------------------------------------*/
-/* CHECKBOX -Structure
-/*----------------------------------------------------------------------*/
-
-$checkboxBGColor : $appBackground;
-$checkboxActiveBGColor : $componentActiveBGColor;
-$checkboxActiveColor : $componentActiveFontColor;
-
 .input-box {
   display: inline-block;
   cursor: pointer;
@@ -32,13 +24,10 @@ $checkboxActiveColor : $componentActiveFontColor;
 
 .input-box .default {
   border: $borderSize solid $borderColor;
-  //background: $backgroundcolor;
 }
 
 .input-box .active{
   border: $borderSize solid $borderColor;
-  //background: $primaryBGColor;
-  //color: $primaryColor;
 }
 
 .input-box-container {
@@ -71,7 +60,6 @@ $checkboxActiveColor : $componentActiveFontColor;
 
 /* When the checkbox is checked, add a blue background */
 .input-box-container input:checked ~ .input-box-checkbox-label {
-  //background-color: $primaryBGColor;
   
 }
 
@@ -85,7 +73,6 @@ $checkboxActiveColor : $componentActiveFontColor;
 /* Show the input-box-container-label when checked */
 .input-box-container input:checked ~ .input-box-checkbox-label:after {
   display: block;
-  //animation: checkboxripple .3s ease-in;
 }
 
 /* Style the input-box-container-label/indicator */
@@ -94,7 +81,7 @@ $checkboxActiveColor : $componentActiveFontColor;
   top: 1px;
   width: 5px;
   height: 10px;
-  border: solid white;
+  border: solid $borderColor;
   border-width: 0 3px 3px 0;
   transform: rotate(45deg);
   }

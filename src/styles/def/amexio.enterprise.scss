@@ -1,8 +1,19 @@
-//enterprise scss
 
+/** enterprise-content **/
+@import "component/enterprise-content-vars.scss";
+/** enterprise-content visual**/
 @import "component/enterprise-content-visual.scss";
+/** enterprise-content -structure**/
 @import "component/enterprise-content-structure.scss";
+/** enterprise-youtube **/
+@import "component/enterprise-youtube-vars.scss";
+/** enterprise-youtube visual**/
 @import "component/enterprise-youtube-visual.scss";
+/** enterprise-youtube -structure**/
 @import "component/enterprise-youtube-structure.scss";
+/** enterprise-carousel **/
+@import "component/enterprise-carousel-vars.scss";
+/** enterprise-carousel visual**/
 @import "component/enterprise-carousel-visual.scss";
+/** enterprise-carousel -structure**/
 @import "component/enterprise-carousel-structure.scss";

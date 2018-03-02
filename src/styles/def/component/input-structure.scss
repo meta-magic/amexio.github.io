@@ -1,18 +1,4 @@
 
-/*----------------------------------------------------------------------*/
-/*        INPUT CONTROL COMPONENT -Structure      */
-/*----------------------------------------------------------------------*/
-$inputFontSize:1rem;
-$inputTooltipBGColor : $componentHoverBGColor ;
-$inputControlColor : $componentFontColor;
-$inputControlBGColor : $componentBGColor;
-$inputFontSize : 14px;
-
-$placeholderColor : $borderColor;
-
-$searchBGColor : $componentBGColor;
-
-
 .inputgroup {
   position: relative;
 }

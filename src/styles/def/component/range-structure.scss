@@ -1,16 +1,3 @@
-/****************************************************/
-/***                  Range - Structure                     ***/
-/****************************************************/
-$rangeSliderFontSize : .7em;
-$sliderWidgetBGColor : $componentBGColor;
-$sliderWidgetColor: $themeFontColor;
-$sliderWidgetFontSize :1em;
-$rangeSliderBGColor :$componentBGColor;
-
-$rangeWidgetBG1:$componentBGColor;
-$rangeWidgetBG2:$componentBGColor;
-$rangeHeaderColor : $componentHeaderFontColor;
-$rangeHeaderFontWeight : normal;
 
 
 .ui-slider {
@@ -139,15 +126,6 @@ $rangeHeaderFontWeight : normal;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-}
-.ui-widget-header {
-  // background: #f6f7f9 0 0 repeat-x;
-  // background: -moz-linear-gradient(top, #f6f7f9 0%, #ebedf0 100%);
-  // background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f6f7f9), color-stop(100%, #ebedf0));
-  // background: -webkit-linear-gradient(top, #f6f7f9 0%, #ebedf0 100%);
-  // background: -o-linear-gradient(top, #f6f7f9 0%, #ebedf0 100%);
-  // background: -ms-linear-gradient(top, #f6f7f9 0%, #ebedf0 100%);
-  // background: linear-gradient(to bottom, #f6f7f9 0%, #ebedf0 100%);
 }
 .ui-corner-all {
   -moz-border-radius: 3px;

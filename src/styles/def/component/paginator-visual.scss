@@ -1,40 +1,8 @@
 
-/*----------------------------------------------------------------------*/
-/*        PAGINATOR COMPONENT  -Visual      */
-/*----------------------------------------------------------------------*/
-$paginatorHoverBGColor : $componentHoverBGColor;
-$paginatorHoverColor : $componentHoverFontColor;
-$paginatorColor : inherit;
-$paginatorActiveBGColor : $componentActiveBGColor;
-$paginatorActiveColor : $componentActiveFontColor;
-
-
-.paginator{
-  //padding: 10px;
-}
-
-.paginator .paginator-pages{
-  // display: inline-block;
-  // padding: .125em .375em;
-  // zoom: 1;
-  // margin-left: .063em;
-  // margin-right: .063em;
-  // text-decoration: none;
-  // vertical-align: middle;
-  // cursor: pointer;
-}
 
 .paginator .paginator-pages .paginator-page{
-  // display: inline-block;
-  // padding: .125em .375em;
-  // zoom: 1;
-  // margin-left: .063em;
-  // margin-right: .063em;
-  // text-decoration: none;
-  // vertical-align: middle;
+
   color: $paginatorColor;
-  // border: $borderSize solid $borderColor;
-  // border-radius: $borderRadius;
 }
 
 .paginator .paginator-pages .paginator-page:hover{

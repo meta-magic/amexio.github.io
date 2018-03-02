@@ -1,76 +1,56 @@
-/*
-
-!*----------------------------------------------------------------------*!
-!*        ACCORDION COMPONENT - Structure        *!
-!*----------------------------------------------------------------------*!
-$accordionBGColor: $componentHeaderBGColor;
-$accordionColor: $componentHeaderFontColor;
-$accordionActiveBGColor:$componentActiveBGColor;
-$accordionActiveColor:$componentHeaderFontColor;
-$accordionPanelBGColor:$componentHeaderBGColor;
-$accordionPanelColor: $componentHeaderFontColor;
-
-$accordionBorderSize : $borderSize;
-$accordionBorderColor : $borderColor;
-$accordionBorder : $borderColor;
-$accordionFontSize : 15px;
-$accordionTransparentBG:$componentBGColor;
-$accordionTransparentBorder:$componentBGColor;
-$accordionTransparentFontWeight:bold;
-$accordionTransparentColor : $componentFontColor;
-
 .accordion {
-
   cursor: pointer;
   padding: 10px;
   width: 100%;
+  border-color: $borderColor;
   text-align: left;
   outline: none;
+  font-size: 15px;
   transition: 0.4s;
 }
 
-
 .accordion:after {
+  font-weight: bold;
   float: right;
   margin-left: 5px;
 }
 
-
+.active:after {
+}
 .panel {
-  padding: 0 18px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
+  padding: 18px;
+  overflow: auto;
 }
 
-!** Transparent Styling **!
+
+/** Transparent Styling **/
 .accordion-transparent{
   cursor: pointer;
   padding: 10px;
   width: 100%;
+  border-color:$accordionTransparentBorder;
   text-align: left;
   outline: none;
-
+  font-size: 15px;
   transition: 0.4s;
   box-shadow: none;
-  border-top: $accordionBorderSize solid $accordionBorderColor;
+  border-top: $borderSize solid $borderColor;
+}
+
+.accordion-transparent .active-accordion, .accordion-transparent:hover {
+
 }
 
 .accordion-transparent:after {
+  font-weight: bold;
   float: right;
   margin-left: 5px;
 }
 
-.panel {
-  padding: 0 18px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
+.active:after {
 }
 
 .accordion-disable{
   opacity: 0.55;
   cursor: not-allowed;
 }
-
-*/

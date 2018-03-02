@@ -1,9 +1,3 @@
-/*----------------------------------------------------------------------*/
-/*        Enterprise COMPONENT - Structure     */
-/*----------------------------------------------------------------------*/
-
-$eeContentColor : $componentActiveFontColor;
-$eeContentTitleFontSize : 180%;
 
 .inline-list{
   padding-left: 0;
@@ -31,7 +25,7 @@ $eeContentTitleFontSize : 180%;
 
 .content-title {
   width: 100%;
-  //font-size: 180%;
+  font-size: 180%;
   font-weight: 700;
   line-height: 130%;
   //color: #fff;    //theme color?
@@ -39,7 +33,6 @@ $eeContentTitleFontSize : 180%;
 }
 
 .content-area{
-  //color: white;
   padding-left: 30px;
 }
 
@@ -108,7 +101,7 @@ header .billboard .content-area .credits strong {
   margin-right: .75em;
   margin-top: 20px;
   padding: 5px 20px;
-  //font-size: 70%;
+  font-size: 70%;
   font-weight: 500;
   text-decoration: none;
   text-transform: uppercase;
@@ -120,7 +113,7 @@ header .billboard .content-button {
   margin-right: .75em;
   margin-top: 20px;
   padding: 5px 20px;
-  //font-size: 70%;
+  font-size: 70%;
   font-weight: 500;
   text-decoration: none;
   text-transform: uppercase;
@@ -136,7 +129,7 @@ header .billboard .content-button {
   padding: 8px 0 0 13px;
   border: solid 2px rgba(255, 255, 255, 0.4);
   border-radius: 40px;
-  //font-size: 10px;
+  font-size: 10px;
   font-weight: 300;
   text-decoration: none;
   text-transform: uppercase;
@@ -156,7 +149,7 @@ header .billboard .content-button {
   padding: 7px 0 0 5px;
   border: solid 2px rgba(255, 255, 255, .4);    //theme color?
   border-radius: 100px;
-  //font-size: 12px;
+  font-size: 12px;
   font-weight: 500;
   text-decoration: none;
   text-transform: uppercase;
@@ -172,6 +165,5 @@ header .billboard .content-button {
 .close-button {
   cursor: pointer;
   padding-left: 98%;
-  //color: gray;    //theme color?
   background: radial-gradient(ellipse at top right, rgba(0, 0, 0, .4) 0, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 100%);
 }

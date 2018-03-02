@@ -1,27 +1,12 @@
 
-/*----------------------------------------------------------------------*/
-/*        DROPDOWN COMPONENT - Structure      */
-/*----------------------------------------------------------------------*/
-$dropdownListFontSize : 100%;
-$dropdownListFontWeight : 400;
-$dropdownBG: $componentBGColor;
-$dropdownColor : $borderColor;
-$dropdownActiveColor : $componentActiveFontColor;
-$dropdownActiveBGColor : $componentActiveBGColor;
-
-$dropdownHoverColor : $componentHoverFontColor;
-$dropdownHoverBGColor : $componentHoverBGColor;
-
 .dropdown{
   display: block;
   z-index: 1003;
-  /*top: -105px;*/
   opacity: 1;
   overflow: auto;
   position: absolute;
   width: 100%;
   max-height: 200px;
-  //background-color: $componentBGColor;
   opacity: 1.01;
   box-shadow: 0 1px 3px 0 $borderColor;
 }
@@ -36,7 +21,7 @@ $dropdownHoverBGColor : $componentHoverBGColor;
   border: 0;
   outline: 0;
   text-decoration: none;
-  //font-size: $dropdownListFontSize;
+  font-size: $dropdownListFontSize;
   list-style: none;
 }
 
@@ -44,20 +29,10 @@ $dropdownHoverBGColor : $componentHoverBGColor;
   list-style: none;
   border: 0 none;
   cursor: pointer;
-  //font-weight: $dropdownListFontWeight;
+  font-weight: $dropdownListFontWeight;
   margin: 1px 0;
   padding: .186em .313em;
   text-align: left;
-}
-
-.dropdown-list .list-items:hover{
-  // color: $hoverColor;
-  // background-color: $hoverBGColor;
-}
-
-.dropdown-list .list-items-active{
-  // color: $hoverColor;
-  // background-color: $hoverBGColor;
 }
 
 .drodown-caret-down{
@@ -79,5 +54,4 @@ $dropdownHoverBGColor : $componentHoverBGColor;
 
 .drodown-caret-down{
   top: 35px;
-  //color: $borderColor;
 }

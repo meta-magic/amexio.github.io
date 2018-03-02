@@ -1,17 +1,9 @@
-/*----------------------------------------------------------------------*/
-/*        Enterprise youtube COMPONENT - Structure     */
-/*----------------------------------------------------------------------*/
-
-$youtubeColor : grey;
-$youtubeHoverColor : red;
 
 .close-button {
-  cursor: pointer;
   color:$youtubeColor;
-  //background: radial-gradient(ellipse at top right, rgba(0, 0, 0, .4) 0, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 100%);
+  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, .4) 0, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 100%);
 }
 
 .close-button i:hover {
   color:$youtubeHoverColor;
-  //cursor: pointer;
 }

@@ -1,18 +1,4 @@
 
-/*----------------------------------------------------------------------*/
-/*        ITEM SELECTOR COMPONENT -Visual        */
-/*----------------------------------------------------------------------*/
-
-$itemselectorActionBGColor : $componentHeaderBGColor ;
-$itemselectorActionColor : $componentHeaderFontColor;
-$itemselectorActionDisableBGColor : $componentDisabledBGColor;
-$itemselectorListActiveBGColor : $componentActiveBGColor;
-$itemselectorListHoverBGColor : $componentHoverBGColor;
-$itemselectorListActiveColor : $componentActiveFontColor;
-$itemselectorListHoverColor : $componentHoverFontColor;
-
-$itemselectorFontWeight : 400 ;
-
 .item-selector-action-panel{
 
   .actionbar{

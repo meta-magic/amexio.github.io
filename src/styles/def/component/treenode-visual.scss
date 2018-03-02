@@ -1,21 +1,4 @@
 
-
-/*----------------------------------------------------------------------*/
-/*        TREE-VIEW COMPONENT - Visual        */
-/*----------------------------------------------------------------------*/
-$treeNodeActiveBGColor : $componentActiveBGColor;
-$treeNodeActiveColor : $componentActiveFontColor;
-
-$treenodeBGColor : transparent;
-
-.treeview{
-  // height: 100%;
-  // margin: 0;
-  // overflow: auto;
-  // padding: .25em;
-  // white-space: nowrap;
-}
-
 .treenode{
   //width: 100%;
   // padding-left: 10px;
@@ -30,28 +13,6 @@ $treenodeBGColor : transparent;
   // // padding: .125em 0 0 0;
 }
 
-.treenode-content{
-
-}
-
-.treenode-toggler{
-  // cursor: pointer;
-  // position: relative;
-  // padding-top: 10px;
-
-}
-
-.treenode-empty-space {
-  // padding-left: 15px;
-}
-
-.treenode-label {
-  // padding: 10px;
-  // display: inline-block;
-  // vertical-align: middle;
-  // cursor: pointer;
-}
-
 .treenode-content:hover{
   background-color: $treeNodeActiveBGColor;
   color: $treeNodeActiveColor
@@ -60,14 +21,4 @@ $treenodeBGColor : transparent;
 .treenode-label-active{
   background-color: $treeNodeActiveBGColor;
   color:$treeNodeActiveColor;
-}
-
-.treenode-children {
-  // margin: 0;
-  // padding: 0 0 0 1em;
-  // -moz-transition: expand .5s;
-  // -ms-transition: expand .5s;
-  // -o-transition: expand .5s;
-  // -webkit-transition: expand .5s;
-  // transition: expand .5s;
 }
