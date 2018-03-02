@@ -76,7 +76,7 @@ export class AmexioNavItemComponent implements OnInit , ControlValueAccessor, Af
 
   setNavbarWidth(navbarwidth:number){
     this.navbarwidth = navbarwidth;
-    if((this.navbarwidth -this.elementref.nativeElement.getBoundingClientRect().right)<165){
+    if(((this.navbarwidth - this.elementref.nativeElement.getBoundingClientRect().left))<165){
       this.enablerightclass = true;
     }
   }

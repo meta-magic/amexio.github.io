@@ -58,4 +58,21 @@ sass mda/at-md-honey-mustard.scss:css/at-md-honey-mustard.css;
 sass mda/at-md-bruntor-tangerine.scss:css/at-md-bruntor-tangerine.css;
 
 
+sass mda/at-md-hot-pink-violetred.scss:css/at-md-hot-pink-violetred.css;
+sass mda/at-md-orangered-tomato.scss:css/at-md-orangered-tomato.css;
+sass mda/at-md-rebeccapurple-orchid.scss:css/at-md-rebeccapurple-orchid.css;
+sass mda/at-md-indigo-darkviolet.scss:css/at-md-indigo-darkviolet.css;
+sass mda/at-md-indigo-slateblue.scss:css/at-md-indigo-slateblue.css;
+sass mda/at-md-darkgreen-teal.scss:css/at-md-darkgreen-teal.css;
 
+
+sass mda/at-md-royalblue-dodgerblue.scss:css/at-md-royalblue-dodgerblue.css;
+sass mda/at-md-mediumblue-slateblue.scss:css/at-md-mediumblue-slateblue.css;
+sass mda/at-md-sienna-rosybrown.scss:css/at-md-sienna-rosybrown.css;
+sass mda/at-md-darkslategray-dimgray.scss:css/at-md-darkslategray-dimgray.css;
+sass mda/at-md-mediumblue-deepskyblue.scss:css/at-md-mediumblue-deepskyblue.css;
+sass mda/at-md-darkturquoise-aquamarine.scss:css/at-md-darkturquoise-aquamarine.css;
+
+
+sass mda/at-md-darkkhaki-moccasin.scss:css/at-md-darkkhaki-moccasin.css;
+sass mda/at-md-indianred-salmon.scss:css/at-md-indianred-salmon.css;

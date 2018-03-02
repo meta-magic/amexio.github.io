@@ -3082,22 +3082,12 @@ header .billboard .content-button {
   padding: 5px 10px 0px 10px;
   cursor: pointer; }
 
-/*----------------------------------------------------------------------*/
-/*        NAVBAR COMPONENT    -Visual     */
-/*----------------------------------------------------------------------*/
 .topnav {
   background-color: #98FB98;
   color: white; }
 
-.topnav-mobile {
-  flex-direction: column;
-  padding: 0px; }
-
-.topnav * {
-  vertical-align: middle; }
-
 .top-nav-button {
-  background-color: #fff;
+  background-color: #98FB98;
   color: white; }
 
 .topnav a {
@@ -3121,12 +3111,12 @@ header .billboard .content-button {
 .nav-dropdown:hover {
   background-color: #1b1d22; }
 
+.topnavmainbarinneritems-mobile .top-nav-input-control {
+  width: 100%; }
+
 .mobilebar {
   color: white; }
 
-/*----------------------------------------------------------------------*/
-/*        NAVBAR COMPONENT - Structure   */
-/*----------------------------------------------------------------------*/
 .topnav {
   overflow: hidden;
   position: fixed;

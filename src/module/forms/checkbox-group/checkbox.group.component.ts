@@ -15,8 +15,6 @@ export class AmexioCheckBoxGroupComponent {
 
   @Input() horizontal: boolean;
 
-  @Input('box-style') boxstyle = false;
-
   @Input('field-label') fieldlabel: string;
 
   @Input('field-name') fieldname: string;
@@ -34,8 +32,6 @@ export class AmexioCheckBoxGroupComponent {
   @Input() search: boolean;
 
   @Input() data: any;
-
-  @Input() column: string;
 
   mask : boolean = true;
 

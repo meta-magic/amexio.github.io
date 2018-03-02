@@ -2723,22 +2723,12 @@ header .billboard .content-button {
   padding: 5px 10px 0px 10px;
   cursor: pointer; }
 
-/*----------------------------------------------------------------------*/
-/*        NAVBAR COMPONENT    -Visual     */
-/*----------------------------------------------------------------------*/
 .topnav {
   background-color: white;
   color: #02195F; }
 
-.topnav-mobile {
-  flex-direction: column;
-  padding: 0px; }
-
-.topnav * {
-  vertical-align: middle; }
-
 .top-nav-button {
-  background-color: #fff;
+  background-color: white;
   color: #02195F; }
 
 .topnav a {
@@ -2762,12 +2752,12 @@ header .billboard .content-button {
 .nav-dropdown:hover {
   background-color: #6b85c6; }
 
+.topnavmainbarinneritems-mobile .top-nav-input-control {
+  width: 100%; }
+
 .mobilebar {
   color: #02195F; }
 
-/*----------------------------------------------------------------------*/
-/*        NAVBAR COMPONENT - Structure   */
-/*----------------------------------------------------------------------*/
 .topnav {
   overflow: hidden;
   position: fixed;
