@@ -1,7 +1,10 @@
 /**
  * Created by pratik on 15/12/17.
  */
-import {Component, ContentChildren, EventEmitter, Input, OnInit, Output, QueryList} from '@angular/core';
+import {
+  AfterContentInit, Component, ContentChildren, DoCheck, EventEmitter, Input,
+  Output, QueryList
+} from '@angular/core';
 import {StepBlockComponent} from "./step-block";
 
 @Component({
@@ -82,7 +85,7 @@ import {StepBlockComponent} from "./step-block";
   `
 })
 
-export class AmexioStepsComponent implements OnInit {
+export class AmexioStepsComponent implements AfterContentInit, DoCheck {
 
   @Input() index: boolean;
 
@@ -91,6 +94,8 @@ export class AmexioStepsComponent implements OnInit {
   @Input() block: boolean;
 
   @Output() onClick: EventEmitter<any> = new EventEmitter<any>();
+
+  @Output() getStepBlockData: EventEmitter<any> = new EventEmitter<any>();
 
   @ContentChildren(StepBlockComponent) stepBlocks: QueryList<StepBlockComponent>;
 
@@ -107,11 +112,15 @@ export class AmexioStepsComponent implements OnInit {
 
   onStepClick(data: any, ev: any) {
     this.onClick.emit(data);
+    this.getStepBlockData.emit({"event":ev,"data":data});
   }
 
   ngAfterContentInit() {
+    debugger;
     if (this.data && this.data.length > 0) {
+      this.stepPreviewData = JSON.parse(JSON.stringify(this.data));
       this.stepBlockArray = this.data;
+      console.log(this.stepBlockArray);
     } else {
       this.stepBlockArray = this.stepBlocks.toArray();
     }
@@ -121,14 +130,7 @@ export class AmexioStepsComponent implements OnInit {
     if (JSON.stringify(this.stepPreviewData) != JSON.stringify(this.data)) {
       this.stepPreviewData = JSON.parse(JSON.stringify(this.data));
       this.stepBlockArray = this.data;
+      console.log(this.stepBlockArray);
     }
-  }
-
-  ngOnInit() {
-    if (this.data && this.data.length > 0) {
-      this.stepPreviewData = JSON.parse(JSON.stringify(this.data));
-      this.stepBlockArray = this.data;
-    }
-
   }
 }
