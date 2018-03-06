@@ -1,15 +1,11 @@
 
 
 .toggle-slider {
-
   background-color: $toggleBGColor;
- 
 }
 
 .toggle-slider:before {
-  
   background-color: $toggleBGBeforeColor;
-
 }
 
 input:checked + .toggle-slider {

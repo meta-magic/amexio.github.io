@@ -2,7 +2,7 @@
 .toggle {
   position: relative;
   display: inline-block;
-  width: 60px;
+  width: 60px;  
   height: 34px;
   vertical-align: middle
 }
@@ -12,6 +12,7 @@
 .toggle-slider {
   position: absolute;
   cursor: pointer;
+  border :$toggleBorderSize solid $toggleBorderColor;
   top: 0;
   left: 0;
   right: 0;
@@ -50,6 +51,7 @@ input:checked + .toggle-slider:before {
 /* Rounded sliders */
 .round {
   border-radius: 34px;
+  border :$toggleBorderSize solid $toggleBorderColor;
 }
 
 .round:before {

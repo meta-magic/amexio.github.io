@@ -1,21 +1,11 @@
 
 .treenode{
-  //width: 100%;
-  // padding-left: 10px;
-  // transition: .5s;
-  // background-attachment: scroll;
-  background-color: $treenodeBGColor;
-  // background-image: none;
-  // background-position: 0 0;
-  // background-repeat: repeat-y;
-  // list-style: none outside none;
-  // margin: 0;
-  // // padding: .125em 0 0 0;
+  background-color: $treenodeBGColor;  
 }
 
 .treenode-content:hover{
-  background-color: $treeNodeActiveBGColor;
-  color: $treeNodeActiveColor
+  background-color: $treeNodeHoverBGColor;
+  color: $treeNodeHoverColor
 }
 
 .treenode-label-active{

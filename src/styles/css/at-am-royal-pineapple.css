@@ -953,10 +953,10 @@ textarea:required {
   background-color: #292b2c; }
 
 .toggle-slider:before {
-  background-color: #292b2c; }
+  background-color: #1b1d22; }
 
 input:checked + .toggle-slider {
-  background-color: #292b2c; }
+  background-color: rgba(255, 253, 208, 0.4); }
 
 /** toggle -structure**/
 .toggle {
@@ -972,6 +972,7 @@ input:checked + .toggle-slider {
 .toggle-slider {
   position: absolute;
   cursor: pointer;
+  border: 1px solid #ced4da;
   top: 0;
   left: 0;
   right: 0;
@@ -999,7 +1000,8 @@ input:checked + .toggle-slider:before {
 
 /* Rounded sliders */
 .round {
-  border-radius: 34px; }
+  border-radius: 34px;
+  border: 1px solid #ced4da; }
 
 .round:before {
   border-radius: 50%; }
@@ -1184,6 +1186,30 @@ input:checked + .toggle-slider:before {
 
 /** label **/
 /** label visual**/
+/** label -structure**/
+.large {
+  font-size: 36px; }
+
+.medium {
+  font-size: 20px; }
+
+.small {
+  font-size: 18px; }
+
+.large-bold {
+  font-size: 36px;
+  font-weight: bold; }
+
+.medium-bold {
+  font-size: 20px;
+  font-weight: bold; }
+
+.small-bold {
+  font-size: 18px;
+  font-weight: bold; }
+
+/** box **/
+/** box visual**/
 .bg-yellow {
   color: rgba(255, 255, 255, 0.7);
   background-color: #ffeb3b; }
@@ -1208,28 +1234,7 @@ input:checked + .toggle-slider:before {
   color: rgba(255, 255, 255, 0.7);
   background-color: #ddffff; }
 
-/** label -structure**/
-.large {
-  font-size: 36px; }
-
-.medium {
-  font-size: 20px; }
-
-.small {
-  font-size: 18px; }
-
-.large-bold {
-  font-size: 36px;
-  font-weight: bold; }
-
-.medium-bold {
-  font-size: 20px;
-  font-weight: bold; }
-
-.small-bold {
-  font-size: 18px;
-  font-weight: bold; }
-
+/** box -structure**/
 .border-topbar {
   border-top: 6px solid #ced4da; }
 
@@ -1242,8 +1247,11 @@ input:checked + .toggle-slider:before {
 .border-rightbar {
   border-right: 6px solid #ced4da; }
 
-.row-padding {
-  padding: 0 8px; }
+.border-default {
+  border-color: #ced4da; }
+
+.padding {
+  padding: 8px 8px 8px 8px; }
 
 .border-amber {
   border-color: #ffc107; }
@@ -2284,8 +2292,8 @@ header .billboard .content-button {
   background-color: transparent; }
 
 .treenode-content:hover {
-  background-color: #1b1d22;
-  color: #FEE12B; }
+  background-color: rgba(255, 253, 208, 0.4);
+  color: rgba(255, 255, 255, 0.7); }
 
 .treenode-label-active {
   background-color: #1b1d22;
@@ -2689,7 +2697,8 @@ header .billboard .content-button {
   outline: none; }
 
 .top-nav-button {
-  border-color: #ced4da;
+  border: none;
+  box-shadow: none;
   cursor: pointer;
   font-size: 1rem; }
 

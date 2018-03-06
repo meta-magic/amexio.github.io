@@ -1,4 +1,6 @@
 
 $toggleBGColor : $componentBGColor;
-$toggleBGBeforeColor : $componentBGColor;
-$toggleBGChecked :$componentBGColor;
+$toggleBGBeforeColor : $componentActiveBGColor;
+$toggleBGChecked :$componentHoverBGColor;
+$toggleBorderSize :$borderSize ;
+$toggleBorderColor: $borderColor;

@@ -19,19 +19,19 @@ honey-mustard,#EB9605,#FEDC56
 hot-pink-fuchsia,#F81894,#FF00FF
 indigo,#9FA8DA,#5C6BC0
 jungle-mint,#29AB87,#98BF98
-mahogany-barny-red,#420D09,#7C0A02
+mahogany-barry-red,#420D09,#7C0A02
 mauve-orchid,#784B84,#AF69EE
 maya,#4ddfe8,#81D4F9
 navy-egyptian,#000080,#1134A6
 pineapple-flaxen,#FEE12B,#D5B85A
 pumpkin-fire,#FF7417,#FDA50F
 rasberry-sangria,#5E1914,#D21F3C
-red-maroon,#800000,#D30000
+maroon,#800000,#D30000
 sacramento-jade,#043927,#00A86B
 tronbone-royal,#D2B558,#FADA5E
 yale-azure,#0E4C92,#2196F3
 // Amexio Themes v4.1 - Feb 28, 2018
-// Theme-Version : 4.0
+// Theme-Version : 4.1
 hot-pink-violetred,#F81894,#C71585
 orangered-tomato,#FF4500,#FF6347
 rebeccapurple-orchid,#663399,#BA55D3
@@ -46,3 +46,10 @@ mediumblue-deepskyblue,#0000CD,#00BFFF
 darkturquoise-aquamarine,#00CED1,#7FFFD4
 darkkhaki-moccasin,#BDB76B,#FFE4B5
 indianred-salmon,#CD5C5C,#FA8072
+darkmagenta-darkorchid,#8B008B,#9932CC
+darkslateblue-indigo,#483D8B,#4B0082
+darkgreen-darkolivegreen,#006400,#556B2F
+navy-royalblue,#000080,#4169E1
+saddlebrown-peru,#8B4513,#CD853F
+mediumvioletred-hotpink,#C71585,#FF69B4
+firebrick-crimson,#B22222,#DC143C

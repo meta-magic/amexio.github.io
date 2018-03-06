@@ -31,6 +31,7 @@ import {AmexioButtonDropDownItemComponent} from "./button-dropdown/button.dropdo
 import {AmexioFileUploadComponent} from "./fileupload/fileupload.component";
 import {DomHandler} from "./slider/slider.handler";
 import {AmexioLabelComponent} from "./label/label.component";
+import {AmexioBoxComponent} from "./box/box.component";
 import {HttpClientModule} from "@angular/common/http";
 import { AmexioFloatingButtonComponent } from './floatingbutton/floatingbutton.component';
 import { AmexioFloatingGroupButtonComponent } from './floatinggroupbutton/floatinggroupbutton.component';
@@ -65,6 +66,7 @@ const FORM_COMPONENTS = [
   AmexioSpiltButtonDropdownComponent,
   AmexioFileUploadComponent,
   AmexioLabelComponent,
+  AmexioBoxComponent,
   AmexioFloatingButtonComponent,
   AmexioFloatingGroupButtonComponent
 ];
