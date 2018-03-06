@@ -46,6 +46,7 @@ mediumblue-deepskyblue,#0000CD,#00BFFF
 darkturquoise-aquamarine,#00CED1,#7FFFD4
 darkkhaki-moccasin,#BDB76B,#FFE4B5
 indianred-salmon,#CD5C5C,#FA8072
+
 darkmagenta-darkorchid,#8B008B,#9932CC
 darkslateblue-indigo,#483D8B,#4B0082
 darkgreen-darkolivegreen,#006400,#556B2F

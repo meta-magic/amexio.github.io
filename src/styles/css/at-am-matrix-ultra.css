@@ -1640,6 +1640,9 @@ input:checked + .toggle-slider:before {
   color: rgba(255, 255, 255, 0.7);
   background-color: #ddffff; }
 
+.background-default {
+  background-color: rgba(189, 127, 189, 0.6); }
+
 /** box -structure**/
 .border-topbar {
   border-top: 6px solid #ced4da; }

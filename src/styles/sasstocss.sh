@@ -76,3 +76,11 @@ sass mda/at-md-darkturquoise-aquamarine.scss:css/at-md-darkturquoise-aquamarine.
 
 sass mda/at-md-darkkhaki-moccasin.scss:css/at-md-darkkhaki-moccasin.css;
 sass mda/at-md-indianred-salmon.scss:css/at-md-indianred-salmon.css;
+
+sass mda/at-md-darkmagenta-darkorchid.scss:css/at-md-darkmagenta-darkorchid.css;
+sass mda/at-md-darkslateblue-indigo.scss:css/at-md-darkslateblue-indigo.css;
+sass mda/at-md-darkgreen-darkolivegreen.scss:css/at-md-darkgreen-darkolivegreen.css;
+sass mda/at-md-navy-royalblue.scss:css/at-md-navy-royalblue.css;
+sass mda/at-md-saddlebrown-peru.scss:css/at-md-saddlebrown-peru.css;
+sass mda/at-md-mediumvioletred-hotpink.scss:css/at-md-mediumvioletred-hotpink.css;
+sass mda/at-md-firebrick-crimson.scss:css/at-md-firebrick-crimson.css;

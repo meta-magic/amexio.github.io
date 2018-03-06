@@ -1296,6 +1296,9 @@ input:checked + .toggle-slider:before {
   color: #001f16;
   background-color: #ddffff; }
 
+.background-default {
+  background-color: #b8ffb8; }
+
 /** box -structure**/
 .border-topbar {
   border-top: 6px solid #ced4da; }
