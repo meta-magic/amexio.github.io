@@ -6,7 +6,7 @@ import {Component, Input, OnInit} from '@angular/core';
 @Component({
  selector: 'amexio-box',
  template: `
- <div class="box-content {{styleClass}}"
+ <div class="box-content"
  [attr.disabled]="padding ? true: null"
  [ngClass]="{
  'border-default': borderColor=='default' || borderColor ==null,
