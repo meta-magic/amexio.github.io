@@ -5,7 +5,7 @@ import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'amexio-progress-bar', template: `
-    <div *ngIf="showProgress" class="meter"
+    <div *ngIf="showProgress" class="progress"
          [ngClass]="{'nostripes' : stripped,'success' : type == null || type?.toLocaleLowerCase() == 'success' ,'warning' : type?.toLocaleLowerCase() == 'warning','danger' : type?.toLocaleLowerCase() == 'danger'}">
       <span *ngIf="infinite" style="width: 100%;">{{label != null ? label : 'Loading...'}}</span>
       <span *ngIf="!infinite" [ngStyle]="{'width.%' : currentvalue}"></span>
