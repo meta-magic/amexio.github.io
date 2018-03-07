@@ -1,12 +1,12 @@
 
-.meter {
+.progress {
   height: 20px; /* Can be anything */
   position: relative;
   /*background: #555;*/
   
 }
 
-.meter > span {
+.progress > span {
   text-align: center;
   display: block;
   height: 100%;
@@ -15,7 +15,7 @@
   overflow: hidden;
 }
 
-.meter > span:after, .animate > span > span {
+.progress > span:after, .animate > span > span {
   content: "";
   position: absolute;
   top: 0;
