@@ -5082,6 +5082,10 @@ body {
   background-image: linear-gradient(to bottom, #FFFFFF, #0EAFD5, #4AD4BD);
   color: #02468D !important; }
 
+.sidenav .headernode {
+  background: none !important;
+  color: inherit; }
+
 .datapoints .datapoint-south {
   color: rgba(0, 43, 87, 0.7);
   background-color: #F3C22A; }

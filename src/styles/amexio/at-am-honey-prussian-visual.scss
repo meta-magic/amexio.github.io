@@ -73,6 +73,10 @@ body {
   background-image: linear-gradient(to bottom, #FFFFFF, #0EAFD5, #4AD4BD); 
   color : $themeSecondaryColor!important;
 }
+.sidenav .headernode {
+  background: none !important;
+  color :inherit;
+}
 
 
 .datapoints .datapoint-south {
