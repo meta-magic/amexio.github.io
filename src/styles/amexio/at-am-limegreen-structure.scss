@@ -1,103 +1,36 @@
 
-body {
-  //font-family: 'PT-Sans', sans-serif;
-  //font-size: 16px;
-  letter-spacing: 0.3px;
-  text-transform: capitalize;
-}
-
 /*----------------------------------------------------------------------*/
 /*        Limegreen -Structure      */
 /*----------------------------------------------------------------------*/
 
-
-
-// .input-control {
-//   border-radius: $borderRadius;
-//   line-height: 2;
-//   font-size: 14px;
-//   border: 2px solid $themePrimaryColor;
-//   color: $themePrimaryColor;
-// }
-
-// .input-control-success {
-//   border-color:$success;
-// }
-
-// .input-control-error {
-//   border-color:$error;
-// }
-
-
-// .inputgroup label {
-//   margin-bottom: 0rem;
-// }
-
-// .dropdown{
-//   border: 2px solid $themePrimaryColor;
-//   border-radius: $border-radius;
-//   box-shadow: 0 1px 3px 0 $themePrimaryColor;
-//   background-color: white;
-// }
-
-
-// .datetimepicker {
-//   border-radius: $border-radius;
-//   border: $borderSize solid $themePrimaryColor;
-//   box-shadow: 0 1px 3px 0 $themePrimaryColor;
-// }
-
-// label {
-//   display: inline-block;
-//   margin-top: 5px;
-//   max-width: 100%;
-//   //padding: 0 12px;
-//   font-size: 14px;
-//   font-weight: 500;
-
-// }
-
-
-// a {
-//   color: $color;
-//   //text-transform: lowercase;
-// }
+body {
+  font-family: 'PT-Sans', sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.3px;
+  text-transform: capitalize;
+}
 
 
 .listbox{
-  //background-image: url(/assets/images/theme/bootstrap/Header.png);
   background-repeat: repeat-x;
   padding: 0px 16px 16px 16px;
-  //background-color: white;
 
   .list{
     border: $borderSize solid $borderColor;
     .title {
-    //  color: $themePrimaryColor !important;
     }
     .list-items{
       border-bottom: 1px solid $borderColor;
     }
-    .list-items:hover{
-      //background-color: lighten($themePrimaryColor,70%);
-    }
-  }
-
-  .header{
-    // background: none;
-    // color: $cardHeaderColor;
   }
 }
 
 
 .card-container {
-//  background-image: url(/assets/images/theme/bootstrap/Header.png);
-//  background-repeat: repeat-x;
   padding: 0px 16px 16px 16px;
   border-color: $themePrimaryColor;
   .card-header {
     border-radius: $borderRadius;
-  //  font-size: 20px;
     font-weight: bold;
     border:none;
     color: $themePrimaryColor;
@@ -113,27 +46,11 @@ body {
   }
 }
 
-
-// /** NAVBAR **/
-.navbar-container {
+.topnav {
    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
-//   color: $themePrimaryColor;
-//   background-color: $themeSecondaryColor;
-//   background: linear-gradient(#C4E800, #92CD00) !important;
 
   .navbar-logo-unit a{
     font-size: 24px;
     font-weight: bold;
   }
 }
-
-// .sidenav{
-//   box-shadow:none;
-//   border-right: $borderSize solid darken($backgroundcolor,20);
-// }
-
-// .sidenav .activenode{
-//   color: $themePrimaryColor;
-//   background-color: white;
-//   border-right: $borderSize solid $themePrimaryColor;
-// }

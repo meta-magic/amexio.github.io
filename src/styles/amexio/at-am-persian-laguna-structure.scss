@@ -4,76 +4,24 @@
 /*       Persian Laguna - Structure       */
 /*----------------------------------------------------------------------*/
 
-// .input-control {
-//   border-radius: 4px;
-//   line-height: 2;
-//   font-size: 14px;
-//   border-radius: 4px!important;
-//   color: $hoverColor;
-//   background-color: $hoverBGColor;
-// }
+body {
+  font-family: 'Shadows Into Light', cursive;
+}
 
-// .input-control-success {
-//   border-color:$success;
-// }
-
-// .input-control-error {
-//   border-color:$error;
-// }
-
-
-// .inputgroup label {
-//   margin-bottom: 0rem;
-// }
-
-// .dropdown{
-//   border: 2px solid $borderColor;
-//   box-shadow: 0 1px 3px 0 $borderColor;
-//   background-color: $panelBGColor;
-// }
-
-
-// .datetimepicker {
-//   border: $borderSize solid $borderColor;
-//   box-shadow: 0 1px 3px 0 $borderColor;
-// }
-
-// label {
-//   display: inline-block;
-//   margin-top: 5px;
-//   max-width: 100%;
-//   //padding: 0 12px;
-//   font-size: 14px;
-//   font-weight: 500;
-
-// }
-
-
-
-
+.input-control{
+  border-radius: 5px;
+}
 
 .listbox {
   .list{
-    //background-color: $defaultBGColor;
-  //  background: rgba(255, 255, 255, 0.6);
     border: none;
 
     .title {
       float: left;
-      // font-size: 18px;
-      // color: $datapointColor;
-      // //padding-top: 8px;
       a {
-        // font-size: 16px;
-        // color: $defaultColor;
         text-transform: lowercase;
       }
     }
-
-    .list-items:hover{
-    //  background-color: $hoverBGColor;
-    }
-
   }
 }
 
@@ -81,10 +29,8 @@
   border: none;
   box-shadow: none;
   .card-header {
-  //  font-size: 20px;
     font-weight: 700;
     border: none;
-  //  background-image: url(/assets/images/theme/bootstrap/PageFold.png);
     border-right: $borderSize solid $cardBorderColor;
     padding: 20px 24px 12px 56px;
   }
@@ -93,7 +39,6 @@
     border-left: $borderSize solid $cardBorderColor;
     border-right: $borderSize solid $cardBorderColor;
     border-bottom: $borderSize solid $cardBorderColor;
-    //background-color: $panelBGColor;
   }
 
   .card-footer{
@@ -102,65 +47,22 @@
   }
 }
 
-
-
 .listbox{
   border: none;
 
-  .listbox .list .title {
-    //color: red !important;
-  }
-
   .header{
-    //background-color: transparent;
     border: none;
-    //background-image: url(/assets/images/theme/bootstrap/PageFold.png);
     border-right: $borderSize solid $cardBorderColor;
     padding: 20px 24px 12px 56px;
-    //color: $themeColor !important;
   }
 
   .list{
-    //background-color: $panelBGColor;
     border-left: $borderSize solid $cardBorderColor;
     border-right: $borderSize solid $cardBorderColor;
     border-bottom: $borderSize solid $cardBorderColor;
-
   }
 
   .list .list-items{
     border-bottom: 1px solid #1b1d22;
   }
 }
-
-// /** NAVBAR **/
-.navbar-container {
-  //font-size: 100%;
-}
-
-// .sidenav{
-//   box-shadow:none;
-// }
-
-
-// .sidenav .border{
-//   border-bottom: 1px solid $sidenavBorderColor;
-// }
-
-
-// .sidenav .activenode{
-//   color: white;
-//   background: none;
-// }
-
-
-// .sidenav .headernode:hover {
-//   color: white;
-//   background-color: $sidenavactive;
-// }
-
-// .sidenav .defaultnode:hover {
-//   color: white;
-//   background-color: $sidenavactive;
-// }
-

@@ -11,97 +11,18 @@
   border-radius: 4px!important;
 }
 
-// .input-control-success {
-//   border-color:$success;
-// }
-
-// .input-control-error {
-//   border-color:$error;
-// }
-
-
-// .inputgroup label {
-//   margin-bottom: 0rem;
-// }
-
-// .dropdown{
-//   border: 2px solid #666666;
-//   box-shadow: 0 1px 3px 0 #666666;
-// }
-
-
-// .datetimepicker {
-//   border: $borderSize solid #666666;
-//   box-shadow: 0 1px 3px 0 #666666;
-// }
-
-// label {
-//   display: inline-block;
-//   margin-top: 5px;
-//   max-width: 100%;
-//   //padding: 0 12px;
-//   font-size: 14px;
-//   font-weight: 500;
-
-// }
-
-
-// a {
-//   color: rgba(255, 255, 255, 0.7);
-//   //text-transform: lowercase;
-// }
-
-
-// .navbar-logo-unit a{
-//   text-transform: capitalize;
-// }
-
-
-
-// button.app-button {
-//   border-radius: 8px;
-// }
-
-// .btn-group button{
-//   //border-right: 1px solid white;
-
-// }
-
-// .drodown-caret-down{
-//   top: 35px;
-//   color: $borderColor;
-// }
-
-
 .listbox .list{
-  //background-color: $defaultBGColor;
-
+  
   .title {
     float: left;
-    //font-size: 18px;
-    //color: $datapointColor;
-    //padding-top: 8px;
     a {
-      //font-size: 16px;
-      //color: $defaultColor;
+      
       text-transform: lowercase;
     }
   }
 }
 
-.card-container {
-
-  .card-header {
-    // background-color: #80E6F5 ;
-    // background: linear-gradient(#80E6F5, #0CB5CF) ;
-  }
-}
-
 .listbox{
-
-  .listbox .list .title {
-    //color: #E84C1A !important;
-  }
 
   .header{
     border-bottom: $borderSize solid $borderColor;
@@ -112,21 +33,8 @@
   }
 }
 
-// /** NAVBAR **/
- .navbar-container {
+ .topnav {
    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
    border-bottom: solid 3px #2CD2EC;
    font-size: 100%;
  }
-
-// .sidenav{
-//   border-right: $borderSize solid $cardBorderColor;
-//   box-shadow:none;
-//   background: linear-gradient(rgba(28, 41, 73, 0.4), rgba(28, 41, 73, 0.80))
-// }
-
-// .sidenav .activenode{
-//   color: $themeSecondaryColor;
-//   background: linear-gradient(#80E6F5, #0CB5CF);
-// }
-

@@ -2,43 +2,6 @@
 /*       Burgandy Magenta -Visual       */
 /*----------------------------------------------------------------------*/
 
-// .input-control {
-//   border-radius: 4px;
-//   line-height: 2;
-//   font-size: 14px;
-//   border: none;
-//   border-bottom: 2px solid $borderColor;
-//   border-radius: 4px!important;
-//   color: $color;
-// }
-
-// .input-control-success {
-//   border-color:$success;
-// }
-
-// .input-control-error {
-//   border-color:$error;
-// }
-
-// .inputgroup label {
-//   margin-bottom: 0rem;
-// }
-
-// .dropdown{
-//   border: 2px solid $themeColor;
-//   box-shadow: 0 1px 3px 0 #666666;
-// }
-
-// .datetimepicker {
-//   border: $borderSize solid $themeColor;
-//   box-shadow: 0 1px 3px 0 #666666;
-// }
-
-// .drodown-caret-down{
-//   top: 35px;
-//   color: $borderColor;
-// }
-
 .listbox {
   border-radius: 5px;
   
@@ -81,4 +44,6 @@
     border-bottom: 1px solid #1b1d22;
   }
 }
-
+.datapoints {
+  border-radius: 5px;
+}

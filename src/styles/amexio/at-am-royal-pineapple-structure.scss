@@ -4,13 +4,11 @@
 /*----------------------------------------------------------------------*/
 
 .input-control {
-  // border-radius: 4px;
-  // line-height: 2;
-  // font-size: 14px;
-  // border: 2px solid #666666;
-  // border-radius: 4px!important;
-  background-color: #1b1d22;
-  color: $themeFontColor;
+  border-radius: 4px;
+  line-height: 2;
+  font-size: 14px;
+  border: 2px solid #666666;
+  border-radius: 4px!important;
 }
 
 .input-control-success {
@@ -26,44 +24,12 @@
   margin-bottom: 0rem;
 }
 
-// .dropdown{
-//   border: 2px solid #666666;
-//   box-shadow: 0 1px 3px 0 #666666;
-// }
-
-
-// .datetimepicker {
-//   border: $borderSize solid #666666;
-//   box-shadow: 0 1px 3px 0 #666666;
-// }
-
-// label {
-//   display: inline-block;
-//   margin-top: 5px;
-//   max-width: 100%;
-//   //padding: 0 12px;
-//   font-size: 14px;
-//   font-weight: 500;
-
-// }
-
-
-// .drodown-caret-down{
-//   top: 35px;
-//   color: $themeSecondaryColor;
-// }
 
 .listbox .list{
-  //background-color: $defaultBGColor;
 
   .title {
     float: left;
-    // font-size: 18px;
-    // color: $defaultColor;
-    //padding-top: 8px;
     a {
-    //   font-size: 16px;
-    //   color: $defaultColor;
       text-transform: lowercase;
     }
   }
@@ -75,7 +41,6 @@
   
   .card-header {
     border-radius: 10px;
-    //background: linear-gradient(#40434D, #000000);
   }
   .card-footer{
     border-radius: 10px;
@@ -85,10 +50,6 @@
 .listbox{
   border-radius: 10px;
 
-  .listbox .list .title {
-    //color: #E84C1A !important;
-  }
-
   .header{
     border-radius: 10px;
     border-bottom: $borderSize solid $themeSecondaryColor;
@@ -97,10 +58,6 @@
   .list .list-items{
     border-bottom: 1px solid #1b1d22;
   }
-}
-
-.defaultcolor{
-  //color: $themeColor;
 }
 
 .sidenav{

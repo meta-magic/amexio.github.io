@@ -3,60 +3,42 @@
 /*        Royal Pineapple  -  Visual      */
 /*----------------------------------------------------------------------*/
 
-.navbar-container {
+.topnav {
   background: linear-gradient(#FCF4A3, #FEE12B);
 }
 
 .input-control {
-  border-radius: 4px;
-  line-height: 2;
-  font-size: 14px;
-  border: 2px solid #666666;
-  border-radius: 4px!important;
-  
+  background-color: #1b1d22;
+  color: $themeFontColor;  
 }
+
 .listbox .list{
     background-color:  $componentBGColor;
   
     .title {
-      //float: left;
       font-size: 18px;
       color: $themeFontColor;
-      //padding-top: 8px;
       a {
         font-size: 16px;
         color: $themeFontColor;
-        //text-transform: lowercase;
       }
     }
   }
   
   .card-container {
-    //border-radius: 10px;
   
     .card-header {
-    //  border-radius: 10px;
       background: linear-gradient(#40434D, #000000);
-    }
-    .card-footer{
-    //  border-radius: 10px;
     }
   }
   
   .listbox{
-    //border-radius: 10px;
   
     .listbox .list .title {
       color: $themeSecondaryColor !important;
     }
-  
-    .header{
-      //border-radius: 10px;
-      //border-bottom: $borderSize solid $borderColor;
-    }
-  
+ 
     .list .list-items{
-      //border-bottom: 1px solid #1b1d22;
       background-color: $componentBGColor;
     }
   }

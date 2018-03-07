@@ -1,59 +1,14 @@
+
+/*----------------------------------------------------------------------*/
+/*        Honey Prussian -Visual                                     */
+/*----------------------------------------------------------------------*/
 body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   font-size: 16px;
 }
 
-/*----------------------------------------------------------------------*/
-/*        Honey Prussian -Visual                                     */
-/*----------------------------------------------------------------------*/
 
-
-
-// .input-control {
-//   border-radius: $borderRadius;
-//   line-height: 2;
-//   font-size: 14px;
-//   border: 2px solid $themeColor;
-//   color: $themeColor;
-// }
-
-// .input-control-success {
-//   border-color:$success;
-// }
-
-// .input-control-error {
-//   border-color:$error;
-// }
-
-
-// .inputgroup label {
-//   margin-bottom: 0rem;
-// }
-
-.dropdown{
-  // border: 2px solid $themeColor;
-  // border-radius: $border-radius;
-  // box-shadow: 0 1px 3px 0 $themeColor;
-  // background-color: white;
-}
-
-
-// .datetimepicker {
-//   border-radius: $border-radius;
-//   border: $borderSize solid $themeColor;
-//   box-shadow: 0 1px 3px 0 $themeColor;
-// }
-
-// label {
-//   display: inline-block;
-//   margin-top: 5px;
-//   max-width: 100%;
-//   //padding: 0 12px;
-//   font-size: 14px;
-//   font-weight: 500;
-
-// }
 .listbox{
   .list{
     .title {
@@ -98,7 +53,7 @@ body {
 }
 
 // /** NAVBAR **/
- .navbar-container {
+ .topnav {
    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
    color:$componentBGColor;
    background-color: $appBackground;
@@ -110,8 +65,8 @@ body {
     color: $themeSecondaryColor;
   }
 }
-.navbar-container{
-  color : white;
+.topnav{
+  color : $componentFontColor;
 }
 
 .sidenav{
@@ -119,10 +74,6 @@ body {
   color : $themeSecondaryColor!important;
 }
 
-.sidenav .headernode{
-  background-color: $componentHeaderBGColor !important;
-  color : $themeSecondaryColor!important;
-}
 
 .datapoints .datapoint-south {
   color : $componentBGColor;

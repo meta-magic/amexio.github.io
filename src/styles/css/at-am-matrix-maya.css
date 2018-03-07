@@ -1,6 +1,5 @@
 /* Component Specific Variables */
 /* Misc Variables */
-/* Misc Variables */
 /**HELPER CLASS STARTS**/
 body {
   background: #000000;
@@ -64,8 +63,8 @@ body {
 
 /**HEADER STYLE STARTS **/
 .header {
-  background-color: #73C2FB;
-  color: #000000;
+  background-color: rgba(115, 194, 251, 0.4);
+  color: #73C2FB;
   padding: 10px;
   overflow: hidden; }
 
@@ -153,7 +152,7 @@ label {
   font-weight: 500; }
 
 a {
-  color: rgba(0, 0, 0, 0.87); }
+  color: #999999; }
 
 /*
 The loading throbber is a single spinning element with three
@@ -198,6 +197,7 @@ image using the content attribute.
 .row-disabled {
   opacity: 0.55; }
 
+/* Component Specific Variables */
 /** button **/
 /** button visual**/
 .button-secondary {
@@ -336,17 +336,17 @@ button {
 .datetimepicker {
   background: #000000; }
   .datetimepicker .datetimepickertopbar {
-    background: rgba(115, 194, 251, 0.4); }
+    background: #000000; }
     .datetimepicker .datetimepickertopbar ul li {
-      color: #000000; }
+      color: #73C2FB; }
   .datetimepicker .days {
     background: rgba(115, 194, 251, 0.4); }
     .datetimepicker .days li {
       color: #73C2FB; }
     .datetimepicker .days li:hover {
-      color: rgba(115, 194, 251, 0.4); }
+      color: #000000; }
     .datetimepicker .days .active {
-      background: rgba(115, 194, 251, 0.4);
+      background: #000000;
       color: #73C2FB; }
     .datetimepicker .days .currentMonth {
       font-weight: bold; }
@@ -430,7 +430,7 @@ button {
 
 .dropdown-list .list-items-active {
   color: #73C2FB;
-  background-color: rgba(115, 194, 251, 0.4); }
+  background-color: #000000; }
 
 .drodown-caret-down {
   color: #ced4da; }
@@ -564,8 +564,8 @@ button {
 /** fileupload **/
 /** fileupload visual**/
 .upload-drop-zone {
-  color: #73C2FB;
-  border-color: #73C2FB; }
+  color: rgba(115, 194, 251, 0.4);
+  border-color: rgba(115, 194, 251, 0.4); }
 
 .upload-drop-zone.drop {
   color: rgba(255, 255, 255, 0.7);
@@ -610,7 +610,7 @@ textarea:required {
 /** radiobox visual**/
 /* When the checkbox is checked, add a blue background */
 .input-box-container input:checked ~ .input-box-radiobox-label {
-  background-color: rgba(115, 194, 251, 0.4); }
+  background-color: #000000; }
 
 /* Style the input-box-container-label/indicator */
 .input-box-container .input-box-radiobox-label:after {
@@ -651,12 +651,12 @@ textarea:required {
   background: #000000; }
 
 .input-box .active {
-  background: #73C2FB;
+  background: rgba(115, 194, 251, 0.4);
   color: #73C2FB; }
 
 /* When the checkbox is checked, add a blue background */
 .input-box-container input:checked ~ .input-box-checkbox-label {
-  background-color: #73C2FB; }
+  background-color: rgba(115, 194, 251, 0.4); }
 
 /** checkbox -structure**/
 .input-box {
@@ -740,7 +740,7 @@ textarea:required {
     font-size: 20px;
     color: rgba(115, 194, 251, 0.4); }
   .tag-input .tag .closebtn:hover {
-    color: rgba(115, 194, 251, 0.4); }
+    color: #000000; }
 
 /** taginput -structure**/
 .tag-input {
@@ -874,7 +874,7 @@ textarea:required {
   font-size: 2em; }
 
 .star-icon:before {
-  color: #73C2FB; }
+  color: rgba(115, 194, 251, 0.4); }
 
 .rating.disabled .star-icon:before {
   color: #a09e9e; }
@@ -953,7 +953,7 @@ textarea:required {
   background-color: #000000; }
 
 .toggle-slider:before {
-  background-color: rgba(115, 194, 251, 0.4); }
+  background-color: #000000; }
 
 input:checked + .toggle-slider {
   background-color: rgba(115, 194, 251, 0.4); }
@@ -1026,7 +1026,7 @@ input:checked + .toggle-slider:before {
 
 .ui-slider .ui-slider-range {
   font-size: 0.7em;
-  background: #73C2FB;
+  background: rgba(115, 194, 251, 0.4);
   /** use card header here **/ }
 
 .ui-widget-header {
@@ -1040,7 +1040,7 @@ input:checked + .toggle-slider:before {
 
 .ui-widget-header {
   background: #000000;
-  color: #000000;
+  color: #73C2FB;
   font-weight: normal; }
 
 /** range -structure**/
@@ -1377,8 +1377,8 @@ input:checked + .toggle-slider:before {
 /** float-button **/
 /** float-button visual**/
 .button-float {
-  background-color: #73C2FB;
-  color: #000000; }
+  background-color: rgba(115, 194, 251, 0.4);
+  color: #73C2FB; }
 
 /** float-button -structure**/
 .button-float {
@@ -1996,15 +1996,15 @@ header .billboard .content-button {
   background-color: #000000; }
 
 .datatable .datatable-header {
-  background-color: #73C2FB;
-  color: #000000; }
+  background-color: rgba(115, 194, 251, 0.4);
+  color: #73C2FB; }
 
 .datatable .datatable-row:hover {
   background-color: rgba(115, 194, 251, 0.4);
   cursor: pointer; }
 
 .datatable .datatable-row-active {
-  background-color: rgba(115, 194, 251, 0.4); }
+  background-color: #000000; }
 
 .datatable-row:nth-child(odd) {
   background-color: #000000; }
@@ -2082,11 +2082,11 @@ header .billboard .content-button {
 /** Horizontaltreeview **/
 /** Horizontaltreeview -visual**/
 .horizontaltreeview-node-label {
-  background-color: rgba(115, 194, 251, 0.4);
+  background-color: #000000;
   color: #73C2FB; }
 
 .horizontaltreeview-node-label:hover {
-  border-color: rgba(65, 172, 250, 0.4);
+  border-color: black;
   color: #73C2FB;
   background-color: rgba(115, 194, 251, 0.4); }
 
@@ -2101,7 +2101,7 @@ header .billboard .content-button {
   .horizontaltreeview-node:before {
     content: "";
     width: 50px;
-    border-top: 2px solid rgba(115, 194, 251, 0.4);
+    border-top: 2px solid #000000;
     position: absolute;
     left: -100px;
     top: 50%;
@@ -2113,13 +2113,13 @@ header .billboard .content-button {
   .horizontaltreeview-node-entry:before {
     content: "";
     height: 100%;
-    border-left: 2px solid rgba(115, 194, 251, 0.4);
+    border-left: 2px solid #000000;
     position: absolute;
     left: -50px; }
   .horizontaltreeview-node-entry:after {
     content: "";
     width: 50px;
-    border-top: 2px solid rgba(115, 194, 251, 0.4);
+    border-top: 2px solid #000000;
     position: absolute;
     left: -50px;
     top: 50%;
@@ -2140,7 +2140,7 @@ header .billboard .content-button {
   .horizontaltreeview-node-entry:last-child:after {
     height: 10px;
     border-top: none;
-    border-bottom: 2px solid rgba(115, 194, 251, 0.4);
+    border-bottom: 2px solid #000000;
     border-radius: 0 0 0 10px;
     margin-top: -9px; }
   .horizontaltreeview-node-entry.sole:before {
@@ -2169,13 +2169,13 @@ header .billboard .content-button {
 /** Itemselector **/
 /** Itemselector visual**/
 .item-selector-action-panel .actionbar .actionbarinner .action {
-  background-color: #73C2FB;
-  color: #000000; }
+  background-color: rgba(115, 194, 251, 0.4);
+  color: #73C2FB; }
 .item-selector-action-panel .actionbar .actionbarinner .actiondisable {
   background-color: #a09e9e; }
 
 .itemselector-list-active {
-  background-color: rgba(115, 194, 251, 0.4); }
+  background-color: #000000; }
 
 .itemselector-list:hover {
   background-color: rgba(115, 194, 251, 0.4); }
@@ -2224,10 +2224,10 @@ header .billboard .content-button {
 /** Listbox **/
 /** Listbox visual**/
 .listbox-height::-webkit-scrollbar-track {
-  background-color: #73C2FB; }
+  background-color: rgba(115, 194, 251, 0.4); }
 
 .listbox-height::-webkit-scrollbar {
-  background-color: #73C2FB; }
+  background-color: rgba(115, 194, 251, 0.4); }
 
 .listbox-height::-webkit-scrollbar-thumb {
   background-color: #000000; }
@@ -2299,7 +2299,7 @@ header .billboard .content-button {
   color: #73C2FB; }
 
 .treenode-label-active {
-  background-color: rgba(115, 194, 251, 0.4);
+  background-color: #000000;
   color: #73C2FB; }
 
 /** Treenode -structure**/
@@ -2643,7 +2643,7 @@ header .billboard .content-button {
   color: #73C2FB; }
 
 .top-nav-button {
-  background-color: #000000;
+  background-color: inherit;
   color: #73C2FB; }
 
 .topnav a {
@@ -2653,19 +2653,19 @@ header .billboard .content-button {
   color: #73C2FB; }
 
 .topnavbarunit2-mobile {
-  background-color: rgba(115, 194, 251, 0.4); }
+  background-color: #000000; }
 
 .topnavmainbarinneritems .nav-dropdown-content {
-  background-color: rgba(115, 194, 251, 0.4); }
+  background-color: #000000; }
 
 .topnavmainbarinneritems-mobile .nav-dropdown-content {
-  background-color: rgba(115, 194, 251, 0.4); }
+  background-color: #000000; }
 
 .topnavmainbarinneritems .nav-dropdown-content a {
   color: #73C2FB !important; }
 
 .nav-dropdown:hover {
-  background-color: rgba(115, 194, 251, 0.4); }
+  background-color: #000000; }
 
 .topnavmainbarinneritems-mobile .top-nav-input-control {
   width: 100%; }
@@ -2814,7 +2814,7 @@ header .billboard .content-button {
   color: #73C2FB; }
 
 .paginator .paginator-pages .active {
-  background-color: rgba(115, 194, 251, 0.4);
+  background-color: #000000;
   color: #73C2FB; }
 
 /** paginator -structure**/
@@ -2889,7 +2889,7 @@ header .billboard .content-button {
   color: rgba(255, 255, 255, 0.7); }
 
 .sidenav .activenode {
-  background-color: rgba(115, 194, 251, 0.4);
+  background-color: #000000;
   color: inherit; }
 
 .sidenav .border {
@@ -3006,12 +3006,12 @@ header .billboard .content-button {
 
 /* Change background color of buttons on hover */
 .dockbar button:hover {
-  background-color: rgba(115, 194, 251, 0.4);
+  background-color: #000000;
   color: #73C2FB; }
 
 /* Create an active/current "tab button" class */
 .dockbar button.active {
-  background-color: rgba(115, 194, 251, 0.4);
+  background-color: #000000;
   color: #73C2FB; }
 
 .dockbar-label-highlight {
@@ -3090,12 +3090,12 @@ header .billboard .content-button {
 /** accordion **/
 /** accordion visual**/
 .accordion {
-  background-color: #73C2FB;
-  color: #000000; }
+  background-color: rgba(115, 194, 251, 0.4);
+  color: #73C2FB; }
 
 .accordion .active-accordion, .accordion:hover {
-  background-color: rgba(115, 194, 251, 0.4);
-  color: #000000; }
+  background-color: #000000;
+  color: #73C2FB; }
 
 .accordion:after {
   color: red; }
@@ -3160,8 +3160,8 @@ header .billboard .content-button {
   color: rgba(255, 255, 255, 0.7); }
 
 .card-header {
-  background: #73C2FB;
-  color: #000000; }
+  background: rgba(115, 194, 251, 0.4);
+  color: #73C2FB; }
 
 .cardbody::-webkit-scrollbar-track {
   background-color: #a09e9e; }
@@ -3174,7 +3174,7 @@ header .billboard .content-button {
 
 .card-footer {
   background-color: #000000;
-  color: #000000; }
+  color: #73C2FB; }
 
 /** cards -structure**/
 .card-container {
@@ -3250,7 +3250,7 @@ fieldset {
 /** steps **/
 /** steps visual**/
 .step-label-highlight {
-  color: #73C2FB;
+  color: rgba(115, 194, 251, 0.4);
   font-weight: bold; }
 
 .stepwizard-step p {
@@ -3267,13 +3267,13 @@ fieldset {
   color: rgba(255, 255, 255, 0.7); }
 
 .step-box-table-item.active {
-  background-color: rgba(115, 194, 251, 0.4) !important; }
+  background-color: #000000 !important; }
 
 .step-box-table-item.disbaled {
   background-color: #a09e9e; }
 
 .index-step-inactive {
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: #4d4d4d;
   color: inherit; }
 
 .step-box-table-item-hover:hover {
@@ -3357,12 +3357,12 @@ fieldset {
   color: rgba(255, 255, 255, 0.7); }
 
 .verticalnavtab .leftactivetab {
-  background-color: rgba(115, 194, 251, 0.4);
+  background-color: #000000;
   font-weight: bold;
   color: #73C2FB; }
 
 .verticalnavtab .rightactivetab {
-  background-color: rgba(115, 194, 251, 0.4);
+  background-color: #000000;
   color: #73C2FB; }
 
 /** tab -structure**/
@@ -3454,9 +3454,9 @@ fieldset {
   background-color: #000000; }
 
 .modal-window-header {
-  background: #73C2FB;
+  background: rgba(115, 194, 251, 0.4);
   font-size: 20px;
-  color: #000000; }
+  color: #73C2FB; }
 
 .modal-window-middle {
   font-size: 14px; }
@@ -3471,8 +3471,8 @@ fieldset {
   background-color: #000000; }
 
 .modal-window-footer {
-  background-color: #73C2FB;
-  color: #000000; }
+  background-color: rgba(115, 194, 251, 0.4);
+  color: #73C2FB; }
 
 /** window -structure**/
 .root-window {
@@ -3549,12 +3549,12 @@ fieldset {
   background-color: #000000; }
 
 .dialogue-header {
-  background: #73C2FB;
+  background: rgba(115, 194, 251, 0.4);
   color: rgba(255, 255, 255, 0.7); }
 
 .dialogue-footer {
   background-color: #000000;
-  color: #000000; }
+  color: #73C2FB; }
 
 .dialogue-success {
   color: #5cb85c; }
@@ -3654,8 +3654,8 @@ fieldset {
 /** panel **/
 /** panel visual**/
 .panel-accordion {
-  background-color: #73C2FB;
-  color: #000000;
+  background-color: rgba(115, 194, 251, 0.4);
+  color: #73C2FB;
   font-size: 15px; }
 
 .panel-accordion:after {
@@ -3725,10 +3725,10 @@ fieldset {
   .card-header {
     display: flex;
     padding: 10px 24px;
-    background: #73C2FB;
+    background: rgba(115, 194, 251, 0.4);
     border-bottom: 1px solid #ced4da;
     font-size: 18px;
-    color: #000000;
+    color: #73C2FB;
     font-weight: 300;
     text-transform: capitalize;
     overflow: auto; } }
@@ -3910,10 +3910,10 @@ fieldset {
   .card-header {
     display: flex;
     padding: 10px 24px;
-    background: #73C2FB;
+    background: rgba(115, 194, 251, 0.4);
     border-bottom: 1px solid #ced4da;
     font-size: 18px;
-    color: #000000;
+    color: #73C2FB;
     font-weight: 300;
     text-transform: capitalize;
     overflow: auto; } }
@@ -4116,10 +4116,10 @@ fieldset {
   .card-header {
     display: flex;
     padding: 10px 24px;
-    background: #73C2FB;
+    background: rgba(115, 194, 251, 0.4);
     border-bottom: 1px solid #ced4da;
     font-size: 18px;
-    color: #000000;
+    color: #73C2FB;
     font-weight: 300;
     text-transform: capitalize;
     overflow: auto; } }
@@ -4345,10 +4345,10 @@ fieldset {
   .card-header {
     display: flex;
     padding: 10px 24px;
-    background: #73C2FB;
+    background: rgba(115, 194, 251, 0.4);
     border-bottom: 1px solid #ced4da;
     font-size: 18px;
-    color: #000000;
+    color: #73C2FB;
     font-weight: 300;
     text-transform: capitalize;
     overflow: auto; } }
@@ -4574,10 +4574,10 @@ fieldset {
   .card-header {
     display: flex;
     padding: 10px 24px;
-    background: #73C2FB;
+    background: rgba(115, 194, 251, 0.4);
     border-bottom: 1px solid #ced4da;
     font-size: 18px;
-    color: #000000;
+    color: #73C2FB;
     font-weight: 300;
     text-transform: capitalize;
     overflow: auto; } }
@@ -4803,10 +4803,10 @@ fieldset {
   .card-header {
     display: flex;
     padding: 10px 24px;
-    background: #73C2FB;
+    background: rgba(115, 194, 251, 0.4);
     border-bottom: 1px solid #ced4da;
     font-size: 18px;
-    color: #000000;
+    color: #73C2FB;
     font-weight: 300;
     text-transform: capitalize;
     overflow: auto; } }
@@ -5033,7 +5033,7 @@ fieldset {
   color: #000000; }
 
 .card-container .card-header {
-  background-color: #73C2FB; }
+  background-color: rgba(115, 194, 251, 0.4); }
 
 .listbox .listbox .list .title {
   color: #73C2FB !important; }

@@ -1,4 +1,4 @@
-$appTransprency :#E84C1A;
+$appTransparency :#E84C1A;
 
 $themePrimaryColor: #E84C1A;
 $themeSecondaryColor : #70196F;
@@ -13,11 +13,12 @@ $appHeaderFontColor : $themePrimaryColor;
 
 $appHeaderHoverBGColor : none;
 $appHeaderHoverFontColor : none;
+
 /* Component Specific Variables */
-$componentHoverBGColor : lighten($themeSecondaryColor,50%);
-$componentHoverFontColor : $themeFontColor;
-$componentActiveBGColor : lighten($themePrimaryColor,50%);
-$componentActiveFontColor : $themeFontColor;
+$componentHoverBGColor : lighten($themeSecondaryColor,60%);
+$componentHoverFontColor : $themeSecondaryColor;
+$componentActiveBGColor : lighten($themeSecondaryColor,50%);
+$componentActiveFontColor : $themeSecondaryColor;
 $componentDisabledBGColor : rgb(160, 158, 158);
 $componentDisabledFontColor : $themeSecondaryColor;
 
