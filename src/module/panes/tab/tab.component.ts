@@ -36,6 +36,10 @@ export class AmexioTabComponent implements OnInit, AfterViewInit, AfterContentIn
 
   @Output() onClick: any = new EventEmitter<any>();
 
+  @Input() tabLocalData: any;
+
+  tabPreviewData: any;
+
   showprev: boolean = false;
 
   shownext: boolean = false;
@@ -49,6 +53,13 @@ export class AmexioTabComponent implements OnInit, AfterViewInit, AfterContentIn
 
   }
 
+  ngDoCheck() {
+    if (JSON.stringify(this.tabPreviewData) != JSON.stringify(this.tabLocalData)) {
+      this.tabPreviewData = JSON.parse(JSON.stringify(this.tabLocalData));
+      this.tabCollection = this.tabLocalData;
+    }
+  }
+
   ngAfterViewInit() {
     if (this.tabs.nativeElement.scrollWidth > this.tabs.nativeElement.clientWidth) {
       this.shownext = true;
@@ -56,7 +67,13 @@ export class AmexioTabComponent implements OnInit, AfterViewInit, AfterContentIn
   }
 
   ngAfterContentInit() {
-    this.tabCollection = this.queryTabs.toArray();
+    if (this.tabLocalData && this.tabLocalData.length > 0 ) {
+      this.tabPreviewData = JSON.parse(JSON.stringify(this.tabLocalData));
+      this.tabCollection = this.tabLocalData;
+    } else {
+      this.tabCollection = this.queryTabs.toArray();
+    }
+
   }
 
   onTabClick(tab: any) {

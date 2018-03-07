@@ -175,8 +175,11 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
   }
 
   onChange(event: any) {
-    this.value = event;
-    this.change.emit(this.value);
+    if(event !=  null){
+      this.value = event;
+      this.change.emit(this.value);
+    }
+
   }
 
   getDisplayValue(val : any) : string{
@@ -233,7 +236,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
   }
 
   ngDoCheck() {
-    if (JSON.stringify(this.previousData) != JSON.stringify(this.data)) {
+    if (this.data && JSON.stringify(this.previousData) != JSON.stringify(this.data)) {
       this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
     }

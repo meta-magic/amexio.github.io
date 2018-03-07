@@ -32,8 +32,8 @@ import {StepBlockComponent} from "./step-block";
         <div *ngFor="let stepBlock of stepBlockArray; let i = index" class="stepwizard-step" >
  
           <ng-container *ngIf="stepBlock.icon && stepBlock.active">
-          <span [ngClass]="{'step-box-icon-active':stepBlock.active}">
-            <amexio-pane-icon [customclass]="stepBlock.icon" (onClick)="onStepClick(stepBlock,$event)"></amexio-pane-icon>
+          <span [ngClass]="{'step-box-icon-active':stepBlock.active}" (onClick)="onStepClick(stepBlock,$event)">
+            <amexio-pane-icon [customclass]="stepBlock.icon" ></amexio-pane-icon>
           </span>
             </ng-container>
           <ng-container *ngIf="stepBlock.icon && !stepBlock.active">
@@ -58,8 +58,8 @@ import {StepBlockComponent} from "./step-block";
       <div *ngIf="block" class="step-box-sqaure">
         <div class="step-box-table">
           <ng-container *ngFor="let stepBlock of stepBlockArray; let i = index">
-            <div class="step-box-table-item"  style="padding-top: 10px;" [ngClass]="{'disabled step-box-table-item-hover ':!stepBlock.active,'active':stepBlock.active}">
-              <a (click)="onStepClick(stepBlock,$event)">
+            <div class="step-box-table-item" (click)="onStepClick(stepBlock,$event)"  style="padding-top: 10px;" [ngClass]="{'disabled step-box-table-item-hover ':!stepBlock.active,'active':stepBlock.active}">
+              <a >
                 <ng-container *ngIf="index">
                   {{i + 1}}<br>
                 </ng-container>
@@ -111,8 +111,8 @@ export class AmexioStepsComponent implements AfterContentInit, DoCheck {
   }
 
   onStepClick(data: any, ev: any) {
-    this.onClick.emit(data);
     this.getStepBlockData.emit({"event":ev,"data":data});
+    this.onClick.emit(data);
   }
 
   ngAfterContentInit() {
