@@ -1,0 +1,31 @@
+//$themeBGColor :  #7C0A02;
+
+/* Theme Specific Variables */
+$themePrimaryColor: #222021;
+$themeSecondaryColor : #48494B;
+$themeFontColor : black;
+$themeFontFamily: Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
+
+$appBackground :#ECEFF1;
+$appBackgroundImage : none;
+$appHeaderBGColor : $themePrimaryColor;
+$appHeaderFontColor : white;
+$appHeaderHoverBGColor : none;
+$appHeaderHoverFontColor : none;
+/* Component Specific Variables */
+$componentHoverBGColor : lighten($themeSecondaryColor,30%);
+$componentHoverFontColor : white;
+$componentActiveBGColor : lighten($themeSecondaryColor,20%);
+$componentActiveFontColor : white;
+$componentDisabledBGColor : rgb(160, 158, 158);
+$componentDisabledFontColor : black;
+
+$componentBGColor : white;
+$componentFontColor : $themeFontColor;
+$componentHeaderBGColor : $themeSecondaryColor;
+$componentHeaderFontColor : white;
+$componentFooterBGColor :$themeSecondaryColor;
+$componentFooterFontColor : white;
+
+$componentDataBGColor : $themePrimaryColor;
+$componentDataFontColor : $appHeaderFontColor;

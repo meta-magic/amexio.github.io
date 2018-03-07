@@ -1122,32 +1122,32 @@ textarea:required {
 
 /** notification **/
 /** notification visual**/
-.toast {
+.notification {
   background-color: #292b2c;
   color: rgba(255, 255, 255, 0.7); }
 
 /** notification -structure**/
-.toastbar {
+.notification-content {
   position: fixed;
   z-index: 3; }
 
-.toast-left {
+.notification-left {
   left: 10px; }
 
-.toast-right {
+.notification-right {
   right: 0px; }
 
-.toast-top {
+.notification-top {
   top: 10px; }
 
-.toast-center {
+.notification-center {
   top: 50%;
   left: 50%; }
 
-.toast-bottom {
+.notification-bottom {
   bottom: 10px; }
 
-.toast {
+.notification {
   margin: 10px;
   padding: 10px;
   min-width: 250px;
@@ -1156,19 +1156,16 @@ textarea:required {
   padding: 16px;
   z-index: 1;
   display: block; }
-  .toast i {
+  .notification i {
     cursor: pointer; }
 
 /** progress **/
 /** progress visual**/
-/*----------------------------------------------------------------------*/
-/*        PROGRESS COMPONENT - Visual      */
-/*----------------------------------------------------------------------*/
-.meter {
+.progress {
   position: relative;
   background: #292b2c; }
 
-.meter > span {
+.progress > span {
   background-color: #292b2c; }
 
 @-webkit-keyframes move {}
@@ -1189,20 +1186,20 @@ textarea:required {
   background-image: none; }
 
 /** progress -structure**/
-.meter {
+.progress {
   height: 20px;
   /* Can be anything */
   position: relative;
   /*background: #555;*/ }
 
-.meter > span {
+.progress > span {
   text-align: center;
   display: block;
   height: 100%;
   position: relative;
   overflow: hidden; }
 
-.meter > span:after, .animate > span > span {
+.progress > span:after, .animate > span > span {
   content: "";
   position: absolute;
   top: 0;
@@ -2813,9 +2810,6 @@ header .billboard .content-button {
 /** rowcol **/
 /** rowcol visual**/
 /** rowcol -structure**/
-/*----------------------------------------------------------------------*/
-/*        ROW-COLUMN COMPONENT  - Structure       */
-/*----------------------------------------------------------------------*/
 .flex-row {
   flex-direction: row;
   box-sizing: border-box;
@@ -5411,11 +5405,8 @@ fieldset {
   background: linear-gradient(#98FB98, #4CBB17); }
 
 .input-control {
-  border-radius: 4px;
-  line-height: 2;
-  font-size: 14px;
-  border: 2px solid #666666;
-  border-radius: 4px !important; }
+  background-color: #1b1d22;
+  color: rgba(255, 255, 255, 0.7); }
 
 .listbox .list {
   background-color: #292b2c; }
