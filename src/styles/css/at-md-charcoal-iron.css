@@ -825,32 +825,32 @@ textarea:required {
 
 /** notification **/
 /** notification visual**/
-.toast {
+.notification {
   background-color: #fffafa;
   color: #240000; }
 
 /** notification -structure**/
-.toastbar {
+.notification-content {
   position: fixed;
   z-index: 3; }
 
-.toast-left {
+.notification-left {
   left: 10px; }
 
-.toast-right {
+.notification-right {
   right: 0px; }
 
-.toast-top {
+.notification-top {
   top: 10px; }
 
-.toast-center {
+.notification-center {
   top: 50%;
   left: 50%; }
 
-.toast-bottom {
+.notification-bottom {
   bottom: 10px; }
 
-.toast {
+.notification {
   margin: 10px;
   padding: 10px;
   min-width: 250px;
@@ -859,19 +859,16 @@ textarea:required {
   padding: 16px;
   z-index: 1;
   display: block; }
-  .toast i {
+  .notification i {
     cursor: pointer; }
 
 /** progress **/
 /** progress visual**/
-/*----------------------------------------------------------------------*/
-/*        PROGRESS COMPONENT - Visual      */
-/*----------------------------------------------------------------------*/
-.meter {
+.progress {
   position: relative;
   background: #f5f5f5; }
 
-.meter > span {
+.progress > span {
   background-color: #f5f5f5; }
 
 @-webkit-keyframes move {}
@@ -892,20 +889,20 @@ textarea:required {
   background-image: none; }
 
 /** progress -structure**/
-.meter {
+.progress {
   height: 20px;
   /* Can be anything */
   position: relative;
   /*background: #555;*/ }
 
-.meter > span {
+.progress > span {
   text-align: center;
   display: block;
   height: 100%;
   position: relative;
   overflow: hidden; }
 
-.meter > span:after, .animate > span > span {
+.progress > span:after, .animate > span > span {
   content: "";
   position: absolute;
   top: 0;
@@ -2523,7 +2520,7 @@ header .billboard .content-button {
   color: #f8f7f7; }
 
 .top-nav-button {
-  background-color: #222021;
+  background-color: inherit;
   color: #f8f7f7; }
 
 .topnav a {
@@ -3707,9 +3704,6 @@ fieldset {
 /** rowcol **/
 /** rowcol visual**/
 /** rowcol -structure**/
-/*----------------------------------------------------------------------*/
-/*        ROW-COLUMN COMPONENT  - Structure       */
-/*----------------------------------------------------------------------*/
 .flex-row {
   flex-direction: row;
   box-sizing: border-box;

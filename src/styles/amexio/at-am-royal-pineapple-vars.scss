@@ -1,0 +1,34 @@
+
+/* Misc Variables */
+
+$borderSize2 : 2px;
+$borderSize3 : 3px;
+
+$borderRadius1 : 2px;
+$borderRadius2 : 3px;
+$borderRadius3 : 5px;
+
+$borderSize : $borderSize2;
+$borderRadius : $borderRadius1;
+
+$scrollBGColor : #f5f5f5;
+$scrollThumbColor : $componentBGColor;
+
+$borderColor : $themeSecondaryColor;
+
+$primaryBGColor: $themePrimaryColor;
+$secondaryBGColor: #767e93;
+$successBGColor : #5cb85c;
+$dangerBGColor : #d9534f;
+$warningBGColor : #f0ad4e;
+
+$primaryColor:black;
+$secondaryColor:$themePrimaryColor;
+$successColor : black;
+$dangerColor : black;
+$warningColor : black;
+
+$success: $successBGColor;
+$error : $dangerBGColor;
+$focusColor : #5cb3fd;
+$borderColorFocus: $focusColor;

@@ -1,4 +1,4 @@
-$appTransprency :rgb(153, 153, 153);
+$appTransparency :rgb(153, 153, 153);
 
 $themePrimaryColor: #16E73C ;
 $themeSecondaryColor : #16E73C;
@@ -15,54 +15,21 @@ $appHeaderHoverBGColor : none;
 $appHeaderHoverFontColor : none;
 
 /* Component Specific Variables */
-$componentHoverBGColor :  rgba(41, 105, 70, 0.4);  
-$componentHoverFontColor : $themeSecondaryColor;
-$componentActiveBGColor : rgba(41, 105, 70, 0.4);  
-$componentActiveFontColor : $themeSecondaryColor;
-$componentDisabledBGColor : rgb(160, 158, 158);
-$componentDisabledFontColor : $themeSecondaryColor;
 
 $componentBGColor :#000000;
 $componentFontColor : $themeFontColor;
 
-$componentHeaderBGColor : #0d8a24;
-$componentHeaderFontColor : $componentBGColor;
-$componentFooterBGColor :#0d8a24;
-$componentFooterFontColor : $componentBGColor;
+$componentHoverBGColor :  rgba(41, 105, 70, 0.4);  
+$componentHoverFontColor : $themeSecondaryColor;
+$componentActiveBGColor : $componentBGColor;  
+$componentActiveFontColor : $themeSecondaryColor;
+$componentDisabledBGColor : rgb(160, 158, 158);
+$componentDisabledFontColor : $themeSecondaryColor;
+
+$componentHeaderBGColor : rgba(41, 105, 70, 0.4);
+$componentHeaderFontColor : $themeSecondaryColor;
+$componentFooterBGColor :rgba(41, 105, 70, 0.4);
+$componentFooterFontColor : $themeSecondaryColor;
 
 $componentDataBGColor : $themePrimaryColor;
 $componentDataFontColor : $appHeaderFontColor;
-
-/* Misc Variables */
-
-$borderSize2 : 2px;
-$borderSize3 : 3px;
-
-
-$borderRadius2 : 3px;
-$borderRadius3 : 5px;
-
-$borderSize : $borderSize3;
-$borderRadius : $borderRadius3;
-
-$scrollBGColor : #f5f5f5;
-$scrollThumbColor : $componentBGColor;
-
-$borderColor : $themeSecondaryColor;
-
-$primaryBGColor: $themeSecondaryColor;
-$secondaryBGColor: #ffffff;
-$successBGColor : #5cb85c;
-$dangerBGColor : #d9534f;
-$warningBGColor : #f0ad4e;
-
-$primaryColor: black;
-$secondaryColor:black;
-$successColor : white;
-$dangerColor : white;
-$warningColor : white;
-
-$success: $successBGColor;
-$error : $dangerBGColor;
-$focusColor : #5cb3fd;
-$borderColorFocus: $focusColor;

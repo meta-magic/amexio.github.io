@@ -1,24 +1,11 @@
 
-/*----------------------------------------------------------------------*/
-/*        PROGRESS COMPONENT - Visual      */
-/*----------------------------------------------------------------------*/
-$progressBGColor :$appBackground;
-$progressBGImg1: rgb(43, 194, 83);
-
-$progressBGSuccess : #5cb85c;
-$progressBGWarning : #f0ad4e;
-$progressBGDanger : #d9534f;
-$progressBGDangerImg1:#f0a3a3;
-$progressBGImgNoStripes : none;
-
-
-.meter {
+.progress {
   //height: 20px; /* Can be anything */
   position: relative;
   background:$progressBGColor ;
 }
 
-.meter > span {
+.progress > span {
   // text-align: center;
   // display: block;
   // height: 100%;
@@ -27,7 +14,7 @@ $progressBGImgNoStripes : none;
   // overflow: hidden;
 }
 
-.meter > span:after, .animate > span > span {
+.progress > span:after, .animate > span > span {
   // content: "";
   // position: absolute;
   // top: 0;

@@ -53,7 +53,7 @@ export class AmexioNotificationComponent implements OnInit {
       this.horizontalposition = 'right'
     }
 
-    this.positionclass = "toast-" + this.verticalposition + " toast-" + this.horizontalposition;
+    this.positionclass = "notification-" + this.verticalposition + " notification-" + this.horizontalposition;
   }
 
 

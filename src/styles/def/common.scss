@@ -1,5 +1,4 @@
 /* Misc Variables */
-$appTransprency :  rgba(0, 0, 0, 0.87);
 
 $borderSize : 1px;
 $borderSize2 : 2px;
@@ -228,7 +227,7 @@ label {
 }
 
 a {
-  color: $appTransprency;
+  color: $appTransparency;
   //text-transform: lowercase;
 }
 

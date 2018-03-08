@@ -2,94 +2,14 @@
 /*        Byzantine (Grape) Navy -Visual         */
 /*----------------------------------------------------------------------*/
 
+a {
+  color: $themeSecondaryColor;
+}
 
+.toggle-slider:before {
+  background-color: $themeSecondaryColor;
+}
 
-// .input-control {
-//   border-radius: 4px;
-//   line-height: 2;
-//   font-size: 14px;
-//   border: none;
-//   border-bottom: 2px solid $borderColor;
-//   border-radius: 4px!important;
-//   color: $color;
-// }
-
-// .input-control-success {
-//   border-color:$success;
-// }
-
-// .input-control-error {
-//   border-color:$error;
-// }
-
-
-// .inputgroup label {
-//   margin-bottom: 0rem;
-// }
-
-// .dropdown{
-//   border: 2px solid $themeColor;
-//   box-shadow: 0 1px 3px 0 #666666;
-// }
-
-
-// .datetimepicker {
-//   border: $borderSize solid $themeColor;
-//   box-shadow: 0 1px 3px 0 #666666;
-// }
-
-// label {
-//   display: inline-block;
-//   margin-top: 5px;
-//   max-width: 100%;
-//   //padding: 0 12px;
-//   font-size: 14px;
-//   font-weight: 500;
-
-// }
-
-// .drodown-caret-down{
-//   top: 35px;
-//   color: $borderColor;
-// }
-
-
-// .input-control {
-//   border-radius: 4px;
-//   line-height: 2;
-//   font-size: 14px;
-//   border: none;
-//   border-bottom: 2px solid $borderColor;
-//   border-radius: 4px!important;
-//   color: $color;
-// }
-
-// .input-control-success {
-//   border-color:$success;
-// }
-
-// .input-control-error {
-//   border-color:$error;
-// }
-
-// .inputgroup label {
-//   margin-bottom: 0rem;
-// }
-
-// .dropdown{
-//   border: 2px solid $themeSecondaryColor;
-//   box-shadow: 0 1px 3px 0 #666666;
-// }
-
-// .datetimepicker {
-//   border: $borderSize solid $themeSecondaryColor;
-//   box-shadow: 0 1px 3px 0 #666666;
-// }
-
-// .drodown-caret-down{
-//   top: 35px;
-//   color: $borderColor;
-// }
 .listbox {
 
   background: rgba(255, 255, 255, 0.6);
@@ -139,9 +59,9 @@
   }
 }
 
-.navbar-container {
+.topnav {
   background-color: $componentBGColor;
-  .navbar-container .navbar-logo-unit a {
+  .topnav .navbar-logo-unit a {
     color: $themeSecondaryColor;
   }
 }

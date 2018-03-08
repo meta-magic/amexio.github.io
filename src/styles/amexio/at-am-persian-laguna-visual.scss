@@ -1,4 +1,8 @@
 
+/*----------------------------------------------------------------------*/
+/*       Persian Laguna - Visual       */
+/*----------------------------------------------------------------------*/
+
 
 body {
   background-color: #D33134;
@@ -10,76 +14,20 @@ body {
   //font-family: 'Shadows Into Light', cursive;
 }
 
-/*----------------------------------------------------------------------*/
-/*       Persian Laguna - Visual       */
-/*----------------------------------------------------------------------*/
 .input-control {
   background-color: rgba(66, 31, 38, 0.4);
 }
 
-
-// .input-control {
-//   border-radius: 4px;
-//   line-height: 2;
-//   font-size: 14px;
-//   border-radius: 4px!important;
-//   color: $hoverColor;
-//   background-color: $hoverBGColor;
-// }
-
-// .input-control-success {
-//   border-color:$success;
-// }
-
-// .input-control-error {
-//   border-color:$error;
-// }
-
-
-// .inputgroup label {
-//   margin-bottom: 0rem;
-// }
-
-// .dropdown{
-//   border: 2px solid $borderColor;
-//   box-shadow: 0 1px 3px 0 $borderColor;
-//   background-color: $panelBGColor;
-// }
-
-
-// .datetimepicker {
-//   border: $borderSize solid $borderColor;
-//   box-shadow: 0 1px 3px 0 $borderColor;
-// }
-
-// label {
-//   display: inline-block;
-//   margin-top: 5px;
-//   max-width: 100%;
-//   //padding: 0 12px;
-//   font-size: 14px;
-//   font-weight: 500;
-
-// }
-
-
-
-
-
 .listbox {
   .list{
-    background-color: #ffe578!important;
+    background-color: $appBackground!important;
     background: rgba(255, 255, 255, 0.6);    
-    //border: none;
     .title {
-      //float: left;
       font-size: 18px;
       color: $datapointColor;
-      //padding-top: 8px;
       a {
         font-size: 16px;
         color: $componentFontColor;
-        //text-transform: lowercase;
       }
     }
 
@@ -89,39 +37,25 @@ body {
 
   }
 }
-
 .card-container {
-  // border: none;
-  // box-shadow: none;
+  background-color: transparent;
   background-image: url('/assets/images/theme/bootstrap/PageFold.png');
   .card-header {
     font-size: 20px;
-  //  font-weight: 700;
-  //  border: none;
     background-color: transparent;
     background-image: url('/assets/images/theme/bootstrap/PageFold.png');
-    // border-right: $borderSize solid $cardBorderColor;
-    // padding: 20px 24px 12px 56px;
   }
 
   .card-body{
-    // border-left: $borderSize solid $cardBorderColor;
-    // border-right: $borderSize solid $cardBorderColor;
-    // border-bottom: $borderSize solid $cardBorderColor;
-    background-color: #ffe578;
+    background-color: $appBackground;
   }
 
   .card-footer{
-  //  border-top: none;
-  //  border: $borderSize solid $cardBorderColor;
-    background-color: #ffe578;
+    background-color: $appBackground;
   }
 }
 
-
-
 .listbox{
-  //border: none;
 
   .listbox .list .title {
     color: red !important;
@@ -129,55 +63,33 @@ body {
 
   .header{
     background-color: transparent;
-    //border: none;
     background-image: url('/assets/images/theme/bootstrap/PageFold.png');
-    //border-right: $borderSize solid $cardBorderColor;
-    //padding: 20px 24px 12px 56px;
     color: $themeSecondaryColor !important;
   }
 
   .list{
     background-color: $panelBGColor;
-    // border-left: $borderSize solid $cardBorderColor;
-    // border-right: $borderSize solid $cardBorderColor;
-    // border-bottom: $borderSize solid $cardBorderColor;
-
   }
 
   .list .list-items{
-    //border-bottom: 1px solid #1b1d22;
-    background-color: #ffe578!important;
+    background-color: $appBackground!important;
   }
 }
 
-// /** NAVBAR **/
-.navbar-container {
+.topnav {
   font-size: 100%;
+  background-color: #d33134b0
+
 }
 
-// .sidenav{
-//   box-shadow:none;
-// }
+.sidenav  {
+  background-image: $appBackgroundImage;
+  font-size: 16px;
+  background-repeat: repeat-y;
+  background-attachment: fixed;
+  color : $appHeaderFontColor;
 
-
-// .sidenav .border{
-//   border-bottom: 1px solid $sidenavBorderColor;
-// }
-
-
-// .sidenav .activenode{
-//   color: white;
-//   background: none;
-// }
-
-
-// .sidenav .headernode:hover {
-//   color: white;
-//   background-color: $sidenavactive;
-// }
-
-// .sidenav .defaultnode:hover {
-//   color: white;
-//   background-color: $sidenavactive;
-// }
-
+}
+.sidenav .headernode{
+  background: none;
+}

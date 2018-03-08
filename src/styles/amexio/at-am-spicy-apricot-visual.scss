@@ -2,8 +2,7 @@
 body {
     background-image: $appBackgroundImage;
     background-repeat: repeat-x;
-    background-attachment: fixed;
-    
+    background-attachment: fixed;    
   }
   
   .input-control {
@@ -16,7 +15,7 @@ body {
   
   
   
-  .navbar-container {
+  .topnav {
       background-color: $appBackground;
       color: white;
   }
@@ -55,7 +54,7 @@ body {
   
   }
   
-  .navbar-container {
+  .topnav {
   
   }
   .sidenav {
