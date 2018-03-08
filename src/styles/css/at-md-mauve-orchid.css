@@ -2550,6 +2550,10 @@ header .billboard .content-button {
 .mobilebar {
   color: #f9f5f9; }
 
+.topnav input {
+  background-color: inherit;
+  color: inherit; }
+
 /** navbar -structure**/
 .topnav {
   overflow: hidden;
