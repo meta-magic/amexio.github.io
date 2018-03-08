@@ -399,6 +399,8 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
 
   mask : boolean = true;
 
+  @Input() columnLocalData: any;
+
   @ContentChildren(AmexioGridColumnComponent) columnRef: QueryList<AmexioGridColumnComponent>;
 
 
@@ -430,10 +432,6 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
       this.setData(this.data);
         this.previousData = JSON.parse(JSON.stringify(this.data));
     }
-    if (this.columndefintion && this.columndefintion.length > 0 ) {
-      this.columnPreviewData = JSON.parse(JSON.stringify(this.columndefintion));
-      this.columns = this.columndefintion;
-    }
   }
 
   ngDoCheck() {
@@ -441,15 +439,16 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
       this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
     }
-    if (this.columnPreviewData != null && JSON.stringify(this.columnPreviewData) != JSON.stringify(this.columndefintion)) {
+    if (JSON.stringify(this.columnPreviewData) != JSON.stringify(this.columndefintion)) {
       this.columnPreviewData = JSON.parse(JSON.stringify(this.columndefintion));
       this.columns = this.columndefintion;
     }
   }
 
   ngAfterContentInit() {
-    if (this.columndefintion && this.columndefintion.length > 0) {
+    if ( this.columndefintion.length > 0) {
       this.columns = this.columndefintion;
+      this.columnPreviewData = JSON.parse(JSON.stringify(this.columnLocalData));
     } else {
       this.createConfig();
     }
