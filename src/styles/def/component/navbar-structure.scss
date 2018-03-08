@@ -113,7 +113,7 @@
 }
  
 .topnavmainbarinneritems .nav-dropdown-content { 
-    //display: none;
+    display: none;
     position: fixed;
     //background-color: $navbarActiveBG;
     min-width: 160px;
@@ -122,7 +122,7 @@
     box-shadow: 0px 5px 5px $navbarBGBoxShadow;
 
     transition: all 0.3s ease;
-    transform: scale(0);
+    //transform: scale(0);
     transform-origin: 0 0;
 }
 
@@ -149,8 +149,9 @@
     }
 
     .nav-dropdown-content {
+
         display: block;
-        transform: scale(1);
+        //transform: scale(1);
     }
     
 }
