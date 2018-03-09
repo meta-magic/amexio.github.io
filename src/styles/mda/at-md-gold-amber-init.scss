@@ -23,7 +23,7 @@
 
 
 /**
-  Theme Details ------------------------------- 
+  Theme Details -------------------------------------------------------- 
   Theme Name    : Gold Amber
   Theme Version : 4.0
   Design Type   : Material Design
@@ -33,47 +33,47 @@
 $appTransparency : rgba(0,0,0,0.87);
 
 /** Theme Color Variables ------------------------------- */
-$themePrimaryColor :#ffa000;
-$themeSecondaryColor :#ffc107;
-$theme3rdColor :#ff7f50;
-$theme4thColor :#00fa9a;
-$theme5thColor :#f5f5f5;
-$theme6thColor :#fffafa;
-$themeFontColor :#1f1300;
-$themeFontFamily :Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
+$themePrimaryColor : #ffa000;
+$themeSecondaryColor : #ffc107;
+$theme3rdColor : #ff7f50;
+$theme4thColor : #00fa9a;
+$theme5thColor : #f5f5f5;
+$theme6thColor : #ffffff;
+$themeFontColor : #1f1300;
+$themeFontFamily : Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
 
 /** Theme Additional Std Colors : Light and Dark shades --- */
-$amexioColor1L :#ff7f50;
-$amexioColor1D :#8b0000;
-$amexioColor2L :#00ff00;
-$amexioColor2D :#2e8b57;
-$amexioColor3L :#ff00ff;
-$amexioColor3D :#8b008b;
-$amexioColor4L :#00bfff;
-$amexioColor4D :#00008b;
-$amexioColor5L :#f4a460;
-$amexioColor5D :#800000;
-$amexioColor6L :#ffd700;
-$amexioColor6D :#b22222;
+$amexioColorRedLight : #ff7f50;
+$amexioColorRedDark : #8b0000;
+$amexioColorGreenLight : #00ff00;
+$amexioColorGreenDark : #2e8b57;
+$amexioColorPurpleLight : #ff00ff;
+$amexioColorPurpleDark : #8b008b;
+$amexioColorBlueLight : #00bfff;
+$amexioColorBlueDark : #00008b;
+$amexioColorBrownLight : #f4a460;
+$amexioColorBrownDark : #800000;
+$amexioColorYellowLight : #ffd700;
+$amexioColorYellowDark : #b22222;
 
 /** App Color Variables ------------------------ */
 $appBackground :#f5f5f5;
 $appBackgroundImage : none;
 $appForegroundColor :#121212;
 $appHeaderBGColor :#ffa000;
-$appHeaderFontColor :#241700;
+$appHeaderFontColor :#fff9f0;
 $appHeaderMenuBGColor :#855400;
 $appHeaderMenuFontColor :#fff9f0;
 $appHeaderHoverBGColor :#ffc96b;
 $appHeaderHoverFontColor :#050300;
 
 /** Component Color Variables ------------------------ */
-$componentBGColor :#fffafa;
-$componentFontColor :#240000;
+$componentBGColor :#ffffff;
+$componentFontColor :#121212;
 $componentHeaderBGColor :#ffc107;
-$componentHeaderFontColor :#241b00;
-$componentFooterBGColor :#241b00;
-$componentFooterFontColor :#ffc107;
+$componentHeaderFontColor :#fffbf0;
+$componentFooterBGColor :#fffbf0;
+$componentFooterFontColor :#856300;
 $componentDataBGColor :#1f1700;
 $componentDataFontColor :#ffe79e;
 $componentHoverBGColor :#ffedb8;
@@ -85,7 +85,7 @@ $componentDisabledFontColor :#a39362;
 
 
 /** 
-  Amexio Support ------------------------------ 
+  Amexio Support ---------------------------------- 
   Contact  : amexiosupport@metamagic.in 
   Forum    : http://forum.metamagicglobal.com
   API Docs : http://api.amexio.tech/

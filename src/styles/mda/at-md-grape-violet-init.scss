@@ -23,7 +23,7 @@
 
 
 /**
-  Theme Details ------------------------------- 
+  Theme Details -------------------------------------------------------- 
   Theme Name    : Grape Violet
   Theme Version : 4.0
   Design Type   : Material Design
@@ -33,28 +33,28 @@
 $appTransparency : rgba(0,0,0,0.87);
 
 /** Theme Color Variables ------------------------------- */
-$themePrimaryColor :#6f2da8;
-$themeSecondaryColor :#b200ed;
-$theme3rdColor :#ff7f50;
-$theme4thColor :#00fa9a;
-$theme5thColor :#f5f5f5;
-$theme6thColor :#fffafa;
-$themeFontColor :#10001f;
-$themeFontFamily :Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
+$themePrimaryColor : #6f2da8;
+$themeSecondaryColor : #b200ed;
+$theme3rdColor : #ff7f50;
+$theme4thColor : #00fa9a;
+$theme5thColor : #f5f5f5;
+$theme6thColor : #ffffff;
+$themeFontColor : #10001f;
+$themeFontFamily : Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
 
 /** Theme Additional Std Colors : Light and Dark shades --- */
-$amexioColor1L :#ff7f50;
-$amexioColor1D :#8b0000;
-$amexioColor2L :#00ff00;
-$amexioColor2D :#2e8b57;
-$amexioColor3L :#ff00ff;
-$amexioColor3D :#8b008b;
-$amexioColor4L :#00bfff;
-$amexioColor4D :#00008b;
-$amexioColor5L :#f4a460;
-$amexioColor5D :#800000;
-$amexioColor6L :#ffd700;
-$amexioColor6D :#b22222;
+$amexioColorRedLight : #ff7f50;
+$amexioColorRedDark : #8b0000;
+$amexioColorGreenLight : #00ff00;
+$amexioColorGreenDark : #2e8b57;
+$amexioColorPurpleLight : #ff00ff;
+$amexioColorPurpleDark : #8b008b;
+$amexioColorBlueLight : #00bfff;
+$amexioColorBlueDark : #00008b;
+$amexioColorBrownLight : #f4a460;
+$amexioColorBrownDark : #800000;
+$amexioColorYellowLight : #ffd700;
+$amexioColorYellowDark : #b22222;
 
 /** App Color Variables ------------------------ */
 $appBackground :#f5f5f5;
@@ -68,12 +68,12 @@ $appHeaderHoverBGColor :#ba6bff;
 $appHeaderHoverFontColor :#030005;
 
 /** Component Color Variables ------------------------ */
-$componentBGColor :#fffafa;
-$componentFontColor :#240000;
+$componentBGColor :#ffffff;
+$componentFontColor :#121212;
 $componentHeaderBGColor :#b200ed;
-$componentHeaderFontColor :#1b0024;
-$componentFooterBGColor :#1b0024;
-$componentFooterFontColor :#b200ed;
+$componentHeaderFontColor :#fbf0ff;
+$componentFooterBGColor :#fbf0ff;
+$componentFooterFontColor :#50006b;
 $componentDataBGColor :#17001f;
 $componentDataFontColor :#e79eff;
 $componentHoverBGColor :#edb8ff;
@@ -85,7 +85,7 @@ $componentDisabledFontColor :#9362a3;
 
 
 /** 
-  Amexio Support ------------------------------ 
+  Amexio Support ---------------------------------- 
   Contact  : amexiosupport@metamagic.in 
   Forum    : http://forum.metamagicglobal.com
   API Docs : http://api.amexio.tech/

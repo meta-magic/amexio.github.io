@@ -15,7 +15,19 @@
   border-right: $boxBorderSize solid $borderColor;
 }
 
-.border-default{
+.border-all{
+  border:$boxBorderSize solid $borderColor ;
+}
+.border-top-bottom{
+  border-top:$boxBorderSize solid $borderColor ;
+  border-bottom:$boxBorderSize solid $borderColor;
+}
+.border-right-left{
+  border-right:$boxBorderSize solid $borderColor ;
+  border-left: $boxBorderSize solid $borderColor;
+}
+
+.box-default{
   border-color : $borderColor
 }
 
@@ -23,93 +35,26 @@
   padding:8px 8px 8px 8px;
 }
 
-.border-amber{
-  border-color: #ffc107;
-}
-.border-aqua{
-  border-color: #00ffff;
-}
-.border-blue{
-  border-color: #2196F3;
-}
-.border-light-blue{
-  border-color: #87CEEB;
-}
-.border-brown{
-  border-color: #795548;
-}
-.border-cyan{
-  border-color: #00bcd4;
-}
-.border-blue-grey{
-  border-color: #607d8b;
-}
-.border-green{
-  border-color: #4CAF50;
-}
-.border-light-green{
-  border-color: #8bc34a;
-}
-.border-indigo{
-  border-color: #3f51b5;
-}
-.border-khaki{
-  border-color: #f0e68c;
-}
-.border-lime{
-  border-color: #cddc39;
-}
-.border-orange{
-  border-color: #ff9800;
-}
-.border-deep-orange{
-  border-color: #ff5722;
-}
-.border-pink{
-  border-color: #e91e63;
-}
-.border-purple{
-  border-color: #9c27b0;
-}
-.border-deep-purple{
-  border-color: #673ab7;
-}
 .border-red{
-  border-color: #f44336;
+  border-color: $boxBorderRed;
 }
-.border-sand{
-  border-color: #fdf5e6;
+
+.border-blue{
+  border-color: $boxBorderBlue;
 }
-.border-teal{
-  border-color: #009688;
+
+.border-green{
+  border-color: $boxBorderGreen;
 }
+
+.border-brown{
+  border-color: $boxBorderBrown;
+}
+
+.border-purple{
+  border-color: $boxBorderPurple;
+}
+
 .border-yellow{
-  border-color: #ffeb3b;
-}
-.border-white{
-  border-color: #fff;
-}
-.border-black{
-  border-color: #000;
-}
-.border-grey{
-  border-color: #9e9e9e;
-}
-.border-light-grey{
-  border-color: #f1f1f1;
-}
-.border-dark-grey{
-  border-color: #616161;
-}
-.border-pale-red{
-  border-color: #ffe7e7;
-}
-.border-pale-green{
-  border-color: #e7ffe7;
-}
-.border-pale-yellow{
-  border-color: #ffffcc;
-}
-.border-pale-blue{
-  border-color: #e7ffff;
+  border-color: $boxBorderYellow;
 }

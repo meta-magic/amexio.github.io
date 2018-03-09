@@ -12,7 +12,13 @@ import {AmexioButtonDropDownItemComponent} from "./button.dropdown.item";
         {{label}}
       </button>
       <button class="button"
-              [ngClass]="{'button-default': size=='default' || size ==null,'button-small': size=='small','button-large' : size=='large','button-primary' : type == 'primary' || type == null,'button-success' : type == 'success',' button-danger' : type=='danger','button-warning' : type=='warning'}"
+              [ngClass]="{'button-default': size=='default' || size ==null,
+              'button-small': size=='small',
+              'button-large' : size=='large',
+              'button-primary' : type == 'primary' || type == null || type == 'themeColor',
+              'button-success' : type == 'success' || type == 'green',
+              'button-danger' : type=='danger' || type == 'red',
+              'button-warning' : type=='warning' ||  type == 'yellow'}">
               (click)="onClick()"><i class="fa fa-chevron-down" aria-hidden="true"></i></button>
       <div class="dropdown-button-content" [ngStyle]="{'display' : openContent ? 'block' : 'none'}">
         <ul class="dropdown-list">
@@ -83,7 +89,10 @@ export class AmexioSpiltButtonDropdownComponent implements AfterContentInit {
 
   getBackgroundColor() {
     let colorCode: string;
-    if (this.type == 'primary') colorCode = '#0275d8'; else if (this.type == 'success') colorCode = '#5cb85c'; else if (this.type == 'danger') colorCode = '#d9534f'; else if (this.type == 'warning') colorCode = '#f0ad4e';
+    if (this.type == 'primary' || this.type == 'themeColor') colorCode = '#0275d8';
+     else if (this.type == 'success' || this.type == 'green') colorCode = '#5cb85c';
+      else if (this.type == 'danger' || this.type == 'red') colorCode = '#d9534f'; 
+      else if (this.type == 'warning' || this.type == 'yellow') colorCode = '#f0ad4e';
     return {
       'background-color': colorCode
     }

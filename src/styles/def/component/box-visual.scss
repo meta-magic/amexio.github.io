@@ -1,34 +1,39 @@
 
-.bg-yellow{
+.bg-highlight {
   color : $boxFontColor;
   background-color:#ffeb3b;
 }
 
-.bg-light-grey{
+.bg-red{
 color : $boxFontColor;
-  background-color:#f1f1f1;
+  background-color:$boxBGRed;
 }
 
-.bg-pale-red{
-color : $boxFontColor;
-  background-color:#ffdddd;
-}
-
-.bg-pale-green{
-color : $boxFontColor;
-  background-color:#ddffdd;
-}
-
-.bg-pale-yellow{
+.bg-green{
   color : $boxFontColor;
-  background-color:#ffffcc;
+  background-color:$boxBGGreen;
 }
 
-.bg-pale-blue{
+.bg-yellow{
+  color : $boxFontColor;
+  background-color:$boxBGYellow;
+}
+
+.bg-blue{
   color : $themeFontColor;
-  background-color:#ddffff;
+  background-color:$boxBGBlue;
 }
 
-.background-default{
+.bg-purple{
+  color : $themeFontColor;
+  background-color:$boxBGPurple;
+}
+
+.bg-brown{
+  color : $themeFontColor;
+  background-color:$boxBGBrown;
+}
+
+.box-default{
   background-color : $boxBackgroundColor;
 }

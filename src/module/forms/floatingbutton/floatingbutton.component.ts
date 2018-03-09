@@ -73,23 +73,23 @@ export class AmexioFloatingButtonComponent implements OnInit{
         this.positionclass = this.positionclass + " floatingbutton-square";
       }
 
-      if(this.type === "primary"){
+      if(this.type === "primary" || this.type === "themeColor"){
         if(this.disabled)
             this.positionclass = this.positionclass  + " floatingbutton-primary-disabled"
         else
             this.positionclass = this.positionclass + " floatingbutton-primary";
       }
-      else if(this.type === "success"){
+      else if(this.type === "success" || this.type === "green"){
         if(this.disabled)
             this.positionclass = this.positionclass  + " floatingbutton-success-disabled"
         else
             this.positionclass = this.positionclass + " floatingbutton-success";
-      }else if(this.type === "danger"){
+      }else if(this.type === "danger" || this.type === "red"){
         if(this.disabled)
             this.positionclass = this.positionclass  + " floatingbutton-danger-disabled"
         else
             this.positionclass = this.positionclass + " floatingbutton-danger";
-      }else if(this.type === "warning"){
+      }else if(this.type === "warning" || this.type === "yellow"){
         if(this.disabled)
             this.positionclass = this.positionclass  + " floatingbutton-warning-disabled"
         else

@@ -44,7 +44,7 @@
   Software Foundation.
 */
 /**
-  Theme Details ------------------------------- 
+  Theme Details -------------------------------------------------------- 
   Theme Name    : Chocolate Russet
   Theme Version : 4.0
   Design Type   : Material Design
@@ -55,7 +55,7 @@
 /** App Color Variables ------------------------ */
 /** Component Color Variables ------------------------ */
 /** 
-  Amexio Support ------------------------------ 
+  Amexio Support ---------------------------------- 
   Contact  : amexiosupport@metamagic.in 
   Forum    : http://forum.metamagicglobal.com
   API Docs : http://api.amexio.tech/
@@ -263,17 +263,17 @@ image using the content attribute.
 /** button **/
 /** button visual**/
 .button-secondary {
-  background-color: #fffafa;
+  background-color: #ffffff;
   border-color: #ced4da;
-  color: #240000; }
+  color: #121212; }
 
 .button-secondary:hover:enabled {
-  background-color: #ffc7c7; }
+  background-color: #e6e6e6; }
 
 .button-primary {
   background-color: #2b1700;
   border-color: #2b1700;
-  color: #fffafa; }
+  color: #ffffff; }
 
 .button-primary:hover:enabled {
   background-color: black; }
@@ -281,7 +281,7 @@ image using the content attribute.
 .button-success {
   background-color: #5cb85c;
   border-color: #5cb85c;
-  color: #fffafa; }
+  color: #ffffff; }
 
 .button-success:hover:enabled {
   background-color: #449d44; }
@@ -289,7 +289,7 @@ image using the content attribute.
 .button-danger {
   background-color: #d9534f;
   border-color: #d9534f;
-  color: #fffafa; }
+  color: #ffffff; }
 
 .button-danger:hover:enabled {
   background-color: #c9302c; }
@@ -297,14 +297,14 @@ image using the content attribute.
 .button-warning {
   background-color: #f0ad4e;
   border-color: #f0ad4e;
-  color: #fffafa; }
+  color: #ffffff; }
 
 .button-warning:hover:enabled {
   background-color: #ec971f; }
 
 .button-transparent {
-  background: #fffafa;
-  color: #240000; }
+  background: #ffffff;
+  color: #121212; }
 
 /** button -structure**/
 button {
@@ -377,7 +377,7 @@ button {
 /** buttondropdown **/
 /** buttondropdown visual**/
 .button-dropdown {
-  background-color: #fffafa; }
+  background-color: #ffffff; }
 
 .button-dropdown > div:hover {
   background-color: #ffdeb8; }
@@ -396,7 +396,7 @@ button {
 /** datetime **/
 /** datetime visual**/
 .datetimepicker {
-  background: #fffafa; }
+  background: #ffffff; }
   .datetimepicker .datetimepickertopbar {
     background: #ffba6b; }
     .datetimepicker .datetimepickertopbar ul li {
@@ -484,7 +484,7 @@ button {
 /** dropdown **/
 /** dropdown visual**/
 .dropdown {
-  background-color: #fffafa; }
+  background-color: #ffffff; }
 
 .dropdown-list .list-items:hover {
   color: #522c00;
@@ -554,8 +554,8 @@ button {
 /** input visual**/
 .input-control {
   font-size: 14px;
-  background-color: #fffafa;
-  color: #240000; }
+  background-color: #ffffff;
+  color: #121212; }
 
 ::placeholder {
   color: #ced4da; }
@@ -652,7 +652,7 @@ textarea:required {
 /** collapsible-search **/
 /** collapsible-search visual**/
 .search:focus {
-  background-color: #fffafa; }
+  background-color: #ffffff; }
 
 /** collapsible-search -structure**/
 .search {
@@ -796,8 +796,8 @@ textarea:required {
 /** taginput visual**/
 .tag-input .tag {
   font-size: 11px;
-  background-color: #fffafa;
-  color: #240000; }
+  background-color: #ffffff;
+  color: #121212; }
   .tag-input .tag .closebtn {
     font-size: 20px;
     color: #ffdeb8; }
@@ -826,8 +826,8 @@ textarea:required {
 /** notification **/
 /** notification visual**/
 .notification {
-  background-color: #fffafa;
-  color: #240000; }
+  background-color: #ffffff;
+  color: #121212; }
 
 /** notification -structure**/
 .notification-content {
@@ -1009,7 +1009,7 @@ textarea:required {
 /** toggle **/
 /** toggle visual**/
 .toggle-slider {
-  background-color: #fffafa; }
+  background-color: #ffffff; }
 
 .toggle-slider:before {
   background-color: #ffba6b; }
@@ -1074,7 +1074,7 @@ input:checked + .toggle-slider:before {
   background: #838688; }
 
 .ui-widget-content {
-  background: #fffafa;
+  background: #ffffff;
   color: #1f0d00; }
 
 .ui-widget {
@@ -1089,16 +1089,16 @@ input:checked + .toggle-slider:before {
   /** use card header here **/ }
 
 .ui-widget-header {
-  background: #fffafa 0 0 repeat-x;
-  background: -moz-linear-gradient(top, #fffafa 0%, #fffafa 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fffafa), color-stop(100%, #fffafa));
-  background: -webkit-linear-gradient(top, #fffafa 0%, #fffafa 100%);
-  background: -o-linear-gradient(top, #fffafa 0%, #fffafa 100%);
-  background: -ms-linear-gradient(top, #fffafa 0%, #fffafa 100%);
-  background: linear-gradient(to bottom, #fffafa 0%, #fffafa 100%); }
+  background: #ffffff 0 0 repeat-x;
+  background: -moz-linear-gradient(top, #ffffff 0%, #ffffff 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(100%, #ffffff));
+  background: -webkit-linear-gradient(top, #ffffff 0%, #ffffff 100%);
+  background: -o-linear-gradient(top, #ffffff 0%, #ffffff 100%);
+  background: -ms-linear-gradient(top, #ffffff 0%, #ffffff 100%);
+  background: linear-gradient(to bottom, #ffffff 0%, #ffffff 100%); }
 
 .ui-widget-header {
-  background: #fffafa;
+  background: #ffffff;
   color: #fff8f0;
   font-weight: normal; }
 
@@ -1269,32 +1269,36 @@ input:checked + .toggle-slider:before {
 
 /** box **/
 /** box visual**/
-.bg-yellow {
+.bg-highlight {
   color: #1f0d00;
   background-color: #ffeb3b; }
 
-.bg-light-grey {
+.bg-red {
   color: #1f0d00;
-  background-color: #f1f1f1; }
+  background-color: #ffcab6; }
 
-.bg-pale-red {
+.bg-green {
   color: #1f0d00;
-  background-color: #ffdddd; }
+  background-color: #99ff99; }
 
-.bg-pale-green {
+.bg-yellow {
   color: #1f0d00;
-  background-color: #ddffdd; }
+  background-color: #ffe766; }
 
-.bg-pale-yellow {
+.bg-blue {
   color: #1f0d00;
-  background-color: #ffffcc; }
+  background-color: #ccf2ff; }
 
-.bg-pale-blue {
+.bg-purple {
   color: #1f0d00;
-  background-color: #ddffff; }
+  background-color: #ffccff; }
 
-.background-default {
-  background-color: #ffdeb8; }
+.bg-brown {
+  color: #1f0d00;
+  background-color: #fbdbbf; }
+
+.box-default {
+  background-color: #ffffff; }
 
 /** box -structure**/
 .border-topbar {
@@ -1309,106 +1313,45 @@ input:checked + .toggle-slider:before {
 .border-rightbar {
   border-right: 6px solid #ced4da; }
 
-.border-default {
+.border-all {
+  border: 6px solid #ced4da; }
+
+.border-top-bottom {
+  border-top: 6px solid #ced4da;
+  border-bottom: 6px solid #ced4da; }
+
+.border-right-left {
+  border-right: 6px solid #ced4da;
+  border-left: 6px solid #ced4da; }
+
+.box-default {
   border-color: #ced4da; }
 
 .padding {
   padding: 8px 8px 8px 8px; }
 
-.border-amber {
-  border-color: #ffc107; }
-
-.border-aqua {
-  border-color: #00ffff; }
+.border-red {
+  border-color: #8b0000; }
 
 .border-blue {
-  border-color: #2196F3; }
-
-.border-light-blue {
-  border-color: #87CEEB; }
-
-.border-brown {
-  border-color: #795548; }
-
-.border-cyan {
-  border-color: #00bcd4; }
-
-.border-blue-grey {
-  border-color: #607d8b; }
+  border-color: #00008b; }
 
 .border-green {
-  border-color: #4CAF50; }
+  border-color: #2e8b57; }
 
-.border-light-green {
-  border-color: #8bc34a; }
-
-.border-indigo {
-  border-color: #3f51b5; }
-
-.border-khaki {
-  border-color: #f0e68c; }
-
-.border-lime {
-  border-color: #cddc39; }
-
-.border-orange {
-  border-color: #ff9800; }
-
-.border-deep-orange {
-  border-color: #ff5722; }
-
-.border-pink {
-  border-color: #e91e63; }
+.border-brown {
+  border-color: #800000; }
 
 .border-purple {
-  border-color: #9c27b0; }
-
-.border-deep-purple {
-  border-color: #673ab7; }
-
-.border-red {
-  border-color: #f44336; }
-
-.border-sand {
-  border-color: #fdf5e6; }
-
-.border-teal {
-  border-color: #009688; }
+  border-color: #8b008b; }
 
 .border-yellow {
-  border-color: #ffeb3b; }
-
-.border-white {
-  border-color: #fff; }
-
-.border-black {
-  border-color: #000; }
-
-.border-grey {
-  border-color: #9e9e9e; }
-
-.border-light-grey {
-  border-color: #f1f1f1; }
-
-.border-dark-grey {
-  border-color: #616161; }
-
-.border-pale-red {
-  border-color: #ffe7e7; }
-
-.border-pale-green {
-  border-color: #e7ffe7; }
-
-.border-pale-yellow {
-  border-color: #ffffcc; }
-
-.border-pale-blue {
-  border-color: #e7ffff; }
+  border-color: #b22222; }
 
 /** image **/
 /** image visual**/
 .profile-image a {
-  color: #240000; }
+  color: #121212; }
 
 /** image -structure**/
 .profile-image img {
@@ -1458,19 +1401,19 @@ input:checked + .toggle-slider:before {
 
 .floatingbutton-primary {
   background-color: #2b1700;
-  color: #fffafa; }
+  color: #ffffff; }
 
 .floatingbutton-success {
   background-color: #5cb85c;
-  color: #fffafa; }
+  color: #ffffff; }
 
 .floatingbutton-danger {
   background-color: #d9534f;
-  color: #fffafa; }
+  color: #ffffff; }
 
 .floatingbutton-warning {
   background-color: #f0ad4e;
-  color: #fffafa; }
+  color: #ffffff; }
 
 .floatingbutton-default-disabled {
   background-color: #dbcfc2;
@@ -1478,19 +1421,19 @@ input:checked + .toggle-slider:before {
 
 .floatingbutton-primary-disabled {
   background-color: #914e00;
-  color: #fffafa; }
+  color: #ffffff; }
 
 .floatingbutton-success-disabled {
   background-color: #a3d7a3;
-  color: #fffafa; }
+  color: #ffffff; }
 
 .floatingbutton-danger-disabled {
   background-color: #eba5a3;
-  color: #fffafa; }
+  color: #ffffff; }
 
 .floatingbutton-warning-disabled {
   background-color: #f8d9ac;
-  color: #fffafa; }
+  color: #ffffff; }
 
 /** floatingbutton -structure**/
 .floatingbutton {
@@ -2011,7 +1954,7 @@ header .billboard .content-button {
 /** Datapoints**/
 /** Datapoints -visual**/
 .datapoints {
-  background: #fffafa;
+  background: #ffffff;
   color: #1f1000; }
   .datapoints .datapoints-north {
     color: #1f1000; }
@@ -2052,7 +1995,7 @@ header .billboard .content-button {
   background-color: #dbcfc2; }
 
 .datatable-height::-webkit-scrollbar-thumb {
-  background-color: #fffafa; }
+  background-color: #2b1700; }
 
 .datatable .datatable-header {
   background-color: #2b1700;
@@ -2289,7 +2232,7 @@ header .billboard .content-button {
   background-color: #2b1700; }
 
 .listbox-height::-webkit-scrollbar-thumb {
-  background-color: #fffafa; }
+  background-color: #2b1700; }
 
 .listbox .list .list-items .datatable-row:nth-child(odd) {
   background: none; }
@@ -2298,7 +2241,7 @@ header .billboard .content-button {
   background-color: #ffdeb8; }
 
 .listbox .list {
-  background-color: #fffafa; }
+  background-color: #ffffff; }
   .listbox .list .title {
     color: rgba(0, 0, 0, 0.87); }
     .listbox .list .title a {
@@ -2405,34 +2348,34 @@ header .billboard .content-button {
 /** menubar **/
 /** menubar visual**/
 .menubar .menuheader .menulink a {
-  color: #240000; }
+  color: #121212; }
 
 .menubar .menuheader .menulink:hover a {
-  color: #240000; }
+  color: #121212; }
 
 .menulink:hover {
   background-color: #ffdeb8;
-  color: #240000; }
+  color: #121212; }
 
 .menu-content {
-  background: #fffafa; }
+  background: #ffffff; }
 
 .menu-content .menu-content-cols .col-menu-nodes {
   background: none; }
 
 .menu-content .menu-content-cols .content .menu-links-header {
   font-weight: bold;
-  color: #240000; }
+  color: #121212; }
 
 .menu-content .menu-content-cols .content .menu-links-header:hover {
-  color: #240000;
+  color: #121212;
   background-color: #ffdeb8; }
 
 .menu-content .menu-content-cols .content .menulinks {
-  color: #240000; }
+  color: #121212; }
 
 .menu-content .menu-content-cols .content .menulinks:hover {
-  color: #240000;
+  color: #121212;
   background-color: #ffdeb8; }
 
 /** menubar -structure**/
@@ -2643,13 +2586,13 @@ header .billboard .content-button {
   padding: 0px 8px; }
 
 .topnavmainbarinneritems .nav-dropdown-content {
+  display: none;
   position: fixed;
   min-width: 160px;
   z-index: 3;
   padding: 5px;
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
   transition: all 0.3s ease;
-  transform: scale(0);
   transform-origin: 0 0; }
 
 .topnavmainbarinneritems-mobile .nav-dropdown-content {
@@ -2667,8 +2610,7 @@ header .billboard .content-button {
 .nav-dropdown:hover .nav-dropbtn .dropdownicon {
   transform: rotate(180deg); }
 .nav-dropdown:hover .nav-dropdown-content {
-  display: block;
-  transform: scale(1); }
+  display: block; }
 
 .topnavmainbarinneritems-mobile .top-nav-input-control {
   width: 100%; }
@@ -2726,7 +2668,7 @@ header .billboard .content-button {
 /** sidenav **/
 /** sidenav visual**/
 .sidenav-mobile-bar {
-  color: #240000; }
+  color: #121212; }
 
 .sidenav-mobile-bar-left {
   color: #1f1000; }
@@ -2735,8 +2677,8 @@ header .billboard .content-button {
   color: #1f1000; }
 
 .sidenav {
-  background-color: #fffafa;
-  color: #240000; }
+  background-color: #ffffff;
+  color: #121212; }
 
 .sidenav::-webkit-scrollbar-track {
   background-color: #dbcfc2; }
@@ -2745,29 +2687,29 @@ header .billboard .content-button {
   background-color: #dbcfc2; }
 
 .sidenav::-webkit-scrollbar-thumb {
-  background-color: #fffafa; }
+  background-color: #2b1700; }
 
 .left {
-  background-color: #fffafa; }
+  background-color: #ffffff; }
 
 .right {
-  background-color: #fffafa; }
+  background-color: #ffffff; }
 
 .sidenav .title {
-  background-color: #fffafa;
-  color: #240000; }
+  background-color: #ffffff;
+  color: #121212; }
 
 .sidenav .headernode {
-  background-color: #fffafa;
-  color: #240000; }
+  background-color: #ffffff;
+  color: #121212; }
 
 .sidenav .headernode:hover {
   background-color: #ffdeb8;
-  color: #240000; }
+  color: #121212; }
 
 .sidenav .defaultnode:hover {
   background-color: #ffdeb8;
-  color: #240000; }
+  color: #121212; }
 
 .sidenav .activenode {
   background-color: #ffba6b;
@@ -2878,7 +2820,7 @@ header .billboard .content-button {
   color: #ced4da; }
 
 .dockbar-content {
-  background-color: #fffafa; }
+  background-color: #ffffff; }
 
 /* Style the buttons inside the tab */
 .dockbar button {
@@ -2908,7 +2850,7 @@ header .billboard .content-button {
   background-color: #dbcfc2; }
 
 .dockbar-height::-webkit-scrollbar-thumb {
-  background-color: #fffafa; }
+  background-color: #2b1700; }
 
 /** dockbar -structure**/
 .dockbar {
@@ -2983,12 +2925,12 @@ header .billboard .content-button {
   color: red; }
 
 .panel {
-  background-color: #fffafa;
-  color: #240000; }
+  background-color: #ffffff;
+  color: #121212; }
 
 /** Transparent Styling **/
 .accordion-transparent {
-  background: #fffafa; }
+  background: #ffffff; }
 
 .accordion-transparent:after {
   color: red; }
@@ -3018,7 +2960,7 @@ header .billboard .content-button {
   cursor: pointer;
   padding: 10px;
   width: 100%;
-  border-color: #fffafa;
+  border-color: #ffffff;
   text-align: left;
   outline: none;
   font-size: 15px;
@@ -3038,8 +2980,8 @@ header .billboard .content-button {
 /** cards **/
 /** cards visual**/
 .card-container {
-  background-color: #fffafa;
-  color: #240000; }
+  background-color: #ffffff;
+  color: #121212; }
 
 .card-header {
   background: #2b1700;
@@ -3052,11 +2994,11 @@ header .billboard .content-button {
   background-color: #dbcfc2; }
 
 .cardbody::-webkit-scrollbar-thumb {
-  background-color: #fffafa; }
+  background-color: #2b1700; }
 
 .card-footer {
-  background-color: #fffafa;
-  color: #2b1700; }
+  background-color: #ffffff;
+  color: #050300; }
 
 /** cards -structure**/
 .card-container {
@@ -3146,7 +3088,7 @@ fieldset {
 
 .step-box-table-item {
   background-color: #f5f5f5;
-  color: #240000; }
+  color: #121212; }
 
 .step-box-table-item.active {
   background-color: #ffba6b !important; }
@@ -3235,8 +3177,8 @@ fieldset {
 /** tab **/
 /** tab visual**/
 .verticalnavtab .defaultnode {
-  background-color: #fffafa;
-  color: #240000; }
+  background-color: #ffffff;
+  color: #121212; }
 
 .verticalnavtab .leftactivetab {
   background-color: #ffba6b;
@@ -3295,7 +3237,7 @@ fieldset {
 
 .verticalnavtab .defaultnode {
   cursor: pointer;
-  color: #240000;
+  color: #121212;
   padding: 10px; }
 
 .verticalnavtab .defaultnode:hover {
@@ -3329,11 +3271,11 @@ fieldset {
 /** window **/
 /** window visual**/
 .root-window {
-  background-color: #fffafa;
+  background-color: #ffffff;
   /* Black w/ opacity */ }
 
 .modal-window-content {
-  background-color: #fffafa; }
+  background-color: #ffffff; }
 
 .modal-window-header {
   background: #2b1700;
@@ -3350,11 +3292,11 @@ fieldset {
   background-color: #dbcfc2; }
 
 .modal-window-middle::-webkit-scrollbar-thumb {
-  background-color: #fffafa; }
+  background-color: #2b1700; }
 
 .modal-window-footer {
   background-color: #fff8f0;
-  color: #2b1700; }
+  color: #050300; }
 
 /** window -structure**/
 .root-window {
@@ -3428,15 +3370,15 @@ fieldset {
   background: rgba(128, 127, 127, 0.6); }
 
 .dialogue-content {
-  background-color: #fffafa; }
+  background-color: #ffffff; }
 
 .dialogue-header {
   background: #2b1700;
-  color: #240000; }
+  color: #121212; }
 
 .dialogue-footer {
-  background-color: #fffafa;
-  color: #2b1700; }
+  background-color: #ffffff;
+  color: #050300; }
 
 .dialogue-success {
   color: #5cb85c; }
@@ -3545,8 +3487,8 @@ fieldset {
   font-weight: bold; }
 
 .panel-panel {
-  background-color: #fffafa;
-  color: #240000; }
+  background-color: #ffffff;
+  color: #121212; }
 
 .panel-panel::-webkit-scrollbar-track {
   background-color: #dbcfc2; }
@@ -3555,7 +3497,7 @@ fieldset {
   background-color: #dbcfc2; }
 
 .panel-panel::-webkit-scrollbar-thumb {
-  background-color: #fffafa; }
+  background-color: #2b1700; }
 
 /** panel -structure**/
 .panel-accordion {
@@ -3838,7 +3780,7 @@ button {
   left: 50%;
   width: 5px;
   height: 5px;
-  background: #fffafa;
+  background: #ffffff;
   opacity: 0;
   border-radius: 100%;
   transform: scale(1, 1) translate(-50%);
@@ -3877,7 +3819,7 @@ button {
   left: 50%;
   width: 5px;
   height: 5px;
-  background: #fffafa;
+  background: #ffffff;
   opacity: 0;
   border-radius: 100%;
   transform: scale(1, 1) translate(-50%);
@@ -4458,7 +4400,7 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
     .menubar .menuheader .menulink:hover .menu-content {
       display: none; }
     .menubar .menuheader .menulink:hover a {
-      color: #240000; } }
+      color: #121212; } }
 /*----------------------------------------------------------------------*/
 /*        NAVBAR Media-Q COMPONENT         */
 /*----------------------------------------------------------------------*/
@@ -4687,7 +4629,7 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
     .menubar .menuheader .menulink:hover .menu-content {
       display: none; }
     .menubar .menuheader .menulink:hover a {
-      color: #240000; } }
+      color: #121212; } }
 /*----------------------------------------------------------------------*/
 /*        NAVBAR Media-Q COMPONENT         */
 /*----------------------------------------------------------------------*/
@@ -4916,7 +4858,7 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
     .menubar .menuheader .menulink:hover .menu-content {
       display: none; }
     .menubar .menuheader .menulink:hover a {
-      color: #240000; } }
+      color: #121212; } }
 /*----------------------------------------------------------------------*/
 /*        NAVBAR Media-Q COMPONENT         */
 /*----------------------------------------------------------------------*/
@@ -5145,7 +5087,7 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
     .menubar .menuheader .menulink:hover .menu-content {
       display: none; }
     .menubar .menuheader .menulink:hover a {
-      color: #240000; } }
+      color: #121212; } }
 /*----------------------------------------------------------------------*/
 /*        NAVBAR Media-Q COMPONENT         */
 /*----------------------------------------------------------------------*/
@@ -5209,7 +5151,7 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
 /*        Window LAYOUT Media Q COMPONENT         */
 /*----------------------------------------------------------------------*/
 /** 
-  Amexio Support ------------------------------ 
+  Amexio Support ---------------------------------- 
   Contact  : amexiosupport@metamagic.in 
   Forum    : http://forum.metamagicglobal.com
   API Docs : http://api.amexio.tech/

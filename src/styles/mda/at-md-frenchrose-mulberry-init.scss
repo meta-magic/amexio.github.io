@@ -23,7 +23,7 @@
 
 
 /**
-  Theme Details ------------------------------- 
+  Theme Details -------------------------------------------------------- 
   Theme Name    : Frenchrose Mulberry
   Theme Version : 4.0
   Design Type   : Material Design
@@ -33,59 +33,59 @@
 $appTransparency : rgba(0,0,0,0.87);
 
 /** Theme Color Variables ------------------------------- */
-$themePrimaryColor :#f64a84;
-$themeSecondaryColor :#c64b8c;
-$theme3rdColor :#ff7f50;
-$theme4thColor :#00fa9a;
-$theme5thColor :#f5f5f5;
-$theme6thColor :#fffafa;
-$themeFontColor :#1f000a;
-$themeFontFamily :Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
+$themePrimaryColor : #c64b8c;
+$themeSecondaryColor : #f64a84;
+$theme3rdColor : #ff7f50;
+$theme4thColor : #00fa9a;
+$theme5thColor : #f5f5f5;
+$theme6thColor : #ffffff;
+$themeFontColor : #1f0010;
+$themeFontFamily : Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
 
 /** Theme Additional Std Colors : Light and Dark shades --- */
-$amexioColor1L :#ff7f50;
-$amexioColor1D :#8b0000;
-$amexioColor2L :#00ff00;
-$amexioColor2D :#2e8b57;
-$amexioColor3L :#ff00ff;
-$amexioColor3D :#8b008b;
-$amexioColor4L :#00bfff;
-$amexioColor4D :#00008b;
-$amexioColor5L :#f4a460;
-$amexioColor5D :#800000;
-$amexioColor6L :#ffd700;
-$amexioColor6D :#b22222;
+$amexioColorRedLight : #ff7f50;
+$amexioColorRedDark : #8b0000;
+$amexioColorGreenLight : #00ff00;
+$amexioColorGreenDark : #2e8b57;
+$amexioColorPurpleLight : #ff00ff;
+$amexioColorPurpleDark : #8b008b;
+$amexioColorBlueLight : #00bfff;
+$amexioColorBlueDark : #00008b;
+$amexioColorBrownLight : #f4a460;
+$amexioColorBrownDark : #800000;
+$amexioColorYellowLight : #ffd700;
+$amexioColorYellowDark : #b22222;
 
 /** App Color Variables ------------------------ */
 $appBackground :#f5f5f5;
 $appBackgroundImage : none;
 $appForegroundColor :#121212;
-$appHeaderBGColor :#f64a84;
-$appHeaderFontColor :#22020c;
-$appHeaderMenuBGColor :#85002c;
-$appHeaderMenuFontColor :#fff0f5;
-$appHeaderHoverBGColor :#ff6b9c;
-$appHeaderHoverFontColor :#050002;
+$appHeaderBGColor :#c64b8c;
+$appHeaderFontColor :#fbf3f8;
+$appHeaderMenuBGColor :#850047;
+$appHeaderMenuFontColor :#fff0f8;
+$appHeaderHoverBGColor :#ff6bba;
+$appHeaderHoverFontColor :#050003;
 
 /** Component Color Variables ------------------------ */
-$componentBGColor :#fffafa;
-$componentFontColor :#240000;
-$componentHeaderBGColor :#c64b8c;
-$componentHeaderFontColor :#1b0912;
-$componentFooterBGColor :#1b0912;
-$componentFooterFontColor :#c64b8c;
-$componentDataBGColor :#1f0010;
-$componentDataFontColor :#ff9ed2;
-$componentHoverBGColor :#ffb8de;
-$componentHoverFontColor :#52002c;
-$componentActiveBGColor :#ff6bba;
-$componentActiveFontColor :#1f0010;
-$componentDisabledBGColor :#dbc2cf;
-$componentDisabledFontColor :#a36283;
+$componentBGColor :#ffffff;
+$componentFontColor :#121212;
+$componentHeaderBGColor :#f64a84;
+$componentHeaderFontColor :#22020c;
+$componentFooterBGColor :#22020c;
+$componentFooterFontColor :#b90944;
+$componentDataBGColor :#1f000a;
+$componentDataFontColor :#ff9ebe;
+$componentHoverBGColor :#ffb8cf;
+$componentHoverFontColor :#52001b;
+$componentActiveBGColor :#ff6b9c;
+$componentActiveFontColor :#1f000a;
+$componentDisabledBGColor :#dbc2cb;
+$componentDisabledFontColor :#a36279;
 
 
 /** 
-  Amexio Support ------------------------------ 
+  Amexio Support ---------------------------------- 
   Contact  : amexiosupport@metamagic.in 
   Forum    : http://forum.metamagicglobal.com
   API Docs : http://api.amexio.tech/

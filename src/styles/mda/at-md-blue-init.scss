@@ -23,7 +23,7 @@
 
 
 /**
-  Theme Details ------------------------------- 
+  Theme Details -------------------------------------------------------- 
   Theme Name    : Blue
   Theme Version : 4.0
   Design Type   : Material Design
@@ -33,28 +33,28 @@
 $appTransparency : rgba(0,0,0,0.87);
 
 /** Theme Color Variables ------------------------------- */
-$themePrimaryColor :#1565c0;
-$themeSecondaryColor :#2196f3;
-$theme3rdColor :#ff7f50;
-$theme4thColor :#00fa9a;
-$theme5thColor :#f5f5f5;
-$theme6thColor :#fffafa;
-$themeFontColor :#000e1f;
-$themeFontFamily :Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
+$themePrimaryColor : #1565c0;
+$themeSecondaryColor : #2196f3;
+$theme3rdColor : #ff7f50;
+$theme4thColor : #00fa9a;
+$theme5thColor : #f5f5f5;
+$theme6thColor : #ffffff;
+$themeFontColor : #000e1f;
+$themeFontFamily : Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
 
 /** Theme Additional Std Colors : Light and Dark shades --- */
-$amexioColor1L :#ff7f50;
-$amexioColor1D :#8b0000;
-$amexioColor2L :#00ff00;
-$amexioColor2D :#2e8b57;
-$amexioColor3L :#ff00ff;
-$amexioColor3D :#8b008b;
-$amexioColor4L :#00bfff;
-$amexioColor4D :#00008b;
-$amexioColor5L :#f4a460;
-$amexioColor5D :#800000;
-$amexioColor6L :#ffd700;
-$amexioColor6D :#b22222;
+$amexioColorRedLight : #ff7f50;
+$amexioColorRedDark : #8b0000;
+$amexioColorGreenLight : #00ff00;
+$amexioColorGreenDark : #2e8b57;
+$amexioColorPurpleLight : #ff00ff;
+$amexioColorPurpleDark : #8b008b;
+$amexioColorBlueLight : #00bfff;
+$amexioColorBlueDark : #00008b;
+$amexioColorBrownLight : #f4a460;
+$amexioColorBrownDark : #800000;
+$amexioColorYellowLight : #ffd700;
+$amexioColorYellowDark : #b22222;
 
 /** App Color Variables ------------------------ */
 $appBackground :#f5f5f5;
@@ -68,12 +68,12 @@ $appHeaderHoverBGColor :#6bb0ff;
 $appHeaderHoverFontColor :#000205;
 
 /** Component Color Variables ------------------------ */
-$componentBGColor :#fffafa;
-$componentFontColor :#240000;
+$componentBGColor :#ffffff;
+$componentFontColor :#121212;
 $componentHeaderBGColor :#2196f3;
-$componentHeaderFontColor :#021322;
-$componentFooterBGColor :#021322;
-$componentFooterFontColor :#2196f3;
+$componentHeaderFontColor :#f0f8fe;
+$componentFooterBGColor :#f0f8fe;
+$componentFooterFontColor :#07518d;
 $componentDataBGColor :#00111f;
 $componentDataFontColor :#9ed3ff;
 $componentHoverBGColor :#b8dfff;
@@ -85,7 +85,7 @@ $componentDisabledFontColor :#6286a3;
 
 
 /** 
-  Amexio Support ------------------------------ 
+  Amexio Support ---------------------------------- 
   Contact  : amexiosupport@metamagic.in 
   Forum    : http://forum.metamagicglobal.com
   API Docs : http://api.amexio.tech/

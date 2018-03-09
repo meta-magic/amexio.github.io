@@ -8,47 +8,31 @@ import {Component, Input, OnInit} from '@angular/core';
  template: `
  <div class="box-content"
  [attr.disabled]="padding ? true: null"
+ 
  [ngClass]="{
- 'border-default': borderColor=='default' || borderColor ==null,
+    
+ 'box-default': borderColor=='default' || borderColor ==null,
  'border-topbar': border=='top',
- 'border-bottombar': border=='bottom',
- 'border-rightbar': border=='right',
- 'border-leftbar': border=='left',
- 'bg-yellow': bgcolor=='highlight',
- 'bg-light-grey': bgcolor=='grey',
- 'bg-pale-red': bgcolor=='red',
- 'bg-pale-green': bgcolor=='green',
- 'bg-pale-yellow': bgcolor=='yellow',
- 'bg-pale-blue': bgcolor=='blue',
- 'border-amber' : borderColor =='amber',
- 'border-aqua' : borderColor =='aqua',
- 'border-blue' : borderColor =='blue',
- 'border-light-blue' : borderColor =='light-blue',
- 'border-brown' : borderColor =='brown',
- 'border-cyan' : borderColor =='cyan',
- 'border-blue-grey' : borderColor =='blue-grey',
- 'border-green' : borderColor =='green',
- 'border-indigo' : borderColor =='indigo',
- 'border-light-green' : borderColor =='light-green',
- 'border-khaki' : borderColor =='khaki',
- 'border-lime' : borderColor =='lime',
- 'border-orange' : borderColor =='orange',
- 'border-deep-orange' : borderColor =='deep-orange',
- 'border-pink' : borderColor =='pink',
- 'border-purple' : borderColor =='purple',
+ 'border-bottombar': border =='bottom',
+ 'border-rightbar': border =='right',
+ 'border-leftbar': border =='left',
+ 'border-all' : border =='all',
+ 'border-top-bottom' : border =='top-bottom' || border =='bottom-top',
+ 'border-right-left' : border =='right-left' || border =='left-right',
+ 
+ 'bg-brown': bgColor=='brown',
+ 'bg-red': bgColor=='red',
+ 'bg-green': bgColor=='green',
+ 'bg-yellow': bgColor=='yellow',
+ 'bg-blue': bgColor=='blue',
+ 'bg-purple': bgColor=='purple',
+
  'border-red' : borderColor =='red',
- 'border-sand' : borderColor =='sand',
- 'border-teal' : borderColor =='teal',
  'border-yellow' : borderColor =='yellow',
- 'border-white' : borderColor =='white',
- 'border-black' : borderColor =='black',
- 'border-grey' : borderColor =='grey',
- 'border-light-grey' : borderColor =='light-grey',
- 'border-dark-grey' : borderColor =='dark-grey',
- 'border-pale-red' : borderColor =='pale-red',
- 'border-pale-green' : borderColor =='pale-green',
- 'border-pale-yellow' : borderColor =='pale-yellow',
- 'border-pale-blue' : borderColor =='pale-blue',
+ 'border-green' : borderColor =='green',
+ 'border-blue' : borderColor =='blue',
+ 'border-brown' : borderColor =='brown',
+ 'border-purple' : borderColor =='purple',
  'padding' : padding
   }" >
    <ng-content></ng-content>
@@ -62,7 +46,7 @@ export class AmexioBoxComponent implements OnInit {
 
  @Input('border-color') borderColor : string;
 
- @Input('background-color') bgcolor : string;
+ @Input('background-color') bgColor : string;
 
  @Input('padding') padding: boolean;
  
@@ -70,6 +54,11 @@ export class AmexioBoxComponent implements OnInit {
 
  ngOnInit() {
   if (this.borderColor == null)
-   this.borderColor = 'border-default';
+   this.borderColor = 'box-default';
+ 
+
+  if (this.borderColor != null && this.bgColor == null){
+   this.bgColor = this.borderColor;
+  }
  }
 }

@@ -11,7 +11,7 @@ cerise-magenta,#DE3163,#FF0090
 charcoal-iron,#222021,#48494B
 chocolate-russet,#7F461B,#2B1700
 fern-lime,#4F7942,#C7EA46
-frenchrose-mulberry,#F64A84,#C64B8C
+frenchrose-mulberry,#C64B8C,#F64A84
 gingerbread,#BCAAA4,#BCAAA4
 gold-amber,#FFA000,#FFC107
 grape-violet,#6F2DA8,#B200ED
@@ -46,7 +46,6 @@ mediumblue-deepskyblue,#0000CD,#00BFFF
 darkturquoise-aquamarine,#00CED1,#7FFFD4
 darkkhaki-moccasin,#BDB76B,#FFE4B5
 indianred-salmon,#CD5C5C,#FA8072
-
 darkmagenta-darkorchid,#8B008B,#9932CC
 darkslateblue-indigo,#483D8B,#4B0082
 darkgreen-darkolivegreen,#006400,#556B2F
