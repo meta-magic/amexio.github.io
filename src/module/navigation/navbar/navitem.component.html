@@ -1,5 +1,7 @@
 
-<div class="topnavmainbarinneritems"  [ngClass]="{'topnavmainbarinneritems-mobile':mobilemode, 'nav-dropdown-content-right':enablerightclass}" >
+<div class="topnavmainbarinneritems"  
+[ngClass]="{'topnavmainbarinneritems-mobile':mobilemode,
+ 'nav-dropdown-content-right':enablerightclass}" >
     <amexio-nav-action *ngIf="isAction" [type]="type" [title]="title" [icon]="icon" (navLinkClick)="navItemClick($event)"></amexio-nav-action>
     <amexio-nav-textfield *ngIf="isTextField" [(ngModel)]="value"  [title]="title"></amexio-nav-textfield>
     <amexio-nav-menu *ngIf="isMenu" [title]="title" [icon]="icon" [data]="data"  (navLinkClick)="navItemClick($event)">
@@ -7,5 +9,4 @@
     <amexio-nav-menu *ngIf="isMenuContainer" [title]="title" [icon]="icon" [type]="type" (navLinkClick)="navItemClick($event)">
         <ng-content></ng-content>
     </amexio-nav-menu>
-    
 </div>
