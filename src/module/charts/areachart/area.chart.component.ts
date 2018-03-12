@@ -21,7 +21,7 @@ import { ElementRef } from '@angular/core';
 declare var google: any;
 @Component({
   selector: 'amexio-chart-area', template: `
-    <div #barchart
+    <div #areachart
          [style.width]="width"
          [style.height]="height" (window:resize)="onResize($event)">
       <div *ngIf="!hasLoaded" class="lmask">

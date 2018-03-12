@@ -4,11 +4,12 @@
 import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from '@angular/core';
 import {MapLoaderService} from "../map.loader.service";
 import {MapProperties} from "../mapproperties/map.properties";
-
+import { ViewChild } from '@angular/core';
+import { ElementRef } from '@angular/core';
 declare var google: any;
 @Component({
   selector: 'amexio-map-geo-chart', template: `
-    <div [attr.id]="id"
+    <div #geochart
          [style.width]="width"
          [style.height]="height"
     >
@@ -152,8 +153,10 @@ export class GeoChartComponent implements AfterContentInit, OnInit {
 
   chartAreaComponent: MapProperties;
 
+  @ViewChild('geochart') private geochart: ElementRef;
+
   constructor(private loader: MapLoaderService) {
-    this.id = 'amexio-map-geo-chart' + Math.floor(Math.random() * 90000) + 10000;
+    // this.id = 'amexio-map-geo-chart' + Math.floor(Math.random() * 90000) + 10000;
     this.width = '100%';
   }
 
@@ -173,7 +176,7 @@ export class GeoChartComponent implements AfterContentInit, OnInit {
       } : null,
     };
     if(this.geomapData){
-      this.chart = new google.visualization.GeoChart(document.getElementById(this.id));
+      this.chart = new google.visualization.GeoChart(this.geochart.nativeElement);
       this.hasLoaded = true;
       this.chart.draw(this.geomapData, this.options);
       google.visualization.events.addListener(this.chart, 'click', this.click);

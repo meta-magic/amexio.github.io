@@ -4,12 +4,13 @@
 import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from '@angular/core';
 import {MapTitleComponent} from "../maptitle/map.title.component";
 import {MapLoaderService} from "../map.loader.service";
-
+import { ViewChild } from '@angular/core';
+import { ElementRef } from '@angular/core';
 
 declare var google: any;
 @Component({
   selector: 'amexio-map-treemap', template: `
-    <div [attr.id]="id"
+    <div #treemapmap
          [style.width]="width"
          [style.height]="height" (window:resize)="onResize($event)"
     >
@@ -154,9 +155,11 @@ export class TreeMapComponent implements AfterContentInit, OnInit {
 
   mapTitleComponent: MapTitleComponent;
 
+  @ViewChild('treemapmap') private treemapmap: ElementRef;
+
   constructor(private loader: MapLoaderService) {
 
-    this.id = 'amexio-map-treemap' + Math.floor(Math.random() * 90000) + 10000;
+    // this.id = 'amexio-map-treemap' + Math.floor(Math.random() * 90000) + 10000;
     this.width = '100%';
   }
 
@@ -180,7 +183,7 @@ export class TreeMapComponent implements AfterContentInit, OnInit {
       maxpostdepth: this.maxpostdepth ? this.maxpostdepth : 1
     };
     if(this.treemapData){
-      this.chart = new google.visualization.TreeMap(document.getElementById(this.id));
+      this.chart = new google.visualization.TreeMap(this.treemapmap.nativeElement);
       this.hasLoaded = true;
       this.chart.draw(this.treemapData, this.options);
       google.visualization.events.addListener(this.chart, 'click', this.click);

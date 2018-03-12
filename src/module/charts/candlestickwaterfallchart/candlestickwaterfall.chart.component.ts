@@ -185,7 +185,7 @@ export class CandlestickWaterfallChartComponent implements AfterContentInit, OnI
   chartTitleComponent: ChartTitleComponent;
 
 
-  @ViewChild('candlestickwater') private candlestickwater: ElementRef;
+  @ViewChild('candlestickwaterfall') private candlestickwaterfall: ElementRef;
 
   constructor(private loader: ChartLoaderService) {
 
@@ -228,7 +228,7 @@ export class CandlestickWaterfallChartComponent implements AfterContentInit, OnI
       }
     };
     if(this.candlestickData){
-      this.chart = new google.visualization.CandlestickChart(this.candlestickwater.nativeElement);
+      this.chart = new google.visualization.CandlestickChart(this.candlestickwaterfall.nativeElement);
       this.hasLoaded = true;
       this.chart.draw(this.candlestickData, this.options);
       google.visualization.events.addListener(this.chart, 'click', this.click);

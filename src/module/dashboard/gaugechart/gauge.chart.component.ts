@@ -13,10 +13,12 @@
 import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from '@angular/core';
 import {DashboardLoaderService} from "../chart.loader.service";
 import {DashBoardTitle} from "../dashboardtitle/dashboard.title.component";
+import { ViewChild } from '@angular/core';
+import { ElementRef } from '@angular/core';
 declare var google: any;
 @Component({
   selector: 'amexio-dashboard-gauge', template: `
-    <div [attr.id]="id"
+    <div #gaugedashboard
          [style.width]="width"
          [style.height]="height" (window:resize)="onResize($event)">
       <div *ngIf="!hasLoaded" class="lmask">
@@ -164,8 +166,10 @@ export class GaugeChartComponent implements AfterContentInit, OnInit {
 
   chartTitleComponent: DashBoardTitle;
 
+  @ViewChild('gaugedashboard') private gaugedashboard: ElementRef;
+
   constructor(private loader: DashboardLoaderService) {
-    this.id = 'amexio-chart-gauge' + Math.floor(Math.random() * 90000) + 10000;
+    // this.id = 'amexio-chart-gauge' + Math.floor(Math.random() * 90000) + 10000;
     this.width = '100%';
   }
 
@@ -181,7 +185,7 @@ export class GaugeChartComponent implements AfterContentInit, OnInit {
       scalevalue: this.scalevalue
     };
     if(this.gaugeData){
-      this.chart = new google.visualization.Gauge(document.getElementById(this.id));
+      this.chart = new google.visualization.Gauge(this.gaugedashboard.nativeElement);
       this.hasLoaded = true;
       this.chart.draw(this.gaugeData, this.options);
     }
