@@ -44,7 +44,7 @@ $themeFontFamily : Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
 
 /** Theme Additional Std Colors : Light and Dark shades --- */
 $amexioColorRedLight : #ff7f50;
-$amexioColorRedDark : #8b0000;
+$amexioColorRedDark : #dc143c;
 $amexioColorGreenLight : #00ff00;
 $amexioColorGreenDark : #2e8b57;
 $amexioColorPurpleLight : #ff00ff;
@@ -54,25 +54,25 @@ $amexioColorBlueDark : #00008b;
 $amexioColorBrownLight : #f4a460;
 $amexioColorBrownDark : #800000;
 $amexioColorYellowLight : #ffd700;
-$amexioColorYellowDark : #b22222;
+$amexioColorYellowDark : #ff9900;
 
 /** App Color Variables ------------------------ */
 $appBackground :#f5f5f5;
 $appBackgroundImage : none;
 $appForegroundColor :#121212;
 $appHeaderBGColor :#4169e1;
-$appHeaderFontColor :#050b1f;
-$appHeaderMenuBGColor :#002185;
-$appHeaderMenuFontColor :#f0f4ff;
-$appHeaderHoverBGColor :#6b90ff;
-$appHeaderHoverFontColor :#000105;
+$appHeaderFontColor :#f2f5fd;
+$appHeaderMenuBGColor :#4169e1;
+$appHeaderMenuFontColor :#f2f5fd;
+$appHeaderHoverBGColor :#f6f8fe;
+$appHeaderHoverFontColor :#0f2461;
 
 /** Component Color Variables ------------------------ */
 $componentBGColor :#ffffff;
 $componentFontColor :#121212;
 $componentHeaderBGColor :#1e90ff;
-$componentHeaderFontColor :#001224;
-$componentFooterBGColor :#001224;
+$componentHeaderFontColor :#f0f7ff;
+$componentFooterBGColor :#f0f7ff;
 $componentFooterFontColor :#004f9e;
 $componentDataBGColor :#000f1f;
 $componentDataFontColor :#9ecfff;
