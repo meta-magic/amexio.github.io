@@ -2460,32 +2460,32 @@ header .billboard .content-button {
 /** navbar visual**/
 .topnav {
   background-color: #fee12b;
-  color: #fffdf0; }
+  color: #241f00; }
 
 .top-nav-button {
   background-color: inherit;
-  color: #fffdf0; }
+  color: #241f00; }
 
 .topnav a {
-  color: #fffdf0; }
+  color: #241f00; }
 
 .topnav a label {
-  color: #fffdf0; }
+  color: #241f00; }
 
 .topnavbarunit2-mobile {
   background-color: #fee12b;
-  color: #fffdf0; }
+  color: #241f00; }
 
 .topnavmainbarinneritems .nav-dropdown-content {
   background-color: #fee12b;
-  color: #fffdf0; }
+  color: #241f00; }
 
 .topnavmainbarinneritems-mobile .nav-dropdown-content {
   background-color: #fee12b;
-  color: #fffdf0; }
+  color: #241f00; }
 
 .topnavmainbarinneritems .nav-dropdown-content a {
-  color: #fffdf0 !important; }
+  color: #241f00 !important; }
 
 .nav-dropdown:hover {
   background-color: #fffef5;
@@ -2495,7 +2495,7 @@ header .billboard .content-button {
   width: 100%; }
 
 .mobilebar {
-  color: #fffdf0; }
+  color: #241f00; }
 
 .topnav input {
   background-color: inherit;
@@ -3002,7 +3002,7 @@ header .billboard .content-button {
 
 .card-footer {
   background-color: #ffffff;
-  color: #8a7224; }
+  color: #392f0f; }
 
 /** cards -structure**/
 .card-container {
@@ -3297,8 +3297,8 @@ fieldset {
   background-color: #d5b85a; }
 
 .modal-window-footer {
-  background-color: #1c1707;
-  color: #8a7224; }
+  background-color: #fdfcf7;
+  color: #392f0f; }
 
 /** window -structure**/
 .root-window {
@@ -3397,7 +3397,7 @@ fieldset {
 
 .dialogue-footer {
   background-color: #ffffff;
-  color: #8a7224; }
+  color: #392f0f; }
 
 .dialogue-success {
   color: #5cb85c; }
@@ -4435,7 +4435,7 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
     .navbar-container .nav-bar {
       background-color: #feef91; }
       .navbar-container .nav-bar .nav-item amexio-nav-item {
-        border-bottom: 1px solid #fffdf0;
+        border-bottom: 1px solid #241f00;
         cursor: pointer; }
         .navbar-container .nav-bar .nav-item amexio-nav-item * {
           vertical-align: middle; }
@@ -4664,7 +4664,7 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
     .navbar-container .nav-bar {
       background-color: #feef91; }
       .navbar-container .nav-bar .nav-item amexio-nav-item {
-        border-bottom: 1px solid #fffdf0;
+        border-bottom: 1px solid #241f00;
         cursor: pointer; }
         .navbar-container .nav-bar .nav-item amexio-nav-item * {
           vertical-align: middle; }
@@ -4893,7 +4893,7 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
     .navbar-container .nav-bar {
       background-color: #feef91; }
       .navbar-container .nav-bar .nav-item amexio-nav-item {
-        border-bottom: 1px solid #fffdf0;
+        border-bottom: 1px solid #241f00;
         cursor: pointer; }
         .navbar-container .nav-bar .nav-item amexio-nav-item * {
           vertical-align: middle; }
@@ -5122,7 +5122,7 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
     .navbar-container .nav-bar {
       background-color: #feef91; }
       .navbar-container .nav-bar .nav-item amexio-nav-item {
-        border-bottom: 1px solid #fffdf0;
+        border-bottom: 1px solid #241f00;
         cursor: pointer; }
         .navbar-container .nav-bar .nav-item amexio-nav-item * {
           vertical-align: middle; }

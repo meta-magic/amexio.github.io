@@ -3002,7 +3002,7 @@ header .billboard .content-button {
 
 .card-footer {
   background-color: #ffffff;
-  color: #50006b; }
+  color: #040005; }
 
 /** cards -structure**/
 .card-container {
@@ -3297,8 +3297,8 @@ fieldset {
   background-color: #b200ed; }
 
 .modal-window-footer {
-  background-color: #fbf0ff;
-  color: #50006b; }
+  background-color: #f4d1ff;
+  color: #040005; }
 
 /** window -structure**/
 .root-window {
@@ -3397,7 +3397,7 @@ fieldset {
 
 .dialogue-footer {
   background-color: #ffffff;
-  color: #50006b; }
+  color: #040005; }
 
 .dialogue-success {
   color: #5cb85c; }
