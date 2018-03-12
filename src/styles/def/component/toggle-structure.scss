@@ -39,7 +39,7 @@ input:checked + .toggle-slider {
 }
 
 input:focus + .toggle-slider {
-  box-shadow: 0 0 1px $borderColor;
+  box-shadow: 0 0 1px $toggleBorderColor;
 }
 
 input:checked + .toggle-slider:before {

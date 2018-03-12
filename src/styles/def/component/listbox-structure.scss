@@ -1,7 +1,7 @@
 
 .listbox{
   margin-bottom: 1rem;
-  border: $borderSize solid $borderColor;
+  border: $listBorderSize solid $listBorderColor;
 }
 
 .listbox-height {
@@ -39,7 +39,7 @@
 
 .listbox .list .list-items{
   list-style: none;
-  border-bottom: $borderSize solid $borderColor;
+  border-bottom: $listBorderSize solid $listBorderColor;
   cursor: pointer;
   font-weight: $listBoxFontWeight;
   margin: 1px 0;

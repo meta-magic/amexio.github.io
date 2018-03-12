@@ -16,14 +16,17 @@
 }
 .topnavbarunit2-mobile{
     background-color: $navbarActiveBG;
+    color : $navbarActiveColor;    
 }
 .topnavmainbarinneritems .nav-dropdown-content { 
     //display: none;
     background-color: $navbarActiveBG;
+    color : $navbarActiveColor;
 }
 
 .topnavmainbarinneritems-mobile .nav-dropdown-content{
     background-color: $navbarActiveBG;
+    color : $navbarActiveColor;
 }
 
 .topnavmainbarinneritems .nav-dropdown-content a {
@@ -31,7 +34,8 @@
 }
 
 .nav-dropdown:hover {
-    background-color: $navbarActiveBG;
+    background-color: $navbarHoverBG;
+    color :$navbarHoverColor;
 }
 
 

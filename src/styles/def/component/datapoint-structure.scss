@@ -4,7 +4,7 @@
   font-size: 125%;
   /* Border */
   border-radius: 0px;
-  border: $borderSize solid $datapointBorderColor;
+  border: $datapointBorderSize solid $datapointBorderColor;
   padding: 0px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   .datapoints{

@@ -52,7 +52,7 @@
 .modal-window-header{
   display: flex;
   //background: $cardHeaderBGColor;
-  border-bottom: $borderSize solid $cardBorderColor;
+  border-bottom: $modalBorderSize solid $modalBorderColor;
   // font-size: 20px;
   // color: $cardHeaderColor;
   font-weight: 300;
@@ -92,7 +92,7 @@
   display: flex;
   // background-color: $cardFooterBGColor;
   // color: $cardFooterColor;
-  border-top: $borderSize solid $cardBorderColor;
+  border-top: $modalBorderSize solid $modalBorderColor;
 }
 
 .modal-window-table{

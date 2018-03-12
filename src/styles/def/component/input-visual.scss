@@ -6,14 +6,14 @@
 }
 
 ::placeholder {
-  color: $placeholderColor;
+  color: $inputBorderColor;
 }
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
-  color: $placeholderColor;
+  color: $inputBorderColor;
 }
 ::-ms-input-placeholder { /* Microsoft Edge */
  // padding-left: 15px;
-  color: $placeholderColor;
+  color: $inputBorderColor;
 }
 .input-control:focus {
   border-color: $borderColorFocus;

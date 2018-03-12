@@ -57,7 +57,7 @@
   padding: 10px;
   position: fixed;
   z-index: 99;
-  box-shadow: 0 0 5px 0 $borderColor;
+  box-shadow: 0 0 5px 0 $menuborderColor;
 }
 
 
@@ -102,7 +102,7 @@
 
 
 .menu-content .menu-content-cols .content .menu-links-header{
-  border-bottom: $borderSize solid $borderColor;
+  border-bottom: $menuborderSize solid $menuborderColor;
   //font-weight: bold;
   padding: 10px;
   cursor: pointer;

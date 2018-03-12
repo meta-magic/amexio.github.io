@@ -3,32 +3,32 @@
 }
 
 .border-topbar{
-  border-top:$boxBorderSize solid $borderColor ;
+  border-top:$boxBorderSize solid $boxBorderColor ;
 }
 .border-bottombar{
-  border-bottom:$boxBorderSize solid $borderColor;
+  border-bottom:$boxBorderSize solid $boxBorderColor;
 }
 .border-leftbar{
-  border-left: $boxBorderSize solid $borderColor;
+  border-left: $boxBorderSize solid $boxBorderColor;
 }
 .border-rightbar{
-  border-right: $boxBorderSize solid $borderColor;
+  border-right: $boxBorderSize solid $boxBorderColor;
 }
 
 .border-all{
-  border:$boxBorderSize solid $borderColor ;
+  border:$boxBorderSize solid $boxBorderColor ;
 }
 .border-top-bottom{
-  border-top:$boxBorderSize solid $borderColor ;
-  border-bottom:$boxBorderSize solid $borderColor;
+  border-top:$boxBorderSize solid $boxBorderColor ;
+  border-bottom:$boxBorderSize solid $boxBorderColor;
 }
 .border-right-left{
-  border-right:$boxBorderSize solid $borderColor ;
-  border-left: $boxBorderSize solid $borderColor;
+  border-right:$boxBorderSize solid $boxBorderColor ;
+  border-left: $boxBorderSize solid $boxBorderColor;
 }
 
 .box-default{
-  border-color : $borderColor
+  border-color : $boxBorderColor
 }
 
 .padding{
