@@ -3434,9 +3434,7 @@ fieldset {
   z-index: 1;
   /* Sit on top */
   width: 100%;
-  height: 100%;
-  overflow: auto;
-  /* Enable scroll if needed */ }
+  height: 100%; }
 
 .modal-window-content {
   margin: auto;
@@ -3480,6 +3478,25 @@ fieldset {
 .modal-window-footer {
   display: flex;
   border-top: 3px solid #70196F; }
+
+.modal-window-table {
+  display: table;
+  width: 100%; }
+
+.modal-window-table .tablerow {
+  display: table-row; }
+
+.modal-window-table .tablerow .tablecol {
+  display: table-cell;
+  vertical-align: middle; }
+
+.modal-window-footer-max {
+  bottom: 0px;
+  position: absolute;
+  width: 99%; }
+
+.footer-right-align {
+  padding-right: 7px; }
 
 /** dialogue **/
 /** dialogue visual**/
