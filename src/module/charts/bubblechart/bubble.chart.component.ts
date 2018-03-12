@@ -17,12 +17,13 @@ import {ChartAreaComponent} from "../chartarea/chart.area.component";
 import {HorizontalAxisComponent} from "../horizontalaxis/chart.horizontalaxis.component";
 import {VerticalAxisComponent} from "../verticalaxis/chart.verticalaxis.component";
 import {ChartLoaderService} from "../chart.loader.service";
-
+import { ViewChild } from "@angular/core";
+import { ElementRef } from "@angular/core";
 declare var google: any;
 @Component({
   selector: 'amexio-chart-bubble',
   template: `
-      <div [attr.id]="id"
+      <div #bubblechart
            [style.width]="width"
            [style.height]="height" (window:resize)="onResize($event)">
         <div *ngIf="!hasLoaded" class="lmask">
@@ -181,8 +182,11 @@ export class BubbleChartComponent  implements AfterContentInit ,OnInit{
 
   chartTitleComponent:ChartTitleComponent;
 
+
+  @ViewChild('bubblechart') private bubblechart: ElementRef;
+
   constructor(private loader : ChartLoaderService) {
-    this.id = 'amexio-chart-bubble' + Math.floor(Math.random()*90000) + 10000;
+    // this.id = 'amexio-chart-bubble' + Math.floor(Math.random()*90000) + 10000;
     this.width='100%';
   }
 
@@ -221,10 +225,13 @@ export class BubbleChartComponent  implements AfterContentInit ,OnInit{
       bubble: {textStyle: {fontsize: 11}},
       axiscolor: {colors: this.axiscolor}
     };
-    this.chart =  new google.visualization.BubbleChart(document.getElementById(this.id));
-    this.hasLoaded=true;
-    this.chart.draw(this.bubbleData, this.options);
-    google.visualization.events.addListener(this.chart, 'click', this.click)
+    if(this.bubbleData){
+      this.chart =  new google.visualization.BubbleChart(this.bubblechart.nativeElement);
+      this.hasLoaded=true;
+      this.chart.draw(this.bubbleData, this.options);
+      google.visualization.events.addListener(this.chart, 'click', this.click)
+    }
+
   }
 
   click(e : any) {

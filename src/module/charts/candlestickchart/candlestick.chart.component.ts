@@ -16,11 +16,12 @@ import {HorizontalAxisComponent} from "../horizontalaxis/chart.horizontalaxis.co
 import {VerticalAxisComponent} from "../verticalaxis/chart.verticalaxis.component";
 import {ChartTitleComponent} from "../charttitle/chart.title.component";
 import {ChartLoaderService} from "../chart.loader.service";
-
+import { ViewChild } from "@angular/core";
+import { ElementRef } from "@angular/core";
 declare var google: any;
 @Component({
   selector: 'amexio-chart-candlestick', template: `
-    <div [attr.id]="id"
+    <div #candlestick
          [style.width]="width"
          [style.height]="height" (window:resize)="onResize($event)">
       <div *ngIf="!hasLoaded" class="lmask">
@@ -178,8 +179,10 @@ export class CandlestickChartComponent implements AfterContentInit, OnInit {
 
   chartTitleComponent: ChartTitleComponent;
 
+  @ViewChild('candlestick') private candlestick: ElementRef;
+
   constructor(private loader: ChartLoaderService) {
-    this.id = 'amexio-chart-candlestick' + Math.floor(Math.random() * 90000) + 10000;
+    // this.id = 'amexio-chart-candlestick' + Math.floor(Math.random() * 90000) + 10000;
     this.width = '100%';
   }
 
@@ -212,10 +215,13 @@ export class CandlestickChartComponent implements AfterContentInit, OnInit {
         titleTextStyle: {color: this.horizontalComponent.titlecolor ? this.horizontalComponent.titlecolor : null}
       } : null
     };
-    this.chart = new google.visualization.CandlestickChart(document.getElementById(this.id));
-    this.hasLoaded = true;
-    this.chart.draw(this.candlestickData, this.options);
-    google.visualization.events.addListener(this.chart, 'click', this.click)
+    if(this.candlestickData){
+      this.chart = new google.visualization.CandlestickChart(this.candlestick.nativeElement);
+      this.hasLoaded = true;
+      this.chart.draw(this.candlestickData, this.options);
+      google.visualization.events.addListener(this.chart, 'click', this.click)
+    }
+
   }
 
   click(e: any) {

@@ -180,9 +180,12 @@ export class GaugeChartComponent implements AfterContentInit, OnInit {
       yellowTo: this.yellowcolorto,
       scalevalue: this.scalevalue
     };
-    this.chart = new google.visualization.Gauge(document.getElementById(this.id));
-    this.hasLoaded = true;
-    this.chart.draw(this.gaugeData, this.options);
+    if(this.gaugeData){
+      this.chart = new google.visualization.Gauge(document.getElementById(this.id));
+      this.hasLoaded = true;
+      this.chart.draw(this.gaugeData, this.options);
+    }
+
   }
 
   ngAfterContentInit(): void {

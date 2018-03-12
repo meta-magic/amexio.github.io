@@ -15,11 +15,12 @@ import {ChartAreaComponent} from "../chartarea/chart.area.component";
 import {ChartLegendComponent} from "../chartlegend/chart.legend.component";
 import {ChartTitleComponent} from "../charttitle/chart.title.component";
 import {ChartLoaderService} from "../chart.loader.service";
-
+import { ViewChild } from "@angular/core";
+import { ElementRef } from "@angular/core";
 declare var google: any;
 @Component({
   selector: 'amexio-chart-line', template: `
-    <div [attr.id]="id"
+    <div #linechart
          [style.width]="width"
          [style.height]="height"
          (window:resize)="onResize($event)">
@@ -171,10 +172,12 @@ export class LineChartComponent implements AfterContentInit, OnInit {
 
   chartTitleComponent: ChartTitleComponent;
 
+  @ViewChild('linechart') private linechart: ElementRef;
+
 
   constructor(private loader: ChartLoaderService) {
 
-    this.id = 'amexio-chart-line' + Math.floor(Math.random() * 90000) + 10000;
+    // this.id = 'amexio-chart-line' + Math.floor(Math.random() * 90000) + 10000;
     this.width = '100%';
   }
 
@@ -208,10 +211,13 @@ export class LineChartComponent implements AfterContentInit, OnInit {
         width: this.chartAreaComponent.chartwidth ? this.chartAreaComponent.chartwidth : null
       } : null,
     };
-    this.chart = new google.visualization.LineChart(document.getElementById(this.id));
-    this.hasLoaded = true;
-    this.chart.draw(this.lineData, this.options);
-    google.visualization.events.addListener(this.chart, 'click', this.onClick);
+    if(this.lineData){
+      this.chart = new google.visualization.LineChart(this.linechart.nativeElement);
+      this.hasLoaded = true;
+      this.chart.draw(this.lineData, this.options);
+      google.visualization.events.addListener(this.chart, 'click', this.onClick);
+    }
+
   }
 
   onClick(e: any) {

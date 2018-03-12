@@ -15,11 +15,13 @@ import {ChartTitleComponent} from "../charttitle/chart.title.component";
 import {ChartLegendComponent} from "../chartlegend/chart.legend.component";
 import {ChartLoaderService} from "../chart.loader.service";
 import {ChartAreaComponent} from "../chartarea/chart.area.component";
+import { ViewChild } from "@angular/core";
+import { ElementRef } from "@angular/core";
 declare var google: any;
 @Component({
   selector: 'amexio-chart-pie', template: `
-    
-        <div [attr.id]="id"
+
+        <div #piechart
              [style.width]="width"
              [style.height]="height"
              (window:resize)="onResize($event)">
@@ -172,9 +174,12 @@ export class PieChartComponent implements AfterContentInit,OnInit {
 
   chartTitleComponent: ChartTitleComponent;
 
+  @ViewChild('piechart') private piechart: ElementRef;
+
+
   constructor(private loader: ChartLoaderService) {
 
-    this.id = 'amexio-chart-pie' + Math.floor(Math.random()*90000) + 10000;
+    // this.id = 'amexio-chart-pie' + Math.floor(Math.random()*90000) + 10000;
     this.width='100%';
   }
 
@@ -212,10 +217,13 @@ export class PieChartComponent implements AfterContentInit,OnInit {
         width: this.chartAreaComponent.chartwidth ? this.chartAreaComponent.chartwidth : null
       } : null,
     };
-    this.chart = new google.visualization.PieChart(document.getElementById(this.id));
-    this.hasLoaded=true;
-    this.chart.draw(this.pieData, this.options);
-    google.visualization.events.addListener(this.chart, 'click', this.onClick);
+    if(this.pieData){
+      this.chart = new google.visualization.PieChart(this.piechart.nativeElement);
+      this.hasLoaded=true;
+      this.chart.draw(this.pieData, this.options);
+      google.visualization.events.addListener(this.chart, 'click', this.onClick);
+    }
+
   }
 
   onClick(e : any) {

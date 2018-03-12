@@ -16,10 +16,12 @@ import {ChartLegendComponent} from "../chartlegend/chart.legend.component";
 import {ChartTitleComponent} from "../charttitle/chart.title.component";
 import {ChartLoaderService} from "../chart.loader.service";
 import {ChartAreaComponent} from "../chartarea/chart.area.component";
+import { ViewChild } from "@angular/core";
+import { ElementRef } from "@angular/core";
 declare var google: any;
 @Component({
   selector: 'amexio-chart-bar', template: `
-    <div [attr.id]="id"
+    <div #barchart
          [style.width]="width"
          [style.height]="height" (window:resize)="onResize($event)">
       <div *ngIf="!hasLoaded" class="lmask">
@@ -174,10 +176,12 @@ export class BarChartComponent implements AfterContentInit, OnInit {
 
   chartTitleComponent: ChartTitleComponent;
 
+  @ViewChild('barchart') private barchart: ElementRef;
+
 
   constructor(private loader: ChartLoaderService) {
 
-    this.id = 'amexio-chart-bar' + Math.floor(Math.random() * 90000) + 10000;
+    // this.id = 'amexio-chart-bar' + Math.floor(Math.random() * 90000) + 10000;
     this.width = '100%';
   }
 
@@ -221,9 +225,12 @@ export class BarChartComponent implements AfterContentInit, OnInit {
         title: this.yaxistitle
       }
     };
-    this.chart = new google.visualization.BarChart(document.getElementById(this.id));
-    this.hasLoaded = true;
-    this.chart.draw(this.barData, this.options);
+    if(this.barData){
+      this.chart = new google.visualization.BarChart(this.barchart.nativeElement);
+      this.hasLoaded = true;
+      this.chart.draw(this.barData, this.options);
+    }
+
   }
 
   ngAfterContentInit(): void {
@@ -246,11 +253,13 @@ export class BarChartComponent implements AfterContentInit, OnInit {
     this.hasLoaded = false;
     this.loader.loadCharts('BarChart').subscribe(value => console.log(), errror => console.error(errror), () => {
       this.drawChart();
+
     });
   }
 
   onResize(event: any) {
     this.drawChart();
+
   }
 
 }

@@ -172,10 +172,13 @@ export class GeoChartComponent implements AfterContentInit, OnInit {
         width: this.chartAreaComponent.chartwidth ? this.chartAreaComponent.chartwidth : null
       } : null,
     };
-    this.chart = new google.visualization.GeoChart(document.getElementById(this.id));
-    this.hasLoaded = true;
-    this.chart.draw(this.geomapData, this.options);
-    google.visualization.events.addListener(this.chart, 'click', this.click);
+    if(this.geomapData){
+      this.chart = new google.visualization.GeoChart(document.getElementById(this.id));
+      this.hasLoaded = true;
+      this.chart.draw(this.geomapData, this.options);
+      google.visualization.events.addListener(this.chart, 'click', this.click);
+    }
+
   }
 
   click(e: any) {

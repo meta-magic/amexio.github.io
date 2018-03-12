@@ -179,10 +179,13 @@ export class TreeMapComponent implements AfterContentInit, OnInit {
       showscale: this.showscale ? this.showscale : false,
       maxpostdepth: this.maxpostdepth ? this.maxpostdepth : 1
     };
-    this.chart = new google.visualization.TreeMap(document.getElementById(this.id));
-    this.hasLoaded = true;
-    this.chart.draw(this.treemapData, this.options);
-    google.visualization.events.addListener(this.chart, 'click', this.click);
+    if(this.treemapData){
+      this.chart = new google.visualization.TreeMap(document.getElementById(this.id));
+      this.hasLoaded = true;
+      this.chart.draw(this.treemapData, this.options);
+      google.visualization.events.addListener(this.chart, 'click', this.click);
+    }
+
   }
 
   click(e: any) {

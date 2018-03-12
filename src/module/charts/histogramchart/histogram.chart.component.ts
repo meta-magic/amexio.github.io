@@ -15,13 +15,14 @@ import {ChartLegendComponent} from "../chartlegend/chart.legend.component";
 import {ChartTitleComponent} from "../charttitle/chart.title.component";
 import {ChartAreaComponent} from "../chartarea/chart.area.component";
 import {ChartLoaderService} from "../chart.loader.service";
-
+import { ViewChild } from "@angular/core";
+import { ElementRef } from "@angular/core";
 declare var google: any;
 
 @Component({
   selector: 'amexio-chart-histogram',
   template: `
-      <div [attr.id]="id"
+      <div #histogramchart
            [style.width]="width"
            [style.height]="height"
       >
@@ -167,9 +168,10 @@ export class HistogramChartComponent implements AfterContentInit ,OnInit{
 
   chartTitleComponent:ChartTitleComponent;
 
+  @ViewChild('histogramchart') private histogramchart: ElementRef;
 
   constructor(private loader : ChartLoaderService) {
-    this.id = 'amexio-chart-line' + Math.floor(Math.random()*90000) + 10000;
+    // this.id = 'amexio-chart-line' + Math.floor(Math.random()*90000) + 10000;
     this.width='100%';
   }
 
@@ -204,10 +206,13 @@ export class HistogramChartComponent implements AfterContentInit ,OnInit{
         width:this.chartAreaComponent.chartwidth?this.chartAreaComponent.chartwidth:null
       }:null,
     };
-    this.chart = new google.visualization.Histogram(document.getElementById(this.id));
-    this.hasLoaded=true;
-    this.chart.draw(this.histogramData, this.options);
-    google.visualization.events.addListener(this.chart, 'click', this.onClick);
+    if(this.histogramData){
+      this.chart = new google.visualization.Histogram(this.histogramchart.nativeElement);
+      this.hasLoaded=true;
+      this.chart.draw(this.histogramData, this.options);
+      google.visualization.events.addListener(this.chart, 'click', this.onClick);
+    }
+
   }
 
   onClick(e : any){
