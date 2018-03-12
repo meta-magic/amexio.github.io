@@ -444,7 +444,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
   }
 
   ngAfterContentInit() {
-    if ( this.columndefintion.length > 0) {
+    if ( this.columndefintion) {
       this.columns = this.columndefintion;
       this.columnPreviewData = JSON.parse(JSON.stringify(this.columndefintion));
     } else {
