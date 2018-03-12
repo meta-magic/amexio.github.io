@@ -11,9 +11,13 @@ $appBackgroundImage : url('/assets/images/theme/bootstrap/polygon_bg.jpg');
 
 $appHeaderBGColor : white;
 $appHeaderFontColor : $themePrimaryColor;
-
+$appHeaderMenuBGColor :$appHeaderBGColor;
+$appHeaderMenuFontColor :$appHeaderFontColor;
+$appHeaderHoverBGColor :#c7d189;
+$appHeaderHoverFontColor :#030401;
 $appHeaderHoverBGColor : none;
 $appHeaderHoverFontColor : none;
+
 /* Component Specific Variables */
 $componentHoverBGColor : lighten($themeSecondaryColor,60%);
 $componentHoverFontColor : $themeSecondaryColor;

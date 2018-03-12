@@ -10,7 +10,8 @@ $appBackgroundImage : url('/assets/images/theme/bootstrap/Pyramid-bg.png');
 
 $appHeaderBGColor : rgba(0, 43, 87, 0.7);
 $appHeaderFontColor : $themePrimaryColor;
-
+$appHeaderMenuBGColor :$appHeaderBGColor;
+$appHeaderMenuFontColor :$appHeaderFontColor;
 $appHeaderHoverBGColor : none;
 $appHeaderHoverFontColor : none;
 /* Component Specific Variables */

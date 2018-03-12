@@ -10,7 +10,8 @@ $appBackgroundImage : url('/assets/images/theme/bootstrap/matrix-bg.png');
 
 $appHeaderBGColor :#000000;
 $appHeaderFontColor :$themeSecondaryColor;
-
+$appHeaderMenuBGColor :$appHeaderBGColor;
+$appHeaderMenuFontColor :$appHeaderFontColor;
 $appHeaderHoverBGColor : none;
 $appHeaderHoverFontColor : none;
 

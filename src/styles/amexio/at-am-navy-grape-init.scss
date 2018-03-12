@@ -10,7 +10,8 @@ $appBackgroundImage : url('/assets/images/theme/bootstrap/polygon_bg.jpg');
 
 $appHeaderBGColor : white;
 $appHeaderFontColor : $themePrimaryColor;
-
+$appHeaderMenuBGColor :$appHeaderBGColor;
+$appHeaderMenuFontColor :$appHeaderFontColor;
 $appHeaderHoverBGColor : none;
 $appHeaderHoverFontColor : none;
 

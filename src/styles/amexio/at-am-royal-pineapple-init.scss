@@ -10,7 +10,8 @@ $appBackgroundImage : none;
 
 $appHeaderBGColor :$themePrimaryColor;
 $appHeaderFontColor : #1b1d22;
-
+$appHeaderMenuBGColor :$appHeaderBGColor;
+$appHeaderMenuFontColor :$appHeaderFontColor;
 $appHeaderHoverBGColor : none;
 $appHeaderHoverFontColor : none;
 /* Component Specific Variables */

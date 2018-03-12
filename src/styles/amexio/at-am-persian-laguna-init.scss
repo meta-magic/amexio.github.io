@@ -10,7 +10,8 @@ $appBackgroundImage :  url('/assets/images/theme/bootstrap/red_bg.png');
 
 $appHeaderBGColor :$themePrimaryColor;
 $appHeaderFontColor : white;
-
+$appHeaderMenuBGColor :$appHeaderBGColor;
+$appHeaderMenuFontColor :$appHeaderFontColor;
 $appHeaderHoverBGColor : none;
 $appHeaderHoverFontColor : none;
 

@@ -11,6 +11,10 @@ $appBackgroundImage : url('/assets/images/theme/bootstrap/cyan_bg.jpg');
 
 $appHeaderBGColor : white;
 $appHeaderFontColor : #02195F;
+$appHeaderMenuBGColor :$appHeaderBGColor;
+$appHeaderMenuFontColor :$appHeaderFontColor;
+$appHeaderHoverBGColor :none;
+$appHeaderHoverFontColor :none;
 
 /* Component Specific Variables */
 
