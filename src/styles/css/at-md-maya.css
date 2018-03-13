@@ -126,7 +126,7 @@ body {
 /**HEADER STYLE STARTS **/
 .header {
   background-color: #81d4f9;
-  color: #021822;
+  color: #01141d;
   padding: 10px;
   overflow: hidden; }
 
@@ -400,7 +400,7 @@ button {
   .datetimepicker .datetimepickertopbar {
     background: #6bd0ff; }
     .datetimepicker .datetimepickertopbar ul li {
-      color: #021822; }
+      color: #01141d; }
   .datetimepicker .days {
     background: #b8e8ff; }
     .datetimepicker .days li {
@@ -1099,7 +1099,7 @@ input:checked + .toggle-slider:before {
 
 .ui-widget-header {
   background: #ffffff;
-  color: #021822;
+  color: #01141d;
   font-weight: normal; }
 
 /** range -structure**/
@@ -1380,7 +1380,7 @@ input:checked + .toggle-slider:before {
 /** float-button visual**/
 .button-float {
   background-color: #81d4f9;
-  color: #021822; }
+  color: #01141d; }
 
 /** float-button -structure**/
 .button-float {
@@ -1999,7 +1999,7 @@ header .billboard .content-button {
 
 .datatable .datatable-header {
   background-color: #81d4f9;
-  color: #021822; }
+  color: #01141d; }
 
 .datatable .datatable-row:hover {
   background-color: #b8e8ff;
@@ -2172,7 +2172,7 @@ header .billboard .content-button {
 /** Itemselector visual**/
 .item-selector-action-panel .actionbar .actionbarinner .action {
   background-color: #81d4f9;
-  color: #021822; }
+  color: #01141d; }
 .item-selector-action-panel .actionbar .actionbarinner .actiondisable {
   background-color: #c2d3db; }
 
@@ -2675,10 +2675,10 @@ header .billboard .content-button {
   color: #121212; }
 
 .sidenav-mobile-bar-left {
-  color: #00151f; }
+  color: #041e20; }
 
 .sidenav-mobile-bar-right {
-  color: #00151f; }
+  color: #041e20; }
 
 .sidenav {
   background-color: #ffffff;
@@ -2919,11 +2919,11 @@ header .billboard .content-button {
 /** accordion visual**/
 .accordion {
   background-color: #81d4f9;
-  color: #021822; }
+  color: #01141d; }
 
 .accordion .active-accordion, .accordion:hover {
   background-color: #6bd0ff;
-  color: #021822; }
+  color: #01141d; }
 
 .accordion:after {
   color: red; }
@@ -2989,7 +2989,7 @@ header .billboard .content-button {
 
 .card-header {
   background: #81d4f9;
-  color: #021822; }
+  color: #01141d; }
 
 .cardbody::-webkit-scrollbar-track {
   background-color: #c2d3db; }
@@ -3010,8 +3010,7 @@ header .billboard .content-button {
   display: flex;
   flex-direction: column;
   border: 1px solid #ced4da;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
-  z-index: 1; }
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14); }
 
 .card-container > * {
   padding: 10px;
@@ -3282,7 +3281,7 @@ fieldset {
 .modal-window-header {
   background: #81d4f9;
   font-size: 20px;
-  color: #021822; }
+  color: #01141d; }
 
 .modal-window-middle {
   font-size: 14px; }
@@ -3498,7 +3497,7 @@ fieldset {
 /** panel visual**/
 .panel-accordion {
   background-color: #81d4f9;
-  color: #021822;
+  color: #01141d;
   font-size: 15px; }
 
 .panel-accordion:after {
@@ -3896,7 +3895,7 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
     background: #81d4f9;
     border-bottom: 1px solid #ced4da;
     font-size: 18px;
-    color: #021822;
+    color: #01141d;
     font-weight: 300;
     text-transform: capitalize;
     overflow: auto; } }
@@ -4081,7 +4080,7 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
     background: #81d4f9;
     border-bottom: 1px solid #ced4da;
     font-size: 18px;
-    color: #021822;
+    color: #01141d;
     font-weight: 300;
     text-transform: capitalize;
     overflow: auto; } }
@@ -4287,7 +4286,7 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
     background: #81d4f9;
     border-bottom: 1px solid #ced4da;
     font-size: 18px;
-    color: #021822;
+    color: #01141d;
     font-weight: 300;
     text-transform: capitalize;
     overflow: auto; } }
@@ -4516,7 +4515,7 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
     background: #81d4f9;
     border-bottom: 1px solid #ced4da;
     font-size: 18px;
-    color: #021822;
+    color: #01141d;
     font-weight: 300;
     text-transform: capitalize;
     overflow: auto; } }
@@ -4745,7 +4744,7 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
     background: #81d4f9;
     border-bottom: 1px solid #ced4da;
     font-size: 18px;
-    color: #021822;
+    color: #01141d;
     font-weight: 300;
     text-transform: capitalize;
     overflow: auto; } }
@@ -4974,7 +4973,7 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
     background: #81d4f9;
     border-bottom: 1px solid #ced4da;
     font-size: 18px;
-    color: #021822;
+    color: #01141d;
     font-weight: 300;
     text-transform: capitalize;
     overflow: auto; } }

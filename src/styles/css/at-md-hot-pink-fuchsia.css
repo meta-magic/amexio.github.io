@@ -126,7 +126,7 @@ body {
 /**HEADER STYLE STARTS **/
 .header {
   background-color: #ff00ff;
-  color: #fff0ff;
+  color: #fffaff;
   padding: 10px;
   overflow: hidden; }
 
@@ -400,7 +400,7 @@ button {
   .datetimepicker .datetimepickertopbar {
     background: #ff6bff; }
     .datetimepicker .datetimepickertopbar ul li {
-      color: #fff0ff; }
+      color: #fffaff; }
   .datetimepicker .days {
     background: #ffb8ff; }
     .datetimepicker .days li {
@@ -1099,7 +1099,7 @@ input:checked + .toggle-slider:before {
 
 .ui-widget-header {
   background: #ffffff;
-  color: #fff0ff;
+  color: #fffaff;
   font-weight: normal; }
 
 /** range -structure**/
@@ -1380,7 +1380,7 @@ input:checked + .toggle-slider:before {
 /** float-button visual**/
 .button-float {
   background-color: #ff00ff;
-  color: #fff0ff; }
+  color: #fffaff; }
 
 /** float-button -structure**/
 .button-float {
@@ -1999,7 +1999,7 @@ header .billboard .content-button {
 
 .datatable .datatable-header {
   background-color: #ff00ff;
-  color: #fff0ff; }
+  color: #fffaff; }
 
 .datatable .datatable-row:hover {
   background-color: #ffb8ff;
@@ -2172,7 +2172,7 @@ header .billboard .content-button {
 /** Itemselector visual**/
 .item-selector-action-panel .actionbar .actionbarinner .action {
   background-color: #ff00ff;
-  color: #fff0ff; }
+  color: #fffaff; }
 .item-selector-action-panel .actionbar .actionbarinner .actiondisable {
   background-color: #dbc2db; }
 
@@ -2460,32 +2460,32 @@ header .billboard .content-button {
 /** navbar visual**/
 .topnav {
   background-color: #f81894;
-  color: #fff0f8; }
+  color: #fffafd; }
 
 .top-nav-button {
   background-color: inherit;
-  color: #fff0f8; }
+  color: #fffafd; }
 
 .topnav a {
-  color: #fff0f8; }
+  color: #fffafd; }
 
 .topnav a label {
-  color: #fff0f8; }
+  color: #fffafd; }
 
 .topnavbarunit2-mobile {
   background-color: #f81894;
-  color: #fff0f8; }
+  color: #fffafd; }
 
 .topnavmainbarinneritems .nav-dropdown-content {
   background-color: #f81894;
-  color: #fff0f8; }
+  color: #fffafd; }
 
 .topnavmainbarinneritems-mobile .nav-dropdown-content {
   background-color: #f81894;
-  color: #fff0f8; }
+  color: #fffafd; }
 
 .topnavmainbarinneritems .nav-dropdown-content a {
-  color: #fff0f8 !important; }
+  color: #fffafd !important; }
 
 .nav-dropdown:hover {
   background-color: #fff5fa;
@@ -2495,7 +2495,7 @@ header .billboard .content-button {
   width: 100%; }
 
 .mobilebar {
-  color: #fff0f8; }
+  color: #fffafd; }
 
 .topnav input {
   background-color: inherit;
@@ -2675,10 +2675,10 @@ header .billboard .content-button {
   color: #121212; }
 
 .sidenav-mobile-bar-left {
-  color: #1f001f; }
+  color: #fffafd; }
 
 .sidenav-mobile-bar-right {
-  color: #1f001f; }
+  color: #fffafd; }
 
 .sidenav {
   background-color: #ffffff;
@@ -2919,11 +2919,11 @@ header .billboard .content-button {
 /** accordion visual**/
 .accordion {
   background-color: #ff00ff;
-  color: #fff0ff; }
+  color: #fffaff; }
 
 .accordion .active-accordion, .accordion:hover {
   background-color: #ff6bff;
-  color: #fff0ff; }
+  color: #fffaff; }
 
 .accordion:after {
   color: red; }
@@ -2989,7 +2989,7 @@ header .billboard .content-button {
 
 .card-header {
   background: #ff00ff;
-  color: #fff0ff; }
+  color: #fffaff; }
 
 .cardbody::-webkit-scrollbar-track {
   background-color: #dbc2db; }
@@ -3010,8 +3010,7 @@ header .billboard .content-button {
   display: flex;
   flex-direction: column;
   border: 1px solid #ced4da;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
-  z-index: 1; }
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14); }
 
 .card-container > * {
   padding: 10px;
@@ -3282,7 +3281,7 @@ fieldset {
 .modal-window-header {
   background: #ff00ff;
   font-size: 20px;
-  color: #fff0ff; }
+  color: #fffaff; }
 
 .modal-window-middle {
   font-size: 14px; }
@@ -3498,7 +3497,7 @@ fieldset {
 /** panel visual**/
 .panel-accordion {
   background-color: #ff00ff;
-  color: #fff0ff;
+  color: #fffaff;
   font-size: 15px; }
 
 .panel-accordion:after {
@@ -3896,7 +3895,7 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
     background: #ff00ff;
     border-bottom: 1px solid #ced4da;
     font-size: 18px;
-    color: #fff0ff;
+    color: #fffaff;
     font-weight: 300;
     text-transform: capitalize;
     overflow: auto; } }
@@ -4081,7 +4080,7 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
     background: #ff00ff;
     border-bottom: 1px solid #ced4da;
     font-size: 18px;
-    color: #fff0ff;
+    color: #fffaff;
     font-weight: 300;
     text-transform: capitalize;
     overflow: auto; } }
@@ -4287,7 +4286,7 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
     background: #ff00ff;
     border-bottom: 1px solid #ced4da;
     font-size: 18px;
-    color: #fff0ff;
+    color: #fffaff;
     font-weight: 300;
     text-transform: capitalize;
     overflow: auto; } }
@@ -4435,7 +4434,7 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
     .navbar-container .nav-bar {
       background-color: #fb7bc2; }
       .navbar-container .nav-bar .nav-item amexio-nav-item {
-        border-bottom: 1px solid #fff0f8;
+        border-bottom: 1px solid #fffafd;
         cursor: pointer; }
         .navbar-container .nav-bar .nav-item amexio-nav-item * {
           vertical-align: middle; }
@@ -4516,7 +4515,7 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
     background: #ff00ff;
     border-bottom: 1px solid #ced4da;
     font-size: 18px;
-    color: #fff0ff;
+    color: #fffaff;
     font-weight: 300;
     text-transform: capitalize;
     overflow: auto; } }
@@ -4664,7 +4663,7 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
     .navbar-container .nav-bar {
       background-color: #fb7bc2; }
       .navbar-container .nav-bar .nav-item amexio-nav-item {
-        border-bottom: 1px solid #fff0f8;
+        border-bottom: 1px solid #fffafd;
         cursor: pointer; }
         .navbar-container .nav-bar .nav-item amexio-nav-item * {
           vertical-align: middle; }
@@ -4745,7 +4744,7 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
     background: #ff00ff;
     border-bottom: 1px solid #ced4da;
     font-size: 18px;
-    color: #fff0ff;
+    color: #fffaff;
     font-weight: 300;
     text-transform: capitalize;
     overflow: auto; } }
@@ -4893,7 +4892,7 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
     .navbar-container .nav-bar {
       background-color: #fb7bc2; }
       .navbar-container .nav-bar .nav-item amexio-nav-item {
-        border-bottom: 1px solid #fff0f8;
+        border-bottom: 1px solid #fffafd;
         cursor: pointer; }
         .navbar-container .nav-bar .nav-item amexio-nav-item * {
           vertical-align: middle; }
@@ -4974,7 +4973,7 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
     background: #ff00ff;
     border-bottom: 1px solid #ced4da;
     font-size: 18px;
-    color: #fff0ff;
+    color: #fffaff;
     font-weight: 300;
     text-transform: capitalize;
     overflow: auto; } }
@@ -5122,7 +5121,7 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
     .navbar-container .nav-bar {
       background-color: #fb7bc2; }
       .navbar-container .nav-bar .nav-item amexio-nav-item {
-        border-bottom: 1px solid #fff0f8;
+        border-bottom: 1px solid #fffafd;
         cursor: pointer; }
         .navbar-container .nav-bar .nav-item amexio-nav-item * {
           vertical-align: middle; }

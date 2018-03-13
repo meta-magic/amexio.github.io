@@ -42,7 +42,7 @@ royalblue-dodgerblue,#4169E1,#1E90FF
 mediumblue-slateblue,#0000CD,#7B68EE
 sienna-rosybrown,#A0522D,#BC8F8F
 darkslategray-dimgray,#2F4F4F,#696969
-mediumblue-deepskyblue,#0000CD,#00BFFF
+mediumblue-deepskyblue,#0000CD,#38cdff
 darkturquoise-aquamarine,#00ecf0,#7FFFD4
 darkkhaki-moccasin,#BDB76B,#FFE4B5
 indianred-salmon,#CD5C5C,#FA8072

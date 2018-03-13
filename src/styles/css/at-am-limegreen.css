@@ -2792,10 +2792,10 @@ header .billboard .content-button {
   color: black; }
 
 .sidenav-mobile-bar-left {
-  color: black; }
+  color: #417505; }
 
 .sidenav-mobile-bar-right {
-  color: black; }
+  color: #417505; }
 
 .sidenav {
   background-color: white;
@@ -3126,8 +3126,7 @@ header .billboard .content-button {
   display: flex;
   flex-direction: column;
   border: 2px solid #417505;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
-  z-index: 1; }
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14); }
 
 .card-container > * {
   padding: 10px;

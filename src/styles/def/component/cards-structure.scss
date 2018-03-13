@@ -5,7 +5,7 @@
   flex-direction: column;
   border: $cardBorderSize solid $cardBorderColor;
   box-shadow: 0 2px 2px 0$cardBorderShadow;
-  z-index: 1;
+  //z-index: 1;
 }
 
 .card-container > * {

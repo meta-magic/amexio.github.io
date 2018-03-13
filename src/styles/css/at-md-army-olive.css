@@ -126,7 +126,7 @@ body {
 /**HEADER STYLE STARTS **/
 .header {
   background-color: #708238;
-  color: #f9faf4;
+  color: #f7f9f1;
   padding: 10px;
   overflow: hidden; }
 
@@ -400,7 +400,7 @@ button {
   .datetimepicker .datetimepickertopbar {
     background: #daff6b; }
     .datetimepicker .datetimepickertopbar ul li {
-      color: #f9faf4; }
+      color: #f7f9f1; }
   .datetimepicker .days {
     background: #edffb8; }
     .datetimepicker .days li {
@@ -1099,7 +1099,7 @@ input:checked + .toggle-slider:before {
 
 .ui-widget-header {
   background: #ffffff;
-  color: #f9faf4;
+  color: #f7f9f1;
   font-weight: normal; }
 
 /** range -structure**/
@@ -1380,7 +1380,7 @@ input:checked + .toggle-slider:before {
 /** float-button visual**/
 .button-float {
   background-color: #708238;
-  color: #f9faf4; }
+  color: #f7f9f1; }
 
 /** float-button -structure**/
 .button-float {
@@ -1999,7 +1999,7 @@ header .billboard .content-button {
 
 .datatable .datatable-header {
   background-color: #708238;
-  color: #f9faf4; }
+  color: #f7f9f1; }
 
 .datatable .datatable-row:hover {
   background-color: #edffb8;
@@ -2172,7 +2172,7 @@ header .billboard .content-button {
 /** Itemselector visual**/
 .item-selector-action-panel .actionbar .actionbarinner .action {
   background-color: #708238;
-  color: #f9faf4; }
+  color: #f7f9f1; }
 .item-selector-action-panel .actionbar .actionbarinner .actiondisable {
   background-color: #d5dbc2; }
 
@@ -2460,32 +2460,32 @@ header .billboard .content-button {
 /** navbar visual**/
 .topnav {
   background-color: #4b5320;
-  color: #fafbf4; }
+  color: #f8f9f0; }
 
 .top-nav-button {
   background-color: inherit;
-  color: #fafbf4; }
+  color: #f8f9f0; }
 
 .topnav a {
-  color: #fafbf4; }
+  color: #f8f9f0; }
 
 .topnav a label {
-  color: #fafbf4; }
+  color: #f8f9f0; }
 
 .topnavbarunit2-mobile {
   background-color: #4b5320;
-  color: #fafbf4; }
+  color: #f8f9f0; }
 
 .topnavmainbarinneritems .nav-dropdown-content {
   background-color: #4b5320;
-  color: #fafbf4; }
+  color: #f8f9f0; }
 
 .topnavmainbarinneritems-mobile .nav-dropdown-content {
   background-color: #4b5320;
-  color: #fafbf4; }
+  color: #f8f9f0; }
 
 .topnavmainbarinneritems .nav-dropdown-content a {
-  color: #fafbf4 !important; }
+  color: #f8f9f0 !important; }
 
 .nav-dropdown:hover {
   background-color: #c7d189;
@@ -2495,7 +2495,7 @@ header .billboard .content-button {
   width: 100%; }
 
 .mobilebar {
-  color: #fafbf4; }
+  color: #f8f9f0; }
 
 .topnav input {
   background-color: inherit;
@@ -2675,10 +2675,10 @@ header .billboard .content-button {
   color: #121212; }
 
 .sidenav-mobile-bar-left {
-  color: #171f00; }
+  color: #f8f9f0; }
 
 .sidenav-mobile-bar-right {
-  color: #171f00; }
+  color: #f8f9f0; }
 
 .sidenav {
   background-color: #ffffff;
@@ -2919,11 +2919,11 @@ header .billboard .content-button {
 /** accordion visual**/
 .accordion {
   background-color: #708238;
-  color: #f9faf4; }
+  color: #f7f9f1; }
 
 .accordion .active-accordion, .accordion:hover {
   background-color: #daff6b;
-  color: #f9faf4; }
+  color: #f7f9f1; }
 
 .accordion:after {
   color: red; }
@@ -2989,7 +2989,7 @@ header .billboard .content-button {
 
 .card-header {
   background: #708238;
-  color: #f9faf4; }
+  color: #f7f9f1; }
 
 .cardbody::-webkit-scrollbar-track {
   background-color: #d5dbc2; }
@@ -3010,8 +3010,7 @@ header .billboard .content-button {
   display: flex;
   flex-direction: column;
   border: 1px solid #ced4da;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
-  z-index: 1; }
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14); }
 
 .card-container > * {
   padding: 10px;
@@ -3282,7 +3281,7 @@ fieldset {
 .modal-window-header {
   background: #708238;
   font-size: 20px;
-  color: #f9faf4; }
+  color: #f7f9f1; }
 
 .modal-window-middle {
   font-size: 14px; }
@@ -3498,7 +3497,7 @@ fieldset {
 /** panel visual**/
 .panel-accordion {
   background-color: #708238;
-  color: #f9faf4;
+  color: #f7f9f1;
   font-size: 15px; }
 
 .panel-accordion:after {
@@ -3896,7 +3895,7 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
     background: #708238;
     border-bottom: 1px solid #ced4da;
     font-size: 18px;
-    color: #f9faf4;
+    color: #f7f9f1;
     font-weight: 300;
     text-transform: capitalize;
     overflow: auto; } }
@@ -4081,7 +4080,7 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
     background: #708238;
     border-bottom: 1px solid #ced4da;
     font-size: 18px;
-    color: #f9faf4;
+    color: #f7f9f1;
     font-weight: 300;
     text-transform: capitalize;
     overflow: auto; } }
@@ -4287,7 +4286,7 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
     background: #708238;
     border-bottom: 1px solid #ced4da;
     font-size: 18px;
-    color: #f9faf4;
+    color: #f7f9f1;
     font-weight: 300;
     text-transform: capitalize;
     overflow: auto; } }
@@ -4435,7 +4434,7 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
     .navbar-container .nav-bar {
       background-color: #8e9d3c; }
       .navbar-container .nav-bar .nav-item amexio-nav-item {
-        border-bottom: 1px solid #fafbf4;
+        border-bottom: 1px solid #f8f9f0;
         cursor: pointer; }
         .navbar-container .nav-bar .nav-item amexio-nav-item * {
           vertical-align: middle; }
@@ -4516,7 +4515,7 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
     background: #708238;
     border-bottom: 1px solid #ced4da;
     font-size: 18px;
-    color: #f9faf4;
+    color: #f7f9f1;
     font-weight: 300;
     text-transform: capitalize;
     overflow: auto; } }
@@ -4664,7 +4663,7 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
     .navbar-container .nav-bar {
       background-color: #8e9d3c; }
       .navbar-container .nav-bar .nav-item amexio-nav-item {
-        border-bottom: 1px solid #fafbf4;
+        border-bottom: 1px solid #f8f9f0;
         cursor: pointer; }
         .navbar-container .nav-bar .nav-item amexio-nav-item * {
           vertical-align: middle; }
@@ -4745,7 +4744,7 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
     background: #708238;
     border-bottom: 1px solid #ced4da;
     font-size: 18px;
-    color: #f9faf4;
+    color: #f7f9f1;
     font-weight: 300;
     text-transform: capitalize;
     overflow: auto; } }
@@ -4893,7 +4892,7 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
     .navbar-container .nav-bar {
       background-color: #8e9d3c; }
       .navbar-container .nav-bar .nav-item amexio-nav-item {
-        border-bottom: 1px solid #fafbf4;
+        border-bottom: 1px solid #f8f9f0;
         cursor: pointer; }
         .navbar-container .nav-bar .nav-item amexio-nav-item * {
           vertical-align: middle; }
@@ -4974,7 +4973,7 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
     background: #708238;
     border-bottom: 1px solid #ced4da;
     font-size: 18px;
-    color: #f9faf4;
+    color: #f7f9f1;
     font-weight: 300;
     text-transform: capitalize;
     overflow: auto; } }
@@ -5122,7 +5121,7 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
     .navbar-container .nav-bar {
       background-color: #8e9d3c; }
       .navbar-container .nav-bar .nav-item amexio-nav-item {
-        border-bottom: 1px solid #fafbf4;
+        border-bottom: 1px solid #f8f9f0;
         cursor: pointer; }
         .navbar-container .nav-bar .nav-item amexio-nav-item * {
           vertical-align: middle; }

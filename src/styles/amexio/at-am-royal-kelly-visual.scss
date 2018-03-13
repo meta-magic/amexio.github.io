@@ -47,7 +47,9 @@
   .item-selector-action-panel .actionbar .actionbarinner .action {
     background-color: #40434D;
   }
-
+  .datapoints .datapoint-south{
+    color : $appBackground;
+  }
   
 .datatable .datatable-header{
   background-color:$themeSecondaryColor;

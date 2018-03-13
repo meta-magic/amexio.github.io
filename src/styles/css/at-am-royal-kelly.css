@@ -3151,10 +3151,10 @@ header .billboard .content-button {
   color: rgba(255, 255, 255, 0.7); }
 
 .sidenav-mobile-bar-left {
-  color: #4CBB17; }
+  color: white; }
 
 .sidenav-mobile-bar-right {
-  color: #4CBB17; }
+  color: white; }
 
 .sidenav {
   background-color: #292b2c;
@@ -3485,8 +3485,7 @@ header .billboard .content-button {
   display: flex;
   flex-direction: column;
   border: 2px solid #4CBB17;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
-  z-index: 1; }
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14); }
 
 .card-container > * {
   padding: 10px;
@@ -5392,6 +5391,9 @@ fieldset {
 
 .item-selector-action-panel .actionbar .actionbarinner .action {
   background-color: #40434D; }
+
+.datapoints .datapoint-south {
+  color: #292b2c; }
 
 .datatable .datatable-header {
   background-color: #4CBB17;
