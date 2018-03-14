@@ -59,6 +59,8 @@ export class AmexioButtonDropdownComponent implements AfterContentInit {
 
   dropdownItemData: any[] = [];
 
+  @Input() buttonGroupLocalData: any;
+
   @Input() type: string;
 
   @Input() disabled: boolean;
@@ -67,16 +69,31 @@ export class AmexioButtonDropdownComponent implements AfterContentInit {
 
   @Output() click: any = new EventEmitter<any>();
 
+  buttonGroupPreviewData: any;
+
   constructor(public element: ElementRef) {
   }
 
-  ngAfterContentInit() {
-    this.createDropdownItemConfig();
+  ngDoCheck() {
+    if (JSON.stringify(this.buttonGroupPreviewData) != JSON.stringify(this.buttonGroupLocalData)) {
+      this.buttonGroupPreviewData = JSON.parse(JSON.stringify(this.buttonGroupLocalData));
+      this.buttons = this.buttonGroupLocalData;
+    }
   }
 
-  createDropdownItemConfig() {
-    let itemRefArray = [];
-    itemRefArray = this.buttons.toArray();
+  ngAfterContentInit() {
+    if (this.buttonGroupLocalData && this.buttonGroupLocalData.length > 0 ) {
+      this.buttonGroupPreviewData = JSON.parse(JSON.stringify(this.buttonGroupLocalData));
+      this.buttons = this.buttonGroupLocalData;
+      this.createDropdownItemConfig(this.buttons);
+    } else {
+      this.createDropdownItemConfig(this.buttons.toArray());
+    }
+
+  }
+
+  createDropdownItemConfig(btnCollection : any) {
+    let itemRefArray = btnCollection;
     for (let cr = 0; cr < itemRefArray.length; cr++) {
       const itemConfig = itemRefArray[cr];
       const data: any = {
