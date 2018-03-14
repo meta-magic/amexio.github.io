@@ -12,6 +12,7 @@ import {AmexioBorderLayoutItemComponent} from "./border/borderlayoutitem.compone
 import {AmexioBorderLayoutComponent} from "./border/borderlayout.component";
 import {AmexioCardComponent} from "./card/card.component";
 import {AmexioAccordionTabComponent} from "./accordion/accordion.pane";
+import {AmexioBoxComponent} from "./box/box.component";
 import {AmexioAccordionComponent} from "./accordion/accordion.component";
 import {HttpClientModule} from "@angular/common/http";
 
@@ -35,6 +36,7 @@ const LAYOUT_COMPONENTS = [
   AmexioBorderLayoutItemComponent,
   AmexioBorderLayoutComponent,
   AmexioCardComponent,
+  AmexioBoxComponent,
   AmexioAccordionTabComponent,
   AmexioAccordionComponent
 ];

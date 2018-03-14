@@ -44,7 +44,7 @@ export class AmexioFloatingButtonComponent implements OnInit{
 
   ngOnInit()
   {
-    debugger;
+  
       if(this.top || this.bottom || this.right || this.left){
         this.absoluteposition = true;
       }  
@@ -73,7 +73,7 @@ export class AmexioFloatingButtonComponent implements OnInit{
         this.positionclass = this.positionclass + " floatingbutton-square";
       }
 
-      if(this.type === "primary" || this.type === "themeColor"){
+      if(this.type === "primary" || this.type === "theme-color"){
         if(this.disabled)
             this.positionclass = this.positionclass  + " floatingbutton-primary-disabled"
         else

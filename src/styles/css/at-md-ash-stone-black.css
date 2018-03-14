@@ -402,7 +402,7 @@ button {
     .datetimepicker .datetimepickertopbar ul li {
       color: #131111; }
   .datetimepicker .days {
-    background: #ffc6b8; }
+    background: #ffffff; }
     .datetimepicker .days li {
       color: #a36f62; }
     .datetimepicker .days li:hover {
@@ -2534,7 +2534,8 @@ header .billboard .content-button {
   font-size: 1rem; }
 
 .topnav a {
-  cursor: pointer; }
+  cursor: pointer;
+  padding-right: 5px; }
 
 .topnavbarunit1 {
   line-height: 50px; }

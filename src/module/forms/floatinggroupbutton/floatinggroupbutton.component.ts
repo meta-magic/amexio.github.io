@@ -44,8 +44,6 @@ export class AmexioFloatingGroupButtonComponent implements OnInit{
 
   ngOnInit()
   {
-      debugger;
-
       if(this.data && this.data.length>0){
         this.datacount = this.data.length;
         this.data.forEach(node =>{

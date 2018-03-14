@@ -84,3 +84,5 @@ sass mda/at-md-navy-royalblue.scss:css/at-md-navy-royalblue.css;
 sass mda/at-md-saddlebrown-peru.scss:css/at-md-saddlebrown-peru.css;
 sass mda/at-md-mediumvioletred-hotpink.scss:css/at-md-mediumvioletred-hotpink.css;
 sass mda/at-md-firebrick-crimson.scss:css/at-md-firebrick-crimson.css;
+
+sass mda/at-md-yale-azure.scss:css/at-md-yale-azure.css;

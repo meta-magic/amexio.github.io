@@ -38,6 +38,7 @@
 }
 .topnav a{
     cursor: pointer;
+    padding-right: 5px;
     //color : $navbarColor
 }
 .topnav a label{
@@ -95,7 +96,6 @@
     overflow: hidden;
     
 }
-
 
 .topnavmainbarinneritems-mobile .nav-dropdown {
     width: 100%;

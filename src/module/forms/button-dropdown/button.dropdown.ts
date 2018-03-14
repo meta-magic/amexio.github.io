@@ -15,7 +15,7 @@ import {AmexioButtonDropDownItemComponent} from "./button.dropdown.item";
                [ngClass]="{'button-default': size=='default' || size ==null,
                'button-small': size=='small',
                'button-large' : size=='large',
-               'button-primary' : type == 'primary' || type == null || type == 'themeColor',
+               'button-primary' : type == 'primary' || type == null || type == 'theme-color',
                'button-success' : type == 'success' || type == 'green',
                'button-danger' : type=='danger' || type == 'red',
                'button-warning' : type=='warning' ||  type == 'yellow'}">

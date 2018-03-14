@@ -15,7 +15,7 @@ import {AmexioButtonDropDownItemComponent} from "./button.dropdown.item";
               [ngClass]="{'button-default': size=='default' || size ==null,
               'button-small': size=='small',
               'button-large' : size=='large',
-              'button-primary' : type == 'primary' || type == null || type == 'themeColor',
+              'button-primary' : type == 'primary' || type == null || type == 'theme-color',
               'button-success' : type == 'success' || type == 'green',
               'button-danger' : type=='danger' || type == 'red',
               'button-warning' : type=='warning' ||  type == 'yellow'}">
@@ -89,7 +89,7 @@ export class AmexioSpiltButtonDropdownComponent implements AfterContentInit {
 
   getBackgroundColor() {
     let colorCode: string;
-    if (this.type == 'primary' || this.type == 'themeColor') colorCode = '#0275d8';
+    if (this.type == 'primary' || this.type == 'theme-color') colorCode = '#0275d8';
      else if (this.type == 'success' || this.type == 'green') colorCode = '#5cb85c';
       else if (this.type == 'danger' || this.type == 'red') colorCode = '#d9534f'; 
       else if (this.type == 'warning' || this.type == 'yellow') colorCode = '#f0ad4e';
