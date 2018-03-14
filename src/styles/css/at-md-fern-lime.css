@@ -2485,11 +2485,15 @@ header .billboard .content-button {
   color: #f3f8f2; }
 
 .topnavmainbarinneritems .nav-dropdown-content a {
-  color: #f3f8f2 !important; }
+  color: #f3f8f2; }
 
-.nav-dropdown:hover {
+.topnavmainbarinneritems .nav-dropdown-content a:hover {
   background-color: #cadec4;
-  color: #040704; }
+  color: #040704 !important; }
+
+.nav-dropdown:active {
+  background-color: #4f7942;
+  color: #f3f8f2; }
 
 .topnavmainbarinneritems-mobile .top-nav-input-control {
   width: 100%; }

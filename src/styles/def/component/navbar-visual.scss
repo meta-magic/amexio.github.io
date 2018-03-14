@@ -24,18 +24,29 @@
     color : $navbarActiveColor;
 }
 
+// .topnavmainbarinneritems .nav-dropdown-content:hover { 
+//     //display: none;
+//     background-color: $navbarHoverBG;
+//     color : $navbarHoverColor;
+// }
+
 .topnavmainbarinneritems-mobile .nav-dropdown-content{
     background-color: $navbarActiveBG;
     color : $navbarActiveColor;
 }
 
 .topnavmainbarinneritems .nav-dropdown-content a {
-    color: $navbarColor!important;
+    color: $navbarColor;
 }
 
-.nav-dropdown:hover {
+.topnavmainbarinneritems .nav-dropdown-content a:hover {
     background-color: $navbarHoverBG;
-    color :$navbarHoverColor;
+    color: $navbarHoverColor!important
+}
+
+.nav-dropdown:active {
+    background-color: $navbarActiveBG;
+    color :$navbarActiveColor;
 }
 
 

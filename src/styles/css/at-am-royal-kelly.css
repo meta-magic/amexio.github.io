@@ -2961,11 +2961,15 @@ header .billboard .content-button {
   color: white; }
 
 .topnavmainbarinneritems .nav-dropdown-content a {
-  color: white !important; }
+  color: white; }
 
-.nav-dropdown:hover {
+.topnavmainbarinneritems .nav-dropdown-content a:hover {
   background-color: none;
-  color: none; }
+  color: none !important; }
+
+.nav-dropdown:active {
+  background-color: #98FB98;
+  color: white; }
 
 .topnavmainbarinneritems-mobile .top-nav-input-control {
   width: 100%; }
