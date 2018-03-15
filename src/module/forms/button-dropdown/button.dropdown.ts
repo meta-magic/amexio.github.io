@@ -69,6 +69,8 @@ export class AmexioButtonDropdownComponent implements AfterContentInit {
 
   @Output() click: any = new EventEmitter<any>();
 
+  @Output() getLinkData: any = new EventEmitter<any>()
+
   buttonGroupPreviewData: any;
 
   constructor(public element: ElementRef) {
@@ -127,11 +129,15 @@ export class AmexioButtonDropdownComponent implements AfterContentInit {
   }
 
   itemClick(event: any, itemData: any) {
-    if (!itemData.disabled) {
-      itemData.onItemClick.emit(event);
-      this.openContent = !this.openContent;
-    }
 
+    if(this.buttonGroupLocalData && this.buttonGroupLocalData.length > 0) {
+      this.getLinkData.emit({'event':event,'parentRef': this,'data':itemData});
+    } else {
+      if (!itemData.disabled) {
+        itemData.onItemClick.emit(event);
+        this.openContent = !this.openContent;
+      }
+    }
   }
 
   @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])

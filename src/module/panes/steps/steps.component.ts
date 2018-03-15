@@ -116,11 +116,9 @@ export class AmexioStepsComponent implements AfterContentInit, DoCheck {
   }
 
   ngAfterContentInit() {
-    debugger;
     if (this.data && this.data.length > 0) {
       this.stepPreviewData = JSON.parse(JSON.stringify(this.data));
       this.stepBlockArray = this.data;
-      console.log(this.stepBlockArray);
     } else {
       this.stepBlockArray = this.stepBlocks.toArray();
     }
@@ -130,7 +128,6 @@ export class AmexioStepsComponent implements AfterContentInit, DoCheck {
     if (JSON.stringify(this.stepPreviewData) != JSON.stringify(this.data)) {
       this.stepPreviewData = JSON.parse(JSON.stringify(this.data));
       this.stepBlockArray = this.data;
-      console.log(this.stepBlockArray);
     }
   }
 }
