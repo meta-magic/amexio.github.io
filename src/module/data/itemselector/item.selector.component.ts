@@ -83,7 +83,10 @@ export class AmexioItemSelectorComponent implements OnInit {
         responsedata = responsedata[dr[ir]];
       }
       responsedata.forEach((option: any, index: any) => {
-        option['isSelected'] = false;
+         if(!option['isSelected'])
+          {
+            option['isSelected'] = false;
+          }
       });
     } else {
       responsedata = httpResponse;
