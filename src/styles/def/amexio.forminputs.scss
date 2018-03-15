@@ -1,134 +1,198 @@
-/** button **/
+/****************************************************************************
+    Component Name : Button
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
 @import "component/button-vars.scss";
-/** button visual**/
+/** button - Visual CSS **/
 @import "component/button-visual.scss";
-/** button -structure**/
+/** button - Structure CSS **/
 @import "component/button-structure.scss";
-
-/** buttongroup **/
+/****************************************************************************
+    Component Name : Buttongroup
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
 @import "component/buttongroup-vars.scss";
-/** buttongroup visual**/
+/** buttongroup - Visual CSS **/
 @import "component/buttongroup-visual.scss";
-/** buttongroup -structure**/
+/** buttongroup - Structure CSS **/
 @import "component/buttongroup-structure.scss";
-
-/** buttondropdown **/
+/****************************************************************************
+    Component Name : Buttondropdown
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
 @import "component/buttondropdown-vars.scss";
-/** buttondropdown visual**/
+/** buttondropdown - Visual CSS **/
 @import "component/buttondropdown-visual.scss";
-/** buttondropdown -structure**/
+/** buttondropdown - Structure CSS **/
 @import "component/buttondropdown-structure.scss";
-/** datetime **/
+/****************************************************************************
+    Component Name : Datetime
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
 @import "component/datetime-vars.scss";
-/** datetime visual**/
+/** datetime - Visual CSS **/
 @import "component/datetime-visual.scss";
-/** datetime -structure**/
+/** datetime - Structure CSS **/
 @import "component/datetime-structure.scss";
-/** dropdown **/
+/****************************************************************************
+    Component Name : Dropdown
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
 @import "component/dropdown-vars.scss";
-/** dropdown visual**/
+/** dropdown - Visual CSS **/
 @import "component/dropdown-visual.scss";
-/** dropdown -structure**/
+/** dropdown - Structure CSS **/
 @import "component/dropdown-structure.scss";
-/** input **/
+/****************************************************************************
+    Component Name : Input
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
 @import "component/input-vars.scss";
-/** input visual**/
+/** input - Visual CSS **/
 @import "component/input-visual.scss";
-/** input -structure**/
+/** input - Structure CSS **/
 @import "component/input-structure.scss";
-/** fileupload **/
+/****************************************************************************
+    Component Name : Fileupload
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
 @import "component/fileupload-vars.scss";
-/** fileupload visual**/
+/** fileupload - Visual CSS **/
 @import "component/fileupload-visual.scss";
-/** fileupload -structure**/
+/** fileupload - Structure CSS **/
 @import "component/fileupload-structure.scss";
-/** collapsible-search **/
+/****************************************************************************
+    Component Name : Collapsible Search
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
 @import "component/collapsible-search-vars.scss";
-/** collapsible-search visual**/
+/** collapsible-search - Visual CSS **/
 @import "component/collapsible-search-visual.scss";
-/** collapsible-search -structure**/
+/** collapsible-search - Structure CSS **/
 @import "component/collapsible-search-structure.scss";
-/** radiobox **/
+/****************************************************************************
+    Component Name : Radiobox
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
 @import "component/radiobox-vars.scss";
-/** radiobox visual**/
+/** radiobox - Visual CSS **/
 @import "component/radiobox-visual.scss";
-/** radiobox -structure**/
+/** radiobox - Structure CSS **/
 @import "component/radiobox-structure.scss";
-/** checkbox **/
+/****************************************************************************
+    Component Name : Checkbox
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
 @import "component/checkbox-vars.scss";
-/** checkbox visual**/
+/** checkbox - Visual CSS **/
 @import "component/checkbox-visual.scss";
-/** checkbox -structure**/
+/** checkbox - Structure CSS **/
 @import "component/checkbox-structure.scss";
-/** taginput **/
+/****************************************************************************
+    Component Name : Tag
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
 @import "component/taginput-vars.scss";
-/** taginput visual**/
+/** taginput - Visual CSS **/
 @import "component/taginput-visual.scss";
-/** taginput -structure**/
+/** taginput - Structure CSS **/
 @import "component/taginput-structure.scss";
-/** notification **/
+/****************************************************************************
+    Component Name : Notification
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
 @import "component/notification-vars.scss";
-/** notification visual**/
+/** notification - Visual CSS **/
 @import "component/notification-visual.scss";
-/** notification -structure**/
+/** notification - Structure CSS **/
 @import "component/notification-structure.scss";
-/** progress **/
+/****************************************************************************
+    Component Name : Progress
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
 @import "component/progress-vars.scss";
-/** progress visual**/
+/** progress - Visual CSS **/
 @import "component/progress-visual.scss";
-/** progress -structure**/
+/** progress - Structure CSS **/
 @import "component/progress-structure.scss";
-/** rating **/
+/****************************************************************************
+    Component Name : Rating
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
 @import "component/rating-vars.scss";
-/** rating visual**/
+/** rating - Visual CSS **/
 @import "component/rating-visual.scss";
-/** rating -structure**/
+/** rating - Structure CSS **/
 @import "component/rating-structure.scss";
-/** toggle **/
+/****************************************************************************
+    Component Name : Toggle
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
 @import "component/toggle-vars.scss";
-/** toggle visual**/
+/** toggle - Visual CSS **/
 @import "component/toggle-visual.scss";
-/** toggle -structure**/
+/** toggle - Structure CSS **/
 @import "component/toggle-structure.scss";
-/** range **/
+/****************************************************************************
+    Component Name : Range
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
 @import "component/range-vars.scss";
-/** range visual**/
+/** range - Visual CSS **/
 @import "component/range-visual.scss";
-/** range -structure**/
+/** range - Structure CSS **/
 @import "component/range-structure.scss";
-/** label **/
+/****************************************************************************
+    Component Name : Label
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
 @import "component/label-vars.scss";
-/** label visual**/
+/** label - Visual CSS **/
 @import "component/label-visual.scss";
-/** label -structure**/
+/** label - Structure CSS **/
 @import "component/label-structure.scss";
-/** box **/
+/****************************************************************************
+    Component Name : Box
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
 @import "component/box-vars.scss";
-/** box visual**/
+/** box - Visual CSS **/
 @import "component/box-visual.scss";
-/** box -structure**/
+/** box - Structure CSS **/
 @import "component/box-structure.scss";
-/** image **/
+/****************************************************************************
+    Component Name : Image
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
 @import "component/image-vars.scss";
-/** image visual**/
+/** image - Visual CSS **/
 @import "component/image-visual.scss";
-/** image -structure**/
+/** image - Structure CSS **/
 @import "component/image-structure.scss";
-/** float-button **/
+/****************************************************************************
+    Component Name : Float Button
+    Version : Amexio v4.1 onwards
+*****************************************************************************/
 @import "component/float-button-vars.scss";
-/** float-button visual**/
+/** float-button - Visual CSS **/
 @import "component/float-button-visual.scss";
-/** float-button -structure**/
+/** float-button - Structure CSS **/
 @import "component/float-button-structure.scss";
-/** floatingbutton **/
+/****************************************************************************
+    Component Name : Floating button
+    Version : Amexio v4.1 onwards
+*****************************************************************************/
 @import "component/floatingbutton-vars.scss";
-/** floatingbutton visual**/
+/** floatingbutton - Visual CSS **/
 @import "component/floatingbutton-visual.scss";
-/** floatingbutton -structure**/
+/** floatingbutton - Structure CSS **/
 @import "component/floatingbutton-structure.scss";
-/** floatingbuttongroup **/
+/****************************************************************************
+    Component Name : Floating button group
+    Version : Amexio v4.1 onwards
+*****************************************************************************/
 @import "component/floatingbuttongroup-vars.scss";
-/** floatingbuttongroup visual**/
+/** floatingbuttongroup - Visual CSS **/
 @import "component/floatingbuttongroup-visual.scss";
-/** floatingbuttongroup -structure**/
+/** floatingbuttongroup - Structure CSS **/
 @import "component/floatingbuttongroup-structure.scss";

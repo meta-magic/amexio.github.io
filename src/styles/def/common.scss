@@ -42,8 +42,9 @@ $amexioColorBrownLight : #f4a460;
 $amexioColorBrownDark : #800000;
 $amexioColorYellowLight : #ffd700;
 $amexioColorYellowDark : #ff9900;
-
-/**HELPER CLASS STARTS**/
+/****************************************************************************
+                    Common CSS Helper Classes
+*****************************************************************************/
 body {
   background: $appBackground;
   min-height: 100%;
@@ -120,8 +121,6 @@ body {
   border-right: 1px solid #cccccc;
 }
 
-
-/**HEADER STYLE STARTS **/
 .header {
   background-color: $componentHeaderBGColor;
   color: $componentHeaderFontColor;
@@ -134,11 +133,6 @@ body {
   font-size:20px;
 }
 
-/**HEADER STYLE ENDS **/
-
-
-
-/**TABLE**/
 .table{
   display: table;
   padding: 5px;
@@ -159,7 +153,6 @@ body {
  padding-right: 0px!important;
 }
 
-/** Disabled **/
 input:disabled {
   opacity: 0.55;
   cursor: not-allowed;
@@ -174,7 +167,6 @@ input:disabled {
 .defaultcolor{
   color: $themeFontColor;
 }
-
 
 .verticalalign-tableft{
   vertical-align: top !important;
