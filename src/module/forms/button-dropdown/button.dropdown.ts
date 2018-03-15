@@ -79,15 +79,15 @@ export class AmexioButtonDropdownComponent implements AfterContentInit {
   ngDoCheck() {
     if (JSON.stringify(this.buttonGroupPreviewData) != JSON.stringify(this.buttonGroupLocalData)) {
       this.buttonGroupPreviewData = JSON.parse(JSON.stringify(this.buttonGroupLocalData));
-      this.buttons = this.buttonGroupLocalData;
+      this.dropdownItemData = this.buttonGroupLocalData;
     }
   }
 
   ngAfterContentInit() {
     if (this.buttonGroupLocalData && this.buttonGroupLocalData.length > 0 ) {
       this.buttonGroupPreviewData = JSON.parse(JSON.stringify(this.buttonGroupLocalData));
-      this.buttons = this.buttonGroupLocalData;
-      this.createDropdownItemConfig(this.buttons);
+      this.dropdownItemData = this.buttonGroupLocalData;
+      this.createDropdownItemConfig(this.dropdownItemData);
     } else {
       this.createDropdownItemConfig(this.buttons.toArray());
     }
