@@ -64,7 +64,7 @@ export class AmexioFilterTreeComponent implements OnInit, AfterViewInit, DoCheck
 
   @Input('enable-checkbox') enablecheckbox = false;
 
-  @Output() selectedRecord: any = new EventEmitter<any>();
+  @Output() nodeClick: any = new EventEmitter<any>();
 
   @Output() onTreeNodeChecked: any = new EventEmitter<any>();
 
@@ -243,7 +243,7 @@ export class AmexioFilterTreeComponent implements OnInit, AfterViewInit, DoCheck
   }
 
   onRowSelect(data: any) {
-    this.selectedRecord.emit(data);
+    this.nodeClick.emit(data);
   }
 
   onCheckSelect(data: any) {
