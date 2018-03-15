@@ -1,6 +1,8 @@
 /* Component Specific Variables */
 /* Misc Variables */
-/**HELPER CLASS STARTS**/
+/****************************************************************************
+                    Common CSS Helper Classes
+*****************************************************************************/
 body {
   background: #000000;
   min-height: 100%;
@@ -61,7 +63,6 @@ body {
 .border-right {
   border-right: 1px solid #cccccc; }
 
-/**HEADER STYLE STARTS **/
 .header {
   background-color: rgba(189, 127, 189, 0.6);
   color: #FF6FFF;
@@ -72,8 +73,6 @@ body {
   float: left;
   font-size: 20px; }
 
-/**HEADER STYLE ENDS **/
-/**TABLE**/
 .table {
   display: table;
   padding: 5px; }
@@ -90,7 +89,6 @@ body {
 .listbox .header .table .tablerow .tablecol {
   padding-right: 0px !important; }
 
-/** Disabled **/
 input:disabled {
   opacity: 0.55;
   cursor: not-allowed;
@@ -198,8 +196,11 @@ image using the content attribute.
   opacity: 0.55; }
 
 /* Misc Variables */
-/** button **/
-/** button visual**/
+/****************************************************************************
+    Component Name : Button
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
+/** button - Visual CSS **/
 .button-secondary {
   background-color: #ffffff;
   border-color: #FF6FFF;
@@ -244,7 +245,7 @@ image using the content attribute.
   background: #000000;
   color: rgba(255, 255, 255, 0.7); }
 
-/** button -structure**/
+/** button - Structure CSS **/
 button {
   display: inline-block;
   font-weight: 400;
@@ -284,9 +285,12 @@ button {
   border: none !important;
   box-shadow: none !important; }
 
-/** buttongroup **/
-/** buttongroup visual**/
-/** buttongroup -structure**/
+/****************************************************************************
+    Component Name : Buttongroup
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
+/** buttongroup - Visual CSS **/
+/** buttongroup - Structure CSS **/
 .btn-group span {
   border: 1px solid black;
   padding: 10px 24px;
@@ -312,15 +316,18 @@ button {
 .button-group {
   position: relative; }
 
-/** buttondropdown **/
-/** buttondropdown visual**/
+/****************************************************************************
+    Component Name : Buttondropdown
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
+/** buttondropdown - Visual CSS **/
 .button-dropdown {
   background-color: #000000; }
 
 .button-dropdown > div:hover {
   background-color: rgba(189, 127, 189, 0.6); }
 
-/** buttondropdown -structure**/
+/** buttondropdown - Structure CSS **/
 .button-dropdown {
   position: absolute;
   padding: .5rem 1rem;
@@ -331,8 +338,11 @@ button {
 .button-dropdown-up {
   bottom: 100%; }
 
-/** datetime **/
-/** datetime visual**/
+/****************************************************************************
+    Component Name : Datetime
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
+/** datetime - Visual CSS **/
 .datetimepicker {
   background: #000000; }
   .datetimepicker .datetimepickertopbar {
@@ -358,7 +368,7 @@ button {
   .datetimepicker .days .date-today {
     padding-top: 1%;
     padding-left: 36%; } }
-/** datetime -structure**/
+/** datetime - Structure CSS **/
 .datetimepicker {
   display: block;
   border: 2px solid #FF6FFF;
@@ -419,8 +429,11 @@ button {
 .datetimepicker-up {
   bottom: 100%; }
 
-/** dropdown **/
-/** dropdown visual**/
+/****************************************************************************
+    Component Name : Dropdown
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
+/** dropdown - Visual CSS **/
 .dropdown {
   background-color: #000000; }
 
@@ -435,7 +448,7 @@ button {
 .drodown-caret-down {
   color: #FF6FFF; }
 
-/** dropdown -structure**/
+/** dropdown - Structure CSS **/
 .dropdown {
   display: block;
   z-index: 1003;
@@ -485,11 +498,14 @@ button {
 .drodown-caret-down {
   top: 35px; }
 
-/** input **/
+/****************************************************************************
+    Component Name : Input
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
 /*----------------------------------------------------------------------*/
 /*        INPUT CONTROL COMPONENT -Visual      */
 /*----------------------------------------------------------------------*/
-/** input visual**/
+/** input - Visual CSS **/
 .input-control {
   font-size: 14px;
   background-color: #000000;
@@ -524,7 +540,7 @@ button {
 .inputgroup .tooltiptext {
   background-color: rgba(189, 127, 189, 0.6); }
 
-/** input -structure**/
+/** input - Structure CSS **/
 .inputgroup {
   position: relative; }
 
@@ -561,8 +577,11 @@ button {
   z-index: 1;
   padding-left: 5px; }
 
-/** fileupload **/
-/** fileupload visual**/
+/****************************************************************************
+    Component Name : Fileupload
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
+/** fileupload - Visual CSS **/
 .upload-drop-zone {
   color: rgba(189, 127, 189, 0.6);
   border-color: rgba(189, 127, 189, 0.6); }
@@ -571,7 +590,7 @@ button {
   color: rgba(255, 255, 255, 0.7);
   border-color: rgba(255, 255, 255, 0.7); }
 
-/** fileupload -structure**/
+/** fileupload - Structure CSS **/
 .upload-drop-zone {
   border-style: dashed;
   line-height: 200px;
@@ -587,12 +606,15 @@ textarea:required {
 .image-title {
   display: none; }
 
-/** collapsible-search **/
-/** collapsible-search visual**/
+/****************************************************************************
+    Component Name : Collapsible Search
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
+/** collapsible-search - Visual CSS **/
 .search:focus {
   background-color: #000000; }
 
-/** collapsible-search -structure**/
+/** collapsible-search - Structure CSS **/
 .search {
   border: solid 1px #FF6FFF;
   padding: 9px 10px 9px 32px;
@@ -603,11 +625,14 @@ textarea:required {
 .search:focus {
   width: 150px; }
 
-/** radiobox **/
+/****************************************************************************
+    Component Name : Radiobox
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
 /****************************************************/
 /***                  RADIO -Visual                     ***/
 /****************************************************/
-/** radiobox visual**/
+/** radiobox - Visual CSS **/
 /* When the checkbox is checked, add a blue background */
 .input-box-container input:checked ~ .input-box-radiobox-label {
   background-color: #000000; }
@@ -616,7 +641,7 @@ textarea:required {
 .input-box-container .input-box-radiobox-label:after {
   background-color: #000000; }
 
-/** radiobox -structure**/
+/** radiobox - Structure CSS **/
 /* Create a custom checkbox */
 .input-box-radiobox-label {
   position: absolute;
@@ -645,8 +670,11 @@ textarea:required {
   height: 8px;
   border-radius: 50%; }
 
-/** checkbox **/
-/** checkbox visual**/
+/****************************************************************************
+    Component Name : Checkbox
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
+/** checkbox - Visual CSS **/
 .input-box .default {
   background: #000000; }
 
@@ -658,7 +686,7 @@ textarea:required {
 .input-box-container input:checked ~ .input-box-checkbox-label {
   background-color: rgba(189, 127, 189, 0.6); }
 
-/** checkbox -structure**/
+/** checkbox - Structure CSS **/
 .input-box {
   display: inline-block;
   cursor: pointer;
@@ -730,8 +758,11 @@ textarea:required {
   border-width: 0 3px 3px 0;
   transform: rotate(45deg); }
 
-/** taginput **/
-/** taginput visual**/
+/****************************************************************************
+    Component Name : Tag
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
+/** taginput - Visual CSS **/
 .tag-input .tag {
   font-size: 11px;
   background-color: #000000;
@@ -742,7 +773,7 @@ textarea:required {
   .tag-input .tag .closebtn:hover {
     color: #000000; }
 
-/** taginput -structure**/
+/** taginput - Structure CSS **/
 .tag-input {
   top: 30px;
   left: 1px;
@@ -761,13 +792,16 @@ textarea:required {
       float: right;
       cursor: pointer; }
 
-/** notification **/
-/** notification visual**/
+/****************************************************************************
+    Component Name : Notification
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
+/** notification - Visual CSS **/
 .notification {
   background-color: #000000;
   color: rgba(255, 255, 255, 0.7); }
 
-/** notification -structure**/
+/** notification - Structure CSS **/
 .notification-content {
   position: fixed;
   z-index: 3; }
@@ -800,8 +834,11 @@ textarea:required {
   .notification i {
     cursor: pointer; }
 
-/** progress **/
-/** progress visual**/
+/****************************************************************************
+    Component Name : Progress
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
+/** progress - Visual CSS **/
 .progress {
   position: relative;
   background: #000000; }
@@ -826,7 +863,7 @@ textarea:required {
 .nostripes > span > span, .nostripes > span:after {
   background-image: none; }
 
-/** progress -structure**/
+/** progress - Structure CSS **/
 .progress {
   height: 20px;
   /* Can be anything */
@@ -861,8 +898,11 @@ textarea:required {
 .nostripes > span > span, .nostripes > span:after {
   -webkit-animation: none; }
 
-/** rating **/
-/** rating visual**/
+/****************************************************************************
+    Component Name : Rating
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
+/** rating - Visual CSS **/
 .rating i {
   font-style: normal; }
 
@@ -880,7 +920,7 @@ textarea:required {
   /* Firefox Hack */
   .star-icon {
     font-size: 50px; } }
-/** rating -structure**/
+/** rating - Structure CSS **/
 .rating {
   cursor: pointer;
   outline: none;
@@ -944,8 +984,11 @@ textarea:required {
   /* Firefox Hack */
   .star-icon {
     line-height: 34px; } }
-/** toggle **/
-/** toggle visual**/
+/****************************************************************************
+    Component Name : Toggle
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
+/** toggle - Visual CSS **/
 .toggle-slider {
   background-color: #000000; }
 
@@ -955,7 +998,7 @@ textarea:required {
 input:checked + .toggle-slider {
   background-color: rgba(189, 127, 189, 0.6); }
 
-/** toggle -structure**/
+/** toggle - Structure CSS **/
 .toggle {
   position: relative;
   display: inline-block;
@@ -1003,8 +1046,11 @@ input:checked + .toggle-slider:before {
 .round:before {
   border-radius: 50%; }
 
-/** range **/
-/** range visual**/
+/****************************************************************************
+    Component Name : Range
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
+/** range - Visual CSS **/
 .ui-slider .ui-slider-range {
   font-size: 0.7em; }
 
@@ -1040,7 +1086,7 @@ input:checked + .toggle-slider:before {
   color: #FF6FFF;
   font-weight: normal; }
 
-/** range -structure**/
+/** range - Structure CSS **/
 .ui-slider {
   position: relative;
   text-align: left; }
@@ -1181,9 +1227,12 @@ input:checked + .toggle-slider:before {
   border-radius: 0;
   border: none; }
 
-/** label **/
-/** label visual**/
-/** label -structure**/
+/****************************************************************************
+    Component Name : Label
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
+/** label - Visual CSS **/
+/** label - Structure CSS **/
 .large {
   font-size: 36px; }
 
@@ -1205,8 +1254,11 @@ input:checked + .toggle-slider:before {
   font-size: 18px;
   font-weight: bold; }
 
-/** box **/
-/** box visual**/
+/****************************************************************************
+    Component Name : Box
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
+/** box - Visual CSS **/
 .bg-highlight {
   color: rgba(255, 255, 255, 0.7);
   background-color: #ffeb3b; }
@@ -1238,7 +1290,7 @@ input:checked + .toggle-slider:before {
 .box-default {
   background-color: #000000; }
 
-/** box -structure**/
+/** box - Structure CSS **/
 .border-topbar {
   border-top: 6px solid #FF6FFF; }
 
@@ -1286,12 +1338,15 @@ input:checked + .toggle-slider:before {
 .border-yellow {
   border-color: #ff9900; }
 
-/** image **/
-/** image visual**/
+/****************************************************************************
+    Component Name : Image
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
+/** image - Visual CSS **/
 .profile-image a {
   color: rgba(255, 255, 255, 0.7); }
 
-/** image -structure**/
+/** image - Structure CSS **/
 .profile-image img {
   width: 50px;
   height: 50px;
@@ -1314,13 +1369,16 @@ input:checked + .toggle-slider:before {
   margin-top: 10px;
   margin-bottom: 10px; }
 
-/** float-button **/
-/** float-button visual**/
+/****************************************************************************
+    Component Name : Float Button
+    Version : Amexio v4.1 onwards
+*****************************************************************************/
+/** float-button - Visual CSS **/
 .button-float {
   background-color: rgba(189, 127, 189, 0.6);
   color: #FF6FFF; }
 
-/** float-button -structure**/
+/** float-button - Structure CSS **/
 .button-float {
   border: none;
   padding: 15px;
@@ -1332,8 +1390,11 @@ input:checked + .toggle-slider:before {
   border-radius: 50%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 8px 20px 0 rgba(0, 0, 0, 0.25); }
 
-/** floatingbutton **/
-/** floatingbutton visual**/
+/****************************************************************************
+    Component Name : Floating button
+    Version : Amexio v4.1 onwards
+*****************************************************************************/
+/** floatingbutton - Visual CSS **/
 .floatingbutton-default {
   background-color: #ffffff; }
 
@@ -1373,7 +1434,7 @@ input:checked + .toggle-slider:before {
   background-color: #f8d9ac;
   color: white; }
 
-/** floatingbutton -structure**/
+/** floatingbutton - Structure CSS **/
 .floatingbutton {
   z-index: 3;
   text-align: center;
@@ -1412,9 +1473,12 @@ input:checked + .toggle-slider:before {
 .floatingbutton-square {
   padding: .5rem 1rem; }
 
-/** floatingbuttongroup **/
-/** floatingbuttongroup visual**/
-/** floatingbuttongroup -structure**/
+/****************************************************************************
+    Component Name : Floating button group
+    Version : Amexio v4.1 onwards
+*****************************************************************************/
+/** floatingbuttongroup - Visual CSS **/
+/** floatingbuttongroup - Structure CSS **/
 .floatinggroup {
   position: fixed;
   padding-bottom: 20px;
@@ -1428,8 +1492,11 @@ input:checked + .toggle-slider:before {
   text-align: center;
   cursor: pointer; }
 
-/** enterprise-content **/
-/** enterprise-content visual**/
+/****************************************************************************
+    Component Name : Enterprise Content
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
+/** enterprise-content - Visual CSS **/
 .content-title {
   color: #FF6FFF; }
 
@@ -1452,7 +1519,7 @@ header .billboard .content-button {
 .close-button {
   color: gray; }
 
-/** enterprise-content -structure**/
+/** enterprise-content - Structure CSS **/
 .inline-list {
   padding-left: 0; }
 
@@ -1603,8 +1670,11 @@ header .billboard .content-button {
   padding-left: 98%;
   background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, transparent 70%, transparent 100%); }
 
-/** enterprise-youtube **/
-/** enterprise-youtube visual**/
+/****************************************************************************
+    Component Name : Enterprise Youtube
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
+/** enterprise-youtube - Visual CSS **/
 .close-button {
   color: grey;
   background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, transparent 70%, transparent 100%); }
@@ -1612,15 +1682,18 @@ header .billboard .content-button {
 .close-button i:hover {
   color: red; }
 
-/** enterprise-youtube -structure**/
+/** enterprise-youtube - Structure CSS **/
 .close-button {
   cursor: pointer; }
 
 .close-button i:hover {
   cursor: pointer; }
 
-/** enterprise-carousel **/
-/** enterprise-carousel visual**/
+/****************************************************************************
+    Component Name : Enterprise Carousel
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
+/** enterprise-carousel - Visual CSS **/
 .row__inner {
   font-size: 0; }
 
@@ -1679,7 +1752,7 @@ header .billboard .content-button {
 .selected {
   color: white; }
 
-/** enterprise-carousel -structure**/
+/** enterprise-carousel - Structure CSS **/
 .contain {
   width: 100%; }
 
@@ -1889,8 +1962,11 @@ header .billboard .content-button {
   height: 5px;
   border-top: 3px solid white; }
 
-/** Datapoints**/
-/** Datapoints -visual**/
+/****************************************************************************
+    Component Name : Datapoints
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
+/** Datapoints - Visual CSS **/
 .datapoints {
   background: #000000;
   color: #FF6FFF; }
@@ -1904,7 +1980,7 @@ header .billboard .content-button {
   .datapoints .datapoint-east {
     padding: 5px; }
 
-/** Datapoints -structure**/
+/** Datapoints - Structure CSS **/
 .datapoints {
   font-size: 125%;
   /* Border */
@@ -1924,8 +2000,11 @@ header .billboard .content-button {
   .datapoints .datapoint-east {
     padding: 5px; }
 
-/** Datatable**/
-/** Datatable -structure**/
+/****************************************************************************
+    Component Name : Datatable
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
+/** Datatable - Structure CSS **/
 .datatable-height::-webkit-scrollbar-track {
   background-color: #f5f5f5; }
 
@@ -1949,7 +2028,7 @@ header .billboard .content-button {
 .datatable-row:nth-child(odd) {
   background-color: #000000; }
 
-/** Datatable -visual**/
+/** Datatable - Visual CSS **/
 .datatabletitle {
   font-size: 1.5em;
   margin: .1em 0 .35em; }
@@ -2019,8 +2098,11 @@ header .billboard .content-button {
   line-height: 38px;
   text-align: center; }
 
-/** Horizontaltreeview **/
-/** Horizontaltreeview -visual**/
+/****************************************************************************
+    Component Name : Horizontaltreeview
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
+/** Horizontaltreeview - Visual CSS **/
 .horizontaltreeview-node-label {
   background-color: #000000;
   color: #FF6FFF; }
@@ -2030,7 +2112,7 @@ header .billboard .content-button {
   color: #FF6FFF;
   background-color: rgba(189, 127, 189, 0.6); }
 
-/** Horizontaltreeview -structure**/
+/** Horizontaltreeview - Structure CSS **/
 .horizontaltreeview {
   position: relative;
   overflow: auto; }
@@ -2106,8 +2188,11 @@ header .billboard .content-button {
   .horizontaltreeview-node-label span {
     padding-right: 5px; }
 
-/** Itemselector **/
-/** Itemselector visual**/
+/****************************************************************************
+    Component Name : Itemselector
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
+/** Itemselector - Visual CSS **/
 .item-selector-action-panel .actionbar .actionbarinner .action {
   background-color: rgba(189, 127, 189, 0.6);
   color: #FF6FFF; }
@@ -2120,7 +2205,7 @@ header .billboard .content-button {
 .itemselector-list:hover {
   background-color: rgba(189, 127, 189, 0.6); }
 
-/** Itemselector structure**/
+/** Itemselector - Structure CSS **/
 .flex-col-45pt {
   max-width: 45%; }
 
@@ -2161,8 +2246,11 @@ header .billboard .content-button {
   padding: 5px;
   text-align: left; }
 
-/** Listbox **/
-/** Listbox visual**/
+/****************************************************************************
+    Component Name : Listbox
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
+/** Listbox - Visual CSS **/
 .listbox-height::-webkit-scrollbar-track {
   background-color: rgba(189, 127, 189, 0.6); }
 
@@ -2185,7 +2273,7 @@ header .billboard .content-button {
     .listbox .list .title a {
       color: rgba(0, 0, 0, 0.87) !important; }
 
-/** Listbox structure**/
+/** Listbox - Structure CSS **/
 .listbox {
   margin-bottom: 1rem;
   border: 2px solid #FF6FFF; }
@@ -2229,8 +2317,11 @@ header .billboard .content-button {
     font-size: 16px;
     text-transform: lowercase; }
 
-/** Treenode **/
-/** Treenode visual**/
+/****************************************************************************
+    Component Name : Treenode
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
+/** Treenode - Visual CSS **/
 .treenode {
   background-color: transparent; }
 
@@ -2242,7 +2333,7 @@ header .billboard .content-button {
   background-color: #000000;
   color: #FF6FFF; }
 
-/** Treenode -structure**/
+/** Treenode - Structure CSS **/
 .treeview {
   height: 100%;
   margin: 0;
@@ -2283,9 +2374,12 @@ header .billboard .content-button {
   -webkit-transition: expand .5s;
   transition: expand .5s; }
 
-/** borderlayout **/
-/** borderlayout visual**/
-/** borderlayout -structure**/
+/****************************************************************************
+    Component Name : Border Layout
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
+/** borderlayout - Visual CSS **/
+/** borderlayout - Structure CSS **/
 .borderlayout-N {
   grid-area: north; }
 
@@ -2391,9 +2485,12 @@ header .billboard .content-button {
 .borderlayout-container-C-S aside {
   border: 0px solid none; }
 
-/** rowcol **/
-/** rowcol visual**/
-/** rowcol -structure**/
+/****************************************************************************
+    Component Name : Row Column
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
+/** rowcol - Visual CSS **/
+/** rowcol - Structure CSS **/
 .flex-row {
   flex-direction: row;
   box-sizing: border-box;
@@ -2462,8 +2559,11 @@ header .billboard .content-button {
   flex: 0 0 79.1666635%;
   max-width: 79.1666635%; }
 
-/** menubar **/
-/** menubar visual**/
+/****************************************************************************
+    Component Name : Menubar
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
+/** menubar - Visual CSS **/
 .menubar .menuheader .menulink a {
   color: rgba(255, 255, 255, 0.7); }
 
@@ -2495,7 +2595,7 @@ header .billboard .content-button {
   color: rgba(255, 255, 255, 0.7);
   background-color: rgba(189, 127, 189, 0.6); }
 
-/** menubar -structure**/
+/** menubar - Structure CSS **/
 .menu-right {
   right: 10px; }
 
@@ -2573,8 +2673,11 @@ header .billboard .content-button {
   padding: 5px 10px 0px 10px;
   cursor: pointer; }
 
-/** navbar **/
-/** navbar visual**/
+/****************************************************************************
+    Component Name : Navbar
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
+/** navbar - Visual CSS **/
 .topnav {
   background-color: #000000;
   color: #FF6FFF; }
@@ -2622,7 +2725,7 @@ header .billboard .content-button {
   background-color: inherit;
   color: inherit; }
 
-/** navbar -structure**/
+/** navbar - Structure CSS **/
 .topnav {
   overflow: hidden;
   position: fixed;
@@ -2753,8 +2856,11 @@ header .billboard .content-button {
 .nav-dropdown-content-right .nav-dropdown-content {
   right: 10px; }
 
-/** paginator **/
-/** paginator visual**/
+/****************************************************************************
+    Component Name : Paginator
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
+/** paginator - Visual CSS **/
 .paginator .paginator-pages .paginator-page {
   color: inherit; }
 
@@ -2766,7 +2872,7 @@ header .billboard .content-button {
   background-color: #000000;
   color: #FF6FFF; }
 
-/** paginator -structure**/
+/** paginator - Structure CSS **/
 .paginator {
   padding: 10px; }
 
@@ -2791,8 +2897,11 @@ header .billboard .content-button {
   border: 2px solid #FF6FFF;
   border-radius: 5px; }
 
-/** sidenav **/
-/** sidenav visual**/
+/****************************************************************************
+    Component Name : Sidenav
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
+/** sidenav - Visual CSS **/
 .sidenav-mobile-bar {
   color: rgba(255, 255, 255, 0.7); }
 
@@ -2844,7 +2953,7 @@ header .billboard .content-button {
 .sidenav .border {
   border-bottom: 2px solid #FF6FFF; }
 
-/** sidenav -structure**/
+/** sidenav - Structure CSS **/
 .sidenav-mobile-bar {
   top: 10px;
   padding: 10px;
@@ -2939,8 +3048,11 @@ header .billboard .content-button {
   max-height: 1000px;
   overflow: auto; }
 
-/** dockbar **/
-/** dockbar visual**/
+/****************************************************************************
+    Component Name : Dockbar
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
+/** dockbar - Visual CSS **/
 .dockbar {
   background-color: #FF6FFF;
   color: #FF6FFF; }
@@ -2978,7 +3090,7 @@ header .billboard .content-button {
 .dockbar-height::-webkit-scrollbar-thumb {
   background-color: #000000; }
 
-/** dockbar -structure**/
+/** dockbar - Structure CSS **/
 .dockbar {
   float: left;
   width: 70px;
@@ -3036,8 +3148,11 @@ header .billboard .content-button {
 .dockbar-height::-webkit-scrollbar {
   width: 6px; }
 
-/** accordion **/
-/** accordion visual**/
+/****************************************************************************
+    Component Name : Accordion
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
+/** accordion - Visual CSS **/
 .accordion {
   background-color: rgba(189, 127, 189, 0.6);
   color: #FF6FFF; }
@@ -3060,7 +3175,7 @@ header .billboard .content-button {
 .accordion-transparent:after {
   color: red; }
 
-/** accordion -structure**/
+/** accordion - Structure CSS **/
 .accordion {
   cursor: pointer;
   padding: 10px;
@@ -3102,8 +3217,11 @@ header .billboard .content-button {
   opacity: 0.55;
   cursor: not-allowed; }
 
-/** cards **/
-/** cards visual**/
+/****************************************************************************
+    Component Name : Cards
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
+/** cards - Visual CSS **/
 .card-container {
   background-color: #000000;
   color: rgba(255, 255, 255, 0.7); }
@@ -3125,7 +3243,7 @@ header .billboard .content-button {
   background-color: #000000;
   color: #FF6FFF; }
 
-/** cards -structure**/
+/** cards - Structure CSS **/
 .card-container {
   position: relative;
   display: flex;
@@ -3163,16 +3281,22 @@ header .billboard .content-button {
   display: flex;
   border-top: 2px solid #FF6FFF; }
 
-/** carousel **/
-/** carousel visual**/
-/** carousel -structure**/
+/****************************************************************************
+    Component Name : Carousel
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
+/** carousel - Visual CSS **/
+/** carousel - Structure CSS **/
 .carouselnavigation {
   padding: 125px 16px;
   cursor: pointer; }
 
-/** fieldset **/
-/** fieldset visual**/
-/** fieldset -structure**/
+/****************************************************************************
+    Component Name : Fieldset
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
+/** fieldset - Visual CSS **/
+/** fieldset - Structure CSS **/
 fieldset {
   border: 2px solid #FF6FFF;
   border-radius: 2px; }
@@ -3193,8 +3317,11 @@ fieldset {
 .collapsible-fieldset.active {
   height: auto; }
 
-/** steps **/
-/** steps visual**/
+/****************************************************************************
+    Component Name : steps
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
+/** steps - Visual CSS **/
 .step-label-highlight {
   color: rgba(189, 127, 189, 0.6);
   font-weight: bold; }
@@ -3225,7 +3352,7 @@ fieldset {
 .step-box-table-item-hover:hover {
   background-color: rgba(189, 127, 189, 0.6); }
 
-/** steps -structure**/
+/** steps - Structure CSS **/
 .stepwizard-step p {
   margin-top: 0px; }
 
@@ -3296,8 +3423,11 @@ fieldset {
 .step-box-table-item-hover:hover {
   cursor: pointer; }
 
-/** tab **/
-/** tab visual**/
+/****************************************************************************
+    Component Name : Tab
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
+/** tab - Visual CSS **/
 .verticalnavtab .defaultnode {
   background-color: #000000;
   color: rgba(255, 255, 255, 0.7); }
@@ -3311,7 +3441,7 @@ fieldset {
   background-color: #000000;
   color: #FF6FFF; }
 
-/** tab -structure**/
+/** tab - Structure CSS **/
 .tab {
   position: relative;
   overflow: hidden;
@@ -3390,8 +3520,11 @@ fieldset {
 .verticalalign-tabcontent {
   vertical-align: top !important; }
 
-/** window **/
-/** window visual**/
+/****************************************************************************
+    Component Name : Window
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
+/** window - Visual CSS **/
 .root-window {
   background-color: #000000;
   /* Black w/ opacity */ }
@@ -3420,7 +3553,7 @@ fieldset {
   background-color: rgba(189, 127, 189, 0.6);
   color: #FF6FFF; }
 
-/** window -structure**/
+/** window - Structure CSS **/
 .root-window {
   flex-direction: column;
   position: fixed;
@@ -3503,8 +3636,11 @@ fieldset {
 .footer-right-align {
   padding-right: 7px; }
 
-/** dialogue **/
-/** dialogue visual**/
+/****************************************************************************
+    Component Name : Dialogue
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
+/** dialogue - Visual CSS **/
 .root-window {
   background: rgba(128, 127, 127, 0.6); }
 
@@ -3528,7 +3664,7 @@ fieldset {
 .dialogue-warning {
   color: #f0ad4e; }
 
-/** dialogue -structure**/
+/** dialogue - Structure CSS **/
 .root-window {
   flex-direction: column;
   position: fixed;
@@ -3614,8 +3750,11 @@ fieldset {
 .icon-style {
   font-size: 15px; }
 
-/** panel **/
-/** panel visual**/
+/****************************************************************************
+    Component Name : Panel
+    Version : Amexio v4.0 onwards
+*****************************************************************************/
+/** panel - Visual CSS **/
 .panel-accordion {
   background-color: rgba(189, 127, 189, 0.6);
   color: #FF6FFF;
@@ -3638,7 +3777,7 @@ fieldset {
 .panel-panel::-webkit-scrollbar-thumb {
   background-color: #000000; }
 
-/** panel -structure**/
+/** panel - Structure CSS **/
 .panel-accordion {
   cursor: pointer;
   padding: 10px;
@@ -3678,12 +3817,12 @@ fieldset {
 .panel-icon {
   padding-left: 5px; }
 
-/*----------------------------------------------------------------------*/
-/*        BORDER LAYOUT Media Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
+/****************************************************************************
+                    Media Query for width - 375
+*****************************************************************************/
+/************************************************************************/
 /*        Card MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media screen and (max-width: 600px) {
   .card-header {
     display: flex;
@@ -3695,9 +3834,9 @@ fieldset {
     font-weight: 300;
     text-transform: capitalize;
     overflow: auto; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        DATATABLE MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media screen and (max-width: 600px) {
   .datatable {
     border: 0; }
@@ -3747,16 +3886,16 @@ fieldset {
 
   .text-input-width {
     width: 92%; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        Datetime Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media screen and (max-width: 600px) {
   .datetimepicker .days .date-today {
     padding-top: 1%;
     padding-left: 36%; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        Dialogue Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media screen and (max-width: 600px) {
   .dialogue-sm {
     flex-direction: column;
@@ -3768,9 +3907,9 @@ fieldset {
     /* Location of the box */
     width: 100%;
     padding-left: 0px; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        Enterprise Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media (max-width: 480px) {
   .content-title {
     width: 100%;
@@ -3806,15 +3945,15 @@ fieldset {
     width: 100%;
     background-size: 100% 100%;
     background-repeat: no-repeat; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        Image Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
+/************************************************************************/
+/************************************************************************/
 /*        ITEM SELECTOR Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
+/************************************************************************/
+/************************************************************************/
 /*        Label Media COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media only screen and (max-width: 450px) {
   /* phones */
   .large {
@@ -3837,38 +3976,41 @@ fieldset {
   .small-bold {
     font-size: 16px;
     font-weight: bold; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        MENU COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
+/************************************************************************/
+/************************************************************************/
 /*        NAVBAR Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media only screen and (max-width: 1024px) {
   .navbar-container {
     padding: 0px; }
     .navbar-container .navbar-logo-unit {
       padding-left: 40px; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        ROW-COLUMN MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
+/************************************************************************/
+/************************************************************************/
 /*        SIDENAV MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
+/************************************************************************/
+/************************************************************************/
 /*        Window Treenode Media Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
+/************************************************************************/
+/************************************************************************/
 /*        Window LAYOUT Media Q COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media screen and (max-width: 600px) {
   .footer-right-align {
     padding-right: 15px; } }
-/*----------------------------------------------------------------------*/
+/****************************************************************************
+                    Media Query for width - 450
+*****************************************************************************/
+/************************************************************************/
 /*        BORDER LAYOUT Media Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
+/************************************************************************/
+/************************************************************************/
 /*        Card MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media screen and (max-width: 600px) {
   .card-header {
     display: flex;
@@ -3880,9 +4022,9 @@ fieldset {
     font-weight: 300;
     text-transform: capitalize;
     overflow: auto; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        DATATABLE MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media screen and (max-width: 600px) {
   .datatable {
     border: 0; }
@@ -3932,16 +4074,16 @@ fieldset {
 
   .text-input-width {
     width: 92%; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        Datetime Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media screen and (max-width: 600px) {
   .datetimepicker .days .date-today {
     padding-top: 1%;
     padding-left: 36%; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        Dialogue Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media screen and (max-width: 600px) {
   .dialogue-sm {
     flex-direction: column;
@@ -3953,9 +4095,9 @@ fieldset {
     /* Location of the box */
     width: 100%;
     padding-left: 0px; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        Enterprise Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media (max-width: 480px) {
   .content-title {
     width: 100%;
@@ -3991,15 +4133,15 @@ fieldset {
     width: 100%;
     background-size: 100% 100%;
     background-repeat: no-repeat; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        Image Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
+/************************************************************************/
+/************************************************************************/
 /*        ITEM SELECTOR Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
+/************************************************************************/
+/************************************************************************/
 /*        Label Media COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media only screen and (max-width: 450px) {
   /* phones */
   .large {
@@ -4022,35 +4164,38 @@ fieldset {
   .small-bold {
     font-size: 16px;
     font-weight: bold; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        MENU COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
+/************************************************************************/
+/************************************************************************/
 /*        NAVBAR Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media only screen and (max-width: 1024px) {
   .navbar-container {
     padding: 0px; }
     .navbar-container .navbar-logo-unit {
       padding-left: 40px; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        ROW-COLUMN MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
+/************************************************************************/
+/************************************************************************/
 /*        SIDENAV MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
+/************************************************************************/
+/************************************************************************/
 /*        Window Treenode Media Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
+/************************************************************************/
+/************************************************************************/
 /*        Window LAYOUT Media Q COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media screen and (max-width: 600px) {
   .footer-right-align {
     padding-right: 15px; } }
-/*----------------------------------------------------------------------*/
-/*        BORDER LAYOUT Media Q COMPONENT         */
-/*----------------------------------------------------------------------*/
+/****************************************************************************
+                    Media Query for width - 767
+*****************************************************************************/
+/************************************************************************/
+/*        BORDER LAYOUT Media Q COMPONENT                                */
+/************************************************************************/
 @media only screen and (max-width: 767px) {
   .borderlayout-container-N-E-C-W-S {
     grid-template-areas: 'north north north north north north' 'east east east east east east ' 'center center center center center center' 'west west west west west west' 'south south south south south south'; }
@@ -4072,9 +4217,9 @@ fieldset {
   .borderlayout-container-C-W-S {
     display: grid;
     grid-template-areas: 'center center center center center center' 'west west west west west west' 'south south south south south south'; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        Card MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media screen and (max-width: 768px) {
   .card-header {
     display: flex;
@@ -4086,15 +4231,15 @@ fieldset {
     font-weight: 300;
     text-transform: capitalize;
     overflow: auto; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        DATATABLE MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
+/************************************************************************/
+/************************************************************************/
 /*        Datetime Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
+/************************************************************************/
+/************************************************************************/
 /*        Dialogue Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media screen and (max-width: 768px) {
   .dialogue-sm {
     flex-direction: column;
@@ -4106,9 +4251,9 @@ fieldset {
     /* Location of the box */
     width: 80%;
     padding-left: 10%; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        Enterprise Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media screen and (min-width: 1400px) {
   .maincontent > div {
     height: 32vw;
@@ -4126,15 +4271,15 @@ fieldset {
 
   .maincontent > div > table {
     height: 50px; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        Image Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media only screen and (max-width: 767px) {
   .image-title {
     display: -webkit-inline-box; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        ITEM SELECTOR Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media only screen and (max-width: 767px) {
   .flex-col-45pt, .flex-col-10pt {
     max-width: 100%; }
@@ -4183,12 +4328,12 @@ fieldset {
   .small-bold {
     font-size: 18px;
     font-weight: bold; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        Label Media COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
+/************************************************************************/
+/************************************************************************/
 /*        MENU COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media only screen and (max-width: 959px) {
   .menu-content .menu-content-cols .col-menu-nodes {
     width: 100%; }
@@ -4215,9 +4360,9 @@ fieldset {
       display: none; }
     .menubar .menuheader .menulink:hover a {
       color: rgba(255, 255, 255, 0.7); } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        NAVBAR Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media only screen and (max-width: 1024px) {
   .navbar-container {
     padding: 0px; }
@@ -4254,9 +4399,9 @@ fieldset {
       padding: 0px; }
       .nav-bar .nav-item > * {
         padding: 10px; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        ROW-COLUMN MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media only screen and (max-width: 767px) {
   .flex-row {
     flex-direction: column; }
@@ -4268,18 +4413,21 @@ fieldset {
   .flex-col-2pt5, .flex-col-9pt5 {
     flex: 0 0 100%;
     max-width: 100%; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        SIDENAV MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
+/************************************************************************/
+/************************************************************************/
 /*        Window Treenode Media Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
+/************************************************************************/
+/************************************************************************/
 /*        Window LAYOUT Media Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
+/************************************************************************/
+/****************************************************************************
+                    Media Query for width - 1024
+*****************************************************************************/
+/************************************************************************/
 /*        BORDER LAYOUT Media Q COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media only screen and (max-width: 767px) {
   .borderlayout-container-N-E-C-W-S {
     grid-template-areas: 'north north north north north north' 'east east east east east east ' 'center center center center center center' 'west west west west west west' 'south south south south south south'; }
@@ -4301,9 +4449,9 @@ fieldset {
   .borderlayout-container-C-W-S {
     display: grid;
     grid-template-areas: 'center center center center center center' 'west west west west west west' 'south south south south south south'; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        Card MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media screen and (max-width: 768px) {
   .card-header {
     display: flex;
@@ -4315,15 +4463,15 @@ fieldset {
     font-weight: 300;
     text-transform: capitalize;
     overflow: auto; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        DATATABLE MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
+/************************************************************************/
+/************************************************************************/
 /*        Datetime Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
+/************************************************************************/
+/************************************************************************/
 /*        Dialogue Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media screen and (max-width: 768px) {
   .dialogue-sm {
     flex-direction: column;
@@ -4335,9 +4483,9 @@ fieldset {
     /* Location of the box */
     width: 80%;
     padding-left: 10%; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        Enterprise Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media screen and (min-width: 1400px) {
   .maincontent > div {
     height: 32vw;
@@ -4355,15 +4503,15 @@ fieldset {
 
   .maincontent > div > table {
     height: 50px; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        Image Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media only screen and (max-width: 767px) {
   .image-title {
     display: -webkit-inline-box; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        ITEM SELECTOR Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media only screen and (max-width: 767px) {
   .flex-col-45pt, .flex-col-10pt {
     max-width: 100%; }
@@ -4412,12 +4560,12 @@ fieldset {
   .small-bold {
     font-size: 18px;
     font-weight: bold; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        Label Media COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
+/************************************************************************/
+/************************************************************************/
 /*        MENU COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media only screen and (max-width: 959px) {
   .menu-content .menu-content-cols .col-menu-nodes {
     width: 100%; }
@@ -4444,9 +4592,9 @@ fieldset {
       display: none; }
     .menubar .menuheader .menulink:hover a {
       color: rgba(255, 255, 255, 0.7); } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        NAVBAR Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media only screen and (max-width: 1024px) {
   .navbar-container {
     padding: 0px; }
@@ -4483,9 +4631,9 @@ fieldset {
       padding: 0px; }
       .nav-bar .nav-item > * {
         padding: 10px; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        ROW-COLUMN MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media only screen and (max-width: 767px) {
   .flex-row {
     flex-direction: column; }
@@ -4497,18 +4645,21 @@ fieldset {
   .flex-col-2pt5, .flex-col-9pt5 {
     flex: 0 0 100%;
     max-width: 100%; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        SIDENAV MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
+/************************************************************************/
+/************************************************************************/
 /*        Window Treenode Media Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
+/************************************************************************/
+/************************************************************************/
 /*        Window LAYOUT Media Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
+/************************************************************************/
+/****************************************************************************
+                    Media Query for width - 1440
+*****************************************************************************/
+/************************************************************************/
 /*        BORDER LAYOUT Media Q COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media only screen and (max-width: 767px) {
   .borderlayout-container-N-E-C-W-S {
     grid-template-areas: 'north north north north north north' 'east east east east east east ' 'center center center center center center' 'west west west west west west' 'south south south south south south'; }
@@ -4530,9 +4681,9 @@ fieldset {
   .borderlayout-container-C-W-S {
     display: grid;
     grid-template-areas: 'center center center center center center' 'west west west west west west' 'south south south south south south'; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        Card MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media screen and (max-width: 768px) {
   .card-header {
     display: flex;
@@ -4544,15 +4695,15 @@ fieldset {
     font-weight: 300;
     text-transform: capitalize;
     overflow: auto; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        DATATABLE MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
+/************************************************************************/
+/************************************************************************/
 /*        Datetime Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
+/************************************************************************/
+/************************************************************************/
 /*        Dialogue Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media screen and (max-width: 768px) {
   .dialogue-sm {
     flex-direction: column;
@@ -4564,9 +4715,9 @@ fieldset {
     /* Location of the box */
     width: 80%;
     padding-left: 10%; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        Enterprise Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media screen and (min-width: 1400px) {
   .maincontent > div {
     height: 32vw;
@@ -4584,15 +4735,15 @@ fieldset {
 
   .maincontent > div > table {
     height: 50px; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        Image Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media only screen and (max-width: 767px) {
   .image-title {
     display: -webkit-inline-box; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        ITEM SELECTOR Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media only screen and (max-width: 767px) {
   .flex-col-45pt, .flex-col-10pt {
     max-width: 100%; }
@@ -4641,12 +4792,12 @@ fieldset {
   .small-bold {
     font-size: 18px;
     font-weight: bold; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        Label Media COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
+/************************************************************************/
+/************************************************************************/
 /*        MENU COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media only screen and (max-width: 959px) {
   .menu-content .menu-content-cols .col-menu-nodes {
     width: 100%; }
@@ -4673,9 +4824,9 @@ fieldset {
       display: none; }
     .menubar .menuheader .menulink:hover a {
       color: rgba(255, 255, 255, 0.7); } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        NAVBAR Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media only screen and (max-width: 1024px) {
   .navbar-container {
     padding: 0px; }
@@ -4712,9 +4863,9 @@ fieldset {
       padding: 0px; }
       .nav-bar .nav-item > * {
         padding: 10px; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        ROW-COLUMN MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media only screen and (max-width: 767px) {
   .flex-row {
     flex-direction: column; }
@@ -4726,18 +4877,21 @@ fieldset {
   .flex-col-2pt5, .flex-col-9pt5 {
     flex: 0 0 100%;
     max-width: 100%; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        SIDENAV MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
+/************************************************************************/
+/************************************************************************/
 /*        Window Treenode Media Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
+/************************************************************************/
+/************************************************************************/
 /*        Window LAYOUT Media Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
+/************************************************************************/
+/****************************************************************************
+                    Media Query for width - 1440
+*****************************************************************************/
+/************************************************************************/
 /*        BORDER LAYOUT Media Q COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media only screen and (max-width: 767px) {
   .borderlayout-container-N-E-C-W-S {
     grid-template-areas: 'north north north north north north' 'east east east east east east ' 'center center center center center center' 'west west west west west west' 'south south south south south south'; }
@@ -4759,9 +4913,9 @@ fieldset {
   .borderlayout-container-C-W-S {
     display: grid;
     grid-template-areas: 'center center center center center center' 'west west west west west west' 'south south south south south south'; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        Card MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media screen and (max-width: 768px) {
   .card-header {
     display: flex;
@@ -4773,15 +4927,15 @@ fieldset {
     font-weight: 300;
     text-transform: capitalize;
     overflow: auto; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        DATATABLE MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
+/************************************************************************/
+/************************************************************************/
 /*        Datetime Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
+/************************************************************************/
+/************************************************************************/
 /*        Dialogue Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media screen and (max-width: 768px) {
   .dialogue-sm {
     flex-direction: column;
@@ -4793,9 +4947,9 @@ fieldset {
     /* Location of the box */
     width: 80%;
     padding-left: 10%; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        Enterprise Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media screen and (min-width: 1400px) {
   .maincontent > div {
     height: 32vw;
@@ -4813,15 +4967,15 @@ fieldset {
 
   .maincontent > div > table {
     height: 50px; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        Image Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media only screen and (max-width: 767px) {
   .image-title {
     display: -webkit-inline-box; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        ITEM SELECTOR Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media only screen and (max-width: 767px) {
   .flex-col-45pt, .flex-col-10pt {
     max-width: 100%; }
@@ -4870,12 +5024,12 @@ fieldset {
   .small-bold {
     font-size: 18px;
     font-weight: bold; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        Label Media COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
+/************************************************************************/
+/************************************************************************/
 /*        MENU COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media only screen and (max-width: 959px) {
   .menu-content .menu-content-cols .col-menu-nodes {
     width: 100%; }
@@ -4902,9 +5056,9 @@ fieldset {
       display: none; }
     .menubar .menuheader .menulink:hover a {
       color: rgba(255, 255, 255, 0.7); } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        NAVBAR Media-Q COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media only screen and (max-width: 1024px) {
   .navbar-container {
     padding: 0px; }
@@ -4941,9 +5095,9 @@ fieldset {
       padding: 0px; }
       .nav-bar .nav-item > * {
         padding: 10px; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        ROW-COLUMN MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 @media only screen and (max-width: 767px) {
   .flex-row {
     flex-direction: column; }
@@ -4955,15 +5109,15 @@ fieldset {
   .flex-col-2pt5, .flex-col-9pt5 {
     flex: 0 0 100%;
     max-width: 100%; } }
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*        SIDENAV MediaQ COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
+/************************************************************************/
+/************************************************************************/
 /*        Window Treenode Media Q COMPONENT         */
-/*----------------------------------------------------------------------*/
-/*----------------------------------------------------------------------*/
+/************************************************************************/
+/************************************************************************/
 /*        Window LAYOUT Media Q COMPONENT         */
-/*----------------------------------------------------------------------*/
+/************************************************************************/
 /*----------------------------------------------------------------------*/
 /*        Matrix Ultra Structure        */
 /*----------------------------------------------------------------------*/
