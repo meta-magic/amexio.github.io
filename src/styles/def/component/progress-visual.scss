@@ -1,62 +1,40 @@
 
 .progress {
-  //height: 20px; /* Can be anything */
   position: relative;
   background:$progressBGColor ;
-}
-
-.progress > span {
-  // text-align: center;
-  // display: block;
-  // height: 100%;
-  background-color: $progressBGColor;
-  // position: relative;
-  // overflow: hidden;
-}
-
-.progress > span:after, .animate > span > span {
-  // content: "";
-  // position: absolute;
-  // top: 0;
-  // left: 0;
-  // bottom: 0;
-  // right: 0;
-  // z-index: 1;
-  // overflow: hidden;
-}
-
-.animate > span:after {
-  //display: none;
-}
-
-@-webkit-keyframes move {
-  0% {
-  //  background-position: 0 0;
-  }
-  100% {
-  //  background-position: 50px 50px;
-  }
-}
-
-.success > span {
-  background-color: $progressBGSuccess; /* Add Varaibles here */
-}
-
-.warning > span {
-  background-color: $progressBGWarning;
-}
-
-.danger > span {
-  background-color: $progressBGDanger;
-}
 
 
-.red > span {
-  background-color: $progressBGDangerImg1;
+    .success{
+      background-color: $progressBGSuccess; 
+    }
 
-}
+    .warning {
+      background-color: $progressBGWarning;
+    }
 
-.nostripes > span > span, .nostripes > span:after {
-  //-webkit-animation: none;
-  background-image: $progressBGImgNoStripes;
+    .danger{
+      background-color: $progressBGDanger;
+    }
+
+
+    .red{
+      background-color: $progressBGDangerImg1;
+    }
+
+    .stripped  {
+        background-size: 30px 30px;
+        background-image: linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, 
+                                          transparent 25%,
+                                          transparent 50%,
+                                        rgba(255, 255, 255, .15) 50%, 
+                                        rgba(255, 255, 255, .15) 75%,transparent 75%, transparent); 
+        animation: progressbar-animate-stripes 3s linear infinite; 
+      }
+      
+      @keyframes progressbar-animate-stripes {
+         0% {background-position: 0 0;} 
+         100% {background-position: 60px 0;}
+      }
+
+
 }
