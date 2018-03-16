@@ -30,18 +30,7 @@ $error : $dangerBGColor;
 $focusColor : #5cb3fd;
 
 $borderColorFocus: $focusColor;
-$amexioColorRedLight : #ff7f50;
-$amexioColorRedDark : #dc143c;
-$amexioColorGreenLight : #00ff00;
-$amexioColorGreenDark : #2e8b57;
-$amexioColorPurpleLight : #ff00ff;
-$amexioColorPurpleDark : #8b008b;
-$amexioColorBlueLight : #00bfff;
-$amexioColorBlueDark : #00008b;
-$amexioColorBrownLight : #f4a460;
-$amexioColorBrownDark : #800000;
-$amexioColorYellowLight : #ffd700;
-$amexioColorYellowDark : #ff9900;
+
 /****************************************************************************
                     Common CSS Helper Classes
 *****************************************************************************/
@@ -282,3 +271,6 @@ image using the content attribute.
 .row-disabled{
   opacity: 0.55;
 }
+
+
+@import "amexio.colors.scss";
