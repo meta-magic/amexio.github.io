@@ -11,7 +11,7 @@ import {
 @Component({
   selector: 'amexio-datapoints', template: `
 
-    <div class="datapoints">
+    <div class="datapoints" [ngClass]="amexiocolors">
       <table width="100%" [style.background-color]="backgroundcolor" [style.color]="fontcolor">
         <tr *ngIf="north">
           <td [attr.colspan]="colspan">
@@ -61,6 +61,8 @@ export class DataPointsComponent implements OnInit {
 
   @Input('font-color') fontcolor: string;
 
+  @Input('amexio-colors') amexiocolors: string = "";
+  
   colspan: number;
 
 
