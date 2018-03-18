@@ -88,7 +88,7 @@
 - __Pure TypeScript:__ Amexio is a pure Typescript library with 0 Dependencies & Angular 5 Support.
 - __Server Rending Support:__ Components support & optimized for server side rendering.
 - __Highly Customizable Styling:__ Lot of customization can be done easily using the Amexio SCSS files.
-- __90+ High Grade Components:__ We make sure you're nothing short of while building your app
+- __100+ High Grade Components:__ We make sure you're nothing short of while building your app
 - __Modular Support:__ Load Only what you want, amexio is Modular.
 
 
