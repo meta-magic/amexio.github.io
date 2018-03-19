@@ -21,7 +21,8 @@
 #  the terms of the Apache 2 License version 2.0 as published by the Apache
 #  Software Foundation.
 
-
+cp mda/search-icon.png css/;
+cp mda/slider.png css/;
 
 sass mda/at-md-army-olive.scss:css/at-md-army-olive.css;
 sass mda/at-md-ash-stone-black.scss:css/at-md-ash-stone-black.css;
