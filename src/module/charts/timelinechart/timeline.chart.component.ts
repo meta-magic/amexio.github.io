@@ -20,7 +20,7 @@ import { ElementRef } from "@angular/core";
 declare var google: any;
 @Component({
   selector: 'amexio-chart-timeline', template: `
-    <div #timelinechart
+    <div *ngIf="showChart" #timelinechart
          [style.width]="width"
     >
       <div *ngIf="!hasLoaded" class="lmask">
@@ -141,7 +141,23 @@ export class TimeLineChartComponent implements AfterContentInit, OnInit {
 
   @Input() width: string;
 
-  @Input() data: any;
+
+  showChart:boolean;
+  _data:any;
+
+  get data():any{
+    return this._data;
+  }
+
+  @Input('data')
+  set data(data:any){
+    if(data){
+      this._data=data;
+      this.showChart=true;
+    }else{
+      this.showChart=false;
+    }
+  }
 
   hasLoaded: boolean;
 
@@ -171,10 +187,11 @@ export class TimeLineChartComponent implements AfterContentInit, OnInit {
   }
 
   drawChart() {
-    if(this.data){
+
+    if(this.data && this.showChart){
       this.chart = new google.visualization.Timeline(this.timelinechart.nativeElement);
       this.hasLoaded = true;
-      this.chart.draw(this.createTable(this.data));
+      this.chart.draw(this.createTable(this._data));
       google.visualization.events.addListener(this.chart, 'click', this.onClick);
     }
 

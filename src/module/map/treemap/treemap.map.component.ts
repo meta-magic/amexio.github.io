@@ -10,7 +10,7 @@ import { ElementRef } from '@angular/core';
 declare var google: any;
 @Component({
   selector: 'amexio-map-treemap', template: `
-    <div #treemapmap
+    <div *ngIf="showChart" #treemapmap
          [style.width]="width"
          [style.height]="height" (window:resize)="onResize($event)"
     >
@@ -137,8 +137,22 @@ export class TreeMapComponent implements AfterContentInit, OnInit {
 
   @Input() height: string;
 
-  @Input() data: any;
+  showChart:boolean;
+  _data:any;
 
+  get data():any{
+    return this._data;
+  }
+
+  @Input('data')
+  set data(data:any){
+    if(data){
+      this._data=data;
+      this.showChart=true;
+    }else{
+      this.showChart=false;
+    }
+  }
   @Input('min-color') mincolor: string;
 
   @Input('mid-color') midcolor: string;
@@ -164,30 +178,33 @@ export class TreeMapComponent implements AfterContentInit, OnInit {
   }
 
   drawChart() {
-    this.treemapData = google.visualization.arrayToDataTable(this.data);
-    this.options = {
-      title: this.mapTitleComponent ? this.mapTitleComponent.title : null,
-      titleTextStyle: this.mapTitleComponent ? {
-        color: this.mapTitleComponent.color ? this.mapTitleComponent.color : null,
-        fontName: this.mapTitleComponent.fontname ? this.mapTitleComponent.fontname : null,
-        fontsize: this.mapTitleComponent.fontsize ? this.mapTitleComponent.fontsize : null,
-        bold: this.mapTitleComponent.bold ? this.mapTitleComponent.bold : null,
-        italic: this.mapTitleComponent.italic ? this.mapTitleComponent.italic : null
-      } : null,
-      mincolor: this.mincolor ? this.mincolor : null,
-      midcolor: this.midcolor ? this.midcolor : null,
-      maxcolor: this.maxcolor ? this.maxcolor : null,
-      headerHeight: 15,
-      fontcolor: 'black',
-      showscale: this.showscale ? this.showscale : false,
-      maxpostdepth: this.maxpostdepth ? this.maxpostdepth : 1
-    };
-    if(this.treemapData){
-      this.chart = new google.visualization.TreeMap(this.treemapmap.nativeElement);
-      this.hasLoaded = true;
-      this.chart.draw(this.treemapData, this.options);
-      google.visualization.events.addListener(this.chart, 'click', this.click);
+    if(this.showChart){
+      this.treemapData = google.visualization.arrayToDataTable(this._data);
+      this.options = {
+        title: this.mapTitleComponent ? this.mapTitleComponent.title : null,
+        titleTextStyle: this.mapTitleComponent ? {
+          color: this.mapTitleComponent.color ? this.mapTitleComponent.color : null,
+          fontName: this.mapTitleComponent.fontname ? this.mapTitleComponent.fontname : null,
+          fontsize: this.mapTitleComponent.fontsize ? this.mapTitleComponent.fontsize : null,
+          bold: this.mapTitleComponent.bold ? this.mapTitleComponent.bold : null,
+          italic: this.mapTitleComponent.italic ? this.mapTitleComponent.italic : null
+        } : null,
+        mincolor: this.mincolor ? this.mincolor : null,
+        midcolor: this.midcolor ? this.midcolor : null,
+        maxcolor: this.maxcolor ? this.maxcolor : null,
+        headerHeight: 15,
+        fontcolor: 'black',
+        showscale: this.showscale ? this.showscale : false,
+        maxpostdepth: this.maxpostdepth ? this.maxpostdepth : 1
+      };
+      if(this.treemapData){
+        this.chart = new google.visualization.TreeMap(this.treemapmap.nativeElement);
+        this.hasLoaded = true;
+        this.chart.draw(this.treemapData, this.options);
+        google.visualization.events.addListener(this.chart, 'click', this.click);
+      }
     }
+
 
   }
 

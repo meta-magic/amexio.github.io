@@ -21,7 +21,7 @@ declare var google: any;
 @Component({
   selector: 'amexio-chart-pie', template: `
 
-        <div #piechart
+        <div *ngIf="showChart" #piechart
              [style.width]="width"
              [style.height]="height"
              (window:resize)="onResize($event)">
@@ -149,7 +149,23 @@ export class PieChartComponent implements AfterContentInit,OnInit {
   //this input for hole inside pie chart
   @Input() piehole: number;
 
-  @Input() data: any;
+
+  showChart:boolean;
+  _data:any;
+
+  get data():any{
+    return this._data;
+  }
+
+  @Input('data')
+  set data(data:any){
+    if(data){
+      this._data=data;
+      this.showChart=true;
+    }else{
+      this.showChart=false;
+    }
+  }
 
   //this input for angle rotation start
   @Input('start-angle') startangle: number;
@@ -184,45 +200,48 @@ export class PieChartComponent implements AfterContentInit,OnInit {
   }
 
   drawChart() {
-    this.pieData = google.visualization.arrayToDataTable(this.data);
-    this.options = {
-      title: this.chartTitleComponent? this.chartTitleComponent.title : null,
-      titleTextStyle: this.chartTitleComponent?{
-        color: this.chartTitleComponent.color ? this.chartTitleComponent.color : null,
-        fontName: this.chartTitleComponent.fontname ? this.chartTitleComponent.fontname : null,
-        fontsize: this.chartTitleComponent.fontsize ? this.chartTitleComponent.fontsize : null,
-        bold: this.chartTitleComponent.bold ? this.chartTitleComponent.bold : null,
-        italic: this.chartTitleComponent.italic ? this.chartTitleComponent.italic : null
-      }:null,
-      is3D: this.is3d,
-      piehole: this.piehole,
-      startangle: this.startangle,
-      backgroundcolor: this.backgroundcolor,
-      legend: this.chartLengendComponent ? {
-        position: this.chartLengendComponent.position ? this.chartLengendComponent.position : null, //this work only in chart position is top
-        maxLines: this.chartLengendComponent.maxlines ? this.chartLengendComponent.maxlines : null,
-        textStyle: {
-          color: this.chartLengendComponent.color ? this.chartLengendComponent.color : null,
-          fontsize: this.chartLengendComponent.fontsize ? this.chartLengendComponent.fontsize : null,
-          fontName: this.chartLengendComponent.fontname ? this.chartLengendComponent.fontname : null,
-          bold: this.chartLengendComponent.bold ? this.chartLengendComponent.bold : null,
-          alignment: this.chartLengendComponent.alignment ? this.chartLengendComponent.alignment : null
-        }
-      } : 'none',
-      chartArea: this.chartAreaComponent ? {
-        backgroundcolor: this.chartAreaComponent.chartbackgroundcolor ? this.chartAreaComponent.chartbackgroundcolor : null,
-        left: this.chartAreaComponent.leftposition ? this.chartAreaComponent.leftposition : null,
-        top: this.chartAreaComponent.topposition ? this.chartAreaComponent.topposition : null,
-        height: this.chartAreaComponent.chartheight ? this.chartAreaComponent.chartheight : null,
-        width: this.chartAreaComponent.chartwidth ? this.chartAreaComponent.chartwidth : null
-      } : null,
-    };
-    if(this.pieData){
-      this.chart = new google.visualization.PieChart(this.piechart.nativeElement);
-      this.hasLoaded=true;
-      this.chart.draw(this.pieData, this.options);
-      google.visualization.events.addListener(this.chart, 'click', this.onClick);
+    if(this.showChart){
+      this.pieData = google.visualization.arrayToDataTable(this._data);
+      this.options = {
+        title: this.chartTitleComponent? this.chartTitleComponent.title : null,
+        titleTextStyle: this.chartTitleComponent?{
+          color: this.chartTitleComponent.color ? this.chartTitleComponent.color : null,
+          fontName: this.chartTitleComponent.fontname ? this.chartTitleComponent.fontname : null,
+          fontsize: this.chartTitleComponent.fontsize ? this.chartTitleComponent.fontsize : null,
+          bold: this.chartTitleComponent.bold ? this.chartTitleComponent.bold : null,
+          italic: this.chartTitleComponent.italic ? this.chartTitleComponent.italic : null
+        }:null,
+        is3D: this.is3d,
+        piehole: this.piehole,
+        startangle: this.startangle,
+        backgroundcolor: this.backgroundcolor,
+        legend: this.chartLengendComponent ? {
+          position: this.chartLengendComponent.position ? this.chartLengendComponent.position : null, //this work only in chart position is top
+          maxLines: this.chartLengendComponent.maxlines ? this.chartLengendComponent.maxlines : null,
+          textStyle: {
+            color: this.chartLengendComponent.color ? this.chartLengendComponent.color : null,
+            fontsize: this.chartLengendComponent.fontsize ? this.chartLengendComponent.fontsize : null,
+            fontName: this.chartLengendComponent.fontname ? this.chartLengendComponent.fontname : null,
+            bold: this.chartLengendComponent.bold ? this.chartLengendComponent.bold : null,
+            alignment: this.chartLengendComponent.alignment ? this.chartLengendComponent.alignment : null
+          }
+        } : 'none',
+        chartArea: this.chartAreaComponent ? {
+          backgroundcolor: this.chartAreaComponent.chartbackgroundcolor ? this.chartAreaComponent.chartbackgroundcolor : null,
+          left: this.chartAreaComponent.leftposition ? this.chartAreaComponent.leftposition : null,
+          top: this.chartAreaComponent.topposition ? this.chartAreaComponent.topposition : null,
+          height: this.chartAreaComponent.chartheight ? this.chartAreaComponent.chartheight : null,
+          width: this.chartAreaComponent.chartwidth ? this.chartAreaComponent.chartwidth : null
+        } : null,
+      };
+      if(this.pieData){
+        this.chart = new google.visualization.PieChart(this.piechart.nativeElement);
+        this.hasLoaded=true;
+        this.chart.draw(this.pieData, this.options);
+        google.visualization.events.addListener(this.chart, 'click', this.onClick);
+      }
     }
+
 
   }
 

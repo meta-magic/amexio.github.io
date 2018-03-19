@@ -9,7 +9,7 @@ import { ElementRef } from '@angular/core';
 declare var google: any;
 @Component({
   selector: 'amexio-map-geo-chart', template: `
-    <div #geochart
+    <div *ngIf="showChart" #geochart
          [style.width]="width"
          [style.height]="height"
     >
@@ -137,7 +137,23 @@ export class GeoChartComponent implements AfterContentInit, OnInit {
 
   @Input() height: string;
 
-  @Input() data: any;
+
+  showChart:boolean;
+  _data:any;
+
+  get data():any{
+    return this._data;
+  }
+
+  @Input('data')
+  set data(data:any){
+    if(data){
+      this._data=data;
+      this.showChart=true;
+    }else{
+      this.showChart=false;
+    }
+  }
 
   @Input('country-name') countryname: boolean = false;
 
@@ -161,26 +177,29 @@ export class GeoChartComponent implements AfterContentInit, OnInit {
   }
 
   drawChart() {
-    this.geomapData = google.visualization.arrayToDataTable(this.data);
-    this.options = {
-      displayMode: this.countryname ? 'text' : null,
-      region: this.regioncode ? this.regioncode : null,
-      backgroundcolor: this.backgroundcolor ? this.backgroundcolor : null,
-      unusedregioncolor: this.unusedregioncolor ? this.unusedregioncolor : null,
-      chartArea: this.chartAreaComponent ? {
-        backgroundcolor: this.chartAreaComponent.chartbackgroundcolor ? this.chartAreaComponent.chartbackgroundcolor : null,
-        left: this.chartAreaComponent.leftposition ? this.chartAreaComponent.leftposition : null,
-        top: this.chartAreaComponent.topposition ? this.chartAreaComponent.topposition : null,
-        height: this.chartAreaComponent.chartheight ? this.chartAreaComponent.chartheight : null,
-        width: this.chartAreaComponent.chartwidth ? this.chartAreaComponent.chartwidth : null
-      } : null,
-    };
-    if(this.geomapData){
-      this.chart = new google.visualization.GeoChart(this.geochart.nativeElement);
-      this.hasLoaded = true;
-      this.chart.draw(this.geomapData, this.options);
-      google.visualization.events.addListener(this.chart, 'click', this.click);
+    if(this.showChart){
+      this.geomapData = google.visualization.arrayToDataTable(this._data);
+      this.options = {
+        displayMode: this.countryname ? 'text' : null,
+        region: this.regioncode ? this.regioncode : null,
+        backgroundcolor: this.backgroundcolor ? this.backgroundcolor : null,
+        unusedregioncolor: this.unusedregioncolor ? this.unusedregioncolor : null,
+        chartArea: this.chartAreaComponent ? {
+          backgroundcolor: this.chartAreaComponent.chartbackgroundcolor ? this.chartAreaComponent.chartbackgroundcolor : null,
+          left: this.chartAreaComponent.leftposition ? this.chartAreaComponent.leftposition : null,
+          top: this.chartAreaComponent.topposition ? this.chartAreaComponent.topposition : null,
+          height: this.chartAreaComponent.chartheight ? this.chartAreaComponent.chartheight : null,
+          width: this.chartAreaComponent.chartwidth ? this.chartAreaComponent.chartwidth : null
+        } : null,
+      };
+      if(this.geomapData){
+        this.chart = new google.visualization.GeoChart(this.geochart.nativeElement);
+        this.hasLoaded = true;
+        this.chart.draw(this.geomapData, this.options);
+        google.visualization.events.addListener(this.chart, 'click', this.click);
+      }
     }
+
 
   }
 

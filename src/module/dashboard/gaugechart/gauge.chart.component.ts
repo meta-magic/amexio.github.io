@@ -18,7 +18,7 @@ import { ElementRef } from '@angular/core';
 declare var google: any;
 @Component({
   selector: 'amexio-dashboard-gauge', template: `
-    <div #gaugedashboard
+    <div *ngIf="showChart" #gaugedashboard
          [style.width]="width"
          [style.height]="height" (window:resize)="onResize($event)">
       <div *ngIf="!hasLoaded" class="lmask">
@@ -147,7 +147,23 @@ export class GaugeChartComponent implements AfterContentInit, OnInit {
 
   @Input() height: string;
 
-  @Input() data: any;
+
+  showChart:boolean;
+  _data:any;
+
+  get data():any{
+    return this._data;
+  }
+
+  @Input('data')
+  set data(data:any){
+    if(data){
+      this._data=data;
+      this.showChart=true;
+    }else{
+      this.showChart=false;
+    }
+  }
 
   @Input('red-color-from') redcolorfrom: number;
 
@@ -174,21 +190,24 @@ export class GaugeChartComponent implements AfterContentInit, OnInit {
   }
 
   drawChart() {
-    this.gaugeData = google.visualization.arrayToDataTable(this.data);
-    this.options = {
-      width: this.width,
-      height: this.height,
-      redFrom: this.redcolorfrom,
-      redTo: this.redcolorto,
-      yellowFrom: this.yellowcolorfrom,
-      yellowTo: this.yellowcolorto,
-      scalevalue: this.scalevalue
-    };
-    if(this.gaugeData){
-      this.chart = new google.visualization.Gauge(this.gaugedashboard.nativeElement);
-      this.hasLoaded = true;
-      this.chart.draw(this.gaugeData, this.options);
+    if(this.showChart){
+      this.gaugeData = google.visualization.arrayToDataTable(this._data);
+      this.options = {
+        width: this.width,
+        height: this.height,
+        redFrom: this.redcolorfrom,
+        redTo: this.redcolorto,
+        yellowFrom: this.yellowcolorfrom,
+        yellowTo: this.yellowcolorto,
+        scalevalue: this.scalevalue
+      };
+      if(this.gaugeData){
+        this.chart = new google.visualization.Gauge(this.gaugedashboard.nativeElement);
+        this.hasLoaded = true;
+        this.chart.draw(this.gaugeData, this.options);
+      }
     }
+
 
   }
 

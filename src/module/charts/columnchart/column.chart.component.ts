@@ -20,7 +20,7 @@ import { ElementRef } from "@angular/core";
 declare var google: any;
 @Component({
   selector: 'amexio-chart-column', template: `
-    <div #columnchart
+    <div  *ngIf="showChart" #columnchart
          [style.width]="width"
          [style.height]="height"
          (window:resize)="onResize($event)">
@@ -147,7 +147,23 @@ export class ColumnChartComponent implements AfterContentInit {
 
   @Input() height: string;
 
-  @Input() data: any;
+
+  showChart:boolean;
+  _data:any;
+
+  get data():any{
+    return this._data;
+  }
+
+  @Input('data')
+  set data(data:any){
+    if(data){
+      this._data=data;
+      this.showChart=true;
+    }else{
+      this.showChart=false;
+    }
+  }
 
   //showing stack chart
   @Input() stacked: boolean = false;
@@ -182,41 +198,44 @@ export class ColumnChartComponent implements AfterContentInit {
   }
 
   drawChart() {
-    this.columnData = this.createTable(this.data);
-    this.options = {
-      title: this.chartTitleComponent ? this.chartTitleComponent.title : null,
-      titleTextStyle: this.chartTitleComponent ? {
-        color: this.chartTitleComponent.color ? this.chartTitleComponent.color : null,
-        fontName: this.chartTitleComponent.fontname ? this.chartTitleComponent.fontname : null,
-        fontsize: this.chartTitleComponent.fontsize ? this.chartTitleComponent.fontsize : null,
-        bold: this.chartTitleComponent.bold ? this.chartTitleComponent.bold : null,
-        italic: this.chartTitleComponent.italic ? this.chartTitleComponent.italic : null
-      } : null,
-      stacked: this.stacked,
-      backgroundcolor: this.backgroundcolor,
-      legend: this.chartLengendComponent ? {
-        position: this.chartLengendComponent.position ? this.chartLengendComponent.position : null, //this work only in chart position is top
-        maxLines: this.chartLengendComponent.maxlines ? this.chartLengendComponent.maxlines : null, textStyle: {
-          color: this.chartLengendComponent.color ? this.chartLengendComponent.color : null,
-          fontsize: this.chartLengendComponent.fontsize ? this.chartLengendComponent.fontsize : null,
-          fontName: this.chartLengendComponent.fontname ? this.chartLengendComponent.fontname : null,
-          bold: this.chartLengendComponent.bold ? this.chartLengendComponent.bold : null,
-          alignment: this.chartLengendComponent.alignment ? this.chartLengendComponent.alignment : null
-        }
-      } : 'none',
-      chartArea: this.chartAreaComponent ? {
-        backgroundcolor: this.chartAreaComponent.chartbackgroundcolor ? this.chartAreaComponent.chartbackgroundcolor : null,
-        left: this.chartAreaComponent.leftposition ? this.chartAreaComponent.leftposition : null,
-        top: this.chartAreaComponent.topposition ? this.chartAreaComponent.topposition : null,
-        height: this.chartAreaComponent.chartheight ? this.chartAreaComponent.chartheight : null,
-        width: this.chartAreaComponent.chartwidth ? this.chartAreaComponent.chartwidth : null
-      } : null,
-    };
-    if(this.columnData){
-      this.chart = new google.visualization.ColumnChart(this.columnchart.nativeElement);
-      this.hasLoaded = true;
-      this.chart.draw(this.columnData, this.options);
-      google.visualization.events.addListener(this.chart, 'click', this.onClick);
+    if(this.showChart){
+      this.columnData = this.createTable(this._data);
+      this.options = {
+        title: this.chartTitleComponent ? this.chartTitleComponent.title : null,
+        titleTextStyle: this.chartTitleComponent ? {
+          color: this.chartTitleComponent.color ? this.chartTitleComponent.color : null,
+          fontName: this.chartTitleComponent.fontname ? this.chartTitleComponent.fontname : null,
+          fontsize: this.chartTitleComponent.fontsize ? this.chartTitleComponent.fontsize : null,
+          bold: this.chartTitleComponent.bold ? this.chartTitleComponent.bold : null,
+          italic: this.chartTitleComponent.italic ? this.chartTitleComponent.italic : null
+        } : null,
+        stacked: this.stacked,
+        backgroundcolor: this.backgroundcolor,
+        legend: this.chartLengendComponent ? {
+          position: this.chartLengendComponent.position ? this.chartLengendComponent.position : null, //this work only in chart position is top
+          maxLines: this.chartLengendComponent.maxlines ? this.chartLengendComponent.maxlines : null, textStyle: {
+            color: this.chartLengendComponent.color ? this.chartLengendComponent.color : null,
+            fontsize: this.chartLengendComponent.fontsize ? this.chartLengendComponent.fontsize : null,
+            fontName: this.chartLengendComponent.fontname ? this.chartLengendComponent.fontname : null,
+            bold: this.chartLengendComponent.bold ? this.chartLengendComponent.bold : null,
+            alignment: this.chartLengendComponent.alignment ? this.chartLengendComponent.alignment : null
+          }
+        } : 'none',
+        chartArea: this.chartAreaComponent ? {
+          backgroundcolor: this.chartAreaComponent.chartbackgroundcolor ? this.chartAreaComponent.chartbackgroundcolor : null,
+          left: this.chartAreaComponent.leftposition ? this.chartAreaComponent.leftposition : null,
+          top: this.chartAreaComponent.topposition ? this.chartAreaComponent.topposition : null,
+          height: this.chartAreaComponent.chartheight ? this.chartAreaComponent.chartheight : null,
+          width: this.chartAreaComponent.chartwidth ? this.chartAreaComponent.chartwidth : null
+        } : null,
+      };
+      if(this.columnData){
+        this.chart = new google.visualization.ColumnChart(this.columnchart.nativeElement);
+        this.hasLoaded = true;
+        this.chart.draw(this.columnData, this.options);
+        google.visualization.events.addListener(this.chart, 'click', this.onClick);
+      }
+
     }
 
   }

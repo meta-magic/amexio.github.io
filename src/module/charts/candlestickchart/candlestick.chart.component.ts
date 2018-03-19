@@ -21,7 +21,7 @@ import { ElementRef } from "@angular/core";
 declare var google: any;
 @Component({
   selector: 'amexio-chart-candlestick', template: `
-    <div #candlestick
+    <div *ngIf="showChart" #candlestick
          [style.width]="width"
          [style.height]="height" (window:resize)="onResize($event)">
       <div *ngIf="!hasLoaded" class="lmask">
@@ -148,7 +148,23 @@ export class CandlestickChartComponent implements AfterContentInit, OnInit {
 
   @Input() height: string;
 
-  @Input() data: any;
+
+  showChart:boolean;
+  _data:any;
+
+  get data():any{
+    return this._data;
+  }
+
+  @Input('data')
+  set data(data:any){
+    if(data){
+      this._data=data;
+      this.showChart=true;
+    }else{
+      this.showChart=false;
+    }
+  }
 
   @Input('background-color') backgroundcolor: string;
 
@@ -187,39 +203,42 @@ export class CandlestickChartComponent implements AfterContentInit, OnInit {
   }
 
   drawChart() {
-    this.candlestickData = google.visualization.arrayToDataTable(this.data, true);
-    this.options = {
-      title: this.chartTitleComponent ? this.chartTitleComponent.title : null,
-      titleTextStyle: this.chartTitleComponent ? {
-        color: this.chartTitleComponent.color ? this.chartTitleComponent.color : null,
-        fontName: this.chartTitleComponent.fontname ? this.chartTitleComponent.fontname : null,
-        fontsize: this.chartTitleComponent.fontsize ? this.chartTitleComponent.fontsize : null,
-        bold: this.chartTitleComponent.bold ? this.chartTitleComponent.bold : null,
-        italic: this.chartTitleComponent.italic ? this.chartTitleComponent.italic : null
-      } : null,
-      backgroundcolor: this.backgroundcolor,
-      legend: 'none',
-      chartArea: this.chartAreaComponent ? {
-        backgroundcolor: this.chartAreaComponent.chartbackgroundcolor ? this.chartAreaComponent.chartbackgroundcolor : null,
-        left: this.chartAreaComponent.leftposition ? this.chartAreaComponent.leftposition : null,
-        top: this.chartAreaComponent.topposition ? this.chartAreaComponent.topposition : null,
-        height: this.chartAreaComponent.chartheight ? this.chartAreaComponent.chartheight : null,
-        width: this.chartAreaComponent.chartwidth ? this.chartAreaComponent.chartwidth : null
-      } : null,
-      vAxis: this.verticalComponent ? {
-        title: this.verticalComponent.title ? this.verticalComponent.title : null,
-        titleTextStyle: {color: this.verticalComponent.titlecolor ? this.verticalComponent.titlecolor : null}
-      } : null,
-      hAxis: this.horizontalComponent ? {
-        title: this.horizontalComponent.title ? this.horizontalComponent.title : null,
-        titleTextStyle: {color: this.horizontalComponent.titlecolor ? this.horizontalComponent.titlecolor : null}
-      } : null
-    };
-    if(this.candlestickData){
-      this.chart = new google.visualization.CandlestickChart(this.candlestick.nativeElement);
-      this.hasLoaded = true;
-      this.chart.draw(this.candlestickData, this.options);
-      google.visualization.events.addListener(this.chart, 'click', this.click)
+    if(this.showChart){
+      this.candlestickData = google.visualization.arrayToDataTable(this._data, true);
+      this.options = {
+        title: this.chartTitleComponent ? this.chartTitleComponent.title : null,
+        titleTextStyle: this.chartTitleComponent ? {
+          color: this.chartTitleComponent.color ? this.chartTitleComponent.color : null,
+          fontName: this.chartTitleComponent.fontname ? this.chartTitleComponent.fontname : null,
+          fontsize: this.chartTitleComponent.fontsize ? this.chartTitleComponent.fontsize : null,
+          bold: this.chartTitleComponent.bold ? this.chartTitleComponent.bold : null,
+          italic: this.chartTitleComponent.italic ? this.chartTitleComponent.italic : null
+        } : null,
+        backgroundcolor: this.backgroundcolor,
+        legend: 'none',
+        chartArea: this.chartAreaComponent ? {
+          backgroundcolor: this.chartAreaComponent.chartbackgroundcolor ? this.chartAreaComponent.chartbackgroundcolor : null,
+          left: this.chartAreaComponent.leftposition ? this.chartAreaComponent.leftposition : null,
+          top: this.chartAreaComponent.topposition ? this.chartAreaComponent.topposition : null,
+          height: this.chartAreaComponent.chartheight ? this.chartAreaComponent.chartheight : null,
+          width: this.chartAreaComponent.chartwidth ? this.chartAreaComponent.chartwidth : null
+        } : null,
+        vAxis: this.verticalComponent ? {
+          title: this.verticalComponent.title ? this.verticalComponent.title : null,
+          titleTextStyle: {color: this.verticalComponent.titlecolor ? this.verticalComponent.titlecolor : null}
+        } : null,
+        hAxis: this.horizontalComponent ? {
+          title: this.horizontalComponent.title ? this.horizontalComponent.title : null,
+          titleTextStyle: {color: this.horizontalComponent.titlecolor ? this.horizontalComponent.titlecolor : null}
+        } : null
+      };
+      if(this.candlestickData){
+        this.chart = new google.visualization.CandlestickChart(this.candlestick.nativeElement);
+        this.hasLoaded = true;
+        this.chart.draw(this.candlestickData, this.options);
+        google.visualization.events.addListener(this.chart, 'click', this.click)
+      }
+
     }
 
   }
