@@ -55,7 +55,7 @@ mediumvioletred-hotpink,#C71585,#FF69B4
 firebrick-crimson,#B22222,#DC143C
 // Themes based on Countries
 z-flag-india,#ff8000,#008000
-z-flag-usa,#E0162B,#0052A5
+z-flag-uSA,#E0162B,#0052A5
 z-flag-france,#0052A5,#E0162B
 z-flag-italy,#008000,#0052A5
 z-flag-germany,#E0162B,#ffff00

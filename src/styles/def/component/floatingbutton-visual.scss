@@ -3,22 +3,22 @@
     background-color: #ffffff; 
 }
 
-.floatingbutton-primary{
+.floatingbutton-theme-color{
     background-color: $floatingPrimaryBgColor;
     color: $floatingPrimaryColor;
 }
 
-.floatingbutton-success{
+.floatingbutton-green{
     background-color: $floatingSuccessBgColor;
     color: $floatingSuccessColor;
 }
 
-.floatingbutton-danger{
+.floatingbutton-red{
     background-color: $floatingDangerBgColor;
     color: $floatingDangerColor;
 }
 
-.floatingbutton-warning{
+.floatingbutton-yellow{
     background-color: $floatingWarningBgColor;
     color: $floatingWarningColor;
 }
@@ -30,22 +30,22 @@
     color: $floatingDisabledColor;
 }
 
-.floatingbutton-primary-disabled{
+.floatingbutton-theme-color-disabled{
     background-color: lighten($floatingPrimaryBgColor,20);
     color: $floatingPrimaryColor;
 }
 
-.floatingbutton-success-disabled{
+.floatingbutton-green-disabled{
     background-color:  lighten($floatingSuccessBgColor,20);
     color: $floatingSuccessColor;
 }
 
-.floatingbutton-danger-disabled{
+.floatingbutton-red-disabled{
     background-color:  lighten($floatingDangerBgColor,20);
     color: $floatingDangerColor;
 }
 
-.floatingbutton-warning-disabled{
+.floatingbutton-yellow-disabled{
     background-color:  lighten($floatingWarningBgColor,20);
     color: $floatingWarningColor;
 }

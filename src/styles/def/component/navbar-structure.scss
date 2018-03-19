@@ -83,7 +83,7 @@
 
 .topnavmainbarinneritems{
     display: inline-block;
-    padding: 0px 10px;
+    padding: 0px 5px;
 }
 
 .topnavmainbarinneritems-mobile{
@@ -93,8 +93,7 @@
 
 .topnavmainbarinneritems .nav-dropdown {
     float: left;
-    overflow: hidden;
-    
+    overflow: hidden;    
 }
 
 .topnavmainbarinneritems-mobile .nav-dropdown {
@@ -107,6 +106,9 @@
     line-height: 50px;
 }
 
+.nav-dropdown .nav-dropbtn i{
+    padding-right: 5px;
+}
 
 .nav-dropdown .nav-dropbtn {
     padding: 0px 8px;
@@ -149,7 +151,6 @@
     }
 
     .nav-dropdown-content {
-
         display: block;
         //transform: scale(1);
     }

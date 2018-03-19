@@ -73,27 +73,27 @@ export class AmexioFloatingButtonComponent implements OnInit{
         this.positionclass = this.positionclass + " floatingbutton-square";
       }
 
-      if(this.type === "primary" || this.type === "theme-color"){
+      if(this.type === "theme-color"){
         if(this.disabled)
-            this.positionclass = this.positionclass  + " floatingbutton-primary-disabled"
+            this.positionclass = this.positionclass  + " floatingbutton-theme-color-disabled"
         else
-            this.positionclass = this.positionclass + " floatingbutton-primary";
+            this.positionclass = this.positionclass + " floatingbutton-theme-color";
       }
-      else if(this.type === "success" || this.type === "green"){
+      else if( this.type === "green"){
         if(this.disabled)
-            this.positionclass = this.positionclass  + " floatingbutton-success-disabled"
+            this.positionclass = this.positionclass  + " floatingbutton-green-disabled"
         else
-            this.positionclass = this.positionclass + " floatingbutton-success";
-      }else if(this.type === "danger" || this.type === "red"){
+            this.positionclass = this.positionclass + " floatingbutton-green";
+      }else if(this.type === "red"){
         if(this.disabled)
-            this.positionclass = this.positionclass  + " floatingbutton-danger-disabled"
+            this.positionclass = this.positionclass  + " floatingbutton-red-disabled"
         else
-            this.positionclass = this.positionclass + " floatingbutton-danger";
-      }else if(this.type === "warning" || this.type === "yellow"){
+            this.positionclass = this.positionclass + " floatingbutton-red";
+      }else if(this.type === "yellow"){
         if(this.disabled)
-            this.positionclass = this.positionclass  + " floatingbutton-warning-disabled"
+            this.positionclass = this.positionclass  + " floatingbutton-yellow-disabled"
         else
-            this.positionclass = this.positionclass + " floatingbutton-warning";
+            this.positionclass = this.positionclass + " floatingbutton-yellow";
       }else{
         if(this.disabled)
             this.positionclass = this.positionclass  + " floatingbutton-default-disabled"

@@ -23,25 +23,6 @@
 /** Initialze Theme variables ------------ */
 /** 
   Copyright (c) 2018 MetaMagic Global Inc, NJ, USA 
-
-  Permission is hereby granted, free of charge, to any person obtaining a copy
-  of this software and associated documentation files (the "Software"), to deal
-  in the Software without restriction, including without limitation the rights
-  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-  copies of the Software, and to permit persons to whom the Software is
-  furnished to do so, subject to the following conditions:
-
-  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-  THE SOFTWARE.
-
-  This program and the accompanying materials are licensed under
-  the terms of the Apache 2 License version 2.0 as published by the Apache
-  Software Foundation.
 */
 /**
   Theme Details -------------------------------------------------------- 
@@ -256,6 +237,121 @@ image using the content attribute.
 
 .row-disabled {
   opacity: 0.55; }
+
+/** Theme Additional Std Colors : Light and Dark shades --- */
+/** Theme Additional Std Font Colors : Light and Dark shades --- */
+/** CSS Class definitions for the Amexio Colors --- */
+/** Amexio Colors --- 
+   Coral: #ff7f50 rgb(255,127,80,0.0);
+   240a00: #240a00 rgb(36,10,0,0.0);
+*/
+.amexio-red-light {
+  background-color: #ff7f50;
+  color: #240a00; }
+
+/** Amexio Colors --- 
+   Crimson: #dc143c rgb(220,20,60,0.0);
+   fffafb: #fffafb rgb(255,250,251,0.0);
+*/
+.amexio-red {
+  background-color: #dc143c;
+  color: #fffafb; }
+
+/** Amexio Colors --- 
+   Lime: #00ff00 rgb(0,255,0,0.0);
+   002400: #002400 rgb(0,36,0,0.0);
+*/
+.amexio-green-light {
+  background-color: #00ff00;
+  color: #002400; }
+
+/** Amexio Colors --- 
+   SeaGreen: #2e8b57 rgb(46,139,87,0.0);
+   f0faf4: #f0faf4 rgb(240,250,244,0.0);
+*/
+.amexio-green {
+  background-color: #2e8b57;
+  color: #f0faf4; }
+
+/** Amexio Colors --- 
+   Magenta: #ff00ff rgb(255,0,255,0.0);
+   fffaff: #fffaff rgb(255,250,255,0.0);
+*/
+.amexio-purple-light {
+  background-color: #ff00ff;
+  color: #fffaff; }
+
+/** Amexio Colors --- 
+   DarkMagenta: #8b008b rgb(139,0,139,0.0);
+   fffaff: #fffaff rgb(255,250,255,0.0);
+*/
+.amexio-purple {
+  background-color: #8b008b;
+  color: #fffaff; }
+
+/** Amexio Colors --- 
+   DeepSkyBlue: #00bfff rgb(0,191,255,0.0);
+   f0fbff: #f0fbff rgb(240,251,255,0.0);
+*/
+.amexio-blue-light {
+  background-color: #00bfff;
+  color: #f0fbff; }
+
+/** Amexio Colors --- 
+   DarkBlue: #00008b rgb(0,0,139,0.0);
+   f5f5ff: #f5f5ff rgb(245,245,255,0.0);
+*/
+.amexio-blue {
+  background-color: #00008b;
+  color: #f5f5ff; }
+
+/** Amexio Colors --- 
+   SandyBrown: #f4a460 rgb(244,164,96,0.0);
+   211102: #211102 rgb(33,17,2,0.0);
+*/
+.amexio-brown-light {
+  background-color: #f4a460;
+  color: #211102; }
+
+/** Amexio Colors --- 
+   Maroon: #800000 rgb(128,0,0,0.0);
+   ffebeb: #ffebeb rgb(255,235,235,0.0);
+*/
+.amexio-brown {
+  background-color: #800000;
+  color: #ffebeb; }
+
+/** Amexio Colors --- 
+   Gold: #ffd700 rgb(255,215,0,0.0);
+   241e00: #241e00 rgb(36,30,0,0.0);
+*/
+.amexio-yellow-light {
+  background-color: #ffd700;
+  color: #241e00; }
+
+/** Amexio Colors --- 
+   ff9900: #ff9900 rgb(255,153,0,0.0);
+   241500: #241500 rgb(36,21,0,0.0);
+*/
+.amexio-yellow {
+  background-color: #ff9900;
+  color: #241500; }
+
+/** Amexio Colors --- 
+   Black: #000000 rgb(0,0,0,0.0);
+   White: #ffffff rgb(255,255,255,0.0);
+*/
+.amexio-black {
+  background-color: #000000;
+  color: #ffffff; }
+
+/** Amexio Colors --- 
+   White: #ffffff rgb(255,255,255,0.0);
+   Black: #000000 rgb(0,0,0,0.0);
+*/
+.amexio-white {
+  background-color: #ffffff;
+  color: #000000; }
 
 /** Initialze Component variables ------------ */
 /****************************************************************************
@@ -904,27 +1000,23 @@ textarea:required {
 .progress {
   position: relative;
   background: #f5f5f5; }
-
-.progress > span {
-  background-color: #f5f5f5; }
-
-@-webkit-keyframes move {}
-.success > span {
-  background-color: #5cb85c;
-  /* Add Varaibles here */ }
-
-.warning > span {
-  background-color: #f0ad4e; }
-
-.danger > span {
-  background-color: #d9534f; }
-
-.red > span {
-  background-color: #f0a3a3; }
-
-.nostripes > span > span, .nostripes > span:after {
-  background-image: none; }
-
+  .progress .success {
+    background-color: #5cb85c; }
+  .progress .warning {
+    background-color: #f0ad4e; }
+  .progress .danger {
+    background-color: #d9534f; }
+  .progress .red {
+    background-color: #f0a3a3; }
+  .progress .stripped {
+    background-size: 30px 30px;
+    background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    animation: progressbar-animate-stripes 3s linear infinite; }
+@keyframes progressbar-animate-stripes {
+  0% {
+    background-position: 0 0; }
+  100% {
+    background-position: 60px 0; } }
 /** progress - Structure CSS **/
 .progress {
   height: 20px;
@@ -1460,19 +1552,19 @@ input:checked + .toggle-slider:before {
 .floatingbutton-default {
   background-color: #ffffff; }
 
-.floatingbutton-primary {
+.floatingbutton-theme-color {
   background-color: #9932cc;
   color: #ffffff; }
 
-.floatingbutton-success {
+.floatingbutton-green {
   background-color: #5cb85c;
   color: #ffffff; }
 
-.floatingbutton-danger {
+.floatingbutton-red {
   background-color: #d9534f;
   color: #ffffff; }
 
-.floatingbutton-warning {
+.floatingbutton-yellow {
   background-color: #f0ad4e;
   color: #ffffff; }
 
@@ -1480,19 +1572,19 @@ input:checked + .toggle-slider:before {
   background-color: #d3c2db;
   color: #8e62a3; }
 
-.floatingbutton-primary-disabled {
+.floatingbutton-theme-color-disabled {
   background-color: #c283e1;
   color: #ffffff; }
 
-.floatingbutton-success-disabled {
+.floatingbutton-green-disabled {
   background-color: #a3d7a3;
   color: #ffffff; }
 
-.floatingbutton-danger-disabled {
+.floatingbutton-red-disabled {
   background-color: #eba5a3;
   color: #ffffff; }
 
-.floatingbutton-warning-disabled {
+.floatingbutton-yellow-disabled {
   background-color: #f8d9ac;
   color: #ffffff; }
 
@@ -1730,7 +1822,7 @@ header .billboard .content-button {
 .close-button {
   cursor: pointer;
   padding-left: 98%;
-  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 100%); }
+  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, transparent 70%, transparent 100%); }
 
 /****************************************************************************
     Component Name : Enterprise Youtube
@@ -1739,7 +1831,7 @@ header .billboard .content-button {
 /** enterprise-youtube - Visual CSS **/
 .close-button {
   color: grey;
-  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 100%); }
+  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, transparent 70%, transparent 100%); }
 
 .close-button i:hover {
   color: red; }
@@ -1763,8 +1855,8 @@ header .billboard .content-button {
   font-size: 20px; }
 
 .tile__details {
-  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%); }
+  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%); }
 
 .tile__details:after,
 .tile__details:before {
@@ -1772,8 +1864,8 @@ header .billboard .content-button {
 
 .tile__details_v {
   font-size: 10px;
-  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%); }
+  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%); }
 
 .tile__details_v:after,
 .tile__details_v:before {
@@ -2029,18 +2121,15 @@ header .billboard .content-button {
     Version : Amexio v4.0 onwards
 *****************************************************************************/
 /** Datapoints - Visual CSS **/
-.datapoints {
-  background: #ffffff;
+.datapoints .datapoints-north {
   color: #14001f; }
-  .datapoints .datapoints-north {
-    color: #14001f; }
-  .datapoints .datapoint-south {
-    background-color: #14001f;
-    color: #df9eff; }
-  .datapoints .datapoint-west {
-    padding: 5px; }
-  .datapoints .datapoint-east {
-    padding: 5px; }
+.datapoints .datapoint-south {
+  background-color: #14001f;
+  color: #df9eff; }
+.datapoints .datapoint-west {
+  padding: 5px; }
+.datapoints .datapoint-east {
+  padding: 5px; }
 
 /** Datapoints - Structure CSS **/
 .datapoints {
@@ -2604,7 +2693,6 @@ header .billboard .content-button {
 
 /** navbar - Structure CSS **/
 .topnav {
-  overflow: hidden;
   position: fixed;
   width: 100%;
   padding: 5px;
@@ -2670,7 +2758,7 @@ header .billboard .content-button {
 
 .topnavmainbarinneritems {
   display: inline-block;
-  padding: 0px 10px; }
+  padding: 0px 5px; }
 
 .topnavmainbarinneritems-mobile {
   width: 100%;
@@ -2687,6 +2775,9 @@ header .billboard .content-button {
   float: right;
   margin-right: 20px;
   line-height: 50px; }
+
+.nav-dropdown .nav-dropbtn i {
+  padding-right: 5px; }
 
 .nav-dropdown .nav-dropbtn {
   padding: 0px 8px; }
@@ -3886,11 +3977,11 @@ fieldset {
 *****************************************************************************/
 @keyframes checkboxripple {
   0% {
-    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0); }
+    box-shadow: 0px 0px 0px 1px transparent; }
   50% {
     box-shadow: 0px 0px 0px 15px rgba(0, 0, 0, 0.1); }
   100% {
-    box-shadow: 0px 0px 0px 15px rgba(0, 0, 0, 0); } }
+    box-shadow: 0px 0px 0px 15px transparent; } }
 /* Show the input-box-container-label when checked */
 .input-box-container input:checked ~ .input-box-checkbox-label:after {
   animation: checkboxripple .3s ease-in; }
@@ -3900,11 +3991,11 @@ fieldset {
 *****************************************************************************/
 @keyframes radioripple {
   0% {
-    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0); }
+    box-shadow: 0px 0px 0px 1px transparent; }
   50% {
     box-shadow: 0px 0px 0px 15px rgba(0, 0, 0, 0.1); }
   100% {
-    box-shadow: 0px 0px 0px 15px rgba(0, 0, 0, 0); } }
+    box-shadow: 0px 0px 0px 15px transparent; } }
 /* Show the input-box-container-label when checked */
 .input-box-container input:checked ~ .input-box-radiobox-label:after {
   animation: radioripple 0.3s linear forwards; }
@@ -4193,11 +4284,6 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
 /************************************************************************/
 /*        NAVBAR Media-Q COMPONENT         */
 /************************************************************************/
-@media only screen and (max-width: 1024px) {
-  .navbar-container {
-    padding: 0px; }
-    .navbar-container .navbar-logo-unit {
-      padding-left: 40px; } }
 /************************************************************************/
 /*        ROW-COLUMN MediaQ COMPONENT         */
 /************************************************************************/
@@ -4381,11 +4467,6 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
 /************************************************************************/
 /*        NAVBAR Media-Q COMPONENT         */
 /************************************************************************/
-@media only screen and (max-width: 1024px) {
-  .navbar-container {
-    padding: 0px; }
-    .navbar-container .navbar-logo-unit {
-      padding-left: 40px; } }
 /************************************************************************/
 /*        ROW-COLUMN MediaQ COMPONENT         */
 /************************************************************************/
@@ -4574,42 +4655,6 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
 /************************************************************************/
 /*        NAVBAR Media-Q COMPONENT         */
 /************************************************************************/
-@media only screen and (max-width: 1024px) {
-  .navbar-container {
-    padding: 0px; }
-    .navbar-container .navbar-logo-unit {
-      padding-left: 40px; } }
-@media only screen and (max-width: 767px) {
-  .navbar-container {
-    flex-direction: column;
-    padding: 0px; }
-    .navbar-container .nav-bar {
-      background-color: #f100f1; }
-      .navbar-container .nav-bar .nav-item amexio-nav-item {
-        border-bottom: 1px solid #fffaff;
-        cursor: pointer; }
-        .navbar-container .nav-bar .nav-item amexio-nav-item * {
-          vertical-align: middle; }
-    .navbar-container .navbar-logo-unit {
-      padding-left: 40px;
-      display: flex;
-      justify-content: space-between; }
-      .navbar-container .navbar-logo-unit .navbar-mobile-bars {
-        display: block;
-        top: 10px;
-        margin-right: 25px;
-        position: relative; }
-
-  .nav-bar {
-    display: block;
-    margin: 0;
-    padding: 0px; }
-    .nav-bar .nav-item {
-      display: flex;
-      flex-direction: column;
-      padding: 0px; }
-      .nav-bar .nav-item > * {
-        padding: 10px; } }
 /************************************************************************/
 /*        ROW-COLUMN MediaQ COMPONENT         */
 /************************************************************************/
@@ -4806,42 +4851,6 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
 /************************************************************************/
 /*        NAVBAR Media-Q COMPONENT         */
 /************************************************************************/
-@media only screen and (max-width: 1024px) {
-  .navbar-container {
-    padding: 0px; }
-    .navbar-container .navbar-logo-unit {
-      padding-left: 40px; } }
-@media only screen and (max-width: 767px) {
-  .navbar-container {
-    flex-direction: column;
-    padding: 0px; }
-    .navbar-container .nav-bar {
-      background-color: #f100f1; }
-      .navbar-container .nav-bar .nav-item amexio-nav-item {
-        border-bottom: 1px solid #fffaff;
-        cursor: pointer; }
-        .navbar-container .nav-bar .nav-item amexio-nav-item * {
-          vertical-align: middle; }
-    .navbar-container .navbar-logo-unit {
-      padding-left: 40px;
-      display: flex;
-      justify-content: space-between; }
-      .navbar-container .navbar-logo-unit .navbar-mobile-bars {
-        display: block;
-        top: 10px;
-        margin-right: 25px;
-        position: relative; }
-
-  .nav-bar {
-    display: block;
-    margin: 0;
-    padding: 0px; }
-    .nav-bar .nav-item {
-      display: flex;
-      flex-direction: column;
-      padding: 0px; }
-      .nav-bar .nav-item > * {
-        padding: 10px; } }
 /************************************************************************/
 /*        ROW-COLUMN MediaQ COMPONENT         */
 /************************************************************************/
@@ -5038,56 +5047,6 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
 /************************************************************************/
 /*        NAVBAR Media-Q COMPONENT         */
 /************************************************************************/
-@media only screen and (max-width: 1024px) {
-  .navbar-container {
-    padding: 0px; }
-    .navbar-container .navbar-logo-unit {
-      padding-left: 40px; } }
-@media only screen and (max-width: 767px) {
-  .navbar-container {
-    flex-direction: column;
-    padding: 0px; }
-    .navbar-container .nav-bar {
-      background-color: #f100f1; }
-      .navbar-container .nav-bar .nav-item amexio-nav-item {
-        border-bottom: 1px solid #fffaff;
-        cursor: pointer; }
-        .navbar-container .nav-bar .nav-item amexio-nav-item * {
-          vertical-align: middle; }
-    .navbar-container .navbar-logo-unit {
-      padding-left: 40px;
-      display: flex;
-      justify-content: space-between; }
-      .navbar-container .navbar-logo-unit .navbar-mobile-bars {
-        display: block;
-        top: 10px;
-        margin-right: 25px;
-        position: relative; }
-
-  .nav-bar {
-    display: block;
-    margin: 0;
-    padding: 0px; }
-    .nav-bar .nav-item {
-      display: flex;
-      flex-direction: column;
-      padding: 0px; }
-      .nav-bar .nav-item > * {
-        padding: 10px; } }
-/************************************************************************/
-/*        ROW-COLUMN MediaQ COMPONENT         */
-/************************************************************************/
-@media only screen and (max-width: 767px) {
-  .flex-row {
-    flex-direction: column; }
-
-  .flex-col-1, .flex-col-2, .flex-col-3, .flex-col-4, .flex-col-5, .flex-col-6, .flex-col-7, .flex-col-8, .flex-col-9, .flex-col-10, .flex-col-11, .flex-col-12 {
-    max-width: 100%;
-    flex: 0 0 100%; } }
-@media only screen and (max-width: 1024px) {
-  .flex-col-2pt5, .flex-col-9pt5 {
-    flex: 0 0 100%;
-    max-width: 100%; } }
 /************************************************************************/
 /*        SIDENAV MediaQ COMPONENT         */
 /************************************************************************/
@@ -5270,42 +5229,6 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
 /************************************************************************/
 /*        NAVBAR Media-Q COMPONENT         */
 /************************************************************************/
-@media only screen and (max-width: 1024px) {
-  .navbar-container {
-    padding: 0px; }
-    .navbar-container .navbar-logo-unit {
-      padding-left: 40px; } }
-@media only screen and (max-width: 767px) {
-  .navbar-container {
-    flex-direction: column;
-    padding: 0px; }
-    .navbar-container .nav-bar {
-      background-color: #f100f1; }
-      .navbar-container .nav-bar .nav-item amexio-nav-item {
-        border-bottom: 1px solid #fffaff;
-        cursor: pointer; }
-        .navbar-container .nav-bar .nav-item amexio-nav-item * {
-          vertical-align: middle; }
-    .navbar-container .navbar-logo-unit {
-      padding-left: 40px;
-      display: flex;
-      justify-content: space-between; }
-      .navbar-container .navbar-logo-unit .navbar-mobile-bars {
-        display: block;
-        top: 10px;
-        margin-right: 25px;
-        position: relative; }
-
-  .nav-bar {
-    display: block;
-    margin: 0;
-    padding: 0px; }
-    .nav-bar .nav-item {
-      display: flex;
-      flex-direction: column;
-      padding: 0px; }
-      .nav-bar .nav-item > * {
-        padding: 10px; } }
 /************************************************************************/
 /*        ROW-COLUMN MediaQ COMPONENT         */
 /************************************************************************/
