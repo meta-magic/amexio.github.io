@@ -108,6 +108,7 @@
 
 .nav-dropdown .nav-dropbtn i{
     padding-right: 5px;
+    padding-left: 5px;
 }
 
 .nav-dropdown .nav-dropbtn {
@@ -120,7 +121,7 @@
     //background-color: $navbarActiveBG;
     min-width: 160px;
     z-index: 3; 
-    padding: 5px;
+    padding: 10px 0px;
     box-shadow: 0px 5px 5px $navbarBGBoxShadow;
 
     transition: all 0.3s ease;
@@ -140,6 +141,7 @@
 .topnavmainbarinneritems .nav-dropdown-content a {
     text-decoration: none;
     display: block;
+    padding: 0px 10px;
     text-align: left;
     //color: $navbarColor!important;
 }
