@@ -46,10 +46,10 @@ export class AmexioFloatingButtonComponent implements OnInit{
   }
   ngOnInit()
   {
-  this.updateModel();
+  this.addCSSClasses();
   }
 // THIS METHOD IS USED FOR SETTING CSS CLASSSES
-  updateModel():any{
+  addCSSClasses():any{
 
     if(this.top || this.bottom || this.right || this.left){
       this.absoluteposition = true;
