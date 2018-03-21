@@ -279,7 +279,7 @@ image using the content attribute.
 */
 .amexio-purple-light {
   background-color: #ff00ff;
-  color: #fffaff; }
+  color: #050005; }
 
 /** Amexio Colors --- 
    DarkMagenta: #8b008b rgb(139,0,139,0.0);
@@ -287,7 +287,7 @@ image using the content attribute.
 */
 .amexio-purple {
   background-color: #8b008b;
-  color: #fffaff; }
+  color: #050005; }
 
 /** Amexio Colors --- 
    DeepSkyBlue: #00bfff rgb(0,191,255,0.0);
@@ -295,7 +295,7 @@ image using the content attribute.
 */
 .amexio-blue-light {
   background-color: #00bfff;
-  color: #f0fbff; }
+  color: #000507; }
 
 /** Amexio Colors --- 
    DarkBlue: #00008b rgb(0,0,139,0.0);
@@ -1010,13 +1010,8 @@ textarea:required {
     background-color: #f0a3a3; }
   .progress .stripped {
     background-size: 30px 30px;
-    background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-    animation: progressbar-animate-stripes 3s linear infinite; }
-@keyframes progressbar-animate-stripes {
-  0% {
-    background-position: 0 0; }
-  100% {
-    background-position: 60px 0; } }
+    background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent); }
+
 /** progress - Structure CSS **/
 .progress {
   height: 20px;
@@ -4126,6 +4121,16 @@ button:focus:not(:active)::after {
 input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
   width: 50%; }
 
+/****************************************************************************
+                Animation CSS for Progress Bar
+*****************************************************************************/
+.progress .stripped {
+  animation: progressbar-animate-stripes 3s linear infinite; }
+@keyframes progressbar-animate-stripes {
+  0% {
+    background-position: 0 0; }
+  100% {
+    background-position: 60px 0; } }
 /** Initialze Responsive Design variables ------------ */
 /****************************************************************************
                     Media Query for width - 375

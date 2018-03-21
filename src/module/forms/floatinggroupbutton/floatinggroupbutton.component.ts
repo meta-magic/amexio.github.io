@@ -58,7 +58,7 @@ export class AmexioFloatingGroupButtonComponent implements OnInit{
   }
 
   buttonClick(event:any){
-      debugger;
+      //debugger;
       let x = event.currentTarget.getBoundingClientRect().left;//event.x;
       let y = event.currentTarget.getBoundingClientRect().top;//event.y;
       if(!this.disabled){
@@ -90,7 +90,7 @@ export class AmexioFloatingGroupButtonComponent implements OnInit{
 
   @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
   public onElementOutClick(targetElement: HTMLElement) {
-    debugger;
+    //debugger;
     let parentFound = false;
     while (targetElement != null && !parentFound) {
       if (targetElement === this.elementref.nativeElement) {

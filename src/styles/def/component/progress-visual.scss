@@ -28,13 +28,13 @@
                                           transparent 50%,
                                         rgba(255, 255, 255, .15) 50%, 
                                         rgba(255, 255, 255, .15) 75%,transparent 75%, transparent); 
-        animation: progressbar-animate-stripes 3s linear infinite; 
+        //animation: progressbar-animate-stripes 3s linear infinite; 
       }
       
-      @keyframes progressbar-animate-stripes {
-         0% {background-position: 0 0;} 
-         100% {background-position: 60px 0;}
-      }
+      // @keyframes progressbar-animate-stripes {
+      //    0% {background-position: 0 0;} 
+      //    100% {background-position: 60px 0;}
+      // }
 
 
 }
