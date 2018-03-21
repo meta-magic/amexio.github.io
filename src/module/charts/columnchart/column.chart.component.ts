@@ -209,7 +209,7 @@ export class ColumnChartComponent implements AfterContentInit {
           bold: this.chartTitleComponent.bold ? this.chartTitleComponent.bold : null,
           italic: this.chartTitleComponent.italic ? this.chartTitleComponent.italic : null
         } : null,
-        stacked: this.stacked,
+        isStacked: this.stacked,
         backgroundcolor: this.backgroundcolor,
         legend: this.chartLengendComponent ? {
           position: this.chartLengendComponent.position ? this.chartLengendComponent.position : null, //this work only in chart position is top
