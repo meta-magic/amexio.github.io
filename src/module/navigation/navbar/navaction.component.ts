@@ -8,7 +8,7 @@ import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
   selector: 'amexio-nav-action', 
   template: 
   `
-    <a *ngIf="(type=='link')" (click)="onClick($event)"><i *ngIf="icon" [ngClass]="icon"></i> {{title}}</a>
+    <a *ngIf="(type=='link')" class="top-nav-link" (click)="onClick($event)"><i *ngIf="icon" [ngClass]="icon"></i> {{title}}</a>
     
     <button *ngIf="(type=='button')" class="top-nav-button"  (click)="onClick($event)"><i *ngIf="icon" [ngClass]="icon"></i> {{title}}</button>
   `
