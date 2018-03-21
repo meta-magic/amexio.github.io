@@ -2710,6 +2710,7 @@ header .billboard .content-button {
 
 .top-nav-input-control {
   border-radius: 0px;
+  padding: 0px 8px;
   border: none;
   border-bottom: 2px solid #ced4da;
   font-size: 1rem;
@@ -2724,7 +2725,7 @@ header .billboard .content-button {
 
 .topnav a {
   cursor: pointer;
-  padding-right: 5px; }
+  padding: 0px 8px; }
 
 .topnavbarunit1 {
   line-height: 50px; }
@@ -2758,7 +2759,7 @@ header .billboard .content-button {
 
 .topnavmainbarinneritems {
   display: inline-block;
-  padding: 0px 5px; }
+  padding: 0px 8px; }
 
 .topnavmainbarinneritems-mobile {
   width: 100%;
@@ -2771,14 +2772,19 @@ header .billboard .content-button {
 .topnavmainbarinneritems-mobile .nav-dropdown {
   width: 100%; }
 
+.top-nav-link {
+  padding: 0px 8px; }
+
+.top-nav-link i {
+  padding: 0px 5px; }
+
 .topnavmainbarinneritems-mobile .nav-dropdown .nav-dropbtn .dropdownicon {
   float: right;
   margin-right: 20px;
   line-height: 50px; }
 
 .nav-dropdown .nav-dropbtn i {
-  padding-right: 5px;
-  padding-left: 5px; }
+  padding: 0px 5px; }
 
 .nav-dropdown .nav-dropbtn {
   padding: 0px 8px; }

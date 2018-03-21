@@ -10,11 +10,11 @@ import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
   `
   <div class="nav-dropdown">
     <a class="nav-dropbtn"  (click)="onHeaderClick($event)">
-      <i *ngIf="icon" [ngClass]="icon"></i> {{title}} <i class="dropdownicon fa fa-angle-down"></i>
+      <i *ngIf="icon" [ngClass]="icon"></i>{{title}}<i class="dropdownicon fa fa-angle-down"></i>
     </a>
     <div class="nav-dropdown-content">
       <a *ngFor="let node of data" (click)="onClick(node, $event)">
-      <i *ngIf="icon" [ngClass]="node.icon"></i> &nbsp;{{node.text}}</a>
+      <i *ngIf="icon" [ngClass]="node.icon"></i>&nbsp;{{node.text}}</a>
       
       <ng-content *ngIf="type==='menucontainer'"></ng-content>
     </div>

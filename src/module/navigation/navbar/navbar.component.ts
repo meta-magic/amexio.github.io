@@ -2,11 +2,10 @@
  * Created by ketangote on 12/8/17.
  */
 import {Component, Input, OnInit, ContentChildren, QueryList, AfterContentInit, ViewChild, ElementRef, AfterViewInit} from '@angular/core';
-//import {DeviceQueryService} from "amexio-ng-extensions";
 import {DeviceQueryService} from "../../services/device/device.query.service";
-import { AmexioNavActionComponent } from './navaction.component';
-import { AmexioNavItemComponent } from './navitem.component';
-import { AmexioNavMenuComponent } from './navmenu.component';
+import {AmexioNavActionComponent } from './navaction.component';
+import {AmexioNavItemComponent } from './navitem.component';
+import {AmexioNavMenuComponent } from './navmenu.component';
 
 @Component({
   selector: 'amexio-nav', templateUrl: 'navbar.component.html'
@@ -36,6 +35,7 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
   toggle : boolean = true;
   mobilemode : boolean = false;
   navitemwidth : number;
+  navfixeditem : number;
   sidenav : boolean = false;
 
   constructor(public matchMediaService: DeviceQueryService) {
@@ -47,17 +47,22 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
 
 
   ngAfterViewInit(){
-    this.handleNavItems();
-    this.navitemwidth = 5+this.navbaritems2.nativeElement.offsetWidth + this.navbaritems2.nativeElement.offsetWidth + this.navbaritems3.nativeElement.offsetWidth;
-    this.handleDeviceSetting();
-    
+    if(!this.logo)
+      this.loadNavItems();
   }
 
   ngAfterContentInit() {
-  
-    
   }
 
+  onImageLoad(){
+    this.loadNavItems();
+  }
+
+  loadNavItems(){
+    this.handleNavItems();
+    this.navitemwidth = 5+this.navbaritems2.nativeElement.offsetWidth + this.navbaritems2.nativeElement.offsetWidth + this.navbaritems3.nativeElement.offsetWidth;
+    this.handleDeviceSetting();
+  }
 
   toggleDrawerPanel(event : any){
     this.toggle=!this.toggle;
@@ -81,13 +86,49 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
   }
 
   handleDeviceSetting(){
+    
+    if(this.sidenavspace){
+      if (this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone()) {
+        this.sidenav = true;
+      }else{
+        this.sidenav = false;
+      }
+    }
+
     let navbarwidth = this.navbar.nativeElement.offsetWidth;
     let navbarheight = this.navbar.nativeElement.offsetHeight;
+    let navbarfixedheight = this.navbarfixed.nativeElement.offsetHeight;
     
-    let navbaravailablewidth = (navbarwidth-((navbarwidth/100)*20));
-    if((navbaravailablewidth<this.navitemwidth) || navbarheight>100){
+    if(!this.navfixeditem){
+      this.navfixeditem = this.navbarfixed.nativeElement.offsetWidth;
+    }
+
+    if(!this.navitemwidth){
+      let navbaritems1Width = 0;
+      let navbaritems2Width = 0;
+      let navbaritems3Width = 0;
+  
+      if(this.navbaritems1){
+        navbaritems1Width = this.navbaritems1.nativeElement.offsetWidth;
+      }
+      if(this.navbaritems2){
+        navbaritems2Width = this.navbaritems2.nativeElement.offsetWidth;
+      }
+  
+      if(this.navbaritems3){
+        navbaritems3Width = this.navbaritems3.nativeElement.offsetWidth;
+      }
+      this.navitemwidth = (this.navfixeditem+navbaritems1Width+navbaritems2Width+navbaritems3Width);
+    }
+
+    //console.log(this.navitemwidth +"-----"+navbarwidth +"--"+ (navbarwidth-(navbarfixedWidth+navbaritems1Width+navbaritems2Width+navbaritems3Width)) +"--"+navbarfixedWidth+"--"+navbaritems1Width+"--"+navbaritems2Width+"--"+navbaritems3Width);
+    
+    let navbaravailablewidth = (navbarwidth-(this.navfixeditem+this.navitemwidth))
+    console.log(navbarwidth +"--"+this.navfixeditem+"--"+this.navitemwidth+"--"+navbaravailablewidth);
+    
+
+    if((navbaravailablewidth <100 || navbarheight>100)){
       this.mobilemode = true;
-      
       this.toggle = false;
       this.notifyNavItems(navbarwidth);
     }else{
@@ -96,19 +137,13 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
       this.notifyNavItems(navbarwidth);
     }
 
-    if(this.sidenavspace){
-      if (this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone()) {
-        this.sidenav = true;
-      }else{
-        this.sidenav = false;
-      }
-      
-    }
   }
 
-
+ 
+  
   resize(event:any){
+    //setTimeout( () => this.handleDeviceSetting(),500);
     this.handleDeviceSetting();
+    
   }
 }
-

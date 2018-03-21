@@ -21,6 +21,7 @@
 
 .top-nav-input-control {
     border-radius: 0px;
+    padding: 0px 8px;
     border: none;
     border-bottom: 2px solid $navbarBorder;
     font-size: 1rem;
@@ -38,12 +39,13 @@
 }
 .topnav a{
     cursor: pointer;
-    padding-right: 5px;
+    padding: 0px 8px;
     //color : $navbarColor
 }
 .topnav a label{
     //color: $navbarColor;
 }
+
 .topnavbarunit1{
     line-height: 50px;
 }
@@ -83,7 +85,7 @@
 
 .topnavmainbarinneritems{
     display: inline-block;
-    padding: 0px 5px;
+    padding: 0px 8px;
 }
 
 .topnavmainbarinneritems-mobile{
@@ -101,7 +103,10 @@
 }
 
 .top-nav-link{
-    padding: 0px 10px;
+    padding: 0px 8px;
+}
+.top-nav-link i{
+    padding: 0px 5px;
 }
     
 .topnavmainbarinneritems-mobile .nav-dropdown .nav-dropbtn .dropdownicon{
@@ -111,8 +116,7 @@
 }
 
 .nav-dropdown .nav-dropbtn i{
-    padding-right: 5px;
-    padding-left: 5px;
+    padding: 0px 5px;
 }
 
 .nav-dropdown .nav-dropbtn {
@@ -166,6 +170,7 @@
 
 .topnavmainbarinneritems-mobile .top-nav-input-control{
     width: 100%;
+    
 }
 
 .mobilebar{
