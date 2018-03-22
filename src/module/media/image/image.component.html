@@ -14,6 +14,11 @@
   <label class="image-title" *ngIf="title" (click)="onImageClick($event)" style="cursor: pointer">{{title}}</label>
 </ng-container>
 
+<!--Material icon-->
+<ng-container *ngIf="(iconclass && mda) && !path">
+  <i [attr.class]="iconclass" [attr.title]="tooltip" (click)="onImageClick($event)">{{mda}}</i>
+</ng-container>
+
 <ng-container *ngIf=" title && !iconclass">
   <span style="font-size: medium">{{title}}</span>
 </ng-container>
