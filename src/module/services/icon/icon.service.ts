@@ -287,8 +287,12 @@ let ICON_MAPPING =
       "component" : "button-loading-icon",
       "fa" : "fa fa-refresh fa-spin",
       "mat" : "cached"
+    },
+    {
+      "component" : "datepicker-clock-icon",
+      "fa" : "fa fa-clock-o",
+      "mat" : "access_time"
     }
-
   ]
 ;
 

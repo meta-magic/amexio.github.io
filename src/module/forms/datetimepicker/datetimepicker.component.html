@@ -1,118 +1,108 @@
+<div>
+    <div class="inputgroup" #rootDiv>
 
-
-<div >
-  <div class="inputgroup" #rootDiv>
-
-    <label>
+        <label>
       {{fieldlabel}}
     </label>
 
-    <ng-container *ngIf="datepicker && !timepicker">
-      <input type="text"
-             #pickerDt
-             value="{{dateModel|date:dateformat}}"
-             [attr.disabled]="readonly ? true: null"
-             (blur)="onBlur()"
-             (focus)="onFocus(rootDiv)"
-             (focusout)="onFocusOut(pickerDt)"
-             (change)="change.emit()"
-             class="input-control" placeholder="Choose Date"/>
-    </ng-container>
+        <ng-container *ngIf="datepicker && !timepicker">
+            <input type="text" #pickerDt value="{{dateModel|date:dateformat}}" [attr.disabled]="readonly ? true: null" (blur)="onBlur()" (focus)="onFocus(rootDiv)" (focusout)="onFocusOut(pickerDt)" (change)="change.emit()" class="input-control" placeholder="Choose Date"
+            />
+        </ng-container>
 
-    <ng-container *ngIf="timepicker">
-      <input type="text"
-             value="{{dateModel|date:dateformat}} {{hrs + ' : ' + min}}"
-             [attr.disabled]="readonly ? true: null"
-             (blur)="onBlur()"
-             (focus)="onFocus(rootDiv)"
-             (input)="onInput($event)"
-             (change)="change.emit()"
-             class="input-control" placeholder="Choose Time"/>
-    </ng-container>
-
-
-    <div class="drodown-caret-down" style="cursor: pointer" (click)="openPicker(rootDiv)">
-      <!--<i class="fa fa-calendar" aria-hidden="true"></i>-->
-      <amexio-form-icon key="datepicker_calendar"></amexio-form-icon>
-    </div>
-
-
-  </div>
-  <div *ngIf="showToolTip" [ngStyle]="positionClass" class="datetimepicker">
-
-      <div class="datetimepickertopbar" [ngStyle]="{'display': datepicker ? 'block' : 'none'}">
-        <ul>
-          <li class="prev">
-            <!--<i (click)="prevYear($event)" class="fa fa fa-step-backward" aria-hidden="true"></i>-->
-            <amexio-form-icon key="datepicker_previous_fast" (onClick)="prevYear($event)"></amexio-form-icon>
-            <!--<i (click)="prevMonth($event)" class="fa fa-chevron-left"></i>-->
-            <amexio-form-icon key="datepicker_previous" (onClick)="prevMonth($event)"></amexio-form-icon>
-          </li>
-          <li class="next">
-            <!--<i (click)="nextMonth($event)" class="fa fa-chevron-right"></i>-->
-            <amexio-form-icon key="datepicker_next" (onClick)="nextMonth($event)"></amexio-form-icon>
-            <!--<i (click)="nextYear($event)" class="fa fa-step-forward" aria-hidden="true"></i>-->
-            <amexio-form-icon key="datepicker_next_fast" (onClick)="nextYear($event)"></amexio-form-icon>
-          </li>
-          <li>{{selectedDate | date:'MMMM'}}<br>
-            <span class="title">{{selectedDate | date:'y'}}</span>
-          </li>
-        </ul>
-      </div>
-
-      <ul class="weekdays" [ngStyle]="{'display': datepicker ? 'block' : 'none'}">
-        <li *ngFor="let dayTitle of daysTitle">{{dayTitle.text}}</li>
-      </ul>
-
-      <ul  class="days" [ngStyle]="{'display': datepicker ? 'block' : 'none'}">
-
-        <ng-container *ngFor="let dayArray of daysArray">
-          <li *ngFor="let day of dayArray" >
-              <span (click)="onDateClick(day.date)" class="day" [ngClass]="{'active':day.selected, 'currentMonth':day.isCurrentMonth, 'notCurrentMonth':!day.isCurrentMonth}">
-                  {{ day.date | date:'d' }}
-              </span>
-          </li>
+        <ng-container *ngIf="timepicker">
+            <input type="text" value="{{dateModel|date:dateformat}} {{hrs + ' : ' + min}}" [attr.disabled]="readonly ? true: null" (blur)="onBlur()" (focus)="onFocus(rootDiv)" (input)="onInput($event)" (change)="change.emit()" class="input-control" placeholder="Choose Time"
+            />
         </ng-container>
 
 
-        <li class="date-today">
-          <amexio-button type ="primary" label="TODAY" (onClick)="setToday()" size="small"></amexio-button>
-        </li>
+        <div class="drodown-caret-down" style="cursor: pointer" (click)="openPicker(rootDiv)">
+            <!--<i class="fa fa-calendar" aria-hidden="true"></i>-->
+            <ng-container *ngIf="timepicker">
+                <amexio-form-icon key="datepicker-clock-icon"></amexio-form-icon>
+            </ng-container>
+            <ng-container *ngIf="!timepicker">
+                <amexio-form-icon key="datepicker_calendar"></amexio-form-icon>
+            </ng-container>
+
+        </div>
 
 
-      </ul>
+    </div>
+    <div *ngIf="showToolTip" [ngStyle]="positionClass" class="datetimepicker">
 
-      <table class="table" align="center" [ngStyle]="{'display': timepicker ? 'block' : 'none'}" style="cursor : pointer;text-align: center;padding: 5px;">
-        <!--if picker is true-->
-        <tr style="padding: 10px;">
-          <td colspan="2"></td>
-          <td (click)="plus('hrs', $event);">&#9650;</td>
-          <td></td>
-          <td (click)="plus('min', $event);">&#9650;</td>
-          <td colspan="2"></td>
-        </tr>
-        <tr>
-          <td colspan="2"></td>
-          <td>{{hrs}}</td>
-          <td>:</td>
-          <td>{{min}}</td>
-          <td colspan="2">
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2"></td>
-          <td (click)="minus('hrs', $event);">&#9660;</td>
-          <td></td>
-          <td (click)="minus('min', $event);">&#9660;</td>
-          <td colspan="2">
-          </td>
-        </tr>
+        <div class="datetimepickertopbar" [ngStyle]="{'display': datepicker ? 'block' : 'none'}">
+            <ul>
+                <li class="prev">
+                    <!--<i (click)="prevYear($event)" class="fa fa fa-step-backward" aria-hidden="true"></i>-->
+                    <amexio-form-icon key="datepicker_previous_fast" (onClick)="prevYear($event)"></amexio-form-icon>
+                    <!--<i (click)="prevMonth($event)" class="fa fa-chevron-left"></i>-->
+                    <amexio-form-icon key="datepicker_previous" (onClick)="prevMonth($event)"></amexio-form-icon>
+                </li>
+                <li class="next">
+                    <!--<i (click)="nextMonth($event)" class="fa fa-chevron-right"></i>-->
+                    <amexio-form-icon key="datepicker_next" (onClick)="nextMonth($event)"></amexio-form-icon>
+                    <!--<i (click)="nextYear($event)" class="fa fa-step-forward" aria-hidden="true"></i>-->
+                    <amexio-form-icon key="datepicker_next_fast" (onClick)="nextYear($event)"></amexio-form-icon>
+                </li>
+                <li>{{selectedDate | date:'MMMM'}}<br>
+                    <span class="title">{{selectedDate | date:'y'}}</span>
+                </li>
+            </ul>
+        </div>
 
-      </table>
+        <ul class="weekdays" [ngStyle]="{'display': datepicker ? 'block' : 'none'}">
+            <li *ngFor="let dayTitle of daysTitle">{{dayTitle.text}}</li>
+        </ul>
+
+        <ul class="days" [ngStyle]="{'display': datepicker ? 'block' : 'none'}">
+
+            <ng-container *ngFor="let dayArray of daysArray">
+                <li *ngFor="let day of dayArray">
+                    <span (click)="onDateClick(day.date)" class="day" [ngClass]="{'active':day.selected, 'currentMonth':day.isCurrentMonth, 'notCurrentMonth':!day.isCurrentMonth}">
+                  {{ day.date | date:'d' }}
+              </span>
+                </li>
+            </ng-container>
+
+
+            <li class="date-today">
+                <amexio-button type="primary" label="TODAY" (onClick)="setToday()" size="small"></amexio-button>
+            </li>
+
+
+        </ul>
+
+        <table class="table" align="center" [ngStyle]="{'display': timepicker ? 'block' : 'none'}" style="cursor : pointer;text-align: center;padding: 5px;">
+            <!--if picker is true-->
+            <tr style="padding: 10px;">
+                <td colspan="2"></td>
+                <td (click)="plus('hrs', $event);">&#9650;</td>
+                <td></td>
+                <td (click)="plus('min', $event);">&#9650;</td>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <td colspan="2"></td>
+                <td>{{hrs}}</td>
+                <td>:</td>
+                <td>{{min}}</td>
+                <td colspan="2">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"></td>
+                <td (click)="minus('hrs', $event);">&#9660;</td>
+                <td></td>
+                <td (click)="minus('min', $event);">&#9660;</td>
+                <td colspan="2">
+                </td>
+            </tr>
+
+        </table>
 
 
 
 
     </div>
 </div>
-
