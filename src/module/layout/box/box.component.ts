@@ -13,10 +13,10 @@ import {Component, Input, OnInit} from '@angular/core';
  selector: 'amexio-box',
  template: `
  <div class="box-content"
- [attr.disabled]="padding ? true: null"
- 
- [ngClass]="{
-    
+ [attr.padding]="padding ? true: null" 
+ [style.height] = "height ? height:none" 
+ [style.width] = "width" 
+ [ngClass]="{    
  'box-default': borderColor=='default' || borderColor ==null,
  'border-topbar': border=='top',
  'border-bottombar': border =='bottom',
@@ -84,7 +84,25 @@ default : false
 description : padding to all sides
 */
  @Input('padding') padding: boolean;
- 
+/*
+Properties 
+name : box-height
+datatype : boolean
+version : 4.1.2 onwards
+default : none
+description : height to box
+*/
+ @Input('box-height') height: string;
+ /*
+Properties 
+name : padding
+datatype : boolean
+version : 4.1.2 onwards
+default : none
+description : width to box
+*/
+ @Input('box-width') width: string;
+
  constructor() { }
 
  ngOnInit() {
