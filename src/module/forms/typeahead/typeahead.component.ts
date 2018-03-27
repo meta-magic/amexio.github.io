@@ -53,6 +53,8 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
 
   @ViewChild('dpList') dpList : any;
 
+  @ViewChild('dropdownitems', {read: ElementRef}) public dropdownitems: ElementRef; 
+  
   posixUp : boolean;
 
   activeindex : number =0;
@@ -68,6 +70,15 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
   get errormsg(): string {
     return this._errormsg;
   }
+
+  navigateKey(event:any){
+        
+  }
+
+  selectedindex : number=0;
+  
+  scrollposition : number = 30;
+ 
 
   @Input('error-msg')
   set errormsg(value: string) {
@@ -172,6 +183,8 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
         this.showToolTip = false;
       }
     }
+    if(event.keyCode === 40 || event.keyCode === 38 || event.keyCode === 13)
+      this.navigateUsingKey(event);
   }
 
   onChange(event: any) {
@@ -180,6 +193,62 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
       this.change.emit(this.value);
     }
 
+  }
+
+  navigateUsingKey(event: any){
+    debugger;
+    if(this.selectedindex > this.filteredResult.length){
+      this.selectedindex=0;
+    }
+    if(event.keyCode === 40 || event.keyCode === 38  && this.selectedindex < this.filteredResult.length){
+      if(!this.showToolTip){
+        this.showToolTip = true;
+      }
+      let prevselectedindex = 0;
+      if(this.selectedindex === 0){
+        this.selectedindex = 1;
+      }else{
+        prevselectedindex = this.selectedindex;
+        if(event.keyCode === 40)
+        {
+          this.selectedindex++;
+          if((this.selectedindex > 5 )){
+            this.dropdownitems.nativeElement.scroll(0,this.scrollposition);
+            this.scrollposition = this.scrollposition  +30; 
+          }
+        }
+        else if(event.keyCode === 38){
+          this.selectedindex--;
+          console.log(this.scrollposition);
+          if(this.scrollposition>=0 && this.selectedindex>1){
+            this.dropdownitems.nativeElement.scroll(0,this.scrollposition);
+            this.scrollposition = this.scrollposition  -30; 
+          }
+          if(this.selectedindex === 1){
+            this.scrollposition = 30;
+          }
+
+          if(this.selectedindex <=0){
+            //this.selectedindex = 1;
+          }
+        }  
+      }
+
+      if(this.filteredResult[this.selectedindex]){
+        this.filteredResult[this.selectedindex].selected = true;
+        
+      }
+      if(this.filteredResult[prevselectedindex]){
+        this.filteredResult[prevselectedindex].selected = false;
+      }      
+    }
+
+    console.log(new Date().getTime()+"--"+this.selectedindex+"--"+this.filteredResult.length);
+    if(event.keyCode === 13 && this.filteredResult[this.selectedindex]){
+      console.log("exist drop down");
+      this.onItemSelect(this.filteredResult[this.selectedindex]);
+    }
+  
   }
 
   getDisplayValue(val : any) : string{

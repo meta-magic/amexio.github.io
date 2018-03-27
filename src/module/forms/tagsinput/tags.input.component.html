@@ -25,7 +25,7 @@
 
   <span class="dropdown"  [ngClass]="{'dropdown-up' : posixUp}" [ngStyle]="{'display': showToolTip ? 'block' : 'none'}" #tagDropRef>
     <ul class="dropdown-list">
-      <li class="list-items" [ngClass]="{'list-items-active':item['active']}"
+      <li class="list-items" [ngClass]="{'list-items-selected':item.selected}"
           *ngFor="let item of filteredResult"
           (click)="setValue(item,inp)"><div>{{item[displayfield]}}</div></li>
     </ul>

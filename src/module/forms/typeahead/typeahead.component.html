@@ -18,6 +18,7 @@
          (focus)="onFocus(rootDiv)"
          (input)="onInput()"
          (keyup)="onKeyUp($event)"
+         (keydown)="navigateKey($event)"
          (click)="onclick()"
          [attr.placeholder]="placeholder"
          [attr.disabled]="disabled ? true: null"
@@ -25,9 +26,9 @@
 
 
 
-  <span class="dropdown" [ngClass]="{'dropdown-up' : posixUp}" [ngClass]="{'loading-mask' : maskloader}" [ngStyle]="{'display': showToolTip ? 'block' : 'none'}" #dpList>
+  <span #dropdownitems class="dropdown" [ngClass]="{'dropdown-up' : posixUp}" [ngClass]="{'loading-mask' : maskloader}" [ngStyle]="{'display': showToolTip ? 'block' : 'none'}" #dpList>
         <ul class="dropdown-list">
-          <li class="list-items"   [ngClass]="{'list-items-active':item['active']}"
+          <li class="list-items" [ngClass]="{'list-items-selected':item.selected}"
               *ngFor="let item of filteredResult"  (click)="onItemSelect(item)">
               <div>{{item[displayfield]}}</div>
           </li>

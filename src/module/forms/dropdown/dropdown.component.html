@@ -19,7 +19,7 @@
          (input)="onInput()"
          [attr.placeholder]="placeholder"
          [attr.disabled]="disabled ? true: null"
-         [required]="allowblank ? true: null" (keyup)="onDropDownSearchKeyUp($event)"/>
+         [required]="allowblank ? true: null" (keyup)="onDropDownSearchKeyUp($event)" (keydown)="navigateKey($event)"/>
 
 
   <span class="drodown-caret-down" (click)="onIconClick()">
@@ -27,10 +27,10 @@
     <i class="fa fa-spinner fa-spin" *ngIf="maskloader"></i>
   </span>
 
-  <span class="dropdown" [ngClass]="{'dropdown-up' : posixUp}" [ngStyle]="{'display': showToolTip ? 'block' : 'none'}">
+  <span #dropdownitems class="dropdown" [ngClass]="{'dropdown-up' : posixUp}" [ngStyle]="{'display': showToolTip ? 'block' : 'none'}">
         <ul class="dropdown-list">
 
-          <li class="list-items" *ngFor="let item of filteredOptions" (click)="onItemSelect(item)">
+          <li class="list-items" [ngClass]="{'list-items-selected':item.selected}" *ngFor="let item of filteredOptions" (click)="onItemSelect(item)">
             <span>{{item[displayfield]}}</span>
             <span style="float : right">{{item?.checked ? '&#10004;': ''}}</span>
           </li>
@@ -55,4 +55,4 @@
 </span>
 
 
-
+  

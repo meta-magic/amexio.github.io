@@ -16,3 +16,8 @@
 .drodown-caret-down{
   color: $dropdownBorderColor;
 }
+
+.list-items-selected{
+  background-color:$dropdownHoverBGColor;
+  color:$dropdownHoverColor;
+}

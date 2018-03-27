@@ -4,7 +4,7 @@
 
 
 import {
-  Component, DoCheck, ElementRef, EventEmitter, forwardRef, HostListener, Input, OnInit, Output, Renderer2
+  Component, DoCheck, ElementRef, EventEmitter, forwardRef, HostListener, Input, OnInit, Output, Renderer2, ViewChild
 } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {CommonDataService} from "../../services/data/common.data.service";
@@ -44,6 +44,8 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
   @Input() search: boolean;
 
   @Input('multi-select') multiselect: boolean;
+
+  @ViewChild('dropdownitems', {read: ElementRef}) public dropdownitems: ElementRef;
 
   helpInfoMsg: string;
 
@@ -139,6 +141,7 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
 
   }
 
+  
 
   setData(httpResponse: any) {
     //Check if key is added?
@@ -202,6 +205,7 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
   }
 
   onItemSelect(row: any) {
+    //debugger;
     if (this.multiselect) {
       let optionsChecked: any [] = [];
       this.multiselectValues = [];
@@ -242,7 +246,9 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
     }
   }
 
-
+  navigateKey(event:any){
+    
+  }
   getDisplayText(): string {
     if(this.value == null || this.value == '') {
       this.value = '';
@@ -270,6 +276,7 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
 
   onDropDownClick(event: any) {
     this.onClick.emit(event);
+    
   }
 
   onChange(event: any) {
@@ -280,14 +287,17 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
     this.input.emit();
   }
 
-  onDropDownSearchKeyUp(event: any) {
+  selectedindex : number=0;
+  scrollposition : number = 30;
 
+  onDropDownSearchKeyUp(event: any) {
     if (this.search) {
       let keyword = event.target.value;
       if (keyword != null && keyword != '' && keyword != ' ') {
         this.filteredOptions = [];
         let search_Term = keyword.toLowerCase();
         this.viewData.forEach((row: any) => {
+          //row.selected = true;
           if (row[this.displayfield].toLowerCase().startsWith(search_Term)) {
             this.filteredOptions.push(row);
           }
@@ -295,9 +305,69 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
       }
       if (keyword == '') {
         this.filteredOptions = this.viewData;
+        //this.selectedindex = 0;
+      }        
+    }
+    if(event.keyCode === 40 || event.keyCode === 38 || event.keyCode === 13)
+    {      
+      this.navigateUsingKey(event);
+    }
+  }
+
+  navigateUsingKey(event: any){
+
+    if(this.selectedindex > this.filteredOptions.length){
+      this.selectedindex=0;
+    }
+    if(event.keyCode === 40 || event.keyCode === 38  && this.selectedindex < this.filteredOptions.length){
+      if(!this.showToolTip){
+        this.showToolTip = true;
       }
+      let prevselectedindex = 0;
+      if(this.selectedindex === 0){
+        this.selectedindex = 1;
+      }else{
+        prevselectedindex = this.selectedindex;
+        if(event.keyCode === 40)
+        {
+          this.selectedindex++;
+          if((this.selectedindex > 5 )){
+            this.dropdownitems.nativeElement.scroll(0,this.scrollposition);
+            this.scrollposition = this.scrollposition  +30; 
+          }
+        }
+        else if(event.keyCode === 38){
+          this.selectedindex--;
+          console.log(this.scrollposition);
+          if(this.scrollposition>=0 && this.selectedindex>1){
+            this.dropdownitems.nativeElement.scroll(0,this.scrollposition);
+            this.scrollposition = this.scrollposition  -30; 
+          }
+          if(this.selectedindex === 1){
+            this.scrollposition = 30;
+          }
+
+          if(this.selectedindex <=0){
+            //this.selectedindex = 1;
+          }
+        }  
+      }
+
+      if(this.filteredOptions[this.selectedindex]){
+        this.filteredOptions[this.selectedindex].selected = true;
+        
+      }
+      if(this.filteredOptions[prevselectedindex]){
+        this.filteredOptions[prevselectedindex].selected = false;
+      }     
     }
 
+    console.log(new Date().getTime()+"--"+this.selectedindex+"--"+this.filteredOptions.length);
+    if(event.keyCode === 13 && this.filteredOptions[this.selectedindex]){
+      console.log("exist drop down");
+      this.onItemSelect(this.filteredOptions[this.selectedindex]);
+    }
+  
   }
 
 
@@ -322,8 +392,6 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
         this.onChangeCallback(v);
       }
     }
-
-
   }
 
   //Set touched on blur
@@ -371,8 +439,8 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
   }
 
   onIconClick() {
-    this.showToolTip = ! this.showToolTip;
+    if(!this.disabled)
+      this.showToolTip = ! this.showToolTip;
   }
 
 }
-
