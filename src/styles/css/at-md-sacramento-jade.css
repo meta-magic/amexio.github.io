@@ -606,6 +606,10 @@ button {
 .drodown-caret-down {
   color: #ced4da; }
 
+.list-items-selected {
+  background-color: #b8ffe5;
+  color: #005234; }
+
 /** dropdown - Structure CSS **/
 .dropdown {
   display: block;
@@ -2125,6 +2129,10 @@ header .billboard .content-button {
   padding: 5px; }
 .datapoints .datapoint-east {
   padding: 5px; }
+
+.datapoint {
+  background: #ffffff;
+  color: #001f13; }
 
 /** Datapoints - Structure CSS **/
 .datapoints {

@@ -11,7 +11,7 @@ import {
 @Component({
   selector: 'amexio-datapoints', template: `
 
-    <div class="datapoints" [ngClass]="amexiocolor">
+  <div class="datapoints" [ngClass]="dpClass">
       <table width="100%" [style.background-color]="backgroundcolor" [style.color]="fontcolor">
         <tr *ngIf="north">
           <td [attr.colspan]="colspan">
@@ -65,6 +65,7 @@ export class DataPointsComponent implements OnInit {
   
   colspan: number;
 
+  dpClass : string="datapoint";
 
   constructor() {
     this.colspan = 1;
@@ -72,6 +73,8 @@ export class DataPointsComponent implements OnInit {
 
   ngOnInit() {
 
+    if (this.amexiocolor!="")
+      this.dpClass = this.amexiocolor;
 
     if (this.west) this.colspan++;
 

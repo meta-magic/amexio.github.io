@@ -1,7 +1,5 @@
 
 .datapoints{
-  //background: $datapointBGColor;
-  //color: $datapointColor; 
   
   .datapoints-north{
    color: $datapointColor;
@@ -19,4 +17,8 @@
   .datapoint-east{
     padding: 5px;
   }
+}
+.datapoint{
+  background: $datapointBGColor;
+  color: $datapointColor; 
 }
