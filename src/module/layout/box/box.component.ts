@@ -1,6 +1,12 @@
 /**
  * Created by anaghak07 on 6/3/18.
  */
+
+/*
+ Component Name : Amexio Box
+ Component Description : Amexio Box can be easily wrapped around any other component and configure using the different responsive styling.
+
+*/
 import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
@@ -41,13 +47,42 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 
 export class AmexioBoxComponent implements OnInit {
-
+/*
+Properties 
+name : border
+datatype : string
+version : 4.1 onwards
+default : none
+description : Can set border position : top / right / left / bottom / all / top-bottom / left-right
+*/
  @Input('border')   border : string;
-
+/*
+Properties 
+name : border-color
+datatype : string
+version : 4.1 onwards
+default : theme's border color
+description : Can use amexio colors : red / blue / green / yellow / brown / purple
+*/
  @Input('border-color') borderColor : string;
+/*
+Properties 
+name : background-color
+datatype : string
+version : 4.1 onwards
+default : theme's background color	
+description : Can use amexio colors : red / blue / green / yellow / brown / purple
 
+*/
  @Input('background-color') bgColor : string;
-
+/*
+Properties 
+name : padding
+datatype : boolean
+version : 4.1 onwards
+default : false
+description : padding to all sides
+*/
  @Input('padding') padding: boolean;
  
  constructor() { }
