@@ -1,4 +1,7 @@
-import {AfterContentInit, Component, ContentChildren, EventEmitter, Input, Output, QueryList} from '@angular/core';
+import {
+  AfterContentInit, Component, ContentChildren, EventEmitter, Input, OnChanges, Output,
+  QueryList, SimpleChanges
+} from '@angular/core';
 import {AmexioButtonComponent} from "../buttons/button.component";
 
 @Component({
@@ -6,7 +9,7 @@ import {AmexioButtonComponent} from "../buttons/button.component";
   templateUrl: './button.group.component.html',
   styleUrls: ['./button.group.component.scss']
 })
-export class AmexioButtonGroupComponent implements AfterContentInit {
+export class AmexioButtonGroupComponent implements AfterContentInit,OnChanges {
 
   @Input() size: string;
 
@@ -29,6 +32,13 @@ export class AmexioButtonGroupComponent implements AfterContentInit {
     if (JSON.stringify(this.buttonGroupPreviewData) != JSON.stringify(this.buttonGroupLocalData)) {
       this.buttonGroupPreviewData = JSON.parse(JSON.stringify(this.buttonGroupLocalData));
       this.buttons = this.buttonGroupLocalData;
+      this.setButtonSizes(this.buttons);
+    }
+  }
+
+  ngOnChanges(change : SimpleChanges){
+    if( change.size && !change.size.isFirstChange()){
+      this.updateButtonSizes(change.size);
     }
   }
 
@@ -39,7 +49,6 @@ export class AmexioButtonGroupComponent implements AfterContentInit {
       btnObj.onClick.emit(event);
     }
 
-
   }
 
   ngAfterContentInit() {
@@ -49,7 +58,25 @@ export class AmexioButtonGroupComponent implements AfterContentInit {
     } else {
       this.buttons = this.btns.toArray();
     }
+    this.setButtonSizes(this.buttons);
+  }
 
+  setButtonSizes(btnArray : any){
+    if(btnArray.length > 0){
+      btnArray.forEach((btn : any)=>{
+       /* if(this.size!=null){
+          if(btn.size == null)
+            btn.size = this.size;
+        }*/
+       btn.size = this.size;
+      });
+    }
+  }
+
+  updateButtonSizes(size : any){
+    this.buttons.forEach((btn : any)=>{
+      btn.size = size;
+    });
   }
 
 
