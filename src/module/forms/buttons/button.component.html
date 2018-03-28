@@ -1,6 +1,4 @@
-<button class="button" [ngStyle]="{'cursor': disabled ? 'not-allowed':'pointer'}" 
-[attr.disabled]="disabled ? true: null" 
-[ngClass]="{'button-default': size=='default'
+<button class="button" [ngStyle]="{'cursor': disabled ? 'not-allowed':'pointer'}" [attr.disabled]="disabled ? true: null" [attr.title]="tooltip" [ngClass]="{'button-default': size=='default'
         || size ==null,
         'button-small': size=='small',
         'button-large' : size=='large',
@@ -11,8 +9,7 @@
         'button-danger' : type=='danger' || type == 'red',
         'button-warning' : type=='warning' || type == 'yellow',
         'button-transparent' : type=='transparent',
-        'disabled' : disabled }" 
-        (click)="buttonClick($event)">
+        'disabled' : disabled }" (click)="buttonClick($event)">
         <span class="button-text">
           <!--<i class="{{icon}}" style="padding-right: 5px; " aria-hidden="true"></i>-->
           <span style="padding-right: 5px;" *ngIf="icon">

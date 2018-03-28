@@ -1,8 +1,6 @@
-
 <div class="btn-group">
-  <ng-container *ngFor="let button of buttons">
-    <button  [attr.disabled] = "button.disabled ? true: null" (click)="buttonGroupClick($event,button)"
-    [ngClass]="{'button-default': button.size=='default' || button.size ==null,
+    <ng-container *ngFor="let button of buttons">
+        <button [attr.disabled]="button.disabled ? true: null" [attr.title]="button.tooltip" (click)="buttonGroupClick($event,button)" [ngClass]="{'button-default': button.size=='default' || button.size ==null,
     'button-small': button.size=='small',
     'button-large' : button.size=='large',
     'button-primary' : button.type == 'primary' || button.type == 'theme-color',
@@ -19,5 +17,5 @@
 
       {{button.label}}
     </button>
-  </ng-container>
+    </ng-container>
 </div>
