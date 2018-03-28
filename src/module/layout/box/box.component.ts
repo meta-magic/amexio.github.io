@@ -15,7 +15,7 @@ import {Component, Input, OnInit} from '@angular/core';
  <div class="box-content"
  [attr.padding]="padding ? true: null" 
  [style.height] = "height ? height:'none'" 
- [style.width] = "width" ? width:'none'" 
+ [style.width] = "width ? width:'none'" 
  [ngClass]="{    
  'box-default': borderColor=='default' || borderColor ==null,
  'border-topbar': border=='top',
