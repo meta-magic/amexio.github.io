@@ -217,7 +217,6 @@ label {
   //padding: 0 12px;
   font-size: 14px;
   font-weight: 500;
-
 }
 
 a {
@@ -225,6 +224,9 @@ a {
   //text-transform: lowercase;
 }
 
+textarea{
+  font-family: inherit;
+}
 /*
 The loading throbber is a single spinning element with three
 visible borders and a border-radius of 50%.
