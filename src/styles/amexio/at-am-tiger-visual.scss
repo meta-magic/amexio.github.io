@@ -6,6 +6,17 @@
 .topnav {
   background: linear-gradient(#F58338, #E84C1A);
 }
+
+.topnavmainbarinneritems .nav-dropdown-content { 
+  //display: none;
+  background: linear-gradient(#F58338, #E84C1A);
+  color : $appHeaderFontColor;
+}
+.topnavmainbarinneritems-mobile .nav-dropdown-content{
+  background: linear-gradient(#F58338, #E84C1A);
+  color : $appHeaderFontColor;
+}
+
 .input-control {
   background-color: #1b1d22;
   color: $themeFontColor;

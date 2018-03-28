@@ -9,14 +9,14 @@ $appBackground :#292b2c;
 $appBackgroundImage : none;
 
 $appHeaderBGColor :$themePrimaryColor;
-$appHeaderFontColor : white;
+$appHeaderFontColor : $appBackground;
 $appHeaderMenuBGColor :$appHeaderBGColor;
 $appHeaderMenuFontColor :$appHeaderFontColor;
-$appHeaderHoverBGColor : none;
-$appHeaderHoverFontColor : none;
+$appHeaderHoverBGColor : rgba(255,253,208,0.4);;
+$appHeaderHoverFontColor : none;;
 /* Component Specific Variables */
 $componentHoverBGColor :  rgba(255,253,208,0.4);
-$componentHoverFontColor : $themeFontColor;
+$componentHoverFontColor : $appBackground;
 $componentActiveBGColor :#1b1d22;
 $componentActiveFontColor : $themeSecondaryColor;
 $componentDisabledBGColor : rgb(160, 158, 158);

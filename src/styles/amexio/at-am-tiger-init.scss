@@ -12,8 +12,8 @@ $appHeaderBGColor :$themePrimaryColor;
 $appHeaderFontColor : white;
 $appHeaderMenuBGColor :$appHeaderBGColor;
 $appHeaderMenuFontColor :$appHeaderFontColor;
-$appHeaderHoverBGColor : none;
-$appHeaderHoverFontColor : none;
+$appHeaderHoverBGColor : rgba(255,253,208,0.4);;
+$appHeaderHoverFontColor : $themeFontColor;;
 /* Component Specific Variables */
 $componentHoverBGColor :  rgba(255,253,208,0.4);
 $componentHoverFontColor : $themeFontColor;

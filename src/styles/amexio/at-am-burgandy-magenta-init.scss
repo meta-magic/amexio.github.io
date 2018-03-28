@@ -15,8 +15,8 @@ $appHeaderMenuBGColor :$appHeaderBGColor;
 $appHeaderMenuFontColor :$appHeaderFontColor;
 $appHeaderHoverBGColor :#c7d189;
 $appHeaderHoverFontColor :#030401;
-$appHeaderHoverBGColor : none;
-$appHeaderHoverFontColor : none;
+$appHeaderHoverBGColor : lighten($themeSecondaryColor,60%);
+$appHeaderHoverFontColor : $themeSecondaryColor;
 
 /* Component Specific Variables */
 $componentHoverBGColor : lighten($themeSecondaryColor,60%);

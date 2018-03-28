@@ -52,3 +52,12 @@
 .datapoints .datapoint-south {
   color: $componentBGColor;
 }
+.topnavmainbarinneritems .nav-dropdown-content { 
+  //display: none;
+  background-color: $themeSecondaryColor;
+  color : $navbarActiveBG;
+}
+.topnavmainbarinneritems-mobile .nav-dropdown-content{
+  background-color: $themeSecondaryColor;
+  color : $navbarActiveBG;
+}

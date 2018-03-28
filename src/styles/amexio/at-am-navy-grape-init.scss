@@ -12,11 +12,11 @@ $appHeaderBGColor : white;
 $appHeaderFontColor : $themePrimaryColor;
 $appHeaderMenuBGColor :$appHeaderBGColor;
 $appHeaderMenuFontColor :$appHeaderFontColor;
-$appHeaderHoverBGColor : none;
-$appHeaderHoverFontColor : none;
+$appHeaderHoverBGColor : lighten($themeSecondaryColor,70%);
+$appHeaderHoverFontColor : $themeSecondaryColor;;
 
 /* Component Specific Variables */
-$componentHoverBGColor : lighten($themeSecondaryColor,60%);
+$componentHoverBGColor : lighten($themeSecondaryColor,70%);
 $componentHoverFontColor : $themeSecondaryColor;
 $componentActiveBGColor : lighten($themeSecondaryColor,50%);
 $componentActiveFontColor : $themeSecondaryColor;

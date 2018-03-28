@@ -12,11 +12,12 @@ $appHeaderBGColor :$themePrimaryColor;
 $appHeaderFontColor : #1b1d22;
 $appHeaderMenuBGColor :$appHeaderBGColor;
 $appHeaderMenuFontColor :$appHeaderFontColor;
-$appHeaderHoverBGColor : none;
-$appHeaderHoverFontColor : none;
+$appHeaderHoverBGColor : rgba(255,253,208,0.4);;
+$appHeaderHoverFontColor : inherit;
+
 /* Component Specific Variables */
 $componentHoverBGColor :  rgba(255,253,208,0.4);
-$componentHoverFontColor : $themeFontColor;
+$componentHoverFontColor : $appBackground;
 $componentActiveBGColor :#1b1d22;
 $componentActiveFontColor : $themeSecondaryColor;
 $componentDisabledBGColor : rgb(160, 158, 158);

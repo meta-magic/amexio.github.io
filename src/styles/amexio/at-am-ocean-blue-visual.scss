@@ -48,3 +48,14 @@
    .sidenav .headernode {
     background-color: none;
    }
+
+   
+.topnavmainbarinneritems .nav-dropdown-content { 
+  //display: none;
+  background-color: $themeSecondaryColor;
+  color : $appHeaderFontColor;
+}
+.topnavmainbarinneritems-mobile .nav-dropdown-content{
+  background-color: $themeSecondaryColor;
+  color : $appHeaderFontColor;
+}

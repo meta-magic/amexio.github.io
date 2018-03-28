@@ -12,13 +12,21 @@ body {
   .dropdown{
     background-color: white;
   }
-  
-  
-  
+    
   .topnav {
       background-color: $appBackground;
       color: white;
   }
+  
+.topnavmainbarinneritems .nav-dropdown-content { 
+  //display: none;
+  background-color: $appBackground;
+  color : $themePrimaryColor;
+}
+.topnavmainbarinneritems-mobile .nav-dropdown-content{
+  background-color: $appBackground;
+  color : $themePrimaryColor;
+}
   .listbox{
     background-color: $appBackground;
     .list{

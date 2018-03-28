@@ -55,3 +55,13 @@
   background-color:$themeSecondaryColor;
   color: $componentBGColor;
 }
+
+.topnavmainbarinneritems .nav-dropdown-content { 
+  //display: none;
+  background:  linear-gradient(#98FB98, #4CBB17);
+  color : $appHeaderFontColor;
+}
+.topnavmainbarinneritems-mobile .nav-dropdown-content{
+  background-color:  linear-gradient(#98FB98, #4CBB17);
+  color : $appHeaderFontColor;
+}
