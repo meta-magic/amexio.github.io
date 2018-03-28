@@ -3,12 +3,12 @@
  */
 
 
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 
 @Component({
   selector: 'amexio-paginator', templateUrl: './paginator.component.html', styleUrls: ['./paginator.component.scss']
 })
-export class AmexioPaginatorComponent {
+export class AmexioPaginatorComponent implements OnChanges{
 
   show: boolean;
 
@@ -46,6 +46,23 @@ export class AmexioPaginatorComponent {
 
   ngOnInit() {
     if (this.size == null || this.size == '') this.size = 'medium';
+    this.initializePages();
+  }
+
+  ngOnChanges(change : SimpleChanges){
+    if(change.pages && !change.pages.isFirstChange()){
+      this.initializePages();
+    }
+    if(change.rows && !change.rows.isFirstChange()){
+      this.initializePages();
+    }
+  }
+
+
+  initializePages(){
+    this.fullPageSet.length = 0;
+    this.activePages.length = 0;
+    this.pageIndex.length = 0;
 
     if (this.rows != null) {
       for (let i = 0; i < this.pages; i++) {

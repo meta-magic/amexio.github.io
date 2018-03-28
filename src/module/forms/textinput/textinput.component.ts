@@ -87,10 +87,13 @@ export class AmexioTextInputComponent implements ControlValueAccessor {
   get pattern(): string {
     return this._pattern;
   }
-
+  
   @Input('pattern')
   set pattern(value: string) {
-    if (value != null) this.regEx = new RegExp(this.pattern);
+    if (value != null) {
+      this._pattern = value;
+      this.regEx = new RegExp(this._pattern);
+    }
   }
 
   @Input('enable-popover') enablepopover: boolean;
