@@ -2,6 +2,12 @@
  * Created by ketangote on 12/1/17.
  */
 
+ /*
+ Component Name : Amexio Accordion
+ Component Selector : <amexio-accordion>
+ Component Description : Amexio Accordion provides an easy way to organize big forms by grouping the fields in accordion tabs.
+
+*/
 
 import {
   AfterContentInit,
@@ -30,6 +36,14 @@ export class AmexioVerticalTabComponent implements OnInit, AfterViewInit, AfterC
 
   @ContentChildren(AmexioTabPill) queryTabs: QueryList<AmexioTabPill>;
 
+  /*
+Events
+name : onClick
+datatype : none
+version : 4.0 onwards
+default :none
+description : Callback to invoke on activated tab event.
+*/
   @Output() onClick: any = new EventEmitter<any>();
 
   tabCollection: AmexioTabPill[];

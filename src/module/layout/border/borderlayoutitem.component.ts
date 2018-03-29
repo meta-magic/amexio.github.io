@@ -1,7 +1,12 @@
 /**
  * Created by ketangote on 1/4/18.
  */
+/*
+Component Name : Amexio BorderLayout
+Component Selector : <amexio-borderlayout-item>
+Component Description : Amexio border layout lays out a container, arranging and resizing its components to fit in five regions: north, south, east, west, and center..
 
+*/
 import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
@@ -11,7 +16,14 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class AmexioBorderLayoutItemComponent implements OnInit {
 
-
+  /*
+Properties 
+name : position
+datatype : string
+version : 4.0 onwards
+default : none
+description : Layout the contents to North , East , West , Center & South positions
+*/
   @Input() position: string;
 
   positionClass: string = "borderlayout-";

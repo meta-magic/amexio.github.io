@@ -33,15 +33,18 @@
     "check-travis": " travis-status --repo=meta-magic/amexio.github.io/ --branch=master --fail-pending || echo 'Not yet passing'"
   },
   "dependencies": {
-    "@angular/core": "5.0.0",
     "@angular/common": "5.0.0",
+    "@angular/core": "5.0.0",
     "@angular/forms": "5.0.0",
     "@angular/http": "5.0.0",
     "@angular/language-service": "5.0.0",
-    "@angular/platform-browser": "5.0.0"
+    "@angular/platform-browser": "5.0.0",
+    "angular-font-awesome": "^3.1.2",
+    "font-awesome": "^4.7.0"
   },
   "devDependencies": {
     "@angular/animations": "5.0.0",
+    "@angular/cli": "^1.7.3",
     "@angular/compiler": "5.0.0",
     "@angular/compiler-cli": "5.0.0",
     "@angular/platform-browser-dynamic": "5.0.0",

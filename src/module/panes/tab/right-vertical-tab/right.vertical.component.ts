@@ -3,6 +3,12 @@
  */
 
 
+/*
+ Component Name : Amexio RightAllignedTab
+ Component Selector : <amexio-right-vertical-tab-view >
+ Component Description : Right Aligned Vertical Tab component for Angular Apps with multiple configurations such as Tab, Icon support.
+
+*/
 import {
   AfterViewInit,
   Component,
@@ -31,6 +37,14 @@ export class AmexioRightVerticalTabComponent implements OnInit, AfterViewInit {
 
   tabCollection: AmexioTabPill[];
 
+    /*
+Events
+name : onClick
+datatype :none
+version : 4.0 onwards
+default : none
+description : Callback to invoke on activated tab event.
+*/
   @Output() onClick: any = new EventEmitter<any>();
 
   content: string;

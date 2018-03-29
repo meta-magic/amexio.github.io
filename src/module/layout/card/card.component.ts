@@ -2,6 +2,12 @@
  * Created by ketangote on 12/18/17.
  */
 
+ /*
+ Component Name : Amexio 
+  Component Selector : <amexio-card>
+ Component Description : Amexio Box can be easily wrapped around any other component and configure using the different responsive styling.
+
+*/
 
 import {Component, EventEmitter, Input, OnInit, Output, ViewChild, ElementRef} from '@angular/core';
 
@@ -28,21 +34,84 @@ import {Component, EventEmitter, Input, OnInit, Output, ViewChild, ElementRef} f
 })
 export class AmexioCardComponent implements OnInit {
 
-
+  /*
+Properties 
+name : header-align
+datatype : string
+version : 4.0 onwards
+default : none
+description : Align of item elements inside card header example : right,center,left.
+*/
   @Input('header-align') headeralign: string;
 
+    /*
+Properties 
+name : header-align
+datatype : string
+version : 4.0 onwards
+default : false
+description : User can enable header of card by setting this flag to true..
+*/
   @Input() header: boolean;
 
+    /*
+Properties 
+name : footer
+datatype : boolean
+version : 4.0 onwards
+default : false
+description : User can enable footer of card by setting this flag to true.
+*/
   @Input() footer: boolean;
 
+  /*
+Properties 
+name : footer-align
+datatype :  string
+version : 4.0 onwards
+default : none
+description : Align of item elements inside card footer example : right,center,left..
+*/
   @Input('footer-align') footeralign: string;
 
+    /*
+Properties 
+name : show
+datatype :  boolean
+version : 4.0 onwards
+default : true
+description : User can bind variable to this and hide/unhide card based on requirement..
+*/
   @Input() show: boolean = true;
 
+  /*
+Properties 
+name : height
+datatype :   any
+version : 4.0 onwards
+default : none
+description : User can set the height to body..
+*/
   @Input()  height : any;
 
+  /*
+Properties 
+name : min-height
+datatype :   any
+version : 4.0 onwards
+default : none
+description : provides minimum card height.
+*/
   @Input('min-height')  minHeight : any;
 
+  /*
+Properties 
+name : body-height
+datatype :   any
+version : 4.0 onwards
+default : none
+description : provides card height.
+*/
   @Input('body-height') bodyheight : any;
 
   @ViewChild('cardHeader', {read: ElementRef}) public cardHeader: ElementRef;

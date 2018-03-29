@@ -1,6 +1,14 @@
 /**
  * Created by pratik on 13/12/17.
  */
+
+
+/*
+ Component Name : Amexio Button Dropdown
+ Component Selector : <amexio-btn-dropdown-item>
+ Component Description : .
+
+*/
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({

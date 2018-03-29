@@ -1,6 +1,13 @@
 /**
  * Created by pratik on 15/12/17.
  */
+
+ /*
+ Component Name : Amexio StepBox
+ Component Selector : <amexio-steps>
+ Component Description : Step-box component is an indicator for the steps in a workflow
+
+*/
 import {
   AfterContentInit, Component, ContentChildren, DoCheck, EventEmitter, Input,
   Output, QueryList
@@ -87,20 +94,68 @@ import {StepBlockComponent} from "./step-block";
 
 export class AmexioStepsComponent implements AfterContentInit, DoCheck {
 
+   /*
+Properties 
+name : index
+datatype : boolean
+version : 4.0 onwards
+default : false
+description : Show the indexes of steps.
+*/
   @Input() index: boolean;
 
+    /*
+Properties 
+name : icon
+datatype : boolean
+version : 4.0 onwards
+default : false
+description : icon for stepbox.
+*/
   @Input() icon: boolean;
 
+     /*
+Properties 
+name :  block
+datatype : boolean
+version : 4.0 onwards
+default : false
+description : Show block based on boolean.
+*/
   @Input() block: boolean;
 
+  /*
+Events
+name : onClick
+datatype : none
+version : none
+default : none
+description :Event emitted on block click.
+*/
   @Output() onClick: EventEmitter<any> = new EventEmitter<any>();
 
+  /*
+Events
+name : getStepBlockData
+datatype : none
+version : none
+default : none
+description :Gives stepblock information .
+*/
   @Output() getStepBlockData: EventEmitter<any> = new EventEmitter<any>();
 
   @ContentChildren(StepBlockComponent) stepBlocks: QueryList<StepBlockComponent>;
 
   stepBlockArray: StepBlockComponent[];
 
+       /*
+Properties 
+name :  data
+datatype : any
+version : 4.0 onwards
+default : none
+description : provides data for stepblock.
+*/
   @Input() data: any[];
 
   stepPreviewData: any;

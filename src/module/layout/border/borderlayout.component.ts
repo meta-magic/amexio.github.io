@@ -2,6 +2,13 @@
  * Created by ketangote on 1/4/18.
  */
 
+/*
+ Component Name : Amexio BorderLayout
+ Component Selector : <amexio-borderlayout>
+ Component Description : Amexio border layout lays out a container, arranging and resizing its components to fit in five regions: north, south, east, west, and center..
+
+*/
+
 import {Component, ContentChildren, OnInit, QueryList} from '@angular/core';
 import {AmexioBorderLayoutItemComponent} from "./borderlayoutitem.component";
 

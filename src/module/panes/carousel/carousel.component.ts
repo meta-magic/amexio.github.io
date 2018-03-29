@@ -1,6 +1,13 @@
 /**
  * Created by pratik on 28/12/17.
  */
+
+/*
+ Component Name : Amexio carousel
+ Component Selector : <amexio-carousel>
+ Component Description : The CarouselView displays a collection of images or other content in a horizontal layout with built-in navigation between the items..
+
+*/
 import {
   AfterContentInit, Component, ContentChildren, ElementRef, Input, OnInit, QueryList, TemplateRef, ViewChild
 } from '@angular/core';
@@ -29,12 +36,33 @@ import {AmexioTemplate} from "./carousel.template";
 
 export class AmexioCarouselComponent implements OnInit, AfterContentInit {
 
+    /*
+Properties 
+name : header
+datatype : string
+version : 4.0 onwards
+default : none
+description : User can bind title for accordion tab.
+*/
   @Input() header: string;
 
-  @Input() mode: 'single' | 'multiple';
+   /*
+  @Input() mode: 'single' | 'multiple';*/
 
+/*Properties 
+name : data
+datatype : any
+version : 4.0 onwards
+default : none
+description : Data Containing Image Path, Information and Video URL Refer the DataSource Tab */
   @Input() data: any;
 
+  /*Properties 
+name : shuffle-interval
+datatype : number
+version : 4.0 onwards
+default : none
+description : time interval for shuffling images */
   @Input('shuffle-interval') shuffleinterval: number;
 
   timeInterval: any;
@@ -49,9 +77,9 @@ export class AmexioCarouselComponent implements OnInit, AfterContentInit {
   }
 
   ngOnInit() {
-    if (this.mode == null) {
-      this.mode = 'single';
-    }
+    // if (this.mode == null) {
+    //   this.mode = 'single';
+    // }
     if (this.shuffleinterval != null) {
       this.timeInterval = setInterval(() => {
         let carouselItemPosix = this.tabs.nativeElement;

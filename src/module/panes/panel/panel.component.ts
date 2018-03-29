@@ -13,6 +13,15 @@
  * Author - Pratik Kelwalkar
  *
  */
+
+ /*
+ Component Name : Amexio panel
+ Component Selector : <amexio-panel>
+ Component Description : Panel provides an easy way to organize big forms by grouping the fields in panel
+
+
+
+*/
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
@@ -45,14 +54,54 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 export class AmexioPanelComponent implements OnInit {
 
+   /*
+Properties 
+name : title
+datatype : any
+version : 4.0 onwards
+default : none
+description : Title for panel.
+*/
   @Input() title: any;
 
+    /*
+Properties 
+name : header
+datatype :  boolean
+version : 4.0 onwards
+default : true
+description : 	Enable/Disabled header.
+*/
   @Input() header: boolean;
 
+  /*
+Properties 
+name : expanded
+datatype :  boolean
+version : 4.0 onwards
+default : false
+description : Pane will expand or collapse based on the boolean.
+*/
   @Input() expanded: boolean;
 
+    /*
+Properties 
+name : height
+datatype :  number
+version : 4.0 onwards
+default : none
+description : Height of panel must be in px ex.100, 250..
+*/
   @Input() height: number;
 
+     /*
+Events
+name : onClick
+datatype : none
+version : none
+default : none
+description : Fires the on accordion pane click event.
+*/
   @Output() onClick: EventEmitter<any> = new EventEmitter();
 
   iconclassKey: string;

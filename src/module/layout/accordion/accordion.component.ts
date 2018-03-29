@@ -1,4 +1,11 @@
 
+/*
+ Component Name : Amexio Accordion
+ Component Selector : <amexio-accordion>
+ Component Description : Amexio Accordion provides an easy way to organize big forms by grouping the fields in accordion tabs.
+
+*/
+
 import {Component, ContentChildren, Input, QueryList, AfterViewInit, OnInit, DebugElement, AfterContentInit} from '@angular/core';
 import { AmexioAccordionTabComponent } from './accordion.pane';
 
@@ -8,10 +15,36 @@ import { AmexioAccordionTabComponent } from './accordion.pane';
 
 export class AmexioAccordionComponent implements OnInit, AfterContentInit {
 
+  /*
+Properties 
+name : expand-all
+datatype : boolean
+version : 4.0 onwards
+default : false
+description : Pane will expand or collapse based on the boolean
+*/
   @Input('expand-all') expandAll : boolean;
   
+
+ /*
+Properties 
+name : transparent
+datatype : boolean
+version : 4.0 onwards
+default : false
+description : Apply Transparent styles to accordion
+*/
   @Input('transparent') isTransparent : boolean;
 
+
+   /*
+Properties 
+name : angle-icon 
+datatype : boolean
+version : 4.0 onwards
+default : false
+description : Can use Angle Icons instead of default plus/minus icons
+*/
   @Input('angle-icon') angleIcon : boolean;
 
   @ContentChildren(AmexioAccordionTabComponent) queryTabs: QueryList<AmexioAccordionTabComponent>;

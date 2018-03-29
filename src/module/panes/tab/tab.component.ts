@@ -2,7 +2,14 @@
  * Created by ketangote on 12/1/17.
  */
 
+/*
+ Component Name : Amexio Tab
+ Component Selector : <amexio-tab-view>
+ Component Description : Tab component for Angular Apps with multiple configurations such as Tab, Icon support, Scrollable tabs, Closable tab, Vertical Tabs
 
+ .
+
+*/
 import {
   AfterContentInit,
   AfterViewInit,
@@ -24,8 +31,24 @@ import {AmexioTabPill} from "./tab.pill.component";
 })
 export class AmexioTabComponent implements OnInit, AfterViewInit, AfterContentInit {
 
+  /*
+Properties 
+name : closable
+datatype : boolean
+version : 4.0 onwards
+default : false
+description : This flag will make tab closable.
+*/
   @Input() closable: boolean;
 
+  /*
+Properties 
+name : position
+datatype : string
+version : 4.0 onwards
+default : 
+description : specify position of tab.
+*/
   @Input() position: string;
 
   @ViewChild('tab', {read: ElementRef}) public tabs: ElementRef;
@@ -34,8 +57,17 @@ export class AmexioTabComponent implements OnInit, AfterViewInit, AfterContentIn
 
   tabCollection: AmexioTabPill[];
 
+   /*
+Events
+name : onClick
+datatype : none
+version : none
+default : none
+description : Callback to invoke on activated tab event.
+*/
   @Output() onClick: any = new EventEmitter<any>();
 
+   /* for internal purpose .*/
   @Input() tabLocalData: any;
 
   tabPreviewData: any;

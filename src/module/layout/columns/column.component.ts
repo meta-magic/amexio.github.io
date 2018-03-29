@@ -1,6 +1,13 @@
 /**
  * Created by pratik on 8/1/18.
  */
+
+ /*
+ Component Name : Amexio Column
+ Component Selector : <amexio-column>
+ Component Description : Amexio column system allows up to 12 columns across the page.
+*/
+
 import {Component, Input, OnInit} from '@angular/core';
 import {DomSanitizer} from "@angular/platform-browser";
 
@@ -20,7 +27,13 @@ export class AmexioColumnComponent implements OnInit {
   constructor() {
 
   }
-
+/*
+Properties 
+name : size
+datatype : any
+version : 4.0 onwards
+default : none
+description : Column size*/
   @Input()
   set size(value: any) {
     this.size_ = value;
