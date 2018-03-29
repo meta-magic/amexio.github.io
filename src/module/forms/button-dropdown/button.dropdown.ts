@@ -1,6 +1,14 @@
 /**
  * Created by pratik on 13/12/17.
  */
+
+
+/*
+ Component Name : Amexio Button Dropdown
+ Component Selector : <amexio-btn-dropdown>
+ Component Description : Amexio Dropdown Button component with various modes and configurations .
+
+*/
 import {
   AfterContentInit, Component, ContentChildren, ElementRef, EventEmitter, HostListener, Input, OnInit, Output,
   QueryList, ViewChild, ViewContainerRef
@@ -49,6 +57,14 @@ export class AmexioButtonDropdownComponent implements AfterContentInit {
 
   @ViewChild('btnRef')  btnReference: any;
 
+  /*
+Properties 
+name : label
+datatype : string
+version : 4.0 onwards
+default : none
+description : Label on button
+*/
   @Input() label: string;
 
   openContent: boolean;
@@ -59,16 +75,59 @@ export class AmexioButtonDropdownComponent implements AfterContentInit {
 
   dropdownItemData: any[] = [];
 
+    /*
+ For internal use
+*/
   @Input() buttonGroupLocalData: any;
 
+    /*
+Properties 
+name : type
+datatype : string
+version : 4.0 onwards
+default : none
+description : Type of button : default,theme-color,theme-backgroundcolor, green, red, yellow ( primary, secondary ,success , danger & warning Depricated v4.1 onwards)
+*/
   @Input() type: string;
 
+   /*
+Properties 
+name : disabled
+datatype : boolean
+version : 4.0 onwards
+default : false
+description : Enable/Disables the button
+*/
   @Input() disabled: boolean;
 
+ /*
+Properties 
+name : size
+datatype :  string
+version : 4.0 onwards
+default : none
+description : Different Sizes of Buttons availabe : large, default, small & xsmall
+*/  
   @Input() size: string;
 
+  /*
+Events
+name : click
+datatype :  none
+version : none
+default : none
+description : Fire when button-dropdown item button/link click
+*/ 
   @Output() click: any = new EventEmitter<any>();
 
+   /*
+Events
+name : getLinkData
+datatype :  none
+version : none
+default : none
+description : Fire when button-dropdown item button/link click
+*/ 
   @Output() getLinkData: any = new EventEmitter<any>()
 
   buttonGroupPreviewData: any;

@@ -2,7 +2,13 @@
  * Created by pratik on 1/12/17.
  */
 
+/*
+ Component Name : Amexio Dropdown
+ Component Selector :  <amexio-dropdown>
+ Component Description : Drop-Down component has been created to render N numbers of drop-down items based on data-set configured. Data-set can be configured using HTTP call OR Define fix number of dropdown-items. User can configure different attributes for enabling filter, multi-select, maximum selection in case of multi select.
 
+ 
+*/
 import {
   Component, DoCheck, ElementRef, EventEmitter, forwardRef, HostListener, Input, OnInit, Output, Renderer2, ViewChild
 } from '@angular/core';
@@ -25,24 +31,105 @@ export const CUSTOM_DROPDOWN_CONTROL_VALUE_ACCESSOR: any = {
 })
 export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAccessor {
 
+   /*
+Properties 
+name : field-label
+datatype : string
+version : 4.0 onwards
+default : none 
+description : The label of this field
+*/
   @Input('field-label') fieldlabel: string;
 
+  /*
+Properties 
+name : allow-blank
+datatype : string
+version : 4.0 onwards
+default : none 
+description : 
+*/
   @Input('allow-blank') allowblank: string;
 
+  /*
+Properties 
+name : data
+datatype : any
+version : 4.0 onwards
+default : none 
+description : Local data for dropdown.
+*/
   @Input() data: any;
 
+ /*
+Properties 
+name : data-reader
+datatype : string
+version : 4.0 onwards
+default : none 
+description : Key in JSON datasource for records
+*/
   @Input('data-reader') datareader: string;
 
+/*
+Properties 
+name : http-method
+datatype : string
+version : 4.0 onwards
+default : none 
+description : Type of HTTP call, POST,GET.
+*/
   @Input('http-method') httpmethod: string;
 
+ /*
+Properties 
+name : http-url
+datatype : string
+version : 4.0 onwards
+default : none 
+description : REST url for fetching datasource.
+*/ 
   @Input('http-url') httpurl: string;
 
+   /*
+Properties 
+name : display-field
+datatype : string
+version : 4.0 onwards
+default : none 
+description : Name of key inside response data to display on ui.
+*/ 
   @Input('display-field') displayfield: string;
 
+
+   /*
+Properties 
+name : value-field
+datatype : string
+version : 4.0 onwards
+default : none 
+description : Name of key inside response data.use to send to backend
+*/ 
   @Input('value-field') valuefield: string;
 
+   /*
+Properties 
+name : search
+datatype : boolean
+version : 4.0 onwards
+default : false 
+description : true for search box enable
+*/ 
   @Input() search: boolean;
 
+  /*
+Properties 
+name : multi-select
+datatype : boolean
+version : 4.0 onwards
+default : false 
+description : true for select multiple options
+*/ 
   @Input('multi-select') multiselect: boolean;
 
   @ViewChild('dropdownitems', {read: ElementRef}) public dropdownitems: ElementRef;
@@ -59,29 +146,110 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
     return this._errormsg;
   }
 
+
+/*
+Properties 
+name : error-msg
+datatype : none
+version : 4.0 onwards
+default : none
+description : 
+*/ 
   @Input('error-msg')
   set errormsg(value: string) {
     this.helpInfoMsg = value + '<br/>';
   }
 
+
+/*
+Events
+name : onBlur
+datatype : any
+version : 4.0 onwards
+default : none
+description : 
+*/ 
   @Output() onBlur: any = new EventEmitter<any>();
 
+  /*
+Events
+name : input
+datatype : any
+version : none
+default : none
+description : 	On input event field.
+*/ 
   @Output() input: any = new EventEmitter<any>();
 
+  /*
+Events
+name : focus
+datatype : any
+version : none
+default : none
+description : 
+*/ 
   @Output() focus: any = new EventEmitter<any>();
 
+  /*
+Events
+name : onSingleSelect
+datatype : any
+version : none
+default : none
+description : Fire when drop down item selected.
+*/ 
   @Output() onSingleSelect: any = new EventEmitter<any>();
 
+  /*
+Events
+name : onMultiSelect
+datatype : any
+version :none
+default : none
+description : Fire when multiple record select in drop down.this event is only applied when multi-select=true
+
+*/ 
   @Output() onMultiSelect: any = new EventEmitter<any>();
 
+  /*
+Events
+name : onBlur
+datatype : any
+version :none
+default : none
+description : On record select event.this event is only for normal dropdown.
+
+*/ 
   @Output() onClick: any = new EventEmitter<any>();
 
   showToolTip: boolean;
 
+   /*
+Properties 
+name : place-holder
+datatype : string
+version : 4.0 onwards
+default : none 
+description : 	Show place-holder inside dropdown component*/
   @Input('place-holder') placeholder: string;
 
+  /*
+Properties 
+name : disabled
+datatype :  boolean
+version : 4.0 onwards
+default : none 
+description : If true will not react on any user events and show disable icon over*/
   @Input() disabled: boolean;
 
+  /*
+Properties 
+name : icon-feedback
+datatype : boolean
+version : 4.0 onwards
+default : none 
+description : */
   @Input('icon-feedback') iconfeedback: boolean;
 
   @Input('font-style') fontstyle: string;

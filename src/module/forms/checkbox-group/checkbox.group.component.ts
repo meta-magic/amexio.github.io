@@ -2,6 +2,13 @@
  * Created by ketangote on 11/21/17.
  */
 
+ /*
+ Component Name : Amexio Checkbox Group
+ Component Selector :  <amexio-checkbox-group>
+ Component Description : Checkbox input component has been created to render N numbers of check-box based on data-set configured. Data-set can be configured using HTTP call OR Define fix number of check-box.
+
+ 
+*/
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {CommonDataService} from "../../services/data/common.data.service";
 
@@ -13,28 +20,104 @@ import {CommonDataService} from "../../services/data/common.data.service";
 })
 export class AmexioCheckBoxGroupComponent {
 
+
+  /*
+Properties 
+name : horizontal
+datatype : boolean
+version : 4.0 onwards
+default : false 
+description : Set true for horizontal checkbox
+*/
   @Input() horizontal: boolean;
 
+   /*
+Properties 
+name : field-label
+datatype : string
+version : 4.0 onwards
+default : none 
+description : The label of this field
+*/
   @Input('field-label') fieldlabel: string;
 
+  /*
+ not in use
+*/
   @Input('field-name') fieldname: string;
 
+    /*
+Properties 
+name : data-reader
+datatype : string
+version : 4.0 onwards
+default : none 
+description : Key in JSON datasource for records
+*/
   @Input('data-reader') datareader: string;
 
+   /*
+Properties 
+name : http-method
+datatype : string
+version : 4.0 onwards
+default : none 
+description : Type of HTTP call, POST,GET.
+*/
   @Input('http-method') httpmethod: string;
 
+  /*
+Properties 
+name : http-url
+datatype : string
+version : 4.0 onwards
+default : none 
+description : REST url for fetching datasource.
+*/
   @Input('http-url') httpurl: string;
 
+  /*
+Properties 
+name : display-field
+datatype : string
+version : 4.0 onwards
+default : none 
+description : Name of key inside response data to display on ui.
+*/
   @Input('display-field') displayfield: string;
 
+   /*
+Properties 
+name : value-field
+datatype : string
+version : 4.0 onwards
+default : none 
+description : Name of key inside response data.use to send to backend
+*/
   @Input('value-field') valuefield: string;
-
+/* not in use */
   @Input() search: boolean;
 
+   /*
+Properties 
+name : data
+datatype : any
+version : 4.0 onwards
+default : none 
+description : Local data for checkboxGroup.
+*/
   @Input() data: any;
 
   mask : boolean = true;
 
+   /*
+Properties 
+name : onSelection
+datatype : any
+version : none
+default : none 
+description : fire when check box click
+*/
   @Output() onSelection: any = new EventEmitter<any>();
 
   calculatedColSize: any;

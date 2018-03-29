@@ -2,6 +2,12 @@
  * Created by ketangote on 11/21/17.
  */
 
+ /*
+ Component Name : Amexio Checkbox
+ Component Selector :  <amexio-checkbox>
+ Component Description : Single checkbox having boolean based values.
+ 
+*/
 import {Component, EventEmitter, forwardRef, Input, Output} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
@@ -20,12 +26,39 @@ export const CUSTOM_CHECKBOX_CONTROL_VALUE_ACCESSOR: any = {
 })
 export class AmexioCheckBoxComponent implements ControlValueAccessor {
 
+  /*
+Properties 
+name : field-label
+datatype : string
+version : 4.0 onwards
+default : none 
+description : The label of this field
+*/
   @Input('field-label') fieldlabel: string;
 
+  /*
+Properties 
+name : disabled
+datatype : boolean
+version : 4.0 onwards
+default : false
+description :  If true will not react on any user events and show disable icon over
+*/
   @Input() disabled: boolean;
 
+    /*
+    not in use
+ */
   @Input() required: string;
 
+  /*
+Events
+name : onSelection
+datatype : any
+version : none
+default : none
+description :  Event fired on checkbox click.
+*/
   @Output() onSelection: any = new EventEmitter<any>();
 
   constructor() {

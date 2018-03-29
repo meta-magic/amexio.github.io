@@ -1,3 +1,10 @@
+
+/*
+ Component Name : Amexio Button Group
+ Component Selector : <amexio-btn-group>
+ Component Description : Amexio Button groups are containers for related action amexio-button.
+
+*/
 import {
   AfterContentInit, Component, ContentChildren, EventEmitter, Input, OnChanges, Output,
   QueryList, SimpleChanges
@@ -11,14 +18,30 @@ import {AmexioButtonComponent} from "../buttons/button.component";
 })
 export class AmexioButtonGroupComponent implements AfterContentInit,OnChanges {
 
+ /*
+Properties 
+name : size
+datatype :  string
+version : 4.0 onwards
+default : none
+description : Different Sizes of Buttons availabe : large, default, small & xsmall
+*/  
   @Input() size: string;
 
   previousData: any;
-
+/* for internal use*/ 
   @Input() buttonGroupLocalData: any;
 
   buttonGroupPreviewData: any;
 
+  /*
+Events
+name : getButton
+datatype :  none
+version : none
+default : none
+description : Fire when button click
+*/  
   @Output() getButton: any = new EventEmitter<any>();
 
   @ContentChildren(AmexioButtonComponent) btns: QueryList<AmexioButtonComponent>;

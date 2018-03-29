@@ -22,8 +22,24 @@ export class AmexioTemplate {
 })
 export class AmexioTemplateWrapper implements OnInit, OnDestroy {
 
+  /*
+Properties 
+name : index
+datatype :  number
+version : 4.0 onwards
+default : none
+description : its a index of the collection of item of items.
+*/ 
   @Input() index: number;
 
+   /*
+Properties 
+name : amexioTemplateWrapper
+datatype :  templateRef
+version : 4.0 onwards
+default : none
+description : renders the carousel items in a collection
+*/ 
   @Input('amexioTemplateWrapper') templateRef: TemplateRef<any>;
 
   view: EmbeddedViewRef<any>;
@@ -46,6 +62,14 @@ export class AmexioTemplateWrapper implements OnInit, OnDestroy {
     }
   }
 
+   /*
+Properties 
+name : get item
+datatype :   any
+version : 4.0 onwards
+default : none
+description : gets the carousel item
+*/ 
   @Input() get item(): any {
     return this._item;
   }

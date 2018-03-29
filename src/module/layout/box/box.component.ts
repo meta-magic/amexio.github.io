@@ -4,8 +4,9 @@
 
 /*
  Component Name : Amexio Box
+ Component Selector : amexio-box
  Component Description : Amexio Box can be easily wrapped around any other component and configure using the different responsive styling.
-
+ 
 */
 import {Component, Input, OnInit} from '@angular/core';
 

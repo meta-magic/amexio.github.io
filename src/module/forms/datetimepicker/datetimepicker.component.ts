@@ -1,3 +1,12 @@
+
+ /*
+ Component Name : Amexio Date time picker
+ Component Selector :  <amexio-date-time-picker>
+ Component Description : This component is flexible for both Date and time picker with all required configurations in Style.
+
+ 
+*/
+
 import {Component, ElementRef, EventEmitter, forwardRef, HostListener, Input, OnInit, Output} from '@angular/core';
 import {NG_VALUE_ACCESSOR} from "@angular/forms";
 
@@ -15,25 +24,109 @@ export const CUSTOM_DATETIME_Style_CONTROL_VALUE_ACCESSOR: any = {
 
 export class AmexioDateTimePicker implements OnInit {
 
+
+  /*
+Properties 
+name : date-format
+datatype : string
+version : 4.0 onwards
+default : none 
+description : The label of this field
+*/
   @Input('date-format') dateformat: string;
 
+    /*
+Properties 
+name : 'date-picker
+datatype : boolean
+version : 4.0 onwards
+default : false
+description : Enable/Disable Date Picker
+*/
   @Input('date-picker') datepicker: boolean;
 
+   /*
+Properties 
+name : time-picker
+datatype : boolean
+version : 4.0 onwards
+default : false
+description : Enable/Disable Time Picker
+*/
   @Input('time-picker') timepicker: boolean;
 
+   /*
+Properties 
+name : field-label
+datatype : string
+version : 4.0 onwards
+default : none
+description : 	The label of this field
+*/
   @Input('field-label') fieldlabel: string;
 
+  /*
+Properties 
+name : read-only
+datatype : boolean
+version : 4.0 onwards
+default : false
+description : Enable/Disable Date/Time Picker
+*/
   @Input('read-only') readonly: boolean;
 
+/* 
+Properties 
+name : required
+datatype : boolean
+version : 4.0 onwards
+default : false
+description : flag to allow blank field or not
+*/
   @Input() required: boolean;
 
   posixUp : boolean;
 
   positionClass : any;
 
+    /*
+Properties 
+name : blur
+datatype : none
+version : none
+default : none
+description : On blur event
+*/
   @Output() blur: EventEmitter<any> = new EventEmitter<any>();
+
+   /*
+Properties 
+name : change
+datatype : none
+version : none
+default : none
+description : On field value change event
+*/
   @Output() change: EventEmitter<any> = new EventEmitter<any>();
+  
+   /*
+Properties 
+name : input
+datatype : none
+version : none
+default : none
+description : On input event field.
+*/
   @Output() input: EventEmitter<any> = new EventEmitter<any>();
+ 
+  /*
+Properties 
+name : focus
+datatype : none
+version : none
+default : none
+description : On field focus event
+*/
   @Output() focus: EventEmitter<any> = new EventEmitter<any>();
 
   showToolTip: boolean;

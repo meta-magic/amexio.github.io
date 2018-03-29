@@ -1,6 +1,13 @@
 /**
  * Created by pratik on 13/12/17.
  */
+
+ /*
+ Component Name : Amexio Button Split Dropdown
+ Component Selector : <amexio-btn-dropdown-item>
+ Component Description : Amexio Dropdown Button component with various modes and configurations .
+
+*/
 import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from '@angular/core';
 import {AmexioButtonDropDownItemComponent} from "./button.dropdown.item";
 
@@ -39,6 +46,14 @@ import {AmexioButtonDropDownItemComponent} from "./button.dropdown.item";
 
 export class AmexioSpiltButtonDropdownComponent implements AfterContentInit {
 
+   /*
+Properties 
+name : label
+datatype : string
+version : 4.0 onwards
+default : none
+description : Label on button
+*/
   @Input() label: string;
 
   openContent: boolean;
@@ -47,10 +62,34 @@ export class AmexioSpiltButtonDropdownComponent implements AfterContentInit {
 
   dropdownItemData: any[] = [];
 
+   /*
+Properties 
+name : type
+datatype : string
+version : 4.0 onwards
+default : none
+description : Type of button : default,theme-color,theme-backgroundcolor, green, red, yellow ( primary, secondary ,success , danger & warning Depricated v4.1 onwards)
+*/
   @Input() type: string;
 
+  /*
+Properties 
+name : disabled
+datatype : boolean
+version : 4.0 onwards
+default : false
+description : Enable/Disables the button
+*/
   @Input() disabled: boolean;
 
+   /*
+Properties 
+name : size
+datatype :  string
+version : 4.0 onwards
+default : none
+description : Different Sizes of Buttons availabe : large, default, small & xsmall
+*/  
   @Input() size: string;
 
 
