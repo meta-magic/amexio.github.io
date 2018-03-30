@@ -10,6 +10,12 @@
  * Author - Sagar Jadhav
  *
  */
+
+ /*
+ Component Name : Amexio dashboard
+ Component Selector : <amexio-dashboard-title>
+ Component Description : create dasshboard component
+*/
 import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
@@ -18,20 +24,82 @@ import {Component, Input, OnInit} from '@angular/core';
 
 export class DashBoardTitle implements OnInit {
 
+ /*
+Properties 
+name : title
+datatype :  string
+version : 4.0 onwards
+default : none
+description : set title
 
+*/ 
   @Input() title: string;
 
+ /*
+Properties 
+name : position
+datatype :  string
+version : 4.0 onwards
+default : none
+description : sets the position
 
+*/ 
   @Input() position: string;
 
+   /*
+Properties 
+name : color
+datatype :  string
+version : 4.0 onwards
+default : none
+description : sets the color
+
+*/ 
   @Input() color: string;
 
+
+   /*
+Properties 
+name : font-name
+datatype :  string
+version : 4.0 onwards
+default : none
+description : sets the font family name
+
+*/ 
   @Input('font-name') fontname: string;
 
+   /*
+Properties 
+name : font-size
+datatype :  string
+version : 4.0 onwards
+default : none
+description : sets the font size
+
+*/ 
   @Input('font-size') fontsize: number;
 
+   /*
+Properties 
+name : bold
+datatype :  string
+version : 4.0 onwards
+default : none
+description : sets the font style to bold
+
+*/ 
   @Input() bold: boolean;
 
+    /*
+Properties 
+name : italic
+datatype :  string
+version : 4.0 onwards
+default : none
+description : sets the font style to italic
+
+*/ 
   @Input() italic: boolean;
 
 

@@ -13,6 +13,12 @@
  * Author - Sagar Jadhav
  *
  */
+
+ /*
+ Component Name : Amexio image
+ Component Selector : <amexio-image>
+ Component Description : Amexio image is an artifact that depicts visual perception.Amexio support icons (material / font-awesome)/image
+*/
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 
@@ -22,22 +28,96 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 export class AmexioImageComponent implements OnInit {
 
+    /*
+Properties 
+name : tooltip
+datatype :  string
+version : 4.0 onwards
+default : none
+description : TooltipMessage on image / icon.
+*/ 
   @Input() tooltip: string;
 
+   /*
+Properties 
+name : title
+datatype :  string
+version : 4.0 onwards
+default : none
+description : Title of image.
+*/ 
   @Input() title: string;
 
+   /*
+Properties 
+name : path
+datatype : string
+version : 4.0 onwards
+default : none
+description : Specifies the URL of an image.This attribute is useful only for images.
+*/ 
   @Input() path: string;
 
+   /*
+Properties 
+name : icon-class
+datatype :  string
+version : 4.0 onwards
+default : none
+description : Material icon class name.Material Example:icon-class='material-icons' mda='cloud' Fontawesome Example:icon-class='fa fa-address-book fa-lg'
+
+*/ 
   @Input('icon-class') iconclass: string;
 
+   /*
+Properties 
+name : c-class
+datatype :  string
+version : 4.0 onwards
+default : none
+description : Used for custom styled classes
+*/ 
   @Input('c-class') cclass: string;
 
+   /*
+Properties 
+name : mda
+datatype :  string
+version : 4.0 onwards
+default : none
+description : This attribute is useful for only material icons.Material Example:mda='cloud'
+
+*/ 
   @Input() mda: string;
 
+   /*
+Properties 
+name : width
+datatype :  string
+version : 4.0 onwards
+default : none
+description : Width of image.
+*/ 
   @Input() width:string;
 
+   /*
+Properties 
+name : height
+datatype :  string
+version : 4.0 onwards
+default : none
+description : Height of image.
+*/ 
   @Input() height:string;
 
+   /*
+Events
+name : onClick
+datatype :  none
+version : none
+default : none
+description : Get image / icon click event.
+*/ 
   @Output() onClick: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() {

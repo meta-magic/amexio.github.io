@@ -13,6 +13,13 @@
  * Author - Pratik Kelwalkar
  *
  */
+
+ /*
+ Component Name : Amexio  Multi item carousel
+ Component Selector : <amexio-media-ee-carousel>
+ Component Description : Amexio Awesome Multi Item Media Carousel, which comes preloaded with video playing and a full blown detailing page embedded in the component itself
+
+*/
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 @Component({
   selector: 'amexio-media-ee-carousel',
@@ -21,14 +28,57 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges
 
 export class MultiMediaCarousel implements OnInit, OnChanges {
 
+     /*
+Properties 
+name : data
+datatype :  any
+version : 4.0 onwards
+default : none
+description : Data Containing Image Path, Information and Video URL Refer the DataSource Tab
+
+*/ 
   @Input() data: any;
 
+      /*
+Properties 
+name : carousel-type
+datatype :  any
+version : 4.0 onwards
+default : none
+description : Stlyed Carousel for Vertical or Horizontal Media
+
+*/ 
   @Input('carousel-type') carouselStyle: any;
 
+  /*
+Properties 
+name : has-details
+datatype :  boolean
+version : 4.0 onwards
+default : none
+description : Provide a embedded view for more information on the media
+
+*/ 
   @Input('has-details') hasDetail: boolean = true;
 
+  /*
+Properties 
+name : title
+datatype : string
+version : 4.0 onwards
+default : none
+description : Title for the Carousel
+*/ 
   @Input() title: string;
 
+  /*
+Events
+name : onVideoLoad
+datatype : none
+version : none
+default : none
+description : 
+*/ 
   @Output() onVideoLoad: EventEmitter<any> = new EventEmitter<any>();
 
   elementId: any;

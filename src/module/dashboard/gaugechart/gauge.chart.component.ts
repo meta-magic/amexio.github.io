@@ -10,6 +10,13 @@
  * Author - Sagar Jadhav
  *
  */
+
+
+/*
+ Component Name : Amexio gaugechart 
+ Component Selector : <amexio-dashboard-gauge>
+ Component Description : A gauge with a dial, rendered within the browser using SVG. Guages are available under AmexioDashboardModule from amexio-ng-extensions/dashboard
+*/
 import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from '@angular/core';
 import {DashboardLoaderService} from "../chart.loader.service";
 import {DashBoardTitle} from "../dashboardtitle/dashboard.title.component";
@@ -143,8 +150,24 @@ export class GaugeChartComponent implements AfterContentInit, OnInit {
 
   elementId: string;
 
+  /*
+Properties 
+name : width
+datatype :  string
+version : 4.0 onwards
+default : none
+description :  Width of chart
+*/  
   @Input() width: string;
 
+  /*
+Properties 
+name : height
+datatype :  string
+version : 4.0 onwards
+default : none
+description :  Height of chart
+*/ 
   @Input() height: string;
 
 
@@ -155,6 +178,14 @@ export class GaugeChartComponent implements AfterContentInit, OnInit {
     return this._data;
   }
 
+/*
+Properties 
+name : data
+datatype : any
+version : 4.0 onwards
+default : none
+description : Local data for gauge chart
+*/ 
   @Input('data')
   set data(data:any){
     if(data){
@@ -165,15 +196,55 @@ export class GaugeChartComponent implements AfterContentInit, OnInit {
     }
   }
 
+/*
+Properties 
+name : red-color-from
+datatype : number
+version : 4.0 onwards
+default : none
+description : The lowest value for a range marked by a red color.
+*/ 
   @Input('red-color-from') redcolorfrom: number;
 
+  /*
+Properties 
+name : red-color-from
+datatype : number
+version : 4.0 onwards
+default : none
+description : The highest value for a range marked by a red color.
+*/ 
   @Input('red-color-to') redcolorto: number;
 
+   /*
+Properties 
+name : yellow-color-from
+datatype : number
+version : 4.0 onwards
+default : none
+description : The lowest value for a range marked by a yellow color.
+*/ 
   @Input('yellow-color-from') yellowcolorfrom: number;
 
+   /*
+Properties 
+name : yellow-color-to
+datatype : number
+version : 4.0 onwards
+default : none
+description : The highest value for a range marked by a yellow color.
+*/
   @Input('yellow-color-to') yellowcolorto: number;
 
   //allow to show minor ticks
+     /*
+Properties 
+name : scale-value
+datatype : number
+version : 4.0 onwards
+default : none
+description : The number of minor tick section in each major tick section.
+*/
   @Input('scale-value') scalevalue: number;
 
   @ContentChildren(DashBoardTitle) chartTitleComp: QueryList<DashBoardTitle>;

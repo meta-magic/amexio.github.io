@@ -10,6 +10,14 @@
  * Author - Pratik Kelwalkar
  *
  */
+
+ /*
+ Component Name : Amexio video player
+ Component Selector : <amexio-video-player>
+ Component Description : Video player component support all types of videos.
+
+
+*/
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 
 @Component({
@@ -20,10 +28,34 @@ import {Component, Input, OnInit, ViewChild} from '@angular/core';
 
 export class AmexioVideoPlayerComponent implements OnInit {
 
+    /*
+Properties 
+name : path
+datatype :  any
+version : 4.0 onwards
+default : none
+description : Path of video
+*/ 
   @Input() path: any;
 
+  /*
+Properties 
+name : extension
+datatype :  any
+version : 4.0 onwards
+default : none
+description : Video extension
+*/ 
   @Input() extension: any;
 
+  /*
+Properties 
+name : width
+datatype :  any
+version : 4.0 onwards
+default : none
+description :  
+*/ 
   @Input() width : any;  
 
   @ViewChild('videoRef') videoPlayer: any;

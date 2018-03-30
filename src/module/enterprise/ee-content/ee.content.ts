@@ -1,6 +1,12 @@
 /**
  * Created by dattaram on 23/8/17.
  */
+/*
+Component Name : Amexio  Media content
+Component Selector : <amexio-ee-content>
+Component Description : A simple configurable star rating component with visual feedback.
+
+*/
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 @Component({
   selector: 'amexio-ee-content', template: `
@@ -50,44 +56,210 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges
 
 export class ContentComponent implements OnInit, OnChanges {
 
+   /*
+Properties 
+name : bg-image-url
+datatype :  any
+version : 4.0 onwards
+default : none
+description : Background image from content.
+*/ 
   @Input('bg-image-url') bgImgUrl: any;
 
+    /*
+Properties 
+name : title
+datatype : string
+version : 4.0 onwards
+default : none
+description : 	Set title.
+*/ 
   @Input() title: string;
 
+    /*
+Properties 
+name : description
+datatype :  string
+version : 4.0 onwards
+default : none
+description : Set Description.
+*/ 
   @Input() description: string;
 
+    /*
+Properties 
+name : contents
+datatype :  any
+version : 4.0 onwards
+default : none
+description :  Array of content must be in key value pair.
+*/ 
   @Input() contents: any;
 
+    /*
+Properties 
+name : link
+datatype :  any
+version : 4.0 onwards
+default : none
+description : Set video link.
+*/ 
   @Input('link') videoLink: any;
 
+    /*
+Properties 
+name : rate
+datatype :  any
+version : 4.0 onwards
+default : none
+description : Set rating max value(max=5) and current rating(rate=3).
+
+*/ 
   @Input() rate: any;
 
+    /*
+Properties 
+name : max
+datatype :  any
+version : 4.0 onwards
+default : none
+description : 
+*/ 
   @Input() max: any;
 
+    /*
+Properties 
+name : isReadonly
+datatype :  boolean
+version : 4.0 onwards
+default : 
+description : 
+*/ 
   @Input() isReadonly: boolean;
 
+    /*
+Properties 
+name : bg-image-url
+datatype :  any
+version : 4.0 onwards
+default : false
+description : Enable watch button.*/ 
   @Input('watch') enableWatch = false;
 
+    /*
+Properties 
+name : my-list
+datatype : none
+version : 4.0 onwards
+default : false
+description : Enable MyList button.
+*/ 
   @Input('my-list') enableMyList = false;
 
+    /*
+Properties 
+name :  age-limit
+datatype :  any
+version : 4.0 onwards
+default : none
+description : Set age limit.
+*/ 
   @Input('age-limit') ageLimit: any;
 
+    /*
+Properties 
+name : release-year
+datatype :  any
+version : 4.0 onwards
+default : none
+description : 	Set release Year.
+*/ 
   @Input('release-year') releaseYear: any;
 
+    /*
+Properties 
+name : season-no
+datatype :  number
+version : 4.0 onwards
+default : none
+description : Season of specific series
+
+*/ 
   @Input('season-no') seasonNo: number;
 
+    /*
+Properties 
+name : match-percentage
+datatype :  any
+version : 4.0 onwards
+default : none
+description : Match Percentage of media
+
+*/ 
   @Input('match-percentage') matchPercentage: any;
 
+    /*
+Properties 
+name : close
+datatype :  boolean
+version : 4.0 onwards
+default : false
+description : Enable close content.
+*/ 
   @Input('close') closeEnable: boolean;
 
+    /*
+Events
+name :  onWatchClick
+datatype :  none
+version : none
+default : none
+description : Get watch button click.
+*/ 
   @Output() onWatchClick: EventEmitter<any> = new EventEmitter<any>();
 
+    /*
+Properties 
+name : onAddListClick
+datatype :  none
+version : none
+default : none
+description : Get add list button click.
+
+*/ 
   @Output() onAddListClick: EventEmitter<any> = new EventEmitter<any>();
 
+    /*
+Properties 
+name : onLikeClick
+datatype :  none
+version : none
+default : none
+description : Get like click.
+
+*/ 
   @Output() onLikeClick: EventEmitter<any> = new EventEmitter<any>();
 
+    /*
+Properties 
+name : onUnlikeLikeClick
+datatype :  none
+version : none
+default : none
+description : Get unlike click.
+
+*/ 
   @Output() onUnlikeLikeClick: EventEmitter<any> = new EventEmitter<any>();
 
+    /*
+Properties 
+name : onCloseClick
+datatype :  any
+version :none
+default : none
+description : Get close content click.
+
+*/ 
   @Output() onCloseClick: EventEmitter<any> = new EventEmitter<any>();
 
   size: string;

@@ -1,6 +1,13 @@
 /**
  * Created by pratik on 18/1/18.
  */
+
+
+ /*
+ Component Name : Amexio youtube player
+ Component Selector : <amexio-ee-youtube-player>
+ Component Description : A simple configurable of video player.
+*/
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {DomSanitizer} from "@angular/platform-browser";
 
@@ -23,12 +30,46 @@ import {DomSanitizer} from "@angular/platform-browser";
 export class AmexioYoutubePlayerComponent implements OnInit {
   name: string;
 
+  /*
+Properties 
+name : url
+datatype :  any
+version : 4.0 onwards
+default : none
+description : 
+*/ 
   @Input() url: any;
 
+  /*
+Properties 
+name : height
+datatype : number
+version : 4.0 onwards
+default : none
+description : 	Height should be in Px Ex.500
+*/ 
   @Input() height: number;
 
+  /*
+Properties 
+name :width
+datatype : number
+version : 4.0 onwards
+default : none
+description : Width should be in percentage Ex.50
+
+*/ 
   @Input() width : number;
 
+  /*
+Events
+name :onCloseVideoPlayer
+datatype : none
+version : none
+default : none
+description : 
+
+*/ 
   @Output() onCloseVideoPlayer: EventEmitter<any> = new EventEmitter<any>();
 
   sanitizedUrl: any;
