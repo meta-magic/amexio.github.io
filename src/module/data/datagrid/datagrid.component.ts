@@ -173,7 +173,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
                   </ng-container>
                   <ng-container *ngIf="!cols?.bodyTemplate && cols.datatype=='string'">
                     <div class="datatable-col" [style.width.%]="cols.width" scope="row" [attr.data-label]="cols.text">
-                      <ng-container *ngIf="row[cols.dataindex]!= null && row[cols.dataindex]!= '' ;else elseBlock">
+                      <ng-container *ngIf="row[cols.dataindex]!= null ;else elseBlock">
                         {{row[cols.dataindex]}}
                       </ng-container>
                       <ng-template #elseBlock>
