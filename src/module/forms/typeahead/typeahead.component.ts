@@ -4,7 +4,8 @@
 
 
 import {
-  Component, DoCheck, ElementRef, EventEmitter, forwardRef, HostListener, Input, OnInit, Output, Renderer2,
+  Component, DoCheck, ElementRef, EventEmitter, forwardRef, HostListener, Input, OnChanges, OnInit, Output, Renderer2,
+  SimpleChanges,
   ViewChild
 } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
@@ -23,7 +24,7 @@ export const CUSTOM_TYPEAHEAD_CONTROL_VALUE_ACCESSOR: any = {
   styleUrls: ['./typeahead.component.scss'],
   providers: [CUSTOM_TYPEAHEAD_CONTROL_VALUE_ACCESSOR]
 })
-export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, DoCheck {
+export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, DoCheck, OnChanges {
 
   @Input('field-label') fieldlabel: string;
 
@@ -53,8 +54,8 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
 
   @ViewChild('dpList') dpList : any;
 
-  @ViewChild('dropdownitems', {read: ElementRef}) public dropdownitems: ElementRef; 
-  
+  @ViewChild('dropdownitems', {read: ElementRef}) public dropdownitems: ElementRef;
+
   posixUp : boolean;
 
   activeindex : number =0;
@@ -72,13 +73,13 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
   }
 
   navigateKey(event:any){
-        
+
   }
 
   selectedindex : number=0;
-  
+
   scrollposition : number = 30;
- 
+
 
   @Input('error-msg')
   set errormsg(value: string) {
@@ -138,6 +139,10 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
 
   }
 
+  ngOnChanges(changes : SimpleChanges){
+    if(changes.placeholder &&!changes.placeholder.isFirstChange())
+      this.placeholder = changes.placeholder.currentValue;
+  }
   ngOnInit() {
     if (this.placeholder == '' || this.placeholder == null) this.placeholder = 'Choose Option';
 
@@ -214,7 +219,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
           this.selectedindex++;
           if((this.selectedindex > 5 )){
             this.dropdownitems.nativeElement.scroll(0,this.scrollposition);
-            this.scrollposition = this.scrollposition  +30; 
+            this.scrollposition = this.scrollposition  +30;
           }
         }
         else if(event.keyCode === 38){
@@ -222,7 +227,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
           console.log(this.scrollposition);
           if(this.scrollposition>=0 && this.selectedindex>1){
             this.dropdownitems.nativeElement.scroll(0,this.scrollposition);
-            this.scrollposition = this.scrollposition  -30; 
+            this.scrollposition = this.scrollposition  -30;
           }
           if(this.selectedindex === 1){
             this.scrollposition = 30;
@@ -231,24 +236,23 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
           if(this.selectedindex <=0){
             //this.selectedindex = 1;
           }
-        }  
+        }
       }
 
       if(this.filteredResult[this.selectedindex]){
         this.filteredResult[this.selectedindex].selected = true;
-        
+
       }
       if(this.filteredResult[prevselectedindex]){
         this.filteredResult[prevselectedindex].selected = false;
-      }      
+      }
     }
 
     console.log(new Date().getTime()+"--"+this.selectedindex+"--"+this.filteredResult.length);
     if(event.keyCode === 13 && this.filteredResult[this.selectedindex]){
-      console.log("exist drop down");
       this.onItemSelect(this.filteredResult[this.selectedindex]);
     }
-  
+
   }
 
   getDisplayValue(val : any) : string{
