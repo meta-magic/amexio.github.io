@@ -1,6 +1,12 @@
 /**
  * Created by pratik on 2/1/18.
  */
+
+ /*
+ Component Name : Amexio data grid filter
+ Component Selector : <data-grid-filter>
+ Component Description : Data grid component to render large amount of data-set with various options like sorting in ascending or descending order, client-side pagination, column hide/unhide, single/multi selection,Filtering(enable only for string and number type data) user define template for rendering for column header and column data, displaying summation of numeric column.
+*/
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CommonDataService} from "../../services/data/common.data.service";
 @Component({
@@ -56,8 +62,16 @@ import {CommonDataService} from "../../services/data/common.data.service";
 })
 
 export class DataGridFilterComponent implements OnInit {
+
+  /*
+For internal use
+*/ 
   @Input() column: any;
 
+
+  /*
+ for internal use
+*/ 
   @Output() filterObject: any = new EventEmitter<any>();
 
   filterValue: any;

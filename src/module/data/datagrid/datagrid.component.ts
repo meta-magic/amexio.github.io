@@ -1,6 +1,12 @@
 /**
  * Created by pratik on 1/1/18.
  */
+
+  /*
+ Component Name : Amexio data grid
+ Component Selector : <amexio-datagrid>
+ Component Description : Data grid component to render large amount of data-set with various options like sorting in ascending or descending order, client-side pagination, column hide/unhide, single/multi selection, user define template for rendering for column header and column data, displaying summation of numeric column.
+*/
 import {
   AfterContentInit, ChangeDetectorRef, Component, ContentChildren, DoCheck, EventEmitter, Input, OnInit, Output,
   QueryList
@@ -305,46 +311,215 @@ import {CommonDataService} from "../../services/data/common.data.service";
 
 export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoCheck {
 
+  /*
+Properties 
+name : title
+datatype : string
+version : 4.0 onwards
+default : none
+description : Title for grid.
+*/ 
   @Input() title: string;
-
+/*
+Properties 
+name : page-size
+datatype : number
+version : 4.0 onwards
+default : none
+description : Number of records show on one page.
+*/ 
   @Input('page-size') pagesize: number;
 
+  /*
+Properties 
+name : http-url
+datatype : string
+version : 4.0 onwards
+default : none
+description : REST url for fetching data.
+*/ 
   @Input('http-url') httpurl: string;
 
+
+  /*
+Properties 
+name : http-method
+datatype : string
+version : 4.0 onwards
+default : none
+description : Type of HTTP call, POST,GET etc.
+*/ 
   @Input('http-method') httpmethod: string;
 
+  /*
+Properties 
+name : 
+datatype : string
+version : 4.0 onwards
+default : none
+description : Key in JSON Datasource for records.
+*/ 
   @Input('data-reader') datareader: string;
 
+  /*
+Properties 
+name : enable-checkbox
+datatype : boolean
+version : 4.0 onwards
+default : none
+description : Enables checkbox for each row, this allows user for multi selection.
+*/
   @Input('enable-checkbox') enablecheckbox: boolean;
 
+  /*
+Properties 
+name : data
+datatype : any
+version : 4.0 onwards
+default : none
+description : Local Data binding. 
+*/
   @Input() data: any[];
 
+  /*
+Events 
+name : rowSelect
+datatype : none
+version : none
+default : none
+description : It will gives you row clicked data. 
+*/
   @Output() rowSelect: any = new EventEmitter<any>();
 
+  /*
+Events 
+name : selectedRowData
+datatype : none
+version : none
+default : none
+description : It will fire only on selection of checkbox and gives you selected record data. 
+*/
   @Output() selectedRowData: any = new EventEmitter<any>();
 
+   /*
+Events 
+name : onHeaderClick
+datatype : none
+version : none
+default : none
+description : It will gives you click event and column info. 
+*/
   @Output() onHeaderClick: any = new EventEmitter<any>();
 
+   /*
+Properties 
+name : height
+datatype : string
+version : 4.0 onwards
+default : none
+description : height of grid 
+*/
   @Input() height: string;
 
+   /*
+Properties 
+name : groupby
+datatype : 
+version : 4.0 onwards
+default : none
+description : Set True for Enable group by functionality.
+*/
   @Input() groupby = false;
 
+   /*
+Properties 
+name : groupby-data-index
+datatype : string
+version : 4.0 onwards
+default : none
+description :  Primary data-index name of the column for Grouping.
+*/
   @Input('groupby-data-index') groupbydataindex: string;
 
+  /*
+Properties 
+name : enable-data-filter
+datatype : boolean
+version : 4.0 onwards
+default : none
+description :  Enables user to filter data.
+*/
   @Input('enable-data-filter') enabledatafilter: boolean;
 
+  /*
+Properties 
+name : c-class
+datatype : string
+version : 4.0 onwards
+default : none
+description : Used for custom styled classes
+
+*/
   @Input('c-class') cclass: string;
 
+  /*
+Properties 
+name : tableHeadercclass
+datatype : string
+version : 4.0 onwards
+default : none
+description : custom styled class for table header 
+*/
   @Input() tableHeadercclass: string;
 
+  /*
+Properties 
+name : tableTitlecclass
+datatype : string
+version : 4.0 onwards
+default : none
+description : custom styled class for table title
+*/
   @Input() tableTitlecclass: string;
 
+/*
+Properties 
+name : tableDatacclass
+datatype : string
+version : 4.0 onwards
+default : none
+description :  custom styled class for table data
+*/
   @Input() tableDatacclass: string;
 
+  /*
+Properties 
+name : selected-row-color
+datatype : string
+version : 4.0 onwards
+default : none
+description :  sets color of selected row
+*/
   @Input('selected-row-color') selectedrowcolor: string;
 
+  /*
+Properties 
+name : column-defintion
+datatype : any
+version : 4.0 onwards
+default : none
+description :  If you don't want to use '<amexio-data-table-column>' tag then pass JSON data.
+*/
   @Input('column-defintion') columndefintion: any;
 
+  /*
+Properties 
+name : enable-column-fiter
+datatype : boolean
+version : 4.0 onwards
+default : none
+description :  Set false to hide Column toggle functionality.
+*/
   @Input('enable-column-fiter')  enablecolumnfiter: boolean;
 
   columns: any[] = [];

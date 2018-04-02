@@ -57,8 +57,8 @@ export class AmexioWindowPaneComponent implements OnInit {
 
    /*
 Properties 
-name : expand-all
-datatype : boolean
+name : footer-align
+datatype : string
 version : 4.0 onwards
 default : right
 description : Alignment of footer contents to right or left.
@@ -81,7 +81,7 @@ name : body-height
 datatype : string
 version : 4.0 onwards
 default : none
-description : 	Assign body height in percentage, in case of maximize=true it will be set to 100% by default
+description : Assign body height in percentage, in case of maximize=true it will be set to 100% by default
 */
   @Input('body-height') bodyHeight:string;
 
@@ -133,7 +133,7 @@ name : close
 datatype : none
 version : none
 default : none
-description : 
+description : close the window
 */
   @Output() close : EventEmitter<any> = new EventEmitter<any>();
 

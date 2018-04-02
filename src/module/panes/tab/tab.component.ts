@@ -46,7 +46,7 @@ Properties
 name : position
 datatype : string
 version : 4.0 onwards
-default : 
+default : none
 description : specify position of tab.
 */
   @Input() position: string;

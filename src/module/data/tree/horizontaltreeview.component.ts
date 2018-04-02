@@ -1,6 +1,12 @@
 /**
  * Created by ketangote on 12/1/17.
  */
+
+ /*
+ Component Name : Amexio horizontal tree 
+ Component Selector : <amexio-horizontal-treeview>
+ Component Description : A Horizontal Tree Component.
+*/
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {CommonDataService} from "../../services/data/common.data.service";
 
@@ -18,16 +24,64 @@ import {CommonDataService} from "../../services/data/common.data.service";
 })
 export class HorizontalTreeViewComponent {
 
+  /*
+Properties 
+name : label
+datatype : string
+version : 4.0 onwards
+default : none
+description : label for tree
+*/
   @Input() label: string;
 
+  /*
+Properties 
+name : data
+datatype : any
+version : 4.0 onwards
+default : none
+description : Local Data binding.
+*/
   @Input() data: any[];
 
+  /*
+Properties 
+name : http-url
+datatype : string
+version : 4.0 onwards
+default : none
+description : REST url for fetching data.
+*/
   @Input('http-url') httpurl: string;
 
+  /*
+Properties 
+name : http-method
+datatype : string
+version : 4.0 onwards
+default : none
+description : Type of HTTP call, POST,GET etc.
+*/
   @Input('http-method') httpmethod: string;
 
+  /*
+Properties 
+name : data-reader
+datatype : string
+version : 4.0 onwards
+default : none
+description : Key in JSON Datasource for records.
+*/
   @Input('data-reader') datareader: string;
 
+  /*
+Events 
+name : nodeClick
+datatype : none
+version : none
+default : none
+description : It will gives you clicked node data.
+*/
   @Output() nodeClick: any = new EventEmitter<any>();
 
   responseData: any;

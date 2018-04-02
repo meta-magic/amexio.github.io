@@ -2,6 +2,12 @@
  * Created by ketangote on 11/23/17.
  */
 
+
+ /*
+ Component Name : Amexio tree filter 
+ Component Selector : <amexio-tree-filter-view>
+ Component Description : A Expandable Tree Component for Angular, having Filtering functionality.
+*/
 import {ChangeDetectorRef, Component, ContentChild, EventEmitter, Input, Output, TemplateRef} from '@angular/core';
 import {CommonDataService} from "../../services/data/common.data.service";
 
@@ -10,18 +16,74 @@ import {CommonDataService} from "../../services/data/common.data.service";
 })
 export class AmexioTreeViewComponent {
 
+  /*
+Properties 
+name : data
+datatype : any
+version : 4.0 onwards
+default : none
+description : Local Data binding.
+*/
   @Input() data: any[];
 
+  /*
+Properties 
+name : http-url
+datatype : string
+version : 4.0 onwards
+default : none
+description : REST url for fetching data.
+*/
   @Input('http-url') httpurl: string;
 
+  /*
+Properties 
+name : http-method
+datatype : string
+version : 4.0 onwards
+default : none
+description : Type of HTTP call, POST,GET etc.
+*/
   @Input('http-method') httpmethod: string;
 
+  /*
+Properties 
+name : data-reader
+datatype : string
+version : 4.0 onwards
+default : none
+description : Key in JSON Datasource for records.
+*/
   @Input('data-reader') datareader: string;
 
+/*
+Properties 
+name : nodeClick
+datatype : none
+version : none
+default : none
+description : It will gives you clicked node data.
+*/
   @Output() nodeClick: any = new EventEmitter<any>();
 
+  /*
+Properties 
+name : enable-checkbox
+datatype : false
+version : 4.0 onwards
+default : none
+description : Enables checkbox for each row, this allows user for multi selection.
+*/
   @Input('enable-checkbox') enablecheckbox = false;
 
+  /*
+Properties 
+name : templates
+datatype : any
+version : 4.0 onwards
+default : none
+description : user can add any template to tree
+*/
   @Input() templates: any;
 
 

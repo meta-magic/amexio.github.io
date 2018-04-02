@@ -9,7 +9,8 @@
  *
  * Created by Ketan Gote on 8/21/17.
  */
-
+ 
+ 
 
 import {
   Component, ContentChildren, Input, OnInit, QueryList
@@ -60,6 +61,15 @@ export class DockedBarToolComponent implements OnInit {
 
   dockbarArray: DockbarComponent[];
 
+
+  /*
+Properties 
+name : height
+datatype : string
+version : 4.0 onwards
+default : none
+description : Height of dockbar.
+*/ 
   @Input() height: string;
 
   constructor() {

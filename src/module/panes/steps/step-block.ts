@@ -3,9 +3,9 @@
  */
 
  /*
- Component Name : Amexio Accordion
+ Component Name : Amexio Step block
  Component Selector : <amexio-step-block>
- Component Description : Step-box component is an indicator for the steps in a workflow.
+ Component Description : Amexio Step-box component is an indicator for the steps in a workflow.
  */
 import {Component, Input, OnInit} from '@angular/core';
 

@@ -5,7 +5,7 @@
  /*
  Component Name : Amexio Dialogue
  Component Selector : <amexio-dialogue>
- Component Description : .
+ Component Description :A Simple dialogue which renders various prompts like Confirmation/Alert based on type, title, body user has configured.
 
 */
 
@@ -88,7 +88,7 @@ description : 	Show / Hide Dialogue..
 
   /*
 Properties 
-name : show-dialogue
+name : closable
 datatype :  boolean
 version : 4.0 onwards
 default : none
@@ -128,7 +128,7 @@ description : User can custom dialogue box.
 
     /*
 Properties 
-name :  confirm
+name :  type
 datatype :  'confirm'| 'alert'
 version : 4.0 onwards
 default : none
@@ -168,7 +168,7 @@ description : Type of message like error,warning,help.
 
     /*
  Events
-name : message-type
+name : actionStatus
 datatype :  none
 version : none
 default : none
@@ -178,7 +178,7 @@ description : Fire when click on yes or no button
   
      /*
  Events
-name : message-type
+name : close
 datatype :  none
 version : none
 default : none

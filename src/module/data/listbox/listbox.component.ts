@@ -3,6 +3,11 @@
  */
 
 
+ /*
+ Component Name : Amexio listbox
+ Component Selector : <amexio-listbox>
+ Component Description : Simple list box which allows user to select one of more items from list based on configuration. User can provide custom template to change look and feel.
+*/
 import {AfterViewInit, Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateRef} from '@angular/core';
 import {CommonDataService} from "../../services/data/common.data.service";
 
@@ -11,28 +16,124 @@ import {CommonDataService} from "../../services/data/common.data.service";
 })
 export class AmexioListBoxComponent implements OnInit, AfterViewInit {
 
+  /*
+Properties 
+name : enable-checkbox
+datatype : boolean
+version : 4.0 onwards
+default : none
+description : Enables checkbox for each row, this allows user for multi selection.
+*/
   @Input('enable-checkbox') enablecheckbox: boolean;
 
+  /*
+Properties 
+name : header
+datatype : string
+version : 4.0 onwards
+default : none
+description : Heading for ListBox.
+*/
   @Input() header: string;
 
+  /*
+Properties 
+name : search-placeholder
+datatype : string
+version : 4.0 onwards
+default : none
+description : place-holder for searchbox.
+*/
   @Input('search-placeholder') searchplaceholder: string;
 
+  /*
+Properties 
+name : filter
+datatype : boolean
+version : 4.0 onwards
+default : none
+description : Enables user to filter data based on 'display-field' configured.
+*/
   @Input() filter: boolean;
 
+  /*
+Properties 
+name : data
+datatype : any
+version : 4.0 onwards
+default : none
+description : Local Data binding.
+*/
   @Input() data: any;
 
+  /*
+Properties 
+name : http-url
+datatype : string
+version : 4.0 onwards
+default : none
+description : REST url for fetching data.
+*/
   @Input('http-url') httpurl: string;
 
+  /*
+Properties 
+name : data-reader
+datatype : string
+version : 4.0 onwards
+default : none
+description : Key in JSON Datasource for records.
+*/
   @Input('data-reader') datareader: string;
 
+  /*
+Properties 
+name : http-method
+datatype : string
+version : 4.0 onwards
+default : none
+description : Type of HTTP call, POST,GET etc.
+*/
   @Input('http-method') httpmethod: string;
 
+  /*
+Properties 
+name : display-field
+datatype : string
+version : 4.0 onwards
+default : none
+description : Key in JSON for display particular column from data.
+*/
   @Input('display-field') displayfield: string;
 
+  /*
+Properties 
+name : height
+datatype : any
+version : 4.0 onwards
+default : none
+description : height for ListBox.
+*/
   @Input() height: any;
 
+  /*
+Events 
+name : selectedRows
+datatype : none
+version : none
+default : none
+description : It will fire only on selection of checkbox and gives you selected record data.
+*/
   @Output() selectedRows: any = new EventEmitter<any>();
 
+  /*
+Events 
+name : onRowClick
+datatype : none
+version : none
+default : none
+description : It will gives you row clicked data.
+*/
   @Output() onRowClick: any = new EventEmitter<any>();
 
   @ContentChild('amexioBodyTmpl') bodyTemplate: TemplateRef<any>;

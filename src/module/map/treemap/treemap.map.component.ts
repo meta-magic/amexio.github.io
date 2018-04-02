@@ -1,6 +1,12 @@
 /**
  * Created by sagar on 18/8/17.
  */
+
+ /*
+ Component Name : Amexio Tree map
+ Component Selector : <amexio-map-treemap>
+ Component Description :  A visual representation of a data tree, where each node can have zero or more children, and one parent (except for the root, which has no parents). Each node is displayed as a rectangle, sized and colored according to values that you assign.
+*/
 import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from '@angular/core';
 import {MapTitleComponent} from "../maptitle/map.title.component";
 import {MapLoaderService} from "../map.loader.service";
@@ -133,8 +139,26 @@ export class TreeMapComponent implements AfterContentInit, OnInit {
   hasLoaded: boolean;
   id: any;
 
+
+  /*
+Properties 
+name : width
+datatype : string
+version : 4.0 onwards
+default : none
+description : Width of chart.
+*/ 
   @Input() width: string;
 
+
+  /*
+Properties 
+name : height
+datatype : string
+version : 4.0 onwards
+default : none
+description : height of chart.
+*/ 
   @Input() height: string;
 
   showChart:boolean;
@@ -144,6 +168,14 @@ export class TreeMapComponent implements AfterContentInit, OnInit {
     return this._data;
   }
 
+  /*
+Properties 
+name : data
+datatype : any
+version : 4.0 onwards
+default : none
+description : Local data for TreeMap.
+*/ 
   @Input('data')
   set data(data:any){
     if(data){
@@ -153,14 +185,57 @@ export class TreeMapComponent implements AfterContentInit, OnInit {
       this.showChart=false;
     }
   }
+
+   /*
+Properties 
+name : min-color
+datatype : string
+version : 4.0 onwards
+default : none
+description : The color for a rectangle with the column 3 value of min-colorValue. Specify an HTML color value.
+*/ 
   @Input('min-color') mincolor: string;
 
+
+   /*
+Properties 
+name : mid-color
+datatype : string
+version : 4.0 onwards
+default : none
+description : The color for a rectangle with a column 3 value midway between max-colorValue and min-colorValue. Specify an HTML color value.
+*/ 
   @Input('mid-color') midcolor: string;
 
+
+   /*
+Properties 
+name : max-color
+datatype : string
+version : 4.0 onwards
+default : none
+description : The color for a rectangle with a column 3 value of max-colorValue. Specify an HTML color value.
+*/ 
   @Input('max-color') maxcolor: string;
 
+   /*
+Properties 
+name : show-scale
+datatype : boolean
+version : 4.0 onwards
+default : none
+description : Whether or not to show a color gradient scale from min-color to max-color along the top of the chart. Specify true to show the scale.
+*/
   @Input('show-scale') showscale: boolean;
 
+   /*
+Properties 
+name : max-post-depth
+datatype : number
+version : 4.0 onwards
+default : none
+description : number of levels of nodes beyond maxDepth to show in 'hinted' fashion.
+*/
   @Input('max-post-depth') maxpostdepth: number;
 
   @ContentChildren(MapTitleComponent) maptleComp: QueryList<MapTitleComponent>;
