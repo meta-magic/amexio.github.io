@@ -333,6 +333,10 @@ image using the content attribute.
   border-color: #70196F;
   color: white; }
 
+.disabled {
+  background-color: #a09e9e;
+  color: #70196F; }
+
 .button-primary:hover:enabled {
   background-color: #461046; }
 
@@ -1460,6 +1464,11 @@ input:checked + .toggle-slider:before {
 .profile-image a {
   color: #70196F; }
 
+.image-grayscale {
+  -webkit-filter: grayscale(100%);
+  /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%); }
+
 /** image - Structure CSS **/
 .profile-image img {
   width: 50px;
@@ -1468,6 +1477,14 @@ input:checked + .toggle-slider:before {
 
 .profile-image a {
   text-transform: capitalize; }
+
+.image-small {
+  width: 50px;
+  height: 50px; }
+
+.image-round {
+  border-radius: 50%;
+  vertical-align: middle; }
 
 .profile-image-round img {
   width: 50px;
@@ -3453,6 +3470,9 @@ fieldset {
 .stepwizard-step p {
   color: #a09e9e; }
 
+.step-block-icon-disable {
+  color: #70196F; }
+
 .stepwizard-row:before {
   background-color: #ECEFF1; }
 
@@ -3487,6 +3507,9 @@ fieldset {
   display: table;
   width: 100%;
   position: relative; }
+
+.step-block-icon-disable {
+  cursor: not-allowed; }
 
 .stepwizard-row:before {
   top: 14px;
@@ -3536,7 +3559,7 @@ fieldset {
   cursor: pointer; }
 
 .step-box-table-item.active {
-  cursor: not-allowed; }
+  cursor: default; }
 
 .step-box-table-item.disbaled {
   cursor: not-allowed; }
