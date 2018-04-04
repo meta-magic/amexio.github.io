@@ -10,6 +10,12 @@
  * Author - Sagar Jadhav
  *
  */
+
+/*
+Component Name : Amexio chart horizontal axis
+Component Selector : <amexio-chart-horizontal-axis>
+Component Description : it describes horizontal axis properties of chart.
+*/
 import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
@@ -17,10 +23,25 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class HorizontalAxisComponent implements OnInit {
 
+/*
+Properties 
+name : title
+datatype : string
+version : 4.0 onwards
+default : none
+description : title of horizontal axis
+*/
+@Input() title: string;
 
-  @Input() title: string;
-
-  @Input('title-color') titlecolor: string;
+/*
+Properties 
+name : title-color
+datatype : string
+version : 4.0 onwards
+default : none
+description : set color to horizontal axis title
+*/
+@Input('title-color') titlecolor: string;
 
   constructor() {
   }

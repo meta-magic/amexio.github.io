@@ -10,6 +10,12 @@
  * Author - Sagar Jadhav
  *
  */
+
+/*
+ Component Name : Amexio candlestick waterfall chart
+ Component Selector : <amexio-chart-candlestick-waterfall>
+ Component Description : A candlestick waterfall chart is used to show an opening and closing value overlaid on top of a total variance. Candlestick charts are often used to show stock value behavior.
+*/
 import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from '@angular/core';
 import {ChartAreaComponent} from "../chartarea/chart.area.component";
 import {HorizontalAxisComponent} from "../horizontalaxis/chart.horizontalaxis.component";
@@ -143,8 +149,25 @@ export class CandlestickWaterfallChartComponent implements AfterContentInit, OnI
 
   id: any;
 
+
+  /*
+Properties 
+name : width
+datatype : any
+version : 4.0 onwards
+default : none
+description : width of chart
+*/
   @Input() width: string;
 
+  /*
+Properties 
+name : height
+datatype : string
+version : 4.0 onwards
+default : none
+description : height of chart
+*/
   @Input() height: string;
 
 
@@ -155,6 +178,14 @@ export class CandlestickWaterfallChartComponent implements AfterContentInit, OnI
     return this._data;
   }
 
+  /*
+Properties 
+name : data
+datatype : any
+version : 4.0 onwards
+default : none
+description : Local data for AreaChart
+*/
   @Input('data')
   set data(data:any){
     if(data){
@@ -165,12 +196,44 @@ export class CandlestickWaterfallChartComponent implements AfterContentInit, OnI
     }
   }
 
+  /*
+Properties 
+name : background-color
+datatype : string
+version : 4.0 onwards
+default : none
+description : sets background color
+*/
   @Input('background-color') backgroundcolor: string;
 
+  /*
+Properties 
+name : bar-width
+datatype : string
+version : 4.0 onwards
+default : none
+description : To remove the space between the bars.
+*/
   @Input('bar-width') barwidth: string;
 
+  /*
+Properties 
+name : falling-color
+datatype : string
+version : 4.0 onwards
+default : none
+description : The fill color of falling candles, as an HTML color string.Example:'#FF0000' or 'red'
+*/
   @Input('falling-color') fallingcolor: string;
 
+  /*
+Properties 
+name : rising-color
+datatype : string
+version : 4.0 onwards
+default : none
+description : The fill color of rising candles, as an HTML color string.Example:'#0f9d58' or 'green'
+*/
   @Input('rising-color') risingcolor: string;
 
   hasLoaded: boolean;

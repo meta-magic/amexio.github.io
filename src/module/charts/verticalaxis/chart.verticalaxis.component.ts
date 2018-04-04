@@ -10,6 +10,12 @@
  * Author - Sagar Jadhav
  *
  */
+
+/*
+Component Name : Amexio chart vertical axis
+Component Selector : <amexio-chart-vertical-axis>
+Component Description : it describes vertical axis properties of chart.
+*/
 import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
@@ -17,10 +23,26 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class VerticalAxisComponent implements OnInit {
 
+/*
+Properties 
+name : title
+datatype : string
+version : 4.0 onwards
+default : none
+description : title of vertical axis
+*/
+@Input() title: string;
 
-  @Input() title: string;
 
-  @Input('title-color') titlecolor: string;
+/*
+Properties 
+name : title-color
+datatype : string
+version : 4.0 onwards
+default : none
+description : set color to vertical axis title
+*/
+@Input('title-color') titlecolor: string;
 
   constructor() {
   }

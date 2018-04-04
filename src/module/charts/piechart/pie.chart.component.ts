@@ -10,6 +10,11 @@
  * Author - Sagar Jadhav
  *
  */
+/*
+Component Name : Amexio pie chart
+Component Selector : <amexio-chart-pie>
+Component Description : A pie chart that is rendered within the browser using SVG.
+*/
 import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from "@angular/core";
 import {ChartTitleComponent} from "../charttitle/chart.title.component";
 import {ChartLegendComponent} from "../chartlegend/chart.legend.component";
@@ -138,16 +143,50 @@ export class PieChartComponent implements AfterContentInit,OnInit {
 
   id: any;
 
-  @Input() width: string;
 
-  @Input() height: string;
+/*
+Properties 
+name : width
+datatype : string
+version : 4.0 onwards
+default : none
+description : width of chart
+*/  
+@Input() width: string;
+
+/*
+Properties 
+name : height
+datatype : string
+version : 4.0 onwards
+default : none
+description : height of chart
+*/
+@Input() height: string;
 
   hasLoaded:boolean;
 
-  @Input() is3d: boolean = false;
+/*
+Properties 
+name : is3d
+datatype : boolean
+version : 4.0 onwards
+default : false
+description : If you set the is3d option to true, your pie chart will be drawn as though it has three dimensions
+*/
+@Input() is3d: boolean = false;
 
   //this input for hole inside pie chart
-  @Input() piehole: number;
+
+/*
+Properties 
+name : piehole
+datatype : number
+version : 4.0 onwards
+default : none
+description : sets the pie hole size
+*/
+@Input() piehole: number;
 
 
   showChart:boolean;
@@ -157,6 +196,14 @@ export class PieChartComponent implements AfterContentInit,OnInit {
     return this._data;
   }
 
+  /*
+Properties 
+name : data
+datatype : any
+version : 4.0 onwards
+default : none
+description : sets the pie hole size
+*/
   @Input('data')
   set data(data:any){
     if(data){

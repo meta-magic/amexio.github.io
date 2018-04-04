@@ -10,6 +10,12 @@
  * Author - Sagar Jadhav
  *
  */
+
+ /*
+Component Name : Amexio scatter chart
+Component Selector : <amexio-chart-scatter>
+Component Description : Scatter charts plot points on a graph. When the user hovers over the points, tooltips are displayed with more information.
+*/
 import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from '@angular/core';
 import {ChartLegendComponent} from "../chartlegend/chart.legend.component";
 import {ChartTitleComponent} from "../charttitle/chart.title.component";
@@ -144,9 +150,26 @@ export class ScatterChartComponent implements AfterContentInit, OnInit {
 
   id: any;
 
-  @Input() width: string;
 
-  @Input() height: string;
+/*
+Properties 
+name : width
+datatype : string
+version : 4.0 onwards
+default : none
+description : width of chart
+*/
+@Input() width: string;
+
+/*
+Properties 
+name : height
+datatype : string
+version : 4.0 onwards
+default : none
+description : height of chart
+*/
+@Input() height: string;
 
 
   showChart:boolean;
@@ -156,7 +179,15 @@ export class ScatterChartComponent implements AfterContentInit, OnInit {
     return this._data;
   }
 
-  @Input('data')
+/*
+Properties 
+name : data
+datatype : any
+version : 4.0 onwards
+default : none
+description : For the use of local data
+*/
+@Input('data')
   set data(data:any){
     if(data){
       this._data=data;
@@ -166,7 +197,15 @@ export class ScatterChartComponent implements AfterContentInit, OnInit {
     }
   }
 
-  @Input('background-color') backgroundcolor: string;
+/*
+Properties 
+name : background-color
+datatype : string
+version : 4.0 onwards
+default : none
+description : sets background color to chart
+*/  
+@Input('background-color') backgroundcolor: string;
 
   hasLoaded: boolean;
 

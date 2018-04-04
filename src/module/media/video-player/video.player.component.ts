@@ -54,7 +54,7 @@ name : width
 datatype :  any
 version : 4.0 onwards
 default : none
-description :  
+description :  width of the video player window
 */ 
   @Input() width : any;  
 

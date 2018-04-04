@@ -10,6 +10,12 @@
  * Author - Sagar Jadhav
  *
  */
+
+/*
+Component Name : Amexio combo chart
+Component Selector : <amexio-chart-combo>
+Component Description : A chart that lets you render each series as a different marker type from the following list: line,bars
+*/
 import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from '@angular/core';
 import {ChartLegendComponent} from "../chartlegend/chart.legend.component";
 import {ChartTitleComponent} from "../charttitle/chart.title.component";
@@ -143,10 +149,24 @@ export class ComboChartComponent implements AfterContentInit, OnInit {
   private chart: any;
 
   id: any;
-
-  @Input() width: string;
-
-  @Input() height: string;
+  /*
+Properties 
+name : width
+datatype : string
+version : 4.0 onwards
+default : none
+description : Width of chart
+*/
+@Input() width: string;
+  /*
+Properties 
+name : height
+datatype : string
+version : 4.0 onwards
+default : none
+description : height of chart
+*/
+@Input() height: string;
 
 
   showChart:boolean;
@@ -156,7 +176,15 @@ export class ComboChartComponent implements AfterContentInit, OnInit {
     return this._data;
   }
 
-  @Input('data')
+/*
+Properties 
+name : data
+datatype : any
+version : 4.0 onwards
+default : none
+description : For the use of local data
+*/ 
+@Input('data')
   set data(data:any){
     if(data){
       this._data=data;
@@ -166,7 +194,15 @@ export class ComboChartComponent implements AfterContentInit, OnInit {
     }
   }
 
-  @Input('background-color') backgroundcolor: string;
+/*
+Properties 
+name : background-color
+datatype : string
+version : 4.0 onwards
+default : none
+description : sets background color to chart
+*/ 
+@Input('background-color') backgroundcolor: string;
 
   hasLoaded: boolean;
 

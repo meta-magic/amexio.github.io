@@ -10,6 +10,12 @@
  * Author - Sagar Jadhav
  *
  */
+
+/*
+Component Name : Amexio column chart
+Component Selector : <amexio-chart-column>
+Component Description : A column chart is a vertical bar chart rendered in the browser using SVG.
+*/
 import {AfterContentInit, Component, ContentChildren, Input, QueryList} from '@angular/core';
 import {ChartLegendComponent} from "../chartlegend/chart.legend.component";
 import {ChartTitleComponent} from "../charttitle/chart.title.component";
@@ -142,10 +148,25 @@ export class ColumnChartComponent implements AfterContentInit {
   private chart: any;
 
   id: any;
+ /*
+Properties 
+name : width
+datatype : string
+version : 4.0 onwards
+default : none
+description : Width of chart
+*/
+@Input() width: string;
 
-  @Input() width: string;
-
-  @Input() height: string;
+ /*
+Properties 
+name : height
+datatype : string
+version : 4.0 onwards
+default : none
+description : height of chart
+*/
+@Input() height: string;
 
 
   showChart:boolean;
@@ -155,7 +176,15 @@ export class ColumnChartComponent implements AfterContentInit {
     return this._data;
   }
 
-  @Input('data')
+ /*
+Properties 
+name : data
+datatype : any
+version : 4.0 onwards
+default : none
+description : For the use of local data
+*/
+@Input('data')
   set data(data:any){
     if(data){
       this._data=data;
@@ -166,9 +195,26 @@ export class ColumnChartComponent implements AfterContentInit {
   }
 
   //showing stack chart
-  @Input() stacked: boolean = false;
+  
+ /*
+Properties 
+name : stacked
+datatype : boolean
+version : 4.0 onwards
+default : false
+description : If set to true, stacks the elements for all series at each domain value.default value is false
+*/
+@Input() stacked: boolean = false;
 
-  @Input('background-color') backgroundcolor: string;
+ /*
+Properties 
+name : background-color
+datatype : string
+version : 4.0 onwards
+default : none
+description : sets background color
+*/
+@Input('background-color') backgroundcolor: string;
 
   hasLoaded: boolean;
 

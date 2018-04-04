@@ -10,6 +10,13 @@
  * Author - Sagar Jadhav
  *
  */
+
+
+ /*
+ Component Name : Amexio area chart
+ Component Selector : <amexio-chart-area>
+ Component Description : An area chart that is rendered within the browser using SVG .Displays tips when hovering over points.
+*/
 import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from '@angular/core';
 import {ChartLegendComponent} from "../chartlegend/chart.legend.component";
 import {ChartTitleComponent} from "../charttitle/chart.title.component";
@@ -143,8 +150,24 @@ export class AreaChartComponent implements AfterContentInit, OnInit {
   hasLoaded: boolean;
   id: any;
 
+  /*
+Properties 
+name : width
+datatype : string
+version : 4.0 onwards
+default : none
+description : Width of chart
+*/
   @Input() width: string;
 
+  /*
+Properties 
+name : height
+datatype : string
+version : 4.0 onwards
+default : none
+description : height of chart
+*/
   @Input() height: string;
 
   showChart:boolean;
@@ -154,6 +177,15 @@ export class AreaChartComponent implements AfterContentInit, OnInit {
     return this._data;
   }
 
+
+  /*
+Properties 
+name : data
+datatype : any
+version : 4.0 onwards
+default : none
+description : Local data for AreaChart
+*/
   @Input('data')
   set data(data:any){
     if(data){
@@ -164,6 +196,14 @@ export class AreaChartComponent implements AfterContentInit, OnInit {
     }
   }
 
+  /*
+Properties 
+name : background-color
+datatype : any
+version : 4.0 onwards
+default : none
+description : sets background color to chart
+*/
   @Input('background-color') backgroundcolor: string;
 
   @ContentChildren(ChartLegendComponent) chartLegendComp: QueryList<ChartLegendComponent>;
