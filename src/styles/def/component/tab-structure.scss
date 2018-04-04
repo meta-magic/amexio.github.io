@@ -38,6 +38,10 @@
   border-bottom: $tabBorderSize+2 solid $tabActiveBorder;
 }
 
+.disabled-tab{
+  cursor: not-allowed !important;
+}
+
 .tabnavigation{
   padding: 10px 16px;
   cursor: pointer;

@@ -11,7 +11,7 @@
       <div class="verticalnavtab verticalnavtab-right">
         <ul>
           <li *ngFor="let tabnode of tabCollection">
-            <div class="defaultnode" [ngClass]="{'rightactivetab':tabnode.active}"    (click)="onTabClick(tabnode)">
+            <div class="defaultnode" [ngClass]="{'rightactivetab':tabnode.active,'disabled-tab':tabnode.disabled }"    (click)="onTabClick(tabnode)">
               <span *ngIf="tabnode.icon" [ngClass]="tabnode.icon"  aria-hidden="true"></span>
               <span>{{tabnode.title}}</span>
             </div>
