@@ -3442,6 +3442,9 @@ fieldset {
   font-weight: bold;
   color: #000f1f; }
 
+.disabled-tab {
+  background-color: #c2cfdb !important; }
+
 .verticalnavtab .rightactivetab {
   background-color: #6bb5ff;
   color: #000f1f; }
@@ -3470,6 +3473,9 @@ fieldset {
 
 .activetab {
   border-bottom: 3px solid #4169e1; }
+
+.disabled-tab {
+  cursor: not-allowed !important; }
 
 .tabnavigation {
   padding: 10px 16px;
