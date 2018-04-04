@@ -14,6 +14,10 @@
   display: table;
   width: 100%;
   position: relative;
+ 
+}
+.step-block-icon-disable{
+  cursor :not-allowed;
 }
 .stepwizard-row:before {
   top: 14px;
@@ -29,6 +33,7 @@
   display: table-cell;
   text-align: center;
   position: relative;
+  //cursor : not-allowed;
 }
 
 .btn-circle {
@@ -76,7 +81,7 @@
 
 .step-box-table-item.active{
   //background-color: $stepsInActiveBGColor!important;
-  cursor : not-allowed;
+  cursor : default;
 }
 
 .step-box-table-item.disbaled{
