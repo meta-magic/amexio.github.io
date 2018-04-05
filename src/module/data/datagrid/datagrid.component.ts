@@ -312,57 +312,57 @@ import {CommonDataService} from "../../services/data/common.data.service";
 export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoCheck {
 
   /*
-Properties 
+Properties
 name : title
 datatype : string
 version : 4.0 onwards
 default : none
 description : Title for grid.
-*/ 
+*/
   @Input() title: string;
 /*
-Properties 
+Properties
 name : page-size
 datatype : number
 version : 4.0 onwards
 default : none
 description : Number of records show on one page.
-*/ 
+*/
   @Input('page-size') pagesize: number;
 
   /*
-Properties 
+Properties
 name : http-url
 datatype : string
 version : 4.0 onwards
 default : none
 description : REST url for fetching data.
-*/ 
+*/
   @Input('http-url') httpurl: string;
 
 
   /*
-Properties 
+Properties
 name : http-method
 datatype : string
 version : 4.0 onwards
 default : none
 description : Type of HTTP call, POST,GET etc.
-*/ 
+*/
   @Input('http-method') httpmethod: string;
 
   /*
-Properties 
-name : 
+Properties
+name :
 datatype : string
 version : 4.0 onwards
 default : none
 description : Key in JSON Datasource for records.
-*/ 
+*/
   @Input('data-reader') datareader: string;
 
   /*
-Properties 
+Properties
 name : enable-checkbox
 datatype : boolean
 version : 4.0 onwards
@@ -372,59 +372,59 @@ description : Enables checkbox for each row, this allows user for multi selectio
   @Input('enable-checkbox') enablecheckbox: boolean;
 
   /*
-Properties 
+Properties
 name : data
 datatype : any
 version : 4.0 onwards
 default : none
-description : Local Data binding. 
+description : Local Data binding.
 */
   @Input() data: any[];
 
   /*
-Events 
+Events
 name : rowSelect
 datatype : none
 version : none
 default : none
-description : It will gives you row clicked data. 
+description : It will gives you row clicked data.
 */
   @Output() rowSelect: any = new EventEmitter<any>();
 
   /*
-Events 
+Events
 name : selectedRowData
 datatype : none
 version : none
 default : none
-description : It will fire only on selection of checkbox and gives you selected record data. 
+description : It will fire only on selection of checkbox and gives you selected record data.
 */
   @Output() selectedRowData: any = new EventEmitter<any>();
 
    /*
-Events 
+Events
 name : onHeaderClick
 datatype : none
 version : none
 default : none
-description : It will gives you click event and column info. 
+description : It will gives you click event and column info.
 */
   @Output() onHeaderClick: any = new EventEmitter<any>();
 
    /*
-Properties 
+Properties
 name : height
 datatype : string
 version : 4.0 onwards
 default : none
-description : height of grid 
+description : height of grid
 */
   @Input() height: string;
 
    /*
-Properties 
+Properties
 name : groupby
-datatype : 
+datatype :
 version : 4.0 onwards
 default : none
 description : Set True for Enable group by functionality.
@@ -432,7 +432,7 @@ description : Set True for Enable group by functionality.
   @Input() groupby = false;
 
    /*
-Properties 
+Properties
 name : groupby-data-index
 datatype : string
 version : 4.0 onwards
@@ -442,7 +442,7 @@ description :  Primary data-index name of the column for Grouping.
   @Input('groupby-data-index') groupbydataindex: string;
 
   /*
-Properties 
+Properties
 name : enable-data-filter
 datatype : boolean
 version : 4.0 onwards
@@ -452,7 +452,7 @@ description :  Enables user to filter data.
   @Input('enable-data-filter') enabledatafilter: boolean;
 
   /*
-Properties 
+Properties
 name : c-class
 datatype : string
 version : 4.0 onwards
@@ -463,17 +463,17 @@ description : Used for custom styled classes
   @Input('c-class') cclass: string;
 
   /*
-Properties 
+Properties
 name : tableHeadercclass
 datatype : string
 version : 4.0 onwards
 default : none
-description : custom styled class for table header 
+description : custom styled class for table header
 */
   @Input() tableHeadercclass: string;
 
   /*
-Properties 
+Properties
 name : tableTitlecclass
 datatype : string
 version : 4.0 onwards
@@ -483,7 +483,7 @@ description : custom styled class for table title
   @Input() tableTitlecclass: string;
 
 /*
-Properties 
+Properties
 name : tableDatacclass
 datatype : string
 version : 4.0 onwards
@@ -493,7 +493,7 @@ description :  custom styled class for table data
   @Input() tableDatacclass: string;
 
   /*
-Properties 
+Properties
 name : selected-row-color
 datatype : string
 version : 4.0 onwards
@@ -503,7 +503,7 @@ description :  sets color of selected row
   @Input('selected-row-color') selectedrowcolor: string;
 
   /*
-Properties 
+Properties
 name : column-defintion
 datatype : any
 version : 4.0 onwards
@@ -513,7 +513,7 @@ description :  If you don't want to use '<amexio-data-table-column>' tag then pa
   @Input('column-defintion') columndefintion: any;
 
   /*
-Properties 
+Properties
 name : enable-column-fiter
 datatype : boolean
 version : 4.0 onwards
@@ -608,13 +608,17 @@ description :  Set false to hide Column toggle functionality.
   }
 
   ngDoCheck() {
-    if (this.previousData != null && JSON.stringify(this.previousData) != JSON.stringify(this.data)){
-      this.previousData = JSON.parse(JSON.stringify(this.data));
-      this.setData(this.data);
+    if(this.previousData != null && this.data !=null) {
+      if ( JSON.stringify(this.previousData) != JSON.stringify(this.data)){
+        this.previousData = JSON.parse(JSON.stringify(this.data));
+        this.setChangeData(this.data);
+      }
     }
-    if (JSON.stringify(this.columnPreviewData) != JSON.stringify(this.columndefintion)) {
-      this.columnPreviewData = JSON.parse(JSON.stringify(this.columndefintion));
-      this.columns = this.columndefintion;
+    if (this.columndefintion != null && this.columnPreviewData != null) {
+      if (JSON.stringify(this.columnPreviewData) != JSON.stringify(this.columndefintion)) {
+        this.columnPreviewData = JSON.parse(JSON.stringify(this.columndefintion));
+        this.columns = this.columndefintion;
+      }
     }
   }
 
@@ -682,9 +686,30 @@ description :  Set false to hide Column toggle functionality.
     }
   }
 
+  setChangeData(httpResponse: any) {
+    if(this.viewRows) {
+      this.setSelectedFlag(this.viewRows);
+    }
+    this.data = this.viewRows;
+    if (this.groupby) {
+      this.cloneData = JSON.parse(JSON.stringify(this.data));
+    }
+    if (this.enabledatafilter) {
+      this.filterCloneData = JSON.parse(JSON.stringify(this.data));
+    }
+    this.renderData();
+    if (this.groupby) {
+      this.setColumnData();
+    }
+    this.totalPages = this.pageNumbers.length;
+    this.mask = false;
+  }
+
   setData(httpResponse: any){
     this.viewRows = this.getResponseData(httpResponse);
-    this.setSelectedFlag(this.viewRows);
+    if(this.viewRows) {
+      this.setSelectedFlag(this.viewRows);
+    }
     this.data = this.viewRows;
     if (this.groupby) {
       this.cloneData = JSON.parse(JSON.stringify(this.data));
@@ -771,28 +796,29 @@ description :  Set false to hide Column toggle functionality.
       for (let pageNo = 1; pageNo <= this.maxPage; pageNo++) {
         this.pageNumbers.push(pageNo);
       }
-    }
-    if (this.pagesize >= 1) {
-      const rowsTemp = this.data;
-      const newRows = [];
-      let startIndex = 0;
-      let endIndex = this.pagesize;
-      if (this.currentPage > 1) {
-        startIndex = (this.currentPage - 1) * this.pagesize;
-        endIndex = startIndex + this.pagesize;
-      }
-      while (startIndex <= endIndex - 1) {
-        if (rowsTemp[startIndex]) {
-          newRows.push(rowsTemp[startIndex]);
-        }
-        startIndex++;
-      }
-      this.viewRows = newRows;
 
-    } else {
-      this.viewRows = this.data;
+      if (this.pagesize >= 1) {
+        const rowsTemp = this.data;
+        const newRows = [];
+        let startIndex = 0;
+        let endIndex = this.pagesize;
+        if (this.currentPage > 1) {
+          startIndex = (this.currentPage - 1) * this.pagesize;
+          endIndex = startIndex + this.pagesize;
+        }
+        while (startIndex <= endIndex - 1) {
+          if (rowsTemp[startIndex]) {
+            newRows.push(rowsTemp[startIndex]);
+          }
+          startIndex++;
+        }
+        this.viewRows = newRows;
+
+      } else {
+        this.viewRows = this.data;
+      }
+      this.selectedRowNo = -1;
     }
-    this.selectedRowNo = -1;
   }
 
   getResponseData(httpResponse: any){
@@ -846,20 +872,17 @@ description :  Set false to hide Column toggle functionality.
   }
 
   onRowClick(rowData: any, rowIndex: any) {
-    this.data.forEach((opt: any) =>{
-      opt.isSelected = false;
-      if(opt.hasOwnProperty('groupData')) {
-        opt.groupData.forEach((optChild: any) =>{
-          optChild.isSelected = false;
-        })
-      }
-    });
+    if(this.data) {
+      this.data.forEach((opt: any) =>{
+        opt.isSelected = false;
+        if(opt.hasOwnProperty('groupData')) {
+          opt.groupData.forEach((optChild: any) =>{
+            optChild.isSelected = false;
+          })
+        }
+      });
+    }
     rowData.isSelected = !rowData.isSelected;
-    /* if(rowRef.classList.contains('datatable-row-active')){
-     rowRef.classList.remove('datatable-row-active');
-     } else {
-     rowRef.classList.add('datatable-row-active');
-     }*/
     rowIndex = 'row' + rowIndex;
     this.rowId = rowIndex;
     this.rowSelect.emit(rowData);
