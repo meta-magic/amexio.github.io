@@ -15,6 +15,11 @@
   color: $primaryColor;
 }
 
+.disabled
+{
+  background-color:$buttonDisableBG;
+  color : $buttonDisableFontColor;
+}
 
 .button-primary:hover:enabled{
   background-color: darken($primaryBGColor, 10%);
