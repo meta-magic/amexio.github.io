@@ -57,7 +57,7 @@ description : Key in JSON Datasource for records.
   @Input('data-reader') datareader: string;
 
 /*
-Properties 
+Events 
 name : nodeClick
 datatype : none
 version : none
@@ -88,7 +88,14 @@ description : user can add any template to tree
 
 
   @ContentChild('amexioTreeTemplate') parentTmp: TemplateRef<any>;
-
+/*
+Events
+name : onTreeNodeChecked
+datatype : any
+version : 4.0 onwards
+default : none
+description : It will gives whole tree data with checked flag status.
+*/ 
   @Output() onTreeNodeChecked: any = new EventEmitter<any>();
 
   previousValue: any;
