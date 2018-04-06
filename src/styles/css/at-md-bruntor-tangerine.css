@@ -198,6 +198,11 @@ a {
 textarea {
   font-family: inherit; }
 
+textarea:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  background-color: #dbc2c6; }
+
 /*
 The loading throbber is a single spinning element with three
 visible borders and a border-radius of 50%.
@@ -709,6 +714,9 @@ button {
 .inputgroup .tooltiptext {
   background-color: #ffe4b8; }
 
+.input-control-disabled {
+  background-color: #dbd1c2; }
+
 /** input - Structure CSS **/
 .inputgroup {
   position: relative; }
@@ -716,6 +724,10 @@ button {
 .inputgroup > label {
   display: inline-block;
   margin-bottom: .5rem; }
+
+.input-control-disabled {
+  opacity: 0.55;
+  cursor: not-allowed; }
 
 .input-control {
   width: 100%;
