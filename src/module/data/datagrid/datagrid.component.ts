@@ -607,12 +607,10 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
   }
 
   ngDoCheck() {
-    if(this.data != null && this.previousData != null) {
-      if (JSON.stringify(this.previousData) != JSON.stringify(this.data)){
+  if (this.previousData != null && JSON.stringify(this.previousData) != JSON.stringify(this.data)){
         this.previousData = JSON.parse(JSON.stringify(this.data));
         this.setChangeData(this.data);
       }
-    }
     if(this.columnPreviewData != null && this.columndefintion != null) {
       if (JSON.stringify(this.columnPreviewData) != JSON.stringify(this.columndefintion)) {
         this.columnPreviewData = JSON.parse(JSON.stringify(this.columndefintion));
