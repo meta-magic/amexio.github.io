@@ -14,6 +14,13 @@
  *
  */
 
+
+ /*
+ Component Name : Amexio data grid
+ Component Selector : <amexio-data-table-column>
+ Component Description : Data grid component to render large amount of data-set with various options like sorting in ascending or descending order, client-side pagination, column hide/unhide, single/multi selection, user define template for rendering for column header and column data, displaying summation of numeric column.
+*/
+
 import {Input, Component, ContentChild, TemplateRef} from '@angular/core';
 
 @Component({
@@ -21,18 +28,74 @@ import {Input, Component, ContentChild, TemplateRef} from '@angular/core';
 })
 export class AmexioGridColumnComponent {
 
+  /*
+Properties 
+name : text
+datatype : string
+version : 4.0 onwards
+default : none
+description : Set column label.
+*/ 
   @Input() text: string;
 
+  /*
+Properties 
+name : data-index
+datatype : string
+version : 4.0 onwards
+default : none
+description : JSON key from datasource.
+*/
   @Input('data-index') dataindex: string;
 
+  /*
+Properties 
+name : hidden
+datatype : boolean
+version : 4.0 onwards
+default : none
+description : Hide column
+*/
   @Input() hidden: boolean = false;
 
+  /*
+Properties 
+name : data-type
+datatype : string
+version : 4.0 onwards
+default : none
+description : Data type of column (string/number).
+*/
   @Input('data-type') datatype: string;
 
+  /*
+Properties 
+name : summary-type
+datatype : string
+version : 4.0 onwards
+default : none
+description : Type of math opertaion to be applied on the column
+*/
   @Input('summary-type') summarytype: string;
 
+  /*
+Properties 
+name : summary-caption
+datatype : string
+version : 4.0 onwards
+default : none
+description : it is the title placed next to the summarized value
+*/
   @Input('summary-caption') summarycaption: string;
 
+  /*
+Properties 
+name : width
+datatype : string
+version : 4.0 onwards
+default : none
+description : Custom width for each column.Width must be in % but no need to mention %.
+*/
   @Input() width: string;
 
   isColumnSort: boolean;

@@ -1,6 +1,13 @@
 /**
  * Created by ketangote on 12/1/17.
  */
+
+
+ /*
+ Component Name : Amexio horizontal tree 
+ Component Selector : <amexio-horizontal-treeviewnode>
+ Component Description : A Horizontal Tree Component.
+*/
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
@@ -23,9 +30,24 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 export class HorizontalTreeViewNodeComponent implements OnInit {
 
-
+ /*
+Properties 
+name : data
+datatype : any
+version : 4.0 onwards
+default : none
+description : Local Data binding.
+*/
   @Input() data: any[];
 
+  /*
+Events 
+name : onNodeClick
+datatype : none
+version : none
+default : none
+description : It will gives you clicked node data.
+*/
   @Output() onNodeClick: any = new EventEmitter<any>();
 
   constructor() {

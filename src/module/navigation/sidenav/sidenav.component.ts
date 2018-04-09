@@ -3,9 +3,14 @@
  */
 
 
-import {Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output} from '@angular/core';
-import {CommonDataService} from "../../services/data/common.data.service";
-import {DeviceQueryService} from "../../services/device/device.query.service";
+/*
+ Component Name : Amexio sidenav bar
+ Component Selector : <amexio-side-nav>
+ Component Description : The Side Nav Bar Component is a familiar side navigation pattern for users. Side nav bar can be placed on left or right side. It can fit as many navigation links as needed, scrolling when the content exceeds the viewport. Take a look at Datastructure format which this component can consume in datasource tab.
+*/
+import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
+import { CommonDataService } from "../../services/data/common.data.service";
+import { DeviceQueryService } from "../../services/device/device.query.service";
 
 
 @Component({
@@ -13,24 +18,104 @@ import {DeviceQueryService} from "../../services/device/device.query.service";
 })
 export class AmexioSideNav implements OnInit {
 
+  /*
+Properties 
+name : data
+datatype : any
+version : 4.0 onwards
+default : none
+description : Local data for sidenav.
+*/
   @Input() data: any[];
 
+  /*
+  Properties 
+  name : http-url
+  datatype : string
+  version : 4.0 onwards
+  default : none
+  description : REST url for fetching datasource.
+  */
   @Input('http-url') httpurl: string;
 
+  /*
+  Properties 
+  name : http-url
+  datatype : string
+  version : 4.0 onwards
+  default : none
+  description : Type of HTTP call, POST,GET.
+  */
   @Input('http-method') httpmethod: string;
 
+  /*
+  Properties 
+  name : data-reader
+  datatype : string
+  version : 4.0 onwards
+  default : none
+  description : Key in JSON datasource for records
+  */
   @Input('data-reader') datareader: string;
 
+  /*
+  Properties 
+  name : position
+  datatype : any
+  version : 4.0 onwards
+  default : none
+  description : Sidenav bar rendering position. example position='relative','right'
+  */
   @Input() position: any;
 
+  /*
+  Properties 
+  name : titleimage
+  datatype : string
+  version : 4.0 onwards
+  default : none
+  description : Title image of sidenav bar
+  */
   @Input() titleimage: string;
 
+  /*
+  Events 
+  name : nodeClick
+  datatype : none
+  version : none
+  default : none
+  description : Fire when sidenav bar menu click
+  */
   @Output() nodeClick: any = new EventEmitter<any>();
 
+  /*
+  Properties 
+  name : width
+  datatype : string
+  version : 4.0 onwards
+  default : none
+  description : Width of sidenav
+  */
   @Input() width: string;
 
+  /*
+  Properties 
+  name : height
+  datatype : string
+  version : 4.0 onwards
+  default : none
+  description : height of sidenav
+  */
   @Input() height: string;
 
+  /*
+  Properties 
+  name : title
+  datatype : string
+  version : 4.0 onwards
+  default : none
+  description : Title of sidenav bar
+  */
   @Input('title') sidenavtitle: string;
 
   smalldevice: boolean;
@@ -39,7 +124,7 @@ export class AmexioSideNav implements OnInit {
 
   responseData: any;
 
-  constructor(public dataService: CommonDataService, public matchMediaService: DeviceQueryService,public element: ElementRef) {
+  constructor(public dataService: CommonDataService, public matchMediaService: DeviceQueryService, public element: ElementRef) {
     this.position = "left";
     this.smalldevice = false;
     this.sidenavexpandedinsmalldevice = false;
@@ -76,7 +161,7 @@ export class AmexioSideNav implements OnInit {
       this.position = 'left';
     }
 
-    if(!this.height){
+    if (!this.height) {
       this.height = "100%";
     }
   }
@@ -119,7 +204,7 @@ export class AmexioSideNav implements OnInit {
   onNodeClick(node: any) {
     this.activateNode(this.data, node);
     this.nodeClick.emit(node);
-    if(!node.children){
+    if (!node.children) {
       this.handleDeviceSettings(false);
     }
   }

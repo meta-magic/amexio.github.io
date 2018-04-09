@@ -1,6 +1,12 @@
 /**
  * Created by ketangote on 12/8/17.
  */
+
+ /*
+ Component Name : Amexio menubar
+ Component Selector : <amexio-menu>
+ Component Description : Menu bar component show menu list on top.
+*/
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CommonDataService} from "../../services/data/common.data.service";
 import {DeviceQueryService} from "../../services/device/device.query.service";
@@ -86,16 +92,64 @@ import {DeviceQueryService} from "../../services/device/device.query.service";
 export class AmexioMenuBarComponent implements OnInit {
 
 
+  /*
+Properties 
+name : data
+datatype : any
+version : 4.0 onwards
+default : none
+description : Local data for menubar.
+*/ 
   @Input() data: any[];
 
+  /*
+Properties 
+name : label
+datatype : any
+version : 4.0 onwards
+default : none
+description : label to menubar
+*/
   @Input() label: any;
 
+/*
+Properties 
+name : http-url
+datatype : string
+version : 4.0 onwards
+default : none
+description : REST url for fetching datasource.
+*/
   @Input('http-url') httpurl: string;
 
+  /*
+Properties 
+name : http-method
+datatype : string
+version : 4.0 onwards
+default : none
+description : Type of HTTP call, POST,GET.
+*/
   @Input('http-method') httpmethod: string;
 
+  /*
+Properties 
+name : data-reader
+datatype : string
+version : 4.0 onwards
+default : none
+description : Key in JSON datasource for records
+*/
   @Input('data-reader') datareader: string;
 
+  /*
+Events 
+name : nodeClick
+datatype : any
+version : none
+default : none
+description : Fire when menubar bar click.
+*/
   @Output() nodeClick: any = new EventEmitter<any>();
 
   xposition : boolean = false;

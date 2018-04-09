@@ -32,7 +32,8 @@ name : active
 datatype : boolean
 version : 4.0 onwards
 default : none
-description : user can Set true for specific accordian open as default */
+description : user can Set true for specific accordian open as default 
+*/
   @Input() active: boolean;
 
    /*
@@ -41,7 +42,8 @@ name : emittedEvent
 datatype :none
 version : none
 default : none
-description : Fires the on accordion pane click event. */
+description : Fires the on accordion pane click event. 
+*/
   @Output() emittedEvent = new EventEmitter();
 
 
@@ -51,7 +53,8 @@ name : left-icon
 datatype : string
 version : 4.0 onwards
 default : none
-description :  places the icon on left*/
+description :  places the icon on left 
+*/
   @Input('left-icon') leftIcon: string;
 
     /*
@@ -60,7 +63,8 @@ name : angle-icon
 datatype : boolean
 version : 4.0 onwards
 default : false
-description : Can use Angle Icons instead of default plus/minus icons*/
+description : Can use Angle Icons instead of default plus/minus icons
+*/
   @Input('angle-icon') angleIcon : boolean;
 
 
@@ -70,7 +74,8 @@ name : disabled
 datatype : boolean
 version : 4.0 onwards
 default : none
-description : 	Disabled specific panes*/
+description : 	Disabled specific panes
+*/
   @Input('disabled') disabled : boolean;
 
   isTransparent : boolean;

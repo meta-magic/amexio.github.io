@@ -46,7 +46,7 @@ Properties
 name : position
 datatype : string
 version : 4.0 onwards
-default : 
+default : none
 description : specify position of tab.
 */
   @Input() position: string;
@@ -109,12 +109,14 @@ description : Callback to invoke on activated tab event.
   }
 
   onTabClick(tab: any) {
-    for (let i = 0; i < this.tabCollection.length; i++) {
-      if (this.tabCollection[i] === tab) {
-        this.tabCollection[i]['active'] = true;
-        this.onClick.emit(tab);
-      } else {
-        this.tabCollection[i]['active'] = false;
+    if(!tab.disabled ) {
+      for (let i = 0; i < this.tabCollection.length; i++) {
+        if (this.tabCollection[i] === tab) {
+          this.tabCollection[i]['active'] = true;
+          this.onClick.emit(tab);
+        } else {
+          this.tabCollection[i]['active'] = false;
+        }
       }
     }
 

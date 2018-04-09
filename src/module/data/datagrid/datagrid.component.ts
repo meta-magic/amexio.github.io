@@ -1,6 +1,12 @@
 /**
  * Created by pratik on 1/1/18.
  */
+
+/*
+ Component Name : Amexio data grid
+ Component Selector : <amexio-datagrid>
+ Component Description : Data grid component to render large amount of data-set with various options like sorting in ascending or descending order, client-side pagination, column hide/unhide, single/multi selection, user define template for rendering for column header and column data, displaying summation of numeric column.
+ */
 import {
   AfterContentInit, ChangeDetectorRef, Component, ContentChildren, DoCheck, EventEmitter, Input, OnInit, Output,
   QueryList
@@ -46,7 +52,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
               <ng-container *ngIf="!cols.hidden">
                 <div class="datatable-col col-group" [style.width.%]="cols.width">
                   <data-grid-filter [column]="cols"
-                                      (filterObject)="getFilteredData($event)">
+                                    (filterObject)="getFilteredData($event)">
                   </data-grid-filter>
                 </div>
               </ng-container>
@@ -207,7 +213,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
             <div class="spinner"></div>
           </div>
           <ng-container *ngIf="!mask">
-            <div class="datatable-row" (click)="toogle(row,i)"  *ngFor="let row of viewRows;let i=index" id="{{'row'+i}}" [ngClass]="{'datatable-row-active':row.isSelected}" (click)="onRowClick(row, i)">
+            <div class="datatable-row"  *ngFor="let row of viewRows;let i=index" id="{{'row'+i}}" [ngClass]="{'datatable-row-active':row.isSelected}" (click)="toogle(row, i)">
               <ng-container *ngIf="enablecheckbox">
                 <div class="datatable-col datatable-checkbox-width checkbox-col">
                   <div class="inputgroup">
@@ -305,46 +311,214 @@ import {CommonDataService} from "../../services/data/common.data.service";
 
 export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoCheck {
 
+  /*
+   Properties
+   name : title
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : Title for grid.
+   */
   @Input() title: string;
-
+  /*
+   Properties
+   name : page-size
+   datatype : number
+   version : 4.0 onwards
+   default : none
+   description : Number of records show on one page.
+   */
   @Input('page-size') pagesize: number;
 
+  /*
+   Properties
+   name : http-url
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : REST url for fetching data.
+   */
   @Input('http-url') httpurl: string;
 
+
+  /*
+   Properties
+   name : http-method
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : Type of HTTP call, POST,GET etc.
+   */
   @Input('http-method') httpmethod: string;
 
+  /*
+   Properties
+   name :
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : Key in JSON Datasource for records.
+   */
   @Input('data-reader') datareader: string;
 
+  /*
+   Properties
+   name : enable-checkbox
+   datatype : boolean
+   version : 4.0 onwards
+   default : none
+   description : Enables checkbox for each row, this allows user for multi selection.
+   */
   @Input('enable-checkbox') enablecheckbox: boolean;
 
+  /*
+   Properties
+   name : data
+   datatype : any
+   version : 4.0 onwards
+   default : none
+   description : Local Data binding.
+   */
   @Input() data: any[];
 
+  /*
+   Events
+   name : rowSelect
+   datatype : none
+   version : none
+   default : none
+   description : It will gives you row clicked data.
+   */
   @Output() rowSelect: any = new EventEmitter<any>();
 
+  /*
+   Events
+   name : selectedRowData
+   datatype : none
+   version : none
+   default : none
+   description : It will fire only on selection of checkbox and gives you selected record data.
+   */
   @Output() selectedRowData: any = new EventEmitter<any>();
 
+  /*
+   Events
+   name : onHeaderClick
+   datatype : none
+   version : none
+   default : none
+   description : It will gives you click event and column info.
+   */
   @Output() onHeaderClick: any = new EventEmitter<any>();
 
+  /*
+   Properties
+   name : height
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : height of grid
+   */
   @Input() height: string;
 
+  /*
+   Properties
+   name : groupby
+   datatype :
+   version : 4.0 onwards
+   default : none
+   description : Set True for Enable group by functionality.
+   */
   @Input() groupby = false;
 
+  /*
+   Properties
+   name : groupby-data-index
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description :  Primary data-index name of the column for Grouping.
+   */
   @Input('groupby-data-index') groupbydataindex: string;
 
+  /*
+   Properties
+   name : enable-data-filter
+   datatype : boolean
+   version : 4.0 onwards
+   default : none
+   description :  Enables user to filter data.
+   */
   @Input('enable-data-filter') enabledatafilter: boolean;
 
+  /*
+   Properties
+   name : c-class
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : Used for custom styled classes
+   */
   @Input('c-class') cclass: string;
 
+  /*
+   Properties
+   name : tableHeadercclass
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : custom styled class for table header
+   */
   @Input() tableHeadercclass: string;
 
+  /*
+   Properties
+   name : tableTitlecclass
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : custom styled class for table title
+   */
   @Input() tableTitlecclass: string;
 
+  /*
+   Properties
+   name : tableDatacclass
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description :  custom styled class for table data
+   */
   @Input() tableDatacclass: string;
 
+  /*
+   Properties
+   name : selected-row-color
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description :  sets color of selected row
+   */
   @Input('selected-row-color') selectedrowcolor: string;
 
+  /*
+   Properties
+   name : column-defintion
+   datatype : any
+   version : 4.0 onwards
+   default : none
+   description :  If you don't want to use '<amexio-data-table-column>' tag then pass JSON data.
+   */
   @Input('column-defintion') columndefintion: any;
 
+  /*
+   Properties
+   name : enable-column-fiter
+   datatype : boolean
+   version : 4.0 onwards
+   default : none
+   description :  Set false to hide Column toggle functionality.
+   */
   @Input('enable-column-fiter')  enablecolumnfiter: boolean;
 
   columns: any[] = [];
@@ -428,19 +602,24 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
       );
     } else if (this.data) {
       this.setData(this.data);
-        this.previousData = JSON.parse(JSON.stringify(this.data));
+      this.previousData = JSON.parse(JSON.stringify(this.data));
     }
   }
 
   ngDoCheck() {
-    if (this.previousData != null && JSON.stringify(this.previousData) != JSON.stringify(this.data)){
-      this.previousData = JSON.parse(JSON.stringify(this.data));
-      this.setData(this.data);
+    if(this.data != null && this.previousData != null) {
+      if (JSON.stringify(this.previousData) != JSON.stringify(this.data)){
+        this.previousData = JSON.parse(JSON.stringify(this.data));
+        this.setChangeData(this.data);
+      }
     }
-    if (JSON.stringify(this.columnPreviewData) != JSON.stringify(this.columndefintion)) {
-      this.columnPreviewData = JSON.parse(JSON.stringify(this.columndefintion));
-      this.columns = this.columndefintion;
+    if(this.columnPreviewData != null && this.columndefintion != null) {
+      if (JSON.stringify(this.columnPreviewData) != JSON.stringify(this.columndefintion)) {
+        this.columnPreviewData = JSON.parse(JSON.stringify(this.columndefintion));
+        this.columns = this.columndefintion;
+      }
     }
+
   }
 
   ngAfterContentInit() {
@@ -507,6 +686,18 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
     }
   }
 
+  setChangeData(httpResponse: any){
+    this.setSelectedFlag(httpResponse);
+    if (this.enabledatafilter) {
+      this.filterCloneData = JSON.parse(JSON.stringify(this.data));
+    }
+    if (!this.groupby) {
+      this.renderData();
+    }
+    this.totalPages = this.pageNumbers.length;
+    this.mask = false;
+  }
+
   setData(httpResponse: any){
     this.viewRows = this.getResponseData(httpResponse);
     this.setSelectedFlag(this.viewRows);
@@ -568,15 +759,11 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
      groupdata.groupData.forEach((childData, index) => {
      aggregateValue = +(aggregateValue + Number(childData[columnOption.dataindex]));
      arrayIndex = index;
-
      });
      dummyA[k]=aggregateValue;
      }
-
      });
-
      groupdata.groupData[arrayIndex+1]=dummyA;
-
      });*/
     this.renderData();
     this.cd.detectChanges();
@@ -946,7 +1133,6 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
     btn.classList.toggle('active-accordion');
     const panel = btn.nextElementSibling;
     // let icon = btn.children[0].children[0];
-
     if (this.iconclassKey == 'fa fa-plus'){
       this.iconclassKey = 'fa fa-minus';
     }

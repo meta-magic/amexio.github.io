@@ -10,6 +10,12 @@
  * Author - Sagar Jadhav
  *
  */
+
+/*
+Component Name : Amexio line chart
+Component Selector : <amexio-chart-line>
+Component Description : A line chart that is rendered within the browser using SVG.
+*/
 import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from '@angular/core';
 import {ChartAreaComponent} from "../chartarea/chart.area.component";
 import {ChartLegendComponent} from "../chartlegend/chart.legend.component";
@@ -144,9 +150,25 @@ export class LineChartComponent implements AfterContentInit, OnInit {
 
   id: any;
 
-  @Input() width: string;
+/*
+Properties 
+name : width
+datatype : string
+version : 4.0 onwards
+default : none
+description : width of chart
+*/
+@Input() width: string;
 
-  @Input() height: string;
+/*
+Properties 
+name : height
+datatype : string
+version : 4.0 onwards
+default : none
+description : height of chart
+*/
+@Input() height: string;
 
 
   showChart:boolean;
@@ -156,7 +178,15 @@ export class LineChartComponent implements AfterContentInit, OnInit {
     return this._data;
   }
 
-  @Input('data')
+/*
+Properties 
+name : data
+datatype : any
+version : 4.0 onwards
+default : none
+description : For the use of local data
+*/  
+@Input('data')
   set data(data:any){
     if(data){
       this._data=data;
@@ -166,7 +196,15 @@ export class LineChartComponent implements AfterContentInit, OnInit {
     }
   }
 
-  @Input('background-color') backgroundcolor: string;
+/*
+Properties 
+name : background-color
+datatype : string
+version : 4.0 onwards
+default : none
+description : sets background-color of chart
+*/  
+@Input('background-color') backgroundcolor: string;
 
   hasLoaded: boolean;
 

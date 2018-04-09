@@ -10,6 +10,13 @@
  * Author - Sagar Jadhav
  *
  */
+
+
+  /*
+ Component Name : Amexio bubble chart
+ Component Selector : <amexio-chart-bubble>
+ Component Description : A bubble chart is used to visualize a data set with two to four dimensions. The first two dimensions are visualized as coordinates, the third as color and the fourth as size.
+*/
 import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from '@angular/core';
 import {ChartLegendComponent} from "../chartlegend/chart.legend.component";
 import {ChartTitleComponent} from "../charttitle/chart.title.component";
@@ -140,8 +147,25 @@ export class BubbleChartComponent  implements AfterContentInit ,OnInit{
 
   id: any;
 
+
+  /*
+Properties 
+name : width
+datatype : any
+version : 4.0 onwards
+default : none
+description : width of chart
+*/
   @Input() width: string;
 
+  /*
+Properties 
+name : height
+datatype : any
+version : 4.0 onwards
+default : none
+description : height of chart
+*/
   @Input() height: string;
 
 
@@ -152,6 +176,15 @@ export class BubbleChartComponent  implements AfterContentInit ,OnInit{
     return this._data;
   }
 
+
+  /*
+Properties 
+name : data
+datatype : any
+version : 4.0 onwards
+default : none
+description : Local data for AreaChart
+*/
   @Input('data')
   set data(data:any){
     if(data){
@@ -161,8 +194,25 @@ export class BubbleChartComponent  implements AfterContentInit ,OnInit{
       this.showChart=false;
     }
   }
+
+  /*
+Properties 
+name : axis-color
+datatype : any
+version : 4.0 onwards
+default : none
+description : An object that specifies a mapping between color column values and colors or a gradient scale.example:['#FF0000', '#00FF00'] or ['yellow', 'red']
+*/
   @Input('axis-color') axiscolor:any=[];
 
+  /*
+Properties 
+name : background-color
+datatype : string
+version : 4.0 onwards
+default : none
+description : sets background color
+*/
   @Input('background-color') backgroundcolor: string;
 
   hasLoaded:boolean;

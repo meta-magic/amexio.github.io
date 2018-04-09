@@ -11,6 +11,11 @@
  *
  */
 
+  /*
+ Component Name : Amexio bar chart
+ Component Selector : <amexio-chart-bar>
+ Component Description : An bar chart that is rendered within the browser using SVG. A bar chart is a chart that presents grouped data with rectangular bars with lengths proportional to the values that they represent.
+*/
 import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from "@angular/core";
 import {ChartLegendComponent} from "../chartlegend/chart.legend.component";
 import {ChartTitleComponent} from "../charttitle/chart.title.component";
@@ -149,6 +154,15 @@ export class BarChartComponent implements AfterContentInit, OnInit {
     return this._data;
   }
 
+
+  /*
+Properties 
+name : data
+datatype : any
+version : 4.0 onwards
+default : none
+description : Local data for AreaChart
+*/
   @Input('data')
   set data(data:any){
     if(data){
@@ -159,17 +173,65 @@ export class BarChartComponent implements AfterContentInit, OnInit {
     }
   }
 
+   /*
+Properties 
+name : width
+datatype : string
+version : 4.0 onwards
+default : none
+description : Width of chart
+*/
   @Input() width: string;
 
+   /*
+Properties 
+name : height
+datatype : string
+version : 4.0 onwards
+default : none
+description : height of chart
+*/
   @Input() height: string;
 
   //showing stack chart
+   /*
+Properties 
+name : stacked
+datatype : boolean
+version : 4.0 onwards
+default : false
+description : If set to true, stacks the elements for all series at each domain value.default value is false
+*/
   @Input() stacked: boolean = false;
 
+   /*
+Properties 
+name : x-axis-title
+datatype : string
+version : 4.0 onwards
+default : none
+description : sets title for x axis 
+*/
   @Input('x-axis-title') xaxistitle: string;
 
+   /*
+Properties 
+name : y-axis-title
+datatype : string
+version : 4.0 onwards
+default : none
+description : sets title for y axis 
+*/
   @Input('y-axis-title') yaxistitle: string;
 
+   /*
+Properties 
+name : background-color
+datatype : string
+version : 4.0 onwards
+default : none
+description : sets background-color 
+*/
   @Input('background-color') backgroundcolor: string;
 
   @ContentChildren(ChartLegendComponent) chartLegendComp: QueryList<ChartLegendComponent>;

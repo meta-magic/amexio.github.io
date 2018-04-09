@@ -47,22 +47,27 @@ description : User can bind title for accordion tab.
   @Input() header: string;
 
    /*
-  @Input() mode: 'single' | 'multiple';*/
+  @Input() mode: 'single' | 'multiple';
+  */
 
-/*Properties 
+/*
+Properties 
 name : data
 datatype : any
 version : 4.0 onwards
 default : none
-description : Data Containing Image Path, Information and Video URL Refer the DataSource Tab */
+description : Data Containing Image Path, Information and Video URL Refer the DataSource Tab 
+*/
   @Input() data: any;
 
-  /*Properties 
+  /*
+  Properties 
 name : shuffle-interval
 datatype : number
 version : 4.0 onwards
 default : none
-description : time interval for shuffling images */
+description : time interval for shuffling images 
+*/
   @Input('shuffle-interval') shuffleinterval: number;
 
   timeInterval: any;

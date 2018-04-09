@@ -1,6 +1,12 @@
 /**
  * Created by pratik on 27/12/17.
  */
+
+ /*
+ Component Name : Amexio item selector
+ Component Selector : <amexio-item-selector>
+ Component Description : ItemSelector is a specialized MultiSelect field that renders as a pair of MultiSelect field, one with available options and the other with selected options. A set of buttons in between allows items to be moved between the fields and reordered within the selection.
+*/
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CommonDataService} from "../../services/data/common.data.service";
 
@@ -10,24 +16,98 @@ import {CommonDataService} from "../../services/data/common.data.service";
 
 export class AmexioItemSelectorComponent implements OnInit {
 
+  /*
+Properties 
+name : data
+datatype : any
+version : 4.0 onwards
+default : none
+description :  Local data for item selectors.
+*/ 
   @Input() data: any;
 
+  /*
+Properties 
+name : height
+datatype : any
+version : 4.0 onwards
+default : none
+description :  Height of item selector
+*/ 
   @Input() height: any;
 
   mask : boolean = true;
 
+  /*
+Properties 
+name : data-reader
+datatype : string
+version : 4.0 onwards
+default : none
+description :  Key in JSON Datasource for records.
+*/ 
   @Input('data-reader') datareader: string;
 
+  /*
+Properties 
+name : http-method
+datatype : string
+version : 4.0 onwards
+default : none
+description :  Type of HTTP call, POST,GET.
+*/ 
   @Input('http-method') httpmethod: string;
 
+
+  /*
+Properties 
+name : http-url
+datatype : string
+version : 4.0 onwards
+default : none
+description :  REST url for fetching datasource.
+*/ 
   @Input('http-url') httpurl: string;
 
+  /*
+Properties 
+name : display-field
+datatype : string
+version : 4.0 onwards
+default : none
+description :  Name of key inside response data to display on ui.
+*/ 
   @Input('display-field') displayfield: string;
 
+  /*
+Properties 
+name : value-field
+datatype : string
+version : 4.0 onwards
+default : none
+description :  Name of key inside response data.use to send to backend
+*/ 
   @Input('value-field') valuefield: string;
 
+  /*
+Events 
+name : availableRecords
+datatype : none
+version : none
+default : none
+description :  Get available values objects.
+*/ 
   @Output() availableRecords: any = new EventEmitter<any>();
 
+
+  /*
+Events 
+name : selectedRecords
+datatype : none
+version : none
+default : none
+description :  Get selected value Object.
+*/ 
   @Output() selectedRecords: any = new EventEmitter<any>();
 
   availableData: any[];

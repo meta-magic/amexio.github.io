@@ -25,6 +25,16 @@ description : Title on Tab Button/Pill.
 */
   @Input() title: string;
 
+  /*
+Properties 
+name : disabled
+datatype : boolean
+version : 4.1.4 onwards
+default : false
+description : Disable property for tab
+*/
+@Input() disabled: boolean = false;
+
     /*
 Properties 
 name : active
@@ -33,7 +43,7 @@ version : 4.0 onwards
 default : false
 description : Set true for specific tab open as default tab..
 */
-  @Input() active = false;
+  @Input() active:boolean = false;
 
      /*
 Properties 

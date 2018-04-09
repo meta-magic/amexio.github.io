@@ -10,6 +10,12 @@
  * Author - Sagar Jadhav
  *
  */
+
+/*
+ Component Name : Amexio candlestick chart
+ Component Selector : <amexio-chart-candlestick>
+ Component Description : A candlestick chart is used to show an opening and closing value overlaid on top of a total variance. Candlestick charts are often used to show stock value behavior.
+*/
 import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from '@angular/core';
 import {ChartAreaComponent} from "../chartarea/chart.area.component";
 import {HorizontalAxisComponent} from "../horizontalaxis/chart.horizontalaxis.component";
@@ -144,8 +150,25 @@ export class CandlestickChartComponent implements AfterContentInit, OnInit {
 
   id: any;
 
+  /*
+Properties 
+name : width
+datatype : any
+version : 4.0 onwards
+default : none
+description : width of chart
+*/
   @Input() width: string;
 
+
+  /*
+Properties 
+name : height
+datatype : string
+version : 4.0 onwards
+default : none
+description : height of chart
+*/
   @Input() height: string;
 
 
@@ -156,6 +179,15 @@ export class CandlestickChartComponent implements AfterContentInit, OnInit {
     return this._data;
   }
 
+
+  /*
+Properties 
+name : data
+datatype : any
+version : 4.0 onwards
+default : none
+description : Local data for AreaChart
+*/
   @Input('data')
   set data(data:any){
     if(data){
@@ -165,7 +197,14 @@ export class CandlestickChartComponent implements AfterContentInit, OnInit {
       this.showChart=false;
     }
   }
-
+/*
+Properties 
+name : background-color
+datatype : string
+version : 4.0 onwards
+default : none
+description : sets background color
+*/
   @Input('background-color') backgroundcolor: string;
 
   hasLoaded: boolean;

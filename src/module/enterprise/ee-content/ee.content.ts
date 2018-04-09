@@ -132,14 +132,14 @@ Properties
 name : isReadonly
 datatype :  boolean
 version : 4.0 onwards
-default : 
+default : none
 description : 
 */ 
   @Input() isReadonly: boolean;
 
     /*
 Properties 
-name : bg-image-url
+name : watch
 datatype :  any
 version : 4.0 onwards
 default : false
@@ -172,7 +172,7 @@ name : release-year
 datatype :  any
 version : 4.0 onwards
 default : none
-description : 	Set release Year.
+description : Set release Year.
 */ 
   @Input('release-year') releaseYear: any;
 
@@ -203,7 +203,7 @@ Properties
 name : close
 datatype :  boolean
 version : 4.0 onwards
-default : false
+default : none
 description : Enable close content.
 */ 
   @Input('close') closeEnable: boolean;

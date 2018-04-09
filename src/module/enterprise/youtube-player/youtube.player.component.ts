@@ -67,7 +67,7 @@ name :onCloseVideoPlayer
 datatype : none
 version : none
 default : none
-description : 
+description : it is fired on video player close event
 
 */ 
   @Output() onCloseVideoPlayer: EventEmitter<any> = new EventEmitter<any>();

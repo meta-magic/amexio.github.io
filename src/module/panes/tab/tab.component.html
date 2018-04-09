@@ -3,7 +3,10 @@
   <div *ngIf="shownext" class="tabnavigation float-right" (click)="next()"><amexio-pane-icon key="tab_next"></amexio-pane-icon><!--<i class="fa fa-angle-right  fa-2x" aria-hidden="true"></i>--></div>
   <ul #tab class="tab">
     <li class="tablistitems">
-      <div *ngFor="let tabnode of tabCollection"  class="tablink activetab" [ngClass]="{'activetab':tabnode.active}" (click)="onTabClick(tabnode)">
+        <!-- <div *ngIf="tabnode.disabled" class="disabled-tab"> -->
+      <div *ngFor="let tabnode of tabCollection"  class="tablink " 
+      [ngClass]="{'activetab':tabnode.active ,
+      'disabled-tab':tabnode.disabled }" (click)="onTabClick(tabnode)">
         <div class="table">
           <div class="tablerow">
             <div *ngIf="tabnode.icon" class="tablecol">

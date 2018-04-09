@@ -1,6 +1,14 @@
 /**
  * Created by ketangote on 12/8/17.
  */
+
+/*
+ Component Name : Amexio Navbar
+ Component Selector : <amexio-nav>
+ Component Description : The Nav Bar Component is a familiar top navigation pattern for users. 
+Nav bar has Logo/Title left align, than link, text field, button and menus on right side.
+v4.1 Nav bar is not backward compatible of v4.0, for v4.0 refer link
+*/
 import {Component, Input, OnInit, ContentChildren, QueryList, AfterContentInit, ViewChild, ElementRef, AfterViewInit} from '@angular/core';
 import {DeviceQueryService} from "../../services/device/device.query.service";
 import {AmexioNavActionComponent } from './navaction.component';
@@ -13,10 +21,35 @@ import {AmexioNavMenuComponent } from './navmenu.component';
 export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterContentInit {
 
 
+  /*
+Properties 
+name : title
+datatype : string
+version : 4.0 onwards
+default : none
+description : Title for link, button and menu header
+*/
   @Input() title: string;
 
+
+  /*
+Properties 
+name : logo
+datatype : string
+version : 4.0 onwards
+default : none
+description : Logo of navbar.
+*/
   @Input() logo: string;
 
+  /*
+Properties 
+name : enable-side-nav-position
+datatype : boolean
+version : 4.0 onwards
+default : none
+description : Indicate if side-nav-bar is present
+*/
   @Input('enable-side-nav-position') sidenavspace : boolean = false;
 
   @ContentChildren(AmexioNavItemComponent) navitems : QueryList<AmexioNavItemComponent>;

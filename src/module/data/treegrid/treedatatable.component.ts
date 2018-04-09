@@ -11,6 +11,13 @@
  *
  */
 
+
+ /*
+ Component Name : Amexio tree data table 
+ Component Selector : <amexio-tree-data-table>
+ Component Description :  A Simple Expandable Tree component which create Tree View based on standard datasource attached.
+ */
+
 import {
   OnInit,
   Input,
@@ -129,18 +136,74 @@ import {AmexioGridColumnComponent} from "../datagrid/data.grid.column";
 
 export class TreeDataTableComponent implements OnInit {
 
+  /*
+Properties 
+name : data
+datatype : any
+version : 4.0 onwards
+default : none
+description : Local Data binding.
+*/
   @Input() data: any;
 
+/*
+Properties 
+name : data-reader
+datatype : string
+version : 4.0 onwards
+default : none
+description : Key in JSON Datasource for records.
+*/
   @Input('data-reader') datareader: string;
 
+/*
+Properties 
+name : http-method
+datatype : string
+version : 4.0 onwards
+default : none
+description : Type of HTTP call, POST,GET etc.
+*/
   @Input('http-method') httpmethod: string;
 
+  /*
+Properties 
+name : http-url
+datatype : string
+version : 4.0 onwards
+default : none
+description : REST url for fetching data.
+*/
   @Input('http-url') httpurl: string;
 
+  /*
+Properties 
+name : display-field
+datatype : string
+version : 4.0 onwards
+default : none
+description : Name of key inside response data to display on ui.
+*/
   @Input('display-field') displayfield: string;
 
+  /*
+Properties 
+name : value-field
+datatype : string
+version : 4.0 onwards
+default : none
+description : Name of key inside response data.use to send to backend
+*/
   @Input('value-field') valuefield: string;
 
+  /*
+Events 
+name : selectedRecord
+datatype : none
+version : none
+default : none
+description : Get selected value Object.
+*/
   @Output() selectedRecord: any = new EventEmitter<any>();
 
   responseData: any;

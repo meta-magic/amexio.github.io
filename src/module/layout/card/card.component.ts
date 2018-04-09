@@ -3,9 +3,11 @@
  */
 
  /*
- Component Name : Amexio 
+ Component Name : Amexio card
   Component Selector : <amexio-card>
- Component Description : Amexio Box can be easily wrapped around any other component and configure using the different responsive styling.
+ Component Description : Amexio Card which renders card based on title, body and actions user has configured
+
+.
 
 */
 

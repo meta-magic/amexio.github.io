@@ -44,17 +44,18 @@ import {StepBlockComponent} from "./step-block";
           </span>
             </ng-container>
           <ng-container *ngIf="stepBlock.icon && !stepBlock.active">
-  
-            <amexio-pane-icon style="color: #666;" [customclass]="stepBlock.icon" (onClick)="onStepClick(stepBlock,$event)"></amexio-pane-icon>
+          <span [ngClass]="{'step-block-icon-disable':!stepBlock.active}">
+            <amexio-pane-icon [customclass]="stepBlock.icon" (onClick)="onStepClick(stepBlock,$event)"></amexio-pane-icon>
+            </span>
           </ng-container>
           <ng-container *ngIf="stepBlock.icon=='' || !stepBlock.icon">
             <br>
           </ng-container>
           <ng-container *ngIf="stepBlock.label && !stepBlock.active">
-            <p (onClick)="onStepClick(stepBlock,$event)">{{stepBlock.label}}</p>
+            <p style="cursor:not-allowed;" (onClick)="onStepClick(stepBlock,$event)">{{stepBlock.label}}</p>
           </ng-container>
           <ng-container *ngIf="stepBlock.label && stepBlock.active">
-            <p><strong class="step-label-highlight" [ngClass]="{'step-box-label-active':stepBlock.active}">{{stepBlock.label}}</strong></p>
+            <p style="cursor:pointer;" ><strong class="step-label-highlight" [ngClass]="{'step-box-label-active':stepBlock.active}">{{stepBlock.label}}</strong></p>
           </ng-container>
         </div>
       </div>

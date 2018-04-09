@@ -13,6 +13,10 @@
   //border-right: $tabActiveBorderSize solid $tabActiveBorder;
 }
 
+.disabled-tab{
+  //color : $tabDisabledColor;
+  background-color: $tabDisabledBG !important;
+}
 .verticalnavtab .rightactivetab {
   background-color: $tabActiveBGColor;
   //font-weight: bold;

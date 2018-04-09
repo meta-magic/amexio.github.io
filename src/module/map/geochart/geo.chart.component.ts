@@ -1,6 +1,15 @@
 /**
  * Created by sagar on 10/8/17.
  */
+
+ 
+ /*
+ Component Name : Amexio Geo chart
+ Component Selector : <amexio-map-geo-chart>
+ Component Description : Data can be plotted on a Map using Amexio's AmexioMapModule. All Mapping widgets are available under amexio-ng-extensions/maps
+
+  
+*/
 import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from '@angular/core';
 import {MapLoaderService} from "../map.loader.service";
 import {MapProperties} from "../mapproperties/map.properties";
@@ -133,8 +142,25 @@ export class GeoChartComponent implements AfterContentInit, OnInit {
   hasLoaded: boolean;
   id: any;
 
+  /*
+Properties 
+name : width
+datatype : string
+version : 4.0 onwards
+default : none
+description : Width of chart
+*/ 
   @Input() width: string;
 
+
+  /*
+Properties 
+name : height
+datatype : string
+version : 4.0 onwards
+default : none
+description : height of chart
+*/ 
   @Input() height: string;
 
 
@@ -155,12 +181,21 @@ export class GeoChartComponent implements AfterContentInit, OnInit {
     }
   }
 
+  /*
+  not in use
+*/ 
   @Input('country-name') countryname: boolean = false;
 
+  /* not in use
+*/ 
   @Input('region-code') regioncode: string;
 
+  /* not in use
+*/ 
   @Input('background-color') backgroundcolor: string;
 
+  /* not in use
+*/ 
   @Input('unused-region-color') unusedregioncolor: string;
 
   @ContentChildren(MapProperties) chartAreaComp: QueryList<MapProperties>;

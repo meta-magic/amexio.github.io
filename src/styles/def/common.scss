@@ -227,6 +227,12 @@ a {
 textarea{
   font-family: inherit;
 }
+
+textarea:disabled{
+  opacity: 0.55;
+  cursor: not-allowed;
+  background-color: #dbc2c6;
+}
 /*
 The loading throbber is a single spinning element with three
 visible borders and a border-radius of 50%.

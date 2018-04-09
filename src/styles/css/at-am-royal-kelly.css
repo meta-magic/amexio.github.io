@@ -155,6 +155,11 @@ a {
 textarea {
   font-family: inherit; }
 
+textarea:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  background-color: #dbc2c6; }
+
 /*
 The loading throbber is a single spinning element with three
 visible borders and a border-radius of 50%.
@@ -691,6 +696,10 @@ $modalFooterColor : $cardFooterColor;*/
   border-color: #98FB98;
   color: black; }
 
+.disabled {
+  background-color: #a09e9e;
+  color: #4CBB17; }
+
 .button-primary:hover:enabled {
   background-color: #67f967; }
 
@@ -1021,6 +1030,9 @@ button {
 .inputgroup .tooltiptext {
   background-color: rgba(255, 253, 208, 0.4); }
 
+.input-control-disabled {
+  background-color: #a09e9e; }
+
 /** input - Structure CSS **/
 .inputgroup {
   position: relative; }
@@ -1028,6 +1040,10 @@ button {
 .inputgroup > label {
   display: inline-block;
   margin-bottom: .5rem; }
+
+.input-control-disabled {
+  opacity: 0.55;
+  cursor: not-allowed; }
 
 .input-control {
   width: 100%;
@@ -1818,6 +1834,11 @@ input:checked + .toggle-slider:before {
 .profile-image a {
   color: rgba(255, 255, 255, 0.7); }
 
+.image-grayscale {
+  -webkit-filter: grayscale(100%);
+  /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%); }
+
 /** image - Structure CSS **/
 .profile-image img {
   width: 50px;
@@ -1826,6 +1847,14 @@ input:checked + .toggle-slider:before {
 
 .profile-image a {
   text-transform: capitalize; }
+
+.image-small {
+  width: 50px;
+  height: 50px; }
+
+.image-round {
+  border-radius: 50%;
+  vertical-align: middle; }
 
 .profile-image-round img {
   width: 50px;
@@ -3811,6 +3840,9 @@ fieldset {
 .stepwizard-step p {
   color: #a09e9e; }
 
+.step-block-icon-disable {
+  color: #4CBB17; }
+
 .stepwizard-row:before {
   background-color: #292b2c; }
 
@@ -3845,6 +3877,9 @@ fieldset {
   display: table;
   width: 100%;
   position: relative; }
+
+.step-block-icon-disable {
+  cursor: not-allowed; }
 
 .stepwizard-row:before {
   top: 14px;
@@ -3894,7 +3929,7 @@ fieldset {
   cursor: pointer; }
 
 .step-box-table-item.active {
-  cursor: not-allowed; }
+  cursor: default; }
 
 .step-box-table-item.disbaled {
   cursor: not-allowed; }
@@ -3918,6 +3953,9 @@ fieldset {
   background-color: #1b1d22;
   font-weight: bold;
   color: #4CBB17; }
+
+.disabled-tab {
+  background-color: #a09e9e !important; }
 
 .verticalnavtab .rightactivetab {
   background-color: #1b1d22;
@@ -3947,6 +3985,9 @@ fieldset {
 
 .activetab {
   border-bottom: 4px solid #98FB98; }
+
+.disabled-tab {
+  cursor: not-allowed !important; }
 
 .tabnavigation {
   padding: 10px 16px;

@@ -33,3 +33,11 @@
 .inputgroup .tooltiptext {
   background-color: $inputTooltipBGColor;
 }
+
+.input-control-disabled {
+  
+    // opacity: 0.55;
+    // cursor: not-allowed;
+    background-color:$inputDisabledBG;
+
+}

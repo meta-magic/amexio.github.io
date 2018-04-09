@@ -10,6 +10,12 @@
  * Author - Sagar Jadhav
  *
  */
+
+ /*
+Component Name : Amexio timeline chart
+Component Selector : <amexio-chart-timeline>
+Component Description : A timeline is a chart that depicts how a set of resources are used over time.
+*/
 import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from "@angular/core";
 import {ChartTitleComponent} from "../charttitle/chart.title.component";
 import {ChartLegendComponent} from "../chartlegend/chart.legend.component";
@@ -139,7 +145,15 @@ export class TimeLineChartComponent implements AfterContentInit, OnInit {
 
   id: any;
 
-  @Input() width: string;
+/*
+Properties 
+name : width
+datatype : string
+version : 4.0 onwards
+default : none
+description : width of chart
+*/
+@Input() width: string;
 
 
   showChart:boolean;
@@ -149,7 +163,15 @@ export class TimeLineChartComponent implements AfterContentInit, OnInit {
     return this._data;
   }
 
-  @Input('data')
+/*
+Properties 
+name : data
+datatype : any
+version : 4.0 onwards
+default : none
+description : For the use of local data
+*/
+@Input('data')
   set data(data:any){
     if(data){
       this._data=data;

@@ -1,4 +1,5 @@
-<button class="button" [ngStyle]="{'cursor': disabled ? 'not-allowed':'pointer'}" [attr.disabled]="disabled ? true: null" [attr.title]="tooltip" [ngClass]="{'button-default': size=='default'
+<button class="button" [ngStyle]="{'cursor': disabled ? 'not-allowed':'pointer'}" ng-disabled="disabled ? true: null" [attr.title]="tooltip" 
+[ngClass]="{'button-default': size=='default'
         || size ==null,
         'button-small': size=='small',
         'button-large' : size=='large',

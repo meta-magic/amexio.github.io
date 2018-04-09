@@ -2,7 +2,11 @@
  * Created by ketangote on 11/23/17.
  */
 
-
+/*
+ Component Name : Amexio paginator
+ Component Selector : <amexio-paginator>
+ Component Description : Paginator is a generic widget to display content in paged format.
+*/
 import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 
 @Component({
@@ -12,14 +16,54 @@ export class AmexioPaginatorComponent implements OnChanges{
 
   show: boolean;
 
+  /*
+Properties 
+name : pages
+datatype : any
+version : 4.0 onwards
+default : none
+description : Total Number of records
+*/
   @Input() pages: any;
 
+  /*
+Properties 
+name : rows
+datatype : any
+version : 4.0 onwards
+default : none
+description : number of records on one page
+*/
   @Input() rows: any;
 
+  /*
+Properties 
+name : size
+datatype : any
+version : 4.0 onwards
+default : none
+description : number of pages to be displayed 
+*/
   @Input() size: any;
 
+  /*
+Events 
+name : onRowChange
+datatype : none
+version : none
+default : none
+description : if you click on '<<' will get 1st record and if you click on '>>' will get last record.
+*/
   @Output() onRowChange: EventEmitter<any> = new EventEmitter<any>();
 
+  /*
+Events 
+name : onPageChange
+datatype : none
+version : none
+default : none
+description : It will gives you current page number
+*/
   @Output() onPageChange: EventEmitter<any> = new EventEmitter<any>();
 
   fullPageSet: any[] = [];

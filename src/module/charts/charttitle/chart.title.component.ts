@@ -10,6 +10,12 @@
  * Author - Sagar Jadhav
  *
  */
+
+ /*
+Component Name : Amexio chart title
+Component Selector : <amexio-chart-title>
+Component Description : describes chart title properties
+*/
 import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
@@ -18,21 +24,75 @@ import {Component, Input, OnInit} from '@angular/core';
 
 export class ChartTitleComponent implements OnInit {
 
+ /*
+Properties 
+name : title
+datatype : string
+version : 4.0 onwards
+default : none
+description : Title to display above the chart.
+*/
+@Input() title: string;
 
-  @Input() title: string;
+ /*
+Properties 
+name : position
+datatype : string
+version : 4.0 onwards
+default : none
+description : position of chart title
+*/
+@Input() position: string;
 
+ /*
+Properties 
+name : color
+datatype : string
+version : 4.0 onwards
+default : none
+description : Color of chart title.
+*/
+@Input() color: string;
 
-  @Input() position: string;
+ /*
+Properties 
+name : font-name
+datatype : string
+version : 4.0 onwards
+default : none
+description : Font name of chart title.
+*/
+@Input('font-name') fontname: string;
 
-  @Input() color: string;
+ /*
+Properties 
+name : font-size
+datatype : number
+version : 4.0 onwards
+default : none
+description : Font size of chart title.
+*/
+@Input('font-size') fontsize: number;
 
-  @Input('font-name') fontname: string;
+ /*
+Properties 
+name : bold
+datatype : boolean
+version : 4.0 onwards
+default : none
+description : Set true for title in bold font.
+*/
+@Input() bold: boolean;
 
-  @Input('font-size') fontsize: number;
-
-  @Input() bold: boolean;
-
-  @Input() italic: boolean;
+ /*
+Properties 
+name : italic
+datatype : boolean
+version : 4.0 onwards
+default : none
+description : Set true for title text in italic style.
+*/
+@Input() italic: boolean;
 
 
   constructor() {
