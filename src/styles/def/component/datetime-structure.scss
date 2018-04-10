@@ -86,3 +86,9 @@
 .datetimepicker-up{
   bottom: 100%;
 }
+
+.datetimepicker:disabled{
+  cursor: not-allowed;
+  background-color: $componentDisabledBGColor;
+  color: $componentDisabledFontColor 
+}

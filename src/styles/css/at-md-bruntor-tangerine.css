@@ -139,7 +139,8 @@ input:disabled {
 
 .disable-component {
   opacity: 0.55;
-  pointer-events: none; }
+  pointer-events: none;
+  background-color: #dbd1c2; }
 
 .defaultcolor {
   color: #1f0d00; }
@@ -598,6 +599,11 @@ button {
 
 .datetimepicker-up {
   bottom: 100%; }
+
+.datetimepicker:disabled {
+  cursor: not-allowed;
+  background-color: #dbd1c2;
+  color: #a38962; }
 
 /****************************************************************************
     Component Name : Dropdown
