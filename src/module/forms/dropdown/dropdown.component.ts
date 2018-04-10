@@ -32,104 +32,104 @@ export const CUSTOM_DROPDOWN_CONTROL_VALUE_ACCESSOR: any = {
 export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAccessor {
 
    /*
-Properties 
+Properties
 name : field-label
 datatype : string
 version : 4.0 onwards
-default : none 
+default : none
 description : The label of this field
 */
   @Input('field-label') fieldlabel: string;
 
   /*
-Properties 
+Properties
 name : allow-blank
 datatype : string
 version : 4.0 onwards
-default : none 
-description : 
+default : none
+description :
 */
   @Input('allow-blank') allowblank: string;
 
   /*
-Properties 
+Properties
 name : data
 datatype : any
 version : 4.0 onwards
-default : none 
+default : none
 description : Local data for dropdown.
 */
   @Input() data: any;
 
  /*
-Properties 
+Properties
 name : data-reader
 datatype : string
 version : 4.0 onwards
-default : none 
+default : none
 description : Key in JSON datasource for records
 */
   @Input('data-reader') datareader: string;
 
 /*
-Properties 
+Properties
 name : http-method
 datatype : string
 version : 4.0 onwards
-default : none 
+default : none
 description : Type of HTTP call, POST,GET.
 */
   @Input('http-method') httpmethod: string;
 
  /*
-Properties 
+Properties
 name : http-url
 datatype : string
 version : 4.0 onwards
-default : none 
+default : none
 description : REST url for fetching datasource.
-*/ 
+*/
   @Input('http-url') httpurl: string;
 
    /*
-Properties 
+Properties
 name : display-field
 datatype : string
 version : 4.0 onwards
-default : none 
+default : none
 description : Name of key inside response data to display on ui.
-*/ 
+*/
   @Input('display-field') displayfield: string;
 
 
    /*
-Properties 
+Properties
 name : value-field
 datatype : string
 version : 4.0 onwards
-default : none 
+default : none
 description : Name of key inside response data.use to send to backend
-*/ 
+*/
   @Input('value-field') valuefield: string;
 
    /*
-Properties 
+Properties
 name : search
 datatype : boolean
 version : 4.0 onwards
-default : false 
+default : false
 description : true for search box enable
-*/ 
+*/
   @Input() search: boolean;
 
   /*
-Properties 
+Properties
 name : multi-select
 datatype : boolean
 version : 4.0 onwards
-default : false 
+default : false
 description : true for select multiple options
-*/ 
+*/
   @Input('multi-select') multiselect: boolean;
 
   @ViewChild('dropdownitems', {read: ElementRef}) public dropdownitems: ElementRef;
@@ -148,13 +148,13 @@ description : true for select multiple options
 
 
 /*
-Properties 
+Properties
 name : error-msg
 datatype : none
 version : 4.0 onwards
 default : none
-description : 
-*/ 
+description :
+*/
   @Input('error-msg')
   set errormsg(value: string) {
     this.helpInfoMsg = value + '<br/>';
@@ -167,8 +167,8 @@ name : onBlur
 datatype : any
 version : 4.0 onwards
 default : none
-description : 
-*/ 
+description :
+*/
   @Output() onBlur: any = new EventEmitter<any>();
 
   /*
@@ -178,7 +178,7 @@ datatype : any
 version : none
 default : none
 description : 	On input event field.
-*/ 
+*/
   @Output() input: any = new EventEmitter<any>();
 
   /*
@@ -187,8 +187,8 @@ name : focus
 datatype : any
 version : none
 default : none
-description : 
-*/ 
+description :
+*/
   @Output() focus: any = new EventEmitter<any>();
 
   /*
@@ -198,7 +198,7 @@ datatype : any
 version : none
 default : none
 description : Fire when drop down item selected.
-*/ 
+*/
   @Output() onSingleSelect: any = new EventEmitter<any>();
 
   /*
@@ -209,7 +209,7 @@ version :none
 default : none
 description : Fire when multiple record select in drop down.this event is only applied when multi-select=true
 
-*/ 
+*/
   @Output() onMultiSelect: any = new EventEmitter<any>();
 
   /*
@@ -220,35 +220,35 @@ version :none
 default : none
 description : On record select event.this event is only for normal dropdown.
 
-*/ 
+*/
   @Output() onClick: any = new EventEmitter<any>();
 
   showToolTip: boolean;
 
    /*
-Properties 
+Properties
 name : place-holder
 datatype : string
 version : 4.0 onwards
-default : none 
+default : none
 description : 	Show place-holder inside dropdown component*/
   @Input('place-holder') placeholder: string;
 
   /*
-Properties 
+Properties
 name : disabled
 datatype :  boolean
 version : 4.0 onwards
-default : none 
+default : none
 description : If true will not react on any user events and show disable icon over*/
   @Input() disabled: boolean;
 
   /*
-Properties 
+Properties
 name : icon-feedback
 datatype : boolean
 version : 4.0 onwards
-default : none 
+default : none
 description : */
   @Input('icon-feedback') iconfeedback: boolean;
 
@@ -308,9 +308,6 @@ description : */
     }
 
   }
-
-  
-
   setData(httpResponse: any) {
     //Check if key is added?
     let responsedata = httpResponse;
@@ -362,18 +359,13 @@ description : */
     }
     this.maskloader=false;
   }
-
-
-
   ngDoCheck() {
     if (JSON.stringify(this.previousData) != JSON.stringify(this.data)) {
       this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
     }
   }
-
   onItemSelect(row: any) {
-    //debugger;
     if (this.multiselect) {
       let optionsChecked: any [] = [];
       this.multiselectValues = [];
@@ -396,7 +388,6 @@ description : */
       this.onSingleSelect.emit(row);
     }
   }
-
   setMultiSelectData () {
     this.multiselectValues = [];
     if(this.value.length > 0){
@@ -413,40 +404,36 @@ description : */
       });
     }
   }
-
   navigateKey(event:any){
-    
+
   }
   getDisplayText(): string {
-    if(this.value == null || this.value == '') {
-      this.value = '';
-      return this.displayValue = '';
-    } else {
+    if(this.value != null || this.value != '' || this.value != "") {
       if (this.multiselect) {
         this.setMultiSelectData();
         let multiselectDisplayString: any = '';
         this.multiselectValues.forEach((row: any) => {
           multiselectDisplayString == '' ? multiselectDisplayString += row[this.displayfield] : multiselectDisplayString += ',' + row[this.displayfield];
         });
-        if (this.multiselectValues.length > 0)
-          return multiselectDisplayString; else
-          return '';
+        if (this.multiselectValues.length > 0) {
+          return multiselectDisplayString;
+        } else {
+         return '';
+        }
       } else {
         this.filteredOptions.forEach((test) => {
           if (test[this.valuefield] == this.value) {
             this.displayValue = test[this.displayfield];
           }
         });
-        return this.displayValue == undefined ? '' : this.displayValue
+        return this.displayValue == undefined ? '' : this.displayValue;
       }
     }
   }
-
   onDropDownClick(event: any) {
     this.onClick.emit(event);
-    
-  }
 
+  }
   onChange(event: any) {
     this.value = event;
   }
@@ -474,10 +461,10 @@ description : */
       if (keyword == '') {
         this.filteredOptions = this.viewData;
         //this.selectedindex = 0;
-      }        
+      }
     }
     if(event.keyCode === 40 || event.keyCode === 38 || event.keyCode === 13)
-    {      
+    {
       this.navigateUsingKey(event);
     }
   }
@@ -501,7 +488,7 @@ description : */
           this.selectedindex++;
           if((this.selectedindex > 5 )){
             this.dropdownitems.nativeElement.scroll(0,this.scrollposition);
-            this.scrollposition = this.scrollposition  +30; 
+            this.scrollposition = this.scrollposition  +30;
           }
         }
         else if(event.keyCode === 38){
@@ -509,7 +496,7 @@ description : */
           console.log(this.scrollposition);
           if(this.scrollposition>=0 && this.selectedindex>1){
             this.dropdownitems.nativeElement.scroll(0,this.scrollposition);
-            this.scrollposition = this.scrollposition  -30; 
+            this.scrollposition = this.scrollposition  -30;
           }
           if(this.selectedindex === 1){
             this.scrollposition = 30;
@@ -518,16 +505,16 @@ description : */
           if(this.selectedindex <=0){
             //this.selectedindex = 1;
           }
-        }  
+        }
       }
 
       if(this.filteredOptions[this.selectedindex]){
         this.filteredOptions[this.selectedindex].selected = true;
-        
+
       }
       if(this.filteredOptions[prevselectedindex]){
         this.filteredOptions[prevselectedindex].selected = false;
-      }     
+      }
     }
 
     console.log(new Date().getTime()+"--"+this.selectedindex+"--"+this.filteredOptions.length);
@@ -535,7 +522,7 @@ description : */
       console.log("exist drop down");
       this.onItemSelect(this.filteredOptions[this.selectedindex]);
     }
-  
+
   }
 
 
