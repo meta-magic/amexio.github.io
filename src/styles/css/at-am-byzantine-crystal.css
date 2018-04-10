@@ -97,7 +97,8 @@ input:disabled {
 
 .disable-component {
   opacity: 0.55;
-  pointer-events: none; }
+  pointer-events: none;
+  background-color: #a09e9e; }
 
 .defaultcolor {
   color: #70196F; }
@@ -159,7 +160,7 @@ textarea {
 textarea:disabled {
   opacity: 0.55;
   cursor: not-allowed;
-  background-color: #dbc2c6; }
+  background-color: #a09e9e; }
 
 /*
 The loading throbber is a single spinning element with three
@@ -556,6 +557,11 @@ button {
 
 .datetimepicker-up {
   bottom: 100%; }
+
+.datetimepicker:disabled {
+  cursor: not-allowed;
+  background-color: #a09e9e;
+  color: #70196F; }
 
 /****************************************************************************
     Component Name : Dropdown
@@ -2167,7 +2173,7 @@ header .billboard .content-button {
   cursor: pointer; }
 
 .datatable .datatable-row-active {
-  background-color: #e99fe9; }
+  background-color: #e99fe9 !important; }
 
 .datatable-row:nth-child(odd) {
   background-color: #ECEFF1; }
@@ -3893,7 +3899,6 @@ fieldset {
   display: flex;
   font-size: 20px;
   font-weight: 300;
-  text-transform: capitalize;
   text-align: center; }
 
 .dialogue-icon {

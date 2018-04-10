@@ -37,7 +37,7 @@ description : The label of this field
 
     /*
 Properties 
-name : 'date-picker
+name : date-picker
 datatype : boolean
 version : 4.0 onwards
 default : false
@@ -67,13 +67,13 @@ description : 	The label of this field
 
   /*
 Properties 
-name : read-only
+name : disabled
 datatype : boolean
-version : 4.0 onwards
+version : 4.1.5 onwards
 default : false
-description : Enable/Disable Date/Time Picker
+description : Disable Date/Time Picker field
 */
-  @Input('read-only') readonly: boolean;
+  @Input('disabled') disabled: boolean;
 
 /* 
 Properties 
@@ -143,6 +143,8 @@ description : On field focus event
 
   dateModel: any;
 
+  isComponentValid : boolean;
+
   hrs: number;
   min: number;
 
@@ -162,6 +164,7 @@ description : On field focus event
 
 
   ngOnInit() {
+    this.isComponentValid = ! this.required;
     if (this.dateformat != null) {
       this.dateformat = "dd/MM/yyyy";
     }
@@ -256,6 +259,7 @@ description : On field focus event
         this.value = this.selectedDate;
         this.change.emit(this.value);
         event.stopPropagation();
+        this.isComponentValid = true;
       }
     }
   }

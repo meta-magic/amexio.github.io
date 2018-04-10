@@ -1,3 +1,9 @@
+/*
+ Component Name : Amexio Slider
+ Component Selector :  <amexio-slider>
+ Component Description : Slider with draggable input provide a way to input values
+*/
+
 import {
   Component, ElementRef, OnDestroy, Input, Output, EventEmitter, forwardRef, Renderer2,
   NgZone
@@ -34,26 +40,97 @@ export const SLIDER_VALUE_ACCESSOR: any = {
 })
 export class AmexioSliderComponent implements OnDestroy,ControlValueAccessor {
 
+     /*
+Properties 
+name : animate
+datatype : boolean
+version : 4.0 onwards
+default : none 
+description : sets if animate flag is set
+*/
   @Input() animate: boolean;
-
+     /*
+Properties 
+name : disabled
+datatype : boolean
+version : 4.0 onwards
+default : none 
+description : sets if slider is disabled
+*/
   @Input() disabled: boolean;
-
+     /*
+Properties 
+name : min-value
+datatype : number
+version : 4.0 onwards
+default : none 
+description : Min slider value
+*/
   @Input('min-value') min: number = 0;
-
+     /*
+Properties 
+name : max-value
+datatype : number
+version : 4.0 onwards
+default : none 
+description : max slider value  
+*/
   @Input('max-value') max: number = 100;
-
+     /*
+Properties 
+name : orientation
+datatype : string
+version : 4.0 onwards
+default : horizontal 
+description : Vertical or Horizontal Orientation of slider
+*/
   @Input() orientation: string = 'horizontal';
-
+     /*
+Properties 
+name : step-value
+datatype : number
+version : 4.0 onwards
+default : none 
+description : Step value in slider
+*/
   @Input('step-value') step: number;
-
+     /*
+Properties 
+name : range
+datatype : boolean
+version : 4.0 onwards
+default : none 
+description : Range set to the slider
+*/
   @Input() range: boolean;
 
   @Input() style: any;
-
+     /*
+Properties 
+name : style-class
+datatype : string
+version : 4.0 onwards
+default : none 
+description : Styling class applied slider
+*/
   @Input('style-class') styleClass: string;
-
+     /*
+Events
+name : onChange
+datatype : any
+version : 4.0 onwards
+default : none
+description : Triggers when slider is moved
+*/ 
   @Output() onChange: EventEmitter<any> = new EventEmitter();
-
+     /*
+Events
+name : onSlideEnd
+datatype : any
+version : 4.0 onwards
+default : none
+description : Triggers when slider reaches the end
+*/ 
   @Output() onSlideEnd: EventEmitter<any> = new EventEmitter();
 
   public value: number;

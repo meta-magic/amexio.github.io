@@ -104,6 +104,9 @@ description : It will gives you current page number
 
 
   initializePages(){
+     if (this.rows > this.pages) {
+      this.rows = this.pages;
+    }
     this.fullPageSet.length = 0;
     this.activePages.length = 0;
     this.pageIndex.length = 0;
