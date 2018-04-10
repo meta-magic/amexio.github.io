@@ -154,11 +154,9 @@ description : Indicate if side-nav-bar is present
       this.navitemwidth = (this.navfixeditem+navbaritems1Width+navbaritems2Width+navbaritems3Width);
     }
 
-    //console.log(this.navitemwidth +"-----"+navbarwidth +"--"+ (navbarwidth-(navbarfixedWidth+navbaritems1Width+navbaritems2Width+navbaritems3Width)) +"--"+navbarfixedWidth+"--"+navbaritems1Width+"--"+navbaritems2Width+"--"+navbaritems3Width);
-    
+  
     let navbaravailablewidth = (navbarwidth-(this.navfixeditem+this.navitemwidth))
-    console.log(navbarwidth +"--"+this.navfixeditem+"--"+this.navitemwidth+"--"+navbaravailablewidth);
-    
+      
 
     if((navbaravailablewidth <100 || navbarheight>100)){
       this.mobilemode = true;
