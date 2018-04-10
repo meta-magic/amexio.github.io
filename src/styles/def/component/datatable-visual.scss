@@ -38,13 +38,17 @@
   }
 }
 
-.datatable .datatable-row-active{
+.datatable .datatable-row-active {
   background-color: $datatableRowActiveBG !important;
   @mixin for_row_active() {
     $datatableRowActive: false !default;
 
     @if $datatableRowActive {
       color: $datatableRowActive;
+
+    }
+  }
+}
  
 
 .datatable-row:nth-child(odd){
