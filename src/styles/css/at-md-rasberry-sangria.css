@@ -2209,7 +2209,7 @@ header .billboard .content-button {
   cursor: pointer; }
 
 .datatable .datatable-row-active {
-  background-color: #ff6b84; }
+  background-color: #ff6b84 !important; }
 
 .datatable-row:nth-child(odd) {
   background-color: #f5f5f5; }

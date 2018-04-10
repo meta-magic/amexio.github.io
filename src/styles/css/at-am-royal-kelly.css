@@ -158,7 +158,7 @@ textarea {
 textarea:disabled {
   opacity: 0.55;
   cursor: not-allowed;
-  background-color: #dbc2c6; }
+  background-color: #a09e9e; }
 
 /*
 The loading throbber is a single spinning element with three
@@ -2525,7 +2525,7 @@ header .billboard .content-button {
   cursor: pointer; }
 
 .datatable .datatable-row-active {
-  background-color: #1b1d22; }
+  background-color: #1b1d22 !important; }
 
 .datatable-row:nth-child(odd) {
   background-color: #292b2c; }

@@ -231,7 +231,7 @@ textarea{
 textarea:disabled{
   opacity: 0.55;
   cursor: not-allowed;
-  background-color: #dbc2c6;
+  background-color: $componentDisabledBGColor;
 }
 /*
 The loading throbber is a single spinning element with three
