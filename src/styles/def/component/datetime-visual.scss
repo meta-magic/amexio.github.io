@@ -40,6 +40,13 @@
 }
 
 
+.datetimepicker:disabled{
+
+  background-color: $componentDisabledBGColor;
+  color: $componentDisabledFontColor;
+}
+
+
 @media screen and (max-width: 600px) {
   .datetimepicker .days .date-today{
     padding-top: 1%;

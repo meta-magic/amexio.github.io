@@ -74,6 +74,15 @@ default : false
 description : Disable Date/Time Picker field
 */
   @Input('disabled') disabled: boolean;
+  /*
+Properties 
+name : read-only
+datatype : boolean
+version : 4.1.5 onwards
+default : false
+description : Disable Date/Time Picker field
+*/
+  @Input('read-only') readonly: boolean;
 
 /* 
 Properties 
