@@ -19,6 +19,8 @@ export class AmexioTagsInputComponent implements OnInit {
 
   @Input() data: any;
 
+  @Input('has-label') haslabel: boolean = true;
+  
   @Input('data-reader') datareader: string;
 
   @Input('http-method') httpmethod: string;

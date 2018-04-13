@@ -1,6 +1,6 @@
 <div class="inputgroup" #rootDiv>
 
-  <label [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
+  <label *ngIf="haslabel" [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
     {{fieldlabel}}
   </label>
 
