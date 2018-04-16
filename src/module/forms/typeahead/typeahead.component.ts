@@ -166,7 +166,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
   }
 
   onclick() {
-    this.onClick.emit();
+  //  this.onClick.emit();
   }
 
 
@@ -319,6 +319,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
     this.value = row[this.valuefield];
     this.displayValue = row[this.displayfield];
     this.showToolTip = false;
+    this.onClick.emit(row);
   }
 
   // The internal dataviews model
