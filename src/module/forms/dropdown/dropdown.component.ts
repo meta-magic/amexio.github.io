@@ -421,6 +421,7 @@ description : */
          return '';
         }
       } else {
+        this.displayValue = '';
         this.filteredOptions.forEach((test) => {
           if (test[this.valuefield] == this.value) {
             this.displayValue = test[this.displayfield];
