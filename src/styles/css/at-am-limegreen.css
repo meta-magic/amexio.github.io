@@ -832,6 +832,11 @@ textarea:required {
 .input-box-container input:checked ~ .input-box-checkbox-label {
   background-color: #417505; }
 
+.checkbox-disable {
+  opacity: 0.55;
+  pointer-events: none;
+  background-color: #a09e9e; }
+
 /** checkbox - Structure CSS **/
 .input-box {
   display: inline-block;
@@ -3440,6 +3445,100 @@ header .billboard .content-button {
 .card-footer {
   display: flex;
   border-top: 2px solid #417505; }
+
+/****************************************************************************
+    Component Name : Form
+    Version : Amexio v4.1.6 onwards
+*****************************************************************************/
+/** cards - Visual CSS **/
+.form-container {
+  background-color: white;
+  color: black; }
+
+.form-error {
+  color: #417505;
+  font-weight: bold; }
+
+.form-header {
+  background: #417505;
+  color: white; }
+
+.formbody::-webkit-scrollbar-track {
+  background-color: #f5f5f5; }
+
+.formbody::-webkit-scrollbar {
+  background-color: #f5f5f5; }
+
+.formbody::-webkit-scrollbar-thumb {
+  background-color: white; }
+
+.form-footer {
+  background-color: white;
+  color: white; }
+
+.form-tooltip .form-tooltiptext {
+  background-color: #ecff82;
+  color: black; }
+
+/** cards - Structure CSS **/
+.form-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #417505;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14); }
+
+.form-container > * {
+  padding: 10px;
+  text-align: left; }
+
+.form-header {
+  display: flex;
+  padding: 10px 24px;
+  border-bottom: 2px solid #417505;
+  font-size: 20px;
+  font-weight: 300;
+  text-transform: capitalize;
+  overflow: auto; }
+
+.form-body {
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 400;
+  padding-left: 16px;
+  padding-right: 16px; }
+
+.formbody::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); }
+
+.formbody::-webkit-scrollbar {
+  width: 6px; }
+
+.form-footer {
+  display: flex;
+  border-top: 2px solid #417505; }
+
+.form-tooltip {
+  position: relative;
+  display: inline-block;
+  padding: 5px; }
+
+.form-tooltip .form-tooltiptext {
+  visibility: hidden;
+  width: 150px;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  top: 100%;
+  left: 60%;
+  margin-left: -100px;
+  /* Use half of the width (120/2 = 60), to center the tooltip */
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1; }
+
+.form-tooltip:hover .form-tooltiptext {
+  visibility: visible; }
 
 /****************************************************************************
     Component Name : Carousel
