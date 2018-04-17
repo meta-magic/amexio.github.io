@@ -15,3 +15,8 @@
   background-color: $checkboxActiveBGColor;
 }
 
+.checkbox-disable{
+  opacity: 0.55;
+  pointer-events: none;
+  background-color: $checkboxDisableBGColor;
+}
