@@ -201,7 +201,15 @@ default : none
 description : Set enable / disable popover.
 */
   @Input('enable-popover') enablepopover: boolean;
-
+ /*
+Properties 
+name : has-label
+datatype : boolean
+version : 4.0 onwards
+default : none 
+description : flag to set label
+*/
+  @Input('has-label') haslabel: boolean = true;
   responseData: any;
 
   previousData: any;
