@@ -1,0 +1,41 @@
+
+.form-container {
+  background-color: $formBGColor;
+  color: $formColor;
+
+}
+
+.form-error{
+  color :$formHeaderBGColor;
+  font-weight: bold;
+}
+
+.form-header{
+  background: $formHeaderBGColor;
+  color: $formHeaderColor;
+}
+
+.formbody::-webkit-scrollbar-track
+{
+  background-color:$formBodyScrollBGColor;
+}
+
+.formbody::-webkit-scrollbar
+{
+  background-color: $formBodyScrollBGColor;
+}
+
+.formbody::-webkit-scrollbar-thumb
+{
+  background-color: $formBodyScrollThumbColor;
+}
+
+.form-footer{
+  background-color: $formFooterBGColor;
+  color: $formFooterColor;
+}
+
+.form-tooltip .form-tooltiptext {
+  background-color:$formTooltipBG;
+  color: $formTooltipColor;
+}

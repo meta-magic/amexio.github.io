@@ -1,0 +1,76 @@
+
+.form-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: $formBorderSize solid $formBorderColor;
+  box-shadow: 0 2px 2px 0$formBorderShadow;
+  //z-index: 1;
+}
+
+.form-container > * {
+  padding: 10px;
+  // -webkit-flex: 1 100%;
+  // flex: 1 100%;
+  text-align:left;
+}
+
+.form-header{
+  display: flex;
+  padding: 10px 24px;
+  border-bottom: $formBorderSize solid $formBorderColor;
+  font-size: 20px;
+  font-weight: 300;
+  text-transform: capitalize;
+  overflow: auto;
+}
+
+.form-body{
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 400;
+  padding-left: 16px;
+  padding-right: 16px;
+  //overflow-x: hidden; /**This is affecting menus.**/
+  //overflow-y: auto;
+}
+
+
+.formbody::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+.formbody::-webkit-scrollbar
+{
+  width: 6px;
+}
+
+.form-footer{
+  display: flex;
+  border-top: $formBorderSize solid $formBorderColor;
+}
+
+.form-tooltip {
+  position: relative;
+  display: inline-block;
+  padding:5px;
+}
+
+.form-tooltip .form-tooltiptext {
+  visibility: hidden;
+  width: 150px;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  top: 100%;
+  left: 60%; 
+  margin-left: -100px; /* Use half of the width (120/2 = 60), to center the tooltip */
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.form-tooltip:hover .form-tooltiptext {
+  visibility: visible;
+}
