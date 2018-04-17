@@ -6,10 +6,7 @@ import {CommonDataService} from "../services/data/common.data.service";
 import {DeviceQueryService} from "../services/device/device.query.service";
 import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
-import {HttpModule} from "@angular/http";/*
-import {AmexioAccordionComponent} from "./accordion/accordion.component";
-import {AmexioAccordionTabComponent} from "./accordion/accordion.pane";*/
-// import {AmexioCardComponent} from "./card/card.component";
+import {HttpModule} from "@angular/http";
 import {AmexioHeaderComponent} from "./header/pane.action.header";
 import {AmexioFooterComponent} from "./action/pane.action.footer";
 import {AmexioBodyComponent} from "./body/pane.action.body";
@@ -29,11 +26,8 @@ import {AmexiodialoguePaneComponent} from "./dialogue/dialogue.pane.component";
 import {AmexioFormsModule} from "../forms/amexio.forms.module";
 import {AmexioPanelComponent} from "./panel/panel.component";
 import {HttpClientModule} from "@angular/common/http";
-
-/*export * from './accordion/accordion.component';
-export * from './accordion/accordion.pane';
-
-export * from './card/card.component';*/
+import {AmexioFormComponent} from "./form/form.component"
+import { AmexioFormActionComponent } from "./form/form.action.component";
 
 export * from './header/pane.action.header';
 export * from './action/pane.action.footer';
@@ -51,10 +45,14 @@ export * from './tab/tab.pill.component';
 export * from './tab/tab.component';
 export * from './tab/right-vertical-tab/right.vertical.component';
 export * from './tab/vertical-tab/vertical.tab.component';
+export * from './tab/vertical-tab/vertical.tab.component';
 
 export * from './carousel/carousel.component';
 export * from './carousel/carousel.template';
 export * from '../services/icon/icon.service';
+
+export * from './form/form.component';
+export * from './form/form.action.component';
 
 const PANE_COMPONENTS = [
   AmexioHeaderComponent,
@@ -73,7 +71,9 @@ const PANE_COMPONENTS = [
   StepBlockComponent,
   AmexioPanelComponent,
   AmexioIconPane,
-  AmexiodialoguePaneComponent
+  AmexiodialoguePaneComponent,
+  AmexioFormComponent,
+  AmexioFormActionComponent
 ];
 
 @NgModule({

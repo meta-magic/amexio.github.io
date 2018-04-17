@@ -1,0 +1,42 @@
+<form name="fname" (ngSubmit)="onSubmit()" class="form-container">
+
+        <amexio-header  class="form-header" 
+            [ngClass]="{'flex-start':(headeralign=='left'),'flex-end':(headeralign=='right'),'flex-center':(headeralign=='center')}">
+          {{fheader}}
+        </amexio-header>
+        
+        <amexio-body class="form-body formbody"> 
+            <ng-content></ng-content>
+        </amexio-body>
+        
+        <footer class="form-footer"
+            [ngClass]="{'flex-start':(footeralign=='left'),'flex-end':(footeralign=='right'),'flex-center':(footeralign=='center')}">
+            <ng-content select="amexio-form-action"></ng-content>
+            <br/>
+            <div *ngIf="showError" class="form-tooltip">
+                <button class="button" [attr.title]="tooltip" (click)="showErrors($event)"
+                [ngClass]="'button-warning button-small button-round'">
+                        <span class="button-text">
+                          <!--<i class="{{icon}}" style="padding-right: 5px; " aria-hidden="true"></i>-->
+                          <span style="padding-right: 5px;" *ngIf="icon">
+                            <amexio-form-icon [customclass]="icon" >
+                            </amexio-form-icon>
+                          </span>
+                          <span style="padding-right: 5px;" *ngIf="loading">
+                            <amexio-form-icon key="button-loading-icon"></amexio-form-icon>
+                          </span>
+                          ?
+                        </span>
+                </button>
+                <span class="form-tooltiptext">
+                  <!-- <div  [innerHTML]=invalidFields></div> -->
+                  <b>{{showErrorMsgs}}</b>
+                  <ul>
+                        <li *ngFor="let field of componentError">
+                          {{field}}
+                        </li>
+                      </ul>
+                </span>               
+            </div>
+        </footer>
+</form>
