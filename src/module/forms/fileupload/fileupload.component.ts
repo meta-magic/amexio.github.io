@@ -1,6 +1,12 @@
 /**
  * Created by pratik on 15/1/18.
  */
+
+ /*
+ Component Name : Amexio Fileupload
+ Component Selector :  <amexio-fileupload>
+ Component Description : This component use for uploading all types of files.
+*/
 import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {CommonDataService} from "../../services/data/common.data.service";
 @Component({
@@ -34,30 +40,117 @@ import {CommonDataService} from "../../services/data/common.data.service";
 })
 
 export class AmexioFileUploadComponent implements OnInit {
-
+   /*
+Properties 
+name : field-label
+datatype : string
+version : 4.0 onwards
+default : none 
+description : The label of this field
+*/
   @Input('field-label') fieldlabel: string;
-
+ /*
+Properties 
+name : http-url
+datatype : string
+version : 4.0 onwards
+default : none 
+description : REST url for fetching datasource.
+*/ 
   @Input('http-url') httpurl: string;
-
+/*
+Properties 
+name : http-method
+datatype : string
+version : 4.0 onwards
+default : none 
+description : Type of HTTP call, POST,GET.
+*/
   @Input('http-method') httpmethod: string;
-
+/*
+Properties 
+name : file-type
+datatype : string
+version : 4.0 onwards
+default : none
+description : Defines the file type of file to upload. Shows only given file type at the time of file upload.example for 1.image [file-type]=image/* 2.for pdf [file-type]=application/pdf
+*/ 
   @Input('file-type') filetype: string;
-
+/*
+Properties 
+name : multiple-file
+datatype : string
+version : 4.0 onwards
+default : none
+description : Defines if there are multiple file to upload
+*/ 
   @Input('multiple-file') multiplefile: string;
-
+/*
+Properties 
+name : popover-position
+datatype : string
+version : 4.0 onwards
+default : none
+description : Defines the position of component to be placed
+*/ 
   @Input('popover-position') popoverposition: string;
-
+/*
+Properties 
+name : param-name
+datatype : string
+version : 4.0 onwards
+default : none
+description : Used to specify URL query param name. same with backend rest controller paramater object name Default :file
+*/ 
   @Input('param-name') paramname: string;
-
+/*
+Properties 
+name : droppable
+datatype : string
+version : 4.0 onwards
+default : none
+description : Allow Drop Zone For Files.
+*/ 
   @Input() droppable: boolean;
 
   @ViewChild('inp') inpHandle: any;
 
   responseData:any;
-
+/*
+Events
+name : blur
+datatype : any
+version : 4.0 onwards
+default : none
+description : 	On blur event
+*/ 
   @Output() blur: EventEmitter<any> = new EventEmitter<any>();
+/*
+Events
+name : change
+datatype : any
+version : 4.0 onwards
+default : none
+description : Change event
+*/ 
   @Output() change: EventEmitter<any> = new EventEmitter<any>();
+    /*
+Events
+name : input
+datatype : any
+version : none
+default : none
+description : 	On input event field.
+*/ 
   @Output() input: EventEmitter<any> = new EventEmitter<any>();
+    /*
+Events
+name : focus
+datatype : any
+version : none
+default : none
+description : On field focus event
+*/ 
   @Output() focus: EventEmitter<any> = new EventEmitter<any>();
 
   uploadedFileName: string;

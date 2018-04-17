@@ -10,7 +10,11 @@
  * Author - Pratik Kelwalkar
  *
  */
-
+/*
+ Component Name : Amexio Toggle
+ Component Selector :  <amexio-toggle>
+ Component Description : Toggle Button
+*/
 import {
   Input, OnInit, forwardRef, Component, AfterViewInit, Output, EventEmitter, ViewEncapsulation
 } from "@angular/core";
@@ -32,11 +36,32 @@ export const CUSTOM_tOGGLE_CONTROL_VALUE_ACCESSOR: any = {
 })
 
 export class AmexioToggleComponent implements OnInit, ControlValueAccessor {
-
+  /*
+Properties 
+name :shape
+datatype : string
+version : 4.0 onwards
+default : round 
+description : Round or Square Shape for toggle switch ,example shape=round,square .
+*/
   @Input() shape: string;
-
+  /*
+Properties 
+name :field-label
+datatype : string
+version : 4.0 onwards
+default : none 
+description : The label of this field.
+*/
   @Input('field-label') fieldlabel: string;
-
+/*
+Events
+name : onChange
+datatype : any
+version : 4.0 onwards
+default : none
+description : Event is fired on toggle component click
+*/ 
   @Output() onChange: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() {

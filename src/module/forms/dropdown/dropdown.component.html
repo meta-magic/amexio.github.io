@@ -16,7 +16,7 @@
          (blur)="onblur()"
          (click)="onDropDownClick($event)"
          (focus)="onFocus(rootDiv)"
-         (input)="onInput()"
+         (input)="onInput(inp)"
          [attr.placeholder]="placeholder"
          [attr.disabled]="disabled ? true: null"
          [required]="allowblank ? true: null" (keyup)="onDropDownSearchKeyUp($event)" (keydown)="navigateKey($event)"/>

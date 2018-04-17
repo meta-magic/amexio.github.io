@@ -43,7 +43,7 @@ description : Fa icon class name
 
   
    /*
-Properties 
+Events 
 name : onClickRoute
 datatype : string
 version : 4.0 onwards

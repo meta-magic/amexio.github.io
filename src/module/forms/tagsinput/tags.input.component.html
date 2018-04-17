@@ -14,6 +14,7 @@
     <input type="text" class="input-control"
            [ngClass]="{'input-control-error' : inp.invalid && (inp.dirty || inp.touched),'input-control-success' : inp.valid && (inp.dirty || inp.touched)}"
            (focus)="onFocus(rootDiv)"
+           (input)="onInput(inp)"
            (keyup)="onKeyUp($event)"
            [attr.placeholder]="placeholder"
            [attr.disabled]="disabled ? true: null"

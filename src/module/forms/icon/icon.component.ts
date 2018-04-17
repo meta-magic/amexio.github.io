@@ -1,6 +1,12 @@
 /**
  * Created by pratik on 21/12/17.
  */
+
+ /*
+ Component Name : Amexio Icon
+ Component Selector :  <amexio-form-icon>
+ Component Description : 
+*/
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
 import {IconLoaderService} from "../../services/icon/icon.service";
 
@@ -34,11 +40,32 @@ import {IconLoaderService} from "../../services/icon/icon.service";
 })
 
 export class AmexioFormIconComponent implements OnInit {
-
+/*
+Properties 
+name : key
+datatype : string
+version : 4.0 onwards
+default : none
+description : sets the key for icon
+*/ 
   @Input() key: string;
-
+  /*
+Events
+name : onClick
+datatype : any
+version : none
+default : none
+description : Event is fired when button is click
+*/ 
   @Output() onClick: EventEmitter<any> = new EventEmitter<any>();
-
+/*
+Properties 
+name : customclass
+datatype : string
+version : 4.0 onwards
+default : none
+description : sets the customclass for icon
+*/ 
   @Input() customclass: string;
 
   constructor(public iconLoaderService: IconLoaderService) {

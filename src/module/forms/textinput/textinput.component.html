@@ -11,7 +11,7 @@
          [ngClass]="getValidationClasses(inp)"
          (blur)="onblur()"
          (focus)="onFocus()"
-         (input)="onInput()"
+         (input)="onInput(inp)"
          (change)="onChangeEv()"
          name="name"
          [pattern]="regEx"
@@ -20,7 +20,7 @@
          [attr.maxlength]="maxlength"
          [attr.minlength]="minlength"
          [attr.disabled] = "disabled ? true: null"
-         [attr.required]="!allowblank"/>
+         [required]="!allowblank"/>
 
   <span *ngIf="iconfeedback && (inp.invalid && (inp.dirty || inp.touched) || inp.valid)" class="input-control-feedback">
         <span *ngIf="!isValid && inp.touched"><i class="fa fa-times"></i></span>

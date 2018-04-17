@@ -46,10 +46,15 @@ description :  If true will not react on any user events and show disable icon o
 */
   @Input() disabled: boolean;
 
-    /*
-    not in use
- */
-  @Input() required: string;
+/*
+Properties
+name : required
+datatype : boolean
+version : 4.0 onwards
+default : false
+description :  property to set if manditory 
+*/
+  @Input() required: boolean = false;
 
   /*
 Events
@@ -57,16 +62,38 @@ name : onSelection
 datatype : any
 version : none
 default : none
-description :  Event fired on checkbox click.
+description : Event fired on checkbox click.
 */
   @Output() onSelection: any = new EventEmitter<any>();
+  /*
+Events
+name : input
+datatype : any
+version : none
+default : none
+description : On input event field.
+*/
+  @Output() input: any = new EventEmitter<any>();
 
+  isComponentValid :boolean;
+  
   constructor() {
 
   }
+  ngOnInit() {
+    this.isComponentValid = !this.required;
+  }
 
+  onInput(input:any) {
+    
+    this.isComponentValid = this.value;
+    this.input.emit(this.value);
+  }
+    
+    
   onClick() {
-    this.value = !this.value;
+    this.value = !this.value;    
+    this.isComponentValid = this.value;
     this.onSelection.emit(this.value);
   }
 
@@ -117,6 +144,5 @@ description :  Event fired on checkbox click.
   registerOnTouched(fn: any) {
     this.onTouchedCallback = fn;
   }
-
 
 }

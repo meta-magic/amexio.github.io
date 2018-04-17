@@ -1,6 +1,12 @@
 /**
  * Created by pratik on 20/12/17.
  */
+
+ /*
+ Component Name : Amexio Tag Input
+ Component Selector :  <amexio-tag-input>
+ Component Description : Tags based multi input with typeahead facility.
+*/
 import {
   Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, Renderer2,
   ViewChild
@@ -13,26 +19,104 @@ import {CommonDataService} from "../../services/data/common.data.service";
 })
 
 export class AmexioTagsInputComponent implements OnInit {
+     /*
+Properties 
+name : field-label
+datatype : string
+version : 4.0 onwards
+default : none 
+description : The label of this field
+*/
   @Input('field-label') fieldlabel: string;
-
-  @Input('allow-blank') allowblank: string;
-
+  /*
+Properties 
+name : allow-blank
+datatype : string
+version : 4.0 onwards
+default : none 
+description : sets if field is required
+*/
+  @Input('allow-blank') allowblank: boolean;
+   /*
+Properties 
+name : data
+datatype : string
+version : 4.0 onwards
+default : none 
+description : input data source
+*/
   @Input() data: any;
-
-  @Input('has-label') haslabel: boolean = true;
-  
+ /*
+Properties 
+name : data-reader
+datatype : string
+version : 4.0 onwards
+default : none 
+description : Key in JSON datasource for records
+*/
   @Input('data-reader') datareader: string;
-
+/*
+Properties 
+name : http-method
+datatype : string
+version : 4.0 onwards
+default : none 
+description : Type of HTTP call, POST,GET.
+*/
   @Input('http-method') httpmethod: string;
-
+ /*
+Properties 
+name : http-url
+datatype : string
+version : 4.0 onwards
+default : none 
+description : REST url for fetching datasource.
+*/ 
   @Input('http-url') httpurl: string;
-
+   /*
+Properties 
+name : display-field
+datatype : string
+version : 4.0 onwards
+default : none 
+description : Name of key inside response data to display on ui.
+*/ 
   @Input('display-field') displayfield: string;
-
+   /*
+Properties 
+name : value-field
+datatype : string
+version : 4.0 onwards
+default : none 
+description : Name of key inside response data.use to send to backend
+*/ 
   @Input('value-field') valuefield: string;
-
+ /*
+Events
+name : input
+datatype : any
+version : none
+default : none
+description : 	On input event field.
+*/ 
+  @Output() input: any = new EventEmitter<any>();
+  /*
+Events
+name : onChange
+datatype : any
+version : none
+default : none
+description : on change event
+*/ 
   @Output() onChange: EventEmitter<any> = new EventEmitter<any>();
-
+  /*
+Events
+name : focus
+datatype : any
+version : none
+default : none
+description : On field focus event
+*/ 
   @Output() focus: any = new EventEmitter<any>();
 
   @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
@@ -81,13 +165,41 @@ export class AmexioTagsInputComponent implements OnInit {
   @Input() disabled: boolean;
 
   @Input('icon-feedback') iconfeedback: boolean;
-
+  /*
+Properties 
+name : font-style
+datatype : string
+version : 4.0 onwards
+default : none 
+description : Set font-style to field
+*/
   @Input('font-style') fontstyle: string;
-
+  /*
+Properties 
+name : font-family
+datatype : string
+version : 4.0 onwards
+default : none 
+description : Set font-family to field
+*/
   @Input('font-family') fontfamily: string;
-
+  /*
+Properties 
+name : font-size
+datatype : string
+version : 4.0 onwards
+default : none 
+description : Set font-size to field
+*/
   @Input('font-size') fontsize: string;
-
+  /*
+Properties 
+name : enable-popover
+datatype : string
+version : 4.0 onwards
+default : none 
+description : Set enable / disable popover.
+*/
   @Input('enable-popover') enablepopover: boolean;
 
   responseData: any;
@@ -97,9 +209,23 @@ export class AmexioTagsInputComponent implements OnInit {
   viewData: any;
 
   filteredResult: any;
-
+  /*
+Properties 
+name : key
+datatype : string
+version : 4.0 onwards
+default : none 
+description : key as input to tags
+*/
   @Input() key: any;
-
+  /*
+Properties 
+name : trigger-char
+datatype : number
+version : 4.0 onwards
+default : none 
+description : sets the trigger char length
+*/
   @Input('trigger-char') triggerchar: number;
 
   @ViewChild('inp') inpHandle: any;
@@ -108,6 +234,7 @@ export class AmexioTagsInputComponent implements OnInit {
 
   @ViewChild('dropdownitems', {read: ElementRef}) public dropdownitems: ElementRef;
 
+  isComponentValid : boolean;
 
   maskloader:boolean=true;
 
@@ -116,6 +243,8 @@ export class AmexioTagsInputComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.isComponentValid = this.allowblank;
+
     if (this.placeholder == '' || this.placeholder == null) this.placeholder = 'Choose Option';
 
     if (!this.triggerchar) {
@@ -166,7 +295,7 @@ export class AmexioTagsInputComponent implements OnInit {
       this.navigateUsingKey(event);
   }
   navigateUsingKey(event: any){
-    debugger;
+    
     if(this.selectedindex > this.filteredResult.length){
       this.selectedindex=0;
     }
@@ -249,8 +378,14 @@ export class AmexioTagsInputComponent implements OnInit {
     this.value = row[this.valuefield];
     this.displayValue = row[this.displayfield];
     this.showToolTip = false;
+   
   }
 
+  onInput(input : any) {
+      this.input.emit();
+      
+  }
+    
   // The internal dataviews model
   private innerValue: any = '';
 
@@ -315,6 +450,9 @@ export class AmexioTagsInputComponent implements OnInit {
     this.inpHandle.nativeElement.value = '';
     this.onSelections.push(value);
     this.onChange.emit(this.onSelections);
+    if(this.onSelections.length > 0) {
+      this.isComponentValid = true;
+    }
     this.showToolTip = false;
 
   }
@@ -325,6 +463,9 @@ export class AmexioTagsInputComponent implements OnInit {
       if (selectedVal == item) indexToRemove = index;
     });
     this.onSelections.splice(indexToRemove, 1);
+    if(this.onSelections.length == 0) {
+      this.isComponentValid = false;
+    }
     this.onChange.emit(this.onSelections);
   }
 

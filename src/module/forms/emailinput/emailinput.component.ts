@@ -1,3 +1,8 @@
+/*
+ Component Name : Amexio Email Input
+ Component Selector :  <amexio-email-input>
+ Component Description : Email input field 
+*/
 import {Component, EventEmitter, forwardRef, Input, Output} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
@@ -16,13 +21,33 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 })
 export class AmexioEmailInputComponent implements ControlValueAccessor {
 
-
+   /*
+Properties 
+name : field-label
+datatype : string
+version : 4.0 onwards
+default : none 
+description : The label of this field
+*/
   @Input('field-label') fieldlabel: string;
-
+  /*
+Properties 
+name : has-label
+datatype : boolean
+version : 4.0 onwards
+default : none 
+description : flag to set label
+*/
   @Input('has-label') hasLabel: boolean = true;
-
-
-  @Input('allow-blank') allowblank: string;
+  /*
+Properties 
+name : allow-blank
+datatype : string
+version : 4.0 onwards
+default : none 
+description : sets if field is required
+*/
+  @Input('allow-blank') allowblank: boolean;
 
   helpInfoMsg: string;
 
@@ -36,21 +61,68 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
     return this._errormsg;
   }
 
+
+/*
+Properties 
+name : error-msg
+datatype : none
+version : 4.0 onwards
+default : none
+description : sets the error message
+*/ 
   @Input('error-msg')
+
   set errormsg(value: string) {
     this.helpInfoMsg = value + '<br/>';
   }
+  isComponentValid : boolean;
 
   @Input('place-holder') placeholder: string;
 
+/*
+Properties 
+name : disabled
+datatype : boolean
+version : 4.0 onwards
+default : none 
+description : true to disable the field.
+*/
   @Input() disabled: boolean;
-
+  /*
+Properties 
+name : icon-feedback
+datatype : boolean
+version : 4.0 onwards
+default : none 
+description : 
+*/
   @Input('icon-feedback') iconfeedback: boolean;
-
+  /*
+Properties 
+name : font-style
+datatype : string
+version : 4.0 onwards
+default : none 
+description : Set font-style to field
+*/
   @Input('font-style') fontstyle: string;
-
+  /*
+Properties 
+name : font-family
+datatype : string
+version : 4.0 onwards
+default : none 
+description : Set font-family to field
+*/
   @Input('font-family') fontfamily: string;
-
+  /*
+Properties 
+name : font-size
+datatype : string
+version : 4.0 onwards
+default : none 
+description : Set font-size to field
+*/
   @Input('font-size') fontsize: string;
 
   emailpatter: any = /\S+@\S+\.\S+/;
@@ -60,20 +132,62 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
   get pattern(): string {
     return this._pattern;
   }
-
+  /*
+Properties 
+name : pattern
+datatype : string
+version : 4.0 onwards
+default : none 
+description : Apply Reg-ex to the field
+*/
   @Input('pattern')
   set pattern(value: string) {
     if (value != null) this.regEx = new RegExp(this.pattern);
   }
-
+  /*
+Properties 
+name : enable-popover
+datatype : string
+version : 4.0 onwards
+default : none 
+description : Set enable / disable popover.
+*/
   @Input('enable-popover') enablepopover: boolean;
-
+/*
+Events
+name : onBlur
+datatype : any
+version : 4.0 onwards
+default : none
+description : On blur event
+*/ 
   @Output() onBlur: any = new EventEmitter<any>();
-
+  /*
+Events
+name : input
+datatype : any
+version : none
+default : none
+description : 	On input event field.
+*/ 
   @Output() input: any = new EventEmitter<any>();
-
+  /*
+Events
+name : focus
+datatype : any
+version : none
+default : none
+description : On focus event field.
+*/ 
   @Output() focus: any = new EventEmitter<any>();
-
+  /*
+Events
+name : change
+datatype : any
+version : none
+default : none
+description : On field value change event
+*/ 
   @Output() change: any = new EventEmitter<any>();
 
   isValid: boolean;
@@ -81,7 +195,10 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
   constructor() {
     this.showToolTip = false;
   }
-
+  ngOnInit() {
+    this.isComponentValid = this.allowblank;
+  }
+    
   // The internal dataviews model
   private innerValue: any = '';
 
@@ -120,7 +237,9 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
     this.focus.emit(this.value);
   }
 
-  onInput() {
+  onInput(input:any) {
+    this.isComponentValid = input.valid;
+    
     this.input.emit(this.value);
   }
 

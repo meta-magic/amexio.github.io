@@ -46,17 +46,17 @@ Properties
 name : allow-blank
 datatype : string
 version : 4.0 onwards
-default : none
-description :
+default : none 
+description : Sets if field is required
 */
-  @Input('allow-blank') allowblank: string;
+  @Input('allow-blank') allowblank: boolean;
 
   /*
 Properties
 name : data
 datatype : any
 version : 4.0 onwards
-default : none
+default : none 
 description : Local data for dropdown.
 */
   @Input() data: any;
@@ -153,8 +153,8 @@ name : error-msg
 datatype : none
 version : 4.0 onwards
 default : none
-description :
-*/
+description : sets the error message
+*/ 
   @Input('error-msg')
   set errormsg(value: string) {
     this.helpInfoMsg = value + '<br/>';
@@ -167,8 +167,8 @@ name : onBlur
 datatype : any
 version : 4.0 onwards
 default : none
-description :
-*/
+description : 	On blur event
+*/ 
   @Output() onBlur: any = new EventEmitter<any>();
 
   /*
@@ -187,8 +187,8 @@ name : focus
 datatype : any
 version : none
 default : none
-description :
-*/
+description : On field focus event
+*/ 
   @Output() focus: any = new EventEmitter<any>();
 
   /*
@@ -214,7 +214,7 @@ description : Fire when multiple record select in drop down.this event is only a
 
   /*
 Events
-name : onBlur
+name : onClick
 datatype : any
 version :none
 default : none
@@ -251,19 +251,55 @@ version : 4.0 onwards
 default : none
 description : */
   @Input('icon-feedback') iconfeedback: boolean;
-
+  /*
+Properties 
+name : font-style
+datatype : string
+version : 4.0 onwards
+default : none 
+description : Set font-style to field
+*/
   @Input('font-style') fontstyle: string;
-
+  /*
+Properties 
+name : font-family
+datatype : string
+version : 4.0 onwards
+default : none 
+description : Set font-family to field
+*/
   @Input('font-family') fontfamily: string;
-
+  /*
+Properties 
+name : font-size
+datatype : string
+version : 4.0 onwards
+default : none 
+description : Set font-size to field
+*/
   @Input('font-size') fontsize: string;
-
+  /*
+Properties 
+name : has-label
+datatype : boolean
+version : 4.0 onwards
+default : none 
+description : flag to set label
+*/
   @Input('has-label') haslabel: boolean = true;
-
+  /*
+Properties 
+name : enable-popover
+datatype : string
+version : 4.0 onwards
+default : none 
+description : Set enable / disable popover.
+*/
   @Input('enable-popover') enablepopover: boolean;
 
   posixUp : boolean;
 
+  isComponentValid : boolean;
 
   @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
   public onElementOutClick(targetElement: HTMLElement) {
@@ -293,6 +329,7 @@ description : */
   }
 
   ngOnInit() {
+    this.isComponentValid = this.allowblank;
     if (this.placeholder == '' || this.placeholder == null) this.placeholder = 'Choose Option';
     if (this.httpmethod && this.httpurl) {
       this.dataService.fetchData(this.httpurl, this.httpmethod).subscribe(response => {
@@ -387,7 +424,9 @@ description : */
       this.multiselect ? this.showToolTip = true : this.showToolTip = false;
       this.onSingleSelect.emit(row);
     }
+  this.isComponentValid = true;
   }
+
   setMultiSelectData () {
     this.multiselectValues = [];
     if(this.value.length > 0){
@@ -439,8 +478,10 @@ description : */
     this.value = event;
   }
 
-  onInput() {
+  onInput(input : any) {
     this.input.emit();
+    this.isComponentValid = input.valid;
+    //this.input.emit(this.value);
   }
 
   selectedindex : number=0;
@@ -518,7 +559,7 @@ description : */
       }
     }
 
-    console.log(new Date().getTime()+"--"+this.selectedindex+"--"+this.filteredOptions.length);
+    //console.log(new Date().getTime()+"--"+this.selectedindex+"--"+this.filteredOptions.length);
     if(event.keyCode === 13 && this.filteredOptions[this.selectedindex]){
       console.log("exist drop down");
       this.onItemSelect(this.filteredOptions[this.selectedindex]);

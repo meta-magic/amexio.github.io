@@ -16,18 +16,48 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 })
 export class AmexioTextAreaComponent implements ControlValueAccessor {
 
-
+   /*
+Properties 
+name : field-label
+datatype : string
+version : 4.0 onwards
+default : none 
+description : The label of this field
+*/
   @Input('field-label') fieldlabel: string;
-
+   /*
+Properties 
+name : rows
+datatype : number
+version : 4.0 onwards
+default : none 
+description : rows to have in textarea
+*/
   @Input() rows: number;
-
+   /*
+Properties 
+name : rows
+datatype : number
+version : 4.0 onwards
+default : none 
+description : rows to have in textarea
+*/
   @Input() columns: number;
-
-  @Input('allow-blank') allowblank: string;
+  /*
+Properties 
+name : allow-blank
+datatype : string
+version : 4.0 onwards
+default : none 
+description : Sets if field is required
+*/
+  @Input('allow-blank') allowblank: boolean;
 
   helpInfoMsg: string;
 
   regEx: RegExp;
+
+  isComponentValid : boolean;
 
   showToolTip: boolean;
 
@@ -36,7 +66,14 @@ export class AmexioTextAreaComponent implements ControlValueAccessor {
   get errormsg(): string {
     return this._errormsg;
   }
-
+/*
+Properties 
+name : error-msg
+datatype : none
+version : 4.0 onwards
+default : none
+description : sets the error message
+*/ 
   @Input('error-msg')
   set errormsg(value: string) {
     this.helpInfoMsg = value + '<br/>';
@@ -47,7 +84,14 @@ export class AmexioTextAreaComponent implements ControlValueAccessor {
   get minerrormsg(): string {
     return this._minerrormsg;
   }
-
+/*
+Properties 
+name : min-error-msg
+datatype : string
+version : 4.0 onwards
+default : none
+description : sets the error message for min validation
+*/ 
   @Input('min-error-msg')
   set minerrormsg(value: string) {
     this.helpInfoMsg = this.helpInfoMsg + '<b>Min Length<b/>: ' + value + '<br/>';
@@ -58,25 +102,81 @@ export class AmexioTextAreaComponent implements ControlValueAccessor {
   get maxerrormsg(): string {
     return this._maxerrormsg;
   }
-
+/*
+Properties 
+name : max-error-msg
+datatype : string
+version : 4.0 onwards
+default : none
+description : sets the error message for max validation
+*/  
   @Input('max-error-msg')
   set maxerrormsg(value: string) {
     this.helpInfoMsg = this.helpInfoMsg + 'Max Length: ' + value;
   }
 
-
+   /*
+Properties 
+name : place-holder
+datatype : string
+version : 4.0 onwards
+default : none 
+description : 	Show place-holder inside dropdown component
+*/
   @Input('place-holder') placeholder: string;
-
+/*
+Properties 
+name : disabled
+datatype : boolean
+version : 4.0 onwards
+default : none 
+description : true to disable the field.
+*/
   @Input() disabled: boolean;
-
+  /*
+Properties 
+name : icon-feedback
+datatype : boolean
+version : 4.0 onwards
+default : none 
+description : 
+*/
   @Input('icon-feedback') iconfeedback: boolean;
-
+  /*
+Properties 
+name : font-style
+datatype : string
+version : 4.0 onwards
+default : none 
+description : Set font-style to field
+*/
   @Input('font-style') fontstyle: string;
-
+  /*
+Properties 
+name : font-family
+datatype : string
+version : 4.0 onwards
+default : none 
+description : Set font-family to field
+*/
   @Input('font-family') fontfamily: string;
-
+  /*
+Properties 
+name : font-size
+datatype : string
+version : 4.0 onwards
+default : none 
+description : Set font-size to field
+*/
   @Input('font-size') fontsize: string;
-
+  /*
+Properties 
+name : has-label
+datatype : boolean
+version : 4.0 onwards
+default : none 
+description : flag to set label
+*/
   @Input('has-label') haslabel: boolean = true;
 
   _pattern: string;
@@ -100,7 +200,10 @@ export class AmexioTextAreaComponent implements ControlValueAccessor {
   constructor() {
     this.showToolTip = false;
   }
-
+  ngOnInit() {
+    this.isComponentValid = this.allowblank;
+  }
+    
   // The internal dataviews model
   private innerValue: any = '';
 
@@ -164,6 +267,11 @@ export class AmexioTextAreaComponent implements ControlValueAccessor {
     return classObj;
   }
 
+  onInput(input:any) {
+    this.isComponentValid = input.valid;
+    //this.input.emit(this.value);
+  }
+        
 }
 
 

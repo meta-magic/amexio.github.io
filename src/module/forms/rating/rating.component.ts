@@ -10,6 +10,11 @@
  * Author -  Pratik Kelwalkar
  *
  */
+/*
+ Component Name : Amexio Rating
+ Component Selector :  <amexio-rating-input>
+ Component Description : A simple configurable rating component with visual feedback.
+*/
 import {Component, OnInit, Input, Output, EventEmitter, HostListener, forwardRef, NgModule} from "@angular/core";
 import {ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, Validator, AbstractControl} from "@angular/forms";
 import {CommonModule} from '@angular/common';
@@ -23,33 +28,96 @@ import {CommonModule} from '@angular/common';
   }, {provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioRatingComponent), multi: true},]
 })
 export class AmexioRatingComponent implements OnInit, ControlValueAccessor, Validator {
-
-  // -------------------------------------------------------------------------
-  // Inputs
-  // -------------------------------------------------------------------------
-
+  /*
+Properties 
+name : icon-class
+datatype : string
+version : 4.0 onwards
+default : star-icon 
+description : Sets if custom icon class is required
+*/
   @Input('icon-class') iconclass = "star-icon";
-
+  /*
+Properties 
+name : full-icon
+datatype : string
+version : 4.0 onwards
+default : none 
+description : 	Icon for selected rating .This attribute is useful only when user have custom rating icons.example
+*/
   @Input('full-icon') fullicon = "★";
-
+  /*
+Properties 
+name : empty-icon
+datatype : string
+version : 4.0 onwards
+default : none 
+description : 	Icon for non-selected rating .This attribute is useful only when user have custom rating icons.example
+*/
   @Input('empty-icon') emptyicon = "☆";
-
+  /*
+Properties 
+name : read-only
+datatype : boolean
+version : 4.0 onwards
+default : false 
+description : If true will not react on any user events.
+*/
   @Input('read-only') readonly: boolean;
-
+  /*
+Properties 
+name : disabled
+datatype : boolean
+version : 4.0 onwards
+default : false 
+description : 	If true will not react on any user events and show disable icon over
+*/
   @Input() disabled: boolean;
-
+  /*
+Properties 
+name : required
+datatype : boolean
+version : 4.0 onwards
+default : false 
+description : validates the field
+*/
   @Input() required: boolean;
-
+  /*
+Properties 
+name : float
+datatype : boolean
+version : 4.0 onwards
+default : none 
+description : 
+*/
   @Input() float: boolean;
-
+   /*
+Properties 
+name : field-label
+datatype : string
+version : 4.0 onwards
+default : none 
+description : The label of this field
+*/
   @Input('field-label') fieldlabel: string;
-
+   /*
+Properties 
+name : titles
+datatype : string array
+version : 4.0 onwards
+default : 1,2,3..
+description : Array of titles
+*/
   @Input() titles: string[] = [];
 
-  // -------------------------------------------------------------------------
-  // Input Accessors
-  // -------------------------------------------------------------------------
-
+   /*
+Properties 
+name : max
+datatype : number
+version : 4.0 onwards
+default : none 
+description : 	Number of stars for rating component.
+*/
   @Input()
   set max(max: number) {
     this._max = max;
@@ -63,9 +131,23 @@ export class AmexioRatingComponent implements OnInit, ControlValueAccessor, Vali
   // -------------------------------------------------------------------------
   // Outputs
   // -------------------------------------------------------------------------
-
+/*
+Events
+name : onHover
+datatype : any
+version : 4.0 onwards
+default : none
+description : Fires on hovering component
+*/ 
   @Output() onHover = new EventEmitter();
-
+/*
+Events
+name : onLeave
+datatype : any
+version : 4.0 onwards
+default : none
+description : fires on leaving component and returns its value
+*/ 
   @Output() onLeave = new EventEmitter();
 
   // -------------------------------------------------------------------------

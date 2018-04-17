@@ -11,6 +11,7 @@
          [ngClass]="getValidationClasses(inp)"
          (blur)="onBlur()"
          (focus)="onFocus()"
+         (input)="onInput(inp)"
          name="name"
          [pattern]="regEx"
          #ref
@@ -18,7 +19,7 @@
          [attr.rows]="rows"
          [attr.cols]="columns"
          [attr.disabled] = "disabled ? true: null"
-         [attr.required]="!allowblank">
+         [required]="!allowblank">
   </textarea>
 
   <span *ngIf="iconfeedback && (inp.invalid && (inp.dirty || inp.touched) || inp.valid)" class="input-control-feedback">

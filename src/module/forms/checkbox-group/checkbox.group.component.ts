@@ -111,7 +111,7 @@ description : Local data for checkboxGroup.
   mask : boolean = true;
 
    /*
-Properties 
+Events 
 name : onSelection
 datatype : any
 version : none

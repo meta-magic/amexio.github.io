@@ -6,7 +6,7 @@
     </label>
 
         <ng-container *ngIf="datepicker && !timepicker">
-            <input type="text" #pickerDt value="{{dateModel|date:dateformat}}" [attr.disabled]="disabled ? true: null" [attr.required]="required ? true: null" (blur)="onBlur()" (focus)="onFocus(rootDiv)" (focusout)="onFocusOut(pickerDt)" (change)="change.emit()" class="input-control" 
+            <input type="text" #pickerDt value="{{dateModel|date:dateformat}}" [attr.disabled]="disabled ? true: null" [required]="required ? true: null" (blur)="onBlur()" (focus)="onFocus(rootDiv)" (focusout)="onFocusOut(pickerDt)" (change)="change.emit()" class="input-control" 
             [ngStyle]="{'cursor': readonly ? 'not-allowed':'pointer'}" placeholder="Choose Date"
             />
         </ng-container>

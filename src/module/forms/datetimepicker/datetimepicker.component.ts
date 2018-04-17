@@ -78,7 +78,7 @@ description : Disable Date/Time Picker field
 Properties 
 name : read-only
 datatype : boolean
-version : 4.1.5 onwards
+version : 4.0 onwards
 default : false
 description : Disable Date/Time Picker field
 */
