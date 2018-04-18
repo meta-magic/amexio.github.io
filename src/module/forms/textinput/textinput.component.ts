@@ -1,3 +1,8 @@
+ /*
+ Component Name : Amexio Text Input
+ Component Selector :  <amexio-text-input>
+ Component Description : Text input component has been created with different configurable attributes for validation (min/max length, allow blank, custom regex), custom error message, help, custom styles.
+*/
 import {
   Component, ElementRef, EventEmitter, forwardRef, Input, Output, ViewChild, ViewEncapsulation
 } from '@angular/core';
@@ -120,7 +125,7 @@ name : place-holder
 datatype : string
 version : 4.0 onwards
 default : none 
-description : 	Show place-holder inside dropdown component
+description : Show place-holder inside dropdown component
 */
   @Input('place-holder') placeholder: string;
 /*

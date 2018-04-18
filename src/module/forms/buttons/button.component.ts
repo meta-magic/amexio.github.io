@@ -16,7 +16,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 export class AmexioButtonComponent {
 
    /*
-Properties 
+Properties
 name : label
 datatype : string
 version : 4.0 onwards
@@ -26,22 +26,22 @@ description : Label on button
   @Input() label: string;
 
     /*
-Properties 
+Propertiee
 name :  icon
 datatype : string
 version : 4.0 onwards
 default : none
-description : Fa icon class name
+description : FaIcon classname
 */
   @Input() icon: string;
 
    /*
-Properties 
+Properties
 name : type
 datatype : string
 version : 4.1 onwards
 default : none
-description : Type of button  default,theme-color,theme-backgroundcolor, green, red, yellow ( primary, secondary ,success , danger & warning Depricated v4.1 onwards)
+description : Type of button  default / theme-color / theme-backgroundcolor / green / red / yellow ( primary / secondary /success / danger & warning Depricated v4.1 onwards)
 */
   @Input() type: string;
    /*

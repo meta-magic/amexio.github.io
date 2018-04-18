@@ -116,7 +116,7 @@ name : max
 datatype : number
 version : 4.0 onwards
 default : none 
-description : 	Number of stars for rating component.
+description : Number of stars for rating component.
 */
   @Input()
   set max(max: number) {
@@ -151,7 +151,7 @@ description : fires on leaving component and returns its value
   @Output() onLeave = new EventEmitter();
 
   // -------------------------------------------------------------------------
-  // Public properties
+  // Public
   // -------------------------------------------------------------------------
 
   model: number;
@@ -160,7 +160,7 @@ description : fires on leaving component and returns its value
   hoveredPercent: number = undefined;
 
   // -------------------------------------------------------------------------
-  // Private Properties
+  // Private
   // -------------------------------------------------------------------------
 
   private _max: number = 5;

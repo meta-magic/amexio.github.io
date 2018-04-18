@@ -1,3 +1,10 @@
+ /*
+ 
+ Component Name : Amexio Textarea Input
+ Component Selector :  <amexio-textarea-input>
+ Component Description : TextArea input component has been created with different configurable attributes for validation (min/max value, allow blank, custom regex), custom error message, help, custom styles.
+
+*/
 import {Component, forwardRef, Input} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
@@ -186,7 +193,14 @@ description : flag to set label
   get pattern(): string {
     return this._pattern;
   }
-
+    /*
+Properties 
+name : pattern
+datatype : string
+version : 4.0 onwards
+default : none 
+description : Apply Reg-ex to the field
+*/
   @Input('pattern')
   set pattern(value: string) {
     if (value != null) {
@@ -194,7 +208,14 @@ description : flag to set label
       this.regEx = new RegExp(this._pattern);
     }
   }
-
+  /*
+Properties 
+name : enable-popover
+datatype : string
+version : 4.0 onwards
+default : none 
+description : Set enable / disable popover.
+*/
   @Input('enable-popover') enablepopover: boolean;
 
   constructor() {

@@ -2,7 +2,13 @@
  * Created by ketangote on 11/21/17.
  */
 
+ /*
+ 
+ Component Name : Amexio Typeahead Input
+ Component Selector :  <amexio-typeahead>
+ Component Description : Type Ahead Component provides a power type ahead on the text field where users entry is provided with a filtered result.
 
+*/
 import {
   Component, DoCheck, ElementRef, EventEmitter, forwardRef, HostListener, Input, OnChanges, OnInit, Output, Renderer2,
   SimpleChanges,
@@ -85,7 +91,7 @@ name : display-field
 datatype : string
 version : 4.0 onwards
 default : none 
-description : Name of key inside response data to display on ui.
+description : Sets key inside response data to display.
 */ 
   @Input('display-field') displayfield: string;
 
@@ -186,7 +192,7 @@ name : place-holder
 datatype : string
 version : 4.0 onwards
 default : none 
-description : 	Show place-holder inside dropdown component
+description : Show place-holder inside dropdown component
 */
   @Input('place-holder') placeholder: string;
 
@@ -197,7 +203,8 @@ name : icon-feedback
 datatype : boolean
 version : 4.0 onwards
 default : none 
-description : */
+description : 
+*/
   @Input('icon-feedback') iconfeedback: boolean;
   /*
 Properties 

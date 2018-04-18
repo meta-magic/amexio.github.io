@@ -95,12 +95,12 @@ description : Defines the position of component to be placed
 */ 
   @Input('popover-position') popoverposition: string;
 /*
-Properties 
+Propertiee
 name : param-name
 datatype : string
 version : 4.0 onwards
 default : none
-description : Used to specify URL query param name. same with backend rest controller paramater object name Default :file
+description : Used to specify URL query parametername. same with backend rest controller paramater objectname Default [file]
 */ 
   @Input('param-name') paramname: string;
 /*

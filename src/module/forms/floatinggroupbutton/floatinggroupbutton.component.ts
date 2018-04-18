@@ -70,12 +70,12 @@ description : Takes right position in percentage or pixel
 */ 
   @Input('position-right') right : string;
 /*
-Properties 
+Propertiee
 name : icon
 datatype : string
 version : 4.1 onwards
 default : none
-description : Fa icon class name.
+description : FaIcon classname.
 */ 
   @Input('icon') icon : string;
 /*
@@ -84,7 +84,7 @@ name : type
 datatype : string
 version : 4.1 onwards
 default : none
-description : Type of button : default, theme-color, theme-backgroundcolor, green, red, yellow
+description : Type of button - default  / theme-color / theme-backgroundcolor / green / red / yellow
 */ 
   @Input('type') type : string;
 /*

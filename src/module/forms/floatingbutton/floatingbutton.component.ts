@@ -89,12 +89,12 @@ description : Display button as round or square
 */ 
   @Input('block') block: string = "circle";
 /*
-Properties 
+Propertiee 
 name : icon
 datatype : string
 version : 4.1 onwards
 default : none
-description : Fa icon class name.
+description : FaIcon class-name.
 */ 
   @Input('icon') icon : string;
 /*
@@ -103,7 +103,7 @@ name : type
 datatype : string
 version : 4.1 onwards
 default : none
-description : Type of button : default, theme-color, theme-backgroundcolor, green, red, yellow
+description : Type of button - default / theme-color / theme-backgroundcolor / green / red / yellow
 */ 
   @Input('type') type : string;
 /*
