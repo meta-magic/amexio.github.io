@@ -22,37 +22,37 @@ export class AmexioFormComponent implements OnInit, AfterViewInit, AfterContentI
 
     isFormValid : boolean ;
 
-    @ContentChildren(AmexioTextInputComponent) queryTextinput : QueryList<AmexioTextInputComponent>;
+    @ContentChildren(AmexioTextInputComponent, {descendants: true}) queryTextinput : QueryList<AmexioTextInputComponent>;
     textinput: AmexioTextInputComponent[];
     
-    @ContentChildren(AmexioTextAreaComponent) queryTextArea : QueryList<AmexioTextAreaComponent>;
+    @ContentChildren(AmexioTextAreaComponent, {descendants: true}) queryTextArea : QueryList<AmexioTextAreaComponent>;
     textarea: AmexioTextAreaComponent[];
 
-    @ContentChildren(AmexioEmailInputComponent) queryEmailinput : QueryList<AmexioEmailInputComponent>;
+    @ContentChildren(AmexioEmailInputComponent, {descendants: true}) queryEmailinput : QueryList<AmexioEmailInputComponent>;
     emailinput: AmexioEmailInputComponent[];
 
-    @ContentChildren(AmexioNumberInputComponent) queryNuminput : QueryList<AmexioNumberInputComponent>;
+    @ContentChildren(AmexioNumberInputComponent, {descendants: true}) queryNuminput : QueryList<AmexioNumberInputComponent>;
     numinput: AmexioNumberInputComponent[];
 
-    @ContentChildren(AmexioPasswordComponent) queryPassword : QueryList<AmexioPasswordComponent>;
+    @ContentChildren(AmexioPasswordComponent, {descendants: true}) queryPassword : QueryList<AmexioPasswordComponent>;
     password: AmexioPasswordComponent[];
 
-    @ContentChildren(AmexioCheckBoxComponent) queryCheckbox : QueryList<AmexioCheckBoxComponent>;
+    @ContentChildren(AmexioCheckBoxComponent, {descendants: true}) queryCheckbox : QueryList<AmexioCheckBoxComponent>;
     chkBox: AmexioCheckBoxComponent[];
     
-    @ContentChildren(AmexioRadioGroupComponent) queryRadio : QueryList<AmexioRadioGroupComponent>;
+    @ContentChildren(AmexioRadioGroupComponent, {descendants: true}) queryRadio : QueryList<AmexioRadioGroupComponent>;
     radio: AmexioRadioGroupComponent[];
     
-    @ContentChildren(AmexioDropDownComponent) queryDropdown : QueryList<AmexioDropDownComponent>;
+    @ContentChildren(AmexioDropDownComponent, {descendants: true}) queryDropdown : QueryList<AmexioDropDownComponent>;
     dropdown: AmexioDropDownComponent[];
     
-    @ContentChildren(AmexioTypeAheadComponent) queryTypeahead : QueryList<AmexioTypeAheadComponent>;
+    @ContentChildren(AmexioTypeAheadComponent, {descendants: true}) queryTypeahead : QueryList<AmexioTypeAheadComponent>;
     typeahead: AmexioTypeAheadComponent[];
     
-    @ContentChildren(AmexioTagsInputComponent) queryTags : QueryList<AmexioTagsInputComponent>;
+    @ContentChildren(AmexioTagsInputComponent, {descendants: true}) queryTags : QueryList<AmexioTagsInputComponent>;
     tags: AmexioTagsInputComponent[];
 
-    @ContentChildren(AmexioDateTimePicker) queryDate : QueryList<AmexioDateTimePicker>;
+    @ContentChildren(AmexioDateTimePicker, {descendants: true}) queryDate : QueryList<AmexioDateTimePicker>;
     datefiled: AmexioDateTimePicker[];  
     
     buttons : AmexioButtonComponent[];
