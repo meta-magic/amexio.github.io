@@ -14,7 +14,7 @@
             <ng-content select="amexio-form-action"></ng-content>
             <br/>
             <div *ngIf="showError" class="form-tooltip">
-                <button class="button" [attr.title]="tooltip" (click)="showErrors($event)"
+                <button class="button" [attr.title]="'click'" (click)="showErrors($event)"
                 [ngClass]="'button-warning button-small button-round'">
                         <span class="button-text">
                           <!--<i class="{{icon}}" style="padding-right: 5px; " aria-hidden="true"></i>-->

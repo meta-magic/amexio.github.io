@@ -1,4 +1,9 @@
+ /*
+ Component Name : Amexio Form Action
+ Component Selector : <amexio-form-action>
+ Component Description : Amexio Form actions contains the action items within form
 
+*/
 import {Component, OnInit, QueryList,ContentChildren} from '@angular/core';
 import { AmexioButtonComponent} from "./../../forms/buttons/button.component"
 import { AmexioButtonGroupComponent} from "./../../forms/buttongroup/button.group.component"

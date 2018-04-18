@@ -1,3 +1,9 @@
+ /*
+ Component Name : Amexio Form
+ Component Selector : <amexio-form>
+ Component Description : Amexio Form provides an easy way to organize big form components and validating them.
+
+*/
 import { Component, OnInit, Input, EventEmitter,Output, AfterViewInit, AfterContentInit, QueryList, ViewChildren, ContentChildren } from "@angular/core";
 
 import { AmexioTextInputComponent } from "./../../forms/textinput/textinput.component";
@@ -66,7 +72,7 @@ name : header-align
 datatype : string
 version : 4.2 onwards
 default : none
-description : Align of item elements inside card header example : right,center,left.
+description : Align of item elements inside card header example [right center left].
 */
      @Input('header-align') headeralign: string;
 
@@ -76,18 +82,18 @@ name : footer-align
 datatype :  string
 version : 4.2 onwards
 default : none
-description : Align of item elements inside card footer example : right,center,left..
+description : Align of item elements inside card footer example [right center left]
 */
     @Input('footer-align') footeralign: string;
-    
-      /*
+  /*
 Properties 
 name : form-name
-datatype : string
+datatype :  string
 version : 4.2 onwards
 default : none
-description : default name of form , also corresponds to form-bind for button
-*/
+description : form binding attribute 
+*/    
+
     @Input('form-name') fname : string;
 
       /*
