@@ -459,6 +459,10 @@ button {
   border: none !important;
   box-shadow: none !important; }
 
+.button-round {
+  border-radius: 50%;
+  vertical-align: middle; }
+
 /****************************************************************************
     Component Name : Buttongroup
     Version : Amexio v4.0 onwards
