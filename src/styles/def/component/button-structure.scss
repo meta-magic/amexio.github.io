@@ -21,6 +21,10 @@ button {
     display: inline-block;
 }
 
+.disabled
+{
+  pointer-events: none;
+}
 
 .button-small{
     padding: .25rem .5rem;
