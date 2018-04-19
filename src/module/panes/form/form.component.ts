@@ -27,7 +27,7 @@ import { AmexioFormActionComponent} from "./form.action.component"
 export class AmexioFormComponent implements OnInit, AfterViewInit, AfterContentInit {
 
     isFormValid : boolean ;
-
+    showDialogue : boolean ; 
     @ContentChildren(AmexioTextInputComponent, {descendants: true}) queryTextinput : QueryList<AmexioTextInputComponent>;
     textinput: AmexioTextInputComponent[];
     
@@ -124,10 +124,6 @@ version : 4.2 onwards
 default : none
 description : show form invalid error messages
 */
-
-    @Input('show-error-msg') showErrorMsgs : string = "Invalid Field";
-
-   // @Output() onSubmit: any = new EventEmitter<any>();
   /*
 Events
 name : showErrorMsg
@@ -142,6 +138,7 @@ description : Event fired if showError msg info button is clicked
   
     constructor(){
         this.isFormValid = false;
+        this.showDialogue = false;
         this.headeralign = "left";
         this.footeralign = "right";
     }
@@ -175,6 +172,10 @@ description : Event fired if showError msg info button is clicked
         this.checkFormvalidity();
     }
 
+    closeDialogue()
+    {
+        this.showDialogue = !this.showDialogue;
+    }
  
     checkFormvalidity(){
         this.isFormValid = true;
@@ -191,7 +192,7 @@ description : Event fired if showError msg info button is clicked
 
         if(this.dropdown && this.dropdown.length>0){
             this.dropdown.forEach((c)=>{
-                 let flag = c.isComponentValid;
+                 let flag = c.isComponentValid ;
                  if(!flag && this.isFormValid)
                  {
                     this.isFormValid = flag;
@@ -295,9 +296,14 @@ description : Event fired if showError msg info button is clicked
                 this.buttons.forEach((c)=>{
                     if(c.formbind == this.fname) {
                     c.disabled = !this.isFormValid;
+                    
                     }
                 });
             });
+            if(this.isFormValid)
+            {
+                this.showError = false;
+            }
         }
           //this.onSubmit.emit(this.isFormValid);
       }
@@ -305,6 +311,7 @@ description : Event fired if showError msg info button is clicked
       showErrors(event:any)
       {
           this.componentError= [];
+          this.showDialogue = !this.isFormValid;
           if(this.showError)
           {
  
@@ -415,10 +422,10 @@ description : Event fired if showError msg info button is clicked
           }
           if(! this.isFormValid) {
             this.showErrorMsg.emit(this.componentError);
+            this.showDialogue = true;
           } else {
-            this.showErrorMsgs = "Form Valid"
             this.showErrorMsg.emit(this.componentError);
-            
+            this.showDialogue = false;            
           }
       }
     
