@@ -1531,6 +1531,20 @@ input:checked + .toggle-slider:before {
   margin-top: 10px;
   margin-bottom: 10px; }
 
+.image-row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px; }
+
+/* Create two equal columns that sits next to each other */
+.image-column {
+  flex: 50%;
+  padding: 0 4px; }
+
+.image-column img {
+  margin-top: 8px;
+  vertical-align: middle; }
+
 /****************************************************************************
     Component Name : Float Button
     Version : Amexio v4.1 onwards
@@ -4129,7 +4143,7 @@ fieldset {
     width: 1px; }
 
   .datatable .datatable-row {
-    border-bottom: 3px solid #ddd;
+    border-bottom: 3px solid #f10897;
     display: block;
     margin-bottom: .625em;
     height: auto !important; }

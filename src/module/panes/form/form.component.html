@@ -36,10 +36,10 @@
                   [type]="'alert'">
                     <amexio-body>                                            
                       <!-- <div  [innerHTML]='invalidFields'></div> -->
-                      <table align="center">
+                      <table align="center" [ngClass]="form-table">
                         <tr *ngFor="let row of [1, 2, 3, 4]"> 
-                          <td *ngFor="let col of [1, 2, 3]">
-                            <div align="left"> {{componentError[(row -1) * 3 + col - 1]}} &nbsp; &nbsp; &nbsp; &nbsp; </div> 
+                          <td *ngFor="let col of [1, 2, 3]" style="vertical-align:sub;">
+                            <div align="left" style="vertical-align:sub;"> {{componentError[(row -1) * 3 + col - 1]}} &nbsp; &nbsp; &nbsp; &nbsp; </div> 
                           </td>
                         </tr>
                       </table>
