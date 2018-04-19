@@ -95,7 +95,7 @@ description : loading attribute can be used for async task
   @Input() loading:boolean;
 
   /*
-Properties 
+Events 
 name : onClick
 datatype :  none
 version : none
