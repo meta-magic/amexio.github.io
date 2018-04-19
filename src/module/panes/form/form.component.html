@@ -12,7 +12,7 @@
         <footer class="form-footer"
             [ngClass]="{'flex-start':(footeralign=='left'),'flex-end':(footeralign=='right'),'flex-center':(footeralign=='center')}">
             <ng-content select="amexio-form-action"></ng-content>
-            <br/>{{showError}}
+            <br/>
             <div *ngIf="showError" class="form-tooltip">
                 <button class="button" [attr.title]="'click'" (click)="showErrors($event)"
                 [ngClass]="'button-warning button-small button-round'">
