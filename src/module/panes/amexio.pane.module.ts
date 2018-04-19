@@ -28,6 +28,8 @@ import {AmexioPanelComponent} from "./panel/panel.component";
 import {HttpClientModule} from "@angular/common/http";
 import {AmexioFormComponent} from "./form/form.component"
 import { AmexioFormActionComponent } from "./form/form.action.component";
+import { AmexioFormBodyComponent } from "./form/form.body.component";
+import { AmexioFormHeaderComponent } from "./form/form.header.component";
 
 export * from './header/pane.action.header';
 export * from './action/pane.action.footer';
@@ -53,6 +55,8 @@ export * from '../services/icon/icon.service';
 
 export * from './form/form.component';
 export * from './form/form.action.component';
+export * from './form/form.header.component';
+export * from './form/form.body.component';
 
 const PANE_COMPONENTS = [
   AmexioHeaderComponent,
@@ -73,7 +77,9 @@ const PANE_COMPONENTS = [
   AmexioIconPane,
   AmexiodialoguePaneComponent,
   AmexioFormComponent,
-  AmexioFormActionComponent
+  AmexioFormActionComponent,
+  AmexioFormHeaderComponent,
+  AmexioFormBodyComponent,
 ];
 
 @NgModule({

@@ -19,6 +19,8 @@ import { AmexioTagsInputComponent} from "./../../forms/tagsinput/tags.input.comp
 import { AmexioDateTimePicker} from "./../../forms/datetimepicker/datetimepicker.component"
 import { AmexioButtonComponent} from "./../../forms/buttons/button.component"
 import { AmexioFormActionComponent} from "./form.action.component"
+import { AmexioFormHeaderComponent} from "./form.header.component"
+import { AmexioFormBodyComponent} from "./form.body.component"
 
 @Component({
     selector: 'amexio-form',
@@ -98,13 +100,13 @@ description : form binding attribute
 
       /*
 Properties 
-name : form-header
-datatype : string
+name : header
+datatype : boolean
 version : 4.2 onwards
 default : none
-description : form title to display
+description : form header to display
 */  
-    @Input('form-header') fheader : string;
+    @Input('header') header : string;
 
       /*
 Properties 
@@ -116,14 +118,7 @@ description : Flag to show form invalid error messages
 */
 
     @Input('show-error') showError : boolean = false;
-      /*
-Properties 
-name : show-error-msg
-datatype : string
-version : 4.2 onwards
-default : none
-description : show form invalid error messages
-*/
+
   /*
 Events
 name : showErrorMsg

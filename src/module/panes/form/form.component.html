@@ -1,56 +1,56 @@
 <form name="fname" class="form-container">
 
-        <amexio-header  class="form-header" 
-            [ngClass]="{'flex-start':(headeralign=='left'),'flex-end':(headeralign=='right'),'flex-center':(headeralign=='center')}">
-          {{fheader}}
-        </amexio-header>
-        
-        <amexio-body class="form-body formbody"> 
-            <ng-content></ng-content>
-        </amexio-body>
-        
-        <footer class="form-footer"
-            [ngClass]="{'flex-start':(footeralign=='left'),'flex-end':(footeralign=='right'),'flex-center':(footeralign=='center')}">
-            <ng-content select="amexio-form-action"></ng-content>
-            <br/>
-            <div *ngIf="showError" class="form-tooltip">
-                <button class="button" [attr.title]="'click'" (click)="showErrors($event)"
-                [ngClass]="'button-warning button-small button-round'">
-                        <span class="button-text">
-                          <!--<i class="{{icon}}" style="padding-right: 5px; " aria-hidden="true"></i>-->
-                          <span style="padding-right: 5px;" *ngIf="icon">
-                            <amexio-form-icon [customclass]="icon" >
-                            </amexio-form-icon>
-                          </span>
-                          <span style="padding-right: 5px;" *ngIf="loading">
-                            <amexio-form-icon key="button-loading-icon"></amexio-form-icon>
-                          </span>
-                          ?
-                        </span>
-                </button>
-                <amexio-dialogue [show-dialogue]="showDialogue"
-                  [custom]="true"
-                  [title]="'Invalid Fields'"
-                  [primary-action-label]="'ok'"
-                  [message-type]="'error'"
-                  [type]="'alert'">
-                    <amexio-body>                                            
-                      <!-- <div  [innerHTML]='invalidFields'></div> -->
-                      <table align="center" [ngClass]="form-table">
-                        <tr *ngFor="let row of [1, 2, 3, 4]"> 
-                          <td *ngFor="let col of [1, 2, 3]" style="vertical-align:sub;">
-                            <div align="left" style="vertical-align:sub;"> {{componentError[(row -1) * 3 + col - 1]}} &nbsp; &nbsp; &nbsp; &nbsp; </div> 
-                          </td>
-                        </tr>
-                      </table>
-                    </amexio-body>
-                    <amexio-action>
-                        <amexio-button type="primary"
-                                       (onClick)="closeDialogue()"
-                                       [label]="'OK'">
-                        </amexio-button>
-                     </amexio-action>
-                </amexio-dialogue>            
-            </div>
-        </footer>
+  <header class="form-header" *ngIf="header" >          
+    <ng-content select="amexio-form-header"></ng-content>
+  </header>
+
+  <div class="form-body formbody" >
+    <ng-content select="amexio-form-body"></ng-content>
+  </div>
+  
+  <footer class="form-footer"
+      [ngClass]="{'flex-start':(footeralign=='left'),'flex-end':(footeralign=='right'),'flex-center':(footeralign=='center')}">
+      <ng-content select="amexio-form-action"></ng-content>
+      <br/>
+      <div *ngIf="showError">
+          <button class="button" [attr.title]="'click'" (click)="showErrors($event)"
+          [ngClass]="'button-warning button-small button-round'">
+                  <span class="button-text">
+                    <!--<i class="{{icon}}" style="padding-right: 5px; " aria-hidden="true"></i>-->
+                    <span style="padding-right: 5px;" *ngIf="icon">
+                      <amexio-form-icon [customclass]="icon" >
+                      </amexio-form-icon>
+                    </span>
+                    <span style="padding-right: 5px;" *ngIf="loading">
+                      <amexio-form-icon key="button-loading-icon"></amexio-form-icon>
+                    </span>
+                    ?
+                  </span>
+          </button>
+          <amexio-dialogue [show-dialogue]="showDialogue"
+            [custom]="true"
+            [closable] = "false"
+            [title]="'Invalid Fields'"
+            [primary-action-label]="'ok'"
+            [message-type]="'error'"
+            [type]="'alert'">
+              <amexio-body>                                            
+                <!-- <div  [innerHTML]='invalidFields'></div> -->
+                <table align="center" [ngClass]="form-table">
+                  <tr *ngFor="let row of [1, 2, 3, 4]"> 
+                    <td *ngFor="let col of [1, 2, 3]" style="vertical-align:sub;">
+                      <div align="left" style="vertical-align:sub;"> {{componentError[(row -1) * 3 + col - 1]}} &nbsp; &nbsp; &nbsp; &nbsp; </div> 
+                    </td>
+                  </tr>
+                </table>
+              </amexio-body>
+              <amexio-action>
+                  <amexio-button type="primary"
+                                  (onClick)="closeDialogue()"
+                                  [label]="'OK'">
+                  </amexio-button>
+                </amexio-action>
+          </amexio-dialogue>            
+      </div>
+  </footer>
 </form>
