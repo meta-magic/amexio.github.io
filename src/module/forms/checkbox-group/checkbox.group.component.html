@@ -12,8 +12,8 @@
     <ng-container *ngFor="let row of viewData">
 
       <label class="input-box-container" [ngClass]="{'disable-component' : row?.disabled}" >{{row[displayfield]}}
-        <input type="checkbox" *ngIf="row[valuefield]" checked="checked" (click)="setSelectedCheckBox(row, $event)">
-        <input type="checkbox" *ngIf="!row[valuefield]" (click)="setSelectedCheckBox(row, $event)">
+        <input type="checkbox" *ngIf="row[valuefield]" [ngClass]="{'checkbox-disable' : disabled}" [required]="required" checked="checked" (click)="setSelectedCheckBox(row, $event)">
+        <input type="checkbox" *ngIf="!row[valuefield]" [ngClass]="{'checkbox-disable' : disabled}" [required]="required" (click)="setSelectedCheckBox(row, $event)">
         <span class="input-box-checkbox-label"></span>
       </label>
 
@@ -24,8 +24,8 @@
     <ng-container *ngFor="let row of viewData">
       <div>
         <label class="input-box-container">{{row[displayfield]}}
-          <input type="checkbox" *ngIf="row[valuefield]" checked="checked" (click)="setSelectedCheckBox(row, $event)">
-          <input type="checkbox" *ngIf="!row[valuefield]" (click)="setSelectedCheckBox(row, $event)">
+          <input type="checkbox" *ngIf="row[valuefield]" [ngClass]="{'checkbox-disable' : disabled}" [required]="required" checked="checked" (click)="setSelectedCheckBox(row, $event)">
+          <input type="checkbox" *ngIf="!row[valuefield]" [ngClass]="{'checkbox-disable' : disabled}" [required]="required" (click)="setSelectedCheckBox(row, $event)">
           <span class="input-box-checkbox-label"></span>
         </label>
       </div>

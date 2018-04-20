@@ -12,6 +12,7 @@ import { AmexioEmailInputComponent } from "./../../forms/emailinput/emailinput.c
 import { AmexioNumberInputComponent } from "./../../forms/numberinput/numberinput.component";
 import { AmexioPasswordComponent } from "./../../forms/passwordinput/passwordinput.component";
 import { AmexioCheckBoxComponent } from "./../../forms/checkbox/checkbox.component";
+import { AmexioCheckBoxGroupComponent } from "./../../forms/checkbox-group/checkbox.group.component";
 import { AmexioRadioGroupComponent } from "./../../forms/radio/radiogroup.component";
 import { AmexioDropDownComponent } from "./../../forms/dropdown/dropdown.component";
 import { AmexioTypeAheadComponent} from "./../../forms/typeahead/typeahead.component"
@@ -29,7 +30,9 @@ import { AmexioFormBodyComponent} from "./form.body.component"
 export class AmexioFormComponent implements OnInit, AfterViewInit, AfterContentInit {
 
     isFormValid : boolean ;
+
     showDialogue : boolean ; 
+
     @ContentChildren(AmexioTextInputComponent, {descendants: true}) queryTextinput : QueryList<AmexioTextInputComponent>;
     textinput: AmexioTextInputComponent[];
     
@@ -47,6 +50,9 @@ export class AmexioFormComponent implements OnInit, AfterViewInit, AfterContentI
 
     @ContentChildren(AmexioCheckBoxComponent, {descendants: true}) queryCheckbox : QueryList<AmexioCheckBoxComponent>;
     chkBox: AmexioCheckBoxComponent[];
+    
+    @ContentChildren(AmexioCheckBoxGroupComponent, {descendants: true}) queryCheckboxGrp : QueryList<AmexioCheckBoxGroupComponent>;
+    chkBoxGrp: AmexioCheckBoxGroupComponent[];
     
     @ContentChildren(AmexioRadioGroupComponent, {descendants: true}) queryRadio : QueryList<AmexioRadioGroupComponent>;
     radio: AmexioRadioGroupComponent[];
@@ -116,7 +122,6 @@ version : 4.2 onwards
 default : none
 description : Flag to show form invalid error messages
 */
-
     @Input('show-error') showError : boolean = false;
 
   /*
@@ -143,13 +148,14 @@ description : Event fired if showError msg info button is clicked
     }
 
     ngAfterViewInit(){
-        
+        debugger;
         this.textinput = this.queryTextinput.toArray();
         this.textarea = this.queryTextArea.toArray();
         this.password = this.queryPassword.toArray();
         this.emailinput = this.queryEmailinput.toArray();
         this.numinput = this.queryNuminput.toArray();
         this.chkBox = this.queryCheckbox.toArray();
+        this.chkBoxGrp = this.queryCheckboxGrp.toArray();
         this.radio = this.queryRadio.toArray();
         this.dropdown = this.queryDropdown.toArray();
         this.typeahead = this.queryTypeahead.toArray();
@@ -275,6 +281,17 @@ description : Event fired if showError msg info button is clicked
                  }
             });
         }
+        
+        if(this.chkBoxGrp && this.chkBoxGrp.length > 0 ){
+            this.chkBoxGrp.forEach((c)=>{
+                let flag = c.isComponentValid;
+                 if(!flag && this.isFormValid)
+                 {
+                    this.isFormValid = flag;                    
+                 }
+            });
+        }
+
         if(this.textarea && this.textarea.length>0){
             this.textarea.forEach((c)=>{
                 let flag = c.isComponentValid && c.isValid;
@@ -400,8 +417,16 @@ description : Event fired if showError msg info button is clicked
                     let flag = c.isComponentValid;
                      if(!flag)
                      {
-                        this.componentError.push(c.fieldlabel);
-                        
+                        this.componentError.push(c.fieldlabel);                        
+                     }
+                });
+            }
+              if(this.chkBoxGrp){
+                this.chkBoxGrp.forEach((c)=>{
+                    let flag = c.isComponentValid;
+                     if(!flag)
+                     {
+                        this.componentError.push(c.fieldlabel);                        
                      }
                 });
             }

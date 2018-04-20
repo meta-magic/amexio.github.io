@@ -97,6 +97,16 @@ description : Name of key inside response data.use to send to backend
   @Input('value-field') valuefield: string;
 /* not in use */
   @Input() search: boolean;
+  
+  /*
+Properties 
+name : disabled
+datatype : boolean
+version : 4.0 onwards
+default : false
+description :  If true will not react on any user events and show disable icon over
+*/
+  @Input() disabled: boolean = false;
 
    /*
 Properties 
@@ -107,6 +117,16 @@ default : none
 description : Local data for checkboxGroup.
 */
   @Input() data: any;
+
+ /*
+Properties
+name : required
+datatype : boolean
+version : 4.1.7 onwards
+default : false
+description :  property to set if manditory 
+*/
+  @Input() required: boolean = false;
 
   mask : boolean = true;
 
@@ -122,6 +142,8 @@ description : fire when check box click
 
   calculatedColSize: any;
 
+  isComponentValid : boolean;
+
   elementId: string;
 
   responseData: any[];
@@ -135,10 +157,12 @@ description : fire when check box click
   previousValue: any;
 
   constructor(private amxHttp: CommonDataService) {
-    this.selectedCheckBox = [];
+    this.selectedCheckBox = [];    
   }
 
   ngOnInit() {
+    debugger;
+    this.isComponentValid = !this.required;
     if (this.httpmethod && this.httpurl) {
       this.amxHttp.fetchData(this.httpurl, this.httpmethod).subscribe(response => {
         this.responseData = response;
@@ -164,14 +188,20 @@ description : fire when check box click
     this.viewData = this.getResponseData(httpResponse);
     let viewDataWithIdArray: any[] = [];
     this.viewData.forEach((viewDataObject: any) => {
+      
       viewDataObject.id = 'checkbox' + Math.floor(Math.random() * 90000) + 10000;
+      
+      if(!viewDataObject.hasOwnProperty('disabled')){
+        viewDataObject.disabled = false;
+      }
+
       viewDataWithIdArray.push(viewDataObject);
     });
+
     this.viewData = [];
     this.viewData = viewDataWithIdArray;
     this.mask = false;
   }
-
 
   getResponseData(httpResponse: any) {
     let responsedata = httpResponse;
@@ -194,10 +224,10 @@ description : fire when check box click
     } else {
       this.viewData = this.responseData;
     }
-
   }
 
   setSelectedCheckBox(rowData: any, event: any) {
+ 
     if(rowData.hasOwnProperty('disabled') && !rowData.disabled){
       rowData[this.valuefield] = !rowData[this.valuefield];
 
@@ -207,12 +237,12 @@ description : fire when check box click
         let indexOf = this.selectedCheckBox.indexOf(rowData);
         delete this.selectedCheckBox[indexOf];
       }
-
-      this.emitSelectedRows();
-    }
+        this.emitSelectedRows();
+      }
   }
 
   emitSelectedRows() {
+       debugger;
     let sRows = [];
     let cloneSelectedChecks = JSON.parse(JSON.stringify(this.selectedCheckBox));
     for (let sr = 0; sr < cloneSelectedChecks.length; sr++) {
@@ -222,8 +252,16 @@ description : fire when check box click
         sRows.push(cloneSelectedChecks[sr]);
       }
     }
+     if(this.selectedCheckBox.length > 0 && this.required)
+     {
+       this.isComponentValid = false;
+       this.selectedCheckBox.forEach((c)=>{                
+          if(c.checked)
+          {
+            this.isComponentValid = true;
+          }
+        });
+     }
     this.onSelection.emit(sRows);
   }
-
-
 }
