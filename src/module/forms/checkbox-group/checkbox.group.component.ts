@@ -242,7 +242,6 @@ description : fire when check box click
   }
 
   emitSelectedRows() {
-       debugger;
     let sRows = [];
     let cloneSelectedChecks = JSON.parse(JSON.stringify(this.selectedCheckBox));
     for (let sr = 0; sr < cloneSelectedChecks.length; sr++) {
