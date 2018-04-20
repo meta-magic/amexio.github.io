@@ -130,7 +130,7 @@ name : height
 datatype :   any
 version : 4.0 onwards
 default : none
-description : User can set the height to body..
+description : User can set the height to form
 */
   @Input()  height : any;
   /*
@@ -139,7 +139,7 @@ name : min-height
 datatype :   any
 version : 4.0 onwards
 default : none
-description : provides minimum card height.
+description : provides minimum height of the form.
 */
   @Input('min-height')  minHeight : any;
 
@@ -149,7 +149,7 @@ name : body-height
 datatype :   any
 version : 4.0 onwards
 default : none
-description : provides card height.
+description : provides form body height.
 */
   @Input('body-height') bodyheight : any;
 
