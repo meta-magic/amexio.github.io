@@ -4,7 +4,7 @@
  Component Description : Amexio Form provides an easy way to organize big form components and validating them.
 
 */
-import { Component, OnInit, Input, EventEmitter,Output, AfterViewInit, AfterContentInit, QueryList, ViewChildren, ContentChildren } from "@angular/core";
+import { Component, OnInit, Input,ViewChild,ElementRef, EventEmitter,Output, AfterViewInit, AfterContentInit, QueryList, ViewChildren, ContentChildren } from "@angular/core";
 
 import { AmexioTextInputComponent } from "./../../forms/textinput/textinput.component";
 import { AmexioTextAreaComponent } from "./../../forms/textarea/textarea.component";
@@ -125,6 +125,39 @@ description : Flag to show form invalid error messages
     @Input('show-error') showError : boolean = false;
 
   /*
+Properties 
+name : height
+datatype :   any
+version : 4.0 onwards
+default : none
+description : User can set the height to body..
+*/
+  @Input()  height : any;
+  /*
+Properties 
+name : min-height
+datatype :   any
+version : 4.0 onwards
+default : none
+description : provides minimum card height.
+*/
+  @Input('min-height')  minHeight : any;
+
+  /*
+Properties 
+name : body-height
+datatype :   any
+version : 4.0 onwards
+default : none
+description : provides card height.
+*/
+  @Input('body-height') bodyheight : any;
+
+  @ViewChild('formHeader', {read: ElementRef}) public formHeader: ElementRef;
+
+  @ViewChild('formFooter', {read: ElementRef}) public formFooter: ElementRef;
+
+  /*
 Events
 name : showErrorMsg
 datatype : any
@@ -143,6 +176,26 @@ description : Event fired if showError msg info button is clicked
         this.footeralign = "right";
     }
 
+
+  onResize(){
+   
+    if(this.bodyheight){
+      let h = (window.innerHeight/100)*this.bodyheight;
+
+      if(this.formHeader && this.formHeader.nativeElement && this.formHeader.nativeElement.offsetHeight)
+        h = h - this.formHeader.nativeElement.offsetHeight;
+
+      if(this.formFooter && this.formFooter.nativeElement && this.formFooter.nativeElement.offsetHeight)
+        h = h - this.formFooter.nativeElement.offsetHeight;
+      
+      
+      if(this.bodyheight === 100)
+        h = h - 40;
+
+      this.minHeight = h;
+      this.height = h;
+    }
+  }
     ngOnInit(){
 
     }
@@ -302,7 +355,6 @@ description : Event fired if showError msg info button is clicked
             });
         }
         if(this.footer  && this.footer.length>0){
-            
             this.footer.forEach((c)=>{
                 this.buttons = this.footer[0].buttons;
                 this.buttons.forEach((c)=>{
