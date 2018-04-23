@@ -266,11 +266,9 @@ description : Event fired if showError msg info button is clicked
         
         if(this.datefiled){
             this.datefiled.forEach((c)=>{
-   
                 let flag;
-                if(c.selectedDate!=null) {
-                    flag = true;
-                }                
+                flag = c.isComponentValid;
+                           
                 if(!flag && this.isFormValid)
                 {
                     this.isFormValid = flag;
@@ -410,9 +408,8 @@ description : Event fired if showError msg info button is clicked
                 this.datefiled.forEach((c)=>{
                    
                     let flag;
-                    if(c.selectedDate!=null) {
-                        flag = true;
-                    }                
+                    flag = c.isComponentValid;
+                                
                     if(!flag)
                     {
                         this.componentError.push(c.fieldlabel);
