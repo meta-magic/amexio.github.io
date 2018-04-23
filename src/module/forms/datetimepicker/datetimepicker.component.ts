@@ -92,7 +92,7 @@ version : 4.0 onwards
 default : false
 description : flag to allow blank field or not
 */
-  @Input() required: boolean;
+  @Input() required: boolean = false;
 
   posixUp : boolean;
 
@@ -173,7 +173,8 @@ description : On field focus event
 
 
   ngOnInit() {
-    this.isComponentValid = ! this.required;
+    
+    this.isComponentValid = !this.required;
     if (this.dateformat != null) {
       this.dateformat = "dd/MM/yyyy";
     }
@@ -256,6 +257,7 @@ description : On field focus event
   }
 
   onInput(event : any){
+    debugger;
     if(event.target.value != null && event.target.value != ''){
       let timeValue = event.target.value.split(':');
       if(timeValue != null){
@@ -267,8 +269,7 @@ description : On field focus event
         this.min = mins;
         this.value = this.selectedDate;
         this.change.emit(this.value);
-        event.stopPropagation();
-        this.isComponentValid = true;
+        event.stopPropagation();                
       }
     }
   }
@@ -418,10 +419,14 @@ description : On field focus event
   }
 
   onFocusOut(value : any){
-    if(isNaN(Date.parse(value.value)))
+    if(isNaN(Date.parse(value.value))){
+      this.isComponentValid = false;
       value.value = '';
-    else
+    }
+    else {
       this.value = Date.parse(value.value);
+      this.isComponentValid = true;
+    }
   }
 
   openPicker(elem : any){
