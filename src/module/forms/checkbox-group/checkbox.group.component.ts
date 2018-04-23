@@ -161,7 +161,7 @@ description : fire when check box click
   }
 
   ngOnInit() {
-    debugger;
+    
     this.isComponentValid = !this.required;
     if (this.httpmethod && this.httpurl) {
       this.amxHttp.fetchData(this.httpurl, this.httpmethod).subscribe(response => {
