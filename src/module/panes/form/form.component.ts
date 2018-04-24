@@ -365,6 +365,9 @@ description : Event fired if showError msg info button is clicked
             if(this.isFormValid)
             {
                 this.showError = false;
+            }  else
+            {
+              this.showError = true;
             }
         }
           //this.onSubmit.emit(this.isFormValid);
