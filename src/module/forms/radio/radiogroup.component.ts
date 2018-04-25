@@ -15,111 +15,111 @@ import {CommonDataService} from "../../services/data/common.data.service";
 })
 export class AmexioRadioGroupComponent {
   /*
-Properties 
+Properties
 name : allow-blank
 datatype : string
 version : 4.0 onwards
-default : none 
+default : none
 description : Sets if field is required
 */
   @Input('allow-blank') allowblank: boolean = true;
   /*
-Properties 
+Properties
 name :name
 datatype : boolean
 version : 4.0 onwards
-default : none 
-description : 
+default : none
+description :
 */
   @Input() name: boolean;
 
    /*
-Properties 
+Properties
 name : field-label
 datatype : string
 version : 4.0 onwards
-default : none 
+default : none
 description : The label of this field
 */
   @Input('field-label') fieldlabel: string;
    /*
-Properties 
+Properties
 name : data-reader
 datatype : string
 version : 4.0 onwards
-default : none 
+default : none
 description : 	Key in JSON datasource for records
 */
   @Input('data-reader') datareader: string;
    /*
-Properties 
+Properties
 name : http-method
 datatype : string
 version : 4.0 onwards
-default : none 
+default : none
 description : Type of HTTP call, POST,GET.
 */
   @Input('http-method') httpmethod: string;
    /*
-Properties 
+Properties
 name : http-url
 datatype : string
 version : 4.0 onwards
-default : none 
+default : none
 description : 	REST url for fetching datasource.
 */
   @Input('http-url') httpurl: string;
    /*
-Properties 
+Properties
 name : display-field
 datatype : string
 version : 4.0 onwards
-default : none 
+default : none
 description : Name of key inside response data to display on ui.
 */
   @Input('display-field') displayfield: string;
    /*
-Properties 
+Properties
 name : value-field
 datatype : string
 version : 4.0 onwards
-default : none 
+default : none
 description : Name of key inside response data.use to send to backend
 */
   @Input('value-field') valuefield: string;
    /*
-Properties 
+Properties
 name : default-value
 datatype : string
 version : 4.0 onwards
-default : none 
+default : none
 description : Default Value to be checked
 */
   @Input('default-value') defaultSelectedValue: string;
    /*
-Properties 
+Properties
 name : horizontal
 datatype : boolean
 version : 4.0 onwards
-default : none 
+default : none
 description : Set true for horizontal checkbox
 */
   @Input() horizontal: boolean;
    /*
-Properties 
+Properties
 name : data
 datatype : any
 version : 4.0 onwards
-default : none 
+default : none
 description : 	Local data for radio group.
 */
   @Input() data: any;
 /*
-Properties 
+Properties
 name : disabled
 datatype : boolean
 version : 4.0 onwards
-default : none 
+default : none
 description : true to disable the field.
 */
   @Input() disabled: any;
@@ -130,7 +130,7 @@ datatype : any
 version : 4.0 onwards
 default : none
 description : Fires selection event
-*/ 
+*/
   @Output() onSelection: any = new EventEmitter<any>();
   /*
 Events
@@ -153,14 +153,14 @@ description : 	On input event field.
 
 
   onInput(input:any) {
-  
+
     // if(this.viewData)
     // this.isComponentValid = true;
     this.input.emit();
   }
 
   ngOnInit() {
-    
+
     this.isComponentValid = this.allowblank;
 
     if (this.httpmethod && this.httpurl) {
@@ -173,15 +173,11 @@ description : 	On input event field.
     } else if (this.data != null) {
       this.viewData = this.getResponseData(this.data);
     }
-    
-     if (!this.allowblank) {
-      this.checkDefaultValidation();
-    }
   }
-  
-  
-   checkDefaultValidation() {
-    this.viewData.forEach((opt: any)=>{
+
+
+   checkDefaultValidation(viewData: any) {
+    viewData.forEach((opt: any)=>{
       if(opt[this.valuefield] == this.defaultSelectedValue || (opt.hasOwnProperty('selected') && opt.selected)){
         this.isComponentValid = true;
         return;
@@ -189,7 +185,7 @@ description : 	On input event field.
 
     });
   }
-  
+
 
   getResponseData(httpResponse: any) {
     let responsedata = httpResponse;
@@ -202,6 +198,9 @@ description : 	On input event field.
       }
     } else {
       responsedata = httpResponse;
+    }
+    if (!this.allowblank) {
+      this.checkDefaultValidation(responsedata);
     }
 
     return responsedata;
