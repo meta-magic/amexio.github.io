@@ -4,7 +4,7 @@
  Component Selector :  <amexio-date-time-picker>
  Component Description : This component is flexible for both Date and time picker with all required configurations in Style.
 
- 
+
 */
 
 import {Component, ElementRef, EventEmitter, forwardRef, HostListener, Input, OnInit, Output} from '@angular/core';
@@ -26,17 +26,17 @@ export class AmexioDateTimePicker implements OnInit {
 
 
   /*
-Properties 
+Properties
 name : date-format
 datatype : string
 version : 4.0 onwards
-default : none 
+default : none
 description : The label of this field
 */
   @Input('date-format') dateformat: string;
 
     /*
-Properties 
+Properties
 name : date-picker
 datatype : boolean
 version : 4.0 onwards
@@ -46,7 +46,7 @@ description : Enable/Disable Date Picker
   @Input('date-picker') datepicker: boolean;
 
    /*
-Properties 
+Properties
 name : time-picker
 datatype : boolean
 version : 4.0 onwards
@@ -56,7 +56,7 @@ description : Enable/Disable Time Picker
   @Input('time-picker') timepicker: boolean;
 
    /*
-Properties 
+Properties
 name : field-label
 datatype : string
 version : 4.0 onwards
@@ -66,7 +66,7 @@ description : 	The label of this field
   @Input('field-label') fieldlabel: string;
 
   /*
-Properties 
+Properties
 name : disabled
 datatype : boolean
 version : 4.1.5 onwards
@@ -75,7 +75,7 @@ description : Disable Date/Time Picker field
 */
   @Input('disabled') disabled: boolean;
   /*
-Properties 
+Properties
 name : read-only
 datatype : boolean
 version : 4.0 onwards
@@ -84,8 +84,8 @@ description : Disable Date/Time Picker field
 */
   @Input('read-only') readonly: boolean;
 
-/* 
-Properties 
+/*
+Properties
 name : required
 datatype : boolean
 version : 4.0 onwards
@@ -99,7 +99,7 @@ description : flag to allow blank field or not
   positionClass : any;
 
     /*
-Properties 
+Properties
 name : blur
 datatype : none
 version : none
@@ -109,7 +109,7 @@ description : On blur event
   @Output() blur: EventEmitter<any> = new EventEmitter<any>();
 
    /*
-Properties 
+Properties
 name : change
 datatype : none
 version : none
@@ -117,9 +117,9 @@ default : none
 description : On field value change event
 */
   @Output() change: EventEmitter<any> = new EventEmitter<any>();
-  
+
    /*
-Properties 
+Properties
 name : input
 datatype : none
 version : none
@@ -127,9 +127,9 @@ default : none
 description : On input event field.
 */
   @Output() input: EventEmitter<any> = new EventEmitter<any>();
- 
+
   /*
-Properties 
+Properties
 name : focus
 datatype : none
 version : none
@@ -173,7 +173,7 @@ description : On field focus event
 
 
   ngOnInit() {
-    
+
     this.isComponentValid = !this.required;
     if (this.dateformat != null) {
       this.dateformat = "dd/MM/yyyy";
@@ -238,6 +238,7 @@ description : On field focus event
     this.resetSelection(dateObj);
     this.dateModel = this.selectedDate;
     this.value = this.selectedDate;
+    this.isComponentValid = true;
     this.showToolTip = !this.showToolTip;
   }
 
@@ -257,7 +258,6 @@ description : On field focus event
   }
 
   onInput(event : any){
-    debugger;
     if(event.target.value != null && event.target.value != ''){
       let timeValue = event.target.value.split(':');
       if(timeValue != null){
@@ -269,7 +269,7 @@ description : On field focus event
         this.min = mins;
         this.value = this.selectedDate;
         this.change.emit(this.value);
-        event.stopPropagation();                
+        event.stopPropagation();
       }
     }
   }
@@ -337,6 +337,7 @@ description : On field focus event
     this.selectedDate.setHours(this.hrs);
     this.selectedDate.setMinutes(this.min);
     this.value = this.selectedDate;
+    this.isComponentValid = true;
     this.change.emit(this.value);
     event.stopPropagation();
 
@@ -363,6 +364,7 @@ description : On field focus event
     this.selectedDate.setHours(this.hrs);
     this.selectedDate.setMinutes(this.min);
     this.value = this.selectedDate;
+    this.isComponentValid = true;
     this.change.emit(this.value);
     event.stopPropagation();
   }
@@ -398,7 +400,16 @@ description : On field focus event
   writeValue(value: any) {
     if (value !== this.innerValue) {
       this.innerValue = value;
-      this.dateModel = this.innerValue;
+      if (this.required && this.innerValue instanceof Date) {
+        this.dateModel = this.innerValue;
+        this.isComponentValid = true;
+      } else {
+        this.isComponentValid = false;
+        this.hrs = 0;
+        this.min = 0;
+        console.log('Invalid Date Input');
+      }
+
     }
   }
 
