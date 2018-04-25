@@ -266,15 +266,23 @@ description : On field value change event
 
   getValidationClasses(inp: any): any {
     let classObj;
-    if (inp.touched && !this.allowblank && (this.value == '' || this.value == null)) {
-      classObj = {'input-control-error': true};
-      this.isValid = false;
+    if (!this.allowblank && (this.value == '' || this.value == null)) {
+        if(inp.touched) {
+          classObj = {'input-control-error': true};
+          this.isValid = false;
+          this.isComponentValid = false;
+        } else {
+          this.isValid = false;
+          this.isComponentValid = false;
+        }
     } else if (inp.touched) {
       if (!this.emailpatter.test(this.value)) {
         classObj = {'input-control-error': true};
         this.isValid = false;
+        this.isComponentValid = false;
       } else {
         this.isValid = true;
+        this.isComponentValid = true;
       }
 
     } else {
@@ -282,7 +290,11 @@ description : On field value change event
         'input-control-error': inp.invalid && (inp.dirty || inp.touched),
         'input-control-success': inp.valid && (inp.dirty || inp.touched)
       };
-      if (inp.valid && (inp.dirty || inp.touched)) this.isValid = true;
+      if (inp.valid && (inp.dirty || inp.touched)) 
+      {
+        this.isValid = true;
+        this.isComponentValid = true;
+      }
     }
     return classObj;
   }
