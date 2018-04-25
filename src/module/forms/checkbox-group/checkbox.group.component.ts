@@ -174,8 +174,20 @@ description : fire when check box click
       this.previousValue = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
     }
+      if (this.required) {
+      this.checkDefaultValidation();
+    }
   }
 
+   checkDefaultValidation() {
+    this.viewData.forEach((opt: any)=>{
+      if(opt.hasOwnProperty('checked') && opt.checked){
+        this.isComponentValid = true;
+        return;
+      }
+    });
+  }
+  
   ngDoCheck() {
     if (JSON.stringify(this.previousValue) != JSON.stringify(this.data)) {
       this.previousValue = JSON.parse(JSON.stringify(this.data));
