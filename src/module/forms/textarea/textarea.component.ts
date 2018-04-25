@@ -1,5 +1,5 @@
  /*
- 
+
  Component Name : Amexio Textarea Input
  Component Selector :  <amexio-textarea-input>
  Component Description : TextArea input component has been created with different configurable attributes for validation (min/max value, allow blank, custom regex), custom error message, help, custom styles.
@@ -24,38 +24,38 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 export class AmexioTextAreaComponent implements ControlValueAccessor {
 
    /*
-Properties 
+Properties
 name : field-label
 datatype : string
 version : 4.0 onwards
-default : none 
+default : none
 description : The label of this field
 */
   @Input('field-label') fieldlabel: string;
    /*
-Properties 
+Properties
 name : rows
 datatype : number
 version : 4.0 onwards
-default : none 
+default : none
 description : rows to have in textarea
 */
   @Input() rows: number;
    /*
-Properties 
+Properties
 name : rows
 datatype : number
 version : 4.0 onwards
-default : none 
+default : none
 description : rows to have in textarea
 */
   @Input() columns: number;
   /*
-Properties 
+Properties
 name : allow-blank
 datatype : string
 version : 4.0 onwards
-default : none 
+default : none
 description : Sets if field is required
 */
   @Input('allow-blank') allowblank: boolean;
@@ -74,13 +74,13 @@ description : Sets if field is required
     return this._errormsg;
   }
 /*
-Properties 
+Properties
 name : error-msg
 datatype : none
 version : 4.0 onwards
 default : none
 description : sets the error message
-*/ 
+*/
   @Input('error-msg')
   set errormsg(value: string) {
     this.helpInfoMsg = value + '<br/>';
@@ -92,13 +92,13 @@ description : sets the error message
     return this._minerrormsg;
   }
 /*
-Properties 
+Properties
 name : min-error-msg
 datatype : string
 version : 4.0 onwards
 default : none
 description : sets the error message for min validation
-*/ 
+*/
   @Input('min-error-msg')
   set minerrormsg(value: string) {
     this.helpInfoMsg = this.helpInfoMsg + '<b>Min Length<b/>: ' + value + '<br/>';
@@ -110,78 +110,78 @@ description : sets the error message for min validation
     return this._maxerrormsg;
   }
 /*
-Properties 
+Properties
 name : max-error-msg
 datatype : string
 version : 4.0 onwards
 default : none
 description : sets the error message for max validation
-*/  
+*/
   @Input('max-error-msg')
   set maxerrormsg(value: string) {
     this.helpInfoMsg = this.helpInfoMsg + 'Max Length: ' + value;
   }
 
    /*
-Properties 
+Properties
 name : place-holder
 datatype : string
 version : 4.0 onwards
-default : none 
+default : none
 description : 	Show place-holder inside dropdown component
 */
   @Input('place-holder') placeholder: string;
 /*
-Properties 
+Properties
 name : disabled
 datatype : boolean
 version : 4.0 onwards
-default : none 
+default : none
 description : true to disable the field.
 */
   @Input() disabled: boolean;
   /*
-Properties 
+Properties
 name : icon-feedback
 datatype : boolean
 version : 4.0 onwards
-default : none 
-description : 
+default : none
+description :
 */
   @Input('icon-feedback') iconfeedback: boolean;
   /*
-Properties 
+Properties
 name : font-style
 datatype : string
 version : 4.0 onwards
-default : none 
+default : none
 description : Set font-style to field
 */
   @Input('font-style') fontstyle: string;
   /*
-Properties 
+Properties
 name : font-family
 datatype : string
 version : 4.0 onwards
-default : none 
+default : none
 description : Set font-family to field
 */
   @Input('font-family') fontfamily: string;
   /*
-Properties 
+Properties
 name : font-size
 datatype : string
 version : 4.0 onwards
-default : none 
+default : none
 description : Set font-size to field
 */
   @Input('font-size') fontsize: string;
   /*
-Properties 
+Properties
 name : has-label
 datatype : boolean
 version : 4.0 onwards
-default : none 
+default : none
 description : flag to set label
 */
   @Input('has-label') haslabel: boolean = true;
@@ -194,11 +194,11 @@ description : flag to set label
     return this._pattern;
   }
     /*
-Properties 
+Properties
 name : pattern
 datatype : string
 version : 4.0 onwards
-default : none 
+default : none
 description : Apply Reg-ex to the field
 */
   @Input('pattern')
@@ -209,11 +209,11 @@ description : Apply Reg-ex to the field
     }
   }
   /*
-Properties 
+Properties
 name : enable-popover
 datatype : string
 version : 4.0 onwards
-default : none 
+default : none
 description : Set enable / disable popover.
 */
   @Input('enable-popover') enablepopover: boolean;
@@ -224,7 +224,7 @@ description : Set enable / disable popover.
   ngOnInit() {
     this.isComponentValid = this.allowblank;
   }
-    
+
   // The internal dataviews model
   private innerValue: any = '';
 
@@ -275,24 +275,38 @@ description : Set enable / disable popover.
 
   getValidationClasses(inp: any): any {
     let classObj;
-    if (inp.touched && !this.allowblank && (this.value == '' || this.value == null)) {
-      classObj = {'input-control-error': true};
-      this.isValid = false;
+    if (!this.allowblank) {
+      if (this.innerValue == null || this.innerValue == '') {
+        classObj = {'input-control-error': true};
+        this.isValid = false;
+        this.isComponentValid = false;
+      }else if (inp.touched && !this.allowblank && (this.value == '' || this.value == null)) {
+        classObj = {'input-control-error': true};
+        this.isValid = false;
+        this.isComponentValid = false;
+      } else {
+        classObj = {
+          'input-control-error': inp.invalid && (inp.dirty || inp.touched),
+          'input-control-success': inp.valid && (inp.dirty || inp.touched)
+        };
+        if (inp.valid){
+          this.isValid = true;
+          this.isComponentValid = true;
+        }
+      }
     } else {
-      classObj = {
-        'input-control-error': inp.invalid && (inp.dirty || inp.touched),
-        'input-control-success': inp.valid && (inp.dirty || inp.touched)
-      };
-      if (inp.valid && (inp.dirty || inp.touched)) this.isValid = true;
+      this.isValid = true;
+      this.isComponentValid = true;
     }
     return classObj;
   }
 
   onInput(input:any) {
     this.isComponentValid = input.valid;
+    this.getValidationClasses(input);
     //this.input.emit(this.value);
   }
-        
+
 }
 
 
