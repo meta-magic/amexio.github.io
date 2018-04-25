@@ -106,7 +106,8 @@ description : On input event field.
   private onChangeCallback: (_: any) => void = noop;
 
   //get accessor
-  get value(): any {
+ get value(): any {
+    this.isComponentValid = this.innerValue;
     return this.innerValue;
   }
 
