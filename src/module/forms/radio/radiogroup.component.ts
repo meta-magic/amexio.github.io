@@ -173,7 +173,23 @@ description : 	On input event field.
     } else if (this.data != null) {
       this.viewData = this.getResponseData(this.data);
     }
+    
+     if (!this.allowblank) {
+      this.checkDefaultValidation();
+    }
   }
+  
+  
+   checkDefaultValidation() {
+    this.viewData.forEach((opt: any)=>{
+      if(opt[this.valuefield] == this.defaultSelectedValue || (opt.hasOwnProperty('selected') && opt.selected)){
+        this.isComponentValid = true;
+        return;
+      }
+
+    });
+  }
+  
 
   getResponseData(httpResponse: any) {
     let responsedata = httpResponse;
