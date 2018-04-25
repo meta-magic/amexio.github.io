@@ -46,7 +46,7 @@ Properties
 name : allow-blank
 datatype : string
 version : 4.0 onwards
-default : none 
+default : none
 description : Sets if field is required
 */
   @Input('allow-blank') allowblank: boolean;
@@ -56,7 +56,7 @@ Properties
 name : data
 datatype : any
 version : 4.0 onwards
-default : none 
+default : none
 description : Local data for dropdown.
 */
   @Input() data: any;
@@ -154,7 +154,7 @@ datatype : none
 version : 4.0 onwards
 default : none
 description : sets the error message
-*/ 
+*/
   @Input('error-msg')
   set errormsg(value: string) {
     this.helpInfoMsg = value + '<br/>';
@@ -168,7 +168,7 @@ datatype : any
 version : 4.0 onwards
 default : none
 description : 	On blur event
-*/ 
+*/
   @Output() onBlur: any = new EventEmitter<any>();
 
   /*
@@ -188,7 +188,7 @@ datatype : any
 version : none
 default : none
 description : On field focus event
-*/ 
+*/
   @Output() focus: any = new EventEmitter<any>();
 
   /*
@@ -252,47 +252,47 @@ default : none
 description : */
   @Input('icon-feedback') iconfeedback: boolean;
   /*
-Properties 
+Properties
 name : font-style
 datatype : string
 version : 4.0 onwards
-default : none 
+default : none
 description : Set font-style to field
 */
   @Input('font-style') fontstyle: string;
   /*
-Properties 
+Properties
 name : font-family
 datatype : string
 version : 4.0 onwards
-default : none 
+default : none
 description : Set font-family to field
 */
   @Input('font-family') fontfamily: string;
   /*
-Properties 
+Properties
 name : font-size
 datatype : string
 version : 4.0 onwards
-default : none 
+default : none
 description : Set font-size to field
 */
   @Input('font-size') fontsize: string;
   /*
-Properties 
+Properties
 name : has-label
 datatype : boolean
 version : 4.0 onwards
-default : none 
+default : none
 description : flag to set label
 */
   @Input('has-label') haslabel: boolean = true;
   /*
-Properties 
+Properties
 name : enable-popover
 datatype : string
 version : 4.0 onwards
-default : none 
+default : none
 description : Set enable / disable popover.
 */
   @Input('enable-popover') enablepopover: boolean;
@@ -470,6 +470,8 @@ description : Set enable / disable popover.
         return this.displayValue == undefined ? '' : this.displayValue;
       }
     }
+
+
   }
   onDropDownClick(event: any) {
     this.onClick.emit(event);
@@ -617,13 +619,30 @@ description : Set enable / disable popover.
 
   //From ControlValueAccessor interface
   writeValue(value: any) {
-    if(value != null) {
+    if(!this.allowblank) {
+      if(value != null) {
+        if (value !== this.innerValue) {
+          if(this.viewData && this.viewData.length > 0) {
+            this.viewData.forEach((item: any) => {
+              if (item[this.valuefield] == value) {
+                this.isComponentValid = true;
+              }
+            });
+          }
+          this.innerValue = value;
+        }
+      } else {
+        this.value = '';
+        this.isComponentValid = false;
+      }
+    }
+    /*if(value != null) {
       if (value !== this.innerValue) {
         this.innerValue = value;
       }
     } else {
       this.value = '';
-    }
+    }*/
   }
 
   //From ControlValueAccessor interface
