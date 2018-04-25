@@ -107,7 +107,11 @@ description : On input event field.
 
   //get accessor
  get value(): any {
-    this.isComponentValid = this.innerValue;
+    if(this.required) {
+      this.isComponentValid = this.innerValue;
+    } else {
+      this.isComponentValid = true;
+    }
     return this.innerValue;
   }
 
