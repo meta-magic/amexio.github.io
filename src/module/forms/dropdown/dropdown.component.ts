@@ -388,6 +388,7 @@ description : Set enable / disable popover.
       this.viewData.forEach((item: any) => {
         if (item[valueKey] == val)
         {
+          this.isComponentValid = true;
           this.displayValue = item[displayKey];
           this.onSingleSelect.emit(item);
         }
