@@ -277,9 +277,14 @@ description : Set enable / disable popover.
     let classObj;
     if (!this.allowblank) {
       if (this.innerValue == null || this.innerValue == '') {
-        classObj = {'input-control-error': true};
-        this.isValid = false;
-        this.isComponentValid = false;
+            if(inp.touched) {
+          classObj = {'input-control-error': true};
+          this.isValid = false;
+          this.isComponentValid = false;
+        } else {
+          this.isValid = false;
+          this.isComponentValid = false;
+        }
       }else if (inp.touched && !this.allowblank && (this.value == '' || this.value == null)) {
         classObj = {'input-control-error': true};
         this.isValid = false;
