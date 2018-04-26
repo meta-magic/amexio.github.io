@@ -31,115 +31,115 @@ export const CUSTOM_TYPEAHEAD_CONTROL_VALUE_ACCESSOR: any = {
   providers: [CUSTOM_TYPEAHEAD_CONTROL_VALUE_ACCESSOR]
 })
 export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, DoCheck, OnChanges {
-   /*
-Properties 
-name : field-label
-datatype : string
-version : 4.0 onwards
-default : none 
-description : The label of this field
-*/
+  /*
+   Properties
+   name : field-label
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : The label of this field
+   */
   @Input('field-label') fieldlabel: string;
   /*
-Properties 
-name : allow-blank
-datatype : string
-version : 4.0 onwards
-default : none 
-description : sets if field is required
-*/
+   Properties
+   name : allow-blank
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : sets if field is required
+   */
   @Input('allow-blank') allowblank: boolean;
   /*
-Properties 
-name : data
-datatype : any
-version : 4.0 onwards
-default : none 
-description : Local data for dropdown.
-*/
+   Properties
+   name : data
+   datatype : any
+   version : 4.0 onwards
+   default : none
+   description : Local data for dropdown.
+   */
   @Input() data: any;
- /*
-Properties 
-name : data-reader
-datatype : string
-version : 4.0 onwards
-default : none 
-description : Key in JSON datasource for records
-*/
+  /*
+   Properties
+   name : data-reader
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : Key in JSON datasource for records
+   */
   @Input('data-reader') datareader: string;
-/*
-Properties 
-name : http-method
-datatype : string
-version : 4.0 onwards
-default : none 
-description : Type of HTTP call, POST,GET.
-*/
+  /*
+   Properties
+   name : http-method
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : Type of HTTP call, POST,GET.
+   */
   @Input('http-method') httpmethod: string;
- /*
-Properties 
-name : http-url
-datatype : string
-version : 4.0 onwards
-default : none 
-description : REST url for fetching datasource.
-*/ 
+  /*
+   Properties
+   name : http-url
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : REST url for fetching datasource.
+   */
   @Input('http-url') httpurl: string;
-   /*
-Properties 
-name : display-field
-datatype : string
-version : 4.0 onwards
-default : none 
-description : Sets key inside response data to display.
-*/ 
+  /*
+   Properties
+   name : display-field
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : Sets key inside response data to display.
+   */
   @Input('display-field') displayfield: string;
 
   @Input('value-field') valuefield: string;
-/*
-Events
-name : onBlur
-datatype : any
-version : 4.0 onwards
-default : none
-description : On blur event
-*/ 
+  /*
+   Events
+   name : onBlur
+   datatype : any
+   version : 4.0 onwards
+   default : none
+   description : On blur event
+   */
   @Output() onBlur: any = new EventEmitter<any>();
   /*
-Events
-name : input
-datatype : any
-version : none
-default : none
-description : 	On input event field.
-*/
+   Events
+   name : input
+   datatype : any
+   version : none
+   default : none
+   description : 	On input event field.
+   */
   @Output() input: any = new EventEmitter<any>();
   /*
-Events
-name : focus
-datatype : any
-version : none
-default : none
-description : On focus event field.
-*/ 
+   Events
+   name : focus
+   datatype : any
+   version : none
+   default : none
+   description : On focus event field.
+   */
   @Output() focus: any = new EventEmitter<any>();
   /*
-Events
-name : change
-datatype : any
-version : none
-default : none
-description : On field value change event
-*/ 
+   Events
+   name : change
+   datatype : any
+   version : none
+   default : none
+   description : On field value change event
+   */
   @Output() change: any = new EventEmitter<any>();
   /*
-Events
-name : onClick
-datatype : any
-version : none
-default : none
-description : On click event
-*/ 
+   Events
+   name : onClick
+   datatype : any
+   version : none
+   default : none
+   description : On click event
+   */
   @Output() onClick: any = new EventEmitter<any>();
 
   @ViewChild('dpList') dpList : any;
@@ -172,84 +172,84 @@ description : On click event
 
   scrollposition : number = 30;
 
-/*
-Properties 
-name : error-msg
-datatype : none
-version : 4.0 onwards
-default : none
-description : sets the error message
-*/
+  /*
+   Properties
+   name : error-msg
+   datatype : none
+   version : 4.0 onwards
+   default : none
+   description : sets the error message
+   */
   @Input('error-msg')
   set errormsg(value: string) {
     this.helpInfoMsg = value + '<br/>';
   }
 
   showToolTip: boolean;
-   /*
-Properties 
-name : place-holder
-datatype : string
-version : 4.0 onwards
-default : none 
-description : Show place-holder inside dropdown component
-*/
+  /*
+   Properties
+   name : place-holder
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : Show place-holder inside dropdown component
+   */
   @Input('place-holder') placeholder: string;
 
   @Input() disabled: boolean;
   /*
-Properties 
-name : icon-feedback
-datatype : boolean
-version : 4.0 onwards
-default : none 
-description : 
-*/
+   Properties
+   name : icon-feedback
+   datatype : boolean
+   version : 4.0 onwards
+   default : none
+   description :
+   */
   @Input('icon-feedback') iconfeedback: boolean;
   /*
-Properties 
-name : font-style
-datatype : string
-version : 4.0 onwards
-default : none 
-description : Set font-style to field
-*/
+   Properties
+   name : font-style
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : Set font-style to field
+   */
   @Input('font-style') fontstyle: string;
- /*
-Properties 
-name : font-family
-datatype : string
-version : 4.0 onwards
-default : none 
-description : Set font-family to field
-*/
+  /*
+   Properties
+   name : font-family
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : Set font-family to field
+   */
   @Input('font-family') fontfamily: string;
   /*
-Properties 
-name : font-size
-datatype : string
-version : 4.0 onwards
-default : none 
-description : Set font-size to field
-*/
+   Properties
+   name : font-size
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : Set font-size to field
+   */
   @Input('font-size') fontsize: string;
   /*
-Properties 
-name : has-label
-datatype : boolean
-version : 4.0 onwards
-default : none 
-description : flag to set label
-*/
+   Properties
+   name : has-label
+   datatype : boolean
+   version : 4.0 onwards
+   default : none
+   description : flag to set label
+   */
   @Input('has-label') haslabel: boolean = true;
   /*
-Properties 
-name : enable-popover
-datatype : string
-version : 4.0 onwards
-default : none 
-description : Set enable / disable popover.
-*/
+   Properties
+   name : enable-popover
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : Set enable / disable popover.
+   */
   @Input('enable-popover') enablepopover: boolean;
 
   responseData: any;
@@ -262,13 +262,13 @@ description : Set enable / disable popover.
 
   @Input() key: any;
   /*
-Properties 
-name : trigger-char
-datatype : number
-version : 4.0 onwards
-default : none 
-description : sets the trigger char length
-*/
+   Properties
+   name : trigger-char
+   datatype : number
+   version : 4.0 onwards
+   default : none
+   description : sets the trigger char length
+   */
   @Input('trigger-char') triggerchar: number;
 
   @ViewChild('rootDiv') rootDiv : any;
@@ -299,7 +299,7 @@ description : sets the trigger char length
       this.placeholder = changes.placeholder.currentValue;
   }
   ngOnInit() {
-    
+
     this.isComponentValid = this.allowblank;
 
     if (this.placeholder == '' || this.placeholder == null) this.placeholder = 'Choose Option';
@@ -324,7 +324,7 @@ description : sets the trigger char length
   }
 
   onclick() {
-  //  this.onClick.emit();
+    //  this.onClick.emit();
   }
 
   onKeyUp(event: any) {
@@ -358,7 +358,7 @@ description : sets the trigger char length
   }
 
   navigateUsingKey(event: any){
-    
+
     if(this.selectedindex > this.filteredResult.length){
       this.selectedindex=0;
     }
@@ -411,42 +411,6 @@ description : sets the trigger char length
 
   }
 
-  getDisplayValue(val : any) : string{
-    if(this.value == null)
-      return '';
-    else if(this.viewData != null){
-      let displayText : any = '';
-      this.viewData.forEach((row : any)=>{
-        if(this.value == row[this.valuefield])
-          displayText = row[this.displayfield];
-      });
-      return displayText;
-    }
-  }
-
-  showAllData(activerow:number){
-    let i = 0 ;
-    this.viewData.forEach((item: any) => {
-      if (item != null) {
-
-        if(i === activerow){
-          item.active = true;
-          this.currentActive = item;
-        }else{
-          item.active = false;
-        }
-        item.activerow = activerow;
-        this.filteredResult.push(item);
-      }
-      i++;
-    });
-
-    if (this.filteredResult.length > 0){
-      this.showToolTip = true;
-    }
-
-  }
-
 
   setData(httpResponse: any) {
     //Check if key is added?
@@ -461,6 +425,20 @@ description : sets the trigger char length
     }
 
     this.viewData = responsedata;
+
+    //Set user selection
+    if (this.value != null) {
+      let valueKey = this.valuefield;
+      let displayKey = this.displayfield;
+      let val = this.value;
+
+      this.viewData.forEach((item: any) => {
+        if (item[valueKey] == val) {
+          this.isComponentValid = true;
+          this.displayValue = item[displayKey];
+        }
+      });
+    }
     this.maskloader=false;
   }
 
@@ -475,6 +453,7 @@ description : sets the trigger char length
     this.value = row[this.valuefield];
     this.displayValue = row[this.displayfield];
     this.showToolTip = false;
+    this.isComponentValid = true;
     this.onClick.emit(row);
   }
 
@@ -523,7 +502,9 @@ description : sets the trigger char length
   }
 
   onInput(input : any) {
-    this.isComponentValid = input.valid;
+    if(!this.allowblank) {
+      this.isComponentValid = input.valid;
+    }
     this.input.emit(this.value);
   }
 
