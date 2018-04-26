@@ -37,20 +37,20 @@ export const CUSTOM_tOGGLE_CONTROL_VALUE_ACCESSOR: any = {
 
 export class AmexioToggleComponent implements OnInit, ControlValueAccessor {
   /*
-Properties 
+Properties
 name :shape
 datatype : string
 version : 4.0 onwards
-default : round 
+default : round
 description : Round or Square Shape for toggle switch ,example shape=round,square .
 */
   @Input() shape: string;
   /*
-Properties 
+Properties
 name :field-label
 datatype : string
 version : 4.0 onwards
-default : none 
+default : none
 description : The label of this field.
 */
   @Input('field-label') fieldlabel: string;
@@ -61,8 +61,20 @@ datatype : any
 version : 4.0 onwards
 default : none
 description : Event is fired on toggle component click
-*/ 
+*/
+/*
+  Properties
+  name : required
+  datatype : boolean
+  version : 4.0 onwards
+  default : true
+  description : sets if field is required
+*/
+  @Input() required: boolean;
+
   @Output() onChange: EventEmitter<any> = new EventEmitter<any>();
+
+  isComponentValid : boolean;
 
   constructor() {
 
@@ -70,9 +82,11 @@ description : Event is fired on toggle component click
 
   ngOnInit() {
     this.shape == '' || this.shape == null ? this.shape = 'round' : 0;
+    this.isComponentValid = !this.required;
   }
 
   onToggle() {
+    this.isComponentValid = this.value;
     this.onChange.emit(this.value);
   }
 
@@ -105,6 +119,11 @@ description : Event is fired on toggle component click
   //From ControlValueAccessor interface
   writeValue(value: any) {
     if (value !== this.innerValue) {
+      if (value) {
+        this.isComponentValid = value;
+      } else {
+        this.isComponentValid = value;
+      }
       this.innerValue = value;
     }
   }
@@ -118,6 +137,5 @@ description : Event is fired on toggle component click
   registerOnTouched(fn: any) {
     this.onTouchedCallback = fn;
   }
-
-
 }
+
