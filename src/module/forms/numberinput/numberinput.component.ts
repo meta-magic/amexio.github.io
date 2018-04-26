@@ -3,7 +3,7 @@
  Component Selector :  <amexio-number-input>
  Component Description : Number input component has been created with different configurable attributes for validation (min/max value, allow blank, custom regex), custom error message, help, custom styles
 */
-import {Component, forwardRef, Input,Output,EventEmitter} from '@angular/core';
+import {Component, forwardRef, Input, Output, EventEmitter, OnInit} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
 const noop = () => {
@@ -17,43 +17,42 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   selector: 'amexio-number-input',
   templateUrl: './numberinput.component.html',
   providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
-  styleUrls: ['./numberinput.component.scss']
 })
-export class AmexioNumberInputComponent implements ControlValueAccessor {
+export class AmexioNumberInputComponent implements OnInit, ControlValueAccessor {
 
    /*
-Properties 
+Properties
 name : field-label
 datatype : string
 version : 4.0 onwards
-default : none 
+default : none
 description : The label of this field
 */
   @Input('field-label') fieldlabel: string;
   /*
-Properties 
+Properties
 name : allow-blank
 datatype : string
 version : 4.0 onwards
-default : none 
+default : none
 description : Sets if field is required
 */
   @Input('allow-blank') allowblank: boolean;
   /*
-Properties 
+Properties
 name : min-value
 datatype : number
 version : 4.0 onwards
-default : none 
+default : none
 description : defines the min range limit for number input.
 */
   @Input('min-value') minvalue: number;
   /*
-Properties 
+Properties
 name : max-value
 datatype : number
 version : 4.0 onwards
-default : none 
+default : none
 description : defines the max range limit for number input.
 */
   @Input('max-value') maxvalue: number;
@@ -70,13 +69,13 @@ description : defines the max range limit for number input.
     return this._errormsg;
   }
 /*
-Properties 
+Properties
 name : error-msg
 datatype : none
 version : 4.0 onwards
 default : none
 description : sets the error message
-*/ 
+*/
   @Input('error-msg')
   set errormsg(value: string) {
     this.helpInfoMsg = value + '<br/>';
@@ -88,13 +87,13 @@ description : sets the error message
     return this._minerrormsg;
   }
 /*
-Properties 
+Properties
 name : min-error-msg
 datatype : string
 version : 4.0 onwards
 default : none
 description : sets the error message for min validation
-*/ 
+*/
   @Input('min-error-msg')
   set minerrormsg(value: string) {
     this.helpInfoMsg = this.helpInfoMsg + 'Min value: ' + value + '<br/>';
@@ -107,13 +106,13 @@ description : sets the error message for min validation
   }
 
 /*
-Properties 
+Properties
 name : max-error-msg
 datatype : string
 version : 4.0 onwards
 default : none
 description : sets the error message for max validation
-*/   
+*/
   @Input('max-error-msg')
   set maxerrormsg(value: string) {
     this.helpInfoMsg = this.helpInfoMsg + 'Max value: ' + value;
@@ -123,77 +122,77 @@ description : sets the error message for max validation
 
   isComponentValid : boolean;
    /*
-Properties 
+Properties
 name : place-holder
 datatype : string
 version : 4.0 onwards
-default : none 
+default : none
 description : 	Show place-holder inside dropdown component
 */
   @Input('place-holder') placeholder: string;
    /*
-Properties 
+Properties
 name : min-length
 datatype : number
 version : 4.0 onwards
-default : none 
+default : none
 description : The smallest positive representable number -that is, the positive number closest to zero (without actually being zero). The smallest negative representable number is -min-length.
 */
   @Input('min-length') minlength: number;
    /*
-Properties 
+Properties
 name : max-length
 datatype : number
 version : 4.0 onwards
-default : none 
+default : none
 description : The smallest positive representable number -that is, the positive number closest to zero (without actually being zero). The smallest negative representable number is -max-length.
 */
   @Input('max-length') maxlength: number;
 
 /*
-Properties 
+Properties
 name : disabled
 datatype : boolean
 version : 4.0 onwards
-default : none 
+default : none
 description : true to disable the field.
 */
   @Input() disabled: boolean;
 
   @Input('icon-feedback') iconfeedback: boolean;
   /*
-Properties 
+Properties
 name : font-style
 datatype : string
 version : 4.0 onwards
-default : none 
+default : none
 description : Set font-style to field
 */
   @Input('font-style') fontstyle: string;
   /*
-Properties 
+Properties
 name : font-family
 datatype : string
 version : 4.0 onwards
-default : none 
+default : none
 description : Set font-family to field
 */
   @Input('font-family') fontfamily: string;
   /*
-Properties 
+Properties
 name : font-size
 datatype : string
 version : 4.0 onwards
-default : none 
+default : none
 description : Set font-size to field
 */
   @Input('font-size') fontsize: string;
   /*
-Properties 
+Properties
 name : has-label
 datatype : boolean
 version : 4.0 onwards
-default : none 
+default : none
 description : flag to set label
 */
   @Input('has-label') haslabel: boolean = true;
@@ -204,11 +203,11 @@ description : flag to set label
     return this._pattern;
   }
   /*
-Properties 
+Properties
 name : pattern
 datatype : string
 version : 4.0 onwards
-default : none 
+default : none
 description : Apply Reg-ex to the field
 */
   @Input('pattern')
@@ -222,15 +221,15 @@ datatype : any
 version : none
 default : none
 description : 	On input event field.
-*/ 
+*/
 @Output() input: any = new EventEmitter<any>();
 
   /*
-Properties 
+Properties
 name : enable-popover
 datatype : string
 version : 4.0 onwards
-default : none 
+default : none
 description : Set enable / disable popover.
 */
   @Input('enable-popover') enablepopover: boolean;
@@ -273,9 +272,10 @@ description : Set enable / disable popover.
   ngOnInit() {
     this.isComponentValid = this.allowblank;
   }
-    
-  onInput(input:any) {    
+
+  onInput(input:any) {
     this.isComponentValid = input.valid;
+    this.getValidationClasses(input);
     this.input.emit();
   }
 
@@ -302,41 +302,46 @@ description : Set enable / disable popover.
 
   getValidationClasses(inp: any): any {
     let classObj;
-    if (inp.touched && !this.allowblank && (this.value == '' || this.value == null)) {
-      classObj = {'input-control-error': true};
-      this.isValid = false;
-    } else if (inp.touched && this.minvalue != null && this.maxvalue != null) {
-      if (this.value < this.minvalue || this.value > this.maxvalue) {
+    if (!this.allowblank) {
+      if (this.innerValue == null || this.innerValue == '') {
+        if (inp.touched) {
+          classObj = {'input-control-error': true};
+          this.isValid = false;
+          this.isComponentValid = false;
+        } else {
+          this.isValid = false;
+          this.isComponentValid = false;
+        }
+      } else if (inp.touched && !this.allowblank && (this.value == '' || this.value == null)) {
         classObj = {'input-control-error': true};
         this.isValid = false;
+        this.isComponentValid = false;
       } else {
-        this.isValid = true;
+        if (this.minvalue != null) {
+          if (this.value < this.minvalue) {
+            classObj = {'input-control-error': true};
+            this.isValid = false;
+            this.isComponentValid = false;
+          } else {
+            this.isValid = true;
+            this.isComponentValid = true;
+          }
+        }
+        if (this.maxvalue != null) {
+          if (this.value > this.maxvalue) {
+            classObj = {'input-control-error': true};
+            this.isValid = false;
+            this.isComponentValid = false;
+          } else {
+            this.isValid = true;
+            this.isComponentValid = true;
+          }
+        }
       }
-    } else if (inp.touched && this.minvalue != null && this.maxvalue == null) {
-      if (this.value < this.minvalue) {
-        classObj = {'input-control-error': true};
-        this.isValid = false;
-      } else {
-        this.isValid = true;
-      }
-    } else if (inp.touched && this.minvalue == null && this.maxvalue != null) {
-      if (this.value > this.maxvalue) {
-        classObj = {'input-control-error': true};
-        this.isValid = false;
-      } else {
-        this.isValid = true;
-      }
+      return classObj;
     } else {
-      classObj = {
-        'input-control-error': inp.invalid && (inp.dirty || inp.touched),
-        'input-control-success': inp.valid && (inp.dirty || inp.touched)
-      };
-      if (inp.valid && (inp.dirty || inp.touched)) this.isValid = true;
+      this.isValid = true;
+      this.isComponentValid = true;
     }
-    return classObj;
   }
-
 }
-
-
-
