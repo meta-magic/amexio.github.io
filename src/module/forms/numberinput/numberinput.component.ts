@@ -306,42 +306,71 @@ description : Set enable / disable popover.
       if (this.innerValue == null || this.innerValue == '') {
         if (inp.touched) {
           classObj = {'input-control-error': true};
-          this.isValid = false;
-          this.isComponentValid = false;
+          this.setValidationFlag(false);
         } else {
-          this.isValid = false;
-          this.isComponentValid = false;
+          this.setValidationFlag(false);
         }
       } else if (inp.touched && !this.allowblank && (this.value == '' || this.value == null)) {
         classObj = {'input-control-error': true};
-        this.isValid = false;
-        this.isComponentValid = false;
+        this.setValidationFlag(false);
       } else {
-        if (this.minvalue != null) {
-          if (this.value < this.minvalue) {
-            classObj = {'input-control-error': true};
-            this.isValid = false;
-            this.isComponentValid = false;
-          } else {
-            this.isValid = true;
-            this.isComponentValid = true;
+        if(this.minlength == null && this.maxlength == null) {
+          if (this.minvalue != null && this.maxvalue != null) {
+            if (this.value >= this.minvalue && this.value <= this.maxvalue) {
+              this.setValidationFlag(true);
+            } else {
+              classObj = {'input-control-error': true};
+              this.setValidationFlag(false);
+            }
+          } else if (this.minvalue != null) {
+            if (this.value < this.minvalue) {
+              classObj = {'input-control-error': true};
+              this.setValidationFlag(false);
+            } else {
+              this.setValidationFlag(true);
+            }
+          } else if (this.maxvalue != null) {
+            if (this.value > this.maxvalue) {
+              classObj = {'input-control-error': true};
+              this.setValidationFlag(false);
+            } else {
+              this.setValidationFlag(true);
+            }
           }
         }
-        if (this.maxvalue != null) {
-          if (this.value > this.maxvalue) {
-            classObj = {'input-control-error': true};
-            this.isValid = false;
-            this.isComponentValid = false;
-          } else {
-            this.isValid = true;
-            this.isComponentValid = true;
+        if ((this.maxvalue == null && this.minvalue == null)) {
+          if (this.maxlength != null && this.minlength != null) {
+            if (this.value && (this.value.toString().length >= this.minlength) && (this.value.toString().length <= this.maxlength)) {
+              this.setValidationFlag(true);
+            } else {
+              classObj = {'input-control-error': true};
+              this.setValidationFlag(false);
+            }
+          } else if (this.minlength != null) {
+            if (this.value && (this.value.toString().length >= this.minlength)) {
+              this.setValidationFlag(true);
+            } else {
+              classObj = {'input-control-error': true};
+              this.setValidationFlag(false);
+            }
+          } else if (this.maxlength != null) {
+            if (this.value && (this.value.toString().length <= this.maxlength)) {
+              this.setValidationFlag(true);
+            } else {
+              classObj = {'input-control-error': true};
+              this.setValidationFlag(false);
+            }
           }
         }
       }
-      return classObj;
-    } else {
-      this.isValid = true;
-      this.isComponentValid = true;
+    }else {
+      this.setValidationFlag(true);
     }
+    return classObj;
+  }
+
+  setValidationFlag(flag: boolean) {
+    this.isValid = flag;
+    this.isComponentValid = flag;
   }
 }
