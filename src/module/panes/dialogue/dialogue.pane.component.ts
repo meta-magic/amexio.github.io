@@ -31,7 +31,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
               </div>
             </div>
           </header>
-          <div class="dialogue-middle">
+          <div class="dialogue-middle" [ngStyle]="{'text-align':custom ? contentalign :'center'}">
             <span class="dialogue-icon">
               <span 
                 [ngClass]="{'dialogue-success': messagetype  == 'help','dialogue-danger':messagetype  == 'error','dialogue-warning': messagetype  == 'warning'}"
@@ -59,7 +59,6 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
             <amexio-button *ngIf="type =='confirm' || type == 'alert'"   [size]="'small'" [label]="primaryactionlabel  " [type]="'primary'" (onClick)="getStatus('ok')"></amexio-button>
           </footer>
         </div>
-
       </div>
     </div>
   `
@@ -67,7 +66,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 export class AmexiodialoguePaneComponent implements OnInit {
 
  /*
-Properties 
+Properties
 name : footer-align
 datatype : string
 version : 4.0 onwards
@@ -77,7 +76,17 @@ description : Alignment of footer contents to right or left.
   @Input('footer-align') footeralign: string;
 
   /*
-Properties 
+   Properties
+   name : content-align
+   datatype : string
+   version : 4.0 onwards
+   default : center
+   description : Alignment of  contents to right or left or center.
+   */
+  @Input('content-align') contentalign: string;
+
+  /*
+Properties
 name : show-dialogue
 datatype :  boolean
 version : 4.0 onwards
@@ -87,7 +96,7 @@ description : 	Show / Hide Dialogue..
   @Input('show-dialogue') showdialogue : boolean;
 
   /*
-Properties 
+Properties
 name : closable
 datatype :  boolean
 version : 4.0 onwards
@@ -97,7 +106,7 @@ description : User can close the Dialogue.
   @Input() closable: boolean;
 
   /*
-Properties 
+Properties
 name : title
 datatype :  string
 version : 4.0 onwards
@@ -107,17 +116,17 @@ description : Title for dialog.
   @Input() title: string;
 
    /*
-Properties 
+Properties
 name :  message
 datatype :  string
 version : 4.0 onwards
 default : none
-description : Alert or confirm message 
+description : Alert or confirm message
 */
   @Input() message: string;
 
     /*
-Properties 
+Properties
 name :  custom
 datatype :  boolean
 version : 4.0 onwards
@@ -127,7 +136,7 @@ description : User can custom dialogue box.
   @Input() custom: boolean;
 
     /*
-Properties 
+Properties
 name :  type
 datatype :  'confirm'| 'alert'
 version : 4.0 onwards
@@ -137,7 +146,7 @@ description : Mode to open, alert or dialogue mode.
   @Input() type: 'confirm'| 'alert';
 
     /*
-Properties 
+Properties
 name : primary-action-label
 datatype :  'string
 version : 4.0 onwards
@@ -147,7 +156,7 @@ description : Label to be displayed for primary action.
   @Input('primary-action-label') primaryactionlabel   : string;
 
     /*
-Properties 
+Properties
 name : secondary-action-label
 datatype :  string
 version : 4.0 onwards
@@ -157,7 +166,7 @@ description : Label to be displayed for secondary action.
   @Input('secondary-action-label') secondaryactionlabel  : string;
 
     /*
-Properties 
+Properties
 name : message-type
 datatype :  string
 version : 4.0 onwards
@@ -175,7 +184,7 @@ default : none
 description : Fire when click on yes or no button
 */
   @Output() actionStatus : EventEmitter<any> = new EventEmitter<any>();
-  
+
      /*
  Events
 name : close
@@ -196,6 +205,10 @@ description : Fire when user close dialogue
 
   ngOnInit() {
     if (this.footeralign == null) this.footeralign = "right";
+    if(this.contentalign == null || this.contentalign == '') {
+      this.contentalign = 'center';
+
+    }
   }
 
   onCloseClick() {
