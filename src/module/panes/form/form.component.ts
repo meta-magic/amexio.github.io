@@ -22,20 +22,21 @@ import { AmexioButtonComponent} from "./../../forms/buttons/button.component"
 import { AmexioFormActionComponent} from "./form.action.component"
 import { AmexioFormHeaderComponent} from "./form.header.component"
 import { AmexioFormBodyComponent} from "./form.body.component"
+ import {AmexioToggleComponent} from "../../forms/toggle/toggle.component";
 
 @Component({
     selector: 'amexio-form',
-    templateUrl: './form.component.html'
+    templateUrl: './form.component.html',
   })
 export class AmexioFormComponent implements OnInit, AfterViewInit, AfterContentInit {
 
     isFormValid : boolean ;
 
-    showDialogue : boolean ; 
+    showDialogue : boolean ;
 
     @ContentChildren(AmexioTextInputComponent, {descendants: true}) queryTextinput : QueryList<AmexioTextInputComponent>;
     textinput: AmexioTextInputComponent[];
-    
+
     @ContentChildren(AmexioTextAreaComponent, {descendants: true}) queryTextArea : QueryList<AmexioTextAreaComponent>;
     textarea: AmexioTextAreaComponent[];
 
@@ -50,32 +51,35 @@ export class AmexioFormComponent implements OnInit, AfterViewInit, AfterContentI
 
     @ContentChildren(AmexioCheckBoxComponent, {descendants: true}) queryCheckbox : QueryList<AmexioCheckBoxComponent>;
     chkBox: AmexioCheckBoxComponent[];
-    
+
     @ContentChildren(AmexioCheckBoxGroupComponent, {descendants: true}) queryCheckboxGrp : QueryList<AmexioCheckBoxGroupComponent>;
     chkBoxGrp: AmexioCheckBoxGroupComponent[];
-    
+
     @ContentChildren(AmexioRadioGroupComponent, {descendants: true}) queryRadio : QueryList<AmexioRadioGroupComponent>;
     radio: AmexioRadioGroupComponent[];
-    
+
     @ContentChildren(AmexioDropDownComponent, {descendants: true}) queryDropdown : QueryList<AmexioDropDownComponent>;
     dropdown: AmexioDropDownComponent[];
-    
+
     @ContentChildren(AmexioTypeAheadComponent, {descendants: true}) queryTypeahead : QueryList<AmexioTypeAheadComponent>;
     typeahead: AmexioTypeAheadComponent[];
-    
+
     @ContentChildren(AmexioTagsInputComponent, {descendants: true}) queryTags : QueryList<AmexioTagsInputComponent>;
     tags: AmexioTagsInputComponent[];
 
     @ContentChildren(AmexioDateTimePicker, {descendants: true}) queryDate : QueryList<AmexioDateTimePicker>;
-    datefiled: AmexioDateTimePicker[];  
-    
-    buttons : AmexioButtonComponent[];
-    
+    datefiled: AmexioDateTimePicker[];
+
+    @ContentChildren(AmexioToggleComponent, {descendants: true}) queryToggle : QueryList<AmexioToggleComponent>;
+    toggle: AmexioToggleComponent[];
+
+  buttons : AmexioButtonComponent[];
+
     @ContentChildren(AmexioFormActionComponent) queryFooter: QueryList<AmexioFormActionComponent>;
     footer : AmexioFormActionComponent[];
-       
+
       /*
-Properties 
+Properties
 name : header-align
 datatype : string
 version : 4.2 onwards
@@ -85,7 +89,7 @@ description : Align of item elements inside card header example [right center le
      @Input('header-align') headeralign: string;
 
   /*
-Properties 
+Properties
 name : footer-align
 datatype :  string
 version : 4.2 onwards
@@ -94,28 +98,28 @@ description : Align of item elements inside card footer example [right center le
 */
     @Input('footer-align') footeralign: string;
   /*
-Properties 
+Properties
 name : form-name
 datatype :  string
 version : 4.2 onwards
 default : none
-description : form binding attribute 
-*/    
+description : form binding attribute
+*/
 
     @Input('form-name') fname : string;
 
       /*
-Properties 
+Properties
 name : header
 datatype : boolean
 version : 4.2 onwards
 default : none
 description : form header to display
-*/  
+*/
     @Input('header') header : string;
 
       /*
-Properties 
+Properties
 name : show-error
 datatype : boolean
 version : 4.2 onwards
@@ -125,7 +129,7 @@ description : Flag to show form invalid error messages
     @Input('show-error') showError : boolean = false;
 
   /*
-Properties 
+Properties
 name : height
 datatype :   any
 version : 4.0 onwards
@@ -134,7 +138,7 @@ description : User can set the height to form
 */
   @Input()  height : any;
   /*
-Properties 
+Properties
 name : min-height
 datatype :   any
 version : 4.0 onwards
@@ -144,7 +148,7 @@ description : provides minimum height of the form.
   @Input('min-height')  minHeight : any;
 
   /*
-Properties 
+Properties
 name : body-height
 datatype :   any
 version : 4.0 onwards
@@ -168,7 +172,7 @@ description : Event fired if showError msg info button is clicked
       @Output() showErrorMsg: any = new EventEmitter<any>();
 
       componentError:any[] = [];
-  
+
     constructor(){
         this.isFormValid = false;
         this.showDialogue = false;
@@ -178,7 +182,7 @@ description : Event fired if showError msg info button is clicked
 
 
   onResize(){
-   
+
     if(this.bodyheight){
       let h = (window.innerHeight/100)*this.bodyheight;
 
@@ -187,8 +191,8 @@ description : Event fired if showError msg info button is clicked
 
       if(this.formFooter && this.formFooter.nativeElement && this.formFooter.nativeElement.offsetHeight)
         h = h - this.formFooter.nativeElement.offsetHeight;
-      
-      
+
+
       if(this.bodyheight === 100)
         h = h - 40;
 
@@ -201,7 +205,7 @@ description : Event fired if showError msg info button is clicked
     }
 
     ngAfterViewInit(){
-        
+
         this.textinput = this.queryTextinput.toArray();
         this.textarea = this.queryTextArea.toArray();
         this.password = this.queryPassword.toArray();
@@ -214,12 +218,13 @@ description : Event fired if showError msg info button is clicked
         this.typeahead = this.queryTypeahead.toArray();
         this.tags = this.queryTags.toArray();
         this.datefiled = this.queryDate.toArray();
-        
+        this.toggle = this.queryToggle.toArray();
+
         this.footer = this.queryFooter.toArray();
     }
 
     ngAfterContentInit(){
-       
+
     }
 
     ngDoCheck(){
@@ -230,135 +235,107 @@ description : Event fired if showError msg info button is clicked
     {
         this.showDialogue = !this.showDialogue;
     }
- 
+
     checkFormvalidity(){
         this.isFormValid = true;
-         
+        this.componentError= [];
+
         if(this.textinput && this.textinput.length>0){
-            this.textinput.forEach((c)=>{                
+            this.textinput.forEach((c)=>{
                  let flag = c.isComponentValid && c.isValid;
-                 if(!flag && this.isFormValid)
-                 {
-                    this.isFormValid = flag;
-                 }
+                 this.validationFlagSet(flag,c,'Text Input');
             });
         }
 
         if(this.dropdown && this.dropdown.length>0){
             this.dropdown.forEach((c)=>{
                  let flag = c.isComponentValid ;
-                 if(!flag && this.isFormValid)
-                 {
-                    this.isFormValid = flag;
-                 }
+                 this.validationFlagSet(flag,c,'DropDown');
             });
         }
 
         if(this.typeahead && this.typeahead.length>0){
             this.typeahead.forEach((c)=>{
                  let flag = c.isComponentValid;
-                 if(!flag && this.isFormValid)
-                 {
-                    this.isFormValid = flag;
-                 }
+                 this.validationFlagSet(flag,c,'Typeahead');
             });
         }
-        
+
         if(this.datefiled){
             this.datefiled.forEach((c)=>{
                 let flag;
                 flag = c.isComponentValid;
-                           
-                if(!flag && this.isFormValid)
-                {
-                    this.isFormValid = flag;
-                }
+                this.validationFlagSet(flag,c,'Date Picker');
             });
         }
         if(this.tags && this.tags.length>0){
             this.tags.forEach((c)=>{
                  let flag = c.isComponentValid;
-                 if(!flag && this.isFormValid)
-                 {
-                    this.isFormValid = flag;
-                }
+                 this.validationFlagSet(flag,c,'Tag Input');
             });
         }
         if(this.numinput && this.numinput.length>0){
             this.numinput.forEach((c)=>{
                 let flag = c.isComponentValid && c.isValid;
-                 if(!flag && this.isFormValid)
-                 {
-                    this.isFormValid = flag;
-                 }
+                this.validationFlagSet(flag,c,'Number Input');
             });
         }
 
        if(this.password && this.password.length>0){
             this.password.forEach((c)=>{
                 let flag = c.isComponentValid && c.isValid;
-                 if(!flag && this.isFormValid)
-                 {
-                    this.isFormValid = flag;
-                 }
+                this.validationFlagSet(flag,c,'Password Input');
             });
-        }   
+        }
 
         if(this.emailinput && this.emailinput.length>0){
             this.emailinput.forEach((c)=>{
                 let flag = c.isComponentValid && c.isValid;
-                 if(!flag && this.isFormValid)
-                 {
-                    this.isFormValid = flag;
-                 }
+                this.validationFlagSet(flag,c,'Email Input');
             });
         }
 
         if(this.radio){
             this.radio.forEach((c)=>{
                 let flag = c.isComponentValid;
-                 if(!flag && this.isFormValid)
-                 {
-                    this.isFormValid = flag;
-                 }
+                this.validationFlagSet(flag,c,'RadioGroup');
             });
         }
         if(this.chkBox){
             this.chkBox.forEach((c)=>{
                 let flag = c.isComponentValid;
-                 if(!flag && this.isFormValid)
-                 {
-                    this.isFormValid = flag;                    
-                 }
+                this.validationFlagSet(flag,c,'Checkbox');
             });
         }
-        
+
         if(this.chkBoxGrp && this.chkBoxGrp.length > 0 ){
             this.chkBoxGrp.forEach((c)=>{
                 let flag = c.isComponentValid;
-                 if(!flag && this.isFormValid)
-                 {
-                    this.isFormValid = flag;                    
-                 }
+                this.validationFlagSet(flag,c,'CheckBox Group');
             });
         }
 
         if(this.textarea && this.textarea.length>0){
             this.textarea.forEach((c)=>{
                 let flag = c.isComponentValid && c.isValid;
-                 if(!flag && this.isFormValid)
-                 {
-                    this.isFormValid = flag;
-                 }
+                this.validationFlagSet(flag,c,'Textarea Input');
             });
         }
+
+      if(this.toggle && this.toggle.length>0){
+        this.toggle.forEach((c)=>{
+          let flag = c.isComponentValid;
+          this.validationFlagSet(flag,c,'Toggle Input');
+        });
+      }
+
         if(this.footer  && this.footer.length>0){
             this.footer.forEach((c)=>{
                 this.buttons = this.footer[0].buttons;
                 this.buttons.forEach((c)=>{
                     if(c.formbind == this.fname) {
                     c.disabled = !this.isFormValid;
-                    
+
                     }
                 });
             });
@@ -373,132 +350,34 @@ description : Event fired if showError msg info button is clicked
           //this.onSubmit.emit(this.isFormValid);
       }
 
+
+      validationFlagSet(flag:any, componentRef:any, componentName:string) {
+        let errorObject:any = {};
+        if(!flag) {
+          errorObject['component'] = componentName;
+          errorObject['label'] = componentRef.fieldlabel;
+          this.componentError.push(errorObject);
+        }
+        if(!flag && this.isFormValid)
+        {
+          this.isFormValid = flag;
+        }
+      }
+
       showErrors(event:any)
       {
-          this.componentError= [];
           this.showDialogue = !this.isFormValid;
-          if(this.showError)
-          {
- 
-              if(this.textinput && this.textinput.length>0){
-                  this.textinput.forEach((c)=>{
-                      let flag = c.isComponentValid && c.isValid;
-                      if(!flag)
-                      {
-                        this.componentError.push(c.fieldlabel);  
-                      } 
-                  });
-              }
-              if(this.dropdown && this.dropdown.length>0){
-                this.dropdown.forEach((c)=>{
-                     let flag = c.isComponentValid;
-                     if(!flag)
-                     {
-                        this.componentError.push(c.fieldlabel);
-                     }
-                });
-            }    
-            if(this.typeahead && this.typeahead.length>0){
-                this.typeahead.forEach((c)=>{
-                     let flag = c.isComponentValid;
-                     if(!flag)
-                     {
-                        this.componentError.push(c.fieldlabel);
-                     }
-                });
-            }            
-            if(this.datefiled){
-                this.datefiled.forEach((c)=>{
-                   
-                    let flag;
-                    flag = c.isComponentValid;
-                                
-                    if(!flag)
-                    {
-                        this.componentError.push(c.fieldlabel);
-                    }
-                });
-            }
-            if(this.tags && this.tags.length>0){
-                this.tags.forEach((c)=>{
-                     let flag = c.isComponentValid;
-                     if(!flag)
-                     {
-                        this.componentError.push(c.fieldlabel);
-                    }
-                });
-            }
-            if(this.numinput && this.numinput.length>0){
-                this.numinput.forEach((c)=>{
-                    let flag = c.isComponentValid && c.isValid;
-                     if(!flag)
-                     {
-                        this.componentError.push(c.fieldlabel);
-                     }
-                });
-            }
-           if(this.password && this.password.length>0){
-                this.password.forEach((c)=>{
-                    let flag = c.isComponentValid && c.isValid;
-                     if(!flag)
-                     {
-                        this.componentError.push(c.fieldlabel);
-                     }
-                });
-            }        
-            if(this.emailinput && this.emailinput.length>0){
-                this.emailinput.forEach((c)=>{
-                    let flag = c.isComponentValid && c.isValid;
-                     if(!flag)
-                     {
-                        this.componentError.push(c.fieldlabel);
-                     }
-                });
-            }
-            if(this.radio){
-                this.radio.forEach((c)=>{
-                    let flag = c.isComponentValid;
-                     if(!flag)
-                     {
-                        this.componentError.push(c.fieldlabel);
-                     }
-                });
-            }
-            if(this.chkBox){
-                this.chkBox.forEach((c)=>{
-                    let flag = c.isComponentValid;
-                     if(!flag)
-                     {
-                        this.componentError.push(c.fieldlabel);                        
-                     }
-                });
-            }
-              if(this.chkBoxGrp){
-                this.chkBoxGrp.forEach((c)=>{
-                    let flag = c.isComponentValid;
-                     if(!flag)
-                     {
-                        this.componentError.push(c.fieldlabel);                        
-                     }
-                });
-            }
-            if(this.textarea && this.textarea.length>0){
-                this.textarea.forEach((c)=>{
-                    let flag = c.isComponentValid && c.isValid;
-                     if(!flag)
-                     {
-                        this.componentError.push(c.fieldlabel);
-                     }
-                });
-            }
-          }
           if(! this.isFormValid) {
             this.showErrorMsg.emit(this.componentError);
             this.showDialogue = true;
           } else {
             this.showErrorMsg.emit(this.componentError);
-            this.showDialogue = false;            
+            this.showDialogue = false;
           }
       }
-    
+
+      getErrorMsgData(): any {
+       return this.componentError;
+      }
+
 }
