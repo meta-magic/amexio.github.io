@@ -49,7 +49,7 @@ export namespace AmexioColorMap {
   templateUrl: './tab.component.html',
   styleUrls: ['tab.component.scss']
 })
-export class AmexioTabComponent  implements OnInit, AfterViewInit, AfterContentInit {
+export class AmexioTabComponent implements OnInit, AfterViewInit, AfterContentInit {
 
   /*
 Properties 
@@ -239,7 +239,6 @@ description : Callback to invoke on activated tab event.
   }
 
   findStyleClass(tabData: any): string {
-    console.log("Amexio-color", tabData);
     if ((tabData.amexiocolor == 'amexio-tab-black') && tabData.active) {
       return 'activetab';
     }
@@ -249,7 +248,5 @@ description : Callback to invoke on activated tab event.
     if ((tabData.amexiocolor != 'amexio-tab-black') && tabData.active)
       return 'activecolortab';
   }
-
-
 
 }
