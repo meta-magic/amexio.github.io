@@ -526,7 +526,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
     this.onTouchedCallback = fn;
   }
 
- getDisplayValue(val : any) : string{
+   getDisplayValue(val : any) : string{
    if(this.value == null)
      return '';
    else if(this.viewData != null){
