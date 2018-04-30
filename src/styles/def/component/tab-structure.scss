@@ -128,3 +128,26 @@
 {
   vertical-align: top !important;
 }
+
+.float-right{
+  float: right
+}
+
+.float-left{
+  float: left
+}
+
+.equally-align-tabs{
+  display: flex;
+  width: 100%;
+}
+
+.float-center{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.activecolortab{
+  border-bottom: 3px solid !important;
+}

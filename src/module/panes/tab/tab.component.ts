@@ -7,8 +7,6 @@
  Component Selector : <amexio-tab-view>
  Component Description : Tab component for Angular Apps with multiple configurations such as Tab, Icon support, Scrollable tabs, Closable tab, Vertical Tabs
 
- .
-
 */
 import {
   AfterContentInit,
@@ -24,12 +22,34 @@ import {
   Renderer2,
   ViewChild
 } from '@angular/core';
-import {AmexioTabPill} from "./tab.pill.component";
+import { AmexioTabPill } from "./tab.pill.component";
+
+
+export namespace AmexioColorMap {
+  export const COMPONENT_CLASS_MAP: any = {
+    red: 'amexio-tab-red',
+    lightred: 'amexio-tab-red-light',
+    lightgreen: 'amexio-tab-green-light',
+    green: 'amexio-tab-green',
+    lightpurple: 'amexio-tab-purple-light',
+    purple: 'amexio-tab-purple',
+    lightblue: 'amexio-tab-blue-light',
+    blue: 'amexio-tab-blue',
+    lightbrown: 'amexio-tab-brown-light',
+    brown: 'amexio-tab-brown',
+    lightyellow: 'amexio-tab-yellow-light',
+    yellow: 'amexio-tab-yellow',
+    black: 'amexio-tab-black',
+    white: 'amexio-tab-white'
+  }
+}
 
 @Component({
-  selector: 'amexio-tab-view', templateUrl: './tab.component.html', styleUrls: ['tab.component.scss']
+  selector: 'amexio-tab-view',
+  templateUrl: './tab.component.html',
+  styleUrls: ['tab.component.scss']
 })
-export class AmexioTabComponent implements OnInit, AfterViewInit, AfterContentInit {
+export class AmexioTabComponent  implements OnInit, AfterViewInit, AfterContentInit {
 
   /*
 Properties 
@@ -43,21 +63,42 @@ description : This flag will make tab closable.
 
   /*
 Properties 
-name : position
+name : Header Alignment
 datatype : string
 version : 4.0 onwards
 default : none
-description : specify position of tab.
+description : specify position of tabs(left/right/center).
 */
-  @Input() position: string;
+  @Input('header-align') headeralign: string;
 
-  @ViewChild('tab', {read: ElementRef}) public tabs: ElementRef;
+  /*
+  Properties 
+  name : Divide Header Equally
+  datatype : string
+  version : 4.0 onwards
+  default : none
+  description : If "true" divides all tab equally.
+  */
+  @Input('divide-header-equally') fullPageTabs: boolean;
+
+  /*
+Properties 
+name : title
+datatype : string
+version : 4.0 onwards
+default : none
+description : Title on Tab Button/Pill.
+*/
+  @Input() header: string;
+
+  @ViewChild('tab', { read: ElementRef }) public tabs: ElementRef;
+  @ViewChild('headerName', { read: ElementRef }) public headerName: ElementRef;
+  @ViewChild('tabslist', { read: ElementRef }) public tabslist: ElementRef;
 
   @ContentChildren(AmexioTabPill) queryTabs: QueryList<AmexioTabPill>;
-
   tabCollection: AmexioTabPill[];
 
-   /*
+  /*
 Events
 name : onClick
 datatype : none
@@ -67,7 +108,7 @@ description : Callback to invoke on activated tab event.
 */
   @Output() onClick: any = new EventEmitter<any>();
 
-   /* for internal purpose .*/
+  /* for internal purpose .*/
   @Input() tabLocalData: any;
 
   tabPreviewData: any;
@@ -79,6 +120,7 @@ description : Callback to invoke on activated tab event.
   content: string;
 
   constructor(public render: Renderer2) {
+    this.headeralign = "left";
   }
 
   ngOnInit() {
@@ -92,24 +134,40 @@ description : Callback to invoke on activated tab event.
     }
   }
 
+
   ngAfterViewInit() {
     if (this.tabs.nativeElement.scrollWidth > this.tabs.nativeElement.clientWidth) {
       this.shownext = true;
     }
+    // this.action = this.queryAction.toArray();
+
+
   }
 
   ngAfterContentInit() {
-    if (this.tabLocalData && this.tabLocalData.length > 0 ) {
+    if (this.tabLocalData && this.tabLocalData.length > 0) {
       this.tabPreviewData = JSON.parse(JSON.stringify(this.tabLocalData));
       this.tabCollection = this.tabLocalData;
     } else {
       this.tabCollection = this.queryTabs.toArray();
     }
-
+    this.calculateWidth();
   }
 
+  calculateWidth() {
+    let tabWidth: number;
+    tabWidth = this.tabCollection.length;
+    for (let i = 0; i < this.tabCollection.length; i++) {
+      if (this.fullPageTabs == true) {
+        this.tabCollection[i]['width'] = (100 / tabWidth) + "%";
+      }
+      this.tabCollection[i].amexiocolor = AmexioColorMap.COMPONENT_CLASS_MAP[this.tabCollection[i].amexiocolor];
+    }
+  }
+
+
   onTabClick(tab: any) {
-    if(!tab.disabled ) {
+    if (!tab.disabled) {
       for (let i = 0; i < this.tabCollection.length; i++) {
         if (this.tabCollection[i] === tab) {
           this.tabCollection[i]['active'] = true;
@@ -127,7 +185,7 @@ description : Callback to invoke on activated tab event.
     let nxt = this.tabs.nativeElement;
     nxt.scrollLeft = nxt.scrollLeft + 200;
 
-    if ((nxt.scrollWidth - nxt.offsetWidth - nxt.scrollLeft ) <= 0) {
+    if ((nxt.scrollWidth - nxt.offsetWidth - nxt.scrollLeft) <= 0) {
       this.shownext = false;
     }
     this.showprev = true;
@@ -179,6 +237,19 @@ description : Callback to invoke on activated tab event.
       }
     });
   }
+
+  findStyleClass(tabData: any): string {
+    console.log("Amexio-color", tabData);
+    if ((tabData.amexiocolor == 'amexio-tab-black') && tabData.active) {
+      return 'activetab';
+    }
+    if (tabData.disabled) {
+      return 'disabled-tab';
+    }
+    if ((tabData.amexiocolor != 'amexio-tab-black') && tabData.active)
+      return 'activecolortab';
+  }
+
 
 
 }
