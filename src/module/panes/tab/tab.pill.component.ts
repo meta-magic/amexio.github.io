@@ -55,10 +55,21 @@ description : Supports glyphicon only. Can add directly home instead of 'glyphic
 */
   @Input() icon: string;
 
+  /*
+Properties 
+name : font-color
+datatype : string
+version : 4.0 onwards
+default : small
+description : Font color of label
+*/ 
+@Input('amexio-color')  amexiocolor : string;
+
   tabId: number;
 
   constructor() {
     this.tabId = Math.floor(Math.random() * 90000) + 10000;
+    this.amexiocolor = "black";
   }
 
   ngOnInit() {

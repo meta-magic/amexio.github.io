@@ -1,28 +1,51 @@
 <div class="tabwrapper">
-  <div *ngIf="showprev" class="tabnavigation float-left" (click)="previous()"><amexio-pane-icon key="tab_previous"></amexio-pane-icon><!--<i class="fa fa-angle-left fa-2x" aria-hidden="true"></i>--></div>
-  <div *ngIf="shownext" class="tabnavigation float-right" (click)="next()"><amexio-pane-icon key="tab_next"></amexio-pane-icon><!--<i class="fa fa-angle-right  fa-2x" aria-hidden="true"></i>--></div>
+  <div *ngIf="showprev" class="tabnavigation float-left" (click)="previous()">
+    <amexio-pane-icon key="tab_previous"></amexio-pane-icon>
+    <!--<i class="fa fa-angle-left fa-2x" aria-hidden="true"></i>-->
+  </div>
+  <div *ngIf="shownext" class="tabnavigation float-right" (click)="next()">
+    <amexio-pane-icon key="tab_next"></amexio-pane-icon>
+    <!--<i class="fa fa-angle-right  fa-2x" aria-hidden="true"></i>-->
+  </div>
   <ul #tab class="tab">
-    <li class="tablistitems">
-        <!-- <div *ngIf="tabnode.disabled" class="disabled-tab"> -->
-      <div *ngFor="let tabnode of tabCollection"  class="tablink " 
-      [ngClass]="{'activetab':tabnode.active ,
-      'disabled-tab':tabnode.disabled }" (click)="onTabClick(tabnode)">
-        <div class="table">
-          <div class="tablerow">
-            <div *ngIf="tabnode.icon" class="tablecol">
-              <amexio-pane-icon *ngIf="tabnode.icon" [customclass]="tabnode.icon"></amexio-pane-icon>
-              <!--<span *ngIf="tabnode.icon" [ngClass]="tabnode.icon"  aria-hidden="true"></span>-->
+
+    <!-- Amexio Tab Actions that has to be added -->
+
+    <li class="tablistitems" style="display:block;">
+
+      <!-- <div *ngIf="tabnode.disabled" class="disabled-tab"> -->
+      <ng-container *ngIf="(header) && (fullPageTabs == false)">
+        <div class="tablink" style="float:left">
+          <div class="table">
+            <div class="tablerow">
+              <div class="tablecol">{{header}}</div>
             </div>
-            <div class="tablecol">
-              {{tabnode.title}}
-            </div>
-            <div *ngIf="closable" class="tablecol" >
-              <!--<i class="fa fa-times" aria-hidden="true" (click)="closeTab(tabnode)"></i>-->
-              <amexio-pane-icon key="tab_close" (onClick)="closeTab(tabnode)"></amexio-pane-icon>
+          </div>
+        </div>
+      </ng-container>
+
+      <div [ngClass]="{'equally-align-tabs':fullPageTabs,'float-left':(headeralign=='left' && !fullPageTabs),'float-right':(headeralign=='right' && !fullPageTabs),'float-center':(headeralign=='center' && !fullPageTabs)}">
+        <div *ngFor="let tabnode of tabCollection" [style.width]="tabnode.width" class="tablink {{tabnode.amexiocolor}}" [ngClass]="findStyleClass(tabnode)"
+          (click)="onTabClick(tabnode)">
+
+          <div class="table">
+            <div class="tablerow">
+              <div *ngIf="tabnode.icon" class="tablecol">
+                <amexio-pane-icon *ngIf="tabnode.icon" [customclass]="tabnode.icon"></amexio-pane-icon>
+                <!--<span *ngIf="tabnode.icon" [ngClass]="tabnode.icon"  aria-hidden="true"></span>-->
+              </div>
+              <div class="tablecol">
+                {{tabnode.title}}
+              </div>
+              <div *ngIf="closable" class="tablecol">
+                <!--<i class="fa fa-times" aria-hidden="true" (click)="closeTab(tabnode)"></i>-->
+                <amexio-pane-icon key="tab_close" (onClick)="closeTab(tabnode)"></amexio-pane-icon>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
     </li>
   </ul>
 </div>
