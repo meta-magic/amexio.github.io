@@ -802,6 +802,19 @@ textarea:required {
 .image-title {
   display: none; }
 
+.file-upload-box {
+  list-style-type: none;
+  float: left;
+  z-index: 1; }
+
+.file-upload-name {
+  padding: 20;
+  margin: 5px; }
+
+.file-upload-size {
+  padding-left: 70px;
+  margin: 5px; }
+
 /****************************************************************************
     Component Name : Collapsible Search
     Version : Amexio v4.0 onwards
@@ -1482,29 +1495,36 @@ input:checked + .toggle-slider:before {
 .box-default {
   background-color: #ffffff; }
 
+.bg-theme-color {
+  color: #520800;
+  background-color: #ffbfb8; }
+
 /** box - Structure CSS **/
+.box-content {
+  width: 100%; }
+
 .border-topbar {
-  border-top: 6px solid #ced4da; }
+  border-top: 6px solid !important; }
 
 .border-bottombar {
-  border-bottom: 6px solid #ced4da; }
+  border-bottom: 6px solid !important; }
 
 .border-leftbar {
-  border-left: 6px solid #ced4da; }
+  border-left: 6px solid !important; }
 
 .border-rightbar {
-  border-right: 6px solid #ced4da; }
+  border-right: 6px solid !important; }
 
 .border-all {
-  border: 6px solid #ced4da; }
+  border: 6px solid !important; }
 
 .border-top-bottom {
-  border-top: 6px solid #ced4da;
-  border-bottom: 6px solid #ced4da; }
+  border-top: 6px solid !important;
+  border-bottom: 6px solid !important; }
 
 .border-right-left {
-  border-right: 6px solid #ced4da;
-  border-left: 6px solid #ced4da; }
+  border-right: 6px solid !important;
+  border-left: 6px solid !important; }
 
 .box-default {
   border-color: #ced4da; }
@@ -1529,6 +1549,16 @@ input:checked + .toggle-slider:before {
 
 .border-yellow {
   border-color: #ff9900; }
+
+.box-close {
+  float: right; }
+
+.border-dotted {
+  border-width: 1px;
+  border-style: dotted; }
+
+.border-theme-color {
+  border-color: #fa8072; }
 
 /****************************************************************************
     Component Name : Image

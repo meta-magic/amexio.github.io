@@ -37,3 +37,8 @@ color : $boxFontColor;
 .box-default{
   background-color : $boxBackgroundColor;
 }
+
+.bg-theme-color{
+  color : $boxThemeColor;
+  background-color:$boxThemeBGColor;
+}

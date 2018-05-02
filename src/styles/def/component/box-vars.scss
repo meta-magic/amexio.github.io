@@ -16,4 +16,8 @@ $boxBorderBrown : $amexioColorBrownDark;
 $boxBGYellow : lighten($amexioColorYellowLight,20);
 $boxBorderYellow : $amexioColorYellowDark;
 
-$boxBorderColor : $borderColor
+$boxBorderColor : $borderColor;
+
+$boxBorderThemeColor : $componentHeaderBGColor;
+$boxThemeBGColor : $componentHoverBGColor;
+$boxThemeColor : $componentHoverFontColor;

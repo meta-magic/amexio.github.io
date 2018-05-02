@@ -16,3 +16,20 @@ textarea:required{
 .image-title{
   display: none;
 }
+
+.file-upload-box{ 
+  //position: fixed; 
+  list-style-type: none;
+  float:left;
+  z-index: 1;
+}
+
+.file-upload-name{
+  padding : 20;
+  margin: 5px;
+}
+
+.file-upload-size{
+  padding-left : 70px;
+  margin: 5px;
+}
