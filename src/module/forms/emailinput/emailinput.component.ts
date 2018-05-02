@@ -1,8 +1,8 @@
 /*
  Component Name : Amexio Email Input
  Component Selector :  <amexio-email-input>
- Component Description : Email input field 
-*/
+ Component Description : Email input field
+ */
 import {Component, EventEmitter, forwardRef, Input, Output} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
@@ -17,36 +17,35 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   selector: 'amexio-email-input',
   templateUrl: './emailinput.component.html',
   providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
-  styleUrls: ['./emailinput.component.scss']
 })
 export class AmexioEmailInputComponent implements ControlValueAccessor {
 
-   /*
-Properties 
-name : field-label
-datatype : string
-version : 4.0 onwards
-default : none 
-description : The label of this field
-*/
+  /*
+   Properties
+   name : field-label
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : The label of this field
+   */
   @Input('field-label') fieldlabel: string;
   /*
-Properties 
-name : has-label
-datatype : boolean
-version : 4.0 onwards
-default : none 
-description : flag to set label
-*/
+   Properties
+   name : has-label
+   datatype : boolean
+   version : 4.0 onwards
+   default : none
+   description : flag to set label
+   */
   @Input('has-label') hasLabel: boolean = true;
   /*
-Properties 
-name : allow-blank
-datatype : string
-version : 4.0 onwards
-default : none 
-description : sets if field is required
-*/
+   Properties
+   name : allow-blank
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : sets if field is required
+   */
   @Input('allow-blank') allowblank: boolean;
 
   helpInfoMsg: string;
@@ -62,14 +61,14 @@ description : sets if field is required
   }
 
 
-/*
-Properties 
-name : error-msg
-datatype : none
-version : 4.0 onwards
-default : none
-description : sets the error message
-*/ 
+  /*
+   Properties
+   name : error-msg
+   datatype : none
+   version : 4.0 onwards
+   default : none
+   description : sets the error message
+   */
   @Input('error-msg')
 
   set errormsg(value: string) {
@@ -79,50 +78,50 @@ description : sets the error message
 
   @Input('place-holder') placeholder: string;
 
-/*
-Properties 
-name : disabled
-datatype : boolean
-version : 4.0 onwards
-default : none 
-description : true to disable the field.
-*/
+  /*
+   Properties
+   name : disabled
+   datatype : boolean
+   version : 4.0 onwards
+   default : none
+   description : true to disable the field.
+   */
   @Input() disabled: boolean;
   /*
-Properties 
-name : icon-feedback
-datatype : boolean
-version : 4.0 onwards
-default : none 
-description : 
-*/
+   Properties
+   name : icon-feedback
+   datatype : boolean
+   version : 4.0 onwards
+   default : none
+   description :
+   */
   @Input('icon-feedback') iconfeedback: boolean;
   /*
-Properties 
-name : font-style
-datatype : string
-version : 4.0 onwards
-default : none 
-description : Set font-style to field
-*/
+   Properties
+   name : font-style
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : Set font-style to field
+   */
   @Input('font-style') fontstyle: string;
   /*
-Properties 
-name : font-family
-datatype : string
-version : 4.0 onwards
-default : none 
-description : Set font-family to field
-*/
+   Properties
+   name : font-family
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : Set font-family to field
+   */
   @Input('font-family') fontfamily: string;
   /*
-Properties 
-name : font-size
-datatype : string
-version : 4.0 onwards
-default : none 
-description : Set font-size to field
-*/
+   Properties
+   name : font-size
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : Set font-size to field
+   */
   @Input('font-size') fontsize: string;
 
   emailpatter: any = /\S+@\S+\.\S+/;
@@ -133,61 +132,61 @@ description : Set font-size to field
     return this._pattern;
   }
   /*
-Properties 
-name : pattern
-datatype : string
-version : 4.0 onwards
-default : none 
-description : Apply Reg-ex to the field
-*/
+   Properties
+   name : pattern
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : Apply Reg-ex to the field
+   */
   @Input('pattern')
   set pattern(value: string) {
     if (value != null) this.regEx = new RegExp(this.pattern);
   }
   /*
-Properties 
-name : enable-popover
-datatype : string
-version : 4.0 onwards
-default : none 
-description : Set enable / disable popover.
-*/
+   Properties
+   name : enable-popover
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : Set enable / disable popover.
+   */
   @Input('enable-popover') enablepopover: boolean;
-/*
-Events
-name : onBlur
-datatype : any
-version : 4.0 onwards
-default : none
-description : On blur event
-*/ 
+  /*
+   Events
+   name : onBlur
+   datatype : any
+   version : 4.0 onwards
+   default : none
+   description : On blur event
+   */
   @Output() onBlur: any = new EventEmitter<any>();
   /*
-Events
-name : input
-datatype : any
-version : none
-default : none
-description : 	On input event field.
-*/ 
+   Events
+   name : input
+   datatype : any
+   version : none
+   default : none
+   description : 	On input event field.
+   */
   @Output() input: any = new EventEmitter<any>();
   /*
-Events
-name : focus
-datatype : any
-version : none
-default : none
-description : On focus event field.
-*/ 
+   Events
+   name : focus
+   datatype : any
+   version : none
+   default : none
+   description : On focus event field.
+   */
   @Output() focus: any = new EventEmitter<any>();
   /*
-Events
-name : change
-datatype : any
-version : none
-default : none
-description : On field value change event
-*/ 
+   Events
+   name : change
+   datatype : any
+   version : none
+   default : none
+   description : On field value change event
+   */
   @Output() change: any = new EventEmitter<any>();
 
   isValid: boolean;
@@ -198,7 +197,7 @@ description : On field value change event
   ngOnInit() {
     this.isComponentValid = this.allowblank;
   }
-    
+
   // The internal dataviews model
   private innerValue: any = '';
 
@@ -239,7 +238,7 @@ description : On field value change event
 
   onInput(input:any) {
     this.isComponentValid = input.valid;
-    
+    this.getValidationClasses(input);
     this.input.emit(this.value);
   }
 
@@ -267,14 +266,14 @@ description : On field value change event
   getValidationClasses(inp: any): any {
     let classObj;
     if (!this.allowblank && (this.value == '' || this.value == null)) {
-        if(inp.touched) {
-          classObj = {'input-control-error': true};
-          this.isValid = false;
-          this.isComponentValid = false;
-        } else {
-          this.isValid = false;
-          this.isComponentValid = false;
-        }
+      if(inp.touched) {
+        classObj = {'input-control-error': true};
+        this.isValid = false;
+        this.isComponentValid = false;
+      } else {
+        this.isValid = false;
+        this.isComponentValid = false;
+      }
     } else if (inp.touched) {
       if (!this.emailpatter.test(this.value)) {
         classObj = {'input-control-error': true};
@@ -285,16 +284,16 @@ description : On field value change event
         this.isComponentValid = true;
       }
 
-    } else {
-      classObj = {
-        'input-control-error': inp.invalid && (inp.dirty || inp.touched),
-        'input-control-success': inp.valid && (inp.dirty || inp.touched)
-      };
-      if (inp.valid && (inp.dirty || inp.touched)) 
-      {
+    } else if (!inp.touched) {
+      if (!this.emailpatter.test(this.value)) {
+        classObj = {'input-control-error': true};
+        this.isValid = false;
+        this.isComponentValid = false;
+      } else {
         this.isValid = true;
         this.isComponentValid = true;
       }
+
     }
     return classObj;
   }
