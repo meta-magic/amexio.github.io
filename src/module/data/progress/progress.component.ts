@@ -11,7 +11,7 @@ import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'amexio-progress-bar', template: `
-    <div *ngIf="showProgress" class="progress">
+    <div *ngIf="showProgress" class="progress" [ngStyle]="{'height':height}">
       <span [ngClass]="progressclass" *ngIf="infinite" style="width: 100%;">{{label != null ? label : 'Loading...'}}</span>
       <span [ngClass]="progressclass" *ngIf="!infinite" [ngStyle]="{'width.%' : currentvalue}"></span>
     </div>
@@ -21,7 +21,7 @@ import {Component, Input, OnInit} from '@angular/core';
 export class AmexioProgressBarComponent implements OnInit {
 
   /*
-Properties 
+Properties
 name : show
 datatype : boolean
 version : 4.0 onwards
@@ -31,7 +31,7 @@ description :  Shows / Hides the progress bar.
   @Input('show') showProgress: boolean = true;
 
   /*
-Properties 
+Properties
 name : infinite
 datatype : boolean
 version : 4.0 onwards
@@ -41,17 +41,17 @@ description : Enable/Disable Infinite Mode.
   @Input() infinite: boolean;
 
   /*
-Properties 
+Properties
 name : type
 datatype : string
 version : 4.0 onwards
 default : none
-description : Type of progress bar can be default,theme-color,theme-backgroundcolor, green, red, yellow( primary, secondary ,success , danger & warning 
+description : Type of progress bar can be default,theme-color,theme-backgroundcolor, green, red, yellow( primary, secondary ,success , danger & warning
 */
   @Input() type: string;
 
   /*
-Properties 
+Properties
 name : amexio-color
 datatype : string
 version : 4.1 onwards
@@ -61,17 +61,17 @@ description : use different inbuilt amexio colors available (e.g amexio-black, a
   @Input('amexio-color') amexiocolor : string;
 
   /*
-Properties 
+Properties
 name : current-value
 datatype : string
 version : 4.0 onwards
 default : none
-description : Current Position of progress. 
+description : Current Position of progress.
 */
   @Input('current-value') currentvalue: string;
 
   /*
-Properties 
+Properties
 name : label
 datatype : any
 version : 4.0 onwards
@@ -81,7 +81,7 @@ description : Custom labels on bar.
   @Input() label: any;
 
   /*
-Properties 
+Properties
 name : height
 datatype : any
 version : 4.0 onwards
@@ -91,7 +91,7 @@ description : Height of bar.
   @Input() height: any;
 
   /*
-Properties 
+Properties
 name : stripped
 datatype : boolean
 version : 4.0 onwards
@@ -111,7 +111,13 @@ not in use
   }
 
   ngOnInit() {
-    
+
+    if(this.height) {
+      this.height = this.height + 'px';
+    } else {
+      this.height  = '20px'
+    }
+
     if(this.stripped){
       this.progressclass = this.progressclass  + "stripped ";
     }
@@ -121,6 +127,6 @@ not in use
     else if(this.amexiocolor && !this.type){
       this.progressclass = this.progressclass  + this.amexiocolor.toLocaleLowerCase();
     }
-    
+
   }
 }
