@@ -9,14 +9,15 @@
  
 */
 import {Component, Input, OnInit} from '@angular/core';
+import {IconLoaderService} from "../../services/icon/icon.service";
 
 @Component({
  selector: 'amexio-box',
  template: `
- <div class="box-content"
- [attr.padding]="padding ? true: null" 
+ <div class="box-content box-close" *ngIf="closable"
  [style.height] = "height ? height:'none'" 
  [style.width] = "width ? width:'none'" 
+ [style.align] = "align ? align:'none'"
  [ngClass]="{    
  'box-default': borderColor=='default' || borderColor ==null,
  'border-topbar': border=='top',
@@ -33,16 +34,21 @@ import {Component, Input, OnInit} from '@angular/core';
  'bg-yellow': bgColor=='yellow',
  'bg-blue': bgColor=='blue',
  'bg-purple': bgColor=='purple',
+ 'bg-theme-color' : bgColor =='theme-color',
 
+ 'border-theme-color' : borderColor =='theme-color',
  'border-red' : borderColor =='red',
  'border-yellow' : borderColor =='yellow',
  'border-green' : borderColor =='green',
  'border-blue' : borderColor =='blue',
  'border-brown' : borderColor =='brown',
  'border-purple' : borderColor =='purple',
- 'padding' : padding
+ 'padding' : padding,
+ 'border-dotted' : borderDotted
   }" >
    <ng-content></ng-content>
+   <p [class] = "'box-close'">
+    <amexio-layout-icon key="tab_close" (onClick)="closeBox(event)"></amexio-layout-icon></p>
  </div>
  `
 })
@@ -84,7 +90,7 @@ version : 4.1 onwards
 default : false
 description : padding to all sides
 */
- @Input('padding') padding: boolean;
+ @Input('padding') padding: boolean = false;
 /*
 Properties 
 name : box-height
@@ -104,6 +110,35 @@ description : width to box
 */
  @Input('box-width') width: string;
 
+ /*
+Properties 
+name : border-dotted
+datatype : boolean
+version : 4.1.8 onwards
+default : false
+description : dotted border
+*/
+ @Input('border-dotted') borderDotted: boolean = false;
+
+/*
+Properties 
+name : align
+datatype : string
+version : 4.1.8 onwards
+default : none
+description : align to box "left" "right" "center"
+*/
+ @Input('align') align: string;
+/*
+Properties 
+name : closable
+datatype : boolean
+version : 4.1.8 onwards
+default : false
+description : closable box
+*/
+ @Input('closable') closable: boolean = true;
+
  constructor() { }
 
  ngOnInit() {
@@ -115,4 +150,7 @@ description : width to box
    this.bgColor = this.borderColor;
   }
  }
+  closeBox(event:any){
+    this.closable = false;
+  }
 }

@@ -15,7 +15,8 @@ import {AmexioAccordionTabComponent} from "./accordion/accordion.pane";
 import {AmexioBoxComponent} from "./box/box.component";
 import {AmexioAccordionComponent} from "./accordion/accordion.component";
 import {HttpClientModule} from "@angular/common/http";
-
+import {IconLoaderService} from "../services/icon/icon.service";
+import {AmexioIconLayout} from "./icon/icon.component";
 export * from '../services/data/common.data.service';
 export * from '../services/device/device.query.service';
 
@@ -28,6 +29,7 @@ export * from './accordion/accordion.pane';
 export * from './accordion/accordion.component';
 export * from './card/card.component';
 export * from './accordion/accordion.service';
+export * from '../services/icon/icon.service';
 
 
 const LAYOUT_COMPONENTS = [
@@ -38,7 +40,8 @@ const LAYOUT_COMPONENTS = [
   AmexioCardComponent,
   AmexioBoxComponent,
   AmexioAccordionTabComponent,
-  AmexioAccordionComponent
+  AmexioAccordionComponent,
+  AmexioIconLayout,
 ];
 
 @NgModule({
@@ -49,13 +52,13 @@ const LAYOUT_COMPONENTS = [
   ],
   exports: LAYOUT_COMPONENTS,
   declarations: LAYOUT_COMPONENTS,
-  providers : [CommonDataService,DeviceQueryService]
+  providers : [CommonDataService,DeviceQueryService,IconLoaderService]
 })
 export class AmexioLayoutModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: AmexioLayoutModule,
-      providers: [CommonDataService,DeviceQueryService]
+      providers: [CommonDataService,DeviceQueryService,IconLoaderService]
     };
   }
 }
