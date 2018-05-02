@@ -400,7 +400,7 @@ description : On field focus event
   writeValue(value: any) {
     if (value !== this.innerValue) {
       this.innerValue = value;
-      if (this.required && this.innerValue instanceof Date) {
+      if (this.required && this.innerValue instanceof Date ||('number' == typeof this.innerValue)) {
         this.dateModel = this.innerValue;
         this.isComponentValid = true;
       } else {
