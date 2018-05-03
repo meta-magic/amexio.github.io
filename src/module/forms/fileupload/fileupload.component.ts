@@ -60,7 +60,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
           <amexio-box border-color ="theme-color" background-color = "theme-color" border="left" padding="true" border-dotted = "true" closable ="true">
             
               <span [class] = "'file-upload-name'">
-              <amexio-label size="medium">{{file.name}}</amexio-label></span></amexio-column>
+              <amexio-label size="medium">{{file.name}}</amexio-label></span>
 
               <span [class] = "'file-upload-size'">
               <amexio-label size="small">{{file.size}}</amexio-label></span>
