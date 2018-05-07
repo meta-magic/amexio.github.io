@@ -77,7 +77,7 @@ version : 4.0 onwards
 default : none
 description : Used for custom styled classes
 */ 
-  @Input('c-class') cclass: string;
+  @Input('c-class') cclass: string = "";
 
    /*
 Properties 
@@ -120,6 +120,72 @@ description : Get image / icon click event.
 */ 
   @Output() onClick: EventEmitter<any> = new EventEmitter<any>();
 
+   /*
+Properties 
+name : filter
+datatype :  string
+version : 4.1.9 onwards
+default : none
+description : filter type can be saturate / hue / invert / grayscale / brightness / blur / sepia / shadow / opacity
+
+*/ 
+  @Input('filter') filter: string;
+
+   /*
+Properties 
+name : overlay-effect
+datatype :  string
+version : 4.1.9 onwards
+default : none
+description : overlay-effect can be set
+
+*/ 
+  @Input('overlay-effect') overlayEffect: string;
+
+   /*
+Properties 
+name : overlay-text
+datatype :  string
+version : 4.1.9 onwards
+default : none
+description : overlay-text can be set
+
+*/ 
+  @Input('overlay-text') overlayText: string;
+
+   /*
+Properties 
+name : image-title
+datatype :  string
+version : 4.1.9 onwards
+default : none
+description : image-title can be set
+
+*/ 
+  @Input('image-title') imgTitle: string;
+
+   /*
+Properties 
+name : tilte-position
+datatype :  string
+version : 4.1.9 onwards
+default : right
+description : overlay-text can be set
+*/ 
+  @Input('title-position') position: string;
+
+   /*
+Properties 
+name : tilte-para
+datatype :  string
+version : 4.1.9 onwards
+default : none
+description : description to display on hover
+*/ 
+  @Input('para') titlePara: string;
+  
+  overlay : boolean = false;
+  overlayTextClass :string;
   constructor() {
   }
 
@@ -130,6 +196,24 @@ description : Get image / icon click event.
   ngOnInit(): void {
     if(!(this.width || this.height)){
       this.cclass=this.cclass+" img-fluid";
+    }
+    if(this.filter){
+      this.cclass = this.cclass + " image-" + this.filter;
+    }
+    if(this.overlayEffect)
+    {
+      this.overlay = true;
+      if(this.overlayText) {
+        this.overlayTextClass = "overlay-text overlay-" + this.overlayEffect + "-text";
+      }
+      this.overlayEffect = "overlay overlay-" + this.overlayEffect;     
+    }
+    if(this.imgTitle){
+      if(this.position) {
+        this.position = "image-title image-" + this.position;
+      } else {
+        this.position = "image-title image-bottom-right"
+      }
     }
   }
 

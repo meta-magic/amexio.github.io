@@ -1,13 +1,26 @@
 <!--Normal image-->
-<ng-container *ngIf="path || (path && iconclass)">
-  <ng-container *ngIf="!(width || height)">
-    <img [src]="path" [attr.class]="cclass" (click)="onImageClick($event)" [attr.title]="tooltip">
+<div class="img-container">
+  <ng-container *ngIf="path || (path && iconclass)">
+    <ng-container *ngIf="!(width || height)">
+      <img [src]="path" [attr.class]="cclass" (click)="onImageClick($event)" [attr.title]="tooltip">
+      <div *ngIf="overlay" [ngClass]="overlayEffect">
+        <div *ngIf="overlayText" [ngClass]="overlayTextClass">{{overlayText}}
+          <p *ngIf="titlePara">{{titlePara}}</p>
+        </div>
+      </div>
+      <div *ngIf="imgTitle" [ngClass]="position">{{imgTitle}}</div>      
+    </ng-container>
+    <ng-container *ngIf="width || height">
+      <img [ngStyle]="{'width':width,'height':height}" [attr.class]="cclass" [src]="path" (click)="onImageClick($event)" [attr.title]="tooltip">
+       <div *ngIf="overlay" [ngClass]="overlayEffect">
+        <div *ngIf="overlayText" [ngClass]="overlayTextClass">{{overlayText}}
+          <p *ngIf="titlePara">{{titlePara}}</p>
+        </div>
+      </div>
+      <div *ngIf="imgTitle" [ngClass]="position">{{imgTitle}}</div>
+    </ng-container>
   </ng-container>
-  <ng-container *ngIf="width || height">
-    <img [ngStyle]="{'width':width,'height':height}" [attr.class]="cclass" [src]="path" (click)="onImageClick($event)" [attr.title]="tooltip">
-  </ng-container>
-</ng-container>
-
+  </div>
 <!--this is for fontawesome-->
 <ng-container *ngIf="iconclass && (!path && !mda)">
   <i [attr.class]="iconclass" [attr.title]="tooltip" (click)="onImageClick($event)"></i>
