@@ -1486,25 +1486,26 @@ input:checked + .toggle-slider:before {
   padding: 8px 8px 8px 8px; }
 
 .border-red {
-  border-color: #dc143c; }
+  border-color: #dc143c !important; }
 
 .border-blue {
-  border-color: #00008b; }
+  border-color: #00008b !important; }
 
 .border-green {
-  border-color: #2e8b57; }
+  border-color: #2e8b57 !important; }
 
 .border-brown {
-  border-color: #800000; }
+  border-color: #800000 !important; }
 
 .border-purple {
-  border-color: #8b008b; }
+  border-color: #8b008b !important; }
 
 .border-yellow {
-  border-color: #ff9900; }
+  border-color: #ff9900 !important; }
 
 .box-close {
-  float: right; }
+  float: right;
+  padding-right: 5px; }
 
 .border-dotted {
   border-width: 1px;
