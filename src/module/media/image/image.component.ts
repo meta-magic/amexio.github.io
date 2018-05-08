@@ -1,7 +1,6 @@
-/**
+/*****
  * Created by pratik on 18/12/17.
- */
-/*
+
  * Copyright 2016-2017 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,12 +11,13 @@
  *
  * Author - Sagar Jadhav
  *
- */
+ ****/
 
  /*
  Component Name : Amexio image
  Component Selector : <amexio-image>
- Component Description : Amexio image is an artifact that depicts visual perception.Amexio support icons (material / font-awesome)/image
+ Component Description : Amexio image is an artifact that depicts visual perception.
+                        It supports icons (font-awesome) / image
 */
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
@@ -34,7 +34,7 @@ name : tooltip
 datatype :  string
 version : 4.0 onwards
 default : none
-description : TooltipMessage on image / icon.
+description : TooltipMessage on image /icon.
 */ 
   @Input() tooltip: string;
 
@@ -44,7 +44,7 @@ name : title
 datatype :  string
 version : 4.0 onwards
 default : none
-description : Title of image.
+description : Title of image
 */ 
   @Input() title: string;
 
@@ -54,38 +54,38 @@ name : path
 datatype : string
 version : 4.0 onwards
 default : none
-description : Specifies the URL of an image.This attribute is useful only for images.
+description : Specifies the URL of an image, This attribute is useful only for images
 */ 
   @Input() path: string;
 
    /*
-Properties 
+Properties
 name : icon-class
 datatype :  string
 version : 4.0 onwards
 default : none
-description : Material icon class name.Material Example:icon-class='material-icons' mda='cloud' Fontawesome Example:icon-class='fa fa-address-book fa-lg'
+description : Material icon class name Material i.e icon-class=material-icons / font-awesome i.e icon-class= fa fa-address-book fa-lg
 
 */ 
   @Input('icon-class') iconclass: string;
 
    /*
-Properties 
+Properties
 name : c-class
 datatype :  string
 version : 4.0 onwards
 default : none
-description : Used for custom styled classes
+description : Used for custom style classes
 */ 
   @Input('c-class') cclass: string = "";
 
    /*
-Properties 
+Properties
 name : mda
 datatype :  string
 version : 4.0 onwards
 default : none
-description : This attribute is useful for only material icons.Material Example:mda='cloud'
+description : This attribute is useful for only material icons . Material Example mda='cloud'
 
 */ 
   @Input() mda: string;
@@ -137,7 +137,7 @@ name : overlay-effect
 datatype :  string
 version : 4.1.9 onwards
 default : none
-description : overlay-effect can be set
+description : overlay-effect can be set fade / box / left / top / bottom / right / title
 
 */ 
   @Input('overlay-effect') overlayEffect: string;
@@ -170,13 +170,13 @@ name : tilte-position
 datatype :  string
 version : 4.1.9 onwards
 default : right
-description : overlay-text can be set
+description : overlay-text can be set top-right / bottom-right / bottom-left / top-left / centered
 */ 
   @Input('title-position') position: string;
 
    /*
 Properties 
-name : tilte-para
+name : para
 datatype :  string
 version : 4.1.9 onwards
 default : none
