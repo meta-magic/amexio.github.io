@@ -14,7 +14,7 @@ import {IconLoaderService} from "../../services/icon/icon.service";
 @Component({
  selector: 'amexio-box',
  template: `
- <div class="box-content box-close" *ngIf="closable"
+ <div class="box-content" *ngIf="close"
  [style.height] = "height ? height:'none'" 
  [style.width] = "width ? width:'none'" 
  [style.align] = "align ? align:'none'"
@@ -44,10 +44,11 @@ import {IconLoaderService} from "../../services/icon/icon.service";
  'border-brown' : borderColor =='brown',
  'border-purple' : borderColor =='purple',
  'padding' : padding,
- 'border-dotted' : borderDotted
+ 'border-dotted' : borderDotted,
+ 'box-close' : closable
   }" >
    <ng-content></ng-content>
-   <p [class] = "'box-close'">
+   <p *ngIf="closable" [class] = "'box-close'">
     <amexio-layout-icon key="tab_close" (onClick)="closeBox(event)"></amexio-layout-icon></p>
  </div>
  `
@@ -137,20 +138,20 @@ version : 4.1.8 onwards
 default : false
 description : closable box
 */
- @Input('closable') closable: boolean = true;
+ @Input('closable') closable: boolean = false;
 
  constructor() { }
-
+ close : boolean = true;
  ngOnInit() {
   if (this.borderColor == null)
    this.borderColor = 'box-default';
- 
-
+  
   if (this.borderColor != null && this.bgColor == null){
    this.bgColor = this.borderColor;
   }
  }
   closeBox(event:any){
+    this.close = false;
     this.closable = false;
   }
 }

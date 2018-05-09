@@ -34,6 +34,8 @@ export class AmexioFormComponent implements OnInit, AfterViewInit, AfterContentI
 
     showDialogue : boolean ;
 
+    checkForm : boolean;
+
     @ContentChildren(AmexioTextInputComponent, {descendants: true}) queryTextinput : QueryList<AmexioTextInputComponent>;
     textinput: AmexioTextInputComponent[];
 
@@ -73,7 +75,8 @@ export class AmexioFormComponent implements OnInit, AfterViewInit, AfterContentI
     @ContentChildren(AmexioToggleComponent, {descendants: true}) queryToggle : QueryList<AmexioToggleComponent>;
     toggle: AmexioToggleComponent[];
 
-  buttons : AmexioButtonComponent[];
+  @ContentChildren(AmexioButtonComponent, {descendants: true}) btns : QueryList<AmexioButtonComponent>;
+    buttons : AmexioButtonComponent[];
 
     @ContentChildren(AmexioFormActionComponent) queryFooter: QueryList<AmexioFormActionComponent>;
     footer : AmexioFormActionComponent[];
@@ -174,6 +177,7 @@ description : Event fired if showError msg info button is clicked
       componentError:any[] = [];
 
     constructor(){
+        this.checkForm = false;
         this.isFormValid = false;
         this.showDialogue = false;
         this.headeralign = "left";
@@ -219,6 +223,15 @@ description : Event fired if showError msg info button is clicked
         this.tags = this.queryTags.toArray();
         this.datefiled = this.queryDate.toArray();
         this.toggle = this.queryToggle.toArray();
+
+      this.btns.toArray().forEach((c)=>{
+        if (c.formbind == this.fname && !c.disabled) {
+          c.disabled = true;
+          this.buttons.push(c);
+          this.checkForm = true;
+
+        }
+      });
 
         this.footer = this.queryFooter.toArray();
     }
@@ -329,7 +342,7 @@ description : Event fired if showError msg info button is clicked
         });
       }
 
-        if(this.footer  && this.footer.length>0){
+       /* if(this.footer  && this.footer.length>0){
             this.footer.forEach((c)=>{
                 this.buttons = this.footer[0].buttons;
                 this.buttons.forEach((c)=>{
@@ -339,15 +352,14 @@ description : Event fired if showError msg info button is clicked
                     }
                 });
             });
-            if(this.isFormValid)
-            {
-                this.showError = false;
-            }  else
-            {
-              this.showError = true;
-            }
-        }
-          //this.onSubmit.emit(this.isFormValid);
+        }*/
+
+      if (this.checkForm) {
+        this.buttons.forEach((c)=>{
+          c.disabled = !this.isFormValid;
+        });
+      }
+
       }
 
 

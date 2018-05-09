@@ -37,31 +37,32 @@
 }
 
 .border-red{
-  border-color: $boxBorderRed;
+  border-color: $boxBorderRed !important;
 }
 
 .border-blue{
-  border-color: $boxBorderBlue;
+  border-color: $boxBorderBlue !important;
 }
 
 .border-green{
-  border-color: $boxBorderGreen;
+  border-color: $boxBorderGreen !important;
 }
 
 .border-brown{
-  border-color: $boxBorderBrown;
+  border-color: $boxBorderBrown !important;
 }
 
 .border-purple{
-  border-color: $boxBorderPurple;
+  border-color: $boxBorderPurple !important;
 }
 
 .border-yellow{
-  border-color: $boxBorderYellow;
+  border-color: $boxBorderYellow!important;
 }
 
 .box-close{
   float:right;
+  padding-right: 5px;
 }
 
 .border-dotted{

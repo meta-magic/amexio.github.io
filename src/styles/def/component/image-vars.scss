@@ -1,3 +1,14 @@
 
 $imageColor :$componentFontColor;
 $imageBorder :$borderColor;
+
+$imageShadow : $componentHeaderBGColor;
+$imageOverlayFadeBG : rgba(0, 0, 0, 0.5);
+$imageOverlayFadeText : #f1f1f1;
+
+$imageOverlayFadeTextSize : 20px;
+$imageTitleSize : 24px;
+
+$imageTitleBG : rgba(0, 0, 0, 0.5);
+$imageTitleFontColor : #f1f1f1;
+$imageParaSize : 16px;

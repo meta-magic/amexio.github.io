@@ -156,10 +156,6 @@ input:disabled {
 .verticalalign-tabcontent {
   vertical-align: top !important; }
 
-.img-fluid {
-  max-width: 100%;
-  height: auto; }
-
 /*
 We set the element we are applying our loading mask to relative
 */
@@ -1533,25 +1529,26 @@ input:checked + .toggle-slider:before {
   padding: 8px 8px 8px 8px; }
 
 .border-red {
-  border-color: #dc143c; }
+  border-color: #dc143c !important; }
 
 .border-blue {
-  border-color: #00008b; }
+  border-color: #00008b !important; }
 
 .border-green {
-  border-color: #2e8b57; }
+  border-color: #2e8b57 !important; }
 
 .border-brown {
-  border-color: #800000; }
+  border-color: #800000 !important; }
 
 .border-purple {
-  border-color: #8b008b; }
+  border-color: #8b008b !important; }
 
 .border-yellow {
-  border-color: #ff9900; }
+  border-color: #ff9900 !important; }
 
 .box-close {
-  float: right; }
+  float: right;
+  padding-right: 5px; }
 
 .border-dotted {
   border-width: 1px;
@@ -1567,11 +1564,6 @@ input:checked + .toggle-slider:before {
 /** image - Visual CSS **/
 .profile-image a {
   color: #121212; }
-
-.image-grayscale {
-  -webkit-filter: grayscale(100%);
-  /* Safari 6.0 - 9.0 */
-  filter: grayscale(100%); }
 
 /** image - Structure CSS **/
 .profile-image img {
@@ -1617,6 +1609,253 @@ input:checked + .toggle-slider:before {
 .image-column img {
   margin-top: 8px;
   vertical-align: middle; }
+
+.image-grayscale {
+  -webkit-filter: grayscale(100%);
+  /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%); }
+
+.image-invert {
+  filter: invert(100%);
+  -webkit-filter: invert(100%); }
+
+.image-sepia {
+  filter: sepia(50);
+  -webkit-filter: sepia(50); }
+
+.image-saturate {
+  filter: saturate(5);
+  -webkit-filter: saturate(5); }
+
+.image-blur {
+  -webkit-filter: blur(5px);
+  /* Safari 6.0 - 9.0 */
+  filter: blur(5px); }
+
+.image-brightness {
+  -webkit-filter: brightness(250%);
+  filter: brightness(250%); }
+
+.image-contrast {
+  -webkit-filter: contrast(180%);
+  filter: contrast(180%); }
+
+.image-hue {
+  -webkit-filter: hue-rotate(180deg);
+  filter: hue-rotate(180deg); }
+
+.image-opacity {
+  -webkit-filter: opacity(50%);
+  filter: opacity(50%); }
+
+.image-shadow {
+  -webkit-filter: drop-shadow(8px 8px 10px #c7ea46);
+  filter: drop-shadow(8px 8px 10px #c7ea46); }
+
+.img-fluid {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: block; }
+
+.img-container:hover .overlay-fade {
+  opacity: 1; }
+
+.img-container {
+  position: relative;
+  max-width: 100%;
+  height: auto;
+  text-align: center;
+  color: white; }
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5); }
+
+.overlay-text {
+  color: #f1f1f1;
+  font-size: 20px; }
+
+.overlay-fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease; }
+
+.overlay-fade-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center; }
+
+.overlay-box {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center; }
+
+.img-container:hover .image-fluid {
+  opacity: 0.3; }
+
+.img-container:hover .overlay-box {
+  opacity: 1; }
+
+.overlay-box-text {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: initial !important;
+  padding: 16px 32px; }
+
+.overlay-title-text {
+  position: absolute;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  /* Black see-through */
+  color: #f1f1f1;
+  width: 100%;
+  transition: .5s ease;
+  opacity: 0;
+  padding: 20px;
+  text-align: center; }
+
+.overlay-text p {
+  text-align: center;
+  font-size: 16px; }
+
+.img-container:hover .overlay-title-text {
+  opacity: 1; }
+
+.overlay-slide-top {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  transition: .5s ease; }
+
+.img-container:hover .overlay-slide-top {
+  bottom: 0;
+  height: 100%; }
+
+.overlay-slide-top-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center; }
+
+.overlay-slide-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  transition: .5s ease; }
+
+.img-container:hover .overlay-slide-bottom {
+  height: 100%; }
+
+.overlay-slide-bottom-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center; }
+
+.overlay-slide-right {
+  position: absolute;
+  bottom: 0;
+  left: 100%;
+  right: 0;
+  overflow: hidden;
+  width: 0;
+  height: 100%;
+  transition: .5s ease; }
+
+.img-container:hover .overlay-slide-right {
+  width: 100%;
+  left: 0; }
+
+.overlay-slide-right-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%); }
+
+.overlay-slide-left {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  overflow: hidden;
+  width: 0;
+  height: 100%;
+  transition: .5s ease; }
+
+.img-container:hover .overlay-slide-left {
+  width: 100%; }
+
+.overlay-slide-left-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%); }
+
+.image-title {
+  display: block;
+  color: #f1f1f1;
+  position: absolute;
+  font-size: 24px;
+  padding: 5px;
+  background: rgba(0, 0, 0, 0.5); }
+
+/* Bottom left text */
+.image-bottom-left {
+  position: absolute;
+  bottom: 8px;
+  left: 16px; }
+
+/* Top left text */
+.image-top-left {
+  position: absolute;
+  top: 8px;
+  left: 16px; }
+
+/* Top right text */
+.image-top-right {
+  position: absolute;
+  top: 8px;
+  right: 16px; }
+
+/* Bottom right text */
+.image-bottom-right {
+  position: absolute;
+  bottom: 8px;
+  right: 16px; }
+
+/* Centered text */
+.image-centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
 
 /****************************************************************************
     Component Name : Float Button
