@@ -7,18 +7,35 @@
     <amexio-pane-icon key="tab_next"></amexio-pane-icon>
     <!--<i class="fa fa-angle-right  fa-2x" aria-hidden="true"></i>-->
   </div>
-  <ul #tab class="tab">
+  <ul #tab class="tab" [ngClass]="{'bottomTab':tabPosition == 'bottom'}">
 
     <!-- Amexio Tab Actions that has to be added -->
 
     <li class="tablistitems" style="display:block;">
+
+      <ng-container *ngIf="(type) && (fullPageTabs == false)">
+        <div class="dynamicContent">
+          <div #tabAction class="tab-action">
+            <div class="tablink" [ngClass]="{'equally-align-tabs':fullPageTabs,'float-left':(typeActionAlign=='left' && !fullPageTabs),'float-right':(typeActionAlign=='right' && !fullPageTabs)}">
+              <div class="table1">
+                <div class="tablerow">
+                  <div class="tablecol">
+                    <ng-content select="amexio-tab-action"></ng-content>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      
 
       <!-- <div *ngIf="tabnode.disabled" class="disabled-tab"> -->
       <ng-container *ngIf="(header) && (fullPageTabs == false)">
         <div class="tablink" style="float:left">
           <div class="table">
             <div class="tablerow">
-              <div class="tablecol">{{header}}</div>
+              <b><div class="tablecol">{{header}}</div></b>
             </div>
           </div>
         </div>

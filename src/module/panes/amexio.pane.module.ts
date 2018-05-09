@@ -30,6 +30,7 @@ import {AmexioFormComponent} from "./form/form.component"
 import { AmexioFormActionComponent } from "./form/form.action.component";
 import { AmexioFormBodyComponent } from "./form/form.body.component";
 import { AmexioFormHeaderComponent } from "./form/form.header.component";
+import {AmexioTabActionComponent} from "./tab/tab.action";
 
 export * from './header/pane.action.header';
 export * from './action/pane.action.footer';
@@ -48,6 +49,7 @@ export * from './tab/tab.component';
 export * from './tab/right-vertical-tab/right.vertical.component';
 export * from './tab/vertical-tab/vertical.tab.component';
 export * from './tab/vertical-tab/vertical.tab.component';
+export * from './tab/tab.action';
 
 export * from './carousel/carousel.component';
 export * from './carousel/carousel.template';
@@ -80,6 +82,7 @@ const PANE_COMPONENTS = [
   AmexioFormActionComponent,
   AmexioFormHeaderComponent,
   AmexioFormBodyComponent,
+  AmexioTabActionComponent
 ];
 
 @NgModule({
