@@ -57,10 +57,10 @@ description : Supports glyphicon only. Can add directly home instead of 'glyphic
 
   /*
 Properties 
-name : font-color
+name : amexio-color
 datatype : string
-version : 4.0 onwards
-default : small
+version : 4.1.9 onwards
+default : black
 description : Font color of label
 */ 
 @Input('amexio-color')  amexiocolor : string;

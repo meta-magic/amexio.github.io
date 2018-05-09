@@ -5,7 +5,7 @@
 /*
  Component Name : Amexio Tab
  Component Selector : <amexio-tab-view>
- Component Description : Tab component for Angular Apps with multiple configurations such as Tab, Icon support, Scrollable tabs, Closable tab, Vertical Tabs
+ Component Description : Tab component for Angular Apps with multiple configurations such as Tab, Icon support,  Closable tabs, Amexio-color, Tab Position at top/bottom/ Tab 
 
 */
 import {
@@ -71,62 +71,62 @@ description : This flag will make tab closable.
 
   /*
 Properties 
-name : Header Alignment
+name : header-align
 datatype : string
-version : 4.0 onwards
-default : none
+version : 4.1.9 onwards
+default : left
 description : specify position of tabs(left/right/center).
 */
   @Input('header-align') headeralign: string;
 
   /*
 Properties 
-name : Action Type Alignment
+name : action-type-align
 datatype : string
-version : 4.0 onwards
-default : none
-description : specify position of tabs(left/right).
+version : 4.1.9 onwards
+default : left
+description : specify position of action type(left/right).
 */
   @Input('action-type-align') typeActionAlign: string;
 
 
   /*
   Properties 
-  name : Divide Header Equally
-  datatype : string
-  version : 4.0 onwards
-  default : none
+  name : divide-header-equally
+  datatype : boolean
+  version : 4.1.9 onwards
+  default : false
   description : If "true" divides all tab equally.
   */
   @Input('divide-header-equally') fullPageTabs: boolean;
 
   /*
 Properties 
-name : Type
+name : type
 datatype : string
-version : 4.0 onwards
+version : 4.1.9 onwards
 default : none
-description : Type can be (image/radio-group/button/checkbox/toggle)
+description : Type can be amexio input such as (text field/ number field/ checkbox/ label/ dropdown/ toggle/ button/ image/ checkbox group/ radio group/ rating/ datefield)
 */
   @Input('type') type: string;
 
   /*
 Properties 
-name : Tab Position
+name :tab-position
 datatype : string
 version : 4.1.9 onwards
 default : top
-description : Position of tab can be (top/bottom)
+description : Position of tab can be (top/bottom) When Tab used in card and tab-position is bottom , make sure footer property of card is false.
 */
   @Input('tab-position') tabPosition: string;
 
   /*
 Properties 
-name : title
+name : header
 datatype : string
-version : 4.0 onwards
+version : 4.1.9 onwards
 default : none
-description : Title on Tab Button/Pill.
+description : Header for Tab.
 */
   @Input() header: string;
 
