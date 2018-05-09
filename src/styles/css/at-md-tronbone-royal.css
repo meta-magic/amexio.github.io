@@ -809,7 +809,14 @@ textarea:required {
 
 .file-upload-size {
   padding-left: 70px;
+  float: right;
   margin: 5px; }
+
+.file-close {
+  padding: 5px; }
+
+.file-upload-box li {
+  display: inherit; }
 
 /****************************************************************************
     Component Name : Collapsible Search
@@ -1653,23 +1660,20 @@ input:checked + .toggle-slider:before {
   filter: drop-shadow(8px 8px 10px #fada5e); }
 
 .img-fluid {
-  position: relative;
-  width: 100%;
-  height: auto;
-  display: block; }
+  max-width: 100%;
+  height: auto; }
 
 .img-container:hover .overlay-fade {
   opacity: 1; }
 
 .img-container {
   position: relative;
-  max-width: 100%;
-  height: auto;
-  text-align: center;
-  color: white; }
+  width: fit-content;
+  height: auto; }
 
 .overlay {
-  background-color: rgba(0, 0, 0, 0.5); }
+  background-color: rgba(0, 0, 0, 0.5);
+  text-align: center; }
 
 .overlay-text {
   color: #f1f1f1;
