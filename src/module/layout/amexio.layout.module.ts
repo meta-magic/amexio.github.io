@@ -27,6 +27,7 @@ export * from './border/borderlayout.component';
 
 export * from './accordion/accordion.pane';
 export * from './accordion/accordion.component';
+export * from './box/box.component';
 export * from './card/card.component';
 export * from './accordion/accordion.service';
 export * from '../services/icon/icon.service';

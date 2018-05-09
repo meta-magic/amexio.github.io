@@ -31,5 +31,14 @@ textarea:required{
 
 .file-upload-size{
   padding-left : 70px;
+  float:right;
   margin: 5px;
+}
+
+.file-close {  
+  padding: 5px;
+}
+
+.file-upload-box li{
+  display:inherit;
 }
