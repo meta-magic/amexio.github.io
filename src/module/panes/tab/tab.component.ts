@@ -163,7 +163,8 @@ description : Callback to invoke on activated tab event.
   map = new Map<any, any>();
   constructor(public render: Renderer2) {
     this.headeralign = "left";
-    this.typeActionAlign = "right";
+    this.typeActionAlign = "left";
+    this.tabPosition = "top";
     // console.log(AmexioColorMap.COMPONENT_CLASS_MAP['red']);
     // this.map = new Map().set('text', AmexioTextInputComponent1);
     // this.map = new Map().set('checkbox', AmexioCheckBoxComponent1);
@@ -200,7 +201,9 @@ description : Callback to invoke on activated tab event.
     //To add action in tab
 
     let actionComp = this.queryAction.toArray();
-    actionComp[0].checkActionComponent();
+    if(actionComp.length > 0){
+      actionComp[0].checkActionComponent();
+    }
 
     if (actionComp[0].actionComponent == this.type) {
       actionComp[0].showContent = true;
@@ -296,19 +299,19 @@ description : Callback to invoke on activated tab event.
   }
 
   findStyleClass(tabData: any): string {
-    if ((tabData.amexiocolor == 'amexio-tab-black') && (this.tabPosition == 'top') && tabData.active) {
+    if ((tabData.amexiocolor == 'amexio-top-tab-black') && (this.tabPosition == 'top') && tabData.active) {
       return 'activetab';
     }
-    if ((tabData.amexiocolor == 'amexio-tab-black') && (this.tabPosition == 'bottom') && tabData.active) {
+    if ((tabData.amexiocolor == 'amexio-bottom-tab-black') && (this.tabPosition == 'bottom') && tabData.active) {
       return 'bottomActivetab';
     }
     if (tabData.disabled) {
       return 'disabled-tab';
     }
-    if ((tabData.amexiocolor != 'amexio-tab-black') && (this.tabPosition == 'top') && tabData.active) {
+    if ((tabData.amexiocolor != 'amexio-top-tab-black') && (this.tabPosition == 'top') && tabData.active) {
       return 'activecolortab';
     }
-    if ((tabData.amexiocolor != 'amexio-tab-black') && (this.tabPosition == 'bottom') && tabData.active) {
+    if ((tabData.amexiocolor != 'amexio-bottom-tab-black') && (this.tabPosition == 'bottom') && tabData.active) {
       return 'activebottomcolortab';
     }
   }
