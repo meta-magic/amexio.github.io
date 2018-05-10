@@ -151,3 +151,49 @@
 .activecolortab{
   border-bottom: 3px solid !important;
 }
+
+.bottomTab{
+  width: 100%;
+  position: absolute !important;
+  bottom: 0%;
+  border-top: 1px solid #ced4da;
+  min-width: 760px;
+  max-width: 980px;
+}
+
+.dynamicContent .tablink{
+  padding-bottom: 0px !important;
+}
+
+.dynamicContent .input-control {
+  height: 15px !important;
+}
+
+.dynamicContent .input-box-container {
+  height: 5px !important;
+}
+
+.dynamicContent .drodown-caret-down{
+  top: -2px !important;
+}
+
+.dynamicContent .toggle{
+  width: 62px !important;
+  height: 32px !important;
+}
+
+.dynamicContent .toggle-slider:before{
+  top: 2px;
+}
+
+.bottomActivetab{
+  border-bottom: $tabBorderSize+2 solid $tabActiveBorder;
+}
+
+.activebottomcolortab{
+  border-top: 3px solid !important;
+}
+
+.dynamicContent .rating{
+  padding : .0rem .0rem !important;
+}

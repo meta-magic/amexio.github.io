@@ -809,7 +809,14 @@ textarea:required {
 
 .file-upload-size {
   padding-left: 70px;
+  float: right;
   margin: 5px; }
+
+.file-close {
+  padding: 5px; }
+
+.file-upload-box li {
+  display: inherit; }
 
 /****************************************************************************
     Component Name : Collapsible Search
@@ -1669,23 +1676,20 @@ input:checked + .toggle-slider:before {
   filter: drop-shadow(8px 8px 10px #455a64); }
 
 .img-fluid {
-  position: relative;
-  width: 100%;
-  height: auto;
-  display: block; }
+  max-width: 100%;
+  height: auto; }
 
 .img-container:hover .overlay-fade {
   opacity: 1; }
 
 .img-container {
   position: relative;
-  max-width: 100%;
-  height: auto;
-  text-align: center;
-  color: white; }
+  width: fit-content;
+  height: auto; }
 
 .overlay {
-  background-color: rgba(0, 0, 0, 0.5); }
+  background-color: rgba(0, 0, 0, 0.5);
+  text-align: center; }
 
 .overlay-text {
   color: #f1f1f1;
@@ -2172,7 +2176,7 @@ header .billboard .content-button {
 .close-button {
   cursor: pointer;
   padding-left: 98%;
-  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, transparent 70%, transparent 100%); }
+  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 100%); }
 
 /****************************************************************************
     Component Name : Enterprise Youtube
@@ -2181,7 +2185,7 @@ header .billboard .content-button {
 /** enterprise-youtube - Visual CSS **/
 .close-button {
   color: grey;
-  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, transparent 70%, transparent 100%); }
+  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 100%); }
 
 .close-button i:hover {
   color: red; }
@@ -2205,8 +2209,8 @@ header .billboard .content-button {
   font-size: 20px; }
 
 .tile__details {
-  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%); }
+  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%); }
 
 .tile__details:after,
 .tile__details:before {
@@ -2214,8 +2218,8 @@ header .billboard .content-button {
 
 .tile__details_v {
   font-size: 10px;
-  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%); }
+  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%); }
 
 .tile__details_v:after,
 .tile__details_v:before {
@@ -3874,69 +3878,111 @@ fieldset {
   background-color: #6bd0ff;
   color: #00151f; }
 
-/** Theme Additional Std Colors : Light and Dark shades --- */
+/** Theme Colors for Tab*/
 /** CSS Class definitions for the Amexio Colors --- */
-/** Amexio Colors --- 
-   Coral: #ff7f50 rgb(255,127,80,0.0);
-   240a00: #240a00 rgb(36,10,0,0.0);
-*/
-.amexio-tab-red-light {
-  border-bottom: 1px solid #ff7f50 !important;
-  color: #ff7f50; }
-
 /** Amexio Colors --- 
    Crimson: #dc143c rgb(220,20,60,0.0);
    fffafb: #fffafb rgb(255,250,251,0.0);
 */
-.amexio-tab-red {
+.amexio-bottom-tab-red {
   color: #dc143c;
-  border-bottom: 1px solid #dc143c !important; }
-
-/** Amexio Colors --- 
-   Lime: #00ff00 rgb(0,255,0,0.0);
-   002400: #002400 rgb(0,36,0,0.0);
-*/
-.amexio-tab-green-light {
-  border-bottom: 1px solid #00ff00 !important;
-  color: #00ff00; }
+  border-top: 1px solid #dc143c !important; }
 
 /** Amexio Colors --- 
    SeaGreen: #2e8b57 rgb(46,139,87,0.0);
    f0faf4: #f0faf4 rgb(240,250,244,0.0);
 */
-.amexio-tab-green {
-  border-bottom: 1px solid #2e8b57 !important;
-  color: #2e8b57; }
-
-/** Amexio Colors --- 
-   Magenta: #ff00ff rgb(255,0,255,0.0);
-   fffaff: #fffaff rgb(255,250,255,0.0);
-*/
-.amexio-tab-purple-light {
-  border-bottom: 1px solid #ff00ff !important;
-  color: #ff00ff; }
+.amexio-bottom-tab-green {
+  border-top: 1px solid #208d4f !important;
+  color: #208d4f; }
 
 /** Amexio Colors --- 
    DarkMagenta: #8b008b rgb(139,0,139,0.0);
    fffaff: #fffaff rgb(255,250,255,0.0);
 */
-.amexio-tab-purple {
-  border-bottom: 1px solid #8b008b !important;
+.amexio-bottom-tab-purple {
+  border-top: 1px solid #8b008b !important;
   color: #8b008b; }
-
-/** Amexio Colors --- 
-   DeepSkyBlue: #00bfff rgb(0,191,255,0.0);
-   f0fbff: #f0fbff rgb(240,251,255,0.0);
-*/
-.amexio-tab-blue-light {
-  border-bottom: 1px solid #00bfff !important;
-  color: #00bfff; }
 
 /** Amexio Colors --- 
    DarkBlue: #00008b rgb(0,0,139,0.0);
    f5f5ff: #f5f5ff rgb(245,245,255,0.0);
 */
-.amexio-tab-blue {
+.amexio-bottom-tab-blue {
+  border-top: 1px solid #00008b !important;
+  color: #00008b; }
+
+/** Amexio Colors --- 
+   SandyBrown: #f4a460 rgb(244,164,96,0.0);
+   211102: #211102 rgb(33,17,2,0.0);
+*/
+.amexio-bottom-tab-brown {
+  border-top: 1px solid #800000 !important;
+  color: #800000; }
+
+/** Amexio Colors --- 
+   Gold: #ffd700 rgb(255,215,0,0.0);
+   241e00: #241e00 rgb(36,30,0,0.0);
+*/
+.amexio-bottom-tab-yellow {
+  border-top: 1px solid #FFFF00 !important;
+  color: #FFFF00; }
+
+/** Amexio Colors --- 
+   Black: #000000 rgb(0,0,0,0.0);
+   White: #ffffff rgb(255,255,255,0.0);
+*/
+.amexio-bottom-tab-black {
+  border-top: 1px solid;
+  border-top-color: #000000;
+  color: #000000; }
+
+/** Amexio Colors --- 
+   Pink: #FF69B4 rgb(255,215,0,0.0);
+   241e00: #241e00 rgb(36,30,0,0.0);
+*/
+.amexio-top-tab-pink {
+  border-top: 1px solid #FF69B4 !important;
+  color: #FF69B4; }
+
+/** Amexio Colors --- 
+   Orange: #FFA500 rgb(255,215,0,0.0);
+   241e00: #241e00 rgb(36,30,0,0.0);
+*/
+.amexio-bottom-tab-orange {
+  border-top: 1px solid #FFA500 !important;
+  color: #FFA500; }
+
+/** CSS Class definitions for the Amexio Colors --- */
+/** Amexio Colors --- 
+   Crimson: #dc143c rgb(220,20,60,0.0);
+   fffafb: #fffafb rgb(255,250,251,0.0);
+*/
+.amexio-top-tab-red {
+  color: #dc143c;
+  border-bottom: 1px solid #dc143c !important; }
+
+/** Amexio Colors --- 
+   SeaGreen: #2e8b57 rgb(46,139,87,0.0);
+   f0faf4: #f0faf4 rgb(240,250,244,0.0);
+*/
+.amexio-top-tab-green {
+  border-bottom: 1px solid #208d4f !important;
+  color: #208d4f; }
+
+/** Amexio Colors --- 
+   DarkMagenta: #8b008b rgb(139,0,139,0.0);
+   fffaff: #fffaff rgb(255,250,255,0.0);
+*/
+.amexio-top-tab-purple {
+  border-bottom: 1px solid #8b008b !important;
+  color: #8b008b; }
+
+/** Amexio Colors --- 
+   DarkBlue: #00008b rgb(0,0,139,0.0);
+   f5f5ff: #f5f5ff rgb(245,245,255,0.0);
+*/
+.amexio-top-tab-blue {
   border-bottom: 1px solid #00008b !important;
   color: #00008b; }
 
@@ -3944,15 +3990,7 @@ fieldset {
    SandyBrown: #f4a460 rgb(244,164,96,0.0);
    211102: #211102 rgb(33,17,2,0.0);
 */
-.amexio-tab-brown-light {
-  border-bottom: 1px solid #f4a460 !important;
-  color: #f4a460; }
-
-/** Amexio Colors --- 
-   Maroon: #800000 rgb(128,0,0,0.0);
-   ffebeb: #ffebeb rgb(255,235,235,0.0);
-*/
-.amexio-tab-brown {
+.amexio-top-tab-brown {
   border-bottom: 1px solid #800000 !important;
   color: #800000; }
 
@@ -3960,26 +3998,34 @@ fieldset {
    Gold: #ffd700 rgb(255,215,0,0.0);
    241e00: #241e00 rgb(36,30,0,0.0);
 */
-.amexio-tab-yellow-light {
-  border-bottom: 1px solid #ffd700 !important;
-  color: #ffd700; }
-
-/** Amexio Colors --- 
-   ff9900: #ff9900 rgb(255,153,0,0.0);
-   241500: #241500 rgb(36,21,0,0.0);
-*/
-.amexio-tab-yellow {
-  border-bottom: 1px solid #ff9900 !important;
-  color: #ff9900; }
+.amexio-top-tab-yellow {
+  border-bottom: 1px solid #FFFF00 !important;
+  color: #FFFF00; }
 
 /** Amexio Colors --- 
    Black: #000000 rgb(0,0,0,0.0);
    White: #ffffff rgb(255,255,255,0.0);
 */
-.amexio-tab-black {
+.amexio-top-tab-black {
   border-bottom: 1px solid;
   border-bottom-color: #000000;
   color: #000000; }
+
+/** Amexio Colors --- 
+   Pink: #FF69B4 rgb(255,215,0,0.0);
+   241e00: #241e00 rgb(36,30,0,0.0);
+*/
+.amexio-top-tab-pink {
+  border-bottom: 1px solid #FF69B4 !important;
+  color: #FF69B4; }
+
+/** Amexio Colors --- 
+   Orange: #FFA500 rgb(255,215,0,0.0);
+   241e00: #241e00 rgb(36,30,0,0.0);
+*/
+.amexio-top-tab-orange {
+  border-bottom: 1px solid #FFA500 !important;
+  color: #FFA500; }
 
 /** tab - Structure CSS **/
 .tab {
@@ -4080,6 +4126,42 @@ fieldset {
 
 .activecolortab {
   border-bottom: 3px solid !important; }
+
+.bottomTab {
+  width: 100%;
+  position: absolute !important;
+  bottom: 0%;
+  border-top: 1px solid #ced4da;
+  min-width: 760px;
+  max-width: 980px; }
+
+.dynamicContent .tablink {
+  padding-bottom: 0px !important; }
+
+.dynamicContent .input-control {
+  height: 15px !important; }
+
+.dynamicContent .input-box-container {
+  height: 5px !important; }
+
+.dynamicContent .drodown-caret-down {
+  top: -2px !important; }
+
+.dynamicContent .toggle {
+  width: 62px !important;
+  height: 32px !important; }
+
+.dynamicContent .toggle-slider:before {
+  top: 2px; }
+
+.bottomActivetab {
+  border-bottom: 3px solid #153746; }
+
+.activebottomcolortab {
+  border-top: 3px solid !important; }
+
+.dynamicContent .rating {
+  padding: .0rem .0rem !important; }
 
 /****************************************************************************
     Component Name : Window
@@ -4567,11 +4649,11 @@ fieldset {
 *****************************************************************************/
 @keyframes checkboxripple {
   0% {
-    box-shadow: 0px 0px 0px 1px transparent; }
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0); }
   50% {
     box-shadow: 0px 0px 0px 15px rgba(0, 0, 0, 0.1); }
   100% {
-    box-shadow: 0px 0px 0px 15px transparent; } }
+    box-shadow: 0px 0px 0px 15px rgba(0, 0, 0, 0); } }
 /* Show the input-box-container-label when checked */
 .input-box-container input:checked ~ .input-box-checkbox-label:after {
   animation: checkboxripple .3s ease-in; }
@@ -4581,11 +4663,11 @@ fieldset {
 *****************************************************************************/
 @keyframes radioripple {
   0% {
-    box-shadow: 0px 0px 0px 1px transparent; }
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0); }
   50% {
     box-shadow: 0px 0px 0px 15px rgba(0, 0, 0, 0.1); }
   100% {
-    box-shadow: 0px 0px 0px 15px transparent; } }
+    box-shadow: 0px 0px 0px 15px rgba(0, 0, 0, 0); } }
 /* Show the input-box-container-label when checked */
 .input-box-container input:checked ~ .input-box-radiobox-label:after {
   animation: radioripple 0.3s linear forwards; }

@@ -5,7 +5,7 @@
 /*
  Component Name : Amexio Tab
  Component Selector : <amexio-tab-view>
- Component Description : Tab component for Angular Apps with multiple configurations such as Tab, Icon support, Scrollable tabs, Closable tab, Vertical Tabs
+ Component Description : Tab component for Angular Apps with multiple configurations such as Tab, Icon support,  Closable tabs, Amexio-color, Tab Position at top/bottom/ Tab 
 
 */
 import {
@@ -23,31 +23,39 @@ import {
   ViewChild
 } from '@angular/core';
 import { AmexioTabPill } from "./tab.pill.component";
+import { AmexioTabActionComponent } from "./tab.action";
 
-
-export namespace AmexioColorMap {
+export namespace AmexioTopColorMap {
   export const COMPONENT_CLASS_MAP: any = {
-    red: 'amexio-tab-red',
-    lightred: 'amexio-tab-red-light',
-    lightgreen: 'amexio-tab-green-light',
-    green: 'amexio-tab-green',
-    lightpurple: 'amexio-tab-purple-light',
-    purple: 'amexio-tab-purple',
-    lightblue: 'amexio-tab-blue-light',
-    blue: 'amexio-tab-blue',
-    lightbrown: 'amexio-tab-brown-light',
-    brown: 'amexio-tab-brown',
-    lightyellow: 'amexio-tab-yellow-light',
-    yellow: 'amexio-tab-yellow',
-    black: 'amexio-tab-black',
-    white: 'amexio-tab-white'
+    red: 'amexio-top-tab-red',
+    green: 'amexio-top-tab-green',
+    purple: 'amexio-top-tab-purple',
+    blue: 'amexio-top-tab-blue',
+    brown: 'amexio-top-tab-brown',
+    yellow: 'amexio-top-tab-yellow',
+    black: 'amexio-top-tab-black',
+    pink: 'amexio-top-tab-pink',
+    orange: 'amexio-top-tab-orange',
+  }
+}
+
+export namespace AmexioBottomColorMap {
+  export const COMPONENT_CLASS_MAP: any = {
+    red: 'amexio-bottom-tab-red',
+    green: 'amexio-bottom-tab-green',
+    purple: 'amexio-bottom-tab-purple',
+    blue: 'amexio-bottom-tab-blue',
+    brown: 'amexio-bottom-tab-brown',
+    yellow: 'amexio-bottom-tab-yellow',
+    black: 'amexio-bottom-tab-black',
+    pink: 'amexio-bottom-tab-pink',
+    orange: 'amexio-bottom-tab-orange'
   }
 }
 
 @Component({
   selector: 'amexio-tab-view',
-  templateUrl: './tab.component.html',
-  styleUrls: ['tab.component.scss']
+  templateUrl: './tab.component.html'
 })
 export class AmexioTabComponent implements OnInit, AfterViewInit, AfterContentInit {
 
@@ -63,31 +71,62 @@ description : This flag will make tab closable.
 
   /*
 Properties 
-name : Header Alignment
+name : header-align
 datatype : string
-version : 4.0 onwards
-default : none
+version : 4.1.9 onwards
+default : left
 description : specify position of tabs(left/right/center).
 */
   @Input('header-align') headeralign: string;
 
   /*
+Properties 
+name : action-type-align
+datatype : string
+version : 4.1.9 onwards
+default : left
+description : specify position of action type(left/right).
+*/
+  @Input('action-type-align') typeActionAlign: string;
+
+
+  /*
   Properties 
-  name : Divide Header Equally
-  datatype : string
-  version : 4.0 onwards
-  default : none
+  name : divide-header-equally
+  datatype : boolean
+  version : 4.1.9 onwards
+  default : false
   description : If "true" divides all tab equally.
   */
   @Input('divide-header-equally') fullPageTabs: boolean;
 
   /*
 Properties 
-name : title
+name : type
 datatype : string
-version : 4.0 onwards
+version : 4.1.9 onwards
 default : none
-description : Title on Tab Button/Pill.
+description : Type can be amexio input such as (text field/ number field/ checkbox/ label/ dropdown/ toggle/ button/ image/ checkbox group/ radio group/ rating/ datefield)
+*/
+  @Input('type') type: string;
+
+  /*
+Properties 
+name :tab-position
+datatype : string
+version : 4.1.9 onwards
+default : top
+description : Position of tab can be (top/bottom) When Tab used in card and tab-position is bottom , make sure footer property of card is false.
+*/
+  @Input('tab-position') tabPosition: string;
+
+  /*
+Properties 
+name : header
+datatype : string
+version : 4.1.9 onwards
+default : none
+description : Header for Tab.
 */
   @Input() header: string;
 
@@ -97,6 +136,8 @@ description : Title on Tab Button/Pill.
 
   @ContentChildren(AmexioTabPill) queryTabs: QueryList<AmexioTabPill>;
   tabCollection: AmexioTabPill[];
+
+  @ContentChildren(AmexioTabActionComponent, { descendants: true }) queryAction: QueryList<AmexioTabActionComponent>
 
   /*
 Events
@@ -119,8 +160,13 @@ description : Callback to invoke on activated tab event.
 
   content: string;
 
+  map = new Map<any, any>();
   constructor(public render: Renderer2) {
     this.headeralign = "left";
+    this.typeActionAlign = "right";
+    // console.log(AmexioColorMap.COMPONENT_CLASS_MAP['red']);
+    // this.map = new Map().set('text', AmexioTextInputComponent1);
+    // this.map = new Map().set('checkbox', AmexioCheckBoxComponent1);
   }
 
   ngOnInit() {
@@ -134,13 +180,11 @@ description : Callback to invoke on activated tab event.
     }
   }
 
-
   ngAfterViewInit() {
     if (this.tabs.nativeElement.scrollWidth > this.tabs.nativeElement.clientWidth) {
       this.shownext = true;
     }
     // this.action = this.queryAction.toArray();
-
 
   }
 
@@ -152,6 +196,16 @@ description : Callback to invoke on activated tab event.
       this.tabCollection = this.queryTabs.toArray();
     }
     this.calculateWidth();
+
+    //To add action in tab
+
+    let actionComp = this.queryAction.toArray();
+    actionComp[0].checkActionComponent();
+
+    if (actionComp[0].actionComponent == this.type) {
+      actionComp[0].showContent = true;
+    }
+
   }
 
   calculateWidth() {
@@ -161,7 +215,10 @@ description : Callback to invoke on activated tab event.
       if (this.fullPageTabs == true) {
         this.tabCollection[i]['width'] = (100 / tabWidth) + "%";
       }
-      this.tabCollection[i].amexiocolor = AmexioColorMap.COMPONENT_CLASS_MAP[this.tabCollection[i].amexiocolor];
+      if (this.tabPosition == "top") {
+        this.tabCollection[i].amexiocolor = AmexioTopColorMap.COMPONENT_CLASS_MAP[this.tabCollection[i].amexiocolor];
+      } else
+        this.tabCollection[i].amexiocolor = AmexioBottomColorMap.COMPONENT_CLASS_MAP[this.tabCollection[i].amexiocolor];
     }
   }
 
@@ -239,14 +296,21 @@ description : Callback to invoke on activated tab event.
   }
 
   findStyleClass(tabData: any): string {
-    if ((tabData.amexiocolor == 'amexio-tab-black') && tabData.active) {
+    if ((tabData.amexiocolor == 'amexio-tab-black') && (this.tabPosition == 'top') && tabData.active) {
       return 'activetab';
+    }
+    if ((tabData.amexiocolor == 'amexio-tab-black') && (this.tabPosition == 'bottom') && tabData.active) {
+      return 'bottomActivetab';
     }
     if (tabData.disabled) {
       return 'disabled-tab';
     }
-    if ((tabData.amexiocolor != 'amexio-tab-black') && tabData.active)
+    if ((tabData.amexiocolor != 'amexio-tab-black') && (this.tabPosition == 'top') && tabData.active) {
       return 'activecolortab';
+    }
+    if ((tabData.amexiocolor != 'amexio-tab-black') && (this.tabPosition == 'bottom') && tabData.active) {
+      return 'activebottomcolortab';
+    }
   }
 
 }

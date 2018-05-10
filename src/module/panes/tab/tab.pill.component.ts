@@ -2,16 +2,16 @@
  * Created by pratik on 8/12/17.
  */
 
- /*
- Component Name : Amexio Tab
- Component Selector : <amexio-tab>
- Component Description: Tab component for Angular Apps with multiple configurations such as Tab, Icon support
+/*
+Component Name : Amexio Tab
+Component Selector : <amexio-tab>
+Component Description: Tab component for Angular Apps with multiple configurations such as Tab, Icon support
 
 */
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
-  selector: 'amexio-tab', templateUrl: './tab.pill.component.html', styleUrls: ['./tab.component.scss']
+  selector: 'amexio-tab', templateUrl: './tab.pill.component.html'
 })
 export class AmexioTabPill implements OnInit {
 
@@ -33,9 +33,9 @@ version : 4.1.4 onwards
 default : false
 description : Disable property for tab
 */
-@Input() disabled: boolean = false;
+  @Input() disabled: boolean = false;
 
-    /*
+  /*
 Properties 
 name : active
 datatype :boolean
@@ -43,9 +43,9 @@ version : 4.0 onwards
 default : false
 description : Set true for specific tab open as default tab..
 */
-  @Input() active:boolean = false;
+  @Input() active: boolean = false;
 
-     /*
+  /*
 Properties 
 name : icon:
 datatype :string
@@ -57,10 +57,10 @@ description : Supports glyphicon only. Can add directly home instead of 'glyphic
 
   /*
 Properties 
-name : font-color
+name : amexio-color
 datatype : string
-version : 4.0 onwards
-default : small
+version : 4.1.9 onwards
+default : black
 description : Font color of label
 */ 
 @Input('amexio-color')  amexiocolor : string;

@@ -104,10 +104,10 @@ filter: blur(5px);
 
 //Image Component Responsive
 .img-fluid{
-  position: relative;
-  width: 100%;
+  //position: relative;
+  max-width: 100%;
   height: auto;
-  display: block;
+  //display: block;
 }
 
 .img-container:hover .overlay-fade {
@@ -117,15 +117,16 @@ filter: blur(5px);
 .img-container {
   position: relative;
   //width: 50%;
-  max-width: 100%;
+  width: fit-content;
   height: auto;
-  text-align: center;
-  color: white;
+  
+  //color: white;
 }
 
 .overlay{
   //position: absolute;
   background-color: $imageOverlayFadeBG;
+  text-align: center;
 }
 
 .overlay-text{
