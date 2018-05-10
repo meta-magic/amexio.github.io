@@ -12,14 +12,27 @@ import {Component, Input, OnInit} from '@angular/core';
 @Component({
  selector: 'amexio-label',
  template: `
- <label class="label-content {{styleClass}}"
- [ngStyle]="{'color' : fontColor}">
-   <ng-content></ng-content>
- </label>
- `
+  <label class="label-content {{styleClass}}"
+    [ngStyle]="{'color' : fontColor}">
+    
+    <ng-content></ng-content>
+    <span class="label-badge" *ngIf="badge">{{badge}}</span>
+    
+  </label>
+ 
+  `
 })
 
 export class AmexioLabelComponent implements OnInit {
+/*
+Properties 
+name : size
+datatype : number
+version : 4.0 onwards
+default : small
+description : Badge Value for Label.
+*/ 
+@Input('badge') badge: number;
 /*
 Properties 
 name : size

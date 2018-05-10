@@ -1440,7 +1440,23 @@ input:checked + .toggle-slider:before {
     Version : Amexio v4.0 onwards
 *****************************************************************************/
 /** label - Visual CSS **/
+.label-badge {
+  color: #fbf5ff;
+  background-color: #4b0082; }
+
 /** label - Structure CSS **/
+.label-badge {
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 7px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  border-radius: 10px; }
+
 .large {
   font-size: 36px; }
 
@@ -2160,7 +2176,7 @@ header .billboard .content-button {
 .close-button {
   cursor: pointer;
   padding-left: 98%;
-  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, transparent 70%, transparent 100%); }
+  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 100%); }
 
 /****************************************************************************
     Component Name : Enterprise Youtube
@@ -2169,7 +2185,7 @@ header .billboard .content-button {
 /** enterprise-youtube - Visual CSS **/
 .close-button {
   color: grey;
-  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, transparent 70%, transparent 100%); }
+  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 100%); }
 
 .close-button i:hover {
   color: red; }
@@ -2193,8 +2209,8 @@ header .billboard .content-button {
   font-size: 20px; }
 
 .tile__details {
-  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%); }
+  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%); }
 
 .tile__details:after,
 .tile__details:before {
@@ -2202,8 +2218,8 @@ header .billboard .content-button {
 
 .tile__details_v {
   font-size: 10px;
-  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%); }
+  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%); }
 
 .tile__details_v:after,
 .tile__details_v:before {
@@ -4633,11 +4649,11 @@ fieldset {
 *****************************************************************************/
 @keyframes checkboxripple {
   0% {
-    box-shadow: 0px 0px 0px 1px transparent; }
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0); }
   50% {
     box-shadow: 0px 0px 0px 15px rgba(0, 0, 0, 0.1); }
   100% {
-    box-shadow: 0px 0px 0px 15px transparent; } }
+    box-shadow: 0px 0px 0px 15px rgba(0, 0, 0, 0); } }
 /* Show the input-box-container-label when checked */
 .input-box-container input:checked ~ .input-box-checkbox-label:after {
   animation: checkboxripple .3s ease-in; }
@@ -4647,11 +4663,11 @@ fieldset {
 *****************************************************************************/
 @keyframes radioripple {
   0% {
-    box-shadow: 0px 0px 0px 1px transparent; }
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0); }
   50% {
     box-shadow: 0px 0px 0px 15px rgba(0, 0, 0, 0.1); }
   100% {
-    box-shadow: 0px 0px 0px 15px transparent; } }
+    box-shadow: 0px 0px 0px 15px rgba(0, 0, 0, 0); } }
 /* Show the input-box-container-label when checked */
 .input-box-container input:checked ~ .input-box-radiobox-label:after {
   animation: radioripple 0.3s linear forwards; }
