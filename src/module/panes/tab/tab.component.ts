@@ -182,7 +182,7 @@ description : Callback to invoke on activated tab event.
   }
 
   ngAfterViewInit() {
-    if (this.tabs.nativeElement.scrollWidth > this.tabs.nativeElement.clientWidth) {
+    if (this.tabs.nativeElement.scrollWidth >= this.tabs.nativeElement.clientWidth) {
       this.shownext = true;
     }
     // this.action = this.queryAction.toArray();
@@ -200,15 +200,14 @@ description : Callback to invoke on activated tab event.
 
     //To add action in tab
 
-    let actionComp = this.queryAction.toArray();
-    if(actionComp.length > 0){
+     //To add action in tab
+     let actionComp = this.queryAction.toArray();
+     if(actionComp.length > 0) {
       actionComp[0].checkActionComponent();
-    }
-
-    if (actionComp[0].actionComponent == this.type) {
-      actionComp[0].showContent = true;
-    }
-
+      if (actionComp[0].actionComponent == this.type) {
+        actionComp[0].showContent = true;
+     }
+      }
   }
 
   calculateWidth() {
