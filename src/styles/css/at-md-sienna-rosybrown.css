@@ -1433,7 +1433,23 @@ input:checked + .toggle-slider:before {
     Version : Amexio v4.0 onwards
 *****************************************************************************/
 /** label - Visual CSS **/
+.label-badge {
+  color: #160d0d;
+  background-color: #bc8f8f; }
+
 /** label - Structure CSS **/
+.label-badge {
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 7px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  border-radius: 10px; }
+
 .large {
   font-size: 36px; }
 
