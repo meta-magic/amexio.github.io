@@ -57,9 +57,9 @@ export class AmexioPanelComponent implements OnInit {
    /*
 Properties 
 name : title
-datatype : any
+datatype : string
 version : 4.0 onwards
-default : none
+default : 
 description : Title for panel.
 */
   @Input() title: any;

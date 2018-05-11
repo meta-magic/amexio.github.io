@@ -21,7 +21,7 @@ Properties
 name : collapsible
 datatype : boolean
 version : 4.0 onwards
-default : none
+default : true
 description : Set value true for collapsible fieldset.
 */
   @Input() collapsible: boolean;
@@ -31,7 +31,7 @@ Properties
 name : title
 datatype : string
 version : 4.0 onwards
-default : none
+default : 
 description : Title for fieldset.
 */
   @Input() title: string;

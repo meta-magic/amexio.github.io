@@ -105,8 +105,8 @@ Properties
 name : form-name
 datatype :  string
 version : 4.2 onwards
-default : none
-description : form binding attribute
+default : 
+description : Form binding attribute
 */
 
     @Input('form-name') fname : string;
@@ -117,7 +117,7 @@ name : header
 datatype : boolean
 version : 4.2 onwards
 default : false
-description : form header to display
+description : Form header to display
 */
     @Input('header') header : string;
 
@@ -136,7 +136,7 @@ Properties
 name : height
 datatype :   any
 version : 4.0 onwards
-default : none
+default : 
 description : User can set the height to form
 */
   @Input()  height : any;
@@ -145,8 +145,8 @@ Properties
 name : min-height
 datatype :   any
 version : 4.0 onwards
-default : none
-description : provides minimum height of the form.
+default : 
+description : Provides minimum height of the form.
 */
   @Input('min-height')  minHeight : any;
 
@@ -155,8 +155,8 @@ Properties
 name : body-height
 datatype :   any
 version : 4.0 onwards
-default : none
-description : provides form body height.
+default : 
+description : Provides form body height.
 */
   @Input('body-height') bodyheight : any;
 
