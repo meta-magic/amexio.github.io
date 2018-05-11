@@ -21,5 +21,9 @@
             <amexio-form-icon key="button-loading-icon"></amexio-form-icon>
           </span>
           {{label}}
+          <ng-container *ngIf="badge">
+            <span [ngClass]="badgeClass()" >{{badge}}</span> 
+         </ng-container>
         </span>
+      
 </button>

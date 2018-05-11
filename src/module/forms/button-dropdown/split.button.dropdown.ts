@@ -56,6 +56,16 @@ description : Label on button
 */
   @Input() label: string;
 
+/*
+Properties
+name :  badge
+datatype : number
+version : 4.1.9 onwards
+default : none
+description : Badge  describes the badge value that has to be displayed on button 
+*/
+@Input('badge') badge: number;
+
   openContent: boolean;
 
   @ContentChildren(AmexioButtonDropDownItemComponent) buttons: QueryList<AmexioButtonDropDownItemComponent>;

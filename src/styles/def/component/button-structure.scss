@@ -15,6 +15,91 @@ button {
     padding: .5rem 1rem;
     border-radius: $buttonBorderRadius;
     transition: all .2s ease-in-out;
+
+}
+
+ .btn-badge{
+    padding: .25em .4em;
+    font-size: inherit;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    margin-left: 3px;
+}
+
+.btn-primary-badge{
+    padding: .25em .4em;
+    font-size: inherit;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    margin-left: 3px;
+}
+
+.btn-secondary-badge{
+    padding: .25em .4em;
+    font-size: inherit;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    margin-left: 3px;
+}
+
+.btn-success-badge{
+    padding: .25em .4em;
+    font-size: inherit;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    margin-left: 3px;
+}
+
+.btn-danger-badge{
+    padding: .25em .4em;
+    font-size: inherit;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    margin-left: 3px;
+}
+
+.btn-warning-badge{
+    padding: .25em .4em;
+    font-size: inherit;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    margin-left: 3px;
+}
+
+.btn-transparent-badge{
+    padding: .25em .4em;
+    font-size: inherit;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    margin-left: 3px;
 }
 
 .button-text {

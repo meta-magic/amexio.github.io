@@ -10,11 +10,19 @@
 */
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 
+export namespace TypeMap{
+  export const COMPONENT_CLASS_MAP: any = {
+    primary: 'btn-primary-badge',
+    secondary: 'btn-secondary-badge'
+  }
+
+}
+
 @Component({
   selector: 'amexio-button', templateUrl: './button.component.html', styleUrls: ['./button.component.scss']
 })
 export class AmexioButtonComponent {
-
+badgeclsname:any;
    /*
 Properties
 name : label
@@ -25,8 +33,44 @@ description : Label on button
 */
   @Input() label: string;
 
+ /*
+Properties
+name :  badge
+datatype : number
+version : 4.1.9 onwards
+default : none
+description : Badge  describes the badge value that has to be displayed on button 
+*/
+  @Input('badge') badge: number;
+
+//THIS METHOD IS USED FOR ADDING CSS CLASS DYNAMICALLY
+
+badgeClass():string{
+  let className='';
+if(this.type=="primary" || this.type=="theme-color" )
+className="btn-primary-badge";
+ 
+if(this.type=="secondary" || this.type=="theme-backgroundcolor")
+className="btn-secondary-badge";
+
+if(this.type=="success" || this.type=="green")
+className="btn-success-badge";
+
+if(this.type=="danger" || this.type=="red")
+className="btn-danger-badge";
+
+if(this.type=="warning" || this.type=="yellow")
+className="btn-warning-badge";
+
+if(this.type=="transparent")
+className="btn-transparent-badge"
+
+return className;
+}
+
+
     /*
-Propertiee
+Properties
 name :  icon
 datatype : string
 version : 4.0 onwards
@@ -123,6 +167,12 @@ description : set true to show buttom block
       this.onClick.emit(event);
     }
   }
+
+ ngOnInit(): void {
+
+  
+
+}
 
 
 }
