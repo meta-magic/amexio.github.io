@@ -32,12 +32,8 @@
 
       <!-- <div *ngIf="tabnode.disabled" class="disabled-tab"> -->
       <ng-container *ngIf="(header) && (fullPageTabs == false)">
-        <div class="tablink" style="float:left">
-          <div class="table">
-            <div class="tablerow">
-              <b><div class="tablecol">{{header}}</div></b>
-            </div>
-          </div>
+        <div class="tablink-header" style="float:left">
+              <b><div>{{header}}</div></b>
         </div>
       </ng-container>
 
