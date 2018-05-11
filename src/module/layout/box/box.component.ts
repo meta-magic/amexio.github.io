@@ -89,25 +89,25 @@ name : padding
 datatype : boolean
 version : 4.1 onwards
 default : false
-description : padding to all sides
+description : Padding to all sides
 */
  @Input('padding') padding: boolean = false;
 /*
 Properties 
 name : box-height
-datatype : boolean
+datatype : string
 version : 4.1.2 onwards
-default : none
-description : height to box
+default : 
+description : Height to box
 */
  @Input('box-height') height: string;
  /*
 Properties 
-name : padding
-datatype : boolean
+name : box-width
+datatype : string
 version : 4.1.2 onwards
-default : none
-description : width to box
+default : 
+description : Width to box
 */
  @Input('box-width') width: string;
 
@@ -117,7 +117,7 @@ name : border-dotted
 datatype : boolean
 version : 4.1.8 onwards
 default : false
-description : dotted border
+description : Dotted border
 */
  @Input('border-dotted') borderDotted: boolean = false;
 
@@ -126,8 +126,8 @@ Properties
 name : align
 datatype : string
 version : 4.1.8 onwards
-default : none
-description : align to box "left" "right" "center"
+default : left
+description : Align to box "left" "right" "center"
 */
  @Input('align') align: string;
 /*

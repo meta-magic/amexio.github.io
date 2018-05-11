@@ -22,7 +22,7 @@ Properties
 name : header
 datatype : any
 version : 4.0 onwards
-default : none
+default : 
 description : User can bind title for accordion tab.*/
   @Input() header: any;
 
@@ -31,7 +31,7 @@ Properties
 name : active
 datatype : boolean
 version : 4.0 onwards
-default : none
+default : false
 description : user can Set true for specific accordian open as default 
 */
   @Input() active: boolean;
@@ -52,7 +52,7 @@ Properties
 name : left-icon
 datatype : string
 version : 4.0 onwards
-default : none
+default : 
 description :  places the icon on left 
 */
   @Input('left-icon') leftIcon: string;
@@ -73,7 +73,7 @@ Properties
 name : disabled
 datatype : boolean
 version : 4.0 onwards
-default : none
+default : false
 description : 	Disabled specific panes
 */
   @Input('disabled') disabled : boolean;

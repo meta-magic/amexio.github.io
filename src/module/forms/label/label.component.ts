@@ -26,10 +26,10 @@ import {Component, Input, OnInit} from '@angular/core';
 export class AmexioLabelComponent implements OnInit {
 /*
 Properties 
-name : size
+name : badge
 datatype : number
-version : 4.0 onwards
-default : small
+version : 4.1.9 onwards
+default : none
 description : Badge Value for Label.
 */ 
 @Input('badge') badge: number;
