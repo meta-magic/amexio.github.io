@@ -154,8 +154,8 @@ Properties
 name :  data
 datatype : any
 version : 4.0 onwards
-default : none
-description : provides data for stepblock.
+default : 
+description : Provides data for stepblock.
 */
   @Input() data: any[];
 
