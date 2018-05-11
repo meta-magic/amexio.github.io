@@ -1,27 +1,149 @@
 
 .btn-group span {
-  border: $btnGrpBorderSize solid $btnGrpBorderColor; 
-  padding: 10px 24px; /* Some padding */
-  cursor: pointer; /* Pointer/hand icon */
-  float: left; /* Float the buttons side by side */
+   /* border: $btnGrpBorderSize solid $btnGrpBorderColor; 
+   
+    cursor: pointer; /* Pointer/hand icon */
+   
+  }
+  
+  .btn-group button{
+    //padding-right: 10px;
+    cursor: pointer;
+  }
+  
+  /* Clear floats (clearfix hack) */
+  .btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  .btn-group span:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+  }
+  
+  .button-group{
+    position: relative;
+  }
+  
+  
+ .btn-group-badge{
+    padding: .25em .4em;
+    font-size: inherit;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    margin-left: 3px;
 }
 
-.btn-group button{
-  //padding-right: 10px;
-  cursor: pointer;
+.btn-group-primary-badge{
+    padding: .25em .4em;
+    font-size: inherit;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    margin-left: 3px;
+}
+.btn-group-secondary-badge{
+    padding: .25em .4em;
+    font-size: inherit;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    margin-left: 3px;
 }
 
-/* Clear floats (clearfix hack) */
-.btn-group:after {
-  content: "";
-  clear: both;
-  display: table;
+.btn-group-success-badge{
+    padding: .25em .4em;
+    font-size: inherit;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    margin-left: 3px;
 }
 
-.btn-group span:not(:last-child) {
-  border-right: none; /* Prevent double borders */
+.btn-group-danger-badge{
+    padding: .25em .4em;
+    font-size: inherit;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    margin-left: 3px;
 }
 
-.button-group{
-  position: relative;
+.btn-group-warning-badge{
+    padding: .25em .4em;
+    font-size: inherit;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    margin-left: 3px;
+}
+
+.btn-group-transparent-badge{
+    padding: .25em .4em;
+    font-size: inherit;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    margin-left: 3px;
+}
+
+.button-text {
+    display: inline-block;
+}
+
+.disabled
+{
+  pointer-events: none;
+}
+
+.button-small{
+    padding: .25rem .5rem;
+}
+
+.button-default{
+    padding: .5rem 1rem;
+    font-size: 1rem;
+}
+
+.button-large{
+    padding: .75rem 1.5rem;
+    font-size: 1.25rem;
+}
+
+.button-block {
+    display: block;
+    width: 100%;
+}
+
+.button-transparent {
+    border : none !important;
+    box-shadow: none !important;
+  }
+
+  .button-round{
+    border-radius: 50%;
+    vertical-align: middle;
 }

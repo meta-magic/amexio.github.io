@@ -42,6 +42,11 @@ import {AmexioButtonDropDownItemComponent} from "./button.dropdown.item";
               <amexio-form-icon style="padding-right: 5px;" [customclass]="itemData.iconStyleClass"></amexio-form-icon>
               <span [attr.disabled]="itemData.disabled ? true: null">{{itemData.label}}&nbsp;&nbsp;</span>
               <!--<i [class]="itemData.iconStyleClass" aria-hidden="true" style="float:right;" ></i>-->
+              
+              <ng-container *ngIf="itemData.badge">
+              <span class="btn-dropdown-badge">{{itemData.badge}}</span>
+              </ng-container>
+              
             </div>
           </div>
 
@@ -111,6 +116,43 @@ description : Different Sizes of Buttons availabe : large, default, small & xsma
   @Input() size: string;
 
   /*
+Properties
+name :  badge
+datatype : number
+version : 4.1.9 onwards
+default : none
+description : Badge  describes the badge value that has to be displayed on button 
+*/
+@Input('badge') badge: number;
+
+
+// badgeClass():string{
+//   let className='';
+// if(this.type=="primary" || this.type=="theme-color" )
+// className="btn-primary-badge1";
+ 
+// if(this.type=="secondary" || this.type=="theme-backgroundcolor")
+// className="btn-secondary-badge1";
+
+// if(this.type=="success" || this.type=="green")
+// className="btn-success-badge1";
+
+// if(this.type=="danger" || this.type=="red")
+// className="btn-danger-badge1";
+
+// if(this.type=="warning" || this.type=="yellow")
+// className="btn-warning-badge1";
+
+// if(this.type=="transparent")
+// className="btn-transparent-badge1"
+
+// return className;
+// }
+
+
+
+
+  /*
 Events
 name : click
 datatype :  none
@@ -163,6 +205,7 @@ description : Fire when button-dropdown item button/link click
         onItemClick: itemConfig.onItemClick,
         iconStyleClass: itemConfig.iconStyleClass,
         icon: itemConfig.icon,
+        badge:itemConfig.badge,
         onClickRoute: itemConfig.onClickRoute
       };
       data.iconStyleClass = data.icon;

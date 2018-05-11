@@ -1,0 +1,94 @@
+
+.button-secondary{
+  background-color: $secondaryBGColor;
+  border-color: $borderColor;
+  color: $secondaryColor;
+}
+
+.button-secondary:hover:enabled{
+  background-color: darken($secondaryBGColor, 10%);
+}
+
+.btn-group-primary-badge{
+  background-color: $primaryColor; 
+  color:$primaryBGColor;
+}
+
+.btn-group-secondary-badge{
+  background-color: $secondaryColor; 
+  color:$secondaryBGColor;
+}
+
+.btn-group-success-badge{
+  background-color: $successColor;
+  color: $successBGColor ;
+}
+
+.btn-group-danger-badge{
+  background-color: $dangerColor ;
+  color:$dangerBGColor ;
+}
+
+.btn-group-warning-badge{
+  background-color:$warningColor ;
+  color: $warningBGColor;
+}
+
+.btn-group-transparent-badge{
+  background-color: $componentFontColor;
+  color:$componentBGColor ;
+}
+
+
+
+.button-primary {
+  background-color: $primaryBGColor;
+  border-color: $primaryBGColor;
+  color: $primaryColor;
+}
+
+.disabled
+{
+  background-color:$buttonDisableBG;
+  color : $buttonDisableFontColor;
+}
+
+.button-primary:hover:enabled{
+  background-color: darken($primaryBGColor, 10%);
+}
+
+.button-success {
+  background-color: $successBGColor;
+  border-color: $successBGColor;
+  color: $successColor;
+
+}
+
+.button-success:hover:enabled{
+  background-color: darken($successBGColor, 10%);
+}
+
+.button-danger {
+  background-color: $dangerBGColor;
+  border-color: $dangerBGColor;
+  color: $dangerColor;
+}
+
+.button-danger:hover:enabled{
+  background-color: darken($dangerBGColor, 10%);
+}
+
+.button-warning {
+  background-color: $warningBGColor;
+  border-color: $warningBGColor;
+  color: $warningColor;
+}
+
+.button-warning:hover:enabled{
+  background-color: darken($warningBGColor, 10%);
+}
+
+.button-transparent {
+  background: $componentBGColor;
+  color : $componentFontColor;
+}
