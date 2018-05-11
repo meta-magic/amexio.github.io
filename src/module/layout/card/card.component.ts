@@ -41,7 +41,7 @@ Properties
 name : header-align
 datatype : string
 version : 4.0 onwards
-default : none
+default : left
 description : Align of item elements inside card header example : right,center,left.
 */
   @Input('header-align') headeralign: string;
@@ -51,7 +51,7 @@ Properties
 name : header-align
 datatype : string
 version : 4.0 onwards
-default : false
+default : left
 description : User can enable header of card by setting this flag to true..
 */
   @Input() header: boolean;
@@ -71,7 +71,7 @@ Properties
 name : footer-align
 datatype :  string
 version : 4.0 onwards
-default : none
+default : left
 description : Align of item elements inside card footer example : right,center,left..
 */
   @Input('footer-align') footeralign: string;
@@ -91,7 +91,7 @@ Properties
 name : height
 datatype :   any
 version : 4.0 onwards
-default : none
+default : 
 description : User can set the height to body..
 */
   @Input()  height : any;
@@ -101,8 +101,8 @@ Properties
 name : min-height
 datatype :   any
 version : 4.0 onwards
-default : none
-description : provides minimum card height.
+default : 
+description : Provides minimum card height.
 */
   @Input('min-height')  minHeight : any;
 
@@ -111,8 +111,8 @@ Properties
 name : body-height
 datatype :   any
 version : 4.0 onwards
-default : none
-description : provides card height.
+default :
+description : Provides card height.
 */
   @Input('body-height') bodyheight : any;
 

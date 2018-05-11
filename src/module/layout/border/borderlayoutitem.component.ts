@@ -21,7 +21,7 @@ Properties
 name : position
 datatype : string
 version : 4.0 onwards
-default : none
+default : 
 description : Layout the contents to North , East , West , Center & South positions
 */
   @Input() position: string;

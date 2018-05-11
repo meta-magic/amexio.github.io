@@ -32,7 +32,7 @@ Properties
 name : size
 datatype : any
 version : 4.0 onwards
-default : none
+default : 
 description : Column size*/
   @Input()
   set size(value: any) {
