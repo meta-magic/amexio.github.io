@@ -10,6 +10,8 @@
 import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {CommonDataService} from "../../services/data/common.data.service";
 
+import { AmexioBoxComponent} from "./../../layout/box/box.component";
+
 @Component({
   selector: 'amexio-fileupload', template: `
     <div class="input-group" *ngIf="!droppable">
@@ -20,14 +22,23 @@ import {CommonDataService} from "../../services/data/common.data.service";
         <amexio-button [label]="'File Details'" [type]="'yellow'" (click)="onClick()" [size]="'small'">
         </amexio-button>
         </span>
-        <div *ngIf="toggleFileDetails">
+       <div *ngIf="toggleFileDetails">
         <ul class="file-upload-box">
-          <li *ngFor="let file of uploadedFiles">
-          <amexio-box border-color ="theme-color" background-color = "theme-color" border="left" padding="true" border-dotted = "true" closable ="true">
+          <li *ngFor="let file of uploadedFiles ; let index = index">
+          <amexio-box #boxObj border-color ="theme-color" background-color = "theme-color" border="left" padding="true" border-dotted = "true">
+          
               <span [class] = "'file-upload-name'">
-              <amexio-label size="medium">{{file.name}}</amexio-label></span>
+                <amexio-label size="medium">{{file.name}}</amexio-label>
+              </span>
+
               <span [class] = "'file-upload-size'">
-              <amexio-label size="small">{{file.size}}</amexio-label></span>
+              <amexio-label size="small">{{file.size}}</amexio-label>
+                <span [class] = "'file-close'">
+                  <amexio-form-icon key="tab_close" (onClick)="closeFile(boxObj,index)">
+                  </amexio-form-icon>
+                </span>
+              </span>
+
           </amexio-box> <br />
           </li>
         </ul>
@@ -56,14 +67,21 @@ import {CommonDataService} from "../../services/data/common.data.service";
       </div>
       <div *ngIf="toggleFileDetails">
         <ul class="file-upload-box">
-          <li *ngFor="let file of uploadedFiles">
-          <amexio-box border-color ="theme-color" background-color = "theme-color" border="left" padding="true" border-dotted = "true" closable ="true">
+          <li *ngFor="let file of uploadedFiles ; let index = index">
+          <amexio-box #boxObj border-color ="theme-color" background-color = "theme-color" border="left" padding="true" border-dotted = "true">
             
               <span [class] = "'file-upload-name'">
-              <amexio-label size="medium">{{file.name}}</amexio-label></span>
+                <amexio-label size="medium">{{file.name}}</amexio-label>
+              </span>
 
               <span [class] = "'file-upload-size'">
-              <amexio-label size="small">{{file.size}}</amexio-label></span>
+              <amexio-label size="small">{{file.size}}</amexio-label>
+                <span [class] = "'file-close'">
+                  <amexio-form-icon key="tab_close" (onClick)="closeFile(boxObj,index)">
+                  </amexio-form-icon>
+                </span>
+              </span>
+
           </amexio-box> <br />
           </li>
         </ul>
@@ -152,6 +170,7 @@ description : Allow Drop Zone For Files.
   toggleFileDetails : boolean = false;
 
   showBtn : boolean = false;
+
 /*
 Events
 name : blur
@@ -197,12 +216,9 @@ description : On field focus event
 
   }
 
-  ngOnInit() {
+  ngOnInit() {  }
 
-  }
-
-  ngAfterViewInit() {
-  }
+  ngAfterViewInit() {  }
 
   formatBytes(bytes : any,decimals:any) {
    if(bytes == 0) return '0 Bytes';
@@ -212,6 +228,7 @@ description : On field focus event
        i = Math.floor(Math.log(bytes) / Math.log(k));
    return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
   }
+
   onFileDrop(event: any) {
     event.preventDefault();
     this.dropClass = '';
@@ -238,13 +255,18 @@ description : On field focus event
     this.dropClass = 'drop';
   }
 
+  closeFile(box:any,index : any){
+    debugger;
+    box.close = false;
+    this.uploadedFiles.splice(index,1);
+  }
+
   onClick(){
     this.toggleFileDetails = !this.toggleFileDetails;
   }
   //  For Uploading files
   uploadFile(event: any,singleFile:boolean) {
     this.showBtn = true;
-    debugger;
     //this.toggleFileDetails = true;
     if(singleFile){
       let formData = new FormData();
@@ -261,7 +283,7 @@ description : On field focus event
         }
         );
           this.uploadedFiles.push({ name: event.name , size: this.formatBytes(event.size,2)});
-    }else{
+    } else {
       let fileList: FileList = event.target.files!=null?event.target.files:event;
       let formData = new FormData();
       if (fileList) {
@@ -286,8 +308,6 @@ description : On field focus event
           let fsize = this.formatBytes(fileList[0].size,2);
           this.uploadedFiles.push({ name: fileList[0].name, size: fsize});
         } else if (fileList.length > 1) {
-          //this.uploadedFileName = fileList.length + ' files';
-          // this.inpHandle.nativeElement.value = this.uploadedFileName;
           for(let i=0 ;i<fileList.length ; i++)
           {
             let fsize = this.formatBytes(fileList[i].size,2);
@@ -295,8 +315,6 @@ description : On field focus event
           }
         }
       }
-
     }
-
   }
 }

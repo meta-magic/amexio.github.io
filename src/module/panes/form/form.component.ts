@@ -86,7 +86,7 @@ Properties
 name : header-align
 datatype : string
 version : 4.2 onwards
-default : none
+default : left
 description : Align of item elements inside card header example [right center left].
 */
      @Input('header-align') headeralign: string;
@@ -96,7 +96,7 @@ Properties
 name : footer-align
 datatype :  string
 version : 4.2 onwards
-default : none
+default : right
 description : Align of item elements inside card footer example [right center left]
 */
     @Input('footer-align') footeralign: string;
@@ -116,7 +116,7 @@ Properties
 name : header
 datatype : boolean
 version : 4.2 onwards
-default : none
+default : false
 description : form header to display
 */
     @Input('header') header : string;
@@ -126,7 +126,7 @@ Properties
 name : show-error
 datatype : boolean
 version : 4.2 onwards
-default : none
+default : false
 description : Flag to show form invalid error messages
 */
     @Input('show-error') showError : boolean = false;
@@ -169,7 +169,7 @@ Events
 name : showErrorMsg
 datatype : any
 version : none
-default : none
+default : 
 description : Event fired if showError msg info button is clicked
 */
       @Output() showErrorMsg: any = new EventEmitter<any>();
