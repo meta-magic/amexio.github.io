@@ -95,7 +95,7 @@ Properties
 name : field-label
 datatype : string
 version : 4.0 onwards
-default : none
+default : 
 description : The label of this field
 */
   @Input('field-label') fieldlabel: string;
@@ -104,7 +104,7 @@ Properties
 name : http-url
 datatype : string
 version : 4.0 onwards
-default : none
+default : 
 description : REST url for fetching datasource.
 */
   @Input('http-url') httpurl: string;
@@ -113,7 +113,7 @@ Properties
 name : http-method
 datatype : string
 version : 4.0 onwards
-default : none
+default : 
 description : Type of HTTP call, POST,GET.
 */
   @Input('http-method') httpmethod: string;
@@ -122,7 +122,7 @@ Properties
 name : file-type
 datatype : string
 version : 4.0 onwards
-default : none
+default : 
 description : Defines the file type of file to upload. Shows only given file type at the time of file upload.example for 1.image [file-type]=image/* 2.for pdf [file-type]=application/pdf
 */
   @Input('file-type') filetype: string;
@@ -131,7 +131,7 @@ Properties
 name : multiple-file
 datatype : string
 version : 4.0 onwards
-default : none
+default : 
 description : Defines if there are multiple file to upload
 */
   @Input('multiple-file') multiplefile: string;
@@ -140,7 +140,7 @@ Properties
 name : popover-position
 datatype : string
 version : 4.0 onwards
-default : none
+default : 
 description : Defines the position of component to be placed
 */
   @Input('popover-position') popoverposition: string;
@@ -149,7 +149,7 @@ Propertiee
 name : param-name
 datatype : string
 version : 4.0 onwards
-default : none
+default : 
 description : Used to specify URL query parametername. same with backend rest controller paramater objectname Default [file]
 */
   @Input('param-name') paramname: string;
@@ -158,7 +158,7 @@ Properties
 name : droppable
 datatype : string
 version : 4.0 onwards
-default : none
+default : 
 description : Allow Drop Zone For Files.
 */
   @Input() droppable: boolean;
@@ -176,7 +176,7 @@ Events
 name : blur
 datatype : any
 version : 4.0 onwards
-default : none
+default : 
 description : 	On blur event
 */
   @Output() blur: EventEmitter<any> = new EventEmitter<any>();
@@ -185,7 +185,7 @@ Events
 name : change
 datatype : any
 version : 4.0 onwards
-default : none
+default : 
 description : Change event
 */
   @Output() change: EventEmitter<any> = new EventEmitter<any>();
@@ -194,7 +194,7 @@ Events
 name : input
 datatype : any
 version : none
-default : none
+default : 
 description : 	On input event field.
 */
   @Output() input: EventEmitter<any> = new EventEmitter<any>();
@@ -203,7 +203,7 @@ Events
 name : focus
 datatype : any
 version : none
-default : none
+default : 
 description : On field focus event
 */
   @Output() focus: EventEmitter<any> = new EventEmitter<any>();

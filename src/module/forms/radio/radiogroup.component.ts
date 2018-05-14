@@ -19,7 +19,7 @@ Properties
 name : allow-blank
 datatype : string
 version : 4.0 onwards
-default : none
+default : 
 description : Sets if field is required
 */
   @Input('allow-blank') allowblank: boolean = true;
@@ -28,7 +28,7 @@ Properties
 name :name
 datatype : boolean
 version : 4.0 onwards
-default : none
+default : false
 description :
 */
   @Input() name: boolean;
@@ -38,7 +38,7 @@ Properties
 name : field-label
 datatype : string
 version : 4.0 onwards
-default : none
+default :
 description : The label of this field
 */
   @Input('field-label') fieldlabel: string;
@@ -47,7 +47,7 @@ Properties
 name : data-reader
 datatype : string
 version : 4.0 onwards
-default : none
+default : 
 description : 	Key in JSON datasource for records
 */
   @Input('data-reader') datareader: string;
@@ -56,7 +56,7 @@ Properties
 name : http-method
 datatype : string
 version : 4.0 onwards
-default : none
+default :
 description : Type of HTTP call, POST,GET.
 */
   @Input('http-method') httpmethod: string;
@@ -65,7 +65,7 @@ Properties
 name : http-url
 datatype : string
 version : 4.0 onwards
-default : none
+default : 
 description : 	REST url for fetching datasource.
 */
   @Input('http-url') httpurl: string;
@@ -74,7 +74,7 @@ Properties
 name : display-field
 datatype : string
 version : 4.0 onwards
-default : none
+default :
 description : Name of key inside response data to display on ui.
 */
   @Input('display-field') displayfield: string;
@@ -83,7 +83,7 @@ Properties
 name : value-field
 datatype : string
 version : 4.0 onwards
-default : none
+default : 
 description : Name of key inside response data.use to send to backend
 */
   @Input('value-field') valuefield: string;
@@ -92,7 +92,7 @@ Properties
 name : default-value
 datatype : string
 version : 4.0 onwards
-default : none
+default : 
 description : Default Value to be checked
 */
   @Input('default-value') defaultSelectedValue: string;
@@ -101,7 +101,7 @@ Properties
 name : horizontal
 datatype : boolean
 version : 4.0 onwards
-default : none
+default : false
 description : Set true for horizontal checkbox
 */
   @Input() horizontal: boolean;
@@ -110,7 +110,7 @@ Properties
 name : data
 datatype : any
 version : 4.0 onwards
-default : none
+default : 
 description : 	Local data for radio group.
 */
   @Input() data: any;
@@ -119,7 +119,7 @@ Properties
 name : disabled
 datatype : boolean
 version : 4.0 onwards
-default : none
+default : false
 description : true to disable the field.
 */
   @Input() disabled: any;
@@ -128,7 +128,7 @@ Events
 name : onBonSelectionlur
 datatype : any
 version : 4.0 onwards
-default : none
+default : 
 description : Fires selection event
 */
   @Output() onSelection: any = new EventEmitter<any>();
@@ -137,7 +137,7 @@ Events
 name : input
 datatype : any
 version : none
-default : none
+default : 
 description : 	On input event field.
 */
 @Output() input: any = new EventEmitter<any>();
