@@ -100,7 +100,7 @@ Properties
 name : closable
 datatype :  boolean
 version : 4.0 onwards
-default : none
+default : false
 description : User can close the Dialogue.
 */
   @Input() closable: boolean;
@@ -110,7 +110,7 @@ Properties
 name : title
 datatype :  string
 version : 4.0 onwards
-default : none
+default : 
 description : Title for dialog.
 */
   @Input() title: string;
@@ -120,7 +120,7 @@ Properties
 name :  message
 datatype :  string
 version : 4.0 onwards
-default : none
+default : 
 description : Alert or confirm message
 */
   @Input() message: string;
@@ -140,7 +140,7 @@ Properties
 name :  type
 datatype :  'confirm'| 'alert'
 version : 4.0 onwards
-default : none
+default : confirm
 description : Mode to open, alert or dialogue mode.
 */
   @Input() type: 'confirm'| 'alert';
@@ -150,7 +150,7 @@ Properties
 name : primary-action-label
 datatype :  'string
 version : 4.0 onwards
-default : none
+default :
 description : Label to be displayed for primary action.
 */
   @Input('primary-action-label') primaryactionlabel   : string;
@@ -160,7 +160,7 @@ Properties
 name : secondary-action-label
 datatype :  string
 version : 4.0 onwards
-default : none
+default : 
 description : Label to be displayed for secondary action.
 */
   @Input('secondary-action-label') secondaryactionlabel  : string;
@@ -170,7 +170,7 @@ Properties
 name : message-type
 datatype :  string
 version : 4.0 onwards
-default : none
+default : 
 description : Type of message like error,warning,help.
 */
   @Input('message-type') messagetype  : string;
@@ -207,8 +207,8 @@ description : Fire when user close dialogue
     if (this.footeralign == null) this.footeralign = "right";
     if(this.contentalign == null || this.contentalign == '') {
       this.contentalign = 'center';
-
     }
+    if(this.type == null) this.type = 'confirm';
   }
 
   onCloseClick() {

@@ -30,7 +30,7 @@ Properties
 name : date-format
 datatype : string
 version : 4.0 onwards
-default : none
+default : 
 description : The label of this field
 */
   @Input('date-format') dateformat: string;
@@ -60,7 +60,7 @@ Properties
 name : field-label
 datatype : string
 version : 4.0 onwards
-default : none
+default : 
 description : 	The label of this field
 */
   @Input('field-label') fieldlabel: string;
@@ -90,7 +90,7 @@ name : required
 datatype : boolean
 version : 4.0 onwards
 default : false
-description : flag to allow blank field or not
+description : Flag to allow blank field or not
 */
   @Input() required: boolean = false;
 

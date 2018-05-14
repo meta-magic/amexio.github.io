@@ -13,8 +13,9 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
-  selector: 'amexio-window', template: `
-    <div class="root-window" [ngClass]="{'modal-window-max': isFullWindow,'modal-window-min': !isFullWindow}"
+  selector: 'amexio-window', 
+  template: `
+    <div class="root-window model-fade" [ngClass]="{'modal-window-max': isFullWindow,'modal-window-min': !isFullWindow}"
          [ngStyle]="{'display' : showWindow ? 'block' : 'none'}">
       <div class="modal-window-lg" [ngStyle]="{'height': bodyHeight ? '100%':'auto'}">
         <div class="modal-window-content" [ngStyle]="{'height': bodyHeight+'%'}" [ngClass]="{'modal-window-content-max':isFullWindow}">
@@ -80,7 +81,7 @@ Properties
 name : body-height
 datatype : string
 version : 4.0 onwards
-default : none
+default :
 description : Assign body height in percentage, in case of maximize=true it will be set to 100% by default
 */
   @Input('body-height') bodyHeight:string;
@@ -92,7 +93,7 @@ Properties
 name : maximize
 datatype : boolean
 version : 4.0 onwards
-default : none
+default :false
 description : User can maximize the window to full screen.
 */
   @Input() maximize: boolean;
@@ -102,7 +103,7 @@ Properties
 name : closable
 datatype : boolean
 version : 4.0 onwards
-default : none
+default : false
 description : User can close the window.
 */
   @Input() closable: boolean;
@@ -112,7 +113,7 @@ Properties
 name : header
 datatype : boolean
 version : 4.0 onwards
-default : none
+default : false
 description : it is flag that decides header visibility
 */
   @Input() header: boolean;
@@ -122,7 +123,7 @@ Properties
 name : footer
 datatype : boolean
 version : 4.0 onwards
-default : none
+default : false
 description : it is flag that decides footer visibility
 */
   @Input() footer: boolean;
