@@ -155,7 +155,7 @@ Properties
 name : width
 datatype : string
 version : 4.0 onwards
-default : none
+default : 
 description : Width of chart
 */
   @Input() width: string;
@@ -165,8 +165,8 @@ Properties
 name : height
 datatype : string
 version : 4.0 onwards
-default : none
-description : height of chart
+default :
+description : Height of chart
 */
   @Input() height: string;
 
@@ -183,7 +183,7 @@ Properties
 name : data
 datatype : any
 version : 4.0 onwards
-default : none
+default : 
 description : Local data for AreaChart
 */
   @Input('data')
@@ -201,8 +201,8 @@ Properties
 name : background-color
 datatype : any
 version : 4.0 onwards
-default : none
-description : sets background color to chart
+default : 
+description : Sets background color to chart
 */
   @Input('background-color') backgroundcolor: string;
 

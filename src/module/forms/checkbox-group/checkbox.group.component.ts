@@ -36,7 +36,7 @@ Properties
 name : field-label
 datatype : string
 version : 4.0 onwards
-default : none 
+default : 
 description : The label of this field
 */
   @Input('field-label') fieldlabel: string;
@@ -51,7 +51,7 @@ Properties
 name : data-reader
 datatype : string
 version : 4.0 onwards
-default : none 
+default :
 description : Key in JSON datasource for records
 */
   @Input('data-reader') datareader: string;
@@ -61,7 +61,7 @@ Properties
 name : http-method
 datatype : string
 version : 4.0 onwards
-default : none 
+default : 
 description : Type of HTTP call, POST,GET.
 */
   @Input('http-method') httpmethod: string;
@@ -71,7 +71,7 @@ Properties
 name : http-url
 datatype : string
 version : 4.0 onwards
-default : none 
+default : 
 description : REST url for fetching datasource.
 */
   @Input('http-url') httpurl: string;
@@ -81,7 +81,7 @@ Properties
 name : display-field
 datatype : string
 version : 4.0 onwards
-default : none 
+default : 
 description : Name of key inside response data to display on ui.
 */
   @Input('display-field') displayfield: string;
@@ -91,7 +91,7 @@ Properties
 name : value-field
 datatype : string
 version : 4.0 onwards
-default : none 
+default : 
 description : Name of key inside response data.use to send to backend
 */
   @Input('value-field') valuefield: string;
@@ -113,7 +113,7 @@ Properties
 name : data
 datatype : any
 version : 4.0 onwards
-default : none 
+default : 
 description : Local data for checkboxGroup.
 */
   @Input() data: any;
@@ -135,7 +135,7 @@ Events
 name : onSelection
 datatype : any
 version : none
-default : none 
+default :
 description : fire when check box click
 */
   @Output() onSelection: any = new EventEmitter<any>();

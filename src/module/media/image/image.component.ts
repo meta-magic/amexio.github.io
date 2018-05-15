@@ -33,7 +33,7 @@ Properties
 name : tooltip
 datatype :  string
 version : 4.0 onwards
-default : none
+default : 
 description : TooltipMessage on image /icon.
 */ 
   @Input() tooltip: string;
@@ -43,7 +43,7 @@ Properties
 name : title
 datatype :  string
 version : 4.0 onwards
-default : none
+default : 
 description : Title of image
 */ 
   @Input() title: string;
@@ -53,7 +53,7 @@ Properties
 name : path
 datatype : string
 version : 4.0 onwards
-default : none
+default : 
 description : Specifies the URL of an image, This attribute is useful only for images
 */ 
   @Input() path: string;
@@ -63,7 +63,7 @@ Properties
 name : icon-class
 datatype :  string
 version : 4.0 onwards
-default : none
+default : 
 description : Material icon class name Material i.e icon-class=material-icons / font-awesome i.e icon-class= fa fa-address-book fa-lg
 
 */ 
@@ -74,7 +74,7 @@ Properties
 name : c-class
 datatype :  string
 version : 4.0 onwards
-default : none
+default : 
 description : Used for custom style classes
 */ 
   @Input('c-class') cclass: string = "";
@@ -84,7 +84,7 @@ Properties
 name : mda
 datatype :  string
 version : 4.0 onwards
-default : none
+default : 
 description : This attribute is useful for only material icons . Material Example mda='cloud'
 
 */ 
@@ -95,7 +95,7 @@ Properties
 name : width
 datatype :  string
 version : 4.0 onwards
-default : none
+default : 
 description : Width of image.
 */ 
   @Input() width:string;
@@ -105,7 +105,7 @@ Properties
 name : height
 datatype :  string
 version : 4.0 onwards
-default : none
+default :
 description : Height of image.
 */ 
   @Input() height:string;
@@ -125,8 +125,8 @@ Properties
 name : filter
 datatype :  string
 version : 4.1.9 onwards
-default : none
-description : filter type can be saturate / hue / invert / grayscale / brightness / blur / sepia / shadow / opacity
+default :
+description : Filter type can be saturate / hue / invert / grayscale / brightness / blur / sepia / shadow / opacity
 
 */ 
   @Input('filter') filter: string;
@@ -136,8 +136,8 @@ Properties
 name : overlay-effect
 datatype :  string
 version : 4.1.9 onwards
-default : none
-description : overlay-effect can be set fade / box / left / top / bottom / right / title
+default : 
+description : Overlay-effect can be set fade / box / left / top / bottom / right / title
 
 */ 
   @Input('overlay-effect') overlayEffect: string;
@@ -147,8 +147,8 @@ Properties
 name : overlay-text
 datatype :  string
 version : 4.1.9 onwards
-default : none
-description : overlay-text can be set
+default : 
+description : Overlay-text can be set
 
 */ 
   @Input('overlay-text') overlayText: string;
@@ -158,19 +158,19 @@ Properties
 name : image-title
 datatype :  string
 version : 4.1.9 onwards
-default : none
-description : image-title can be set
+default :
+description : Image-title can be set
 
 */ 
   @Input('image-title') imgTitle: string;
 
    /*
 Properties 
-name : tilte-position
+name : title-position
 datatype :  string
 version : 4.1.9 onwards
 default : right
-description : overlay-text can be set top-right / bottom-right / bottom-left / top-left / centered
+description : Overlay-text can be set top-right / bottom-right / bottom-left / top-left / centered
 */ 
   @Input('title-position') position: string;
 
@@ -179,8 +179,8 @@ Properties
 name : para
 datatype :  string
 version : 4.1.9 onwards
-default : none
-description : description to display on hover
+default : 
+description : Description to display on hover
 */ 
   @Input('para') titlePara: string;
   

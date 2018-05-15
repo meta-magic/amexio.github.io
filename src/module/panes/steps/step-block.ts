@@ -21,7 +21,7 @@ Properties
 name : active
 datatype : boolean
 version : 4.0 onwards
-default : none
+default : false
 description : The current active step.
 */
   @Input() active: boolean;
@@ -31,7 +31,7 @@ Properties
 name : label
 datatype : string
 version : 4.0 onwards
-default : none
+default : 
 description : Label for step.
 */
   @Input() label: string;
@@ -41,7 +41,7 @@ Properties
 name : icon
 datatype : string
 version : 4.0 onwards
-default : none
+default :
 description : Icon for step box.
 */
   @Input() icon: string;

@@ -160,7 +160,7 @@ Properties
 name : data
 datatype : any
 version : 4.0 onwards
-default : none
+default : 
 description : Local data for AreaChart
 */
   @Input('data')
@@ -178,7 +178,7 @@ Properties
 name : width
 datatype : string
 version : 4.0 onwards
-default : none
+default : 
 description : Width of chart
 */
   @Input() width: string;
@@ -188,8 +188,8 @@ Properties
 name : height
 datatype : string
 version : 4.0 onwards
-default : none
-description : height of chart
+default : 
+description : Height of chart
 */
   @Input() height: string;
 
@@ -209,8 +209,8 @@ Properties
 name : x-axis-title
 datatype : string
 version : 4.0 onwards
-default : none
-description : sets title for x axis 
+default : 
+description : Sets title for x axis 
 */
   @Input('x-axis-title') xaxistitle: string;
 
@@ -219,8 +219,8 @@ Properties
 name : y-axis-title
 datatype : string
 version : 4.0 onwards
-default : none
-description : sets title for y axis 
+default : 
+description : Sets title for y axis 
 */
   @Input('y-axis-title') yaxistitle: string;
 
@@ -229,8 +229,8 @@ Properties
 name : background-color
 datatype : string
 version : 4.0 onwards
-default : none
-description : sets background-color 
+default : 
+description : Sets background-color 
 */
   @Input('background-color') backgroundcolor: string;
 

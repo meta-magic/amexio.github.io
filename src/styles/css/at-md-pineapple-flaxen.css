@@ -372,6 +372,34 @@ image using the content attribute.
 .button-secondary:hover:enabled {
   background-color: #e6e6e6; }
 
+.btn-badge {
+  background-color: #ffdc6b;
+  color: #d5b85a; }
+
+.btn-primary-badge {
+  background-color: #ffffff;
+  color: #d5b85a; }
+
+.btn-secondary-badge {
+  background-color: #121212;
+  color: #ffffff; }
+
+.btn-success-badge {
+  background-color: #ffffff;
+  color: #5cb85c; }
+
+.btn-danger-badge {
+  background-color: #ffffff;
+  color: #d9534f; }
+
+.btn-warning-badge {
+  background-color: #ffffff;
+  color: #f0ad4e; }
+
+.btn-transparent-badge {
+  background-color: #121212;
+  color: #ffffff; }
+
 .button-primary {
   background-color: #d5b85a;
   border-color: #d5b85a;
@@ -430,6 +458,83 @@ button {
   border-radius: 2px;
   transition: all .2s ease-in-out; }
 
+.btn-badge {
+  padding: .25em .4em;
+  font-size: inherit;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25rem;
+  margin-left: 3px; }
+
+.btn-primary-badge {
+  padding: .25em .4em;
+  font-size: inherit;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25rem;
+  margin-left: 3px; }
+
+.btn-secondary-badge {
+  padding: .25em .4em;
+  font-size: inherit;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25rem;
+  margin-left: 3px; }
+
+.btn-success-badge {
+  padding: .25em .4em;
+  font-size: inherit;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25rem;
+  margin-left: 3px; }
+
+.btn-danger-badge {
+  padding: .25em .4em;
+  font-size: inherit;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25rem;
+  margin-left: 3px; }
+
+.btn-warning-badge {
+  padding: .25em .4em;
+  font-size: inherit;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25rem;
+  margin-left: 3px; }
+
+.btn-transparent-badge {
+  padding: .25em .4em;
+  font-size: inherit;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25rem;
+  margin-left: 3px; }
+
 .button-text {
   display: inline-block; }
 
@@ -464,15 +569,83 @@ button {
     Version : Amexio v4.0 onwards
 *****************************************************************************/
 /** buttongroup - Visual CSS **/
+.button-secondary {
+  background-color: #ffffff;
+  border-color: #ced4da;
+  color: #121212; }
+
+.button-secondary:hover:enabled {
+  background-color: #e6e6e6; }
+
+.btn-group-primary-badge {
+  background-color: #ffffff;
+  color: #d5b85a; }
+
+.btn-group-secondary-badge {
+  background-color: #121212;
+  color: #ffffff; }
+
+.btn-group-success-badge {
+  background-color: #ffffff;
+  color: #5cb85c; }
+
+.btn-group-danger-badge {
+  background-color: #ffffff;
+  color: #d9534f; }
+
+.btn-group-warning-badge {
+  background-color: #ffffff;
+  color: #f0ad4e; }
+
+.btn-group-transparent-badge {
+  background-color: #121212;
+  color: #ffffff; }
+
+.button-primary {
+  background-color: #d5b85a;
+  border-color: #d5b85a;
+  color: #ffffff; }
+
+.disabled {
+  background-color: #dbd5c2;
+  color: #a39362; }
+
+.button-primary:hover:enabled {
+  background-color: #c9a633; }
+
+.button-success {
+  background-color: #5cb85c;
+  border-color: #5cb85c;
+  color: #ffffff; }
+
+.button-success:hover:enabled {
+  background-color: #449d44; }
+
+.button-danger {
+  background-color: #d9534f;
+  border-color: #d9534f;
+  color: #ffffff; }
+
+.button-danger:hover:enabled {
+  background-color: #c9302c; }
+
+.button-warning {
+  background-color: #f0ad4e;
+  border-color: #f0ad4e;
+  color: #ffffff; }
+
+.button-warning:hover:enabled {
+  background-color: #ec971f; }
+
+.button-transparent {
+  background: #ffffff;
+  color: #121212; }
+
 /** buttongroup - Structure CSS **/
 .btn-group span {
-  border: 1px solid black;
-  padding: 10px 24px;
-  /* Some padding */
-  cursor: pointer;
-  /* Pointer/hand icon */
-  float: left;
-  /* Float the buttons side by side */ }
+  /* border: $btnGrpBorderSize solid $btnGrpBorderColor; 
+  
+   cursor: pointer; /* Pointer/hand icon */ }
 
 .btn-group button {
   cursor: pointer; }
@@ -490,18 +663,143 @@ button {
 .button-group {
   position: relative; }
 
+.btn-group-badge {
+  padding: .25em .4em;
+  font-size: inherit;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25rem;
+  margin-left: 3px; }
+
+.btn-group-primary-badge {
+  padding: .25em .4em;
+  font-size: inherit;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25rem;
+  margin-left: 3px; }
+
+.btn-group-secondary-badge {
+  padding: .25em .4em;
+  font-size: inherit;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25rem;
+  margin-left: 3px; }
+
+.btn-group-success-badge {
+  padding: .25em .4em;
+  font-size: inherit;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25rem;
+  margin-left: 3px; }
+
+.btn-group-danger-badge {
+  padding: .25em .4em;
+  font-size: inherit;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25rem;
+  margin-left: 3px; }
+
+.btn-group-warning-badge {
+  padding: .25em .4em;
+  font-size: inherit;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25rem;
+  margin-left: 3px; }
+
+.btn-group-transparent-badge {
+  padding: .25em .4em;
+  font-size: inherit;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25rem;
+  margin-left: 3px; }
+
+.button-text {
+  display: inline-block; }
+
+.disabled {
+  pointer-events: none; }
+
+.button-small {
+  padding: .25rem .5rem; }
+
+.button-default {
+  padding: .5rem 1rem;
+  font-size: 1rem; }
+
+.button-large {
+  padding: .75rem 1.5rem;
+  font-size: 1.25rem; }
+
+.button-block {
+  display: block;
+  width: 100%; }
+
+.button-transparent {
+  border: none !important;
+  box-shadow: none !important; }
+
+.button-round {
+  border-radius: 50%;
+  vertical-align: middle; }
+
 /****************************************************************************
     Component Name : Buttondropdown
     Version : Amexio v4.0 onwards
 *****************************************************************************/
 /** buttondropdown - Visual CSS **/
+.btn-dropdown-badge {
+  background-color: black;
+  color: white; }
+
 .button-dropdown {
   background-color: #ffffff; }
 
 .button-dropdown > div:hover {
   background-color: #ffeeb8; }
 
+.disabled {
+  background-color: #dbd5c2;
+  color: #a39362; }
+
 /** buttondropdown - Structure CSS **/
+.btn-dropdown-badge {
+  padding: .25em .4em;
+  font-size: inherit;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25rem;
+  margin-left: 3px; }
+
 .button-dropdown {
   position: absolute;
   padding: .5rem 1rem;

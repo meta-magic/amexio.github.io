@@ -75,7 +75,7 @@ name : header-align
 datatype : string
 version : 4.1.9 onwards
 default : left
-description : specify position of tabs(left/right/center).
+description : Specify position of tabs(left/right/center).
 */
   @Input('header-align') headeralign: string;
 
@@ -85,7 +85,7 @@ name : action-type-align
 datatype : string
 version : 4.1.9 onwards
 default : left
-description : specify position of action type(left/right).
+description : Specify position of action type(left/right).
 */
   @Input('action-type-align') typeActionAlign: string;
 
@@ -105,7 +105,7 @@ Properties
 name : type
 datatype : string
 version : 4.1.9 onwards
-default : none
+default : 
 description : Type can be amexio input such as (text field/ number field/ checkbox/ label/ dropdown/ toggle/ button/ image/ checkbox group/ radio group/ rating/ datefield)
 */
   @Input('type') type: string;
@@ -125,7 +125,7 @@ Properties
 name : header
 datatype : string
 version : 4.1.9 onwards
-default : none
+default : 
 description : Header for Tab.
 */
   @Input() header: string;

@@ -23,7 +23,7 @@ Properties
 name : size
 datatype :  string
 version : 4.0 onwards
-default : none
+default : 
 description : Different Sizes of Buttons availabe : large, default, small & xsmall
 */  
   @Input() size: string;
@@ -31,6 +31,45 @@ description : Different Sizes of Buttons availabe : large, default, small & xsma
   previousData: any;
 /* for internal use*/ 
   @Input() buttonGroupLocalData: any;
+
+/*
+Properties
+name :  badge
+datatype : number
+version : 4.1.9 onwards
+default : 
+description : Badge  describes the badge value that has to be displayed on button 
+*/
+@Input('badge') badge: number;
+
+badgeClass():string{
+  let className='';
+  for(let button of this.buttons){
+    if(button.type=="primary" || button.type=="theme-color" )
+    className="btn-group-primary-badge";
+    if(button.type=="secondary" || button.type=="theme-backgroundcolor")
+       className="btn-group-secondary-badge";
+
+     if(button.type=="success" || button.type=="green")
+      className="btn-group-success-badge";
+
+     if(button.type=="danger" || button.type=="red")
+      className="btn-group-danger-badge";
+
+     if(button.type=="warning" || button.type=="yellow")
+     className="btn-group-warning-badge";
+
+     if(button.type=="transparent")
+      className="btn-group-transparent-badge"
+
+  }
+
+
+  
+
+return className;
+}
+
 
   buttonGroupPreviewData: any;
 

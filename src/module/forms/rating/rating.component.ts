@@ -42,7 +42,7 @@ Properties
 name : full-icon
 datatype : string
 version : 4.0 onwards
-default : none 
+default : 
 description : 	Icon for selected rating .This attribute is useful only when user have custom rating icons.example
 */
   @Input('full-icon') fullicon = "★";
@@ -51,7 +51,7 @@ Properties
 name : empty-icon
 datatype : string
 version : 4.0 onwards
-default : none 
+default : 
 description : 	Icon for non-selected rating .This attribute is useful only when user have custom rating icons.example
 */
   @Input('empty-icon') emptyicon = "☆";
@@ -87,7 +87,7 @@ Properties
 name : float
 datatype : boolean
 version : 4.0 onwards
-default : none 
+default :false
 description : 
 */
   @Input() float: boolean;
@@ -96,7 +96,7 @@ Properties
 name : field-label
 datatype : string
 version : 4.0 onwards
-default : none 
+default : 
 description : The label of this field
 */
   @Input('field-label') fieldlabel: string;
@@ -115,7 +115,7 @@ Properties
 name : max
 datatype : number
 version : 4.0 onwards
-default : none 
+default : 
 description : Number of stars for rating component.
 */
   @Input()
@@ -136,7 +136,7 @@ Events
 name : onHover
 datatype : any
 version : 4.0 onwards
-default : none
+default :
 description : Fires on hovering component
 */ 
   @Output() onHover = new EventEmitter();
@@ -145,7 +145,7 @@ Events
 name : onLeave
 datatype : any
 version : 4.0 onwards
-default : none
+default : 
 description : fires on leaving component and returns its value
 */ 
   @Output() onLeave = new EventEmitter();

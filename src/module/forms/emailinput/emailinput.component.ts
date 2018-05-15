@@ -25,7 +25,7 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
    name : field-label
    datatype : string
    version : 4.0 onwards
-   default : none
+   default : 
    description : The label of this field
    */
   @Input('field-label') fieldlabel: string;
@@ -34,8 +34,8 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
    name : has-label
    datatype : boolean
    version : 4.0 onwards
-   default : none
-   description : flag to set label
+   default : false
+   description : Flag to set label
    */
   @Input('has-label') hasLabel: boolean = true;
   /*
@@ -43,8 +43,8 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
    name : allow-blank
    datatype : string
    version : 4.0 onwards
-   default : none
-   description : sets if field is required
+   default :
+   description : Sets if field is required
    */
   @Input('allow-blank') allowblank: boolean;
 
@@ -67,7 +67,7 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
    datatype : none
    version : 4.0 onwards
    default : none
-   description : sets the error message
+   description : Sets the error message
    */
   @Input('error-msg')
 
@@ -83,8 +83,8 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
    name : disabled
    datatype : boolean
    version : 4.0 onwards
-   default : none
-   description : true to disable the field.
+   default : false
+   description : True to disable the field.
    */
   @Input() disabled: boolean;
   /*
@@ -92,7 +92,7 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
    name : icon-feedback
    datatype : boolean
    version : 4.0 onwards
-   default : none
+   default : false
    description :
    */
   @Input('icon-feedback') iconfeedback: boolean;
@@ -101,7 +101,7 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
    name : font-style
    datatype : string
    version : 4.0 onwards
-   default : none
+   default : 
    description : Set font-style to field
    */
   @Input('font-style') fontstyle: string;
@@ -110,7 +110,7 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
    name : font-family
    datatype : string
    version : 4.0 onwards
-   default : none
+   default : 
    description : Set font-family to field
    */
   @Input('font-family') fontfamily: string;
@@ -119,7 +119,7 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
    name : font-size
    datatype : string
    version : 4.0 onwards
-   default : none
+   default : 
    description : Set font-size to field
    */
   @Input('font-size') fontsize: string;
@@ -136,7 +136,7 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
    name : pattern
    datatype : string
    version : 4.0 onwards
-   default : none
+   default :
    description : Apply Reg-ex to the field
    */
   @Input('pattern')
@@ -148,7 +148,7 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
    name : enable-popover
    datatype : string
    version : 4.0 onwards
-   default : none
+   default : 
    description : Set enable / disable popover.
    */
   @Input('enable-popover') enablepopover: boolean;
@@ -157,7 +157,7 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
    name : onBlur
    datatype : any
    version : 4.0 onwards
-   default : none
+   default :
    description : On blur event
    */
   @Output() onBlur: any = new EventEmitter<any>();
@@ -166,7 +166,7 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
    name : input
    datatype : any
    version : none
-   default : none
+   default : 
    description : 	On input event field.
    */
   @Output() input: any = new EventEmitter<any>();
@@ -175,7 +175,7 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
    name : focus
    datatype : any
    version : none
-   default : none
+   default : 
    description : On focus event field.
    */
   @Output() focus: any = new EventEmitter<any>();
@@ -184,7 +184,7 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
    name : change
    datatype : any
    version : none
-   default : none
+   default : 
    description : On field value change event
    */
   @Output() change: any = new EventEmitter<any>();

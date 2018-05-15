@@ -41,7 +41,7 @@ Properties
 name : header
 datatype : string
 version : 4.0 onwards
-default : none
+default : 
 description : User can bind title for accordion tab.
 */
   @Input() header: string;
@@ -55,7 +55,7 @@ Properties
 name : data
 datatype : any
 version : 4.0 onwards
-default : none
+default : 
 description : Data Containing Image Path, Information and Video URL Refer the DataSource Tab 
 */
   @Input() data: any;
@@ -65,8 +65,8 @@ description : Data Containing Image Path, Information and Video URL Refer the Da
 name : shuffle-interval
 datatype : number
 version : 4.0 onwards
-default : none
-description : time interval for shuffling images 
+default : 
+description : Time interval for shuffling images 
 */
   @Input('shuffle-interval') shuffleinterval: number;
 

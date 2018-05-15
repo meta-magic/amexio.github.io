@@ -18,9 +18,27 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 export class AmexioButtonDropDownItemComponent implements OnInit {
 
  
-  
+ /*
+Properties 
+name : label
+datatype : string
+version : 4.0 onwards
+default : none
+description : gives label to the button
+*/ 
   @Input() label: string;
 
+ /*
+Properties
+name :  badge
+datatype : number
+version : 4.1.9 onwards
+default : none
+description : badge  describes the badge value that has to be displayed on button 
+*/
+@Input('badge') badge: number;
+ 
+ 
   /*
 Properties 
 name : disabled

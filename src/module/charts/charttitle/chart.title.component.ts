@@ -29,7 +29,7 @@ Properties
 name : title
 datatype : string
 version : 4.0 onwards
-default : none
+default : 
 description : Title to display above the chart.
 */
 @Input() title: string;
@@ -39,8 +39,8 @@ Properties
 name : position
 datatype : string
 version : 4.0 onwards
-default : none
-description : position of chart title
+default : 
+description : Position of chart title
 */
 @Input() position: string;
 
@@ -49,7 +49,7 @@ Properties
 name : color
 datatype : string
 version : 4.0 onwards
-default : none
+default : 
 description : Color of chart title.
 */
 @Input() color: string;
@@ -69,7 +69,7 @@ Properties
 name : font-size
 datatype : number
 version : 4.0 onwards
-default : none
+default : 
 description : Font size of chart title.
 */
 @Input('font-size') fontsize: number;
@@ -79,7 +79,7 @@ Properties
 name : bold
 datatype : boolean
 version : 4.0 onwards
-default : none
+default : false
 description : Set true for title in bold font.
 */
 @Input() bold: boolean;
@@ -89,7 +89,7 @@ Properties
 name : italic
 datatype : boolean
 version : 4.0 onwards
-default : none
+default :false
 description : Set true for title text in italic style.
 */
 @Input() italic: boolean;
