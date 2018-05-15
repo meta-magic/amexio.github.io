@@ -17,11 +17,12 @@ textarea:required{
   display: none;
 }
 
-.file-upload-box{ 
-  //position: fixed; 
+.file-upload-box{
+  //position: fixed;
   list-style-type: none;
   float:left;
   z-index: 1;
+  width: 100%;
 }
 
 .file-upload-name{
@@ -35,10 +36,25 @@ textarea:required{
   margin: 5px;
 }
 
-.file-close {  
+.file-close {
   padding: 5px;
 }
 
 .file-upload-box li{
   display:inherit;
+}
+
+.file-upload-info {
+  border: 1px solid lightgray;
+  margin-top: 3px
+}
+.uploaded-file-name {
+  padding-left: 2%;
+  font-size: small;
+}
+.close-icon {
+  float: right;
+  padding-right: 2%;
+  font-size: 12px!important;
+  cursor: pointer
 }
