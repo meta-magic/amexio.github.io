@@ -133,6 +133,9 @@ description : Header for Tab.
   @ViewChild('tab', { read: ElementRef }) public tabs: ElementRef;
   @ViewChild('headerName', { read: ElementRef }) public headerName: ElementRef;
   @ViewChild('tabslist', { read: ElementRef }) public tabslist: ElementRef;
+  @ViewChild('tabAction', { read: ElementRef }) public tabAction: ElementRef;
+  @ViewChild('headerWidth', { read: ElementRef }) public headerWidth: ElementRef;
+
 
   @ContentChildren(AmexioTabPill) queryTabs: QueryList<AmexioTabPill>;
   tabCollection: AmexioTabPill[];
@@ -160,6 +163,11 @@ description : Callback to invoke on activated tab event.
 
   content: string;
 
+  widthTabs: any;
+
+  headWidth: any;
+
+
   map = new Map<any, any>();
   constructor(public render: Renderer2) {
     this.headeralign = "left";
@@ -175,16 +183,34 @@ description : Callback to invoke on activated tab event.
   }
 
   ngDoCheck() {
+    if (this.tabs.nativeElement.scrollWidth > this.tabs.nativeElement.clientWidth) {
+      this.shownext = true;
+      this.headeralign = 'left';
+    }
+  
+    if(this.tabs && this.tabs.nativeElement 
+      && this.headerWidth && this.headerWidth.nativeElement
+      && this.tabAction && this.tabAction.nativeElement
+      && this.tabWidth1 != this.tabs.nativeElement.offsetWidth){
+      this.headWidth = (this.tabAction.nativeElement.scrollWidth+this.headerWidth.nativeElement.scrollWidth);
+      this.widthTabs = this.tabs.nativeElement.offsetWidth - this.headWidth;
+  
+    }
     if (JSON.stringify(this.tabPreviewData) != JSON.stringify(this.tabLocalData)) {
       this.tabPreviewData = JSON.parse(JSON.stringify(this.tabLocalData));
       this.tabCollection = this.tabLocalData;
     }
   }
 
+  private tabWidth1 : number;
   ngAfterViewInit() {
-    if (this.tabs.nativeElement.scrollWidth >= this.tabs.nativeElement.clientWidth) {
-      this.shownext = true;
-    }
+    let tabWidth    
+
+    // if (this.tabs.nativeElement.scrollWidth > this.tabs.nativeElement.clientWidth) {
+    //   this.shownext = true;
+    // }
+    this.tabWidth1 = this.tabs.nativeElement.offsetWidth;
+
     // this.action = this.queryAction.toArray();
 
   }
@@ -198,7 +224,6 @@ description : Callback to invoke on activated tab event.
     }
     this.calculateWidth();
 
-    //To add action in tab
 
      //To add action in tab
      let actionComp = this.queryAction.toArray();

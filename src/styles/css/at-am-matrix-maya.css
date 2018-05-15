@@ -4027,14 +4027,14 @@ fieldset {
 */
 .amexio-bottom-tab-red {
   color: #dc143c;
-  border-top: 1px solid #dc143c !important; }
+  border-top: 2px solid #dc143c !important; }
 
 /** Amexio Colors --- 
    SeaGreen: #2e8b57 rgb(46,139,87,0.0);
    f0faf4: #f0faf4 rgb(240,250,244,0.0);
 */
 .amexio-bottom-tab-green {
-  border-top: 1px solid #208d4f !important;
+  border-top: 2px solid #208d4f !important;
   color: #208d4f; }
 
 /** Amexio Colors --- 
@@ -4042,7 +4042,7 @@ fieldset {
    fffaff: #fffaff rgb(255,250,255,0.0);
 */
 .amexio-bottom-tab-purple {
-  border-top: 1px solid #8b008b !important;
+  border-top: 2px solid #8b008b !important;
   color: #8b008b; }
 
 /** Amexio Colors --- 
@@ -4050,7 +4050,7 @@ fieldset {
    f5f5ff: #f5f5ff rgb(245,245,255,0.0);
 */
 .amexio-bottom-tab-blue {
-  border-top: 1px solid #00008b !important;
+  border-top: 2px solid #00008b !important;
   color: #00008b; }
 
 /** Amexio Colors --- 
@@ -4058,7 +4058,7 @@ fieldset {
    211102: #211102 rgb(33,17,2,0.0);
 */
 .amexio-bottom-tab-brown {
-  border-top: 1px solid #800000 !important;
+  border-top: 2px solid #800000 !important;
   color: #800000; }
 
 /** Amexio Colors --- 
@@ -4066,24 +4066,15 @@ fieldset {
    241e00: #241e00 rgb(36,30,0,0.0);
 */
 .amexio-bottom-tab-yellow {
-  border-top: 1px solid #FFFF00 !important;
+  border-top: 2px solid #FFFF00 !important;
   color: #FFFF00; }
-
-/** Amexio Colors --- 
-   Black: #000000 rgb(0,0,0,0.0);
-   White: #ffffff rgb(255,255,255,0.0);
-*/
-.amexio-bottom-tab-black {
-  border-top: 1px solid;
-  border-top-color: #000000;
-  color: #000000; }
 
 /** Amexio Colors --- 
    Pink: #FF69B4 rgb(255,215,0,0.0);
    241e00: #241e00 rgb(36,30,0,0.0);
 */
 .amexio-top-tab-pink {
-  border-top: 1px solid #FF69B4 !important;
+  border-top: 2px solid #FF69B4 !important;
   color: #FF69B4; }
 
 /** Amexio Colors --- 
@@ -4091,7 +4082,7 @@ fieldset {
    241e00: #241e00 rgb(36,30,0,0.0);
 */
 .amexio-bottom-tab-orange {
-  border-top: 1px solid #FFA500 !important;
+  border-top: 2px solid #FFA500 !important;
   color: #FFA500; }
 
 /** CSS Class definitions for the Amexio Colors --- */
@@ -4101,14 +4092,14 @@ fieldset {
 */
 .amexio-top-tab-red {
   color: #dc143c;
-  border-bottom: 1px solid #dc143c !important; }
+  border-bottom: 2px solid #dc143c !important; }
 
 /** Amexio Colors --- 
    SeaGreen: #2e8b57 rgb(46,139,87,0.0);
    f0faf4: #f0faf4 rgb(240,250,244,0.0);
 */
 .amexio-top-tab-green {
-  border-bottom: 1px solid #208d4f !important;
+  border-bottom: 2px solid #208d4f !important;
   color: #208d4f; }
 
 /** Amexio Colors --- 
@@ -4116,7 +4107,7 @@ fieldset {
    fffaff: #fffaff rgb(255,250,255,0.0);
 */
 .amexio-top-tab-purple {
-  border-bottom: 1px solid #8b008b !important;
+  border-bottom: 2px solid #8b008b !important;
   color: #8b008b; }
 
 /** Amexio Colors --- 
@@ -4124,7 +4115,7 @@ fieldset {
    f5f5ff: #f5f5ff rgb(245,245,255,0.0);
 */
 .amexio-top-tab-blue {
-  border-bottom: 1px solid #00008b !important;
+  border-bottom: 2px solid #00008b !important;
   color: #00008b; }
 
 /** Amexio Colors --- 
@@ -4132,7 +4123,7 @@ fieldset {
    211102: #211102 rgb(33,17,2,0.0);
 */
 .amexio-top-tab-brown {
-  border-bottom: 1px solid #800000 !important;
+  border-bottom: 2px solid #800000 !important;
   color: #800000; }
 
 /** Amexio Colors --- 
@@ -4140,24 +4131,15 @@ fieldset {
    241e00: #241e00 rgb(36,30,0,0.0);
 */
 .amexio-top-tab-yellow {
-  border-bottom: 1px solid #FFFF00 !important;
+  border-bottom: 2px solid #FFFF00 !important;
   color: #FFFF00; }
-
-/** Amexio Colors --- 
-   Black: #000000 rgb(0,0,0,0.0);
-   White: #ffffff rgb(255,255,255,0.0);
-*/
-.amexio-top-tab-black {
-  border-bottom: 1px solid;
-  border-bottom-color: #000000;
-  color: #000000; }
 
 /** Amexio Colors --- 
    Pink: #FF69B4 rgb(255,215,0,0.0);
    241e00: #241e00 rgb(36,30,0,0.0);
 */
 .amexio-top-tab-pink {
-  border-bottom: 1px solid #FF69B4 !important;
+  border-bottom: 2px solid #FF69B4 !important;
   color: #FF69B4; }
 
 /** Amexio Colors --- 
@@ -4165,7 +4147,7 @@ fieldset {
    241e00: #241e00 rgb(36,30,0,0.0);
 */
 .amexio-top-tab-orange {
-  border-bottom: 1px solid #FFA500 !important;
+  border-bottom: 2px solid #FFA500 !important;
   color: #FFA500; }
 
 /** tab - Structure CSS **/
@@ -4239,7 +4221,7 @@ fieldset {
 .verticalnavtab-right {
   font-weight: bold; }
 
-.verticalalign-tableft {
+verticalalign-tableft {
   vertical-align: top !important;
   border-right: 1px solid #ced4da !important; }
 
@@ -4251,10 +4233,12 @@ fieldset {
   vertical-align: top !important; }
 
 .float-right {
-  float: right; }
+  display: flex;
+  justify-content: flex-end; }
 
 .float-left {
-  float: left; }
+  float: left;
+  height: 40px !important; }
 
 .equally-align-tabs {
   display: flex;
@@ -4305,7 +4289,8 @@ fieldset {
   padding: .0rem .0rem !important; }
 
 .tablink-header {
-  padding: 1.4%; }
+  padding: 5%;
+  font-size: medium; }
 
 /****************************************************************************
     Component Name : Window

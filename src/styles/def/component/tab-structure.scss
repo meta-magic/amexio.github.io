@@ -114,7 +114,7 @@
 }
 
 
-.verticalalign-tableft{
+  verticalalign-tableft{
   vertical-align: top !important;
   border-right: $tabBorderSize solid $tabBorderColor !important;
 }
@@ -130,11 +130,13 @@
 }
 
 .float-right{
-  float: right
+  display: flex;
+  justify-content: flex-end
 }
 
 .float-left{
-  float: left
+  float: left;
+  height: 40px !important;
 }
 
 .equally-align-tabs{
@@ -199,5 +201,6 @@
 }
 
 .tablink-header{
-  padding: 1.4%
+  padding: 5%;
+  font-size: medium;
  }

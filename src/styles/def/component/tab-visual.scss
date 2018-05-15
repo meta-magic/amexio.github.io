@@ -43,7 +43,7 @@ $amexioColorPink : #FF69B4;
 */
 .amexio-bottom-tab-red {
   color:$amexioColorRed;
-  border-top: 1px solid $amexioColorRed !important;
+  border-top: 2px solid $amexioColorRed !important;
 }
 
 /** Amexio Colors --- 
@@ -51,7 +51,7 @@ $amexioColorPink : #FF69B4;
    f0faf4: #f0faf4 rgb(240,250,244,0.0);
 */
 .amexio-bottom-tab-green {
-  border-top: 1px solid $amexioColorGreen !important;
+  border-top: 2px solid $amexioColorGreen !important;
   color: $amexioColorGreen;
 }
 
@@ -60,7 +60,7 @@ $amexioColorPink : #FF69B4;
    fffaff: #fffaff rgb(255,250,255,0.0);
 */
 .amexio-bottom-tab-purple {
-  border-top: 1px solid $amexioColorPurple !important;
+  border-top: 2px solid $amexioColorPurple !important;
 	color: $amexioColorPurple;
 }
 
@@ -69,7 +69,7 @@ $amexioColorPink : #FF69B4;
    f5f5ff: #f5f5ff rgb(245,245,255,0.0);
 */
 .amexio-bottom-tab-blue {
-  border-top: 1px solid $amexioColorBlue !important;
+  border-top: 2px solid $amexioColorBlue !important;
 	color: $amexioColorBlue;
 }
 /** Amexio Colors --- 
@@ -78,7 +78,7 @@ $amexioColorPink : #FF69B4;
 */
 
 .amexio-bottom-tab-brown {
-  border-top: 1px solid $amexioColorBrown !important;
+  border-top: 2px solid $amexioColorBrown !important;
   color: $amexioColorBrown;
 }
 
@@ -88,17 +88,8 @@ $amexioColorPink : #FF69B4;
 */
 
 .amexio-bottom-tab-yellow {
-  border-top: 1px solid $amexioColorYellow !important;
+  border-top: 2px solid $amexioColorYellow !important;
 	color: $amexioColorYellow;
-}
-/** Amexio Colors --- 
-   Black: #000000 rgb(0,0,0,0.0);
-   White: #ffffff rgb(255,255,255,0.0);
-*/
-.amexio-bottom-tab-black {
-  border-top: 1px solid;
-  border-top-color: $amexioColorBlack;
-	color: $amexioColorBlack;
 }
 
 /** Amexio Colors --- 
@@ -107,7 +98,7 @@ $amexioColorPink : #FF69B4;
 */
 
 .amexio-top-tab-pink {
-  border-top: 1px solid $amexioColorPink !important;
+  border-top: 2px solid $amexioColorPink !important;
 	color: $amexioColorPink;
 }
 
@@ -117,7 +108,7 @@ $amexioColorPink : #FF69B4;
 */
 
 .amexio-bottom-tab-orange {
-  border-top: 1px solid $amexioColorOrange !important;
+  border-top: 2px solid $amexioColorOrange !important;
 	color: $amexioColorOrange;
 }
 
@@ -129,7 +120,7 @@ $amexioColorPink : #FF69B4;
 */
 .amexio-top-tab-red {
   color:$amexioColorRed;
-  border-bottom: 1px solid $amexioColorRed !important;
+  border-bottom: 2px solid $amexioColorRed !important;
 }
 
 /** Amexio Colors --- 
@@ -137,7 +128,7 @@ $amexioColorPink : #FF69B4;
    f0faf4: #f0faf4 rgb(240,250,244,0.0);
 */
 .amexio-top-tab-green {
-  border-bottom: 1px solid $amexioColorGreen !important;
+  border-bottom: 2px solid $amexioColorGreen !important;
   color: $amexioColorGreen;
 }
 
@@ -146,7 +137,7 @@ $amexioColorPink : #FF69B4;
    fffaff: #fffaff rgb(255,250,255,0.0);
 */
 .amexio-top-tab-purple {
-  border-bottom: 1px solid $amexioColorPurple !important;
+  border-bottom: 2px solid $amexioColorPurple !important;
 	color: $amexioColorPurple;
 }
 
@@ -155,7 +146,7 @@ $amexioColorPink : #FF69B4;
    f5f5ff: #f5f5ff rgb(245,245,255,0.0);
 */
 .amexio-top-tab-blue {
-  border-bottom: 1px solid $amexioColorBlue !important;
+  border-bottom: 2px solid $amexioColorBlue !important;
 	color: $amexioColorBlue;
 }
 /** Amexio Colors --- 
@@ -164,7 +155,7 @@ $amexioColorPink : #FF69B4;
 */
 
 .amexio-top-tab-brown {
-  border-bottom: 1px solid $amexioColorBrown !important;
+  border-bottom: 2px solid $amexioColorBrown !important;
   color: $amexioColorBrown;
 }
 
@@ -174,17 +165,8 @@ $amexioColorPink : #FF69B4;
 */
 
 .amexio-top-tab-yellow {
-  border-bottom: 1px solid $amexioColorYellow !important;
+  border-bottom: 2px solid $amexioColorYellow !important;
 	color: $amexioColorYellow;
-}
-/** Amexio Colors --- 
-   Black: #000000 rgb(0,0,0,0.0);
-   White: #ffffff rgb(255,255,255,0.0);
-*/
-.amexio-top-tab-black {
-  border-bottom: 1px solid;
-  border-bottom-color: $amexioColorBlack;
-	color: $amexioColorBlack;
 }
 
 /** Amexio Colors --- 
@@ -193,7 +175,7 @@ $amexioColorPink : #FF69B4;
 */
 
 .amexio-top-tab-pink {
-  border-bottom: 1px solid $amexioColorPink !important;
+  border-bottom: 2px solid $amexioColorPink !important;
 	color: $amexioColorPink;
 }
 
@@ -203,6 +185,6 @@ $amexioColorPink : #FF69B4;
 */
 
 .amexio-top-tab-orange {
-  border-bottom: 1px solid $amexioColorOrange !important;
+  border-bottom: 2px solid $amexioColorOrange !important;
 	color: $amexioColorOrange;
 }
