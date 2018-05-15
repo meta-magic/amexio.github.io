@@ -1117,6 +1117,7 @@ button {
   margin-left: 3px; }
 
 .button-dropdown {
+  position: absolute;
   padding: .5rem 1rem;
   font-size: 1rem;
   border: 2px solid #4CBB17;
