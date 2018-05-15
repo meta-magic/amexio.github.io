@@ -35,7 +35,7 @@ Properties
 name : infinite
 datatype : boolean
 version : 4.0 onwards
-default : none
+default : false
 description : Enable/Disable Infinite Mode.
 */
   @Input() infinite: boolean;
@@ -45,7 +45,7 @@ Properties
 name : type
 datatype : string
 version : 4.0 onwards
-default : none
+default : 
 description : Type of progress bar can be default,theme-color,theme-backgroundcolor, green, red, yellow( primary, secondary ,success , danger & warning
 */
   @Input() type: string;
@@ -55,8 +55,8 @@ Properties
 name : amexio-color
 datatype : string
 version : 4.1 onwards
-default : none
-description : use different inbuilt amexio colors available (e.g amexio-black, amexio-red etc)
+default : 
+description : Use different inbuilt amexio colors available (e.g amexio-black, amexio-red etc)
 */
   @Input('amexio-color') amexiocolor : string;
 
@@ -65,7 +65,7 @@ Properties
 name : current-value
 datatype : string
 version : 4.0 onwards
-default : none
+default : 
 description : Current Position of progress.
 */
   @Input('current-value') currentvalue: string;
@@ -75,7 +75,7 @@ Properties
 name : label
 datatype : any
 version : 4.0 onwards
-default : none
+default : 
 description : Custom labels on bar.
 */
   @Input() label: any;
@@ -85,7 +85,7 @@ Properties
 name : height
 datatype : any
 version : 4.0 onwards
-default : none
+default : 
 description : Height of bar.
 */
   @Input() height: any;
@@ -95,7 +95,7 @@ Properties
 name : stripped
 datatype : boolean
 version : 4.0 onwards
-default : none
+default : false
 description : Bar styled stripped.
 */
   @Input() stripped: boolean;

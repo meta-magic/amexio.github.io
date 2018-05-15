@@ -106,7 +106,7 @@ Properties
 name : background-color
 datatype :  string
 version : 4.0 onwards
-default : none
+default : 
 description : Set background color
 */ 
   @Input('background-color') backgroundcolor: string;
@@ -116,7 +116,7 @@ Properties
 name : font-color
 datatype :  string
 version : 4.0 onwards
-default : none
+default : 
 description : Set font color
 */ 
   @Input('font-color') fontcolor: string;
@@ -126,7 +126,7 @@ Properties
 name : amexio-color
 datatype :  string
 version : 4.1 onwards
-default : none
+default : 
 description : Set font color
 */ 
   @Input('amexio-color') amexiocolor: string = "";

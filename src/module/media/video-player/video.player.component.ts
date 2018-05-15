@@ -33,7 +33,7 @@ Properties
 name : path
 datatype :  any
 version : 4.0 onwards
-default : none
+default : 
 description : Path of video
 */ 
   @Input() path: any;
@@ -43,7 +43,7 @@ Properties
 name : extension
 datatype :  any
 version : 4.0 onwards
-default : none
+default : 
 description : Video extension
 */ 
   @Input() extension: any;
@@ -53,8 +53,8 @@ Properties
 name : width
 datatype :  any
 version : 4.0 onwards
-default : none
-description :  width of the video player window
+default : 
+description :  Width of the video player window
 */ 
   @Input() width : any;  
 

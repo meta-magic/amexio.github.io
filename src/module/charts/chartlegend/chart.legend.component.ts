@@ -29,7 +29,7 @@ Properties
 name : position
 datatype : string
 version : 4.0 onwards
-default : none
+default : 
 description : Position of the legend.'bottom' - Below the chart.'top' - Above the chart.
 */
 @Input() position: string;
@@ -40,7 +40,7 @@ Properties
 name : alignment
 datatype : string
 version : 4.0 onwards
-default : none
+default : 
 description : Alignment of the legend.'start' - Aligned to the start of the area allocated for the legend.'center' - Centered in the area allocated for the legend 'end' - Aligned to the end of the area allocated for the legend.
 */
 @Input() alignment: string;
@@ -50,7 +50,7 @@ Properties
 name : color
 datatype : string
 version : 4.0 onwards
-default : none
+default :
 description : Color of chart legend. for example: 'red' or '#00cc00'.
 */
 @Input() color: string;
@@ -60,7 +60,7 @@ Properties
 name : font-name
 datatype : string
 version : 4.0 onwards
-default : none
+default : 
 description : Font name of chart legend
 */
 @Input('font-name') fontname: string;
@@ -70,7 +70,7 @@ Properties
 name : font-size
 datatype : string
 version : 4.0 onwards
-default : none
+default : 
 description : Font size of chart legend
 */
   @Input('font-size') fontsize: string;
@@ -91,7 +91,7 @@ Properties
 name : max-lines
 datatype : number
 version : 4.0 onwards
-default : none
+default : 
 description : Maximum number of lines in the legend. Set this to a number greater than one to add lines to your legend.
 */
   @Input('max-lines') maxlines: number;

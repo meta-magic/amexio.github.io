@@ -23,7 +23,7 @@ Properties
 name : size
 datatype :  string
 version : 4.0 onwards
-default : none
+default : 
 description : Different Sizes of Buttons availabe : large, default, small & xsmall
 */  
   @Input() size: string;
@@ -37,7 +37,7 @@ Properties
 name :  badge
 datatype : number
 version : 4.1.9 onwards
-default : none
+default : 
 description : Badge  describes the badge value that has to be displayed on button 
 */
 @Input('badge') badge: number;
