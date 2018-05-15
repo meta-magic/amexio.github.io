@@ -1,75 +1,80 @@
-
-.box-content{
-  width: 100%;
+.box-content {
+    width: 100%;
 }
 
-.border-topbar{
-  border-top:$boxBorderSize solid !important;
-}
-.border-bottombar{
-  border-bottom:$boxBorderSize solid !important;
-}
-.border-leftbar{
-  border-left: $boxBorderSize solid !important;
-}
-.border-rightbar{
-  border-right: $boxBorderSize solid !important;
+.border-topbar {
+    border-top: $boxBorderSize solid !important;
 }
 
-.border-all{
-  border:$boxBorderSize solid  !important;
-}
-.border-top-bottom{
-  border-top:$boxBorderSize solid  !important;
-  border-bottom:$boxBorderSize solid  !important;
-}
-.border-right-left{
-  border-right:$boxBorderSize solid  !important;
-  border-left: $boxBorderSize solid  !important;
+.border-bottombar {
+    border-bottom: $boxBorderSize solid !important;
 }
 
-.box-default{
-  border-color : $boxBorderColor
+.border-leftbar {
+    border-left: $boxBorderSize solid !important;
 }
 
-.padding{
-  padding:8px 8px 8px 8px;
+.border-rightbar {
+    border-right: $boxBorderSize solid !important;
 }
 
-.border-red{
-  border-color: $boxBorderRed !important;
+.border-all {
+    border: $boxBorderSize solid !important;
 }
 
-.border-blue{
-  border-color: $boxBorderBlue !important;
+.border-top-bottom {
+    border-top: $boxBorderSize solid !important;
+    border-bottom: $boxBorderSize solid !important;
 }
 
-.border-green{
-  border-color: $boxBorderGreen !important;
+.border-right-left {
+    border-right: $boxBorderSize solid !important;
+    border-left: $boxBorderSize solid !important;
 }
 
-.border-brown{
-  border-color: $boxBorderBrown !important;
+.box-default {
+    border-color: $boxBorderColor
 }
 
-.border-purple{
-  border-color: $boxBorderPurple !important;
+.padding {
+    padding: 8px 8px 8px 8px;
 }
 
-.border-yellow{
-  border-color: $boxBorderYellow!important;
+.border-red {
+    border-color: $boxBorderRed !important;
 }
 
-.box-close{
-  float:right;
-  padding-right: 5px;
+.border-blue {
+    border-color: $boxBorderBlue !important;
 }
 
-.border-dotted{
-  border-width: 1px;
-  border-style: dotted;
+.border-green {
+    border-color: $boxBorderGreen !important;
 }
 
-.border-theme-color{
-  border-color: $boxBorderThemeColor;
+.border-brown {
+    border-color: $boxBorderBrown !important;
+}
+
+.border-purple {
+    border-color: $boxBorderPurple !important;
+}
+
+.border-yellow {
+    border-color: $boxBorderYellow!important;
+}
+
+.box-close {
+    float: right;
+    padding-right: 4px;
+    height: 5px;
+}
+
+.border-dotted {
+    border-width: 1px;
+    border-style: dotted;
+}
+
+.border-theme-color {
+    border-color: $boxBorderThemeColor;
 }
