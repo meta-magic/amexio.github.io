@@ -50,7 +50,7 @@ Properties
 name :field-label
 datatype : string
 version : 4.0 onwards
-default : none
+default :
 description : The label of this field.
 */
   @Input('field-label') fieldlabel: string;
@@ -59,7 +59,7 @@ Events
 name : onChange
 datatype : any
 version : 4.0 onwards
-default : none
+default :
 description : Event is fired on toggle component click
 */
 /*

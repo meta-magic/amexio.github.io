@@ -20,7 +20,7 @@ Properties
 name : title
 datatype : string
 version : 4.0 onwards
-default : none
+default :
 description : Title on Tab Button/Pill.
 */
   @Input() title: string;
@@ -50,7 +50,7 @@ Properties
 name : icon:
 datatype :string
 version : 4.0 onwards
-default : none
+default : 
 description : Supports glyphicon only. Can add directly home instead of 'glyphicon glyphicon-home.
 */
   @Input() icon: string;
