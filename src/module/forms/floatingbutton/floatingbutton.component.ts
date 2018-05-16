@@ -21,70 +21,70 @@ Properties
 name : vertical-position
 datatype : string
 version : 4.1 onwards
-default : 
+default : none
 description : Postion floating button vertically: top or bottom or center. This attribute is ignored if user specify position explicitly (using position-top/position-bottom/position-left/position-right)
 */ 
   @Input('vertical-position') verticalposition : string;
 /*
 Properties 
 name : horizontal-position
-datatype : string
+datatype : none
 version : 4.1 onwards
-default : 
+default : none
 description : Postion floating button horizontally: left or right or center. This attribute is ignored if user specify position explicitly (using position-top/position-bottom/position-left/position-right)
 */ 
   @Input('horizontal-position') horizontalposition : string;
 /*
 Properties 
 name : position-top
-datatype : string
+datatype : none
 version : 4.1 onwards
-default : top
+default : none
 description : Takes top position in percentage or pixel
 */ 
   @Input('position-top') top : string;
 /*
 Properties 
 name : position-bottom
-datatype : string
+datatype : none
 version : 4.1 onwards
-default : bottom
+default : none
 description : Takes bottom position in percentage or pixel
 */ 
   @Input('position-bottom') bottom : string;
 /*
 Properties 
 name : position-left
-datatype : string
+datatype : none
 version : 4.1 onwards
-default : left
+default : none
 description : Takes left position in percentage or pixel
 */ 
   @Input('position-left') left : string;
 /*
 Properties 
 name : position-right
-datatype : string
+datatype : none
 version : 4.1 onwards
-default : right
+default : none
 description : Takes right position in percentage or pixel
 */ 
   @Input('position-right') right : string;
 /*
 Properties 
 name : label
-datatype : string
+datatype : none
 version : 4.1 onwards
-default : 
+default : none
 description : Label on floating button, this is activated in case of block=square
 */ 
   @Input('label') label: string;
 /*
 Properties 
 name : block
-datatype : string
+datatype : none
 version : 4.1 onwards
-default : circle
+default : none
 description : Display button as round or square
 */ 
   @Input('block') block: string = "circle";
@@ -93,7 +93,7 @@ Propertiee
 name : icon
 datatype : string
 version : 4.1 onwards
-default : 
+default : none
 description : FaIcon class-name.
 */ 
   @Input('icon') icon : string;
@@ -102,7 +102,7 @@ Properties
 name : type
 datatype : string
 version : 4.1 onwards
-default : 
+default : none
 description : Type of button - default / theme-color / theme-backgroundcolor / green / red / yellow
 */ 
   @Input('type') type : string;
@@ -111,7 +111,7 @@ Properties
 name : disabled
 datatype : string
 version : 4.1 onwards
-default : 
+default : none
 description :Enable/Disables the button
 */ 
   @Input('disabled') disabled : string;
@@ -120,7 +120,7 @@ Properties
 name : relative
 datatype : boolean
 version : 4.1 onwards
-default : false
+default : none
 description : Place floating button at relative position
 */ 
   @Input('relative') relative : boolean = false;
@@ -129,7 +129,7 @@ Events
 name : onClick
 datatype : any
 version : none
-default : 
+default : none
 description : Event is fired when button is click
 */ 
   @Output() onClick : any = new EventEmitter<any>();

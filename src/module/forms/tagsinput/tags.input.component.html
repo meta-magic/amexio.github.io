@@ -1,30 +1,23 @@
 <div class="inputgroup" #rootDiv>
 
-  <label *ngIf="haslabel" [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
+    <label *ngIf="haslabel" [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
     {{fieldlabel}}
   </label>
 
 
-  <div class="tag-input" [ngClass]="{'loading-mask' : maskloader}">
-    <div class="tag" *ngFor="let item of onSelections">
-      {{item[key]}}
-      <span class="closebtn" (click)="removePill(item)">&times;</span>
+    <div class="tag-input" [ngClass]="{'loading-mask' : maskloader}">
+        <div class="tag" *ngFor="let item of onSelections">
+            {{item[key]}}
+            <span class="closebtn" (click)="removePill(item)">&times;</span>
+        </div>
+
+        <input type="text" class="input-control" [ngClass]="{'input-control-error' : inp.invalid && (inp.dirty || inp.touched),'input-control-success' : inp.valid && (inp.dirty || inp.touched)}" (focus)="onFocus(rootDiv)" (input)="onInput(inp)" (keyup)="onKeyUp($event)"
+            [attr.placeholder]="placeholder" [attr.disabled]="disabled ? true: null" [required]="allowblank ? true: null" #inp/>
+
     </div>
 
-    <input type="text" class="input-control"
-           [ngClass]="{'input-control-error' : inp.invalid && (inp.dirty || inp.touched),'input-control-success' : inp.valid && (inp.dirty || inp.touched)}"
-           (focus)="onFocus(rootDiv)"
-           (input)="onInput(inp)"
-           (keyup)="onKeyUp($event)"
-           [attr.placeholder]="placeholder"
-           [attr.disabled]="disabled ? true: null"
-           [required]="allowblank ? true: null"
-           #inp/>
 
-  </div>
-
-
-  <span class="dropdown"  [ngClass]="{'dropdown-up' : posixUp}" [ngStyle]="{'display': showToolTip ? 'block' : 'none'}" #tagDropRef>
+    <span #dropdownitems class="dropdown" [ngClass]="{'dropdown-up' : posixUp}" [ngStyle]="{'display': showToolTip ? 'block' : 'none'}" #tagDropRef>
     <ul class="dropdown-list">
       <li class="list-items" [ngClass]="{'list-items-selected':item.selected}"
           *ngFor="let item of filteredResult"
@@ -35,10 +28,9 @@
 </div>
 
 
-<span *ngIf="iconfeedback && (inp.invalid && (inp.dirty || inp.touched) || inp.valid)"
-      class="input-control-feedback">
+<span *ngIf="iconfeedback && (inp.invalid && (inp.dirty || inp.touched) || inp.valid)" class="input-control-feedback">
         <span *ngIf="inp.invalid && (inp.dirty || inp.touched)">&#9888;</span>
-        <span *ngIf="inp.valid && (inp.dirty || inp.touched)"> &#10004;</span>
+<span *ngIf="inp.valid && (inp.dirty || inp.touched)"> &#10004;</span>
 
 </span>
 

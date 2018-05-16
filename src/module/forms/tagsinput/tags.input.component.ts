@@ -20,43 +20,43 @@ import {CommonDataService} from "../../services/data/common.data.service";
 
 export class AmexioTagsInputComponent implements OnInit {
      /*
-Properties 
+Properties
 name : field-label
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : The label of this field
 */
   @Input('field-label') fieldlabel: string;
   /*
-Properties 
+Properties
 name : allow-blank
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Sets if field is required
 */
   @Input('allow-blank') allowblank: boolean;
    /*
-Properties 
+Properties
 name : data
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Input data source
 */
   @Input() data: any;
  /*
-Properties 
+Properties
 name : data-reader
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Key in JSON datasource for records
 */
   @Input('data-reader') datareader: string;
 /*
-Properties 
+Properties
 name : http-method
 datatype : string
 version : 4.0 onwards
@@ -65,58 +65,58 @@ description : Type of HTTP call, POST,GET.
 */
   @Input('http-method') httpmethod: string;
  /*
-Properties 
+Properties
 name : http-url
 datatype : string
 version : 4.0 onwards
 default :
 description : REST url for fetching datasource.
-*/ 
+*/
   @Input('http-url') httpurl: string;
    /*
-Properties 
+Properties
 name : display-field
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Name of key inside response data to display on ui.
-*/ 
+*/
   @Input('display-field') displayfield: string;
    /*
-Properties 
+Properties
 name : value-field
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Name of key inside response data.use to send to backend
-*/ 
+*/
   @Input('value-field') valuefield: string;
  /*
 Events
 name : input
 datatype : any
 version : none
-default : 
+default :
 description : 	On input event field.
-*/ 
+*/
   @Output() input: any = new EventEmitter<any>();
   /*
 Events
 name : onChange
 datatype : any
 version : none
-default : 
+default :
 description : on change event
-*/ 
+*/
   @Output() onChange: EventEmitter<any> = new EventEmitter<any>();
   /*
 Events
 name : focus
 datatype : any
 version : none
-default : 
+default :
 description : On field focus event
-*/ 
+*/
   @Output() focus: any = new EventEmitter<any>();
 
   @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
@@ -166,43 +166,43 @@ description : On field focus event
 
   @Input('icon-feedback') iconfeedback: boolean;
   /*
-Properties 
+Properties
 name : font-style
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Set font-style to field
 */
   @Input('font-style') fontstyle: string;
   /*
-Properties 
+Properties
 name : font-family
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Set font-family to field
 */
   @Input('font-family') fontfamily: string;
   /*
-Properties 
+Properties
 name : font-size
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Set font-size to field
 */
   @Input('font-size') fontsize: string;
   /*
-Properties 
+Properties
 name : enable-popover
 datatype : string
 version : 4.0 onwards
-default :  
+default :
 description : Set enable / disable popover.
 */
   @Input('enable-popover') enablepopover: boolean;
  /*
-Properties 
+Properties
 name : has-label
 datatype : boolean
 version : 4.0 onwards
@@ -218,20 +218,20 @@ description : flag to set label
 
   filteredResult: any;
   /*
-Properties 
+Properties
 name : key
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Key as input to tags
 */
   @Input() key: any;
   /*
-Properties 
+Properties
 name : trigger-char
 datatype : number
 version : 4.0 onwards
-default : 
+default :
 description : Sets the trigger char length
 */
   @Input('trigger-char') triggerchar: number;
@@ -275,9 +275,9 @@ description : Sets the trigger char length
   }
 
   navigateKey(event:any){
-      
+
   }
-  
+
   selectedindex : number=0;
   scrollposition : number = 30;
 
@@ -303,7 +303,7 @@ description : Sets the trigger char length
       this.navigateUsingKey(event);
   }
   navigateUsingKey(event: any){
-    
+
     if(this.selectedindex > this.filteredResult.length){
       this.selectedindex=0;
     }
@@ -321,15 +321,14 @@ description : Sets the trigger char length
           this.selectedindex++;
           if((this.selectedindex > 5 )){
             this.dropdownitems.nativeElement.scroll(0,this.scrollposition);
-            this.scrollposition = this.scrollposition  +30; 
+            this.scrollposition = this.scrollposition  +30;
           }
         }
         else if(event.keyCode === 38){
           this.selectedindex--;
-          console.log(this.scrollposition);
           if(this.scrollposition>=0 && this.selectedindex>1){
             this.dropdownitems.nativeElement.scroll(0,this.scrollposition);
-            this.scrollposition = this.scrollposition  -30; 
+            this.scrollposition = this.scrollposition  -30;
           }
           if(this.selectedindex === 1){
             this.scrollposition = 30;
@@ -338,24 +337,22 @@ description : Sets the trigger char length
           if(this.selectedindex <=0){
             //this.selectedindex = 1;
           }
-        }  
+        }
       }
 
       if(this.filteredResult[this.selectedindex]){
         this.filteredResult[this.selectedindex].selected = true;
-        
+
       }
       if(this.filteredResult[prevselectedindex]){
         this.filteredResult[prevselectedindex].selected = false;
-      }      
+      }
     }
 
-    console.log(new Date().getTime()+"--"+this.selectedindex+"--"+this.filteredResult.length);
     if(event.keyCode === 13 && this.filteredResult[this.selectedindex]){
-      console.log("exist drop down");
       this.onItemSelect(this.filteredResult[this.selectedindex]);
     }
-  
+
   }
 
   showAllData(activerow:number){
@@ -386,14 +383,14 @@ description : Sets the trigger char length
     this.value = row[this.valuefield];
     this.displayValue = row[this.displayfield];
     this.showToolTip = false;
-   
+
   }
 
   onInput(input : any) {
       this.input.emit();
-      
+
   }
-    
+
   // The internal dataviews model
   private innerValue: any = '';
 
