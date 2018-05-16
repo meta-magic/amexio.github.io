@@ -7,7 +7,7 @@
  Component Selector :  <amexio-dropdown>
  Component Description : Drop-Down component has been created to render N numbers of drop-down items based on data-set configured. Data-set can be configured using HTTP call OR Define fix number of dropdown-items. User can configure different attributes for enabling filter, multi-select, maximum selection in case of multi select.
 
- 
+
 */
 import {
   Component, DoCheck, ElementRef, EventEmitter, forwardRef, HostListener, Input, OnInit, Output, Renderer2, ViewChild
@@ -36,7 +36,7 @@ Properties
 name : field-label
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : The label of this field
 */
   @Input('field-label') fieldlabel: string;
@@ -56,7 +56,7 @@ Properties
 name : data
 datatype : any
 version : 4.0 onwards
-default : 
+default :
 description : Local data for dropdown.
 */
   @Input() data: any;
@@ -96,7 +96,7 @@ Properties
 name : display-field
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Name of key inside response data to display on ui.
 */
   @Input('display-field') displayfield: string;
@@ -186,7 +186,7 @@ Events
 name : focus
 datatype : any
 version : none
-default : 
+default :
 description : On field focus event
 */
   @Output() focus: any = new EventEmitter<any>();
@@ -256,7 +256,7 @@ Properties
 name : font-style
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Set font-style to field
 */
   @Input('font-style') fontstyle: string;
@@ -274,7 +274,7 @@ Properties
 name : font-size
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Set font-size to field
 */
   @Input('font-size') fontsize: string;
@@ -538,7 +538,6 @@ description : Set enable / disable popover.
         }
         else if(event.keyCode === 38){
           this.selectedindex--;
-          console.log(this.scrollposition);
           if(this.scrollposition>=0 && this.selectedindex>1){
             this.dropdownitems.nativeElement.scroll(0,this.scrollposition);
             this.scrollposition = this.scrollposition  -30;
@@ -564,7 +563,6 @@ description : Set enable / disable popover.
 
     //console.log(new Date().getTime()+"--"+this.selectedindex+"--"+this.filteredOptions.length);
     if(event.keyCode === 13 && this.filteredOptions[this.selectedindex]){
-      console.log("exist drop down");
       this.onItemSelect(this.filteredOptions[this.selectedindex]);
     }
 
