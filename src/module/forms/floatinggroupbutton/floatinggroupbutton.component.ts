@@ -20,52 +20,52 @@ Properties
 name : vertical-position
 datatype : string
 version : 4.1 onwards
-default : none
+default : 
 description : Positions floating button vertically: top or bottom or center. This attribute is ignored if user specify position explicitly (using position-top/position-bottom/position-left/position-right)
 */ 
   @Input('vertical-position') verticalposition : string;
   /*
 Properties 
 name : horizontal-position
-datatype : none
+datatype : string
 version : 4.1 onwards
-default : none
+default : 
 description : Positions floating button horizontally: left or right or center. This attribute is ignored if user specify position explicitly (using position-top/position-bottom/position-left/position-right)
 */ 
   @Input('horizontal-position') horizontalposition : string;
   /*
 Properties 
 name : position-top
-datatype : none
+datatype : string
 version : 4.1 onwards
-default : none
+default : top
 description : Takes top position in percentage or pixel
 */ 
   @Input('position-top') top : string;
 /*
 Properties 
 name : position-bottom
-datatype : none
+datatype : string 
 version : 4.1 onwards
-default : none
+default : bottom
 description : Takes bottom position in percentage or pixel
 */ 
   @Input('position-bottom') bottom : string;
 /*
 Properties 
 name : position-left
-datatype : none
+datatype : string
 version : 4.1 onwards
-default : none
+default : left
 description : Takes left position in percentage or pixel
 */ 
   @Input('position-left') left : string;
 /*
 Properties 
 name : position-right
-datatype : none
+datatype : string
 version : 4.1 onwards
-default : none
+default : right
 description : Takes right position in percentage or pixel
 */ 
   @Input('position-right') right : string;
@@ -74,7 +74,7 @@ Propertiee
 name : icon
 datatype : string
 version : 4.1 onwards
-default : none
+default : 
 description : FaIcon classname.
 */ 
   @Input('icon') icon : string;
@@ -83,7 +83,7 @@ Properties
 name : type
 datatype : string
 version : 4.1 onwards
-default : none
+default : 
 description : Type of button - default  / theme-color / theme-backgroundcolor / green / red / yellow
 */ 
   @Input('type') type : string;
@@ -92,7 +92,7 @@ Properties
 name : disabled
 datatype : string
 version : 4.1 onwards
-default : none
+default : 
 description :Enable/Disables the button
 */ 
   @Input('disabled') disabled : string;
@@ -101,7 +101,7 @@ Properties
 name : relative
 datatype : boolean
 version : 4.1 onwards
-default : none
+default : false
 description : Place floating buttong at relative position
 */ 
   @Input('relative') relative : boolean = false;
@@ -110,7 +110,7 @@ Properties
 name : floating-group-position
 datatype : string
 version : 4.1 onwards
-default : none
+default : 
 description : Positions floating button group at specified position
 */ 
   @Input('floating-group-position') floatinggroupposition : string; 
@@ -119,8 +119,8 @@ Properties
 name : data
 datatype : array
 version : 4.1 onwards
-default : none
-description : local data for buttons
+default : 
+description : Local data for buttons
 */ 
   @Input('data') data: any[];
   /*
@@ -128,7 +128,7 @@ Events
 name : onClick
 datatype : any
 version : none
-default : none
+default : 
 description : Event is fired when button is click
 */
   @Output() onClick : any = new EventEmitter<any>();
