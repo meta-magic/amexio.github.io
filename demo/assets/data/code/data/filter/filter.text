@@ -1,6 +1,0 @@
-export class FilterGridDemo {
-  constructor() {}
-  onRowSelect(data: any) {
-     /* Do opertion on data */
-  }
-}

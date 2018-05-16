@@ -1,7 +1,0 @@
-export class TreeWithTemplateDemo {
-  constructor() {}
-
-  getNodeData(data: any) {
-      /*Do Operation on data*/
-  }
-}

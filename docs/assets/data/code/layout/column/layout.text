@@ -1,5 +1,0 @@
-export class ColumnDemo{
-  constructor(){
-
-  }
-}

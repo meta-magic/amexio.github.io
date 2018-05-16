@@ -1,7 +1,0 @@
-export class TreeDataGridDemo {
-  constructor() {}
-
-  getSelectedData(data: any) {
-      /*Do Operation on data*/
-  }
-}

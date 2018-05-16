@@ -1,6 +1,0 @@
-export class DateTimePickerDemo {
- time: any;
-  onChangeTime(data: any) {
-  //some operation
-  }
-}

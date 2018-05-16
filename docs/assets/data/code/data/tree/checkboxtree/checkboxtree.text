@@ -1,7 +1,0 @@
-export class CheckboxTreeDemo {
-  constructor() {}
-
-  getNodeData(data: any) {
-      /*Do Operation on data*/
-  }
-}
