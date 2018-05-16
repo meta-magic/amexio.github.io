@@ -1,19 +1,13 @@
 <div class="inputgroup">
+    <ng-container *ngIf="fieldlabel">
+        <label>
+          {{fieldlabel}}
+        </label>
+    </ng-container>
 
-  <label>
-    {{fieldlabel}}
-  </label>
 
-  <div (mouseleave)="resetHovered()"
-        class="rating"
-        [class.disabled]="disabled"
-        [class.readonly]="readonly"
-        tabindex="0"
-        role="slider"
-        aria-valuemin="0"
-        [attr.aria-valuemax]="ratingRange.length"
-        [attr.aria-valuenow]="model">
-      <span *ngFor="let item of ratingRange; let index = index">
+    <div (mouseleave)="resetHovered()" class="rating" [class.disabled]="disabled" [class.readonly]="readonly" tabindex="0" role="slider" aria-valuemin="0" [attr.aria-valuemax]="ratingRange.length" [attr.aria-valuenow]="model">
+        <span *ngFor="let item of ratingRange; let index = index">
           <i (mouseenter)="setHovered(item)"
              (mousemove)="changeHovered($event)"
              (click)="rate(item)"
@@ -21,5 +15,5 @@
              class="{{ iconclass }} half{{ calculateWidth(item) }}"
              [title]="titles[index] || item">{{ emptyicon }}</i>
       </span>
-  </div>
+    </div>
 </div>
