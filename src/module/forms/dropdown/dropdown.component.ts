@@ -150,10 +150,10 @@ description : true for select multiple options
 /*
 Properties
 name : error-msg
-datatype : none
+datatype : string
 version : 4.0 onwards
-default : none
-description : sets the error message
+default : 
+description : Sets the error message
 */
   @Input('error-msg')
   set errormsg(value: string) {
@@ -248,7 +248,7 @@ Properties
 name : icon-feedback
 datatype : boolean
 version : 4.0 onwards
-default : none
+default : false
 description : */
   @Input('icon-feedback') iconfeedback: boolean;
   /*
@@ -283,16 +283,16 @@ Properties
 name : has-label
 datatype : boolean
 version : 4.0 onwards
-default : true
+default : false
 description : flag to set label
 */
   @Input('has-label') haslabel: boolean = true;
   /*
 Properties
 name : enable-popover
-datatype : string
+datatype : boolean
 version : 4.0 onwards
-default :
+default :false
 description : Set enable / disable popover.
 */
   @Input('enable-popover') enablepopover: boolean;
