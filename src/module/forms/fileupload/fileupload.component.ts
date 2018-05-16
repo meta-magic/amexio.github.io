@@ -38,7 +38,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
 
     <div class="file-upload-box" style="width: 100%" >
       <li *ngFor="let file of uploadedFiles ; let index = index" class="file-upload-info">
-        <span class="uploaded-file-name">{{file.name}} &nbsp; {{file.size}}</span>
+        <span class="uploaded-file-name">({{file.name}} &nbsp;  &nbsp; ({{file.size}}) )</span>
         <amexio-form-icon key="tab_close" class="close-icon" (onClick)="closeFile(file,index)">
         </amexio-form-icon>
       </li>
