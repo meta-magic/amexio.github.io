@@ -130,13 +130,11 @@
 }
 
 .float-right{
-  display: flex;
-  justify-content: flex-end
+ float: right;
 }
 
 .float-left{
   float: left;
-  height: 40px !important;
 }
 
 .equally-align-tabs{
@@ -163,31 +161,6 @@
   max-width: 980px;
 }
 
-.dynamicContent .tablink{
-  padding-bottom: 0px !important;
-}
-
-.dynamicContent .input-control {
-  height: 15px !important;
-}
-
-.dynamicContent .input-box-container {
-  height: 5px !important;
-}
-
-.dynamicContent .drodown-caret-down{
-  top: -2px !important;
-}
-
-.dynamicContent .toggle{
-  width: 62px !important;
-  height: 32px !important;
-}
-
-.dynamicContent .toggle-slider:before{
-  top: 2px;
-}
-
 .bottomActivetab{
   border-bottom: $tabBorderSize+2 solid $tabActiveBorder;
 }
@@ -196,11 +169,39 @@
   border-top: 3px solid !important;
 }
 
-.dynamicContent .rating{
-  padding : .0rem .0rem !important;
+//Position of tabs at right most
+.tabposition-right{
+  display: inline-flex !important;
+  width: 100%;
+  justify-content: space-between;
 }
 
-.tablink-header{
-  padding: 5%;
-  font-size: medium;
+//Position of tabs at left most
+.tabposition-left{
+  display: inline-flex !important;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.tablink .inputgroup *{
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
  }
+
+ .tablink amexio-tab-action1{
+   padding-left: 5%;
+  display: inline-block;
+ }
+
+ .tabnavigation-bottom-right{
+    bottom: 3%;
+    z-index: 3;
+    position: absolute;
+    right: 16px
+ }
+
+ .tabnavigation-bottom-left{
+  bottom: 3%;
+  z-index: 3;
+  position: absolute;
+}

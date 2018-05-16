@@ -59,7 +59,7 @@ export namespace AmexioBottomColorMap {
 })
 export class AmexioTabComponent implements OnInit, AfterViewInit, AfterContentInit {
 
-  /*
+   /*
 Properties 
 name : closable
 datatype : boolean
@@ -67,82 +67,84 @@ version : 4.0 onwards
 default : false
 description : This flag will make tab closable.
 */
-  @Input() closable: boolean;
+@Input() closable: boolean;
 
-  /*
+/*
 Properties 
 name : header-align
 datatype : string
 version : 4.1.9 onwards
 default : left
-description : Specify position of tabs(left/right/center).
+description : specify position of tabs(left/right/center).
 */
-  @Input('header-align') headeralign: string;
+@Input('header-align') headeralign: string;
 
-  /*
+/*
 Properties 
 name : action-type-align
 datatype : string
 version : 4.1.9 onwards
 default : left
-description : Specify position of action type(left/right).
+description : specify position of action type(left/right).
 */
-  @Input('action-type-align') typeActionAlign: string;
+@Input('action-type-align') typeActionAlign: string;
 
 
-  /*
-  Properties 
-  name : divide-header-equally
-  datatype : boolean
-  version : 4.1.9 onwards
-  default : false
-  description : If "true" divides all tab equally.
-  */
-  @Input('divide-header-equally') fullPageTabs: boolean;
+/*
+Properties 
+name : divide-header-equally
+datatype : boolean
+version : 4.1.9 onwards
+default : false
+description : If "true" divides all tab equally.
+*/
+@Input('divide-header-equally') fullPageTabs: boolean;
 
-  /*
+/*
 Properties 
 name : type
 datatype : string
 version : 4.1.9 onwards
-default : 
-description : Type can be amexio input such as (text field/ number field/ checkbox/ label/ dropdown/ toggle/ button/ image/ checkbox group/ radio group/ rating/ datefield)
+default : none
+description : Type can be amexio input such as (text field/ number field/ checkbox/ label/ dropdown/
+            toggle/ button/ image/ checkbox group/ radio group/ rating/ datefield)
 */
-  @Input('type') type: string;
+// @Input('type') type: string;
 
-  /*
+/*
 Properties 
 name :tab-position
 datatype : string
 version : 4.1.9 onwards
 default : top
-description : Position of tab can be (top/bottom) When Tab used in card and tab-position is bottom , make sure footer property of card is false.
+description : Position of tab can be (top/bottom)
 */
-  @Input('tab-position') tabPosition: string;
+@Input('tab-position') tabPosition: string;
 
-  /*
+/*
 Properties 
 name : header
 datatype : string
 version : 4.1.9 onwards
-default : 
+default : none
 description : Header for Tab.
 */
-  @Input() header: string;
+@Input() header: string;
 
-  @ViewChild('tab', { read: ElementRef }) public tabs: ElementRef;
-  @ViewChild('headerName', { read: ElementRef }) public headerName: ElementRef;
-  @ViewChild('tabslist', { read: ElementRef }) public tabslist: ElementRef;
-  @ViewChild('tabAction', { read: ElementRef }) public tabAction: ElementRef;
-  @ViewChild('headerWidth', { read: ElementRef }) public headerWidth: ElementRef;
+@ViewChild('tab', { read: ElementRef }) public tabs: ElementRef;
+@ViewChild('tabAction', { read: ElementRef }) public tabAction: ElementRef;
+@ViewChild('headerWidth', { read: ElementRef }) public headerWidth: ElementRef;
 
+@ViewChild('headerName', { read: ElementRef }) public headerName: ElementRef;
+@ViewChild('tabslist', { read: ElementRef }) public tabslist: ElementRef;
+@ViewChild('actionProperty', { read: ElementRef }) public actionProperty: ElementRef;
 
-  @ContentChildren(AmexioTabPill) queryTabs: QueryList<AmexioTabPill>;
-  tabCollection: AmexioTabPill[];
+@ContentChildren(AmexioTabPill) queryTabs: QueryList<AmexioTabPill>;
+tabCollection: AmexioTabPill[];
 
-  @ContentChildren(AmexioTabActionComponent, { descendants: true }) queryAction: QueryList<AmexioTabActionComponent>
+@ContentChildren(AmexioTabActionComponent, { descendants: true }) queryAction: QueryList<AmexioTabActionComponent>
 
-  /*
+/*
 Events
 name : onClick
 datatype : none
@@ -150,194 +152,221 @@ version : none
 default : none
 description : Callback to invoke on activated tab event.
 */
-  @Output() onClick: any = new EventEmitter<any>();
+@Output() onClick: any = new EventEmitter<any>();
 
-  /* for internal purpose .*/
-  @Input() tabLocalData: any;
+/* for internal purpose .*/
+@Input() tabLocalData: any;
 
-  tabPreviewData: any;
+tabPreviewData: any;
 
-  showprev: boolean = false;
+showprev: boolean = false;
 
-  shownext: boolean = false;
+shownext: boolean = false;
 
-  content: string;
+content: string;
 
-  widthTabs: any;
+widthTabs: any;
 
-  headWidth: any;
+headWidth: any;
 
+singleTabWidth: any;
 
-  map = new Map<any, any>();
-  constructor(public render: Renderer2) {
-    this.headeralign = "left";
-    this.typeActionAlign = "left";
-    this.tabPosition = "top";
-    // console.log(AmexioColorMap.COMPONENT_CLASS_MAP['red']);
-    // this.map = new Map().set('text', AmexioTextInputComponent1);
-    // this.map = new Map().set('checkbox', AmexioCheckBoxComponent1);
+map = new Map<any, any>();
+constructor(public render: Renderer2) {
+  this.headeralign = "left";
+  this.typeActionAlign = "left";
+  this.tabPosition = "top";
+}
+
+ngOnInit() {
+}
+
+ngDoCheck() {
+  if (this.tabs.nativeElement.scrollWidth > this.tabs.nativeElement.clientWidth) {
+    //this.shownext = true;
+    this.headeralign = 'left';
   }
-
-  ngOnInit() {
-
-  }
-
-  ngDoCheck() {
-    if (this.tabs.nativeElement.scrollWidth > this.tabs.nativeElement.clientWidth) {
-      this.shownext = true;
-      this.headeralign = 'left';
-    }
+  this.adjustWidth();
   
-    if(this.tabs && this.tabs.nativeElement 
-      && this.headerWidth && this.headerWidth.nativeElement
-      && this.tabAction && this.tabAction.nativeElement
-      && this.tabWidth1 != this.tabs.nativeElement.offsetWidth){
-      this.headWidth = (this.tabAction.nativeElement.scrollWidth+this.headerWidth.nativeElement.scrollWidth);
-      this.widthTabs = this.tabs.nativeElement.offsetWidth - this.headWidth;
+  if (this.tabs && this.tabs.nativeElement
+    && this.headerWidth && this.headerWidth.nativeElement
+    && this.tabAction && this.tabAction.nativeElement
+    && this.tabWidth1 != this.tabs.nativeElement.offsetWidth) {
+    this.headWidth = (this.tabAction.nativeElement.scrollWidth + this.headerWidth.nativeElement.scrollWidth);
+    this.widthTabs = this.tabs.nativeElement.offsetWidth - this.headWidth;
+
+  }
+
+  if (JSON.stringify(this.tabPreviewData) != JSON.stringify(this.tabLocalData)) {
+    this.tabPreviewData = JSON.parse(JSON.stringify(this.tabLocalData));
+    this.tabCollection = this.tabLocalData;
+  }
+}
+
+private tabWidth1: number;
+private totalTabs: number;
+
+ngAfterViewInit() {
+
+  let tabWidth
+  this.tabWidth1 = this.tabs.nativeElement.offsetWidth;
+  this.totalTabs = this.tabCollection.length;
+  console.log("totaltabs",this.totalTabs);
+}
+
+adjustWidth() {
+  let tWidth = this.tabs.nativeElement.clientWidth;
+  let tlistWidth = this.tabslist.nativeElement.scrollWidth;
+  let hWidth = 0;
+  let totalElWidth = tlistWidth + hWidth;
   
-    }
-    if (JSON.stringify(this.tabPreviewData) != JSON.stringify(this.tabLocalData)) {
-      this.tabPreviewData = JSON.parse(JSON.stringify(this.tabLocalData));
-      this.tabCollection = this.tabLocalData;
-    }
-  }
-
-  private tabWidth1 : number;
-  ngAfterViewInit() {
-    let tabWidth    
-
-    // if (this.tabs.nativeElement.scrollWidth > this.tabs.nativeElement.clientWidth) {
-    //   this.shownext = true;
-    // }
-    this.tabWidth1 = this.tabs.nativeElement.offsetWidth;
-
-    // this.action = this.queryAction.toArray();
-
-  }
-
-  ngAfterContentInit() {
-    if (this.tabLocalData && this.tabLocalData.length > 0) {
-      this.tabPreviewData = JSON.parse(JSON.stringify(this.tabLocalData));
-      this.tabCollection = this.tabLocalData;
-    } else {
-      this.tabCollection = this.queryTabs.toArray();
-    }
-    this.calculateWidth();
-
-
-     //To add action in tab
-     let actionComp = this.queryAction.toArray();
-     if(actionComp.length > 0) {
-      actionComp[0].checkActionComponent();
-      if (actionComp[0].actionComponent == this.type) {
-        actionComp[0].showContent = true;
-     }
-      }
-  }
-
-  calculateWidth() {
-    let tabWidth: number;
-    tabWidth = this.tabCollection.length;
-    for (let i = 0; i < this.tabCollection.length; i++) {
-      if (this.fullPageTabs == true) {
-        this.tabCollection[i]['width'] = (100 / tabWidth) + "%";
-      }
-      if (this.tabPosition == "top") {
-        this.tabCollection[i].amexiocolor = AmexioTopColorMap.COMPONENT_CLASS_MAP[this.tabCollection[i].amexiocolor];
-      } else
-        this.tabCollection[i].amexiocolor = AmexioBottomColorMap.COMPONENT_CLASS_MAP[this.tabCollection[i].amexiocolor];
-    }
-  }
-
-
-  onTabClick(tab: any) {
-    if (!tab.disabled) {
-      for (let i = 0; i < this.tabCollection.length; i++) {
-        if (this.tabCollection[i] === tab) {
-          this.tabCollection[i]['active'] = true;
-          this.onClick.emit(tab);
-        } else {
-          this.tabCollection[i]['active'] = false;
-        }
-      }
-    }
-
-    // this.content = tab.title;
-  }
-
-  next() {
-    let nxt = this.tabs.nativeElement;
-    nxt.scrollLeft = nxt.scrollLeft + 200;
-
-    if ((nxt.scrollWidth - nxt.offsetWidth - nxt.scrollLeft) <= 0) {
-      this.shownext = false;
-    }
-    this.showprev = true;
-  }
-
-  previous() {
-    let prev = this.tabs.nativeElement;
-    prev.scrollLeft = prev.scrollLeft - 200;
-
-    if (prev.scrollLeft == 0) {
-      this.showprev = false;
-    }
+  if(totalElWidth > tWidth){
     this.shownext = true;
+  }else{
+    this.shownext = false;
   }
 
-  closeTab(tabNode: AmexioTabPill) {
-    const newTab: AmexioTabPill[] = [];
-    const tabs = this.tabs;
-    let index = 0;
-    let tabHighlightIndex = 0;
+  if (this.fullPageTabs == true) {
+    if(totalElWidth > tWidth && this.fullPageTabs){
+      this.shownext = true;
+    }else{
+      this.singleTabWidth = totalElWidth / this.totalTabs;
+    }
+  }
+}
 
-    this.tabCollection.forEach(tab => {
-      tab.active = false;
-      if (tab.tabId == tabNode.tabId) {
-        tabHighlightIndex = index;
+ngAfterContentInit() {
+  if (this.tabLocalData && this.tabLocalData.length > 0) {
+    this.tabPreviewData = JSON.parse(JSON.stringify(this.tabLocalData));
+    this.tabCollection = this.tabLocalData;
+  } else {
+    this.tabCollection = [];
+    this.tabCollection = this.queryTabs.toArray();
+  }
+
+  this.calculateWidth();
+
+  //To add action in tab
+  let actionComp = this.queryAction.toArray();
+  if (actionComp.length > 0) {
+    actionComp[0].checkActionComponent();
+  }
+
+}
+
+calculateWidth() {
+
+  let tabWidth = this.tabCollection.length;
+  for (let i = 0; i < tabWidth; i++) {
+    if (this.tabPosition == "top") {
+      this.tabCollection[i].amexiocolor = AmexioTopColorMap.COMPONENT_CLASS_MAP[this.tabCollection[i].amexiocolor];
+    } else
+      this.tabCollection[i].amexiocolor = AmexioBottomColorMap.COMPONENT_CLASS_MAP[this.tabCollection[i].amexiocolor];
+  }
+}
+
+
+onTabClick(tab: any) {
+  if (!tab.disabled && !tab.header) {
+    for (let i = 0; i < this.tabCollection.length; i++) {
+      if (this.tabCollection[i] === tab) {
+        this.tabCollection[i]['active'] = true;
+        this.onClick.emit(tab);
+      } else {
+        this.tabCollection[i]['active'] = false;
       }
-      if (tab.tabId != tabNode.tabId) {
-        newTab.push(tab);
-      }
-      index++;
-    });
-
-    if (tabHighlightIndex == newTab.length) {
-      tabHighlightIndex--;
-    }
-    this.activateTab(newTab[tabHighlightIndex].tabId);
-    this.tabCollection = newTab;
-    if (this.tabCollection.length == 1) {
-      this.closable = false;
     }
   }
 
-  activateTab(tabId: number) {
-    const tabs = this.tabs;
-    this.tabCollection.forEach(tab => {
-      tab.active = false;
-      if (tab.tabId == tabId) {
-        tab.active = true;
-      }
-    });
-  }
+  // this.content = tab.title;
+}
 
-  findStyleClass(tabData: any): string {
-    if ((tabData.amexiocolor == 'amexio-top-tab-black') && (this.tabPosition == 'top') && tabData.active) {
-      return 'activetab';
-    }
-    if ((tabData.amexiocolor == 'amexio-bottom-tab-black') && (this.tabPosition == 'bottom') && tabData.active) {
-      return 'bottomActivetab';
-    }
-    if (tabData.disabled) {
-      return 'disabled-tab';
-    }
-    if ((tabData.amexiocolor != 'amexio-top-tab-black') && (this.tabPosition == 'top') && tabData.active) {
-      return 'activecolortab';
-    }
-    if ((tabData.amexiocolor != 'amexio-bottom-tab-black') && (this.tabPosition == 'bottom') && tabData.active) {
-      return 'activebottomcolortab';
-    }
+next() {
+  let nxt = this.tabs.nativeElement;
+  nxt.scrollLeft = nxt.scrollLeft + 200;
+
+  if ((nxt.scrollWidth - nxt.offsetWidth - nxt.scrollLeft) <= 0) {
+    this.shownext = false;
   }
+  this.showprev = true;
+}
+
+previous() {
+  let prev = this.tabs.nativeElement;
+  prev.scrollLeft = prev.scrollLeft - 200;
+
+  if (prev.scrollLeft == 0) {
+    this.showprev = false;
+  }
+  this.shownext = true;
+}
+
+closeTab(tabNode: AmexioTabPill) {
+  const newTab: AmexioTabPill[] = [];
+  const tabs = this.tabs;
+  let index = 0;
+  let tabHighlightIndex = 0;
+
+  this.tabCollection.forEach(tab => {
+    tab.active = false;
+    if (tab.tabId == tabNode.tabId) {
+      tabHighlightIndex = index;
+    }
+    if (tab.tabId != tabNode.tabId) {
+      newTab.push(tab);
+    }
+    index++;
+  });
+
+  if (tabHighlightIndex == newTab.length) {
+    tabHighlightIndex--;
+  }
+  this.activateTab(newTab[tabHighlightIndex].tabId);
+  this.tabCollection = newTab;
+  if (this.tabCollection.length == 1) {
+    this.closable = false;
+  }
+}
+
+activateTab(tabId: number) {
+  const tabs = this.tabs;
+  this.tabCollection.forEach(tab => {
+    tab.active = false;
+    if (tab.tabId == tabId) {
+      tab.active = true;
+    }
+  });
+}
+
+findStyleClass(tabData: any): string {
+  if ((tabData.amexiocolor == 'amexio-top-tab-black') && (this.tabPosition == 'top') && tabData.active) {
+    return 'activetab';
+  }
+  if ((tabData.amexiocolor == 'amexio-bottom-tab-black') && (this.tabPosition == 'bottom') && tabData.active) {
+    return 'bottomActivetab';
+  }
+  if (tabData.disabled) {
+    return 'disabled-tab';
+  }
+  if ((tabData.amexiocolor != 'amexio-top-tab-black') && (this.tabPosition == 'top') && tabData.active) {
+    return 'activecolortab';
+  }
+  if ((tabData.amexiocolor != 'amexio-bottom-tab-black') && (this.tabPosition == 'bottom') && tabData.active) {
+    return 'activebottomcolortab';
+  }
+}
+
+findTabStyleClass() {
+  if (this.headeralign == 'right' && !this.fullPageTabs) {
+    return 'tabposition-right';
+  }
+  if (this.headeralign == 'left' && !this.fullPageTabs) {
+    return 'tabposition-left';
+  }
+  if (this.fullPageTabs == true) {
+    return 'equally-align-tabs';
+  }
+}
+
 
 }

@@ -17,9 +17,7 @@ import { AmexioCheckBoxGroupComponent } from '../../forms/checkbox-group/checkbo
 @Component({
   selector: 'amexio-tab-action',
   template: `
-   <ng-container *ngIf="showContent">
    <ng-content></ng-content>
-   </ng-container>
    `
 })
 
