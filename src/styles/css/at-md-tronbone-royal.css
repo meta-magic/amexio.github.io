@@ -2058,7 +2058,6 @@ input:checked + .toggle-slider:before {
   width: 100%;
   transition: .5s ease;
   opacity: 0;
-  padding: 20px;
   text-align: center; }
 
 .overlay-text p {
@@ -4465,6 +4464,9 @@ verticalalign-tableft {
   bottom: 3%;
   z-index: 3;
   position: absolute; }
+
+.drodown-caret-down {
+  top: 2px !important; }
 
 /****************************************************************************
     Component Name : Window

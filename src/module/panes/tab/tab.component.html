@@ -13,14 +13,14 @@
     <div #tabslist class="tablistitems" [ngClass]="findTabStyleClass()">
       <!-- HEADER -->
      
-        <div class="tablink">
+        <div class="tablink" style="padding-bottom:0%">
           <div class="table">
             <div class="tablerow">   
               <div class="tablecol" *ngIf="(header) && (fullPageTabs == false)">
                 {{header}}
               </div>
               <div class="tablecol">
-                <ng-content select="amexio-tab-action1"></ng-content>
+                <ng-content select="amexio-tab-action"></ng-content>
               </div>
             </div>
           </div>
