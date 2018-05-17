@@ -211,7 +211,6 @@ ngAfterViewInit() {
   let tabWidth
   this.tabWidth1 = this.tabs.nativeElement.offsetWidth;
   this.totalTabs = this.tabCollection.length;
-  console.log("totaltabs",this.totalTabs);
 }
 
 adjustWidth() {
