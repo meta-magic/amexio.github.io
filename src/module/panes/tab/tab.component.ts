@@ -20,10 +20,12 @@ import {
   Output,
   QueryList,
   Renderer2,
-  ViewChild
+  ViewChild,
+  ComponentFactoryResolver
 } from '@angular/core';
 import { AmexioTabPill } from "./tab.pill.component";
 import { AmexioTabActionComponent } from "./tab.action";
+import { ViewContainerRef } from "@angular/core";
 
 export namespace AmexioTopColorMap {
   export const COMPONENT_CLASS_MAP: any = {
@@ -141,6 +143,7 @@ description : Header for Tab.
 
 @ContentChildren(AmexioTabPill) queryTabs: QueryList<AmexioTabPill>;
 tabCollection: AmexioTabPill[];
+@ViewChild('target', { read: ViewContainerRef }) target: any;
 
 @ContentChildren(AmexioTabActionComponent, { descendants: true }) queryAction: QueryList<AmexioTabActionComponent>
 
@@ -174,7 +177,8 @@ singleTabWidth: any;
 actionComp: any;
 
 map = new Map<any, any>();
-constructor(public render: Renderer2) {
+constructor(public render: Renderer2,private componentFactoryResolver: ComponentFactoryResolver,
+  viewContainerRef: ViewContainerRef ) {
   this.headeralign = "left";
   this.typeActionAlign = "left";
   this.tabPosition = "top";
@@ -253,6 +257,38 @@ ngAfterContentInit() {
     this.actionComp[0].checkActionComponent();
   }
 
+}
+
+addDyanmicTab(title: string, component: any){
+  // get a component factory for our TabComponent
+  const tpCF = this.componentFactoryResolver.resolveComponentFactory(
+      AmexioTabPill
+  );
+  let tp = this.target.createComponent(tpCF);
+
+  // set the according properties on our component instance
+  const instance: AmexioTabPill = tp.instance as AmexioTabPill;
+  instance.title = title;
+  instance.active = true;  
+  
+  //create dynamic component
+  const dynCF = this.componentFactoryResolver.resolveComponentFactory(
+      component
+  );
+  let dynCmp =  tp.instance.target.createComponent(dynCF);
+
+  //Push new tab and select it.
+  this.tabCollection.push(tp.instance);
+  this.selectTab(tp.instance);
+
+  return dynCmp.instance;
+}
+
+
+selectTab(tab: AmexioTabPill) {
+  // deactivate all tabs
+  this.tabCollection.forEach(tab => (tab.active = false));
+  tab.active = true;
 }
 
 calculateWidth() {
