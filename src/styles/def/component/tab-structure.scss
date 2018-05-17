@@ -1,211 +1,204 @@
-
-.tabwrapper{
-
-}
+.tabwrapper {}
 
 .tab {
-  position:relative;
-  overflow:hidden;
-  margin: 0;
-  padding: 0;
-  border-bottom: $tabBorderSize solid $tabBorderColor;
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    border-bottom: $tabBorderSize solid $tabBorderColor;
 }
 
-.tab li{
-  display:table-cell;
-  position:relative;
+.tab li {
+    display: table-cell;
+    position: relative;
 }
 
-.tablink{
-  display: table-cell;
-  text-decoration: none;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 10px;
-  //font-size: 17px;
-  border-radius: 0px;
-  //border-bottom: $tabBorderSize solid $tabBorderColor;
-  white-space: nowrap;
-
+.tablink {
+    display: table-cell;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px;
+    //font-size: 17px;
+    border-radius: 0px;
+    //border-bottom: $tabBorderSize solid $tabBorderColor;
+    white-space: nowrap;
 }
 
-.tablink span{
-
-}
+.tablink span {}
 
 .activetab {
-  border-bottom: $tabBorderSize+2 solid $tabActiveBorder;
+    border-bottom: $tabBorderSize+2 solid $tabActiveBorder;
 }
 
-.disabled-tab{
-  cursor: not-allowed !important;
+.disabled-tab {
+    cursor: not-allowed !important;
+    opacity: 0.5;
 }
 
-.tabnavigation{
-  padding: 10px 16px;
-  cursor: pointer;
+.tabnavigation {
+    padding: 10px 16px;
+    cursor: pointer;
 }
 
-.tabcontent{
-  width: 100%;
-  position: relative;
-  vertical-align: top !important;
-  //float: left;
-  //padding: 10px;
-  padding: 20px 20px 10px 0px;
+.tabcontent {
+    width: 100%;
+    position: relative;
+    vertical-align: top !important;
+    //float: left;
+    //padding: 10px;
+    padding: 20px 20px 10px 0px;
 }
+
 
 /**VERTICAL TABS**/
 
-.verticalnavtab{
-  position: relative;
-  overflow-x: hidden;
-  overflow-y: auto;
-//  border-right: $tabActiveBorderSize solid $tabActiveBorder;
+.verticalnavtab {
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+    //  border-right: $tabActiveBorderSize solid $tabActiveBorder;
 }
 
 .verticalnavtab ul {
-  list-style: none;
-  padding: 0;
-  margin:0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .verticalnavtab ul li {
-  // padding-left: 20px;
+    // padding-left: 20px;
 }
 
-.verticalnavtab .defaultnode{
-  cursor: pointer;
-  //background-color: $tabBGColor;
-  color: $tabColor;
-  padding: 10px;
+.verticalnavtab .defaultnode {
+    cursor: pointer;
+    //background-color: $tabBGColor;
+    color: $tabColor;
+    padding: 10px;
 }
 
 .verticalnavtab .defaultnode:hover {
-  //background-color: $tabActiveBGColor;
-  font-weight: bold;
+    //background-color: $tabActiveBGColor;
+    font-weight: bold;
 }
 
 .verticalnavtab .leftactivetab {
-  //background-color: $tabActiveBGColor;
-  font-weight: bold;
-  //color : $tabActiveColor;
-  border-right: $tabActiveBorderSize solid $tabActiveBorder;
+    //background-color: $tabActiveBGColor;
+    font-weight: bold;
+    //color : $tabActiveColor;
+    border-right: $tabActiveBorderSize solid $tabActiveBorder;
 }
 
 .verticalnavtab .rightactivetab {
-  //background-color: $tabActiveBGColor;
-  //background-color: $tabActiveBGColor;
-  font-weight: bold;
-  //color : $tabActiveColor;
-  border-left: $tabActiveBorderSize solid $tabActiveBorder;
+    //background-color: $tabActiveBGColor;
+    //background-color: $tabActiveBGColor;
+    font-weight: bold;
+    //color : $tabActiveColor;
+    border-left: $tabActiveBorderSize solid $tabActiveBorder;
 }
 
-
-.verticalnavtab-left{
-  font-weight: bold;
-  //border-right: $tabBorderSize solid $tabBorderColor;
+.verticalnavtab-left {
+    font-weight: bold;
+    //border-right: $tabBorderSize solid $tabBorderColor;
 }
 
-.verticalnavtab-right{
-  font-weight: bold;
-//  border-left: $tabBorderSize solid $tabBorderColor;
+.verticalnavtab-right {
+    font-weight: bold;
+    //  border-left: $tabBorderSize solid $tabBorderColor;
 }
 
-
-  verticalalign-tableft{
-  vertical-align: top !important;
-  border-right: $tabBorderSize solid $tabBorderColor !important;
+verticalalign-tableft {
+    vertical-align: top !important;
+    border-right: $tabBorderSize solid $tabBorderColor !important;
 }
 
-.verticalalign-tabright{
-  vertical-align: top !important;
-  border-left: $tabBorderSize solid $tabBorderColor !important;
+.verticalalign-tabright {
+    vertical-align: top !important;
+    border-left: $tabBorderSize solid $tabBorderColor !important;
 }
 
-.verticalalign-tabcontent
-{
-  vertical-align: top !important;
+.verticalalign-tabcontent {
+    vertical-align: top !important;
 }
 
-.float-right{
- float: right;
+.float-right {
+    float: right;
 }
 
-.float-left{
-  float: left;
+.float-left {
+    float: left;
 }
 
-.equally-align-tabs{
-  display: flex;
-  width: 100%;
+.equally-align-tabs {
+    display: flex;
+    width: 100%;
 }
 
-.float-center{
-  display: flex;
-  justify-content: center;
-  align-content: center;
+.float-center {
+    display: flex;
+    justify-content: center;
+    align-content: center;
 }
 
-.activecolortab{
-  border-bottom: 3px solid !important;
+.activecolortab {
+    border-bottom: 3px solid !important;
 }
 
-.bottomTab{
-  width: 100%;
-  position: absolute !important;
-  bottom: 0%;
-  border-top: 1px solid #ced4da;
-  min-width: 760px;
-  max-width: 980px;
+.bottomTab {
+    width: 100%;
+    position: absolute !important;
+    bottom: 0%;
+    border-top: 1px solid #ced4da;
+    min-width: 760px;
+    max-width: 980px;
 }
 
-.bottomActivetab{
-  border-bottom: $tabBorderSize+2 solid $tabActiveBorder;
+.bottomActivetab {
+    border-bottom: $tabBorderSize+2 solid $tabActiveBorder;
 }
 
-.activebottomcolortab{
-  border-top: 3px solid !important;
+.activebottomcolortab {
+    border-top: 3px solid !important;
 }
 
 //Position of tabs at right most
-.tabposition-right{
-  display: inline-flex !important;
-  width: 100%;
-  justify-content: space-between;
+.tabposition-right {
+    display: inline-flex !important;
+    width: 100%;
+    justify-content: space-between;
 }
 
 //Position of tabs at left most
-.tabposition-left{
-  display: inline-flex !important;
-  width: 100%;
-  justify-content: flex-start;
+.tabposition-left {
+    display: inline-flex !important;
+    width: 100%;
+    justify-content: flex-start;
 }
 
-.tablink .inputgroup *{
-  padding-bottom: 0 !important;
-  margin-bottom: 0 !important;
- }
+.tablink .inputgroup * {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+}
 
- .tablink amexio-tab-action1{
-   padding-left: 5%;
-  display: inline-block;
- }
+.tablink amexio-tab-action1 {
+    padding-left: 5%;
+    display: inline-block;
+}
 
- .tabnavigation-bottom-right{
+.tabnavigation-bottom-right {
     bottom: 3%;
     z-index: 3;
     position: absolute;
     right: 16px
- }
-
- .tabnavigation-bottom-left{
-  bottom: 3%;
-  z-index: 3;
-  position: absolute;
 }
 
-.drodown-caret-down{
-  top: 2px !important;
+.tabnavigation-bottom-left {
+    bottom: 3%;
+    z-index: 3;
+    position: absolute;
+}
+
+.drodown-caret-down {
+    top: 2px !important;
 }

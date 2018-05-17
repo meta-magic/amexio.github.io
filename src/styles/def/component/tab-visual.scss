@@ -1,86 +1,99 @@
-
-.verticalnavtab .defaultnode{
-  //cursor: pointer;
-  background-color: $tabBGColor;
-  color: $tabColor;
-  //padding: 10px;
+.verticalnavtab .defaultnode {
+    //cursor: pointer;
+    background-color: $tabBGColor;
+    color: $tabColor;
+    //padding: 10px;
 }
 
 .verticalnavtab .leftactivetab {
-  background-color: $tabActiveBGColor;
-  font-weight: bold;
-  color : $tabActiveColor;
-  //border-right: $tabActiveBorderSize solid $tabActiveBorder;
+    background-color: $tabActiveBGColor;
+    font-weight: bold;
+    color: $tabActiveColor;
+    //border-right: $tabActiveBorderSize solid $tabActiveBorder;
 }
 
-.disabled-tab{
-  //color : $tabDisabledColor;
-  background-color: $tabDisabledBG !important;
+.disabled-tab {
+    //color : $tabDisabledColor;
+    // background-color: $tabDisabledBG !important;
 }
+
 .verticalnavtab .rightactivetab {
-  background-color: $tabActiveBGColor;
-  //font-weight: bold;
-  color : $tabActiveColor;
-  //border-left: $tabActiveBorderSize solid $tabActiveBorder;
+    background-color: $tabActiveBGColor;
+    //font-weight: bold;
+    color: $tabActiveColor;
+    //border-left: $tabActiveBorderSize solid $tabActiveBorder;
 }
+
 
 /** Theme Colors for Tab*/
-$amexioColorRed : #dc143c;
-$amexioColorGreen : #208d4f;
-$amexioColorPurple : #8b008b;
-$amexioColorBlue : #00008b;
-$amexioColorBrown : #800000;
-$amexioColorYellow : #FFFF00;
-$amexioColorBlack : #000000;
-$amexioColorOrange : #FFA500;
-$amexioColorPink : #FF69B4;
+
+$amexioColorRed: #dc143c;
+$amexioColorGreen: #208d4f;
+$amexioColorPurple: #8b008b;
+$amexioColorBlue: #00008b;
+$amexioColorBrown: #800000;
+$amexioColorYellow: #FFFF00;
+$amexioColorBlack: #000000;
+$amexioColorOrange: #FFA500;
+$amexioColorPink: #FF69B4;
 
 /** CSS Class definitions for the Amexio Colors --- */
+
 
 /** Amexio Colors --- 
    Crimson: #dc143c rgb(220,20,60,0.0);
    fffafb: #fffafb rgb(255,250,251,0.0);
 */
+
 .amexio-bottom-tab-red {
-  color:$amexioColorRed;
-  border-top: 2px solid $amexioColorRed !important;
+    color: $amexioColorRed;
+    border-top: 2px solid $amexioColorRed !important;
 }
+
 
 /** Amexio Colors --- 
    SeaGreen: #2e8b57 rgb(46,139,87,0.0);
    f0faf4: #f0faf4 rgb(240,250,244,0.0);
 */
+
 .amexio-bottom-tab-green {
-  border-top: 2px solid $amexioColorGreen !important;
-  color: $amexioColorGreen;
+    border-top: 2px solid $amexioColorGreen !important;
+    color: $amexioColorGreen;
 }
+
 
 /** Amexio Colors --- 
    DarkMagenta: #8b008b rgb(139,0,139,0.0);
    fffaff: #fffaff rgb(255,250,255,0.0);
 */
+
 .amexio-bottom-tab-purple {
-  border-top: 2px solid $amexioColorPurple !important;
-	color: $amexioColorPurple;
+    border-top: 2px solid $amexioColorPurple !important;
+    color: $amexioColorPurple;
 }
+
 
 /** Amexio Colors --- 
    DarkBlue: #00008b rgb(0,0,139,0.0);
    f5f5ff: #f5f5ff rgb(245,245,255,0.0);
 */
+
 .amexio-bottom-tab-blue {
-  border-top: 2px solid $amexioColorBlue !important;
-	color: $amexioColorBlue;
+    border-top: 2px solid $amexioColorBlue !important;
+    color: $amexioColorBlue;
 }
+
+
 /** Amexio Colors --- 
    SandyBrown: #f4a460 rgb(244,164,96,0.0);
    211102: #211102 rgb(33,17,2,0.0);
 */
 
 .amexio-bottom-tab-brown {
-  border-top: 2px solid $amexioColorBrown !important;
-  color: $amexioColorBrown;
+    border-top: 2px solid $amexioColorBrown !important;
+    color: $amexioColorBrown;
 }
+
 
 /** Amexio Colors --- 
    Gold: #ffd700 rgb(255,215,0,0.0);
@@ -88,9 +101,10 @@ $amexioColorPink : #FF69B4;
 */
 
 .amexio-bottom-tab-yellow {
-  border-top: 2px solid $amexioColorYellow !important;
-	color: $amexioColorYellow;
+    border-top: 2px solid $amexioColorYellow !important;
+    color: $amexioColorYellow;
 }
+
 
 /** Amexio Colors --- 
    Pink: #FF69B4 rgb(255,215,0,0.0);
@@ -98,9 +112,10 @@ $amexioColorPink : #FF69B4;
 */
 
 .amexio-bottom-tab-pink {
-  border-top: 2px solid $amexioColorPink !important;
-	color: $amexioColorPink;
+    border-top: 2px solid $amexioColorPink !important;
+    color: $amexioColorPink;
 }
+
 
 /** Amexio Colors --- 
    Orange: #FFA500 rgb(255,215,0,0.0);
@@ -108,56 +123,68 @@ $amexioColorPink : #FF69B4;
 */
 
 .amexio-bottom-tab-orange {
-  border-top: 2px solid $amexioColorOrange !important;
-	color: $amexioColorOrange;
+    border-top: 2px solid $amexioColorOrange !important;
+    color: $amexioColorOrange;
 }
 
+
 /** CSS Class definitions for the Amexio Colors --- */
+
 
 /** Amexio Colors --- 
    Crimson: #dc143c rgb(220,20,60,0.0);
    fffafb: #fffafb rgb(255,250,251,0.0);
 */
+
 .amexio-top-tab-red {
-  color:$amexioColorRed;
-  border-bottom: 2px solid $amexioColorRed !important;
+    color: $amexioColorRed;
+    border-bottom: 2px solid $amexioColorRed !important;
 }
+
 
 /** Amexio Colors --- 
    SeaGreen: #2e8b57 rgb(46,139,87,0.0);
    f0faf4: #f0faf4 rgb(240,250,244,0.0);
 */
+
 .amexio-top-tab-green {
-  border-bottom: 2px solid $amexioColorGreen !important;
-  color: $amexioColorGreen;
+    border-bottom: 2px solid $amexioColorGreen !important;
+    color: $amexioColorGreen;
 }
+
 
 /** Amexio Colors --- 
    DarkMagenta: #8b008b rgb(139,0,139,0.0);
    fffaff: #fffaff rgb(255,250,255,0.0);
 */
+
 .amexio-top-tab-purple {
-  border-bottom: 2px solid $amexioColorPurple !important;
-	color: $amexioColorPurple;
+    border-bottom: 2px solid $amexioColorPurple !important;
+    color: $amexioColorPurple;
 }
+
 
 /** Amexio Colors --- 
    DarkBlue: #00008b rgb(0,0,139,0.0);
    f5f5ff: #f5f5ff rgb(245,245,255,0.0);
 */
+
 .amexio-top-tab-blue {
-  border-bottom: 2px solid $amexioColorBlue !important;
-	color: $amexioColorBlue;
+    border-bottom: 2px solid $amexioColorBlue !important;
+    color: $amexioColorBlue;
 }
+
+
 /** Amexio Colors --- 
    SandyBrown: #f4a460 rgb(244,164,96,0.0);
    211102: #211102 rgb(33,17,2,0.0);
 */
 
 .amexio-top-tab-brown {
-  border-bottom: 2px solid $amexioColorBrown !important;
-  color: $amexioColorBrown;
+    border-bottom: 2px solid $amexioColorBrown !important;
+    color: $amexioColorBrown;
 }
+
 
 /** Amexio Colors --- 
    Gold: #ffd700 rgb(255,215,0,0.0);
@@ -165,9 +192,10 @@ $amexioColorPink : #FF69B4;
 */
 
 .amexio-top-tab-yellow {
-  border-bottom: 2px solid $amexioColorYellow !important;
-	color: $amexioColorYellow;
+    border-bottom: 2px solid $amexioColorYellow !important;
+    color: $amexioColorYellow;
 }
+
 
 /** Amexio Colors --- 
    Pink: #FF69B4 rgb(255,215,0,0.0);
@@ -175,9 +203,10 @@ $amexioColorPink : #FF69B4;
 */
 
 .amexio-top-tab-pink {
-  border-bottom: 2px solid $amexioColorPink !important;
-	color: $amexioColorPink;
+    border-bottom: 2px solid $amexioColorPink !important;
+    color: $amexioColorPink;
 }
+
 
 /** Amexio Colors --- 
    Orange: #FFA500 rgb(255,215,0,0.0);
@@ -185,6 +214,6 @@ $amexioColorPink : #FF69B4;
 */
 
 .amexio-top-tab-orange {
-  border-bottom: 2px solid $amexioColorOrange !important;
-	color: $amexioColorOrange;
+    border-bottom: 2px solid $amexioColorOrange !important;
+    color: $amexioColorOrange;
 }
