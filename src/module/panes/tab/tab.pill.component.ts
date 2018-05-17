@@ -8,7 +8,7 @@ Component Selector : <amexio-tab>
 Component Description: Tab component for Angular Apps with multiple configurations such as Tab, Icon support
 
 */
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output,ViewContainerRef,ViewChild } from '@angular/core';
 
 @Component({
   selector: 'amexio-tab', templateUrl: './tab.pill.component.html'
@@ -66,6 +66,7 @@ description : Font color of label
 @Input('amexio-color')  amexiocolor : string;
 
   tabId: number;
+  @ViewChild('target', { read: ViewContainerRef }) public target: any;
 
   constructor() {
     this.tabId = Math.floor(Math.random() * 90000) + 10000;
