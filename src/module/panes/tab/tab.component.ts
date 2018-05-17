@@ -259,7 +259,7 @@ ngAfterContentInit() {
 
 }
 
-addDyanmicTab(title: string, component: any){
+addDynamicTab(title: string, component: any){
   // get a component factory for our TabComponent
   const tpCF = this.componentFactoryResolver.resolveComponentFactory(
       AmexioTabPill
