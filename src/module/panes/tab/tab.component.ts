@@ -171,6 +171,8 @@ headWidth: any;
 
 singleTabWidth: any;
 
+actionComp: any;
+
 map = new Map<any, any>();
 constructor(public render: Renderer2) {
   this.headeralign = "left";
@@ -246,9 +248,9 @@ ngAfterContentInit() {
   this.calculateWidth();
 
   //To add action in tab
-  let actionComp = this.queryAction.toArray();
-  if (actionComp.length > 0) {
-    actionComp[0].checkActionComponent();
+  this.actionComp = this.queryAction.toArray();
+  if (this.actionComp.length > 0) {
+    this.actionComp[0].checkActionComponent();
   }
 
 }
