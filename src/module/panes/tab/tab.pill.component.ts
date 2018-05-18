@@ -70,7 +70,7 @@ description : Font color of label
 
   constructor() {
     this.tabId = Math.floor(Math.random() * 90000) + 10000;
-    this.amexiocolor = "black";
+    // this.amexiocolor = "black";
   }
 
   ngOnInit() {
