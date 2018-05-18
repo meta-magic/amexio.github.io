@@ -13,7 +13,7 @@
     <div #tabslist class="tablistitems" [ngClass]="findTabStyleClass()">
       <!-- HEADER -->
      
-        <div class="tablink" style="padding-bottom:0%" *ngIf="(this.actionComp.length > 0 || header) && (fullPageTabs == false)">
+      <div class="tablink" style="padding-bottom:0%" *ngIf="(this.action == true || header) && (fullPageTabs == false)">
           <div class="table">
             <div class="tablerow">   
               <div class="tablecol">

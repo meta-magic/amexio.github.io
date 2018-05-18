@@ -83,6 +83,16 @@ description : specify position of tabs(left/right/center).
 
 /*
 Properties 
+name : action
+datatype : string
+version : 4.1.9 onwards
+default : left
+description : This flag ensures the action component.
+*/
+@Input() action: boolean;
+
+/*
+Properties 
 name : action-type-align
 datatype : string
 version : 4.1.9 onwards
@@ -183,6 +193,7 @@ constructor(public render: Renderer2,private componentFactoryResolver: Component
   this.typeActionAlign = "left";
   this.tabPosition = "top";
   this.fullPageTabs = false;
+  this.action = false;
 }
 
 ngOnInit() {
