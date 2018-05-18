@@ -397,16 +397,16 @@ findStyleClass(tabData: any): string {
   if((!tabData.amexiocolor  || tabData.amexiocolor == "" ) && tabData.active && (this.tabPosition == 'top')){
     return 'activetab';
   }
-  if ((!tabData.amexiocolor  || tabData.amexiocolor == "" ) && (this.tabPosition == 'bottom') && tabData.active) {
+  if ((!tabData.amexiocolor  || tabData.amexiocolor == "") && (this.tabPosition == 'bottom') && tabData.active) {
     return 'bottomActivetab';
   }
   if (tabData.disabled) {
     return 'disabled-tab';
   }
-  if ((tabData.amexiocolor != 'amexio-top-tab-black') && (this.tabPosition == 'top') && tabData.active) {
+  if ((tabData.amexiocolor != "") && (this.tabPosition == 'top') && tabData.active) {
     return 'activecolortab';
   }
-  if ((tabData.amexiocolor != 'amexio-bottom-tab-black') && (this.tabPosition == 'bottom') && tabData.active) {
+  if ((tabData.amexiocolor != "") && (this.tabPosition == 'bottom') && tabData.active) {
     return 'activebottomcolortab';
   }
 }
