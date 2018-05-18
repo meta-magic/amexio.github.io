@@ -209,7 +209,7 @@ description : Event fired if showError msg info button is clicked
     }
 
     ngAfterViewInit(){
-
+         this.buttons = [];
         this.textinput = this.queryTextinput.toArray();
         this.textarea = this.queryTextArea.toArray();
         this.password = this.queryPassword.toArray();
