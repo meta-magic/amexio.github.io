@@ -127,6 +127,15 @@ $amexioColorPink: #FF69B4;
     color: $amexioColorOrange;
 }
 
+/** Amexio Colors --- 
+   Black: #FFA500 rgb(255,215,0,0.0);
+   241e00: #241e00 rgb(36,30,0,0.0);
+*/
+
+.amexio-bottom-tab-black {
+    border-top: 2px solid $amexioColorBlack !important;
+    color: $amexioColorBlack;
+}
 
 /** CSS Class definitions for the Amexio Colors --- */
 
@@ -216,4 +225,14 @@ $amexioColorPink: #FF69B4;
 .amexio-top-tab-orange {
     border-bottom: 2px solid $amexioColorOrange !important;
     color: $amexioColorOrange;
+}
+
+/** Amexio Colors --- 
+   Black: #FFA500 rgb(255,215,0,0.0);
+   241e00: #241e00 rgb(36,30,0,0.0);
+*/
+
+.amexio-top-tab-black {
+    border-bottom: 2px solid $amexioColorBlack !important;
+    color: $amexioColorBlack;
 }

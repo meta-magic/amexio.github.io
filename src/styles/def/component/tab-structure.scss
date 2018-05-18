@@ -29,7 +29,7 @@
 .tablink span {}
 
 .activetab {
-    border-bottom: $tabBorderSize+2 solid $tabActiveBorder;
+    border-bottom: $tabBorderSize+2 solid $tabActiveBorder !important;
 }
 
 .disabled-tab {
@@ -155,7 +155,7 @@ verticalalign-tableft {
 }
 
 .bottomActivetab {
-    border-bottom: $tabBorderSize+2 solid $tabActiveBorder;
+    border-bottom: $tabBorderSize+2 solid $tabActiveBorder !important;
 }
 
 .activebottomcolortab {

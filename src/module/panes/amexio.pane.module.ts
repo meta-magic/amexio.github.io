@@ -92,6 +92,7 @@ const PANE_COMPONENTS = [
     AmexioFormsModule,
     HttpClientModule
   ],
+  entryComponents:[AmexioTabPill],
   exports: PANE_COMPONENTS,
   declarations: PANE_COMPONENTS,
   providers : [CommonDataService,DeviceQueryService,IconLoaderService]

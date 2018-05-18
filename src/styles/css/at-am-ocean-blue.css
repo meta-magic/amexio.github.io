@@ -4325,9 +4325,6 @@ fieldset {
   font-weight: bold;
   color: white; }
 
-.disabled-tab {
-  background-color: #a09e9e !important; }
-
 .verticalnavtab .rightactivetab {
   background-color: #6b85c6;
   color: white; }
@@ -4398,6 +4395,14 @@ fieldset {
   border-top: 2px solid #FFA500 !important;
   color: #FFA500; }
 
+/** Amexio Colors --- 
+   Black: #FFA500 rgb(255,215,0,0.0);
+   241e00: #241e00 rgb(36,30,0,0.0);
+*/
+.amexio-bottom-tab-black {
+  border-top: 2px solid #000000 !important;
+  color: #000000; }
+
 /** CSS Class definitions for the Amexio Colors --- */
 /** Amexio Colors --- 
    Crimson: #dc143c rgb(220,20,60,0.0);
@@ -4463,6 +4468,14 @@ fieldset {
   border-bottom: 2px solid #FFA500 !important;
   color: #FFA500; }
 
+/** Amexio Colors --- 
+   Black: #FFA500 rgb(255,215,0,0.0);
+   241e00: #241e00 rgb(36,30,0,0.0);
+*/
+.amexio-top-tab-black {
+  border-bottom: 2px solid #000000 !important;
+  color: #000000; }
+
 /** tab - Structure CSS **/
 .tab {
   position: relative;
@@ -4486,10 +4499,11 @@ fieldset {
   white-space: nowrap; }
 
 .activetab {
-  border-bottom: 5px solid #1C2949; }
+  border-bottom: 5px solid #1C2949 !important; }
 
 .disabled-tab {
-  cursor: not-allowed !important; }
+  cursor: not-allowed !important;
+  opacity: 0.5; }
 
 .tabnavigation {
   padding: 10px 16px;
@@ -4572,7 +4586,7 @@ verticalalign-tableft {
   max-width: 980px; }
 
 .bottomActivetab {
-  border-bottom: 5px solid #1C2949; }
+  border-bottom: 5px solid #1C2949 !important; }
 
 .activebottomcolortab {
   border-top: 3px solid !important; }
