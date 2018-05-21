@@ -102,6 +102,7 @@ description : specify position of action type(left/right).
 @Input('action-type-align') typeActionAlign: string;
 
 
+
 /*
 Properties 
 name : divide-header-equally
@@ -142,6 +143,20 @@ default : none
 description : Header for Tab.
 */
 @Input() header: string;
+
+height : any;
+
+minHeight : any;
+
+/*
+Properties
+name : body-height
+datatype :   any
+version : 4.2 onwards
+default : 
+description : Provides form body height.
+*/
+@Input('body-height') bodyheight : any;
 
 @ViewChild('tab', { read: ElementRef }) public tabs: ElementRef;
 @ViewChild('tabAction', { read: ElementRef }) public tabAction: ElementRef;
@@ -229,6 +244,8 @@ ngAfterViewInit() {
   let tabWidth
   this.tabWidth1 = this.tabs.nativeElement.offsetWidth;
   this.totalTabs = this.tabCollection.length;
+
+  
 }
 
 adjustWidth() {
@@ -250,6 +267,8 @@ adjustWidth() {
       this.singleTabWidth = totalElWidth / this.totalTabs;
     }
   }
+
+  this.onAdjustHeight();
 }
 
 ngAfterContentInit() {
@@ -423,5 +442,20 @@ findTabStyleClass() {
   }
 }
 
+onAdjustHeight(){
+
+  if(this.bodyheight){
+    let h = (window.innerHeight/100)*this.bodyheight;
+
+    if(this.tabs && this.tabs.nativeElement && this.tabs.nativeElement.offsetHeight)
+      h = h - this.tabs.nativeElement.offsetHeight;
+
+    if(this.bodyheight === 100)
+      h = h - 40;
+
+    this.minHeight = h;
+    this.height = h;
+  }
+}
 
 }
