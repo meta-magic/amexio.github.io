@@ -136,6 +136,16 @@ description : It will gives you row clicked data.
 */
   @Output() onRowClick: any = new EventEmitter<any>();
 
+  /*
+  Properties 
+  name : border
+  datatype : any
+  version : 4.2 onwards
+  default : none
+  description : Border for listbox, default style is 1px solid #ced4da.
+  */
+  @Input() border: any;
+
   @ContentChild('amexioBodyTmpl') bodyTemplate: TemplateRef<any>;
 
   viewData: any[];
