@@ -1,4 +1,6 @@
-.tabwrapper {}
+.tabwrapper {
+    
+}
 
 .tab {
     position: relative;
@@ -43,11 +45,9 @@
 }
 
 .tabcontent {
-    width: 100%;
+    width: inherit;
     position: relative;
     vertical-align: top !important;
-    //float: left;
-    //padding: 10px;
     padding: 20px 20px 10px 0px;
 }
 

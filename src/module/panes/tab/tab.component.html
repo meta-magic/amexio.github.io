@@ -50,7 +50,7 @@
   </div>
 </div>
 
-<div class="tabcontent">
+<div class="tabcontent" [ngStyle]="{'height.px' : height,'overflow-y' : height!= null ? 'auto' : '','min-height.px' : minHeight}" >
   <ng-content></ng-content>
   <ng-template #target></ng-template>
 </div>
