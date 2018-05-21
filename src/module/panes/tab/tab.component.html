@@ -39,7 +39,7 @@
               <div class="tablecol">
                 {{tabnode.title}}
               </div>
-              <div *ngIf="closable" class="tablecol">
+              <div *ngIf="tabnode.closable" class="tablecol">
                 <amexio-pane-icon key="tab_close" (onClick)="closeTab(tabnode)"></amexio-pane-icon>
               </div>
             </div>

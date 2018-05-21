@@ -261,7 +261,7 @@ ngAfterContentInit() {
     this.tabCollection = this.queryTabs.toArray();
   }
 
-  this.calculateWidth();
+  this.tabNodeProperties();
 
   //To add action in tab
   this.actionComp = this.queryAction.toArray();
@@ -271,7 +271,7 @@ ngAfterContentInit() {
 
 }
 
-addDynamicTab(title: string,amexiocolor: string, component: any){
+addDynamicTab(title: string,amexiocolor: string,closable: boolean, component: any){
   // get a component factory for our TabComponent
   const tpCF = this.componentFactoryResolver.resolveComponentFactory(
       AmexioTabPill
@@ -282,6 +282,8 @@ addDynamicTab(title: string,amexiocolor: string, component: any){
   const instance: AmexioTabPill = tp.instance as AmexioTabPill;
   instance.title = title;
   instance.active = true; 
+  instance.closable = closable;
+
   if(instance.amexiocolor = ""){
     instance.amexiocolor = "amexio-top-tab-black";
   }
@@ -309,7 +311,7 @@ selectTab(tab: AmexioTabPill) {
   tab.active = true;
 }
 
-calculateWidth() {
+tabNodeProperties() {
 
   let tabWidth = this.tabCollection.length;
   for (let i = 0; i < tabWidth; i++) {
@@ -317,7 +319,15 @@ calculateWidth() {
       this.tabCollection[i].amexiocolor = AmexioTopColorMap.COMPONENT_CLASS_MAP[this.tabCollection[i].amexiocolor];
     } else
       this.tabCollection[i].amexiocolor = AmexioBottomColorMap.COMPONENT_CLASS_MAP[this.tabCollection[i].amexiocolor];
-  }
+      if (this.closable) {
+        debugger;
+        if (this.tabCollection[i].closable == null || this.tabCollection[i].closable == true) {
+          this.tabCollection[i].closable = true;
+        } else if (this.tabCollection[i].closable == false) {
+          this.tabCollection[i].closable == false;
+        }
+      }
+    }
 }
 
 

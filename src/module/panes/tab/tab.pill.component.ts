@@ -65,6 +65,16 @@ description : Font color of label
 */ 
 @Input('amexio-color')  amexiocolor : string;
 
+ /*
+Properties 
+name : closable
+datatype : boolean
+version : 4.2 onwards
+default : false
+description : Font color of label
+*/ 
+@Input() closable: boolean = null;
+
   tabId: number;
   @ViewChild('target', { read: ViewContainerRef }) public target: any;
 
