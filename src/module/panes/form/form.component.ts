@@ -234,6 +234,7 @@ description : Event fired if showError msg info button is clicked
       });
 
         this.footer = this.queryFooter.toArray();
+        this.onResize();
     }
 
     ngAfterContentInit(){
