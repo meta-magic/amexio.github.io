@@ -1,3 +1,7 @@
+import { AmexioFooterComponent } from './../../panes/action/pane.action.footer';
+import { AmexioBodyComponent } from './../../panes/body/pane.action.body';
+import { ContentChildren, QueryList } from '@angular/core';
+import {AmexioHeaderComponent} from '../../panes/header/pane.action.header';
 /**
  * Created by ketangote on 12/18/17.
  */
@@ -17,14 +21,15 @@ import {Component, EventEmitter, Input, OnInit, Output, ViewChild, ElementRef} f
   selector: 'amexio-card', template: `
 
   <div class="card-container" *ngIf="show"  (window:resize)="onResize()">
-    <header #cardHeader class="card-header" *ngIf="header"
+    <header #cardHeader  [style.padding]="headerPadding"  class="card-header" *ngIf="header"
+
             [ngClass]="{'flex-start':(headeralign=='left'),'flex-end':(headeralign=='right'),'flex-center':(headeralign=='center')}">
       <ng-content select="amexio-header"></ng-content>
     </header>
-    <div class="card-body cardbody" [ngStyle]="{'height.px' : height,'overflow-y' : height!= null ? 'auto' : '','min-height.px' : minHeight}">
+    <div class="card-body cardbody" [style.padding]="bodyPadding"  [ngStyle]="{'height.px' : height,'overflow-y' : height!= null ? 'auto' : '','min-height.px' : minHeight}">
       <ng-content select="amexio-body"></ng-content>
     </div>
-    <footer  #cardFooter class="card-footer" *ngIf="footer"
+    <footer  #cardFooter [style.padding]="footerPadding"  class="card-footer" *ngIf="footer"
             [ngClass]="{'flex-start':(footeralign=='left'),'flex-end':(footeralign=='right'),'flex-center':(footeralign=='center')}">
       <ng-content select="amexio-action"></ng-content>
     </footer>
@@ -32,12 +37,12 @@ import {Component, EventEmitter, Input, OnInit, Output, ViewChild, ElementRef} f
 
 
 
-  `
+  `,
 })
 export class AmexioCardComponent implements OnInit {
 
   /*
-Properties 
+Properties
 name : header-align
 datatype : string
 version : 4.0 onwards
@@ -47,7 +52,7 @@ description : Align of item elements inside card header example : right,center,l
   @Input('header-align') headeralign: string;
 
     /*
-Properties 
+Properties
 name : header-align
 datatype : string
 version : 4.0 onwards
@@ -57,7 +62,7 @@ description : User can enable header of card by setting this flag to true..
   @Input() header: boolean;
 
     /*
-Properties 
+Properties
 name : footer
 datatype : boolean
 version : 4.0 onwards
@@ -67,7 +72,7 @@ description : User can enable footer of card by setting this flag to true.
   @Input() footer: boolean;
 
   /*
-Properties 
+Properties
 name : footer-align
 datatype :  string
 version : 4.0 onwards
@@ -77,7 +82,7 @@ description : Align of item elements inside card footer example : right,center,l
   @Input('footer-align') footeralign: string;
 
     /*
-Properties 
+Properties
 name : show
 datatype :  boolean
 version : 4.0 onwards
@@ -87,27 +92,27 @@ description : User can bind variable to this and hide/unhide card based on requi
   @Input() show: boolean = true;
 
   /*
-Properties 
+Properties
 name : height
 datatype :   any
 version : 4.0 onwards
-default : 
+default :
 description : User can set the height to body..
 */
   @Input()  height : any;
 
   /*
-Properties 
+Properties
 name : min-height
 datatype :   any
 version : 4.0 onwards
-default : 
+default :
 description : Provides minimum card height.
 */
   @Input('min-height')  minHeight : any;
 
   /*
-Properties 
+Properties
 name : body-height
 datatype :   any
 version : 4.0 onwards
@@ -120,11 +125,28 @@ description : Provides card height.
 
   @ViewChild('cardFooter', {read: ElementRef}) public cardFooter: ElementRef;
 
+  headerPadding:string;
 
+  bodyPadding:string;
+
+  footerPadding:string;
+
+  @ContentChildren(AmexioHeaderComponent) amexioHeader:QueryList<AmexioHeaderComponent>;
+
+  headerComponentList:AmexioHeaderComponent[];
+
+  @ContentChildren(AmexioBodyComponent) amexioBody:QueryList<AmexioBodyComponent>;
+
+  bodyComponentList:AmexioBodyComponent[];
+
+  @ContentChildren(AmexioFooterComponent) amexioFooter:QueryList<AmexioFooterComponent>;
+
+  footerComponentList:AmexioFooterComponent[];
 
   constructor() {
     this.headeralign = "left";
     this.footeralign = "right";
+
   }
 
 
@@ -133,14 +155,40 @@ description : Provides card height.
 
 
   ngAfterViewInit() {
+
     this.onResize();
+
   }
 
-  /** 
-   *  Calculate body size based on browser height 
+  ngAfterContentInit(){
+    //FOR HEADER PADING
+    this.headerComponentList = this.amexioHeader.toArray();
+    this.headerComponentList.forEach((item:AmexioHeaderComponent,currentIndex)=>{
+      if(item.padding){
+        this.headerPadding=item.padding;
+      }
+    });
+
+    //FOR BODY PADDING
+    this.bodyComponentList = this.amexioBody.toArray();
+    this.bodyComponentList.forEach((item:AmexioBodyComponent,currentIndex)=>{
+      if(item.padding){
+        this.bodyPadding=item.padding;
+      }
+    });
+    //FOR FOOTER PADDING
+    this.footerComponentList = this.amexioFooter.toArray();
+    this.footerComponentList.forEach((item:AmexioFooterComponent,currentIndex)=>{
+      if(item.padding){
+        this.footerPadding=item.padding;
+      }
+    });
+  }
+  /**
+   *  Calculate body size based on browser height
    **/
   onResize(){
-   
+
     if(this.bodyheight){
       let h = (window.innerHeight/100)*this.bodyheight;
 
@@ -149,8 +197,8 @@ description : Provides card height.
 
       if(this.cardFooter && this.cardFooter.nativeElement && this.cardFooter.nativeElement.offsetHeight)
         h = h - this.cardFooter.nativeElement.offsetHeight;
-      
-      
+
+
       if(this.bodyheight === 100)
         h = h - 40;
 
@@ -158,7 +206,7 @@ description : Provides card height.
       this.height = h;
     }
   }
-  
+
 
 
 }

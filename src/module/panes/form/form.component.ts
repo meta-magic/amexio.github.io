@@ -176,6 +176,25 @@ description : Event fired if showError msg info button is clicked
 
       componentError:any[] = [];
 
+headerPadding:string;
+
+  bodyPadding:string;
+
+  footerPadding:string;
+
+  @ContentChildren(AmexioFormHeaderComponent) amexioHeader:QueryList<AmexioFormHeaderComponent>;
+
+  headerComponentList:AmexioFormHeaderComponent[];
+
+  @ContentChildren(AmexioFormBodyComponent) amexioBody:QueryList<AmexioFormBodyComponent>;
+
+  bodyComponentList:AmexioFormBodyComponent[];
+
+  @ContentChildren(AmexioFormActionComponent) amexioFooter:QueryList<AmexioFormActionComponent>;
+
+  footerComponentList:AmexioFormActionComponent[];
+
+
     constructor(){
         this.checkForm = false;
         this.isFormValid = false;
@@ -183,7 +202,30 @@ description : Event fired if showError msg info button is clicked
         this.headeralign = "left";
         this.footeralign = "right";
     }
-
+    ngAfterContentInit(){
+        //FOR HEADER PADING
+        this.headerComponentList = this.amexioHeader.toArray();
+        this.headerComponentList.forEach((item:AmexioFormHeaderComponent,currentIndex)=>{
+          if(item.padding){
+            this.headerPadding=item.padding;
+          }
+        });
+    
+        //FOR BODY PADDING
+        this.bodyComponentList = this.amexioBody.toArray();
+        this.bodyComponentList.forEach((item:AmexioFormBodyComponent,currentIndex)=>{
+          if(item.padding){
+            this.bodyPadding=item.padding;
+          }
+        });
+        //FOR FOOTER PADDING
+        this.footerComponentList = this.amexioFooter.toArray();
+        this.footerComponentList.forEach((item:AmexioFormActionComponent,currentIndex)=>{
+          if(item.padding){
+            this.footerPadding=item.padding;
+          }
+        });
+      }
 
   onResize(){
 
@@ -237,10 +279,7 @@ description : Event fired if showError msg info button is clicked
         this.onResize();
     }
 
-    ngAfterContentInit(){
-
-    }
-
+   
     ngDoCheck(){
         this.checkFormvalidity();
     }
