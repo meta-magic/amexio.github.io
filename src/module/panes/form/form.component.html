@@ -1,14 +1,14 @@
 <form name="fname" class="form-container" (window:resize)="onResize()">
 
-  <header #formHeader class="form-header" *ngIf="header" >
+  <header #formHeader class="form-header" [style.padding]="headerPadding"  *ngIf="header" >
     <ng-content select="amexio-form-header"></ng-content>
   </header>
 
-  <div class="form-body formbody" [ngStyle]="{'height.px' : height,'overflow-y' : height!= null ? 'auto' : '','min-height.px' : minHeight}" >
+  <div class="form-body formbody" [style.padding]="bodyPadding" [ngStyle]="{'height.px' : height,'overflow-y' : height!= null ? 'auto' : '','min-height.px' : minHeight}" >
     <ng-content select="amexio-form-body"></ng-content>
   </div>
 
-  <footer #formFooter class="form-footer"
+  <footer #formFooter class="form-footer" [style.padding]="footerPadding"
       [ngClass]="{'flex-start':(footeralign=='left'),'flex-end':(footeralign=='right'),'flex-center':(footeralign=='center')}">
       <ng-content select="amexio-form-action"></ng-content>
       <br/>
