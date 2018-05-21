@@ -339,11 +339,10 @@ tabNodeProperties() {
     } else
       this.tabCollection[i].amexiocolor = AmexioBottomColorMap.COMPONENT_CLASS_MAP[this.tabCollection[i].amexiocolor];
       if (this.closable) {
-        debugger;
         if (this.tabCollection[i].closable == null || this.tabCollection[i].closable == true) {
           this.tabCollection[i].closable = true;
         } else if (this.tabCollection[i].closable == false) {
-          this.tabCollection[i].closable == false;
+          this.tabCollection[i].closable = false;
         }
       }
     }
