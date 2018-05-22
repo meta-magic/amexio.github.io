@@ -1,281 +1,282 @@
 /* Misc Variables */
 
-$borderSize : 1px;
-$borderSize2 : 2px;
-$borderSize3 : 3px;
-
-$borderRadius : 2px;
-$borderRadius2 : 3px;
-$borderRadius3 : 4px;
-
-$scrollBGColor : $componentDisabledBGColor;
-$scrollThumbColor : $componentHeaderBGColor;
-
-$borderColor : #ced4da;
-
+$borderSize: 1px;
+$borderSize2: 2px;
+$borderSize3: 3px;
+$borderRadius: 2px;
+$borderRadius2: 3px;
+$borderRadius3: 4px;
+$scrollBGColor: $componentDisabledBGColor;
+$scrollThumbColor: $componentHeaderBGColor;
+$borderColor: #ced4da;
 $primaryBGColor: $themeSecondaryColor;
 $secondaryBGColor: $componentBGColor;
-$successBGColor : #5cb85c;
-$dangerBGColor : #d9534f;
-$warningBGColor : #f0ad4e;
-
+$successBGColor: #5cb85c;
+$dangerBGColor: #d9534f;
+$warningBGColor: #f0ad4e;
 $primaryColor: $componentBGColor;
 $secondaryColor:$componentFontColor;
-$successColor : $componentBGColor;
-$dangerColor : $componentBGColor;
-$warningColor : $componentBGColor;
-
+$successColor: $componentBGColor;
+$dangerColor: $componentBGColor;
+$warningColor: $componentBGColor;
 $success: $successBGColor;
-$error : $dangerBGColor;
-$focusColor : #5cb3fd;
-
+$error: $dangerBGColor;
+$focusColor: #5cb3fd;
 $borderColorFocus: $focusColor;
 
 /****************************************************************************
                     Common CSS Helper Classes
 *****************************************************************************/
+
 body {
-  background: $appBackground;
-  min-height: 100%;
-  height :100%;
-  overflow-x: hidden;
-  overflow-y: auto;
-  font-weight: 400;
-  color: $themeFontColor;
-  font-size: 1em;
-  margin: 0px;
-  padding: 0px;
+    background: $appBackground;
+    min-height: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-weight: 400;
+    color: $themeFontColor;
+    font-size: 1em;
+    margin: 0px;
+    padding: 0px;
 }
 
 html {
-  height :100%;
-  width :100%;
+    height: 100%;
+    width: 100%;
 }
 
 body {
-  font-family: Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
-  background-image: $appBackgroundImage;
+    font-family: Roboto, Trebuchet MS, Arial, Helvetica, sans-serif;
+    background-image: $appBackgroundImage;
 }
 
-.helperHidden{
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
+.helperHidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
 }
 
-.inline-block{
-  display: inline-block;
+.inline-block {
+    display: inline-block;
 }
 
 .float-right {
-  float: right;
+    float: right;
 }
 
 .float-left {
-  float: left;
+    float: left;
 }
 
-
-.flex-center{
-  justify-content:center;
+.flex-center {
+    justify-content: center;
 }
 
-.flex-start{
-  justify-content:flex-start;
+.flex-start {
+    justify-content: flex-start;
 }
 
-.flex-end{
-  justify-content:flex-end;
+.flex-end {
+    justify-content: flex-end;
 }
 
-
-.border-bottom{
-  border-bottom: 1px solid #cccccc;
+.border-bottom {
+    border-bottom: 1px solid #cccccc;
 }
 
-.border-top{
-  border-top: 1px solid #cccccc;
+.border-top {
+    border-top: 1px solid #cccccc;
 }
 
-.border-left{
-  border-left: 1px solid #cccccc;
+.border-left {
+    border-left: 1px solid #cccccc;
 }
 
-.border-right{
-  border-right: 1px solid #cccccc;
+.border-right {
+    border-right: 1px solid #cccccc;
 }
 
 .header {
-  background-color: $componentHeaderBGColor;
-  color: $componentHeaderFontColor;
-  padding: 10px;
-  overflow: hidden;
+    background-color: $componentHeaderBGColor;
+    color: $componentHeaderFontColor;
+    padding: 10px;
+    overflow: hidden;
 }
 
 .header .title {
-  float: left;
-  font-size:20px;
+    float: left;
+    font-size: 20px;
 }
 
-.table{
-  display: table;
-  padding: 5px;
+.table {
+    display: table;
+    padding: 5px;
 }
 
-.table .tablerow{
-  display: table-row;
+.table .tablerow {
+    display: table-row;
 }
 
-.table .tablerow .tablecol{
-  display: table-cell;
-  padding-right: 5px;
-  padding-left: 5px;
-  vertical-align: middle;
+.table .tablerow .tablecol {
+    display: table-cell;
+    padding-right: 5px;
+    padding-left: 5px;
+    vertical-align: middle;
 }
 
-.listbox .header .table .tablerow .tablecol{
- padding-right: 0px!important;
+.listbox .header .table .tablerow .tablecol {
+    padding-right: 0px!important;
 }
 
-input:disabled {
-  opacity: 0.55;
-  cursor: not-allowed;
-  background-color: $componentDisabledBGColor;
+// input:disabled {
+//   opacity: 0.55;
+//   cursor: not-allowed;
+//   background-color: $componentDisabledBGColor;
+// }
+.disable-component {
+    opacity: 0.50;
+    pointer-events: none;
+    cursor: not-allowed;
+    // background-color: $componentDisabledBGColor;
 }
 
-.disable-component{
-  opacity: 0.55;
-  pointer-events: none;
-  background-color: $componentDisabledBGColor;
+.defaultcolor {
+    color: $themeFontColor;
 }
 
-.defaultcolor{
-  color: $themeFontColor;
+.verticalalign-tableft {
+    vertical-align: top !important;
+    border-right: $borderSize solid $borderColor !important;
 }
 
-.verticalalign-tableft{
-  vertical-align: top !important;
-  border-right: $borderSize solid $borderColor !important;
+.verticalalign-tabright {
+    vertical-align: top !important;
+    border-left: $borderSize solid $borderColor !important;
 }
 
-.verticalalign-tabright{
-  vertical-align: top !important;
-  border-left: $borderSize solid $borderColor !important;
+.verticalalign-tabcontent {
+    vertical-align: top !important;
 }
-
-.verticalalign-tabcontent
-{
-  vertical-align: top !important;
-}
-
 
 
 /*
 We set the element we are applying our loading mask to relative
 */
+
 .loading-mask {
-  position: relative;
+    position: relative;
 }
+
 
 /*
 Because we set .loading-mask relative, we can span our ::before
 element over the whole parent element
 */
+
 .loading-mask::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
+
 
 /*
 Spin animation for .loading-mask::after
 */
+
 @keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(359deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
 }
 
 label {
-  display: inline-block;
-  margin-top: 5px;
-  max-width: 100%;
-  //padding: 0 12px;
-  font-size: 14px;
-  font-weight: 500;
+    display: inline-block;
+    margin-top: 5px;
+    max-width: 100%;
+    //padding: 0 12px;
+    font-size: 14px;
+    font-weight: 500;
 }
 
 a {
-  color: $appTransparency;
-  //text-transform: lowercase;
+    color: $appTransparency;
+    //text-transform: lowercase;
 }
 
-textarea{
-  font-family: inherit;
+textarea {
+    font-family: inherit;
 }
 
-textarea:disabled{
-  opacity: 0.55;
-  cursor: not-allowed;
-  background-color: $componentDisabledBGColor;
+textarea:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    background-color: $componentDisabledBGColor;
 }
+
+
 /*
 The loading throbber is a single spinning element with three
 visible borders and a border-radius of 50%.
 Instead of a border we could also use a font-icon or any
 image using the content attribute.
 */
+
 .loading-mask::after {
-  content: "";
-  position: absolute;
-  border-width: 3px;
-  border-style: solid;
-  border-color: transparent $themeSecondaryColor $themeSecondaryColor;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  top: calc(50% - 12px);
-  left: calc(50% - 12px);
-  animation: 2s linear 0s normal none infinite running spin;
-  filter: drop-shadow(0 0 2 rgba(0, 0, 0, 0.33));
+    content: "";
+    position: absolute;
+    border-width: 3px;
+    border-style: solid;
+    border-color: transparent $themeSecondaryColor $themeSecondaryColor;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    top: calc(50% - 12px);
+    left: calc(50% - 12px);
+    animation: 2s linear 0s normal none infinite running spin;
+    filter: drop-shadow(0 0 2 rgba(0, 0, 0, 0.33));
 }
 
+
 /** **/
+
 @keyframes spinner {
-  to {transform: rotate(360deg);}
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .spinner:before {
-  content: '';
-  box-sizing: border-box;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 20px;
-  height: 20px;
-  margin-top: -10px;
-  margin-left: -10px;
-  border-radius: 50%;
-  border: 2px solid transparent;
-  border-top-color: $themeSecondaryColor;
-  border-bottom-color: $themeSecondaryColor;
-  animation: spinner .8s ease infinite;
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;
+    margin-left: -10px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    border-top-color: $themeSecondaryColor;
+    border-bottom-color: $themeSecondaryColor;
+    animation: spinner .8s ease infinite;
 }
 
-.row-disabled{
-  opacity: 0.55;
+.row-disabled {
+    opacity: 0.55;
 }
-
 
 @import "amexio.colors.scss";
