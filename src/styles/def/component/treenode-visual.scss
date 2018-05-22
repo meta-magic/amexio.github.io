@@ -3,7 +3,12 @@
   background-color: $treenodeBGColor;  
 }
 
-.treenode-content:hover{
+/*.treenode-content:hover{
+  background-color: $treeNodeHoverBGColor;
+  color: $treeNodeHoverColor
+}*/
+
+.tree-node-label-hover:hover{
   background-color: $treeNodeHoverBGColor;
   color: $treeNodeHoverColor
 }
