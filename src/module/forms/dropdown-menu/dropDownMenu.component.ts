@@ -3,7 +3,7 @@ import {
   AfterContentInit
 } from '@angular/core';
 
-import { AmexioDropDownOptionComponent } from '../component/dropDownMenu.component.options'
+import { AmexioDropDownOptionComponent } from './dropDownMenu.component.options'
 
 
 @Component({
@@ -80,7 +80,6 @@ import { AmexioDropDownOptionComponent } from '../component/dropDownMenu.compone
 export class AmexioDropDownMenuComponent implements AfterContentInit {
 
   dropDownPreviewData : any;
-  flag: boo;
 
   /* for internal use*/
   @Input() dropDownMenuLocalData: any;
