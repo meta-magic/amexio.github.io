@@ -63,7 +63,7 @@ html {
   width: 100%; }
 
 body {
-  font-family: Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
+  font-family: Roboto, Trebuchet MS, Arial, Helvetica, sans-serif;
   background-image: none; }
 
 .helperHidden {
@@ -132,15 +132,10 @@ body {
 .listbox .header .table .tablerow .tablecol {
   padding-right: 0px !important; }
 
-input:disabled {
-  opacity: 0.55;
-  cursor: not-allowed;
-  background-color: #d5dbc2; }
-
 .disable-component {
-  opacity: 0.55;
+  opacity: 0.50;
   pointer-events: none;
-  background-color: #d5dbc2; }
+  cursor: not-allowed; }
 
 .defaultcolor {
   color: #1a1f00; }
@@ -1141,6 +1136,7 @@ textarea:required {
 
 /** collapsible-search - Structure CSS **/
 .search {
+  background: #ededed url("search-icon.png") no-repeat 9px center;
   border: solid 1px #ced4da;
   padding: 9px 10px 9px 32px;
   outline: none;
@@ -3147,7 +3143,11 @@ header .billboard .content-button {
 .treenode {
   background-color: transparent; }
 
-.treenode-content:hover {
+/*.treenode-content:hover{
+  background-color: $treeNodeHoverBGColor;
+  color: $treeNodeHoverColor
+}*/
+.tree-node-label-hover:hover {
   background-color: #edffb8;
   color: #3d5200; }
 
@@ -3195,6 +3195,11 @@ header .billboard .content-button {
   -o-transition: expand .5s;
   -webkit-transition: expand .5s;
   transition: expand .5s; }
+
+.tree-node-label {
+  white-space: nowrap;
+  display: inline;
+  cursor: pointer; }
 
 /****************************************************************************
     Component Name : Menubar
@@ -4369,7 +4374,7 @@ fieldset {
   cursor: pointer; }
 
 .tabcontent {
-  width: 100%;
+  width: inherit;
   position: relative;
   vertical-align: top !important;
   padding: 20px 20px 10px 0px; }
