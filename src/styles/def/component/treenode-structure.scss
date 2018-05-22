@@ -52,3 +52,10 @@
   -webkit-transition: expand .5s;
   transition: expand .5s;
 }
+.tree-node-label {
+  white-space:nowrap;
+  display: inline;
+  cursor: pointer;
+}
+.tree-node-label-hover {
+}
