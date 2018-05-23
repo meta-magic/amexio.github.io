@@ -2315,29 +2315,25 @@ input:checked + .toggle-slider:before {
 *****************************************************************************/
 /** dropdownmenu - Visual CSS **/
 .dropdown-menu-content a:hover {
-  background-color: #b8dbff; }
+  background-color: #b8dbff;
+  color: #000f1f; }
 
 .dropdown-menu:hover .dropdown-menu-content {
   display: flex;
   background-color: #ffffff; }
 
-.dropdown-menu:hover .dropdown-menu-button {
-  background-color: #b8dbff; }
-
 /** dropdownmenu - Structure CSS **/
 li {
   list-style-type: none; }
 
-.dropdown-menu-button {
-  background-color: #0052a5;
-  color: #000f1f;
-  padding: 16px;
-  cursor: pointer; }
-
 .dropdown-menu {
   position: relative;
   display: inline-block;
-  font-size: 16px !important; }
+  font-size: 16px !important;
+  background-color: #0052a5;
+  color: #f0f7ff;
+  padding: 16px;
+  cursor: pointer; }
 
 .dropdown-menu-content {
   display: none;

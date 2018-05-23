@@ -10,10 +10,9 @@ import { AmexioDropDownOptionComponent } from './dropDownMenu.component.options'
   selector: 'amexio-drop-down-menu',
   template: `
 
-    <div class="dropdown-menu">
-      <a class="dropdown-menu-button" [style.padding]="padding">
-        <i *ngIf="icon" [ngClass]="icon"></i>{{title}}&nbsp;<i class="dropdownicon fa fa-angle-down"></i>
-      </a>
+    <div class="dropdown-menu"  [style.padding]="padding">
+        <i *ngIf="icon" [ngClass]="icon">&nbsp;</i>{{title}}&nbsp;<i class="dropdownicon fa fa-angle-down"></i>
+      
       <div class="dropdown-menu-content">
           <a [ngClass]="{'divider':node.seprator}" *ngFor="let node of data" >
             <i [ngStyle]="{'float': iconposition === 'right' ? 'right':null }" 

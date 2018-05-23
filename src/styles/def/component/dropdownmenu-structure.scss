@@ -3,16 +3,14 @@ li {
   list-style-type: none;
 }
 
-.dropdown-menu-button {
-  background-color: $dropdownMenuHeaderBGColor;
-  color: $dropdownMenuActiveColor;
-  padding: 16px;
-  cursor: pointer;
-}
 .dropdown-menu {
   position: relative;
   display: inline-block;
-  font-size: 16px !important;
+    font-size: 16px !important;
+    background-color: $dropdownMenuHeaderBGColor;
+  color: $dropdownMenuHeaderFontBGColor;
+  padding: 16px;
+  cursor: pointer;
 }
 .dropdown-menu-content {
   display: none;
