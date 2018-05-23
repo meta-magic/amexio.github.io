@@ -43,7 +43,7 @@ export class AmexioDropDownOptionComponent implements OnInit{
    default :
    description : Label-align for label right/left
    */
-  @Input() ('label-align') labelalign : string;
+  @Input ('label-align') labelalign : string;
   /*
    Properties
    name : icon-align
@@ -52,7 +52,7 @@ export class AmexioDropDownOptionComponent implements OnInit{
    default :
    description : icon-align for text field right/left
    */
-  @Input() ('icon-align') iconalign : string;
+  @Input ('icon-align') iconalign : string;
   /*
    Properties
    name : add-seperator
@@ -61,7 +61,7 @@ export class AmexioDropDownOptionComponent implements OnInit{
    default : false
    description : add divider to the dropdown menu list
    */
-  @Input() ('Add-Seperator') addseperator : boolean;
+  @Input ('Add-Seperator') addseperator : boolean;
 
   /*
    Events

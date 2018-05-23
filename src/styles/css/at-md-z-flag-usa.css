@@ -63,7 +63,7 @@ html {
   width: 100%; }
 
 body {
-  font-family: Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
+  font-family: Roboto, Trebuchet MS, Arial, Helvetica, sans-serif;
   background-image: none; }
 
 .helperHidden {
@@ -132,15 +132,10 @@ body {
 .listbox .header .table .tablerow .tablecol {
   padding-right: 0px !important; }
 
-input:disabled {
-  opacity: 0.55;
-  cursor: not-allowed;
-  background-color: #c2cfdb; }
-
 .disable-component {
-  opacity: 0.55;
+  opacity: 0.50;
   pointer-events: none;
-  background-color: #c2cfdb; }
+  cursor: not-allowed; }
 
 .defaultcolor {
   color: #1f0003; }
@@ -1141,6 +1136,7 @@ textarea:required {
 
 /** collapsible-search - Structure CSS **/
 .search {
+  background: #ededed url("search-icon.png") no-repeat 9px center;
   border: solid 1px #ced4da;
   padding: 9px 10px 9px 32px;
   outline: none;
@@ -2314,6 +2310,59 @@ input:checked + .toggle-slider:before {
   cursor: pointer; }
 
 /****************************************************************************
+    Component Name : DropDown Menu
+    Version : Amexio v4.2 onwards
+*****************************************************************************/
+/** dropdownmenu - Visual CSS **/
+.dropdown-menu-content a:hover {
+  background-color: #b8dbff; }
+
+.dropdown-menu:hover .dropdown-menu-content {
+  display: flex;
+  background-color: #ffffff; }
+
+.dropdown-menu:hover .dropdown-menu-button {
+  background-color: #b8dbff; }
+
+/** dropdownmenu - Structure CSS **/
+li {
+  list-style-type: none; }
+
+.dropdown-menu-button {
+  background-color: #0052a5;
+  color: #000f1f;
+  padding: 16px;
+  cursor: pointer; }
+
+.dropdown-menu {
+  position: relative;
+  display: inline-block;
+  font-size: 16px !important; }
+
+.dropdown-menu-content {
+  display: none;
+  position: fixed;
+  flex-direction: column;
+  background-color: #6bb5ff;
+  min-width: 180px;
+  cursor: pointer;
+  box-shadow: 0px 8px 16px 0px #ced4da;
+  z-index: 1;
+  padding: 10px; }
+
+.dropdown-menu-content .divider {
+  border-bottom: solid 1px #000f1f; }
+
+.dropdown-menu-content a {
+  color: #000f1f;
+  padding: 5px 6px;
+  text-decoration: none;
+  display: inline-block;
+  min-width: inherit;
+  padding: 10px;
+  display: block; }
+
+/****************************************************************************
     Component Name : Enterprise Content
     Version : Amexio v4.0 onwards
 *****************************************************************************/
@@ -3147,7 +3196,11 @@ header .billboard .content-button {
 .treenode {
   background-color: transparent; }
 
-.treenode-content:hover {
+/*.treenode-content:hover{
+  background-color: $treeNodeHoverBGColor;
+  color: $treeNodeHoverColor
+}*/
+.tree-node-label-hover:hover {
   background-color: #b8dbff;
   color: #002952; }
 
@@ -3195,6 +3248,11 @@ header .billboard .content-button {
   -o-transition: expand .5s;
   -webkit-transition: expand .5s;
   transition: expand .5s; }
+
+.tree-node-label {
+  white-space: nowrap;
+  display: inline;
+  cursor: pointer; }
 
 /****************************************************************************
     Component Name : Menubar
@@ -4369,7 +4427,7 @@ fieldset {
   cursor: pointer; }
 
 .tabcontent {
-  width: 100%;
+  width: inherit;
   position: relative;
   vertical-align: top !important;
   padding: 20px 20px 10px 0px; }

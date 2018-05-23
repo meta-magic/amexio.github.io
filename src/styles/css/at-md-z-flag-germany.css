@@ -2318,7 +2318,8 @@ input:checked + .toggle-slider:before {
   background-color: #ffffb8; }
 
 .dropdown-menu:hover .dropdown-menu-content {
-  display: flex; }
+  display: flex;
+  background-color: #ffffff; }
 
 .dropdown-menu:hover .dropdown-menu-button {
   background-color: #ffffb8; }
@@ -2328,14 +2329,15 @@ li {
   list-style-type: none; }
 
 .dropdown-menu-button {
-  background-color: #ffff6b;
+  background-color: #ffff00;
   color: #1f1f00;
   padding: 16px;
   cursor: pointer; }
 
 .dropdown-menu {
   position: relative;
-  display: inline-block; }
+  display: inline-block;
+  font-size: 16px !important; }
 
 .dropdown-menu-content {
   display: none;
@@ -2344,7 +2346,7 @@ li {
   background-color: #ffff6b;
   min-width: 180px;
   cursor: pointer;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 8px 16px 0px #ced4da;
   z-index: 1;
   padding: 10px; }
 

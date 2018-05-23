@@ -2275,7 +2275,8 @@ input:checked + .toggle-slider:before {
   background-color: #ecff82; }
 
 .dropdown-menu:hover .dropdown-menu-content {
-  display: flex; }
+  display: flex;
+  background-color: white; }
 
 .dropdown-menu:hover .dropdown-menu-button {
   background-color: #ecff82; }
@@ -2285,14 +2286,15 @@ li {
   list-style-type: none; }
 
 .dropdown-menu-button {
-  background-color: #a9f74f;
+  background-color: #417505;
   color: black;
   padding: 16px;
   cursor: pointer; }
 
 .dropdown-menu {
   position: relative;
-  display: inline-block; }
+  display: inline-block;
+  font-size: 16px !important; }
 
 .dropdown-menu-content {
   display: none;
@@ -2301,7 +2303,7 @@ li {
   background-color: #a9f74f;
   min-width: 180px;
   cursor: pointer;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 8px 16px 0px #417505;
   z-index: 1;
   padding: 10px; }
 

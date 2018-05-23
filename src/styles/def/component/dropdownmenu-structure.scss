@@ -4,7 +4,7 @@ li {
 }
 
 .dropdown-menu-button {
-  background-color: $dropdownMenuActiveBGColor;
+  background-color: $dropdownMenuHeaderBGColor;
   color: $dropdownMenuActiveColor;
   padding: 16px;
   cursor: pointer;
@@ -12,6 +12,7 @@ li {
 .dropdown-menu {
   position: relative;
   display: inline-block;
+  font-size: 16px !important;
 }
 .dropdown-menu-content {
   display: none;
@@ -20,7 +21,7 @@ li {
   background-color: $dropdownMenuActiveBGColor ;
   min-width: 180px;
   cursor: pointer;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px $dropdownMenuBorderColor;
   z-index: 1;
   padding: 10px;
 }

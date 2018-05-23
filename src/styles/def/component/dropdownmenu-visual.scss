@@ -3,6 +3,7 @@
 }
 .dropdown-menu:hover .dropdown-menu-content {
   display: flex;
+  background-color: $dropdownMenuBGColor;
 }
 .dropdown-menu:hover .dropdown-menu-button {
   background-color: $dropdownMenuHoverBGColor;
