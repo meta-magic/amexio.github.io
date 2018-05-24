@@ -18,6 +18,7 @@
          (focus)="onFocus(rootDiv)"
          (input)="onInput(inp)"
          [attr.placeholder]="placeholder"
+         [readonly]="readonly ? true : null"
          [attr.disabled]="disabled ? true: null"
          [required]="allowblank ? true: null" (keyup)="onDropDownSearchKeyUp($event)" (keydown)="navigateKey($event)"/>
 
