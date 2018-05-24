@@ -121,6 +121,17 @@ default : false
 description : true for search box enable
 */
   @Input() search: boolean;
+  
+  
+   /*
+   Properties
+   name : readonly
+   datatype : boolean
+   version : 4.2.1 onwards
+   default : false
+   description : true for set dropdown input readonly.
+   */
+  @Input() readonly : boolean;
 
   /*
 Properties
