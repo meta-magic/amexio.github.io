@@ -2314,13 +2314,23 @@ input:checked + .toggle-slider:before {
     Version : Amexio v4.2 onwards
 *****************************************************************************/
 /** dropdownmenu - Visual CSS **/
+.dropdown-menu {
+  background-color: #455a64;
+  color: #f6f8f9; }
+
+.dropdown-menu-content {
+  background-color: #ffffff;
+  box-shadow: 0px 8px 16px 0px #ced4da; }
+
+.dropdown-menu-content .divider {
+  border-bottom: solid 1px #ced4da; }
+
 .dropdown-menu-content a:hover {
   background-color: #b8e8ff;
-  color: #00151f; }
+  color: #003852; }
 
 .dropdown-menu:hover .dropdown-menu-content {
-  display: flex;
-  background-color: #ffffff; }
+  display: flex; }
 
 /** dropdownmenu - Structure CSS **/
 li {
@@ -2330,8 +2340,6 @@ li {
   position: relative;
   display: inline-block;
   font-size: 16px !important;
-  background-color: #455a64;
-  color: #f6f8f9;
   padding: 16px;
   cursor: pointer; }
 
@@ -2339,22 +2347,18 @@ li {
   display: none;
   position: fixed;
   flex-direction: column;
-  background-color: #6bd0ff;
   min-width: 180px;
   cursor: pointer;
-  box-shadow: 0px 8px 16px 0px #ced4da;
   z-index: 1;
-  padding: 10px; }
+  padding: 10px 0px;
+  overflow-y: auto; }
 
 .dropdown-menu-content .divider {
-  border-bottom: solid 1px #00151f; }
+  border-bottom: solid 1px #ced4da; }
 
 .dropdown-menu-content a {
-  color: #00151f;
-  padding: 5px 6px;
   text-decoration: none;
   display: inline-block;
-  min-width: inherit;
   padding: 10px;
   display: block; }
 
@@ -4426,7 +4430,11 @@ fieldset {
   width: inherit;
   position: relative;
   vertical-align: top !important;
+<<<<<<< HEAD
   padding: 10px 0px; }
+=======
+  padding: 20px 0px; }
+>>>>>>> a7c5cd484b2aeaaf620a1ac1e87c71b813bc7830
 
 /**VERTICAL TABS**/
 .verticalnavtab {
