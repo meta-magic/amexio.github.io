@@ -26,7 +26,7 @@ import {Component, EventEmitter, Input, OnInit, Output, ViewChild, ElementRef} f
             [ngClass]="{'flex-start':(headeralign=='left'),'flex-end':(headeralign=='right'),'flex-center':(headeralign=='center')}">
       <ng-content select="amexio-header"></ng-content>
     </header>
-<div class="card-body cardbody" [style.padding]="bodyPadding"  [ngStyle]="{'height.px' : height,'overflow-x':'hidden','overflow-y' : height!= null ? 'auto' : '','min-height.px' : minHeight}">
+<div class="card-body cardbody" [style.padding]="bodyPadding"  [ngStyle]="{'height.px' : height,'overflow-y' : height!= null ? 'auto' : '','min-height.px' : minHeight}">
       <ng-content select="amexio-body"></ng-content>
     </div>
     <footer  #cardFooter [style.padding]="footerPadding"  class="card-footer" *ngIf="footer"
