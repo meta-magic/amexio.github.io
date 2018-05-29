@@ -2315,6 +2315,55 @@ li {
   padding: 10px;
   display: block; }
 
+/*****************************************************************************
+ Component Name : Toolbar
+    Version : Amexio v4.2 onwards
+*****************************************************************************/
+/** Toolbar - Visual CSS **/
+.toolbar {
+  background-color: #1C2949; }
+
+.toolbaritemseperatorleft {
+  border-left: 1px solid #f10897; }
+
+.toolbaritemseperatorright {
+  border-right: 1px solid #f10897; }
+
+/** Toolbar - Structure CSS **/
+.toolbar {
+  cursor: pointer;
+  flex-direction: row;
+  justify-content: space-between;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+  padding-top: 2px;
+  position: relative;
+  padding: 10px; }
+
+.card-header .toolbar {
+  background-color: unset;
+  box-shadow: unset;
+  padding: 0px; }
+
+.toolbar-item {
+  display: inline-flex;
+  flex-direction: row;
+  text-anchor: middle;
+  letter-spacing: 1px; }
+
+.toolbaritemseperatorleft {
+  padding-left: 10px;
+  padding-right: 10px;
+  position: relative; }
+
+.toolbaritemseperatorright {
+  padding-right: 10px;
+  padding-left: 10px;
+  position: relative; }
+
+.toolbar-item .inputgroup .input-control {
+  width: unset !important;
+  padding: 0px !important; }
+
 /****************************************************************************
     Component Name : Enterprise Content
     Version : Amexio v4.0 onwards
