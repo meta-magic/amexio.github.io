@@ -36,6 +36,10 @@ import { AmexioFloatingButtonComponent } from './floatingbutton/floatingbutton.c
 import { AmexioFloatingGroupButtonComponent } from './floatinggroupbutton/floatinggroupbutton.component';
 import { AmexioDropDownOptionComponent} from './dropdown-menu/dropDownMenu.component.options';
 import { AmexioDropDownMenuComponent } from './dropdown-menu/dropDownMenu.component';
+import  {ToolbarComponent} from './toolbar/toolbar.component';
+import{ToolbaroneComponent } from './toolbar/toolbarone.component';
+import {ToolBarActionComponent} from './toolbar/toolbaraction.component';
+
 
 
 export * from '../services/data/common.data.service';
@@ -71,7 +75,10 @@ const FORM_COMPONENTS = [
   AmexioFloatingButtonComponent,
   AmexioFloatingGroupButtonComponent,
   AmexioDropDownOptionComponent,
-  AmexioDropDownMenuComponent
+  AmexioDropDownMenuComponent,
+  ToolbarComponent,
+  ToolbaroneComponent,
+  ToolBarActionComponent
 ];
 
 @NgModule({
