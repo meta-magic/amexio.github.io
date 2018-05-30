@@ -2341,37 +2341,8 @@ li {
   cursor: pointer; }
 
 .dropdown-menu-content {
+  position: block;
   display: block;
-  position: fixed;
-  flex-direction: column;
-  min-width: 180px;
-  cursor: pointer;
-  z-index: 1;
-  padding: 10px 0px;
-  overflow-y: auto; }
-
-.dropdown-menu-content a {
-  text-decoration: none;
-  display: inline-block;
-  padding: 10px;
-  display: block; }
-
-.menu-right {
-  right: 10px; }
-
-li {
-  list-style-type: none; }
-
-.dropdown-menu {
-  position: relative;
-  display: inline-block;
-  font-size: 16px !important;
-  padding: 16px;
-  cursor: pointer; }
-
-.dropdown-menu-content {
-  display: block;
-  position: fixed;
   flex-direction: column;
   min-width: 180px;
   cursor: pointer;
