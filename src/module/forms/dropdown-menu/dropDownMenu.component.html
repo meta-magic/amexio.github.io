@@ -1,0 +1,19 @@
+
+
+<div (click)="showDropDownContent($event)" class="dropdown-menu" (mouseover)="onMouseOver($event)" [style.padding]="padding"
+     [ngStyle]="{'background-color':(transparent)?'unset':'null'}">
+  <label >
+    <i *ngIf="icon" [ngClass]="icon">&nbsp;</i>{{title}}&nbsp;</label>
+  <ng-container *ngIf="downArrowIcon">
+    <i *ngIf="!toggle"  class="fa fa-angle-down "></i>
+    <i *ngIf="toggle"  class="fa fa-angle-up "></i>
+  </ng-container>
+
+  <div   *ngIf="toggle" class="dropdown-menu-content"  [style.height]="height"   [ngClass]="{'menu-right':xposition}" [style.top.px]="top">
+    <a  [ngClass]="{'divider':node.separator}"  (click)="onDropDownMenuClick(node)" *ngFor="let node of data" >
+      <i [ngStyle]="{'float':getIconPosition(node, iconposition ) ? 'right':null  }"
+         [ngClass]="node.icon"></i>
+      <span [ngStyle]="{'float':getLabelPosition(node,label) ? 'right':null,'padding': iconposition === 'right' ? '0px': '2px'}"> {{node.label}}</span>
+    </a>
+  </div>
+</div>

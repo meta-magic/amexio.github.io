@@ -61,21 +61,15 @@ export class AmexioDropDownOptionComponent implements OnInit{
    default : false
    description : add divider to the dropdown menu list
    */
-  @Input ('Add-Seperator') addseperator : boolean;
+  @Input ('separator') separator : boolean;
 
   /*
-   Events
-   name : onItemClick
-   datatype : none
-   version : none
-   default : none
-   description : Fire when dropdown item or icon click
+   Properties
+   name : add-seperator
+   datatype :  boolean
+   version : 4.0 onwards
+   default : false
+   description : add divider to the dropdown menu list
    */
-
-  @Output() onItemClick: EventEmitter<any> = new EventEmitter<any>();
-
-
-
-
 
 }
