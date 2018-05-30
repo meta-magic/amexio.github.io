@@ -1,20 +1,10 @@
 
-$dropdownMenuFontSize : 100%;
-$dropdownMenuFontWeight : 400;
+$dropdownListFontSize : 100%;
+$dropdownListFontWeight : 400;
+$dropdownBG: $componentBGColor;
+$dropdownBorderColor : $borderColor;
+$dropdownActiveColor : $componentActiveFontColor;
+$dropdownActiveBGColor : $componentActiveBGColor;
 
-$dropdownMenuBorderColor : $borderColor;
-$dropdownMenuBGColor : $componentBGColor;
-
-$dropdownMenuHeaderBGColor : $componentHeaderBGColor;
-$dropdownMenuHeaderFontColor: $componentHeaderFontColor;
-
-$dropdownMenuHoverColor : $componentHoverFontColor;
-$dropdownMenuHoverBGColor : $componentHoverBGColor;
-
-
-
-
-
-
-
-
+$dropdownHoverColor : $componentHoverFontColor;
+$dropdownHoverBGColor : $componentHoverBGColor;

@@ -21,7 +21,7 @@ export class AmexioDropDownOptionComponent implements OnInit{
    Properties
    name : label
    datatype : string
-   version : 4.0 onwards
+   version : 4.2 onwards
    default :
    description : Label Dropdown
    */
@@ -30,7 +30,7 @@ export class AmexioDropDownOptionComponent implements OnInit{
    Properties
    name : icon
    datatype : string
-   version : 4.0 onwards
+   version : 4.2 onwards
    default :
    description : icon on DropDown Menu
    */
@@ -39,7 +39,7 @@ export class AmexioDropDownOptionComponent implements OnInit{
    Properties
    name : label-align
    datatype : string
-   version : 4.0 onwards
+   version : 4.2 onwards
    default :
    description : Label-align for label right/left
    */
@@ -48,7 +48,7 @@ export class AmexioDropDownOptionComponent implements OnInit{
    Properties
    name : icon-align
    datatype : string
-   version : 4.0 onwards
+   version : 4.2 onwards
    default :
    description : icon-align for text field right/left
    */
@@ -57,7 +57,7 @@ export class AmexioDropDownOptionComponent implements OnInit{
    Properties
    name : add-seperator
    datatype :  boolean
-   version : 4.0 onwards
+   version : 4.2 onwards
    default : false
    description : add divider to the dropdown menu list
    */
@@ -67,7 +67,7 @@ export class AmexioDropDownOptionComponent implements OnInit{
    Properties
    name : add-seperator
    datatype :  boolean
-   version : 4.0 onwards
+   version : 4.2 onwards
    default : false
    description : add divider to the dropdown menu list
    */

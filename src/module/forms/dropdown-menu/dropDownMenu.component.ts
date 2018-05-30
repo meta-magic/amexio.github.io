@@ -75,11 +75,11 @@ export class AmexioDropDownMenuComponent implements AfterContentInit {
 
   /*
    Properties
-   name : icon
-   datatype : string
+   name : down-arrow-icon
+   datatype : boolean
    version : 4.2 onwards
-   default :
-   description : icon for menu
+   default :true
+   description : down-arrow-icon for menu
    */
   @Input('down-arrow-icon') downArrowIcon : boolean=true;
 
@@ -154,8 +154,6 @@ export class AmexioDropDownMenuComponent implements AfterContentInit {
     this.toggle= !this.toggle;
     this.top = event.target.getBoundingClientRect().top + 25;
   }
-
-
 
   onDropDownMenuClick(event: any) {
     this.onClick.emit(event);

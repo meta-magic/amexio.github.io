@@ -2,8 +2,8 @@
 
 <div (click)="showDropDownContent($event)" class="dropdown-menu" (mouseover)="onMouseOver($event)" [style.padding]="padding"
      [ngStyle]="{'background-color':(transparent)?'unset':'null'}">
-  <label >
-    <i *ngIf="icon" [ngClass]="icon">&nbsp;</i>{{title}}&nbsp;</label>
+  <span >
+    <i *ngIf="icon" [ngClass]="icon">&nbsp;</i>{{title}}&nbsp;</span>
   <ng-container *ngIf="downArrowIcon">
     <i *ngIf="!toggle"  class="fa fa-angle-down "></i>
     <i *ngIf="toggle"  class="fa fa-angle-up "></i>
