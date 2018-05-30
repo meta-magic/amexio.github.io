@@ -4,7 +4,7 @@ import {
   ElementRef
 } from '@angular/core';
 
-import { AmexioDropDownOptionComponent } from './dropDownMenu.component.options'
+import { AmexioDropDownitemsComponent } from './dropDownMenu.component.items'
 import {DeviceQueryService} from "../../services/device/device.query.service";
 
 
@@ -117,8 +117,8 @@ export class AmexioDropDownMenuComponent implements AfterContentInit {
    */
   @Output() onClick: any = new EventEmitter<any>();
 
-  @ContentChildren(AmexioDropDownOptionComponent) dropdowns: QueryList<AmexioDropDownOptionComponent>;
-  optionsCollection: AmexioDropDownOptionComponent[] = [];
+  @ContentChildren(AmexioDropDownitemsComponent) dropdowns: QueryList<AmexioDropDownitemsComponent>;
+  itemsCollection: AmexioDropDownitemsComponent[] = [];
 
   @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
   public onElementOutClick(targetElement: HTMLElement) {
@@ -136,8 +136,8 @@ export class AmexioDropDownMenuComponent implements AfterContentInit {
   ngAfterContentInit() {
     if (!this.data) {
       this.data = [];
-      this.optionsCollection = this.dropdowns.toArray();
-      this.optionsCollection.forEach((obj) => {
+      this.itemsCollection = this.dropdowns.toArray();
+      this.itemsCollection.forEach((obj) => {
         this.data.push(obj);
       })
     }
