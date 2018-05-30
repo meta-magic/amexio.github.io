@@ -827,7 +827,9 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
       filter: opt.value,
     }
     opt.checkedStatus = 'fa fa-check';
-   
+    if (this.filterValue) {
+      this.getGlobalFilteredData(filter);
+    }
     this.showToolTip = false;
   }
 
