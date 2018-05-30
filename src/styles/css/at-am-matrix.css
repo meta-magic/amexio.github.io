@@ -877,7 +877,7 @@ button {
   background-color: #000000; }
 
 .drodown-caret-down {
-  color: #16E73C; }
+  color: black; }
 
 .list-items-selected {
   background-color: rgba(41, 105, 70, 0.4);
@@ -2271,13 +2271,20 @@ input:checked + .toggle-slider:before {
     Version : Amexio v4.2 onwards
 *****************************************************************************/
 /** dropdownmenu - Visual CSS **/
-.dropdown-menu-content a:hover {
+.dropdown-menu {
   background-color: rgba(41, 105, 70, 0.4);
   color: #16E73C; }
 
-.dropdown-menu:hover .dropdown-menu-content {
-  display: flex;
-  background-color: #000000; }
+.dropdown-menu-content {
+  background-color: #000000;
+  box-shadow: 0px 8px 16px 0px #16E73C; }
+
+.dropdown-menu-content .divider {
+  border-bottom: solid 1px #16E73C; }
+
+.dropdown-menu-content a:hover {
+  background-color: rgba(41, 105, 70, 0.4);
+  color: #16E73C; }
 
 /** dropdownmenu - Structure CSS **/
 li {
@@ -2287,33 +2294,76 @@ li {
   position: relative;
   display: inline-block;
   font-size: 16px !important;
-  background-color: rgba(41, 105, 70, 0.4);
-  color: #16E73C;
   padding: 16px;
   cursor: pointer; }
 
 .dropdown-menu-content {
-  display: none;
-  position: fixed;
+  position: block;
+  display: block;
   flex-direction: column;
-  background-color: #000000;
   min-width: 180px;
   cursor: pointer;
-  box-shadow: 0px 8px 16px 0px #16E73C;
   z-index: 1;
-  padding: 10px; }
-
-.dropdown-menu-content .divider {
-  border-bottom: solid 1px #16E73C; }
+  padding: 10px 0px;
+  overflow-y: auto; }
 
 .dropdown-menu-content a {
-  color: #16E73C;
-  padding: 5px 6px;
   text-decoration: none;
   display: inline-block;
-  min-width: inherit;
   padding: 10px;
   display: block; }
+
+.menu-right {
+  right: 10px; }
+
+/*****************************************************************************
+ Component Name : Toolbar
+    Version : Amexio v4.2 onwards
+****************************************************************************/
+/** Toolbar - Visual CSS **/
+.toolbar {
+  background-color: #000000; }
+
+.toolbaritemseperatorleft {
+  border-left: 1px solid #16E73C; }
+
+.toolbaritemseperatorright {
+  border-right: 1px solid #16E73C; }
+
+/** Toolbar - Structure CSS **/
+.toolbar {
+  cursor: pointer;
+  flex-direction: row;
+  justify-content: space-between;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+  padding-top: 2px;
+  position: relative;
+  padding: 10px; }
+
+.card-header .toolbar {
+  background-color: unset;
+  box-shadow: unset;
+  padding: 0px; }
+
+.toolbar-item {
+  display: inline-flex;
+  flex-direction: row;
+  text-anchor: middle;
+  letter-spacing: 1px; }
+
+.toolbaritemseperatorleft {
+  padding-left: 10px;
+  padding-right: 10px;
+  position: relative; }
+
+.toolbaritemseperatorright {
+  padding-right: 10px;
+  padding-left: 10px;
+  position: relative; }
+
+.toolbar-item .inputgroup .input-control {
+  width: unset !important;
+  padding: 0px !important; }
 
 /****************************************************************************
     Component Name : Enterprise Content

@@ -1,11 +1,18 @@
+
+.dropdown-menu {
+  background-color: $dropdownMenuHeaderBGColor;
+  color: $dropdownMenuHeaderFontColor;
+}
+.dropdown-menu-content {
+  background-color: $dropdownMenuBGColor ;
+  box-shadow: 0px 8px 16px 0px $dropdownMenuBorderColor;
+}
+.dropdown-menu-content .divider{
+  border-bottom: solid 1px $dropdownMenuBorderColor;
+}
+
 .dropdown-menu-content a:hover {
   background-color:  $dropdownMenuHoverBGColor;
-  color : $dropdownMenuActiveColor;
-}
-.dropdown-menu:hover .dropdown-menu-content {
-  display: flex;
-  background-color: $dropdownMenuBGColor;
-
-  
+  color : $dropdownMenuHoverColor;
 }
 

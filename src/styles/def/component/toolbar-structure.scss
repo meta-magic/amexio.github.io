@@ -1,0 +1,43 @@
+
+.toolbar{
+    cursor:pointer;
+    flex-direction: row;
+    justify-content: space-between;
+    //background-color:gray;
+    //background-color: $toolbarBackgroundColor;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+    padding-top:2px;
+    position: relative;
+    padding: 10px;
+    
+}
+.card-header .toolbar{
+    background-color: unset;
+    box-shadow : unset;
+    padding: 0px;
+  }
+.toolbar-item{
+    display: inline-flex;
+    flex-direction: row;
+    text-anchor: middle;
+    letter-spacing: 1px;
+
+}
+.toolbaritemseperatorleft{
+   // border-left: 1px solid black;
+    padding-left:10px;
+    padding-right:10px;
+    position: relative;
+}
+.toolbaritemseperatorright{
+   // border-right: 1px solid black;
+    padding-right:10px;
+    padding-left: 10px;
+    position: relative;
+}
+.toolbar-item .inputgroup .input-control{
+    width: unset !important;
+    padding: 0px !important;
+}
+
+

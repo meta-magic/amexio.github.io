@@ -3,17 +3,17 @@
 
 /*
  Component Name : Amexio  Dropdown Menu
- Component Selector : <amexio-drop-down-menu-options>
+ Component Selector : <amexio-drop-down-menu-items>
  Component Description : Amexio Dropdown component with various modes and configurations .
  */
 
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
-  selector: 'amexio-drop-down-menu-option', template: ''
+  selector: 'amexio-drop-down-menu-item', template: ''
 })
 
-export class AmexioDropDownOptionComponent implements OnInit{
+export class AmexioDropDownitemsComponent implements OnInit{
 
   ngOnInit() {
   }
