@@ -10,13 +10,24 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
-  selector: 'amexio-drop-down-menu-item', template: ''
+  selector: 'amexio-drop-down-menu-item',
+  template: `
+    <div *ngIf="!(icon && label)" class="divider">
+      <ng-content></ng-content>
+    </div>
+    <a  *ngIf="icon && label" (click)="onItemClick($event)" [ngClass]="{'divider':separator}" >
+      <i [style.float]="iconalign" [ngClass]="icon"></i>
+      <span [style.float]="labelalign"   style="padding: 5px;">
+        {{label}}
+      </span>
+    </a>
+
+  `
 })
 
 export class AmexioDropDownitemsComponent implements OnInit{
 
-  ngOnInit() {
-  }
+
   /*
    Properties
    name : label
@@ -71,5 +82,31 @@ export class AmexioDropDownitemsComponent implements OnInit{
    default : false
    description : add divider to the dropdown menu list
    */
+
+  ngOnInit() {
+    if(this.iconalign && this.labelalign
+      && this.iconalign.toLowerCase() === this.labelalign.toLowerCase()){
+      this.iconalign = null;
+      this.labelalign = null;
+    }
+    else if(this.iconalign && this.iconalign == "left"){
+      this.labelalign = "right";
+      this.iconalign = null;
+    }
+    else if(this.iconalign && this.iconalign == "right"){
+      this.labelalign = null;
+    }
+  }
+
+  @Output() onClick: any = new EventEmitter<any>();
+
+  onItemClick( event :any) {
+
+    let e = {
+      'event':event,
+      'this':this
+    };
+    this.onClick.emit(e);
+  }
 
 }

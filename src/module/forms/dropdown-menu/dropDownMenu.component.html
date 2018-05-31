@@ -1,5 +1,4 @@
 
-
 <div (click)="showDropDownContent($event)" class="dropdown-menu" (mouseover)="onMouseOver($event)" [style.padding]="padding"
      [ngStyle]="{'background-color':(transparent)?'unset':'null'}">
   <span >
@@ -11,10 +10,22 @@
 
 
 </div>
-<div (click)="showDropDownContent($event)"  *ngIf="toggle" class="dropdown-menu-content"  [style.height]="height"   [ngClass]="{'menu-right':xposition}">
-  <a  [ngClass]="{'divider':node.separator}"  (click)="onDropDownMenuClick(node)" *ngFor="let node of data" >
-    <i [ngStyle]="{'float':getIconPosition(node, iconposition ) ? 'right':null  }"
-       [ngClass]="node.icon"></i>
-    <span [ngStyle]="{'float':getLabelPosition(node,label) ? 'right':null,'padding': iconposition === 'right' ? '0px': '2px'}"> {{node.label}}</span>
-  </a>
+<div   *ngIf="toggle" class="dropdown-menu-content"
+     [style.height]="height"   [ngClass]="{'menu-right':xposition}">
+
+  <ng-content></ng-content>
+  <amexio-drop-down-menu-item (onClick)="onDropDownMenuClick($event)"   *ngFor="let node of data"
+                                [icon-align]="node.iconalign"
+                                [label-align]="node.labelalign"
+                                [label]="node.label"
+                                [separator]="node.separator"
+                                [icon]="node.icon">
+  </amexio-drop-down-menu-item>
+
+  <!--<a  [ngClass]="{'divider':node.separator}"  (click)="onDropDownMenuClick(node)" *ngFor="let node of data" >-->
+  <!--<i [ngStyle]="{'float':getIconPosition(node, iconposition ) ? 'right':null  }"-->
+  <!--[ngClass]="node.icon"></i>-->
+  <!--<span [ngStyle]="{'float':getLabelPosition(node,label) ? 'right':null,'padding': iconposition === 'right' ? '0px': '2px'}">-->
+  <!--{{node.label}}</span>-->
+  <!--</a>-->
 </div>
