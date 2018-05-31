@@ -5,7 +5,7 @@ import {
 } from '@angular/core';
 
 import { AmexioDropDownitemsComponent } from './dropDownMenu.component.items'
-import {DeviceQueryService} from "../../services/device/device.query.service";
+import {DeviceQueryService} from '../../services/device/device.query.service';
 
 
 
