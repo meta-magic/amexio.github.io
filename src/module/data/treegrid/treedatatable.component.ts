@@ -13,7 +13,7 @@
 
 
  /*
- Component Name : Amexio tree data table 
+ Component Name : Amexio tree data table
  Component Selector : <amexio-tree-data-table>
  Component Description :  A Simple Expandable Tree component which create Tree View based on standard datasource attached.
  */
@@ -58,7 +58,7 @@ import {AmexioGridColumnComponent} from "../datagrid/data.grid.column";
       <ng-container *ngIf="!mask">
         <div class="datatable-row" (click)="toogle(row,i)" *ngFor="let row of viewRows;let i=index" (click)="setSelectedRow(row, $event)">
           <ng-container *ngFor="let cols of columns;let colIndex = index">
-            <ng-container *ngIf="cols.datatype=='string'">
+            <ng-container *ngIf="cols.datatype=='string' && !cols?.bodyTemplate">
               <div class="datatable-col" [attr.data-label]="cols.text">
                 <ng-container *ngIf="colIndex == 0">
               <span [ngStyle]="{'padding-left':(20*row.level)+'px'}">
@@ -87,7 +87,7 @@ import {AmexioGridColumnComponent} from "../datagrid/data.grid.column";
                 </ng-container>
               </div>
             </ng-container>
-            <ng-container *ngIf="cols.datatype=='number'">
+            <ng-container *ngIf="cols.datatype=='number' && !cols?.bodyTemplate">
               <div class="datatable-col" [attr.data-label]="cols.text" >
                 <ng-container *ngIf="colIndex == 0">
               <span [ngStyle]="{'padding-left':(20*row.level)+'px'}">
@@ -122,6 +122,16 @@ import {AmexioGridColumnComponent} from "../datagrid/data.grid.column";
 
 
             </ng-container>
+            
+            <ng-container *ngIf="cols.bodyTemplate">
+              <div class="datatable-col" [attr.data-label]="cols.text">
+                <ng-template  [ngTemplateOutlet]="cols.bodyTemplate"
+                              [ngTemplateOutletContext]="{ $implicit: { text : row[cols.dataindex] }, row: row }"></ng-template>
+              </div>
+            </ng-container>
+         
+            
+           
           </ng-container>
 
 
@@ -137,7 +147,7 @@ import {AmexioGridColumnComponent} from "../datagrid/data.grid.column";
 export class TreeDataTableComponent implements OnInit {
 
   /*
-Properties 
+Properties
 name : data
 datatype : any
 version : 4.0 onwards
@@ -147,7 +157,7 @@ description : Local Data binding.
   @Input() data: any;
 
 /*
-Properties 
+Properties
 name : data-reader
 datatype : string
 version : 4.0 onwards
@@ -157,7 +167,7 @@ description : Key in JSON Datasource for records.
   @Input('data-reader') datareader: string;
 
 /*
-Properties 
+Properties
 name : http-method
 datatype : string
 version : 4.0 onwards
@@ -167,7 +177,7 @@ description : Type of HTTP call, POST,GET etc.
   @Input('http-method') httpmethod: string;
 
   /*
-Properties 
+Properties
 name : http-url
 datatype : string
 version : 4.0 onwards
@@ -177,7 +187,7 @@ description : REST url for fetching data.
   @Input('http-url') httpurl: string;
 
   /*
-Properties 
+Properties
 name : display-field
 datatype : string
 version : 4.0 onwards
@@ -187,7 +197,7 @@ description : Name of key inside response data to display on ui.
   @Input('display-field') displayfield: string;
 
   /*
-Properties 
+Properties
 name : value-field
 datatype : string
 version : 4.0 onwards
@@ -197,7 +207,7 @@ description : Name of key inside response data.use to send to backend
   @Input('value-field') valuefield: string;
 
   /*
-Events 
+Events
 name : selectedRecord
 datatype : none
 version : none
@@ -248,11 +258,40 @@ description : Get selected value Object.
     for (let cr = 0; cr < columnRefArray.length; cr++) {
       const columnConfig = columnRefArray[cr];
       let columnData: any;
-      if (columnConfig.bodyTemplate == null && columnConfig.headerTemplate == null) {
+      if (columnConfig.headerTemplate != null && columnConfig.bodyTemplate != null) {
         columnData = {
           text: columnConfig.text,
           dataindex: columnConfig.dataindex,
           hidden: columnConfig.hidden,
+          datatype: columnConfig.datatype,
+          headerTemplate: columnConfig.headerTemplate,
+          width: columnConfig.width,
+          bodyTemplate: columnConfig.bodyTemplate
+        };
+      } else if (columnConfig.headerTemplate != null && columnConfig.bodyTemplate == null) {
+        columnData = {
+          text: columnConfig.text,
+          dataindex: columnConfig.dataindex,
+          hidden: columnConfig.hidden,
+          datatype: columnConfig.datatype,
+          width: columnConfig.width,
+          headerTemplate: columnConfig.headerTemplate
+        };
+      } else if (columnConfig.bodyTemplate != null && columnConfig.headerTemplate == null) {
+        columnData = {
+          text: columnConfig.text,
+          dataindex: columnConfig.dataindex,
+          hidden: columnConfig.hidden,
+          datatype: columnConfig.datatype,
+          width: columnConfig.width,
+          bodyTemplate: columnConfig.bodyTemplate
+        };
+      } else if (columnConfig.bodyTemplate == null && columnConfig.headerTemplate == null) {
+        columnData = {
+          text: columnConfig.text,
+          dataindex: columnConfig.dataindex,
+          hidden: columnConfig.hidden,
+          width: columnConfig.width,
           datatype: columnConfig.datatype
         };
       }

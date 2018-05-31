@@ -2288,9 +2288,6 @@ input:checked + .toggle-slider:before {
   color: #70196F; }
 
 /** dropdownmenu - Structure CSS **/
-li {
-  list-style-type: none; }
-
 .dropdown-menu {
   position: relative;
   display: inline-block;
@@ -2299,8 +2296,8 @@ li {
   cursor: pointer; }
 
 .dropdown-menu-content {
-  position: block;
   display: block;
+  position: absolute;
   flex-direction: column;
   min-width: 180px;
   cursor: pointer;
@@ -2311,6 +2308,7 @@ li {
 .dropdown-menu-content a {
   text-decoration: none;
   display: inline-block;
+  font-size: 16px !important;
   padding: 10px;
   display: block; }
 
@@ -4154,8 +4152,7 @@ header .billboard .content-button {
   border-bottom: 3px solid #70196F;
   font-size: 20px;
   font-weight: 300;
-  text-transform: capitalize;
-  overflow: auto; }
+  text-transform: capitalize; }
 
 .card-body {
   font-size: 14px;
