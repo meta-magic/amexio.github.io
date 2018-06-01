@@ -1,24 +1,21 @@
 import {
-  Component, EventEmitter, ContentChildren, HostListener, Input, OnInit, QueryList, Output,
-  AfterContentInit,
-  ElementRef
+  Component, EventEmitter,ElementRef, ContentChildren,HostListener, Input, OnInit, QueryList, Output,
+  AfterContentInit
 } from '@angular/core';
 
 import { AmexioDropDownitemsComponent } from './dropDownMenu.component.items'
-import {DeviceQueryService} from '../../services/device/device.query.service';
-
-
+import {DeviceQueryService} from "../../services/device/device.query.service";
 
 @Component({
   selector: 'amexio-drop-down-menu',
-  templateUrl: `./dropDownMenu.component.html`
+  templateUrl: `./dropDownMenu.component.html`,
+
 })
 
-export class AmexioDropDownMenuComponent implements AfterContentInit {
+export class AmexioDropDownMenuComponent implements AfterContentInit, OnInit {
 
   toggle : boolean;
   xposition :boolean = false;
-
 
 
   /* for internal use*/
@@ -28,16 +25,16 @@ export class AmexioDropDownMenuComponent implements AfterContentInit {
    Properties
    name : data
    datatype : string
-   version : 4.2 onwards
+   version : 4.0 onwards
    default :
    description : data what you want to add in list
    */
-  @Input() data: any;
+  @Input() data: any [];
   /*
    Properties
    name : title
    datatype : string
-   version : 4.2 onwards
+   version : 4.0 onwards
    default :
    description : title on Dropdown
    */
@@ -46,7 +43,7 @@ export class AmexioDropDownMenuComponent implements AfterContentInit {
    Properties
    name : icon
    datatype : string
-   version : 4.2 onwards
+   version : 4.0 onwards
    default :
    description : icon on DropDown Menu
    */
@@ -54,14 +51,13 @@ export class AmexioDropDownMenuComponent implements AfterContentInit {
 
   /*
    Properties
-   name : iconposition
+   name : flag
    datatype : string
-   version : 4.2 onwards
+   version : 4.0 onwards
    default : right
-   description : iconposition for  icon postion right/left
+   description : flag for icon position right/left
    */
-  @Input('icon-position') iconposition : string;
-
+  @Input('icon-align') iconalign : string;
   /*
    Properties
    name : padding
@@ -72,17 +68,16 @@ export class AmexioDropDownMenuComponent implements AfterContentInit {
    */
   @Input()  padding : string;
 
-
   /*
    Properties
-   name : down-arrow-icon
-   datatype : boolean
+   name : menu icon
+   datatype : string
    version : 4.2 onwards
-   default :true
-   description : down-arrow-icon for menu
+   default :
+   description : icon on menu
    */
-  @Input('down-arrow-icon') downArrowIcon : boolean=true;
 
+  @Input ('down-arrow-icon') downArrowIcon : boolean =true;
   /*
    Properties
    name : transparent
@@ -92,7 +87,7 @@ export class AmexioDropDownMenuComponent implements AfterContentInit {
    description : transparent style for menu
    */
 
-  @Input () transparent :boolean =false;
+  @Input() transparent   : boolean =false ;
 
   /*
    Properties
@@ -104,62 +99,53 @@ export class AmexioDropDownMenuComponent implements AfterContentInit {
    */
   @Input()  height : any;
 
+  top : number;
 
-
-  /*
-   Events
-   name : onClick
-   datatype : any
-   version :none
-   default :
-   description : On record select event.this event is only for normal dropdown.
-
-   */
   @Output() onClick: any = new EventEmitter<any>();
 
   @ContentChildren(AmexioDropDownitemsComponent) dropdowns: QueryList<AmexioDropDownitemsComponent>;
-  itemsCollection: AmexioDropDownitemsComponent[] = [];
 
-  @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
-  public onElementOutClick(targetElement: HTMLElement) {
-    let parentFound = false;
-    while (targetElement != null && !parentFound) {
-      if (targetElement === this.element.nativeElement) {
-        parentFound = true;
-      }
-      targetElement = targetElement.parentElement;
-    }
-    if (!parentFound) {
-      this.toggle = false;
+  optionsCollection: AmexioDropDownitemsComponent[] = [];
+
+
+  constructor(public element: ElementRef,public matchMediaService: DeviceQueryService ) {
+    this.iconalign ="left";
+  }
+
+  ngOnInit(){
+    if(this.data){
+      this.data.forEach(node =>{
+        if(!node.iconalign){
+          if(this.iconalign)
+            node.iconalign = this.iconalign;
+        }
+        if(!node.labelalign){
+          node.labelalign = "left";
+        }
+      });
     }
   }
+
   ngAfterContentInit() {
-    if (!this.data) {
-      this.data = [];
-      this.itemsCollection = this.dropdowns.toArray();
-      this.itemsCollection.forEach((obj) => {
-        this.data.push(obj);
-      })
-    }
-
+    // if (!this.data) {
+    //   this.data = [];
+    //   this.optionsCollection = this.dropdowns.toArray();
+    //   this.optionsCollection.forEach((obj) => {
+    //     this.data.push(obj);
+    //     console.log(this.data,"its all ");
+    //   });
+    // }
   }
 
-  constructor( public matchMediaService: DeviceQueryService , public element: ElementRef) {
-    this.iconposition ="left";
-  }
 
-  top : number;
   showDropDownContent(event : any)
   {
     this.toggle= !this.toggle;
     this.top = event.target.getBoundingClientRect().top + 25;
   }
 
-  onDropDownMenuClick(event: any) {
-    this.onClick.emit(event);
-  }
-
   getIconPosition(childposition:any,parentIconPosition: string): boolean {
+    debugger;
     if(childposition.hasOwnProperty('iconalign') && childposition.iconalign != ''){
       if(childposition.iconalign == 'right'){
         return true;
@@ -169,6 +155,11 @@ export class AmexioDropDownMenuComponent implements AfterContentInit {
         return true;
       } else return false;
     }
+  }
+
+  onDropDownMenuClick(event: any) {
+    this.toggle = false;
+    this.onClick.emit(event);
   }
 
   getLabelPosition(childPosition:any, parentLabelPosition :string):boolean{
@@ -185,7 +176,19 @@ export class AmexioDropDownMenuComponent implements AfterContentInit {
     }
   }
 
-
+  @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
+  public onElementOutClick(targetElement: HTMLElement) {
+    let parentFound = false;
+    while (targetElement != null && !parentFound) {
+      if (targetElement === this.element.nativeElement) {
+        parentFound = true;
+      }
+      targetElement = targetElement.parentElement;
+    }
+    if (!parentFound) {
+      this.toggle = false;
+    }
+  }
   onMouseOver(event:any){
     if((this.matchMediaService.browserWindow().innerWidth - event.clientX)<200){
       this.xposition = true;
@@ -194,6 +197,4 @@ export class AmexioDropDownMenuComponent implements AfterContentInit {
     }
 
   }
-
-
 }
