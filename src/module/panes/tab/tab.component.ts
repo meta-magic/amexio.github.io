@@ -337,7 +337,7 @@ description : This flag will make tab closable.
     debugger;
     this.tabCollection.forEach((tabs) => {
       data.forEach((opt: any) => {
-        if(opt.tabName != tabs.title && (tabs.closable == true|| this.closable == true)){
+        if(opt.tabName.toLowerCase() != tabs.title.toLowerCase() && (tabs.closable == true|| this.closable == true)){
           this.closeTab(tabs);
         }
       });
