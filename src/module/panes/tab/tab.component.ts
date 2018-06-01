@@ -332,6 +332,18 @@ description : This flag will make tab closable.
     });
   }
 
+  // Method to close particular tabs
+  closePartialTabs(data: any){
+    debugger;
+    this.tabCollection.forEach((tabs) => {
+      data.forEach((opt: any) => {
+        if(opt.tabName != tabs.title && (tabs.closable == true|| this.closable == true)){
+          this.closeTab(tabs);
+        }
+      });
+    });
+  }
+
   //Method to set active tab on the basis of tab sequence or tab title
   setActiveTab(input: any) {
     let flag: boolean = false;
