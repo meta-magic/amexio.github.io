@@ -333,11 +333,11 @@ description : This flag will make tab closable.
   }
 
   // Method to close particular tabs
-  closePartialTabs(data: any){
+  closeTabs(data: any){
     debugger;
     this.tabCollection.forEach((tabs) => {
       data.forEach((opt: any) => {
-        if(opt.tabName.toLowerCase() != tabs.title.toLowerCase() && (tabs.closable == true|| this.closable == true)){
+        if(opt.toLowerCase() != tabs.title.toLowerCase() && (tabs.closable == true|| this.closable == true)){
           this.closeTab(tabs);
         }
       });
