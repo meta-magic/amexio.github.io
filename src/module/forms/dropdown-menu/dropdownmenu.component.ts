@@ -3,12 +3,12 @@ import {
   AfterContentInit
 } from '@angular/core';
 
-import { AmexioDropDownitemsComponent } from './dropDownMenu.component.items'
+import { AmexioDropDownitemsComponent } from './dropdownmenu.component.items'
 import {DeviceQueryService} from "../../services/device/device.query.service";
 
 @Component({
   selector: 'amexio-drop-down-menu',
-  templateUrl: `./dropDownMenu.component.html`,
+  templateUrl: `./dropdownmenu.component.html`,
 
 })
 
