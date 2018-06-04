@@ -16,6 +16,7 @@ export class AmexioDropDownMenuComponent implements AfterContentInit, OnInit {
 
   toggle : boolean;
   xposition :boolean = false;
+  top : number;
 
 
   /* for internal use*/
@@ -99,15 +100,29 @@ export class AmexioDropDownMenuComponent implements AfterContentInit, OnInit {
    */
   @Input()  height : any;
 
-  top : number;
-
   @Output() onClick: any = new EventEmitter<any>();
+
+
 
   @ContentChildren(AmexioDropDownitemsComponent) dropdowns: QueryList<AmexioDropDownitemsComponent>;
 
   optionsCollection: AmexioDropDownitemsComponent[] = [];
 
 
+  @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
+  public onElementOutClick(targetElement: HTMLElement) {
+    let parentFound = false;
+    while (targetElement != null && !parentFound) {
+      if (targetElement === this.element.nativeElement) {
+        parentFound = true;
+      }
+      targetElement = targetElement.parentElement;
+    }
+    if (!parentFound) {
+      this.toggle = false;
+    }
+  }
+  
   constructor(public element: ElementRef,public matchMediaService: DeviceQueryService ) {
     this.iconalign ="left";
   }
@@ -174,19 +189,6 @@ export class AmexioDropDownMenuComponent implements AfterContentInit, OnInit {
     }
   }
 
-  @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
-  public onElementOutClick(targetElement: HTMLElement) {
-    let parentFound = false;
-    while (targetElement != null && !parentFound) {
-      if (targetElement === this.element.nativeElement) {
-        parentFound = true;
-      }
-      targetElement = targetElement.parentElement;
-    }
-    if (!parentFound) {
-      this.toggle = false;
-    }
-  }
   onMouseOver(event:any){
     if((this.matchMediaService.browserWindow().innerWidth - event.clientX)<200){
       this.xposition = true;

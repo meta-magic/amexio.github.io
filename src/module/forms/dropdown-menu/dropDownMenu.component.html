@@ -1,5 +1,6 @@
 
-<div (click)="showDropDownContent($event)" class="dropdown-menu" (mouseover)="onMouseOver($event)" [style.padding]="padding"
+<div (click)="showDropDownContent($event)" class="dropdown-menu" (mouseover)="onMouseOver($event)"
+     [style.padding]="padding"
      [ngStyle]="{'background-color':(transparent)?'unset':'null'}">
   <span >
     <i *ngIf="icon" [ngClass]="icon">&nbsp;</i>{{title}}&nbsp;</span>
@@ -10,7 +11,7 @@
 
 
 </div>
-<div   *ngIf="toggle" class="dropdown-menu-content"
+<div (click)="showDropDownContent($event)"  *ngIf="toggle" class="dropdown-menu-content"
      [style.height]="height"   [ngClass]="{'menu-right':xposition}">
 
   <ng-content></ng-content>
