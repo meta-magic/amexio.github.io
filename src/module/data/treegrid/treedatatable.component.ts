@@ -40,12 +40,27 @@ import {AmexioGridColumnComponent} from "../datagrid/data.grid.column";
       <div class="datatable-header">
         <ng-container *ngFor="let cols of columns;let i = index">
           <ng-container *ngIf="cols.datatype=='string'">
-            <div class="datatable-col" [ngClass]="{'header' : i == 0}"> {{cols.text}}</div>
+            <div class="datatable-col" [ngClass]="{'header' : i == 0}">
+              <ng-container *ngIf="cols.headerTemplate">
+                <ng-template  [ngTemplateOutlet]="cols.headerTemplate"
+                              [ngTemplateOutletContext]="{column:cols ,index: i}"></ng-template>
+              </ng-container>
+              <ng-container *ngIf="!cols.headerTemplate">
+                {{cols.text}}
+              </ng-container>
+            </div>
           </ng-container>
           <ng-container *ngIf="cols.datatype=='number'">
-            <span class="float-right">
+            <ng-container *ngIf="cols.headerTemplate">
+              <ng-template  [ngTemplateOutlet]="cols.headerTemplate"
+                            [ngTemplateOutletContext]="{column:cols ,index: i}"></ng-template>
+            </ng-container>
+            <ng-container *ngIf="!cols.headerTemplate">
+               <span class="float-right">
                <div class="datatable-col" [ngClass]="{'header' : i == 0}"> {{cols.text}}</div>
             </span>
+            </ng-container>
+           
           </ng-container>
         </ng-container>
       </div>
@@ -305,7 +320,7 @@ description : Get selected value Object.
     this.viewRows = treedata;
     this.viewRows.forEach((row: any, index: any) => {
       this.viewRows[index].level = 1;
-      this.viewRows[index].expand = false;
+      this.viewRows[index].expanded = false;
     });
     this.mask = false;
   }
