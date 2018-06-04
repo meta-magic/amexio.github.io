@@ -10,7 +10,7 @@
 
 */
 import {
-  Component, DoCheck, ElementRef, EventEmitter, forwardRef, HostListener, Input, OnInit, Output, Renderer2, ViewChild
+  Component, DoCheck, ElementRef, ContentChild, TemplateRef, EventEmitter, forwardRef, HostListener, Input, OnInit, Output, Renderer2, ViewChild
 } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {CommonDataService} from "../../services/data/common.data.service";
@@ -307,6 +307,9 @@ default :false
 description : Set enable / disable popover.
 */
   @Input('enable-popover') enablepopover: boolean;
+
+  @ContentChild('amexioBodyTmpl') bodyTemplate: TemplateRef<any>;
+
 
   posixUp : boolean;
 

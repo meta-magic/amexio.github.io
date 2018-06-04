@@ -32,8 +32,13 @@
         <ul class="dropdown-list">
 
           <li class="list-items" [ngClass]="{'list-items-selected':item.selected}" *ngFor="let item of filteredOptions" (click)="onItemSelect(item)">
-            <span>{{item[displayfield]}}</span>
-            <span style="float : right">{{item?.checked ? '&#10004;': ''}}</span>
+            <ng-container *ngIf="bodyTemplate">
+              <ng-template [ngTemplateOutlet]="bodyTemplate" [ngTemplateOutletContext]="{ $implicit: { text : row }, row: item }">
+                </ng-template>
+              </ng-container>
+            <ng-container *ngIf="!bodyTemplate">
+              <span>{{item[displayfield]}}</span>
+            </ng-container>            <span style="float : right">{{item?.checked ? '&#10004;': ''}}</span>
           </li>
            <ng-template *ngIf="filteredOptions.length < 1">
              <li class="list-items">No Options</li>
