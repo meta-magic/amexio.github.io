@@ -86,7 +86,7 @@ export class AmexioDropDownitemsComponent implements OnInit{
    */
 
   @Output() onClick: any = new EventEmitter<any>();
-   
+
 
   ngOnInit() {
     if(this.iconalign && this.labelalign
@@ -102,6 +102,7 @@ export class AmexioDropDownitemsComponent implements OnInit{
       this.labelalign = null;
     }
   }
+
 
   onItemClick( event :any) {
 

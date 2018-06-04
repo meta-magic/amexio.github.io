@@ -40,7 +40,7 @@ export class AmexioDropDownMenuComponent implements AfterContentInit, OnInit {
    description : title on Dropdown
    */
   @Input() title: string;
-  
+
   /*
    Properties
    name : icon
@@ -117,6 +117,7 @@ export class AmexioDropDownMenuComponent implements AfterContentInit, OnInit {
     this.iconalign ="left";
   }
 
+
   ngOnInit(){
     if(this.data){
       this.data.forEach(node =>{
@@ -131,6 +132,19 @@ export class AmexioDropDownMenuComponent implements AfterContentInit, OnInit {
     }
   }
 
+  @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
+  public onElementOutClick(targetElement: HTMLElement) {
+    let parentFound = false;
+    while (targetElement != null && !parentFound) {
+      if (targetElement === this.element.nativeElement) {
+        parentFound = true;
+      }
+      targetElement = targetElement.parentElement;
+    }
+    if (!parentFound) {
+      this.toggle = false;
+    }
+  }
   ngAfterContentInit() {
     // if (!this.data) {
     //   this.data = [];
