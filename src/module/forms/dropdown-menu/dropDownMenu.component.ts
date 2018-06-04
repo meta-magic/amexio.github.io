@@ -132,7 +132,6 @@ export class AmexioDropDownMenuComponent implements AfterContentInit, OnInit {
     //   this.optionsCollection = this.dropdowns.toArray();
     //   this.optionsCollection.forEach((obj) => {
     //     this.data.push(obj);
-    //     console.log(this.data,"its all ");
     //   });
     // }
   }
@@ -145,7 +144,6 @@ export class AmexioDropDownMenuComponent implements AfterContentInit, OnInit {
   }
 
   getIconPosition(childposition:any,parentIconPosition: string): boolean {
-    debugger;
     if(childposition.hasOwnProperty('iconalign') && childposition.iconalign != ''){
       if(childposition.iconalign == 'right'){
         return true;

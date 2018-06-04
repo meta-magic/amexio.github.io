@@ -14,7 +14,7 @@
      [style.height]="height"   [ngClass]="{'menu-right':xposition}">
 
   <ng-content></ng-content>
-  <amexio-drop-down-menu-item (onClick)="onDropDownMenuClick($event)"   *ngFor="let node of data"
+  <amexio-drop-down-menu-item (onClick)="onDropDownMenuClick($event)"  *ngFor="let node of data"
                                 [icon-align]="node.iconalign"
                                 [label-align]="node.labelalign"
                                 [label]="node.label"

@@ -12,7 +12,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 @Component({
   selector: 'amexio-drop-down-menu-item',
   template: `
-    <div *ngIf="!(icon && label)" class="divider">
+    <div *ngIf="!(icon && label)" class="divider" >
       <ng-content></ng-content>
     </div>
     <a  *ngIf="icon && label" (click)="onItemClick($event)" [ngClass]="{'divider':separator}" >
