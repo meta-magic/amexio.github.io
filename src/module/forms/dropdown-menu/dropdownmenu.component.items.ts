@@ -91,7 +91,7 @@ export class AmexioDropDownitemsComponent implements OnInit{
   ngOnInit() {
     if(this.iconalign && this.labelalign
       && this.iconalign.toLowerCase() === this.labelalign.toLowerCase()){
-      this.iconalign = null;
+      this.iconalign= null;
       this.labelalign = null;
     }
     else if(this.iconalign && this.iconalign == "left"){

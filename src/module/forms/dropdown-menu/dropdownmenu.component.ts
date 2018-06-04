@@ -40,6 +40,7 @@ export class AmexioDropDownMenuComponent implements AfterContentInit, OnInit {
    description : title on Dropdown
    */
   @Input() title: string;
+  
   /*
    Properties
    name : icon
@@ -59,6 +60,7 @@ export class AmexioDropDownMenuComponent implements AfterContentInit, OnInit {
    description : flag for icon position right/left
    */
   @Input('icon-align') iconalign : string;
+
   /*
    Properties
    name : padding
@@ -79,6 +81,7 @@ export class AmexioDropDownMenuComponent implements AfterContentInit, OnInit {
    */
 
   @Input ('down-arrow-icon') downArrowIcon : boolean =true;
+
   /*
    Properties
    name : transparent
@@ -89,6 +92,7 @@ export class AmexioDropDownMenuComponent implements AfterContentInit, OnInit {
    */
 
   @Input() transparent   : boolean =false ;
+
 
   /*
    Properties
