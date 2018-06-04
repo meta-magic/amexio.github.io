@@ -12,18 +12,11 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 @Component({
   selector: 'amexio-drop-down-menu-item',
   template: `
-<<<<<<< HEAD
-    <div *ngIf="!(icon && label)" class="divider" >
-      <ng-content></ng-content>
-    </div>
-    <a  *ngIf="icon && label" (click)="onItemClick($event)" [ngClass]="{'divider':separator}" >
-=======
   
     <div *ngIf="!(icon && label)" class="divider" >
       <ng-content></ng-content>
     </div>
     <a  *ngIf=" (icon && label)" (click)="onItemClick($event)" [ngClass]="{'divider':separator}" >
->>>>>>> 249e870c09c4d283998375261e448d93bfcaf64c
       <i [style.float]="iconalign" [ngClass]="icon"></i>
       <span [style.float]="labelalign"   style="padding: 5px;">
         {{label}}
@@ -35,10 +28,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 export class AmexioDropDownitemsComponent implements OnInit{
 
-<<<<<<< HEAD
-=======
   toggle : boolean;
->>>>>>> 249e870c09c4d283998375261e448d93bfcaf64c
 
   /*
    Properties
@@ -95,12 +85,9 @@ export class AmexioDropDownitemsComponent implements OnInit{
    description : add divider to the dropdown menu list
    */
 
-<<<<<<< HEAD
-=======
   @Output() onClick: any = new EventEmitter<any>();
    
 
->>>>>>> 249e870c09c4d283998375261e448d93bfcaf64c
   ngOnInit() {
     if(this.iconalign && this.labelalign
       && this.iconalign.toLowerCase() === this.labelalign.toLowerCase()){
@@ -116,16 +103,9 @@ export class AmexioDropDownitemsComponent implements OnInit{
     }
   }
 
-<<<<<<< HEAD
-  @Output() onClick: any = new EventEmitter<any>();
-
-  onItemClick( event :any) {
-
-=======
   onItemClick( event :any) {
 
   this.toggle = false;
->>>>>>> 249e870c09c4d283998375261e448d93bfcaf64c
     let e = {
       'event':event,
       'this':this

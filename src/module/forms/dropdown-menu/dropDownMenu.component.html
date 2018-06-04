@@ -1,10 +1,6 @@
 
-<<<<<<< HEAD
-<div (click)="showDropDownContent($event)" class="dropdown-menu" (mouseover)="onMouseOver($event)" [style.padding]="padding"
-=======
 <div (click)="showDropDownContent($event)" class="dropdown-menu" (mouseover)="onMouseOver($event)"
      [style.padding]="padding"
->>>>>>> 249e870c09c4d283998375261e448d93bfcaf64c
      [ngStyle]="{'background-color':(transparent)?'unset':'null'}">
   <span >
     <i *ngIf="icon" [ngClass]="icon">&nbsp;</i>{{title}}&nbsp;</span>
@@ -13,15 +9,9 @@
     <i *ngIf="toggle"  class="fa fa-angle-up "></i>
   </ng-container>
 
-<<<<<<< HEAD
-
-</div>
-<div   *ngIf="toggle" class="dropdown-menu-content"
-=======
 </div>
 
 <div (click)="showDropDownContent($event)"  *ngIf="toggle" class="dropdown-menu-content"
->>>>>>> 249e870c09c4d283998375261e448d93bfcaf64c
      [style.height]="height"   [ngClass]="{'menu-right':xposition}">
 
   <ng-content></ng-content>
