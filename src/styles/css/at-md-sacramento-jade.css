@@ -920,7 +920,7 @@ button {
   background-color: #6bffc9; }
 
 .drodown-caret-down {
-  color: #ced4da; }
+  color: black; }
 
 .list-items-selected {
   background-color: #b8ffe5;
@@ -1828,9 +1828,6 @@ input:checked + .toggle-slider:before {
   background-color: #b8ffe5; }
 
 /** box - Structure CSS **/
-.box-content {
-  width: 100%; }
-
 .border-topbar {
   border-top: 6px solid !important; }
 
@@ -2314,54 +2311,53 @@ input:checked + .toggle-slider:before {
     Version : Amexio v4.2 onwards
 *****************************************************************************/
 /** dropdownmenu - Visual CSS **/
+.dropdown-menu {
+  background-color: #00a86b;
+  color: #ebfff8; }
+
+.dropdown-menu-content {
+  background-color: #ffffff;
+  box-shadow: 0px 8px 16px 5px #ced4da; }
+
+.dropdown-menu-content .divider {
+  border-bottom: solid 1px #ced4da; }
+
 .dropdown-menu-content a:hover {
   background-color: #b8ffe5;
-  color: #001f13; }
-
-.dropdown-menu:hover .dropdown-menu-content {
-  display: flex;
-  background-color: #ffffff; }
+  color: #005234; }
 
 /** dropdownmenu - Structure CSS **/
-li {
-  list-style-type: none; }
-
 .dropdown-menu {
   position: relative;
   display: inline-block;
   font-size: 16px !important;
-  background-color: #00a86b;
-  color: #ebfff8;
   padding: 16px;
   cursor: pointer; }
 
 .dropdown-menu-content {
-  display: none;
-  position: fixed;
+  display: block;
+  position: absolute;
   flex-direction: column;
-  background-color: #6bffc9;
   min-width: 180px;
   cursor: pointer;
-  box-shadow: 0px 8px 16px 0px #ced4da;
   z-index: 1;
-  padding: 10px; }
-
-.dropdown-menu-content .divider {
-  border-bottom: solid 1px #001f13; }
+  padding: 10px 0px;
+  overflow-y: auto; }
 
 .dropdown-menu-content a {
-  color: #001f13;
-  padding: 5px 6px;
   text-decoration: none;
   display: inline-block;
-  min-width: inherit;
+  font-size: 16px !important;
   padding: 10px;
   display: block; }
+
+.menu-right {
+  right: 10px; }
 
 /*****************************************************************************
  Component Name : Toolbar
     Version : Amexio v4.2 onwards
-*****************************************************************************/
+****************************************************************************/
 /** Toolbar - Visual CSS **/
 .toolbar {
   background-color: #ffffff; }
@@ -2406,6 +2402,143 @@ li {
 .toolbar-item .inputgroup .input-control {
   width: unset !important;
   padding: 0px !important; }
+
+/*****************************************************************************
+ Component Name : Search Box
+    Version : Amexio v4.2 onwards
+****************************************************************************/
+/** Searchbox - Visual CSS **/
+.hrclass {
+  border-color: #ced4da; }
+
+.advancesearchform {
+  background-color: #ffffff;
+  border-color: #ced4da; }
+
+.input-group-text-search {
+  background-color: #00a86b;
+  border-color: #ced4da; }
+
+.form-control {
+  color: #001f13;
+  background-color: #ffffff;
+  border-color: #ced4da; }
+
+.search-form-label {
+  color: #001f13; }
+
+.iconColor {
+  color: #ffffff; }
+
+.advancesearchbtn {
+  background-color: #00a86b;
+  color: #ffffff; }
+
+.search-dropdown-list .search-list-items {
+  background-color: #ffffff; }
+
+.search-dropdown-list li:hover {
+  background: #b8ffe5; }
+
+.search-list-items-selected {
+  background-color: #b8ffe5 !important; }
+
+.search-dropdown-list {
+  border-color: #ced4da;
+  background-color: #ffffff; }
+
+/** Searchbox - Structure CSS **/
+.hrclass {
+  margin-top: 2%;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 10%;
+  font-weight: bold;
+  display: block; }
+
+.advancesearchform {
+  font-weight: normal;
+  border-width: 1px;
+  border-style: solid; }
+
+.search-form-label {
+  font-weight: bold; }
+
+.close-icon {
+  float: right;
+  opacity: .54;
+  cursor: pointer;
+  padding-top: 0%;
+  padding-right: 0%; }
+
+.searchbutton {
+  width: 100%; }
+
+.input-group-text-search {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  white-space: nowrap;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: .25rem;
+  width: 15px;
+  padding-right: 2%;
+  padding-left: 2%; }
+
+.input-group {
+  display: flex; }
+
+.input-group-prepend {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0; }
+
+.form-control {
+  display: block;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  background-clip: padding-box;
+  transition: border-color 0.15s;
+  border-width: 1px;
+  border-style: solid; }
+
+.search-dropdown-list .search-list-items {
+  list-style: none;
+  cursor: pointer;
+  margin: 1px 0;
+  padding: .186em .313em;
+  text-align: left;
+  overflow-y: auto; }
+
+.search-dropdown-list {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  text-decoration: none;
+  list-style: none;
+  border-width: 1px;
+  border-style: solid;
+  z-index: 5;
+  overflow-x: auto; }
+
+.scroll {
+  height: 200px;
+  overflow-y: scroll; }
+
+.advancesearchbuttondiv {
+  z-index: 5; }
+
+.advancesearchbtn {
+  height: 37px;
+  font-weight: bold; }
 
 /****************************************************************************
     Component Name : Enterprise Content
@@ -4011,8 +4144,7 @@ header .billboard .content-button {
   border-bottom: 1px solid #ced4da;
   font-size: 20px;
   font-weight: 300;
-  text-transform: capitalize;
-  overflow: auto; }
+  text-transform: capitalize; }
 
 .card-body {
   font-size: 14px;

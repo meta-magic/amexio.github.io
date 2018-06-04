@@ -1,33 +1,26 @@
 import {
-  Component, EventEmitter, ContentChildren, Input, OnInit, QueryList, Output,
+  Component, EventEmitter,ElementRef, ContentChildren,HostListener, Input, OnInit, QueryList, Output,
   AfterContentInit
 } from '@angular/core';
 
-import { AmexioDropDownOptionComponent } from './dropDownMenu.component.options'
-
+import { AmexioDropDownitemsComponent } from './dropDownMenu.component.items'
+import {DeviceQueryService} from "../../services/device/device.query.service";
 
 @Component({
   selector: 'amexio-drop-down-menu',
-  template: `
+  templateUrl: `./dropDownMenu.component.html`,
 
-    <div class="dropdown-menu"  [style.padding]="padding">
-        <i *ngIf="icon" [ngClass]="icon">&nbsp;</i>{{title}}&nbsp;<i class="dropdownicon fa fa-angle-down"></i>
-      
-      <div class="dropdown-menu-content">
-          <a [ngClass]="{'divider':node.seprator}" *ngFor="let node of data" >
-            <i [ngStyle]="{'float': iconposition === 'right' ? 'right':null }" 
-               *ngIf="node.icon" [ngClass]="node.icon"></i>
-            <span [ngStyle]="{'padding': iconposition === 'right' ? '0px': '10px' }">{{node.flagName}}</span>
-          </a>
-      </div>
-    </div>
-
-  `
 })
 
-export class AmexioDropDownMenuComponent implements AfterContentInit {
+export class AmexioDropDownMenuComponent implements AfterContentInit, OnInit {
 
-  dropDownPreviewData : any;
+  toggle : boolean;
+  xposition :boolean = false;
+<<<<<<< HEAD
+=======
+  top : number;
+>>>>>>> 249e870c09c4d283998375261e448d93bfcaf64c
+
 
   /* for internal use*/
   @Input() dropDownMenuLocalData: any;
@@ -40,10 +33,10 @@ export class AmexioDropDownMenuComponent implements AfterContentInit {
    default :
    description : data what you want to add in list
    */
-  @Input() data: string;
+  @Input() data: any [];
   /*
    Properties
-   name : Title
+   name : title
    datatype : string
    version : 4.0 onwards
    default :
@@ -68,21 +61,202 @@ export class AmexioDropDownMenuComponent implements AfterContentInit {
    default : right
    description : flag for icon position right/left
    */
-  @Input('icon-position') iconposition : string;
-
+  @Input('icon-align') iconalign : string;
+  /*
+   Properties
+   name : padding
+   datatype : string
+   version : 4.2 onwards
+   default :
+   description : padding for hover button
+   */
   @Input()  padding : string;
 
-  @ContentChildren(AmexioDropDownOptionComponent) dropdowns: QueryList<AmexioDropDownOptionComponent>;
+  /*
+   Properties
+   name : menu icon
+   datatype : string
+   version : 4.2 onwards
+   default :
+   description : icon on menu
+   */
 
+  @Input ('down-arrow-icon') downArrowIcon : boolean =true;
+  /*
+   Properties
+   name : transparent
+   datatype : string
+   version : 4.2 onwards
+   default :
+   description : transparent style for menu
+   */
+<<<<<<< HEAD
+
+  @Input() transparent   : boolean =false ;
+
+=======
+
+  @Input() transparent   : boolean =false ;
+
+>>>>>>> 249e870c09c4d283998375261e448d93bfcaf64c
+  /*
+   Properties
+   name : height
+   datatype :   any
+   version : 4.2 onwards
+   default :
+   description : User can set the height to menu body..
+   */
+  @Input()  height : any;
+
+<<<<<<< HEAD
+  top : number;
+
+  @Output() onClick: any = new EventEmitter<any>();
+
+=======
+  @Output() onClick: any = new EventEmitter<any>();
+
+
+
+>>>>>>> 249e870c09c4d283998375261e448d93bfcaf64c
+  @ContentChildren(AmexioDropDownitemsComponent) dropdowns: QueryList<AmexioDropDownitemsComponent>;
+
+  optionsCollection: AmexioDropDownitemsComponent[] = [];
+
+
+<<<<<<< HEAD
+=======
+  @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
+  public onElementOutClick(targetElement: HTMLElement) {
+    let parentFound = false;
+    while (targetElement != null && !parentFound) {
+      if (targetElement === this.element.nativeElement) {
+        parentFound = true;
+      }
+      targetElement = targetElement.parentElement;
+    }
+    if (!parentFound) {
+      this.toggle = false;
+    }
+  }
+  
+>>>>>>> 249e870c09c4d283998375261e448d93bfcaf64c
+  constructor(public element: ElementRef,public matchMediaService: DeviceQueryService ) {
+    this.iconalign ="left";
+  }
+
+  ngOnInit(){
+    if(this.data){
+      this.data.forEach(node =>{
+        if(!node.iconalign){
+          if(this.iconalign)
+            node.iconalign = this.iconalign;
+        }
+        if(!node.labelalign){
+          node.labelalign = "left";
+        }
+      });
+    }
+  }
 
   ngAfterContentInit() {
-    this.dropDownPreviewData = this.dropdowns.toArray();
-
+    // if (!this.data) {
+    //   this.data = [];
+    //   this.optionsCollection = this.dropdowns.toArray();
+    //   this.optionsCollection.forEach((obj) => {
+    //     this.data.push(obj);
+    //   });
+    // }
   }
 
-  constructor() {
-    this.iconposition ="left";
+<<<<<<< HEAD
+
+  showDropDownContent(event : any)
+  {
+    this.toggle= !this.toggle;
+    this.top = event.target.getBoundingClientRect().top + 25;
   }
 
+  getIconPosition(childposition:any,parentIconPosition: string): boolean {
+    if(childposition.hasOwnProperty('iconalign') && childposition.iconalign != ''){
+      if(childposition.iconalign == 'right'){
+        return true;
+      } else return false;
+    } else {
+      if(parentIconPosition == 'right'){
+        return true;
+      } else return false;
+    }
+  }
 
+  onDropDownMenuClick(event: any) {
+    this.toggle = false;
+    this.onClick.emit(event);
+  }
+
+=======
+
+  showDropDownContent(event : any)
+  {
+    this.toggle= !this.toggle;
+    this.top = event.target.getBoundingClientRect().top + 25;
+  }
+
+  getIconPosition(childposition:any,parentIconPosition: string): boolean {
+    if(childposition.hasOwnProperty('iconalign') && childposition.iconalign != ''){
+      if(childposition.iconalign == 'right'){
+        return true;
+      } else return false;
+    } else {
+      if(parentIconPosition == 'right'){
+        return true;
+      } else return false;
+    }
+  }
+
+  onDropDownMenuClick(event: any) {
+    this.toggle = false;
+    this.onClick.emit(event);
+  }
+
+>>>>>>> 249e870c09c4d283998375261e448d93bfcaf64c
+  getLabelPosition(childPosition:any, parentLabelPosition :string):boolean{
+
+    if(childPosition.hasOwnProperty('labelalign') && childPosition .labelalign !='')
+    {
+      if(childPosition.labelalign =='right'){
+        return true;
+      }else return false;
+    }else {
+      if(parentLabelPosition =='right'){
+        return true;
+      }else return false;
+    }
+  }
+
+<<<<<<< HEAD
+  @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
+  public onElementOutClick(targetElement: HTMLElement) {
+    let parentFound = false;
+    while (targetElement != null && !parentFound) {
+      if (targetElement === this.element.nativeElement) {
+        parentFound = true;
+      }
+      targetElement = targetElement.parentElement;
+    }
+    if (!parentFound) {
+      this.toggle = false;
+    }
+  }
+=======
+>>>>>>> 249e870c09c4d283998375261e448d93bfcaf64c
+  onMouseOver(event:any){
+    if((this.matchMediaService.browserWindow().innerWidth - event.clientX)<200){
+      this.xposition = true;
+    }else{
+      this.xposition = false;
+    }
+
+  }
 }

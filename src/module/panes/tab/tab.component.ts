@@ -323,6 +323,52 @@ description : This flag will make tab closable.
     return dynCmp.instance;
   }
 
+  // Method to close all tab 
+  closeAllTabs(){
+    this.tabCollection.forEach((tabs) => {
+     if(tabs.closable == true || this.closable == true){
+       this.closeTab(tabs);
+     }
+    });
+  }
+
+  // Method to close particular tabs
+  closeTabs(data: any){
+    debugger;
+    this.tabCollection.forEach((tabs) => {
+      data.forEach((opt: any) => {
+        if(opt.toLowerCase() != tabs.title.toLowerCase() && (tabs.closable == true|| this.closable == true)){
+          this.closeTab(tabs);
+        }
+      });
+    });
+  }
+
+  //Method to set active tab on the basis of tab sequence or tab title
+  setActiveTab(input: any) {
+    let flag: boolean = false;
+    if(typeof input == "string"){
+      this.tabCollection.forEach((tabs) => {
+        if(input.trim().toLowerCase() == tabs.title.trim().toLowerCase()){
+          tabs.active = true;
+          flag = true;
+        } else{
+         tabs.active = false;
+        }
+       });
+    } else if (typeof input == "number"){
+      this.tabCollection.forEach((tabs: any, index: number) => {
+        if (index + 1 == input) {
+          tabs.active = true;
+          flag = true;
+        } else {
+          tabs.active = false;
+        }
+      });
+    }
+    return flag;
+
+  }
 
   selectTab(tab: AmexioTabPill) {
     // deactivate all tabs

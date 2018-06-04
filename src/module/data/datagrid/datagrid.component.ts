@@ -17,295 +17,325 @@ import {CommonDataService} from "../../services/data/common.data.service";
 @Component({
   selector: 'amexio-datagrid',
   template: `
-    <div class="datagrid">
-      <div class="datatabletitle">
-        <span> {{title}} </span>
-        <span *ngIf="enablecolumnfiter ? true:false" class="float-right"
-              (click)="showToolTip = !showToolTip ; showGroupByColumn = false"
-              style=" cursor: pointer;">
-            &nbsp;&nbsp;<span *ngIf="!show">&#9776;</span>
-            <span *ngIf="show">&#9747;</span>
-          </span>
+  <div class="datagrid">
+  <div class="datatabletitle">
+      <span> {{title}} </span>
+      <span *ngIf="enablecolumnfiter ? true:false" class="float-right" (click)="showToolTip = !showToolTip ; showGroupByColumn = false"
+          style=" cursor: pointer;">
+          &nbsp;&nbsp;
+          <span *ngIf="!show">&#9776;</span>
+          <span *ngIf="show">&#9747;</span>
+      </span>
 
-        <span *ngIf="groupby ? true : false" class="float-right"
-              (click)="showGroupByColumn = !showGroupByColumn; showToolTip = false"
-              style=" cursor: pointer;">
-            <!--<span class="fa fa-th-list"></span>-->
+      <span *ngIf="groupby ? true : false" class="float-right" (click)="showGroupByColumn = !showGroupByColumn; showToolTip = false"
+          style=" cursor: pointer;">
+          <!--<span class="fa fa-th-list"></span>-->
           <amexio-data-icon key="datagrid_list"></amexio-data-icon>
-          </span>
-      </div>
-      <ng-container *ngIf="enabledatafilter ? true : false">
-        <div class="datatable datatable-row">
+      </span>
+  </div>
+  <!--Filter with Checkbox datagrid start-->
+  <ng-container *ngIf="enabledatafilter ? true : false">
+      <div class="datatable datatable-row">
           <ng-container *ngIf="enablecheckbox">
-            <div class="datatable-col col-group datatable-checkbox-width">
-              <div class="inputgroup">
-                <div class="input-box">
-                  <div *ngIf="!selectAll" (click)="selectAllRecord()" class="checkbox default"></div>
-                  <div *ngIf="selectAll" (click)="selectAllRecord()" class="checkbox active">&#10004;</div>
-                </div>
+              <div class="datatable-col col-group datatable-checkbox-width">
+                  <div class="inputgroup">
+                      <div class="input-box">
+                          <div *ngIf="!selectAll" (click)="selectAllRecord()" class="checkbox default"></div>
+                          <div *ngIf="selectAll" (click)="selectAllRecord()" class="checkbox active">&#10004;</div>
+                      </div>
+                  </div>
               </div>
-            </div>
           </ng-container>
 
+          <!--Filter datagrid start-->
           <ng-container *ngIf="enabledatafilter ? true : false">
-            <ng-container *ngFor="let cols of columns">
-              <ng-container *ngIf="!cols.hidden">
-                <div class="datatable-col col-group" [style.width.%]="cols.width">
-                  <data-grid-filter [column]="cols"
-                                    (filterObject)="getFilteredData($event)">
-                  </data-grid-filter>
-                </div>
+              <ng-container *ngFor="let cols of columns">
+                  <ng-container *ngIf="!cols.hidden">
+                      <div class="datatable-col col-group" [style.width.%]="cols.width">
+                          <data-grid-filter [column]="cols" (filterObject)="getFilteredData($event)">
+                          </data-grid-filter>
+                      </div>
+                  </ng-container>
               </ng-container>
-            </ng-container>
           </ng-container>
 
-        </div>
-      </ng-container>
+      </div>
+  </ng-container>
 
-      <div>
-        <ng-container *ngIf="enablecolumnfiter ? true : false">
+  <!--Filter datagrid start-->
+  <ng-container *ngIf="globalfilter ? true : false">
+      <div class="datatable datatable-row">
+          <ng-container class="datatable datatable-column">
+              <div class="inputgroup" style="padding-left: 1%; padding-right: 1%">
+                  <input type="text"  [(ngModel)]="filterValue" (keyup)="keyUpSearch($event)" type="text" class="input-control" aria-label="Text input with dropdown button">
+                  <!--<i class="fa fa-filter" aria-hidden="true" (click)="showToolTip = !showToolTip"></i>-->
+                  <span class="datatable-filter-icon">
+                      <amexio-data-icon key="datagrid_filter" (click)="showToolTip = !showToolTip"></amexio-data-icon>
+                  </span>
+                  <span *ngIf="showToolTip" class="dropdown" style="width: 250px; right: 10px">
+                      <ul class="dropdown-list" *ngFor="let opt of globalFilterOptions">
+                          <li class="list-items">
+                              <div (click)="selectedOption(opt)">
+                                  {{opt.key}}&nbsp;
+                                  <i [class]="opt.checkedStatus" aria-hidden="true"></i>
+                              </div>
+                          </li>
+                      </ul>
+                  </span>
+              </div>
+          </ng-container>
+      </div>
+  </ng-container>
+
+  <div>
+      <ng-container *ngIf="enablecolumnfiter ? true : false">
           <span *ngIf="showToolTip" class="dropdown dropdown-right" style="width: 250px;">
-        <ul class="dropdown-list">
-          <li class="list-items" *ngFor="let cols of columns;let i = index;" (click)="showToolTip = !showToolTip">
-            <div>
-             <input type="checkbox" [attr.checked]="!cols.hidden ? true: null" (click)="onColumnCheck(cols)"/>
-             <label>{{cols.text}}</label>
-            </div>
-          </li>
-         </ul>
-      </span>
-        </ng-container>
-
-        <ng-container *ngIf="groupby ? true : false">
-          <span *ngIf="showGroupByColumn" class="dropdown dropdown-right" style="width: 250px;">
-        <ul class="dropdown-list">
-          <li class="list-items" *ngFor="let cols of columns;let i = index;"
-              (click)="showGroupByColumn = !showGroupByColumn">
-            <div (click)="setGroupByColumn(cols)">
-             <label>{{cols.text}}</label>
-            </div>
-          </li>
-         </ul>
-      </span>
-        </ng-container>
-      </div>
-    </div>
-
-    <div class="datatable">
-      <div class="datatable-header">
-        <ng-container *ngIf="enablecheckbox">
-          <div class="datatable-col datatable-checkbox-width checkbox-col">
-            <div class="inputgroup">
-              <div class="input-box">
-                <div *ngIf="!selectAll" (click)="selectAllRecord()" class="checkbox default"></div>
-                <div *ngIf="selectAll" (click)="selectAllRecord()" class="checkbox active">&#10004;</div>
-              </div>
-            </div>
-          </div>
-        </ng-container>
-
-        <ng-container *ngFor="let cols of columns">
-          <ng-container *ngIf="!cols.hidden">
-            <ng-container *ngIf="cols.datatype=='string'">
-              <div class="datatable-col" [style.width.%]="cols.width" (click)="sortOnColHeaderClick(cols, $event)">
-                {{cols.text}} &nbsp;
-                <ng-container *ngIf="this.sortBy==1 && cols.isColumnSort">
-                  <amexio-data-icon key="datagrid_arrowup"></amexio-data-icon>
-                  <!--&nbsp; <i class="fa fa-arrow-up"></i>-->
-                </ng-container>
-                <ng-container *ngIf="this.sortBy==2 && cols.isColumnSort">
-                  <!--&nbsp;<i class="fa fa-arrow-down"></i>-->
-                  <amexio-data-icon key="datagrid_arrowdown"></amexio-data-icon>
-                </ng-container>
-              </div>
-            </ng-container>
-            <ng-container *ngIf="cols.datatype=='number'">
-              <div class="datatable-col" [style.width.%]="cols.width" (click)="sortOnColHeaderClick(cols, $event)">
-                <span class="float-right">
-                   {{cols.text}} &nbsp;
-                    <ng-container *ngIf="this.sortBy==1 && cols.isColumnSort">
-                  <amexio-data-icon key="datagrid_arrowup"></amexio-data-icon>
-                      <!--&nbsp; <i class="fa fa-arrow-up"></i>-->
-                </ng-container>
-                <ng-container *ngIf="this.sortBy==2 && cols.isColumnSort">
-                  <!--&nbsp;<i class="fa fa-arrow-down"></i>-->
-                  <amexio-data-icon key="datagrid_arrowdown"></amexio-data-icon>
-                </ng-container>
-                </span>
-              </div>
-            </ng-container>
-          </ng-container>
-        </ng-container>
-      </div>
-    </div>
-
-
-    <ng-container *ngIf="!groupby">
-      <div class="datatable-height" [style.height.px]="height">
-        <div class="datatable">
-          <div style="height: 300px;" *ngIf="mask">
-            <div class="spinner"></div>
-          </div>
-          <ng-container *ngIf="!mask">
-            <div class="datatable-row" *ngFor="let row of viewRows;let i=index" id="{{'row'+i}}" [ngClass]="{'datatable-row-active':row.isSelected}"
-                 (click)="onRowClick(row, i)">
-
-              <ng-container *ngIf="enablecheckbox">
-                <div class="datatable-col datatable-checkbox-width checkbox-col">
-                  <div class="inputgroup">
-                    <div class="input-box">
-                      <div (click)="setSelectedRow(row, check)" [class]="setCheckBoxSelectClass(check)" #check>
-                        {{((setCheckBoxSelectClass(check) == 'checkbox active') && (check.classList.value == 'checkbox active')) || ((setCheckBoxSelectClass(check) == 'checkbox default') && (check.classList.value == 'checkbox active')) ? '&#10004;' : ''}}
+              <ul class="dropdown-list">
+                  <li class="list-items" *ngFor="let cols of columns;let i = index;" (click)="showToolTip = !showToolTip">
+                      <div>
+                          <input type="checkbox" [attr.checked]="!cols.hidden ? true: null" (click)="onColumnCheck(cols)" />
+                          <label>{{cols.text}}</label>
                       </div>
-                    </div>
-                  </div>
-                </div>
-              </ng-container>
-
-              <ng-container *ngFor="let cols of columns;let colIndex = index">
-                <ng-container *ngIf="!cols.hidden">
-                  <ng-container *ngIf="cols.datatype=='number'">
-                    <div class="datatable-col"  [style.width.%]="cols.width"  scope="row" [attr.data-label]="cols.text">
-                   <span class="float-right">
-                     <ng-container *ngIf="row[cols.dataindex]!= null;else elseBlock">
-                        {{row[cols.dataindex]}}
-                     </ng-container>
-                     <ng-template #elseBlock>
-                       &nbsp;
-                     </ng-template>
-                    
-                   </span>
-                    </div>
-                  </ng-container>
-                  <ng-container *ngIf="!cols?.bodyTemplate && cols.datatype=='string'">
-                    <div class="datatable-col" [style.width.%]="cols.width" scope="row" [attr.data-label]="cols.text">
-                      <ng-container *ngIf="row[cols.dataindex]!= null ;else elseBlock">
-                        {{row[cols.dataindex]}}
-                      </ng-container>
-                      <ng-template #elseBlock>
-                        &nbsp;
-                      </ng-template>
-                    </div>
-                  </ng-container>
-                  <ng-container *ngIf="cols.bodyTemplate">
-                    <div class="datatable-col" [style.width.%]="cols.width" scope="row" [attr.data-label]="cols.text">
-                      <ng-template  [ngTemplateOutlet]="cols.bodyTemplate"
-                                    [ngTemplateOutletContext]="{ $implicit: { text : row[cols.dataindex] }, row: row }"></ng-template>
-                    </div>
-                  </ng-container>
-                </ng-container>
-
-              </ng-container>
-            </div>
-          </ng-container>
-
-        </div>
-      </div>
-
-    </ng-container>
-
-    <!--Group BY datagrid start-->
-
-    <ng-container *ngIf="groupby && !enabledatafilter">
-      <div class="datatable-height" [style.height.px]="height">
-        <div class="datatable" style="table-layout: inherit !important;">
-          <div style="height: 300px;" *ngIf="mask">
-            <div class="spinner"></div>
-          </div>
-          <ng-container *ngIf="!mask">
-            <div class="datatable-row"  *ngFor="let row of viewRows;let i=index" id="{{'row'+i}}" [ngClass]="{'datatable-row-active':row.isSelected}" (click)="toogle(row, i)">
-              <ng-container *ngIf="enablecheckbox">
-                <div class="datatable-col datatable-checkbox-width checkbox-col">
-                  <div class="inputgroup">
-                    <div class="input-box">
-                      <div (click)="selectParent(row)" [class]="row.isSelected ?'checkbox active':'checkbox default'">
-                        {{row.isSelected ? '&#10004;' : ''}}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </ng-container>
-              <ng-container *ngFor="let cols of columns;let colIndex = index">
-                <ng-container *ngIf="isGroupChecking(row)">
-
-                  <ng-container *ngIf="colIndex == 0">
-                    <div class="datatable-col col-group">
-                      <!--<i *ngIf="!row.expanded" class="fa fa-caret-right" aria-hidden="true" (click)="toogle(row,i)"></i>-->
-                      <ng-container *ngIf="!row.expanded">
-                        <amexio-data-icon key="datagrid_expand"></amexio-data-icon>
-                      </ng-container>
-                      <ng-container *ngIf="row.expanded">
-                        <amexio-data-icon key="datagrid_collapse"></amexio-data-icon>
-                      </ng-container>
-                      {{row.group}}
-                    </div>
-                  </ng-container>
-
-                  <ng-container *ngIf="colIndex != 0">
-                    <div class="datatable-col col-hidden">
-                    </div>
-                  </ng-container>
-                </ng-container>
-                <ng-container *ngIf="!isGroupChecking(row)">
-                  <ng-container *ngIf="cols.datatype=='string'">
-                    <div class="datatable-col" [style.width.%]="cols.width"  [attr.data-label]="cols.text">
-                      <ng-container *ngIf="colIndex == 0">
-                   <span style="padding-left: 20px">
-                     {{row[cols.dataindex]}}
-                   </span>
-                      </ng-container>
-                      <ng-container *ngIf="colIndex != 0">
-                        {{row[cols.dataindex]}}
-                      </ng-container>
-                    </div>
-                  </ng-container>
-                  <ng-container *ngIf="cols.datatype=='number'">
-
-                    <div class="datatable-col"  [style.width.%]="cols.width"  [attr.data-label]="cols.text">
-
-                      <ng-container *ngIf="colIndex == 0">
-                      <span style="padding-left: 20px">
-                          <ng-container *ngIf="row[cols.dataindex]!= null ;else elseBlock">
-                     {{row[cols.dataindex]}}
-                    </ng-container>
-                    <ng-template #elseBlock>
-                      &nbsp;
-                    </ng-template>
-                        
-                       </span>
-                      </ng-container>
-                      <ng-container *ngIf="colIndex != 0">
-                      <span class="float-right">
-                        <ng-container *ngIf="row[cols.dataindex]!= null ;else elseBlock">
-                     {{row[cols.dataindex]}}
-                    </ng-container>
-                    <ng-template #elseBlock>
-                      &nbsp;
-                    </ng-template>
-                      </span>
-                      </ng-container>
-
-                    </div>
-
-                  </ng-container>
-
-                </ng-container>
-              </ng-container>
-            </div>
-          </ng-container>
-
-        </div>
-      </div>
-    </ng-container>
-    <!--Group BY datagrid end-->
-    <div class="footer">
-      <ng-container *ngIf="pagesize && (data && data.length > pagesize)">
-        <ng-container *ngIf="totalPages!=null">
-          <amexio-paginator [pages]="totalPages" [rows]="pagesize"
-                            (onPageChange)="loadPageData($event)"></amexio-paginator>
-        </ng-container>
+                  </li>
+              </ul>
+          </span>
       </ng-container>
-    </div>
+
+      <ng-container *ngIf="groupby ? true : false">
+          <span *ngIf="showGroupByColumn" class="dropdown dropdown-right" style="width: 250px;">
+              <ul class="dropdown-list">
+                  <li class="list-items" *ngFor="let cols of columns;let i = index;" (click)="showGroupByColumn = !showGroupByColumn">
+                      <div (click)="setGroupByColumn(cols)">
+                          <label>{{cols.text}}</label>
+                      </div>
+                  </li>
+              </ul>
+          </span>
+      </ng-container>
+  </div>
+</div>
+
+<!--Checkbox datagrid with datatypes condition start-->
+<div class="datatable">
+  <div class="datatable-header">
+      <ng-container *ngIf="enablecheckbox">
+          <div class="datatable-col datatable-checkbox-width checkbox-col">
+              <div class="inputgroup">
+                  <div class="input-box">
+                      <div *ngIf="!selectAll" (click)="selectAllRecord()" class="checkbox default"></div>
+                      <div *ngIf="selectAll" (click)="selectAllRecord()" class="checkbox active">&#10004;</div>
+                  </div>
+              </div>
+          </div>
+      </ng-container>
+      <!--datagrid start unhidden-->
+      <ng-container *ngFor="let cols of columns">
+          <ng-container *ngIf="!cols.hidden">
+              <ng-container *ngIf="cols.datatype=='string'">
+                  <div class="datatable-col" [style.width.%]="cols.width" (click)="sortOnColHeaderClick(cols, $event)">
+                      {{cols.text}} &nbsp;
+                      <ng-container *ngIf="this.sortBy==1 && cols.isColumnSort">
+                          <amexio-data-icon key="datagrid_arrowup"></amexio-data-icon>
+                          <!--&nbsp; <i class="fa fa-arrow-up"></i>-->
+                      </ng-container>
+                      <ng-container *ngIf="this.sortBy==2 && cols.isColumnSort">
+                          <!--&nbsp;<i class="fa fa-arrow-down"></i>-->
+                          <amexio-data-icon key="datagrid_arrowdown"></amexio-data-icon>
+                      </ng-container>
+                  </div>
+              </ng-container>
+              <ng-container *ngIf="cols.datatype=='number'">
+                  <div class="datatable-col" [style.width.%]="cols.width" (click)="sortOnColHeaderClick(cols, $event)">
+                      <span class="float-right">
+                          {{cols.text}} &nbsp;
+                          <ng-container *ngIf="this.sortBy==1 && cols.isColumnSort">
+                              <amexio-data-icon key="datagrid_arrowup"></amexio-data-icon>
+                              <!--&nbsp; <i class="fa fa-arrow-up"></i>-->
+                          </ng-container>
+                          <ng-container *ngIf="this.sortBy==2 && cols.isColumnSort">
+                              <!--&nbsp;<i class="fa fa-arrow-down"></i>-->
+                              <amexio-data-icon key="datagrid_arrowdown"></amexio-data-icon>
+                          </ng-container>
+                      </span>
+                  </div>
+              </ng-container>
+          </ng-container>
+      </ng-container>
+  </div>
+</div>
+
+<!--Group BY datagrid start-->
+<ng-container *ngIf="!groupby">
+  <div class="datatable-height" [style.height.px]="height">
+      <div class="datatable">
+          <div style="height: 300px;" *ngIf="mask">
+              <div class="spinner"></div>
+          </div>
+          <ng-container *ngIf="!mask">
+              <div class="datatable-row" *ngFor="let row of viewRows;let i=index" id="{{'row'+i}}" [ngClass]="{'datatable-row-active':row.isSelected}"
+                  (click)="onRowClick(row, i)">
+
+                  <ng-container *ngIf="enablecheckbox">
+                      <div class="datatable-col datatable-checkbox-width checkbox-col">
+                          <div class="inputgroup">
+                              <div class="input-box">
+                                  <div (click)="setSelectedRow(row, check)" [class]="setCheckBoxSelectClass(check)" #check>
+                                      {{((setCheckBoxSelectClass(check) == 'checkbox active') && (check.classList.value == 'checkbox active')) || ((setCheckBoxSelectClass(check)
+                                      == 'checkbox default') && (check.classList.value == 'checkbox active')) ? '&#10004;'
+                                      : ''}}
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </ng-container>
+
+                  <ng-container *ngFor="let cols of columns;let colIndex = index">
+                      <ng-container *ngIf="!cols.hidden">
+                          <ng-container *ngIf="cols.datatype=='number'">
+                              <div class="datatable-col" [style.width.%]="cols.width" scope="row" [attr.data-label]="cols.text">
+                                  <span class="float-right">
+                                      <ng-container *ngIf="row[cols.dataindex]!= null;else elseBlock">
+                                          {{row[cols.dataindex]}}
+                                      </ng-container>
+                                      <ng-template #elseBlock>
+                                          &nbsp;
+                                      </ng-template>
+
+                                  </span>
+                              </div>
+                          </ng-container>
+                          <ng-container *ngIf="!cols?.bodyTemplate && cols.datatype=='string'">
+                              <div class="datatable-col" [style.width.%]="cols.width" scope="row" [attr.data-label]="cols.text">
+                                  <ng-container *ngIf="row[cols.dataindex]!= null ;else elseBlock">
+                                      {{row[cols.dataindex]}}
+                                  </ng-container>
+                                  <ng-template #elseBlock>
+                                      &nbsp;
+                                  </ng-template>
+                              </div>
+                          </ng-container>
+                          <ng-container *ngIf="cols.bodyTemplate">
+                              <div class="datatable-col" [style.width.%]="cols.width" scope="row" [attr.data-label]="cols.text">
+                                  <ng-template [ngTemplateOutlet]="cols.bodyTemplate" [ngTemplateOutletContext]="{ $implicit: { text : row[cols.dataindex] }, row: row }"></ng-template>
+                              </div>
+                          </ng-container>
+                      </ng-container>
+
+                  </ng-container>
+              </div>
+          </ng-container>
+
+      </div>
+  </div>
+
+</ng-container>
+
+<!--Group BY datagrid end-->
+
+<!--Group BY and Filter Data datagrid start-->
+<ng-container *ngIf="groupby && !enabledatafilter">
+  <div class="datatable-height" [style.height.px]="height">
+      <div class="datatable" style="table-layout: inherit !important;">
+          <div style="height: 300px;" *ngIf="mask">
+              <div class="spinner"></div>
+          </div>
+          <ng-container *ngIf="!mask">
+              <div class="datatable-row" *ngFor="let row of viewRows;let i=index" id="{{'row'+i}}" [ngClass]="{'datatable-row-active':row.isSelected}"
+                  (click)="toogle(row, i)">
+                  <ng-container *ngIf="enablecheckbox">
+                      <div class="datatable-col datatable-checkbox-width checkbox-col">
+                          <div class="inputgroup">
+                              <div class="input-box">
+                                  <div (click)="selectParent(row)" [class]="row.isSelected ?'checkbox active':'checkbox default'">
+                                      {{row.isSelected ? '&#10004;' : ''}}
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </ng-container>
+                  <ng-container *ngFor="let cols of columns;let colIndex = index">
+                      <ng-container *ngIf="isGroupChecking(row)">
+
+                          <ng-container *ngIf="colIndex == 0">
+                              <div class="datatable-col col-group">
+                                  <!--<i *ngIf="!row.expanded" class="fa fa-caret-right" aria-hidden="true" (click)="toogle(row,i)"></i>-->
+                                  <ng-container *ngIf="!row.expanded">
+                                      <amexio-data-icon key="datagrid_expand"></amexio-data-icon>
+                                  </ng-container>
+                                  <ng-container *ngIf="row.expanded">
+                                      <amexio-data-icon key="datagrid_collapse"></amexio-data-icon>
+                                  </ng-container>
+                                  {{row.group}}
+                              </div>
+                          </ng-container>
+
+                          <ng-container *ngIf="colIndex != 0">
+                              <div class="datatable-col col-hidden">
+                              </div>
+                          </ng-container>
+                      </ng-container>
+                      <ng-container *ngIf="!isGroupChecking(row)">
+                          <ng-container *ngIf="cols.datatype=='string'">
+                              <div class="datatable-col" [style.width.%]="cols.width" [attr.data-label]="cols.text">
+                                  <ng-container *ngIf="colIndex == 0">
+                                      <span style="padding-left: 20px">
+                                          {{row[cols.dataindex]}}
+                                      </span>
+                                  </ng-container>
+                                  <ng-container *ngIf="colIndex != 0">
+                                      {{row[cols.dataindex]}}
+                                  </ng-container>
+                              </div>
+                          </ng-container>
+                          <ng-container *ngIf="cols.datatype=='number'">
+
+                              <div class="datatable-col" [style.width.%]="cols.width" [attr.data-label]="cols.text">
+
+                                  <ng-container *ngIf="colIndex == 0">
+                                      <span style="padding-left: 20px">
+                                          <ng-container *ngIf="row[cols.dataindex]!= null ;else elseBlock">
+                                              {{row[cols.dataindex]}}
+                                          </ng-container>
+                                          <ng-template #elseBlock>
+                                              &nbsp;
+                                          </ng-template>
+
+                                      </span>
+                                  </ng-container>
+                                  <ng-container *ngIf="colIndex != 0">
+                                      <span class="float-right">
+                                          <ng-container *ngIf="row[cols.dataindex]!= null ;else elseBlock">
+                                              {{row[cols.dataindex]}}
+                                          </ng-container>
+                                          <ng-template #elseBlock>
+                                              &nbsp;
+                                          </ng-template>
+                                      </span>
+                                  </ng-container>
+
+                              </div>
+
+                          </ng-container>
+
+                      </ng-container>
+                  </ng-container>
+              </div>
+          </ng-container>
+
+      </div>
+  </div>
+</ng-container>
+<!--Group BY and Filter Data datagrid end-->
+
+
+<!-- Footer of the grid -->
+<div class="footer">
+  <ng-container *ngIf="pagesize && (data && data.length > pagesize)">
+      <ng-container *ngIf="totalPages!=null">
+          <amexio-paginator [pages]="totalPages" [rows]="pagesize" (onPageChange)="loadPageData($event)"></amexio-paginator>
+      </ng-container>
+  </ng-container>
+</div>    
   `
 })
 
@@ -521,6 +551,16 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
    */
   @Input('enable-column-fiter')  enablecolumnfiter: boolean;
 
+ /*
+   Properties
+   name : global-fiter
+   datatype : boolean
+   version : 4.2 onwards
+   default : false
+   description :  Set false to hide Column toggle functionality.
+   */
+  @Input('global-filter') globalfilter: boolean;
+
   columns: any[] = [];
 
   viewRows: any[] = [];
@@ -565,6 +605,13 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
 
   totalPages: number;
 
+  /*global filter column attribute*/
+
+  filterValue: any;
+
+  globalFilterOptions: any;
+
+
   /*group by column attribute*/
 
   iconclassKey: string;
@@ -579,12 +626,26 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
   constructor(public dataTableService: CommonDataService,  private cd: ChangeDetectorRef) {
     this.selectedRows = [];
     this.sortBy = -1;
+
+    this.globalFilterOptions = [
+      {
+        'key': 'Start With', 'value': '1', 'checkedStatus': 'fa fa-check'
+      },
+      {
+        'key': 'Ends With', 'value': '2', 'checkedStatus': ''
+      }, {
+        'key': 'Contains', 'value': '3', 'checkedStatus': ''
+      }];
   }
 
   ngOnInit() {
 
     this.isExpanded = true;
     this.iconclassKey = 'fa fa-plus';
+
+    if(this.enabledatafilter == true){
+      this.globalfilter = false;
+          }
 
     if (this.selectedrowcolor == null || this.selectedrowcolor == '') {
       this.selectedrowcolor = '#dcecf7';
@@ -689,6 +750,9 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
     if (this.enabledatafilter) {
       this.filterCloneData = JSON.parse(JSON.stringify(this.data));
     }
+    if (this.globalfilter) {
+      this.filterCloneData = JSON.parse(JSON.stringify(this.data));
+    }
     if (!this.groupby) {
       this.renderData();
     }
@@ -704,6 +768,9 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
       this.cloneData = JSON.parse(JSON.stringify(this.data));
     }
     if (this.enabledatafilter) {
+      this.filterCloneData = JSON.parse(JSON.stringify(this.data));
+    }
+    if (this.globalfilter) {
       this.filterCloneData = JSON.parse(JSON.stringify(this.data));
     }
     this.renderData();
@@ -726,6 +793,90 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
     this.groupbydataindex = col.dataindex;
     this.selectAll = false;
     this.setColumnData();
+  }
+
+  //Method required for global filter
+
+  keyUpSearch() {
+
+    if (this.filterValue == null || this.filterValue === '') {
+      this.removeGlobalFilter();
+    }
+    let filter: any = {
+      value: this.filterValue
+    }
+
+    this.globalFilterOptions.forEach((opt: any) => {
+      if (opt.checkedStatus === 'fa fa-check') {
+        filter['filter'] = opt.value;
+      }
+    });
+    this.getGlobalFilteredData(filter);
+  }
+
+  checkStatus() {
+    this.globalFilterOptions.forEach((opt: any) => {
+      opt.checkedStatus = '';
+    });
+  }
+
+  selectedOption(opt: any) {
+    this.checkStatus();
+    let filter: any = {
+      value: this.filterValue,
+      filter: opt.value,
+    }
+    opt.checkedStatus = 'fa fa-check';
+    if (this.filterValue) {
+      this.getGlobalFilteredData(filter);
+    }
+    this.showToolTip = false;
+  }
+
+  removeGlobalFilter() {
+    this.filterValue = '';
+  }
+
+  getGlobalFilteredData(filteredObj: any) {
+    let status = false;
+      this.data = [];
+     let condition: any;
+      this.filterCloneData.forEach((option: any) => {
+        this.columns.forEach((opt:any)=>{
+         if (filteredObj.filter == '1') {
+         condition = option[opt.dataindex].toLowerCase().startsWith(filteredObj.value.toLowerCase());
+          if(condition) {
+          status = condition;
+          }
+        }
+        if (filteredObj.filter == '2') {
+        condition = option[opt.dataindex].toLowerCase().endsWith(filteredObj.value.toLowerCase());
+         if(condition) {
+         status = condition;
+         }
+       }
+       if (filteredObj.filter == '3') {
+      condition = option[opt.dataindex].toLowerCase().includes(filteredObj.value.toLowerCase());
+       if(condition) {
+       status = condition;
+       }
+     }
+        });
+
+        if (status) {
+          this.data.push(option);
+          status = false;
+        }
+      });
+      
+      if (this.data.length > (1 * this.pagesize)) {
+        this.pagingRegenration();
+        this.renderData();
+      } else {
+        this.viewRows = this.data;
+        this.currentPage = 1;
+        this.maxPage = 1;
+      }
   }
 
   setColumnData() {

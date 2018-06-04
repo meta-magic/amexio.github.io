@@ -1,39 +1,33 @@
 
-li {
-  list-style-type: none;
-}
 
 .dropdown-menu {
   position: relative;
   display: inline-block;
-    font-size: 16px !important;
-    background-color: $dropdownMenuHeaderBGColor;
-  color: $dropdownMenuHeaderFontBGColor;
+  font-size: 16px !important;
   padding: 16px;
   cursor: pointer;
 }
 .dropdown-menu-content {
-  display: none;
-  position: fixed;
+  display: block;
+  position: absolute;
   flex-direction: column;
-  background-color: $dropdownMenuActiveBGColor ;
   min-width: 180px;
   cursor: pointer;
-  box-shadow: 0px 8px 16px 0px $dropdownMenuBorderColor;
   z-index: 1;
-  padding: 10px;
+  padding: 10px 0px;
+  overflow-y: auto;
 }
-.dropdown-menu-content .divider{
-  border-bottom: solid 1px $dropdownMenuActiveColor;
 
-}
 .dropdown-menu-content a {
-  color: $dropdownMenuActiveColor;
-  padding: 5px 6px;
   text-decoration: none;
   display: inline-block;
-  min-width:inherit;
+  font-size: 16px !important;
   padding: 10px;
   display: block;
 }
+.menu-right{
+  right:10px;
+}
+
+
 
