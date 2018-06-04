@@ -39,6 +39,8 @@ import { AmexioDropDownMenuComponent } from './dropdown-menu/dropDownMenu.compon
 import  {ToolbarComponent} from './toolbar/toolbar.component';
 import{ToolbaroneComponent } from './toolbar/toolbarone.component';
 import {ToolBarActionComponent} from './toolbar/toolbaraction.component';
+import {SearchboxtoolComponent } from './advancesearch/searchboxtool.component';
+import {AmexioSearchAdvanceComponent} from './advancesearch/searchadvance.component';
 
 
 
@@ -78,7 +80,10 @@ const FORM_COMPONENTS = [
   AmexioDropDownMenuComponent,
   ToolbarComponent,
   ToolbaroneComponent,
-  ToolBarActionComponent
+  ToolBarActionComponent,
+  SearchboxtoolComponent,
+  AmexioSearchAdvanceComponent
+
 ];
 
 @NgModule({

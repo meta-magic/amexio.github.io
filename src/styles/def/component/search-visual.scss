@@ -1,0 +1,44 @@
+.hrclass{
+    border-color:$dropdownBorderColor;
+}
+
+.advancesearchform{
+    background-color:$dropdownBG;
+    border-color:$dropdownBorderColor;
+}
+ .input-group-text-search{
+    background-color:$searchButton;
+    border-color: $dropdownBorderColor;
+}
+ .form-control{
+    color: $dropdownlistFontColor;
+    background-color:$dropdownBG;
+    border-color: $dropdownBorderColor;
+ }
+ .search-form-label{
+   color:$dropdownlistFontColor;
+ }
+ .iconColor{
+    color:$dropdownBG;
+  }
+
+  .advancesearchbtn{
+  background-color:$primaryBGColor;
+  color:$primaryColor;
+  }
+
+  .search-dropdown-list .search-list-items{
+    background-color:$dropdownBG;;
+  }
+   
+  .search-dropdown-list li:hover{background:$dropdownHoverBGColor;}
+
+  .search-list-items-selected {
+    background-color: $dropdownHoverBGColor!important;
+      }
+
+  .search-dropdown-list{ 
+    border-color: $dropdownBorderColor;
+    background-color:$dropdownBG;
+               }
+               
