@@ -62,3 +62,9 @@
     background-color:inherit;
     color: inherit;
 }
+
+.nav-dropdown:hover  .nav-dropdown-content .nav-menu-container {
+    background-color: $componentBGColor ;
+    color: $componentHoverFontColor;
+}
+
