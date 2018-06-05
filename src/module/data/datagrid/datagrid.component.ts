@@ -1,6 +1,4 @@
-/**
- * Created by pratik on 1/1/18.
- */
+
 
 /*
  Component Name : Amexio data grid
@@ -133,6 +131,12 @@ import {CommonDataService} from "../../services/data/common.data.service";
           <ng-container *ngIf="!cols.hidden">
               <ng-container *ngIf="cols.datatype=='string'">
                   <div class="datatable-col" [style.width.%]="cols.width" (click)="sortOnColHeaderClick(cols, $event)">
+
+                    <ng-container *ngIf="cols.headerTemplate">
+                      <ng-template  [ngTemplateOutlet]="cols.headerTemplate"
+                                    [ngTemplateOutletContext]="{column:cols ,index: i}"></ng-template>
+                    </ng-container>
+                    <ng-container *ngIf="!cols.headerTemplate">
                       {{cols.text}} &nbsp;
                       <ng-container *ngIf="this.sortBy==1 && cols.isColumnSort">
                           <amexio-data-icon key="datagrid_arrowup"></amexio-data-icon>
@@ -142,10 +146,16 @@ import {CommonDataService} from "../../services/data/common.data.service";
                           <!--&nbsp;<i class="fa fa-arrow-down"></i>-->
                           <amexio-data-icon key="datagrid_arrowdown"></amexio-data-icon>
                       </ng-container>
+                    </ng-container>
                   </div>
               </ng-container>
               <ng-container *ngIf="cols.datatype=='number'">
                   <div class="datatable-col" [style.width.%]="cols.width" (click)="sortOnColHeaderClick(cols, $event)">
+                    <ng-container *ngIf="cols.headerTemplate">
+                      <ng-template  [ngTemplateOutlet]="cols.headerTemplate"
+                                    [ngTemplateOutletContext]="{column:cols ,index: i}"></ng-template>
+                    </ng-container>
+                    <ng-container *ngIf="!cols.headerTemplate">
                       <span class="float-right">
                           {{cols.text}} &nbsp;
                           <ng-container *ngIf="this.sortBy==1 && cols.isColumnSort">
@@ -157,6 +167,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
                               <amexio-data-icon key="datagrid_arrowdown"></amexio-data-icon>
                           </ng-container>
                       </span>
+                    </ng-container>
                   </div>
               </ng-container>
           </ng-container>
@@ -868,7 +879,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
           status = false;
         }
       });
-      
+
       if (this.data.length > (1 * this.pagesize)) {
         this.pagingRegenration();
         this.renderData();
