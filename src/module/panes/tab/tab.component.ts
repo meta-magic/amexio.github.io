@@ -332,9 +332,9 @@ description : This flag will make tab closable.
     });
   }
 
+
   // Method to close particular tabs
   closeTabs(data: any){
-    debugger;
     this.tabCollection.forEach((tabs) => {
       data.forEach((opt: any) => {
         if(opt.toLowerCase() != tabs.title.toLowerCase() && (tabs.closable == true|| this.closable == true)){
