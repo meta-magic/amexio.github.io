@@ -9,6 +9,8 @@
 
 import {Component, ElementRef, EventEmitter, forwardRef, HostListener, Input, OnInit, Output} from '@angular/core';
 import {NG_VALUE_ACCESSOR} from "@angular/forms";
+import {DeviceQueryService} from "../../services/device/device.query.service";
+
 
 const noop = () => {
 };
@@ -158,7 +160,7 @@ description : On field focus event
   min: number;
 
 
-  constructor(public element: ElementRef) {
+  constructor(public element: ElementRef,public matchMediaService: DeviceQueryService) {
     this.elementId = new Date().getTime() + "";
     this.selectedDate = new Date();
     this.currrentDate = new Date();
@@ -440,34 +442,35 @@ description : On field focus event
     }
   }
 
-  openPicker(elem : any){
+  openPicker(elem : any, event:any){
     this.showToolTip = true;
-    this.posixUp = this.getListPosition(elem);
+    this.posixUp = this.getListPosition(event);
   }
-  getListPosition(elementRef : any) :boolean{
-    let dropdownHeight : number = 350; //must be same in dropdown.scss
-    if(window.innerHeight - (elementRef.getBoundingClientRect().bottom) < dropdownHeight){
 
-      if((elementRef.getBoundingClientRect().top - dropdownHeight - elementRef.getBoundingClientRect().height)>0){
-        this.positionClass={
-          'top' : (elementRef.getBoundingClientRect().top - dropdownHeight - elementRef.getBoundingClientRect().height)+'px'
-        };
+  getListPosition(elementRef : any) :boolean{
+
+    let br = elementRef.target.getBoundingClientRect();
+
+    if(this.matchMediaService.IsDesktop()){
+      if(((window.innerHeight - br.top)<295) && this.datepicker && this.timepicker){
+        this.positionClass ={'left' : (br.x-290)+'px', 'top':(br.y-360)+'px'};
+      }else if(((window.innerHeight - br.top)<295) && this.datepicker){
+        this.positionClass ={'left' : (br.x-290)+'px', 'top':(br.y-290)+'px'};
+      }else{
+        this.positionClass ={'left' : (br.x-290)+'px', 'top':(br.y+15)+'px'};
       }
-      else if((dropdownHeight - elementRef.getBoundingClientRect().top)>0){
-        this.positionClass={
-          'top' : (dropdownHeight - elementRef.getBoundingClientRect().top)+'px'
-        };
-      }else if((elementRef.getBoundingClientRect().top- dropdownHeight)>0){
-        this.positionClass={
-          'top' : (elementRef.getBoundingClientRect().top-dropdownHeight)+'px'
-        };
+    }else {
+      if(!this.datepicker && this.timepicker){
+        this.positionClass ={'left' : (br.x-290)+'px'};
+      }else if(((window.innerHeight - br.top)<295) && this.datepicker && this.timepicker){
+        this.positionClass ={'left' : (br.x-290)+'px','top':(br.y-75)+'px'};
+      }else{
+        this.positionClass ={'left' : (br.x-290)+'px', 'top':(br.y+15)+'px'};
       }
-      return true;
+      
     }
-    else{
-      this.positionClass ={};
-      return false;
-    }
+
+    return false;
   }
 
   onSelect() {

@@ -68,3 +68,8 @@
     color: $componentHoverFontColor;
 }
 
+
+.nav-dropdown:hover  .nav-dropdown-content .nav-menu-container a {
+    color: $componentHoverFontColor;
+}
+

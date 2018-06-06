@@ -3605,6 +3605,9 @@ header .billboard .content-button {
   background-color: #ffffff;
   color: #521000; }
 
+.nav-dropdown:hover .nav-dropdown-content .nav-menu-container a {
+  color: #521000; }
+
 /** navbar - Structure CSS **/
 .topnav {
   position: fixed;
