@@ -9,8 +9,11 @@
 
 */
 
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, HostListener} from '@angular/core';
 
+export enum KEY_CODE {
+  esc=27
+}
 @Component({
   selector: 'amexio-dialogue', template: `
     <div class="root-window"
@@ -26,6 +29,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
                 <div class="tablecol float-right">
                   <div *ngIf="closable" class="icon-style">
                     <amexio-pane-icon [key]="'window_close'" (onClick)="onCloseClick()"></amexio-pane-icon>
+                    
                   </div>
                 </div>
               </div>
@@ -55,15 +59,33 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
           </footer>
           <footer *ngIf="!custom" class="dialogue-footer"
                   [ngClass]="{'flex-start':(footeralign=='left'),'flex-end':(footeralign=='right'),'flex-center':(footeralign=='center')}">
-            <amexio-button *ngIf="type =='confirm'"  [size]="'small'" [label]="secondaryactionlabel " [type]="'default'" (onClick)="getStatus('cancel')"></amexio-button>&nbsp;&nbsp;
-            <amexio-button *ngIf="type =='confirm' || type == 'alert'"   [size]="'small'" [label]="primaryactionlabel  " [type]="'primary'" (onClick)="getStatus('ok')"></amexio-button>
+            <amexio-button *ngIf="type =='confirm'"  [size]="buttonsize" [label]="secondaryactionlabel " [type]="default" (onClick)="getStatus('cancel')"></amexio-button>&nbsp;&nbsp;
+            <amexio-button *ngIf="type =='confirm' || type == 'alert'"   [size]="buttonsize" [label]="primaryactionlabel  " [type]="buttontype" (onClick)="getStatus('ok')"></amexio-button>
           </footer>
         </div>
       </div>
     </div>
   `
 })
-export class AmexiodialoguePaneComponent implements OnInit {
+export class AmexiodialoguePaneComponent implements OnInit{
+  /*
+Properties
+name : button-type
+datatype : string
+version : 4.2onwards
+default : theme-color
+description : show the type of button.
+*/
+@Input(' button-type')  buttontype: string;
+  /*
+Properties 
+name : button-size
+datatype :  string
+version : 4.2 onwards
+default : 
+description : Different Sizes of Buttons availabe : large, default, small & xsmall
+*/ 
+@Input('button-size') buttonsize: string="large"|| "small"||"default"||"xsmall";
 
  /*
 Properties
@@ -194,14 +216,33 @@ default : none
 description : Fire when user close dialogue
 */
     @Output() close : EventEmitter<any> = new EventEmitter<any>();
-
+    value = 0;
   constructor() {
     this.closable = true;
     this.secondaryactionlabel  = 'Cancel';
     this.primaryactionlabel   = 'Ok';
     this.custom = false;
+    this.buttonsize='default';
+    this.buttontype='theme-color';
+    
 
   }
+  @HostListener('window:keyup', ['$event'])
+  keyEvent(event: KeyboardEvent) {
+    console.log(event);
+    
+    if (event.keyCode == KEY_CODE.esc) {
+      this.showdialogue  = false ;
+      
+    }
+}
+  // ngOnChanges(changes: SimpleChanges){
+  //   debugger;
+  //   if(changes.showdialogue.currentValue != changes.showdialogue.previousValue) {
+  //    this.showdialogue = changes.showdialogue.currentValue;
+  //   }
+  //   console.log(this.showdialogue);
+  // }
 
   ngOnInit() {
     if (this.footeralign == null) this.footeralign = "right";
@@ -211,19 +252,26 @@ description : Fire when user close dialogue
     if(this.type == null) this.type = 'confirm';
   }
 
+
   onCloseClick() {
     if (this.closable) {
       this.showdialogue  = !this.showdialogue ;
       this.close.emit(this.showdialogue);
     }
   }
-
-  getStatus(v : any){
-    this.onCloseClick();
-    this.actionStatus.emit(v);
+    getStatus(v : any){
+      this.onCloseClick();
+      this.actionStatus.emit(v);
+    }
   }
 
-}
+
+ 
+
+  
+
+
+
 
 
 
