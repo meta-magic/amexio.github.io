@@ -1,10 +1,10 @@
-import { Component,ContentChild, OnInit,QueryList,AfterContentInit,AfterViewInit, EventEmitter, Directive, Input, ViewChild, ElementRef, Output, ContentChildren, ViewChildren } from '@angular/core';
+import { Component,HostListener,ContentChild, OnInit,QueryList,AfterContentInit,AfterViewInit, EventEmitter, Directive, Input, ViewChild, ElementRef, Output, ContentChildren, ViewChildren } from '@angular/core';
 import {CommonDataService} from "../../services/data/common.data.service";
 import  { AmexioSearchAdvanceComponent } from '../advancesearch/searchadvance.component';
  
 
 @Component({
-  selector: 'app-searchboxtool',
+  selector: 'amexio-searchbox',
   templateUrl: './searchboxtool.component.html',
   
 })
@@ -90,16 +90,24 @@ version : 4.2 onwards
 default : none
 description : Sets width to auto recommendation list.
 */
-@Input() width: number;
+@Input() width: number = 500;
 /*
 Events 
 name : keyup
 description : Fires when keyup event occurs
 */
 @Output() keyup: any = new EventEmitter<any>();
- 
+/*
+Events 
+name : onSearchItemClick
+description : Fires when search item is selected
+*/ 
 @Output() onSearchItemClick: any = new EventEmitter<any>();
-
+/*
+Events 
+name : onSearchClick
+description : Fires when search button is clicked
+*/ 
 @Output() onSearchClick: any = new EventEmitter<any>();
 @ContentChild(AmexioSearchAdvanceComponent) advanceSearchRef:AmexioSearchAdvanceComponent;
 @ViewChild('dropdownitems', { read: ElementRef }) public dropdownitems: ElementRef;
@@ -120,22 +128,19 @@ description : Fires when keyup event occurs
   advanceSearchFlag: boolean = false;
 
   labelValue: string;
-
+  previousData: any;
   selectedindex: number = 0;
   scrollposition: number = 30;
   enableAdvanceSearch:boolean =  false;
   advanceButtonLabel:string;
- // length:number=this.selectedValue.length;
-
  enableAdvnSearch: boolean;
-
-  
-  constructor(private dataService: CommonDataService) {
+  constructor(private element: ElementRef,private dataService: CommonDataService) {
   
   }
  
 
   ngAfterContentInit(){
+    this.advanceSearchRef.formwidth= this.width;
     this.enableAdvnSearch = this.advanceSearchRef.advanceSearchFlag;
   this.enableAdvanceSearch=true;
    if(this.advanceSearchRef){
@@ -148,22 +153,7 @@ description : Fires when keyup event occurs
       }
      }
  }
-  //service to get info from json
-  // getinfo() {
-  //   let jsonData: any;
-
-  //   this.http.get('assets/data/info.json')
-  //     .subscribe((response: any) => {
-  //       jsonData = response.data;
-  //     },
-  //       (err) => { },
-  //       () => {
-  //         this.viewData = jsonData;
-  //         this.localData = jsonData;
-  //       });
-  // }
-
-
+  
 
   ngOnInit() {
     
@@ -180,48 +170,45 @@ description : Fires when keyup event occurs
 
     } else if (this.data) {
 
-      // this.previousData = JSON.parse(JSON.stringify(this.data));
+       this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
      }
  
   }
   
-
-
+  ngDoCheck() {
+    if (JSON.stringify(this.previousData) != JSON.stringify(this.data)) {
+      this.previousData = JSON.parse(JSON.stringify(this.data));
+      this.setData(this.data);
+    }
+  }
+  @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
+  public onElementOutClick(targetElement: HTMLElement) {
+    let parentFound = false;
+    while (targetElement != null && !parentFound) {
+      if (targetElement === this.element.nativeElement) {
+        parentFound = true;
+      }
+      targetElement = targetElement.parentElement;
+    }
+    if (!parentFound) {
+      this.searchFlag=false;
+    }
+  }
   onSelectClick() {
-    //this.searchFlag=true;
-    this.advanceSearchFlag = false;
+     this.advanceSearchFlag = false;
   }
   onInputClick(event: any) {
-     // if(this.inp.nativeElement.length > 0)
-    this.searchFlag = true;
+     this.searchFlag = true;
     let keyword: any = event.target.value;
     this.viewData = [];
     if (keyword != null && keyword != ' ') {
       let search_term = keyword.toLowerCase();
       this.localData.forEach((item: any) => {
         if (item != null) {
-         
-          //if word exist in start
           if (item[this.displayfield].toLowerCase().startsWith(search_term)) {
-
             this.viewData.push(item);
           }
-          
-          // if ( item[this.displayfield].toLowerCase().indexOf(' ' + search_term) >= 0) {
-          //   this.viewData.forEach(element => {
-          //     if(item[this.displayfield].toLowerCase==element)
-          //     {
-
-          //     }
-          //     else{
-          //       this.viewData.push(item);
-
-          //     }
-          //   });
-          //  }
-
-
         }
       });
      
@@ -236,27 +223,17 @@ description : Fires when keyup event occurs
       //call function for process
       this.navigateKeys(event);
     }
-
-    //this.searchFlag=false;
-
+ 
     if(!this.selectedValue || this.selectedValue==''){
       this.viewData=[];
     }
 
   }
 
-
-
-
   navigateKeys(event: any) {
-
-
-    //first if
-    if (this.selectedindex > this.viewData.length) {
+     if (this.selectedindex > this.viewData.length) {
       this.selectedindex = 0;
     }
- 
-
     if (event.keyCode === 40 ||
       event.keyCode === 38
       && this.selectedindex < this.viewData.length) {
@@ -369,10 +346,7 @@ this.onSearchClick.emit(event);
 
     return responsedata;
   }
-
-
- 
-
+  
   setData(httpResponse: any) {
      let responsedata = httpResponse;
         //Check if key is added?
@@ -384,10 +358,7 @@ this.onSearchClick.emit(event);
     } else {
       responsedata = httpResponse;
     }
-
     this.viewData = responsedata;
     this.localData = JSON.parse(JSON.stringify(this.viewData));
    }
-
- 
 }
