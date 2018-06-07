@@ -157,6 +157,11 @@ export class AmexioDropDownMenuComponent implements AfterContentInit, OnInit {
   {
     this.toggle= !this.toggle;
     this.top = event.target.getBoundingClientRect().top + 25;
+    if((this.matchMediaService.browserWindow().innerWidth - event.clientX)<200){
+      this.xposition = true;
+      }else{
+      this.xposition = false;
+      }
   }
 
   getIconPosition(childposition:any,parentIconPosition: string): boolean {
@@ -189,6 +194,5 @@ export class AmexioDropDownMenuComponent implements AfterContentInit, OnInit {
       }else return false;
     }
   }
-
-
-}
+  
+  }
