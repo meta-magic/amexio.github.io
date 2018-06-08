@@ -1,7 +1,7 @@
 /* Component Specific Variables */
 /* Misc Variables */
 /****************************************************************************
-                    Common CSS Helper Class
+                    Common CSS Helper Classes
 *****************************************************************************/
 
 body {
@@ -14,7 +14,8 @@ body {
   color: #8D021F;
   font-size: 1em;
   margin: 0px;
-  padding: 0px; }
+  padding: 0px; 
+}
 
 html {
   height: 100%;
