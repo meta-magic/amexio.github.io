@@ -378,7 +378,6 @@ this.onSearchClick.emit(event);
 
     return responsedata;
   }
-
   setData(httpResponse: any) {
      let responsedata = httpResponse;
         //Check if key is added?
