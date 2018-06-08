@@ -28,8 +28,7 @@ export enum KEY_CODE {
                 </div>
                 <div class="tablecol float-right">
                   <div *ngIf="closable" class="icon-style">
-                    <amexio-pane-icon [key]="'window_close'" (onClick)="onCloseClick()"></amexio-pane-icon>
-                    
+                    <amexio-pane-icon [key]="'window_close'" (onClick)="onCloseClick()"></amexio-pane-icon> 
                   </div>
                 </div>
               </div>
@@ -60,7 +59,7 @@ export enum KEY_CODE {
           <footer *ngIf="!custom" class="dialogue-footer"
                   [ngClass]="{'flex-start':(footeralign=='left'),'flex-end':(footeralign=='right'),'flex-center':(footeralign=='center')}">
             <amexio-button *ngIf="type =='confirm'"  [size]="buttonsize" [label]="secondaryactionlabel " [type]="default" (onClick)="getStatus('cancel')"></amexio-button>&nbsp;&nbsp;
-            <amexio-button *ngIf="type =='confirm' || type == 'alert'"   [size]="buttonsize" [label]="primaryactionlabel  " [type]="buttontype" (onClick)="getStatus('ok')"></amexio-button>
+            <amexio-button *ngIf="type =='confirm' || type == 'alert'"   [size]="buttonsize" [label]="primaryactionlabel" [type]="buttontype" (onClick)="getStatus('ok')"></amexio-button>
           </footer>
         </div>
       </div>
@@ -70,13 +69,22 @@ export enum KEY_CODE {
 export class AmexiodialoguePaneComponent implements OnInit{
   /*
 Properties
+name : close-on-escape
+datatype : string
+version : 4.2onwards
+default : false
+description : Enables And Disables the Escape button.
+*/
+@Input('close-on-escape')  closeonescape: boolean;  
+  /*
+Properties
 name : button-type
 datatype : string
 version : 4.2onwards
 default : theme-color
 description : show the type of button.
 */
-@Input(' button-type')  buttontype: string;
+@Input('button-type')  buttontype: string;
   /*
 Properties 
 name : button-size
@@ -224,16 +232,18 @@ description : Fire when user close dialogue
     this.custom = false;
     this.buttonsize='default';
     this.buttontype='theme-color';
+    this.closeonescape=false;
     
 
   }
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
-  
+    if(this.closeonescape==true)
+    {
+      if (event.keyCode == KEY_CODE.esc) {
+        this.showdialogue  = false ;
+    }
     
-    if (event.keyCode == KEY_CODE.esc) {
-      this.showdialogue  = false ;
-      
     }
 }
   // ngOnChanges(changes: SimpleChanges){
