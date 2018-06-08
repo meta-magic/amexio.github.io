@@ -199,7 +199,7 @@ description : Fires when search button is clicked
      this.advanceSearchFlag = false;
   }
   onInputClick(event: any) {
-    console.log("in oninputclick() ");
+ 
      this.searchFlag = true;
     let keyword: any = event.target.value;
     this.viewData = [];
@@ -233,9 +233,7 @@ description : Fires when search button is clicked
 
  
   onFocus(){
-      debugger;
-      console.log("in focus event");
-      if(this.selectedValue.length>0){
+       if(this.selectedValue.length>0){
         let keyword = this.selectedValue;
          this.viewData = [];
       if (keyword != null && keyword != ' ') {
