@@ -2317,9 +2317,12 @@ input:checked + .toggle-slider:before {
 
 .dropdown-menu-content {
   background-color: #ffffff;
-  box-shadow: 0px 8px 16px 5px #ced4da; }
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12); }
 
-.dropdown-menu-content .divider {
+.dropdown-menu-content .dropdowndivider {
+  border-bottom: solid 1px #ced4da; }
+
+.nav-dropdown-content .dropdowndivider {
   border-bottom: solid 1px #ced4da; }
 
 .dropdown-menu-content a:hover {
@@ -2459,9 +2462,14 @@ input:checked + .toggle-slider:before {
   display: block; }
 
 .advancesearchform {
+  position: absolute;
   font-weight: normal;
   border-width: 1px;
-  border-style: solid; }
+  border-style: solid;
+  padding: .5%; }
+
+.dropdownposition {
+  position: absolute; }
 
 .search-form-label {
   font-weight: bold; }
@@ -2471,7 +2479,8 @@ input:checked + .toggle-slider:before {
   opacity: .54;
   cursor: pointer;
   padding-top: 0%;
-  padding-right: 0%; }
+  padding-right: 0%;
+  font-size: 120%; }
 
 .searchbutton {
   width: 100%; }
@@ -2534,7 +2543,8 @@ input:checked + .toggle-slider:before {
   overflow-y: scroll; }
 
 .advancesearchbuttondiv {
-  z-index: 5; }
+  z-index: 5;
+  cursor: pointer; }
 
 .advancesearchbtn {
   height: 37px;
@@ -3597,6 +3607,13 @@ header .billboard .content-button {
 .topnav input {
   background-color: inherit;
   color: inherit; }
+
+.nav-dropdown:hover .nav-dropdown-content .nav-menu-container {
+  background-color: #ffffff;
+  color: #360052; }
+
+.nav-dropdown:hover .nav-dropdown-content .nav-menu-container a {
+  color: #360052; }
 
 /** navbar - Structure CSS **/
 .topnav {
@@ -4885,7 +4902,6 @@ verticalalign-tableft {
 .dialogue-content {
   margin: auto;
   padding: 0px;
-  border: 1px solid #ced4da;
   width: 80%;
   height: 80%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
@@ -4899,7 +4915,6 @@ verticalalign-tableft {
 .dialogue-header {
   display: flex;
   /* padding: 10px 24px;*/
-  border-bottom: 1px solid #ced4da;
   font-size: 20px;
   font-weight: 300;
   text-transform: capitalize; }
@@ -4938,7 +4953,8 @@ verticalalign-tableft {
 
 .dialogue-table .tablerow .tablecol {
   display: table-cell;
-  vertical-align: middle; }
+  vertical-align: middle;
+  color: white; }
 
 .icon-style {
   font-size: 15px; }

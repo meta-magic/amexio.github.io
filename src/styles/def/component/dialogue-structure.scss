@@ -41,10 +41,11 @@
 .dialogue-header{
   display: flex;
   /* padding: 10px 24px;*/
-  // border-bottom: $dialogueBorderSize solid $dialogueBorderColor;
+  //border-bottom: $dialogueBorderSize solid $dialogueBorderColor;
   font-size: 20px;
   font-weight: 300;
   text-transform: capitalize;
+
 }
 
 .dialogue-middle{
@@ -86,7 +87,7 @@
 .dialogue-table .tablerow .tablecol{
   display: table-cell;
   vertical-align: middle;
-  color: white;
+  color:white;
 }
 .icon-style {
   font-size: 15px;
