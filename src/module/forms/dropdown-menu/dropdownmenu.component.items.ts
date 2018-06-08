@@ -11,19 +11,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'amexio-drop-down-menu-item',
-  template: `
-  
-    <div *ngIf="!(icon && label)" class="dropdowndivider" >
-      <ng-content></ng-content>
-    </div>
-    <a  *ngIf=" (icon && label)" (click)="onItemClick($event)" [ngClass]="{'dropdowndivider':separator}" >
-      <i [style.float]="iconalign" [ngClass]="icon"></i>
-      <span [style.float]="labelalign"   style="padding: 5px;">
-        {{label}}
-      </span>
-    </a>
-
-  `
+  templateUrl: `./dropdownmenu.component.items.html`,
 })
 
 export class AmexioDropDownitemsComponent implements OnInit{

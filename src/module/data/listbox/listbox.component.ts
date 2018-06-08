@@ -192,11 +192,15 @@ description : It will gives you row clicked data.
     }
   }
 
-  setData(httpResponse: any) {
+ setData(httpResponse: any) {
     let responsedata = httpResponse;
-    let dr = this.datareader.split(".");
-    for (let ir = 0; ir < dr.length; ir++) {
-      responsedata = responsedata[dr[ir]];
+    if (this.datareader != null) {
+      let dr = this.datareader.split(".");
+      for (let ir = 0; ir < dr.length; ir++) {
+        responsedata = responsedata[dr[ir]];
+      }
+    } else {
+      responsedata = httpResponse;
     }
     this.viewData = responsedata;
     this.setSelectedFlag(this.viewData);

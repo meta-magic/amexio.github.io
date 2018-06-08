@@ -106,8 +106,6 @@ export class AmexioDropDownMenuComponent implements AfterContentInit, OnInit {
 
   @Output() onClick: any = new EventEmitter<any>();
 
-
-
   @ContentChildren(AmexioDropDownitemsComponent) dropdowns: QueryList<AmexioDropDownitemsComponent>;
 
   optionsCollection: AmexioDropDownitemsComponent[] = [];
@@ -116,7 +114,6 @@ export class AmexioDropDownMenuComponent implements AfterContentInit, OnInit {
   constructor(public element: ElementRef,public matchMediaService: DeviceQueryService ) {
     this.iconalign ="left";
   }
-
 
   ngOnInit(){
     if(this.data){
@@ -132,7 +129,15 @@ export class AmexioDropDownMenuComponent implements AfterContentInit, OnInit {
     }
   }
 
-  @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
+  ngAfterContentInit() {
+    this.optionsCollection = this.dropdowns.toArray();
+    this.optionsCollection.forEach(node => node.onClick.subscribe((eventdata:any) =>{
+      this.toggle = false;
+    }));
+  }
+  
+   @HostListener('document:click', ['$event.target'])
+   @HostListener('document: touchstart', ['$event.target'])
   public onElementOutClick(targetElement: HTMLElement) {
     let parentFound = false;
     while (targetElement != null && !parentFound) {
@@ -145,21 +150,18 @@ export class AmexioDropDownMenuComponent implements AfterContentInit, OnInit {
       this.toggle = false;
     }
   }
-  ngAfterContentInit() {
-    // if (!this.data) {
-    //   this.data = [];
-    //   this.optionsCollection = this.dropdowns.toArray();
-    //   this.optionsCollection.forEach((obj) => {
-    //     this.data.push(obj);
-    //   });
-    // }
-  }
+ 
 
 
   showDropDownContent(event : any)
   {
     this.toggle= !this.toggle;
     this.top = event.target.getBoundingClientRect().top + 25;
+    if((this.matchMediaService.browserWindow().innerWidth - event.clientX)<200){
+      this.xposition = true;
+      }else{
+      this.xposition = false;
+      }
   }
 
   getIconPosition(childposition:any,parentIconPosition: string): boolean {
@@ -192,13 +194,5 @@ export class AmexioDropDownMenuComponent implements AfterContentInit, OnInit {
       }else return false;
     }
   }
-
-  onMouseOver(event:any){
-    if((this.matchMediaService.browserWindow().innerWidth - event.clientX)<200){
-      this.xposition = true;
-    }else{
-      this.xposition = false;
-    }
-
+  
   }
-}
