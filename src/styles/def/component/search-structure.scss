@@ -10,13 +10,18 @@
     display:block;
   }
   
-  .advancesearchform{
-     
+  
+   .advancesearchform{
+    position: absolute;
     font-weight:normal;
      border-width: 1px;
     border-style: solid; 
+    padding:.5%;
   }
-
+  .dropdownposition{
+    position: absolute;
+  }
+ 
   .search-form-label{
     font-weight:bold;
   }
@@ -27,6 +32,7 @@
      cursor: pointer;
      padding-top:0%;
      padding-right:0%;
+     font-size: 120%;
   }
   
   .searchbutton{
@@ -106,6 +112,7 @@
   
     .advancesearchbuttondiv{
       z-index: 5;
+      cursor: pointer;
     }
 
     .advancesearchbtn{

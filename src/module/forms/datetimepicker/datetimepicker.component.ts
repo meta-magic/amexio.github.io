@@ -3,8 +3,6 @@
  Component Name : Amexio Date time picker
  Component Selector :  <amexio-date-time-picker>
  Component Description : This component is flexible for both Date and time picker with all required configurations in Style.
-
-
 */
 
 import {Component, ElementRef, EventEmitter, forwardRef, HostListener, Input, OnInit, Output} from '@angular/core';
@@ -197,9 +195,7 @@ description : On field focus event
     let date = new Date(selectedPeriod.getFullYear(), selectedPeriod.getMonth(), 1, 0, 0, 0, 0); // Starting at the 1st of the month
     let extras = (date.getDay() + 6) % 7; // How many days of the last month do we need to include?
     date.setDate(date.getDate() - extras); // Skip back to the previous monday
-
     //let startDate =  new Date(selectedPersion.getFullYear(),selectedPersion.getMonth(),1,0,0,0,0);
-
     let month = selectedPeriod.getMonth();
     let year = selectedPeriod.getFullYear();
     while (1) {

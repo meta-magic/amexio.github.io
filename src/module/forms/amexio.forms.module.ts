@@ -36,8 +36,8 @@ import { AmexioFloatingButtonComponent } from './floatingbutton/floatingbutton.c
 import { AmexioFloatingGroupButtonComponent } from './floatinggroupbutton/floatinggroupbutton.component';
 import { AmexioDropDownitemsComponent} from './dropdown-menu/dropdownmenu.component.items';
 import { AmexioDropDownMenuComponent } from './dropdown-menu/dropdownmenu.component';
-import  {ToolbarComponent} from './toolbar/toolbar.component';
-import{ToolbaroneComponent } from './toolbar/toolbarone.component';
+import { ToolbarComponent} from './toolbar/toolbar.component';
+import { ToolbaroneComponent } from './toolbar/toolbarone.component';
 import {ToolBarActionComponent} from './toolbar/toolbaraction.component';
 import {SearchboxtoolComponent } from './advancesearch/searchboxtool.component';
 import {AmexioSearchAdvanceComponent} from './advancesearch/searchadvance.component';

@@ -23,7 +23,11 @@ import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
       <a *ngFor="let node of data" (click)="onClick(node, $event)">
       <i *ngIf="icon" [ngClass]="node.icon"></i>&nbsp;{{node.text}}</a>
       
-      <ng-content *ngIf="type==='menucontainer'"></ng-content>
+      <div *ngIf="type==='menucontainer'" class="nav-menu-container" >
+      <a *ngFor="let node of data" (click)="onClick(node, $event)">
+      <i *ngIf="icon" [ngClass]="node.icon"></i>&nbsp;{{node.text}}</a>
+      <ng-content ></ng-content>
+      </div>
     </div>
   </div>
 

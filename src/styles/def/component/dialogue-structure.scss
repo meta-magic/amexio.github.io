@@ -23,7 +23,7 @@
 .dialogue-content{
   margin: auto;
   padding: 0px;
-  border: $dialogueContentBorderSize solid $dialogueContentBorderColor;
+  // border: $dialogueContentBorderSize solid $dialogueContentBorderColor;
   width: 80%;
   height: 80%;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
@@ -41,7 +41,7 @@
 .dialogue-header{
   display: flex;
   /* padding: 10px 24px;*/
-  border-bottom: $dialogueBorderSize solid $dialogueBorderColor;
+  // border-bottom: $dialogueBorderSize solid $dialogueBorderColor;
   font-size: 20px;
   font-weight: 300;
   text-transform: capitalize;
@@ -86,6 +86,7 @@
 .dialogue-table .tablerow .tablecol{
   display: table-cell;
   vertical-align: middle;
+  color: white;
 }
 .icon-style {
   font-size: 15px;
