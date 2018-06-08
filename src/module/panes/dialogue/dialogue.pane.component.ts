@@ -229,7 +229,7 @@ description : Fire when user close dialogue
   }
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
-    console.log(event);
+  
     
     if (event.keyCode == KEY_CODE.esc) {
       this.showdialogue  = false ;
