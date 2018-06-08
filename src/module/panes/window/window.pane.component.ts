@@ -10,7 +10,10 @@
 
 
 */
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output,HostListener} from '@angular/core';
+export enum KEY_CODE_window {
+  esc=27
+}
 
 @Component({
   selector: 'amexio-window', 
@@ -55,6 +58,15 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
   `
 })
 export class AmexioWindowPaneComponent implements OnInit {
+    /*
+Properties
+name : close-on-escape
+datatype : string
+version : 4.2onwards
+default : false
+description : Enables And Disables the Escape button.
+*/
+@Input('close-on-escape')  closeonescape: boolean;
 
    /*
 Properties 
@@ -141,8 +153,20 @@ description : close the window
   constructor() {
     this.header = true;
     this.closable = true;
+    this.closeonescape=false;
 
   }
+  //Escape Key Functionality 
+  @HostListener('window:keyup', ['$event'])
+  keyEvent(event: KeyboardEvent) {
+    if(this.closeonescape==true)
+    {
+      if (event.keyCode == KEY_CODE_window.esc) {
+        this.showWindow  = false;
+    }
+    
+    }
+}
 
   ngOnInit() {
     if (this.maximize == null) {
