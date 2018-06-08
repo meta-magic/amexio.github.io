@@ -14,7 +14,8 @@ body {
   color: #8D021F;
   font-size: 1em;
   margin: 0px;
-  padding: 0px; }
+  padding: 0px 0px 0px 0px; 
+}
 
 html {
   height: 100%;
