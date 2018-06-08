@@ -194,6 +194,5 @@ export class AmexioDropDownMenuComponent implements AfterContentInit, OnInit {
       }else return false;
     }
   }
-
-
-}
+  
+  }

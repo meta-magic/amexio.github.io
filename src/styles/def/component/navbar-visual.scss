@@ -64,12 +64,11 @@
 }
 
 .nav-dropdown:hover  .nav-dropdown-content .nav-menu-container {
-    background-color: $componentBGColor ;
-    color: $componentHoverFontColor;
+    background-color: $navbarComponentBGColor ;
+    color: $navbarHoverFontColor;
 }
 
-
 .nav-dropdown:hover  .nav-dropdown-content .nav-menu-container a {
-    color: $componentHoverFontColor;
+    color: $navbarHoverFontColor;
 }
 

@@ -125,7 +125,7 @@
  
 .topnavmainbarinneritems .nav-dropdown-content { 
     display: none;
-    position: fixed;
+    position: absolute;
     //background-color: $navbarActiveBG;
     min-width: 160px;
     z-index: 3; 
