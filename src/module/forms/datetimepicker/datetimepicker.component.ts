@@ -3,14 +3,10 @@
  Component Name : Amexio Date time picker
  Component Selector :  <amexio-date-time-picker>
  Component Description : This component is flexible for both Date and time picker with all required configurations in Style.
-
-
 */
 
 import {Component, ElementRef, EventEmitter, forwardRef, HostListener, Input, OnInit, Output} from '@angular/core';
 import {NG_VALUE_ACCESSOR} from "@angular/forms";
-import {DeviceQueryService} from "../../services/device/device.query.service";
-
 
 const noop = () => {
 };
@@ -160,7 +156,7 @@ description : On field focus event
   min: number;
 
 
-  constructor(public element: ElementRef,public matchMediaService: DeviceQueryService) {
+  constructor(public element: ElementRef) {
     this.elementId = new Date().getTime() + "";
     this.selectedDate = new Date();
     this.currrentDate = new Date();
@@ -199,9 +195,7 @@ description : On field focus event
     let date = new Date(selectedPeriod.getFullYear(), selectedPeriod.getMonth(), 1, 0, 0, 0, 0); // Starting at the 1st of the month
     let extras = (date.getDay() + 6) % 7; // How many days of the last month do we need to include?
     date.setDate(date.getDate() - extras); // Skip back to the previous monday
-
     //let startDate =  new Date(selectedPersion.getFullYear(),selectedPersion.getMonth(),1,0,0,0,0);
-
     let month = selectedPeriod.getMonth();
     let year = selectedPeriod.getFullYear();
     while (1) {
@@ -442,35 +436,34 @@ description : On field focus event
     }
   }
 
-  openPicker(elem : any, event:any){
+  openPicker(elem : any){
     this.showToolTip = true;
-    this.posixUp = this.getListPosition(event);
+    this.posixUp = this.getListPosition(elem);
   }
-
   getListPosition(elementRef : any) :boolean{
+    let dropdownHeight : number = 350; //must be same in dropdown.scss
+    if(window.innerHeight - (elementRef.getBoundingClientRect().bottom) < dropdownHeight){
 
-    let br = elementRef.target.getBoundingClientRect();
-
-    if(this.matchMediaService.IsDesktop()){
-      if(((window.innerHeight - br.top)<295) && this.datepicker && this.timepicker){
-        this.positionClass ={'left' : (br.x-290)+'px', 'top':(br.y-360)+'px'};
-      }else if(((window.innerHeight - br.top)<295) && this.datepicker){
-        this.positionClass ={'left' : (br.x-290)+'px', 'top':(br.y-290)+'px'};
-      }else{
-        this.positionClass ={'left' : (br.x-290)+'px', 'top':(br.y+15)+'px'};
+      if((elementRef.getBoundingClientRect().top - dropdownHeight - elementRef.getBoundingClientRect().height)>0){
+        this.positionClass={
+          'top' : (elementRef.getBoundingClientRect().top - dropdownHeight - elementRef.getBoundingClientRect().height)+'px'
+        };
       }
-    }else {
-      if(!this.datepicker && this.timepicker){
-        this.positionClass ={'left' : (br.x-290)+'px'};
-      }else if(((window.innerHeight - br.top)<295) && this.datepicker && this.timepicker){
-        this.positionClass ={'left' : (br.x-290)+'px','top':(br.y-75)+'px'};
-      }else{
-        this.positionClass ={'left' : (br.x-290)+'px', 'top':(br.y+15)+'px'};
+      else if((dropdownHeight - elementRef.getBoundingClientRect().top)>0){
+        this.positionClass={
+          'top' : (dropdownHeight - elementRef.getBoundingClientRect().top)+'px'
+        };
+      }else if((elementRef.getBoundingClientRect().top- dropdownHeight)>0){
+        this.positionClass={
+          'top' : (elementRef.getBoundingClientRect().top-dropdownHeight)+'px'
+        };
       }
-      
+      return true;
     }
-
-    return false;
+    else{
+      this.positionClass ={};
+      return false;
+    }
   }
 
   onSelect() {
