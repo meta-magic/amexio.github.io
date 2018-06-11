@@ -2,8 +2,8 @@
  * Created by pratik on 27/11/17.
  */
 import {Injectable} from '@angular/core';
-import {Observable} from "rxjs/Observable";
-import {HttpClient, HttpHeaders, HttpRequest} from "@angular/common/http";
+import {Observable} from "rxjs/index";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 @Injectable()
 export class CommonDataService {

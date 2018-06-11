@@ -2,7 +2,6 @@
  * Created by pratik on 21/12/17.
  */
 import { Injectable } from '@angular/core';
-import {Subject} from "rxjs/Subject";
 // import {Icon, default as ICON_MAPS} from "./icon.mapping.config";
 
 let ICON_MAPPING =

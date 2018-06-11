@@ -2,8 +2,8 @@
  * Created by pratik on 24/1/18.
  */
 import { Injectable } from '@angular/core';
-import {Subject} from "rxjs/Subject";
-import {Observable} from "rxjs/Observable";
+import {Subject} from "rxjs/index";
+import {Observable} from "rxjs/index";
 
 @Injectable()
 export class AccordionService {

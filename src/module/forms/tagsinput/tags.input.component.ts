@@ -11,8 +11,8 @@ import {
   Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, Renderer2,
   ViewChild
 } from '@angular/core';
-import {noop} from "rxjs/util/noop";
 import {CommonDataService} from "../../services/data/common.data.service";
+import {noop} from "rxjs/index";
 
 @Component({
   selector: 'amexio-tag-input', templateUrl: './tags.input.component.html'

@@ -2,7 +2,7 @@
  * Created by pratik on 17/8/17.
  */
 import {EventEmitter, Injectable} from '@angular/core';
-import {Observable} from "rxjs/Observable";
+import {Observable} from "rxjs/index";
 declare var google : any;
 @Injectable()
 export class MapLoaderService {
