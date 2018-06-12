@@ -21,7 +21,7 @@ export enum KEY_CODE_window {
     <div class="root-window model-fade" [ngClass]="{'modal-window-max': isFullWindow,'modal-window-min': !isFullWindow}"
          [ngStyle]="{'display' : showWindow ? 'block' : 'none'}" >
       <div class="modal-window-lg" [ngStyle]="{'height': bodyHeight ? '100%':'auto'}">
-        <div class="modal-window-content" [ngClass]="{'modal-window-content-max':isFullWindow,'{{positionclass}}':!isFullWindow }" [ngStyle]="{'height': bodyHeight+'%'}">
+        <div class="modal-window-content" [ngClass]="setClass()" [style.height]="bodyHeight+'%'">
           <header class="modal-window-header" *ngIf="header">
             <div class="modal-window-table">
               <div class="tablerow">
@@ -259,6 +259,16 @@ description : close the window
     this.positionclass = "window-" + this.verticalposition + " window-" + this.horizontalposition;
   }
 
+  setClass():any {
+    let styleClass: string;
+    if(this.isFullWindow) {
+      styleClass = 'modal-window-content-max';
+    } else {
+      styleClass = this.positionclass
+    }
+    console.log(styleClass);
+    return styleClass;
+  }
 
 }
 
