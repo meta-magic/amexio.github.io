@@ -10,7 +10,7 @@ Component Description:  Window Pane component is a customizable Modal Pane in wh
 
 
 */
-import { Component, EventEmitter, Input, OnInit, Output, HostListener } from '@angular/core';
+import { Component,OnChanges,SimpleChanges ,EventEmitter, Input, OnInit, Output, HostListener } from '@angular/core';
 export enum KEY_CODE_window {
   esc = 27
 }
@@ -19,7 +19,7 @@ export enum KEY_CODE_window {
   selector: 'amexio-window',
   template: `
     <div class="root-window model-fade" [ngClass]="{'modal-window-max': isFullWindow,'modal-window-min': !isFullWindow}"
-         [ngStyle]="{'display' : showWindow ? 'block' : 'none'}" >
+         [ngStyle]="{'display' : show ? 'block' : 'none'}" >
       <div class="modal-window-lg" [ngStyle]="{'height': bodyHeight ? '100%':'auto'}">
         <div class="modal-window-content" [ngClass]="setClass()" [style.height]="bodyHeight+'%'">
           <header class="modal-window-header" *ngIf="header">
@@ -57,7 +57,7 @@ export enum KEY_CODE_window {
     </div>
   `
 })
-export class AmexioWindowPaneComponent implements OnInit {
+export class AmexioWindowPaneComponent implements OnInit,OnChanges {
   /*
 Properties 
 name : vertical-position
@@ -135,6 +135,8 @@ description : Show / Hide Window.
 
   @Input() show: boolean;
 
+
+
   @Output() showChange: EventEmitter<any> = new EventEmitter<any>();
 
 
@@ -189,8 +191,7 @@ default : false
 description : it is flag that decides footer visibility
 */
   @Input() footer: boolean;
-
-  /*
+   /*
 Events
 name : close
 datatype : none
@@ -198,6 +199,7 @@ version : none
 default : none
 description : close the window
 */
+
   @Output() close: EventEmitter<any> = new EventEmitter<any>();
   constructor() {
     this.header = true;
@@ -221,10 +223,11 @@ description : close the window
 
   onCloseClick() {
     if (this.closable) {
-      this.showWindow = !this.showWindow;
-      //this.show = !this.show;      
-      //this.showChange.emit(this.show);
+      this.showWindow = false;
+      this.show=false;
+      this.showChange.emit(false);
       this.close.emit(this.showWindow);
+
     }
   }
 
@@ -235,11 +238,17 @@ description : close the window
     if (this.closeonescape == true) {
       if (event.keyCode == KEY_CODE_window.esc) {
         this.showWindow = false;
+        this.showChange.emit(false);  
+
       }
 
     }
   }
   ngOnInit() {
+
+    if(this.showWindow) {
+      this.show = this.showWindow;
+      }
 
     if (this.maximize == null) {
       this.maximize = false;
@@ -259,6 +268,13 @@ description : close the window
     this.positionclass = "window-" + this.verticalposition + " window-" + this.horizontalposition;
   }
 
+  ngOnChanges(changes: SimpleChanges){
+     
+    //reassign show
+    this.show = changes.showWindow.currentValue;
+
+  
+ }
   setClass():any {
     let styleClass: string;
     if(this.isFullWindow) {
