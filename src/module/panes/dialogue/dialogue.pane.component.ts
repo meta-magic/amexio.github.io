@@ -248,8 +248,7 @@ description : Fire when user close dialogue
     {
       if (event.keyCode == KEY_CODE.esc) {
         this.showdialogue  = false ;
-        this.showChange.emit(false);
-        
+        this.showChange.emit(false);  
     }
     
     }
@@ -263,7 +262,7 @@ description : Fire when user close dialogue
   // }
 
   ngOnInit() {
-    debugger;
+   
     if(this.showdialogue) {
     this.show = this.showdialogue;
     }
@@ -277,16 +276,13 @@ description : Fire when user close dialogue
   ngOnChanges(changes: SimpleChanges){
      
       //reassign show
-      this.show = changes.showdialogue.currentValue;
- 
-    
-console.log(JSON.stringify(changes));
-  }
+      this.show = changes.showdialogue.currentValue;   
+   }
 
   onCloseClick() {
-    debugger;
+  
     if (this.closable) {
-      debugger;
+  
       this.showdialogue  = false ;
       this.show=false;
       this.showChange.emit(false);
@@ -294,14 +290,14 @@ console.log(JSON.stringify(changes));
     }
   }
     getStatus(v : any){
-debugger;
+ 
       this.onCloseClick();
       this.actionStatus.emit(v);
     }
   }
 
 
-  
+
 
 
  
