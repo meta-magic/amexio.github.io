@@ -315,6 +315,21 @@ description : Get selected value Object.
     }
   }
 
+  ngDoCheck() {
+    if (this.previousValue != null && JSON.stringify(this.previousValue) != JSON.stringify(this.data)){
+      this.previousValue = JSON.parse(JSON.stringify(this.data));
+      this.setChangeData(this.data);
+    }
+  }
+
+  setChangeData(httpResponse: any){
+    this.viewRows = httpResponse;
+    this.viewRows.forEach((row: any, index: any) => {
+      this.viewRows[index].level = 1;
+      this.viewRows[index].expanded = false;
+    });
+  }
+
   setData(httpResponse: any) {
     let treedata = this.getResponseData(httpResponse);
     this.viewRows = treedata;
@@ -324,7 +339,6 @@ description : Get selected value Object.
     });
     this.mask = false;
   }
-
   getResponseData(httpResponse: any) {
     let responsedata = httpResponse;
     if (this.datareader != null) {
