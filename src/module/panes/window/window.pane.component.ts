@@ -266,7 +266,6 @@ description : close the window
     } else {
       styleClass = this.positionclass
     }
-    console.log(styleClass);
     return styleClass;
   }
 
