@@ -803,7 +803,7 @@ button {
   position: absolute;
   box-shadow: 0 1px 3px 0 #16E73C;
   z-index: 3;
-  left: 31%; }
+  width: 290px; }
   .datetimepicker .datetimepickertopbar {
     padding: 10px 25px;
     text-align: center; }
