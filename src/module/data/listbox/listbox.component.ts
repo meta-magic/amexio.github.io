@@ -36,6 +36,16 @@ description : Heading for ListBox.
 */
   @Input() header: string;
 
+      /*
+Properties
+name : enable-header
+datatype : boolean
+version : 4.2.4 onwards
+default : true
+description : User can disabled header of listbox to false..
+*/
+@Input('enable-header') enableHeader: boolean =true;
+
   /*
 Properties 
 name : search-placeholder
