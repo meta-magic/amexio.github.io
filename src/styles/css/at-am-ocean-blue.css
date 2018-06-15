@@ -1856,9 +1856,6 @@ input:checked + .toggle-slider:before {
 .border-theme-color {
   border-color: #2CD2EC; }
 
-.box-content {
-  display: inherit; }
-
 /****************************************************************************
     Component Name : Image
     Version : Amexio v4.0 onwards
