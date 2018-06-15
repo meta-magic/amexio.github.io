@@ -1341,29 +1341,32 @@ textarea:required {
   position: fixed;
   z-index: 3; }
 
-.notification-left {
+.notification-vertical-top {
+  top: 10%; }
+
+.notification-vertical-center {
+  left: 40%;
+  top: 50%; }
+
+.notification-vertical-bottom {
+  bottom: 10px; }
+
+.notification-horizontal-left {
   left: 10px; }
 
-.notification-right {
+.notification-horizontal-center {
+  left: 40%; }
+
+.notification-horizontal-right {
   right: 0px; }
-
-.notification-top {
-  top: 10px; }
-
-.notification-center {
-  top: 50%;
-  left: 50%; }
-
-.notification-bottom {
-  bottom: 10px; }
 
 .notification {
   margin: 10px;
-  padding: 10px;
+  padding: 12px;
+  bottom: 10px;
   min-width: 250px;
-  text-align: center;
+  text-align: start;
   border-radius: 2px;
-  padding: 16px;
   z-index: 1;
   display: block; }
   .notification i {
@@ -1895,6 +1898,9 @@ input:checked + .toggle-slider:before {
 
 .border-theme-color {
   border-color: #dc143c; }
+
+.box-content {
+  display: inherit; }
 
 /****************************************************************************
     Component Name : Image
