@@ -22,14 +22,12 @@ import {
   OnInit,
   Input,
   Component,
-  SimpleChange,
   EventEmitter,
   Output,
   QueryList,
   ContentChildren,
   AfterContentInit,
   DoCheck,
-  ViewChildren
 } from '@angular/core';
 import {CommonDataService} from "../../services/data/common.data.service";
 import {AmexioGridColumnComponent} from "../datagrid/data.grid.column";
@@ -159,76 +157,76 @@ import {AmexioGridColumnComponent} from "../datagrid/data.grid.column";
 
 })
 
-export class TreeDataTableComponent implements OnInit {
+export class TreeDataTableComponent implements OnInit, AfterContentInit, DoCheck {
 
   /*
-Properties
-name : data
-datatype : any
-version : 4.0 onwards
-default : none
-description : Local Data binding.
-*/
+   Properties
+   name : data
+   datatype : any
+   version : 4.0 onwards
+   default : none
+   description : Local Data binding.
+   */
   @Input() data: any;
 
-/*
-Properties
-name : data-reader
-datatype : string
-version : 4.0 onwards
-default : none
-description : Key in JSON Datasource for records.
-*/
+  /*
+   Properties
+   name : data-reader
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : Key in JSON Datasource for records.
+   */
   @Input('data-reader') datareader: string;
 
-/*
-Properties
-name : http-method
-datatype : string
-version : 4.0 onwards
-default : none
-description : Type of HTTP call, POST,GET etc.
-*/
+  /*
+   Properties
+   name : http-method
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : Type of HTTP call, POST,GET etc.
+   */
   @Input('http-method') httpmethod: string;
 
   /*
-Properties
-name : http-url
-datatype : string
-version : 4.0 onwards
-default : none
-description : REST url for fetching data.
-*/
+   Properties
+   name : http-url
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : REST url for fetching data.
+   */
   @Input('http-url') httpurl: string;
 
   /*
-Properties
-name : display-field
-datatype : string
-version : 4.0 onwards
-default : none
-description : Name of key inside response data to display on ui.
-*/
+   Properties
+   name : display-field
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : Name of key inside response data to display on ui.
+   */
   @Input('display-field') displayfield: string;
 
   /*
-Properties
-name : value-field
-datatype : string
-version : 4.0 onwards
-default : none
-description : Name of key inside response data.use to send to backend
-*/
+   Properties
+   name : value-field
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : Name of key inside response data.use to send to backend
+   */
   @Input('value-field') valuefield: string;
 
   /*
-Events
-name : selectedRecord
-datatype : none
-version : none
-default : none
-description : Get selected value Object.
-*/
+   Events
+   name : selectedRecord
+   datatype : none
+   version : none
+   default : none
+   description : Get selected value Object.
+   */
   @Output() selectedRecord: any = new EventEmitter<any>();
 
   responseData: any;
@@ -239,7 +237,7 @@ description : Get selected value Object.
 
   viewRows: any;
 
-  mask : boolean = true;
+  mask: boolean = true;
 
   @ContentChildren(AmexioGridColumnComponent) columnRef: QueryList<AmexioGridColumnComponent>;
 
@@ -266,7 +264,6 @@ description : Get selected value Object.
   ngAfterContentInit() {
     this.createConfig();
   }
-
   createConfig() {
     let columnRefArray = [];
     columnRefArray = this.columnRef.toArray();
@@ -314,30 +311,23 @@ description : Get selected value Object.
       this.columns.push(columnData);
     }
   }
-
   ngDoCheck() {
-    if (this.previousValue != null && JSON.stringify(this.previousValue) != JSON.stringify(this.data)){
-      this.previousValue = JSON.parse(JSON.stringify(this.data));
-      this.setChangeData(this.data);
-    }
-  }
-
-  setChangeData(httpResponse: any){
-    this.viewRows = httpResponse;
-    this.viewRows.forEach((row: any, index: any) => {
-      this.viewRows[index].level = 1;
-      this.viewRows[index].expanded = false;
-    });
+    this.viewRows = this.getResponseData(this.data);
   }
 
   setData(httpResponse: any) {
-    let treedata = this.getResponseData(httpResponse);
-    this.viewRows = treedata;
-    this.viewRows.forEach((row: any, index: any) => {
-      this.viewRows[index].level = 1;
-      this.viewRows[index].expanded = false;
-    });
-    this.mask = false;
+    if (httpResponse) {
+      let treedata = this.getResponseData(httpResponse);
+      this.viewRows = treedata;
+      this.viewRows.forEach((row: any, index: any) => {
+        this.viewRows[index].level = 1;
+        this.viewRows[index].expanded = false;
+      });
+      this.mask = false;
+    } else {
+      this.viewRows = [];
+    }
+
   }
   getResponseData(httpResponse: any) {
     let responsedata = httpResponse;
