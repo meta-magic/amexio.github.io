@@ -1,11 +1,33 @@
-<div class="notification-content" [ngClass]="positionclass">
-  <div class="notification" *ngFor="let msg of messageData">
-    <span>{{msg}}</span>
-    <span class="float-right" (click)="closeNotification(msg)">
-      <!--<i *ngIf="closable" class="fa fa-times" aria-hidden="true"></i>-->
-      <ng-container *ngIf="closable">
-        <amexio-nav-icon key="notify_close"></amexio-nav-icon>
+
+
+<div class="notification-content" [ngClass]="positionclass"  >
+
+      <ng-container *ngIf="!notificationTemplate">
+        <div class="notification" *ngFor="let msg of messageData" [style.color]="foregroundColor"  [style.background-color]="backgroundColor">
+          <span class="float-right" (click)="closeNotification(msg)">
+            <!--<i *ngIf="closable" class="fa fa-times" aria-hidden="true"></i>-->
+            <ng-container *ngIf="closable">
+              <amexio-nav-icon key="notify_close"></amexio-nav-icon>
+            </ng-container>
+          </span>
+          <span>{{msg}}</span>
+          
+        </div>
       </ng-container>
-    </span>
-  </div>
+
+      <ng-container *ngIf="notificationTemplate" >
+            <div class="notification" *ngFor="let msg of messageData" [style.color]="foregroundColor"  [style.background-color]="backgroundColor">
+      
+              <span class="float-right" (click)="closeNotification(msg)">
+                <!--<i *ngIf="closable" class="fa fa-times" aria-hidden="true"></i>-->
+                <ng-container *ngIf="closable">
+                  <amexio-nav-icon key="notify_close"></amexio-nav-icon>
+                </ng-container>
+              </span>
+                    <ng-template  [ngTemplateOutlet]="notificationTemplate"
+                                  [ngTemplateOutletContext]="{data:msg}">
+                    </ng-template>
+                       
+            </div>
+        </ng-container>
 </div>
