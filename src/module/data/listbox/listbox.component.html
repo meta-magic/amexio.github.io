@@ -1,14 +1,14 @@
 
 <div class="listbox" [style.border]="border">
 
-  <div class="header" style="display: flex; justify-content: space-between">
+  <div class="header" *ngIf="enableHeader"  style="display: flex; justify-content: space-between">
     <div style="display: flex;justify-content: flex-start;">
       <div *ngIf="enablecheckbox"  class="input-box">
         <div *ngIf="!selectAll" (click)="selectAllRecord()" class="checkbox default"></div>
         <div *ngIf="selectAll" (click)="selectAllRecord()" class="checkbox active">&#10004;</div>
       </div>
       <div class="title">&nbsp;&nbsp;{{header}}</div>
-    </div>
+    </div> 
 
     <div *ngIf="(filter == true)">
       <input type="text" [(ngModel)]="filterText" [placeholder]="searchplaceholder" (keyup)="filterData()" class="search "/>

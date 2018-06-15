@@ -36,6 +36,16 @@ description : Heading for ListBox.
 */
   @Input() header: string;
 
+      /*
+Properties
+name : header-align
+datatype : string
+version : 4.0 onwards
+default : left
+description : User can enable header of card by setting this flag to true..
+*/
+@Input('enable-header') enableHeader: boolean =true;
+
   /*
 Properties 
 name : search-placeholder
