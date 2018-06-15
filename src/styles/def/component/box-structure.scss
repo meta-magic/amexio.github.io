@@ -78,3 +78,6 @@
 .border-theme-color {
     border-color: $boxBorderThemeColor;
 }
+.box-content {
+ display: inherit;
+}

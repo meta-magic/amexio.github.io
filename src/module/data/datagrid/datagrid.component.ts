@@ -758,12 +758,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
 
   setChangeData(httpResponse: any){
     this.setSelectedFlag(httpResponse);
-    if (this.enabledatafilter) {
-      this.filterCloneData = JSON.parse(JSON.stringify(this.data));
-    }
-    if (this.globalfilter) {
-      this.filterCloneData = JSON.parse(JSON.stringify(this.data));
-    }
+  
     if (!this.groupby) {
       this.renderData();
     }

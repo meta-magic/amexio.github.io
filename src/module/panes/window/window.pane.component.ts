@@ -3,25 +3,25 @@
  */
 
 
- /*
- Component Name : Amexio Window
- Component Selector : <amexio-window>
- Component Description:  Window Pane component is a customizable Modal Pane in which user can enter custom content
+/*
+Component Name : Amexio Window
+Component Selector : <amexio-window>
+Component Description:  Window Pane component is a customizable Modal Pane in which user can enter custom content
 
 
 */
-import {Component, EventEmitter, Input, OnInit, Output,HostListener} from '@angular/core';
+import { Component,OnChanges,SimpleChanges ,EventEmitter, Input, OnInit, Output, HostListener } from '@angular/core';
 export enum KEY_CODE_window {
-  esc=27
+  esc = 27
 }
 
 @Component({
-  selector: 'amexio-window', 
+  selector: 'amexio-window',
   template: `
     <div class="root-window model-fade" [ngClass]="{'modal-window-max': isFullWindow,'modal-window-min': !isFullWindow}"
-         [ngStyle]="{'display' : showWindow ? 'block' : 'none'}">
+         [ngStyle]="{'display' : show ? 'block' : 'none'}" >
       <div class="modal-window-lg" [ngStyle]="{'height': bodyHeight ? '100%':'auto'}">
-        <div class="modal-window-content" [ngStyle]="{'height': bodyHeight+'%'}" [ngClass]="{'modal-window-content-max':isFullWindow}">
+        <div class="modal-window-content" [ngClass]="setClass()" [style.height]="bodyHeight+'%'">
           <header class="modal-window-header" *ngIf="header">
             <div class="modal-window-table">
               <div class="tablerow">
@@ -57,8 +57,26 @@ export enum KEY_CODE_window {
     </div>
   `
 })
-export class AmexioWindowPaneComponent implements OnInit {
-    /*
+export class AmexioWindowPaneComponent implements OnInit,OnChanges {
+  /*
+Properties 
+name : vertical-position
+datatype : string
+version : 4.1 onwards
+default : none
+description : Postion of window vertically: top or bottom or center. This attribute is ignored if user specify position explicitly (using position-top/position-bottom/position-left/position-right)
+*/
+  @Input('vertical-position') verticalposition: string;
+  /*
+  Properties 
+  name : horizontal-position
+  datatype : none
+  version : 4.1 onwards
+  default : none
+  description : Postion of Window horizontally: left or right or center. This attribute is ignored if user specify position explicitly (using position-top/position-bottom/position-left/position-right)
+  */
+  @Input('horizontal-position') horizontalposition: string;
+  /*
 Properties
 name : close-on-escape
 datatype : string
@@ -66,9 +84,36 @@ version : 4.2onwards
 default : false
 description : Enables And Disables the Escape button.
 */
-@Input('close-on-escape')  closeonescape: boolean;
+  @Input('close-on-escape') closeonescape: boolean;
+  /*
+  Properties 
+  name : position-top
+  datatype : none
+  version : 4.2 onwards
+  default : none
+  description : Takes top position in percentage or pixel
+  */
+  @Input('position-top') top: string;
+  /*
+  Properties 
+  name : position-bottom
+  datatype : none
+  version : 4.2onwards
+  default : none
+  description : Takes top position in percentage or pixel
+  */
+  @Input('position-bottom') bottom: string;
+  /*
+  Properties 
+  name : relative
+  datatype : boolean
+  version : 4.1 onwards
+  default : none
+  description : Place floating button at relative position
+  */
+  @Input('relative') relative: boolean = false;
 
-   /*
+  /*
 Properties 
 name : footer-align
 datatype : string
@@ -78,7 +123,7 @@ description : Alignment of footer contents to right or left.
 */
   @Input('footer-align') footeralign: string;
 
-   /*
+  /*
 Properties 
 name : show-window
 datatype : boolean
@@ -88,7 +133,14 @@ description : Show / Hide Window.
 */
   @Input('show-window') showWindow: boolean;
 
-   /*
+  @Input() show: boolean;
+
+
+
+  @Output() showChange: EventEmitter<any> = new EventEmitter<any>();
+
+
+  /*
 Properties 
 name : body-height
 datatype : string
@@ -96,11 +148,11 @@ version : 4.0 onwards
 default :
 description : Assign body height in percentage, in case of maximize=true it will be set to 100% by default
 */
-  @Input('body-height') bodyHeight:string;
+  @Input('body-height') bodyHeight: string;
 
   isFullWindow: boolean;
 
-    /*
+  /*
 Properties 
 name : maximize
 datatype : boolean
@@ -110,7 +162,7 @@ description : User can maximize the window to full screen.
 */
   @Input() maximize: boolean;
 
-   /*
+  /*
 Properties 
 name : closable
 datatype : boolean
@@ -120,7 +172,7 @@ description : User can close the window.
 */
   @Input() closable: boolean;
 
-    /*
+  /*
 Properties 
 name : header
 datatype : boolean
@@ -130,7 +182,7 @@ description : it is flag that decides header visibility
 */
   @Input() header: boolean;
 
-   /*
+  /*
 Properties 
 name : footer
 datatype : boolean
@@ -139,8 +191,7 @@ default : false
 description : it is flag that decides footer visibility
 */
   @Input() footer: boolean;
-
-  /*
+   /*
 Events
 name : close
 datatype : none
@@ -148,27 +199,57 @@ version : none
 default : none
 description : close the window
 */
-  @Output() close : EventEmitter<any> = new EventEmitter<any>();
 
+  @Output() close: EventEmitter<any> = new EventEmitter<any>();
   constructor() {
     this.header = true;
     this.closable = true;
-    this.closeonescape=false;
+    this.closeonescape = false;
+    if ( this.verticalposition==null) {
+      this.verticalposition = 'center';
+    }
+     if(this.horizontalposition==null) {
+      this.horizontalposition = 'center';
+    }
+    this.positionclass = "window-" + this.verticalposition + " window-" + this.horizontalposition;
+   }
+  absoluteposition: boolean = false;
+  positionclass: string;
+  // THIS METHOD IS USED FOR SETTING CSS CLASSSES
 
+  sizeChange() {
+    this.isFullWindow = !this.isFullWindow;
   }
+
+  onCloseClick() {
+    if (this.closable) {
+      this.showWindow = false;
+      this.show=false;
+      this.showChange.emit(false);
+      this.close.emit(this.showWindow);
+
+    }
+  }
+
+
   //Escape Key Functionality 
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
-    if(this.closeonescape==true)
-    {
+    if (this.closeonescape == true) {
       if (event.keyCode == KEY_CODE_window.esc) {
-        this.showWindow  = false;
-    }
-    
-    }
-}
+        this.showWindow = false;
+        this.showChange.emit(false);  
 
+      }
+
+    }
+  }
   ngOnInit() {
+
+    if(this.showWindow) {
+      this.show = this.showWindow;
+      }
+
     if (this.maximize == null) {
       this.maximize = false;
       this.isFullWindow = false;
@@ -178,21 +259,31 @@ description : close the window
     }
     if (this.footeralign == null) this.footeralign = "right";
 
-  }
-
-  sizeChange() {
-    this.isFullWindow = !this.isFullWindow;
-  }
-
-  onCloseClick() {
-    if (this.closable) {
-      this.showWindow = !this.showWindow;
-      this.close.emit(this.showWindow);
+    if (  this.verticalposition == "") {
+      this.verticalposition = 'center';
     }
+     if( this.horizontalposition == "") {
+      this.horizontalposition = 'center';
+    }
+    this.positionclass = "window-" + this.verticalposition + " window-" + this.horizontalposition;
   }
 
+  ngOnChanges(changes: SimpleChanges){
+     
+    //reassign show
+    this.show = changes.showWindow.currentValue;
+
+  
+ }
+  setClass():any {
+    let styleClass: string;
+    if(this.isFullWindow) {
+      styleClass = 'modal-window-content-max';
+    } else {
+      styleClass = this.positionclass
+    }
+    return styleClass;
+  }
 
 }
-
-
 

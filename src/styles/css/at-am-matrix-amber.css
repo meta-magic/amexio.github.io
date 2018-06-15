@@ -802,7 +802,8 @@ button {
   border: 3px solid #FFBF00;
   position: absolute;
   box-shadow: 0 1px 3px 0 #FFBF00;
-  z-index: 3; }
+  z-index: 3;
+  width: 290px; }
   .datetimepicker .datetimepickertopbar {
     padding: 10px 25px;
     text-align: center; }
@@ -859,6 +860,14 @@ button {
 
 .datetimepicker:disabled {
   cursor: not-allowed; }
+
+.invaliddays {
+  opacity: .40;
+  pointer-events: none; }
+
+.disabled {
+  opacity: .40;
+  pointer-events: none; }
 
 /****************************************************************************
     Component Name : Dropdown
@@ -1843,6 +1852,9 @@ input:checked + .toggle-slider:before {
 
 .border-theme-color {
   border-color: rgba(255, 191, 0, 0.4); }
+
+.box-content {
+  display: inherit; }
 
 /****************************************************************************
     Component Name : Image
@@ -4913,28 +4925,19 @@ verticalalign-tableft {
   z-index: 3;
   /* Sit on top */
   width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0; }
+  height: 100%; }
 
 .modal-window-lg {
   flex-direction: column;
-  position: fixed;
-  /* Stay in place */
-  z-index: 1;
-  /* Sit on top */
-  width: 100%;
   height: 100%; }
 
 .modal-window-content {
+  position: absolute;
   margin: auto;
   padding: 0px;
   border: 1px solid #888;
   width: 80%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
-
-.modal-window-min {
-  padding-top: 70px; }
 
 .modal-window-content > * {
   padding: 10px;
@@ -4942,7 +4945,9 @@ verticalalign-tableft {
 
 .modal-window-content-max {
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  top: 0% !important;
+  left: 0% !important; }
 
 .modal-window-header {
   display: flex;
@@ -4988,6 +4993,22 @@ verticalalign-tableft {
 
 .footer-right-align {
   padding-right: 7px; }
+
+.window-left {
+  left: 20px; }
+
+.window-right {
+  right: 7px; }
+
+.window-top {
+  top: 10px; }
+
+.window-center {
+  top: 20%;
+  left: 10%; }
+
+.window-bottom {
+  bottom: 10%; }
 
 /****************************************************************************
     Component Name : Dialogue

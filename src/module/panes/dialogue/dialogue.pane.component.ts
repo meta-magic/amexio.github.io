@@ -9,7 +9,7 @@
 
 */
 
-import {Component, EventEmitter, Input, OnInit, Output, HostListener} from '@angular/core';
+import {Component,OnChanges,SimpleChanges ,EventEmitter, Input, OnInit, Output, HostListener} from '@angular/core';
 
 export enum KEY_CODE {
   esc=27
@@ -17,14 +17,14 @@ export enum KEY_CODE {
 @Component({
   selector: 'amexio-dialogue', template: `
     <div class="root-window"
-         [ngStyle]="{'display' : showdialogue  ? 'block' : 'none'}">
+         [ngStyle]="{'display' : show  ? 'block' : 'none'}">
       <div class="dialogue-sm">
         <div class="dialogue-content">
           <header class="dialogue-header">
             <div class="dialogue-table">
               <div class="tablerow">
                 <div class="tablecol">
-                  {{title}}
+                  {{title}} 
                 </div>
                 <div class="tablecol float-right">
                   <div *ngIf="closable" class="icon-style">
@@ -66,7 +66,7 @@ export enum KEY_CODE {
     </div>
   `
 })
-export class AmexiodialoguePaneComponent implements OnInit{
+export class AmexiodialoguePaneComponent implements OnInit, OnChanges{
   /*
 Properties
 name : close-on-escape
@@ -124,6 +124,12 @@ default : false
 description : 	Show / Hide Dialogue..
 */
   @Input('show-dialogue') showdialogue : boolean;
+
+  @Input() show : boolean;
+
+  @Output() showChange : EventEmitter<any> = new EventEmitter<any>();
+  
+  
 
   /*
 Properties
@@ -242,6 +248,7 @@ description : Fire when user close dialogue
     {
       if (event.keyCode == KEY_CODE.esc) {
         this.showdialogue  = false ;
+        this.showChange.emit(false);  
     }
     
     }
@@ -255,6 +262,10 @@ description : Fire when user close dialogue
   // }
 
   ngOnInit() {
+   
+    if(this.showdialogue) {
+    this.show = this.showdialogue;
+    }
     if (this.footeralign == null) this.footeralign = "right";
     if(this.contentalign == null || this.contentalign == '') {
       this.contentalign = 'center';
@@ -262,18 +273,31 @@ description : Fire when user close dialogue
     if(this.type == null) this.type = 'confirm';
   }
 
+  ngOnChanges(changes: SimpleChanges){
+     
+      //reassign show
+      this.show = changes.showdialogue.currentValue;   
+   }
 
   onCloseClick() {
+  
     if (this.closable) {
-      this.showdialogue  = !this.showdialogue ;
-      this.close.emit(this.showdialogue);
+  
+      this.showdialogue  = false ;
+      this.show=false;
+      this.showChange.emit(false);
+      this.close.emit(false);
     }
   }
     getStatus(v : any){
+ 
       this.onCloseClick();
       this.actionStatus.emit(v);
     }
   }
+
+
+
 
 
  
