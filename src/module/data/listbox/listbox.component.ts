@@ -38,11 +38,11 @@ description : Heading for ListBox.
 
       /*
 Properties
-name : header-align
-datatype : string
-version : 4.0 onwards
-default : left
-description : User can enable header of card by setting this flag to true..
+name : enable-header
+datatype : boolean
+version : 4.2.4 onwards
+default : true
+description : User can disabled header of listbox to false..
 */
 @Input('enable-header') enableHeader: boolean =true;
 
