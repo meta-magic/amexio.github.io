@@ -61,7 +61,7 @@
 
             <ng-container *ngFor="let dayArray of daysArray">
                 <li *ngFor="let day of dayArray">
-                    <span (click)="onDateClick(day.date)" class="day" [ngClass]="{'active':day.selected, 'currentMonth':day.isCurrentMonth, 'notCurrentMonth':!day.isCurrentMonth}">
+                    <span (click)="onDateClick(day.date)" class="day" [ngClass]="{'active':day.selected, 'currentMonth':day.isCurrentMonth, 'notCurrentMonth':!day.isCurrentMonth,'invaliddays':validateDays(day.date), 'disabled':day.isDisabled}">
                   {{ day.date | date:'d' }}
               </span>
                 </li>

@@ -802,7 +802,8 @@ button {
   border: 3px solid #8D021F;
   position: absolute;
   box-shadow: 0 1px 3px 0 #8D021F;
-  z-index: 3; }
+  z-index: 3;
+  left: 31%; }
   .datetimepicker .datetimepickertopbar {
     padding: 10px 25px;
     text-align: center; }
@@ -859,6 +860,14 @@ button {
 
 .datetimepicker:disabled {
   cursor: not-allowed; }
+
+.invaliddays {
+  opacity: .40;
+  pointer-events: none; }
+
+.disabled {
+  opacity: .40;
+  pointer-events: none; }
 
 /****************************************************************************
     Component Name : Dropdown

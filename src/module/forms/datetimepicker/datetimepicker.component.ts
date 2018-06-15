@@ -20,7 +20,7 @@ export const CUSTOM_DATETIME_Style_CONTROL_VALUE_ACCESSOR: any = {
   providers: [CUSTOM_DATETIME_Style_CONTROL_VALUE_ACCESSOR]
 })
 
-export class AmexioDateTimePicker implements OnInit {
+export class AmexioDateTimePicker implements OnInit  {
 
 
   /*
@@ -33,7 +33,7 @@ description : The label of this field
 */
   @Input('date-format') dateformat: string;
 
-    /*
+  /*
 Properties
 name : date-picker
 datatype : boolean
@@ -43,7 +43,7 @@ description : Enable/Disable Date Picker
 */
   @Input('date-picker') datepicker: boolean;
 
-   /*
+  /*
 Properties
 name : time-picker
 datatype : boolean
@@ -53,7 +53,7 @@ description : Enable/Disable Time Picker
 */
   @Input('time-picker') timepicker: boolean;
 
-   /*
+  /*
 Properties
 name : field-label
 datatype : string
@@ -81,22 +81,57 @@ default : false
 description : Disable Date/Time Picker field
 */
   @Input('read-only') readonly: boolean;
-
+  /*
+Properties
+name : min-date
+datatype : string
+version : 4.2 onwards
+default : none
+description : sets minimum date range
+*/
+  @Input('min-date') minDate: string;
 /*
 Properties
-name : required
-datatype : boolean
-version : 4.0 onwards
-default : false
-description : Flag to allow blank field or not
+name : max-date
+datatype : string
+version : 4.2 onwards
+default : none
+description : sets maximum date range
 */
+  @Input('max-date') maxDate: string;
+ /*
+Properties
+name : diabled-date
+datatype :  any
+version : 4.2 onwards
+default : none
+description : sets disabled dates range
+*/ 
+  @Input('diabled-date') diabledDate: any[]=[];
+  /*
+Properties
+name : inline-datepicker
+datatype :  boolean
+version : 4.2 onwards
+default : none
+description : sets inline calender
+*/  
+  @Input('inline-datepicker') inlineDatepicker: boolean = false;
+  /*
+  Properties
+  name : required
+  datatype : boolean
+  version : 4.0 onwards
+  default : false
+  description : Flag to allow blank field or not
+  */
   @Input() required: boolean = false;
 
-  posixUp : boolean;
+  posixUp: boolean;
 
-  positionClass : any;
+  positionClass: any;
 
-    /*
+  /*
 Properties
 name : blur
 datatype : none
@@ -106,7 +141,7 @@ description : On blur event
 */
   @Output() blur: EventEmitter<any> = new EventEmitter<any>();
 
-   /*
+  /*
 Properties
 name : change
 datatype : none
@@ -116,7 +151,7 @@ description : On field value change event
 */
   @Output() change: EventEmitter<any> = new EventEmitter<any>();
 
-   /*
+  /*
 Properties
 name : input
 datatype : none
@@ -136,6 +171,8 @@ description : On field focus event
 */
   @Output() focus: EventEmitter<any> = new EventEmitter<any>();
 
+  //diabledDate: any[];
+
   showToolTip: boolean;
 
   elementId: string;
@@ -150,13 +187,16 @@ description : On field focus event
 
   dateModel: any;
 
-  isComponentValid : boolean;
+  isComponentValid: boolean;
 
   hrs: number;
   min: number;
 
 
   constructor(public element: ElementRef) {
+    this.minDate = "";
+    this.maxDate = "";
+    
     this.elementId = new Date().getTime() + "";
     this.selectedDate = new Date();
     this.currrentDate = new Date();
@@ -180,14 +220,14 @@ description : On field focus event
 
 
   initDaysTitle() {
-    this.daysTitle.push({"text": "Mo"});
-    this.daysTitle.push({"text": "Tu"});
-    this.daysTitle.push({"text": "We"});
-    this.daysTitle.push({"text": "Th"});
-    this.daysTitle.push({"text": "Fr"});
+    this.daysTitle.push({ "text": "Mo" });
+    this.daysTitle.push({ "text": "Tu" });
+    this.daysTitle.push({ "text": "We" });
+    this.daysTitle.push({ "text": "Th" });
+    this.daysTitle.push({ "text": "Fr" });
 
-    this.daysTitle.push({"text": "Sa"});
-    this.daysTitle.push({"text": "Su"});
+    this.daysTitle.push({ "text": "Sa" });
+    this.daysTitle.push({ "text": "Su" });
   }
 
   createDaysForCurrentMonths(selectedPeriod: any) {
@@ -202,7 +242,7 @@ description : On field focus event
       let rowDays = [];
       for (let i = 0; i < 7; i++) {
         let day: any = {
-          'date': null, 'selected': false, 'isCurrentMonth': null
+          'date': null, 'selected': false, 'isCurrentMonth': null, 'isDisabled': false
         };
 
         let isCurrentMonth: any = ((date.getMonth() === selectedPeriod.getMonth()));
@@ -253,10 +293,10 @@ description : On field focus event
     }
   }
 
-  onInput(event : any){
-    if(event.target.value != null && event.target.value != ''){
+  onInput(event: any) {
+    if (event.target.value != null && event.target.value != '') {
       let timeValue = event.target.value.split(':');
-      if(timeValue != null){
+      if (timeValue != null) {
         let hrs = parseInt(timeValue[0].trim());
         let mins = parseInt(timeValue[1].trim());
         this.selectedDate.setHours(hrs);
@@ -272,27 +312,97 @@ description : On field focus event
 
   nextMonth(event: any) {
     this.setDateData("plus", 1, event);
+    this.disableddays(this.diabledDate);
   }
 
   prevMonth(event: any) {
     this.setDateData("minus", 1, event);
+    this.disableddays(this.diabledDate);
+
   }
 
   nextYear(event: any) {
-    this.setDateData("plus", 12, event);
+    this.setDateData1("plus", 12, event);
   }
 
   prevYear(event: any) {
-    this.setDateData("minus", 12, event);
+    this.setDateData1("minus", 12, event);
   }
-
+  //this function validates month
   setDateData(state: string, mon: number, event: any) {
     let d = new Date(this.currrentDate.getFullYear(), this.currrentDate.getMonth(), this.currrentDate.getDate());
-
+    let min = new Date(this.minDate);
+    let max = new Date(this.maxDate);
+    //checks if selected date is within maximum range of month
     if (state === "plus") {
-      d.setMonth(d.getMonth() + mon);
-    } else if (state === "minus") {
-      d.setMonth(d.getMonth() - mon);
+      if (this.minDate.length > 0) {
+        if (d.getFullYear() == max.getFullYear()) {
+          if (d.getMonth() == max.getMonth()) {
+            // event.stopPropagation();
+          }
+          else {
+            d.setMonth(d.getMonth() + mon);
+          }
+        } else {
+          d.setMonth(d.getMonth() + mon);
+        }
+      }//outer ends
+      else {
+        d.setMonth(d.getMonth() + mon);
+      }
+    }
+    //checks if selected date is within minimum range of month
+    else if (state === "minus") {
+      if (this.maxDate.length > 0) {
+        if (d.getFullYear() == min.getFullYear()) {
+          if (d.getMonth() == min.getMonth()) {
+            // event.stopPropagation();
+          }
+          else {
+            d.setMonth(d.getMonth() - mon);
+          }
+        } else {
+          d.setMonth(d.getMonth() - mon);
+        }
+      }
+      else {
+        d.setMonth(d.getMonth() - mon);
+      }
+    }
+
+    this.currrentDate = d;
+    this.initDate();
+    event.stopPropagation();
+  }
+  //this function validates year
+  setDateData1(state: string, mon: number, event: any) {
+    let d = new Date(this.currrentDate.getFullYear(), this.currrentDate.getMonth(), this.currrentDate.getDate());
+    let min = new Date(this.minDate);
+    let max = new Date(this.maxDate);
+    //checks if selected date is within maximum range of year
+    if (state === "plus") {
+
+      if (this.maxDate.length > 0) {
+        if (d.getFullYear() <= max.getFullYear() - 1) {
+          d.setMonth(d.getMonth() + mon);
+        }
+      }
+      else {
+        d.setMonth(d.getMonth() + mon);
+      }
+    }
+
+    //checks if selected date is within minimum range of year
+    else if (state === "minus") {
+
+      if (this.minDate.length > 0) {
+        if (d.getFullYear() >= min.getFullYear() + 1) {
+
+          d.setMonth(d.getMonth() - mon);
+        }
+      } else {
+        d.setMonth(d.getMonth() - mon);
+      }
     }
 
     this.currrentDate = d;
@@ -345,7 +455,7 @@ description : On field focus event
       if (this.min == 0) {
         this.min = 60;
         this.hrs--;
-      }
+      } 7
       this.min--;
     }
 
@@ -396,14 +506,14 @@ description : On field focus event
   writeValue(value: any) {
     if (value !== this.innerValue) {
       this.innerValue = value;
-      if (this.required && this.innerValue instanceof Date ||('number' == typeof this.innerValue)) {
+      if (this.required && this.innerValue instanceof Date || ('number' == typeof this.innerValue)) {
         this.dateModel = this.innerValue;
         this.isComponentValid = true;
       } else {
         this.isComponentValid = false;
         this.hrs = 0;
         this.min = 0;
-        console.log('Invalid Date Input');
+
       }
 
     }
@@ -419,14 +529,14 @@ description : On field focus event
     this.onTouchedCallback = fn;
   }
 
-  onFocus(elem : any) {
+  onFocus(elem: any) {
     // if (!this.readonly)
-      // this.showToolTip = true;
+    // this.showToolTip = true;
     // this.posixUp = this.getListPosition(elem);
   }
 
-  onFocusOut(value : any){
-    if(isNaN(Date.parse(value.value))){
+  onFocusOut(value: any) {
+    if (isNaN(Date.parse(value.value))) {
       this.isComponentValid = false;
       value.value = '';
     }
@@ -436,32 +546,33 @@ description : On field focus event
     }
   }
 
-  openPicker(elem : any){
+  openPicker(elem: any) {
     this.showToolTip = true;
     this.posixUp = this.getListPosition(elem);
-  }
-  getListPosition(elementRef : any) :boolean{
-    let dropdownHeight : number = 350; //must be same in dropdown.scss
-    if(window.innerHeight - (elementRef.getBoundingClientRect().bottom) < dropdownHeight){
 
-      if((elementRef.getBoundingClientRect().top - dropdownHeight - elementRef.getBoundingClientRect().height)>0){
-        this.positionClass={
-          'top' : (elementRef.getBoundingClientRect().top - dropdownHeight - elementRef.getBoundingClientRect().height)+'px'
+  }
+  getListPosition(elementRef: any): boolean {
+    let dropdownHeight: number = 350; //must be same in dropdown.scss
+    if (window.innerHeight - (elementRef.getBoundingClientRect().bottom) < dropdownHeight) {
+
+      if ((elementRef.getBoundingClientRect().top - dropdownHeight - elementRef.getBoundingClientRect().height) > 0) {
+        this.positionClass = {
+          'top': (elementRef.getBoundingClientRect().top - dropdownHeight - elementRef.getBoundingClientRect().height) + 'px'
         };
       }
-      else if((dropdownHeight - elementRef.getBoundingClientRect().top)>0){
-        this.positionClass={
-          'top' : (dropdownHeight - elementRef.getBoundingClientRect().top)+'px'
+      else if ((dropdownHeight - elementRef.getBoundingClientRect().top) > 0) {
+        this.positionClass = {
+          'top': (dropdownHeight - elementRef.getBoundingClientRect().top) + 'px'
         };
-      }else if((elementRef.getBoundingClientRect().top- dropdownHeight)>0){
-        this.positionClass={
-          'top' : (elementRef.getBoundingClientRect().top-dropdownHeight)+'px'
+      } else if ((elementRef.getBoundingClientRect().top - dropdownHeight) > 0) {
+        this.positionClass = {
+          'top': (elementRef.getBoundingClientRect().top - dropdownHeight) + 'px'
         };
       }
       return true;
     }
-    else{
-      this.positionClass ={};
+    else {
+      this.positionClass = {};
       return false;
     }
   }
@@ -483,4 +594,66 @@ description : On field focus event
       this.showToolTip = false;
     }
   }
+
+  validateDays(days: any) {
+    let max = new Date(this.maxDate);
+    let min = new Date(this.minDate);
+    //check1: if min max is null return false
+
+    if (this.maxDate.length <= 0 && this.minDate.length <= 0) {
+
+      return false;
+    }
+    if ((this.maxDate.length > 0 && this.minDate.length <= 0) || (this.maxDate.length > 0 && this.minDate.length > 0)) {
+      //check if days greater than max return 
+      //1
+      if (days.getDate() > max.getDate() &&
+        days.getMonth() >= max.getMonth() && days.getFullYear() >= max.getFullYear()) {
+
+        return true;
+      }//2
+      else if (days.getMonth() > max.getMonth() && days.getFullYear() == max.getFullYear()) {
+        return true;
+      }
+    }
+
+    if ((this.maxDate.length <= 0 && this.minDate.length > 0) || (this.maxDate.length > 0 && this.minDate.length > 0)) {//3
+      if (days.getDate() < min.getDate() &&
+        days.getMonth() == min.getMonth() && days.getFullYear() == min.getFullYear()) {
+        return true;
+      }//4
+      else if (days.getMonth() < min.getMonth() && days.getFullYear() == min.getFullYear()) {
+        return true;
+      }
+    }
+    this.disableddays(this.diabledDate);
+
+
+  }
+
+  disableddays(dates: any) {
+
+    dates.forEach((element:any) => {
+      
+
+      let From = new Date(element.from);
+      let To = new Date(element.to);
+
+      this.daysArray.forEach((element2:any) => {
+        element2.forEach((element1:any) => {
+
+          if (element1.date.getFullYear() <= To.getFullYear() && element1.date.getMonth() <= To.getMonth() && element1.date.getDate() <= To.getDate()) {
+            if (element1.date.getFullYear() >= From.getFullYear() &&
+              element1.date.getMonth() >= From.getMonth() &&
+              element1.date.getDate() >= From.getDate()
+            ) {
+
+              element1.isDisabled = true;
+            }
+          }
+        });
+      });
+    });
+  }
+
 }
