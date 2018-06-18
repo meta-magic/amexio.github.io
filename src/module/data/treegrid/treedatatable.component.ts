@@ -229,6 +229,16 @@ export class TreeDataTableComponent implements OnInit, AfterContentInit, DoCheck
    */
   @Output() selectedRecord: any = new EventEmitter<any>();
 
+  /*
+   Events
+   name : rowSelect
+   datatype : none
+   version : none
+   default : none
+   description : It will gives you row clicked data.
+   */
+  @Output() rowSelect: any = new EventEmitter<any>();
+
   responseData: any;
 
   columns: any[] = [];
@@ -355,36 +365,44 @@ export class TreeDataTableComponent implements OnInit, AfterContentInit, DoCheck
   }
 
   addRows(row: any, index: number) {
-    for (let i = 0; i < row.children.length; i++) {
-      let node = row.children[i];
-      if (!row.level) {
-        row.level = 1;
+    if(row.children) {
+      for (let i = 0; i < row.children.length; i++) {
+        let node = row.children[i];
+        if (!row.level) {
+          row.level = 1;
+        }
+        if (node.children) {
+          node.expanded = false;
+        }
+        node.level = (row.level + 1);
+        this.viewRows.splice(index + (i + 1), 0, node);
       }
-      if (node.children) {
-        node.expanded = false;
-      }
-      node.level = (row.level + 1);
-      this.viewRows.splice(index + (i + 1), 0, node);
     }
+
   }
 
   removeRows(node: any) {
-    for (let i = 0; i < node.children.length; i++) {
+    if(node.children) {
+      for (let i = 0; i < node.children.length; i++) {
+        if(this.viewRows) {
+          for (let j = 0; j < this.viewRows.length; j++) {
 
-      for (let j = 0; j < this.viewRows.length; j++) {
+            if (this.viewRows[j] === node.children[i]) {
+              if (node.children[i].children) this.removeRows(node.children[i]);
 
-        if (this.viewRows[j] === node.children[i]) {
-          if (node.children[i].children) this.removeRows(node.children[i]);
+              this.viewRows.splice(this.viewRows.indexOf(node.children[i]), 1);
 
-          this.viewRows.splice(this.viewRows.indexOf(node.children[i]), 1);
-
+            }
+          }
         }
       }
     }
+
   }
 
   setSelectedRow(rowData: any, event: any) {
     this.selectedRecord.emit(rowData);
+    this.rowSelect.emit(rowData);
   }
 
 }
