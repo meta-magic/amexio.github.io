@@ -271,7 +271,9 @@ description : close the window
   ngOnChanges(changes: SimpleChanges){
      
     //reassign show
-    this.show = changes.showWindow.currentValue;
+    if (changes['showWindow']) {
+      this.show = changes.showWindow.currentValue;
+    }
 
   
  }
