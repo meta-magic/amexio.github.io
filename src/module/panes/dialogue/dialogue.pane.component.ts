@@ -244,15 +244,16 @@ description : Fire when user close dialogue
   }
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
-    if(this.closeonescape==true)
-    {
-      if (event.keyCode == KEY_CODE.esc) {
+    if (this.closeonescape == true) {
+      if (event.keyCode ==KEY_CODE.esc) {
         this.showdialogue  = false ;
-        this.showChange.emit(false);  
+        this.show=false;
+        this.showChange.emit(false);
+
+      }
+
     }
-    
-    }
-}
+  }
 
   ngOnInit() {
    
