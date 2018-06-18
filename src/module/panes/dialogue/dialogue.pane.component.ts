@@ -253,13 +253,6 @@ description : Fire when user close dialogue
     
     }
 }
-  // ngOnChanges(changes: SimpleChanges){
-  //   debugger;
-  //   if(changes.showdialogue.currentValue != changes.showdialogue.previousValue) {
-  //    this.showdialogue = changes.showdialogue.currentValue;
-  //   }
-  //   console.log(this.showdialogue);
-  // }
 
   ngOnInit() {
    
@@ -276,7 +269,9 @@ description : Fire when user close dialogue
   ngOnChanges(changes: SimpleChanges){
      
       //reassign show
-      this.show = changes.showdialogue.currentValue;   
+        if (changes['showdialogue']) {
+      this.show = changes.showdialogue.currentValue;
+    }  
    }
 
   onCloseClick() {
