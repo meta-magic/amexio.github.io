@@ -160,74 +160,84 @@ import {AmexioGridColumnComponent} from "../datagrid/data.grid.column";
 export class TreeDataTableComponent implements OnInit, AfterContentInit, DoCheck {
 
   /*
-   Properties
-   name : data
-   datatype : any
-   version : 4.0 onwards
-   default : none
-   description : Local Data binding.
-   */
+Properties
+name : data
+datatype : any
+version : 4.0 onwards
+default : none
+description : Local Data binding.
+*/
   @Input() data: any;
 
-  /*
-   Properties
-   name : data-reader
-   datatype : string
-   version : 4.0 onwards
-   default : none
-   description : Key in JSON Datasource for records.
-   */
+/*
+Properties
+name : data-reader
+datatype : string
+version : 4.0 onwards
+default : none
+description : Key in JSON Datasource for records.
+*/
   @Input('data-reader') datareader: string;
 
-  /*
-   Properties
-   name : http-method
-   datatype : string
-   version : 4.0 onwards
-   default : none
-   description : Type of HTTP call, POST,GET etc.
-   */
+/*
+Properties
+name : http-method
+datatype : string
+version : 4.0 onwards
+default : none
+description : Type of HTTP call, POST,GET etc.
+*/
   @Input('http-method') httpmethod: string;
 
   /*
-   Properties
-   name : http-url
-   datatype : string
-   version : 4.0 onwards
-   default : none
-   description : REST url for fetching data.
-   */
+Properties
+name : http-url
+datatype : string
+version : 4.0 onwards
+default : none
+description : REST url for fetching data.
+*/
   @Input('http-url') httpurl: string;
 
   /*
-   Properties
-   name : display-field
-   datatype : string
-   version : 4.0 onwards
-   default : none
-   description : Name of key inside response data to display on ui.
-   */
+Properties
+name : display-field
+datatype : string
+version : 4.0 onwards
+default : none
+description : Name of key inside response data to display on ui.
+*/
   @Input('display-field') displayfield: string;
 
   /*
-   Properties
-   name : value-field
-   datatype : string
-   version : 4.0 onwards
-   default : none
-   description : Name of key inside response data.use to send to backend
-   */
+Properties
+name : value-field
+datatype : string
+version : 4.0 onwards
+default : none
+description : Name of key inside response data.use to send to backend
+*/
   @Input('value-field') valuefield: string;
 
   /*
+Events
+name : selectedRecord
+datatype : none
+version : none
+default : none
+description : Get selected value Object.
+*/
+  @Output() selectedRecord: any = new EventEmitter<any>();
+
+  /*
    Events
-   name : selectedRecord
+   name : rowSelect
    datatype : none
    version : none
    default : none
-   description : Get selected value Object.
+   description : It will gives you row clicked data.
    */
-  @Output() selectedRecord: any = new EventEmitter<any>();
+  @Output() rowSelect: any = new EventEmitter<any>();
 
   responseData: any;
 
@@ -315,7 +325,7 @@ export class TreeDataTableComponent implements OnInit, AfterContentInit, DoCheck
     if(this.data) {
       this.viewRows = this.getResponseData(this.data);
     }
-  }
+ }
 
   setData(httpResponse: any) {
     if (httpResponse) {
@@ -355,36 +365,44 @@ export class TreeDataTableComponent implements OnInit, AfterContentInit, DoCheck
   }
 
   addRows(row: any, index: number) {
-    for (let i = 0; i < row.children.length; i++) {
-      let node = row.children[i];
-      if (!row.level) {
-        row.level = 1;
+    if(row.children) {
+      for (let i = 0; i < row.children.length; i++) {
+        let node = row.children[i];
+        if (!row.level) {
+          row.level = 1;
+        }
+        if (node.children) {
+          node.expanded = false;
+        }
+        node.level = (row.level + 1);
+        this.viewRows.splice(index + (i + 1), 0, node);
       }
-      if (node.children) {
-        node.expanded = false;
-      }
-      node.level = (row.level + 1);
-      this.viewRows.splice(index + (i + 1), 0, node);
     }
+
   }
 
   removeRows(node: any) {
-    for (let i = 0; i < node.children.length; i++) {
+    if(node.children) {
+      for (let i = 0; i < node.children.length; i++) {
+        if(this.viewRows) {
+          for (let j = 0; j < this.viewRows.length; j++) {
 
-      for (let j = 0; j < this.viewRows.length; j++) {
+            if (this.viewRows[j] === node.children[i]) {
+              if (node.children[i].children) this.removeRows(node.children[i]);
 
-        if (this.viewRows[j] === node.children[i]) {
-          if (node.children[i].children) this.removeRows(node.children[i]);
+              this.viewRows.splice(this.viewRows.indexOf(node.children[i]), 1);
 
-          this.viewRows.splice(this.viewRows.indexOf(node.children[i]), 1);
-
+            }
+          }
         }
       }
     }
+
   }
 
   setSelectedRow(rowData: any, event: any) {
     this.selectedRecord.emit(rowData);
+    this.rowSelect.emit(rowData);
   }
 
 }
