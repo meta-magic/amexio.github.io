@@ -312,7 +312,9 @@ export class TreeDataTableComponent implements OnInit, AfterContentInit, DoCheck
     }
   }
   ngDoCheck() {
-    this.viewRows = this.getResponseData(this.data);
+    if(this.data) {
+      this.viewRows = this.getResponseData(this.data);
+    }
   }
 
   setData(httpResponse: any) {
