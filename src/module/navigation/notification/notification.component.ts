@@ -113,10 +113,9 @@ description : Position of notification window vertically: top or bottom or cente
 
    //Escape Key Functionality 
    @HostListener('window:keyup', ['$event'])keyEvent(event: KeyboardEvent) {
-    debugger;
   if (this.closeonescape == true) {
         if (event.keyCode == KEY_CODE_notify.esc) {
-          const count = this.messageData.length;
+          const count = this.messageData.length;                                                                                                                                                                                                                                                                                                                                                                                  
           for (let i = 0; i < count; i++) {
             let msg = this.messageData[i]
               this.messageData.splice(msg, 1);
