@@ -204,7 +204,7 @@ description : close the window
   constructor() {
     this.header = true;
     this.closable = true;
-    this.closeonescape = false;
+    this.closeonescape = true;
     if ( this.verticalposition==null) {
       this.verticalposition = 'center';
     }

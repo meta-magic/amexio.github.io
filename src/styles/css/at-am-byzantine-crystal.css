@@ -868,7 +868,8 @@ button {
 
 .disabled {
   opacity: .40;
-  pointer-events: none; }
+  pointer-events: none;
+  cursor: not-allowed; }
 
 /****************************************************************************
     Component Name : Dropdown
@@ -924,7 +925,8 @@ button {
   font-weight: 400;
   margin: 1px 0;
   padding: .186em .313em;
-  text-align: left; }
+  text-align: left;
+  margin-left: 8px; }
 
 .drodown-caret-down {
   position: absolute;
@@ -1725,6 +1727,7 @@ input:checked + .toggle-slider:before {
 
 /** label - Structure CSS **/
 .label-badge {
+  margin-left: 10px;
   display: inline-block;
   min-width: 10px;
   padding: 3px 7px;
