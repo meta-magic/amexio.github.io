@@ -113,6 +113,7 @@ export class AmexioDropDownMenuComponent implements AfterContentInit, OnInit {
 
   constructor(public element: ElementRef,public matchMediaService: DeviceQueryService ) {
     this.iconalign ="left";
+    this.padding ="5px 10px";
   }
 
   ngOnInit(){
