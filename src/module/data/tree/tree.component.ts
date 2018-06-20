@@ -3,16 +3,16 @@
  */
 
 
- /*
- Component Name : Amexio tree filter 
- Component Selector : <amexio-tree-filter-view>
- Component Description : A Expandable Tree Component for Angular, having Filtering functionality.
+/*
+Component Name : Amexio tree filter 
+Component Selector : <amexio-tree-filter-view>
+Component Description : A Expandable Tree Component for Angular, having Filtering functionality.
 */
-import {ChangeDetectorRef, Component, ContentChild, EventEmitter, Input, Output, TemplateRef} from '@angular/core';
+import { ChangeDetectorRef, Component, ContentChild, EventEmitter, Input, Output, TemplateRef } from '@angular/core';
 import {CommonDataService} from "../../services/data/common.data.service";
 
 @Component({
-  selector: 'amexio-treeview', templateUrl: './tree.component.html', styleUrls: ['./tree.component.scss']
+  selector: 'amexio-treeview', templateUrl: './tree.component.html',styleUrls: ['./tree.component.scss']
 })
 export class AmexioTreeViewComponent {
 
@@ -56,14 +56,14 @@ description : Key in JSON Datasource for records.
 */
   @Input('data-reader') datareader: string;
 
-/*
-Events 
-name : nodeClick
-datatype : none
-version : none
-default : none
-description : It will gives you clicked node data.
-*/
+  /*
+  Events 
+  name : nodeClick
+  datatype : none
+  version : none
+  default : none
+  description : It will gives you clicked node data.
+  */
   @Output() nodeClick: any = new EventEmitter<any>();
 
   /*
@@ -86,24 +86,67 @@ description : user can add any template to tree
 */
   @Input() templates: any;
 
+  /*
+  Properties 
+  name : enable-drag
+  datatype : boolean
+  version : 5.0.0 onwards
+  default : false
+  description : nodes can be dragged
+  */
+  @Input('enable-drag') enabledrag: boolean;
+
+  /*
+  Properties 
+  name : enable-drop
+  datatype : boolean
+  version : 5.0.0 onwards
+  default : false
+  description : any node can be dropped in the tree structure
+  */
+  @Input("enable-drop") enabledrop: boolean = false;
+
+    /*
+Properties 
+name : across-tree
+datatype : boolean
+version : 5.0.0 onwards
+default : false
+description : Dragging and dropping is possible across tree.
+*/
+@Input("across-tree") acrosstree: boolean = false;
+
+  @Input() parentRef: any;
 
   @ContentChild('amexioTreeTemplate') parentTmp: TemplateRef<any>;
-/*
-Events
-name : onTreeNodeChecked
-datatype : any
-version : 4.0 onwards
-default : none
-description : It will gives whole tree data with checked flag status.
-*/ 
+  /*
+  Events
+  name : onTreeNodeChecked
+  datatype : any
+  version : 4.0 onwards
+  default : none
+  description : It will gives whole tree data with checked flag status.
+  */
   @Output() onTreeNodeChecked: any = new EventEmitter<any>();
+
+  @Output() onDrag: any = new EventEmitter<any>();
+
+  @Output() onDrop: any = new EventEmitter<any>();
+
+  @Output() dragover: any = new EventEmitter<any>();
+
+  @Input() dragData: any;
 
   previousValue: any;
 
   responseData: any;
 
-  constructor(public dataService: CommonDataService, private cdf: ChangeDetectorRef) {
+  isNode: boolean;
 
+
+  constructor(public dataService: CommonDataService, private cdf: ChangeDetectorRef) {
+    this.isNode = true;
+    this.acrosstree = false;
   }
 
   ngOnInit() {
@@ -122,7 +165,7 @@ description : It will gives whole tree data with checked flag status.
   ngAfterViewInit() {
     setTimeout(() => {
       if (this.parentTmp != null) {
-        this.templates = {treeNodeTemplate: this.parentTmp};
+        this.templates = { treeNodeTemplate: this.parentTmp };
       } else if (this.templates != null) {
         this.parentTmp = this.templates.treeNodeTemplate;
       }
@@ -172,8 +215,11 @@ description : It will gives whole tree data with checked flag status.
       responsedata = httpResponse;
     }
     this.data = responsedata;
+    this.parentRef = this.data;
+
     this.activateNode(this.data, null);
   }
+
 
   emitCheckedData(checkedData: any) {
     checkedData.checked = !checkedData.checked;
@@ -224,4 +270,108 @@ description : It will gives whole tree data with checked flag status.
   onTreeNodeCheck(data: any) {
     this.onTreeNodeChecked.emit(this.data);
   }
+
+  //Method to drag parent with node
+  drag(dragData: any) {
+    dragData.event.dataTransfer.setData('dragData', JSON.stringify(dragData.data));
+    dragData.event.dataTransfer.effectAllowed = "copy";
+    this.dragData = dragData;
+    this.onDrag.emit(dragData);
+  }
+
+  // Dragover method
+  dragOver(dragOverData: any) {
+    event.preventDefault();
+    if (!this.enabledrop) {
+      dragOverData.event.dataTransfer.dropEffect = "none"
+    }
+    this.noDragMethod(this.dragData, dragOverData.data, dragOverData.event);
+    this.dragover.emit(dragOverData);
+  }
+
+  //Method to retrict drag
+  noDragMethod(dragData: any, dropData: any, dragOverEvent: any) {
+    let dropData1 = {
+      dragData,
+      dropData,
+      dragOverEvent
+    }
+    if (dragData.data == dropData || dropData.leaf == true) {
+      dragOverEvent.dataTransfer.dropEffect = "none"
+    }
+    else if (dragData.data.hasOwnProperty('children')) {
+      this.getDropNode(dragData, dropData, dragOverEvent);
+    }
+  }
+
+  getDropNode(dragData: any, dropData: any, dragOverEvent: any) {
+    dragData.data.children.forEach((child: any) => {
+      if (JSON.stringify(child) == JSON.stringify(dropData) || dropData.leaf == true) {
+        dragOverEvent.dataTransfer.dropEffect = "none"
+      }
+      else if (child.hasOwnProperty('children')) {
+        this.getDropNode(child.children, dropData, dragOverEvent);
+      }
+    });
+  }
+
+   //Drop Event
+   drop(dropData: any) {
+    if (this.enabledrop) {
+      if (this.acrosstree == false) {
+        dropData.event.preventDefault();
+        if (this.dragData.data == dropData.data) {
+          this.isNode = false;
+        }
+        else if (this.dragData.data.hasOwnProperty('children')) {
+          this.checkNode(this.dragData, dropData);
+        }
+
+        if (this.isNode == true) {
+          if (dropData.data.hasOwnProperty('children')) {
+            this.removeNode(dropData);
+            dropData.data.children.push(JSON.parse(dropData.event.dataTransfer.getData('dragData')));
+            this.onDrop.emit(dropData);
+          }
+        }
+      } else {
+        dropData.event.preventDefault();
+        if (dropData.data.hasOwnProperty('children')) {
+          this.removeNode(dropData);
+          dropData.data.children.push(JSON.parse(dropData.event.dataTransfer.getData('dragdata')));
+          this.onDrop.emit(dropData);
+        }
+      }
+    }
+  }
+
+  //Methos to drop child node aswell
+  checkNode(dragData: any, dropData: any) {
+    this.dragData.data.children.forEach((child: any) => {
+      if (JSON.stringify(child) == JSON.stringify(dropData.data)) {
+        this.isNode = false;
+      }
+      else if (child.hasOwnProperty('children')) {
+        this.checkNode(child, dropData);
+      }
+    });
+  }
+
+
+  //Method to remove node after drop
+  removeNode(data: any) {
+    this.removeDragNode(this.parentRef, JSON.parse(data.event.dataTransfer.getData('dragData')));
+  }
+
+  //Method to remove child node aswell after drop
+  removeDragNode(treeData: any, dragNode: any) {
+    treeData.forEach((childNode: any, index: number) => {
+      if (JSON.stringify(childNode) == JSON.stringify(dragNode)) {
+        treeData.splice(index, 1);
+      } else if (childNode.hasOwnProperty('children')) {
+        this.removeDragNode(childNode.children, dragNode);
+      }
+    });
+  }
+
 }
