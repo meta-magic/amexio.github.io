@@ -203,11 +203,17 @@ description : Description to display on hover
     if(this.overlayEffect)
     {
       this.overlay = true;
+      if(!this.overlayText){
+        this.overlayText="";
+      }
       if(this.overlayText) {
         this.overlayTextClass = "overlay-text overlay-" + this.overlayEffect + "-text";
       }
       this.overlayEffect = "overlay overlay-" + this.overlayEffect;     
     }
+    if(this.position && !this.imgTitle){
+      this.imgTitle = " ";
+      }
     if(this.imgTitle){
       if(this.position) {
         this.position = "image-title image-" + this.position;
