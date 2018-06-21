@@ -5,8 +5,8 @@
  Component Selector :  <amexio-fileupload>
  Component Description : This component use for uploading all types of files.
  */
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {CommonDataService} from "../../services/data/common.data.service";
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { CommonDataService } from "../../services/data/common.data.service";
 
 
 @Component({
@@ -112,7 +112,7 @@ export class AmexioFileUploadComponent implements OnInit {
   @Input() droppable: boolean;
 
 
-  responseData:any;
+  responseData: any;
 
   /*
    Events
@@ -124,7 +124,16 @@ export class AmexioFileUploadComponent implements OnInit {
    */
   @Output() onRemove: EventEmitter<any> = new EventEmitter<any>();
 
-  uploadedFiles : any[] = [];
+  /*
+   Events
+   name : onFileUpload
+   datatype : any
+   version : none
+   default :
+   description : On remove click event
+   */
+  @Output() onFileUpload: EventEmitter<any> = new EventEmitter<any>();
+  uploadedFiles: any[] = [];
 
   dropClass: string;
 
@@ -132,12 +141,12 @@ export class AmexioFileUploadComponent implements OnInit {
 
   }
 
-  ngOnInit() {  }
+  ngOnInit() { }
 
-  ngAfterViewInit() {  }
+  ngAfterViewInit() { }
 
-  formatBytes(bytes : any,decimals:any) {
-    if(bytes == 0) return '0 Bytes';
+  formatBytes(bytes: any, decimals: any) {
+    if (bytes == 0) return '0 Bytes';
     var k = 1024,
       dm = decimals || 2,
       sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
@@ -155,7 +164,7 @@ export class AmexioFileUploadComponent implements OnInit {
         if (dt.items[i].kind == "file") {
           let f = dt.items[i].getAsFile();
           //this.uploadedFileName = f.name;
-          this.uploadFile(f,true);
+          this.uploadFile(f, true);
         }
       }
     } else {
@@ -171,30 +180,30 @@ export class AmexioFileUploadComponent implements OnInit {
     this.dropClass = 'drop';
   }
 
-  closeFile(filedata:any,index : any){
-    this.onRemove.emit({fileData: filedata});
+  closeFile(filedata: any, index: any) {
+    this.onRemove.emit({ fileData: filedata });
     this.uploadedFiles.splice(index, 1);
   }
 
   //  For Uploading files
-  uploadFile(event: any,singleFile:boolean) {
-    if(singleFile){
+  uploadFile(event: any, singleFile: boolean) {
+    if (singleFile) {
       let formData = new FormData();
       formData.append(this.paramname, event);
       this.dataService.uploadFile(this.httpurl, this.httpmethod, formData).subscribe(
-        response=>{
+        response => {
           this.responseData = response;
         },
-        error=>{
+        error => {
 
         },
-        ()=>{
+        () => {
 
         }
       );
-      this.uploadedFiles.push({ name: event.name , size: this.formatBytes(event.size,2)});
+      this.uploadedFiles.push({ name: event.name, size: this.formatBytes(event.size, 2) });
     } else {
-      let fileList: FileList = event.target.files!=null?event.target.files:event;
+      let fileList: FileList = event.target.files != null ? event.target.files : event;
       let formData = new FormData();
       if (fileList) {
         for (let i = 0; i < fileList.length; i++) {
@@ -204,27 +213,37 @@ export class AmexioFileUploadComponent implements OnInit {
           formData.append(this.paramname, fileList[i]);
         }
         this.dataService.uploadFile(this.httpurl, this.httpmethod, formData).subscribe(
-          response=>{
+          response => {
             this.responseData = response;
           },
-          error=>{
+          error => {
 
           },
-          ()=>{
+          () => {
 
           }
         );
         if (fileList.length == 1) {
-          let fsize = this.formatBytes(fileList[0].size,2);
-          this.uploadedFiles.push({ name: fileList[0].name, size: fsize});
+          let fsize = this.formatBytes(fileList[0].size, 2);
+          this.uploadedFiles.push({ name: fileList[0].name, size: fsize });
         } else if (fileList.length > 1) {
-          for(let i=0 ;i<fileList.length ; i++)
-          {
-            let fsize = this.formatBytes(fileList[i].size,2);
+          for (let i = 0; i < fileList.length; i++) {
+            let fsize = this.formatBytes(fileList[i].size, 2);
             this.uploadedFiles.push({ name: fileList[i].name, size: fsize });
           }
         }
       }
-    }
+    } 
+  if(this.responseData){
+  this.onFileUpload.emit(this.responseData);
   }
+  }
+
+
+
+
+
+
+
+
 }
