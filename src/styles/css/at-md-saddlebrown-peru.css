@@ -2562,8 +2562,7 @@ input:checked + .toggle-slider:before {
 
 .advancesearchbtn {
   height: 37px;
-  font-weight: bold;
-  cursor: pointer; }
+  font-weight: bold; }
 
 /****************************************************************************
     Component Name : Enterprise Content
@@ -3867,6 +3866,10 @@ header .billboard .content-button {
 .sidenav .border {
   border-bottom: 1px solid #ced4da; }
 
+.nav-badge {
+  background-color: #cd853f;
+  color: #1c1207; }
+
 /** sidenav - Structure CSS **/
 .sidenav-mobile-bar {
   top: 10px;
@@ -3961,6 +3964,19 @@ header .billboard .content-button {
 .sidenav-submenu-expanded {
   max-height: 1000px;
   overflow: auto; }
+
+.nav-badge {
+  margin-left: 10px;
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 7px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  border-radius: 10px; }
 
 /****************************************************************************
     Component Name : Dockbar
