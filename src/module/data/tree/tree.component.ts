@@ -116,6 +116,16 @@ description : Dragging and dropping is possible across tree.
 */
 @Input("across-tree") acrosstree: boolean = false;
 
+   /*
+Properties
+name :  badge
+datatype : boolean
+version : 5.0.0 onwards
+default : false
+description : Describes the badge value that has to be displayed tree node 
+*/
+@Input('badge') badge: boolean;
+
   @Input() parentRef: any;
 
   @ContentChild('amexioTreeTemplate') parentTmp: TemplateRef<any>;

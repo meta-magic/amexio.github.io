@@ -3368,6 +3368,10 @@ header .billboard .content-button {
   background-color: #e99fe9;
   color: #70196F; }
 
+.tree-badge {
+  background-color: #70196F;
+  color: white; }
+
 /** Treenode - Structure CSS **/
 .treeview {
   height: 100%;
@@ -3413,6 +3417,19 @@ header .billboard .content-button {
   white-space: nowrap;
   display: inline;
   cursor: pointer; }
+
+.tree-badge {
+  margin-left: 10px;
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 7px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  border-radius: 10px; }
 
 /****************************************************************************
     Component Name : Border Layout
