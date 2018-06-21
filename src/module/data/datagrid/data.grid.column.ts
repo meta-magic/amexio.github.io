@@ -29,17 +29,27 @@ import {Input, Component, ContentChild, TemplateRef} from '@angular/core';
 export class AmexioGridColumnComponent {
 
   /*
-Properties 
+Properties
 name : text
 datatype : string
 version : 4.0 onwards
 default : none
 description : Set column label.
-*/ 
+*/
   @Input() text: string;
 
   /*
-Properties 
+   Properties
+   name : sort
+   datatype : boolean
+   version : 4.2.6 onwards
+   default : true
+   description : Set column Sortable.
+   */
+  @Input() sort: boolean;
+
+  /*
+Properties
 name : data-index
 datatype : string
 version : 4.0 onwards
@@ -49,7 +59,7 @@ description : JSON key from datasource.
   @Input('data-index') dataindex: string;
 
   /*
-Properties 
+Properties
 name : hidden
 datatype : boolean
 version : 4.0 onwards
@@ -59,7 +69,7 @@ description : Hide column
   @Input() hidden: boolean = false;
 
   /*
-Properties 
+Properties
 name : data-type
 datatype : string
 version : 4.0 onwards
@@ -69,7 +79,7 @@ description : Data type of column (string/number).
   @Input('data-type') datatype: string;
 
   /*
-Properties 
+Properties
 name : summary-type
 datatype : string
 version : 4.0 onwards
@@ -79,7 +89,7 @@ description : Type of math opertaion to be applied on the column
   @Input('summary-type') summarytype: string;
 
   /*
-Properties 
+Properties
 name : summary-caption
 datatype : string
 version : 4.0 onwards
@@ -89,7 +99,7 @@ description : it is the title placed next to the summarized value
   @Input('summary-caption') summarycaption: string;
 
   /*
-Properties 
+Properties
 name : width
 datatype : string
 version : 4.0 onwards
@@ -97,8 +107,6 @@ default : none
 description : Custom width for each column.Width must be in % but no need to mention %.
 */
   @Input() width: string;
-
-  isColumnSort: boolean;
 
   @ContentChild('amexioHeaderTmpl') headerTemplate: TemplateRef<any>;
 
