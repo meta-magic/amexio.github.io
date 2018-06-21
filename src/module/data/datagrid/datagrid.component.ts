@@ -138,11 +138,11 @@ import {CommonDataService} from "../../services/data/common.data.service";
                     </ng-container>
                     <ng-container *ngIf="!cols.headerTemplate">
                       {{cols.text}} &nbsp;
-                      <ng-container *ngIf="this.sortBy==1 && cols.isColumnSort">
+                      <ng-container *ngIf="this.sortBy==1 && cols.sort">
                           <amexio-data-icon key="datagrid_arrowup"></amexio-data-icon>
                           <!--&nbsp; <i class="fa fa-arrow-up"></i>-->
                       </ng-container>
-                      <ng-container *ngIf="this.sortBy==2 && cols.isColumnSort">
+                      <ng-container *ngIf="this.sortBy==2 && cols.sort">
                           <!--&nbsp;<i class="fa fa-arrow-down"></i>-->
                           <amexio-data-icon key="datagrid_arrowdown"></amexio-data-icon>
                       </ng-container>
@@ -158,11 +158,11 @@ import {CommonDataService} from "../../services/data/common.data.service";
                     <ng-container *ngIf="!cols.headerTemplate">
                       <span class="float-right">
                           {{cols.text}} &nbsp;
-                          <ng-container *ngIf="this.sortBy==1 && cols.isColumnSort">
+                          <ng-container *ngIf="this.sortBy==1 && cols.sort">
                               <amexio-data-icon key="datagrid_arrowup"></amexio-data-icon>
                               <!--&nbsp; <i class="fa fa-arrow-up"></i>-->
                           </ng-container>
-                          <ng-container *ngIf="this.sortBy==2 && cols.isColumnSort">
+                          <ng-container *ngIf="this.sortBy==2 && cols.sort">
                               <!--&nbsp;<i class="fa fa-arrow-down"></i>-->
                               <amexio-data-icon key="datagrid_arrowdown"></amexio-data-icon>
                           </ng-container>
@@ -715,6 +715,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
           datatype: columnConfig.datatype,
           headerTemplate: columnConfig.headerTemplate,
           width: columnConfig.width,
+          sort: columnConfig.sort,
           bodyTemplate: columnConfig.bodyTemplate
         };
       } else if (columnConfig.headerTemplate != null && columnConfig.bodyTemplate == null) {
@@ -724,6 +725,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
           hidden: columnConfig.hidden,
           datatype: columnConfig.datatype,
           width: columnConfig.width,
+          sort: columnConfig.sort,
           headerTemplate: columnConfig.headerTemplate
         };
       } else if (columnConfig.bodyTemplate != null && columnConfig.headerTemplate == null) {
@@ -733,6 +735,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
           hidden: columnConfig.hidden,
           datatype: columnConfig.datatype,
           width: columnConfig.width,
+          sort: columnConfig.sort,
           bodyTemplate: columnConfig.bodyTemplate
         };
       } else if (columnConfig.bodyTemplate == null && columnConfig.headerTemplate == null) {
@@ -741,6 +744,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
           dataindex: columnConfig.dataindex,
           hidden: columnConfig.hidden,
           width: columnConfig.width,
+          sort: columnConfig.sort,
           datatype: columnConfig.datatype
         };
       }
@@ -758,7 +762,6 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
 
   setChangeData(httpResponse: any){
     this.setSelectedFlag(httpResponse);
-  
     if (!this.groupby) {
       this.renderData();
     }
@@ -1175,24 +1178,28 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
 
   sortOnColHeaderClick(sortCol: any, event: any) {
     this.onHeaderClick.emit({event: event, data: sortCol});
-    if (this.sortBy === -1) {
-      this.sortBy = 1;
-    } else if (this.sortBy === 1) {
-      this.sortBy = 2;
-    } else if (this.sortBy === 2) {
-      this.sortBy = 1;
+    if(sortCol.sort) {
+      if (this.sortBy === -1) {
+        this.sortBy = 1;
+      } else if (this.sortBy === 1) {
+        this.sortBy = 2;
+      } else if (this.sortBy === 2) {
+        this.sortBy = 1;
+      }
+      this.setSortColumn(sortCol, this.sortBy);
     }
-    this.setSortColumn(sortCol, this.sortBy);
+
+
   }
 
   setSortColumn(sortCol: any, _sortBy: number) {
     /*------set column sort false for other column--------*/
-    this.columns.forEach((opt) => {
-      opt['isColumnSort'] = false;
-    });
+   /* this.columns.forEach((opt) => {
+      opt.sort = false;
+    });*/
     this.sortBy = _sortBy;
     this.sortColumn = sortCol;
-    this.sortColumn.isColumnSort = true;
+   /* this.sortColumn.sort = true;*/
 
     this.sortData();
   }
