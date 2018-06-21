@@ -195,7 +195,9 @@ export class AmexioFileUploadComponent implements OnInit {
 
         },
         () => {
-
+          if(this.responseData){
+            this.onFileUpload.emit(this.responseData);
+            }
         }
       );
       this.uploadedFiles.push({ name: event.name, size: this.formatBytes(event.size, 2) });
@@ -217,7 +219,9 @@ export class AmexioFileUploadComponent implements OnInit {
 
           },
           () => {
-
+            if(this.responseData){
+              this.onFileUpload.emit(this.responseData);
+              }
           }
         );
         if (fileList.length == 1) {
@@ -231,9 +235,7 @@ export class AmexioFileUploadComponent implements OnInit {
         }
       }
     } 
-  if(this.responseData){
-  this.onFileUpload.emit(this.responseData);
-  }
+    
   }
 
 
