@@ -19,6 +19,9 @@
             </div>
             <div class="tree-node-label">
               {{node.text}}
+              <ng-container *ngIf="badge && node.badge")>
+                <span class="tree-badge">{{node.badge}}</span> 
+             </ng-container>
             </div>
           </div>
           <div class="tree-node-label" *ngIf="templates != null">
@@ -33,6 +36,6 @@
   <ul class="treenode-children" style="display: block;" *ngIf="node.expand && node.children && (node.children.length>0)">
     <amexio-treeview [enable-drag]="enabledrag" [enable-drop]="enabledrop"  [across-tree]="acrosstree" (onDrag)="drag($event)" [data]="node.children"
       [dragData]="dragData" [parentRef]="parentRef" (nodeClick)="onNodeClick($event)" (onDrop)="drop($event)" [templates]="templates"
-      [enable-checkbox]="enablecheckbox" (onTreeNodeChecked)="this.onTreeNodeCheck($event)"></amexio-treeview>
+      [enable-checkbox]="enablecheckbox" [badge]="badge" (onTreeNodeChecked)="this.onTreeNodeCheck($event)"></amexio-treeview>
   </ul>
 </li>
