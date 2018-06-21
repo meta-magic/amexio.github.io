@@ -910,8 +910,7 @@ button {
 
 .disabled {
   opacity: .40;
-  pointer-events: none;
-  cursor: not-allowed; }
+  pointer-events: none; }
 
 /****************************************************************************
     Component Name : Dropdown
@@ -1782,7 +1781,8 @@ input:checked + .toggle-slider:before {
   border-radius: 10px; }
 
 .large {
-  font-size: 36px; }
+  font-size: 36px;
+  line-height: 34px; }
 
 .medium {
   font-size: 20px; }
@@ -1792,7 +1792,8 @@ input:checked + .toggle-slider:before {
 
 .large-bold {
   font-size: 36px;
-  font-weight: bold; }
+  font-weight: bold;
+  line-height: 40px; }
 
 .medium-bold {
   font-size: 20px;
