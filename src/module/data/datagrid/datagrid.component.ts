@@ -138,15 +138,16 @@ import {CommonDataService} from "../../services/data/common.data.service";
                     </ng-container>
                     <ng-container *ngIf="!cols.headerTemplate">
                       {{cols.text}} &nbsp;
-                      <ng-container *ngIf="this.sortBy==1 && cols.sort">
-                          <amexio-data-icon key="datagrid_arrowup"></amexio-data-icon>
-                          <!--&nbsp; <i class="fa fa-arrow-up"></i>-->
-                      </ng-container>
-                      <ng-container *ngIf="this.sortBy==2 && cols.sort">
-                          <!--&nbsp;<i class="fa fa-arrow-down"></i>-->
-                          <amexio-data-icon key="datagrid_arrowdown"></amexio-data-icon>
-                      </ng-container>
+
                     </ng-container>
+                    <ng-container *ngIf="this.sortBy==1 && cols.sort">
+                    <amexio-data-icon key="datagrid_arrowup"></amexio-data-icon>
+                    <!--&nbsp; <i class="fa fa-arrow-up"></i>-->
+                </ng-container>
+                <ng-container *ngIf="this.sortBy==2 && cols.sort">
+                    <!--&nbsp;<i class="fa fa-arrow-down"></i>-->
+                    <amexio-data-icon key="datagrid_arrowdown"></amexio-data-icon>
+                </ng-container>
                   </div>
               </ng-container>
               <ng-container *ngIf="cols.datatype=='number'">
