@@ -235,5 +235,6 @@ export class AmexioFileUploadComponent implements OnInit {
       }
     }
     this.onFileUpload.emit(this.responseData);
+    
   }
 }
