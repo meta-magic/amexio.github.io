@@ -904,13 +904,14 @@ button {
 .datetimepicker:disabled {
   cursor: not-allowed; }
 
-.invaliddays {
-  opacity: .40;
+.date1 {
   pointer-events: none; }
-
-.disabled {
-  opacity: .40;
-  pointer-events: none; }
+  .date1 .invaliddays {
+    opacity: .40;
+    cursor: not-allowed; }
+  .date1 .disabled {
+    opacity: .40;
+    cursor: not-allowed; }
 
 /****************************************************************************
     Component Name : Dropdown
@@ -3869,6 +3870,10 @@ header .billboard .content-button {
 .sidenav .border {
   border-bottom: 1px solid #ced4da; }
 
+.nav-badge {
+  background-color: #9400d3;
+  color: #fcf5ff; }
+
 /** sidenav - Structure CSS **/
 .sidenav-mobile-bar {
   top: 10px;
@@ -3963,6 +3968,19 @@ header .billboard .content-button {
 .sidenav-submenu-expanded {
   max-height: 1000px;
   overflow: auto; }
+
+.nav-badge {
+  margin-left: 10px;
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 7px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  border-radius: 10px; }
 
 /****************************************************************************
     Component Name : Dockbar

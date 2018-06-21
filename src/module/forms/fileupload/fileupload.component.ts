@@ -127,10 +127,7 @@ export class AmexioFileUploadComponent implements OnInit {
   /*
    Events
    name : onFileUpload
-   datatype : any
-   version : none
-   default :
-   description : On remove click event
+   description : fires on uploading file
    */
   @Output() onFileUpload: EventEmitter<any> = new EventEmitter<any>();
   uploadedFiles: any[] = [];
