@@ -46,7 +46,7 @@ description : Set column label.
    default : true
    description : Set column Sortable.
    */
-  @Input() sort: boolean;
+  @Input() sort: boolean = true;
 
   /*
 Properties
