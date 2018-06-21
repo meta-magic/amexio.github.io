@@ -5,23 +5,23 @@
     margin-right: auto;
     border-style: inset;
     border-width: 10%;
-     
+
     font-weight:bold;
     display:block;
   }
-  
-  
+
+
    .advancesearchform{
     position: absolute;
     font-weight:normal;
      border-width: 1px;
-    border-style: solid; 
+    border-style: solid;
     padding:.5%;
   }
   .dropdownposition{
     position: absolute;
   }
- 
+
   .search-form-label{
     font-weight:bold;
   }
@@ -34,7 +34,7 @@
      padding-right:0%;
      font-size: 120%;
   }
-  
+
   .searchbutton{
     width:100%;
   }
@@ -56,18 +56,18 @@
       padding-right:2%;
       padding-left:2%;
     }
-  
+
     .input-group{
       display: flex;
     }
-  
+
     .input-group-prepend{
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
     }
   //search text box
     .form-control{
-      display: block; 
+      display: block;
       padding: .375rem .75rem;
       font-size: 1rem;
       line-height: 1.5;
@@ -76,20 +76,20 @@
       border-width: 1px;
       border-style: solid;
     }
-    
-  
+
+
     .search-dropdown-list .search-list-items{
       list-style: none;
        cursor: pointer;
        margin: 1px 0;
       padding: .186em .313em;
-      text-align: left;   
+      text-align: left;
       overflow-y: auto;
     }
-     
-     
-    
-  
+
+
+
+
     .search-dropdown-list{
 
       margin: 0;
@@ -103,13 +103,13 @@
       z-index: 5;
       overflow-x: auto;
      }
-   
+
     .scroll{
       height: 200px;
       overflow-y: scroll;
     }
-     
-  
+
+
     .advancesearchbuttondiv{
       z-index: 5;
       cursor: pointer;
@@ -118,5 +118,4 @@
     .advancesearchbtn{
       height:37px;
       font-weight:bold;
-      cursor: pointer;
     }

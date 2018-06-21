@@ -16,7 +16,7 @@ import {AfterContentInit, ChangeDetectorRef,ContentChild, HostListener, Template
 export class AmexioNotificationComponent implements OnInit {
 
    /*
-  Properties 
+  Properties
   name : data
   datatype : any
   version : 4.2 onwards
@@ -25,7 +25,7 @@ export class AmexioNotificationComponent implements OnInit {
   */
  @Input('data') messageData: any[];
   /*
-Properties 
+Properties
 name : closable
 datatype : boolean
 version : 4.0 onwards
@@ -35,7 +35,7 @@ description : User can close the window.
   @Input() closable: boolean = true;
 
    /*
-Properties 
+Properties
 name : vertical-position
 datatype : string
 version : 4.2 onwards
@@ -45,7 +45,7 @@ description : Position of notification window vertically: top or bottom or cente
 
   @Input('vertical-position') verticalposition: string;
   /*
-  Properties 
+  Properties
   name : horizontal-position
   datatype : string
   version : 4.2 onwards
@@ -55,9 +55,9 @@ description : Position of notification window vertically: top or bottom or cente
 
   @Input('horizontal-position') horizontalposition: string;
 
- 
+
  /*
-  Properties 
+  Properties
   name : auto-dismiss-msg
   datatype : boolean
   version : 4.2 onwards
@@ -66,7 +66,7 @@ description : Position of notification window vertically: top or bottom or cente
   */
   @Input('auto-dismiss-msg') autodismissmsg: boolean;
 /*
-  Properties 
+  Properties
   name : auto-dismiss-msg-interval
   datatype : number
   version : 4.2 onwards
@@ -75,7 +75,7 @@ description : Position of notification window vertically: top or bottom or cente
   */
   @Input('auto-dismiss-msg-interval') autodismissmsginterval: number;
 /*
-  Properties 
+  Properties
   name : close-on-escape
   datatype : boolean
   version : 4.2 onwards
@@ -84,7 +84,7 @@ description : Position of notification window vertically: top or bottom or cente
   */
   @Input('close-on-escape') closeonescape: boolean;
 /*
-  Properties 
+  Properties
   name : background-color
   datatype : string
   version : 4.2 onwards
@@ -93,7 +93,7 @@ description : Position of notification window vertically: top or bottom or cente
   */
   @Input('background-color') backgroundColor: string;
 /*
-  Properties 
+  Properties
   name : foreground-color
   datatype : string
   version : 4.2 onwards
@@ -111,11 +111,12 @@ description : Position of notification window vertically: top or bottom or cente
 
   @ContentChild('amexioNotificationTemp') notificationTemplate: TemplateRef<any>;
 
-   //Escape Key Functionality 
+   //Escape Key Functionality
    @HostListener('window:keyup', ['$event'])keyEvent(event: KeyboardEvent) {
+    debugger;
   if (this.closeonescape == true) {
         if (event.keyCode == KEY_CODE_notify.esc) {
-          const count = this.messageData.length;                                                                                                                                                                                                                                                                                                                                                                                  
+          const count = this.messageData.length;
           for (let i = 0; i < count; i++) {
             let msg = this.messageData[i]
               this.messageData.splice(msg, 1);
@@ -146,7 +147,7 @@ description : Position of notification window vertically: top or bottom or cente
       this.horizontalposition = 'right'
     }
   this.positionclass = "notification-vertical-" + this.verticalposition + " notification-horizontal-" + this.horizontalposition;
-    
+
   }
 
   closeNotification(msg: any) {
