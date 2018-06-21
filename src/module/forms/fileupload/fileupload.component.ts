@@ -186,7 +186,7 @@ export class AmexioFileUploadComponent implements OnInit {
       this.dataService.uploadFile(this.httpurl, this.httpmethod, formData).subscribe(
         response=>{
           this.responseData = response;
-        },
+        }, 
         error=>{
 
         },
