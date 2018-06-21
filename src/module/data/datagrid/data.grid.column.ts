@@ -39,6 +39,16 @@ description : Set column label.
   @Input() text: string;
 
   /*
+   Properties
+   name : sort
+   datatype : boolean
+   version : 4.2.6 onwards
+   default : true
+   description : Set column Sortable.
+   */
+  @Input() sort: boolean;
+
+  /*
 Properties
 name : data-index
 datatype : string
@@ -97,8 +107,6 @@ default : none
 description : Custom width for each column.Width must be in % but no need to mention %.
 */
   @Input() width: string;
-
-  isColumnSort: boolean;
 
   @ContentChild('amexioHeaderTmpl') headerTemplate: TemplateRef<any>;
 
