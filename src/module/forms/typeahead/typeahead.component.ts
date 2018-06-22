@@ -381,7 +381,6 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
         }
         else if(event.keyCode === 38){
           this.selectedindex--;
-          console.log(this.scrollposition);
           if(this.scrollposition>=0 && this.selectedindex>1){
             this.dropdownitems.nativeElement.scroll(0,this.scrollposition);
             this.scrollposition = this.scrollposition  -30;
@@ -404,7 +403,6 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
       }
     }
 
-    console.log(new Date().getTime()+"--"+this.selectedindex+"--"+this.filteredResult.length);
     if(event.keyCode === 13 && this.filteredResult[this.selectedindex]){
       this.onItemSelect(this.filteredResult[this.selectedindex]);
     }
