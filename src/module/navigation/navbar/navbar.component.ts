@@ -5,15 +5,16 @@
 /*
  Component Name : Amexio Navbar
  Component Selector : <amexio-nav>
- Component Description : The Nav Bar Component is a familiar top navigation pattern for users. 
+ Component Description : The Nav Bar Component is a familiar top navigation pattern for users.
 Nav bar has Logo/Title left align, than link, text field, button and menus on right side.
 v4.1 Nav bar is not backward compatible of v4.0, for v4.0 refer link
 */
-import {Component, Input, OnInit, ContentChildren, QueryList, AfterContentInit, ViewChild, ElementRef, AfterViewInit} from '@angular/core';
+import {
+  Component, Input, OnInit, ContentChildren, QueryList, AfterContentInit, ViewChild, ElementRef, AfterViewInit, Output,
+  EventEmitter
+} from '@angular/core';
 import {DeviceQueryService} from "../../services/device/device.query.service";
-import {AmexioNavActionComponent } from './navaction.component';
 import {AmexioNavItemComponent } from './navitem.component';
-import {AmexioNavMenuComponent } from './navmenu.component';
 
 @Component({
   selector: 'amexio-nav', templateUrl: 'navbar.component.html'
@@ -22,7 +23,7 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
 
 
   /*
-Properties 
+Properties
 name : title
 datatype : string
 version : 4.0 onwards
@@ -33,7 +34,7 @@ description : Title for link, button and menu header
 
 
   /*
-Properties 
+Properties
 name : logo
 datatype : string
 version : 4.0 onwards
@@ -43,7 +44,7 @@ description : Logo of navbar.
   @Input() logo: string;
 
   /*
-Properties 
+Properties
 name : enable-side-nav-position
 datatype : boolean
 version : 4.0 onwards
@@ -52,8 +53,13 @@ description : Indicate if side-nav-bar is present
 */
   @Input('enable-side-nav-position') sidenavspace : boolean = false;
 
+
+  @Output() onNavLogoClick: any = new EventEmitter<any>();
+
+  @Output() onNavTitleClick: any = new EventEmitter<any>();
+
   @ContentChildren(AmexioNavItemComponent) navitems : QueryList<AmexioNavItemComponent>;
-  
+
   navItemComponents : AmexioNavItemComponent[];
 
 
@@ -119,7 +125,7 @@ description : Indicate if side-nav-bar is present
   }
 
   handleDeviceSetting(){
-    
+
     if(this.sidenavspace){
       if (this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone()) {
         this.sidenav = true;
@@ -131,7 +137,7 @@ description : Indicate if side-nav-bar is present
     let navbarwidth = this.navbar.nativeElement.offsetWidth;
     let navbarheight = this.navbar.nativeElement.offsetHeight;
     let navbarfixedheight = this.navbarfixed.nativeElement.offsetHeight;
-    
+
     if(!this.navfixeditem){
       this.navfixeditem = this.navbarfixed.nativeElement.offsetWidth;
     }
@@ -140,23 +146,23 @@ description : Indicate if side-nav-bar is present
       let navbaritems1Width = 0;
       let navbaritems2Width = 0;
       let navbaritems3Width = 0;
-  
+
       if(this.navbaritems1){
         navbaritems1Width = this.navbaritems1.nativeElement.offsetWidth;
       }
       if(this.navbaritems2){
         navbaritems2Width = this.navbaritems2.nativeElement.offsetWidth;
       }
-  
+
       if(this.navbaritems3){
         navbaritems3Width = this.navbaritems3.nativeElement.offsetWidth;
       }
       this.navitemwidth = (this.navfixeditem+navbaritems1Width+navbaritems2Width+navbaritems3Width);
     }
 
-  
+
     let navbaravailablewidth = (navbarwidth-(this.navfixeditem+this.navitemwidth))
-      
+
 
     if((navbaravailablewidth <100 || navbarheight>100)){
       this.mobilemode = true;
@@ -170,11 +176,13 @@ description : Indicate if side-nav-bar is present
 
   }
 
- 
-  
+
+
   resize(event:any){
     //setTimeout( () => this.handleDeviceSetting(),500);
     this.handleDeviceSetting();
-    
+
   }
+
+
 }
