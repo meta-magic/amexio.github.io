@@ -3,7 +3,7 @@
  */
 
  /*
- 
+
  Component Name : Amexio Typeahead Input
  Component Selector :  <amexio-typeahead>
  Component Description : Type Ahead Component provides a power type ahead on the text field where users entry is provided with a filtered result.
@@ -36,7 +36,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
    name : field-label
    datatype : string
    version : 4.0 onwards
-   default : 
+   default :
    description : The label of this field
    */
   @Input('field-label') fieldlabel: string;
@@ -45,7 +45,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
    name : allow-blank
    datatype : string
    version : 4.0 onwards
-   default : 
+   default :
    description : Sets if field is required
    */
   @Input('allow-blank') allowblank: boolean;
@@ -54,7 +54,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
    name : data
    datatype : any
    version : 4.0 onwards
-   default : 
+   default :
    description : Local data for dropdown.
    */
   @Input() data: any;
@@ -63,7 +63,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
    name : data-reader
    datatype : string
    version : 4.0 onwards
-   default : 
+   default :
    description : Key in JSON datasource for records
    */
   @Input('data-reader') datareader: string;
@@ -72,7 +72,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
    name : http-method
    datatype : string
    version : 4.0 onwards
-   default : 
+   default :
    description : Type of HTTP call, POST,GET.
    */
   @Input('http-method') httpmethod: string;
@@ -81,7 +81,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
    name : http-url
    datatype : string
    version : 4.0 onwards
-   default : 
+   default :
    description : REST url for fetching datasource.
    */
   @Input('http-url') httpurl: string;
@@ -119,7 +119,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
    name : focus
    datatype : any
    version : none
-   default : 
+   default :
    description : On focus event field.
    */
   @Output() focus: any = new EventEmitter<any>();
@@ -128,7 +128,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
    name : change
    datatype : any
    version : none
-   default : 
+   default :
    description : On field value change event
    */
   @Output() change: any = new EventEmitter<any>();
@@ -137,7 +137,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
    name : onClick
    datatype : any
    version : none
-   default : 
+   default :
    description : On click event
    */
   @Output() onClick: any = new EventEmitter<any>();
@@ -191,7 +191,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
    name : place-holder
    datatype : string
    version : 4.0 onwards
-   default : 
+   default :
    description : Show place-holder inside dropdown component
    */
   @Input('place-holder') placeholder: string;
@@ -211,7 +211,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
    name : font-style
    datatype : string
    version : 4.0 onwards
-   default : 
+   default :
    description : Set font-style to field
    */
   @Input('font-style') fontstyle: string;
@@ -220,7 +220,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
    name : font-family
    datatype : string
    version : 4.0 onwards
-   default : 
+   default :
    description : Set font-family to field
    */
   @Input('font-family') fontfamily: string;
@@ -229,7 +229,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
    name : font-size
    datatype : string
    version : 4.0 onwards
-   default : 
+   default :
    description : Set font-size to field
    */
   @Input('font-size') fontsize: string;
@@ -247,7 +247,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
    name : enable-popover
    datatype : string
    version : 4.0 onwards
-   default : 
+   default :
    description : Set enable / disable popover.
    */
   @Input('enable-popover') enablepopover: boolean;
@@ -266,7 +266,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
    name : trigger-char
    datatype : number
    version : 4.0 onwards
-   default : 
+   default :
    description : Sets the trigger char length
    */
   @Input('trigger-char') triggerchar: number;
@@ -381,7 +381,6 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
         }
         else if(event.keyCode === 38){
           this.selectedindex--;
-          console.log(this.scrollposition);
           if(this.scrollposition>=0 && this.selectedindex>1){
             this.dropdownitems.nativeElement.scroll(0,this.scrollposition);
             this.scrollposition = this.scrollposition  -30;
@@ -404,7 +403,6 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
       }
     }
 
-    console.log(new Date().getTime()+"--"+this.selectedindex+"--"+this.filteredResult.length);
     if(event.keyCode === 13 && this.filteredResult[this.selectedindex]){
       this.onItemSelect(this.filteredResult[this.selectedindex]);
     }
