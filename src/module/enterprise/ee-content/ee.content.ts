@@ -286,7 +286,6 @@ description : Get close content click.
   ngOnChanges(changes: SimpleChanges) {
     if (changes.videoLink && !changes.videoLink.isFirstChange()) {
       this.videoLink = changes.videoLink.currentValue;
-      console.log(this.videoLink);
     }
   }
 
