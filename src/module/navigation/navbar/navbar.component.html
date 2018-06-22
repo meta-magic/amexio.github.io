@@ -1,10 +1,10 @@
 
 <nav #navbar class="topnav" [ngClass]="{'topnav-mobile':mobilemode}" (window:resize)="resize($event)">
     <div #navbarfixed class="topnavbarunit1" [ngClass]="{'topnavbarunit1-mobile':mobilemode}" >
-        <div class="float-left" [ngStyle]="{'padding-left':sidenav ? '40px':'0px'}">
-            <img  (load)="onImageLoad()" *ngIf="logo" [attr.src]="logo" class="navbar-logo">
-            <amexio-label size="medium-bold">{{title}}</amexio-label>
-        </div> 
+        <div class="float-left"  [ngStyle]="{'padding-left':sidenav ? '40px':'0px'}">
+            <img style="cursor: pointer" (click)="onNavLogoClick.emit($event)"  (load)="onImageLoad()" *ngIf="logo" [attr.src]="logo" class="navbar-logo">
+            <amexio-label (onClick)="onNavTitleClick.emit($event)" [enable-click]="true"  size="medium-bold">{{title}}</amexio-label>
+        </div>
         <div *ngIf="mobilemode" class="float-right mobilebar" (click)="toggleDrawerPanel($event)">
             <i *ngIf="!toggle"  class="fa fa-caret-down fa-2x"></i>
             <i *ngIf="toggle"  class="fa fa-caret-up fa-2x"></i>
@@ -21,8 +21,8 @@
             <div #navbaritems3 class="topnavmainbaritems"   [ngClass]="{'topnavmainbaritems-mobile':mobilemode}" >
               <ng-content select="[position-right]"></ng-content>
             </div>
-        
+
           </div>
     </div>
-    
+
   </nav>
