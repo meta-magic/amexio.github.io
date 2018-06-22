@@ -9,10 +9,10 @@ Component Selector : <amexio-tree-filter-view>
 Component Description : A Expandable Tree Component for Angular, having Filtering functionality.
 */
 import { ChangeDetectorRef, Component, ContentChild, EventEmitter, Input, Output, TemplateRef } from '@angular/core';
-import {CommonDataService} from "../../services/data/common.data.service";
+import { CommonDataService } from "../../services/data/common.data.service";
 
 @Component({
-  selector: 'amexio-treeview', templateUrl: './tree.component.html',styleUrls: ['./tree.component.scss']
+  selector: 'amexio-treeview', templateUrl: './tree.component.html', styleUrls: ['./tree.component.scss']
 })
 export class AmexioTreeViewComponent {
 
@@ -106,7 +106,7 @@ description : user can add any template to tree
   */
   @Input("enable-drop") enabledrop: boolean = false;
 
-    /*
+  /*
 Properties 
 name : across-tree
 datatype : boolean
@@ -114,9 +114,9 @@ version : 5.0.0 onwards
 default : false
 description : Dragging and dropping is possible across tree.
 */
-@Input("across-tree") acrosstree: boolean = false;
+  @Input("across-tree") acrosstree: boolean = false;
 
-   /*
+  /*
 Properties
 name :  badge
 datatype : boolean
@@ -124,7 +124,7 @@ version : 5.0.0 onwards
 default : false
 description : Describes the badge value that has to be displayed tree node 
 */
-@Input('badge') badge: boolean;
+  @Input('badge') badge: boolean;
 
   @Input() parentRef: any;
 
@@ -300,13 +300,21 @@ description : Describes the badge value that has to be displayed tree node
   }
 
   noDragMethod(dragData: any, node: any, event: any) {
-    if (dragData.data == node || node.leaf == true) {
-      event.dataTransfer.dropEffect = "none"
+    if (!this.acrosstree) {
+      if (dragData.data == node || node.leaf == true) {
+        event.dataTransfer.dropEffect = "none"
+      }
+      else {
+        event.target.style.border = "3px dotted green";
+      }
+    } else {
+      if (node.leaf == true) {
+        event.dataTransfer.dropEffect = "none"
+      } else {
+        event.target.style.border = "3px dotted green";
+      }
     }
-    else{	
-           event.target.style.border = "3px dotted green";	
-       }
-     if (dragData.data.hasOwnProperty('children')) {
+    if (dragData.data.hasOwnProperty('children')) {
       this.getDropNode(dragData, node, event);
     }
   }
@@ -376,7 +384,7 @@ description : Describes the badge value that has to be displayed tree node
     });
   }
 
-  dragleave(event: any){
+  dragleave(event: any) {
     event.target.style.border = "";
-}
+  }
 }
