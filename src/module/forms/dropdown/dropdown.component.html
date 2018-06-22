@@ -9,7 +9,6 @@
          (ngModelChange)="onChange($event)"
          #inp="ngModel"
   />
-
   <input type="text" class="input-control"
          [value]="getDisplayText()"
          [ngClass]="{'input-control-error' : inp.invalid && (inp.dirty || inp.touched),'input-control-success' : inp.valid && (inp.dirty || inp.touched)}"
@@ -54,11 +53,11 @@
         <span *ngIf="inp.invalid && (inp.dirty || inp.touched)">&#9888;</span>
         <span *ngIf="inp.valid && (inp.dirty || inp.touched)"> &#10004;</span>
 
-      </span>
+</span>
 
 <span *ngIf="showToolTip && enablepopover" class="tooltiptext">
         <div [innerHTML]="helpInfoMsg"></div>
 </span>
 
 
-  
+
