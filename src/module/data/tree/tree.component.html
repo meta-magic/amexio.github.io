@@ -12,7 +12,7 @@
         <div class="tree-node-label" *ngIf="enablecheckbox">
           <input type="checkbox" [checked]="'checked'?node.checked:null" (click)="emitCheckedData(node)" />
         </div>
-        <div [attr.draggable]="enabledrag" (drop)="drop({event:$event,data:node})" (dragover)="allowDrop({event:$event,data:node})"
+        <div [attr.draggable]="enabledrag" (dragleave)="dragleave($event)" (drop)="drop({event:$event,data:node})" (dragover)="allowDrop({event:$event,data:node})"
           (dragstart)="onDragStart({event:$event,data:node})" class="tree-node-label" (click)="onNodeClick(node)">
           <div class="tree-node-label" *ngIf="templates == null">
             <div class="tree-node-label" *ngIf="node.icon" [ngClass]="node.icon" aria-hidden="true">
@@ -35,7 +35,7 @@
   </div>
   <ul class="treenode-children" style="display: block;" *ngIf="node.expand && node.children && (node.children.length>0)">
     <amexio-treeview [enable-drag]="enabledrag" [enable-drop]="enabledrop" [data]="node.children" [dragData]="dragData" [parentRef]="parentRef" (onDrag)=onDragStart($event) (onDrop)=drop($event)
-      (nodeClick)="onNodeClick($event)" [across-tree]="acrosstree" [templates]="templates" [enable-checkbox]="enablecheckbox" [badge]="badge" (onTreeNodeChecked)="this.onTreeNodeCheck($event)"></amexio-treeview>
+      (nodeClick)="onNodeClick($event)" (dragleave)="($event)" [across-tree]="acrosstree" [templates]="templates" [enable-checkbox]="enablecheckbox" [badge]="badge" (onTreeNodeChecked)="this.onTreeNodeCheck($event)"></amexio-treeview>
 
   </ul>
 </li>
