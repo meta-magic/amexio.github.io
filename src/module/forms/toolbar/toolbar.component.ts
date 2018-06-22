@@ -85,7 +85,6 @@ tabPreviewData: any;
     }
   }
   onToolClick(tool: any) {
-debugger;
     if (!tool.disabled) {
       for (let i = 0; i < this.toolCollection.length; i++) {
         if (this.toolCollection[i] === tool) {
@@ -101,7 +100,6 @@ debugger;
 
   // THIS METHOD IS  FOR APPLIED SPERATOR CLASS
   getSeperatotClass(toolnode:any):any{
-    debugger;
   let cssName:string=' ';
     if(this.seperator){
       cssName='seperator-line ';
