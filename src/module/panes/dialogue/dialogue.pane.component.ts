@@ -238,7 +238,7 @@ description : Fire when user close dialogue
     this.custom = false;
     this.buttonsize='default';
     this.buttontype='theme-color';
-    this.closeonescape=false;
+    this.closeonescape=true;
     
 
   }
@@ -270,7 +270,7 @@ description : Fire when user close dialogue
   ngOnChanges(changes: SimpleChanges){
      
       //reassign show
-         if (changes['showdialogue']) {
+        if (changes['showdialogue']) {
       this.show = changes.showdialogue.currentValue;
     }  
    }

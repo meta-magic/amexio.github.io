@@ -204,7 +204,7 @@ description : close the window
   constructor() {
     this.header = true;
     this.closable = true;
-    this.closeonescape = false;
+    this.closeonescape = true;
     if ( this.verticalposition==null) {
       this.verticalposition = 'center';
     }
@@ -270,7 +270,7 @@ description : close the window
 
   ngOnChanges(changes: SimpleChanges){
      
-     //reassign show
+    //reassign show
     if (changes['showWindow']) {
       this.show = changes.showWindow.currentValue;
     }

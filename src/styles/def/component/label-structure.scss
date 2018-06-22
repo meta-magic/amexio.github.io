@@ -2,6 +2,7 @@
 .label-content{
 }
 .label-badge{
+  margin-left: 10px;
   display: inline-block;
   min-width: 10px;
   padding: 3px 7px;
@@ -18,7 +19,6 @@
   font-size: $largeFontSize;
   line-height: 34px;
 }
-
 .medium{
   font-size: $mediumFontSize;
 }
