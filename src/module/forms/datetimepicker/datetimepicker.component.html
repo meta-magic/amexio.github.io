@@ -60,7 +60,7 @@
         <ul class="days" [ngStyle]="{'display': datepicker ? 'block' : 'none'}">
 
             <ng-container *ngFor="let dayArray of daysArray">
-                <li *ngFor="let day of dayArray">
+                <li *ngFor="let day of dayArray" [ngClass]="{'date1':validateDays(day.date) , 'date1':day.isDisabled}" >
                     <span (click)="onDateClick(day.date)" class="day" [ngClass]="{'active':day.selected, 'currentMonth':day.isCurrentMonth, 'notCurrentMonth':!day.isCurrentMonth,'invaliddays':validateDays(day.date), 'disabled':day.isDisabled}">
                   {{ day.date | date:'d' }}
               </span>
@@ -102,6 +102,9 @@
             </tr>
 
         </table>
+
+
+
 
     </div>
 </div>

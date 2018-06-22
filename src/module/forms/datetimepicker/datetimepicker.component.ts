@@ -132,11 +132,8 @@ description : sets inline calender
   positionClass: any;
 
   /*
-Properties
+Events
 name : blur
-datatype : none
-version : none
-default : none
 description : On blur event
 */
   @Output() blur: EventEmitter<any> = new EventEmitter<any>();
@@ -144,9 +141,6 @@ description : On blur event
   /*
 Properties
 name : change
-datatype : none
-version : none
-default : none
 description : On field value change event
 */
   @Output() change: EventEmitter<any> = new EventEmitter<any>();
@@ -154,9 +148,6 @@ description : On field value change event
   /*
 Properties
 name : input
-datatype : none
-version : none
-default : none
 description : On input event field.
 */
   @Output() input: EventEmitter<any> = new EventEmitter<any>();
@@ -164,9 +155,6 @@ description : On input event field.
   /*
 Properties
 name : focus
-datatype : none
-version : none
-default : none
 description : On field focus event
 */
   @Output() focus: EventEmitter<any> = new EventEmitter<any>();
