@@ -139,11 +139,11 @@ description : Describes the badge value that has to be displayed tree node
   */
   @Output() onTreeNodeChecked: any = new EventEmitter<any>();
 
-  @Output() onDrag: any = new EventEmitter<any>();
+  @Output() onDrag: any = new EventEmitter<any>();  //Emits at drag
 
-  @Output() onDrop: any = new EventEmitter<any>();
+  @Output() onDrop: any = new EventEmitter<any>();   //emits at drop
 
-  @Output() dragover: any = new EventEmitter<any>();
+  @Output() dragover: any = new EventEmitter<any>();   //Emits at drag over
 
   @Input() dragData: any;
 
@@ -282,80 +282,71 @@ description : Describes the badge value that has to be displayed tree node
   }
 
   //Method to drag parent with node
-  drag(dragData: any) {
-    dragData.event.dataTransfer.setData('dragData', JSON.stringify(dragData.data));
+
+  onDragStart(dragData: any) {
+    dragData.event.dataTransfer.setData("treenodedata", JSON.stringify(dragData.data));
     dragData.event.dataTransfer.effectAllowed = "copy";
     this.dragData = dragData;
     this.onDrag.emit(dragData);
   }
 
-  // Dragover method
-  dragOver(dragOverData: any) {
-    event.preventDefault();
+  allowDrop(dragOverData: any) {
+    dragOverData.event.preventDefault();
     if (!this.enabledrop) {
-      dragOverData.event.dataTransfer.dropEffect = "none"
+      dragOverData.event.dataTransfer.dropEffect = "none";
     }
     this.noDragMethod(this.dragData, dragOverData.data, dragOverData.event);
     this.dragover.emit(dragOverData);
   }
 
-  //Method to retrict drag
-  noDragMethod(dragData: any, dropData: any, dragOverEvent: any) {
-    let dropData1 = {
-      dragData,
-      dropData,
-      dragOverEvent
-    }
-    if (dragData.data == dropData || dropData.leaf == true) {
-      dragOverEvent.dataTransfer.dropEffect = "none"
+  noDragMethod(dragData: any, node: any, event: any) {
+    if (dragData.data == node || node.leaf == true) {
+      event.dataTransfer.dropEffect = "none"
     }
     else if (dragData.data.hasOwnProperty('children')) {
-      this.getDropNode(dragData, dropData, dragOverEvent);
+      this.getDropNode(dragData, node, event);
     }
   }
 
-  getDropNode(dragData: any, dropData: any, dragOverEvent: any) {
+  getDropNode(dragData: any, node: any, event: any) {
     dragData.data.children.forEach((child: any) => {
-      if (JSON.stringify(child) == JSON.stringify(dropData) || dropData.leaf == true) {
-        dragOverEvent.dataTransfer.dropEffect = "none"
+      if (JSON.stringify(child) == JSON.stringify(node) || node.leaf == true) {
+        event.dataTransfer.dropEffect = "none"
       }
       else if (child.hasOwnProperty('children')) {
-        this.getDropNode(child.children, dropData, dragOverEvent);
+        this.getDropNode(child.children, node, event);
       }
     });
   }
 
-   //Drop Event
-   drop(dropData: any) {
+
+  drop(dropData: any) {
     if (this.enabledrop) {
+      dropData.event.preventDefault();
       if (this.acrosstree == false) {
-        dropData.event.preventDefault();
         if (this.dragData.data == dropData.data) {
           this.isNode = false;
         }
         else if (this.dragData.data.hasOwnProperty('children')) {
           this.checkNode(this.dragData, dropData);
         }
-
         if (this.isNode == true) {
           if (dropData.data.hasOwnProperty('children')) {
             this.removeNode(dropData);
-            dropData.data.children.push(JSON.parse(dropData.event.dataTransfer.getData('dragData')));
+            dropData.data.children.push(JSON.parse(dropData.event.dataTransfer.getData('treenodedata')));
             this.onDrop.emit(dropData);
           }
         }
       } else {
-        dropData.event.preventDefault();
         if (dropData.data.hasOwnProperty('children')) {
           this.removeNode(dropData);
-          dropData.data.children.push(JSON.parse(dropData.event.dataTransfer.getData('dragdata')));
+          dropData.data.children.push(JSON.parse(dropData.event.dataTransfer.getData('treenodedata')));
           this.onDrop.emit(dropData);
         }
       }
     }
   }
 
-  //Methos to drop child node aswell
   checkNode(dragData: any, dropData: any) {
     this.dragData.data.children.forEach((child: any) => {
       if (JSON.stringify(child) == JSON.stringify(dropData.data)) {
@@ -367,13 +358,10 @@ description : Describes the badge value that has to be displayed tree node
     });
   }
 
-
-  //Method to remove node after drop
   removeNode(data: any) {
-    this.removeDragNode(this.parentRef, JSON.parse(data.event.dataTransfer.getData('dragData')));
+    this.removeDragNode(this.parentRef, JSON.parse(data.event.dataTransfer.getData('treenodedata')));
   }
 
-  //Method to remove child node aswell after drop
   removeDragNode(treeData: any, dragNode: any) {
     treeData.forEach((childNode: any, index: number) => {
       if (JSON.stringify(childNode) == JSON.stringify(dragNode)) {
@@ -383,5 +371,4 @@ description : Describes the badge value that has to be displayed tree node
       }
     });
   }
-
 }
