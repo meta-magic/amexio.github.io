@@ -8,13 +8,13 @@ import {ToolBarActionComponent} from './toolbaraction.component';
 })
 export class ToolbarComponent implements OnInit {
 
- 
+
 /*
 Properties
 name :seperator
 datatype :boolean
 version : 4.2onwards
-default : 
+default :
 description : This will seperate the toolbar.
 */
 @Input("seperator") seperator:boolean;
@@ -23,7 +23,7 @@ Properties
 name :toolbarposition
 datatype :string
 version : 4.0 onwards
-default : 
+default :
 description : This will allign the toolbar.
 */
 @Input("toolbar-position") toolbarposition: string;
@@ -39,22 +39,22 @@ description : Callback to invoke on activated tab event.
 @Input() tabLocalData: any;
 tabPreviewData: any;
 
-  constructor() { 
+  constructor() {
    // this.justifycontent= "";
     this.toolbarposition="top";
     this.seperator=false;
-   
-    
+
+
   }
 
   @ContentChildren(ToolbaroneComponent) queryTool: QueryList<ToolbaroneComponent>;
   toolCollection: ToolbaroneComponent[];
 
   ngOnInit() {
-  
+
   }
-   
-  
+
+
   ngAfterContentInit() {
      // this.toolCollection=this.queryTo;
       this.toolCollection = this.queryTool.toArray();
@@ -67,25 +67,24 @@ tabPreviewData: any;
       //     console.log('COMPOENNT'+aa);
       //   }
       // });
-  
+
   }
   getToolbaritemposition(position:any):any{
-  
+
     if(position== 'right'){
-      return 'main-right';  
+      return 'main-right';
     }
     if(position == 'left'){
-      return 'main-left';  
+      return 'main-left';
     }
     if(position == 'center'){
-      return 'main-center';  
+      return 'main-center';
     }
     if(position == ''){
-      return 'main-center';  
+      return 'main-center';
     }
   }
   onToolClick(tool: any) {
-debugger;
     if (!tool.disabled) {
       for (let i = 0; i < this.toolCollection.length; i++) {
         if (this.toolCollection[i] === tool) {
