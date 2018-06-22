@@ -303,7 +303,10 @@ description : Describes the badge value that has to be displayed tree node
     if (dragData.data == node || node.leaf == true) {
       event.dataTransfer.dropEffect = "none"
     }
-    else if (dragData.data.hasOwnProperty('children')) {
+    else{	
+           event.target.style.border = "3px dotted green";	
+       }
+     if (dragData.data.hasOwnProperty('children')) {
       this.getDropNode(dragData, node, event);
     }
   }
@@ -322,6 +325,7 @@ description : Describes the badge value that has to be displayed tree node
 
   drop(dropData: any) {
     if (this.enabledrop) {
+      dropData.event.target.style.border = "";
       dropData.event.preventDefault();
       if (this.acrosstree == false) {
         if (this.dragData.data == dropData.data) {
@@ -371,4 +375,8 @@ description : Describes the badge value that has to be displayed tree node
       }
     });
   }
+
+  dragleave(event: any){
+    event.target.style.border = "";
+}
 }
