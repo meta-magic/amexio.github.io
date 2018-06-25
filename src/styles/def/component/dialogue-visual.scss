@@ -5,6 +5,11 @@
 .dialogue-content{
   background-color: $dialogueContentBG;
 }
+
+.dialogue-material-design{
+  background-color: white;
+  color: black;
+}
 .dialogue-header{
   background: $dialogueHeaderBG;
   color: $dialogueHeaderColor;
@@ -14,6 +19,7 @@
   background-color: $cardFooterBGColor;
   color: $cardFooterColor;
 }
+
 
 .dialogue-success {
   color: $dialogueSuccessColor;

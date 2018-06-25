@@ -5015,6 +5015,11 @@ verticalalign-tableft {
 .modal-window-content {
   background-color: #292b2c; }
 
+.modal-window-material {
+  background-color: white;
+  font-size: 20px;
+  color: black; }
+
 .modal-window-header {
   background: linear-gradient(#40434D, #000000);
   font-size: 20px;
@@ -5033,7 +5038,7 @@ verticalalign-tableft {
   background-color: #292b2c; }
 
 .modal-window-footer {
-  background-color: linear-gradient(#40434D, #000000);
+  background-color: white;
   color: #FEE12B; }
 
 /** window - Structure CSS **/
@@ -5067,6 +5072,12 @@ verticalalign-tableft {
   height: 100%;
   top: 0% !important;
   left: 0% !important; }
+
+.modal-window-material {
+  display: flex;
+  border-bottom: 2px solid #FEE12B;
+  font-weight: 300;
+  text-transform: capitalize; }
 
 .modal-window-header {
   display: flex;
@@ -5140,6 +5151,10 @@ verticalalign-tableft {
 .dialogue-content {
   background-color: #292b2c; }
 
+.dialogue-material-design {
+  background-color: white;
+  color: black; }
+
 .dialogue-header {
   background: linear-gradient(#40434D, #000000);
   color: rgba(255, 255, 255, 0.7); }
@@ -5192,6 +5207,13 @@ verticalalign-tableft {
 
 .dialogue-content > * {
   padding: 5px; }
+
+.dialogue-material-design {
+  display: flex;
+  border-bottom: 2px solid #FEE12B;
+  font-size: 20px;
+  font-weight: 300;
+  text-transform: capitalize; }
 
 .dialogue-header {
   display: flex;
