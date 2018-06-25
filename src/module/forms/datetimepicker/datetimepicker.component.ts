@@ -132,11 +132,8 @@ description : sets inline calender
   positionClass: any;
 
   /*
-Properties
+Events
 name : blur
-datatype : none
-version : none
-default : none
 description : On blur event
 */
   @Output() blur: EventEmitter<any> = new EventEmitter<any>();
@@ -144,9 +141,6 @@ description : On blur event
   /*
 Properties
 name : change
-datatype : none
-version : none
-default : none
 description : On field value change event
 */
   @Output() change: EventEmitter<any> = new EventEmitter<any>();
@@ -154,9 +148,6 @@ description : On field value change event
   /*
 Properties
 name : input
-datatype : none
-version : none
-default : none
 description : On input event field.
 */
   @Output() input: EventEmitter<any> = new EventEmitter<any>();
@@ -164,9 +155,6 @@ description : On input event field.
   /*
 Properties
 name : focus
-datatype : none
-version : none
-default : none
 description : On field focus event
 */
   @Output() focus: EventEmitter<any> = new EventEmitter<any>();
@@ -329,39 +317,67 @@ description : On field focus event
     this.setDateData1("minus", 12, event);
   }
   //this function validates month
-  setDateData(state: string, mon: number, event: any) {
+  setDateData(state: string, mon: number, event: any) { debugger;
     let d = new Date(this.currrentDate.getFullYear(), this.currrentDate.getMonth(), this.currrentDate.getDate());
     let min = new Date(this.minDate);
     let max = new Date(this.maxDate);
     //checks if selected date is within maximum range of month
     if (state === "plus") {
-      if (this.minDate.length > 0) {
+      debugger;
+      if (this.maxDate.length > 0) {
+        debugger;
         if (d.getFullYear() == max.getFullYear()) {
+          debugger;
           if (d.getMonth() == max.getMonth()) {
+
             // event.stopPropagation();
           }
           else {
-            d.setMonth(d.getMonth() + mon);
+            debugger;
+            //*********check here******************* */
+            //logic to chk if year is valid
+            if(d.getFullYear()<=max.getFullYear()){
+              if(d.getMonth()<=max.getMonth()){
+
+                d.setMonth(d.getMonth() + mon);
+              }
+            }
           }
         } else {
+          debugger;
+           //logic to chk if year is valid
+           if(d.getFullYear()<=max.getFullYear())
           d.setMonth(d.getMonth() + mon);
         }
       }//outer ends
       else {
+        debugger;
         d.setMonth(d.getMonth() + mon);
       }
     }
     //checks if selected date is within minimum range of month
     else if (state === "minus") {
-      if (this.maxDate.length > 0) {
+      debugger;
+      if (this.minDate.length > 0) {
+        debugger;
         if (d.getFullYear() == min.getFullYear()) {
+          debugger;
           if (d.getMonth() == min.getMonth()) {
             // event.stopPropagation();
           }
-          else {
-            d.setMonth(d.getMonth() - mon);
+          else { //logic to chk if year is valid
+            debugger;
+           if(d.getFullYear()>=min.getFullYear()){
+             debugger;
+             if(d.getMonth()>=min.getMonth()){
+               debugger;
+              d.setMonth(d.getMonth() - mon);
+             }
+           }
+           
           }
         } else {
+          debugger;
           d.setMonth(d.getMonth() - mon);
         }
       }
