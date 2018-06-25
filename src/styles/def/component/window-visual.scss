@@ -1,10 +1,16 @@
 
 
-.root-window{  
-  background-color: $modalBGColor; /* Black w/ opacity */  
+.root-window{
+  background-color: $modalBGColor; /* Black w/ opacity */
 }
 .modal-window-content{
   background-color: $modalBGColor;
+}
+
+.modal-window-material{
+  background-color: white;
+  font-size: 20px;
+  color: black;
 }
 .modal-window-header{
   background: $modalHeaderBGColor;
@@ -27,6 +33,6 @@
   background-color: $modalWindowScrollThumbColor;
 }
 .modal-window-footer{
-  background-color: $modalFooterBGColor;
+  background-color: white;
   color: $modalFooterColor;
 }
