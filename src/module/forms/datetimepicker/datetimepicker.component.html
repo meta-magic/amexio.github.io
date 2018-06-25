@@ -1,21 +1,23 @@
+ 
+
+
 <div>
-    <div class="inputgroup" #rootDiv>
+    <div class="inputgroup" *ngIf="!inlineDatepicker" #rootDiv>
 
         <label>
-      {{fieldlabel}}
-    </label>
+            {{fieldlabel}}
+        </label>
 
         <ng-container *ngIf="datepicker && !timepicker">
-            <input type="text" #pickerDt value="{{dateModel|date:dateformat}}" [attr.disabled]="disabled ? true: null" [required]="required ? true: null" (blur)="onBlur()" (focus)="onFocus(rootDiv)" (focusout)="onFocusOut(pickerDt)" (change)="change.emit()" class="input-control" 
-            [ngStyle]="{'cursor': readonly ? 'not-allowed':'pointer'}" placeholder="Choose Date"
-            />
+            <input type="text" #pickerDt value="{{dateModel|date:dateformat}}" [attr.disabled]="disabled ? true: null" [required]="required ? true: null"
+                (blur)="onBlur()" (focus)="onFocus(rootDiv)" (focusout)="onFocusOut(pickerDt)" (change)="change.emit()" class="input-control"
+                [ngStyle]="{'cursor': readonly ? 'not-allowed':'pointer'}" placeholder="Choose Date" />
         </ng-container>
 
         <ng-container *ngIf="timepicker">
-            <input type="text" value="{{dateModel|date:dateformat}} {{hrs + ' : ' + min}}" [attr.disabled]="disabled ? true: null" [attr.required]="required ? true: null"(blur)="onBlur()" (focus)="onFocus(rootDiv)" (input)="onInput($event)" (change)="change.emit()" class="input-control" 
-            [ngStyle]="{'cursor': readonly ? 'not-allowed':'pointer'}"
-             placeholder="Choose Time"
-            />
+            <input type="text" value="{{dateModel|date:dateformat}} {{hrs + ' : ' + min}}" [attr.disabled]="disabled ? true: null" [attr.required]="required ? true: null"
+                (blur)="onBlur()" (focus)="onFocus(rootDiv)" (input)="onInput($event)" (change)="change.emit()" class="input-control"
+                [ngStyle]="{'cursor': readonly ? 'not-allowed':'pointer'}" placeholder="Choose Time" />
         </ng-container>
 
         <div class="drodown-caret-down" style="cursor: pointer" (click)="openPicker(rootDiv)">
@@ -31,7 +33,9 @@
 
 
     </div>
-    <div *ngIf="showToolTip" [ngStyle]="positionClass" class="datetimepicker">
+    <div *ngIf="showToolTip" [ngStyle]="positionClass" [ngClass]="{'datetimepicker1':inlineDatepicker , 'datetimepicker':!inlineDatepicker}" 
+
+    >
 
         <div class="datetimepickertopbar" [ngStyle]="{'display': datepicker ? 'block' : 'none'}">
             <ul>
@@ -47,7 +51,8 @@
                     <!--<i (click)="nextYear($event)" class="fa fa-step-forward" aria-hidden="true"></i>-->
                     <amexio-form-icon key="datepicker_next_fast" (onClick)="nextYear($event)"></amexio-form-icon>
                 </li>
-                <li>{{selectedDate | date:'MMMM'}}<br>
+                <li>{{selectedDate | date:'MMMM'}}
+                    <br>
                     <span class="title">{{selectedDate | date:'y'}}</span>
                 </li>
             </ul>
@@ -60,10 +65,10 @@
         <ul class="days" [ngStyle]="{'display': datepicker ? 'block' : 'none'}">
 
             <ng-container *ngFor="let dayArray of daysArray">
-                <li *ngFor="let day of dayArray" [ngClass]="{'date1':validateDays(day.date) , 'date1':day.isDisabled}" >
+                <li *ngFor="let day of dayArray" [ngClass]="{'date1':validateDays(day.date) , 'date1':day.isDisabled}">
                     <span (click)="onDateClick(day.date)" class="day" [ngClass]="{'active':day.selected, 'currentMonth':day.isCurrentMonth, 'notCurrentMonth':!day.isCurrentMonth,'invaliddays':validateDays(day.date), 'disabled':day.isDisabled}">
-                  {{ day.date | date:'d' }}
-              </span>
+                        {{ day.date | date:'d' }}
+                    </span>
                 </li>
             </ng-container>
 

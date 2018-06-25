@@ -35,6 +35,41 @@
   }
 }
 
+.datetimepicker1{
+  background: $datetimepickerBGColor;
+
+  .datetimepickertopbar {
+    background: $datetimepickertopbarBGColor;
+
+    ul {
+    }
+
+    ul li {
+      color:$datetimepickerTopBarColor;
+    }
+  }
+
+  .days {
+    background: $datetimepickerDaysBGColor;
+
+    li {
+      color:$datetimepickerDaysColor;
+    }
+
+    li:hover {
+      color: $datetimepickertopbarBGColor;
+    }
+    .active {
+      background: $datetimepickertopbarBGColor;
+      color: $datetimepickerActiveColor;
+    }
+
+    .currentMonth{
+      font-weight:bold;
+    }
+  }
+}
+
 .datetimepicker-up{
   bottom: 100%;
 }
