@@ -317,23 +317,23 @@ description : On field focus event
     this.setDateData1("minus", 12, event);
   }
   //this function validates month
-  setDateData(state: string, mon: number, event: any) { debugger;
+  setDateData(state: string, mon: number, event: any) { 
     let d = new Date(this.currrentDate.getFullYear(), this.currrentDate.getMonth(), this.currrentDate.getDate());
     let min = new Date(this.minDate);
     let max = new Date(this.maxDate);
     //checks if selected date is within maximum range of month
     if (state === "plus") {
-      debugger;
+     
       if (this.maxDate.length > 0) {
-        debugger;
+        
         if (d.getFullYear() == max.getFullYear()) {
-          debugger;
+         
           if (d.getMonth() == max.getMonth()) {
 
             // event.stopPropagation();
           }
           else {
-            debugger;
+          
             //*********check here******************* */
             //logic to chk if year is valid
             if(d.getFullYear()<=max.getFullYear()){
@@ -344,40 +344,40 @@ description : On field focus event
             }
           }
         } else {
-          debugger;
+           
            //logic to chk if year is valid
            if(d.getFullYear()<=max.getFullYear())
           d.setMonth(d.getMonth() + mon);
         }
       }//outer ends
       else {
-        debugger;
+         
         d.setMonth(d.getMonth() + mon);
       }
     }
     //checks if selected date is within minimum range of month
     else if (state === "minus") {
-      debugger;
+       
       if (this.minDate.length > 0) {
-        debugger;
+        
         if (d.getFullYear() == min.getFullYear()) {
-          debugger;
+         
           if (d.getMonth() == min.getMonth()) {
             // event.stopPropagation();
           }
           else { //logic to chk if year is valid
-            debugger;
+          
            if(d.getFullYear()>=min.getFullYear()){
-             debugger;
+           
              if(d.getMonth()>=min.getMonth()){
-               debugger;
+            
               d.setMonth(d.getMonth() - mon);
              }
            }
            
           }
         } else {
-          debugger;
+          
           d.setMonth(d.getMonth() - mon);
         }
       }
