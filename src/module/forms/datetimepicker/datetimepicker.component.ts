@@ -317,39 +317,65 @@ description : On field focus event
     this.setDateData1("minus", 12, event);
   }
   //this function validates month
-  setDateData(state: string, mon: number, event: any) {
+  setDateData(state: string, mon: number, event: any) {  
     let d = new Date(this.currrentDate.getFullYear(), this.currrentDate.getMonth(), this.currrentDate.getDate());
     let min = new Date(this.minDate);
     let max = new Date(this.maxDate);
     //checks if selected date is within maximum range of month
     if (state === "plus") {
-      if (this.minDate.length > 0) {
+      
+      if (this.maxDate.length > 0) {
+         
         if (d.getFullYear() == max.getFullYear()) {
+          
           if (d.getMonth() == max.getMonth()) {
+
             // event.stopPropagation();
           }
           else {
-            d.setMonth(d.getMonth() + mon);
+                       //*********check here******************* */
+            //logic to chk if year is valid
+            if(d.getFullYear()<=max.getFullYear()){
+              if(d.getMonth()<=max.getMonth()){
+
+                d.setMonth(d.getMonth() + mon);
+              }
+            }
           }
         } else {
+           
+           //logic to chk if year is valid
+           if(d.getFullYear()<=max.getFullYear())
           d.setMonth(d.getMonth() + mon);
         }
       }//outer ends
       else {
+         
         d.setMonth(d.getMonth() + mon);
       }
     }
     //checks if selected date is within minimum range of month
     else if (state === "minus") {
-      if (this.maxDate.length > 0) {
+      
+      if (this.minDate.length > 0) {
+       
         if (d.getFullYear() == min.getFullYear()) {
-          if (d.getMonth() == min.getMonth()) {
+                  if (d.getMonth() == min.getMonth()) {
             // event.stopPropagation();
           }
-          else {
-            d.setMonth(d.getMonth() - mon);
+          else { //logic to chk if year is valid
+         
+           if(d.getFullYear()>=min.getFullYear()){
+             
+             if(d.getMonth()>=min.getMonth()){
+                
+              d.setMonth(d.getMonth() - mon);
+             }
+           }
+           
           }
         } else {
+           
           d.setMonth(d.getMonth() - mon);
         }
       }
