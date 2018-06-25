@@ -3459,8 +3459,12 @@ header .billboard .content-button {
 
 .tree-node-label {
   white-space: nowrap;
-  display: inline;
+  display: inline-block;
+  vertical-align: middle;
   cursor: pointer; }
+
+.tree-node-label-hover {
+  width: 100%; }
 
 .tree-badge {
   margin-left: 10px;
