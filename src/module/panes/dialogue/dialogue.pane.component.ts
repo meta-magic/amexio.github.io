@@ -20,7 +20,7 @@ export enum KEY_CODE {
          [ngStyle]="{'display' : show  ? 'block' : 'none'}">
       <div class="dialogue-sm">
         <div class="dialogue-content">
-          <header class="dialogue-header">
+          <header [ngClass]="{ 'dialogue-material-design':materialDesign ,'dialogue-header':!materialDesign}" >
             <div class="dialogue-table">
               <div class="tablerow">
                 <div class="tablecol">
@@ -75,7 +75,7 @@ version : 4.2onwards
 default : false
 description : Enables And Disables the Escape button.
 */
-@Input('close-on-escape')  closeonescape: boolean;  
+@Input('close-on-escape')  closeonescape: boolean;
   /*
 Properties
 name : button-type
@@ -86,13 +86,13 @@ description : show the type of button.
 */
 @Input('button-type')  buttontype: string;
   /*
-Properties 
+Properties
 name : button-size
 datatype :  string
 version : 4.2 onwards
-default : 
+default :
 description : Different Sizes of Buttons availabe : large, default, small & xsmall
-*/ 
+*/
 @Input('button-size') buttonsize: string="large"|| "small"||"default"||"xsmall";
 
  /*
@@ -128,8 +128,8 @@ description : 	Show / Hide Dialogue..
   @Input() show : boolean;
 
   @Output() showChange : EventEmitter<any> = new EventEmitter<any>();
-  
-  
+
+
 
   /*
 Properties
@@ -146,7 +146,7 @@ Properties
 name : title
 datatype :  string
 version : 4.0 onwards
-default : 
+default :
 description : Title for dialog.
 */
   @Input() title: string;
@@ -156,7 +156,7 @@ Properties
 name :  message
 datatype :  string
 version : 4.0 onwards
-default : 
+default :
 description : Alert or confirm message
 */
   @Input() message: string;
@@ -196,7 +196,7 @@ Properties
 name : secondary-action-label
 datatype :  string
 version : 4.0 onwards
-default : 
+default :
 description : Label to be displayed for secondary action.
 */
   @Input('secondary-action-label') secondaryactionlabel  : string;
@@ -206,13 +206,16 @@ Properties
 name : message-type
 datatype :  string
 version : 4.0 onwards
-default : 
+default :
 description : Type of message like error,warning,help.
 */
   @Input('message-type') messagetype  : string;
 
-    /*
- Events
+  @Input ('material-design') materialDesign : boolean;
+
+
+  /*
+Events
 name : actionStatus
 datatype :  none
 version : none
@@ -239,7 +242,7 @@ description : Fire when user close dialogue
     this.buttonsize='default';
     this.buttontype='theme-color';
     this.closeonescape=true;
-    
+
 
   }
   @HostListener('window:keyup', ['$event'])
@@ -256,7 +259,7 @@ description : Fire when user close dialogue
   }
 
   ngOnInit() {
-   
+
     if(this.showdialogue) {
     this.show = this.showdialogue;
     }
@@ -268,17 +271,17 @@ description : Fire when user close dialogue
   }
 
   ngOnChanges(changes: SimpleChanges){
-     
+
       //reassign show
         if (changes['showdialogue']) {
       this.show = changes.showdialogue.currentValue;
-    }  
+    }
    }
 
   onCloseClick() {
-  
+
     if (this.closable) {
-  
+
       this.showdialogue  = false ;
       this.show=false;
       this.showChange.emit(false);
@@ -286,7 +289,7 @@ description : Fire when user close dialogue
     }
   }
     getStatus(v : any){
- 
+
       this.onCloseClick();
       this.actionStatus.emit(v);
     }
@@ -296,9 +299,9 @@ description : Fire when user close dialogue
 
 
 
- 
 
-  
+
+
 
 
 

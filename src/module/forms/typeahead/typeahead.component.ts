@@ -409,7 +409,6 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
 
   }
 
-
   setData(httpResponse: any) {
     //Check if key is added?
     let responsedata = httpResponse;

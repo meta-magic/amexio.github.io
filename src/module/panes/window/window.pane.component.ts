@@ -22,7 +22,7 @@ export enum KEY_CODE_window {
          [ngStyle]="{'display' : show ? 'block' : 'none'}" >
       <div class="modal-window-lg" [ngStyle]="{'height': bodyHeight ? '100%':'auto'}">
         <div class="modal-window-content" [ngClass]="setClass()" [style.height]="bodyHeight+'%'">
-          <header class="modal-window-header" *ngIf="header">
+          <header [ngClass]="{ 'modal-window-header':!materialDesign,'modal-window-material':materialDesign}" *ngIf="header"   >
             <div class="modal-window-table">
               <div class="tablerow">
                 <div class="tablecol">
@@ -59,7 +59,7 @@ export enum KEY_CODE_window {
 })
 export class AmexioWindowPaneComponent implements OnInit,OnChanges {
   /*
-Properties 
+Properties
 name : vertical-position
 datatype : string
 version : 4.1 onwards
@@ -68,7 +68,7 @@ description : Postion of window vertically: top or bottom or center. This attrib
 */
   @Input('vertical-position') verticalposition: string;
   /*
-  Properties 
+  Properties
   name : horizontal-position
   datatype : none
   version : 4.1 onwards
@@ -86,7 +86,7 @@ description : Enables And Disables the Escape button.
 */
   @Input('close-on-escape') closeonescape: boolean;
   /*
-  Properties 
+  Properties
   name : position-top
   datatype : none
   version : 4.2 onwards
@@ -95,7 +95,7 @@ description : Enables And Disables the Escape button.
   */
   @Input('position-top') top: string;
   /*
-  Properties 
+  Properties
   name : position-bottom
   datatype : none
   version : 4.2onwards
@@ -104,7 +104,7 @@ description : Enables And Disables the Escape button.
   */
   @Input('position-bottom') bottom: string;
   /*
-  Properties 
+  Properties
   name : relative
   datatype : boolean
   version : 4.1 onwards
@@ -114,7 +114,7 @@ description : Enables And Disables the Escape button.
   @Input('relative') relative: boolean = false;
 
   /*
-Properties 
+Properties
 name : footer-align
 datatype : string
 version : 4.0 onwards
@@ -124,7 +124,7 @@ description : Alignment of footer contents to right or left.
   @Input('footer-align') footeralign: string;
 
   /*
-Properties 
+Properties
 name : show-window
 datatype : boolean
 version : 4.0 onwards
@@ -132,6 +132,8 @@ default : false
 description : Show / Hide Window.
 */
   @Input('show-window') showWindow: boolean;
+
+  @Input ('material-design') materialDesign : boolean;
 
   @Input() show: boolean;
 
@@ -141,7 +143,7 @@ description : Show / Hide Window.
 
 
   /*
-Properties 
+Properties
 name : body-height
 datatype : string
 version : 4.0 onwards
@@ -153,7 +155,7 @@ description : Assign body height in percentage, in case of maximize=true it will
   isFullWindow: boolean;
 
   /*
-Properties 
+Properties
 name : maximize
 datatype : boolean
 version : 4.0 onwards
@@ -163,7 +165,7 @@ description : User can maximize the window to full screen.
   @Input() maximize: boolean;
 
   /*
-Properties 
+Properties
 name : closable
 datatype : boolean
 version : 4.0 onwards
@@ -173,7 +175,7 @@ description : User can close the window.
   @Input() closable: boolean;
 
   /*
-Properties 
+Properties
 name : header
 datatype : boolean
 version : 4.0 onwards
@@ -183,7 +185,7 @@ description : it is flag that decides header visibility
   @Input() header: boolean;
 
   /*
-Properties 
+Properties
 name : footer
 datatype : boolean
 version : 4.0 onwards
@@ -232,13 +234,13 @@ description : close the window
   }
 
 
-  //Escape Key Functionality 
+  //Escape Key Functionality
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
     if (this.closeonescape == true) {
       if (event.keyCode == KEY_CODE_window.esc) {
         this.showWindow = false;
-        this.showChange.emit(false);  
+        this.showChange.emit(false);
 
       }
 
@@ -269,13 +271,13 @@ description : close the window
   }
 
   ngOnChanges(changes: SimpleChanges){
-     
+
     //reassign show
     if (changes['showWindow']) {
       this.show = changes.showWindow.currentValue;
     }
 
-  
+
  }
   setClass():any {
     let styleClass: string;

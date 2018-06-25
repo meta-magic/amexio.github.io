@@ -2521,7 +2521,8 @@ input:checked + .toggle-slider:before {
 
 .advancesearchbtn {
   height: 37px;
-  font-weight: bold; }
+  font-weight: bold;
+  cursor: pointer; }
 
 /****************************************************************************
     Component Name : Enterprise Content
@@ -4938,6 +4939,11 @@ verticalalign-tableft {
 .modal-window-content {
   background-color: rgba(0, 43, 87, 0.7); }
 
+.modal-window-material {
+  background-color: white;
+  font-size: 20px;
+  color: black; }
+
 .modal-window-header {
   background: none;
   font-size: 20px;
@@ -4956,7 +4962,7 @@ verticalalign-tableft {
   background-color: rgba(0, 43, 87, 0.7); }
 
 .modal-window-footer {
-  background-color: none;
+  background-color: white;
   color: #F3C22A; }
 
 /** window - Structure CSS **/
@@ -4990,6 +4996,12 @@ verticalalign-tableft {
   height: 100%;
   top: 0% !important;
   left: 0% !important; }
+
+.modal-window-material {
+  display: flex;
+  border-bottom: 1px solid #F3C22A;
+  font-weight: 300;
+  text-transform: capitalize; }
 
 .modal-window-header {
   display: flex;
@@ -5063,6 +5075,10 @@ verticalalign-tableft {
 .dialogue-content {
   background-color: rgba(0, 43, 87, 0.7); }
 
+.dialogue-material-design {
+  background-color: white;
+  color: black; }
+
 .dialogue-header {
   background: none;
   color: #1FBCD2; }
@@ -5115,6 +5131,13 @@ verticalalign-tableft {
 
 .dialogue-content > * {
   padding: 5px; }
+
+.dialogue-material-design {
+  display: flex;
+  border-bottom: 1px solid #F3C22A;
+  font-size: 20px;
+  font-weight: 300;
+  text-transform: capitalize; }
 
 .dialogue-header {
   display: flex;

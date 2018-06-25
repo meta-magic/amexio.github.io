@@ -15,11 +15,12 @@
  // z-index: 1; /* Sit on top */
   //padding-top: 100px; /* Location of the box */
  // width: 100%;
-  
+
   height: 100%;
-  
+
   //overflow: auto; /* Enable scroll if needed */
 }
+
 
 .modal-window-content{
   position: absolute;
@@ -52,6 +53,12 @@
   left: 0% !important;
 }
 
+.modal-window-material{
+  display: flex;
+  border-bottom: $modalBorderSize solid $modalBorderColor;
+  font-weight: 300;
+  text-transform: capitalize;
+}
 
 .modal-window-header{
   display: flex;
@@ -125,22 +132,22 @@
 }
 .window-left{
   left:20px;
-  
+
   }
-  
+
   .window-right{
     right:7px;
   }
-  
+
   .window-top{
     top:10px;
   }
-  
+
   .window-center{
     top:20%;
     left: 10%;
   }
-  
+
   .window-bottom{
     bottom:10%;
   }
