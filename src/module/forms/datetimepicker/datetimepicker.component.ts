@@ -117,6 +117,16 @@ default : none
 description : sets inline calender
 */  
   @Input('inline-datepicker') inlineDatepicker: boolean = false;
+/*
+Properties
+name : dropdown-datepicker
+datatype :  boolean
+version : 4.2 onwards
+default : none
+description : sets dropdown datepicker
+*/  
+@Input('dropdown-datepicker') dropdownDatepicker: boolean = true;  
+  
   /*
   Properties
   name : required
@@ -182,6 +192,9 @@ description : On field focus event
 
 
   constructor(public element: ElementRef) {
+    if(this.inlineDatepicker){
+      this.showToolTip=true;
+    }
     this.minDate = "";
     this.maxDate = "";
     
@@ -199,7 +212,9 @@ description : On field focus event
 
 
   ngOnInit() {
-
+    if(this.inlineDatepicker){
+      this.showToolTip=true;
+    }
     this.isComponentValid = !this.required;
     if (this.dateformat != null) {
       this.dateformat = "dd/MM/yyyy";
@@ -263,7 +278,12 @@ description : On field focus event
     this.dateModel = this.selectedDate;
     this.value = this.selectedDate;
     this.isComponentValid = true;
+    if(this.inlineDatepicker){
+      this.showToolTip=true;
+    }
+    else{
     this.showToolTip = !this.showToolTip;
+    }
   }
 
   resetSelection(dateObj: any) {
@@ -563,7 +583,13 @@ description : On field focus event
   }
 
   openPicker(elem: any) {
-    this.showToolTip = true;
+    if(this.inlineDatepicker){
+      this.showToolTip=this.inlineDatepicker;
+    }
+    else{
+this.showToolTip=true;
+    }
+    //this.showToolTip = true;
     this.posixUp = this.getListPosition(elem);
 
   }
@@ -671,5 +697,8 @@ description : On field focus event
       });
     });
   }
+
+ 
+ 
 
 }
