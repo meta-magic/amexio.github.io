@@ -8,12 +8,12 @@
         <i class="fa " [ngClass]="{'fa-angle-down':node.expand,'fa-angle-right':!node.expand}"></i>
       </div>
 
-      <div class="tree-node-label tree-node-label-hover">
+      <div class="tree-node-label tree-node-label-hover" [attr.draggable]="enabledrag" (dragleave)="dragleave($event)" (drop)="drop({event:$event,data:node})" (dragover)="allowDrop({event:$event,data:node})"
+      (dragstart)="onDragStart({event:$event,data:node})">
         <div class="tree-node-label" *ngIf="enablecheckbox">
           <input type="checkbox" [checked]="'checked'?node.checked:null" (click)="emitCheckedData(node)" />
         </div>
-        <div [attr.draggable]="enabledrag" (dragleave)="dragleave($event)" (drop)="drop({event:$event,data:node})" (dragover)="allowDrop({event:$event,data:node})"
-          (dragstart)="onDragStart({event:$event,data:node})" class="tree-node-label" (click)="onNodeClick(node)">
+        <div class="tree-node-label" (click)="onNodeClick(node)">
           <div class="tree-node-label" *ngIf="templates == null">
             <div class="tree-node-label" *ngIf="node.icon" [ngClass]="node.icon" aria-hidden="true">
             </div>
