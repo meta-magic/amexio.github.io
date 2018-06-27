@@ -1179,8 +1179,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
   }
 
   sortOnColHeaderClick(sortCol: any, event: any) {
-    debugger;
-    this.onHeaderClick.emit({event: event, data: sortCol});
+     this.onHeaderClick.emit({event: event, data: sortCol});
     if(sortCol.sort) {
       if (this.sortBy === -1) {
         this.sortBy = 1;
@@ -1196,8 +1195,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
   }
 
   setSortColumn(sortCol: any, _sortBy: number) {
-    debugger;
-    /*------set column sort false for other column--------*/
+     /*------set column sort false for other column--------*/
    this.columns.forEach((opt) => {
     opt['isColumnSort'] = false;
   });
@@ -1210,7 +1208,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
   }
 
   sortData() {
-    debugger;
+     
     if (this.sortColumn) {
       let sortColDataIndex: any;
       const sortOrder = this.sortBy;
