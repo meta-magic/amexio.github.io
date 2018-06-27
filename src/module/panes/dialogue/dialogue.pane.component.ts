@@ -20,7 +20,8 @@ export enum KEY_CODE {
          [ngStyle]="{'display' : show  ? 'block' : 'none'}">
       <div class="dialogue-sm">
         <div class="dialogue-content">
-          <header [ngClass]="{ 'dialogue-material-design':materialDesign ,'dialogue-header':!materialDesign}" >
+          <header [ngClass]="{ 'dialogue-material-design':materialDesign ,'dialogue-header':!materialDesign }"
+          >
             <div class="dialogue-table">
               <div class="tablerow">
                 <div class="tablecol">
@@ -56,10 +57,15 @@ export enum KEY_CODE {
                   [ngClass]="{'flex-start':(footeralign=='left'),'flex-end':(footeralign=='right'),'flex-center':(footeralign=='center')}">
             <ng-content select="amexio-action"></ng-content>
           </footer>
+
           <footer *ngIf="!custom" class="dialogue-footer"
-                  [ngClass]="{'flex-start':(footeralign=='left'),'flex-end':(footeralign=='right'),'flex-center':(footeralign=='center')}">
-            <amexio-button *ngIf="type =='confirm'"  [size]="buttonsize" [label]="secondaryactionlabel " [type]="default" (onClick)="getStatus('cancel')"></amexio-button>&nbsp;&nbsp;
-            <amexio-button *ngIf="type =='confirm' || type == 'alert'"   [size]="buttonsize" [label]="primaryactionlabel" [type]="buttontype" (onClick)="getStatus('ok')"></amexio-button>
+                  [ngClass]="{'dialogue-material-design-footer':materialDesign ,'dialogue-footer':!materialDesign, 'flex-start':(footeralign=='left'),'flex-end':(footeralign=='right'),'flex-center':(footeralign=='center')}">
+            <amexio-button *ngIf="type =='confirm'"  [size]="buttonsize" [label]="secondaryactionlabel " [type]="getDefaultStyle()" (onClick)="getStatus('cancel')"></amexio-button>&nbsp;&nbsp;
+           <div  class="custom-btn">
+           <amexio-button *ngIf="type =='confirm' || type == 'alert'"   [size]="buttonsize" [label]="primaryactionlabel" 
+            [ngStyle]="{'color':materialDesign ? 'blue':'white'}" [type]="getStyle()" (onClick)="getStatus('ok')"></amexio-button>
+           </div>
+            
           </footer>
         </div>
       </div>
@@ -293,6 +299,28 @@ export class AmexiodialoguePaneComponent implements OnInit, OnChanges{
     this.onCloseClick();
     this.actionStatus.emit(v);
   }
+
+  getDefaultStyle()
+  {
+    if(this.materialDesign)
+    {
+      return  'transparent';
+    }else{
+      return 'defualt';
+    }
+  }
+
+  getStyle()
+  {
+    if(this.materialDesign)
+    {
+      this.buttontype = 'transparent';
+      return  this.buttontype;
+    }else{
+      return this.buttontype;
+    }
+  }
+
 }
 
 

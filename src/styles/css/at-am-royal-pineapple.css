@@ -5059,6 +5059,7 @@ verticalalign-tableft {
   position: absolute;
   margin: auto;
   padding: 0px;
+  border-radius: .3rem;
   border: 1px solid #888;
   width: 80%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
@@ -5073,10 +5074,12 @@ verticalalign-tableft {
   top: 0% !important;
   left: 0% !important; }
 
-.modal-window-material {
+.window-material-design-header {
   display: flex;
   border-bottom: 2px solid #FEE12B;
   font-weight: 300;
+  border-radius: .3rem;
+  font-size: 20px;
   text-transform: capitalize; }
 
 .modal-window-header {
@@ -5101,6 +5104,13 @@ verticalalign-tableft {
 .modal-window-middle::-webkit-scrollbar {
   width: 6px; }
 
+.window-material-design-footer {
+  display: flex;
+  border-top: 1px solid #eceeef;
+  padding-right: 16px;
+  background-color: white;
+  border-radius: 0 0 .3rem .3rem; }
+
 .modal-window-footer {
   display: flex;
   border-top: 2px solid #FEE12B; }
@@ -5111,6 +5121,11 @@ verticalalign-tableft {
 
 .modal-window-table .tablerow {
   display: table-row; }
+
+.window-material-design-header .modal-window-table .tablerow .tablecol {
+  display: table-cell;
+  vertical-align: middle;
+  padding-bottom: 15px; }
 
 .modal-window-table .tablerow .tablecol {
   display: table-cell;
@@ -5200,6 +5215,7 @@ verticalalign-tableft {
   padding: 0px;
   width: 80%;
   height: 80%;
+  border-radius: .3rem;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
 
 .dialogue-min {
@@ -5210,10 +5226,13 @@ verticalalign-tableft {
 
 .dialogue-material-design {
   display: flex;
-  border-bottom: 2px solid #FEE12B;
+  border-radius: .3rem;
   font-size: 20px;
   font-weight: 300;
-  text-transform: capitalize; }
+  text-transform: capitalize;
+  color: black;
+  padding: 10px;
+  border-bottom: 1px solid #eceeef; }
 
 .dialogue-header {
   display: flex;
@@ -5223,6 +5242,8 @@ verticalalign-tableft {
   text-transform: capitalize; }
 
 .dialogue-middle {
+  padding-top: 20px;
+  padding-bottom: 20px;
   font-size: 14px;
   line-height: 24px;
   font-weight: 400;
@@ -5232,9 +5253,24 @@ verticalalign-tableft {
   overflow-y: hidden;
   overflow-x: hidden; }
 
+.dialogue-material-design-footer {
+  display: flex;
+  border-top: 1px solid #eceeef;
+  padding: 5px; }
+  .dialogue-material-design-footer .button-transparent {
+    border: none !important;
+    box-shadow: none !important;
+    font-size: 1rem; }
+  .dialogue-material-design-footer .custom-btn .button-text {
+    font-size: 1rem;
+    color: blue; }
+
 .dialogue-footer {
   display: flex;
   border-top: 2px solid #FEE12B; }
+  .dialogue-footer .button-transparent {
+    border: none !important;
+    box-shadow: none !important; }
 
 .dialogue-message {
   display: flex;
@@ -5253,6 +5289,11 @@ verticalalign-tableft {
 
 .dialogue-table .tablerow {
   display: table-row; }
+
+.dialogue-material-design .dialogue-table .tablerow .tablecol {
+  display: table-cell;
+  vertical-align: middle;
+  color: black; }
 
 .dialogue-table .tablerow .tablecol {
   display: table-cell;

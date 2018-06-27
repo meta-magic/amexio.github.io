@@ -22,7 +22,7 @@ export enum KEY_CODE_window {
          [ngStyle]="{'display' : show ? 'block' : 'none'}" >
       <div class="modal-window-lg" [ngStyle]="{'height': bodyHeight ? '100%':'auto'}">
         <div class="modal-window-content" [ngClass]="setClass()" [style.height]="bodyHeight+'%'">
-          <header [ngClass]="{ 'modal-window-header':!materialDesign,'modal-window-material':materialDesign}" *ngIf="header"   >
+          <header [ngClass]="{ 'window-material-design-header':materialDesign,'modal-window-header':!materialDesign}" *ngIf="header"   >
             <div class="modal-window-table">
               <div class="tablerow">
                 <div class="tablecol">
@@ -46,7 +46,7 @@ export enum KEY_CODE_window {
             <ng-content select="amexio-body"></ng-content>
           </div>
           <footer *ngIf="footer" class="modal-window-footer"
-                  [ngClass]="{'modal-window-footer-max': isFullWindow && maximize,'flex-start':(footeralign =='left'),'flex-end':(footeralign=='right'),'flex-center':(footeralign=='center')}">
+                  [ngClass]="{'window-material-design-footer':materialDesign ,'modal-window-footer':!materialDesign,'modal-window-footer-max': isFullWindow && maximize,'flex-start':(footeralign =='left'),'flex-end':(footeralign=='right'),'flex-center':(footeralign=='center')}">
             <div [ngClass]="{'footer-right-align': (isFullWindow && maximize)}">
               <ng-content select="amexio-action"></ng-content>
             </div>

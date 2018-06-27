@@ -27,6 +27,7 @@
   // background-color: #fefefe;
   margin: auto;
   padding: 0px;
+  border-radius: .3rem;
   border: 1px solid #888;
   width: 80%;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
@@ -53,10 +54,12 @@
   left: 0% !important;
 }
 
-.modal-window-material{
+.window-material-design-header{
   display: flex;
   border-bottom: $modalBorderSize solid $modalBorderColor;
   font-weight: 300;
+  border-radius: .3rem;
+  font-size: 20px;
   text-transform: capitalize;
 }
 
@@ -100,6 +103,16 @@
 }
 
 
+.window-material-design-footer{
+
+  display: flex;
+  border-top: 1px solid #eceeef;
+  
+  padding-right: 16px;
+  background-color: white;
+  border-radius: 0 0 .3rem .3rem;
+}
+
 .modal-window-footer{
   display: flex;
   // background-color: $cardFooterBGColor;
@@ -114,6 +127,12 @@
 
 .modal-window-table .tablerow{
   display: table-row;
+}
+.window-material-design-header .modal-window-table .tablerow .tablecol{
+  display: table-cell;
+  vertical-align: middle;
+  padding-bottom: 15px;
+
 }
 
 .modal-window-table .tablerow .tablecol{

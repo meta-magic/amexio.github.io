@@ -26,6 +26,7 @@
   // border: $dialogueContentBorderSize solid $dialogueContentBorderColor;
   width: 80%;
   height: 80%;
+  border-radius: .3rem;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
@@ -39,10 +40,15 @@
 
 .dialogue-material-design{
   display: flex;
-  border-bottom: $dialogueBorderSize solid $dialogueBorderColor;
+  border-radius: .3rem;
   font-size: 20px;
   font-weight: 300;
   text-transform: capitalize;
+  color: black;
+  padding: 10px;
+  border-bottom: 1px solid #eceeef;
+  
+  
 }
 
 
@@ -56,6 +62,10 @@
 }
 
 .dialogue-middle{
+
+  padding-top: 20px;
+  padding-bottom: 20px;
+
   font-size: 14px;
   line-height: 24px;
   font-weight: 400;
@@ -66,9 +76,34 @@
   overflow-x: hidden;
 }
 
+.dialogue-material-design-footer {
+  display: flex;
+  border-top: 1px solid #eceeef;
+  padding: 5px;
+
+  .button-transparent {
+  border : none !important;
+  box-shadow: none !important;
+  font-size: 1rem;
+ 
+}
+.custom-btn .button-text{
+  font-size: 1rem;
+  color: blue;
+
+  }
+
+
+}
 .dialogue-footer{
   display: flex;
   border-top: $dialogueBorderSize solid $dialogueBorderColor;
+  .button-transparent {
+    border : none !important;
+    box-shadow: none !important;
+   
+  }
+
 }
 
 .dialogue-message {
@@ -90,6 +125,12 @@
 }
 .dialogue-table .tablerow{
   display: table-row;
+}
+
+.dialogue-material-design .dialogue-table .tablerow .tablecol{
+  display: table-cell;
+  vertical-align: middle;
+  color: black;
 }
 .dialogue-table .tablerow .tablecol{
   display: table-cell;
