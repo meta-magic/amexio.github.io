@@ -34,6 +34,7 @@
   <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
 <script type="IN/FollowCompany" data-id="13316060" data-counter="top"></script>
 -->
+[![](https://data.jsdelivr.com/v1/package/npm/amexio-ng-extensions/badge)](https://www.jsdelivr.com/package/npm/amexio-ng-extensions)
 </div>
 
 <div align="center">
