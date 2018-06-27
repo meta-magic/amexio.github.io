@@ -107,6 +107,8 @@ default : none
 description : Custom width for each column.Width must be in % but no need to mention %.
 */
   @Input() width: string;
+  isColumnSort: boolean;
+
 
   @ContentChild('amexioHeaderTmpl') headerTemplate: TemplateRef<any>;
 
