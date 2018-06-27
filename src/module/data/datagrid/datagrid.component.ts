@@ -130,7 +130,8 @@ import {CommonDataService} from "../../services/data/common.data.service";
       <ng-container *ngFor="let cols of columns">
           <ng-container *ngIf="!cols.hidden">
               <ng-container *ngIf="cols.datatype=='string'">
-                  <div class="datatable-col" [style.width.%]="cols.width" (click)="sortOnColHeaderClick(cols, $event)">
+                <!-- -------------------- --> 
+              <div class="datatable-col" [style.width.%]="cols.width" (click)="sortOnColHeaderClick(cols, $event)">
 
                     <ng-container *ngIf="cols.headerTemplate">
                       <ng-template  [ngTemplateOutlet]="cols.headerTemplate"
@@ -140,11 +141,11 @@ import {CommonDataService} from "../../services/data/common.data.service";
                       {{cols.text}} &nbsp;
 
                     </ng-container>
-                    <ng-container *ngIf="this.sortBy==1 && cols.sort">
+                    <ng-container *ngIf="this.sortBy==1   && cols.isColumnSort">
                     <amexio-data-icon key="datagrid_arrowup"></amexio-data-icon>
                     <!--&nbsp; <i class="fa fa-arrow-up"></i>-->
                 </ng-container>
-                <ng-container *ngIf="this.sortBy==2 && cols.sort">
+                <ng-container *ngIf="this.sortBy==2  && cols.isColumnSort">
                     <!--&nbsp;<i class="fa fa-arrow-down"></i>-->
                     <amexio-data-icon key="datagrid_arrowdown"></amexio-data-icon>
                 </ng-container>
@@ -159,11 +160,11 @@ import {CommonDataService} from "../../services/data/common.data.service";
                     <ng-container *ngIf="!cols.headerTemplate">
                       <span class="float-right">
                           {{cols.text}} &nbsp;
-                          <ng-container *ngIf="this.sortBy==1 && cols.sort">
+                          <ng-container *ngIf="this.sortBy==1 && cols.isColumnSort">
                               <amexio-data-icon key="datagrid_arrowup"></amexio-data-icon>
                               <!--&nbsp; <i class="fa fa-arrow-up"></i>-->
                           </ng-container>
-                          <ng-container *ngIf="this.sortBy==2 && cols.sort">
+                          <ng-container *ngIf="this.sortBy==2 && cols.isColumnSort">
                               <!--&nbsp;<i class="fa fa-arrow-down"></i>-->
                               <amexio-data-icon key="datagrid_arrowdown"></amexio-data-icon>
                           </ng-container>
@@ -1178,6 +1179,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
   }
 
   sortOnColHeaderClick(sortCol: any, event: any) {
+  
     this.onHeaderClick.emit({event: event, data: sortCol});
     if(sortCol.sort) {
       if (this.sortBy === -1) {
@@ -1194,18 +1196,21 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
   }
 
   setSortColumn(sortCol: any, _sortBy: number) {
+ 
     /*------set column sort false for other column--------*/
-   /* this.columns.forEach((opt) => {
-      opt.sort = false;
-    });*/
+   this.columns.forEach((opt) => {
+    opt['isColumnSort'] = false;
+  });
     this.sortBy = _sortBy;
     this.sortColumn = sortCol;
-   /* this.sortColumn.sort = true;*/
+    this.sortColumn.sort = true;
+    this.sortColumn.isColumnSort = true;
 
     this.sortData();
   }
 
   sortData() {
+ 
     if (this.sortColumn) {
       let sortColDataIndex: any;
       const sortOrder = this.sortBy;
