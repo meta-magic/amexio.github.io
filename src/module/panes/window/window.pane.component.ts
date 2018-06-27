@@ -4,12 +4,12 @@
 
 
 /*
-Component Name : Amexio Window
-Component Selector : <amexio-window>
-Component Description:  Window Pane component is a customizable Modal Pane in which user can enter custom content
+ Component Name : Amexio Window
+ Component Selector : <amexio-window>
+ Component Description:  Window Pane component is a customizable Modal Pane in which user can enter custom content
 
 
-*/
+ */
 import { Component,OnChanges,SimpleChanges ,EventEmitter, Input, OnInit, Output, HostListener } from '@angular/core';
 export enum KEY_CODE_window {
   esc = 27
@@ -22,7 +22,7 @@ export enum KEY_CODE_window {
          [ngStyle]="{'display' : show ? 'block' : 'none'}" >
       <div class="modal-window-lg" [ngStyle]="{'height': bodyHeight ? '100%':'auto'}">
         <div class="modal-window-content" [ngClass]="setClass()" [style.height]="bodyHeight+'%'">
-          <header [ngClass]="{ 'modal-window-header':!materialDesign,'modal-window-material':materialDesign}" *ngIf="header"   >
+          <header [ngClass]="{ 'window-material-design-header':materialDesign,'modal-window-header':!materialDesign}" *ngIf="header"   >
             <div class="modal-window-table">
               <div class="tablerow">
                 <div class="tablecol">
@@ -46,7 +46,7 @@ export enum KEY_CODE_window {
             <ng-content select="amexio-body"></ng-content>
           </div>
           <footer *ngIf="footer" class="modal-window-footer"
-                  [ngClass]="{'modal-window-footer-max': isFullWindow && maximize,'flex-start':(footeralign =='left'),'flex-end':(footeralign=='right'),'flex-center':(footeralign=='center')}">
+                  [ngClass]="{'window-material-design-footer':materialDesign ,'modal-window-footer':!materialDesign,'modal-window-footer-max': isFullWindow && maximize,'flex-start':(footeralign =='left'),'flex-end':(footeralign=='right'),'flex-center':(footeralign=='center')}">
             <div [ngClass]="{'footer-right-align': (isFullWindow && maximize)}">
               <ng-content select="amexio-action"></ng-content>
             </div>
@@ -59,78 +59,78 @@ export enum KEY_CODE_window {
 })
 export class AmexioWindowPaneComponent implements OnInit,OnChanges {
   /*
-Properties
-name : vertical-position
-datatype : string
-version : 4.1 onwards
-default : none
-description : Postion of window vertically: top or bottom or center. This attribute is ignored if user specify position explicitly (using position-top/position-bottom/position-left/position-right)
-*/
+   Properties
+   name : vertical-position
+   datatype : string
+   version : 4.1 onwards
+   default : none
+   description : Postion of window vertically: top or bottom or center. This attribute is ignored if user specify position explicitly (using position-top/position-bottom/position-left/position-right)
+   */
   @Input('vertical-position') verticalposition: string;
   /*
-  Properties
-  name : horizontal-position
-  datatype : none
-  version : 4.1 onwards
-  default : none
-  description : Postion of Window horizontally: left or right or center. This attribute is ignored if user specify position explicitly (using position-top/position-bottom/position-left/position-right)
-  */
+   Properties
+   name : horizontal-position
+   datatype : none
+   version : 4.1 onwards
+   default : none
+   description : Postion of Window horizontally: left or right or center. This attribute is ignored if user specify position explicitly (using position-top/position-bottom/position-left/position-right)
+   */
   @Input('horizontal-position') horizontalposition: string;
   /*
-Properties
-name : close-on-escape
-datatype : string
-version : 4.2onwards
-default : false
-description : Enables And Disables the Escape button.
-*/
+   Properties
+   name : close-on-escape
+   datatype : string
+   version : 4.2onwards
+   default : false
+   description : Enables And Disables the Escape button.
+   */
   @Input('close-on-escape') closeonescape: boolean;
   /*
-  Properties
-  name : position-top
-  datatype : none
-  version : 4.2 onwards
-  default : none
-  description : Takes top position in percentage or pixel
-  */
+   Properties
+   name : position-top
+   datatype : none
+   version : 4.2 onwards
+   default : none
+   description : Takes top position in percentage or pixel
+   */
   @Input('position-top') top: string;
   /*
-  Properties
-  name : position-bottom
-  datatype : none
-  version : 4.2onwards
-  default : none
-  description : Takes top position in percentage or pixel
-  */
+   Properties
+   name : position-bottom
+   datatype : none
+   version : 4.2onwards
+   default : none
+   description : Takes top position in percentage or pixel
+   */
   @Input('position-bottom') bottom: string;
   /*
-  Properties
-  name : relative
-  datatype : boolean
-  version : 4.1 onwards
-  default : none
-  description : Place floating button at relative position
-  */
+   Properties
+   name : relative
+   datatype : boolean
+   version : 4.1 onwards
+   default : none
+   description : Place floating button at relative position
+   */
   @Input('relative') relative: boolean = false;
 
   /*
-Properties
-name : footer-align
-datatype : string
-version : 4.0 onwards
-default : right
-description : Alignment of footer contents to right or left.
-*/
+   Properties
+   name : footer-align
+   datatype : string
+   version : 4.0 onwards
+   default : right
+   description : Alignment of footer contents to right or left.
+   */
   @Input('footer-align') footeralign: string;
 
   /*
-Properties
-name : show-window
-datatype : boolean
-version : 4.0 onwards
-default : false
-description : Show / Hide Window.
-*/
+   Properties
+   name : show-window
+   datatype : boolean
+   version : 4.0 onwards
+   default : false
+   description : Show / Hide Window.
+   */
   @Input('show-window') showWindow: boolean;
 
   @Input ('material-design') materialDesign : boolean;
@@ -143,64 +143,64 @@ description : Show / Hide Window.
 
 
   /*
-Properties
-name : body-height
-datatype : string
-version : 4.0 onwards
-default :
-description : Assign body height in percentage, in case of maximize=true it will be set to 100% by default
-*/
+   Properties
+   name : body-height
+   datatype : string
+   version : 4.0 onwards
+   default :
+   description : Assign body height in percentage, in case of maximize=true it will be set to 100% by default
+   */
   @Input('body-height') bodyHeight: string;
 
   isFullWindow: boolean;
 
   /*
-Properties
-name : maximize
-datatype : boolean
-version : 4.0 onwards
-default :false
-description : User can maximize the window to full screen.
-*/
+   Properties
+   name : maximize
+   datatype : boolean
+   version : 4.0 onwards
+   default :false
+   description : User can maximize the window to full screen.
+   */
   @Input() maximize: boolean;
 
   /*
-Properties
-name : closable
-datatype : boolean
-version : 4.0 onwards
-default : false
-description : User can close the window.
-*/
+   Properties
+   name : closable
+   datatype : boolean
+   version : 4.0 onwards
+   default : false
+   description : User can close the window.
+   */
   @Input() closable: boolean;
 
   /*
-Properties
-name : header
-datatype : boolean
-version : 4.0 onwards
-default : false
-description : it is flag that decides header visibility
-*/
+   Properties
+   name : header
+   datatype : boolean
+   version : 4.0 onwards
+   default : false
+   description : it is flag that decides header visibility
+   */
   @Input() header: boolean;
 
   /*
-Properties
-name : footer
-datatype : boolean
-version : 4.0 onwards
-default : false
-description : it is flag that decides footer visibility
-*/
+   Properties
+   name : footer
+   datatype : boolean
+   version : 4.0 onwards
+   default : false
+   description : it is flag that decides footer visibility
+   */
   @Input() footer: boolean;
-   /*
-Events
-name : close
-datatype : none
-version : none
-default : none
-description : close the window
-*/
+  /*
+   Events
+   name : close
+   datatype : none
+   version : none
+   default : none
+   description : close the window
+   */
 
   @Output() close: EventEmitter<any> = new EventEmitter<any>();
   constructor() {
@@ -210,11 +210,11 @@ description : close the window
     if ( this.verticalposition==null) {
       this.verticalposition = 'center';
     }
-     if(this.horizontalposition==null) {
+    if(this.horizontalposition==null) {
       this.horizontalposition = 'center';
     }
     this.positionclass = "window-" + this.verticalposition + " window-" + this.horizontalposition;
-   }
+  }
   absoluteposition: boolean = false;
   positionclass: string;
   // THIS METHOD IS USED FOR SETTING CSS CLASSSES
@@ -250,7 +250,7 @@ description : close the window
 
     if(this.showWindow) {
       this.show = this.showWindow;
-      }
+    }
 
     if (this.maximize == null) {
       this.maximize = false;
@@ -264,7 +264,7 @@ description : close the window
     if (  this.verticalposition == "") {
       this.verticalposition = 'center';
     }
-     if( this.horizontalposition == "") {
+    if( this.horizontalposition == "") {
       this.horizontalposition = 'center';
     }
     this.positionclass = "window-" + this.verticalposition + " window-" + this.horizontalposition;
@@ -278,7 +278,7 @@ description : close the window
     }
 
 
- }
+  }
   setClass():any {
     let styleClass: string;
     if(this.isFullWindow) {

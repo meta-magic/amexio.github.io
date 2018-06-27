@@ -2,12 +2,12 @@
  * Created by dattaram on 23/1/18.
  */
 
- /*
+/*
  Component Name : Amexio Dialogue
  Component Selector : <amexio-dialogue>
  Component Description :A Simple dialogue which renders various prompts like Confirmation/Alert based on type, title, body user has configured.
 
-*/
+ */
 
 import {Component,OnChanges,SimpleChanges ,EventEmitter, Input, OnInit, Output, HostListener} from '@angular/core';
 
@@ -20,15 +20,16 @@ export enum KEY_CODE {
          [ngStyle]="{'display' : show  ? 'block' : 'none'}">
       <div class="dialogue-sm">
         <div class="dialogue-content">
-          <header [ngClass]="{ 'dialogue-material-design':materialDesign ,'dialogue-header':!materialDesign}" >
+          <header [ngClass]="{ 'dialogue-material-design':materialDesign ,'dialogue-header':!materialDesign }"
+          >
             <div class="dialogue-table">
               <div class="tablerow">
                 <div class="tablecol">
-                  {{title}} 
+                  {{title}}
                 </div>
                 <div class="tablecol float-right">
                   <div *ngIf="closable" class="icon-style">
-                    <amexio-pane-icon [key]="'window_close'" (onClick)="onCloseClick()"></amexio-pane-icon> 
+                    <amexio-pane-icon [key]="'window_close'" (onClick)="onCloseClick()"></amexio-pane-icon>
                   </div>
                 </div>
               </div>
@@ -36,7 +37,7 @@ export enum KEY_CODE {
           </header>
           <div class="dialogue-middle" [ngStyle]="{'text-align':custom ? contentalign :'center'}">
             <span class="dialogue-icon">
-              <span 
+              <span
                 [ngClass]="{'dialogue-success': messagetype  == 'help','dialogue-danger':messagetype  == 'error','dialogue-warning': messagetype  == 'warning'}"
                 *ngIf="messagetype  || messagetype  != '' ">
                 <amexio-pane-icon [key]="'window-msgtype-'+ messagetype "></amexio-pane-icon>
@@ -50,16 +51,21 @@ export enum KEY_CODE {
             <ng-container *ngIf="custom">
               <ng-content select="amexio-body"></ng-content>
             </ng-container>
-            
+
           </div>
           <footer *ngIf="custom" class="dialogue-footer"
                   [ngClass]="{'flex-start':(footeralign=='left'),'flex-end':(footeralign=='right'),'flex-center':(footeralign=='center')}">
             <ng-content select="amexio-action"></ng-content>
           </footer>
+
           <footer *ngIf="!custom" class="dialogue-footer"
-                  [ngClass]="{'flex-start':(footeralign=='left'),'flex-end':(footeralign=='right'),'flex-center':(footeralign=='center')}">
-            <amexio-button *ngIf="type =='confirm'"  [size]="buttonsize" [label]="secondaryactionlabel " [type]="default" (onClick)="getStatus('cancel')"></amexio-button>&nbsp;&nbsp;
-            <amexio-button *ngIf="type =='confirm' || type == 'alert'"   [size]="buttonsize" [label]="primaryactionlabel" [type]="buttontype" (onClick)="getStatus('ok')"></amexio-button>
+                  [ngClass]="{'dialogue-material-design-footer':materialDesign ,'dialogue-footer':!materialDesign, 'flex-start':(footeralign=='left'),'flex-end':(footeralign=='right'),'flex-center':(footeralign=='center')}">
+            <amexio-button *ngIf="type =='confirm'"  [size]="buttonsize" [label]="secondaryactionlabel " [type]="getDefaultStyle()" (onClick)="getStatus('cancel')"></amexio-button>&nbsp;&nbsp;
+            <div  class="custom-btn">
+              <amexio-button *ngIf="type =='confirm' || type == 'alert'"   [size]="buttonsize" [label]="primaryactionlabel"
+                             [ngStyle]="{'color':materialDesign ? 'blue':'white'}" [type]="getStyle()" (onClick)="getStatus('ok')"></amexio-button>
+            </div>
+
           </footer>
         </div>
       </div>
@@ -68,41 +74,41 @@ export enum KEY_CODE {
 })
 export class AmexiodialoguePaneComponent implements OnInit, OnChanges{
   /*
-Properties
-name : close-on-escape
-datatype : string
-version : 4.2onwards
-default : false
-description : Enables And Disables the Escape button.
-*/
-@Input('close-on-escape')  closeonescape: boolean;
+   Properties
+   name : close-on-escape
+   datatype : string
+   version : 4.2onwards
+   default : false
+   description : Enables And Disables the Escape button.
+   */
+  @Input('close-on-escape')  closeonescape: boolean;
   /*
-Properties
-name : button-type
-datatype : string
-version : 4.2onwards
-default : theme-color
-description : show the type of button.
-*/
-@Input('button-type')  buttontype: string;
+   Properties
+   name : button-type
+   datatype : string
+   version : 4.2onwards
+   default : theme-color
+   description : show the type of button.
+   */
+  @Input('button-type')  buttontype: string;
   /*
-Properties
-name : button-size
-datatype :  string
-version : 4.2 onwards
-default :
-description : Different Sizes of Buttons availabe : large, default, small & xsmall
-*/
-@Input('button-size') buttonsize: string="large"|| "small"||"default"||"xsmall";
+   Properties
+   name : button-size
+   datatype :  string
+   version : 4.2 onwards
+   default :
+   description : Different Sizes of Buttons availabe : large, default, small & xsmall
+   */
+  @Input('button-size') buttonsize: string="large"|| "small"||"default"||"xsmall";
 
- /*
-Properties
-name : footer-align
-datatype : string
-version : 4.0 onwards
-default : right
-description : Alignment of footer contents to right or left.
-*/
+  /*
+   Properties
+   name : footer-align
+   datatype : string
+   version : 4.0 onwards
+   default : right
+   description : Alignment of footer contents to right or left.
+   */
   @Input('footer-align') footeralign: string;
 
   /*
@@ -116,13 +122,13 @@ description : Alignment of footer contents to right or left.
   @Input('content-align') contentalign: string;
 
   /*
-Properties
-name : show-dialogue
-datatype :  boolean
-version : 4.0 onwards
-default : false
-description : 	Show / Hide Dialogue..
-*/
+   Properties
+   name : show-dialogue
+   datatype :  boolean
+   version : 4.0 onwards
+   default : false
+   description : 	Show / Hide Dialogue..
+   */
   @Input('show-dialogue') showdialogue : boolean;
 
   @Input() show : boolean;
@@ -132,108 +138,108 @@ description : 	Show / Hide Dialogue..
 
 
   /*
-Properties
-name : closable
-datatype :  boolean
-version : 4.0 onwards
-default : false
-description : User can close the Dialogue.
-*/
+   Properties
+   name : closable
+   datatype :  boolean
+   version : 4.0 onwards
+   default : false
+   description : User can close the Dialogue.
+   */
   @Input() closable: boolean;
 
   /*
-Properties
-name : title
-datatype :  string
-version : 4.0 onwards
-default :
-description : Title for dialog.
-*/
+   Properties
+   name : title
+   datatype :  string
+   version : 4.0 onwards
+   default :
+   description : Title for dialog.
+   */
   @Input() title: string;
 
-   /*
-Properties
-name :  message
-datatype :  string
-version : 4.0 onwards
-default :
-description : Alert or confirm message
-*/
+  /*
+   Properties
+   name :  message
+   datatype :  string
+   version : 4.0 onwards
+   default :
+   description : Alert or confirm message
+   */
   @Input() message: string;
 
-    /*
-Properties
-name :  custom
-datatype :  boolean
-version : 4.0 onwards
-default : false
-description : User can custom dialogue box.
-*/
+  /*
+   Properties
+   name :  custom
+   datatype :  boolean
+   version : 4.0 onwards
+   default : false
+   description : User can custom dialogue box.
+   */
   @Input() custom: boolean;
 
-    /*
-Properties
-name :  type
-datatype :  'confirm'| 'alert'
-version : 4.0 onwards
-default : confirm
-description : Mode to open, alert or dialogue mode.
-*/
+  /*
+   Properties
+   name :  type
+   datatype :  'confirm'| 'alert'
+   version : 4.0 onwards
+   default : confirm
+   description : Mode to open, alert or dialogue mode.
+   */
   @Input() type: 'confirm'| 'alert';
 
-    /*
-Properties
-name : primary-action-label
-datatype :  'string
-version : 4.0 onwards
-default :
-description : Label to be displayed for primary action.
-*/
+  /*
+   Properties
+   name : primary-action-label
+   datatype :  'string
+   version : 4.0 onwards
+   default :
+   description : Label to be displayed for primary action.
+   */
   @Input('primary-action-label') primaryactionlabel   : string;
 
-    /*
-Properties
-name : secondary-action-label
-datatype :  string
-version : 4.0 onwards
-default :
-description : Label to be displayed for secondary action.
-*/
+  /*
+   Properties
+   name : secondary-action-label
+   datatype :  string
+   version : 4.0 onwards
+   default :
+   description : Label to be displayed for secondary action.
+   */
   @Input('secondary-action-label') secondaryactionlabel  : string;
 
-    /*
-Properties
-name : message-type
-datatype :  string
-version : 4.0 onwards
-default :
-description : Type of message like error,warning,help.
-*/
+  /*
+   Properties
+   name : message-type
+   datatype :  string
+   version : 4.0 onwards
+   default :
+   description : Type of message like error,warning,help.
+   */
   @Input('message-type') messagetype  : string;
 
   @Input ('material-design') materialDesign : boolean;
 
 
   /*
-Events
-name : actionStatus
-datatype :  none
-version : none
-default : none
-description : Fire when click on yes or no button
-*/
+   Events
+   name : actionStatus
+   datatype :  none
+   version : none
+   default : none
+   description : Fire when click on yes or no button
+   */
   @Output() actionStatus : EventEmitter<any> = new EventEmitter<any>();
 
-     /*
- Events
-name : close
-datatype :  none
-version : none
-default : none
-description : Fire when user close dialogue
-*/
-    @Output() close : EventEmitter<any> = new EventEmitter<any>();
-    value = 0;
+  /*
+   Events
+   name : close
+   datatype :  none
+   version : none
+   default : none
+   description : Fire when user close dialogue
+   */
+  @Output() close : EventEmitter<any> = new EventEmitter<any>();
+  value = 0;
   constructor() {
     this.closable = true;
     this.secondaryactionlabel  = 'Cancel';
@@ -261,7 +267,7 @@ description : Fire when user close dialogue
   ngOnInit() {
 
     if(this.showdialogue) {
-    this.show = this.showdialogue;
+      this.show = this.showdialogue;
     }
     if (this.footeralign == null) this.footeralign = "right";
     if(this.contentalign == null || this.contentalign == '') {
@@ -272,11 +278,11 @@ description : Fire when user close dialogue
 
   ngOnChanges(changes: SimpleChanges){
 
-      //reassign show
-        if (changes['showdialogue']) {
+    //reassign show
+    if (changes['showdialogue']) {
       this.show = changes.showdialogue.currentValue;
     }
-   }
+  }
 
   onCloseClick() {
 
@@ -288,12 +294,34 @@ description : Fire when user close dialogue
       this.close.emit(false);
     }
   }
-    getStatus(v : any){
+  getStatus(v : any){
 
-      this.onCloseClick();
-      this.actionStatus.emit(v);
+    this.onCloseClick();
+    this.actionStatus.emit(v);
+  }
+
+  getDefaultStyle()
+  {
+    if(this.materialDesign)
+    {
+      return  'transparent';
+    }else{
+      return 'defualt';
     }
   }
+
+  getStyle()
+  {
+    if(this.materialDesign)
+    {
+      this.buttontype = 'transparent';
+      return  this.buttontype;
+    }else{
+      return this.buttontype;
+    }
+  }
+
+}
 
 
 
