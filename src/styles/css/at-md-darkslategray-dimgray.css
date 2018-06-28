@@ -3493,6 +3493,21 @@ header .billboard .content-button {
   background-color: #696969;
   color: #f5f5f5; }
 
+.context-menu-list li:hover {
+  background-color: #ffb8b8;
+  color: #520000; }
+
+.context-menu-list-items-selected {
+  background-color: #ff6b6b !important;
+  color: #1f0000; }
+
+.tree-node-label-selected {
+  background-color: #ff6b6b;
+  color: #1f0000; }
+
+.context-menu-separator {
+  border-bottom: 1px solid gray; }
+
 /** Treenode - Structure CSS **/
 .treeview {
   height: 100%;
@@ -3555,6 +3570,26 @@ header .billboard .content-button {
   white-space: nowrap;
   vertical-align: middle;
   border-radius: 10px; }
+
+.context-menu-list {
+  display: block;
+  position: absolute;
+  flex-direction: column;
+  min-width: 180px;
+  cursor: pointer;
+  height: 105px;
+  z-index: 1;
+  padding: 10px 0px;
+  overflow-y: auto;
+  background-color: white !important;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12); }
+
+.context-menu-list .context-menu-list-items {
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px !important;
+  padding: 5px;
+  display: block; }
 
 /****************************************************************************
     Component Name : Menubar

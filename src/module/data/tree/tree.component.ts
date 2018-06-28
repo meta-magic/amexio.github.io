@@ -8,7 +8,7 @@ Component Name : Amexio tree filter
 Component Selector : <amexio-tree-filter-view>
 Component Description : A Expandable Tree Component for Angular, having Filtering functionality.
 */
-import { ChangeDetectorRef, Component, ContentChild, EventEmitter, Input, Output, TemplateRef } from '@angular/core';
+import { ChangeDetectorRef, HostListener, Component, ElementRef, ContentChild, EventEmitter, Input, Output, TemplateRef } from '@angular/core';
 import { CommonDataService } from "../../services/data/common.data.service";
 
 @Component({
@@ -126,6 +126,16 @@ description : Describes the badge value that has to be displayed tree node
 */
   @Input('badge') badge: boolean;
 
+    /*
+Properties
+name :  context-menu
+datatype : string
+version : 5.0.1 onwards
+default : 
+description : Context Menu provides the list of menus on right click. 
+*/
+@Input('context-menu') contextmenu: any[];
+
   @Input() parentRef: any;
 
   @ContentChild('amexioTreeTemplate') parentTmp: TemplateRef<any>;
@@ -147,14 +157,24 @@ description : Describes the badge value that has to be displayed tree node
 
   @Input() dragData: any;
 
+  @Output() rightClick: any = new EventEmitter<any>();
+
   previousValue: any;
 
   responseData: any;
 
   isNode: boolean;
 
+  flag: boolean;
 
-  constructor(public dataService: CommonDataService, private cdf: ChangeDetectorRef) {
+  selectFlag: boolean;
+
+  posixUp: boolean;
+
+
+  mouseLocation: { left: number; top: number } = { left: 0, top: 0 };
+
+  constructor(public element: ElementRef,public dataService: CommonDataService, private cdf: ChangeDetectorRef) {
     this.isNode = true;
     this.acrosstree = false;
   }
@@ -226,8 +246,35 @@ description : Describes the badge value that has to be displayed tree node
     }
     this.data = responsedata;
     this.parentRef = this.data;
-
+    this.setSelectedFlag();
     this.activateNode(this.data, null);
+  }
+
+  //To add isSelected flag explicitily in tree Data
+  setSelectedFlag() {
+    this.parentRef.forEach((node: any)=>{
+      if(node.hasOwnProperty('isSelected')){
+        node.isSelected = false;
+      } else{
+        node['isSelected'] = false;
+      }
+      if(node.hasOwnProperty('children') && node.children.length > 0) {
+        this.setSelectedFlagInChild(node);
+      }
+
+    });
+  }
+  setSelectedFlagInChild(node: any) {
+   node.children.forEach((childcom: any)=>{
+    if(childcom.hasOwnProperty('isSelected')){
+      childcom.isSelected = false;
+    } else{
+      childcom['isSelected'] = false;
+    }
+    if(childcom.hasOwnProperty('children') && childcom.children.length > 0) {
+      this.setSelectedFlagInChild(childcom);
+    }
+   });
   }
 
 
@@ -387,4 +434,58 @@ description : Describes the badge value that has to be displayed tree node
   dragleave(event: any) {
     event.target.style.border = "";
   }
+
+  getContextMenu() {
+    if (this.contextmenu && this.contextmenu.length > 0) {
+      this.flag = true;
+    }
+  }
+
+  @HostListener('document:click')
+  onWindowClick() {
+    this.flag = false;
+    this.setSelectedFlag();
+  }
+
+  @HostListener('document:scroll')
+ onscroll() {
+   this.flag = false;
+   this.setSelectedFlag();	
+ }
+
+  loadContextMenu(rightClickData: any) {
+    this.setSelectedFlag();    
+    this.mouseLocation.left = rightClickData.event.clientX;
+    this.mouseLocation.top = rightClickData.event.clientY;
+    rightClickData.data['isSelected'] = true;
+    this.getContextMenu();
+    this.posixUp = this.getListPosition(rightClickData.ref);
+    rightClickData.event.preventDefault();
+    rightClickData.event.stopPropagation();
+    this.rightClick.emit(rightClickData);
+  }
+
+
+  getListPosition(elementRef : any) :boolean{
+    let height : number = 240; //must be same in dropdown.scss
+    if((window.screen.height - elementRef.getBoundingClientRect().bottom) < height){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+
+  getContextMenuStyle() {
+    return {
+      cursor: 'default',
+      position: 'fixed',
+      display: this.flag ? 'block' : 'none',
+      left: this.mouseLocation.left + 'px',
+      top: this.mouseLocation.top + 'px',
+      'box-shadow': '1px 1px 2px #000000',
+      width: '15%'
+    };
+  }
+
 }

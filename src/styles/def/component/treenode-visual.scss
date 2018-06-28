@@ -22,3 +22,28 @@
   background-color:$componentHeaderBGColor;
   color:$componentHeaderFontColor
   }
+
+  .context-menu-list li:hover {
+    background-color: $treeNodeHoverBGColor;
+    color: $treeNodeHoverColor   }
+  
+  .context-menu-list-items-selected {
+    background-color: $treeNodeActiveBGColor !important;
+    color:$treeNodeActiveColor;
+   }
+  
+  // .context-menu-list {
+  //   border-color: $componentHeaderBGColor;
+  //   background-color: $componentHeaderFontColor; }
+  
+  .tree-node-label-selected {
+      background-color: $treeNodeActiveBGColor;
+      color: $treeNodeActiveColor; }
+  
+  .tree-node-label-not-selected {
+    
+   }
+  
+  .context-menu-separator{
+    border-bottom: 1px solid gray;
+  }
