@@ -6,7 +6,7 @@
  Component Description : Data grid component to render large amount of data-set with various options like sorting in ascending or descending order, client-side pagination, column hide/unhide, single/multi selection, user define template for rendering for column header and column data, displaying summation of numeric column.
  */
 import {
-  AfterContentInit, ChangeDetectorRef, Component, ContentChildren, DoCheck, EventEmitter, Input, OnInit, Output,
+  AfterContentInit, ChangeDetectorRef,HostListener,ElementRef, Component, ContentChildren, DoCheck, EventEmitter, Input, OnInit, Output,
   QueryList
 } from '@angular/core';
 import {AmexioGridColumnComponent} from "./data.grid.column";
@@ -185,7 +185,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
               <div class="spinner"></div>
           </div>
           <ng-container *ngIf="!mask">
-              <div class="datatable-row" *ngFor="let row of viewRows;let i=index" id="{{'row'+i}}" [ngClass]="{'datatable-row-active':row.isSelected}"
+              <div #id class="datatable-row" *ngFor="let row of viewRows;let i=index" id="{{'row'+i}}" [ngClass]="{'datatable-row-active':row.isSelected}"
                   (click)="onRowClick(row, i)">
 
                   <ng-container *ngIf="enablecheckbox">
@@ -208,7 +208,9 @@ import {CommonDataService} from "../../services/data/common.data.service";
                               <div class="datatable-col" [style.width.%]="cols.width" scope="row" [attr.data-label]="cols.text">
                                   <span class="float-right">
                                       <ng-container *ngIf="row[cols.dataindex]!= null;else elseBlock">
-                                          {{row[cols.dataindex]}}
+                                      <div (contextmenu)="loadContextMenu($event,row, cols, id)">    
+                                      {{row[cols.dataindex]}}
+                                      </div>
                                       </ng-container>
                                       <ng-template #elseBlock>
                                           &nbsp;
@@ -220,7 +222,9 @@ import {CommonDataService} from "../../services/data/common.data.service";
                           <ng-container *ngIf="!cols?.bodyTemplate && cols.datatype=='string'">
                               <div class="datatable-col" [style.width.%]="cols.width" scope="row" [attr.data-label]="cols.text">
                                   <ng-container *ngIf="row[cols.dataindex]!= null ;else elseBlock">
-                                      {{row[cols.dataindex]}}
+                                  <div (contextmenu)="loadContextMenu($event,row, cols, id)">        
+                                  {{row[cols.dataindex]}}
+                                  </div>
                                   </ng-container>
                                   <ng-template #elseBlock>
                                       &nbsp;
@@ -340,6 +344,17 @@ import {CommonDataService} from "../../services/data/common.data.service";
 </ng-container>
 <!--Group BY and Filter Data datagrid end-->
 
+<!-- Context Menu  -->
+<span [ngStyle]="getContextMenuStyle()">
+    <ul *ngIf="flag" class="context-menu-list" [ngClass]="{'dropdown-up' : posixUp}">
+        <li class="context-menu-list-items" [ngStyle]="{'cursor': itemConfig.disabled ? 'not-allowed':'pointer'}" [ngClass]="{'context-menu-separator':itemConfig.seperator}"
+            *ngFor="let itemConfig of tempContextMenu">
+            <i [ngStyle]="{'padding-left': itemConfig.icon ? '5px':'22px'}" [ngClass]="itemConfig.icon"></i>
+            <span style="white-space: nowrap;display: inline ; padding-left:10px">{{itemConfig.text}}
+            </span>
+        </li>
+    </ul>
+</span>
 
 <!-- Footer of the grid -->
 <div class="footer">
@@ -574,6 +589,18 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
    */
   @Input('global-filter') globalfilter: boolean;
 
+    /*
+ Properties
+ name : context-menu
+ datatype : any[]
+ version : 5.0.1 onwards
+ default : 
+ description : Context Menu provides the list of menus on right click of row.
+ */
+@Input('context-menu') contextmenu: any[];
+
+@Output() rightClick: any = new EventEmitter<any>();
+
   columns: any[] = [];
 
   viewRows: any[] = [];
@@ -624,6 +651,14 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
 
   globalFilterOptions: any;
 
+  flag: boolean;
+
+  tempContextMenu: any[] = [];
+
+  mouseLocation: { left: number; top: number } = { left: 0, top: 0 };
+
+  posixUp: boolean;
+
 
   /*group by column attribute*/
 
@@ -636,7 +671,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
   @ContentChildren(AmexioGridColumnComponent) columnRef: QueryList<AmexioGridColumnComponent>;
 
 
-  constructor(public dataTableService: CommonDataService,  private cd: ChangeDetectorRef) {
+  constructor(public element: ElementRef,public dataTableService: CommonDataService,  private cd: ChangeDetectorRef) {
     this.selectedRows = [];
     this.sortBy = -1;
 
@@ -718,7 +753,8 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
           headerTemplate: columnConfig.headerTemplate,
           width: columnConfig.width,
           sort: columnConfig.sort,
-          bodyTemplate: columnConfig.bodyTemplate
+          bodyTemplate: columnConfig.bodyTemplate,
+          contextmenu: columnConfig.contextmenu
         };
       } else if (columnConfig.headerTemplate != null && columnConfig.bodyTemplate == null) {
         columnData = {
@@ -728,7 +764,8 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
           datatype: columnConfig.datatype,
           width: columnConfig.width,
           sort: columnConfig.sort,
-          headerTemplate: columnConfig.headerTemplate
+          headerTemplate: columnConfig.headerTemplate,
+          contextmenu: columnConfig.contextmenu
         };
       } else if (columnConfig.bodyTemplate != null && columnConfig.headerTemplate == null) {
         columnData = {
@@ -738,7 +775,8 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
           datatype: columnConfig.datatype,
           width: columnConfig.width,
           sort: columnConfig.sort,
-          bodyTemplate: columnConfig.bodyTemplate
+          bodyTemplate: columnConfig.bodyTemplate,
+          contextmenu: columnConfig.contextmenu
         };
       } else if (columnConfig.bodyTemplate == null && columnConfig.headerTemplate == null) {
         columnData = {
@@ -747,7 +785,8 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
           hidden: columnConfig.hidden,
           width: columnConfig.width,
           sort: columnConfig.sort,
-          datatype: columnConfig.datatype
+          datatype: columnConfig.datatype,
+          contextmenu: columnConfig.contextmenu
         };
       }
       if (columnConfig.summarytype) {
@@ -1378,5 +1417,64 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
       });
       this.emitSelectedRows();
     }
+  }
+
+  loadContextMenu(event: any, row: any, col: any, ref: any) {
+    this.tempContextMenu = [];
+    this.tempSelectedFlag(this.viewRows);
+
+    this.mouseLocation.left = event.clientX;
+    this.mouseLocation.top = event.clientY;
+    row.isSelected = true;
+
+    if (col.contextmenu && col.contextmenu.length > 0) {
+      this.flag = true;
+      this.tempContextMenu = col.contextmenu;
+    } else if (this.contextmenu && this.contextmenu.length > 0) {
+      this.tempContextMenu = this.contextmenu;
+      this.flag = true;
+    }
+    this.posixUp = this.getListPosition(ref);
+    event.preventDefault();
+    event.stopPropagation();
+    this.rightClick.emit(row);
+  }
+
+  getContextMenuStyle() {
+    return {
+      cursor: 'default',
+      position: 'fixed',
+      display: this.flag ? 'block' : 'none',
+      left: this.mouseLocation.left + 'px',
+      top: this.mouseLocation.top + 'px',
+      'box-shadow': '1px 1px 2px #000000',
+      width: '15%'
+    };
+  }
+
+  @HostListener('document:scroll')
+  onscroll() {
+    this.flag = false;
+  }
+
+  @HostListener('document: click')
+  onclick() {
+    this.flag = false
+  }
+
+  getListPosition(elementRef: any) {
+    let height: number = 240;
+    if ((window.screen.height - elementRef.getBoundingClientRect().bottom) < height) {
+      return true;
+    } else
+      return false;
+  }
+
+  tempSelectedFlag(viewRows: any) {
+    viewRows.forEach((row: any) => {
+      if (row.isSelected) {
+        row.isSelected = false;
+      }
+    });
   }
 }
