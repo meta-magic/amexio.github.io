@@ -64,6 +64,7 @@ import {AmexioGridColumnComponent} from "../datagrid/data.grid.column";
       </div>
     </div>
 
+    <div class="datatable-height" [style.height.px]="height">
     <div class="datatable">
       <div style="height: 300px;" *ngIf="mask">
         <div class="spinner"></div>
@@ -152,6 +153,7 @@ import {AmexioGridColumnComponent} from "../datagrid/data.grid.column";
       </ng-container>
       
     </div>
+    </div>
 
   `,
 
@@ -160,74 +162,84 @@ import {AmexioGridColumnComponent} from "../datagrid/data.grid.column";
 export class TreeDataTableComponent implements OnInit, AfterContentInit, DoCheck {
 
   /*
-Properties
-name : data
-datatype : any
-version : 4.0 onwards
-default : none
-description : Local Data binding.
-*/
+   Properties
+   name : data
+   datatype : any
+   version : 4.0 onwards
+   default : none
+   description : Local Data binding.
+   */
   @Input() data: any;
 
-/*
-Properties
-name : data-reader
-datatype : string
-version : 4.0 onwards
-default : none
-description : Key in JSON Datasource for records.
-*/
+  /*
+   Properties
+   name : data-reader
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : Key in JSON Datasource for records.
+   */
   @Input('data-reader') datareader: string;
 
-/*
-Properties
-name : http-method
-datatype : string
-version : 4.0 onwards
-default : none
-description : Type of HTTP call, POST,GET etc.
-*/
+  /*
+   Properties
+   name : http-method
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : Type of HTTP call, POST,GET etc.
+   */
   @Input('http-method') httpmethod: string;
 
   /*
-Properties
-name : http-url
-datatype : string
-version : 4.0 onwards
-default : none
-description : REST url for fetching data.
-*/
+   Properties
+   name : http-url
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : REST url for fetching data.
+   */
   @Input('http-url') httpurl: string;
 
   /*
-Properties
-name : display-field
-datatype : string
-version : 4.0 onwards
-default : none
-description : Name of key inside response data to display on ui.
-*/
+   Properties
+   name : display-field
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : Name of key inside response data to display on ui.
+   */
   @Input('display-field') displayfield: string;
 
   /*
-Properties
-name : value-field
-datatype : string
-version : 4.0 onwards
-default : none
-description : Name of key inside response data.use to send to backend
-*/
+   Properties
+   name : value-field
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : Name of key inside response data.use to send to backend
+   */
   @Input('value-field') valuefield: string;
 
   /*
-Events
-name : selectedRecord
-datatype : none
-version : none
-default : none
-description : Get selected value Object.
-*/
+   Events
+   name : selectedRecord
+   datatype : none
+   version : none
+   default : none
+   description : Get selected value Object.
+   */
   @Output() selectedRecord: any = new EventEmitter<any>();
+
+  /*
+   Properties
+   name : height
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : height of grid
+   */
+  @Input() height: string;
 
   /*
    Events
@@ -325,7 +337,7 @@ description : Get selected value Object.
     if(this.data) {
       this.viewRows = this.getResponseData(this.data);
     }
- }
+  }
 
   setData(httpResponse: any) {
     if (httpResponse) {
