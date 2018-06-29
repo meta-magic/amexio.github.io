@@ -64,6 +64,7 @@ import {AmexioGridColumnComponent} from "../datagrid/data.grid.column";
       </div>
     </div>
 
+    <div class="datatable-height" [style.height.px]="height">
     <div class="datatable">
       <div style="height: 300px;" *ngIf="mask">
         <div class="spinner"></div>
@@ -152,6 +153,7 @@ import {AmexioGridColumnComponent} from "../datagrid/data.grid.column";
       </ng-container>
       
     </div>
+    </div>
 
   `,
 
@@ -228,6 +230,16 @@ export class TreeDataTableComponent implements OnInit, AfterContentInit, DoCheck
    description : Get selected value Object.
    */
   @Output() selectedRecord: any = new EventEmitter<any>();
+
+  /*
+   Properties
+   name : height
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : height of grid
+   */
+  @Input() height: string;
 
   /*
    Events
