@@ -19,62 +19,56 @@
  */
 
 import {
-  OnInit,
-  Input,
-  Component,
-  EventEmitter,
-  Output,
-  QueryList,
-  ContentChildren,
-  AfterContentInit,
-  DoCheck,
+  OnInit, Input, Component, EventEmitter, Output, QueryList, ContentChildren, AfterContentInit, DoCheck, ElementRef,
+  ViewChild, AfterViewInit,
 } from '@angular/core';
 import {CommonDataService} from "../../services/data/common.data.service";
 import {AmexioGridColumnComponent} from "../datagrid/data.grid.column";
 
 @Component({
   selector: 'amexio-tree-data-table', template: `
-    <div class="datatable">
-      <div class="datatable-header">
-        <ng-container *ngFor="let cols of columns;let i = index">
-          <ng-container *ngIf="cols.datatype=='string'">
-            <div class="datatable-col" [ngClass]="{'header' : i == 0}">
+    <div (window:resize)="onResize()">
+      <div #header class="datatable">
+        <div class="datatable-header">
+          <ng-container *ngFor="let cols of columns;let i = index">
+            <ng-container *ngIf="cols.datatype=='string'">
+              <div class="datatable-col" [ngClass]="{'header' : i == 0}">
+                <ng-container *ngIf="cols.headerTemplate">
+                  <ng-template  [ngTemplateOutlet]="cols.headerTemplate"
+                                [ngTemplateOutletContext]="{column:cols ,index: i}"></ng-template>
+                </ng-container>
+                <ng-container *ngIf="!cols.headerTemplate">
+                  {{cols.text}}
+                </ng-container>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="cols.datatype=='number'">
               <ng-container *ngIf="cols.headerTemplate">
                 <ng-template  [ngTemplateOutlet]="cols.headerTemplate"
                               [ngTemplateOutletContext]="{column:cols ,index: i}"></ng-template>
               </ng-container>
               <ng-container *ngIf="!cols.headerTemplate">
-                {{cols.text}}
-              </ng-container>
-            </div>
-          </ng-container>
-          <ng-container *ngIf="cols.datatype=='number'">
-            <ng-container *ngIf="cols.headerTemplate">
-              <ng-template  [ngTemplateOutlet]="cols.headerTemplate"
-                            [ngTemplateOutletContext]="{column:cols ,index: i}"></ng-template>
-            </ng-container>
-            <ng-container *ngIf="!cols.headerTemplate">
                <span class="float-right">
                <div class="datatable-col" [ngClass]="{'header' : i == 0}"> {{cols.text}}</div>
             </span>
-            </ng-container>
-           
-          </ng-container>
-        </ng-container>
-      </div>
-    </div>
+              </ng-container>
 
-    <div class="datatable-height" [style.height.px]="height">
-    <div class="datatable">
-      <div style="height: 300px;" *ngIf="mask">
-        <div class="spinner"></div>
+            </ng-container>
+          </ng-container>
+        </div>
       </div>
-      <ng-container *ngIf="!mask">
-        <div class="datatable-row" (click)="toogle(row,i)" *ngFor="let row of viewRows;let i=index" (click)="setSelectedRow(row, $event)">
-          <ng-container *ngFor="let cols of columns;let colIndex = index">
-            <ng-container *ngIf="cols.datatype=='string' && !cols?.bodyTemplate">
-              <div class="datatable-col" [attr.data-label]="cols.text">
-                <ng-container *ngIf="colIndex == 0">
+
+      <div class="datatable-height" [style.height.px]="height">
+        <div class="datatable">
+          <div style="height: 300px;" *ngIf="mask">
+            <div class="spinner"></div>
+          </div>
+          <ng-container *ngIf="!mask">
+            <div class="datatable-row" (click)="toogle(row,i)" *ngFor="let row of viewRows;let i=index" (click)="setSelectedRow(row, $event)">
+              <ng-container *ngFor="let cols of columns;let colIndex = index">
+                <ng-container *ngIf="cols.datatype=='string' && !cols?.bodyTemplate">
+                  <div class="datatable-col" [attr.data-label]="cols.text">
+                    <ng-container *ngIf="colIndex == 0">
               <span [ngStyle]="{'padding-left':(20*row.level)+'px'}">
                 <ng-container *ngIf="!row.expanded && row.children">
                   <amexio-data-icon key="tree_collapse"></amexio-data-icon>
@@ -89,21 +83,21 @@ import {AmexioGridColumnComponent} from "../datagrid/data.grid.column";
                       &nbsp;
                     </ng-template>
                </span>
-                </ng-container>
+                    </ng-container>
 
-                <ng-container *ngIf="colIndex > 0">
-                  <ng-container *ngIf="row[cols.dataindex]!= null && row[cols.dataindex]!= '' ;else elseBlock">
-                    {{row[cols.dataindex]}}
-                  </ng-container>
-                  <ng-template #elseBlock>
-                    &nbsp;
-                  </ng-template>
+                    <ng-container *ngIf="colIndex > 0">
+                      <ng-container *ngIf="row[cols.dataindex]!= null && row[cols.dataindex]!= '' ;else elseBlock">
+                        {{row[cols.dataindex]}}
+                      </ng-container>
+                      <ng-template #elseBlock>
+                        &nbsp;
+                      </ng-template>
+                    </ng-container>
+                  </div>
                 </ng-container>
-              </div>
-            </ng-container>
-            <ng-container *ngIf="cols.datatype=='number' && !cols?.bodyTemplate">
-              <div class="datatable-col" [attr.data-label]="cols.text" >
-                <ng-container *ngIf="colIndex == 0">
+                <ng-container *ngIf="cols.datatype=='number' && !cols?.bodyTemplate">
+                  <div class="datatable-col" [attr.data-label]="cols.text" >
+                    <ng-container *ngIf="colIndex == 0">
               <span [ngStyle]="{'padding-left':(20*row.level)+'px'}">
                 <ng-container *ngIf="!row.expanded && row.children">
                   <amexio-data-icon key="tree_collapse"></amexio-data-icon>
@@ -120,9 +114,9 @@ import {AmexioGridColumnComponent} from "../datagrid/data.grid.column";
                     </ng-template>
                  </span>
                </span>
-                </ng-container>
+                    </ng-container>
 
-                <ng-container *ngIf="colIndex > 0">
+                    <ng-container *ngIf="colIndex > 0">
                <span class="float-right">
                <ng-container *ngIf="row[cols.dataindex]!= null;else elseBlock">
                       {{row[cols.dataindex]}}
@@ -131,35 +125,37 @@ import {AmexioGridColumnComponent} from "../datagrid/data.grid.column";
                       &nbsp;
                  </ng-template>
                </span>
+                    </ng-container>
+                  </div>
+
+
                 </ng-container>
-              </div>
+
+                <ng-container *ngIf="cols.bodyTemplate">
+                  <div class="datatable-col" [attr.data-label]="cols.text">
+                    <ng-template  [ngTemplateOutlet]="cols.bodyTemplate"
+                                  [ngTemplateOutletContext]="{ $implicit: { text : row[cols.dataindex] }, row: row }"></ng-template>
+                  </div>
+                </ng-container>
 
 
-            </ng-container>
-            
-            <ng-container *ngIf="cols.bodyTemplate">
-              <div class="datatable-col" [attr.data-label]="cols.text">
-                <ng-template  [ngTemplateOutlet]="cols.bodyTemplate"
-                              [ngTemplateOutletContext]="{ $implicit: { text : row[cols.dataindex] }, row: row }"></ng-template>
-              </div>
-            </ng-container>
-         
-            
-           
+
+              </ng-container>
+
+
+            </div>
           </ng-container>
 
-
         </div>
-      </ng-container>
-      
+      </div>
     </div>
-    </div>
+   
 
   `,
 
 })
 
-export class TreeDataTableComponent implements OnInit, AfterContentInit, DoCheck {
+export class TreeDataTableComponent implements OnInit, AfterContentInit, DoCheck,AfterViewInit {
 
   /*
    Properties
@@ -239,7 +235,7 @@ export class TreeDataTableComponent implements OnInit, AfterContentInit, DoCheck
    default : none
    description : height of grid
    */
-  @Input() height: string;
+  @Input() height: any;
 
   /*
    Events
@@ -249,6 +245,9 @@ export class TreeDataTableComponent implements OnInit, AfterContentInit, DoCheck
    default : none
    description : It will gives you row clicked data.
    */
+
+  @ViewChild('header', {read: ElementRef}) public gridHeader: ElementRef;
+
   @Output() rowSelect: any = new EventEmitter<any>();
 
   responseData: any;
@@ -281,6 +280,11 @@ export class TreeDataTableComponent implements OnInit, AfterContentInit, DoCheck
       this.previousValue = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
     }
+  }
+  ngAfterViewInit() {
+
+    this.onResize();
+
   }
 
   ngAfterContentInit() {
@@ -415,6 +419,21 @@ export class TreeDataTableComponent implements OnInit, AfterContentInit, DoCheck
   setSelectedRow(rowData: any, event: any) {
     this.selectedRecord.emit(rowData);
     this.rowSelect.emit(rowData);
+  }
+
+  onResize(){
+    if(this.height){
+      let h = (window.innerHeight/100)*this.height;
+
+      if(this.gridHeader && this.gridHeader.nativeElement && this.gridHeader.nativeElement.offsetHeight)
+        h = h - this.gridHeader.nativeElement.offsetHeight;
+
+
+      if(this.height === 100)
+        h = h - 40;
+
+      this.height = h;
+    }
   }
 
 }
