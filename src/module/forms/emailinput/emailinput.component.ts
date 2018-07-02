@@ -263,37 +263,39 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
     this.onTouchedCallback = fn;
   }
 
-  getValidationClasses(inp: any): any {
+    getValidationClasses(inp: any): any {
     let classObj;
-    if (!this.allowblank && (this.value == '' || this.value == null)) {
-      if(inp.touched) {
+    if (!this.allowblank) {
+      if (this.innerValue == null || this.innerValue == '') {
+        if(inp.touched) {
+          classObj = {'input-control-error': true};
+          this.isValid = false;
+          this.isComponentValid = false;
+        } else {
+          this.isValid = false;
+          this.isComponentValid = false;
+        }
+      } else if (inp.touched && !this.allowblank && (this.value == '' || this.value == null)) {
+        classObj = {'input-control-error': true};
+        this.isValid = false;
+        this.isComponentValid = false;
+      } else if (!this.emailpatter.test(this.value)) {
         classObj = {'input-control-error': true};
         this.isValid = false;
         this.isComponentValid = false;
       } else {
-        this.isValid = false;
-        this.isComponentValid = false;
+        classObj = {
+          'input-control-error': inp.invalid && (inp.dirty || inp.touched),
+          'input-control-success': inp.valid && (inp.dirty || inp.touched)
+        };
+        if (inp.valid){
+          this.isValid = true;
+          this.isComponentValid = true;
+        }
       }
-    } else if (inp.touched) {
-      if (!this.emailpatter.test(this.value)) {
-        classObj = {'input-control-error': true};
-        this.isValid = false;
-        this.isComponentValid = false;
-      } else {
-        this.isValid = true;
-        this.isComponentValid = true;
-      }
-
-    } else if (!inp.touched) {
-      if (!this.emailpatter.test(this.value)) {
-        classObj = {'input-control-error': true};
-        this.isValid = false;
-        this.isComponentValid = false;
-      } else {
-        this.isValid = true;
-        this.isComponentValid = true;
-      }
-
+    } else {
+      this.isValid = true;
+      this.isComponentValid = true;
     }
     return classObj;
   }
