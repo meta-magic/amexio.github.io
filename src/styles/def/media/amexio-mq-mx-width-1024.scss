@@ -4,6 +4,8 @@
 /************************************************************************/
 
 @media only screen and (max-width: 767px) {
+  
+  @import '../component/borderlayout-areas.scss';
 
   .borderlayout-container-N-E-C-W-S{
     grid-template-areas:
