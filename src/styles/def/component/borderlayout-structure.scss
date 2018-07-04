@@ -1,136 +1,126 @@
-.borderlayout-N { grid-area: north; }
-.borderlayout-S { grid-area: south; }
-.borderlayout-E { grid-area: east; }
-.borderlayout-W { grid-area: west; }
-.borderlayout-C { grid-area: center; }
+@import 'borderlayout-areas.scss';
 
 /** handles N-E-C-W-S**/
+
 .borderlayout-container-N-E-C-W-S {
-  display: grid;
-  grid-template-areas:
-    'north north north north north north'
-    'east center center center center west'
-    'south south south south south south';
-  grid-gap: $borderGridGap;
-  padding : $borderPadding;
+    display: grid;
+    grid-template-areas: 'north north north north north north' 'east center center center center west' 'south south south south south south';
+    grid-gap: $borderGridGap;
+    padding: $borderPadding;
 }
 
-.borderlayout-container-N-E-C-W-S  aside {
-  border: $borderLayoutBorder solid $borderLayoutBorderColor;
+.borderlayout-container-N-E-C-W-S aside {
+    border: $borderLayoutBorder solid $borderLayoutBorderColor;
 }
+
 
 /** handles N-E-C-S **/
+
 .borderlayout-container-N-E-C-S {
-  display: grid;
-  grid-template-areas:
-    'north north north north north north'
-    'east center center center center center'
-    'south south south south south south';
-  grid-gap: $borderGridGap;
-  padding : $borderPadding;
+    display: grid;
+    grid-template-areas: 'north north north north north north' 'east center center center center center' 'south south south south south south';
+    grid-gap: $borderGridGap;
+    padding: $borderPadding;
 }
 
-.borderlayout-container-N-E-C-S  aside {
-  border: $borderLayoutBorder solid $borderLayoutBorderColor;
+.borderlayout-container-N-E-C-S aside {
+    border: $borderLayoutBorder solid $borderLayoutBorderColor;
 }
+
 
 /** handles N-C-W-S **/
+
 .borderlayout-container-N-C-W-S {
-  display: grid;
-  grid-template-areas:
-    'north north north north north north'
-    'center center center center center west'
-    'south south south south south south';
-  grid-gap: $borderGridGap;
-  padding : $borderPadding;
+    display: grid;
+    grid-template-areas: 'north north north north north north' 'center center center center center west' 'south south south south south south';
+    grid-gap: $borderGridGap;
+    padding: $borderPadding;
 }
 
-.borderlayout-container-N-C-W-S  aside {
-  border: $borderLayoutBorder solid $borderLayoutBorderColor;
+.borderlayout-container-N-C-W-S aside {
+    border: $borderLayoutBorder solid $borderLayoutBorderColor;
 }
+
 
 /** handles E-W-C-S **/
-.borderlayout-container-E-C-W-S{
-  display: grid;
-  grid-template-areas:
-    'east center center center center west'
-    'south south south south south south';
-  grid-gap: $borderGridGap;
-  padding : $borderPadding;
+
+.borderlayout-container-E-C-W-S {
+    display: grid;
+    grid-template-areas: 'east center center center center west' 'south south south south south south';
+    grid-gap: $borderGridGap;
+    padding: $borderPadding;
 }
 
-.borderlayout-container-E-C-W-S  aside {
- border: $borderLayoutBorder solid $borderLayoutBorderColor;
+.borderlayout-container-E-C-W-S aside {
+    border: $borderLayoutBorder solid $borderLayoutBorderColor;
 }
 
 
 /** handles N-C-S **/
-.borderlayout-container-N-C-S{
-  display: grid;
-  grid-template-areas:
-    'north north north north north north'
-    'center center center center center center'
-    'south south south south south south';
-  grid-gap: $borderGridGap;
-  padding : $borderPadding;
+
+.borderlayout-container-N-C-S {
+    display: grid;
+    grid-template-areas: 'north north north north north north' 'center center center center center center' 'south south south south south south';
+    grid-gap: $borderGridGap;
+    padding: $borderPadding;
 }
 
-.borderlayout-container-N-C-S  aside {
- border: $borderLayoutBorder solid $borderLayoutBorderColor;
+.borderlayout-container-N-C-S aside {
+    border: $borderLayoutBorder solid $borderLayoutBorderColor;
 }
+
 
 /** handles E-C-S **/
-.borderlayout-container-E-C-S{
-  display: grid;
-  grid-template-areas:
-    'east center center center center center'
-    'south south south south south south';
-  grid-gap: $borderGridGap;
-  padding : $borderPadding;
+
+.borderlayout-container-E-C-S {
+    display: grid;
+    grid-template-areas: 'east center center center center center' 'south south south south south south';
+    grid-gap: $borderGridGap;
+    padding: $borderPadding;
 }
 
-.borderlayout-container-E-C-S  aside {
- border: $borderLayoutBorder solid $borderLayoutBorderColor;
+.borderlayout-container-E-C-S aside {
+    border: $borderLayoutBorder solid $borderLayoutBorderColor;
 }
+
 
 /** handles C-W-S **/
-.borderlayout-container-C-W-S{
-  display: grid;
-  grid-template-areas:
-    'center center center center center west'
-    'south south south south south south';
-  grid-gap: $borderGridGap;
-  padding : $borderPadding;
+
+.borderlayout-container-C-W-S {
+    display: grid;
+    grid-template-areas: 'center center center center center west' 'south south south south south south';
+    grid-gap: $borderGridGap;
+    padding: $borderPadding;
 }
 
-.borderlayout-container-C-W-S  aside {
- border: $borderLayoutBorder solid $borderLayoutBorderColor;
+.borderlayout-container-C-W-S aside {
+    border: $borderLayoutBorder solid $borderLayoutBorderColor;
 }
+
 
 /** handles N-C **/
-.borderlayout-container-N-C{
-  display: grid;
-  grid-template-areas:
-    'north north north north north north'
-    'center center center center center center';
-  grid-gap: $borderGridGap;
-  padding : $borderPadding;
+
+.borderlayout-container-N-C {
+    display: grid;
+    grid-template-areas: 'north north north north north north' 'center center center center center center';
+    grid-gap: $borderGridGap;
+    padding: $borderPadding;
 }
 
-.borderlayout-container-N-C  aside {
- border: $borderLayoutBorder solid $borderLayoutBorderColor;
+.borderlayout-container-N-C aside {
+    border: $borderLayoutBorder solid $borderLayoutBorderColor;
 }
+
 
 /** handles C-S **/
-.borderlayout-container-C-S{
-  display: grid;
-  grid-template-areas:
-    'center center center center center center'
-    'south south south south south south';
-  grid-gap: $borderGridGap;
-  padding : $borderPadding;
+
+.borderlayout-container-C-S {
+    display: grid;
+    grid-template-areas: 'center center center center center center' 'south south south south south south';
+    grid-gap: $borderGridGap;
+    padding: $borderPadding;
 }
 
-.borderlayout-container-C-S  aside {
-  border: $borderLayoutBorder solid $borderLayoutBorderColor;
+.borderlayout-container-C-S aside {
+    border: $borderLayoutBorder solid $borderLayoutBorderColor;
 }
