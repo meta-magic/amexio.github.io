@@ -157,6 +157,8 @@ description : Context Menu provides the list of menus on right click.
 
   @Input() dragData: any;
 
+  @Output() nodeRightClick: any = new EventEmitter<any>();
+
   @Output() rightClick: any = new EventEmitter<any>();
 
   previousValue: any;
@@ -171,6 +173,7 @@ description : Context Menu provides the list of menus on right click.
 
   posixUp: boolean;
 
+  rightClickNodeData: any;
 
   mouseLocation: { left: number; top: number } = { left: 0, top: 0 };
 
@@ -462,7 +465,19 @@ description : Context Menu provides the list of menus on right click.
     this.posixUp = this.getListPosition(rightClickData.ref);
     rightClickData.event.preventDefault();
     rightClickData.event.stopPropagation();
-    this.rightClick.emit(rightClickData);
+    this.rightClickNodeData = rightClickData.data;
+    this.nodeRightClick.emit(rightClickData);
+    }
+
+    onContextNodeClick(itemConfig: any){
+      if(!itemConfig.disabled){
+      let obj = {
+        menuData: itemConfig,
+        NodeData: this.rightClickNodeData
+    };
+    console.log("object",obj);
+        this.rightClick.emit(obj);
+    }
   }
 
 

@@ -347,7 +347,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
 <!-- Context Menu  -->
 <span [ngStyle]="getContextMenuStyle()">
     <ul *ngIf="flag" class="context-menu-list" [ngClass]="{'dropdown-up' : posixUp}">
-        <li class="context-menu-list-items" [ngStyle]="{'cursor': itemConfig.disabled ? 'not-allowed':'pointer'}" [ngClass]="{'context-menu-separator':itemConfig.seperator}"
+        <li (click)="onContextNodeClick(itemConfig)" class="context-menu-list-items" [ngStyle]="{'cursor': itemConfig.disabled ? 'not-allowed':'pointer'}" [ngClass]="{'context-menu-separator':itemConfig.seperator}"
             *ngFor="let itemConfig of tempContextMenu">
             <i [ngStyle]="{'padding-left': itemConfig.icon ? '5px':'22px'}" [ngClass]="itemConfig.icon"></i>
             <span style="white-space: nowrap;display: inline ; padding-left:10px">{{itemConfig.text}}
@@ -658,6 +658,8 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
   mouseLocation: { left: number; top: number } = { left: 0, top: 0 };
 
   posixUp: boolean;
+
+  rightClickRowData : any;
 
 
   /*group by column attribute*/
@@ -1437,7 +1439,18 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
     this.posixUp = this.getListPosition(ref);
     event.preventDefault();
     event.stopPropagation();
-    this.rightClick.emit(row);
+    this.rightClickRowData = row;
+  }
+
+  onContextNodeClick(itemConfig: any){
+    if(!itemConfig.disabled){
+    let obj = {
+      menuData: itemConfig,
+      rowData: this.rightClickRowData
+  };
+  console.log("object",obj);
+      this.rightClick.emit(obj);
+   }
   }
 
   getContextMenuStyle() {
