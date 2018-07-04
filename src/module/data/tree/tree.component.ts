@@ -475,7 +475,6 @@ description : Context Menu provides the list of menus on right click.
         menuData: itemConfig,
         NodeData: this.rightClickNodeData
     };
-    console.log("object",obj);
         this.rightClick.emit(obj);
     }
   }

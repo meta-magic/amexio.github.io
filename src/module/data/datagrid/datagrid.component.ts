@@ -1448,7 +1448,6 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
       menuData: itemConfig,
       rowData: this.rightClickRowData
   };
-  console.log("object",obj);
       this.rightClick.emit(obj);
    }
   }
