@@ -13,8 +13,9 @@ import {Component, Input, OnInit} from '@angular/core';
   selector: 'amexio-progress-bar', template: `
     <div *ngIf="showProgress" class="progress" [ngStyle]="{'height':height}">
       <span [ngClass]="progressclass" *ngIf="infinite" style="width: 100%;">{{label != null ? label : 'Loading...'}}</span>
-      <span [ngClass]="progressclass" *ngIf="!infinite" [ngStyle]="{'width.%' : currentvalue}"></span>
+      <span [ngClass]="progressclass" *ngIf="!infinite" [ngStyle]="{'width.%' : currentvalue}">{{label}}</span>
     </div>
+    {{label}}
   `
 })
 
