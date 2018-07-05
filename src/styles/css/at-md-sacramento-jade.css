@@ -810,6 +810,20 @@ button {
     Version : Amexio v4.0 onwards
 *****************************************************************************/
 /** datetime - Visual CSS **/
+.datedropdown {
+  background: #ffffff; }
+  .datedropdown .dropdownlist {
+    color: #62a38b; }
+  .datedropdown li:hover {
+    color: #000503;
+    background: #32f1b1;
+    width: 30px; }
+  .datedropdown .active {
+    background: #6bffc9;
+    color: #043927; }
+  .datedropdown li {
+    color: #62a38b; }
+
 .datetimepicker {
   background: #ffffff; }
   .datetimepicker .datetimepickertopbar {
@@ -857,6 +871,16 @@ button {
   .datetimepicker .days .date-today {
     padding-top: 1%;
     padding-left: 36%; } }
+.dropspan2 {
+  border-color: #62a38b; }
+
+.datedropbtn {
+  background-color: #00a86b;
+  color: #ffffff; }
+
+.change4 {
+  background-color: #6bffc9; }
+
 /** datetime - Structure CSS **/
 .datetimepicker {
   display: block;
@@ -919,7 +943,6 @@ button {
 .datetimepicker1 {
   display: block;
   border: 1px solid #ced4da;
-  position: relative;
   box-shadow: 0 1px 3px 0 #ced4da;
   z-index: 3;
   width: 290px; }
@@ -987,6 +1010,79 @@ button {
 .disabled {
   opacity: .40;
   cursor: not-allowed; }
+
+.datedropdown {
+  display: block;
+  border: 1px solid #ced4da;
+  box-shadow: 0 1px 3px 0 #ced4da;
+  z-index: 3; }
+  .datedropdown li {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    cursor: pointer; }
+
+.dropdiv1 {
+  width: 100%; }
+
+.dropspan1 {
+  float: left;
+  width: 25%; }
+
+.dropul1 {
+  list-style-type: none;
+  -webkit-padding-start: 5px; }
+
+.dropspan2 {
+  width: 25%;
+  float: left;
+  border-right: 1px solid #62a38b; }
+
+.dropspan4 {
+  width: 25%;
+  display: table-row-group; }
+
+.dropul2 {
+  list-style-type: none;
+  -webkit-padding-start: 15px; }
+
+.dropiconpadding {
+  cursor: pointer;
+  -webkit-padding-start: 20px; }
+
+.btndiv1 {
+  position: relative;
+  bottom: 0; }
+
+.datedropbtn {
+  border: none;
+  padding: 6px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer; }
+
+.dropbtnspan {
+  display: inline-flex;
+  padding-left: 105px; }
+
+.change4 {
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 30px; }
+
+.disablearrow {
+  opacity: .40;
+  cursor: not-allowed;
+  pointer-events: none; }
 
 /****************************************************************************
     Component Name : Dropdown
