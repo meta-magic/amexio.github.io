@@ -1,4 +1,25 @@
+.datedropdown{
+  background: $datetimepickerBGColor;
 
+  .dropdownlist{
+    color: $datetimepickerDaysColor;
+  }
+  li:hover {
+    color: $datetimeHoverColor;
+               //background: $datetimepickertopbarBGColor;
+              background: $datetimeHoverBG;
+
+    
+    width:30px;
+  }
+  .active {
+    background: $datetimepickertopbarBGColor;
+    color: $datetimepickerActiveColor;
+  }
+  li {
+    color:$datetimepickerDaysColor;
+  }
+}
 
 .datetimepicker{
   background: $datetimepickerBGColor;
@@ -87,4 +108,19 @@
     padding-top: 1%;
     padding-left: 36%;
   }
+}
+
+
+.dropspan2{
+ // border-color:$datetimepickerBorderColor ;
+ border-color:$datetimepickerDaysColor ;
+
+}
+.datedropbtn{
+  background-color:$primaryBGColor;
+  color:$primaryColor;
+}
+
+.change4{
+  background-color:$componentActiveBGColor ;
 }
