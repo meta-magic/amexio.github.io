@@ -1383,7 +1383,7 @@ textarea:required {
 
 .input-box .active {
   background: #00a86b;
-  color: #001f13; }
+  color: #ebfff8; }
 
 /* When the checkbox is checked, add a blue background */
 .input-box-container input:checked ~ .input-box-checkbox-label {

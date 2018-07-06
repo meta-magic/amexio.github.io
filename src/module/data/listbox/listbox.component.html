@@ -17,7 +17,7 @@
 
   <div class="listbox-height" [style.height.px]="height">
     <ul class="list" [ngClass]="{'loading-mask' : maskloader}">
-      <li class="list-items" *ngFor="let row of viewData let rowno = index ">
+      <li #id class="list-items" *ngFor="let row of viewData let rowno = index " [ngClass]="{'tree-node-label-selected':row.isSelected ,'tree-node-label-not-selected':row.isSelected=='false'}">
         <!--
         <div class="datatable">
           <div class="datatable-row">
@@ -38,7 +38,7 @@
         </div>-->
 
 
-        <div (click)="onClick(row)">
+        <div (click)="onClick(row)" (contextmenu)="loadContextMenu($event,row, id)">
           <ng-container *ngIf="enablecheckbox">
             <div class="inputgroup" style="float: left; height: 100%;">
               <div class="input-box">
@@ -56,3 +56,14 @@
     </ul>
   </div>
 </div>
+
+<span [ngStyle]="getContextMenuStyle()">
+  <ul *ngIf="contextMenuFlag" class="context-menu-list" [ngClass]="{'dropdown-up' : posixUp}">
+    <li (click)="onContextNodeClick(itemConfig)" class="context-menu-list-items" [ngStyle]="{'cursor': itemConfig.disabled ? 'not-allowed':'pointer'}" [ngClass]="{'context-menu-separator':itemConfig.seperator}"
+      *ngFor="let itemConfig of contextmenu">
+      <i [ngStyle]="{'padding-left': itemConfig.icon ? '5px':'19px'}" [ngClass]="itemConfig.icon"></i>
+      <span style="white-space: nowrap;display: inline ; padding-left:5px">{{itemConfig.text}}
+      </span>
+    </li>
+  </ul>
+</span>

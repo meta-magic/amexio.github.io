@@ -8,7 +8,7 @@
  Component Selector : <amexio-listbox>
  Component Description : Simple list box which allows user to select one of more items from list based on configuration. User can provide custom template to change look and feel.
 */
-import {AfterViewInit, Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateRef} from '@angular/core';
+import {AfterViewInit,HostListener, Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateRef} from '@angular/core';
 import {CommonDataService} from "../../services/data/common.data.service";
 
 @Component({
@@ -156,6 +156,26 @@ description : It will gives you row clicked data.
   */
   @Input() border: any;
 
+    /*
+Properties
+name :  context-menu
+datatype : string
+version : 5.0.1 onwards
+default : 
+description : Context Menu provides the list of menus on right click. 
+*/
+@Input('context-menu') contextmenu: any[];
+
+/*
+Events 
+name : rightClick
+datatype : none
+version : 5.0.1
+default : none
+description : It will gives you row clicked data.
+*/
+@Output() rightClick: any = new EventEmitter<any>();
+
   @ContentChild('amexioBodyTmpl') bodyTemplate: TemplateRef<any>;
 
   viewData: any[];
@@ -173,6 +193,14 @@ description : It will gives you row clicked data.
   previousData: any;
 
   maskloader:boolean=true;
+
+  mouseLocation: { left: number; top: number } = { left: 0, top: 0 };
+
+  contextMenuFlag: boolean;
+
+  posixUp: boolean;
+
+  rightClickRowData: any;
 
   constructor(public dataService: CommonDataService) {
     this.filter = false;
@@ -282,6 +310,72 @@ description : It will gives you row clicked data.
 
   ngAfterViewInit() {
 
+  }
+
+  loadContextMenu(event: any, row: any, id: any) {
+    this.tempSelectedFlag(this.viewData);
+    this.mouseLocation.left = event.clientX;
+    this.mouseLocation.top = event.clientY;
+    row.isSelected = true;
+    this.getContextMenu();
+    this.posixUp = this.getListPosition(id);
+    event.preventDefault();
+    event.stopPropagation();
+    this.rightClickRowData = row;
+
+  }
+
+  getContextMenu() {
+    if (this.contextmenu && this.contextmenu.length > 0) {
+      this.contextMenuFlag = true;
+    }
+  }
+
+  @HostListener('document:click')
+  onWindowClick() {
+    this.contextMenuFlag = false;
+  }
+
+  @HostListener('document:scroll')
+  onscroll() {
+    this.contextMenuFlag = false;
+  }
+
+  tempSelectedFlag(rows: any) {
+    rows.forEach((row: any) => {
+      if (row.isSelected) {
+        row.isSelected = false;
+      }
+    });
+  }
+
+  getListPosition(elementRef: any) {
+    let height: number = 240;
+    if ((window.screen.height - elementRef.getBoundingClientRect().bottom) < height) {
+      return true;
+    } else
+      return false;
+  }
+  getContextMenuStyle() {
+    return {
+      cursor: 'default',
+      position: 'fixed',
+      display: this.contextMenuFlag ? 'block' : 'none',
+      left: this.mouseLocation.left + 'px',
+      top: this.mouseLocation.top + 'px',
+      'box-shadow': '1px 1px 2px #000000',
+      width: '15%'
+    };
+  }
+
+  onContextNodeClick(itemConfig: any) {
+    if (!itemConfig.disabled) {
+      let obj = {
+        menuData: itemConfig,
+        rowData: this.rightClickRowData
+      };
+      this.rightClick.emit(obj);
+    }
   }
 
 }

@@ -1340,7 +1340,7 @@ textarea:required {
 
 .input-box .active {
   background: linear-gradient(#40434D, #000000);
-  color: #603A63; }
+  color: white; }
 
 /* When the checkbox is checked, add a blue background */
 .input-box-container input:checked ~ .input-box-checkbox-label {
