@@ -215,11 +215,15 @@ description : fire when check box click
     this.mask = false;
   }
 
-  getResponseData(httpResponse: any) {
+ getResponseData(httpResponse: any) {
     let responsedata = httpResponse;
-    let dr = this.datareader.split('.');
-    for (let ir = 0; ir < dr.length; ir++) {
-      responsedata = responsedata[dr[ir]];
+    if (this.datareader != null) {
+      let dr = this.datareader.split('.');
+      for (let ir = 0; ir < dr.length; ir++) {
+        responsedata = responsedata[dr[ir]];
+      }
+    }else {
+      responsedata = httpResponse;
     }
     return responsedata;
   }
