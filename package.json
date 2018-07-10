@@ -40,7 +40,8 @@
     "@angular/language-service": "6.0.4",
     "@angular/platform-browser": "6.0.4",
     "angular-font-awesome": "^3.1.2",
-    "font-awesome": "^4.7.0"
+    "font-awesome": "^4.7.0",
+    "tslint-sonarts": "^1.7.0"
   },
   "devDependencies": {
     "@angular/animations": "6.0.4",
