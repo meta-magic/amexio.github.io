@@ -3631,7 +3631,7 @@ header .billboard .content-button {
   flex-direction: column;
   min-width: 180px;
   cursor: pointer;
-  height: 105px;
+  max-height: 150px;
   z-index: 1;
   padding: 10px 0px;
   overflow-y: auto;

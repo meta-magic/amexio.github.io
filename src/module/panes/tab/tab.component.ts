@@ -9,6 +9,7 @@
 
 */
 import {
+  HostListener,
   AfterContentInit,
   AfterViewInit,
   Component,
@@ -158,6 +159,37 @@ description : This flag will make tab closable.
   */
   @Input('body-height') bodyheight: any;
 
+  /*
+Properties
+name :  context-menu
+datatype : string
+version : 5.0.1 onwards
+default : 
+description : Context Menu provides the list of menus on right click. 
+*/
+  @Input('context-menu') contextmenu: any[] = [];
+
+  /*
+Properties 
+name : default-context-menu
+datatype : boolean
+version : 5.0.1 onwards
+default : false
+description : If "true" add two context menus i.e close All and close Others tabs.
+*/
+  @Input('default-context-menu') defaultContextMenu: boolean;
+
+  /*
+  Events 
+  name : rightClick
+  datatype : none
+  version : 5.0.1
+  default : none
+  description : It will gives you row clicked data.
+  */
+  @Output() rightClick: any = new EventEmitter<any>();
+
+
   @ViewChild('tab', { read: ElementRef }) public tabs: ElementRef;
   @ViewChild('tabAction', { read: ElementRef }) public tabAction: ElementRef;
   @ViewChild('headerWidth', { read: ElementRef }) public headerWidth: ElementRef;
@@ -200,6 +232,14 @@ description : This flag will make tab closable.
   singleTabWidth: any;
 
   actionComp: any;
+
+  mouseLocation: { left: number; top: number } = { left: 0, top: 0 };
+
+  contextMenuFlag: boolean;
+
+  posixUp: boolean;
+
+  rightClickRowData: any;
 
   map = new Map<any, any>();
   constructor(public render: Renderer2, private componentFactoryResolver: ComponentFactoryResolver,
@@ -324,20 +364,20 @@ description : This flag will make tab closable.
   }
 
   // Method to close all tab 
-  closeAllTabs(){
+  closeAllTabs() {
     this.tabCollection.forEach((tabs) => {
-     if(tabs.closable == true || this.closable == true){
-       this.closeTab(tabs);
-     }
+      if (tabs.closable == true || this.closable == true) {
+        this.closeTab(tabs);
+      }
     });
   }
 
 
   // Method to close particular tabs
-  closeTabs(data: any){
+  closeTabs(data: any) {
     this.tabCollection.forEach((tabs) => {
       data.forEach((opt: any) => {
-        if(opt.toLowerCase() != tabs.title.toLowerCase() && (tabs.closable == true|| this.closable == true)){
+        if (opt.toLowerCase() != tabs.title.toLowerCase() && (tabs.closable == true || this.closable == true)) {
           this.closeTab(tabs);
         }
       });
@@ -347,16 +387,16 @@ description : This flag will make tab closable.
   //Method to set active tab on the basis of tab sequence or tab title
   setActiveTab(input: any) {
     let flag: boolean = false;
-    if(typeof input == "string"){
+    if (typeof input == "string") {
       this.tabCollection.forEach((tabs) => {
-        if(input.trim().toLowerCase() == tabs.title.trim().toLowerCase()){
+        if (input.trim().toLowerCase() == tabs.title.trim().toLowerCase()) {
           tabs.active = true;
           flag = true;
-        } else{
-         tabs.active = false;
+        } else {
+          tabs.active = false;
         }
-       });
-    } else if (typeof input == "number"){
+      });
+    } else if (typeof input == "number") {
       this.tabCollection.forEach((tabs: any, index: number) => {
         if (index + 1 == input) {
           tabs.active = true;
@@ -517,6 +557,109 @@ description : This flag will make tab closable.
       this.minHeight = h;
       this.height = h;
     }
+  }
+
+  loadContextMenu(event: any, row: any, id: any) {
+    this.tempSelectedFlag(this.tabCollection);
+    this.mouseLocation.left = event.clientX;
+    this.mouseLocation.top = event.clientY;
+    row.active = true;
+    this.getContextMenu();
+
+    this.posixUp = this.getListPosition(id);
+    event.preventDefault();
+    event.stopPropagation();
+    this.rightClickRowData = row;
+
+  }
+  tempSelectedFlag(tabs: any) {
+    tabs.forEach((tab: any) => {
+      if (tab.active) {
+        tab.active = false;
+      }
+    });
+  }
+
+  getContextMenu() {
+    if (this.defaultContextMenu) {
+      let obj = { "text": "Close All", "icon": "fa fa-close", "disabled": false };
+      let obj2 = { "text": "Close Others", "icon": "fa fa-close", "seperator": false, "disabled": false };
+      let tmpflag = true;
+      for (let i = 0; i < this.contextmenu.length; i++) {
+        if (this.contextmenu[i].text == "Close All" || this.contextmenu[i].text == "Close Others") {
+          tmpflag = false;
+        }
+      }
+      if (tmpflag)
+        this.contextmenu.push(obj, obj2);
+      this.contextMenuFlag = true;
+    }
+    else if (this.contextmenu && this.contextmenu.length > 0) {
+      this.contextMenuFlag = true;
+    }
+  }
+
+  getContextMenuStyle() {
+    return {
+      cursor: 'default',
+      position: 'fixed',
+      display: this.contextMenuFlag ? 'block' : 'none',
+      left: this.mouseLocation.left + 'px',
+      top: this.mouseLocation.top + 'px',
+      'box-shadow': '1px 1px 2px #000000',
+      width: '15%'
+    };
+  }
+
+  getListPosition(elementRef: any) {
+    let height: number = 240;
+    if ((window.screen.height - elementRef.getBoundingClientRect().bottom) < height) {
+      return true;
+    } else
+      return false;
+  }
+
+  onContextNodeClick(itemConfig: any) {
+    let temptab;
+    this.tabCollection.forEach((obj) => {
+      if (obj.active) {
+        temptab = obj;
+      }
+    })
+    if (itemConfig.active) {
+      temptab = itemConfig
+    }
+    if (!itemConfig.disabled) {
+      let obj = {
+        menuData: itemConfig,
+        rowData: this.rightClickRowData
+      };
+      if (itemConfig.text == "Close All") {
+        this.closeAllTabs()
+      }
+      if (itemConfig.text == "Close Others") {
+        this.closeOtherTabs(temptab)
+      }
+      this.rightClick.emit(obj);
+    }
+  }
+
+  closeOtherTabs(data: any) {
+    this.tabCollection.forEach((tabs) => {
+      if (data.title.toLowerCase() != tabs.title.toLowerCase() && (tabs.closable == true || this.closable == true)) {
+        this.closeTab(tabs);
+      }
+    });
+  }
+
+  @HostListener('document:click')
+  onWindowClick() {
+    this.contextMenuFlag = false;
+  }
+
+  @HostListener('document:scroll')
+  onscroll() {
+    this.contextMenuFlag = false;
   }
 
 }
