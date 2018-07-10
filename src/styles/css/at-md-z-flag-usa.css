@@ -1383,7 +1383,7 @@ textarea:required {
 
 .input-box .active {
   background: #0052a5;
-  color: #000f1f; }
+  color: #f0f7ff; }
 
 /* When the checkbox is checked, add a blue background */
 .input-box-container input:checked ~ .input-box-checkbox-label {
@@ -3673,7 +3673,7 @@ header .billboard .content-button {
   flex-direction: column;
   min-width: 180px;
   cursor: pointer;
-  height: 105px;
+  max-height: 150px;
   z-index: 1;
   padding: 10px 0px;
   overflow-y: auto;
