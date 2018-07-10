@@ -3,14 +3,13 @@
  */
 
 /*
- Component Name : Amexio datapoints 
+ Component Name : Amexio datapoints
  Component Selector : < amexio-center >
  Component Description : create datapoints
 */
 import {
-  Component, Input, OnInit
+  Component, Input, OnInit,
 } from '@angular/core';
-
 
 @Component({
   selector: 'amexio-datapoints', template: `
@@ -46,94 +45,94 @@ import {
     .amexio-datapoints {
 
     }
-  `]
+  `],
 })
 
 export class DataPointsComponent implements OnInit {
 
   /*
-Properties 
+Properties
 name : north
 datatype :  boolean
 version : 4.0 onwards
 default : false
 description : Enable north position
-*/ 
+*/
   @Input() north: boolean;
 
   /*
-Properties 
+Properties
 name : south
 datatype :  boolean
 version : 4.0 onwards
 default : false
 description : Enable south position
-*/ 
+*/
   @Input() south: boolean;
 
    /*
-Properties 
+Properties
 name : west
 datatype :  boolean
 version : 4.0 onwards
 default : false
 description : Enable west position
-*/ 
+*/
   @Input() west: boolean;
 
     /*
-Properties 
+Properties
 name : center
 datatype :  boolean
 version : 4.0 onwards
 default : false
 description : Enable center position
-*/ 
+*/
   @Input() center: boolean;
 
   /*
-Properties 
+Properties
 name : east
 datatype :  boolean
 version : 4.0 onwards
 default : false
 description : Enable east position
-*/ 
+*/
   @Input() east: boolean;
 
    /*
-Properties 
+Properties
 name : background-color
 datatype :  string
 version : 4.0 onwards
-default : 
+default :
 description : Set background color
-*/ 
+*/
   @Input('background-color') backgroundcolor: string;
 
   /*
-Properties 
+Properties
 name : font-color
 datatype :  string
 version : 4.0 onwards
-default : 
+default :
 description : Set font color
-*/ 
+*/
   @Input('font-color') fontcolor: string;
 
   /*
-Properties 
+Properties
 name : amexio-color
 datatype :  string
 version : 4.1 onwards
-default : 
+default :
 description : Set font color
-*/ 
-  @Input('amexio-color') amexiocolor: string = "";
-  
+*/
+  @Input('amexio-color') amexiocolor: '';
+
   colspan: number;
 
-  dpClass : string="datapoint";
+  dpClass: 'datapoint';
 
   constructor() {
     this.colspan = 1;
@@ -141,15 +140,17 @@ description : Set font color
 
   ngOnInit() {
 
-    if (this.amexiocolor!="")
+    if (this.amexiocolor !== '') {
       this.dpClass = this.amexiocolor;
+    }
+    if (this.west) {
+      this.colspan++;
+    }
 
-    if (this.west) this.colspan++;
-
-    if (this.east) this.colspan++;
-
+    if (this.east) {
+      this.colspan++;
+    }
 
   }
-
 
 }

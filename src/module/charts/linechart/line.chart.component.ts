@@ -16,13 +16,13 @@ Component Name : Amexio line chart
 Component Selector : <amexio-chart-line>
 Component Description : A line chart that is rendered within the browser using SVG.
 */
-import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from '@angular/core';
-import {ChartAreaComponent} from "../chartarea/chart.area.component";
-import {ChartLegendComponent} from "../chartlegend/chart.legend.component";
-import {ChartTitleComponent} from "../charttitle/chart.title.component";
-import {ChartLoaderService} from "../chart.loader.service";
-import { ViewChild } from "@angular/core";
-import { ElementRef } from "@angular/core";
+import {AfterContentInit, Component, ContentChildren, ElementRef, Input, OnInit, QueryList, ViewChild} from '@angular/core';
+import {ChartAreaComponent} from '../chartarea/chart.area.component';
+import {ChartLegendComponent} from '../chartlegend/chart.legend.component';
+import {ChartTitleComponent} from '../charttitle/chart.title.component';
+
+import {ChartLoaderService} from '../chart.loader.service';
+
 declare var google: any;
 @Component({
   selector: 'amexio-chart-line', template: `
@@ -139,7 +139,7 @@ declare var google: any;
     }
   }
 
-  `]
+  ` ],
 })
 
 export class LineChartComponent implements AfterContentInit, OnInit {
@@ -151,7 +151,7 @@ export class LineChartComponent implements AfterContentInit, OnInit {
   id: any;
 
 /*
-Properties 
+Properties
 name : width
 datatype : string
 version : 4.0 onwards
@@ -161,7 +161,7 @@ description : width of chart
 @Input() width: string;
 
 /*
-Properties 
+Properties
 name : height
 datatype : string
 version : 4.0 onwards
@@ -170,40 +170,39 @@ description : height of chart
 */
 @Input() height: string;
 
+  showChart: boolean;
+  _data: any;
 
-  showChart:boolean;
-  _data:any;
-
-  get data():any{
+  get data(): any{
     return this._data;
   }
 
 /*
-Properties 
+Properties
 name : data
 datatype : any
 version : 4.0 onwards
 default : none
 description : For the use of local data
-*/  
+*/
 @Input('data')
-  set data(data:any){
-    if(data){
-      this._data=data;
-      this.showChart=true;
-    }else{
-      this.showChart=false;
+  set data(data: any) {
+    if (data) {
+      this._data = data;
+      this.showChart = true;
+    } else {
+      this.showChart = false;
     }
   }
 
 /*
-Properties 
+Properties
 name : background-color
 datatype : string
 version : 4.0 onwards
 default : none
 description : sets background-color of chart
-*/  
+*/
 @Input('background-color') backgroundcolor: string;
 
   hasLoaded: boolean;
@@ -228,15 +227,12 @@ description : sets background-color of chart
 
   @ViewChild('linechart') private linechart: ElementRef;
 
-
   constructor(private loader: ChartLoaderService) {
-
-    // this.id = 'amexio-chart-line' + Math.floor(Math.random() * 90000) + 10000;
     this.width = '100%';
   }
 
   drawChart() {
-    if(this.showChart){
+    if (this.showChart) {
       this.lineData = this.createTable(this._data);
       this.options = {
         title: this.chartTitleComponent ? this.chartTitleComponent.title : null,
@@ -245,28 +241,29 @@ description : sets background-color of chart
           fontName: this.chartTitleComponent.fontname ? this.chartTitleComponent.fontname : null,
           fontsize: this.chartTitleComponent.fontsize ? this.chartTitleComponent.fontsize : null,
           bold: this.chartTitleComponent.bold ? this.chartTitleComponent.bold : null,
-          italic: this.chartTitleComponent.italic ? this.chartTitleComponent.italic : null
+          italic: this.chartTitleComponent.italic ? this.chartTitleComponent.italic : null,
         } : null,
         backgroundcolor: this.backgroundcolor,
         legend: this.chartLengendComponent ? {
-          position: this.chartLengendComponent.position ? this.chartLengendComponent.position : null, //this work only in chart position is top
+          position: this.chartLengendComponent.position ? this.chartLengendComponent.position : null,
+          // this work only in chart position is top
           maxLines: this.chartLengendComponent.maxlines ? this.chartLengendComponent.maxlines : null, textStyle: {
             color: this.chartLengendComponent.color ? this.chartLengendComponent.color : null,
             fontsize: this.chartLengendComponent.fontsize ? this.chartLengendComponent.fontsize : null,
             fontName: this.chartLengendComponent.fontname ? this.chartLengendComponent.fontname : null,
             bold: this.chartLengendComponent.bold ? this.chartLengendComponent.bold : null,
-            alignment: this.chartLengendComponent.alignment ? this.chartLengendComponent.alignment : null
-          }
+            alignment: this.chartLengendComponent.alignment ? this.chartLengendComponent.alignment : null,
+          },
         } : 'none',
         chartArea: this.chartAreaComponent ? {
           backgroundcolor: this.chartAreaComponent.chartbackgroundcolor ? this.chartAreaComponent.chartbackgroundcolor : null,
           left: this.chartAreaComponent.leftposition ? this.chartAreaComponent.leftposition : null,
           top: this.chartAreaComponent.topposition ? this.chartAreaComponent.topposition : null,
           height: this.chartAreaComponent.chartheight ? this.chartAreaComponent.chartheight : null,
-          width: this.chartAreaComponent.chartwidth ? this.chartAreaComponent.chartwidth : null
+          width: this.chartAreaComponent.chartwidth ? this.chartAreaComponent.chartwidth : null,
         } : null,
       };
-      if(this.lineData){
+      if (this.lineData) {
         this.chart = new google.visualization.LineChart(this.linechart.nativeElement);
         this.hasLoaded = true;
         this.chart.draw(this.lineData, this.options);
@@ -281,39 +278,36 @@ description : sets background-color of chart
 
   }
 
-  //after content init for inner directive is run
+  // after content init for inner directive is run
   ngAfterContentInit(): void {
     this.chartLegendArray = this.chartLegendComp.toArray();
     this.chartTitleArray = this.chartTitleComp.toArray();
     this.chartAreaArray = this.chartAreaComp.toArray();
-    //take first component
-    if (this.chartLegendArray.length == 1) {
+    // take first component
+    if (this.chartLegendArray.length === 1) {
       this.chartLengendComponent = this.chartLegendArray.pop();
     }
-    if (this.chartTitleArray.length == 1) {
+    if (this.chartTitleArray.length === 1) {
       this.chartTitleComponent = this.chartTitleArray.pop();
     }
-    if (this.chartAreaArray.length == 1) {
+    if (this.chartAreaArray.length === 1) {
       this.chartAreaComponent = this.chartAreaArray.pop();
     }
   }
 
-  /**
-   * This method create data table structure of array and return in required chart data
-   *
-   * */
-  createTable(array: any[]): any {
-    //create Duplicate Array for data arrangement
-    let dupArray = array.slice();
-    let data = new google.visualization.DataTable();
-    let labelObject = dupArray[0];
-    //remove first object of array
+// This method create data table structure of array and return in required chart data
+createTable(array: any[]): any {
+    // create Duplicate Array for data arrangement
+    const dupArray = array.slice();
+    const data = new google.visualization.DataTable();
+    const labelObject = dupArray[0];
+    // remove first object of array
     dupArray.shift();
 
     labelObject.forEach((datatypeObject: any) => {
       data.addColumn(datatypeObject.datatype, datatypeObject.label);
     });
-    let finalArray: any[] = [];
+    const finalArray: any[] = [];
     dupArray.forEach((rowObject: any) => {
       finalArray.push(rowObject);
     });
@@ -321,10 +315,9 @@ description : sets background-color of chart
     return data;
   }
 
-
   ngOnInit(): void {
     this.hasLoaded = false;
-    this.loader.loadCharts('LineChart').subscribe(value => console.log(), errror => console.error(errror), () => {
+    this.loader.loadCharts('LineChart').subscribe((value) => console.log(), (error) => console.error(error), () => {
       this.drawChart();
     });
   }

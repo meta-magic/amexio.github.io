@@ -3,14 +3,13 @@
  */
 
 /*
- Component Name : Amexio east datapoints 
+ Component Name : Amexio east datapoints
  Component Selector : <amexio-east>
  Component Description : Represent the summary of the data in bullet point format.
 */
 import {
-  Component, Input, OnInit
+  Component, Input, OnInit,
 } from '@angular/core';
-
 
 @Component({
   selector: 'amexio-east', template: `
@@ -19,80 +18,78 @@ import {
          [style.color]="fontcolor" [style.width]="width" [style.height]="height">
       <ng-content></ng-content>
     </div>
-
-
-  `
+  `,
 })
 
 export class DataPointEastComponent implements OnInit {
 
    /*
-Properties 
+Properties
 name : content-align
 datatype :  string
 version : 4.0 onwards
 default : none
 description :  Set content align like : center,left,right
-*/   
+*/
   @Input('content-align') contentalign: string;
 
     /*
-Properties 
+Properties
 name : background-color
 datatype :  string
 version : 4.0 onwards
 default : none
 description : Set background color
-*/ 
+*/
   @Input('background-color') backgroundcolor: string;
 
    /*
-Properties 
+Properties
 name : font-color
 datatype :  string
 version : 4.0 onwards
 default : none
 description : Set font color
-*/ 
+*/
   @Input('font-color') fontcolor: string;
 
   /*
-Properties 
+Properties
 name : width
 datatype :  string
 version : 4.0 onwards
 default : none
 description : 	Set width
-*/ 
+*/
   @Input() width: string;
 
     /*
-Properties 
+Properties
 name : height
 datatype :  string
 version : 4.0 onwards
 default : none
 description : Set height
-*/ 
+*/
   @Input() height: string;
 
   /*
-Properties 
+Properties
 name : c-class
 datatype :  string
 version : 4.0 onwards
 default : none
 description : To use custom css class
-*/ 
+*/
   @Input('c-class') cclass: string;
 
   constructor() {
   }
 
   ngOnInit() {
-    if(this.cclass == null)
+    if (this.cclass == null) {
       this.cclass = 'datapoint-east';
+    }
   }
-
 
 }

@@ -19,12 +19,12 @@ Component Description : it describes vertical axis properties of chart.
 import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'amexio-chart-vertical-axis', template: ` `
+  selector: 'amexio-chart-vertical-axis', template: ` `,
 })
 export class VerticalAxisComponent implements OnInit {
 
 /*
-Properties 
+Properties
 name : title
 datatype : string
 version : 4.0 onwards
@@ -33,9 +33,8 @@ description : title of vertical axis
 */
 @Input() title: string;
 
-
 /*
-Properties 
+Properties
 name : title-color
 datatype : string
 version : 4.0 onwards

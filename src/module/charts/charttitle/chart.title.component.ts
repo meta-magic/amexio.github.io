@@ -19,43 +19,43 @@ Component Description : describes chart title properties
 import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'amexio-chart-title', template: ` `
+  selector: 'amexio-chart-title', template: ` `,
 })
 
 export class ChartTitleComponent implements OnInit {
 
  /*
-Properties 
+Properties
 name : title
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Title to display above the chart.
 */
 @Input() title: string;
 
  /*
-Properties 
+Properties
 name : position
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Position of chart title
 */
 @Input() position: string;
 
  /*
-Properties 
+Properties
 name : color
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Color of chart title.
 */
 @Input() color: string;
 
  /*
-Properties 
+Properties
 name : font-name
 datatype : string
 version : 4.0 onwards
@@ -65,17 +65,17 @@ description : Font name of chart title.
 @Input('font-name') fontname: string;
 
  /*
-Properties 
+Properties
 name : font-size
 datatype : number
 version : 4.0 onwards
-default : 
+default :
 description : Font size of chart title.
 */
 @Input('font-size') fontsize: number;
 
  /*
-Properties 
+Properties
 name : bold
 datatype : boolean
 version : 4.0 onwards
@@ -85,7 +85,7 @@ description : Set true for title in bold font.
 @Input() bold: boolean;
 
  /*
-Properties 
+Properties
 name : italic
 datatype : boolean
 version : 4.0 onwards
@@ -93,7 +93,6 @@ default :false
 description : Set true for title text in italic style.
 */
 @Input() italic: boolean;
-
 
   constructor() {
   }

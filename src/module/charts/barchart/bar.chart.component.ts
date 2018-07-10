@@ -11,18 +11,19 @@
  *
  */
 
-  /*
- Component Name : Amexio bar chart
- Component Selector : <amexio-chart-bar>
- Component Description : An bar chart that is rendered within the browser using SVG. A bar chart is a chart that presents grouped data with rectangular bars with lengths proportional to the values that they represent.
+/*
+Component Name : Amexio bar chart
+Component Selector : <amexio-chart-bar>
+Component Description : An bar chart that is rendered within the browser using SVG.
+A bar chart is a chart that presents grouped data with rectangular bars with lengths proportional to the values that they represent.
 */
-import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from "@angular/core";
-import {ChartLegendComponent} from "../chartlegend/chart.legend.component";
-import {ChartTitleComponent} from "../charttitle/chart.title.component";
-import {ChartLoaderService} from "../chart.loader.service";
-import {ChartAreaComponent} from "../chartarea/chart.area.component";
-import { ViewChild } from "@angular/core";
-import { ElementRef } from "@angular/core";
+import { AfterContentInit, Component, ContentChildren, ElementRef, Input, OnInit, QueryList, ViewChild } from '@angular/core';
+import { ChartAreaComponent } from '../chartarea/chart.area.component';
+import { ChartLegendComponent } from '../chartlegend/chart.legend.component';
+import { ChartTitleComponent } from '../charttitle/chart.title.component';
+
+import { ChartLoaderService } from '../chart.loader.service';
+
 declare var google: any;
 @Component({
   selector: 'amexio-chart-bar', template: `
@@ -137,7 +138,7 @@ declare var google: any;
     }
   }
 
-  `]
+  `],
 })
 export class BarChartComponent implements AfterContentInit, OnInit {
 
@@ -147,55 +148,54 @@ export class BarChartComponent implements AfterContentInit, OnInit {
 
   hasLoaded: boolean;
   id: any;
-  showChart:boolean;
-  _data:any;
+  showChart: boolean;
+  _data: any;
 
-  get data():any{
+  get data(): any {
     return this._data;
   }
 
-
   /*
-Properties 
+Properties
 name : data
 datatype : any
 version : 4.0 onwards
-default : 
+default :
 description : Local data for AreaChart
 */
   @Input('data')
-  set data(data:any){
-    if(data){
-      this.showChart=true
-      this._data=data;
-    }else{
-      this.showChart=false;
+  set data(data: any) {
+    if (data) {
+      this.showChart = true;
+      this._data = data;
+    } else {
+      this.showChart = false;
     }
   }
 
-   /*
-Properties 
+  /*
+Properties
 name : width
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Width of chart
 */
   @Input() width: string;
 
-   /*
-Properties 
+  /*
+Properties
 name : height
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Height of chart
 */
   @Input() height: string;
 
-  //showing stack chart
-   /*
-Properties 
+  // showing stack chart
+  /*
+Properties
 name : stacked
 datatype : boolean
 version : 4.0 onwards
@@ -204,33 +204,33 @@ description : If set to true, stacks the elements for all series at each domain 
 */
   @Input() stacked: boolean = false;
 
-   /*
-Properties 
+  /*
+Properties
 name : x-axis-title
 datatype : string
 version : 4.0 onwards
-default : 
-description : Sets title for x axis 
+default :
+description : Sets title for x axis
 */
   @Input('x-axis-title') xaxistitle: string;
 
-   /*
-Properties 
+  /*
+Properties
 name : y-axis-title
 datatype : string
 version : 4.0 onwards
-default : 
-description : Sets title for y axis 
+default :
+description : Sets title for y axis
 */
   @Input('y-axis-title') yaxistitle: string;
 
-   /*
-Properties 
+  /*
+Properties
 name : background-color
 datatype : string
 version : 4.0 onwards
-default : 
-description : Sets background-color 
+default :
+description : Sets background-color
 */
   @Input('background-color') backgroundcolor: string;
 
@@ -254,7 +254,6 @@ description : Sets background-color
 
   @ViewChild('barchart') private barchart: ElementRef;
 
-
   constructor(private loader: ChartLoaderService) {
 
     // this.id = 'amexio-chart-bar' + Math.floor(Math.random() * 90000) + 10000;
@@ -262,82 +261,78 @@ description : Sets background-color
   }
 
   drawChart() {
-    if(this.showChart){
-  //bind the data
-  this.barData = google.visualization.arrayToDataTable(this._data);
-
-  this.options = {
-    title: this.chartTitleComponent ? this.chartTitleComponent.title : null,
-    titleTextStyle: this.chartTitleComponent ? {
-      color: this.chartTitleComponent.color ? this.chartTitleComponent.color : null,
-      fontName: this.chartTitleComponent.fontname ? this.chartTitleComponent.fontname : null,
-      fontsize: this.chartTitleComponent.fontsize ? this.chartTitleComponent.fontsize : null,
-      bold: this.chartTitleComponent.bold ? this.chartTitleComponent.bold : null,
-      italic: this.chartTitleComponent.italic ? this.chartTitleComponent.italic : null
-    } : null,
-    isStacked: this.stacked,
-    backgroundcolor: this.backgroundcolor,
-    legend: this.chartLengendComponent ? {
-      position: this.chartLengendComponent.position ? this.chartLengendComponent.position : null,
-      maxLines: this.chartLengendComponent.maxlines ? this.chartLengendComponent.maxlines : null,
-      textStyle: {
-        color: this.chartLengendComponent.color ? this.chartLengendComponent.color : null,
-        fontsize: this.chartLengendComponent.fontsize ? this.chartLengendComponent.fontsize : null,
-        fontName: this.chartLengendComponent.fontname ? this.chartLengendComponent.fontname : null,
-        bold: this.chartLengendComponent.bold ? this.chartLengendComponent.bold : null,
-        alignment: this.chartLengendComponent.alignment ? this.chartLengendComponent.alignment : null
+    if (this.showChart) {
+      // bind the data
+      this.barData = google.visualization.arrayToDataTable(this._data);
+      this.options = {
+        title: this.chartTitleComponent ? this.chartTitleComponent.title : null,
+        titleTextStyle: this.chartTitleComponent ? {
+          color: this.chartTitleComponent.color ? this.chartTitleComponent.color : null,
+          fontName: this.chartTitleComponent.fontname ? this.chartTitleComponent.fontname : null,
+          fontsize: this.chartTitleComponent.fontsize ? this.chartTitleComponent.fontsize : null,
+          bold: this.chartTitleComponent.bold ? this.chartTitleComponent.bold : null,
+          italic: this.chartTitleComponent.italic ? this.chartTitleComponent.italic : null,
+        } : null,
+        isStacked: this.stacked,
+        backgroundcolor: this.backgroundcolor,
+        legend: this.chartLengendComponent ? {
+          position: this.chartLengendComponent.position ? this.chartLengendComponent.position : null,
+          maxLines: this.chartLengendComponent.maxlines ? this.chartLengendComponent.maxlines : null,
+          textStyle: {
+            color: this.chartLengendComponent.color ? this.chartLengendComponent.color : null,
+            fontsize: this.chartLengendComponent.fontsize ? this.chartLengendComponent.fontsize : null,
+            fontName: this.chartLengendComponent.fontname ? this.chartLengendComponent.fontname : null,
+            bold: this.chartLengendComponent.bold ? this.chartLengendComponent.bold : null,
+            alignment: this.chartLengendComponent.alignment ? this.chartLengendComponent.alignment : null,
+          },
+        } : 'none',
+        chartArea: this.chartAreaComponent ? {
+          backgroundcolor: this.chartAreaComponent.chartbackgroundcolor ? this.chartAreaComponent.chartbackgroundcolor : null,
+          left: this.chartAreaComponent.leftposition ? this.chartAreaComponent.leftposition : null,
+          top: this.chartAreaComponent.topposition ? this.chartAreaComponent.topposition : null,
+          height: this.chartAreaComponent.chartheight ? this.chartAreaComponent.chartheight : null,
+          width: this.chartAreaComponent.chartwidth ? this.chartAreaComponent.chartwidth : null,
+        } : null,
+        hAxis: {
+          title: this.xaxistitle, minvalue: 0,
+        },
+        vAxis: {
+          title: this.yaxistitle,
+        },
+      };
+      if (this.barData) {
+        this.chart = new google.visualization.BarChart(this.barchart.nativeElement);
+        this.hasLoaded = true;
+        this.chart.draw(this.barData, this.options);
       }
-    } : 'none',
-    chartArea: this.chartAreaComponent ? {
-      backgroundcolor: this.chartAreaComponent.chartbackgroundcolor ? this.chartAreaComponent.chartbackgroundcolor : null,
-      left: this.chartAreaComponent.leftposition ? this.chartAreaComponent.leftposition : null,
-      top: this.chartAreaComponent.topposition ? this.chartAreaComponent.topposition : null,
-      height: this.chartAreaComponent.chartheight ? this.chartAreaComponent.chartheight : null,
-      width: this.chartAreaComponent.chartwidth ? this.chartAreaComponent.chartwidth : null
-    } : null,
-    hAxis: {
-      title: this.xaxistitle, minvalue: 0
-    },
-    vAxis: {
-      title: this.yaxistitle
     }
-  };
-  if(this.barData){
-    this.chart = new google.visualization.BarChart(this.barchart.nativeElement);
-    this.hasLoaded = true;
-    this.chart.draw(this.barData, this.options);
-  }
-
-    }
-
   }
 
   ngAfterContentInit(): void {
     this.chartLegendArray = this.chartLegendComp.toArray();
     this.chartTitleArray = this.chartTitleComp.toArray();
     this.chartAreaArray = this.chartAreaComp.toArray();
-    //take first component
-    if (this.chartLegendArray.length == 1) {
+    // take first component
+    if (this.chartLegendArray.length === 1) {
       this.chartLengendComponent = this.chartLegendArray.pop();
     }
-    if (this.chartTitleArray.length == 1) {
+    if (this.chartTitleArray.length === 1) {
       this.chartTitleComponent = this.chartTitleArray.pop();
     }
-    if (this.chartAreaArray.length == 1) {
+    if (this.chartAreaArray.length === 1) {
       this.chartAreaComponent = this.chartAreaArray.pop();
     }
   }
 
   ngOnInit(): void {
     this.hasLoaded = false;
-    this.loader.loadCharts('BarChart').subscribe(value => console.log(), errror => console.error(errror), () => {
+    this.loader.loadCharts('BarChart').subscribe((value) => console.log(), (errror) => console.error(errror), () => {
       this.drawChart();
     });
   }
 
   onResize(event: any) {
     this.drawChart();
-
   }
 
 }

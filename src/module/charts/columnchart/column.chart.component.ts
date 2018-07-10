@@ -16,13 +16,14 @@ Component Name : Amexio column chart
 Component Selector : <amexio-chart-column>
 Component Description : A column chart is a vertical bar chart rendered in the browser using SVG.
 */
-import {AfterContentInit, Component, ContentChildren, Input, QueryList} from '@angular/core';
-import {ChartLegendComponent} from "../chartlegend/chart.legend.component";
-import {ChartTitleComponent} from "../charttitle/chart.title.component";
-import {ChartAreaComponent} from "../chartarea/chart.area.component";
-import {ChartLoaderService} from "../chart.loader.service";
-import { ViewChild } from "@angular/core";
-import { ElementRef } from "@angular/core";
+
+import {AfterContentInit, Component, ContentChildren, ElementRef, Input, OnInit,  QueryList, ViewChild} from '@angular/core';
+import {ChartAreaComponent} from '../chartarea/chart.area.component';
+import {ChartLegendComponent} from '../chartlegend/chart.legend.component';
+import {ChartTitleComponent} from '../charttitle/chart.title.component';
+
+import {ChartLoaderService} from '../chart.loader.service';
+
 declare var google: any;
 @Component({
   selector: 'amexio-chart-column', template: `
@@ -138,7 +139,7 @@ declare var google: any;
     }
   }
 
-  `]
+  ` ],
 })
 
 export class ColumnChartComponent implements AfterContentInit {
@@ -149,7 +150,7 @@ export class ColumnChartComponent implements AfterContentInit {
 
   id: any;
  /*
-Properties 
+Properties
 name : width
 datatype : string
 version : 4.0 onwards
@@ -159,7 +160,7 @@ description : Width of chart
 @Input() width: string;
 
  /*
-Properties 
+Properties
 name : height
 datatype : string
 version : 4.0 onwards
@@ -168,16 +169,15 @@ description : height of chart
 */
 @Input() height: string;
 
+  showChart: boolean;
+  _data: any;
 
-  showChart:boolean;
-  _data:any;
-
-  get data():any{
+  get data(): any {
     return this._data;
   }
 
  /*
-Properties 
+Properties
 name : data
 datatype : any
 version : 4.0 onwards
@@ -185,19 +185,19 @@ default : none
 description : For the use of local data
 */
 @Input('data')
-  set data(data:any){
-    if(data){
-      this._data=data;
-      this.showChart=true;
-    }else{
-      this.showChart=false;
+  set data(data: any) {
+    if (data) {
+      this._data = data;
+      this.showChart = true;
+    } else {
+      this.showChart = false;
     }
   }
 
-  //showing stack chart
-  
+// showing stack chart
+
  /*
-Properties 
+Properties
 name : stacked
 datatype : boolean
 version : 4.0 onwards
@@ -207,7 +207,7 @@ description : If set to true, stacks the elements for all series at each domain 
 @Input() stacked: boolean = false;
 
  /*
-Properties 
+Properties
 name : background-color
 datatype : string
 version : 4.0 onwards
@@ -239,12 +239,11 @@ description : sets background color
   @ViewChild('columnchart') private columnchart: ElementRef;
 
   constructor(private loader: ChartLoaderService) {
-    // this.id = 'amexio-chart-column' + Math.floor(Math.random() * 90000) + 10000;
     this.width = '100%';
   }
 
   drawChart() {
-    if(this.showChart){
+    if (this.showChart) {
       this.columnData = this.createTable(this._data);
       this.options = {
         title: this.chartTitleComponent ? this.chartTitleComponent.title : null,
@@ -253,29 +252,31 @@ description : sets background color
           fontName: this.chartTitleComponent.fontname ? this.chartTitleComponent.fontname : null,
           fontsize: this.chartTitleComponent.fontsize ? this.chartTitleComponent.fontsize : null,
           bold: this.chartTitleComponent.bold ? this.chartTitleComponent.bold : null,
-          italic: this.chartTitleComponent.italic ? this.chartTitleComponent.italic : null
+          italic: this.chartTitleComponent.italic ? this.chartTitleComponent.italic : null,
         } : null,
         isStacked: this.stacked,
         backgroundcolor: this.backgroundcolor,
         legend: this.chartLengendComponent ? {
-          position: this.chartLengendComponent.position ? this.chartLengendComponent.position : null, //this work only in chart position is top
-          maxLines: this.chartLengendComponent.maxlines ? this.chartLengendComponent.maxlines : null, textStyle: {
+          position: this.chartLengendComponent.position ? this.chartLengendComponent.position : null,
+           // this work only in chart position is top
+          maxLines: this.chartLengendComponent.maxlines ? this.chartLengendComponent.maxlines : null,
+          textStyle: {
             color: this.chartLengendComponent.color ? this.chartLengendComponent.color : null,
             fontsize: this.chartLengendComponent.fontsize ? this.chartLengendComponent.fontsize : null,
             fontName: this.chartLengendComponent.fontname ? this.chartLengendComponent.fontname : null,
             bold: this.chartLengendComponent.bold ? this.chartLengendComponent.bold : null,
-            alignment: this.chartLengendComponent.alignment ? this.chartLengendComponent.alignment : null
-          }
+            alignment: this.chartLengendComponent.alignment ? this.chartLengendComponent.alignment : null,
+          },
         } : 'none',
         chartArea: this.chartAreaComponent ? {
           backgroundcolor: this.chartAreaComponent.chartbackgroundcolor ? this.chartAreaComponent.chartbackgroundcolor : null,
           left: this.chartAreaComponent.leftposition ? this.chartAreaComponent.leftposition : null,
           top: this.chartAreaComponent.topposition ? this.chartAreaComponent.topposition : null,
           height: this.chartAreaComponent.chartheight ? this.chartAreaComponent.chartheight : null,
-          width: this.chartAreaComponent.chartwidth ? this.chartAreaComponent.chartwidth : null
+          width: this.chartAreaComponent.chartwidth ? this.chartAreaComponent.chartwidth : null,
         } : null,
       };
-      if(this.columnData){
+      if (this.columnData) {
         this.chart = new google.visualization.ColumnChart(this.columnchart.nativeElement);
         this.hasLoaded = true;
         this.chart.draw(this.columnData, this.options);
@@ -290,39 +291,36 @@ description : sets background color
 
   }
 
-  //after content init for inner directive is run
+  // after content init for inner directive is run
   ngAfterContentInit(): void {
     this.chartLegendArray = this.chartLegendComp.toArray();
     this.chartTitleArray = this.chartTitleComp.toArray();
     this.chartAreaArray = this.chartAreaComp.toArray();
-    //take first component
-    if (this.chartLegendArray.length == 1) {
+    // take first component
+    if (this.chartLegendArray.length === 1) {
       this.chartLengendComponent = this.chartLegendArray.pop();
     }
-    if (this.chartTitleArray.length == 1) {
+    if (this.chartTitleArray.length === 1) {
       this.chartTitleComponent = this.chartTitleArray.pop();
     }
-    if (this.chartAreaArray.length == 1) {
+    if (this.chartAreaArray.length === 1) {
       this.chartAreaComponent = this.chartAreaArray.pop();
     }
   }
 
-  /**
-   * This method create data table structure of array and return in required chart data
-   *
-   * */
+  // This method create data table structure of array and return in required chart data
   createTable(array: any[]): any {
-    //create Duplicate Array for data arrangement
-    let dupArray = array.slice();
-    let data = new google.visualization.DataTable();
-    let labelObject = dupArray[0];
-    //remove first object of array
+    // create Duplicate Array for data arrangement
+    const dupArray = array.slice();
+    const data = new google.visualization.DataTable();
+    const labelObject = dupArray[0];
+    // remove first object of array
     dupArray.shift();
 
     labelObject.forEach((datatypeObject: any) => {
       data.addColumn(datatypeObject.datatype, datatypeObject.label);
     });
-    let finalArray: any[] = [];
+    const finalArray: any[] = [];
     dupArray.forEach((rowObject) => {
       finalArray.push(rowObject);
     });
@@ -332,7 +330,7 @@ description : sets background color
 
   ngOnInit(): void {
     this.hasLoaded = false;
-    this.loader.loadCharts('ColumnChart').subscribe(value => console.log(), errror => console.error(errror), () => {
+    this.loader.loadCharts('ColumnChart').subscribe((value) => console.log(), (errror) => console.error(errror), () => {
       this.drawChart();
     });
   }
