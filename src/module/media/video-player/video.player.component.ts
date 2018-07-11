@@ -10,53 +10,45 @@
  * Author - Pratik Kelwalkar
  *
  */
-
- /*
+/*
  Component Name : Amexio video player
  Component Selector : <amexio-video-player>
  Component Description : Video player component support all types of videos.
-
-
 */
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
-
 @Component({
   selector: 'amexio-video-player',
   templateUrl: './video.player.component.html',
-  styleUrls: ['./video.player.component.scss']
+  styleUrls: ['./video.player.component.scss'],
 })
-
 export class AmexioVideoPlayerComponent implements OnInit {
-
-    /*
-Properties 
+/*
+Properties
 name : path
 datatype :  any
 version : 4.0 onwards
-default : 
+default :
 description : Path of video
-*/ 
+*/
   @Input() path: any;
-
-  /*
-Properties 
+/*
+Properties
 name : extension
 datatype :  any
 version : 4.0 onwards
-default : 
+default :
 description : Video extension
-*/ 
+*/
   @Input() extension: any;
-
-  /*
-Properties 
+/*
+Properties
 name : width
 datatype :  any
 version : 4.0 onwards
-default : 
+default :
 description :  Width of the video player window
-*/ 
-  @Input() width : any;  
+*/
+  @Input() width: any;
 
   @ViewChild('videoRef') videoPlayer: any;
 
@@ -81,11 +73,14 @@ description :  Width of the video player window
   }
 
   updateMuteUI() {
-    if (this.videoPlayer.nativeElement.muted) this.isMuted = true; else
+    if (this.videoPlayer.nativeElement.muted) {
+      this.isMuted = true;
+    }
+     else {
       this.isMuted = false;
-  }
-
-  onPlay() {
+   }
+   }
+onPlay() {
     if (!this.isPlaying) {
       this.videoPlayer.nativeElement.play();
       this.isPlaying = true;
@@ -100,7 +95,7 @@ description :  Width of the video player window
     this.progressBar.nativeElement.value = percentage;
     // Update the progress bar's text (for browsers that don't support the progress element)
     this.progressBar.nativeElement.innerHTML = percentage + '% played';
-    if (percentage == 100) {
+    if (percentage === 100) {
       this.isPlaying = false;
     }
   }
