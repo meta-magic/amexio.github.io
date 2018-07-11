@@ -14,17 +14,19 @@
  *
  */
 
-
 /*
 Component Name : Amexio data grid
 Component Selector : <amexio-data-table-column>
-Component Description : Data grid component to render large amount of data-set with various options like sorting in ascending or descending order, client-side pagination, column hide/unhide, single/multi selection, user define template for rendering for column header and column data, displaying summation of numeric column.
+Component Description : Data grid component to render large
+amount of data-set with various options like sorting in ascending or descending order,
+client-side pagination, column hide/unhide, single/multi selection, user define template
+for rendering for column header and column data, displaying summation of numeric column.
 */
 
-import { Input, Component, ContentChild, TemplateRef } from '@angular/core';
+import {Component, ContentChild, Input, TemplateRef } from '@angular/core';
 
 @Component({
-  selector: 'amexio-data-table-column', template: ``
+  selector: 'amexio-data-table-column', template: ``,
 })
 export class AmexioGridColumnComponent {
 
@@ -83,7 +85,7 @@ Properties
 name : context-menu
 datatype : any[]
 version : 5.0.1 onwards
-default : 
+default :
 description : Context Menu provides the list of menus on right click of column.
 */
   @Input('context-menu') contextmenu: any[];
@@ -118,7 +120,6 @@ description : Custom width for each column.Width must be in % but no need to men
 */
   @Input() width: string;
   isColumnSort: boolean;
-
 
   @ContentChild('amexioHeaderTmpl') headerTemplate: TemplateRef<any>;
 

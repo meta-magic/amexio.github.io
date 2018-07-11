@@ -2,22 +2,23 @@
  * Created by ketangote on 11/22/17.
  */
 
-
  /*
  Component Name : Amexio listbox
  Component Selector : <amexio-listbox>
- Component Description : Simple list box which allows user to select one of more items from list based on configuration. User can provide custom template to change look and feel.
+ Component Description : Simple list box which allows user to select one of
+ more items from list based on configuration. User can provide custom template to
+ change look and feel.
 */
-import {AfterViewInit,HostListener, Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateRef} from '@angular/core';
-import {CommonDataService} from "../../services/data/common.data.service";
+import {AfterViewInit, Component, ContentChild, EventEmitter, HostListener, Input, OnInit, Output, TemplateRef} from '@angular/core';
+import {CommonDataService} from '../../services/data/common.data.service';
 
 @Component({
-  selector: 'amexio-listbox', templateUrl: './listbox.component.html', styleUrls: ['./listbox.component.scss']
+  selector: 'amexio-listbox', templateUrl: './listbox.component.html', styleUrls: ['./listbox.component.scss'],
 })
 export class AmexioListBoxComponent implements OnInit, AfterViewInit {
 
   /*
-Properties 
+Properties
 name : enable-checkbox
 datatype : boolean
 version : 4.0 onwards
@@ -27,7 +28,7 @@ description : Enables checkbox for each row, this allows user for multi selectio
   @Input('enable-checkbox') enablecheckbox: boolean;
 
   /*
-Properties 
+Properties
 name : header
 datatype : string
 version : 4.0 onwards
@@ -44,10 +45,10 @@ version : 4.2.4 onwards
 default : true
 description : User can disabled header of listbox to false..
 */
-@Input('enable-header') enableHeader: boolean =true;
+@Input('enable-header') enableHeader: boolean = true;
 
   /*
-Properties 
+Properties
 name : search-placeholder
 datatype : string
 version : 4.0 onwards
@@ -57,7 +58,7 @@ description : place-holder for searchbox.
   @Input('search-placeholder') searchplaceholder: string;
 
   /*
-Properties 
+Properties
 name : filter
 datatype : boolean
 version : 4.0 onwards
@@ -67,7 +68,7 @@ description : Enables user to filter data based on 'display-field' configured.
   @Input() filter: boolean;
 
   /*
-Properties 
+Properties
 name : data
 datatype : any
 version : 4.0 onwards
@@ -77,7 +78,7 @@ description : Local Data binding.
   @Input() data: any;
 
   /*
-Properties 
+Properties
 name : http-url
 datatype : string
 version : 4.0 onwards
@@ -87,7 +88,7 @@ description : REST url for fetching data.
   @Input('http-url') httpurl: string;
 
   /*
-Properties 
+Properties
 name : data-reader
 datatype : string
 version : 4.0 onwards
@@ -97,7 +98,7 @@ description : Key in JSON Datasource for records.
   @Input('data-reader') datareader: string;
 
   /*
-Properties 
+Properties
 name : http-method
 datatype : string
 version : 4.0 onwards
@@ -107,7 +108,7 @@ description : Type of HTTP call, POST,GET etc.
   @Input('http-method') httpmethod: string;
 
   /*
-Properties 
+Properties
 name : display-field
 datatype : string
 version : 4.0 onwards
@@ -117,7 +118,7 @@ description : Key in JSON for display particular column from data.
   @Input('display-field') displayfield: string;
 
   /*
-Properties 
+Properties
 name : height
 datatype : any
 version : 4.0 onwards
@@ -127,7 +128,7 @@ description : height for ListBox.
   @Input() height: any;
 
   /*
-Events 
+Events
 name : selectedRows
 datatype : none
 version : none
@@ -137,7 +138,7 @@ description : It will fire only on selection of checkbox and gives you selected 
   @Output() selectedRows: any = new EventEmitter<any>();
 
   /*
-Events 
+Events
 name : onRowClick
 datatype : none
 version : none
@@ -147,7 +148,7 @@ description : It will gives you row clicked data.
   @Output() onRowClick: any = new EventEmitter<any>();
 
   /*
-  Properties 
+  Properties
   name : border
   datatype : any
   version : 4.2 onwards
@@ -161,13 +162,13 @@ Properties
 name :  context-menu
 datatype : string
 version : 5.0.1 onwards
-default : 
-description : Context Menu provides the list of menus on right click. 
+default :
+description : Context Menu provides the list of menus on right click.
 */
 @Input('context-menu') contextmenu: any[];
 
 /*
-Events 
+Events
 name : rightClick
 datatype : none
 version : 5.0.1
@@ -192,7 +193,7 @@ description : It will gives you row clicked data.
 
   previousData: any;
 
-  maskloader:boolean=true;
+  maskloader: boolean = true;
 
   mouseLocation: { left: number; top: number } = { left: 0, top: 0 };
 
@@ -206,14 +207,14 @@ description : It will gives you row clicked data.
     this.filter = false;
     this.enablecheckbox = false;
     this.selectedData = [];
-    this.searchplaceholder = "Search";
+    this.searchplaceholder = 'Search';
   }
 
   ngOnInit() {
     if (this.httpmethod && this.httpurl) {
-      this.dataService.fetchData(this.httpurl, this.httpmethod).subscribe(response => {
+      this.dataService.fetchData(this.httpurl, this.httpmethod).subscribe((response) => {
         this.response = response;
-      }, error => {
+      }, (error) => {
       }, () => {
         this.setData(this.response);
       });
@@ -224,7 +225,7 @@ description : It will gives you row clicked data.
   }
 
   ngDoCheck() {
-    if (JSON.stringify(this.previousData) != JSON.stringify(this.data)) {
+    if (JSON.stringify(this.previousData) !== JSON.stringify(this.data)) {
       this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
     }
@@ -233,7 +234,7 @@ description : It will gives you row clicked data.
  setData(httpResponse: any) {
     let responsedata = httpResponse;
     if (this.datareader != null) {
-      let dr = this.datareader.split(".");
+      let dr = this.datareader.split('.');
       for (let ir = 0; ir < dr.length; ir++) {
         responsedata = responsedata[dr[ir]];
       }
@@ -252,7 +253,7 @@ description : It will gives you row clicked data.
       }
     });
 
-    this.maskloader=false;
+    this.maskloader = false;
   }
 
   filterData() {
@@ -353,8 +354,9 @@ description : It will gives you row clicked data.
     let height: number = 240;
     if ((window.screen.height - elementRef.getBoundingClientRect().bottom) < height) {
       return true;
-    } else
+    } else {
       return false;
+    }
   }
   getContextMenuStyle() {
     return {
@@ -364,7 +366,7 @@ description : It will gives you row clicked data.
       left: this.mouseLocation.left + 'px',
       top: this.mouseLocation.top + 'px',
       'box-shadow': '1px 1px 2px #000000',
-      width: '15%'
+      width: '15%',
     };
   }
 
@@ -372,7 +374,7 @@ description : It will gives you row clicked data.
     if (!itemConfig.disabled) {
       let obj = {
         menuData: itemConfig,
-        rowData: this.rightClickRowData
+        rowData: this.rightClickRowData,
       };
       this.rightClick.emit(obj);
     }

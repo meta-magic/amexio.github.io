@@ -2,22 +2,22 @@
  * Created by ketangote on 11/23/17.
  */
 
-
 /*
-Component Name : Amexio tree filter 
+Component Name : Amexio tree filter
 Component Selector : <amexio-tree-filter-view>
 Component Description : A Expandable Tree Component for Angular, having Filtering functionality.
 */
-import { ChangeDetectorRef, HostListener, Component, ElementRef, ContentChild, EventEmitter, Input, Output, TemplateRef } from '@angular/core';
-import { CommonDataService } from "../../services/data/common.data.service";
+import { ChangeDetectorRef,  Component, ContentChild, ElementRef,
+   EventEmitter, HostListener, Input, Output, TemplateRef } from '@angular/core';
+import { CommonDataService } from '../../services/data/common.data.service';
 
 @Component({
-  selector: 'amexio-treeview', templateUrl: './tree.component.html', styleUrls: ['./tree.component.scss']
+  selector: 'amexio-treeview', templateUrl: './tree.component.html', styleUrls: ['./tree.component.scss'],
 })
 export class AmexioTreeViewComponent {
 
   /*
-Properties 
+Properties
 name : data
 datatype : any
 version : 4.0 onwards
@@ -27,7 +27,7 @@ description : Local Data binding.
   @Input() data: any[];
 
   /*
-Properties 
+Properties
 name : http-url
 datatype : string
 version : 4.0 onwards
@@ -37,7 +37,7 @@ description : REST url for fetching data.
   @Input('http-url') httpurl: string;
 
   /*
-Properties 
+Properties
 name : http-method
 datatype : string
 version : 4.0 onwards
@@ -47,7 +47,7 @@ description : Type of HTTP call, POST,GET etc.
   @Input('http-method') httpmethod: string;
 
   /*
-Properties 
+Properties
 name : data-reader
 datatype : string
 version : 4.0 onwards
@@ -57,7 +57,7 @@ description : Key in JSON Datasource for records.
   @Input('data-reader') datareader: string;
 
   /*
-  Events 
+  Events
   name : nodeClick
   datatype : none
   version : none
@@ -67,7 +67,7 @@ description : Key in JSON Datasource for records.
   @Output() nodeClick: any = new EventEmitter<any>();
 
   /*
-Properties 
+Properties
 name : enable-checkbox
 datatype : false
 version : 4.0 onwards
@@ -77,7 +77,7 @@ description : Enables checkbox for each row, this allows user for multi selectio
   @Input('enable-checkbox') enablecheckbox = false;
 
   /*
-Properties 
+Properties
 name : templates
 datatype : any
 version : 4.0 onwards
@@ -87,7 +87,7 @@ description : user can add any template to tree
   @Input() templates: any;
 
   /*
-  Properties 
+  Properties
   name : enable-drag
   datatype : boolean
   version : 5.0.0 onwards
@@ -97,24 +97,24 @@ description : user can add any template to tree
   @Input('enable-drag') enabledrag: boolean;
 
   /*
-  Properties 
+  Properties
   name : enable-drop
   datatype : boolean
   version : 5.0.0 onwards
   default : false
   description : any node can be dropped in the tree structure
   */
-  @Input("enable-drop") enabledrop: boolean = false;
+  @Input('enable-drop') enabledrop: boolean = false;
 
   /*
-Properties 
+Properties
 name : across-tree
 datatype : boolean
 version : 5.0.0 onwards
 default : false
 description : Dragging and dropping is possible across tree.
 */
-  @Input("across-tree") acrosstree: boolean = false;
+  @Input('across-tree') acrosstree: boolean = false;
 
   /*
 Properties
@@ -122,19 +122,19 @@ name :  badge
 datatype : boolean
 version : 5.0.0 onwards
 default : false
-description : Describes the badge value that has to be displayed tree node 
+description : Describes the badge value that has to be displayed tree node
 */
   @Input('badge') badge: boolean;
 
-    /*
+  /*
 Properties
 name :  context-menu
 datatype : string
 version : 5.0.1 onwards
-default : 
-description : Context Menu provides the list of menus on right click. 
+default :
+description : Context Menu provides the list of menus on right click.
 */
-@Input('context-menu') contextmenu: any[];
+  @Input('context-menu') contextmenu: any[];
 
   @Input() parentRef: any;
 
@@ -149,11 +149,11 @@ description : Context Menu provides the list of menus on right click.
   */
   @Output() onTreeNodeChecked: any = new EventEmitter<any>();
 
-  @Output() onDrag: any = new EventEmitter<any>();  //Emits at drag
+  @Output() onDrag: any = new EventEmitter<any>();  // Emits at drag
 
-  @Output() onDrop: any = new EventEmitter<any>();   //emits at drop
+  @Output() onDrop: any = new EventEmitter<any>();   // emits at drop
 
-  @Output() dragover: any = new EventEmitter<any>();   //Emits at drag over
+  @Output() dragover: any = new EventEmitter<any>();   // Emits at drag over
 
   @Input() dragData: any;
 
@@ -177,16 +177,16 @@ description : Context Menu provides the list of menus on right click.
 
   mouseLocation: { left: number; top: number } = { left: 0, top: 0 };
 
-  constructor(public element: ElementRef,public dataService: CommonDataService, private cdf: ChangeDetectorRef) {
+  constructor(public element: ElementRef, public dataService: CommonDataService, private cdf: ChangeDetectorRef) {
     this.isNode = true;
     this.acrosstree = false;
   }
 
   ngOnInit() {
     if (this.httpmethod && this.httpurl) {
-      this.dataService.fetchData(this.httpurl, this.httpmethod).subscribe(response => {
+      this.dataService.fetchData(this.httpurl, this.httpmethod).subscribe((response) => {
         this.responseData = response;
-      }, error => {
+      }, (error) => {
       }, () => {
         this.setData(this.responseData);
       });
@@ -207,7 +207,7 @@ description : Context Menu provides the list of menus on right click.
   }
 
   ngDoCheck() {
-    if (JSON.stringify(this.previousValue) != JSON.stringify(this.data) && this.previousValue != null && this.data != null) {
+    if (JSON.stringify(this.previousValue) !== JSON.stringify(this.data) && this.previousValue != null && this.data != null) {
       this.previousValue = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
     }
@@ -237,10 +237,10 @@ description : Context Menu provides the list of menus on right click.
   }
 
   setData(httpResponse: any) {
-    //Check if key is added?
+    // Check if key is added?
     let responsedata = httpResponse;
     if (this.datareader != null) {
-      let dr = this.datareader.split(".");
+      let dr = this.datareader.split('.');
       for (let ir = 0; ir < dr.length; ir++) {
         responsedata = responsedata[dr[ir]];
       }
@@ -253,33 +253,32 @@ description : Context Menu provides the list of menus on right click.
     this.activateNode(this.data, null);
   }
 
-  //To add isSelected flag explicitily in tree Data
+  // To add isSelected flag explicitily in tree Data
   setSelectedFlag() {
-    this.parentRef.forEach((node: any)=>{
-      if(node.hasOwnProperty('isSelected')){
+    this.parentRef.forEach((node: any) => {
+      if (node.hasOwnProperty('isSelected')) {
         node.isSelected = false;
-      } else{
+      } else {
         node['isSelected'] = false;
       }
-      if(node.hasOwnProperty('children') && node.children.length > 0) {
+      if (node.hasOwnProperty('children') && node.children.length > 0) {
         this.setSelectedFlagInChild(node);
       }
 
     });
   }
   setSelectedFlagInChild(node: any) {
-   node.children.forEach((childcom: any)=>{
-    if(childcom.hasOwnProperty('isSelected')){
-      childcom.isSelected = false;
-    } else{
-      childcom['isSelected'] = false;
-    }
-    if(childcom.hasOwnProperty('children') && childcom.children.length > 0) {
-      this.setSelectedFlagInChild(childcom);
-    }
-   });
+    node.children.forEach((childcom: any) => {
+      if (childcom.hasOwnProperty('isSelected')) {
+        childcom.isSelected = false;
+      } else {
+        childcom['isSelected'] = false;
+      }
+      if (childcom.hasOwnProperty('children') && childcom.children.length > 0) {
+        this.setSelectedFlagInChild(childcom);
+      }
+    });
   }
-
 
   emitCheckedData(checkedData: any) {
     checkedData.checked = !checkedData.checked;
@@ -317,7 +316,6 @@ description : Context Menu provides the list of menus on right click.
     });
   }
 
-
   setCheckedStatusFromParent(object: any) {
     object.children.forEach((childOption: any) => {
       childOption.checked = true;
@@ -331,11 +329,11 @@ description : Context Menu provides the list of menus on right click.
     this.onTreeNodeChecked.emit(this.data);
   }
 
-  //Method to drag parent with node
+  // Method to drag parent with node
 
   onDragStart(dragData: any) {
-    dragData.event.dataTransfer.setData("treenodedata", JSON.stringify(dragData.data));
-    dragData.event.dataTransfer.effectAllowed = "copy";
+    dragData.event.dataTransfer.setData('treenodedata', JSON.stringify(dragData.data));
+    dragData.event.dataTransfer.effectAllowed = 'copy';
     this.dragData = dragData;
     this.onDrag.emit(dragData);
   }
@@ -343,7 +341,7 @@ description : Context Menu provides the list of menus on right click.
   allowDrop(dragOverData: any) {
     dragOverData.event.preventDefault();
     if (!this.enabledrop) {
-      dragOverData.event.dataTransfer.dropEffect = "none";
+      dragOverData.event.dataTransfer.dropEffect = 'none';
     }
     this.noDragMethod(this.dragData, dragOverData.data, dragOverData.event);
     this.dragover.emit(dragOverData);
@@ -351,17 +349,17 @@ description : Context Menu provides the list of menus on right click.
 
   noDragMethod(dragData: any, node: any, event: any) {
     if (!this.acrosstree) {
-      if (dragData.data == node || node.leaf == true) {
-        event.dataTransfer.dropEffect = "none"
+      if (dragData.data === node || node.leaf === true) {
+        event.dataTransfer.dropEffect = 'none';
       }
       else {
-        event.target.style.border = "3px dotted green";
+        event.target.style.border = '3px dotted green';
       }
     } else {
-      if (node.leaf == true) {
-        event.dataTransfer.dropEffect = "none"
+      if (node.leaf === true) {
+        event.dataTransfer.dropEffect = 'none';
       } else {
-        event.target.style.border = "3px dotted green";
+        event.target.style.border = '3px dotted green';
       }
     }
     if (dragData.data.hasOwnProperty('children')) {
@@ -371,8 +369,8 @@ description : Context Menu provides the list of menus on right click.
 
   getDropNode(dragData: any, node: any, event: any) {
     dragData.data.children.forEach((child: any) => {
-      if (JSON.stringify(child) == JSON.stringify(node) || node.leaf == true) {
-        event.dataTransfer.dropEffect = "none"
+      if (JSON.stringify(child) === JSON.stringify(node) || node.leaf === true) {
+        event.dataTransfer.dropEffect = 'none';
       }
       else if (child.hasOwnProperty('children')) {
         this.getDropNode(child.children, node, event);
@@ -380,19 +378,18 @@ description : Context Menu provides the list of menus on right click.
     });
   }
 
-
   drop(dropData: any) {
     if (this.enabledrop) {
-      dropData.event.target.style.border = "";
+      dropData.event.target.style.border = '';
       dropData.event.preventDefault();
-      if (this.acrosstree == false) {
-        if (this.dragData.data == dropData.data) {
+      if (this.acrosstree === false) {
+        if (this.dragData.data === dropData.data) {
           this.isNode = false;
         }
         else if (this.dragData.data.hasOwnProperty('children')) {
           this.checkNode(this.dragData, dropData);
         }
-        if (this.isNode == true) {
+        if (this.isNode === true) {
           if (dropData.data.hasOwnProperty('children')) {
             this.removeNode(dropData);
             dropData.data.children.push(JSON.parse(dropData.event.dataTransfer.getData('treenodedata')));
@@ -411,7 +408,7 @@ description : Context Menu provides the list of menus on right click.
 
   checkNode(dragData: any, dropData: any) {
     this.dragData.data.children.forEach((child: any) => {
-      if (JSON.stringify(child) == JSON.stringify(dropData.data)) {
+      if (JSON.stringify(child) === JSON.stringify(dropData.data)) {
         this.isNode = false;
       }
       else if (child.hasOwnProperty('children')) {
@@ -426,7 +423,7 @@ description : Context Menu provides the list of menus on right click.
 
   removeDragNode(treeData: any, dragNode: any) {
     treeData.forEach((childNode: any, index: number) => {
-      if (JSON.stringify(childNode) == JSON.stringify(dragNode)) {
+      if (JSON.stringify(childNode) === JSON.stringify(dragNode)) {
         treeData.splice(index, 1);
       } else if (childNode.hasOwnProperty('children')) {
         this.removeDragNode(childNode.children, dragNode);
@@ -435,7 +432,7 @@ description : Context Menu provides the list of menus on right click.
   }
 
   dragleave(event: any) {
-    event.target.style.border = "";
+    event.target.style.border = '';
   }
 
   getContextMenu() {
@@ -451,13 +448,13 @@ description : Context Menu provides the list of menus on right click.
   }
 
   @HostListener('document:scroll')
- onscroll() {
-   this.flag = false;
-   this.setSelectedFlag();	
- }
+  onscroll() {
+    this.flag = false;
+    this.setSelectedFlag();
+  }
 
   loadContextMenu(rightClickData: any) {
-    this.setSelectedFlag();    
+    this.setSelectedFlag();
     this.mouseLocation.left = rightClickData.event.clientX;
     this.mouseLocation.top = rightClickData.event.clientY;
     rightClickData.data['isSelected'] = true;
@@ -467,25 +464,24 @@ description : Context Menu provides the list of menus on right click.
     rightClickData.event.stopPropagation();
     this.rightClickNodeData = rightClickData.data;
     this.nodeRightClick.emit(rightClickData);
-    }
+  }
 
-    onContextNodeClick(itemConfig: any){
-      if(!itemConfig.disabled){
+  onContextNodeClick(itemConfig: any) {
+    if (!itemConfig.disabled) {
       let obj = {
         menuData: itemConfig,
-        NodeData: this.rightClickNodeData
-    };
-        this.rightClick.emit(obj);
+        NodeData: this.rightClickNodeData,
+      };
+      this.rightClick.emit(obj);
     }
   }
 
-
-  getListPosition(elementRef : any) :boolean{
-    let height : number = 240; //must be same in dropdown.scss
-    if((window.screen.height - elementRef.getBoundingClientRect().bottom) < height){
+  getListPosition(elementRef: any): boolean {
+    let height: number = 240; // must be same in dropdown.scss
+    if ((window.screen.height - elementRef.getBoundingClientRect().bottom) < height) {
       return true;
     }
-    else{
+    else {
       return false;
     }
   }
@@ -498,7 +494,7 @@ description : Context Menu provides the list of menus on right click.
       left: this.mouseLocation.left + 'px',
       top: this.mouseLocation.top + 'px',
       'box-shadow': '1px 1px 2px #000000',
-      width: '15%'
+      width: '15%',
     };
   }
 

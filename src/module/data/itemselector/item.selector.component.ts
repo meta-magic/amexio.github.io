@@ -2,112 +2,113 @@
  * Created by pratik on 27/12/17.
  */
 
- /*
- Component Name : Amexio item selector
- Component Selector : <amexio-item-selector>
- Component Description : ItemSelector is a specialized MultiSelect field that renders as a pair of MultiSelect field, one with available options and the other with selected options. A set of buttons in between allows items to be moved between the fields and reordered within the selection.
+/*
+Component Name : Amexio item selector
+Component Selector : <amexio-item-selector>
+Component Description : ItemSelector is a specialized MultiSelect
+field that renders as a pair of MultiSelect field, one with available options
+and the other with selected options. A set of buttons in between allows items to be
+moved between the fields and reordered within the selection.
 */
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {CommonDataService} from "../../services/data/common.data.service";
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { CommonDataService } from '../../services/data/common.data.service';
 
 @Component({
-  selector: 'amexio-item-selector', templateUrl: './item.selector.component.html'
+  selector: 'amexio-item-selector', templateUrl: './item.selector.component.html',
 })
 
 export class AmexioItemSelectorComponent implements OnInit {
 
   /*
-Properties 
+Properties
 name : data
 datatype : any
 version : 4.0 onwards
 default : none
 description :  Local data for item selectors.
-*/ 
+*/
   @Input() data: any;
 
   /*
-Properties 
+Properties
 name : height
 datatype : any
 version : 4.0 onwards
 default : none
 description :  Height of item selector
-*/ 
+*/
   @Input() height: any;
 
-  mask : boolean = true;
+  mask: boolean = true;
 
   /*
-Properties 
+Properties
 name : data-reader
 datatype : string
 version : 4.0 onwards
 default : none
 description :  Key in JSON Datasource for records.
-*/ 
+*/
   @Input('data-reader') datareader: string;
 
   /*
-Properties 
+Properties
 name : http-method
 datatype : string
 version : 4.0 onwards
 default : none
 description :  Type of HTTP call, POST,GET.
-*/ 
+*/
   @Input('http-method') httpmethod: string;
 
-
   /*
-Properties 
+Properties
 name : http-url
 datatype : string
 version : 4.0 onwards
 default : none
 description :  REST url for fetching datasource.
-*/ 
+*/
   @Input('http-url') httpurl: string;
 
   /*
-Properties 
+Properties
 name : display-field
 datatype : string
 version : 4.0 onwards
 default : none
 description :  Name of key inside response data to display on ui.
-*/ 
+*/
   @Input('display-field') displayfield: string;
 
   /*
-Properties 
+Properties
 name : value-field
 datatype : string
 version : 4.0 onwards
 default : none
 description :  Name of key inside response data.use to send to backend
-*/ 
+*/
   @Input('value-field') valuefield: string;
 
   /*
-Events 
+Events
 name : availableRecords
 datatype : none
 version : none
 default : none
 description :  Get available values objects.
-*/ 
+*/
   @Output() availableRecords: any = new EventEmitter<any>();
 
-
   /*
-Events 
+Events
 name : selectedRecords
 datatype : none
 version : none
 default : none
 description :  Get selected value Object.
-*/ 
+*/
   @Output() selectedRecords: any = new EventEmitter<any>();
 
   availableData: any[];
@@ -122,22 +123,20 @@ description :  Get selected value Object.
 
   rightactive: boolean = true;
 
-
   response: any;
 
   previousValue: any;
 
   check: any;
 
-
   constructor(public itemSelectorService: CommonDataService) {
   }
 
   ngOnInit() {
     if (this.httpmethod && this.httpurl) {
-      this.itemSelectorService.fetchData(this.httpurl, this.httpmethod).subscribe(response => {
+      this.itemSelectorService.fetchData(this.httpurl, this.httpmethod).subscribe((response) => {
         this.response = response;
-      }, error => {
+      }, (error) => {
       }, () => {
         this.setData(this.response);
       });
@@ -148,12 +147,11 @@ description :  Get selected value Object.
   }
 
   ngDoCheck() {
-    if (JSON.stringify(this.previousValue) != JSON.stringify(this.data)) {
+    if (JSON.stringify(this.previousValue) !== JSON.stringify(this.data)) {
       this.previousValue = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
     }
   }
-
 
   setData(httpResponse: any) {
     let responsedata = httpResponse;
@@ -163,10 +161,9 @@ description :  Get selected value Object.
         responsedata = responsedata[dr[ir]];
       }
       responsedata.forEach((option: any, index: any) => {
-         if(!option['isSelected'])
-          {
-            option['isSelected'] = false;
-          }
+        if (!option['isSelected']) {
+          option['isSelected'] = false;
+        }
       });
     } else {
       responsedata = httpResponse;
@@ -176,11 +173,9 @@ description :  Get selected value Object.
     this.mask = false;
   }
 
-
   itemClick(data: any, index: any, left: boolean, right: boolean) {
     this.leftactive = left;
     this.rightactive = right;
-
     this.switchingObject = data;
     this.objectIndex = index;
     for (let ir = 0; ir < this.availableData.length; ir++) {
@@ -256,11 +251,10 @@ description :  Get selected value Object.
             this.objectIndex = i;
           }
         });
-        if (this.objectIndex != 0) {
+        if (this.objectIndex !== 0) {
           const index = this.selectedData[this.objectIndex];
           this.selectedData[this.objectIndex] = this.selectedData[this.objectIndex - 1];
           this.selectedData[this.objectIndex - 1] = index;
-          // this.switchingObject = null;
           this.dataEmitter();
         }
 
@@ -280,7 +274,6 @@ description :  Get selected value Object.
           const index = this.selectedData[this.objectIndex];
           this.selectedData[this.objectIndex] = this.selectedData[this.objectIndex + 1];
           this.selectedData[this.objectIndex + 1] = index;
-          // this.switchingObject = null;
           this.dataEmitter();
         }
       }
@@ -303,7 +296,6 @@ description :  Get selected value Object.
           tempArray.push(option);
         });
         this.selectedData = tempArray;
-        // this.switchingObject = null;
         this.dataEmitter();
       }
     }
@@ -321,7 +313,6 @@ description :  Get selected value Object.
         this.selectedData[this.selectedData.length] = this.switchingObject;
       }
     }
-    // this.switchingObject = null;
     this.dataEmitter();
   }
 
