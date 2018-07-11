@@ -2,7 +2,6 @@
  * Created by sagar on 6/9/17.
  */
 
-
  /*
  Component Name : Amexio Dockbar
  Component Selector : <amexio-dockbar-item>
@@ -12,7 +11,9 @@ import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'amexio-dockbar-item', template: `
-    <div *ngIf="active"  [style.width]="width" class="dockbar-active-content dockbar-height" [style.min-height]="height"  [style.max-height]="height">
+    <div *ngIf="active"  [style.width]="width"
+    class="dockbar-active-content dockbar-height"
+    [style.min-height]="height"  [style.max-height]="height">
       <ng-container *ngIf="active && title">
         <div class="dockbar-title">
           {{title}}
@@ -27,34 +28,33 @@ import {Component, Input, OnInit} from '@angular/core';
       <ng-content>
       </ng-content>
     </div>
-  `
+  `,
 })
 
 export class DockbarComponent implements OnInit {
 
-
   /*
-Properties 
+Properties
 name : active
 datatype : boolean
 version : 4.0 onwards
 default : none
 description : sets dockbar item active
-*/ 
+*/
   @Input() active: boolean;
 
   /*
-Properties 
+Properties
 name : label
 datatype : string
 version : 4.0 onwards
 default : none
 description : sets label name for dockbar item
-*/ 
+*/
   @Input() label: string;
 
   /*
-Properties 
+Properties
 name : icon
 datatype : string
 version : 4.0 onwards
@@ -67,7 +67,7 @@ description : Icon for link, button and menu header
   @Input() mda: string;
 
   /*
-Properties 
+Properties
 name : sets width
 datatype : string
 version : 4.0 onwards
@@ -77,7 +77,7 @@ description : Width of dockbar item.
   @Input() width: string;
 
   /*
-Properties 
+Properties
 name : title
 datatype : string
 version : 4.0 onwards
@@ -86,10 +86,9 @@ description : Title of dockbar item.
 */
   @Input() title: string;
 
-
   /*
-Properties 
-name : path
+Properties
+name: path
 datatype : any
 version : 4.0 onwards
 default : none
@@ -98,7 +97,7 @@ description : Specifies the URL of an image.Use this attribute only for images.
   @Input() path: any;
 
   /*
-Properties 
+Properties
 name : height
 datatype : any
 version : 4.0 onwards
@@ -109,7 +108,7 @@ description : Height of dockbar item
 
   elementId: string;
 
-  //Close the  dockbar item
+  // Close the  dockbar item
   onBarIconClick() {
     this.active = false;
   }

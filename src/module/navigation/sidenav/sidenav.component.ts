@@ -2,24 +2,26 @@
  * Created by ketangote on 12/1/17.
  */
 
-
 /*
  Component Name : Amexio sidenav bar
  Component Selector : <amexio-side-nav>
- Component Description : The Side Nav Bar Component is a familiar side navigation pattern for users. Side nav bar can be placed on left or right side. It can fit as many navigation links as needed, scrolling when the content exceeds the viewport. Take a look at Datastructure format which this component can consume in datasource tab.
+ Component Description : The Side Nav Bar Component is a familiar
+ side navigation pattern for users. Side nav bar can be placed on left or right side.
+ It can fit as many navigation links as needed, scrolling when the content exceeds the
+ viewport. Take a look at Datastructure format which this component can consume in
+ datasource tab.
 */
 import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
-import { CommonDataService } from "../../services/data/common.data.service";
-import { DeviceQueryService } from "../../services/device/device.query.service";
-
+import { CommonDataService } from '../../services/data/common.data.service';
+import { DeviceQueryService } from '../../services/device/device.query.service';
 
 @Component({
-  selector: 'amexio-side-nav', templateUrl: './sidenav.component.html', styleUrls: ['./sidenav.component.scss']
+  selector: 'amexio-side-nav', templateUrl: './sidenav.component.html', styleUrls: ['./sidenav.component.scss'],
 })
 export class AmexioSideNav implements OnInit {
 
   /*
-Properties 
+Properties
 name : data
 datatype : any
 version : 4.0 onwards
@@ -29,7 +31,7 @@ description : Local data for sidenav.
   @Input() data: any[];
 
   /*
-  Properties 
+  Properties
   name : http-url
   datatype : string
   version : 4.0 onwards
@@ -39,7 +41,7 @@ description : Local data for sidenav.
   @Input('http-url') httpurl: string;
 
   /*
-  Properties 
+  Properties
   name : http-url
   datatype : string
   version : 4.0 onwards
@@ -49,7 +51,7 @@ description : Local data for sidenav.
   @Input('http-method') httpmethod: string;
 
   /*
-  Properties 
+  Properties
   name : data-reader
   datatype : string
   version : 4.0 onwards
@@ -59,7 +61,7 @@ description : Local data for sidenav.
   @Input('data-reader') datareader: string;
 
   /*
-  Properties 
+  Properties
   name : position
   datatype : any
   version : 4.0 onwards
@@ -69,7 +71,7 @@ description : Local data for sidenav.
   @Input() position: any;
 
   /*
-  Properties 
+  Properties
   name : titleimage
   datatype : string
   version : 4.0 onwards
@@ -79,7 +81,7 @@ description : Local data for sidenav.
   @Input() titleimage: string;
 
   /*
-  Events 
+  Events
   name : nodeClick
   datatype : none
   version : none
@@ -89,7 +91,7 @@ description : Local data for sidenav.
   @Output() nodeClick: any = new EventEmitter<any>();
 
   /*
-  Properties 
+  Properties
   name : width
   datatype : string
   version : 4.0 onwards
@@ -99,7 +101,7 @@ description : Local data for sidenav.
   @Input() width: string;
 
   /*
-  Properties 
+  Properties
   name : height
   datatype : string
   version : 4.0 onwards
@@ -109,7 +111,7 @@ description : Local data for sidenav.
   @Input() height: string;
 
   /*
-  Properties 
+  Properties
   name : title
   datatype : string
   version : 4.0 onwards
@@ -125,7 +127,7 @@ description : Local data for sidenav.
   responseData: any;
 
   constructor(public dataService: CommonDataService, public matchMediaService: DeviceQueryService, public element: ElementRef) {
-    this.position = "left";
+    this.position = 'left';
     this.smalldevice = false;
     this.sidenavexpandedinsmalldevice = false;
     this.width = '20%';
@@ -134,24 +136,24 @@ description : Local data for sidenav.
     /*---------------------------------------------------
      TAP INTO LISTENERS FOR WHEN DEVICE WIDTH CHANGES
      ---------------------------------------------------*/
-    this.matchMediaService.OnPhone(function (mediaQueryList: MediaQueryList) {
+    this.matchMediaService.OnPhone(function(mediaQueryList: MediaQueryList) {
       that.handleDeviceSettings(false);
     });
 
-    this.matchMediaService.OnTablet(function (mediaQueryList: MediaQueryList) {
+    this.matchMediaService.OnTablet(function(mediaQueryList: MediaQueryList) {
       that.handleDeviceSettings(false);
     });
 
-    this.matchMediaService.OnDesktop(function (mediaQueryList: MediaQueryList) {
+    this.matchMediaService.OnDesktop(function(mediaQueryList: MediaQueryList) {
       that.handleDeviceSettings(false);
     });
   }
 
   ngOnInit() {
     if (this.httpmethod && this.httpurl) {
-      this.dataService.fetchData(this.httpurl, this.httpmethod).subscribe(response => {
+      this.dataService.fetchData(this.httpurl, this.httpmethod).subscribe((response) => {
         this.responseData = response;
-      }, error => {
+      }, (error) => {
       }, () => {
         this.setData(this.responseData);
       });
@@ -162,7 +164,7 @@ description : Local data for sidenav.
     }
 
     if (!this.height) {
-      this.height = "100%";
+      this.height = '100%';
     }
   }
 
@@ -172,10 +174,10 @@ description : Local data for sidenav.
   }
 
   setData(httpResponse: any) {
-    //Check if key is added?
+    // Check if key is added?
     let responsedata = httpResponse;
     if (this.datareader != null) {
-      let dr = this.datareader.split(".");
+      let dr = this.datareader.split('.');
       for (let ir = 0; ir < dr.length; ir++) {
         responsedata = responsedata[dr[ir]];
       }
@@ -218,18 +220,18 @@ description : Local data for sidenav.
   }
 
   handleDeviceSettings(expand: boolean) {
-    if (this.position != "relative") {
+    if (this.position !== 'relative') {
       if (this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone()) {
         this.smalldevice = true;
         if (expand) {
-          this.width = "80%";
+          this.width = '80%';
           this.sidenavexpandedinsmalldevice = true;
         } else {
-          this.width = "0%";
+          this.width = '0%';
           this.sidenavexpandedinsmalldevice = false;
         }
       } else {
-        this.width = "20%";
+        this.width = '20%';
         this.smalldevice = false;
       }
     }

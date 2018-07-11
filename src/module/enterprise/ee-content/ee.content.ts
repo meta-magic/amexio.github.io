@@ -28,12 +28,19 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges
         </ng-container>
         <ul class="inline-list">
           <li *ngIf="enableWatch">
-            <span class="content-button" (click)="playVideo()"><i class="fa fa-play"></i> &nbsp;&nbsp; Play</span>
-            <!--<amexio-ee-btn [cClass]="'buttoncustom'" [label]="'Play'" [type]="'danger'" [icon]="'fa fa-play'" [tooltipMessage]="'play'" [size]="size" (onClick)="playVideo()"></amexio-ee-btn>-->
+            <span class="content-button" (click)="playVideo()">
+            <i class="fa fa-play"></i> &nbsp;&nbsp; Play</span>
+            <!-- <amexio-ee-btn [cClass]="'buttoncustom'"
+            [label]="'Play'" [type]="'danger'" [icon]="'fa fa-play'"
+            [tooltipMessage]="'play'" [size]="size" (onClick)="playVideo()">
+            </amexio-ee-btn> -->
           </li>
           <li *ngIf="enableMyList">
-            <span class="content-button" (click)="addToList()"><i class="fa fa-plus"></i>&nbsp;&nbsp; MY LIST</span>
-            <!--<amexio-ee-btn [cClass]="'secondarybutton'" [label]="'MY LIST'" [icon]="'fa fa-plus'" [type]="'secondary'" [tooltipMessage]="'My List'" [size]="size" (onClick)="addToList()"></amexio-ee-btn>-->
+            <span class="content-button" (click)="addToList()">
+            <i class="fa fa-plus"></i>&nbsp;&nbsp; MY LIST</span>
+            <!-- <amexio-ee-btn [cClass]="'secondarybutton'" [label]="'MY LIST'"
+            [icon]="'fa fa-plus'" [type]="'secondary'" [tooltipMessage]="'My List'"
+            [size]="size" (onClick)="addToList()"></amexio-ee-btn> -->
           </li>
           <li>
             <a style="color: white!important;" [ngClass]="getClassName()" (click)="likeClick()"><i class="fa fa-thumbs-o-up fa-lg"
@@ -51,161 +58,160 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges
           </amexio-rating-input>
         </ng-container>
       </div>
-    </div>`
+    </div>`,
 })
 
 export class ContentComponent implements OnInit, OnChanges {
-
-   /*
-Properties 
+/*
+Properties
 name : bg-image-url
 datatype :  any
 version : 4.0 onwards
 default : none
 description : Background image from content.
-*/ 
+*/
   @Input('bg-image-url') bgImgUrl: any;
 
     /*
-Properties 
+Properties
 name : title
 datatype : string
 version : 4.0 onwards
 default : none
 description : 	Set title.
-*/ 
+*/
   @Input() title: string;
 
     /*
-Properties 
+Properties
 name : description
 datatype :  string
 version : 4.0 onwards
 default : none
 description : Set Description.
-*/ 
+*/
   @Input() description: string;
 
     /*
-Properties 
+Properties
 name : contents
 datatype :  any
 version : 4.0 onwards
 default : none
 description :  Array of content must be in key value pair.
-*/ 
+*/
   @Input() contents: any;
 
     /*
-Properties 
+Properties
 name : link
 datatype :  any
 version : 4.0 onwards
 default : none
 description : Set video link.
-*/ 
+*/
   @Input('link') videoLink: any;
 
     /*
-Properties 
+Properties
 name : rate
 datatype :  any
 version : 4.0 onwards
 default : none
 description : Set rating max value(max=5) and current rating(rate=3).
 
-*/ 
+*/
   @Input() rate: any;
 
     /*
-Properties 
+Properties
 name : max
 datatype :  any
 version : 4.0 onwards
 default : none
-description : 
-*/ 
+description :
+*/
   @Input() max: any;
 
     /*
-Properties 
+Properties
 name : isReadonly
 datatype :  boolean
 version : 4.0 onwards
 default : none
-description : 
-*/ 
+description :
+*/
   @Input() isReadonly: boolean;
 
     /*
-Properties 
+Properties
 name : watch
 datatype :  any
 version : 4.0 onwards
 default : false
-description : Enable watch button.*/ 
+description : Enable watch button.*/
   @Input('watch') enableWatch = false;
 
     /*
-Properties 
+Properties
 name : my-list
 datatype : none
 version : 4.0 onwards
 default : false
 description : Enable MyList button.
-*/ 
+*/
   @Input('my-list') enableMyList = false;
 
     /*
-Properties 
+Properties
 name :  age-limit
 datatype :  any
 version : 4.0 onwards
 default : none
 description : Set age limit.
-*/ 
+*/
   @Input('age-limit') ageLimit: any;
 
     /*
-Properties 
+Properties
 name : release-year
 datatype :  any
 version : 4.0 onwards
 default : none
 description : Set release Year.
-*/ 
+*/
   @Input('release-year') releaseYear: any;
 
     /*
-Properties 
+Properties
 name : season-no
 datatype :  number
 version : 4.0 onwards
 default : none
 description : Season of specific series
 
-*/ 
+*/
   @Input('season-no') seasonNo: number;
 
     /*
-Properties 
+Properties
 name : match-percentage
 datatype :  any
 version : 4.0 onwards
 default : none
 description : Match Percentage of media
 
-*/ 
+*/
   @Input('match-percentage') matchPercentage: any;
 
     /*
-Properties 
+Properties
 name : close
 datatype :  boolean
 version : 4.0 onwards
 default : none
 description : Enable close content.
-*/ 
+*/
   @Input('close') closeEnable: boolean;
 
     /*
@@ -215,51 +221,51 @@ datatype :  none
 version : none
 default : none
 description : Get watch button click.
-*/ 
+*/
   @Output() onWatchClick: EventEmitter<any> = new EventEmitter<any>();
 
     /*
-Properties 
+Properties
 name : onAddListClick
 datatype :  none
 version : none
 default : none
 description : Get add list button click.
 
-*/ 
+*/
   @Output() onAddListClick: EventEmitter<any> = new EventEmitter<any>();
 
     /*
-Properties 
+Properties
 name : onLikeClick
 datatype :  none
 version : none
 default : none
 description : Get like click.
 
-*/ 
+*/
   @Output() onLikeClick: EventEmitter<any> = new EventEmitter<any>();
 
     /*
-Properties 
+Properties
 name : onUnlikeLikeClick
 datatype :  none
 version : none
 default : none
 description : Get unlike click.
 
-*/ 
+*/
   @Output() onUnlikeLikeClick: EventEmitter<any> = new EventEmitter<any>();
 
     /*
-Properties 
+Properties
 name : onCloseClick
 datatype :  any
 version :none
 default : none
 description : Get close content click.
 
-*/ 
+*/
   @Output() onCloseClick: EventEmitter<any> = new EventEmitter<any>();
 
   size: string;
@@ -295,7 +301,7 @@ description : Get close content click.
 
   addToList() {
     this.overviewData = {
-      'title': this.title, 'description': this.description, 'Video Link': this.videoLink, 'rate': this.rate
+      'title': this.title, 'description': this.description, 'Video Link': this.videoLink, 'rate': this.rate,
     };
     this.onAddListClick.emit(this.overviewData);
   }
@@ -320,14 +326,14 @@ description : Get close content click.
 
   unlikeClick() {
     this.overviewData = {
-      'title': this.title, 'rate': this.rate
+      'title': this.title, 'rate': this.rate,
     };
     this.onUnlikeLikeClick.emit(this.overviewData);
   }
 
   likeClick() {
     this.overviewData = {
-      'title': this.title, 'rate': this.rate
+      'title': this.title, 'rate': this.rate,
     };
     this.onLikeClick.emit(this.overviewData);
   }
