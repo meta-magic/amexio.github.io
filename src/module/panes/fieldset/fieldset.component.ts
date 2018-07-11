@@ -5,19 +5,20 @@
  /*
  Component Name : Amexio Accordion
  Component Selector : <amexio-accordion>
- Component Description : Amexio Accordion provides an easy way to organize big forms by grouping the fields in accordion tabs.
+ Component Description : Amexio Accordion provides an easy way to organize big forms
+ by grouping the fields in accordion tabs.
 
 */
 import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'amexio-fieldset', templateUrl: './fieldset.component.html', styleUrls: ['./fieldset.component.scss']
+  selector: 'amexio-fieldset', templateUrl: './fieldset.component.html', styleUrls: ['./fieldset.component.scss'],
 })
 
 export class AmexioFieldSetComponent implements OnInit {
 
    /*
-Properties 
+Properties
 name : collapsible
 datatype : boolean
 version : 4.0 onwards
@@ -27,11 +28,11 @@ description : Set value true for collapsible fieldset.
   @Input() collapsible: boolean;
 
   /*
-Properties 
+Properties
 name : title
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Title for fieldset.
 */
   @Input() title: string;
@@ -42,11 +43,15 @@ description : Title for fieldset.
   }
 
   ngOnInit() {
-    if (!this.collapsible) this.isActive = true;
+    if (!this.collapsible) {
+      this.isActive = true;
+    }
   }
 
   onLegendClick() {
-    if (this.collapsible) this.isActive = !this.isActive;
+    if (this.collapsible) {
+      this.isActive = !this.isActive;
+    }
   }
 
 }

@@ -2,17 +2,15 @@
  * Created by ketangote on 12/18/17.
  */
 
-
 /*
  Component Name : Amexio Window
  Component Selector : <amexio-window>
- Component Description:  Window Pane component is a customizable Modal Pane in which user can enter custom content
-
-
+ Component Description:  Window Pane component is a customizable Modal Pane in
+ which user can enter custom content
  */
-import { Component,OnChanges,SimpleChanges ,EventEmitter, Input, OnInit, Output, HostListener } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 export enum KEY_CODE_window {
-  esc = 27
+  esc = 27,
 }
 
 @Component({
@@ -22,7 +20,7 @@ export enum KEY_CODE_window {
          [ngStyle]="{'display' : show ? 'block' : 'none'}" >
       <div class="modal-window-lg" [ngStyle]="{'height': bodyHeight ? '100%':'auto'}">
         <div class="modal-window-content" [ngClass]="setClass()" [style.height]="bodyHeight+'%'">
-          <header [ngClass]="{ 'window-material-design-header':materialDesign,'modal-window-header':!materialDesign}" *ngIf="header"   >
+          <header [ngClass]="{ 'window-material-design-header':materialDesign,'modal-window-header':!materialDesign}" *ngIf="header">
             <div class="modal-window-table">
               <div class="tablerow">
                 <div class="tablecol">
@@ -46,7 +44,9 @@ export enum KEY_CODE_window {
             <ng-content select="amexio-body"></ng-content>
           </div>
           <footer *ngIf="footer" class="modal-window-footer"
-                  [ngClass]="{'window-material-design-footer':materialDesign ,'modal-window-footer':!materialDesign,'modal-window-footer-max': isFullWindow && maximize,'flex-start':(footeralign =='left'),'flex-end':(footeralign=='right'),'flex-center':(footeralign=='center')}">
+                  [ngClass]="{'window-material-design-footer':materialDesign ,'modal-window-footer':!materialDesign,
+                  'modal-window-footer-max': isFullWindow && maximize,'flex-start':(footeralign =='left'),'flex-end':(footeralign=='right'),
+                  'flex-center':(footeralign=='center')}">
             <div [ngClass]="{'footer-right-align': (isFullWindow && maximize)}">
               <ng-content select="amexio-action"></ng-content>
             </div>
@@ -55,16 +55,17 @@ export enum KEY_CODE_window {
 
       </div>
     </div>
-  `
+  `,
 })
-export class AmexioWindowPaneComponent implements OnInit,OnChanges {
+export class AmexioWindowPaneComponent implements OnChanges, OnInit {
   /*
    Properties
    name : vertical-position
    datatype : string
    version : 4.1 onwards
    default : none
-   description : Postion of window vertically: top or bottom or center. This attribute is ignored if user specify position explicitly (using position-top/position-bottom/position-left/position-right)
+   description : Postion of window vertically: top or bottom or center.
+   This attribute is ignored if user specify position explicitly (using position-top/position-bottom/position-left/position-right)
    */
   @Input('vertical-position') verticalposition: string;
   /*
@@ -73,7 +74,8 @@ export class AmexioWindowPaneComponent implements OnInit,OnChanges {
    datatype : none
    version : 4.1 onwards
    default : none
-   description : Postion of Window horizontally: left or right or center. This attribute is ignored if user specify position explicitly (using position-top/position-bottom/position-left/position-right)
+   description : Postion of Window horizontally: left or right or center.
+   This attribute is ignored if user specify position explicitly (using position-top/position-bottom/position-left/position-right)
    */
   @Input('horizontal-position') horizontalposition: string;
   /*
@@ -133,14 +135,11 @@ export class AmexioWindowPaneComponent implements OnInit,OnChanges {
    */
   @Input('show-window') showWindow: boolean;
 
-  @Input ('material-design') materialDesign : boolean;
+  @Input ('material-design') materialDesign: boolean;
 
   @Input() show: boolean;
 
-
-
   @Output() showChange: EventEmitter<any> = new EventEmitter<any>();
-
 
   /*
    Properties
@@ -207,13 +206,13 @@ export class AmexioWindowPaneComponent implements OnInit,OnChanges {
     this.header = true;
     this.closable = true;
     this.closeonescape = true;
-    if ( this.verticalposition==null) {
+    if (this.verticalposition === null) {
       this.verticalposition = 'center';
     }
-    if(this.horizontalposition==null) {
+    if (this.horizontalposition === null) {
       this.horizontalposition = 'center';
     }
-    this.positionclass = "window-" + this.verticalposition + " window-" + this.horizontalposition;
+    this.positionclass = 'window-' + this.verticalposition + 'window-' + this.horizontalposition;
   }
   absoluteposition: boolean = false;
   positionclass: string;
@@ -226,68 +225,61 @@ export class AmexioWindowPaneComponent implements OnInit,OnChanges {
   onCloseClick() {
     if (this.closable) {
       this.showWindow = false;
-      this.show=false;
+      this.show = false;
       this.showChange.emit(false);
       this.close.emit(this.showWindow);
-
     }
   }
 
-
-  //Escape Key Functionality
+  // Escape Key Functionality
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
-    if (this.closeonescape == true) {
-      if (event.keyCode == KEY_CODE_window.esc) {
+    if (this.closeonescape === true) {
+      if (event.keyCode === KEY_CODE_window.esc) {
         this.showWindow = false;
         this.showChange.emit(false);
-
       }
-
     }
   }
-  ngOnInit() {
 
-    if(this.showWindow) {
+  ngOnInit() {
+    if (this.showWindow) {
       this.show = this.showWindow;
     }
 
-    if (this.maximize == null) {
+    if (this.maximize === null) {
       this.maximize = false;
       this.isFullWindow = false;
     } else if (this.maximize) {
       this.isFullWindow = true;
-      this.bodyHeight = "100%";
+      this.bodyHeight = '100%';
     }
-    if (this.footeralign == null) this.footeralign = "right";
-
-    if (  this.verticalposition == "") {
+    if (this.footeralign === null) {
+      this.footeralign = 'right';
+    }
+    if (this.verticalposition === '') {
       this.verticalposition = 'center';
     }
-    if( this.horizontalposition == "") {
+    if ( this.horizontalposition === '') {
       this.horizontalposition = 'center';
     }
-    this.positionclass = "window-" + this.verticalposition + " window-" + this.horizontalposition;
+    this.positionclass = 'window-' + this.verticalposition + 'window-' + this.horizontalposition;
   }
 
-  ngOnChanges(changes: SimpleChanges){
+  ngOnChanges(changes: SimpleChanges) {
 
-    //reassign show
+    // reassign show
     if (changes['showWindow']) {
       this.show = changes.showWindow.currentValue;
     }
-
-
   }
-  setClass():any {
+  setClass(): any {
     let styleClass: string;
-    if(this.isFullWindow) {
+    if (this.isFullWindow) {
       styleClass = 'modal-window-content-max';
     } else {
-      styleClass = this.positionclass
+      styleClass = this.positionclass;
     }
     return styleClass;
   }
-
 }
-

@@ -1,24 +1,22 @@
 
-import { Component, OnInit, QueryList, ContentChildren, ViewChild } from '@angular/core';
-import { AmexioTextInputComponent } from '../../forms/textinput/textinput.component';
-import { AmexioCheckBoxComponent } from '../../forms/checkbox/checkbox.component';
-import { AmexioRadioGroupComponent} from '../../forms/radio/radiogroup.component';
-import { AmexioLabelComponent } from '../../forms/label/label.component';
-import { AmexioRatingComponent } from '../../forms/rating/rating.component';
-import { AmexioToggleComponent } from '../../forms/toggle/toggle.component';
+import { Component, ContentChildren, OnInit, QueryList} from '@angular/core';
 import { AmexioButtonComponent } from '../../forms/buttons/button.component';
-import { AmexioImageComponent } from '../../media/image/image.component';
-import { AmexioNumberInputComponent } from '../../forms/numberinput/numberinput.component';
-import { AmexioDropDownComponent } from '../../forms/dropdown/dropdown.component';
 import { AmexioCheckBoxGroupComponent } from '../../forms/checkbox-group/checkbox.group.component';
-
-// import {AmexioDateTimePicker} from '../../forms/datetimepicker/datetimepicker.component';
+import { AmexioCheckBoxComponent } from '../../forms/checkbox/checkbox.component';
+import { AmexioDropDownComponent } from '../../forms/dropdown/dropdown.component';
+import { AmexioLabelComponent } from '../../forms/label/label.component';
+import { AmexioNumberInputComponent } from '../../forms/numberinput/numberinput.component';
+import { AmexioRadioGroupComponent} from '../../forms/radio/radiogroup.component';
+import { AmexioRatingComponent } from '../../forms/rating/rating.component';
+import { AmexioTextInputComponent } from '../../forms/textinput/textinput.component';
+import { AmexioToggleComponent } from '../../forms/toggle/toggle.component';
+import { AmexioImageComponent } from '../../media/image/image.component';
 
 @Component({
   selector: 'amexio-tab-action',
   template: `
    <ng-content></ng-content>
-   `
+   `,
 })
 
 export class AmexioTabActionComponent implements OnInit {
@@ -31,9 +29,6 @@ export class AmexioTabActionComponent implements OnInit {
 
   @ContentChildren(AmexioRadioGroupComponent, { descendants: true }) queryRadioGroup: QueryList<AmexioRadioGroupComponent>;
   radioGroup: AmexioRadioGroupComponent[];
-
-  // @ContentChildren(AmexioDateTimePicker, { descendants: true }) queryDateTimePicker: QueryList<AmexioDateTimePicker>;
-  // dateTimePicker: AmexioDateTimePicker[];
 
   @ContentChildren(AmexioLabelComponent, { descendants: true }) queryLabel: QueryList<AmexioLabelComponent>;
   label: AmexioLabelComponent[];
@@ -61,23 +56,17 @@ export class AmexioTabActionComponent implements OnInit {
 
   actionComponent: any;
 
-
-
   showContent: boolean;
 
   constructor() {
     this.showContent = false;
-    this.actionComponent = "";
+    this.actionComponent = '';
   }
 
   ngOnInit() {
   }
 
-  ngAfterViewInit() {
-  }
-
   checkActionComponent() {
-
     this.textinput = this.queryTextinput.toArray();
     if (this.textinput.length > 0) {
       this.actionComponent = 'text';
@@ -88,21 +77,15 @@ export class AmexioTabActionComponent implements OnInit {
     this.checkbox = this.queryCheckbox.toArray();
     if (this.checkbox.length > 0) {
       this.actionComponent = 'checkbox';
-      this.checkbox[0].fieldlabel = "";
+      this.checkbox[0].fieldlabel = '';
     }
 
     this.radioGroup = this.queryRadioGroup.toArray();
     if (this.radioGroup.length > 0) {
       this.actionComponent = 'radiogroup';
-      this.radioGroup[0].fieldlabel = "";
+      this.radioGroup[0].fieldlabel = '';
       this.radioGroup[0].horizontal = true;
     }
-
-    // this.dateTimePicker = this.queryDateTimePicker.toArray();
-    // if (this.dateTimePicker.length > 0) {
-    //   this.actionComponent = 'datetime';
-    //   this.dateTimePicker[0].fieldlabel = "";
-    // }
 
     this.label = this.queryLabel.toArray();
     if (this.label.length > 0) {
@@ -112,19 +95,19 @@ export class AmexioTabActionComponent implements OnInit {
     this.number = this.queryNumber.toArray();
     if (this.number.length > 0) {
       this.actionComponent = 'number';
-      this.number[0].fieldlabel = "";
+      this.number[0].fieldlabel = '';
     }
 
     this.rating = this.queryRating.toArray();
     if (this.rating.length > 0) {
       this.actionComponent = 'rating';
-      this.rating[0].fieldlabel = "";
+      this.rating[0].fieldlabel = '';
     }
 
     this.toggle = this.queryToggle.toArray();
     if (this.toggle.length > 0) {
       this.actionComponent = 'toggle';
-      this.toggle[0].fieldlabel = "";
+      this.toggle[0].fieldlabel = '';
     }
 
     this.button = this.queryButton.toArray();
@@ -139,13 +122,13 @@ export class AmexioTabActionComponent implements OnInit {
     this.dropdown = this.queryDropDown.toArray();
     if (this.dropdown.length > 0) {
       this.actionComponent = 'dropdown';
-      this.dropdown[0].fieldlabel = "";
+      this.dropdown[0].fieldlabel = '';
     }
 
     this.checkboxgroup = this.queryCheckBoxGroup.toArray();
     if (this.checkboxgroup.length > 0) {
       this.actionComponent = 'checkboxgroup';
-      this.checkboxgroup[0].fieldlabel = "";
+      this.checkboxgroup[0].fieldlabel = '';
       this.checkboxgroup[0].horizontal = true;
     }
   }

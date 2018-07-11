@@ -5,14 +5,14 @@
 /*
  Component Name : Amexio Dialogue
  Component Selector : <amexio-dialogue>
- Component Description :A Simple dialogue which renders various prompts like Confirmation/Alert based on type, title, body user has configured.
-
+ Component Description :A Simple dialogue which renders various prompts like
+ Confirmation/Alert based on type, title, body user has configured.
  */
 
-import {Component,OnChanges,SimpleChanges ,EventEmitter, Input, OnInit, Output, HostListener} from '@angular/core';
+import {Component, EventEmitter, HostListener, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 
 export enum KEY_CODE {
-  esc=27
+  esc = 27,
 }
 @Component({
   selector: 'amexio-dialogue', template: `
@@ -38,7 +38,8 @@ export enum KEY_CODE {
           <div class="dialogue-middle" [ngStyle]="{'text-align':custom ? contentalign :'center'}">
             <span class="dialogue-icon">
               <span
-                [ngClass]="{'dialogue-success': messagetype  == 'help','dialogue-danger':messagetype  == 'error','dialogue-warning': messagetype  == 'warning'}"
+                [ngClass]="{'dialogue-success': messagetype  == 'help','dialogue-danger':messagetype  == 'error',
+                'dialogue-warning': messagetype  == 'warning'}"
                 *ngIf="messagetype  || messagetype  != '' ">
                 <amexio-pane-icon [key]="'window-msgtype-'+ messagetype "></amexio-pane-icon>
               </span>
@@ -59,20 +60,27 @@ export enum KEY_CODE {
           </footer>
 
           <footer *ngIf="!custom" class="dialogue-footer"
-                  [ngClass]="{'dialogue-material-design-footer':materialDesign ,'dialogue-footer':!materialDesign, 'flex-start':(footeralign=='left'),'flex-end':(footeralign=='right'),'flex-center':(footeralign=='center')}">
-            <amexio-button *ngIf="type =='confirm'"  [size]="buttonsize" [label]="secondaryactionlabel " [type]="getDefaultStyle()" (onClick)="getStatus('cancel')"></amexio-button>&nbsp;&nbsp;
+                  [ngClass]="{'dialogue-material-design-footer':materialDesign ,
+                  'dialogue-footer':!materialDesign, 'flex-start':(footeralign=='left'),
+                  'flex-end':(footeralign=='right'),'flex-center':(footeralign=='center')}">
+            <amexio-button *ngIf="type =='confirm'"  [size]="buttonsize" [label]="secondaryactionlabel"
+            [type]="getDefaultStyle()" (onClick)="getStatus('cancel')"></amexio-button>&nbsp;&nbsp;
             <div  class="custom-btn">
-              <amexio-button *ngIf="type =='confirm' || type == 'alert'"   [size]="buttonsize" [label]="primaryactionlabel"
-                             [ngStyle]="{'color':materialDesign ? 'blue':'white'}" [type]="getStyle()" (onClick)="getStatus('ok')"></amexio-button>
+              <amexio-button *ngIf="type =='confirm' || type == 'alert'"   [size]="buttonsize"
+              [label]="primaryactionlabel"
+                             [ngStyle]="{'color':materialDesign ? 'blue':'white'}"
+                             [type]="getStyle()" (onClick)="getStatus('ok')">
+                             </amexio-button>
             </div>
 
           </footer>
         </div>
       </div>
     </div>
-  `
+  `,
 })
-export class AmexiodialoguePaneComponent implements OnInit, OnChanges{
+export class AmexiodialoguePaneComponent implements OnChanges, OnInit {
+
   /*
    Properties
    name : close-on-escape
@@ -82,6 +90,7 @@ export class AmexiodialoguePaneComponent implements OnInit, OnChanges{
    description : Enables And Disables the Escape button.
    */
   @Input('close-on-escape')  closeonescape: boolean;
+
   /*
    Properties
    name : button-type
@@ -91,6 +100,7 @@ export class AmexiodialoguePaneComponent implements OnInit, OnChanges{
    description : show the type of button.
    */
   @Input('button-type')  buttontype: string;
+
   /*
    Properties
    name : button-size
@@ -99,7 +109,7 @@ export class AmexiodialoguePaneComponent implements OnInit, OnChanges{
    default :
    description : Different Sizes of Buttons availabe : large, default, small & xsmall
    */
-  @Input('button-size') buttonsize: string="large"|| "small"||"default"||"xsmall";
+  @Input('button-size') buttonsize: string = 'large' || 'small' || 'default' || 'xsmall';
 
   /*
    Properties
@@ -129,13 +139,11 @@ export class AmexiodialoguePaneComponent implements OnInit, OnChanges{
    default : false
    description : 	Show / Hide Dialogue..
    */
-  @Input('show-dialogue') showdialogue : boolean;
+  @Input('show-dialogue') showdialogue: boolean;
 
-  @Input() show : boolean;
+  @Input() show: boolean;
 
-  @Output() showChange : EventEmitter<any> = new EventEmitter<any>();
-
-
+  @Output() showChange: EventEmitter<any> = new EventEmitter<any>();
 
   /*
    Properties
@@ -195,7 +203,7 @@ export class AmexiodialoguePaneComponent implements OnInit, OnChanges{
    default :
    description : Label to be displayed for primary action.
    */
-  @Input('primary-action-label') primaryactionlabel   : string;
+  @Input('primary-action-label') primaryactionlabel: string;
 
   /*
    Properties
@@ -205,7 +213,7 @@ export class AmexiodialoguePaneComponent implements OnInit, OnChanges{
    default :
    description : Label to be displayed for secondary action.
    */
-  @Input('secondary-action-label') secondaryactionlabel  : string;
+  @Input('secondary-action-label') secondaryactionlabel: string;
 
   /*
    Properties
@@ -215,10 +223,9 @@ export class AmexiodialoguePaneComponent implements OnInit, OnChanges{
    default :
    description : Type of message like error,warning,help.
    */
-  @Input('message-type') messagetype  : string;
+  @Input('message-type') messagetype: string;
 
-  @Input ('material-design') materialDesign : boolean;
-
+  @Input('material-design') materialDesign: boolean;
 
   /*
    Events
@@ -228,7 +235,7 @@ export class AmexiodialoguePaneComponent implements OnInit, OnChanges{
    default : none
    description : Fire when click on yes or no button
    */
-  @Output() actionStatus : EventEmitter<any> = new EventEmitter<any>();
+  @Output() actionStatus: EventEmitter<any> = new EventEmitter<any>();
 
   /*
    Events
@@ -238,27 +245,25 @@ export class AmexiodialoguePaneComponent implements OnInit, OnChanges{
    default : none
    description : Fire when user close dialogue
    */
-  @Output() close : EventEmitter<any> = new EventEmitter<any>();
+  @Output() close: EventEmitter<any> = new EventEmitter<any>();
   value = 0;
   constructor() {
     this.closable = true;
     this.secondaryactionlabel  = 'Cancel';
     this.primaryactionlabel   = 'Ok';
     this.custom = false;
-    this.buttonsize='default';
-    this.buttontype='theme-color';
-    this.closeonescape=true;
-
-
+    this.buttonsize = 'default';
+    this.buttontype = 'theme-color';
+    this.closeonescape = true;
   }
+
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
-    if (this.closeonescape == true) {
-      if (event.keyCode ==KEY_CODE.esc) {
-        this.showdialogue  = false ;
-        this.show=false;
+    if (this.closeonescape === true) {
+      if (event.keyCode === KEY_CODE.esc) {
+        this.showdialogue = false ;
+        this.show = false;
         this.showChange.emit(false);
-
       }
 
     }
@@ -266,73 +271,56 @@ export class AmexiodialoguePaneComponent implements OnInit, OnChanges{
 
   ngOnInit() {
 
-    if(this.showdialogue) {
+    if (this.showdialogue) {
       this.show = this.showdialogue;
     }
-    if (this.footeralign == null) this.footeralign = "right";
-    if(this.contentalign == null || this.contentalign == '') {
+    if (this.footeralign === null) {
+      this.footeralign = 'right';
+    }
+    if (this.contentalign === null || this.contentalign === '') {
       this.contentalign = 'center';
     }
-    if(this.type == null) this.type = 'confirm';
+    if (this.type === null) {
+      this.type = 'confirm';
+    }
   }
 
-  ngOnChanges(changes: SimpleChanges){
+  ngOnChanges(changes: SimpleChanges) {
 
-    //reassign show
+    // reassign show
     if (changes['showdialogue']) {
       this.show = changes.showdialogue.currentValue;
     }
   }
 
   onCloseClick() {
-
     if (this.closable) {
-
-      this.showdialogue  = false ;
-      this.show=false;
+      this.showdialogue = false ;
+      this.show = false;
       this.showChange.emit(false);
       this.close.emit(false);
     }
   }
-  getStatus(v : any){
-
+  getStatus(v: any) {
     this.onCloseClick();
     this.actionStatus.emit(v);
   }
 
-  getDefaultStyle()
-  {
-    if(this.materialDesign)
-    {
-      return  'transparent';
-    }else{
+  getDefaultStyle() {
+    if (this.materialDesign) {
+      return 'transparent';
+    } else {
       return 'defualt';
     }
   }
 
-  getStyle()
-  {
-    if(this.materialDesign)
-    {
+  getStyle() {
+    if (this.materialDesign) {
       this.buttontype = 'transparent';
-      return  this.buttontype;
-    }else{
+      return this.buttontype;
+    } else {
       return this.buttontype;
     }
   }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

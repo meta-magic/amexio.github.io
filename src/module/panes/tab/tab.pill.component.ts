@@ -5,18 +5,19 @@
 /*
 Component Name : Amexio Tab
 Component Selector : <amexio-tab>
-Component Description: Tab component for Angular Apps with multiple configurations such as Tab, Icon support
+Component Description: Tab component for Angular Apps with multiple configurations
+such as Tab, Icon support
 
 */
-import { Component, EventEmitter, Input, OnInit, Output ,ViewContainerRef,ViewChild} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild, ViewContainerRef} from '@angular/core';
 
 @Component({
-  selector: 'amexio-tab', templateUrl: './tab.pill.component.html'
+  selector: 'amexio-tab', templateUrl: './tab.pill.component.html',
 })
 export class AmexioTabPill implements OnInit {
 
   /*
-Properties 
+Properties
 name : title
 datatype : string
 version : 4.0 onwards
@@ -26,7 +27,7 @@ description : Title on Tab Button/Pill.
   @Input() title: string;
 
   /*
-Properties 
+Properties
 name : disabled
 datatype : boolean
 version : 4.1.4 onwards
@@ -36,9 +37,9 @@ description : Disable property for tab
   @Input() disabled: boolean = false;
 
   /*
-Properties 
+Properties
 name : active
-datatype :boolean
+datatype : boolean
 version : 4.0 onwards
 default : false
 description : Set true for specific tab open as default tab..
@@ -46,33 +47,33 @@ description : Set true for specific tab open as default tab..
   @Input() active: boolean = false;
 
   /*
-Properties 
-name : icon:
-datatype :string
+Properties
+name : icon
+datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Supports glyphicon only. Can add directly home instead of 'glyphicon glyphicon-home.
 */
   @Input() icon: string;
 
   /*
-Properties 
+Properties
 name : amexio-color
 datatype : string
 version : 4.1.9 onwards
 default : black
 description : Font color of label
-*/ 
-@Input('amexio-color')  amexiocolor : string;
+*/
+@Input('amexio-color')  amexiocolor: string;
 
  /*
-Properties 
+Properties
 name : closable
 datatype : boolean
 version : 4.2 onwards
 default : false
 description : Font color of label
-*/ 
+*/
 @Input() closable: boolean = null;
 
   tabId: number;
@@ -80,7 +81,6 @@ description : Font color of label
 
   constructor() {
     this.tabId = Math.floor(Math.random() * 90000) + 10000;
-    // this.amexiocolor = "black";
   }
 
   ngOnInit() {

@@ -4,7 +4,7 @@
 import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'amexio-action', template: '<ng-content></ng-content>'
+  selector: 'amexio-action', template: '<ng-content></ng-content>',
 })
 
 export class AmexioFooterComponent implements OnInit {
