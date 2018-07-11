@@ -3,7 +3,7 @@
  */
 
  /*
- Component Name : Amexio tree filter 
+ Component Name : Amexio tree filter
  Component Selector : <amexio-tree-filter-view>
  Component Description : A Expandable Tree Component for Angular, having Filtering functionality.
 */
@@ -60,7 +60,7 @@ import {HttpClient} from "@angular/common/http";
 export class AmexioFilterTreeComponent implements OnInit, AfterViewInit, DoCheck {
 
   /*
-Properties 
+Properties
 name : http-url
 datatype : string
 version : 4.0 onwards
@@ -70,7 +70,7 @@ description : REST url for fetching data.
   @Input('http-url') httpurl: string;
 
   /*
-Properties 
+Properties
 name : http-method
 datatype : string
 version : 4.0 onwards
@@ -80,7 +80,7 @@ description : Type of HTTP call, POST,GET etc.
   @Input('http-method') httpmethod: string;
 
   /*
-Properties 
+Properties
 name : data-reader
 datatype : string
 version : 4.0 onwards
@@ -90,7 +90,7 @@ description : Key in JSON Datasource for records.
   @Input('data-reader') datareader: string;
 
   /*
-Properties 
+Properties
 name : data
 datatype : any
 version : 4.0 onwards
@@ -101,7 +101,7 @@ description : Local Data binding.
 
 
   /*
-Properties 
+Properties
 name : enable-checkbox
 datatype : false
 version : 4.0 onwards
@@ -111,7 +111,7 @@ description : Enables checkbox for each row, this allows user for multi selectio
   @Input('enable-checkbox') enablecheckbox = false;
 
   /*
-Events 
+Events
 name : nodeClick
 datatype : none
 version : none
@@ -121,7 +121,7 @@ description : It will gives you clicked node data.
   @Output() nodeClick: any = new EventEmitter<any>();
 
   /*
-Events 
+Events
 name : onTreeNodeChecked
 datatype : none
 version : none
@@ -131,7 +131,7 @@ description : It will gives whole tree data with checked flag status.
   @Output() onTreeNodeChecked: any = new EventEmitter<any>();
 
 /*
-Properties 
+Properties
 name : trigger-char
 datatype : number
 version : 4.0 onwards
@@ -297,9 +297,13 @@ description : it will search for text relevant to entered character
 
   getData(httpResponse: any) {
     let responsedata: any = httpResponse;
-    let dr = this.datareader.split('.');
-    for (let ir = 0; ir < dr.length; ir++) {
-      responsedata = responsedata[dr[ir]];
+    if(this.datareader) {
+      let dr = this.datareader.split('.');
+      for (let ir = 0; ir < dr.length; ir++) {
+        responsedata = responsedata[dr[ir]];
+      }
+    } else {
+      responsedata = httpResponse;
     }
     return responsedata;
   }
