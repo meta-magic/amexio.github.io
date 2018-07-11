@@ -19,104 +19,126 @@ import { DeviceQueryService } from "../../services/device/device.query.service";
 export class AmexioSideNav implements OnInit {
 
   /*
-Properties 
-name : data
-datatype : any
-version : 4.0 onwards
-default : none
-description : Local data for sidenav.
-*/
+   Properties
+   name : data
+   datatype : any
+   version : 4.0 onwards
+   default : none
+   description : Local data for sidenav.
+   */
   @Input() data: any[];
 
   /*
-  Properties 
-  name : http-url
-  datatype : string
-  version : 4.0 onwards
-  default : none
-  description : REST url for fetching datasource.
-  */
+   Properties
+   name : http-url
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : REST url for fetching datasource.
+   */
   @Input('http-url') httpurl: string;
 
   /*
-  Properties 
-  name : http-url
-  datatype : string
-  version : 4.0 onwards
-  default : none
-  description : Type of HTTP call, POST,GET.
-  */
+   Properties
+   name : http-url
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : Type of HTTP call, POST,GET.
+   */
   @Input('http-method') httpmethod: string;
 
   /*
-  Properties 
-  name : data-reader
-  datatype : string
-  version : 4.0 onwards
-  default : none
-  description : Key in JSON datasource for records
-  */
+   Properties
+   name : data-reader
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : Key in JSON datasource for records
+   */
   @Input('data-reader') datareader: string;
 
   /*
-  Properties 
-  name : position
-  datatype : any
-  version : 4.0 onwards
-  default : none
-  description : Sidenav bar rendering position. example position='relative','right'
-  */
+   Properties
+   name : position
+   datatype : any
+   version : 4.0 onwards
+   default : none
+   description : Sidenav bar rendering position. example position='relative','right'
+   */
   @Input() position: any;
 
   /*
-  Properties 
-  name : titleimage
-  datatype : string
-  version : 4.0 onwards
-  default : none
-  description : Title image of sidenav bar
-  */
+   Properties
+   name : titleimage
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : Title image of sidenav bar
+   */
   @Input() titleimage: string;
 
   /*
-  Events 
-  name : nodeClick
-  datatype : none
-  version : none
-  default : none
-  description : Fire when sidenav bar menu click
-  */
+   Events
+   name : nodeClick
+   datatype : none
+   version : none
+   default : none
+   description : Fire when sidenav bar menu click
+   */
   @Output() nodeClick: any = new EventEmitter<any>();
 
   /*
-  Properties 
-  name : width
-  datatype : string
-  version : 4.0 onwards
-  default : none
-  description : Width of sidenav
-  */
+   Events
+   name : onDrag
+   datatype : none
+   version : 4.2.9
+   default : none
+   description : Fire when you drag node
+   */
+  @Output() onDrag: any = new EventEmitter<any>();
+
+  /*
+   Properties
+   name : width
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : Width of sidenav
+   */
   @Input() width: string;
 
   /*
-  Properties 
-  name : height
-  datatype : string
-  version : 4.0 onwards
-  default : none
-  description : height of sidenav
-  */
+   Properties
+   name : height
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : height of sidenav
+   */
   @Input() height: string;
 
   /*
-  Properties 
-  name : title
-  datatype : string
-  version : 4.0 onwards
-  default : none
-  description : Title of sidenav bar
-  */
+   Properties
+   name : title
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : Title of sidenav bar
+   */
   @Input('title') sidenavtitle: string;
+
+
+  /*
+   Properties
+   name : enable-drag
+   datatype : boolean
+   version : 5.0.0 onwards
+   default : false
+   description : nodes can be dragged
+   */
+  @Input('enable-drag') enabledrag: boolean;
+
 
   smalldevice: boolean;
 
@@ -248,4 +270,14 @@ description : Local data for sidenav.
       this.close();
     }
   }
+
+
+
+  dragStartEvent(event: any) {
+    if (this.enabledrag) {
+      event.event.dataTransfer.setData('dragData', JSON.stringify(event.data));
+      this.onDrag.emit(event);
+    }
+  }
+
 }

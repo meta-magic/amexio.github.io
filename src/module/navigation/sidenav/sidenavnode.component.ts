@@ -15,35 +15,55 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class SideNavNodeComponent implements OnInit {
 
   /*
-Properties 
-name : data
-datatype : any
-version : 4.0 onwards
-default : none
-description : Local data for sidenav.
-*/
+   Properties
+   name : data
+   datatype : any
+   version : 4.0 onwards
+   default : none
+   description : Local data for sidenav.
+   */
   @Input() data: any[];
+
+  /*
+   Properties
+   name : enable-drag
+   datatype : boolean
+   version : 5.0.0 onwards
+   default : false
+   description : nodes can be dragged
+   */
+  @Input('enable-drag') enabledrag: boolean;
 
 
   /*
-Events 
-name : onClick
-datatype : none
-version : none
-default : none
-description : fires on the click event
-*/
+   Events
+   name : onClick
+   datatype : none
+   version : none
+   default : none
+   description : fires on the click event
+   */
   @Output() onClick: any = new EventEmitter<any>();
 
   /*
-Events 
-name : nodeClick
-datatype : none
-version : none
-default : none
-description : Fire when sidenav bar menu click
-*/
+   Events
+   name : nodeClick
+   datatype : none
+   version : none
+   default : none
+   description : Fire when sidenav bar menu click
+   */
   @Output() nodeClick: any = new EventEmitter<any>();
+
+  /*
+   Events
+   name : onDrag
+   datatype : none
+   version : 4.2.9
+   default : none
+   description : Fire when you drag node
+   */
+  @Output() onDrag: any = new EventEmitter<any>();
 
 
   constructor() {
@@ -74,6 +94,11 @@ description : Fire when sidenav bar menu click
 
   getOnNodeClick(node: any) {
     this.nodeClick.emit(node);
+  }
+
+
+  dragStartEvent(nodeData: any) {
+    this.onDrag.emit(nodeData);
   }
 }
 
