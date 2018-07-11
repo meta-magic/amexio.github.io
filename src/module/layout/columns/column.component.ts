@@ -9,17 +9,15 @@
 */
 
 import {Component, Input, OnInit} from '@angular/core';
-import {DomSanitizer} from "@angular/platform-browser";
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'amexio-column', templateUrl: 'column.component.html', host: {
-    '[class]': 'colclass'
-  }
+    '[class]': 'colclass',
+  },
 })
 
 export class AmexioColumnComponent implements OnInit {
-
-
   size_: string;
 
   colclass: string;
@@ -28,16 +26,16 @@ export class AmexioColumnComponent implements OnInit {
 
   }
 /*
-Properties 
+Properties
 name : size
 datatype : any
 version : 4.0 onwards
-default : 
+default :
 description : Column size*/
   @Input()
   set size(value: any) {
     this.size_ = value;
-    this.colclass = "flex-col flex-col-" + value;
+    this.colclass = 'flex-col flex-col-' + value;
   }
 
   get size() {
@@ -47,6 +45,4 @@ description : Column size*/
   ngOnInit() {
 
   }
-
-
 }

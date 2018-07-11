@@ -2,15 +2,15 @@
  * Created by pratik on 24/1/18.
  */
 import { Injectable } from '@angular/core';
-import {Subject} from "rxjs/index";
-import {Observable} from "rxjs/index";
+import {Subject} from 'rxjs/index';
+import {Observable} from 'rxjs/index';
 
 @Injectable()
 export class AccordionService {
   private subject = new Subject<any>();
 
-  onClickEvent(data: number,parent : number) {
-    this.subject.next({ id: data,parent : parent });
+  onClickEvent(data: number, parent: number) {
+    this.subject.next({ id:  data, parent: parent});
   }
 
   clearEvents() {
@@ -21,4 +21,3 @@ export class AccordionService {
     return this.subject.asObservable();
   }
 }
-
