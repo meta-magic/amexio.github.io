@@ -18,7 +18,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'amexio-map-properties', template: ``
+  selector: 'amexio-map-properties', template: ``,
 })
 export class MapProperties implements OnInit {
  /*
@@ -28,7 +28,7 @@ datatype : string
 version : 4.0 onwards
 default : none
 description : user can give chart background color
-*/ 
+*/
   @Input('chart-background-color') chartbackgroundcolor: string;
 /*
 Properties
@@ -37,7 +37,7 @@ datatype : number
 version : 4.0 onwards
 default : none
 description : position from left
-*/ 
+*/
   @Input('left-position') leftposition: number;
  /*
 Properties
@@ -46,25 +46,25 @@ datatype : number
 version : 4.0 onwards
 default : none
 description : position from top
-*/ 
+*/
   @Input('top-position') topposition: number;
  /*
-Properties 
+Properties
 name : chart-width
 datatype : number
 version : 4.0 onwards
 default : none
 description : Width of chart
-*/ 
+*/
   @Input('chart-width') chartwidth: number;
 /*
-Properties 
+Properties
 name : chart-height
 datatype : number
 version : 4.0 onwards
 default : none
 description : height of chart
-*/ 
+*/
   @Input('chart-height') chartheight: number;
 
   constructor() {
