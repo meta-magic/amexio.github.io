@@ -6,14 +6,14 @@ import { AmexioBodyComponent } from './../../panes/body/pane.action.body';
  * Created by ketangote on 12/18/17.
  */
 
- /*
- Component Name : Amexio card
- Component Selector : <amexio-card>
- Component Description : Amexio Card which renders card based on title, body and actions user has configured
+/*
+Component Name : Amexio card
+Component Selector : <amexio-card>
+Component Description : Amexio Card which renders card based on title, body and actions user has configured
 .
 */
 
-import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'amexio-card', template: `
@@ -36,17 +36,17 @@ import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} f
 })
 export class AmexioCardComponent implements OnInit {
 
-/*
-Properties
-name : header-align
-datatype : string
-version : 4.0 onwards
-default : left
-description : Align of item elements inside card header example : right,center,left.
-*/
+  /*
+  Properties
+  name : header-align
+  datatype : string
+  version : 4.0 onwards
+  default : left
+  description : Align of item elements inside card header example : right,center,left.
+  */
   @Input('header-align') headeralign: string;
 
-    /*
+  /*
 Properties
 name : header-align
 datatype : string
@@ -56,7 +56,7 @@ description : User can enable header of card by setting this flag to true..
 */
   @Input() header: boolean;
 
-    /*
+  /*
 Properties
 name : footer
 datatype : boolean
@@ -76,7 +76,7 @@ description : Align of item elements inside card footer example:right,center,lef
 */
   @Input('footer-align') footeralign: string;
 
-    /*
+  /*
 Properties
 name : show
 datatype :  boolean
@@ -94,7 +94,7 @@ version : 4.0 onwards
 default :
 description : User can set the height to body..
 */
-  @Input()  height: any;
+  @Input() height: any;
 
   /*
 Properties
@@ -104,7 +104,7 @@ version : 4.0 onwards
 default :
 description : Provides minimum card height.
 */
-  @Input('min-height')  minHeight: any;
+  @Input('min-height') minHeight: any;
 
   /*
 Properties
@@ -116,9 +116,9 @@ description : Provides card height.
 */
   @Input('body-height') bodyheight: any;
 
-  @ViewChild('cardHeader', {read: ElementRef}) public cardHeader: ElementRef;
+  @ViewChild('cardHeader', { read: ElementRef }) public cardHeader: ElementRef;
 
-  @ViewChild('cardFooter', {read: ElementRef}) public cardFooter: ElementRef;
+  @ViewChild('cardFooter', { read: ElementRef }) public cardFooter: ElementRef;
 
   headerPadding: string;
 
@@ -140,7 +140,7 @@ description : Provides card height.
   constructor() {
     this.headeralign = 'left';
     this.footeralign = 'right';
-   }
+  }
   ngOnInit() {
   }
   ngAfterViewInit() {
@@ -159,7 +159,7 @@ description : Provides card height.
     this.bodyComponentList = this.amexioBody.toArray();
     this.bodyComponentList.forEach((item: AmexioBodyComponent, currentIndex) => {
       if (item.padding) {
-        this.bodyPadding = item.padding ;
+        this.bodyPadding = item.padding;
       }
     });
     // FOR FOOTER PADDING
@@ -178,11 +178,13 @@ description : Provides card height.
       let h = (window.innerHeight / 100) * this.bodyheight;
 
       if (this.cardHeader && this.cardHeader.nativeElement && this.cardHeader.nativeElement.offsetHeight) {
-        h = h - this.cardHeader.nativeElement.offsetHeight; }
+        h = h - this.cardHeader.nativeElement.offsetHeight;
+      }
 
       if (this.cardFooter && this.cardFooter.nativeElement && this.cardFooter.nativeElement.offsetHeight) {
-        h = h - this.cardFooter.nativeElement.offsetHeight; }
-       if (this.bodyheight === 100) {
+        h = h - this.cardFooter.nativeElement.offsetHeight;
+      }
+      if (this.bodyheight === 100) {
         h = h - 40;
         this.minHeight = h;
         this.height = h;

@@ -1,116 +1,118 @@
 import { AmexioSearchAdvanceComponent } from '../advancesearch/searchadvance.component';
-import {  AfterContentInit, AfterViewInit, Component, ContentChildren,
+import {
+  AfterContentInit, AfterViewInit, Component, ContentChildren,
   ContentChild, Directive, ElementRef, EventEmitter,
   HostListener, Input, OnInit, Output, QueryList,
-  ViewChild, ViewChildren } from '@angular/core';
-import {CommonDataService} from '../../services/data/common.data.service';
+  ViewChild, ViewChildren,
+} from '@angular/core';
+import { CommonDataService } from '../../services/data/common.data.service';
 @Component({
   selector: 'amexio-searchbox',
   templateUrl: './searchboxtool.component.html',
 })
-export class SearchboxtoolComponent implements OnInit , AfterContentInit {
-/*
-Properties
-name : data
-datatype : any
-version : 4.2 onwards
-default : none
-description : Local data for dropdown.
-*/
-@Input() data: any;
-/*
-Properties
-name : data-reader
-datatype : string
-version : 4.2 onwards
-default : none
-description : Key in JSON datasource for records
-*/
-@Input('data-reader') datareader: any;
-/*
-Properties
-name : http-url
-datatype : string
-version : 4.2 onwards
-default : none
-description : REST url for fetching datasource.
-*/
-@Input('http-url') httpurl: string;
-/*
-Properties
-name : place-holder
-datatype : string
-version : 4.2 onwards
-default : none
-description : Show place-holder inside dropdown component
-*/
-@Input('place-holder') placeholder: string;
-/*
-Properties
-name : display-field
-datatype : string
-version : 4.2 onwards
-default : none
-description : Sets key inside response data to display.
-*/
-@Input('display-field') displayfield: string;
-/*
-Properties
-name : http-method
-datatype : string
-version : 4.2 onwards
-default : none
-description : Type of HTTP call, POST,GET.
-*/
-@Input('http-method') httpmethod: string;
-/*
-Properties
-name : title
-datatype : string
-version : 4.2 onwards
-default : none
-description : sets title to advance search form
-*/
-@Input() title = 'Advance Search';
-/*
-Properties
-name : value-field
-datatype : string
-version : 4.2 onwards
-default : none
-description : Name of key inside response data.use to send to backend
-*/
-@Input('value-field') valuefield: string;
-/*
-Properties
-name : width
-datatype : number
-version : 4.2 onwards
-default : none
-description : Sets width to auto recommendation list.
-*/
-@Input() width = 500;
-/*
-Events
-name : keyup
-description : Fires when keyup event occurs
-*/
-@Output() keyup: any = new EventEmitter<any>();
-/*
-Events
-name : onSearchItemClick
-description : Fires when search item is selected
-*/
-@Output() onSearchItemClick: any = new EventEmitter<any>();
-/*
-Events
-name : onSearchClick
-description : Fires when search button is clicked
-*/
-@Output() onSearchClick: any = new EventEmitter<any>();
-@ContentChild(AmexioSearchAdvanceComponent) advanceSearchRef: AmexioSearchAdvanceComponent;
-@ViewChild('dropdownitems', { read: ElementRef }) public dropdownitems: ElementRef;
-@ViewChild('inp', { read: ElementRef }) public inp: ElementRef;
+export class SearchboxtoolComponent implements OnInit, AfterContentInit {
+  /*
+  Properties
+  name : data
+  datatype : any
+  version : 4.2 onwards
+  default : none
+  description : Local data for dropdown.
+  */
+  @Input() data: any;
+  /*
+  Properties
+  name : data-reader
+  datatype : string
+  version : 4.2 onwards
+  default : none
+  description : Key in JSON datasource for records
+  */
+  @Input('data-reader') datareader: any;
+  /*
+  Properties
+  name : http-url
+  datatype : string
+  version : 4.2 onwards
+  default : none
+  description : REST url for fetching datasource.
+  */
+  @Input('http-url') httpurl: string;
+  /*
+  Properties
+  name : place-holder
+  datatype : string
+  version : 4.2 onwards
+  default : none
+  description : Show place-holder inside dropdown component
+  */
+  @Input('place-holder') placeholder: string;
+  /*
+  Properties
+  name : display-field
+  datatype : string
+  version : 4.2 onwards
+  default : none
+  description : Sets key inside response data to display.
+  */
+  @Input('display-field') displayfield: string;
+  /*
+  Properties
+  name : http-method
+  datatype : string
+  version : 4.2 onwards
+  default : none
+  description : Type of HTTP call, POST,GET.
+  */
+  @Input('http-method') httpmethod: string;
+  /*
+  Properties
+  name : title
+  datatype : string
+  version : 4.2 onwards
+  default : none
+  description : sets title to advance search form
+  */
+  @Input() title = 'Advance Search';
+  /*
+  Properties
+  name : value-field
+  datatype : string
+  version : 4.2 onwards
+  default : none
+  description : Name of key inside response data.use to send to backend
+  */
+  @Input('value-field') valuefield: string;
+  /*
+  Properties
+  name : width
+  datatype : number
+  version : 4.2 onwards
+  default : none
+  description : Sets width to auto recommendation list.
+  */
+  @Input() width = 500;
+  /*
+  Events
+  name : keyup
+  description : Fires when keyup event occurs
+  */
+  @Output() keyup: any = new EventEmitter<any>();
+  /*
+  Events
+  name : onSearchItemClick
+  description : Fires when search item is selected
+  */
+  @Output() onSearchItemClick: any = new EventEmitter<any>();
+  /*
+  Events
+  name : onSearchClick
+  description : Fires when search button is clicked
+  */
+  @Output() onSearchClick: any = new EventEmitter<any>();
+  @ContentChild(AmexioSearchAdvanceComponent) advanceSearchRef: AmexioSearchAdvanceComponent;
+  @ViewChild('dropdownitems', { read: ElementRef }) public dropdownitems: ElementRef;
+  @ViewChild('inp', { read: ElementRef }) public inp: ElementRef;
   value: string;
   responseData: any;
   viewData: any;
@@ -129,7 +131,7 @@ description : Fires when search button is clicked
   scrollposition = 30;
   enableAdvanceSearch = false;
   advanceButtonLabel: string;
- enableAdvnSearch: boolean;
+  enableAdvnSearch: boolean;
   constructor(private element: ElementRef, private dataService: CommonDataService) {
   }
 
@@ -138,27 +140,27 @@ description : Fires when search button is clicked
     this.enableAdvnSearch = this.advanceSearchRef.advanceSearchFlag;
     this.enableAdvanceSearch = true;
     if (this.advanceSearchRef) {
-        this.enableAdvanceSearch = true;
+      this.enableAdvanceSearch = true;
       if (this.advanceSearchRef.title) {
-          this.advanceButtonLabel = this.advanceSearchRef.title;
-       } else if (!this.advanceSearchRef.title || this.advanceSearchRef.title === '') {
-          this.advanceButtonLabel = 'Advance Search';
+        this.advanceButtonLabel = this.advanceSearchRef.title;
+      } else if (!this.advanceSearchRef.title || this.advanceSearchRef.title === '') {
+        this.advanceButtonLabel = 'Advance Search';
+      }
     }
   }
- }
 
   ngOnInit() {
     if (this.httpmethod && this.httpurl) {
-      this.dataService.fetchData(this.httpurl , this.httpmethod).subscribe(response => {
+      this.dataService.fetchData(this.httpurl, this.httpmethod).subscribe((response) => {
         this.responseData = response;
-      }, error => {
+      }, (error) => {
       }, () => {
         this.setData(this.responseData);
       });
     } else if (this.data) {
-       this.previousData = JSON.parse(JSON.stringify(this.data));
-        this.setData(this.data);
-     }
+      this.previousData = JSON.parse(JSON.stringify(this.data));
+      this.setData(this.data);
+    }
   }
   ngDoCheck() {
     if (JSON.stringify(this.previousData) !== JSON.stringify(this.data)) {
@@ -180,7 +182,7 @@ description : Fires when search button is clicked
     }
   }
   onSelectClick() {
-     this.advanceSearchFlag = false;
+    this.advanceSearchFlag = false;
   }
   onInputClick(event: any) {
     this.searchFlag = true;
@@ -196,9 +198,9 @@ description : Fires when search button is clicked
         }
       });
       this.keyup.emit(event);
-     }
- // logic for arrow keys and enter key press
- // 40=down-arrow and 38=up-arrow and 13=enter
+    }
+    // logic for arrow keys and enter key press
+    // 40=down-arrow and 38=up-arrow and 13=enter
     if (event.keyCode === 40 || event.keyCode === 38 || event.keyCode === 13) {
       // if key pressed is up down or enter then process accordingly
       // call function for process
@@ -209,9 +211,9 @@ description : Fires when search button is clicked
     }
   }
   onFocus() {
-       if (this.selectedValue.length > 0) {
-         let keyword = this.selectedValue;
-         this.viewData = [];
+    if (this.selectedValue.length > 0) {
+      let keyword = this.selectedValue;
+      this.viewData = [];
       if (keyword !== null && keyword !== ' ') {
         let search_term = keyword.toLowerCase();
         this.localData.forEach((item: any) => {
@@ -224,14 +226,14 @@ description : Fires when search button is clicked
         });
         this.searchFlag = true;
         this.keyup.emit(event);
-       }
-        if (!this.selectedValue || this.selectedValue === '') {
+      }
+      if (!this.selectedValue || this.selectedValue === '') {
         this.viewData = [];
       }
-      }
     }
+  }
   navigateKeys(event: any) {
-     if (this.selectedindex > this.viewData.length) {
+    if (this.selectedindex > this.viewData.length) {
       this.selectedindex = 0;
     }
     if (event.keyCode === 40 ||
@@ -258,7 +260,7 @@ description : Fires when search button is clicked
             this.scrollposition = 30;
           }
           if (this.selectedindex <= 0) {
-          } else {}
+          } else { }
         }
       }
       if (this.viewData[this.selectedindex]) {
@@ -269,13 +271,13 @@ description : Fires when search button is clicked
       }
     }
 
-    if (event.keyCode === 13 && this.viewData [this.selectedindex]) {
+    if (event.keyCode === 13 && this.viewData[this.selectedindex]) {
       this.onItemSelect(this.viewData[this.selectedindex]);
     }
   }
 
   onSearchButtonClick(event: any) {
-  this.onSearchClick.emit(event);
+    this.onSearchClick.emit(event);
   }
   selectCssClass(): string {
     if (this.viewData.length > 5) {
@@ -286,7 +288,7 @@ description : Fires when search button is clicked
   }
   onItemSelect(item: any) {
     this.value = item[this.valuefield];
-    this.selectedValue = item [this.displayfield];
+    this.selectedValue = item[this.displayfield];
     this.searchFlag = false;
     this.onSearchItemClick.emit(item);
   }
@@ -313,17 +315,17 @@ description : Fires when search button is clicked
     return responsedata;
   }
   setData(httpResponse: any) {
-     let responsedata = httpResponse;
-        // Check if key is added?
+    let responsedata = httpResponse;
+    // Check if key is added?
     if (this.datareader !== null) {
-       let dr = this.datareader.split('.');
-       for (let ir = 0; ir < dr.length; ir++) {
+      let dr = this.datareader.split('.');
+      for (let ir = 0; ir < dr.length; ir++) {
         responsedata = responsedata[dr[ir]];
-       }
+      }
     } else {
       responsedata = httpResponse;
     }
     this.viewData = responsedata;
     this.localData = JSON.parse(JSON.stringify(this.viewData));
-   }
+  }
 }
