@@ -1,15 +1,16 @@
 import { CommonModule } from '@angular/common';
-import { NgModule, ModuleWithProviders } from '@angular/core';
-import {AmexioFormsModule} from "./forms/amexio.forms.module";
-import {CommonDataService} from "./services/data/common.data.service";
-import {AmexioNavModule} from "./navigation/amexio.nav.module";
-import {AmexioDataModule} from "./data/amexio.data.module";
-import {DeviceQueryService} from "./services/device/device.query.service";
-import {AmexioLayoutModule} from "./layout/amexio.layout.module";
-import {AmexioMediaModule} from "./media/amexio.media.module";
-import {IconLoaderService} from "./services/icon/icon.service";
-import {AmexioPaneModule} from "./panes/amexio.pane.module";
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClientModule} from '@angular/common/http';
+import { ModuleWithProviders, NgModule } from '@angular/core';
+import {AmexioDataModule} from './data/amexio.data.module';
+import {AmexioFormsModule} from './forms/amexio.forms.module';
+import {AmexioLayoutModule} from './layout/amexio.layout.module';
+import {AmexioMediaModule} from './media/amexio.media.module';
+import {AmexioNavModule} from './navigation/amexio.nav.module';
+import {AmexioPaneModule} from './panes/amexio.pane.module';
+import {CommonDataService} from './services/data/common.data.service';
+import {DeviceQueryService} from './services/device/device.query.service';
+import {IconLoaderService} from './services/icon/icon.service';
+
 import { AmexioTabPill } from '../index';
 
 export * from './services/data/common.data.service';
@@ -26,25 +27,25 @@ export * from './services/icon/icon.mapping.config';
     AmexioLayoutModule,
     AmexioMediaModule,
     AmexioPaneModule,
-    HttpClientModule
+    HttpClientModule,
   ],
-  entryComponents:[AmexioTabPill],
+  entryComponents: [AmexioTabPill],
   exports: [
     AmexioFormsModule,
     AmexioNavModule,
     AmexioDataModule,
     AmexioLayoutModule,
     AmexioMediaModule,
-    AmexioPaneModule
+    AmexioPaneModule,
   ],
   declarations: [],
-  providers : [CommonDataService,DeviceQueryService,IconLoaderService]
+  providers: [CommonDataService, DeviceQueryService, IconLoaderService],
 })
 export class AmexioWidgetModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: AmexioWidgetModule,
-      providers: [CommonDataService,DeviceQueryService,IconLoaderService]
+      providers: [CommonDataService, DeviceQueryService, IconLoaderService],
     };
   }
 }
