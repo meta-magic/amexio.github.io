@@ -19,7 +19,7 @@
 
 ## Minimal reproduction of the problem with instructions
 For bug reports please provide the *STEPS TO REPRODUCE* and if possible a *MINIMAL DEMO* of the problem via
-https://plnkr.co or similar (you can use Our Amexio Plunker as a starting point: http://plnkr.co/edit/M9AeGH?p=info)
+https://stackblitz.com/fork/angular or similar (you can use Our Amexio Sandbox On Stackbliz as a starting point: https://stackblitz.com/edit/amexio-sandbox)
 
 
 ## What is the motivation / use case for changing the behavior?
@@ -29,7 +29,8 @@ https://plnkr.co or similar (you can use Our Amexio Plunker as a starting point:
 ## Environment
 
 <pre><code>
-Angular version: X.Y.Z
+Angular version: X.Y.Z <br>
+Amexio version: X.Y.Z
 <!-- Check whether this is still an issue in the most recent Angular version -->
 
 Browser:
