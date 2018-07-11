@@ -52,8 +52,7 @@ export class MapLoaderService {
                     if (typeof google !== 'undefined' && google.charts) {
                         // check if chart package has been loaded using chartPackagename ?
                         this.loadBaseChart(observer);
-                    }
-                    else {
+                    } else {
                         this.isScriptLoading = true;
                         let script = document.createElement('script');
                         script.type = 'text/javascript';
@@ -70,8 +69,7 @@ export class MapLoaderService {
                         };
                         document.getElementsByTagName('head')[0].appendChild(script);
                     }
-                }
-                else {
+                } else {
                     this.googleScriptLoadingNotifier.subscribe((loaded: boolean) => {
                         if (loaded) {
                             this.loadBaseChart(observer);
@@ -99,8 +97,7 @@ export class MapLoaderService {
     loadRequiredChart(observer: any, chartName: string) {
         if (google.visualization.hasOwnProperty(chartName)) {
             observer.complete();
-        }
-        else {
+        } else {
             google.charts.load('current', {'packages': [this.chartPackage[chartName]]});
             google.charts.setOnLoadCallback(() => {
                 observer.complete();

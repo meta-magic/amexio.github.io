@@ -325,8 +325,7 @@ description : If "true" add two context menus i.e close All and close Others tab
 
     if (instance.amexiocolor = '') {
       instance.amexiocolor = 'amexio-top-tab-black';
-    }
-    else {
+    } else {
       instance.amexiocolor = 'amexio-top-tab-' + amexiocolor;
     }
     // create dynamic component
@@ -572,8 +571,7 @@ description : If "true" add two context menus i.e close All and close Others tab
         this.contextmenu.push(obj, obj2);
     }
     this.contextMenuFlag = true;
-    }
-    else if (this.contextmenu && this.contextmenu.length > 0) {
+    } else if (this.contextmenu && this.contextmenu.length > 0) {
       this.contextMenuFlag = true;
     }
   }

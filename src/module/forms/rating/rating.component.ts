@@ -15,16 +15,22 @@
  Component Selector :  <amexio-rating-input>
  Component Description : A simple configurable rating component with visual feedback.
 */
-import {Component, EventEmitter, forwardRef, HostListener, Input, NgModule, OnInit, Output } from "@angular/core";
-import {ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, Validator, AbstractControl} from "@angular/forms";
 import {CommonModule} from '@angular/common';
+import {Component, EventEmitter, forwardRef, HostListener, Input, NgModule, OnInit, Output } from '@angular/core';
+import {AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, Validator} from '@angular/forms';
 @Component({
   selector: 'amexio-rating-input',
   templateUrl: './rating.component.html',
   styleUrls: ['./rating.component.scss'],
   providers: [{
-    provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioRatingComponent), multi: true
-  }, {provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioRatingComponent), multi: true},]
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => AmexioRatingComponent),
+    multi: true,
+  },
+  {provide: NG_VALIDATORS,
+   useExisting: forwardRef(() => AmexioRatingComponent),
+   multi: true},
+  ],
 })
 export class AmexioRatingComponent implements OnInit, ControlValueAccessor, Validator {
 /*
@@ -32,12 +38,12 @@ Properties
 name : icon-class
 datatype : string
 version : 4.0 onwards
-default : star-icon 
+default : star-icon
 description : Sets if custom icon class is required
 */
-  @Input('icon-class') iconclass = "star-icon";
+  @Input('icon-class') iconclass = 'star-icon';
 /*
-Properties 
+Properties
 name : full-icon
 datatype : string
 version : 4.0 onwards
@@ -45,17 +51,17 @@ default :
 description : 	Icon for selected rating .This attribute is useful only
 when user have custom rating icons.example
 */
-  @Input('full-icon') fullicon = "★";
+  @Input('full-icon') fullicon = '★';
 /*
 Properties
 name : empty-icon
 datatype : string
 version : 4.0 onwards
 default :
-description : 	Icon for non-selected rating .This attribute is useful only
+description : Icon for non-selected rating .This attribute is useful only
 when user have custom rating icons.example
 */
-  @Input('empty-icon') emptyicon = "☆";
+  @Input('empty-icon') emptyicon = '☆';
 /*
 Properties
 name : read-only
@@ -136,7 +142,7 @@ datatype : any
 version : 4.0 onwards
 default :
 description : Fires on hovering component
-*/ 
+*/
   @Output() onHover = new EventEmitter();
 /*
 Events
@@ -145,7 +151,7 @@ datatype : any
 version : 4.0 onwards
 default :
 description : fires on leaving component and returns its value
-*/ 
+*/
   @Output() onLeave = new EventEmitter();
   // -------------------------------------------------------------------------
   // Public
@@ -178,7 +184,7 @@ description : fires on leaving component and returns its value
   validate(c: AbstractControl) {
     if (this.required && !c.value) {
       return {
-        required: true
+        required: true,
       };
     }
     return null;
@@ -192,7 +198,7 @@ description : fires on leaving component and returns its value
   // -------------------------------------------------------------------------
   // Host Bindings
   // -------------------------------------------------------------------------
-  @HostListener("keydown", ["$event"])
+  @HostListener('keydown', ['$event'])
   onKeydown(event: KeyboardEvent): void {
     if ([37, 38, 39, 40].indexOf(event.which) === -1 || this.hovered) {
       return;
@@ -207,7 +213,7 @@ description : fires on leaving component and returns its value
   // -------------------------------------------------------------------------
   calculateWidth(item: number) {
     if (this.hovered > 0) {
-      if (this.hoveredPercent !== undefined && this.hovered === item) { 
+      if (this.hoveredPercent !== undefined && this.hovered === item) {
         return this.hoveredPercent;
         return this.hovered >= item ? 100 : 0;
       }
@@ -222,7 +228,9 @@ description : fires on leaving component and returns its value
     }
   }
   changeHovered(event: MouseEvent): void {
-    if (!this.float) return;
+    if (!this.float) {
+      return;
+    }
     const target = event.target as HTMLElement;
     const relativeX = event.pageX - target.offsetLeft;
     const percent = Math.round((relativeX * 100 / target.offsetWidth) / 10) * 10;
