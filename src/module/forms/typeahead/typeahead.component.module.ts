@@ -1,10 +1,9 @@
-import { NgModule } from '@angular/core';
 import {CommonModule} from '@angular/common';
+import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
-import {CommonDataService} from "../../services/data/common.data.service";
-import {AmexioTypeAheadComponent} from "./typeahead.component";
+import {AmexioTypeAheadComponent} from './typeahead.component';
 
+import {CommonDataService} from '../../services/data/common.data.service';
 
 export * from './typeahead.component';
 
@@ -12,7 +11,6 @@ export * from './typeahead.component';
   imports: [
     CommonModule,
     FormsModule,
-    HttpModule
   ],
   exports: [AmexioTypeAheadComponent],
   declarations: [AmexioTypeAheadComponent],

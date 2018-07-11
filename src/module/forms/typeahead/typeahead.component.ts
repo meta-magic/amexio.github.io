@@ -1,34 +1,32 @@
 /**
  * Created by ketangote on 11/21/17.
  */
-
- /*
- 
- Component Name : Amexio Typeahead Input
- Component Selector :  <amexio-typeahead>
- Component Description : Type Ahead Component provides a power type ahead on the text field where users entry is provided with a filtered result.
-
+/*
+Component Name : Amexio Typeahead Input
+Component Selector :  <amexio-typeahead>
+Component Description : Type Ahead Component provides a power type ahead on the text field where
+users entry is provided with a filtered result.
 */
 import {
   Component, DoCheck, ElementRef, EventEmitter, forwardRef, HostListener, Input, OnChanges, OnInit, Output, Renderer2,
   SimpleChanges,
-  ViewChild
+  ViewChild,
 } from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
-import {CommonDataService} from "../../services/data/common.data.service";
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { CommonDataService } from '../../services/data/common.data.service';
 
 const noop = () => {
 };
 
 export const CUSTOM_TYPEAHEAD_CONTROL_VALUE_ACCESSOR: any = {
-  provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioTypeAheadComponent), multi: true
+  provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioTypeAheadComponent), multi: true,
 };
 
 @Component({
   selector: 'amexio-typeahead',
   templateUrl: './typeahead.component.html',
   styleUrls: ['./typeahead.component.scss'],
-  providers: [CUSTOM_TYPEAHEAD_CONTROL_VALUE_ACCESSOR]
+  providers: [CUSTOM_TYPEAHEAD_CONTROL_VALUE_ACCESSOR],
 })
 export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, DoCheck, OnChanges {
   /*
@@ -36,7 +34,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
    name : field-label
    datatype : string
    version : 4.0 onwards
-   default : 
+   default :
    description : The label of this field
    */
   @Input('field-label') fieldlabel: string;
@@ -45,7 +43,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
    name : allow-blank
    datatype : string
    version : 4.0 onwards
-   default : 
+   default :
    description : Sets if field is required
    */
   @Input('allow-blank') allowblank: boolean;
@@ -54,7 +52,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
    name : data
    datatype : any
    version : 4.0 onwards
-   default : 
+   default :
    description : Local data for dropdown.
    */
   @Input() data: any;
@@ -63,7 +61,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
    name : data-reader
    datatype : string
    version : 4.0 onwards
-   default : 
+   default :
    description : Key in JSON datasource for records
    */
   @Input('data-reader') datareader: string;
@@ -72,7 +70,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
    name : http-method
    datatype : string
    version : 4.0 onwards
-   default : 
+   default :
    description : Type of HTTP call, POST,GET.
    */
   @Input('http-method') httpmethod: string;
@@ -81,7 +79,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
    name : http-url
    datatype : string
    version : 4.0 onwards
-   default : 
+   default :
    description : REST url for fetching datasource.
    */
   @Input('http-url') httpurl: string;
@@ -119,7 +117,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
    name : focus
    datatype : any
    version : none
-   default : 
+   default :
    description : On focus event field.
    */
   @Output() focus: any = new EventEmitter<any>();
@@ -128,7 +126,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
    name : change
    datatype : any
    version : none
-   default : 
+   default :
    description : On field value change event
    */
   @Output() change: any = new EventEmitter<any>();
@@ -137,20 +135,20 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
    name : onClick
    datatype : any
    version : none
-   default : 
+   default :
    description : On click event
    */
   @Output() onClick: any = new EventEmitter<any>();
 
-  @ViewChild('dpList') dpList : any;
+  @ViewChild('dpList') dpList: any;
 
-  @ViewChild('dropdownitems', {read: ElementRef}) public dropdownitems: ElementRef;
+  @ViewChild('dropdownitems', { read: ElementRef }) public dropdownitems: ElementRef;
 
-  posixUp : boolean;
+  posixUp: boolean;
 
-  activeindex : number =0;
+  activeindex: number = 0;
 
-  currentActive : any;
+  currentActive: any;
 
   displayValue: any;
 
@@ -158,19 +156,18 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
 
   _errormsg: string;
 
-  isComponentValid : boolean;
+  isComponentValid: boolean;
 
   get errormsg(): string {
     return this._errormsg;
   }
 
-  navigateKey(event:any){
-
+  navigateKey(event: any) {
   }
 
-  selectedindex : number=0;
+  selectedindex: number = 0;
 
-  scrollposition : number = 30;
+  scrollposition: number = 30;
 
   /*
    Properties
@@ -191,7 +188,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
    name : place-holder
    datatype : string
    version : 4.0 onwards
-   default : 
+   default :
    description : Show place-holder inside dropdown component
    */
   @Input('place-holder') placeholder: string;
@@ -211,7 +208,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
    name : font-style
    datatype : string
    version : 4.0 onwards
-   default : 
+   default :
    description : Set font-style to field
    */
   @Input('font-style') fontstyle: string;
@@ -220,7 +217,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
    name : font-family
    datatype : string
    version : 4.0 onwards
-   default : 
+   default :
    description : Set font-family to field
    */
   @Input('font-family') fontfamily: string;
@@ -229,7 +226,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
    name : font-size
    datatype : string
    version : 4.0 onwards
-   default : 
+   default :
    description : Set font-size to field
    */
   @Input('font-size') fontsize: string;
@@ -247,7 +244,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
    name : enable-popover
    datatype : string
    version : 4.0 onwards
-   default : 
+   default :
    description : Set enable / disable popover.
    */
   @Input('enable-popover') enablepopover: boolean;
@@ -266,20 +263,19 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
    name : trigger-char
    datatype : number
    version : 4.0 onwards
-   default : 
+   default :
    description : Sets the trigger char length
    */
   @Input('trigger-char') triggerchar: number;
 
-  @ViewChild('rootDiv') rootDiv : any;
+  @ViewChild('rootDiv') rootDiv: any;
 
-  maskloader:boolean=true;
-
+  maskloader: boolean = true;
 
   @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
   public onElementOutClick(targetElement: HTMLElement) {
     let parentFound = false;
-    while (targetElement != null && !parentFound) {
+    while (targetElement !== null && !parentFound) {
       if (targetElement === this.element.nativeElement) {
         parentFound = true;
       }
@@ -290,28 +286,30 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
     }
   }
 
-  constructor(public dataService: CommonDataService,public element: ElementRef, public renderer: Renderer2) {
-
+  constructor(public dataService: CommonDataService, public element: ElementRef, public renderer: Renderer2) {
   }
 
-  ngOnChanges(changes : SimpleChanges){
-    if(changes.placeholder &&!changes.placeholder.isFirstChange())
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.placeholder && !changes.placeholder.isFirstChange()) {
       this.placeholder = changes.placeholder.currentValue;
+    }
   }
   ngOnInit() {
 
     this.isComponentValid = this.allowblank;
 
-    if (this.placeholder == '' || this.placeholder == null) this.placeholder = 'Choose Option';
+    if (this.placeholder === '' || this.placeholder === null) {
+      this.placeholder = 'Choose Option';
+    }
 
     if (!this.triggerchar) {
       this.triggerchar = 1;
     }
 
     if (this.httpmethod && this.httpurl) {
-      this.dataService.fetchData(this.httpurl, this.httpmethod).subscribe(response => {
+      this.dataService.fetchData(this.httpurl, this.httpmethod).subscribe((response) => {
         this.responseData = response;
-      }, error => {
+      }, (error) => {
       }, () => {
         this.setData(this.responseData);
       });
@@ -324,96 +322,97 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
   }
 
   onclick() {
-    //  this.onClick.emit();
   }
 
   onKeyUp(event: any) {
-    let maxScrollHeight : number = this.dpList.nativeElement.scrollHeight;
+    let maxScrollHeight: number = this.dpList.nativeElement.scrollHeight;
     this.filteredResult = [];
     this.showToolTip = false;
     let keyword: any = event.target.value;
-    if (keyword != null && keyword != ' ' && keyword.length >= this.triggerchar) {
+    if (keyword != null && keyword !== ' ' && keyword.length >= this.triggerchar) {
       let search_term = keyword.toLowerCase();
       this.viewData.forEach((item: any) => {
-        if (item != null) {
+        if (item !== null) {
           if (item[this.key].toLowerCase().startsWith(search_term)) {
             this.filteredResult.push(item);
           }
         }
       });
-      if (this.filteredResult.length > 0) this.showToolTip = true; else {
+      if (this.filteredResult.length > 0) {
+         this.showToolTip = true;
+      }
+      else {
         this.showToolTip = false;
       }
     }
-    if(event.keyCode === 40 || event.keyCode === 38 || event.keyCode === 13)
+    if (event.keyCode === 40 || event.keyCode === 38 || event.keyCode === 13) {
       this.navigateUsingKey(event);
+    }
   }
 
   onChange(event: any) {
-    if(event !=  null){
+    if (event !== null) {
       this.value = event;
       this.change.emit(this.value);
     }
 
   }
 
-  navigateUsingKey(event: any){
+  navigateUsingKey(event: any) {
 
-    if(this.selectedindex > this.filteredResult.length){
-      this.selectedindex=0;
+    if (this.selectedindex > this.filteredResult.length) {
+      this.selectedindex = 0;
     }
-    if(event.keyCode === 40 || event.keyCode === 38  && this.selectedindex < this.filteredResult.length){
-      if(!this.showToolTip){
+    if (event.keyCode === 40 || event.keyCode === 38 && this.selectedindex < this.filteredResult.length) {
+      if (!this.showToolTip) {
         this.showToolTip = true;
       }
       let prevselectedindex = 0;
-      if(this.selectedindex === 0){
+      if (this.selectedindex === 0) {
         this.selectedindex = 1;
-      }else{
+      } else {
         prevselectedindex = this.selectedindex;
-        if(event.keyCode === 40)
-        {
+        if (event.keyCode === 40) {
           this.selectedindex++;
-          if((this.selectedindex > 5 )){
-            this.dropdownitems.nativeElement.scroll(0,this.scrollposition);
-            this.scrollposition = this.scrollposition  +30;
+          if ((this.selectedindex > 5)) {
+            this.dropdownitems.nativeElement.scroll(0, this.scrollposition);
+            this.scrollposition = this.scrollposition + 30;
           }
         }
-        else if(event.keyCode === 38){
+        else if (event.keyCode === 38) {
           this.selectedindex--;
-          if(this.scrollposition>=0 && this.selectedindex>1){
-            this.dropdownitems.nativeElement.scroll(0,this.scrollposition);
-            this.scrollposition = this.scrollposition  -30;
+          if (this.scrollposition >= 0 && this.selectedindex > 1) {
+            this.dropdownitems.nativeElement.scroll(0, this.scrollposition);
+            this.scrollposition = this.scrollposition - 30;
           }
-          if(this.selectedindex === 1){
+          if (this.selectedindex === 1) {
             this.scrollposition = 30;
           }
 
-          if(this.selectedindex <=0){
-            //this.selectedindex = 1;
+          if (this.selectedindex <= 0) {
           }
         }
       }
 
-      if(this.filteredResult[this.selectedindex]){
+      if (this.filteredResult[this.selectedindex]) {
         this.filteredResult[this.selectedindex].selected = true;
       }
-      if(this.filteredResult[prevselectedindex]){
+      if (this.filteredResult[prevselectedindex]) {
         this.filteredResult[prevselectedindex].selected = false;
       }
     }
 
-    if(event.keyCode === 13 && this.filteredResult[this.selectedindex]){
+    if (event.keyCode === 13 && this.filteredResult[this.selectedindex]) {
       this.onItemSelect(this.filteredResult[this.selectedindex]);
     }
 
   }
 
   setData(httpResponse: any) {
-    //Check if key is added?
+    // Check if key is added?
     let responsedata = httpResponse;
-    if (this.datareader != null) {
-      let dr = this.datareader.split(".");
+    if (this.datareader !== null) {
+      let dr = this.datareader.split('.');
       for (let ir = 0; ir < dr.length; ir++) {
         responsedata = responsedata[dr[ir]];
       }
@@ -423,24 +422,24 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
 
     this.viewData = responsedata;
 
-    //Set user selection
-    if (this.value != null) {
+    // Set user selection
+    if (this.value !== null) {
       let valueKey = this.valuefield;
       let displayKey = this.displayfield;
       let val = this.value;
 
       this.viewData.forEach((item: any) => {
-        if (item[valueKey] == val) {
+        if (item[valueKey] === val) {
           this.isComponentValid = true;
           this.displayValue = item[displayKey];
         }
       });
     }
-    this.maskloader=false;
+    this.maskloader = false;
   }
 
   ngDoCheck() {
-    if (this.data && JSON.stringify(this.previousData) != JSON.stringify(this.data)) {
+    if (this.data && JSON.stringify(this.previousData) !== JSON.stringify(this.data)) {
       this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
     }
@@ -457,17 +456,17 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
   // The internal dataviews model
   private innerValue: any = '';
 
-  //Placeholders for the callbacks which are later provided
-  //by the Control Value Accessor
+  // Placeholders for the callbacks which are later provided
+  // by the Control Value Accessor
   private onTouchedCallback: () => void = noop;
   private onChangeCallback: (_: any) => void = noop;
 
-  //get accessor
+  // get accessor
   get value(): any {
     return this.innerValue;
   }
 
-  //set accessor including call the onchange callback
+  // set accessor including call the onchange callback
   set value(v: any) {
     if (v !== this.innerValue) {
       this.innerValue = v;
@@ -475,50 +474,49 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
     }
   }
 
-  //Set touched on blur
+  // Set touched on blur
   onblur() {
     this.onTouchedCallback();
     this.onBlur.emit(this.value);
   }
 
-  onFocus(elem : any) {
+  onFocus(elem: any) {
     this.showToolTip = true;
     this.posixUp = this.getListPosition(elem);
     this.focus.emit(this.value);
   }
 
-  getListPosition(elementRef : any) :boolean{
-    let dropdownHeight : number = 325; //must be same in dropdown.scss
-    if(window.screen.height - (elementRef.getBoundingClientRect().bottom) < dropdownHeight){
+  getListPosition(elementRef: any): boolean {
+    let dropdownHeight: number = 325;
+    // must be same in dropdown.scss
+    if (window.screen.height - (elementRef.getBoundingClientRect().bottom) < dropdownHeight) {
       return true;
-      //  return false;
     }
-    else{
+    else {
       return false;
     }
   }
 
-  onInput(input : any) {
-    if(!this.allowblank) {
+  onInput(input: any) {
+    if (!this.allowblank) {
       this.isComponentValid = input.valid;
     }
     this.input.emit(this.value);
   }
 
-
-  //From ControlValueAccessor interface
+  // From ControlValueAccessor interface
   writeValue(value: any) {
     if (value !== this.innerValue) {
       this.innerValue = value;
     }
   }
 
-  //From ControlValueAccessor interface
+  // From ControlValueAccessor interface
   registerOnChange(fn: any) {
     this.onChangeCallback = fn;
   }
 
-  //From ControlValueAccessor interface
+  // From ControlValueAccessor interface
   registerOnTouched(fn: any) {
     this.onTouchedCallback = fn;
   }
