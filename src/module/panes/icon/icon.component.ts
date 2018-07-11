@@ -47,10 +47,10 @@ export class AmexioIconPane implements OnInit {
   }
 
   getIconClass(): string {
-    if (this.iconLoaderService.iconMappings !== null) {
+    if (this.iconLoaderService.iconMappings != null) {
 
       let iconObject = this.iconLoaderService.iconMappings.find((obj: any) => obj.component === this.key);
-      if (iconObject !== null) {
+      if (iconObject != null) {
         return iconObject[this.iconLoaderService.iconToUse.toString()];
        }
         else {
