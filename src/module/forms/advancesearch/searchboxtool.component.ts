@@ -1,21 +1,20 @@
-import { Component,HostListener,ContentChild, OnInit,QueryList,AfterContentInit,AfterViewInit, EventEmitter, Directive, Input, ViewChild, ElementRef, Output, ContentChildren, ViewChildren } from '@angular/core';
-import {CommonDataService} from "../../services/data/common.data.service";
-import  { AmexioSearchAdvanceComponent } from '../advancesearch/searchadvance.component';
- 
-
+import { AmexioSearchAdvanceComponent } from '../advancesearch/searchadvance.component';
+import {  AfterContentInit, AfterViewInit, Component, ContentChildren,
+  ContentChild, Directive, ElementRef, EventEmitter,
+  HostListener, Input, OnInit, Output, QueryList,
+  ViewChild, ViewChildren } from '@angular/core';
+import {CommonDataService} from '../../services/data/common.data.service';
 @Component({
   selector: 'amexio-searchbox',
   templateUrl: './searchboxtool.component.html',
-  
 })
 export class SearchboxtoolComponent implements OnInit , AfterContentInit {
-  
 /*
 Properties
 name : data
 datatype : any
 version : 4.2 onwards
-default : none 
+default : none
 description : Local data for dropdown.
 */
 @Input() data: any;
@@ -72,7 +71,7 @@ version : 4.2 onwards
 default : none
 description : sets title to advance search form
 */
-@Input() title: string="Advance Search";
+@Input() title = 'Advance Search';
 /*
 Properties
 name : value-field
@@ -90,94 +89,79 @@ version : 4.2 onwards
 default : none
 description : Sets width to auto recommendation list.
 */
-@Input() width: number = 500;
+@Input() width = 500;
 /*
-Events 
+Events
 name : keyup
 description : Fires when keyup event occurs
 */
 @Output() keyup: any = new EventEmitter<any>();
 /*
-Events 
+Events
 name : onSearchItemClick
 description : Fires when search item is selected
-*/ 
+*/
 @Output() onSearchItemClick: any = new EventEmitter<any>();
 /*
-Events 
+Events
 name : onSearchClick
 description : Fires when search button is clicked
-*/ 
+*/
 @Output() onSearchClick: any = new EventEmitter<any>();
-@ContentChild(AmexioSearchAdvanceComponent) advanceSearchRef:AmexioSearchAdvanceComponent;
+@ContentChild(AmexioSearchAdvanceComponent) advanceSearchRef: AmexioSearchAdvanceComponent;
 @ViewChild('dropdownitems', { read: ElementRef }) public dropdownitems: ElementRef;
-@ViewChild('inp', { read: ElementRef }) public inp: ElementRef;  
-   
-  value:string;
+@ViewChild('inp', { read: ElementRef }) public inp: ElementRef;
+  value: string;
   responseData: any;
   viewData: any;
   textValue: any;
   localData: any;
-  caretFlag: boolean = false;
-  searchFlag: boolean = false;
-  searchTextBox: boolean = false;
-
+  caretFlag = false;
+  searchFlag = false;
+  searchTextBox = false;
   displayValue: any;
   isComponentValid: boolean;
-  selectedValue: any="";
-  advanceSearchFlag: boolean = false;
-
+  selectedValue: any = '';
+  advanceSearchFlag = false;
   labelValue: string;
   previousData: any;
-  selectedindex: number = 0;
-  scrollposition: number = 30;
-  enableAdvanceSearch:boolean =  false;
-  advanceButtonLabel:string;
+  selectedindex = 0;
+  scrollposition = 30;
+  enableAdvanceSearch = false;
+  advanceButtonLabel: string;
  enableAdvnSearch: boolean;
-  constructor(private element: ElementRef,private dataService: CommonDataService) {
-  
+  constructor(private element: ElementRef, private dataService: CommonDataService) {
   }
- 
 
-  ngAfterContentInit(){
-    this.advanceSearchRef.formwidth= this.width;
+  ngAfterContentInit() {
+    this.advanceSearchRef.formwidth = this.width;
     this.enableAdvnSearch = this.advanceSearchRef.advanceSearchFlag;
-  this.enableAdvanceSearch=true;
-   if(this.advanceSearchRef){
-       this.enableAdvanceSearch=true;
-    if(this.advanceSearchRef.title){
-       
-      this.advanceButtonLabel=this.advanceSearchRef.title;
-      }else if (!this.advanceSearchRef.title || this.advanceSearchRef.title==''){
-        this.advanceButtonLabel='Advance Search';
-      }
-     }
+    this.enableAdvanceSearch = true;
+    if (this.advanceSearchRef) {
+        this.enableAdvanceSearch = true;
+      if (this.advanceSearchRef.title) {
+          this.advanceButtonLabel = this.advanceSearchRef.title;
+       } else if (!this.advanceSearchRef.title || this.advanceSearchRef.title === '') {
+          this.advanceButtonLabel = 'Advance Search';
+    }
+  }
  }
-  
 
   ngOnInit() {
-    
     if (this.httpmethod && this.httpurl) {
-      this.dataService.fetchData(this.httpurl,this.httpmethod).subscribe(response => {
-        
+      this.dataService.fetchData(this.httpurl , this.httpmethod).subscribe(response => {
         this.responseData = response;
-        
       }, error => {
       }, () => {
         this.setData(this.responseData);
-        
       });
-
     } else if (this.data) {
-
        this.previousData = JSON.parse(JSON.stringify(this.data));
-      this.setData(this.data);
+        this.setData(this.data);
      }
- 
   }
-  
   ngDoCheck() {
-    if (JSON.stringify(this.previousData) != JSON.stringify(this.data)) {
+    if (JSON.stringify(this.previousData) !== JSON.stringify(this.data)) {
       this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
     }
@@ -185,81 +169,67 @@ description : Fires when search button is clicked
   @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
   public onElementOutClick(targetElement: HTMLElement) {
     let parentFound = false;
-    while (targetElement != null && !parentFound) {
+    while (targetElement !== null && !parentFound) {
       if (targetElement === this.element.nativeElement) {
         parentFound = true;
       }
       targetElement = targetElement.parentElement;
     }
     if (!parentFound) {
-      this.searchFlag=false;
+      this.searchFlag = false;
     }
   }
   onSelectClick() {
      this.advanceSearchFlag = false;
   }
   onInputClick(event: any) {
- 
-     this.searchFlag = true;
+    this.searchFlag = true;
     let keyword: any = event.target.value;
     this.viewData = [];
-    if (keyword != null && keyword != ' ') {
+    if (keyword !== null && keyword !== ' ') {
       let search_term = keyword.toLowerCase();
       this.localData.forEach((item: any) => {
-        if (item != null) {
+        if (item !== null) {
           if (item[this.displayfield].toLowerCase().startsWith(search_term)) {
             this.viewData.push(item);
           }
         }
       });
-     
       this.keyup.emit(event);
-
      }
-
-    //logic for arrow keys and enter key press
-    //40=down-arrow and 38=up-arrow and 13=enter
+ // logic for arrow keys and enter key press
+ // 40=down-arrow and 38=up-arrow and 13=enter
     if (event.keyCode === 40 || event.keyCode === 38 || event.keyCode === 13) {
-      //if key pressed is up down or enter then process accordingly
-      //call function for process
+      // if key pressed is up down or enter then process accordingly
+      // call function for process
       this.navigateKeys(event);
     }
- 
-    if(!this.selectedValue || this.selectedValue==''){
-      this.viewData=[];
+    if (!this.selectedValue || this.selectedValue === '') {
+      this.viewData = [];
     }
-
   }
-
- 
-  onFocus(){
-       if(this.selectedValue.length>0){
-        let keyword = this.selectedValue;
+  onFocus() {
+       if (this.selectedValue.length > 0) {
+         let keyword = this.selectedValue;
          this.viewData = [];
-      if (keyword != null && keyword != ' ') {
+      if (keyword !== null && keyword !== ' ') {
         let search_term = keyword.toLowerCase();
         this.localData.forEach((item: any) => {
-          if (item != null) {
-           
-            //if word exist in start
+          if (item !== null) {
+            // if word exist in start
             if (item[this.displayfield].toLowerCase().startsWith(search_term)) {
-    
               this.viewData.push(item);
             }
           }
         });
         this.searchFlag = true;
-
         this.keyup.emit(event);
        }
-       
-         if(!this.selectedValue || this.selectedValue==''){
-        this.viewData=[];
+        if (!this.selectedValue || this.selectedValue === '') {
+        this.viewData = [];
       }
       }
     }
-    
- 
   navigateKeys(event: any) {
      if (this.selectedindex > this.viewData.length) {
       this.selectedindex = 0;
@@ -267,104 +237,72 @@ description : Fires when search button is clicked
     if (event.keyCode === 40 ||
       event.keyCode === 38
       && this.selectedindex < this.viewData.length) {
- 
       let prevselectedindex = 0;
       if (this.selectedindex === 0) {
         this.selectedindex = 1;
- 
       } else {
         prevselectedindex = this.selectedindex;
         if (event.keyCode === 40) {
           this.selectedindex++;
- 
           if ((this.selectedindex > 5)) {
- 
             this.dropdownitems.nativeElement.scroll(0, this.scrollposition);
             this.scrollposition = this.scrollposition + 30;
- 
           }
-        }
-        else if (event.keyCode === 38) {
- 
+        } else if (event.keyCode === 38) {
           this.selectedindex--;
- 
           if (this.scrollposition >= 0 && this.selectedindex > 1) {
             this.dropdownitems.nativeElement.scroll(1, this.scrollposition);
             this.scrollposition = this.scrollposition - 30;
- 
-
           }
           if (this.selectedindex === 1) {
             this.scrollposition = 30;
- 
-
           }
-
           if (this.selectedindex <= 0) {
- 
-            //this.selectedindex = 1;
-          }
+          } else {}
         }
       }
-
       if (this.viewData[this.selectedindex]) {
         this.viewData[this.selectedindex].selected = true;
- 
       }
       if (this.viewData[prevselectedindex]) {
         this.viewData[prevselectedindex].selected = false;
- 
       }
     }
 
-
-
-    if (event.keyCode === 13 && this.viewData[this.selectedindex]) {
+    if (event.keyCode === 13 && this.viewData [this.selectedindex]) {
       this.onItemSelect(this.viewData[this.selectedindex]);
- 
     }
-
   }
 
-  onSearchButtonClick(event:any){
-this.onSearchClick.emit(event);
+  onSearchButtonClick(event: any) {
+  this.onSearchClick.emit(event);
   }
   selectCssClass(): string {
-
     if (this.viewData.length > 5) {
-      return "dropdown-list scroll";
-    }
-    else {
-      return "dropdown-list";
+      return 'dropdown-list scroll';
+    } else {
+      return 'dropdown-list';
     }
   }
-
   onItemSelect(item: any) {
-    this.value= item[this.valuefield];;
-     this.selectedValue = item[this.displayfield];
+    this.value = item[this.valuefield];
+    this.selectedValue = item [this.displayfield];
     this.searchFlag = false;
     this.onSearchItemClick.emit(item);
   }
-
   advanceSearch() {
     this.advanceSearchRef.advanceSearchFlag = true;
     this.advanceSearchFlag = true;
     this.searchFlag = false;
-    
-//  this.childComponent.advanceSearchFlag=true;
   }
-
   closeSearchForm() {
     this.advanceSearchFlag = false;
   }
-
-
   getResponseData(httpResponse: any) {
     let responsedata = httpResponse;
- 
-    if (this.datareader != null) {
-      let dr = this.datareader.split(".");
-      if (dr != null) {
+    if (this.datareader !== null) {
+      let dr = this.datareader.split('.');
+      if (dr !== null) {
         for (let ir = 0; ir < dr.length; ir++) {
           responsedata = responsedata[dr[ir]];
         }
@@ -372,15 +310,13 @@ this.onSearchClick.emit(event);
     } else {
       responsedata = httpResponse;
     }
-     
-
     return responsedata;
   }
   setData(httpResponse: any) {
      let responsedata = httpResponse;
-        //Check if key is added?
-    if (this.datareader != null) {
-       let dr = this.datareader.split(".");
+        // Check if key is added?
+    if (this.datareader !== null) {
+       let dr = this.datareader.split('.');
        for (let ir = 0; ir < dr.length; ir++) {
         responsedata = responsedata[dr[ir]];
        }
@@ -390,7 +326,4 @@ this.onSearchClick.emit(event);
     this.viewData = responsedata;
     this.localData = JSON.parse(JSON.stringify(this.viewData));
    }
-
-
-
 }

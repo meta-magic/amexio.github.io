@@ -1,53 +1,45 @@
 /**
  * Created by ketangote on 11/21/17.
  */
-
  /*
  Component Name : Amexio Checkbox Group
  Component Selector :  <amexio-checkbox-group>
- Component Description : Checkbox input component has been created to render N numbers of check-box based on data-set configured. Data-set can be configured using HTTP call OR Define fix number of check-box.
-
- 
+ Component Description : Checkbox input component has been created to
+ render N numbers of check-box based on data-set configured.
+ Data-set can be configured using HTTP call OR Define fix number of check-box.
 */
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {CommonDataService} from "../../services/data/common.data.service";
-
-
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {CommonDataService} from '../../services/data/common.data.service';
 @Component({
   selector: 'amexio-checkbox-group',
   templateUrl: './checkbox.group.component.html',
-  styleUrls: ['./checkbox.group.component.scss']
+  styleUrls: ['./checkbox.group.component.scss'],
 })
-export class AmexioCheckBoxGroupComponent {
-
-
-  /*
-Properties 
+export class AmexioCheckBoxGroupComponent implements OnInit {
+/*
+Properties
 name : horizontal
 datatype : boolean
 version : 4.0 onwards
-default : false 
+default : false
 description : Set true for horizontal checkbox
 */
   @Input() horizontal: boolean;
-
-   /*
-Properties 
+/*
+Properties
 name : field-label
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : The label of this field
 */
   @Input('field-label') fieldlabel: string;
-
-  /*
+/*
  not in use
 */
   @Input('field-name') fieldname: string;
-
-    /*
-Properties 
+/*
+Properties
 name : data-reader
 datatype : string
 version : 4.0 onwards
@@ -55,65 +47,60 @@ default :
 description : Key in JSON datasource for records
 */
   @Input('data-reader') datareader: string;
-
-   /*
-Properties 
+/*
+Properties
 name : http-method
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Type of HTTP call, POST,GET.
 */
   @Input('http-method') httpmethod: string;
-
-  /*
-Properties 
+/*
+Properties
 name : http-url
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : REST url for fetching datasource.
 */
   @Input('http-url') httpurl: string;
 
   /*
-Properties 
+Properties
 name : display-field
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Name of key inside response data to display on ui.
 */
   @Input('display-field') displayfield: string;
-
-   /*
-Properties 
+/*
+Properties
 name : value-field
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Name of key inside response data.use to send to backend
 */
   @Input('value-field') valuefield: string;
 /* not in use */
   @Input() search: boolean;
-  
-  /*
-Properties 
+/*
+Properties
 name : disabled
 datatype : boolean
 version : 4.0 onwards
 default : false
 description :  If true will not react on any user events and show disable icon over
 */
-  @Input() disabled: boolean = false;
-
-   /*
-Properties 
+  @Input() disabled = false;
+/*
+Properties
 name : data
 datatype : any
 version : 4.0 onwards
-default : 
+default :
 description : Local data for checkboxGroup.
 */
   @Input() data: any;
@@ -124,14 +111,12 @@ name : required
 datatype : boolean
 version : 4.1.7 onwards
 default : false
-description :  property to set if manditory 
+description :  property to set if manditory
 */
-  @Input() required: boolean = false;
-
-  mask : boolean = true;
-
-   /*
-Events 
+  @Input() required = false;
+  mask = true;
+/*
+Events
 name : onSelection
 datatype : any
 version : none
@@ -139,34 +124,23 @@ default :
 description : fire when check box click
 */
   @Output() onSelection: any = new EventEmitter<any>();
-
   calculatedColSize: any;
-
-  isComponentValid : boolean;
-
+  isComponentValid: boolean;
   elementId: string;
-
   responseData: any[];
-
   viewData: any[];
-
   textValue: string;
-
   selectedCheckBox: any[];
-
   previousValue: any;
-
   constructor(private amxHttp: CommonDataService) {
-    this.selectedCheckBox = [];    
+    this.selectedCheckBox = [];
   }
-
   ngOnInit() {
-    
     this.isComponentValid = !this.required;
     if (this.httpmethod && this.httpurl) {
-      this.amxHttp.fetchData(this.httpurl, this.httpmethod).subscribe(response => {
+      this.amxHttp.fetchData(this.httpurl, this.httpmethod).subscribe((response) => {
         this.responseData = response;
-      }, error => {
+      }, (error) => {
       }, () => {
         this.setData(this.responseData);
       });
@@ -174,47 +148,39 @@ description : fire when check box click
       this.previousValue = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
     }
-      if (this.required) {
+    if (this.required) {
       this.checkDefaultValidation();
     }
   }
-
    checkDefaultValidation() {
-    this.viewData.forEach((opt: any)=>{
-      if(opt.hasOwnProperty('checked') && opt.checked){
+    this.viewData.forEach((opt: any) => {
+      if (opt.hasOwnProperty('checked') && opt.checked) {
         this.isComponentValid = true;
         return;
       }
     });
   }
-  
   ngDoCheck() {
-    if (JSON.stringify(this.previousValue) != JSON.stringify(this.data)) {
+    if (JSON.stringify(this.previousValue) !== JSON.stringify(this.data)) {
       this.previousValue = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
     }
   }
-
   setData(httpResponse: any) {
     this.responseData = this.getResponseData(httpResponse);
     this.viewData = this.getResponseData(httpResponse);
     let viewDataWithIdArray: any[] = [];
     this.viewData.forEach((viewDataObject: any) => {
-      
       viewDataObject.id = 'checkbox' + Math.floor(Math.random() * 90000) + 10000;
-      
-      if(!viewDataObject.hasOwnProperty('disabled')){
+      if (!viewDataObject.hasOwnProperty('disabled')) {
         viewDataObject.disabled = false;
       }
-
       viewDataWithIdArray.push(viewDataObject);
     });
-
     this.viewData = [];
     this.viewData = viewDataWithIdArray;
     this.mask = false;
   }
-
   getResponseData(httpResponse: any) {
     let responsedata = httpResponse;
     let dr = this.datareader.split('.');
@@ -223,7 +189,6 @@ description : fire when check box click
     }
     return responsedata;
   }
-
   filterData(event: any) {
     if (this.textValue.length > 0) {
       this.viewData = [];
@@ -237,38 +202,32 @@ description : fire when check box click
       this.viewData = this.responseData;
     }
   }
-
   setSelectedCheckBox(rowData: any, event: any) {
- 
-    if(rowData.hasOwnProperty('disabled') && !rowData.disabled){
+    if (rowData.hasOwnProperty('disabled') && !rowData.disabled) {
       rowData[this.valuefield] = !rowData[this.valuefield];
-
       if (rowData[this.valuefield]) {
         this.selectedCheckBox.push(rowData);
       } else {
         let indexOf = this.selectedCheckBox.indexOf(rowData);
         delete this.selectedCheckBox[indexOf];
       }
-        this.emitSelectedRows();
+      this.emitSelectedRows();
       }
   }
-
   emitSelectedRows() {
     let sRows = [];
     let cloneSelectedChecks = JSON.parse(JSON.stringify(this.selectedCheckBox));
     for (let sr = 0; sr < cloneSelectedChecks.length; sr++) {
       if (cloneSelectedChecks[sr]) {
-        //remove id from selected value
+        // remove id from selected value
         delete cloneSelectedChecks[sr].id;
         sRows.push(cloneSelectedChecks[sr]);
       }
     }
-     if(this.selectedCheckBox.length > 0 && this.required)
-     {
+    if (this.selectedCheckBox.length > 0 && this.required) {
        this.isComponentValid = false;
-       this.selectedCheckBox.forEach((c)=>{                
-          if(c.checked)
-          {
+       this.selectedCheckBox.forEach((c) => {
+          if (c.checked) {
             this.isComponentValid = true;
           }
         });
