@@ -151,12 +151,13 @@ description : Provides card height.
 
 
   ngOnInit() {
+    this.onResize();
   }
 
 
   ngAfterViewInit() {
 
-    this.onResize();
+    
 
   }
 
