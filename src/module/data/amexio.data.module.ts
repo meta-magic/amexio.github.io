@@ -1,25 +1,27 @@
 import { CommonModule } from '@angular/common';
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import {HttpClientModule} from '@angular/common/http';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {CommonDataService} from "../services/data/common.data.service";
-import {AmexioTreeViewComponent} from "./tree/tree.component";
-import {AmexioListBoxComponent} from "./listbox/listbox.component";
-import {AmexioDatagridComponent} from "./datagrid/datagrid.component";
-import {DataGridFilterComponent} from "./datagrid/datagrid.filter.component";
-import {AmexioPaginatorComponent} from "./paginator/paginator.component";
-import {AmexioGridColumnComponent} from "./datagrid/data.grid.column";
-import {AmexioProgressMultiBarComponent} from "./progress/bar.component";
-import {AmexioProgressBarComponent} from "./progress/progress.component";
-import {IconLoaderService} from "../services/icon/icon.service";
-import {HorizontalTreeViewNodeComponent} from "./tree/horizontalnode.component";
-import {HorizontalTreeViewComponent} from "./tree/horizontaltreeview.component";
-import {AmexioFilterTreeComponent} from "./tree/filter.tree.component";
-import {TreeDataTableComponent} from "./treegrid/treedatatable.component";
-import {AmexioDataIconComponent} from "./icon/icon.component";
-import {AmexioItemSelectorComponent} from "./itemselector/item.selector.component";
-import {AmexioPaneModule} from "../panes/amexio.pane.module";
-import {AmexioLayoutModule} from "../layout/amexio.layout.module";
-import {HttpClientModule} from "@angular/common/http";
+import {AmexioGridColumnComponent} from './datagrid/data.grid.column';
+import {AmexioDatagridComponent} from './datagrid/datagrid.component';
+import {DataGridFilterComponent} from './datagrid/datagrid.filter.component';
+import {AmexioDataIconComponent} from './icon/icon.component';
+import {AmexioItemSelectorComponent} from './itemselector/item.selector.component';
+import {AmexioListBoxComponent} from './listbox/listbox.component';
+import {AmexioPaginatorComponent} from './paginator/paginator.component';
+import {AmexioProgressMultiBarComponent} from './progress/bar.component';
+import {AmexioProgressBarComponent} from './progress/progress.component';
+import {AmexioFilterTreeComponent} from './tree/filter.tree.component';
+import {HorizontalTreeViewNodeComponent} from './tree/horizontalnode.component';
+import {HorizontalTreeViewComponent} from './tree/horizontaltreeview.component';
+import {AmexioTreeViewComponent} from './tree/tree.component';
+import {TreeDataTableComponent} from './treegrid/treedatatable.component';
+
+import {AmexioLayoutModule} from '../layout/amexio.layout.module';
+import {AmexioPaneModule} from '../panes/amexio.pane.module';
+
+import {CommonDataService} from '../services/data/common.data.service';
+import {IconLoaderService} from '../services/icon/icon.service';
 
 export * from '../services/data/common.data.service';
 export * from './listbox/listbox.component';
@@ -42,7 +44,7 @@ const DATA_COMPONENTS = [
   AmexioFilterTreeComponent,
   TreeDataTableComponent,
   AmexioDataIconComponent,
-  AmexioItemSelectorComponent
+  AmexioItemSelectorComponent,
 ];
 
 @NgModule({
@@ -51,17 +53,17 @@ const DATA_COMPONENTS = [
     FormsModule,
     AmexioPaneModule,
     AmexioLayoutModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   exports: DATA_COMPONENTS,
   declarations: DATA_COMPONENTS,
-  providers: [CommonDataService,IconLoaderService]
+  providers: [CommonDataService, IconLoaderService],
 })
 export class AmexioDataModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: AmexioDataModule,
-      providers: [CommonDataService,IconLoaderService]
+      providers: [CommonDataService, IconLoaderService],
     };
   }
 }
