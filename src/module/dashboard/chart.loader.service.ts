@@ -31,13 +31,12 @@ export class DashboardLoaderService {
         this.googleScriptLoadingNotifier = new EventEmitter();
         this.isScriptLoading = false;
     }
-
     loadCharts(chartName: string): Observable<any> {
         return new Observable(
             (observer) => {
                 this.loadScript().subscribe(
                     (val) => console.log(),
-                    (error) => console.error(error),
+                    (error: any) => console.error(error),
                     () => {
                         this.loadRequiredChart(observer, chartName);
                     },
@@ -45,11 +44,9 @@ export class DashboardLoaderService {
             },
         );
     }
-
     loadScript(): Observable<any> {
         return new Observable(
             (observer) => {
-
                 if (!this.isScriptLoading) {
                     // check if previously its loaded
                     if (typeof google !== 'undefined' && google.charts) {
@@ -82,7 +79,6 @@ export class DashboardLoaderService {
             },
         );
     }
-
     /**
      * Load Base Chart
      * @param observer
@@ -93,7 +89,6 @@ export class DashboardLoaderService {
             observer.complete();
         });
     }
-
     /**
      * Load the required charts
      * @param chartName

@@ -1009,8 +1009,7 @@ description : Context Menu provides the list of menus on right click of row.
       for (let ir = 0; ir < dr.length; ir++) {
         responsedata = responsedata[dr[ir]];
       }
-    }
-    else {
+    } else {
       responsedata = httpResponse;
     }
 
@@ -1336,8 +1335,7 @@ description : Context Menu provides the list of menus on right click of row.
     // let icon = btn.children[0].children[0];
     if (this.iconclassKey === 'fa fa-plus') {
       this.iconclassKey = 'fa fa-minus';
-    }
-    else if (this.iconclassKey === 'fa fa-minus') {
+    } else if (this.iconclassKey === 'fa fa-minus') {
       this.iconclassKey = 'fa fa-plus';
     }
 
