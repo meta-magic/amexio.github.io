@@ -204,8 +204,7 @@ description : Triggers when slider reaches the end
     if (this.orientation === 'horizontal') {
       this.startx = parseInt(touchobj.clientX, 10);
       this.barWidth = this.el.nativeElement.children[0].offsetWidth;
-    }
-    else {
+    } else {
       this.starty = parseInt(touchobj.clientY, 10);
       this.barHeight = this.el.nativeElement.children[0].offsetHeight;
     }
@@ -219,8 +218,7 @@ description : Triggers when slider reaches the end
 
     if (this.orientation === 'horizontal') {
       handleValue = Math.floor(((parseInt(touchobj.clientX, 10) - this.startx) * 100) / (this.barWidth)) + this.startHandleValue;
-    }
-    else {
+    } else {
       handleValue = Math.floor(((this.starty - parseInt(touchobj.clientY, 10)) * 100) / (this.barHeight))  + this.startHandleValue;
     }
 
@@ -292,17 +290,14 @@ description : Triggers when slider reaches the end
     if (this.range) {
       if (this.step) {
         this.handleStepChange(newValue, this.values[this.handleIndex]);
-      }
-      else {
+      } else {
         this.handleValues[this.handleIndex] = handleValue;
         this.updateValue(newValue, event);
       }
-    }
-    else {
+    } else {
       if (this.step) {
         this.handleStepChange(newValue, this.value);
-      }
-      else {
+      } else {
         this.handleValue = handleValue;
         this.updateValue(newValue, event);
       }
@@ -315,8 +310,7 @@ description : Triggers when slider reaches the end
 
     if (diff < 0) {
       val = oldValue + Math.ceil((newValue - oldValue) / this.step) * this.step;
-    }
-    else if (diff > 0) {
+    } else if (diff > 0) {
       val = oldValue + Math.floor((newValue - oldValue) / this.step) * this.step;
     }
 
@@ -327,8 +321,7 @@ description : Triggers when slider reaches the end
   writeValue(value: any): void {
     if (this.range) {
       this.values = value || [0, 0];
-    }
-    else {
+    } else {
       this.value = value || 0;
     }
 
@@ -378,8 +371,7 @@ description : Triggers when slider reaches the end
   calculateHandleValue(event: any): number {
     if (this.orientation === 'horizontal') {
       return ((event.pageX - this.initX) * 100) / (this.barWidth);
-    }
-    else {
+    } else {
       return(((this.initY + this.barHeight) - event.pageY) * 100) / (this.barHeight);
     }
   }
@@ -388,15 +380,12 @@ description : Triggers when slider reaches the end
     if (this.range) {
       this.handleValues[0] = (this.values[0] < this.min ? 0 : this.values[0] - this.min) * 100 / (this.max - this.min);
       this.handleValues[1] = (this.values[1] > this.max ? 100 : this.values[1] - this.min) * 100 / (this.max - this.min);
-    }
-    else {
+    } else {
       if (this.value < this.min) {
         this.handleValue = 0;
-      }
-      else if (this.value > this.max) {
+      } else if (this.value > this.max) {
         this.handleValue = 100;
-      }
-      else {
+      } else {
         this.handleValue = (this.value - this.min) * 100 / (this.max - this.min);
     }
       }
@@ -410,18 +399,15 @@ description : Triggers when slider reaches the end
         if (value < this.min) {
           value = this.min;
           this.handleValues[0] = 0;
-        }
-        else if (value > this.values[1]) {
+        } else if (value > this.values[1]) {
           value = this.values[1];
           this.handleValues[0] = this.handleValues[1];
         }
-      }
-      else {
+      } else {
         if (value > this.max) {
           value = this.max;
           this.handleValues[1] = 100;
-        }
-        else if (value < this.values[0]) {
+        } else if (value < this.values[0]) {
           value = this.values[0];
           this.handleValues[1] = this.handleValues[0];
         }
@@ -430,13 +416,11 @@ description : Triggers when slider reaches the end
       this.values[this.handleIndex] = Math.floor(value);
       this.onModelChange(this.values);
       this.onChange.emit({event: event, values: this.values});
-    }
-    else {
+    } else {
       if (val < this.min) {
         val = this.min;
         this.handleValue = 0;
-      }
-      else if (val > this.max) {
+      } else if (val > this.max) {
         val = this.max;
         this.handleValue = 100;
       }

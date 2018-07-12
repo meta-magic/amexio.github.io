@@ -15,8 +15,7 @@ export class DomHandler {
   public addClass(element: any, className: string): void {
     if (element.classList) {
       element.classList.add(className);
-    }
-    else {
+    } else {
       element.className += ' ' + className;
     }
   }
@@ -28,8 +27,7 @@ export class DomHandler {
         element.classList.add(styles[i]);
       }
 
-    }
-    else {
+    } else {
       let styles: string[] = className.split(' ');
       for (let i = 0; i < styles.length; i++) {
         element.className += ' ' + styles[i];
@@ -40,8 +38,7 @@ export class DomHandler {
   public removeClass(element: any, className: string): void {
     if (element.classList) {
       element.classList.remove(className);
-    }
-    else {
+    } else {
       element.className = element.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
     }
     }
@@ -49,8 +46,7 @@ export class DomHandler {
   public hasClass(element: any, className: string): boolean {
     if (element.classList) {
       return element.classList.contains(className);
-    }
-    else {
+    } else {
       return new RegExp('(^| )' + className + '( |$)', 'gi').test(element.className);
     }
     }
@@ -98,15 +94,13 @@ export class DomHandler {
       if (targetOffset.top + top < 0) {
         top = 0;
       }
-    }
-    else {
+    } else {
       top = targetHeight;
     }
 
     if ((targetOffset.left + elementDimensions.width) > viewport.width) {
       left = targetWidth - elementDimensions.width;
-    }
-    else {
+    } else {
       left = 0;
     }
     element.style.top = top + 'px';
@@ -131,15 +125,13 @@ export class DomHandler {
       if (top < 0) {
         top = 0 + windowScrollTop;
       }
-    }
-    else {
+    } else {
       top = targetOuterHeight + targetOffset.top + windowScrollTop;
     }
 
     if (targetOffset.left + targetOuterWidth + elementOuterWidth > viewport.width) {
       left = targetOffset.left + windowScrollLeft + targetOuterWidth - elementOuterWidth;
-    }
-    else {
+    } else {
       left = targetOffset.left + windowScrollLeft;
     }
     element.style.top = top + 'px';
@@ -192,8 +184,7 @@ export class DomHandler {
 
     if (offset < 0) {
       container.scrollTop = scroll + offset;
-    }
-    else if ((offset + itemHeight) > elementHeight) {
+    } else if ((offset + itemHeight) > elementHeight) {
       container.scrollTop = scroll + offset - elementHeight + itemHeight;
     }
   }
@@ -381,11 +372,9 @@ export class DomHandler {
   appendChild(element: any, target: any) {
     if (this.isElement(target)) {
       target.appendChild(element);
-    }
-    else if (target.el && target.el.nativeElement) {
+    } else if (target.el && target.el.nativeElement) {
       target.el.nativeElement.appendChild(element);
-    }
-    else {
+    } else {
       throw 'Cannot append ' + target + ' to ' + element;
     }
   }
@@ -393,11 +382,9 @@ export class DomHandler {
   removeChild(element: any, target: any) {
     if (this.isElement(target)) {
       target.removeChild(element);
-    }
-    else if (target.el && target.el.nativeElement) {
+    } else if (target.el && target.el.nativeElement) {
       target.el.nativeElement.removeChild(element);
-    }
-    else {
+    } else {
       throw 'Cannot remove ' + element + ' from ' + target;
     }
   }
@@ -438,8 +425,7 @@ export class DomHandler {
       window.getSelection().getRangeAt(0).getClientRects().length > 0) {
         window.getSelection().removeAllRanges();
       }
-    }
-    else if (document['selection'] && document['selection'].empty) {
+    } else if (document['selection'] && document['selection'].empty) {
       try {
         document['selection'].empty();
       } catch (error) {
