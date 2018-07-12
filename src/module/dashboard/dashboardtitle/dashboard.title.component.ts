@@ -19,93 +19,82 @@
 import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'amexio-dashboard-title', template: ` `
+  selector: 'amexio-dashboard-title', template: ` `,
 })
 
 export class DashBoardTitle implements OnInit {
 
- /*
-Properties 
+/*
+Properties
 name : title
 datatype :  string
 version : 4.0 onwards
 default : none
 description : set title
+*/
+@Input() title: string;
 
-*/ 
-  @Input() title: string;
-
- /*
-Properties 
+/*
+Properties
 name : position
 datatype :  string
 version : 4.0 onwards
 default : none
 description : sets the position
+*/
+@Input() position: string;
 
-*/ 
-  @Input() position: string;
-
-   /*
-Properties 
+/*
+Properties
 name : color
 datatype :  string
 version : 4.0 onwards
 default : none
 description : sets the color
+*/
+@Input() color: string;
 
-*/ 
-  @Input() color: string;
-
-
-   /*
-Properties 
+/*
+Properties
 name : font-name
 datatype :  string
 version : 4.0 onwards
 default : none
 description : sets the font family name
+*/
+@Input('font-name') fontname: string;
 
-*/ 
-  @Input('font-name') fontname: string;
-
-   /*
-Properties 
+/*
+Properties
 name : font-size
 datatype :  string
 version : 4.0 onwards
 default : none
 description : sets the font size
+*/
+@Input('font-size') fontsize: number;
 
-*/ 
-  @Input('font-size') fontsize: number;
-
-   /*
-Properties 
+/*
+Properties
 name : bold
 datatype :  string
 version : 4.0 onwards
 default : none
 description : sets the font style to bold
+*/
+@Input() bold: boolean;
 
-*/ 
-  @Input() bold: boolean;
-
-    /*
-Properties 
+/*
+Properties
 name : italic
 datatype :  string
 version : 4.0 onwards
 default : none
 description : sets the font style to italic
+*/
+@Input() italic: boolean;
 
-*/ 
-  @Input() italic: boolean;
+constructor() {}
 
-
-  constructor() {
-  }
-
-  ngOnInit() {
-  }
+ngOnInit() {}
 }

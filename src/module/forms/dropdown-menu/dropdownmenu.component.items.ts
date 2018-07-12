@@ -1,6 +1,3 @@
-
-
-
 /*
  Component Name : Amexio  Dropdown Menu
  Component Selector : <amexio-drop-down-menu-items>
@@ -8,17 +5,13 @@
  */
 
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-
 @Component({
   selector: 'amexio-drop-down-menu-item',
   templateUrl: `./dropdownmenu.component.items.html`,
 })
-
-export class AmexioDropDownitemsComponent implements OnInit{
-
-  toggle : boolean;
-
-  /*
+export class AmexioDropDownitemsComponent implements OnInit {
+  toggle: boolean;
+/*
    Properties
    name : label
    datatype : string
@@ -44,7 +37,7 @@ export class AmexioDropDownitemsComponent implements OnInit{
    default :
    description : Label-align for label right/left
    */
-  @Input ('label-align') labelalign : string;
+  @Input ('label-align') labelalign: string;
   /*
    Properties
    name : icon-align
@@ -53,7 +46,7 @@ export class AmexioDropDownitemsComponent implements OnInit{
    default :
    description : icon-align for text field right/left
    */
-  @Input ('icon-align') iconalign : string;
+  @Input ('icon-align') iconalign: string;
   /*
    Properties
    name : add-seperator
@@ -62,7 +55,7 @@ export class AmexioDropDownitemsComponent implements OnInit{
    default : false
    description : add divider to the dropdown menu list
    */
-  @Input ('separator') separator : boolean;
+  @Input ('separator') separator: boolean;
 
   /*
    Properties
@@ -74,32 +67,24 @@ export class AmexioDropDownitemsComponent implements OnInit{
    */
 
   @Output() onClick: any = new EventEmitter<any>();
-
-
   ngOnInit() {
-    if(this.iconalign && this.labelalign
-      && this.iconalign.toLowerCase() === this.labelalign.toLowerCase()){
-      this.iconalign= null;
-      this.labelalign = null;
-    }
-    else if(this.iconalign && this.iconalign == "left"){
-      this.labelalign = "right";
+    if (this.iconalign && this.labelalign
+      && this.iconalign.toLowerCase() === this.labelalign.toLowerCase()) {
       this.iconalign = null;
-    }
-    else if(this.iconalign && this.iconalign == "right"){
+      this.labelalign = null;
+    } else if (this.iconalign && this.iconalign === 'left') {
+      this.labelalign = 'right';
+      this.iconalign = null;
+    } else if (this.iconalign && this.iconalign === 'right') {
       this.labelalign = null;
     }
   }
-
-
-  onItemClick( event :any) {
-
+  onItemClick(event: any) {
   this.toggle = false;
-    let e = {
-      'event':event,
-      'this':this
+  let e = {
+      event: event,
+      this: this,
     };
-    this.onClick.emit(e);
+  this.onClick.emit(e);
   }
-
 }

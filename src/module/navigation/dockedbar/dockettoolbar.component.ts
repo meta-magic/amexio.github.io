@@ -9,18 +9,12 @@
  *
  * Created by Ketan Gote on 8/21/17.
  */
- 
- 
 
-import {
-  Component, ContentChildren, Input, OnInit, QueryList
-} from '@angular/core';
-import {DockbarComponent} from "./dockbaritem";
-
+import {Component, ContentChildren, Input, OnInit, QueryList} from '@angular/core';
+import {DockbarComponent} from './dockbaritem';
 
 @Component({
   selector: 'amexio-dockbar', template: `
-
     <div class="dockbar" [style.min-height]="height">
       <ng-container *ngFor="let dockbar of dockbarArray">
         <button [ngClass]="{'active':dockbar.active}" (click)="onClick(dockbar)">
@@ -52,7 +46,7 @@ import {DockbarComponent} from "./dockbaritem";
       <ng-content></ng-content>
     </div>
 
-  `
+  `,
 
 })
 export class DockedBarToolComponent implements OnInit {
@@ -61,27 +55,26 @@ export class DockedBarToolComponent implements OnInit {
 
   dockbarArray: DockbarComponent[];
 
-
   /*
-Properties 
+Properties
 name : height
 datatype : string
 version : 4.0 onwards
 default : none
 description : Height of dockbar.
-*/ 
+*/
   @Input() height: string;
 
   constructor() {
 
   }
 
-  //on docker bar click event
+  // on docker bar click event
   onClick(event: any) {
     const tabs = this.dockbarArray;
-    tabs.forEach(tab => {
+    tabs.forEach((tab) => {
       tab.active = false;
-      if (tab.elementId == event.elementId) {
+      if (tab.elementId === event.elementId) {
         tab.active = true;
       }
     });

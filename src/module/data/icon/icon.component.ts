@@ -1,8 +1,8 @@
 /**
  * Created by pratik on 21/12/17.
  */
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
-import {IconLoaderService} from "../../services/icon/icon.service";
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { IconLoaderService } from '../../services/icon/icon.service';
 
 @Component({
   selector: 'amexio-data-icon', template: `
@@ -30,7 +30,7 @@ import {IconLoaderService} from "../../services/icon/icon.service";
 
     </ng-container>
 
-  `
+  `,
 })
 
 export class AmexioDataIconComponent implements OnInit {
@@ -50,11 +50,12 @@ export class AmexioDataIconComponent implements OnInit {
 
   getIconClass(): string {
     if (this.iconLoaderService.iconMappings != null) {
-      let iconObject = this.iconLoaderService.iconMappings.find((obj: any) => obj.component == this.key);
-      if (iconObject != null)
-        return iconObject[this.iconLoaderService.iconToUse.toString()]; else
+      let iconObject = this.iconLoaderService.iconMappings.find((obj: any) => obj.component === this.key);
+      if (iconObject != null) {
+        return iconObject[this.iconLoaderService.iconToUse.toString()];
+      } else {
         return '';
+      }
     }
   }
 }
-

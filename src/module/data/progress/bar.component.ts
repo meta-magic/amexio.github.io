@@ -6,7 +6,7 @@ import {Component, OnInit} from '@angular/core';
 @Component({
   selector: 'amexio-multi-bar', template: `
 
-  `
+  `,
 })
 
 export class AmexioProgressMultiBarComponent implements OnInit {

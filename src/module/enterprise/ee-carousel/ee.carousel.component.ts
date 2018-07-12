@@ -15,60 +15,59 @@
  */
 
  /*
- Component Name : Amexio  Multi item carousel
- Component Selector : <amexio-media-ee-carousel>
- Component Description : Amexio Awesome Multi Item Media Carousel, which comes preloaded with video playing and a full blown detailing page embedded in the component itself
-
+ Component Name: Amexio  Multi item carousel
+ Component Selector: <amexio-media-ee-carousel>
+ Component Description: Amexio Awesome Multi Item Media Carousel,
+ which comes preloaded with video playing and a full blown detailing page embedded in the component itself
 */
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 @Component({
   selector: 'amexio-media-ee-carousel',
-  templateUrl: 'ee.carousel.component.html'
+  templateUrl: 'ee.carousel.component.html',
 })
 
 export class MultiMediaCarousel implements OnInit, OnChanges {
 
-     /*
-Properties 
+/*
+Properties
 name : data
 datatype :  any
 version : 4.0 onwards
 default : none
 description : Data Containing Image Path, Information and Video URL Refer the DataSource Tab
-
-*/ 
+*/
   @Input() data: any;
 
       /*
-Properties 
+Properties
 name : carousel-type
 datatype :  any
 version : 4.0 onwards
 default : none
 description : Stlyed Carousel for Vertical or Horizontal Media
 
-*/ 
+*/
   @Input('carousel-type') carouselStyle: any;
 
   /*
-Properties 
+Properties
 name : has-details
 datatype :  boolean
 version : 4.0 onwards
 default : none
 description : Provide a embedded view for more information on the media
 
-*/ 
+*/
   @Input('has-details') hasDetail: boolean = true;
 
   /*
-Properties 
+Properties
 name : title
 datatype : string
 version : 4.0 onwards
 default : none
 description : Title for the Carousel
-*/ 
+*/
   @Input() title: string;
 
   /*
@@ -77,8 +76,8 @@ name : onVideoLoad
 datatype : none
 version : none
 default : none
-description : 
-*/ 
+description :
+*/
   @Output() onVideoLoad: EventEmitter<any> = new EventEmitter<any>();
 
   elementId: any;
@@ -113,11 +112,10 @@ description :
     }
   }
 
-
   leftClick() {
     let ts = document.getElementById(this.elementId);
     ts.scrollLeft -= 350;
-    if (ts.scrollLeft == 0) {
+    if (ts.scrollLeft === 0) {
       document.getElementById(this.elementId + 'leftarrow').style.visibility = 'hidden';
     }
     document.getElementById(this.elementId + 'rightarrow').style.visibility = 'visible';
@@ -131,7 +129,6 @@ description :
     }
     document.getElementById(this.elementId + 'leftarrow').style.visibility = 'visible';
   }
-
 
   closeDetailPage() {
     this.data.forEach((item: any) => {
@@ -155,16 +152,15 @@ description :
       item.selected = null;
     });
 
-    item.selected = "selected";
+    item.selected = 'selected';
     this.displayDetail = true;
   }
-
 
   loadVideo(item: any) {
     this.onVideoLoad.emit(item.video);
   }
 
   playVideo(video: any) {
-    this.onVideoLoad.emit(video)
+    this.onVideoLoad.emit(video);
   }
 }

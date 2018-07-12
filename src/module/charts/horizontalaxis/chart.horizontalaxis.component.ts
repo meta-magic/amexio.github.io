@@ -19,12 +19,12 @@ Component Description : it describes horizontal axis properties of chart.
 import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'amexio-chart-horizontal-axis', template: ` `
+  selector: 'amexio-chart-horizontal-axis', template: ` `,
 })
 export class HorizontalAxisComponent implements OnInit {
 
 /*
-Properties 
+Properties
 name : title
 datatype : string
 version : 4.0 onwards
@@ -34,7 +34,7 @@ description : title of horizontal axis
 @Input() title: string;
 
 /*
-Properties 
+Properties
 name : title-color
 datatype : string
 version : 4.0 onwards

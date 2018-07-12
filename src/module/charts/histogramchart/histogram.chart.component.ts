@@ -16,13 +16,13 @@ Component Name : Amexio histogram chart
 Component Selector : <amexio-chart-histogram>
 Component Description : A histogram is a chart that groups numeric data into bins, displaying the bins as segmented columns.
 */
-import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from '@angular/core';
-import {ChartLegendComponent} from "../chartlegend/chart.legend.component";
-import {ChartTitleComponent} from "../charttitle/chart.title.component";
-import {ChartAreaComponent} from "../chartarea/chart.area.component";
-import {ChartLoaderService} from "../chart.loader.service";
-import { ViewChild } from "@angular/core";
-import { ElementRef } from "@angular/core";
+import {AfterContentInit, Component, ContentChildren, ElementRef, Input, OnInit, QueryList, ViewChild} from '@angular/core';
+import {ChartAreaComponent} from '../chartarea/chart.area.component';
+import {ChartLegendComponent} from '../chartlegend/chart.legend.component';
+import {ChartTitleComponent} from '../charttitle/chart.title.component';
+
+import {ChartLoaderService} from '../chart.loader.service';
+
 declare var google: any;
 
 @Component({
@@ -36,7 +36,7 @@ declare var google: any;
         </div>
       </div>
   `,
-  styles:[`.lmask {
+  styles: [`.lmask {
     position: absolute;
     height: 100%;
     width: 100%;
@@ -135,31 +135,31 @@ declare var google: any;
     }
   }
 
-  `]
+  ` ],
 })
 
-export class HistogramChartComponent implements AfterContentInit ,OnInit{
+export class HistogramChartComponent implements AfterContentInit, OnInit {
 
-  private options : any;
-  private histogramData : any;
-  private chart : any;
+  private options: any;
+  private histogramData: any;
+  private chart: any;
 
-  hasLoaded:boolean;
+  hasLoaded: boolean;
 
   id: any;
 
 /*
-Properties 
+Properties
 name : width
 datatype : string
 version : 4.0 onwards
 default : none
 description : width of chart
-*/  
+*/
 @Input() width: string;
 
 /*
-Properties 
+Properties
 name : height
 datatype : string
 version : 4.0 onwards
@@ -168,102 +168,101 @@ description : height of chart
 */
 @Input() height: string;
 
+  showChart: boolean;
+  _data: any;
 
-  showChart:boolean;
-  _data:any;
-
-  get data():any{
+  get data(): any {
     return this._data;
   }
 
 /*
-Properties 
+Properties
 name : data
 datatype : any
 version : 4.0 onwards
 default : none
 description : For the use of local data
-*/  
+*/
 @Input('data')
-  set data(data:any){
-    if(data){
-      this._data=data;
-      this.showChart=true;
-    }else{
-      this.showChart=false;
+  set data(data: any) {
+    if (data) {
+      this._data = data;
+      this.showChart = true;
+    } else {
+      this.showChart = false;
     }
   }
 
 /*
-Properties 
+Properties
 name : background-color
 datatype : string
 version : 4.0 onwards
 default : none
 description : sets background color
-*/  
+*/
 @Input('background-color') backgroundcolor: string;
 
   @ContentChildren(ChartLegendComponent) chartLegendComp: QueryList<ChartLegendComponent>;
 
-  @ContentChildren(ChartTitleComponent) chartTitleComp:QueryList<ChartTitleComponent>;
+  @ContentChildren(ChartTitleComponent) chartTitleComp: QueryList<ChartTitleComponent>;
 
-  @ContentChildren(ChartAreaComponent)  chartAreaComp:QueryList<ChartAreaComponent>;
+  @ContentChildren(ChartAreaComponent)  chartAreaComp: QueryList<ChartAreaComponent>;
 
-  chartAreaArray:ChartAreaComponent[];
+  chartAreaArray: ChartAreaComponent[];
 
-  chartAreaComponent:ChartAreaComponent;
+  chartAreaComponent: ChartAreaComponent;
 
   chartLegendArray: ChartLegendComponent[];
 
   chartLengendComponent: ChartLegendComponent;
 
-  chartTitleArray:ChartTitleComponent[];
+  chartTitleArray: ChartTitleComponent[];
 
-  chartTitleComponent:ChartTitleComponent;
+  chartTitleComponent: ChartTitleComponent;
 
   @ViewChild('histogramchart') private histogramchart: ElementRef;
 
-  constructor(private loader : ChartLoaderService) {
-    // this.id = 'amexio-chart-line' + Math.floor(Math.random()*90000) + 10000;
-    this.width='100%';
+  constructor(private loader: ChartLoaderService) {
+    this.width = '100%';
   }
 
   drawChart() {
-    if(this.showChart){
+    if (this.showChart) {
       this.histogramData = google.visualization.arrayToDataTable(this._data);
       this.options = {
-        title: this.chartTitleComponent?this.chartTitleComponent.title:null,
-        titleTextStyle:this.chartTitleComponent?{
-          color:this.chartTitleComponent.color?this.chartTitleComponent.color:null,
-          fontName:this.chartTitleComponent.fontname?this.chartTitleComponent.fontname:null,
-          fontsize:this.chartTitleComponent.fontsize?this.chartTitleComponent.fontsize:null,
-          bold:this.chartTitleComponent.bold?this.chartTitleComponent.bold:null,
-          italic:this.chartTitleComponent.italic?this.chartTitleComponent.italic:null
-        }:null,
+        title: this.chartTitleComponent ? this.chartTitleComponent.title : null,
+        titleTextStyle: this.chartTitleComponent ? {
+          color: this.chartTitleComponent.color ? this.chartTitleComponent.color : null,
+          fontName: this.chartTitleComponent.fontname ? this.chartTitleComponent.fontname : null,
+          fontsize: this.chartTitleComponent.fontsize ? this.chartTitleComponent.fontsize : null,
+          bold: this.chartTitleComponent.bold ? this.chartTitleComponent.bold : null,
+          italic: this.chartTitleComponent.italic ? this.chartTitleComponent.italic : null,
+        } : null,
         backgroundcolor: this.backgroundcolor,
         legend: this.chartLengendComponent ? {
-          position: this.chartLengendComponent.position ? this.chartLengendComponent.position : null, //this work only in chart position is top
+          position: this.chartLengendComponent.position ? this.chartLengendComponent.position : null,
+          // this work only in chart position is top
           maxLines: this.chartLengendComponent.maxlines ? this.chartLengendComponent.maxlines : null,
           textStyle: {
             color: this.chartLengendComponent.color ? this.chartLengendComponent.color : null,
             fontsize: this.chartLengendComponent.fontsize ? this.chartLengendComponent.fontsize : null,
             fontName: this.chartLengendComponent.fontname ? this.chartLengendComponent.fontname : null,
             bold: this.chartLengendComponent.bold ? this.chartLengendComponent.bold : null,
-            alignment: this.chartLengendComponent.alignment ? this.chartLengendComponent.alignment : null
-          }
+            alignment: this.chartLengendComponent.alignment ? this.chartLengendComponent.alignment : null,
+          },
         } : 'none',
-        chartArea:this.chartAreaComponent?{
-          backgroundcolor:this.chartAreaComponent.chartbackgroundcolor?this.chartAreaComponent.chartbackgroundcolor:null,
-          left:this.chartAreaComponent.leftposition?this.chartAreaComponent.leftposition:null,
-          top:this.chartAreaComponent.topposition?this.chartAreaComponent.topposition:null,
-          height:this.chartAreaComponent.chartheight?this.chartAreaComponent.chartheight:null,
-          width:this.chartAreaComponent.chartwidth?this.chartAreaComponent.chartwidth:null
-        }:null,
+        chartArea: this.chartAreaComponent ? {
+          backgroundcolor: this.chartAreaComponent.chartbackgroundcolor ? this.chartAreaComponent.chartbackgroundcolor : null,
+          left: this.chartAreaComponent.leftposition ? this.chartAreaComponent.leftposition : null,
+          top: this.chartAreaComponent.topposition ? this.chartAreaComponent.topposition : null,
+          height: this.chartAreaComponent.chartheight ? this.chartAreaComponent.chartheight : null,
+          width: this.chartAreaComponent.chartwidth ? this.chartAreaComponent.chartwidth : null,
+        } : null,
       };
-      if(this.histogramData){
+      if (this.histogramData) {
         this.chart = new google.visualization.Histogram(this.histogramchart.nativeElement);
-        this.hasLoaded=true;
+        this.hasLoaded = true;
         this.chart.draw(this.histogramData, this.options);
         google.visualization.events.addListener(this.chart, 'click', this.onClick);
       }
@@ -272,33 +271,33 @@ description : sets background color
 
   }
 
-  onClick(e : any){
+  onClick(e: any) {
 
   }
-  //after content init for inner directive is run
+  // after content init for inner directive is run
   ngAfterContentInit(): void {
     this.chartLegendArray = this.chartLegendComp.toArray();
-    this.chartTitleArray=this.chartTitleComp.toArray();
-    this.chartAreaArray=this.chartAreaComp.toArray();
-    //take first component
-    if (this.chartLegendArray.length == 1) {
+    this.chartTitleArray = this.chartTitleComp.toArray();
+    this.chartAreaArray = this.chartAreaComp.toArray();
+    // take first component
+    if (this.chartLegendArray.length === 1) {
       this.chartLengendComponent = this.chartLegendArray.pop();
     }
-    if(this.chartTitleArray.length==1){
-      this.chartTitleComponent= this.chartTitleArray.pop();
+    if (this.chartTitleArray.length === 1) {
+      this.chartTitleComponent = this.chartTitleArray.pop();
     }
-    if(this.chartAreaArray.length==1){
-      this.chartAreaComponent=this.chartAreaArray.pop();
+    if (this.chartAreaArray.length === 1) {
+      this.chartAreaComponent = this.chartAreaArray.pop();
     }
   }
   ngOnInit(): void {
-    this.hasLoaded=false;
+    this.hasLoaded = false;
     this.loader.loadCharts('Histogram').subscribe(
-      value=>console.log(),
-      errror=>console.error(errror),
-      ()=> {
+      (value) => console.log(),
+      (errror) => console.error(errror),
+      () => {
         this.drawChart();
-      }
+      },
     );
    }
 }

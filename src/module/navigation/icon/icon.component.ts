@@ -3,7 +3,7 @@
  */
 
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
-import {IconLoaderService} from "../../services/icon/icon.service";
+import {IconLoaderService} from '../../services/icon/icon.service';
 
 @Component({
   selector: 'amexio-nav-icon', template: `
@@ -30,7 +30,7 @@ import {IconLoaderService} from "../../services/icon/icon.service";
 
 
     </ng-container>
-  `
+  `,
 })
 
 export class AmexioNavIconPane implements OnInit {
@@ -51,11 +51,12 @@ export class AmexioNavIconPane implements OnInit {
   getIconClass(): string {
     if (this.iconLoaderService.iconMappings != null) {
 
-      let iconObject = this.iconLoaderService.iconMappings.find((obj: any) => obj.component == this.key);
-      if (iconObject != null)
-        return iconObject[this.iconLoaderService.iconToUse.toString()]; else
+      let iconObject = this.iconLoaderService.iconMappings.find((obj: any) => obj.component === this.key);
+      if (iconObject != null) {
+        return iconObject [this.iconLoaderService.iconToUse.toString()];
+      }else {
         return '';
-    }
+        }
+      }
   }
 }
-

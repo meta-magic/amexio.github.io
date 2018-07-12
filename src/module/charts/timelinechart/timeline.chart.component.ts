@@ -11,18 +11,18 @@
  *
  */
 
- /*
+/*
 Component Name : Amexio timeline chart
 Component Selector : <amexio-chart-timeline>
 Component Description : A timeline is a chart that depicts how a set of resources are used over time.
 */
-import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from "@angular/core";
-import {ChartTitleComponent} from "../charttitle/chart.title.component";
-import {ChartLegendComponent} from "../chartlegend/chart.legend.component";
-import {ChartLoaderService} from "../chart.loader.service";
-import {ChartAreaComponent} from "../chartarea/chart.area.component";
-import { ViewChild } from "@angular/core";
-import { ElementRef } from "@angular/core";
+import { AfterContentInit, Component, ContentChildren, ElementRef, Input, OnInit, QueryList, ViewChild } from '@angular/core';
+import { ChartAreaComponent } from '../chartarea/chart.area.component';
+import { ChartLegendComponent } from '../chartlegend/chart.legend.component';
+import { ChartTitleComponent } from '../charttitle/chart.title.component';
+
+import { ChartLoaderService } from '../chart.loader.service';
+
 declare var google: any;
 @Component({
   selector: 'amexio-chart-timeline', template: `
@@ -137,7 +137,7 @@ declare var google: any;
     }
   }
 
-  `]
+  ` ],
 })
 export class TimeLineChartComponent implements AfterContentInit, OnInit {
 
@@ -145,39 +145,38 @@ export class TimeLineChartComponent implements AfterContentInit, OnInit {
 
   id: any;
 
-/*
-Properties 
-name : width
-datatype : string
-version : 4.0 onwards
-default : none
-description : width of chart
-*/
-@Input() width: string;
+  /*
+  Properties
+  name : width
+  datatype : string
+  version : 4.0 onwards
+  default : none
+  description : width of chart
+  */
+  @Input() width: string;
 
+  showChart: boolean;
+  _data: any;
 
-  showChart:boolean;
-  _data:any;
-
-  get data():any{
+  get data(): any {
     return this._data;
   }
 
-/*
-Properties 
-name : data
-datatype : any
-version : 4.0 onwards
-default : none
-description : For the use of local data
-*/
-@Input('data')
-  set data(data:any){
-    if(data){
-      this._data=data;
-      this.showChart=true;
-    }else{
-      this.showChart=false;
+  /*
+  Properties
+  name : data
+  datatype : any
+  version : 4.0 onwards
+  default : none
+  description : For the use of local data
+  */
+  @Input('data')
+  set data(data: any) {
+    if (data) {
+      this._data = data;
+      this.showChart = true;
+    } else {
+      this.showChart = false;
     }
   }
 
@@ -204,13 +203,12 @@ description : For the use of local data
   @ViewChild('timelinechart') private timelinechart: ElementRef;
 
   constructor(private loader: ChartLoaderService) {
-    // this.id = 'amexio-chart-timeline' + Math.floor(Math.random() * 90000) + 10000;
     this.width = '100%';
   }
 
   drawChart() {
 
-    if(this.data && this.showChart){
+    if (this.data && this.showChart) {
       this.chart = new google.visualization.Timeline(this.timelinechart.nativeElement);
       this.hasLoaded = true;
       this.chart.draw(this.createTable(this._data));
@@ -222,33 +220,31 @@ description : For the use of local data
   onClick(e: any) {
   }
 
-  //after content init for inner directive is run
+  // after content init for inner directive is run
   ngAfterContentInit(): void {
     this.chartLegendArray = this.chartLegendComp.toArray();
     this.chartTitleArray = this.chartTitleComp.toArray();
     this.chartAreaArray = this.chartAreaComp.toArray();
-    //take first component
-    if (this.chartLegendArray.length == 1) {
+    // take first component
+    if (this.chartLegendArray.length === 1) {
       this.chartLengendComponent = this.chartLegendArray.pop();
     }
-    if (this.chartTitleArray.length == 1) {
+    if (this.chartTitleArray.length === 1) {
       this.chartTitleComponent = this.chartTitleArray.pop();
     }
-    if (this.chartAreaArray.length == 1) {
+    if (this.chartAreaArray.length === 1) {
       this.chartAreaComponent = this.chartAreaArray.pop();
     }
   }
 
-  /**
-   * This method create data table structure of array and return in required chart data
-   *
-   * */
+  // This method create data table structure of array and return in required chart data
+
   createTable(array: any[]): any {
-    //create Duplicate Array for data arrangement
+    // create Duplicate Array for data arrangement
     let dupArray = array.slice();
     let data = new google.visualization.DataTable();
     let labelObject = dupArray[0];
-    //remove first object of array
+    // remove first object of array
     dupArray.shift();
 
     labelObject.forEach((datatypeObject: any) => {
@@ -264,9 +260,8 @@ description : For the use of local data
 
   ngOnInit(): void {
     this.hasLoaded = false;
-    this.loader.loadCharts('Timeline').subscribe(value => console.log(), errror => console.error(errror), () => {
+    this.loader.loadCharts('Timeline').subscribe((value) => console.log(), (error) => console.error(error), () => {
       this.drawChart();
     });
   }
 }
-

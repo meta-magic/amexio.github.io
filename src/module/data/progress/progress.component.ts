@@ -8,19 +8,16 @@
  Component Description : Progress Bar Component Provides up-to-date feedback on the progress of a workflow or action with simple yet flexible progress bars and easy to configure.
 */
 import {Component, Input, OnInit} from '@angular/core';
-
 @Component({
   selector: 'amexio-progress-bar', template: `
     <div *ngIf="showProgress" class="progress" [ngStyle]="{'height':height}">
       <span [ngClass]="progressclass" *ngIf="infinite" style="width: 100%;">{{label != null ? label : 'Loading...'}}</span>
-      <span [ngClass]="progressclass" *ngIf="!infinite" [ngStyle]="{'width.%' : currentvalue}">{{label}}</span>
+      <span [ngClass]="progressclass" *ngIf="!infinite" [ngStyle]="{'width.%' : currentvalue}"></span>
     </div>
   `
 })
-
 export class AmexioProgressBarComponent implements OnInit {
-
-  /*
+/*
 Properties
 name : show
 datatype : boolean
@@ -29,8 +26,7 @@ default : true
 description :  Shows / Hides the progress bar.
 */
   @Input('show') showProgress: boolean = true;
-
-  /*
+/*
 Properties
 name : infinite
 datatype : boolean
@@ -39,58 +35,55 @@ default : false
 description : Enable/Disable Infinite Mode.
 */
   @Input() infinite: boolean;
-
-  /*
+/*
 Properties
 name : type
 datatype : string
 version : 4.0 onwards
-default : 
-description : Type of progress bar can be default,theme-color,theme-backgroundcolor, green, red, yellow( primary, secondary ,success , danger & warning
+default :
+description : Type of progress bar can be default,
+theme-color,theme-backgroundcolor, green, red, yellow( primary, secondary,
+  success , danger & warning
 */
   @Input() type: string;
-
-  /*
+/*
 Properties
 name : amexio-color
 datatype : string
 version : 4.1 onwards
-default : 
-description : Use different inbuilt amexio colors available (e.g amexio-black, amexio-red etc)
+default :
+description : Use different inbuilt amexio colors available 
+(e.g amexio-black, amexio-red etc)
 */
-  @Input('amexio-color') amexiocolor : string;
-
-  /*
+  @Input('amexio-color') amexiocolor: string;
+/*
 Properties
 name : current-value
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Current Position of progress.
 */
   @Input('current-value') currentvalue: string;
-
-  /*
+/*
 Properties
 name : label
 datatype : any
 version : 4.0 onwards
-default : 
+default :
 description : Custom labels on bar.
 */
   @Input() label: any;
-
-  /*
+/*
 Properties
 name : height
 datatype : any
 version : 4.0 onwards
-default : 
+default :
 description : Height of bar.
 */
   @Input() height: any;
-
-  /*
+/*
 Properties
 name : stripped
 datatype : boolean
@@ -99,34 +92,29 @@ default : false
 description : Bar styled stripped.
 */
   @Input() stripped: boolean;
-
-  /*
+/*
 not in use
  */
   @Input() multi: boolean;
 
-  progressclass : string = "";
+  progressclass: string = "";
 
   constructor() {
   }
-
   ngOnInit() {
-
-    if(this.height) {
+    
+    if (this.height) {
       this.height = this.height + 'px';
     } else {
-      this.height  = '20px'
+      this.height  = '20px';
     }
-
-    if(this.stripped){
+    if (this.stripped) {
       this.progressclass = this.progressclass  + "stripped ";
     }
-    if(this.type && !this.amexiocolor){
+    if (this.type && !this.amexiocolor) {
       this.progressclass = this.progressclass  + this.type.toLocaleLowerCase();
-    }
-    else if(this.amexiocolor && !this.type){
+    } else if (this.amexiocolor && !this.type) {
       this.progressclass = this.progressclass  + this.amexiocolor.toLocaleLowerCase();
     }
-
   }
 }

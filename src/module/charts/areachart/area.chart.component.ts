@@ -11,19 +11,18 @@
  *
  */
 
-
  /*
  Component Name : Amexio area chart
  Component Selector : <amexio-chart-area>
- Component Description : An area chart that is rendered within the browser using SVG .Displays tips when hovering over points.
+ Component Description : An area chart that is rendered within the browser using SVG.
+ Displays tips when hovering over points.
 */
-import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from '@angular/core';
-import {ChartLegendComponent} from "../chartlegend/chart.legend.component";
-import {ChartTitleComponent} from "../charttitle/chart.title.component";
-import {ChartAreaComponent} from "../chartarea/chart.area.component";
-import {ChartLoaderService} from "../chart.loader.service";
-import { ViewChild } from '@angular/core';
-import { ElementRef } from '@angular/core';
+import {AfterContentInit, Component, ContentChildren, ElementRef, Input, OnInit, QueryList, ViewChild} from '@angular/core';
+import {ChartAreaComponent} from '../chartarea/chart.area.component';
+import {ChartLegendComponent} from '../chartlegend/chart.legend.component';
+import {ChartTitleComponent} from '../charttitle/chart.title.component';
+
+import {ChartLoaderService} from '../chart.loader.service';
 
 declare var google: any;
 @Component({
@@ -139,7 +138,7 @@ declare var google: any;
     }
   }
 
-  `]
+  `],
 })
 
 export class AreaChartComponent implements AfterContentInit, OnInit {
@@ -151,17 +150,17 @@ export class AreaChartComponent implements AfterContentInit, OnInit {
   id: any;
 
   /*
-Properties 
+Properties
 name : width
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Width of chart
 */
   @Input() width: string;
 
   /*
-Properties 
+Properties
 name : height
 datatype : string
 version : 4.0 onwards
@@ -170,38 +169,37 @@ description : Height of chart
 */
   @Input() height: string;
 
-  showChart:boolean;
-  _data:any;
+  showChart: boolean;
+  _data: any;
 
-  get data():any{
+  get data(): any{
     return this._data;
   }
 
-
   /*
-Properties 
+Properties
 name : data
 datatype : any
 version : 4.0 onwards
-default : 
+default :
 description : Local data for AreaChart
 */
   @Input('data')
-  set data(data:any){
-    if(data){
-      this._data=data;
-      this.showChart=true;
-    }else{
-      this.showChart=false;
+  set data(data: any){
+    if (data) {
+      this._data = data;
+      this.showChart = true;
+    } else {
+      this.showChart = false;
     }
   }
 
   /*
-Properties 
+Properties
 name : background-color
 datatype : any
 version : 4.0 onwards
-default : 
+default :
 description : Sets background color to chart
 */
   @Input('background-color') backgroundcolor: string;
@@ -227,12 +225,11 @@ description : Sets background color to chart
   @ViewChild('areachart') public areachart: ElementRef;
 
   constructor(private loader: ChartLoaderService) {
-    // this.id = 'amexio-chart-area' + Math.floor(Math.random() * 90000) + 10000;
     this.width = '100%';
   }
 
   drawChart() {
-    if(this.showChart){
+    if (this.showChart) {
       this.areaData = google.visualization.arrayToDataTable(this._data);
       this.options = {
         title: this.chartTitleComponent ? this.chartTitleComponent.title : null,
@@ -241,33 +238,34 @@ description : Sets background color to chart
           fontName: this.chartTitleComponent.fontname ? this.chartTitleComponent.fontname : null,
           fontsize: this.chartTitleComponent.fontsize ? this.chartTitleComponent.fontsize : null,
           bold: this.chartTitleComponent.bold ? this.chartTitleComponent.bold : null,
-          italic: this.chartTitleComponent.italic ? this.chartTitleComponent.italic : null
+          italic: this.chartTitleComponent.italic ? this.chartTitleComponent.italic : null,
         } : null,
         backgroundcolor: this.backgroundcolor,
         legend: this.chartLengendComponent ? {
-          position: this.chartLengendComponent.position ? this.chartLengendComponent.position : null, //this work only in chart position is top
+          position: this.chartLengendComponent.position ? this.chartLengendComponent.position : null,
+          // this work only in chart position is top
           maxLines: this.chartLengendComponent.maxlines ? this.chartLengendComponent.maxlines : null, textStyle: {
             color: this.chartLengendComponent.color ? this.chartLengendComponent.color : null,
             fontsize: this.chartLengendComponent.fontsize ? this.chartLengendComponent.fontsize : null,
             fontName: this.chartLengendComponent.fontname ? this.chartLengendComponent.fontname : null,
             bold: this.chartLengendComponent.bold ? this.chartLengendComponent.bold : null,
-            alignment: this.chartLengendComponent.alignment ? this.chartLengendComponent.alignment : null
-          }
+            alignment: this.chartLengendComponent.alignment ? this.chartLengendComponent.alignment : null,
+          },
         } : 'none',
         chartArea: this.chartAreaComponent ? {
           backgroundcolor: this.chartAreaComponent.chartbackgroundcolor ? this.chartAreaComponent.chartbackgroundcolor : null,
           left: this.chartAreaComponent.leftposition ? this.chartAreaComponent.leftposition : null,
           top: this.chartAreaComponent.topposition ? this.chartAreaComponent.topposition : null,
           height: this.chartAreaComponent.chartheight ? this.chartAreaComponent.chartheight : null,
-          width: this.chartAreaComponent.chartwidth ? this.chartAreaComponent.chartwidth : null
+          width: this.chartAreaComponent.chartwidth ? this.chartAreaComponent.chartwidth : null,
         } : null,
       };
 
-      if(this.areaData){
+      if (this.areaData) {
         this.chart = new google.visualization.AreaChart(this.areachart.nativeElement);
         this.hasLoaded = true;
         this.chart.draw(this.areaData, this.options);
-        google.visualization.events.addListener(this.chart, 'click', this.click)
+        google.visualization.events.addListener(this.chart, 'click', this.click);
       }
     }
 
@@ -277,26 +275,26 @@ description : Sets background color to chart
 
   }
 
-  //after content init for inner directive is run
+  // after content init for inner directive is run
   ngAfterContentInit(): void {
     this.chartLegendArray = this.chartLegendComp.toArray();
     this.chartTitleArray = this.chartTitleComp.toArray();
     this.chartAreaArray = this.chartAreaComp.toArray();
-    //take first component
-    if (this.chartLegendArray.length == 1) {
+    // take first component
+    if (this.chartLegendArray.length === 1) {
       this.chartLengendComponent = this.chartLegendArray.pop();
     }
-    if (this.chartTitleArray.length == 1) {
+    if (this.chartTitleArray.length ===  1) {
       this.chartTitleComponent = this.chartTitleArray.pop();
     }
-    if (this.chartAreaArray.length == 1) {
+    if (this.chartAreaArray.length ===  1) {
       this.chartAreaComponent = this.chartAreaArray.pop();
     }
   }
 
   ngOnInit(): void {
     this.hasLoaded = false;
-    this.loader.loadCharts('AreaChart').subscribe(value => console.log(), errror => console.error(errror), () => {
+    this.loader.loadCharts('AreaChart').subscribe((value) => console.log(), (errror) => console.error(errror), () => {
       this.drawChart();
     });
   }

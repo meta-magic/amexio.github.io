@@ -9,7 +9,7 @@
 
 */
 import {Component, Input, OnInit} from '@angular/core';
-import {IconLoaderService} from "../../services/icon/icon.service";
+import {IconLoaderService} from '../../services/icon/icon.service';
 
 @Component({
  selector: 'amexio-box',
@@ -52,7 +52,7 @@ import {IconLoaderService} from "../../services/icon/icon.service";
    <ng-content></ng-content>
 
  </div>
- `
+ `,
 })
 
 export class AmexioBoxComponent implements OnInit {
@@ -64,7 +64,7 @@ version : 4.1 onwards
 default : none
 description : Can set border position : top / right / left / bottom / all / top-bottom / left-right
 */
- @Input('border')   border : string;
+ @Input('border')   border: string;
 /*
 Properties
 name : border-color
@@ -73,7 +73,7 @@ version : 4.1 onwards
 default : theme's border color
 description : Can use amexio colors : red / blue / green / yellow / brown / purple
 */
- @Input('border-color') borderColor : string;
+ @Input('border-color') borderColor: string;
 /*
 Properties
 name : background-color
@@ -83,7 +83,7 @@ default : theme's background color
 description : Can use amexio colors : red / blue / green / yellow / brown / purple
 
 */
- @Input('background-color') bgColor : string;
+ @Input('background-color') bgColor: string;
 /*
 Properties
 name : padding
@@ -142,16 +142,16 @@ description : closable box
  @Input('closable') closable: boolean = false;
 
  constructor() { }
- close : boolean = true;
+ close: boolean = true;
  ngOnInit() {
-  if (this.borderColor == null)
+  if (this.borderColor == null) {
    this.borderColor = 'box-default';
-
-  if (this.borderColor != null && this.bgColor == null){
+  }
+  if (this.borderColor != null && this.bgColor == null) {
    this.bgColor = this.borderColor;
   }
  }
-  closeBox(event:any){
+  closeBox(event: any) {
     this.close = false;
     this.closable = false;
   }

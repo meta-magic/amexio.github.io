@@ -3,12 +3,12 @@
  */
 
  /*
- Component Name : Amexio horizontal tree 
+ Component Name : Amexio horizontal tree
  Component Selector : <amexio-horizontal-treeview>
  Component Description : A Horizontal Tree Component.
 */
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {CommonDataService} from "../../services/data/common.data.service";
+import {CommonDataService} from '../../services/data/common.data.service';
 
 @Component({
   selector: 'amexio-horizontal-treeview', template: `
@@ -20,12 +20,12 @@ import {CommonDataService} from "../../services/data/common.data.service";
       </div>
       <amexio-horizontal-treeviewnode *ngIf="!mask" [data]="data" (onNodeClick)="nodeclick($event)"></amexio-horizontal-treeviewnode>
     </div>
-  `
+  `,
 })
 export class HorizontalTreeViewComponent {
 
   /*
-Properties 
+Properties
 name : label
 datatype : string
 version : 4.0 onwards
@@ -35,7 +35,7 @@ description : label for tree
   @Input() label: string;
 
   /*
-Properties 
+Properties
 name : data
 datatype : any
 version : 4.0 onwards
@@ -45,7 +45,7 @@ description : Local Data binding.
   @Input() data: any[];
 
   /*
-Properties 
+Properties
 name : http-url
 datatype : string
 version : 4.0 onwards
@@ -55,7 +55,7 @@ description : REST url for fetching data.
   @Input('http-url') httpurl: string;
 
   /*
-Properties 
+Properties
 name : http-method
 datatype : string
 version : 4.0 onwards
@@ -65,7 +65,7 @@ description : Type of HTTP call, POST,GET etc.
   @Input('http-method') httpmethod: string;
 
   /*
-Properties 
+Properties
 name : data-reader
 datatype : string
 version : 4.0 onwards
@@ -75,7 +75,7 @@ description : Key in JSON Datasource for records.
   @Input('data-reader') datareader: string;
 
   /*
-Events 
+Events
 name : nodeClick
 datatype : none
 version : none
@@ -86,7 +86,7 @@ description : It will gives you clicked node data.
 
   responseData: any;
 
-  mask : boolean = true;
+  mask: boolean = true;
 
   constructor(public dataService: CommonDataService) {
 
@@ -94,9 +94,9 @@ description : It will gives you clicked node data.
 
   ngOnInit() {
     if (this.httpmethod && this.httpurl) {
-      this.dataService.fetchData(this.httpurl, this.httpmethod).subscribe(response => {
+      this.dataService.fetchData(this.httpurl, this.httpmethod).subscribe((response) => {
         this.responseData = response;
-      }, error => {
+      }, (error) => {
       }, () => {
         this.setData(this.responseData);
       });
@@ -104,10 +104,10 @@ description : It will gives you clicked node data.
   }
 
   setData(httpResponse: any) {
-    //Check if key is added?
+    // Check if key is added?
     let responsedata = httpResponse;
     if (this.datareader != null) {
-      let dr = this.datareader.split(".");
+      let dr = this.datareader.split('.');
       for (let ir = 0; ir < dr.length; ir++) {
         responsedata = responsedata[dr[ir]];
       }

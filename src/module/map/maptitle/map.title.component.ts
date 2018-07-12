@@ -10,9 +10,7 @@
  * Author - Sagar Jadhav
  *
  */
-
-
- /*
+/*
  Component Name : Amexio Map
  Component Selector : <amexio-map-title>
  Component Description :  Map title
@@ -20,80 +18,71 @@
 import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'amexio-map-title', template: ` `
+  selector: 'amexio-map-title', template: ` `,
 })
 export class MapTitleComponent implements OnInit {
-
-
-  /*
-Properties 
+/*
+Properties
 name : title
 datatype : string
 version : 4.0 onwards
 default : none
 description : sets title of Map
-*/ 
+*/
   @Input() title: string;
-
-
-  /*
-Properties 
+/*
+Properties
 name : position
 datatype : string
 version : 4.0 onwards
 default : none
 description : sets position of Map
-*/ 
+*/
   @Input() position: string;
-
-   /*
-Properties 
+/*
+Properties
 name : color
 datatype : string
 version : 4.0 onwards
 default : none
 description : sets color of Map
-*/  
+*/
   @Input() color: string;
-
-  /*
-Properties 
+/*
+Properties
 name : font-name
 datatype : string
 version : 4.0 onwards
 default : none
 description : sets Font family name
-*/ 
+*/
   @Input('font-name') fontname: string;
-
-  /*
-Properties 
+/*
+Properties
 name : font-size
 datatype : number
 version : 4.0 onwards
 default : none
-description : sets font size 
-*/ 
+description : sets font size
+*/
   @Input('font-size') fontsize: number;
-
-  /*
-Properties 
+/*
+Properties
 name : bold
 datatype : boolean
 version : 4.0 onwards
 default : none
 description : sets bold style
-*/ 
+*/
   @Input() bold: boolean;
-
-  /*
-Properties 
+/*
+Properties
 name : italic
 datatype : boolean
 version : 4.0 onwards
 default : none
 description : sets italic style
-*/ 
+*/
   @Input() italic: boolean;
 
   constructor() {

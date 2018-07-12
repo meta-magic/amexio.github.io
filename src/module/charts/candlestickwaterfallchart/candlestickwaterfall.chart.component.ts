@@ -14,16 +14,17 @@
 /*
  Component Name : Amexio candlestick waterfall chart
  Component Selector : <amexio-chart-candlestick-waterfall>
- Component Description : A candlestick waterfall chart is used to show an opening and closing value overlaid on top of a total variance. Candlestick charts are often used to show stock value behavior.
+ Component Description : A candlestick waterfall chart is used to show an opening and closing
+ value overlaid on top of a total variance. Candlestick charts are often used to show stock value behavior.
 */
-import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from '@angular/core';
-import {ChartAreaComponent} from "../chartarea/chart.area.component";
-import {HorizontalAxisComponent} from "../horizontalaxis/chart.horizontalaxis.component";
-import {VerticalAxisComponent} from "../verticalaxis/chart.verticalaxis.component";
-import {ChartTitleComponent} from "../charttitle/chart.title.component";
-import {ChartLoaderService} from "../chart.loader.service";
-import { ViewChild } from "@angular/core";
-import { ElementRef } from "@angular/core";
+import {AfterContentInit, Component, ContentChildren, ElementRef, Input, OnInit, QueryList, ViewChild} from '@angular/core';
+import {ChartAreaComponent} from '../chartarea/chart.area.component';
+import {ChartTitleComponent} from '../charttitle/chart.title.component';
+import {HorizontalAxisComponent} from '../horizontalaxis/chart.horizontalaxis.component';
+import {VerticalAxisComponent} from '../verticalaxis/chart.verticalaxis.component';
+
+import {ChartLoaderService} from '../chart.loader.service';
+
 declare var google: any;
 @Component({
   selector: 'amexio-chart-candlestick-waterfall', template: `
@@ -138,7 +139,7 @@ declare var google: any;
     }
   }
 
-  `]
+  ` ],
 })
 
 export class CandlestickWaterfallChartComponent implements AfterContentInit, OnInit {
@@ -149,9 +150,8 @@ export class CandlestickWaterfallChartComponent implements AfterContentInit, OnI
 
   id: any;
 
-
   /*
-Properties 
+Properties
 name : width
 datatype : any
 version : 4.0 onwards
@@ -161,7 +161,7 @@ description : width of chart
   @Input() width: string;
 
   /*
-Properties 
+Properties
 name : height
 datatype : string
 version : 4.0 onwards
@@ -170,16 +170,15 @@ description : height of chart
 */
   @Input() height: string;
 
+  showChart: boolean;
+  _data: any;
 
-  showChart:boolean;
-  _data:any;
-
-  get data():any{
+  get data(): any {
     return this._data;
   }
 
   /*
-Properties 
+Properties
 name : data
 datatype : any
 version : 4.0 onwards
@@ -187,17 +186,17 @@ default : none
 description : Local data for AreaChart
 */
   @Input('data')
-  set data(data:any){
-    if(data){
-      this._data=data;
-      this.showChart=true;
-    }else{
-      this.showChart=false;
+  set data(data: any) {
+    if (data) {
+      this._data = data;
+      this.showChart = true;
+    } else {
+      this.showChart = false;
     }
   }
 
   /*
-Properties 
+Properties
 name : background-color
 datatype : string
 version : 4.0 onwards
@@ -207,7 +206,7 @@ description : sets background color
   @Input('background-color') backgroundcolor: string;
 
   /*
-Properties 
+Properties
 name : bar-width
 datatype : string
 version : 4.0 onwards
@@ -217,7 +216,7 @@ description : To remove the space between the bars.
   @Input('bar-width') barwidth: string;
 
   /*
-Properties 
+Properties
 name : falling-color
 datatype : string
 version : 4.0 onwards
@@ -227,7 +226,7 @@ description : The fill color of falling candles, as an HTML color string.Example
   @Input('falling-color') fallingcolor: string;
 
   /*
-Properties 
+Properties
 name : rising-color
 datatype : string
 version : 4.0 onwards
@@ -241,7 +240,6 @@ description : The fill color of rising candles, as an HTML color string.Example:
   @ContentChildren(ChartAreaComponent) chartAreaComp: QueryList<ChartAreaComponent>;
 
   @ContentChildren(ChartTitleComponent) chartTitleComp: QueryList<ChartTitleComponent>;
-
 
   @ContentChildren(HorizontalAxisComponent) horizontalComp: QueryList<HorizontalAxisComponent>;
 
@@ -263,17 +261,14 @@ description : The fill color of rising candles, as an HTML color string.Example:
 
   chartTitleComponent: ChartTitleComponent;
 
-
   @ViewChild('candlestickwaterfall') private candlestickwaterfall: ElementRef;
 
   constructor(private loader: ChartLoaderService) {
-
-    // this.id = 'amexio-chart-candlestick-water' + Math.floor(Math.random() * 90000) + 10000;
     this.width = '100%';
   }
 
   drawChart() {
-    if(this.showChart){
+    if (this.showChart) {
       this.candlestickData = google.visualization.arrayToDataTable(this._data, true);
       this.options = {
         title: this.chartTitleComponent ? this.chartTitleComponent.title : null,
@@ -282,7 +277,7 @@ description : The fill color of rising candles, as an HTML color string.Example:
           fontName: this.chartTitleComponent.fontname ? this.chartTitleComponent.fontname : null,
           fontsize: this.chartTitleComponent.fontsize ? this.chartTitleComponent.fontsize : null,
           bold: this.chartTitleComponent.bold ? this.chartTitleComponent.bold : null,
-          italic: this.chartTitleComponent.italic ? this.chartTitleComponent.italic : null
+          italic: this.chartTitleComponent.italic ? this.chartTitleComponent.italic : null,
         } : null,
         backgroundcolor: this.backgroundcolor,
         legend: 'none',
@@ -291,23 +286,24 @@ description : The fill color of rising candles, as an HTML color string.Example:
           left: this.chartAreaComponent.leftposition ? this.chartAreaComponent.leftposition : null,
           top: this.chartAreaComponent.topposition ? this.chartAreaComponent.topposition : null,
           height: this.chartAreaComponent.chartheight ? this.chartAreaComponent.chartheight : null,
-          width: this.chartAreaComponent.chartwidth ? this.chartAreaComponent.chartwidth : null
+          width: this.chartAreaComponent.chartwidth ? this.chartAreaComponent.chartwidth : null,
         } : null,
         vAxis: this.verticalComponent ? {
           title: this.verticalComponent.title ? this.verticalComponent.title : null,
-          titleTextStyle: {color: this.verticalComponent.titlecolor ? this.verticalComponent.titlecolor : null}
+          titleTextStyle: {color: this.verticalComponent.titlecolor ? this.verticalComponent.titlecolor : null},
         } : null,
         hAxis: this.horizontalComponent ? {
           title: this.horizontalComponent.title ? this.horizontalComponent.title : null,
-          titleTextStyle: {color: this.horizontalComponent.titlecolor ? this.horizontalComponent.titlecolor : null}
+          titleTextStyle: {color: this.horizontalComponent.titlecolor ? this.horizontalComponent.titlecolor : null},
         } : null,
-        bar: {groupWidth: this.barwidth ? this.barwidth : null}, // Remove space between bars.
+        bar: {groupWidth: this.barwidth ? this.barwidth : null},
+         // Remove space between bars.
         candlestick: {
           fallingColor: this.fallingcolor ? {strokeWidth: 0, fill: this.fallingcolor ? this.fallingcolor : null} : null, // red
-          risingColor: this.risingcolor ? {strokeWidth: 0, fill: this.risingcolor ? this.risingcolor : null} : null  // green
-        }
+          risingColor: this.risingcolor ? {strokeWidth: 0, fill: this.risingcolor ? this.risingcolor : null} : null,  // green
+        },
       };
-      if(this.candlestickData){
+      if (this.candlestickData) {
         this.chart = new google.visualization.CandlestickChart(this.candlestickwaterfall.nativeElement);
         this.hasLoaded = true;
         this.chart.draw(this.candlestickData, this.options);
@@ -322,31 +318,31 @@ description : The fill color of rising candles, as an HTML color string.Example:
 
   }
 
-  //after content init for inner directive is run
+  // after content init for inner directive is run
   ngAfterContentInit(): void {
     this.chartAreaArray = this.chartAreaComp.toArray();
     this.horizontalArray = this.horizontalComp.toArray();
     this.verticalArray = this.verticalComp.toArray();
     this.chartTitleArray = this.chartTitleComp.toArray();
 
-    //take first component
-    if (this.chartTitleArray.length == 1) {
+    // take first component
+    if (this.chartTitleArray.length === 1) {
       this.chartTitleComponent = this.chartTitleArray.pop();
     }
-    if (this.chartAreaArray.length == 1) {
+    if (this.chartAreaArray.length === 1) {
       this.chartAreaComponent = this.chartAreaArray.pop();
     }
-    if (this.horizontalArray.length == 1) {
+    if (this.horizontalArray.length === 1) {
       this.horizontalComponent = this.horizontalArray.pop();
     }
-    if (this.verticalArray.length == 1) {
+    if (this.verticalArray.length === 1) {
       this.verticalComponent = this.verticalArray.pop();
     }
   }
 
   ngOnInit(): void {
     this.hasLoaded = false;
-    this.loader.loadCharts('CandlestickChart').subscribe(value => console.log(), errror => console.error(errror), () => {
+    this.loader.loadCharts('CandlestickChart').subscribe((value) => console.log(), (errror) => console.error(errror), () => {
       this.drawChart();
     });
   }

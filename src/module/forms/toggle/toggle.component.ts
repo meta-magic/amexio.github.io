@@ -16,15 +16,14 @@
  Component Description : Toggle Button
 */
 import {
-  Input, OnInit, forwardRef, Component, AfterViewInit, Output, EventEmitter, ViewEncapsulation
-} from "@angular/core";
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
+  AfterViewInit, Component, EventEmitter, forwardRef, Input, OnInit, Output,  ViewEncapsulation} from '@angular/core';
+import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
 const noop = () => {
 };
 
 export const CUSTOM_tOGGLE_CONTROL_VALUE_ACCESSOR: any = {
-  provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioToggleComponent), multi: true
+  provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioToggleComponent), multi: true,
 };
 
 @Component({
@@ -32,7 +31,7 @@ export const CUSTOM_tOGGLE_CONTROL_VALUE_ACCESSOR: any = {
   templateUrl: './toggle.component.html',
   styleUrls: ['./toggle.component.scss'],
   providers: [CUSTOM_tOGGLE_CONTROL_VALUE_ACCESSOR],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 
 export class AmexioToggleComponent implements OnInit, ControlValueAccessor {
@@ -74,14 +73,14 @@ description : Event is fired on toggle component click
 
   @Output() onChange: EventEmitter<any> = new EventEmitter<any>();
 
-  isComponentValid : boolean;
+  isComponentValid: boolean;
 
   constructor() {
 
   }
 
   ngOnInit() {
-    this.shape == '' || this.shape == null ? this.shape = 'round' : 0;
+    this.shape === '' || this.shape == null ? this.shape = 'round' : 0;
     this.isComponentValid = !this.required;
   }
 
@@ -93,17 +92,17 @@ description : Event is fired on toggle component click
   // The internal dataviews model
   private innerValue: any = '';
 
-  //Placeholders for the callbacks which are later provided
-  //by the Control Value Accessor
+  // Placeholders for the callbacks which are later provided
+  // by the Control Value Accessor
   private onTouchedCallback: () => void = noop;
   private onChangeCallback: (_: any) => void = noop;
 
-  //get accessor
+  // get accessor
   get value(): any {
     return this.innerValue;
   }
 
-  //set accessor including call the onchange callback
+  // set accessor including call the onchange callback
   set value(v: any) {
     if (v !== this.innerValue) {
       this.innerValue = v;
@@ -111,12 +110,12 @@ description : Event is fired on toggle component click
     }
   }
 
-  //Set touched on blur
+  // Set touched on blur
   onBlur() {
     this.onTouchedCallback();
   }
 
-  //From ControlValueAccessor interface
+  // From ControlValueAccessor interface
   writeValue(value: any) {
     if (value !== this.innerValue) {
       if (value) {
@@ -128,14 +127,13 @@ description : Event is fired on toggle component click
     }
   }
 
-  //From ControlValueAccessor interface
+  // From ControlValueAccessor interface
   registerOnChange(fn: any) {
     this.onChangeCallback = fn;
   }
 
-  //From ControlValueAccessor interface
+  // From ControlValueAccessor interface
   registerOnTouched(fn: any) {
     this.onTouchedCallback = fn;
   }
 }
-

@@ -2,7 +2,7 @@
  * Created by pratik on 21/12/17.
  */
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
-import {IconLoaderService} from "../../services/icon/icon.service";
+import {IconLoaderService} from '../../services/icon/icon.service';
 
 @Component({
   selector: 'amexio-pane-icon', template: `
@@ -14,7 +14,6 @@ import {IconLoaderService} from "../../services/icon/icon.service";
       <ng-container *ngIf="customclass == null">
         <i class="{{getIconClass()}}" aria-hidden="true" (click)="onClick.emit($event)" style="cursor: pointer;"></i>
       </ng-container>
-       
     </ng-container>
 
     <ng-container *ngIf="iconLoaderService.iconToUse == 'mat'">
@@ -26,10 +25,8 @@ import {IconLoaderService} from "../../services/icon/icon.service";
       <ng-container *ngIf="customclass == null">
         <i class="material-icons" (click)="onClick.emit($event)" style="cursor: pointer;">{{getIconClass()}}</i>
       </ng-container>
-
-
     </ng-container>
-  `
+  `,
 })
 
 export class AmexioIconPane implements OnInit {
@@ -50,11 +47,12 @@ export class AmexioIconPane implements OnInit {
   getIconClass(): string {
     if (this.iconLoaderService.iconMappings != null) {
 
-      let iconObject = this.iconLoaderService.iconMappings.find((obj: any) => obj.component == this.key);
-      if (iconObject != null)
-        return iconObject[this.iconLoaderService.iconToUse.toString()]; else
+      let iconObject = this.iconLoaderService.iconMappings.find((obj: any) => obj.component === this.key);
+      if (iconObject != null) {
+        return iconObject[this.iconLoaderService.iconToUse.toString()];
+       } else {
         return '';
+        }
     }
   }
 }
-

@@ -2,9 +2,8 @@
  * Created by ketangote on 12/1/17.
  */
 
-
  /*
- Component Name : Amexio horizontal tree 
+ Component Name : Amexio horizontal tree
  Component Selector : <amexio-horizontal-treeviewnode>
  Component Description : A Horizontal Tree Component.
 */
@@ -26,12 +25,12 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
                                         (onNodeClick)="onInnerClick($event)"></amexio-horizontal-treeviewnode>
       </div>
     </div>
-  `
+  `,
 })
 export class HorizontalTreeViewNodeComponent implements OnInit {
 
  /*
-Properties 
+Properties
 name : data
 datatype : any
 version : 4.0 onwards
@@ -41,7 +40,7 @@ description : Local Data binding.
   @Input() data: any[];
 
   /*
-Events 
+Events
 name : onNodeClick
 datatype : none
 version : none
@@ -53,10 +52,8 @@ description : It will gives you clicked node data.
   constructor() {
   }
 
-
   ngOnInit() {
   }
-
 
   onClick(node: any) {
     node.expand = !node.expand;
@@ -66,8 +63,4 @@ description : It will gives you clicked node data.
   onInnerClick(node: any) {
     this.onNodeClick.emit(node);
   }
-
 }
-
-
-

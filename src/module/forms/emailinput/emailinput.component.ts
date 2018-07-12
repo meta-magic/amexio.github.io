@@ -3,23 +3,19 @@
  Component Selector :  <amexio-email-input>
  Component Description : Email input field
  */
-import {Component, EventEmitter, forwardRef, Input, Output} from '@angular/core';
+import {Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-
 const noop = () => {
 };
-
 export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
-  provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioEmailInputComponent), multi: true
+  provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioEmailInputComponent), multi: true,
 };
-
 @Component({
   selector: 'amexio-email-input',
   templateUrl: './emailinput.component.html',
   providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
 })
-export class AmexioEmailInputComponent implements ControlValueAccessor {
-
+export class AmexioEmailInputComponent implements ControlValueAccessor, OnInit {
   /*
    Properties
    name : field-label
@@ -37,7 +33,7 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
    default : false
    description : Flag to set label
    */
-  @Input('has-label') hasLabel: boolean = true;
+  @Input('has-label') hasLabel = true;
   /*
    Properties
    name : allow-blank
@@ -47,20 +43,13 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
    description : Sets if field is required
    */
   @Input('allow-blank') allowblank: boolean;
-
   helpInfoMsg: string;
-
   regEx: RegExp;
-
   showToolTip: boolean;
-
   _errormsg: string;
-
   get errormsg(): string {
     return this._errormsg;
   }
-
-
   /*
    Properties
    name : error-msg
@@ -70,14 +59,11 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
    description : Sets the error message
    */
   @Input('error-msg')
-
   set errormsg(value: string) {
     this.helpInfoMsg = value + '<br/>';
   }
-  isComponentValid : boolean;
-
+  isComponentValid: boolean;
   @Input('place-holder') placeholder: string;
-
   /*
    Properties
    name : disabled
@@ -123,11 +109,8 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
    description : Set font-size to field
    */
   @Input('font-size') fontsize: string;
-
   emailpatter: any = /\S+@\S+\.\S+/;
-
   _pattern: string;
-
   get pattern(): string {
     return this._pattern;
   }
@@ -141,7 +124,10 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
    */
   @Input('pattern')
   set pattern(value: string) {
-    if (value != null) this.regEx = new RegExp(this.pattern);
+    if (value != null) {
+
+     this.regEx = new RegExp(this.pattern);
+    }
   }
   /*
    Properties
@@ -188,38 +174,31 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
    description : On field value change event
    */
   @Output() change: any = new EventEmitter<any>();
-
   isValid: boolean;
-
   constructor() {
     this.showToolTip = false;
   }
   ngOnInit() {
     this.isComponentValid = this.allowblank;
   }
-
   // The internal dataviews model
   private innerValue: any = '';
-
-  //Placeholders for the callbacks which are later provided
-  //by the Control Value Accessor
+  // Placeholders for the callbacks which are later provided
+  // by the Control Value Accessor
   private onTouchedCallback: () => void = noop;
   private onChangeCallback: (_: any) => void = noop;
-
-  //get accessor
+  // get accessor
   get value(): any {
     return this.innerValue;
   }
-
-  //set accessor including call the onchange callback
+  // set accessor including call the onchange callback
   set value(v: any) {
     if (v !== this.innerValue) {
       this.innerValue = v;
       this.onChangeCallback(v);
     }
   }
-
-  //Set touched on blur
+  // Set touched on blur
   onblur() {
     this.onTouchedCallback();
     this.showToolTip = false;
@@ -230,44 +209,37 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
       this.isValid = true;
     }
   }
-
   onFocus() {
     this.showToolTip = true;
     this.focus.emit(this.value);
   }
-
-  onInput(input:any) {
+  onInput(input: any) {
     this.isComponentValid = input.valid;
     this.getValidationClasses(input);
     this.input.emit(this.value);
   }
-
   onChangeEv() {
     this.change.emit(this.value);
   }
-
-  //From ControlValueAccessor interface
+  // From ControlValueAccessor interface
   writeValue(value: any) {
     if (value !== this.innerValue) {
       this.innerValue = value;
     }
   }
-
-  //From ControlValueAccessor interface
+  // From ControlValueAccessor interface
   registerOnChange(fn: any) {
     this.onChangeCallback = fn;
   }
-
-  //From ControlValueAccessor interface
+  // From ControlValueAccessor interface
   registerOnTouched(fn: any) {
     this.onTouchedCallback = fn;
   }
-
   getValidationClasses(inp: any): any {
     let classObj;
     if (!this.allowblank) {
-      if (this.innerValue == null || this.innerValue == '') {
-        if(inp.touched) {
+      if (this.innerValue === null || this.innerValue === '') {
+        if (inp.touched) {
           classObj = {'input-control-error': true};
           this.isValid = false;
           this.isComponentValid = false;
@@ -275,7 +247,7 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
           this.isValid = false;
           this.isComponentValid = false;
         }
-      } else if (inp.touched && !this.allowblank && (this.value == '' || this.value == null)) {
+      } else if (inp.touched && !this.allowblank && (this.value === '' || this.value === null)) {
         classObj = {'input-control-error': true};
         this.isValid = false;
         this.isComponentValid = false;
@@ -286,9 +258,9 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
       } else {
         classObj = {
           'input-control-error': inp.invalid && (inp.dirty || inp.touched),
-          'input-control-success': inp.valid && (inp.dirty || inp.touched)
+          'input-control-success': inp.valid && (inp.dirty || inp.touched),
         };
-        if (inp.valid){
+        if (inp.valid) {
           this.isValid = true;
           this.isComponentValid = true;
         }
@@ -300,6 +272,3 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
     return classObj;
   }
 }
-
-
-

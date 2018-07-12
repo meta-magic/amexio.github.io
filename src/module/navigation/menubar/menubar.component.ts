@@ -8,8 +8,8 @@
  Component Description : Menu bar component show menu list on top.
 */
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {CommonDataService} from "../../services/data/common.data.service";
-import {DeviceQueryService} from "../../services/device/device.query.service";
+import {CommonDataService} from '../../services/data/common.data.service';
+import {DeviceQueryService} from '../../services/device/device.query.service';
 @Component({
   selector: 'amexio-menu',
   template: `
@@ -25,11 +25,12 @@ import {DeviceQueryService} from "../../services/device/device.query.service";
               <ng-container *ngIf="(node.children && node.children[0].children)">
 
                 <div *ngIf="(node.children && node.children.length>0)" class="menu-content"
-                     [ngClass]="{'menu-content-display':node.expand,' menu-content-left': (node.children && node.children.length>3),'menu-right':xposition}">
+                     [ngClass]="{'menu-content-display':node.expand,
+                     ' menu-content-left': (node.children && node.children.length>3),'menu-right':xposition}">
                   <ul class="menu-content-cols">
 
                     <li class="col-menu-nodes"
-                        [ngClass]="{'col-menu-nodes-fixed': (node.children && node.children.length<4), 
+                        [ngClass]="{'col-menu-nodes-fixed': (node.children && node.children.length<4),
                       'col-menu-nodes-percentage': (node.children && node.children.length>3)}"
                         *ngFor="let subnode of node.children">
                       <div class="content">
@@ -45,8 +46,11 @@ import {DeviceQueryService} from "../../services/device/device.query.service";
                             <div *ngIf="subinnernode.image" style="padding: 10px;">
                               <img [attr.src]="subinnernode.image">
                             </div>
-                            <!--<i *ngIf="subinnernode.icon" class="fa fa-ravelry" aria-hidden="true"></i>-->
-                            <amexio-nav-icon *ngIf="subinnernode.icon" key="menubar_ravelry"></amexio-nav-icon>&nbsp;&nbsp;{{subinnernode.text}}{{subinnernode.template}}
+                            <!--<i *ngIf="subinnernode.icon" class="fa fa-ravelry"
+                            aria-hidden="true"></i>-->
+                            <amexio-nav-icon *ngIf="subinnernode.icon" key="menubar_ravelry">
+                            </amexio-nav-icon>
+                            &nbsp;&nbsp;{{subinnernode.text}}{{subinnernode.template}}
                           </li>
                         </ul>
                       </div>
@@ -87,23 +91,22 @@ import {DeviceQueryService} from "../../services/device/device.query.service";
       </div>
     </div>
 
-  `, providers: [CommonDataService]
+  `, providers: [CommonDataService],
 })
 export class AmexioMenuBarComponent implements OnInit {
 
-
   /*
-Properties 
+Properties
 name : data
 datatype : any
 version : 4.0 onwards
 default : none
 description : Local data for menubar.
-*/ 
+*/
   @Input() data: any[];
 
   /*
-Properties 
+Properties
 name : label
 datatype : any
 version : 4.0 onwards
@@ -113,7 +116,7 @@ description : label to menubar
   @Input() label: any;
 
 /*
-Properties 
+Properties
 name : http-url
 datatype : string
 version : 4.0 onwards
@@ -123,7 +126,7 @@ description : REST url for fetching datasource.
   @Input('http-url') httpurl: string;
 
   /*
-Properties 
+Properties
 name : http-method
 datatype : string
 version : 4.0 onwards
@@ -133,7 +136,7 @@ description : Type of HTTP call, POST,GET.
   @Input('http-method') httpmethod: string;
 
   /*
-Properties 
+Properties
 name : data-reader
 datatype : string
 version : 4.0 onwards
@@ -143,7 +146,7 @@ description : Key in JSON datasource for records
   @Input('data-reader') datareader: string;
 
   /*
-Events 
+Events
 name : nodeClick
 datatype : any
 version : none
@@ -152,7 +155,7 @@ description : Fire when menubar bar click.
 */
   @Output() nodeClick: any = new EventEmitter<any>();
 
-  xposition : boolean = false;
+  xposition: boolean = false;
 
   responseData: any;
 
@@ -162,18 +165,16 @@ description : Fire when menubar bar click.
     this.expand = false;
   }
 
-
   ngOnInit() {
     if (this.httpmethod && this.httpurl) {
-      this.dataService.fetchData(this.httpurl, this.httpmethod).subscribe(response => {
+      this.dataService.fetchData(this.httpurl, this.httpmethod).subscribe((response) => {
         this.responseData = response;
-      }, error => {
+      }, (error) => {
       }, () => {
         this.setData(this.responseData);
       });
     }
   }
-
 
   onClick(node: any) {
     if (this.matchMediaService.IsPhone() || this.matchMediaService.IsTablet()) {
@@ -190,10 +191,10 @@ description : Fire when menubar bar click.
   }
 
   setData(httpResponse: any) {
-    //Check if key is added?
+    // Check if key is added?
     let responsedata = httpResponse;
     if (this.datareader != null) {
-      let dr = this.datareader.split(".");
+      let dr = this.datareader.split('.');
       for (let ir = 0; ir < dr.length; ir++) {
         responsedata = responsedata[dr[ir]];
       }
@@ -203,16 +204,15 @@ description : Fire when menubar bar click.
     this.data = httpResponse;
   }
 
-  onMouseOver(event:any){
+  onMouseOver(event: any) {
     if (!(this.matchMediaService.IsPhone() || this.matchMediaService.IsTablet())) {
-      if((this.matchMediaService.browserWindow().innerWidth - event.clientX)<200){
+      if ((this.matchMediaService.browserWindow().innerWidth - event.clientX) < 200 ) {
         this.xposition = true;
-      }else{
+      }else {
         this.xposition = false;
       }
-    }else{
+    }else {
       this.xposition = false;
     }
   }
 }
-

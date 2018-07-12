@@ -14,15 +14,16 @@
 /*
 Component Name : Amexio donut chart
 Component Selector : <amexio-chart-donut>
-Component Description : An donut chart that is rendered within the browser using SVG. A donut chart is a pie chart with a hole in the center.
+Component Description : An donut chart that is rendered within the browser using SVG.
+A donut chart is a pie chart with a hole in the center.
 */
-import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from '@angular/core';
-import {ChartLegendComponent} from "../chartlegend/chart.legend.component";
-import {ChartTitleComponent} from "../charttitle/chart.title.component";
-import {ChartAreaComponent} from "../chartarea/chart.area.component";
-import {ChartLoaderService} from "../chart.loader.service";
-import { ViewChild } from "@angular/core";
-import { ElementRef } from "@angular/core";
+import {AfterContentInit, Component, ContentChildren, ElementRef, Input, OnInit, QueryList, ViewChild} from '@angular/core';
+import {ChartAreaComponent} from '../chartarea/chart.area.component';
+import {ChartLegendComponent} from '../chartlegend/chart.legend.component';
+import {ChartTitleComponent} from '../charttitle/chart.title.component';
+
+import {ChartLoaderService} from '../chart.loader.service';
+
 declare var google: any;
 @Component({
   selector: 'amexio-chart-donut', template: `
@@ -138,10 +139,10 @@ declare var google: any;
     }
   }
 
-  `]
+  ` ],
 })
 
-export class DonutChartComponent implements AfterContentInit {
+export class DonutChartComponent implements AfterContentInit, OnInit {
 
   private options: any;
   private donutData: any;
@@ -150,7 +151,7 @@ export class DonutChartComponent implements AfterContentInit {
   id: any;
 
 /*
-Properties 
+Properties
 name : width
 datatype : string
 version : 4.0 onwards
@@ -160,7 +161,7 @@ description : width of chart
 @Input() width: string;
 
 /*
-Properties 
+Properties
 name : height
 datatype : string
 version : 4.0 onwards
@@ -169,16 +170,15 @@ description : height of chart
 */
 @Input() height: string;
 
+  showChart: boolean;
+  _data: any;
 
-  showChart:boolean;
-  _data:any;
-
-  get data():any{
+  get data(): any{
     return this._data;
   }
 
 /*
-Properties 
+Properties
 name : data
 datatype : any
 version : 4.0 onwards
@@ -186,17 +186,17 @@ default : none
 description : For the use of local data
 */
 @Input('data')
-  set data(data:any){
-    if(data){
-      this._data=data;
-      this.showChart=true;
-    }else{
-      this.showChart=false;
+  set data(data: any) {
+    if (data) {
+      this._data = data;
+      this.showChart = true;
+    } else {
+      this.showChart = false;
     }
   }
 
 /*
-Properties 
+Properties
 name : background-color
 datatype : string
 version : 4.0 onwards
@@ -228,12 +228,11 @@ description : sets background-color to chart
   @ViewChild('donutchart') private donutchart: ElementRef;
 
   constructor(private loader: ChartLoaderService) {
-    // this.id = 'amexio-chart-donut' + Math.floor(Math.random() * 90000) + 10000;
     this.width = '100%';
   }
 
   drawChart() {
-    if(this.showChart){
+    if (this.showChart) {
       this.donutData = google.visualization.arrayToDataTable(this._data);
       this.options = {
         title: this.chartTitleComponent ? this.chartTitleComponent.title : null,
@@ -242,29 +241,30 @@ description : sets background-color to chart
           fontName: this.chartTitleComponent.fontname ? this.chartTitleComponent.fontname : null,
           fontsize: this.chartTitleComponent.fontsize ? this.chartTitleComponent.fontsize : null,
           bold: this.chartTitleComponent.bold ? this.chartTitleComponent.bold : null,
-          italic: this.chartTitleComponent.italic ? this.chartTitleComponent.italic : null
+          italic: this.chartTitleComponent.italic ? this.chartTitleComponent.italic : null,
         } : null,
         piehole: 0.4,
         backgroundcolor: this.backgroundcolor,
         legend: this.chartLengendComponent ? {
-          position: this.chartLengendComponent.position ? this.chartLengendComponent.position : null, //this work only in chart position is top
+          position: this.chartLengendComponent.position ? this.chartLengendComponent.position : null,
+          // this work only in chart position is top
           maxLines: this.chartLengendComponent.maxlines ? this.chartLengendComponent.maxlines : null, textStyle: {
             color: this.chartLengendComponent.color ? this.chartLengendComponent.color : null,
             fontsize: this.chartLengendComponent.fontsize ? this.chartLengendComponent.fontsize : null,
             fontName: this.chartLengendComponent.fontname ? this.chartLengendComponent.fontname : null,
             bold: this.chartLengendComponent.bold ? this.chartLengendComponent.bold : null,
-            alignment: this.chartLengendComponent.alignment ? this.chartLengendComponent.alignment : null
-          }
+            alignment: this.chartLengendComponent.alignment ? this.chartLengendComponent.alignment : null,
+          },
         } : 'none',
         chartArea: this.chartAreaComponent ? {
           backgroundcolor: this.chartAreaComponent.chartbackgroundcolor ? this.chartAreaComponent.chartbackgroundcolor : null,
           left: this.chartAreaComponent.leftposition ? this.chartAreaComponent.leftposition : null,
           top: this.chartAreaComponent.topposition ? this.chartAreaComponent.topposition : null,
           height: this.chartAreaComponent.chartheight ? this.chartAreaComponent.chartheight : null,
-          width: this.chartAreaComponent.chartwidth ? this.chartAreaComponent.chartwidth : null
+          width: this.chartAreaComponent.chartwidth ? this.chartAreaComponent.chartwidth : null,
         } : null,
       };
-      if(this.donutData){
+      if (this.donutData) {
         this.chart = new google.visualization.PieChart(this.donutchart.nativeElement);
         this.hasLoaded = true;
         this.chart.draw(this.donutData, this.options);
@@ -279,26 +279,26 @@ description : sets background-color to chart
 
   }
 
-  //after content init for inner directive is run
+  // after content init for inner directive is run
   ngAfterContentInit(): void {
     this.chartLegendArray = this.chartLegendComp.toArray();
     this.chartTitleArray = this.chartTitleComp.toArray();
     this.chartAreaArray = this.chartAreaComp.toArray();
-    //take first component
-    if (this.chartLegendArray.length == 1) {
+    // take first component
+    if (this.chartLegendArray.length === 1) {
       this.chartLengendComponent = this.chartLegendArray.pop();
     }
-    if (this.chartTitleArray.length == 1) {
+    if (this.chartTitleArray.length === 1) {
       this.chartTitleComponent = this.chartTitleArray.pop();
     }
-    if (this.chartAreaArray.length == 1) {
+    if (this.chartAreaArray.length === 1) {
       this.chartAreaComponent = this.chartAreaArray.pop();
     }
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.hasLoaded = false;
-    this.loader.loadCharts('PieChart').subscribe(value => console.log(), errror => console.error(errror), () => {
+    this.loader.loadCharts('PieChart').subscribe((value) => console.log(), (errror) => console.error(errror), () => {
       this.drawChart();
     });
   }

@@ -2,12 +2,10 @@
  * Created by pratik on 18/12/17.
  */
 
-
-
-import {Component, OnInit,Input} from '@angular/core';
+import {Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'amexio-action', template: '<ng-content></ng-content>'
+  selector: 'amexio-action', template: '<ng-content></ng-content>',
 })
 
 export class AmexioFooterComponent implements OnInit {
@@ -19,7 +17,7 @@ version : 4.2 onwards
 default : left
 description : padding for footer.
 */
-  @Input() padding:string;
+  @Input() padding: string;
 
   constructor() {
   }

@@ -2,7 +2,9 @@
 
  Component Name : Amexio Textarea Input
  Component Selector :  <amexio-textarea-input>
- Component Description : TextArea input component has been created with different configurable attributes for validation (min/max value, allow blank, custom regex), custom error message, help, custom styles.
+ Component Description : TextArea input component has been created with
+ different configurable attributes for validation
+ (min/max value, allow blank, custom regex), custom error message, help, custom styles.
 
 */
 import {Component, forwardRef, Input} from '@angular/core';
@@ -12,14 +14,14 @@ const noop = () => {
 };
 
 export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
-  provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioTextAreaComponent), multi: true
+  provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioTextAreaComponent), multi: true,
 };
 
 @Component({
   selector: 'amexio-textarea-input',
   templateUrl: './textarea.component.html',
   providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
-  styleUrls: ['./textarea.component.scss']
+  styleUrls: ['./textarea.component.scss'],
 })
 export class AmexioTextAreaComponent implements ControlValueAccessor {
 
@@ -64,7 +66,7 @@ description : Sets if field is required
 
   regEx: RegExp;
 
-  isComponentValid : boolean;
+  isComponentValid: boolean;
 
   showToolTip: boolean;
 
@@ -128,7 +130,7 @@ name : place-holder
 datatype : string
 version : 4.0 onwards
 default : none
-description : 	Show place-holder inside dropdown component
+description :	Show place-holder inside dropdown component
 */
   @Input('place-holder') placeholder: string;
 /*
@@ -228,17 +230,17 @@ description : Set enable / disable popover.
   // The internal dataviews model
   private innerValue: any = '';
 
-  //Placeholders for the callbacks which are later provided
-  //by the Control Value Accessor
+  // Placeholders for the callbacks which are later provided
+  // by the Control Value Accessor
   private onTouchedCallback: () => void = noop;
   private onChangeCallback: (_: any) => void = noop;
 
-  //get accessor
+  // get accessor
   get value(): any {
     return this.innerValue;
   }
 
-  //set accessor including call the onchange callback
+  // set accessor including call the onchange callback
   set value(v: any) {
     if (v !== this.innerValue) {
       this.innerValue = v;
@@ -246,7 +248,7 @@ description : Set enable / disable popover.
     }
   }
 
-  //Set touched on blur
+  // Set touched on blur
   onBlur() {
     this.onTouchedCallback();
     this.showToolTip = false;
@@ -256,19 +258,19 @@ description : Set enable / disable popover.
     this.showToolTip = true;
   }
 
-  //From ControlValueAccessor interface
+  // From ControlValueAccessor interface
   writeValue(value: any) {
     if (value !== this.innerValue) {
       this.innerValue = value;
     }
   }
 
-  //From ControlValueAccessor interface
+  // From ControlValueAccessor interface
   registerOnChange(fn: any) {
     this.onChangeCallback = fn;
   }
 
-  //From ControlValueAccessor interface
+  // From ControlValueAccessor interface
   registerOnTouched(fn: any) {
     this.onTouchedCallback = fn;
   }
@@ -276,8 +278,8 @@ description : Set enable / disable popover.
   getValidationClasses(inp: any): any {
     let classObj;
     if (!this.allowblank) {
-      if (this.innerValue == null || this.innerValue == '') {
-            if(inp.touched) {
+      if (this.innerValue === null || this.innerValue === '') {
+            if (inp.touched) {
           classObj = {'input-control-error': true};
           this.isValid = false;
           this.isComponentValid = false;
@@ -285,16 +287,16 @@ description : Set enable / disable popover.
           this.isValid = false;
           this.isComponentValid = false;
         }
-      }else if (inp.touched && !this.allowblank && (this.value == '' || this.value == null)) {
+      }else if (inp.touched && !this.allowblank && (this.value === '' || this.value === null)) {
         classObj = {'input-control-error': true};
         this.isValid = false;
         this.isComponentValid = false;
       } else {
         classObj = {
           'input-control-error': inp.invalid && (inp.dirty || inp.touched),
-          'input-control-success': inp.valid && (inp.dirty || inp.touched)
+          'input-control-success': inp.valid && (inp.dirty || inp.touched),
         };
-        if (inp.valid){
+        if (inp.valid) {
           this.isValid = true;
           this.isComponentValid = true;
         }
@@ -306,13 +308,9 @@ description : Set enable / disable popover.
     return classObj;
   }
 
-  onInput(input:any) {
+  onInput(input: any) {
     this.isComponentValid = input.valid;
     this.getValidationClasses(input);
-    //this.input.emit(this.value);
   }
 
 }
-
-
-

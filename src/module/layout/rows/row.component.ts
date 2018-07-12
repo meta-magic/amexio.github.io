@@ -11,7 +11,7 @@
 import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'amexio-row', templateUrl: 'row.component.html', styleUrls: ['row.component.scss']
+  selector: 'amexio-row', templateUrl: 'row.component.html', styleUrls: ['row.component.scss'],
 })
 
 export class AmexioRowComponent implements OnInit {

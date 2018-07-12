@@ -10,20 +10,19 @@
  * Author - Ketan Gote, Pratik Kelwalkar, Dattaram Gawas
  *
  */
-
-
- /*
- Component Name : Amexio tree data table
- Component Selector : <amexio-tree-data-table>
- Component Description :  A Simple Expandable Tree component which create Tree View based on standard datasource attached.
- */
-
+/*
+Component Name : Amexio tree data table
+Component Selector : <amexio-tree-data-table>
+Component Description :  A Simple Expandable Tree component which create Tree View based on standard datasource attached.
+*/
 import {
-  OnInit, Input, Component, EventEmitter, Output, QueryList, ContentChildren, AfterContentInit, DoCheck, ElementRef,
-  ViewChild, AfterViewInit,
+  AfterContentInit, AfterViewInit, Component, ContentChildren, DoCheck, ElementRef, EventEmitter, Input, OnInit, Output, QueryList,
+  ViewChild,
 } from '@angular/core';
-import {CommonDataService} from "../../services/data/common.data.service";
-import {AmexioGridColumnComponent} from "../datagrid/data.grid.column";
+
+import { AmexioGridColumnComponent } from '../datagrid/data.grid.column';
+
+import { CommonDataService } from '../../services/data/common.data.service';
 
 @Component({
   selector: 'amexio-tree-data-table', template: `
@@ -64,7 +63,8 @@ import {AmexioGridColumnComponent} from "../datagrid/data.grid.column";
             <div class="spinner"></div>
           </div>
           <ng-container *ngIf="!mask">
-            <div class="datatable-row" (click)="toogle(row,i)" *ngFor="let row of viewRows;let i=index" (click)="setSelectedRow(row, $event)">
+            <div class="datatable-row" (click)="toogle(row,i)" *ngFor="let row of viewRows;let i=index"
+            (click)="setSelectedRow(row, $event)">
               <ng-container *ngFor="let cols of columns;let colIndex = index">
                 <ng-container *ngIf="cols.datatype=='string' && !cols?.bodyTemplate">
                   <div class="datatable-col" [attr.data-label]="cols.text">
@@ -149,13 +149,10 @@ import {AmexioGridColumnComponent} from "../datagrid/data.grid.column";
         </div>
       </div>
     </div>
-   
-
-  `,
-
+   `,
 })
 
-export class TreeDataTableComponent implements OnInit, AfterContentInit, DoCheck,AfterViewInit {
+export class TreeDataTableComponent implements OnInit, AfterContentInit, DoCheck, AfterViewInit {
 
   /*
    Properties
@@ -246,7 +243,7 @@ export class TreeDataTableComponent implements OnInit, AfterContentInit, DoCheck
    description : It will gives you row clicked data.
    */
 
-  @ViewChild('header', {read: ElementRef}) public gridHeader: ElementRef;
+  @ViewChild('header', { read: ElementRef }) public gridHeader: ElementRef;
 
   @Output() rowSelect: any = new EventEmitter<any>();
 
@@ -270,9 +267,9 @@ export class TreeDataTableComponent implements OnInit, AfterContentInit, DoCheck
 
     if (this.httpmethod && this.httpurl) {
 
-      this.treeDataTableService.fetchData(this.httpurl, this.httpmethod).subscribe(response => {
+      this.treeDataTableService.fetchData(this.httpurl, this.httpmethod).subscribe((response) => {
         this.responseData = response;
-      }, error => {
+      }, (error) => {
       }, () => {
         this.setData(this.responseData);
       });
@@ -304,7 +301,7 @@ export class TreeDataTableComponent implements OnInit, AfterContentInit, DoCheck
           datatype: columnConfig.datatype,
           headerTemplate: columnConfig.headerTemplate,
           width: columnConfig.width,
-          bodyTemplate: columnConfig.bodyTemplate
+          bodyTemplate: columnConfig.bodyTemplate,
         };
       } else if (columnConfig.headerTemplate != null && columnConfig.bodyTemplate == null) {
         columnData = {
@@ -313,7 +310,7 @@ export class TreeDataTableComponent implements OnInit, AfterContentInit, DoCheck
           hidden: columnConfig.hidden,
           datatype: columnConfig.datatype,
           width: columnConfig.width,
-          headerTemplate: columnConfig.headerTemplate
+          headerTemplate: columnConfig.headerTemplate,
         };
       } else if (columnConfig.bodyTemplate != null && columnConfig.headerTemplate == null) {
         columnData = {
@@ -322,7 +319,7 @@ export class TreeDataTableComponent implements OnInit, AfterContentInit, DoCheck
           hidden: columnConfig.hidden,
           datatype: columnConfig.datatype,
           width: columnConfig.width,
-          bodyTemplate: columnConfig.bodyTemplate
+          bodyTemplate: columnConfig.bodyTemplate,
         };
       } else if (columnConfig.bodyTemplate == null && columnConfig.headerTemplate == null) {
         columnData = {
@@ -330,7 +327,7 @@ export class TreeDataTableComponent implements OnInit, AfterContentInit, DoCheck
           dataindex: columnConfig.dataindex,
           hidden: columnConfig.hidden,
           width: columnConfig.width,
-          datatype: columnConfig.datatype
+          datatype: columnConfig.datatype,
         };
       }
 
@@ -338,7 +335,7 @@ export class TreeDataTableComponent implements OnInit, AfterContentInit, DoCheck
     }
   }
   ngDoCheck() {
-    if(this.data) {
+    if (this.data) {
       this.viewRows = this.getResponseData(this.data);
     }
   }
@@ -381,7 +378,7 @@ export class TreeDataTableComponent implements OnInit, AfterContentInit, DoCheck
   }
 
   addRows(row: any, index: number) {
-    if(row.children) {
+    if (row.children) {
       for (let i = 0; i < row.children.length; i++) {
         let node = row.children[i];
         if (!row.level) {
@@ -398,13 +395,15 @@ export class TreeDataTableComponent implements OnInit, AfterContentInit, DoCheck
   }
 
   removeRows(node: any) {
-    if(node.children) {
+    if (node.children) {
       for (let i = 0; i < node.children.length; i++) {
-        if(this.viewRows) {
+        if (this.viewRows) {
           for (let j = 0; j < this.viewRows.length; j++) {
 
             if (this.viewRows[j] === node.children[i]) {
-              if (node.children[i].children) this.removeRows(node.children[i]);
+              if (node.children[i].children) {
+                this.removeRows(node.children[i]);
+              }
 
               this.viewRows.splice(this.viewRows.indexOf(node.children[i]), 1);
 
@@ -421,18 +420,18 @@ export class TreeDataTableComponent implements OnInit, AfterContentInit, DoCheck
     this.rowSelect.emit(rowData);
   }
 
-  onResize(){
-    if(this.height){
-      let h = (window.innerHeight/100)*this.height;
+  onResize() {
+    if (this.height) {
+      let h = (window.innerHeight / 100) * this.height;
 
-      if(this.gridHeader && this.gridHeader.nativeElement && this.gridHeader.nativeElement.offsetHeight)
+      if (this.gridHeader && this.gridHeader.nativeElement && this.gridHeader.nativeElement.offsetHeight) {
         h = h - this.gridHeader.nativeElement.offsetHeight;
-
-
-      if(this.height === 100)
+      }
+      if (this.height === 100) {
         h = h - 40;
 
-      this.height = h;
+        this.height = h;
+      }
     }
   }
 

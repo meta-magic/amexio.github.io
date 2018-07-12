@@ -5,14 +5,18 @@
  /*
  Component Name : Amexio Tree map
  Component Selector : <amexio-map-treemap>
- Component Description :  A visual representation of a data tree, where each node can have zero or more children, and one parent (except for the root, which has no parents). Each node is displayed as a rectangle, sized and colored according to values that you assign.
+ Component Description :  A visual representation of a data tree,
+ where each node can have zero or more children, and one parent
+ (except for the root, which has no parents). Each node is displayed as a rectangle,
+ sized and colored according to values that you assign.
 */
 import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from '@angular/core';
-import {MapTitleComponent} from "../maptitle/map.title.component";
-import {MapLoaderService} from "../map.loader.service";
 import { ViewChild } from '@angular/core';
 import { ElementRef } from '@angular/core';
 
+import {MapTitleComponent} from '../maptitle/map.title.component';
+
+import {MapLoaderService} from '../map.loader.service';
 declare var google: any;
 @Component({
   selector: 'amexio-map-treemap', template: `
@@ -128,7 +132,7 @@ declare var google: any;
     }
   }
 
-  `]
+  `],
 })
 
 export class TreeMapComponent implements AfterContentInit, OnInit {
@@ -138,98 +142,87 @@ export class TreeMapComponent implements AfterContentInit, OnInit {
   private chart: any;
   hasLoaded: boolean;
   id: any;
-
-
-  /*
-Properties 
+/*
+Properties
 name : width
 datatype : string
 version : 4.0 onwards
 default : none
 description : Width of chart.
-*/ 
+*/
   @Input() width: string;
-
-
-  /*
-Properties 
+/*
+Properties
 name : height
 datatype : string
 version : 4.0 onwards
 default : none
 description : height of chart.
-*/ 
+*/
   @Input() height: string;
 
-  showChart:boolean;
-  _data:any;
-
-  get data():any{
+  showChart: boolean;
+  _data: any;
+  get data(): any {
     return this._data;
   }
-
-  /*
-Properties 
+/*
+Properties
 name : data
 datatype : any
 version : 4.0 onwards
 default : none
 description : Local data for TreeMap.
-*/ 
+*/
   @Input('data')
-  set data(data:any){
-    if(data){
-      this._data=data;
-      this.showChart=true;
-    }else{
-      this.showChart=false;
+  set data(data: any){
+    if (data) {
+      this._data = data;
+      this.showChart = true;
+    }else {
+      this.showChart = false;
     }
   }
-
-   /*
-Properties 
+ /*
+Properties
 name : min-color
 datatype : string
 version : 4.0 onwards
 default : none
 description : The color for a rectangle with the column 3 value of min-colorValue. Specify an HTML color value.
-*/ 
+*/
   @Input('min-color') mincolor: string;
-
-
-   /*
-Properties 
+/*
+Properties
 name : mid-color
 datatype : string
 version : 4.0 onwards
 default : none
 description : The color for a rectangle with a column 3 value midway between max-colorValue and min-colorValue. Specify an HTML color value.
-*/ 
+*/
   @Input('mid-color') midcolor: string;
-
-
-   /*
-Properties 
+/*
+Properties
 name : max-color
 datatype : string
 version : 4.0 onwards
 default : none
 description : The color for a rectangle with a column 3 value of max-colorValue. Specify an HTML color value.
-*/ 
+*/
   @Input('max-color') maxcolor: string;
-
-   /*
-Properties 
+/*
+Properties
 name : show-scale
 datatype : boolean
 version : 4.0 onwards
 default : none
-description : Whether or not to show a color gradient scale from min-color to max-color along the top of the chart. Specify true to show the scale.
+description : Whether or not to show a color gradient scale from
+min-color to max-color along the top of the chart. Specify true to
+show the scale.
 */
   @Input('show-scale') showscale: boolean;
-
-   /*
-Properties 
+/*
+Properties
 name : max-post-depth
 datatype : number
 version : 4.0 onwards
@@ -248,12 +241,11 @@ description : number of levels of nodes beyond maxDepth to show in 'hinted' fash
 
   constructor(private loader: MapLoaderService) {
 
-    // this.id = 'amexio-map-treemap' + Math.floor(Math.random() * 90000) + 10000;
     this.width = '100%';
   }
 
   drawChart() {
-    if(this.showChart){
+    if (this.showChart) {
       this.treemapData = google.visualization.arrayToDataTable(this._data);
       this.options = {
         title: this.mapTitleComponent ? this.mapTitleComponent.title : null,
@@ -262,7 +254,7 @@ description : number of levels of nodes beyond maxDepth to show in 'hinted' fash
           fontName: this.mapTitleComponent.fontname ? this.mapTitleComponent.fontname : null,
           fontsize: this.mapTitleComponent.fontsize ? this.mapTitleComponent.fontsize : null,
           bold: this.mapTitleComponent.bold ? this.mapTitleComponent.bold : null,
-          italic: this.mapTitleComponent.italic ? this.mapTitleComponent.italic : null
+          italic: this.mapTitleComponent.italic ? this.mapTitleComponent.italic : null,
         } : null,
         mincolor: this.mincolor ? this.mincolor : null,
         midcolor: this.midcolor ? this.midcolor : null,
@@ -270,32 +262,29 @@ description : number of levels of nodes beyond maxDepth to show in 'hinted' fash
         headerHeight: 15,
         fontcolor: 'black',
         showscale: this.showscale ? this.showscale : false,
-        maxpostdepth: this.maxpostdepth ? this.maxpostdepth : 1
+        maxpostdepth: this.maxpostdepth ? this.maxpostdepth : 1,
       };
-      if(this.treemapData){
+      if (this.treemapData) {
         this.chart = new google.visualization.TreeMap(this.treemapmap.nativeElement);
         this.hasLoaded = true;
         this.chart.draw(this.treemapData, this.options);
         google.visualization.events.addListener(this.chart, 'click', this.click);
       }
     }
-
-
-  }
-
-  click(e: any) {
+}
+click(e: any) {
   }
 
   ngAfterContentInit(): void {
     this.mapTitleArray = this.maptleComp.toArray();
-    if (this.mapTitleArray.length == 1) {
+    if (this.mapTitleArray.length === 1) {
       this.mapTitleComponent = this.mapTitleArray.pop();
     }
   }
 
   ngOnInit(): void {
     this.hasLoaded = false;
-    this.loader.loadCharts('TreeMap').subscribe(value => console.log(), errror => console.error(errror), () => {
+    this.loader.loadCharts('TreeMap').subscribe((value) => console.log(), (errror) => console.error(errror), () => {
       this.drawChart();
     });
   }

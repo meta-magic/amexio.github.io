@@ -11,7 +11,6 @@
  *
  */
 
-
 /*
 Component Name : Amexio area chart properties
 Component Selector : <amexio-chart-area-properties>
@@ -20,13 +19,12 @@ Component Description : An area chart that is rendered within the browser using 
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'amexio-chart-area-properties', template: ``
+  selector: 'amexio-chart-area-properties', template: ``,
 })
 export class ChartAreaComponent implements OnInit {
 
-
 /*
-Properties 
+Properties
 name : chart-background-color
 datatype : string
 version : 4.0 onwards
@@ -40,14 +38,13 @@ description : sets chart background color
 */
   @Input('left-position') leftposition: number;
 
-
   /*
   not in use
 */
   @Input('top-position') topposition: number;
 
   /*
-Properties 
+Properties
 name : chart-width
 datatype : number
 version : 4.0 onwards
@@ -57,7 +54,7 @@ description : sets chart width
   @Input('chart-width') chartwidth: number;
 
   /*
-  Properties 
+  Properties
   name : chart-height
   datatype : number
   version : 4.0 onwards

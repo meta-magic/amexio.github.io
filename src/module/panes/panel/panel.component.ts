@@ -17,9 +17,8 @@
  /*
  Component Name : Amexio panel
  Component Selector : <amexio-panel>
- Component Description : Panel provides an easy way to organize big forms by grouping the fields in panel
-
-
+ Component Description : Panel provides an easy way to organize big forms by
+ grouping the fields in panel
 
 */
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
@@ -48,24 +47,23 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
       </ng-container>
 
     </div>
-
-  `
+  `,
 })
 
 export class AmexioPanelComponent implements OnInit {
 
    /*
-Properties 
+Properties
 name : title
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Title for panel.
 */
   @Input() title: any;
 
     /*
-Properties 
+Properties
 name : header
 datatype :  boolean
 version : 4.0 onwards
@@ -75,7 +73,7 @@ description : 	Enable/Disabled header.
   @Input() header: boolean;
 
   /*
-Properties 
+Properties
 name : expanded
 datatype :  boolean
 version : 4.0 onwards
@@ -85,7 +83,7 @@ description : Pane will expand or collapse based on the boolean.
   @Input() expanded: boolean;
 
     /*
-Properties 
+Properties
 name : height
 datatype :  number
 version : 4.0 onwards
@@ -106,9 +104,8 @@ description : Fires the on accordion pane click event.
 
   iconclassKey: string;
 
-
   ngOnInit() {
-    if (!this.header){
+    if (!this.header) {
       this.expanded = true;
     }
     if (this.expanded) {
@@ -116,7 +113,7 @@ description : Fires the on accordion pane click event.
     } else {
       this.iconclassKey = 'fa fa-caret-down';
     }
-    if(this.height){
+    if (this.height) {
       this.height = this.height;
     }
   }
@@ -124,14 +121,14 @@ description : Fires the on accordion pane click event.
   onTabClick(btn: any) {
     btn.classList.toggle('active-accordion');
     let panel = btn.nextElementSibling;
-    if (this.iconclassKey == 'fa fa-caret-down') {
+    if (this.iconclassKey === 'fa fa-caret-down') {
       this.iconclassKey = 'fa fa-caret-up';
-    } else if (this.iconclassKey == 'fa fa-caret-up') {
+    } else if (this.iconclassKey === 'fa fa-caret-up') {
       this.iconclassKey = 'fa fa-caret-down';
     }
 
     this.expanded = !this.expanded;
-    this.onClick.emit()
+    this.onClick.emit();
   }
 
 }

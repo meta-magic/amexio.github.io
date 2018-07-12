@@ -1,20 +1,19 @@
 /**
  * Created by sagar on 10/8/17.
  */
-
- 
- /*
- Component Name : Amexio Geo chart
- Component Selector : <amexio-map-geo-chart>
- Component Description : Data can be plotted on a Map using Amexio's AmexioMapModule. All Mapping widgets are available under amexio-ng-extensions/maps
-
-  
-*/
-import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from '@angular/core';
-import {MapLoaderService} from "../map.loader.service";
-import {MapProperties} from "../mapproperties/map.properties";
+/*
+Component Name : Amexio Geo chart
+Component Selector : <amexio-map-geo-chart>
+Component Description : Data can be plotted on a Map using Amexio's
+AmexioMapModule. All Mapping widgets are available under
+amexio-ng-extensions/maps
+ */
+import { AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import { ElementRef } from '@angular/core';
+import { MapLoaderService } from '../map.loader.service';
+import { MapProperties } from '../mapproperties/map.properties';
+
 declare var google: any;
 @Component({
   selector: 'amexio-map-geo-chart', template: `
@@ -129,8 +128,7 @@ declare var google: any;
       -webkit-transform: rotate(360deg);
     }
   }
-
-  `]
+`],
 })
 
 export class GeoChartComponent implements AfterContentInit, OnInit {
@@ -141,78 +139,67 @@ export class GeoChartComponent implements AfterContentInit, OnInit {
 
   hasLoaded: boolean;
   id: any;
-
   /*
-Properties 
-name : width
-datatype : string
-version : 4.0 onwards
-default : none
-description : Width of chart
-*/ 
+  Properties
+  name : width
+  datatype : string
+  version : 4.0 onwards
+  default : none
+  description : Width of chart
+  */
   @Input() width: string;
-
-
   /*
-Properties 
-name : height
-datatype : string
-version : 4.0 onwards
-default : none
-description : height of chart
-*/ 
+  Properties
+  name : height
+  datatype : string
+  version : 4.0 onwards
+  default : none
+  description : height of chart
+  */
   @Input() height: string;
+  showChart: boolean;
+  _data: any;
 
-
-  showChart:boolean;
-  _data:any;
-
-  get data():any{
+  get data(): any {
     return this._data;
   }
-
   @Input('data')
-  set data(data:any){
-    if(data){
-      this._data=data;
-      this.showChart=true;
-    }else{
-      this.showChart=false;
+  set data(data: any) {
+    if (data) {
+      this._data = data;
+      this.showChart = true;
+    } else {
+      this.showChart = false;
     }
   }
 
   /*
   not in use
-*/ 
+*/
   @Input('country-name') countryname: boolean = false;
 
   /* not in use
-*/ 
+*/
   @Input('region-code') regioncode: string;
 
   /* not in use
-*/ 
+*/
   @Input('background-color') backgroundcolor: string;
-
   /* not in use
-*/ 
+  */
   @Input('unused-region-color') unusedregioncolor: string;
 
   @ContentChildren(MapProperties) chartAreaComp: QueryList<MapProperties>;
 
   chartAreaArray: MapProperties[];
-
   chartAreaComponent: MapProperties;
-
   @ViewChild('geochart') private geochart: ElementRef;
 
   constructor(private loader: MapLoaderService) {
-    // this.id = 'amexio-map-geo-chart' + Math.floor(Math.random() * 90000) + 10000;
     this.width = '100%';
   }
-
   drawChart() {
-    if(this.showChart){
+    if (this.showChart) {
       this.geomapData = google.visualization.arrayToDataTable(this._data);
       this.options = {
         displayMode: this.countryname ? 'text' : null,
@@ -224,33 +211,29 @@ description : height of chart
           left: this.chartAreaComponent.leftposition ? this.chartAreaComponent.leftposition : null,
           top: this.chartAreaComponent.topposition ? this.chartAreaComponent.topposition : null,
           height: this.chartAreaComponent.chartheight ? this.chartAreaComponent.chartheight : null,
-          width: this.chartAreaComponent.chartwidth ? this.chartAreaComponent.chartwidth : null
+          width: this.chartAreaComponent.chartwidth ? this.chartAreaComponent.chartwidth : null,
         } : null,
       };
-      if(this.geomapData){
+      if (this.geomapData) {
         this.chart = new google.visualization.GeoChart(this.geochart.nativeElement);
         this.hasLoaded = true;
         this.chart.draw(this.geomapData, this.options);
         google.visualization.events.addListener(this.chart, 'click', this.click);
       }
     }
-
-
   }
-
   click(e: any) {
   }
-
   ngAfterContentInit(): void {
     this.chartAreaArray = this.chartAreaComp.toArray();
-    if (this.chartAreaArray.length == 1) {
+    if (this.chartAreaArray.length === 1) {
       this.chartAreaComponent = this.chartAreaArray.pop();
     }
   }
 
   ngOnInit(): void {
     this.hasLoaded = false;
-    this.loader.loadCharts('GeoChart').subscribe(value => console.log(), errror => console.error(errror), () => {
+    this.loader.loadCharts('GeoChart').subscribe((value) => console.log(), (errror) => console.error(errror), () => {
       this.drawChart();
     });
   }

@@ -5,7 +5,8 @@
  /*
  Component Name : Amexio Accordion
  Component Selector : <amexio-accordion>
- Component Description : Amexio Accordion provides an easy way to organize big forms by grouping the fields in accordion tabs.
+ Component Description : Amexio Accordion provides an easy way to organize big
+ forms by grouping the fields in accordion tabs.
 
 */
 
@@ -21,16 +22,16 @@ import {
   Output,
   QueryList,
   Renderer2,
-  ViewChild
+  ViewChild,
 } from '@angular/core';
-import {AmexioTabPill} from "../tab.pill.component";
+import {AmexioTabPill} from '../tab.pill.component';
 
 @Component({
   selector: 'amexio-vertical-tab-view',
   templateUrl: './vertical.tab.component.html',
-  styleUrls: ['../tab.component.scss']
+  styleUrls: ['../tab.component.scss'],
 })
-export class AmexioVerticalTabComponent implements OnInit, AfterViewInit, AfterContentInit {
+export class AmexioVerticalTabComponent implements AfterContentInit, AfterViewInit, OnInit {
 
   @ViewChild('tab', {read: ElementRef}) public tabs: ElementRef;
 
@@ -67,7 +68,7 @@ description : Callback to invoke on activated tab event.
   }
 
   onTabClick(tab: any) {
-    if(!tab.disabled ) {
+    if (!tab.disabled ) {
       for (let i = 0; i < this.tabCollection.length; i++) {
         if (this.tabCollection[i] === tab) {
           this.tabCollection[i]['active'] = true;
@@ -81,40 +82,36 @@ description : Callback to invoke on activated tab event.
 
   closeTab(tabNode: AmexioTabPill) {
     const newTab: AmexioTabPill[] = [];
-    const tabs = this.tabs;
     let index = 0;
     let tabHighlightIndex = 0;
 
-    this.tabCollection.forEach(tab => {
+    this.tabCollection.forEach((tab) => {
       tab.active = false;
-      if (tab.tabId == tabNode.tabId) {
+      if (tab.tabId === tabNode.tabId) {
         tabHighlightIndex = index;
       }
-      if (tab.tabId != tabNode.tabId) {
+      if (tab.tabId !== tabNode.tabId) {
         newTab.push(tab);
       }
       index++;
     });
 
-    if (tabHighlightIndex == newTab.length) {
+    if (tabHighlightIndex === newTab.length) {
       tabHighlightIndex--;
     }
     this.activateTab(newTab[tabHighlightIndex].tabId);
     this.tabCollection = newTab;
-    if (this.tabCollection.length == 1) {
+    if (this.tabCollection.length === 1) {
 
     }
   }
 
   activateTab(tabId: number) {
-    const tabs = this.tabs;
-    this.tabCollection.forEach(tab => {
+    this.tabCollection.forEach((tab) => {
       tab.active = false;
-      if (tab.tabId == tabId) {
+      if (tab.tabId === tabId) {
         tab.active = true;
       }
     });
   }
-
-
 }

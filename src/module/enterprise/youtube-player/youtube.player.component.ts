@@ -2,14 +2,13 @@
  * Created by pratik on 18/1/18.
  */
 
-
  /*
  Component Name : Amexio youtube player
  Component Selector : <amexio-ee-youtube-player>
  Component Description : A simple configurable of video player.
 */
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {DomSanitizer} from "@angular/platform-browser";
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'amexio-ee-youtube-player', template: `
@@ -24,42 +23,42 @@ import {DomSanitizer} from "@angular/platform-browser";
         </iframe>
       </div>
     </div>
-  `
+  `,
 })
 
 export class AmexioYoutubePlayerComponent implements OnInit {
   name: string;
 
   /*
-Properties 
+Properties
 name : url
 datatype :  any
 version : 4.0 onwards
 default : none
-description : 
-*/ 
+description :
+*/
   @Input() url: any;
 
   /*
-Properties 
+Properties
 name : height
 datatype : number
 version : 4.0 onwards
 default : none
 description : 	Height should be in Px Ex.500
-*/ 
+*/
   @Input() height: number;
 
   /*
-Properties 
+Properties
 name :width
 datatype : number
 version : 4.0 onwards
 default : none
 description : Width should be in percentage Ex.50
 
-*/ 
-  @Input() width : number;
+*/
+  @Input() width: number;
 
   /*
 Events
@@ -69,7 +68,7 @@ version : none
 default : none
 description : it is fired on video player close event
 
-*/ 
+*/
   @Output() onCloseVideoPlayer: EventEmitter<any> = new EventEmitter<any>();
 
   sanitizedUrl: any;
@@ -90,7 +89,9 @@ description : it is fired on video player close event
     } else {
       this.closePadding = this.width - 1;
     }
-    if (this.url != null) this.sanitizedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
+    if (this.url != null) {
+    this.sanitizedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
+    }
   }
 
   routeBackToApp() {

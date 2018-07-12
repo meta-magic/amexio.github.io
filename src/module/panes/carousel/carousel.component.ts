@@ -5,14 +5,13 @@
 /*
  Component Name : Amexio carousel
  Component Selector : <amexio-carousel>
- Component Description : The CarouselView displays a collection of images or other content in a horizontal layout with built-in navigation between the items..
-
+ Component Description : The CarouselView displays a collection of images or
+ other content in a horizontal layout with built-in navigation between the items..
 */
 import {
-  AfterContentInit, Component, ContentChildren, ElementRef, Input, OnInit, QueryList, TemplateRef, ViewChild
+  AfterContentInit, Component, ContentChildren, ElementRef, Input, OnInit, QueryList, TemplateRef, ViewChild,
 } from '@angular/core';
-import {AmexioTemplate} from "./carousel.template";
-
+import {AmexioTemplate} from './carousel.template';
 
 @Component({
   selector: 'amexio-carousel', template: `
@@ -31,17 +30,17 @@ import {AmexioTemplate} from "./carousel.template";
         </li>
       </ul>
     </div>
-  `
+  `,
 })
 
-export class AmexioCarouselComponent implements OnInit, AfterContentInit {
+export class AmexioCarouselComponent implements  AfterContentInit, OnInit {
 
     /*
-Properties 
+Properties
 name : header
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : User can bind title for accordion tab.
 */
   @Input() header: string;
@@ -51,22 +50,22 @@ description : User can bind title for accordion tab.
   */
 
 /*
-Properties 
+Properties
 name : data
 datatype : any
 version : 4.0 onwards
-default : 
-description : Data Containing Image Path, Information and Video URL Refer the DataSource Tab 
+default :
+description : Data Containing Image Path, Information and Video URL Refer the DataSource Tab
 */
   @Input() data: any;
 
   /*
-  Properties 
+  Properties
 name : shuffle-interval
 datatype : number
 version : 4.0 onwards
-default : 
-description : Time interval for shuffling images 
+default :
+description : Time interval for shuffling images
 */
   @Input('shuffle-interval') shuffleinterval: number;
 
@@ -89,10 +88,10 @@ description : Time interval for shuffling images
       this.timeInterval = setInterval(() => {
         let carouselItemPosix = this.tabs.nativeElement;
         if (!((carouselItemPosix.scrollWidth - carouselItemPosix.offsetWidth - carouselItemPosix.scrollLeft ) <= 0)) {
-          //go next
+          // go next
           carouselItemPosix.scrollLeft = carouselItemPosix.scrollLeft + 200;
         } else if (carouselItemPosix.scrollLeft > 0) {
-          //go previous
+          // go previous
           carouselItemPosix.scrollLeft = carouselItemPosix.scrollLeft - 200;
         }
       }, this.shuffleinterval);
@@ -129,7 +128,6 @@ description : Time interval for shuffling images
 
   shuffle() {
 
-
   }
 
   stopTimeInterval() {
@@ -141,15 +139,14 @@ description : Time interval for shuffling images
       this.timeInterval = setInterval(() => {
         let carouselItemPosix = this.tabs.nativeElement;
         if (!((carouselItemPosix.scrollWidth - carouselItemPosix.offsetWidth - carouselItemPosix.scrollLeft ) <= 0)) {
-          //go next
+          // go next
           carouselItemPosix.scrollLeft = carouselItemPosix.scrollLeft + 200;
         } else if (carouselItemPosix.scrollLeft > 0) {
-          //go previous
+          // go previous
           carouselItemPosix.scrollLeft = carouselItemPosix.scrollLeft - 200;
         }
       }, this.shuffleinterval);
     }
   }
-
 
 }

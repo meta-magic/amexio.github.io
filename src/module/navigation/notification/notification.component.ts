@@ -1,8 +1,6 @@
 /**
  * Created by ketangote on 12/18/17.
  */
-
-
 import {AfterContentInit, ChangeDetectorRef,ContentChild, HostListener, TemplateRef, Component, DoCheck, EventEmitter, Input, OnInit, Output,
   QueryList} from '@angular/core';
 
@@ -54,7 +52,6 @@ description : Position of notification window vertically: top or bottom or cente
   */
 
   @Input('horizontal-position') horizontalposition: string;
-
 
  /*
   Properties
@@ -125,8 +122,6 @@ description : Position of notification window vertically: top or bottom or cente
     }
   constructor(private ref: ChangeDetectorRef) {
   }
-
-
   ngOnInit() {
 
     if (this.autodismissmsg) {
@@ -140,15 +135,13 @@ description : Position of notification window vertically: top or bottom or cente
               }, this.autodismissmsginterval);
         }
     }
-    if (this.verticalposition == null) {
+    if (this.verticalposition === null) {
       this.verticalposition = 'top';
-    } else if (this.horizontalposition == null) {
+    } else if (this.horizontalposition === null) {
       this.horizontalposition = 'right'
     }
   this.positionclass = "notification-vertical-" + this.verticalposition + " notification-horizontal-" + this.horizontalposition;
-
   }
-
   closeNotification(msg: any) {
     const count = this.messageData.length;
     for (let i = 0; i < count; i++) {
@@ -157,8 +150,4 @@ description : Position of notification window vertically: top or bottom or cente
       }
     }
   }
-
 }
-
-
-

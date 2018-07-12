@@ -11,17 +11,15 @@
  *
  */
 
-
 /*
- Component Name : Amexio gaugechart 
+ Component Name : Amexio gaugechart
  Component Selector : <amexio-dashboard-gauge>
- Component Description : A gauge with a dial, rendered within the browser using SVG. Guages are available under AmexioDashboardModule from amexio-ng-extensions/dashboard
+ Component Description : A gauge with a dial,rendered within the browser using SVG.
+ Gauges are available under AmexioDashboardModule from amexio-ng-extensions/dashboard
 */
-import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from '@angular/core';
-import {DashboardLoaderService} from "../chart.loader.service";
-import {DashBoardTitle} from "../dashboardtitle/dashboard.title.component";
-import { ViewChild } from '@angular/core';
-import { ElementRef } from '@angular/core';
+import {AfterContentInit, Component, ContentChildren, ElementRef, Input, OnInit, QueryList, ViewChild} from '@angular/core';
+import {DashboardLoaderService} from '../chart.loader.service';
+import {DashBoardTitle} from '../dashboardtitle/dashboard.title.component';
 declare var google: any;
 @Component({
   selector: 'amexio-dashboard-gauge', template: `
@@ -136,7 +134,7 @@ declare var google: any;
     }
   }
 
-  `]
+  ` ] ,
 })
 
 export class GaugeChartComponent implements AfterContentInit, OnInit {
@@ -151,83 +149,82 @@ export class GaugeChartComponent implements AfterContentInit, OnInit {
   elementId: string;
 
   /*
-Properties 
+Properties
 name : width
 datatype :  string
 version : 4.0 onwards
 default : none
 description :  Width of chart
-*/  
+*/
   @Input() width: string;
 
   /*
-Properties 
+Properties
 name : height
 datatype :  string
 version : 4.0 onwards
 default : none
 description :  Height of chart
-*/ 
+*/
   @Input() height: string;
 
+  showChart: boolean;
+  _data: any;
 
-  showChart:boolean;
-  _data:any;
-
-  get data():any{
+  get data(): any{
     return this._data;
   }
 
 /*
-Properties 
+Properties
 name : data
 datatype : any
 version : 4.0 onwards
 default : none
 description : Local data for gauge chart
-*/ 
+*/
   @Input('data')
-  set data(data:any){
-    if(data){
-      this._data=data;
-      this.showChart=true;
-    }else{
-      this.showChart=false;
+  set data(data: any){
+    if (data) {
+    this._data = data;
+    this.showChart = true;
+    } else {
+    this.showChart = false;
     }
   }
 
 /*
-Properties 
+Properties
 name : red-color-from
 datatype : number
 version : 4.0 onwards
 default : none
 description : The lowest value for a range marked by a red color.
-*/ 
+*/
   @Input('red-color-from') redcolorfrom: number;
 
   /*
-Properties 
+Properties
 name : red-color-from
 datatype : number
 version : 4.0 onwards
 default : none
 description : The highest value for a range marked by a red color.
-*/ 
+*/
   @Input('red-color-to') redcolorto: number;
 
    /*
-Properties 
+Properties
 name : yellow-color-from
 datatype : number
 version : 4.0 onwards
 default : none
 description : The lowest value for a range marked by a yellow color.
-*/ 
+*/
   @Input('yellow-color-from') yellowcolorfrom: number;
 
    /*
-Properties 
+Properties
 name : yellow-color-to
 datatype : number
 version : 4.0 onwards
@@ -236,9 +233,9 @@ description : The highest value for a range marked by a yellow color.
 */
   @Input('yellow-color-to') yellowcolorto: number;
 
-  //allow to show minor ticks
+  // allow to show minor ticks
      /*
-Properties 
+Properties
 name : scale-value
 datatype : number
 version : 4.0 onwards
@@ -256,12 +253,11 @@ description : The number of minor tick section in each major tick section.
   @ViewChild('gaugedashboard') private gaugedashboard: ElementRef;
 
   constructor(private loader: DashboardLoaderService) {
-    // this.id = 'amexio-chart-gauge' + Math.floor(Math.random() * 90000) + 10000;
     this.width = '100%';
   }
 
   drawChart() {
-    if(this.showChart){
+    if (this.showChart) {
       this.gaugeData = google.visualization.arrayToDataTable(this._data);
       this.options = {
         width: this.width,
@@ -270,30 +266,26 @@ description : The number of minor tick section in each major tick section.
         redTo: this.redcolorto,
         yellowFrom: this.yellowcolorfrom,
         yellowTo: this.yellowcolorto,
-        scalevalue: this.scalevalue
+        scalevalue: this.scalevalue,
       };
-      if(this.gaugeData){
+      if (this.gaugeData) {
         this.chart = new google.visualization.Gauge(this.gaugedashboard.nativeElement);
         this.hasLoaded = true;
         this.chart.draw(this.gaugeData, this.options);
       }
     }
-
-
   }
 
   ngAfterContentInit(): void {
     this.chartTitleArray = this.chartTitleComp.toArray();
-    //take first component
-    if (this.chartTitleArray.length == 1) {
+    // take first component
+    if (this.chartTitleArray.length === 1) {
       this.chartTitleComponent = this.chartTitleArray.pop();
     }
   }
-
-
   ngOnInit(): void {
     this.hasLoaded = false;
-    this.loader.loadCharts('Gauge').subscribe(value => console.log(), errror => console.error(errror), () => {
+    this.loader.loadCharts('Gauge').subscribe((value) => console.log(), (errror) => console.error(errror), () => {
       this.drawChart();
     });
   }

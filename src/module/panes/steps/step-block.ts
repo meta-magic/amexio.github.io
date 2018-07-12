@@ -11,13 +11,13 @@ import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'amexio-step-block', template: `
-  `
+  `,
 })
 
 export class StepBlockComponent implements OnInit {
 
   /*
-Properties 
+Properties
 name : active
 datatype : boolean
 version : 4.0 onwards
@@ -27,17 +27,17 @@ description : The current active step.
   @Input() active: boolean;
 
     /*
-Properties 
+Properties
 name : label
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Label for step.
 */
   @Input() label: string;
 
     /*
-Properties 
+Properties
 name : icon
 datatype : string
 version : 4.0 onwards

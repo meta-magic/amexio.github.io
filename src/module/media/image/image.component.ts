@@ -16,46 +16,47 @@
  /*
  Component Name : Amexio image
  Component Selector : <amexio-image>
- Component Description : Amexio image is an artifact that depicts visual perception.
+ Component Description : Amexio image is an artifact that depicts visual
+ perception.
                         It supports icons (font-awesome) / image
 */
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
-
 @Component({
-  selector: 'amexio-image', templateUrl: './image.component.html'
+  selector: 'amexio-image', templateUrl: './image.component.html',
 })
 
 export class AmexioImageComponent implements OnInit {
 
     /*
-Properties 
+Properties
 name : tooltip
 datatype :  string
 version : 4.0 onwards
-default : 
+default :
 description : TooltipMessage on image /icon.
-*/ 
+*/
   @Input() tooltip: string;
 
    /*
-Properties 
+Properties
 name : title
 datatype :  string
 version : 4.0 onwards
-default : 
+default :
 description : Title of image
-*/ 
+*/
   @Input() title: string;
 
    /*
-Properties 
+Properties
 name : path
 datatype : string
 version : 4.0 onwards
-default : 
-description : Specifies the URL of an image, This attribute is useful only for images
-*/ 
+default :
+description : Specifies the URL of an image, This attribute is useful only
+for images
+*/
   @Input() path: string;
 
    /*
@@ -63,10 +64,10 @@ Properties
 name : icon-class
 datatype :  string
 version : 4.0 onwards
-default : 
-description : Material icon class name Material i.e icon-class=material-icons / font-awesome i.e icon-class= fa fa-address-book fa-lg
-
-*/ 
+default :
+description : Material icon class name Material i.e icon-class=material-icons
+/ font-awesome i.e icon-class= fa fa-address-book fa-lg
+*/
   @Input('icon-class') iconclass: string;
 
    /*
@@ -74,9 +75,9 @@ Properties
 name : c-class
 datatype :  string
 version : 4.0 onwards
-default : 
+default :
 description : Used for custom style classes
-*/ 
+*/
   @Input('c-class') cclass: string = "";
 
    /*
@@ -84,31 +85,31 @@ Properties
 name : mda
 datatype :  string
 version : 4.0 onwards
-default : 
+default :
 description : This attribute is useful for only material icons . Material Example mda='cloud'
 
-*/ 
+*/
   @Input() mda: string;
 
    /*
-Properties 
+Properties
 name : width
 datatype :  string
 version : 4.0 onwards
-default : 
+default :
 description : Width of image.
-*/ 
-  @Input() width:string;
+*/
+  @Input() width: string;
 
    /*
-Properties 
+Properties
 name : height
 datatype :  string
 version : 4.0 onwards
 default :
 description : Height of image.
-*/ 
-  @Input() height:string;
+*/
+  @Input() height: string;
 
    /*
 Events
@@ -117,75 +118,74 @@ datatype :  none
 version : none
 default : none
 description : Get image / icon click event.
-*/ 
+*/
   @Output() onClick: EventEmitter<any> = new EventEmitter<any>();
 
    /*
-Properties 
+Properties
 name : filter
 datatype :  string
 version : 4.1.9 onwards
 default :
 description : Filter type can be saturate / hue / invert / grayscale / brightness / blur / sepia / shadow / opacity
 
-*/ 
+*/
   @Input('filter') filter: string;
 
    /*
-Properties 
+Properties
 name : overlay-effect
 datatype :  string
 version : 4.1.9 onwards
-default : 
-description : Overlay-effect can be set fade / box / left / top / bottom / right / title
+default :
+description : Overlay-effect can be set fade / box / left / top / bottom /
+right / title
 
-*/ 
+*/
   @Input('overlay-effect') overlayEffect: string;
 
    /*
-Properties 
+Properties
 name : overlay-text
 datatype :  string
 version : 4.1.9 onwards
-default : 
+default :
 description : Overlay-text can be set
-
-*/ 
+*/
   @Input('overlay-text') overlayText: string;
 
    /*
-Properties 
+Properties
 name : image-title
 datatype :  string
 version : 4.1.9 onwards
 default :
 description : Image-title can be set
-
-*/ 
+*/
   @Input('image-title') imgTitle: string;
 
    /*
-Properties 
+Properties
 name : title-position
 datatype :  string
 version : 4.1.9 onwards
 default : right
 description : Overlay-text can be set top-right / bottom-right / bottom-left / top-left / centered
-*/ 
+*/
   @Input('title-position') position: string;
 
    /*
-Properties 
+Properties
 name : para
 datatype :  string
 version : 4.1.9 onwards
-default : 
+default :
 description : Description to display on hover
-*/ 
+*/
   @Input('para') titlePara: string;
-  
-  overlay : boolean = false;
-  overlayTextClass :string;
+
+  overlay: boolean = false;
+  overlayTextClass: string;
   constructor() {
   }
 
@@ -194,31 +194,30 @@ description : Description to display on hover
   }
 
   ngOnInit(): void {
-    if(!(this.width || this.height)){
-      this.cclass=this.cclass+" img-fluid";
+    if (!(this.width || this.height)) {
+      this.cclass = this.cclass + " img-fluid";
     }
-    if(this.filter){
+    if (this.filter) {
       this.cclass = this.cclass + " image-" + this.filter;
     }
-    if(this.overlayEffect)
-    {
+    if (this.overlayEffect) {
       this.overlay = true;
-      if(!this.overlayText){
-        this.overlayText="";
+      if (!this.overlayText) {
+        this.overlayText = "";
       }
-      if(this.overlayText) {
+      if (this.overlayText) {
         this.overlayTextClass = "overlay-text overlay-" + this.overlayEffect + "-text";
       }
-      this.overlayEffect = "overlay overlay-" + this.overlayEffect;     
+      this.overlayEffect = "overlay overlay-" + this.overlayEffect;  
     }
-    if(this.position && !this.imgTitle){
+    if (this.position && !this.imgTitle) {
       this.imgTitle = " ";
       }
-    if(this.imgTitle){
-      if(this.position) {
+    if (this.imgTitle) {
+      if (this.position) {
         this.position = "image-title image-" + this.position;
       } else {
-        this.position = "image-title image-bottom-right"
+        this.position = "image-title image-bottom-right";
       }
     }
   }
