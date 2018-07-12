@@ -11,7 +11,7 @@ import {IconLoaderService} from '../../services/icon/icon.service';
 @Component({
   selector: 'amexio-form-icon',
    template: `
-    <ng-container *ngIf="iconLoaderService.iconToUse == 'fa'">
+    <ng-container *ngIf="iconLoaderService.iconToUse == 'fa' ">
       <ng-container *ngIf="customclass != null">
         <i class="{{customclass}}" aria-hidden="true" (click)="onClick.emit($event)"></i>
       </ng-container>
@@ -63,10 +63,10 @@ description : sets the customclass for icon
   ngOnInit() {
   }
   getIconClass(): string {
-    if (this.iconLoaderService.iconMappings !== null) {
+    if (this.iconLoaderService.iconMappings != null) {
       let iconObject = this.iconLoaderService.iconMappings.find(
         (obj: any) => obj.component === this.key);
-      if (iconObject !== null) {
+      if (iconObject != null) {
         return iconObject[this.iconLoaderService.iconToUse.toString()];
        } else {
         return '';
