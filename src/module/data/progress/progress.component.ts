@@ -127,8 +127,7 @@ not in use
     }
     if (this.type && !this.amexiocolor) {
       this.progressclass = this.progressclass  + this.type.toLocaleLowerCase();
-    }
-    else if (this.amexiocolor && !this.type) {
+    } else if (this.amexiocolor && !this.type) {
       this.progressclass = this.progressclass  + this.amexiocolor.toLocaleLowerCase();
     }
 

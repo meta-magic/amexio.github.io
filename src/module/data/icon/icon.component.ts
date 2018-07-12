@@ -53,8 +53,7 @@ export class AmexioDataIconComponent implements OnInit {
       let iconObject = this.iconLoaderService.iconMappings.find((obj: any) => obj.component === this.key);
       if (iconObject != null) {
         return iconObject[this.iconLoaderService.iconToUse.toString()];
-      }
-      else {
+      } else {
         return '';
       }
     }

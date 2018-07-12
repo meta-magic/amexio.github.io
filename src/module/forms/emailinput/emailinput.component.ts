@@ -3,7 +3,7 @@
  Component Selector :  <amexio-email-input>
  Component Description : Email input field
  */
-import {Component, EventEmitter, forwardRef, Input, Output, OnInit} from '@angular/core';
+import {Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 const noop = () => {
 };

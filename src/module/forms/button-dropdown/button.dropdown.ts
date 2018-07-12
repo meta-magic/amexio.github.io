@@ -187,7 +187,7 @@ description : Fire when button-dropdown item button/link click
 
   itemClick(event: any, itemData: any) {
     if (this.buttonGroupLocalData && this.buttonGroupLocalData.length > 0) {
-      this.getLinkData.emit( {'event': event,'parentRef': this,'data': itemData});
+      this.getLinkData.emit({'event': event, 'parentRef': this, 'data': itemData});
     } else {
       if (!itemData.disabled) {
         itemData.onItemClick.emit(event);
