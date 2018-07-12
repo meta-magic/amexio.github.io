@@ -215,7 +215,7 @@ description : fires on leaving component and returns its value
     if (this.hovered > 0) {
       if (this.hoveredPercent !== undefined && this.hovered === item) {
         return this.hoveredPercent;
-        return this.hovered >= item ? 100 : 0;
+      } else { return this.hovered >= item ? 100 : 0;
       }
     } else {
       return this.model >= item ? 100 : 100 - Math.round((item - this.model) * 10) * 10;
