@@ -19,7 +19,7 @@
 */
 import {AfterContentInit, Component, ContentChildren, ElementRef, Input, OnInit, QueryList, ViewChild} from '@angular/core';
 import {DashboardLoaderService} from '../chart.loader.service';
-import {DashBoardTitle} from '../dashboardtitle/dashboard.title.component';
+import {DashBoardTitleComponent} from '../dashboardtitle/dashboard.title.component';
 declare var google: any;
 @Component({
   selector: 'amexio-dashboard-gauge', template: `
@@ -244,11 +244,11 @@ description : The number of minor tick section in each major tick section.
 */
   @Input('scale-value') scalevalue: number;
 
-  @ContentChildren(DashBoardTitle) chartTitleComp: QueryList<DashBoardTitle>;
+  @ContentChildren(DashBoardTitleComponent) chartTitleComp: QueryList<DashBoardTitleComponent>;
 
-  chartTitleArray: DashBoardTitle[];
+  chartTitleArray: DashBoardTitleComponent[];
 
-  chartTitleComponent: DashBoardTitle;
+  chartTitleComponent: DashBoardTitleComponent;
 
   @ViewChild('gaugedashboard') private gaugedashboard: ElementRef;
 
@@ -285,7 +285,7 @@ description : The number of minor tick section in each major tick section.
   }
   ngOnInit(): void {
     this.hasLoaded = false;
-    this.loader.loadCharts('Gauge').subscribe((value) => console.log(), (errror) => console.error(errror), () => {
+    this.loader.loadCharts('Gauge').subscribe((value: any) => console.log(), (errror: any) => console.error(errror), () => {
       this.drawChart();
     });
   }

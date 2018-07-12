@@ -258,10 +258,10 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit {
       this.isFullWindow = false;
     } else if (this.maximize) {
       this.isFullWindow = true;
-      this.bodyHeight = "100%";
+      this.bodyHeight = '100%';
     }
     if (this.footeralign == null) {
-      this.footeralign = "right";
+      this.footeralign = 'right';
     }
 
     if (  this.verticalposition === "") {

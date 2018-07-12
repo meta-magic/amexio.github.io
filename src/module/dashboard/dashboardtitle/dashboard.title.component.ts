@@ -22,7 +22,7 @@ import {Component, Input, OnInit} from '@angular/core';
   selector: 'amexio-dashboard-title', template: ` `,
 })
 
-export class DashBoardTitle implements OnInit {
+export class DashBoardTitleComponent implements OnInit {
 
 /*
 Properties

@@ -84,7 +84,7 @@ export class DashboardLoaderService {
      * @param observer
      */
     loadBaseChart(observer: any) {
-        google.charts.load('current', {'packages': ['corechart']});
+        google.charts.load('current', {packages: ['corechart']});
         google.charts.setOnLoadCallback(() => {
             observer.complete();
         });
@@ -97,7 +97,7 @@ export class DashboardLoaderService {
         if (google.visualization.hasOwnProperty(chartName)) {
             observer.complete();
         } else {
-            google.charts.load('current', {'packages': [this.chartPackage[chartName]]});
+            google.charts.load('current', {packages: [this.chartPackage[chartName]]});
             google.charts.setOnLoadCallback(() => {
                 observer.complete();
             });

@@ -296,13 +296,17 @@ description : it will search for text relevant to entered character
 
   getData(httpResponse: any) {
     let responsedata: any = httpResponse;
-    let dr = this.datareader.split('.');
-    for (let ir = 0; ir < dr.length; ir++) {
-      responsedata = responsedata[dr[ir]];
+    if (this.datareader != null) {
+      let dr = this.datareader.split('.');
+      for (let ir = 0; ir < dr.length; ir++) {
+        responsedata = responsedata[dr[ir]];
+      }
+    } else {
+      responsedata = httpResponse;
     }
     return responsedata;
   }
-
+  
   callService() {
     this.treeViewFilterService.fetchData(this.httpurl, this.httpmethod).subscribe((response) => {
       this.data = response;

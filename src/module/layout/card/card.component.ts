@@ -143,9 +143,9 @@ description : Provides card height.
     this.footeralign = 'right';
   }
   ngOnInit() {
+    this.onResize();
   }
   ngAfterViewInit() {
-    this.onResize();
   }
   ngAfterContentInit() {
     // FOR HEADER PADING

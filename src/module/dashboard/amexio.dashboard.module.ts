@@ -3,7 +3,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {ModuleWithProviders, NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 
-import {DashBoardTitle} from './dashboardtitle/dashboard.title.component';
+import {DashBoardTitleComponent} from './dashboardtitle/dashboard.title.component';
 import {DataPointCenterComponent} from './datapoints/center.component';
 import {DataPointsComponent} from './datapoints/datapoints.component';
 import {DataPointEastComponent} from './datapoints/east.component';
@@ -27,7 +27,7 @@ export * from './gaugechart/gauge.chart.component';
 export * from '../services/data/common.data.service';
 
 const DASHBOARD = [
-  DashBoardTitle,
+  DashBoardTitleComponent,
   DataPointCenterComponent,
   DataPointsComponent,
   DataPointEastComponent,

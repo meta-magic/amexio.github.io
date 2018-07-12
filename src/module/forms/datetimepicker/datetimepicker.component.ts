@@ -336,7 +336,7 @@ export class AmexioDateTimePicker implements OnInit {
     }
   }
   onInput(event: any) {
-    if (event.target.value != null && event.target.value != '') {
+    if (event.target.value !== null && event.target.value !== '') {
       let timeValue = event.target.value.split(':');
       if (timeValue != null) {
         let hrs = parseInt(timeValue[0].trim());
@@ -503,7 +503,7 @@ export class AmexioDateTimePicker implements OnInit {
   }
   // set accessor including call the onchange callback
   set value(v: any) {
-    if (v != this.innerValue) {
+    if (v !== this.innerValue) {
       this.innerValue = v;
       this.onChangeCallback(v);
     }
@@ -514,7 +514,7 @@ export class AmexioDateTimePicker implements OnInit {
   }
   // From ControlValueAccessor interface
   writeValue(value: any) {
-    if (value != this.innerValue) {
+    if (value !== this.innerValue) {
       this.innerValue = value;
       if (this.required && this.innerValue instanceof Date || ('number' === typeof this.innerValue)) {
         this.dateModel = this.innerValue;
@@ -817,11 +817,11 @@ export class AmexioDateTimePicker implements OnInit {
           (element.year === min.getFullYear() && element.year === max.getFullYear())) {
           this.backArrowFlag = true;
         }
-        if (element.year === max.getFullYear() && element.year != min.getFullYear()) {
+        if (element.year === max.getFullYear() && element.year !== min.getFullYear()) {
           this.forwardArrowFlag = true;
           this.backArrowFlag = false;
         }
-        if (element.year != min.getFullYear() && element.year != max.getFullYear()) {
+        if (element.year !== min.getFullYear() && element.year !== max.getFullYear()) {
           this.forwardArrowFlag = false;
           this.backArrowFlag = false;
         }
@@ -878,7 +878,7 @@ export class AmexioDateTimePicker implements OnInit {
       if (element.year === max.getFullYear()) {
         this.forwardArrowFlag = true;
       }
-      if (element.year != min.getFullYear() && element.year != max.getFullYear()) {
+      if (element.year !== min.getFullYear() && element.year !== max.getFullYear()) {
         this.forwardArrowFlag = false;
         this.backArrowFlag = false;
       }
@@ -925,11 +925,11 @@ export class AmexioDateTimePicker implements OnInit {
           (element.year === min.getFullYear() && element.year === max.getFullYear())) {
           this.backArrowFlag = true;
         }
-        if (element.year === min.getFullYear() && element.year != max.getFullYear()) {
+        if (element.year === min.getFullYear() && element.year !== max.getFullYear()) {
           this.forwardArrowFlag = false;
           this.backArrowFlag = true;
         }
-        if (element.year != min.getFullYear() && element.year != max.getFullYear()) {
+        if (element.year !== min.getFullYear() && element.year !== max.getFullYear()) {
           this.forwardArrowFlag = false;
           this.backArrowFlag = false;
         }
