@@ -29,7 +29,7 @@ export const CUSTOM_DROPDOWN_CONTROL_VALUE_ACCESSOR: any = {
   styleUrls: ['./dropdown.component.scss'],
   providers: [CUSTOM_DROPDOWN_CONTROL_VALUE_ACCESSOR]
 })
-export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAccessor {
+export class AmexioDropDownComponent implements OnInit, ControlValueAccessor {
 
    /*
 Properties
@@ -59,7 +59,19 @@ version : 4.0 onwards
 default :
 description : Local data for dropdown.
 */
-  @Input() data: any;
+_data : any;
+componentLoaded:boolean;
+@Input('data')
+set data(value: any) {
+  this._data = value;
+  if(this.componentLoaded){
+    this.setData(this._data);
+  }
+}
+get data() : any{
+  return this._data;
+}
+
 
  /*
 Properties
@@ -121,8 +133,8 @@ default : false
 description : true for search box enable
 */
   @Input() search: boolean;
-  
-  
+
+
    /*
    Properties
    name : readonly
@@ -163,7 +175,7 @@ Properties
 name : error-msg
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Sets the error message
 */
   @Input('error-msg')
@@ -357,7 +369,7 @@ description : Set enable / disable popover.
       this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
     }
-
+    this.componentLoaded=true;
   }
   setData(httpResponse: any) {
     //Check if key is added?
@@ -411,12 +423,14 @@ description : Set enable / disable popover.
     }
     this.maskloader=false;
   }
-  ngDoCheck() {
-    if (JSON.stringify(this.previousData) != JSON.stringify(this.data)) {
-      this.previousData = JSON.parse(JSON.stringify(this.data));
-      this.setData(this.data);
-    }
-  }
+  // ngDoCheck() {
+  //   console.log('DO CHECK FOR DROPDWON '+this.fieldlabel);
+  //   if (JSON.stringify(this.previousData) != JSON.stringify(this.data)) {
+  //     this.previousData = JSON.parse(JSON.stringify(this.data));
+  //     this.setData(this.data);
+  //   }
+  // }
+
   onItemSelect(row: any) {
     if (this.multiselect) {
       let optionsChecked: any [] = [];
