@@ -730,7 +730,7 @@ export class AmexioDateTimePicker implements OnInit {
         break;
       default: break;
     }
- }
+  }
   getDropdownYear(year: any) {
     this.yearList1.forEach((element: any) => {
       if (element.flag) {
@@ -843,7 +843,7 @@ export class AmexioDateTimePicker implements OnInit {
           this.yearList2[i].disabled = false;
         } // for ends
       } // if ends      // main if ends
-       // *****************************************************
+      // *****************************************************
     } else {
       for (i = 0; i < 5; i++) {
         this.yearList1[i].year = this.yearList1[i].year - 10;

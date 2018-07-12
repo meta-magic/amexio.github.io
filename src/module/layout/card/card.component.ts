@@ -1,7 +1,3 @@
-import { ContentChildren, QueryList } from '@angular/core';
-import { AmexioHeaderComponent } from '../../panes/header/pane.action.header';
-import { AmexioFooterComponent } from './../../panes/action/pane.action.footer';
-import { AmexioBodyComponent } from './../../panes/body/pane.action.body';
 /**
  * Created by ketangote on 12/18/17.
  */
@@ -13,7 +9,10 @@ Component Description : Amexio Card which renders card based on title, body and 
 .
 */
 
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ContentChildren, ElementRef, EventEmitter, Input, OnInit, Output, QueryList, ViewChild } from '@angular/core';
+import { AmexioFooterComponent } from './../../panes/action/pane.action.footer';
+import { AmexioBodyComponent } from './../../panes/body/pane.action.body';
+import { AmexioHeaderComponent } from '../../panes/header/pane.action.header';
 
 @Component({
   selector: 'amexio-card', template: `

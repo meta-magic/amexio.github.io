@@ -5,7 +5,8 @@
 /*
 Component Name : Amexio BorderLayout
 Component Selector : <amexio-borderlayout>
-Component Description :Amexio border layout lays container, arranging and resizing components fit in five regions: north, south, east, west, center
+Component Description :Amexio border layout lays container, arranging and resizing components
+fit in five regions: north, south, east, west, center
 */
 
 import {Component, ContentChildren, OnInit, QueryList} from '@angular/core';
