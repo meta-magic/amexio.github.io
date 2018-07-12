@@ -9,7 +9,7 @@
     'south south south south south south';
   grid-gap: $borderGridGap;
   padding : $borderPadding;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: auto;
 }
 
 .borderlayout-container-N-E-C-W-S  aside {
@@ -25,7 +25,7 @@
     'south south south south south south';
   grid-gap: $borderGridGap;
   padding : $borderPadding;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: auto;
 }
 
 .borderlayout-container-N-E-C-S  aside {
@@ -41,7 +41,7 @@
     'south south south south south south';
   grid-gap: $borderGridGap;
   padding : $borderPadding;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: auto;
 }
 
 .borderlayout-container-N-C-W-S  aside {
@@ -56,7 +56,7 @@
     'south south south south south south';
   grid-gap: $borderGridGap;
   padding : $borderPadding;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: auto;
 }
 
 .borderlayout-container-E-C-W-S  aside {
@@ -73,7 +73,7 @@
     'south south south south south south';
   grid-gap: $borderGridGap;
   padding : $borderPadding;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: auto;
 }
 
 .borderlayout-container-N-C-S  aside {
@@ -88,7 +88,7 @@
     'south south south south south south';
   grid-gap: $borderGridGap;
   padding : $borderPadding;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: auto;
 }
 
 .borderlayout-container-E-C-S  aside {
@@ -103,7 +103,7 @@
     'south south south south south south';
   grid-gap: $borderGridGap;
   padding : $borderPadding;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: auto;
 }
 
 .borderlayout-container-C-W-S  aside {
@@ -118,7 +118,7 @@
     'center center center center center center';
   grid-gap: $borderGridGap;
   padding : $borderPadding;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: auto;
 }
 
 .borderlayout-container-N-C  aside {
@@ -133,7 +133,7 @@
     'south south south south south south';
   grid-gap: $borderGridGap;
   padding : $borderPadding;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: auto;
 }
 
 .borderlayout-container-C-S  aside {
