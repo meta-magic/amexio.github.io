@@ -26,7 +26,7 @@ import {CommonDataService} from '../../services/data/common.data.service';
         <label>Drag and Drop Files below</label>
       </ng-container>
       <div class='upload-drop-zone {{dropClass}}' (drop)='onFileDrop($event)' (dragover)='onDragOver($event)'
-           (dragleave)='dropClass = '';' #drpZone>
+           (dragleave)='dropClass = "";' #drpZone>
         Just drag and drop files here
       </div>
     </ng-container>
