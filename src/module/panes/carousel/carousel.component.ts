@@ -9,7 +9,7 @@
  other content in a horizontal layout with built-in navigation between the items..
 */
 import {
-  AfterContentInit, Component, ContentChildren, ElementRef, Input, OnInit, QueryList, TemplateRef, ViewChild, 
+  AfterContentInit, Component, ContentChildren, ElementRef, Input, OnInit, QueryList, TemplateRef, ViewChild,
 } from '@angular/core';
 import {AmexioTemplate} from './carousel.template';
 

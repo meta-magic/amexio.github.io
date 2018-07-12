@@ -19,7 +19,7 @@ export class DeviceQueryService {
       retina: '(-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi)',
     };
 
-  Check= function(mq : any) {
+  Check= function(mq: any) {
     if (isPlatformBrowser(this.platformId)) {
       if (!mq) {
         return;

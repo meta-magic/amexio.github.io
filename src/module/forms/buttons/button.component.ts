@@ -148,10 +148,9 @@ description : Set true to show buttom block
   constructor() { }
   buttonClick(event: any) {
     if (!this.disabled) {
-      this.onClick.emit(event);
+    this.onClick.emit(event);
     }
   }
   ngOnInit(): void {
   }
-  
  }

@@ -1,6 +1,7 @@
 import {AfterContentInit, Component, ContentChildren, ElementRef, EventEmitter,
   HostListener, Input, OnInit, Output, QueryList } from '@angular/core';
 import { AmexioDropDownitemsComponent } from './dropdownmenu.component.items';
+
 import { DeviceQueryService} from '../../services/device/device.query.service';
 @Component({
   selector: 'amexio-drop-down-menu',

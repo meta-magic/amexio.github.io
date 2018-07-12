@@ -11,9 +11,9 @@ body and actions user has configured
 */
 
 import { Component, ContentChildren, ElementRef, EventEmitter, Input, OnInit, Output, QueryList, ViewChild } from '@angular/core';
+import { AmexioHeaderComponent } from '../../panes/header/pane.action.header';
 import { AmexioFooterComponent } from './../../panes/action/pane.action.footer';
 import { AmexioBodyComponent } from './../../panes/body/pane.action.body';
-import { AmexioHeaderComponent } from '../../panes/header/pane.action.header';
 
 @Component({
   selector: 'amexio-card', template: `
