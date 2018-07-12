@@ -960,7 +960,6 @@ description : Context Menu provides the list of menus on right click of row.
     }
 
     /*-------Aggregation---------*/
- 
     this.renderData();
     this.cd.detectChanges();
   }

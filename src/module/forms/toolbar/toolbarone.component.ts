@@ -1,8 +1,8 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'amexio-toolbar-item',
-  template:`
+  template: `
   <div [ngClass]="{'toolbaritemseperatorright':(seperatorposition === 'right'),'toolbaritemseperatorleft':(seperatorposition === 'left')}">
   <ng-content></ng-content>
   </div>
@@ -14,15 +14,13 @@ Properties
 name :seperator-position
 datatype :string
 version : 4.2onwards
-default : 
+default :
 description : This will seperate the toolbar right and left.
 */
-@Input('seperator-position') seperatorposition:string;
+@Input('seperator-position') seperatorposition: string;
 
-
-  constructor() { 
+  constructor() {
   }
   ngOnInit() {
   }
- 
 }

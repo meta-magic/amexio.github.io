@@ -9,12 +9,12 @@ Component Description : Amexio border layout lays out a container,
                         north, south, east, west, and center.
 
 */
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'amexio-borderlayout-item',
   templateUrl: './borderlayoutitem.component.html',
-   host: {
+  host: {
     '[class]': 'positionClass',
   },
 })
@@ -37,11 +37,17 @@ description : Layout the contents to North , East , West , Center & South positi
 
   getClassType() {
     let pos = '';
-    if (this.position.toLowerCase() === 'north') { pos = 'N'; }
-    else if (this.position.toLowerCase() === 'east') { pos = 'E'; }
-    else if (this.position.toLowerCase() === 'center') { pos = 'C'; }
-    else if (this.position.toLowerCase() === 'west') { pos = 'W'; }
-    else if (this.position.toLowerCase() === 'south') { pos = 'S'; }
+    if (this.position.toLowerCase() === 'north') {
+      pos = 'N';
+    } else if (this.position.toLowerCase() === 'east') {
+      pos = 'E';
+    } else if (this.position.toLowerCase() === 'center') {
+      pos = 'C';
+    } else if (this.position.toLowerCase() === 'west') {
+      pos = 'W';
+    } else if (this.position.toLowerCase() === 'south') {
+      pos = 'S';
+    }
 
     this.positionClass = this.positionClass + pos;
 

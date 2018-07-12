@@ -45,11 +45,9 @@ ngAfterContentInit() {
     this.accordionCollections.forEach((node) => {
       if (this.expandAll) {
         node.active = true;
-      }
-      else if (node.active) {
+      } else if (node.active) {
         node.active = true;
-      }
-      else {
+      } else {
         node.active = false;
       }
 
@@ -67,7 +65,7 @@ activateAccordionPane(node: AmexioAccordionTabComponent) {
     this.accordionCollections.forEach((tab) => {
      if (tab === node) {
         tab.active = node.active ;
-      }else {
+      } else {
        tab.active = false ;
       }});
  }}

@@ -93,83 +93,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
    */
   @Input('display-field') displayfield: string;
 
-  @Input('value-field') valuefield: string;
-  /*
-   Events
-   name : onBlur
-   datatype : any
-   version : 4.0 onwards
-   default : none
-   description : On blur event
-   */
-  @Output() onBlur: any = new EventEmitter<any>();
-  /*
-   Events
-   name : input
-   datatype : any
-   version : none
-   default :
-   description : 	On input event field.
-   */
-  @Output() input: any = new EventEmitter<any>();
-  /*
-   Events
-   name : focus
-   datatype : any
-   version : none
-   default :
-   description : On focus event field.
-   */
-  @Output() focus: any = new EventEmitter<any>();
-  /*
-   Events
-   name : change
-   datatype : any
-   version : none
-   default :
-   description : On field value change event
-   */
-  @Output() change: any = new EventEmitter<any>();
-  /*
-   Events
-   name : onClick
-   datatype : any
-   version : none
-   default :
-   description : On click event
-   */
-  @Output() onClick: any = new EventEmitter<any>();
-
-  @ViewChild('dpList') dpList: any;
-
-  @ViewChild('dropdownitems', { read: ElementRef }) public dropdownitems: ElementRef;
-
-  posixUp: boolean;
-
-  activeindex: number = 0;
-
-  currentActive: any;
-
-  displayValue: any;
-
-  helpInfoMsg: string;
-
-  _errormsg: string;
-
-  isComponentValid: boolean;
-
-  get errormsg(): string {
-    return this._errormsg;
-  }
-
-  navigateKey(event: any) {
-  }
-
-  selectedindex: number = 0;
-
-  scrollposition: number = 30;
-
-  /*
+    /*
    Properties
    name : error-msg
    datatype : none
@@ -181,8 +105,6 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
   set errormsg(value: string) {
     this.helpInfoMsg = value + '<br/>';
   }
-
-  showToolTip: boolean;
   /*
    Properties
    name : place-holder
@@ -249,14 +171,6 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
    */
   @Input('enable-popover') enablepopover: boolean;
 
-  responseData: any;
-
-  previousData: any;
-
-  viewData: any;
-
-  filteredResult: any;
-
   @Input() key: any;
   /*
    Properties
@@ -268,9 +182,99 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
    */
   @Input('trigger-char') triggerchar: number;
 
+  @Input('value-field') valuefield: string;
+  /*
+   Events
+   name : onBlur
+   datatype : any
+   version : 4.0 onwards
+   default : none
+   description : On blur event
+   */
+  @Output() onBlur: any = new EventEmitter<any>();
+  /*
+   Events
+   name : input
+   datatype : any
+   version : none
+   default :
+   description : 	On input event field.
+   */
+  @Output() input: any = new EventEmitter<any>();
+  /*
+   Events
+   name : focus
+   datatype : any
+   version : none
+   default :
+   description : On focus event field.
+   */
+  @Output() focus: any = new EventEmitter<any>();
+  /*
+   Events
+   name : change
+   datatype : any
+   version : none
+   default :
+   description : On field value change event
+   */
+  @Output() change: any = new EventEmitter<any>();
+  /*
+   Events
+   name : onClick
+   datatype : any
+   version : none
+   default :
+   description : On click event
+   */
+  @Output() onClick: any = new EventEmitter<any>();
+
+  @ViewChild('dpList') dpList: any;
+
+  @ViewChild('dropdownitems', { read: ElementRef }) public dropdownitems: ElementRef;
+
   @ViewChild('rootDiv') rootDiv: any;
 
+  posixUp: boolean;
+
+  activeindex: number = 0;
+
+  currentActive: any;
+
+  displayValue: any;
+
+  helpInfoMsg: string;
+
+  _errormsg: string;
+
+  isComponentValid: boolean;
+
+  selectedindex: number = 0;
+
+  scrollposition: number = 30;
+
+  showToolTip: boolean;
+
+  responseData: any;
+
+  previousData: any;
+
+  viewData: any;
+
+  filteredResult: any;
+
   maskloader: boolean = true;
+
+  private innerValue: any = '';
+  private onTouchedCallback: () => void = noop;
+  private onChangeCallback: (_: any) => void = noop;
+
+  get errormsg(): string {
+    return this._errormsg;
+  }
+
+  navigateKey(event: any) {
+  }
 
   @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
   public onElementOutClick(targetElement: HTMLElement) {
@@ -340,8 +344,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
       });
       if (this.filteredResult.length > 0) {
          this.showToolTip = true;
-      }
-      else {
+      } else {
         this.showToolTip = false;
       }
     }
@@ -378,8 +381,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
             this.dropdownitems.nativeElement.scroll(0, this.scrollposition);
             this.scrollposition = this.scrollposition + 30;
           }
-        }
-        else if (event.keyCode === 38) {
+          } else if (event.keyCode === 38) {
           this.selectedindex--;
           if (this.scrollposition >= 0 && this.selectedindex > 1) {
             this.dropdownitems.nativeElement.scroll(0, this.scrollposition);
@@ -453,14 +455,6 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
     this.onClick.emit(row);
   }
 
-  // The internal dataviews model
-  private innerValue: any = '';
-
-  // Placeholders for the callbacks which are later provided
-  // by the Control Value Accessor
-  private onTouchedCallback: () => void = noop;
-  private onChangeCallback: (_: any) => void = noop;
-
   // get accessor
   get value(): any {
     return this.innerValue;
@@ -491,8 +485,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
     // must be same in dropdown.scss
     if (window.screen.height - (elementRef.getBoundingClientRect().bottom) < dropdownHeight) {
       return true;
-    }
-    else {
+    } else {
       return false;
     }
   }

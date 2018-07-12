@@ -351,8 +351,7 @@ description : Context Menu provides the list of menus on right click.
     if (!this.acrosstree) {
       if (dragData.data === node || node.leaf === true) {
         event.dataTransfer.dropEffect = 'none';
-      }
-      else {
+      } else {
         event.target.style.border = '3px dotted green';
       }
     } else {
@@ -371,8 +370,7 @@ description : Context Menu provides the list of menus on right click.
     dragData.data.children.forEach((child: any) => {
       if (JSON.stringify(child) === JSON.stringify(node) || node.leaf === true) {
         event.dataTransfer.dropEffect = 'none';
-      }
-      else if (child.hasOwnProperty('children')) {
+      } else if (child.hasOwnProperty('children')) {
         this.getDropNode(child.children, node, event);
       }
     });
@@ -385,8 +383,7 @@ description : Context Menu provides the list of menus on right click.
       if (this.acrosstree === false) {
         if (this.dragData.data === dropData.data) {
           this.isNode = false;
-        }
-        else if (this.dragData.data.hasOwnProperty('children')) {
+        } else if (this.dragData.data.hasOwnProperty('children')) {
           this.checkNode(this.dragData, dropData);
         }
         if (this.isNode === true) {
@@ -410,8 +407,7 @@ description : Context Menu provides the list of menus on right click.
     this.dragData.data.children.forEach((child: any) => {
       if (JSON.stringify(child) === JSON.stringify(dropData.data)) {
         this.isNode = false;
-      }
-      else if (child.hasOwnProperty('children')) {
+      } else if (child.hasOwnProperty('children')) {
         this.checkNode(child, dropData);
       }
     });
@@ -480,8 +476,7 @@ description : Context Menu provides the list of menus on right click.
     let height: number = 240; // must be same in dropdown.scss
     if ((window.screen.height - elementRef.getBoundingClientRect().bottom) < height) {
       return true;
-    }
-    else {
+    } else {
       return false;
     }
   }
