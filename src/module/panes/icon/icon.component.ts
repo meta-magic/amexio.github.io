@@ -2,7 +2,6 @@
  * Created by pratik on 21/12/17.
  */
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
-
 import {IconLoaderService} from '../../services/icon/icon.service';
 
 @Component({

@@ -75,8 +75,7 @@ description :  Width of the video player window
   updateMuteUI() {
     if (this.videoPlayer.nativeElement.muted) {
       this.isMuted = true;
-    }
-     else {
+    } else {
       this.isMuted = false;
    }
    }

@@ -5,7 +5,10 @@
  /*
  Component Name : Amexio Tree map
  Component Selector : <amexio-map-treemap>
- Component Description :  A visual representation of a data tree, where each node can have zero or more children, and one parent (except for the root, which has no parents). Each node is displayed as a rectangle, sized and colored according to values that you assign.
+ Component Description :  A visual representation of a data tree,
+ where each node can have zero or more children, and one parent
+ (except for the root, which has no parents). Each node is displayed as a rectangle,
+ sized and colored according to values that you assign.
 */
 import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from '@angular/core';
 import { ViewChild } from '@angular/core';

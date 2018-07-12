@@ -5,7 +5,8 @@
 /*
 Component Name : Amexio card
 Component Selector : <amexio-card>
-Component Description : Amexio Card which renders card based on title, body and actions user has configured
+Component Description : Amexio Card which renders card based on title,
+body and actions user has configured
 .
 */
 
@@ -23,7 +24,8 @@ import { AmexioHeaderComponent } from '../../panes/header/pane.action.header';
             [ngClass]="{'flex-start':(headeralign=='left'),'flex-end':(headeralign=='right'),'flex-center':(headeralign=='center')}">
       <ng-content select="amexio-header"></ng-content>
     </header>
-<div class="card-body cardbody" [style.padding]="bodyPadding" [ngStyle]="{'height.px': height,'overflow-y': height!= null ? 'auto': '','min-height.px': minHeight}">
+<div class="card-body cardbody" [style.padding]="bodyPadding" [ngStyle]="{'height.px': height,
+'overflow-y': height!= null ? 'auto': '','min-height.px': minHeight}">
       <ng-content select="amexio-body"></ng-content>
     </div>
     <footer #cardFooter [style.padding]="footerPadding" class="card-footer" *ngIf="footer"
