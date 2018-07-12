@@ -44,7 +44,10 @@ export enum KEY_CODE_window {
             <ng-content select="amexio-body"></ng-content>
           </div>
           <footer *ngIf="footer" class="modal-window-footer"
-                  [ngClass]="{'window-material-design-footer':materialDesign ,'modal-window-footer':!materialDesign,'modal-window-footer-max': isFullWindow && maximize,'flex-start':(footeralign =='left'),'flex-end':(footeralign=='right'),'flex-center':(footeralign=='center')}">
+                  [ngClass]="{'window-material-design-footer':materialDesign ,
+                  'modal-window-footer':!materialDesign,
+                  'modal-window-footer-max': isFullWindow && maximize,'flex-start':(footeralign =='left'),
+                  'flex-end':(footeralign=='right'),'flex-center':(footeralign=='center')}">
             <div [ngClass]="{'footer-right-align': (isFullWindow && maximize)}">
               <ng-content select="amexio-action"></ng-content>
             </div>
@@ -55,14 +58,16 @@ export enum KEY_CODE_window {
     </div>
   `,
 })
-export class AmexioWindowPaneComponent implements OnInit,OnChanges {
+export class AmexioWindowPaneComponent implements OnChanges, OnInit {
   /*
    Properties
    name : vertical-position
    datatype : string
    version : 4.1 onwards
    default : none
-   description : Postion of window vertically: top or bottom or center. This attribute is ignored if user specify position explicitly (using position-top/position-bottom/position-left/position-right)
+   description : Postion of window vertically: top or bottom or center.
+   This attribute is ignored if user specify position explicitly
+   (using position-top/position-bottom/position-left/position-right)
    */
   @Input('vertical-position') verticalposition: string;
   /*
@@ -71,7 +76,9 @@ export class AmexioWindowPaneComponent implements OnInit,OnChanges {
    datatype : none
    version : 4.1 onwards
    default : none
-   description : Postion of Window horizontally: left or right or center. This attribute is ignored if user specify position explicitly (using position-top/position-bottom/position-left/position-right)
+   description : Postion of Window horizontally: left or right or center.
+   This attribute is ignored if user specify position explicitly
+   (using position-top/position-bottom/position-left/position-right)
    */
   @Input('horizontal-position') horizontalposition: string;
   /*
@@ -131,7 +138,7 @@ export class AmexioWindowPaneComponent implements OnInit,OnChanges {
    */
   @Input('show-window') showWindow: boolean;
 
-  @Input ('material-design') materialDesign : boolean;
+  @Input ('material-design') materialDesign: boolean;
 
   @Input() show: boolean;
 
@@ -231,8 +238,8 @@ export class AmexioWindowPaneComponent implements OnInit,OnChanges {
   // Escape Key Functionality
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
-    if (this.closeonescape == true) {
-      if (event.keyCode == KEY_CODE_window.esc) {
+    if (this.closeonescape === true) {
+      if (event.keyCode === KEY_CODE_window.esc) {
         this.showWindow = false;
         this.showChange.emit(false);
 
@@ -242,7 +249,7 @@ export class AmexioWindowPaneComponent implements OnInit,OnChanges {
   }
   ngOnInit() {
 
-    if(this.showWindow) {
+    if (this.showWindow) {
       this.show = this.showWindow;
     }
 
@@ -253,12 +260,14 @@ export class AmexioWindowPaneComponent implements OnInit,OnChanges {
       this.isFullWindow = true;
       this.bodyHeight = "100%";
     }
-    if (this.footeralign == null) this.footeralign = "right";
+    if (this.footeralign == null) {
+      this.footeralign = "right";
+    }
 
-    if (  this.verticalposition == "") {
+    if (  this.verticalposition === "") {
       this.verticalposition = 'center';
     }
-    if ( this.horizontalposition == "") {
+    if ( this.horizontalposition === "") {
       this.horizontalposition = 'center';
     }
     this.positionclass = "window-" + this.verticalposition + " window-" + this.horizontalposition;

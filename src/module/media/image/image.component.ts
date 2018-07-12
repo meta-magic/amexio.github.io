@@ -23,7 +23,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
-  selector: 'amexio-image', templateUrl: './image.component.html'
+  selector: 'amexio-image', templateUrl: './image.component.html',
 })
 
 export class AmexioImageComponent implements OnInit {
@@ -45,7 +45,7 @@ datatype :  string
 version : 4.0 onwards
 default :
 description : Title of image
-*/ 
+*/
   @Input() title: string;
 
    /*
@@ -75,9 +75,9 @@ Properties
 name : c-class
 datatype :  string
 version : 4.0 onwards
-default : 
+default :
 description : Used for custom style classes
-*/ 
+*/
   @Input('c-class') cclass: string = "";
 
    /*
@@ -85,31 +85,31 @@ Properties
 name : mda
 datatype :  string
 version : 4.0 onwards
-default : 
+default :
 description : This attribute is useful for only material icons . Material Example mda='cloud'
 
-*/ 
+*/
   @Input() mda: string;
 
    /*
-Properties 
+Properties
 name : width
 datatype :  string
 version : 4.0 onwards
-default : 
+default :
 description : Width of image.
-*/ 
-  @Input() width:string;
+*/
+  @Input() width: string;
 
    /*
-Properties 
+Properties
 name : height
 datatype :  string
 version : 4.0 onwards
 default :
 description : Height of image.
-*/ 
-  @Input() height:string;
+*/
+  @Input() height: string;
 
    /*
 Events
@@ -118,30 +118,30 @@ datatype :  none
 version : none
 default : none
 description : Get image / icon click event.
-*/ 
+*/
   @Output() onClick: EventEmitter<any> = new EventEmitter<any>();
 
    /*
-Properties 
+Properties
 name : filter
 datatype :  string
 version : 4.1.9 onwards
 default :
 description : Filter type can be saturate / hue / invert / grayscale / brightness / blur / sepia / shadow / opacity
 
-*/ 
+*/
   @Input('filter') filter: string;
 
    /*
-Properties 
+Properties
 name : overlay-effect
 datatype :  string
 version : 4.1.9 onwards
-default : 
+default :
 description : Overlay-effect can be set fade / box / left / top / bottom /
 right / title
 
-*/ 
+*/
   @Input('overlay-effect') overlayEffect: string;
 
    /*
@@ -151,7 +151,6 @@ datatype :  string
 version : 4.1.9 onwards
 default :
 description : Overlay-text can be set
-
 */
   @Input('overlay-text') overlayText: string;
 
@@ -162,7 +161,6 @@ datatype :  string
 version : 4.1.9 onwards
 default :
 description : Image-title can be set
-
 */
   @Input('image-title') imgTitle: string;
 
@@ -185,7 +183,7 @@ default :
 description : Description to display on hover
 */
   @Input('para') titlePara: string;
-  
+
   overlay: boolean = false;
   overlayTextClass: string;
   constructor() {
@@ -197,21 +195,20 @@ description : Description to display on hover
 
   ngOnInit(): void {
     if (!(this.width || this.height)) {
-      this.cclass = this.cclass+" img-fluid";
+      this.cclass = this.cclass + " img-fluid";
     }
     if (this.filter) {
       this.cclass = this.cclass + " image-" + this.filter;
     }
-    if (this.overlayEffect)
-    {
+    if (this.overlayEffect) {
       this.overlay = true;
-      if(!this.overlayText){
+      if (!this.overlayText) {
         this.overlayText = "";
       }
       if (this.overlayText) {
         this.overlayTextClass = "overlay-text overlay-" + this.overlayEffect + "-text";
       }
-      this.overlayEffect = "overlay overlay-" + this.overlayEffect;     
+      this.overlayEffect = "overlay overlay-" + this.overlayEffect;  
     }
     if (this.position && !this.imgTitle) {
       this.imgTitle = " ";
@@ -220,7 +217,7 @@ description : Description to display on hover
       if (this.position) {
         this.position = "image-title image-" + this.position;
       } else {
-        this.position = "image-title image-bottom-right"
+        this.position = "image-title image-bottom-right";
       }
     }
   }
