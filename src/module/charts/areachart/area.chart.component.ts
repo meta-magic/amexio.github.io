@@ -233,32 +233,10 @@ description : Sets background color to chart
       this.areaData = google.visualization.arrayToDataTable(this._data);
       this.options = {
         title: this.chartTitleComponent ? this.chartTitleComponent.title : null,
-        titleTextStyle: this.chartTitleComponent ? {
-          color: this.chartTitleComponent.color ? this.chartTitleComponent.color : null,
-          fontName: this.chartTitleComponent.fontname ? this.chartTitleComponent.fontname : null,
-          fontsize: this.chartTitleComponent.fontsize ? this.chartTitleComponent.fontsize : null,
-          bold: this.chartTitleComponent.bold ? this.chartTitleComponent.bold : null,
-          italic: this.chartTitleComponent.italic ? this.chartTitleComponent.italic : null,
-        } : null,
+        titleTextStyle: this.chartTitleComponent ? this.createTitleTextStyle() : null,
         backgroundcolor: this.backgroundcolor,
-        legend: this.chartLengendComponent ? {
-          position: this.chartLengendComponent.position ? this.chartLengendComponent.position : null,
-          // this work only in chart position is top
-          maxLines: this.chartLengendComponent.maxlines ? this.chartLengendComponent.maxlines : null, textStyle: {
-            color: this.chartLengendComponent.color ? this.chartLengendComponent.color : null,
-            fontsize: this.chartLengendComponent.fontsize ? this.chartLengendComponent.fontsize : null,
-            fontName: this.chartLengendComponent.fontname ? this.chartLengendComponent.fontname : null,
-            bold: this.chartLengendComponent.bold ? this.chartLengendComponent.bold : null,
-            alignment: this.chartLengendComponent.alignment ? this.chartLengendComponent.alignment : null,
-          },
-        } : 'none',
-        chartArea: this.chartAreaComponent ? {
-          backgroundcolor: this.chartAreaComponent.chartbackgroundcolor ? this.chartAreaComponent.chartbackgroundcolor : null,
-          left: this.chartAreaComponent.leftposition ? this.chartAreaComponent.leftposition : null,
-          top: this.chartAreaComponent.topposition ? this.chartAreaComponent.topposition : null,
-          height: this.chartAreaComponent.chartheight ? this.chartAreaComponent.chartheight : null,
-          width: this.chartAreaComponent.chartwidth ? this.chartAreaComponent.chartwidth : null,
-        } : null,
+        legend: this.chartLengendComponent ? this.createChartLegend() : 'none',
+        chartArea: this.chartAreaComponent ? this.createChartArea() : null,
       };
 
       if (this.areaData) {
@@ -271,6 +249,39 @@ description : Sets background color to chart
 
   }
 
+  createTitleTextStyle(): any {
+    return {
+      color: this.chartTitleComponent.color ? this.chartTitleComponent.color : null,
+      fontName: this.chartTitleComponent.fontname ? this.chartTitleComponent.fontname : null,
+      fontsize: this.chartTitleComponent.fontsize ? this.chartTitleComponent.fontsize : null,
+      bold: this.chartTitleComponent.bold ? this.chartTitleComponent.bold : null,
+      italic: this.chartTitleComponent.italic ? this.chartTitleComponent.italic : null,
+    };
+  }
+
+  createChartLegend(): any {
+    return {
+      position: this.chartLengendComponent.position ? this.chartLengendComponent.position : null,
+      // this work only in chart position is top
+      maxLines: this.chartLengendComponent.maxlines ? this.chartLengendComponent.maxlines : null, textStyle: {
+        color: this.chartLengendComponent.color ? this.chartLengendComponent.color : null,
+        fontsize: this.chartLengendComponent.fontsize ? this.chartLengendComponent.fontsize : null,
+        fontName: this.chartLengendComponent.fontname ? this.chartLengendComponent.fontname : null,
+        bold: this.chartLengendComponent.bold ? this.chartLengendComponent.bold : null,
+        alignment: this.chartLengendComponent.alignment ? this.chartLengendComponent.alignment : null,
+      },
+    };
+  }
+
+  createChartArea(): any {
+    return {
+      backgroundcolor: this.chartAreaComponent.chartbackgroundcolor ? this.chartAreaComponent.chartbackgroundcolor : null,
+      left: this.chartAreaComponent.leftposition ? this.chartAreaComponent.leftposition : null,
+      top: this.chartAreaComponent.topposition ? this.chartAreaComponent.topposition : null,
+      height: this.chartAreaComponent.chartheight ? this.chartAreaComponent.chartheight : null,
+      width: this.chartAreaComponent.chartwidth ? this.chartAreaComponent.chartwidth : null,
+    };
+  }
   click(e: any) {
 
   }
