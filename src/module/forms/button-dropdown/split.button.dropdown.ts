@@ -106,8 +106,7 @@ description : Different Sizes of Buttons availabe : large, default, small & xsma
   createDropdownItemConfig() {
     let itemRefArray = [];
     itemRefArray = this.buttons.toArray();
-    for (let cr = 0; cr < itemRefArray.length; cr++) {
-      const itemConfig = itemRefArray[cr];
+    for (const itemConfig of itemRefArray) {
       const data: any = {
         label: itemConfig.label,
         disabled: itemConfig.disabled,

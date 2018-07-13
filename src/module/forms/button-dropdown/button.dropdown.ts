@@ -7,7 +7,7 @@
  Component Description : Amexio Dropdown Button component with various modes and configurations .
 */
 import {
-  AfterContentInit, Component, ContentChildren, ElementRef, EventEmitter, HostListener, Input, OnInit, Output,
+  AfterContentInit, Component, ContentChildren, DoCheck, ElementRef, EventEmitter, HostListener, Input, OnInit, Output,
   QueryList, ViewChild, ViewContainerRef,
 } from '@angular/core';
 import {AmexioButtonDropDownItemComponent} from './button.dropdown.item';
@@ -46,7 +46,7 @@ import {AmexioButtonDropDownItemComponent} from './button.dropdown.item';
   `,
 })
 
-export class AmexioButtonDropdownComponent implements AfterContentInit {
+export class AmexioButtonDropdownComponent implements AfterContentInit, DoCheck {
   @ViewChild('btnRef')  btnReference: any;
 /*
 Properties
@@ -141,8 +141,8 @@ description : Fire when button-dropdown item button/link click
   }
   ngDoCheck() {
     if (JSON.stringify(this.buttonGroupPreviewData) !== JSON.stringify(this.buttonGroupLocalData)) {
-      this.buttonGroupPreviewData === JSON.parse(JSON.stringify(this.buttonGroupLocalData));
-      this.dropdownItemData === this.buttonGroupLocalData;
+      this.buttonGroupPreviewData = JSON.parse(JSON.stringify(this.buttonGroupLocalData));
+      this.dropdownItemData = this.buttonGroupLocalData;
     }
   }
   ngAfterContentInit() {
@@ -155,9 +155,8 @@ description : Fire when button-dropdown item button/link click
     }
   }
   createDropdownItemConfig(btnCollection: any) {
-    let itemRefArray = btnCollection;
-    for (let cr = 0; cr < itemRefArray.length; cr++) {
-      const itemConfig = itemRefArray[cr];
+    const itemRefArray = btnCollection;
+    for (const itemConfig of itemRefArray) {
       const data: any = {
         label: itemConfig.label,
         disabled: itemConfig.disabled,
@@ -177,21 +176,20 @@ description : Fire when button-dropdown item button/link click
     this.click.emit();
   }
   getListPosition(elementRef: any): boolean {
-    let dropdownHeight: number = 325; // must be same in dropdown.scss
+    const dropdownHeight = 325; // must be same in dropdown.scss
     if (window.screen.height - (elementRef.getBoundingClientRect().bottom) < dropdownHeight) {
       return true;
-      //  return false;
     } else {
       return false;
     }
   }
 
-  itemClick(event: any, itemData: any) {
+  itemClick(clickEvent: any, itemData: any) {
     if (this.buttonGroupLocalData && this.buttonGroupLocalData.length > 0) {
-      this.getLinkData.emit({'event': event, 'parentRef': this, 'data': itemData});
+      this.getLinkData.emit({event: clickEvent, parentRef: this, data: itemData});
     } else {
       if (!itemData.disabled) {
-        itemData.onItemClick.emit(event);
+        itemData.onItemClick.emit(clickEvent);
         this.openContent = !this.openContent;
       }
     }
