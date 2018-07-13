@@ -10,7 +10,8 @@ import {HttpModule} from '@angular/http';
 import {AmexioFooterComponent} from './action/pane.action.footer';
 import {AmexioBodyComponent} from './body/pane.action.body';
 import {AmexioCarouselComponent} from './carousel/carousel.component';
-import {AmexioTemplate, AmexioTemplateWrapper} from './carousel/carousel.template';
+import {AmexioTemplateComponent} from './carousel/carousel.template.component';
+import {AmexioTemplateWrapperComponent} from './carousel/carousel.wrapper.template.component';
 import {AmexiodialoguePaneComponent} from './dialogue/dialogue.pane.component';
 import {AmexioFieldSetComponent} from './fieldset/fieldset.component';
 import { AmexioFormActionComponent } from './form/form.action.component';
@@ -18,7 +19,7 @@ import { AmexioFormBodyComponent } from './form/form.body.component';
 import {AmexioFormComponent} from './form/form.component';
 import { AmexioFormHeaderComponent } from './form/form.header.component';
 import {AmexioHeaderComponent} from './header/pane.action.header';
-import {AmexioIconPane} from './icon/icon.component';
+import {AmexioIconPaneComponent} from './icon/icon.component';
 import {AmexioPanelComponent} from './panel/panel.component';
 import {StepBlockComponent} from './steps/step-block';
 import {AmexioStepsComponent} from './steps/steps.component';
@@ -38,7 +39,8 @@ import {AmexioFormsModule} from '../forms/amexio.forms.module';
 export * from './action/pane.action.footer';
 export * from './body/pane.action.body';
 export * from './carousel/carousel.component';
-export * from './carousel/carousel.template';
+export * from './carousel/carousel.template.component';
+export * from './carousel/carousel.wrapper.template.component';
 export * from './dialogue/dialogue.pane.component';
 export * from './fieldset/fieldset.component';
 export * from './form/form.action.component';
@@ -69,11 +71,11 @@ const PANE_COMPONENTS = [
   AmexioVerticalTabComponent,
   AmexioRightVerticalTabComponent,
   AmexioCarouselComponent,
-  AmexioTemplate,
-  AmexioTemplateWrapper,
+  AmexioTemplateComponent,
+  AmexioTemplateWrapperComponent,
   StepBlockComponent,
   AmexioPanelComponent,
-  AmexioIconPane,
+  AmexioIconPaneComponent,
   AmexiodialoguePaneComponent,
   AmexioFormComponent,
   AmexioFormActionComponent,

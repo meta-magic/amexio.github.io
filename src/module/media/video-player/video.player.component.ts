@@ -60,7 +60,7 @@ description :  Width of the video player window
 
   isMuted: boolean;
 
-  currentVolume: number = 1;
+  currentVolume = 1;
 
   constructor() {
   }
@@ -90,7 +90,7 @@ onPlay() {
   }
 
   onTimeUpdate() {
-    let percentage = Math.floor((100 / this.videoPlayer.nativeElement.duration) * this.videoPlayer.nativeElement.currentTime);
+    const percentage = Math.floor((100 / this.videoPlayer.nativeElement.duration) * this.videoPlayer.nativeElement.currentTime);
     this.progressBar.nativeElement.value = percentage;
     // Update the progress bar's text (for browsers that don't support the progress element)
     this.progressBar.nativeElement.innerHTML = percentage + '% played';
@@ -112,7 +112,7 @@ onPlay() {
   }
 
   onFullScreen() {
-    let elem = this.videoPlayer.nativeElement;
+    const elem = this.videoPlayer.nativeElement;
     if (elem.requestFullscreen) {
       elem.requestFullscreen();
     } else if (elem.mozRequestFullScreen) {

@@ -11,7 +11,8 @@
 import {
   AfterContentInit, Component, ContentChildren, ElementRef, Input, OnInit, QueryList, TemplateRef, ViewChild,
 } from '@angular/core';
-import {AmexioTemplate} from './carousel.template';
+import {AmexioTemplateComponent} from './carousel.template.component';
+import {AmexioTemplateWrapperComponent} from './carousel.wrapper.template.component';
 
 @Component({
   selector: 'amexio-carousel', template: `
@@ -73,7 +74,7 @@ description : Time interval for shuffling images
 
   public itemTemplate: TemplateRef<any>;
 
-  @ContentChildren(AmexioTemplate) templates: QueryList<any>;
+  @ContentChildren(AmexioTemplateComponent) templates: QueryList<any>;
 
   @ViewChild('tab', {read: ElementRef}) public tabs: ElementRef;
 
@@ -81,48 +82,25 @@ description : Time interval for shuffling images
   }
 
   ngOnInit() {
-    // if (this.mode == null) {
-    //   this.mode = 'single';
-    // }
-    if (this.shuffleinterval != null) {
-      this.timeInterval = setInterval(() => {
-        let carouselItemPosix = this.tabs.nativeElement;
-        if (!((carouselItemPosix.scrollWidth - carouselItemPosix.offsetWidth - carouselItemPosix.scrollLeft ) <= 0)) {
-          // go next
-          carouselItemPosix.scrollLeft = carouselItemPosix.scrollLeft + 200;
-        } else if (carouselItemPosix.scrollLeft > 0) {
-          // go previous
-          carouselItemPosix.scrollLeft = carouselItemPosix.scrollLeft - 200;
-        }
-      }, this.shuffleinterval);
-    }
+   this.startTimeInterval();
   }
 
   ngAfterContentInit() {
     this.templates.forEach((item: any) => {
-      switch (item.getType()) {
-        case 'item':
-          this.itemTemplate = item.template;
-          break;
-
-        default:
-          this.itemTemplate = item.template;
-          break;
-      }
+        this.itemTemplate = item.template;
     });
   }
 
   scrollData() {
-
   }
 
   next() {
-    let nxt = this.tabs.nativeElement;
+    const nxt = this.tabs.nativeElement;
     nxt.scrollLeft = nxt.scrollLeft + 200;
   }
 
   previous() {
-    let prev = this.tabs.nativeElement;
+    const prev = this.tabs.nativeElement;
     prev.scrollLeft = prev.scrollLeft - 200;
   }
 
@@ -130,14 +108,10 @@ description : Time interval for shuffling images
 
   }
 
-  stopTimeInterval() {
-    clearTimeout(this.timeInterval);
-  }
-
   startTimeInterval() {
     if (this.shuffleinterval != null) {
       this.timeInterval = setInterval(() => {
-        let carouselItemPosix = this.tabs.nativeElement;
+        const carouselItemPosix = this.tabs.nativeElement;
         if (!((carouselItemPosix.scrollWidth - carouselItemPosix.offsetWidth - carouselItemPosix.scrollLeft ) <= 0)) {
           // go next
           carouselItemPosix.scrollLeft = carouselItemPosix.scrollLeft + 200;
@@ -147,6 +121,10 @@ description : Time interval for shuffling images
         }
       }, this.shuffleinterval);
     }
+  }
+
+  stopTimeInterval() {
+    clearTimeout(this.timeInterval);
   }
 
 }

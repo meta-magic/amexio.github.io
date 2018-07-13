@@ -23,7 +23,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
-  selector: 'amexio-image', templateUrl: './image.component.html',
+  selector: 'amexio-image',
+  templateUrl: './image.component.html',
 })
 
 export class AmexioImageComponent implements OnInit {
@@ -78,7 +79,7 @@ version : 4.0 onwards
 default :
 description : Used for custom style classes
 */
-  @Input('c-class') cclass: string = "";
+  @Input('c-class') cclass = '';
 
    /*
 Properties
@@ -184,7 +185,7 @@ description : Description to display on hover
 */
   @Input('para') titlePara: string;
 
-  overlay: boolean = false;
+  overlay = false;
   overlayTextClass: string;
   constructor() {
   }
@@ -203,15 +204,15 @@ description : Description to display on hover
     if (this.overlayEffect) {
       this.overlay = true;
       if (!this.overlayText) {
-        this.overlayText = "";
+        this.overlayText = '';
       }
       if (this.overlayText) {
         this.overlayTextClass = "overlay-text overlay-" + this.overlayEffect + "-text";
       }
-      this.overlayEffect = "overlay overlay-" + this.overlayEffect;  
+      this.overlayEffect = "overlay overlay-" + this.overlayEffect;
     }
     if (this.position && !this.imgTitle) {
-      this.imgTitle = " ";
+      this.imgTitle = '';
       }
     if (this.imgTitle) {
       if (this.position) {

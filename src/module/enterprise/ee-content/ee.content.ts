@@ -326,14 +326,14 @@ description : Get close content click.
 
   unlikeClick() {
     this.overviewData = {
-      'title': this.title, 'rate': this.rate,
+      title: this.title, rate: this.rate,
     };
     this.onUnlikeLikeClick.emit(this.overviewData);
   }
 
   likeClick() {
     this.overviewData = {
-      'title': this.title, 'rate': this.rate,
+      title: this.title, rate: this.rate,
     };
     this.onLikeClick.emit(this.overviewData);
   }

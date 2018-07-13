@@ -21,7 +21,7 @@ export class AmexioBorderLayoutComponent implements OnInit {
 
   layoutitems: AmexioBorderLayoutItemComponent[];
 
-  borderclass: string = 'borderlayout-container';
+  borderclass: string = "borderlayout-container";
 
   constructor() {
   }
@@ -33,7 +33,6 @@ export class AmexioBorderLayoutComponent implements OnInit {
 
     this.layoutitems.forEach(( item: any ) => {
       this.borderclass = this.borderclass + '-' + item.getClassType();
-
     });
   }
 

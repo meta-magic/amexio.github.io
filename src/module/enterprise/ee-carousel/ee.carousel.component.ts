@@ -26,7 +26,7 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges
   templateUrl: 'ee.carousel.component.html',
 })
 
-export class MultiMediaCarousel implements OnInit, OnChanges {
+export class MultiMediaCarouselComponent implements OnInit, OnChanges {
 
 /*
 Properties
@@ -58,7 +58,7 @@ default : none
 description : Provide a embedded view for more information on the media
 
 */
-  @Input('has-details') hasDetail: boolean = true;
+  @Input('has-details') hasDetail = true;
 
   /*
 Properties
@@ -113,7 +113,7 @@ description :
   }
 
   leftClick() {
-    let ts = document.getElementById(this.elementId);
+    const ts = document.getElementById(this.elementId);
     ts.scrollLeft -= 350;
     if (ts.scrollLeft === 0) {
       document.getElementById(this.elementId + 'leftarrow').style.visibility = 'hidden';
@@ -122,7 +122,7 @@ description :
   }
 
   rightClick() {
-    let ts = document.getElementById(this.elementId);
+    const ts = document.getElementById(this.elementId);
     ts.scrollLeft += 350;
     if ((ts.scrollWidth - ts.offsetWidth - ts.scrollLeft ) <= 0) {
       document.getElementById(this.elementId + 'rightarrow').style.visibility = 'hidden';
@@ -148,8 +148,8 @@ description :
     this.ageLimit = item.ageLimit;
     this.releaseYear = item.releaseYear;
 
-    this.data.forEach((item: any) => {
-      item.selected = null;
+    this.data.forEach((item1: any) => {
+      item1.selected = null;
     });
 
     item.selected = 'selected';
