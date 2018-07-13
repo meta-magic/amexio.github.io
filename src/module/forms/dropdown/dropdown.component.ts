@@ -10,7 +10,7 @@
 
 */
 import {
-  Component, DoCheck, ElementRef, ContentChild, TemplateRef, EventEmitter, forwardRef, HostListener, Input, OnInit, Output, Renderer2, ViewChild
+  Component, ElementRef, ContentChild, TemplateRef, EventEmitter, forwardRef, HostListener, Input, OnInit, Output, Renderer2, ViewChild
 } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {CommonDataService} from "../../services/data/common.data.service";
@@ -423,13 +423,6 @@ description : Set enable / disable popover.
     }
     this.maskloader=false;
   }
-  // ngDoCheck() {
-  //   console.log('DO CHECK FOR DROPDWON '+this.fieldlabel);
-  //   if (JSON.stringify(this.previousData) != JSON.stringify(this.data)) {
-  //     this.previousData = JSON.parse(JSON.stringify(this.data));
-  //     this.setData(this.data);
-  //   }
-  // }
 
   onItemSelect(row: any) {
     if (this.multiselect) {
