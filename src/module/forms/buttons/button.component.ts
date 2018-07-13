@@ -2,17 +2,16 @@
  * Created by ketangote on 11/23/17.
  */
 /*
+
  Component Name : Amexio Button
  Component Selector : <amexio-button>
  Component Description : A button component with various modes and configurations.
 */
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-export namespace TypeMap {
-  export const COMPONENT_CLASS_MAP: any = {
-    primary: 'btn-primary-badge',
-    secondary: 'btn-secondary-badge',
-  };
-}
+export const COMPONENT_CLASS_MAP: any = {
+  primary: 'btn-primary-badge',
+  secondary: 'btn-secondary-badge',
+};
 @Component({
   selector: 'amexio-button',
   templateUrl: './button.component.html',
