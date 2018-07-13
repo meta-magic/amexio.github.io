@@ -26,7 +26,7 @@ import {AmexioStepsComponent} from './steps/steps.component';
 import {AmexioRightVerticalTabComponent} from './tab/right-vertical-tab/right.vertical.component';
 import {AmexioTabActionComponent} from './tab/tab.action';
 import {AmexioTabComponent} from './tab/tab.component';
-import {AmexioTabPill} from './tab/tab.pill.component';
+import {AmexioTabPillComponent} from './tab/tab.pill.component';
 import {AmexioVerticalTabComponent} from './tab/vertical-tab/vertical.tab.component';
 import {AmexioWindowPaneComponent} from './window/window.pane.component';
 
@@ -66,7 +66,7 @@ const PANE_COMPONENTS = [
   AmexioFieldSetComponent,
   AmexioWindowPaneComponent,
   AmexioStepsComponent,
-  AmexioTabPill,
+  AmexioTabPillComponent,
   AmexioTabComponent,
   AmexioVerticalTabComponent,
   AmexioRightVerticalTabComponent,
@@ -91,7 +91,7 @@ const PANE_COMPONENTS = [
     AmexioFormsModule,
     HttpClientModule,
   ],
-  entryComponents: [AmexioTabPill],
+  entryComponents: [AmexioTabPillComponent],
   exports: PANE_COMPONENTS,
   declarations: PANE_COMPONENTS,
   providers : [CommonDataService, DeviceQueryService, IconLoaderService],

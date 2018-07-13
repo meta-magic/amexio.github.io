@@ -14,7 +14,7 @@ import { Component, EventEmitter, Input, OnInit, Output, ViewChild, ViewContaine
 @Component({
   selector: 'amexio-tab', templateUrl: './tab.pill.component.html',
 })
-export class AmexioTabPill implements OnInit {
+export class AmexioTabPillComponent implements OnInit {
 
   /*
 Properties
@@ -34,7 +34,7 @@ version : 4.1.4 onwards
 default : false
 description : Disable property for tab
 */
-  @Input() disabled: boolean = false;
+  @Input() disabled = false;
 
   /*
 Properties
@@ -44,7 +44,7 @@ version : 4.0 onwards
 default : false
 description : Set true for specific tab open as default tab..
 */
-  @Input() active: boolean = false;
+  @Input() active = false;
 
   /*
 Properties

@@ -27,7 +27,7 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import { AmexioTabActionComponent } from './tab.action';
-import { AmexioTabPill } from './tab.pill.component';
+import { AmexioTabPillComponent } from './tab.pill.component';
 
 export namespace AmexioTopColorMap {
   export const COMPONENT_CLASS_MAP: any = {
@@ -184,8 +184,8 @@ description : If "true" add two context menus i.e close All and close Others tab
   @ViewChild('tabslist', { read: ElementRef }) public tabslist: ElementRef;
   @ViewChild('actionProperty', { read: ElementRef }) public actionProperty: ElementRef;
 
-  @ContentChildren(AmexioTabPill) queryTabs: QueryList<AmexioTabPill>;
-  tabCollection: AmexioTabPill[];
+  @ContentChildren(AmexioTabPillComponent) queryTabs: QueryList<AmexioTabPillComponent>;
+  tabCollection: AmexioTabPillComponent[];
   @ViewChild('target', { read: ViewContainerRef }) target: any;
 
   @ContentChildren(AmexioTabActionComponent, { descendants: true }) queryAction: QueryList<AmexioTabActionComponent>;
@@ -205,9 +205,9 @@ description : If "true" add two context menus i.e close All and close Others tab
 
   tabPreviewData: any;
 
-  showprev: boolean = false;
+  showprev = false;
 
-  shownext: boolean = false;
+  shownext = false;
 
   content: string;
 
@@ -228,8 +228,7 @@ description : If "true" add two context menus i.e close All and close Others tab
   rightClickRowData: any;
 
   map = new Map<any, any>();
-  constructor(public render: Renderer2, private componentFactoryResolver: ComponentFactoryResolver,
-    viewContainerRef: ViewContainerRef) {
+  constructor(public render: Renderer2, private componentFactoryResolver: ComponentFactoryResolver, viewContainerRef: ViewContainerRef) {
     this.headeralign = 'left';
     this.typeActionAlign = 'left';
     this.tabPosition = 'top';
@@ -270,10 +269,10 @@ description : If "true" add two context menus i.e close All and close Others tab
   }
 
   adjustWidth() {
-    let tWidth = this.tabs.nativeElement.clientWidth;
-    let tlistWidth = this.tabslist.nativeElement.scrollWidth;
-    let hWidth = 0;
-    let totalElWidth = tlistWidth + hWidth;
+    const tWidth = this.tabs.nativeElement.clientWidth;
+    const tlistWidth = this.tabslist.nativeElement.scrollWidth;
+    const hWidth = 0;
+    const totalElWidth = tlistWidth + hWidth;
 
     if (totalElWidth > tWidth) {
       this.shownext = true;
@@ -313,12 +312,12 @@ description : If "true" add two context menus i.e close All and close Others tab
   addDynamicTab(title: string, amexiocolor: string, closable: boolean, component: any) {
     // get a component factory for our TabComponent
     const tpCF = this.componentFactoryResolver.resolveComponentFactory(
-      AmexioTabPill,
+      AmexioTabPillComponent,
     );
-    let tp = this.target.createComponent(tpCF);
+    const tp = this.target.createComponent(tpCF);
 
     // set the according properties on our component instance
-    const instance: AmexioTabPill = tp.instance as AmexioTabPill;
+    const instance: AmexioTabPillComponent = tp.instance as AmexioTabPillComponent;
     instance.title = title;
     instance.active = true;
     instance.closable = closable;
@@ -332,7 +331,7 @@ description : If "true" add two context menus i.e close All and close Others tab
     const dynCF = this.componentFactoryResolver.resolveComponentFactory(
       component,
     );
-    let dynCmp = tp.instance.target.createComponent(dynCF);
+    const dynCmp = tp.instance.target.createComponent(dynCF);
 
     // Push new tab and select it.
     this.tabCollection.push(tp.instance);
@@ -363,7 +362,7 @@ description : If "true" add two context menus i.e close All and close Others tab
 
   // Method to set active tab on the basis of tab sequence or tab title
   setActiveTab(input: any) {
-    let flag: boolean = false;
+    let flag = false;
     if (typeof input === 'string') {
       this.tabCollection.forEach((tabs) => {
         if (input.trim().toLowerCase() === tabs.title.trim().toLowerCase()) {
@@ -387,7 +386,7 @@ description : If "true" add two context menus i.e close All and close Others tab
 
   }
 
-  selectTab(tab: AmexioTabPill) {
+  selectTab(tab: AmexioTabPillComponent) {
     // deactivate all tabs
     this.tabCollection.forEach((tab) => (tab.active = false));
     tab.active = true;
@@ -395,7 +394,7 @@ description : If "true" add two context menus i.e close All and close Others tab
 
   tabNodeProperties() {
 
-    let tabWidth = this.tabCollection.length;
+    const tabWidth = this.tabCollection.length;
     for (let i = 0; i < tabWidth; i++) {
       if (this.tabPosition === 'top') {
         this.tabCollection[i].amexiocolor = AmexioTopColorMap.COMPONENT_CLASS_MAP[this.tabCollection[i].amexiocolor];
@@ -414,21 +413,19 @@ description : If "true" add two context menus i.e close All and close Others tab
 
   onTabClick(tab: any) {
     if (!tab.disabled && !tab.header) {
-      for (let i = 0; i < this.tabCollection.length; i++) {
-        if (this.tabCollection[i] === tab) {
-          this.tabCollection[i]['active'] = true;
+      for (const i of this.tabCollection) {
+        if (i === tab) {
+          i['active'] = true;
           this.onClick.emit(tab);
         } else {
-          this.tabCollection[i]['active'] = false;
+          i['active'] = false;
         }
       }
     }
-
-    // this.content = tab.title;
   }
 
   next() {
-    let nxt = this.tabs.nativeElement;
+    const nxt = this.tabs.nativeElement;
     nxt.scrollLeft = nxt.scrollLeft + 200;
 
     if ((nxt.scrollWidth - nxt.offsetWidth - nxt.scrollLeft) <= 0) {
@@ -438,7 +435,7 @@ description : If "true" add two context menus i.e close All and close Others tab
   }
 
   previous() {
-    let prev = this.tabs.nativeElement;
+    const prev = this.tabs.nativeElement;
     prev.scrollLeft = prev.scrollLeft - 200;
 
     if (prev.scrollLeft === 0) {
@@ -447,9 +444,8 @@ description : If "true" add two context menus i.e close All and close Others tab
     this.shownext = true;
   }
 
-  closeTab(tabNode: AmexioTabPill) {
-    const newTab: AmexioTabPill[] = [];
-    const tabs = this.tabs;
+  closeTab(tabNode: AmexioTabPillComponent) {
+    const newTab: AmexioTabPillComponent[] = [];
     let index = 0;
     let tabHighlightIndex = 0;
 
@@ -480,7 +476,6 @@ description : If "true" add two context menus i.e close All and close Others tab
 
   activateTab(tabId: number) {
     if (tabId !== null) {
-      const tabs = this.tabs;
       this.tabCollection.forEach((tab) => {
         tab.active = false;
         if (tab.tabId === tabId) {
@@ -559,18 +554,18 @@ description : If "true" add two context menus i.e close All and close Others tab
 
   getContextMenu() {
     if (this.defaultContextMenu) {
-      let obj = { 'text': 'Close All', 'icon': 'fa fa-close', 'disable': false };
-      let obj2 = { 'text': 'Close Others', 'icon': 'fa fa-close', 'seperator': false, 'disabled': false };
+      const obj = { text: 'Close All', icon: 'fa fa-close', disable: false };
+      const obj2 = { text: 'Close Others', icon: 'fa fa-close', seperator: false, disabled: false };
       let tmpflag = true;
-      for (let i = 0; i < this.contextmenu.length; i++) {
-        if (this.contextmenu[i].text === 'Close All' || this.contextmenu[i].text === 'Close Others') {
+      for (const i of this.contextmenu) {
+        if (i.text === 'Close All' || i.text === 'Close Others') {
           tmpflag = false;
         }
       }
       if (tmpflag) {
         this.contextmenu.push(obj, obj2);
-    }
-    this.contextMenuFlag = true;
+      }
+      this.contextMenuFlag = true;
     } else if (this.contextmenu && this.contextmenu.length > 0) {
       this.contextMenuFlag = true;
     }
@@ -578,18 +573,18 @@ description : If "true" add two context menus i.e close All and close Others tab
 
   getContextMenuStyle() {
     return {
-      cursor: 'default',
-      position: 'fixed',
-      display: this.contextMenuFlag ? 'block' : 'none',
-      left: this.mouseLocation.left + 'px',
-      top: this.mouseLocation.top + 'px',
+      'cursor': 'default',
+      'position': 'fixed',
+      'display': this.contextMenuFlag ? 'block' : 'none',
+      'left': this.mouseLocation.left + 'px',
+      'top': this.mouseLocation.top + 'px',
       'box-shadow': '1px 1px 2px #000000',
-      width: '15%',
+      'width': '15%',
     };
   }
 
   getListPosition(elementRef: any) {
-    let height: number = 240;
+    const height = 240;
     if ((window.screen.height - elementRef.getBoundingClientRect().bottom) < height) {
       return true;
     } else {
@@ -608,7 +603,7 @@ description : If "true" add two context menus i.e close All and close Others tab
       temptab = itemConfig;
     }
     if (!itemConfig.disabled) {
-      let obj = {
+      const obj = {
         menuData: itemConfig,
         rowData: this.rightClickRowData,
       };

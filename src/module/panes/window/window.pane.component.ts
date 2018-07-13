@@ -116,7 +116,7 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit {
    default : none
    description : Place floating button at relative position
    */
-  @Input('relative') relative: boolean = false;
+  @Input('relative') relative = false;
 
   /*
    Properties
@@ -217,7 +217,7 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit {
     }
     this.positionclass = "window-" + this.verticalposition + " window-" + this.horizontalposition;
   }
-  absoluteposition: boolean = false;
+  absoluteposition = false;
   positionclass: string;
   // THIS METHOD IS USED FOR SETTING CSS CLASSSES
 
@@ -286,7 +286,7 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit {
     if (this.isFullWindow) {
       styleClass = 'modal-window-content-max';
     } else {
-      styleClass = this.positionclass
+      styleClass = this.positionclass;
     }
     return styleClass;
   }

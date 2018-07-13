@@ -19,13 +19,11 @@
  Component Selector : <amexio-panel>
  Component Description : Panel provides an easy way to organize big forms by
  grouping the fields in panel
-
 */
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'amexio-panel', template: `
-
     <div class="panel-box">
       <ng-container *ngIf="header">
         <div class="panel-accordion" #btn1 >
@@ -45,7 +43,6 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
           <ng-content></ng-content>
         </div>
       </ng-container>
-
     </div>
   `,
 })
@@ -114,19 +111,17 @@ description : Fires the on accordion pane click event.
       this.iconclassKey = 'fa fa-caret-down';
     }
     if (this.height) {
-      this.height = this.height;
+     return this.height;
     }
   }
 
   onTabClick(btn: any) {
     btn.classList.toggle('active-accordion');
-    let panel = btn.nextElementSibling;
     if (this.iconclassKey === 'fa fa-caret-down') {
       this.iconclassKey = 'fa fa-caret-up';
     } else if (this.iconclassKey === 'fa fa-caret-up') {
       this.iconclassKey = 'fa fa-caret-down';
     }
-
     this.expanded = !this.expanded;
     this.onClick.emit();
   }

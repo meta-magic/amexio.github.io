@@ -21,7 +21,7 @@ import {
   Renderer2,
   ViewChild,
 } from '@angular/core';
-import {AmexioTabPill} from '../tab.pill.component';
+import { AmexioTabPillComponent } from '../tab.pill.component';
 
 @Component({
   selector: 'amexio-right-vertical-tab-view',
@@ -30,13 +30,13 @@ import {AmexioTabPill} from '../tab.pill.component';
 })
 export class AmexioRightVerticalTabComponent implements AfterContentInit, AfterViewInit, OnInit {
 
-  @ViewChild('tab', {read: ElementRef}) public tabs: ElementRef;
+  @ViewChild('tab', { read: ElementRef }) public tabs: ElementRef;
 
-  @ContentChildren(AmexioTabPill) queryTabs: QueryList<AmexioTabPill>;
+  @ContentChildren(AmexioTabPillComponent) queryTabs: QueryList<AmexioTabPillComponent>;
 
-  tabCollection: AmexioTabPill[];
+  tabCollection: AmexioTabPillComponent[];
 
-    /*
+  /*
 Events
 name : onClick
 datatype :none
@@ -64,20 +64,20 @@ description : Callback to invoke on activated tab event.
   }
 
   onTabClick(tab: any) {
-    if (!tab.disabled ) {
-      for (let i = 0; i < this.tabCollection.length; i++) {
-        if (this.tabCollection[i] === tab) {
-          this.tabCollection[i]['active'] = true;
+    if (!tab.disabled) {
+      for (const i of this.tabCollection) {
+        if (i === tab) {
+          i['active'] = true;
           this.onClick.emit(tab);
         } else {
-          this.tabCollection[i]['active'] = false;
+          i['active'] = false;
         }
       }
     }
   }
 
-  closeTab(tabNode: AmexioTabPill) {
-    const newTab: AmexioTabPill[] = [];
+  closeTab(tabNode: AmexioTabPillComponent) {
+    const newTab: AmexioTabPillComponent[] = [];
     let index = 0;
     let tabHighlightIndex = 0;
 

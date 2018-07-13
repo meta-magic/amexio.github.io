@@ -133,7 +133,7 @@ version : 4.2 onwards
 default : false
 description : Flag to show form invalid error messages
 */
-  @Input('show-error') showError: boolean = false;
+  @Input('show-error') showError = false;
 
   /*
 Properties
@@ -287,110 +287,109 @@ description : Event fired if showError msg info button is clicked
   closeDialogue() {
     this.showDialogue = !this.showDialogue;
   }
-
+ // Main method for validation which split into small part 2,3,4.
   checkFormvalidity() {
     this.isFormValid = true;
     this.componentError = [];
-
     if (this.textinput && this.textinput.length > 0) {
       this.textinput.forEach((c) => {
-        let flag = c.isComponentValid && c.isValid;
+        const flag = c.isComponentValid && c.isValid;
         this.validationFlagSet(flag, c, 'Text Input');
       });
     }
-
     if (this.dropdown && this.dropdown.length > 0) {
       this.dropdown.forEach((c) => {
-        let flag = c.isComponentValid;
+        const flag = c.isComponentValid;
         this.validationFlagSet(flag, c, 'DropDown');
       });
     }
-
+    this.second();
+    this.three() ;
+    this.forth();
+  }
+  // Main method split into second
+    second() {
     if (this.typeahead && this.typeahead.length > 0) {
       this.typeahead.forEach((c) => {
-        let flag = c.isComponentValid;
+        const flag = c.isComponentValid;
         this.validationFlagSet(flag, c, 'Typeahead');
       });
     }
-
     if (this.datefiled) {
       this.datefiled.forEach((c) => {
-        let flag;
-        flag = c.isComponentValid;
+        const flag = c.isComponentValid;
         this.validationFlagSet(flag, c, 'Date Picker');
       });
     }
     if (this.tags && this.tags.length > 0) {
       this.tags.forEach((c) => {
-        let flag = c.isComponentValid;
+        const flag = c.isComponentValid;
         this.validationFlagSet(flag, c, 'Tag Input');
       });
     }
     if (this.numinput && this.numinput.length > 0) {
       this.numinput.forEach((c) => {
-        let flag = c.isComponentValid && c.isValid;
+        const flag = c.isComponentValid && c.isValid;
         this.validationFlagSet(flag, c, 'Number Input');
       });
     }
-
+  }
+  // Main method split into third
+    three() {
     if (this.password && this.password.length > 0) {
       this.password.forEach((c) => {
-        let flag = c.isComponentValid && c.isValid;
+        const flag = c.isComponentValid && c.isValid;
         this.validationFlagSet(flag, c, 'Password Input');
       });
     }
-
     if (this.emailinput && this.emailinput.length > 0) {
       this.emailinput.forEach((c) => {
-        let flag = c.isComponentValid && c.isValid;
+        const flag = c.isComponentValid && c.isValid;
         this.validationFlagSet(flag, c, 'Email Input');
       });
     }
-
     if (this.radio) {
       this.radio.forEach((c) => {
-        let flag = c.isComponentValid;
+        const flag = c.isComponentValid;
         this.validationFlagSet(flag, c, 'RadioGroup');
       });
     }
     if (this.chkBox) {
       this.chkBox.forEach((c) => {
-        let flag = c.isComponentValid;
+        const flag = c.isComponentValid;
         this.validationFlagSet(flag, c, 'Checkbox');
       });
     }
-
+  }
+  // Main method split into forth
+   forth() {
     if (this.chkBoxGrp && this.chkBoxGrp.length > 0) {
       this.chkBoxGrp.forEach((c) => {
-        let flag = c.isComponentValid;
+        const flag = c.isComponentValid;
         this.validationFlagSet(flag, c, 'CheckBox Group');
       });
     }
-
     if (this.textarea && this.textarea.length > 0) {
       this.textarea.forEach((c) => {
-        let flag = c.isComponentValid && c.isValid;
+        const flag = c.isComponentValid && c.isValid;
         this.validationFlagSet(flag, c, 'Textarea Input');
       });
     }
-
     if (this.toggle && this.toggle.length > 0) {
       this.toggle.forEach((c) => {
-        let flag = c.isComponentValid;
+        const flag = c.isComponentValid;
         this.validationFlagSet(flag, c, 'Toggle Input');
       });
     }
-
     if (this.checkForm) {
       this.buttons.forEach((c) => {
         c.disabled = !this.isFormValid;
       });
     }
-
   }
 
   validationFlagSet(flag: any, componentRef: any, componentName: string) {
-    let errorObject: any = {};
+    const errorObject: any = {};
     if (!flag) {
       errorObject['component'] = componentName;
       errorObject['label'] = componentRef.fieldlabel;

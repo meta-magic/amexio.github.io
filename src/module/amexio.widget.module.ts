@@ -11,7 +11,7 @@ import {CommonDataService} from './services/data/common.data.service';
 import {DeviceQueryService} from './services/device/device.query.service';
 import {IconLoaderService} from './services/icon/icon.service';
 
-import { AmexioTabPill } from '../index';
+import { AmexioTabPillComponent } from '../index';
 
 export * from './services/data/common.data.service';
 export * from './services/device/device.query.service';
@@ -29,7 +29,7 @@ export * from './services/icon/icon.mapping.config';
     AmexioPaneModule,
     HttpClientModule,
   ],
-  entryComponents: [AmexioTabPill],
+  entryComponents: [AmexioTabPillComponent],
   exports: [
     AmexioFormsModule,
     AmexioNavModule,
