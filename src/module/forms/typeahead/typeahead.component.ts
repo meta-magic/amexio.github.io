@@ -10,7 +10,7 @@
 
 */
 import {
-  Component, DoCheck, ElementRef, EventEmitter, forwardRef, HostListener, Input, OnChanges, OnInit, Output, Renderer2,
+  Component, ElementRef, EventEmitter, forwardRef, HostListener, Input, OnChanges, OnInit, Output, Renderer2,
   SimpleChanges,
   ViewChild
 } from '@angular/core';
@@ -30,7 +30,7 @@ export const CUSTOM_TYPEAHEAD_CONTROL_VALUE_ACCESSOR: any = {
   styleUrls: ['./typeahead.component.scss'],
   providers: [CUSTOM_TYPEAHEAD_CONTROL_VALUE_ACCESSOR]
 })
-export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, DoCheck, OnChanges {
+export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, OnChanges {
   /*
    Properties
    name : field-label
@@ -57,7 +57,18 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
    default :
    description : Local data for dropdown.
    */
-  @Input() data: any;
+  _data : any;
+componentLoaded:boolean;
+@Input('data')
+set data(value: any) {
+  this._data = value;
+  if(this.componentLoaded){
+    this.setData(this._data);
+  }
+}
+get data() : any{
+  return this._data;
+}
   /*
    Properties
    name : data-reader
@@ -320,7 +331,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
       this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
     }
-
+  this.componentLoaded=true;
   }
 
   onclick() {
@@ -438,13 +449,6 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
       });
     }
     this.maskloader=false;
-  }
-
-  ngDoCheck() {
-    if (this.data && JSON.stringify(this.previousData) != JSON.stringify(this.data)) {
-      this.previousData = JSON.parse(JSON.stringify(this.data));
-      this.setData(this.data);
-    }
   }
 
   onItemSelect(row: any) {
