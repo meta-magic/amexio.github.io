@@ -3,8 +3,8 @@
  Component Selector :  <amexio-fileupload>
  Component Description : This component use for uploading all types of files.
  */
-import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import {CommonDataService} from '../../services/data/common.data.service';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { CommonDataService } from '../../services/data/common.data.service';
 @Component({
   selector: 'amexio-fileupload', template: `
     <div class='input-group' *ngIf='!droppable'>
@@ -124,27 +124,27 @@ export class AmexioFileUploadComponent implements OnInit, AfterViewInit {
   dropClass: string;
   constructor(public dataService: CommonDataService) {
   }
-  ngOnInit() {  }
-  ngAfterViewInit() {  }
+  ngOnInit() { }
+  ngAfterViewInit() { }
   formatBytes(bytes: any, decimals: any) {
     if (bytes === 0) {
-     return '0 Bytes';
+      return '0 Bytes';
     }
-    var k = 1024,
-      dm = decimals || 2,
-      sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
-      i = Math.floor(Math.log(bytes) / Math.log(k));
+    const k = 1024;
+    const dm = decimals || 2;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
   }
   onFileDrop(event: any) {
     event.preventDefault();
     this.dropClass = '';
-    let dt = event.dataTransfer;
+    const dt = event.dataTransfer;
     if (dt.items) {
       // Use DataTransferItemList interface to access the file(s)
       for (let i = 0; i < dt.items.length; i++) {
         if (dt.items[i].kind === 'file') {
-          let f = dt.items[i].getAsFile();
+          const f = dt.items[i].getAsFile();
           this.uploadFile(f, true);
         }
       }
@@ -156,13 +156,13 @@ export class AmexioFileUploadComponent implements OnInit, AfterViewInit {
     this.dropClass = 'drop';
   }
   closeFile(filedata: any, index: any) {
-    this.onRemove.emit({fileData: filedata});
+    this.onRemove.emit({ fileData: filedata });
     this.uploadedFiles.splice(index, 1);
   }
   //  For Uploading files
   uploadFile(event: any, singleFile: boolean) {
     if (singleFile) {
-      let formData = new FormData();
+      const formData = new FormData();
       formData.append(this.paramname, event);
       this.dataService.uploadFile(this.httpurl, this.httpmethod, formData).subscribe(
         (response: any) => {
@@ -173,13 +173,13 @@ export class AmexioFileUploadComponent implements OnInit, AfterViewInit {
         () => {
           if (this.responseData) {
             this.onFileUpload.emit(this.responseData);
-            }
+          }
         },
       );
-      this.uploadedFiles.push({ name: event.name , size: this.formatBytes(event.size, 2)});
+      this.uploadedFiles.push({ name: event.name, size: this.formatBytes(event.size, 2) });
     } else {
-      let fileList: FileList = event.target.files !== null ? event.target.files : event;
-      let formData = new FormData();
+      const fileList: FileList = event.target.files !== null ? event.target.files : event;
+      const formData = new FormData();
       if (fileList) {
         for (let i = 0; i < fileList.length; i++) {
           if (!this.paramname) {
@@ -196,15 +196,15 @@ export class AmexioFileUploadComponent implements OnInit, AfterViewInit {
           () => {
             if (this.responseData) {
               this.onFileUpload.emit(this.responseData);
-              }
+            }
           },
         );
         if (fileList.length === 1) {
-          let fsize = this.formatBytes(fileList[0].size, 2);
-          this.uploadedFiles.push({ name: fileList[0].name, size: fsize});
+          const fsize = this.formatBytes(fileList[0].size, 2);
+          this.uploadedFiles.push({ name: fileList[0].name, size: fsize });
         } else if (fileList.length > 1) {
-          for (let i = 0; i < fileList.length ; i++) {
-            let fsize = this.formatBytes(fileList[i].size, 2);
+          for (let i = 0; i < fileList.length; i++) {
+            const fsize = this.formatBytes(fileList[i].size, 2);
             this.uploadedFiles.push({ name: fileList[i].name, size: fsize });
           }
         }

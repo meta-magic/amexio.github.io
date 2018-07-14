@@ -175,18 +175,20 @@ export class AmexioEmailInputComponent implements ControlValueAccessor, OnInit {
    */
   @Output() change: any = new EventEmitter<any>();
   isValid: boolean;
+  private innerValue: any = '';
+  // The internal dataviews model
+  // Placeholders for the callbacks which are later provided
+  // by the Control Value Accessor
+  private onTouchedCallback: () => void = noop;
+  private onChangeCallback: (_: any) => void = noop;
+
   constructor() {
     this.showToolTip = false;
   }
   ngOnInit() {
     this.isComponentValid = this.allowblank;
   }
-  // The internal dataviews model
-  private innerValue: any = '';
-  // Placeholders for the callbacks which are later provided
-  // by the Control Value Accessor
-  private onTouchedCallback: () => void = noop;
-  private onChangeCallback: (_: any) => void = noop;
+
   // get accessor
   get value(): any {
     return this.innerValue;
@@ -247,11 +249,7 @@ export class AmexioEmailInputComponent implements ControlValueAccessor, OnInit {
           this.isValid = false;
           this.isComponentValid = false;
         }
-      } else if (inp.touched && !this.allowblank && (this.value === '' || this.value === null)) {
-        classObj = {'input-control-error': true};
-        this.isValid = false;
-        this.isComponentValid = false;
-      } else if (!this.emailpatter.test(this.value)) {
+      } else if ((inp.touched && !this.allowblank && (this.value === '' || this.value === null)) || (!this.emailpatter.test(this.value))) {
         classObj = {'input-control-error': true};
         this.isValid = false;
         this.isComponentValid = false;
