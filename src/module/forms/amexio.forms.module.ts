@@ -14,7 +14,7 @@ import {AmexioButtonGroupComponent} from './buttongroup/button.group.component';
 import {AmexioButtonComponent} from './buttons/button.component';
 import {AmexioCheckBoxGroupComponent} from './checkbox-group/checkbox.group.component';
 import {AmexioCheckBoxComponent} from './checkbox/checkbox.component';
-import {AmexioDateTimePicker} from './datetimepicker/datetimepicker.component';
+import {AmexioDateTimePickerComponent} from './datetimepicker/datetimepicker.component';
 import { AmexioDropDownMenuComponent } from './dropdown-menu/dropdownmenu.component';
 import { AmexioDropDownitemsComponent} from './dropdown-menu/dropdownmenu.component.items';
 import {AmexioDropDownComponent} from './dropdown/dropdown.component';
@@ -68,7 +68,7 @@ const FORM_COMPONENTS = [
   AmexioFormIconComponent,
   AmexioSliderComponent,
   AmexioTagsInputComponent,
-  AmexioDateTimePicker,
+  AmexioDateTimePickerComponent,
   AmexioButtonDropDownItemComponent,
   AmexioButtonDropdownComponent,
   AmexioSpiltButtonDropdownComponent,

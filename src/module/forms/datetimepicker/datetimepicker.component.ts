@@ -8,7 +8,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 const noop = () => {
 };
 export const CUSTOM_DATETIME_Style_CONTROL_VALUE_ACCESSOR: any = {
-  provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioDateTimePicker), multi: true,
+  provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioDateTimePickerComponent), multi: true,
 };
 @Component({
   selector: 'amexio-date-time-picker',
@@ -17,7 +17,7 @@ export const CUSTOM_DATETIME_Style_CONTROL_VALUE_ACCESSOR: any = {
   `],
   providers: [CUSTOM_DATETIME_Style_CONTROL_VALUE_ACCESSOR],
 })
-export class AmexioDateTimePicker implements OnInit {
+export class AmexioDateTimePickerComponent implements OnInit {
   /*
   Properties
   name : date-format
@@ -223,7 +223,7 @@ export class AmexioDateTimePicker implements OnInit {
     this.min = this.currrentDate.getMinutes();
     this.initDaysTitle();
     this.createDaysForCurrentMonths(this.currrentDate);
-    this.monthList1.forEach((element: any) => {
+    this.monthList1.forEach((tmpElement: any) => {
     });
   }
   ngOnInit() {
@@ -235,8 +235,8 @@ export class AmexioDateTimePicker implements OnInit {
       this.dateformat = 'dd/MM/yyyy';
     }
     if (this.minDate.length > 0 || this.maxDate.length > 0) {
-      let min = new Date(this.minDate);
-      let max = new Date(this.maxDate);
+      const min = new Date(this.minDate);
+      const max = new Date(this.maxDate);
       this.yearList1.forEach((element: any) => {
         if (element.year === min.getFullYear() ||
           (element.year === min.getFullYear() && element.year === max.getFullYear())) {
@@ -258,8 +258,8 @@ export class AmexioDateTimePicker implements OnInit {
     }  // main if ends
     // logic for disabling yrs before min and after max
     if (this.minDate.length > 0 || this.maxDate.length > 0) {
-      let min = new Date(this.minDate);
-      let max = new Date(this.maxDate);
+      const min = new Date(this.minDate);
+      const max = new Date(this.maxDate);
       this.yearList1.forEach((element: any) => {
         if (element.year < min.getFullYear() || element.year > max.getFullYear()) {
           element.disabled = true;
@@ -282,18 +282,17 @@ export class AmexioDateTimePicker implements OnInit {
     this.daysTitle.push({ text: 'Su' });
   }
   createDaysForCurrentMonths(selectedPeriod: any) {
-    let date = new Date(selectedPeriod.getFullYear(), selectedPeriod.getMonth(), 1, 0, 0, 0, 0); // Starting at the 1st of the month
-    let extras = (date.getDay() + 6) % 7; // How many days of the last month do we need to include?
+    const date = new Date(selectedPeriod.getFullYear(), selectedPeriod.getMonth(), 1, 0, 0, 0, 0); // Starting at the 1st of the month
+    const extras = (date.getDay() + 6) % 7; // How many days of the last month do we need to include?
     date.setDate(date.getDate() - extras); // Skip back to the previous monday
-    let month = selectedPeriod.getMonth();
-    let year = selectedPeriod.getFullYear();
+    const month = selectedPeriod.getMonth();
     while (1) {
-      let rowDays = [];
+      const rowDays = [];
       for (let i = 0; i < 7; i++) {
-        let day: any = {
+        const day: any = {
           date: null, selected: false, isCurrentMonth: null, isDisabled: false,
         };
-        let isCurrentMonth: any = ((date.getMonth() === selectedPeriod.getMonth()));
+        const isCurrentMonth: any = (date.getMonth() === selectedPeriod.getMonth());
         day.date = new Date(date.getTime());
         day.isCurrentMonth = isCurrentMonth;
         if ((date.getMonth() === this.currrentDate.getMonth()) && (date.getDate() === this.currrentDate.getDate())) {
@@ -326,7 +325,7 @@ export class AmexioDateTimePicker implements OnInit {
   resetSelection(dateObj: any) {
     for (let i = 0; i < this.daysArray.length; i++) {
       for (let j = 0; j < this.daysArray[i].length; j++) {
-        let day = this.daysArray[i][j];
+        const day = this.daysArray[i][j];
         if (day.date.getTime() === dateObj.getTime()) {
           day.selected = true;
         } else {
@@ -337,10 +336,10 @@ export class AmexioDateTimePicker implements OnInit {
   }
   onInput(event: any) {
     if (event.target.value !== null && event.target.value !== '') {
-      let timeValue = event.target.value.split(':');
+      const timeValue = event.target.value.split(':');
       if (timeValue != null) {
-        let hrs = parseInt(timeValue[0].trim());
-        let mins = parseInt(timeValue[1].trim());
+        const hrs = parseInt(timeValue[0].trim());
+        const mins = parseInt(timeValue[1].trim());
         this.selectedDate.setHours(hrs);
         this.selectedDate.setMinutes(mins);
         this.hrs = hrs;
@@ -367,9 +366,9 @@ export class AmexioDateTimePicker implements OnInit {
   }
   // this function validates month
   setDateData(state: string, mon: number, event: any) {
-    let d = new Date(this.currrentDate.getFullYear(), this.currrentDate.getMonth(), this.currrentDate.getDate());
-    let min = new Date(this.minDate);
-    let max = new Date(this.maxDate);
+    const d = new Date(this.currrentDate.getFullYear(), this.currrentDate.getMonth(), this.currrentDate.getDate());
+    const min = new Date(this.minDate);
+    const max = new Date(this.maxDate);
     // checks if selected date is within maximum range of month
     if (state === 'plus') {
       if (this.maxDate.length > 0) {
@@ -417,9 +416,9 @@ export class AmexioDateTimePicker implements OnInit {
   }
   // this function validates year
   setDateData1(state: string, mon: number, event: any) {
-    let d = new Date(this.currrentDate.getFullYear(), this.currrentDate.getMonth(), this.currrentDate.getDate());
-    let min = new Date(this.minDate);
-    let max = new Date(this.maxDate);
+    const d = new Date(this.currrentDate.getFullYear(), this.currrentDate.getMonth(), this.currrentDate.getDate());
+    const min = new Date(this.minDate);
+    const max = new Date(this.maxDate);
     // checks if selected date is within maximum range of year
     if (state === 'plus') {
       if (this.maxDate.length > 0) {
@@ -557,7 +556,7 @@ export class AmexioDateTimePicker implements OnInit {
     this.disableddays(this.diabledDate);
   }
   getListPosition(elementRef: any): boolean {
-    let dropdownHeight: number = 350; // must be same in dropdown.scss
+    const dropdownHeight = 350; // must be same in dropdown.scss
     if (window.innerHeight - (elementRef.getBoundingClientRect().bottom) < dropdownHeight) {
       if ((elementRef.getBoundingClientRect().top - dropdownHeight - elementRef.getBoundingClientRect().height) > 0) {
         this.positionClass = {
@@ -600,8 +599,8 @@ export class AmexioDateTimePicker implements OnInit {
     }
   }
   validateDays(days: any) {
-    let max = new Date(this.maxDate);
-    let min = new Date(this.minDate);
+    const max = new Date(this.maxDate);
+    const min = new Date(this.minDate);
     // check1: if min max is null return false
     if (this.maxDate.length <= 0 && this.minDate.length <= 0) {
       return false;
@@ -633,8 +632,8 @@ export class AmexioDateTimePicker implements OnInit {
   disableddays(dates: any) {
     if (dates) {
       dates.forEach((element: any) => {
-        let From = new Date(element.from);
-        let To = new Date(element.to);
+        const From = new Date(element.from);
+        const To = new Date(element.to);
         this.daysArray.forEach((element2: any) => {
           element2.forEach((element1: any) => {
             if (element1.date.getFullYear() <= To.getFullYear() && element1.date.getMonth()
@@ -704,30 +703,18 @@ export class AmexioDateTimePicker implements OnInit {
       }
     });
     switch (month.name) {
-      case 'Jan': this.monthNo = 0;
-        break;
-      case 'Feb': this.monthNo = 1;
-        break;
-      case 'Mar': this.monthNo = 2;
-        break;
-      case 'Apr': this.monthNo = 3;
-        break;
-      case 'May': this.monthNo = 4;
-        break;
-      case 'Jun': this.monthNo = 5;
-        break;
-      case 'Jul': this.monthNo = 6;
-        break;
-      case 'Aug': this.monthNo = 7;
-        break;
-      case 'Sep': this.monthNo = 8;
-        break;
-      case 'Oct': this.monthNo = 9;
-        break;
-      case 'Nov': this.monthNo = 10;
-        break;
-      case 'Dec': this.monthNo = 11;
-        break;
+      case 'Jan': this.monthNo = 0; break;
+      case 'Feb': this.monthNo = 1; break;
+      case 'Mar': this.monthNo = 2; break;
+      case 'Apr': this.monthNo = 3; break;
+      case 'May': this.monthNo = 4; break;
+      case 'Jun': this.monthNo = 5; break;
+      case 'Jul': this.monthNo = 6; break;
+      case 'Aug': this.monthNo = 7; break;
+      case 'Sep': this.monthNo = 8; break;
+      case 'Oct': this.monthNo = 9; break;
+      case 'Nov': this.monthNo = 10; break;
+      case 'Dec': this.monthNo = 11; break;
       default: break;
     }
   }
@@ -757,7 +744,6 @@ export class AmexioDateTimePicker implements OnInit {
   navigateDropdown() {
     this.hostFlag = true;
     this.selectedDate = new Date();
-    let d = new Date(this.currrentDate.getFullYear(), this.currrentDate.getMonth(), this.currrentDate.getDate());
     if (this.yearNo != null && this.monthNo != null) {
       this.selectedDate.setFullYear(this.yearNo);
       this.selectedDate.setMonth(this.monthNo);
@@ -795,23 +781,23 @@ export class AmexioDateTimePicker implements OnInit {
     // disable flag logic
     if (this.minDate.length > 0 || this.maxDate.length > 0) {
       this.yearList1.forEach((element: any) => {
-        let min = new Date(this.minDate);
-        let max = new Date(this.maxDate);
+        const min = new Date(this.minDate);
+        const max = new Date(this.maxDate);
         if (element.year < min.getFullYear() || element.year > max.getFullYear()) {
           element.disabled = true;
         } // if ends
       }); // for ends
       this.yearList2.forEach((element: any) => {
-        let min = new Date(this.minDate);
-        let max = new Date(this.maxDate);
+        const min = new Date(this.minDate);
+        const max = new Date(this.maxDate);
         if (element.year < min.getFullYear() || element.year > max.getFullYear()) {
           element.disabled = true;
         } // if ends
       }); // for ends
     } // outer if ends
     if (this.minDate.length > 0 || this.maxDate.length > 0) {
-      let min = new Date(this.minDate);
-      let max = new Date(this.maxDate);
+      const min = new Date(this.minDate);
+      const max = new Date(this.maxDate);
       this.yearList1.forEach((element: any) => {
         if (element.year === min.getFullYear() ||
           (element.year === min.getFullYear() && element.year === max.getFullYear())) {
@@ -853,15 +839,15 @@ export class AmexioDateTimePicker implements OnInit {
     // disable flag logic
     if (this.minDate.length > 0 || this.maxDate.length > 0) {
       this.yearList1.forEach((element: any) => {
-        let min = new Date(this.minDate);
-        let max = new Date(this.maxDate);
+        const min = new Date(this.minDate);
+        const max = new Date(this.maxDate);
         if (element.year < min.getFullYear() || element.year > max.getFullYear()) {
           element.disabled = true;
         } // if ends
       }); // for ends
       this.yearList2.forEach((element: any) => {
-        let min = new Date(this.minDate);
-        let max = new Date(this.maxDate);
+        const min = new Date(this.minDate);
+        const max = new Date(this.maxDate);
         if (element.year < min.getFullYear() || element.year > max.getFullYear()) {
           element.disabled = true;
         } // if ends
@@ -869,8 +855,8 @@ export class AmexioDateTimePicker implements OnInit {
     }  // outer if ends
     // rechking arrow flags after reinitialization of yrlist1 & 2
     this.yearList1.forEach((element: any) => {
-      let min = new Date(this.minDate);
-      let max = new Date(this.maxDate);
+      const min = new Date(this.minDate);
+      const max = new Date(this.maxDate);
       if (element.year === min.getFullYear() ||
         (element.year === min.getFullYear() && element.year === max.getFullYear())) {
         this.backArrowFlag = true;
@@ -884,8 +870,8 @@ export class AmexioDateTimePicker implements OnInit {
       }
     });
     this.yearList2.forEach((element: any) => {
-      let min = new Date(this.minDate);
-      let max = new Date(this.maxDate);
+      const min = new Date(this.minDate);
+      const max = new Date(this.maxDate);
       if (element.year === min.getFullYear()) {
         this.backArrowFlag = true;
       }
@@ -900,8 +886,8 @@ export class AmexioDateTimePicker implements OnInit {
     // disable flag logic
     if (this.minDate.length > 0 || this.maxDate.length > 0) {
       this.yearList1.forEach((element: any) => {
-        let min = new Date(this.minDate);
-        let max = new Date(this.maxDate);
+        const min = new Date(this.minDate);
+        const max = new Date(this.maxDate);
         if (element.year < min.getFullYear() || element.year > max.getFullYear()) {
           element.disabled = true;
           // if ends
@@ -910,16 +896,16 @@ export class AmexioDateTimePicker implements OnInit {
         }
       });  // for ends
       this.yearList2.forEach((element: any) => {
-        let min = new Date(this.minDate);
-        let max = new Date(this.maxDate);
+        const min = new Date(this.minDate);
+        const max = new Date(this.maxDate);
         if (element.year < min.getFullYear() || element.year > max.getFullYear()) {
           element.disabled = true;
         }  // if ends
       }); // for ends
     } // outer if ends
     if (this.minDate.length > 0 || this.maxDate.length > 0) {
-      let min = new Date(this.minDate);
-      let max = new Date(this.maxDate);
+      const min = new Date(this.minDate);
+      const max = new Date(this.maxDate);
       this.yearList1.forEach((element: any) => {
         if (element.year === min.getFullYear() ||
           (element.year === min.getFullYear() && element.year === max.getFullYear())) {
@@ -964,8 +950,8 @@ export class AmexioDateTimePicker implements OnInit {
     // disable flag logic
     if (this.minDate.length > 0 || this.maxDate.length > 0) {
       this.yearList1.forEach((element: any) => {
-        let min = new Date(this.minDate);
-        let max = new Date(this.maxDate);
+        const min = new Date(this.minDate);
+        const max = new Date(this.maxDate);
         if (element.year < min.getFullYear() || element.year > max.getFullYear()) {
           element.disabled = true;
           // if ends
@@ -974,8 +960,8 @@ export class AmexioDateTimePicker implements OnInit {
         }
       }); // for ends
       this.yearList2.forEach((element: any) => {
-        let min = new Date(this.minDate);
-        let max = new Date(this.maxDate);
+        const min = new Date(this.minDate);
+        const max = new Date(this.maxDate);
         if (element.year < min.getFullYear() || element.year > max.getFullYear()) {
           element.disabled = true;
         } // if ends
@@ -983,8 +969,8 @@ export class AmexioDateTimePicker implements OnInit {
     } // outer if ends
     // rechking arrow flags after reinitialization of yrlist1 & 2
     this.yearList1.forEach((element: any) => {
-      let min = new Date(this.minDate);
-      let max = new Date(this.maxDate);
+      const min = new Date(this.minDate);
+      const max = new Date(this.maxDate);
       if (element.year === min.getFullYear() ||
         (element.year === min.getFullYear() && element.year === max.getFullYear())) {
         this.backArrowFlag = true;
@@ -994,8 +980,8 @@ export class AmexioDateTimePicker implements OnInit {
       }
     });
     this.yearList2.forEach((element: any) => {
-      let min = new Date(this.minDate);
-      let max = new Date(this.maxDate);
+      const min = new Date(this.minDate);
+      const max = new Date(this.maxDate);
       if (element.year === min.getFullYear()) {
         this.backArrowFlag = true;
       }

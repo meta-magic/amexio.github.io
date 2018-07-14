@@ -12,7 +12,7 @@ import {
 import { AmexioButtonComponent } from './../../forms/buttons/button.component';
 import { AmexioCheckBoxGroupComponent } from './../../forms/checkbox-group/checkbox.group.component';
 import { AmexioCheckBoxComponent } from './../../forms/checkbox/checkbox.component';
-import { AmexioDateTimePicker } from './../../forms/datetimepicker/datetimepicker.component';
+import { AmexioDateTimePickerComponent } from './../../forms/datetimepicker/datetimepicker.component';
 import { AmexioDropDownComponent } from './../../forms/dropdown/dropdown.component';
 import { AmexioEmailInputComponent } from './../../forms/emailinput/emailinput.component';
 import { AmexioNumberInputComponent } from './../../forms/numberinput/numberinput.component';
@@ -74,8 +74,8 @@ export class AmexioFormComponent implements AfterContentInit, AfterViewInit, DoC
   @ContentChildren(AmexioTagsInputComponent, { descendants: true }) queryTags: QueryList<AmexioTagsInputComponent>;
   tags: AmexioTagsInputComponent[];
 
-  @ContentChildren(AmexioDateTimePicker, { descendants: true }) queryDate: QueryList<AmexioDateTimePicker>;
-  datefiled: AmexioDateTimePicker[];
+  @ContentChildren(AmexioDateTimePickerComponent, { descendants: true }) queryDate: QueryList<AmexioDateTimePickerComponent>;
+  datefiled: AmexioDateTimePickerComponent[];
 
   @ContentChildren(AmexioToggleComponent, { descendants: true }) queryToggle: QueryList<AmexioToggleComponent>;
   toggle: AmexioToggleComponent[];
