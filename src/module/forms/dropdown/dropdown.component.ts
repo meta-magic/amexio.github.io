@@ -291,6 +291,9 @@ description : Set enable / disable popover.
   multiselectValues: any[] = [];
   maskloader = true;
   isComponentValid: boolean;
+  selectedindex = 0;
+  scrollposition = 30;
+
   private innerValue: any = '';
   // Placeholders for the callbacks which are later provided
   // by the Control Value Accessor
@@ -317,9 +320,9 @@ description : Set enable / disable popover.
       this.placeholder = 'Choose Option';
     }
     if (this.httpmethod && this.httpurl) {
-      this.dataService.fetchData(this.httpurl, this.httpmethod).subscribe(response => {
+      this.dataService.fetchData(this.httpurl, this.httpmethod).subscribe((response) => {
         this.responseData = response;
-      }, error => {
+      }, (error) => {
       }, () => {
         this.setData(this.responseData);
       });
@@ -333,50 +336,66 @@ description : Set enable / disable popover.
     let responsedata = httpResponse;
     if (this.datareader !== null) {
       this.multiselectValues = [];
-      let dr = this.datareader.split('.');
+      const dr = this.datareader.split('.');
       if (dr) {
-        for (let ir = 0; ir < dr.length; ir++) {
-          responsedata = responsedata[dr[ir]];
+        for (const ir of dr) {
+          responsedata = responsedata[ir];
         }
       }
     } else {
       responsedata = httpResponse;
     }
     if (responsedata) {
-      this.viewData = responsedata.sort((a: any, b: any) =>
-        a[this.displayfield].toLowerCase() !== b[this.displayfield].toLowerCase() ? a[this.displayfield].toLowerCase()
-          < b[this.displayfield].toLowerCase() ? -1 : 1 : 0);
-      this.filteredOptions = this.viewData;
+      this.setDataResponse(responsedata);
     }
     if (this.multiselect) {
-      let preSelectedMultiValues = '';
-      let optionsChecked: any[] = [];
-      this.viewData.forEach((row: any) => {
-        if (row.hasOwnProperty('checked') && row.checked) {
-          optionsChecked.push(row[this.valuefield]);
-          this.multiselectValues.push(row);
-          preSelectedMultiValues === '' ? preSelectedMultiValues +=
-            row[this.displayfield] : preSelectedMultiValues += ',' + row[this.displayfield];
-        }
-      });
-      this.displayValue = preSelectedMultiValues;
-      this.onMultiSelect.emit(this.multiselectValues);
+      this.setDataMultiSelect();
     }
     // Set user selection
     if (this.value !== null) {
-      let valueKey = this.valuefield;
-      let displayKey = this.displayfield;
-      let val = this.value;
-      this.viewData.forEach((item: any) => {
-        if (item[valueKey] === val) {
-          this.isComponentValid = true;
-          this.displayValue = item[displayKey];
-          this.onSingleSelect.emit(item);
-        }
-      });
+      this.setUserSelection();
     }
     this.maskloader = false;
   }
+
+  // response Data
+  setDataResponse(responsedata: any) {
+    this.viewData = responsedata.sort((a: any, b: any) =>
+      a[this.displayfield].toLowerCase() !== b[this.displayfield].toLowerCase() ? a[this.displayfield].toLowerCase()
+        < b[this.displayfield].toLowerCase() ? -1 : 1 : 0);
+    this.filteredOptions = this.viewData;
+  }
+
+  // Set Data for Multi Select
+  setDataMultiSelect() {
+    let preSelectedMultiValues = '';
+    const optionsChecked: any[] = [];
+    this.viewData.forEach((row: any) => {
+      if (row.hasOwnProperty('checked') && row.checked) {
+        optionsChecked.push(row[this.valuefield]);
+        this.multiselectValues.push(row);
+        preSelectedMultiValues === '' ? preSelectedMultiValues +=
+          row[this.displayfield] : preSelectedMultiValues += ',' + row[this.displayfield];
+      }
+    });
+    this.displayValue = preSelectedMultiValues;
+    this.onMultiSelect.emit(this.multiselectValues);
+  }
+
+  // Set User Selection
+  setUserSelection() {
+    const valueKey = this.valuefield;
+    const displayKey = this.displayfield;
+    const val = this.value;
+    this.viewData.forEach((item: any) => {
+      if (item[valueKey] === val) {
+        this.isComponentValid = true;
+        this.displayValue = item[displayKey];
+        this.onSingleSelect.emit(item);
+      }
+    });
+  }
+
   ngDoCheck() {
     if (JSON.stringify(this.previousData) !== JSON.stringify(this.data)) {
       this.previousData = JSON.parse(JSON.stringify(this.data));
@@ -385,14 +404,14 @@ description : Set enable / disable popover.
   }
   onItemSelect(row: any) {
     if (this.multiselect) {
-      let optionsChecked: any[] = [];
+      const optionsChecked: any[] = [];
       this.multiselectValues = [];
       if (row.hasOwnProperty('checked')) {
         row.checked = !row.checked;
-        this.filteredOptions.forEach((row: any) => {
-          if (row.checked) {
-            optionsChecked.push(row[this.valuefield]);
-            this.multiselectValues.push(row);
+        this.filteredOptions.forEach((eachRow: any) => {
+          if (eachRow.checked) {
+            optionsChecked.push(eachRow[this.valuefield]);
+            this.multiselectValues.push(eachRow);
           }
         });
         this.value = optionsChecked;
@@ -406,10 +425,11 @@ description : Set enable / disable popover.
     }
     this.isComponentValid = true;
   }
+
   setMultiSelectData() {
     this.multiselectValues = [];
     if (this.value.length > 0) {
-      let modelValue = this.value;
+      const modelValue = this.value;
       this.filteredOptions.forEach((test) => {
         modelValue.forEach((mdValue: any) => {
           if (test[this.valuefield] === mdValue) {
@@ -422,8 +442,10 @@ description : Set enable / disable popover.
       });
     }
   }
+
   navigateKey(event: any) {
   }
+
   getDisplayText(): string {
     if (this.value !== null || this.value !== '' || this.value !== '') {
       if (this.multiselect) {
@@ -449,6 +471,7 @@ description : Set enable / disable popover.
       }
     }
   }
+
   onDropDownClick(event: any) {
     this.onClick.emit(event);
   }
@@ -459,14 +482,13 @@ description : Set enable / disable popover.
     this.input.emit();
     this.isComponentValid = input.valid;
   }
-  selectedindex = 0;
-  scrollposition = 30;
+
   onDropDownSearchKeyUp(event: any) {
     if (this.search) {
-      let keyword = event.target.value;
+      const keyword = event.target.value;
       if (keyword !== null && keyword !== '' && keyword !== ' ') {
         this.filteredOptions = [];
-        let search_Term = keyword.toLowerCase();
+        const search_Term = keyword.toLowerCase();
         this.viewData.forEach((row: any) => {
           if (row[this.displayfield].toLowerCase().startsWith(search_Term)) {
             this.filteredOptions.push(row);
@@ -481,6 +503,7 @@ description : Set enable / disable popover.
       this.navigateUsingKey(event);
     }
   }
+
   navigateUsingKey(event: any) {
     if (this.selectedindex > this.filteredOptions.length) {
       this.selectedindex = 0;
@@ -494,24 +517,7 @@ description : Set enable / disable popover.
         this.selectedindex = 1;
       } else {
         prevselectedindex = this.selectedindex;
-        if (event.keyCode === 40) {
-          this.selectedindex++;
-          if ((this.selectedindex > 5)) {
-            this.dropdownitems.nativeElement.scroll(0, this.scrollposition);
-            this.scrollposition = this.scrollposition + 30;
-          }
-        } else if (event.keyCode === 38) {
-          this.selectedindex--;
-          if (this.scrollposition >= 0 && this.selectedindex > 1) {
-            this.dropdownitems.nativeElement.scroll(0, this.scrollposition);
-            this.scrollposition = this.scrollposition - 30;
-          }
-          if (this.selectedindex === 1) {
-            this.scrollposition = 30;
-          }
-          if (this.selectedindex <= 0) {
-          }
-        }
+        this.navigateMethod(event);
       }
       if (this.filteredOptions[this.selectedindex]) {
         this.filteredOptions[this.selectedindex].selected = true;
@@ -522,6 +528,27 @@ description : Set enable / disable popover.
     }
     if (event.keyCode === 13 && this.filteredOptions[this.selectedindex]) {
       this.onItemSelect(this.filteredOptions[this.selectedindex]);
+    }
+  }
+
+  navigateMethod(event: any) {
+    if (event.keyCode === 40) {
+      this.selectedindex++;
+      if ((this.selectedindex > 5)) {
+        this.dropdownitems.nativeElement.scroll(0, this.scrollposition);
+        this.scrollposition = this.scrollposition + 30;
+      }
+    } else if (event.keyCode === 38) {
+      this.selectedindex--;
+      if (this.scrollposition >= 0 && this.selectedindex > 1) {
+        this.dropdownitems.nativeElement.scroll(0, this.scrollposition);
+        this.scrollposition = this.scrollposition - 30;
+      }
+      if (this.selectedindex === 1) {
+        this.scrollposition = 30;
+      }
+      if (this.selectedindex <= 0) {
+      }
     }
   }
   // The internal dataviews model
@@ -543,37 +570,45 @@ description : Set enable / disable popover.
     this.onTouchedCallback();
     this.onBlur.emit();
   }
+
+  // Set on blur method
   onFocus(elem: any) {
     this.showToolTip = true;
     this.posixUp = this.getListPosition(elem);
     this.focus.emit();
   }
+
   getListPosition(elementRef: any): boolean {
-    let dropdownHeight = 325; // must be same in dropdown.scss
+    const dropdownHeight = 325; // must be same in dropdown.scss
     if (window.screen.height - (elementRef.getBoundingClientRect().bottom) < dropdownHeight) {
       return true;
     } else {
       return false;
     }
   }
+
   // From ControlValueAccessor interface
   writeValue(value: any) {
     if (!this.allowblank) {
       if (value !== null) {
         if (value !== this.innerValue) {
-          if (this.viewData && this.viewData.length > 0) {
-            this.viewData.forEach((item: any) => {
-              if (item[this.valuefield] === value) {
-                this.isComponentValid = true;
-              }
-            });
-          }
+          this.writeValueData(value);
           this.innerValue = value;
         }
       } else {
         this.value = '';
         this.isComponentValid = false;
       }
+    }
+  }
+
+  writeValueData(value: any) {
+    if (this.viewData && this.viewData.length > 0) {
+      this.viewData.forEach((item: any) => {
+        if (item[this.valuefield] === value) {
+          this.isComponentValid = true;
+        }
+      });
     }
   }
   // From ControlValueAccessor interface
