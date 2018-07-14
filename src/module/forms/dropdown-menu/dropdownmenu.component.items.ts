@@ -79,10 +79,10 @@ export class AmexioDropDownitemsComponent implements OnInit {
       this.labelalign = null;
     }
   }
-  onItemClick(event: any) {
+  onItemClick(clickEvent: any) {
   this.toggle = false;
-  let e = {
-      event: event,
+  const e = {
+      event: clickEvent,
       this: this,
     };
   this.onClick.emit(e);
