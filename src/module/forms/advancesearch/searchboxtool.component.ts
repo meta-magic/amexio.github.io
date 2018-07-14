@@ -1,7 +1,7 @@
 
 import {
   AfterContentInit, AfterViewInit, Component, ContentChild, ContentChildren,
-   Directive, ElementRef, EventEmitter,
+  Directive, DoCheck, ElementRef, EventEmitter,
   HostListener, Input, OnInit, Output, QueryList,
   ViewChild, ViewChildren,
 } from '@angular/core';
@@ -12,7 +12,7 @@ import { CommonDataService } from '../../services/data/common.data.service';
   selector: 'amexio-searchbox',
   templateUrl: './searchboxtool.component.html',
 })
-export class SearchboxtoolComponent implements OnInit, AfterContentInit {
+export class SearchboxtoolComponent implements OnInit, AfterContentInit, DoCheck {
   /*
   Properties
   name : data
@@ -173,7 +173,7 @@ export class SearchboxtoolComponent implements OnInit, AfterContentInit {
   @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
   public onElementOutClick(targetElement: HTMLElement) {
     let parentFound = false;
-    while (targetElement !== null && !parentFound) {
+    while (targetElement != null && !parentFound) {
       if (targetElement === this.element.nativeElement) {
         parentFound = true;
       }
@@ -188,12 +188,12 @@ export class SearchboxtoolComponent implements OnInit, AfterContentInit {
   }
   onInputClick(event: any) {
     this.searchFlag = true;
-    let keyword: any = event.target.value;
+    const keyword: any = event.target.value;
     this.viewData = [];
-    if (keyword !== null && keyword !== ' ') {
-      let search_term = keyword.toLowerCase();
+    if (keyword != null && keyword !== ' ') {
+      const search_term = keyword.toLowerCase();
       this.localData.forEach((item: any) => {
-        if (item !== null) {
+        if (item != null) {
           if (item[this.displayfield].toLowerCase().startsWith(search_term)) {
             this.viewData.push(item);
           }
@@ -214,26 +214,32 @@ export class SearchboxtoolComponent implements OnInit, AfterContentInit {
   }
   onFocus() {
     if (this.selectedValue.length > 0) {
-      let keyword = this.selectedValue;
+      const keyword = this.selectedValue;
       this.viewData = [];
-      if (keyword !== null && keyword !== ' ') {
-        let search_term = keyword.toLowerCase();
-        this.localData.forEach((item: any) => {
-          if (item !== null) {
+      if (keyword != null && keyword !== ' ') {
+        const search_term = keyword.toLowerCase();
+        this.localData.forEach((item1: any) => {
+          if (item1 != null) {
             // if word exist in start
-            if (item[this.displayfield].toLowerCase().startsWith(search_term)) {
-              this.viewData.push(item);
+            if (item1[this.displayfield].toLowerCase().startsWith(search_term)) {
+              this.viewData.push(item1);
             }
           }
         });
         this.searchFlag = true;
         this.keyup.emit(event);
       }
-      if (!this.selectedValue || this.selectedValue === '') {
-        this.viewData = [];
-      }
+      this.selectedValueOnFocus();
     }
   }
+
+  // If Selected Value is blank, then view data will be reset
+  selectedValueOnFocus() {
+    if (!this.selectedValue || this.selectedValue === '') {
+      this.viewData = [];
+    }
+  }
+
   navigateKeys(event: any) {
     if (this.selectedindex > this.viewData.length) {
       this.selectedindex = 0;
@@ -241,40 +247,50 @@ export class SearchboxtoolComponent implements OnInit, AfterContentInit {
     if (event.keyCode === 40 ||
       event.keyCode === 38
       && this.selectedindex < this.viewData.length) {
-      let prevselectedindex = 0;
-      if (this.selectedindex === 0) {
-        this.selectedindex = 1;
-      } else {
-        prevselectedindex = this.selectedindex;
-        if (event.keyCode === 40) {
-          this.selectedindex++;
-          if ((this.selectedindex > 5)) {
-            this.dropdownitems.nativeElement.scroll(0, this.scrollposition);
-            this.scrollposition = this.scrollposition + 30;
-          }
-        } else if (event.keyCode === 38) {
-          this.selectedindex--;
-          if (this.scrollposition >= 0 && this.selectedindex > 1) {
-            this.dropdownitems.nativeElement.scroll(1, this.scrollposition);
-            this.scrollposition = this.scrollposition - 30;
-          }
-          if (this.selectedindex === 1) {
-            this.scrollposition = 30;
-          }
-          if (this.selectedindex <= 0) {
-          } else { }
-        }
-      }
-      if (this.viewData[this.selectedindex]) {
-        this.viewData[this.selectedindex].selected = true;
-      }
-      if (this.viewData[prevselectedindex]) {
-        this.viewData[prevselectedindex].selected = false;
-      }
+      this.navigateKeysCondition(event);
     }
 
     if (event.keyCode === 13 && this.viewData[this.selectedindex]) {
       this.onItemSelect(this.viewData[this.selectedindex]);
+    }
+  }
+
+  // Method will be called when keycode will be 40 or 38
+  navigateKeysCondition(event: any) {
+    let prevselectedindex = 0;
+    if (this.selectedindex === 0) {
+      this.selectedindex = 1;
+    } else {
+      prevselectedindex = this.selectedindex;
+      if (event.keyCode === 40) {
+        this.selectedindex++;
+        if ((this.selectedindex > 5)) {
+          this.dropdownitems.nativeElement.scroll(0, this.scrollposition);
+          this.scrollposition = this.scrollposition + 30;
+        }
+      } else if (event.keyCode === 38) {
+        this.eventKeyCodeCondition();
+      }
+    }
+    if (this.viewData[this.selectedindex]) {
+      this.viewData[this.selectedindex].selected = true;
+    }
+    if (this.viewData[prevselectedindex]) {
+      this.viewData[prevselectedindex].selected = false;
+    }
+  }
+
+  // If keycode is 38
+  eventKeyCodeCondition() {
+    this.selectedindex--;
+    if (this.scrollposition >= 0 && this.selectedindex > 1) {
+      this.dropdownitems.nativeElement.scroll(1, this.scrollposition);
+      this.scrollposition = this.scrollposition - 30;
+    }
+    if (this.selectedindex === 1) {
+      this.scrollposition = 30;
+    }
+    if (this.selectedindex <= 0) {
     }
   }
 
@@ -304,10 +320,10 @@ export class SearchboxtoolComponent implements OnInit, AfterContentInit {
   }
   getResponseData(httpResponse: any) {
     let responsedata = httpResponse;
-    if (this.datareader !== null) {
-      let dr = this.datareader.split('.');
-      if (dr !== null) {
-        for (let ir = 0; ir < dr.length; ir++) {
+    if (this.datareader != null) {
+      const dr = this.datareader.split('.');
+      if (dr != null) {
+        for (const ir of dr) {
           responsedata = responsedata[dr[ir]];
         }
       }
@@ -319,9 +335,9 @@ export class SearchboxtoolComponent implements OnInit, AfterContentInit {
   setData(httpResponse: any) {
     let responsedata = httpResponse;
     // Check if key is added?
-    if (this.datareader !== null) {
-      let dr = this.datareader.split('.');
-      for (let ir = 0; ir < dr.length; ir++) {
+    if (this.datareader != null) {
+      const dr = this.datareader.split('.');
+      for (const ir of dr) {
         responsedata = responsedata[dr[ir]];
       }
     } else {
