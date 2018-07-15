@@ -162,7 +162,7 @@ version : 4.0 onwards
 default : false
 description : flag to set label
 */
-  @Input('has-label') haslabel: boolean = true;
+  @Input('has-label') haslabel = true;
  /*
 Events
 name : input
@@ -195,7 +195,7 @@ description : On field focus event
 
   displayValue: any;
 
-  activeindex: number = 0;
+  activeindex = 0;
 
   currentActive: any;
 
@@ -205,9 +205,9 @@ description : On field focus event
 
   posixUp: boolean;
 
-  selectedindex: number = 0;
+  selectedindex = 0;
 
-  scrollposition: number = 30;
+  scrollposition = 30;
 
   private innerValue: any = '';
 
@@ -241,7 +241,7 @@ description : On field focus event
 
   isComponentValid: boolean;
 
-  maskloader: boolean = true;
+  maskloader = true;
 
   constructor(public dataService: CommonDataService, public element: ElementRef, public renderer: Renderer2) {
 
@@ -278,12 +278,11 @@ description : On field focus event
   }
 
   onKeyUp(event: any) {
-    let maxScrollHeight: number = this.tagDropRef.nativeElement.scrollHeight;
     this.filteredResult = [];
     this.showToolTip = false;
-    let keyword: any = event.target.value;
+    const keyword: any = event.target.value;
     if (keyword !== null && keyword !== ' ' && keyword.length >= this.triggerchar) {
-      let search_term = keyword.toLowerCase();
+      const search_term = keyword.toLowerCase();
       this.viewData.forEach((item: any) => {
         if (item != null) {
           if (item[this.key].toLowerCase().startsWith(search_term)) {
@@ -404,7 +403,7 @@ description : On field focus event
 
   getListPosition(elementRef: any): boolean {
 
-    let dropdownHeight: number = 325;
+    const dropdownHeight = 325;
     // must be same in dropdown.scss
     if (elementRef) {
       if (window.screen.height - (elementRef.getBoundingClientRect().bottom) < dropdownHeight) {
@@ -418,7 +417,7 @@ description : On field focus event
   setData(httpResponse: any) {
     let responsedata = httpResponse;
     if (this.datareader != null) {
-      let dr = this.datareader.split('.');
+      const dr = this.datareader.split('.');
       for (let ir = 0; ir < dr.length; ir++) {
         responsedata = responsedata[dr[ir]];
       }
