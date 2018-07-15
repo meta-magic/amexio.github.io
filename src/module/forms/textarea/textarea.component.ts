@@ -1,14 +1,14 @@
- /*
+/*
 
- Component Name : Amexio Textarea Input
- Component Selector :  <amexio-textarea-input>
- Component Description : TextArea input component has been created with
- different configurable attributes for validation
- (min/max value, allow blank, custom regex), custom error message, help, custom styles.
+Component Name : Amexio Textarea Input
+Component Selector :  <amexio-textarea-input>
+Component Description : TextArea input component has been created with
+different configurable attributes for validation
+(min/max value, allow blank, custom regex), custom error message, help, custom styles.
 
 */
-import {Component, forwardRef, Input} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import { Component, forwardRef, Input, OnInit} from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const noop = () => {
 };
@@ -23,9 +23,9 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
   styleUrls: ['./textarea.component.scss'],
 })
-export class AmexioTextAreaComponent implements ControlValueAccessor {
+export class AmexioTextAreaComponent implements ControlValueAccessor, OnInit {
 
-   /*
+  /*
 Properties
 name : field-label
 datatype : string
@@ -34,7 +34,7 @@ default : none
 description : The label of this field
 */
   @Input('field-label') fieldlabel: string;
-   /*
+  /*
 Properties
 name : rows
 datatype : number
@@ -43,7 +43,7 @@ default : none
 description : rows to have in textarea
 */
   @Input() rows: number;
-   /*
+  /*
 Properties
 name : rows
 datatype : number
@@ -72,17 +72,25 @@ description : Sets if field is required
 
   _errormsg: string;
 
+  // Placeholders for the callbacks which are later provided
+  // by the Control Value Accessor
+  private onTouchedCallback: () => void = noop;
+  private onChangeCallback: (_: any) => void = noop;
+
+  // The internal dataviews model
+  private innerValue: any = '';
+
   get errormsg(): string {
     return this._errormsg;
   }
-/*
-Properties
-name : error-msg
-datatype : none
-version : 4.0 onwards
-default : none
-description : sets the error message
-*/
+  /*
+  Properties
+  name : error-msg
+  datatype : none
+  version : 4.0 onwards
+  default : none
+  description : sets the error message
+  */
   @Input('error-msg')
   set errormsg(value: string) {
     this.helpInfoMsg = value + '<br/>';
@@ -93,14 +101,14 @@ description : sets the error message
   get minerrormsg(): string {
     return this._minerrormsg;
   }
-/*
-Properties
-name : min-error-msg
-datatype : string
-version : 4.0 onwards
-default : none
-description : sets the error message for min validation
-*/
+  /*
+  Properties
+  name : min-error-msg
+  datatype : string
+  version : 4.0 onwards
+  default : none
+  description : sets the error message for min validation
+  */
   @Input('min-error-msg')
   set minerrormsg(value: string) {
     this.helpInfoMsg = this.helpInfoMsg + '<b>Min Length<b/>: ' + value + '<br/>';
@@ -111,20 +119,20 @@ description : sets the error message for min validation
   get maxerrormsg(): string {
     return this._maxerrormsg;
   }
-/*
-Properties
-name : max-error-msg
-datatype : string
-version : 4.0 onwards
-default : none
-description : sets the error message for max validation
-*/
+  /*
+  Properties
+  name : max-error-msg
+  datatype : string
+  version : 4.0 onwards
+  default : none
+  description : sets the error message for max validation
+  */
   @Input('max-error-msg')
   set maxerrormsg(value: string) {
     this.helpInfoMsg = this.helpInfoMsg + 'Max Length: ' + value;
   }
 
-   /*
+  /*
 Properties
 name : place-holder
 datatype : string
@@ -133,14 +141,14 @@ default : none
 description :	Show place-holder inside dropdown component
 */
   @Input('place-holder') placeholder: string;
-/*
-Properties
-name : disabled
-datatype : boolean
-version : 4.0 onwards
-default : none
-description : true to disable the field.
-*/
+  /*
+  Properties
+  name : disabled
+  datatype : boolean
+  version : 4.0 onwards
+  default : none
+  description : true to disable the field.
+  */
   @Input() disabled: boolean;
   /*
 Properties
@@ -186,7 +194,7 @@ version : 4.0 onwards
 default : none
 description : flag to set label
 */
-  @Input('has-label') haslabel: boolean = true;
+  @Input('has-label') haslabel = true;
 
   _pattern: string;
 
@@ -195,7 +203,7 @@ description : flag to set label
   get pattern(): string {
     return this._pattern;
   }
-    /*
+  /*
 Properties
 name : pattern
 datatype : string
@@ -226,14 +234,6 @@ description : Set enable / disable popover.
   ngOnInit() {
     this.isComponentValid = this.allowblank;
   }
-
-  // The internal dataviews model
-  private innerValue: any = '';
-
-  // Placeholders for the callbacks which are later provided
-  // by the Control Value Accessor
-  private onTouchedCallback: () => void = noop;
-  private onChangeCallback: (_: any) => void = noop;
 
   // get accessor
   get value(): any {
@@ -279,16 +279,16 @@ description : Set enable / disable popover.
     let classObj;
     if (!this.allowblank) {
       if (this.innerValue === null || this.innerValue === '') {
-            if (inp.touched) {
-          classObj = {'input-control-error': true};
+        if (inp.touched) {
+          classObj = { 'input-control-error': true };
           this.isValid = false;
           this.isComponentValid = false;
         } else {
           this.isValid = false;
           this.isComponentValid = false;
         }
-      }else if (inp.touched && !this.allowblank && (this.value === '' || this.value === null)) {
-        classObj = {'input-control-error': true};
+      } else if (inp.touched && !this.allowblank && (this.value === '' || this.value === null)) {
+        classObj = { 'input-control-error': true };
         this.isValid = false;
         this.isComponentValid = false;
       } else {
