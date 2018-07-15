@@ -154,13 +154,13 @@ description : 	On input event field.
   ngOnInit() {
     this.isComponentValid = this.allowblank;
     if (this.httpmethod && this.httpurl) {
-      this.amxHttp.fetchData(this.httpurl, this.httpmethod).subscribe(response => {
+      this.amxHttp.fetchData(this.httpurl, this.httpmethod).subscribe((response) => {
         this.responseData = response;
       }, (error: any) => {
       }, () => {
         this.viewData = this.getResponseData(this.responseData);
       });
-    } else if (this.data !== null) {
+    } else if (this.data != null) {
       this.viewData = this.getResponseData(this.data);
     }
   }
@@ -174,9 +174,9 @@ description : 	On input event field.
   }
   getResponseData(httpResponse: any) {
     let responsedata = httpResponse;
-    if (this.datareader !== null) {
-      let dr = this.datareader.split('.');
-      if (dr !== null) {
+    if (this.datareader != null) {
+      const dr = this.datareader.split('.');
+      if (dr != null) {
         for (let ir = 0; ir < dr.length; ir++) {
           responsedata = responsedata[dr[ir]];
         }
