@@ -184,7 +184,7 @@ version : 4.0 onwards
 default : true
 description : Flag to set label
 */
-  @Input('has-label') haslabel: boolean = true;
+  @Input('has-label') haslabel = true;
   _pattern: string;
   get pattern(): string {
     return this._pattern;
