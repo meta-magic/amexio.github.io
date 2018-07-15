@@ -1,28 +1,28 @@
- /*
- Component Name : Amexio ToolBar
- Component Selector : <amexio-toolbar-action>
- Component Description :
+/*
+Component Name : Amexio ToolBar
+Component Selector : <amexio-toolbar-action>
+Component Description :
 */
-import {Component, ContentChildren, EventEmitter, Input, OnInit, Output, QueryList} from '@angular/core';
-import { AmexioButtonComponent} from '../buttons/button.component';
+import { Component, ContentChildren, EventEmitter, Input, OnInit, Output, QueryList } from '@angular/core';
+import { AmexioButtonComponent } from '../buttons/button.component';
 import { AmexioDropDownComponent } from '../dropdown/dropdown.component';
-import {AmexioLabelComponent} from '../label/label.component';
+import { AmexioLabelComponent } from '../label/label.component';
 @Component({
   selector: 'amexio-toolbar-action',
   template:
-  `
+    `
    <ng-content></ng-content>
   `,
 })
 export class ToolBarActionComponent implements OnInit {
-    @ContentChildren(AmexioDropDownComponent, { descendants: true }) queryDropDown: QueryList<AmexioDropDownComponent>;
-    dropdown: AmexioDropDownComponent[];
+  @ContentChildren(AmexioDropDownComponent, { descendants: true }) queryDropDown: QueryList<AmexioDropDownComponent>;
+  dropdown: AmexioDropDownComponent[];
 
-    @ContentChildren(AmexioButtonComponent, { descendants: true }) queryButton: QueryList<AmexioButtonComponent>;
-    button: AmexioButtonComponent[];
+  @ContentChildren(AmexioButtonComponent, { descendants: true }) queryButton: QueryList<AmexioButtonComponent>;
+  button: AmexioButtonComponent[];
 
-    @ContentChildren(AmexioLabelComponent, { descendants: true }) queryLabel: QueryList<AmexioLabelComponent>;
-    label: AmexioLabelComponent[];
+  @ContentChildren(AmexioLabelComponent, { descendants: true }) queryLabel: QueryList<AmexioLabelComponent>;
+  label: AmexioLabelComponent[];
 
   /*
 Properties
@@ -43,16 +43,16 @@ default : none
 description : Title for link, button and menu header
 */
   @Input() title: string;
-/*
-Events
-name : navLinkClick
-datatype : any
-version : none
-default : none
-description : Fire when nav item is clicked,
-This event is fired when nav item type is defined as 'link/button/menu'
+  /*
+  Events
+  name : navLinkClick
+  datatype : any
+  version : none
+  default : none
+  description : Fire when nav item is clicked,
+  This event is fired when nav item type is defined as 'link/button/menu'
 
-*/
+  */
   @Output() navLinkClick: any = new EventEmitter<any>();
   actionComponent: any;
   constructor() {
@@ -62,12 +62,12 @@ This event is fired when nav item type is defined as 'link/button/menu'
   ngOnInit() {
   }
 
-  onClick(event: any) {
-      let node = {
-        'title': this.title,
-        'type': this.type,
-      };
-      this.navLinkClick.emit({'data': node, 'event': event});
+  onClick(clickEvent: any) {
+    const node = {
+      title: this.title,
+      type: this.type,
+    };
+    this.navLinkClick.emit({ data: node, event: clickEvent });
   }
   checkActionComponent() {
     this.dropdown = this.queryDropDown.toArray();

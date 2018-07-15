@@ -93,14 +93,14 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
    */
   @Input('display-field') displayfield: string;
 
-    /*
-   Properties
-   name : error-msg
-   datatype : none
-   version : 4.0 onwards
-   default : none
-   description : Sets the error message
-   */
+  /*
+ Properties
+ name : error-msg
+ datatype : none
+ version : 4.0 onwards
+ default : none
+ description : Sets the error message
+ */
   @Input('error-msg')
   set errormsg(value: string) {
     this.helpInfoMsg = value + '<br/>';
@@ -160,7 +160,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
    default : false
    description : Flag to set label
    */
-  @Input('has-label') haslabel: boolean = true;
+  @Input('has-label') haslabel = true;
   /*
    Properties
    name : enable-popover
@@ -237,7 +237,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
 
   posixUp: boolean;
 
-  activeindex: number = 0;
+  activeindex = 0;
 
   currentActive: any;
 
@@ -249,9 +249,9 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
 
   isComponentValid: boolean;
 
-  selectedindex: number = 0;
+  selectedindex = 0;
 
-  scrollposition: number = 30;
+  scrollposition = 30;
 
   showToolTip: boolean;
 
@@ -263,7 +263,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
 
   filteredResult: any;
 
-  maskloader: boolean = true;
+  maskloader = true;
 
   private innerValue: any = '';
   private onTouchedCallback: () => void = noop;
@@ -329,12 +329,11 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
   }
 
   onKeyUp(event: any) {
-    let maxScrollHeight: number = this.dpList.nativeElement.scrollHeight;
     this.filteredResult = [];
     this.showToolTip = false;
-    let keyword: any = event.target.value;
+    const keyword: any = event.target.value;
     if (keyword != null && keyword !== ' ' && keyword.length >= this.triggerchar) {
-      let search_term = keyword.toLowerCase();
+      const search_term = keyword.toLowerCase();
       this.viewData.forEach((item: any) => {
         if (item !== null) {
           if (item[this.key].toLowerCase().startsWith(search_term)) {
@@ -343,7 +342,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
         }
       });
       if (this.filteredResult.length > 0) {
-         this.showToolTip = true;
+        this.showToolTip = true;
       } else {
         this.showToolTip = false;
       }
@@ -381,7 +380,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
             this.dropdownitems.nativeElement.scroll(0, this.scrollposition);
             this.scrollposition = this.scrollposition + 30;
           }
-          } else if (event.keyCode === 38) {
+        } else if (event.keyCode === 38) {
           this.selectedindex--;
           if (this.scrollposition >= 0 && this.selectedindex > 1) {
             this.dropdownitems.nativeElement.scroll(0, this.scrollposition);
@@ -414,7 +413,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
     // Check if key is added?
     let responsedata = httpResponse;
     if (this.datareader !== null) {
-      let dr = this.datareader.split('.');
+      const dr = this.datareader.split('.');
       for (let ir = 0; ir < dr.length; ir++) {
         responsedata = responsedata[dr[ir]];
       }
@@ -426,9 +425,9 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
 
     // Set user selection
     if (this.value !== null) {
-      let valueKey = this.valuefield;
-      let displayKey = this.displayfield;
-      let val = this.value;
+      const valueKey = this.valuefield;
+      const displayKey = this.displayfield;
+      const val = this.value;
 
       this.viewData.forEach((item: any) => {
         if (item[valueKey] === val) {
@@ -481,7 +480,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
   }
 
   getListPosition(elementRef: any): boolean {
-    let dropdownHeight: number = 325;
+    const dropdownHeight = 325;
     // must be same in dropdown.scss
     if (window.screen.height - (elementRef.getBoundingClientRect().bottom) < dropdownHeight) {
       return true;

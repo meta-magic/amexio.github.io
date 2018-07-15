@@ -86,7 +86,7 @@ description : This will seperate the toolbar.
 
   // THIS METHOD IS  FOR APPLIED SPERATOR CLASS
   getSeperatotClass(toolnode: any): any {
-    let cssName: string = '';
+    let cssName = '';
     if (this.seperator) {
       cssName = 'seperator-line';
     }

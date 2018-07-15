@@ -16,8 +16,9 @@
  Component Description : Toggle Button
 */
 import {
-  AfterViewInit, Component, EventEmitter, forwardRef, Input, OnInit, Output,  ViewEncapsulation} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+  AfterViewInit, Component, EventEmitter, forwardRef, Input, OnInit, Output, ViewEncapsulation,
+} from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const noop = () => {
 };
@@ -53,27 +54,35 @@ default :
 description : The label of this field.
 */
   @Input('field-label') fieldlabel: string;
-/*
-Events
-name : onChange
-datatype : any
-version : 4.0 onwards
-default :
-description : Event is fired on toggle component click
-*/
-/*
-  Properties
-  name : required
-  datatype : boolean
+  /*
+  Events
+  name : onChange
+  datatype : any
   version : 4.0 onwards
-  default : true
-  description : sets if field is required
-*/
+  default :
+  description : Event is fired on toggle component click
+  */
+  /*
+    Properties
+    name : required
+    datatype : boolean
+    version : 4.0 onwards
+    default : true
+    description : sets if field is required
+  */
   @Input() required: boolean;
 
   @Output() onChange: EventEmitter<any> = new EventEmitter<any>();
 
   isComponentValid: boolean;
+
+  // The internal dataviews model
+  private innerValue: any = '';
+
+  // Placeholders for the callbacks which are later provided
+  // by the Control Value Accessor
+  private onTouchedCallback: () => void = noop;
+  private onChangeCallback: (_: any) => void = noop;
 
   constructor() {
 
@@ -88,14 +97,6 @@ description : Event is fired on toggle component click
     this.isComponentValid = this.value;
     this.onChange.emit(this.value);
   }
-
-  // The internal dataviews model
-  private innerValue: any = '';
-
-  // Placeholders for the callbacks which are later provided
-  // by the Control Value Accessor
-  private onTouchedCallback: () => void = noop;
-  private onChangeCallback: (_: any) => void = noop;
 
   // get accessor
   get value(): any {

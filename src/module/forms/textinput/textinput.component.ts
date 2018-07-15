@@ -1,13 +1,14 @@
- /*
- Component Name : Amexio Text Input
- Component Selector :  <amexio-text-input>
- Component Description : Text input component has been created with
- different configurable attributes for validation (min/max length, allow
- blank, custom regex), custom error message, help, custom styles.
+/*
+Component Name : Amexio Text Input
+Component Selector :  <amexio-text-input>
+Component Description : Text input component has been created with
+different configurable attributes for validation (min/max length, allow
+blank, custom regex), custom error message, help, custom styles.
 */
 import {
-  Component, ElementRef, EventEmitter, forwardRef, Input, Output, ViewChild, ViewEncapsulation} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+  Component, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild, ViewEncapsulation,
+} from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const noop = () => {
 };
@@ -23,8 +24,8 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   encapsulation: ViewEncapsulation.None,
 })
 
-export class AmexioTextInputComponent implements ControlValueAccessor {
-   /*
+export class AmexioTextInputComponent implements ControlValueAccessor, OnInit {
+  /*
 Properties
 name : field-label
 datatype : string
@@ -69,17 +70,25 @@ description : Sets if field is required
 
   _errormsg: string;
 
+  // The internal dataviews model
+  private innerValue: any = '';
+
+  // Placeholders for the callbacks which are later provided
+  // by the Control Value Accessor
+  private onTouchedCallback: () => void = noop;
+  private onChangeCallback: (_: any) => void = noop;
+
   get errormsg(): string {
     return this._errormsg;
   }
-/*
-Properties
-name : error-msg
-datatype : none
-version : 4.0 onwards
-default : none
-description : Sets the error message
-*/
+  /*
+  Properties
+  name : error-msg
+  datatype : none
+  version : 4.0 onwards
+  default : none
+  description : Sets the error message
+  */
   @Input('error-msg')
   set errormsg(value: string) {
     this.helpInfoMsg = value + '<br/>';
@@ -90,14 +99,14 @@ description : Sets the error message
   get minerrormsg(): string {
     return this._minerrormsg;
   }
-/*
-Properties
-name : min-error-msg
-datatype : string
-version : 4.0 onwards
-default :
-description : Sets the error message for min validation
-*/
+  /*
+  Properties
+  name : min-error-msg
+  datatype : string
+  version : 4.0 onwards
+  default :
+  description : Sets the error message for min validation
+  */
   @Input('min-error-msg')
   set minerrormsg(value: string) {
     this.helpInfoMsg = this.helpInfoMsg + '<b>Min Length<b/>: ' + value + '<br/>';
@@ -108,19 +117,19 @@ description : Sets the error message for min validation
   get maxerrormsg(): string {
     return this._maxerrormsg;
   }
-/*
-Properties
-name : max-error-msg
-datatype : string
-version : 4.0 onwards
-default :
-description : Sets the error message for max validation
-*/
+  /*
+  Properties
+  name : max-error-msg
+  datatype : string
+  version : 4.0 onwards
+  default :
+  description : Sets the error message for max validation
+  */
   @Input('max-error-msg')
   set maxerrormsg(value: string) {
     this.helpInfoMsg = this.helpInfoMsg + 'Max Length: ' + value;
   }
-   /*
+  /*
 Properties
 name : place-holder
 datatype : string
@@ -129,14 +138,14 @@ default :
 description : Show place-holder inside dropdown component
 */
   @Input('place-holder') placeholder: string;
-/*
-Properties
-name : disabled
-datatype : boolean
-version : 4.0 onwards
-default : false
-description : True to disable the field.
-*/
+  /*
+  Properties
+  name : disabled
+  datatype : boolean
+  version : 4.0 onwards
+  default : false
+  description : True to disable the field.
+  */
   @Input() disabled: boolean;
   /*
 Properties
@@ -182,14 +191,14 @@ version : 4.0 onwards
 default : false
 description : Flag to set label
 */
-  @Input('has-label') haslabel: boolean = true;
+  @Input('has-label') haslabel = true;
 
   _pattern: string;
 
   get pattern(): string {
     return this._pattern;
   }
-    /*
+  /*
 Properties
 name : pattern
 datatype : string
@@ -220,17 +229,17 @@ description : Set enable / disable popover.
 
   isComponentValid: boolean;
 
-  @ViewChild('ref', {read: ElementRef}) public inputRef: ElementRef;
-/*
-Events
-name : onBlur
-datatype : any
-version : 4.0 onwards
-default :
-description : On blur event
-*/
+  @ViewChild('ref', { read: ElementRef }) public inputRef: ElementRef;
+  /*
+  Events
+  name : onBlur
+  datatype : any
+  version : 4.0 onwards
+  default :
+  description : On blur event
+  */
   @Output() onBlur: any = new EventEmitter<any>();
-    /*
+  /*
 Events
 name : input
 datatype : any
@@ -265,14 +274,6 @@ description : On field value change event
   ngOnInit() {
     this.isComponentValid = this.allowblank;
   }
-
-  // The internal dataviews model
-  private innerValue: any = '';
-
-  // Placeholders for the callbacks which are later provided
-  // by the Control Value Accessor
-  private onTouchedCallback: () => void = noop;
-  private onChangeCallback: (_: any) => void = noop;
 
   // get accessor
   get value(): any {
@@ -335,16 +336,16 @@ description : On field value change event
     let classObj;
     if (!this.allowblank) {
       if (this.innerValue == null || this.innerValue === '') {
-         if (inp.touched) {
-          classObj = {'input-control-error': true};
+        if (inp.touched) {
+          classObj = { 'input-control-error': true };
           this.isValid = false;
           this.isComponentValid = false;
         } else {
           this.isValid = false;
           this.isComponentValid = false;
         }
-      }else if (inp.touched && !this.allowblank && (this.value === '' || this.value == null)) {
-        classObj = {'input-control-error': true};
+      } else if (inp.touched && !this.allowblank && (this.value === '' || this.value == null)) {
+        classObj = { 'input-control-error': true };
         this.isValid = false;
         this.isComponentValid = false;
       } else if (this.minlength !== null && this.minlength !== 0) {
@@ -352,7 +353,7 @@ description : On field value change event
           this.isValid = true;
           this.isComponentValid = true;
         } else {
-          classObj = {'input-control-error': true};
+          classObj = { 'input-control-error': true };
           this.isValid = false;
           this.isComponentValid = false;
         }
