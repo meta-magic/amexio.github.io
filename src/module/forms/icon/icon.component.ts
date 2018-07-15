@@ -64,7 +64,7 @@ description : sets the customclass for icon
   }
   getIconClass(): string {
     if (this.iconLoaderService.iconMappings != null) {
-      let iconObject = this.iconLoaderService.iconMappings.find(
+      const iconObject = this.iconLoaderService.iconMappings.find(
         (obj: any) => obj.component === this.key);
       if (iconObject != null) {
         return iconObject[this.iconLoaderService.iconToUse.toString()];
