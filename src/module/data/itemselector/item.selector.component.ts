@@ -39,7 +39,7 @@ description :  Height of item selector
 */
   @Input() height: any;
 
-  mask: boolean = true;
+  mask = true;
 
   /*
 Properties
@@ -119,9 +119,9 @@ description :  Get selected value Object.
 
   objectIndex: any;
 
-  leftactive: boolean = true;
+  leftactive = true;
 
-  rightactive: boolean = true;
+  rightactive = true;
 
   response: any;
 
@@ -157,8 +157,8 @@ description :  Get selected value Object.
     let responsedata = httpResponse;
     if (this.datareader != null) {
       const dr = this.datareader.split('.');
-      for (let ir = 0; ir < dr.length; ir++) {
-        responsedata = responsedata[dr[ir]];
+      for (const ir  of dr) {
+        responsedata = responsedata[ir];
       }
       responsedata.forEach((option: any, index: any) => {
         if (!option['isSelected']) {
@@ -178,21 +178,21 @@ description :  Get selected value Object.
     this.rightactive = right;
     this.switchingObject = data;
     this.objectIndex = index;
-    for (let ir = 0; ir < this.availableData.length; ir++) {
-      if ((this.availableData[ir])[this.valuefield] === data[this.valuefield]) {
-        this.availableData[ir]['isSelected'] = true;
+    for (const ir of this.availableData) {
+      if ((ir)[this.valuefield] === data[this.valuefield]) {
+       ir['isSelected'] = true;
       } else {
-        this.availableData[ir]['isSelected'] = false;
+        ir['isSelected'] = false;
       }
 
     }
 
     if (right) {
-      for (let ir = 0; ir < this.selectedData.length; ir++) {
-        if ((this.selectedData[ir])[this.valuefield] === data[this.valuefield]) {
-          this.selectedData[ir]['selectedClick'] = true;
+      for (const ir of this.selectedData) {
+        if ((ir)[this.valuefield] === data[this.valuefield]) {
+          ir['selectedClick'] = true;
         } else {
-          this.selectedData[ir]['selectedClick'] = false;
+          ir['selectedClick'] = false;
         }
       }
     }
@@ -218,14 +218,18 @@ description :  Get selected value Object.
 
   leftSwitch() {
     let flag: boolean;
-
     if (this.switchingObject && this.availableData) {
-      for (let ir = 0; ir < this.availableData.length; ir++) {
-        if ((this.availableData[ir])[this.valuefield] === this.switchingObject[this.valuefield]) {
+      for (const ir of this.availableData) {
+        if ((ir)[this.valuefield] === this.switchingObject[this.valuefield]) {
           flag = true;
         }
       }
     }
+    this.partOfLeftSwitch();
+  }
+
+  partOfLeftSwitch() {
+    let flag: boolean;
     if (!flag) {
       if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected')) {
         if (this.switchingObject['isSelected']) {

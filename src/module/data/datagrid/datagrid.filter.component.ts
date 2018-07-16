@@ -88,31 +88,31 @@ For internal use
   constructor(private dataTableService: CommonDataService) {
 
     this.filterOptions = [{
-      'key': 'Is Equal To', 'value': '==', 'type': 'string', 'checkedStatus': '',
+      key: 'Is Equal To', value: '==', type: 'string', checkedStatus: '',
     }, {
-      'key': 'Is Not Equal To', 'value': '!=', 'type': 'string', 'checkedStatus': '',
+      key: 'Is Not Equal To', value: '!=', type: 'string', checkedStatus: '',
     }, {
-      'key': 'Start With', 'value': '1', 'type': 'string', 'checkedStatus': 'fa fa-check',
+      key: 'Start With', value: '1', type: 'string', checkedStatus: 'fa fa-check',
     },
 
     {
-      'key': 'Ends With', 'value': '2', 'type': 'string', 'checkedStatus': '',
+      key: 'Ends With', value: '2', type: 'string', checkedStatus: '',
     }, {
-      'key': 'Contains', 'value': '3', 'type': 'string', 'checkedStatus': '',
+      key: 'Contains', value: '3', type: 'string', checkedStatus: '',
     }, {
-      'key': 'Is Equal To', 'value': '==', 'type': 'number', 'checkedStatus': '',
+      key: 'Is Equal To', value: '==', type: 'number', checkedStatus: '',
     }, {
-      'key': 'Is Not Equal To', 'value': '!=', 'type': 'number', 'checkedStatus': '',
+      key: 'Is Not Equal To', value: '!=', type: 'number', checkedStatus: '',
     }, {
-      'key': 'Is greater Than', 'value': '<', 'type': 'number', 'checkedStatus': '',
+      key: 'Is greater Than', value: '<', type: 'number', checkedStatus: '',
     }, {
-      'key': 'Is less Than', 'value': '>', 'type': 'number', 'checkedStatus': '',
+      key: 'Is less Than', value: '>', type: 'number', checkedStatus: '',
     },
 
     {
-      'key': 'Is less Than or equal to', 'value': '>=', 'type': 'number', 'checkedStatus': '',
+      key: 'Is less Than or equal to', value: '>=', type: 'number', checkedStatus: '',
     }, {
-      'key': 'Is greater Than or equal to', 'value': '=<', 'type': 'number', 'checkedStatus': 'fa fa-check',
+      key: 'Is greater Than or equal to', value: '=<', type: 'number', checkedStatus: 'fa fa-check',
     }];
   }
 
@@ -121,7 +121,7 @@ For internal use
 
   selectedOption(col: any, opt: any) {
     this.checkStatus();
-    let filter: any = {
+    const filter: any = {
       key: col.dataindex,
       value: this.filterValue,
       filter: opt.value,
@@ -141,7 +141,7 @@ For internal use
       this.removeFilter(col);
     } else {
       col.filterIcon = true;
-      let filter: any = {
+      const filter: any = {
         key: col.dataindex,
         value: this.filterValue,
         type: col.datatype,
