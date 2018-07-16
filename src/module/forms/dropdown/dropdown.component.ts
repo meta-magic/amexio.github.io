@@ -529,6 +529,10 @@ description : Set enable / disable popover.
         //this.selectedindex = 0;
       }
     }
+    
+    if(event.keyCode === 8){
+      this.value = "";
+    }    
     if(event.keyCode === 40 || event.keyCode === 38 || event.keyCode === 13)
     {
       this.navigateUsingKey(event);
@@ -614,9 +618,17 @@ description : Set enable / disable popover.
   }
 
   //Set touched on blur
-  onblur() {
-    this.onTouchedCallback();
-    this.onBlur.emit();
+  onblur(event:any) {
+      if(event.target && event.target.value && this.filteredOptions.length === 1){
+        const fvalue = event.target.value;
+        let row = this.filteredOptions[0];
+        const rvalue = row[this.valuefield]; 
+        if(fvalue.toLowerCase() === rvalue.toLowerCase()){
+          this.onItemSelect(row);
+        }
+      }
+      this.onTouchedCallback();
+      this.onBlur.emit();
   }
 
   onFocus(elem : any) {
