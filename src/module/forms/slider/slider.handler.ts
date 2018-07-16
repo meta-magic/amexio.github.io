@@ -23,14 +23,14 @@ export class DomHandler {
   public addMultipleClasses(element: any, className: string): void {
     if (element.classList) {
       const styles: string[] = className.split(' ');
-      for (let i = 0; i < styles.length; i++) {
-        element.classList.add(styles[i]);
+      for (const i of styles) {
+        element.classList.add([i]);
       }
 
     } else {
       const styles: string[] = className.split(' ');
-      for (let i = 0; i < styles.length; i++) {
-        element.className += ' ' + styles[i];
+      for (const i of styles) {
+        element.className += ' ' + [i];
       }
     }
   }
@@ -68,11 +68,11 @@ export class DomHandler {
   public index(element: any): number {
     const children = element.parentNode.childNodes;
     let num = 0;
-    for (let i = 0; i < children.length; i++) {
-      if (children[i] === element) {
+    for (const i of children) {
+      if (i === element) {
         return num;
       }
-      if (children[i].nodeType === 1) {
+      if (i.nodeType === 1) {
         num++;
       }
     }
@@ -86,7 +86,8 @@ export class DomHandler {
     const targetWidth = target.offsetWidth;
     const targetOffset = target.getBoundingClientRect();
     const viewport = this.getViewport();
-    let top, left;
+    let top;
+    let left;
 
     if ((targetOffset.top + targetHeight + elementDimensions.height) > viewport.height) {
       top = -1 * (elementDimensions.height);
@@ -117,7 +118,8 @@ export class DomHandler {
     const windowScrollTop = this.getWindowScrollTop();
     const windowScrollLeft = this.getWindowScrollLeft();
     const viewport = this.getViewport();
-    let top, left;
+    let top;
+    let left;
 
     if (targetOffset.top + targetOuterHeight + elementOuterHeight > viewport.height) {
       top = targetOffset.top + windowScrollTop - elementOuterHeight;
@@ -369,7 +371,7 @@ export class DomHandler {
     } else if (target.el && target.el.nativeElement) {
       target.el.nativeElement.appendChild(element);
     } else {
-      throw 'Cannot append ' + target + ' to ' + element;
+      throw new Error('Cannot append ' + target + ' to ' + element);
     }
   }
 
@@ -379,7 +381,7 @@ export class DomHandler {
     } else if (target.el && target.el.nativeElement) {
       target.el.nativeElement.removeChild(element);
     } else {
-      throw 'Cannot remove ' + element + ' from ' + target;
+      throw new Error('Cannot remove ' + element + ' from ' + target);
     }
   }
 
