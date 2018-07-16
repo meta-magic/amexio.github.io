@@ -10,7 +10,7 @@ export class AccordionService {
   private subject = new Subject<any>();
 
   onClickEvent(data: number, parent: number) {
-    this.subject.next({ id:  data, parent: parent});
+    this.subject.next({data, parent});
   }
 
   clearEvents() {
