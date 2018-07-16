@@ -428,7 +428,7 @@ description : On field focus event
     let responsedata = httpResponse;
     if (this.datareader != null) {
       const dr = this.datareader.split('.');
-      for (let ir of dr) {
+      for (const ir of dr) {
         responsedata = responsedata[ir];
       }
     } else {
