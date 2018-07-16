@@ -92,7 +92,7 @@ version : 4.1 onwards
 default : false
 description : Padding to all sides
 */
- @Input('padding') padding: boolean = false;
+ @Input('padding') padding = false;
 /*
 Properties
 name : box-height
@@ -120,7 +120,7 @@ version : 4.1.8 onwards
 default : false
 description : Dotted border
 */
- @Input('border-dotted') borderDotted: boolean = false;
+ @Input('border-dotted') borderDotted = false;
 
 /*
 Properties
@@ -139,10 +139,10 @@ version : 4.1.8 onwards
 default : false
 description : closable box
 */
- @Input('closable') closable: boolean = false;
+ @Input('closable') closable= false;
 
  constructor() { }
- close: boolean = true;
+ close = true;
  ngOnInit() {
   if (this.borderColor == null) {
    this.borderColor = 'box-default';
