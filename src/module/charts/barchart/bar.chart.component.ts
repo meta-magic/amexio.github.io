@@ -202,7 +202,7 @@ version : 4.0 onwards
 default : false
 description : If set to true, stacks the elements for all series at each domain value.default value is false
 */
-  @Input() stacked: boolean = false;
+  @Input() stacked = false;
 
   /*
 Properties
@@ -256,7 +256,6 @@ description : Sets background-color
 
   constructor(private loader: ChartLoaderService) {
 
-    // this.id = 'amexio-chart-bar' + Math.floor(Math.random() * 90000) + 10000;
     this.width = '100%';
   }
 
@@ -266,33 +265,11 @@ description : Sets background-color
       this.barData = google.visualization.arrayToDataTable(this._data);
       this.options = {
         title: this.chartTitleComponent ? this.chartTitleComponent.title : null,
-        titleTextStyle: this.chartTitleComponent ? {
-          color: this.chartTitleComponent.color ? this.chartTitleComponent.color : null,
-          fontName: this.chartTitleComponent.fontname ? this.chartTitleComponent.fontname : null,
-          fontsize: this.chartTitleComponent.fontsize ? this.chartTitleComponent.fontsize : null,
-          bold: this.chartTitleComponent.bold ? this.chartTitleComponent.bold : null,
-          italic: this.chartTitleComponent.italic ? this.chartTitleComponent.italic : null,
-        } : null,
+        titleTextStyle: this.chartTitleComponent ? this.chartTitleTextStyle() : null,
         isStacked: this.stacked,
         backgroundcolor: this.backgroundcolor,
-        legend: this.chartLengendComponent ? {
-          position: this.chartLengendComponent.position ? this.chartLengendComponent.position : null,
-          maxLines: this.chartLengendComponent.maxlines ? this.chartLengendComponent.maxlines : null,
-          textStyle: {
-            color: this.chartLengendComponent.color ? this.chartLengendComponent.color : null,
-            fontsize: this.chartLengendComponent.fontsize ? this.chartLengendComponent.fontsize : null,
-            fontName: this.chartLengendComponent.fontname ? this.chartLengendComponent.fontname : null,
-            bold: this.chartLengendComponent.bold ? this.chartLengendComponent.bold : null,
-            alignment: this.chartLengendComponent.alignment ? this.chartLengendComponent.alignment : null,
-          },
-        } : 'none',
-        chartArea: this.chartAreaComponent ? {
-          backgroundcolor: this.chartAreaComponent.chartbackgroundcolor ? this.chartAreaComponent.chartbackgroundcolor : null,
-          left: this.chartAreaComponent.leftposition ? this.chartAreaComponent.leftposition : null,
-          top: this.chartAreaComponent.topposition ? this.chartAreaComponent.topposition : null,
-          height: this.chartAreaComponent.chartheight ? this.chartAreaComponent.chartheight : null,
-          width: this.chartAreaComponent.chartwidth ? this.chartAreaComponent.chartwidth : null,
-        } : null,
+        legend: this.chartLengendComponent ? this.createChartLegend() : 'none',
+        chartArea: this.chartAreaComponent ? this.createChartBar() : null,
         hAxis: {
           title: this.xaxistitle, minvalue: 0,
         },
@@ -307,7 +284,37 @@ description : Sets background-color
       }
     }
   }
-
+chartTitleTextStyle() {
+  return{
+    color: this.chartTitleComponent.color ? this.chartTitleComponent.color : null,
+          fontName: this.chartTitleComponent.fontname ? this.chartTitleComponent.fontname : null,
+          fontsize: this.chartTitleComponent.fontsize ? this.chartTitleComponent.fontsize : null,
+          bold: this.chartTitleComponent.bold ? this.chartTitleComponent.bold : null,
+          italic: this.chartTitleComponent.italic ? this.chartTitleComponent.italic : null,
+    };
+}
+createChartLegend() {
+  return{
+    position: this.chartLengendComponent.position ? this.chartLengendComponent.position : null,
+    maxLines: this.chartLengendComponent.maxlines ? this.chartLengendComponent.maxlines : null,
+    textStyle: {
+      color: this.chartLengendComponent.color ? this.chartLengendComponent.color : null,
+      fontsize: this.chartLengendComponent.fontsize ? this.chartLengendComponent.fontsize : null,
+      fontName: this.chartLengendComponent.fontname ? this.chartLengendComponent.fontname : null,
+      bold: this.chartLengendComponent.bold ? this.chartLengendComponent.bold : null,
+      alignment: this.chartLengendComponent.alignment ? this.chartLengendComponent.alignment : null,
+    },
+  };
+ }
+createChartBar() {
+return{
+  backgroundcolor: this.chartAreaComponent.chartbackgroundcolor ? this.chartAreaComponent.chartbackgroundcolor : null,
+  left: this.chartAreaComponent.leftposition ? this.chartAreaComponent.leftposition : null,
+  top: this.chartAreaComponent.topposition ? this.chartAreaComponent.topposition : null,
+  height: this.chartAreaComponent.chartheight ? this.chartAreaComponent.chartheight : null,
+  width: this.chartAreaComponent.chartwidth ? this.chartAreaComponent.chartwidth : null,
+  };
+}
   ngAfterContentInit(): void {
     this.chartLegendArray = this.chartLegendComp.toArray();
     this.chartTitleArray = this.chartTitleComp.toArray();
