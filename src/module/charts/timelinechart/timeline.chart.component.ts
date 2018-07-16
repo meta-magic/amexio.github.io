@@ -241,16 +241,16 @@ export class TimeLineChartComponent implements AfterContentInit, OnInit {
 
   createTable(array: any[]): any {
     // create Duplicate Array for data arrangement
-    let dupArray = array.slice();
-    let data = new google.visualization.DataTable();
-    let labelObject = dupArray[0];
+    const dupArray = array.slice();
+    const data = new google.visualization.DataTable();
+    const labelObject = dupArray[0];
     // remove first object of array
     dupArray.shift();
 
     labelObject.forEach((datatypeObject: any) => {
       data.addColumn(datatypeObject.datatype, datatypeObject.label);
     });
-    let finalArray: any[] = [];
+    const finalArray: any[] = [];
     dupArray.forEach((rowObject: any) => {
       finalArray.push(rowObject);
     });

@@ -682,7 +682,7 @@ description : Context Menu provides the list of menus on right click of row.
 
   isExpanded = false;
 
-  mask: boolean = true;
+  mask = true;
 
   @ContentChildren(AmexioGridColumnComponent) columnRef: QueryList<AmexioGridColumnComponent>;
 
@@ -690,14 +690,12 @@ description : Context Menu provides the list of menus on right click of row.
     this.selectedRows = [];
     this.sortBy = -1;
 
-    this.globalFilterOptions = [
-      {
-        'key': 'Start With', 'value': '1', 'checkedStatus': 'fa fa-check',
-      },
-      {
-        'key': 'Ends With', 'value': '2', 'checkedStatus': '',
+    this.globalFilterOptions = [ {
+        key: 'Start With', value: '1', checkedStatus: 'fa fa-check',
       }, {
-        'key': 'Contains', 'value': '3', 'checkedStatus': '',
+        key: 'Ends With', value: '2', checkedStatus: '',
+      }, {
+        key: 'Contains', value: '3', checkedStatus: '',
       }];
   }
 
@@ -735,7 +733,7 @@ description : Context Menu provides the list of menus on right click of row.
       this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setChangeData(this.data);
     }
-    if (this.columnPreviewData != null && this.columndefintion != null) {
+    if (this.columnPreviewData !== null && this.columndefintion !== null) {
       if (JSON.stringify(this.columnPreviewData) !== JSON.stringify(this.columndefintion)) {
         this.columnPreviewData = JSON.parse(JSON.stringify(this.columndefintion));
         this.columns = this.columndefintion;
@@ -756,8 +754,8 @@ description : Context Menu provides the list of menus on right click of row.
   createConfig() {
     let columnRefArray = [];
     columnRefArray = this.columnRef.toArray();
-    for (let cr = 0; cr < columnRefArray.length; cr++) {
-      const columnConfig = columnRefArray[cr];
+    for (const cr of columnRefArray) {
+      const columnConfig = cr;
       let columnData: any;
       if (columnConfig.headerTemplate != null && columnConfig.bodyTemplate != null) {
         columnData = {
@@ -867,7 +865,7 @@ description : Context Menu provides the list of menus on right click of row.
     if (this.filterValue == null || this.filterValue === '') {
       this.removeGlobalFilter();
     }
-    let filter: any = {
+    const filter: any = {
       value: this.filterValue,
     };
 
@@ -887,7 +885,7 @@ description : Context Menu provides the list of menus on right click of row.
 
   selectedOption(opt: any) {
     this.checkStatus();
-    let filter: any = {
+    const filter: any = {
       value: this.filterValue,
       filter: opt.value,
     };
@@ -908,32 +906,41 @@ description : Context Menu provides the list of menus on right click of row.
     let condition: any;
     this.filterCloneData.forEach((option: any) => {
       this.columns.forEach((opt: any) => {
-        if (filteredObj.filter === '1') {
-          condition = option[opt.dataindex].toLowerCase().startsWith(filteredObj.value.toLowerCase());
-          if (condition) {
-            status = condition;
-          }
-        }
-        if (filteredObj.filter === '2') {
-          condition = option[opt.dataindex].toLowerCase().endsWith(filteredObj.value.toLowerCase());
-          if (condition) {
-            status = condition;
-          }
-        }
-        if (filteredObj.filter === '3') {
-          condition = option[opt.dataindex].toLowerCase().includes(filteredObj.value.toLowerCase());
-          if (condition) {
-            status = condition;
-          }
-        }
+        this.filterConditionMethod(filteredObj, option, opt);
       });
-
       if (status) {
         this.data.push(option);
         status = false;
       }
     });
+    this.partOfGetGlobalFilteredData() ;
+  }
 
+  filterConditionMethod(filteredObj: any, option: any, opt: any) {
+    let status = false;
+    this.data = [];
+    let condition: any;
+    if (filteredObj.filter === '1') {
+      condition = option[opt.dataindex].toLowerCase().startsWith(filteredObj.value.toLowerCase());
+      if (condition) {
+        status = condition;
+      }
+    }
+    if (filteredObj.filter === '2') {
+      condition = option[opt.dataindex].toLowerCase().endsWith(filteredObj.value.toLowerCase());
+      if (condition) {
+        status = condition;
+      }
+    }
+    if (filteredObj.filter === '3') {
+      condition = option[opt.dataindex].toLowerCase().includes(filteredObj.value.toLowerCase());
+      if (condition) {
+        status = condition;
+      }
+    }
+
+  }
+  partOfGetGlobalFilteredData() {
     if (this.data.length > (1 * this.pagesize)) {
       this.pagingRegenration();
       this.renderData();
@@ -958,27 +965,13 @@ description : Context Menu provides the list of menus on right click of row.
     for (const groupName in groups) {
       this.data.push({ expanded: false, isSelected: false, group: groupName, groupData: groups[groupName] });
     }
-
     /*-------Aggregation---------*/
     this.renderData();
     this.cd.detectChanges();
   }
 
-  renderData() {
-    // calculate page no for pagination
-    if (this.data) {
-      this.maxPage = 0;
-      this.pageNumbers = [];
-      if (this.data.length > (1 * this.pagesize)) {
-        this.maxPage = Math.floor((this.data.length / this.pagesize));
-        if ((this.data.length % this.pagesize) > 0) {
-          this.maxPage++;
-        }
-      }
-      for (let pageNo = 1; pageNo <= this.maxPage; pageNo++) {
-        this.pageNumbers.push(pageNo);
-      }
-    }
+  renderData() {   // calculate page no for pagination
+    this.partOfRenderData();
     if (this.pagesize >= 1) {
       const rowsTemp = this.data;
       const newRows = [];
@@ -995,19 +988,34 @@ description : Context Menu provides the list of menus on right click of row.
         startIndex++;
       }
       this.viewRows = newRows;
-
     } else {
       this.viewRows = this.data;
     }
     this.selectedRowNo = -1;
   }
 
+  partOfRenderData() {
+    if (this.data) {
+      this.maxPage = 0;
+      this.pageNumbers = [];
+      if (this.data.length > (1 * this.pagesize)) {
+        this.maxPage = Math.floor((this.data.length / this.pagesize));
+        if ((this.data.length % this.pagesize) > 0) {
+          this.maxPage++;
+        }
+      }
+      for (let pageNo = 1; pageNo <= this.maxPage; pageNo++) {
+        this.pageNumbers.push(pageNo);
+      }
+    }
+  }
+
   getResponseData(httpResponse: any) {
     let responsedata = httpResponse;
     if (this.datareader != null) {
       const dr = this.datareader.split('.');
-      for (let ir = 0; ir < dr.length; ir++) {
-        responsedata = responsedata[dr[ir]];
+      for (const ir of dr ) {
+        responsedata = responsedata[ir];
       }
     } else {
       responsedata = httpResponse;
@@ -1020,8 +1028,8 @@ description : Context Menu provides the list of menus on right click of row.
     this.selectAll = !this.selectAll;
 
     if (this.selectAll) {
-      for (let vr = 0; vr < this.viewRows.length; vr++) {
-        this.selectedRows.push(this.viewRows[vr]);
+      for (const vr of this.viewRows) {
+        this.selectedRows.push(vr);
       }
     } else {
       this.selectedRows = [];
@@ -1061,11 +1069,6 @@ description : Context Menu provides the list of menus on right click of row.
       }
     });
     rowData.isSelected = !rowData.isSelected;
-    /* if(rowRef.classList.contains('datatable-row-active')){
-     rowRef.classList.remove('datatable-row-active');
-     } else {
-     rowRef.classList.add('datatable-row-active');
-     }*/
     rowIndex = 'row' + rowIndex;
     this.rowId = rowIndex;
     this.rowSelect.emit(rowData);
@@ -1095,9 +1098,7 @@ description : Context Menu provides the list of menus on right click of row.
         this.viewRows = this.data;
         this.currentPage = 1;
         this.maxPage = 1;
-        // this.cd.detectChanges();
       }
-
     } else {
       this.data = this.filterCloneData;
       this.pagingRegenration();
@@ -1109,58 +1110,29 @@ description : Context Menu provides the list of menus on right click of row.
     const statusArray: any = [];
     let condition: any;
     filteredObj.forEach((filterOpt: any) => {
-      if (filterOpt.filter === '3') {
-        if (filterOpt.type === 'string') {
+      if (filterOpt.filter === '3' && filterOpt.type === 'string') {
           condition = data[filterOpt.key].toLowerCase().includes(filterOpt.value.toLowerCase());
-        }
-        statusArray.push(condition);
-      }
-      if (filterOpt.filter === '1') {
-        if (filterOpt.type === 'string') {
+      } else if (filterOpt.filter === '1' && filterOpt.type === 'string') {
           condition = data[filterOpt.key].toLowerCase().startsWith(filterOpt.value.toLowerCase());
-        }
-        statusArray.push(condition);
-      } else if (filterOpt.filter === '2') {
-        if (filterOpt.type === 'string') {
+      } else if (filterOpt.filter === '2' && filterOpt.type === 'string') {
           condition = data[filterOpt.key].toLowerCase().endsWith(filterOpt.value.toLowerCase());
-        }
-        statusArray.push(condition);
-      } else if (filterOpt.filter === '<') {
-        if (filterOpt.type === 'number') {
+      } else if (filterOpt.filter === '<' && filterOpt.type === 'number') {
           condition = data[filterOpt.key] > filterOpt.value;
-        }
-        statusArray.push(condition);
-      } else if (filterOpt.filter === '>') {
-        if (filterOpt.type === 'number') {
+      } else if (filterOpt.filter === '>' && filterOpt.type === 'number') {
           condition = data[filterOpt.key] < filterOpt.value;
-        }
-        statusArray.push(condition);
-      } else if (filterOpt.filter === '>=') {
-        if (filterOpt.type === 'number') {
+      } else if (filterOpt.filter === '>=' && filterOpt.type === 'number') {
           condition = data[filterOpt.key] <= filterOpt.value;
-        }
-        statusArray.push(condition);
-      } else if (filterOpt.filter === '=<') {
-        if (filterOpt.type === 'number') {
+      } else if (filterOpt.filter === '=<' && filterOpt.type === 'number') {
           condition = data[filterOpt.key] >= filterOpt.value;
-        }
-        statusArray.push(condition);
-      } else if (filterOpt.filter === '==') {
-        if (filterOpt.type === 'number') {
+      } else if (filterOpt.filter === '==' && filterOpt.type === 'number') {
           condition = data[filterOpt.key] === filterOpt.value;
-        } else {
-          condition = data[filterOpt.key].toLowerCase() === filterOpt.value.toLowerCase();
-        }
-        statusArray.push(condition);
-      } else if (filterOpt.filter === '!=') {
-        if (filterOpt.type === 'number') {
+      } else if (filterOpt.filter === '!=' && filterOpt.type === 'number') {
           condition = data[filterOpt.key] !== filterOpt.value;
         } else {
           condition = data[filterOpt.key].toLowerCase() !== filterOpt.value.toLowerCase();
         }
         statusArray.push(condition);
-      }
-    });
+      });
     statusArray.forEach((opt: any) => {
       if (opt === false) {
         condition = false;
@@ -1177,7 +1149,6 @@ description : Context Menu provides the list of menus on right click of row.
     for (let pageNo = 1; pageNo <= this.maxPage; pageNo++) {
       this.pageNumbers.push(pageNo);
     }
-    // this.cd.detectChanges();
   }
 
   setSelectedRow(rowData: any, event: any) {
@@ -1194,9 +1165,9 @@ description : Context Menu provides the list of menus on right click of row.
 
   emitSelectedRows() {
     const sRows = [];
-    for (let sr = 0; sr < this.selectedRows.length; sr++) {
-      if (this.selectedRows[sr]) {
-        sRows.push(this.selectedRows[sr]);
+    for (const sr of this.selectedRows) {
+      if (sr) {
+        sRows.push(sr);
       }
     }
     this.selectedRowData.emit(sRows);
@@ -1252,7 +1223,7 @@ description : Context Menu provides the list of menus on right click of row.
         if (this.sortColumn.datatype === 'string') {
 
           if (this.groupby) {
-            this.data.sort(function(a, b) {
+            this.data.sort(function(a, b){
               const x = a.group.toLowerCase();
               const y = b.group.toLowerCase();
 
@@ -1327,18 +1298,16 @@ description : Context Menu provides the list of menus on right click of row.
     this.renderData();
   }
 
-  /*grouby column methods*/
+  /* grouby column methods*/
 
   onTabClick(btn: any) {
     btn.classList.toggle('active-accordion');
     const panel = btn.nextElementSibling;
-    // let icon = btn.children[0].children[0];
     if (this.iconclassKey === 'fa fa-plus') {
       this.iconclassKey = 'fa fa-minus';
     } else if (this.iconclassKey === 'fa fa-minus') {
       this.iconclassKey = 'fa fa-plus';
     }
-
     if (panel.style.maxHeight) {
       panel.style.maxHeight = null;
     } else {
@@ -1433,7 +1402,7 @@ description : Context Menu provides the list of menus on right click of row.
 
   onContextNodeClick(itemConfig: any) {
     if (!itemConfig.disabled) {
-      let obj = {
+      const obj = {
         menuData: itemConfig,
         rowData: this.rightClickRowData,
       };
@@ -1443,13 +1412,13 @@ description : Context Menu provides the list of menus on right click of row.
 
   getContextMenuStyle() {
     return {
-      cursor: 'default',
-      position: 'fixed',
-      display: this.flag ? 'block' : 'none',
-      left: this.mouseLocation.left + 'px',
-      top: this.mouseLocation.top + 'px',
+      'cursor': 'default',
+      'position': 'fixed',
+      'display': this.flag ? 'block' : 'none',
+      'left': this.mouseLocation.left + 'px',
+      'top': this.mouseLocation.top + 'px',
       'box-shadow': '1px 1px 2px #000000',
-      width: '15%',
+      'width': '15%',
     };
   }
 
@@ -1464,7 +1433,7 @@ description : Context Menu provides the list of menus on right click of row.
   }
 
   getListPosition(elementRef: any) {
-    let height: number = 240;
+    const height = 240;
     if ((window.screen.height - elementRef.getBoundingClientRect().bottom) < height) {
       return true;
     } else {
