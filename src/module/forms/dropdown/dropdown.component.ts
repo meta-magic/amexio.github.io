@@ -623,9 +623,9 @@ description : Set enable / disable popover.
       if(event.target && event.target.value && this.filteredOptions && this.filteredOptions.length === 1){
         const fvalue = event.target.value;
         let row = this.filteredOptions[0];
-        const rvalue = row[this.valuefield]; 
+        const rvalue = row[this.displayfield]; 
         console.log(fvalue +" "+" "+rvalue+" "+this.filteredOptions.length);
-        if(fvalue.toLowerCase() === rvalue.toLowerCase()){
+        if(fvalue && rvalue && (fvalue.toLowerCase() === rvalue.toLowerCase())){
           this.onItemSelect(row);
         }
       }
