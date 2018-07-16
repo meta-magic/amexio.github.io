@@ -177,8 +177,8 @@ description : 	On input event field.
     if (this.datareader != null) {
       const dr = this.datareader.split('.');
       if (dr != null) {
-        for (let ir = 0; ir < dr.length; ir++) {
-          responsedata = responsedata[dr[ir]];
+        for (const ir of dr) {
+          responsedata = responsedata[ir];
         }
       }
     } else {
@@ -190,12 +190,12 @@ description : 	On input event field.
     return responsedata;
   }
   onClick(row: any) {
-    for (let r = 0; r < this.viewData.length; r++) {
-      if (this.viewData[r] === row) {
-        this.viewData[r]['selected'] = true;
+    for (const r of this.viewData) {
+      if ([r] === row) {
+        [r]['selected'] = true;
         this.isComponentValid = true;
       } else {
-        this.viewData[r]['selected'] = false;
+        [r]['selected'] = false;
       }
     }
     this.onSelection.emit(row);
