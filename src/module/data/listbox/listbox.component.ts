@@ -9,13 +9,13 @@
  more items from list based on configuration. User can provide custom template to
  change look and feel.
 */
-import {AfterViewInit, Component, ContentChild, EventEmitter, HostListener, Input, OnInit, Output, TemplateRef} from '@angular/core';
+import {AfterViewInit, Component, ContentChild, DoCheck, EventEmitter, HostListener, Input, OnInit, Output, TemplateRef } from '@angular/core';
 import {CommonDataService} from '../../services/data/common.data.service';
 
 @Component({
   selector: 'amexio-listbox', templateUrl: './listbox.component.html', styleUrls: ['./listbox.component.scss'],
 })
-export class AmexioListBoxComponent implements OnInit, AfterViewInit {
+export class AmexioListBoxComponent implements AfterViewInit, DoCheck, OnInit {
 
   /*
 Properties
@@ -45,7 +45,7 @@ version : 4.2.4 onwards
 default : true
 description : User can disabled header of listbox to false..
 */
-@Input('enable-header') enableHeader: boolean = true;
+@Input('enable-header') enableHeader = true;
 
   /*
 Properties
@@ -193,7 +193,7 @@ description : It will gives you row clicked data.
 
   previousData: any;
 
-  maskloader: boolean = true;
+  maskloader = true;
 
   mouseLocation: { left: number; top: number } = { left: 0, top: 0 };
 
@@ -234,9 +234,9 @@ description : It will gives you row clicked data.
  setData(httpResponse: any) {
     let responsedata = httpResponse;
     if (this.datareader != null) {
-      let dr = this.datareader.split('.');
-      for (let ir = 0; ir < dr.length; ir++) {
-        responsedata = responsedata[dr[ir]];
+      const dr = this.datareader.split('.');
+      for (const ir of dr) {
+        responsedata = responsedata[ir];
       }
     } else {
       responsedata = httpResponse;
@@ -263,9 +263,8 @@ description : It will gives you row clicked data.
   }
 
   searchTree(data: any[], matchingTitle: string) {
-    let disp = this.displayfield;
-    let res = data.filter(function f(node) {
-
+    const disp = this.displayfield;
+    return data.filter(function f(node) {
       if (node[disp] && node[disp].toLowerCase().startsWith(matchingTitle.toLowerCase())) {
         return true;
       }
@@ -273,7 +272,7 @@ description : It will gives you row clicked data.
         return (node.children = node.children.filter(f)).length;
       }
     });
-    return res;
+    // return res;
   }
 
   selectedCheckBox(rowData: any) {
@@ -351,7 +350,7 @@ description : It will gives you row clicked data.
   }
 
   getListPosition(elementRef: any) {
-    let height: number = 240;
+    const height = 240;
     if ((window.screen.height - elementRef.getBoundingClientRect().bottom) < height) {
       return true;
     } else {
@@ -360,19 +359,19 @@ description : It will gives you row clicked data.
   }
   getContextMenuStyle() {
     return {
-      cursor: 'default',
-      position: 'fixed',
-      display: this.contextMenuFlag ? 'block' : 'none',
-      left: this.mouseLocation.left + 'px',
-      top: this.mouseLocation.top + 'px',
+      'cursor': 'default',
+      'position': 'fixed',
+      'display': this.contextMenuFlag ? 'block' : 'none',
+      'left': this.mouseLocation.left + 'px',
+      'top': this.mouseLocation.top + 'px',
       'box-shadow': '1px 1px 2px #000000',
-      width: '15%',
+      'width': '15%',
     };
   }
 
   onContextNodeClick(itemConfig: any) {
     if (!itemConfig.disabled) {
-      let obj = {
+      const obj = {
         menuData: itemConfig,
         rowData: this.rightClickRowData,
       };

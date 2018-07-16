@@ -10,14 +10,14 @@ field that renders as a pair of MultiSelect field, one with available options
 and the other with selected options. A set of buttons in between allows items to be
 moved between the fields and reordered within the selection.
 */
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, DoCheck, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonDataService } from '../../services/data/common.data.service';
 
 @Component({
   selector: 'amexio-item-selector', templateUrl: './item.selector.component.html',
 })
 
-export class AmexioItemSelectorComponent implements OnInit {
+export class AmexioItemSelectorComponent implements OnInit, DoCheck {
 
   /*
 Properties
@@ -229,7 +229,7 @@ description :  Get selected value Object.
   }
 
   partOfLeftSwitch() {
-    let flag: boolean;
+    const flag = false;
     if (!flag) {
       if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected')) {
         if (this.switchingObject['isSelected']) {
