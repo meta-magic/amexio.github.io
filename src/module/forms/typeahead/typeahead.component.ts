@@ -18,15 +18,13 @@ import { CommonDataService } from '../../services/data/common.data.service';
 const noop = () => {
 };
 
-export const CUSTOM_TYPEAHEAD_CONTROL_VALUE_ACCESSOR: any = {
-  provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioTypeAheadComponent), multi: true,
-};
-
 @Component({
   selector: 'amexio-typeahead',
   templateUrl: './typeahead.component.html',
   styleUrls: ['./typeahead.component.scss'],
-  providers: [CUSTOM_TYPEAHEAD_CONTROL_VALUE_ACCESSOR],
+  providers: [{
+    provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioTypeAheadComponent), multi: true,
+  }],
 })
 export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, DoCheck, OnChanges {
   /*
@@ -269,7 +267,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
   private onTouchedCallback: () => void = noop;
   private onChangeCallback: (_: any) => void = noop;
 
-  get errormsg(): string {
+  geterrormsg(): string {
     return this._errormsg;
   }
 
@@ -279,7 +277,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
   @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
   public onElementOutClick(targetElement: HTMLElement) {
     let parentFound = false;
-    while (targetElement !== null && !parentFound) {
+    while (targetElement != null && !parentFound) {
       if (targetElement === this.element.nativeElement) {
         parentFound = true;
       }
@@ -335,7 +333,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
     if (keyword != null && keyword !== ' ' && keyword.length >= this.triggerchar) {
       const search_term = keyword.toLowerCase();
       this.viewData.forEach((item: any) => {
-        if (item !== null) {
+        if (item != null) {
           if (item[this.key].toLowerCase().startsWith(search_term)) {
             this.filteredResult.push(item);
           }
@@ -353,7 +351,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
   }
 
   onChange(event: any) {
-    if (event !== null) {
+    if (event != null) {
       this.value = event;
       this.change.emit(this.value);
     }
@@ -374,25 +372,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
         this.selectedindex = 1;
       } else {
         prevselectedindex = this.selectedindex;
-        if (event.keyCode === 40) {
-          this.selectedindex++;
-          if ((this.selectedindex > 5)) {
-            this.dropdownitems.nativeElement.scroll(0, this.scrollposition);
-            this.scrollposition = this.scrollposition + 30;
-          }
-        } else if (event.keyCode === 38) {
-          this.selectedindex--;
-          if (this.scrollposition >= 0 && this.selectedindex > 1) {
-            this.dropdownitems.nativeElement.scroll(0, this.scrollposition);
-            this.scrollposition = this.scrollposition - 30;
-          }
-          if (this.selectedindex === 1) {
-            this.scrollposition = 30;
-          }
-
-          if (this.selectedindex <= 0) {
-          }
-        }
+        this.navigateByKeyCode(event);
       }
 
       if (this.filteredResult[this.selectedindex]) {
@@ -409,13 +389,34 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
 
   }
 
+  navigateByKeyCode(event: any) {
+    if (event.keyCode === 40) {
+      this.selectedindex++;
+      if ((this.selectedindex > 5)) {
+        this.dropdownitems.nativeElement.scroll(0, this.scrollposition);
+        this.scrollposition = this.scrollposition + 30;
+      }
+    } else if (event.keyCode === 38) {
+      this.selectedindex--;
+      if (this.scrollposition >= 0 && this.selectedindex > 1) {
+        this.dropdownitems.nativeElement.scroll(0, this.scrollposition);
+        this.scrollposition = this.scrollposition - 30;
+      }
+      if (this.selectedindex === 1) {
+        this.scrollposition = 30;
+      }
+
+      if (this.selectedindex <= 0) {
+      }
+    }
+  }
   setData(httpResponse: any) {
     // Check if key is added?
     let responsedata = httpResponse;
-    if (this.datareader !== null) {
+    if (this.datareader != null) {
       const dr = this.datareader.split('.');
-      for (let ir = 0; ir < dr.length; ir++) {
-        responsedata = responsedata[dr[ir]];
+      for (const ir of dr) {
+        responsedata = responsedata[ir];
       }
     } else {
       responsedata = httpResponse;
@@ -424,7 +425,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
     this.viewData = responsedata;
 
     // Set user selection
-    if (this.value !== null) {
+    if (this.value != null) {
       const valueKey = this.valuefield;
       const displayKey = this.displayfield;
       const val = this.value;
