@@ -83,7 +83,7 @@ version : 4.0 onwards
 default : false
 description : Set true for Legend text in bold
 */
-  @Input() bold: boolean = false;
+  @Input() bold = false;
 
   // this work only in chart position is top
   /*

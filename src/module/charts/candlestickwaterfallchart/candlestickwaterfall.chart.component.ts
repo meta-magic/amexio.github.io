@@ -272,36 +272,15 @@ description : The fill color of rising candles, as an HTML color string.Example:
       this.candlestickData = google.visualization.arrayToDataTable(this._data, true);
       this.options = {
         title: this.chartTitleComponent ? this.chartTitleComponent.title : null,
-        titleTextStyle: this.chartTitleComponent ? {
-          color: this.chartTitleComponent.color ? this.chartTitleComponent.color : null,
-          fontName: this.chartTitleComponent.fontname ? this.chartTitleComponent.fontname : null,
-          fontsize: this.chartTitleComponent.fontsize ? this.chartTitleComponent.fontsize : null,
-          bold: this.chartTitleComponent.bold ? this.chartTitleComponent.bold : null,
-          italic: this.chartTitleComponent.italic ? this.chartTitleComponent.italic : null,
-        } : null,
+        titleTextStyle: this.chartTitleComponent ? this.chartTitleTextStyle() : null,
         backgroundcolor: this.backgroundcolor,
         legend: 'none',
-        chartArea: this.chartAreaComponent ? {
-          backgroundcolor: this.chartAreaComponent.chartbackgroundcolor ? this.chartAreaComponent.chartbackgroundcolor : null,
-          left: this.chartAreaComponent.leftposition ? this.chartAreaComponent.leftposition : null,
-          top: this.chartAreaComponent.topposition ? this.chartAreaComponent.topposition : null,
-          height: this.chartAreaComponent.chartheight ? this.chartAreaComponent.chartheight : null,
-          width: this.chartAreaComponent.chartwidth ? this.chartAreaComponent.chartwidth : null,
-        } : null,
-        vAxis: this.verticalComponent ? {
-          title: this.verticalComponent.title ? this.verticalComponent.title : null,
-          titleTextStyle: {color: this.verticalComponent.titlecolor ? this.verticalComponent.titlecolor : null},
-        } : null,
-        hAxis: this.horizontalComponent ? {
-          title: this.horizontalComponent.title ? this.horizontalComponent.title : null,
-          titleTextStyle: {color: this.horizontalComponent.titlecolor ? this.horizontalComponent.titlecolor : null},
-        } : null,
+        chartArea: this.chartAreaComponent ? this.chartLegendStyle() : null,
+        vAxis: this.verticalComponent ? this.chartVerticalComponent() : null,
+        hAxis: this.horizontalComponent ? this.chartHorizontalComponent() : null,
         bar: {groupWidth: this.barwidth ? this.barwidth : null},
          // Remove space between bars.
-        candlestick: {
-          fallingColor: this.fallingcolor ? {strokeWidth: 0, fill: this.fallingcolor ? this.fallingcolor : null} : null, // red
-          risingColor: this.risingcolor ? {strokeWidth: 0, fill: this.risingcolor ? this.risingcolor : null} : null,  // green
-        },
+        candlestick: this.chartColorStyle(),
       };
       if (this.candlestickData) {
         this.chart = new google.visualization.CandlestickChart(this.candlestickwaterfall.nativeElement);
@@ -313,7 +292,43 @@ description : The fill color of rising candles, as an HTML color string.Example:
     }
 
   }
+  chartTitleTextStyle() {
+    return{
+      color: this.chartTitleComponent.color ? this.chartTitleComponent.color : null,
+      fontName: this.chartTitleComponent.fontname ? this.chartTitleComponent.fontname : null,
+      fontsize: this.chartTitleComponent.fontsize ? this.chartTitleComponent.fontsize : null,
+      bold: this.chartTitleComponent.bold ? this.chartTitleComponent.bold : null,
+      italic: this.chartTitleComponent.italic ? this.chartTitleComponent.italic : null,
+    };
+  }
+  chartLegendStyle() {
+    return{
+      backgroundcolor: this.chartAreaComponent.chartbackgroundcolor ? this.chartAreaComponent.chartbackgroundcolor : null,
+      left: this.chartAreaComponent.leftposition ? this.chartAreaComponent.leftposition : null,
+      top: this.chartAreaComponent.topposition ? this.chartAreaComponent.topposition : null,
+      height: this.chartAreaComponent.chartheight ? this.chartAreaComponent.chartheight : null,
+      width: this.chartAreaComponent.chartwidth ? this.chartAreaComponent.chartwidth : null,
+    };
+  }
+  chartVerticalComponent() {
+    return{
+      title: this.verticalComponent.title ? this.verticalComponent.title : null,
+          titleTextStyle: {color: this.verticalComponent.titlecolor ? this.verticalComponent.titlecolor : null},
+    };
+  }
+chartHorizontalComponent() {
+  return{
+    title: this.horizontalComponent.title ? this.horizontalComponent.title : null,
+    titleTextStyle: {color: this.horizontalComponent.titlecolor ? this.horizontalComponent.titlecolor : null},
+  };
+}
+chartColorStyle() {
+  return{
+    fallingColor: this.fallingcolor ? {strokeWidth: 0, fill: this.fallingcolor ? this.fallingcolor : null} : null, // red
+    risingColor: this.risingcolor ? {strokeWidth: 0, fill: this.risingcolor ? this.risingcolor : null} : null,  // green
 
+  };
+}
   click(e: any) {
 
   }
