@@ -142,7 +142,7 @@ declare var google: any;
   ` ],
 })
 
-export class ColumnChartComponent implements AfterContentInit {
+export class ColumnChartComponent implements AfterContentInit, OnInit {
 
   private options: any;
   private columnData: any;
@@ -204,7 +204,7 @@ version : 4.0 onwards
 default : false
 description : If set to true, stacks the elements for all series at each domain value.default value is false
 */
-@Input() stacked: boolean = false;
+@Input() stacked = false;
 
  /*
 Properties
@@ -247,17 +247,32 @@ description : sets background color
       this.columnData = this.createTable(this._data);
       this.options = {
         title: this.chartTitleComponent ? this.chartTitleComponent.title : null,
-        titleTextStyle: this.chartTitleComponent ? {
-          color: this.chartTitleComponent.color ? this.chartTitleComponent.color : null,
-          fontName: this.chartTitleComponent.fontname ? this.chartTitleComponent.fontname : null,
-          fontsize: this.chartTitleComponent.fontsize ? this.chartTitleComponent.fontsize : null,
-          bold: this.chartTitleComponent.bold ? this.chartTitleComponent.bold : null,
-          italic: this.chartTitleComponent.italic ? this.chartTitleComponent.italic : null,
-        } : null,
+        titleTextStyle: this.chartTitleComponent ? this.chartTitleTextStyle() : null,
         isStacked: this.stacked,
         backgroundcolor: this.backgroundcolor,
-        legend: this.chartLengendComponent ? {
-          position: this.chartLengendComponent.position ? this.chartLengendComponent.position : null,
+        legend: this.chartLengendComponent ? this.chartLegendStyle() : 'none',
+        chartArea: this.chartAreaComponent ? this.chartBackGroundColor() : null,
+      };
+      if (this.columnData) {
+        this.chart = new google.visualization.ColumnChart(this.columnchart.nativeElement);
+        this.hasLoaded = true;
+        this.chart.draw(this.columnData, this.options);
+        google.visualization.events.addListener(this.chart, 'click', this.onClick);
+      }
+    }
+  }
+  chartTitleTextStyle() {
+    return{
+      color: this.chartTitleComponent.color ? this.chartTitleComponent.color : null,
+      fontName: this.chartTitleComponent.fontname ? this.chartTitleComponent.fontname : null,
+      fontsize: this.chartTitleComponent.fontsize ? this.chartTitleComponent.fontsize : null,
+      bold: this.chartTitleComponent.bold ? this.chartTitleComponent.bold : null,
+      italic: this.chartTitleComponent.italic ? this.chartTitleComponent.italic : null,
+    };
+  }
+  chartLegendStyle() {
+    return{
+      position: this.chartLengendComponent.position ? this.chartLengendComponent.position : null,
            // this work only in chart position is top
           maxLines: this.chartLengendComponent.maxlines ? this.chartLengendComponent.maxlines : null,
           textStyle: {
@@ -267,24 +282,16 @@ description : sets background color
             bold: this.chartLengendComponent.bold ? this.chartLengendComponent.bold : null,
             alignment: this.chartLengendComponent.alignment ? this.chartLengendComponent.alignment : null,
           },
-        } : 'none',
-        chartArea: this.chartAreaComponent ? {
-          backgroundcolor: this.chartAreaComponent.chartbackgroundcolor ? this.chartAreaComponent.chartbackgroundcolor : null,
+        };
+    }
+  chartBackGroundColor() {
+    return{
+      backgroundcolor: this.chartAreaComponent.chartbackgroundcolor ? this.chartAreaComponent.chartbackgroundcolor : null,
           left: this.chartAreaComponent.leftposition ? this.chartAreaComponent.leftposition : null,
           top: this.chartAreaComponent.topposition ? this.chartAreaComponent.topposition : null,
           height: this.chartAreaComponent.chartheight ? this.chartAreaComponent.chartheight : null,
           width: this.chartAreaComponent.chartwidth ? this.chartAreaComponent.chartwidth : null,
-        } : null,
-      };
-      if (this.columnData) {
-        this.chart = new google.visualization.ColumnChart(this.columnchart.nativeElement);
-        this.hasLoaded = true;
-        this.chart.draw(this.columnData, this.options);
-        google.visualization.events.addListener(this.chart, 'click', this.onClick);
-      }
-
-    }
-
+    };
   }
 
   onClick(e: any) {

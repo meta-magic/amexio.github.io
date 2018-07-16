@@ -15,12 +15,12 @@ Component Name : Amexio pie chart
 Component Selector : <amexio-chart-pie>
 Component Description : A pie chart that is rendered within the browser using SVG.
 */
-import {AfterContentInit, Component, ContentChildren, ElementRef, Input, OnInit, QueryList, ViewChild} from '@angular/core';
-import {ChartAreaComponent} from '../chartarea/chart.area.component';
-import {ChartLegendComponent} from '../chartlegend/chart.legend.component';
-import {ChartTitleComponent} from '../charttitle/chart.title.component';
+import { AfterContentInit, Component, ContentChildren, ElementRef, Input, OnInit, QueryList, ViewChild } from '@angular/core';
+import { ChartAreaComponent } from '../chartarea/chart.area.component';
+import { ChartLegendComponent } from '../chartlegend/chart.legend.component';
+import { ChartTitleComponent } from '../charttitle/chart.title.component';
 
-import {ChartLoaderService} from '../chart.loader.service';
+import { ChartLoaderService } from '../chart.loader.service';
 
 declare var google: any;
 @Component({
@@ -143,54 +143,54 @@ export class PieChartComponent implements AfterContentInit, OnInit {
 
   id: any;
 
-/*
-Properties
-name : width
-datatype : string
-version : 4.0 onwards
-default : none
-description : width of chart
-*/
-@Input() width: string;
+  /*
+  Properties
+  name : width
+  datatype : string
+  version : 4.0 onwards
+  default : none
+  description : width of chart
+  */
+  @Input() width: string;
 
-/*
-Properties
-name : height
-datatype : string
-version : 4.0 onwards
-default : none
-description : height of chart
-*/
-@Input() height: string;
+  /*
+  Properties
+  name : height
+  datatype : string
+  version : 4.0 onwards
+  default : none
+  description : height of chart
+  */
+  @Input() height: string;
 
   hasLoaded: boolean;
 
-/*
-Properties
-name : is3d
-datatype : boolean
-version : 4.0 onwards
-default : false
-description : If you set the is3d option to true, your pie chart will be drawn as though it has three dimensions
-*/
-@Input() is3d: boolean = false;
+  /*
+  Properties
+  name : is3d
+  datatype : boolean
+  version : 4.0 onwards
+  default : false
+  description : If you set the is3d option to true, your pie chart will be drawn as though it has three dimensions
+  */
+  @Input() is3d: false;
 
   // this input for hole inside pie chart
 
-/*
-Properties
-name : piehole
-datatype : number
-version : 4.0 onwards
-default : none
-description : sets the pie hole size
-*/
-@Input() piehole: number;
+  /*
+  Properties
+  name : piehole
+  datatype : number
+  version : 4.0 onwards
+  default : none
+  description : sets the pie hole size
+  */
+  @Input() piehole: number;
 
   showChart: boolean;
   _data: any;
 
-  get data(): any{
+  get data(): any {
     return this._data;
   }
 
@@ -221,7 +221,7 @@ description : sets the pie hole size
 
   @ContentChildren(ChartTitleComponent) chartTitleComp: QueryList<ChartTitleComponent>;
 
-  @ContentChildren(ChartAreaComponent)  chartAreaComp: QueryList<ChartAreaComponent>;
+  @ContentChildren(ChartAreaComponent) chartAreaComp: QueryList<ChartAreaComponent>;
 
   chartAreaArray: ChartAreaComponent[];
 
@@ -246,36 +246,13 @@ description : sets the pie hole size
       this.pieData = google.visualization.arrayToDataTable(this._data);
       this.options = {
         title: this.chartTitleComponent ? this.chartTitleComponent.title : null,
-        titleTextStyle: this.chartTitleComponent ? {
-          color: this.chartTitleComponent.color ? this.chartTitleComponent.color : null,
-          fontName: this.chartTitleComponent.fontname ? this.chartTitleComponent.fontname : null,
-          fontsize: this.chartTitleComponent.fontsize ? this.chartTitleComponent.fontsize : null,
-          bold: this.chartTitleComponent.bold ? this.chartTitleComponent.bold : null,
-          italic: this.chartTitleComponent.italic ? this.chartTitleComponent.italic : null,
-        } : null,
+        titleTextStyle: this.chartTitleComponent ? this.charttitleTextStyle() : null,
         is3D: this.is3d,
         piehole: this.piehole,
         startangle: this.startangle,
         backgroundcolor: this.backgroundcolor,
-        legend: this.chartLengendComponent ? {
-          position: this.chartLengendComponent.position ? this.chartLengendComponent.position : null,
-          // this work only in chart position is top
-          maxLines: this.chartLengendComponent.maxlines ? this.chartLengendComponent.maxlines : null,
-          textStyle: {
-            color: this.chartLengendComponent.color ? this.chartLengendComponent.color : null,
-            fontsize: this.chartLengendComponent.fontsize ? this.chartLengendComponent.fontsize : null,
-            fontName: this.chartLengendComponent.fontname ? this.chartLengendComponent.fontname : null,
-            bold: this.chartLengendComponent.bold ? this.chartLengendComponent.bold : null,
-            alignment: this.chartLengendComponent.alignment ? this.chartLengendComponent.alignment : null,
-          },
-        } : 'none',
-        chartArea: this.chartAreaComponent ? {
-          backgroundcolor: this.chartAreaComponent.chartbackgroundcolor ? this.chartAreaComponent.chartbackgroundcolor : null,
-          left: this.chartAreaComponent.leftposition ? this.chartAreaComponent.leftposition : null,
-          top: this.chartAreaComponent.topposition ? this.chartAreaComponent.topposition : null,
-          height: this.chartAreaComponent.chartheight ? this.chartAreaComponent.chartheight : null,
-          width: this.chartAreaComponent.chartwidth ? this.chartAreaComponent.chartwidth : null,
-        } : null,
+        legend: this.chartLengendComponent ? this.chartLengendStyle() : 'none',
+        chartArea: this.chartAreaComponent ? this.chartBackgroundStyle() : null,
       };
       if (this.pieData) {
         this.chart = new google.visualization.PieChart(this.piechart.nativeElement);
@@ -285,7 +262,38 @@ description : sets the pie hole size
       }
     }
   }
-
+  charttitleTextStyle() {
+    return {
+      color: this.chartTitleComponent.color ? this.chartTitleComponent.color : null,
+      fontName: this.chartTitleComponent.fontname ? this.chartTitleComponent.fontname : null,
+      fontsize: this.chartTitleComponent.fontsize ? this.chartTitleComponent.fontsize : null,
+      bold: this.chartTitleComponent.bold ? this.chartTitleComponent.bold : null,
+      italic: this.chartTitleComponent.italic ? this.chartTitleComponent.italic : null,
+    };
+  }
+  chartLengendStyle() {
+    return {
+      position: this.chartLengendComponent.position ? this.chartLengendComponent.position : null,
+      // this work only in chart position is top
+      maxLines: this.chartLengendComponent.maxlines ? this.chartLengendComponent.maxlines : null,
+      textStyle: {
+        color: this.chartLengendComponent.color ? this.chartLengendComponent.color : null,
+        fontsize: this.chartLengendComponent.fontsize ? this.chartLengendComponent.fontsize : null,
+        fontName: this.chartLengendComponent.fontname ? this.chartLengendComponent.fontname : null,
+        bold: this.chartLengendComponent.bold ? this.chartLengendComponent.bold : null,
+        alignment: this.chartLengendComponent.alignment ? this.chartLengendComponent.alignment : null,
+      },
+    };
+  }
+  chartBackgroundStyle() {
+    return {
+      backgroundcolor: this.chartAreaComponent.chartbackgroundcolor ? this.chartAreaComponent.chartbackgroundcolor : null,
+      left: this.chartAreaComponent.leftposition ? this.chartAreaComponent.leftposition : null,
+      top: this.chartAreaComponent.topposition ? this.chartAreaComponent.topposition : null,
+      height: this.chartAreaComponent.chartheight ? this.chartAreaComponent.chartheight : null,
+      width: this.chartAreaComponent.chartwidth ? this.chartAreaComponent.chartwidth : null,
+    };
+  }
   onClick(e: any) {
   }
 

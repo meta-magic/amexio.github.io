@@ -23,15 +23,13 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 const noop = () => {
 };
 
-export const CUSTOM_tOGGLE_CONTROL_VALUE_ACCESSOR: any = {
-  provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioToggleComponent), multi: true,
-};
-
 @Component({
   selector: 'amexio-toggle',
   templateUrl: './toggle.component.html',
   styleUrls: ['./toggle.component.scss'],
-  providers: [CUSTOM_tOGGLE_CONTROL_VALUE_ACCESSOR],
+  providers: [{
+    provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioToggleComponent), multi: true,
+  }],
   encapsulation: ViewEncapsulation.None,
 })
 
@@ -89,8 +87,10 @@ description : The label of this field.
   }
 
   ngOnInit() {
-    this.shape === '' || this.shape == null ? this.shape = 'round' : 0;
-    this.isComponentValid = !this.required;
+    if (this.shape === '' || this.shape == null) {
+      this.shape = 'round';
+    }
+    this.isComponentValid = false;
   }
 
   onToggle() {
@@ -118,14 +118,13 @@ description : The label of this field.
 
   // From ControlValueAccessor interface
   writeValue(value: any) {
-    if (value !== this.innerValue) {
-      if (value) {
-        this.isComponentValid = value;
-      } else {
-        this.isComponentValid = value;
-      }
-      this.innerValue = value;
+    if (value && value !== this.innerValue) {
+      this.isComponentValid = value;
     }
+    if (!value && value !== this.innerValue) {
+      this.isComponentValid = value;
+    }
+    this.innerValue = value;
   }
 
   // From ControlValueAccessor interface

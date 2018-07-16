@@ -13,14 +13,12 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 const noop = () => {
 };
 
-export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
-  provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioTextInputComponent), multi: true,
-};
-
 @Component({
   selector: 'amexio-text-input',
   templateUrl: './textinput.component.html',
-  providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
+  providers: [{
+    provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioTextInputComponent), multi: true,
+  }],
   encapsulation: ViewEncapsulation.None,
 })
 
@@ -332,42 +330,67 @@ description : On field value change event
     this.onTouchedCallback = fn;
   }
 
+  getCssClass(): any {
+    return { 'input-control-error': true };
+  }
+
   getValidationClasses(inp: any): any {
     let classObj;
     if (!this.allowblank) {
       if (this.innerValue == null || this.innerValue === '') {
-        if (inp.touched) {
-          classObj = { 'input-control-error': true };
-          this.isValid = false;
-          this.isComponentValid = false;
-        } else {
-          this.isValid = false;
-          this.isComponentValid = false;
-        }
+        classObj = this.noInnerValue(inp);
       } else if (inp.touched && !this.allowblank && (this.value === '' || this.value == null)) {
-        classObj = { 'input-control-error': true };
+        classObj = this.getCssClass();
         this.isValid = false;
         this.isComponentValid = false;
-      } else if (this.minlength !== null && this.minlength !== 0) {
-        if (this.value && (this.value.length >= this.minlength)) {
-          this.isValid = true;
-          this.isComponentValid = true;
-        } else {
-          classObj = { 'input-control-error': true };
-          this.isValid = false;
-          this.isComponentValid = false;
-        }
+      } else if (this.minlength != null && this.minlength !== 0) {
+        classObj = this.minMaxValidation();
       } else {
-        classObj = {
-          'input-control-error': inp.invalid && (inp.dirty || inp.touched),
-          'input-control-success': inp.valid && (inp.dirty || inp.touched),
-        };
-        if (inp.valid) {
-          this.isValid = true;
-          this.isComponentValid = true;
-        }
+        classObj = this.otherValidation(inp);
       }
     } else {
+      this.isValid = true;
+      this.isComponentValid = true;
+    }
+    return classObj;
+  }
+
+  // If inner value is black or null
+  noInnerValue(inp: any) {
+    let classObj;
+    if (inp.touched) {
+      classObj = this.getCssClass();
+      this.isValid = false;
+      this.isComponentValid = false;
+    } else {
+      this.isValid = false;
+      this.isComponentValid = false;
+    }
+    return classObj;
+  }
+
+  // Min Max Validation
+  minMaxValidation() {
+    let classObj;
+    if (this.value && (this.value.length >= this.minlength)) {
+      this.isValid = true;
+      this.isComponentValid = true;
+    } else {
+      classObj = this.getCssClass();
+      this.isValid = false;
+      this.isComponentValid = false;
+    }
+    return classObj;
+  }
+
+  // Else Block for validations
+  otherValidation(inp: any) {
+    let classObj;
+    classObj = {
+      'input-control-error': inp.invalid && (inp.dirty || inp.touched),
+      'input-control-success': inp.valid && (inp.dirty || inp.touched),
+    };
+    if (inp.valid) {
       this.isValid = true;
       this.isComponentValid = true;
     }

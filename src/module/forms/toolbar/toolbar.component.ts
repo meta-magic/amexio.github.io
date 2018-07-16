@@ -52,8 +52,8 @@ description : This will seperate the toolbar.
 
   ngAfterContentInit() {
     this.toolCollection = this.queryTool.toArray();
-    for (let i = 0; i < this.toolCollection.length; i++) {
-      this.toolCollection[i]['position'] = this.getToolbaritemposition(this.toolCollection[i]['position']);
+    for (const i of this.toolCollection) {
+      [i]['position'] = this.getToolbaritemposition([i]['position']);
     }
   }
   getToolbaritemposition(position: any): any {
@@ -73,12 +73,12 @@ description : This will seperate the toolbar.
   }
   onToolClick(tool: any) {
     if (!tool.disabled) {
-      for (let i = 0; i < this.toolCollection.length; i++) {
-        if (this.toolCollection[i] === tool) {
-          this.toolCollection[i]['active'] = true;
+      for (const i of this.toolCollection) {
+        if ([i] === tool) {
+          [i]['active'] = true;
           this.onClick.emit(tool);
         } else {
-          this.toolCollection[i]['active'] = false;
+          [i]['active'] = false;
         }
       }
     }

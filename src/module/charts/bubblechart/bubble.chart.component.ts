@@ -11,20 +11,20 @@
  *
  */
 
-  /*
- Component Name : Amexio bubble chart
- Component Selector : <amexio-chart-bubble>
- Component Description : A bubble chart is used to visualize a data set with two to four dimensions.
- The first two dimensions are visualized as coordinates, the third as color and the fourth as size.
+/*
+Component Name : Amexio bubble chart
+Component Selector : <amexio-chart-bubble>
+Component Description : A bubble chart is used to visualize a data set with two to four dimensions.
+The first two dimensions are visualized as coordinates, the third as color and the fourth as size.
 */
-import {AfterContentInit, Component, ContentChildren, ElementRef, Input, OnInit, QueryList, ViewChild} from '@angular/core';
-import {ChartAreaComponent} from '../chartarea/chart.area.component';
-import {ChartLegendComponent} from '../chartlegend/chart.legend.component';
-import {ChartTitleComponent} from '../charttitle/chart.title.component';
-import {HorizontalAxisComponent} from '../horizontalaxis/chart.horizontalaxis.component';
-import {VerticalAxisComponent} from '../verticalaxis/chart.verticalaxis.component';
+import { AfterContentInit, Component, ContentChildren, ElementRef, Input, OnInit, QueryList, ViewChild } from '@angular/core';
+import { ChartAreaComponent } from '../chartarea/chart.area.component';
+import { ChartLegendComponent } from '../chartlegend/chart.legend.component';
+import { ChartTitleComponent } from '../charttitle/chart.title.component';
+import { HorizontalAxisComponent } from '../horizontalaxis/chart.horizontalaxis.component';
+import { VerticalAxisComponent } from '../verticalaxis/chart.verticalaxis.component';
 
-import {ChartLoaderService} from '../chart.loader.service';
+import { ChartLoaderService } from '../chart.loader.service';
 
 declare var google: any;
 @Component({
@@ -139,7 +139,7 @@ declare var google: any;
   `],
 })
 
-export class BubbleChartComponent  implements AfterContentInit, OnInit {
+export class BubbleChartComponent implements AfterContentInit, OnInit {
 
   private options: any;
   private bubbleData: any;
@@ -170,7 +170,7 @@ description : height of chart
   showChart: boolean;
   _data: any;
 
-  get data(): any{
+  get data(): any {
     return this._data;
   }
 
@@ -183,7 +183,7 @@ default : none
 description : Local data for AreaChart
 */
   @Input('data')
-  set data(data: any){
+  set data(data: any) {
     if (data) {
       this._data = data;
       this.showChart = true;
@@ -219,7 +219,7 @@ description : sets background color
 
   @ContentChildren(ChartTitleComponent) chartTitleComp: QueryList<ChartTitleComponent>;
 
-  @ContentChildren(ChartAreaComponent)  chartAreaComp: QueryList<ChartAreaComponent>;
+  @ContentChildren(ChartAreaComponent) chartAreaComp: QueryList<ChartAreaComponent>;
 
   @ContentChildren(HorizontalAxisComponent) horizontalComp: QueryList<HorizontalAxisComponent>;
 
@@ -256,42 +256,17 @@ description : sets background color
       this.bubbleData = google.visualization.arrayToDataTable(this._data);
       this.options = {
         title: this.chartTitleComponent ? this.chartTitleComponent.title : null,
-        titleTextStyle: this.chartTitleComponent ? {
-          color: this.chartTitleComponent.color ? this.chartTitleComponent.color : null,
-          fontName: this.chartTitleComponent.fontname ? this.chartTitleComponent.fontname : null,
-          fontsize: this.chartTitleComponent.fontsize ? this.chartTitleComponent.fontsize : null,
-          bold: this.chartTitleComponent.bold ? this.chartTitleComponent.bold : null,
-          italic: this.chartTitleComponent.italic ? this.chartTitleComponent.italic : null,
-        } : null,
+        titleTextStyle: this.chartTitleComponent ? this.createTitleTextStyle() : null,
         backgroundcolor: this.backgroundcolor,
-        legend: this.chartLengendComponent ? {
-          position: this.chartLengendComponent.position ? this.chartLengendComponent.position : null,
-          // this work only in chart position is top
-          maxLines: this.chartLengendComponent.maxlines ? this.chartLengendComponent.maxlines : null,
-          textStyle: {
-            color: this.chartLengendComponent.color ? this.chartLengendComponent.color : null,
-            fontsize: this.chartLengendComponent.fontsize ? this.chartLengendComponent.fontsize : null,
-            fontName: this.chartLengendComponent.fontname ? this.chartLengendComponent.fontname : null,
-            bold: this.chartLengendComponent.bold ? this.chartLengendComponent.bold : null,
-            alignment: this.chartLengendComponent.alignment ? this.chartLengendComponent.alignment : null,
-          },
-        } : 'none',
-        chartArea: this.chartAreaComponent ? {
-          backgroundcolor: this.chartAreaComponent.chartbackgroundcolor ? this.chartAreaComponent.chartbackgroundcolor : null,
-          left: this.chartAreaComponent.leftposition ? this.chartAreaComponent.leftposition : null,
-          top: this.chartAreaComponent.topposition ? this.chartAreaComponent.topposition : null,
-          height: this.chartAreaComponent.chartheight ? this.chartAreaComponent.chartheight : null,
-          width: this.chartAreaComponent.chartwidth ? this.chartAreaComponent.chartwidth : null,
-        } : null,
-        vAxis: this.verticalComponent ? {title: this.verticalComponent.title ? this.verticalComponent.title : null,
-          titleTextStyle: {color: this.verticalComponent.titlecolor ? this.verticalComponent.titlecolor : null}} : null,
-        hAxis: this.horizontalComponent ? {title: this.horizontalComponent.title ? this.horizontalComponent.title : null,
-          titleTextStyle: {color: this.horizontalComponent.titlecolor ? this.horizontalComponent.titlecolor : null}} : null,
-        bubble: {textStyle: {fontsize: 11}},
-        axiscolor: {colors: this.axiscolor},
+        legend: this.chartLengendComponent ? this.createChartLegend() : 'none',
+        chartArea: this.chartAreaComponent ? this.createChartBackground() : null,
+        vAxis: this.verticalComponent ? this.createChartVertical() : null,
+        hAxis: this.horizontalComponent ? this.createchartHorizontal() : null,
+        bubble: { textStyle: { fontsize: 11 } },
+        axiscolor: { colors: this.axiscolor },
       };
       if (this.bubbleData) {
-        this.chart =  new google.visualization.BubbleChart(this.bubblechart.nativeElement);
+        this.chart = new google.visualization.BubbleChart(this.bubblechart.nativeElement);
         this.hasLoaded = true;
         this.chart.draw(this.bubbleData, this.options);
         google.visualization.events.addListener(this.chart, 'click', this.click);
@@ -299,6 +274,52 @@ description : sets background color
 
     }
 
+  }
+  createTitleTextStyle() {
+    return {
+      color: this.chartTitleComponent.color ? this.chartTitleComponent.color : null,
+      fontName: this.chartTitleComponent.fontname ? this.chartTitleComponent.fontname : null,
+      fontsize: this.chartTitleComponent.fontsize ? this.chartTitleComponent.fontsize : null,
+      bold: this.chartTitleComponent.bold ? this.chartTitleComponent.bold : null,
+      italic: this.chartTitleComponent.italic ? this.chartTitleComponent.italic : null,
+
+    };
+  }
+  createChartLegend() {
+    return {
+      position: this.chartLengendComponent.position ? this.chartLengendComponent.position : null,
+      // this work only in chart position is top
+      maxLines: this.chartLengendComponent.maxlines ? this.chartLengendComponent.maxlines : null,
+      textStyle: {
+        color: this.chartLengendComponent.color ? this.chartLengendComponent.color : null,
+        fontsize: this.chartLengendComponent.fontsize ? this.chartLengendComponent.fontsize : null,
+        fontName: this.chartLengendComponent.fontname ? this.chartLengendComponent.fontname : null,
+        bold: this.chartLengendComponent.bold ? this.chartLengendComponent.bold : null,
+        alignment: this.chartLengendComponent.alignment ? this.chartLengendComponent.alignment : null,
+      },
+    };
+
+  }
+  createChartBackground() {
+    return {
+      backgroundcolor: this.chartAreaComponent.chartbackgroundcolor ? this.chartAreaComponent.chartbackgroundcolor : null,
+      left: this.chartAreaComponent.leftposition ? this.chartAreaComponent.leftposition : null,
+      top: this.chartAreaComponent.topposition ? this.chartAreaComponent.topposition : null,
+      height: this.chartAreaComponent.chartheight ? this.chartAreaComponent.chartheight : null,
+      width: this.chartAreaComponent.chartwidth ? this.chartAreaComponent.chartwidth : null,
+    };
+  }
+  createChartVertical() {
+    return{
+      title: this.verticalComponent.title ? this.verticalComponent.title : null,
+      titleTextStyle: { color: this.verticalComponent.titlecolor ? this.verticalComponent.titlecolor : null },
+    };
+  }
+  createchartHorizontal() {
+    return{
+      title: this.horizontalComponent.title ? this.horizontalComponent.title : null,
+      titleTextStyle: { color: this.horizontalComponent.titlecolor ? this.horizontalComponent.titlecolor : null },
+    };
   }
 
   click(e: any) {
