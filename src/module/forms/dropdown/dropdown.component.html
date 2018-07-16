@@ -12,7 +12,7 @@
   <input type="text" class="input-control"
          [value]="getDisplayText()"
          [ngClass]="{'input-control-error' : inp.invalid && (inp.dirty || inp.touched),'input-control-success' : inp.valid && (inp.dirty || inp.touched)}"
-         (blur)="onblur()"
+         (blur)="onblur($event)"
          (click)="onDropDownClick($event)"
          (focus)="onFocus(rootDiv)"
          (input)="onInput(inp)"
