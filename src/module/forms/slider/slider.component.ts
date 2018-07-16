@@ -8,12 +8,6 @@ import { Component, ElementRef, EventEmitter, forwardRef, Input, NgZone, OnDestr
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DomHandler } from './slider.handler';
 
-export const SLIDER_VALUE_ACCESSOR: any = {
-  provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => AmexioSliderComponent),
-  multi: true,
-};
-
 @Component({
   selector: 'amexio-slider',
   template: `
@@ -47,7 +41,9 @@ export const SLIDER_VALUE_ACCESSOR: any = {
             [ngStyle]="{'left': rangeEndLeft, 'bottom': rangeEndBottom}" [ngClass]="{'ui-slider-handle-active':handleIndex==1}"></span>
     </div>
   `,
-  providers: [SLIDER_VALUE_ACCESSOR],
+  providers: [{
+    provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioSliderComponent), multi: true,
+  }],
 })
 export class AmexioSliderComponent implements OnDestroy, ControlValueAccessor {
 
