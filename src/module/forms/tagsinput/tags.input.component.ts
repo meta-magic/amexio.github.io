@@ -2,26 +2,26 @@
  * Created by pratik on 20/12/17.
  */
 
- /*
- Component Name : Amexio Tag Input
- Component Selector :  <amexio-tag-input>
- Component Description : Tags based multi input with typeahead facility.
+/*
+Component Name : Amexio Tag Input
+Component Selector :  <amexio-tag-input>
+Component Description : Tags based multi input with typeahead facility.
 */
 import {
   Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, Renderer2,
   ViewChild,
 } from '@angular/core';
 
-import {CommonDataService} from '../../services/data/common.data.service';
+import { CommonDataService } from '../../services/data/common.data.service';
 
-import {noop} from 'rxjs/index';
+import { noop } from 'rxjs/index';
 
 @Component({
   selector: 'amexio-tag-input', templateUrl: './tags.input.component.html',
 })
 
 export class AmexioTagsInputComponent implements OnInit {
-     /*
+  /*
 Properties
 name : field-label
 datatype : string
@@ -39,7 +39,7 @@ default :
 description : Sets if field is required
 */
   @Input('allow-blank') allowblank: boolean;
-   /*
+  /*
 Properties
 name : data
 datatype : string
@@ -48,34 +48,34 @@ default :
 description : Input data source
 */
   @Input() data: any;
- /*
-Properties
-name : data-reader
-datatype : string
-version : 4.0 onwards
-default :
-description : Key in JSON datasource for records
-*/
+  /*
+ Properties
+ name : data-reader
+ datatype : string
+ version : 4.0 onwards
+ default :
+ description : Key in JSON datasource for records
+ */
   @Input('data-reader') datareader: string;
-/*
-Properties
-name : http-method
-datatype : string
-version : 4.0 onwards
-default :
-description : Type of HTTP call, POST,GET.
-*/
+  /*
+  Properties
+  name : http-method
+  datatype : string
+  version : 4.0 onwards
+  default :
+  description : Type of HTTP call, POST,GET.
+  */
   @Input('http-method') httpmethod: string;
- /*
-Properties
-name : http-url
-datatype : string
-version : 4.0 onwards
-default :
-description : REST url for fetching datasource.
-*/
+  /*
+ Properties
+ name : http-url
+ datatype : string
+ version : 4.0 onwards
+ default :
+ description : REST url for fetching datasource.
+ */
   @Input('http-url') httpurl: string;
-   /*
+  /*
 Properties
 name : display-field
 datatype : string
@@ -84,7 +84,7 @@ default :
 description : Name of key inside response data to display on ui.
 */
   @Input('display-field') displayfield: string;
-   /*
+  /*
 Properties
 name : value-field
 datatype : string
@@ -135,7 +135,7 @@ default :
 description : Set enable / disable popover.
 */
   @Input('enable-popover') enablepopover: boolean;
-   /*
+  /*
 Properties
 name : key
 datatype : string
@@ -143,34 +143,34 @@ version : 4.0 onwards
 default :
 description : Key as input to tags
 */
-@Input() key: any;
-/*
-Properties
-name : trigger-char
-datatype : number
-version : 4.0 onwards
-default :
-description : Sets the trigger char length
-*/
-@Input('trigger-char') triggerchar: number;
+  @Input() key: any;
+  /*
+  Properties
+  name : trigger-char
+  datatype : number
+  version : 4.0 onwards
+  default :
+  description : Sets the trigger char length
+  */
+  @Input('trigger-char') triggerchar: number;
 
- /*
-Properties
-name : has-label
-datatype : boolean
-version : 4.0 onwards
-default : false
-description : flag to set label
-*/
+  /*
+ Properties
+ name : has-label
+ datatype : boolean
+ version : 4.0 onwards
+ default : false
+ description : flag to set label
+ */
   @Input('has-label') haslabel = true;
- /*
-Events
-name : input
-datatype : any
-version : none
-default :
-description :	On input event field.
-*/
+  /*
+ Events
+ name : input
+ datatype : any
+ version : none
+ default :
+ description :	On input event field.
+ */
   @Output() input: any = new EventEmitter<any>();
   /*
 Events
@@ -237,7 +237,7 @@ description : On field focus event
 
   @ViewChild('tagDropRef') tagDropRef: any;
 
-  @ViewChild('dropdownitems', {read: ElementRef}) public dropdownitems: ElementRef;
+  @ViewChild('dropdownitems', { read: ElementRef }) public dropdownitems: ElementRef;
 
   isComponentValid: boolean;
 
@@ -292,7 +292,7 @@ description : On field focus event
       });
       if (this.filteredResult.length > 0) {
         this.showToolTip = true;
-       } else {
+      } else {
         this.showToolTip = false;
       }
     }
@@ -305,42 +305,8 @@ description : On field focus event
     if (this.selectedindex > this.filteredResult.length) {
       this.selectedindex = 0;
     }
-    if (event.keyCode === 40 || event.keyCode === 38  && this.selectedindex < this.filteredResult.length) {
-      if (!this.showToolTip) {
-        this.showToolTip = true;
-      }
-      let prevselectedindex = 0;
-      if (this.selectedindex === 0) {
-        this.selectedindex = 1;
-      } else {
-        prevselectedindex = this.selectedindex;
-        if (event.keyCode === 40) {
-          this.selectedindex++;
-          if ((this.selectedindex > 5 )) {
-            this.dropdownitems.nativeElement.scroll(0, this.scrollposition);
-            this.scrollposition = this.scrollposition + 30;
-          }
-        } else if (event.keyCode === 38) {
-          this.selectedindex--;
-          if (this.scrollposition >= 0 && this.selectedindex > 1) {
-            this.dropdownitems.nativeElement.scroll(0, this.scrollposition);
-            this.scrollposition = this.scrollposition - 30;
-          }
-          if (this.selectedindex === 1) {
-            this.scrollposition = 30;
-          }
-
-          if (this.selectedindex <= 0) {
-          }
-        }
-      }
-
-      if (this.filteredResult[this.selectedindex]) {
-        this.filteredResult[this.selectedindex].selected = true;
-      }
-      if (this.filteredResult[prevselectedindex]) {
-        this.filteredResult[prevselectedindex].selected = false;
-      }
+    if (event.keyCode === 40 || event.keyCode === 38 && this.selectedindex < this.filteredResult.length) {
+      this.keyUpDownMethod(event);
     }
 
     if (event.keyCode === 13 && this.filteredResult[this.selectedindex]) {
@@ -349,8 +315,52 @@ description : On field focus event
 
   }
 
+  // Method when up arrow or down arrow is pressed
+
+  keyUpDownMethod(event: any) {
+    if (!this.showToolTip) {
+      this.showToolTip = true;
+    }
+    let prevselectedindex = 0;
+    if (this.selectedindex === 0) {
+      this.selectedindex = 1;
+    } else {
+      prevselectedindex = this.selectedindex;
+      if (event.keyCode === 40) {
+        this.selectedindex++;
+        if ((this.selectedindex > 5)) {
+          this.dropdownitems.nativeElement.scroll(0, this.scrollposition);
+          this.scrollposition = this.scrollposition + 30;
+        }
+      } else if (event.keyCode === 38) {
+        this.keyUpMethod();
+      }
+    }
+
+    if (this.filteredResult[this.selectedindex]) {
+      this.filteredResult[this.selectedindex].selected = true;
+    }
+    if (this.filteredResult[prevselectedindex]) {
+      this.filteredResult[prevselectedindex].selected = false;
+    }
+  }
+
+  // Method when keyCode is 38 i.e Up
+  keyUpMethod() {
+    this.selectedindex--;
+    if (this.scrollposition >= 0 && this.selectedindex > 1) {
+      this.dropdownitems.nativeElement.scroll(0, this.scrollposition);
+      this.scrollposition = this.scrollposition - 30;
+    }
+    if (this.selectedindex === 1) {
+      this.scrollposition = 30;
+    }
+
+    if (this.selectedindex <= 0) {
+    }
+  }
   showAllData(activerow: number) {
-    let i = 0 ;
+    let i = 0;
     this.viewData.forEach((item: any) => {
       if (item != null) {
         if (i === activerow) {
@@ -378,7 +388,7 @@ description : On field focus event
   }
 
   onInput(input: any) {
-      this.input.emit();
+    this.input.emit();
   }
 
   // get accessor
@@ -418,8 +428,8 @@ description : On field focus event
     let responsedata = httpResponse;
     if (this.datareader != null) {
       const dr = this.datareader.split('.');
-      for (let ir = 0; ir < dr.length; ir++) {
-        responsedata = responsedata[dr[ir]];
+      for (let ir of dr) {
+        responsedata = responsedata[ir];
       }
     } else {
       responsedata = httpResponse;

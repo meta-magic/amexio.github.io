@@ -7,20 +7,18 @@ different configurable attributes for validation
 (min/max value, allow blank, custom regex), custom error message, help, custom styles.
 
 */
-import { Component, forwardRef, Input, OnInit} from '@angular/core';
+import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const noop = () => {
 };
 
-export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
-  provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioTextAreaComponent), multi: true,
-};
-
 @Component({
   selector: 'amexio-textarea-input',
   templateUrl: './textarea.component.html',
-  providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
+  providers: [{
+    provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioTextAreaComponent), multi: true,
+  }],
   styleUrls: ['./textarea.component.scss'],
 })
 export class AmexioTextAreaComponent implements ControlValueAccessor, OnInit {
@@ -275,31 +273,21 @@ description : Set enable / disable popover.
     this.onTouchedCallback = fn;
   }
 
+  getCssClass(): any {
+    return { 'input-control-error': true };
+  }
+
   getValidationClasses(inp: any): any {
     let classObj;
     if (!this.allowblank) {
       if (this.innerValue === null || this.innerValue === '') {
-        if (inp.touched) {
-          classObj = { 'input-control-error': true };
-          this.isValid = false;
-          this.isComponentValid = false;
-        } else {
-          this.isValid = false;
-          this.isComponentValid = false;
-        }
+        this.noInnerValue(inp);
       } else if (inp.touched && !this.allowblank && (this.value === '' || this.value === null)) {
-        classObj = { 'input-control-error': true };
+        classObj = this.getCssClass();
         this.isValid = false;
         this.isComponentValid = false;
       } else {
-        classObj = {
-          'input-control-error': inp.invalid && (inp.dirty || inp.touched),
-          'input-control-success': inp.valid && (inp.dirty || inp.touched),
-        };
-        if (inp.valid) {
-          this.isValid = true;
-          this.isComponentValid = true;
-        }
+        this.otherValidation(inp);
       }
     } else {
       this.isValid = true;
@@ -313,4 +301,30 @@ description : Set enable / disable popover.
     this.getValidationClasses(input);
   }
 
+  noInnerValue(inp: any) {
+    let classObj;
+    if (inp.touched) {
+      classObj = this.getCssClass();
+      this.isValid = false;
+      this.isComponentValid = false;
+    } else {
+      this.isValid = false;
+      this.isComponentValid = false;
+    }
+    return classObj;
+  }
+
+  // Else Block for validations
+  otherValidation(inp: any) {
+    let classObj;
+    classObj = {
+      'input-control-error': inp.invalid && (inp.dirty || inp.touched),
+      'input-control-success': inp.valid && (inp.dirty || inp.touched),
+    };
+    if (inp.valid) {
+      this.isValid = true;
+      this.isComponentValid = true;
+    }
+    return classObj;
+  }
 }
