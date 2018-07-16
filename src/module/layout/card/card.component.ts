@@ -10,7 +10,8 @@ body and actions user has configured
 .
 */
 
-import { Component, ContentChildren, ElementRef, EventEmitter, Input, OnInit, Output, QueryList, ViewChild } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, ContentChildren,
+  ElementRef, EventEmitter, Input, OnInit, Output, QueryList, ViewChild } from '@angular/core';
 import { AmexioHeaderComponent } from '../../panes/header/pane.action.header';
 import { AmexioFooterComponent } from './../../panes/action/pane.action.footer';
 import { AmexioBodyComponent } from './../../panes/body/pane.action.body';
@@ -35,7 +36,7 @@ import { AmexioBodyComponent } from './../../panes/body/pane.action.body';
   </div>
 `,
 })
-export class AmexioCardComponent implements OnInit {
+export class AmexioCardComponent implements AfterContentInit, AfterViewInit, OnInit {
 
   /*
   Properties
@@ -85,7 +86,7 @@ version : 4.0 onwards
 default : true
 description : User can bind variable to this and hide/unhide card based on requirement..
 */
-  @Input() show: boolean = true;
+  @Input() show = true;
 
   /*
 Properties
