@@ -620,7 +620,7 @@ description : Set enable / disable popover.
   //Set touched on blur
   onblur(event:any) {
 
-      if(event.target && event.target.value && this.filteredOptions.length === 1){
+      if(event.target && event.target.value && this.filteredOptions && this.filteredOptions.length === 1){
         const fvalue = event.target.value;
         let row = this.filteredOptions[0];
         const rvalue = row[this.valuefield]; 
