@@ -79,10 +79,22 @@ description : Font color of label
   tabId: number;
   @ViewChild('target', { read: ViewContainerRef }) public target: any;
 
+  @ViewChild('tabpill', { read: ViewContainerRef }) public tabpill: any;
+
   constructor() {
     this.tabId = Math.floor(Math.random() * 90000) + 10000;
   }
 
   ngOnInit() {
   }
+  
+  destroy(){
+    if(this.tabpill && this.tabpill.element 
+      && this.tabpill.element.nativeElement
+      && this.tabpill.element.nativeElement.parentElement){
+        this.tabpill.element.nativeElement.parentElement.remove();
+      }
+  }  
+  
+  
 }
