@@ -457,8 +457,9 @@ description : If "true" add two context menus i.e close All and close Others tab
       tab.active = false;
       if (tab.tabId === tabNode.tabId) {
         tabHighlightIndex = index;
+        tab.destroy();
       }
-      if (tab.tabId !== tabNode.tabId) {
+      else if (tab.tabId !== tabNode.tabId) {
         newTab.push(tab);
       }
       index++;
