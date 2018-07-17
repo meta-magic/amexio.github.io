@@ -30,33 +30,29 @@ import {
 import { AmexioTabActionComponent } from './tab.action';
 import { AmexioTabPillComponent } from './tab.pill.component';
 
-export namespace AmexioTopColorMap {
-  export const COMPONENT_CLASS_MAP: any = {
-    red: 'amexio-top-tab-red',
-    green: 'amexio-top-tab-green',
-    purple: 'amexio-top-tab-purple',
-    blue: 'amexio-top-tab-blue',
-    brown: 'amexio-top-tab-brown',
-    yellow: 'amexio-top-tab-yellow',
-    black: 'amexio-top-tab-black',
-    pink: 'amexio-top-tab-pink',
-    orange: 'amexio-top-tab-orange',
-  };
-}
+export const TOP_COMPONENT_CLASS_MAP: any = {
+  red: 'amexio-top-tab-red',
+  green: 'amexio-top-tab-green',
+  purple: 'amexio-top-tab-purple',
+  blue: 'amexio-top-tab-blue',
+  brown: 'amexio-top-tab-brown',
+  yellow: 'amexio-top-tab-yellow',
+  black: 'amexio-top-tab-black',
+  pink: 'amexio-top-tab-pink',
+  orange: 'amexio-top-tab-orange',
+};
 
-export namespace AmexioBottomColorMap {
-  export const COMPONENT_CLASS_MAP: any = {
-    red: 'amexio-bottom-tab-red',
-    green: 'amexio-bottom-tab-green',
-    purple: 'amexio-bottom-tab-purple',
-    blue: 'amexio-bottom-tab-blue',
-    brown: 'amexio-bottom-tab-brown',
-    yellow: 'amexio-bottom-tab-yellow',
-    black: 'amexio-bottom-tab-black',
-    pink: 'amexio-bottom-tab-pink',
-    orange: 'amexio-bottom-tab-orange',
-  };
-}
+export const BOTTOM_COMPONENT_CLASS_MAP: any = {
+  red: 'amexio-bottom-tab-red',
+  green: 'amexio-bottom-tab-green',
+  purple: 'amexio-bottom-tab-purple',
+  blue: 'amexio-bottom-tab-blue',
+  brown: 'amexio-bottom-tab-brown',
+  yellow: 'amexio-bottom-tab-yellow',
+  black: 'amexio-bottom-tab-black',
+  pink: 'amexio-bottom-tab-pink',
+  orange: 'amexio-bottom-tab-orange',
+};
 
 @Component({
   selector: 'amexio-tab-view',
@@ -397,9 +393,9 @@ description : If "true" add two context menus i.e close All and close Others tab
     const tabWidth = this.tabCollection.length;
     for (let i = 0; i < tabWidth; i++) {
       if (this.tabPosition === 'top') {
-        this.tabCollection[i].amexiocolor = AmexioTopColorMap.COMPONENT_CLASS_MAP[this.tabCollection[i].amexiocolor];
+        this.tabCollection[i].amexiocolor = TOP_COMPONENT_CLASS_MAP[this.tabCollection[i].amexiocolor];
       } else {
-        this.tabCollection[i].amexiocolor = AmexioBottomColorMap.COMPONENT_CLASS_MAP[this.tabCollection[i].amexiocolor];
+        this.tabCollection[i].amexiocolor = BOTTOM_COMPONENT_CLASS_MAP[this.tabCollection[i].amexiocolor];
       }
       if (this.closable) {
         if (this.tabCollection[i].closable === null || this.tabCollection[i].closable === true) {
