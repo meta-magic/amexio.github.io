@@ -440,8 +440,9 @@ description : This flag will make tab closable.
       tab.active = false;
       if (tab.tabId == tabNode.tabId) {
         tabHighlightIndex = index;
+         tab.destroy();
       }
-      if (tab.tabId != tabNode.tabId) {
+      else if (tab.tabId != tabNode.tabId) {
         newTab.push(tab);
       }
       index++;
