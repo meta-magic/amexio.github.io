@@ -1,7 +1,7 @@
 /*
- Component Name : Amexio Email Input
- Component Selector :  <amexio-email-input>
- Component Description : Email input field
+ Component Name : Amexio Password Input
+ Component Selector :  <amexio-password-input>
+ Component Description : Password input field
 */
 import {Component, EventEmitter, forwardRef, Input, Output} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
@@ -59,6 +59,8 @@ description : Sets if field is required
   @Input('allow-blank') allowblank: boolean;
 
   helpInfoMsg: string;
+
+  componentClass : any;
 
   isValid: boolean;
 
@@ -276,20 +278,16 @@ description : On field value change event
   }
 
   //Set touched on blur
-  onblur() {
+  onblur(input:any) {
     this.onTouchedCallback();
     this.showToolTip = false;
-    if (this.value && (this.value.length < this.minlength)) {
-      this.isValid = false;
-    } else {
-      this.isValid = true;
-    }
+    this.componentClass = this.validateClass(input);
     this.onBlur.emit(this.value);
   }
 
   onInput(input:any) {
     // this.isComponentValid = input.valid;
-    this.getValidationClasses(input);
+    this.componentClass = this.validateClass(input);
     this.input.emit(this.value);
   }
 
@@ -325,7 +323,7 @@ description : On field value change event
     this.isComponentValid.emit(this.allowblank);
   }
 
-  getValidationClasses(inp: any): any {
+  validateClass(inp: any): any {
     let classObj;
     if (!this.allowblank) {
       if (this.innerValue == null || this.innerValue == '') {
