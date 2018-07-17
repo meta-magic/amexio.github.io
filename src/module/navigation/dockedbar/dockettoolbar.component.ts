@@ -10,7 +10,7 @@
  * Created by Ketan Gote on 8/21/17.
  */
 
-import {Component, ContentChildren, Input, OnInit, QueryList} from '@angular/core';
+import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from '@angular/core';
 import {DockbarComponent} from './dockbaritem';
 
 @Component({
@@ -49,7 +49,7 @@ import {DockbarComponent} from './dockbaritem';
   `,
 
 })
-export class DockedBarToolComponent implements OnInit {
+export class DockedBarToolComponent implements AfterContentInit, OnInit {
 
   @ContentChildren(DockbarComponent) dockbars: QueryList<DockbarComponent>;
 
