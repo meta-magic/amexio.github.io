@@ -14,7 +14,7 @@ import {AmexioBorderLayoutItemComponent} from './border/borderlayoutitem.compone
 import {AmexioBoxComponent} from './box/box.component';
 import {AmexioCardComponent} from './card/card.component';
 import {AmexioColumnComponent} from './columns/column.component';
-import {AmexioIconLayout} from './icon/icon.component';
+import {AmexioIconLayoutComponent} from './icon/icon.component';
 import {AmexioRowComponent} from './rows/row.component';
 
 import {CommonDataService} from '../services/data/common.data.service';
@@ -42,7 +42,7 @@ const LAYOUT_COMPONENTS = [
   AmexioBoxComponent,
   AmexioAccordionTabComponent,
   AmexioAccordionComponent,
-  AmexioIconLayout,
+  AmexioIconLayoutComponent,
 ];
 
 @NgModule({

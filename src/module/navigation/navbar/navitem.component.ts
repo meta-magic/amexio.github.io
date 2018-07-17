@@ -18,14 +18,11 @@ import { AmexioNavMenuComponent } from './navmenu.component';
 const noop = () => {
 };
 
-export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
-  provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioNavItemComponent), multi: true,
-};
-
 @Component({
   selector: 'amexio-nav-item',
   templateUrl: 'navitem.component.html',
-  providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
+  providers: [{provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioNavItemComponent), multi: true,
+  }],
   encapsulation: ViewEncapsulation.None,
 })
 export class AmexioNavItemComponent implements OnInit , ControlValueAccessor, AfterViewInit, AfterContentInit {
@@ -81,16 +78,18 @@ description : Fire when nav item is clicked, This event is fired when nav item t
 */
   @Output() onNavItemClick: any = new EventEmitter<any>();
 
-  mobilemode: boolean = false;
+  mobilemode = false;
 
-  isAction: boolean = false;
-  isTextField: boolean = false;
-  isMenu: boolean = false;
-  isMenuContainer: boolean = false;
+  isAction = false;
+  isTextField = false;
+  isMenu = false;
+  isMenuContainer = false;
   right: number;
   navbarwidth: number;
   enablerightclass: boolean;
-
+  private innerValue = '';
+  private onTouchedCallback: () => void = noop;
+  private onChangeCallback: (_: any) => void = noop;
   constructor(private elementref: ElementRef) {
 
   }
@@ -124,19 +123,14 @@ description : Fire when nav item is clicked, This event is fired when nav item t
 
   setNavbarWidth(navbarwidth: number) {
     this.navbarwidth = navbarwidth;
-    if (((this.navbarwidth - this.elementref.nativeElement.getBoundingClientRect().left)) < 165) {
-      this.enablerightclass = true;
-    }
+    if (( this.navbarwidth - this.elementref.nativeElement.getBoundingClientRect().left) < 165) {
+      this.enablerightclass = true; }
   }
-
-  /**MODEL BINDING FOR TEXT FIELD **/
-  // The internal dataviews model
-  private innerValue: any = '';
+//  MODEL BINDING FOR TEXT FIELD
+// The internal dataviews model
 
   // Placeholders for the callbacks which are later provided
   // by the Control Value Accessor
-  private onTouchedCallback: () => void = noop;
-  private onChangeCallback: (_: any) => void = noop;
 
   // get accessor
   get value(): any {
