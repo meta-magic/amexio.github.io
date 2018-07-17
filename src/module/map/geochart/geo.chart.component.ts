@@ -8,9 +8,7 @@ Component Description : Data can be plotted on a Map using Amexio's
 AmexioMapModule. All Mapping widgets are available under
 amexio-ng-extensions/maps
  */
-import { AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList } from '@angular/core';
-import { ViewChild } from '@angular/core';
-import { ElementRef } from '@angular/core';
+import { AfterContentInit, Component, ContentChildren, ElementRef, Input, OnInit, QueryList, ViewChild} from '@angular/core';
 import { MapLoaderService } from '../map.loader.service';
 import { MapProperties } from '../mapproperties/map.properties';
 
@@ -201,19 +199,8 @@ export class GeoChartComponent implements AfterContentInit, OnInit {
   drawChart() {
     if (this.showChart) {
       this.geomapData = google.visualization.arrayToDataTable(this._data);
-      this.options = {
-        displayMode: this.countryname ? 'text' : null,
-        region: this.regioncode ? this.regioncode : null,
-        backgroundcolor: this.backgroundcolor ? this.backgroundcolor : null,
-        unusedregioncolor: this.unusedregioncolor ? this.unusedregioncolor : null,
-        chartArea: this.chartAreaComponent ? {
-          backgroundcolor: this.chartAreaComponent.chartbackgroundcolor ? this.chartAreaComponent.chartbackgroundcolor : null,
-          left: this.chartAreaComponent.leftposition ? this.chartAreaComponent.leftposition : null,
-          top: this.chartAreaComponent.topposition ? this.chartAreaComponent.topposition : null,
-          height: this.chartAreaComponent.chartheight ? this.chartAreaComponent.chartheight : null,
-          width: this.chartAreaComponent.chartwidth ? this.chartAreaComponent.chartwidth : null,
-        } : null,
-      };
+      this.showChartExist();
+
       if (this.geomapData) {
         this.chart = new google.visualization.GeoChart(this.geochart.nativeElement);
         this.hasLoaded = true;
@@ -222,6 +209,23 @@ export class GeoChartComponent implements AfterContentInit, OnInit {
       }
     }
   }
+
+  showChartExist() {
+    this.options = {
+      displayMode: this.countryname ? 'text' : null,
+      region: this.regioncode ? this.regioncode : null,
+      backgroundcolor: this.backgroundcolor ? this.backgroundcolor : null,
+      unusedregioncolor: this.unusedregioncolor ? this.unusedregioncolor : null,
+      chartArea: this.chartAreaComponent ? {
+        backgroundcolor: this.chartAreaComponent.chartbackgroundcolor ? this.chartAreaComponent.chartbackgroundcolor : null,
+        left: this.chartAreaComponent.leftposition ? this.chartAreaComponent.leftposition : null,
+        top: this.chartAreaComponent.topposition ? this.chartAreaComponent.topposition : null,
+        height: this.chartAreaComponent.chartheight ? this.chartAreaComponent.chartheight : null,
+        width: this.chartAreaComponent.chartwidth ? this.chartAreaComponent.chartwidth : null,
+      } : null,
+    };
+  }
+
   click(e: any) {
   }
   ngAfterContentInit(): void {
