@@ -64,12 +64,12 @@ description : Fire when nav item is clicked, This event is fired when nav item t
   }
 
   onClick(event: any) {
-      let node = {
-        'title': this.title,
-        'type' : this.type,
-        'icon' : this.icon,
+      const node = {
+        // 'title': this.title,
+        // 'type' : this.type,
+        // 'icon' : this.icon,
       };
-      this.navLinkClick.emit({'data': node, 'event': event});
+      this.navLinkClick.emit({ node, event});
 
   }
 

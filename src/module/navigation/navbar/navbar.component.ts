@@ -50,7 +50,7 @@ version : 4.0 onwards
 default : none
 description : Indicate if side-nav-bar is present
 */
-  @Input('enable-side-nav-position') sidenavspace: boolean = false;
+  @Input('enable-side-nav-position') sidenavspace = false;
 
   @Output() onNavLogoClick: any = new EventEmitter<any>();
 
@@ -68,11 +68,11 @@ description : Indicate if side-nav-bar is present
   @ViewChild('navbaritems3', {read: ElementRef}) public navbaritems3: ElementRef;
 
   navclass: string;
-  toggle: boolean = true;
-  mobilemode: boolean = false;
+  toggle = true;
+  mobilemode = false;
   navitemwidth: number;
   navfixeditem: number;
-  sidenav: boolean = false;
+  sidenav = false;
 
   constructor(public matchMediaService: DeviceQueryService) {
 
@@ -127,16 +127,11 @@ description : Indicate if side-nav-bar is present
   handleDeviceSetting() {
 
     if (this.sidenavspace) {
-      if (this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone()) {
-        this.sidenav = true;
-      }else {
-        this.sidenav = false;
-      }
+      this.sideNavbar();
     }
 
-    let navbarwidth = this.navbar.nativeElement.offsetWidth;
-    let navbarheight = this.navbar.nativeElement.offsetHeight;
-    let navbarfixedheight = this.navbarfixed.nativeElement.offsetHeight;
+    const navbarwidth = this.navbar.nativeElement.offsetWidth;
+    const navbarheight = this.navbar.nativeElement.offsetHeight;
 
     if (!this.navfixeditem) {
       this.navfixeditem = this.navbarfixed.nativeElement.offsetWidth;
@@ -160,7 +155,7 @@ description : Indicate if side-nav-bar is present
       this.navitemwidth = (this.navfixeditem + navbaritems1Width + navbaritems2Width + navbaritems3Width);
     }
 
-    let navbaravailablewidth = (navbarwidth - (this.navfixeditem + this.navitemwidth));
+    const navbaravailablewidth = (navbarwidth - (this.navfixeditem + this.navitemwidth));
 
     if ((navbaravailablewidth < 100 || navbarheight > 100)) {
       this.mobilemode = true;
@@ -172,6 +167,13 @@ description : Indicate if side-nav-bar is present
       this.notifyNavItems(navbarwidth);
     }
 
+  }
+  sideNavbar() {
+    if (this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone()) {
+        this.sidenav = true;
+      }else {
+        this.sidenav = false;
+      }
   }
 
   resize(event: any) {
