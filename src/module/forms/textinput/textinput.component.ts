@@ -28,7 +28,7 @@ Properties
 name : field-label
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : The label of this field
 */
   @Input('field-label') fieldlabel: string;
@@ -37,7 +37,7 @@ Properties
 name : min-length
 datatype : number
 version : 4.0 onwards
-default : 
+default :
 description : Minimum length required for textfield
 */
   @Input('min-length') minlength: number;
@@ -112,7 +112,7 @@ Properties
 name : max-error-msg
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Sets the error message for max validation
 */
   @Input('max-error-msg')
@@ -124,7 +124,7 @@ Properties
 name : place-holder
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Show place-holder inside dropdown component
 */
   @Input('place-holder') placeholder: string;
@@ -151,7 +151,7 @@ Properties
 name : font-style
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Set font-style to field
 */
   @Input('font-style') fontstyle: string;
@@ -160,7 +160,7 @@ Properties
 name : font-family
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Set font-family to field
 */
   @Input('font-family') fontfamily: string;
@@ -169,7 +169,7 @@ Properties
 name : font-size
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Set font-size to field
 */
   @Input('font-size') fontsize: string;
@@ -193,7 +193,7 @@ Properties
 name : pattern
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Apply Reg-ex to the field
 */
   @Input('pattern')
@@ -208,7 +208,7 @@ Properties
 name : enable-popover
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Set enable / disable popover.
 */
   @Input('enable-popover') enablepopover: boolean;
@@ -217,7 +217,8 @@ description : Set enable / disable popover.
 
   isValid: boolean;
 
-  isComponentValid : boolean;
+  // isComponentValid : boolean;
+  @Output() isComponentValid:any=new EventEmitter<any>();
 
   @ViewChild('ref', {read: ElementRef}) public inputRef: ElementRef;
 /*
@@ -225,7 +226,7 @@ Events
 name : onBlur
 datatype : any
 version : 4.0 onwards
-default : 
+default :
 description : On blur event
 */
   @Output() onBlur: any = new EventEmitter<any>();
@@ -234,7 +235,7 @@ Events
 name : input
 datatype : any
 version : none
-default : 
+default :
 description : 	On input event field.
 */
   @Output() input: any = new EventEmitter<any>();
@@ -243,7 +244,7 @@ Events
 name : focus
 datatype : any
 version : none
-default : 
+default :
 description : On focus event field.
 */
   @Output() focus: any = new EventEmitter<any>();
@@ -252,7 +253,7 @@ Events
 name : change
 datatype : any
 version : none
-default : 
+default :
 description : On field value change event
 */
   @Output() change: any = new EventEmitter<any>();
@@ -262,7 +263,8 @@ description : On field value change event
   }
 
   ngOnInit() {
-    this.isComponentValid = this.allowblank;
+    // this.isComponentValid = this.allowblank;
+    this.isComponentValid.emit(this.allowblank);
   }
 
   // The internal dataviews model
@@ -304,13 +306,15 @@ description : On field value change event
   }
 
   onInput(input:any) {
-    this.isComponentValid = input.valid;
+    // this.isComponentValid = input.valid;
     this.getValidationClasses(input);
     this.input.emit(this.value);
   }
 
+   //THIS METHOD IS USED FOR COMPONENT VALIDATION
   onChangeEv() {
     this.change.emit(this.value);
+    this.isComponentValid.emit(this.isValid);
   }
 
   //From ControlValueAccessor interface
@@ -337,23 +341,23 @@ description : On field value change event
          if(inp.touched) {
           classObj = {'input-control-error': true};
           this.isValid = false;
-          this.isComponentValid = false;
+          // this.isComponentValid = false;
         } else {
           this.isValid = false;
-          this.isComponentValid = false;
+          // this.isComponentValid = false;
         }
       }else if (inp.touched && !this.allowblank && (this.value == '' || this.value == null)) {
         classObj = {'input-control-error': true};
         this.isValid = false;
-        this.isComponentValid = false;
+        // this.isComponentValid = false;
       } else if (this.minlength != null && this.minlength != 0) {
         if (this.value && (this.value.length >= this.minlength)) {
           this.isValid = true;
-          this.isComponentValid = true;
+          // this.isComponentValid = true;
         } else {
           classObj = {'input-control-error': true};
           this.isValid = false;
-          this.isComponentValid = false;
+          // this.isComponentValid = false;
         }
       } else {
         classObj = {
@@ -362,12 +366,12 @@ description : On field value change event
         };
         if (inp.valid){
           this.isValid = true;
-          this.isComponentValid = true;
+          // this.isComponentValid = true;
         }
       }
     } else {
       this.isValid = true;
-      this.isComponentValid = true;
+      // this.isComponentValid = true;
     }
     return classObj;
   }

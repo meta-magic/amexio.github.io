@@ -34,7 +34,7 @@ Properties
 name : allow-blank
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Sets if field is required
 */
   @Input('allow-blank') allowblank: boolean;
@@ -43,7 +43,7 @@ Properties
 name : min-value
 datatype : number
 version : 4.0 onwards
-default : 
+default :
 description : Defines the min range limit for number input.
 */
   @Input('min-value') minvalue: number;
@@ -52,7 +52,7 @@ Properties
 name : max-value
 datatype : number
 version : 4.0 onwards
-default : 
+default :
 description : Defines the max range limit for number input.
 */
   @Input('max-value') maxvalue: number;
@@ -91,7 +91,7 @@ Properties
 name : min-error-msg
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Sets the error message for min validation
 */
   @Input('min-error-msg')
@@ -110,7 +110,7 @@ Properties
 name : max-error-msg
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Sets the error message for max validation
 */
   @Input('max-error-msg')
@@ -120,7 +120,8 @@ description : Sets the error message for max validation
 
   isValid: boolean;
 
-  isComponentValid : boolean;
+  // isComponentValid : boolean;
+  @Output() isComponentValid:any=new EventEmitter<any>();
    /*
 Properties
 name : place-holder
@@ -135,7 +136,7 @@ Properties
 name : min-length
 datatype : number
 version : 4.0 onwards
-default : 
+default :
 description : The smallest positive representable number -that is, the positive number closest to zero (without actually being zero). The smallest negative representable number is -min-length.
 */
   @Input('min-length') minlength: number;
@@ -165,7 +166,7 @@ Properties
 name : font-style
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Set font-style to field
 */
   @Input('font-style') fontstyle: string;
@@ -174,7 +175,7 @@ Properties
 name : font-family
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Set font-family to field
 */
   @Input('font-family') fontfamily: string;
@@ -183,7 +184,7 @@ Properties
 name : font-size
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Set font-size to field
 */
   @Input('font-size') fontsize: string;
@@ -207,7 +208,7 @@ Properties
 name : pattern
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Apply Reg-ex to the field
 */
   @Input('pattern')
@@ -219,7 +220,7 @@ Events
 name : input
 datatype : any
 version : none
-default : 
+default :
 description : On input event field.
 */
 @Output() input: any = new EventEmitter<any>();
@@ -229,7 +230,7 @@ Properties
 name : enable-popover
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Set enable / disable popover.
 */
   @Input('enable-popover') enablepopover: boolean;
@@ -270,11 +271,16 @@ description : Set enable / disable popover.
     }
   }
   ngOnInit() {
-    this.isComponentValid = this.allowblank;
+    // this.isComponentValid = this.allowblank;
+    this.isComponentValid.emit(this.allowblank);
+  }
+  //THIS METHOD IS USED FOR COMPONENT VALIDATION
+  onChangeEv() {
+    this.isComponentValid.emit(this.isValid);
   }
 
   onInput(input:any) {
-    this.isComponentValid = input.valid;
+    // this.isComponentValid = input.valid;
     this.getValidationClasses(input);
     this.input.emit();
   }
@@ -371,6 +377,6 @@ description : Set enable / disable popover.
 
   setValidationFlag(flag: boolean) {
     this.isValid = flag;
-    this.isComponentValid = flag;
+    // this.isComponentValid = flag;
   }
 }
