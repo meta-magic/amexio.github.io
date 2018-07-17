@@ -3,7 +3,7 @@
  */
 import { Injectable } from '@angular/core';
 
-let ICON_MAPPING =
+const ICON_MAPPING =
 [
   {
     component: 'datepicker_previous',
