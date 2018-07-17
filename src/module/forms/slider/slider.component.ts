@@ -172,9 +172,9 @@ description : Triggers when slider reaches the end
 
   public handleValues: number[] = [];
 
-  public onModelChange: Function = () => { };
+  public onModelChange: any = () => { };
 
-  public onModelTouched: Function = () => { };
+  public onModelTouched: any = () => { };
 
   constructor(public el: ElementRef, public domHandler: DomHandler, public renderer: Renderer2, private ngZone: NgZone) { }
 
@@ -328,11 +328,11 @@ description : Triggers when slider reaches the end
     this.updateHandleValue();
   }
 
-  registerOnChange(fn: Function): void {
+  registerOnChange(fn: any): void {
     this.onModelChange = fn;
   }
 
-  registerOnTouched(fn: Function): void {
+  registerOnTouched(fn: any): void {
     this.onModelTouched = fn;
   }
 

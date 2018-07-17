@@ -52,7 +52,7 @@ export class DomHandler {
   }
 
   public siblings(element: any): any {
-    return Array.prototype.filter.call(element.parentNode.children, function(child: any) {
+    return Array.prototype.filter.call(element.parentNode.children, (child: any) => {
       return child !== element;
     });
   }
@@ -195,7 +195,7 @@ export class DomHandler {
 
     let last = +new Date();
     let opacity = 0;
-    const tick = function() {
+    const tick = () => {
       opacity = +element.style.opacity.replace(',', '.') + (new Date().getTime() - last) / duration;
       element.style.opacity = opacity;
       last = +new Date();
