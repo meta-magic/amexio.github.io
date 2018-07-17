@@ -36,9 +36,7 @@ export class AmexioLabelComponent implements OnInit {
   default : small
   description : Responsive Font size, large,medium,small & large-bold,medium-bold,small-bold
   */
-  @Input('size') styleClass: 'large' | 'medium' | 'small'
-    | 'bold' | 'large-bold' | 'medium-bold'
-    | 'small-bold';
+  @Input('size') styleClass: string;
   /*
   Properties
   name : font-color
@@ -57,7 +55,7 @@ export class AmexioLabelComponent implements OnInit {
     if (this.styleClass == null) {
       this.styleClass = 'small';
     } else {
-      this.styleClass = this.tempStyleArray.find((x: any) => x === this.styleClass)
+      this.styleClass = this.tempStyleArray.find((x: any) => x === this.styleClass);
     }
   }
   onLabel(event: any) {
