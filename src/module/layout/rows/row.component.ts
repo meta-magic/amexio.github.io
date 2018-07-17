@@ -8,13 +8,13 @@
  Component Description : Amexio uses a series of rows and columns to layout and align content and is fully responsive..
 
 */
-import {Component, OnInit} from '@angular/core';
+import {AfterContentInit, Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'amexio-row', templateUrl: 'row.component.html', styleUrls: ['row.component.scss'],
 })
 
-export class AmexioRowComponent implements OnInit {
+export class AmexioRowComponent implements AfterContentInit, OnInit {
 
   constructor() {
 
