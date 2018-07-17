@@ -368,7 +368,6 @@ headerPadding:string;
             }else{
               c.disabled = true;
             }
-            console.log('BUTTON ENABLED '+c.disabled );
           });
       }
 
