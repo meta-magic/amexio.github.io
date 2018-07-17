@@ -196,10 +196,10 @@ description : Description to display on hover
 
   ngOnInit(): void {
     if (!(this.width || this.height)) {
-      this.cclass = this.cclass + " img-fluid";
+      this.cclass = this.cclass + 'img-fluid';
     }
     if (this.filter) {
-      this.cclass = this.cclass + " image-" + this.filter;
+      this.cclass = this.cclass + 'image-' + this.filter;
     }
     if (this.overlayEffect) {
       this.overlay = true;
@@ -216,7 +216,7 @@ description : Description to display on hover
       }
     if (this.imgTitle) {
       if (this.position) {
-        this.position = 'image-title image-'+ this.position;
+        this.position = 'image-title image-' + this.position;
       } else {
         this.position = 'image-title image-bottom-right';
       }

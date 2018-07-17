@@ -8,9 +8,9 @@
 
 import {Directive, EmbeddedViewRef, Input, OnDestroy, OnInit, TemplateRef, ViewContainerRef} from '@angular/core';
 @Directive({
-  selector: '[amexioTemplate]', host: {},
+  selector: '[amexioTemplate]',
 })
-export class AmexioTemplateComponent  {
+export class AmexioTemplateDirective  {
 
   @Input() type: string;
 

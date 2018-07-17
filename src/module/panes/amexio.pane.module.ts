@@ -10,8 +10,8 @@ import {HttpModule} from '@angular/http';
 import {AmexioFooterComponent} from './action/pane.action.footer';
 import {AmexioBodyComponent} from './body/pane.action.body';
 import {AmexioCarouselComponent} from './carousel/carousel.component';
-import {AmexioTemplateComponent} from './carousel/carousel.template.component';
-import {AmexioTemplateWrapperComponent} from './carousel/carousel.wrapper.template.component';
+import { AmexioTemplateDirective } from './carousel/carousel.template.directive';
+import {AmexioTemplateWrapperDirective} from './carousel/carousel.wrapper.template.directive';
 import {AmexiodialoguePaneComponent} from './dialogue/dialogue.pane.component';
 import {AmexioFieldSetComponent} from './fieldset/fieldset.component';
 import { AmexioFormActionComponent } from './form/form.action.component';
@@ -39,8 +39,8 @@ import {AmexioFormsModule} from '../forms/amexio.forms.module';
 export * from './action/pane.action.footer';
 export * from './body/pane.action.body';
 export * from './carousel/carousel.component';
-export * from './carousel/carousel.template.component';
-export * from './carousel/carousel.wrapper.template.component';
+export * from './carousel/carousel.template.directive';
+export * from './carousel/carousel.wrapper.template.directive';
 export * from './dialogue/dialogue.pane.component';
 export * from './fieldset/fieldset.component';
 export * from './form/form.action.component';
@@ -71,8 +71,8 @@ const PANE_COMPONENTS = [
   AmexioVerticalTabComponent,
   AmexioRightVerticalTabComponent,
   AmexioCarouselComponent,
-  AmexioTemplateComponent,
-  AmexioTemplateWrapperComponent,
+  AmexioTemplateDirective,
+  AmexioTemplateWrapperDirective,
   StepBlockComponent,
   AmexioPanelComponent,
   AmexioIconPaneComponent,

@@ -11,8 +11,8 @@
 import {
   AfterContentInit, Component, ContentChildren, ElementRef, Input, OnInit, QueryList, TemplateRef, ViewChild,
 } from '@angular/core';
-import {AmexioTemplateComponent} from './carousel.template.component';
-import {AmexioTemplateWrapperComponent} from './carousel.wrapper.template.component';
+import {AmexioTemplateDirective} from './carousel.template.directive';
+import {AmexioTemplateWrapperDirective} from './carousel.wrapper.template.directive';
 
 @Component({
   selector: 'amexio-carousel', template: `
@@ -74,7 +74,7 @@ description : Time interval for shuffling images
 
   public itemTemplate: TemplateRef<any>;
 
-  @ContentChildren(AmexioTemplateComponent) templates: QueryList<any>;
+  @ContentChildren(AmexioTemplateDirective) templates: QueryList<any>;
 
   @ViewChild('tab', {read: ElementRef}) public tabs: ElementRef;
 

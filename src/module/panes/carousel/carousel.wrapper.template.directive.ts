@@ -3,7 +3,7 @@ import {Directive, EmbeddedViewRef, Input, OnDestroy, OnInit, TemplateRef, ViewC
 @Directive({
     selector: '[amexioTemplateWrapper]',
   })
-  export class AmexioTemplateWrapperComponent implements OnInit, OnDestroy {
+  export class AmexioTemplateWrapperDirective implements OnInit, OnDestroy {
     /*
   Properties
   name : index
