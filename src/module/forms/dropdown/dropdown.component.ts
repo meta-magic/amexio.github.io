@@ -18,14 +18,13 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CommonDataService } from '../../services/data/common.data.service';
 const noop = () => {
 };
-export const CUSTOM_DROPDOWN_CONTROL_VALUE_ACCESSOR: any = {
-  provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioDropDownComponent), multi: true,
-};
 @Component({
   selector: 'amexio-dropdown',
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.scss'],
-  providers: [CUSTOM_DROPDOWN_CONTROL_VALUE_ACCESSOR],
+  providers: [{
+    provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioDropDownComponent), multi: true,
+  }],
 })
 export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAccessor {
   /*
@@ -334,7 +333,7 @@ description : Set enable / disable popover.
   setData(httpResponse: any) {
     // Check if key is added?
     let responsedata = httpResponse;
-    if (this.datareader !== null) {
+    if (this.datareader != null) {
       this.multiselectValues = [];
       const dr = this.datareader.split('.');
       if (dr) {
@@ -352,7 +351,7 @@ description : Set enable / disable popover.
       this.setDataMultiSelect();
     }
     // Set user selection
-    if (this.value !== null) {
+    if (this.value != null) {
       this.setUserSelection();
     }
     this.maskloader = false;
@@ -447,19 +446,9 @@ description : Set enable / disable popover.
   }
 
   getDisplayText(): string {
-    if (this.value !== null || this.value !== '' || this.value !== '') {
+    if (this.value != null || this.value !== '' || this.value !== '') {
       if (this.multiselect) {
-        this.setMultiSelectData();
-        let multiselectDisplayString: any = '';
-        this.multiselectValues.forEach((row: any) => {
-          multiselectDisplayString === '' ? multiselectDisplayString +=
-            row[this.displayfield] : multiselectDisplayString += ',' + row[this.displayfield];
-        });
-        if (this.multiselectValues.length > 0) {
-          return multiselectDisplayString;
-        } else {
-          return '';
-        }
+        this.getMultiSelectDisplayText();
       } else {
         this.displayValue = '';
         this.filteredOptions.forEach((test) => {
@@ -469,6 +458,19 @@ description : Set enable / disable popover.
         });
         return this.displayValue === undefined ? '' : this.displayValue;
       }
+    }
+  }
+  getMultiSelectDisplayText() {
+    this.setMultiSelectData();
+    let multiselectDisplayString: any = '';
+    this.multiselectValues.forEach((row: any) => {
+      multiselectDisplayString === '' ? multiselectDisplayString +=
+        row[this.displayfield] : multiselectDisplayString += ',' + row[this.displayfield];
+    });
+    if (this.multiselectValues.length > 0) {
+      return multiselectDisplayString;
+    } else {
+      return '';
     }
   }
 
@@ -486,7 +488,7 @@ description : Set enable / disable popover.
   onDropDownSearchKeyUp(event: any) {
     if (this.search) {
       const keyword = event.target.value;
-      if (keyword !== null && keyword !== '' && keyword !== ' ') {
+      if (keyword != null && keyword !== '' && keyword !== ' ') {
         this.filteredOptions = [];
         const search_Term = keyword.toLowerCase();
         this.viewData.forEach((row: any) => {
@@ -558,7 +560,7 @@ description : Set enable / disable popover.
   }
   // set accessor including call the onchange callback
   set value(v: any) {
-    if (v !== null) {
+    if (v != null) {
       if (v !== this.innerValue) {
         this.innerValue = v;
         this.onChangeCallback(v);
@@ -590,7 +592,7 @@ description : Set enable / disable popover.
   // From ControlValueAccessor interface
   writeValue(value: any) {
     if (!this.allowblank) {
-      if (value !== null) {
+      if (value != null) {
         if (value !== this.innerValue) {
           this.writeValueData(value);
           this.innerValue = value;

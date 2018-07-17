@@ -10,13 +10,12 @@ import {Component, EventEmitter, forwardRef, Input, OnInit, Output} from '@angul
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 const noop = () => {
 };
-export const CUSTOM_CHECKBOX_CONTROL_VALUE_ACCESSOR: any = {
-  provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioCheckBoxComponent), multi: true,
-};
+
 @Component({
   selector: 'amexio-checkbox',
   templateUrl: './checkbox.component.html',
-  providers: [CUSTOM_CHECKBOX_CONTROL_VALUE_ACCESSOR],
+  providers: [{provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioCheckBoxComponent), multi: true,
+  }],
   styleUrls: ['./checkbox.component.scss'],
 })
 export class AmexioCheckBoxComponent implements ControlValueAccessor, OnInit {
