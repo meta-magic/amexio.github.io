@@ -60,6 +60,7 @@ description : Sets if field is required
 */
   @Input('allow-blank') allowblank: boolean;
 
+  componentClass: any;
   helpInfoMsg: string;
 
   regEx: RegExp;
@@ -287,27 +288,22 @@ description : On field value change event
       this.onChangeCallback(v);
     }
   }
-
-  //Set touched on blur
-  onblur() {
-    this.onTouchedCallback();
-    this.showToolTip = false;
-    if (this.value && (this.value.length < this.minlength)) {
-      this.isValid = false;
-    } else {
-      this.isValid = true;
-    }
-    this.onBlur.emit(this.value);
-  }
-
   onFocus() {
     this.showToolTip = true;
     this.focus.emit(this.value);
   }
 
+  //Set touched on blur
+  onblur(input:any) {
+    this.onTouchedCallback();
+    this.showToolTip = false;
+    this.componentClass = this.validateComponent(input);
+    this.onBlur.emit(this.value);
+  }
+
+
   onInput(input:any) {
-    // this.isComponentValid = input.valid;
-    this.getValidationClasses(input);
+    this.componentClass = this.validateComponent(input);
     this.input.emit(this.value);
   }
 
@@ -334,30 +330,22 @@ description : On field value change event
     this.onTouchedCallback = fn;
   }
 
-  getValidationClasses(inp: any): any {
+  validateComponent(inp: any): any {
     let classObj;
+
     if (!this.allowblank) {
-      if (this.innerValue == null || this.innerValue == '') {
-         if(inp.touched) {
+      if ((this.innerValue == null || this.innerValue == '') && inp.touched) {
           classObj = {'input-control-error': true};
           this.isValid = false;
-          // this.isComponentValid = false;
-        } else {
-          this.isValid = false;
-          // this.isComponentValid = false;
-        }
       }else if (inp.touched && !this.allowblank && (this.value == '' || this.value == null)) {
         classObj = {'input-control-error': true};
         this.isValid = false;
-        // this.isComponentValid = false;
       } else if (this.minlength != null && this.minlength != 0) {
         if (this.value && (this.value.length >= this.minlength)) {
           this.isValid = true;
-          // this.isComponentValid = true;
         } else {
           classObj = {'input-control-error': true};
           this.isValid = false;
-          // this.isComponentValid = false;
         }
       } else {
         classObj = {
