@@ -7,8 +7,9 @@
  header and column data, displaying summation of numeric column.
  */
 import {
-  AfterContentInit, ChangeDetectorRef, Component, ContentChildren, DoCheck,  ElementRef, EventEmitter, HostListener, Input, OnInit, Output,
-  QueryList} from '@angular/core';
+  AfterContentInit, ChangeDetectorRef, Component, ContentChildren, DoCheck,
+  ElementRef, EventEmitter, HostListener, Input, OnInit, Output, QueryList,
+} from '@angular/core';
 
 import { AmexioGridColumnComponent } from './data.grid.column';
 
@@ -690,13 +691,13 @@ description : Context Menu provides the list of menus on right click of row.
     this.selectedRows = [];
     this.sortBy = -1;
 
-    this.globalFilterOptions = [ {
-        key: 'Start With', value: '1', checkedStatus: 'fa fa-check',
-      }, {
-        key: 'Ends With', value: '2', checkedStatus: '',
-      }, {
-        key: 'Contains', value: '3', checkedStatus: '',
-      }];
+    this.globalFilterOptions = [{
+      key: 'Start With', value: '1', checkedStatus: 'fa fa-check',
+    }, {
+      key: 'Ends With', value: '2', checkedStatus: '',
+    }, {
+      key: 'Contains', value: '3', checkedStatus: '',
+    }];
   }
 
   ngOnInit() {
@@ -913,7 +914,7 @@ description : Context Menu provides the list of menus on right click of row.
         status = false;
       }
     });
-    this.partOfGetGlobalFilteredData() ;
+    this.partOfGetGlobalFilteredData();
   }
 
   filterConditionMethod(filteredObj: any, option: any, opt: any) {
@@ -1014,7 +1015,7 @@ description : Context Menu provides the list of menus on right click of row.
     let responsedata = httpResponse;
     if (this.datareader != null) {
       const dr = this.datareader.split('.');
-      for (const ir of dr ) {
+      for (const ir of dr) {
         responsedata = responsedata[ir];
       }
     } else {
@@ -1111,16 +1112,16 @@ description : Context Menu provides the list of menus on right click of row.
     let condition: any;
     filteredObj.forEach((filterOpt: any) => {
       if (filterOpt.filter === '3' && filterOpt.type === 'string') {
-          condition = data[filterOpt.key].toLowerCase().includes(filterOpt.value.toLowerCase());
+        condition = data[filterOpt.key].toLowerCase().includes(filterOpt.value.toLowerCase());
       } else if (filterOpt.filter === '1' && filterOpt.type === 'string') {
-          condition = data[filterOpt.key].toLowerCase().startsWith(filterOpt.value.toLowerCase());
+        condition = data[filterOpt.key].toLowerCase().startsWith(filterOpt.value.toLowerCase());
       } else if (filterOpt.filter === '2' && filterOpt.type === 'string') {
-          condition = data[filterOpt.key].toLowerCase().endsWith(filterOpt.value.toLowerCase());
+        condition = data[filterOpt.key].toLowerCase().endsWith(filterOpt.value.toLowerCase());
       } else if (filterOpt.filter === '<' && filterOpt.type === 'number') {
-          condition = data[filterOpt.key] > filterOpt.value;
+        condition = data[filterOpt.key] > filterOpt.value;
       } else if (filterOpt.filter === '>' && filterOpt.type === 'number') {
-          condition = data[filterOpt.key] < filterOpt.value;
-      } 
+        condition = data[filterOpt.key] < filterOpt.value;
+      }
       condition = this.partOfFileOpration(filterOpt, data);
       statusArray.push(condition);
     });
@@ -1136,19 +1137,20 @@ description : Context Menu provides the list of menus on right click of row.
     const statusArray: any = [];
     let condition: any;
     filteredObj.forEach((filterOpt: any) => {
-     if (filterOpt.filter === '>=' && filterOpt.type === 'number') {
-      condition = data[filterOpt.key] <= filterOpt.value;
-  } else if (filterOpt.filter === '=<' && filterOpt.type === 'number') {
-      condition = data[filterOpt.key] >= filterOpt.value;
-  } else if (filterOpt.filter === '==' && filterOpt.type === 'number') {
-      condition = data[filterOpt.key] === filterOpt.value;
-  } else if (filterOpt.filter === '!=' && filterOpt.type === 'number') {
-      condition = data[filterOpt.key] !== filterOpt.value;
-    } else {
-      condition = data[filterOpt.key].toLowerCase() !== filterOpt.value.toLowerCase();
-    }
-    statusArray.push(condition);
-  });
+      if (filterOpt.filter === '>=' && filterOpt.type === 'number') {
+        condition = data[filterOpt.key] <= filterOpt.value;
+      } else if (filterOpt.filter === '=<' && filterOpt.type === 'number') {
+        condition = data[filterOpt.key] >= filterOpt.value;
+      } else if (filterOpt.filter === '==' && filterOpt.type === 'number') {
+        condition = data[filterOpt.key] === filterOpt.value;
+      } else if (filterOpt.filter === '!=' && filterOpt.type === 'number') {
+        condition = data[filterOpt.key] !== filterOpt.value;
+      } else {
+        condition = data[filterOpt.key].toLowerCase() !== filterOpt.value.toLowerCase();
+      }
+      statusArray.push(condition);
+    });
+    return condition
   }
 
   pagingRegenration() {
@@ -1192,9 +1194,9 @@ description : Context Menu provides the list of menus on right click of row.
     }
   }
 
-  sortOnColHeaderClick(sortCol: any, event: any) {
+  sortOnColHeaderClick(sortCol: any, clickEvent: any) {
 
-    this.onHeaderClick.emit({ event: event, data: sortCol });
+    this.onHeaderClick.emit({ event: clickEvent, data: sortCol });
     if (sortCol.sort) {
       if (this.sortBy === -1) {
         this.sortBy = 1;
@@ -1233,7 +1235,7 @@ description : Context Menu provides the list of menus on right click of row.
         if (this.sortColumn.datatype === 'string') {
 
           if (this.groupby) {
-            this.data.sort(function(a, b){
+            this.data.sort((a, b) => {
               const x = a.group.toLowerCase();
               const y = b.group.toLowerCase();
 
@@ -1256,7 +1258,7 @@ description : Context Menu provides the list of menus on right click of row.
               return 0;
             });
           } else {
-            this.data.sort(function(a, b) {
+            this.data.sort((a, b) => {
               const x = a[sortColDataIndex].toLowerCase();
               const y = b[sortColDataIndex].toLowerCase();
 
@@ -1280,7 +1282,7 @@ description : Context Menu provides the list of menus on right click of row.
           }
         } else if (this.sortColumn.datatype === 'number') {
           if (this.groupby) {
-            this.data.sort(function(a, b) {
+            this.data.sort((a, b) => {
               const x = a.group;
               const y = b.group;
 
@@ -1292,7 +1294,7 @@ description : Context Menu provides the list of menus on right click of row.
 
             });
           } else {
-            this.data.sort(function(a, b) {
+            this.data.sort((a, b) => {
               const x = a[sortColDataIndex];
               const y = b[sortColDataIndex];
               if (sortOrder === 2) {
