@@ -54,7 +54,7 @@ export class MapLoaderService {
                         this.loadBaseChart(observer);
                     } else {
                         this.isScriptLoading = true;
-                        let script = document.createElement('script');
+                        const script = document.createElement('script');
                         script.type = 'text/javascript';
                         script.src = 'https://www.gstatic.com/charts/loader.js';
                         script.async = true;
@@ -84,7 +84,7 @@ export class MapLoaderService {
      * @param observer
      */
     loadBaseChart(observer: any) {
-        google.charts.load('current', {'packages': ['corechart']});
+        google.charts.load('current', {packages: ['corechart']});
         google.charts.setOnLoadCallback(() => {
             observer.complete();
         });
@@ -98,7 +98,7 @@ export class MapLoaderService {
         if (google.visualization.hasOwnProperty(chartName)) {
             observer.complete();
         } else {
-            google.charts.load('current', {'packages': [this.chartPackage[chartName]]});
+            google.charts.load('current', {packages: [this.chartPackage[chartName]]});
             google.charts.setOnLoadCallback(() => {
                 observer.complete();
             });
