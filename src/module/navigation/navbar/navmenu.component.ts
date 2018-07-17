@@ -88,7 +88,7 @@ description : Fire when nav item is clicked, This event is fired when nav item t
 */
   @Output() navLinkClick: any = new EventEmitter<any>();
 
-  mobilemode: boolean = false;
+  mobilemode = false;
 
   constructor() {
 
@@ -101,20 +101,20 @@ description : Fire when nav item is clicked, This event is fired when nav item t
     this.mobilemode = flag;
   }
   onClick(node: any, event: any) {
-    let n = {
-      'title': this.title,
-      'data': this.data,
-      'icon': this.icon,
-      'node': node,
-      'mobilemode': this.mobilemode,
+    const n = {
+      // 'title': this.title,
+      // 'data': this.data,
+      // 'icon': this.icon,
+      // 'node': node,
+      // 'mobilemode': this.mobilemode,
     };
-    this.navLinkClick.emit({'data': n, 'event': event});
+    this.navLinkClick.emit({n, event});
   }
   onHeaderClick(event: any) {
-    let node = {
-      'header': true,
-      'title' : this.title,
-      'icon'  : this.icon,
+    const node = {
+      // 'header': true,
+      // 'title' : this.title,
+      // 'icon'  : this.icon,
     } ;
     this.onClick(node, event);
   }
