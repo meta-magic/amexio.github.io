@@ -91,15 +91,27 @@ export class AmexioButtonGroupComponent implements AfterContentInit, DoCheck, On
   badgeClass(): string {
     let className = '';
     for (const button of this.buttons) {
-      if (button.type === 'primary' || button.type === 'theme-color') {
-        className = 'btn-group-primary-badge';
+      switch (button.type) {
+        case 'primary': {
+          return 'btn-group-primary-badge';
+        }
+        case 'theme-color': {
+          return 'btn-group-primary-badge';
+        }
+        case 'secondary': {
+          return 'btn-group-secondary-badge';
+        }
+        case 'theme-backgroundcolor': {
+          return 'btn-group-secondary-badge';
+        }
+        case 'success': {
+          return 'btn-group-success-badge';
+        }
+        case 'green': {
+          return 'btn-group-success-badge';
+        }
       }
-      if (button.type === 'secondary' || button.type === 'theme-backgroundcolor') {
-        className = 'btn-group-secondary-badge';
-      }
-      if (button.type === 'success' || button.type === 'green') {
-        className = 'btn-group-success-badge';
-      }
+
       className = this.badgeMoreClass(button);
     }
     return className;
@@ -108,8 +120,8 @@ export class AmexioButtonGroupComponent implements AfterContentInit, DoCheck, On
   badgeMoreClass(button: any): string {
     let className = '';
     if (button.type === 'danger' || button.type === 'red') {
-        className = 'btn-group-danger-badge';
-      }
+      className = 'btn-group-danger-badge';
+    }
     if (button.type === 'warning' || button.type === 'yellow') {
       className = 'btn-group-warning-badge';
     }
