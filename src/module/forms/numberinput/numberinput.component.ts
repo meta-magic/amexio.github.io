@@ -59,6 +59,8 @@ description : Defines the max range limit for number input.
 
   helpInfoMsg: string;
 
+  componentClass : any;
+
   regEx: RegExp;
 
   showToolTip: boolean;
@@ -260,20 +262,23 @@ description : Set enable / disable popover.
     }
   }
 
-  //Set touched on blur
-  onBlur() {
-    this.onTouchedCallback();
-    this.showToolTip = false;
-    if (this.value < this.minvalue) {
-      this.isValid = false;
-    } else {
-      this.isValid = true;
-    }
-  }
+  
   ngOnInit() {
     // this.isComponentValid = this.allowblank;
     this.isComponentValid.emit(this.allowblank);
   }
+
+  onFocus() {
+    this.showToolTip = true;
+  }
+
+  //Set touched on blur
+  onBlur(input:any) {
+    this.onTouchedCallback();
+    this.showToolTip = false;
+    this.componentClass = this.validateClass(input);
+  }
+
   //THIS METHOD IS USED FOR COMPONENT VALIDATION
   onChangeEv() {
     this.isComponentValid.emit(this.isValid);
@@ -281,13 +286,10 @@ description : Set enable / disable popover.
 
   onInput(input:any) {
     // this.isComponentValid = input.valid;
-    this.getValidationClasses(input);
+    this.componentClass = this.validateClass(input);
     this.input.emit();
   }
 
-  onFocus() {
-    this.showToolTip = true;
-  }
 
   //From ControlValueAccessor interface
   writeValue(value: any) {
@@ -306,7 +308,8 @@ description : Set enable / disable popover.
     this.onTouchedCallback = fn;
   }
 
-  getValidationClasses(inp: any): any {
+  validateClass(inp: any): any {
+    
     let classObj;
     if (!this.allowblank) {
       if (this.innerValue == null || this.innerValue == '') {
