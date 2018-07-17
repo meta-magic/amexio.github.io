@@ -29,24 +29,24 @@ default :
 description : Layout the contents to North , East , West , Center & South positions
 */
   @Input() position: string;
-  positionClass: string = "borderlayout-";
+  positionClass= 'borderlayout-';
   constructor() {
   }
   ngOnInit() {
   }
 
   getClassType() {
-    let pos = "";
-    if (this.position.toLowerCase() === "north") {
-      pos = "N";
-    } else if (this.position.toLowerCase() === "east") {
-      pos = "E";
-    } else if (this.position.toLowerCase() === "center") {
-      pos = "C";
-    } else if (this.position.toLowerCase() === "west") {
-      pos = "W";
-    } else if (this.position.toLowerCase() === "south") {
-      pos = "S";
+    let pos = '';
+    if (this.position.toLowerCase() === 'north') {
+      pos = 'N';
+    } else if (this.position.toLowerCase() === 'east') {
+      pos = 'E';
+    } else if (this.position.toLowerCase() === 'center') {
+      pos = 'C';
+    } else if (this.position.toLowerCase() === 'west') {
+      pos = 'W';
+    } else if (this.position.toLowerCase() === 'south') {
+      pos = 'S';
     }
 
     this.positionClass = this.positionClass + pos;
