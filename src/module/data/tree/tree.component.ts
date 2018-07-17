@@ -381,7 +381,18 @@ description : Context Menu provides the list of menus on right click.
       dropData.event.target.style.border = '';
       dropData.event.preventDefault();
       if (this.acrosstree === false) {
-        this.partOfDropMethod (this.dragData);
+        if (this.dragData.data === dropData.data) {
+          this.isNode = false;
+        } else if (this.dragData.data.hasOwnProperty('children')) {
+          this.checkNode(this.dragData, dropData);
+        }
+        if (this.isNode === true) {
+          if (dropData.data.hasOwnProperty('children')) {
+            this.removeNode(dropData);
+            dropData.data.children.push(JSON.parse(dropData.event.dataTransfer.getData('treenodedata')));
+            this.onDrop.emit(dropData);
+          }
+        }
       } else {
         if (dropData.data.hasOwnProperty('children')) {
           this.removeNode(dropData);
@@ -391,22 +402,6 @@ description : Context Menu provides the list of menus on right click.
       }
     }
   }
-
-  partOfDropMethod(dropData: any) {
-    if (this.dragData.data === dropData.data) {
-      this.isNode = false;
-    } else if (this.dragData.data.hasOwnProperty('children')) {
-      this.checkNode(this.dragData, dropData);
-    }
-    if (this.isNode === true) {
-      if (dropData.data.hasOwnProperty('children')) {
-        this.removeNode(dropData);
-        dropData.data.children.push(JSON.parse(dropData.event.dataTransfer.getData('treenodedata')));
-        this.onDrop.emit(dropData);
-      }
-    }
-  }
-
   checkNode(dragData: any, dropData: any) {
     this.dragData.data.children.forEach((child: any) => {
       if (JSON.stringify(child) === JSON.stringify(dropData.data)) {
