@@ -400,15 +400,13 @@ export class TreeDataTableComponent implements OnInit, AfterContentInit, DoCheck
           for (const j of this.viewRows) {
             if (j === i) {
               if (i.children) {
-                this.removeRows(i);
-              }
+                this.removeRows(i); }
               this.viewRows.splice(this.viewRows.indexOf(i), 1);
             }
           }
         }
       }
     }
-
   }
 
   setSelectedRow(rowData: any, event: any) {

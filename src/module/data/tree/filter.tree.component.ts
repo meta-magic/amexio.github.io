@@ -242,11 +242,9 @@ description : it will search for text relevant to entered character
   searchTree(data: any[], matchingTitle: string) {
     const fi = this.filterIndex;
     const res = data.filter(function f(node) {
-
       if (fi === 5 && node.text.toLowerCase().includes(matchingTitle.toLowerCase())) {
         return true;
       }
-
       if (fi === 3 && node.text.toLowerCase().startsWith(matchingTitle.toLowerCase())) {
         return true;
       }
@@ -259,7 +257,6 @@ description : it will search for text relevant to entered character
       if (fi === 4 && node.text.toLowerCase().endsWith(matchingTitle.toLowerCase())) {
         return true;
       }
-
       if (node.children) {
         return (node.children = node.children.filter(f)).length;
       }
