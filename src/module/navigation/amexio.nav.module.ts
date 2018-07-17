@@ -24,7 +24,7 @@ import {AmexioNavItemComponent} from './navbar/navitem.component';
 import {AmexioNavMenuComponent} from './navbar/navmenu.component';
 import {AmexioNavTextFieldComponent } from './navbar/navtextfield.component';
 import {AmexioNotificationComponent} from './notification/notification.component';
-import {AmexioSideNav} from './sidenav/sidenav.component';
+import {AmexioSideNavComponent} from './sidenav/sidenav.component';
 import {SideNavNodeComponent} from './sidenav/sidenavnode.component';
 
 export * from '../services/data/common.data.service';
@@ -35,7 +35,7 @@ export * from './navbar/navbar.component';
 export * from './notification/notification.component';
 
 const NAV_COMPONENTS = [
-  AmexioSideNav,
+  AmexioSideNavComponent,
   SideNavNodeComponent,
   AmexioNavBarComponent,
   AmexioNavItemComponent,

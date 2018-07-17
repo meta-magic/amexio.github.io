@@ -17,7 +17,7 @@ import { DeviceQueryService } from '../../services/device/device.query.service';
 @Component({
   selector: 'amexio-side-nav', templateUrl: './sidenav.component.html', styleUrls: ['./sidenav.component.scss'],
 })
-export class AmexioSideNav implements OnInit {
+export class AmexioSideNavComponent implements OnInit {
 
   /*
    Properties
@@ -159,11 +159,11 @@ export class AmexioSideNav implements OnInit {
       that.handleDeviceSettings(false);
     });
 
-    this.matchMediaService.OnTablet((mediaQueryList: MediaQueryList)=> {
+    this.matchMediaService.OnTablet((mediaQueryList: MediaQueryList) => {
       that.handleDeviceSettings(false);
     });
 
-    this.matchMediaService.OnDesktop((mediaQueryList: MediaQueryList)=> {
+    this.matchMediaService.OnDesktop((mediaQueryList: MediaQueryList) => {
       that.handleDeviceSettings(false);
     });
   }
@@ -197,7 +197,7 @@ export class AmexioSideNav implements OnInit {
     let responsedata = httpResponse;
     if (this.datareader != null) {
       const dr = this.datareader.split('.');
-     for (let ir = 0; ir < dr.length; ir++) {
+      for (let ir = 0; ir < dr.length; ir++) {
         responsedata = responsedata[dr[ir]];
       }
     } else {
