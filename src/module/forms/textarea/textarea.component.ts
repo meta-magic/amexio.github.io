@@ -62,6 +62,8 @@ description : Sets if field is required
 
   helpInfoMsg: string;
 
+  componentClass : any;
+
   regEx: RegExp;
 
   // isComponentValid : boolean;
@@ -248,16 +250,7 @@ description : Set enable / disable popover.
     }
   }
 
-  //Set touched on blur
-  onBlur() {
-    this.onTouchedCallback();
-    this.showToolTip = false;
-  }
-
-  onFocus() {
-    this.showToolTip = true;
-  }
-
+  
   //From ControlValueAccessor interface
   writeValue(value: any) {
     if (value !== this.innerValue) {
@@ -275,7 +268,7 @@ description : Set enable / disable popover.
     this.onTouchedCallback = fn;
   }
 
-  getValidationClasses(inp: any): any {
+  validateClass(inp: any): any {
     let classObj;
     if (!this.allowblank) {
       if (this.innerValue == null || this.innerValue == '') {
@@ -308,15 +301,25 @@ description : Set enable / disable popover.
     return classObj;
   }
 
+  onFocus() {
+    this.showToolTip = true;
+  }
+
+  //Set touched on blur
+  onBlur(input:any) {
+    this.onTouchedCallback();
+    this.showToolTip = false;
+    this.componentClass = this.validateClass(input);
+  }
+
+
   //THIS METHOD IS USED FOR COMPONENT VALIDATION
   onChangeEv() {
     this.isComponentValid.emit(this.isValid);
   }
 
   onInput(input:any) {
-    // this.isComponentValid = input.valid;
-    this.getValidationClasses(input);
-    //this.input.emit(this.value);
+    this.componentClass = this.validateClass(input);
     this.isComponentValid.emit(this.isValid);
   }
 
