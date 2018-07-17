@@ -105,11 +105,7 @@ description : Fires the on accordion pane click event.
     if (!this.header) {
       this.expanded = true;
     }
-    if (this.expanded) {
-      this.iconclassKey = 'fa fa-caret-up';
-    } else {
-      this.iconclassKey = 'fa fa-caret-down';
-    }
+    this.iconclassKey = this.expanded ? 'fa fa-caret-up' : 'fa fa-caret-down';
     if (this.height) {
      return this.height;
     }

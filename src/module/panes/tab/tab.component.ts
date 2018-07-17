@@ -15,6 +15,7 @@ import {
   Component,
   ComponentFactoryResolver,
   ContentChildren,
+  DoCheck,
   ElementRef,
   EventEmitter,
   HostListener,
@@ -61,7 +62,7 @@ export namespace AmexioBottomColorMap {
   selector: 'amexio-tab-view',
   templateUrl: './tab.component.html',
 })
-export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnInit {
+export class AmexioTabComponent implements AfterContentInit, AfterViewInit, DoCheck, OnInit {
 
   /*
 Properties
@@ -263,7 +264,6 @@ description : If "true" add two context menus i.e close All and close Others tab
   private totalTabs: number;
 
   ngAfterViewInit() {
-    let tabWidth;
     this.tabWidth1 = this.tabs.nativeElement.offsetWidth;
     this.totalTabs = this.tabCollection.length;
   }
@@ -388,7 +388,7 @@ description : If "true" add two context menus i.e close All and close Others tab
 
   selectTab(tab: AmexioTabPillComponent) {
     // deactivate all tabs
-    this.tabCollection.forEach((tab) => (tab.active = false));
+    this.tabCollection.forEach((tab1: any) => (tab1.active = false));
     tab.active = true;
   }
 

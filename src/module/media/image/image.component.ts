@@ -207,18 +207,18 @@ description : Description to display on hover
         this.overlayText = '';
       }
       if (this.overlayText) {
-        this.overlayTextClass = "overlay-text overlay-" + this.overlayEffect + "-text";
+        this.overlayTextClass = 'overlay-text overlay-' + this.overlayEffect + '-text';
       }
-      this.overlayEffect = "overlay overlay-" + this.overlayEffect;
+      this.overlayEffect = 'overlay overlay-' + this.overlayEffect;
     }
     if (this.position && !this.imgTitle) {
       this.imgTitle = '';
       }
     if (this.imgTitle) {
       if (this.position) {
-        this.position = "image-title image-" + this.position;
+        this.position = 'image-title image-'+ this.position;
       } else {
-        this.position = "image-title image-bottom-right";
+        this.position = 'image-title image-bottom-right';
       }
     }
   }

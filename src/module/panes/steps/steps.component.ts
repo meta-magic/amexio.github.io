@@ -164,9 +164,9 @@ description : Provides data for stepblock.
   constructor() {
   }
 
-  onStepClick(data: any, ev: any) {
-    this.getStepBlockData.emit({'event': ev, 'data': data});
-    this.onClick.emit(data);
+  onStepClick(clickData: any, ev: any) {
+    this.getStepBlockData.emit({event: ev, data: clickData});
+    this.onClick.emit(clickData);
   }
 
   ngAfterContentInit() {

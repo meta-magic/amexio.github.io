@@ -9,7 +9,8 @@
  more items from list based on configuration. User can provide custom template to
  change look and feel.
 */
-import {AfterViewInit, Component, ContentChild, DoCheck, EventEmitter, HostListener, Input, OnInit, Output, TemplateRef } from '@angular/core';
+import {AfterViewInit, Component, ContentChild, DoCheck, EventEmitter,
+  HostListener, Input, OnInit, Output, TemplateRef } from '@angular/core';
 import {CommonDataService} from '../../services/data/common.data.service';
 
 @Component({

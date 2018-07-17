@@ -162,7 +162,7 @@ description : it will search for text relevant to entered character
 
   showToolTip: boolean;
 
-  mask: boolean = true;
+  mask = true;
 
   @ContentChild('amexioTreeTemplate') parentTmp: TemplateRef<any>;
 
@@ -170,15 +170,15 @@ description : it will search for text relevant to entered character
     this.filterIndex = 3;
     this.triggerchar = 1;
     this.filterOptionData = [{
-      'key': 'Is Equal To', 'value': '1', 'type': 'string', 'checkedStatus': '',
+      key: 'Is Equal To', value: '1', type: 'string', checkedStatus: '',
     }, {
-      'key': 'Is Not Equal To', 'value': '2', 'type': 'string', 'checkedStatus': '',
+      key: 'Is Not Equal To', value: '2', type: 'string', checkedStatus: '',
     }, {
-      'key': 'Start With', 'value': '3', 'type': 'string', 'checkedStatus': 'fa fa-check',
+      key: 'Start With', value: '3', type: 'string', checkedStatus: 'fa fa-check',
     }, {
-      'key': 'Ends With', 'value': '4', 'type': 'string', 'checkedStatus': '',
+      key: 'Ends With', value: '4', type: 'string', checkedStatus: '',
     }, {
-      'key': 'Contains', 'value': '5', 'type': 'string', 'checkedStatus': '',
+      key: 'Contains', value: '5', type: 'string', checkedStatus: '',
     }];
   }
 
@@ -224,8 +224,8 @@ description : it will search for text relevant to entered character
         this.isDataFound = true;
       }
     } else if (this.onClickSearch) {
-      let tData = JSON.parse(JSON.stringify(this.orgTreeData));
-      let treeNodes = this.searchTree(tData, this.filterText);
+      const tData = JSON.parse(JSON.stringify(this.orgTreeData));
+      const treeNodes = this.searchTree(tData, this.filterText);
       this.treeData = treeNodes;
       this.onClickSearch = false;
       if (this.treeData.length === 0) {
@@ -240,8 +240,8 @@ description : it will search for text relevant to entered character
   }
 
   searchTree(data: any[], matchingTitle: string) {
-    let fi = this.filterIndex;
-    let res = data.filter(function f(node) {
+    const fi = this.filterIndex;
+    const res = data.filter(function f(node) {
 
       if (fi === 5 && node.text.toLowerCase().includes(matchingTitle.toLowerCase())) {
         return true;
@@ -286,7 +286,7 @@ description : it will search for text relevant to entered character
   }
 
   setData(httpResponse: any) {
-    let tdata = this.getData(httpResponse);
+    const tdata = this.getData(httpResponse);
     if (tdata) {
       this.orgTreeData = JSON.parse(JSON.stringify(tdata));
       this.treeData = tdata;
@@ -297,16 +297,16 @@ description : it will search for text relevant to entered character
   getData(httpResponse: any) {
     let responsedata: any = httpResponse;
     if (this.datareader != null) {
-      let dr = this.datareader.split('.');
-      for (let ir = 0; ir < dr.length; ir++) {
-        responsedata = responsedata[dr[ir]];
+      const dr = this.datareader.split('.');
+      for (const ir of dr) {
+        responsedata = responsedata[ir];
       }
     } else {
       responsedata = httpResponse;
     }
     return responsedata;
   }
-  
+
   callService() {
     this.treeViewFilterService.fetchData(this.httpurl, this.httpmethod).subscribe((response) => {
       this.data = response;

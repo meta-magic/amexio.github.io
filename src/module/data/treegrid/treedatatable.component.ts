@@ -255,7 +255,7 @@ export class TreeDataTableComponent implements OnInit, AfterContentInit, DoCheck
 
   viewRows: any;
 
-  mask: boolean = true;
+  mask = true;
 
   @ContentChildren(AmexioGridColumnComponent) columnRef: QueryList<AmexioGridColumnComponent>;
 
@@ -290,8 +290,8 @@ export class TreeDataTableComponent implements OnInit, AfterContentInit, DoCheck
   createConfig() {
     let columnRefArray = [];
     columnRefArray = this.columnRef.toArray();
-    for (let cr = 0; cr < columnRefArray.length; cr++) {
-      const columnConfig = columnRefArray[cr];
+    for (const cr of columnRefArray) {
+      const columnConfig = cr;
       let columnData: any;
       if (columnConfig.headerTemplate != null && columnConfig.bodyTemplate != null) {
         columnData = {
@@ -342,7 +342,7 @@ export class TreeDataTableComponent implements OnInit, AfterContentInit, DoCheck
 
   setData(httpResponse: any) {
     if (httpResponse) {
-      let treedata = this.getResponseData(httpResponse);
+      const treedata = this.getResponseData(httpResponse);
       this.viewRows = treedata;
       this.viewRows.forEach((row: any, index: any) => {
         this.viewRows[index].level = 1;
@@ -352,14 +352,14 @@ export class TreeDataTableComponent implements OnInit, AfterContentInit, DoCheck
     } else {
       this.viewRows = [];
     }
-
   }
+
   getResponseData(httpResponse: any) {
     let responsedata = httpResponse;
     if (this.datareader != null) {
-      let dr = this.datareader.split('.');
-      for (let ir = 0; ir < dr.length; ir++) {
-        responsedata = responsedata[dr[ir]];
+      const dr = this.datareader.split('.');
+      for (const ir of dr) {
+        responsedata = responsedata[ir];
       }
     } else {
       responsedata = httpResponse;
@@ -379,8 +379,8 @@ export class TreeDataTableComponent implements OnInit, AfterContentInit, DoCheck
 
   addRows(row: any, index: number) {
     if (row.children) {
-      for (let i = 0; i < row.children.length; i++) {
-        let node = row.children[i];
+      for (const i of row.children) {
+        const node = i;
         if (!row.level) {
           row.level = 1;
         }
@@ -391,22 +391,18 @@ export class TreeDataTableComponent implements OnInit, AfterContentInit, DoCheck
         this.viewRows.splice(index + (i + 1), 0, node);
       }
     }
-
   }
 
   removeRows(node: any) {
     if (node.children) {
-      for (let i = 0; i < node.children.length; i++) {
+      for (const i of node.children) {
         if (this.viewRows) {
-          for (let j = 0; j < this.viewRows.length; j++) {
-
-            if (this.viewRows[j] === node.children[i]) {
-              if (node.children[i].children) {
-                this.removeRows(node.children[i]);
+          for (const j of this.viewRows) {
+            if (j === i) {
+              if (i.children) {
+                this.removeRows(i);
               }
-
-              this.viewRows.splice(this.viewRows.indexOf(node.children[i]), 1);
-
+              this.viewRows.splice(this.viewRows.indexOf(i), 1);
             }
           }
         }

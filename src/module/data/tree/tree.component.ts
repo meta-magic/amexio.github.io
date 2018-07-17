@@ -7,14 +7,14 @@ Component Name : Amexio tree filter
 Component Selector : <amexio-tree-filter-view>
 Component Description : A Expandable Tree Component for Angular, having Filtering functionality.
 */
-import { ChangeDetectorRef,  Component, ContentChild, ElementRef,
-   EventEmitter, HostListener, Input, Output, TemplateRef } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef,  Component, ContentChild, DoCheck, ElementRef,
+   EventEmitter, HostListener, Input, OnInit, Output, TemplateRef } from '@angular/core';
 import { CommonDataService } from '../../services/data/common.data.service';
 
 @Component({
   selector: 'amexio-treeview', templateUrl: './tree.component.html', styleUrls: ['./tree.component.scss'],
 })
-export class AmexioTreeViewComponent {
+export class AmexioTreeViewComponent implements AfterViewInit, DoCheck, OnInit {
 
   /*
 Properties
@@ -104,7 +104,7 @@ description : user can add any template to tree
   default : false
   description : any node can be dropped in the tree structure
   */
-  @Input('enable-drop') enabledrop: boolean = false;
+  @Input('enable-drop') enabledrop = false;
 
   /*
 Properties
@@ -114,7 +114,7 @@ version : 5.0.0 onwards
 default : false
 description : Dragging and dropping is possible across tree.
 */
-  @Input('across-tree') acrosstree: boolean = false;
+  @Input('across-tree') acrosstree = false;
 
   /*
 Properties
@@ -223,15 +223,15 @@ description : Context Menu provides the list of menus on right click.
   }
 
   activateNode(data: any[], node: any) {
-    for (let i = 0; i < data.length; i++) {
-      if (node === data[i] && !data[i]['children']) {
-        data[i]['active'] = true;
+    for (const i of data) {
+      if (node === data[i] && !i['children']) {
+        i['active'] = true;
       } else {
-        data[i]['active'] = false;
+        i['active'] = false;
       }
 
-      if (data[i]['children']) {
-        this.activateNode(data[i]['children'], node);
+      if (i['children']) {
+        this.activateNode(i['children'], node);
       }
     }
   }
@@ -240,9 +240,9 @@ description : Context Menu provides the list of menus on right click.
     // Check if key is added?
     let responsedata = httpResponse;
     if (this.datareader != null) {
-      let dr = this.datareader.split('.');
-      for (let ir = 0; ir < dr.length; ir++) {
-        responsedata = responsedata[dr[ir]];
+      const dr = this.datareader.split('.');
+      for (const ir of dr) {
+        responsedata = responsedata[ir];
       }
     } else {
       responsedata = httpResponse;
@@ -381,24 +381,28 @@ description : Context Menu provides the list of menus on right click.
       dropData.event.target.style.border = '';
       dropData.event.preventDefault();
       if (this.acrosstree === false) {
-        if (this.dragData.data === dropData.data) {
-          this.isNode = false;
-        } else if (this.dragData.data.hasOwnProperty('children')) {
-          this.checkNode(this.dragData, dropData);
-        }
-        if (this.isNode === true) {
-          if (dropData.data.hasOwnProperty('children')) {
-            this.removeNode(dropData);
-            dropData.data.children.push(JSON.parse(dropData.event.dataTransfer.getData('treenodedata')));
-            this.onDrop.emit(dropData);
-          }
-        }
+        this.partOfDropMethod (this.dragData);
       } else {
         if (dropData.data.hasOwnProperty('children')) {
           this.removeNode(dropData);
           dropData.data.children.push(JSON.parse(dropData.event.dataTransfer.getData('treenodedata')));
           this.onDrop.emit(dropData);
         }
+      }
+    }
+  }
+
+  partOfDropMethod(dropData: any) {
+    if (this.dragData.data === dropData.data) {
+      this.isNode = false;
+    } else if (this.dragData.data.hasOwnProperty('children')) {
+      this.checkNode(this.dragData, dropData);
+    }
+    if (this.isNode === true) {
+      if (dropData.data.hasOwnProperty('children')) {
+        this.removeNode(dropData);
+        dropData.data.children.push(JSON.parse(dropData.event.dataTransfer.getData('treenodedata')));
+        this.onDrop.emit(dropData);
       }
     }
   }
@@ -464,7 +468,7 @@ description : Context Menu provides the list of menus on right click.
 
   onContextNodeClick(itemConfig: any) {
     if (!itemConfig.disabled) {
-      let obj = {
+      const obj = {
         menuData: itemConfig,
         NodeData: this.rightClickNodeData,
       };
@@ -473,7 +477,7 @@ description : Context Menu provides the list of menus on right click.
   }
 
   getListPosition(elementRef: any): boolean {
-    let height: number = 240; // must be same in dropdown.scss
+    const height = 240; // must be same in dropdown.scss
     if ((window.screen.height - elementRef.getBoundingClientRect().bottom) < height) {
       return true;
     } else {
@@ -483,13 +487,13 @@ description : Context Menu provides the list of menus on right click.
 
   getContextMenuStyle() {
     return {
-      cursor: 'default',
-      position: 'fixed',
-      display: this.flag ? 'block' : 'none',
-      left: this.mouseLocation.left + 'px',
-      top: this.mouseLocation.top + 'px',
+      'cursor': 'default',
+      'position': 'fixed',
+      'display': this.flag ? 'block' : 'none',
+      'left': this.mouseLocation.left + 'px',
+      'top': this.mouseLocation.top + 'px',
       'box-shadow': '1px 1px 2px #000000',
-      width: '15%',
+      'width': '15%',
     };
   }
 

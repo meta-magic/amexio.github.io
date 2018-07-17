@@ -5,7 +5,9 @@
  /*
  Component Name : Amexio progress bar
  Component Selector : <amexio-progress-bar>
- Component Description : Progress Bar Component Provides up-to-date feedback on the progress of a workflow or action with simple yet flexible progress bars and easy to configure.
+ Component Description : Progress Bar Component Provides up-to-date feedback
+ on the progress of a workflow or action with simple yet flexible progress bars
+ and easy to configure.
 */
 import {Component, Input, OnInit} from '@angular/core';
 @Component({
@@ -14,7 +16,7 @@ import {Component, Input, OnInit} from '@angular/core';
       <span [ngClass]="progressclass" *ngIf="infinite" style="width: 100%;">{{label != null ? label : 'Loading...'}}</span>
       <span [ngClass]="progressclass" *ngIf="!infinite" [ngStyle]="{'width.%' : currentvalue}"></span>
     </div>
-  `
+  `,
 })
 export class AmexioProgressBarComponent implements OnInit {
 /*
@@ -25,7 +27,7 @@ version : 4.0 onwards
 default : true
 description :  Shows / Hides the progress bar.
 */
-  @Input('show') showProgress: boolean = true;
+  @Input('show') showProgress = true;
 /*
 Properties
 name : infinite
@@ -52,7 +54,7 @@ name : amexio-color
 datatype : string
 version : 4.1 onwards
 default :
-description : Use different inbuilt amexio colors available 
+description : Use different inbuilt amexio colors available
 (e.g amexio-black, amexio-red etc)
 */
   @Input('amexio-color') amexiocolor: string;
@@ -97,12 +99,11 @@ not in use
  */
   @Input() multi: boolean;
 
-  progressclass: string = "";
+  progressclass = '';
 
   constructor() {
   }
   ngOnInit() {
-    
     if (this.height) {
       this.height = this.height + 'px';
     } else {

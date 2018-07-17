@@ -7,7 +7,7 @@
  Component Selector : <amexio-horizontal-treeview>
  Component Description : A Horizontal Tree Component.
 */
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CommonDataService} from '../../services/data/common.data.service';
 
 @Component({
@@ -22,7 +22,7 @@ import {CommonDataService} from '../../services/data/common.data.service';
     </div>
   `,
 })
-export class HorizontalTreeViewComponent {
+export class HorizontalTreeViewComponent implements OnInit {
 
   /*
 Properties
@@ -86,7 +86,7 @@ description : It will gives you clicked node data.
 
   responseData: any;
 
-  mask: boolean = true;
+  mask = true;
 
   constructor(public dataService: CommonDataService) {
 
@@ -107,9 +107,9 @@ description : It will gives you clicked node data.
     // Check if key is added?
     let responsedata = httpResponse;
     if (this.datareader != null) {
-      let dr = this.datareader.split('.');
-      for (let ir = 0; ir < dr.length; ir++) {
-        responsedata = responsedata[dr[ir]];
+      const dr = this.datareader.split('.');
+      for (const ir of dr) {
+        responsedata = responsedata[ir];
       }
     } else {
       responsedata = httpResponse;

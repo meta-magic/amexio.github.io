@@ -7,12 +7,12 @@
  Component Selector : <amexio-paginator>
  Component Description : Paginator is a generic widget to display content in paged format.
 */
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'amexio-paginator', templateUrl: './paginator.component.html', styleUrls: ['./paginator.component.scss'],
 })
-export class AmexioPaginatorComponent implements OnChanges {
+export class AmexioPaginatorComponent implements OnChanges, OnInit {
 
   show: boolean;
 
@@ -173,7 +173,7 @@ description : It will gives you current page number
       this.onPageChange.emit(this.activePage);
     } else {
       // load next rows
-      let sIndx = this.fullPageSet.indexOf(this.activePage) + 1;
+      const sIndx = this.fullPageSet.indexOf(this.activePage) + 1;
       if (sIndx <= this.fullPageSet.length - 1) {
         this.changeRows(this.pageIndex[this.currentRowIndex + 1], this.currentRowIndex + 1, null);
         this.activePageIndex = 1;
@@ -182,9 +182,8 @@ description : It will gives you current page number
       }
     }
   }
-
+  /* If page size is less then row*/
   changeRows(rowNumber: number, inDx: number, event: any) {
-    /* If page size is less then row*/
     if (rowNumber != null) {
       this.activePages = [];
       if (this.pages < rowNumber) {
@@ -202,18 +201,20 @@ description : It will gives you current page number
           }
         }
       }
-      this.currentRowIndex = inDx;
-      this.onRowChange.emit(this.currentRow);
-
-      this.setBoundaries();
-      this.activePageIndex = 0;
-      this.activePage = this.activePages[0];
-      this.onPageChange.emit(this.activePage);
+      this.partOfChangeRows(inDx);
       if (event) {
         this.show = !this.show;
       }
     }
+  }
 
+  partOfChangeRows(inDx: number) {
+    this.currentRowIndex = inDx;
+    this.onRowChange.emit(this.currentRow);
+    this.setBoundaries();
+    this.activePageIndex = 0;
+    this.activePage = this.activePages[0];
+    this.onPageChange.emit(this.activePage);
   }
 
   onPageClick(page: number, index: number) {
@@ -229,7 +230,7 @@ description : It will gives you current page number
     }
     this.currentRow = this.rows;
     // calc rows
-    let loopI = Math.round(this.pages / this.rows);
+    const loopI = Math.round(this.pages / this.rows);
 
     for (let i = 1; i <= loopI; i++) {
       this.pageIndex.push(this.rows * i);

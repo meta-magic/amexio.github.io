@@ -1120,25 +1120,35 @@ description : Context Menu provides the list of menus on right click of row.
           condition = data[filterOpt.key] > filterOpt.value;
       } else if (filterOpt.filter === '>' && filterOpt.type === 'number') {
           condition = data[filterOpt.key] < filterOpt.value;
-      } else if (filterOpt.filter === '>=' && filterOpt.type === 'number') {
-          condition = data[filterOpt.key] <= filterOpt.value;
-      } else if (filterOpt.filter === '=<' && filterOpt.type === 'number') {
-          condition = data[filterOpt.key] >= filterOpt.value;
-      } else if (filterOpt.filter === '==' && filterOpt.type === 'number') {
-          condition = data[filterOpt.key] === filterOpt.value;
-      } else if (filterOpt.filter === '!=' && filterOpt.type === 'number') {
-          condition = data[filterOpt.key] !== filterOpt.value;
-        } else {
-          condition = data[filterOpt.key].toLowerCase() !== filterOpt.value.toLowerCase();
-        }
-        statusArray.push(condition);
-      });
+      } 
+      condition = this.partOfFileOpration(filterOpt, data);
+      statusArray.push(condition);
+    });
     statusArray.forEach((opt: any) => {
       if (opt === false) {
         condition = false;
       }
     });
     return condition;
+  }
+
+  partOfFileOpration(data: any, filteredObj: any) {
+    const statusArray: any = [];
+    let condition: any;
+    filteredObj.forEach((filterOpt: any) => {
+     if (filterOpt.filter === '>=' && filterOpt.type === 'number') {
+      condition = data[filterOpt.key] <= filterOpt.value;
+  } else if (filterOpt.filter === '=<' && filterOpt.type === 'number') {
+      condition = data[filterOpt.key] >= filterOpt.value;
+  } else if (filterOpt.filter === '==' && filterOpt.type === 'number') {
+      condition = data[filterOpt.key] === filterOpt.value;
+  } else if (filterOpt.filter === '!=' && filterOpt.type === 'number') {
+      condition = data[filterOpt.key] !== filterOpt.value;
+    } else {
+      condition = data[filterOpt.key].toLowerCase() !== filterOpt.value.toLowerCase();
+    }
+    statusArray.push(condition);
+  });
   }
 
   pagingRegenration() {
