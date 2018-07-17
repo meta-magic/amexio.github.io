@@ -153,14 +153,7 @@ export class AmexioFloatingButtonComponent implements OnInit {
       this.positionclass = ' floatingbutton-fixed ';
     }
     if (!this.absoluteposition && !this.relative) {
-      if (this.verticalposition === null) {
-        this.verticalposition = 'top';
-      } else if (this.horizontalposition === null) {
-        this.horizontalposition = 'right';
-      }
-      this.positionclass = this.positionclass + ' floatingbutton-' +
-        this.verticalposition + ' floatingbutton-' + this.horizontalposition +
-        ' floatingbutton-default';
+      this.btnPositionCss();
     }
     if (this.block === 'circle') {
       this.positionclass = this.positionclass + ' floatingbutton-circle';
@@ -169,42 +162,67 @@ export class AmexioFloatingButtonComponent implements OnInit {
       this.positionclass = this.positionclass + ' floatingbutton-square';
     }
     if (this.type === 'theme-color') {
-      if (this.disabled) {
-        this.positionclass = this.positionclass + ' floatingbutton-theme-color-disabled';
-      } else {
-        this.positionclass = this.positionclass + ' floatingbutton-theme-color';
-      }
+      this.themeColorCss();
     } else if (this.type === 'green') {
-      if (this.disabled) {
-        this.positionclass = this.positionclass + ' floatingbutton-green-disabled';
-      } else {
-        this.positionclass = this.positionclass + ' floatingbutton-green';
-      }
+      this.greenColorType();
+
     } else if (this.type === 'red') {
-      if (this.disabled) {
-        this.positionclass = this.positionclass + ' floatingbutton-red-disabled';
-      } else {
-        this.positionclass = this.positionclass + ' floatingbutton-red';
-      }
+      this.redColorType();
+
     } else if (this.type === 'yellow') {
-      if (this.disabled) {
-        this.positionclass = this.positionclass + ' floatingbutton-yellow-disabled';
-      } else {
-        this.positionclass = this.positionclass + ' floatingbutton-yellow';
-      }
+      this.yellowColorType();
+
     } else {
-      if (this.disabled) {
-        this.positionclass = this.positionclass + ' floatingbutton-default-disabled';
-      } else {
-        this.positionclass = this.positionclass + ' floatingbutton-default';
-      }
+      this.defaultType();
     }
     return this.positionclass;
   }
+
+  // Method to call css class on the basis of theme color
+  themeColorCss() {
+    this.positionclass = this.disabled ? this.positionclass + ' floatingbutton-theme-color-disabled' :
+    this.positionclass + ' floatingbutton-theme-color';
+  }
+
+  // Css for button type default.
+  defaultType() {
+    this.positionclass = this.disabled ? this.positionclass + ' floatingbutton-default-disabled' :
+    this.positionclass + 'floatingbutton-default';
+  }
+
+  // Css for button type yellow.
+  yellowColorType() {
+    this.positionclass = this.disabled ? this.positionclass + 'floatingbutton-yellow-disabled' :
+    this.positionclass + ' floatingbutton-yellow';
+  }
+
+  // Css for button type red.
+  redColorType() {
+    this.positionclass = this.disabled ? this.positionclass + 'floatingbutton-red-disabled' :
+    this.positionclass + ' floatingbutton-red';
+  }
+  // Css for button type green.
+  greenColorType() {
+    this.positionclass = this.disabled ? this.positionclass + ' floatingbutton-green-disabled' :
+    this.positionclass + ' floatingbutton-green';
+  }
+
+  // Css on btn position
+  btnPositionCss() {
+    if (this.verticalposition === null) {
+      this.verticalposition = 'top';
+    } else if (this.horizontalposition === null) {
+      this.horizontalposition = 'right';
+    }
+    this.positionclass = this.positionclass + ' floatingbutton-' +
+      this.verticalposition + ' floatingbutton-' + this.horizontalposition +
+      ' floatingbutton-default';
+  }
+
   // Method for button click
   buttonClick(clickEvent: any) {
     if (!this.disabled) {
-      this.onClick.emit({thisObj: this, event: clickEvent});
+      this.onClick.emit({ thisObj: this, event: clickEvent });
     }
   }
 }

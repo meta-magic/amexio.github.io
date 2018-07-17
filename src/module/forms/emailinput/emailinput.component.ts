@@ -7,13 +7,12 @@ import {Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angu
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 const noop = () => {
 };
-export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
-  provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioEmailInputComponent), multi: true,
-};
+
 @Component({
   selector: 'amexio-email-input',
   templateUrl: './emailinput.component.html',
-  providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
+  providers: [{provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioEmailInputComponent), multi: true,
+  }],
 })
 export class AmexioEmailInputComponent implements ControlValueAccessor, OnInit {
   /*
@@ -237,33 +236,50 @@ export class AmexioEmailInputComponent implements ControlValueAccessor, OnInit {
   registerOnTouched(fn: any) {
     this.onTouchedCallback = fn;
   }
+
+  getCssClass(): any {
+    return { 'input-control-error': true };
+  }
+
   getValidationClasses(inp: any): any {
     let classObj;
     if (!this.allowblank) {
       if (this.innerValue === null || this.innerValue === '') {
-        if (inp.touched) {
-          classObj = {'input-control-error': true};
-          this.isValid = false;
-          this.isComponentValid = false;
-        } else {
-          this.isValid = false;
-          this.isComponentValid = false;
-        }
+      classObj = this.noInnerValue(inp);
       } else if ((inp.touched && !this.allowblank && (this.value === '' || this.value === null)) || (!this.emailpatter.test(this.value))) {
-        classObj = {'input-control-error': true};
+        classObj = this.getCssClass();
         this.isValid = false;
         this.isComponentValid = false;
       } else {
-        classObj = {
-          'input-control-error': inp.invalid && (inp.dirty || inp.touched),
-          'input-control-success': inp.valid && (inp.dirty || inp.touched),
-        };
-        if (inp.valid) {
-          this.isValid = true;
-          this.isComponentValid = true;
-        }
+     classObj = this.otherValidations(inp);
       }
     } else {
+      this.isValid = true;
+      this.isComponentValid = true;
+    }
+    return classObj;
+  }
+
+  noInnerValue(inp: any) {
+    let classObj;
+    if (inp.touched) {
+      classObj = this.getCssClass();
+      this.isValid = false;
+      this.isComponentValid = false;
+    } else {
+      this.isValid = false;
+      this.isComponentValid = false;
+    }
+    return classObj;
+  }
+
+  otherValidations(inp: any) {
+    let classObj;
+    classObj = {
+      'input-control-error': inp.invalid && (inp.dirty || inp.touched),
+      'input-control-success': inp.valid && (inp.dirty || inp.touched),
+    };
+    if (inp.valid) {
       this.isValid = true;
       this.isComponentValid = true;
     }
