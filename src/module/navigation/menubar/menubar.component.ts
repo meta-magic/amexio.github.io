@@ -2,14 +2,14 @@
  * Created by ketangote on 12/8/17.
  */
 
- /*
- Component Name : Amexio menubar
- Component Selector : <amexio-menu>
- Component Description : Menu bar component show menu list on top.
+/*
+Component Name : Amexio menubar
+Component Selector : <amexio-menu>
+Component Description : Menu bar component show menu list on top.
 */
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {CommonDataService} from '../../services/data/common.data.service';
-import {DeviceQueryService} from '../../services/device/device.query.service';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { CommonDataService } from '../../services/data/common.data.service';
+import { DeviceQueryService } from '../../services/device/device.query.service';
 @Component({
   selector: 'amexio-menu',
   template: `
@@ -115,14 +115,14 @@ description : label to menubar
 */
   @Input() label: any;
 
-/*
-Properties
-name : http-url
-datatype : string
-version : 4.0 onwards
-default : none
-description : REST url for fetching datasource.
-*/
+  /*
+  Properties
+  name : http-url
+  datatype : string
+  version : 4.0 onwards
+  default : none
+  description : REST url for fetching datasource.
+  */
   @Input('http-url') httpurl: string;
 
   /*
@@ -155,7 +155,7 @@ description : Fire when menubar bar click.
 */
   @Output() nodeClick: any = new EventEmitter<any>();
 
-  xposition: boolean = false;
+  xposition = false;
 
   responseData: any;
 
@@ -178,7 +178,7 @@ description : Fire when menubar bar click.
 
   onClick(node: any) {
     if (this.matchMediaService.IsPhone() || this.matchMediaService.IsTablet()) {
-      for (let i = 0; i < this.data.length; i++) {
+      for (const i of 'length') {
         if (this.data[i] === node) {
           this.data[i].expand = !this.data[i].expand;
         } else {
@@ -194,24 +194,23 @@ description : Fire when menubar bar click.
     // Check if key is added?
     let responsedata = httpResponse;
     if (this.datareader != null) {
-      let dr = this.datareader.split('.');
-      for (let ir = 0; ir < dr.length; ir++) {
+      const dr = this.datareader.split('.');
+      for (const ir of 'length') {
         responsedata = responsedata[dr[ir]];
       }
     } else {
-      responsedata = httpResponse;
     }
     this.data = httpResponse;
   }
 
   onMouseOver(event: any) {
     if (!(this.matchMediaService.IsPhone() || this.matchMediaService.IsTablet())) {
-      if ((this.matchMediaService.browserWindow().innerWidth - event.clientX) < 200 ) {
+      if ((this.matchMediaService.browserWindow().innerWidth - event.clientX) < 200) {
         this.xposition = true;
-      }else {
+      } else {
         this.xposition = false;
       }
-    }else {
+    } else {
       this.xposition = false;
     }
   }
