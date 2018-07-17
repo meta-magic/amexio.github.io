@@ -292,7 +292,7 @@ description : Set enable / disable popover.
   isComponentValid: boolean;
   selectedindex = 0;
   scrollposition = 30;
-
+  arr: any[];
   private innerValue: any = '';
   // Placeholders for the callbacks which are later provided
   // by the Control Value Accessor
@@ -369,6 +369,7 @@ description : Set enable / disable popover.
   setDataMultiSelect() {
     let preSelectedMultiValues = '';
     const optionsChecked: any[] = [];
+    this.arr = optionsChecked;
     this.viewData.forEach((row: any) => {
       if (row.hasOwnProperty('checked') && row.checked) {
         optionsChecked.push(row[this.valuefield]);

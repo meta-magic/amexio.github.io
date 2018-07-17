@@ -142,9 +142,9 @@ export class AmexioFileUploadComponent implements OnInit, AfterViewInit {
     const dt = event.dataTransfer;
     if (dt.items) {
       // Use DataTransferItemList interface to access the file(s)
-      for (let i = 0; i < dt.items.length; i++) {
-        if (dt.items[i].kind === 'file') {
-          const f = dt.items[i].getAsFile();
+      for (const item of dt.items) {
+        if (item.kind === 'file') {
+          const f = item.getAsFile();
           this.uploadFile(f, true);
         }
       }
@@ -162,43 +162,13 @@ export class AmexioFileUploadComponent implements OnInit, AfterViewInit {
   //  For Uploading files
   uploadFile(event: any, singleFile: boolean) {
     if (singleFile) {
-      const formData = new FormData();
-      formData.append(this.paramname, event);
-      this.dataService.uploadFile(this.httpurl, this.httpmethod, formData).subscribe(
-        (response: any) => {
-          this.responseData = response;
-        },
-        (error: any) => {
-        },
-        () => {
-          if (this.responseData) {
-            this.onFileUpload.emit(this.responseData);
-          }
-        },
-      );
-      this.uploadedFiles.push({ name: event.name, size: this.formatBytes(event.size, 2) });
+      this.uploadSingleFile(event);
     } else {
       const fileList: FileList = event.target.files !== null ? event.target.files : event;
       const formData = new FormData();
       if (fileList) {
-        for (let i = 0; i < fileList.length; i++) {
-          if (!this.paramname) {
-            this.paramname = 'file';
-          }
-          formData.append(this.paramname, fileList[i]);
-        }
-        this.dataService.uploadFile(this.httpurl, this.httpmethod, formData).subscribe(
-          (response: any) => {
-            this.responseData = response;
-          },
-          (error: any) => {
-          },
-          () => {
-            if (this.responseData) {
-              this.onFileUpload.emit(this.responseData);
-            }
-          },
-        );
+        this.FileListExist(fileList, formData);
+
         if (fileList.length === 1) {
           const fsize = this.formatBytes(fileList[0].size, 2);
           this.uploadedFiles.push({ name: fileList[0].name, size: fsize });
@@ -210,5 +180,44 @@ export class AmexioFileUploadComponent implements OnInit, AfterViewInit {
         }
       }
     }
+  }
+
+  FileListExist(fileList: any, formData: any) {
+    for (let i = 0; i < fileList.length; i++) {
+      if (!this.paramname) {
+        this.paramname = 'file';
+      }
+      formData.append(this.paramname, fileList[i]);
+    }
+    this.dataService.uploadFile(this.httpurl, this.httpmethod, formData).subscribe(
+      (response: any) => {
+        this.responseData = response;
+      },
+      (error: any) => {
+      },
+      () => {
+        if (this.responseData) {
+          this.onFileUpload.emit(this.responseData);
+        }
+      },
+    );
+  }
+
+  uploadSingleFile(event: any) {
+    const formData = new FormData();
+    formData.append(this.paramname, event);
+    this.dataService.uploadFile(this.httpurl, this.httpmethod, formData).subscribe(
+      (response: any) => {
+        this.responseData = response;
+      },
+      (error: any) => {
+      },
+      () => {
+        if (this.responseData) {
+          this.onFileUpload.emit(this.responseData);
+        }
+      },
+    );
+    this.uploadedFiles.push({ name: event.name, size: this.formatBytes(event.size, 2) });
   }
 }
