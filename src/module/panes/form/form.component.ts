@@ -340,6 +340,30 @@ headerPadding:string;
           );
         }
 
+        if (this.radio) {
+          this.radio.forEach((node) => node.isComponentValid.subscribe(
+            (eventdata:any) =>{
+            this.validationFlagSet(node.isValid,node,'Radio Group');
+            })
+          );
+        }
+
+        if (this.chkBoxGrp && this.chkBoxGrp.length > 0) {
+          this.chkBoxGrp.forEach((node) => node.isComponentValid.subscribe(
+            (eventdata:any) =>{
+            this.validationFlagSet(node.isValid,node,'Check Group');
+            })
+          );
+        }
+
+        if (this.typeahead && this.typeahead.length > 0) {
+          this.typeahead.forEach((node) => node.isComponentValid.subscribe(
+            (eventdata:any) =>{
+            this.validationFlagSet(node.isValid,node,'Typeahead');
+            })
+          );
+        }
+
       }
 
 

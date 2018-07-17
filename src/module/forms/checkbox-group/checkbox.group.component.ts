@@ -153,7 +153,9 @@ description : fire when check box click
 
   calculatedColSize: any;
 
-  isComponentValid : boolean;
+  // isComponentValid : boolean;
+  isValid : boolean;
+  @Output() isComponentValid:any=new EventEmitter<any>();
 
   elementId: string;
 
@@ -173,7 +175,9 @@ description : fire when check box click
 
   ngOnInit() {
 
-    this.isComponentValid = !this.required;
+    // this.isComponentValid = !this.required;
+    this.isValid=!this.required;
+    this.isComponentValid.emit(!this.required);
     if (this.httpmethod && this.httpurl) {
       this.amxHttp.fetchData(this.httpurl, this.httpmethod).subscribe(response => {
         this.responseData = response;
@@ -194,7 +198,9 @@ description : fire when check box click
    checkDefaultValidation() {
     this.viewData.forEach((opt: any)=>{
       if(opt.hasOwnProperty('checked') && opt.checked){
-        this.isComponentValid = true;
+        // this.isComponentValid = true;
+        this.isValid=true;
+        this.isComponentValid.emit(true);
         return;
       }
     });
@@ -274,13 +280,16 @@ description : fire when check box click
     }
      if(this.selectedCheckBox.length > 0 && this.required)
      {
-       this.isComponentValid = false;
+      //  this.isComponentValid = false;
+      let isValid:boolean=false;
        this.selectedCheckBox.forEach((c)=>{
           if(c.checked)
           {
-            this.isComponentValid = true;
+             isValid = true;
           }
         });
+        this.isValid=isValid;
+        this.isComponentValid.emit(isValid);
      }
     this.onSelection.emit(sRows);
   }

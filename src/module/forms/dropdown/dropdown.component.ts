@@ -325,7 +325,8 @@ description : Set enable / disable popover.
 
   posixUp : boolean;
 
-  isComponentValid : boolean;
+  // isComponentValid : boolean;
+  @Output() isComponentValid:any=new EventEmitter<any>();
 
   @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
   public onElementOutClick(targetElement: HTMLElement) {
@@ -355,7 +356,8 @@ description : Set enable / disable popover.
   }
 
   ngOnInit() {
-    this.isComponentValid = this.allowblank;
+    // this.isComponentValid = this.allowblank;
+    this.isComponentValid.emit(this.allowblank);
     if (this.placeholder == '' || this.placeholder == null) this.placeholder = 'Choose Option';
     if (this.httpmethod && this.httpurl) {
       this.dataService.fetchData(this.httpurl, this.httpmethod).subscribe(response => {
@@ -414,7 +416,7 @@ description : Set enable / disable popover.
       this.viewData.forEach((item: any) => {
         if (item[valueKey] == val)
         {
-          this.isComponentValid = true;
+          // this.isComponentValid = true;
           this.displayValue = item[displayKey];
           this.onSingleSelect.emit(item);
         }
@@ -446,7 +448,7 @@ description : Set enable / disable popover.
       this.multiselect ? this.showToolTip = true : this.showToolTip = false;
       this.onSingleSelect.emit(row);
     }
-  this.isComponentValid = true;
+  // this.isComponentValid = true;
   }
 
   setMultiSelectData () {
@@ -500,11 +502,12 @@ description : Set enable / disable popover.
   }
   onChange(event: any) {
     this.value = event;
+    this.isComponentValid.emit(true);
   }
 
   onInput(input : any) {
     this.input.emit();
-    this.isComponentValid = input.valid;
+    // this.isComponentValid = input.valid;
     //this.input.emit(this.value);
   }
 
@@ -529,10 +532,10 @@ description : Set enable / disable popover.
         //this.selectedindex = 0;
       }
     }
-    
+
     if(event.keyCode === 8){
       this.value = "";
-    }    
+    }
     if(event.keyCode === 40 || event.keyCode === 38 || event.keyCode === 13)
     {
       this.navigateUsingKey(event);
@@ -623,7 +626,7 @@ description : Set enable / disable popover.
       if(event.target && event.target.value && this.filteredOptions && this.filteredOptions.length === 1){
         const fvalue = event.target.value;
         let row = this.filteredOptions[0];
-        const rvalue = row[this.displayfield]; 
+        const rvalue = row[this.displayfield];
         console.log(fvalue +" "+" "+rvalue+" "+this.filteredOptions.length);
         if(fvalue && rvalue && (fvalue.toLowerCase() === rvalue.toLowerCase())){
           this.onItemSelect(row);
@@ -658,7 +661,7 @@ description : Set enable / disable popover.
           if(this.viewData && this.viewData.length > 0) {
             this.viewData.forEach((item: any) => {
               if (item[this.valuefield] == value) {
-                this.isComponentValid = true;
+                // this.isComponentValid = true;
               }
             });
           }
@@ -666,7 +669,7 @@ description : Set enable / disable popover.
         }
       } else {
         this.value = '';
-        this.isComponentValid = false;
+        // this.isComponentValid = false;
       }
     }
     /*if(value != null) {

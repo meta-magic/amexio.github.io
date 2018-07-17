@@ -169,7 +169,10 @@ get data() : any{
 
   _errormsg: string;
 
-  isComponentValid : boolean;
+  // isComponentValid : boolean;
+  isValid : boolean;
+
+  @Output() isComponentValid:any=new EventEmitter<any>();
 
   get errormsg(): string {
     return this._errormsg;
@@ -311,7 +314,9 @@ get data() : any{
   }
   ngOnInit() {
 
-    this.isComponentValid = this.allowblank;
+    // this.isComponentValid = this.allowblank;
+    this.isValid=this.allowblank;
+    this.isComponentValid.emit(this.allowblank);
 
     if (this.placeholder == '' || this.placeholder == null) this.placeholder = 'Choose Option';
 
@@ -443,7 +448,8 @@ get data() : any{
 
       this.viewData.forEach((item: any) => {
         if (item[valueKey] == val) {
-          this.isComponentValid = true;
+          // this.isComponentValid = true;
+          this.isValid=true;
           this.displayValue = item[displayKey];
         }
       });
@@ -455,7 +461,9 @@ get data() : any{
     this.value = row[this.valuefield];
     this.displayValue = row[this.displayfield];
     this.showToolTip = false;
-    this.isComponentValid = true;
+    // this.isComponentValid = true;
+    this.isValid=true;
+    this.isComponentValid.emit(true)
     this.onClick.emit(row);
   }
 
@@ -505,7 +513,8 @@ get data() : any{
 
   onInput(input : any) {
     if(!this.allowblank) {
-      this.isComponentValid = input.valid;
+      // this.isComponentValid = input.valid;
+      this.isValid=input.valid;
     }
     this.input.emit(this.value);
   }
