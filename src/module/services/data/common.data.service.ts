@@ -22,7 +22,7 @@ export class CommonDataService {
   }
 
   uploadFile(serviceUrl: string, methodType: string, requestData: any): Observable<any> {
-    let requestJson = requestData;
+    const requestJson = requestData;
     const headers = new HttpHeaders().append('Access-Control-Allow-Origin', '*');
     if (methodType.toUpperCase() === 'POST') {
       return this._http.post(serviceUrl, requestJson, {headers});

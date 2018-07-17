@@ -1,25 +1,25 @@
 
 import { isPlatformBrowser } from '@angular/common';
-import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 
 @Injectable()
 export class DeviceQueryService {
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+  constructor( @Inject(PLATFORM_ID) private platformId: Object) {
 
   }
 
   rules = {
-      print: 'print',
-      screen: 'screen',
-      phone: '(max-width: 767px)',
-      tablet: '(min-width: 768px) and (max-width: 1024px)',
-      desktop: '(min-width: 1025px)',
-      portrait: '(orientation: portrait)',
-      landscape: '(orientation: landscape)',
-      retina: '(-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi)',
-    };
+    print: 'print',
+    screen: 'screen',
+    phone: '(max-width: 767px)',
+    tablet: '(min-width: 768px) and (max-width: 1024px)',
+    desktop: '(min-width: 1025px)',
+    portrait: '(orientation: portrait)',
+    landscape: '(orientation: landscape)',
+    retina: '(-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi)',
+  };
 
-  Check= function(mq: any) {
+  Check = function(mq: any) {
     if (isPlatformBrowser(this.platformId)) {
       if (!mq) {
         return;
@@ -41,7 +41,7 @@ export class DeviceQueryService {
     }
   }
 
-  IsTablet= function() {
+  IsTablet = function() {
     if (isPlatformBrowser(this.platformId)) {
       return window.matchMedia(this.rules.tablet).matches;
     } else {
@@ -49,7 +49,7 @@ export class DeviceQueryService {
     }
   };
 
-  IsDesktop= function() {
+  IsDesktop = function() {
     if (isPlatformBrowser(this.platformId)) {
       return window.matchMedia(this.rules.desktop).matches;
     } else {
@@ -57,7 +57,7 @@ export class DeviceQueryService {
     }
   };
 
-  IsPortrait= function() {
+  IsPortrait = function() {
     if (isPlatformBrowser(this.platformId)) {
       return window.matchMedia(this.rules.portrait).matches;
     } else {
@@ -65,7 +65,7 @@ export class DeviceQueryService {
     }
   };
 
-  IsLandscape= function() {
+  IsLandscape = function() {
     if (isPlatformBrowser(this.platformId)) {
       return window.matchMedia(this.rules.landscape).matches;
     } else {
@@ -73,7 +73,7 @@ export class DeviceQueryService {
     }
   };
 
-  IsRetina= function() {
+  IsRetina = function() {
     if (isPlatformBrowser(this.platformId)) {
       return window.matchMedia(this.rules.retina).matches;
     } else {
@@ -81,9 +81,9 @@ export class DeviceQueryService {
     }
   };
 
-  browserWindow= function() {
+  browserWindow = () => {
     return window;
-  };
+  }
 
   /**********************************************
    EVENT LISTENERS BY TYPE
@@ -92,11 +92,7 @@ export class DeviceQueryService {
     if (typeof callBack === 'function') {
       if (isPlatformBrowser(this.platformId)) {
         const mql: MediaQueryList = window.matchMedia(this.rules.phone);
-        mql.addListener(( mql: MediaQueryList) => {
-          if (mql.matches) {
-            callBack(mql);
-          }
-        });
+        this.mqlMethod(callBack, mql);
       }
     }
   }
@@ -105,12 +101,7 @@ export class DeviceQueryService {
     if (typeof callBack === 'function') {
       if (isPlatformBrowser(this.platformId)) {
         const mql: MediaQueryList = window.matchMedia(this.rules.tablet);
-        mql.addListener(
-          (mql: MediaQueryList) => {
-          if (mql.matches) {
-            callBack(mql);
-          }
-        });
+        this.mqlMethod(callBack, mql);
       }
     }
   }
@@ -119,11 +110,7 @@ export class DeviceQueryService {
     if (typeof callBack === 'function') {
       if (isPlatformBrowser(this.platformId)) {
         const mql: MediaQueryList = window.matchMedia(this.rules.desktop);
-        mql.addListener((mql: MediaQueryList) => {
-          if (mql.matches) {
-            callBack(mql);
-          }
-        });
+        this.mqlMethod(callBack, mql);
       }
     }
   }
@@ -132,11 +119,7 @@ export class DeviceQueryService {
     if (typeof callBack === 'function') {
       if (isPlatformBrowser(this.platformId)) {
         const mql: MediaQueryList = window.matchMedia(this.rules.portrait);
-        mql.addListener((mql: MediaQueryList) => {
-          if (mql.matches) {
-            callBack(mql);
-          }
-        });
+        this.mqlMethod(callBack, mql);
       }
 
     }
@@ -146,12 +129,16 @@ export class DeviceQueryService {
     if (typeof callBack === 'function') {
       if (isPlatformBrowser(this.platformId)) {
         const mql: MediaQueryList = window.matchMedia(this.rules.landscape);
-        mql.addListener((mql: MediaQueryList) => {
-          if (mql.matches) {
-            callBack(mql);
-          }
-        });
+        this.mqlMethod(callBack, mql);
       }
     }
+  }
+
+  mqlMethod(callBack: any, mql: any) {
+    mql.addListener((mql1: MediaQueryList) => {
+      if (mql1.matches) {
+        callBack(mql);
+      }
+    });
   }
 }
