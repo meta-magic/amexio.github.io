@@ -150,20 +150,20 @@ export class AmexioSideNav implements OnInit {
     this.smalldevice = false;
     this.sidenavexpandedinsmalldevice = false;
     this.width = '20%';
-    let that = this;
+    const that = this;
 
     /*---------------------------------------------------
      TAP INTO LISTENERS FOR WHEN DEVICE WIDTH CHANGES
      ---------------------------------------------------*/
-    this.matchMediaService.OnPhone(function(mediaQueryList: MediaQueryList) {
+    this.matchMediaService.OnPhone((mediaQueryList: MediaQueryList) => {
       that.handleDeviceSettings(false);
     });
 
-    this.matchMediaService.OnTablet(function(mediaQueryList: MediaQueryList) {
+    this.matchMediaService.OnTablet((mediaQueryList: MediaQueryList)=> {
       that.handleDeviceSettings(false);
     });
 
-    this.matchMediaService.OnDesktop(function(mediaQueryList: MediaQueryList) {
+    this.matchMediaService.OnDesktop((mediaQueryList: MediaQueryList)=> {
       that.handleDeviceSettings(false);
     });
   }
@@ -196,8 +196,8 @@ export class AmexioSideNav implements OnInit {
     // Check if key is added?
     let responsedata = httpResponse;
     if (this.datareader != null) {
-      let dr = this.datareader.split('.');
-      for (let ir = 0; ir < dr.length; ir++) {
+      const dr = this.datareader.split('.');
+     for (let ir = 0; ir < dr.length; ir++) {
         responsedata = responsedata[dr[ir]];
       }
     } else {
