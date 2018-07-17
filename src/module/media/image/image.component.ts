@@ -78,7 +78,7 @@ version : 4.0 onwards
 default :
 description : Used for custom style classes
 */
-  @Input('c-class') cclass: string = "";
+  @Input('c-class') cclass = "";
 
    /*
 Properties
@@ -184,7 +184,7 @@ description : Description to display on hover
 */
   @Input('para') titlePara: string;
 
-  overlay: boolean = false;
+  overlay = false;
   overlayTextClass: string;
   constructor() {
   }
@@ -208,7 +208,7 @@ description : Description to display on hover
       if (this.overlayText) {
         this.overlayTextClass = "overlay-text overlay-" + this.overlayEffect + "-text";
       }
-      this.overlayEffect = "overlay overlay-" + this.overlayEffect;  
+      this.overlayEffect = "overlay overlay-" + this.overlayEffect;
     }
     if (this.position && !this.imgTitle) {
       this.imgTitle = " ";

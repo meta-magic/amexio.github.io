@@ -208,6 +208,9 @@ description : If "true" add two context menus i.e close All and close Others tab
 
   showprev = false;
 
+  private tabWidth1: number;
+  private totalTabs: number;
+
   shownext = false;
 
   content: string;
@@ -259,9 +262,6 @@ description : If "true" add two context menus i.e close All and close Others tab
       this.tabCollection = this.tabLocalData;
     }
   }
-
-  private tabWidth1: number;
-  private totalTabs: number;
 
   ngAfterViewInit() {
     this.tabWidth1 = this.tabs.nativeElement.offsetWidth;
@@ -322,7 +322,7 @@ description : If "true" add two context menus i.e close All and close Others tab
     instance.active = true;
     instance.closable = closable;
 
-    if (instance.amexiocolor = '') {
+    if (instance.amexiocolor === '') {
       instance.amexiocolor = 'amexio-top-tab-black';
     } else {
       instance.amexiocolor = 'amexio-top-tab-' + amexiocolor;
