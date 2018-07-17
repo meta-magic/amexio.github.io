@@ -101,6 +101,8 @@ not in use
 
   progressclass = '';
 
+  private strippedCss = 'stripped ';
+
   constructor() {
   }
   ngOnInit() {
@@ -110,12 +112,12 @@ not in use
       this.height  = '20px';
     }
     if (this.stripped) {
-      this.progressclass = this.progressclass  + "stripped ";
+      this.progressclass = this.progressclass + this.strippedCss;
     }
     if (this.type && !this.amexiocolor) {
-      this.progressclass = this.progressclass  + this.type.toLocaleLowerCase();
+      this.progressclass = this.progressclass + this.type.toLocaleLowerCase();
     } else if (this.amexiocolor && !this.type) {
-      this.progressclass = this.progressclass  + this.amexiocolor.toLocaleLowerCase();
+      this.progressclass = this.progressclass + this.amexiocolor.toLocaleLowerCase();
     }
   }
 }
