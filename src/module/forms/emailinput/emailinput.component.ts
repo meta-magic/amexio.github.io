@@ -190,6 +190,8 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
    */
   @Output() change: any = new EventEmitter<any>();
 
+  componentClass : any;
+
   isValid: boolean;
 
   constructor() {
@@ -221,26 +223,24 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
     }
   }
 
-  //Set touched on blur
-  onblur() {
-    this.onTouchedCallback();
-    this.showToolTip = false;
-    this.onBlur.emit(this.value);
-    if (!this.emailpatter.test(this.value)) {
-      this.isValid = false;
-    } else {
-      this.isValid = true;
-    }
-  }
-
   onFocus() {
     this.showToolTip = true;
     this.focus.emit(this.value);
   }
 
+  //Set touched on blur
+  onblur(input:any) {
+    this.onTouchedCallback();
+    this.showToolTip = false;
+    this.componentClass = this.getValidationClasses(input);
+    this.onBlur.emit(this.value);
+  }
+
+  
+
   onInput(input:any) {
     // this.isComponentValid = input.valid;
-    this.getValidationClasses(input);
+    this.componentClass = this.getValidationClasses(input);
     this.input.emit(this.value);
     this.isComponentValid.emit(this.isValid);
   }
