@@ -217,11 +217,11 @@ description :  Get selected value Object.
   }
 
   leftSwitch() {
-    let flag: boolean;
+    // let flag: boolean;
     if (this.switchingObject && this.availableData) {
       for (const ir of this.availableData) {
         if ((ir)[this.valuefield] === this.switchingObject[this.valuefield]) {
-          flag = true;
+          // flag = true;
         }
       }
     }
