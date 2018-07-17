@@ -157,7 +157,7 @@ description :  Get selected value Object.
     let responsedata = httpResponse;
     if (this.datareader != null) {
       const dr = this.datareader.split('.');
-      for (const ir  of dr) {
+      for (const ir of dr) {
         responsedata = responsedata[ir];
       }
       responsedata.forEach((option: any, index: any) => {
@@ -180,7 +180,7 @@ description :  Get selected value Object.
     this.objectIndex = index;
     for (const ir of this.availableData) {
       if ((ir)[this.valuefield] === data[this.valuefield]) {
-       ir['isSelected'] = true;
+        ir['isSelected'] = true;
       } else {
         ir['isSelected'] = false;
       }
@@ -217,11 +217,9 @@ description :  Get selected value Object.
   }
 
   leftSwitch() {
-    // let flag: boolean;
     if (this.switchingObject && this.availableData) {
       for (const ir of this.availableData) {
         if ((ir)[this.valuefield] === this.switchingObject[this.valuefield]) {
-          // flag = true;
         }
       }
     }
@@ -251,9 +249,7 @@ description :  Get selected value Object.
     if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected')) {
       if (this.switchingObject['isSelected']) {
         this.selectedData.forEach((opt: any, i: any) => {
-          if (opt[this.valuefield] === this.switchingObject[this.valuefield]) {
-            this.objectIndex = i;
-          }
+          this.getIndexObject(opt, i);
         });
         if (this.objectIndex !== 0) {
           const index = this.selectedData[this.objectIndex];
@@ -270,9 +266,7 @@ description :  Get selected value Object.
     if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected')) {
       if (this.switchingObject['isSelected']) {
         this.selectedData.forEach((opt: any, i: any) => {
-          if (opt[this.valuefield] === this.switchingObject[this.valuefield]) {
-            this.objectIndex = i;
-          }
+          this.getIndexObject(opt, i);
         });
         if (this.selectedData.length - 1 !== this.objectIndex) {
           const index = this.selectedData[this.objectIndex];
@@ -289,9 +283,7 @@ description :  Get selected value Object.
     const tempArray: any = [];
     if (this.switchingObject != null && this.switchingObject['isSelected']) {
       this.selectedData.forEach((opt: any, i: any) => {
-        if (opt[this.valuefield] === this.switchingObject[this.valuefield]) {
-          this.objectIndex = i;
-        }
+       this.getIndexObject(opt, i);
       });
       if (this.selectedData.length > 1) {
         tempArray[0] = this.selectedData[this.objectIndex];
@@ -308,9 +300,7 @@ description :  Get selected value Object.
   moveBottom() {
     if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected')) {
       this.selectedData.forEach((opt: any, i: any) => {
-        if (opt[this.valuefield] === this.switchingObject[this.valuefield]) {
-          this.objectIndex = i;
-        }
+       this.getIndexObject(opt, i);
       });
       if (this.switchingObject['isSelected'] && this.selectedData.length > 1) {
         this.selectedData.splice(this.objectIndex, 1);
@@ -325,4 +315,9 @@ description :  Get selected value Object.
     this.selectedRecords.emit(this.selectedData);
   }
 
+  getIndexObject(opt: any, i: any) {
+    if (opt[this.valuefield] === this.switchingObject[this.valuefield]) {
+      this.objectIndex = i;
+    }
+  }
 }

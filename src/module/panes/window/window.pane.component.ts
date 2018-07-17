@@ -203,6 +203,7 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit {
    default : none
    description : close the window
    */
+  private window = ' window-';
 
   @Output() close: EventEmitter<any> = new EventEmitter<any>();
   constructor() {
@@ -215,7 +216,7 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit {
     if (this.horizontalposition == null) {
       this.horizontalposition = 'center';
     }
-    this.positionclass = "window-" + this.verticalposition + " window-" + this.horizontalposition;
+    this.positionclass = this.window + this.verticalposition + this.window + this.horizontalposition;
   }
   absoluteposition = false;
   positionclass: string;
@@ -264,13 +265,13 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit {
       this.footeralign = 'right';
     }
 
-    if (  this.verticalposition === "") {
+    if (this.verticalposition === '') {
       this.verticalposition = 'center';
     }
-    if ( this.horizontalposition === "") {
+    if (this.horizontalposition === '') {
       this.horizontalposition = 'center';
     }
-    this.positionclass = "window-" + this.verticalposition + " window-" + this.horizontalposition;
+    this.positionclass = this.window + this.verticalposition + this.window + this.horizontalposition;
   }
 
   ngOnChanges(changes: SimpleChanges) {
