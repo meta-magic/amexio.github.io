@@ -33,7 +33,7 @@ import {IconLoaderService} from '../../services/icon/icon.service';
   `,
 })
 
-export class AmexioNavIconPane implements OnInit {
+export class AmexioNavIconPaneComponent implements OnInit {
 
   @Input() key: string;
 
@@ -51,7 +51,7 @@ export class AmexioNavIconPane implements OnInit {
   getIconClass(): string {
     if (this.iconLoaderService.iconMappings != null) {
 
-      let iconObject = this.iconLoaderService.iconMappings.find((obj: any) => obj.component === this.key);
+      const iconObject = this.iconLoaderService.iconMappings.find((obj: any) => obj.component === this.key);
       if (iconObject != null) {
         return iconObject [this.iconLoaderService.iconToUse.toString()];
       }else {

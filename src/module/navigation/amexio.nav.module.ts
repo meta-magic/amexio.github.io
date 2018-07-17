@@ -16,7 +16,7 @@ import {AmexioMediaModule} from '../media/amexio.media.module';
 
 import {DockbarComponent} from './dockedbar/dockbaritem';
 import {DockedBarToolComponent} from './dockedbar/dockettoolbar.component';
-import {AmexioNavIconPane} from './icon/icon.component';
+import {AmexioNavIconPaneComponent} from './icon/icon.component';
 import {AmexioMenuBarComponent} from './menubar/menubar.component';
 import {AmexioNavActionComponent } from './navbar/navaction.component';
 import {AmexioNavBarComponent} from './navbar/navbar.component';
@@ -47,7 +47,7 @@ const NAV_COMPONENTS = [
   DockbarComponent,
   DockedBarToolComponent,
   AmexioMenuBarComponent,
-  AmexioNavIconPane,
+  AmexioNavIconPaneComponent,
 ];
 
 @NgModule({
