@@ -7,15 +7,15 @@ import { ChangeDetectorRef, Component, ElementRef, EventEmitter, forwardRef, Hos
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 const noop = () => {
 };
-export const CUSTOM_DATETIME_Style_CONTROL_VALUE_ACCESSOR: any = {
-  provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioDateTimePickerComponent), multi: true,
-};
+
 @Component({
   selector: 'amexio-date-time-picker',
   templateUrl: './datetimepicker.component.html',
   styles: [`
   `],
-  providers: [CUSTOM_DATETIME_Style_CONTROL_VALUE_ACCESSOR],
+  providers: [{
+    provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioDateTimePickerComponent), multi: true,
+  }],
 })
 export class AmexioDateTimePickerComponent implements OnInit {
   /*
@@ -235,40 +235,17 @@ export class AmexioDateTimePickerComponent implements OnInit {
       this.dateformat = 'dd/MM/yyyy';
     }
     if (this.minDate.length > 0 || this.maxDate.length > 0) {
-      const min = new Date(this.minDate);
-      const max = new Date(this.maxDate);
-      this.yearList1.forEach((element: any) => {
-        if (element.year === min.getFullYear() ||
-          (element.year === min.getFullYear() && element.year === max.getFullYear())) {
-          this.backArrowFlag = true;
-        }
-        if (element.year === max.getFullYear()) {
-          this.forwardArrowFlag = true;
-        }
-      });
-      this.yearList2.forEach((element: any) => {
-        if (element.year === min.getFullYear()) {
-          this.backArrowFlag = true;
-        }
-        if (element.year === max.getFullYear() ||
-          (element.year === min.getFullYear() && element.year === max.getFullYear())) {
-          this.forwardArrowFlag = true;
-        }
-      });
+      this.minMaxDateFound();
     }  // main if ends
     // logic for disabling yrs before min and after max
     if (this.minDate.length > 0 || this.maxDate.length > 0) {
       const min = new Date(this.minDate);
       const max = new Date(this.maxDate);
       this.yearList1.forEach((element: any) => {
-        if (element.year < min.getFullYear() || element.year > max.getFullYear()) {
-          element.disabled = true;
-        }
+      this.disableMinMaxYear(element, min, max);
       });
       this.yearList2.forEach((element: any) => {
-        if (element.year < min.getFullYear() || element.year > max.getFullYear()) {
-          element.disabled = true;
-        }
+       this.disableMinMaxYear(element, min, max);
       });
     }
   }
@@ -335,11 +312,11 @@ export class AmexioDateTimePickerComponent implements OnInit {
     }
   }
   onInput(event: any) {
-    if (event.target.value !== null && event.target.value !== '') {
+    if (event.target.value != null && event.target.value !== '') {
       const timeValue = event.target.value.split(':');
       if (timeValue != null) {
-        const hrs = parseInt(timeValue[0].trim());
-        const mins = parseInt(timeValue[1].trim());
+        const hrs = parseInt(timeValue[0].trim(), 10);
+        const mins = parseInt(timeValue[1].trim(), 10);
         this.selectedDate.setHours(hrs);
         this.selectedDate.setMinutes(mins);
         this.hrs = hrs;
@@ -371,48 +348,67 @@ export class AmexioDateTimePickerComponent implements OnInit {
     const max = new Date(this.maxDate);
     // checks if selected date is within maximum range of month
     if (state === 'plus') {
-      if (this.maxDate.length > 0) {
-        if (d.getFullYear() === max.getFullYear()) {
-          if (d.getMonth() === max.getMonth()) {
-          } else {
-            // *********check here******************* */
-            // logic to chk if year is valid
-            if (d.getFullYear() <= max.getFullYear()) {
-              if (d.getMonth() <= max.getMonth()) {
-                d.setMonth(d.getMonth() + mon);
-              }
-            }
-          }
-        } else {
-          // logic to chk if year is valid
-          if (d.getFullYear() <= max.getFullYear()) {
-            d.setMonth(d.getMonth() + mon);
-          }
-        }
-      } else { // outer ends
-        d.setMonth(d.getMonth() + mon);
-      } // checks if selected date is within minimum range of month
+      this.setPlusData(d, max, mon);
     } else if (state === 'minus') {
-      if (this.minDate.length > 0) {
-        if (d.getFullYear() === min.getFullYear()) {
-          if (d.getMonth() === min.getMonth()) {
-          } else { // logic to chk if year is valid
-            if (d.getFullYear() >= min.getFullYear()) {
-              if (d.getMonth() >= min.getMonth()) {
-                d.setMonth(d.getMonth() - mon);
-              }
-            }
-          }
-        } else {
-          d.setMonth(d.getMonth() - mon);
-        }
-      } else {
-        d.setMonth(d.getMonth() - mon);
-      }
+      this.setMinusData(d, min, mon);
     }
     this.currrentDate = d;
     this.initDate();
     event.stopPropagation();
+  }
+
+  // Set Plus Data
+  setPlusData(d: any, max: any, mon: any) {
+    if (this.maxDate.length > 0) {
+      if (d.getFullYear() === max.getFullYear()) {
+        this.setMaxFullYear(d, max, mon);
+      } else {
+        // logic to chk if year is valid
+        if (d.getFullYear() <= max.getFullYear()) {
+          d.setMonth(d.getMonth() + mon);
+        }
+      }
+    } else { // outer ends
+      d.setMonth(d.getMonth() + mon);
+    } // checks if selected date is within minimum range of month
+  }
+
+  // Set Max Full Year
+  setMaxFullYear(d: any, max: any, mon: any) {
+    if (d.getMonth() === max.getMonth()) {
+    } else {
+      // *********check here******************* */
+      // logic to chk if year is valid
+      if (d.getFullYear() <= max.getFullYear()) {
+        if (d.getMonth() <= max.getMonth()) {
+          d.setMonth(d.getMonth() + mon);
+        }
+      }
+    }
+  }
+  // Set Minus Data
+  setMinusData(d: any, min: any, mon: any) {
+    if (this.minDate.length > 0) {
+      if (d.getFullYear() === min.getFullYear()) {
+        this.setMinFullYear(d, min, mon);
+      } else {
+        d.setMonth(d.getMonth() - mon);
+      }
+    } else {
+      d.setMonth(d.getMonth() - mon);
+    }
+  }
+
+  // Set Min Full year
+  setMinFullYear(d: any, min: any, mon: any) {
+    if (d.getMonth() === min.getMonth()) {
+    } else { // logic to chk if year is valid
+      if (d.getFullYear() >= min.getFullYear()) {
+        if (d.getMonth() >= min.getMonth()) {
+          d.setMonth(d.getMonth() - mon);
+        }
+      }
+    }
   }
   // this function validates year
   setDateData1(state: string, mon: number, event: any) {
@@ -607,15 +603,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
     }
     if ((this.maxDate.length > 0 && this.minDate.length <= 0) ||
       (this.maxDate.length > 0 && this.minDate.length > 0)) {
-      // check if days greater than max return
-      // 1
-      if (days.getDate() > max.getDate() &&
-        days.getMonth() >= max.getMonth() && days.getFullYear() >= max.getFullYear()) {
-        return true;
-        // 2
-      } else if (days.getMonth() > max.getMonth() && days.getFullYear() === max.getFullYear()) {
-        return true;
-      }
+   this.validateMaxDate(days, max);
     }
     if ((this.maxDate.length <= 0 && this.minDate.length > 0) || (this.maxDate.length > 0 && this.minDate.length > 0)) {
       // 3
@@ -628,6 +616,18 @@ export class AmexioDateTimePickerComponent implements OnInit {
       }
     }
     this.disableddays(this.diabledDate);
+  }
+
+  validateMaxDate(days: any, max: any) {
+       // check if days greater than max return
+      // 1
+      if (days.getDate() > max.getDate() &&
+        days.getMonth() >= max.getMonth() && days.getFullYear() >= max.getFullYear()) {
+        return true;
+        // 2
+      } else if (days.getMonth() > max.getMonth() && days.getFullYear() === max.getFullYear()) {
+        return true;
+      }
   }
   disableddays(dates: any) {
     if (dates) {
@@ -652,29 +652,29 @@ export class AmexioDateTimePickerComponent implements OnInit {
   }
   dropdownDatePicker() {
     this.monthList1.forEach((element: any) => {
-      if (element.flag) {
-        element.flag = false;
-      }
+    this.elementFlagMethod(element);
     });
     this.monthList2.forEach((element: any) => {
-      if (element.flag) {
-        element.flag = false;
-      }
+      this.elementFlagMethod(element);
     });
     this.yearList1.forEach((element: any) => {
-      if (element.flag) {
-        element.flag = false;
-      }
+      this.elementFlagMethod(element);
     });
     this.yearList2.forEach((element: any) => {
-      if (element.flag) {
-        element.flag = false;
-      }
+      this.elementFlagMethod(element);
     });
     this.hostFlag = true;
     this.tempFlag = false;
     this.drop = true;
   }
+
+  // Added method to avois recursive code
+  private elementFlagMethod(element: any) {
+  if (element.flag) {
+    element.flag = false;
+  }
+}
+
   negateDrop() {
     this.hostFlag = true;
     this.drop = false;
@@ -683,14 +683,10 @@ export class AmexioDateTimePickerComponent implements OnInit {
   }
   getDropdownMonth(month: any) {
     this.monthList1.forEach((element: any) => {
-      if (element.flag) {
-        element.flag = false;
-      }
+     this.elementFlagMethod(element);
     });
     this.monthList2.forEach((element: any) => {
-      if (element.flag) {
-        element.flag = false;
-      }
+      this.elementFlagMethod(element);
     });
     this.monthList1.forEach((element: any) => {
       if (element.name === month.name) {
@@ -703,19 +699,44 @@ export class AmexioDateTimePickerComponent implements OnInit {
       }
     });
     switch (month.name) {
-      case 'Jan': this.monthNo = 0; break;
-      case 'Feb': this.monthNo = 1; break;
-      case 'Mar': this.monthNo = 2; break;
-      case 'Apr': this.monthNo = 3; break;
-      case 'May': this.monthNo = 4; break;
-      case 'Jun': this.monthNo = 5; break;
-      case 'Jul': this.monthNo = 6; break;
-      case 'Aug': this.monthNo = 7; break;
-      case 'Sep': this.monthNo = 8; break;
-      case 'Oct': this.monthNo = 9; break;
-      case 'Nov': this.monthNo = 10; break;
-      case 'Dec': this.monthNo = 11; break;
-      default: break;
+      case 'Jan':
+        this.monthNo = 0;
+        break;
+      case 'Feb':
+        this.monthNo = 1;
+        break;
+      case 'Mar':
+        this.monthNo = 2;
+        break;
+      case 'Apr':
+        this.monthNo = 3;
+        break;
+      case 'May':
+        this.monthNo = 4;
+        break;
+      case 'Jun':
+        this.monthNo = 5;
+        break;
+      case 'Jul':
+        this.monthNo = 6;
+        break;
+      case 'Aug':
+        this.monthNo = 7;
+        break;
+      case 'Sep':
+        this.monthNo = 8;
+        break;
+      case 'Oct':
+        this.monthNo = 9;
+        break;
+      case 'Nov':
+        this.monthNo = 10;
+        break;
+      case 'Dec':
+        this.monthNo = 11;
+        break;
+      default:
+        break;
     }
   }
   getDropdownYear(year: any) {
@@ -990,5 +1011,35 @@ export class AmexioDateTimePickerComponent implements OnInit {
         this.forwardArrowFlag = true;
       }
     });
+  }
+  // onInit Method: If min max date is provided
+  minMaxDateFound() {
+    const min = new Date(this.minDate);
+    const max = new Date(this.maxDate);
+    this.yearList1.forEach((element: any) => {
+      if (element.year === min.getFullYear() ||
+        (element.year === min.getFullYear() && element.year === max.getFullYear())) {
+        this.backArrowFlag = true;
+      }
+      if (element.year === max.getFullYear()) {
+        this.forwardArrowFlag = true;
+      }
+    });
+    this.yearList2.forEach((element: any) => {
+      if (element.year === min.getFullYear()) {
+        this.backArrowFlag = true;
+      }
+      if (element.year === max.getFullYear() ||
+        (element.year === min.getFullYear() && element.year === max.getFullYear())) {
+        this.forwardArrowFlag = true;
+      }
+    });
+  }
+
+  // Method to disable when min max year provided
+  disableMinMaxYear(element: any, min: any, max: any) {
+    if (element.year < min.getFullYear() || element.year > max.getFullYear()) {
+      element.disabled = true;
+    }
   }
 }
