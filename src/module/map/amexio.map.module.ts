@@ -4,7 +4,7 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 
 import {GeoChartComponent} from './geochart/geo.chart.component';
-import {MapProperties} from './mapproperties/map.properties';
+import {MapPropertiesComponent} from './mapproperties/map.properties';
 import {MapTitleComponent} from './maptitle/map.title.component';
 import {TreeMapComponent} from './treemap/treemap.map.component';
 
@@ -18,7 +18,7 @@ export * from './map.loader.service';
 export * from '../services/data/common.data.service';
 
 const MAP_COMPONENTS = [
-  MapProperties,
+  MapPropertiesComponent,
   GeoChartComponent,
   TreeMapComponent,
   MapTitleComponent,

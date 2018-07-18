@@ -10,7 +10,7 @@ amexio-ng-extensions/maps
  */
 import { AfterContentInit, Component, ContentChildren, ElementRef, Input, OnInit, QueryList, ViewChild} from '@angular/core';
 import { MapLoaderService } from '../map.loader.service';
-import { MapProperties } from '../mapproperties/map.properties';
+import { MapPropertiesComponent} from '../mapproperties/map.properties';
 
 declare var google: any;
 @Component({
@@ -187,10 +187,10 @@ export class GeoChartComponent implements AfterContentInit, OnInit {
   */
   @Input('unused-region-color') unusedregioncolor: string;
 
-  @ContentChildren(MapProperties) chartAreaComp: QueryList<MapProperties>;
+  @ContentChildren(MapPropertiesComponent) chartAreaComp: QueryList<MapPropertiesComponent>;
 
-  chartAreaArray: MapProperties[];
-  chartAreaComponent: MapProperties;
+  chartAreaArray: MapPropertiesComponent[];
+  chartAreaComponent: MapPropertiesComponent;
   @ViewChild('geochart') private geochart: ElementRef;
 
   constructor(private loader: MapLoaderService) {

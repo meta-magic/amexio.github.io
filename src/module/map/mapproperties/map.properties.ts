@@ -20,7 +20,7 @@ import {Component, Input, OnInit} from '@angular/core';
 @Component({
   selector: 'amexio-map-properties', template: ``,
 })
-export class MapProperties implements OnInit {
+export class MapPropertiesComponent implements OnInit {
  /*
 Properties
 name : chart-background-color
