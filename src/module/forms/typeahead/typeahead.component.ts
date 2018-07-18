@@ -537,4 +537,8 @@ get data() : any{
     this.onTouchedCallback = fn;
   }
 
+     //THIS MEHTOD CHECK INPUT IS VALID OR NOT 
+     checkValidity():boolean{
+      return this.isValid;
+    }
 }

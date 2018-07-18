@@ -196,6 +196,7 @@ currrentDate: any;
 dateModel: any;
 
 // isComponentValid: boolean;
+isValid : boolean;
 @Output() isComponentValid:any=new EventEmitter<any>();
 backArrowFlag: boolean = false;
 forwardArrowFlag: boolean = false;
@@ -276,6 +277,7 @@ ngOnInit() {
     this.showToolTip = true;
   }
   // this.isComponentValid = !this.required;
+  this.isValid=!this.required;
   this.isComponentValid.emit(!this.required);
   if (this.dateformat != null) {
     this.dateformat = "dd/MM/yyyy";
@@ -394,6 +396,7 @@ onDateClick(dateObj: any) {
   this.dateModel = this.selectedDate;
   this.value = this.selectedDate;
   // this.isComponentValid = true;
+  this.isValid=true;
   this.isComponentValid.emit(true);
   if (this.inlineDatepicker) {
     this.showToolTip = true;
@@ -601,6 +604,8 @@ plus(type: string, event: any) {
   this.selectedDate.setMinutes(this.min);
   this.value = this.selectedDate;
   // this.isComponentValid = true;
+  this.isValid=true;
+  this.isComponentValid.emit(true);
   this.change.emit(this.value);
   event.stopPropagation();
 
@@ -628,6 +633,8 @@ minus(type: string, event: any) {
   this.selectedDate.setMinutes(this.min);
   this.value = this.selectedDate;
   // this.isComponentValid = true;
+  this.isValid=true;
+  this.isComponentValid.emit(true);
   this.change.emit(this.value);
   event.stopPropagation();
 }
@@ -667,8 +674,10 @@ writeValue(value: any) {
     if (this.required && this.innerValue instanceof Date || ('number' == typeof this.innerValue)) {
       this.dateModel = this.innerValue;
       // this.isComponentValid = true;
+      this.isValid=true;
     } else {
       // this.isComponentValid = false;
+      this.isValid=false;
       this.hrs = 0;
       this.min = 0;
 
@@ -697,11 +706,13 @@ onFocus(elem: any) {
 onFocusOut(value: any) {
   if (isNaN(Date.parse(value.value))) {
     // this.isComponentValid = false;
+    this.isValid=false;
     value.value = '';
   }
   else {
     this.value = Date.parse(value.value);
     // this.isComponentValid = true;
+    this.isValid=true;
   }
 }
 
@@ -1325,6 +1336,10 @@ if (element.year == max.getFullYear() ||
 }
 });
 
+}
+ //THIS MEHTOD CHECK INPUT IS VALID OR NOT 
+ checkValidity():boolean{
+  return this.isValid;
 }
 
 }

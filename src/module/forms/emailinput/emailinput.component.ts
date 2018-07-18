@@ -3,7 +3,7 @@
  Component Selector :  <amexio-email-input>
  Component Description : Email input field
  */
-import {Component, EventEmitter, forwardRef, Input, Output} from '@angular/core';
+import {Component, ElementRef,ViewChild,EventEmitter, forwardRef, Input, Output} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
 const noop = () => {
@@ -76,6 +76,8 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
   }
   // isComponentValid : boolean;
   @Output() isComponentValid:any=new EventEmitter<any>();
+
+  @ViewChild('ref', {read: ElementRef}) public inputRef: ElementRef;
 
   @Input('place-holder') placeholder: string;
 
@@ -232,17 +234,17 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
   onblur(input:any) {
     this.onTouchedCallback();
     this.showToolTip = false;
-    this.componentClass = this.getValidationClasses(input);
+    this.componentClass = this.validateClasses(input);
     this.onBlur.emit(this.value);
   }
 
-  
+
 
   onInput(input:any) {
     // this.isComponentValid = input.valid;
-    this.componentClass = this.getValidationClasses(input);
+    this.componentClass = this.validateClasses(input);
     this.input.emit(this.value);
-    this.isComponentValid.emit(this.isValid);
+    // this.isComponentValid.emit(this.isValid);
   }
 
   onChangeEv() {
@@ -266,7 +268,7 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
     this.onTouchedCallback = fn;
   }
 
-    getValidationClasses(inp: any): any {
+  validateClasses(inp: any): any {
     let classObj;
     if (!this.allowblank) {
       if (this.innerValue == null || this.innerValue == '') {
@@ -300,9 +302,14 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
       this.isValid = true;
       // this.isComponentValid = true;
     }
+    this.isComponentValid.emit(this.isValid);
     return classObj;
   }
-
+  
+ //THIS MEHTOD CHECK INPUT IS VALID OR NOT 
+  checkValidity():boolean{
+    return (this.inputRef && this.inputRef.nativeElement && this.inputRef.nativeElement.validity && this.inputRef.nativeElement.validity.valid);
+  }
 }
 
 

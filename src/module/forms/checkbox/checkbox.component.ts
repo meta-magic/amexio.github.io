@@ -76,6 +76,7 @@ description : On input event field.
   @Output() input: any = new EventEmitter<any>();
 
   // isComponentValid :boolean;
+  isValid:boolean;
   @Output() isComponentValid:any=new EventEmitter<any>();
 
   constructor() {
@@ -83,12 +84,15 @@ description : On input event field.
   }
   ngOnInit() {
     // this.isComponentValid = !this.required;
+    this.isValid=!this.required;
     this.isComponentValid.emit(!this.required);
   }
 
   onInput(input:any) {
 
     // this.isComponentValid = this.value;
+    this.isValid=this.value;
+    this.isComponentValid.emit(this.value);
     this.input.emit(this.value);
   }
 
@@ -96,6 +100,7 @@ description : On input event field.
   onClick() {
     this.value = !this.value;
     // this.isComponentValid = this.value;
+    this.isValid=this.value;
     this.isComponentValid.emit(this.value);
     this.onSelection.emit(this.value);
   }
@@ -112,8 +117,10 @@ description : On input event field.
  get value(): any {
     if(this.required) {
       // this.isComponentValid = this.innerValue;
+      this.isValid=this.innerValue;
     } else {
       // this.isComponentValid = true;
+      this.isValid=true;
     }
     return this.innerValue;
   }
@@ -151,6 +158,11 @@ description : On input event field.
   //From ControlValueAccessor interface
   registerOnTouched(fn: any) {
     this.onTouchedCallback = fn;
+  }
+
+   //THIS MEHTOD CHECK INPUT IS VALID OR NOT 
+   checkValidity():boolean{
+    return this.isValid;
   }
 
 }

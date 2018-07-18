@@ -326,6 +326,7 @@ description : Set enable / disable popover.
   posixUp : boolean;
 
   // isComponentValid : boolean;
+  isValid: boolean;
   @Output() isComponentValid:any=new EventEmitter<any>();
 
   @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
@@ -357,6 +358,7 @@ description : Set enable / disable popover.
 
   ngOnInit() {
     // this.isComponentValid = this.allowblank;
+    this.isValid=this.allowblank;
     this.isComponentValid.emit(this.allowblank);
     if (this.placeholder == '' || this.placeholder == null) this.placeholder = 'Choose Option';
     if (this.httpmethod && this.httpurl) {
@@ -417,6 +419,8 @@ description : Set enable / disable popover.
         if (item[valueKey] == val)
         {
           // this.isComponentValid = true;
+          this.isValid=true;
+          this.isComponentValid.emit(true);
           this.displayValue = item[displayKey];
           this.onSingleSelect.emit(item);
         }
@@ -449,6 +453,8 @@ description : Set enable / disable popover.
       this.onSingleSelect.emit(row);
     }
   // this.isComponentValid = true;
+  this.isValid=true;
+  this.isComponentValid.emit(true);
   }
 
   setMultiSelectData () {
@@ -492,6 +498,7 @@ description : Set enable / disable popover.
         });
         return this.displayValue == undefined ? '' : this.displayValue;
       }
+      
     }
 
 
@@ -502,12 +509,15 @@ description : Set enable / disable popover.
   }
   onChange(event: any) {
     this.value = event;
+    this.isValid=true;
     this.isComponentValid.emit(true);
   }
 
   onInput(input : any) {
     this.input.emit();
     // this.isComponentValid = input.valid;
+    this.isValid=input.valid;
+    this.isComponentValid.emit(input.valid);
     //this.input.emit(this.value);
   }
 
@@ -662,6 +672,7 @@ description : Set enable / disable popover.
             this.viewData.forEach((item: any) => {
               if (item[this.valuefield] == value) {
                 // this.isComponentValid = true;
+                this.isValid=true;
               }
             });
           }
@@ -670,6 +681,7 @@ description : Set enable / disable popover.
       } else {
         this.value = '';
         // this.isComponentValid = false;
+        this.isValid=true;
       }
     }
     /*if(value != null) {
@@ -695,5 +707,10 @@ description : Set enable / disable popover.
     if(!this.disabled)
       this.showToolTip = ! this.showToolTip;
   }
+
+    //THIS MEHTOD CHECK INPUT IS VALID OR NOT 
+    checkValidity():boolean{
+      return this.isValid;
+    }
 
 }

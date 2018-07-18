@@ -166,7 +166,7 @@ description : 	On input event field.
   ngOnInit() {
 
     // this.isComponentValid = this.allowblank;
-    this.isValid=true;
+    this.isValid=this.allowblank;
     this.isComponentValid.emit(this.allowblank);
 
     if (this.httpmethod && this.httpurl) {
@@ -228,5 +228,9 @@ description : 	On input event field.
     this.onSelection.emit(row);
   }
 
+    //THIS MEHTOD CHECK INPUT IS VALID OR NOT 
+    checkValidity():boolean{
+      return this.isValid;
+    }
 
 }

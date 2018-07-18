@@ -266,27 +266,31 @@ headerPadding:string;
         this.datefiled = this.queryDate.toArray();
         this.toggle = this.queryToggle.toArray();
 
-      this.btns.toArray().forEach((c)=>{
-        if (c.formbind == this.fname && !c.disabled) {
-          c.disabled = true;
-          this.buttons.push(c);
-          this.checkForm = true;
-
+        this.iterate(this.textinput,'Text Input');
+        this.iterate(this.textarea,'Text Area');
+        this.iterate(this.numinput,'Number Input');
+        this.iterate(this.emailinput,'Email Id');
+        this.iterate(this.password,'Password');
+        this.iterate(this.chkBox,'Checkbox');
+        this.iterate(this.chkBoxGrp,'Checkbox Group');
+        this.iterate(this.radio,'Radio Group');
+        this.iterate(this.typeahead,'TypeAhead');
+        this.iterate(this.tags,'Tags');
+        this.iterate(this.dropdown,'Dropdown');
+        this.iterate(this.datefiled,'Date field');
+        this.iterate(this.toggle,'Toggle');
+        this.btns.toArray().forEach((c)=>{
+          if ((c.formbind === this.fname) && !c.disabled) {
+           c.disabled = true;
+           this.buttons.push(c);
+           this.checkForm = true;
         }
       });
+        this.checkFormvalidity();
         this.footer = this.queryFooter.toArray();
         this.onResize();
-        this.checkFormvalidity();
+
     }
-
-
-    // ngDoCheck(){
-    //   let num=new Date().getTime();
-
-    //   console.log('FORM DO CHECK START '+num)
-    //     // this.checkFormvalidity();
-    //   console.log('FORM DO CHECK END '+(num-new Date().getTime()));
-    // }
 
     closeDialogue()
     {
@@ -298,10 +302,10 @@ headerPadding:string;
         this.componentError= [];
         if(this.textinput && this.textinput.length>0){
             this.textinput.forEach(node =>node.isComponentValid.subscribe(
-                (eventdata:any) =>{
-                this.validationFlagSet(node.isValid,node,'Text Input');
-                })
-          );
+              (eventdata:any) =>{
+               this.validationFlagSet(node.isValid,node,'Text Input');
+              })
+            );
         }
         if (this.textarea && this.textarea.length > 0) {
           this.textarea.forEach(node =>node.isComponentValid.subscribe(
@@ -335,11 +339,24 @@ headerPadding:string;
         if (this.chkBox) {
           this.chkBox.forEach((node) => node.isComponentValid.subscribe(
             (eventdata:any) =>{
-            this.validationFlagSet(node.required,node,'CheckBox Input');
+            this.validationFlagSet(node.isValid,node,'CheckBox Input');
             })
           );
         }
-
+        if (this.datefiled) {
+          this.datefiled.forEach((node) => node.isComponentValid.subscribe(
+            (eventdata:any) =>{
+            this.validationFlagSet(node.isValid,node,'Date Picker');
+            })
+          );
+        }
+        if (this.toggle && this.toggle.length > 0) {
+          this.toggle.forEach((node) => node.isComponentValid.subscribe(
+            (eventdata:any) =>{
+            this.validationFlagSet(node.isValid,node,'Toggle');
+            })
+          );
+        }
         if (this.radio) {
           this.radio.forEach((node) => node.isComponentValid.subscribe(
             (eventdata:any) =>{
@@ -351,7 +368,7 @@ headerPadding:string;
         if (this.chkBoxGrp && this.chkBoxGrp.length > 0) {
           this.chkBoxGrp.forEach((node) => node.isComponentValid.subscribe(
             (eventdata:any) =>{
-            this.validationFlagSet(node.isValid,node,'Check Group');
+            this.validationFlagSet(node.isValid,node,'CheckBoc Group');
             })
           );
         }
@@ -363,9 +380,30 @@ headerPadding:string;
             })
           );
         }
+        if (this.dropdown && this.dropdown.length > 0) {
+          this.dropdown.forEach((node) => node.isComponentValid.subscribe(
+            (eventdata:any) =>{
+            this.validationFlagSet(node.isValid,node,'Dropdown');
+            })
+          );
+        }
 
+        if (this.tags && this.tags.length > 0) {
+          this.tags.forEach((node) => node.isComponentValid.subscribe(
+            (eventdata:any) =>{
+            this.validationFlagSet(node.isValid,node,'Tags');
+            })
+          );
       }
-
+    }
+      iterate(components:any[],name:string){
+        setTimeout(()=>{
+          components.forEach((cmp)=>{
+            const isValid=cmp.checkValidity();
+             this.validationFlagSet(isValid,cmp,name);
+           });
+        },1000);
+      }
 
       validationFlagSet(flag:any, componentRef:any, componentName:string) {
 
@@ -374,25 +412,39 @@ headerPadding:string;
             if(obj.label===componentRef.fieldlabel){
               this.componentError.splice(index,1);
             }
-          })
+          });
         }else{
-          let errorObject:any = {};
-          errorObject['component'] = componentName;
-          errorObject['label'] = componentRef.fieldlabel;
-          this.componentError.push(errorObject);
-          this.checkForm=true;
+          this.addErrorMsg(componentRef,componentName);
         }
          if(!flag && this.isFormValid)
         {
           this.isFormValid = flag;
         }
-          this.buttons.forEach((c)=>{
-            if(this.componentError && this.componentError.length===0){
-              c.disabled = false;
-            }else{
-              c.disabled = true;
-            }
+        if(this.componentError && this.componentError.length>0){
+          this.buttons.forEach((button)=>{
+            button.disabled = true;
           });
+        }else if(this.componentError && this.componentError.length==0){
+          this.buttons.forEach((button)=>{
+            button.disabled = false;
+          });
+        }
+      }
+
+      //THIS METHOD IS USED FOR ADDING MSG 
+      addErrorMsg(componentRef:any,componentName:string){
+          let errorObject:any = {};
+          errorObject['component'] = componentName;
+          errorObject['label'] = componentRef.fieldlabel;
+          let flag : boolean = true;
+          this.componentError.forEach((error)=>{
+            if(error.label === componentRef.fieldlabel)
+              flag = false;
+          });
+
+          if(flag)
+            this.componentError.push(errorObject);
+          this.checkForm=true;
       }
 
       //REMOVE OBJECT FROM ARRAY

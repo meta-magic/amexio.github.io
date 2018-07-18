@@ -3,7 +3,7 @@
  Component Selector :  <amexio-password-input>
  Component Description : Password input field
 */
-import {Component, EventEmitter, forwardRef, Input, Output} from '@angular/core';
+import {Component,ElementRef,ViewChild, EventEmitter, forwardRef, Input, Output} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
 const noop = () => {
@@ -66,6 +66,8 @@ description : Sets if field is required
 
   // isComponentValid : boolean;
   @Output() isComponentValid:any=new EventEmitter<any>();
+  
+  @ViewChild('ref', {read: ElementRef}) public inputRef: ElementRef;
 
   regEx: RegExp;
 
@@ -298,7 +300,6 @@ description : On field value change event
 
   onChangeEv() {
     this.change.emit(this.value);
-    this.isComponentValid.emit(this.isValid);
   }
 
   //From ControlValueAccessor interface
@@ -362,7 +363,13 @@ description : On field value change event
       this.isValid = true;
       // this.isComponentValid = true;
     }
+    this.isComponentValid.emit(this.isValid);
     return classObj;
+  }
+
+   //THIS MEHTOD CHECK INPUT IS VALID OR NOT 
+   checkValidity():boolean{
+    return (this.inputRef && this.inputRef.nativeElement && this.inputRef.nativeElement.validity && this.inputRef.nativeElement.validity.valid);
   }
 
 }

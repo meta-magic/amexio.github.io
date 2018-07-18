@@ -293,4 +293,9 @@ description : fire when check box click
      }
     this.onSelection.emit(sRows);
   }
+
+  //THIS MEHTOD CHECK INPUT IS VALID OR NOT 
+  checkValidity():boolean{
+    return this.isValid;
+  }
 }

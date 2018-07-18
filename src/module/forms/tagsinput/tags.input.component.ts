@@ -242,7 +242,9 @@ description : Sets the trigger char length
 
   @ViewChild('dropdownitems', {read: ElementRef}) public dropdownitems: ElementRef;
 
-  isComponentValid : boolean;
+  // isComponentValid : boolean;
+  isValid:boolean;
+  @Output() isComponentValid:any=new EventEmitter<any>();
 
   maskloader:boolean=true;
 
@@ -251,7 +253,8 @@ description : Sets the trigger char length
   }
 
   ngOnInit() {
-    this.isComponentValid = this.allowblank;
+    // this.isComponentValid = this.allowblank;
+    this.isComponentValid.emit(this.allowblank);
 
     if (this.placeholder == '' || this.placeholder == null) this.placeholder = 'Choose Option';
 
@@ -456,7 +459,9 @@ description : Sets the trigger char length
     this.onSelections.push(value);
     this.onChange.emit(this.onSelections);
     if(this.onSelections.length > 0) {
-      this.isComponentValid = true;
+      // this.isComponentValid = true;
+      this.isValid=true;
+      this.isComponentValid.emit(true);
     }
     this.showToolTip = false;
 
@@ -469,9 +474,15 @@ description : Sets the trigger char length
     });
     this.onSelections.splice(indexToRemove, 1);
     if(this.onSelections.length == 0) {
-      this.isComponentValid = false;
+      // this.isComponentValid = false;
+      this.isValid=false;
+      this.isComponentValid.emit(false);
     }
     this.onChange.emit(this.onSelections);
   }
 
+    //THIS MEHTOD CHECK INPUT IS VALID OR NOT 
+    checkValidity():boolean{
+      return this.isValid;
+    }
 }

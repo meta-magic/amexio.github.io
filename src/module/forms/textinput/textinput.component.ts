@@ -4,7 +4,7 @@
  Component Description : Text input component has been created with different configurable attributes for validation (min/max length, allow blank, custom regex), custom error message, help, custom styles.
 */
 import {
-  Component, ElementRef, EventEmitter, forwardRef, Input, Output, ViewChild, ViewEncapsulation
+  Component, ElementRef,ViewChild, EventEmitter, forwardRef, Input, Output, ViewEncapsulation
 } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
@@ -310,7 +310,6 @@ description : On field value change event
    //THIS METHOD IS USED FOR COMPONENT VALIDATION
   onChangeEv() {
     this.change.emit(this.value);
-    this.isComponentValid.emit(this.isValid);
   }
 
   //From ControlValueAccessor interface
@@ -361,7 +360,14 @@ description : On field value change event
       this.isValid = true;
       // this.isComponentValid = true;
     }
+
+    this.isComponentValid.emit(this.isValid);
     return classObj;
+  }
+
+  //THIS MEHTOD CHECK INPUT IS VALID OR NOT 
+  checkValidity():boolean{
+    return (this.inputRef && this.inputRef.nativeElement && this.inputRef.nativeElement.validity && this.inputRef.nativeElement.validity.valid);
   }
 
 }

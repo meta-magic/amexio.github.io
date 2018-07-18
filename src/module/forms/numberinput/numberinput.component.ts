@@ -3,7 +3,7 @@
  Component Selector :  <amexio-number-input>
  Component Description : Number input component has been created with different configurable attributes for validation (min/max value, allow blank, custom regex), custom error message, help, custom styles
 */
-import {Component, forwardRef, Input, Output, EventEmitter, OnInit} from '@angular/core';
+import {Component,ElementRef,ViewChild,forwardRef, Input, Output, EventEmitter, OnInit} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
 const noop = () => {
@@ -124,6 +124,9 @@ description : Sets the error message for max validation
 
   // isComponentValid : boolean;
   @Output() isComponentValid:any=new EventEmitter<any>();
+
+  @ViewChild('ref', {read: ElementRef}) public inputRef: ElementRef;
+  
    /*
 Properties
 name : place-holder
@@ -262,7 +265,7 @@ description : Set enable / disable popover.
     }
   }
 
-  
+
   ngOnInit() {
     // this.isComponentValid = this.allowblank;
     this.isComponentValid.emit(this.allowblank);
@@ -281,7 +284,7 @@ description : Set enable / disable popover.
 
   //THIS METHOD IS USED FOR COMPONENT VALIDATION
   onChangeEv() {
-    this.isComponentValid.emit(this.isValid);
+    // this.isComponentValid.emit(this.isValid);
   }
 
   onInput(input:any) {
@@ -309,7 +312,7 @@ description : Set enable / disable popover.
   }
 
   validateClass(inp: any): any {
-    
+
     let classObj;
     if (!this.allowblank) {
       if (this.innerValue == null || this.innerValue == '') {
@@ -375,11 +378,17 @@ description : Set enable / disable popover.
     }else {
       this.setValidationFlag(true);
     }
+    this.isComponentValid.emit(this.isValid);
     return classObj;
   }
 
   setValidationFlag(flag: boolean) {
     this.isValid = flag;
     // this.isComponentValid = flag;
+  }
+
+  //THIS MEHTOD CHECK INPUT IS VALID OR NOT 
+  checkValidity():boolean{
+    return (this.inputRef && this.inputRef.nativeElement && this.inputRef.nativeElement.validity && this.inputRef.nativeElement.validity.valid);
   }
 }

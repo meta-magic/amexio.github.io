@@ -5,7 +5,7 @@
  Component Description : TextArea input component has been created with different configurable attributes for validation (min/max value, allow blank, custom regex), custom error message, help, custom styles.
 
 */
-import {Component, EventEmitter,Output,forwardRef, Input} from '@angular/core';
+import {Component,ElementRef,ViewChild, EventEmitter,Output,forwardRef, Input} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
 const noop = () => {
@@ -68,6 +68,8 @@ description : Sets if field is required
 
   // isComponentValid : boolean;
   @Output() isComponentValid:any=new EventEmitter<any>();
+
+  @ViewChild('ref', {read: ElementRef}) public inputRef: ElementRef;
 
   showToolTip: boolean;
 
@@ -250,7 +252,7 @@ description : Set enable / disable popover.
     }
   }
 
-  
+
   //From ControlValueAccessor interface
   writeValue(value: any) {
     if (value !== this.innerValue) {
@@ -298,6 +300,7 @@ description : Set enable / disable popover.
       this.isValid = true;
       // this.isComponentValid = true;
     }
+    this.isComponentValid.emit(this.isValid);
     return classObj;
   }
 
@@ -315,14 +318,17 @@ description : Set enable / disable popover.
 
   //THIS METHOD IS USED FOR COMPONENT VALIDATION
   onChangeEv() {
-    this.isComponentValid.emit(this.isValid);
+    // this.isComponentValid.emit(this.isValid);
   }
 
   onInput(input:any) {
     this.componentClass = this.validateClass(input);
-    this.isComponentValid.emit(this.isValid);
   }
-
+  
+  //THIS MEHTOD CHECK INPUT IS VALID OR NOT 
+  checkValidity():boolean{
+    return (this.inputRef && this.inputRef.nativeElement && this.inputRef.nativeElement.validity && this.inputRef.nativeElement.validity.valid);
+  }
 }
 
 
