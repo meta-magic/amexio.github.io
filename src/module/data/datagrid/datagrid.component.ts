@@ -8,7 +8,7 @@
  */
 import {
   AfterContentInit, ChangeDetectorRef, Component, ContentChildren, DoCheck, ElementRef, EventEmitter, HostListener, Input, OnInit, Output,
-  QueryList
+  QueryList,
 } from '@angular/core';
 
 import { AmexioGridColumnComponent } from './data.grid.column';
