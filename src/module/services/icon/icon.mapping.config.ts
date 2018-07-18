@@ -9,6 +9,9 @@ export enum Icon {
   material = 'mat',
 }
 
+const faFaCaretIcon  = 'fa fa-caret-down';
+
+const faFaTimesIcon    = 'fa fa-times';
 /**
  * Icon Map Config
  */
@@ -61,17 +64,17 @@ const ICON_MAPPING =
   },
   {
     component: 'dropdown_caret',
-    fa: 'fa fa-caret-down',
+    fa: faFaCaretIcon,
     mat: 'arrow_drop_down',
   },
   {
     component: 'tab_close',
-    fa: 'fa fa-times',
+    fa: faFaTimesIcon,
     mat: 'close',
   },
   {
     component: 'window_close',
-    fa: 'fa fa-times',
+    fa: faFaTimesIcon,
     mat: 'close',
   },
   {
@@ -111,7 +114,7 @@ const ICON_MAPPING =
   },
   {
     component: 'itemselector_caretdown',
-    fa: 'fa fa-caret-down',
+    fa: faFaCaretIcon,
     mat: 'arrow_drop_down',
   },
   {
@@ -145,7 +148,7 @@ const ICON_MAPPING =
   },
   {
     component: 'tab_close',
-    fa: 'fa fa-times',
+    fa: faFaTimesIcon,
     mat: 'close',
   },
   {
@@ -169,12 +172,12 @@ const ICON_MAPPING =
   },
   {
     component: 'dockbar_close',
-    fa: 'fa fa-times',
+    fa: faFaTimesIcon,
     mat: 'close',
   },
   {
     component: 'notify_close',
-    fa: 'fa fa-times',
+    fa: faFaTimesIcon,
     mat: 'close',
   },
   {
@@ -184,7 +187,7 @@ const ICON_MAPPING =
   },
   {
     component: 'sidenav_close',
-    fa: 'fa fa-times',
+    fa: faFaTimesIcon,
     mat: 'close',
   },
   {
@@ -209,12 +212,12 @@ const ICON_MAPPING =
   },
   {
     component: 'datagrid_collapse',
-    fa: 'fa fa-caret-down',
+    fa: faFaCaretIcon,
     mat: 'arrow_drop_down',
   },
   {
     component: 'datagrid_collapse',
-    fa: 'fa fa-caret-down',
+    fa: faFaCaretIcon,
     mat: 'arrow_drop_down',
   },
   {
@@ -234,7 +237,7 @@ const ICON_MAPPING =
   },
   {
     component: 'button_caret-down',
-    fa: 'fa fa-caret-down',
+    fa: faFaCaretIcon,
     mat: 'arrow_drop_down',
   },
   {
