@@ -238,48 +238,7 @@ description : it will search for text relevant to entered character
       this.treeData = this.orgTreeData;
     }
   }
-
-  // searchTree(data: any[], matchingTitle: string) {
-  //   const fi = this.filterIndex;
-  //   let isFlag: boolean;
-  //   console.log('DATA *************'+JSON.stringify(data));
-  //   const res = data.filter(function f(node) {
-
-  //     switch (fi) {
-  //       case 5:
-  //         if (node.text.toLowerCase().includes(matchingTitle.toLowerCase())) {
-  //           isFlag = true;
-  //         }
-  //         break;
-  //       case 3:
-  //         if (node.text.toLowerCase().startsWith(matchingTitle.toLowerCase())) {
-  //           isFlag = true;
-  //         }
-  //         break;
-  //       case 1:
-  //         if (node.text.toLowerCase() === matchingTitle.toLowerCase()) {
-  //           isFlag = true;
-  //         }
-  //         break;
-  //       case 2:
-  //         if (node.text.toLowerCase() !== matchingTitle.toLowerCase()) {
-  //           isFlag = true;
-  //         }
-  //         break;
-  //       case 4:
-  //         if (node.text.toLowerCase().endsWith(matchingTitle.toLowerCase())) {
-  //           isFlag = true;
-  //         }
-  //        break;
-  //       default:
-  //         if (node.children) {
-  //           return (node.children = node.children.filter(f)).length;
-  //         }
-  //     }
-  //   });
-  //     return isFlag;
-  //   }
-  searchTree(data: any[], matchingTitle: string) {
+   searchTree(data: any[], matchingTitle: string) {
     const fi = this.filterIndex;
     return this.filterActualData (data, fi, matchingTitle);
   }
