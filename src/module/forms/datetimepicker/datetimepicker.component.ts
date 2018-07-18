@@ -822,7 +822,6 @@ export class AmexioDateTimePickerComponent implements OnInit {
 
   // this function is obtained by breaking arrowClickBack() for dropdown year back arrow logic for if
   private backArrow() {
-    let i;
     const min = new Date(this.minDate);
     const max = new Date(this.maxDate);
     this.yearList1.forEach((element: any) => {
