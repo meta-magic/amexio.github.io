@@ -194,21 +194,27 @@ description : It will gives you current page number
           }
         }
       } else {
-        this.currentRow = rowNumber;
-        for (let i = this.currentRow - this.rows; i <= this.currentRow; i++) {
-          if (i !== 0) {
-            this.activePages.push(i);
-          }
-        }
+        this.getCurrentRow(rowNumber);
       }
-      this.partOfChangeRows(inDx);
+      this.onPageChangeMethod(inDx);
       if (event) {
         this.show = !this.show;
       }
     }
   }
 
-  partOfChangeRows(inDx: number) {
+  // Method to get current row
+  private getCurrentRow(rowNumber: any) {
+    this.currentRow = rowNumber;
+    for (let i = this.currentRow - this.rows; i <= this.currentRow; i++) {
+      if (i !== 0) {
+        this.activePages.push(i);
+      }
+    }
+  }
+
+  // Method called on on change and emits onchange event
+  private onPageChangeMethod(inDx: number) {
     this.currentRowIndex = inDx;
     this.onRowChange.emit(this.currentRow);
     this.setBoundaries();

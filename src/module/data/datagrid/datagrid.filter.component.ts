@@ -85,6 +85,8 @@ For internal use
 
   showToolTip: boolean;
 
+  private checkIcon: 'fa fa-check';
+
   constructor(private dataTableService: CommonDataService) {
 
     this.filterOptions = [{
@@ -92,9 +94,8 @@ For internal use
     }, {
       key: 'Is Not Equal To', value: '!=', type: 'string', checkedStatus: '',
     }, {
-      key: 'Start With', value: '1', type: 'string', checkedStatus: 'fa fa-check',
+      key: 'Start With', value: '1', type: 'string', checkedStatus: this.checkIcon,
     },
-
     {
       key: 'Ends With', value: '2', type: 'string', checkedStatus: '',
     }, {
@@ -112,7 +113,7 @@ For internal use
     {
       key: 'Is less Than or equal to', value: '>=', type: 'number', checkedStatus: '',
     }, {
-      key: 'Is greater Than or equal to', value: '=<', type: 'number', checkedStatus: 'fa fa-check',
+      key: 'Is greater Than or equal to', value: '=<', type: 'number', checkedStatus: this.checkIcon,
     }];
   }
 
@@ -127,7 +128,7 @@ For internal use
       filter: opt.value,
       type: col.datatype,
     };
-    opt.checkedStatus = 'fa fa-check';
+    opt.checkedStatus = this.checkIcon;
     if (this.filterValue) {
       col.filterIcon = true;
       this.filterDataObject(filter, col);
@@ -147,7 +148,7 @@ For internal use
         type: col.datatype,
       };
       this.filterOptions.forEach((opt: any) => {
-        if (opt.checkedStatus === 'fa fa-check') {
+        if (opt.checkedStatus === this.checkIcon) {
           if (col.datatype === opt.type) {
             filter['filter'] = opt.value;
           }

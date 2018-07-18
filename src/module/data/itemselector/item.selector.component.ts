@@ -223,10 +223,11 @@ description :  Get selected value Object.
         }
       }
     }
-    this.partOfLeftSwitch();
+    this.setLeftSwitch();
   }
 
-  partOfLeftSwitch() {
+  // Method called in left switch if flag is false
+  private setLeftSwitch() {
     const flag = false;
     if (!flag) {
       if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected')) {
