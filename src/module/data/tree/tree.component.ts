@@ -7,8 +7,10 @@ Component Name : Amexio tree filter
 Component Selector : <amexio-tree-filter-view>
 Component Description : A Expandable Tree Component for Angular, having Filtering functionality.
 */
-import { AfterViewInit, ChangeDetectorRef,  Component, ContentChild, DoCheck, ElementRef,
-   EventEmitter, HostListener, Input, OnInit, Output, TemplateRef } from '@angular/core';
+import {
+  AfterViewInit, ChangeDetectorRef, Component, ContentChild, DoCheck, ElementRef,
+  EventEmitter, HostListener, Input, OnInit, Output, TemplateRef,
+} from '@angular/core';
 import { CommonDataService } from '../../services/data/common.data.service';
 
 @Component({
@@ -381,17 +383,9 @@ description : Context Menu provides the list of menus on right click.
       dropData.event.target.style.border = '';
       dropData.event.preventDefault();
       if (this.acrosstree === false) {
-        if (this.dragData.data === dropData.data) {
-          this.isNode = false;
-        } else if (this.dragData.data.hasOwnProperty('children')) {
-          this.checkNode(this.dragData, dropData);
-        }
+        this.setDropAcrosstree(dropData);
         if (this.isNode === true) {
-          if (dropData.data.hasOwnProperty('children')) {
-            this.removeNode(dropData);
-            dropData.data.children.push(JSON.parse(dropData.event.dataTransfer.getData('treenodedata')));
-            this.onDrop.emit(dropData);
-          }
+          this.setDropNodeTree(dropData);
         }
       } else {
         if (dropData.data.hasOwnProperty('children')) {
@@ -402,6 +396,24 @@ description : Context Menu provides the list of menus on right click.
       }
     }
   }
+  // drop method split into 2 other method setDropAcrosstree, setDropNodeTree
+  // first method of drop
+  setDropAcrosstree(dropData: any) {
+    if (this.dragData.data === dropData.data) {
+      this.isNode = false;
+    } else if (this.dragData.data.hasOwnProperty('children')) {
+      this.checkNode(this.dragData, dropData);
+    }
+  }
+  // second method pf drop
+  setDropNodeTree(dropData: any) {
+    if (dropData.data.hasOwnProperty('children')) {
+      this.removeNode(dropData);
+      dropData.data.children.push(JSON.parse(dropData.event.dataTransfer.getData('treenodedata')));
+      this.onDrop.emit(dropData);
+    }
+  }
+
   checkNode(dragData: any, dropData: any) {
     this.dragData.data.children.forEach((child: any) => {
       if (JSON.stringify(child) === JSON.stringify(dropData.data)) {

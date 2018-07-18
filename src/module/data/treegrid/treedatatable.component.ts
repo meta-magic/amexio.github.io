@@ -404,7 +404,7 @@ export class TreeDataTableComponent implements OnInit, AfterContentInit, DoCheck
       }
     }
   }
-
+  // code of removerows divided and add to setremovedrowsmethods
   setRemoveRowsMethod(i: any, j: any) {
     if (j === i) {
       if (i.children) {
