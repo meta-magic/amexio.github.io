@@ -1185,7 +1185,7 @@ description : Context Menu provides the list of menus on right click of row.
       event.classList.value = 'checkbox active';
     } else {
       const indexOf = this.selectedRows.indexOf(rowData);
-      delete this.selectedRows[indexOf];
+      this.selectedRows.splice(indexOf, 0);
       event.classList.value = this.checkDefaultIcon;
     }
     this.emitSelectedRows();
@@ -1397,11 +1397,6 @@ description : Context Menu provides the list of menus on right click of row.
     } else {
       return false;
     }
-  }
-
-  getCheckboxStyle(row: any) {
-    const status = false;
-    return status;
   }
 
   selectParent(row: any) {
