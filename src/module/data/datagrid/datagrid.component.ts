@@ -1008,25 +1008,30 @@ description : Context Menu provides the list of menus on right click of row.
       }
     }
     if (this.pagesize >= 1) {
-      const rowsTemp = this.data;
-      const newRows = [];
-      let startIndex = 0;
-      let endIndex = this.pagesize;
-      if (this.currentPage > 1) {
-        startIndex = (this.currentPage - 1) * this.pagesize;
-        endIndex = startIndex + this.pagesize;
-      }
-      while (startIndex <= endIndex - 1) {
-        if (rowsTemp[startIndex]) {
-          newRows.push(rowsTemp[startIndex]);
-        }
-        startIndex++;
-      }
-      this.viewRows = newRows;
+      this.getPageSize();
     } else {
       this.viewRows = this.data;
     }
     this.selectedRowNo = -1;
+  }
+
+  // Method Calls when page size is more than 1
+  private getPageSize() {
+    const rowsTemp = this.data;
+    const newRows = [];
+    let startIndex = 0;
+    let endIndex = this.pagesize;
+    if (this.currentPage > 1) {
+      startIndex = (this.currentPage - 1) * this.pagesize;
+      endIndex = startIndex + this.pagesize;
+    }
+    while (startIndex <= endIndex - 1) {
+      if (rowsTemp[startIndex]) {
+        newRows.push(rowsTemp[startIndex]);
+      }
+      startIndex++;
+    }
+    this.viewRows = newRows;
   }
 
   getResponseData(httpResponse: any) {
@@ -1464,7 +1469,8 @@ description : Context Menu provides the list of menus on right click of row.
     this.flag = false;
   }
 
-  getListPosition(elementRef: any) {
+  // Method to get List position
+  private getListPosition(elementRef: any) {
     const height = 240;
     if ((window.screen.height - elementRef.getBoundingClientRect().bottom) < height) {
       return true;
@@ -1473,7 +1479,8 @@ description : Context Menu provides the list of menus on right click of row.
     }
   }
 
-  tempSelectedFlag(viewRows: any) {
+  // Method to get Selected Row
+  private tempSelectedFlag(viewRows: any) {
     viewRows.forEach((row: any) => {
       if (row.isSelected) {
         row.isSelected = false;
