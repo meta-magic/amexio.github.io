@@ -242,10 +242,10 @@ export class AmexioDateTimePickerComponent implements OnInit {
       const min = new Date(this.minDate);
       const max = new Date(this.maxDate);
       this.yearList1.forEach((element: any) => {
-      this.disableMinMaxYear(element, min, max);
+        this.disableMinMaxYear(element, min, max);
       });
       this.yearList2.forEach((element: any) => {
-       this.disableMinMaxYear(element, min, max);
+        this.disableMinMaxYear(element, min, max);
       });
     }
   }
@@ -603,7 +603,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
     }
     if ((this.maxDate.length > 0 && this.minDate.length <= 0) ||
       (this.maxDate.length > 0 && this.minDate.length > 0)) {
-   this.validateMaxDate(days, max);
+      this.validateMaxDate(days, max);
     }
     if ((this.maxDate.length <= 0 && this.minDate.length > 0) || (this.maxDate.length > 0 && this.minDate.length > 0)) {
       // 3
@@ -619,15 +619,15 @@ export class AmexioDateTimePickerComponent implements OnInit {
   }
 
   validateMaxDate(days: any, max: any) {
-       // check if days greater than max return
-      // 1
-      if (days.getDate() > max.getDate() &&
-        days.getMonth() >= max.getMonth() && days.getFullYear() >= max.getFullYear()) {
-        return true;
-        // 2
-      } else if (days.getMonth() > max.getMonth() && days.getFullYear() === max.getFullYear()) {
-        return true;
-      }
+    // check if days greater than max return
+    // 1
+    if (days.getDate() > max.getDate() &&
+      days.getMonth() >= max.getMonth() && days.getFullYear() >= max.getFullYear()) {
+      return true;
+      // 2
+    } else if (days.getMonth() > max.getMonth() && days.getFullYear() === max.getFullYear()) {
+      return true;
+    }
   }
   disableddays(dates: any) {
     if (dates) {
@@ -652,7 +652,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
   }
   dropdownDatePicker() {
     this.monthList1.forEach((element: any) => {
-    this.elementFlagMethod(element);
+      this.elementFlagMethod(element);
     });
     this.monthList2.forEach((element: any) => {
       this.elementFlagMethod(element);
@@ -670,10 +670,10 @@ export class AmexioDateTimePickerComponent implements OnInit {
 
   // Added method to avois recursive code
   private elementFlagMethod(element: any) {
-  if (element.flag) {
-    element.flag = false;
+    if (element.flag) {
+      element.flag = false;
+    }
   }
-}
 
   negateDrop() {
     this.hostFlag = true;
@@ -683,7 +683,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
   }
   getDropdownMonth(month: any) {
     this.monthList1.forEach((element: any) => {
-     this.elementFlagMethod(element);
+      this.elementFlagMethod(element);
     });
     this.monthList2.forEach((element: any) => {
       this.elementFlagMethod(element);
@@ -800,57 +800,10 @@ export class AmexioDateTimePickerComponent implements OnInit {
   arrowClickBack() {
     let i;
     // disable flag logic
+    this.disableYearFlag();
     if (this.minDate.length > 0 || this.maxDate.length > 0) {
-      this.yearList1.forEach((element: any) => {
-        const min = new Date(this.minDate);
-        const max = new Date(this.maxDate);
-        if (element.year < min.getFullYear() || element.year > max.getFullYear()) {
-          element.disabled = true;
-        } // if ends
-      }); // for ends
-      this.yearList2.forEach((element: any) => {
-        const min = new Date(this.minDate);
-        const max = new Date(this.maxDate);
-        if (element.year < min.getFullYear() || element.year > max.getFullYear()) {
-          element.disabled = true;
-        } // if ends
-      }); // for ends
-    } // outer if ends
-    if (this.minDate.length > 0 || this.maxDate.length > 0) {
-      const min = new Date(this.minDate);
-      const max = new Date(this.maxDate);
-      this.yearList1.forEach((element: any) => {
-        if (element.year === min.getFullYear() ||
-          (element.year === min.getFullYear() && element.year === max.getFullYear())) {
-          this.backArrowFlag = true;
-        }
-        if (element.year === max.getFullYear() && element.year !== min.getFullYear()) {
-          this.forwardArrowFlag = true;
-          this.backArrowFlag = false;
-        }
-        if (element.year !== min.getFullYear() && element.year !== max.getFullYear()) {
-          this.forwardArrowFlag = false;
-          this.backArrowFlag = false;
-        }
-      });
-      this.yearList2.forEach((element: any) => {
-        if (element.year === min.getFullYear()) {
-          this.backArrowFlag = true;
-        }
-        if (element.year === max.getFullYear() ||
-          (element.year === min.getFullYear() && element.year === max.getFullYear())) {
-          this.forwardArrowFlag = true;
-        }
-      });
-      if (!this.backArrowFlag) {
-        for (i = 0; i < 5; i++) {
-          this.yearList1[i].year = this.yearList1[i].year - 10;
-          this.yearList2[i].year = this.yearList2[i].year - 10;
-          this.yearList1[i].disabled = false;
-          this.yearList2[i].disabled = false;
-        } // for ends
-      } // if ends      // main if ends
-      // *****************************************************
+      // arrow click logic
+      this.backArrow();
     } else {
       for (i = 0; i < 5; i++) {
         this.yearList1[i].year = this.yearList1[i].year - 10;
@@ -858,23 +811,109 @@ export class AmexioDateTimePickerComponent implements OnInit {
       } // for ends
     } // main else ends
     // disable flag logic
-    if (this.minDate.length > 0 || this.maxDate.length > 0) {
-      this.yearList1.forEach((element: any) => {
-        const min = new Date(this.minDate);
-        const max = new Date(this.maxDate);
-        if (element.year < min.getFullYear() || element.year > max.getFullYear()) {
-          element.disabled = true;
-        } // if ends
-      }); // for ends
-      this.yearList2.forEach((element: any) => {
-        const min = new Date(this.minDate);
-        const max = new Date(this.maxDate);
-        if (element.year < min.getFullYear() || element.year > max.getFullYear()) {
-          element.disabled = true;
-        } // if ends
-      }); // for ends
-    }  // outer if ends
+    this.disableYearFlag();
     // rechking arrow flags after reinitialization of yrlist1 & 2
+    this.rechkYearFlag();
+  }
+
+  // this function is obtained by breaking arrowClickBack() for dropdown year back arrow logic for if
+  private backArrow() {
+    let i; const min = new Date(this.minDate); const max = new Date(this.maxDate);
+    this.yearList1.forEach((element: any) => {
+      if (element.year === min.getFullYear() ||
+        (element.year === min.getFullYear() && element.year === max.getFullYear())) {
+        this.backArrowFlag = true;
+      }
+      if (element.year === max.getFullYear() && element.year !== min.getFullYear()) {
+        this.forwardArrowFlag = true; this.backArrowFlag = false;
+      }
+      if (element.year !== min.getFullYear() && element.year !== max.getFullYear()) {
+        this.forwardArrowFlag = false;
+        this.backArrowFlag = false;
+      }
+    });
+    // resets Arrow Flag
+    this.resetYearFlag();
+  }
+  // this function is broken from backArrow() resets Arrow Flag
+  private resetArrowFlag() {
+    const min = new Date(this.minDate); const max = new Date(this.maxDate);
+    this.yearList2.forEach((element: any) => {
+      if (element.year === min.getFullYear()) {
+        this.backArrowFlag = true;
+      }
+      if (element.year === max.getFullYear() ||
+        (element.year === min.getFullYear() && element.year === max.getFullYear())) {
+        this.forwardArrowFlag = true;
+      }
+    });
+  }
+
+  // this fn is broken from  backArrow() and it resets Year Flag
+  private resetYearFlag() {
+    let i;
+    if (!this.backArrowFlag) {
+      for (i = 0; i < 5; i++) {
+        this.yearList1[i].year = this.yearList1[i].year - 10;
+        this.yearList2[i].year = this.yearList2[i].year - 10;
+        this.yearList1[i].disabled = false;
+        this.yearList2[i].disabled = false;
+      }
+    } /* if ends */
+  }
+
+  // this function is obtained by breaking arrowClickForward() for dropdown year forward arrow logic for if
+  private forwardArrow() {
+    let i;
+    const min = new Date(this.minDate);
+    const max = new Date(this.maxDate);
+    // chk yearlist1
+    this.chkYearList1();
+    this.yearList2.forEach((element: any) => {
+      if (element.year === min.getFullYear()) {
+        this.backArrowFlag = true;
+      }
+      if (element.year === max.getFullYear() ||
+        (element.year === min.getFullYear() && element.year === max.getFullYear())) {
+        this.forwardArrowFlag = true;
+      }
+    });
+    if (!this.forwardArrowFlag) {
+      for (i = 0; i < 5; i++) {
+        this.yearList1[i].year = this.yearList1[i].year + 10;
+        this.yearList2[i].year = this.yearList2[i].year + 10;
+        this.yearList1[i].disabled = false;
+        this.yearList2[i].disabled = false;
+      }  // for ends
+    }   // if ends
+  }
+
+  // chk yearlist1 broken from forwardArrow()
+  chkYearList1() {
+    const min = new Date(this.minDate);
+    const max = new Date(this.maxDate);
+    this.yearList1.forEach((element: any) => {
+      if (element.year === min.getFullYear() ||
+        (element.year === min.getFullYear() && element.year === max.getFullYear())) {
+        this.backArrowFlag = true;
+      }
+      if (element.year === min.getFullYear() && element.year !== max.getFullYear()) {
+        this.forwardArrowFlag = false;
+        this.backArrowFlag = true;
+      }
+      if (element.year !== min.getFullYear() && element.year !== max.getFullYear()) {
+        this.forwardArrowFlag = false;
+        this.backArrowFlag = false;
+      }
+      if (element.year === max.getFullYear()) {
+        this.forwardArrowFlag = true;
+      }
+    });
+  }
+
+  // this function is obtained by breaking arrowClickBack() and arrowClickForward()
+  // for rechking arrow flags after reinitialization of yrlist1 & 2
+  private rechkYearFlag() {
     this.yearList1.forEach((element: any) => {
       const min = new Date(this.minDate);
       const max = new Date(this.maxDate);
@@ -901,84 +940,19 @@ export class AmexioDateTimePickerComponent implements OnInit {
         this.forwardArrowFlag = true;
       }
     });
+
   }
-  arrowClickForward() {
-    let i;
-    // disable flag logic
+
+  // this function is obtained by breaking arrowClickBack() and arrowClickForward()
+  // for disablingyear flag
+  private disableYearFlag() {
     if (this.minDate.length > 0 || this.maxDate.length > 0) {
       this.yearList1.forEach((element: any) => {
         const min = new Date(this.minDate);
         const max = new Date(this.maxDate);
         if (element.year < min.getFullYear() || element.year > max.getFullYear()) {
           element.disabled = true;
-          // if ends
-        } else {
-          element.disabled = false;
-        }
-      });  // for ends
-      this.yearList2.forEach((element: any) => {
-        const min = new Date(this.minDate);
-        const max = new Date(this.maxDate);
-        if (element.year < min.getFullYear() || element.year > max.getFullYear()) {
-          element.disabled = true;
-        }  // if ends
-      }); // for ends
-    } // outer if ends
-    if (this.minDate.length > 0 || this.maxDate.length > 0) {
-      const min = new Date(this.minDate);
-      const max = new Date(this.maxDate);
-      this.yearList1.forEach((element: any) => {
-        if (element.year === min.getFullYear() ||
-          (element.year === min.getFullYear() && element.year === max.getFullYear())) {
-          this.backArrowFlag = true;
-        }
-        if (element.year === min.getFullYear() && element.year !== max.getFullYear()) {
-          this.forwardArrowFlag = false;
-          this.backArrowFlag = true;
-        }
-        if (element.year !== min.getFullYear() && element.year !== max.getFullYear()) {
-          this.forwardArrowFlag = false;
-          this.backArrowFlag = false;
-        }
-        if (element.year === max.getFullYear()) {
-          this.forwardArrowFlag = true;
-        }
-      });
-      this.yearList2.forEach((element: any) => {
-        if (element.year === min.getFullYear()) {
-          this.backArrowFlag = true;
-        }
-        if (element.year === max.getFullYear() ||
-          (element.year === min.getFullYear() && element.year === max.getFullYear())) {
-          this.forwardArrowFlag = true;
-        }
-      });
-      if (!this.forwardArrowFlag) {
-        for (i = 0; i < 5; i++) {
-          this.yearList1[i].year = this.yearList1[i].year + 10;
-          this.yearList2[i].year = this.yearList2[i].year + 10;
-          this.yearList1[i].disabled = false;
-          this.yearList2[i].disabled = false;
-        }  // for ends
-      }   // if ends
-      // main if ends
-    } else {
-      for (i = 0; i < 5; i++) {
-        this.yearList1[i].year = this.yearList1[i].year + 10;
-        this.yearList2[i].year = this.yearList2[i].year + 10;
-      }
-    }
-    // disable flag logic
-    if (this.minDate.length > 0 || this.maxDate.length > 0) {
-      this.yearList1.forEach((element: any) => {
-        const min = new Date(this.minDate);
-        const max = new Date(this.maxDate);
-        if (element.year < min.getFullYear() || element.year > max.getFullYear()) {
-          element.disabled = true;
-          // if ends
-        } else {
-          element.disabled = false;
-        }
+        } // if ends
       }); // for ends
       this.yearList2.forEach((element: any) => {
         const min = new Date(this.minDate);
@@ -988,29 +962,24 @@ export class AmexioDateTimePickerComponent implements OnInit {
         } // if ends
       }); // for ends
     } // outer if ends
+  }
+
+  arrowClickForward() {
+    let i;
+    // disable flag logic
+    this.disableYearFlag();
+    if (this.minDate.length > 0 || this.maxDate.length > 0) {
+      this.forwardArrow();
+    } else {
+      for (i = 0; i < 5; i++) {
+        this.yearList1[i].year = this.yearList1[i].year + 10;
+        this.yearList2[i].year = this.yearList2[i].year + 10;
+      }
+    }
+    // disable flag logic
+    this.disableYearFlag();
     // rechking arrow flags after reinitialization of yrlist1 & 2
-    this.yearList1.forEach((element: any) => {
-      const min = new Date(this.minDate);
-      const max = new Date(this.maxDate);
-      if (element.year === min.getFullYear() ||
-        (element.year === min.getFullYear() && element.year === max.getFullYear())) {
-        this.backArrowFlag = true;
-      }
-      if (element.year === max.getFullYear()) {
-        this.forwardArrowFlag = true;
-      }
-    });
-    this.yearList2.forEach((element: any) => {
-      const min = new Date(this.minDate);
-      const max = new Date(this.maxDate);
-      if (element.year === min.getFullYear()) {
-        this.backArrowFlag = true;
-      }
-      if (element.year === max.getFullYear() ||
-        (element.year === min.getFullYear() && element.year === max.getFullYear())) {
-        this.forwardArrowFlag = true;
-      }
-    });
+    this.rechkYearFlag();
   }
   // onInit Method: If min max date is provided
   minMaxDateFound() {
