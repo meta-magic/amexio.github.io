@@ -89,11 +89,7 @@ description : Font color of label
   }
   
   destroy(){
-     if(this.tabpill && this.tabpill.element 
-      && this.tabpill.element.nativeElement
-      && this.tabpill.element.nativeElement.parentElement){
-        this.tabpill.element.nativeElement.parentElement.remove();
-      }
+   
   } 
   
 }
