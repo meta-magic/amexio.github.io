@@ -113,7 +113,7 @@ description : Position of notification window vertically:
 
   private notificationVertialCss = 'notification-vertical-';
 
-  private  notificationHorizontalCss = ' notification-horizontal-'
+  private  notificationHorizontalCss = ' notification-horizontal-';
 
  @ContentChild('amexioNotificationTemp') notificationTemplate: TemplateRef<any>;
 

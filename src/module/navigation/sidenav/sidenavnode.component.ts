@@ -78,15 +78,15 @@ export class SideNavNodeComponent implements OnInit {
   }
 
   activateNode(data: any[], node: any) {
-    for (let i = 0; i < data.length; i++) {
-      if (node === data[i] && !data[i]['children']) {
-        data[i]['active'] = true;
+    for (const i of data) {
+      if (node === i && !i['children']) {
+        i['active'] = true;
       } else {
-        data[i]['active'] = false;
+        i['active'] = false;
       }
 
-      if (data[i]['children']) {
-        this.activateNode(data[i]['children'], node);
+      if (i['children']) {
+        this.activateNode(i['children'], node);
       }
     }
   }

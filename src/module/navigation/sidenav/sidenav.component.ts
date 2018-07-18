@@ -197,8 +197,8 @@ export class AmexioSideNavComponent implements OnInit {
     let responsedata = httpResponse;
     if (this.datareader != null) {
       const dr = this.datareader.split('.');
-      for (let ir = 0; ir < dr.length; ir++) {
-        responsedata = responsedata[dr[ir]];
+      for (const ir of dr) {
+        responsedata = responsedata[ir];
       }
     } else {
       responsedata = httpResponse;
@@ -209,15 +209,15 @@ export class AmexioSideNavComponent implements OnInit {
   }
 
   activateNode(data: any[], node: any) {
-    for (let i = 0; i < data.length; i++) {
-      if (node === data[i] && !data[i]['children']) {
-        data[i]['active'] = true;
+    for (const i of data) {
+      if (node === i && !i['children']) {
+        i['active'] = true;
       } else {
-        data[i]['active'] = false;
+        i['active'] = false;
       }
 
-      if (data[i]['children']) {
-        this.activateNode(data[i]['children'], node);
+      if (i['children']) {
+        this.activateNode(i['children'], node);
       }
     }
   }
