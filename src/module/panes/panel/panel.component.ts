@@ -101,11 +101,15 @@ description : Fires the on accordion pane click event.
 
   iconclassKey: string;
 
+  private faFaIconUPCss = 'fa fa-caret-up';
+
+  private faFaIconDownCss = 'fa fa-caret-down';
+
   ngOnInit() {
     if (!this.header) {
       this.expanded = true;
     }
-    this.iconclassKey = this.expanded ? 'fa fa-caret-up' : 'fa fa-caret-down';
+    this.iconclassKey = this.expanded ? this.faFaIconUPCss : this.faFaIconDownCss;
     if (this.height) {
      return this.height;
     }
@@ -113,13 +117,12 @@ description : Fires the on accordion pane click event.
 
   onTabClick(btn: any) {
     btn.classList.toggle('active-accordion');
-    if (this.iconclassKey === 'fa fa-caret-down') {
-      this.iconclassKey = 'fa fa-caret-up';
-    } else if (this.iconclassKey === 'fa fa-caret-up') {
-      this.iconclassKey = 'fa fa-caret-down';
+    if (this.iconclassKey === this.faFaIconDownCss) {
+      this.iconclassKey = this.faFaIconUPCss;
+    } else if (this.iconclassKey === this.faFaIconUPCss) {
+      this.iconclassKey = this.faFaIconDownCss;
     }
     this.expanded = !this.expanded;
     this.onClick.emit();
   }
-
 }
