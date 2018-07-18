@@ -239,31 +239,63 @@ description : it will search for text relevant to entered character
     }
   }
 
+  // searchTree(data: any[], matchingTitle: string) {
+  //   const fi = this.filterIndex;
+  //   let isFlag: boolean;
+  //   console.log('DATA *************'+JSON.stringify(data));
+  //   const res = data.filter(function f(node) {
+
+  //     switch (fi) {
+  //       case 5:
+  //         if (node.text.toLowerCase().includes(matchingTitle.toLowerCase())) {
+  //           isFlag = true;
+  //         }
+  //         break;
+  //       case 3:
+  //         if (node.text.toLowerCase().startsWith(matchingTitle.toLowerCase())) {
+  //           isFlag = true;
+  //         }
+  //         break;
+  //       case 1:
+  //         if (node.text.toLowerCase() === matchingTitle.toLowerCase()) {
+  //           isFlag = true;
+  //         }
+  //         break;
+  //       case 2:
+  //         if (node.text.toLowerCase() !== matchingTitle.toLowerCase()) {
+  //           isFlag = true;
+  //         }
+  //         break;
+  //       case 4:
+  //         if (node.text.toLowerCase().endsWith(matchingTitle.toLowerCase())) {
+  //           isFlag = true;
+  //         }
+  //        break;
+  //       default:
+  //         if (node.children) {
+  //           return (node.children = node.children.filter(f)).length;
+  //         }
+  //     }
+  //   });
+  //     return isFlag;
+  //   }
   searchTree(data: any[], matchingTitle: string) {
     const fi = this.filterIndex;
-    const res = data.filter(function f(node) {
-      if (fi === 5 && node.text.toLowerCase().includes(matchingTitle.toLowerCase())) {
-        return true;
-      }
-      if (fi === 3 && node.text.toLowerCase().startsWith(matchingTitle.toLowerCase())) {
-        return true;
-      }
-      if (fi === 1 && node.text.toLowerCase() === matchingTitle.toLowerCase()) {
-        return true;
-      }
-      if (fi === 2 && node.text.toLowerCase() !== matchingTitle.toLowerCase()) {
-        return true;
-      }
-      if (fi === 4 && node.text.toLowerCase().endsWith(matchingTitle.toLowerCase())) {
-        return true;
-      }
-      if (node.children) {
-        return (node.children = node.children.filter(f)).length;
-      }
-    });
-    return res;
+    return this.filterActualData (data, fi, matchingTitle);
   }
 
+  filterActualData(data: any[], fi: any, matchingTitle: any): any {
+    return data.filter(function f(node) {
+      if ( (fi === 5 && node.text.toLowerCase().includes(matchingTitle.toLowerCase())) ||
+      (fi === 3 && node.text.toLowerCase().startsWith(matchingTitle.toLowerCase())) ||
+      (fi === 1 && node.text.toLowerCase() === matchingTitle.toLowerCase()) ||
+      (fi === 2 && node.text.toLowerCase() !== matchingTitle.toLowerCase()) ||
+      (fi === 4 && node.text.toLowerCase().endsWith(matchingTitle.toLowerCase()))) {
+      return true;
+      }
+      if (node.children) {return (node.children = node.children.filter(f)).length; }
+    });
+  }
   filterOption(data: any) {
     this.onClickSearch = true;
     this.filterIndex = data.value;
