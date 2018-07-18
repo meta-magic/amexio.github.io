@@ -173,39 +173,37 @@ export class AmexioFileUploadComponent implements OnInit, AfterViewInit {
           const fsize = this.formatBytes(fileList[0].size, 2);
           this.uploadedFiles.push({ name: fileList[0].name, size: fsize });
         } else if (fileList.length > 1) {
-          for (let i = 0; i < fileList.length; i++) {
-            const fsize = this.formatBytes(fileList[i].size, 2);
-            this.uploadedFiles.push({ name: fileList[i].name, size: fsize });
-          }
+           for (let i = 0; i < fileList.length; i++) {
+             const file = fileList.item(i);
+             const fsize = this.formatBytes(file.size, 2);
+             this.uploadedFiles.push({ name: file.name, size: fsize });
+           }
         }
       }
     }
   }
-
+  // file is divided in to getFileListData() method
   FileListExist(fileList: any, formData: any) {
     for (let i = 0; i < fileList.length; i++) {
+      const file = fileList.item(i);
       if (!this.paramname) {
         this.paramname = 'file';
       }
-      formData.append(this.paramname, fileList[i]);
+      formData.append(this.paramname, file);
     }
-    this.dataService.uploadFile(this.httpurl, this.httpmethod, formData).subscribe(
-      (response: any) => {
-        this.responseData = response;
-      },
-      (error: any) => {
-      },
-      () => {
-        if (this.responseData) {
-          this.onFileUpload.emit(this.responseData);
-        }
-      },
-    );
+    this.getFileListData();
   }
-
+  // file is divided in to getFileListData() method
   uploadSingleFile(event: any) {
     const formData = new FormData();
     formData.append(this.paramname, event);
+    this.getFileListData();
+    this.uploadedFiles.push({ name: event.name, size: this.formatBytes(event.size, 2) });
+  }
+
+  // this is method use in uploadSingleFile(),FileListExist()
+  getFileListData() {
+    const formData = new FormData();
     this.dataService.uploadFile(this.httpurl, this.httpmethod, formData).subscribe(
       (response: any) => {
         this.responseData = response;
@@ -218,6 +216,5 @@ export class AmexioFileUploadComponent implements OnInit, AfterViewInit {
         }
       },
     );
-    this.uploadedFiles.push({ name: event.name, size: this.formatBytes(event.size, 2) });
   }
 }

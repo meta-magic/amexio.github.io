@@ -49,7 +49,7 @@ import {Directive, EmbeddedViewRef, Input, OnDestroy, OnInit, TemplateRef, ViewC
     }
     render() {
       this.view = this.viewContainer.createEmbeddedView(this.templateRef, {
-        '\$implicit': this.item, index: this.index,
+        $implicit: this.item, index: this.index,
       });
     }
     ngOnDestroy() {

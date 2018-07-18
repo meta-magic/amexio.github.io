@@ -912,26 +912,16 @@ description : Context Menu provides the list of menus on right click of row.
     let condition: any;
     this.filterCloneData.forEach((option: any) => {
       this.columns.forEach((opt: any) => {
+        const optvalue = option[opt.dataindex].toLowerCase();
+        const filtervalue = filteredObj.value.toLowerCase();
         if (filteredObj.filter === '1') {
-          condition = option[opt.dataindex].toLowerCase().startsWith(filteredObj.value.toLowerCase());
-          if (condition) {
-            status = condition;
-          }
-        }
-        if (filteredObj.filter === '2') {
-          condition = option[opt.dataindex].toLowerCase().endsWith(filteredObj.value.toLowerCase());
-          if (condition) {
-            status = condition;
-          }
-        }
-        if (filteredObj.filter === '3') {
-          condition = option[opt.dataindex].toLowerCase().includes(filteredObj.value.toLowerCase());
-          if (condition) {
-            status = condition;
-          }
+          status = optvalue.startsWith(filtervalue);
+        } else if (filteredObj.filter === '2') {
+          status = optvalue.endsWith(filtervalue);
+        } else if (filteredObj.filter === '3') {
+          status = optvalue.includes(filtervalue);  
         }
       });
-
       if (status) {
         this.data.push(option);
         status = false;
