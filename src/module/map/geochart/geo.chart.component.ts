@@ -174,7 +174,7 @@ export class GeoChartComponent implements AfterContentInit, OnInit {
   /*
   not in use
 */
-  @Input('country-name') countryname: boolean = false;
+  @Input('country-name') countryname = false;
 
   /* not in use
 */
