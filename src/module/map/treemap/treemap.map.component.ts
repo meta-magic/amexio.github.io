@@ -10,9 +10,7 @@ where each node can have zero or more children, and one parent
 (except for the root, which has no parents). Each node is displayed as a rectangle,
 sized and colored according to values that you assign.
 */
-import { AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList } from '@angular/core';
-import { ViewChild } from '@angular/core';
-import { ElementRef } from '@angular/core';
+import { AfterContentInit, Component, ContentChildren, ElementRef, Input, OnInit, QueryList, ViewChild} from '@angular/core';
 
 import { MapTitleComponent } from '../maptitle/map.title.component';
 
@@ -263,18 +261,21 @@ export class TreeMapComponent implements AfterContentInit, OnInit {
   initializeOptions() {
     this.options = {
       title: this.mapTitleComponent ? this.mapTitleComponent.title : null,
-      titleTextStyle: this.mapTitleComponent ? {
-        color: this.mapTitleComponent.color ? this.mapTitleComponent.color : null,
-        fontName: this.mapTitleComponent.fontname ? this.mapTitleComponent.fontname : null,
-        fontsize: this.mapTitleComponent.fontsize ? this.mapTitleComponent.fontsize : null,
-        bold: this.mapTitleComponent.bold ? this.mapTitleComponent.bold : null,
-        italic: this.mapTitleComponent.italic ? this.mapTitleComponent.italic : null,
-      } : null,
+      titleTextStyle: this.mapTitleComponent ? this.mapTitleTextStyle() : null,
       mincolor: this.mincolor ? this.mincolor : null, midcolor: this.midcolor ? this.midcolor : null,
       maxcolor: this.maxcolor ? this.maxcolor : null, headerHeight: 15, fontcolor: 'black',
       showscale: this.showscale ? this.showscale : false,
       maxpostdepth: this.maxpostdepth ? this.maxpostdepth : 1,
     };
+  }
+  mapTitleTextStyle() {
+    return{
+      color: this.mapTitleComponent.color ? this.mapTitleComponent.color : null,
+        fontName: this.mapTitleComponent.fontname ? this.mapTitleComponent.fontname : null,
+        fontsize: this.mapTitleComponent.fontsize ? this.mapTitleComponent.fontsize : null,
+        bold: this.mapTitleComponent.bold ? this.mapTitleComponent.bold : null,
+        italic: this.mapTitleComponent.italic ? this.mapTitleComponent.italic : null,
+      };
   }
 
   click(e: any) {
