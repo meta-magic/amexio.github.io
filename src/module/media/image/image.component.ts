@@ -78,7 +78,7 @@ version : 4.0 onwards
 default :
 description : Used for custom style classes
 */
-  @Input('c-class') cclass = "";
+  @Input('c-class') cclass = '';
 
    /*
 Properties
@@ -186,6 +186,21 @@ description : Description to display on hover
 
   overlay = false;
   overlayTextClass: string;
+
+  private imageCss = ' image-';
+
+  private overlayTextCss = 'overlay-text overlay-';
+
+  private textCss = '-text';
+
+  private imgFluidCss = ' img-fluid';
+
+  private overlayOverlayCss = 'overlay overlay-';
+
+  private imageTitleCss   = 'image-title image-';
+
+  private imageTitleBottomCss    = 'image-title image-bottom-right';
+
   constructor() {
   }
 
@@ -195,29 +210,29 @@ description : Description to display on hover
 
   ngOnInit(): void {
     if (!(this.width || this.height)) {
-      this.cclass = this.cclass + " img-fluid";
+      this.cclass = this.cclass + this.imgFluidCss;
     }
     if (this.filter) {
-      this.cclass = this.cclass + " image-" + this.filter;
+      this.cclass = this.cclass + this.imageCss + this.filter;
     }
     if (this.overlayEffect) {
       this.overlay = true;
       if (!this.overlayText) {
-        this.overlayText = "";
+        this.overlayText = '';
       }
       if (this.overlayText) {
-        this.overlayTextClass = "overlay-text overlay-" + this.overlayEffect + "-text";
+        this.overlayTextClass = this.overlayTextCss + this.overlayEffect + this.textCss;
       }
-      this.overlayEffect = "overlay overlay-" + this.overlayEffect;
+      this.overlayEffect = this.overlayOverlayCss + this.overlayEffect;
     }
     if (this.position && !this.imgTitle) {
-      this.imgTitle = " ";
+      this.imgTitle = '';
       }
     if (this.imgTitle) {
       if (this.position) {
-        this.position = "image-title image-" + this.position;
+        this.position = this.imageTitleCss + this.position;
       } else {
-        this.position = "image-title image-bottom-right";
+        this.position = this.imageTitleBottomCss;
       }
     }
   }

@@ -111,6 +111,10 @@ description : Position of notification window vertically:
 
   customClass: boolean;
 
+  private notificationVertialCss = 'notification-vertical-';
+
+  private  notificationHorizontalCss = ' notification-horizontal-'
+
  @ContentChild('amexioNotificationTemp') notificationTemplate: TemplateRef<any>;
 
   // Escape Key Functionality
@@ -145,7 +149,7 @@ description : Position of notification window vertically:
     } else if (this.horizontalposition === null) {
       this.horizontalposition = 'right';
     }
-    this.positionclass = "notification-vertical-" + this.verticalposition + " notification-horizontal-" + this.horizontalposition;
+    this.positionclass = this.notificationVertialCss + this.verticalposition + this.notificationHorizontalCss + this.horizontalposition;
   }
   closeNotification(msg: any) {
     const count = this.messageData.length;
