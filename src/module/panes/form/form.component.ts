@@ -279,13 +279,16 @@ headerPadding:string;
         this.iterate(this.dropdown,'Dropdown');
         this.iterate(this.datefiled,'Date field');
         this.iterate(this.toggle,'Toggle');
-        this.btns.toArray().forEach((c)=>{
-          if ((c.formbind === this.fname) && !c.disabled) {
-           c.disabled = true;
-           this.buttons.push(c);
-           this.checkForm = true;
-        }
-      });
+        setTimeout(()=>{
+          this.btns.toArray().forEach((c)=>{
+            if ((c.formbind === this.fname) &&  !c.disabled) {
+             c.setDisabled(true);
+             this.buttons.push(c);
+             this.checkForm = true;
+          }
+        });
+        },1000);
+
         this.checkFormvalidity();
         this.footer = this.queryFooter.toArray();
         this.onResize();
@@ -431,7 +434,7 @@ headerPadding:string;
         }
       }
 
-      //THIS METHOD IS USED FOR ADDING MSG 
+      //THIS METHOD IS USED FOR ADDING MSG
       addErrorMsg(componentRef:any,componentName:string){
           let errorObject:any = {};
           errorObject['component'] = componentName;
