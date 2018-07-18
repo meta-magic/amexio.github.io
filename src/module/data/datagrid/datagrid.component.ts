@@ -685,6 +685,12 @@ description : Context Menu provides the list of menus on right click of row.
 
   mask = true;
 
+  private checkIcon = 'fa fa-check';
+
+  private plusIcon = 'fa fa-plus';
+
+  private checkDefaultIcon = 'checkbox default';
+
   @ContentChildren(AmexioGridColumnComponent) columnRef: QueryList<AmexioGridColumnComponent>;
 
   constructor(public element: ElementRef, public dataTableService: CommonDataService, private cd: ChangeDetectorRef) {
@@ -692,7 +698,7 @@ description : Context Menu provides the list of menus on right click of row.
     this.sortBy = -1;
 
     this.globalFilterOptions = [{
-      key: 'Start With', value: '1', checkedStatus: 'fa fa-check',
+      key: 'Start With', value: '1', checkedStatus: this.checkIcon,
     }, {
       key: 'Ends With', value: '2', checkedStatus: '',
     }, {
@@ -703,7 +709,7 @@ description : Context Menu provides the list of menus on right click of row.
   ngOnInit() {
 
     this.isExpanded = true;
-    this.iconclassKey = 'fa fa-plus';
+    this.iconclassKey = this.plusIcon;
 
     if (this.enabledatafilter === true) {
       this.globalfilter = false;
@@ -871,7 +877,7 @@ description : Context Menu provides the list of menus on right click of row.
     };
 
     this.globalFilterOptions.forEach((opt: any) => {
-      if (opt.checkedStatus === 'fa fa-check') {
+      if (opt.checkedStatus === this.checkIcon) {
         filter['filter'] = opt.value;
       }
     });
@@ -890,7 +896,7 @@ description : Context Menu provides the list of menus on right click of row.
       value: this.filterValue,
       filter: opt.value,
     };
-    opt.checkedStatus = 'fa fa-check';
+    opt.checkedStatus = this.checkIcon;
     if (this.filterValue) {
       this.getGlobalFilteredData(filter);
     }
@@ -943,28 +949,29 @@ description : Context Menu provides the list of menus on right click of row.
   }
 
   filterConditionMethod(filteredObj: any, option: any, opt: any) {
-    let status = false;
+    const status = false;
     this.data = [];
     let condition: any;
     if (filteredObj.filter === '1') {
       condition = option[opt.dataindex].toLowerCase().startsWith(filteredObj.value.toLowerCase());
-      if (condition) {
-        status = condition;
-      }
+      this.setstatus(condition);
     }
     if (filteredObj.filter === '2') {
       condition = option[opt.dataindex].toLowerCase().endsWith(filteredObj.value.toLowerCase());
-      if (condition) {
-        status = condition;
-      }
+      this.setstatus(condition);
     }
     if (filteredObj.filter === '3') {
       condition = option[opt.dataindex].toLowerCase().includes(filteredObj.value.toLowerCase());
-      if (condition) {
-        status = condition;
-      }
+      this.setstatus(condition);
     }
 
+  }
+
+  // Refactored code to avoid duplication: for filter grid
+  setstatus(condition: any) {
+    if (condition) {
+      status = condition;
+    }
   }
 
   setColumnData() {
@@ -1021,7 +1028,6 @@ description : Context Menu provides the list of menus on right click of row.
     }
     this.selectedRowNo = -1;
   }
-
 
   getResponseData(httpResponse: any) {
     let responsedata = httpResponse;
@@ -1165,13 +1171,13 @@ description : Context Menu provides the list of menus on right click of row.
   }
 
   setSelectedRow(rowData: any, event: any) {
-    if (event.classList.value === 'checkbox default') {
+    if (event.classList.value === this.checkDefaultIcon) {
       this.selectedRows.push(rowData);
       event.classList.value = 'checkbox active';
     } else {
       const indexOf = this.selectedRows.indexOf(rowData);
       delete this.selectedRows[indexOf];
-      event.classList.value = 'checkbox default';
+      event.classList.value = this.checkDefaultIcon;
     }
     this.emitSelectedRows();
   }
@@ -1191,7 +1197,7 @@ description : Context Menu provides the list of menus on right click of row.
     if (this.selectAll) {
       return 'checkbox active';
     } else if (!this.selectAll) {
-      return 'checkbox default';
+      return this.checkDefaultIcon;
     }
   }
 
@@ -1316,10 +1322,10 @@ description : Context Menu provides the list of menus on right click of row.
   onTabClick(btn: any) {
     btn.classList.toggle('active-accordion');
     const panel = btn.nextElementSibling;
-    if (this.iconclassKey === 'fa fa-plus') {
+    if (this.iconclassKey === this.plusIcon) {
       this.iconclassKey = 'fa fa-minus';
     } else if (this.iconclassKey === 'fa fa-minus') {
-      this.iconclassKey = 'fa fa-plus';
+      this.iconclassKey = this.plusIcon;
     }
     if (panel.style.maxHeight) {
       panel.style.maxHeight = null;
