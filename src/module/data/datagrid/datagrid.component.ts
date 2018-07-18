@@ -14,7 +14,6 @@ import {
 import { AmexioGridColumnComponent } from './data.grid.column';
 
 import { CommonDataService } from '../../services/data/common.data.service';
-
 @Component({
   selector: 'amexio-datagrid',
   template: `
@@ -919,7 +918,7 @@ description : Context Menu provides the list of menus on right click of row.
         } else if (filteredObj.filter === '2') {
           status = optvalue.endsWith(filtervalue);
         } else if (filteredObj.filter === '3') {
-          status = optvalue.includes(filtervalue);  
+          status = optvalue.includes(filtervalue);
         }
       });
       if (status) {
@@ -1120,30 +1119,45 @@ description : Context Menu provides the list of menus on right click of row.
     }
   }
 
+  checkNumberFilter(filter: string, key: any, value: string): boolean {
+    if (filter === '<') {
+      return key > value;
+    } else if (filter === '>') {
+      return key < value;
+    } else if (filter === '>=') {
+      return key <= value;
+    } else if (filter === '=<') {
+      return key >= value;
+    } else if (filter === '==') {
+      return key === value;
+    } else if (filter === '!=') {
+      return key !== value;
+    } else {
+      return key !== value;
+    }
+  }
+
+  checkStringFilter(filter: string,  key: any, value: string): boolean {
+    if (filter === '3') {
+      return key.includes(value);
+    } else if (filter === '1') {
+      return key.startsWith(value);
+    } else if (filter === '2') {
+      return key.endsWith(value);
+    }else {
+      return key !== value;
+    }
+  }
+
   filterOpertion(data: any, filteredObj: any) {
     const statusArray: any = [];
-    let condition: any;
+    let condition: boolean;
     filteredObj.forEach((filterOpt: any) => {
-      if (filterOpt.filter === '3' && filterOpt.type === 'string') {
-        condition = data[filterOpt.key].toLowerCase().includes(filterOpt.value.toLowerCase());
-      } else if (filterOpt.filter === '1' && filterOpt.type === 'string') {
-        condition = data[filterOpt.key].toLowerCase().startsWith(filterOpt.value.toLowerCase());
-      } else if (filterOpt.filter === '2' && filterOpt.type === 'string') {
-        condition = data[filterOpt.key].toLowerCase().endsWith(filterOpt.value.toLowerCase());
-      } else if (filterOpt.filter === '<' && filterOpt.type === 'number') {
-        condition = data[filterOpt.key] > filterOpt.value;
-      } else if (filterOpt.filter === '>' && filterOpt.type === 'number') {
-        condition = data[filterOpt.key] < filterOpt.value;
-      } else if (filterOpt.filter === '>=' && filterOpt.type === 'number') {
-        condition = data[filterOpt.key] <= filterOpt.value;
-      } else if (filterOpt.filter === '=<' && filterOpt.type === 'number') {
-        condition = data[filterOpt.key] >= filterOpt.value;
-      } else if (filterOpt.filter === '==' && filterOpt.type === 'number') {
-        condition = data[filterOpt.key] === filterOpt.value;
-      } else if (filterOpt.filter === '!=' && filterOpt.type === 'number') {
-        condition = data[filterOpt.key] !== filterOpt.value;
-      } else {
-        condition = data[filterOpt.key].toLowerCase() !== filterOpt.value.toLowerCase();
+      if (filterOpt.type === 'string') {
+        condition = this.checkStringFilter(filterOpt.filter, data[filterOpt.key].toLowerCase(), filterOpt.value.toLowerCase());
+
+      } else if (filterOpt.type === 'number') {
+        condition = this.checkNumberFilter(filterOpt.filter, filterOpt.type, data[filterOpt.key]);
       }
       statusArray.push(condition);
     });
