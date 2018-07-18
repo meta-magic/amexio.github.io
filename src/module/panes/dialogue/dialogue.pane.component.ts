@@ -274,13 +274,13 @@ export class AmexiodialoguePaneComponent implements OnChanges, OnInit {
     if (this.showdialogue) {
       this.show = this.showdialogue;
     }
-    if (this.footeralign === null) {
+    if (this.footeralign == null) {
       this.footeralign = 'right';
     }
-    if (this.contentalign === null || this.contentalign === '') {
+    if (this.contentalign == null || this.contentalign === '') {
       this.contentalign = 'center';
     }
-    if (this.type === null) {
+    if (this.type == null) {
       this.type = 'confirm';
     }
   }
