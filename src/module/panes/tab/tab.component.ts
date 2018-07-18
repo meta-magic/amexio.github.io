@@ -227,6 +227,8 @@ description : If "true" add two context menus i.e close All and close Others tab
 
   rightClickRowData: any;
 
+  private closeOthersConst = 'Close Others';
+
   map = new Map<any, any>();
   constructor(public render: Renderer2, private componentFactoryResolver: ComponentFactoryResolver, viewContainerRef: ViewContainerRef) {
     this.headeralign = 'left';
@@ -533,13 +535,12 @@ description : If "true" add two context menus i.e close All and close Others tab
     this.mouseLocation.top = event.clientY;
     row.active = true;
     this.getContextMenu();
-
     this.posixUp = this.getListPosition(id);
     event.preventDefault();
     event.stopPropagation();
     this.rightClickRowData = row;
-
   }
+
   tempSelectedFlag(tabs: any) {
     tabs.forEach((tab: any) => {
       if (tab.active) {
@@ -551,10 +552,10 @@ description : If "true" add two context menus i.e close All and close Others tab
   getContextMenu() {
     if (this.defaultContextMenu) {
       const obj = { text: 'Close All', icon: 'fa fa-close', disable: false };
-      const obj2 = { text: 'Close Others', icon: 'fa fa-close', seperator: false, disabled: false };
+      const obj2 = { text: this.closeOthersConst, icon: 'fa fa-close', seperator: false, disabled: false };
       let tmpflag = true;
       for (const i of this.contextmenu) {
-        if (i.text === 'Close All' || i.text === 'Close Others') {
+        if (i.text === 'Close All' || i.text === this.closeOthersConst) {
           tmpflag = false;
         }
       }
@@ -606,7 +607,7 @@ description : If "true" add two context menus i.e close All and close Others tab
       if (itemConfig.text === 'Close All') {
         this.closeAllTabs();
       }
-      if (itemConfig.text === 'Close Others') {
+      if (itemConfig.text === this.closeOthersConst) {
         this.closeOtherTabs(temptab);
       }
       this.rightClick.emit(obj);
