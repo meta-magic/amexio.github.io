@@ -736,11 +736,11 @@ description : Context Menu provides the list of menus on right click of row.
   }
 
   ngDoCheck() {
-    if (this.previousData !== null && JSON.stringify(this.previousData) !== JSON.stringify(this.data)) {
+    if (this.previousData != null && JSON.stringify(this.previousData) !== JSON.stringify(this.data)) {
       this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setChangeData(this.data);
     }
-    if (this.columnPreviewData !== null && this.columndefintion !== null) {
+    if (this.columnPreviewData != null && this.columndefintion != null) {
       if (JSON.stringify(this.columnPreviewData) !== JSON.stringify(this.columndefintion)) {
         this.columnPreviewData = JSON.parse(JSON.stringify(this.columndefintion));
         this.columns = this.columndefintion;
@@ -1232,7 +1232,6 @@ description : Context Menu provides the list of menus on right click of row.
   }
 
   sortData() {
-
     if (this.sortColumn) {
       let sortColDataIndex: any;
       const sortOrder = this.sortBy;
@@ -1242,79 +1241,93 @@ description : Context Menu provides the list of menus on right click of row.
         if (this.sortColumn.datatype === 'string') {
 
           if (this.groupby) {
-            this.data.sort((a, b) => {
-              const x = a.group.toLowerCase();
-              const y = b.group.toLowerCase();
-
-              if (sortOrder === 2) {
-                if (x < y) {
-                  return 1;
-                }
-                if (x > y) {
-                  return -1;
-                }
-              } else {
-                if (x < y) {
-                  return -1;
-                }
-                if (x > y) {
-                  return 1;
-                }
-              }
-
-              return 0;
-            });
+            this.sortOrderGrpBy(sortOrder);
           } else {
             this.data.sort((a, b) => {
               const x = a[sortColDataIndex].toLowerCase();
               const y = b[sortColDataIndex].toLowerCase();
-
-              if (sortOrder === 2) {
-                if (x < y) {
-                  return 1;
-                }
-                if (x > y) {
-                  return -1;
-                }
-              } else {
-                if (x < y) {
-                  return -1;
-                }
-                if (x > y) {
-                  return 1;
-                }
-              }
+              this.noGrpBySortOrder(sortOrder, x, y);
               return 0;
             });
           }
         } else if (this.sortColumn.datatype === 'number') {
-          if (this.groupby) {
-            this.data.sort((a, b) => {
-              const x = a.group;
-              const y = b.group;
-
-              if (sortOrder === 2) {
-                return y - x;
-              } else {
-                return x - y;
-              }
-
-            });
-          } else {
-            this.data.sort((a, b) => {
-              const x = a[sortColDataIndex];
-              const y = b[sortColDataIndex];
-              if (sortOrder === 2) {
-                return y - x;
-              } else {
-                return x - y;
-              }
-            });
-          }
+          this.sortOrderByNumber(sortOrder, sortColDataIndex);
         }
       }
     }
     this.renderData();
+  }
+
+  // Sort Order for number field
+  sortOrderByNumber(sortOrder: any, sortColDataIndex: any) {
+    if (this.groupby) {
+      this.data.sort((a, b) => {
+        const x = a.group;
+        const y = b.group;
+
+        if (sortOrder === 2) {
+          return y - x;
+        } else {
+          return x - y;
+        }
+
+      });
+    } else {
+      this.data.sort((a, b) => {
+        const x = a[sortColDataIndex];
+        const y = b[sortColDataIndex];
+        if (sortOrder === 2) {
+          return y - x;
+        } else {
+          return x - y;
+        }
+      });
+    }
+  }
+
+  // Sort order if group by is false
+  noGrpBySortOrder(sortOrder: any, x: any, y: any) {
+    if (sortOrder === 2) {
+      if (x < y) {
+        return 1;
+      }
+      if (x > y) {
+        return -1;
+      }
+    } else {
+      if (x < y) {
+        return -1;
+      }
+      if (x > y) {
+        return 1;
+      }
+    }
+  }
+
+  // Sort Order if group by is true
+  sortOrderGrpBy(sortOrder: any) {
+    this.data.sort((a, b) => {
+      const x = a.group.toLowerCase();
+      const y = b.group.toLowerCase();
+
+      if (sortOrder === 2) {
+        if (x < y) {
+          return 1;
+        }
+        if (x > y) {
+          return -1;
+        }
+      } else {
+        if (x < y) {
+          return -1;
+        }
+        if (x > y) {
+          return 1;
+        }
+      }
+
+      return 0;
+    });
   }
 
   /* grouby column methods*/
