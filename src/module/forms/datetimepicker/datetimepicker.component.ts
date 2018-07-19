@@ -171,7 +171,8 @@ export class AmexioDateTimePickerComponent implements OnInit {
   hostFlag = false;
   currrentDate: any;
   dateModel: any;
-  isComponentValid: boolean;
+  isValid: boolean;
+  @Output() isComponentValid: any = new EventEmitter<any>();
   backArrowFlag = false;
   forwardArrowFlag = false;
   hrs: number;
@@ -230,7 +231,8 @@ export class AmexioDateTimePickerComponent implements OnInit {
     if (this.inlineDatepicker) {
       this.showToolTip = true;
     }
-    this.isComponentValid = !this.required;
+    this.isValid = !this.required;
+    this.isComponentValid.emit(!this.required);
     if (this.dateformat != null) {
       this.dateformat = 'dd/MM/yyyy';
     }
@@ -292,7 +294,8 @@ export class AmexioDateTimePickerComponent implements OnInit {
     this.resetSelection(dateObj);
     this.dateModel = this.selectedDate;
     this.value = this.selectedDate;
-    this.isComponentValid = true;
+    this.isValid = true;
+    this.isComponentValid.emit(true);
     if (this.inlineDatepicker) {
       this.showToolTip = true;
     } else {
@@ -301,7 +304,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
   }
   resetSelection(dateObj: any) {
     for (const i of this.daysArray) {
-      for (const j of i ){
+      for (const j of i) {
         const day = j;
         if (day.date.getTime() === dateObj.getTime()) {
           day.selected = true;
@@ -467,7 +470,8 @@ export class AmexioDateTimePickerComponent implements OnInit {
     this.selectedDate.setHours(this.hrs);
     this.selectedDate.setMinutes(this.min);
     this.value = this.selectedDate;
-    this.isComponentValid = true;
+    this.isValid = true;
+    this.isComponentValid.emit(true);
     this.change.emit(this.value);
     event.stopPropagation();
   }
@@ -488,7 +492,8 @@ export class AmexioDateTimePickerComponent implements OnInit {
     this.selectedDate.setHours(this.hrs);
     this.selectedDate.setMinutes(this.min);
     this.value = this.selectedDate;
-    this.isComponentValid = true;
+    this.isValid = true;
+    this.isComponentValid.emit(true);
     this.change.emit(this.value);
     event.stopPropagation();
   }
@@ -513,9 +518,9 @@ export class AmexioDateTimePickerComponent implements OnInit {
       this.innerValue = value;
       if (this.required && this.innerValue instanceof Date || ('number' === typeof this.innerValue)) {
         this.dateModel = this.innerValue;
-        this.isComponentValid = true;
+        this.isValid = true;
       } else {
-        this.isComponentValid = false;
+        this.isValid = false;
         this.hrs = 0;
         this.min = 0;
       }
@@ -533,11 +538,11 @@ export class AmexioDateTimePickerComponent implements OnInit {
   }
   onFocusOut(value: any) {
     if (isNaN(Date.parse(value.value))) {
-      this.isComponentValid = false;
+      this.isValid = false;
       value.value = '';
     } else {
       this.value = Date.parse(value.value);
-      this.isComponentValid = true;
+      this.isValid = true;
     }
   }
   openPicker(elem: any) {
@@ -874,18 +879,18 @@ export class AmexioDateTimePickerComponent implements OnInit {
     } /* if ends */
   }
 
-// this function is broken from forwardArrow()
-private alterBackForwardArrow(element: any) {
-  const min = new Date(this.minDate);
-  const max = new Date(this.maxDate);
-  if (element.year === min.getFullYear()) {
-    this.backArrowFlag = true;
+  // this function is broken from forwardArrow()
+  private alterBackForwardArrow(element: any) {
+    const min = new Date(this.minDate);
+    const max = new Date(this.maxDate);
+    if (element.year === min.getFullYear()) {
+      this.backArrowFlag = true;
+    }
+    if (element.year === max.getFullYear() ||
+      (element.year === min.getFullYear() && element.year === max.getFullYear())) {
+      this.forwardArrowFlag = true;
+    }
   }
-  if (element.year === max.getFullYear() ||
-    (element.year === min.getFullYear() && element.year === max.getFullYear())) {
-    this.forwardArrowFlag = true;
-  }
-}
   // this function is obtained by breaking arrowClickForward() for dropdown year forward arrow logic for if
   private forwardArrow() {
     let i;
@@ -949,14 +954,14 @@ private alterBackForwardArrow(element: any) {
       this.alterBackForwardArrow(element);
     });
   }
-// this function is broken from disableYearFlag() , here year flag disable altered to true
-private yearFlagDisable(element: any) {
-  const min = new Date(this.minDate);
-  const max = new Date(this.maxDate);
-  if (element.year < min.getFullYear() || element.year > max.getFullYear()) {
-    element.disabled = true;
-  } // if ends
-}
+  // this function is broken from disableYearFlag() , here year flag disable altered to true
+  private yearFlagDisable(element: any) {
+    const min = new Date(this.minDate);
+    const max = new Date(this.maxDate);
+    if (element.year < min.getFullYear() || element.year > max.getFullYear()) {
+      element.disabled = true;
+    } // if ends
+  }
 
   // this function is obtained by breaking arrowClickBack() and arrowClickForward()
   // for disabling year flag
@@ -1017,5 +1022,10 @@ private yearFlagDisable(element: any) {
     if (element.year < min.getFullYear() || element.year > max.getFullYear()) {
       element.disabled = true;
     }
+  }
+
+  // THIS MEHTOD CHECK INPUT IS VALID OR NOT
+  checkValidity(): boolean {
+    return this.isValid;
   }
 }

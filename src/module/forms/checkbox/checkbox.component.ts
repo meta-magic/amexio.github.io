@@ -1,20 +1,21 @@
 /**
  * Created by ketangote on 11/21/17.
  */
- /*
- Component Name : Amexio Checkbox
- Component Selector :  <amexio-checkbox>
- Component Description : Single checkbox having boolean based values.
+/*
+Component Name : Amexio Checkbox
+Component Selector :  <amexio-checkbox>
+Component Description : Single checkbox having boolean based values.
 */
-import {Component, EventEmitter, forwardRef, Input, OnInit, Output} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 const noop = () => {
 };
 
 @Component({
   selector: 'amexio-checkbox',
   templateUrl: './checkbox.component.html',
-  providers: [{provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioCheckBoxComponent), multi: true,
+  providers: [{
+    provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioCheckBoxComponent), multi: true,
   }],
   styleUrls: ['./checkbox.component.scss'],
 })
@@ -26,72 +27,78 @@ export class AmexioCheckBoxComponent implements ControlValueAccessor, OnInit {
   private onTouchedCallback: () => void = noop;
   private onChangeCallback: (_: any) => void = noop;
 
-/*
-Properties
-name : field-label
-datatype : string
-version : 4.0 onwards
-default : none
-description :The label of this field
-*/
+  /*
+  Properties
+  name : field-label
+  datatype : string
+  version : 4.0 onwards
+  default : none
+  description :The label of this field
+  */
   @Input('field-label') fieldlabel: string;
-/*
-Properties
-name : disabled
-datatype : boolean
-version : 4.0 onwards
-default : false
-description :  If true will not react on any user events and show disable icon over
-*/
+  /*
+  Properties
+  name : disabled
+  datatype : boolean
+  version : 4.0 onwards
+  default : false
+  description :  If true will not react on any user events and show disable icon over
+  */
   @Input() disabled: boolean;
-/*
-Properties
-name : required
-datatype : boolean
-version : 4.0 onwards
-default : false
-description :  property to set if manditory
-*/
+  /*
+  Properties
+  name : required
+  datatype : boolean
+  version : 4.0 onwards
+  default : false
+  description :  property to set if manditory
+  */
   @Input() required = false;
-/*
-Events
-name : onSelection
-datatype : any
-version : none
-default : none
-description : Event fired on checkbox click.
-*/
+  /*
+  Events
+  name : onSelection
+  datatype : any
+  version : none
+  default : none
+  description : Event fired on checkbox click.
+  */
   @Output() onSelection: any = new EventEmitter<any>();
-/*
-Events
-name : input
-datatype : any
-version : none
-default : none
-description : On input event field.
-*/
+  /*
+  Events
+  name : input
+  datatype : any
+  version : none
+  default : none
+  description : On input event field.
+  */
   @Output() input: any = new EventEmitter<any>();
-  isComponentValid: boolean;
+
+  isValid: boolean;
+  @Output() isComponentValid: any = new EventEmitter<any>();
+
   constructor() {
   }
   ngOnInit() {
-    this.isComponentValid = !this.required;
+    this.isValid = !this.required;
+    this.isComponentValid.emit(!this.required);
   }
   onInput(input: any) {
-    this.isComponentValid = this.value;
+    this.isValid = this.value;
+    this.isComponentValid.emit(this.value);
     this.input.emit(this.value);
   }
   onClick() {
     this.value = !this.value;
-    this.isComponentValid = this.value;
+    this.isValid = this.value;
+    this.isComponentValid.emit(this.value);
     this.onSelection.emit(this.value);
   }
   // get accessor
   get value(): any {
     if (this.required) {
-      this.isComponentValid = this.innerValue;
+      this.isValid = this.innerValue;
     } else {
-      this.isComponentValid = true;
+      this.isValid = true;
     }
     return this.innerValue;
   }
@@ -122,5 +129,10 @@ description : On input event field.
   // From ControlValueAccessor interface
   registerOnTouched(fn: any) {
     this.onTouchedCallback = fn;
+  }
+
+  // THIS MEHTOD CHECK INPUT IS VALID OR NOT
+  checkValidity(): boolean {
+    return this.isValid;
   }
 }

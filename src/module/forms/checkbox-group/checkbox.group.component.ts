@@ -8,14 +8,14 @@ Component Description : Checkbox input component has been created to
 render N numbers of check-box based on data-set configured.
 Data-set can be configured using HTTP call OR Define fix number of check-box.
 */
-import { Component, DoCheck, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonDataService } from '../../services/data/common.data.service';
 @Component({
   selector: 'amexio-checkbox-group',
   templateUrl: './checkbox.group.component.html',
   styleUrls: ['./checkbox.group.component.scss'],
 })
-export class AmexioCheckBoxGroupComponent implements DoCheck, OnInit {
+export class AmexioCheckBoxGroupComponent implements OnInit {
   /*
   Properties
   name : horizontal
@@ -103,7 +103,18 @@ description : Name of key inside response data to display on ui.
   default :
   description : Local data for checkboxGroup.
   */
-  @Input() data: any;
+  _data: any;
+  componentLoaded: boolean;
+  @Input('data')
+  set data(value: any) {
+    this._data = value;
+    if (this.componentLoaded) {
+      this.setData(this._data);
+    }
+  }
+  get data(): any {
+    return this._data;
+  }
 
   /*
  Properties
@@ -125,7 +136,8 @@ description : Name of key inside response data to display on ui.
   */
   @Output() onSelection: any = new EventEmitter<any>();
   calculatedColSize: any;
-  isComponentValid: boolean;
+  isValid: boolean;
+  @Output() isComponentValid: any = new EventEmitter<any>();
   elementId: string;
   responseData: any[];
   viewData: any[];
@@ -136,7 +148,8 @@ description : Name of key inside response data to display on ui.
     this.selectedCheckBox = [];
   }
   ngOnInit() {
-    this.isComponentValid = !this.required;
+    this.isValid = !this.required;
+    this.isComponentValid.emit(!this.required);
     if (this.httpmethod && this.httpurl) {
       this.amxHttp.fetchData(this.httpurl, this.httpmethod).subscribe((response) => {
         this.responseData = response;
@@ -151,21 +164,18 @@ description : Name of key inside response data to display on ui.
     if (this.required) {
       this.checkDefaultValidation();
     }
+    this.componentLoaded = true;
   }
   checkDefaultValidation() {
     this.viewData.forEach((opt: any) => {
       if (opt.hasOwnProperty('checked') && opt.checked) {
-        this.isComponentValid = true;
+        this.isValid = true;
+        this.isComponentValid.emit(true);
         return;
       }
     });
   }
-  ngDoCheck() {
-    if (JSON.stringify(this.previousValue) !== JSON.stringify(this.data)) {
-      this.previousValue = JSON.parse(JSON.stringify(this.data));
-      this.setData(this.data);
-    }
-  }
+
   setData(httpResponse: any) {
     this.responseData = this.getResponseData(httpResponse);
     this.viewData = this.getResponseData(httpResponse);
@@ -229,13 +239,21 @@ description : Name of key inside response data to display on ui.
       }
     }
     if (this.selectedCheckBox.length > 0 && this.required) {
-      this.isComponentValid = false;
+      const isValid = false;
       this.selectedCheckBox.forEach((c) => {
         if (c.checked) {
-          this.isComponentValid = true;
+          this.isValid = true;
         }
       });
+      this.isValid = isValid;
+      this.isComponentValid.emit(isValid);
     }
     this.onSelection.emit(sRows);
   }
+
+  // THIS MEHTOD CHECK INPUT IS VALID OR NOT
+  checkValidity(): boolean {
+    return this.isValid;
+  }
+
 }
