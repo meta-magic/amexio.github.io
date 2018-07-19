@@ -239,10 +239,10 @@ description : Name of key inside response data to display on ui.
       }
     }
     if (this.selectedCheckBox.length > 0 && this.required) {
-      const isValid = false;
+      let isValid = false;
       this.selectedCheckBox.forEach((c) => {
         if (c.checked) {
-          this.isValid = true;
+          isValid = true;
         }
       });
       this.isValid = isValid;
