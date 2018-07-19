@@ -480,6 +480,7 @@ description : On field focus event
       this.showToolTip = false;
     }
   }
+     // THIS MEHTOD CHECK INPUT IS VALID OR NOT
   checkValidity(): boolean {
     return this.isValid;
   }
