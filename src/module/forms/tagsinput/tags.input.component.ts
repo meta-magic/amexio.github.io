@@ -239,7 +239,9 @@ description : On field focus event
 
   @ViewChild('dropdownitems', { read: ElementRef }) public dropdownitems: ElementRef;
 
-  isComponentValid: boolean;
+  isValid: boolean;
+
+  @Output() isComponentValid: any = new EventEmitter<any>();
 
   maskloader = true;
 
@@ -248,7 +250,7 @@ description : On field focus event
   }
 
   ngOnInit() {
-    this.isComponentValid = this.allowblank;
+    this.isComponentValid.emit(this.allowblank);
 
     if (this.placeholder === '' || this.placeholder === null) {
       this.placeholder = 'Choose Option';
@@ -444,7 +446,8 @@ description : On field focus event
     this.onSelections.push(value);
     this.onChange.emit(this.onSelections);
     if (this.onSelections.length > 0) {
-      this.isComponentValid = true;
+      this.isValid = true;
+      this.isComponentValid.emit(true);
     }
     this.showToolTip = false;
   }
@@ -458,7 +461,8 @@ description : On field focus event
     });
     this.onSelections.splice(indexToRemove, 1);
     if (this.onSelections.length === 0) {
-      this.isComponentValid = false;
+      this.isValid = false;
+      this.isComponentValid.emit(false);
     }
     this.onChange.emit(this.onSelections);
   }
@@ -475,6 +479,9 @@ description : On field focus event
     if (!parentFound) {
       this.showToolTip = false;
     }
+  }
+  checkValidity(): boolean {
+    return this.isValid;
   }
 
 }
