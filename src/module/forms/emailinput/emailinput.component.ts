@@ -3,7 +3,7 @@
  Component Selector :  <amexio-email-input>
  Component Description : Email input field
  */
-import {Component, EventEmitter, forwardRef, Input, Output} from '@angular/core';
+import {Component, ElementRef,ViewChild,EventEmitter, forwardRef, Input, Output} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
 const noop = () => {
@@ -25,7 +25,7 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
    name : field-label
    datatype : string
    version : 4.0 onwards
-   default : 
+   default :
    description : The label of this field
    */
   @Input('field-label') fieldlabel: string;
@@ -74,7 +74,10 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
   set errormsg(value: string) {
     this.helpInfoMsg = value + '<br/>';
   }
-  isComponentValid : boolean;
+  // isComponentValid : boolean;
+  @Output() isComponentValid:any=new EventEmitter<any>();
+
+  @ViewChild('ref', {read: ElementRef}) public inputRef: ElementRef;
 
   @Input('place-holder') placeholder: string;
 
@@ -101,7 +104,7 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
    name : font-style
    datatype : string
    version : 4.0 onwards
-   default : 
+   default :
    description : Set font-style to field
    */
   @Input('font-style') fontstyle: string;
@@ -110,7 +113,7 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
    name : font-family
    datatype : string
    version : 4.0 onwards
-   default : 
+   default :
    description : Set font-family to field
    */
   @Input('font-family') fontfamily: string;
@@ -119,7 +122,7 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
    name : font-size
    datatype : string
    version : 4.0 onwards
-   default : 
+   default :
    description : Set font-size to field
    */
   @Input('font-size') fontsize: string;
@@ -148,7 +151,7 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
    name : enable-popover
    datatype : string
    version : 4.0 onwards
-   default : 
+   default :
    description : Set enable / disable popover.
    */
   @Input('enable-popover') enablepopover: boolean;
@@ -166,7 +169,7 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
    name : input
    datatype : any
    version : none
-   default : 
+   default :
    description : 	On input event field.
    */
   @Output() input: any = new EventEmitter<any>();
@@ -175,7 +178,7 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
    name : focus
    datatype : any
    version : none
-   default : 
+   default :
    description : On focus event field.
    */
   @Output() focus: any = new EventEmitter<any>();
@@ -184,10 +187,12 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
    name : change
    datatype : any
    version : none
-   default : 
+   default :
    description : On field value change event
    */
   @Output() change: any = new EventEmitter<any>();
+
+  componentClass : any;
 
   isValid: boolean;
 
@@ -195,7 +200,8 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
     this.showToolTip = false;
   }
   ngOnInit() {
-    this.isComponentValid = this.allowblank;
+    // this.isComponentValid = this.allowblank;
+    this.isComponentValid.emit(this.allowblank);
   }
 
   // The internal dataviews model
@@ -219,27 +225,26 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
     }
   }
 
-  //Set touched on blur
-  onblur() {
-    this.onTouchedCallback();
-    this.showToolTip = false;
-    this.onBlur.emit(this.value);
-    if (!this.emailpatter.test(this.value)) {
-      this.isValid = false;
-    } else {
-      this.isValid = true;
-    }
-  }
-
   onFocus() {
     this.showToolTip = true;
     this.focus.emit(this.value);
   }
 
+  //Set touched on blur
+  onblur(input:any) {
+    this.onTouchedCallback();
+    this.showToolTip = false;
+    this.componentClass = this.validateClasses(input);
+    this.onBlur.emit(this.value);
+  }
+
+
+
   onInput(input:any) {
-    this.isComponentValid = input.valid;
-    this.getValidationClasses(input);
+    // this.isComponentValid = input.valid;
+    this.componentClass = this.validateClasses(input);
     this.input.emit(this.value);
+    // this.isComponentValid.emit(this.isValid);
   }
 
   onChangeEv() {
@@ -263,26 +268,26 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
     this.onTouchedCallback = fn;
   }
 
-    getValidationClasses(inp: any): any {
+  validateClasses(inp: any): any {
     let classObj;
     if (!this.allowblank) {
       if (this.innerValue == null || this.innerValue == '') {
         if(inp.touched) {
           classObj = {'input-control-error': true};
           this.isValid = false;
-          this.isComponentValid = false;
+          // this.isComponentValid = false;
         } else {
           this.isValid = false;
-          this.isComponentValid = false;
+          // this.isComponentValid = false;
         }
       } else if (inp.touched && !this.allowblank && (this.value == '' || this.value == null)) {
         classObj = {'input-control-error': true};
         this.isValid = false;
-        this.isComponentValid = false;
+        // this.isComponentValid = false;
       } else if (!this.emailpatter.test(this.value)) {
         classObj = {'input-control-error': true};
         this.isValid = false;
-        this.isComponentValid = false;
+        // this.isComponentValid = false;
       } else {
         classObj = {
           'input-control-error': inp.invalid && (inp.dirty || inp.touched),
@@ -290,16 +295,21 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
         };
         if (inp.valid){
           this.isValid = true;
-          this.isComponentValid = true;
+          // this.isComponentValid = true;
         }
       }
     } else {
       this.isValid = true;
-      this.isComponentValid = true;
+      // this.isComponentValid = true;
     }
+    this.isComponentValid.emit(this.isValid);
     return classObj;
   }
-
+  
+ //THIS MEHTOD CHECK INPUT IS VALID OR NOT 
+  checkValidity():boolean{
+    return (this.inputRef && this.inputRef.nativeElement && this.inputRef.nativeElement.validity && this.inputRef.nativeElement.validity.valid);
+  }
 }
 
 

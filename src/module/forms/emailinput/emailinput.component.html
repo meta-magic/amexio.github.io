@@ -1,34 +1,34 @@
 
 <div class="inputgroup ">
 
-  <label *ngIf="hasLabel" [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
-    {{fieldlabel}}
-  </label>
+      <label *ngIf="hasLabel" [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
+        {{fieldlabel}}
+      </label>
+    
+      <input type="email" class="input-control"
+             [(ngModel)]="value"
+             #inp="ngModel"
+             [ngClass]="componentClass"
+             (blur)="onblur(inp)"
+             (focus)="onFocus()"
+             (input)="onInput(inp)"
+             (change)="onChangeEv()"
+             name="name"
+             [pattern]="regEx"
+             #ref
+             [attr.placeholder]="placeholder"
+             [attr.disabled] = "disabled ? true: null"
+             [required]="!allowblank"/>
+    
+      <span *ngIf="iconfeedback && (inp.invalid && (inp.dirty || inp.touched) || inp.valid)" class="input-control-feedback">
+            <span *ngIf="!isValid && inp.touched"><i class="fa fa-times"></i></span>
+            <span *ngIf="isValid && inp.touched"><i class="fa fa-check"></i></span>
+      </span>   
 
-  <input type="email" class="input-control"
-         [(ngModel)]="value"
-         #inp="ngModel"
-         [ngClass]="getValidationClasses(inp)"
-         (blur)="onblur()"
-         (focus)="onFocus()"
-         (input)="onInput(inp)"
-         (change)="onChangeEv()"
-         name="name"
-         [pattern]="regEx"
-         #ref
-         [attr.placeholder]="placeholder"
-         [attr.disabled] = "disabled ? true: null"
-         [required]="!allowblank"/>
-
-  <span *ngIf="iconfeedback && (inp.invalid && (inp.dirty || inp.touched) || inp.valid)" class="input-control-feedback">
-        <span *ngIf="!isValid && inp.touched">&#9888;</span>
-        <span *ngIf="isValid && inp.touched"> &#10004;</span>
-
+      <span *ngIf="showToolTip && enablepopover" class="dropdown tooltiptext">
+            <div  [innerHTML]="helpInfoMsg"></div>
       </span>
-
-  <span *ngIf="showToolTip && enablepopover" class="dropdown tooltiptext">
-        <div  [innerHTML]="helpInfoMsg"></div>
-  </span>
-
-  <span class="inputfieldbar"></span>
-</div>
+    
+      <span class="inputfieldbar"></span>
+    </div>
+    

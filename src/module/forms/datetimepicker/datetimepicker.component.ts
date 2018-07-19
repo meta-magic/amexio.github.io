@@ -18,20 +18,20 @@ export const CUSTOM_DATETIME_Style_CONTROL_VALUE_ACCESSOR: any = {
   selector: 'amexio-date-time-picker',
   templateUrl: './datetimepicker.component.html',
   styles: [`
-  
+
   `],
   providers: [CUSTOM_DATETIME_Style_CONTROL_VALUE_ACCESSOR]
 })
 
 export class AmexioDateTimePicker implements OnInit {
- 
- 
+
+
   /*
 Properties
 name : date-format
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : The label of this field
 */
 @Input('date-format') dateformat: string;
@@ -61,7 +61,7 @@ Properties
 name : field-label
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : 	The label of this field
 */
 @Input('field-label') fieldlabel: string;
@@ -195,7 +195,9 @@ currrentDate: any;
 
 dateModel: any;
 
-isComponentValid: boolean;
+// isComponentValid: boolean;
+isValid : boolean;
+@Output() isComponentValid:any=new EventEmitter<any>();
 backArrowFlag: boolean = false;
 forwardArrowFlag: boolean = false;
 hrs: number;
@@ -274,7 +276,9 @@ ngOnInit() {
   if (this.inlineDatepicker) {
     this.showToolTip = true;
   }
-  this.isComponentValid = !this.required;
+  // this.isComponentValid = !this.required;
+  this.isValid=!this.required;
+  this.isComponentValid.emit(!this.required);
   if (this.dateformat != null) {
     this.dateformat = "dd/MM/yyyy";
   }
@@ -312,7 +316,7 @@ ngOnInit() {
 
   //logic for disabling yrs before min and after max
   if (this.minDate.length > 0 || this.maxDate.length > 0) {
-    
+
     let min = new Date(this.minDate);
     let max = new Date(this.maxDate);
 
@@ -391,7 +395,9 @@ onDateClick(dateObj: any) {
   this.resetSelection(dateObj);
   this.dateModel = this.selectedDate;
   this.value = this.selectedDate;
-  this.isComponentValid = true;
+  // this.isComponentValid = true;
+  this.isValid=true;
+  this.isComponentValid.emit(true);
   if (this.inlineDatepicker) {
     this.showToolTip = true;
   }
@@ -597,7 +603,9 @@ plus(type: string, event: any) {
   this.selectedDate.setHours(this.hrs);
   this.selectedDate.setMinutes(this.min);
   this.value = this.selectedDate;
-  this.isComponentValid = true;
+  // this.isComponentValid = true;
+  this.isValid=true;
+  this.isComponentValid.emit(true);
   this.change.emit(this.value);
   event.stopPropagation();
 
@@ -624,7 +632,9 @@ minus(type: string, event: any) {
   this.selectedDate.setHours(this.hrs);
   this.selectedDate.setMinutes(this.min);
   this.value = this.selectedDate;
-  this.isComponentValid = true;
+  // this.isComponentValid = true;
+  this.isValid=true;
+  this.isComponentValid.emit(true);
   this.change.emit(this.value);
   event.stopPropagation();
 }
@@ -663,9 +673,11 @@ writeValue(value: any) {
     this.innerValue = value;
     if (this.required && this.innerValue instanceof Date || ('number' == typeof this.innerValue)) {
       this.dateModel = this.innerValue;
-      this.isComponentValid = true;
+      // this.isComponentValid = true;
+      this.isValid=true;
     } else {
-      this.isComponentValid = false;
+      // this.isComponentValid = false;
+      this.isValid=false;
       this.hrs = 0;
       this.min = 0;
 
@@ -693,12 +705,14 @@ onFocus(elem: any) {
 
 onFocusOut(value: any) {
   if (isNaN(Date.parse(value.value))) {
-    this.isComponentValid = false;
+    // this.isComponentValid = false;
+    this.isValid=false;
     value.value = '';
   }
   else {
     this.value = Date.parse(value.value);
-    this.isComponentValid = true;
+    // this.isComponentValid = true;
+    this.isValid=true;
   }
 }
 
@@ -717,7 +731,7 @@ openPicker(elem: any) {
   //this.viewmode = "2"
 
   this.disableddays(this.diabledDate);
-  
+
 }
 getListPosition(elementRef: any): boolean {
   let dropdownHeight: number = 350; //must be same in dropdown.scss
@@ -780,7 +794,7 @@ public onElementOutClick(targetElement: HTMLElement) {
 }
 
 validateDays(days: any) {
-  
+
   let max = new Date(this.maxDate);
   let min = new Date(this.minDate);
   //check1: if min max is null return false
@@ -790,7 +804,7 @@ validateDays(days: any) {
     return false;
   }
   if ((this.maxDate.length > 0 && this.minDate.length <= 0) || (this.maxDate.length > 0 && this.minDate.length > 0)) {
-    //check if days greater than max return 
+    //check if days greater than max return
     //1
     if (days.getDate() > max.getDate() &&
       days.getMonth() >= max.getMonth() && days.getFullYear() >= max.getFullYear()) {
@@ -1021,7 +1035,7 @@ arrowClickBack() {
 
 //disable flag logic
 if (this.minDate.length > 0 || this.maxDate.length > 0) {
- 
+
 this.yearList1.forEach(element => {
   let min = new Date(this.minDate);
   let max = new Date(this.maxDate);
@@ -1074,7 +1088,7 @@ this.yearList2.forEach(element => {
     });
 
     if (!this.backArrowFlag) {
-   
+
       for (i = 0; i < 5; i++) {
 
         this.yearList1[i].year = this.yearList1[i].year - 10;
@@ -1082,7 +1096,7 @@ this.yearList2.forEach(element => {
         this.yearList1[i].disabled=false;
         this.yearList2[i].disabled=false;
       }//for ends
-      
+
       this.yearList1;
       this.yearList2;
 
@@ -1149,7 +1163,7 @@ if (element.year == max.getFullYear()) {
 
 
 if (element.year != min.getFullYear() && element.year != max.getFullYear()) {
- 
+
   this.forwardArrowFlag = false;
 
   this.backArrowFlag = false;
@@ -1181,7 +1195,7 @@ arrowClickForward() {
   let i;
 //disable flag logic
   if (this.minDate.length > 0 || this.maxDate.length > 0) {
-    
+
     this.yearList1.forEach(element => {
       let min = new Date(this.minDate);
       let max = new Date(this.maxDate);
@@ -1208,7 +1222,7 @@ arrowClickForward() {
   if (this.minDate.length > 0 || this.maxDate.length > 0) {
     let min = new Date(this.minDate);
     let max = new Date(this.maxDate);
-    
+
     this.yearList1.forEach(element => {
       if (element.year == min.getFullYear() ||
         (element.year == min.getFullYear() && element.year == max.getFullYear())) {
@@ -1265,7 +1279,7 @@ arrowClickForward() {
   }
 //disable flag logic
 if (this.minDate.length > 0 || this.maxDate.length > 0) {
-  
+
 this.yearList1.forEach(element => {
   let min = new Date(this.minDate);
   let max = new Date(this.maxDate);
@@ -1296,7 +1310,7 @@ let min = new Date(this.minDate);
 if (element.year == min.getFullYear() ||
   (element.year == min.getFullYear() && element.year == max.getFullYear())) {
   this.backArrowFlag = true;
-  } 
+  }
 
 if (element.year == max.getFullYear()) {
   this.forwardArrowFlag = true;
@@ -1322,6 +1336,10 @@ if (element.year == max.getFullYear() ||
 }
 });
 
+}
+ //THIS MEHTOD CHECK INPUT IS VALID OR NOT 
+ checkValidity():boolean{
+  return this.isValid;
 }
 
 }

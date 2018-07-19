@@ -10,7 +10,7 @@
 
 */
 import {
-  Component, DoCheck, ElementRef, ContentChild, TemplateRef, EventEmitter, forwardRef, HostListener, Input, OnInit, Output, Renderer2, ViewChild
+  Component, ElementRef, ContentChild, TemplateRef, EventEmitter, forwardRef, HostListener, Input, OnInit, Output, Renderer2, ViewChild
 } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {CommonDataService} from "../../services/data/common.data.service";
@@ -29,7 +29,7 @@ export const CUSTOM_DROPDOWN_CONTROL_VALUE_ACCESSOR: any = {
   styleUrls: ['./dropdown.component.scss'],
   providers: [CUSTOM_DROPDOWN_CONTROL_VALUE_ACCESSOR]
 })
-export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAccessor {
+export class AmexioDropDownComponent implements OnInit, ControlValueAccessor {
 
    /*
 Properties
@@ -59,7 +59,19 @@ version : 4.0 onwards
 default :
 description : Local data for dropdown.
 */
-  @Input() data: any;
+_data : any;
+componentLoaded:boolean;
+@Input('data')
+set data(value: any) {
+  this._data = value;
+  if(this.componentLoaded){
+    this.setData(this._data);
+  }
+}
+get data() : any{
+  return this._data;
+}
+
 
  /*
 Properties
@@ -121,8 +133,8 @@ default : false
 description : true for search box enable
 */
   @Input() search: boolean;
-  
-  
+
+
    /*
    Properties
    name : readonly
@@ -163,7 +175,7 @@ Properties
 name : error-msg
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Sets the error message
 */
   @Input('error-msg')
@@ -313,7 +325,9 @@ description : Set enable / disable popover.
 
   posixUp : boolean;
 
-  isComponentValid : boolean;
+  // isComponentValid : boolean;
+  isValid: boolean;
+  @Output() isComponentValid:any=new EventEmitter<any>();
 
   @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
   public onElementOutClick(targetElement: HTMLElement) {
@@ -343,7 +357,9 @@ description : Set enable / disable popover.
   }
 
   ngOnInit() {
-    this.isComponentValid = this.allowblank;
+    // this.isComponentValid = this.allowblank;
+    this.isValid=this.allowblank;
+    this.isComponentValid.emit(this.allowblank);
     if (this.placeholder == '' || this.placeholder == null) this.placeholder = 'Choose Option';
     if (this.httpmethod && this.httpurl) {
       this.dataService.fetchData(this.httpurl, this.httpmethod).subscribe(response => {
@@ -357,7 +373,7 @@ description : Set enable / disable popover.
       this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
     }
-
+    this.componentLoaded=true;
   }
   setData(httpResponse: any) {
     //Check if key is added?
@@ -402,7 +418,9 @@ description : Set enable / disable popover.
       this.viewData.forEach((item: any) => {
         if (item[valueKey] == val)
         {
-          this.isComponentValid = true;
+          // this.isComponentValid = true;
+          this.isValid=true;
+          this.isComponentValid.emit(true);
           this.displayValue = item[displayKey];
           this.onSingleSelect.emit(item);
         }
@@ -411,12 +429,7 @@ description : Set enable / disable popover.
     }
     this.maskloader=false;
   }
-  ngDoCheck() {
-    if (JSON.stringify(this.previousData) != JSON.stringify(this.data)) {
-      this.previousData = JSON.parse(JSON.stringify(this.data));
-      this.setData(this.data);
-    }
-  }
+
   onItemSelect(row: any) {
     if (this.multiselect) {
       let optionsChecked: any [] = [];
@@ -439,7 +452,9 @@ description : Set enable / disable popover.
       this.multiselect ? this.showToolTip = true : this.showToolTip = false;
       this.onSingleSelect.emit(row);
     }
-  this.isComponentValid = true;
+  // this.isComponentValid = true;
+  this.isValid=true;
+  this.isComponentValid.emit(true);
   }
 
   setMultiSelectData () {
@@ -483,6 +498,7 @@ description : Set enable / disable popover.
         });
         return this.displayValue == undefined ? '' : this.displayValue;
       }
+      
     }
 
 
@@ -493,11 +509,15 @@ description : Set enable / disable popover.
   }
   onChange(event: any) {
     this.value = event;
+    this.isValid=true;
+    this.isComponentValid.emit(true);
   }
 
   onInput(input : any) {
     this.input.emit();
-    this.isComponentValid = input.valid;
+    // this.isComponentValid = input.valid;
+    this.isValid=input.valid;
+    this.isComponentValid.emit(input.valid);
     //this.input.emit(this.value);
   }
 
@@ -521,6 +541,10 @@ description : Set enable / disable popover.
         this.filteredOptions = this.viewData;
         //this.selectedindex = 0;
       }
+    }
+
+    if(event.keyCode === 8){
+      this.value = "";
     }
     if(event.keyCode === 40 || event.keyCode === 38 || event.keyCode === 13)
     {
@@ -607,9 +631,19 @@ description : Set enable / disable popover.
   }
 
   //Set touched on blur
-  onblur() {
-    this.onTouchedCallback();
-    this.onBlur.emit();
+  onblur(event:any) {
+
+      if(event.target && event.target.value && this.filteredOptions && this.filteredOptions.length === 1){
+        const fvalue = event.target.value;
+        let row = this.filteredOptions[0];
+        const rvalue = row[this.displayfield];
+        console.log(fvalue +" "+" "+rvalue+" "+this.filteredOptions.length);
+        if(fvalue && rvalue && (fvalue.toLowerCase() === rvalue.toLowerCase())){
+          this.onItemSelect(row);
+        }
+      }
+      this.onTouchedCallback();
+      this.onBlur.emit();
   }
 
   onFocus(elem : any) {
@@ -637,7 +671,8 @@ description : Set enable / disable popover.
           if(this.viewData && this.viewData.length > 0) {
             this.viewData.forEach((item: any) => {
               if (item[this.valuefield] == value) {
-                this.isComponentValid = true;
+                // this.isComponentValid = true;
+                this.isValid=true;
               }
             });
           }
@@ -645,7 +680,8 @@ description : Set enable / disable popover.
         }
       } else {
         this.value = '';
-        this.isComponentValid = false;
+        // this.isComponentValid = false;
+        this.isValid=true;
       }
     }
     /*if(value != null) {
@@ -671,5 +707,10 @@ description : Set enable / disable popover.
     if(!this.disabled)
       this.showToolTip = ! this.showToolTip;
   }
+
+    //THIS MEHTOD CHECK INPUT IS VALID OR NOT 
+    checkValidity():boolean{
+      return this.isValid;
+    }
 
 }

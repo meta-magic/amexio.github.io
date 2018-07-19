@@ -74,7 +74,9 @@ description : Event is fired on toggle component click
 
   @Output() onChange: EventEmitter<any> = new EventEmitter<any>();
 
-  isComponentValid : boolean;
+  // isComponentValid : boolean;
+  isValid :boolean;
+  @Output() isComponentValid:any=new EventEmitter<any>();
 
   constructor() {
 
@@ -82,11 +84,15 @@ description : Event is fired on toggle component click
 
   ngOnInit() {
     this.shape == '' || this.shape == null ? this.shape = 'round' : 0;
-    this.isComponentValid = !this.required;
+    // this.isComponentValid = !this.required;
+    this.isValid=!this.required;
+    this.isComponentValid.emit(!this.required);
   }
 
   onToggle() {
-    this.isComponentValid = this.value;
+    // this.isComponentValid = this.value;
+    this.isValid=this.value;
+    this.isComponentValid.emit(this.value);
     this.onChange.emit(this.value);
   }
 
@@ -120,9 +126,11 @@ description : Event is fired on toggle component click
   writeValue(value: any) {
     if (value !== this.innerValue) {
       if (value) {
-        this.isComponentValid = value;
+        // this.isComponentValid = value;
+        this.isValid=value;
       } else {
-        this.isComponentValid = value;
+        // this.isComponentValid = value;
+        this.isValid=value;
       }
       this.innerValue = value;
     }
@@ -136,6 +144,11 @@ description : Event is fired on toggle component click
   //From ControlValueAccessor interface
   registerOnTouched(fn: any) {
     this.onTouchedCallback = fn;
+  }
+
+   //THIS MEHTOD CHECK INPUT IS VALID OR NOT 
+  checkValidity():boolean{
+    return this.isValid;
   }
 }
 

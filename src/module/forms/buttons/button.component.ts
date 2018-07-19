@@ -3,7 +3,7 @@
  */
 
   /*
- Component Name : Amexio Button 
+ Component Name : Amexio Button
  Component Selector : <amexio-button>
  Component Description : A button component with various modes and configurations.
 
@@ -28,7 +28,7 @@ Properties
 name : label
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Label on button
 */
   @Input() label: string;
@@ -38,8 +38,8 @@ Properties
 name :  badge
 datatype : number
 version : 4.1.9 onwards
-default : 
-description : Badge  describes the badge value that has to be displayed on button 
+default :
+description : Badge  describes the badge value that has to be displayed on button
 */
   @Input('badge') badge: number;
 
@@ -49,7 +49,7 @@ badgeClass():string{
   let className='';
 if(this.type=="primary" || this.type=="theme-color" )
 className="btn-primary-badge";
- 
+
 if(this.type=="secondary" || this.type=="theme-backgroundcolor")
 className="btn-secondary-badge";
 
@@ -74,7 +74,7 @@ Properties
 name :  icon
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : FaIcon classname
 */
   @Input() icon: string;
@@ -89,17 +89,17 @@ description : Type of button  default / theme-color / theme-backgroundcolor / gr
 */
   @Input() type: string;
    /*
-Properties 
+Properties
 name : tooltip
 datatype : string
 version : 4.1 onwards
-default : 
+default :
 description : Tooltip on button hover
 */
   @Input() tooltip: string;
 
   /*
-Properties 
+Properties
 name : disabled
 datatype : boolean
 version : 4.0 onwards
@@ -109,7 +109,7 @@ description : Enable/Disables the button
   @Input() disabled: boolean;
 
 /*
-Properties 
+Properties
 name : form-bind
 datatype : string
 version : 4.1.6 onwards
@@ -119,43 +119,43 @@ description : To bind button to form
 @Input('form-bind') formbind: string;
 
   /*
-Properties 
+Properties
 name : size
 datatype :  string
 version : 4.0 onwards
-default : 
+default :
 description : Different Sizes of Buttons availabe : large, default, small & xsmall
-*/ 
+*/
   @Input() size: string;
 
  /*
-Properties 
+Properties
 name : loading
 datatype :  boolean
 version : 4.0 onwards
-default : 
-description : Loading attribute can be used for async task 
-*/ 
+default :
+description : Loading attribute can be used for async task
+*/
   @Input() loading:boolean;
 
   /*
-Events 
+Events
 name : onClick
 datatype :  none
 version : none
 default : none
-description : Fire when button click 
-*/ 
+description : Fire when button click
+*/
   @Output() onClick: any = new EventEmitter<any>();
 
   /*
-Properties 
+Properties
 name : block
 datatype :  boolean
 version : 4.0 onwards
 default : false
 description : Set true to show buttom block
-*/ 
+*/
   @Input() block: boolean;
 
   constructor() {
@@ -170,9 +170,13 @@ description : Set true to show buttom block
 
  ngOnInit(): void {
 
-  
+
 
 }
 
+//THIS METHOD SET DISABLED PROPERTY FOR BUTTON
+setDisabled(disabled:boolean){
+  this.disabled=disabled;
+}
 
 }

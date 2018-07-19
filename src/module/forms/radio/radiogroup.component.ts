@@ -19,7 +19,7 @@ Properties
 name : allow-blank
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Sets if field is required
 */
   @Input('allow-blank') allowblank: boolean = true;
@@ -47,7 +47,7 @@ Properties
 name : data-reader
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : 	Key in JSON datasource for records
 */
   @Input('data-reader') datareader: string;
@@ -65,7 +65,7 @@ Properties
 name : http-url
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : 	REST url for fetching datasource.
 */
   @Input('http-url') httpurl: string;
@@ -83,7 +83,7 @@ Properties
 name : value-field
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Name of key inside response data.use to send to backend
 */
   @Input('value-field') valuefield: string;
@@ -92,7 +92,7 @@ Properties
 name : default-value
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Default Value to be checked
 */
   @Input('default-value') defaultSelectedValue: string;
@@ -110,7 +110,7 @@ Properties
 name : data
 datatype : any
 version : 4.0 onwards
-default : 
+default :
 description : 	Local data for radio group.
 */
   @Input() data: any;
@@ -128,7 +128,7 @@ Events
 name : onBonSelectionlur
 datatype : any
 version : 4.0 onwards
-default : 
+default :
 description : Fires selection event
 */
   @Output() onSelection: any = new EventEmitter<any>();
@@ -137,7 +137,7 @@ Events
 name : input
 datatype : any
 version : none
-default : 
+default :
 description : 	On input event field.
 */
 @Output() input: any = new EventEmitter<any>();
@@ -146,7 +146,10 @@ description : 	On input event field.
 
   responseData: any;
 
-  isComponentValid : boolean;
+  // isComponentValid : boolean;
+  isValid : boolean;
+
+  @Output() isComponentValid:any=new EventEmitter<any>();
 
   constructor(public amxHttp: CommonDataService) {
   }
@@ -156,12 +159,15 @@ description : 	On input event field.
 
     // if(this.viewData)
     // this.isComponentValid = true;
+    this.isValid=true;
     this.input.emit();
   }
 
   ngOnInit() {
 
-    this.isComponentValid = this.allowblank;
+    // this.isComponentValid = this.allowblank;
+    this.isValid=this.allowblank;
+    this.isComponentValid.emit(this.allowblank);
 
     if (this.httpmethod && this.httpurl) {
       this.amxHttp.fetchData(this.httpurl, this.httpmethod).subscribe(response => {
@@ -179,7 +185,9 @@ description : 	On input event field.
    checkDefaultValidation(viewData: any) {
     viewData.forEach((opt: any)=>{
       if(opt[this.valuefield] == this.defaultSelectedValue || (opt.hasOwnProperty('selected') && opt.selected)){
-        this.isComponentValid = true;
+        // this.isComponentValid = true;
+        this.isValid=true;
+        this.isComponentValid.emit(true);
         return;
       }
 
@@ -210,7 +218,9 @@ description : 	On input event field.
     for (let r = 0; r < this.viewData.length; r++) {
       if (this.viewData[r] == row) {
         this.viewData[r]['selected'] = true;
-        this.isComponentValid = true;
+        // this.isComponentValid = true;
+        this.isValid=true;
+        this.isComponentValid.emit(true);
       } else {
         this.viewData[r]['selected'] = false;
       }
@@ -218,5 +228,9 @@ description : 	On input event field.
     this.onSelection.emit(row);
   }
 
+    //THIS MEHTOD CHECK INPUT IS VALID OR NOT 
+    checkValidity():boolean{
+      return this.isValid;
+    }
 
 }

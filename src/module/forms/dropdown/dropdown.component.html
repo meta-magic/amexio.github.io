@@ -12,7 +12,7 @@
   <input type="text" class="input-control"
          [value]="getDisplayText()"
          [ngClass]="{'input-control-error' : inp.invalid && (inp.dirty || inp.touched),'input-control-success' : inp.valid && (inp.dirty || inp.touched)}"
-         (blur)="onblur()"
+         (blur)="onblur($event)"
          (click)="onDropDownClick($event)"
          (focus)="onFocus(rootDiv)"
          (input)="onInput(inp)"
@@ -39,7 +39,7 @@
               <span>{{item[displayfield]}}</span>
             </ng-container>            <span style="float : right">{{item?.checked ? '&#10004;': ''}}</span>
           </li>
-           <ng-template *ngIf="filteredOptions.length < 1">
+           <ng-template *ngIf="filteredOptions && (filteredOptions.length < 1)">
              <li class="list-items">No Options</li>
            </ng-template>
         </ul>

@@ -7,7 +7,7 @@
  Component Selector :  <amexio-checkbox-group>
  Component Description : Checkbox input component has been created to render N numbers of check-box based on data-set configured. Data-set can be configured using HTTP call OR Define fix number of check-box.
 
- 
+
 */
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {CommonDataService} from "../../services/data/common.data.service";
@@ -22,21 +22,21 @@ export class AmexioCheckBoxGroupComponent {
 
 
   /*
-Properties 
+Properties
 name : horizontal
 datatype : boolean
 version : 4.0 onwards
-default : false 
+default : false
 description : Set true for horizontal checkbox
 */
   @Input() horizontal: boolean;
 
    /*
-Properties 
+Properties
 name : field-label
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : The label of this field
 */
   @Input('field-label') fieldlabel: string;
@@ -47,7 +47,7 @@ description : The label of this field
   @Input('field-name') fieldname: string;
 
     /*
-Properties 
+Properties
 name : data-reader
 datatype : string
 version : 4.0 onwards
@@ -57,49 +57,49 @@ description : Key in JSON datasource for records
   @Input('data-reader') datareader: string;
 
    /*
-Properties 
+Properties
 name : http-method
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Type of HTTP call, POST,GET.
 */
   @Input('http-method') httpmethod: string;
 
   /*
-Properties 
+Properties
 name : http-url
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : REST url for fetching datasource.
 */
   @Input('http-url') httpurl: string;
 
   /*
-Properties 
+Properties
 name : display-field
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Name of key inside response data to display on ui.
 */
   @Input('display-field') displayfield: string;
 
    /*
-Properties 
+Properties
 name : value-field
 datatype : string
 version : 4.0 onwards
-default : 
+default :
 description : Name of key inside response data.use to send to backend
 */
   @Input('value-field') valuefield: string;
 /* not in use */
   @Input() search: boolean;
-  
+
   /*
-Properties 
+Properties
 name : disabled
 datatype : boolean
 version : 4.0 onwards
@@ -109,14 +109,25 @@ description :  If true will not react on any user events and show disable icon o
   @Input() disabled: boolean = false;
 
    /*
-Properties 
+Properties
 name : data
 datatype : any
 version : 4.0 onwards
-default : 
+default :
 description : Local data for checkboxGroup.
 */
-  @Input() data: any;
+_data : any;
+componentLoaded:boolean;
+@Input('data')
+set data(value: any) {
+  this._data = value;
+  if(this.componentLoaded){
+    this.setData(this._data);
+  }
+}
+get data() : any{
+  return this._data;
+}
 
  /*
 Properties
@@ -124,14 +135,14 @@ name : required
 datatype : boolean
 version : 4.1.7 onwards
 default : false
-description :  property to set if manditory 
+description :  property to set if manditory
 */
   @Input() required: boolean = false;
 
   mask : boolean = true;
 
    /*
-Events 
+Events
 name : onSelection
 datatype : any
 version : none
@@ -142,7 +153,9 @@ description : fire when check box click
 
   calculatedColSize: any;
 
-  isComponentValid : boolean;
+  // isComponentValid : boolean;
+  isValid : boolean;
+  @Output() isComponentValid:any=new EventEmitter<any>();
 
   elementId: string;
 
@@ -157,12 +170,14 @@ description : fire when check box click
   previousValue: any;
 
   constructor(private amxHttp: CommonDataService) {
-    this.selectedCheckBox = [];    
+    this.selectedCheckBox = [];
   }
 
   ngOnInit() {
-    
-    this.isComponentValid = !this.required;
+
+    // this.isComponentValid = !this.required;
+    this.isValid=!this.required;
+    this.isComponentValid.emit(!this.required);
     if (this.httpmethod && this.httpurl) {
       this.amxHttp.fetchData(this.httpurl, this.httpmethod).subscribe(response => {
         this.responseData = response;
@@ -177,22 +192,18 @@ description : fire when check box click
       if (this.required) {
       this.checkDefaultValidation();
     }
+    this.componentLoaded=true;
   }
 
    checkDefaultValidation() {
     this.viewData.forEach((opt: any)=>{
       if(opt.hasOwnProperty('checked') && opt.checked){
-        this.isComponentValid = true;
+        // this.isComponentValid = true;
+        this.isValid=true;
+        this.isComponentValid.emit(true);
         return;
       }
     });
-  }
-  
-  ngDoCheck() {
-    if (JSON.stringify(this.previousValue) != JSON.stringify(this.data)) {
-      this.previousValue = JSON.parse(JSON.stringify(this.data));
-      this.setData(this.data);
-    }
   }
 
   setData(httpResponse: any) {
@@ -200,9 +211,9 @@ description : fire when check box click
     this.viewData = this.getResponseData(httpResponse);
     let viewDataWithIdArray: any[] = [];
     this.viewData.forEach((viewDataObject: any) => {
-      
+
       viewDataObject.id = 'checkbox' + Math.floor(Math.random() * 90000) + 10000;
-      
+
       if(!viewDataObject.hasOwnProperty('disabled')){
         viewDataObject.disabled = false;
       }
@@ -243,7 +254,7 @@ description : fire when check box click
   }
 
   setSelectedCheckBox(rowData: any, event: any) {
- 
+
     if(rowData.hasOwnProperty('disabled') && !rowData.disabled){
       rowData[this.valuefield] = !rowData[this.valuefield];
 
@@ -269,14 +280,22 @@ description : fire when check box click
     }
      if(this.selectedCheckBox.length > 0 && this.required)
      {
-       this.isComponentValid = false;
-       this.selectedCheckBox.forEach((c)=>{                
+      //  this.isComponentValid = false;
+      let isValid:boolean=false;
+       this.selectedCheckBox.forEach((c)=>{
           if(c.checked)
           {
-            this.isComponentValid = true;
+             isValid = true;
           }
         });
+        this.isValid=isValid;
+        this.isComponentValid.emit(isValid);
      }
     this.onSelection.emit(sRows);
+  }
+
+  //THIS MEHTOD CHECK INPUT IS VALID OR NOT 
+  checkValidity():boolean{
+    return this.isValid;
   }
 }

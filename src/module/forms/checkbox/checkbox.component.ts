@@ -6,7 +6,7 @@
  Component Name : Amexio Checkbox
  Component Selector :  <amexio-checkbox>
  Component Description : Single checkbox having boolean based values.
- 
+
 */
 import {Component, EventEmitter, forwardRef, Input, Output} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
@@ -27,17 +27,17 @@ export const CUSTOM_CHECKBOX_CONTROL_VALUE_ACCESSOR: any = {
 export class AmexioCheckBoxComponent implements ControlValueAccessor {
 
   /*
-Properties 
+Properties
 name : field-label
 datatype : string
 version : 4.0 onwards
-default : none 
+default : none
 description : The label of this field
 */
   @Input('field-label') fieldlabel: string;
 
   /*
-Properties 
+Properties
 name : disabled
 datatype : boolean
 version : 4.0 onwards
@@ -52,7 +52,7 @@ name : required
 datatype : boolean
 version : 4.0 onwards
 default : false
-description :  property to set if manditory 
+description :  property to set if manditory
 */
   @Input() required: boolean = false;
 
@@ -75,25 +75,33 @@ description : On input event field.
 */
   @Output() input: any = new EventEmitter<any>();
 
-  isComponentValid :boolean;
-  
+  // isComponentValid :boolean;
+  isValid:boolean;
+  @Output() isComponentValid:any=new EventEmitter<any>();
+
   constructor() {
 
   }
   ngOnInit() {
-    this.isComponentValid = !this.required;
+    // this.isComponentValid = !this.required;
+    this.isValid=!this.required;
+    this.isComponentValid.emit(!this.required);
   }
 
   onInput(input:any) {
-    
-    this.isComponentValid = this.value;
+
+    // this.isComponentValid = this.value;
+    this.isValid=this.value;
+    this.isComponentValid.emit(this.value);
     this.input.emit(this.value);
   }
-    
-    
+
+
   onClick() {
-    this.value = !this.value;    
-    this.isComponentValid = this.value;
+    this.value = !this.value;
+    // this.isComponentValid = this.value;
+    this.isValid=this.value;
+    this.isComponentValid.emit(this.value);
     this.onSelection.emit(this.value);
   }
 
@@ -108,9 +116,11 @@ description : On input event field.
   //get accessor
  get value(): any {
     if(this.required) {
-      this.isComponentValid = this.innerValue;
+      // this.isComponentValid = this.innerValue;
+      this.isValid=this.innerValue;
     } else {
-      this.isComponentValid = true;
+      // this.isComponentValid = true;
+      this.isValid=true;
     }
     return this.innerValue;
   }
@@ -148,6 +158,11 @@ description : On input event field.
   //From ControlValueAccessor interface
   registerOnTouched(fn: any) {
     this.onTouchedCallback = fn;
+  }
+
+   //THIS MEHTOD CHECK INPUT IS VALID OR NOT 
+   checkValidity():boolean{
+    return this.isValid;
   }
 
 }
