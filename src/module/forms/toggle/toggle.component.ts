@@ -93,7 +93,7 @@ description : The label of this field.
       this.shape = 'round';
     }
     this.isValid = !this.required;
-    this.isComponentValid.emit(!this.required);
+    this.isComponentValid.emit(false);
   }
 
   onToggle() {
