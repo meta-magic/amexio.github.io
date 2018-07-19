@@ -300,9 +300,9 @@ export class AmexioDateTimePickerComponent implements OnInit {
     }
   }
   resetSelection(dateObj: any) {
-    for (let i = 0; i < this.daysArray.length; i++) {
-      for (let j = 0; j < this.daysArray[i].length; j++) {
-        const day = this.daysArray[i][j];
+    for (const i of this.daysArray) {
+      for (const j of i ){
+        const day = j;
         if (day.date.getTime() === dateObj.getTime()) {
           day.selected = true;
         } else {

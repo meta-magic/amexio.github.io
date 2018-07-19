@@ -8,19 +8,18 @@
  Component Description : Amexio column system allows up to 12 columns across the page.
 */
 
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, HostBinding, Input, OnInit} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
-  selector: 'amexio-column', templateUrl: 'column.component.html', host: {
-    '[class]': 'colclass',
-  },
+  selector: 'amexio-column', templateUrl: 'column.component.html',
 })
 
 export class AmexioColumnComponent implements OnInit {
   size_: string;
 
   colclass: string;
+  @HostBinding('attr.class') role = this.colclass;
 
   constructor() {
 
@@ -36,6 +35,7 @@ description : Column size*/
   set size(value: any) {
     this.size_ = value;
     this.colclass = 'flex-col flex-col-' + value;
+    this.role = this.colclass;
   }
 
   get size() {

@@ -908,7 +908,6 @@ description : Context Menu provides the list of menus on right click of row.
   getGlobalFilteredData(filteredObj: any) {
     let status = false;
     this.data = [];
-    let condition: any;
     this.filterCloneData.forEach((option: any) => {
       this.columns.forEach((opt: any) => {
         const optvalue = option[opt.dataindex].toLowerCase();

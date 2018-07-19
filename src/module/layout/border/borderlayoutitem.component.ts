@@ -9,14 +9,14 @@ Component Description : Amexio border layout lays out a container,
                         north, south, east, west, and center.
 
 */
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostBinding, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'amexio-borderlayout-item',
   templateUrl: './borderlayoutitem.component.html',
-  host: {
-    '[class]': 'positionClass',
-  },
+  // host: {
+  //   '[class]': 'positionClass',
+  // },
 })
 export class AmexioBorderLayoutItemComponent implements OnInit {
 
@@ -30,6 +30,8 @@ description : Layout the contents to North , East , West , Center & South positi
 */
   @Input() position: string;
   positionClass= 'borderlayout-';
+  @HostBinding('attr.class') role = this.positionClass;
+
   constructor() {
   }
   ngOnInit() {
@@ -50,6 +52,7 @@ description : Layout the contents to North , East , West , Center & South positi
     }
 
     this.positionClass = this.positionClass + pos;
+    this.role = this.positionClass;
 
     return pos;
   }
