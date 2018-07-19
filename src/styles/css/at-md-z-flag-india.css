@@ -882,49 +882,49 @@ button {
   background-color: #6bff6b; }
 
 /** datetime - Structure CSS **/
-.datetimepicker {
++ .datetimepicker {
   display: block;
   border: 1px solid #ced4da;
   position: absolute;
   box-shadow: 0 1px 3px 0 #ced4da;
   z-index: 3;
   width: 290px; }
-  .datetimepicker .datetimepickertopbar {
+  + .datetimepicker .datetimepickertopbar {
     padding: 10px 25px;
     text-align: center; }
-    .datetimepicker .datetimepickertopbar .title {
+    + .datetimepicker .datetimepickertopbar .title {
       font-size: 18px;
       cursor: pointer; }
-    .datetimepicker .datetimepickertopbar ul {
+    + .datetimepicker .datetimepickertopbar ul {
       margin: 0;
       padding: 0;
       list-style: none; }
-    .datetimepicker .datetimepickertopbar ul li {
+    + .datetimepicker .datetimepickertopbar ul li {
       font-size: 18px;
       text-transform: uppercase;
       letter-spacing: 3px; }
-    .datetimepicker .datetimepickertopbar .prev {
+    + .datetimepicker .datetimepickertopbar .prev {
       float: left;
       padding-top: 10px;
       cursor: pointer; }
-    .datetimepicker .datetimepickertopbar .next {
+    + .datetimepicker .datetimepickertopbar .next {
       float: right;
       padding-top: 10px;
       cursor: pointer; }
-  .datetimepicker .weekdays {
+  + .datetimepicker .weekdays {
     margin: 0;
     padding: 10px 0;
     list-style: none; }
-    .datetimepicker .weekdays li {
+    + .datetimepicker .weekdays li {
       display: inline-block;
       width: 13.6%;
       text-align: center; }
-  .datetimepicker .days {
+  + .datetimepicker .days {
     padding: 10px 0;
     margin: 0;
     cursor: pointer;
     list-style: none; }
-    .datetimepicker .days li {
+    + .datetimepicker .days li {
       list-style-type: none;
       display: inline-block;
       width: 13.6%;
@@ -933,10 +933,10 @@ button {
       margin-bottom: 5px;
       font-size: 12px;
       cursor: pointer; }
-    .datetimepicker .days .active {
+    + .datetimepicker .days .active {
       border-radius: 135px;
       padding: 5px; }
-    .datetimepicker .days .date-today {
+    + .datetimepicker .days .date-today {
       padding-top: 1%;
       padding-left: 42%; }
 
@@ -1071,10 +1071,10 @@ button {
   padding-left: 105px; }
 
 .change4 {
-  padding-left: 5px;
-  padding-right: 5px;
-  padding-top: 7px;
-  padding-bottom: 7px;
+  padding-left: 3px;
+  padding-right: 4px;
+  padding-top: 3px;
+  padding-bottom: 3px;
   border-radius: 5px;
   cursor: pointer;
   width: 30px; }
@@ -5387,7 +5387,7 @@ verticalalign-tableft {
   grid-template-areas: 'north north north north north north' 'east center center center center west' 'south south south south south south';
   grid-gap: 2px;
   padding: 2px;
-  grid-template-columns: 1fr 1fr; }
+  grid-template-columns: auto; }
 
 .borderlayout-container-N-E-C-W-S aside {
   border: 0px solid none; }
@@ -5398,7 +5398,7 @@ verticalalign-tableft {
   grid-template-areas: 'north north north north north north' 'east center center center center center' 'south south south south south south';
   grid-gap: 2px;
   padding: 2px;
-  grid-template-columns: 1fr 1fr; }
+  grid-template-columns: auto; }
 
 .borderlayout-container-N-E-C-S aside {
   border: 0px solid none; }
@@ -5409,7 +5409,7 @@ verticalalign-tableft {
   grid-template-areas: 'north north north north north north' 'center center center center center west' 'south south south south south south';
   grid-gap: 2px;
   padding: 2px;
-  grid-template-columns: 1fr 1fr; }
+  grid-template-columns: auto; }
 
 .borderlayout-container-N-C-W-S aside {
   border: 0px solid none; }
@@ -5420,7 +5420,7 @@ verticalalign-tableft {
   grid-template-areas: 'east center center center center west' 'south south south south south south';
   grid-gap: 2px;
   padding: 2px;
-  grid-template-columns: 1fr 1fr; }
+  grid-template-columns: auto; }
 
 .borderlayout-container-E-C-W-S aside {
   border: 0px solid none; }
@@ -5431,7 +5431,7 @@ verticalalign-tableft {
   grid-template-areas: 'north north north north north north' 'center center center center center center' 'south south south south south south';
   grid-gap: 2px;
   padding: 2px;
-  grid-template-columns: 1fr 1fr; }
+  grid-template-columns: auto; }
 
 .borderlayout-container-N-C-S aside {
   border: 0px solid none; }
@@ -5442,7 +5442,7 @@ verticalalign-tableft {
   grid-template-areas: 'east center center center center center' 'south south south south south south';
   grid-gap: 2px;
   padding: 2px;
-  grid-template-columns: 1fr 1fr; }
+  grid-template-columns: auto; }
 
 .borderlayout-container-E-C-S aside {
   border: 0px solid none; }
@@ -5453,7 +5453,7 @@ verticalalign-tableft {
   grid-template-areas: 'center center center center center west' 'south south south south south south';
   grid-gap: 2px;
   padding: 2px;
-  grid-template-columns: 1fr 1fr; }
+  grid-template-columns: auto; }
 
 .borderlayout-container-C-W-S aside {
   border: 0px solid none; }
@@ -5464,7 +5464,7 @@ verticalalign-tableft {
   grid-template-areas: 'north north north north north north' 'center center center center center center';
   grid-gap: 2px;
   padding: 2px;
-  grid-template-columns: 1fr 1fr; }
+  grid-template-columns: auto; }
 
 .borderlayout-container-N-C aside {
   border: 0px solid none; }
@@ -5475,7 +5475,7 @@ verticalalign-tableft {
   grid-template-areas: 'center center center center center center' 'south south south south south south';
   grid-gap: 2px;
   padding: 2px;
-  grid-template-columns: 1fr 1fr; }
+  grid-template-columns: auto; }
 
 .borderlayout-container-C-S aside {
   border: 0px solid none; }
