@@ -447,32 +447,31 @@ description : Set enable / disable popover.
   }
 
   getDisplayText(): string {
-    if (this.value != null || this.value !== '' || this.value !== '') {
-      if (this.multiselect) {
-        this.getMultiSelectDisplayText();
-      } else {
-        this.displayValue = '';
-        this.filteredOptions.forEach((test) => {
-          if (test[this.valuefield] === this.value) {
-            this.displayValue = test[this.displayfield];
-          }
+    if ((this.value != null || this.value !== '' || this.value !== '') && this.multiselect) {
+        this.setMultiSelectData();
+        let multiselectDisplayString: any = '';
+        this.multiselectValues.forEach((row: any) => {
+          multiselectDisplayString === '' ? multiselectDisplayString +=
+            row[this.displayfield] : multiselectDisplayString += ',' + row[this.displayfield];
         });
+        if (this.multiselectValues.length > 0) {
+          return multiselectDisplayString;
+        } else {
+          return '';
+        }
+      } else if ((this.value != null || this.value !== '' || this.value !== '') && !this.multiselect) {
+        this.getMultiSelectDisplayText();
         return this.displayValue === undefined ? '' : this.displayValue;
       }
-    }
   }
   getMultiSelectDisplayText() {
-    this.setMultiSelectData();
-    let multiselectDisplayString: any = '';
-    this.multiselectValues.forEach((row: any) => {
-      multiselectDisplayString === '' ? multiselectDisplayString +=
-        row[this.displayfield] : multiselectDisplayString += ',' + row[this.displayfield];
+    this.displayValue = '';
+    this.filteredOptions.forEach((test) => {
+      if (test[this.valuefield] === this.value) {
+        this.displayValue = test[this.displayfield];
+      }
     });
-    if (this.multiselectValues.length > 0) {
-      return multiselectDisplayString;
-    } else {
-      return '';
-    }
+    return this.displayValue === undefined ? '' : this.displayValue;
   }
 
   onDropDownClick(event: any) {
