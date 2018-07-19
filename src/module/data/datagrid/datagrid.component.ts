@@ -974,7 +974,9 @@ description : Context Menu provides the list of menus on right click of row.
     });
     this.data = [];
     for (const groupName in groups) {
+      if (groups.hasOwnProperty(groupName)) {
       this.data.push({ expanded: false, isSelected: false, group: groupName, groupData: groups[groupName] });
+      }
     }
     /*-------Aggregation---------*/
     this.renderData();
