@@ -225,7 +225,9 @@ description : Set enable / disable popover.
 
   isValid: boolean;
 
-  isComponentValid: boolean;
+  componentClass: any;
+
+  @Output() isComponentValid: any = new EventEmitter<any>();
 
   @ViewChild('ref', { read: ElementRef }) public inputRef: ElementRef;
   /*
@@ -270,7 +272,7 @@ description : On field value change event
   }
 
   ngOnInit() {
-    this.isComponentValid = this.allowblank;
+    this.isComponentValid.emit(this.allowblank);
   }
 
   // get accessor
@@ -287,14 +289,10 @@ description : On field value change event
   }
 
   // Set touched on blur
-  onblur() {
+  onblur(input: any) {
     this.onTouchedCallback();
     this.showToolTip = false;
-    if (this.value && (this.value.length < this.minlength)) {
-      this.isValid = false;
-    } else {
-      this.isValid = true;
-    }
+    this.componentClass = this.validateComponent(input);
     this.onBlur.emit(this.value);
   }
 
@@ -304,8 +302,7 @@ description : On field value change event
   }
 
   onInput(input: any) {
-    this.isComponentValid = input.valid;
-    this.getValidationClasses(input);
+    this.componentClass = this.validateComponent(input);
     this.input.emit(this.value);
   }
 
@@ -334,7 +331,7 @@ description : On field value change event
     return { 'input-control-error': true };
   }
 
-  getValidationClasses(inp: any): any {
+  validateComponent(inp: any): any {
     let classObj;
     if (!this.allowblank) {
       if (this.innerValue == null || this.innerValue === '') {
@@ -342,16 +339,16 @@ description : On field value change event
       } else if (inp.touched && !this.allowblank && (this.value === '' || this.value == null)) {
         classObj = this.getCssClass();
         this.isValid = false;
-        this.isComponentValid = false;
       } else if (this.minlength != null && this.minlength !== 0) {
         classObj = this.minMaxValidation();
       } else {
         classObj = this.otherValidation(inp);
+        this.isValid = false;
       }
     } else {
       this.isValid = true;
-      this.isComponentValid = true;
     }
+    this.isComponentValid.emit(this.isValid);
     return classObj;
   }
 
@@ -361,10 +358,8 @@ description : On field value change event
     if (inp.touched) {
       classObj = this.getCssClass();
       this.isValid = false;
-      this.isComponentValid = false;
     } else {
       this.isValid = false;
-      this.isComponentValid = false;
     }
     return classObj;
   }
@@ -374,11 +369,9 @@ description : On field value change event
     let classObj;
     if (this.value && (this.value.length >= this.minlength)) {
       this.isValid = true;
-      this.isComponentValid = true;
     } else {
       classObj = this.getCssClass();
       this.isValid = false;
-      this.isComponentValid = false;
     }
     return classObj;
   }
@@ -392,8 +385,13 @@ description : On field value change event
     };
     if (inp.valid) {
       this.isValid = true;
-      this.isComponentValid = true;
     }
     return classObj;
   }
+
+    // THIS MEHTOD CHECK INPUT IS VALID OR NOT
+    checkValidity(): boolean {
+      return (this.inputRef && this.inputRef.nativeElement && this.inputRef.nativeElement.validity
+        && this.inputRef.nativeElement.validity.valid);
+    }
 }
