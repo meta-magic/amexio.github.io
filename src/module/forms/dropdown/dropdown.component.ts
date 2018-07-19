@@ -11,7 +11,7 @@
      in case of multi select.
 */
 import {
-  Component, ContentChild, DoCheck, ElementRef, EventEmitter, forwardRef,
+  Component, ContentChild, ElementRef, EventEmitter, forwardRef,
   HostListener, Input, OnInit, Output, Renderer2, TemplateRef, ViewChild,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -26,7 +26,7 @@ const noop = () => {
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioDropDownComponent), multi: true,
   }],
 })
-export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAccessor {
+export class AmexioDropDownComponent implements OnInit, ControlValueAccessor {
   /*
   Properties
   name : field-label
@@ -53,7 +53,18 @@ export class AmexioDropDownComponent implements OnInit, DoCheck, ControlValueAcc
   default :
   description : Local data for dropdown.
   */
-  @Input() data: any;
+  _data: any;
+  componentLoaded: boolean;
+  @Input('data')
+  set data(value: any) {
+    this._data = value;
+    if (this.componentLoaded) {
+      this.setData(this._data);
+    }
+  }
+  get data(): any {
+    return this._data;
+  }
   /*
   Properties
   name : data-reader
@@ -289,11 +300,14 @@ description : Set enable / disable popover.
   viewData: any;
   multiselectValues: any[] = [];
   maskloader = true;
-  isComponentValid: boolean;
   selectedindex = 0;
   scrollposition = 30;
   arr: any[];
   private innerValue: any = '';
+
+  isValid: boolean;
+  @Output() isComponentValid: any = new EventEmitter<any>();
+
   // Placeholders for the callbacks which are later provided
   // by the Control Value Accessor
   private onTouchedCallback: () => void = noop;
@@ -314,7 +328,8 @@ description : Set enable / disable popover.
   constructor(public dataService: CommonDataService, public element: ElementRef, public renderer: Renderer2) {
   }
   ngOnInit() {
-    this.isComponentValid = this.allowblank;
+    this.isValid = this.allowblank;
+    this.isComponentValid.emit(this.allowblank);
     if (this.placeholder === '' || this.placeholder === null) {
       this.placeholder = 'Choose Option';
     }
@@ -396,12 +411,6 @@ description : Set enable / disable popover.
     });
   }
 
-  ngDoCheck() {
-    if (JSON.stringify(this.previousData) !== JSON.stringify(this.data)) {
-      this.previousData = JSON.parse(JSON.stringify(this.data));
-      this.setData(this.data);
-    }
-  }
   onItemSelect(row: any) {
     if (this.multiselect) {
       const optionsChecked: any[] = [];
@@ -423,7 +432,8 @@ description : Set enable / disable popover.
       this.multiselect ? this.showToolTip = true : this.showToolTip = false;
       this.onSingleSelect.emit(row);
     }
-    this.isComponentValid = true;
+    this.isValid = true;
+    this.isComponentValid.emit(true);
   }
 
   setMultiSelectData() {
@@ -448,21 +458,21 @@ description : Set enable / disable popover.
 
   getDisplayText(): string {
     if ((this.value != null || this.value !== '' || this.value !== '') && this.multiselect) {
-        this.setMultiSelectData();
-        let multiselectDisplayString: any = '';
-        this.multiselectValues.forEach((row: any) => {
-          multiselectDisplayString === '' ? multiselectDisplayString +=
-            row[this.displayfield] : multiselectDisplayString += ',' + row[this.displayfield];
-        });
-        if (this.multiselectValues.length > 0) {
-          return multiselectDisplayString;
-        } else {
-          return '';
-        }
-      } else if ((this.value != null || this.value !== '' || this.value !== '') && !this.multiselect) {
-        this.getMultiSelectDisplayText();
-        return this.displayValue === undefined ? '' : this.displayValue;
+      this.setMultiSelectData();
+      let multiselectDisplayString: any = '';
+      this.multiselectValues.forEach((row: any) => {
+        multiselectDisplayString === '' ? multiselectDisplayString +=
+          row[this.displayfield] : multiselectDisplayString += ',' + row[this.displayfield];
+      });
+      if (this.multiselectValues.length > 0) {
+        return multiselectDisplayString;
+      } else {
+        return '';
       }
+    } else if ((this.value != null || this.value !== '' || this.value !== '') && !this.multiselect) {
+      this.getMultiSelectDisplayText();
+      return this.displayValue === undefined ? '' : this.displayValue;
+    }
   }
   getMultiSelectDisplayText() {
     this.displayValue = '';
@@ -479,10 +489,13 @@ description : Set enable / disable popover.
   }
   onChange(event: any) {
     this.value = event;
+    this.isValid = true;
+    this.isComponentValid.emit(true);
   }
   onInput(input: any) {
     this.input.emit();
-    this.isComponentValid = input.valid;
+    this.isValid = input.valid;
+    this.isComponentValid.emit(input.valid);
   }
 
   onDropDownSearchKeyUp(event: any) {
@@ -568,7 +581,15 @@ description : Set enable / disable popover.
     }
   }
   // Set touched on blur
-  onblur() {
+  onblur(event: any) {
+    if (event.target && event.target.value && this.filteredOptions && this.filteredOptions.length === 1) {
+      const fvalue = event.target.value;
+      const row = this.filteredOptions[0];
+      const rvalue = row[this.displayfield];
+      if (fvalue && rvalue && (fvalue.toLowerCase() === rvalue.toLowerCase())) {
+        this.onItemSelect(row);
+      }
+    }
     this.onTouchedCallback();
     this.onBlur.emit();
   }
@@ -626,4 +647,9 @@ description : Set enable / disable popover.
       this.showToolTip = !this.showToolTip;
     }
   }
+    // THIS MEHTOD CHECK INPUT IS VALID OR NOT
+    checkValidity(): boolean {
+      return this.isValid;
+    }
+
 }
