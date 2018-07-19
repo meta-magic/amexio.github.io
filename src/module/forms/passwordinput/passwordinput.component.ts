@@ -3,7 +3,7 @@
  Component Selector :  <amexio-email-input>
  Component Description : Email input field
 */
-import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 const noop = () => {
 };
@@ -57,9 +57,9 @@ default :
 description : Sets if field is required
 */
   @Input('allow-blank') allowblank: boolean;
+  componentClass: any;
   helpInfoMsg: string;
   isValid: boolean;
-  isComponentValid: boolean;
   regEx: RegExp;
   showToolTip: boolean;
   _errormsg: string;
@@ -237,6 +237,8 @@ default :
 description : On field value change event
 */
   @Output() change: any = new EventEmitter<any>();
+  @Output() isComponentValid: any = new EventEmitter<any>();
+  @ViewChild('ref', {read: ElementRef}) public inputRef: ElementRef;
   constructor() {
     this.showToolTip = false;
   }
@@ -258,18 +260,13 @@ description : On field value change event
     }
   }
   // Set touched on blur
-  onblur() {
+  onblur(input: any) {
     this.onTouchedCallback();
     this.showToolTip = false;
-    if (this.value && (this.value.length < this.minlength)) {
-      this.isValid = false;
-    } else {
-      this.isValid = true;
-    }
+    this.componentClass = this.getValidationClasses(input);
     this.onBlur.emit(this.value);
   }
   onInput(input: any) {
-    this.isComponentValid = input.valid;
     this.getValidationClasses(input);
     this.input.emit(this.value);
   }
@@ -295,7 +292,7 @@ description : On field value change event
     this.onTouchedCallback = fn;
   }
   ngOnInit() {
-    this.isComponentValid = this.allowblank;
+    this.isComponentValid.emit(this.allowblank);
   }
 
   getCssClass(): any {
@@ -303,24 +300,25 @@ description : On field value change event
   }
 
   getValidationClasses(inp: any): any {
-    let classObj;
-    if (!this.allowblank) {
-      if (this.innerValue == null || this.innerValue === '') {
-        classObj = this.noInnerValue(inp);
-      } else if (inp.touched && !this.allowblank && (this.value === '' || this.value === null)) {
-        classObj = this.getCssClass();
-        this.isValid = false;
-        this.isComponentValid = false;
-      } else if (this.minlength != null && this.minlength !== 0) {
-        classObj = this.minMaxValidation();
+    if (inp) {
+      let classObj;
+      if (!this.allowblank) {
+        if (this.innerValue == null || this.innerValue === '') {
+          classObj = this.noInnerValue(inp);
+        } else if (inp.touched && !this.allowblank && (this.value === '' || this.value === null)) {
+          classObj = this.getCssClass();
+          this.isValid = false;
+        } else if (this.minlength != null && this.minlength !== 0) {
+          classObj = this.minMaxValidation();
+        } else {
+          classObj = this.otherValidation(inp);
+        }
       } else {
-        classObj = this.otherValidation(inp);
+        this.isValid = true;
       }
-    } else {
-      this.isValid = true;
-      this.isComponentValid = true;
+      return classObj;
     }
-    return classObj;
+    return '';
   }
 
   // If inner value is black or null
@@ -329,10 +327,8 @@ description : On field value change event
     if (inp.touched) {
       classObj = this.getCssClass();
       this.isValid = false;
-      this.isComponentValid = false;
     } else {
       this.isValid = false;
-      this.isComponentValid = false;
     }
     return classObj;
   }
@@ -341,11 +337,9 @@ description : On field value change event
     let classObj;
     if (this.value && (this.value.length >= this.minlength)) {
       this.isValid = true;
-      this.isComponentValid = true;
     } else {
       classObj = this.getCssClass();
       this.isValid = false;
-      this.isComponentValid = false;
     }
     return classObj;
   }
@@ -358,7 +352,6 @@ description : On field value change event
     };
     if (inp.valid) {
       this.isValid = true;
-      this.isComponentValid = true;
     }
     return classObj;
   }
