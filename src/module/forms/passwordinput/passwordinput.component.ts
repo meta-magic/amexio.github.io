@@ -263,11 +263,11 @@ description : On field value change event
   onblur(input: any) {
     this.onTouchedCallback();
     this.showToolTip = false;
-    this.componentClass = this.getValidationClasses(input);
+    this.componentClass = this.validateClass(input);
     this.onBlur.emit(this.value);
   }
   onInput(input: any) {
-    this.componentClass = this.getValidationClasses(input);
+    this.componentClass = this.validateClass(input);
     this.input.emit(this.value);
   }
   onFocus() {
@@ -299,7 +299,7 @@ description : On field value change event
     return { 'input-control-error': true };
   }
 
-  getValidationClasses(inp: any): any {
+  validateClass(inp: any): any {
     if (inp) {
       let classObj;
       if (!this.allowblank) {
@@ -316,6 +316,7 @@ description : On field value change event
       } else {
         this.isValid = true;
       }
+      this.isComponentValid.emit(this.isValid);
       return classObj;
     }
     return '';
@@ -354,5 +355,11 @@ description : On field value change event
       this.isValid = true;
     }
     return classObj;
+  }
+
+   // THIS MEHTOD CHECK INPUT IS VALID OR NOT
+   checkValidity(): boolean {
+    return (this.inputRef && this.inputRef.nativeElement && this.inputRef.nativeElement.validity
+      && this.inputRef.nativeElement.validity.valid);
   }
 }
