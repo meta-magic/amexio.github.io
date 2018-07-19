@@ -7,7 +7,7 @@ different configurable attributes for validation
 (min/max value, allow blank, custom regex), custom error message, help, custom styles.
 
 */
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const noop = () => {
@@ -60,15 +60,19 @@ description : Sets if field is required
 */
   @Input('allow-blank') allowblank: boolean;
 
+  componentClass: any;
+
   helpInfoMsg: string;
 
   regEx: RegExp;
 
-  isComponentValid: boolean;
-
   showToolTip: boolean;
 
   _errormsg: string;
+
+  @Output() isComponentValid: any = new EventEmitter<any>();
+
+  @ViewChild('ref', {read: ElementRef}) public inputRef: ElementRef;
 
   // Placeholders for the callbacks which are later provided
   // by the Control Value Accessor
@@ -230,7 +234,7 @@ description : Set enable / disable popover.
     this.showToolTip = false;
   }
   ngOnInit() {
-    this.isComponentValid = this.allowblank;
+    this.isComponentValid.emit(this.allowblank);
   }
 
   // get accessor
@@ -247,9 +251,10 @@ description : Set enable / disable popover.
   }
 
   // Set touched on blur
-  onBlur() {
+  onBlur(input: any) {
     this.onTouchedCallback();
     this.showToolTip = false;
+    this.componentClass = this.validateClass(input);
   }
 
   onFocus() {
@@ -277,7 +282,7 @@ description : Set enable / disable popover.
     return { 'input-control-error': true };
   }
 
-  getValidationClasses(inp: any): any {
+  validateClass(inp: any): any {
     let classObj;
     if (!this.allowblank) {
       if (this.innerValue === null || this.innerValue === '') {
@@ -285,20 +290,18 @@ description : Set enable / disable popover.
       } else if (inp.touched && !this.allowblank && (this.value === '' || this.value === null)) {
         classObj = this.getCssClass();
         this.isValid = false;
-        this.isComponentValid = false;
       } else {
         this.otherValidation(inp);
       }
     } else {
       this.isValid = true;
-      this.isComponentValid = true;
     }
+    this.isComponentValid.emit(this.isValid);
     return classObj;
   }
 
   onInput(input: any) {
-    this.isComponentValid = input.valid;
-    this.getValidationClasses(input);
+    this.componentClass = this.validateClass(input);
   }
 
   noInnerValue(inp: any) {
@@ -306,10 +309,8 @@ description : Set enable / disable popover.
     if (inp.touched) {
       classObj = this.getCssClass();
       this.isValid = false;
-      this.isComponentValid = false;
     } else {
       this.isValid = false;
-      this.isComponentValid = false;
     }
     return classObj;
   }
@@ -323,8 +324,13 @@ description : Set enable / disable popover.
     };
     if (inp.valid) {
       this.isValid = true;
-      this.isComponentValid = true;
     }
     return classObj;
+  }
+
+  // THIS MEHTOD CHECK INPUT IS VALID OR NOT
+  checkValidity(): boolean {
+    return (this.inputRef && this.inputRef.nativeElement &&
+      this.inputRef.nativeElement.validity && this.inputRef.nativeElement.validity.valid);
   }
 }

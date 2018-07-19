@@ -267,7 +267,7 @@ description : On field value change event
     this.onBlur.emit(this.value);
   }
   onInput(input: any) {
-    this.getValidationClasses(input);
+    this.componentClass = this.getValidationClasses(input);
     this.input.emit(this.value);
   }
   onFocus() {
