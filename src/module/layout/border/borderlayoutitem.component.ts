@@ -14,9 +14,6 @@ import { Component, HostBinding, Input, OnInit } from '@angular/core';
 @Component({
   selector: 'amexio-borderlayout-item',
   templateUrl: './borderlayoutitem.component.html',
-  // host: {
-  //   '[class]': 'positionClass',
-  // },
 })
 export class AmexioBorderLayoutItemComponent implements OnInit {
 
