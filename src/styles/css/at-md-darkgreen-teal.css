@@ -882,49 +882,49 @@ button {
   background-color: #6bffff; }
 
 /** datetime - Structure CSS **/
-+ .datetimepicker {
+.datetimepicker {
   display: block;
   border: 1px solid #ced4da;
   position: absolute;
   box-shadow: 0 1px 3px 0 #ced4da;
   z-index: 3;
   width: 290px; }
-  + .datetimepicker .datetimepickertopbar {
+  .datetimepicker .datetimepickertopbar {
     padding: 10px 25px;
     text-align: center; }
-    + .datetimepicker .datetimepickertopbar .title {
+    .datetimepicker .datetimepickertopbar .title {
       font-size: 18px;
       cursor: pointer; }
-    + .datetimepicker .datetimepickertopbar ul {
+    .datetimepicker .datetimepickertopbar ul {
       margin: 0;
       padding: 0;
       list-style: none; }
-    + .datetimepicker .datetimepickertopbar ul li {
+    .datetimepicker .datetimepickertopbar ul li {
       font-size: 18px;
       text-transform: uppercase;
       letter-spacing: 3px; }
-    + .datetimepicker .datetimepickertopbar .prev {
+    .datetimepicker .datetimepickertopbar .prev {
       float: left;
       padding-top: 10px;
       cursor: pointer; }
-    + .datetimepicker .datetimepickertopbar .next {
+    .datetimepicker .datetimepickertopbar .next {
       float: right;
       padding-top: 10px;
       cursor: pointer; }
-  + .datetimepicker .weekdays {
+  .datetimepicker .weekdays {
     margin: 0;
     padding: 10px 0;
     list-style: none; }
-    + .datetimepicker .weekdays li {
+    .datetimepicker .weekdays li {
       display: inline-block;
       width: 13.6%;
       text-align: center; }
-  + .datetimepicker .days {
+  .datetimepicker .days {
     padding: 10px 0;
     margin: 0;
     cursor: pointer;
     list-style: none; }
-    + .datetimepicker .days li {
+    .datetimepicker .days li {
       list-style-type: none;
       display: inline-block;
       width: 13.6%;
@@ -933,10 +933,10 @@ button {
       margin-bottom: 5px;
       font-size: 12px;
       cursor: pointer; }
-    + .datetimepicker .days .active {
+    .datetimepicker .days .active {
       border-radius: 135px;
       padding: 5px; }
-    + .datetimepicker .days .date-today {
+    .datetimepicker .days .date-today {
       padding-top: 1%;
       padding-left: 42%; }
 
