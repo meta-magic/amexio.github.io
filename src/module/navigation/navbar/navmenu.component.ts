@@ -100,22 +100,25 @@ description : Fire when nav item is clicked, This event is fired when nav item t
   setMobileMode(flag: boolean) {
     this.mobilemode = flag;
   }
-  onClick(node: any, event: any) {
+  onClick(_node: any, _event: any) {
     const n = {
-      // 'title': this.title,
-      // 'data': this.data,
-      // 'icon': this.icon,
-      // 'node': node,
-      // 'mobilemode': this.mobilemode,
+    title: this.title,
+    data: this.data,
+    icon: this.icon,
+    node: _node,
+    mobilemode: this.mobilemode,
     };
-    this.navLinkClick.emit({n, event});
-  }
-  onHeaderClick(event: any) {
+    this.navLinkClick.emit(this.dataObject(n, _event));
+    }
+    dataObject(n: any, _event: any): any {
+      return {data: n, event: _event};
+    }
+    onHeaderClick(event: any) {
     const node = {
-      // 'header': true,
-      // 'title' : this.title,
-      // 'icon'  : this.icon,
+    header: true,
+    title : this.title,
+    icon : this.icon,
     } ;
     this.onClick(node, event);
-  }
+    }
 }

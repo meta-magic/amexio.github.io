@@ -453,9 +453,9 @@ description : Set enable / disable popover.
   navigateKey(event: any) {
   }
   getDisplayText(): string {
-    if (this.value != null || this.value !== '' || this.value !== '') {
+    if (this.value != null || this.value !== '' || this.value !== ' ') {
       if (this.multiselect) {
-       this.setMultiSelect();
+        return this.setMultiSelect();
       } else {
         this.displayValue = '';
         this.filteredOptions.forEach((test) => {
