@@ -33,7 +33,7 @@ import { AmexioFormHeaderComponent } from './form.header.component';
   selector: 'amexio-form',
   templateUrl: './form.component.html',
 })
-export class AmexioFormComponent implements AfterContentInit, AfterViewInit, DoCheck, OnInit {
+export class AmexioFormComponent implements OnInit, AfterViewInit, AfterContentInit {
 
   isFormValid: boolean;
 
@@ -113,6 +113,7 @@ version : 4.2 onwards
 default :
 description : Form binding attribute
 */
+
   @Input('form-name') fname: string;
 
   /*
@@ -234,13 +235,14 @@ description : Event fired if showError msg info button is clicked
 
     if (this.bodyheight) {
       let h = (window.innerHeight / 100) * this.bodyheight;
+
       if (this.formHeader && this.formHeader.nativeElement && this.formHeader.nativeElement.offsetHeight) {
         h = h - this.formHeader.nativeElement.offsetHeight;
       }
+
       if (this.formFooter && this.formFooter.nativeElement && this.formFooter.nativeElement.offsetHeight) {
         h = h - this.formFooter.nativeElement.offsetHeight;
       }
-
       if (this.bodyheight === 100) {
         h = h - 40;
       }
@@ -268,138 +270,212 @@ description : Event fired if showError msg info button is clicked
     this.datefiled = this.queryDate.toArray();
     this.toggle = this.queryToggle.toArray();
 
-    this.btns.toArray().forEach((c) => {
-      if (c.formbind === this.fname && !c.disabled) {
-        c.disabled = true;
-        this.buttons.push(c);
-        this.checkForm = true;
-      }
-    });
+    this.iterate(this.textinput, 'Text Input');
+    this.iterate(this.textarea, 'Text Area');
+    this.iterate(this.numinput, 'Number Input');
+    this.iterate(this.emailinput, 'Email Id');
+    this.iterate(this.password, 'Password');
+    this.iterate(this.chkBox, 'Checkbox');
+    this.iterate(this.chkBoxGrp, 'Checkbox Group');
+    this.iterate(this.radio, 'Radio Group');
+    this.iterate(this.typeahead, 'TypeAhead');
+    this.iterate(this.tags, 'Tags');
+    this.iterate(this.dropdown, 'Dropdown');
+    this.iterate(this.datefiled, 'Date field');
+    this.iterate(this.toggle, 'Toggle');
+    setTimeout(() => {
+      this.btns.toArray().forEach((c) => {
+        if ((c.formbind === this.fname) && !c.disabled) {
+          c.setDisabled(true);
+          this.buttons.push(c);
+          this.checkForm = true;
+        }
+      });
+    }, 1000);
 
+    this.checkFormvalidity();
     this.footer = this.queryFooter.toArray();
     this.onResize();
-  }
 
-  ngDoCheck() {
-    this.checkFormvalidity();
   }
 
   closeDialogue() {
     this.showDialogue = !this.showDialogue;
   }
- // Main method for validation which split into small part 2,3,4.
+
   checkFormvalidity() {
     this.isFormValid = true;
     this.componentError = [];
     if (this.textinput && this.textinput.length > 0) {
-      this.textinput.forEach((c) => {
-        const flag = c.isComponentValid && c.isValid;
-        this.validationFlagSet(flag, c, 'Text Input');
-      });
-    }
-    if (this.dropdown && this.dropdown.length > 0) {
-      this.dropdown.forEach((c) => {
-        const flag = c.isComponentValid;
-        this.validationFlagSet(flag, c, 'DropDown');
-      });
-    }
-    this.second();
-    this.three() ;
-    this.forth();
-  }
-  // Main method split into second
-    second() {
-    if (this.typeahead && this.typeahead.length > 0) {
-      this.typeahead.forEach((c) => {
-        const flag = c.isComponentValid;
-        this.validationFlagSet(flag, c, 'Typeahead');
-      });
-    }
-    if (this.datefiled) {
-      this.datefiled.forEach((c) => {
-        const flag = c.isComponentValid;
-        this.validationFlagSet(flag, c, 'Date Picker');
-      });
-    }
-    if (this.tags && this.tags.length > 0) {
-      this.tags.forEach((c) => {
-        const flag = c.isComponentValid;
-        this.validationFlagSet(flag, c, 'Tag Input');
-      });
-    }
-    if (this.numinput && this.numinput.length > 0) {
-      this.numinput.forEach((c) => {
-        const flag = c.isComponentValid && c.isValid;
-        this.validationFlagSet(flag, c, 'Number Input');
-      });
-    }
-  }
-  // Main method split into third
-    three() {
-    if (this.password && this.password.length > 0) {
-      this.password.forEach((c) => {
-        const flag = c.isComponentValid && c.isValid;
-        this.validationFlagSet(flag, c, 'Password Input');
-      });
-    }
-    if (this.emailinput && this.emailinput.length > 0) {
-      this.emailinput.forEach((c) => {
-        const flag = c.isComponentValid && c.isValid;
-        this.validationFlagSet(flag, c, 'Email Input');
-      });
-    }
-    if (this.radio) {
-      this.radio.forEach((c) => {
-        const flag = c.isComponentValid;
-        this.validationFlagSet(flag, c, 'RadioGroup');
-      });
-    }
-    if (this.chkBox) {
-      this.chkBox.forEach((c) => {
-        const flag = c.isComponentValid;
-        this.validationFlagSet(flag, c, 'Checkbox');
-      });
-    }
-  }
-  // Main method split into forth
-   forth() {
-    if (this.chkBoxGrp && this.chkBoxGrp.length > 0) {
-      this.chkBoxGrp.forEach((c) => {
-        const flag = c.isComponentValid;
-        this.validationFlagSet(flag, c, 'CheckBox Group');
-      });
+      this.textinput.forEach((node: any) => node.isComponentValid.subscribe(
+        (eventdata: any) => {
+          this.validationFlagSet(node.isValid, node, 'Text Input');
+        }),
+      );
     }
     if (this.textarea && this.textarea.length > 0) {
-      this.textarea.forEach((c) => {
-        const flag = c.isComponentValid && c.isValid;
-        this.validationFlagSet(flag, c, 'Textarea Input');
-      });
+      this.textarea.forEach((node) => node.isComponentValid.subscribe(
+        (eventdata: any) => {
+          this.validationFlagSet(node.isValid, node, 'TextArea Input');
+        }),
+      );
     }
-    if (this.toggle && this.toggle.length > 0) {
-      this.toggle.forEach((c) => {
-        const flag = c.isComponentValid;
-        this.validationFlagSet(flag, c, 'Toggle Input');
-      });
+    this.validationNumPassword();
+    this.validationEmailChkBox();
+    this.validationDateToggle();
+    this.validationCkGrpType();
+    this.validationDrpDownTags();
+
+  }
+
+  validationNumPassword() {
+    if (this.numinput && this.numinput.length > 0) {
+      this.numinput.forEach((node: any) => node.isComponentValid.subscribe(
+        (eventdata: any) => {
+          this.validationFlagSet(node.isValid, node, 'Number Input');
+        }),
+      );
     }
-    if (this.checkForm) {
-      this.buttons.forEach((c) => {
-        c.disabled = !this.isFormValid;
-      });
+    if (this.password && this.password.length > 0) {
+      this.password.forEach((node) => node.isComponentValid.subscribe(
+        (eventdata: any) => {
+          this.validationFlagSet(node.isValid, node, 'Password Input');
+        }),
+      );
+    }
+  }
+  validationEmailChkBox() {
+    if (this.emailinput && this.emailinput.length > 0) {
+      this.emailinput.forEach((node: any) => node.isComponentValid.subscribe(
+        (eventdata: any) => {
+          this.validationFlagSet(node.isValid, node, 'Email Input');
+        }),
+      );
+    }
+
+    if (this.chkBox) {
+      this.chkBox.forEach((node) => node.isComponentValid.subscribe(
+        (eventdata: any) => {
+          this.validationFlagSet(node.isValid, node, 'CheckBox Input');
+        }),
+      );
     }
   }
 
+  validationDateToggle() {
+    if (this.datefiled) {
+      this.datefiled.forEach((node) => node.isComponentValid.subscribe(
+        (eventdata: any) => {
+          this.validationFlagSet(node.isValid, node, 'Date Picker');
+        }),
+      );
+    }
+    if (this.toggle && this.toggle.length > 0) {
+      this.toggle.forEach((node) => node.isComponentValid.subscribe(
+        (eventdata: any) => {
+          this.validationFlagSet(node.isValid, node, 'Toggle');
+        }),
+      );
+    }
+
+    if (this.radio) {
+      this.radio.forEach((node) => node.isComponentValid.subscribe(
+        (eventdata: any) => {
+          this.validationFlagSet(node.isValid, node, 'Radio Group');
+        }),
+      );
+    }
+  }
+
+  validationCkGrpType() {
+    if (this.chkBoxGrp && this.chkBoxGrp.length > 0) {
+      this.chkBoxGrp.forEach((node) => node.isComponentValid.subscribe(
+        (eventdata: any) => {
+          this.validationFlagSet(node.isValid, node, 'CheckBoc Group');
+        }),
+      );
+    }
+
+    if (this.typeahead && this.typeahead.length > 0) {
+      this.typeahead.forEach((node) => node.isComponentValid.subscribe(
+        (eventdata: any) => {
+          this.validationFlagSet(node.isValid, node, 'Typeahead');
+        }),
+      );
+    }
+  }
+
+  validationDrpDownTags() {
+    if (this.dropdown && this.dropdown.length > 0) {
+      this.dropdown.forEach((node: any) => node.isComponentValid.subscribe(
+        (eventdata: any) => {
+          this.validationFlagSet(node.isValid, node, 'Dropdown');
+        }),
+      );
+    }
+
+    if (this.tags && this.tags.length > 0) {
+      this.tags.forEach((node) => node.isComponentValid.subscribe(
+        (eventdata: any) => {
+          this.validationFlagSet(node.isValid, node, 'Tags');
+        }),
+      );
+    }
+  }
+
+  iterate(components: any[], name: string) {
+    setTimeout(() => {
+      components.forEach((cmp) => {
+        const isValid = cmp.checkValidity();
+        this.validationFlagSet(isValid, cmp, name);
+      });
+    }, 1000);
+  }
+
   validationFlagSet(flag: any, componentRef: any, componentName: string) {
-    const errorObject: any = {};
-    if (!flag) {
-      errorObject['component'] = componentName;
-      errorObject['label'] = componentRef.fieldlabel;
-      this.componentError.push(errorObject);
+
+    if (flag) {
+      this.componentError.forEach((obj, index) => {
+        if (obj.label === componentRef.fieldlabel) {
+          this.componentError.splice(index, 1);
+        }
+      });
+    } else {
+      this.addErrorMsg(componentRef, componentName);
     }
     if (!flag && this.isFormValid) {
       this.isFormValid = flag;
     }
+    if (this.componentError && this.componentError.length > 0) {
+      this.buttons.forEach((button) => {
+        button.disabled = true;
+      });
+    } else if (this.componentError && this.componentError.length === 0) {
+      this.buttons.forEach((button) => {
+        button.disabled = false;
+      });
+    }
   }
 
+  // THIS METHOD IS USED FOR ADDING MSG
+  addErrorMsg(componentRef: any, componentName: string) {
+    const errorObject: any = {};
+    errorObject['component'] = componentName;
+    errorObject['label'] = componentRef.fieldlabel;
+    let flag = true;
+    this.componentError.forEach((error) => {
+      if (error.label === componentRef.fieldlabel) {
+        flag = false;
+      }
+    });
+
+    if (flag) {
+      this.componentError.push(errorObject);
+    }
+    this.checkForm = true;
+  }
+
+  // REMOVE OBJECT FROM ARRAY
   showErrors(event: any) {
     this.showDialogue = !this.isFormValid;
     if (!this.isFormValid) {
@@ -414,4 +490,5 @@ description : Event fired if showError msg info button is clicked
   getErrorMsgData(): any {
     return this.componentError;
   }
+
 }
