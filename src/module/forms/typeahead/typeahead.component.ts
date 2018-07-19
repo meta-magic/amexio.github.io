@@ -8,7 +8,7 @@ Component Description : Type Ahead Component provides a power type ahead on the 
 users entry is provided with a filtered result.
 */
 import {
-  Component, DoCheck, ElementRef, EventEmitter, forwardRef, HostListener, Input, OnChanges, OnInit, Output, Renderer2,
+  Component, ElementRef, EventEmitter, forwardRef, HostListener, Input, OnChanges, OnInit, Output, Renderer2,
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
@@ -26,7 +26,7 @@ const noop = () => {
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioTypeAheadComponent), multi: true,
   }],
 })
-export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, DoCheck, OnChanges {
+export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, OnChanges {
   /*
    Properties
    name : field-label
@@ -53,7 +53,19 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
    default :
    description : Local data for dropdown.
    */
-  @Input() data: any;
+
+  _data: any;
+  componentLoaded: boolean;
+  @Input('data')
+  set data(value: any) {
+    this._data = value;
+    if (this.componentLoaded) {
+      this.setData(this._data);
+    }
+  }
+  get data(): any {
+    return this._data;
+  }
   /*
    Properties
    name : data-reader
@@ -226,6 +238,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
    description : On click event
    */
   @Output() onClick: any = new EventEmitter<any>();
+  @Output() isComponentValid: any = new EventEmitter<any>();
 
   @ViewChild('dpList') dpList: any;
 
@@ -245,7 +258,8 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
 
   _errormsg: string;
 
-  isComponentValid: boolean;
+  // isComponentValid: boolean;
+  isValid: boolean;
 
   selectedindex = 0;
 
@@ -297,9 +311,8 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
     }
   }
   ngOnInit() {
-
-    this.isComponentValid = this.allowblank;
-
+    this.isValid = this.allowblank;
+    this.isComponentValid.emit(this.allowblank);
     if (this.placeholder === '' || this.placeholder === null) {
       this.placeholder = 'Choose Option';
     }
@@ -320,7 +333,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
       this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
     }
-
+    this.componentLoaded = true;
   }
 
   onclick() {
@@ -432,7 +445,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
 
       this.viewData.forEach((item: any) => {
         if (item[valueKey] === val) {
-          this.isComponentValid = true;
+          this.isValid = true;
           this.displayValue = item[displayKey];
         }
       });
@@ -440,18 +453,12 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
     this.maskloader = false;
   }
 
-  ngDoCheck() {
-    if (this.data && JSON.stringify(this.previousData) !== JSON.stringify(this.data)) {
-      this.previousData = JSON.parse(JSON.stringify(this.data));
-      this.setData(this.data);
-    }
-  }
-
   onItemSelect(row: any) {
     this.value = row[this.valuefield];
     this.displayValue = row[this.displayfield];
     this.showToolTip = false;
-    this.isComponentValid = true;
+    this.isValid = true;
+    this.isComponentValid.emit(true);
     this.onClick.emit(row);
   }
 
@@ -492,7 +499,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
 
   onInput(input: any) {
     if (!this.allowblank) {
-      this.isComponentValid = input.valid;
+      this.isValid = input.valid;
     }
     this.input.emit(this.value);
   }
@@ -512,6 +519,11 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, D
   // From ControlValueAccessor interface
   registerOnTouched(fn: any) {
     this.onTouchedCallback = fn;
+  }
+
+  // THIS MEHTOD CHECK INPUT IS VALID OR NOT
+  checkValidity(): boolean {
+    return this.isValid;
   }
 
 }
