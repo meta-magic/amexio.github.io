@@ -8,8 +8,8 @@
   <input type="email" class="input-control"
          [(ngModel)]="value"
          #inp="ngModel"
-         [ngClass]="getValidationClasses(inp)"
-         (blur)="onblur()"
+         [ngClass]="componentClass"
+         (blur)="onblur(inp)"
          (focus)="onFocus()"
          (input)="onInput(inp)"
          (change)="onChangeEv()"
@@ -21,10 +21,9 @@
          [required]="!allowblank"/>
 
   <span *ngIf="iconfeedback && (inp.invalid && (inp.dirty || inp.touched) || inp.valid)" class="input-control-feedback">
-        <span *ngIf="!isValid && inp.touched">&#9888;</span>
-        <span *ngIf="isValid && inp.touched"> &#10004;</span>
-
-      </span>
+        <span *ngIf="!isValid && inp.touched"><i class="fa fa-times"></i></span>
+        <span *ngIf="isValid && inp.touched"><i class="fa fa-check"></i></span>
+  </span>   
 
   <span *ngIf="showToolTip && enablepopover" class="dropdown tooltiptext">
         <div  [innerHTML]="helpInfoMsg"></div>
@@ -32,3 +31,4 @@
 
   <span class="inputfieldbar"></span>
 </div>
+

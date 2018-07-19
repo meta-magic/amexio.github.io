@@ -3,18 +3,20 @@
  Component Selector :  <amexio-email-input>
  Component Description : Email input field
  */
-import {Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import { Component, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+
 const noop = () => {
 };
-
 @Component({
   selector: 'amexio-email-input',
   templateUrl: './emailinput.component.html',
-  providers: [{provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioEmailInputComponent), multi: true,
+  providers: [{
+    provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioEmailInputComponent), multi: true,
   }],
 })
 export class AmexioEmailInputComponent implements ControlValueAccessor, OnInit {
+
   /*
    Properties
    name : field-label
@@ -42,10 +44,15 @@ export class AmexioEmailInputComponent implements ControlValueAccessor, OnInit {
    description : Sets if field is required
    */
   @Input('allow-blank') allowblank: boolean;
+
   helpInfoMsg: string;
+
   regEx: RegExp;
+
   showToolTip: boolean;
+
   _errormsg: string;
+
   get errormsg(): string {
     return this._errormsg;
   }
@@ -58,10 +65,14 @@ export class AmexioEmailInputComponent implements ControlValueAccessor, OnInit {
    description : Sets the error message
    */
   @Input('error-msg')
+
   set errormsg(value: string) {
     this.helpInfoMsg = value + '<br/>';
   }
-  isComponentValid: boolean;
+  @Output() isComponentValid: any = new EventEmitter<any>();
+
+  @ViewChild('ref', { read: ElementRef }) public inputRef: ElementRef;
+
   @Input('place-holder') placeholder: string;
   /*
    Properties
@@ -108,8 +119,11 @@ export class AmexioEmailInputComponent implements ControlValueAccessor, OnInit {
    description : Set font-size to field
    */
   @Input('font-size') fontsize: string;
+
   emailpatter: any = /\S+@\S+\.\S+/;
+
   _pattern: string;
+
   get pattern(): string {
     return this._pattern;
   }
@@ -124,8 +138,7 @@ export class AmexioEmailInputComponent implements ControlValueAccessor, OnInit {
   @Input('pattern')
   set pattern(value: string) {
     if (value != null) {
-
-     this.regEx = new RegExp(this.pattern);
+      this.regEx = new RegExp(this.pattern);
     }
   }
   /*
@@ -173,21 +186,22 @@ export class AmexioEmailInputComponent implements ControlValueAccessor, OnInit {
    description : On field value change event
    */
   @Output() change: any = new EventEmitter<any>();
+
+  componentClass: any;
+ // The internal dataviews model
+ private innerValue: any = '';
+ // Placeholders for the callbacks which are later provided
+ // by the Control Value Accessor
+ private onTouchedCallback: () => void = noop;
+ private onChangeCallback: (_: any) => void = noop;
   isValid: boolean;
-  private innerValue: any = '';
-  // The internal dataviews model
-  // Placeholders for the callbacks which are later provided
-  // by the Control Value Accessor
-  private onTouchedCallback: () => void = noop;
-  private onChangeCallback: (_: any) => void = noop;
 
   constructor() {
     this.showToolTip = false;
   }
   ngOnInit() {
-    this.isComponentValid = this.allowblank;
+    this.isComponentValid.emit(this.allowblank);
   }
-
   // get accessor
   get value(): any {
     return this.innerValue;
@@ -199,24 +213,19 @@ export class AmexioEmailInputComponent implements ControlValueAccessor, OnInit {
       this.onChangeCallback(v);
     }
   }
-  // Set touched on blur
-  onblur() {
-    this.onTouchedCallback();
-    this.showToolTip = false;
-    this.onBlur.emit(this.value);
-    if (!this.emailpatter.test(this.value)) {
-      this.isValid = false;
-    } else {
-      this.isValid = true;
-    }
-  }
   onFocus() {
     this.showToolTip = true;
     this.focus.emit(this.value);
   }
+  // Set touched on blur
+  onblur(input: any) {
+    this.onTouchedCallback();
+    this.showToolTip = false;
+    this.componentClass = this.validateClasses(input);
+    this.onBlur.emit(this.value);
+  }
   onInput(input: any) {
-    this.isComponentValid = input.valid;
-    this.getValidationClasses(input);
+    this.componentClass = this.validateClasses(input);
     this.input.emit(this.value);
   }
   onChangeEv() {
@@ -236,53 +245,50 @@ export class AmexioEmailInputComponent implements ControlValueAccessor, OnInit {
   registerOnTouched(fn: any) {
     this.onTouchedCallback = fn;
   }
+  validateClasses(inp: any): any {
+    let classObj;
+    if (!this.allowblank) {
+      classObj = this.onBlank(inp);
+    } else {
+      this.isValid = true;
+    }
+    this.isComponentValid.emit(this.isValid);
+    return classObj;
+  }
+
+  onBlank(inp: any) {
+    let classObj;
+    if (this.innerValue === null || this.innerValue === '') {
+      if (inp.touched) {
+        classObj = this.getCssClass();
+        this.isValid = false;
+      } else {
+        this.isValid = false;
+      }
+    } else if ((inp.touched && !this.allowblank
+      && (this.value === '' || this.value === null))
+      || (!this.emailpatter.test(this.value))) {
+      classObj = this.getCssClass();
+      this.isValid = false;
+    } else {
+      classObj = {
+        'input-control-error': inp.invalid && (inp.dirty || inp.touched),
+        'input-control-success': inp.valid && (inp.dirty || inp.touched),
+      };
+      if (inp.valid) {
+        this.isValid = true;
+      }
+    }
+    return classObj;
+  }
 
   getCssClass(): any {
     return { 'input-control-error': true };
   }
 
-  getValidationClasses(inp: any): any {
-    let classObj;
-    if (!this.allowblank) {
-      if (this.innerValue === null || this.innerValue === '') {
-      classObj = this.noInnerValue(inp);
-      } else if ((inp.touched && !this.allowblank && (this.value === '' || this.value === null)) || (!this.emailpatter.test(this.value))) {
-        classObj = this.getCssClass();
-        this.isValid = false;
-        this.isComponentValid = false;
-      } else {
-     classObj = this.otherValidations(inp);
-      }
-    } else {
-      this.isValid = true;
-      this.isComponentValid = true;
-    }
-    return classObj;
-  }
-
-  noInnerValue(inp: any) {
-    let classObj;
-    if (inp.touched) {
-      classObj = this.getCssClass();
-      this.isValid = false;
-      this.isComponentValid = false;
-    } else {
-      this.isValid = false;
-      this.isComponentValid = false;
-    }
-    return classObj;
-  }
-
-  otherValidations(inp: any) {
-    let classObj;
-    classObj = {
-      'input-control-error': inp.invalid && (inp.dirty || inp.touched),
-      'input-control-success': inp.valid && (inp.dirty || inp.touched),
-    };
-    if (inp.valid) {
-      this.isValid = true;
-      this.isComponentValid = true;
-    }
-    return classObj;
+  // THIS MEHTOD CHECK INPUT IS VALID OR NOT
+  checkValidity(): boolean {
+    return (this.inputRef && this.inputRef.nativeElement &&
+      this.inputRef.nativeElement.validity && this.inputRef.nativeElement.validity.valid);
   }
 }
