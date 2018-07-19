@@ -2,7 +2,7 @@
  * Created by ketangote on 12/18/17.
  */
 import {
-  AfterContentInit, ChangeDetectorRef, Component, ContentChild,  DoCheck, EventEmitter, HostListener, Input, OnInit, Output, QueryList,
+  AfterContentInit, ChangeDetectorRef, Component, ContentChild, EventEmitter, HostListener, Input, OnInit, Output, QueryList,
   TemplateRef,
 } from '@angular/core';
 

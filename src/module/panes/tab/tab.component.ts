@@ -15,7 +15,6 @@ import {
   Component,
   ComponentFactoryResolver,
   ContentChildren,
-  DoCheck,
   ElementRef,
   EventEmitter,
   HostListener,
@@ -58,7 +57,7 @@ export const BOTTOM_COMPONENT_CLASS_MAP: any = {
   selector: 'amexio-tab-view',
   templateUrl: './tab.component.html',
 })
-export class AmexioTabComponent implements AfterContentInit, AfterViewInit, DoCheck, OnInit {
+export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnInit {
 
   /*
 Properties
@@ -198,7 +197,18 @@ description : If "true" add two context menus i.e close All and close Others tab
   @Output() onClick: any = new EventEmitter<any>();
 
   /* for internal purpose .*/
-  @Input() tabLocalData: any;
+  _tabLocalData: any;
+  componentLoaded: boolean;
+  @Input('tabLocalData')
+  set tabLocalData(value: any) {
+    this._tabLocalData = value;
+    if (this.componentLoaded) {
+      this.updateTabComponent();
+    }
+  }
+  get tabLocalData(): any {
+    return this._tabLocalData;
+  }
 
   tabPreviewData: any;
 
@@ -229,6 +239,8 @@ description : If "true" add two context menus i.e close All and close Others tab
 
   private closeOthersConst = 'Close Others';
 
+  contextStyle: any;
+
   map = new Map<any, any>();
   constructor(public render: Renderer2, private componentFactoryResolver: ComponentFactoryResolver, viewContainerRef: ViewContainerRef) {
     this.headeralign = 'left';
@@ -237,11 +249,11 @@ description : If "true" add two context menus i.e close All and close Others tab
     this.fullPageTabs = false;
     this.action = false;
   }
-
   ngOnInit() {
+    this.componentLoaded = true;
   }
 
-  ngDoCheck() {
+  updateTabComponent() {
     if (this.tabs.nativeElement.scrollWidth > this.tabs.nativeElement.clientWidth) {
       this.headeralign = 'left';
     }
@@ -538,6 +550,7 @@ description : If "true" add two context menus i.e close All and close Others tab
     event.preventDefault();
     event.stopPropagation();
     this.rightClickRowData = row;
+    this.contextStyle = this.getContextMenuStyle();
   }
 
   tempSelectedFlag(tabs: any) {
@@ -568,6 +581,7 @@ description : If "true" add two context menus i.e close All and close Others tab
   }
 
   getContextMenuStyle() {
+    console.log('*******CSSSS******');
     return {
       'cursor': 'default',
       'position': 'fixed',

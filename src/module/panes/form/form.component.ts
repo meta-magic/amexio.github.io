@@ -5,7 +5,7 @@ Component Description : Amexio Form provides an easy way to organize big form co
 
 */
 import {
-  AfterContentInit, AfterViewInit, Component, ContentChildren, DoCheck,
+  AfterContentInit, AfterViewInit, Component, ContentChildren,
   ElementRef, EventEmitter, Input, OnInit, Output, QueryList, ViewChild, ViewChildren,
 } from '@angular/core';
 
