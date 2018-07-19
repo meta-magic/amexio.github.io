@@ -263,8 +263,8 @@ export class AmexioDateTimePickerComponent implements OnInit {
     const extras = (date.getDay() + 6) % 7; // How many days of the last month do we need to include?
     date.setDate(date.getDate() - extras); // Skip back to the previous monday
     const month = selectedPeriod.getMonth();
-    while (1) {
-      const rowDays = [];
+    const rowDays = [];
+    while (rowDays.length < 7) {
       for (let i = 0; i < 7; i++) {
         const day: any = {
           date: null, selected: false, isCurrentMonth: null, isDisabled: false,
