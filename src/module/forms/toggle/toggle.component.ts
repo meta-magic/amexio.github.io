@@ -72,7 +72,9 @@ description : The label of this field.
 
   @Output() onChange: EventEmitter<any> = new EventEmitter<any>();
 
-  isComponentValid: boolean;
+  isValid: boolean;
+
+  @Output() isComponentValid: any = new EventEmitter<any>();
 
   // The internal dataviews model
   private innerValue: any = '';
@@ -90,11 +92,13 @@ description : The label of this field.
     if (this.shape === '' || this.shape == null) {
       this.shape = 'round';
     }
-    this.isComponentValid = false;
+    this.isValid = !this.required;
+    this.isComponentValid.emit(!this.required);
   }
 
   onToggle() {
-    this.isComponentValid = this.value;
+    this.isValid = this.value;
+    this.isComponentValid.emit(this.value);
     this.onChange.emit(this.value);
   }
 
@@ -119,10 +123,10 @@ description : The label of this field.
   // From ControlValueAccessor interface
   writeValue(value: any) {
     if (value && value !== this.innerValue) {
-      this.isComponentValid = value;
+      this.isValid = value;
     }
     if (!value && value !== this.innerValue) {
-      this.isComponentValid = value;
+      this.isValid = value;
     }
     this.innerValue = value;
   }
@@ -136,4 +140,10 @@ description : The label of this field.
   registerOnTouched(fn: any) {
     this.onTouchedCallback = fn;
   }
+
+  // THIS MEHTOD CHECK INPUT IS VALID OR NOT
+  checkValidity(): boolean {
+    return this.isValid;
+  }
+
 }
