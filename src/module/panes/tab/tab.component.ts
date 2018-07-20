@@ -5,64 +5,62 @@
 /*
  Component Name : Amexio Tab
  Component Selector : <amexio-tab-view>
- Component Description : Tab component for Angular Apps with multiple configurations such as Tab, Icon support,  Closable tabs, Amexio-color, Tab Position at top/bottom/ Tab 
+ Component Description : Tab component for Angular Apps with multiple configurations such as Tab, Icon support,
+ Closable tabs, Amexio-color, Tab Position at top/bottom/ Tab
 
 */
 import {
   AfterContentInit,
   AfterViewInit,
   Component,
+  ComponentFactoryResolver,
   ContentChildren,
   ElementRef,
   EventEmitter,
+  HostListener,
   Input,
   OnInit,
   Output,
   QueryList,
   Renderer2,
   ViewChild,
-  ComponentFactoryResolver
+  ViewContainerRef,
 } from '@angular/core';
-import { AmexioTabPill } from "./tab.pill.component";
-import { AmexioTabActionComponent } from "./tab.action";
-import { ViewContainerRef } from "@angular/core";
+import { AmexioTabActionComponent } from './tab.action';
+import { AmexioTabPill } from './tab.pill.component';
 
-export namespace AmexioTopColorMap {
-  export const COMPONENT_CLASS_MAP: any = {
-    red: 'amexio-top-tab-red',
-    green: 'amexio-top-tab-green',
-    purple: 'amexio-top-tab-purple',
-    blue: 'amexio-top-tab-blue',
-    brown: 'amexio-top-tab-brown',
-    yellow: 'amexio-top-tab-yellow',
-    black: 'amexio-top-tab-black',
-    pink: 'amexio-top-tab-pink',
-    orange: 'amexio-top-tab-orange',
-  }
-}
+export const TOP_COMPONENT_CLASS_MAP: any = {
+  red: 'amexio-top-tab-red',
+  green: 'amexio-top-tab-green',
+  purple: 'amexio-top-tab-purple',
+  blue: 'amexio-top-tab-blue',
+  brown: 'amexio-top-tab-brown',
+  yellow: 'amexio-top-tab-yellow',
+  black: 'amexio-top-tab-black',
+  pink: 'amexio-top-tab-pink',
+  orange: 'amexio-top-tab-orange',
+};
 
-export namespace AmexioBottomColorMap {
-  export const COMPONENT_CLASS_MAP: any = {
-    red: 'amexio-bottom-tab-red',
-    green: 'amexio-bottom-tab-green',
-    purple: 'amexio-bottom-tab-purple',
-    blue: 'amexio-bottom-tab-blue',
-    brown: 'amexio-bottom-tab-brown',
-    yellow: 'amexio-bottom-tab-yellow',
-    black: 'amexio-bottom-tab-black',
-    pink: 'amexio-bottom-tab-pink',
-    orange: 'amexio-bottom-tab-orange'
-  }
-}
+export const BOTTOM_COMPONENT_CLASS_MAP: any = {
+  red: 'amexio-bottom-tab-red',
+  green: 'amexio-bottom-tab-green',
+  purple: 'amexio-bottom-tab-purple',
+  blue: 'amexio-bottom-tab-blue',
+  brown: 'amexio-bottom-tab-brown',
+  yellow: 'amexio-bottom-tab-yellow',
+  black: 'amexio-bottom-tab-black',
+  pink: 'amexio-bottom-tab-pink',
+  orange: 'amexio-bottom-tab-orange',
+};
 
 @Component({
   selector: 'amexio-tab-view',
-  templateUrl: './tab.component.html'
+  templateUrl: './tab.component.html',
 })
-export class AmexioTabComponent implements OnInit, AfterViewInit, AfterContentInit {
+export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnInit {
 
   /*
-Properties 
+Properties
 name : closable
 datatype : boolean
 version : 4.0 onwards
@@ -72,7 +70,7 @@ description : This flag will make tab closable.
   @Input() closable: boolean;
 
   /*
-  Properties 
+  Properties
   name : header-align
   datatype : string
   version : 4.1.9 onwards
@@ -82,7 +80,7 @@ description : This flag will make tab closable.
   @Input('header-align') headeralign: string;
 
   /*
-  Properties 
+  Properties
   name : action
   datatype : string
   version : 4.1.9 onwards
@@ -92,7 +90,7 @@ description : This flag will make tab closable.
   @Input() action: boolean;
 
   /*
-  Properties 
+  Properties
   name : action-type-align
   datatype : string
   version : 4.1.9 onwards
@@ -101,10 +99,8 @@ description : This flag will make tab closable.
   */
   @Input('action-type-align') typeActionAlign: string;
 
-
-
   /*
-  Properties 
+  Properties
   name : divide-header-equally
   datatype : boolean
   version : 4.1.9 onwards
@@ -114,18 +110,7 @@ description : This flag will make tab closable.
   @Input('divide-header-equally') fullPageTabs: boolean;
 
   /*
-  Properties 
-  name : type
-  datatype : string
-  version : 4.1.9 onwards
-  default : none
-  description : Type can be amexio input such as (text field/ number field/ checkbox/ label/ dropdown/
-              toggle/ button/ image/ checkbox group/ radio group/ rating/ datefield)
-  */
-  // @Input('type') type: string;
-
-  /*
-  Properties 
+  Properties
   name :tab-position
   datatype : string
   version : 4.1.9 onwards
@@ -135,7 +120,7 @@ description : This flag will make tab closable.
   @Input('tab-position') tabPosition: string;
 
   /*
-  Properties 
+  Properties
   name : header
   datatype : string
   version : 4.1.9 onwards
@@ -153,15 +138,44 @@ description : This flag will make tab closable.
   name : body-height
   datatype :   any
   version : 4.2 onwards
-  default : 
+  default :
   description : Provides form body height.
   */
   @Input('body-height') bodyheight: any;
 
+  /*
+Properties
+name :  context-menu
+datatype : string
+version : 5.0.1 onwards
+default :
+description : Context Menu provides the list of menus on right click.
+*/
+  @Input('context-menu') contextmenu: any[] = [];
+
+  /*
+Properties
+name : default-context-menu
+datatype : boolean
+version : 5.0.1 onwards
+default : false
+description : If "true" add two context menus i.e close All and close Others tabs.
+*/
+  @Input('default-context-menu') defaultContextMenu: boolean;
+
+  /*
+  Events
+  name : rightClick
+  datatype : none
+  version : 5.0.1
+  default : none
+  description : It will gives you row clicked data.
+  */
+  @Output() rightClick: any = new EventEmitter<any>();
+
   @ViewChild('tab', { read: ElementRef }) public tabs: ElementRef;
   @ViewChild('tabAction', { read: ElementRef }) public tabAction: ElementRef;
   @ViewChild('headerWidth', { read: ElementRef }) public headerWidth: ElementRef;
-
   @ViewChild('headerName', { read: ElementRef }) public headerName: ElementRef;
   @ViewChild('tabslist', { read: ElementRef }) public tabslist: ElementRef;
   @ViewChild('actionProperty', { read: ElementRef }) public actionProperty: ElementRef;
@@ -170,7 +184,7 @@ description : This flag will make tab closable.
   tabCollection: AmexioTabPill[];
   @ViewChild('target', { read: ViewContainerRef }) target: any;
 
-  @ContentChildren(AmexioTabActionComponent, { descendants: true }) queryAction: QueryList<AmexioTabActionComponent>
+  @ContentChildren(AmexioTabActionComponent, { descendants: true }) queryAction: QueryList<AmexioTabActionComponent>;
 
   /*
   Events
@@ -183,13 +197,27 @@ description : This flag will make tab closable.
   @Output() onClick: any = new EventEmitter<any>();
 
   /* for internal purpose .*/
-  @Input() tabLocalData: any;
+  _tabLocalData: any;
+  componentLoaded: boolean;
+  @Input('tabLocalData')
+  set tabLocalData(value: any) {
+    this._tabLocalData = value;
+    if (this.componentLoaded) {
+      this.updateTabComponent();
+    }
+  }
+  get tabLocalData(): any {
+    return this._tabLocalData;
+  }
 
   tabPreviewData: any;
 
-  showprev: boolean = false;
+  showprev = false;
 
-  shownext: boolean = false;
+  private tabWidth1: number;
+  private totalTabs: number;
+
+  shownext = false;
 
   content: string;
 
@@ -201,22 +229,32 @@ description : This flag will make tab closable.
 
   actionComp: any;
 
+  mouseLocation: { left: number; top: number } = { left: 0, top: 0 };
+
+  contextMenuFlag: boolean;
+
+  posixUp: boolean;
+
+  rightClickRowData: any;
+
+  private closeOthersConst = 'Close Others';
+
+  contextStyle: any;
+
   map = new Map<any, any>();
-  constructor(public render: Renderer2, private componentFactoryResolver: ComponentFactoryResolver,
-    viewContainerRef: ViewContainerRef) {
-    this.headeralign = "left";
-    this.typeActionAlign = "left";
-    this.tabPosition = "top";
+  constructor(public render: Renderer2, private componentFactoryResolver: ComponentFactoryResolver, viewContainerRef: ViewContainerRef) {
+    this.headeralign = 'left';
+    this.typeActionAlign = 'left';
+    this.tabPosition = 'top';
     this.fullPageTabs = false;
     this.action = false;
   }
-
   ngOnInit() {
+    this.componentLoaded = true;
   }
 
-  ngDoCheck() {
+  updateTabComponent() {
     if (this.tabs.nativeElement.scrollWidth > this.tabs.nativeElement.clientWidth) {
-      //this.shownext = true;
       this.headeralign = 'left';
     }
     this.adjustWidth();
@@ -227,7 +265,6 @@ description : This flag will make tab closable.
       && this.tabWidth1 != this.tabs.nativeElement.offsetWidth) {
       this.headWidth = (this.tabAction.nativeElement.scrollWidth + this.headerWidth.nativeElement.scrollWidth);
       this.widthTabs = this.tabs.nativeElement.offsetWidth - this.headWidth;
-
     }
 
     if (JSON.stringify(this.tabPreviewData) != JSON.stringify(this.tabLocalData)) {
@@ -236,23 +273,19 @@ description : This flag will make tab closable.
     }
   }
 
-  private tabWidth1: number;
-  private totalTabs: number;
-
   ngAfterViewInit() {
-
-    let tabWidth
     this.tabWidth1 = this.tabs.nativeElement.offsetWidth;
     this.totalTabs = this.tabCollection.length;
-
-
+    setTimeout(() => {
+      this.updateTabComponent();
+    }, 500);
   }
 
   adjustWidth() {
-    let tWidth = this.tabs.nativeElement.clientWidth;
-    let tlistWidth = this.tabslist.nativeElement.scrollWidth;
-    let hWidth = 0;
-    let totalElWidth = tlistWidth + hWidth;
+    const tWidth = this.tabs.nativeElement.clientWidth;
+    const tlistWidth = this.tabslist.nativeElement.scrollWidth;
+    const hWidth = 0;
+    const totalElWidth = tlistWidth + hWidth;
 
     if (totalElWidth > tWidth) {
       this.shownext = true;
@@ -260,14 +293,13 @@ description : This flag will make tab closable.
       this.shownext = false;
     }
 
-    if (this.fullPageTabs == true) {
+    if (this.fullPageTabs === true) {
       if (totalElWidth > tWidth && this.fullPageTabs) {
         this.shownext = true;
       } else {
         this.singleTabWidth = totalElWidth / this.totalTabs;
       }
     }
-
     this.onAdjustHeight();
   }
 
@@ -282,7 +314,7 @@ description : This flag will make tab closable.
 
     this.tabNodeProperties();
 
-    //To add action in tab
+    // To add action in tab
     this.actionComp = this.queryAction.toArray();
     if (this.actionComp.length > 0) {
       this.actionComp[0].checkActionComponent();
@@ -293,9 +325,9 @@ description : This flag will make tab closable.
   addDynamicTab(title: string, amexiocolor: string, closable: boolean, component: any) {
     // get a component factory for our TabComponent
     const tpCF = this.componentFactoryResolver.resolveComponentFactory(
-      AmexioTabPill
+      AmexioTabPill,
     );
-    let tp = this.target.createComponent(tpCF);
+    const tp = this.target.createComponent(tpCF);
 
     // set the according properties on our component instance
     const instance: AmexioTabPill = tp.instance as AmexioTabPill;
@@ -303,62 +335,59 @@ description : This flag will make tab closable.
     instance.active = true;
     instance.closable = closable;
 
-    if (instance.amexiocolor = "") {
-      instance.amexiocolor = "amexio-top-tab-black";
+    if (instance.amexiocolor === '') {
+      instance.amexiocolor = 'amexio-top-tab-black';
+    } else {
+      instance.amexiocolor = 'amexio-top-tab-' + amexiocolor;
     }
-    else
-      instance.amexiocolor = "amexio-top-tab-" + amexiocolor;
-
-
-    //create dynamic component
+    // create dynamic component
     const dynCF = this.componentFactoryResolver.resolveComponentFactory(
-      component
+      component,
     );
-    let dynCmp = tp.instance.target.createComponent(dynCF);
+    const dynCmp = tp.instance.target.createComponent(dynCF);
 
-    //Push new tab and select it.
+    // Push new tab and select it.
     this.tabCollection.push(tp.instance);
     this.selectTab(tp.instance);
 
     return dynCmp.instance;
   }
 
-  // Method to close all tab 
-  closeAllTabs(){
+  // Method to close all tab
+  closeAllTabs() {
     this.tabCollection.forEach((tabs) => {
-     if(tabs.closable == true || this.closable == true){
-       this.closeTab(tabs);
-     }
+      if (tabs.closable === true || this.closable === true) {
+        this.closeTab(tabs);
+      }
     });
   }
 
-
   // Method to close particular tabs
-  closeTabs(data: any){
+  closeTabs(data: any) {
     this.tabCollection.forEach((tabs) => {
       data.forEach((opt: any) => {
-        if(opt.toLowerCase() != tabs.title.toLowerCase() && (tabs.closable == true|| this.closable == true)){
+        if (opt.toLowerCase() !== tabs.title.toLowerCase() && (tabs.closable === true || this.closable === true)) {
           this.closeTab(tabs);
         }
       });
     });
   }
 
-  //Method to set active tab on the basis of tab sequence or tab title
+  // Method to set active tab on the basis of tab sequence or tab title
   setActiveTab(input: any) {
-    let flag: boolean = false;
-    if(typeof input == "string"){
+    let flag = false;
+    if (typeof input === 'string') {
       this.tabCollection.forEach((tabs) => {
-        if(input.trim().toLowerCase() == tabs.title.trim().toLowerCase()){
+        if (input.trim().toLowerCase() === tabs.title.trim().toLowerCase()) {
           tabs.active = true;
           flag = true;
-        } else{
-         tabs.active = false;
+        } else {
+          tabs.active = false;
         }
-       });
-    } else if (typeof input == "number"){
+      });
+    } else if (typeof input === 'number') {
       this.tabCollection.forEach((tabs: any, index: number) => {
-        if (index + 1 == input) {
+        if (index + 1 === input) {
           tabs.active = true;
           flag = true;
         } else {
@@ -372,46 +401,44 @@ description : This flag will make tab closable.
 
   selectTab(tab: AmexioTabPill) {
     // deactivate all tabs
-    this.tabCollection.forEach(tab => (tab.active = false));
+    this.tabCollection.forEach((tab1: any) => (tab1.active = false));
     tab.active = true;
   }
 
   tabNodeProperties() {
 
-    let tabWidth = this.tabCollection.length;
+    const tabWidth = this.tabCollection.length;
     for (let i = 0; i < tabWidth; i++) {
-      if (this.tabPosition == "top") {
-        this.tabCollection[i].amexiocolor = AmexioTopColorMap.COMPONENT_CLASS_MAP[this.tabCollection[i].amexiocolor];
-      } else
-        this.tabCollection[i].amexiocolor = AmexioBottomColorMap.COMPONENT_CLASS_MAP[this.tabCollection[i].amexiocolor];
+      if (this.tabPosition === 'top') {
+        this.tabCollection[i].amexiocolor = TOP_COMPONENT_CLASS_MAP[this.tabCollection[i].amexiocolor];
+      } else {
+        this.tabCollection[i].amexiocolor = BOTTOM_COMPONENT_CLASS_MAP[this.tabCollection[i].amexiocolor];
+      }
       if (this.closable) {
-        if (this.tabCollection[i].closable == null || this.tabCollection[i].closable == true) {
+        if (this.tabCollection[i].closable === null || this.tabCollection[i].closable === true) {
           this.tabCollection[i].closable = true;
-        } else if (this.tabCollection[i].closable == false) {
+        } else if (this.tabCollection[i].closable === false) {
           this.tabCollection[i].closable = false;
         }
       }
     }
   }
 
-
   onTabClick(tab: any) {
     if (!tab.disabled && !tab.header) {
-      for (let i = 0; i < this.tabCollection.length; i++) {
-        if (this.tabCollection[i] === tab) {
-          this.tabCollection[i]['active'] = true;
+      for (const i of this.tabCollection) {
+        if (i === tab) {
+          i['active'] = true;
           this.onClick.emit(tab);
         } else {
-          this.tabCollection[i]['active'] = false;
+          i['active'] = false;
         }
       }
     }
-
-    // this.content = tab.title;
   }
 
   next() {
-    let nxt = this.tabs.nativeElement;
+    const nxt = this.tabs.nativeElement;
     nxt.scrollLeft = nxt.scrollLeft + 200;
 
     if ((nxt.scrollWidth - nxt.offsetWidth - nxt.scrollLeft) <= 0) {
@@ -421,10 +448,10 @@ description : This flag will make tab closable.
   }
 
   previous() {
-    let prev = this.tabs.nativeElement;
+    const prev = this.tabs.nativeElement;
     prev.scrollLeft = prev.scrollLeft - 200;
 
-    if (prev.scrollLeft == 0) {
+    if (prev.scrollLeft === 0) {
       this.showprev = false;
     }
     this.shownext = true;
@@ -432,23 +459,20 @@ description : This flag will make tab closable.
 
   closeTab(tabNode: AmexioTabPill) {
     const newTab: AmexioTabPill[] = [];
-    const tabs = this.tabs;
     let index = 0;
     let tabHighlightIndex = 0;
 
-    this.tabCollection.forEach(tab => {
+    this.tabCollection.forEach((tab) => {
       tab.active = false;
-      if (tab.tabId == tabNode.tabId) {
+      if (tab.tabId === tabNode.tabId) {
         tabHighlightIndex = index;
-         tab.destroy();
-      }
-      else if (tab.tabId != tabNode.tabId) {
+      } else if (tab.tabId !== tabNode.tabId) {
         newTab.push(tab);
       }
       index++;
     });
 
-    if (tabHighlightIndex == newTab.length) {
+    if (tabHighlightIndex === newTab.length) {
       tabHighlightIndex--;
     }
     this.tabCollection = newTab;
@@ -457,17 +481,16 @@ description : This flag will make tab closable.
     } else {
       this.activateTab(null);
     }
-    if (this.tabCollection.length == 1) {
+    if (this.tabCollection.length === 1) {
       this.closable = false;
     }
   }
 
   activateTab(tabId: number) {
-    if (tabId != null) {
-      const tabs = this.tabs;
-      this.tabCollection.forEach(tab => {
+    if (tabId !== null) {
+      this.tabCollection.forEach((tab) => {
         tab.active = false;
-        if (tab.tabId == tabId) {
+        if (tab.tabId === tabId) {
           tab.active = true;
         }
       });
@@ -475,31 +498,31 @@ description : This flag will make tab closable.
   }
 
   findStyleClass(tabData: any): string {
-    if ((!tabData.amexiocolor || tabData.amexiocolor == "") && tabData.active && (this.tabPosition == 'top')) {
+    if ((!tabData.amexiocolor || tabData.amexiocolor === '') && tabData.active && (this.tabPosition === 'top')) {
       return 'activetab';
     }
-    if ((!tabData.amexiocolor || tabData.amexiocolor == "") && (this.tabPosition == 'bottom') && tabData.active) {
+    if ((!tabData.amexiocolor || tabData.amexiocolor === '') && (this.tabPosition === 'bottom') && tabData.active) {
       return 'bottomActivetab';
     }
     if (tabData.disabled) {
       return 'disabled-tab';
     }
-    if ((tabData.amexiocolor != "") && (this.tabPosition == 'top') && tabData.active) {
+    if ((tabData.amexiocolor !== '') && (this.tabPosition === 'top') && tabData.active) {
       return 'activecolortab';
     }
-    if ((tabData.amexiocolor != "") && (this.tabPosition == 'bottom') && tabData.active) {
+    if ((tabData.amexiocolor !== '') && (this.tabPosition === 'bottom') && tabData.active) {
       return 'activebottomcolortab';
     }
   }
 
   findTabStyleClass() {
-    if (this.headeralign == 'right' && !this.fullPageTabs) {
+    if (this.headeralign === 'right' && !this.fullPageTabs) {
       return 'tabposition-right';
     }
-    if (this.headeralign == 'left' && !this.fullPageTabs) {
+    if (this.headeralign === 'left' && !this.fullPageTabs) {
       return 'tabposition-left';
     }
-    if (this.fullPageTabs == true) {
+    if (this.fullPageTabs === true) {
       return 'equally-align-tabs';
     }
   }
@@ -509,15 +532,119 @@ description : This flag will make tab closable.
     if (this.bodyheight) {
       let h = (window.innerHeight / 100) * this.bodyheight;
 
-      if (this.tabs && this.tabs.nativeElement && this.tabs.nativeElement.offsetHeight)
+      if (this.tabs && this.tabs.nativeElement && this.tabs.nativeElement.offsetHeight) {
         h = h - this.tabs.nativeElement.offsetHeight;
-
-      if (this.bodyheight === 100)
+      }
+      if (this.bodyheight === 100) {
         h = h - 40;
-
+      }
       this.minHeight = h;
       this.height = h;
     }
+  }
+
+  loadContextMenu(event: any, row: any, id: any) {
+    this.tempSelectedFlag(this.tabCollection);
+    this.mouseLocation.left = event.clientX;
+    this.mouseLocation.top = event.clientY;
+    row.active = true;
+    this.getContextMenu();
+    this.posixUp = this.getListPosition(id);
+    event.preventDefault();
+    event.stopPropagation();
+    this.rightClickRowData = row;
+    this.contextStyle = this.getContextMenuStyle();
+  }
+
+  tempSelectedFlag(tabs: any) {
+    tabs.forEach((tab: any) => {
+      if (tab.active) {
+        tab.active = false;
+      }
+    });
+  }
+
+  getContextMenu() {
+    if (this.defaultContextMenu) {
+      const obj = { text: 'Close All', icon: 'fa fa-close', disable: false };
+      const obj2 = { text: this.closeOthersConst, icon: 'fa fa-close', seperator: false, disabled: false };
+      let tmpflag = true;
+      for (const i of this.contextmenu) {
+        if (i.text === 'Close All' || i.text === this.closeOthersConst) {
+          tmpflag = false;
+        }
+      }
+      if (tmpflag) {
+        this.contextmenu.push(obj, obj2);
+      }
+      this.contextMenuFlag = true;
+    } else if (this.contextmenu && this.contextmenu.length > 0) {
+      this.contextMenuFlag = true;
+    }
+  }
+
+  getContextMenuStyle() {
+    return {
+      'cursor': 'default',
+      'position': 'fixed',
+      'display': this.contextMenuFlag ? 'block' : 'none',
+      'left': this.mouseLocation.left + 'px',
+      'top': this.mouseLocation.top + 'px',
+      'box-shadow': '1px 1px 2px #000000',
+      'width': '15%',
+    };
+  }
+
+  getListPosition(elementRef: any) {
+    const height = 240;
+    if ((window.screen.height - elementRef.getBoundingClientRect().bottom) < height) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  onContextNodeClick(itemConfig: any) {
+    let temptab;
+    this.tabCollection.forEach((obj) => {
+      if (obj.active) {
+        temptab = obj;
+      }
+    });
+    if (itemConfig.active) {
+      temptab = itemConfig;
+    }
+    if (!itemConfig.disabled) {
+      const obj = {
+        menuData: itemConfig,
+        rowData: this.rightClickRowData,
+      };
+      if (itemConfig.text === 'Close All') {
+        this.closeAllTabs();
+      }
+      if (itemConfig.text === this.closeOthersConst) {
+        this.closeOtherTabs(temptab);
+      }
+      this.rightClick.emit(obj);
+    }
+  }
+
+  closeOtherTabs(data: any) {
+    this.tabCollection.forEach((tabs) => {
+      if (data.title.toLowerCase() !== tabs.title.toLowerCase() && (tabs.closable === true || this.closable === true)) {
+        this.closeTab(tabs);
+      }
+    });
+  }
+
+  @HostListener('document:click')
+  onWindowClick() {
+    this.contextMenuFlag = false;
+  }
+
+  @HostListener('document:scroll')
+  onscroll() {
+    this.contextMenuFlag = false;
   }
 
 }

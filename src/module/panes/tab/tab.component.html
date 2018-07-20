@@ -1,9 +1,9 @@
 <div class="tabwrapper">
-  <div *ngIf="showprev" class="tabnavigation float-left" (click)="previous()">
+  <div *ngIf="showprev" [ngClass]="{'tabnavigation float-right tabnavigation-bottom-left':tabPosition=='bottom', 'tabnavigation float-left':tabPosition=='top'}" (click)="previous()">
     <amexio-pane-icon key="tab_previous"></amexio-pane-icon>
     <!--<i class="fa fa-angle-left fa-2x" aria-hidden="true"></i>-->
   </div>
-  <div *ngIf="shownext" class="tabnavigation float-right" (click)="next()">
+  <div *ngIf="shownext" [ngClass]="{'tabnavigation float-right tabnavigation-bottom-right':tabPosition=='bottom','tabnavigation float-right':tabPosition=='top'}" (click)="next()">
     <amexio-pane-icon key="tab_next"></amexio-pane-icon>
     <!--<i class="fa fa-angle-right  fa-2x" aria-hidden="true"></i>-->
   </div>
@@ -30,7 +30,7 @@
 
       <div>
         <div *ngFor="let tabnode of tabCollection" class="tablink {{tabnode.amexiocolor}}" [style.width.px]="singleTabWidth" [ngClass]="findStyleClass(tabnode)"
-          (click)="onTabClick(tabnode)">
+          (click)="onTabClick(tabnode)" (contextmenu)="loadContextMenu($event,tabnode, tab)">
           <div class="table">
             <div class="tablerow">
               <div *ngIf="tabnode.icon" class="tablecol">
@@ -54,3 +54,15 @@
   <ng-content></ng-content>
   <ng-template #target></ng-template>
 </div>
+
+<span [ngStyle]="contextStyle">
+  <ul *ngIf="contextMenuFlag" class="context-menu-list" [ngClass]="{'dropdown-up' : posixUp}">
+    <li (click)="onContextNodeClick(itemConfig)" class="context-menu-list-items" [ngStyle]="{'cursor': itemConfig.disabled ? 'not-allowed':'pointer'}" [ngClass]="{'context-menu-separator':itemConfig.seperator}"
+      *ngFor="let itemConfig of contextmenu">
+      <i [ngStyle]="{'padding-left': itemConfig.icon ? '5px':'19px'}" [ngClass]="itemConfig.icon"></i>
+      <span style="white-space: nowrap;display: inline ; padding-left:5px">{{itemConfig.text}}
+      </span>
+    </li>
+  </ul>
+</span>
+
