@@ -6,7 +6,7 @@
 
 */
 import {
-  AfterContentInit, Component, ContentChildren, DoCheck, EventEmitter, Input, OnChanges, Output,
+  AfterContentInit, Component, ContentChildren, EventEmitter, Input, OnChanges, Output,
   QueryList, SimpleChanges,
 } from '@angular/core';
 import { AmexioButtonComponent } from '../buttons/button.component';
@@ -15,7 +15,8 @@ import { AmexioButtonComponent } from '../buttons/button.component';
   templateUrl: './button.group.component.html',
   styleUrls: ['./button.group.component.scss'],
 })
-export class AmexioButtonGroupComponent implements AfterContentInit, DoCheck, OnChanges {
+export class AmexioButtonGroupComponent implements AfterContentInit, OnChanges {
+  private componentLoaded: boolean;
   /*
  Properties
  name : size
@@ -26,7 +27,18 @@ export class AmexioButtonGroupComponent implements AfterContentInit, DoCheck, On
  */
   @Input() size: string;
   /* for internal use*/
-  @Input() buttonGroupLocalData: any;
+
+  _buttonGroupLocalData: any;
+  @Input('buttonGroupLocalData')
+   set buttonGroupLocalData(value: any) {
+     this._buttonGroupLocalData = value;
+     if (this.componentLoaded) {
+       this.updateComponent();
+     }
+   }
+   get buttonGroupLocalData(): any {
+     return this._buttonGroupLocalData;
+   }
   /*
   Properties
   name :  badge
@@ -52,7 +64,7 @@ export class AmexioButtonGroupComponent implements AfterContentInit, DoCheck, On
 
   constructor() {
   }
-  ngDoCheck() {
+  updateComponent() {
     if (JSON.stringify(this.buttonGroupPreviewData) !== JSON.stringify(this.buttonGroupLocalData)) {
       this.buttonGroupPreviewData = JSON.parse(JSON.stringify(this.buttonGroupLocalData));
       this.buttons = this.buttonGroupLocalData;
@@ -79,6 +91,7 @@ export class AmexioButtonGroupComponent implements AfterContentInit, DoCheck, On
       this.buttons = this.btns.toArray();
     }
     this.setButtonSizes(this.buttons);
+    this.componentLoaded = true;
   }
   setButtonSizes(btnArray: any) {
     if (btnArray.length > 0) {
