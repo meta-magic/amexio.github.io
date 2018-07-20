@@ -3,7 +3,7 @@
  Component Selector :  <amexio-email-input>
  Component Description : Email input field
  */
-import {Component, ElementRef,ViewChild,EventEmitter, forwardRef, Input, Output} from '@angular/core';
+import {Component, ElementRef, EventEmitter, forwardRef, Input, Output, ViewChild} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
 const noop = () => {
@@ -74,6 +74,7 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
   set errormsg(value: string) {
     this.helpInfoMsg = value + '<br/>';
   }
+  
   // isComponentValid : boolean;
   @Output() isComponentValid:any=new EventEmitter<any>();
 
@@ -298,7 +299,7 @@ export class AmexioEmailInputComponent implements ControlValueAccessor {
           // this.isComponentValid = true;
         }
       }
-    } else {
+    } else {``
       this.isValid = true;
       // this.isComponentValid = true;
     }
