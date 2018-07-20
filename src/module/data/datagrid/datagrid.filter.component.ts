@@ -85,7 +85,7 @@ For internal use
 
   showToolTip: boolean;
 
-  private checkIcon: 'fa fa-check';
+  private checkIcon = 'fa fa-check';
 
   constructor(private dataTableService: CommonDataService) {
 

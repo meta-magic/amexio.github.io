@@ -7,7 +7,7 @@
  header and column data, displaying summation of numeric column.
  */
 import {
-  AfterContentInit, ChangeDetectorRef, Component, ContentChildren, DoCheck, ElementRef, EventEmitter, HostListener, Input, OnInit, Output,
+  AfterContentInit, ChangeDetectorRef, Component, ContentChildren, ElementRef, EventEmitter, HostListener, Input, OnInit, Output,
   QueryList,
 } from '@angular/core';
 
@@ -383,8 +383,8 @@ import { CommonDataService } from '../../services/data/common.data.service';
   `,
 })
 
-export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoCheck {
-
+export class AmexioDatagridComponent implements OnInit, AfterContentInit {
+  private componentLoaded: boolean;
   /*
    Properties
    name : title
@@ -452,7 +452,17 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
    default : none
    description : Local Data binding.
    */
-  @Input() data: any[];
+  _data: any;
+  @Input('data')
+   set data(value: any[]) {
+     this._data = value;
+     if (this.componentLoaded) {
+       this.updateComponent();
+     }
+   }
+   get data(): any[] {
+     return this._data;
+   }
 
   /*
    Events
@@ -582,7 +592,17 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
    default : none
    description :  If you don't want to use '<amexio-data-table-column>' tag then pass JSON data.
    */
-  @Input('column-defintion') columndefintion: any;
+  _columndefintion: any;
+  @Input('column-defintion')
+   set columndefintion(value: any) {
+     this._columndefintion = value;
+     if (this.componentLoaded) {
+       this.updateComponent();
+     }
+   }
+   get columndefintion(): any {
+     return this._columndefintion;
+   }
 
   /*
    Properties
@@ -732,9 +752,10 @@ description : Context Menu provides the list of menus on right click of row.
       this.setData(this.data);
       this.previousData = JSON.parse(JSON.stringify(this.data));
     }
+    this.componentLoaded = true;
   }
 
-  ngDoCheck() {
+  updateComponent() {
     if (this.previousData != null && JSON.stringify(this.previousData) !== JSON.stringify(this.data)) {
       this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setChangeData(this.data);
@@ -863,7 +884,6 @@ description : Context Menu provides the list of menus on right click of row.
     this.selectAll = false;
     this.setColumnData();
   }
-
   // Method required for global filter
 
   keyUpSearch() {
@@ -901,15 +921,14 @@ description : Context Menu provides the list of menus on right click of row.
     }
     this.showToolTip = false;
   }
-
   removeGlobalFilter() {
     this.filterValue = '';
   }
   getGlobalFilteredData(filteredObj: any) {
-    let status = false;
     this.data = [];
     this.filterCloneData.forEach((option: any) => {
       this.columns.forEach((opt: any) => {
+        let status = false;
         const optvalue = option[opt.dataindex].toLowerCase();
         const filtervalue = filteredObj.value.toLowerCase();
         if (filteredObj.filter === '1') {
@@ -919,11 +938,10 @@ description : Context Menu provides the list of menus on right click of row.
         } else if (filteredObj.filter === '3') {
           status = optvalue.includes(filtervalue);
         }
+        if (status) {
+          this.data.push(option);
+        }
       });
-      if (status) {
-        this.data.push(option);
-        status = false;
-      }
     });
 
     if (this.data.length > (1 * this.pagesize)) {
@@ -1120,7 +1138,7 @@ description : Context Menu provides the list of menus on right click of row.
     }
   }
 
-  checkNumberFilter(filter: string, key: any, value: string): boolean {
+  checkNumberFilter(filter: string, key: any, value: number): boolean {
     if (filter === '<') {
       return key > value;
     } else if (filter === '>') {
@@ -1158,7 +1176,7 @@ description : Context Menu provides the list of menus on right click of row.
         condition = this.checkStringFilter(filterOpt.filter, data[filterOpt.key].toLowerCase(), filterOpt.value.toLowerCase());
 
       } else if (filterOpt.type === 'number') {
-        condition = this.checkNumberFilter(filterOpt.filter, filterOpt.type, data[filterOpt.key]);
+        condition = this.checkNumberFilter(filterOpt.filter,  data[filterOpt.key], filterOpt.value);
       }
       statusArray.push(condition);
     });
