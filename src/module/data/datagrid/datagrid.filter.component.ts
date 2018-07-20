@@ -137,7 +137,6 @@ For internal use
   }
 
   keyUpSearch(col: any) {
-    debugger;
     this.showToolTip = false;
     if (this.filterValue == null || this.filterValue === '') {
       this.removeFilter(col);
