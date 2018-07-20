@@ -15,7 +15,7 @@ import { CommonDataService } from "../../services/data/common.data.service";
   selector: 'amexio-treeview', templateUrl: './tree.component.html', styleUrls: ['./tree.component.scss']
 })
 export class AmexioTreeViewComponent {
-
+  private componentLoaded: boolean;
   /*
 Properties 
 name : data
@@ -24,7 +24,17 @@ version : 4.0 onwards
 default : none
 description : Local Data binding.
 */
-  @Input() data: any[];
+_data: any;
+@Input('data')
+ set data(value: any[]) {
+   this._data = value;
+   if (this.componentLoaded) {
+     this.updateComponent();
+   }
+ }
+ get data(): any[] {
+   return this._data;
+ }
 
   /*
 Properties 
@@ -181,9 +191,10 @@ description : Describes the badge value that has to be displayed tree node
       }
     });
     this.cdf.detectChanges();
+    this.componentLoaded = true;
   }
 
-  ngDoCheck() {
+  updateComponent() {
     if (JSON.stringify(this.previousValue) != JSON.stringify(this.data) && this.previousValue != null && this.data != null) {
       this.previousValue = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);

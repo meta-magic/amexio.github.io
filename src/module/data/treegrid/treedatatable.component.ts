@@ -19,7 +19,7 @@
  */
 
 import {
-  OnInit, Input, Component, EventEmitter, Output, QueryList, ContentChildren, AfterContentInit, DoCheck, ElementRef,
+  OnInit, Input, Component, EventEmitter, Output, QueryList, ContentChildren, AfterContentInit, ElementRef,
   ViewChild, AfterViewInit,
 } from '@angular/core';
 import {CommonDataService} from "../../services/data/common.data.service";
@@ -155,8 +155,8 @@ import {AmexioGridColumnComponent} from "../datagrid/data.grid.column";
 
 })
 
-export class TreeDataTableComponent implements OnInit, AfterContentInit, DoCheck,AfterViewInit {
-
+export class TreeDataTableComponent implements OnInit, AfterContentInit,AfterViewInit {
+private componentLoaded: boolean;
   /*
    Properties
    name : data
@@ -165,7 +165,17 @@ export class TreeDataTableComponent implements OnInit, AfterContentInit, DoCheck
    default : none
    description : Local Data binding.
    */
-  @Input() data: any;
+  _data: any;
+  @Input('data')
+   set data(value: any[]) {
+     this._data = value;
+     if (this.componentLoaded) {
+       this.updateComponent();
+     }
+   }
+   get data(): any[] {
+     return this._data;
+   }
 
   /*
    Properties
@@ -284,6 +294,7 @@ export class TreeDataTableComponent implements OnInit, AfterContentInit, DoCheck
   ngAfterViewInit() {
 
     this.onResize();
+    this.componentLoaded = true;
 
   }
 
@@ -337,7 +348,7 @@ export class TreeDataTableComponent implements OnInit, AfterContentInit, DoCheck
       this.columns.push(columnData);
     }
   }
-  ngDoCheck() {
+  updateComponent() {
     if(this.data) {
       this.viewRows = this.getResponseData(this.data);
     }
