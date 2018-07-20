@@ -1,7 +1,7 @@
 
 import {
   AfterContentInit, AfterViewInit, Component, ContentChild, ContentChildren,
-  Directive, DoCheck, ElementRef, EventEmitter,
+  Directive, ElementRef, EventEmitter,
   HostListener, Input, OnInit, Output, QueryList,
   ViewChild, ViewChildren,
 } from '@angular/core';
@@ -12,7 +12,8 @@ import { CommonDataService } from '../../services/data/common.data.service';
   selector: 'amexio-searchbox',
   templateUrl: './searchboxtool.component.html',
 })
-export class SearchboxtoolComponent implements OnInit, AfterContentInit, DoCheck {
+export class SearchboxtoolComponent implements OnInit, AfterContentInit {
+  private componentLoaded: boolean;
   /*
   Properties
   name : data
@@ -21,7 +22,17 @@ export class SearchboxtoolComponent implements OnInit, AfterContentInit, DoCheck
   default : none
   description : Local data for dropdown.
   */
-  @Input() data: any;
+ _data: any;
+ @Input('data')
+  set data(value: any[]) {
+    this._data = value;
+    if (this.componentLoaded) {
+      this.updateComponent();
+    }
+  }
+  get data(): any[] {
+    return this._data;
+  }
   /*
   Properties
   name : data-reader
@@ -163,8 +174,9 @@ export class SearchboxtoolComponent implements OnInit, AfterContentInit, DoCheck
       this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
     }
+    this.componentLoaded = true;
   }
-  ngDoCheck() {
+  updateComponent() {
     if (JSON.stringify(this.previousData) !== JSON.stringify(this.data)) {
       this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
