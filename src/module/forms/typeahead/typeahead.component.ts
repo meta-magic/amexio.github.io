@@ -1,11 +1,14 @@
 /**
  * Created by ketangote on 11/21/17.
  */
+
 /*
+
 Component Name : Amexio Typeahead Input
 Component Selector :  <amexio-typeahead>
-Component Description : Type Ahead Component provides a power type ahead on the text field where
-users entry is provided with a filtered result.
+Component Description : Type Ahead Component provides a power type ahead on the
+text field where users entry is provided with a filtered result.
+
 */
 import {
   Component, ElementRef, EventEmitter, forwardRef, HostListener, Input, OnChanges, OnInit, Output, Renderer2,
@@ -26,7 +29,7 @@ const noop = () => {
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioTypeAheadComponent), multi: true,
   }],
 })
-export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, OnChanges {
+export class AmexioTypeAheadComponent implements ControlValueAccessor, OnChanges, OnInit {
   /*
    Properties
    name : field-label
@@ -53,7 +56,6 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, O
    default :
    description : Local data for dropdown.
    */
-
   _data: any;
   componentLoaded: boolean;
   @Input('data')
@@ -103,18 +105,66 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, O
    */
   @Input('display-field') displayfield: string;
 
+  @Input('value-field') valuefield: string;
   /*
- Properties
- name : error-msg
- datatype : none
- version : 4.0 onwards
- default : none
- description : Sets the error message
- */
+   Events
+   name : onBlur
+   datatype : any
+   version : 4.0 onwards
+   default : none
+   description : On blur event
+   */
+  @Output() onBlur: any = new EventEmitter<any>();
+  /*
+   Events
+   name : input
+   datatype : any
+   version : none
+   default :
+   description : 	On input event field.
+   */
+  @Output() input: any = new EventEmitter<any>();
+  /*
+   Events
+   name : focus
+   datatype : any
+   version : none
+   default :
+   description : On focus event field.
+   */
+  @Output() focus: any = new EventEmitter<any>();
+  /*
+   Events
+   name : change
+   datatype : any
+   version : none
+   default :
+   description : On field value change event
+   */
+  @Output() change: any = new EventEmitter<any>();
+  /*
+   Events
+   name : onClick
+   datatype : any
+   version : none
+   default :
+   description : On click event
+   */
+  @Output() onClick: any = new EventEmitter<any>();
+
+  /*
+   Properties
+   name : error-msg
+   datatype : none
+   version : 4.0 onwards
+   default : none
+   description : Sets the error message
+   */
   @Input('error-msg')
   set errormsg(value: string) {
     this.helpInfoMsg = value + '<br/>';
   }
+
   /*
    Properties
    name : place-holder
@@ -125,7 +175,6 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, O
    */
   @Input('place-holder') placeholder: string;
 
-  @Input() disabled: boolean;
   /*
    Properties
    name : icon-feedback
@@ -192,59 +241,13 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, O
    */
   @Input('trigger-char') triggerchar: number;
 
-  @Input('value-field') valuefield: string;
-  /*
-   Events
-   name : onBlur
-   datatype : any
-   version : 4.0 onwards
-   default : none
-   description : On blur event
-   */
-  @Output() onBlur: any = new EventEmitter<any>();
-  /*
-   Events
-   name : input
-   datatype : any
-   version : none
-   default :
-   description : 	On input event field.
-   */
-  @Output() input: any = new EventEmitter<any>();
-  /*
-   Events
-   name : focus
-   datatype : any
-   version : none
-   default :
-   description : On focus event field.
-   */
-  @Output() focus: any = new EventEmitter<any>();
-  /*
-   Events
-   name : change
-   datatype : any
-   version : none
-   default :
-   description : On field value change event
-   */
-  @Output() change: any = new EventEmitter<any>();
-  /*
-   Events
-   name : onClick
-   datatype : any
-   version : none
-   default :
-   description : On click event
-   */
-  @Output() onClick: any = new EventEmitter<any>();
-  @Output() isComponentValid: any = new EventEmitter<any>();
+  @ViewChild('rootDiv') rootDiv: any;
+
+  maskloader = true;
 
   @ViewChild('dpList') dpList: any;
 
   @ViewChild('dropdownitems', { read: ElementRef }) public dropdownitems: ElementRef;
-
-  @ViewChild('rootDiv') rootDiv: any;
 
   posixUp: boolean;
 
@@ -258,7 +261,6 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, O
 
   _errormsg: string;
 
-  // isComponentValid: boolean;
   isValid: boolean;
 
   selectedindex = 0;
@@ -266,6 +268,10 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, O
   scrollposition = 30;
 
   showToolTip: boolean;
+
+  @Input() disabled: boolean;
+
+  @Output() isComponentValid: any = new EventEmitter<any>();
 
   responseData: any;
 
@@ -275,9 +281,11 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, O
 
   filteredResult: any;
 
-  maskloader = true;
-
+  // The internal dataviews model
   private innerValue: any = '';
+
+  // Placeholders for the callbacks which are later provided
+  // by the Control Value Accessor
   private onTouchedCallback: () => void = noop;
   private onChangeCallback: (_: any) => void = noop;
 
@@ -286,6 +294,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, O
   }
 
   navigateKey(event: any) {
+
   }
 
   @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
@@ -303,6 +312,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, O
   }
 
   constructor(public dataService: CommonDataService, public element: ElementRef, public renderer: Renderer2) {
+
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -311,9 +321,11 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, O
     }
   }
   ngOnInit() {
+
     this.isValid = this.allowblank;
     this.isComponentValid.emit(this.allowblank);
-    if (this.placeholder === '' || this.placeholder === null) {
+
+    if (this.placeholder === '' || this.placeholder == null) {
       this.placeholder = 'Choose Option';
     }
 
@@ -334,9 +346,6 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, O
       this.setData(this.data);
     }
     this.componentLoaded = true;
-  }
-
-  onclick() {
   }
 
   onKeyUp(event: any) {
@@ -402,7 +411,8 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, O
 
   }
 
-  navigateByKeyCode(event: any) {
+  // Method to navigate by key code
+  private navigateByKeyCode(event: any) {
     if (event.keyCode === 40) {
       this.selectedindex++;
       if ((this.selectedindex > 5)) {
@@ -423,6 +433,8 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, O
       }
     }
   }
+
+  // Methos to set data in the dropdown
   setData(httpResponse: any) {
     // Check if key is added?
     let responsedata = httpResponse;
@@ -453,6 +465,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, O
     this.maskloader = false;
   }
 
+  // Method Called at item Select
   onItemSelect(row: any) {
     this.value = row[this.valuefield];
     this.displayValue = row[this.displayfield];
@@ -481,15 +494,16 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, O
     this.onBlur.emit(this.value);
   }
 
+  // Method called at onFocus event
   onFocus(elem: any) {
     this.showToolTip = true;
     this.posixUp = this.getListPosition(elem);
     this.focus.emit(this.value);
   }
 
+  // Method to position dropdown correctly
   getListPosition(elementRef: any): boolean {
-    const dropdownHeight = 325;
-    // must be same in dropdown.scss
+    const dropdownHeight = 325; // must be same in dropdown.scss
     if (window.screen.height - (elementRef.getBoundingClientRect().bottom) < dropdownHeight) {
       return true;
     } else {
@@ -497,6 +511,7 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, O
     }
   }
 
+  // Method called at onInput
   onInput(input: any) {
     if (!this.allowblank) {
       this.isValid = input.valid;
@@ -525,5 +540,4 @@ export class AmexioTypeAheadComponent implements OnInit, ControlValueAccessor, O
   checkValidity(): boolean {
     return this.isValid;
   }
-
 }
