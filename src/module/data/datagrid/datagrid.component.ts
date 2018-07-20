@@ -6,7 +6,7 @@
  Component Description : Data grid component to render large amount of data-set with various options like sorting in ascending or descending order, client-side pagination, column hide/unhide, single/multi selection, user define template for rendering for column header and column data, displaying summation of numeric column.
  */
 import {
-  AfterContentInit, ChangeDetectorRef, Component, ContentChildren, DoCheck, EventEmitter, Input, OnInit, Output,
+  AfterContentInit, ChangeDetectorRef, Component, ContentChildren, EventEmitter, Input, OnInit, Output,
   QueryList
 } from '@angular/core';
 import {AmexioGridColumnComponent} from "./data.grid.column";
@@ -352,7 +352,9 @@ import {CommonDataService} from "../../services/data/common.data.service";
   `
 })
 
-export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoCheck {
+export class AmexioDatagridComponent implements OnInit, AfterContentInit{
+
+  private componentLoaded: boolean;
 
   /*
    Properties
@@ -422,8 +424,18 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
    default : none
    description : Local Data binding.
    */
-  @Input() data: any[];
-
+  _data: any;
+  @Input('data')
+   set data(value: any[]) {
+     this._data = value;
+     if (this.componentLoaded) {
+       this.updateComponent();
+     }
+   }
+   get data(): any[] {
+     return this._data;
+   }
+ 
   /*
    Events
    name : rowSelect
@@ -552,8 +564,17 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
    default : none
    description :  If you don't want to use '<amexio-data-table-column>' tag then pass JSON data.
    */
-  @Input('column-defintion') columndefintion: any;
-
+  _columndefintion: any;
+  @Input('column-defintion')
+   set columndefintion(value: any) {
+     this._columndefintion = value;
+     if (this.componentLoaded) {
+       this.updateComponent();
+     }
+   }
+   get columndefintion(): any {
+     return this._columndefintion;
+   }
   /*
    Properties
    name : enable-column-fiter
@@ -678,9 +699,10 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
       this.setData(this.data);
       this.previousData = JSON.parse(JSON.stringify(this.data));
     }
+    this.componentLoaded = true;
   }
 
-  ngDoCheck() {
+  updateComponent() {
   if (this.previousData != null && JSON.stringify(this.previousData) != JSON.stringify(this.data)){
         this.previousData = JSON.parse(JSON.stringify(this.data));
         this.setChangeData(this.data);
