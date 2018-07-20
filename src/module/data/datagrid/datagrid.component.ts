@@ -357,7 +357,7 @@ import { CommonDataService } from '../../services/data/common.data.service';
 <!--Group BY and Filter Data datagrid end-->
 
 <!-- Context Menu  -->
-<span [ngStyle]="getContextMenuStyle()">
+<span [ngStyle]="contextStyle">
     <ul *ngIf="flag" class="context-menu-list" [ngClass]="{'dropdown-up' : posixUp}">
         <li (click)="onContextNodeClick(itemConfig)" class="context-menu-list-items"
         [ngStyle]="{'cursor': itemConfig.disabled ? 'not-allowed':'pointer'}"
@@ -655,6 +655,8 @@ description : Context Menu provides the list of menus on right click of row.
   selectedRows: any[];
 
   summary: any[];
+
+  contextStyle: any;
 
   summaryData: any[];
 
@@ -1453,6 +1455,8 @@ description : Context Menu provides the list of menus on right click of row.
     event.preventDefault();
     event.stopPropagation();
     this.rightClickRowData = row;
+    this.contextStyle = this.getContextMenuStyle();
+
   }
 
   onContextNodeClick(itemConfig: any) {

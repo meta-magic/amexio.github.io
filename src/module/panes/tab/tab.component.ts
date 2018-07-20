@@ -584,7 +584,6 @@ description : If "true" add two context menus i.e close All and close Others tab
   }
 
   getContextMenuStyle() {
-    console.log('*******CSSSS******');
     return {
       'cursor': 'default',
       'position': 'fixed',

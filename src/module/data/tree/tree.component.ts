@@ -187,6 +187,8 @@ description : Context Menu provides the list of menus on right click.
 
   rightClickNodeData: any;
 
+  contextStyle: any;
+
   mouseLocation: { left: number; top: number } = { left: 0, top: 0 };
 
   constructor(public element: ElementRef, public dataService: CommonDataService, private cdf: ChangeDetectorRef) {
@@ -481,6 +483,7 @@ description : Context Menu provides the list of menus on right click.
     rightClickData.event.preventDefault();
     rightClickData.event.stopPropagation();
     this.rightClickNodeData = rightClickData.data;
+    this.contextStyle = this.getContextMenuStyle();
     this.nodeRightClick.emit(rightClickData);
   }
 
