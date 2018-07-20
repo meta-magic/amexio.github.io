@@ -7,7 +7,7 @@
  Component Description : Amexio Dropdown Button component with various modes and configurations .
 */
 import {
-  AfterContentInit, Component, ContentChildren, DoCheck, ElementRef, EventEmitter, HostListener, Input, OnInit, Output,
+  AfterContentInit, Component, ContentChildren, ElementRef, EventEmitter, HostListener, Input, OnInit, Output,
   QueryList, ViewChild, ViewContainerRef,
 } from '@angular/core';
 import {AmexioButtonDropDownItemComponent} from './button.dropdown.item';
@@ -46,8 +46,9 @@ import {AmexioButtonDropDownItemComponent} from './button.dropdown.item';
   `,
 })
 
-export class AmexioButtonDropdownComponent implements AfterContentInit, DoCheck {
+export class AmexioButtonDropdownComponent implements AfterContentInit {
   @ViewChild('btnRef')  btnReference: any;
+  private componentLoaded: boolean;
 /*
 Properties
 name : label
@@ -64,7 +65,18 @@ description : Label on button
 /*
  For internal use
 */
-  @Input() buttonGroupLocalData: any;
+
+  _buttonGroupLocalData: any;
+  @Input('buttonGroupLocalData')
+   set data(value: any[]) {
+     this._buttonGroupLocalData = value;
+     if (this.componentLoaded) {
+       this.updateComponent();
+     }
+   }
+   get buttonGroupLocalData(): any {
+     return this._buttonGroupLocalData;
+   }
 /*
 Properties
 name : type
@@ -139,7 +151,7 @@ description : Fire when button-dropdown item button/link click
   buttonGroupPreviewData: any;
   constructor(public element: ElementRef) {
   }
-  ngDoCheck() {
+  updateComponent() {
     if (JSON.stringify(this.buttonGroupPreviewData) !== JSON.stringify(this.buttonGroupLocalData)) {
       this.buttonGroupPreviewData = JSON.parse(JSON.stringify(this.buttonGroupLocalData));
       this.dropdownItemData = this.buttonGroupLocalData;
@@ -153,6 +165,7 @@ description : Fire when button-dropdown item button/link click
     } else {
       this.createDropdownItemConfig(this.buttons.toArray());
     }
+    this.componentLoaded = true;
   }
   createDropdownItemConfig(btnCollection: any) {
     const itemRefArray = btnCollection;
