@@ -10,7 +10,7 @@
 
 */
 import {
-  Component, ElementRef, ContentChild, TemplateRef, EventEmitter, forwardRef, HostListener, Input, OnInit, Output, Renderer2, ViewChild
+  Component, ElementRef, ContentChild,AfterViewInit, TemplateRef, EventEmitter, forwardRef, HostListener, Input, OnInit, Output, Renderer2, ViewChild
 } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {CommonDataService} from "../../services/data/common.data.service";
@@ -29,8 +29,9 @@ export const CUSTOM_DROPDOWN_CONTROL_VALUE_ACCESSOR: any = {
   styleUrls: ['./dropdown.component.scss'],
   providers: [CUSTOM_DROPDOWN_CONTROL_VALUE_ACCESSOR]
 })
-export class AmexioDropDownComponent implements OnInit, ControlValueAccessor {
+export class AmexioDropDownComponent implements OnInit,AfterViewInit, ControlValueAccessor {
 
+  
    /*
 Properties
 name : field-label
@@ -39,9 +40,9 @@ version : 4.0 onwards
 default :
 description : The label of this field
 */
-  @Input('field-label') fieldlabel: string;
+@Input('field-label') fieldlabel: string;
 
-  /*
+/*
 Properties
 name : allow-blank
 datatype : string
@@ -49,9 +50,9 @@ version : 4.0 onwards
 default :
 description : Sets if field is required
 */
-  @Input('allow-blank') allowblank: boolean;
+@Input('allow-blank') allowblank: boolean;
 
-  /*
+/*
 Properties
 name : data
 datatype : any
@@ -64,16 +65,16 @@ componentLoaded:boolean;
 displayText:string;
 @Input('data')
 set data(value: any) {
-  this._data = value;
-  if(this.componentLoaded){
-    this.setData(this._data);
-  }
+this._data = value;
+if(this.componentLoaded){
+  this.setData(this._data);
+}
 }
 get data() : any{
-  return this._data;
+return this._data;
 }
 
- /*
+/*
 Properties
 name : data-reader
 datatype : string
@@ -81,7 +82,7 @@ version : 4.0 onwards
 default :
 description : Key in JSON datasource for records
 */
-  @Input('data-reader') datareader: string;
+@Input('data-reader') datareader: string;
 
 /*
 Properties
@@ -91,9 +92,9 @@ version : 4.0 onwards
 default :
 description : Type of HTTP call, POST,GET.
 */
-  @Input('http-method') httpmethod: string;
+@Input('http-method') httpmethod: string;
 
- /*
+/*
 Properties
 name : http-url
 datatype : string
@@ -101,9 +102,9 @@ version : 4.0 onwards
 default :
 description : REST url for fetching datasource.
 */
-  @Input('http-url') httpurl: string;
+@Input('http-url') httpurl: string;
 
-   /*
+ /*
 Properties
 name : display-field
 datatype : string
@@ -111,10 +112,10 @@ version : 4.0 onwards
 default :
 description : Name of key inside response data to display on ui.
 */
-  @Input('display-field') displayfield: string;
+@Input('display-field') displayfield: string;
 
 
-   /*
+ /*
 Properties
 name : value-field
 datatype : string
@@ -122,9 +123,9 @@ version : 4.0 onwards
 default :
 description : Name of key inside response data.use to send to backend
 */
-  @Input('value-field') valuefield: string;
+@Input('value-field') valuefield: string;
 
-   /*
+ /*
 Properties
 name : search
 datatype : boolean
@@ -132,20 +133,20 @@ version : 4.0 onwards
 default : false
 description : true for search box enable
 */
-  @Input() search: boolean;
+@Input() search: boolean;
 
 
-   /*
-   Properties
-   name : readonly
-   datatype : boolean
-   version : 4.2.1 onwards
-   default : false
-   description : true for set dropdown input readonly.
-   */
-  @Input() readonly : boolean;
+ /*
+ Properties
+ name : readonly
+ datatype : boolean
+ version : 4.2.1 onwards
+ default : false
+ description : true for set dropdown input readonly.
+ */
+@Input() readonly : boolean;
 
-  /*
+/*
 Properties
 name : multi-select
 datatype : boolean
@@ -153,21 +154,21 @@ version : 4.0 onwards
 default : false
 description : true for select multiple options
 */
-  @Input('multi-select') multiselect: boolean;
+@Input('multi-select') multiselect: boolean;
 
-  @ViewChild('dropdownitems', {read: ElementRef}) public dropdownitems: ElementRef;
+@ViewChild('dropdownitems', {read: ElementRef}) public dropdownitems: ElementRef;
 
-  helpInfoMsg: string;
+helpInfoMsg: string;
 
-  displayValue: any;
+displayValue: any;
 
-  _errormsg: string;
+_errormsg: string;
 
-  filteredOptions: any[] = [];
+filteredOptions: any[] = [];
 
-  get errormsg(): string {
-    return this._errormsg;
-  }
+get errormsg(): string {
+  return this._errormsg;
+}
 
 
 /*
@@ -178,10 +179,10 @@ version : 4.0 onwards
 default :
 description : Sets the error message
 */
-  @Input('error-msg')
-  set errormsg(value: string) {
-    this.helpInfoMsg = value + '<br/>';
-  }
+@Input('error-msg')
+set errormsg(value: string) {
+  this.helpInfoMsg = value + '<br/>';
+}
 
 
 /*
@@ -192,9 +193,9 @@ version : 4.0 onwards
 default :
 description : 	On blur event
 */
-  @Output() onBlur: any = new EventEmitter<any>();
+@Output() onBlur: any = new EventEmitter<any>();
 
-  /*
+/*
 Events
 name : input
 datatype : any
@@ -202,9 +203,9 @@ version : none
 default :
 description : 	On input event field.
 */
-  @Output() input: any = new EventEmitter<any>();
+@Output() input: any = new EventEmitter<any>();
 
-  /*
+/*
 Events
 name : focus
 datatype : any
@@ -212,9 +213,9 @@ version : none
 default :
 description : On field focus event
 */
-  @Output() focus: any = new EventEmitter<any>();
+@Output() focus: any = new EventEmitter<any>();
 
-  /*
+/*
 Events
 name : onSingleSelect
 datatype : any
@@ -222,9 +223,9 @@ version : none
 default :
 description : Fire when drop down item selected.
 */
-  @Output() onSingleSelect: any = new EventEmitter<any>();
+@Output() onSingleSelect: any = new EventEmitter<any>();
 
-  /*
+/*
 Events
 name : onMultiSelect
 datatype : any
@@ -233,9 +234,9 @@ default :
 description : Fire when multiple record select in drop down.this event is only applied when multi-select=true
 
 */
-  @Output() onMultiSelect: any = new EventEmitter<any>();
+@Output() onMultiSelect: any = new EventEmitter<any>();
 
-  /*
+/*
 Events
 name : onClick
 datatype : any
@@ -244,37 +245,37 @@ default :
 description : On record select event.this event is only for normal dropdown.
 
 */
-  @Output() onClick: any = new EventEmitter<any>();
+@Output() onClick: any = new EventEmitter<any>();
 
-  showToolTip: boolean;
+showToolTip: boolean;
 
-   /*
+ /*
 Properties
 name : place-holder
 datatype : string
 version : 4.0 onwards
 default :
 description : 	Show place-holder inside dropdown component*/
-  @Input('place-holder') placeholder: string;
+@Input('place-holder') placeholder: string;
 
-  /*
+/*
 Properties
 name : disabled
 datatype :  boolean
 version : 4.0 onwards
 default : false
 description : If true will not react on any user events and show disable icon over*/
-  @Input() disabled: boolean;
+@Input() disabled: boolean;
 
-  /*
+/*
 Properties
 name : icon-feedback
 datatype : boolean
 version : 4.0 onwards
 default : false
 description : */
-  @Input('icon-feedback') iconfeedback: boolean;
-  /*
+@Input('icon-feedback') iconfeedback: boolean;
+/*
 Properties
 name : font-style
 datatype : string
@@ -282,8 +283,8 @@ version : 4.0 onwards
 default :
 description : Set font-style to field
 */
-  @Input('font-style') fontstyle: string;
-  /*
+@Input('font-style') fontstyle: string;
+/*
 Properties
 name : font-family
 datatype : string
@@ -291,8 +292,8 @@ version : 4.0 onwards
 default :
 description : Set font-family to field
 */
-  @Input('font-family') fontfamily: string;
-  /*
+@Input('font-family') fontfamily: string;
+/*
 Properties
 name : font-size
 datatype : string
@@ -300,8 +301,8 @@ version : 4.0 onwards
 default :
 description : Set font-size to field
 */
-  @Input('font-size') fontsize: string;
-  /*
+@Input('font-size') fontsize: string;
+/*
 Properties
 name : has-label
 datatype : boolean
@@ -309,8 +310,8 @@ version : 4.0 onwards
 default : false
 description : flag to set label
 */
-  @Input('has-label') haslabel: boolean = true;
-  /*
+@Input('has-label') haslabel: boolean = true;
+/*
 Properties
 name : enable-popover
 datatype : boolean
@@ -318,401 +319,407 @@ version : 4.0 onwards
 default :false
 description : Set enable / disable popover.
 */
-  @Input('enable-popover') enablepopover: boolean;
+@Input('enable-popover') enablepopover: boolean;
 
-  @ContentChild('amexioBodyTmpl') bodyTemplate: TemplateRef<any>;
+@ContentChild('amexioBodyTmpl') bodyTemplate: TemplateRef<any>;
 
 
-  posixUp : boolean;
+posixUp : boolean;
 
-  // isComponentValid : boolean;
-  isValid: boolean;
-  @Output() isComponentValid:any=new EventEmitter<any>();
+// isComponentValid : boolean;
+isValid: boolean;
+@Output() isComponentValid:any=new EventEmitter<any>();
 
-  @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
-  public onElementOutClick(targetElement: HTMLElement) {
-    let parentFound = false;
-    while (targetElement != null && !parentFound) {
-      if (targetElement === this.element.nativeElement) {
-        parentFound = true;
+@HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
+public onElementOutClick(targetElement: HTMLElement) {
+  let parentFound = false;
+  while (targetElement != null && !parentFound) {
+    if (targetElement === this.element.nativeElement) {
+      parentFound = true;
+    }
+    targetElement = targetElement.parentElement;
+  }
+  if (!parentFound) {
+    this.showToolTip = false;
+  }
+}
+
+responseData: any;
+
+previousData: any;
+
+viewData: any;
+
+multiselectValues: any[] = [];
+
+maskloader:boolean=true;
+
+constructor(public dataService: CommonDataService, public element: ElementRef, public renderer: Renderer2) {
+}
+
+ngOnInit() {
+
+  this.isValid=this.allowblank;
+  this.isComponentValid.emit(this.allowblank);
+  if (this.placeholder == '' || this.placeholder == null) this.placeholder = 'Choose Option';
+  if (this.httpmethod && this.httpurl) {
+    this.dataService.fetchData(this.httpurl, this.httpmethod).subscribe(response => {
+      this.responseData = response;
+    }, error => {
+    }, () => {
+      this.setData(this.responseData);
+    });
+
+  } else if (this.data) {
+    this.previousData = JSON.parse(JSON.stringify(this.data));
+    this.setData(this.data);
+  }
+  this.componentLoaded=true;
+}
+
+setData(httpResponse: any) {
+  //Check if key is added?
+  let responsedata = httpResponse;
+  if (this.datareader != null) {
+    this.multiselectValues = [];
+    let dr = this.datareader.split(".");
+    if(dr) {
+      for (let ir = 0; ir < dr.length; ir++) {
+        responsedata = responsedata[dr[ir]];
       }
-      targetElement = targetElement.parentElement;
     }
-    if (!parentFound) {
-      this.showToolTip = false;
-    }
+
+  } else {
+    responsedata = httpResponse;
   }
-
-  responseData: any;
-
-  previousData: any;
-
-  viewData: any;
-
-  multiselectValues: any[] = [];
-
-  maskloader:boolean=true;
-
-  constructor(public dataService: CommonDataService, public element: ElementRef, public renderer: Renderer2) {
+  if(responsedata) {
+    this.viewData = responsedata.sort((a: any, b: any) => a[this.displayfield].toLowerCase() !== b[this.displayfield].toLowerCase() ? a[this.displayfield].toLowerCase() < b[this.displayfield].toLowerCase() ? -1 : 1 : 0);
+    this.filteredOptions = this.viewData;
   }
-
-  ngOnInit() {
-    this.displayText=this.getDisplayText();
-    // this.isComponentValid = this.allowblank;
-    this.isValid=this.allowblank;
-    this.isComponentValid.emit(this.allowblank);
-    if (this.placeholder == '' || this.placeholder == null) this.placeholder = 'Choose Option';
-    if (this.httpmethod && this.httpurl) {
-      this.dataService.fetchData(this.httpurl, this.httpmethod).subscribe(response => {
-        this.responseData = response;
-      }, error => {
-      }, () => {
-        this.setData(this.responseData);
-      });
-
-    } else if (this.data) {
-      this.previousData = JSON.parse(JSON.stringify(this.data));
-      this.setData(this.data);
-    }
-    this.componentLoaded=true;
-  }
-  setData(httpResponse: any) {
-    //Check if key is added?
-    let responsedata = httpResponse;
-    if (this.datareader != null) {
-      this.multiselectValues = [];
-      let dr = this.datareader.split(".");
-      if(dr) {
-        for (let ir = 0; ir < dr.length; ir++) {
-          responsedata = responsedata[dr[ir]];
-        }
+  if (this.multiselect) {
+    let preSelectedMultiValues: string = '';
+    let optionsChecked: any [] = [];
+    this.viewData.forEach((row: any) => {
+      if (row.hasOwnProperty('checked') && row.checked) {
+        optionsChecked.push(row[this.valuefield]);
+        this.multiselectValues.push(row);
+        preSelectedMultiValues == '' ? preSelectedMultiValues += row[this.displayfield] : preSelectedMultiValues += ',' + row[this.displayfield];
       }
+    });
+    //this.value = optionsChecked;
+    this.displayValue = preSelectedMultiValues;
+    this.onMultiSelect.emit(this.multiselectValues);
+  }
 
-    } else {
-      responsedata = httpResponse;
-    }
-    if(responsedata) {
-      this.viewData = responsedata.sort((a: any, b: any) => a[this.displayfield].toLowerCase() !== b[this.displayfield].toLowerCase() ? a[this.displayfield].toLowerCase() < b[this.displayfield].toLowerCase() ? -1 : 1 : 0);
-      this.filteredOptions = this.viewData;
-    }
-    if (this.multiselect) {
-      let preSelectedMultiValues: string = '';
-      let optionsChecked: any [] = [];
-      this.viewData.forEach((row: any) => {
-        if (row.hasOwnProperty('checked') && row.checked) {
+  //Set user selection
+  if (this.value != null) {
+    let valueKey = this.valuefield;
+    let displayKey = this.displayfield;
+    let val = this.value;
+
+    this.viewData.forEach((item: any) => {
+      if (item[valueKey] == val)
+      {
+        // this.isComponentValid = true;
+        this.isValid=true;
+        this.isComponentValid.emit(true);
+        this.displayValue = item[displayKey];
+        this.onSingleSelect.emit(item);
+        this.displayText=this.displayValue;
+      }
+    });
+  }
+  this.maskloader=false;
+}
+
+onItemSelect(row: any) {
+  if (this.multiselect) {
+    let optionsChecked: any [] = [];
+    this.multiselectValues = [];
+    if (row.hasOwnProperty('checked')) {
+      row.checked = !row.checked;
+      this.filteredOptions.forEach((row: any) => {
+        if (row.checked) {
           optionsChecked.push(row[this.valuefield]);
           this.multiselectValues.push(row);
-          preSelectedMultiValues == '' ? preSelectedMultiValues += row[this.displayfield] : preSelectedMultiValues += ',' + row[this.displayfield];
         }
       });
-      //this.value = optionsChecked;
-      this.displayValue = preSelectedMultiValues;
+      this.value = optionsChecked;
       this.onMultiSelect.emit(this.multiselectValues);
     }
+  } else {
+    this.value = row[this.valuefield];  //Issue here?
+    this.displayValue = row[this.displayfield];
 
-    //Set user selection
-    if (this.value != null) {
-      let valueKey = this.valuefield;
-      let displayKey = this.displayfield;
-      let val = this.value;
+    this.multiselect ? this.showToolTip = true : this.showToolTip = false;
+    this.onSingleSelect.emit(row);
+  }
+// this.isComponentValid = true;
+this.isValid=true;
+this.isComponentValid.emit(true);
+this.displayText=this.getDisplayText();
+}
 
-      this.viewData.forEach((item: any) => {
-        if (item[valueKey] == val)
-        {
-          // this.isComponentValid = true;
-          this.isValid=true;
-          this.isComponentValid.emit(true);
-          this.displayValue = item[displayKey];
-          this.onSingleSelect.emit(item);
+setMultiSelectData () {
+  this.multiselectValues = [];
+  if(this.value.length > 0){
+    let modelValue = this.value;
+    this.filteredOptions.forEach((test)=>{
+      modelValue.forEach((mdValue: any)=>{
+        if(test[this.valuefield] == mdValue) {
+          if(test.hasOwnProperty('checked')) {
+            test.checked = true;
+          }
+          this.multiselectValues.push(test);
         }
       });
-
-    }
-    this.displayText=this.getDisplayText();
-    this.maskloader=false;
+    });
   }
+}
+navigateKey(event:any){
 
-  onItemSelect(row: any) {
+}
+getDisplayText(): string {
+  if(this.value != null || this.value != '' || this.value != " ") {
     if (this.multiselect) {
-      let optionsChecked: any [] = [];
-      this.multiselectValues = [];
-      if (row.hasOwnProperty('checked')) {
-        row.checked = !row.checked;
-        this.filteredOptions.forEach((row: any) => {
-          if (row.checked) {
-            optionsChecked.push(row[this.valuefield]);
-            this.multiselectValues.push(row);
-          }
-        });
-        this.value = optionsChecked;
-        this.onMultiSelect.emit(this.multiselectValues);
+      this.setMultiSelectData();
+      let multiselectDisplayString: any = '';
+      this.multiselectValues.forEach((row: any) => {
+        multiselectDisplayString == '' ? multiselectDisplayString += row[this.displayfield] : multiselectDisplayString += ',' + row[this.displayfield];
+      });
+      if (this.multiselectValues.length > 0) {
+        return multiselectDisplayString;
+      } else {
+       return '';
       }
     } else {
-      this.value = row[this.valuefield];  //Issue here?
-      this.displayValue = row[this.displayfield];
-
-      this.multiselect ? this.showToolTip = true : this.showToolTip = false;
-      this.onSingleSelect.emit(row);
+      this.displayValue = '';
+      this.filteredOptions.forEach((test) => {
+        if (test[this.valuefield] == this.value) {
+          this.displayValue = test[this.displayfield];
+        }
+      });
+      return this.displayValue == undefined ? '' : this.displayValue;
     }
-  // this.isComponentValid = true;
+  }
+  return '';
+}
+onDropDownClick(event: any) {
+  this.onClick.emit(event);
+  this.displayText=this.getDisplayText();
+}
+onChange(event: any) {
+  this.value = event;
   this.isValid=true;
   this.isComponentValid.emit(true);
   this.displayText=this.getDisplayText();
-  }
+}
 
-  setMultiSelectData () {
-    this.multiselectValues = [];
-    if(this.value.length > 0){
-      let modelValue = this.value;
-      this.filteredOptions.forEach((test)=>{
-        modelValue.forEach((mdValue: any)=>{
-          if(test[this.valuefield] == mdValue) {
-            if(test.hasOwnProperty('checked')) {
-              test.checked = true;
-            }
-            this.multiselectValues.push(test);
-          }
-        });
+onInput(input : any) {
+  this.input.emit();
+  // this.isComponentValid = input.valid;
+  this.isValid=input.valid;
+  this.isComponentValid.emit(input.valid);
+  //this.input.emit(this.value);
+}
+
+selectedindex : number=0;
+scrollposition : number = 30;
+
+onDropDownSearchKeyUp(event: any) {
+  if (this.search) {
+    let keyword = event.target.value;
+    if (keyword != null && keyword != '' && keyword != ' ') {
+      this.filteredOptions = [];
+      let search_Term = keyword.toLowerCase();
+      this.viewData.forEach((row: any) => {
+        //row.selected = true;
+        if (row[this.displayfield].toLowerCase().startsWith(search_Term)) {
+          this.filteredOptions.push(row);
+        }
       });
     }
-  }
-  navigateKey(event:any){
-
-  }
-  getDisplayText(): string {
-    if(this.value != null || this.value != '' || this.value != "") {
-      if (this.multiselect) {
-        this.setMultiSelectData();
-        let multiselectDisplayString: any = '';
-        this.multiselectValues.forEach((row: any) => {
-          multiselectDisplayString == '' ? multiselectDisplayString += row[this.displayfield] : multiselectDisplayString += ',' + row[this.displayfield];
-        });
-        if (this.multiselectValues.length > 0) {
-          return multiselectDisplayString;
-        } else {
-         return '';
-        }
-      } else {
-        this.displayValue = '';
-        this.filteredOptions.forEach((test) => {
-          if (test[this.valuefield] == this.value) {
-            this.displayValue = test[this.displayfield];
-          }
-        });
-        return this.displayValue == undefined ? '' : this.displayValue;
-      }
-    }
-  }
-  onDropDownClick(event: any) {
-    this.onClick.emit(event);
-    this.displayText=this.getDisplayText();
-  }
-  onChange(event: any) {
-    this.value = event;
-    this.isValid=true;
-    this.isComponentValid.emit(true);
-    this.displayText=this.getDisplayText();
-  }
-
-  onInput(input : any) {
-    this.input.emit();
-    // this.isComponentValid = input.valid;
-    this.isValid=input.valid;
-    this.isComponentValid.emit(input.valid);
-    //this.input.emit(this.value);
-  }
-
-  selectedindex : number=0;
-  scrollposition : number = 30;
-
-  onDropDownSearchKeyUp(event: any) {
-    if (this.search) {
-      let keyword = event.target.value;
-      if (keyword != null && keyword != '' && keyword != ' ') {
-        this.filteredOptions = [];
-        let search_Term = keyword.toLowerCase();
-        this.viewData.forEach((row: any) => {
-          //row.selected = true;
-          if (row[this.displayfield].toLowerCase().startsWith(search_Term)) {
-            this.filteredOptions.push(row);
-          }
-        });
-      }
-      if (keyword == '') {
-        this.filteredOptions = this.viewData;
-        //this.selectedindex = 0;
-      }
-
+    if (keyword == '') {
+      this.filteredOptions = this.viewData;
+      //this.selectedindex = 0;
     }
 
-    if(event.keyCode === 8){
-      this.value = "";
-    }
-    if(event.keyCode === 40 || event.keyCode === 38 || event.keyCode === 13)
-    {
-      this.navigateUsingKey(event);
-    }
-    this.displayText=this.getDisplayText();
   }
 
-  navigateUsingKey(event: any){
+  if(event.keyCode === 8){
+    this.value = "";
+  }
+  if(event.keyCode === 40 || event.keyCode === 38 || event.keyCode === 13)
+  {
+    this.navigateUsingKey(event);
+  }
+  this.displayText=this.getDisplayText();
+}
 
-    if(this.selectedindex > this.filteredOptions.length){
-      this.selectedindex=0;
+navigateUsingKey(event: any){
+
+  if(this.selectedindex > this.filteredOptions.length){
+    this.selectedindex=0;
+  }
+  if(event.keyCode === 40 || event.keyCode === 38  && this.selectedindex < this.filteredOptions.length){
+    if(!this.showToolTip){
+      this.showToolTip = true;
     }
-    if(event.keyCode === 40 || event.keyCode === 38  && this.selectedindex < this.filteredOptions.length){
-      if(!this.showToolTip){
-        this.showToolTip = true;
-      }
-      let prevselectedindex = 0;
-      if(this.selectedindex === 0){
-        this.selectedindex = 1;
-      }else{
-        prevselectedindex = this.selectedindex;
-        if(event.keyCode === 40)
-        {
-          this.selectedindex++;
-          if((this.selectedindex > 5 )){
-            this.dropdownitems.nativeElement.scroll(0,this.scrollposition);
-            this.scrollposition = this.scrollposition  +30;
-          }
-        }
-        else if(event.keyCode === 38){
-          this.selectedindex--;
-          if(this.scrollposition>=0 && this.selectedindex>1){
-            this.dropdownitems.nativeElement.scroll(0,this.scrollposition);
-            this.scrollposition = this.scrollposition  -30;
-          }
-          if(this.selectedindex === 1){
-            this.scrollposition = 30;
-          }
-
-          if(this.selectedindex <=0){
-            //this.selectedindex = 1;
-          }
+    let prevselectedindex = 0;
+    if(this.selectedindex === 0){
+      this.selectedindex = 1;
+    }else{
+      prevselectedindex = this.selectedindex;
+      if(event.keyCode === 40)
+      {
+        this.selectedindex++;
+        if((this.selectedindex > 5 )){
+          this.dropdownitems.nativeElement.scroll(0,this.scrollposition);
+          this.scrollposition = this.scrollposition  +30;
         }
       }
+      else if(event.keyCode === 38){
+        this.selectedindex--;
+        if(this.scrollposition>=0 && this.selectedindex>1){
+          this.dropdownitems.nativeElement.scroll(0,this.scrollposition);
+          this.scrollposition = this.scrollposition  -30;
+        }
+        if(this.selectedindex === 1){
+          this.scrollposition = 30;
+        }
 
-      if(this.filteredOptions[this.selectedindex]){
-        this.filteredOptions[this.selectedindex].selected = true;
-
-      }
-      if(this.filteredOptions[prevselectedindex]){
-        this.filteredOptions[prevselectedindex].selected = false;
-      }
-    }
-
-    //console.log(new Date().getTime()+"--"+this.selectedindex+"--"+this.filteredOptions.length);
-    if(event.keyCode === 13 && this.filteredOptions[this.selectedindex]){
-      this.onItemSelect(this.filteredOptions[this.selectedindex]);
-    }
-    this.displayText=this.getDisplayText();
-  }
-
-
-  // The internal dataviews model
-  private innerValue: any = '';
-
-  //Placeholders for the callbacks which are later provided
-  //by the Control Value Accessor
-  private onTouchedCallback: () => void = noop;
-  private onChangeCallback: (_: any) => void = noop;
-
-  //get accessor
-  get value(): any {
-    return this.innerValue;
-  }
-
-  //set accessor including call the onchange callback
-  set value(v: any) {
-    if(v!=null) {
-      if (v !== this.innerValue) {
-        this.innerValue = v;
-        this.onChangeCallback(v);
-      }
-    }
-  }
-
-  //Set touched on blur
-  onblur(event:any) {
-
-      if(event.target && event.target.value && this.filteredOptions && this.filteredOptions.length === 1){
-        const fvalue = event.target.value;
-        let row = this.filteredOptions[0];
-        const rvalue = row[this.displayfield];
-        if(fvalue && rvalue && (fvalue.toLowerCase() === rvalue.toLowerCase())){
-          this.onItemSelect(row);
+        if(this.selectedindex <=0){
+          //this.selectedindex = 1;
         }
       }
-      this.onTouchedCallback();
-      this.onBlur.emit();
-  }
-
-  onFocus(elem : any) {
-    this.showToolTip = true;
-    this.posixUp = this.getListPosition(elem);
-    this.focus.emit();
-  }
-
-  getListPosition(elementRef : any) :boolean{
-    let dropdownHeight : number = 325; //must be same in dropdown.scss
-    if(window.screen.height - (elementRef.getBoundingClientRect().bottom) < dropdownHeight){
-      return true;
-      //  return false;
     }
-    else{
-      return false;
+
+    if(this.filteredOptions[this.selectedindex]){
+      this.filteredOptions[this.selectedindex].selected = true;
+
+    }
+    if(this.filteredOptions[prevselectedindex]){
+      this.filteredOptions[prevselectedindex].selected = false;
     }
   }
 
-  //From ControlValueAccessor interface
-  writeValue(value: any) {
-    if(!this.allowblank) {
-      if(value != null) {
-        if (value !== this.innerValue) {
-          if(this.viewData && this.viewData.length > 0) {
-            this.viewData.forEach((item: any) => {
-              if (item[this.valuefield] == value) {
-                // this.isComponentValid = true;
-                this.isValid=true;
-              }
-            });
-          }
-          this.innerValue = value;
-        }
-      } else {
-        this.value = '';
-        // this.isComponentValid = false;
-        this.isValid=true;
+  if(event.keyCode === 13 && this.filteredOptions[this.selectedindex]){
+    this.onItemSelect(this.filteredOptions[this.selectedindex]);
+  }
+  this.displayText=this.getDisplayText();
+}
+
+
+// The internal dataviews model
+private innerValue: any = '';
+
+//Placeholders for the callbacks which are later provided
+//by the Control Value Accessor
+private onTouchedCallback: () => void = noop;
+private onChangeCallback: (_: any) => void = noop;
+
+//get accessor
+get value(): any {
+  return this.innerValue;
+}
+
+//set accessor including call the onchange callback
+set value(v: any) {
+  if(v!=null) {
+    if (v !== this.innerValue) {
+      this.innerValue = v;
+      this.onChangeCallback(v);
+    }
+  }
+}
+
+//Set touched on blur
+onblur(event:any) {
+
+    if(event.target && event.target.value && this.filteredOptions && this.filteredOptions.length === 1){
+      const fvalue = event.target.value;
+      let row = this.filteredOptions[0];
+      const rvalue = row[this.displayfield];
+      if(fvalue && rvalue && (fvalue.toLowerCase() === rvalue.toLowerCase())){
+        this.onItemSelect(row);
       }
     }
-    /*if(value != null) {
+    this.onTouchedCallback();
+    this.onBlur.emit();
+}
+
+onFocus(elem : any) {
+  this.showToolTip = true;
+  this.posixUp = this.getListPosition(elem);
+  this.focus.emit();
+}
+
+getListPosition(elementRef : any) :boolean{
+  let dropdownHeight : number = 325; //must be same in dropdown.scss
+  if(window.screen.height - (elementRef.getBoundingClientRect().bottom) < dropdownHeight){
+    return true;
+    //  return false;
+  }
+  else{
+    return false;
+  }
+}
+
+//From ControlValueAccessor interface
+writeValue(value: any) {
+  if(!this.allowblank) {
+    if(value != null) {
       if (value !== this.innerValue) {
+        if(this.viewData && this.viewData.length > 0) {
+          this.viewData.forEach((item: any) => {
+            if (item[this.valuefield] == value) {
+              // this.isComponentValid = true;
+              this.isValid=true;
+            }
+          });
+        }
         this.innerValue = value;
       }
     } else {
       this.value = '';
-    }*/
-  }
-
-  //From ControlValueAccessor interface
-  registerOnChange(fn: any) {
-    this.onChangeCallback = fn;
-  }
-
-  //From ControlValueAccessor interface
-  registerOnTouched(fn: any) {
-    this.onTouchedCallback = fn;
-  }
-
-  onIconClick() {
-    if(!this.disabled)
-      this.showToolTip = ! this.showToolTip;
-  }
-
-    //THIS MEHTOD CHECK INPUT IS VALID OR NOT
-    checkValidity():boolean{
-      return this.isValid;
+      // this.isComponentValid = false;
+      this.isValid=true;
     }
+  }
+  if(this.isValid){
+    this.displayText=this.getDisplayText();
+  }
+  /*if(value != null) {
+    if (value !== this.innerValue) {
+      this.innerValue = value;
+    }
+  } else {
+    this.value = '';
+  }*/
+}
+
+//From ControlValueAccessor interface
+registerOnChange(fn: any) {
+  this.onChangeCallback = fn;
+}
+
+//From ControlValueAccessor interface
+registerOnTouched(fn: any) {
+  this.onTouchedCallback = fn;
+}
+
+onIconClick() {
+  if(!this.disabled)
+    this.showToolTip = ! this.showToolTip;
+}
+
+  //THIS MEHTOD CHECK INPUT IS VALID OR NOT
+  checkValidity():boolean{
+    return this.isValid;
+  }
+
+  ngAfterViewInit(){
+    this.displayText=this.getDisplayText();
+  }
 
 }
