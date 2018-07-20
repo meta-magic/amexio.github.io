@@ -276,10 +276,9 @@ description : If "true" add two context menus i.e close All and close Others tab
   ngAfterViewInit() {
     this.tabWidth1 = this.tabs.nativeElement.offsetWidth;
     this.totalTabs = this.tabCollection.length;
-    setTimeout(()=>{
+    setTimeout(() => {
       this.updateTabComponent();
-    },500);
-    
+    }, 500);
   }
 
   adjustWidth() {
