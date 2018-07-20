@@ -126,7 +126,7 @@ description : Sets the error message for max validation
   @Output() isComponentValid:any=new EventEmitter<any>();
 
   @ViewChild('ref', {read: ElementRef}) public inputRef: ElementRef;
-  
+
    /*
 Properties
 name : place-holder
@@ -312,71 +312,10 @@ description : Set enable / disable popover.
   }
 
   validateClass(inp: any): any {
-
     let classObj;
-    if (!this.allowblank) {
-      if (this.innerValue == null || this.innerValue == '') {
-        if (inp.touched) {
-          classObj = {'input-control-error': true};
-          this.setValidationFlag(false);
-        } else {
-          this.setValidationFlag(false);
-        }
-      } else if (inp.touched && !this.allowblank && (this.value == '' || this.value == null)) {
-        classObj = {'input-control-error': true};
-        this.setValidationFlag(false);
-      } else {
-        if(this.minlength == null && this.maxlength == null) {
-          if (this.minvalue != null && this.maxvalue != null) {
-            if (this.value >= this.minvalue && this.value <= this.maxvalue) {
-              this.setValidationFlag(true);
-            } else {
-              classObj = {'input-control-error': true};
-              this.setValidationFlag(false);
-            }
-          } else if (this.minvalue != null) {
-            if (this.value < this.minvalue) {
-              classObj = {'input-control-error': true};
-              this.setValidationFlag(false);
-            } else {
-              this.setValidationFlag(true);
-            }
-          } else if (this.maxvalue != null) {
-            if (this.value > this.maxvalue) {
-              classObj = {'input-control-error': true};
-              this.setValidationFlag(false);
-            } else {
-              this.setValidationFlag(true);
-            }
-          }
-        }
-        if ((this.maxvalue == null && this.minvalue == null)) {
-          if (this.maxlength != null && this.minlength != null) {
-            if (this.value && (this.value.toString().length >= this.minlength) && (this.value.toString().length <= this.maxlength)) {
-              this.setValidationFlag(true);
-            } else {
-              classObj = {'input-control-error': true};
-              this.setValidationFlag(false);
-            }
-          } else if (this.minlength != null) {
-            if (this.value && (this.value.toString().length >= this.minlength)) {
-              this.setValidationFlag(true);
-            } else {
-              classObj = {'input-control-error': true};
-              this.setValidationFlag(false);
-            }
-          } else if (this.maxlength != null) {
-            if (this.value && (this.value.toString().length <= this.maxlength)) {
-              this.setValidationFlag(true);
-            } else {
-              classObj = {'input-control-error': true};
-              this.setValidationFlag(false);
-            }
-          }
-        }
-      }
-    }else {
-      this.setValidationFlag(true);
+    this.isValid=this.checkValidity();
+    if(!this.isValid){
+      classObj={'input-control-error': true};
     }
     this.isComponentValid.emit(this.isValid);
     return classObj;
@@ -387,7 +326,7 @@ description : Set enable / disable popover.
     // this.isComponentValid = flag;
   }
 
-  //THIS MEHTOD CHECK INPUT IS VALID OR NOT 
+  //THIS MEHTOD CHECK INPUT IS VALID OR NOT
   checkValidity():boolean{
     return (this.inputRef && this.inputRef.nativeElement && this.inputRef.nativeElement.validity && this.inputRef.nativeElement.validity.valid);
   }
