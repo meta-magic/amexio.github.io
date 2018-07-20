@@ -333,20 +333,9 @@ description : On field value change event
 
   validateComponent(inp: any): any {
     let classObj;
-    if (!this.allowblank) {
-      if (this.innerValue == null || this.innerValue === '') {
-        classObj = this.noInnerValue(inp);
-      } else if (inp.touched && !this.allowblank && (this.value === '' || this.value == null)) {
-        classObj = this.getCssClass();
-        this.isValid = false;
-      } else if (this.minlength != null && this.minlength !== 0) {
-        classObj = this.minMaxValidation();
-      } else {
-        classObj = this.otherValidation(inp);
-        this.isValid = false;
-      }
-    } else {
-      this.isValid = true;
+    this.isValid = this.checkValidity();
+    if (!this.isValid) {
+      classObj = this.getCssClass();
     }
     this.isComponentValid.emit(this.isValid);
     return classObj;
