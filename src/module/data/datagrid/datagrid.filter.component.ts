@@ -85,7 +85,7 @@ For internal use
 
   showToolTip: boolean;
 
-  private checkIcon: 'fa fa-check';
+  private checkIcon = 'fa fa-check';
 
   constructor(private dataTableService: CommonDataService) {
 
@@ -137,6 +137,7 @@ For internal use
   }
 
   keyUpSearch(col: any) {
+    debugger;
     this.showToolTip = false;
     if (this.filterValue == null || this.filterValue === '') {
       this.removeFilter(col);

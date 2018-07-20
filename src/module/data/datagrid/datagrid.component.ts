@@ -906,10 +906,12 @@ description : Context Menu provides the list of menus on right click of row.
     this.filterValue = '';
   }
   getGlobalFilteredData(filteredObj: any) {
-    let status = false;
+    debugger;
+    
     this.data = [];
     this.filterCloneData.forEach((option: any) => {
       this.columns.forEach((opt: any) => {
+        let status = false;
         const optvalue = option[opt.dataindex].toLowerCase();
         const filtervalue = filteredObj.value.toLowerCase();
         if (filteredObj.filter === '1') {
@@ -919,11 +921,11 @@ description : Context Menu provides the list of menus on right click of row.
         } else if (filteredObj.filter === '3') {
           status = optvalue.includes(filtervalue);
         }
+        if (status) {
+          this.data.push(option);
+        }
       });
-      if (status) {
-        this.data.push(option);
-        status = false;
-      }
+     
     });
 
     if (this.data.length > (1 * this.pagesize)) {
@@ -1095,6 +1097,7 @@ description : Context Menu provides the list of menus on right click of row.
   }
 
   getFilteredData(filteredObj: any) {
+    debugger;
     let status = false;
     if (filteredObj.length > 0) {
       this.data = [];
@@ -1120,7 +1123,7 @@ description : Context Menu provides the list of menus on right click of row.
     }
   }
 
-  checkNumberFilter(filter: string, key: any, value: string): boolean {
+  checkNumberFilter(filter: string, key: any, value: number): boolean {
     if (filter === '<') {
       return key > value;
     } else if (filter === '>') {
@@ -1158,7 +1161,7 @@ description : Context Menu provides the list of menus on right click of row.
         condition = this.checkStringFilter(filterOpt.filter, data[filterOpt.key].toLowerCase(), filterOpt.value.toLowerCase());
 
       } else if (filterOpt.type === 'number') {
-        condition = this.checkNumberFilter(filterOpt.filter, filterOpt.type, data[filterOpt.key]);
+        condition = this.checkNumberFilter(filterOpt.filter,  data[filterOpt.key], filterOpt.value);
       }
       statusArray.push(condition);
     });
