@@ -8,7 +8,7 @@ Component Selector : <amexio-tree-filter-view>
 Component Description : A Expandable Tree Component for Angular, having Filtering functionality.
 */
 import {
-  AfterViewInit, ChangeDetectorRef, Component, ContentChild, DoCheck, ElementRef,
+  AfterViewInit, ChangeDetectorRef, Component, ContentChild, ElementRef,
   EventEmitter, HostListener, Input, OnInit, Output, TemplateRef,
 } from '@angular/core';
 import { CommonDataService } from '../../services/data/common.data.service';
@@ -16,8 +16,8 @@ import { CommonDataService } from '../../services/data/common.data.service';
 @Component({
   selector: 'amexio-treeview', templateUrl: './tree.component.html', styleUrls: ['./tree.component.scss'],
 })
-export class AmexioTreeViewComponent implements AfterViewInit, DoCheck, OnInit {
-
+export class AmexioTreeViewComponent implements AfterViewInit, OnInit {
+private componentLoaded: boolean;
   /*
 Properties
 name : data
@@ -26,7 +26,17 @@ version : 4.0 onwards
 default : none
 description : Local Data binding.
 */
-  @Input() data: any[];
+_data: any;
+@Input('data')
+ set data(value: any[]) {
+   this._data = value;
+   if (this.componentLoaded) {
+     this.updateComponent();
+   }
+ }
+ get data(): any[] {
+   return this._data;
+ }
 
   /*
 Properties
@@ -206,9 +216,10 @@ description : Context Menu provides the list of menus on right click.
       }
     });
     this.cdf.detectChanges();
+    this.componentLoaded = true;
   }
 
-  ngDoCheck() {
+  updateComponent() {
     if (JSON.stringify(this.previousValue) !== JSON.stringify(this.data) && this.previousValue != null && this.data != null) {
       this.previousValue = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
