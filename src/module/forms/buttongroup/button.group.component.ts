@@ -28,7 +28,7 @@ export class AmexioButtonGroupComponent implements AfterContentInit, OnChanges {
   @Input() size: string;
   /* for internal use*/
 
-  _buttonGroupLocalData: any;
+  _buttonGroupLocalData: any = [];
   @Input('buttonGroupLocalData')
    set buttonGroupLocalData(value: any) {
      this._buttonGroupLocalData = value;
