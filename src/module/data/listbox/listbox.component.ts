@@ -9,14 +9,17 @@
  more items from list based on configuration. User can provide custom template to
  change look and feel.
 */
-import {AfterViewInit, Component, ContentChild, DoCheck, EventEmitter,
+import {AfterViewInit, Component, ContentChild, EventEmitter,
   HostListener, Input, OnInit, Output, TemplateRef } from '@angular/core';
 import {CommonDataService} from '../../services/data/common.data.service';
 
 @Component({
   selector: 'amexio-listbox', templateUrl: './listbox.component.html', styleUrls: ['./listbox.component.scss'],
 })
-export class AmexioListBoxComponent implements AfterViewInit, DoCheck, OnInit {
+export class AmexioListBoxComponent implements AfterViewInit, OnInit {
+
+  private componentLoaded: boolean;
+  private contextMenuStyle: any;
 
   /*
 Properties
@@ -76,7 +79,17 @@ version : 4.0 onwards
 default : none
 description : Local Data binding.
 */
-  @Input() data: any;
+_data: any;
+@Input('data')
+ set data(value: any[]) {
+   this._data = value;
+   if (this.componentLoaded) {
+     this.updateComponent();
+   }
+ }
+ get data(): any[] {
+   return this._data;
+ }
 
   /*
 Properties
@@ -223,9 +236,10 @@ description : It will gives you row clicked data.
       this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
     }
+    this.componentLoaded = true;
   }
 
-  ngDoCheck() {
+  updateComponent() {
     if (JSON.stringify(this.previousData) !== JSON.stringify(this.data)) {
       this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
@@ -323,6 +337,7 @@ description : It will gives you row clicked data.
     event.preventDefault();
     event.stopPropagation();
     this.rightClickRowData = row;
+    this.contextMenuStyle = this.getContextMenuStyle();
 
   }
 

@@ -57,7 +57,7 @@
   </div>
 </div>
 
-<span [ngStyle]="getContextMenuStyle()">
+<span [ngStyle]="contextMenuStyle">
   <ul *ngIf="contextMenuFlag" class="context-menu-list" [ngClass]="{'dropdown-up' : posixUp}">
     <li (click)="onContextNodeClick(itemConfig)" class="context-menu-list-items" [ngStyle]="{'cursor': itemConfig.disabled ? 'not-allowed':'pointer'}" [ngClass]="{'context-menu-separator':itemConfig.seperator}"
       *ngFor="let itemConfig of contextmenu">

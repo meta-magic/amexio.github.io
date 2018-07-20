@@ -10,7 +10,7 @@ field that renders as a pair of MultiSelect field, one with available options
 and the other with selected options. A set of buttons in between allows items to be
 moved between the fields and reordered within the selection.
 */
-import { Component, DoCheck, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonDataService } from '../../services/data/common.data.service';
 
 @Component({
