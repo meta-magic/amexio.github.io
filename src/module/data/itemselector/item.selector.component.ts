@@ -17,8 +17,9 @@ import { CommonDataService } from '../../services/data/common.data.service';
   selector: 'amexio-item-selector', templateUrl: './item.selector.component.html',
 })
 
-export class AmexioItemSelectorComponent implements OnInit, DoCheck {
+export class AmexioItemSelectorComponent implements OnInit {
 
+  private componentLoaded: boolean;
   /*
 Properties
 name : data
@@ -27,7 +28,18 @@ version : 4.0 onwards
 default : none
 description :  Local data for item selectors.
 */
-  @Input() data: any;
+
+  _data: any;
+  @Input('data')
+   set data(value: any[]) {
+     this._data = value;
+     if (this.componentLoaded) {
+       this.updateComponent();
+     }
+   }
+   get data(): any[] {
+     return this._data;
+   }
 
   /*
 Properties
@@ -144,9 +156,10 @@ description :  Get selected value Object.
       this.previousValue = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
     }
+    this.componentLoaded = true;
   }
 
-  ngDoCheck() {
+  updateComponent() {
     if (JSON.stringify(this.previousValue) !== JSON.stringify(this.data)) {
       this.previousValue = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
