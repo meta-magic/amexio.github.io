@@ -18,6 +18,7 @@ import {AmexioButtonComponent} from "../buttons/button.component";
 })
 export class AmexioButtonGroupComponent implements AfterContentInit,OnChanges {
 
+  private componentLoaded: boolean;
  /*
 Properties 
 name : size
@@ -30,7 +31,18 @@ description : Different Sizes of Buttons availabe : large, default, small & xsma
 
   previousData: any;
 /* for internal use*/ 
-  @Input() buttonGroupLocalData: any;
+
+  _buttonGroupLocalData: any;
+  @Input('buttonGroupLocalData')
+   set buttonGroupLocalData(value: any[]) {
+     this._buttonGroupLocalData = value;
+     if (this.componentLoaded) {
+       this.updateComponent();
+     }
+   }
+   get buttonGroupLocalData(): any[] {
+     return this._buttonGroupLocalData;
+   }
 
 /*
 Properties
@@ -90,7 +102,7 @@ description : Fire when button click
   constructor() {
   }
 
-  ngDoCheck() {
+  updateComponent() {
     if (JSON.stringify(this.buttonGroupPreviewData) != JSON.stringify(this.buttonGroupLocalData)) {
       this.buttonGroupPreviewData = JSON.parse(JSON.stringify(this.buttonGroupLocalData));
       this.buttons = this.buttonGroupLocalData;
@@ -121,6 +133,7 @@ description : Fire when button click
       this.buttons = this.btns.toArray();
     }
     this.setButtonSizes(this.buttons);
+    this.componentLoaded = true;
   }
 
   setButtonSizes(btnArray : any){

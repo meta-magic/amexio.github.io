@@ -9,7 +9,7 @@
 
 */
 import {
-  AfterContentInit, Component, ContentChildren, DoCheck, EventEmitter, Input,
+  AfterContentInit, Component, ContentChildren, EventEmitter, Input,
   Output, QueryList
 } from '@angular/core';
 import {StepBlockComponent} from "./step-block";
@@ -93,7 +93,8 @@ import {StepBlockComponent} from "./step-block";
   `
 })
 
-export class AmexioStepsComponent implements AfterContentInit, DoCheck {
+export class AmexioStepsComponent implements AfterContentInit {
+  private componentLoaded: boolean;
 
    /*
 Properties 
@@ -157,7 +158,18 @@ version : 4.0 onwards
 default : 
 description : Provides data for stepblock.
 */
-  @Input() data: any[];
+_data: any;
+@Input('data')
+ set data(value: any[]) {
+   this._data = value;
+   if (this.componentLoaded) {
+     this.updateComponent();
+   }
+ }
+ get data(): any[] {
+   return this._data;
+ }
+
 
   stepPreviewData: any;
 
@@ -178,9 +190,10 @@ description : Provides data for stepblock.
     } else {
       this.stepBlockArray = this.stepBlocks.toArray();
     }
+    this.componentLoaded = true;
   }
 
-  ngDoCheck() {
+  updateComponent() {
     if (JSON.stringify(this.stepPreviewData) != JSON.stringify(this.data)) {
       this.stepPreviewData = JSON.parse(JSON.stringify(this.data));
       this.stepBlockArray = this.data;

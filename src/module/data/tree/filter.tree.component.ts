@@ -8,7 +8,7 @@
  Component Description : A Expandable Tree Component for Angular, having Filtering functionality.
 */
 import {
-  AfterViewInit, ChangeDetectorRef, Component, ContentChild, DoCheck, EventEmitter, Input, OnInit, Output, TemplateRef
+  AfterViewInit, ChangeDetectorRef, Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateRef
 } from '@angular/core';
 // import {Http, Headers, RequestOptions} from '@angular/http';
 import {CommonDataService} from "../../services/data/common.data.service";
@@ -57,7 +57,8 @@ import {HttpClient} from "@angular/common/http";
 
   `
 })
-export class AmexioFilterTreeComponent implements OnInit, AfterViewInit, DoCheck {
+export class AmexioFilterTreeComponent implements OnInit, AfterViewInit {
+  private componentLoaded: boolean;
 
   /*
 Properties 
@@ -97,7 +98,17 @@ version : 4.0 onwards
 default : none
 description : Local Data binding.
 */
-  @Input() data: any;
+_data: any;
+@Input('data')
+ set data(value: any[]) {
+   this._data = value;
+   if (this.componentLoaded) {
+     this.updateComponent();
+   }
+ }
+ get data(): any[] {
+   return this._data;
+ }
 
 
   /*
@@ -204,9 +215,10 @@ description : it will search for text relevant to entered character
       this.previousValue = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
     }
+    this.componentLoaded = true;
   }
 
-  ngDoCheck() {
+  updateComponent() {
     if (JSON.stringify(this.previousValue) != JSON.stringify(this.data)) {
       this.previousValue = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);

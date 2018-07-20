@@ -163,7 +163,7 @@ get data() : any{
 
   currentActive : any;
 
-  displayValue: any;
+  displayValue: any = '';
 
   helpInfoMsg: string;
 

@@ -15,7 +15,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
   selector: 'amexio-listbox', templateUrl: './listbox.component.html', styleUrls: ['./listbox.component.scss']
 })
 export class AmexioListBoxComponent implements OnInit, AfterViewInit {
-
+private componentLoaded: boolean;
   /*
 Properties 
 name : enable-checkbox
@@ -74,7 +74,17 @@ version : 4.0 onwards
 default : none
 description : Local Data binding.
 */
-  @Input() data: any;
+_data: any;
+@Input('data')
+ set data(value: any[]) {
+   this._data = value;
+   if (this.componentLoaded) {
+     this.updateComponent();
+   }
+ }
+ get data(): any[] {
+   return this._data;
+ }
 
   /*
 Properties 
@@ -193,9 +203,10 @@ description : It will gives you row clicked data.
       this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
     }
+    this.componentLoaded = true;
   }
 
-  ngDoCheck() {
+  updateComponent() {
     if (JSON.stringify(this.previousData) != JSON.stringify(this.data)) {
       this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
