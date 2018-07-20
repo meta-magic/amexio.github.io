@@ -255,7 +255,7 @@ export class AmexioTypeAheadComponent implements ControlValueAccessor, OnChanges
 
   currentActive: any;
 
-  displayValue: any;
+  displayValue: any = '';
 
   helpInfoMsg: string;
 

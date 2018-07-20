@@ -19,7 +19,7 @@ import {CommonDataService} from '../../services/data/common.data.service';
 export class AmexioListBoxComponent implements AfterViewInit, OnInit {
 
   private componentLoaded: boolean;
-  private contextMenuStyle: any;
+   contextMenuStyle: any;
 
   /*
 Properties
