@@ -540,4 +540,9 @@ export class AmexioTypeAheadComponent implements ControlValueAccessor, OnChanges
   checkValidity(): boolean {
     return this.isValid;
   }
+
+  // Onclick Method
+  onclick() {
+
+  }
 }
