@@ -1,24 +1,35 @@
 import { Component,HostListener,ContentChild, OnInit,QueryList,AfterContentInit,AfterViewInit, EventEmitter, Directive, Input, ViewChild, ElementRef, Output, ContentChildren, ViewChildren } from '@angular/core';
 import {CommonDataService} from "../../services/data/common.data.service";
 import  { AmexioSearchAdvanceComponent } from '../advancesearch/searchadvance.component';
- 
+
 
 @Component({
   selector: 'amexio-searchbox',
   templateUrl: './searchboxtool.component.html',
-  
+
 })
 export class SearchboxtoolComponent implements OnInit , AfterContentInit {
-  
+
 /*
 Properties
 name : data
 datatype : any
 version : 4.2 onwards
-default : none 
+default : none
 description : Local data for dropdown.
 */
-@Input() data: any;
+_data : any;
+componentLoaded:boolean;
+@Input('data')
+set data(value: any) {
+  this._data = value;
+  if(this.componentLoaded){
+    this.setData(this._data);
+  }
+}
+get data() : any{
+  return this._data;
+}
 /*
 Properties
 name : data-reader
@@ -92,27 +103,29 @@ description : Sets width to auto recommendation list.
 */
 @Input() width: number = 500;
 /*
-Events 
+Events
 name : keyup
 description : Fires when keyup event occurs
 */
 @Output() keyup: any = new EventEmitter<any>();
 /*
-Events 
+Events
 name : onSearchItemClick
 description : Fires when search item is selected
-*/ 
+*/
 @Output() onSearchItemClick: any = new EventEmitter<any>();
 /*
-Events 
+Events
 name : onSearchClick
 description : Fires when search button is clicked
-*/ 
+*/
+
+
 @Output() onSearchClick: any = new EventEmitter<any>();
 @ContentChild(AmexioSearchAdvanceComponent) advanceSearchRef:AmexioSearchAdvanceComponent;
 @ViewChild('dropdownitems', { read: ElementRef }) public dropdownitems: ElementRef;
-@ViewChild('inp', { read: ElementRef }) public inp: ElementRef;  
-   
+@ViewChild('inp', { read: ElementRef }) public inp: ElementRef;
+
   value:string;
   responseData: any;
   viewData: any;
@@ -133,11 +146,12 @@ description : Fires when search button is clicked
   scrollposition: number = 30;
   enableAdvanceSearch:boolean =  false;
   advanceButtonLabel:string;
- enableAdvnSearch: boolean;
+  enableAdvnSearch: boolean;
+  cssClass:string='';
   constructor(private element: ElementRef,private dataService: CommonDataService) {
-  
+
   }
- 
+
 
   ngAfterContentInit(){
     this.advanceSearchRef.formwidth= this.width;
@@ -146,26 +160,26 @@ description : Fires when search button is clicked
    if(this.advanceSearchRef){
        this.enableAdvanceSearch=true;
     if(this.advanceSearchRef.title){
-       
+
       this.advanceButtonLabel=this.advanceSearchRef.title;
       }else if (!this.advanceSearchRef.title || this.advanceSearchRef.title==''){
         this.advanceButtonLabel='Advance Search';
       }
      }
  }
-  
+
 
   ngOnInit() {
-    
+    this.componentLoaded=true;
     if (this.httpmethod && this.httpurl) {
       this.dataService.fetchData(this.httpurl,this.httpmethod).subscribe(response => {
-        
+
         this.responseData = response;
-        
+
       }, error => {
       }, () => {
         this.setData(this.responseData);
-        
+
       });
 
     } else if (this.data) {
@@ -173,15 +187,9 @@ description : Fires when search button is clicked
        this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
      }
- 
+
   }
-  
-  ngDoCheck() {
-    if (JSON.stringify(this.previousData) != JSON.stringify(this.data)) {
-      this.previousData = JSON.parse(JSON.stringify(this.data));
-      this.setData(this.data);
-    }
-  }
+
   @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
   public onElementOutClick(targetElement: HTMLElement) {
     let parentFound = false;
@@ -199,7 +207,7 @@ description : Fires when search button is clicked
      this.advanceSearchFlag = false;
   }
   onInputClick(event: any) {
- 
+
      this.searchFlag = true;
     let keyword: any = event.target.value;
     this.viewData = [];
@@ -212,7 +220,7 @@ description : Fires when search button is clicked
           }
         }
       });
-     
+
       this.keyup.emit(event);
 
      }
@@ -224,14 +232,14 @@ description : Fires when search button is clicked
       //call function for process
       this.navigateKeys(event);
     }
- 
+
     if(!this.selectedValue || this.selectedValue==''){
       this.viewData=[];
     }
 
   }
 
- 
+
   onFocus(){
        if(this.selectedValue.length>0){
         let keyword = this.selectedValue;
@@ -240,10 +248,10 @@ description : Fires when search button is clicked
         let search_term = keyword.toLowerCase();
         this.localData.forEach((item: any) => {
           if (item != null) {
-           
+
             //if word exist in start
             if (item[this.displayfield].toLowerCase().startsWith(search_term)) {
-    
+
               this.viewData.push(item);
             }
           }
@@ -252,14 +260,14 @@ description : Fires when search button is clicked
 
         this.keyup.emit(event);
        }
-       
+
          if(!this.selectedValue || this.selectedValue==''){
         this.viewData=[];
       }
       }
     }
-    
- 
+
+
   navigateKeys(event: any) {
      if (this.selectedindex > this.viewData.length) {
       this.selectedindex = 0;
@@ -267,41 +275,41 @@ description : Fires when search button is clicked
     if (event.keyCode === 40 ||
       event.keyCode === 38
       && this.selectedindex < this.viewData.length) {
- 
+
       let prevselectedindex = 0;
       if (this.selectedindex === 0) {
         this.selectedindex = 1;
- 
+
       } else {
         prevselectedindex = this.selectedindex;
         if (event.keyCode === 40) {
           this.selectedindex++;
- 
+
           if ((this.selectedindex > 5)) {
- 
+
             this.dropdownitems.nativeElement.scroll(0, this.scrollposition);
             this.scrollposition = this.scrollposition + 30;
- 
+
           }
         }
         else if (event.keyCode === 38) {
- 
+
           this.selectedindex--;
- 
+
           if (this.scrollposition >= 0 && this.selectedindex > 1) {
             this.dropdownitems.nativeElement.scroll(1, this.scrollposition);
             this.scrollposition = this.scrollposition - 30;
- 
+
 
           }
           if (this.selectedindex === 1) {
             this.scrollposition = 30;
- 
+
 
           }
 
           if (this.selectedindex <= 0) {
- 
+
             //this.selectedindex = 1;
           }
         }
@@ -309,28 +317,26 @@ description : Fires when search button is clicked
 
       if (this.viewData[this.selectedindex]) {
         this.viewData[this.selectedindex].selected = true;
- 
+
       }
       if (this.viewData[prevselectedindex]) {
         this.viewData[prevselectedindex].selected = false;
- 
+
       }
     }
-
-
-
     if (event.keyCode === 13 && this.viewData[this.selectedindex]) {
       this.onItemSelect(this.viewData[this.selectedindex]);
- 
-    }
 
+    }
+    this.cssClass=this.selectCssClass();
   }
 
   onSearchButtonClick(event:any){
-this.onSearchClick.emit(event);
+    this.onSearchClick.emit(event);
   }
-  selectCssClass(): string {
 
+  //CSS CLASS ADDED
+  selectCssClass(): string {
     if (this.viewData.length > 5) {
       return "dropdown-list scroll";
     }
@@ -350,7 +356,7 @@ this.onSearchClick.emit(event);
     this.advanceSearchRef.advanceSearchFlag = true;
     this.advanceSearchFlag = true;
     this.searchFlag = false;
-    
+
 //  this.childComponent.advanceSearchFlag=true;
   }
 
@@ -361,7 +367,7 @@ this.onSearchClick.emit(event);
 
   getResponseData(httpResponse: any) {
     let responsedata = httpResponse;
- 
+
     if (this.datareader != null) {
       let dr = this.datareader.split(".");
       if (dr != null) {
@@ -372,8 +378,6 @@ this.onSearchClick.emit(event);
     } else {
       responsedata = httpResponse;
     }
-     
-
     return responsedata;
   }
   setData(httpResponse: any) {
@@ -390,7 +394,5 @@ this.onSearchClick.emit(event);
     this.viewData = responsedata;
     this.localData = JSON.parse(JSON.stringify(this.viewData));
    }
-
-
 
 }
