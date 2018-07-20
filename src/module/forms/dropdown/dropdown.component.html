@@ -1,7 +1,7 @@
 <div class="inputgroup" #rootDiv>
 
     <label *ngIf="haslabel" [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
-    {{fieldlabel}} {{displayText}}
+    {{fieldlabel}}
   </label>
 
     <input type="hidden" [ngModel]="value" (ngModelChange)="onChange($event)" #inp="ngModel" />
