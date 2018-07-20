@@ -61,6 +61,7 @@ description : Local data for dropdown.
 */
 _data : any;
 componentLoaded:boolean;
+displayText:string;
 @Input('data')
 set data(value: any) {
   this._data = value;
@@ -71,7 +72,6 @@ set data(value: any) {
 get data() : any{
   return this._data;
 }
-
 
  /*
 Properties
@@ -357,6 +357,7 @@ description : Set enable / disable popover.
   }
 
   ngOnInit() {
+    this.displayText=this.getDisplayText();
     // this.isComponentValid = this.allowblank;
     this.isValid=this.allowblank;
     this.isComponentValid.emit(this.allowblank);
@@ -427,6 +428,7 @@ description : Set enable / disable popover.
       });
 
     }
+    this.displayText=this.getDisplayText();
     this.maskloader=false;
   }
 
@@ -455,6 +457,7 @@ description : Set enable / disable popover.
   // this.isComponentValid = true;
   this.isValid=true;
   this.isComponentValid.emit(true);
+  this.displayText=this.getDisplayText();
   }
 
   setMultiSelectData () {
@@ -498,19 +501,17 @@ description : Set enable / disable popover.
         });
         return this.displayValue == undefined ? '' : this.displayValue;
       }
-      
     }
-
-
   }
   onDropDownClick(event: any) {
     this.onClick.emit(event);
-
+    this.displayText=this.getDisplayText();
   }
   onChange(event: any) {
     this.value = event;
     this.isValid=true;
     this.isComponentValid.emit(true);
+    this.displayText=this.getDisplayText();
   }
 
   onInput(input : any) {
@@ -541,6 +542,7 @@ description : Set enable / disable popover.
         this.filteredOptions = this.viewData;
         //this.selectedindex = 0;
       }
+
     }
 
     if(event.keyCode === 8){
@@ -550,6 +552,7 @@ description : Set enable / disable popover.
     {
       this.navigateUsingKey(event);
     }
+    this.displayText=this.getDisplayText();
   }
 
   navigateUsingKey(event: any){
@@ -603,7 +606,7 @@ description : Set enable / disable popover.
     if(event.keyCode === 13 && this.filteredOptions[this.selectedindex]){
       this.onItemSelect(this.filteredOptions[this.selectedindex]);
     }
-
+    this.displayText=this.getDisplayText();
   }
 
 
@@ -637,7 +640,6 @@ description : Set enable / disable popover.
         const fvalue = event.target.value;
         let row = this.filteredOptions[0];
         const rvalue = row[this.displayfield];
-        console.log(fvalue +" "+" "+rvalue+" "+this.filteredOptions.length);
         if(fvalue && rvalue && (fvalue.toLowerCase() === rvalue.toLowerCase())){
           this.onItemSelect(row);
         }
@@ -708,7 +710,7 @@ description : Set enable / disable popover.
       this.showToolTip = ! this.showToolTip;
   }
 
-    //THIS MEHTOD CHECK INPUT IS VALID OR NOT 
+    //THIS MEHTOD CHECK INPUT IS VALID OR NOT
     checkValidity():boolean{
       return this.isValid;
     }
