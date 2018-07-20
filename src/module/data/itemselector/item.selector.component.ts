@@ -2,112 +2,125 @@
  * Created by pratik on 27/12/17.
  */
 
- /*
- Component Name : Amexio item selector
- Component Selector : <amexio-item-selector>
- Component Description : ItemSelector is a specialized MultiSelect field that renders as a pair of MultiSelect field, one with available options and the other with selected options. A set of buttons in between allows items to be moved between the fields and reordered within the selection.
+/*
+Component Name : Amexio item selector
+Component Selector : <amexio-item-selector>
+Component Description : ItemSelector is a specialized MultiSelect
+field that renders as a pair of MultiSelect field, one with available options
+and the other with selected options. A set of buttons in between allows items to be
+moved between the fields and reordered within the selection.
 */
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {CommonDataService} from "../../services/data/common.data.service";
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { CommonDataService } from '../../services/data/common.data.service';
 
 @Component({
-  selector: 'amexio-item-selector', templateUrl: './item.selector.component.html'
+  selector: 'amexio-item-selector', templateUrl: './item.selector.component.html',
 })
 
 export class AmexioItemSelectorComponent implements OnInit {
 
+  private componentLoaded: boolean;
   /*
-Properties 
+Properties
 name : data
 datatype : any
 version : 4.0 onwards
 default : none
 description :  Local data for item selectors.
-*/ 
-  @Input() data: any;
+*/
+
+  _data: any;
+  @Input('data')
+   set data(value: any[]) {
+     this._data = value;
+     if (this.componentLoaded) {
+       this.updateComponent();
+     }
+   }
+   get data(): any[] {
+     return this._data;
+   }
 
   /*
-Properties 
+Properties
 name : height
 datatype : any
 version : 4.0 onwards
 default : none
 description :  Height of item selector
-*/ 
+*/
   @Input() height: any;
 
-  mask : boolean = true;
+  mask = true;
 
   /*
-Properties 
+Properties
 name : data-reader
 datatype : string
 version : 4.0 onwards
 default : none
 description :  Key in JSON Datasource for records.
-*/ 
+*/
   @Input('data-reader') datareader: string;
 
   /*
-Properties 
+Properties
 name : http-method
 datatype : string
 version : 4.0 onwards
 default : none
 description :  Type of HTTP call, POST,GET.
-*/ 
+*/
   @Input('http-method') httpmethod: string;
 
-
   /*
-Properties 
+Properties
 name : http-url
 datatype : string
 version : 4.0 onwards
 default : none
 description :  REST url for fetching datasource.
-*/ 
+*/
   @Input('http-url') httpurl: string;
 
   /*
-Properties 
+Properties
 name : display-field
 datatype : string
 version : 4.0 onwards
 default : none
 description :  Name of key inside response data to display on ui.
-*/ 
+*/
   @Input('display-field') displayfield: string;
 
   /*
-Properties 
+Properties
 name : value-field
 datatype : string
 version : 4.0 onwards
 default : none
 description :  Name of key inside response data.use to send to backend
-*/ 
+*/
   @Input('value-field') valuefield: string;
 
   /*
-Events 
+Events
 name : availableRecords
 datatype : none
 version : none
 default : none
 description :  Get available values objects.
-*/ 
+*/
   @Output() availableRecords: any = new EventEmitter<any>();
 
-
   /*
-Events 
+Events
 name : selectedRecords
 datatype : none
 version : none
 default : none
 description :  Get selected value Object.
-*/ 
+*/
   @Output() selectedRecords: any = new EventEmitter<any>();
 
   availableData: any[];
@@ -118,10 +131,9 @@ description :  Get selected value Object.
 
   objectIndex: any;
 
-  leftactive: boolean = true;
+  leftactive = true;
 
-  rightactive: boolean = true;
-
+  rightactive = true;
 
   response: any;
 
@@ -129,15 +141,14 @@ description :  Get selected value Object.
 
   check: any;
 
-
   constructor(public itemSelectorService: CommonDataService) {
   }
 
   ngOnInit() {
     if (this.httpmethod && this.httpurl) {
-      this.itemSelectorService.fetchData(this.httpurl, this.httpmethod).subscribe(response => {
+      this.itemSelectorService.fetchData(this.httpurl, this.httpmethod).subscribe((response) => {
         this.response = response;
-      }, error => {
+      }, (error) => {
       }, () => {
         this.setData(this.response);
       });
@@ -145,28 +156,27 @@ description :  Get selected value Object.
       this.previousValue = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
     }
+    this.componentLoaded = true;
   }
 
-  ngDoCheck() {
-    if (JSON.stringify(this.previousValue) != JSON.stringify(this.data)) {
+  updateComponent() {
+    if (JSON.stringify(this.previousValue) !== JSON.stringify(this.data)) {
       this.previousValue = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
     }
   }
 
-
   setData(httpResponse: any) {
     let responsedata = httpResponse;
     if (this.datareader != null) {
       const dr = this.datareader.split('.');
-      for (let ir = 0; ir < dr.length; ir++) {
-        responsedata = responsedata[dr[ir]];
+      for (const ir of dr) {
+        responsedata = responsedata[ir];
       }
       responsedata.forEach((option: any, index: any) => {
-         if(!option['isSelected'])
-          {
-            option['isSelected'] = false;
-          }
+        if (!option['isSelected']) {
+          option['isSelected'] = false;
+        }
       });
     } else {
       responsedata = httpResponse;
@@ -176,28 +186,26 @@ description :  Get selected value Object.
     this.mask = false;
   }
 
-
   itemClick(data: any, index: any, left: boolean, right: boolean) {
     this.leftactive = left;
     this.rightactive = right;
-
     this.switchingObject = data;
     this.objectIndex = index;
-    for (let ir = 0; ir < this.availableData.length; ir++) {
-      if ((this.availableData[ir])[this.valuefield] === data[this.valuefield]) {
-        this.availableData[ir]['isSelected'] = true;
+    for (const ir of this.availableData) {
+      if ((ir)[this.valuefield] === data[this.valuefield]) {
+        ir['isSelected'] = true;
       } else {
-        this.availableData[ir]['isSelected'] = false;
+        ir['isSelected'] = false;
       }
 
     }
 
     if (right) {
-      for (let ir = 0; ir < this.selectedData.length; ir++) {
-        if ((this.selectedData[ir])[this.valuefield] === data[this.valuefield]) {
-          this.selectedData[ir]['selectedClick'] = true;
+      for (const ir of this.selectedData) {
+        if ((ir)[this.valuefield] === data[this.valuefield]) {
+          ir['selectedClick'] = true;
         } else {
-          this.selectedData[ir]['selectedClick'] = false;
+          ir['selectedClick'] = false;
         }
       }
     }
@@ -222,15 +230,18 @@ description :  Get selected value Object.
   }
 
   leftSwitch() {
-    let flag: boolean;
-
     if (this.switchingObject && this.availableData) {
-      for (let ir = 0; ir < this.availableData.length; ir++) {
-        if ((this.availableData[ir])[this.valuefield] === this.switchingObject[this.valuefield]) {
-          flag = true;
+      for (const ir of this.availableData) {
+        if ((ir)[this.valuefield] === this.switchingObject[this.valuefield]) {
         }
       }
     }
+    this.setLeftSwitch();
+  }
+
+  // Method called in left switch if flag is false
+  private setLeftSwitch() {
+    const flag = false;
     if (!flag) {
       if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected')) {
         if (this.switchingObject['isSelected']) {
@@ -252,15 +263,12 @@ description :  Get selected value Object.
     if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected')) {
       if (this.switchingObject['isSelected']) {
         this.selectedData.forEach((opt: any, i: any) => {
-          if (opt[this.valuefield] === this.switchingObject[this.valuefield]) {
-            this.objectIndex = i;
-          }
+          this.getIndexObject(opt, i);
         });
-        if (this.objectIndex != 0) {
+        if (this.objectIndex !== 0) {
           const index = this.selectedData[this.objectIndex];
           this.selectedData[this.objectIndex] = this.selectedData[this.objectIndex - 1];
           this.selectedData[this.objectIndex - 1] = index;
-          // this.switchingObject = null;
           this.dataEmitter();
         }
 
@@ -272,15 +280,12 @@ description :  Get selected value Object.
     if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected')) {
       if (this.switchingObject['isSelected']) {
         this.selectedData.forEach((opt: any, i: any) => {
-          if (opt[this.valuefield] === this.switchingObject[this.valuefield]) {
-            this.objectIndex = i;
-          }
+          this.getIndexObject(opt, i);
         });
         if (this.selectedData.length - 1 !== this.objectIndex) {
           const index = this.selectedData[this.objectIndex];
           this.selectedData[this.objectIndex] = this.selectedData[this.objectIndex + 1];
           this.selectedData[this.objectIndex + 1] = index;
-          // this.switchingObject = null;
           this.dataEmitter();
         }
       }
@@ -292,9 +297,7 @@ description :  Get selected value Object.
     const tempArray: any = [];
     if (this.switchingObject != null && this.switchingObject['isSelected']) {
       this.selectedData.forEach((opt: any, i: any) => {
-        if (opt[this.valuefield] === this.switchingObject[this.valuefield]) {
-          this.objectIndex = i;
-        }
+       this.getIndexObject(opt, i);
       });
       if (this.selectedData.length > 1) {
         tempArray[0] = this.selectedData[this.objectIndex];
@@ -303,7 +306,6 @@ description :  Get selected value Object.
           tempArray.push(option);
         });
         this.selectedData = tempArray;
-        // this.switchingObject = null;
         this.dataEmitter();
       }
     }
@@ -312,16 +314,13 @@ description :  Get selected value Object.
   moveBottom() {
     if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected')) {
       this.selectedData.forEach((opt: any, i: any) => {
-        if (opt[this.valuefield] === this.switchingObject[this.valuefield]) {
-          this.objectIndex = i;
-        }
+       this.getIndexObject(opt, i);
       });
       if (this.switchingObject['isSelected'] && this.selectedData.length > 1) {
         this.selectedData.splice(this.objectIndex, 1);
         this.selectedData[this.selectedData.length] = this.switchingObject;
       }
     }
-    // this.switchingObject = null;
     this.dataEmitter();
   }
 
@@ -330,4 +329,9 @@ description :  Get selected value Object.
     this.selectedRecords.emit(this.selectedData);
   }
 
+  getIndexObject(opt: any, i: any) {
+    if (opt[this.valuefield] === this.switchingObject[this.valuefield]) {
+      this.objectIndex = i;
+    }
+  }
 }

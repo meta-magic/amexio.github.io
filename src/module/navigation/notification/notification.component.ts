@@ -3,7 +3,7 @@
  */
 
 
-import {AfterContentInit, ChangeDetectorRef,ContentChild, HostListener, TemplateRef, Component, DoCheck, EventEmitter, Input, OnInit, Output,
+import {AfterContentInit, ChangeDetectorRef,ContentChild, HostListener, TemplateRef, Component, EventEmitter, Input, OnInit, Output,
   QueryList} from '@angular/core';
 
   export enum KEY_CODE_notify {
