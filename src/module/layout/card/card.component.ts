@@ -130,7 +130,7 @@ description : Provides card height.
   ngAfterViewInit() {
     setTimeout(() => {
       this.onResize();
-    }, 500);
+    }, 200);
   }
   ngAfterContentInit() {
     // FOR HEADER PADING
