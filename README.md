@@ -10,7 +10,9 @@
 
 
 <div align="center">
-  Amexio (Angular MetaMagic EXtensions for Inputs and Outputs) is a pure Typescript Compnent Library of Angular. We provide modular import for using our rich set of components,charts, maps , dashboard, forms, data, media, layout etc and can be easily configured and implemented in a project. Check out the Demo App built using Amexio. For the Amexio UI Library refer API documentation.
+  Amexio (Angular MetaMagic EXtensions for Inputs and Outputs) is a rich set of Angular (all versions)
+ (120+) UI Components powered by HTML5 & CSS3 for Responsive Web Design & 50+ built-in Material Design Themes. Components includes Form components, charts, maps, dashboards, Tabs, Grids, Trees, Layouts etc.
+
 </div>
 <br/>
 
