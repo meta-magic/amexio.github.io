@@ -34,6 +34,7 @@
   <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
 <script type="IN/FollowCompany" data-id="13316060" data-counter="top"></script>
 -->
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/06ad409b12ad4c1c81794c81889dc6ee)](https://www.codacy.com/app/arafkarsh/amexio.github.io?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=meta-magic/amexio.github.io&amp;utm_campaign=Badge_Grade)
 </div>
 
 <div align="center">
