@@ -35,6 +35,14 @@
 <script type="IN/FollowCompany" data-id="13316060" data-counter="top"></script>
 -->
 <a class="badge-align" href="https://www.codacy.com/app/arafkarsh/amexio.github.io?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=meta-magic/amexio.github.io&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/06ad409b12ad4c1c81794c81889dc6ee"/></a>
+<br>
+<img src="https://sonarcloud.io/api/project_badges/measure?project=Amexio-API&metric=alert_status" />
+
+<img src="https://sonarcloud.io/api/project_badges/measure?project=Amexio-API&metric=reliability_rating" />
+
+<img src="https://sonarcloud.io/api/project_badges/measure?project=Amexio-API&metric=security_rating" />
+<img src="https://sonarcloud.io/api/project_badges/measure?project=Amexio-API&metric=sqale_rating" />
+<img src="https://sonarcloud.io/api/project_badges/measure?project=Amexio-API&metric=vulnerabilities" />
 </div>
 
 <div align="center">
