@@ -47,6 +47,7 @@ UI Components powered by HTML5 & CSS3 for <b>Responsive Web Design & 50+ built-
 <br>
 <img src="https://sonarcloud.io/api/project_badges/measure?project=Amexio-API&metric=vulnerabilities" />
 <img src="https://sonarcloud.io/api/project_badges/measure?project=Amexio-API&metric=code_smells" />
+<img src="https://sonarcloud.io/api/project_badges/measure?project=Amexio-API&metric=sqale_index" />
 </div>
 
 <div align="center">
