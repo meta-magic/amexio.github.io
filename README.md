@@ -33,6 +33,11 @@ UI Components powered by HTML5 & CSS3 for <b>Responsive Web Design & 50+ built-
       alt="Downloads" />
   </a>
   <!--
+  <a href="https://codecov.io/gh/meta-magic/amexio.github.io">
+  <img src="https://codecov.io/gh/meta-magic/amexio.github.io/branch/v5.1/graph/badge.svg" />
+</a>
+-->
+  <!--
   <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
 <script type="IN/FollowCompany" data-id="13316060" data-counter="top"></script>
 -->
