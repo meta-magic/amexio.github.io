@@ -19,6 +19,7 @@ before_script:
   - npm install --quiet -g gulp-cli
 
 script: 
+  - cd src/styles/ && sh sasstocss.sh
   - gulp build
   - cd dist && npm pack
 after_success: gulp coveralls
