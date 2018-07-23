@@ -19,6 +19,10 @@ before_script:
   - npm install --global gulp
   - npm install node-sass
   - npm install --save del
+  - sudo apt-get -y update
+  - sudo apt-get -y install ruby-full
+  - sudo apt install ruby-sass
+  - gem install bundler
   
 script: 
   - cd src/styles/ && sh sasstocss.sh
