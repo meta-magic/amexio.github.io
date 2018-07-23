@@ -18,8 +18,9 @@ before_script:
   - sh -e /etc/init.d/xvfb start
   - npm install --quiet -g gulp-cli
 
-script: gulp build
-
+script: 
+  - gulp build
+  - cd dist && npm pack
 after_success: gulp coveralls
 
 cache:
