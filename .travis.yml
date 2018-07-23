@@ -26,7 +26,7 @@ before_script:
 
   
 script: 
-  - cd src/styles/ && sh sasstocss.sh
+  - sh src/styles/sasstocss.sh
   - gulp build
   - cd dist && npm pack
 after_success: gulp coveralls
