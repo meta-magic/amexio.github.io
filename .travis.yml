@@ -18,12 +18,8 @@ before_script:
   - sh -e /etc/init.d/xvfb start
   - npm install --global gulp
   - npm install node-sass
-  - sudo apt-get -y update
-  - sudo apt-get -y install ruby-full
-  - sudo apt install ruby-sass
-  - gem install bundler
-            
-
+  - npm install --save del
+  
 script: 
   - cd src/styles/ && sh sasstocss.sh
   - gulp build
