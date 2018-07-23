@@ -18,9 +18,9 @@ before_script:
   - sh -e /etc/init.d/xvfb start
   - npm install --quiet -g gulp-cli
   - npm install node-sass
-  - apt-get -y update
-  - apt-get -y install ruby-full
-  - apt install ruby-sass
+  - sudo apt-get -y update
+  - sudo apt-get -y install ruby-full
+  - sudo apt install ruby-sass
   - gem install bundler
             
 
