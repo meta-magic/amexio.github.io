@@ -90,7 +90,7 @@ version : 4.0 onwards
 default : none
 description : Key in JSON Datasource for records.
 */
-  @Input('data-reader') datareader : string;
+  @Input('data-reader') datareader: string;
 
   /*
 Properties
