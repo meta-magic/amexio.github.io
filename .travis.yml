@@ -17,9 +17,16 @@ before_script:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
   - npm install --global gulp --save
+  - npm install node-sass
+  - sudo apt-get -y update
+  - sudo apt-get -y install ruby-full
+  - sudo apt install ruby-sass
+  - gem install bundler
+            
 
   
 script: 
+  - cd src/styles/ && sh sasstocss.sh
   - gulp build
   - cd dist && npm pack
 after_success: gulp coveralls
