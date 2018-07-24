@@ -145,17 +145,17 @@ export class PieChartComponent implements AfterContentInit,OnInit {
 
 
 /*
-Properties 
+Properties
 name : width
 datatype : string
 version : 4.0 onwards
 default : none
 description : width of chart
-*/  
+*/
 @Input() width: string;
 
 /*
-Properties 
+Properties
 name : height
 datatype : string
 version : 4.0 onwards
@@ -167,7 +167,7 @@ description : height of chart
   hasLoaded:boolean;
 
 /*
-Properties 
+Properties
 name : is3d
 datatype : boolean
 version : 4.0 onwards
@@ -179,7 +179,7 @@ description : If you set the is3d option to true, your pie chart will be drawn a
   //this input for hole inside pie chart
 
 /*
-Properties 
+Properties
 name : piehole
 datatype : number
 version : 4.0 onwards
@@ -197,7 +197,7 @@ description : sets the pie hole size
   }
 
   /*
-Properties 
+Properties
 name : data
 datatype : any
 version : 4.0 onwards
@@ -259,7 +259,7 @@ description : sets the pie hole size
           italic: this.chartTitleComponent.italic ? this.chartTitleComponent.italic : null
         }:null,
         is3D: this.is3d,
-        piehole: this.piehole,
+        pieHole: this.piehole,
         startangle: this.startangle,
         backgroundcolor: this.backgroundcolor,
         legend: this.chartLengendComponent ? {

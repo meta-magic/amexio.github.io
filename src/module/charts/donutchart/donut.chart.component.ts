@@ -150,7 +150,7 @@ export class DonutChartComponent implements AfterContentInit {
   id: any;
 
 /*
-Properties 
+Properties
 name : width
 datatype : string
 version : 4.0 onwards
@@ -160,7 +160,7 @@ description : width of chart
 @Input() width: string;
 
 /*
-Properties 
+Properties
 name : height
 datatype : string
 version : 4.0 onwards
@@ -178,7 +178,7 @@ description : height of chart
   }
 
 /*
-Properties 
+Properties
 name : data
 datatype : any
 version : 4.0 onwards
@@ -196,7 +196,7 @@ description : For the use of local data
   }
 
 /*
-Properties 
+Properties
 name : background-color
 datatype : string
 version : 4.0 onwards
@@ -244,7 +244,7 @@ description : sets background-color to chart
           bold: this.chartTitleComponent.bold ? this.chartTitleComponent.bold : null,
           italic: this.chartTitleComponent.italic ? this.chartTitleComponent.italic : null
         } : null,
-        piehole: 0.4,
+        pieHole: 0.4,
         backgroundcolor: this.backgroundcolor,
         legend: this.chartLengendComponent ? {
           position: this.chartLengendComponent.position ? this.chartLengendComponent.position : null, //this work only in chart position is top
