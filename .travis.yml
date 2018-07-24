@@ -17,10 +17,14 @@ before_script:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
   - npm install --global gulp --save
+  - gem install sass
+
             
 script: 
-  - gulp build
+  - cd src/styles/ && sh sasstocss.sh
+  - cd ../../ && pwd && gulp build
   - cd dist && npm pack
+  
 after_success: gulp coveralls
 
 cache:
