@@ -8,7 +8,7 @@ addons:
       - google-chrome
     packages:
       - google-chrome-stable
-    sonarcloud:
+    sonarqube:
        organization: "metamagic" # the key of the org you chose at step #3
        token:
          secure: c5f99f1430c7c379e0e4dec089a81b244d57c598 # encrypted value of your token  
