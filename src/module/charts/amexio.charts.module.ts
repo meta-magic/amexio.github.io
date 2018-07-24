@@ -24,6 +24,7 @@ import {CandlestickChartComponent} from "./candlestickchart/candlestick.chart.co
 import {CandlestickWaterfallChartComponent} from "./candlestickwaterfallchart/candlestickwaterfall.chart.component";
 import {ChartLoaderService} from "./chart.loader.service";
 import {HttpClientModule} from "@angular/common/http";
+import { GanttChartComponent } from './ganttchart/gantt.chart.component';
 
 export  * from "./chartlegend/chart.legend.component";
 export  * from  "./charttitle/chart.title.component";
@@ -44,6 +45,7 @@ export * from "./bubblechart/bubble.chart.component";
 export * from "./scatterchart/scatter.chart.component";
 export * from "./candlestickchart/candlestick.chart.component";
 export * from "./candlestickwaterfallchart/candlestickwaterfall.chart.component";
+export * from "./ganttchart/gantt.chart.component";
 
 export * from '../services/data/common.data.service';
 export * from './chart.loader.service';
@@ -56,7 +58,8 @@ const CHART_COMPONENTS = [
   VerticalAxisComponent,
   HorizontalAxisComponent,
   BubbleChartComponent,
-  ScatterChartComponent,CandlestickChartComponent,CandlestickWaterfallChartComponent
+  ScatterChartComponent,CandlestickChartComponent,CandlestickWaterfallChartComponent,
+  GanttChartComponent
 ];
 
 @NgModule({
