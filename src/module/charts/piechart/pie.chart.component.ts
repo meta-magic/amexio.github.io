@@ -248,7 +248,7 @@ description : sets the pie hole size
         title: this.chartTitleComponent ? this.chartTitleComponent.title : null,
         titleTextStyle: this.chartTitleComponent ? this.charttitleTextStyle() : null,
         is3D: this.is3d,
-        piehole: this.piehole,
+        pieHole: this.piehole,
         startangle: this.startangle,
         backgroundcolor: this.backgroundcolor,
         legend: this.chartLengendComponent ? this.chartLengendStyle() : 'none',
