@@ -237,7 +237,7 @@ export class DonutChartComponent implements AfterContentInit, OnInit {
       this.options = {
         title: this.chartTitleComponent ? this.chartTitleComponent.title : null,
         titleTextStyle: this.chartTitleComponent ? this.chariTitleTextStyle() : null,
-        piehole: 0.4,
+        pieHole: 0.4,
         backgroundcolor: this.backgroundcolor,
         legend: this.chartLengendComponent ? this.chartLegendStyle() : 'none',
         chartArea: this.chartAreaComponent ? this.chartBackgroundColor() : null,
