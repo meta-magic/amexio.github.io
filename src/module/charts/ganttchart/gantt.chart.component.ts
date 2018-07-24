@@ -1,7 +1,7 @@
 /*
  * Copyright 2017-2018 the original author or authors.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
@@ -16,20 +16,19 @@ Component Name : Amexio Gantt chart
 Component Selector : <amexio-chart-gantt>
 Component Description : A timeline is a chart that depicts how a set of resources are used over time.
 */
-import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from "@angular/core";
-import {ChartTitleComponent} from "../charttitle/chart.title.component";
-import {ChartLegendComponent} from "../chartlegend/chart.legend.component";
-import {ChartLoaderService} from "../chart.loader.service";
-import {ChartAreaComponent} from "../chartarea/chart.area.component";
-import { ViewChild } from "@angular/core";
-import { ElementRef } from "@angular/core";
+
+import {AfterContentInit, Component, ContentChildren, ElementRef, Input, OnInit, QueryList, ViewChild} from '@angular/core';
+import {ChartLoaderService} from '../chart.loader.service';
+import {ChartAreaComponent} from '../chartarea/chart.area.component';
+import {ChartLegendComponent} from '../chartlegend/chart.legend.component';
+import {ChartTitleComponent} from '../charttitle/chart.title.component';
 declare var google: any;
 @Component({
   selector: 'amexio-chart-gantt', template: `
-    <div *ngIf="showChart" #gantt
-         [style.width]="width"
+    <div *ngIf='showChart' #gantt
+         [style.width]='width'
     >
-      <div *ngIf="!hasLoaded" class="lmask">
+      <div *ngIf='!hasLoaded' class='lmask'>
       </div>
     </div>
   `, styles: [`.lmask {
@@ -137,7 +136,7 @@ declare var google: any;
     }
   }
 
-  `]
+  `],
 })
 export class GanttChartComponent implements AfterContentInit, OnInit {
 
@@ -155,11 +154,10 @@ description : width of chart
 */
 @Input() width: string;
 
+  showChart: boolean;
+  _data: any;
 
-  showChart:boolean;
-  _data:any;
-
-  get data():any{
+  get data(): any {
     return this._data;
   }
 
@@ -172,12 +170,12 @@ default : none
 description : For the use of local data
 */
 @Input('data')
-  set data(data:any){
-    if(data){
-      this._data=data;
-      this.showChart=true;
-    }else{
-      this.showChart=false;
+  set data(data: any) {
+    if (data) {
+      this._data = data;
+      this.showChart = true;
+    } else {
+      this.showChart = false;
     }
   }
 
@@ -189,7 +187,7 @@ version : 4.3 onwards
 default : false
 description : If you set the criticalPathEnabled option to true, it show critical path line
 */
-@Input('critical-path-enabled') criticalPathEnabled: boolean = false;
+@Input('critical-path-enabled') criticalPathEnabled = false;
 
   /*
 Properties
@@ -211,10 +209,9 @@ description : inner-grid-dark-track-color set inner grid dark color
 */
 @Input('inner-grid-dark-track-color') innerGridDarkTrack: string;
 
-
   hasLoaded: boolean;
 
-  private options : any;
+  private options: any;
 
   @ContentChildren(ChartLegendComponent) chartLegendComp: QueryList<ChartLegendComponent>;
 
@@ -241,16 +238,16 @@ description : inner-grid-dark-track-color set inner grid dark color
   }
 
   drawChart() {
-    if(this.data && this.showChart){
-      this.options={gantt: {criticalPathEnabled: this.criticalPathEnabled,
+    if (this.data && this.showChart) {
+      this.options = {gantt: {criticalPathEnabled: this.criticalPathEnabled,
           criticalPathStyle: {stroke: '#e64a19',
             strokeWidth: 5}},
-        innerGridTrack: {fill: this.innerGridTrackColor ? this.innerGridTrackColor:''},
-        innerGridDarkTrack: {fill: this.innerGridDarkTrack ? this.innerGridDarkTrack:''}
-      }
+        innerGridTrack: {fill: this.innerGridTrackColor ? this.innerGridTrackColor : ''},
+        innerGridDarkTrack: {fill: this.innerGridDarkTrack ? this.innerGridDarkTrack : ''},
+      };
       this.chart = new google.visualization.Gantt(this.ganttchart.nativeElement);
       this.hasLoaded = true;
-      this.chart.draw(this.createTable(this._data),this.options);
+      this.chart.draw(this.createTable(this._data), this.options);
       google.visualization.events.addListener(this.chart, 'click', this.onClick);
     }
   }
@@ -258,36 +255,32 @@ description : inner-grid-dark-track-color set inner grid dark color
   onClick(e: any) {
   }
 
-  //after content init for inner directive is run
+  // after content init for inner directive is run
   ngAfterContentInit(): void {
     this.chartLegendArray = this.chartLegendComp.toArray();
     this.chartTitleArray = this.chartTitleComp.toArray();
     this.chartAreaArray = this.chartAreaComp.toArray();
-    //take first component
-    if (this.chartLegendArray.length == 1) {
+    // take first component
+    if (this.chartLegendArray.length === 1) {
       this.chartLengendComponent = this.chartLegendArray.pop();
     }
-    if (this.chartTitleArray.length == 1) {
+    if (this.chartTitleArray.length === 1) {
       this.chartTitleComponent = this.chartTitleArray.pop();
     }
-    if (this.chartAreaArray.length == 1) {
+    if (this.chartAreaArray.length === 1) {
       this.chartAreaComponent = this.chartAreaArray.pop();
     }
   }
 
-  /**
-   * This method create data table structure of array and return in required chart data
-   *
-   * */
   createTable(array: any[]): any {
-    let dupArray = array.slice();
-    let data = new google.visualization.DataTable();
-    let labelObject = dupArray[0];
+    const dupArray = array.slice();
+    const data = new google.visualization.DataTable();
+    const labelObject = dupArray[0];
     dupArray.shift();
     labelObject.forEach((datatypeObject: any) => {
       data.addColumn(datatypeObject.datatype, datatypeObject.label);
     });
-    let finalArray: any[] = [];
+    const finalArray: any[] = [];
     dupArray.forEach((rowObject: any) => {
       finalArray.push(rowObject);
     });
@@ -297,9 +290,8 @@ description : inner-grid-dark-track-color set inner grid dark color
 
   ngOnInit(): void {
     this.hasLoaded = false;
-    this.loader.loadCharts('Gantt').subscribe(value => console.log(), errror => console.error(errror), () => {
+    this.loader.loadCharts('Gantt').subscribe((value) => console.log(), (errror) => console.error(errror), () => {
       this.drawChart();
     });
   }
 }
-
