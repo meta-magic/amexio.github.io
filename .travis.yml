@@ -25,6 +25,7 @@ before_script:
 
             
 script: 
+  - sonar-scanner
   - cd src/styles/ && sh sasstocss.sh
   - cd ../../ && pwd && gulp build
   - cd dist && npm pack
