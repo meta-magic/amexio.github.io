@@ -13,7 +13,6 @@ import { CommonDataService } from '../../services/data/common.data.service';
 @Component({
   selector: 'amexio-checkbox-group',
   templateUrl: './checkbox.group.component.html',
-  styleUrls: ['./checkbox.group.component.scss'],
 })
 export class AmexioCheckBoxGroupComponent implements OnInit {
   /*

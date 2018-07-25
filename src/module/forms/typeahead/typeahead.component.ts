@@ -24,7 +24,6 @@ const noop = () => {
 @Component({
   selector: 'amexio-typeahead',
   templateUrl: './typeahead.component.html',
-  styleUrls: ['./typeahead.component.scss'],
   providers: [{
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioTypeAheadComponent), multi: true,
   }],

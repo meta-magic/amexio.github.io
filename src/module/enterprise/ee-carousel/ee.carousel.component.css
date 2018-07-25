@@ -155,15 +155,16 @@
 .row__inner:hover .tile {
   opacity: 0.3;
 }
+.tile:hover ~ .tile {
+  -webkit-transform: translate3d(125px, 0, 0);
+  transform: translate3d(125px, 0, 0);
+}
 .row__inner:hover .tile:hover {
   -webkit-transform: scale(1.5);
   transform: scale(1.5);
   opacity: 1;
 }
-.tile:hover ~ .tile {
-  -webkit-transform: translate3d(125px, 0, 0);
-  transform: translate3d(125px, 0, 0);
-}
+
 
 .left-arrow{
   float: left;

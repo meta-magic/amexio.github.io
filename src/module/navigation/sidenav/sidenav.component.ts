@@ -15,7 +15,7 @@ import { CommonDataService } from '../../services/data/common.data.service';
 import { DeviceQueryService } from '../../services/device/device.query.service';
 
 @Component({
-  selector: 'amexio-side-nav', templateUrl: './sidenav.component.html', styleUrls: ['./sidenav.component.scss'],
+  selector: 'amexio-side-nav', templateUrl: './sidenav.component.html',
 })
 export class AmexioSideNavComponent implements OnInit {
 

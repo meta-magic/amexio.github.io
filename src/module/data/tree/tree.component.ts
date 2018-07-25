@@ -14,7 +14,7 @@ import {
 import { CommonDataService } from '../../services/data/common.data.service';
 
 @Component({
-  selector: 'amexio-treeview', templateUrl: './tree.component.html', styleUrls: ['./tree.component.scss'],
+  selector: 'amexio-treeview', templateUrl: './tree.component.html',
 })
 export class AmexioTreeViewComponent implements AfterViewInit, OnInit {
 private componentLoaded: boolean;

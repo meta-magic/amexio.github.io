@@ -10,7 +10,7 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 
 @Component({
-  selector: 'amexio-paginator', templateUrl: './paginator.component.html', styleUrls: ['./paginator.component.scss'],
+  selector: 'amexio-paginator', templateUrl: './paginator.component.html',
 })
 export class AmexioPaginatorComponent implements OnChanges, OnInit {
 
