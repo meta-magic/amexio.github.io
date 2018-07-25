@@ -130,7 +130,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
       <ng-container *ngFor="let cols of columns">
           <ng-container *ngIf="!cols.hidden">
               <ng-container *ngIf="cols.datatype=='string'">
-                <!-- -------------------- --> 
+                <!-- -------------------- -->
               <div class="datatable-col" [style.width.%]="cols.width" (click)="sortOnColHeaderClick(cols, $event)">
 
                     <ng-container *ngIf="cols.headerTemplate">
@@ -348,7 +348,7 @@ import {CommonDataService} from "../../services/data/common.data.service";
           <amexio-paginator [pages]="totalPages" [rows]="pagesize" (onPageChange)="loadPageData($event)"></amexio-paginator>
       </ng-container>
   </ng-container>
-</div>    
+</div>
   `
 })
 
@@ -435,7 +435,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit{
    get data(): any[] {
      return this._data;
    }
- 
+
   /*
    Events
    name : rowSelect
@@ -702,6 +702,9 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit{
     this.componentLoaded = true;
   }
 
+  ngDoChekck(){
+    this.updateComponent();
+  }
   updateComponent() {
   if (this.previousData != null && JSON.stringify(this.previousData) != JSON.stringify(this.data)){
         this.previousData = JSON.parse(JSON.stringify(this.data));
@@ -1230,7 +1233,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit{
   }
 
   sortData() {
-     
+
     if (this.sortColumn) {
       let sortColDataIndex: any;
       const sortOrder = this.sortBy;
