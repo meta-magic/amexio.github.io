@@ -86,7 +86,9 @@ UI Components powered by HTML5 & CSS3 for <b>Responsive Web Design & 50+ built-
    <a href="https://github.com/meta-magic/amexio.github.io"> 
     <img src="https://img.shields.io/github/stars/meta-magic/amexio.github.io.svg" />
   </a>
-  [![Gitter chat](https://badges.gitter.im/amexio-github-io/gitter.png)](https://gitter.im/amexio-github-io/)
+  <a href="https://gitter.im/amexio-github-io/">
+    <img src="https://img.shields.io/gitter/room/amexio-github-io/amexio-github-io.svg" />
+  </a>
 
 </div>
 
@@ -121,9 +123,9 @@ UI Components powered by HTML5 & CSS3 for <b>Responsive Web Design & 50+ built-
 <br/>
 
 <div align="center">
-[![NPM](https://nodei.co/npm/amexio-ng-extensions.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/amexio-ng-extensions/)
-  
-  [![Gitter chat](https://badges.gitter.im/amexio-github-io/gitter.png)](https://gitter.im/amexio-github-io/)
+ <a href="https://npmjs.org/package/amexio-ng-extensions">
+  <img src="https://nodei.co/npm/amexio-ng-extensions.png?downloads=true&downloadRank=true&stars=true" />
+ </a>
 </div>
 <br/>
 <!--
