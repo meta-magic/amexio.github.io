@@ -17,6 +17,8 @@ UI Components powered by HTML5 & CSS3 for <b>Responsive Web Design & 50+ built-
 <br/>
 
 <div align="center">
+  <!-- Chat on Gitter -->
+  [![Join the chat at https://gitter.im/amexio-github-io/Lobby](https://badges.gitter.im/amexio-github-io/Lobby.svg)](https://gitter.im/amexio-github-io/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
   <!-- NPM version -->
   <a href="https://npmjs.org/package/amexio-ng-extensions">
     <img src="https://badge.fury.io/js/amexio-ng-extensions.svg"
@@ -42,14 +44,14 @@ UI Components powered by HTML5 & CSS3 for <b>Responsive Web Design & 50+ built-
   <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
 <script type="IN/FollowCompany" data-id="13316060" data-counter="top"></script>
 -->
-<a class="badge-align" href="https://www.codacy.com/app/arafkarsh/amexio.github.io?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=meta-magic/amexio.github.io&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/06ad409b12ad4c1c81794c81889dc6ee"/></a>
 <br>
+<a class="badge-align" href="https://www.codacy.com/app/arafkarsh/amexio.github.io?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=meta-magic/amexio.github.io&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/06ad409b12ad4c1c81794c81889dc6ee"/></a>
+
 <img src="https://sonarcloud.io/api/project_badges/measure?project=Amexio-API&metric=alert_status" />
-
 <img src="https://sonarcloud.io/api/project_badges/measure?project=Amexio-API&metric=reliability_rating" />
-
 <img src="https://sonarcloud.io/api/project_badges/measure?project=Amexio-API&metric=security_rating" />
 <img src="https://sonarcloud.io/api/project_badges/measure?project=Amexio-API&metric=sqale_rating" />
+
 <br>
 <img src="https://sonarcloud.io/api/project_badges/measure?project=Amexio-API&metric=vulnerabilities" />
 <img src="https://sonarcloud.io/api/project_badges/measure?project=Amexio-API&metric=bugs" />
@@ -89,8 +91,8 @@ UI Components powered by HTML5 & CSS3 for <b>Responsive Web Design & 50+ built-
 <br/>
 
 <div align="center">
-
-[![NPM](https://nodei.co/npm/amexio-ng-extensions.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/amexio-ng-extensions/) [![Join the chat at https://gitter.im/amexio-github-io/Lobby](https://badges.gitter.im/amexio-github-io/Lobby.svg)](https://gitter.im/amexio-github-io/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+  <img src="https://sonarcloud.io/images/project_badges/sonarcloud-orange.svg" />
+[![NPM](https://nodei.co/npm/amexio-ng-extensions.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/amexio-ng-extensions/) 
 </div>
 <br/>
 
