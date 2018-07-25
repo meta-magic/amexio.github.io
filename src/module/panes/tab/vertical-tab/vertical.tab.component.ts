@@ -28,7 +28,7 @@ import { AmexioTabPillComponent } from '../tab.pill.component';
 
 @Component({
   selector: 'amexio-vertical-tab-view',
-  templateUrl: './vertical.tab.component.html'
+  templateUrl: './vertical.tab.component.html',
 })
 export class AmexioVerticalTabComponent implements AfterContentInit, AfterViewInit, OnInit {
 
