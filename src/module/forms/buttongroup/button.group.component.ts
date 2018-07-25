@@ -13,7 +13,6 @@ import { AmexioButtonComponent } from '../buttons/button.component';
 @Component({
   selector: 'amexio-btn-group',
   templateUrl: './button.group.component.html',
-  styleUrls: ['./button.group.component.scss'],
 })
 export class AmexioButtonGroupComponent implements AfterContentInit, OnChanges {
   private componentLoaded: boolean;

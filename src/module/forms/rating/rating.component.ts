@@ -21,7 +21,6 @@ import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR
 @Component({
   selector: 'amexio-rating-input',
   templateUrl: './rating.component.html',
-  styleUrls: ['./rating.component.scss'],
   providers: [{
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => AmexioRatingComponent),

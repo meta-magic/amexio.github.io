@@ -14,7 +14,6 @@ const noop = () => {
   providers: [{
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioPasswordComponent), multi: true,
   }],
-  styleUrls: ['./passwordinput.component.scss'],
 })
 export class AmexioPasswordComponent implements ControlValueAccessor, OnInit {
   /*

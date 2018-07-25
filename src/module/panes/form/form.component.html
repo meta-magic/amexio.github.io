@@ -16,7 +16,6 @@
           <button class="button" [attr.title]="'click'" (click)="showErrors($event)"
           [ngClass]="'button-warning button-small button-round'">
                   <span class="button-text">
-                    <!--<i class="{{icon}}" style="padding-right: 5px; " aria-hidden="true"></i>-->
                     <span style="padding-right: 5px;" *ngIf="icon">
                       <amexio-form-icon [customclass]="icon" >
                       </amexio-form-icon>
@@ -32,16 +31,6 @@
             [closable] = "false"
             [title]="'Invalid Fields'"
                           [type]="'confirm'">
-                <!-- <div  [innerHTML]='invalidFields'></div> -->
-             <!--   <table align="center" [ngClass]="form-table">
-                  <tr *ngFor="let row of [1, 2, 3, 4]">
-                    <td *ngFor="let col of [1, 2, 3]" style="vertical-align:sub;">
-                      <div align="left" style="vertical-align:sub;"> {{componentError[(row -1) * 3 + col - 1]}} &nbsp; &nbsp; &nbsp; &nbsp; </div>
-                    </td>
-                  </tr>
-                </table>
-              </amexio-body>-->
-
 
             <amexio-body *ngFor="let msg of componentError let index=index">
               <amexio-label>{{index+1}}) {{msg.label}}</amexio-label><br>

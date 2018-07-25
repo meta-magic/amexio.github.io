@@ -17,7 +17,6 @@ const noop = () => {
   providers: [{
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioCheckBoxComponent), multi: true,
   }],
-  styleUrls: ['./checkbox.component.scss'],
 })
 export class AmexioCheckBoxComponent implements ControlValueAccessor, OnInit {
   // The internal dataviews model

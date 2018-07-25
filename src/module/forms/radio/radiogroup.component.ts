@@ -13,7 +13,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonDataService } from '../../services/data/common.data.service';
 
 @Component({
-  selector: 'amexio-radio-group', templateUrl: './radiogroup.component.html', styleUrls: ['./radiogroup.component.scss'],
+  selector: 'amexio-radio-group', templateUrl: './radiogroup.component.html',
 })
 export class AmexioRadioGroupComponent implements OnInit {
   /*

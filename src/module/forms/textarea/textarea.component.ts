@@ -19,7 +19,6 @@ const noop = () => {
   providers: [{
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioTextAreaComponent), multi: true,
   }],
-  styleUrls: ['./textarea.component.scss'],
 })
 export class AmexioTextAreaComponent implements ControlValueAccessor, OnInit {
 

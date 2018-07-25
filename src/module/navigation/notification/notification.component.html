@@ -5,7 +5,6 @@
   <ng-container *ngIf="!notificationTemplate">
     <div class="notification" *ngFor="let msg of messageData" [style.color]="foregroundColor"  [style.background-color]="backgroundColor">
           <span class="float-right" (click)="closeNotification(msg)">
-            <!--<i *ngIf="closable" class="fa fa-times" aria-hidden="true"></i>-->
             <ng-container *ngIf="closable">
               <amexio-nav-icon key="notify_close"></amexio-nav-icon>
             </ng-container>
@@ -19,7 +18,6 @@
     <div class="notification" *ngFor="let msg of messageData" [style.color]="foregroundColor"  [style.background-color]="backgroundColor">
 
               <span class="float-right" (click)="closeNotification(msg)">
-                <!--<i *ngIf="closable" class="fa fa-times" aria-hidden="true"></i>-->
                 <ng-container *ngIf="closable">
                   <amexio-nav-icon key="notify_close"></amexio-nav-icon>
                 </ng-container>

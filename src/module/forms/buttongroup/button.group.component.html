@@ -10,7 +10,6 @@
     'button-warning' : button.type=='warning' || button.type == 'yellow',
     'button-transparent' : button.type=='transparent',
     'disabled' : button.disabled}">
-      <!-- <i class="{{button.icon}}" aria-hidden="true"></i> -->
       <ng-container *ngIf="button.icon!=null">
         <amexio-form-icon style="padding-right: 5px;" [customclass]="button.icon"></amexio-form-icon>
       </ng-container>

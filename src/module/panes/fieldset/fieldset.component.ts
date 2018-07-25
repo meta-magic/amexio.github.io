@@ -12,7 +12,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'amexio-fieldset', templateUrl: './fieldset.component.html', styleUrls: ['./fieldset.component.scss'],
+  selector: 'amexio-fieldset',
+  templateUrl: './fieldset.component.html',
 })
 
 export class AmexioFieldSetComponent implements OnInit {

@@ -1,28 +1,4 @@
-/** {
-  box-sizing: border-box;
-}
-h1,
-p {
-  text-align: center;
-}
-p {
-  width: 100%;
-  max-width: 500px;
-  margin: auto;
-}
-a:link,
-a:hover,
-a:active,
-a:visited {
-  -webkit-transition: color 150ms;
-  transition: color 150ms;
-  color: #95a5a6;
-  text-decoration: none;
-}
-a:hover {
-  color: #7f8c8d;
-  text-decoration: underline;
-}*/
+
 .contain {
   width: 100%;
 }
