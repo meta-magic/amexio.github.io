@@ -1,23 +1,23 @@
 <div class="section-header" style="z-index: 1;">{{title}}</div>
 <div class="contain row">
 
-  <div class="left-arrow" [attr.id]="elementId+'leftarrow'" style="cursor: pointer"> <div [ngClass]="{'controls' : carouselStyle=='horizontal','controls-v' : carouselStyle=='vertical'}" (click)="leftClick();"><i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i></div> </div>
+  <div class="left-arrow" [attr.id]="elementId+'leftarrow'" style="cursor: pointer"> <div [ngClass]="{'controls' : carouselStyle=='horizontal','controls-v' : carouselStyle=='vertical'}" (click)="leftClick();"><em class="fa fa-chevron-left fa-2x" aria-hidden="true"></em></div> </div>
 
   <div class="row1" [attr.id]="elementId">
     <div class="row__inner">
       <ng-container *ngIf="data">
         <div class="tile" *ngFor="let item of data;let i = index">
           <div class="tile__media" (click)="loadVideo(item)">
-            <img class="tile__img" [attr.src]="item.img" />
+            <img alt="title" class="tile__img" [attr.src]="item.img" />
           </div>
           <div class="{{item.selected}}">
-            <i [ngStyle]="{'visibility':item.selected ? 'visible':'hidden'}" class="fa fa-caret-down" aria-hidden="false"></i>
+            <em [ngStyle]="{'visibility':item.selected ? 'visible':'hidden'}" class="fa fa-caret-down" aria-hidden="false"></em>
           </div>
           <div [ngClass]="{'tile__details' : carouselStyle=='horizontal','tile__details_v' : carouselStyle=='vertical'}">
             <div class="textonly">
 
               <div class="playpanel">
-                <div style="cursor: pointer" (click)="loadVideo(item)" class="playbutton"><i class="fa fa-play" aria-hidden="true"></i></div>
+                <div style="cursor: pointer" (click)="loadVideo(item)" class="playbutton"><em class="fa fa-play" aria-hidden="true"></em></div>
               </div>
 
               <span class="carousel-title" *ngIf="item.title">{{item.title}}</span><br>
@@ -26,7 +26,7 @@
 
             </div>
             <div class="actionpanel"   *ngIf="item.content">
-              <div style="cursor: pointer;" (click)="openDetailsSection(item)"><i class="fa fa-chevron-down fa-2x" aria-hidden="true"></i></div>
+              <div style="cursor: pointer;" (click)="openDetailsSection(item)"><em class="fa fa-chevron-down fa-2x" aria-hidden="true"></em></div>
             </div>
 
 
@@ -37,11 +37,11 @@
   </div>
 
   <ng-container *ngIf="carouselStyle=='horizontal'">
-    <div class="right-arrow" [attr.id]="elementId+'rightarrow'" style="cursor: pointer"> <div [ngClass]="{'controls' : carouselStyle=='horizontal','controls-v' : carouselStyle=='vertical'}" (click)="rightClick();"><i class="fa fa-chevron-right fa-2x" aria-hidden="true"></i></div></div>
+    <div class="right-arrow" [attr.id]="elementId+'rightarrow'" style="cursor: pointer"> <div [ngClass]="{'controls' : carouselStyle=='horizontal','controls-v' : carouselStyle=='vertical'}" (click)="rightClick();"><em class="fa fa-chevron-right fa-2x" aria-hidden="true"></em></div></div>
   </ng-container>
 
   <ng-container *ngIf="carouselStyle=='vertical'">
-    <div class="right-arrow-tall" [attr.id]="elementId+'rightarrow'" style="cursor: pointer"> <div [ngClass]="{'controls' : carouselStyle=='horizontal','controls-v' : carouselStyle=='vertical'}" (click)="rightClick();"><i class="fa fa-chevron-right fa-2x" aria-hidden="true"></i></div></div>
+    <div class="right-arrow-tall" [attr.id]="elementId+'rightarrow'" style="cursor: pointer"> <div [ngClass]="{'controls' : carouselStyle=='horizontal','controls-v' : carouselStyle=='vertical'}" (click)="rightClick();"><em class="fa fa-chevron-right fa-2x" aria-hidden="true"></em></div></div>
   </ng-container>
 
 </div>

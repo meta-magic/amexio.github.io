@@ -3,7 +3,7 @@
 <div class="img-container">
   <ng-container *ngIf="path || (path && iconclass)">
     <ng-container *ngIf="!(width || height)">
-      <img [src]="path" [attr.class]="cclass" (click)="onImageClick($event)" [attr.title]="tooltip">
+      <img alt="title" [src]="path" [attr.class]="cclass" (click)="onImageClick($event)" [attr.title]="tooltip">
       <div *ngIf="overlay" [ngClass]="overlayEffect">
         <div *ngIf="overlayText" [ngClass]="overlayTextClass">{{overlayText}}
           <p *ngIf="titlePara">{{titlePara}}</p>
@@ -12,7 +12,7 @@
       <div *ngIf="imgTitle" [ngClass]="position">{{imgTitle}}</div>
     </ng-container>
     <ng-container *ngIf="width || height">
-      <img [ngStyle]="{'width':width,'height':height}" [attr.class]="cclass" [src]="path" (click)="onImageClick($event)" [attr.title]="tooltip">
+      <img alt="title" [ngStyle]="{'width':width,'height':height}" [attr.class]="cclass" [src]="path" (click)="onImageClick($event)" [attr.title]="tooltip">
        <div *ngIf="overlay" [ngClass]="overlayEffect">
         <div *ngIf="overlayText" [ngClass]="overlayTextClass">{{overlayText}}
           <p *ngIf="titlePara">{{titlePara}}</p>
@@ -29,23 +29,23 @@
 <ng-container *ngIf="!(iconclass && (!path && !mda) && overlay || overlayText || titlePara || imgTitle )">
     <ng-container *ngIf="path || (path && iconclass)">
     <ng-container *ngIf="!(width || height)">
-    <img [src]="path" [attr.class]="cclass" (click)="onImageClick($event)" [attr.title]="tooltip">
+    <img alt="title" [src]="path" [attr.class]="cclass" (click)="onImageClick($event)" [attr.title]="tooltip">
     </ng-container>
     <ng-container *ngIf="width || height">
-    <img [ngStyle]="{'width':width,'height':height}" [attr.class]="cclass" [src]="path" (click)="onImageClick($event)" [attr.title]="tooltip">
+    <img alt="title" [ngStyle]="{'width':width,'height':height}" [attr.class]="cclass" [src]="path" (click)="onImageClick($event)" [attr.title]="tooltip">
     </ng-container>
     </ng-container>
     </ng-container>
     
 <!--this is for fontawesome-->
 <ng-container *ngIf="iconclass && (!path && !mda)">
-  <i [attr.class]="iconclass" [attr.title]="tooltip" (click)="onImageClick($event)"></i>
+  <em [attr.class]="iconclass" [attr.title]="tooltip" (click)="onImageClick($event)"></em>
   <label class="image-title" *ngIf="title" (click)="onImageClick($event)" style="cursor: pointer">{{title}}</label>
 </ng-container>
 
 <!--Material icon-->
 <ng-container *ngIf="(iconclass && mda) && !path">
-  <i [attr.class]="iconclass" [attr.title]="tooltip" (click)="onImageClick($event)">{{mda}}</i>
+  <em [attr.class]="iconclass" [attr.title]="tooltip" (click)="onImageClick($event)">{{mda}}</em>
 </ng-container>
 
 <ng-container *ngIf=" title && !iconclass">
