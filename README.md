@@ -24,13 +24,13 @@ UI Components powered by HTML5 & CSS3 for <b>Responsive Web Design & 50+ built-
   </a>
   <!-- Downloads -->
   <a href="https://npmjs.org/package/amexio-ng-extensions">
-    <img src="https://img.shields.io/npm/dm/choo.svg?style=flat-square"
-      alt="Downloads" />
+    <img src="https://img.shields.io/npm/dw/amexio-ng-extensions.svg" alt="Weekly Downloads"/>
   </a>
-
+  <a href="https://npmjs.org/package/amexio-ng-extensions">
+    <img src="https://img.shields.io/npm/dm/amexio-ng-extensions.svg" alt="Monthly Downloads"/>
+  </a>
    <a href="https://npmjs.org/package/amexio-ng-extensions">
-    <img src="https://img.shields.io/npm/dt/amexio-ng-extensions.svg"
-      alt="Downloads" />
+    <img src="https://img.shields.io/npm/dt/amexio-ng-extensions.svg" alt="Total Downloads" />
   </a>
   <img src="https://travis-ci.org/meta-magic/amexio.github.io.svg?branch=v5.1" />
   <!--
@@ -45,30 +45,49 @@ UI Components powered by HTML5 & CSS3 for <b>Responsive Web Design & 50+ built-
 <br>
 <a class="badge-align" href="https://www.codacy.com/app/arafkarsh/amexio.github.io?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=meta-magic/amexio.github.io&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/06ad409b12ad4c1c81794c81889dc6ee"/></a>
 
-<img src="https://sonarcloud.io/api/project_badges/measure?project=Amexio-API&metric=alert_status" />
-<img src="https://sonarcloud.io/api/project_badges/measure?project=Amexio-API&metric=reliability_rating" />
-<img src="https://sonarcloud.io/api/project_badges/measure?project=Amexio-API&metric=security_rating" />
-<img src="https://sonarcloud.io/api/project_badges/measure?project=Amexio-API&metric=sqale_rating" />
-
+<a href="https://sonarcloud.io/dashboard?id=Amexio-API">
+  <img src="https://sonarcloud.io/api/project_badges/measure?project=Amexio-API&metric=alert_status" />
+<a/>
+<a href="https://sonarcloud.io/dashboard?id=Amexio-API">
+  <img src="https://sonarcloud.io/api/project_badges/measure?project=Amexio-API&metric=reliability_rating" />
+<a/>
+<a href="https://sonarcloud.io/dashboard?id=Amexio-API">
+  <img src="https://sonarcloud.io/api/project_badges/measure?project=Amexio-API&metric=security_rating" />
+<a/>
+<a href="https://sonarcloud.io/dashboard?id=Amexio-API">
+  <img src="https://sonarcloud.io/api/project_badges/measure?project=Amexio-API&metric=sqale_rating" />
+<a/>
 <br>
-<img src="https://sonarcloud.io/api/project_badges/measure?project=Amexio-API&metric=vulnerabilities" />
-<img src="https://sonarcloud.io/api/project_badges/measure?project=Amexio-API&metric=bugs" />
-<img src="https://sonarcloud.io/api/project_badges/measure?project=Amexio-API&metric=code_smells" />
-<img src="https://sonarcloud.io/api/project_badges/measure?project=Amexio-API&metric=sqale_index" />
-<img src="https://sonarcloud.io/api/project_badges/measure?project=Amexio-API&metric=ncloc" />
+<a href="https://sonarcloud.io/dashboard?id=Amexio-API">
+  <img src="https://sonarcloud.io/api/project_badges/measure?project=Amexio-API&metric=vulnerabilities" />
+<a/>
+<a href="https://sonarcloud.io/dashboard?id=Amexio-API">  
+  <img src="https://sonarcloud.io/api/project_badges/measure?project=Amexio-API&metric=bugs" />
+<a/>
+<a href="https://sonarcloud.io/dashboard?id=Amexio-API">
+  <img src="https://sonarcloud.io/api/project_badges/measure?project=Amexio-API&metric=code_smells" />
+<a/>
+<a href="https://sonarcloud.io/dashboard?id=Amexio-API">
+  <img src="https://sonarcloud.io/api/project_badges/measure?project=Amexio-API&metric=sqale_index" />
+<a/>
+<a href="https://sonarcloud.io/dashboard?id=Amexio-API">
+  <img src="https://sonarcloud.io/api/project_badges/measure?project=Amexio-API&metric=ncloc" />
+<a/>
 <br>
   <a href="https://github.com/meta-magic/amexio.github.io">
-    <img src="https://img.shields.io/github/license/mashape/apistatus.svg" />
+    <img src="https://img.shields.io/github/license/meta-magic/amexio.github.io.svg" />
   </a>
   <a href="https://github.com/meta-magic/amexio.github.io"> 
-    <img src="https://img.shields.io/github/issues/badges/shields.svg" />
+    <img src="https://img.shields.io/github/issues/meta-magic/amexio.github.io.svg" />
   </a>
   <a href="https://github.com/meta-magic/amexio.github.io"> 
-    <img src="https://img.shields.io/github/languages/code-size/badges/shields.svg" />
+    <img src="https://img.shields.io/github/languages/code-size/meta-magic/amexio.github.io.svg" />
   </a>
    <a href="https://github.com/meta-magic/amexio.github.io"> 
-    <img src="https://img.shields.io/github/stars/badges/shields.svg?style=social&label=Stars" />
+    <img src="https://img.shields.io/github/stars/meta-magic/amexio.github.io.svg" />
   </a>
+  [![Gitter chat](https://badges.gitter.im/amexio-github-io/gitter.png)](https://gitter.im/amexio-github-io/)
+
 </div>
 
 <div align="center">
@@ -102,7 +121,9 @@ UI Components powered by HTML5 & CSS3 for <b>Responsive Web Design & 50+ built-
 <br/>
 
 <div align="center">
-[![NPM](https://nodei.co/npm/amexio-ng-extensions.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/amexio-ng-extensions/) [![Join the chat at https://gitter.im/amexio-github-io/Lobby](https://badges.gitter.im/amexio-github-io/Lobby.svg)](https://gitter.im/amexio-github-io/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![NPM](https://nodei.co/npm/amexio-ng-extensions.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/amexio-ng-extensions/)
+  
+  [![Gitter chat](https://badges.gitter.im/amexio-github-io/gitter.png)](https://gitter.im/amexio-github-io/)
 </div>
 <br/>
 <!--
