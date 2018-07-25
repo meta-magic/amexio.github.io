@@ -280,7 +280,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
         date.setDate(date.getDate() + 1);
       }
       this.daysArray.push(rowDays);
-     }
+    }
   }
   onDateClick(dateObj: any) {
     this.hostFlag = true;
@@ -400,8 +400,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
 
   // Set Min Full year
   setMinFullYear(d: any, min: any, mon: any) {
-    if (d.getMonth() === min.getMonth()) {
-    } else { // logic to chk if year is valid
+    if (!(d.getMonth() === min.getMonth())) { // logic to chk if year is valid
       if (d.getFullYear() >= min.getFullYear()) {
         if (d.getMonth() >= min.getMonth()) {
           d.setMonth(d.getMonth() - mon);

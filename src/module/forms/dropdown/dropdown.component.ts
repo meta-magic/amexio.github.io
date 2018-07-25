@@ -562,8 +562,6 @@ description : Set enable / disable popover.
       if (this.selectedindex === 1) {
         this.scrollposition = 30;
       }
-      if (this.selectedindex <= 0) {
-      }
     }
   }
 

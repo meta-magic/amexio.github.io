@@ -98,9 +98,6 @@ description : Callback to invoke on activated tab event.
     }
     this.activateTab(newTab[tabHighlightIndex].tabId);
     this.tabCollection = newTab;
-    if (this.tabCollection.length === 1) {
-
-    }
   }
 
   activateTab(tabId: number) {
