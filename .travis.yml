@@ -11,14 +11,19 @@ addons:
 
 language: node_js
 node_js:
-  - "6"
+  - "8"
 
 before_script:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
   - npm install --quiet -g gulp-cli
+  - gem install sass
 
-script: gulp test:ci
+
+script: 
+  - cd src/styles/ && sh sasstocss.sh
+  - cd ../../ && pwd && gulp build
+  - cd dist && npm pack
 
 after_success: gulp coveralls
 
