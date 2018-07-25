@@ -702,7 +702,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit{
     this.componentLoaded = true;
   }
 
-  ngDoChekck(){
+  ngDoCheck(){
     this.updateComponent();
   }
   updateComponent() {
