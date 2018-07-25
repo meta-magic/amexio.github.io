@@ -4,7 +4,7 @@
     <ng-content></ng-content>
   </div>
   <a  *ngIf=" (icon && label)" (click)="onItemClick($event)" [ngClass]="{'dropdowndivider':separator}" >
-    <i [style.float]="iconalign" [ngClass]="icon"></i>
+    <em [style.float]="iconalign" [ngClass]="icon"></em>
     <span [style.float]="labelalign"   style="padding: 5px;">
       {{label}}
     </span>

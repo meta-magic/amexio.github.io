@@ -23,8 +23,8 @@
   </textarea>
 
   <span *ngIf="iconfeedback && (inp.invalid && (inp.dirty || inp.touched) || inp.valid)" class="input-control-feedback">
-        <span *ngIf="!isValid && inp.touched"><i class="fa fa-times"></i></span>
-        <span *ngIf="isValid && inp.touched"><i class="fa fa-check"></i></span>
+        <span *ngIf="!isValid && inp.touched"><em class="fa fa-times"></em></span>
+        <span *ngIf="isValid && inp.touched"><em class="fa fa-check"></em></span>
       </span>
 
   <span *ngIf="showToolTip && enablepopover" class="dropdown tooltiptext">

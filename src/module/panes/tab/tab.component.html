@@ -1,11 +1,9 @@
 <div class="tabwrapper">
   <div *ngIf="showprev" [ngClass]="{'tabnavigation float-right tabnavigation-bottom-left':tabPosition=='bottom', 'tabnavigation float-left':tabPosition=='top'}" (click)="previous()">
     <amexio-pane-icon key="tab_previous"></amexio-pane-icon>
-    <!--<i class="fa fa-angle-left fa-2x" aria-hidden="true"></i>-->
   </div>
   <div *ngIf="shownext" [ngClass]="{'tabnavigation float-right tabnavigation-bottom-right':tabPosition=='bottom','tabnavigation float-right':tabPosition=='top'}" (click)="next()">
     <amexio-pane-icon key="tab_next"></amexio-pane-icon>
-    <!--<i class="fa fa-angle-right  fa-2x" aria-hidden="true"></i>-->
   </div>
 
   <div #tab class="tab" [ngClass]="{'bottomTab':tabPosition == 'bottom'}">
@@ -59,7 +57,7 @@
   <ul *ngIf="contextMenuFlag" class="context-menu-list" [ngClass]="{'dropdown-up' : posixUp}">
     <li (click)="onContextNodeClick(itemConfig)" class="context-menu-list-items" [ngStyle]="{'cursor': itemConfig.disabled ? 'not-allowed':'pointer'}" [ngClass]="{'context-menu-separator':itemConfig.seperator}"
       *ngFor="let itemConfig of contextmenu">
-      <i [ngStyle]="{'padding-left': itemConfig.icon ? '5px':'19px'}" [ngClass]="itemConfig.icon"></i>
+      <em [ngStyle]="{'padding-left': itemConfig.icon ? '5px':'19px'}" [ngClass]="itemConfig.icon"></em>
       <span style="white-space: nowrap;display: inline ; padding-left:5px">{{itemConfig.text}}
       </span>
     </li>

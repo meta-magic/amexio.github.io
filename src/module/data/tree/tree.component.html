@@ -1,11 +1,12 @@
 <div *ngIf="data == null" style="height: 300px;width: 300px;">
   <div class="spinner"></div>
 </div>
-<li class="treenode" *ngFor="let node of data">
+
+<div class="treenode" *ngFor="let node of data">
   <div #id class="treenode-content" (click)="onClick(node)">
     <div style="white-space:nowrap">
       <div class="tree-node-label" *ngIf="node.children && (node.children.length>0)">
-        <i class="fa " [ngClass]="{'fa-angle-down':node.expand,'fa-angle-right':!node.expand}"></i>
+        <em class="fa " [ngClass]="{'fa-angle-down':node.expand,'fa-angle-right':!node.expand}"></em>
       </div>
 
       <div class="tree-node-label tree-node-label-hover" [ngClass]="{'tree-node-label-selected':node.isSelected ,'tree-node-label-not-selected':node.isSelected=='false'}"
@@ -34,19 +35,19 @@
       </div>
     </div>
   </div>
-  <ul class="treenode-children" style="display: block;" *ngIf="node.expand && node.children && (node.children.length>0)">
+  <div class="treenode-children" style="display: block;" *ngIf="node.expand && node.children && (node.children.length>0)">
     <amexio-treeview [enable-drag]="enabledrag" [enable-drop]="enabledrop" [data]="node.children" [dragData]="dragData" [parentRef]="parentRef"
       (onDrag)=onDragStart($event) (onDrop)=drop($event) (nodeClick)="onNodeClick($event)" (dragleave)="($event)" (nodeRightClick)="loadContextMenu($event)"
       [across-tree]="acrosstree" [templates]="templates" [enable-checkbox]="enablecheckbox" [badge]="badge" (onTreeNodeChecked)="this.onTreeNodeCheck($event)"></amexio-treeview>
 
-  </ul>
-</li>
+  </div>
+</div>
 
 <span [ngStyle]="contextStyle">
   <ul *ngIf="flag" class="context-menu-list" [ngClass]="{'dropdown-up' : posixUp}">
     <li (click)="onContextNodeClick(itemConfig)" class="context-menu-list-items" [ngStyle]="{'cursor': itemConfig.disabled ? 'not-allowed':'pointer'}" [ngClass]="{'context-menu-separator':itemConfig.seperator}"
       *ngFor="let itemConfig of contextmenu">
-      <i [ngStyle]="{'padding-left': itemConfig.icon ? '5px':'19px'}" [ngClass]="itemConfig.icon"></i>
+      <em [ngStyle]="{'padding-left': itemConfig.icon ? '5px':'19px'}" [ngClass]="itemConfig.icon"></em>
       <span style="white-space: nowrap;display: inline ; padding-left:5px">{{itemConfig.text}}
       </span>
     </li>
