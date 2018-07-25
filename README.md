@@ -88,7 +88,7 @@ UI Components powered by HTML5 & CSS3 for <b>Responsive Web Design & 50+ built-
 
 <div align="center">
 
-[![NPM](https://nodei.co/npm/amexio-ng-extensions.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/amexio-ng-extensions/)
+[![NPM](https://nodei.co/npm/amexio-ng-extensions.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/amexio-ng-extensions/) [![Join the chat at https://gitter.im/amexio-github-io/Lobby](https://badges.gitter.im/amexio-github-io/Lobby.svg)](https://gitter.im/amexio-github-io/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 </div>
 <br/>
 
