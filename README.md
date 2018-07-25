@@ -56,6 +56,19 @@ UI Components powered by HTML5 & CSS3 for <b>Responsive Web Design & 50+ built-
 <img src="https://sonarcloud.io/api/project_badges/measure?project=Amexio-API&metric=code_smells" />
 <img src="https://sonarcloud.io/api/project_badges/measure?project=Amexio-API&metric=sqale_index" />
 <img src="https://sonarcloud.io/api/project_badges/measure?project=Amexio-API&metric=ncloc" />
+<br>
+  <a href="https://github.com/meta-magic/amexio.github.io">
+    <img src="https://img.shields.io/github/license/mashape/apistatus.svg" />
+  </a>
+  <a href="https://github.com/meta-magic/amexio.github.io"> 
+    <img src="https://img.shields.io/github/issues/badges/shields.svg" />
+  </a>
+  <a href="https://github.com/meta-magic/amexio.github.io"> 
+    <img src="https://img.shields.io/github/languages/code-size/badges/shields.svg" />
+  </a>
+   <a href="https://github.com/meta-magic/amexio.github.io"> 
+    <img src="https://img.shields.io/github/stars/badges/shields.svg?style=social&label=Stars" />
+  </a>
 </div>
 
 <div align="center">
