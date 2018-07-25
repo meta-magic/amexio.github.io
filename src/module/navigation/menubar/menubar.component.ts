@@ -198,7 +198,6 @@ description : Fire when menubar bar click.
       for (const ir of 'length') {
         responsedata = responsedata[dr[ir]];
       }
-    } else {
     }
     this.data = httpResponse;
   }

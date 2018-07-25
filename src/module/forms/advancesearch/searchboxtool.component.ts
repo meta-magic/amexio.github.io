@@ -302,8 +302,6 @@ export class SearchboxtoolComponent implements OnInit, AfterContentInit {
     if (this.selectedindex === 1) {
       this.scrollposition = 30;
     }
-    if (this.selectedindex <= 0) {
-    }
   }
 
   onSearchButtonClick(event: any) {

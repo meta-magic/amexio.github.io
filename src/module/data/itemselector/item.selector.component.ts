@@ -230,12 +230,6 @@ description :  Get selected value Object.
   }
 
   leftSwitch() {
-    if (this.switchingObject && this.availableData) {
-      for (const ir of this.availableData) {
-        if ((ir)[this.valuefield] === this.switchingObject[this.valuefield]) {
-        }
-      }
-    }
     this.setLeftSwitch();
   }
 

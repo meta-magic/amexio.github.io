@@ -427,9 +427,6 @@ export class AmexioTypeAheadComponent implements ControlValueAccessor, OnChanges
       if (this.selectedindex === 1) {
         this.scrollposition = 30;
       }
-
-      if (this.selectedindex <= 0) {
-      }
     }
   }
 

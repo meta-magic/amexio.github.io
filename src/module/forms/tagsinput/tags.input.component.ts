@@ -357,9 +357,6 @@ description : On field focus event
     if (this.selectedindex === 1) {
       this.scrollposition = 30;
     }
-
-    if (this.selectedindex <= 0) {
-    }
   }
   showAllData(activerow: number) {
     let i = 0;

@@ -55,8 +55,6 @@ description : Callback to invoke on activated tab event.
   }
 
   ngAfterViewInit() {
-    if (this.tabs.nativeElement.scrollWidth > this.tabs.nativeElement.clientWidth) {
-    }
   }
 
   ngAfterContentInit() {
@@ -97,8 +95,6 @@ description : Callback to invoke on activated tab event.
     }
     this.activateTab(newTab[tabHighlightIndex].tabId);
     this.tabCollection = newTab;
-    if (this.tabCollection.length === 1) {
-    }
   }
 
   activateTab(tabId: number) {

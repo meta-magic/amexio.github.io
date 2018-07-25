@@ -59,8 +59,6 @@ description : Callback to invoke on activated tab event.
   }
 
   ngAfterViewInit() {
-    if (this.tabs.nativeElement.scrollWidth > this.tabs.nativeElement.clientWidth) {
-    }
   }
 
   ngAfterContentInit() {
@@ -109,9 +107,6 @@ description : Callback to invoke on activated tab event.
   activateTab(tabId: number) {
     this.tabCollection.forEach((tab) => {
       tab.active = false;
-      if (tab.tabId === tabId) {
-        tab.active = true;
-      }
     });
   }
 }
