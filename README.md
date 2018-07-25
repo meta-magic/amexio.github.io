@@ -17,7 +17,6 @@ UI Components powered by HTML5 & CSS3 for <b>Responsive Web Design & 50+ built-
 <br/>
 
 <div align="center">
-  [![Join the chat at https://gitter.im/amexio-github-io/Lobby](https://badges.gitter.im/amexio-github-io/Lobby.svg)](https://gitter.im/amexio-github-io/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
   <!-- NPM version -->
   <a href="https://npmjs.org/package/amexio-ng-extensions">
     <img src="https://badge.fury.io/js/amexio-ng-extensions.svg"
@@ -90,10 +89,14 @@ UI Components powered by HTML5 & CSS3 for <b>Responsive Web Design & 50+ built-
 <br/>
 
 <div align="center">
-[![NPM](https://nodei.co/npm/amexio-ng-extensions.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/amexio-ng-extensions/)   <img src="https://sonarcloud.io/images/project_badges/sonarcloud-orange.svg" />
+[![NPM](https://nodei.co/npm/amexio-ng-extensions.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/amexio-ng-extensions/) [![Join the chat at https://gitter.im/amexio-github-io/Lobby](https://badges.gitter.im/amexio-github-io/Lobby.svg)](https://gitter.im/amexio-github-io/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 </div>
 <br/>
-
+<!--
+  <img src="https://sonarcloud.io/images/project_badges/sonarcloud-orange.svg" />
+-->
+ <br>
+  
 ## Browsers support <sub><sup><sub><sub>made by <a href="https://godban.github.io">godban</a></sub></sub></sup></sub>
 
 | [<img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/edge.png" alt="IE / Edge" width="16px" height="16px" />](http://godban.github.io/browsers-support-badges/)</br>IE / Edge | [<img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/firefox.png" alt="Firefox" width="16px" height="16px" />](http://godban.github.io/browsers-support-badges/)</br>Firefox | [<img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/chrome.png" alt="Chrome" width="16px" height="16px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome | [<img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/safari.png" alt="Safari" width="16px" height="16px" />](http://godban.github.io/browsers-support-badges/)</br>Safari | [<img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/opera.png" alt="Opera" width="16px" height="16px" />](http://godban.github.io/browsers-support-badges/)</br>Opera | [<img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/safari-ios.png" alt="iOS Safari" width="16px" height="16px" />](http://godban.github.io/browsers-support-badges/)</br>iOS Safari | [<img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/chrome-android.png" alt="Chrome for Android" width="16px" height="16px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome for Android |
