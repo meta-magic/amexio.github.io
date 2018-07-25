@@ -4,10 +4,10 @@
      [ngStyle]="{'background-color':(transparent)?'unset':'null'}">
 
   <span >
-    <i *ngIf="icon" style="padding-right: 5px;" [ngClass]="icon">&nbsp;</i>{{title}}&nbsp;</span>
+    <em *ngIf="icon" style="padding-right: 5px;" [ngClass]="icon">&nbsp;</em>{{title}}&nbsp;</span>
   <ng-container *ngIf="downArrowIcon">
-    <i *ngIf="!toggle"  class="fa fa-angle-down "></i>
-    <i *ngIf="toggle"  class="fa fa-angle-up "></i>
+    <em *ngIf="!toggle"  class="fa fa-angle-down "></em>
+    <em *ngIf="toggle"  class="fa fa-angle-up "></em>
   </ng-container>
 
 </div>
