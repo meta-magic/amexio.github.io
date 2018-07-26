@@ -1,11 +1,11 @@
 {
   "name": "amexio-ng-extensions",
-  "description": "Angular library",
-  "version": "5.1.1",
-  "homepage": "https://github.com/meta-magic/amexio.github.io",
+  "description": "Angular UI library",
+  "version": "5.1.2",
+  "homepage": "https://www.amexio.tech/",
   "author": {
     "name": "MetaMagic Global",
-    "url": "https://github.com/meta-magic"
+    "url": "https://www.metamagicglobal.com/"
   },
   "repository": {
     "type": "git",
