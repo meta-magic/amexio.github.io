@@ -74,11 +74,14 @@ UI Components powered by HTML5 & CSS3 for <b>Responsive Web Design & 50+ built-
   <img src="https://sonarcloud.io/api/project_badges/measure?project=Amexio-API&metric=ncloc" />
 <a/>
 <br>
-  <a href="https://github.com/meta-magic/amexio.github.io">
+  <a href="https://github.com/meta-magic/amexio.github.io/blob/v5.1/LICENSE.md">
     <img src="https://img.shields.io/github/license/meta-magic/amexio.github.io.svg" />
   </a>
-  <a href="https://github.com/meta-magic/amexio.github.io"> 
+  <a href="https://github.com/meta-magic/amexio.github.io/issues"> 
     <img src="https://img.shields.io/github/issues/meta-magic/amexio.github.io.svg" />
+  </a>
+  <a href="https://github.com/meta-magic/amexio.github.io/issues"> 
+    <img src="https://img.shields.io/github/issues-closed/meta-magic/amexio.github.io.svg" />
   </a>
   <a href="https://github.com/meta-magic/amexio.github.io"> 
     <img src="https://img.shields.io/github/languages/code-size/meta-magic/amexio.github.io.svg" />
