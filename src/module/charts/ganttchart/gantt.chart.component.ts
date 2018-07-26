@@ -17,11 +17,8 @@ Component Selector : <amexio-chart-gantt>
 Component Description : A timeline is a chart that depicts how a set of resources are used over time.
 */
 
-import {AfterContentInit, Component, ContentChildren, ElementRef, Input, OnInit, QueryList, ViewChild} from '@angular/core';
+import {Component, ContentChildren, ElementRef, Input, OnInit, QueryList, ViewChild} from '@angular/core';
 import {ChartLoaderService} from '../chart.loader.service';
-import {ChartAreaComponent} from '../chartarea/chart.area.component';
-import {ChartLegendComponent} from '../chartlegend/chart.legend.component';
-import {ChartTitleComponent} from '../charttitle/chart.title.component';
 declare var google: any;
 @Component({
   selector: 'amexio-chart-gantt', template: `
@@ -138,7 +135,7 @@ declare var google: any;
 
   `],
 })
-export class GanttChartComponent implements AfterContentInit, OnInit {
+export class GanttChartComponent implements OnInit {
 
   private chart: any;
 
@@ -213,24 +210,6 @@ description : inner-grid-dark-track-color set inner grid dark color
 
   private options: any;
 
-  @ContentChildren(ChartLegendComponent) chartLegendComp: QueryList<ChartLegendComponent>;
-
-  @ContentChildren(ChartTitleComponent) chartTitleComp: QueryList<ChartTitleComponent>;
-
-  @ContentChildren(ChartAreaComponent) chartAreaComp: QueryList<ChartAreaComponent>;
-
-  chartAreaArray: ChartAreaComponent[];
-
-  chartAreaComponent: ChartAreaComponent;
-
-  chartLegendArray: ChartLegendComponent[];
-
-  chartLengendComponent: ChartLegendComponent;
-
-  chartTitleArray: ChartTitleComponent[];
-
-  chartTitleComponent: ChartTitleComponent;
-
   @ViewChild('gantt') private ganttchart: ElementRef;
 
   constructor(private loader: ChartLoaderService) {
@@ -255,36 +234,19 @@ description : inner-grid-dark-track-color set inner grid dark color
   onClick(e: any) {
   }
 
-  // after content init for inner directive is run
-  ngAfterContentInit(): void {
-    this.chartLegendArray = this.chartLegendComp.toArray();
-    this.chartTitleArray = this.chartTitleComp.toArray();
-    this.chartAreaArray = this.chartAreaComp.toArray();
-    // take first component
-    if (this.chartLegendArray.length === 1) {
-      this.chartLengendComponent = this.chartLegendArray.pop();
-    }
-    if (this.chartTitleArray.length === 1) {
-      this.chartTitleComponent = this.chartTitleArray.pop();
-    }
-    if (this.chartAreaArray.length === 1) {
-      this.chartAreaComponent = this.chartAreaArray.pop();
-    }
-  }
-
   createTable(array: any[]): any {
-    const dupArray = array.slice();
+    const copyOfArray = array.slice();
     const data = new google.visualization.DataTable();
-    const labelObject = dupArray[0];
-    dupArray.shift();
+    const labelObject = copyOfArray[0];
+    copyOfArray.shift();
     labelObject.forEach((datatypeObject: any) => {
       data.addColumn(datatypeObject.datatype, datatypeObject.label);
     });
-    const finalArray: any[] = [];
-    dupArray.forEach((rowObject: any) => {
-      finalArray.push(rowObject);
+    const newArray: any[] = [];
+    copyOfArray.forEach((rowObject: any) => {
+      newArray.push(rowObject);
     });
-    data.addRows(finalArray);
+    data.addRows(newArray);
     return data;
   }
 
