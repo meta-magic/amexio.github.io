@@ -86,7 +86,7 @@ UI Components powered by HTML5 & CSS3 for <b>Responsive Web Design & 50+ built-
   <a href="https://github.com/meta-magic/amexio.github.io"> 
     <img src="https://img.shields.io/github/languages/code-size/meta-magic/amexio.github.io.svg" />
   </a>
-   <a href="https://github.com/meta-magic/amexio.github.io"> 
+   <a href="https://github.com/meta-magic/amexio.github.io/stargazers"> 
     <img src="https://img.shields.io/github/stars/meta-magic/amexio.github.io.svg" />
   </a>
   <a href="https://gitter.im/amexio-github-io/">
