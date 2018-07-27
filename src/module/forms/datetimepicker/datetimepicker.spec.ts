@@ -174,7 +174,7 @@ it('Condition Check', () => {
   expect(false).toBe(comp.isValid);
 
   comp.minMaxDateFound();
-  expect(false).toBe(false);
+  expect(false).toBe(comp.forwardArrowFlag);
 });
 
 });
