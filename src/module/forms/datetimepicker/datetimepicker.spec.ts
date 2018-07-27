@@ -150,6 +150,13 @@ it('Condition Check', () => {
 
   comp.onDateClick(new Date());
   expect(true).toBe(comp.showToolTip);
+
+
+  comp.setPlusData(new Date(),new Date(),2);
+
+  comp.setPlusData(new Date('22-Mar-2016'),new Date(),2);
+  comp.setMinusData(new Date('22-Mar-2016'),new Date(),2);
+  comp.setMinFullYear(new Date('22-DEC-2019'), new Date(),1);
 });
 
 });
