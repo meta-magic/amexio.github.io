@@ -4,7 +4,7 @@ import { DebugElement } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import { GanttChartComponent } from './gantt.chart.component';
 import { ChartLoaderService } from './../chart.loader.service';
-
+declare var google: any;
 describe('amexio-text-field' , () => {
   let comp: GanttChartComponent;
   let fixture: ComponentFixture<GanttChartComponent>;
@@ -22,11 +22,24 @@ describe('amexio-text-field' , () => {
 
   });
 
-  it('datacheck null', () => {
+  it('show chart', () => {
     let newdata = [{'name':'chart'}];
     comp.data = newdata ;
     expect(newdata).toEqual(comp.data);
     expect(true).toBe(comp.showChart);
   });
 
+  it('dont show chart', () => {
+    let newdata;
+    comp.data = newdata ;
+    expect(false).toBe(comp.showChart);
+  });
+
+  // it('Check Undefined', () => {
+  //   let newdata = [{ name : 'chart'}];
+  //   comp.data = newdata ;
+  //   comp.drawChart();
+  //   comp.
+  //   expect(comp.options).not.toBeUndefined();
+  // });
   });
