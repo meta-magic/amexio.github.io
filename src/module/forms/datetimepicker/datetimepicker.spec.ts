@@ -173,6 +173,8 @@ it('Condition Check', () => {
   comp.onFocusOut(new Date());
   expect(false).toBe(comp.isValid);
 
+  comp.minMaxDateFound();
+  expect(false).toBe(false);
 });
 
 });
