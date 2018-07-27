@@ -20,11 +20,18 @@ providers:[IconLoaderService]
   comp = fixture.componentInstance;
 });
 
-it('Display correct label', () => {
-  // let date=new Date();
-  // let ex=comp.setMaxFullYear(date, date, 2);
+it('Initial Check', () => {
   expect(true).toBe(true);
-  fixture.detectChanges();
 });
+
+it('Condition Check', () => {
+  comp.inlineDatepicker = true;
+  comp.dateformat = '';
+  fixture.detectChanges();
+  expect(true).toBe(comp.showToolTip);
+  expect(comp.dateformat).not.toBeUndefined();
+});
+
+
 
 });
