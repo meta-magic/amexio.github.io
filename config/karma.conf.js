@@ -31,15 +31,7 @@ module.exports = function(config) {
         preprocessors: {
             './config/karma-test-shim.js': config.hasCoverage ? ['coverage', 'webpack', 'sourcemap'] : ['webpack', 'sourcemap']
         },
-        karmaTypescriptConfig: {
-            reports: {
-                "lcovonly": {
-                    "directory": "coverage",
-                    "filename": "lcov.info",
-                    "subdirectory": "lcov"
-                }
-            }
-        },
+
         webpack: webpack.getConfig(config.hasCoverage, config.autoWatch),
 
         // Webpack please don't spam the console when running in karma!
@@ -61,7 +53,7 @@ module.exports = function(config) {
 
         remapCoverageReporter: {
             'text-summary': null,
-            lcovonly: './coverage/coverage.lcov',
+            lcovonly: './coverage/lcov/lcov.info',
             html: './coverage/html'
         },
 
