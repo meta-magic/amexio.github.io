@@ -55,6 +55,7 @@ it('Condition Check', () => {
   const Nov = {name:'Nov'};
   const Dec = {name:'Dec'};
   const month = {name:'Jan'};
+  const monthnew = {name:'Janone'};
   comp.getDropdownMonth(Jan);
   expect(0).toEqual(comp.monthNo);
 
@@ -91,8 +92,8 @@ it('Condition Check', () => {
   comp.getDropdownMonth(Dec);
   expect(11).toEqual(comp.monthNo);
 
-  comp.chkMonth(element,month);
-  expect(true).toBe(element.flag);
+  comp.getDropdownMonth(monthnew);
+
   // comp.yearFlag();
 
   const e1 = {year :2011,flag :true};
