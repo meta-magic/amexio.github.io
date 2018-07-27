@@ -647,7 +647,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
       });
     }
   }
-  private dropdownDatePicker() {
+   dropdownDatePicker() {
     this.monthList1.forEach((element: any) => {
       this.elementFlagMethod(element);
     });

@@ -181,6 +181,16 @@ it('Condition Check', () => {
   comp.chkMonth(eone,etwo);
   expect(true).toBe(eone.flag);
 
+  comp.monthList1 = [{ name: 'Jan', flag: false, num: 4 }, { name: 'Feb', flag: false },
+  { name: 'Mar', flag: false }, { name: 'Apr', flag: false }, { name: 'May', flag: false },
+  { name: 'Jun', flag: false }];
+  comp.monthList2 = [{ name: 'Jul', flag: false }, { name: 'Aug', flag: false }, { name: 'Sep', flag: false },
+  { name: 'Oct', flag: false }, { name: 'Nov', flag: false }, { name: 'Dec', flag: false }];
+
+  comp.dropdownDatePicker();
+  expect(true).toBe(comp.hostFlag);
+  expect(false).toBe(comp.drop);
+  expect(true).toBe(comp.tempFlag);
 
 });
 
