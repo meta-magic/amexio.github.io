@@ -139,8 +139,14 @@ it('Condition Check', () => {
     { year: 8, flag: false, disabled: false },
     { year: 18, flag: false, disabled: false },
     { year: 65, flag: false, disabled: false }];
-  comp.backArrowFlag=false;
+  comp.backArrowFlag = false;
   comp.resetYearFlag();
+  expect(false).toBe(comp.backArrowFlag);
+
+  comp.daysArray=[{date:new Date()}];
+  comp.resetSelection(new Date());
+
+  comp.setMaxFullYear(new Date('22-Mar-2016'), new Date());
 });
 
 });
