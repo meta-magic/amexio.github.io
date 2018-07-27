@@ -21,7 +21,9 @@ providers:[IconLoaderService]
 });
 
 it('Display correct label', () => {
-
+  let date=new Date();
+  let ex=comp.setMaxFullYear(date, date, 2);
+  expect(ex);
   fixture.detectChanges();
 });
 
