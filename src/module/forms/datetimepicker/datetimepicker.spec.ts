@@ -100,7 +100,9 @@ it('Condition Check', () => {
   comp.yearFlag(e1,e2);
   expect(true).toBe(e1.flag);
 
-
+  comp.checkValidity();
+  comp.isValid=false;
+  expect(false).toBe(comp.isValid);
 });
 
 

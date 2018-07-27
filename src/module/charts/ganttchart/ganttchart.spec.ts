@@ -15,7 +15,7 @@ describe('amexio-text-field' , () => {
   TestBed.configureTestingModule({
   imports : [FormsModule],
   declarations: [ GanttChartComponent],
-  providers:[ChartLoaderService]
+  providers: [ ChartLoaderService ]
   });
   fixture = TestBed.createComponent(GanttChartComponent);
   comp = fixture.componentInstance;
@@ -39,7 +39,7 @@ describe('amexio-text-field' , () => {
   //   let newdata = [{ name : 'chart'}];
   //   comp.data = newdata ;
   //   comp.drawChart();
-  //   comp.
+  //   comp.ngOnInit();
   //   expect(comp.options).not.toBeUndefined();
   // });
   });

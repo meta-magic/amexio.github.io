@@ -216,7 +216,7 @@ description : inner-grid-dark-track-color set inner grid dark color
     this.width = '100%';
   }
 
-  drawChart() {
+  private drawChart() {
     if (this.data && this.showChart) {
       this.options = {gantt: {criticalPathEnabled: this.criticalPathEnabled,
           criticalPathStyle: {stroke: '#e64a19',
@@ -234,7 +234,7 @@ description : inner-grid-dark-track-color set inner grid dark color
   onClick(e: any) {
   }
 
-  createTable(array: any[]): any {
+  private createTable(array: any[]): any {
     const copyOfArray = array.slice();
     const data = new google.visualization.DataTable();
     const labelObject = copyOfArray[0];
