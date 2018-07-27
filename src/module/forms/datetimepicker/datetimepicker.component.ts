@@ -839,7 +839,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
     this.resetYearFlag();
   }
   // this function is broken from resetArrowFlag()
-  private alterBackArrow(element: any, min: any) {
+  alterBackArrow(element: any, min: any) {
     if (element.year === min.getFullYear()) {
       this.backArrowFlag = true;
     }
@@ -926,7 +926,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
 
   // this function is obtained by breaking arrowClickBack() and arrowClickForward()
   // for rechking arrow flags after reinitialization of yrlist1 & 2
-  private rechkYearFlag() {
+  rechkYearFlag() {
     this.yearList1.forEach((element: any) => {
       const min = new Date(this.minDate);
       const max = new Date(this.maxDate);

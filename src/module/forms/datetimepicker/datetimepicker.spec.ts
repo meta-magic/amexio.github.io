@@ -110,7 +110,8 @@ it('Condition Check', () => {
   comp.minDate = '22-Mar-2016';
   comp.maxDate = '22-Feb-2019';
 
-  comp.yearList1 = [{ year: 2010, flag: false, disabled: false }];
+  comp.yearList1 = [{ year: 2018, flag: false, disabled: false }];
+  comp.yearList2 = [{ year: 2018, flag: false, disabled: false }];
   comp.chkYearList1();
   expect(false).toBe(comp.backArrowFlag);
   expect(false).toBe(comp.forwardArrowFlag);
@@ -123,7 +124,23 @@ it('Condition Check', () => {
   comp.yearFlagDisable(el);
   expect(true).toBe(el.disabled);
 
+  comp.rechkYearFlag();
+  expect(false).toBe(comp.backArrowFlag);
 
+  const elt = { year: 2018, disabled: true};
+  comp.alterBackArrow(elt,new Date());
+  expect(true).toBe(comp.backArrowFlag);
+
+  comp.yearList1 = [{ year: 0, flag: false, disabled: false },
+    { year: 1, flag: false, disabled: false },{ year: 3, flag: false, disabled: false },
+    { year: 4, flag: false, disabled: false },{ year: 5, flag: false, disabled: false }];
+  comp.yearList2 = [{ year: 20, flag: false, disabled: false },
+    { year: 15, flag: false, disabled: false },
+    { year: 8, flag: false, disabled: false },
+    { year: 18, flag: false, disabled: false },
+    { year: 65, flag: false, disabled: false }];
+  comp.backArrowFlag=false;
+  comp.resetYearFlag();
 });
 
 });

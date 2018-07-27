@@ -216,7 +216,7 @@ description : inner-grid-dark-track-color set inner grid dark color
     this.width = '100%';
   }
 
-  private drawChart() {
+  drawChart() {
     if (this.data && this.showChart) {
       this.options = {gantt: {criticalPathEnabled: this.criticalPathEnabled,
           criticalPathStyle: {stroke: '#e64a19',
