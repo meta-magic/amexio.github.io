@@ -373,7 +373,11 @@ export class AmexioDateTimePickerComponent implements OnInit {
   }
 
   // Set Max Full Year
+<<<<<<< HEAD
   setMaxFullYear(d: any, max: any, mon: any) {
+=======
+   setMaxFullYear(d: any, max: any, mon: any) {
+>>>>>>> 6c2bfb3a787353224d5cb3a961daf62a44085f84
     if (!(d.getMonth() === max.getMonth())) {
       // *********check here******************* */
       // logic to chk if year is valid
