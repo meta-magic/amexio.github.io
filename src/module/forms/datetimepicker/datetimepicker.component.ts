@@ -249,7 +249,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
       });
     }
   }
-  initDaysTitle() {
+ private initDaysTitle() {
     this.daysTitle.push({ text: 'Mo' });
     this.daysTitle.push({ text: 'Tu' });
     this.daysTitle.push({ text: 'We' });
@@ -258,7 +258,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
     this.daysTitle.push({ text: 'Sa' });
     this.daysTitle.push({ text: 'Su' });
   }
-  createDaysForCurrentMonths(selectedPeriod: any) {
+ private createDaysForCurrentMonths(selectedPeriod: any) {
     const date = new Date(selectedPeriod.getFullYear(), selectedPeriod.getMonth(), 1, 0, 0, 0, 0); // Starting at the 1st of the month
     const extras = (date.getDay() + 6) % 7; // How many days of the last month do we need to include?
     date.setDate(date.getDate() - extras); // Skip back to the previous monday
@@ -339,7 +339,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
     this.setDateData1('minus', 12, event);
   }
   // this function validates month
-  setDateData(state: string, mon: number, event: any) {
+ private setDateData(state: string, mon: number, event: any) {
     const d = new Date(this.currrentDate.getFullYear(), this.currrentDate.getMonth(), this.currrentDate.getDate());
     const min = new Date(this.minDate);
     const max = new Date(this.maxDate);
@@ -432,12 +432,12 @@ export class AmexioDateTimePickerComponent implements OnInit {
     this.initDate();
     event.stopPropagation();
   }
-  setToday() {
+  private setToday() {
     this.currrentDate = new Date();
     this.initDate();
     this.showToolTip = !this.showToolTip;
   }
-  initDate() {
+  private initDate() {
     this.daysArray = [];
     this.createDaysForCurrentMonths(this.currrentDate);
     this.selectedDate = this.currrentDate;
@@ -591,7 +591,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
       }
     }
   }
-  validateDays(days: any) {
+  private validateDays(days: any) {
     const max = new Date(this.maxDate);
     const min = new Date(this.minDate);
     // check1: if min max is null return false
@@ -615,7 +615,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
     this.disableddays(this.diabledDate);
   }
 
-  validateMaxDate(days: any, max: any) {
+  private validateMaxDate(days: any, max: any) {
     // check if days greater than max return
     // 1
     if (days.getDate() > max.getDate() &&
@@ -626,7 +626,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
       return true;
     }
   }
-  disableddays(dates: any) {
+  private disableddays(dates: any) {
     if (dates) {
       dates.forEach((element: any) => {
         const From = new Date(element.from);
@@ -647,7 +647,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
       });
     }
   }
-  dropdownDatePicker() {
+  private dropdownDatePicker() {
     this.monthList1.forEach((element: any) => {
       this.elementFlagMethod(element);
     });
@@ -672,13 +672,13 @@ export class AmexioDateTimePickerComponent implements OnInit {
     }
   }
 
-  negateDrop() {
+  private negateDrop() {
     this.hostFlag = true;
     this.drop = false;
     this.showToolTip = true;
     this.tempFlag = true;
   }
-  getDropdownMonth(month: any) {
+  private getDropdownMonth(month: any) {
     this.monthList1.forEach((element: any) => {
       this.elementFlagMethod(element);
     });
