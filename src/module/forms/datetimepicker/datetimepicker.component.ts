@@ -744,7 +744,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
     this.elementFlagMethod(element);
   }
   // this function is broken from getDropdownYear
-  private yearFlag(element: any, year: any) {
+  yearFlag(element: any, year: any) {
     if (element.year === year.year) {
       element.flag = true;
     }
