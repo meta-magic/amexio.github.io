@@ -113,7 +113,7 @@ UI Components powered by HTML5 & CSS3 for <b>Responsive Web Design & 50+ built-
       Demo EE
     </a>
     <span> | </span>
-    <a href="http://forum.metamagicglobal.com/">
+    <a href="https://gitter.im/amexio-github-io/">
       Forum
     </a>
     <span> | </span>
