@@ -35,6 +35,15 @@ describe('amexio-text-field' , () => {
     expect(false).toBe(comp.showChart);
   });
 
+  // it('Draw chart', () => {
+
+  //   comp.data = [
+  //     [{ datatype: 'string', label: 'Task ID' }],
+  //     ['toTrain', 'Walk to train stop', 'walk'] ];
+  //     comp.showChart = true;
+  //     comp.drawChart();
+  // });
+
   // it('Check Undefined', () => {
   //   let newdata = [{ name : 'chart'}];
   //   comp.data = newdata ;

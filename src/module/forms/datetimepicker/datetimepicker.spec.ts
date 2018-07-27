@@ -147,6 +147,9 @@ it('Condition Check', () => {
   comp.resetSelection(new Date());
 
   comp.setMaxFullYear(new Date('22-Mar-2016'), new Date(),1);
+
+  comp.onDateClick(new Date());
+  expect(true).toBe(comp.showToolTip);
 });
 
 });
