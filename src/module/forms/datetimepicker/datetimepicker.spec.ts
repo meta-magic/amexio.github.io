@@ -189,8 +189,8 @@ it('Condition Check', () => {
 
   comp.dropdownDatePicker();
   expect(true).toBe(comp.hostFlag);
-  expect(false).toBe(comp.drop);
-  expect(true).toBe(comp.tempFlag);
+  expect(true).toBe(comp.drop);
+  expect(false).toBe(comp.tempFlag);
 
 });
 
