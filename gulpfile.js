@@ -704,5 +704,8 @@ gulp.task('coveralls', (cb) => {
 });
 
 gulp.task('default', ['build']);
+gulp.doneCallback = function(err) {
+    process.exit(err ? 1 : 0);
+};
 // Load additional tasks
 gulpHub(['./config/gulp-tasks/*.js']);
