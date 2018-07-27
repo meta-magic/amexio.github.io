@@ -26,6 +26,7 @@ before_script:
 
             
 script: 
+  - gulp test
   - sonar-scanner
   - cd src/styles/ && sh sasstocss.sh
   - cd ../../ && pwd && gulp build
