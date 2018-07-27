@@ -666,19 +666,19 @@ export class AmexioDateTimePickerComponent implements OnInit {
   }
 
   // Added method to avois recursive code
-  private elementFlagMethod(element: any) {
+  elementFlagMethod(element: any) {
     if (element.flag) {
       element.flag = false;
     }
   }
 
-  private negateDrop() {
+  negateDrop() {
     this.hostFlag = true;
     this.drop = false;
     this.showToolTip = true;
     this.tempFlag = true;
   }
-  private getDropdownMonth(month: any) {
+   getDropdownMonth(month: any) {
     this.monthList1.forEach((element: any) => {
       this.elementFlagMethod(element);
     });

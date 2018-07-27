@@ -32,6 +32,21 @@ it('Condition Check', () => {
   expect(comp.dateformat).not.toBeUndefined();
   // comp.setToday();
   // expect(false).toBe(comp.showToolTip);
+  let element = {flag :true, name: 'Jan'};
+  comp.elementFlagMethod(element);
+  expect(false).toBe(element.flag);
+  comp.negateDrop();
+  expect(true).toBe(comp.hostFlag);
+  expect(false).toBe(comp.drop);
+  expect(true).toBe(comp.showToolTip);
+  expect(true).toBe(comp.tempFlag);
+  comp.monthList1 = [];
+  comp.monthList2 = [];
+  const month = {name:'Jan'};
+  comp.getDropdownMonth(month);
+  expect(0).toEqual(comp.monthNo);
+  comp.chkMonth(element,month);
+  expect(true).toBe(element.flag);
 });
 
 
