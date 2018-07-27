@@ -157,6 +157,13 @@ it('Condition Check', () => {
   comp.setPlusData(new Date('22-Mar-2016'),new Date(),2);
   comp.setMinusData(new Date('22-Mar-2016'),new Date(),2);
   comp.setMinFullYear(new Date('22-DEC-2019'), new Date(),1);
+
+
+  comp.setDateData1('plus',2,new Event(0));
+
+  comp.currrentDate = new Date();
+  comp.initDate();
+  expect('').toEqual('');
 });
 
 });

@@ -339,7 +339,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
     this.setDateData1('minus', 12, event);
   }
   // this function validates month
- private setDateData(state: string, mon: number, event: any) {
+  setDateData(state: string, mon: number, event: any) {
     const d = new Date(this.currrentDate.getFullYear(), this.currrentDate.getMonth(), this.currrentDate.getDate());
     const min = new Date(this.minDate);
     const max = new Date(this.maxDate);
@@ -406,7 +406,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
     }
   }
   // this function validates year
- private setDateData1(state: string, mon: number, event: any) {
+  setDateData1(state: string, mon: number, event: any) {
     const d = new Date(this.currrentDate.getFullYear(), this.currrentDate.getMonth(), this.currrentDate.getDate());
     const min = new Date(this.minDate);
     const max = new Date(this.maxDate);
@@ -437,7 +437,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
     this.initDate();
     this.showToolTip = !this.showToolTip;
   }
-  private initDate() {
+  initDate() {
     this.daysArray = [];
     this.createDaysForCurrentMonths(this.currrentDate);
     this.selectedDate = this.currrentDate;
