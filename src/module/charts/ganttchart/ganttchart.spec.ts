@@ -25,6 +25,9 @@ describe('amexio-text-field' , () => {
   it('show chart', () => {
     let newdata = [{'name':'chart'}];
     comp.data = newdata ;
+    comp.criticalPathEnabled=true;
+    comp.innerGridTrackColor='#e64a19';
+    comp.innerGridDarkTrack='#e64a19';
     expect(newdata).toEqual(comp.data);
     expect(true).toBe(comp.showChart);
   });
@@ -35,14 +38,13 @@ describe('amexio-text-field' , () => {
     expect(false).toBe(comp.showChart);
   });
 
-  // it('Draw chart', () => {
-
-  //   comp.data = [
-  //     [{ datatype: 'string', label: 'Task ID' }],
-  //     ['toTrain', 'Walk to train stop', 'walk'] ];
-  //     comp.showChart = true;
-  //     comp.drawChart();
-  // });
+  it('Draw Chart Test', () => {
+      comp.showChart = true;
+    let newdata = [{ name : 'chart'}];
+    comp.data = newdata;
+    comp.drawChart();
+    expect(false).toBe(comp.hasLoaded);
+  });
 
   // it('Check Undefined', () => {
   //   let newdata = [{ name : 'chart'}];

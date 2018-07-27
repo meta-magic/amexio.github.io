@@ -218,16 +218,21 @@ description : inner-grid-dark-track-color set inner grid dark color
 
   drawChart() {
     if (this.data && this.showChart) {
+      this.hasLoaded = true;
       this.options = {gantt: {criticalPathEnabled: this.criticalPathEnabled,
           criticalPathStyle: {stroke: '#e64a19',
             strokeWidth: 5}},
         innerGridTrack: {fill: this.innerGridTrackColor ? this.innerGridTrackColor : ''},
         innerGridDarkTrack: {fill: this.innerGridDarkTrack ? this.innerGridDarkTrack : ''},
       };
-      this.chart = new google.visualization.Gantt(this.ganttchart.nativeElement);
-      this.hasLoaded = true;
-      this.chart.draw(this.createTable(this._data), this.options);
-      google.visualization.events.addListener(this.chart, 'click', this.onClick);
+      if ( google && google.visualization) {
+        this.chart = new google.visualization.Gantt(this.ganttchart.nativeElement);
+        this.chart.draw(this.createTable(this._data), this.options);
+        google.visualization.events.addListener(this.chart, 'click', this.onClick);
+
+      } else {
+        this.hasLoaded = false;
+      }
     }
   }
 

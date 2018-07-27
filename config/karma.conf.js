@@ -29,7 +29,10 @@ module.exports = function(config) {
             }
         },
         files: [
-            { pattern: './config/karma-test-shim.js', watched: false }
+            { pattern: './config/karma-test-shim.js', watched: false }, {
+                pattern: './config/app.init.js',
+                watched: false
+            }
         ],
 
         preprocessors: {
@@ -73,12 +76,12 @@ module.exports = function(config) {
         autoWatch: false,
         browsers: ['ChromeNoSandbox'],
 
-       
+
         singleRun: true
     };
 
     if (process.env.TRAVIS) {
-      _config.browsers = ['Chrome_travis_ci'];
+        _config.browsers = ['Chrome_travis_ci'];
     }
     config.set(_config);
 };
