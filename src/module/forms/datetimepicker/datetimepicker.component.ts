@@ -859,7 +859,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
   }
 
   // this fn is broken from  backArrow() and it resets Year Flag
-  chkYearList1resetYearFlag() {
+   resetYearFlag() {
     let i;
     if (!this.backArrowFlag) {
       for (i = 0; i < 5; i++) {
@@ -947,7 +947,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
     });
   }
   // this function is broken from disableYearFlag() , here year flag disable altered to true
-  private yearFlagDisable(element: any) {
+  yearFlagDisable(element: any) {
     const min = new Date(this.minDate);
     const max = new Date(this.maxDate);
     if (element.year < min.getFullYear() || element.year > max.getFullYear()) {
