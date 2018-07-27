@@ -103,8 +103,17 @@ it('Condition Check', () => {
   comp.checkValidity();
   comp.isValid=false;
   expect(false).toBe(comp.isValid);
+
+  comp.cancelDropdown();
+  expect(false).toBe(comp.drop);
+  expect(true).toBe(comp.showToolTip);
+  comp.min ='';
+  comp.max = '';
+
+  comp.yearList1 = [{ year: 2010, flag: false, disabled: false }];
+  comp.chkYearList1();
+  expect(false).toBe(comp.backArrowFlag);
+  expect(false).toBe(comp.forwardArrowFlag);
 });
-
-
 
 });

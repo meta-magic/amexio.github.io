@@ -859,7 +859,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
   }
 
   // this fn is broken from  backArrow() and it resets Year Flag
-  private resetYearFlag() {
+  chkYearList1resetYearFlag() {
     let i;
     if (!this.backArrowFlag) {
       for (i = 0; i < 5; i++) {
