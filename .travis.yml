@@ -24,6 +24,7 @@ before_script:
   - npm install --global gulp --save
   - gem install sass
   - git fetch --unshallow
+  - npm install codecov -g
 
             
 script: 
@@ -33,7 +34,9 @@ script:
   - cd ../../ && pwd && gulp build
   - cd dist && npm pack
   
-after_success: gulp coveralls
+after_success: 
+  - gulp coveralls
+  - codecov
 
 cache:
   yarn: true
