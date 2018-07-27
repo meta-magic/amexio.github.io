@@ -22,6 +22,10 @@ module.exports = function(config) {
             Chrome_travis_ci: {
                 base: 'Chrome',
                 flags: ['--no-sandbox']
+            },
+            ChromeNoSandbox: {
+                base: 'Chrome',
+                flags: ['--no-sandbox']
             }
         },
         files: [
@@ -69,12 +73,7 @@ module.exports = function(config) {
         autoWatch: false,
         browsers: ['ChromeNoSandbox'],
 
-        customLaunchers: {
-            ChromeNoSandbox: {
-                base: 'Chrome',
-                flags: ['--no-sandbox']
-            }
-        },
+       
         singleRun: true
     };
 
