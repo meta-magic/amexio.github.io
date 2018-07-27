@@ -159,11 +159,16 @@ it('Condition Check', () => {
   comp.setMinFullYear(new Date('22-DEC-2019'), new Date(),1);
 
 
-  comp.setDateData1('plus',2,new Event(0));
+  // comp.setDateData1('plus',2,new Event(0));
 
   comp.currrentDate = new Date();
   comp.initDate();
   expect('').toEqual('');
+
+  comp.writeValue(11);
+
+  comp.disableYearFlag();
+
 });
 
 });

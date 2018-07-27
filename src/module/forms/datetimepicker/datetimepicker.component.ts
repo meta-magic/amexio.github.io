@@ -957,7 +957,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
 
   // this function is obtained by breaking arrowClickBack() and arrowClickForward()
   // for disabling year flag
-  private disableYearFlag() {
+   disableYearFlag() {
     if (this.minDate.length > 0 || this.maxDate.length > 0) {
       this.yearList1.forEach((element: any) => {
         this.yearFlagDisable(element);
