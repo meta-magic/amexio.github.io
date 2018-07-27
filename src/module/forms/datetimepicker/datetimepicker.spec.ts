@@ -175,6 +175,13 @@ it('Condition Check', () => {
 
   comp.minMaxDateFound();
   expect(false).toBe(comp.forwardArrowFlag);
+
+  const eone = {name:'Jan',flag :true};
+  const etwo = {name:'Jan'};
+  comp.chkMonth(eone,etwo);
+  expect(true).toBe(eone.flag);
+
+
 });
 
 });
