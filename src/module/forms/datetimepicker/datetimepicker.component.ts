@@ -186,9 +186,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
   private onChangeCallback: (_: any) => void = noop;
   constructor(public element: ElementRef, private cdf: ChangeDetectorRef) {
     this.viewmode = '1';
-    if (this.inlineDatepicker) {
-      this.showToolTip = true;
-    }
+
     this.yearList1 = [{ year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
     { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
     { year: 0, flag: false, disabled: false }];
@@ -326,18 +324,18 @@ export class AmexioDateTimePickerComponent implements OnInit {
       }
     }
   }
-  nextMonth(event: any) {
+ private nextMonth(event: any) {
     this.setDateData('plus', 1, event);
     this.disableddays(this.diabledDate);
   }
-  prevMonth(event: any) {
+ private prevMonth(event: any) {
     this.setDateData('minus', 1, event);
     this.disableddays(this.diabledDate);
   }
-  nextYear(event: any) {
+  private nextYear(event: any) {
     this.setDateData1('plus', 12, event);
   }
-  prevYear(event: any) {
+  private prevYear(event: any) {
     this.setDateData1('minus', 12, event);
   }
   // this function validates month
@@ -357,7 +355,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
   }
 
   // Set Plus Data
-  setPlusData(d: any, max: any, mon: any) {
+  private setPlusData(d: any, max: any, mon: any) {
     if (this.maxDate.length > 0) {
       if (d.getFullYear() === max.getFullYear()) {
         this.setMaxFullYear(d, max, mon);
@@ -373,7 +371,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
   }
 
   // Set Max Full Year
-   setMaxFullYear(d: any, max: any, mon: any) {
+  private setMaxFullYear(d: any, max: any, mon: any) {
     if (!(d.getMonth() === max.getMonth())) {
       // *********check here******************* */
       // logic to chk if year is valid
@@ -385,7 +383,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
     }
   }
   // Set Minus Data
-  setMinusData(d: any, min: any, mon: any) {
+ private setMinusData(d: any, min: any, mon: any) {
     if (this.minDate.length > 0) {
       if (d.getFullYear() === min.getFullYear()) {
         this.setMinFullYear(d, min, mon);
@@ -398,7 +396,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
   }
 
   // Set Min Full year
-  setMinFullYear(d: any, min: any, mon: any) {
+ private setMinFullYear(d: any, min: any, mon: any) {
     if (!(d.getMonth() === min.getMonth())) { // logic to chk if year is valid
       if (d.getFullYear() >= min.getFullYear()) {
         if (d.getMonth() >= min.getMonth()) {
@@ -408,7 +406,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
     }
   }
   // this function validates year
-  setDateData1(state: string, mon: number, event: any) {
+ private setDateData1(state: string, mon: number, event: any) {
     const d = new Date(this.currrentDate.getFullYear(), this.currrentDate.getMonth(), this.currrentDate.getDate());
     const min = new Date(this.minDate);
     const max = new Date(this.maxDate);
