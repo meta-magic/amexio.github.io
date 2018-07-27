@@ -170,6 +170,9 @@ it('Condition Check', () => {
 
   comp.disableYearFlag();
 
+  comp.onFocusOut(new Date());
+  expect(false).toBe(comp.isValid);
+
 });
 
 });
