@@ -146,7 +146,7 @@ it('Condition Check', () => {
   comp.daysArray=[{date:new Date()}];
   comp.resetSelection(new Date());
 
-  comp.setMaxFullYear(new Date('22-Mar-2016'), new Date());
+  comp.setMaxFullYear(new Date('22-Mar-2016'), new Date(),1);
 });
 
 });
