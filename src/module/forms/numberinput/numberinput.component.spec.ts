@@ -23,12 +23,18 @@ describe('NUMBER INPUT', () => {
 });
 
  
-// it('Set', () => {
-//   comp.value='sagfaf';
-  
-// //this.fixture.detectChanges();
-//        expect(comp.innerValue).toEqual(comp.value);
-//     }); 
+it('initialize innervalue', () => {
+  comp.value='sagfaf'; 
+       expect(comp['innerValue']).toEqual(comp.value);
+    }); 
+
+
+    // it('get innervalue', () => {
+    //   comp.value='sagfaf';
+      
+    // //this.fixture.detectChanges();
+    //        expect(comp.value()).toEqual(comp['innerValue']);
+    //     }); 
 
 //wrking 1- set errormsg
     it('set errormsg', () => {
@@ -41,23 +47,49 @@ it('get minerrormsg', () => {
   expect(comp._minerrormsg).toEqual(comp._minerrormsg);
 })
 
+//get pattern
+it('get pattern', () => {
+  expect(comp._pattern).toEqual(comp._pattern);
+})
+ 
+//set pattern
+// it('set pattern', () => {
+//   let obj = new RegExp(comp.pattern);
+//   expect(comp.value).not.toEqual(null);
+//   expect(comp.regEx).toEqual(obj);
+//   //expect(comp._pattern).toEqual(comp._pattern);
+// })
+
+//on focus()
+// it('on focus()', () => {
+//   comp.showToolTip=true;
+//   expect(comp.onFocus()).toContain(comp.showToolTip);
+// })
+
+
 //working 3 get maxerrormsg
 it('get _maxerrormsg', () => {
   expect(comp._maxerrormsg).toEqual(comp._maxerrormsg);
 })
+
+
+it('get helpinfomsg', () => {
+  comp.helpInfoMsg="test";
+  expect(comp.helpInfoMsg).toEqual(comp.helpInfoMsg);
+})
+
+
 
 //set maxerrormsg
 
 
 //set minerrormsg
 // it('set minerrormsg', () => {
-//   comp.enablepopover=true;
-//   comp.helpInfoMsg="";
-//   comp._errormsg="Please enter age";
-//   fixture.detectChanges();
-//   //expect(comp.helpInfoMsg).toBe(comp.helpInfoMsg);
-//   expect(comp.helpInfoMsg).toContain(comp.helpInfoMsg + 'Min value: ' + comp.value + '<br/>');
- 
+//   let testvalue = comp._minerrormsg;
+//   comp.minerrormsg = testvalue;
+//   comp.helpInfoMsg="testMin value: <br/>";
+//   let str = comp.helpInfoMsg + 'Min value: ' + comp.value+ '<br/>';
+//   expect(comp.helpInfoMsg).toBe(str);
 // });
 
 
