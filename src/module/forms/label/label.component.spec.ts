@@ -24,18 +24,25 @@ describe('amexio-label' , () => {
     let style = "small";
     comp.ngOnInit();
     expect(comp.styleClass).toEqual(style);
-  })
-  it('check it null', () => {
-    comp.ngOnInit();
-    let n = 'null';
-    expect(comp.styleClass).not.toBeNull(n);
+  });
 
+  it('check it null', () => {
+    comp.styleClass = null;
+    comp.ngOnInit();
+    expect('small').toEqual(comp.styleClass);
+
+  });
+
+  it('check enableclick true', () => {
+    comp.enableclick=true;
+    comp.ngOnInit();
+    expect(comp.enableclick).toEqual(true);
   });
 
   it('click enable check ',() => {
     comp.onLabel(event);
     expect(comp.enableclick).not.toEqual('null');
-  })
+  });
 
   it('should emit on click', () => {
     comp.onLabel(event);
@@ -43,7 +50,7 @@ describe('amexio-label' , () => {
       expect(fixture.nativeElement.onLabel(event)).toEqual({fixture});
     });
     comp.onLabel(event);
-  }));
+  });
 
 });
 
