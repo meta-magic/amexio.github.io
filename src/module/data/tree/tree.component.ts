@@ -17,7 +17,7 @@ import { CommonDataService } from '../../services/data/common.data.service';
   selector: 'amexio-treeview', templateUrl: './tree.component.html',
 })
 export class AmexioTreeViewComponent implements AfterViewInit, OnInit {
-private componentLoaded: boolean;
+  private componentLoaded: boolean;
   /*
 Properties
 name : data
@@ -26,17 +26,17 @@ version : 4.0 onwards
 default : none
 description : Local Data binding.
 */
-_data: any;
-@Input('data')
- set data(value: any[]) {
-   this._data = value;
-   if (this.componentLoaded) {
-     this.updateComponent();
-   }
- }
- get data(): any[] {
-   return this._data;
- }
+  _data: any;
+  @Input('data')
+  set data(value: any[]) {
+    this._data = value;
+    if (this.componentLoaded) {
+      this.updateComponent();
+    }
+  }
+  get data(): any[] {
+    return this._data;
+  }
 
   /*
 Properties
@@ -382,13 +382,15 @@ description : Context Menu provides the list of menus on right click.
   }
 
   getDropNode(dragData: any, node: any, event: any) {
-    dragData.data.children.forEach((child: any) => {
-      if (JSON.stringify(child) === JSON.stringify(node) || node.leaf === true) {
-        event.dataTransfer.dropEffect = 'none';
-      } else if (child.hasOwnProperty('children')) {
-        this.getDropNode(child.children, node, event);
-      }
-    });
+    if (dragData.data.hasOwnProperty('children') && dragData.data.children.length > 0) {
+      dragData.data.children.forEach((child: any) => {
+        if (JSON.stringify(child) === JSON.stringify(node) || node.leaf === true) {
+          event.dataTransfer.dropEffect = 'none';
+        } else if (child.hasOwnProperty('children')) {
+          this.getDropNode(child.children, node, event);
+        }
+      });
+    }
   }
 
   drop(dropData: any) {
