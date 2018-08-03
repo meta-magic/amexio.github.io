@@ -4,28 +4,38 @@ import { AmexioFormIconComponent } from './../icon/icon.component';
 import { AmexioTextAreaComponent } from './textarea.component';
 import { By } from '@angular/platform-browser';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { IconLoaderService } from '../../../index';
 
 describe('TextArea ', () => {
   let comp: AmexioTextAreaComponent;
   let fixture: ComponentFixture<AmexioTextAreaComponent>;
 
-  beforeEach(()=>{
+  beforeEach(() => {
     TestBed.configureTestingModule({
-      imports:[FormsModule],
-      declarations:[AmexioTextAreaComponent,AmexioFormIconComponent],
-      providers:[IconLoaderService]
+      imports: [FormsModule],
+      declarations: [AmexioTextAreaComponent, AmexioFormIconComponent],
+      providers: [IconLoaderService]
     });
     fixture = TestBed.createComponent(AmexioTextAreaComponent);
     comp = fixture.componentInstance;
   });
   it('true is true', () => expect(true).toBe(true));
-  it('Condition Check',()=>{
+  it('Condition Check', () => {
     comp.value;
     fixture.detectChanges();
     expect('').toBe(comp.value);
-  } 
-);
-  
+  });
+  it('otherValidation()', () => {
+    comp.otherValidation(fixture);
+    expect(comp.otherValidation(fixture.nativeElement)).toBeUndefined;
+  });
+  it('getCssClass()', () => {
+    comp.getCssClass();
+    expect(comp.getCssClass).toBeUndefined;
+  })
+  it('noInnerValue()',()=>{
+    comp.noInnerValue(fixture);
+    expect(comp.noInnerValue).toBeUndefined;
+  })
 });
