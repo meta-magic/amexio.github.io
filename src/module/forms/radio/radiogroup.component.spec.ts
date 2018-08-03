@@ -30,20 +30,10 @@ describe('amexio-radio-group-component', () => {
     comp.isValid = true;
     expect(comp.isValid).toEqual(true);
   });
-// it('should work',() => {
-//   let oldValue=comp.abcd;
-//   let data = [];
-//   comp.onInput(()=>{
-
-//   })
-//   comp.onInput(comp.input);
-//   comp.input.emit();
-// expect(comp.abcd).toBeGreaterThan(oldValue);
-// })
-// it('should emit greeting event', (done) => { 
-//   comp.input.subscribe(input=> { expect(input).toEqual({onInput:'hello'});
-//      done(); 
-//   });
-//});
+  it('should emit greeting event', () => {
+    comp.input.subscribe((g: any) => {
+      expect(fixture.nativeElement).toEqual({ fixture });
+    });
+  });
+  
 });
- 

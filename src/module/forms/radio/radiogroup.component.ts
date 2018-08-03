@@ -155,10 +155,9 @@ description : 	On input event field.
   constructor(public amxHttp: CommonDataService) {
   }
 
-  onInput(input: any) {
-
+  onInput(inp: any) {
     this.isValid = true;
-    this.input.emit();
+    this.input.emit(inp);
   }
 
   ngOnInit() {
