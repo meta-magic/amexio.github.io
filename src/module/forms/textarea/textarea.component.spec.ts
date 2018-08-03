@@ -33,9 +33,21 @@ describe('TextArea ', () => {
   it('getCssClass()', () => {
     comp.getCssClass();
     expect(comp.getCssClass).toBeUndefined;
-  })
+  });
   it('noInnerValue()',()=>{
     comp.noInnerValue(fixture);
     expect(comp.noInnerValue).toBeUndefined;
+  });
+  it('get helpinfomsg', () => {
+    comp.helpInfoMsg="test";
+    expect(comp.helpInfoMsg).toEqual(comp.helpInfoMsg);
+  });
+  it('get _maxerrormsg', () => {
+    expect(comp._maxerrormsg).toEqual(comp._maxerrormsg);
+  });
+  it('get minerrormsg', () => {
+    expect(comp._minerrormsg).toEqual(comp._minerrormsg);
   })
+  
+
 });
