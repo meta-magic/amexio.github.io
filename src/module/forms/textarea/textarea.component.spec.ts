@@ -34,12 +34,12 @@ describe('TextArea ', () => {
     comp.getCssClass();
     expect(comp.getCssClass).toBeUndefined;
   });
-  it('noInnerValue()',()=>{
+  it('noInnerValue()', () => {
     comp.noInnerValue(fixture);
     expect(comp.noInnerValue).toBeUndefined;
   });
   it('get helpinfomsg', () => {
-    comp.helpInfoMsg="test";
+    comp.helpInfoMsg = "test";
     expect(comp.helpInfoMsg).toEqual(comp.helpInfoMsg);
   });
   it('get _maxerrormsg', () => {
@@ -47,7 +47,15 @@ describe('TextArea ', () => {
   });
   it('get minerrormsg', () => {
     expect(comp._minerrormsg).toEqual(comp._minerrormsg);
-  })
-  
+  });
+  it('get pattern', () => {
+    expect(comp._pattern).toEqual(comp._pattern);
+  });
+  it('set errormsg', () => {
+    expect(comp._errormsg).toEqual(comp._errormsg);
+  });
+  it('get errormsg', () => {
+    expect(comp._errormsg).toEqual(comp._errormsg);
+  });
 
 });
