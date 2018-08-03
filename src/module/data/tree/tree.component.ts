@@ -331,6 +331,7 @@ description : Describes the badge value that has to be displayed tree node
   }
 
   getDropNode(dragData: any, node: any, event: any) {
+    if (dragData.data.hasOwnProperty('children') && dragData.data.children.length > 0) {
       dragData.data.children.forEach((child: any) => {
         if (JSON.stringify(child) == JSON.stringify(node) || node.leaf == true) {
           event.dataTransfer.dropEffect = "none"
@@ -339,6 +340,7 @@ description : Describes the badge value that has to be displayed tree node
           this.getDropNode(child.children, node, event);
         }
       });
+    }
   }
 
 
