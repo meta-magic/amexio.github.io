@@ -32,6 +32,11 @@ describe('amexio-label' , () => {
     expect('small').toEqual(comp.styleClass);
 
   });
+  it('check small ', () => {
+    let style = "large";
+    comp.ngOnInit();
+    expect(comp.styleClass).not.toEqual(style);
+  });
 
   it('check enableclick true', () => {
     comp.enableclick=true;
@@ -39,6 +44,7 @@ describe('amexio-label' , () => {
     expect(comp.enableclick).toEqual(true);
   });
 
+  
   it('click enable check ',() => {
     comp.onLabel(event);
     expect(comp.enableclick).not.toEqual('null');
