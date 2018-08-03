@@ -24,17 +24,17 @@ version : 4.0 onwards
 default : none
 description : Local Data binding.
 */
-_data: any;
-@Input('data')
- set data(value: any[]) {
-   this._data = value;
-   if (this.componentLoaded) {
-     this.updateComponent();
-   }
- }
- get data(): any[] {
-   return this._data;
- }
+  _data: any;
+  @Input('data')
+  set data(value: any[]) {
+    this._data = value;
+    if (this.componentLoaded) {
+      this.updateComponent();
+    }
+  }
+  get data(): any[] {
+    return this._data;
+  }
 
   /*
 Properties 
@@ -331,14 +331,16 @@ description : Describes the badge value that has to be displayed tree node
   }
 
   getDropNode(dragData: any, node: any, event: any) {
-    dragData.data.children.forEach((child: any) => {
-      if (JSON.stringify(child) == JSON.stringify(node) || node.leaf == true) {
-        event.dataTransfer.dropEffect = "none"
-      }
-      else if (child.hasOwnProperty('children')) {
-        this.getDropNode(child.children, node, event);
-      }
-    });
+    if (dragData.data.hasOwnProperty('children') && dragData.data.children.length > 0) {
+      dragData.data.children.forEach((child: any) => {
+        if (JSON.stringify(child) == JSON.stringify(node) || node.leaf == true) {
+          event.dataTransfer.dropEffect = "none"
+        }
+        else if (child.hasOwnProperty('children')) {
+          this.getDropNode(child.children, node, event);
+        }
+      });
+    }
   }
 
 
