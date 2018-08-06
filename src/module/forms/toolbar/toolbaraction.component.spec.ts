@@ -26,16 +26,23 @@ describe('amexio-toolbar-item', () => {
     });
 
     it('check for actionComponent', () => {
-    expect(comp.actionComponent).toBe('');
-
-    it('onclick method variable', () => {
-    expect(comp.title).toBe('');
-    });
-    it('onclick method variable',()=>{
-expect(comp.type).toBe('');
+        expect(comp.actionComponent).toBe('');       
     });
 
-    })
-
+    it('should emit ', (check) => {
+      
+        const node = {
+            title: 't',
+            type: 'a',
+          };
+          let event= { data: node, event: Event };
+          comp.onClick({event:Event});
+            comp.navLinkClick.subscribe((g: any) => {
+                expect(g.node).toEqual('event');
+            });
+            check();
+        });
 });
+
+
 
