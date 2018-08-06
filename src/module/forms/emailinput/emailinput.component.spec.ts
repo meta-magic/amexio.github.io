@@ -6,7 +6,7 @@ import { AmexioButtonComponent } from './../buttons/button.component';
 import { AmexioFormIconComponent } from './../icon/icon.component';
 import { AmexioEmailInputComponent } from './emailinput.component';
 
-describe('amexio-label' , () => {
+describe('amexio-email-input' , () => {
   let comp: AmexioEmailInputComponent;
   let fixture: ComponentFixture<AmexioEmailInputComponent>;
 
@@ -31,7 +31,7 @@ describe('amexio-label' , () => {
     expect((<any>comp).innerValue).toBe('');
   });
 
-  it('check private variable innerValue empty', () => {
+  it('check private variable showToolTip boolean', () => {
     expect(comp.showToolTip).toEqual(jasmine.any(Boolean));
   });
 
