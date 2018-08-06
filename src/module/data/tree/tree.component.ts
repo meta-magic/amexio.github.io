@@ -381,7 +381,7 @@ description : Context Menu provides the list of menus on right click.
     }
   }
 
-  getDropNode(dragData: any, node: any, event: any) {    
+  getDropNode(dragData: any, node: any, event: any) {   
     if (dragData.data.hasOwnProperty('children') && dragData.data.children.length > 0) {
       dragData.data.children.forEach((child: any) => {
         if (JSON.stringify(child) === JSON.stringify(node) || node.leaf === true) {
