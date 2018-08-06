@@ -145,6 +145,8 @@ export class AmexioSideNavComponent implements OnInit {
 
   responseData: any;
 
+  isSideNavExpand: boolean;
+
   constructor(public dataService: CommonDataService, public matchMediaService: DeviceQueryService, public element: ElementRef) {
     this.position = 'left';
     this.smalldevice = false;
@@ -231,7 +233,7 @@ export class AmexioSideNavComponent implements OnInit {
   }
 
   toggleSideNav() {
-    this.handleDeviceSettings(true);
+    this.handleDeviceSettings(!this.isSideNavExpand);
   }
 
   close() {
@@ -244,9 +246,11 @@ export class AmexioSideNavComponent implements OnInit {
         this.smalldevice = true;
         if (expand) {
           this.width = '80%';
+          this.isSideNavExpand = true;
           this.sidenavexpandedinsmalldevice = true;
         } else {
           this.width = '0%';
+          this.isSideNavExpand = false;
           this.sidenavexpandedinsmalldevice = false;
         }
       } else {
