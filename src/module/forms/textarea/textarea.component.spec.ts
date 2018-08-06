@@ -57,5 +57,25 @@ describe('TextArea ', () => {
   it('get errormsg', () => {
     expect(comp._errormsg).toEqual(comp._errormsg);
   });
+  it('check for isValid', () => {
+    comp.isValid = true;
+    expect(comp.isValid).toEqual(true);
+  });
+  it('check for pattern',()=>{
+    comp._pattern;
+    expect(comp._pattern).toBeUndefined;
+  })
+  it('check for _errormsg',()=>{
+    comp._errormsg;
+    expect(comp._errormsg).toBeUndefined;
+  })
+  it('check for _minerrormsg',()=>{
+    comp._minerrormsg;
+    expect(comp._minerrormsg).toBeUndefined;
+  })
+  it('check for _minerrormsg',()=>{
+    comp._maxerrormsg;
+    expect('comp._maxerrormsg').toBeUndefined;
+  })
 
 });
