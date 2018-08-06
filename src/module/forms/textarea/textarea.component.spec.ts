@@ -43,19 +43,19 @@ describe('TextArea ', () => {
     expect(comp.helpInfoMsg).toEqual(comp.helpInfoMsg);
   });
   it('get _maxerrormsg', () => {
-    expect(comp._maxerrormsg).toEqual(comp._maxerrormsg);
+    expect(comp.maxerrormsg).toEqual(comp._maxerrormsg);
   });
   it('get minerrormsg', () => {
-    expect(comp._minerrormsg).toEqual(comp._minerrormsg);
+    expect(comp.minerrormsg).toEqual(comp._minerrormsg);
   });
   it('get pattern', () => {
-    expect(comp._pattern).toEqual(comp._pattern);
+    expect(comp.pattern).toEqual(comp._pattern);
   });
   it('set errormsg', () => {
     expect(comp._errormsg).toEqual(comp._errormsg);
   });
   it('get errormsg', () => {
-    expect(comp._errormsg).toEqual(comp._errormsg);
+    expect(comp.errormsg).toEqual(comp._errormsg);
   });
   it('check for isValid', () => {
     comp.isValid = true;
@@ -63,19 +63,26 @@ describe('TextArea ', () => {
   });
   it('check for pattern',()=>{
     comp._pattern;
-    expect(comp._pattern).toBeUndefined;
-  })
+    expect(comp.pattern).toBeUndefined;
+  });
   it('check for _errormsg',()=>{
-    comp._errormsg;
-    expect(comp._errormsg).toBeUndefined;
-  })
+    comp.errormsg;
+    expect(comp.errormsg).toBeUndefined;
+  });
   it('check for _minerrormsg',()=>{
-    comp._minerrormsg;
-    expect(comp._minerrormsg).toBeUndefined;
-  })
+    comp.minerrormsg;
+    expect(comp.minerrormsg).toBeUndefined;
+  });
   it('check for _minerrormsg',()=>{
-    comp._maxerrormsg;
+    comp.maxerrormsg;
     expect('comp._maxerrormsg').toBeUndefined;
-  })
+  });
+  // it('check for error getter setter',()=>{
+  //   comp.errormsg;
+  //   comp.
+  //   expect('comp._maxerrormsg').toBeUndefined;
+  // });
+
+  
 
 });
