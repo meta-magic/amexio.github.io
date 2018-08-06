@@ -31,8 +31,25 @@ describe('amexio-email-input' , () => {
     expect((<any>comp).innerValue).toBe('');
   });
 
+  it('check private method onChangeCallback()', () => {
+   // expect((<any>comp).onChangeCallback()).toEqual(noop);
+  });
+
   it('check private variable showToolTip boolean', () => {
     expect(comp.showToolTip).toEqual(jasmine.any(Boolean));
   });
 
+  it('conditions check of the onBlank', () => {
+    comp.onBlank ;
+    (<any>comp).innerValue = null;
+    expect((<any>comp).innerValue).toEqual(null);
+
+   (<any>comp).innerValue = '';
+   expect((<any>comp).innerValue).toEqual('');
+
+  //  expect(comp.isValid).toEqual(jasmine.any(Boolean));
+   
+
+
+  })
 });
