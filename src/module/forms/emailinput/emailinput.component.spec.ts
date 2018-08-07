@@ -40,7 +40,17 @@ describe('amexio-email-input' , () => {
    expect((<any>comp).innerValue).toEqual('');
 
    expect(comp.isValid).toEqual(jasmine.any(Boolean));
+
+
   });
+  it('condition check value is null or empty in onBlank method', () => {
+    comp.onBlank({'touched':true});
+    (<any>comp).value = '';
+     expect((<any>comp).value).toEqual('');
+     (<any>comp).value = null;
+     expect((<any>comp).value).toEqual(null);
+  
+  })
   
 
 });
