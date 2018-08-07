@@ -3642,7 +3642,8 @@ header .billboard .content-button {
 .datatable .datatable-col {
   display: table-cell;
   padding: .625em;
-  text-align: left; }
+  text-align: left;
+  overflow-wrap: break-word; }
 
 .footer {
   margin: .1em 0 .35em;
