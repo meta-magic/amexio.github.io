@@ -52,7 +52,9 @@ describe('TextArea ', () => {
     expect(comp.pattern).toEqual(comp._pattern);
   });
   it('set errormsg', () => {
-    expect(comp._errormsg).toEqual(comp._errormsg);
+    comp.errormsg;
+    comp.helpInfoMsg='';
+    expect(comp.helpInfoMsg).toEqual(comp.value);
   });
   it('get errormsg', () => {
     expect(comp.errormsg).toEqual(comp._errormsg);
