@@ -56,7 +56,7 @@ it('get minerrormsg', () => {
 
 //get pattern
 it('get pattern', () => {
-  expect(comp._pattern).toEqual(comp._pattern);
+  expect(comp.pattern).toEqual(comp._pattern);
 })
  
 //set pattern
