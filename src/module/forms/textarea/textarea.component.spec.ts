@@ -82,8 +82,13 @@ describe('TextArea ', () => {
   it('check for showtooltip',()=>{
     // comp.showToolTip;
     expect(comp.showToolTip).toBe(false);
-  }
-)
+  });
+  it('on focus()', () => {
+    comp.showToolTip=true;
+    let flag=true;
+    comp.onFocus();
+    expect(comp.showToolTip).toEqual(true);
+    })
   // it('check for error getter setter',()=>{
   //   comp.errormsg;
   //   comp.
