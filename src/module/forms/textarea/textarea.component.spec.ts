@@ -66,9 +66,8 @@ describe('TextArea ', () => {
     expect(comp.pattern).toEqual(comp._pattern);
   });
   it('set errormsg', () => {
-    comp.errormsg;
-    comp.helpInfoMsg = '';
-    expect(comp.helpInfoMsg).toEqual(comp.value);
+     comp.helpInfoMsg = 'test';
+     this.helpInfoMsg = comp.errormsg+ '<br/>';
   });
   it('get errormsg', () => {
     expect(comp.errormsg).toEqual(comp._errormsg);
