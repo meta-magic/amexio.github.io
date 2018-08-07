@@ -98,7 +98,6 @@ comp.registerOnChange(fn);
 expect(comp['onChangeCallback']).toEqual(fn);
 });
 
-
 it('register on touched', () => {
 let fn: any;
 comp.registerOnTouched(fn);
@@ -110,5 +109,12 @@ it('getCssClass()', () => {
   expect(comp.getCssClass).toBeUndefined;
   });
 
- 
+
+  it('set validation flag', () => {
+    //comp.helpInfoMsg="test";
+    comp.onBlank({'touched': true});
+    let touched: boolean;
+    expect(comp.isValid).toEqual(jasmine.any(Boolean));
+  })
+  
 });
