@@ -42,6 +42,13 @@ describe('TextArea ', () => {
     comp.helpInfoMsg = "test";
     expect(comp.helpInfoMsg).toEqual(comp.helpInfoMsg);
   });
+  it('set minerroromsg', () => {
+    comp.helpInfoMsg = "test";
+    comp.minerrormsg = 'min error';
+    comp.helpInfoMsg = comp.helpInfoMsg + '<b>Min Length<b/>: ' + comp.minerrormsg + '<br/>';
+    expect(comp.helpInfoMsg).toContain(comp.minerrormsg);
+  });
+
   it('get _maxerrormsg', () => {
     expect(comp.maxerrormsg).toEqual(comp._maxerrormsg);
   });
@@ -53,7 +60,7 @@ describe('TextArea ', () => {
   });
   it('set errormsg', () => {
     comp.errormsg;
-    comp.helpInfoMsg='';
+    comp.helpInfoMsg = '';
     expect(comp.helpInfoMsg).toEqual(comp.value);
   });
   it('get errormsg', () => {
@@ -63,41 +70,42 @@ describe('TextArea ', () => {
     comp.isValid = true;
     expect(comp.isValid).toEqual(true);
   });
-  it('check for pattern',()=>{
+  it('check for pattern', () => {
     comp._pattern;
     expect(comp.pattern).toBeUndefined;
   });
-  it('check for _errormsg',()=>{
+  it('check for _errormsg', () => {
     comp.errormsg;
     expect(comp.errormsg).toBeUndefined;
   });
-  it('check for _minerrormsg',()=>{
+  it('check for _minerrormsg', () => {
     comp.minerrormsg;
     expect(comp.minerrormsg).toBeUndefined;
   });
-  it('check for _minerrormsg',()=>{
+  it('check for _minerrormsg', () => {
     comp.maxerrormsg;
     expect('comp._maxerrormsg').toBeUndefined;
   });
-  it('check for showtooltip',()=>{
+  it('check for showtooltip', () => {
     // comp.showToolTip;
     expect(comp.showToolTip).toBe(false);
   });
   it('on focus()', () => {
-    comp.showToolTip=true;
-    let flag=true;
+    comp.showToolTip = true;
+    let flag = true;
     comp.onFocus();
     expect(comp.showToolTip).toEqual(true);
-    })
-//on blur()
+  });
+  //on blur()
   it('on blur()', () => {
-  comp.onBlur(fixture);
-  expect(comp.showToolTip).toEqual(false);
-  expect(comp.componentClass).toEqual(comp.validateClass(fixture));
+    comp.onBlur(fixture);
+    expect(comp.showToolTip).toEqual(false);
+    expect(comp.componentClass).toEqual(comp.validateClass(fixture));
+  });
+
+  it('writeValue()', () => {
+    comp.writeValue(fixture);
+    expect(comp.value).toEqual(fixture);
   })
-  
-// it('writeValue()',()=>{
-//   comp.writeValue(fixture);
-//   expect(comp.value).
-// })
+  it('',)
 });
