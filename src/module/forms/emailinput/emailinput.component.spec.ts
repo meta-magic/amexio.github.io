@@ -58,9 +58,8 @@ describe('amexio-email-input' , () => {
     expect((<any>comp).showToolTip).toEqual(true);
   });
   it('onfocus method writevalue method call', () => {
-    let data = 'value';
-    comp.writeValue(data);
+    comp.writeValue('value');
     (<any>comp).innerValue = '';
-    expect((<any>comp).innerValue).not.toEqual(data);
+    expect((<any>comp).innerValue).not.toEqual('value');
   });
 });
