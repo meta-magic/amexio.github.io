@@ -68,11 +68,23 @@ it('get pattern', () => {
 // })
 
 //on focus()
-// it('on focus()', () => {
-//   comp.showToolTip=true;
-//   expect(comp.onFocus()).toContain(comp.showToolTip);
-// })
+it('on focus()', () => {
+  //comp.showToolTip=true;
+  let flag=true;
+  comp.onFocus();
+  expect(comp.showToolTip).toEqual(flag);
+})
 
+//on blur()
+it('on blur()', () => {
+  // comp.showToolTip=true;
+  // let flag=true;
+  comp.onBlur(fixture);
+  //comp.onTouchedCallback();
+  expect(comp.showToolTip).toEqual(false);
+  expect(comp.componentClass).toEqual(comp.validateClass(fixture));
+
+})
 
 //working 3 get maxerrormsg
 it('get _maxerrormsg', () => {
@@ -84,6 +96,13 @@ it('get _maxerrormsg', () => {
 it('get helpinfomsg', () => {
   comp.helpInfoMsg="test";
   expect(comp.helpInfoMsg).toEqual(comp.helpInfoMsg);
+})
+
+it('set validation flag', () => {
+  //comp.helpInfoMsg="test";
+  let flag: boolean;
+  comp.setValidationFlag(flag);
+  expect(comp.isValid).toEqual(flag);
 })
 
 
