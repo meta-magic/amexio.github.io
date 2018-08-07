@@ -42,6 +42,11 @@ it('initialize innervalue', () => {
             expect(comp.helpInfoMsg).toEqual('data incorect<br/>');
         });
 
+        it('get errormsg', () => {
+        //  comp.errormsg='data incorect';
+                expect(comp.errormsg).toEqual(comp._errormsg);
+            });
+
 //working 2 get minerrormsg
 it('get minerrormsg', () => {
  // comp.minerrormsg="";
@@ -71,7 +76,8 @@ it('get pattern', () => {
 
 //working 3 get maxerrormsg
 it('get _maxerrormsg', () => {
-  expect(comp._maxerrormsg).toEqual(comp._maxerrormsg);
+  comp.maxerrormsg = 'trial';
+  expect(comp.maxerrormsg).toEqual(comp._maxerrormsg);
 })
 
 
