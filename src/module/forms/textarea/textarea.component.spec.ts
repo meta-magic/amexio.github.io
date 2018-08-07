@@ -117,4 +117,9 @@ describe('TextArea ', () => {
     comp.pattern = comp.pattern;
     comp.regEx = new RegExp(comp.pattern);
   })
+  it('register on change', () => {
+    let fn: any;
+  comp.registerOnChange(fn);
+     expect(comp['onChangeCallback']).toEqual(fn);
+   })
 });
