@@ -89,12 +89,15 @@ describe('TextArea ', () => {
     comp.onFocus();
     expect(comp.showToolTip).toEqual(true);
     })
-  // it('check for error getter setter',()=>{
-  //   comp.errormsg;
-  //   comp.
-  //   expect('comp._maxerrormsg').toBeUndefined;
-  // });
-
+//on blur()
+  it('on blur()', () => {
+  comp.onBlur(fixture);
+  expect(comp.showToolTip).toEqual(false);
+  expect(comp.componentClass).toEqual(comp.validateClass(fixture));
+  })
   
-
+// it('writeValue()',()=>{
+//   comp.writeValue(fixture);
+//   expect(comp.value).
+// })
 });
