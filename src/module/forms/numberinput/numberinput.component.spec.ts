@@ -86,6 +86,21 @@ it('on blur()', () => {
 
 })
 
+// it('writevalue', () => {
+//   comp.writeValue(fixture);
+
+//   expect(comp.value).not.toEqual(comp['innerValue']);
+   
+// })
+
+it('getCssClass()', () => {
+  comp.getCssClass();
+  expect(comp.getCssClass).toBeUndefined;
+  });
+
+
+
+
 //working 3 get maxerrormsg
 it('get _maxerrormsg', () => {
   comp.maxerrormsg = 'trial';
