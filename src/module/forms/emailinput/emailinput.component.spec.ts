@@ -33,7 +33,7 @@ describe('amexio-email-input' , () => {
   });
 
   it('conditions check of the onBlank', () => {
-    comp.onBlank({'touched':true});
+    comp.onBlank({'touched': true});
     (<any>comp).innerValue = null;
     expect((<any>comp).innerValue).toEqual(null);
    (<any>comp).innerValue = '';
@@ -44,13 +44,23 @@ describe('amexio-email-input' , () => {
 
   });
   it('condition check value is null or empty in onBlank method', () => {
-    comp.onBlank({'touched':true});
+    comp.onBlank({'touched': true});
     (<any>comp).value = '';
      expect((<any>comp).value).toEqual('');
      (<any>comp).value = null;
      expect((<any>comp).value).toEqual(null);
   
-  })
-  
+  });
 
+  it('onfocus method check boolean value  showtooltip is true', () => {
+    
+    comp.onFocus();
+    expect((<any>comp).showToolTip).toEqual(true);
+  });
+  it('onfocus method writevalue method call', () => {
+    let data = 'value';
+    comp.writeValue(data);
+    (<any>comp).innerValue = '';
+    expect((<any>comp).innerValue).not.toEqual(data);
+  });
 });
