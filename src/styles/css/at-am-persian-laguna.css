@@ -3283,7 +3283,8 @@ header .billboard .content-button {
 .datatable .datatable-col {
   display: table-cell;
   padding: .625em;
-  text-align: left; }
+  text-align: left;
+  overflow-wrap: break-word; }
 
 .footer {
   margin: .1em 0 .35em;
@@ -6799,7 +6800,7 @@ body {
 
 .topnav {
   font-size: 100%;
-  background-color: #d33134b0; }
+  background-color: #d33134b; }
 
 .sidenav {
   background-image: url("/assets/images/theme/bootstrap/red_bg.png");
