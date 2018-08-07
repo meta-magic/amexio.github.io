@@ -1,5 +1,5 @@
-import {of} from "rxjs/observable/of";
 import { CommonDataService } from "./common.data.service";
+import { of } from "rxjs";
 /**
  * Created by dattaram on 7/8/18.
  */
