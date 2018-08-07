@@ -44,7 +44,9 @@ it('initialize innervalue', () => {
 
 //working 2 get minerrormsg
 it('get minerrormsg', () => {
-  expect(comp._minerrormsg).toEqual(comp._minerrormsg);
+ // comp.minerrormsg="";
+  comp.minerrormsg = 'trial';
+  expect(comp.minerrormsg).toEqual(comp._minerrormsg);
 })
 
 //get pattern
