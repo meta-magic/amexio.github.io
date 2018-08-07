@@ -52,6 +52,13 @@ describe('TextArea ', () => {
   it('get _maxerrormsg', () => {
     expect(comp.maxerrormsg).toEqual(comp._maxerrormsg);
   });
+  it('set maxerroromsg', () => {
+    comp.helpInfoMsg = "test";
+    comp.maxerrormsg = 'max error';
+    comp.helpInfoMsg = comp.helpInfoMsg + '<b>Max Length<b/>: ' + comp.maxerrormsg + '<br/>';
+    expect(comp.helpInfoMsg).toContain(comp.maxerrormsg);
+  });
+
   it('get minerrormsg', () => {
     expect(comp.minerrormsg).toEqual(comp._minerrormsg);
   });
