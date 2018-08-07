@@ -39,8 +39,8 @@ describe('amexio-email-input' , () => {
    (<any>comp).innerValue = '';
    expect((<any>comp).innerValue).toEqual('');
 
-  //  expect(comp.isValid).toEqual(jasmine.any(Boolean));
+   expect(comp.isValid).toEqual(jasmine.any(Boolean));
   });
-
+  
 
 });
