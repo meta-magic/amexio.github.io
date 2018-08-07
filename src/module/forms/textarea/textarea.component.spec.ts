@@ -79,6 +79,11 @@ describe('TextArea ', () => {
     comp.maxerrormsg;
     expect('comp._maxerrormsg').toBeUndefined;
   });
+  it('check for showtooltip',()=>{
+    // comp.showToolTip;
+    expect(comp.showToolTip).toBe(false);
+  }
+)
   // it('check for error getter setter',()=>{
   //   comp.errormsg;
   //   comp.
