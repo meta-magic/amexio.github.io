@@ -66,9 +66,9 @@ describe('TextArea ', () => {
     expect(comp.pattern).toEqual(comp._pattern);
   });
   it('set errormsg', () => {
-     comp.helpInfoMsg = comp.errormsg + '<br/>';
-     expect(comp.helpInfoMsg).toContain(comp.errormsg);
-  });
+    comp.errormsg='data incorect';
+    expect(comp.helpInfoMsg).toEqual('data incorect<br/>');
+    });
   it('get errormsg', () => {
     expect(comp.errormsg).toEqual(comp._errormsg);
   });
@@ -115,7 +115,6 @@ describe('TextArea ', () => {
   })
   it('set Pattern',()=>{
     comp.pattern = comp.pattern;
-
     comp.regEx = new RegExp(comp.pattern);
   })
 });
