@@ -66,8 +66,7 @@ describe('TextArea ', () => {
     expect(comp.pattern).toEqual(comp._pattern);
   });
   it('set errormsg', () => {
-     comp.helpInfoMsg = 'test';
-     this.helpInfoMsg = comp.errormsg+ '<br/>';
+     comp.helpInfoMsg = comp.errormsg + '<br/>';
   });
   it('get errormsg', () => {
     expect(comp.errormsg).toEqual(comp._errormsg);
@@ -113,5 +112,9 @@ describe('TextArea ', () => {
     comp.writeValue(fixture);
     expect(comp.value).toEqual(fixture);
   })
-  it('',)
+  it('set Pattern',()=>{
+    comp.pattern = comp.pattern;
+
+    comp.regEx = new RegExp(comp.pattern);
+  })
 });
