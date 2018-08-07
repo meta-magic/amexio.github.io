@@ -20,36 +20,27 @@ describe('amexio-email-input' , () => {
     comp = fixture.componentInstance;
   });
 
-
-
-  // it('check enableclick true', () => {
-  //   comp.multi = true;
-  //   comp.ngOnInit();
-  //   expect(comp.multi).toEqual(true);
-  // });
   it('check private variable innerValue empty', () => {
     expect((<any>comp).innerValue).toBe('');
   });
 
-  it('check private method onChangeCallback()', () => {
-   // expect((<any>comp).onChangeCallback()).toEqual(noop);
-  });
+  // it('check private method onChangeCallback()', () => {
+  //  // expect((<any>comp).onChangeCallback()).toEqual(noop);
+  // });
 
   it('check private variable showToolTip boolean', () => {
-    expect(comp.showToolTip).toEqual(jasmine.any(Boolean));
+    expect((<any>comp).showToolTip).toEqual(false);
   });
 
   it('conditions check of the onBlank', () => {
-    comp.onBlank ;
+    comp.onBlank({'touched':true});
     (<any>comp).innerValue = null;
     expect((<any>comp).innerValue).toEqual(null);
-
    (<any>comp).innerValue = '';
    expect((<any>comp).innerValue).toEqual('');
 
   //  expect(comp.isValid).toEqual(jasmine.any(Boolean));
-   
+  });
 
 
-  })
 });

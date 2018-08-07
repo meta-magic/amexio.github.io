@@ -32,7 +32,7 @@ describe('amexio-label' , () => {
     expect('small').toEqual(comp.styleClass);
 
   });
-  it('check small ', () => {
+  it('check for not small label ', () => {
     let style = "large";
     comp.ngOnInit();
     expect(comp.styleClass).not.toEqual(style);
