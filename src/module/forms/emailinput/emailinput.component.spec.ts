@@ -115,6 +115,12 @@ it('getCssClass()', () => {
     comp.onBlank({'touched': true});
     let touched: boolean;
     expect(comp.isValid).toEqual(jasmine.any(Boolean));
-  })
+  });
+
+  //get pattern
+it('get pattern', () => {
+  expect(comp.pattern).toEqual(comp._pattern);
+})
+ 
   
 });
