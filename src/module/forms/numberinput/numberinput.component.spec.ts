@@ -61,11 +61,11 @@ it('get pattern', () => {
  
 //set pattern
 // it('set pattern', () => {
+
 //   let obj = new RegExp(comp.pattern);
 //   expect(comp.value).not.toEqual(null);
 //   expect(comp.regEx).toEqual(obj);
-//   //expect(comp._pattern).toEqual(comp._pattern);
-// })
+//  })
 
 //on focus()
 it('on focus()', () => {
