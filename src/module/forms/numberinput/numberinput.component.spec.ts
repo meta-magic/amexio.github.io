@@ -67,6 +67,20 @@ it('get pattern', () => {
 //   expect(comp.regEx).toEqual(obj);
 //  })
 
+it('register on change', () => {
+  let fn: any;
+comp.registerOnChange(fn);
+   expect(comp['onChangeCallback']).toEqual(fn);
+ })
+
+
+it('register on touched', () => {
+  let fn: any;
+comp.registerOnTouched(fn);
+   expect(comp['onTouchedCallback']).toEqual(fn);
+ })
+
+
 //on focus()
 it('on focus()', () => {
   //comp.showToolTip=true;
