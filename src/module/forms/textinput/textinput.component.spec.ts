@@ -75,6 +75,10 @@ describe('NUMBER INPUT', () => {
     comp.registerOnTouched(fn);
     expect(comp['onTouchedCallback']).toEqual(fn);
   })
+  it('writeValue()', () => {
+    comp.writeValue(fixture);
+    expect(comp.value).toEqual(fixture);
+  });
 
 
   //on focus()
@@ -85,13 +89,13 @@ describe('NUMBER INPUT', () => {
     expect(comp.showToolTip).toEqual(flag);
   })
 
-  //on blur()
-  // it('on blur()', () => {
-  //   comp.onBlur(fixture);
-  //   expect(comp.showToolTip).toEqual(false);
-  //   expect(comp.componentClass).toEqual(comp.validateClass(fixture));
 
-  // })
+  it('on blur()', () => {
+    comp.onblur(fixture);
+    expect(comp.showToolTip).toEqual(false);
+    expect(comp.componentClass).toEqual(comp.validateComponent(fixture));
+
+  })
   it('getCssClass()', () => {
     comp.getCssClass();
     expect(comp.getCssClass).toBeUndefined;
