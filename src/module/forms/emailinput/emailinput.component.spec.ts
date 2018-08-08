@@ -104,6 +104,14 @@ describe('amexio-email-input', () => {
       expect(comp.value).toEqual(g);
     });
   });
+  it('check onchnage method for emit data ',() => {
+
+    comp.onInput('event');
+    comp.input.subscribe((g: any)=>{
+      expect(comp.value).toEqual(g);
+    });
+  });
+
 
   it('check onchnage method for emit data ',() => {
 
