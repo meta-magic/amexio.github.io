@@ -55,13 +55,20 @@ describe('TypeAhead', () => {
       expect(comp.allowblank).toEqual(g);
     });
   });
+  it('get errormsg', () => {
+    //  comp.errormsg='data incorect';
+    expect(comp.errormsg).toEqual(comp._errormsg);
+  });
   it('check onblur()', () => {
     comp.onblur();
     comp.onBlur.subscribe((g: any) => {
       expect(comp.value).toEqual(g);
     });
   });
-
+  // it('set data',() => {
+  // comp.data(fixture);
+  //   expect(comp.data()).toContain(comp._data);
+  // });
       it('register on change', () => {
         let fn: any;
         comp.registerOnChange(fn);
