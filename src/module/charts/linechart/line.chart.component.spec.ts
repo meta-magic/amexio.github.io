@@ -61,7 +61,7 @@ describe('LINE CHART', () => {
               comp.chartTitleTextStyle&&obj;
         }); 
 
-   });
+   }); 
 
 
 });
