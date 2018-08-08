@@ -54,7 +54,11 @@ describe('LINE CHART', () => {
             chartArea: comp.chartAreaComponent ? comp.chartBackgroundStyle() : null,
           };
 
+          it('chartTitleTextStyle', () => {
 
+            let obj
+              comp.chartTitleTextStyle&&obj;
+        }); 
 
    });
 
