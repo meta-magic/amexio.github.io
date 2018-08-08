@@ -30,16 +30,15 @@ describe('LINE CHART', () => {
          expect(comp.data).toEqual(comp._data);
     }); 
 
-    it('set data', () => {
+    it('set data with not null', () => {
         expect(comp.data).not.toBeNull
-        expect(comp.data).toEqual(comp._data);
-        comp.showChart=true;
-        expect(comp.showChart).toEqual(true);
-
-        expect(comp.data).toBeNull
-        comp.showChart=false;
-        expect(comp.showChart).toEqual(false);
+        comp.data = comp.data;
+        comp.showChart = true;
    }); 
+   it('set data with Null', () => {
+    expect(comp.data).toBeNull;
+    comp.showChart = false;
+}); 
 
    it('drawchart function',() => {
        comp.drawChart();
