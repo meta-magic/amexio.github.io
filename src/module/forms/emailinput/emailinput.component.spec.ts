@@ -78,14 +78,25 @@ describe('amexio-email-input', () => {
     expect((<any>comp).isValid).toEqual(false);
   });
 
-  
-
-
   it('onfocus method writevalue method call', () => {
     comp.writeValue('value');
     (<any>comp).innerValue = '';
     expect((<any>comp).innerValue).not.toEqual('value');
   });
+
+
+  it('check validity of the  isvalid variable', () => {
+    comp.onBlank('valid');
+    (<any>comp).isValid = true;
+    expect((<any>comp).isValid).toEqual(true);
+  });
+
+  it('check method onblur', () => {
+    comp.onblur({'inp': false});
+   comp.showToolTip = false;
+    expect((<any>comp).showToolTip).toEqual(false);
+  });
+
 
   it('set errormsg', () => {
     comp.errormsg = 'data incorect';
