@@ -179,4 +179,16 @@ describe('amexio-email-input', () => {
     comp.value != null;
     expect(comp.value).not.toEqual(null);
   });
+
+  it('set pattern event check the data', () => {
+    let pat = (jasmine.any(Object))
+    comp.onBlank(pat);
+   let classObj = {
+    'input-control-error': (<any>pat).invalid && ((<any>pat).dirty || (<any>pat).touched),
+    'input-control-success': (<any>pat).valid && ((<any>pat).dirty || (<any>pat).touched),
+  };
+
+  });
+
+
 });
