@@ -50,6 +50,8 @@ describe('TypeAhead', () => {
     comp.isValid = true;
     expect(comp.isValid).toEqual(true);
   });
+
+ 
   it('check onblur()', () => {
     comp.onblur();
     comp.onBlur.subscribe((g: any) => {
@@ -62,83 +64,42 @@ describe('TypeAhead', () => {
       expect(comp['onChangeCallback']).toEqual(fn);
     });
 
-    // it('check onFocus ', () => {
-    //   comp.showToolTip = true;
-    //   comp.posixUp = comp.focus;
-    //   comp.focus.subscribe((g: any) => {
-    //     expect(comp.value).toEqual(g);
-    //   });
-    //   it('variable posixUp', () => {
-    //     comp.posixUp = false;
-    //   })
+    
+      it('variable posixUp', () => {
+        comp.posixUp = false;
+      })
 
-  it('register on touched', () => {
-    let fn: any;
-    comp.registerOnTouched(fn);
-    expect(comp['onTouchedCallback']).toEqual(fn);
+      it('register on touched', () => {
+        let fn: any;
+        comp.registerOnTouched(fn);
+        expect(comp['onTouchedCallback']).toEqual(fn);
+      });
+      it('check onFocus ', () => {
+      let focus =  comp.onFocus(jasmine.any(Object));
+
+       // comp.showToolTip = true;
+        // comp.posixUp = comp.focus;
+        comp.focus.subscribe((g: any) => {
+          expect(comp.value).toEqual(g);
+        });
+
+  
+      it('check for showtooltip', () => {
+        // comp.showToolTip;
+        expect(comp.showToolTip).toBe(true);
+      });
+
+      // on blur()
+      it('on blur()', () => {
+        comp.onBlur(fixture);
+        comp['onTouchedCallback()'];
+        expect(comp.showToolTip).toEqual(false);
+
+      });
+      it('get helpinfomsg', () => {
+        comp.helpInfoMsg = "test";
+        expect(comp.helpInfoMsg).toEqual(comp.helpInfoMsg);
+      });
+    });
   });
-
-
-  //on focus()
-  it('on focus()', () => {
-    //comp.showToolTip=true;
-    let flag = true;
-    comp.focus;
-    expect(comp.showToolTip).toEqual(flag);
-  });
-  it('check for showtooltip', () => {
-    // comp.showToolTip;
-    expect(comp.showToolTip).toBe(false);
-  });
-
-  // on blur()
-  it('on blur()', () => {
-    comp.onBlur(fixture);
-    comp['onTouchedCallback()'];
-    expect(comp.showToolTip).toEqual(false);
-
-  });
-  it('get helpinfomsg', () => {
-    comp.helpInfoMsg = "test";
-    expect(comp.helpInfoMsg).toEqual(comp.helpInfoMsg);
-  });
-  });
-  // it('writevalue', () => {
-  //   comp.writeValue(fixture);
-
-  //   expect(comp.value).not.toEqual(comp['innerValue']);
-
-  // })
-
-  // it('getCssClass()', () => {
-  //   comp.getCssClass();
-  //   expect(comp.getCssClass).toBeUndefined;
-  //   });
-
-  //working 3 get maxerrormsg
-  // it('get _maxerrormsg', () => {
-  //   comp.maxerrormsg = 'trial';
-  //   expect(comp.maxerrormsg).toEqual(comp._maxerrormsg);
-  // })
-// it('set validation flag', () => {
-  //   //comp.helpInfoMsg="test";
-  //   let flag: boolean;
-  //   comp.setValidationFlag(flag);
-  //   expect(comp.isValid).toEqual(flag);
-  // })
-
-
-
-  //set maxerrormsg
-
-
-  //set minerrormsg
-  // it('set minerrormsg', () => {
-  //   let testvalue = comp._minerrormsg;
-  //   comp.minerrormsg = testvalue;
-  //   comp.helpInfoMsg="testMin value: <br/>";
-  //   let str = comp.helpInfoMsg + 'Min value: ' + comp.value+ '<br/>';
-  //   expect(comp.helpInfoMsg).toBe(str);
-  // });
-
 });
