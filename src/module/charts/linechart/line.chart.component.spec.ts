@@ -56,7 +56,8 @@ describe('LINE CHART', () => {
 
           it('chartTitleTextStyle', () => {
 
-            let obj
+            let obj = jasmine.any(Object);
+
               comp.chartTitleTextStyle&&obj;
         }); 
 
