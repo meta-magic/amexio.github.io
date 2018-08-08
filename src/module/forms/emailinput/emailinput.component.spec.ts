@@ -97,6 +97,21 @@ describe('amexio-email-input', () => {
     expect((<any>comp).showToolTip).toEqual(false);
   });
 
+  it('check onchnage method for emit data ',() => {
+
+    comp.onChangeEv();
+    comp.change.subscribe((g: any)=>{
+      expect(comp.value).toEqual(g);
+    });
+  });
+
+  it('check onchnage method for emit data ',() => {
+
+    comp.onblur('event');
+    comp.onBlur.subscribe((g: any)=>{
+      expect(comp.value).toEqual(g);
+    });
+  });
 
   it('set errormsg', () => {
     comp.errormsg = 'data incorect';
