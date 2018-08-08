@@ -166,5 +166,9 @@ describe('amexio-email-input', () => {
     expect(comp.pattern).toEqual(comp._pattern);
   });
 
-
+  it('set pattern event check the data', () => {
+    comp.pattern;
+    comp.value != null;
+    expect(comp.value).not.toEqual(null);
+  });
 });
