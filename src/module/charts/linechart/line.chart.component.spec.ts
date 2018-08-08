@@ -58,8 +58,11 @@ describe('LINE CHART', () => {
 
             let obj = jasmine.any(Object);
 
-              comp.chartTitleTextStyle&&obj;
+              comp.chartTitleTextStyle()&&obj;
         }); 
+        it('showChart',()=>{
+            comp.showChart=true;
+        })
 
    }); 
 
