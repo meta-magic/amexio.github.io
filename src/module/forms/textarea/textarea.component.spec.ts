@@ -112,14 +112,20 @@ describe('TextArea ', () => {
   it('writeValue()', () => {
     comp.writeValue(fixture);
     expect(comp.value).toEqual(fixture);
-  })
+  });
   it('set Pattern',()=>{
     comp.pattern = comp.pattern;
     comp.regEx = new RegExp(comp.pattern);
-  })
+  });
   it('register on change', () => {
     let fn: any;
   comp.registerOnChange(fn);
      expect(comp['onChangeCallback']).toEqual(fn);
-   })
+   });
+
+it('register on touched', () => {
+  let fn: any;
+comp.registerOnTouched(fn);
+   expect(comp['onTouchedCallback']).toEqual(fn);
+ });
 });
