@@ -43,19 +43,35 @@ describe('TypeAhead', () => {
     expect(comp.helpInfoMsg).toEqual('data incorect<br/>');
   });
 
-  it('get errormsg', () => {
-    comp.errormsg = 'data incorect';
-    expect(comp.errormsg).toEqual(comp._errormsg);
-  });
+  // it('get errormsg', () => {
+  //   comp.errormsg = 'data incorect';
+  //   expect(comp.errormsg).toEqual('data incorect');
+  // });
+
   it('check for isValid', () => {
     comp.isValid = true;
     expect(comp.isValid).toEqual(true);
   });
+  it('check onblur()', () => {
+    comp.onBlur.subscribe((g: any) => {
+      expect(comp.value).toEqual(g);
+    });
+  });
+  it('check onFocus ', () => {
+    comp.showToolTip = true;
+    comp.posixUp = comp.focus;
+    comp.focus.subscribe((g: any) => {
+      expect(comp.value).toEqual(g);
+    });
+    it('variable posixUp', () => {
+      comp.posixUp = false;
+    })
+  });
   // it('onBlur()', () => {
   //   comp.onblur;
-    
+
   // });
-  
+
 
   //working 2 get minerrormsg
   // it('get minerrormsg', () => {
