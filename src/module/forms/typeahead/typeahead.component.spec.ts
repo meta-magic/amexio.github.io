@@ -51,6 +51,7 @@ describe('TypeAhead', () => {
     expect(comp.isValid).toEqual(true);
   });
   it('check onblur()', () => {
+    comp.onblur();
     comp.onBlur.subscribe((g: any) => {
       expect(comp.value).toEqual(g);
     });
