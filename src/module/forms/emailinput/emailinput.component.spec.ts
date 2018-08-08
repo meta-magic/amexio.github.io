@@ -28,18 +28,6 @@ describe('amexio-email-input', () => {
   //  // expect((<any>comp).onChangeCallback()).toEqual(noop);
   // });
 
-  it('check private variable showToolTip boolean', () => {
-    expect((<any>comp).showToolTip).toEqual(false);
-  });
-
-  it('conditions check of the onBlank', () => {
-    comp.onBlank({ 'touched': true });
-    (<any>comp).innerValue = null;
-    expect((<any>comp).innerValue).toEqual(null);
-    (<any>comp).innerValue = '';
-    expect((<any>comp).innerValue).toEqual('');
-    expect(comp.isValid).toEqual(jasmine.any(Boolean));
-  });
 
 
   it('condition check value is null or empty in onBlank method', () => {
@@ -57,10 +45,37 @@ describe('amexio-email-input', () => {
   });
 
 
+
+
+  it('check private variable showToolTip boolean', () => {
+    expect((<any>comp).showToolTip).toEqual(false);
+  });
+
+  it('conditions check of the onBlank function', () => {
+    comp.validateClasses({ 'touched': true });
+    comp.allowblank = true;
+    comp.isValid = true;
+    (<any>comp).innerValue = null;
+    expect((<any>comp).innerValue).toEqual(null);
+    (<any>comp).innerValue = '';
+    expect((<any>comp).innerValue).toEqual('');
+    expect(comp.isValid).toEqual(jasmine.any(Boolean));
+    
+   comp.validateClasses({'allowblank': true});
+   expect((<any>comp).allowblank).toEqual(true);
+   expect((<any>comp).isValid).toEqual(true);
+  });
+
+
   it('onfocus method check boolean value  allowblank is true', () => {
+    comp.onBlank({ 'touched': false });
      comp.allowblank = false;
+     comp.value = false;
+     comp.isValid = false;
     comp.validateClasses({'allowblank': false});
     expect((<any>comp).allowblank).toEqual(false);
+    expect((<any>comp).value).toEqual(false);
+    expect((<any>comp).isValid).toEqual(false);
   });
 
   
