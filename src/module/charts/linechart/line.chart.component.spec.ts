@@ -19,27 +19,30 @@ describe('LINE CHART', () => {
       fixture = TestBed.createComponent(LineChartComponent);
       comp = fixture.componentInstance;
     });
-
+//wrking
     it('on resize', () => {
         let event: any;
         comp.onResize(event);
         comp.drawChart();
     });
 
+//wrking
     it('get data', () => {
          expect(comp.data).toEqual(comp._data);
     }); 
-
+//not wrking
     it('set data with not null', () => {
         expect(comp.data).not.toBeNull
         comp.data = comp.data;
         comp.showChart = true;
    }); 
+//not wrking   
    it('set data with Null', () => {
     expect(comp.data).toBeNull;
     comp.showChart = false;
 }); 
 
+//not wrking
    it('drawchart function',() => {
        comp.drawChart();
        comp.showChart=true;
@@ -54,15 +57,20 @@ describe('LINE CHART', () => {
             chartArea: comp.chartAreaComponent ? comp.chartBackgroundStyle() : null,
           };
 
+
+         //not wrking 
           it('chartTitleTextStyle', () => {
 
             let obj = jasmine.any(Object);
-
-              comp.chartTitleTextStyle()&&obj;
+               comp.chartTitleTextStyle()&&obj;
         }); 
-        it('showChart',()=>{
-            comp.showChart=true;
-        })
+
+it('ngoninit()',() =>{
+comp.ngOnInit();
+expect(comp.hasLoaded).toEqual(false);
+comp.drawChart();
+
+});
 
    }); 
 
