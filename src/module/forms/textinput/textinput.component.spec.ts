@@ -10,6 +10,7 @@ import { AmexioFormIconComponent } from '../icon/icon.component';
 import { FormsModule } from '@angular/forms';
 import { IconLoaderService } from '../../../index'
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+
 describe('NUMBER INPUT', () => {
 
   let comp: AmexioTextInputComponent;
@@ -114,6 +115,18 @@ describe('NUMBER INPUT', () => {
     comp.minerrormsg = 'min error';
     comp.helpInfoMsg = comp.helpInfoMsg + '<b>Min Length<b/>: ' + comp.minerrormsg + '<br/>';
     expect(comp.helpInfoMsg).toContain(comp.minerrormsg);
+  });
+  it('check for isValid', () => {
+    comp.isValid = true;
+    expect(comp.isValid).toEqual(true);
+  });
+  it('noInnerValue()', () => {
+    comp.noInnerValue(fixture);
+    expect(comp.noInnerValue).toBeUndefined;
+  });
+  it('otherValidation()', () => {
+    comp.otherValidation(fixture);
+    expect(comp.otherValidation(fixture.nativeElement)).toBeUndefined;
   });
 
   // it('set validation flag', () => {
