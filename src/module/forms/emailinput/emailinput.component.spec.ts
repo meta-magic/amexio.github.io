@@ -104,7 +104,7 @@ describe('amexio-email-input', () => {
       expect(comp.value).toEqual(g);
     });
   });
-  it('check onchnage method for emit data ',() => {
+  it('check onInput method for emit data ',() => {
 
     comp.onInput('event');
     comp.input.subscribe((g: any)=>{
@@ -112,8 +112,16 @@ describe('amexio-email-input', () => {
     });
   });
 
+  it('check isComponentValid method for emit data ',() => {
 
-  it('check onchnage method for emit data ',() => {
+    comp.ngOnInit();
+
+    comp.isComponentValid.subscribe((g: any)=>{
+      expect(comp.allowblank).toEqual(g);
+    });
+  });
+
+  it('check onblur method for emit data ',() => {
 
     comp.onblur('event');
     comp.onBlur.subscribe((g: any)=>{
