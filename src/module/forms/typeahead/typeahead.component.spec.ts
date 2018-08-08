@@ -43,11 +43,9 @@ describe('TypeAhead', () => {
     expect(comp.helpInfoMsg).toEqual('data incorect<br/>');
   });
 
-  // it('get errormsg', () => {
-  //   comp.errormsg = 'data incorect';
-  //   expect(comp.errormsg).toEqual('data incorect');
-  // });
-
+  it('get errormsg', () => {
+    expect(comp.errormsg).toEqual(comp._errormsg);
+  });
   it('check for isValid', () => {
     comp.isValid = true;
     expect(comp.isValid).toEqual(true);
