@@ -194,4 +194,18 @@ it('Condition Check', () => {
 
 });
 
+it('initialize innervalue', () => {
+  comp.value='date'; 
+       expect(comp['innerValue']).toEqual(comp.value);
+    });
+
+    it('nextmonth', () => {
+      let str='plus';
+      comp['prevMonth(fixture)'];
+// comp.setDateData(str,1,fixture);
+ comp['disableddays(comp.disableddays)'];
+      
+         });    
+
+
 });
