@@ -45,6 +45,12 @@ describe('amexio-floating-button' , () => {
     expect((<any>comp).disabled).not.toEqual(true);
   });
   
+  it('check private variable relative false', () => {
+    comp.btnPositionCss();
+    //comp.top = 'true';
+    comp.verticalposition = null
+    expect((<any>comp).verticalposition).toEqual(null);
+  });
   
 
 });
