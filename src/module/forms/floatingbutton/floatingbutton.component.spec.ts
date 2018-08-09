@@ -31,6 +31,20 @@ describe('amexio-floating-button' , () => {
     //comp.top = 'true';
     expect((<any>comp).relative).toEqual(false);
   });
+  // it('check private variable absoluteposition true', () => {
+  //   comp.addCSSClasses();
+  //   let pat = (jasmine.any({ 'top': true, 'bottom': true, 'left': false}));
+  //   expect(pat).toEqual(true);
+  //   expect((<any>comp).absoluteposition).toEqual(true);
+  // });
+
+  it('check private variable relative false', () => {
+    comp.buttonClick('clickEvent');
+    //comp.top = 'true';
+    comp.disabled = '';
+    expect((<any>comp).disabled).not.toEqual(true);
+  });
+  
   
 
 });
