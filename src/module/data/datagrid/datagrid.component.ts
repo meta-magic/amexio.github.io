@@ -1,5 +1,3 @@
-
-
 /*
  Component Name : Amexio data grid
  Component Selector : <amexio-datagrid>
