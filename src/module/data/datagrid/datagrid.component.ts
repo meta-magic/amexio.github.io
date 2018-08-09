@@ -20,7 +20,7 @@ import { CommonDataService } from '../../services/data/common.data.service';
   <div class="datagrid">
   <div class="datatabletitle">
       <span> {{title}} </span>
-      <span *ngIf="enablecolumnfiter ? true:false" class="float-right" (click)="showToolTip = !showToolTip ; showGroupByColumn = false"
+      <span *ngIf="enablecolumnfilter ? true:false" class="float-right" (click)="showToolTip = !showToolTip ; showGroupByColumn = false"
           style=" cursor: pointer;">
           &nbsp;&nbsp;
           <span *ngIf="!show">&#9776;</span>
@@ -91,7 +91,7 @@ import { CommonDataService } from '../../services/data/common.data.service';
   </ng-container>
 
   <div>
-      <ng-container *ngIf="enablecolumnfiter ? true : false">
+      <ng-container *ngIf="enablecolumnfilter ? true : false">
           <span *ngIf="showToolTip" class="dropdown dropdown-right" style="width: 250px;">
               <ul class="dropdown-list">
                   <li class="list-items" *ngFor="let cols of columns;let i = index;" (click)="showToolTip = !showToolTip">
@@ -595,6 +595,16 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
   @Input('enable-column-fiter') enablecolumnfiter: boolean;
 
   /*
+   Properties
+   name : enable-column-filter
+   datatype : boolean
+   version : 4.0 onwards
+   default : true
+   description :  Set false to hide Column toggle functionality.
+   */
+  @Input('enable-column-filter') enablecolumnfilter: boolean;
+
+  /*
     Properties
     name : global-fiter
     datatype : boolean
@@ -702,7 +712,9 @@ description : Context Menu provides the list of menus on right click of row.
   }
 
   ngOnInit() {
-
+    if(this.enablecolumnfiter) {
+      this.enablecolumnfilter = this.enablecolumnfiter;
+    }
     this.isExpanded = true;
     this.iconclassKey = 'fa fa-plus';
 
