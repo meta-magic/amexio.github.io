@@ -71,6 +71,20 @@ describe('amexio-paginator', () => {
       comp.onPageChange.subscribe((g: any)=>{
         expect(comp.activePage).toEqual(g);
         });
+    });
+
+    it('check onFirstClick method ', () => {
+      comp.onLastClick();
+      comp.onPageChange.subscribe((g: any)=>{
+        expect(comp.activePage).toEqual(g);
+        });
+    });
+
+    it('check onFirstClick method ', () => {
+      comp.onPrevious();
+      comp.onPageChange.subscribe((g: any)=>{
+        expect(comp.activePage).toEqual(g);
+        });
     })
 
 
