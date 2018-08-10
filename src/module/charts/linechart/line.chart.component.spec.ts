@@ -6,6 +6,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CommonDataService } from '../../services/data/common.data.service';
 import { ChartLoaderService } from './../chart.loader.service';
 import { ChartTitleComponent } from '../charttitle/chart.title.component';
+declare var google: any;
 describe('LINE CHART', () => {
     //let ChartTitleComponent=new ChartTitleComponent()
     // let ChartTitleComponent = [{'name':'chart','title':'','position':'','color':'','fontname':'','fontsize':'','bold':false,'italic':''}];
@@ -27,15 +28,35 @@ describe('LINE CHART', () => {
     });
     it('show chart', () => {
         linechartcomp.showChart = false;
+        charttitlecomp.title='';
         expect(false).toBe(linechartcomp.showChart);
-        let newdata = [{ 'name': 'chart' }];
+        let newdata = [{ 'name': 'linechart' }];
         linechartcomp.data = newdata;
     });
     it('dont show chart', () => {
         let newdata;
-        linechartcomp.data = newdata ;
-        expect(false).toBe( linechartcomp.showChart);
-      });
+        linechartcomp.data = newdata;
+        expect(false).toBe(linechartcomp.showChart);
+    });
+    it('chartTitleTextStyle() properties',()=>{
+        charttitlecomp.color='';
+        charttitlecomp.fontname='';
+        charttitlecomp.fontsize=10;
+        charttitlecomp.bold=false;
+        charttitlecomp.position='';
+        charttitlecomp.title='';
+        charttitlecomp.italic=false;
+    })
+    // it('Draw Chart Test', () => {
+    //     linechartcomp.showChart = true;
+    //     let newdata = [{ name: 'linechart' }];
+    //     linechartcomp.data = newdata;
+    //     linechartcomp.drawChart();
+    //     expect(false).toBe(linechartcomp.hasLoaded);
+    //   //  google.visualization.events.addListener(this.chart, 'click', this.onClick);
+
+
+    // });
 
 
 
