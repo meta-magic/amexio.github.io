@@ -46,8 +46,10 @@ describe('amexio-paginator', () => {
     expect((<any>comp).fullPageSet.length).toEqual(2);
     comp.pages = 11;
     comp.initializePages();
-    
+    console.log('*********** '+ comp.fullPageSet);
+    console.log('0******* '+ comp.activePage);
     expect((<any>comp).fullPageSet.length).toEqual(11);
+    //expect((<any>comp).activePage.length).toEqual(11);
     
     expect((<any>comp).activePageIndex).toEqual(0);
     
@@ -59,6 +61,13 @@ describe('amexio-paginator', () => {
     // console.log('2'+ comp.activePage);
     
     });
+
+    it('check onFirstClick method ', () => {
+      comp.onFirstClick();
+      comp.onPageChange.subscribe((g: any)=>{
+        expect(comp.activePage).toEqual(g);
+        });
+    })
 
 
 });
