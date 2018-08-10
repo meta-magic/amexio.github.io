@@ -5,6 +5,7 @@ import { IconLoaderService } from '../../../index';
 import { AmexioButtonComponent } from './../buttons/button.component';
 import { AmexioFormIconComponent } from './../icon/icon.component';
 import { AmexioEmailInputComponent } from './emailinput.component';
+import { stringify } from 'querystring';
 
 describe('amexio-email-input', () => {
   let comp: AmexioEmailInputComponent;
@@ -174,26 +175,38 @@ describe('amexio-email-input', () => {
     expect(comp.pattern).toEqual(comp._pattern);
   });
 
-  it('set pattern event check the data', () => {
-    comp.pattern = "/\S+@\S+\.\S+/";
-    expect(comp._pattern).toEqual("/\S+@\S+\.\S+/");
-    expect(comp.value).not.toEqual(null);
 
+  it('set pattern event check the data', () => {
+    comp.pattern = '/\S+@\S+\.\S+/';
+    expect(comp._pattern).toEqual('/\S+@\S+\.\S+/');
+    expect(comp.value).not.toEqual(null);
     expect(comp.regEx).not.toEqual(null);
-    const regEx = new RegExp("/\S+@\S+\.\S+/");
+    const regEx = new RegExp('/\S+@\S+\.\S+/');
     expect(comp.regEx).toEqual(regEx);
   });
 
-  it('set onblank method check object data', () => {
-    let pat = (jasmine.any({ 'invalid': true, 'valid': true, 'dirty': false, 'touched': true }));
-    comp.onBlank(pat);
-    expect(comp.isValid).toBe(false);
-
-  });
-
-  // it('check validitity checkValidity is boolean',() => {
-  //   spyOn(comp.inputRef, 'checkValidity()').and.returnValue(true);
+  // it('set pattern event check null', () => {
+  //   comp.pattern = '';
+  //   expect(comp._pattern).toEqual('');
+  //   expect(comp.regEx).toEqual(null);
+  //   expect(comp.regEx).not.toEqual(comp._pattern);
   // });
+
+
+  // it('set onblank method check object data', () => {
+  //   let pat = (jasmine.any({ 'invalid': true, 'valid': true, 'dirty': false, 'touched': true }));
+  //   comp.onBlank(pat);
+  //   expect(comp.isValid).toBe(true);
+  // });
+
+  it('check  isvalid is boolean', () => {
+    const blank = { invalid: true, valid: true, dirty: true, touched: true };
+    comp.value ='kedar@metamagic.in';
+    comp.allowblank = true;
+    const inData = comp.onBlank(blank);
+    
+    expect(inData).toEqual({'input-control-error':true,'input-control-success':true});
+  });
 
 
 });
