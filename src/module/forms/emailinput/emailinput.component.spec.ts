@@ -204,9 +204,10 @@ describe('amexio-email-input', () => {
     comp.value ='kedar@metamagic.in';
     comp.allowblank = true;
     const inData = comp.onBlank(blank);
-    
     expect(inData).toEqual({'input-control-error':true,'input-control-success':true});
+
+
+    const validity = {'nativeElement':{'validity':{'valid':true}}};
+    expect(validity.nativeElement.validity.valid).toEqual(true);
   });
-
-
 });
