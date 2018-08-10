@@ -177,6 +177,7 @@ describe('amexio-email-input', () => {
 
 
   it('set pattern event check the data', () => {
+    expect(comp.pattern).not.toBeNull();
     comp.pattern = '/\S+@\S+\.\S+/';
     expect(comp._pattern).toEqual('/\S+@\S+\.\S+/');
     expect(comp.value).not.toEqual(null);
