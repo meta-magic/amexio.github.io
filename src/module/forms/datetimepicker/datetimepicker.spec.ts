@@ -228,22 +228,22 @@ it('initialize innervalue', () => {
 // comp['disableddays'](comp.);
 //          });    
 
-  it('resetselection()', () => {
-    let dateObj = new Date("Thu Jul 25 2017 00:00:00 GMT+0530 (IST)") ; 
-    let  daysArray: any =[];
-    let  rowDays: any;
-    const day: any = {
-      date: null, selected: false, isCurrentMonth: null, isDisabled: false,
-    };
-    day.date = new Date(dateObj.getTime());
-    comp.resetSelection(dateObj); 
- expect(day.date.getTime()).toEqual(dateObj.getTime());
- day.selected = true;
-expect(day.selected).toEqual(true);
- day.date.setTime(1332403882588);
-day.selected = false;
-expect(day.selected).toEqual(false);
-     });  
+//   it('resetselection()', () => {
+//     let dateObj = new Date("Thu Jul 25 2017 00:00:00 GMT+0530 (IST)") ; 
+//     let  daysArray: any =[];
+//     let  rowDays: any;
+//     const day: any = {
+//       date: null, selected: false, isCurrentMonth: null, isDisabled: false,
+//     };
+//     day.date = new Date(dateObj.getTime());
+//     comp.resetSelection(dateObj); 
+//  expect(day.date.getTime()).toEqual(dateObj.getTime());
+//  day.selected = true;
+// expect(day.selected).toEqual(true);
+//  day.date.setTime(1332403882588);
+// day.selected = false;
+// expect(day.selected).toEqual(false);
+//      });  
 
 
 
