@@ -82,7 +82,6 @@ describe('LINE CHART', () => {
     });
 
     it('Draw Chart Test', () => {
-        console.log('<<<<<<<<<<<<<<< Testing draw chart test >>>>>>>>>>>>>>>>> ');
         const script = document.createElement('script');
         script.type = 'text/javascript';
         script.src = 'https://www.gstatic.com/charts/loader.js';
