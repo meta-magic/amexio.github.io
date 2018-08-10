@@ -10,7 +10,7 @@ import { stringify } from 'querystring';
 
 describe('amexio-paginator', () => {
   it('true is true', () => expect(true).toBe(true));
-  
+
   let comp: AmexioPaginatorComponent;
   let fixture: ComponentFixture<AmexioPaginatorComponent>;
 
@@ -28,15 +28,15 @@ describe('amexio-paginator', () => {
     expect((<any>comp).fullPageSet.length).toEqual(0);
     expect((<any>comp).activePages.length).toEqual(0);
     expect((<any>comp).pageIndex.length).toEqual(0);
-    
+
   });
-  it('ngoninit check ',() => {
+  it('ngoninit check ', () => {
     comp.ngOnInit();
     expect('medium').toEqual(comp.size);
 
   });
 
-  it('init pages change',() => {
+  it('init pages change', () => {
 
 
     comp.rows = 10;
@@ -49,43 +49,53 @@ describe('amexio-paginator', () => {
     expect((<any>comp).fullPageSet.length).toEqual(11);
     expect((<any>comp).activePageIndex).toEqual(0);
     expect((<any>comp).currentRowIndex).toEqual(0);
-    
-    // expect((<any>comp).activePages.length).toEqual(0);
-    
-    // expect((<any>comp).pageIndex.length).toEqual(0);
-    
-    });
 
-    it('init pages is null',() => {
-      comp.initializePages();
-      comp.rows = null;
-      comp.activePage = 0;
-      expect(comp.rows).toEqual(null);
+    // expect((<any>comp).activePages.length).toEqual(0);
+
+    // expect((<any>comp).pageIndex.length).toEqual(0);
+
+  });
+
+  it('init pages is null', () => {
+    comp.initializePages();
+    comp.rows = null;
+    comp.activePage = 0;
+    expect(comp.rows).toEqual(null);
     expect((<any>comp).fullPageSet.length).toEqual(0);
     expect((<any>comp).activePage).toEqual(0);
-    
+
+  });
+
+  it('check onFirstClick method ', () => {
+    comp.onFirstClick();
+    comp.onPageChange.subscribe((g: any) => {
+      expect(comp.activePage).toEqual(g);
+    });
+  });
+
+  it('check onFirstClick method ', () => {
+    comp.onLastClick();
+    comp.onPageChange.subscribe((g: any) => {
+      expect(comp.activePage).toEqual(g);
+    });
+  });
+
+  it('check onFirstClick method ', () => {
+    comp.onPrevious();
+    comp.activePageIndex = 2;
+    comp.onPageChange.subscribe((g: any) => {
+      expect(comp.activePage).toEqual(g);
     });
 
-    it('check onFirstClick method ', () => {
-      comp.onFirstClick();
-      comp.onPageChange.subscribe((g: any)=>{
-        expect(comp.activePage).toEqual(g);
-        });
-    });
+  });
+  it('check previous method ', () => {
+    comp.onPrevious();
+    comp.activePageIndex = 0;
+    const index = comp.fullPageSet.indexOf(this.activePage) 
+    expect(index).toEqual(-1);
+  });
 
-    it('check onFirstClick method ', () => {
-      comp.onLastClick();
-      comp.onPageChange.subscribe((g: any)=>{
-        expect(comp.activePage).toEqual(g);
-        });
-    });
 
-    it('check onFirstClick method ', () => {
-      comp.onPrevious();
-      comp.onPageChange.subscribe((g: any)=>{
-        expect(comp.activePage).toEqual(g);
-        });
-    })
 
 
 });
