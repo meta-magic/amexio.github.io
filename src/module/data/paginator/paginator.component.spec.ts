@@ -30,5 +30,35 @@ describe('amexio-paginator', () => {
     expect((<any>comp).pageIndex.length).toEqual(0);
     
   });
+  it('ngoninit check ',() => {
+    comp.ngOnInit();
+    expect('medium').toEqual(comp.size);
+
+  });
+
+  it('init pages change',() => {
+
+
+    comp.rows = 10;
+    comp.pages = 2;
+    comp.initializePages();
+    expect(comp.rows).toEqual(2);
+    expect((<any>comp).fullPageSet.length).toEqual(2);
+    comp.pages = 11;
+    comp.initializePages();
+    
+    expect((<any>comp).fullPageSet.length).toEqual(11);
+    
+    expect((<any>comp).activePageIndex).toEqual(0);
+    
+    expect((<any>comp).currentRowIndex).toEqual(0);
+    
+    // expect((<any>comp).activePages.length).toEqual(0);
+    
+    // expect((<any>comp).pageIndex.length).toEqual(0);
+    // console.log('2'+ comp.activePage);
+    
+    });
+
 
 });
