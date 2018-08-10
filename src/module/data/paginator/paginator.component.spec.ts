@@ -46,19 +46,23 @@ describe('amexio-paginator', () => {
     expect((<any>comp).fullPageSet.length).toEqual(2);
     comp.pages = 11;
     comp.initializePages();
-    console.log('*********** '+ comp.fullPageSet);
-    console.log('0******* '+ comp.activePage);
     expect((<any>comp).fullPageSet.length).toEqual(11);
-    //expect((<any>comp).activePage.length).toEqual(11);
-    
     expect((<any>comp).activePageIndex).toEqual(0);
-    
     expect((<any>comp).currentRowIndex).toEqual(0);
     
     // expect((<any>comp).activePages.length).toEqual(0);
     
     // expect((<any>comp).pageIndex.length).toEqual(0);
-    // console.log('2'+ comp.activePage);
+    
+    });
+
+    it('init pages is null',() => {
+      comp.initializePages();
+      comp.rows = null;
+      comp.activePage = 0;
+      expect(comp.rows).toEqual(null);
+    expect((<any>comp).fullPageSet.length).toEqual(0);
+    expect((<any>comp).activePage).toEqual(0);
     
     });
 
