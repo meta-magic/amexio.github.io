@@ -4,8 +4,9 @@ import { AmexioDateTimePickerComponent } from './datetimepicker.component';
 import { By } from '@angular/platform-browser';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import {FormsModule} from '@angular/forms';
+import {ChangeDetectorRef, ElementRef} from '@angular/core';
 import { IconLoaderService } from '../../../index';
-
+import { DebugElement } from '@angular/core';
 describe('amexio-date-time-picker' , () => {
 let comp: AmexioDateTimePickerComponent;
 let fixture: ComponentFixture<AmexioDateTimePickerComponent>;
@@ -199,13 +200,51 @@ it('initialize innervalue', () => {
        expect(comp['innerValue']).toEqual(comp.value);
     });
 
-    it('nextmonth', () => {
-      let str='plus';
-      comp['prevMonth(fixture)'];
-// comp.setDateData(str,1,fixture);
- comp['disableddays(comp.disableddays)'];
-      
-         });    
+    // it('setDateData()', () => {
+    // let  state: string, mon: number, event: any = 'MouseEvent {isTrusted: true, screenX: 280, screenY: 224, clientX: 236, clientY: 145, …}';
+
+    // comp.setDateData(state, mon, event);
+    
+    // const d = new Date(comp.currrentDate.getFullYear(), comp.currrentDate.getMonth(), comp.currrentDate.getDate());
+    // const min = new Date(comp.minDate);
+    // const max = new Date(comp.maxDate);
+     
+    // state='plus';
+    // expect(state).toEqual('plus');
+    // comp.setPlusData(d, max, mon);
+    // state='minus';
+    // expect(state).toEqual('minus');
+    // comp.setPlusData(d, min, mon);
+
+    // expect(comp.currrentDate).toBe(d);
+    // comp.initDate();
+    // event.stopPropagation();
+    //      });
+
+
+//     it('nextmonth', () => {
+//       comp['nextMonth'](fixture);
+// comp.setDateData('plus', 1, event);
+// comp['disableddays'](comp.);
+//          });    
+
+  it('resetselection()', () => {
+    let dateObj = new Date("Thu Jul 25 2017 00:00:00 GMT+0530 (IST)") ; 
+    let  daysArray: any =[];
+    let  rowDays: any;
+    const day: any = {
+      date: null, selected: false, isCurrentMonth: null, isDisabled: false,
+    };
+    day.date = new Date(dateObj.getTime());
+    comp.resetSelection(dateObj); 
+ expect(day.date.getTime()).toEqual(dateObj.getTime());
+ day.selected = true;
+expect(day.selected).toEqual(true);
+ day.date.setTime(1332403882588);
+day.selected = false;
+expect(day.selected).toEqual(false);
+     });  
+
 
 
 });
