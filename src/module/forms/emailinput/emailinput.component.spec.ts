@@ -60,19 +60,19 @@ describe('amexio-email-input', () => {
     (<any>comp).innerValue = '';
     expect((<any>comp).innerValue).toEqual('');
     expect(comp.isValid).toEqual(jasmine.any(Boolean));
-    
-   comp.validateClasses({'allowblank': true});
-   expect((<any>comp).allowblank).toEqual(true);
-   expect((<any>comp).isValid).toEqual(true);
+
+    comp.validateClasses({ 'allowblank': true });
+    expect((<any>comp).allowblank).toEqual(true);
+    expect((<any>comp).isValid).toEqual(true);
   });
 
 
   it('onfocus method check boolean value  allowblank is true', () => {
     comp.onBlank({ 'touched': false });
-     comp.allowblank = false;
-     comp.value = false;
-     comp.isValid = false;
-    comp.validateClasses({'allowblank': false});
+    comp.allowblank = false;
+    comp.value = false;
+    comp.isValid = false;
+    comp.validateClasses({ 'allowblank': false });
     expect((<any>comp).allowblank).toEqual(false);
     expect((<any>comp).value).toEqual(false);
     expect((<any>comp).isValid).toEqual(false);
@@ -92,39 +92,39 @@ describe('amexio-email-input', () => {
   });
 
   it('check method onblur', () => {
-    comp.onblur({'inp': false});
-   comp.showToolTip = false;
+    comp.onblur({ 'inp': false });
+    comp.showToolTip = false;
     expect((<any>comp).showToolTip).toEqual(false);
   });
 
-  it('check onchnage method for emit data ',() => {
+  it('check onchnage method for emit data ', () => {
 
     comp.onChangeEv();
-    comp.change.subscribe((g: any)=>{
+    comp.change.subscribe((g: any) => {
       expect(comp.value).toEqual(g);
     });
   });
-  it('check onInput method for emit data ',() => {
+  it('check onInput method for emit data ', () => {
 
     comp.onInput('event');
-    comp.input.subscribe((g: any)=>{
+    comp.input.subscribe((g: any) => {
       expect(comp.value).toEqual(g);
     });
   });
 
-  it('check isComponentValid method for emit data ',() => {
+  it('check isComponentValid method for emit data ', () => {
 
     comp.ngOnInit();
 
-    comp.isComponentValid.subscribe((g: any)=>{
+    comp.isComponentValid.subscribe((g: any) => {
       expect(comp.allowblank).toEqual(g);
     });
   });
 
-  it('check onblur method for emit data ',() => {
+  it('check onblur method for emit data ', () => {
 
     comp.onblur('event');
-    comp.onBlur.subscribe((g: any)=>{
+    comp.onBlur.subscribe((g: any) => {
       expect(comp.value).toEqual(g);
     });
   });
@@ -175,15 +175,24 @@ describe('amexio-email-input', () => {
   });
 
   it('set pattern event check the data', () => {
-    comp.pattern;
-    comp.value != null;
-    expect(comp.value).not.toEqual(null);
+    comp.pattern = "/\S+@\S+\.\S+/";
+    expect(comp._pattern).toEqual("/\S+@\S+\.\S+/")
+
+    expect(comp.regEx).not.toEqual(null);
+    const regEx = new RegExp("/\S+@\S+\.\S+/");
+    expect(comp.regEx).toEqual(regEx);
   });
 
   it('set onblank method check object data', () => {
-    let pat = (jasmine.any({'invalid':true,'valid':true,'dirty':false,'touched':true}));
+    let pat = (jasmine.any({ 'invalid': true, 'valid': true, 'dirty': false, 'touched': true }));
     comp.onBlank(pat);
     expect(comp.isValid).toBe(false);
 
   });
+
+  // it('check validitity checkValidity is boolean',() => {
+  //   spyOn(comp.inputRef, 'checkValidity()').and.returnValue(true);
+  // });
+
+
 });

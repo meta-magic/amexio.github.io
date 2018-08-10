@@ -138,7 +138,8 @@ export class AmexioEmailInputComponent implements ControlValueAccessor, OnInit {
   @Input('pattern')
   set pattern(value: string) {
     if (value != null) {
-      this.regEx = new RegExp(this.pattern);
+      this._pattern = value;
+      this.regEx = new RegExp(this._pattern);
     }
   }
   /*
