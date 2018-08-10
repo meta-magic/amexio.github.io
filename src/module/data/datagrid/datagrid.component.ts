@@ -1,5 +1,3 @@
-
-
 /*
  Component Name : Amexio data grid
  Component Selector : <amexio-datagrid>
@@ -740,7 +738,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit {
   }
 
   ngOnInit() {
-    if(this.enablecolumnfiter) {
+    if (this.enablecolumnfiter) {
       this.enablecolumnfilter = this.enablecolumnfiter;
     }
     this.isExpanded = true;
