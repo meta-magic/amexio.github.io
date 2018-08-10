@@ -207,8 +207,8 @@ describe('amexio-email-input', () => {
     const inData = comp.onBlank(blank);
     expect(inData).toEqual({'input-control-error':true,'input-control-success':true});
 
-
-    const validity = {'nativeElement':{'validity':{'valid':true}}};
-    expect(validity.nativeElement.validity.valid).toEqual(true);
+    comp.inputRef = {'nativeElement':{'validity':{'valid':true}}};
+    const validity = comp.checkValidity();
+    expect(validity).toEqual(true);
   });
 });
