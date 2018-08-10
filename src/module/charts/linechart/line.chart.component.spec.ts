@@ -6,8 +6,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CommonDataService } from '../../services/data/common.data.service';
 import { ChartLoaderService } from './../chart.loader.service';
 import { ChartTitleComponent } from '../charttitle/chart.title.component';
-import {ChartLegendComponent} from '../chartlegend/chart.legend.component';
-import {ChartAreaComponent} from '../chartarea/chart.area.component';
+import { ChartLegendComponent } from '../chartlegend/chart.legend.component';
+import { ChartAreaComponent } from '../chartarea/chart.area.component';
 declare var google: any;
 describe('LINE CHART', () => {
     //let ChartTitleComponent=new ChartTitleComponent()
@@ -15,31 +15,31 @@ describe('LINE CHART', () => {
     let linechartcomp: LineChartComponent;
     let charttitlecomp: ChartTitleComponent;
     let chartlegendcomp: ChartLegendComponent;
-    let  chartareacomp: ChartAreaComponent;
+    let chartareacomp: ChartAreaComponent;
     let linefixture: ComponentFixture<LineChartComponent>;
     let charttitlefixture: ComponentFixture<ChartTitleComponent>;
-    let chartlegendfixture:ComponentFixture<ChartLegendComponent>;
-    let chartareafixture:ComponentFixture<ChartAreaComponent>;
+    let chartlegendfixture: ComponentFixture<ChartLegendComponent>;
+    let chartareafixture: ComponentFixture<ChartAreaComponent>;
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule],
-            declarations: [LineChartComponent, ChartTitleComponent,ChartLegendComponent,ChartAreaComponent],
-            providers: [ ChartLoaderService]
+            declarations: [LineChartComponent, ChartTitleComponent, ChartLegendComponent, ChartAreaComponent],
+            providers: [ChartLoaderService]
         });
         linefixture = TestBed.createComponent(LineChartComponent);
         charttitlefixture = TestBed.createComponent(ChartTitleComponent);
-        chartlegendfixture=TestBed.createComponent(ChartLegendComponent);
-        chartareafixture=TestBed.createComponent(ChartAreaComponent);
+        chartlegendfixture = TestBed.createComponent(ChartLegendComponent);
+        chartareafixture = TestBed.createComponent(ChartAreaComponent);
         linechartcomp = linefixture.componentInstance;
         charttitlecomp = charttitlefixture.componentInstance;
-        chartlegendcomp=chartlegendfixture.componentInstance;
-        chartareacomp=chartareafixture.componentInstance;
+        chartlegendcomp = chartlegendfixture.componentInstance;
+        chartareacomp = chartareafixture.componentInstance;
         linechartcomp.chartTitleComponent = charttitlecomp;
 
     });
     it('show chart', () => {
         linechartcomp.showChart = false;
-        charttitlecomp.title='';
+        charttitlecomp.title = '';
         expect(false).toBe(linechartcomp.showChart);
         let newdata = [{ 'name': 'linechart' }];
         linechartcomp.data = newdata;
@@ -49,34 +49,43 @@ describe('LINE CHART', () => {
         linechartcomp.data = newdata;
         expect(false).toBe(linechartcomp.showChart);
     });
-    it('chartTitleTextStyle() properties',()=>{
-        charttitlecomp.color='';
-        charttitlecomp.fontname='';
-        charttitlecomp.fontsize=10;
-        charttitlecomp.bold=false;
-        charttitlecomp.position='';
-        charttitlecomp.title='';
-        charttitlecomp.italic=false;
+    it('chartTitleTextStyle() properties', () => {
+        charttitlecomp.color = '';
+        charttitlecomp.fontname = '';
+        charttitlecomp.fontsize = 10;
+        charttitlecomp.bold = false;
+        charttitlecomp.position = '';
+        charttitlecomp.title = '';
+        charttitlecomp.italic = false;
     });
-    it('chartLegendStyle()',()=>{
-        chartlegendcomp.position='';
-        chartlegendcomp.alignment='';
-        chartlegendcomp.color='';
-        chartlegendcomp.fontname='';
-        chartlegendcomp.fontsize='';
-        chartlegendcomp.bold=false;
+    it('chartLegendStyle() properties', () => {
+        chartlegendcomp.position = '';
+        chartlegendcomp.alignment = '';
+        chartlegendcomp.color = '';
+        chartlegendcomp.fontname = '';
+        chartlegendcomp.fontsize = '';
+        chartlegendcomp.bold = false;
         chartlegendcomp.maxlines;
     });
-    it('chartBackgroundStyle()',()=>{
-        chartareacomp.chartbackgroundcolor='';
-        chartareacomp.chartheight=10;
-        chartareacomp.chartwidth=10;
-        chartareacomp.leftposition=10;
-        chartareacomp.topposition=null;
+    it('chartBackgroundStyle() properties', () => {
+        chartareacomp.chartbackgroundcolor = '';
+        chartareacomp.chartheight = 10;
+        chartareacomp.chartwidth = 10;
+        chartareacomp.leftposition = 10;
+        chartareacomp.topposition = null;
 
     });
+    it('drawchart()', () => {
+        linechartcomp.drawChart();
+        linechartcomp.chartTitleComponent.title = null;
 
-    it('get data method',()=>{
+    });
+    it('chartTitleTextStyle()', () => {
+        linechartcomp.chartTitleTextStyle();
+        linechartcomp.chartTitleComponent.color = null;
+    });
+
+    it('get data method', () => {
         linechartcomp.data;
         expect(linechartcomp.data).toBe(linechartcomp._data);
     });
@@ -93,14 +102,16 @@ describe('LINE CHART', () => {
             linechartcomp.data = newdata;
             linechartcomp.drawChart();
             expect(false).toBe(linechartcomp.hasLoaded);
-    };
-
-    
-
-    }); 
+        }
+    });
 
 
 
-});
+
+}); 
+
+
+
+
 
 
