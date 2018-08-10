@@ -49,7 +49,7 @@ describe('LINE CHART', () => {
     })
     it('get data method',()=>{
         linechartcomp.data;
-        expect(linechartcomp._data).toBe(linechartcomp.data);
+        expect(linechartcomp.data).toBe(linechartcomp._data);
     })
     // it('Draw Chart Test', () => {
     //     linechartcomp.showChart = true;
