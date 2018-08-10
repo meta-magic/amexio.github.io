@@ -47,6 +47,10 @@ describe('LINE CHART', () => {
         charttitlecomp.title='';
         charttitlecomp.italic=false;
     })
+    it('get data method',()=>{
+        linechartcomp.data;
+        expect(linechartcomp._data).toBe(linechartcomp.data);
+    })
     // it('Draw Chart Test', () => {
     //     linechartcomp.showChart = true;
     //     let newdata = [{ name: 'linechart' }];
