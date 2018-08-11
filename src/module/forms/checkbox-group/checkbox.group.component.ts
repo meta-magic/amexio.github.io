@@ -258,7 +258,6 @@ description : fire when check box click
     if(rowData.hasOwnProperty('disabled') && !rowData.disabled){
       rowData[this.valuefield] = !rowData[this.valuefield];
       this.viewData.forEach((opt: any) => {
-        console.log(opt[this.valuefield]);
       if(opt[this.valuefield]) {
         this.selectedCheckBox.push(opt);
       }
