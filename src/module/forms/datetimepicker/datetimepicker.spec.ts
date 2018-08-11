@@ -166,7 +166,7 @@ it('Condition Check', () => {
   comp.initDate();
   expect('').toEqual('');
 
-  comp.writeValue(11);
+ // comp.writeValue(11);
 
   comp.disableYearFlag();
 
