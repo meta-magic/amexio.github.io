@@ -216,14 +216,15 @@ description : Name of key inside response data to display on ui.
     }
   }
   setSelectedCheckBox(rowData: any, event: any) {
+    this.selectedCheckBox = [];
     if (rowData.hasOwnProperty('disabled') && !rowData.disabled) {
       rowData[this.valuefield] = !rowData[this.valuefield];
-      if (rowData[this.valuefield]) {
-        this.selectedCheckBox.push(rowData);
-      } else {
-        const indexOf = this.selectedCheckBox.indexOf(rowData);
-        this.selectedCheckBox[indexOf] = [];
-      }
+      this.viewData.forEach((opt: any) => {
+        console.log(opt[this.valuefield]);
+        if (opt[this.valuefield]) {
+          this.selectedCheckBox.push(opt);
+        }
+      });
       this.emitSelectedRows();
     }
   }
