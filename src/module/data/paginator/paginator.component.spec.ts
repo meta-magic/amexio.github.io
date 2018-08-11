@@ -95,6 +95,12 @@ describe('amexio-paginator', () => {
     expect(index).toEqual(-1);
   });
 
+  it('showcolumnoptions method check',() => {
+
+    comp.showColumnOptions();
+    expect(comp.show).toEqual(true);
+  });
+
 
 
 
