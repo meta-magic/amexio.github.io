@@ -120,7 +120,12 @@ describe('HISTOGRAM CHART', () => {
         const chartbgstyle = histochartcomp.chartBackground();
         //const json1 = {"backgroundcolor":null,"left":null,"top":null,"height":50,"width":100}
         //console.log(JSON.stringify(chartbgstyle));
-    })
+    });
+
+    it('get data method', () => {
+        histochartcomp.data;
+        expect( histochartcomp.data).toBe( histochartcomp._data);
+    });
     // it('ngAfterContentInit()',()=>{
     //    // linechartcomp.ngAfterContentInit();
     //    // expect(linechartcomp.chartLegendArray).toEqual(linechartcomp.chartLegendComp.length[1]);
@@ -135,20 +140,20 @@ describe('HISTOGRAM CHART', () => {
     //     expect(linechartcomp.data).toBe(linechartcomp._data);
     // });
 
-    // it('Draw Chart Test', () => {
-    //     const script = document.createElement('script');
-    //     script.type = 'text/javascript';
-    //     script.src = 'https://www.gstatic.com/charts/loader.js';
-    //     script.async = true;
-    //     script.defer = true;
-    //     script.onload = () => {
-    //         linechartcomp.showChart = true;
-    //         let newdata = [{ name: 'linechart' }];
-    //         linechartcomp.data = newdata;
-    //         linechartcomp.drawChart();
-    //         expect(false).toBe(linechartcomp.hasLoaded);
-    //     }
-    // });
+    it('Draw Chart Test', () => {
+        const script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = 'https://www.gstatic.com/charts/loader.js';
+        script.async = true;
+        script.defer = true;
+        script.onload = () => {
+            histochartcomp.showChart = true;
+            let newdata = [{ name: 'linechart' }];
+            histochartcomp.data = newdata;
+            histochartcomp.drawChart();
+            expect(false).toBe(histochartcomp.hasLoaded);
+        }
+    });
 }); 
 
 
