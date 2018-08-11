@@ -84,19 +84,26 @@ describe('LINE CHART', () => {
     });
     it('chartTitleTextStyle()', () => {
         linechartcomp.chartTitleTextStyle();
-        linechartcomp.chartTitleComponent.color = null;
-        linechartcomp.chartTitleComponent.fontname=null;
-        linechartcomp.chartTitleComponent.fontsize=null;
-        linechartcomp.chartTitleComponent.bold=null;
-        linechartcomp.chartTitleComponent.italic=null;
+        linechartcomp.chartTitleComponent.color = 'red';
+        linechartcomp.chartTitleComponent.fontname='times new roman';
+        linechartcomp.chartTitleComponent.fontsize=5;
+        linechartcomp.chartTitleComponent.bold=true;
+        linechartcomp.chartTitleComponent.italic=true;
+        const charttextstyle=linechartcomp.chartTitleTextStyle();
+       // console.log(JSON.stringify(charttextstyle));
     });
     it('chartLegendStyle()',()=>{
-    linechartcomp.chartLengendComponent.position;
-      linechartcomp.chartLengendComponent.maxlines=null;
-        linechartcomp.chartLengendComponent.color=null;
-        linechartcomp.chartLengendComponent.fontsize=null;
-        linechartcomp.chartLengendComponent.alignment=null;
-        linechartcomp.chartLengendComponent.fontname=null;
+    linechartcomp.chartLengendComponent.position='left';
+      linechartcomp.chartLengendComponent.maxlines=5;
+        linechartcomp.chartLengendComponent.color='black';
+        linechartcomp.chartLengendComponent.fontsize='12';
+        linechartcomp.chartLengendComponent.alignment='center';
+        linechartcomp.chartLengendComponent.fontname='times';
+        linechartcomp.chartLengendComponent.bold=true;
+        const chartlegendstyle=linechartcomp.chartLegendStyle();
+        // const json1 = {"position":null,"maxLines":5,"textStyle":{"color":"black","fontsize":"12","fontName":"times","bold":null,"alignment":"center"}}
+        //console.log(JSON.stringify(chartlegendstyle));
+        // expect(chartlegendstyle).toEqual(json1);
 
     })
     it('chartBackgroundStyle()',()=>{
