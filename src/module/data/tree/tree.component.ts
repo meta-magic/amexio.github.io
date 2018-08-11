@@ -4,7 +4,7 @@
 
 
 /*
-Component Name : Amexio tree filter 
+Component Name : Amexio tree filter
 Component Selector : <amexio-tree-filter-view>
 Component Description : A Expandable Tree Component for Angular, having Filtering functionality.
 */
@@ -17,7 +17,7 @@ import { CommonDataService } from "../../services/data/common.data.service";
 export class AmexioTreeViewComponent {
   private componentLoaded: boolean;
   /*
-Properties 
+Properties
 name : data
 datatype : any
 version : 4.0 onwards
@@ -37,7 +37,7 @@ _data: any;
  }
 
   /*
-Properties 
+Properties
 name : http-url
 datatype : string
 version : 4.0 onwards
@@ -47,7 +47,7 @@ description : REST url for fetching data.
   @Input('http-url') httpurl: string;
 
   /*
-Properties 
+Properties
 name : http-method
 datatype : string
 version : 4.0 onwards
@@ -57,7 +57,7 @@ description : Type of HTTP call, POST,GET etc.
   @Input('http-method') httpmethod: string;
 
   /*
-Properties 
+Properties
 name : data-reader
 datatype : string
 version : 4.0 onwards
@@ -67,7 +67,7 @@ description : Key in JSON Datasource for records.
   @Input('data-reader') datareader: string;
 
   /*
-  Events 
+  Events
   name : nodeClick
   datatype : none
   version : none
@@ -77,7 +77,7 @@ description : Key in JSON Datasource for records.
   @Output() nodeClick: any = new EventEmitter<any>();
 
   /*
-Properties 
+Properties
 name : enable-checkbox
 datatype : false
 version : 4.0 onwards
@@ -87,7 +87,7 @@ description : Enables checkbox for each row, this allows user for multi selectio
   @Input('enable-checkbox') enablecheckbox = false;
 
   /*
-Properties 
+Properties
 name : templates
 datatype : any
 version : 4.0 onwards
@@ -97,7 +97,7 @@ description : user can add any template to tree
   @Input() templates: any;
 
   /*
-  Properties 
+  Properties
   name : enable-drag
   datatype : boolean
   version : 5.0.0 onwards
@@ -107,7 +107,7 @@ description : user can add any template to tree
   @Input('enable-drag') enabledrag: boolean;
 
   /*
-  Properties 
+  Properties
   name : enable-drop
   datatype : boolean
   version : 5.0.0 onwards
@@ -117,7 +117,7 @@ description : user can add any template to tree
   @Input("enable-drop") enabledrop: boolean = false;
 
   /*
-Properties 
+Properties
 name : across-tree
 datatype : boolean
 version : 5.0.0 onwards
@@ -132,7 +132,7 @@ name :  badge
 datatype : boolean
 version : 5.0.0 onwards
 default : false
-description : Describes the badge value that has to be displayed tree node 
+description : Describes the badge value that has to be displayed tree node
 */
   @Input('badge') badge: boolean;
 
@@ -315,13 +315,13 @@ description : Describes the badge value that has to be displayed tree node
       if (dragData.data == node || node.leaf == true) {
         event.dataTransfer.dropEffect = "none"
       }
-      else {
+      else if(this.enabledrop) {
         event.target.style.border = "3px dotted green";
       }
     } else {
       if (node.leaf == true) {
         event.dataTransfer.dropEffect = "none"
-      } else {
+      } else if(this.enabledrop) {
         event.target.style.border = "3px dotted green";
       }
     }
@@ -331,14 +331,17 @@ description : Describes the badge value that has to be displayed tree node
   }
 
   getDropNode(dragData: any, node: any, event: any) {
-    dragData.data.children.forEach((child: any) => {
-      if (JSON.stringify(child) == JSON.stringify(node) || node.leaf == true) {
-        event.dataTransfer.dropEffect = "none"
-      }
-      else if (child.hasOwnProperty('children')) {
-        this.getDropNode(child.children, node, event);
-      }
-    });
+    if(dragData.data && dragData.data.children && dragData.data.children.length > 0 ) {
+      dragData.data.children.forEach((child: any) => {
+        if (JSON.stringify(child) == JSON.stringify(node) || node.leaf == true) {
+          event.dataTransfer.dropEffect = "none"
+        }
+        else if (child.hasOwnProperty('children')) {
+          this.getDropNode(child.children, node, event);
+        }
+      });
+    }
+
   }
 
 
