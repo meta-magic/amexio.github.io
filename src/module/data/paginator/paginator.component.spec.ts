@@ -141,12 +141,19 @@ describe('amexio-paginator', () => {
     expect(comp.currentRow).toEqual(rowNumber);
   });
 
+
   it('check previous method ', () => {
     comp.onPrevious();
     comp.activePageIndex = 0;
     const index = comp.fullPageSet.indexOf(this.activePage) 
     expect(index).toEqual(-1);
   });
+
+  it('getCurrentRow private method',() => {
+let rowNumber = 2;
+    (<any>comp).getCurrentRow(rowNumber);
+    expect(comp.currentRow-comp.rows).not.toEqual(0);
+  })
 
   it('showcolumnoptions method check',() => {
     comp.showColumnOptions();
