@@ -73,21 +73,40 @@ describe('amexio-paginator', () => {
     });
   });
 
-  it('check onFirstClick method ', () => {
+  it('check onLastClick method ', () => {
     comp.onLastClick();
     comp.onPageChange.subscribe((g: any) => {
       expect(comp.activePage).toEqual(g);
     });
   });
 
-  it('check onFirstClick method ', () => {
+  it('check onPrevious method ', () => {
     comp.onPrevious();
     comp.activePageIndex = 2;
     comp.onPageChange.subscribe((g: any) => {
       expect(comp.activePage).toEqual(g);
     });
-
   });
+
+  it('check onNext method ', () => {
+    comp.onNext();
+    comp.activePageIndex = 2;
+    comp.onPageChange.subscribe((g: any) => {
+      expect(comp.activePage).toEqual(g);
+    });
+  });
+
+  it('check onPageClick method ', () => {
+
+    let page = 2;
+    let index = 2;
+    comp.onPageClick(page,index);
+    comp.activePageIndex = 2;
+    comp.onPageChange.subscribe((g: any) => {
+      expect(comp.activePage).toEqual(g);
+    });
+  });
+
   it('check previous method ', () => {
     comp.onPrevious();
     comp.activePageIndex = 0;
@@ -96,12 +115,11 @@ describe('amexio-paginator', () => {
   });
 
   it('showcolumnoptions method check',() => {
-
     comp.showColumnOptions();
     expect(comp.show).toEqual(true);
   });
 
 
 
-
+  
 });
