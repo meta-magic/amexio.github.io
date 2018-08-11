@@ -254,16 +254,15 @@ description : fire when check box click
   }
 
   setSelectedCheckBox(rowData: any, event: any) {
-
+    this.selectedCheckBox = [];
     if(rowData.hasOwnProperty('disabled') && !rowData.disabled){
       rowData[this.valuefield] = !rowData[this.valuefield];
-
-      if (rowData[this.valuefield]) {
-        this.selectedCheckBox.push(rowData);
-      } else {
-        let indexOf = this.selectedCheckBox.indexOf(rowData);
-        delete this.selectedCheckBox[indexOf];
+      this.viewData.forEach((opt: any) => {
+        console.log(opt[this.valuefield]);
+      if(opt[this.valuefield]) {
+        this.selectedCheckBox.push(opt);
       }
+    });
         this.emitSelectedRows();
       }
   }
@@ -294,7 +293,7 @@ description : fire when check box click
     this.onSelection.emit(sRows);
   }
 
-  //THIS MEHTOD CHECK INPUT IS VALID OR NOT 
+  //THIS MEHTOD CHECK INPUT IS VALID OR NOT
   checkValidity():boolean{
     return this.isValid;
   }
