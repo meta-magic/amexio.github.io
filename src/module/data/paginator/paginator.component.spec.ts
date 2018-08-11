@@ -101,6 +101,10 @@ describe('amexio-paginator', () => {
     comp.onPrevious();
     expect(comp.activePage).toEqual(1);
     expect(comp.activePageIndex).toEqual(8);
+    comp.activePage = 20;
+    comp.onPrevious();
+    expect(comp.activePage).toBeUndefined;
+    expect(comp.activePageIndex).toBeUndefined;
     
     comp.onPageChange.subscribe((g: any) => {
       expect(comp.activePage).toEqual(g);
