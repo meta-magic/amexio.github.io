@@ -91,13 +91,13 @@ describe('amexio-paginator', () => {
 
   it('check previous 11111111method ', () => {
     comp.activePageIndex = 0;
-    comp.fullPageSet = [1,2,3];
+    comp.fullPageSet = [1, 2, 3];
     comp.activePage = 2;
     let rowNumber = 4;
     comp.rows = 10;
     comp.pages = 2;
     comp.currentRowIndex = 2;
-    comp.pageIndex  = [1,2,3];
+    comp.pageIndex = [1, 2, 3];
     comp.onPrevious();
     expect(comp.activePage).toEqual(1);
     expect(comp.activePageIndex).toEqual(8);
@@ -105,11 +105,11 @@ describe('amexio-paginator', () => {
     comp.onPrevious();
     expect(comp.activePage).toBeUndefined;
     expect(comp.activePageIndex).toBeUndefined;
-    
+
     comp.onPageChange.subscribe((g: any) => {
       expect(comp.activePage).toEqual(g);
     });
-    
+
   });
   it('check changeRows method is not null ', () => {
     let rowNumber = 2;
@@ -129,6 +129,30 @@ describe('amexio-paginator', () => {
     comp.onPageChange.subscribe((g: any) => {
       expect(comp.activePage).toEqual(g);
     });
+    comp.fullPageSet = [1, 2, 3];
+    comp.activePages = [1, 2, 3];
+    let rowNumber = 4;
+    comp.rows = 10;
+    comp.pages = 2;
+    comp.currentRowIndex = 2;
+    comp.pageIndex = [1, 2, 3];
+    comp.onNext();
+
+
+    // console.log('activepagessss=='+comp.activePages.length);3
+    // console.log('active index pages' +comp.activePageIndex);2
+    expect(comp.activePages.length).toEqual(3);
+    expect(comp.activePageIndex).toEqual(1);
+
+    comp.onNext();
+   
+    expect(comp.activePage).toBeUndefined;
+    expect(comp.activePageIndex).toBeUndefined;
+    expect(comp.fullPageSet.length).toBeGreaterThan(0);
+
+
+
+
   });
 
 
@@ -148,7 +172,7 @@ describe('amexio-paginator', () => {
     });
   });
 
- 
+
 
   it('check changeRows method is null', () => {
     let rowNumber = 0;
