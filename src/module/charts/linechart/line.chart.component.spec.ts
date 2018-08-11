@@ -35,6 +35,8 @@ describe('LINE CHART', () => {
         chartlegendcomp = chartlegendfixture.componentInstance;
         chartareacomp = chartareafixture.componentInstance;
         linechartcomp.chartTitleComponent = charttitlecomp;
+        linechartcomp.chartLengendComponent=chartlegendcomp;
+        linechartcomp.chartAreaComponent=chartareacomp;
 
     });
     it('show chart', () => {
@@ -65,7 +67,7 @@ describe('LINE CHART', () => {
         chartlegendcomp.fontname = '';
         chartlegendcomp.fontsize = '';
         chartlegendcomp.bold = false;
-        chartlegendcomp.maxlines;
+        chartlegendcomp.maxlines=null;
     });
     it('chartBackgroundStyle() properties', () => {
         chartareacomp.chartbackgroundcolor = '';
@@ -88,6 +90,26 @@ describe('LINE CHART', () => {
         linechartcomp.chartTitleComponent.bold=null;
         linechartcomp.chartTitleComponent.italic=null;
     });
+    it('chartLegendStyle()',()=>{
+    linechartcomp.chartLengendComponent.position;
+      linechartcomp.chartLengendComponent.maxlines=null;
+        linechartcomp.chartLengendComponent.color=null;
+        linechartcomp.chartLengendComponent.fontsize=null;
+        linechartcomp.chartLengendComponent.alignment=null;
+        linechartcomp.chartLengendComponent.fontname=null;
+
+    })
+    it('chartBackgroundStyle()',()=>{
+        linechartcomp.chartAreaComponent.chartbackgroundcolor='red';
+        linechartcomp.chartAreaComponent.chartheight=50;
+        linechartcomp.chartAreaComponent.chartwidth=100;
+        linechartcomp.chartAreaComponent.leftposition=null;
+        const chartbgstyle = linechartcomp.chartBackgroundStyle();
+        //const json1 = {"backgroundcolor":null,"left":null,"top":null,"height":50,"width":100}
+        //console.log(JSON.stringify(chartbgstyle));
+        
+        
+    })
 
     it('get data method', () => {
         linechartcomp.data;
