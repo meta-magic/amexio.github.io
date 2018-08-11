@@ -57,12 +57,13 @@ describe('amexio-paginator', () => {
   });
 
   it('init pages is null', () => {
-    comp.initializePages();
     comp.rows = null;
-    comp.activePage = 0;
+    comp.activePage = 3;
+    comp.pages = 3;
+    comp.initializePages();
     expect(comp.rows).toEqual(null);
-    expect((<any>comp).fullPageSet.length).toEqual(0);
-    expect((<any>comp).activePage).toEqual(0);
+    expect((<any>comp).fullPageSet.length).toEqual(comp.pages);
+    expect((<any>comp).activePage).toEqual(comp.pages);
 
   });
 
@@ -88,52 +89,74 @@ describe('amexio-paginator', () => {
     });
   });
 
+  it('check previous 11111111method ', () => {
+    comp.activePageIndex = 0;
+    comp.fullPageSet = [1,2,3];
+    comp.activePage = 2;
+    let rowNumber = 4;
+    comp.rows = 10;
+    comp.pages = 2;
+    comp.currentRowIndex = 2;
+    comp.pageIndex  = [1,2,3];
+    comp.onPrevious();
+    expect(comp.activePage).toEqual(1);
+    expect(comp.activePageIndex).toEqual(8);
+    
+    comp.onPageChange.subscribe((g: any) => {
+      expect(comp.activePage).toEqual(g);
+    });
+    
+  });
+  it('check changeRows method is not null ', () => {
+    let rowNumber = 2;
+    let inDx = 2;
+    let event: any;
+    comp.changeRows(rowNumber, inDx, event);
+    expect(rowNumber).toEqual(2);
+
+    (<any>comp).onPageChangeMethod(inDx);
+    comp.show = false;
+    expect(comp.show).toEqual(false);
+  });
+
   it('check onNext method ', () => {
     comp.onNext();
     comp.activePageIndex = 2;
     comp.onPageChange.subscribe((g: any) => {
       expect(comp.activePage).toEqual(g);
     });
+  });
 
+
+  it('getCurrentRow private method', () => {
+    let rowNumber = 2;
+    (<any>comp).getCurrentRow(rowNumber);
+    expect(comp.currentRow - comp.rows).not.toEqual(0);
   });
 
   it('check onPageClick method ', () => {
     let page = 2;
     let index = 2;
-    comp.onPageClick(page,index);
+    comp.onPageClick(page, index);
     comp.activePageIndex = 2;
     comp.onPageChange.subscribe((g: any) => {
       expect(comp.activePage).toEqual(g);
     });
   });
 
-
-  it('check changeRows method is not null ', () => {
-    let rowNumber = 2;
-    let inDx = 2;
-    let event: any;
-    comp.changeRows(rowNumber,inDx,event);
-    expect(rowNumber).toEqual(2);
-
-    (<any>comp).onPageChangeMethod(inDx);
-    comp.show = false;
-    expect(comp.show).toEqual(false);
-
-  });
+ 
 
   it('check changeRows method is null', () => {
     let rowNumber = 0;
     let inDx = 0;
     let event: any;
     comp.pages = -1;
-    comp.changeRows(rowNumber,inDx,event);
+    comp.changeRows(rowNumber, inDx, event);
     expect(rowNumber).toBeGreaterThan(comp.pages);
-    
+
   });
 
-
-
-  it('setRows  method testing',() => {
+  it('setRows  method testing', () => {
     let rowNumber = 2;
     comp.setRows(rowNumber);
     comp.pages = 1;
@@ -141,26 +164,9 @@ describe('amexio-paginator', () => {
     expect(comp.currentRow).toEqual(rowNumber);
   });
 
-
-  it('check previous method ', () => {
-    comp.onPrevious();
-    comp.activePageIndex = 0;
-    const index = comp.fullPageSet.indexOf(this.activePage) 
-    expect(index).toEqual(-1);
-  });
-
-  it('getCurrentRow private method',() => {
-let rowNumber = 2;
-    (<any>comp).getCurrentRow(rowNumber);
-    expect(comp.currentRow-comp.rows).not.toEqual(0);
-  })
-
-  it('showcolumnoptions method check',() => {
+  it('showcolumnoptions method check', () => {
     comp.showColumnOptions();
     expect(comp.show).toEqual(true);
   });
 
-
-
-  
 });
