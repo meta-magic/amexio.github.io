@@ -237,14 +237,78 @@ it('initialize innervalue', () => {
     };
     day.date = new Date(dateObj.getTime());
     comp.resetSelection(dateObj); 
+    day.selected = true;
  expect(day.date.getTime()).toEqual(dateObj.getTime());
- day.selected = true;
 expect(day.selected).toEqual(true);
  day.date.setTime(1332403882588);
 day.selected = false;
 expect(day.selected).toEqual(false);
      });  
 
+    
+it('ngOnInit', () => {
+  comp.ngOnInit();
+comp.maxDate="22-Feb-2019"
+comp.minDate="22-Feb-2015"
+
+ expect(comp.minDate.length).toBeGreaterThan(0);
+ const min = new Date(comp.minDate);
+ const max = new Date(comp.maxDate);
+ comp.yearList1.forEach((element: any) => {
+  comp.disableMinMaxYear(element, min, max);
+});
+comp.yearList2.forEach((element: any) => {
+  comp.disableMinMaxYear(element, min, max);
+});
+});    
+
+ 
+it('setToday()', () => {
+  comp['setToday']();
+ // comp.currrentDate = new Date();
+  comp.initDate();
+  comp.showToolTip=true;
+  comp.showToolTip = !comp.showToolTip;
+  expect(comp.showToolTip).toEqual(false);
+    }); 
+
+it('onBlur()', () => {
+  comp['onTouchedCallback']();
+    }); 
+
+// it('writeValue()', () => {
+
+
+//   if (value !== this.innerValue) {
+//     this.innerValue = value;
+//     if (this.required && this.innerValue instanceof Date || ('number' === typeof this.innerValue)) {
+//       this.dateModel = this.innerValue;
+//       this.isValid = true;
+//     } else {
+//       this.isValid = false;
+//       this.hrs = 0;
+//       this.min = 0;
+//     }
+
+
+
+//   let value = 11;
+//   comp.writeValue(value);
+  
+//   expect(value).not.toEqual(comp['innerValue']);
+//   comp['innerValue'] = value;
+//   expect(comp['innerValue']).toEqual(value);
+
+//   expect(comp.required).toEqual(true);
+
+//   let bool = comp['innerValue'] instanceof Date;
+//   expect(bool).toEqual(true);
+ 
+
+
+ 
+// }); 
 
 
 });
+
