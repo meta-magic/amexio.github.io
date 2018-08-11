@@ -83,6 +83,10 @@ describe('LINE CHART', () => {
     it('chartTitleTextStyle()', () => {
         linechartcomp.chartTitleTextStyle();
         linechartcomp.chartTitleComponent.color = null;
+        linechartcomp.chartTitleComponent.fontname=null;
+        linechartcomp.chartTitleComponent.fontsize=null;
+        linechartcomp.chartTitleComponent.bold=null;
+        linechartcomp.chartTitleComponent.italic=null;
     });
 
     it('get data method', () => {
