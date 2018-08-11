@@ -1,8 +1,8 @@
 /*
-Component Name : Amexio Date time picker
-Component Selector :  <amexio-date-time-picker>
-Component Description : This component is flexible for both Date and time picker with all required configurations in Style.
-*/
+ Component Name : Amexio Date time picker
+ Component Selector :  <amexio-date-time-picker>
+ Component Description : This component is flexible for both Date and time picker with all required configurations in Style.
+ */
 import { ChangeDetectorRef, Component, ElementRef, EventEmitter, forwardRef, HostListener, Input, OnInit, Output } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 const noop = () => {
@@ -19,138 +19,138 @@ const noop = () => {
 })
 export class AmexioDateTimePickerComponent implements OnInit {
   /*
-  Properties
-  name : date-format
-  datatype : string
-  version : 4.0 onwards
-  default :
-  description : The label of this field
-  */
+   Properties
+   name : date-format
+   datatype : string
+   version : 4.0 onwards
+   default :
+   description : The label of this field
+   */
   @Input('date-format') dateformat: string;
   /*
-  Properties
-  name : date-picker
-  datatype : boolean
-  version : 4.0 onwards
-  default : false
-  description : Enable/Disable Date Picker
-  */
+   Properties
+   name : date-picker
+   datatype : boolean
+   version : 4.0 onwards
+   default : false
+   description : Enable/Disable Date Picker
+   */
   @Input('date-picker') datepicker: boolean;
   /*
-  Properties
-  name : time-picker
-  datatype : boolean
-  version : 4.0 onwards
-  default : false
-  description : Enable/Disable Time Picker
-  */
+   Properties
+   name : time-picker
+   datatype : boolean
+   version : 4.0 onwards
+   default : false
+   description : Enable/Disable Time Picker
+   */
   @Input('time-picker') timepicker: boolean;
   /*
-  Properties
-  name : field-label
-  datatype : string
-  version : 4.0 onwards
-  default :
-  description :The label of this field
-  */
+   Properties
+   name : field-label
+   datatype : string
+   version : 4.0 onwards
+   default :
+   description :The label of this field
+   */
   @Input('field-label') fieldlabel: string;
   /*
-  Properties
-  name : disabled
-  datatype : boolean
-  version : 4.1.5 onwards
-  default : false
-  description : Disable Date/Time Picker field
-  */
+   Properties
+   name : disabled
+   datatype : boolean
+   version : 4.1.5 onwards
+   default : false
+   description : Disable Date/Time Picker field
+   */
   @Input('disabled') disabled: boolean;
   /*
-  Properties
-  name : read-only
-  datatype : boolean
-  version : 4.0 onwards
-  default : false
-  description : Disable Date/Time Picker field
-  */
+   Properties
+   name : read-only
+   datatype : boolean
+   version : 4.0 onwards
+   default : false
+   description : Disable Date/Time Picker field
+   */
   @Input('read-only') readonly: boolean;
   /*
-  Properties
-  name : min-date
-  datatype : string
-  version : 4.2 onwards
-  default : none
-  description : sets minimum date range
-  */
+   Properties
+   name : min-date
+   datatype : string
+   version : 4.2 onwards
+   default : none
+   description : sets minimum date range
+   */
   @Input('min-date') minDate: string;
   /*
-  Properties
-  name : max-date
-  datatype : string
-  version : 4.2 onwards
-  default : none
-  description : sets maximum date range
-  */
+   Properties
+   name : max-date
+   datatype : string
+   version : 4.2 onwards
+   default : none
+   description : sets maximum date range
+   */
   @Input('max-date') maxDate: string;
   /*
-  Properties
-  name : diabled-date
-  datatype :  any
-  version : 4.2 onwards
-  default : none
-  description : sets disabled dates range
-  */
+   Properties
+   name : diabled-date
+   datatype :  any
+   version : 4.2 onwards
+   default : none
+   description : sets disabled dates range
+   */
   @Input('disabled-date') diabledDate: any[] = [];
   /*
-  Properties
-  name : inline-datepicker
-  datatype :  boolean
-  version : 4.2 onwards
-  default : none
-  description : sets inline calender
-  */
+   Properties
+   name : inline-datepicker
+   datatype :  boolean
+   version : 4.2 onwards
+   default : none
+   description : sets inline calender
+   */
   @Input('inline-datepicker') inlineDatepicker = false;
   /*
-  Properties
-  name : dropdown-datepicker
-  datatype :  boolean
-  version : 4.2 onwards
-  default : none
-  description : sets dropdown datepicker
-  */
+   Properties
+   name : dropdown-datepicker
+   datatype :  boolean
+   version : 4.2 onwards
+   default : none
+   description : sets dropdown datepicker
+   */
   @Input('dropdown-datepicker') dropdownDatepicker = false;
   /*
-  Properties
-  name : required
-  datatype : boolean
-  version : 4.0 onwards
-  default : false
-  description : Flag to allow blank field or not
-  */
+   Properties
+   name : required
+   datatype : boolean
+   version : 4.0 onwards
+   default : false
+   description : Flag to allow blank field or not
+   */
   @Input() required = false;
   posixUp: boolean;
   positionClass: any;
   /*
-  Events
-  name : blur
-  description : On blur event
-  */
+   Events
+   name : blur
+   description : On blur event
+   */
   @Output() blur: EventEmitter<any> = new EventEmitter<any>();
   /*
-  Properties
-  name : change
-  description : On field value change event
-  */
+   Properties
+   name : change
+   description : On field value change event
+   */
   @Output() change: EventEmitter<any> = new EventEmitter<any>();
   /*
-  Properties
-  name : input
-  description : On input event field.
-  */
+   Properties
+   name : input
+   description : On input event field.
+   */
   @Output() input: EventEmitter<any> = new EventEmitter<any>();
   /*
-  Properties
-  name : focus
-  description : On field focus event
-  */
+   Properties
+   name : focus
+   description : On field focus event
+   */
   @Output() focus: EventEmitter<any> = new EventEmitter<any>();
   showToolTip: boolean;
   drop = false;
@@ -188,16 +188,16 @@ export class AmexioDateTimePickerComponent implements OnInit {
     this.viewmode = '1';
 
     this.yearList1 = [{ year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
-    { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
-    { year: 0, flag: false, disabled: false }];
+      { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+      { year: 0, flag: false, disabled: false }];
     this.yearList2 = [{ year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
-    { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
-    { year: 0, flag: false, disabled: false }];
+      { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+      { year: 0, flag: false, disabled: false }];
     this.monthList1 = [{ name: 'Jan', flag: false, num: 4 }, { name: 'Feb', flag: false },
-    { name: 'Mar', flag: false }, { name: 'Apr', flag: false }, { name: 'May', flag: false },
-    { name: 'Jun', flag: false }];
+      { name: 'Mar', flag: false }, { name: 'Apr', flag: false }, { name: 'May', flag: false },
+      { name: 'Jun', flag: false }];
     this.monthList2 = [{ name: 'Jul', flag: false }, { name: 'Aug', flag: false }, { name: 'Sep', flag: false },
-    { name: 'Oct', flag: false }, { name: 'Nov', flag: false }, { name: 'Dec', flag: false }];
+      { name: 'Oct', flag: false }, { name: 'Nov', flag: false }, { name: 'Dec', flag: false }];
     this.minDate = '';
     this.maxDate = '';
     this.elementId = new Date().getTime() + '';
@@ -249,7 +249,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
       });
     }
   }
- private initDaysTitle() {
+  private initDaysTitle() {
     this.daysTitle.push({ text: 'Mo' });
     this.daysTitle.push({ text: 'Tu' });
     this.daysTitle.push({ text: 'We' });
@@ -258,7 +258,8 @@ export class AmexioDateTimePickerComponent implements OnInit {
     this.daysTitle.push({ text: 'Sa' });
     this.daysTitle.push({ text: 'Su' });
   }
- private createDaysForCurrentMonths(selectedPeriod: any) {
+  private createDaysForCurrentMonths(selectedPeriod: any) {
+    this.daysArray = [];
     const date = new Date(selectedPeriod.getFullYear(), selectedPeriod.getMonth(), 1, 0, 0, 0, 0); // Starting at the 1st of the month
     const extras = (date.getDay() + 6) % 7; // How many days of the last month do we need to include?
     date.setDate(date.getDate() - extras); // Skip back to the previous monday
@@ -268,11 +269,16 @@ export class AmexioDateTimePickerComponent implements OnInit {
         const day: any = {
           date: null, selected: false, isCurrentMonth: null, isDisabled: false,
         };
-        const isCurrentMonth: any = (date.getMonth() === selectedPeriod.getMonth());
         day.date = new Date(date.getTime());
-        day.isCurrentMonth = isCurrentMonth;
-        if ((date.getMonth() === this.currrentDate.getMonth()) && (date.getDate() === this.currrentDate.getDate())) {
+        day.isCurrentMonth = (date.getMonth() === selectedPeriod.getMonth());
+        if (this.dateModel && (date.getMonth() === this.dateModel.getMonth()) && (date.getDate() === this.dateModel.getDate())) {
           day.selected = true;
+        } else if ((date.getMonth() === this.currrentDate.getMonth()) && (date.getDate() === this.currrentDate.getDate())) {
+          if (this.dateModel) {
+            day.selected = false;
+          } else {
+            day.selected = true;
+          }
         }
         rowDays.push(day);
         date.setDate(date.getDate() + 1);
@@ -324,11 +330,11 @@ export class AmexioDateTimePickerComponent implements OnInit {
       }
     }
   }
- private nextMonth(event: any) {
+  private nextMonth(event: any) {
     this.setDateData('plus', 1, event);
     this.disableddays(this.diabledDate);
   }
- private prevMonth(event: any) {
+  private prevMonth(event: any) {
     this.setDateData('minus', 1, event);
     this.disableddays(this.diabledDate);
   }
@@ -355,7 +361,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
   }
 
   // Set Plus Data
-   setPlusData(d: any, max: any, mon: any) {
+  setPlusData(d: any, max: any, mon: any) {
     if (this.maxDate.length > 0) {
       if (d.getFullYear() === max.getFullYear()) {
         this.setMaxFullYear(d, max, mon);
@@ -396,7 +402,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
   }
 
   // Set Min Full year
- setMinFullYear(d: any, min: any, mon: any) {
+  setMinFullYear(d: any, min: any, mon: any) {
     if (!(d.getMonth() === min.getMonth())) { // logic to chk if year is valid
       if (d.getFullYear() >= min.getFullYear()) {
         if (d.getMonth() >= min.getMonth()) {
@@ -508,9 +514,14 @@ export class AmexioDateTimePickerComponent implements OnInit {
   writeValue(value: any) {
     if (value !== this.innerValue) {
       this.innerValue = value;
-      if (this.required && this.innerValue instanceof Date || ('number' === typeof this.innerValue)) {
+      if ( this.innerValue instanceof Date || ('number' === typeof this.innerValue)) {
         this.dateModel = this.innerValue;
-        this.isValid = true;
+        this.currrentDate = this.dateModel;
+        this.selectedDate = this.currrentDate;
+        this.createDaysForCurrentMonths(this.dateModel);
+        if (this.required) {
+          this.isValid = true;
+        }
       } else {
         this.isValid = false;
         this.hrs = 0;
@@ -647,7 +658,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
       });
     }
   }
-   dropdownDatePicker() {
+  dropdownDatePicker() {
     this.monthList1.forEach((element: any) => {
       this.elementFlagMethod(element);
     });
@@ -678,7 +689,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
     this.showToolTip = true;
     this.tempFlag = true;
   }
-   getDropdownMonth(month: any) {
+  getDropdownMonth(month: any) {
     this.monthList1.forEach((element: any) => {
       this.elementFlagMethod(element);
     });
@@ -859,7 +870,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
   }
 
   // this fn is broken from  backArrow() and it resets Year Flag
-   resetYearFlag() {
+  resetYearFlag() {
     let i;
     if (!this.backArrowFlag) {
       for (i = 0; i < 5; i++) {
@@ -957,7 +968,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
 
   // this function is obtained by breaking arrowClickBack() and arrowClickForward()
   // for disabling year flag
-   disableYearFlag() {
+  disableYearFlag() {
     if (this.minDate.length > 0 || this.maxDate.length > 0) {
       this.yearList1.forEach((element: any) => {
         this.yearFlagDisable(element);
