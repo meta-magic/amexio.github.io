@@ -97,7 +97,6 @@ describe('amexio-paginator', () => {
   });
 
   it('check onPageClick method ', () => {
-
     let page = 2;
     let index = 2;
     comp.onPageClick(page,index);
@@ -106,6 +105,24 @@ describe('amexio-paginator', () => {
       expect(comp.activePage).toEqual(g);
     });
   });
+
+
+  it('check changeRows method ', () => {
+    let rowNumber = 2;
+    let inDx = 2;
+    let event: any;
+    
+    comp.changeRows(rowNumber,inDx,event);
+    expect(rowNumber).toEqual(2);
+  });
+
+
+
+  // it('onPageChangeMethod private method testing',() => {
+    
+  //   comp.onPageChangeMethod({inDx });
+    
+  // })
 
   it('check previous method ', () => {
     comp.onPrevious();
