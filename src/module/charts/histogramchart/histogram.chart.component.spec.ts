@@ -88,39 +88,39 @@ describe('HISTOGRAM CHART', () => {
         histochartcomp.chartTitleComponent.title = null;
 
     });
-    // it('chartTitleTextStyle()', () => {
-    //     histochartcomp.chartTitleTextStyle();
-    //     linechartcomp.chartTitleComponent.color = 'red';
-    //     linechartcomp.chartTitleComponent.fontname='times new roman';
-    //     linechartcomp.chartTitleComponent.fontsize=5;
-    //     linechartcomp.chartTitleComponent.bold=true;
-    //     linechartcomp.chartTitleComponent.italic=true;
-    //     const charttextstyle=linechartcomp.chartTitleTextStyle();
-    //    // console.log(JSON.stringify(charttextstyle));
-    // });
-    // it('chartLegendStyle()',()=>{
-    // linechartcomp.chartLengendComponent.position='left';
-    //   linechartcomp.chartLengendComponent.maxlines=5;
-    //     linechartcomp.chartLengendComponent.color='black';
-    //     linechartcomp.chartLengendComponent.fontsize='12';
-    //     linechartcomp.chartLengendComponent.alignment='center';
-    //     linechartcomp.chartLengendComponent.fontname='times';
-    //     linechartcomp.chartLengendComponent.bold=true;
-    //     const chartlegendstyle=linechartcomp.chartLegendStyle();
-    //     // const json1 = {"position":null,"maxLines":5,"textStyle":{"color":"black","fontsize":"12","fontName":"times","bold":null,"alignment":"center"}}
-    //     //console.log(JSON.stringify(chartlegendstyle));
-    //     // expect(chartlegendstyle).toEqual(json1);
+    it('chartTitleTextStyle()', () => {
+        histochartcomp.charttitleTextStyle();
+        histochartcomp.chartTitleComponent.color = 'red';
+        histochartcomp.chartTitleComponent.fontname='times new roman';
+        histochartcomp.chartTitleComponent.fontsize=5;
+        histochartcomp.chartTitleComponent.bold=true;
+        histochartcomp.chartTitleComponent.italic=true;
+        const charttextstyle= histochartcomp.charttitleTextStyle();
+       // console.log(JSON.stringify(charttextstyle));
+    });
+    it('chartLegendStyle()',()=>{
+        histochartcomp.chartLengendComponent.position='left';
+        histochartcomp.chartLengendComponent.maxlines=5;
+        histochartcomp.chartLengendComponent.color='black';
+        histochartcomp.chartLengendComponent.fontsize='12';
+        histochartcomp.chartLengendComponent.alignment='center';
+        histochartcomp.chartLengendComponent.fontname='times';
+        histochartcomp.chartLengendComponent.bold=true;
+        const chartlegendstyle= histochartcomp.chartegendStyle();
+        // const json1 = {"position":null,"maxLines":5,"textStyle":{"color":"black","fontsize":"12","fontName":"times","bold":null,"alignment":"center"}}
+        //console.log(JSON.stringify(chartlegendstyle));
+        // expect(chartlegendstyle).toEqual(json1);
 
-    // })
-    // it('chartBackgroundStyle()',()=>{
-    //     linechartcomp.chartAreaComponent.chartbackgroundcolor='red';
-    //     linechartcomp.chartAreaComponent.chartheight=50;
-    //     linechartcomp.chartAreaComponent.chartwidth=100;
-    //     linechartcomp.chartAreaComponent.leftposition=null;
-    //     const chartbgstyle = linechartcomp.chartBackgroundStyle();
-    //     //const json1 = {"backgroundcolor":null,"left":null,"top":null,"height":50,"width":100}
-    //     //console.log(JSON.stringify(chartbgstyle));
-    // })
+    })
+    it('chartBackgroundStyle()',()=>{
+        histochartcomp.chartAreaComponent.chartbackgroundcolor='red';
+        histochartcomp.chartAreaComponent.chartheight=50;
+        histochartcomp.chartAreaComponent.chartwidth=100;
+        histochartcomp.chartAreaComponent.leftposition=null;
+        const chartbgstyle = histochartcomp.chartBackground();
+        //const json1 = {"backgroundcolor":null,"left":null,"top":null,"height":50,"width":100}
+        //console.log(JSON.stringify(chartbgstyle));
+    })
     // it('ngAfterContentInit()',()=>{
     //    // linechartcomp.ngAfterContentInit();
     //    // expect(linechartcomp.chartLegendArray).toEqual(linechartcomp.chartLegendComp.length[1]);
