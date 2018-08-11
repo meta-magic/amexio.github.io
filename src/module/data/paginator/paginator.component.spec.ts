@@ -94,6 +94,7 @@ describe('amexio-paginator', () => {
     comp.onPageChange.subscribe((g: any) => {
       expect(comp.activePage).toEqual(g);
     });
+
   });
 
   it('check onPageClick method ', () => {
@@ -107,22 +108,38 @@ describe('amexio-paginator', () => {
   });
 
 
-  it('check changeRows method ', () => {
+  it('check changeRows method is not null ', () => {
     let rowNumber = 2;
     let inDx = 2;
     let event: any;
-    
     comp.changeRows(rowNumber,inDx,event);
     expect(rowNumber).toEqual(2);
+
+    (<any>comp).onPageChangeMethod(inDx);
+    comp.show = false;
+    expect(comp.show).toEqual(false);
+
+  });
+
+  it('check changeRows method is null', () => {
+    let rowNumber = 0;
+    let inDx = 0;
+    let event: any;
+    comp.pages = -1;
+    comp.changeRows(rowNumber,inDx,event);
+    expect(rowNumber).toBeGreaterThan(comp.pages);
+    
   });
 
 
 
-  // it('onPageChangeMethod private method testing',() => {
-    
-  //   comp.onPageChangeMethod({inDx });
-    
-  // })
+  it('setRows  method testing',() => {
+    let rowNumber = 2;
+    comp.setRows(rowNumber);
+    comp.pages = 1;
+    expect(rowNumber).toBeGreaterThan(comp.pages);
+    expect(comp.currentRow).toEqual(rowNumber);
+  });
 
   it('check previous method ', () => {
     comp.onPrevious();
