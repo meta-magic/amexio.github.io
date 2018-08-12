@@ -29,27 +29,14 @@ describe('amexio-image', () => {
         (<any>comp).overlayTextCss = 'overlay-text overlay-';
         expect((<any>comp).overlayTextCss).toEqual('overlay-text overlay-');
 
-        // // private textCss = '-text';
-        // (<any>comp).imageCss = ' image-';
-        // expect((<any>comp).imageCss).toEqual(' image-');
-
-        // // private imgFluidCss = ' img-fluid';
-        // (<any>comp).imageCss = ' image-';
-        // expect((<any>comp).imageCss).toEqual(' image-');
-
-        // // private overlayOverlayCss = 'overlay overlay-';
-        // (<any>comp).imageCss = ' image-';
-        // expect((<any>comp).imageCss).toEqual(' image-');
-
-        // // private imageTitleCss   = 'image-title image-';
-        // (<any>comp).imageCss = ' image-';
-        // expect((<any>comp).imageCss).toEqual(' image-');
+    
 
         // // private imageTitleBottomCss    = 'image-title image-bottom-right';
         // (<any>comp).imageCss = ' image-';
         // expect((<any>comp).imageCss).toEqual(' image-');
-
-
-
+        comp.onImageClick('data');
+        comp.onClick.subscribe((g: any) => {
+            expect(event).toEqual(g);
+          });
     });
 });
