@@ -63,24 +63,15 @@ describe('amexio-toolbar', () => {
     });
     
 
-    it('onToolClick check method',() => {
-        let tool: any;
-        let position: any;
-        comp.onToolClick(tool);
-        comp.seperator = true;
-        expect(position).toBe('right');
-        expect(comp.seperator).toEqual(true);
-
-    });
-
-    // it('getSeperatotClass',() => {
-    //     let toolnode: any;
+    // it('onToolClick check method',() => {
+    //     let tool: any;
     //     let position: any;
-    //     comp.getSeperatotClass(toolnode);
+    //     comp.onToolClick(tool);
     //     comp.seperator = true;
     //     expect(position).toBe('right');
     //     expect(comp.seperator).toEqual(true);
 
     // });
+
 
 });
