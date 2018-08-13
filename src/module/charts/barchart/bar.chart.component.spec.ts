@@ -1,4 +1,4 @@
-import {  CandlestickChartComponent} from './candlestick.chart.component';
+import { BarChartComponent} from './bar.chart.component';
 //import { AmexioFormIconComponent } from '../icon/icon.component';
 import { FormsModule } from '@angular/forms';
 import { IconLoaderService } from '../../../index'
@@ -8,29 +8,21 @@ import { ChartLoaderService } from './../chart.loader.service';
 import { ChartTitleComponent } from '../charttitle/chart.title.component';
 import { ChartLegendComponent } from '../chartlegend/chart.legend.component';
 import { ChartAreaComponent } from '../chartarea/chart.area.component';
-import {VerticalAxisComponent} from '../verticalaxis/chart.verticalaxis.component';
-import {HorizontalAxisComponent} from '../horizontalaxis/chart.horizontalaxis.component';
-
-
 declare var google: any;
-describe('CANDLESTICK CHART', () => {
+describe('BAR CHART', () => {
     //let ChartTitleComponent=new ChartTitleComponent()
     // let ChartTitleComponent = [{'name':'chart','title':'','position':'','color':'','fontname':'','fontsize':'','bold':false,'italic':''}];
-    let candlestickchartcomp:  CandlestickChartComponent;
+    let barchartcomp: BarChartComponent;
     let charttitlecomp: ChartTitleComponent;
     let chartlegendcomp: ChartLegendComponent;
     let chartareacomp: ChartAreaComponent;
-    let chartvercomp: VerticalAxisComponent;
-    let charthoricomp: HorizontalAxisComponent;
     let chartAreaArray:ChartAreaComponent[];
     let chartLegendArray: ChartLegendComponent[];
     let chartTitleComponent:  ChartTitleComponent[];
-    let linefixture: ComponentFixture< CandlestickChartComponent>;
+    let linefixture: ComponentFixture<BarChartComponent>;
     let charttitlefixture: ComponentFixture<ChartTitleComponent>;
     let chartlegendfixture: ComponentFixture<ChartLegendComponent>;
     let chartareafixture: ComponentFixture<ChartAreaComponent>;
-    let charthorifixture:ComponentFixture<HorizontalAxisComponent>;
-    let chartverifixture:ComponentFixture<VerticalAxisComponent>;
 
     let chartAreaArray2: ChartAreaComponent [];
     let chartLegendArray2: ChartLegendComponent []; 
@@ -38,28 +30,22 @@ describe('CANDLESTICK CHART', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule],
-            declarations: [ CandlestickChartComponent, ChartTitleComponent, ChartLegendComponent, ChartAreaComponent,VerticalAxisComponent,HorizontalAxisComponent],
+            declarations: [BarChartComponent, ChartTitleComponent, ChartLegendComponent, ChartAreaComponent],
             providers: [ChartLoaderService]
         }).compileComponents();
-        linefixture = TestBed.createComponent( CandlestickChartComponent);
+        linefixture = TestBed.createComponent(BarChartComponent);
         charttitlefixture = TestBed.createComponent(ChartTitleComponent);
         chartlegendfixture = TestBed.createComponent(ChartLegendComponent);
         chartareafixture = TestBed.createComponent(ChartAreaComponent);
-        charthorifixture  = TestBed.createComponent(HorizontalAxisComponent);
-        chartverifixture = TestBed.createComponent(VerticalAxisComponent);
 
-        candlestickchartcomp = linefixture.componentInstance;
+        barchartcomp = linefixture.componentInstance;
         charttitlecomp = charttitlefixture.componentInstance;
         chartlegendcomp = chartlegendfixture.componentInstance;
         chartareacomp = chartareafixture.componentInstance;
-        chartvercomp=chartverifixture.componentInstance;
-        charthoricomp=charthorifixture.componentInstance;
 
-        candlestickchartcomp.chartTitleComponent = charttitlecomp;
-    //candlestickchartcomp.ChartLegendComponent=chartlegendcomp;
-       candlestickchartcomp.chartAreaComponent=chartareacomp;
-       candlestickchartcomp.verticalComponent=chartvercomp;
-       candlestickchartcomp.horizontalComponent=charthoricomp;
+        barchartcomp.chartTitleComponent = charttitlecomp;
+        barchartcomp.chartLengendComponent=chartlegendcomp;
+        barchartcomp.chartAreaComponent=chartareacomp;
 
         chartAreaArray2 = [];
         chartAreaArray2.push(chartareacomp);
@@ -69,16 +55,16 @@ describe('CANDLESTICK CHART', () => {
 
     });
     it('show chart', () => {
-        candlestickchartcomp.showChart = false;
+        barchartcomp.showChart = false;
         charttitlecomp.title = '';
-        expect(false).toBe(candlestickchartcomp.showChart);
+        expect(false).toBe( barchartcomp.showChart);
         let newdata = [{ 'name': 'linechart' }];
-        candlestickchartcomp.data = newdata;
+        barchartcomp.data = newdata;
     });
     it('dont show chart', () => {
         let newdata;
-        candlestickchartcomp.data = newdata;
-        expect(false).toBe( candlestickchartcomp.showChart);
+        barchartcomp.data = newdata;
+        expect(false).toBe(barchartcomp.showChart);
     });
     it('chartTitleTextStyle() properties', () => {
         charttitlecomp.color = '';
@@ -106,49 +92,41 @@ describe('CANDLESTICK CHART', () => {
         chartareacomp.topposition = null;
 
     });
-    it('chartVerticalStyle() properties',()=>{
-        chartvercomp.title='';
-        chartvercomp.titlecolor='';
-    });
-    it('chartHorizontalStyle() properties',()=>{
-        charthoricomp.title='';
-        charthoricomp.titlecolor='';
-    })
     it('drawchart()', () => {
-        candlestickchartcomp.drawChart();
-        candlestickchartcomp.chartTitleComponent.title = null;
+        barchartcomp.drawChart();
+        barchartcomp.chartTitleComponent.title = null;
 
     });
     it('chartTitleTextStyle()', () => {
-        candlestickchartcomp.chartTitleComponent;
-        candlestickchartcomp.chartTitleComponent.color = 'red';
-        candlestickchartcomp.chartTitleComponent.fontname='times new roman';
-        candlestickchartcomp.chartTitleComponent.fontsize=5;
-        candlestickchartcomp.chartTitleComponent.bold=true;
-        candlestickchartcomp.chartTitleComponent.italic=true;
-        const charttextstyle= candlestickchartcomp.chartTileTextStyle();
+        barchartcomp.chartTitleComponent;
+        barchartcomp.chartTitleComponent.color = 'red';
+        barchartcomp.chartTitleComponent.fontname='times new roman';
+        barchartcomp.chartTitleComponent.fontsize=5;
+        barchartcomp.chartTitleComponent.bold=true;
+        barchartcomp.chartTitleComponent.italic=true;
+        const charttextstyle= barchartcomp.chartTitleTextStyle();
        // console.log(JSON.stringify(charttextstyle));
     });
-    // it('chartLegendStyle()',()=>{
-    //     candlestickchartcomp.chartLegendStyle='left';
-    //     donutchartcomp.chartLengendComponent.maxlines=5;
-    //     donutchartcomp.chartLengendComponent.color='black';
-    //     donutchartcomp.chartLengendComponent.fontsize='12';
-    //     donutchartcomp.chartLengendComponent.alignment='center';
-    //     donutchartcomp.chartLengendComponent.fontname='times';
-    //     donutchartcomp.chartLengendComponent.bold=true;
-    //     const chartlegendstyle= donutchartcomp.chartLegendStyle();
-    //     // const json1 = {"position":null,"maxLines":5,"textStyle":{"color":"black","fontsize":"12","fontName":"times","bold":null,"alignment":"center"}}
-    //     //console.log(JSON.stringify(chartlegendstyle));
-    //     // expect(chartlegendstyle).toEqual(json1);
+    it('chartLegendStyle()',()=>{
+        barchartcomp.chartLengendComponent.position='left';
+        barchartcomp.chartLengendComponent.maxlines=5;
+        barchartcomp.chartLengendComponent.color='black';
+        barchartcomp.chartLengendComponent.fontsize='12';
+        barchartcomp.chartLengendComponent.alignment='center';
+        barchartcomp.chartLengendComponent.fontname='times';
+        barchartcomp.chartLengendComponent.bold=true;
+        const chartlegendstyle= barchartcomp.createChartLegend();
+        // const json1 = {"position":null,"maxLines":5,"textStyle":{"color":"black","fontsize":"12","fontName":"times","bold":null,"alignment":"center"}}
+        //console.log(JSON.stringify(chartlegendstyle));
+        // expect(chartlegendstyle).toEqual(json1);
 
-    // // })
+    })
     it('chartBackgroundStyle()',()=>{
-        candlestickchartcomp.chartAreaComponent.chartbackgroundcolor='red';
-        candlestickchartcomp.chartAreaComponent.chartheight=50;
-        candlestickchartcomp.chartAreaComponent.chartwidth=100;
-        candlestickchartcomp.chartAreaComponent.leftposition=null;
-        //const chartbgstyle =  candlestickchartcomp.chartBackgroundColor();
+        barchartcomp.chartAreaComponent.chartbackgroundcolor='red';
+        barchartcomp.chartAreaComponent.chartheight=50;
+        barchartcomp.chartAreaComponent.chartwidth=100;
+        barchartcomp.chartAreaComponent.leftposition=null;
+      //  const chartbgstyle =  barchartcomp.chartBackgroundColor();
         //const json1 = {"backgroundcolor":null,"left":null,"top":null,"height":50,"width":100}
         //console.log(JSON.stringify(chartbgstyle));
     })
@@ -165,8 +143,8 @@ describe('CANDLESTICK CHART', () => {
     });
 
     it('get data method', () => {
-        candlestickchartcomp.data;
-        expect(candlestickchartcomp.data).toBe(candlestickchartcomp._data);
+        barchartcomp.data;
+        expect( barchartcomp.data).toBe( barchartcomp._data);
     });
 
     it('Draw Chart Test', () => {
@@ -176,11 +154,11 @@ describe('CANDLESTICK CHART', () => {
         script.async = true;
         script.defer = true;
         script.onload = () => {
-            candlestickchartcomp.showChart = true;
+            barchartcomp.showChart = true;
             let newdata = [{ name: 'linechart' }];
-            candlestickchartcomp.data = newdata;
-            candlestickchartcomp.drawChart();
-            expect(false).toBe(candlestickchartcomp.hasLoaded);
+            barchartcomp.data = newdata;
+            barchartcomp.drawChart();
+            expect(false).toBe( barchartcomp.hasLoaded);
         }
     });
 }); 
