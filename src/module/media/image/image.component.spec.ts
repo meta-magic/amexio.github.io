@@ -25,18 +25,25 @@ describe('amexio-image', () => {
         (<any>comp).imageCss = ' image-';
         expect((<any>comp).imageCss).toEqual(' image-');
 
-        // private overlayTextCss = '';
         (<any>comp).overlayTextCss = 'overlay-text overlay-';
         expect((<any>comp).overlayTextCss).toEqual('overlay-text overlay-');
 
-    
+        
+    });
 
-        // // private imageTitleBottomCss    = 'image-title image-bottom-right';
-        // (<any>comp).imageCss = ' image-';
-        // expect((<any>comp).imageCss).toEqual(' image-');
+    it('check onImageClick method',() => {
         comp.onImageClick('data');
         comp.onClick.subscribe((g: any) => {
             expect(event).toEqual(g);
           });
+    });
+
+
+    it('ngoninit method', () => {
+        comp.ngOnInit();
+        comp.width = '100px';
+        comp.height ='50px';
+        expect(comp.width).toEqual('100px');
+        expect(comp.height).toEqual('50px');
     });
 });
