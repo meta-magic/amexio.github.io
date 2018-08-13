@@ -126,7 +126,7 @@ describe('DONUT CHART', () => {
       areachartcomp.chartAreaComponent.chartheight=50;
       areachartcomp.chartAreaComponent.chartwidth=100;
       areachartcomp.chartAreaComponent.leftposition=null;
-       // const chartbgstyle = areachartcomp.chartBackgroundColor();
+       const chartbgstyle = areachartcomp.createChartArea();
         //const json1 = {"backgroundcolor":null,"left":null,"top":null,"height":50,"width":100}
         //console.log(JSON.stringify(chartbgstyle));
     })
