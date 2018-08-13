@@ -2,6 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { IconLoaderService } from '../../../index';
+import { AmexioImageComponent } from '../../media/image/image.component';
+
 import { ContentComponent } from './ee.content';
 import { AmexioRatingComponent } from './../../forms/rating/rating.component';
 
@@ -14,7 +16,7 @@ describe('amexio-ee-content', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule],
-            declarations: [ContentComponent, AmexioRatingComponent],
+            declarations: [ContentComponent, AmexioImageComponent, AmexioRatingComponent],
             providers: [IconLoaderService],
         });
         fixture = TestBed.createComponent(ContentComponent);
