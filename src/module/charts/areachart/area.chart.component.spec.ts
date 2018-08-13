@@ -92,11 +92,14 @@ describe('DONUT CHART', () => {
         chartareacomp.topposition = null;
 
     });
-    it('drawchart()', () => {
-      areachartcomp.drawChart();
-      areachartcomp.chartTitleComponent.title = null;
+    // it('drawchart()', () => {
+    //  let draw = google.visualization.arrayToDataTable(areachartcomp.data);
 
-    });
+    //   areachartcomp.drawChart();
+    //   expect(draw).toEqual( (<any>areachartcomp).areaData);
+    //   areachartcomp.chartTitleComponent.title = null;
+
+    // });
     it('chartTitleTextStyle()', () => {
       areachartcomp.chartTitleComponent;
       areachartcomp.chartTitleComponent.color = 'red';
@@ -159,6 +162,11 @@ describe('DONUT CHART', () => {
             areachartcomp.data = newdata;
             areachartcomp.drawChart();
             expect(false).toBe(areachartcomp.hasLoaded);
+            let draw = google.visualization.arrayToDataTable(areachartcomp.data);
+            areachartcomp.drawChart();
+            expect(draw).toEqual( (<any>areachartcomp).areaData);
+            areachartcomp.chartTitleComponent.title = null;
+      
         }
     });
 }); 
