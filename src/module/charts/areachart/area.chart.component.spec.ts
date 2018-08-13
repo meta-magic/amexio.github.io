@@ -9,7 +9,7 @@ import { ChartTitleComponent } from '../charttitle/chart.title.component';
 import { ChartLegendComponent } from '../chartlegend/chart.legend.component';
 import { ChartAreaComponent } from '../chartarea/chart.area.component';
 declare var google: any;
-describe('DONUT CHART', () => {
+describe('AREA CHART', () => {
     //let ChartTitleComponent=new ChartTitleComponent()
     // let ChartTitleComponent = [{'name':'chart','title':'','position':'','color':'','fontname':'','fontsize':'','bold':false,'italic':''}];
     let areachartcomp: AreaChartComponent;

@@ -161,6 +161,10 @@ describe('BUBBLE CHART', () => {
             expect(false).toBe(bubblechartcomp.hasLoaded);
         }
     });
+    it('onResize()',()=>{
+        bubblechartcomp.onResize(ComponentFixture);
+        bubblechartcomp.drawChart();
+      })
 }); 
 
 

@@ -161,6 +161,10 @@ describe('CANDLESTICKWATERFALL CHART', () => {
             expect(false).toBe(candlestickwaterchartcomp.hasLoaded);
         }
     });
+    it('onResize()',()=>{
+        candlestickwaterchartcomp.onResize(ComponentFixture);
+        candlestickwaterchartcomp.drawChart();
+      });
 }); 
 
 

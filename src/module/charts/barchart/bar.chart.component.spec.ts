@@ -161,6 +161,10 @@ describe('BAR CHART', () => {
             expect(false).toBe( barchartcomp.hasLoaded);
         }
     });
+    it('onResize()',()=>{
+        barchartcomp.onResize(ComponentFixture);
+        barchartcomp.drawChart();
+      })
 }); 
 
 

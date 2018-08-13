@@ -161,6 +161,10 @@ describe('PIE CHART', () => {
             expect(false).toBe(piechartcomp.hasLoaded);
         }
     });
+    it('onResize()',()=>{
+        piechartcomp.onResize(ComponentFixture);
+        piechartcomp.drawChart();
+      });
 }); 
 
 

@@ -161,6 +161,10 @@ describe('SCATTER CHART', () => {
             expect(false).toBe(scatterchartcomp.hasLoaded);
         }
     });
+    it('onResize()',()=>{
+        scatterchartcomp.onResize(ComponentFixture);
+        scatterchartcomp.drawChart();
+      });
 }); 
 
 

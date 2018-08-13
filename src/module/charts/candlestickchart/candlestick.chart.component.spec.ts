@@ -183,6 +183,10 @@ describe('CANDLESTICK CHART', () => {
             expect(false).toBe(candlestickchartcomp.hasLoaded);
         }
     });
+    it('onResize()',()=>{
+        candlestickchartcomp.onResize(ComponentFixture);
+        candlestickchartcomp.drawChart();
+      })
 }); 
 
 

@@ -161,6 +161,10 @@ describe('DONUT CHART', () => {
             expect(false).toBe(donutchartcomp.hasLoaded);
         }
     });
+    it('onResize()',()=>{
+        donutchartcomp.onResize(ComponentFixture);
+        donutchartcomp.drawChart();
+      });
 }); 
 
 

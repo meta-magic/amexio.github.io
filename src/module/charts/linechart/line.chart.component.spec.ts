@@ -16,27 +16,42 @@ describe('LINE CHART', () => {
     let charttitlecomp: ChartTitleComponent;
     let chartlegendcomp: ChartLegendComponent;
     let chartareacomp: ChartAreaComponent;
+    let chartAreaArray:ChartAreaComponent[];
+    let chartLegendArray: ChartLegendComponent[];
+    let chartTitleComponent:  ChartTitleComponent[];
     let linefixture: ComponentFixture<LineChartComponent>;
     let charttitlefixture: ComponentFixture<ChartTitleComponent>;
     let chartlegendfixture: ComponentFixture<ChartLegendComponent>;
     let chartareafixture: ComponentFixture<ChartAreaComponent>;
+
+    let chartAreaArray2: ChartAreaComponent [];
+    let chartLegendArray2: ChartLegendComponent []; 
+
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule],
             declarations: [LineChartComponent, ChartTitleComponent, ChartLegendComponent, ChartAreaComponent],
             providers: [ChartLoaderService]
-        });
+        }).compileComponents();
         linefixture = TestBed.createComponent(LineChartComponent);
         charttitlefixture = TestBed.createComponent(ChartTitleComponent);
         chartlegendfixture = TestBed.createComponent(ChartLegendComponent);
         chartareafixture = TestBed.createComponent(ChartAreaComponent);
+
         linechartcomp = linefixture.componentInstance;
         charttitlecomp = charttitlefixture.componentInstance;
         chartlegendcomp = chartlegendfixture.componentInstance;
         chartareacomp = chartareafixture.componentInstance;
+
         linechartcomp.chartTitleComponent = charttitlecomp;
         linechartcomp.chartLengendComponent=chartlegendcomp;
         linechartcomp.chartAreaComponent=chartareacomp;
+
+        chartAreaArray2 = [];
+        chartAreaArray2.push(chartareacomp);
+
+        chartLegendArray2 = [];
+        chartLegendArray2.push(chartlegendcomp);
 
     });
     it('show chart', () => {
@@ -114,9 +129,18 @@ describe('LINE CHART', () => {
         const chartbgstyle = linechartcomp.chartBackgroundStyle();
         //const json1 = {"backgroundcolor":null,"left":null,"top":null,"height":50,"width":100}
         //console.log(JSON.stringify(chartbgstyle));
-        
-        
     })
+    it('ngAfterContentInit()',()=>{
+        
+        //linechartcomp.ngAfterContentInit();
+        //console.log(" ********************* "+chartAreaArray2.toArray());
+       // linechartcomp.ngAfterContentInit();
+       // expect(linechartcomp.chartLegendArray).toEqual(linechartcomp.chartLegendComp.length[1]);
+       //expect(linechartcomp.chartLengendComponent ).toEqual(linechartcomp.chartLegendArray.pop());
+    
+    
+    
+    });
 
     it('get data method', () => {
         linechartcomp.data;
@@ -137,10 +161,10 @@ describe('LINE CHART', () => {
             expect(false).toBe(linechartcomp.hasLoaded);
         }
     });
-
-
-
-
+    it('onResize()',()=>{
+        linechartcomp.onResize(ComponentFixture);
+        linechartcomp.drawChart();
+      });
 }); 
 
 

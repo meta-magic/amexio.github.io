@@ -143,6 +143,10 @@ describe('COMBO CHART', () => {
             expect(false).toBe(combochartcomp.hasLoaded);
         }
     });
+    it('onResize()',()=>{
+        combochartcomp.onResize(ComponentFixture);
+        combochartcomp.drawChart();
+      });
 }); 
 
 
