@@ -23,16 +23,44 @@ describe('amexio-toolbar', () => {
         comp = fixture.componentInstance;
     });
 
-    it('getToolbarPosition check position',() => {
+    it('getToolbarPosition check position', () => {
         comp.toolbarposition = 'top';
-        comp.getToolbarPosition(); 
+        comp.getToolbarPosition();
         expect(comp.toolbarposition).toEqual('top');
         comp.toolbarposition = 'right';
-        comp.getToolbarPosition(); 
+        comp.getToolbarPosition();
         expect(comp.toolbarposition).toEqual('right');
         comp.toolbarposition = 'bottom';
-        comp.getToolbarPosition(); 
+        comp.getToolbarPosition();
         expect(comp.toolbarposition).toEqual('bottom');
     });
+
+
+
+    it('getToolbaritemposition method check ', () => {
+        let position: any;
+        comp.getToolbaritemposition(position);
+        position = 'right';
+        expect(position).toEqual('right');
+        comp.getToolbaritemposition(position);
+        position = 'left';
+        expect(position).toEqual('left');
+        comp.getToolbaritemposition(position);
+        position = 'center';
+        expect(position).toEqual('center');
+
+
+    });
+
+    // it('getSeperatotClass',() => {
+    //     let toolnode: any;
+    //     let position: any;
+
+    //     comp.getSeperatotClass(toolnode);
+    //     comp.seperator = true;
+
+    //     expect(comp.seperator).toEqual(true);
+
+    // });
+
 });
-    
