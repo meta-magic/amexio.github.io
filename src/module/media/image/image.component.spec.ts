@@ -49,9 +49,6 @@ describe('amexio-image', () => {
         expect(comp.height).toEqual('50px');
         expect(comp.filter).toEqual('50px');
         expect(comp.overlayEffect).toEqual('40px');
-        
-        
-    });
-
+        });
 
 });
