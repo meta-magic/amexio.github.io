@@ -344,12 +344,12 @@ describe('amexio-date-time-picker', () => {
   //   let rowDays=[];
   //   //date.setDate(date.getDate() - extras); // Skip back to the previous monday
   //   while (this.daysArray.length < 6) {
-     
+
   //     const day: any = {
   //       date: null, selected: false, isCurrentMonth: null, isDisabled: false,
   //     };
   //     for (let i = 0; i < 7; i++) {
-       
+
   //       day.date = new Date("22-Feb-2015");
   //       day.isCurrentMonth = (date.getMonth() === selectedperiod.getMonth());
   //       //comp.dateModel= true;
@@ -360,7 +360,7 @@ describe('amexio-date-time-picker', () => {
   //       expect(day.selected).toEqual(true);
 
   //       //else if ((date.getMonth() === this.currrentDate.getMonth()) && (date.getDate() === this.currrentDate.getDate())) {
-        
+
   //         expect(date.getMonth()).toEqual(comp.currrentDate.getMonth());
   //         expect(date.getDate()).toEqual(comp.currrentDate.getDate());
   //         expect(comp.dateModel).toBeNull;
@@ -368,7 +368,7 @@ describe('amexio-date-time-picker', () => {
   //         expect(day.selected).toEqual(false);
   //         day.selected=true;
   //         expect(day.selected).toEqual(true);
-          
+
   //       }
   //       rowDays.push(day);
 
@@ -393,28 +393,142 @@ describe('amexio-date-time-picker', () => {
 
 
   it('validateMaxDate()', () => {
-   let days = new Date("27-May-2017");
-   let max = new Date("22-Feb-2015");;
+    let days = new Date("27-May-2017");
+    let max = new Date("22-Feb-2015");;
     comp['validateMaxDate'](days, max);
-   //if
-    expect(days.getDate()).toBeGreaterThan(max.getDate());
-    expect(days.getMonth()).toBeGreaterThan(max.getMonth());
-    expect(days.getFullYear()).toBeGreaterThan(max.getFullYear());
+    //if
+    let test = expect(days.getDate()).toBeGreaterThan(max.getDate());
+    let test1 = expect(days.getMonth()).toBeGreaterThanOrEqual(max.getMonth());
+    expect(days.getFullYear()).toBeGreaterThanOrEqual(max.getFullYear());
+
     //else if 
-    days.setFullYear(2015);
+    max.setFullYear(2017);
     expect(days.getMonth()).toBeGreaterThan(max.getMonth());
     expect(days.getFullYear()).toEqual(max.getFullYear());
+
+
   });
 
   it('getDropdownMonth()', () => {
     let month = 2;
     comp.getDropdownMonth(month);
-   comp.monthList1 =  [{ name: 'Jan', flag: false, num: 4 }, { name: 'Feb', flag: false },
-   { name: 'Mar', flag: false }, { name: 'Apr', flag: false }, { name: 'May', flag: false },
-   { name: 'Jun', flag: false }];
-   comp.elementFlagMethod(comp.monthList1[1]);
+    comp.monthList1 = [{ name: 'Jan', flag: false, num: 4 }, { name: 'Feb', flag: false },
+    { name: 'Mar', flag: false }, { name: 'Apr', flag: false }, { name: 'May', flag: false },
+    { name: 'Jun', flag: false }];
+    comp.elementFlagMethod(comp.monthList1[1]);
   });
 
+  // it('disableddays()', () => {
+  //   let date = [
+  //     {
+  //       "from": "13-Jul-2018",
+  //       "to": "15-Jul-2018"
+  //     },
+  //     {
+  //       "from": "20-Jul-2018",
+  //       "to": "23-Jul-2018"
+  //     },
+  //     {
+  //       "from": "15-Jun-2018",
+  //       "to": "19-Jun-2018"
+  //     },
+  //     {
+  //       "from": "27-Jun-2018",
+  //       "to": "29-Jun-2018"
+  //     },
+  //     {
+  //       "from": "23-Aug-2018",
+  //       "to": "28-Aug-2018"
+  //     },
+  //     {
+  //       "from": "17-Aug-2018",
+  //       "to": "19-Aug-2018"
+  //     },
+  //     {
+  //       "from": "19-Sep-2018",
+  //       "to": "21-Sep-2018"
+  //     },
+  //     {
+  //       "from": "1-Nov-2018",
+  //       "to": "30-Nov-2018"
+  //     }
+  //   ];
+  //   comp.daysArray = [[{
+  //     date: new Date('21-Jul-2018'),
+  //     isCurrentMonth: false, isDisabled: false,
+  //     selected: false
+  //   }]]
+  //   comp['disableddays'](date);
+  //   expect(date).not.toBeNull; //validates if
+
+  //   const From = new Date(date[1].from);
+  //   const To = new Date(date[1].to);
+  //   console.log("comp.daysArray[0][0].getDate() = ", comp.daysArray[0][0].getDate());
+
+  //   expect(comp.daysArray[0][0].date.getFullYear()).toBeLessThanOrEqual(To.getFullYear());
+  //   expect(comp.daysArray[0][0].date.getMonth()).toBeLessThanOrEqual(To.getMonth());
+  //   expect(comp.daysArray[0][0].getDate()).toBeLessThanOrEqual(To.getDate());
+  //   console.log("comp.daysArray[0][0].getDate() = ", comp.daysArray[0][0].getDate());
+
+  //   expect(comp.daysArray.date.getFullYear()).toBeGreaterThanOrEqual(From.getFullYear());
+  //   expect(comp.daysArray[0][0].date.getMonth()).toBeGreaterThanOrEqual(From.getMonth());
+  //   expect(comp.daysArray[0][0].date.getDate()).toBeGreaterThanOrEqual(From.getDate());
+  //   comp.daysArray[0][0].isDisabled = true;
+  //   expect(comp.daysArray[0][0].isDisabled).toEqual(true);
+  // });
+
+  it('arrowClickForward()', () => {
+    comp.arrowClickForward();
+    comp.disableYearFlag();
+    comp.minDate = '22-Mar-2016';
+    comp.maxDate = '27-Oct-2018';
+    this.yearList1 = [{ year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+      { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+      { year: 0, flag: false, disabled: false }];
+      this.yearList2 = [{ year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+        { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+        { year: 0, flag: false, disabled: false }];
+
+    expect(comp.minDate.length).toBeGreaterThan(0);
+    comp['forwardArrow']();
+    comp.minDate = '';
+    expect(comp.minDate.length).toEqual(0);
+    
+    comp.yearList1[0].year = comp.yearList1[0].year + 10;
+    this.yearList2[0].year = this.yearList2[0].year + 10;
+
+    comp.disableYearFlag();
+    comp.rechkYearFlag();
+  });
+
+  it('onFocusOut()', () => {
+    
+    let value = {value: 'Mar' };
+    comp.onFocusOut(value);
+    expect(Date.parse(value.value)).toBeNaN;
+    comp.isValid = false;
+    expect(comp.isValid).toEqual(false);
+    value.value ='';
+    value.value = '22-Mar-2016';
+    expect(Date.parse(value.value)).not.toBeNaN;
+    comp.value = Date.parse(value.value);
+    comp.isValid = true;
+    //expect(value.value.length).toBeLessThanOrEqual(0);
+   });
+
+   it('yearFlagNegate()', () => {
+     let element = { year: 0, flag: true, disabled: false };
+    comp['yearFlagNegate'](element);
+   });
+
+   it('elementFlagMethod()', () => {
+     let element = { year: 0, flag: false, disabled: false };
+
+ comp.elementFlagMethod(element);
+ expect(element.flag).toEqual(false);
+  });
+
+  
 });
 
-// getDropdownMonth
+ 
