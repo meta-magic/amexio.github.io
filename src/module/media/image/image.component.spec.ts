@@ -43,12 +43,13 @@ describe('amexio-image', () => {
         comp.ngOnInit();
         comp.width = '100px';
         comp.height ='50px';
-        comp.filter ='50px';
-        comp.overlayEffect = '40px';
+        comp.overlayEffect = '';
+        comp.filter = '';
+     
         expect(comp.width).toEqual('100px');
         expect(comp.height).toEqual('50px');
-        expect(comp.filter).toEqual('50px');
-        expect(comp.overlayEffect).toEqual('40px');
+        expect(comp.filter).toEqual('');
+        expect(comp.overlayEffect).toEqual('');
         });
 
 });
