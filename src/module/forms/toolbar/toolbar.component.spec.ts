@@ -27,9 +27,11 @@ describe('amexio-toolbar', () => {
         comp.toolbarposition = 'top';
         comp.getToolbarPosition();
         expect(comp.toolbarposition).toEqual('top');
+
         comp.toolbarposition = 'right';
         comp.getToolbarPosition();
         expect(comp.toolbarposition).toEqual('right');
+
         comp.toolbarposition = 'bottom';
         comp.getToolbarPosition();
         expect(comp.toolbarposition).toEqual('bottom');
@@ -39,26 +41,44 @@ describe('amexio-toolbar', () => {
 
     it('getToolbaritemposition method check ', () => {
         let position: any;
-        comp.getToolbaritemposition(position);
+
+
         position = 'right';
+        comp.getToolbaritemposition(position);
         expect(position).toEqual('right');
-        comp.getToolbaritemposition(position);
+
         position = 'left';
-        expect(position).toEqual('left');
         comp.getToolbaritemposition(position);
+        expect(position).toEqual('left');
+
         position = 'center';
+        comp.getToolbaritemposition(position);
         expect(position).toEqual('center');
 
+        position = '';
+        comp.getToolbaritemposition(position);
+        expect(position).toEqual('');
+
+
+    });
+    
+
+    it('onToolClick check method',() => {
+        let tool: any;
+        let position: any;
+        comp.onToolClick(tool);
+        comp.seperator = true;
+        expect(position).toBe('right');
+        expect(comp.seperator).toEqual(true);
 
     });
 
     // it('getSeperatotClass',() => {
     //     let toolnode: any;
     //     let position: any;
-
     //     comp.getSeperatotClass(toolnode);
     //     comp.seperator = true;
-
+    //     expect(position).toBe('right');
     //     expect(comp.seperator).toEqual(true);
 
     // });
