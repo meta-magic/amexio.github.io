@@ -9,7 +9,7 @@ import { AmexioButtonComponent } from '../../forms/buttons/button.component';
 import { toUnicode } from 'punycode';
 import { SSL_OP_NO_SESSION_RESUMPTION_ON_RENEGOTIATION } from 'constants';
 
-describe('amexio-steps', () => {
+describe('amexio-borderlayout-item', () => {
     let comp: AmexioBorderLayoutItemComponent;
     let fixture: ComponentFixture<AmexioBorderLayoutItemComponent>;
 
