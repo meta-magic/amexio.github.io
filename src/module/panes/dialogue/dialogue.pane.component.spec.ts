@@ -43,10 +43,29 @@ describe('amexio-steps', () => {
       });
 
       it('onCloseClick method check', () => {
-
         comp.closable = true;
         comp.onCloseClick();
-        expect(comp.closable).toEqual(true);
+         expect(comp.closable).toEqual(true);
+        // expect(comp.showChange).toEqual(false);
+        // expect(comp.show).toEqual(false);
+        comp.showChange.subscribe((g: any) => {
+            expect(false).toEqual(g);
+        });
+        comp.close.subscribe((g: any) => {
+            expect(false).toEqual(g);
+        });
+      });
+
+
+      it('getDefaultStyle method check ',() => {
+
+        comp.getDefaultStyle();
+        comp.materialDesign = true;
+        expect(comp.materialDesign).toEqual(true);
+        comp.materialDesign = false;
+        comp.getDefaultStyle();
+        expect(comp.materialDesign).toEqual(false);
+        
       })
 
 });
