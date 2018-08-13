@@ -24,13 +24,40 @@ describe('amexio-ee-content', () => {
 
     it('playVideo  method check ', () => {
         let video: any;
-
         comp.playVideo(video);
         comp.onVideoLoad.subscribe((g: any) => {
             expect(video).toEqual(g);
         });
     });
 
+    it('ngOnInit method check ',() => {
+        // comp.carouselStyle = null;
+        // comp.ngOnInit();
+        // expect(comp.carouselStyle).toBe(null);
+
+        comp.carouselStyle = 'horizontal';
+        comp.ngOnInit();
+        expect(comp.carouselStyle).toBe('horizontal');
+        
+    });
+
+    // it('getClassName method check', () => {
+
+    //     let item: any;
+    //     comp.openDetailsSection(item);
+
+    //     comp.videoUrl = item.video;
+    //     comp.openDetailsSection(item);
+    //     expect(comp.videoUrl).toEqual();
+    //     comp.smallScreen = false;
+    //     comp.openDetailsSection(item);
+    //     expect(comp.smallScreen).toEqual(false);
+    // });
+
+
+    // this.videoUrl = item.video;
+    // this.currentDetailsImagePath = item.details_img;
+    // this.currentDetailsTitle = item.title;
 
     // it('loadVideo  method check ', () => {
     //     let item: any;
