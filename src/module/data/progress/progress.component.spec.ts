@@ -42,8 +42,10 @@ describe('amexio-progress-bar', () => {
         expect(comp.stripped).toEqual(true);
 
         comp.amexiocolor = 'red';
-
+        comp.type = 'small';
         expect(comp.amexiocolor).not.toBeNull;
+        expect(comp.type).not.toBeNull;
+
 });
 });
 
