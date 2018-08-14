@@ -33,9 +33,17 @@ describe('amexio-progress-bar', () => {
     });
 
     it('ngoninit method', () => {
+        comp.ngOnInit();
         comp.height = '30px';
         expect(comp.height).toEqual('30px');
+
+        comp.stripped = true;
         comp.ngOnInit();
+        expect(comp.stripped).toEqual(true);
+
+        comp.amexiocolor = 'red';
+
+        expect(comp.amexiocolor).not.toBeNull;
 });
 });
 
