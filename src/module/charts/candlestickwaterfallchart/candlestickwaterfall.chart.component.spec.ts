@@ -107,6 +107,7 @@ describe('CANDLESTICKWATERFALL CHART', () => {
     it('drawchart()', () => {
         candlestickwaterchartcomp.drawChart();
         candlestickwaterchartcomp.chartTitleComponent.title = null;
+        candlestickwaterchartcomp.chartTitleComponent.position='';
 
     });
     it('chartTitleTextStyle()', () => {
@@ -183,6 +184,11 @@ describe('CANDLESTICKWATERFALL CHART', () => {
             candlestickwaterchartcomp.data = newdata;
             candlestickwaterchartcomp.drawChart();
             expect(false).toBe(candlestickwaterchartcomp.hasLoaded);
+            it('title',()=>{
+                charttitlecomp.title='CandleStickwaterfall chart';
+                expect(charttitlecomp.title).toBe(true);
+                expect(charttitlecomp.title).toBe(false);
+            })
         }
     });
     it('onResize()', () => {

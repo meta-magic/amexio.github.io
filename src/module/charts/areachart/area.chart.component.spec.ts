@@ -135,20 +135,9 @@ describe('AREA CHART', () => {
         //console.log(JSON.stringify(chartbgstyle));
     })
     it('ngOnInit()', () => {
-
-        //linechartcomp.ngAfterContentInit();
-        //console.log(" ********************* "+chartAreaArray2.toArray());
-        // linechartcomp.ngAfterContentInit();
-        // expect(linechartcomp.chartLegendArray).toEqual(linechartcomp.chartLegendComp.length[1]);
-        //expect(linechartcomp.chartLengendComponent ).toEqual(linechartcomp.chartLegendArray.pop());
         areachartcomp.ngOnInit();
         expect(false).toBe(areachartcomp.hasLoaded);
-  //this.loader.loadCharts('AreaChart').subscribe((value) => console.log(), (errror) => console.error(errror), () => {
         areachartcomp.drawChart();
-        //this.loader.loadCharts('AreaChart').subscribe((value) => console.log(), (errror) => console.error(errror), () => {
-
-           // this.drawChart();
-
     });
 
     it('get data method', () => {
@@ -168,14 +157,15 @@ describe('AREA CHART', () => {
             areachartcomp.data = newdata;
             areachartcomp.drawChart();
             expect(false).toBe(areachartcomp.hasLoaded);
+            areachartcomp['options'];
             it('title',()=>{
                 charttitlecomp.title='Area chart';
                 expect(charttitlecomp.title).toBe(true);
             })
-            // let draw = google.visualization.arrayToDataTable(areachartcomp.data);
-            // areachartcomp.drawChart();
-             //expect(draw).toEqual( (<any>areachartcomp).areaData);
-            // areachartcomp.chartTitleComponent.title = null;
+            let draw = google.visualization.arrayToDataTable(areachartcomp.data);
+            areachartcomp.drawChart();
+             expect(draw).toEqual(areachartcomp['areaData']);
+            areachartcomp.chartTitleComponent.title = null;
 
         }
     });
@@ -183,7 +173,7 @@ describe('AREA CHART', () => {
         areachartcomp.onResize(ComponentFixture);
         areachartcomp.drawChart();
     });
-
+ 
 });
 
 
