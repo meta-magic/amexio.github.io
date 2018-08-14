@@ -32,9 +32,13 @@ describe('amexio-steps', () => {
 
         comp.west = true;
         expect(comp.west).toEqual(true);
+        comp.colspan = 1;
+        expect(comp.colspan).toEqual(comp.colspan++);
 
         comp.east = true;
         expect(comp.east).toEqual(true);
+        comp.colspan = 1;
+        expect(comp.colspan).toEqual(comp.colspan++);
 
         // expect((<any>comp).faFaIconDownCss).toEqual('fa fa-caret-down');
     });
