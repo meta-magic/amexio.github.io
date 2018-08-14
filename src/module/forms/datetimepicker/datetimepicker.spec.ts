@@ -19,6 +19,16 @@ describe('amexio-date-time-picker', () => {
     });
     fixture = TestBed.createComponent(AmexioDateTimePickerComponent);
     comp = fixture.componentInstance;
+    comp.backArrowFlag = false;
+    comp.testnumber = 5;
+    comp.yearList1 = [{ year: 0, flag: false, disabled: false },
+    { year: 1, flag: false, disabled: false }, { year: 3, flag: false, disabled: false },
+    { year: 4, flag: false, disabled: false }, { year: 5, flag: false, disabled: false }];
+    comp.yearList2 = [{ year: 20, flag: false, disabled: false },
+    { year: 15, flag: false, disabled: false },
+    { year: 8, flag: false, disabled: false },
+    { year: 18, flag: false, disabled: false },
+    { year: 65, flag: false, disabled: false }];
   });
 
   it('Initial Check', () => {
@@ -483,17 +493,17 @@ describe('amexio-date-time-picker', () => {
     comp.minDate = '22-Mar-2016';
     comp.maxDate = '27-Oct-2018';
     this.yearList1 = [{ year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
-      { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
-      { year: 0, flag: false, disabled: false }];
-      this.yearList2 = [{ year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
-        { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
-        { year: 0, flag: false, disabled: false }];
+    { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+    { year: 0, flag: false, disabled: false }];
+    this.yearList2 = [{ year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+    { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+    { year: 0, flag: false, disabled: false }];
 
     expect(comp.minDate.length).toBeGreaterThan(0);
     comp['forwardArrow']();
     comp.minDate = '';
     expect(comp.minDate.length).toEqual(0);
-    
+
     comp.yearList1[0].year = comp.yearList1[0].year + 10;
     this.yearList2[0].year = this.yearList2[0].year + 10;
 
@@ -502,33 +512,123 @@ describe('amexio-date-time-picker', () => {
   });
 
   it('onFocusOut()', () => {
-    
-    let value = {value: 'Mar' };
+
+    let value = { value: 'Mar' };
     comp.onFocusOut(value);
     expect(Date.parse(value.value)).toBeNaN;
     comp.isValid = false;
     expect(comp.isValid).toEqual(false);
-    value.value ='';
+    value.value = '';
     value.value = '22-Mar-2016';
     expect(Date.parse(value.value)).not.toBeNaN;
     comp.value = Date.parse(value.value);
     comp.isValid = true;
     //expect(value.value.length).toBeLessThanOrEqual(0);
-   });
-
-   it('yearFlagNegate()', () => {
-     let element = { year: 0, flag: true, disabled: false };
-    comp['yearFlagNegate'](element);
-   });
-
-   it('elementFlagMethod()', () => {
-     let element = { year: 0, flag: false, disabled: false };
-
- comp.elementFlagMethod(element);
- expect(element.flag).toEqual(false);
   });
 
-  
+  it('yearFlagNegate()', () => {
+    let element = { year: 0, flag: true, disabled: false };
+    comp['yearFlagNegate'](element);
+  });
+
+  it('elementFlagMethod()', () => {
+    let element = { year: 0, flag: false, disabled: false };
+
+    comp.elementFlagMethod(element);
+    expect(element.flag).toEqual(false);
+  });
+
+  it('yearFlag()', () => {
+    let element = { year: 2010, flag: false, disabled: false };
+    let year = { year: 2010 };
+    comp.yearFlag(element, year);
+    expect(element.year).toEqual(year.year);
+  });
+
+
+  it('getDropdownYear()', () => {
+    let element = { year: 2014, flag: false, disabled: false };
+    comp.yearList1 = [{ year: 2010, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+    { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+    { year: 0, flag: false, disabled: false }];
+    comp.yearList2 = [{ year: 2011, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+    { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+    { year: 0, flag: false, disabled: false }];
+    let year = { year: 2012 };
+    comp['yearFlagNegate'](comp.yearList1[0]);
+    comp['yearFlagNegate'](comp.yearList2[0]);
+    comp.yearFlag(comp.yearList1[0], year);
+    comp.yearFlag(comp.yearList2[0], year);
+    comp.yearNo = 2012;
+    expect(comp.yearNo).toEqual(year.year);
+  });
+
+  //yearflagdisable
+  it('yearFlagDisable()', () => {
+    let element = { year: 2010, flag: false, disabled: false };
+    let year = { year: 2010 };
+    comp.minDate = '27-Mar-2016';
+    comp.maxDate = '22-Feb-2019';
+    comp.yearFlagDisable(element);
+    const min = new Date(comp.minDate);
+    const max = new Date(comp.maxDate);
+
+    //case 1
+    expect(element.year).toBeLessThan(min.getFullYear());
+
+    //case 2
+    element.year = 2020;
+    expect(element.year).toBeGreaterThan(max.getFullYear());
+
+  });
+
+
+  //resetyearflag
+  it('resetYearFlag()', () => {
+    comp.resetYearFlag();
+
+    expect(comp.backArrowFlag).toEqual(false);
+    comp.yearList1[0].year = this.yearList1[0].year - 10;
+    comp.yearList2[0].year = this.yearList2[0].year - 10;
+    comp.yearList1[0].disabled = false;
+    comp.yearList2[0].disabled = false;
+  });
+
+  //backarrow
+  // it('backArrow()', () => {
+  //   let min = new Date('27-Mar-2016');
+  //   let max = new Date('22-Feb-2012');
+
+  //   comp.yearList1 = [{ year: 2018, flag: false, disabled: false }];
+
+  //   comp['backArrow']();
+  //   //case 1
+  //   comp.yearList1[0].year = 2012;
+  //   expect(comp.yearList1[0].year).toEqual(min.getFullYear());
+  //   comp.backArrowFlag = true;
+  //   expect(comp.backArrowFlag).toEqual(true);
+
+  //   //case 2
+  //   comp.yearList1[0].year = 2016;
+  //   expect(comp.yearList1[0].year).toEqual(max.getFullYear());
+  //   expect(comp.yearList1[0].year).not.toEqual(min.getFullYear());
+  //   comp.forwardArrowFlag = true;
+  //   expect(comp.forwardArrowFlag).toEqual(true);
+  //   comp.backArrowFlag = false;
+  //   expect(comp.backArrowFlag).toEqual(false);
+
+  //   //case 3
+  //   comp.yearList1[0].year = 2015;
+  //   expect(comp.yearList1[0].year).not.toEqual(min.getFullYear());
+  //   expect(comp.yearList1[0].year).not.toEqual(max.getFullYear());
+  //   comp.backArrowFlag = false;
+  //   expect(comp.backArrowFlag).toEqual(false);
+  //   comp.forwardArrowFlag = false;
+  //   expect(comp.forwardArrowFlag).toEqual(false);
+  //   // comp.resetYearFlag();
+
+  // });
+  //recchkyearflag
+
 });
 
- 
