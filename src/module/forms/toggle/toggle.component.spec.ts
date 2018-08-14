@@ -41,7 +41,7 @@ describe('amexio-toggle', () => {
   });
 
 
-  it('check routeBackToApp method', () => {
+  it('check onToggle method', () => {
 
     comp.onToggle();
     comp.isValid = true;
@@ -59,8 +59,29 @@ describe('amexio-toggle', () => {
     });
   });
 
+  it('check checkValidity method', () => {
 
-  
+    comp.checkValidity();
+    comp.isValid =  true;
+    expect(comp.isValid).toBe(true);
+  });
+
+  it('check writeValue method', () => {
+
+    let value: any;
+    value = 23;
+    (<any>comp).innerValue = '';
+    comp.writeValue(value);
+    expect(value).toBe( (<any>comp).innerValue);
+    value = 20;
+    (<any>comp).innerValue = '';
+    comp.writeValue(value);
+    expect(value).toBe( (<any>comp).innerValue);
+    expect(comp.isValid).toEqual(value);
+
+   
+  });
+
 
 });
 
