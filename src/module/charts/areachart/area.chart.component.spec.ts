@@ -1,4 +1,4 @@
-import {  AreaChartComponent} from './area.chart.component';
+import { AreaChartComponent } from './area.chart.component';
 //import { AmexioFormIconComponent } from '../icon/icon.component';
 import { FormsModule } from '@angular/forms';
 import { IconLoaderService } from '../../../index'
@@ -16,24 +16,24 @@ describe('AREA CHART', () => {
     let charttitlecomp: ChartTitleComponent;
     let chartlegendcomp: ChartLegendComponent;
     let chartareacomp: ChartAreaComponent;
-    let chartAreaArray:ChartAreaComponent[];
+    let chartAreaArray: ChartAreaComponent[];
     let chartLegendArray: ChartLegendComponent[];
-    let chartTitleComponent:  ChartTitleComponent[];
-    let linefixture: ComponentFixture< AreaChartComponent>;
+    let chartTitleComponent: ChartTitleComponent[];
+    let linefixture: ComponentFixture<AreaChartComponent>;
     let charttitlefixture: ComponentFixture<ChartTitleComponent>;
     let chartlegendfixture: ComponentFixture<ChartLegendComponent>;
     let chartareafixture: ComponentFixture<ChartAreaComponent>;
 
-    let chartAreaArray2: ChartAreaComponent [];
-    let chartLegendArray2: ChartLegendComponent []; 
+    let chartAreaArray2: ChartAreaComponent[];
+    let chartLegendArray2: ChartLegendComponent[];
 
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule],
-            declarations: [ AreaChartComponent, ChartTitleComponent, ChartLegendComponent, ChartAreaComponent],
+            declarations: [AreaChartComponent, ChartTitleComponent, ChartLegendComponent, ChartAreaComponent],
             providers: [ChartLoaderService]
         }).compileComponents();
-        linefixture = TestBed.createComponent( AreaChartComponent);
+        linefixture = TestBed.createComponent(AreaChartComponent);
         charttitlefixture = TestBed.createComponent(ChartTitleComponent);
         chartlegendfixture = TestBed.createComponent(ChartLegendComponent);
         chartareafixture = TestBed.createComponent(ChartAreaComponent);
@@ -44,8 +44,8 @@ describe('AREA CHART', () => {
         chartareacomp = chartareafixture.componentInstance;
 
         areachartcomp.chartTitleComponent = charttitlecomp;
-        areachartcomp.chartLengendComponent=chartlegendcomp;
-        areachartcomp.chartAreaComponent=chartareacomp;
+        areachartcomp.chartLengendComponent = chartlegendcomp;
+        areachartcomp.chartAreaComponent = chartareacomp;
 
         chartAreaArray2 = [];
         chartAreaArray2.push(chartareacomp);
@@ -55,16 +55,17 @@ describe('AREA CHART', () => {
 
     });
     it('show chart', () => {
-      areachartcomp.showChart = false;
+
+        areachartcomp.showChart = false;
         charttitlecomp.title = '';
-        expect(false).toBe( areachartcomp.showChart);
+        expect(false).toBe(areachartcomp.showChart);
         let newdata = [{ 'name': 'linechart' }];
         areachartcomp.data = newdata;
     });
     it('dont show chart', () => {
         let newdata;
         areachartcomp.data = newdata;
-        expect(false).toBe( areachartcomp.showChart);
+        expect(false).toBe(areachartcomp.showChart);
     });
     it('chartTitleTextStyle() properties', () => {
         charttitlecomp.color = '';
@@ -82,7 +83,7 @@ describe('AREA CHART', () => {
         chartlegendcomp.fontname = '';
         chartlegendcomp.fontsize = '';
         chartlegendcomp.bold = false;
-        chartlegendcomp.maxlines=null;
+        chartlegendcomp.maxlines = null;
     });
     it('chartBackgroundStyle() properties', () => {
         chartareacomp.chartbackgroundcolor = '';
@@ -101,52 +102,57 @@ describe('AREA CHART', () => {
 
     // });
     it('chartTitleTextStyle()', () => {
-      areachartcomp.chartTitleComponent;
-      areachartcomp.chartTitleComponent.color = 'red';
-      areachartcomp.chartTitleComponent.fontname='times new roman';
-      areachartcomp.chartTitleComponent.fontsize=5;
-      areachartcomp.chartTitleComponent.bold=true;
-      areachartcomp.chartTitleComponent.italic=true;
-        const charttextstyle= areachartcomp.createTitleTextStyle();
-       // console.log(JSON.stringify(charttextstyle));
+        areachartcomp.chartTitleComponent;
+        areachartcomp.chartTitleComponent.color = 'red';
+        areachartcomp.chartTitleComponent.fontname = 'times new roman';
+        areachartcomp.chartTitleComponent.fontsize = 5;
+        areachartcomp.chartTitleComponent.bold = true;
+        areachartcomp.chartTitleComponent.italic = true;
+        const charttextstyle = areachartcomp.createTitleTextStyle();
+        // console.log(JSON.stringify(charttextstyle));
     });
-    it('chartLegendStyle()',()=>{
-      areachartcomp.chartLengendComponent.position='left';
-      areachartcomp.chartLengendComponent.maxlines=5;
-      areachartcomp.chartLengendComponent.color='black';
-      areachartcomp.chartLengendComponent.fontsize='12';
-      areachartcomp.chartLengendComponent.alignment='center';
-      areachartcomp.chartLengendComponent.fontname='times';
-      areachartcomp.chartLengendComponent.bold=true;
-        const chartlegendstyle= areachartcomp.createChartLegend();
+    it('chartLegendStyle()', () => {
+        areachartcomp.chartLengendComponent.position = 'left';
+        areachartcomp.chartLengendComponent.maxlines = 5;
+        areachartcomp.chartLengendComponent.color = 'black';
+        areachartcomp.chartLengendComponent.fontsize = '12';
+        areachartcomp.chartLengendComponent.alignment = 'center';
+        areachartcomp.chartLengendComponent.fontname = 'times';
+        areachartcomp.chartLengendComponent.bold = true;
+        const chartlegendstyle = areachartcomp.createChartLegend();
         // const json1 = {"position":null,"maxLines":5,"textStyle":{"color":"black","fontsize":"12","fontName":"times","bold":null,"alignment":"center"}}
         //console.log(JSON.stringify(chartlegendstyle));
         // expect(chartlegendstyle).toEqual(json1);
 
     })
-    it('chartBackgroundStyle()',()=>{
-      areachartcomp.chartAreaComponent.chartbackgroundcolor='red';
-      areachartcomp.chartAreaComponent.chartheight=50;
-      areachartcomp.chartAreaComponent.chartwidth=100;
-      areachartcomp.chartAreaComponent.leftposition=null;
-       const chartbgstyle = areachartcomp.createChartArea();
+    it('chartBackgroundStyle()', () => {
+        areachartcomp.chartAreaComponent.chartbackgroundcolor = 'red';
+        areachartcomp.chartAreaComponent.chartheight = 50;
+        areachartcomp.chartAreaComponent.chartwidth = 100;
+        areachartcomp.chartAreaComponent.leftposition = null;
+        const chartbgstyle = areachartcomp.createChartArea();
         //const json1 = {"backgroundcolor":null,"left":null,"top":null,"height":50,"width":100}
         //console.log(JSON.stringify(chartbgstyle));
     })
-    it('ngAfterContentInit()',()=>{
-        
+    it('ngOnInit()', () => {
+
         //linechartcomp.ngAfterContentInit();
         //console.log(" ********************* "+chartAreaArray2.toArray());
-       // linechartcomp.ngAfterContentInit();
-       // expect(linechartcomp.chartLegendArray).toEqual(linechartcomp.chartLegendComp.length[1]);
-       //expect(linechartcomp.chartLengendComponent ).toEqual(linechartcomp.chartLegendArray.pop());
-    
-    
-    
+        // linechartcomp.ngAfterContentInit();
+        // expect(linechartcomp.chartLegendArray).toEqual(linechartcomp.chartLegendComp.length[1]);
+        //expect(linechartcomp.chartLengendComponent ).toEqual(linechartcomp.chartLegendArray.pop());
+        areachartcomp.ngOnInit();
+        expect(false).toBe(areachartcomp.hasLoaded);
+  //this.loader.loadCharts('AreaChart').subscribe((value) => console.log(), (errror) => console.error(errror), () => {
+        areachartcomp.drawChart();
+        //this.loader.loadCharts('AreaChart').subscribe((value) => console.log(), (errror) => console.error(errror), () => {
+
+           // this.drawChart();
+
     });
 
     it('get data method', () => {
-      areachartcomp.data;
+        areachartcomp.data;
         expect(areachartcomp.data).toBe(areachartcomp._data);
     });
 
@@ -157,23 +163,28 @@ describe('AREA CHART', () => {
         script.async = true;
         script.defer = true;
         script.onload = () => {
-          areachartcomp.showChart = true;
+            areachartcomp.showChart = true;
             let newdata = [{ name: 'linechart' }];
             areachartcomp.data = newdata;
             areachartcomp.drawChart();
             expect(false).toBe(areachartcomp.hasLoaded);
+            it('title',()=>{
+                charttitlecomp.title='Area chart';
+                expect(charttitlecomp.title).toBe(true);
+            })
             // let draw = google.visualization.arrayToDataTable(areachartcomp.data);
             // areachartcomp.drawChart();
-            // expect(draw).toEqual( (<any>areachartcomp).areaData);
+             //expect(draw).toEqual( (<any>areachartcomp).areaData);
             // areachartcomp.chartTitleComponent.title = null;
-      
+
         }
     });
-    it('onResize()',()=>{
-      areachartcomp.onResize(ComponentFixture);
-      areachartcomp.drawChart();
-    })
-}); 
+    it('onResize()', () => {
+        areachartcomp.onResize(ComponentFixture);
+        areachartcomp.drawChart();
+    });
+
+});
 
 
 
