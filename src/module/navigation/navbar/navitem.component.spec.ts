@@ -55,10 +55,16 @@ describe('amexio-nav-item', () => {
     });
 
     it('check ngOnInit method', () => {
-        comp.ngOnInit();
         comp.type = 'link';
         comp.isAction = true;
+        comp.ngOnInit();
         expect(comp.type).toEqual('link');
+        expect(comp.isAction).toEqual(true);
+
+        comp.type = 'button';
+        comp.isAction = true;
+        comp.ngOnInit();
+        expect(comp.type).toEqual('button');
         expect(comp.isAction).toEqual(true);
 
         comp.type = 'textfield';
@@ -66,24 +72,42 @@ describe('amexio-nav-item', () => {
         comp.ngOnInit();
         expect(comp.type).toEqual('textfield');
 
-
         comp.type = 'menu';
         comp.isMenu = true;
         comp.ngOnInit();
         expect(comp.type).toEqual('menu');
 
-
         comp.type = 'menucontainer';
         comp.isMenuContainer = true;
         comp.ngOnInit();
         expect(comp.type).toEqual('menucontainer');
+    });
 
-
-
-
-        
+    it('check get value method', () => {
+        expect((<any>comp).innerValue).toEqual('');
     });
 
 
+    it('check writeValue method', () => {
 
+        let value: any;
+        value = 23;
+        (<any>comp).innerValue = '';
+        comp.writeValue(value);
+        expect(value).toBe((<any>comp).innerValue);
+
+    });
+
+
+    it('check registerOnChange  method', () => {
+        let fn: any
+        comp.registerOnChange(fn);
+        expect((<any>comp).onChangeCallback).toEqual(fn);
+    });
+    it('check registerOnTouched  method', () => {
+        let fn: any
+        comp.registerOnTouched(fn);
+        expect((<any>comp).onTouchedCallback).toEqual(fn);
+    });
 });
+
