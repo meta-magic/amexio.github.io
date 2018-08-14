@@ -38,13 +38,13 @@ describe('amexio-text-field' , () => {
     expect(false).toBe(comp.showChart);
   });
 
-  it('Draw Chart Test', () => {
-      comp.showChart = true;
-    let newdata = [{ name : 'chart'}];
-    comp.data = newdata;
-    comp.drawChart();
-    expect(false).toBe(comp.hasLoaded);
-  });
+  // it('Draw Chart Test', () => {
+  //     comp.showChart = true;
+  //   let newdata = [{ name : 'chart'}];
+  //   comp.data = newdata;
+  //   comp.drawChart();
+  //   expect(false).toBe(comp.hasLoaded);
+  // });
 
   // it('Check Undefined', () => {
   //   let newdata = [{ name : 'chart'}];
