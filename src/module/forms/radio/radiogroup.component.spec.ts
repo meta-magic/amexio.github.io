@@ -35,5 +35,40 @@ describe('amexio-radio-group-component', () => {
       expect(fixture.nativeElement).toEqual({ fixture });
     });
   });
+
+  it('should emit greeting event on oninput method', () => {
+    let em: any;
+    comp.onInput(em);
+    comp.input.subscribe((g: any) => {
+      expect(em).toEqual(g);
+    });
+  });
+
+  it('should emit greeting event on ngOnInit method', () => {
+    comp.ngOnInit();
+    comp.isValid = true;
+    comp.allowblank = true;
+    expect(comp.allowblank).toEqual(comp.isValid);
+    comp.isComponentValid.subscribe((g: any) => {
+      expect(comp.allowblank).toEqual(g);
+    });
+  });
+
+  it('should checkValidity event', () => {
+    comp.checkValidity();
+
+    comp.isValid = true;
+      expect(comp.isValid).toEqual(true);
+  });
+
+
+  // it('should emit greeting event onClick', () => {
+  //   let row: any;
+  //   comp.onClick(row);
+  //   comp.onSelection.subscribe((g: any) => {
+  //     expect(row).toEqual(g);
+  //   });
+  // });
+
   
 });
