@@ -1,6 +1,67 @@
 /**
- * Created by pratik on 1/12/17.
+ * Created by kedar on 14/08/18.
  */
-describe('Toggle tests', () => {
-  it('true is true', () => expect(true).toBe(true));
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { By } from '@angular/platform-browser';
+import { IconLoaderService } from '../../../index';
+import { AmexioToggleComponent } from './toggle.component';
+
+describe('amexio-toggle', () => {
+  let comp: AmexioToggleComponent;
+  let fixture: ComponentFixture<AmexioToggleComponent>;
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [FormsModule],
+      declarations: [AmexioToggleComponent],
+      providers: [IconLoaderService],
+    });
+    fixture = TestBed.createComponent(AmexioToggleComponent);
+    comp = fixture.componentInstance;
+  });
+  it('check innervalue variable', () => {
+    (<any>comp).innerValue = '';
+    expect((<any>comp).innerValue).toEqual('');
+  });
+
+  it('check routeBackToApp method', () => {
+    comp.shape = 'round';
+    comp.ngOnInit();
+    expect(comp.shape).toEqual('round');
+
+
+    comp.ngOnInit();
+    comp.isValid = true;
+    comp.required = false;
+    expect(comp.isValid).not.toBe(comp.required);
+
+    comp.isComponentValid.subscribe((g: any) => {
+      expect(false).toEqual(g);
+    });
+  });
+
+
+  it('check routeBackToApp method', () => {
+
+    comp.onToggle();
+    comp.isValid = true;
+    comp.value = true;
+    expect(comp.isValid).toBe(comp.value);
+    comp.onToggle();
+
+    comp.isComponentValid.subscribe((g: any) => {
+      expect(comp.value).toEqual(g);
+    });
+    comp.onToggle();
+
+    comp.onChange.subscribe((g: any) => {
+      expect(comp.value).toEqual(g);
+    });
+  });
+
+
+  
+
 });
+
+
