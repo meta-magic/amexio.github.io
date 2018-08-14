@@ -8,6 +8,9 @@ import { ChartLoaderService } from './../chart.loader.service';
 import { ChartTitleComponent } from '../charttitle/chart.title.component';
 import { ChartLegendComponent } from '../chartlegend/chart.legend.component';
 import { ChartAreaComponent } from '../chartarea/chart.area.component';
+import { HorizontalAxisComponent } from '../horizontalaxis/chart.horizontalaxis.component';
+import { VerticalAxisComponent } from '../verticalaxis/chart.verticalaxis.component';
+
 declare var google: any;
 describe('BUBBLE CHART', () => {
     //let ChartTitleComponent=new ChartTitleComponent()
@@ -16,6 +19,8 @@ describe('BUBBLE CHART', () => {
     let charttitlecomp: ChartTitleComponent;
     let chartlegendcomp: ChartLegendComponent;
     let chartareacomp: ChartAreaComponent;
+    let chartvercomp: VerticalAxisComponent ;
+    let charthorcomp: HorizontalAxisComponent ;
     let chartAreaArray:ChartAreaComponent[];
     let chartLegendArray: ChartLegendComponent[];
     let chartTitleComponent:  ChartTitleComponent[];
@@ -23,6 +28,8 @@ describe('BUBBLE CHART', () => {
     let charttitlefixture: ComponentFixture<ChartTitleComponent>;
     let chartlegendfixture: ComponentFixture<ChartLegendComponent>;
     let chartareafixture: ComponentFixture<ChartAreaComponent>;
+    let chartverfixture:ComponentFixture<VerticalAxisComponent>;
+    let charthorfixture:ComponentFixture<HorizontalAxisComponent> 
 
     let chartAreaArray2: ChartAreaComponent [];
     let chartLegendArray2: ChartLegendComponent []; 
@@ -30,22 +37,28 @@ describe('BUBBLE CHART', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule],
-            declarations: [BubbleChartComponent, ChartTitleComponent, ChartLegendComponent, ChartAreaComponent],
+            declarations: [BubbleChartComponent, ChartTitleComponent, ChartLegendComponent, ChartAreaComponent, HorizontalAxisComponent, VerticalAxisComponent],
             providers: [ChartLoaderService]
         }).compileComponents();
         linefixture = TestBed.createComponent(BubbleChartComponent);
         charttitlefixture = TestBed.createComponent(ChartTitleComponent);
         chartlegendfixture = TestBed.createComponent(ChartLegendComponent);
         chartareafixture = TestBed.createComponent(ChartAreaComponent);
+        chartverfixture= TestBed.createComponent(VerticalAxisComponent);
+        charthorfixture=TestBed.createComponent(HorizontalAxisComponent);
 
         bubblechartcomp = linefixture.componentInstance;
         charttitlecomp = charttitlefixture.componentInstance;
         chartlegendcomp = chartlegendfixture.componentInstance;
         chartareacomp = chartareafixture.componentInstance;
+        chartvercomp =chartverfixture.componentInstance;
+        charthorcomp= charthorfixture.componentInstance;
 
         bubblechartcomp.chartTitleComponent = charttitlecomp;
         bubblechartcomp.chartLengendComponent=chartlegendcomp;
         bubblechartcomp.chartAreaComponent=chartareacomp;
+        bubblechartcomp.verticalComponent=chartvercomp;
+        bubblechartcomp.horizontalComponent=charthorcomp;
 
         chartAreaArray2 = [];
         chartAreaArray2.push(chartareacomp);
@@ -120,6 +133,16 @@ describe('BUBBLE CHART', () => {
         //console.log(JSON.stringify(chartlegendstyle));
         // expect(chartlegendstyle).toEqual(json1);
 
+    });
+    it(' createChartVertical()',()=>{
+        chartvercomp.title='';
+        chartvercomp.titlecolor='';
+        const chartVerStyle=bubblechartcomp.createChartVertical();
+    });
+    it('createchartHorizontal()',()=>{
+        charthorcomp.title='';
+        charthorcomp.titlecolor='';
+        const chartHorStyle=bubblechartcomp.createchartHorizontal();
     })
     it('chartBackgroundStyle()',()=>{
         bubblechartcomp.chartAreaComponent.chartbackgroundcolor='red';
@@ -130,17 +153,7 @@ describe('BUBBLE CHART', () => {
         //const json1 = {"backgroundcolor":null,"left":null,"top":null,"height":50,"width":100}
         //console.log(JSON.stringify(chartbgstyle));
     })
-    it('ngAfterContentInit()',()=>{
-        
-        //linechartcomp.ngAfterContentInit();
-        //console.log(" ********************* "+chartAreaArray2.toArray());
-       // linechartcomp.ngAfterContentInit();
-       // expect(linechartcomp.chartLegendArray).toEqual(linechartcomp.chartLegendComp.length[1]);
-       //expect(linechartcomp.chartLengendComponent ).toEqual(linechartcomp.chartLegendArray.pop());
-    
-    
-    
-    });
+  
 
     it('get data method', () => {
         bubblechartcomp.data;
@@ -164,7 +177,12 @@ describe('BUBBLE CHART', () => {
     it('onResize()',()=>{
         bubblechartcomp.onResize(ComponentFixture);
         bubblechartcomp.drawChart();
-      })
+      });
+      it('ngOnInit()', () => {
+        bubblechartcomp.ngOnInit();
+        expect(false).toBe( bubblechartcomp.hasLoaded);
+       // bubblechartcomp.drawChart();
+    });
 }); 
 
 
