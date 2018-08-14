@@ -130,18 +130,11 @@ describe('LINE CHART', () => {
         //const json1 = {"backgroundcolor":null,"left":null,"top":null,"height":50,"width":100}
         //console.log(JSON.stringify(chartbgstyle));
     })
-    it('ngAfterContentInit()',()=>{
-        
-        //linechartcomp.ngAfterContentInit();
-        //console.log(" ********************* "+chartAreaArray2.toArray());
-       // linechartcomp.ngAfterContentInit();
-       // expect(linechartcomp.chartLegendArray).toEqual(linechartcomp.chartLegendComp.length[1]);
-       //expect(linechartcomp.chartLengendComponent ).toEqual(linechartcomp.chartLegendArray.pop());
-    
-    
-    
+    it('ngOnInit()', () => {
+        linechartcomp.ngOnInit();
+        expect(false).toBe( linechartcomp.hasLoaded);
+        linechartcomp.drawChart();
     });
-
     it('get data method', () => {
         linechartcomp.data;
         expect(linechartcomp.data).toBe(linechartcomp._data);

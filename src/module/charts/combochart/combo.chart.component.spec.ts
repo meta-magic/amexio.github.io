@@ -120,15 +120,11 @@ describe('COMBO CHART', () => {
         combochartcomp.data;
         expect( combochartcomp.data).toBe( combochartcomp._data);
     });
-    // it('ngAfterContentInit()',()=>{
-    //    // linechartcomp.ngAfterContentInit();
-    //    // expect(linechartcomp.chartLegendArray).toEqual(linechartcomp.chartLegendComp.length[1]);
-    //    //expect(linechartcomp.chartLengendComponent ).toEqual(linechartcomp.chartLegendArray.pop());
-    // });
-    // it('get data method', () => {
-    //     linechartcomp.data;
-    //     expect(linechartcomp.data).toBe(linechartcomp._data);
-    // });
+    it('ngOnInit()', () => {
+        combochartcomp.ngOnInit();
+        expect(false).toBe(  combochartcomp.hasLoaded);
+        combochartcomp.drawChart();
+    });
     it('Draw Chart Test', () => {
         const script = document.createElement('script');
         script.type = 'text/javascript';

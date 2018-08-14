@@ -126,19 +126,11 @@ describe('HISTOGRAM CHART', () => {
         histochartcomp.data;
         expect( histochartcomp.data).toBe( histochartcomp._data);
     });
-    // it('ngAfterContentInit()',()=>{
-    //    // linechartcomp.ngAfterContentInit();
-    //    // expect(linechartcomp.chartLegendArray).toEqual(linechartcomp.chartLegendComp.length[1]);
-    //    //expect(linechartcomp.chartLengendComponent ).toEqual(linechartcomp.chartLegendArray.pop());
-    
-    
-    
-    // });
-
-    // it('get data method', () => {
-    //     linechartcomp.data;
-    //     expect(linechartcomp.data).toBe(linechartcomp._data);
-    // });
+    it('ngOnInit()', () => {
+        histochartcomp.ngOnInit();
+        expect(false).toBe(histochartcomp.hasLoaded);
+        histochartcomp.drawChart();
+    });
 
     it('Draw Chart Test', () => {
         const script = document.createElement('script');
