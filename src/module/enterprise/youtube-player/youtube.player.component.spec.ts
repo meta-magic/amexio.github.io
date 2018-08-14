@@ -9,7 +9,7 @@ import { AmexioRatingComponent } from './../../forms/rating/rating.component';
 
 import { toUnicode } from 'punycode';
 
-describe('amexio-ee-content', () => {
+describe('amexio-ee-youtube-player', () => {
     let comp: AmexioYoutubePlayerComponent;
     let fixture: ComponentFixture<AmexioYoutubePlayerComponent>;
 
@@ -53,6 +53,10 @@ describe('amexio-ee-content', () => {
         comp.ngOnInit();
         comp.closePadding = 49;
         expect(comp.closePadding).toEqual(comp.width-1);
+
+        comp.url = 'https://www.youtube.com/channel/UC1sPlg3OhP4jQ6td90kspyg';
+        comp.ngOnInit();
+        expect(comp.url).toBe('https://www.youtube.com/channel/UC1sPlg3OhP4jQ6td90kspyg');
 });
 });
 
