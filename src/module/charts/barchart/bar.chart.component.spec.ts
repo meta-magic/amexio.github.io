@@ -84,7 +84,7 @@ describe('BAR CHART', () => {
         chartlegendcomp.bold = false;
         chartlegendcomp.maxlines=null;
     });
-    it('chartBackgroundStyle() properties', () => {
+    it('createChartBar() properties', () => {
         chartareacomp.chartbackgroundcolor = '';
         chartareacomp.chartheight = 10;
         chartareacomp.chartwidth = 10;
@@ -92,6 +92,7 @@ describe('BAR CHART', () => {
         chartareacomp.topposition = null;
 
     });
+  
     it('drawchart()', () => {
         barchartcomp.drawChart();
         barchartcomp.chartTitleComponent.title = null;
@@ -105,8 +106,8 @@ describe('BAR CHART', () => {
         barchartcomp.chartTitleComponent.bold=true;
         barchartcomp.chartTitleComponent.italic=true;
         const charttextstyle= barchartcomp.chartTitleTextStyle();
-       // console.log(JSON.stringify(charttextstyle));
     });
+    
     it('chartLegendStyle()',()=>{
         barchartcomp.chartLengendComponent.position='left';
         barchartcomp.chartLengendComponent.maxlines=5;
@@ -116,9 +117,6 @@ describe('BAR CHART', () => {
         barchartcomp.chartLengendComponent.fontname='times';
         barchartcomp.chartLengendComponent.bold=true;
         const chartlegendstyle= barchartcomp.createChartLegend();
-        // const json1 = {"position":null,"maxLines":5,"textStyle":{"color":"black","fontsize":"12","fontName":"times","bold":null,"alignment":"center"}}
-        //console.log(JSON.stringify(chartlegendstyle));
-        // expect(chartlegendstyle).toEqual(json1);
 
     })
     it('chartBackgroundStyle()',()=>{
@@ -126,21 +124,8 @@ describe('BAR CHART', () => {
         barchartcomp.chartAreaComponent.chartheight=50;
         barchartcomp.chartAreaComponent.chartwidth=100;
         barchartcomp.chartAreaComponent.leftposition=null;
-      //  const chartbgstyle =  barchartcomp.chartBackgroundColor();
-        //const json1 = {"backgroundcolor":null,"left":null,"top":null,"height":50,"width":100}
-        //console.log(JSON.stringify(chartbgstyle));
+        const chartbgstyle =  barchartcomp.createChartBar();
     })
-    it('ngAfterContentInit()',()=>{
-        
-        //linechartcomp.ngAfterContentInit();
-        //console.log(" ********************* "+chartAreaArray2.toArray());
-       // linechartcomp.ngAfterContentInit();
-       // expect(linechartcomp.chartLegendArray).toEqual(linechartcomp.chartLegendComp.length[1]);
-       //expect(linechartcomp.chartLengendComponent ).toEqual(linechartcomp.chartLegendArray.pop());
-    
-    
-    
-    });
 
     it('get data method', () => {
         barchartcomp.data;
@@ -164,7 +149,8 @@ describe('BAR CHART', () => {
     it('onResize()',()=>{
         barchartcomp.onResize(ComponentFixture);
         barchartcomp.drawChart();
-      })
+      });
+      
 }); 
 
 

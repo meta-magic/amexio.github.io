@@ -38,6 +38,23 @@ describe('amexio-text-field' , () => {
     expect(false).toBe(comp.showChart);
   });
 
+  it('Draw Chart Test', () => {
+    
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://www.gstatic.com/charts/loader.js';
+    script.async = true;
+    script.defer = true;
+    script.onload = () => {
+      comp.showChart = true;
+      let newdata = [{ name : 'chart'}];
+      comp.data = newdata;
+      comp.drawChart();
+      expect(false).toBe(comp.hasLoaded);
+    };
+  
+  });
+
   // it('Draw Chart Test', () => {
   //     comp.showChart = true;
   //   let newdata = [{ name : 'chart'}];
