@@ -543,8 +543,7 @@ describe('amexio-date-time-picker', () => {
     expect(Date.parse(value.value)).not.toBeNaN;
     comp.value = Date.parse(value.value);
     comp.isValid = true;
-    //expect(value.value.length).toBeLessThanOrEqual(0);
-  });
+   });
 
   it('yearFlagNegate()', () => {
     let element = { year: 0, flag: true, disabled: false };
