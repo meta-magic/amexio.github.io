@@ -111,7 +111,8 @@ describe('TIMELINE CHART', () => {
             [ 'Adams',      new Date(1797, 2, 4),  new Date(1801, 2, 4) ],
             [ 'Jefferson',  new Date(1801, 2, 4),  new Date(1809, 2, 4) ]
           ];
-          timelinechartcomp.createTable(aa);
+         
+          expect( timelinechartcomp.createTable(aa)).toBeUndefined;
 
     })
     // it('chartTitleTextStyle()', () => {
