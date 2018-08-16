@@ -116,6 +116,7 @@ describe('CANDLESTICKWATERFALL CHART', () => {
         
         candlestickwaterchartcomp.chartTitleComponent;
         candlestickwaterchartcomp.chartAreaComponent;
+        candlestickwaterchartcomp.chartLegendStyle;
         candlestickwaterchartcomp.chartVerticalComponent();
         candlestickwaterchartcomp.chartHorizontalComponent();
         candlestickwaterchartcomp.chartColorStyle();
