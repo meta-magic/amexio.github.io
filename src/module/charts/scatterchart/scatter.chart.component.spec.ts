@@ -8,6 +8,9 @@ import { ChartLoaderService } from './../chart.loader.service';
 import { ChartTitleComponent } from '../charttitle/chart.title.component';
 import { ChartLegendComponent } from '../chartlegend/chart.legend.component';
 import { ChartAreaComponent } from '../chartarea/chart.area.component';
+import { VerticalAxisComponent } from '../verticalaxis/chart.verticalaxis.component';
+import { HorizontalAxisComponent } from '../horizontalaxis/chart.horizontalaxis.component';
+
 declare var google: any;
 describe('SCATTER CHART', () => {
     //let ChartTitleComponent=new ChartTitleComponent()
@@ -16,6 +19,8 @@ describe('SCATTER CHART', () => {
     let charttitlecomp: ChartTitleComponent;
     let chartlegendcomp: ChartLegendComponent;
     let chartareacomp: ChartAreaComponent;
+    let chartvercomp: VerticalAxisComponent;
+    let charthorcomp: HorizontalAxisComponent; 
     let chartAreaArray:ChartAreaComponent[];
     let chartLegendArray: ChartLegendComponent[];
     let chartTitleComponent:  ChartTitleComponent[];
@@ -23,6 +28,9 @@ describe('SCATTER CHART', () => {
     let charttitlefixture: ComponentFixture<ChartTitleComponent>;
     let chartlegendfixture: ComponentFixture<ChartLegendComponent>;
     let chartareafixture: ComponentFixture<ChartAreaComponent>;
+    let charthorfixture: ComponentFixture<HorizontalAxisComponent>;
+    let chartverfixture: ComponentFixture<VerticalAxisComponent>;
+    
 
     let chartAreaArray2: ChartAreaComponent [];
     let chartLegendArray2: ChartLegendComponent []; 
@@ -30,22 +38,29 @@ describe('SCATTER CHART', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule],
-            declarations: [ScatterChartComponent, ChartTitleComponent, ChartLegendComponent, ChartAreaComponent],
+            declarations: [ScatterChartComponent, ChartTitleComponent, ChartLegendComponent, ChartAreaComponent,HorizontalAxisComponent,VerticalAxisComponent],
             providers: [ChartLoaderService]
         }).compileComponents();
         linefixture = TestBed.createComponent(ScatterChartComponent);
         charttitlefixture = TestBed.createComponent(ChartTitleComponent);
         chartlegendfixture = TestBed.createComponent(ChartLegendComponent);
         chartareafixture = TestBed.createComponent(ChartAreaComponent);
+        charthorfixture = TestBed.createComponent(HorizontalAxisComponent);
+        chartverfixture = TestBed.createComponent(VerticalAxisComponent);
 
         scatterchartcomp = linefixture.componentInstance;
         charttitlecomp = charttitlefixture.componentInstance;
         chartlegendcomp = chartlegendfixture.componentInstance;
         chartareacomp = chartareafixture.componentInstance;
+        charthorcomp =charthorfixture.componentInstance;
+        chartvercomp = chartverfixture.componentInstance;
+
 
         scatterchartcomp.chartTitleComponent = charttitlecomp;
         scatterchartcomp.chartLengendComponent=chartlegendcomp;
         scatterchartcomp.chartAreaComponent=chartareacomp;
+        scatterchartcomp.verticalComponent=chartvercomp;
+        scatterchartcomp.horizontalComponent=charthorcomp;
 
         chartAreaArray2 = [];
         chartAreaArray2.push(chartareacomp);
@@ -120,7 +135,7 @@ describe('SCATTER CHART', () => {
         //console.log(JSON.stringify(chartlegendstyle));
         // expect(chartlegendstyle).toEqual(json1);
 
-    })
+    });
     it('chartBackgroundStyle()',()=>{
         scatterchartcomp.chartAreaComponent.chartbackgroundcolor='red';
         scatterchartcomp.chartAreaComponent.chartheight=50;
@@ -129,18 +144,24 @@ describe('SCATTER CHART', () => {
         const chartbgstyle =  scatterchartcomp.chartBackgroundColor();
         //const json1 = {"backgroundcolor":null,"left":null,"top":null,"height":50,"width":100}
         //console.log(JSON.stringify(chartbgstyle));
-    })
-    it('ngAfterContentInit()',()=>{
-        
-        //linechartcomp.ngAfterContentInit();
-        //console.log(" ********************* "+chartAreaArray2.toArray());
-       // linechartcomp.ngAfterContentInit();
-       // expect(linechartcomp.chartLegendArray).toEqual(linechartcomp.chartLegendComp.length[1]);
-       //expect(linechartcomp.chartLengendComponent ).toEqual(linechartcomp.chartLegendArray.pop());
-    
-    
-    
     });
+    it('chartVerticalStyle()',()=>{
+        chartvercomp.title='';
+        chartvercomp.titlecolor='red';
+        const chartverstyle =  scatterchartcomp.chartVerticalStyle();
+    });
+    it('chartHorizontalStyle()',()=>{
+        charthorcomp.title='';
+        charthorcomp.titlecolor='red';
+        const chartverstyle =  scatterchartcomp.chartHorizontalStyle();
+    });
+    it('ngOnInit()', () => {
+        scatterchartcomp.ngOnInit();
+        expect(false).toBe(scatterchartcomp.hasLoaded);
+        scatterchartcomp.drawChart();
+    });
+
+
 
     it('get data method', () => {
         scatterchartcomp.data;
