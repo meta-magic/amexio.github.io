@@ -104,6 +104,11 @@ describe('CANDLESTICKWATERFALL CHART', () => {
         chartareacomp.topposition = null;
 
     });
+    it('chartcolorstyle() properties',()=>{
+        candlestickwaterchartcomp.fallingcolor='red';
+        candlestickwaterchartcomp.risingcolor='red';
+        candlestickwaterchartcomp.chartColorStyle();
+    }),
     it('drawchart()', () => {
         candlestickwaterchartcomp.drawChart();
         candlestickwaterchartcomp.chartTitleComponent.title = null;
