@@ -107,7 +107,13 @@ describe('BUBBLE CHART', () => {
     });
     it('drawchart()', () => {
         bubblechartcomp.drawChart();
-        bubblechartcomp.chartTitleComponent.title = null;
+        bubblechartcomp.chartTitleComponent;
+        bubblechartcomp.createTitleTextStyle();
+        bubblechartcomp.createChartLegend();
+        bubblechartcomp.createChartBackground();
+        bubblechartcomp.createchartHorizontal();
+        bubblechartcomp.createChartVertical();
+        bubblechartcomp.chartAreaComponent;
 
     });
     it('chartTitleTextStyle()', () => {
@@ -178,11 +184,7 @@ describe('BUBBLE CHART', () => {
         bubblechartcomp.onResize(ComponentFixture);
         bubblechartcomp.drawChart();
       });
-      it('ngOnInit()', () => {
-        bubblechartcomp.ngOnInit();
-        expect(false).toBe( bubblechartcomp.hasLoaded);
-       // bubblechartcomp.drawChart();
-    });
+    
 }); 
 
 

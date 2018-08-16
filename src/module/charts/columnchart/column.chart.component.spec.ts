@@ -94,7 +94,10 @@ describe('DONUT CHART', () => {
     });
     it('drawchart()', () => {
         columnchartcomp.drawChart();
-        columnchartcomp.chartTitleComponent.title = null;
+        columnchartcomp.chartTitleComponent;
+        columnchartcomp.chartTitleTextStyle();
+        columnchartcomp.chartBackGroundColor();
+        columnchartcomp.chartLegendStyle();
 
     });
     it('chartTitleTextStyle()', () => {

@@ -118,7 +118,13 @@ describe('CANDLESTICK CHART', () => {
     })
     it('drawchart()', () => {
         candlestickchartcomp.drawChart();
-        candlestickchartcomp.chartTitleComponent.title = null;
+        candlestickchartcomp.chartTitleComponent;
+        candlestickchartcomp.chartHorizontalStyle();
+        candlestickchartcomp.chartLegendStyle();
+        candlestickchartcomp.chartTileTextStyle();
+        candlestickchartcomp.backgroundcolor;
+        candlestickchartcomp.chartVerticalStyle();
+        
 
     });
     it('chartTitleTextStyle()', () => {
