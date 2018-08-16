@@ -111,6 +111,9 @@ describe('CANDLESTICKWATERFALL CHART', () => {
     }),
     it('drawchart()', () => {
         candlestickwaterchartcomp.drawChart();
+        expect(candlestickwaterchartcomp.showChart).toBeUndefined;
+        candlestickwaterchartcomp['options'];
+        
         candlestickwaterchartcomp.chartTitleComponent;
         candlestickwaterchartcomp.chartAreaComponent;
         candlestickwaterchartcomp.chartVerticalComponent();
