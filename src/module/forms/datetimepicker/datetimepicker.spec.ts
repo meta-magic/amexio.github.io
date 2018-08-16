@@ -550,18 +550,13 @@ describe('amexio-date-time-picker', () => {
 
 
   it('getDropdownYear()', () => {
-    let element = { year: 2014, flag: false, disabled: false };
-    comp.yearList1 = [{ year: 2010, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
-    { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
-    { year: 0, flag: false, disabled: false }];
-    comp.yearList2 = [{ year: 2011, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
-    { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
-    { year: 0, flag: false, disabled: false }];
     let year = { year: 2012 };
+    comp.getDropdownYear(year);
+
     comp['yearFlagNegate'](comp.yearList1[0]);
     comp['yearFlagNegate'](comp.yearList2[0]);
     comp.yearFlag(comp.yearList1[0], year);
-    comp.yearFlag(comp.yearList2[0], year);
+    comp.yearFlag(comp.yearList2[0], year); 
     comp.yearNo = 2012;
     expect(comp.yearNo).toEqual(year.year);
   });
@@ -756,7 +751,7 @@ it('forwardArrow()', () => {
   comp['forwardArrow']();
    comp.forwardArrowFlag = false;
    expect(comp.forwardArrowFlag).toEqual(false);
-   
+
 });
 
 });
