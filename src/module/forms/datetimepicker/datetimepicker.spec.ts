@@ -20,7 +20,7 @@ describe('amexio-date-time-picker', () => {
     fixture = TestBed.createComponent(AmexioDateTimePickerComponent);
     comp = fixture.componentInstance;
     comp.backArrowFlag = false;
-    comp.testnumber = 5;
+    //comp.testnumber = 5;
     comp.yearList1 = [{ year: 0, flag: false, disabled: false },
     { year: 1, flag: false, disabled: false }, { year: 3, flag: false, disabled: false },
     { year: 4, flag: false, disabled: false }, { year: 5, flag: false, disabled: false }];
@@ -203,6 +203,9 @@ describe('amexio-date-time-picker', () => {
     expect(true).toBe(comp.hostFlag);
     expect(true).toBe(comp.drop);
     expect(false).toBe(comp.tempFlag);
+
+
+
 
   });
 
