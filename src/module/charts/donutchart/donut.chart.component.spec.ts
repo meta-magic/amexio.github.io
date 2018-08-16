@@ -95,6 +95,10 @@ describe('DONUT CHART', () => {
     it('drawchart()', () => {
         donutchartcomp.drawChart();
         donutchartcomp.chartTitleComponent.title = null;
+        donutchartcomp.chariTitleTextStyle();
+        donutchartcomp.chartBackgroundColor();
+        donutchartcomp.chartLegendStyle();
+        donutchartcomp.backgroundcolor;
 
     });
     it('chartTitleTextStyle()', () => {

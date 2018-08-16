@@ -86,6 +86,11 @@ describe('HISTOGRAM CHART', () => {
     it('drawchart()', () => {
         histochartcomp.drawChart();
         histochartcomp.chartTitleComponent.title = null;
+        histochartcomp.chartBackground();
+        histochartcomp.chartegendStyle();
+        histochartcomp.charttitleTextStyle();
+        histochartcomp.chartAreaComponent;
+    
 
     });
     it('chartTitleTextStyle()', () => {

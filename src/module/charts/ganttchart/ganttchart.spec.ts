@@ -31,6 +31,12 @@ describe('amexio-text-field', () => {
     expect(newdata).toEqual(comp.data);
     expect(true).toBe(comp.showChart);
   });
+  it('drawchart()',()=>{
+    comp.drawChart();
+    comp.criticalPathEnabled;
+    comp.innerGridDarkTrack;
+    comp.innerGridTrackColor;
+  });
 
   it('dont show chart', () => {
     let newdata;
