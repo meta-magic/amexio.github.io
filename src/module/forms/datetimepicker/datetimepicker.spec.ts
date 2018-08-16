@@ -646,7 +646,23 @@ describe('amexio-date-time-picker', () => {
   //   expect(comp.backArrowFlag).toEqual(false);
   //   comp.forwardArrowFlag = false;
   //   expect(comp.forwardArrowFlag).toEqual(false);
-  //  // comp.resetYearFlag();
+
+  //   comp.minDate = '27-Mar-2016';
+  //   comp.maxDate = '22-Feb-2019';
+  //   comp.yearList2 = [{ year: 2019, flag: false, disabled: false },
+  //   { year: 15, flag: false, disabled: false },
+  //   { year: 8, flag: false, disabled: false },
+  //   { year: 18, flag: false, disabled: false },
+  //   { year: 65, flag: false, disabled: false }];
+
+  //   comp.backArrowFlag = false;
+  //   comp.yearList1 = [{ year: 2000, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+  //     { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+  //     { year: 0, flag: false, disabled: false }];
+  //   comp.yearList2 = [{ year: 2020, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+  //     { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+  //     { year: 0, flag: false, disabled: false }];
+  //  comp.resetYearFlag();
 
   // });
 
@@ -765,8 +781,9 @@ describe('amexio-date-time-picker', () => {
   });
 
   it('forwardArrow()', () => {
-    comp['forwardArrow']();
     comp.forwardArrowFlag = false;
+
+    comp['forwardArrow']();
     expect(comp.forwardArrowFlag).toEqual(false);
 
   });
