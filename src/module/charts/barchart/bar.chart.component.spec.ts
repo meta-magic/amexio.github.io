@@ -61,6 +61,7 @@ describe('BAR CHART', () => {
         let newdata = [{ 'name': 'linechart' }];
         barchartcomp.data = newdata;
     });
+    
     it('dont show chart', () => {
         let newdata;
         barchartcomp.data = newdata;
@@ -95,7 +96,11 @@ describe('BAR CHART', () => {
   
     it('drawchart()', () => {
         barchartcomp.drawChart();
-        barchartcomp.chartTitleComponent.title = null;
+        barchartcomp.chartTitleComponent;
+        barchartcomp.chartTitleTextStyle();
+        barchartcomp.backgroundcolor;
+        barchartcomp.createChartLegend();
+        barchartcomp.createChartBar();
 
     });
     it('chartTitleTextStyle()', () => {
