@@ -98,6 +98,22 @@ describe('TIMELINE CHART', () => {
         expect(timelinechartcomp.hasLoaded).toBeUndefined;
 
     });
+    it('create table()',() =>{
+        const dupArray='';
+        const data='';
+        const labelobject='';
+        let aa=  [
+            [{"datatype":'string',"label":'Prime Minister'},
+              {"datatype":"date", "label":'Start'},
+              {"datatype":"date","label":"End"}
+            ],
+            [ 'Washington', new Date(1789, 3, 30), new Date(1797, 2, 4) ],
+            [ 'Adams',      new Date(1797, 2, 4),  new Date(1801, 2, 4) ],
+            [ 'Jefferson',  new Date(1801, 2, 4),  new Date(1809, 2, 4) ]
+          ];
+          timelinechartcomp.createTable(aa);
+
+    })
     // it('chartTitleTextStyle()', () => {
     //     timelinechartcomp.chartTitleTextStyle();
     //     scatterchartcomp.chartTitleComponent.color = 'red';
