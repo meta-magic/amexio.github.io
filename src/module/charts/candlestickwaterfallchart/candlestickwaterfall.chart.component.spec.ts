@@ -111,9 +111,11 @@ describe('CANDLESTICKWATERFALL CHART', () => {
     }),
     it('drawchart()', () => {
         candlestickwaterchartcomp.drawChart();
-        candlestickwaterchartcomp.chartTitleComponent.title = null;
-        candlestickwaterchartcomp.chartTitleComponent.position='';
-
+        candlestickwaterchartcomp.chartTitleComponent;
+        candlestickwaterchartcomp.chartAreaComponent;
+        candlestickwaterchartcomp.chartVerticalComponent();
+        candlestickwaterchartcomp.chartHorizontalComponent();
+        candlestickwaterchartcomp.chartColorStyle();
     });
     it('chartTitleTextStyle()', () => {
         candlestickwaterchartcomp.chartTitleComponent;
