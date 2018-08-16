@@ -588,8 +588,14 @@ describe('amexio-date-time-picker', () => {
 
   //resetyearflag
   it('resetYearFlag()', () => {
+    comp.backArrowFlag= false;
+    // comp.yearList1 = [{ year: 2000, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+    //   { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+    //   { year: 0, flag: false, disabled: false }];
+    // comp.yearList2 = [{ year: 2020, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+    //   { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+    //   { year: 0, flag: false, disabled: false }];
     comp.resetYearFlag();
-
     expect(comp.backArrowFlag).toEqual(false);
     comp.yearList1[0].year = this.yearList1[0].year - 10;
     comp.yearList2[0].year = this.yearList2[0].year - 10;
@@ -628,10 +634,130 @@ describe('amexio-date-time-picker', () => {
   //   expect(comp.backArrowFlag).toEqual(false);
   //   comp.forwardArrowFlag = false;
   //   expect(comp.forwardArrowFlag).toEqual(false);
-  //   // comp.resetYearFlag();
+  //  // comp.resetYearFlag();
 
   // });
+
+  it('alterBackForwardArrow()', () => {
+    let element = { year: 2016, flag: false, disabled: false };
+    comp.minDate = '27-Mar-2016';
+    comp.maxDate = '22-Feb-2019';
+   
+     comp['alterBackForwardArrow'](element);
+     const min = new Date(comp.minDate);
+     const max = new Date(comp.maxDate);
+
+     expect(element.year).toEqual(min.getFullYear());
+     comp.backArrowFlag = true;
+     expect(comp.backArrowFlag).toEqual(true);
+     element.year = 2019;
+     expect(element.year).toEqual(max.getFullYear());
+     comp.forwardArrowFlag = true;
+     expect(comp.forwardArrowFlag).toEqual(true);
+  });
   //recchkyearflag
+
+  it('rechkYearFlag()', () => {
+    comp.yearList1 = [{ year: 2000, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+      { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+      { year: 0, flag: false, disabled: false }];
+    comp.yearList2 = [{ year: 2010, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+      { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+      { year: 0, flag: false, disabled: false }];
+    comp.minDate = '27-Mar-2016';
+    comp.maxDate = '22-Feb-2019';
+    comp.rechkYearFlag();
+
+    const min = new Date(comp.minDate);
+    const max = new Date(comp.maxDate);
+    
+    comp.yearList1[0].year = 2016; 
+    expect(comp.yearList1[0].year).toEqual(min.getFullYear());
+    comp.backArrowFlag = true;
+    expect(comp.backArrowFlag).toEqual(true);
+
+    comp.yearList1[0].year = 2019;
+    expect(comp.yearList1[0].year).toEqual(max.getFullYear());
+    comp.forwardArrowFlag = true;
+    expect(comp.forwardArrowFlag).toEqual(true);
+    
+    comp.yearList1[0].year = 201;
+    expect(comp.yearList1[0].year).not.toEqual(min.getFullYear());
+    expect(comp.yearList1[0].year).not.toEqual(max.getFullYear());
+    comp.forwardArrowFlag = false;
+    comp.backArrowFlag = false;
+    expect(comp.forwardArrowFlag).toEqual(false);
+    expect(comp.backArrowFlag).toEqual(false);
+
+    comp['alterBackForwardArrow'](comp.yearList2[0]);
+ 
+  });
+
+// arrowclickback()
+it('arrowClickBack()', () => {
+  comp.minDate = '27-Mar-2016';
+  comp.maxDate = '22-Feb-2019';
+  comp.yearList1 = [{ year: 2000, flag: false, disabled: false },
+    { year: 1, flag: false, disabled: false }, { year: 3, flag: false, disabled: false },
+    { year: 4, flag: false, disabled: false }, { year: 5, flag: false, disabled: false }];
+    comp.yearList2 = [{ year: 2020, flag: false, disabled: false },
+    { year: 15, flag: false, disabled: false },
+    { year: 8, flag: false, disabled: false },
+    { year: 18, flag: false, disabled: false },
+    { year: 65, flag: false, disabled: false }];
+  
+  comp.arrowClickBack();
+  
+  comp.disableYearFlag();
+  // if
+  expect(comp.minDate.length).toBeGreaterThan(0);
+  expect(comp.maxDate.length).toBeGreaterThan(0);
+  comp['backArrow']();
+  // else
+  comp.minDate = '';
+  comp.maxDate = '';
+  expect(comp.minDate.length).toEqual(0);
+  expect(comp.maxDate.length).toEqual(0);
+  comp.yearList1[0].year = comp.yearList1[0].year - 10;
+  expect(comp.yearList1[0].year - 10).toBeLessThan(comp.yearList1[0].year);
+  expect(comp.yearList2[0].year - 10).toBeLessThan(comp.yearList2[0].year);
+  comp.disableYearFlag();
+  comp.rechkYearFlag();
+});
+
+it('alterBackArrow()', () => {
+  let element = { year: 2016, flag: true, disabled: false };
+  comp.minDate = '27-Mar-2016';
+  const min = new Date(comp.minDate);
+  comp.alterBackArrow(element, min);
+  expect(element.year).toEqual(min.getFullYear());
+  comp.backArrowFlag = true;
+  expect(comp.backArrowFlag).toEqual(true);
+});
+
+it('resetArrowFlag()', () => {
+  comp.minDate = '27-Mar-2016';
+  comp.maxDate = '22-Feb-2019';
+  comp.yearList2 = [{ year: 2019, flag: false, disabled: false },
+    { year: 15, flag: false, disabled: false },
+    { year: 8, flag: false, disabled: false },
+    { year: 18, flag: false, disabled: false },
+    { year: 65, flag: false, disabled: false }];
+  comp['resetArrowFlag']();
+  const min = new Date(comp.minDate);
+  const max = new Date(comp.maxDate);
+  comp.alterBackArrow(comp.yearList2[0], min);
+  expect(comp.yearList2[0].year).toEqual(max.getFullYear());
+  comp.forwardArrowFlag = true;
+  expect(comp.forwardArrowFlag).toEqual(true);
+});
+
+it('forwardArrow()', () => {
+  comp['forwardArrow']();
+   comp.forwardArrowFlag = false;
+   expect(comp.forwardArrowFlag).toEqual(false);
+   
+});
 
 });
 
