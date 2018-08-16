@@ -95,6 +95,10 @@ describe('LINE CHART', () => {
     it('drawchart()', () => {
         linechartcomp.drawChart();
         linechartcomp.chartTitleComponent.title = null;
+        linechartcomp.chartBackgroundStyle();
+        linechartcomp.chartLegendStyle();
+        linechartcomp.chartTitleTextStyle();
+    
 
     });
     it('chartTitleTextStyle()', () => {

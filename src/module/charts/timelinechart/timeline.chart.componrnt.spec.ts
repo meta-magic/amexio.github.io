@@ -95,6 +95,7 @@ describe('TIMELINE CHART', () => {
     it('drawchart()', () => {
         timelinechartcomp.drawChart();
         timelinechartcomp.chartTitleComponent.title = null;
+        expect(timelinechartcomp.hasLoaded).toBeUndefined;
 
     });
     // it('chartTitleTextStyle()', () => {

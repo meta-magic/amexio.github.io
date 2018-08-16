@@ -95,6 +95,12 @@ describe('PIE CHART', () => {
     it('drawchart()', () => {
         piechartcomp.drawChart();
         piechartcomp.chartTitleComponent.title = null;
+        piechartcomp.chartBackgroundStyle();
+        piechartcomp.chartLengendStyle();
+        piechartcomp.charttitleTextStyle();
+        piechartcomp.is3d;
+        piechartcomp.piehole;
+        piechartcomp.startangle;
 
     });
     it('chartTitleTextStyle()', () => {
