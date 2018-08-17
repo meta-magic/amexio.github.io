@@ -136,6 +136,10 @@ describe('BAR CHART', () => {
         barchartcomp.data;
         expect( barchartcomp.data).toBe( barchartcomp._data);
     });
+    it('ngOnInit()',()=>{
+        expect(barchartcomp.hasLoaded).toBeUndefined;
+        //barchartcomp.ngOnInit();
+    })
 
     it('Draw Chart Test', () => {
         const script = document.createElement('script');
