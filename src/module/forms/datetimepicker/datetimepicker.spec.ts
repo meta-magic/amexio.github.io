@@ -278,7 +278,7 @@ describe('amexio-date-time-picker', () => {
   //       ];
   //       comp['nextMonth'](fixture);
   //       event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']); 
-      
+            
   // comp.setDateData('plus', 1, event);
   // expect(event.preventDefault).toBeTruthy();
 
