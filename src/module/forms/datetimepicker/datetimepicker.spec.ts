@@ -237,9 +237,43 @@ describe('amexio-date-time-picker', () => {
 
 
   //     it('nextmonth', () => {
+  //       let date = [
+  //         {
+  //           "from": "13-Jul-2018",
+  //           "to": "15-Jul-2018"
+  //         },
+  //         {
+  //           "from": "20-Jul-2018",
+  //           "to": "23-Jul-2018"
+  //         },
+  //         {
+  //           "from": "15-Jun-2018",
+  //           "to": "19-Jun-2018"
+  //         },
+  //         {
+  //           "from": "27-Jun-2018",
+  //           "to": "29-Jun-2018"
+  //         },
+  //         {
+  //           "from": "23-Aug-2018",
+  //           "to": "28-Aug-2018"
+  //         },
+  //         {
+  //           "from": "17-Aug-2018",
+  //           "to": "19-Aug-2018"
+  //         },
+  //         {
+  //           "from": "19-Sep-2018",
+  //           "to": "21-Sep-2018"
+  //         },
+  //         {
+  //           "from": "1-Nov-2018",
+  //           "to": "30-Nov-2018"
+  //         }
+  //       ];
   //       comp['nextMonth'](fixture);
   // comp.setDateData('plus', 1, event);
-  // comp['disableddays'](comp.);
+  // //comp['disableddays'](date);
   //          });    
 
   it('resetselection()', () => {
@@ -312,37 +346,23 @@ describe('amexio-date-time-picker', () => {
   });
 
   // it('onFocusOut()', () => {
-  //   let values: { value: '19-Jun-2018' };
-  //   comp.onFocusOut(values);
-  //   //if
-  //   let isnan = isNaN(Date.parse(values.value));
-  //   expect(isnan).toEqual(true);
-  //   comp.isValid = false;
-  //   expect(comp.isValid).toEqual(false);
-  //   //else
-  //   isnan = false;
-  //   expect(isnan).toEqual(false);
-  //   comp.isValid = true;
-  //   expect(comp.isValid).toEqual(true);
+  //   let value: { value: '19-Jun-2018' };
+  //   comp.onFocusOut(value);
+    //if
+    // let isnan = isNaN(Date.parse(values.value));
+    // expect(isnan).toEqual(true);
+    // comp.isValid = false;
+    // expect(comp.isValid).toEqual(false);
+    // //else
+    // isnan = false;
+    // expect(isnan).toEqual(false);
+    // comp.isValid = true;
+    // expect(comp.isValid).toEqual(true);
 
   // });
 
 
   // it('writeValue()', () => {
-
-
-  //   if (value !== this.innerValue) {
-  //     this.innerValue = value;
-  //     if (this.required && this.innerValue instanceof Date || ('number' === typeof this.innerValue)) {
-  //       this.dateModel = this.innerValue;
-  //       this.isValid = true;
-  //     } else {
-  //       this.isValid = false;
-  //       this.hrs = 0;
-  //       this.min = 0;
-  //     }
-
-
 
   //   let value = 11;
   //   comp.writeValue(value);
@@ -356,64 +376,44 @@ describe('amexio-date-time-picker', () => {
   //   let bool = comp['innerValue'] instanceof Date;
   //   expect(bool).toEqual(true);
 
-
-
-
   // }); 
 
-
-  // it('createDaysForCurrentMonths()', () => {
-  //   let selectedperiod = new Date();
-  //   comp['createDaysForCurrentMonths'](selectedperiod);
-  //   this.daysArray = [];
-  //   //year=
-  //   const date = new Date(selectedperiod.getFullYear(), selectedperiod.getMonth(), 1, 0, 0, 0, 0);
-  //   const extras = (date.getDay() + 6) % 7; // How many days of the last month do we need to include?
-
-
-  //   let rowDays=[];
-  //   //date.setDate(date.getDate() - extras); // Skip back to the previous monday
-  //   while (this.daysArray.length < 6) {
-
-  //     const day: any = {
-  //       date: null, selected: false, isCurrentMonth: null, isDisabled: false,
-  //     };
-  //     for (let i = 0; i < 7; i++) {
-
-  //       day.date = new Date("22-Feb-2015");
-  //       day.isCurrentMonth = (date.getMonth() === selectedperiod.getMonth());
-  //       //comp.dateModel= true;
-  //       expect(comp.dateModel).not.toBeNull;
-  //       expect(date.getMonth()).toEqual(comp.dateModel.getMonth());
-  //       expect(date.getDate()).toEqual(comp.dateModel.getDate());
-  //        day.selected = true;
-  //       expect(day.selected).toEqual(true);
-
-  //       //else if ((date.getMonth() === this.currrentDate.getMonth()) && (date.getDate() === this.currrentDate.getDate())) {
-
-  //         expect(date.getMonth()).toEqual(comp.currrentDate.getMonth());
-  //         expect(date.getDate()).toEqual(comp.currrentDate.getDate());
-  //         expect(comp.dateModel).toBeNull;
-  //         day.selected = false;
-  //         expect(day.selected).toEqual(false);
-  //         day.selected=true;
-  //         expect(day.selected).toEqual(true);
-
-  //       }
-  //       rowDays.push(day);
-
-  //       expect(rowDays.length).toEqual(1);
-  //        //date.setDate(date.getDate() + 1);
-  //        let inc = date.setDate(date.getDate() + 1);
-  //        expect(date).toBeGreaterThan(inc);
-  //     }
-  //   // this.daysArray.push(rowDays);
-  //   expect(comp.daysArray).toContain(rowDays);
-  //   // }
+  it('createDaysForCurrentMonths()', () => {
+    event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']); 
+    expect(event.preventDefault).toBeTruthy();
+        let selectedperiod = new Date();
+    comp['createDaysForCurrentMonths'](selectedperiod);
+    comp.daysArray = [];
+    //year=
+    //const date = new Date(selectedperiod.getFullYear(), selectedperiod.getMonth(), 1, 0, 0, 0, 0);
+    const extras = (selectedperiod.getDay() + 6) % 7; // How many days of the last month do we need to include?
 
 
+    let rowDays=[];
+    const day: any = {
+      date: null, selected: false, isCurrentMonth: null, isDisabled: false,
+    };
+    day.date = new Date(selectedperiod.getTime());
+    day.isCurrentMonth = true;
 
-  // });
+    comp.dateModel = new Date();
+    expect(comp.dateModel).not.toBeNull;
+    expect(selectedperiod.getMonth()).toEqual(comp.dateModel.getMonth());
+    expect(selectedperiod.getDate()).toEqual(comp.dateModel.getDate());
+    day.selected = true;
+    expect(day.selected).toEqual(true);
+
+    comp.currrentDate = new Date();
+    expect(selectedperiod.getMonth()).toEqual(comp.currrentDate.getMonth());
+    expect(selectedperiod.getDate()).toEqual(comp.currrentDate.getDate());
+    expect(comp.dateModel).not.toBeNull;
+    day.selected = false;
+    expect(day.selected).toEqual(false);
+    comp.dateModel = '';
+    expect(comp.dateModel.length).toEqual(0);
+    day.selected = true;
+    expect(day.selected).toEqual(true);
+  });
 
   it('onSelect()', () => {
     comp.onSelect();
@@ -448,64 +448,62 @@ describe('amexio-date-time-picker', () => {
     comp.elementFlagMethod(comp.monthList1[1]);
   });
 
-  // it('disableddays()', () => {
-  //   let date = [
-  //     {
-  //       "from": "13-Jul-2018",
-  //       "to": "15-Jul-2018"
-  //     },
-  //     {
-  //       "from": "20-Jul-2018",
-  //       "to": "23-Jul-2018"
-  //     },
-  //     {
-  //       "from": "15-Jun-2018",
-  //       "to": "19-Jun-2018"
-  //     },
-  //     {
-  //       "from": "27-Jun-2018",
-  //       "to": "29-Jun-2018"
-  //     },
-  //     {
-  //       "from": "23-Aug-2018",
-  //       "to": "28-Aug-2018"
-  //     },
-  //     {
-  //       "from": "17-Aug-2018",
-  //       "to": "19-Aug-2018"
-  //     },
-  //     {
-  //       "from": "19-Sep-2018",
-  //       "to": "21-Sep-2018"
-  //     },
-  //     {
-  //       "from": "1-Nov-2018",
-  //       "to": "30-Nov-2018"
-  //     }
-  //   ];
-  //   comp.daysArray = [[{
-  //     date: new Date('21-Jul-2018'),
-  //     isCurrentMonth: false, isDisabled: false,
-  //     selected: false
-  //   }]]
-  //   comp['disableddays'](date);
-  //   expect(date).not.toBeNull; //validates if
+  it('disableddays()', () => {
+    let date = [
+      {
+        "from": "13-Jul-2018",
+        "to": "15-Jul-2018"
+      },
+      {
+        "from": "20-Jul-2018",
+        "to": "23-Jul-2018"
+      },
+      {
+        "from": "15-Jun-2018",
+        "to": "19-Jun-2018"
+      },
+      {
+        "from": "27-Jun-2018",
+        "to": "29-Jun-2018"
+      },
+      {
+        "from": "23-Aug-2018",
+        "to": "28-Aug-2018"
+      },
+      {
+        "from": "17-Aug-2018",
+        "to": "19-Aug-2018"
+      },
+      {
+        "from": "19-Sep-2018",
+        "to": "21-Sep-2018"
+      },
+      {
+        "from": "1-Nov-2018",
+        "to": "30-Nov-2018"
+      }
+    ];
+    comp.daysArray = [[{
+      date: new Date('21-Jul-2018'),
+      isCurrentMonth: false, isDisabled: false,
+      selected: false
+    }]]
+    comp['disableddays'](date);
+    expect(date).not.toBeNull; //validates if
 
-  //   const From = new Date(date[1].from);
-  //   const To = new Date(date[1].to);
-  //   console.log("comp.daysArray[0][0].getDate() = ", comp.daysArray[0][0].getDate());
-
-  //   expect(comp.daysArray[0][0].date.getFullYear()).toBeLessThanOrEqual(To.getFullYear());
-  //   expect(comp.daysArray[0][0].date.getMonth()).toBeLessThanOrEqual(To.getMonth());
-  //   expect(comp.daysArray[0][0].getDate()).toBeLessThanOrEqual(To.getDate());
-  //   console.log("comp.daysArray[0][0].getDate() = ", comp.daysArray[0][0].getDate());
-
-  //   expect(comp.daysArray.date.getFullYear()).toBeGreaterThanOrEqual(From.getFullYear());
-  //   expect(comp.daysArray[0][0].date.getMonth()).toBeGreaterThanOrEqual(From.getMonth());
-  //   expect(comp.daysArray[0][0].date.getDate()).toBeGreaterThanOrEqual(From.getDate());
-  //   comp.daysArray[0][0].isDisabled = true;
-  //   expect(comp.daysArray[0][0].isDisabled).toEqual(true);
-  // });
+    const From = new Date(date[1].from);
+    const To = new Date(date[1].to);
+ 
+    expect(comp.daysArray[0][0].date.getFullYear()).toBeLessThanOrEqual(To.getFullYear());
+     expect(comp.daysArray[0][0].date.getMonth()).toBeLessThanOrEqual(To.getMonth());
+     expect(comp.daysArray[0][0].date.getDate()).toBeLessThanOrEqual(To.getDate());
+ 
+   expect(comp.daysArray[0][0].date.getFullYear()).toBeGreaterThanOrEqual(From.getFullYear());
+     expect(comp.daysArray[0][0].date.getMonth()).toBeGreaterThanOrEqual(From.getMonth());
+    expect(comp.daysArray[0][0].date.getDate()).toBeGreaterThanOrEqual(From.getDate());
+    comp.daysArray[0][0].isDisabled = true;
+     expect(comp.daysArray[0][0].isDisabled).toEqual(true);
+  });
 
   it('arrowClickForward()', () => {
     comp.arrowClickForward();
@@ -600,12 +598,6 @@ describe('amexio-date-time-picker', () => {
   //resetyearflag
   it('resetYearFlag()', () => {
     comp.backArrowFlag = false;
-    // comp.yearList1 = [{ year: 2000, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
-    //   { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
-    //   { year: 0, flag: false, disabled: false }];
-    // comp.yearList2 = [{ year: 2020, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
-    //   { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
-    //   { year: 0, flag: false, disabled: false }];
     comp.resetYearFlag();
     expect(comp.backArrowFlag).toEqual(false);
     comp.yearList1[0].year = this.yearList1[0].year - 10;
