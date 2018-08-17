@@ -19,6 +19,9 @@ describe('GANTT CHART', () => {
     });
     fixture = TestBed.createComponent(GanttChartComponent);
     comp = fixture.componentInstance;
+    comp.criticalPathEnabled = false;
+    comp.innerGridTrackColor = '';
+    comp.innerGridDarkTrack = '';
 
   });
 
@@ -33,24 +36,33 @@ describe('GANTT CHART', () => {
   });
   it('drawchart()', () => {
     comp.drawChart();
-    let criticalPathStyle = comp.criticalPathEnabled;
-    let  innerGridTrack = comp.innerGridDarkTrack;
-    let innerGridDarkTrack = comp.innerGridTrackColor;
-    comp['options'] = { criticalPathStyle , innerGridTrack, innerGridDarkTrack};
+    comp.criticalPathEnabled;
+    comp.innerGridDarkTrack;
+    comp.innerGridTrackColor;
+    comp['options'] = {
+      gantt: {
+        criticalPathEnabled: comp.criticalPathEnabled, criticalPathStyle: {
+          stroke: '#e64a19',
+          strokeWidth: 5
+        }
+      },
+      innerGridTrack: { fill: comp.innerGridTrackColor ? comp.innerGridTrackColor : '' },
+      innerGridDarkTrack: { fill: comp.innerGridDarkTrack ? comp.innerGridDarkTrack : '' },
+    };
 
   });
-  //   let array=[[
-  //     [{ "datatype": 'string', "label": 'Task ID' }, { "datatype": 'string', "label": 'Task Name' }, { "datatype": 'string', "label": 'Resource' }, { "datatype": 'date', "label": 'Start' }, { "datatype": 'date', "label": 'End' }, { "datatype": 'number', "label": 'Duration' }, { "datatype": 'number', "label": 'Percent Complete' }, { "datatype": 'string', "label": 'Dependencies' }],
-  //     ['toTrain', 'Walk to train stop', 'walk', null, null, this.toMilliseconds(5), 100, null],
-  //     ['music', 'Listen to music', 'music', null, null, this.toMilliseconds(70), 100, null],
-  //     ['wait', 'Wait for train', 'wait', null, null, this.toMilliseconds(10), 100, 'toTrain'],
-  //     ['train', 'Train ride', 'train', null, null, this.toMilliseconds(45), 75, 'wait'],
-  //     ['toWork', 'Walk to work', 'walk', null, null, this.toMilliseconds(10), 0, 'train'],
-  //     ['work', 'Sit down at desk', null, null, null, this.toMilliseconds(2), 0, 'toWork']
+  // let array = [[
+  //   [{ "datatype": 'string', "label": 'Task ID' }, { "datatype": 'string', "label": 'Task Name' }, { "datatype": 'string', "label": 'Resource' }, { "datatype": 'date', "label": 'Start' }, { "datatype": 'date', "label": 'End' }, { "datatype": 'number', "label": 'Duration' }, { "datatype": 'number', "label": 'Percent Complete' }, { "datatype": 'string', "label": 'Dependencies' }],
+  //   ['toTrain', 'Walk to train stop', 'walk', null, null,(5 * 24 * 60 * 60 * 1000), 100, null],
+  //   ['music', 'Listen to music', 'music', null, null,(70 * 24 * 60 * 60 * 1000), 100, null],
+  //   ['wait', 'Wait for train', 'wait', null, null,(10 * 24 * 60 * 60 * 1000), 100, 'toTrain'],
+  //   ['train', 'Train ride', 'train', null, null, (45 * 24 * 60 * 60 * 1000), 75, 'wait'],
+  //   ['toWork', 'Walk to work', 'walk', null, null,(10 * 24 * 60 * 60 * 1000), 0, 'train'],
+  //   ['work', 'Sit down at desk', null, null, null,(2 * 24 * 60 * 60 * 1000), 0, 'toWork']
   // ]];
-  // it('createTable()',() => {
-  // comp['createTable'](array);
-  // })
+  // it('createTable()', () => {
+  //   comp.createTable(array);
+  // });
 
   it('dont show chart', () => {
     let newdata;
