@@ -20,7 +20,7 @@ describe('amexio-date-time-picker', () => {
     fixture = TestBed.createComponent(AmexioDateTimePickerComponent);
     comp = fixture.componentInstance;
     comp.backArrowFlag = false;
-    event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']); 
+    event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
 
     //comp.testnumber = 5;
     comp.yearList1 = [{ year: 0, flag: false, disabled: false },
@@ -217,119 +217,178 @@ describe('amexio-date-time-picker', () => {
   });
 
   it('setDateData()', () => {
-  let  state: string, mon: number = 9, event1: any ;
-  //= 'MouseEvent {isTrusted: true, screenX: 280, screenY: 224, clientX: 236, clientY: 145, …}';
+    let state: string, mon: number = 9, event1: any;
+    //= 'MouseEvent {isTrusted: true, screenX: 280, screenY: 224, clientX: 236, clientY: 145, …}';
 
-   comp.setDateData(state, mon, event);
-   expect(event.preventDefault).toBeTruthy();
-   comp.currrentDate = new Date();
-   comp.maxDate = "27-Feb-2019";
-   comp.minDate = "22-Jan-2015";
-     const d = new Date(comp.currrentDate.getFullYear(), comp.currrentDate.getMonth(), comp.currrentDate.getDate());
-  const min = new Date(comp.minDate);
-  const max = new Date(comp.maxDate);
-  comp.currrentDate = d;
+    comp.setDateData(state, mon, event);
+    expect(event.preventDefault).toBeTruthy();
+    comp.currrentDate = new Date();
+    comp.maxDate = "27-Feb-2019";
+    comp.minDate = "22-Jan-2015";
+    const d = new Date(comp.currrentDate.getFullYear(), comp.currrentDate.getMonth(), comp.currrentDate.getDate());
+    const min = new Date(comp.minDate);
+    const max = new Date(comp.maxDate);
+    comp.currrentDate = d;
 
-  state='plus';
-  expect(state).toEqual('plus');
-   comp.setPlusData(d, max, mon);
-  state='minus';
-  expect(state).toEqual('minus');
-  comp.setPlusData(d, min, mon);
-  expect(comp.currrentDate).toEqual(d);
-   comp.initDate();
-  event.stopPropagation();
-       });
+    state = 'plus';
+    expect(state).toEqual('plus');
+    comp.setPlusData(d, max, mon);
+    state = 'minus';
+    expect(state).toEqual('minus');
+    comp.setPlusData(d, min, mon);
+    expect(comp.currrentDate).toEqual(d);
+    comp.initDate();
+    event.stopPropagation();
+  });
 
 
-      it('nextmonth', () => {
-        let date = [
-          {
-            "from": "13-Jul-2018",
-            "to": "15-Jul-2018"
-          },
-          {
-            "from": "20-Jul-2018",
-            "to": "23-Jul-2018"
-          },
-          {
-            "from": "15-Jun-2018",
-            "to": "19-Jun-2018"
-          },
-          {
-            "from": "27-Jun-2018",
-            "to": "29-Jun-2018"
-          },
-          {
-            "from": "23-Aug-2018",
-            "to": "28-Aug-2018"
-          },
-          {
-            "from": "17-Aug-2018",
-            "to": "19-Aug-2018"
-          },
-          {
-            "from": "19-Sep-2018",
-            "to": "21-Sep-2018"
-          },
-           {
-            "from": "1-Nov-2018",
-            "to": "30-Nov-2018"
-          }
-        ];
-        comp['nextMonth'](event);
-       
-       // event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']); 
-            
- comp.setDateData('plus', 1, event);
- // expect(event.preventDefault).toBeTruthy();
 
-  comp['disableddays'](date);
-           });    
 
-  
-           it('prevMonth', () => {
-            let date = [
-              {
-                "from": "13-Jul-2018",
-                "to": "15-Jul-2018"
-              },
-              {
-                "from": "20-Jul-2018",
-                "to": "23-Jul-2018"
-              },
-              {
-                "from": "15-Jun-2018",
-                "to": "19-Jun-2018"
-              },
-              {
-                "from": "27-Jun-2018",
-                "to": "29-Jun-2018"
-              },
-              {
-                "from": "23-Aug-2018",
-                "to": "28-Aug-2018"
-              },
-              {
-                "from": "17-Aug-2018",
-                "to": "19-Aug-2018"
-              },
-              {
-                "from": "19-Sep-2018",
-                "to": "21-Sep-2018"
-              },
-               {
-                "from": "1-Nov-2018",
-                "to": "30-Nov-2018"
-              }
-            ];
-            comp['prevMonth'](event);
 
- comp.setDateData('plus', 1, event);
- // expect(event.preventDefault).toBeTruthy();
+  it('setDateData1()', () => {
+    let state: string, mon: number = 9, event1: any;
+    //= 'MouseEvent {isTrusted: true, screenX: 280, screenY: 224, clientX: 236, clientY: 145, …}';
 
-  comp['disableddays'](date);
-               });             
+    comp.setDateData1(state, mon, event);
+    expect(event.preventDefault).toBeTruthy();
+    comp.currrentDate = new Date();
+    comp.maxDate = "27-Feb-2019";
+    comp.minDate = "22-Jan-2015";
+    const d = new Date(comp.currrentDate.getFullYear(), comp.currrentDate.getMonth(), comp.currrentDate.getDate());
+    const min = new Date(comp.minDate);
+    const max = new Date(comp.maxDate);
+    comp.currrentDate = d;
+
+    state = 'plus';
+    expect(state).toEqual('plus');
+    expect(comp.maxDate.length).toBeGreaterThan(0);
+    d.setFullYear(2016);
+    expect(d.getFullYear()).toBeLessThanOrEqual(max.getFullYear() - 1);
+    d.setMonth(d.getMonth() + mon);
+    //d.setFullYear(2021);
+    comp.maxDate = "";
+    expect(comp.maxDate.length).toEqual(0);
+    d.setMonth(d.getMonth() + mon);
+
+    state = 'minus';
+    expect(state).toEqual('minus');
+    expect(comp.minDate.length).toBeGreaterThan(0);
+
+    expect(d.getFullYear()).toBeGreaterThanOrEqual(min.getFullYear() + 1);
+    d.setMonth(d.getMonth() - mon);
+    comp.minDate = "";
+    expect(comp.minDate.length).toEqual(0);
+    d.setMonth(d.getMonth() - mon);
+
+    comp.currrentDate = d;
+    expect(comp.currrentDate).toEqual(d);
+
+    comp.initDate();
+    event.stopPropagation();
+  });
+
+  it('nextYear()', () => {
+    comp['nextYear'](event);
+    comp.setDateData1('plus', 12, event);
+  });
+  it('prevYear()', () => {
+    comp['prevYear'](event);
+    comp.setDateData1('minus', 12, event);
+  });
+
+
+
+
+
+
+  it('nextmonth', () => {
+    let date = [
+      {
+        "from": "13-Jul-2018",
+        "to": "15-Jul-2018"
+      },
+      {
+        "from": "20-Jul-2018",
+        "to": "23-Jul-2018"
+      },
+      {
+        "from": "15-Jun-2018",
+        "to": "19-Jun-2018"
+      },
+      {
+        "from": "27-Jun-2018",
+        "to": "29-Jun-2018"
+      },
+      {
+        "from": "23-Aug-2018",
+        "to": "28-Aug-2018"
+      },
+      {
+        "from": "17-Aug-2018",
+        "to": "19-Aug-2018"
+      },
+      {
+        "from": "19-Sep-2018",
+        "to": "21-Sep-2018"
+      },
+      {
+        "from": "1-Nov-2018",
+        "to": "30-Nov-2018"
+      }
+    ];
+    comp['nextMonth'](event);
+
+    // event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']); 
+
+    comp.setDateData('plus', 1, event);
+    // expect(event.preventDefault).toBeTruthy();
+
+    comp['disableddays'](date);
+  });
+
+
+  it('prevMonth', () => {
+    let date = [
+      {
+        "from": "13-Jul-2018",
+        "to": "15-Jul-2018"
+      },
+      {
+        "from": "20-Jul-2018",
+        "to": "23-Jul-2018"
+      },
+      {
+        "from": "15-Jun-2018",
+        "to": "19-Jun-2018"
+      },
+      {
+        "from": "27-Jun-2018",
+        "to": "29-Jun-2018"
+      },
+      {
+        "from": "23-Aug-2018",
+        "to": "28-Aug-2018"
+      },
+      {
+        "from": "17-Aug-2018",
+        "to": "19-Aug-2018"
+      },
+      {
+        "from": "19-Sep-2018",
+        "to": "21-Sep-2018"
+      },
+      {
+        "from": "1-Nov-2018",
+        "to": "30-Nov-2018"
+      }
+    ];
+    comp['prevMonth'](event);
+
+    comp.setDateData('plus', 1, event);
+    // expect(event.preventDefault).toBeTruthy();
+
+    comp['disableddays'](date);
+  });
 
   it('resetselection()', () => {
     let dateObj = new Date("Thu Jul 25 2017 00:00:00 GMT+0530 (IST)");
@@ -400,22 +459,6 @@ describe('amexio-date-time-picker', () => {
     expect(comp['onTouchedCallback']).toEqual(fn);
   });
 
-  // it('onFocusOut()', () => {
-  //   let value: { value: '19-Jun-2018' };
-  //   comp.onFocusOut(value);
-    //if
-    // let isnan = isNaN(Date.parse(values.value));
-    // expect(isnan).toEqual(true);
-    // comp.isValid = false;
-    // expect(comp.isValid).toEqual(false);
-    // //else
-    // isnan = false;
-    // expect(isnan).toEqual(false);
-    // comp.isValid = true;
-    // expect(comp.isValid).toEqual(true);
-
-  // });
-
 
   // it('writeValue()', () => {
 
@@ -434,17 +477,13 @@ describe('amexio-date-time-picker', () => {
   // }); 
 
   it('createDaysForCurrentMonths()', () => {
-    event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']); 
+    event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
     expect(event.preventDefault).toBeTruthy();
-        let selectedperiod = new Date();
+    let selectedperiod = new Date();
     comp['createDaysForCurrentMonths'](selectedperiod);
     comp.daysArray = [];
-    //year=
-    //const date = new Date(selectedperiod.getFullYear(), selectedperiod.getMonth(), 1, 0, 0, 0, 0);
-    const extras = (selectedperiod.getDay() + 6) % 7; // How many days of the last month do we need to include?
-
-
-    let rowDays=[];
+    const extras = (selectedperiod.getDay() + 6) % 7;
+    let rowDays = [];
     const day: any = {
       date: null, selected: false, isCurrentMonth: null, isDisabled: false,
     };
@@ -548,16 +587,16 @@ describe('amexio-date-time-picker', () => {
     expect(date.length).toBeGreaterThan(0);
     const From = new Date(date[1].from);
     const To = new Date(date[1].to);
- 
+
     expect(comp.daysArray[0][0].date.getFullYear()).toBeLessThanOrEqual(To.getFullYear());
-     expect(comp.daysArray[0][0].date.getMonth()).toBeLessThanOrEqual(To.getMonth());
-     expect(comp.daysArray[0][0].date.getDate()).toBeLessThanOrEqual(To.getDate());
- 
-   expect(comp.daysArray[0][0].date.getFullYear()).toBeGreaterThanOrEqual(From.getFullYear());
-     expect(comp.daysArray[0][0].date.getMonth()).toBeGreaterThanOrEqual(From.getMonth());
+    expect(comp.daysArray[0][0].date.getMonth()).toBeLessThanOrEqual(To.getMonth());
+    expect(comp.daysArray[0][0].date.getDate()).toBeLessThanOrEqual(To.getDate());
+
+    expect(comp.daysArray[0][0].date.getFullYear()).toBeGreaterThanOrEqual(From.getFullYear());
+    expect(comp.daysArray[0][0].date.getMonth()).toBeGreaterThanOrEqual(From.getMonth());
     expect(comp.daysArray[0][0].date.getDate()).toBeGreaterThanOrEqual(From.getDate());
     comp.daysArray[0][0].isDisabled = true;
-     expect(comp.daysArray[0][0].isDisabled).toEqual(true);
+    expect(comp.daysArray[0][0].isDisabled).toEqual(true);
   });
 
   it('arrowClickForward()', () => {
@@ -596,7 +635,7 @@ describe('amexio-date-time-picker', () => {
     expect(Date.parse(value.value)).not.toBeNaN;
     comp.value = Date.parse(value.value);
     comp.isValid = true;
-   });
+  });
 
   it('yearFlagNegate()', () => {
     let element = { year: 0, flag: true, disabled: false };
