@@ -243,49 +243,93 @@ describe('amexio-date-time-picker', () => {
 
 
       it('nextmonth', () => {
-        // let date = [
-        //   {
-        //     "from": "13-Jul-2018",
-        //     "to": "15-Jul-2018"
-        //   },
-        //   {
-        //     "from": "20-Jul-2018",
-        //     "to": "23-Jul-2018"
-        //   },
-        //   {
-        //     "from": "15-Jun-2018",
-        //     "to": "19-Jun-2018"
-        //   },
-        //   {
-        //     "from": "27-Jun-2018",
-        //     "to": "29-Jun-2018"
-        //   },
-        //   {
-        //     "from": "23-Aug-2018",
-        //     "to": "28-Aug-2018"
-        //   },
-        //   {
-        //     "from": "17-Aug-2018",
-        //     "to": "19-Aug-2018"
-        //   },
-        //   {
-        //     "from": "19-Sep-2018",
-        //     "to": "21-Sep-2018"
-        //   },
-        //    {
-        //     "from": "1-Nov-2018",
-        //     "to": "30-Nov-2018"
-        //   }
-        // ];
+        let date = [
+          {
+            "from": "13-Jul-2018",
+            "to": "15-Jul-2018"
+          },
+          {
+            "from": "20-Jul-2018",
+            "to": "23-Jul-2018"
+          },
+          {
+            "from": "15-Jun-2018",
+            "to": "19-Jun-2018"
+          },
+          {
+            "from": "27-Jun-2018",
+            "to": "29-Jun-2018"
+          },
+          {
+            "from": "23-Aug-2018",
+            "to": "28-Aug-2018"
+          },
+          {
+            "from": "17-Aug-2018",
+            "to": "19-Aug-2018"
+          },
+          {
+            "from": "19-Sep-2018",
+            "to": "21-Sep-2018"
+          },
+           {
+            "from": "1-Nov-2018",
+            "to": "30-Nov-2018"
+          }
+        ];
         comp['nextMonth'](event);
        
        // event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']); 
             
- // comp.setDateData('plus', 1, event);
+ comp.setDateData('plus', 1, event);
  // expect(event.preventDefault).toBeTruthy();
 
-  //comp['disableddays'](date);
+  comp['disableddays'](date);
            });    
+
+  
+           it('prevMonth', () => {
+            let date = [
+              {
+                "from": "13-Jul-2018",
+                "to": "15-Jul-2018"
+              },
+              {
+                "from": "20-Jul-2018",
+                "to": "23-Jul-2018"
+              },
+              {
+                "from": "15-Jun-2018",
+                "to": "19-Jun-2018"
+              },
+              {
+                "from": "27-Jun-2018",
+                "to": "29-Jun-2018"
+              },
+              {
+                "from": "23-Aug-2018",
+                "to": "28-Aug-2018"
+              },
+              {
+                "from": "17-Aug-2018",
+                "to": "19-Aug-2018"
+              },
+              {
+                "from": "19-Sep-2018",
+                "to": "21-Sep-2018"
+              },
+               {
+                "from": "1-Nov-2018",
+                "to": "30-Nov-2018"
+              }
+            ];
+            comp['prevMonth'](event);
+
+ comp.setDateData('plus', 1, event);
+ // expect(event.preventDefault).toBeTruthy();
+
+  comp['disableddays'](date);
+               });             
 
   it('resetselection()', () => {
     let dateObj = new Date("Thu Jul 25 2017 00:00:00 GMT+0530 (IST)");
