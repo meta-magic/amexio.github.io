@@ -98,23 +98,11 @@ describe('TIMELINE CHART', () => {
         expect(timelinechartcomp.hasLoaded).toBeUndefined;
 
     });
-    it('create table()',() =>{
-        const dupArray='';
-        const data='';
-        const labelobject='';
-        let aa=  [
-            [{"datatype":'string',"label":'Prime Minister'},
-              {"datatype":"date", "label":'Start'},
-              {"datatype":"date","label":"End"}
-            ],
-            [ 'Washington', new Date(1789, 3, 30), new Date(1797, 2, 4) ],
-            [ 'Adams',      new Date(1797, 2, 4),  new Date(1801, 2, 4) ],
-            [ 'Jefferson',  new Date(1801, 2, 4),  new Date(1809, 2, 4) ]
-          ];
-         
-          expect( timelinechartcomp.createTable(aa)).toBeUndefined;
+    // it('create table()',() =>{
+      
+       
 
-    })
+    // })
     // it('chartTitleTextStyle()', () => {
     //     timelinechartcomp.chartTitleTextStyle();
     //     scatterchartcomp.chartTitleComponent.color = 'red';
@@ -172,6 +160,17 @@ describe('TIMELINE CHART', () => {
             timelinechartcomp.data = newdata;
             timelinechartcomp.drawChart();
             expect(false).toBe(timelinechartcomp.hasLoaded);
+            let aa=  [
+                [{"datatype":'string',"label":'Prime Minister'},
+                  {"datatype":"date", "label":'Start'},
+                  {"datatype":"date","label":"End"}
+                ],
+                [ 'Washington', new Date(1789, 3, 30), new Date(1797, 2, 4) ],
+                [ 'Adams',      new Date(1797, 2, 4),  new Date(1801, 2, 4) ],
+                [ 'Jefferson',  new Date(1801, 2, 4),  new Date(1809, 2, 4) ]
+              ];
+             
+               timelinechartcomp.createTable(aa);
         }
     });
 }); 
