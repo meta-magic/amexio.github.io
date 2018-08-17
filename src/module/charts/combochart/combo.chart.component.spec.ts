@@ -8,6 +8,9 @@ import { ChartLoaderService } from './../chart.loader.service';
 import { ChartTitleComponent } from '../charttitle/chart.title.component';
 import { ChartLegendComponent } from '../chartlegend/chart.legend.component';
 import { ChartAreaComponent } from '../chartarea/chart.area.component';
+import {VerticalAxisComponent} from '../verticalaxis/chart.verticalaxis.component';
+import {HorizontalAxisComponent} from '../horizontalaxis/chart.horizontalaxis.component';
+
 declare var google: any;
 describe('COMBO CHART', () => {
     //let ChartTitleComponent=new ChartTitleComponent()
@@ -16,32 +19,42 @@ describe('COMBO CHART', () => {
     let charttitlecomp: ChartTitleComponent;
     let chartlegendcomp: ChartLegendComponent;
     let chartareacomp: ChartAreaComponent;
+    let chartvercomp: VerticalAxisComponent;
+    let charthorcomp: HorizontalAxisComponent;
     let chartAreaArray:ChartAreaComponent[];
     let chartLegendArray: ChartLegendComponent[];
     let chartTitleComponent:  ChartTitleComponent[];
-    let linefixture: ComponentFixture< ComboChartComponent >;
+    let linefixture: ComponentFixture< ComboChartComponent>;
     let charttitlefixture: ComponentFixture<ChartTitleComponent>;
     let chartlegendfixture: ComponentFixture<ChartLegendComponent>;
     let chartareafixture: ComponentFixture<ChartAreaComponent>;
+    let chartverfixture: ComponentFixture<VerticalAxisComponent>;
+    let charthorfixture:ComponentFixture<HorizontalAxisComponent>;
     let chartAreaArray2:ComponentFixture<ChartAreaComponent[]>;
     let chartLegendArray2:ComponentFixture<ChartLegendComponent[]>;
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule],
-            declarations: [ComboChartComponent, ChartTitleComponent, ChartLegendComponent, ChartAreaComponent],
+            declarations: [ComboChartComponent, ChartTitleComponent, ChartLegendComponent, ChartAreaComponent,VerticalAxisComponent,HorizontalAxisComponent],
             providers: [ChartLoaderService]
         }).compileComponents();
         linefixture = TestBed.createComponent(ComboChartComponent);
         charttitlefixture = TestBed.createComponent(ChartTitleComponent);
         chartlegendfixture = TestBed.createComponent(ChartLegendComponent);
         chartareafixture = TestBed.createComponent(ChartAreaComponent);
+        chartverfixture = TestBed.createComponent(VerticalAxisComponent);
+        charthorfixture = TestBed.createComponent(HorizontalAxisComponent);
         combochartcomp = linefixture.componentInstance;
         charttitlecomp = charttitlefixture.componentInstance;
         chartlegendcomp = chartlegendfixture.componentInstance;
         chartareacomp = chartareafixture.componentInstance;
+        chartvercomp =chartverfixture.componentInstance;
+        charthorcomp =charthorfixture.componentInstance;
         combochartcomp.chartTitleComponent = charttitlecomp;
         combochartcomp.chartLengendComponent=chartlegendcomp;
         combochartcomp.chartAreaComponent=chartareacomp;
+        combochartcomp.verticalComponent=chartvercomp;
+        combochartcomp.horizontalComponent=charthorcomp;
 
     });
     it('show chart', () => {
@@ -83,12 +96,17 @@ describe('COMBO CHART', () => {
         chartareacomp.topposition = null;
 
     });
-    it('drawchart()', () => {
-        combochartcomp.drawChart();
-        combochartcomp.chartTitleComponent.title = null;
+    // it('drawchart()', () => {
+    //  combochartcomp.drawChart();
+    //    combochartcomp.chartTitleComponent.title=null;
+    //     combochartcomp.chartTitleStyle();
+    //     combochartcomp.chartLegendStyle();
+    //     combochartcomp.chartBackground();
+    //     combochartcomp.chartHorizontalStyle();
+    //     combochartcomp.chartVerticalStyle();
 
-    });
-    it('chartTitleTextStyle()', () => {
+    // });
+    it('chartTitleStyle()', () => {
         combochartcomp.chartTitleStyle();
         combochartcomp.chartTitleComponent.color = 'red';
         combochartcomp.chartTitleComponent.fontname='times new roman';
@@ -107,6 +125,16 @@ describe('COMBO CHART', () => {
         combochartcomp.chartLengendComponent.bold=true;
         const chartlegendstyle=  combochartcomp.chartLegendStyle();
 
+    });
+    it('chartVerticalStyle()',()=>{
+        chartvercomp.title='';
+        chartvercomp.titlecolor='';
+        combochartcomp.chartVerticalStyle();
+    });
+    it('chartHorizontalStyle()',()=>{
+        charthorcomp.title='';
+        charthorcomp.titlecolor='';
+        combochartcomp.chartHorizontalStyle();
     })
     it('chartBackgroundStyle()',()=>{
         combochartcomp.chartAreaComponent.chartbackgroundcolor='red';
