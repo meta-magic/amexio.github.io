@@ -96,6 +96,7 @@ describe('TIMELINE CHART', () => {
         timelinechartcomp.drawChart();
         timelinechartcomp.chartTitleComponent.title = null;
         expect(timelinechartcomp.hasLoaded).toBeUndefined;
+        timelinechartcomp.ngOnInit();
 
     });
     it('create table()',() =>{
