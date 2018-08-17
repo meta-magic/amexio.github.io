@@ -20,6 +20,8 @@ describe('amexio-date-time-picker', () => {
     fixture = TestBed.createComponent(AmexioDateTimePickerComponent);
     comp = fixture.componentInstance;
     comp.backArrowFlag = false;
+    event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']); 
+
     //comp.testnumber = 5;
     comp.yearList1 = [{ year: 0, flag: false, disabled: false },
     { year: 1, flag: false, disabled: false }, { year: 3, flag: false, disabled: false },
@@ -215,7 +217,6 @@ describe('amexio-date-time-picker', () => {
   });
 
   it('setDateData()', () => {
-    event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']); 
   let  state: string, mon: number = 9, event1: any ;
   //= 'MouseEvent {isTrusted: true, screenX: 280, screenY: 224, clientX: 236, clientY: 145, …}';
 
@@ -241,49 +242,50 @@ describe('amexio-date-time-picker', () => {
        });
 
 
-  //     it('nextmonth', () => {
-  //       let date = [
-  //         {
-  //           "from": "13-Jul-2018",
-  //           "to": "15-Jul-2018"
-  //         },
-  //         {
-  //           "from": "20-Jul-2018",
-  //           "to": "23-Jul-2018"
-  //         },
-  //         {
-  //           "from": "15-Jun-2018",
-  //           "to": "19-Jun-2018"
-  //         },
-  //         {
-  //           "from": "27-Jun-2018",
-  //           "to": "29-Jun-2018"
-  //         },
-  //         {
-  //           "from": "23-Aug-2018",
-  //           "to": "28-Aug-2018"
-  //         },
-  //         {
-  //           "from": "17-Aug-2018",
-  //           "to": "19-Aug-2018"
-  //         },
-  //         {
-  //           "from": "19-Sep-2018",
-  //           "to": "21-Sep-2018"
-  //         },
-  //          {
-  //           "from": "1-Nov-2018",
-  //           "to": "30-Nov-2018"
-  //         }
-  //       ];
-  //       comp['nextMonth'](fixture);
-  //       event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']); 
+      it('nextmonth', () => {
+        // let date = [
+        //   {
+        //     "from": "13-Jul-2018",
+        //     "to": "15-Jul-2018"
+        //   },
+        //   {
+        //     "from": "20-Jul-2018",
+        //     "to": "23-Jul-2018"
+        //   },
+        //   {
+        //     "from": "15-Jun-2018",
+        //     "to": "19-Jun-2018"
+        //   },
+        //   {
+        //     "from": "27-Jun-2018",
+        //     "to": "29-Jun-2018"
+        //   },
+        //   {
+        //     "from": "23-Aug-2018",
+        //     "to": "28-Aug-2018"
+        //   },
+        //   {
+        //     "from": "17-Aug-2018",
+        //     "to": "19-Aug-2018"
+        //   },
+        //   {
+        //     "from": "19-Sep-2018",
+        //     "to": "21-Sep-2018"
+        //   },
+        //    {
+        //     "from": "1-Nov-2018",
+        //     "to": "30-Nov-2018"
+        //   }
+        // ];
+        comp['nextMonth'](event);
+       
+       // event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']); 
             
-  // comp.setDateData('plus', 1, event);
-  // expect(event.preventDefault).toBeTruthy();
+ // comp.setDateData('plus', 1, event);
+ // expect(event.preventDefault).toBeTruthy();
 
-  // //comp['disableddays'](date);
-  //          });    
+  //comp['disableddays'](date);
+           });    
 
   it('resetselection()', () => {
     let dateObj = new Date("Thu Jul 25 2017 00:00:00 GMT+0530 (IST)");
