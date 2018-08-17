@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { GanttChartComponent } from './gantt.chart.component';
 import { ChartLoaderService } from './../chart.loader.service';
 declare var google: any;
-describe('amexio-text-field', () => {
+describe('GANTT CHART', () => {
   let comp: GanttChartComponent;
   let fixture: ComponentFixture<GanttChartComponent>;
   let de: DebugElement;
@@ -31,12 +31,26 @@ describe('amexio-text-field', () => {
     expect(newdata).toEqual(comp.data);
     expect(true).toBe(comp.showChart);
   });
-  it('drawchart()',()=>{
+  it('drawchart()', () => {
     comp.drawChart();
-    comp.criticalPathEnabled;
-    comp.innerGridDarkTrack;
-    comp.innerGridTrackColor;
+    let criticalPathStyle = comp.criticalPathEnabled;
+    let  innerGridTrack = comp.innerGridDarkTrack;
+    let innerGridDarkTrack = comp.innerGridTrackColor;
+    comp['options'] = { criticalPathStyle , innerGridTrack, innerGridDarkTrack};
+
   });
+  //   let array=[[
+  //     [{ "datatype": 'string', "label": 'Task ID' }, { "datatype": 'string', "label": 'Task Name' }, { "datatype": 'string', "label": 'Resource' }, { "datatype": 'date', "label": 'Start' }, { "datatype": 'date', "label": 'End' }, { "datatype": 'number', "label": 'Duration' }, { "datatype": 'number', "label": 'Percent Complete' }, { "datatype": 'string', "label": 'Dependencies' }],
+  //     ['toTrain', 'Walk to train stop', 'walk', null, null, this.toMilliseconds(5), 100, null],
+  //     ['music', 'Listen to music', 'music', null, null, this.toMilliseconds(70), 100, null],
+  //     ['wait', 'Wait for train', 'wait', null, null, this.toMilliseconds(10), 100, 'toTrain'],
+  //     ['train', 'Train ride', 'train', null, null, this.toMilliseconds(45), 75, 'wait'],
+  //     ['toWork', 'Walk to work', 'walk', null, null, this.toMilliseconds(10), 0, 'train'],
+  //     ['work', 'Sit down at desk', null, null, null, this.toMilliseconds(2), 0, 'toWork']
+  // ]];
+  // it('createTable()',() => {
+  // comp['createTable'](array);
+  // })
 
   it('dont show chart', () => {
     let newdata;
@@ -65,8 +79,8 @@ describe('amexio-text-field', () => {
     comp.ngOnInit();
     expect(false).toBe(comp.hasLoaded);
     comp.drawChart();
-});
-  
+  });
+
 
 
 });
