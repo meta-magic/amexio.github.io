@@ -214,26 +214,31 @@ describe('amexio-date-time-picker', () => {
     expect(comp['innerValue']).toEqual(comp.value);
   });
 
-  // it('setDateData()', () => {
-  // let  state: string, mon: number, event: any = 'MouseEvent {isTrusted: true, screenX: 280, screenY: 224, clientX: 236, clientY: 145, …}';
+  it('setDateData()', () => {
+    event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']); 
+  let  state: string, mon: number = 9, event1: any ;
+  //= 'MouseEvent {isTrusted: true, screenX: 280, screenY: 224, clientX: 236, clientY: 145, …}';
 
-  // comp.setDateData(state, mon, event);
+   comp.setDateData(state, mon, event);
+   expect(event.preventDefault).toBeTruthy();
+   comp.currrentDate = new Date();
+   comp.maxDate = "27-Feb-2019";
+   comp.minDate = "22-Jan-2015";
+     const d = new Date(comp.currrentDate.getFullYear(), comp.currrentDate.getMonth(), comp.currrentDate.getDate());
+  const min = new Date(comp.minDate);
+  const max = new Date(comp.maxDate);
+  comp.currrentDate = d;
 
-  // const d = new Date(comp.currrentDate.getFullYear(), comp.currrentDate.getMonth(), comp.currrentDate.getDate());
-  // const min = new Date(comp.minDate);
-  // const max = new Date(comp.maxDate);
-
-  // state='plus';
-  // expect(state).toEqual('plus');
-  // comp.setPlusData(d, max, mon);
-  // state='minus';
-  // expect(state).toEqual('minus');
-  // comp.setPlusData(d, min, mon);
-
-  // expect(comp.currrentDate).toBe(d);
-  // comp.initDate();
-  // event.stopPropagation();
-  //      });
+  state='plus';
+  expect(state).toEqual('plus');
+   comp.setPlusData(d, max, mon);
+  state='minus';
+  expect(state).toEqual('minus');
+  comp.setPlusData(d, min, mon);
+  expect(comp.currrentDate).toEqual(d);
+   comp.initDate();
+  event.stopPropagation();
+       });
 
 
   //     it('nextmonth', () => {
@@ -272,7 +277,11 @@ describe('amexio-date-time-picker', () => {
   //         }
   //       ];
   //       comp['nextMonth'](fixture);
+  //       event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']); 
+      
   // comp.setDateData('plus', 1, event);
+  // expect(event.preventDefault).toBeTruthy();
+
   // //comp['disableddays'](date);
   //          });    
 
@@ -490,7 +499,7 @@ describe('amexio-date-time-picker', () => {
     }]]
     comp['disableddays'](date);
     expect(date).not.toBeNull; //validates if
-
+    expect(date.length).toBeGreaterThan(0);
     const From = new Date(date[1].from);
     const To = new Date(date[1].to);
  
