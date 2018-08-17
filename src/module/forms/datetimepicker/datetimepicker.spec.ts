@@ -271,7 +271,7 @@ describe('amexio-date-time-picker', () => {
   //           "from": "19-Sep-2018",
   //           "to": "21-Sep-2018"
   //         },
-  //         {
+  //          {
   //           "from": "1-Nov-2018",
   //           "to": "30-Nov-2018"
   //         }
