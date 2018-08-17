@@ -262,7 +262,7 @@ describe('amexio-date-time-picker', () => {
     state = 'plus';
     expect(state).toEqual('plus');
     expect(comp.maxDate.length).toBeGreaterThan(0);
-    d.setFullYear(2016);
+    //d.setFullYear(2016);
     expect(d.getFullYear()).toBeLessThanOrEqual(max.getFullYear() - 1);
     d.setMonth(d.getMonth() + mon);
     //d.setFullYear(2021);
@@ -286,7 +286,7 @@ describe('amexio-date-time-picker', () => {
     comp.initDate();
     event.stopPropagation();
   });
-
+ 
   it('nextYear()', () => {
     comp['nextYear'](event);
     comp.setDateData1('plus', 12, event);
