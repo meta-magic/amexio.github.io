@@ -16,9 +16,9 @@ import { AmexioDataIconComponent } from '../icon/icon.component';
 import { AmexioBodyComponent } from '../../panes/body/pane.action.body';
 import { stringify } from 'querystring';
 import { CommonDataService } from '../../services/data/common.data.service';
-import {HttpClient,HttpHandler} from '@angular/common/http';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 
- 
+
 describe('amexio-item-selector', () => {
 
     let comp: AmexioItemSelectorComponent;
@@ -53,17 +53,29 @@ describe('amexio-item-selector', () => {
     it('check dataEmitter method for availableRecord', () => {
         comp.dataEmitter();
         comp.availableRecords.subscribe((g: any) => {
-          expect(comp.availableData).toEqual(g);
+            expect(comp.availableData).toEqual(g);
         });
-      });
+    });
 
-      it('check dataEmitter method for selectedRecords', () => {
+    it('check dataEmitter method for selectedRecords', () => {
         comp.dataEmitter();
         comp.selectedRecords.subscribe((g: any) => {
-          expect(comp.selectedData).toEqual(g);
+            expect(comp.selectedData).toEqual(g);
         });
-      });
+    });
+
+    it('get data method', () => {
+        comp.data;
+        expect(comp.data).toBe(comp._data);
+    });
 
 
+    it('get data method', () => {
+        comp.data;
+        let value: any[];
+        expect(value).toBe(comp._data);
+        (<any>comp).componentLoaded = true;
+        expect((<any>comp).componentLoaded).toEqual(true);
+    });
 });
 
