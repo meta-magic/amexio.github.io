@@ -76,6 +76,13 @@ describe('amexio-button', () => {
     colorCode = 'btn-warning-badge';
     expect(colorCode).toBe('btn-warning-badge');
 
+    comp.badgeClass();
+    comp.type = 'transparent';
+    expect(comp.type).toEqual('transparent');
+    colorCode = 'btn-transparent-badge';
+    expect(colorCode).toBe('btn-transparent-badge');
+
+
   });
 
   it('check method  buttonClick', () => {
