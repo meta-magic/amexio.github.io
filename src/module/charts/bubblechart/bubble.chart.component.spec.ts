@@ -184,6 +184,13 @@ describe('BUBBLE CHART', () => {
         bubblechartcomp.onResize(ComponentFixture);
         bubblechartcomp.drawChart();
       });
+      it('ngOnInit()',() => {
+          bubblechartcomp.hasLoaded=false;
+          expect(bubblechartcomp.hasLoaded).toBe(false);
+         bubblechartcomp.drawChart();
+         bubblechartcomp.ngOnInit();
+
+     })
     
 }); 
 
