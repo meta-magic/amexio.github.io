@@ -170,6 +170,7 @@ describe('AREA CHART', () => {
             areachartcomp.data = newdata;
             areachartcomp.drawChart();
             expect(false).toBe(areachartcomp.hasLoaded);
+            areachartcomp.showChart=true;
             expect(areachartcomp.showChart).toBe(true);
             areachartcomp['areaData'] = google.visualization.arrayToDataTable(areachartcomp._data);
             areachartcomp['options'] = {
@@ -180,13 +181,14 @@ describe('AREA CHART', () => {
                 chartArea: areachartcomp.chartAreaComponent ? areachartcomp.createChartArea() : null,
 
             };
+            areachartcomp['areaData']=true;
             expect(areachartcomp['areaData']).toBe(true) ; 
                 areachartcomp['chart'] = new google.visualization.AreaChart(areachartcomp.areachart.nativeElement);
                 areachartcomp.hasLoaded = true;
                 areachartcomp['chart'].draw( areachartcomp['areaData'],  areachartcomp['options']);
                 google.visualization.events.addListener(areachartcomp['chart'], 'click', areachartcomp.click);
 
-            
+            areachartcomp.ngOnInit();
 
             // let draw = google.visualization.arrayToDataTable(areachartcomp.data);
             // areachartcomp.drawChart();
@@ -201,7 +203,7 @@ describe('AREA CHART', () => {
     });
     it(' ngAfterContentInit()', () => {
         const chartLegendComp = new ChartLegendComponent;
-
+//areachartcomp.chartLegendArray = areachartcomp.chartLegendComp.toArray();
 
     })
 
