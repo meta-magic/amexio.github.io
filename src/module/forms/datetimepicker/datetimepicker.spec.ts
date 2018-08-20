@@ -603,7 +603,7 @@ describe('amexio-date-time-picker', () => {
     comp.disableYearFlag();
     comp.minDate = '22-Mar-2016';
     comp.maxDate = '27-Oct-2018';
-  comp.yearList1 = [{ year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+    comp.yearList1 = [{ year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
     { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
     { year: 0, flag: false, disabled: false }];
     comp.yearList2 = [{ year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
@@ -616,7 +616,7 @@ describe('amexio-date-time-picker', () => {
     expect(comp.minDate.length).toEqual(0);
 
     comp.yearList1[0].year = comp.yearList1[0].year + 10;
-  comp.yearList2[0].year = comp.yearList2[0].year + 10;
+    comp.yearList2[0].year = comp.yearList2[0].year + 10;
 
     comp.disableYearFlag();
     comp.rechkYearFlag();
@@ -1035,15 +1035,15 @@ describe('amexio-date-time-picker', () => {
     comp.minDate = '';
     comp.maxDate = '';
     comp['validateDays'](days);
-    
-    expect(comp.maxDate.length).toBeLessThanOrEqual(0);
-    expect(comp.minDate.length).toBeLessThanOrEqual(0);
+
+    // expect(comp.maxDate.length).toBeLessThanOrEqual(0);
+    // expect(comp.minDate.length).toBeLessThanOrEqual(0);
 
 
     comp.maxDate = '27-Mar-2016';
     comp.minDate = ''
-    console.log("comp.maxDate.length---------> ",comp.maxDate.length)
-    console.log("comp.minDate.length---------> ",comp.minDate.length)
+    console.log("comp.maxDate.length---------> ", comp.maxDate.length)
+    console.log("comp.minDate.length---------> ", comp.minDate.length)
 
     expect(comp.maxDate.length).toBeGreaterThan(0);
     expect(comp.minDate.length).toBeLessThanOrEqual(0);
@@ -1067,7 +1067,7 @@ describe('amexio-date-time-picker', () => {
     expect(comp.maxDate.length).toBeGreaterThan(0);
     expect(comp.minDate.length).toBeGreaterThan(0)
 
-   min.setDate(27);
+    min.setDate(27);
     days.setDate(20);
     expect(days.getDate()).toBeLessThan(min.getDate());
     days.setMonth(4);
@@ -1082,44 +1082,104 @@ describe('amexio-date-time-picker', () => {
     expect(days.getMonth()).toBeLessThan(min.getMonth());
     expect(days.getFullYear()).toEqual(min.getFullYear())
     comp.diabledDate = [
-          {
-            "from": "13-Jul-2018",
-            "to": "15-Jul-2018"
-          },
-          {
-            "from": "20-Jul-2018",
-            "to": "23-Jul-2018"
-          },
-          {
-            "from": "15-Jun-2018",
-            "to": "19-Jun-2018"
-          },
-          {
-            "from": "27-Jun-2018",
-            "to": "29-Jun-2018"
-          },
-          {
-            "from": "23-Aug-2018",
-            "to": "28-Aug-2018"
-          },
-          {
-            "from": "17-Aug-2018",
-            "to": "19-Aug-2018"
-          },
-          {
-            "from": "19-Sep-2018",
-            "to": "21-Sep-2018"
-          },
-          {
-            "from": "1-Nov-2018",
-            "to": "30-Nov-2018"
-          }
-        ];   
+      {
+        "from": "13-Jul-2018",
+        "to": "15-Jul-2018"
+      },
+      {
+        "from": "20-Jul-2018",
+        "to": "23-Jul-2018"
+      },
+      {
+        "from": "15-Jun-2018",
+        "to": "19-Jun-2018"
+      },
+      {
+        "from": "27-Jun-2018",
+        "to": "29-Jun-2018"
+      },
+      {
+        "from": "23-Aug-2018",
+        "to": "28-Aug-2018"
+      },
+      {
+        "from": "17-Aug-2018",
+        "to": "19-Aug-2018"
+      },
+      {
+        "from": "19-Sep-2018",
+        "to": "21-Sep-2018"
+      },
+      {
+        "from": "1-Nov-2018",
+        "to": "30-Nov-2018"
+      }
+    ];
     comp['disableddays'](comp.diabledDate);
 
   });
+ 
+  //
+  it('plus()', () => {
+   let type = 'min';
+    comp.plus(type, event);
 
+    expect(type).toEqual('min');
+    comp.min = 59;
+    expect(comp.min).toEqual(59);
+    comp.min = -1;
+    expect(comp.min).toEqual(-1);
+    comp.hrs++;
+    comp.min++;
+    type = 'hrs';
+    expect(type).toEqual('hrs')
+    comp.hrs++;
+    
+    comp.hrs = 24;
+    expect(comp.hrs).toEqual(24);
+    comp.hrs = 0;
+     
+    comp.selectedDate.setHours(comp.hrs);
+     
+    comp.selectedDate.setMinutes(comp.min);
+    comp.value = comp.selectedDate;
+    expect(comp.value).toEqual(comp.selectedDate);
+    comp.isValid = true;
+    expect(comp.isValid).toEqual(true);
+    event.stopPropagation();
 
+  });
+
+//minus
+it('onminus()', () => {
+  let type = 'min';
+  comp.minus(type, event);
+  expect(type).toEqual('min');
+  comp.min = 0;
+  expect(comp.min).toEqual(0);
+  comp.min = 60;
+  expect(comp.min).toEqual(60);
+  comp.hrs--;
+  comp.min--;
+  
+  type = 'hrs';
+  expect(type).toEqual('hrs');
+  comp.hrs--;
+
+  comp.hrs = 0;
+  expect(comp.hrs).toEqual(0);
+  comp.hrs = 23;
+  expect(comp.hrs).toEqual(23);
+ 
+  comp.selectedDate.setHours(comp.hrs);
+  comp.selectedDate.setMinutes(comp.min);
+  comp.value = comp.selectedDate;
+  comp.isValid = true;
+  expect(comp.isValid).toEqual(true);
+
+  event.stopPropagation();
+
+});
 
 });
 
