@@ -994,5 +994,40 @@ describe('amexio-date-time-picker', () => {
   //   comp['disableddays'](comp.diabledDate);
 
   //  });
+
+  it('navigateDropdown()', () => {
+    comp.navigateDropdown();
+    comp.hostFlag = true;
+    comp.yearNo = 4;
+    comp.monthNo = 7;
+    
+    expect(comp.hostFlag).toEqual(true);
+    comp.selectedDate = new Date();
+    expect(comp.yearNo).not.toBeNull;
+    expect(comp.monthNo).not.toBeNull;
+    comp.selectedDate.setFullYear(comp.yearNo);
+    comp.selectedDate.setMonth(comp.monthNo);
+
+    expect(comp.yearNo).not.toBeNull;
+    expect(comp.monthNo).toBeNull;
+    comp.selectedDate.setFullYear(comp.yearNo);
+
+    expect(comp.yearNo).toBeNull;
+    expect(comp.monthNo).not.toBeNull;
+    comp.selectedDate.setMonth(comp.monthNo);
+
+    comp.drop = false;
+    expect(comp.drop).toEqual(false);
+    comp.daysArray = [];
+    comp['createDaysForCurrentMonths'](comp.selectedDate);
+    comp['disableddays'](comp.diabledDate);
+    comp.tempFlag = true;
+    expect(comp.tempFlag).toEqual(true);
+    comp['cdf'].detectChanges();
+
+  });
+
+
+
 });
 
