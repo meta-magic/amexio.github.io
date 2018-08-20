@@ -937,7 +937,7 @@ describe('amexio-date-time-picker', () => {
     comp.forwardArrowFlag = true;
     expect(comp.forwardArrowFlag).toEqual(true);
   });
-
+ 
   //openPicker()
   // it('openPicker()', () => {
   //   comp.diabledDate = [
