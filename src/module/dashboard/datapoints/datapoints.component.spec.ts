@@ -6,7 +6,7 @@ import { DataPointsComponent} from './datapoints.component';
 import { toUnicode } from 'punycode';
 import { SSL_OP_NO_SESSION_RESUMPTION_ON_RENEGOTIATION } from 'constants';
 
-describe('amexio-steps', () => {
+describe('amexio-dataPoint', () => {
     let comp: DataPointsComponent;
     let fixture: ComponentFixture<DataPointsComponent>;
 
