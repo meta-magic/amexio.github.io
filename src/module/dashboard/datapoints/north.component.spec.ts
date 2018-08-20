@@ -2,36 +2,36 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { IconLoaderService } from '../../../index';
-import { DataPointWestComponent } from './west.component';
+import { DataPointNorthComponent } from './north.component';
 import { toUnicode } from 'punycode';
 import { SSL_OP_NO_SESSION_RESUMPTION_ON_RENEGOTIATION } from 'constants';
 
-describe('amexio-west-dataPoint', () => {
-    let comp: DataPointWestComponent;
-    let fixture: ComponentFixture<DataPointWestComponent>;
+describe('amexio-north-dataPoint', () => {
+    let comp: DataPointNorthComponent;
+    let fixture: ComponentFixture<DataPointNorthComponent>;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule],
-            declarations: [DataPointWestComponent],
+            declarations: [DataPointNorthComponent],
             providers: [IconLoaderService],
         });
-        fixture = TestBed.createComponent(DataPointWestComponent);
+        fixture = TestBed.createComponent(DataPointNorthComponent);
         comp = fixture.componentInstance;
 
     });
 
     it('check cclass variable', () => {
         comp.ngOnInit();
-        comp.cclass = null;
-        expect(comp.cclass).toEqual(null);
+        comp.cclass =  null;
+        
+        expect(comp.cclass).toEqual( null);
 
-
-        comp.cclass = 'datapoint-west';
+        comp.cclass =  'datapoints-north';
         comp.ngOnInit();
-        expect(comp.cclass).toEqual('datapoint-west');
-
-    });
+        expect(comp.cclass).toEqual( 'datapoints-north');
+    
+});
 });
 
 

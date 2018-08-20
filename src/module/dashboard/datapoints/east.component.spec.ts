@@ -22,6 +22,11 @@ describe('amexio-east-dataPoint', () => {
     });
 
     it('check cclass variable', () => {
+
+        comp.ngOnInit();
+        comp.cclass =  null;
+        
+        expect(comp.cclass).toEqual( null);
         comp.cclass =  'datapoint-east';
         comp.ngOnInit();
         expect(comp.cclass).toEqual( 'datapoint-east');

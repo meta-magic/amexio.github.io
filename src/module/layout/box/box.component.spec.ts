@@ -36,18 +36,14 @@ describe('amexio-box' , () => {
     comp.closable = false;
     expect(comp.closable).toEqual(false);
   });
-  it('check enableclick true', () => {
-    comp.ngOnInit();
-    comp.borderColor = null;
-    expect(comp.borderColor).toEqual(null);
-
-
+  it('check ngOnInit method', () => {
     comp.ngOnInit();
     comp.borderColor = 'box-default';
     comp.bgColor = null;
     expect(comp.bgColor).toBe(null);
     expect(comp.borderColor).toEqual('box-default');
-    
+    comp.bgColor = comp.borderColor;
+    expect(comp.bgColor).toEqual(comp.borderColor);    
     
   });
 });
