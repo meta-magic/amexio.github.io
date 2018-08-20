@@ -49,5 +49,21 @@ describe('amexio-item-selector', () => {
         expect((<any>comp).selectedData).toEqual([]);
     });
 
+
+    it('check dataEmitter method for availableRecord', () => {
+        comp.dataEmitter();
+        comp.availableRecords.subscribe((g: any) => {
+          expect(comp.availableData).toEqual(g);
+        });
+      });
+
+      it('check dataEmitter method for selectedRecords', () => {
+        comp.dataEmitter();
+        comp.selectedRecords.subscribe((g: any) => {
+          expect(comp.selectedData).toEqual(g);
+        });
+      });
+
+
 });
 
