@@ -88,15 +88,20 @@ describe('amexio-button', () => {
       expect(btn).toEqual(g);
     });
 
-    it('check setDisabled method', () => {
-      let dis: any;
-      comp.setDisabled(dis);
-      comp.disabled = true;
-      expect(comp.disabled).toEqual(true);
+    comp.disabled = true;
+
+    expect(comp.disabled).toEqual(true);
+    comp.onClick.subscribe((g: any) => {
+      expect(btn).toEqual(g);
     });
   });
+    
 
-
-
+    it('check setDisabled method', () => {
+      let dis: boolean;
+      comp.setDisabled(dis);
+      comp.disabled = true;
+      expect(comp.disabled).toEqual(comp.disabled);
+    });
 
 });
