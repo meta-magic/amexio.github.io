@@ -1158,18 +1158,16 @@ it('onminus()', () => {
   comp.min = 0;
   expect(comp.min).toEqual(0);
   comp.min = 60;
-  expect(comp.min).toEqual(60);
   comp.hrs--;
-  comp.min--;
   
   type = 'hrs';
+  comp.hrs = 20;  
   expect(type).toEqual('hrs');
   comp.hrs--;
 
   comp.hrs = 0;
   expect(comp.hrs).toEqual(0);
   comp.hrs = 23;
-  expect(comp.hrs).toEqual(23);
  
   comp.selectedDate.setHours(comp.hrs);
   comp.selectedDate.setMinutes(comp.min);
