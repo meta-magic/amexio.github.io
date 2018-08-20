@@ -262,7 +262,6 @@ describe('amexio-date-time-picker', () => {
     state = 'plus';
     expect(state).toEqual('plus');
     expect(comp.maxDate.length).toBeGreaterThan(0);
-    //d.setFullYear(2016);
     expect(d.getFullYear()).toBeLessThanOrEqual(max.getFullYear() - 1);
     d.setMonth(d.getMonth() + mon);
     //d.setFullYear(2021);
@@ -873,5 +872,127 @@ describe('amexio-date-time-picker', () => {
 
   });
 
+  it('chkYearList1()', () => {
+    comp.minDate = '27-Mar-2016';
+    comp.maxDate = '22-Feb-2019';
+    comp.yearList1[0].year = 2016;
+
+    comp.chkYearList1();
+    const min = new Date(comp.minDate);
+    const max = new Date(comp.maxDate);
+    expect(comp.yearList1[0].year).toEqual(min.getFullYear());
+
+    comp.yearList1[0].year = 2019;
+    expect(comp.yearList1[0].year).toEqual(max.getFullYear());
+    comp.backArrowFlag = true;
+    expect(comp.backArrowFlag).toEqual(true);
+
+    comp.yearList1[0].year = 2016;
+    expect(comp.yearList1[0].year).toEqual(min.getFullYear());
+    expect(comp.yearList1[0].year).not.toEqual(max.getFullYear());
+    comp.forwardArrowFlag = false;
+    expect(comp.forwardArrowFlag).toEqual(false);
+    comp.backArrowFlag = true;
+    expect(comp.backArrowFlag).toEqual(true);
+
+    comp.yearList1[0].year = 2025;
+    expect(comp.yearList1[0].year).not.toEqual(min.getFullYear());
+    expect(comp.yearList1[0].year).not.toEqual(max.getFullYear());
+    comp.forwardArrowFlag = false;
+    expect(comp.forwardArrowFlag).toEqual(false);
+    comp.backArrowFlag = false;
+    expect(comp.backArrowFlag).toEqual(false);
+    
+    comp.yearList1[0].year = 2019;
+    expect(comp.yearList1[0].year).toEqual(max.getFullYear());
+    comp.forwardArrowFlag = true;
+    expect(comp.forwardArrowFlag).toEqual(true);
+    
+  });
+
+  it('minMaxDateFound()', () => {
+    comp.minDate = '27-Mar-2016';
+    comp.maxDate = '22-Feb-2019';
+    comp.yearList1[0].year = 2016;
+    comp.yearList2[0].year = 2016;
+
+ 
+    comp.minMaxDateFound();
+    const min = new Date(comp.minDate);
+    const max = new Date(comp.maxDate);
+ 
+    expect(comp.yearList1[0].year).toEqual(min.getFullYear());  
+    comp.backArrowFlag = true;
+    expect(comp.backArrowFlag).toEqual(true);
+    comp.yearList1[0].year = 2019;
+    expect(comp.yearList1[0].year).toEqual(max.getFullYear());
+    comp.forwardArrowFlag = true;
+    expect(comp.forwardArrowFlag).toEqual(true);
+    
+     expect(comp.yearList2[0].year).toEqual(min.getFullYear());  
+    comp.backArrowFlag = true;
+    expect(comp.backArrowFlag).toEqual(true);
+    comp.yearList2[0].year = 2019;
+    expect(comp.yearList2[0].year).toEqual(max.getFullYear());
+    comp.forwardArrowFlag = true;
+    expect(comp.forwardArrowFlag).toEqual(true);
+  });
+
+  //openPicker()
+  // it('openPicker()', () => {
+  //   comp.diabledDate = [
+  //     {
+  //       "from": "13-Jul-2018",
+  //       "to": "15-Jul-2018"
+  //     },
+  //     {
+  //       "from": "20-Jul-2018",
+  //       "to": "23-Jul-2018"
+  //     },
+  //     {
+  //       "from": "15-Jun-2018",
+  //       "to": "19-Jun-2018"
+  //     },
+  //     {
+  //       "from": "27-Jun-2018",
+  //       "to": "29-Jun-2018"
+  //     },
+  //     {
+  //       "from": "23-Aug-2018",
+  //       "to": "28-Aug-2018"
+  //     },
+  //     {
+  //       "from": "17-Aug-2018",
+  //       "to": "19-Aug-2018"
+  //     },
+  //     {
+  //       "from": "19-Sep-2018",
+  //       "to": "21-Sep-2018"
+  //     },
+  //     {
+  //       "from": "1-Nov-2018",
+  //       "to": "30-Nov-2018"
+  //     }
+  //   ];
+  //   let elem: any;
+  //   comp.inlineDatepicker = true;
+  //   comp.openPicker(elem);
+  //   comp.hostFlag = false;
+  //   expect(comp.hostFlag).toEqual(false);
+  //   comp.pickerele = elem;
+  //   expect(comp.pickerele).toEqual(elem);
+  //   expect(comp.inlineDatepicker).toEqual(true);
+  //   comp.showToolTip = comp.inlineDatepicker;
+  //   expect(comp.showToolTip).toEqual(comp.inlineDatepicker);
+
+  //   comp.inlineDatepicker = false;
+  //   expect(comp.inlineDatepicker).toEqual(false);
+  //   comp.showToolTip = true;
+  //   expect(comp.showToolTip).toEqual(true);
+
+  //   comp.posixUp = comp.getListPosition(elem);
+  //   comp['disableddays'](comp.diabledDate);
+
+  //  });
 });
 
