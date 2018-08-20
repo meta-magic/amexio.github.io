@@ -285,7 +285,7 @@ describe('amexio-date-time-picker', () => {
     comp.initDate();
     event.stopPropagation();
   });
- 
+
   it('nextYear()', () => {
     comp['nextYear'](event);
     comp.setDateData1('plus', 12, event);
@@ -603,10 +603,10 @@ describe('amexio-date-time-picker', () => {
     comp.disableYearFlag();
     comp.minDate = '22-Mar-2016';
     comp.maxDate = '27-Oct-2018';
-    this.yearList1 = [{ year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+  comp.yearList1 = [{ year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
     { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
     { year: 0, flag: false, disabled: false }];
-    this.yearList2 = [{ year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+    comp.yearList2 = [{ year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
     { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
     { year: 0, flag: false, disabled: false }];
 
@@ -616,7 +616,7 @@ describe('amexio-date-time-picker', () => {
     expect(comp.minDate.length).toEqual(0);
 
     comp.yearList1[0].year = comp.yearList1[0].year + 10;
-    this.yearList2[0].year = this.yearList2[0].year + 10;
+  comp.yearList2[0].year = comp.yearList2[0].year + 10;
 
     comp.disableYearFlag();
     comp.rechkYearFlag();
@@ -693,8 +693,8 @@ describe('amexio-date-time-picker', () => {
     comp.backArrowFlag = false;
     comp.resetYearFlag();
     expect(comp.backArrowFlag).toEqual(false);
-    comp.yearList1[0].year = this.yearList1[0].year - 10;
-    comp.yearList2[0].year = this.yearList2[0].year - 10;
+    comp.yearList1[0].year = comp.yearList1[0].year - 10;
+    comp.yearList2[0].year = comp.yearList2[0].year - 10;
     comp.yearList1[0].disabled = false;
     comp.yearList2[0].disabled = false;
   });
@@ -902,12 +902,12 @@ describe('amexio-date-time-picker', () => {
     expect(comp.forwardArrowFlag).toEqual(false);
     comp.backArrowFlag = false;
     expect(comp.backArrowFlag).toEqual(false);
-    
+
     comp.yearList1[0].year = 2019;
     expect(comp.yearList1[0].year).toEqual(max.getFullYear());
     comp.forwardArrowFlag = true;
     expect(comp.forwardArrowFlag).toEqual(true);
-    
+
   });
 
   it('minMaxDateFound()', () => {
@@ -916,20 +916,20 @@ describe('amexio-date-time-picker', () => {
     comp.yearList1[0].year = 2016;
     comp.yearList2[0].year = 2016;
 
- 
+
     comp.minMaxDateFound();
     const min = new Date(comp.minDate);
     const max = new Date(comp.maxDate);
- 
-    expect(comp.yearList1[0].year).toEqual(min.getFullYear());  
+
+    expect(comp.yearList1[0].year).toEqual(min.getFullYear());
     comp.backArrowFlag = true;
     expect(comp.backArrowFlag).toEqual(true);
     comp.yearList1[0].year = 2019;
     expect(comp.yearList1[0].year).toEqual(max.getFullYear());
     comp.forwardArrowFlag = true;
     expect(comp.forwardArrowFlag).toEqual(true);
-    
-     expect(comp.yearList2[0].year).toEqual(min.getFullYear());  
+
+    expect(comp.yearList2[0].year).toEqual(min.getFullYear());
     comp.backArrowFlag = true;
     expect(comp.backArrowFlag).toEqual(true);
     comp.yearList2[0].year = 2019;
@@ -937,7 +937,7 @@ describe('amexio-date-time-picker', () => {
     comp.forwardArrowFlag = true;
     expect(comp.forwardArrowFlag).toEqual(true);
   });
- 
+
   //openPicker()
   // it('openPicker()', () => {
   //   comp.diabledDate = [
@@ -1000,7 +1000,7 @@ describe('amexio-date-time-picker', () => {
     comp.hostFlag = true;
     comp.yearNo = 4;
     comp.monthNo = 7;
-    
+
     expect(comp.hostFlag).toEqual(true);
     comp.selectedDate = new Date();
     expect(comp.yearNo).not.toBeNull;
@@ -1009,10 +1009,12 @@ describe('amexio-date-time-picker', () => {
     comp.selectedDate.setMonth(comp.monthNo);
 
     expect(comp.yearNo).not.toBeNull;
+    comp.monthNo = '';
     expect(comp.monthNo).toBeNull;
     comp.selectedDate.setFullYear(comp.yearNo);
-
+    comp.yearNo = '';
     expect(comp.yearNo).toBeNull;
+    comp.monthNo = 5;
     expect(comp.monthNo).not.toBeNull;
     comp.selectedDate.setMonth(comp.monthNo);
 
@@ -1024,6 +1026,92 @@ describe('amexio-date-time-picker', () => {
     comp.tempFlag = true;
     expect(comp.tempFlag).toEqual(true);
     comp['cdf'].detectChanges();
+
+  });
+
+  //validateDays
+  it('validateDays()', () => {
+    let days = new Date();
+    comp.minDate = '';
+    comp.maxDate = '';
+    comp['validateDays'](days);
+    
+    expect(comp.maxDate.length).toBeLessThanOrEqual(0);
+    expect(comp.minDate.length).toBeLessThanOrEqual(0);
+
+    comp.maxDate = '27-Mar-2016';
+    comp.minDate = ''
+    expect(comp.maxDate.length).toBeGreaterThan(0);
+    expect(comp.minDate.length).toBeLessThanOrEqual(0);
+
+    comp.minDate = '27-Mar-2016';
+    comp.maxDate = '27-Mar-2019'
+
+    const max = new Date(comp.maxDate);
+    const min = new Date(comp.minDate);
+    comp['validateMaxDate'](days, max);
+
+    expect(comp.maxDate.length).toBeGreaterThan(0);
+    expect(comp.minDate.length).toBeGreaterThan(0);
+    comp['validateMaxDate'](days, max);
+
+    comp.maxDate = ''
+    expect(comp.maxDate.length).toBeLessThanOrEqual(0);
+    expect(comp.minDate.length).toBeGreaterThan(0)
+    comp.maxDate = '27-Mar-2016';
+    comp.minDate = '24-Aug-2012';
+    expect(comp.maxDate.length).toBeGreaterThan(0);
+    expect(comp.minDate.length).toBeGreaterThan(0)
+
+   min.setDate(27);
+    days.setDate(20);
+    expect(days.getDate()).toBeLessThan(min.getDate());
+    days.setMonth(4);
+    min.setMonth(4);
+    expect(days.getMonth()).toBe(min.getMonth());
+    days.setFullYear(2010);
+    min.setFullYear(2010);
+    expect(days.getFullYear()).toEqual(min.getFullYear())
+
+    days.setMonth(3);
+    min.setMonth(8);
+    expect(days.getMonth()).toBeLessThan(min.getMonth());
+    expect(days.getFullYear()).toEqual(min.getFullYear())
+    comp.diabledDate = [
+          {
+            "from": "13-Jul-2018",
+            "to": "15-Jul-2018"
+          },
+          {
+            "from": "20-Jul-2018",
+            "to": "23-Jul-2018"
+          },
+          {
+            "from": "15-Jun-2018",
+            "to": "19-Jun-2018"
+          },
+          {
+            "from": "27-Jun-2018",
+            "to": "29-Jun-2018"
+          },
+          {
+            "from": "23-Aug-2018",
+            "to": "28-Aug-2018"
+          },
+          {
+            "from": "17-Aug-2018",
+            "to": "19-Aug-2018"
+          },
+          {
+            "from": "19-Sep-2018",
+            "to": "21-Sep-2018"
+          },
+          {
+            "from": "1-Nov-2018",
+            "to": "30-Nov-2018"
+          }
+        ];   
+    comp['disableddays'](comp.diabledDate);
 
   });
 
