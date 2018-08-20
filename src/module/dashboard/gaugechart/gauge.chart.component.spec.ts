@@ -32,6 +32,25 @@ describe('amexio-gauge-chart-dataPoint', () => {
         expect(comp.showChart).toBe(true);
 
     });
+    it('show chart', () => {
+
+        comp.showChart = false;
+        //comp.title = '';
+        expect(false).toBe(comp.showChart);
+        let newdata = [{ 'name': 'linechart' }];
+        comp.data = newdata;
+    });
+    it('onResize()', () => {
+        comp.onResize(ComponentFixture);
+        comp.drawChart();
+    });
+    it('ngOnInit()', () => {
+        comp.ngOnInit();
+        expect(false).toBe(comp.hasLoaded);
+    comp.drawChart();
+    });
+
+
 });
 
 
