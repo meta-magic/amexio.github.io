@@ -8,6 +8,7 @@ import { ChartLoaderService } from './../chart.loader.service';
 import { ChartTitleComponent } from '../charttitle/chart.title.component';
 import { ChartLegendComponent } from '../chartlegend/chart.legend.component';
 import { ChartAreaComponent } from '../chartarea/chart.area.component';
+import { DebugElement } from '@angular/core';
 declare var google: any;
 describe('AREA CHART', () => {
     //let ChartTitleComponent=new ChartTitleComponent()
@@ -26,12 +27,14 @@ describe('AREA CHART', () => {
 
     let chartAreaArray2: ChartAreaComponent[];
     let chartLegendArray2: ChartLegendComponent[];
+    let de: DebugElement;
+    let el: HTMLElement;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule],
             declarations: [AreaChartComponent, ChartTitleComponent, ChartLegendComponent, ChartAreaComponent],
-            providers: [ChartLoaderService]
+            providers: [ChartLoaderService],
         }).compileComponents();
         // TestBed.overrideComponent(
         //     ChartAreaComponent,{
@@ -47,6 +50,8 @@ describe('AREA CHART', () => {
         charttitlecomp = charttitlefixture.componentInstance;
         chartlegendcomp = chartlegendfixture.componentInstance;
         chartareacomp = chartareafixture.componentInstance;
+       // areachartcomp= linefixture.de.componentInstance;
+        
 
         areachartcomp.chartTitleComponent = charttitlecomp;
         areachartcomp.chartLengendComponent = chartlegendcomp;
@@ -175,10 +180,10 @@ describe('AREA CHART', () => {
                 chartArea: areachartcomp.chartAreaComponent ? areachartcomp.createChartArea() : null,
 
             };
-             areachartcomp['areaData']; 
+            expect(areachartcomp['areaData']).toBe(true) ; 
                 areachartcomp['chart'] = new google.visualization.AreaChart(areachartcomp.areachart.nativeElement);
                 areachartcomp.hasLoaded = true;
-                areachartcomp['chart'].draw(this.areaData, this.options);
+                areachartcomp['chart'].draw( areachartcomp['areaData'],  areachartcomp['options']);
                 google.visualization.events.addListener(areachartcomp['chart'], 'click', areachartcomp.click);
 
             
