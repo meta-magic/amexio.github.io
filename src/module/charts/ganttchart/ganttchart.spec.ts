@@ -51,18 +51,18 @@ describe('GANTT CHART', () => {
     };
 
   });
-  // let array = [[
-  //   [{ "datatype": 'string', "label": 'Task ID' }, { "datatype": 'string', "label": 'Task Name' }, { "datatype": 'string', "label": 'Resource' }, { "datatype": 'date', "label": 'Start' }, { "datatype": 'date', "label": 'End' }, { "datatype": 'number', "label": 'Duration' }, { "datatype": 'number', "label": 'Percent Complete' }, { "datatype": 'string', "label": 'Dependencies' }],
-  //   ['toTrain', 'Walk to train stop', 'walk', null, null,(5 * 24 * 60 * 60 * 1000), 100, null],
-  //   ['music', 'Listen to music', 'music', null, null,(70 * 24 * 60 * 60 * 1000), 100, null],
-  //   ['wait', 'Wait for train', 'wait', null, null,(10 * 24 * 60 * 60 * 1000), 100, 'toTrain'],
-  //   ['train', 'Train ride', 'train', null, null, (45 * 24 * 60 * 60 * 1000), 75, 'wait'],
-  //   ['toWork', 'Walk to work', 'walk', null, null,(10 * 24 * 60 * 60 * 1000), 0, 'train'],
-  //   ['work', 'Sit down at desk', null, null, null,(2 * 24 * 60 * 60 * 1000), 0, 'toWork']
-  // ]];
-  // it('createTable()', () => {
-  //   comp.createTable(array);
-  // });
+  let array = [
+    [{ "datatype": 'string', "label": 'Task ID' }, { "datatype": 'string', "label": 'Task Name' }, { "datatype": 'string', "label": 'Resource' }, { "datatype": 'date', "label": 'Start' }, { "datatype": 'date', "label": 'End' }, { "datatype": 'number', "label": 'Duration' }, { "datatype": 'number', "label": 'Percent Complete' }, { "datatype": 'string', "label": 'Dependencies' }],
+    ['toTrain', 'Walk to train stop', 'walk', null, null,(5 * 24 * 60 * 60 * 1000), 100, null],
+    ['music', 'Listen to music', 'music', null, null,(70 * 24 * 60 * 60 * 1000), 100, null],
+    ['wait', 'Wait for train', 'wait', null, null,(10 * 24 * 60 * 60 * 1000), 100, 'toTrain'],
+    ['train', 'Train ride', 'train', null, null, (45 * 24 * 60 * 60 * 1000), 75, 'wait'],
+    ['toWork', 'Walk to work', 'walk', null, null,(10 * 24 * 60 * 60 * 1000), 0, 'train'],
+    ['work', 'Sit down at desk', null, null, null,(2 * 24 * 60 * 60 * 1000), 0, 'toWork']
+  ];
+  it('createTable()', () => {
+    comp.createTable(array);
+  });
 
   it('dont show chart', () => {
     let newdata;
