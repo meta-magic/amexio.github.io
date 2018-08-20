@@ -239,7 +239,7 @@ description : inner-grid-dark-track-color set inner grid dark color
   onClick(e: any) {
   }
 
-  private createTable(array: any[]): any {
+ createTable(array: any[]): any {
     const copyOfArray = array.slice();
     const data = new google.visualization.DataTable();
     const labelObject = copyOfArray[0];

@@ -38,19 +38,39 @@ describe('amexio-floating-button' , () => {
   //   expect((<any>comp).absoluteposition).toEqual(true);
   // });
 
-  it('check private variable relative false', () => {
+  it('check disabled variable is false', () => {
     comp.buttonClick('clickEvent');
     //comp.top = 'true';
     comp.disabled = '';
     expect((<any>comp).disabled).not.toEqual(true);
   });
   
-  it('check private variable relative false', () => {
+  it('check verticalposition is null', () => {
     comp.btnPositionCss();
     //comp.top = 'true';
     comp.verticalposition = null
     expect((<any>comp).verticalposition).toEqual(null);
   });
+  it('check horizontalposition is null', () => {
+    comp.btnPositionCss();
+    //comp.top = 'true';
+    comp.horizontalposition = null
+    expect((<any>comp).horizontalposition).toEqual(null);
+  });
   
+
+  it('check private variable absoluteposition boolean', () => {
+    comp.addCSSClasses();
+    comp.absoluteposition = true;
+    comp.relative = true
+    expect((<any>comp).relative).toEqual(true);
+    expect((<any>comp).absoluteposition).toEqual(true);
+  });
+
+  
+
+  
+
+
 
 });

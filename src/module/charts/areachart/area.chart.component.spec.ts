@@ -100,12 +100,13 @@ describe('AREA CHART', () => {
     });
     it('drawchart()', () => {
 
-      areachartcomp.drawChart();
-      areachartcomp.chartTitleComponent;
-      areachartcomp.backgroundcolor;
-      areachartcomp.createTitleTextStyle();
-    areachartcomp.createChartArea();
-    areachartcomp.createChartLegend();
+        areachartcomp.drawChart();
+        areachartcomp.chartTitleComponent;
+        areachartcomp.backgroundcolor;
+        areachartcomp.createTitleTextStyle();
+        areachartcomp.createChartArea();
+        areachartcomp.createChartLegend();
+        //  areachartcomp.ngOnInit();
 
     });
     it('chartTitleTextStyle()', () => {
@@ -164,8 +165,24 @@ describe('AREA CHART', () => {
             areachartcomp.data = newdata;
             areachartcomp.drawChart();
             expect(false).toBe(areachartcomp.hasLoaded);
-            areachartcomp['options'];
+            expect(areachartcomp.showChart).toBe(true);
+            areachartcomp['areaData'] = google.visualization.arrayToDataTable(areachartcomp._data);
+            areachartcomp['options'] = {
+                title: areachartcomp.chartTitleComponent ? areachartcomp.chartTitleComponent.title : null,
+                titleTextStyle: areachartcomp.chartTitleComponent ? areachartcomp.createTitleTextStyle() : null,
+                backgroundcolor: areachartcomp.backgroundcolor,
+                legend: areachartcomp.chartLengendComponent ? areachartcomp.createChartLegend() : 'none',
+                chartArea: areachartcomp.chartAreaComponent ? areachartcomp.createChartArea() : null,
+
+            };
+             areachartcomp['areaData']; 
+                areachartcomp['chart'] = new google.visualization.AreaChart(areachartcomp.areachart.nativeElement);
+                areachartcomp.hasLoaded = true;
+                areachartcomp['chart'].draw(this.areaData, this.options);
+                google.visualization.events.addListener(areachartcomp['chart'], 'click', areachartcomp.click);
+
             
+
             // let draw = google.visualization.arrayToDataTable(areachartcomp.data);
             // areachartcomp.drawChart();
             //  expect(draw).toEqual(areachartcomp['areaData']);
@@ -177,12 +194,12 @@ describe('AREA CHART', () => {
         areachartcomp.onResize(ComponentFixture);
         areachartcomp.drawChart();
     });
-    it(' ngAfterContentInit()',()=>{
-        const chartLegendComp=new ChartLegendComponent;
-        
+    it(' ngAfterContentInit()', () => {
+        const chartLegendComp = new ChartLegendComponent;
+
 
     })
- 
+
 });
 
 
