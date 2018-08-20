@@ -100,12 +100,13 @@ describe('AREA CHART', () => {
     });
     it('drawchart()', () => {
 
-      areachartcomp.drawChart();
-      areachartcomp.chartTitleComponent;
-      areachartcomp.backgroundcolor;
-      areachartcomp.createTitleTextStyle();
-    areachartcomp.createChartArea();
-    areachartcomp.createChartLegend();
+        areachartcomp.drawChart();
+        areachartcomp.chartTitleComponent;
+        areachartcomp.backgroundcolor;
+        areachartcomp.createTitleTextStyle();
+        areachartcomp.createChartArea();
+        areachartcomp.createChartLegend();
+      //  areachartcomp.ngOnInit();
 
     });
     it('chartTitleTextStyle()', () => {
@@ -164,25 +165,35 @@ describe('AREA CHART', () => {
             areachartcomp.data = newdata;
             areachartcomp.drawChart();
             expect(false).toBe(areachartcomp.hasLoaded);
-            areachartcomp['options'];
-            
+            //areachartcomp['options'];
+            expect(areachartcomp.showChart).toBe(true);
+            areachartcomp['areaData'] = google.visualization.arrayToDataTable(areachartcomp._data);
+                areachartcomp['options'] = {
+                  title: areachartcomp.chartTitleComponent ? areachartcomp.chartTitleComponent.title : null,
+                  titleTextStyle: areachartcomp.chartTitleComponent ? areachartcomp.createTitleTextStyle() : null,
+                  backgroundcolor: areachartcomp.backgroundcolor,
+                  legend: areachartcomp.chartLengendComponent ? areachartcomp.createChartLegend() : 'none',
+                  chartArea: areachartcomp.chartAreaComponent ? areachartcomp.createChartArea() : null,
+          
+                };
+
             // let draw = google.visualization.arrayToDataTable(areachartcomp.data);
             // areachartcomp.drawChart();
             //  expect(draw).toEqual(areachartcomp['areaData']);
             // areachartcomp.chartTitleComponent.title = null;
 
-        }
+            }
     });
     it('onResize()', () => {
         areachartcomp.onResize(ComponentFixture);
         areachartcomp.drawChart();
     });
-    it(' ngAfterContentInit()',()=>{
-        const chartLegendComp=new ChartLegendComponent;
-        
+    it(' ngAfterContentInit()', () => {
+        const chartLegendComp = new ChartLegendComponent;
+
 
     })
- 
+
 });
 
 
