@@ -1039,13 +1039,17 @@ describe('amexio-date-time-picker', () => {
     expect(comp.maxDate.length).toBeLessThanOrEqual(0);
     expect(comp.minDate.length).toBeLessThanOrEqual(0);
 
+
     comp.maxDate = '27-Mar-2016';
     comp.minDate = ''
+    console.log("comp.maxDate.length---------> ",comp.maxDate.length)
+    console.log("comp.minDate.length---------> ",comp.minDate.length)
+
     expect(comp.maxDate.length).toBeGreaterThan(0);
     expect(comp.minDate.length).toBeLessThanOrEqual(0);
 
     comp.minDate = '27-Mar-2016';
-    comp.maxDate = '27-Mar-2019'
+    comp.maxDate = '27-Mar-2019';
 
     const max = new Date(comp.maxDate);
     const min = new Date(comp.minDate);
