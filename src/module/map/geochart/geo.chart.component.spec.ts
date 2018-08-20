@@ -28,8 +28,8 @@ describe('Geo Chart', () => {
     it('show chart', () => {
         geochartcomp.showChart = false;
         expect(geochartcomp.showChart).toBe(false);
-        // let newdata = [{ 'name': 'geochart' }];
-        // geochartcomp.data = newdata;
+         let newdata = [{ 'name': 'geochart' }];
+         geochartcomp.data = newdata;
     });
     // it('set Data()', () => {
     //     geochartcomp.data = true;
