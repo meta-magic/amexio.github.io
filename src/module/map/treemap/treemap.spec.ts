@@ -46,6 +46,17 @@ describe('Tree Map', () => {
         mapstylecomp.italic = true;
         mapstylecomp.color='';
         const mapstyle=treemapcomp.mapTitleTextStyle();
+    });
+    it('initializeOptions() method',()=>{
+        treemapcomp['option'];
+    treemapcomp.maxcolor='';
+    treemapcomp.midcolor='';
+    treemapcomp.mincolor='';
+    treemapcomp.showscale=false;
+    treemapcomp.maxpostdepth=1;
+    treemapcomp.mapTitleTextStyle();
+    mapstylecomp.title='';
+    
     })
 
     it('ngOnInit()', () => {
