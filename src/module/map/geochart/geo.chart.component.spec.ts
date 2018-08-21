@@ -73,6 +73,7 @@ describe('Geo Chart', () => {
         geochartcomp.regioncode = '';
         geochartcomp.backgroundcolor = '';
         geochartcomp.unusedregioncolor = '';
+        geochartcomp.showChartExist();
         
 
     });
