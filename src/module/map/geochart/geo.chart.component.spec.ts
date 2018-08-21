@@ -6,16 +6,23 @@ import { MapPropertiesComponent } from '../mapproperties/map.properties';
 declare var google: any;
 describe('Geo Chart', () => {
     let geochartcomp: GeoChartComponent;
+    let chartAreaComp: MapPropertiesComponent;
     let linefixture: ComponentFixture<GeoChartComponent>;
+    let areafixture: ComponentFixture<MapPropertiesComponent>;
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule],
-            declarations: [GeoChartComponent],
+            declarations: [GeoChartComponent, MapPropertiesComponent],
             providers: [MapLoaderService]
         }).compileComponents();
         linefixture = TestBed.createComponent(GeoChartComponent);
 
+        areafixture = TestBed.createComponent(MapPropertiesComponent);
+
         geochartcomp = linefixture.componentInstance;
+
+        chartAreaComp = areafixture.componentInstance;
+        geochartcomp.chartAreaComponent = chartAreaComp;
 
     });
     it('check test case', () => {
@@ -28,25 +35,10 @@ describe('Geo Chart', () => {
     it('show chart', () => {
         geochartcomp.showChart = false;
         expect(geochartcomp.showChart).toBe(false);
-         let newdata = [{ 'name': 'geochart' }];
-         geochartcomp.data = newdata;
+        let newdata = [{ 'name': 'geochart' }];
+        geochartcomp.data = newdata;
     });
-    // it('set Data()', () => {
-    //     geochartcomp.data = true;
-    //     expect(geochartcomp.data).toBe(true);
-    //     console.log('geochartcomp.data = ',geochartcomp.data,'geochartcomp.showChart =',geochartcomp.showChart )
-    //     expect(geochartcomp.data).toEqual(geochartcomp._data);
-    //     geochartcomp.showChart = true;
-    //     expect(geochartcomp.data).toEqual(geochartcomp.showChart);
-    //   //  expect(geochartcomp.showChart).toBe(true);
-    //     geochartcomp.data = false;
-    //    //  expect(geochartcomp.data).toEqual(false);
-    //     geochartcomp.showChart = false;
 
-    //   // expect(geochartcomp.showChart).toEqual(false);
-
-    //     expect(geochartcomp.data).toEqual(geochartcomp.showChart);
-    // })
     it('ngOnInit()', () => {
         geochartcomp.ngOnInit();
         geochartcomp.hasLoaded = false;
@@ -54,9 +46,45 @@ describe('Geo Chart', () => {
         // candlestickchartcomp.drawChart();
     });
 
-    it('show chart exist()', () => {
+    // it('show chart exist()', () => {
+    //     let countryname = false;
+    //     let religioncode = '';
+    //     let backgroundcolor = '';
+    //     let unusedregioncolor = '';
+    //     this.options = {
+    //         displayMode: geochartcomp.countryname ? 'text' : null,
+    //         region: geochartcomp.regioncode ? geochartcomp.regioncode : null,
+    //         backgroundcolor: geochartcomp.backgroundcolor ? geochartcomp.backgroundcolor : null,
+    //         unusedregioncolor: geochartcomp.unusedregioncolor ? geochartcomp.unusedregioncolor : null,
+    //         chartArea: geochartcomp.chartAreaComponent ? {
+    //             backgroundcolor: this.chartAreaComponent.chartbackgroundcolor ? this.chartAreaComponent.chartbackgroundcolor : null,
+    //             left: this.chartAreaComponent.leftposition ? this.chartAreaComponent.leftposition : null,
+    //             top: this.chartAreaComponent.topposition ? this.chartAreaComponent.topposition : null,
+    //             height: this.chartAreaComponent.chartheight ? this.chartAreaComponent.chartheight : null,
+    //             width: this.chartAreaComponent.chartwidth ? this.chartAreaComponent.chartwidth : null,
+
+    //         } : null,
+
+    //     };
+    // });
+    it('private variavle-option()', () => {
+        geochartcomp['options'];
+        geochartcomp.countryname = false;
+        geochartcomp.regioncode = '';
+        geochartcomp.backgroundcolor = '';
+        geochartcomp.unusedregioncolor = '';
+        
 
     });
+    it('chartAreaComponent', () => {
+        chartAreaComp.chartbackgroundcolor = '';
+        chartAreaComp.chartheight = 5;
+        chartAreaComp.chartwidth = 6;
+        chartAreaComp.leftposition = 5;
+        chartAreaComp.topposition = 5;
+        
+    })
+
 
     it('drawChart()', () => {
         const script = document.createElement('script');
