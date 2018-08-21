@@ -56,8 +56,9 @@ describe('Tree Map', () => {
     treemapcomp.maxpostdepth=1;
     treemapcomp.mapTitleTextStyle();
     mapstylecomp.title='';
+    treemapcomp.initializeOptions();
     
-    })
+    });
 
     it('ngOnInit()', () => {
         treemapcomp.ngOnInit();
@@ -85,10 +86,5 @@ describe('Tree Map', () => {
     });
     it('onResize', () => {
         treemapcomp.onResize(ComponentFixture);
-
-
-    })
-
-
-
+    });
 });
