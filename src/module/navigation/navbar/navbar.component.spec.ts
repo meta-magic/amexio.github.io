@@ -52,23 +52,27 @@ describe('amexio-navbar', () => {
 
     it('check sideNavbar method ', () => {
         comp.sideNavbar();
-       let tablet= comp.matchMediaService.IsTablet();
-       let phon = comp.matchMediaService.IsPhone();
-       phon = false;
-       tablet =false ;
-       expect(comp.matchMediaService.IsPhone()).toBe(phon);
-       expect(comp.matchMediaService.IsTablet()).toBe(tablet);
+        let tablet = comp.matchMediaService.IsTablet();
+        let phon = comp.matchMediaService.IsPhone();
+        phon = false;
+        tablet = false;
+        expect(comp.matchMediaService.IsPhone()).toBe(phon);
+        expect(comp.matchMediaService.IsTablet()).toBe(tablet);
 
-        
+
     });
 
     // it('check ngAfterViewInit method ', () => {
     //     comp.ngAfterViewInit();
-    //     comp.logo =null;
+    //     comp.logo = null;
 
-    //     expect(comp.loadNavItems()).toBe()
+    // });
 
-    //     });
+    // it('check handleNavItems method ', () => {
+    //     let arr = [{}]
+    //     comp.handleNavItems();
+
+    // });
 
 
 
