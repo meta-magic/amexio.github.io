@@ -12,7 +12,7 @@ import { AmexioNavMenuComponent } from './navmenu.component';
 import { AmexioNavTextFieldComponent } from './navtextfield.component';
 import { stringify } from 'querystring';
 import { AmexioLabelComponent } from '../../forms/label/label.component';
-import{ DeviceQueryService} from '../../services/device/device.query.service';
+import { DeviceQueryService } from '../../services/device/device.query.service';
 describe('amexio-navbar', () => {
 
     let comp: AmexioNavBarComponent;
@@ -22,7 +22,7 @@ describe('amexio-navbar', () => {
         TestBed.configureTestingModule({
             imports: [FormsModule],
             declarations: [AmexioNavItemComponent, AmexioLabelComponent, AmexioNavBarComponent, AmexioNavActionComponent, AmexioNavMenuComponent, AmexioNavTextFieldComponent],
-            providers: [IconLoaderService,DeviceQueryService],
+            providers: [IconLoaderService, DeviceQueryService],
         });
         fixture = TestBed.createComponent(AmexioNavBarComponent);
         comp = fixture.componentInstance;
@@ -40,24 +40,36 @@ describe('amexio-navbar', () => {
         expect(comp.sidenav).toBe(false);
     });
 
-    // it('check ngAfterViewInit method ', () => {
-    //     let data: any;
 
-    // comp.resize(data);
-    // expect(comp.handleDeviceSetting())
+    it('check toggleDrawerPanel method ', () => {
+        let data: any;
+        comp.toggleDrawerPanel(data);
+        comp.toggle = true;
+        expect(comp.toggle).toBe(true);
+
+
+    });
+
+    it('check sideNavbar method ', () => {
+        comp.sideNavbar();
+       let tablet= comp.matchMediaService.IsTablet();
+       let phon = comp.matchMediaService.IsPhone();
+       phon = false;
+       tablet =false ;
+       expect(comp.matchMediaService.IsPhone()).toBe(phon);
+       expect(comp.matchMediaService.IsTablet()).toBe(tablet);
 
         
-    // });
+    });
 
     // it('check ngAfterViewInit method ', () => {
     //     comp.ngAfterViewInit();
     //     comp.logo =null;
-    
+
     //     expect(comp.loadNavItems()).toBe()
-            
+
     //     });
-    
+
 
 
 });
-        
