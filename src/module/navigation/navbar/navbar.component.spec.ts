@@ -50,26 +50,32 @@ describe('amexio-navbar', () => {
 
     });
 
-    it('check sideNavbar method ', () => {
-        comp.sideNavbar();
-        let tablet = comp.matchMediaService.IsTablet();
-        let phon = comp.matchMediaService.IsPhone();
-        phon = false;
-        tablet = false;
-        expect(comp.matchMediaService.IsPhone()).toBe(phon);
-        expect(comp.matchMediaService.IsTablet()).toBe(tablet);
+    // it('check sideNavbar method ', () => {
+    //     comp.sideNavbar();
+    //     let tablet = comp.matchMediaService.IsTablet();
+    //     let phon = comp.matchMediaService.IsPhone();
+    //     phon = false;
+    //     tablet = false;
+    //     expect(comp.matchMediaService.IsPhone()).toBe(phon);
+    //     expect(comp.matchMediaService.IsTablet()).toBe(tablet);
 
-
-    });
-
-    // it('check ngAfterViewInit method ', () => {
-    //     comp.ngAfterViewInit();
-    //     comp.logo = null;
 
     // });
 
+    // // it('check ngAfterViewInit method ', () => {
+    // //     comp.ngAfterViewInit();
+    // //     comp.logo = null;
+
+    // // });
+
     // it('check handleNavItems method ', () => {
-    //     let arr = [{}]
+    //     let arr = [{
+    //         'text': 'Amexio Canvas',
+    //         'link': 'google.com'
+    //     }];
+
+    //     comp.navitems = arr;
+
     //     comp.handleNavItems();
 
     // });
