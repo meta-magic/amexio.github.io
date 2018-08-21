@@ -15,7 +15,7 @@ describe('amexio-date-time-picker', () => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
       declarations: [AmexioDateTimePickerComponent, AmexioFormIconComponent, AmexioButtonComponent],
-      providers: [IconLoaderService]
+      providers: [IconLoaderService ]
     });
     fixture = TestBed.createComponent(AmexioDateTimePickerComponent);
     comp = fixture.componentInstance;
@@ -1042,9 +1042,7 @@ describe('amexio-date-time-picker', () => {
 
     comp.maxDate = '27-Mar-2016';
     comp.minDate = ''
-    console.log("comp.maxDate.length---------> ", comp.maxDate.length)
-    console.log("comp.minDate.length---------> ", comp.minDate.length)
-
+  
     expect(comp.maxDate.length).toBeGreaterThan(0);
     expect(comp.minDate.length).toBeLessThanOrEqual(0);
 
@@ -1178,6 +1176,13 @@ it('onminus()', () => {
   event.stopPropagation();
 
 });
+
+//getlistposition()
+// it('getListPosition()', () => {
+//   let elem: any;
+//   comp.getListPosition(elem);
+  
+// });
 
 });
 
