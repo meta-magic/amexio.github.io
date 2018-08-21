@@ -29,8 +29,6 @@ describe('searchadvance ', () => {
       comp. closeSearchForm();
       comp.advanceSearchFlag = false;
       expect(comp.advanceSearchFlag).toEqual(false);
-
-
     });
 
   });
