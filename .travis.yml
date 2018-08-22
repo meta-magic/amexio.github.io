@@ -13,7 +13,7 @@ addons:
     token:
       secure: c5f99f1430c7c379e0e4dec089a81b244d57c598 # encrypted value of your token   4
   branches:
-      -v5.1
+      - v5.1
      
  
 language: node_js
