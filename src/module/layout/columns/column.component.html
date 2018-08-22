@@ -1,1 +1,4 @@
-<div ><ng-content></ng-content></div>
+
+<div [ngStyle]="{'height':fit ? '100%':''}">
+    <ng-content></ng-content>
+</div>

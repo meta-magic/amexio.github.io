@@ -3326,7 +3326,8 @@ header .billboard .content-button {
 .datatable .datatable-col {
   display: table-cell;
   padding: .625em;
-  text-align: left; }
+  text-align: left;
+  overflow-wrap: break-word; }
 
 .footer {
   margin: .1em 0 .35em;
@@ -4411,7 +4412,8 @@ header .billboard .content-button {
   display: flex;
   flex-direction: column;
   border: 1px solid #ced4da;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14); }
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
+  height: 100%; }
 
 .card-container > * {
   padding: 10px;
@@ -5387,7 +5389,7 @@ verticalalign-tableft {
   grid-template-areas: 'north north north north north north' 'east center center center center west' 'south south south south south south';
   grid-gap: 2px;
   padding: 2px;
-  grid-template-columns: 1fr 1fr; }
+  grid-template-columns: auto; }
 
 .borderlayout-container-N-E-C-W-S aside {
   border: 0px solid none; }
@@ -5398,7 +5400,7 @@ verticalalign-tableft {
   grid-template-areas: 'north north north north north north' 'east center center center center center' 'south south south south south south';
   grid-gap: 2px;
   padding: 2px;
-  grid-template-columns: 1fr 1fr; }
+  grid-template-columns: auto; }
 
 .borderlayout-container-N-E-C-S aside {
   border: 0px solid none; }
@@ -5409,7 +5411,7 @@ verticalalign-tableft {
   grid-template-areas: 'north north north north north north' 'center center center center center west' 'south south south south south south';
   grid-gap: 2px;
   padding: 2px;
-  grid-template-columns: 1fr 1fr; }
+  grid-template-columns: auto; }
 
 .borderlayout-container-N-C-W-S aside {
   border: 0px solid none; }
@@ -5420,7 +5422,7 @@ verticalalign-tableft {
   grid-template-areas: 'east center center center center west' 'south south south south south south';
   grid-gap: 2px;
   padding: 2px;
-  grid-template-columns: 1fr 1fr; }
+  grid-template-columns: auto; }
 
 .borderlayout-container-E-C-W-S aside {
   border: 0px solid none; }
@@ -5431,7 +5433,7 @@ verticalalign-tableft {
   grid-template-areas: 'north north north north north north' 'center center center center center center' 'south south south south south south';
   grid-gap: 2px;
   padding: 2px;
-  grid-template-columns: 1fr 1fr; }
+  grid-template-columns: auto; }
 
 .borderlayout-container-N-C-S aside {
   border: 0px solid none; }
@@ -5442,7 +5444,7 @@ verticalalign-tableft {
   grid-template-areas: 'east center center center center center' 'south south south south south south';
   grid-gap: 2px;
   padding: 2px;
-  grid-template-columns: 1fr 1fr; }
+  grid-template-columns: auto; }
 
 .borderlayout-container-E-C-S aside {
   border: 0px solid none; }
@@ -5453,7 +5455,7 @@ verticalalign-tableft {
   grid-template-areas: 'center center center center center west' 'south south south south south south';
   grid-gap: 2px;
   padding: 2px;
-  grid-template-columns: 1fr 1fr; }
+  grid-template-columns: auto; }
 
 .borderlayout-container-C-W-S aside {
   border: 0px solid none; }
@@ -5464,7 +5466,7 @@ verticalalign-tableft {
   grid-template-areas: 'north north north north north north' 'center center center center center center';
   grid-gap: 2px;
   padding: 2px;
-  grid-template-columns: 1fr 1fr; }
+  grid-template-columns: auto; }
 
 .borderlayout-container-N-C aside {
   border: 0px solid none; }
@@ -5475,7 +5477,7 @@ verticalalign-tableft {
   grid-template-areas: 'center center center center center center' 'south south south south south south';
   grid-gap: 2px;
   padding: 2px;
-  grid-template-columns: 1fr 1fr; }
+  grid-template-columns: auto; }
 
 .borderlayout-container-C-S aside {
   border: 0px solid none; }

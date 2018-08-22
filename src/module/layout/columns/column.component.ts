@@ -2,14 +2,14 @@
  * Created by pratik on 8/1/18.
  */
 
- /*
- Component Name : Amexio Column
- Component Selector : <amexio-column>
- Component Description : Amexio column system allows up to 12 columns across the page.
+/*
+Component Name : Amexio Column
+Component Selector : <amexio-column>
+Component Description : Amexio column system allows up to 12 columns across the page.
 */
 
-import {Component, Input, OnInit} from '@angular/core';
-import {DomSanitizer} from '@angular/platform-browser';
+import { Component, Input, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'amexio-column', templateUrl: 'column.component.html', host: {
@@ -25,23 +25,33 @@ export class AmexioColumnComponent implements OnInit {
   constructor() {
 
   }
-/*
-Properties
-name : size
-datatype : any
-version : 4.0 onwards
-default :
-description : Column size*/
+  /*
+  Properties
+  name : size
+  datatype : any
+  version : 4.0 onwards
+  default :
+  description : Column size*/
   @Input()
   set size(value: any) {
     this.size_ = value;
     this.colclass = 'flex-col flex-col-' + value;
   }
 
+  /*
+Properties
+name : FitHeight
+datatype : any
+version : 5.2 onwards
+default :boolen
+description : Column size*/
+  @Input('fit') fit: false;
+
   get size() {
     return this.size_;
   }
 
+ 
   ngOnInit() {
 
   }
