@@ -456,9 +456,6 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
   @Input('data')
   set data(value: any[]) {
     this._data = value;
- /*   if (this.componentLoaded) {
-      this.updateComponent();
-    }*/
   }
   get data(): any[] {
     return this._data;
@@ -596,9 +593,6 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
   @Input('column-defintion')
   set columndefintion(value: any) {
     this._columndefintion = value;
-   /* if (this.componentLoaded) {
-      this.updateComponent();
-    }*/
   }
   get columndefintion(): any {
     return this._columndefintion;
@@ -769,26 +763,12 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoChec
     this.componentLoaded = true;
   }
 
-  updateComponent() {
-  /*  if (this.previousData != null && JSON.stringify(this.previousData) !== JSON.stringify(this.data)) {
+  ngDoCheck() {
+    if (this.previousData != null && JSON.stringify(this.previousData) !== JSON.stringify(this.data)) {
       this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setChangeData(this.data);
     }
-    if (this.columnPreviewData != null && this.columndefintion != null) {
-      if (JSON.stringify(this.columnPreviewData) !== JSON.stringify(this.columndefintion)) {
-        this.columnPreviewData = JSON.parse(JSON.stringify(this.columndefintion));
-        this.columns = this.columndefintion;
-      }
-    }*/
-
-  }
-
-  ngDoCheck() {
-    if (this.previousData != null && JSON.stringify(this.previousData) != JSON.stringify(this.data)){
-      this.previousData = JSON.parse(JSON.stringify(this.data));
-      this.setData(this.data);
-    }
-    if (this.columnPreviewData != null && JSON.stringify(this.columnPreviewData) != JSON.stringify(this.columndefintion)) {
+    if (this.columnPreviewData != null && JSON.stringify(this.columnPreviewData) !== JSON.stringify(this.columndefintion)) {
       this.columnPreviewData = JSON.parse(JSON.stringify(this.columndefintion));
       this.columns = this.columndefintion;
     }
