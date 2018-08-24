@@ -10,6 +10,12 @@
   color: $cardHeaderColor;
 }
 
+.card-header .toolbar{
+  background-color: unset;
+  box-shadow : unset;
+  padding: 0px;
+}
+
 .cardbody::-webkit-scrollbar-track
 {
   background-color:$cardBodyScrollBGColor;

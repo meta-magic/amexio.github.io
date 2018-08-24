@@ -6,8 +6,8 @@ Component Description : Amexio Form provides an easy way to organize big form co
 */
 import {
   AfterContentInit, AfterViewInit, Component, ContentChildren,
-  ElementRef, EventEmitter, Input, OnInit, Output, QueryList, ViewChild, ViewChildren,
-} from '@angular/core';
+  ElementRef, EventEmitter, Input, OnInit, Output, QueryList, ViewChild,
+   ViewChildren} from '@angular/core';
 
 import { AmexioButtonComponent } from './../../forms/buttons/button.component';
 import { AmexioCheckBoxGroupComponent } from './../../forms/checkbox-group/checkbox.group.component';
@@ -15,12 +15,15 @@ import { AmexioCheckBoxComponent } from './../../forms/checkbox/checkbox.compone
 import { AmexioDateTimePickerComponent } from './../../forms/datetimepicker/datetimepicker.component';
 import { AmexioDropDownComponent } from './../../forms/dropdown/dropdown.component';
 import { AmexioEmailInputComponent } from './../../forms/emailinput/emailinput.component';
+import { AmexioLabelComponent } from './../../forms/label/label.component';
 import { AmexioNumberInputComponent } from './../../forms/numberinput/numberinput.component';
 import { AmexioPasswordComponent } from './../../forms/passwordinput/passwordinput.component';
 import { AmexioRadioGroupComponent } from './../../forms/radio/radiogroup.component';
 import { AmexioTagsInputComponent } from './../../forms/tagsinput/tags.input.component';
 import { AmexioTextAreaComponent } from './../../forms/textarea/textarea.component';
 import { AmexioTextInputComponent } from './../../forms/textinput/textinput.component';
+import { ToolbarComponent} from './../../forms/toolbar/toolbar.component';
+import { ToolBarActionComponent } from './../../forms/toolbar/toolbaraction.component';
 import { AmexioTypeAheadComponent } from './../../forms/typeahead/typeahead.component';
 
 import { AmexioToggleComponent } from '../../forms/toggle/toggle.component';
@@ -199,6 +202,10 @@ description : Event fired if showError msg info button is clicked
 
   footerComponentList: AmexioFormActionComponent[];
 
+  @ContentChildren(AmexioLabelComponent, { descendants: true }) queryLabel: QueryList<AmexioLabelComponent>;
+
+ label: AmexioLabelComponent[];
+
   constructor() {
     this.checkForm = false;
     this.isFormValid = false;
@@ -269,6 +276,7 @@ description : Event fired if showError msg info button is clicked
     this.tags = this.queryTags.toArray();
     this.datefiled = this.queryDate.toArray();
     this.toggle = this.queryToggle.toArray();
+    this.label = this.queryLabel.toArray();
 
     this.iterate(this.textinput, 'Text Input');
     this.iterate(this.textarea, 'Text Area');
@@ -283,6 +291,7 @@ description : Event fired if showError msg info button is clicked
     this.iterate(this.dropdown, 'Dropdown');
     this.iterate(this.datefiled, 'Date field');
     this.iterate(this.toggle, 'Toggle');
+    this.iterate(this.label, 'Label');
     setTimeout(() => {
       this.btns.toArray().forEach((c) => {
         if ((c.formbind === this.fname) && !c.disabled) {

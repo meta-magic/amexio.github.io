@@ -17,6 +17,12 @@
   font-size: $modalHeaderFontSize;
   color: $modalHeaderColor;
 }
+.modal-window-header .toolbar {
+  background: #290500;
+  font-size: 20px;
+  color: #ffedeb;
+}
+
 .modal-window-middle{
   font-size: $modalWindowFontSize;
 }

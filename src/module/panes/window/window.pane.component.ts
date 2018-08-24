@@ -8,7 +8,9 @@
  Component Description:  Window Pane component is a customizable Modal Pane in which user can enter custom content
 
  */
-import { Component, EventEmitter, HostListener, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, ContentChildren, ElementRef, EventEmitter, HostListener,
+Input, OnChanges, OnInit, Output, QueryList, SimpleChanges, ViewChild } from '@angular/core';
+import {AmexioWindowHeaderComponent} from './window.pane.header.component';
 export enum KEY_CODE_window {
   esc = 27,
 }
@@ -25,6 +27,7 @@ export enum KEY_CODE_window {
               <div class="tablerow">
                 <div class="tablecol">
                   <ng-content select="amexio-header"></ng-content>
+                  <ng-content select="amexio-window-header"></ng-content>
                 </div>
                 <div class="tablecol float-right">
                   <ng-container *ngIf="(!isFullWindow && maximize)">
@@ -142,6 +145,8 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit {
 
   @Input() show: boolean;
 
+  @ViewChild('windowHeader', { read: ElementRef }) public windowHeader: ElementRef;
+
   @Output() showChange: EventEmitter<any> = new EventEmitter<any>();
 
   /*
@@ -204,6 +209,10 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit {
    description : close the window
    */
   private window = ' window-';
+
+  @ContentChildren(AmexioWindowHeaderComponent) amexioHeader: QueryList<AmexioWindowHeaderComponent >;
+
+  headerComponentList: AmexioWindowHeaderComponent[];
 
   @Output() close: EventEmitter<any> = new EventEmitter<any>();
   constructor() {

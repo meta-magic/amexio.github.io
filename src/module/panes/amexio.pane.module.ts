@@ -21,6 +21,7 @@ import { AmexioFormHeaderComponent } from './form/form.header.component';
 import {AmexioHeaderComponent} from './header/pane.action.header';
 import {AmexioIconPaneComponent} from './icon/icon.component';
 import {AmexioPanelComponent} from './panel/panel.component';
+import {AmexioPanelHeaderComponent} from './panel/panel.header.component';
 import {StepBlockComponent} from './steps/step-block';
 import {AmexioStepsComponent} from './steps/steps.component';
 import {AmexioRightVerticalTabComponent} from './tab/right-vertical-tab/right.vertical.component';
@@ -29,6 +30,7 @@ import {AmexioTabComponent} from './tab/tab.component';
 import {AmexioTabPillComponent} from './tab/tab.pill.component';
 import {AmexioVerticalTabComponent} from './tab/vertical-tab/vertical.tab.component';
 import {AmexioWindowPaneComponent} from './window/window.pane.component';
+import {AmexioWindowHeaderComponent} from './window/window.pane.header.component';
 
 import {CommonDataService} from '../services/data/common.data.service';
 import {DeviceQueryService} from '../services/device/device.query.service';
@@ -48,6 +50,7 @@ export * from './form/form.body.component';
 export * from './form/form.component';
 export * from './form/form.header.component';
 export * from './header/pane.action.header';
+export * from './panel/panel.header.component';
 export * from './steps/steps.component';
 export * from './steps/step-block';
 export * from './tab/right-vertical-tab/right.vertical.component';
@@ -56,6 +59,7 @@ export * from './tab/tab.component';
 export * from './tab/tab.pill.component';
 export * from './tab/vertical-tab/vertical.tab.component';
 export * from './window/window.pane.component';
+export * from './window/window.pane.header.component';
 
 export * from '../services/icon/icon.service';
 
@@ -65,6 +69,7 @@ const PANE_COMPONENTS = [
   AmexioBodyComponent,
   AmexioFieldSetComponent,
   AmexioWindowPaneComponent,
+  AmexioWindowHeaderComponent,
   AmexioStepsComponent,
   AmexioTabPillComponent,
   AmexioTabComponent,
@@ -75,6 +80,7 @@ const PANE_COMPONENTS = [
   AmexioTemplateWrapperDirective,
   StepBlockComponent,
   AmexioPanelComponent,
+  AmexioPanelHeaderComponent,
   AmexioIconPaneComponent,
   AmexiodialoguePaneComponent,
   AmexioFormComponent,

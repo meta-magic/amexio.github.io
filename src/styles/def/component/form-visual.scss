@@ -15,6 +15,14 @@
   color: $formHeaderColor;
 }
 
+
+.form-header .toolbar{
+  background-color: unset;
+  box-shadow : unset;
+  padding: 0px;
+  overflow: none;
+}
+
 .formbody::-webkit-scrollbar-track
 {
   background-color:$formBodyScrollBGColor;
