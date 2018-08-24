@@ -5,6 +5,7 @@
   flex-direction: column;
   border: $cardBorderSize solid $cardBorderColor;
   box-shadow: 0 2px 2px 0$cardBorderShadow;
+  height: 100%;
   //z-index: 1;
 }
 

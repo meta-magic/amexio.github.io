@@ -16,8 +16,9 @@ export enum KEY_CODE_window {
 @Component({
   selector: 'amexio-window',
   template: `
-    <div class="root-window model-fade" [ngClass]="{'modal-window-max': isFullWindow,'modal-window-min': !isFullWindow}"
-         [ngStyle]="{'display' : show ? 'block' : 'none'}" >
+    <div #id class="root-window model-fade" [ngClass]="{'modal-window-max': isFullWindow,'modal-window-min': !isFullWindow}"
+         [ngStyle]="{'display' : show ? 'block' : 'none'}"
+         (contextmenu)="loadContextMenu({event:$event,ref:id})">
       <div class="modal-window-lg" [ngStyle]="{'height': bodyHeight ? '100%':'auto'}">
         <div class="modal-window-content" [ngClass]="setClass()" [style.height]="bodyHeight+'%'">
           <header [ngClass]="{ 'window-material-design-header':materialDesign,'modal-window-header':!materialDesign}" *ngIf="header"   >
@@ -53,9 +54,19 @@ export enum KEY_CODE_window {
             </div>
           </footer>
         </div>
-
       </div>
     </div>
+    <span [ngStyle]="contextStyle" style=" z-index: 5; position: absolute;">
+    <ul *ngIf="flag" class="context-menu-list" [ngClass]="{'dropdown-up' : posixUp}">
+      <li (click)="onContextNodeClick(itemConfig)" class="context-menu-list-items"
+      [ngStyle]="{'cursor': itemConfig.disabled ? 'not-allowed':'pointer'}"
+        [ngClass]="{'context-menu-separator':itemConfig.seperator}" *ngFor="let itemConfig of contextmenu">
+        <em [ngStyle]="{'padding-left': itemConfig.icon ? '5px':'19px'}" [ngClass]="itemConfig.icon"></em>
+        <span style="white-space: nowrap;display: inline ; padding-left:5px">{{itemConfig.text}}
+        </span>
+      </li>
+    </ul>
+  </span>
   `,
 })
 export class AmexioWindowPaneComponent implements OnChanges, OnInit {
@@ -138,7 +149,7 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit {
    */
   @Input('show-window') showWindow: boolean;
 
-  @Input ('material-design') materialDesign: boolean;
+  @Input('material-design') materialDesign: boolean;
 
   @Input() show: boolean;
 
@@ -205,12 +216,30 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit {
    */
   private window = ' window-';
 
+  /*
+Properties
+name :  context-menu
+datatype : string
+version : 5.0.1 onwards
+default :
+description : Context Menu provides the list of menus on right click.
+*/
+// context menu input output
+  @Input('context-menu') contextmenu: any[];
+
+  @Input() parentRef: any;
+
+  @Output() nodeRightClick: any = new EventEmitter<any>();
+
+  @Output() rightClick: any = new EventEmitter<any>();
+
+// window code
   @Output() close: EventEmitter<any> = new EventEmitter<any>();
   constructor() {
     this.header = true;
     this.closable = true;
     this.closeonescape = true;
-    if ( this.verticalposition == null) {
+    if (this.verticalposition == null) {
       this.verticalposition = 'center';
     }
     if (this.horizontalposition == null) {
@@ -218,8 +247,21 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit {
     }
     this.positionclass = this.window + this.verticalposition + this.window + this.horizontalposition;
   }
+
+  flag: boolean;
+
+  posixUp: boolean;
+
+  rightClickNodeData: any;
+
+  contextStyle: any;
+
+  mouseLocation: { left: number; top: number } = { left: 0, top: 0 };
+
   absoluteposition = false;
+
   positionclass: string;
+
   // THIS METHOD IS USED FOR SETTING CSS CLASSSES
 
   sizeChange() {
@@ -280,7 +322,6 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit {
     if (changes['showWindow']) {
       this.show = changes.showWindow.currentValue;
     }
-
   }
   setClass(): any {
     let styleClass: string;
@@ -290,6 +331,65 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit {
       styleClass = this.positionclass;
     }
     return styleClass;
+  }
+// context menu code below
+  getContextMenu() {
+    if (this.contextmenu && this.contextmenu.length > 0) {
+      this.flag = true;
+    }
+  }
+
+  getListPosition(elementRef: any): boolean {
+    const height = 240;
+    if ((window.screen.height - elementRef.getBoundingClientRect().bottom) < height) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  loadContextMenu(rightClickData: any) {
+    console.log('check data', rightClickData);
+    this.mouseLocation.left = rightClickData.event.clientX;
+    this.mouseLocation.top = rightClickData.event.clientY;
+    this.getContextMenu();
+    this.posixUp = this.getListPosition(rightClickData.ref);
+    rightClickData.event.preventDefault();
+    rightClickData.event.stopPropagation();
+    this.rightClickNodeData = rightClickData.data;
+    this.contextStyle = this.getContextMenuStyle();
+    this.nodeRightClick.emit(rightClickData);
+  }
+
+  onContextNodeClick(itemConfig: any) {
+    if (!itemConfig.disabled) {
+      const obj = {
+        menuData: itemConfig,
+        NodeData: this.rightClickNodeData,
+      };
+      this.rightClick.emit(obj);
+    }
+  }
+
+  @HostListener('document:click')
+  onWindowClick() {
+    this.flag = false;
+  }
+
+  @HostListener('document:scroll')
+  onscroll() {
+    this.flag = false;
+  }
+
+  getContextMenuStyle() {
+    return {
+      'cursor': 'default',
+      'position': 'fixed',
+      'display': this.flag ? 'block' : 'none',
+      'left': this.mouseLocation.left + 'px',
+      'top': this.mouseLocation.top + 'px',
+      'box-shadow': '1px 1px 2px #000000',
+      'width': '15%',
+    };
   }
 
 }

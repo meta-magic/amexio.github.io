@@ -4561,7 +4561,8 @@ header .billboard .content-button {
   display: flex;
   flex-direction: column;
   border: 2px solid #603A63;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14); }
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
+  height: 100%; }
 
 .card-container > * {
   padding: 10px;
