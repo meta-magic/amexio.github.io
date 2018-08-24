@@ -7,8 +7,8 @@
  header and column data, displaying summation of numeric column.
  */
 import {
-  AfterContentInit, ChangeDetectorRef, Component, ContentChildren, ElementRef, EventEmitter, HostListener, Input, OnInit, Output,
-  QueryList,
+  AfterContentInit, ChangeDetectorRef, Component, ContentChildren, DoCheck, ElementRef, EventEmitter, HostListener,
+  Input, OnInit, Output, QueryList,
 } from '@angular/core';
 
 import { AmexioGridColumnComponent } from './data.grid.column';
@@ -383,7 +383,7 @@ import { CommonDataService } from '../../services/data/common.data.service';
   `,
 })
 
-export class AmexioDatagridComponent implements OnInit, AfterContentInit {
+export class AmexioDatagridComponent implements OnInit, AfterContentInit, DoCheck {
   private componentLoaded: boolean;
   /*
    Properties
@@ -456,9 +456,9 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit {
   @Input('data')
   set data(value: any[]) {
     this._data = value;
-    if (this.componentLoaded) {
+ /*   if (this.componentLoaded) {
       this.updateComponent();
-    }
+    }*/
   }
   get data(): any[] {
     return this._data;
@@ -596,9 +596,9 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit {
   @Input('column-defintion')
   set columndefintion(value: any) {
     this._columndefintion = value;
-    if (this.componentLoaded) {
+   /* if (this.componentLoaded) {
       this.updateComponent();
-    }
+    }*/
   }
   get columndefintion(): any {
     return this._columndefintion;
@@ -770,7 +770,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit {
   }
 
   updateComponent() {
-    if (this.previousData != null && JSON.stringify(this.previousData) !== JSON.stringify(this.data)) {
+  /*  if (this.previousData != null && JSON.stringify(this.previousData) !== JSON.stringify(this.data)) {
       this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setChangeData(this.data);
     }
@@ -779,8 +779,19 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit {
         this.columnPreviewData = JSON.parse(JSON.stringify(this.columndefintion));
         this.columns = this.columndefintion;
       }
-    }
+    }*/
 
+  }
+
+  ngDoCheck() {
+    if (this.previousData != null && JSON.stringify(this.previousData) != JSON.stringify(this.data)){
+      this.previousData = JSON.parse(JSON.stringify(this.data));
+      this.setData(this.data);
+    }
+    if (this.columnPreviewData != null && JSON.stringify(this.columnPreviewData) != JSON.stringify(this.columndefintion)) {
+      this.columnPreviewData = JSON.parse(JSON.stringify(this.columndefintion));
+      this.columns = this.columndefintion;
+    }
   }
 
   ngAfterContentInit() {
