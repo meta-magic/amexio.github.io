@@ -24,6 +24,14 @@ export class AmexioColumnComponent implements OnInit {
   constructor() {
 
   }
+   /*
+Properties
+name : FitHeight
+datatype : any
+version : 5.2 onwards
+default :boolen
+description : Column size*/
+@Input('fit') fit: false;
 /*
 Properties
 name : size
