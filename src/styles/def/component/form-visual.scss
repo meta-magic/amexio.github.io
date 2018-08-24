@@ -9,6 +9,13 @@
   color :$formHeaderBGColor;
   font-weight: bold;
 }
+.form-header .toolbar{
+  background-color: unset;
+  box-shadow : unset;
+  padding: 0px;
+  overflow: none;
+}
+
 
 .form-header{
   background: $formHeaderBGColor;
