@@ -4388,6 +4388,11 @@ header .billboard .content-button {
   background-color: #ffffff;
   color: #121212; }
 
+.card-header .toolbar {
+  background-color: unset;
+  box-shadow: unset;
+  padding: 0px; }
+
 .card-header {
   background: #00a86b;
   color: #ebfff8; }
@@ -4456,6 +4461,12 @@ header .billboard .content-button {
 .form-error {
   color: #00a86b;
   font-weight: bold; }
+
+.form-header .toolbar {
+  background-color: unset;
+  box-shadow: unset;
+  padding: 0px;
+  overflow: none; }
 
 .form-header {
   background: #00a86b;
@@ -5011,6 +5022,11 @@ verticalalign-tableft {
   background-color: white;
   font-size: 20px;
   color: black; }
+
+.modal-window-header .toolbar {
+  background: #290500;
+  font-size: 20px;
+  color: #ffedeb; }
 
 .modal-window-header {
   background: #00a86b;

@@ -8,9 +8,10 @@
  Component Description:  Window Pane component is a customizable Modal Pane in which user can enter custom content
 
  */
-import { Component, ContentChildren, ElementRef, EventEmitter, HostListener,
+import {
+  Component, ContentChildren, ElementRef, EventEmitter, HostListener,
   Input, OnChanges, OnInit, Output, QueryList, SimpleChanges, ViewChild } from '@angular/core';
-import {AmexioWindowHeaderComponent} from './window.pane.header.component';
+import { AmexioWindowHeaderComponent } from './window.pane.header.component';
 export enum KEY_CODE_window {
   esc = 27,
 }
@@ -153,7 +154,7 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit {
    */
   @Input('show-window') showWindow: boolean;
 
-  @Input ('material-design') materialDesign: boolean;
+  @Input('material-design') materialDesign: boolean;
 
   @Input() show: boolean;
 
@@ -221,7 +222,7 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit {
    description : close the window
    */
   private window = ' window-';
-   /*
+  /*
 Properties
 name :  context-menu
 datatype : string
@@ -229,16 +230,16 @@ version : 5.0.1 onwards
 default :
 description : Context Menu provides the list of menus on right click.
 */
-// context menu input output
-@Input('context-menu') contextmenu: any[];
+  // context menu input output
+  @Input('context-menu') contextmenu: any[];
 
-@Input() parentRef: any;
+  @Input() parentRef: any;
 
-@Output() nodeRightClick: any = new EventEmitter<any>();
+  @Output() nodeRightClick: any = new EventEmitter<any>();
 
-@Output() rightClick: any = new EventEmitter<any>();
+  @Output() rightClick: any = new EventEmitter<any>();
 
-  @ContentChildren(AmexioWindowHeaderComponent) amexioHeader: QueryList<AmexioWindowHeaderComponent >;
+  @ContentChildren(AmexioWindowHeaderComponent) amexioHeader: QueryList<AmexioWindowHeaderComponent>;
   headerComponentList: AmexioWindowHeaderComponent[];
 
   @Output() close: EventEmitter<any> = new EventEmitter<any>();
@@ -246,7 +247,7 @@ description : Context Menu provides the list of menus on right click.
     this.header = true;
     this.closable = true;
     this.closeonescape = true;
-    if ( this.verticalposition == null) {
+    if (this.verticalposition == null) {
       this.verticalposition = 'center';
     }
     if (this.horizontalposition == null) {
@@ -336,63 +337,63 @@ description : Context Menu provides the list of menus on right click.
     }
     return styleClass;
   }
-// context menu code below
-getContextMenu() {
-  if (this.contextmenu && this.contextmenu.length > 0) {
-    this.flag = true;
+  // context menu code below
+  getContextMenu() {
+    if (this.contextmenu && this.contextmenu.length > 0) {
+      this.flag = true;
+    }
   }
-}
 
-getListPosition(elementRef: any): boolean {
-  const height = 240;
-  if ((window.screen.height - elementRef.getBoundingClientRect().bottom) < height) {
-    return true;
-  } else {
-    return false;
+  getListPosition(elementRef: any): boolean {
+    const height = 240;
+    if ((window.screen.height - elementRef.getBoundingClientRect().bottom) < height) {
+      return true;
+    } else {
+      return false;
+    }
   }
-}
-loadContextMenu(rightClickData: any) {
-  console.log('check data', rightClickData);
-  this.mouseLocation.left = rightClickData.event.clientX;
-  this.mouseLocation.top = rightClickData.event.clientY;
-  this.getContextMenu();
-  this.posixUp = this.getListPosition(rightClickData.ref);
-  rightClickData.event.preventDefault();
-  rightClickData.event.stopPropagation();
-  this.rightClickNodeData = rightClickData.data;
-  this.contextStyle = this.getContextMenuStyle();
-  this.nodeRightClick.emit(rightClickData);
-}
+  loadContextMenu(rightClickData: any) {
+    console.log('check data', rightClickData);
+    this.mouseLocation.left = rightClickData.event.clientX;
+    this.mouseLocation.top = rightClickData.event.clientY;
+    this.getContextMenu();
+    this.posixUp = this.getListPosition(rightClickData.ref);
+    rightClickData.event.preventDefault();
+    rightClickData.event.stopPropagation();
+    this.rightClickNodeData = rightClickData.data;
+    this.contextStyle = this.getContextMenuStyle();
+    this.nodeRightClick.emit(rightClickData);
+  }
 
-onContextNodeClick(itemConfig: any) {
-  if (!itemConfig.disabled) {
-    const obj = {
-      menuData: itemConfig,
-      NodeData: this.rightClickNodeData,
+  onContextNodeClick(itemConfig: any) {
+    if (!itemConfig.disabled) {
+      const obj = {
+        menuData: itemConfig,
+        NodeData: this.rightClickNodeData,
+      };
+      this.rightClick.emit(obj);
+    }
+  }
+
+  @HostListener('document:click')
+  onWindowClick() {
+    this.flag = false;
+  }
+
+  @HostListener('document:scroll')
+  onscroll() {
+    this.flag = false;
+  }
+
+  getContextMenuStyle() {
+    return {
+      'cursor': 'default',
+      'position': 'fixed',
+      'display': this.flag ? 'block' : 'none',
+      'left': this.mouseLocation.left + 'px',
+      'top': this.mouseLocation.top + 'px',
+      'box-shadow': '1px 1px 2px #000000',
+      'width': '15%',
     };
-    this.rightClick.emit(obj);
   }
-}
-
-@HostListener('document:click')
-onWindowClick() {
-  this.flag = false;
-}
-
-@HostListener('document:scroll')
-onscroll() {
-  this.flag = false;
-}
-
-getContextMenuStyle() {
-  return {
-    'cursor': 'default',
-    'position': 'fixed',
-    'display': this.flag ? 'block' : 'none',
-    'left': this.mouseLocation.left + 'px',
-    'top': this.mouseLocation.top + 'px',
-    'box-shadow': '1px 1px 2px #000000',
-    'width': '15%',
-  };
-}
 }
