@@ -5476,9 +5476,20 @@ verticalalign-tableft {
   color: red;
   font-weight: bold; }
 
+.panel-accordion .toolbar {
+  background-color: unset;
+  box-shadow: unset;
+  padding: 0px; }
+
 .panel-panel {
   background-color: white;
   color: #70196F; }
+
+.amexio-panel-header {
+  display: flex; }
+
+.amexio-panel-header > * {
+  padding-right: 5px; }
 
 .panel-panel::-webkit-scrollbar-track {
   background-color: #f5f5f5; }

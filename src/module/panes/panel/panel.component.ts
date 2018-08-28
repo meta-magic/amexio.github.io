@@ -21,26 +21,32 @@ Component Description : Panel provides an easy way to organize big forms by
 grouping the fields in panel
 */
 import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
+import { AmexioPanelHeaderComponent} from './../panel/panel.header.component';
 
 @Component({
   selector: 'amexio-panel', template: `
     <div #id class="panel-box"  (contextmenu)="loadContextMenu({event:$event,ref:id})" >
       <ng-container *ngIf="header">
         <div class="panel-accordion" #btn1 >
-            <div class="panel-header">
-              {{title}}
-              <div class="custom-header">
-                <ng-content select="amexio-header"></ng-content>
-                <div class="panel-icon" (click)="onTabClick(btn1)">
-                  <i [class]="iconclassKey" aria-hidden="true"></i>
-                </div>
+          <amexio-toolbar>
+            <amexio-toolbar-item position-left>
+                <amexio-label size="small" >
+                {{title}}
+                </amexio-label>
+            </amexio-toolbar-item>
+            <amexio-toolbar-item position-right>
+              <div style="display:flex">
+                <ng-content select="amexio-panel-header"></ng-content>
               </div>
-            </div>
-        </div>
-      </ng-container>
+            </amexio-toolbar-item>
+            <amexio-toolbar-item position-right >
+                <i [class]="iconclassKey" aria-hidden="true" (click)="onTabClick(btn1)"></i>
+            </amexio-toolbar-item>
+          </amexio-toolbar>
+    </div>
+  </ng-container>
       <ng-container *ngIf="expanded">
-        <div class="panel-panel" [style.max-height.px]="height"
-        >
+        <div class="panel-panel" [style.max-height.px]="height">
           <ng-content></ng-content>
         </div>
       </ng-container>
@@ -82,7 +88,15 @@ default : true
 description : 	Enable/Disabled header.
 */
   @Input() header: boolean;
-
+    /*
+Properties
+name : paneltitle
+datatype :  boolean
+version : 4.0 onwards
+default : true
+description : 	Enable/Disabled header.
+*/
+ // @Input() paneltitle: boolean;
   /*
 Properties
 name : expanded
