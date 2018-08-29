@@ -1,5 +1,5 @@
 <fieldset>
-  <legend class="collapsible-legend" (click)="onLegendClick()">
+  <legend *ngIf="(title && title.length>0) || collapsible " class="collapsible-legend" (click)="onLegendClick()">
 
       <ng-container *ngIf="!collapsible">
         {{title}}
