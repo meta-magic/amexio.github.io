@@ -4543,6 +4543,11 @@ header .billboard .content-button {
   background: rgba(41, 105, 70, 0.4);
   color: #16E73C; }
 
+.card-header .toolbar {
+  background-color: unset;
+  box-shadow: unset;
+  padding: 0px; }
+
 .cardbody::-webkit-scrollbar-track {
   background-color: #f5f5f5; }
 
@@ -4562,7 +4567,8 @@ header .billboard .content-button {
   display: flex;
   flex-direction: column;
   border: 2px solid #16E73C;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14); }
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
+  height: 100%; }
 
 .card-container > * {
   padding: 10px;
@@ -4610,6 +4616,12 @@ header .billboard .content-button {
 .form-header {
   background: rgba(41, 105, 70, 0.4);
   color: #16E73C; }
+
+.form-header .toolbar {
+  background-color: unset;
+  box-shadow: unset;
+  padding: 0px;
+  overflow: none; }
 
 .formbody::-webkit-scrollbar-track {
   background-color: #f5f5f5; }
@@ -5166,6 +5178,11 @@ verticalalign-tableft {
   background: rgba(41, 105, 70, 0.4);
   font-size: 20px;
   color: #16E73C; }
+
+.modal-window-header .toolbar {
+  background: #290500;
+  font-size: 20px;
+  color: #ffedeb; }
 
 .modal-window-middle {
   font-size: 14px; }
