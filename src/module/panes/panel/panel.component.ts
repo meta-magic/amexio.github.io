@@ -27,21 +27,6 @@ import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@a
     <div #id class="panel-box"  (contextmenu)="loadContextMenu({event:$event,ref:id})" >
       <ng-container *ngIf="header">
         <div class="panel-accordion" #btn1 >
-          <amexio-toolbar>
-            <amexio-toolbar-item position-left>
-                <amexio-label size="small" >
-                {{title}}
-                </amexio-label>
-            </amexio-toolbar-item>
-            <amexio-toolbar-item position-right>
-              <div style="display:flex">
-                <ng-content select="amexio-panel-header"></ng-content>
-              </div>
-            </amexio-toolbar-item>
-            <amexio-toolbar-item position-right >
-                <i [class]="iconclassKey" aria-hidden="true" (click)="onTabClick(btn1)"></i>
-            </amexio-toolbar-item>
-          </amexio-toolbar>
     </div>
   </ng-container>
       <ng-container *ngIf="expanded">
