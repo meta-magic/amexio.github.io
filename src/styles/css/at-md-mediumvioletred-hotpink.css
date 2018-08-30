@@ -4326,6 +4326,9 @@ header .billboard .content-button {
 .accordion:after {
   color: red; }
 
+.accordion amexio-accordion-header > * {
+  padding: 5px; }
+
 .panel {
   background-color: #ffffff;
   color: #121212; }
@@ -4333,6 +4336,12 @@ header .billboard .content-button {
 /** Transparent Styling **/
 .accordion-transparent {
   background: #ffffff; }
+
+.accordion amexio-accordion-header {
+  color: #fffafc; }
+
+.accordion-transparent amexio-accordion-header > * {
+  padding: 5px; }
 
 .accordion-transparent:after {
   color: red; }
@@ -4570,7 +4579,6 @@ fieldset {
   border-radius: 2px; }
 
 .collapsible-legend {
-  padding: 5px 10px;
   font-size: 13px;
   margin-left: 20px;
   box-shadow: none;
@@ -5338,7 +5346,7 @@ verticalalign-tableft {
   display: flex; }
 
 .amexio-panel-header > * {
-  padding-right: 5px; }
+  padding-right: 8px; }
 
 .panel-panel::-webkit-scrollbar-track {
   background-color: #dbc2cf; }

@@ -4,7 +4,10 @@ Component Name : Amexio Accordion
  Component Selector : <amexio-accordion>
  Component Description : Amexio Accordion provides an easy way to organize big forms by grouping the fields in accordion tabs.
  */
-import {AfterContentInit, AfterViewInit, Component, ContentChildren, DebugElement, Input, OnInit, QueryList } from '@angular/core';
+import {AfterContentInit, AfterViewInit, Component, ContentChildren,
+  ElementRef, EventEmitter, Input, OnInit, Output, QueryList, ViewChild,
+  ViewChildren } from '@angular/core';
+import {AmexioAccordionHeaderComponent} from './accordion.header.component';
 import { AmexioAccordionTabComponent } from './accordion.pane';
 @Component ({selector : 'amexio-accordion', templateUrl : './accordion.component.html'})
 export class AmexioAccordionComponent implements OnInit, AfterContentInit {
@@ -35,8 +38,15 @@ description : Can use Angle Icons instead of default plus/minus icons
 */
   @Input('angle-icon') angleIcon: boolean;
 
+  @ViewChild('accordionHeader', { read: ElementRef }) public accordionHeader: ElementRef;
+
 @ContentChildren(AmexioAccordionTabComponent) queryTabs: QueryList<AmexioAccordionTabComponent>;
+
 accordionCollections: AmexioAccordionTabComponent[];
+
+@ContentChildren(AmexioAccordionHeaderComponent) queryheader: QueryList<AmexioAccordionHeaderComponent>;
+
+accordionHeaderList: AmexioAccordionHeaderComponent[];
 constructor() {}
 ngOnInit() {}
 ngAfterContentInit() {

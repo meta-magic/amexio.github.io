@@ -35,9 +35,7 @@ import { AmexioPanelHeaderComponent} from './../panel/panel.header.component';
                 </amexio-label>
             </amexio-toolbar-item>
             <amexio-toolbar-item position-right>
-              <div style="display:flex">
                 <ng-content select="amexio-panel-header"></ng-content>
-              </div>
             </amexio-toolbar-item>
             <amexio-toolbar-item position-right >
                 <i [class]="iconclassKey" aria-hidden="true" (click)="onTabClick(btn1)"></i>
