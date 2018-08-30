@@ -1,14 +1,17 @@
-<button (click)="emitEvent()" 
-        class="{{isTransparent ? 'accordion-transparent' : 'accordion'}} {{active ? 'active-accordion' : ''}} {{disabled ? 'accordion-disable' : ''}}" >
-        <div style="float: left;" *ngIf="leftIcon">
-          <em class="fa {{leftIcon}}"></em>
-        </div>
-        {{header}}
-        <div style="float: right">
-          <em *ngIf="!angleIcon" class="fa" [ngClass]="{'fa-plus' : !active,'fa-minus' : active}" aria-hidden="true"></em>
-          <em *ngIf="angleIcon" class="fa" [ngClass]="{'fa-angle-down' : !active,'fa-angle-up' : active}" aria-hidden="true"></em>
-        </div>
+<button (click)="emitEvent()" class="{{isTransparent ? 'accordion-transparent' : 'accordion'}} {{active ? 'active-accordion' : ''}} {{disabled ? 'accordion-disable' : ''}}">
+  <div style="float: left;" *ngIf="leftIcon">
+    <em class="fa {{leftIcon}}"></em>
+  </div>
+  <ng-container>
+  {{header}}
+    <div style="float: right">
+        <ng-content select="amexio-accordion-header"></ng-content>
+      <em *ngIf="!angleIcon" class="fa" [ngClass]="{'fa-plus' : !active,'fa-minus' : active}" aria-hidden="true"></em>
+      <em *ngIf="angleIcon" class="fa" [ngClass]="{'fa-angle-down' : !active,'fa-angle-up' : active}" aria-hidden="true"></em>
+    </div>
+  </ng-container>
+
 </button>
 <div *ngIf="active" class="panel">
-    <ng-content></ng-content>
+  <ng-content></ng-content>
 </div>

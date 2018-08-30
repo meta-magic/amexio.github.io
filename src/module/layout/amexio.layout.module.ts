@@ -8,6 +8,7 @@ import {ModuleWithProviders, NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 
 import {AmexioAccordionComponent} from './accordion/accordion.component';
+import {AmexioAccordionHeaderComponent} from './accordion/accordion.header.component';
 import {AmexioAccordionTabComponent} from './accordion/accordion.pane';
 import {AmexioBorderLayoutComponent} from './border/borderlayout.component';
 import {AmexioBorderLayoutItemComponent} from './border/borderlayoutitem.component';
@@ -21,6 +22,7 @@ import {CommonDataService} from '../services/data/common.data.service';
 import {DeviceQueryService} from '../services/device/device.query.service';
 import {IconLoaderService} from '../services/icon/icon.service';
 
+export * from './accordion/accordion.header.component';
 export * from './accordion/accordion.pane';
 export * from './accordion/accordion.component';
 export * from './accordion/accordion.service';
@@ -42,6 +44,7 @@ const LAYOUT_COMPONENTS = [
   AmexioBoxComponent,
   AmexioAccordionTabComponent,
   AmexioAccordionComponent,
+  AmexioAccordionHeaderComponent,
   AmexioIconLayoutComponent,
 ];
 

@@ -1,41 +1,41 @@
 /**
  * Created by pratik on 16/1/18.
  */
-import {CommonModule} from '@angular/common';
-import {HttpClientModule} from '@angular/common/http';
-import {ModuleWithProviders, NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { ModuleWithProviders, NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
-import {AmexioFooterComponent} from './action/pane.action.footer';
-import {AmexioBodyComponent} from './body/pane.action.body';
-import {AmexioCarouselComponent} from './carousel/carousel.component';
+import { AmexioFooterComponent } from './action/pane.action.footer';
+import { AmexioBodyComponent } from './body/pane.action.body';
+import { AmexioCarouselComponent } from './carousel/carousel.component';
 import { AmexioTemplateDirective } from './carousel/carousel.template.directive';
-import {AmexioTemplateWrapperDirective} from './carousel/carousel.wrapper.template.directive';
-import {AmexiodialoguePaneComponent} from './dialogue/dialogue.pane.component';
-import {AmexioFieldSetComponent} from './fieldset/fieldset.component';
+import { AmexioTemplateWrapperDirective } from './carousel/carousel.wrapper.template.directive';
+import { AmexiodialoguePaneComponent } from './dialogue/dialogue.pane.component';
+import { AmexioFieldSetComponent } from './fieldset/fieldset.component';
 import { AmexioFormActionComponent } from './form/form.action.component';
 import { AmexioFormBodyComponent } from './form/form.body.component';
-import {AmexioFormComponent} from './form/form.component';
+import { AmexioFormComponent } from './form/form.component';
 import { AmexioFormHeaderComponent } from './form/form.header.component';
-import {AmexioHeaderComponent} from './header/pane.action.header';
-import {AmexioIconPaneComponent} from './icon/icon.component';
-import {AmexioPanelComponent} from './panel/panel.component';
-import {StepBlockComponent} from './steps/step-block';
-import {AmexioStepsComponent} from './steps/steps.component';
-import {AmexioRightVerticalTabComponent} from './tab/right-vertical-tab/right.vertical.component';
-import {AmexioTabActionComponent} from './tab/tab.action';
-import {AmexioTabComponent} from './tab/tab.component';
-import {AmexioTabPillComponent} from './tab/tab.pill.component';
-import {AmexioVerticalTabComponent} from './tab/vertical-tab/vertical.tab.component';
-import {AmexioWindowPaneComponent} from './window/window.pane.component';
-import {AmexioWindowHeaderComponent} from './window/window.pane.header.component';
+import { AmexioHeaderComponent } from './header/pane.action.header';
+import { AmexioIconPaneComponent } from './icon/icon.component';
+import { AmexioPanelComponent } from './panel/panel.component';
+import { AmexioPanelHeaderComponent} from './panel/panel.header.component';
+import { StepBlockComponent } from './steps/step-block';
+import { AmexioStepsComponent } from './steps/steps.component';
+import { AmexioRightVerticalTabComponent } from './tab/right-vertical-tab/right.vertical.component';
+import { AmexioTabActionComponent } from './tab/tab.action';
+import { AmexioTabComponent } from './tab/tab.component';
+import { AmexioTabPillComponent } from './tab/tab.pill.component';
+import { AmexioVerticalTabComponent } from './tab/vertical-tab/vertical.tab.component';
+import { AmexioWindowPaneComponent } from './window/window.pane.component';
+import { AmexioWindowHeaderComponent } from './window/window.pane.header.component';
 
-import {CommonDataService} from '../services/data/common.data.service';
-import {DeviceQueryService} from '../services/device/device.query.service';
-import {IconLoaderService} from '../services/icon/icon.service';
-
-import {AmexioFormsModule} from '../forms/amexio.forms.module';
+import { AmexioFormsModule } from '../forms/amexio.forms.module';
+import { CommonDataService } from '../services/data/common.data.service';
+import { DeviceQueryService } from '../services/device/device.query.service';
+import { IconLoaderService } from '../services/icon/icon.service';
 
 export * from './action/pane.action.footer';
 export * from './body/pane.action.body';
@@ -49,6 +49,7 @@ export * from './form/form.body.component';
 export * from './form/form.component';
 export * from './form/form.header.component';
 export * from './header/pane.action.header';
+export * from './panel/panel.header.component';
 export * from './steps/steps.component';
 export * from './steps/step-block';
 export * from './tab/right-vertical-tab/right.vertical.component';
@@ -78,6 +79,7 @@ const PANE_COMPONENTS = [
   AmexioTemplateWrapperDirective,
   StepBlockComponent,
   AmexioPanelComponent,
+  AmexioPanelHeaderComponent,
   AmexioIconPaneComponent,
   AmexiodialoguePaneComponent,
   AmexioFormComponent,
@@ -97,7 +99,7 @@ const PANE_COMPONENTS = [
   entryComponents: [AmexioTabPillComponent],
   exports: PANE_COMPONENTS,
   declarations: PANE_COMPONENTS,
-  providers : [CommonDataService, DeviceQueryService, IconLoaderService],
+  providers: [CommonDataService, DeviceQueryService, IconLoaderService],
 })
 export class AmexioPaneModule {
   static forRoot(): ModuleWithProviders {

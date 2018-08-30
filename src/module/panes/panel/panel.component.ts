@@ -21,12 +21,26 @@ Component Description : Panel provides an easy way to organize big forms by
 grouping the fields in panel
 */
 import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
+import { AmexioPanelHeaderComponent} from './../panel/panel.header.component';
 
 @Component({
   selector: 'amexio-panel', template: `
     <div #id class="panel-box"  (contextmenu)="loadContextMenu({event:$event,ref:id})" >
       <ng-container *ngIf="header">
         <div class="panel-accordion" #btn1 >
+          <amexio-toolbar>
+            <amexio-toolbar-item position-left>
+                <amexio-label size="small" >
+                {{title}}
+                </amexio-label>
+            </amexio-toolbar-item>
+            <amexio-toolbar-item position-right>
+                <ng-content select="amexio-panel-header"></ng-content>
+            </amexio-toolbar-item>
+            <amexio-toolbar-item position-right >
+                <i [class]="iconclassKey" aria-hidden="true" (click)="onTabClick(btn1)"></i>
+            </amexio-toolbar-item>
+          </amexio-toolbar>
     </div>
   </ng-container>
       <ng-container *ngIf="expanded">
