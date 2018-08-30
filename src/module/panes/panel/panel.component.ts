@@ -30,7 +30,6 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
             <div class="panel-header">
               {{title}}
               <div class="custom-header">
-                <ng-content select="amexio-header"></ng-content>
                 <div class="panel-icon" (click)="onTabClick(btn1)">
                   <i [class]="iconclassKey" aria-hidden="true"></i>
                 </div>
