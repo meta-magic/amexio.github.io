@@ -5855,7 +5855,7 @@ verticalalign-tableft {
   display: flex; }
 
 .amexio-panel-header > * {
-  padding-right: 8px; }
+  padding-right: 5px; }
 
 .panel-panel::-webkit-scrollbar-track {
   background-color: #f5f5f5; }
