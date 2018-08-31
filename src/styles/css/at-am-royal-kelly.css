@@ -4836,6 +4836,9 @@ header .billboard .content-button {
 .accordion:after {
   color: red; }
 
+.accordion amexio-accordion-header > * {
+  padding: 5px; }
+
 .panel {
   background-color: #292b2c;
   color: rgba(255, 255, 255, 0.7); }
@@ -4843,6 +4846,12 @@ header .billboard .content-button {
 /** Transparent Styling **/
 .accordion-transparent {
   background: #292b2c; }
+
+.accordion amexio-accordion-header {
+  color: #4CBB17; }
+
+.accordion-transparent amexio-accordion-header > * {
+  padding: 5px; }
 
 .accordion-transparent:after {
   color: red; }
@@ -5835,9 +5844,20 @@ verticalalign-tableft {
   color: red;
   font-weight: bold; }
 
+.panel-accordion .toolbar {
+  background-color: unset;
+  box-shadow: unset;
+  padding: 0px; }
+
 .panel-panel {
   background-color: #292b2c;
   color: rgba(255, 255, 255, 0.7); }
+
+.amexio-panel-header {
+  display: flex; }
+
+.amexio-panel-header > * {
+  padding-right: 5px; }
 
 .panel-panel::-webkit-scrollbar-track {
   background-color: #f5f5f5; }
