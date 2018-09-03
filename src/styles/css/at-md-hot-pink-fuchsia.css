@@ -3256,6 +3256,9 @@ header .billboard .content-button {
 .datatable-height::-webkit-scrollbar-track {
   background-color: #dbc2db; }
 
+.datagrid amexio-datagrid-header > * {
+  padding: 3px; }
+
 .datatable-height::-webkit-scrollbar {
   background-color: #dbc2db; }
 

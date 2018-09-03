@@ -10,7 +10,6 @@ import {
   AfterContentInit, ChangeDetectorRef, Component, ContentChildren, ElementRef, EventEmitter, HostListener, Input, OnInit, Output,
   QueryList,
 } from '@angular/core';
-
 import { AmexioGridColumnComponent } from './data.grid.column';
 
 import { CommonDataService } from '../../services/data/common.data.service';
@@ -20,13 +19,16 @@ import { CommonDataService } from '../../services/data/common.data.service';
     <div class="datagrid">
       <div class="datatabletitle">
         <span> {{title}} </span>
-        <span *ngIf="enablecolumnfilter ? true:false" class="float-right" (click)="showToolTip = !showToolTip ; showGroupByColumn = false"
-              style=" cursor: pointer;">
-          &nbsp;&nbsp;
-          <span *ngIf="!show">&#9776;</span>
-          <span *ngIf="show">&#9747;</span>
-      </span>
-
+        <span class="dataheaderFilter" class="float-right"  style="padding-bottom:1.1%">
+          <ng-content select="amexio-datagrid-header"></ng-content>
+          <span *ngIf="enablecolumnfilter ? true:false" class="float-right"
+          (click)="showToolTip = !showToolTip ; showGroupByColumn = false"
+            style=" cursor: pointer;">
+            &nbsp;
+            <span *ngIf="!show">&#9776;</span>
+            <span *ngIf="show">&#9747;</span>
+          </span>
+        </span>
         <span *ngIf="groupby ? true : false" class="float-right" (click)="showGroupByColumn = !showGroupByColumn; showToolTip = false"
               style=" cursor: pointer;">
           <!--<span class="fa fa-th-list"></span>-->

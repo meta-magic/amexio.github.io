@@ -4,6 +4,10 @@
   background-color:$datatableScrollBG;
 }
 
+.datagrid amexio-datagrid-header > *{
+  padding: 3px
+}
+
 .datatable-height::-webkit-scrollbar
 {
   background-color: $datatableScrollBG;

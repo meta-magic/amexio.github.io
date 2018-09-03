@@ -3214,6 +3214,9 @@ header .billboard .content-button {
 .datatable-height::-webkit-scrollbar-track {
   background-color: #f5f5f5; }
 
+.datagrid amexio-datagrid-header > * {
+  padding: 3px; }
+
 .datatable-height::-webkit-scrollbar {
   background-color: #f5f5f5; }
 
