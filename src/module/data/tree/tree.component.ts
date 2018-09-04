@@ -17,7 +17,7 @@ import { CommonDataService } from '../../services/data/common.data.service';
   selector: 'amexio-treeview', templateUrl: './tree.component.html',
 })
 export class AmexioTreeViewComponent implements AfterViewInit, OnInit {
-private componentLoaded: boolean;
+  private componentLoaded: boolean;
   /*
 Properties
 name : data
@@ -26,17 +26,17 @@ version : 4.0 onwards
 default : none
 description : Local Data binding.
 */
-_data: any;
-@Input('data')
- set data(value: any[]) {
-   this._data = value;
-   if (this.componentLoaded) {
-     this.updateComponent();
-   }
- }
- get data(): any[] {
-   return this._data;
- }
+  _data: any;
+  @Input('data')
+  set data(value: any[]) {
+    this._data = value;
+    if (this.componentLoaded) {
+      this.updateComponent();
+    }
+  }
+  get data(): any[] {
+    return this._data;
+  }
 
   /*
 Properties
@@ -228,6 +228,31 @@ description : Context Menu provides the list of menus on right click.
     }
   }
 
+  public expandAll(node: any) {
+    console.log('node' + node);
+    this.parentRef.forEach((childCheck: any) => {
+      if (!childCheck.expand) {
+        childCheck.expand = true;
+        console.log('childcheck' + this.parentRef);
+      }
+      if (childCheck.hasOwnProperty('children')) {
+        this.expandAll(childCheck.children);
+      }
+    });
+  }
+
+  collapseAll(node: any) {
+    console.log('node' + node);
+    this.parentRef.forEach((childCheck: any) => {
+      if (childCheck.expand) {
+        childCheck.expand = false;
+      }
+      if (childCheck.hasOwnProperty('children')) {
+        this.collapseAll(childCheck.children);
+      }
+    });
+  }
+
   onClick(node: any) {
     node.expand = !node.expand;
   }
@@ -297,7 +322,6 @@ description : Context Menu provides the list of menus on right click.
 
   emitCheckedData(checkedData: any) {
     checkedData.checked = !checkedData.checked;
-
     if (checkedData.checked) {
       if (checkedData.hasOwnProperty('children')) {
         checkedData.children.forEach((option: any) => {

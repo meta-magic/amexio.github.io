@@ -2,7 +2,7 @@
   <div class="spinner"></div>
 </div>
 
-<div class="treenode" *ngFor="let node of data">
+<div class="treenode" *ngFor="let node of data"  >
   <div #id class="treenode-content" (click)="onClick(node)">
     <div style="white-space:nowrap">
       <div class="tree-node-label" *ngIf="node.children && (node.children.length>0)">
