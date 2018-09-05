@@ -227,32 +227,35 @@ description : Context Menu provides the list of menus on right click.
       this.setData(this.data);
     }
   }
-
   public expandAll(node: any) {
-    console.log('node' + node);
-    this.parentRef.forEach((childCheck: any) => {
+    this.expandAllCall(this.parentRef);
+  }
+
+  expandAllCall(node: any) {
+    node.forEach((childCheck: any) => {
       if (!childCheck.expand) {
         childCheck.expand = true;
-        console.log('childcheck' + this.parentRef);
       }
       if (childCheck.hasOwnProperty('children')) {
-        this.expandAll(childCheck.children);
+        this.expandAllCall(childCheck.children);
       }
     });
   }
 
   collapseAll(node: any) {
-    console.log('node' + node);
-    this.parentRef.forEach((childCheck: any) => {
+    this.collapseAllCall(this.parentRef);
+  }
+
+  collapseAllCall(node: any) {
+    node.forEach((childCheck: any) => {
       if (childCheck.expand) {
         childCheck.expand = false;
       }
       if (childCheck.hasOwnProperty('children')) {
-        this.collapseAll(childCheck.children);
+        this.collapseAllCall(childCheck.children);
       }
     });
   }
-
   onClick(node: any) {
     node.expand = !node.expand;
   }
