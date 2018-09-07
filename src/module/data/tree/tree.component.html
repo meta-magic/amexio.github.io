@@ -36,7 +36,7 @@
     </div>
   </div>
   <div class="treenode-children" style="display: block;" *ngIf="node.expand && node[childarraykey] && (node[childarraykey].length>0)">
-    <amexio-treeview [childarray-key]="childarraykey"  [display-key]="displaykey" [enable-drag]="enabledrag" [enable-drop]="enabledrop" [data]="node[childarraykey]" [dragData]="dragData" [parentRef]="parentRef"
+    <amexio-treeview [child-array-key]="childarraykey"  [display-key]="displaykey" [enable-drag]="enabledrag" [enable-drop]="enabledrop" [data]="node[childarraykey]" [dragData]="dragData" [parentRef]="parentRef"
       (onDrag)=onDragStart($event) (onDrop)=drop($event) (nodeClick)="onNodeClick($event)" (dragleave)="($event)" (nodeRightClick)="loadContextMenu($event)"
       [across-tree]="acrosstree" [templates]="templates" [enable-checkbox]="enablecheckbox" [badge]="badge" (onTreeNodeChecked)="this.onTreeNodeCheck($event)">
     </amexio-treeview>

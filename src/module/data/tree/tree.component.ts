@@ -78,13 +78,13 @@ description : Name of key inside response data to display on ui.
 @Input('display-key') displaykey: string;
    /*
 Properties
-name : childarray-key
+name : child-array-key
 datatype : string
 version : 5.2.0 onwards
 default : children
 description : Name of key for child array name inside response data to display on ui.
 */
-@Input('childarray-key') childarraykey: string;
+@Input('child-array-key') childarraykey: string;
 
   /*
   Events
