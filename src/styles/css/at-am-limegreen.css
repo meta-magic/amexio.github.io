@@ -3269,7 +3269,6 @@ header .billboard .content-button {
 .datatable .datatable-header {
   display: table-header-group;
   text-align: left;
-  font-size: larger;
   cursor: pointer; }
 
 .datatable .datatable-col {
