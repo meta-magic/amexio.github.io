@@ -5,7 +5,7 @@
 <div class="treenode" *ngFor="let node of data"  >
   <div #id class="treenode-content" (click)="onClick(node)">
     <div style="white-space:nowrap">
-      <div class="tree-node-label" *ngIf="node.children && (node.children.length>0)">
+      <div class="tree-node-label" *ngIf="node[childarraykey] && (node[childarraykey].length>0)">
         <em class="fa " [ngClass]="{'fa-angle-down':node.expand,'fa-angle-right':!node.expand}"></em>
       </div>
 
@@ -20,7 +20,7 @@
             <div class="tree-node-label" *ngIf="node.icon" [ngClass]="node.icon" aria-hidden="true">
             </div>
             <div class="tree-node-label">
-              {{node.text}}
+              {{node[displaykey]}}
               <ng-container *ngIf="badge && node.badge">
                 <span class="tree-badge">{{node.badge}}</span>
               </ng-container>
@@ -35,10 +35,11 @@
       </div>
     </div>
   </div>
-  <div class="treenode-children" style="display: block;" *ngIf="node.expand && node.children && (node.children.length>0)">
-    <amexio-treeview [enable-drag]="enabledrag" [enable-drop]="enabledrop" [data]="node.children" [dragData]="dragData" [parentRef]="parentRef"
+  <div class="treenode-children" style="display: block;" *ngIf="node.expand && node[childarraykey] && (node[childarraykey].length>0)">
+    <amexio-treeview [childarray-key]="childarraykey"  [display-key]="displaykey" [enable-drag]="enabledrag" [enable-drop]="enabledrop" [data]="node[childarraykey]" [dragData]="dragData" [parentRef]="parentRef"
       (onDrag)=onDragStart($event) (onDrop)=drop($event) (nodeClick)="onNodeClick($event)" (dragleave)="($event)" (nodeRightClick)="loadContextMenu($event)"
-      [across-tree]="acrosstree" [templates]="templates" [enable-checkbox]="enablecheckbox" [badge]="badge" (onTreeNodeChecked)="this.onTreeNodeCheck($event)"></amexio-treeview>
+      [across-tree]="acrosstree" [templates]="templates" [enable-checkbox]="enablecheckbox" [badge]="badge" (onTreeNodeChecked)="this.onTreeNodeCheck($event)">
+    </amexio-treeview>
 
   </div>
 </div>
