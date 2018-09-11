@@ -24,6 +24,8 @@ before_script:
   - npm install --global gulp --save
   - gem install sass
   - git fetch --unshallow
+  - npm install --global gulp-tslint --save
+
 
             
 script: 
