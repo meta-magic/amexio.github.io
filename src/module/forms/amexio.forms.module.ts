@@ -28,6 +28,7 @@ import {AmexioNumberInputComponent} from './numberinput/numberinput.component';
 import {AmexioPasswordComponent} from './passwordinput/passwordinput.component';
 import {AmexioRadioGroupComponent} from './radio/radiogroup.component';
 import {AmexioRatingComponent} from './rating/rating.component';
+import {RecaptchaComponent} from './recaptcha/recaptcha.component';
 import {AmexioSliderComponent} from './slider/slider.component';
 import {DomHandler} from './slider/slider.handler';
 import {AmexioTagsInputComponent} from './tagsinput/tags.input.component';
@@ -44,8 +45,11 @@ import {AmexioLayoutModule} from '../layout/amexio.layout.module';
 import {CommonDataService} from '../services/data/common.data.service';
 import {IconLoaderService} from '../services/icon/icon.service';
 
+import { LoadRecaptchaService } from './recaptcha/load.recaptcha.service';
+
 export * from '../services/data/common.data.service';
 export * from '../services/icon/icon.service';
+export * from './recaptcha/load.recaptcha.service';
 
 const FORM_COMPONENTS = [
   AmexioTextInputComponent,
@@ -83,6 +87,7 @@ const FORM_COMPONENTS = [
   ToolBarActionComponent,
   SearchboxtoolComponent,
   AmexioSearchAdvanceComponent,
+  RecaptchaComponent,
 ];
 
 @NgModule({
@@ -100,7 +105,7 @@ export class AmexioFormsModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: AmexioFormsModule,
-      providers: [CommonDataService, IconLoaderService],
+      providers: [CommonDataService, IconLoaderService, LoadRecaptchaService],
     };
   }
 }
