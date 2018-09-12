@@ -96,10 +96,8 @@ export class AmexioDropDownMenuComponent implements AfterContentInit, OnInit {
   ngOnInit() {
     if (this.data) {
       this.data.forEach((node: any) => {
-        if (!node.iconalign) {
-          if (this.iconalign) {
+        if (!node.iconalign && this.iconalign) {
             node.iconalign = this.iconalign;
-          }
         }
         if (!node.labelalign) {
           node.labelalign = 'left';
