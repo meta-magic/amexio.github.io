@@ -5,6 +5,7 @@ import {FormsModule} from '@angular/forms';
 import {AmexioGridColumnComponent} from './datagrid/data.grid.column';
 import {AmexioDatagridComponent} from './datagrid/datagrid.component';
 import {DataGridFilterComponent} from './datagrid/datagrid.filter.component';
+import {AmexioDataGridHeaderComponent} from './datagrid/datagrid.header.component';
 import {AmexioDataIconComponent} from './icon/icon.component';
 import {AmexioItemSelectorComponent} from './itemselector/item.selector.component';
 import {AmexioListBoxComponent} from './listbox/listbox.component';
@@ -34,6 +35,7 @@ const DATA_COMPONENTS = [
   AmexioTreeViewComponent,
   AmexioListBoxComponent,
   AmexioDatagridComponent,
+  AmexioDataGridHeaderComponent,
   DataGridFilterComponent,
   AmexioPaginatorComponent,
   AmexioGridColumnComponent,
