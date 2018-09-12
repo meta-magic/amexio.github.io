@@ -89,48 +89,37 @@ export class DeviceQueryService {
    EVENT LISTENERS BY TYPE
    **********************************************/
   OnPhone(callBack: any) {
-    if (typeof callBack === 'function') {
-      if (isPlatformBrowser(this.platformId)) {
+    if (typeof callBack === 'function' && isPlatformBrowser(this.platformId)) {
         const mql: MediaQueryList = window.matchMedia(this.rules.phone);
         this.mqlMethod(callBack, mql);
-      }
     }
   }
 
   OnTablet(callBack: any) {
-    if (typeof callBack === 'function') {
-      if (isPlatformBrowser(this.platformId)) {
+    if (typeof callBack === 'function' && isPlatformBrowser(this.platformId)) {
         const mql: MediaQueryList = window.matchMedia(this.rules.tablet);
         this.mqlMethod(callBack, mql);
-      }
     }
   }
 
   OnDesktop(callBack: any) {
-    if (typeof callBack === 'function') {
-      if (isPlatformBrowser(this.platformId)) {
+    if (typeof callBack === 'function' && isPlatformBrowser(this.platformId)) {
         const mql: MediaQueryList = window.matchMedia(this.rules.desktop);
         this.mqlMethod(callBack, mql);
-      }
     }
   }
 
   OnPortrait(callBack: any) {
-    if (typeof callBack === 'function') {
-      if (isPlatformBrowser(this.platformId)) {
+    if (typeof callBack === 'function' && isPlatformBrowser(this.platformId)) {
         const mql: MediaQueryList = window.matchMedia(this.rules.portrait);
         this.mqlMethod(callBack, mql);
-      }
-
     }
   }
 
   OnLandscape(callBack: any) {
-    if (typeof callBack === 'function') {
-      if (isPlatformBrowser(this.platformId)) {
+    if (typeof callBack === 'function' && isPlatformBrowser(this.platformId)) {
         const mql: MediaQueryList = window.matchMedia(this.rules.landscape);
         this.mqlMethod(callBack, mql);
-      }
     }
   }
 

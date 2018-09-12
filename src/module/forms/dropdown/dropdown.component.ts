@@ -333,7 +333,7 @@ description : Set enable / disable popover.
   ngOnInit() {
     this.isValid = this.allowblank;
     this.isComponentValid.emit(this.allowblank);
-    if (this.placeholder === '' || this.placeholder ) {
+    if (this.placeholder === '' || this.placeholder) {
       this.placeholder = 'Choose Option';
     }
     if (this.httpmethod && this.httpurl) {
@@ -571,11 +571,9 @@ description : Set enable / disable popover.
   }
   // set accessor including call the onchange callback
   set value(v: any) {
-    if (v != null) {
-      if (v !== this.innerValue) {
-        this.innerValue = v;
-        this.onChangeCallback(v);
-      }
+    if (v != null && v !== this.innerValue) {
+      this.innerValue = v;
+      this.onChangeCallback(v);
     }
   }
   // Set touched on blur
@@ -609,7 +607,7 @@ description : Set enable / disable popover.
   writeValue(value: any) {
     if (!this.allowblank) {
       if (value != null) {
-       this.writeChangedValue(value);
+        this.writeChangedValue(value);
       } else {
         this.value = '';
         this.isValid = true;

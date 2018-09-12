@@ -1,8 +1,10 @@
-import {AfterContentInit, Component, ContentChildren, ElementRef, EventEmitter,
-  HostListener, Input, OnInit, Output, QueryList } from '@angular/core';
+import {
+  AfterContentInit, Component, ContentChildren, ElementRef, EventEmitter,
+  HostListener, Input, OnInit, Output, QueryList,
+} from '@angular/core';
 import { AmexioDropDownitemsComponent } from './dropdownmenu.component.items';
 
-import { DeviceQueryService} from '../../services/device/device.query.service';
+import { DeviceQueryService } from '../../services/device/device.query.service';
 @Component({
   selector: 'amexio-drop-down-menu',
   templateUrl: `./dropdownmenu.component.html`,
@@ -21,7 +23,7 @@ export class AmexioDropDownMenuComponent implements AfterContentInit, OnInit {
    default :
    description : data what you want to add in list
    */
-  @Input() data: any [];
+  @Input() data: any[];
   /*
    Properties
    name : title
@@ -67,7 +69,7 @@ export class AmexioDropDownMenuComponent implements AfterContentInit, OnInit {
    default :
    description : icon on menu
    */
-  @Input ('down-arrow-icon') downArrowIcon = true;
+  @Input('down-arrow-icon') downArrowIcon = true;
   /*
    Properties
    name : transparent
@@ -76,7 +78,7 @@ export class AmexioDropDownMenuComponent implements AfterContentInit, OnInit {
    default :
    description : transparent style for menu
    */
-  @Input() transparent = false ;
+  @Input() transparent = false;
   /*
    Properties
    name : height
@@ -85,21 +87,19 @@ export class AmexioDropDownMenuComponent implements AfterContentInit, OnInit {
    default :
    description : User can set the height to menu body..
    */
-  @Input()  height: any;
+  @Input() height: any;
   @Output() onClick: any = new EventEmitter<any>();
   @ContentChildren(AmexioDropDownitemsComponent) dropdowns: QueryList<AmexioDropDownitemsComponent>;
   optionsCollection: AmexioDropDownitemsComponent[] = [];
-  constructor(public element: ElementRef, public matchMediaService: DeviceQueryService ) {
+  constructor(public element: ElementRef, public matchMediaService: DeviceQueryService) {
     this.iconalign = 'left';
     this.padding = '5px 10px';
   }
   ngOnInit() {
     if (this.data) {
       this.data.forEach((node: any) => {
-        if (!node.iconalign) {
-          if (this.iconalign) {
-            node.iconalign = this.iconalign;
-          }
+        if (!node.iconalign && this.iconalign) {
+          node.iconalign = this.iconalign;
         }
         if (!node.labelalign) {
           node.labelalign = 'left';
@@ -113,9 +113,9 @@ export class AmexioDropDownMenuComponent implements AfterContentInit, OnInit {
       this.toggle = false;
     }));
   }
-   @HostListener('document:click', ['$event.target'])
-   @HostListener('document: touchstart', ['$event.target'])
-  public onElementOutClick( targetElement: HTMLElement) {
+  @HostListener('document:click', ['$event.target'])
+  @HostListener('document: touchstart', ['$event.target'])
+  public onElementOutClick(targetElement: HTMLElement) {
     let parentFound = false;
     while (targetElement !== null && !parentFound) {
       if (targetElement === this.element.nativeElement) {
@@ -132,9 +132,9 @@ export class AmexioDropDownMenuComponent implements AfterContentInit, OnInit {
     this.top = event.target.getBoundingClientRect().top + 25;
     if ((this.matchMediaService.browserWindow().innerWidth - event.clientX) < 200) {
       this.xposition = true;
-      } else {
+    } else {
       this.xposition = false;
-      }
+    }
   }
   getIconPosition(childposition: any, parentIconPosition: string): boolean {
     if (childposition.hasOwnProperty('iconalign') && childposition.iconalign !== '') {
@@ -156,18 +156,18 @@ export class AmexioDropDownMenuComponent implements AfterContentInit, OnInit {
     this.onClick.emit(event);
   }
   getLabelPosition(childPosition: any, parentLabelPosition: string): boolean {
-    if (childPosition.hasOwnProperty('labelalign') && childPosition .labelalign !== '') {
+    if (childPosition.hasOwnProperty('labelalign') && childPosition.labelalign !== '') {
       if (childPosition.labelalign === 'right') {
         return true;
       } else {
-         return false;
+        return false;
       }
     } else {
       if (parentLabelPosition === 'right') {
         return true;
       } else {
-         return false;
+        return false;
       }
     }
   }
- }
+}

@@ -22,8 +22,8 @@ export class SearchboxtoolComponent implements OnInit, AfterContentInit {
   default : none
   description : Local data for dropdown.
   */
- _data: any;
- @Input('data')
+  _data: any;
+  @Input('data')
   set data(value: any[]) {
     this._data = value;
     if (this.componentLoaded) {
@@ -205,10 +205,8 @@ export class SearchboxtoolComponent implements OnInit, AfterContentInit {
     if (keyword != null && keyword !== ' ') {
       const search_term = keyword.toLowerCase();
       this.localData.forEach((item: any) => {
-        if (item != null) {
-          if (item[this.displayfield].toLowerCase().startsWith(search_term)) {
-            this.viewData.push(item);
-          }
+        if (item != null && item[this.displayfield].toLowerCase().startsWith(search_term)) {
+          this.viewData.push(item);
         }
       });
       this.keyup.emit(event);
@@ -231,11 +229,9 @@ export class SearchboxtoolComponent implements OnInit, AfterContentInit {
       if (keyword != null && keyword !== ' ') {
         const search_term = keyword.toLowerCase();
         this.localData.forEach((item1: any) => {
-          if (item1 != null) {
+          if (item1 != null && item1[this.displayfield].toLowerCase().startsWith(search_term)) {
             // if word exist in start
-            if (item1[this.displayfield].toLowerCase().startsWith(search_term)) {
-              this.viewData.push(item1);
-            }
+            this.viewData.push(item1);
           }
         });
         this.searchFlag = true;

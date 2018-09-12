@@ -10,7 +10,8 @@
  */
 import {
   Component, ContentChildren, ElementRef, EventEmitter, HostListener,
-  Input, OnChanges, OnInit, Output, QueryList, SimpleChanges, ViewChild } from '@angular/core';
+  Input, OnChanges, OnInit, Output, QueryList, SimpleChanges, ViewChild,
+} from '@angular/core';
 import { AmexioWindowHeaderComponent } from './window.pane.header.component';
 export enum KEY_CODE_window {
   esc = 27,
@@ -285,13 +286,9 @@ description : Context Menu provides the list of menus on right click.
   // Escape Key Functionality
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
-    if (this.closeonescape === true) {
-      if (event.keyCode === KEY_CODE_window.esc) {
-        this.showWindow = false;
-        this.showChange.emit(false);
-
-      }
-
+    if (this.closeonescape === true && event.keyCode === KEY_CODE_window.esc) {
+      this.showWindow = false;
+      this.showChange.emit(false);
     }
   }
   ngOnInit() {

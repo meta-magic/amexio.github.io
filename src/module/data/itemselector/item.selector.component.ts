@@ -290,34 +290,29 @@ export class AmexioItemSelectorComponent implements OnInit {
   }
 
   upSwitch() {
-    if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected')) {
-      if (this.switchingObject['isSelected']) {
-        this.selectedData.forEach((opt: any, i: any) => {
-          this.getIndexObject(opt, i);
-        });
-        if (this.objectIndex !== 0) {
-          const index = this.selectedData[this.objectIndex];
-          this.selectedData[this.objectIndex] = this.selectedData[this.objectIndex - 1];
-          this.selectedData[this.objectIndex - 1] = index;
-          this.dataEmitter();
-        }
-
+    if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected') && this.switchingObject['isSelected']) {
+      this.selectedData.forEach((opt: any, i: any) => {
+        this.getIndexObject(opt, i);
+      });
+      if (this.objectIndex !== 0) {
+        const index = this.selectedData[this.objectIndex];
+        this.selectedData[this.objectIndex] = this.selectedData[this.objectIndex - 1];
+        this.selectedData[this.objectIndex - 1] = index;
+        this.dataEmitter();
       }
     }
   }
 
   downSwitch() {
-    if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected')) {
-      if (this.switchingObject['isSelected']) {
-        this.selectedData.forEach((opt: any, i: any) => {
-          this.getIndexObject(opt, i);
-        });
-        if (this.selectedData.length - 1 !== this.objectIndex) {
-          const index = this.selectedData[this.objectIndex];
-          this.selectedData[this.objectIndex] = this.selectedData[this.objectIndex + 1];
-          this.selectedData[this.objectIndex + 1] = index;
-          this.dataEmitter();
-        }
+    if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected') && this.switchingObject['isSelected']) {
+      this.selectedData.forEach((opt: any, i: any) => {
+        this.getIndexObject(opt, i);
+      });
+      if (this.selectedData.length - 1 !== this.objectIndex) {
+        const index = this.selectedData[this.objectIndex];
+        this.selectedData[this.objectIndex] = this.selectedData[this.objectIndex + 1];
+        this.selectedData[this.objectIndex + 1] = index;
+        this.dataEmitter();
       }
     }
   }

@@ -286,11 +286,9 @@ description : On field focus event
     if (keyword !== null && keyword !== ' ' && keyword.length >= this.triggerchar) {
       const search_term = keyword.toLowerCase();
       this.viewData.forEach((item: any) => {
-        if (item != null) {
-          if (item[this.key].toLowerCase().startsWith(search_term)) {
-            this.filteredResult.push(item);
-          }
-        }
+        if (item != null && item[this.key].toLowerCase().startsWith(search_term)) {
+          this.filteredResult.push(item);
+      }
       });
       if (this.filteredResult.length > 0) {
         this.showToolTip = true;
