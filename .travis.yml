@@ -24,7 +24,6 @@ before_script:
   - npm install --global gulp --save
   - gem install sass
   - git fetch --unshallow
-  - npm install --global gulp-tslint --save
 
 
             
@@ -33,6 +32,8 @@ script:
   - sonar-scanner
   - cd src/styles/ && sh sasstocss.sh
   - cd ../../ && pwd && gulp build
+  - ls -ltr
+  - ls -ltr node_modules/.bin/
   - cd dist && npm pack
   
 after_success: 
