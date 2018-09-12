@@ -188,16 +188,16 @@ export class AmexioDateTimePickerComponent implements OnInit {
     this.viewmode = '1';
 
     this.yearList1 = [{ year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
-      { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
-      { year: 0, flag: false, disabled: false }];
+    { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+    { year: 0, flag: false, disabled: false }];
     this.yearList2 = [{ year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
-      { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
-      { year: 0, flag: false, disabled: false }];
+    { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+    { year: 0, flag: false, disabled: false }];
     this.monthList1 = [{ name: 'Jan', flag: false, num: 4 }, { name: 'Feb', flag: false },
-      { name: 'Mar', flag: false }, { name: 'Apr', flag: false }, { name: 'May', flag: false },
-      { name: 'Jun', flag: false }];
+    { name: 'Mar', flag: false }, { name: 'Apr', flag: false }, { name: 'May', flag: false },
+    { name: 'Jun', flag: false }];
     this.monthList2 = [{ name: 'Jul', flag: false }, { name: 'Aug', flag: false }, { name: 'Sep', flag: false },
-      { name: 'Oct', flag: false }, { name: 'Nov', flag: false }, { name: 'Dec', flag: false }];
+    { name: 'Oct', flag: false }, { name: 'Nov', flag: false }, { name: 'Dec', flag: false }];
     this.minDate = '';
     this.maxDate = '';
     this.elementId = new Date().getTime() + '';
@@ -378,14 +378,8 @@ export class AmexioDateTimePickerComponent implements OnInit {
 
   // Set Max Full Year
   setMaxFullYear(d: any, max: any, mon: any) {
-    if (!(d.getMonth() === max.getMonth())) {
-      // *********check here******************* */
-      // logic to chk if year is valid
-      if (d.getFullYear() <= max.getFullYear()) {
-        if (d.getMonth() <= max.getMonth()) {
-          d.setMonth(d.getMonth() + mon);
-        }
-      }
+    if (!(d.getMonth() === max.getMonth()) && d.getFullYear() <= max.getFullYear() && d.getMonth() <= max.getMonth()) {
+      d.setMonth(d.getMonth() + mon);
     }
   }
   // Set Minus Data
@@ -417,22 +411,17 @@ export class AmexioDateTimePickerComponent implements OnInit {
     const min = new Date(this.minDate);
     const max = new Date(this.maxDate);
     // checks if selected date is within maximum range of year
-    if (state === 'plus') {
-      if (this.maxDate.length > 0) {
-        if (d.getFullYear() <= max.getFullYear() - 1) {
-          d.setMonth(d.getMonth() + mon);
-        }
-      } else {
-        d.setMonth(d.getMonth() + mon);
-      }  // checks if selected date is within minimum range of year
-    } else if (state === 'minus') {
-      if (this.minDate.length > 0) {
-        if (d.getFullYear() >= min.getFullYear() + 1) {
-          d.setMonth(d.getMonth() - mon);
-        }
-      } else {
-        d.setMonth(d.getMonth() - mon);
-      }
+    if (state === 'plus' && this.maxDate.length > 0 && d.getFullYear() <= max.getFullYear() - 1) {
+      d.setMonth(d.getMonth() + mon);
+    }
+    if (state === 'plus' && this.maxDate.length <= 0) {
+      d.setMonth(d.getMonth() + mon);
+    }  // checks if selected date is within minimum range of year
+    if (state === 'minus' && this.minDate.length > 0 && d.getFullYear() >= min.getFullYear() + 1) {
+      d.setMonth(d.getMonth() - mon);
+    }
+    if (state === 'minus' && this.minDate.length <= 0) {
+      d.setMonth(d.getMonth() - mon);
     }
     this.currrentDate = d;
     this.initDate();
@@ -514,7 +503,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
   writeValue(value: any) {
     if (value !== this.innerValue) {
       this.innerValue = value;
-      if ( this.innerValue instanceof Date || ('number' === typeof this.innerValue)) {
+      if (this.innerValue instanceof Date || ('number' === typeof this.innerValue)) {
         this.dateModel = this.innerValue;
         this.currrentDate = this.dateModel;
         this.selectedDate = this.currrentDate;
