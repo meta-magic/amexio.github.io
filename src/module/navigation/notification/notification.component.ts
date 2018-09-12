@@ -113,19 +113,17 @@ description : Position of notification window vertically:
 
   private notificationVertialCss = 'notification-vertical-';
 
-  private  notificationHorizontalCss = ' notification-horizontal-';
+  private notificationHorizontalCss = ' notification-horizontal-';
 
- @ContentChild('amexioNotificationTemp') notificationTemplate: TemplateRef<any>;
+  @ContentChild('amexioNotificationTemp') notificationTemplate: TemplateRef<any>;
 
   // Escape Key Functionality
   @HostListener('window:keyup', ['$event']) keyEvent(event: KeyboardEvent) {
-    if (this.closeonescape === true) {
-      if (event.keyCode === KEY_CODE_notify.esc) {
-        const count = this.messageData.length;
-        for (let i = 0; i < count; i++) {
-          const msg = this.messageData[i];
-          this.messageData.splice(msg, 1);
-        }
+    if (this.closeonescape === true && event.keyCode === KEY_CODE_notify.esc) {
+      const count = this.messageData.length;
+      for (let i = 0; i < count; i++) {
+        const msg = this.messageData[i];
+        this.messageData.splice(msg, 1);
       }
     }
   }
