@@ -378,7 +378,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
 
   // Set Max Full Year
   setMaxFullYear(d: any, max: any, mon: any) {
-    if (!(d.getMonth() === max.getMonth()) && d.getFullYear() <= max.getFullYear() && d.getMonth() <= max.getMonth()) {
+    if ((d.getMonth() !== max.getMonth()) && d.getFullYear() <= max.getFullYear() && d.getMonth() <= max.getMonth()) {
       d.setMonth(d.getMonth() + mon);
     }
   }
@@ -397,12 +397,8 @@ export class AmexioDateTimePickerComponent implements OnInit {
 
   // Set Min Full year
   setMinFullYear(d: any, min: any, mon: any) {
-    if (!(d.getMonth() === min.getMonth())) { // logic to chk if year is valid
-      if (d.getFullYear() >= min.getFullYear()) {
-        if (d.getMonth() >= min.getMonth()) {
+    if ((d.getMonth() !== min.getMonth()) && d.getFullYear() >= min.getFullYear() && d.getMonth() >= min.getMonth()) { // logic to chk if year is valid
           d.setMonth(d.getMonth() - mon);
-        }
-      }
     }
   }
   // this function validates year
@@ -634,13 +630,10 @@ export class AmexioDateTimePickerComponent implements OnInit {
         this.daysArray.forEach((element2: any) => {
           element2.forEach((element1: any) => {
             if (element1.date.getFullYear() <= To.getFullYear() && element1.date.getMonth()
-              <= To.getMonth() && element1.date.getDate() <= To.getDate()) {
-              if (element1.date.getFullYear() >= From.getFullYear() &&
-                element1.date.getMonth() >= From.getMonth() &&
-                element1.date.getDate() >= From.getDate()
-              ) {
+              <= To.getMonth() && element1.date.getDate() <= To.getDate() && element1.date.getFullYear() >= From.getFullYear() &&
+              element1.date.getMonth() >= From.getMonth() &&
+              element1.date.getDate() >= From.getDate()) {
                 element1.isDisabled = true;
-              }
             }
           });
         });
