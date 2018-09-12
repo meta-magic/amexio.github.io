@@ -397,7 +397,8 @@ export class AmexioDateTimePickerComponent implements OnInit {
 
   // Set Min Full year
   setMinFullYear(d: any, min: any, mon: any) {
-    if ((d.getMonth() !== min.getMonth()) && d.getFullYear() >= min.getFullYear() && d.getMonth() >= min.getMonth()) { // logic to chk if year is valid
+    if ((d.getMonth() !== min.getMonth()) && d.getFullYear() >= min.getFullYear() && d.getMonth() >= min.getMonth()) {
+      // logic to chk if year is valid
           d.setMonth(d.getMonth() - mon);
     }
   }
