@@ -31,15 +31,15 @@ description :  Local data for item selectors.
 
   _data: any;
   @Input('data')
-   set data(value: any[]) {
-     this._data = value;
-     if (this.componentLoaded) {
-       this.updateComponent();
-     }
-   }
-   get data(): any[] {
-     return this._data;
-   }
+  set data(value: any[]) {
+    this._data = value;
+    if (this.componentLoaded) {
+      this.updateComponent();
+    }
+  }
+  get data(): any[] {
+    return this._data;
+  }
 
   /*
 Properties
@@ -213,18 +213,17 @@ description :  Get selected value Object.
   }
 
   rightSwitch() {
-    if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected')) {
-      if (this.switchingObject['isSelected']) {
-        this.selectedData.push(this.switchingObject);
-        this.switchingObject['isSelected'] = true;
-        this.availableData.forEach((option, index) => {
-          if (option['isSelected']) {
-            this.availableData.splice(index, 1);
-          }
-        });
-        this.switchingObject = null;
-        this.dataEmitter();
-      }
+    if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected') && this.switchingObject['isSelected']) {
+      this.selectedData.push(this.switchingObject);
+      this.switchingObject['isSelected'] = true;
+      this.availableData.forEach((option, index) => {
+        if (option['isSelected']) {
+          this.availableData.splice(index, 1);
+        }
+      });
+      this.switchingObject = null;
+      this.dataEmitter();
+
     }
 
   }
@@ -236,52 +235,45 @@ description :  Get selected value Object.
   // Method called in left switch if flag is false
   private setLeftSwitch() {
     const flag = false;
-    if (!flag) {
-      if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected')) {
-        if (this.switchingObject['isSelected']) {
-          this.availableData.push(this.switchingObject);
-          this.switchingObject['isSelected'] = false;
-          this.selectedData.forEach((option, index) => {
-            if (!option['isSelected']) {
-              this.selectedData.splice(index, 1);
-            }
-          });
-          this.switchingObject = null;
-          this.dataEmitter();
+    if (!flag && this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected') && this.switchingObject['isSelected']) {
+      this.availableData.push(this.switchingObject);
+      this.switchingObject['isSelected'] = false;
+      this.selectedData.forEach((option, index) => {
+        if (!option['isSelected']) {
+          this.selectedData.splice(index, 1);
         }
-      }
+      });
+      this.switchingObject = null;
+      this.dataEmitter();
+
     }
+
   }
 
   upSwitch() {
-    if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected')) {
-      if (this.switchingObject['isSelected']) {
-        this.selectedData.forEach((opt: any, i: any) => {
-          this.getIndexObject(opt, i);
-        });
-        if (this.objectIndex !== 0) {
-          const index = this.selectedData[this.objectIndex];
-          this.selectedData[this.objectIndex] = this.selectedData[this.objectIndex - 1];
-          this.selectedData[this.objectIndex - 1] = index;
-          this.dataEmitter();
-        }
-
+    if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected') && this.switchingObject['isSelected']) {
+      this.selectedData.forEach((opt: any, i: any) => {
+        this.getIndexObject(opt, i);
+      });
+      if (this.objectIndex !== 0) {
+        const index = this.selectedData[this.objectIndex];
+        this.selectedData[this.objectIndex] = this.selectedData[this.objectIndex - 1];
+        this.selectedData[this.objectIndex - 1] = index;
+        this.dataEmitter();
       }
     }
   }
 
   downSwitch() {
-    if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected')) {
-      if (this.switchingObject['isSelected']) {
-        this.selectedData.forEach((opt: any, i: any) => {
-          this.getIndexObject(opt, i);
-        });
-        if (this.selectedData.length - 1 !== this.objectIndex) {
-          const index = this.selectedData[this.objectIndex];
-          this.selectedData[this.objectIndex] = this.selectedData[this.objectIndex + 1];
-          this.selectedData[this.objectIndex + 1] = index;
-          this.dataEmitter();
-        }
+    if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected') && this.switchingObject['isSelected']) {
+      this.selectedData.forEach((opt: any, i: any) => {
+        this.getIndexObject(opt, i);
+      });
+      if (this.selectedData.length - 1 !== this.objectIndex) {
+        const index = this.selectedData[this.objectIndex];
+        this.selectedData[this.objectIndex] = this.selectedData[this.objectIndex + 1];
+        this.selectedData[this.objectIndex + 1] = index;
+        this.dataEmitter();
       }
     }
 
@@ -291,7 +283,7 @@ description :  Get selected value Object.
     const tempArray: any = [];
     if (this.switchingObject != null && this.switchingObject['isSelected']) {
       this.selectedData.forEach((opt: any, i: any) => {
-       this.getIndexObject(opt, i);
+        this.getIndexObject(opt, i);
       });
       if (this.selectedData.length > 1) {
         tempArray[0] = this.selectedData[this.objectIndex];
@@ -308,7 +300,7 @@ description :  Get selected value Object.
   moveBottom() {
     if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected')) {
       this.selectedData.forEach((opt: any, i: any) => {
-       this.getIndexObject(opt, i);
+        this.getIndexObject(opt, i);
       });
       if (this.switchingObject['isSelected'] && this.selectedData.length > 1) {
         this.selectedData.splice(this.objectIndex, 1);
