@@ -285,13 +285,9 @@ description : Context Menu provides the list of menus on right click.
   // Escape Key Functionality
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
-    if (this.closeonescape === true) {
-      if (event.keyCode === KEY_CODE_window.esc) {
+    if (this.closeonescape === true && event.keyCode === KEY_CODE_window.esc) {
         this.showWindow = false;
         this.showChange.emit(false);
-
-      }
-
     }
   }
   ngOnInit() {

@@ -9,7 +9,7 @@
  Confirmation/Alert based on type, title, body user has configured.
  */
 
-import {Component, EventEmitter, HostListener, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 
 export enum KEY_CODE {
   esc = 27,
@@ -89,7 +89,7 @@ export class AmexiodialoguePaneComponent implements OnChanges, OnInit {
    default : false
    description : Enables And Disables the Escape button.
    */
-  @Input('close-on-escape')  closeonescape: boolean;
+  @Input('close-on-escape') closeonescape: boolean;
 
   /*
    Properties
@@ -99,7 +99,7 @@ export class AmexiodialoguePaneComponent implements OnChanges, OnInit {
    default : theme-color
    description : show the type of button.
    */
-  @Input('button-type')  buttontype: string;
+  @Input('button-type') buttontype: string;
 
   /*
    Properties
@@ -193,7 +193,7 @@ export class AmexiodialoguePaneComponent implements OnChanges, OnInit {
    default : confirm
    description : Mode to open, alert or dialogue mode.
    */
-  @Input() type: 'confirm'| 'alert';
+  @Input() type: 'confirm' | 'alert';
 
   /*
    Properties
@@ -249,8 +249,8 @@ export class AmexiodialoguePaneComponent implements OnChanges, OnInit {
   value = 0;
   constructor() {
     this.closable = true;
-    this.secondaryactionlabel  = 'Cancel';
-    this.primaryactionlabel   = 'Ok';
+    this.secondaryactionlabel = 'Cancel';
+    this.primaryactionlabel = 'Ok';
     this.custom = false;
     this.buttonsize = 'default';
     this.buttontype = 'theme-color';
@@ -259,13 +259,10 @@ export class AmexiodialoguePaneComponent implements OnChanges, OnInit {
 
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
-    if (this.closeonescape === true) {
-      if (event.keyCode === KEY_CODE.esc) {
-        this.showdialogue = false ;
-        this.show = false;
-        this.showChange.emit(false);
-      }
-
+    if (this.closeonescape === true && event.keyCode === KEY_CODE.esc) {
+      this.showdialogue = false;
+      this.show = false;
+      this.showChange.emit(false);
     }
   }
 
@@ -295,7 +292,7 @@ export class AmexiodialoguePaneComponent implements OnChanges, OnInit {
 
   onCloseClick() {
     if (this.closable) {
-      this.showdialogue = false ;
+      this.showdialogue = false;
       this.show = false;
       this.showChange.emit(false);
       this.close.emit(false);
