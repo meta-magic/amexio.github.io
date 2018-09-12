@@ -1,4 +1,3 @@
-
 <amexio-row>
   <amexio-column [size]="'45pt'">
     <amexio-card [header]="true">
@@ -7,16 +6,16 @@
         <div style="height: 220px;" *ngIf="mask">
           <div class="spinner"></div>
         </div>
-        <div [style.height.px]="height" *ngIf="!mask" style="overflow: auto">
-         
-            <div class="itemselector-list" [ngClass]="data['isSelected'] ? 'itemselector-list-active':''"
-                *ngFor="let data of availableData; let i = index" (click)="itemClick(data,i, true,false)">
-              {{data[displayfield]}}
+        <div [style.height.px]="height" (dragover)="allowDrop({event:$event,data:data})" (drop)="dropLeft($event)" *ngIf="!mask" style="overflow: auto">
+          <div class="itemselector-list" [ngClass]="data['isSelected'] ? 'itemselector-list-active':''" *ngFor="let data of availableData; let i = index"
+            (click)="itemClick(data,i, true,false)" [attr.draggable]="enabledrag" (dragstart)="onDragStartLeft({event:$event,data:data,index:i})">
+            {{data[displayfield]}}
           </div>
         </div>
       </amexio-body>
     </amexio-card>
   </amexio-column>
+
 
   <amexio-column [size]="'10pt'">
 
@@ -25,24 +24,25 @@
       <amexio-card [header]="true">
         <amexio-header>&nbsp;</amexio-header>
         <amexio-body>
+
           <div class="actionbar">
-            <div [style.height.px]="height"  class="actionbarinner">
+            <div [style.height.px]="height" class="actionbarinner">
               <div [ngClass]="{'actiondisable':!rightactive}" (click)="moveTop()" class="action movetop ">
-                <amexio-data-icon key="itemselector_caretup"></amexio-data-icon >
+                <amexio-data-icon key="itemselector_caretup"></amexio-data-icon>
               </div>
-              <div  [ngClass]="{'actiondisable':!rightactive}" (click)="upSwitch()"  class="action moveup">
-                <amexio-data-icon key="itemselector_arrowup"></amexio-data-icon >
+              <div [ngClass]="{'actiondisable':!rightactive}" (click)="upSwitch()" class="action moveup">
+                <amexio-data-icon key="itemselector_arrowup"></amexio-data-icon>
               </div>
-              <div  [ngClass]="{'actiondisable':!rightactive}" (click)="leftSwitch()"  class="action moveleft">
-                <amexio-data-icon key="itemselector_arrowleft"></amexio-data-icon >
+              <div [ngClass]="{'actiondisable':!rightactive}" (click)="leftSwitch()" class="action moveleft">
+                <amexio-data-icon key="itemselector_arrowleft"></amexio-data-icon>
               </div>
-              <div  [ngClass]="{'actiondisable':!leftactive}"  (click)="rightSwitch()"  class="action moveright">
-                <amexio-data-icon key="itemselector_arrowright"></amexio-data-icon >
+              <div [ngClass]="{'actiondisable':!leftactive}" (click)="rightSwitch()" class="action moveright">
+                <amexio-data-icon key="itemselector_arrowright"></amexio-data-icon>
               </div>
-              <div  [ngClass]="{'actiondisable':!rightactive}" (click)="downSwitch()"  class="action movedown">
-                <amexio-data-icon key="itemselector_arrowdown"></amexio-data-icon >
+              <div [ngClass]="{'actiondisable':!rightactive}" (click)="downSwitch()" class="action movedown">
+                <amexio-data-icon key="itemselector_arrowdown"></amexio-data-icon>
               </div>
-              <div  [ngClass]="{'actiondisable':!rightactive}" (click)="moveBottom()"  class="action movebottom">
+              <div [ngClass]="{'actiondisable':!rightactive}" (click)="moveBottom()" class="action movebottom">
                 <amexio-data-icon key="itemselector_caretdown"></amexio-data-icon>
               </div>
             </div>
@@ -57,11 +57,10 @@
     <amexio-card [header]="true">
       <amexio-header>Selected</amexio-header>
       <amexio-body>
-        <div [style.height.px]="height" style="overflow: auto">
-            <div class="itemselector-list"
-                *ngFor="let data of selectedData; let i = index"
-                (click)="itemClick(data,i, false,true)" [ngClass]="data['selectedClick'] ? 'itemselector-list-active':''">
-              {{data[displayfield]}}
+        <div [style.height.px]="height" style="overflow: auto" (dragover)="allowDrop({event:$event,data:data})" (drop)="dropRight($event)">
+          <div  [attr.draggable]="enabledrag" class="itemselector-list" *ngFor="let data of selectedData; let i = index" (click)="itemClick(data,i, false,true)"
+           [ngClass]="data['selectedClick'] ? 'itemselector-list-active':''" (dragstart)="onDragStartRight({event:$event,data:data,index:i})">
+            {{data[displayfield]}}
           </div>
         </div>
       </amexio-body>

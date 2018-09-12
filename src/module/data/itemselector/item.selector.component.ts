@@ -1,7 +1,6 @@
 /**
  * Created by pratik on 27/12/17.
  */
-
 /*
 Component Name : Amexio item selector
 Component Selector : <amexio-item-selector>
@@ -21,107 +20,142 @@ export class AmexioItemSelectorComponent implements OnInit {
 
   private componentLoaded: boolean;
   /*
-Properties
-name : data
-datatype : any
-version : 4.0 onwards
-default : none
-description :  Local data for item selectors.
-*/
+   Properties
+   name : data
+   datatype : any
+   version : 4.0 onwards
+   default : none
+   description :  Local data for item selectors.
+   */
 
   _data: any;
   @Input('data')
-   set data(value: any[]) {
-     this._data = value;
-     if (this.componentLoaded) {
-       this.updateComponent();
-     }
-   }
-   get data(): any[] {
-     return this._data;
-   }
+  set data(value: any[]) {
+    this._data = value;
+    if (this.componentLoaded) {
+      this.updateComponent();
+    }
+  }
+  get data(): any[] {
+    return this._data;
+  }
 
   /*
-Properties
-name : height
-datatype : any
-version : 4.0 onwards
-default : none
-description :  Height of item selector
-*/
+   Properties
+   name : height
+   datatype : any
+   version : 4.0 onwards
+   default : none
+   description :  Height of item selector
+   */
   @Input() height: any;
 
   mask = true;
 
   /*
-Properties
-name : data-reader
-datatype : string
-version : 4.0 onwards
-default : none
-description :  Key in JSON Datasource for records.
-*/
+   Properties
+   name : data-reader
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description :  Key in JSON Datasource for records.
+   */
   @Input('data-reader') datareader: string;
 
   /*
-Properties
-name : http-method
-datatype : string
-version : 4.0 onwards
-default : none
-description :  Type of HTTP call, POST,GET.
-*/
+   Properties
+   name : http-method
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description :  Type of HTTP call, POST,GET.
+   */
   @Input('http-method') httpmethod: string;
 
   /*
-Properties
-name : http-url
-datatype : string
-version : 4.0 onwards
-default : none
-description :  REST url for fetching datasource.
-*/
+   Properties
+   name : http-url
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description :  REST url for fetching datasource.
+   */
   @Input('http-url') httpurl: string;
 
   /*
-Properties
-name : display-field
-datatype : string
-version : 4.0 onwards
-default : none
-description :  Name of key inside response data to display on ui.
-*/
+   Properties
+   name : display-field
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description :  Name of key inside response data to display on ui.
+   */
   @Input('display-field') displayfield: string;
 
   /*
-Properties
-name : value-field
-datatype : string
-version : 4.0 onwards
-default : none
-description :  Name of key inside response data.use to send to backend
-*/
+   Properties
+   name : value-field
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description :  Name of key inside response data.use to send to backend
+   */
   @Input('value-field') valuefield: string;
 
   /*
-Events
-name : availableRecords
-datatype : none
-version : none
-default : none
-description :  Get available values objects.
-*/
+   Properties
+   name : enable-drag
+   datatype : boolean
+   version : 5.0.0 onwards
+   default : false
+   description : nodes can be dragged
+   */
+  @Input('enable-drag') enabledrag: boolean;
+
+  /*
+   Properties
+   name : enable-drop
+   datatype : boolean
+   version : 5.0.0 onwards
+   default : false
+   description : any node can be dropped in the selector structure
+   */
+  @Input('enable-drop') enabledrop = false;
+
+  /*
+   Properties
+   name : across-itemselector
+   datatype : boolean
+   version : 5.0.0 onwards
+   default : false
+   description : Dragging and dropping is possible across list.
+   */
+  @Input('across-itemselector') acrossitemselector = false;
+  /*
+   Events
+   name : availableRecords
+   datatype : none
+   version : none
+   default : none
+   description :  Get available values objects.
+   */
   @Output() availableRecords: any = new EventEmitter<any>();
 
   /*
-Events
-name : selectedRecords
-datatype : none
-version : none
-default : none
-description :  Get selected value Object.
-*/
+   Events
+   name : selectedRecords
+   datatype : none
+   version : none
+   default : none
+   description :  Get selected value Object.
+   */
   @Output() selectedRecords: any = new EventEmitter<any>();
+
+  @Output() onDrag: any = new EventEmitter<any>();  // Emits at drag
+  @Output() dragover: any = new EventEmitter<any>();   // Emits at drag over
+  @Input() dragData: any;
+
+  @Input() parentRef: any;
 
   availableData: any[];
 
@@ -140,6 +174,8 @@ description :  Get selected value Object.
   previousValue: any;
 
   check: any;
+
+  isNode: boolean;
 
   constructor(public itemSelectorService: CommonDataService) {
   }
@@ -214,17 +250,16 @@ description :  Get selected value Object.
 
   rightSwitch() {
     if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected') && this.switchingObject['isSelected']) {
-        this.selectedData.push(this.switchingObject);
-        this.switchingObject['isSelected'] = true;
-        this.availableData.forEach((option, index) => {
-          if (option['isSelected']) {
-            this.availableData.splice(index, 1);
-          }
-        });
-        this.switchingObject = null;
-        this.dataEmitter();
+      this.selectedData.push(this.switchingObject);
+      this.switchingObject['isSelected'] = true;
+      this.availableData.forEach((option, index) => {
+        if (option['isSelected']) {
+          this.availableData.splice(index, 1);
+        }
+      });
+      this.switchingObject = null;
+      this.dataEmitter();
     }
-
   }
 
   leftSwitch() {
@@ -235,52 +270,51 @@ description :  Get selected value Object.
   private setLeftSwitch() {
     const flag = false;
     if (!flag && this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected') && this.switchingObject['isSelected']) {
-          this.availableData.push(this.switchingObject);
-          this.switchingObject['isSelected'] = false;
-          this.selectedData.forEach((option, index) => {
-            if (!option['isSelected']) {
-              this.selectedData.splice(index, 1);
-            }
-          });
-          this.switchingObject = null;
-          this.dataEmitter();
-      }
+      this.availableData.push(this.switchingObject);
+      this.switchingObject['isSelected'] = false;
+      this.selectedData.forEach((option, index) => {
+        if (!option['isSelected']) {
+          this.selectedData.splice(index, 1);
+        }
+      });
+      this.switchingObject = null;
+      this.dataEmitter();
+    }
   }
 
   upSwitch() {
     if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected') && this.switchingObject['isSelected']) {
-        this.selectedData.forEach((opt: any, i: any) => {
-          this.getIndexObject(opt, i);
-        });
-        if (this.objectIndex !== 0) {
-          const index = this.selectedData[this.objectIndex];
-          this.selectedData[this.objectIndex] = this.selectedData[this.objectIndex - 1];
-          this.selectedData[this.objectIndex - 1] = index;
-          this.dataEmitter();
-        }
+      this.selectedData.forEach((opt: any, i: any) => {
+        this.getIndexObject(opt, i);
+      });
+      if (this.objectIndex !== 0) {
+        const index = this.selectedData[this.objectIndex];
+        this.selectedData[this.objectIndex] = this.selectedData[this.objectIndex - 1];
+        this.selectedData[this.objectIndex - 1] = index;
+        this.dataEmitter();
+      }
     }
   }
 
   downSwitch() {
     if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected') && this.switchingObject['isSelected']) {
-        this.selectedData.forEach((opt: any, i: any) => {
-          this.getIndexObject(opt, i);
-        });
-        if (this.selectedData.length - 1 !== this.objectIndex) {
-          const index = this.selectedData[this.objectIndex];
-          this.selectedData[this.objectIndex] = this.selectedData[this.objectIndex + 1];
-          this.selectedData[this.objectIndex + 1] = index;
-          this.dataEmitter();
-        }
+      this.selectedData.forEach((opt: any, i: any) => {
+        this.getIndexObject(opt, i);
+      });
+      if (this.selectedData.length - 1 !== this.objectIndex) {
+        const index = this.selectedData[this.objectIndex];
+        this.selectedData[this.objectIndex] = this.selectedData[this.objectIndex + 1];
+        this.selectedData[this.objectIndex + 1] = index;
+        this.dataEmitter();
+      }
     }
-
   }
 
   moveTop() {
     const tempArray: any = [];
     if (this.switchingObject != null && this.switchingObject['isSelected']) {
       this.selectedData.forEach((opt: any, i: any) => {
-       this.getIndexObject(opt, i);
+        this.getIndexObject(opt, i);
       });
       if (this.selectedData.length > 1) {
         tempArray[0] = this.selectedData[this.objectIndex];
@@ -297,7 +331,7 @@ description :  Get selected value Object.
   moveBottom() {
     if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected')) {
       this.selectedData.forEach((opt: any, i: any) => {
-       this.getIndexObject(opt, i);
+        this.getIndexObject(opt, i);
       });
       if (this.switchingObject['isSelected'] && this.selectedData.length > 1) {
         this.selectedData.splice(this.objectIndex, 1);
@@ -315,6 +349,40 @@ description :  Get selected value Object.
   getIndexObject(opt: any, i: any) {
     if (opt[this.valuefield] === this.switchingObject[this.valuefield]) {
       this.objectIndex = i;
+    }
+  }
+  // Method to drag parent with node
+  onDragStartLeft(dragData: any) {
+    if (!this.acrossitemselector) {
+      this.itemClick(dragData.data, dragData.index, true, false);
+    } else {
+      dragData.event.dataTransfer.setData('itemnodedata', JSON.stringify(dragData.data));
+      this.onDrag.emit(dragData);
+    }
+  }
+
+  onDragStartRight(dragData: any) {
+    if (!this.acrossitemselector) {
+      this.itemClick(dragData.data, dragData.index, false, true);
+    } else {
+      dragData.event.dataTransfer.setData('itemnodedata', JSON.stringify(dragData.data));
+      this.onDrag.emit(dragData);
+    }
+  }
+
+  allowDrop(dragOverData: any) {
+    dragOverData.event.preventDefault();
+  }
+
+  dropRight(event: any) {
+    if (this.enabledrop) {
+      this.rightSwitch();
+    }
+  }
+
+  dropLeft(event: any) {
+    if (this.enabledrop) {
+      this.leftSwitch();
     }
   }
 }
