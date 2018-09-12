@@ -17,7 +17,7 @@ import { CommonDataService } from '../../services/data/common.data.service';
   selector: 'amexio-treeview', templateUrl: './tree.component.html',
 })
 export class AmexioTreeViewComponent implements AfterViewInit, OnInit {
-private componentLoaded: boolean;
+  private componentLoaded: boolean;
   /*
 Properties
 name : data
@@ -26,17 +26,17 @@ version : 4.0 onwards
 default : none
 description : Local Data binding.
 */
-_data: any;
-@Input('data')
- set data(value: any[]) {
-   this._data = value;
-   if (this.componentLoaded) {
-     this.updateComponent();
-   }
- }
- get data(): any[] {
-   return this._data;
- }
+  _data: any;
+  @Input('data')
+  set data(value: any[]) {
+    this._data = value;
+    if (this.componentLoaded) {
+      this.updateComponent();
+    }
+  }
+  get data(): any[] {
+    return this._data;
+  }
 
   /*
 Properties
@@ -67,6 +67,24 @@ default : none
 description : Key in JSON Datasource for records.
 */
   @Input('data-reader') datareader: string;
+/*
+  Properties
+name : display-key
+datatype : string
+version : 5.2.0 onwards
+default : text
+description : Name of key inside response data to display on ui.
+*/
+@Input('display-key') displaykey: string;
+   /*
+Properties
+name : child-array-key
+datatype : string
+version : 5.2.0 onwards
+default : children
+description : Name of key for child array name inside response data to display on ui.
+*/
+@Input('child-array-key') childarraykey: string;
 
   /*
   Events
@@ -162,11 +180,8 @@ description : Context Menu provides the list of menus on right click.
   @Output() onTreeNodeChecked: any = new EventEmitter<any>();
 
   @Output() onDrag: any = new EventEmitter<any>();  // Emits at drag
-
   @Output() onDrop: any = new EventEmitter<any>();   // emits at drop
-
   @Output() dragover: any = new EventEmitter<any>();   // Emits at drag over
-
   @Input() dragData: any;
 
   @Output() nodeRightClick: any = new EventEmitter<any>();
@@ -194,6 +209,8 @@ description : Context Menu provides the list of menus on right click.
   constructor(public element: ElementRef, public dataService: CommonDataService, private cdf: ChangeDetectorRef) {
     this.isNode = true;
     this.acrosstree = false;
+    this.displaykey = 'text';
+    this.childarraykey = 'children';
   }
 
   ngOnInit() {
@@ -227,7 +244,35 @@ description : Context Menu provides the list of menus on right click.
       this.setData(this.data);
     }
   }
+  public expandAll(node: any) {
+    this.expandAllCall(this.parentRef);
+  }
 
+  expandAllCall(node: any) {
+    node.forEach((childCheck: any) => {
+      if (!childCheck.expand) {
+        childCheck.expand = true;
+      }
+      if (childCheck.hasOwnProperty(this.childarraykey)) {
+        this.expandAllCall(childCheck[this.childarraykey]);
+      }
+    });
+  }
+
+  collapseAll(node: any) {
+    this.collapseAllCall(this.parentRef);
+  }
+
+  collapseAllCall(node: any) {
+    node.forEach((childCheck: any) => {
+      if (childCheck.expand) {
+        childCheck.expand = false;
+      }
+      if (childCheck.hasOwnProperty(this.childarraykey)) {
+        this.collapseAllCall(childCheck[this.childarraykey]);
+      }
+    });
+  }
   onClick(node: any) {
     node.expand = !node.expand;
   }
@@ -239,14 +284,14 @@ description : Context Menu provides the list of menus on right click.
 
   activateNode(data: any[], node: any) {
     for (const i of data) {
-      if (node === data[i] && !i['children']) {
+      if (node === data[i] && !i[this.childarraykey]) {
         i['active'] = true;
       } else {
         i['active'] = false;
       }
 
-      if (i['children']) {
-        this.activateNode(i['children'], node);
+      if (i[this.childarraykey]) {
+        this.activateNode(i[this.childarraykey], node);
       }
     }
   }
@@ -276,20 +321,20 @@ description : Context Menu provides the list of menus on right click.
       } else {
         node['isSelected'] = false;
       }
-      if (node.hasOwnProperty('children') && node.children.length > 0) {
+      if (node.hasOwnProperty(this.childarraykey) && node[this.childarraykey].length > 0) {
         this.setSelectedFlagInChild(node);
       }
 
     });
   }
   setSelectedFlagInChild(node: any) {
-    node.children.forEach((childcom: any) => {
+    node[this.childarraykey].forEach((childcom: any) => {
       if (childcom.hasOwnProperty('isSelected')) {
         childcom.isSelected = false;
       } else {
         childcom['isSelected'] = false;
       }
-      if (childcom.hasOwnProperty('children') && childcom.children.length > 0) {
+      if (childcom.hasOwnProperty(this.childarraykey) && childcom[this.childarraykey].length > 0) {
         this.setSelectedFlagInChild(childcom);
       }
     });
@@ -297,22 +342,21 @@ description : Context Menu provides the list of menus on right click.
 
   emitCheckedData(checkedData: any) {
     checkedData.checked = !checkedData.checked;
-
     if (checkedData.checked) {
-      if (checkedData.hasOwnProperty('children')) {
-        checkedData.children.forEach((option: any) => {
+      if (checkedData.hasOwnProperty(this.childarraykey)) {
+        checkedData[this.childarraykey].forEach((option: any) => {
           option.checked = true;
-          if (option.hasOwnProperty('children')) {
+          if (option.hasOwnProperty(this.childarraykey)) {
             this.setCheckedStatusFromParent(option);
           }
         });
       }
       this.onTreeNodeChecked.emit(this.data);
     } else {
-      if (checkedData.hasOwnProperty('children')) {
-        checkedData.children.forEach((option: any) => {
+      if (checkedData.hasOwnProperty(this.childarraykey)) {
+        checkedData[this.childarraykey].forEach((option: any) => {
           option.checked = false;
-          if (option.hasOwnProperty('children')) {
+          if (option.hasOwnProperty(this.childarraykey)) {
             this.searchObject(option);
           }
         });
@@ -323,18 +367,18 @@ description : Context Menu provides the list of menus on right click.
   }
 
   searchObject(object: any) {
-    object.children.forEach((childOption: any) => {
+    object[this.childarraykey].forEach((childOption: any) => {
       childOption.checked = false;
-      if (childOption.hasOwnProperty('children')) {
+      if (childOption.hasOwnProperty(this.childarraykey)) {
         this.searchObject(childOption);
       }
     });
   }
 
   setCheckedStatusFromParent(object: any) {
-    object.children.forEach((childOption: any) => {
+    object[this.childarraykey].forEach((childOption: any) => {
       childOption.checked = true;
-      if (childOption.hasOwnProperty('children')) {
+      if (childOption.hasOwnProperty(this.childarraykey)) {
         this.setCheckedStatusFromParent(childOption);
       }
     });
@@ -345,7 +389,6 @@ description : Context Menu provides the list of menus on right click.
   }
 
   // Method to drag parent with node
-
   onDragStart(dragData: any) {
     dragData.event.dataTransfer.setData('treenodedata', JSON.stringify(dragData.data));
     dragData.event.dataTransfer.effectAllowed = 'copy';
@@ -376,17 +419,17 @@ description : Context Menu provides the list of menus on right click.
         event.target.style.border = '3px dotted green';
       }
     }
-    if (dragData.data.hasOwnProperty('children')) {
+    if (dragData.data.hasOwnProperty(this.childarraykey)) {
       this.getDropNode(dragData, node, event);
     }
   }
 
   getDropNode(dragData: any, node: any, event: any) {
-    dragData.data.children.forEach((child: any) => {
+    dragData.data[this.childarraykey].forEach((child: any) => {
       if (JSON.stringify(child) === JSON.stringify(node) || node.leaf === true) {
         event.dataTransfer.dropEffect = 'none';
-      } else if (child.hasOwnProperty('children')) {
-        this.getDropNode(child.children, node, event);
+      } else if (child.hasOwnProperty(this.childarraykey)) {
+        this.getDropNode(child[this.childarraykey], node, event);
       }
     });
   }
@@ -401,9 +444,9 @@ description : Context Menu provides the list of menus on right click.
           this.setDropNodeTree(dropData);
         }
       } else {
-        if (dropData.data.hasOwnProperty('children')) {
+        if (dropData.data.hasOwnProperty(this.childarraykey)) {
           this.removeNode(dropData);
-          dropData.data.children.push(JSON.parse(dropData.event.dataTransfer.getData('treenodedata')));
+          dropData.data[this.childarraykey].push(JSON.parse(dropData.event.dataTransfer.getData('treenodedata')));
           this.onDrop.emit(dropData);
         }
       }
@@ -414,24 +457,24 @@ description : Context Menu provides the list of menus on right click.
   setDropAcrosstree(dropData: any) {
     if (this.dragData.data === dropData.data) {
       this.isNode = false;
-    } else if (this.dragData.data.hasOwnProperty('children')) {
+    } else if (this.dragData.data.hasOwnProperty(this.childarraykey)) {
       this.checkNode(this.dragData, dropData);
     }
   }
   // second method pf drop
   setDropNodeTree(dropData: any) {
-    if (dropData.data.hasOwnProperty('children')) {
+    if (dropData.data.hasOwnProperty(this.childarraykey)) {
       this.removeNode(dropData);
-      dropData.data.children.push(JSON.parse(dropData.event.dataTransfer.getData('treenodedata')));
+      dropData.data[this.childarraykey].push(JSON.parse(dropData.event.dataTransfer.getData('treenodedata')));
       this.onDrop.emit(dropData);
     }
   }
 
   checkNode(dragData: any, dropData: any) {
-    this.dragData.data.children.forEach((child: any) => {
+    this.dragData.data[this.childarraykey].forEach((child: any) => {
       if (JSON.stringify(child) === JSON.stringify(dropData.data)) {
         this.isNode = false;
-      } else if (child.hasOwnProperty('children')) {
+      } else if (child.hasOwnProperty(this.childarraykey)) {
         this.checkNode(child, dropData);
       }
     });
@@ -445,8 +488,8 @@ description : Context Menu provides the list of menus on right click.
     treeData.forEach((childNode: any, index: number) => {
       if (JSON.stringify(childNode) === JSON.stringify(dragNode)) {
         treeData.splice(index, 1);
-      } else if (childNode.hasOwnProperty('children')) {
-        this.removeDragNode(childNode.children, dragNode);
+      } else if (childNode.hasOwnProperty(this.childarraykey)) {
+        this.removeDragNode(childNode[this.childarraykey], dragNode);
       }
     });
   }
@@ -517,5 +560,4 @@ description : Context Menu provides the list of menus on right click.
       'width': '15%',
     };
   }
-
 }
