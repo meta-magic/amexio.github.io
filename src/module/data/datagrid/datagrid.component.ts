@@ -776,12 +776,11 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit {
       this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setChangeData(this.data);
     }
-    if ((this.columnPreviewData != null && this.columndefintion != null )&&
-    (JSON.stringify(this.columnPreviewData) !== JSON.stringify(this.columndefintion))) {
-        this.columnPreviewData = JSON.parse(JSON.stringify(this.columndefintion));
-        this.columns = this.columndefintion;
+    if ((this.columnPreviewData != null && this.columndefintion != null) &&
+      (JSON.stringify(this.columnPreviewData) !== JSON.stringify(this.columndefintion))) {
+      this.columnPreviewData = JSON.parse(JSON.stringify(this.columndefintion));
+      this.columns = this.columndefintion;
     }
-
   }
 
   ngAfterContentInit() {
@@ -1171,14 +1170,14 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit {
     }
   }
 
-  checkStringFilter(filter: string,  key: any, value: string): boolean {
+  checkStringFilter(filter: string, key: any, value: string): boolean {
     if (filter === '3') {
       return key.includes(value);
     } else if (filter === '1') {
       return key.startsWith(value);
     } else if (filter === '2') {
       return key.endsWith(value);
-    }else {
+    } else {
       return key !== value;
     }
   }
@@ -1191,7 +1190,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit {
         condition = this.checkStringFilter(filterOpt.filter, data[filterOpt.key].toLowerCase(), filterOpt.value.toLowerCase());
 
       } else if (filterOpt.type === 'number') {
-        condition = this.checkNumberFilter(filterOpt.filter,  data[filterOpt.key], filterOpt.value);
+        condition = this.checkNumberFilter(filterOpt.filter, data[filterOpt.key], filterOpt.value);
       }
       statusArray.push(condition);
     });
