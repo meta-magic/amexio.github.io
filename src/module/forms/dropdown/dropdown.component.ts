@@ -571,11 +571,9 @@ description : Set enable / disable popover.
   }
   // set accessor including call the onchange callback
   set value(v: any) {
-    if (v != null) {
-      if (v !== this.innerValue) {
+    if (v != null && v !== this.innerValue) {
         this.innerValue = v;
         this.onChangeCallback(v);
-      }
     }
   }
   // Set touched on blur

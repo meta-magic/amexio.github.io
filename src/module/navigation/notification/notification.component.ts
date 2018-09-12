@@ -119,14 +119,12 @@ description : Position of notification window vertically:
 
   // Escape Key Functionality
   @HostListener('window:keyup', ['$event']) keyEvent(event: KeyboardEvent) {
-    if (this.closeonescape === true) {
-      if (event.keyCode === KEY_CODE_notify.esc) {
+    if (this.closeonescape === true && event.keyCode === KEY_CODE_notify.esc) {
         const count = this.messageData.length;
         for (let i = 0; i < count; i++) {
           const msg = this.messageData[i];
           this.messageData.splice(msg, 1);
         }
-      }
     }
   }
   constructor(private ref: ChangeDetectorRef) {

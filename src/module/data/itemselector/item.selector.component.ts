@@ -213,8 +213,7 @@ description :  Get selected value Object.
   }
 
   rightSwitch() {
-    if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected')) {
-      if (this.switchingObject['isSelected']) {
+    if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected') && this.switchingObject['isSelected']) {
         this.selectedData.push(this.switchingObject);
         this.switchingObject['isSelected'] = true;
         this.availableData.forEach((option, index) => {
@@ -224,7 +223,6 @@ description :  Get selected value Object.
         });
         this.switchingObject = null;
         this.dataEmitter();
-      }
     }
 
   }
@@ -236,9 +234,7 @@ description :  Get selected value Object.
   // Method called in left switch if flag is false
   private setLeftSwitch() {
     const flag = false;
-    if (!flag) {
-      if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected')) {
-        if (this.switchingObject['isSelected']) {
+    if (!flag && this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected') && this.switchingObject['isSelected']) {
           this.availableData.push(this.switchingObject);
           this.switchingObject['isSelected'] = false;
           this.selectedData.forEach((option, index) => {
@@ -248,14 +244,11 @@ description :  Get selected value Object.
           });
           this.switchingObject = null;
           this.dataEmitter();
-        }
       }
-    }
   }
 
   upSwitch() {
-    if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected')) {
-      if (this.switchingObject['isSelected']) {
+    if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected') && this.switchingObject['isSelected']) {
         this.selectedData.forEach((opt: any, i: any) => {
           this.getIndexObject(opt, i);
         });
@@ -265,14 +258,11 @@ description :  Get selected value Object.
           this.selectedData[this.objectIndex - 1] = index;
           this.dataEmitter();
         }
-
-      }
     }
   }
 
   downSwitch() {
-    if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected')) {
-      if (this.switchingObject['isSelected']) {
+    if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected') && this.switchingObject['isSelected']) {
         this.selectedData.forEach((opt: any, i: any) => {
           this.getIndexObject(opt, i);
         });
@@ -282,7 +272,6 @@ description :  Get selected value Object.
           this.selectedData[this.objectIndex + 1] = index;
           this.dataEmitter();
         }
-      }
     }
 
   }

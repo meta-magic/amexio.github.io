@@ -188,16 +188,16 @@ export class AmexioDateTimePickerComponent implements OnInit {
     this.viewmode = '1';
 
     this.yearList1 = [{ year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
-      { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
-      { year: 0, flag: false, disabled: false }];
+    { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+    { year: 0, flag: false, disabled: false }];
     this.yearList2 = [{ year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
-      { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
-      { year: 0, flag: false, disabled: false }];
+    { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
+    { year: 0, flag: false, disabled: false }];
     this.monthList1 = [{ name: 'Jan', flag: false, num: 4 }, { name: 'Feb', flag: false },
-      { name: 'Mar', flag: false }, { name: 'Apr', flag: false }, { name: 'May', flag: false },
-      { name: 'Jun', flag: false }];
+    { name: 'Mar', flag: false }, { name: 'Apr', flag: false }, { name: 'May', flag: false },
+    { name: 'Jun', flag: false }];
     this.monthList2 = [{ name: 'Jul', flag: false }, { name: 'Aug', flag: false }, { name: 'Sep', flag: false },
-      { name: 'Oct', flag: false }, { name: 'Nov', flag: false }, { name: 'Dec', flag: false }];
+    { name: 'Oct', flag: false }, { name: 'Nov', flag: false }, { name: 'Dec', flag: false }];
     this.minDate = '';
     this.maxDate = '';
     this.elementId = new Date().getTime() + '';
@@ -378,14 +378,8 @@ export class AmexioDateTimePickerComponent implements OnInit {
 
   // Set Max Full Year
   setMaxFullYear(d: any, max: any, mon: any) {
-    if (!(d.getMonth() === max.getMonth())) {
-      // *********check here******************* */
-      // logic to chk if year is valid
-      if (d.getFullYear() <= max.getFullYear()) {
-        if (d.getMonth() <= max.getMonth()) {
-          d.setMonth(d.getMonth() + mon);
-        }
-      }
+    if ((d.getMonth() !== max.getMonth()) && d.getFullYear() <= max.getFullYear() && d.getMonth() <= max.getMonth()) {
+      d.setMonth(d.getMonth() + mon);
     }
   }
   // Set Minus Data
@@ -403,12 +397,9 @@ export class AmexioDateTimePickerComponent implements OnInit {
 
   // Set Min Full year
   setMinFullYear(d: any, min: any, mon: any) {
-    if (!(d.getMonth() === min.getMonth())) { // logic to chk if year is valid
-      if (d.getFullYear() >= min.getFullYear()) {
-        if (d.getMonth() >= min.getMonth()) {
-          d.setMonth(d.getMonth() - mon);
-        }
-      }
+    if ((d.getMonth() !== min.getMonth()) && d.getFullYear() >= min.getFullYear() && d.getMonth() >= min.getMonth()) {
+      // logic to chk if year is valid
+      d.setMonth(d.getMonth() - mon);
     }
   }
   // this function validates year
@@ -514,7 +505,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
   writeValue(value: any) {
     if (value !== this.innerValue) {
       this.innerValue = value;
-      if ( this.innerValue instanceof Date || ('number' === typeof this.innerValue)) {
+      if (this.innerValue instanceof Date || ('number' === typeof this.innerValue)) {
         this.dateModel = this.innerValue;
         this.currrentDate = this.dateModel;
         this.selectedDate = this.currrentDate;
@@ -645,13 +636,10 @@ export class AmexioDateTimePickerComponent implements OnInit {
         this.daysArray.forEach((element2: any) => {
           element2.forEach((element1: any) => {
             if (element1.date.getFullYear() <= To.getFullYear() && element1.date.getMonth()
-              <= To.getMonth() && element1.date.getDate() <= To.getDate()) {
-              if (element1.date.getFullYear() >= From.getFullYear() &&
-                element1.date.getMonth() >= From.getMonth() &&
-                element1.date.getDate() >= From.getDate()
-              ) {
-                element1.isDisabled = true;
-              }
+              <= To.getMonth() && element1.date.getDate() <= To.getDate() && element1.date.getFullYear() >= From.getFullYear() &&
+              element1.date.getMonth() >= From.getMonth() &&
+              element1.date.getDate() >= From.getDate()) {
+              element1.isDisabled = true;
             }
           });
         });

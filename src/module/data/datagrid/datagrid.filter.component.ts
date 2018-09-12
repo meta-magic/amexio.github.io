@@ -148,10 +148,8 @@ For internal use
         type: col.datatype,
       };
       this.filterOptions.forEach((opt: any) => {
-        if (opt.checkedStatus === this.checkIcon) {
-          if (col.datatype === opt.type) {
+        if (opt.checkedStatus === this.checkIcon && col.datatype === opt.type) {
             filter['filter'] = opt.value;
-          }
         }
       });
       this.filterDataObject(filter, col);
