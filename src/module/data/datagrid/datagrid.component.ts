@@ -776,11 +776,10 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit {
       this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setChangeData(this.data);
     }
-    if (this.columnPreviewData != null && this.columndefintion != null) {
-      if (JSON.stringify(this.columnPreviewData) !== JSON.stringify(this.columndefintion)) {
+    if ((this.columnPreviewData != null && this.columndefintion != null )&&
+    (JSON.stringify(this.columnPreviewData) !== JSON.stringify(this.columndefintion))) {
         this.columnPreviewData = JSON.parse(JSON.stringify(this.columndefintion));
         this.columns = this.columndefintion;
-      }
     }
 
   }

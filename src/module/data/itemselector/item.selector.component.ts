@@ -249,20 +249,17 @@ export class AmexioItemSelectorComponent implements OnInit {
   }
 
   rightSwitch() {
-    if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected')) {
-      if (this.switchingObject['isSelected']) {
-        this.selectedData.push(this.switchingObject);
-        this.switchingObject['isSelected'] = true;
-        this.availableData.forEach((option, index) => {
-          if (option['isSelected']) {
-            this.availableData.splice(index, 1);
-          }
-        });
-        this.switchingObject = null;
-        this.dataEmitter();
-      }
+    if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected') && this.switchingObject['isSelected']) {
+      this.selectedData.push(this.switchingObject);
+      this.switchingObject['isSelected'] = true;
+      this.availableData.forEach((option, index) => {
+        if (option['isSelected']) {
+          this.availableData.splice(index, 1);
+        }
+      });
+      this.switchingObject = null;
+      this.dataEmitter();
     }
-
   }
 
   leftSwitch() {
@@ -272,20 +269,16 @@ export class AmexioItemSelectorComponent implements OnInit {
   // Method called in left switch if flag is false
   private setLeftSwitch() {
     const flag = false;
-    if (!flag) {
-      if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected')) {
-        if (this.switchingObject['isSelected']) {
-          this.availableData.push(this.switchingObject);
-          this.switchingObject['isSelected'] = false;
-          this.selectedData.forEach((option, index) => {
-            if (!option['isSelected']) {
-              this.selectedData.splice(index, 1);
-            }
-          });
-          this.switchingObject = null;
-          this.dataEmitter();
+    if (!flag && this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected') && this.switchingObject['isSelected']) {
+      this.availableData.push(this.switchingObject);
+      this.switchingObject['isSelected'] = false;
+      this.selectedData.forEach((option, index) => {
+        if (!option['isSelected']) {
+          this.selectedData.splice(index, 1);
         }
-      }
+      });
+      this.switchingObject = null;
+      this.dataEmitter();
     }
   }
 
