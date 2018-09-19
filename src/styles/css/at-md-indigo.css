@@ -5813,6 +5813,107 @@ verticalalign-tableft {
   padding-left: 5px; }
 
 /****************************************************************************
+    Component Name : Timeline
+    Version : Amexio v5.2 onwards
+*****************************************************************************/
+/** panel - Visual CSS **/
+.timeline {
+  color: #212121; }
+
+.timeline-event-icon {
+  background: #3f4ea2;
+  -webkit-box-shadow: 0 0 0 4px #fff, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05); }
+
+.timeline-event-icon:after {
+  background: inherit; }
+
+.timeline-event-content {
+  color: black; }
+
+.content-border {
+  background: #b8c2ff;
+  box-shadow: 0 3px 0 #d7e4ed; }
+
+.content-border:before {
+  border-color: transparent #b8c2ff transparent transparent; }
+
+/** panel - Structure CSS **/
+.timeline {
+  margin: 0 auto;
+  display: table;
+  width: 60%;
+  position: relative;
+  max-width: 678px; }
+
+.timeline-event {
+  display: flex;
+  margin: 5.5em 0em; }
+
+.timeline-event .timeline-event-label {
+  width: 10%; }
+
+.timeline-event-icon {
+  position: relative;
+  width: 16px;
+  height: 0px;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; }
+
+.timeline-event-icon:after {
+  content: ' ';
+  width: 1px;
+  top: -40px;
+  height: 140px;
+  position: absolute;
+  left: 45%; }
+
+.timeline-event-content {
+  display: grid;
+  left: 18%;
+  top: 25px;
+  position: absolute; }
+
+.content-border {
+  border-radius: 10px;
+  width: 450px;
+  position: relative;
+  display: table-caption;
+  margin: 2.5em 1.5em 1.7em;
+  padding: 5px;
+  text-align: center; }
+
+.content-border:before {
+  content: "";
+  position: absolute;
+  height: 0px;
+  width: 0px;
+  top: 20%;
+  left: -29px;
+  /* 1px buffer for zooming problems while rendering*/
+  border-width: 15px;
+  border-style: solid; }
+
+.contentborder2 {
+  width: 250px;
+  height: 100px;
+  margin: 02.1em 0;
+  padding: 5px;
+  text-align: center; }
+
+.timeline-event-icon .fa {
+  display: -webkit-box;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  display: block;
+  width: 24px t;
+  left: 60% !important;
+  margin-left: 11px;
+  margin-top: -12px;
+  margin-top: 30%; }
+
+/****************************************************************************
     Component Name : Border Layout
     Version : Amexio v4.0 onwards
 *****************************************************************************/

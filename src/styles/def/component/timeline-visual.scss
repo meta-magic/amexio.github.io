@@ -1,0 +1,22 @@
+.timeline{
+    color: #212121;
+}
+.timeline-event-icon{
+    background: $timeinputBGColor;
+    -webkit-box-shadow: 0 0 0 4px #fff, inset 0 2px 0 rgba(0,0,0,.08), 0 3px 0 4px rgba(0,0,0,.05);
+
+}
+.timeline-event-icon:after{
+    background: inherit;
+}
+.timeline-event-content{
+    color:black;
+}
+.content-border {
+    background:$timeIconColor;
+    box-shadow: 0 3px 0 #d7e4ed;
+}
+.content-border:before {
+    border-color: transparent $timeIconColor transparent transparent;
+
+}

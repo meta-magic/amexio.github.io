@@ -29,6 +29,8 @@ import { AmexioTabActionComponent } from './tab/tab.action';
 import { AmexioTabComponent } from './tab/tab.component';
 import { AmexioTabPillComponent } from './tab/tab.pill.component';
 import { AmexioVerticalTabComponent } from './tab/vertical-tab/vertical.tab.component';
+import { AmexiotimelineComponent} from './timeline/amexiotimeline.component';
+import { AmexiotimelineeventComponent} from './timeline/amexiotimelineevent.component';
 import { AmexioWindowPaneComponent } from './window/window.pane.component';
 import { AmexioWindowHeaderComponent } from './window/window.pane.header.component';
 
@@ -57,6 +59,8 @@ export * from './tab/tab.action';
 export * from './tab/tab.component';
 export * from './tab/tab.pill.component';
 export * from './tab/vertical-tab/vertical.tab.component';
+export * from './timeline/amexiotimeline.component';
+export * from './timeline/amexiotimelineevent.component';
 export * from './window/window.pane.component';
 export * from './window/window.pane.header.component';
 
@@ -87,6 +91,8 @@ const PANE_COMPONENTS = [
   AmexioFormHeaderComponent,
   AmexioFormBodyComponent,
   AmexioTabActionComponent,
+  AmexiotimelineComponent,
+  AmexiotimelineeventComponent,
 ];
 
 @NgModule({
