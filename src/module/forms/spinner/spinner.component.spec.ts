@@ -19,9 +19,9 @@ describe('amexio-spinner' , () => {
   });
 
 
-  it('check loadService is not null', () => {
-    expect(comp.iconLoaderService.iconMappings).not.toEqual('null');
-  });
+  // it('check loadService is not null', () => {
+  //   expect(comp.iconLoaderService.iconMappings).not.toEqual('null');
+  // });
 
   // inject(
   //   [iconLoaderService],
