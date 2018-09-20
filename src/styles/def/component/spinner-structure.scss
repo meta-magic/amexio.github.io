@@ -1,15 +1,15 @@
 //  rectanglebounce spinner 0
 
-.rectangle-bounce,
-.rectangle-bounce:before,
-.rectangle-bounce:after {
+.rectangle-bounces,
+.rectangle-bounces:before,
+.rectangle-bounces:after {
   background: $spinnerColor;
   -webkit-animation: load1 1s infinite ease-in-out;
   animation: load1 1s infinite ease-in-out;
   width: 1em;
   height: 4em;
 }
-.rectangle-bounce {
+.rectangle-bounces {
   color: $spinnerColor;
   text-indent: -9999em;
   margin: 88px auto;
@@ -21,18 +21,18 @@
   -webkit-animation-delay: -0.16s;
   animation-delay: -0.16s;
 }
-.rectangle-bounce:before,
-.rectangle-bounce:after {
+.rectangle-bounces:before,
+.rectangle-bounces:after {
   position: absolute;
   top: 0;
   content: '';
 }
-.rectangle-bounce:before {
+.rectangle-bounces:before {
   left: -1.5em;
   -webkit-animation-delay: -0.32s;
   animation-delay: -0.32s;
 }
-.rectangle-bounce:after {
+.rectangle-bounces:after {
   left: 1.5em;
 }
 @-webkit-keyframes load1 {
@@ -60,11 +60,9 @@
   }
 }
 
-
 // half circle  1
 
-
-.half-circle {
+.half-circles {
   font-size: 10px;
   margin: 50px auto;
   text-indent: -9999em;
@@ -84,7 +82,7 @@
   -ms-transform: translateZ(0);
   transform: translateZ(0);
 }
-.half-circle:before {
+.half-circles:before {
   width: 50%;
   height: 50%;
   background:$spinnerColor;  // color here changes 
@@ -94,7 +92,7 @@
   left: 0;
   content: '';
 }
-.half-circle:after {
+.half-circles:after {
   background: #ffff;
   width: 75%;
   height: 75%;
@@ -129,12 +127,13 @@
 }
 
 //  ring spinner 2
-.ring,
-.ring:before,
-.ring:after {
+
+.rings,
+.rings:before,
+.rings:after {
   border-radius: 50%;
 }
-.ring {
+.rings {
   color:  $spinnerColor;
   font-size: 11px;
   text-indent: -99999em;
@@ -147,12 +146,12 @@
   -ms-transform: translateZ(0);
   transform: translateZ(0);
 }
-.ring:before,
-.ring:after {
+.rings:before,
+.rings:after {
   position: absolute;
   content: '';
 }
-.ring:before {
+.rings:before {
   width: 5.2em;
   height: 10.2em;
   background: #ffff;
@@ -164,7 +163,7 @@
   -webkit-animation: load2 2s infinite ease 1.5s;
   animation: load2 2s infinite ease 1.5s;
 }
-.ring:after {
+.rings:after {
   width: 5.2em;
   height: 10.2em;
   background: #ffff;
@@ -197,13 +196,9 @@
   }
 }
 
+// fading-circle ring 
 
-
-
-// fading-circle ring 3
-
-
-.fading-circle {
+.fading-circles {
   color: $spinnerColor;
   font-size: 20px;
   margin: 100px auto;
@@ -275,8 +270,7 @@
 
 // ballspin ring  4
 
-
-.ball-spin {
+.ball-spins {
     color: $spinnerColor;
   margin: 100px auto;
   font-size: 25px;
@@ -320,10 +314,9 @@
   }
 }
 
-
 //firespin 5
  
-.fire-spin {
+.fire-spins {
   color:  $spinnerColor; // color  here
   font-size: 90px;
   text-indent: -9999em;
@@ -404,12 +397,11 @@
   }
 }
 
-
 //threebounce spinner 6
 
-.three-bounce,
-.three-bounce:before,
-.three-bounce:after {
+.three-bounces,
+.three-bounces:before,
+.three-bounces:after {
   border-radius: 50%;
   width: 2.5em;
   height: 2.5em;
@@ -418,7 +410,7 @@
   -webkit-animation: load7 1.8s infinite ease-in-out;
   animation: load7 1.8s infinite ease-in-out;
 }
-.three-bounce {
+.three-bounces {
   color: $spinnerColor;
   font-size: 10px;
   margin: 80px auto;
@@ -430,18 +422,18 @@
   -webkit-animation-delay: -0.16s;
   animation-delay: -0.16s;
 }
-.three-bounce:before,
-.three-bounce:after {
+.three-bounces:before,
+.three-bounces:after {
   content: '';
   position: absolute;
   top: 0;
 }
-.three-bounce:before {
+.three-bounces:before {
   left: -3.5em;
   -webkit-animation-delay: -0.32s;
   animation-delay: -0.32s;
 }
-.three-bounce:after {
+.three-bounces:after {
   left: 3.5em;
 }
 @-webkit-keyframes load7 {
@@ -467,13 +459,13 @@
 
 // spinner-round css 7
 
-.spinner-round,
-.spinner-round:after {
+.spinner-rounds,
+.spinner-rounds:after {
   border-radius: 50%;
   width: 10em;
   height: 10em;
 }
-.spinner-round {
+.spinner-rounds {
   margin: 60px auto;
   font-size: 10px;
   position: relative;

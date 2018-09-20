@@ -2702,16 +2702,16 @@ input:checked + .toggle-slider:before {
 ****************************************************************************/
 /** Searchbox - Visual CSS **/
 /** Searchbox - Structure CSS **/
-.rectangle-bounce,
-.rectangle-bounce:before,
-.rectangle-bounce:after {
+.rectangle-bounces,
+.rectangle-bounces:before,
+.rectangle-bounces:after {
   background: #417505;
   -webkit-animation: load1 1s infinite ease-in-out;
   animation: load1 1s infinite ease-in-out;
   width: 1em;
   height: 4em; }
 
-.rectangle-bounce {
+.rectangle-bounces {
   color: #417505;
   text-indent: -9999em;
   margin: 88px auto;
@@ -2723,18 +2723,18 @@ input:checked + .toggle-slider:before {
   -webkit-animation-delay: -0.16s;
   animation-delay: -0.16s; }
 
-.rectangle-bounce:before,
-.rectangle-bounce:after {
+.rectangle-bounces:before,
+.rectangle-bounces:after {
   position: absolute;
   top: 0;
   content: ''; }
 
-.rectangle-bounce:before {
+.rectangle-bounces:before {
   left: -1.5em;
   -webkit-animation-delay: -0.32s;
   animation-delay: -0.32s; }
 
-.rectangle-bounce:after {
+.rectangle-bounces:after {
   left: 1.5em; }
 
 @-webkit-keyframes load1 {
@@ -2755,7 +2755,7 @@ input:checked + .toggle-slider:before {
   40% {
     box-shadow: 0 -2em;
     height: 5em; } }
-.half-circle {
+.half-circles {
   font-size: 10px;
   margin: 50px auto;
   text-indent: -9999em;
@@ -2775,7 +2775,7 @@ input:checked + .toggle-slider:before {
   -ms-transform: translateZ(0);
   transform: translateZ(0); }
 
-.half-circle:before {
+.half-circles:before {
   width: 50%;
   height: 50%;
   background: #417505;
@@ -2785,7 +2785,7 @@ input:checked + .toggle-slider:before {
   left: 0;
   content: ''; }
 
-.half-circle:after {
+.half-circles:after {
   background: #ffff;
   width: 75%;
   height: 75%;
@@ -2812,12 +2812,12 @@ input:checked + .toggle-slider:before {
   100% {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg); } }
-.ring,
-.ring:before,
-.ring:after {
+.rings,
+.rings:before,
+.rings:after {
   border-radius: 50%; }
 
-.ring {
+.rings {
   color: #417505;
   font-size: 11px;
   text-indent: -99999em;
@@ -2830,12 +2830,12 @@ input:checked + .toggle-slider:before {
   -ms-transform: translateZ(0);
   transform: translateZ(0); }
 
-.ring:before,
-.ring:after {
+.rings:before,
+.rings:after {
   position: absolute;
   content: ''; }
 
-.ring:before {
+.rings:before {
   width: 5.2em;
   height: 10.2em;
   background: #ffff;
@@ -2847,7 +2847,7 @@ input:checked + .toggle-slider:before {
   -webkit-animation: load2 2s infinite ease 1.5s;
   animation: load2 2s infinite ease 1.5s; }
 
-.ring:after {
+.rings:after {
   width: 5.2em;
   height: 10.2em;
   background: #ffff;
@@ -2873,7 +2873,7 @@ input:checked + .toggle-slider:before {
   100% {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg); } }
-.fading-circle {
+.fading-circles {
   color: #417505;
   font-size: 20px;
   margin: 100px auto;
@@ -2924,7 +2924,7 @@ input:checked + .toggle-slider:before {
     box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0; }
   87.5% {
     box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em; } }
-.ball-spin {
+.ball-spins {
   color: #417505;
   margin: 100px auto;
   font-size: 25px;
@@ -2957,7 +2957,7 @@ input:checked + .toggle-slider:before {
     box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2), 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2), 2.5em 0em 0 0em rgba(255, 255, 255, 0.2), 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2), 0em 2.5em 0 0em rgba(255, 255, 255, 0.5), -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.7), -2.6em 0em 0 0em, -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2); }
   87.5% {
     box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2), 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2), 2.5em 0em 0 0em rgba(255, 255, 255, 0.2), 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2), 0em 2.5em 0 0em rgba(255, 255, 255, 0.2), -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.5), -2.6em 0em 0 0em rgba(255, 255, 255, 0.7), -1.8em -1.8em 0 0em; } }
-.fire-spin {
+.fire-spins {
   color: #417505;
   font-size: 90px;
   text-indent: -9999em;
@@ -3017,9 +3017,9 @@ input:checked + .toggle-slider:before {
   100% {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg); } }
-.three-bounce,
-.three-bounce:before,
-.three-bounce:after {
+.three-bounces,
+.three-bounces:before,
+.three-bounces:after {
   border-radius: 50%;
   width: 2.5em;
   height: 2.5em;
@@ -3028,7 +3028,7 @@ input:checked + .toggle-slider:before {
   -webkit-animation: load7 1.8s infinite ease-in-out;
   animation: load7 1.8s infinite ease-in-out; }
 
-.three-bounce {
+.three-bounces {
   color: #417505;
   font-size: 10px;
   margin: 80px auto;
@@ -3040,18 +3040,18 @@ input:checked + .toggle-slider:before {
   -webkit-animation-delay: -0.16s;
   animation-delay: -0.16s; }
 
-.three-bounce:before,
-.three-bounce:after {
+.three-bounces:before,
+.three-bounces:after {
   content: '';
   position: absolute;
   top: 0; }
 
-.three-bounce:before {
+.three-bounces:before {
   left: -3.5em;
   -webkit-animation-delay: -0.32s;
   animation-delay: -0.32s; }
 
-.three-bounce:after {
+.three-bounces:after {
   left: 3.5em; }
 
 @-webkit-keyframes load7 {
@@ -3068,13 +3068,13 @@ input:checked + .toggle-slider:before {
     box-shadow: 0 2.5em 0 -1.3em; }
   40% {
     box-shadow: 0 2.5em 0 0; } }
-.spinner-round,
-.spinner-round:after {
+.spinner-rounds,
+.spinner-rounds:after {
   border-radius: 50%;
   width: 10em;
   height: 10em; }
 
-.spinner-round {
+.spinner-rounds {
   margin: 60px auto;
   font-size: 10px;
   position: relative;

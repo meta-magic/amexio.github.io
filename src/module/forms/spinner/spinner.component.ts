@@ -13,14 +13,14 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angu
   <div *ngIf="show">
     <div [style.color] = "color"
       [ngClass]="{
-        'rectangle-bounce' :type == 'rectangleBounce',
-        'ring' :type == 'ring',
-        'half-circle' :type == 'halfCircle',
-        'fading-circle' :type == 'fadingCircle',
-        'ball-spin' :type == 'ballSpin',
-        'fire-spin' :type == 'fireSpin',
-        'three-bounce' :type == 'threeBounce',
-        'spinner-round' :type == 'spinnerRound'}">
+        'rectangle-bounces' :type == 'rectangleBounce',
+        'rings' :type == 'ring',
+        'half-circles' :type == 'halfCircle',
+        'fading-circles' :type == 'fadingCircle',
+        'ball-spins' :type == 'ballSpin',
+        'fire-spins' :type == 'fireSpin',
+        'three-bounces' :type == 'threeBounce',
+        'spinner-rounds' :type == 'spinnerRound'}">
     </div>
   </div>
   `,
