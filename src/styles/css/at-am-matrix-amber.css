@@ -3085,7 +3085,7 @@ input:checked + .toggle-slider:before {
     border-right-opacity: 0.2;
   border-bottom: 1.1em solid rgba(255, 191, 0, 0.4);
     border-bottom-opacity: 0.2;
-  border-left: 1.1em solid;
+  border-left: 1.1em solid rgba(255, 191, 0, 0.4);
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   transform: translateZ(0);

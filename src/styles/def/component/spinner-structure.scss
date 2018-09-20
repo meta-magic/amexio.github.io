@@ -479,7 +479,7 @@
   border-bottom: 1.1em solid $spinnerBGColor {
     opacity: 0.2;
   };
-  border-left: 1.1em solid ;
+  border-left: 1.1em solid $spinnerColor;
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   transform: translateZ(0);
