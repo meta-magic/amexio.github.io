@@ -9,25 +9,13 @@ Component Description :
 import { Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
 @Component({
   selector: 'amexio-spinner',
-  template: `
-
-    <div  #loadindicator [ngStyle]="{'display': show ? 'block': 'none'}"
-    [style.color] = "color"
-      [ngClass]="{
-        'rectangle-bounces' :type == 'rectangleBounce',
-        'rings' :type == 'ring',
-        'half-circles' :type == 'halfCircle',
-        'fading-circles' :type == 'fadingCircle',
-        'ball-spins' :type == 'ballSpin',
-        'fire-spins' :type == 'fireSpin',
-        'three-bounces' :type == 'threeBounce',
-        'spinner-rounds' :type == 'spinnerRound'}
-        ">
-  </div>
-  `,
+  templateUrl: './spinner.component.html',
 })
 
 export class AmexioSpinnerComponent implements OnInit {
+  private _type: string;
+  private _color: string;
+
   /*
   Events
   name : type
@@ -45,8 +33,17 @@ export class AmexioSpinnerComponent implements OnInit {
    default : none
    description : spinner want color
    */
-  @Input('color') color: string;
-
+  @Input('color')
+  set color(v: string) {
+    const ischanges: boolean = (this._color !== v);
+    this._color = v;
+    if (ischanges) {
+      this.assignColor();
+    }
+  }
+  get color() {
+    return this._color;
+  }
   /*
   Events
   name : show
@@ -65,26 +62,29 @@ export class AmexioSpinnerComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.assignColor();
+  }
+  private assignColor() {
     if (this.type === 'spinnerRound' && this.color) {
-        let newColor: any;
-        const r = parseInt(this.color.slice(1, 3), 16);
-        const g = parseInt(this.color.slice(3, 5), 16);
-        const b = parseInt(this.color.slice(5, 7), 16);
+      let newColor: any;
+      const r = parseInt(this.color.slice(1, 3), 16);
+      const g = parseInt(this.color.slice(3, 5), 16);
+      const b = parseInt(this.color.slice(5, 7), 16);
 
-        if (this.alpha) {
-          newColor = `rgba(${r}, ${g}, ${b}, ${this.alpha})`;
-        } else {
-          newColor = `rgba(${r}, ${g}, ${b})`;
-        }
-        const inlinecss = 'margin: 60px auto;font-size: 10px;position: relative;text-indent: -9999em;border-top: 1.1em solid ' + newColor +
-          '; border-right: 1.1em solid ' + newColor +
+      if (this.alpha) {
+        newColor = `rgba(${r}, ${g}, ${b}, ${this.alpha})`;
+      } else {
+        newColor = `rgba(${r}, ${g}, ${b})`;
+      }
+      const inlinecss = 'margin: 60px auto;font-size: 10px;position: relative;text-indent: -9999em;border-top: 1.1em solid ' + newColor +
+        '; border-right: 1.1em solid ' + newColor +
         ';border-left: 1.1em solid ;-webkit-transform: translateZ(0);-ms-transform: translateZ(0);border-bottom: 1.1em solid ' + newColor +
-          ';transform: translateZ(0);  -webkit-animation: load8 1.1s infinite linear;animation: load8 1.1s infinite linear;';
-        const inlinecssafter = ' border-radius: 50%; width: 10em; height: 10em;';
-        this.insertStyleSheetRule('.dynamicclass { ' + inlinecss + inlinecssafter + '}');
-        this.insertStyleSheetRule('@-webkit-keyframes load8 { 0% {  -webkit-transform: rotate(0deg);  transform: rotate(0deg);} ' +
-          '100%{-webkit-transform: rotate(360deg); transform: rotate(360deg);} }');
-        this.renderer.addClass(this.element.nativeElement, 'dynamicclass');
+        ';transform: translateZ(0);  -webkit-animation: load8 1.1s infinite linear;animation: load8 1.1s infinite linear;';
+      const inlinecssafter = ' border-radius: 50%; width: 10em; height: 10em;';
+      this.insertStyleSheetRule('.dynamicclass { ' + inlinecss + inlinecssafter + '}');
+      this.insertStyleSheetRule('@-webkit-keyframes load8 { 0% {  -webkit-transform: rotate(0deg);  transform: rotate(0deg);} ' +
+        '100%{-webkit-transform: rotate(360deg); transform: rotate(360deg);} }');
+      this.renderer.addClass(this.element.nativeElement, 'dynamicclass');
     }
   }
 
