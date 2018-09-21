@@ -54,6 +54,16 @@ export class AmexioSpinnerComponent implements OnInit {
   */
   @Input() show = true;
 
+  /*
+  Events
+  name : size
+  datatype : string
+  version : none
+  default : true
+  description : size for spinner.
+  */
+  @Input('size') size: string;
+
   @ViewChild('loadindicator') element: ElementRef;
 
   alpha = '0.2';

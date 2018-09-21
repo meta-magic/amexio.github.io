@@ -1,4 +1,6 @@
-<div #loadindicator [ngStyle]="{'display': show ? 'block': 'none'}" [style.color]="color" [ngClass]="{
+<div #loadindicator [ngStyle]="{'display': show ? 'block': 'none'}" 
+[style.color]='color' [style.font-size]= 'size'
+ [ngClass]="{
         'rectangle-bounces' :type == 'rectangleBounce',
         'rings' :type == 'ring',
         'half-circles' :type == 'halfCircle',
