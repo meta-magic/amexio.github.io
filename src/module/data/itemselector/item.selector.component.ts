@@ -249,6 +249,11 @@ export class AmexioItemSelectorComponent implements OnInit {
   }
 
   rightSwitch() {
+    this.selectedData.forEach(element => {
+      if (this.switchingObject == element) {
+        this.switchingObject.isSelected = false;
+      }
+    });
     if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected') && this.switchingObject['isSelected']) {
       this.selectedData.push(this.switchingObject);
       this.switchingObject['isSelected'] = true;
@@ -268,7 +273,12 @@ export class AmexioItemSelectorComponent implements OnInit {
 
   // Method called in left switch if flag is false
   private setLeftSwitch() {
-    const flag = false;
+     const flag = false;
+    this.availableData.forEach(element => {
+      if (this.switchingObject == element) {
+        this.switchingObject.isSelected = false;
+      }
+    });
     if (!flag && this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected') && this.switchingObject['isSelected']) {
       this.availableData.push(this.switchingObject);
       this.switchingObject['isSelected'] = false;
