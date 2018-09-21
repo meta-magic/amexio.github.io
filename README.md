@@ -4,7 +4,7 @@
   <br>
   <a href="http://www.amexio.tech/"><img src="https://image.ibb.co/kdy6Ev/logo.png" alt="Amexio" width="200"></a>
   <br>
-    Amexio Angular EXtensions v5.1.4
+    Amexio Angular EXtensions v5.2.1
   <br>
 </h1>
 
@@ -183,12 +183,55 @@ Navigate to http://localhost:4200/. The app will automatically reload if you cha
 
 For More on Angular CLI [commands](https://github.com/angular/angular-cli/wiki) click on the link.
 
+## Amexio D3 Charts - Installation
+
+To install this library, follow the steps given below:
+
+```bash
+$ cd your-angular-project
+```
+
+```bash
+$ npm install amexio-chart-d3 --save
+```
+and then from your Angular `AppModule`:
+
+```typescript
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import {FormsModule} from "@angular/forms";
+import { AppComponent } from './app.component';
+
+// To import D3-Chart :- 
+
+import { AmexioChartD3Module } from 'amexio-chart-d3';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    AmexioChartD3Module,
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+
+
 ## Amexio Angular Extension - Installation
 
 To install this library, follow the steps given below:
 
 ```bash
 $ cd your-angular-project
+```
+
+```bash
+$ npm install amexio-ng-extensions@latest --save
 ```
 
 and then from your Angular `AppModule`:
