@@ -2705,14 +2705,14 @@ input:checked + .toggle-slider:before {
 .rectangle-bounces,
 .rectangle-bounces:before,
 .rectangle-bounces:after {
-  background: linear-gradient(#40434D, #000000);
+  background: #FCF4A3;
   -webkit-animation: load1 1s infinite ease-in-out;
   animation: load1 1s infinite ease-in-out;
   width: 1em;
   height: 4em; }
 
 .rectangle-bounces {
-  color: linear-gradient(#40434D, #000000);
+  color: #FCF4A3;
   text-indent: -9999em;
   margin: 88px auto;
   position: relative;
@@ -2778,7 +2778,7 @@ input:checked + .toggle-slider:before {
 .half-circles:before {
   width: 50%;
   height: 50%;
-  background: linear-gradient(#40434D, #000000);
+  background: #FCF4A3;
   border-radius: 100% 0 0 0;
   position: absolute;
   top: 0;
@@ -2818,7 +2818,7 @@ input:checked + .toggle-slider:before {
   border-radius: 50%; }
 
 .rings {
-  color: linear-gradient(#40434D, #000000);
+  color: #FCF4A3;
   font-size: 11px;
   text-indent: -99999em;
   margin: 55px auto;
@@ -2874,7 +2874,7 @@ input:checked + .toggle-slider:before {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg); } }
 .fading-circles {
-  color: linear-gradient(#40434D, #000000);
+  color: #FCF4A3;
   font-size: 20px;
   margin: 100px auto;
   width: 1em;
@@ -2925,7 +2925,7 @@ input:checked + .toggle-slider:before {
   87.5% {
     box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em; } }
 .ball-spins {
-  color: linear-gradient(#40434D, #000000);
+  color: #FCF4A3;
   margin: 100px auto;
   font-size: 25px;
   width: 1em;
@@ -2958,7 +2958,7 @@ input:checked + .toggle-slider:before {
   87.5% {
     box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2), 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2), 2.5em 0em 0 0em rgba(255, 255, 255, 0.2), 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2), 0em 2.5em 0 0em rgba(255, 255, 255, 0.2), -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.5), -2.6em 0em 0 0em rgba(255, 255, 255, 0.7), -1.8em -1.8em 0 0em; } }
 .fire-spins {
-  color: linear-gradient(#40434D, #000000);
+  color: #FCF4A3;
   font-size: 90px;
   text-indent: -9999em;
   overflow: hidden;
@@ -3029,7 +3029,7 @@ input:checked + .toggle-slider:before {
   animation: load7 1.8s infinite ease-in-out; }
 
 .three-bounces {
-  color: linear-gradient(#40434D, #000000);
+  color: #FCF4A3;
   font-size: 10px;
   margin: 80px auto;
   position: relative;
@@ -3085,7 +3085,7 @@ input:checked + .toggle-slider:before {
     border-right-opacity: 0.2;
   border-bottom: 1.1em solid rgba(255, 253, 208, 0.4);
     border-bottom-opacity: 0.2;
-  border-left: 1.1em solid linear-gradient(#40434D, #000000);
+  border-left: 1.1em solid #FCF4A3;
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   transform: translateZ(0);
