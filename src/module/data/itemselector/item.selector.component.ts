@@ -249,10 +249,8 @@ export class AmexioItemSelectorComponent implements OnInit {
   }
 
   rightSwitch() {
-    this.selectedData.forEach(element => {
-      if (this.switchingObject == element) {
-        this.switchingObject.isSelected = false;
-      }
+    this.selectedData.forEach((element) => {
+     this.dragDropValidation(element);
     });
     if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected') && this.switchingObject['isSelected']) {
       this.selectedData.push(this.switchingObject);
@@ -267,17 +265,21 @@ export class AmexioItemSelectorComponent implements OnInit {
     }
   }
 
+  dragDropValidation(element: any) {
+    if (this.switchingObject === element) {
+      this.switchingObject.isSelected = false;
+    }
+  }
+
   leftSwitch() {
     this.setLeftSwitch();
   }
 
   // Method called in left switch if flag is false
   private setLeftSwitch() {
-     const flag = false;
-    this.availableData.forEach(element => {
-      if (this.switchingObject == element) {
-        this.switchingObject.isSelected = false;
-      }
+    const flag = false;
+    this.availableData.forEach((element) => {
+      this.dragDropValidation(element);
     });
     if (!flag && this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected') && this.switchingObject['isSelected']) {
       this.availableData.push(this.switchingObject);
