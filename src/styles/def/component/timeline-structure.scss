@@ -1,74 +1,70 @@
 
-  
-  .timeline{
-    overflow: hidden;
-    margin: 2em auto;
-  }
-  .timeline-event{
-    position: relative;
-    width: 90%;
-    max-width: 1170px;
-    margin: 0 auto;
-    padding: 2em 0;
-  }
-  .timeline-event-container{
-    position: relative;
-    margin: 2em 5em 2em;
-  }
-  .timeline-event-container::before{
-    content: '';
-      position: absolute;
-      top: -6.5%;
-      left: 50%;
-      height: 100%;
-      width: 4px;
-     // background: #d7e4ed;
-  }
-  .timeline-event-icon{
-    position: relative;
-    margin-top: 1em;
-    margin-left: 47.6%;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    // -webkit-box-shadow: 0 0 0 4px #fff,inset 0 2px 0 rgba(0,0,0,.08),0 3px 0 4px rgba(0,0,0,.05);
-    // box-shadow: 0 0 0 4px #fff,inset 0 2px 0 rgba(0,0,0,.08),0 3px 0 4px rgba(0,0,0,.05);
-  }
-  .timeline-event-contents{
-      display: flex;
-  }
 
-    .timeline-event-content{
-        position: relative;
-        margin-left: 1.5em;
-       // background: $timeIconColor;
-        border-radius: .25em;
-        padding: 1em;
-        // -webkit-box-shadow: 0 3px 0 grey;
-        // box-shadow: 0 3px 0 grey;
-        width: 22em;
-        margin-top: 1%;
-      }
-      .timeline-event-content::before{
-        content: '';
-        position: absolute;
-        top: 16px;
-        right: 100%;
-        height: 0;
-        width: 0;
-        //border: 7px solid transparent;
-       // border-right: 7px solid $timeIconColor;
-        }
-        .timeline-event-icon .fa{
-          display: -webkit-box ;
-          font: normal normal normal 14px/1 FontAwesome ;
-          font-size: inherit;
-          display: block ;
-          width: 24px t;
-          left: 60% !important;
-          margin-left: 12.7px ;
-          margin-top: -12px ;
-          margin-top: 30% ;
-          padding-top: 3%;
-        }
-  
+.timeline{
+  overflow: hidden;
+}
+.timeline-event{
+  position: relative;
+  width: 100%;
+  padding : 5px;
+}
+.timeline-event-container{
+  position: relative;
+}
+.timeline-event-container::before{
+  content: '';
+  position: absolute;
+  margin-left:18px;
+  height: 100%;
+  width: 3px;
+  background: #d7e4ed;
+}
+
+.timeline-event-icon{
+  position: relative;
+  margin-top: .5%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px #fff,inset 0 2px 0 rgba(0,0,0,.08),0 3px 0 4px rgba(0,0,0,.05);
+}
+.timeline-event-contents{
+    display: flex;
+}
+.timeline-event-content{
+position: relative;
+//background: grey;
+padding: 1em;
+//-webkit-box-shadow: 0 3px 0 grey;
+//box-shadow: 0 3px 0 grey;
+width: 100%;
+margin: 0px 0px 10px 10px;
+}
+.timeline-event-content::before{
+content: '';
+position: absolute;
+top: 16px;
+right: 100%;
+height: 0;
+width: 0;
+border: 7px solid transparent;
+border-right: 7px solid $timeinputBGColor;
+}
+.timeline-event-content2{
+position: relative;
+padding: 1em;
+width: 100%;
+margin: 0px 0px 10px 10px;
+}
+.timeline-event-icon .fa{
+  display: -webkit-box ;
+  font: normal normal normal 14px/1 FontAwesome ;
+  font-size: inherit;
+  display: block ;
+  width: 24px t;
+  left: 60% !important;
+  margin-left: 11px ;
+  margin-top: -12px ;
+  margin-top: 30% ;
+  padding-top: 3%;
+}
