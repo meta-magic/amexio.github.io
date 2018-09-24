@@ -1,12 +1,7 @@
 <div class="timeline">
-  <div class="timeline-event" *ngFor="let attr of timeCollection">
-    <div class="timeline-event-label">{{attr.label}}
-    </div>
-    <div class="timeline-event-icon">
-      <amexio-pane-icon [customclass]="attr.icon" ></amexio-pane-icon>
-    </div>
-    <div class="timeline-event-content">
-      <ng-content select="amexio-timeline-event"></ng-content>
+  <div class="timeline-event">
+    <div class="timeline-event-container">
+        <ng-content></ng-content>
     </div>
   </div>
 </div>

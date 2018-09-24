@@ -2,21 +2,18 @@ import { Component, ContentChildren, EventEmitter, Input, OnInit, Output, QueryL
 
 @Component({
   selector: 'amexio-timeline-event',
-  template: `<div [ngClass]="{'content-border' : contentborder == true, 'content-border2' : contentborder == false }">
-               <ng-content></ng-content>
-             </div>`,
+  template: `<div class="timeline-event-contents">
+              <div class="timeline-event-icon">
+                  <amexio-pane-icon [customclass]="icon"></amexio-pane-icon>
+              </div>
+              <div [ngClass]="{'timeline-event-content': contentborder==true,'timeline-event-content2': contentborder==false}">
+                  {{label}}
+                   <br>
+                 <ng-content></ng-content>
+               </div>
+            </div>`,
 })
 export class AmexiotimelineeventComponent {
-    /*
-Properties
-name : active
-datatype : boolean
-version : 5.2 onwards
-default : false
-description : The current active step.
-*/
-@Input() active: boolean;
-
   /*
 Properties
 name :label
