@@ -5986,10 +5986,10 @@ verticalalign-tableft {
 .timeline-event-container::before {
   content: '';
   position: absolute;
-  margin-left: 18px;
+  margin-left: 17px;
   height: 100%;
   width: 3px;
-  background: #d7e4ed; }
+  background: rgba(255, 255, 255, 0.7); }
 
 .timeline-event-icon {
   position: relative;
@@ -5997,7 +5997,7 @@ verticalalign-tableft {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  box-shadow: 0 0 0 4px #fff, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05); }
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.7), inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05); }
 
 .timeline-event-contents {
   display: flex; }
@@ -6016,7 +6016,7 @@ verticalalign-tableft {
   height: 0;
   width: 0;
   border: 7px solid transparent;
-  border-right: 7px solid #FF6FFF; }
+  border-right: 7px solid rgba(189, 127, 189, 0.6); }
 
 .timeline-event-content2 {
   position: relative;
