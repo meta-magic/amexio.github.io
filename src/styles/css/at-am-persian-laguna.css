@@ -5989,7 +5989,7 @@ verticalalign-tableft {
   margin-left: 17px;
   height: 100%;
   width: 3px;
-  background: #6dbbf9; }
+  background: #8D021F; }
 
 .timeline-event-icon {
   position: relative;
@@ -5997,7 +5997,7 @@ verticalalign-tableft {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  box-shadow: 0 0 0 4px #043963, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05); }
+  box-shadow: 0 0 0 4px transparent, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05); }
 
 .timeline-event-contents {
   display: flex; }

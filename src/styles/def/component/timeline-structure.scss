@@ -17,7 +17,7 @@
   margin-left:17px;
   height: 100%;
   width: 3px;
-  background: lighten($timeinputColor,50%);
+  background:$timeBorderColor;
 }
 
 .timeline-event-icon{
