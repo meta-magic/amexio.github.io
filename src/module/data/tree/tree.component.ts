@@ -177,7 +177,7 @@ description : Describes the badge value that has to be displayed tree node
       }, () => {
         this.setData(this.responseData);
       });
-    } else if (this.datareader && this.data) {
+    } else if (this.data) {
       this.setData(this.data);
     }
   }
