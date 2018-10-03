@@ -1,0 +1,31 @@
+
+.breadcrum-rightshift-css {
+  background-color:$breadcrumbBGColor;
+  box-shadow: 2px 2px 5px rgba(0,0,0,.6);
+}
+
+.context-menu-list1 {
+      background-color: #ffffff!important;
+      box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12); 
+}
+    
+.context-menu-list1 :hover {
+          background-color:$breadcrumbBGColor;
+}
+.button-primary {
+  background-color: gray;
+  border-color: gray;
+}
+.button-default {
+  background-color: gray;
+  border-color: gray;
+
+}
+
+.btn-group:hover {
+  border: 1px solid $breadcrumbBGColor;
+  display: table !important;
+}
+
+     
+       

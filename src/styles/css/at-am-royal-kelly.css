@@ -5234,6 +5234,65 @@ header .billboard .content-button {
   width: 6px; }
 
 /****************************************************************************
+    Component Name : Breadcrumb
+    Version : Amexio v5.2 onwards
+*****************************************************************************/
+/** dockbar - Visual CSS **/
+.breadcrum-rightshift-css {
+  background-color: rgba(255, 253, 208, 0.4);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6); }
+
+.context-menu-list1 {
+  background-color: #ffffff !important;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12); }
+
+.context-menu-list1 :hover {
+  background-color: rgba(255, 253, 208, 0.4); }
+
+.button-primary {
+  background-color: gray;
+  border-color: gray; }
+
+.button-default {
+  background-color: gray;
+  border-color: gray; }
+
+.btn-group:hover {
+  border: 1px solid rgba(255, 253, 208, 0.4);
+  display: table !important; }
+
+/** dockbar - Structure CSS **/
+.breadcrum-rightshift-css {
+  display: inline-flex;
+  width: 100%;
+  cursor: pointer;
+  flex-direction: row;
+  position: relative; }
+
+.context-menu-list1 {
+  display: block;
+  position: absolute;
+  flex-direction: column;
+  min-width: 180px;
+  cursor: pointer;
+  max-height: auto;
+  z-index: 1;
+  padding: 10px 0px;
+  overflow-y: auto; }
+
+.context-menu-list1 .context-menu-list-items1 {
+  text-decoration: none;
+  display: inline-block;
+  padding: 5px;
+  display: block; }
+
+.context-menu-list1 :hover {
+  color: #8D021F; }
+
+.btn-group {
+  display: table !important; }
+
+/****************************************************************************
     Component Name : Accordion
     Version : Amexio v4.0 onwards
 *****************************************************************************/

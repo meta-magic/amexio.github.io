@@ -1,0 +1,39 @@
+<ng-container *ngIf="data">
+
+    <div class="breadcrum-rightshift-css">
+        <div class="btn-group">
+            <button (click)="onbtnClick(data)" [ngClass]="{
+          'button-primary' :type == null,
+          'button-default': size == null}">
+                <ng-container *ngIf="data && data.icon">
+                    <span [ngClass]="data.icon"></span>
+                </ng-container> &nbsp;
+                <span>{{data.text}} &nbsp;&nbsp;</span>
+            </button>
+            <ng-container *ngIf="data.children">
+                <button (click)="onArrowClick(data)" [ngClass]="{
+            'button-primary' :type == null,
+            'button-default': size == null}">&nbsp;
+                    <amexio-form-icon style="float:right;" [key]="arrowKey"></amexio-form-icon>
+                </button>
+            </ng-container>
+
+
+            <div class="context-menu-list1" *ngIf="data.expand">
+                <ng-container *ngFor="let node of data.children">
+                    <div class="context-menu-list-items1" [ngStyle]="{'cursor': node.disabled ? 'not-allowed':'pointer'}"
+                        (click)="getSelectedItem(node,data)">
+                        <ng-container *ngIf="node.icon" style="float:right">
+                            <amexio-form-icon [ngClass]="node.icon"></amexio-form-icon>
+                        </ng-container> &nbsp;
+                        <span>{{node.text}}&nbsp;&nbsp;</span>
+                    </div>
+                </ng-container>
+            </div>
+
+        </div>
+        <ng-container *ngIf="data.show">
+            <amexio-breadcrumb [data]="childItem"></amexio-breadcrumb>
+        </ng-container>
+    </div>
+</ng-container>

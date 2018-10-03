@@ -233,6 +233,16 @@ const ICON_MAPPING =
     mat: 'arrow_drop_down',
   },
   {
+    component: 'button_angle-right',
+    fa: 'fa fa-angle-right',
+    mat: 'arrow_drop_right',
+  },
+  {
+    component: 'button_angle-down',
+    fa: 'fa fa-angle-down',
+    mat: 'arrow_drop_down',
+  },
+  {
     component: 'menubar_ravelry',
     fa: 'fa fa-ravelry',
     mat: 'done',
