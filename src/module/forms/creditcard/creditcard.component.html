@@ -1,0 +1,39 @@
+<div class="creditCardForm">
+    <div class="ownerdetails">
+        <div class="owner">
+            <label [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">Owner</label>
+            <input [ngClass]="{'input-control-success':isNameValid==true,'input-control-failure':isNameValid==false}" type="text" placeholder="Enter Name" class="input-control" id="owner" [(ngModel)]="name" #inp="ngModel" (keyup)="onNameClick(name)">
+        </div>
+        <div class="cvv">
+            <label [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">CVV</label>
+            <input [ngClass]="{'input-control-success':isCvvValid==true,'input-control-failure':isCvvValid==false}" type="text" placeholder="Enter CVV" maxlength="3"
+                class="input-control" id="cvv" [(ngModel)]="cvv" #inpcvv="ngModel" (keyup)="onClick(inpcvv)">
+        </div>
+    </div>
+    <br>
+    <div class="cardNumber">
+        <label [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
+            Card Number</label>
+        <input type="text" placeholder="Enter Card Number" maxlength="16" class="input-control" [(ngModel)]="value" #inp="ngModel"
+        [ngStyle]="{'border-bottom-color': validPatternCardFromMap ? 'green':'red'}" (keyup)="onInput(inp)" name="name" />
+    </div>
+    <div class="expiration-date">
+        <label for="expiration-dxate">Exp Date</label>
+        <br>
+        <div class="month">
+            <select style=padding:5%>
+                <option *ngFor="let months of dateData">{{months.month}}</option>
+            </select>
+        </div>
+        <div class="date">
+            <select yearControl="yearControl" style="padding:5%; margin-left:5px">
+                <option *ngFor="let year of yearList">{{year}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="image">
+        <ng-container>
+            <img style="width:50%" [src]="cardName">
+        </ng-container>
+    </div>
+</div>

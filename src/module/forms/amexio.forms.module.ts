@@ -14,6 +14,7 @@ import { AmexioButtonGroupComponent } from './buttongroup/button.group.component
 import { AmexioButtonComponent } from './buttons/button.component';
 import { AmexioCheckBoxGroupComponent } from './checkbox-group/checkbox.group.component';
 import { AmexioCheckBoxComponent } from './checkbox/checkbox.component';
+import { AmexioCreditcardComponent } from './creditcard/creditcard.component';
 import { AmexioDateTimePickerComponent } from './datetimepicker/datetimepicker.component';
 import { AmexioDropDownMenuComponent } from './dropdown-menu/dropdownmenu.component';
 import { AmexioDropDownitemsComponent } from './dropdown-menu/dropdownmenu.component.items';
@@ -90,6 +91,7 @@ const FORM_COMPONENTS = [
   AmexioSearchAdvanceComponent,
   RecaptchaComponent,
   AmexioSpinnerComponent,
+  AmexioCreditcardComponent,
 ];
 
 @NgModule({

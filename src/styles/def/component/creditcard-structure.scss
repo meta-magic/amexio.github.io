@@ -1,0 +1,55 @@
+.creditCardForm{
+    max-width: 100%;
+   // background-color:$cerditcardRowHoverBG ;
+   border-style: dotted;
+    overflow: hidden;
+    padding: 30px;
+    color: #4c4e56;
+    border-radius:10px;
+}
+.heading{
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+}
+.ownerdetails{
+    margin-top: 7px;
+}
+.owner{
+    width: 55%; 
+    float: left;
+}
+.cvv{
+    width: 35%;
+    float: right;
+}
+.cardNumber{
+    width:100%;
+    float: left;
+    margin-top: 5px;
+}
+.expiration-date{
+    float: left;
+    margin-top:5px;
+}
+.month{
+    float: left;
+    margin-top:5px;
+    padding: 2px;
+}
+.date{
+    float: right;
+    margin-top:5px;
+    padding:3.5px;
+}
+.image{
+    width:25%;
+    float: right; 
+    margin-top: 3%;  
+}
+.input-control-success{
+    border-bottom-color: green;
+} 
+.input-control-failure{
+    border-bottom-color:red;
+}
