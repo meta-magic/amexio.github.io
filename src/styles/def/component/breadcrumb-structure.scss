@@ -15,6 +15,7 @@
         cursor: pointer;
         max-height: auto;
         z-index: 1;
+        margin-top: 8px;
         padding: 10px 0px;
         overflow-y: auto;
 }
@@ -23,15 +24,58 @@
         text-decoration: none;
         display: inline-block;
         padding: 5px;
-        display: block; }
+        display: block; 
+}
+.arrow-icon-css {
+        cursor: pointer;
+}
 
-.context-menu-list1 :hover {
-            color: #8D021F; 
-        }
+.data-click-css {
+        cursor: pointer;
+        font-size: 16px;
+}
+
 
 .btn-group {
-                display: table !important;
-            }
+        padding: 7px;
+}
+
+ .btn-group:hover {
+        padding: 6px;    
+ }
+
+ .label {
+        display:  none !important;
+        margin: 0px !important;
+  }
+     
+    .arrow-group-css:hover {
+        content: '';
+        display: initial !important;
+        margin-top: 0px !important;
+        height: 120%;
+        padding-left: 8px;
+        padding-top: 12px;
+        padding-bottom: 8px;
+        border-left: 1px solid #797575;
+    }
+
+    .arrow-group-css {
+        content: '';
+        display: initial;
+        margin-top: 0px;
+        padding-left: 8px;
+        height: 120%;
+        padding-top: 12px;
+        padding-bottom: 8px;
+        border-left: 1px solid #f7f3f3;
+        
+    }
+    .label-icon-css {
+            cursor: pointer;
+    }
+     
+  
 
 
 

@@ -1,7 +1,7 @@
 
 .breadcrum-rightshift-css {
-  background-color:$breadcrumbBGColor;
-  box-shadow: 2px 2px 5px rgba(0,0,0,.6);
+  background-color: #ffffff;
+
 }
 
 .context-menu-list1 {
@@ -12,19 +12,33 @@
 .context-menu-list1 :hover {
           background-color:$breadcrumbBGColor;
 }
-.button-primary {
-  background-color: gray;
-  border-color: gray;
-}
-.button-default {
-  background-color: gray;
-  border-color: gray;
-
-}
 
 .btn-group:hover {
   border: 1px solid $breadcrumbBGColor;
   display: table !important;
+}
+
+
+.btn-group {
+  border-color: transparent;
+
+}
+
+.btn-group:hover {
+ 
+ border: 1px solid   $componentHoverFontColor;
+  background-color: $breadcrumbBGColor;
+}
+
+.arrow-group-css:hover {
+  
+  border-left: 1px solid $componentHoverFontColor;
+}
+
+.arrow-group-css {
+ 
+  border-left: 1px solid #f7f3f3;
+  
 }
 
      

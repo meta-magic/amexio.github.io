@@ -25,7 +25,7 @@ version : 5.2.1onwards
 default : none
 description : Local Data binding.
 */
-@Input() data: any[];
+  @Input() data: any[];
   /*
 Properties
 name : http-url
@@ -55,6 +55,26 @@ default : none
 description : Type of HTTP call, POST,GET etc.
 */
   @Input('http-method') httpmethod: string;
+
+  /*
+    Properties
+  name : display-key
+  datatype : string
+  version : 5.2.0 onwards
+  default : text
+  description : Name of key inside response data to display on ui.
+  */
+  @Input('display-key') displaykey: string;
+
+  /*
+ Properties
+ name : childarray-key
+ datatype : string
+ version : 5.2.0 onwards
+ default : children
+ description : Name of key for child array name inside response data to display on ui.
+ */
+  @Input('childarray-key') childarraykey: string;
 
   /*
    Events
@@ -90,9 +110,12 @@ description : Type of HTTP call, POST,GET etc.
   buttonAngleRightCss = 'button_angle-right';
 
   constructor(public element: ElementRef, private dataService: CommonDataService) {
+    this.displaykey = 'text';
+    this.childarraykey = 'children';
   }
 
   ngOnInit() {
+    this.iconAddedMethod(this.data);
     this.arrowKey = this.buttonAngleRightCss;
     if (this.httpmethod && this.httpurl) {
       this.dataService.fetchData(this.httpurl, this.httpmethod).subscribe((response) => {
@@ -103,13 +126,37 @@ description : Type of HTTP call, POST,GET etc.
       });
     }
   }
+
+  // ICON ADDED WHEN THE ICON IS NOT GIVEN
+  iconAddedMethod(node: any) {
+    if (node && node[this.childarraykey] != null) {
+      node[this.childarraykey].forEach((element: any) => {
+        if (element.hasOwnProperty([this.childarraykey])) {
+          element[this.childarraykey].forEach((childIcon: any) => {
+            if (childIcon.icon == null) {
+              childIcon.icon = 'fa fa-file-o';
+            }
+          });
+          if (element.icon == null) {
+            element.icon = 'fa fa-folder-o';
+          }
+          this.iconAddedMethod(element);
+        }
+      });
+    }
+  }
+
   // THIS METHOD   IS USED FOR ADDING CHILDREN IN OPTIONS
-  getSelectedItem(data: any, parentRef: any) {
-    this.childItem = data;
-    parentRef.show = true;
-    parentRef.expand = false;
+  getSelectedItem(event: any) {
+    this.childItem = event.data;
+    event.parentRef.show = true;
+    event.parentRef.expand = false;
     this.arrowKey = this.buttonAngleRightCss;
-    this.onListItemClick.emit(data);
+    this.onListItemClick.emit(event.data);
+  }
+
+  getEventEmitClick(event: any) {
+    this.onListItemClick.emit(event);
   }
   onArrowClick(item: any) {
     item.expand = !item.expand;
@@ -120,11 +167,11 @@ description : Type of HTTP call, POST,GET etc.
     }
   }
 
-  onbtnClick(item: any) {
-    this.onClick.emit(item);
-    item.show = false;
-    item.expand = false;
-  }
+  onButtonClick(event: any) {
+    event.show = false;
+    event.expand = false;
+    this.onClick.emit(event);
+}
 
   setData(httpResponse: any) {
     let responsedata = httpResponse;
@@ -153,7 +200,9 @@ description : Type of HTTP call, POST,GET etc.
     if (!parentFound) {
       let expandData: any;
       expandData = this.data;
-      expandData.expand = false;
+      if (expandData && expandData.expand != null) {
+        expandData.expand = false;
+      }
     }
   }
 }
