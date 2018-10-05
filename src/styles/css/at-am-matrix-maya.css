@@ -3148,9 +3148,9 @@ input:checked + .toggle-slider:before {
   padding: 3.5px; }
 
 .image {
-  width: 25%;
+  width: 30%;
   float: right;
-  margin-top: 3%; }
+  margin-top: 4%; }
 
 .input-control-success {
   border-bottom-color: green; }
@@ -3165,6 +3165,15 @@ input:checked + .toggle-slider:before {
   padding: 30px;
   color: #4c4e56;
   border-radius: 10px; }
+
+.masterCard {
+  background: url("mastercard.png") 0 0 no-repeat; }
+
+.mastroCard {
+  background: url("mastrocard.png") 0 0 no-repeat; }
+
+.visaCard {
+  background: url("visacard.png") 0 0 no-repeat; }
 
 /****************************************************************************
     Component Name : Enterprise Content

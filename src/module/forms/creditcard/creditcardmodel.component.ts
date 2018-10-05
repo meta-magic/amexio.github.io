@@ -5,7 +5,7 @@ export class AmexioCreditCardModel {
     expMonth: string;
     expYear: number;
     constructor() {
-      this.owner = 'iudfisdifbjn';
+      this.owner = '';
       this.cvv = null;
       this.cardnumber = '';
       this.expMonth = 'January';

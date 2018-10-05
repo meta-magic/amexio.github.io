@@ -4,8 +4,7 @@ Created By:Ankita
 */
 import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { AmexioCreditCardModel} from './../creditcard/creditcardmodel.component';
-
+import { AmexioCreditCardModel } from './../creditcard/creditcardmodel.component';
 const noop = () => {
 };
 @Component({
@@ -14,9 +13,7 @@ const noop = () => {
   providers: [{
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioCreditcardComponent), multi: true,
   }],
-
-  styleUrls: ['./creditcard.component.css']
-  ,
+  styleUrls: ['./creditcard.component.css'],
 })
 export class AmexioCreditcardComponent implements ControlValueAccessor, OnInit {
   /*
@@ -52,15 +49,47 @@ export class AmexioCreditcardComponent implements ControlValueAccessor, OnInit {
   year: Date = new Date();
   currentYear: any;
   yearList: any[] = [];
+  eagarflag: boolean;
+  eagarValue = '';
+  fullPatternValue = '';
+  fullPatternflag: boolean;
+  isValidFullString: boolean;
+  // The internal dataviews model
+  // Placeholders for the callbacks which are later provided
   // by the Control Value Accessor
   private onTouchedCallback: () => void = noop;
   private onChangeCallback: (_: any) => void = noop;
 
   // From ControlValueAccessor Interface
-  writeValue(value: any) {
+  writeValue(modelValue: any) {
+    // let eagarflag: boolean;
+    // let eagarValue = '';
+    // let fullPatternValue = '';
+    // let fullPatternflag: boolean;
     // Condition For Null Check
-    if (value) {
-      this.creditCardModel = value;
+    if (modelValue) {
+      this.creditCardModel = modelValue;
+      this.isNameValid = true;
+      this.isCvvValid = this.cvvRegex.test(this.creditCardModel.cvv);
+      this.cardRegexMap.forEach((value: any, key: string) => {
+        const isEagarValid = value.test(this.creditCardModel.cardnumber);
+        if (isEagarValid) {
+          this.eagarflag = isEagarValid;
+          this.eagarValue = key;
+        }
+      });
+      this.validEagerCardFromMap = this.eagarValue;
+      this.switchCaseMethod();
+      this.cardPatternMap.forEach((value: any, key: string) => {
+        // Condition for Full String Regex
+        this.isValidFullString = value.test(this.creditCardModel.cardnumber);
+        if (this.isValidFullString) {
+          this.fullPatternflag = this.isValidFullString;
+          this.fullPatternValue = key;
+        }
+
+      });
+      this.validPatternCardFromMap = this.fullPatternValue;
     }
   }
   // From ControlValueAccessor Interface
@@ -93,11 +122,11 @@ export class AmexioCreditcardComponent implements ControlValueAccessor, OnInit {
       let fullPatternValue = '';
       this.cardPatternMap.forEach((value: any, key: string) => {
         // Condition for Full String Regex
-        const isValidFullString = value.test(inp.model);
-        if (isValidFullString) {
+       const isValidFullString = value.test(inp.model);
+       if (isValidFullString) {
           fullPatternFlag = isValidFullString;
           fullPatternValue = key;
-        }
+          }
       });
       this.validPatternCardFromMap = fullPatternValue;
       let eagarflag: boolean;
@@ -113,24 +142,7 @@ export class AmexioCreditcardComponent implements ControlValueAccessor, OnInit {
     } else {
       this.validEagerCardFromMap = '';
     }
-    // Switch Case For Eagerpattern Of Card
-    switch (this.validEagerCardFromMap) {
-      case 'eagerflagvisa':
-        this.cardName = 'src/styles/images/visacard.png';
-        break;
-      case 'mastereagerPattern':
-        this.cardName = '/src/styles/images/visacard.png';
-        break;
-      case 'masttroeagerPattern':
-        this.cardName = '/styles/images/mastrocard.png';
-        break;
-      case '':
-        this.cardName = '';
-        break;
-      default:
-        this.cardName = '';
-        break;
-    }
+    this.switchCaseMethod();
   }
   // Map Implementation for key value pair
   ngOnInit() {
@@ -146,6 +158,25 @@ export class AmexioCreditcardComponent implements ControlValueAccessor, OnInit {
     this.currentYear = this.year.getFullYear();
     for (let i = 0; i < this.yearcount; i++) {
       this.yearList.push(this.currentYear + i);
+    }
+  }
+  switchCaseMethod() {
+    switch (this.validEagerCardFromMap) {
+      case 'eagerflagvisa':
+        this.cardName = 'fa fa-cc-visa';
+        break;
+      case 'mastereagerPattern':
+        this.cardName = 'fa fa-cc-mastercard';
+        break;
+      case 'masttroeagerPattern':
+        this.cardName = 'fa fa-credit-card';
+        break;
+      case '':
+        this.cardName = '';
+        break;
+      default:
+        this.cardName = '';
+        break;
     }
   }
   constructor() {
