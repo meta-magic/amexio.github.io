@@ -3167,15 +3167,6 @@ input:checked + .toggle-slider:before {
   color: #4c4e56;
   border-radius: 10px; }
 
-.masterCard {
-  background: url("mastercard.png") 0 0 no-repeat; }
-
-.mastroCard {
-  background: url("mastrocard.png") 0 0 no-repeat; }
-
-.visaCard {
-  background: url("visacard.png") 0 0 no-repeat; }
-
 /****************************************************************************
     Component Name : Enterprise Content
     Version : Amexio v4.0 onwards
