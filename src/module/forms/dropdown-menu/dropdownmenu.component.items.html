@@ -1,11 +1,18 @@
+<div *ngIf="!label " class="dropdowndivider" style="padding-bottom: 5px;">
+  <ng-content></ng-content>
+</div>
+<a *ngIf=" label  " (click)="onItemClick($event)" [ngClass]="{'dropdowndivider':separator}">
 
-
-<div *ngIf="!(icon && label)" class="dropdowndivider" style="padding-bottom: 5px;" >
-    <ng-content></ng-content>
-  </div>
-  <a  *ngIf=" (icon && label)" (click)="onItemClick($event)" [ngClass]="{'dropdowndivider':separator}" >
+  <ng-container *ngIf="icon">
     <em [style.float]="iconalign" [ngClass]="icon"></em>
-    <span [style.float]="labelalign"   style="padding: 5px;">
-      {{label}}
-    </span>
-  </a>
+  </ng-container>
+
+  <ng-container *ngIf="!icon">
+    <em [style.float]="iconalign" class="fa fa-folder-o"></em>
+  </ng-container>
+
+  <em [style.float]="iconalign" [ngClass]="iconAdded"></em>
+  <span [style.float]="labelalign" style="padding: 5px;">
+    {{label}}
+  </span>
+</a>
