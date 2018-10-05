@@ -115,7 +115,7 @@ description : Type of HTTP call, POST,GET etc.
   }
 
   ngOnInit() {
-    this.iconAddedMethod(this.data);
+
     this.arrowKey = this.buttonAngleRightCss;
     if (this.httpmethod && this.httpurl) {
       this.dataService.fetchData(this.httpurl, this.httpmethod).subscribe((response) => {
@@ -124,31 +124,43 @@ description : Type of HTTP call, POST,GET etc.
       }, () => {
         this.setData(this.responseData);
       });
+    } else if (this.data) {
+      this.setData(this.data);
     }
-  }
 
+  }
   // ICON ADDED WHEN THE ICON IS NOT GIVEN
-  iconAddedMethod(node: any) {
-    if (node && node[this.childarraykey] != null) {
-      node[this.childarraykey].forEach((element: any) => {
-        if (element.hasOwnProperty([this.childarraykey])) {
-          element[this.childarraykey].forEach((childIcon: any) => {
-            if (childIcon.icon == null) {
-              childIcon.icon = 'fa fa-file-o';
-            }
+
+  iconAddedMethod(nodeArray: any) {
+    console.log('.....dddd', nodeArray);
+    if (nodeArray && nodeArray.length > 0) {
+      nodeArray.forEach((node: any) => {
+        if (node[this.childarraykey]) {
+          node[this.childarraykey].forEach((element: any) => {
+            this.childIconCheckMethod(element);
           });
-          if (element.icon == null) {
-            element.icon = 'fa fa-folder-o';
-          }
-          this.iconAddedMethod(element);
         }
       });
     }
   }
 
+  childIconCheckMethod(element: any) {
+    if (element.hasOwnProperty([this.childarraykey])) {
+      element[this.childarraykey].forEach((childIcon: any) => {
+        if (childIcon.icon == null || childIcon.icon === '') {
+          childIcon.icon = 'fa fa-file-o';
+        }
+      });
+      if (element.icon == null || element.icon === '') {
+        element.icon = 'fa fa-folder-o';
+      }
+      this.iconAddedMethod(element);
+    }
+  }
   // THIS METHOD   IS USED FOR ADDING CHILDREN IN OPTIONS
   getSelectedItem(event: any) {
-    this.childItem = event.data;
+    const arrayOnly = [event.data];
+    this.childItem = arrayOnly;
     event.parentRef.show = true;
     event.parentRef.expand = false;
     this.arrowKey = this.buttonAngleRightCss;
@@ -158,6 +170,7 @@ description : Type of HTTP call, POST,GET etc.
   getEventEmitClick(event: any) {
     this.onListItemClick.emit(event);
   }
+
   onArrowClick(item: any) {
     item.expand = !item.expand;
     if (item.expand) {
@@ -171,7 +184,7 @@ description : Type of HTTP call, POST,GET etc.
     event.show = false;
     event.expand = false;
     this.onClick.emit(event);
-}
+  }
 
   setData(httpResponse: any) {
     let responsedata = httpResponse;
@@ -179,12 +192,13 @@ description : Type of HTTP call, POST,GET etc.
     if (this.datareader != null) {
       const dr = this.datareader.split('.');
       for (const ir of dr) {
-        responsedata = responsedata[dr[ir]];
+        responsedata = responsedata[ir];
       }
     } else {
       responsedata = httpResponse;
     }
     this.data = responsedata;
+    this.iconAddedMethod(this.data);
   }
 
   @HostListener('document:click', ['$event.target'])
@@ -199,10 +213,14 @@ description : Type of HTTP call, POST,GET etc.
     }
     if (!parentFound) {
       let expandData: any;
-      expandData = this.data;
-      if (expandData && expandData.expand != null) {
-        expandData.expand = false;
-      }
+      this.data.forEach((dataObject: any) => {
+        if (dataObject) {
+          expandData = dataObject;
+        }
+        if (expandData && expandData.expand != null) {
+          expandData.expand = false;
+        }
+      });
     }
   }
 }

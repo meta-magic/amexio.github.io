@@ -1,37 +1,40 @@
-<ng-container *ngIf="data">
+<ng-container *ngIf="data ">
 
-    <div class="breadcrum-rightshift-css">
-    <div class="btn-group" >
-        <label (click)="onButtonClick(data)" class="label-icon-css">
-            <ng-container *ngIf="data && data.icon">
-            <span   [ngClass]="data.icon" ></span>
-            </ng-container>&nbsp;
-            <span >{{data[displaykey]}} &nbsp;&nbsp;</span>
-            </label>
-        <ng-container  *ngIf="data[childarraykey]">
-                  <amexio-form-icon (click)="onArrowClick(data)" class="arrow-group-css"  [key]="arrowKey"></amexio-form-icon>
-        </ng-container>
-        
-        
-        <div class="context-menu-list1" *ngIf="data.expand">
-            <ng-container *ngFor="let node of data[childarraykey]" >
-                <div class="context-menu-list-items1"  [ngStyle]="{'cursor': node.disabled ? 'not-allowed':'pointer'}"
-                 (click)="getSelectedItem({data:node, parentRef:data})">
-                <ng-container *ngIf="node.icon">     
-                <amexio-form-icon [ngClass]="node.icon"></amexio-form-icon>
-                </ng-container>&nbsp;
-                    <span>{{node[displaykey]}}&nbsp;&nbsp;</span>
+    <div *ngFor="let nodeObject of data">
+
+        <div class="breadcrum-rightshift-css">
+            <div class="btn-group">
+                <label (click)="onButtonClick(nodeObject)" class="label-icon-css">
+                    <ng-container *ngIf="nodeObject && nodeObject.icon">
+                        <span [ngClass]="nodeObject.icon"></span>
+                    </ng-container>&nbsp;
+                    <span>{{nodeObject[displaykey]}} &nbsp;&nbsp;</span>
+                </label>
+                <ng-container *ngIf="nodeObject[childarraykey]">
+                    <amexio-form-icon (click)="onArrowClick(nodeObject)" class="arrow-group-css" [key]="arrowKey"></amexio-form-icon>
+                </ng-container>
+
+
+                <div class="context-menu-list1" *ngIf="nodeObject.expand">
+                    <ng-container *ngFor="let node of nodeObject[childarraykey]">
+                        <div class="context-menu-list-items1" [ngStyle]="{'cursor': node.disabled ? 'not-allowed':'pointer'}"
+                            (click)="getSelectedItem({data:node,parentRef:nodeObject})">
+                            <ng-container *ngIf="node.icon">
+                                <amexio-form-icon [ngClass]="node.icon"></amexio-form-icon>
+                            </ng-container>&nbsp;
+                            <span>{{node[displaykey]}}&nbsp;&nbsp;</span>
+                        </div>
+                    </ng-container>
                 </div>
+
+            </div>
+
+            <ng-container *ngIf="nodeObject.show">
+                <amexio-breadcrumb [data]="childItem" [display-key]="displaykey" [childarray-key]="childarraykey"
+                    (onListItemClick)="getEventEmitClick($event)" (onClick)="onButtonClick($event)">
+                </amexio-breadcrumb>
             </ng-container>
         </div>
-        
     </div>
-    <ng-container *ngIf="data.show">
-    <amexio-breadcrumb [data]="childItem" [display-key]="displaykey" 
-    [childarray-key]="childarraykey" (onListItemClick)="getEventEmitClick($event)"
-    (onClick)="onButtonClick($event)"
-    ></amexio-breadcrumb>
-    </ng-container>
-    </div>
-    </ng-container>
-  
+
+</ng-container>
