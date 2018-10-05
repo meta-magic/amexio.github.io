@@ -15,6 +15,7 @@ import { AmexioButtonComponent } from './buttons/button.component';
 import { AmexioCheckBoxGroupComponent } from './checkbox-group/checkbox.group.component';
 import { AmexioCheckBoxComponent } from './checkbox/checkbox.component';
 import { AmexioCreditcardComponent } from './creditcard/creditcard.component';
+import { AmexioCreditCardModel } from './creditcard/creditcardmodel.component';
 import { AmexioDateTimePickerComponent } from './datetimepicker/datetimepicker.component';
 import { AmexioDropDownMenuComponent } from './dropdown-menu/dropdownmenu.component';
 import { AmexioDropDownitemsComponent } from './dropdown-menu/dropdownmenu.component.items';
@@ -48,7 +49,6 @@ import { CommonDataService } from '../services/data/common.data.service';
 import { IconLoaderService } from '../services/icon/icon.service';
 
 import { LoadRecaptchaService } from './recaptcha/load.recaptcha.service';
-
 export * from '../services/data/common.data.service';
 export * from '../services/icon/icon.service';
 export * from './recaptcha/load.recaptcha.service';
@@ -103,7 +103,8 @@ const FORM_COMPONENTS = [
   ],
   exports: FORM_COMPONENTS,
   declarations: FORM_COMPONENTS,
-  providers: [CommonDataService, IconLoaderService, DomHandler],
+  providers: [CommonDataService, IconLoaderService, DomHandler,
+  ],
 })
 export class AmexioFormsModule {
   static forRoot(): ModuleWithProviders {

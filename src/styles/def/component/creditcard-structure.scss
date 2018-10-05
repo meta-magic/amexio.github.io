@@ -1,12 +1,4 @@
-.creditCardForm{
-    max-width: 100%;
-   // background-color:$cerditcardRowHoverBG ;
-   border-style: dotted;
-    overflow: hidden;
-    padding: 30px;
-    color: #4c4e56;
-    border-radius:10px;
-}
+
 .heading{
     text-align: left;
     display: flex;
@@ -52,4 +44,14 @@
 } 
 .input-control-failure{
     border-bottom-color:red;
+}
+
+.creditCardForm{
+    max-width: 100%;
+   // background-color:$cerditcardRowHoverBG ;
+   border-style: dotted;
+    overflow: hidden;
+    padding: 30px;
+    color: #4c4e56;
+    border-radius:10px;
 }

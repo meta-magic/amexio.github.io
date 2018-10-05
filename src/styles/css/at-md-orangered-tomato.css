@@ -3155,14 +3155,6 @@ input:checked + .toggle-slider:before {
 ****************************************************************************/
 /** CreditCard - Visual CSS **/
 /** CreditCard - Structure CSS **/
-.creditCardForm {
-  max-width: 100%;
-  border-style: dotted;
-  overflow: hidden;
-  padding: 30px;
-  color: #4c4e56;
-  border-radius: 10px; }
-
 .heading {
   text-align: left;
   display: flex;
@@ -3208,6 +3200,14 @@ input:checked + .toggle-slider:before {
 
 .input-control-failure {
   border-bottom-color: red; }
+
+.creditCardForm {
+  max-width: 100%;
+  border-style: dotted;
+  overflow: hidden;
+  padding: 30px;
+  color: #4c4e56;
+  border-radius: 10px; }
 
 /****************************************************************************
     Component Name : Enterprise Content

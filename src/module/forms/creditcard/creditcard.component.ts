@@ -2,14 +2,23 @@
 **
 Created By:Ankita
 */
-import { Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { AmexioCreditCardModel} from './../creditcard/creditcardmodel.component';
 
+const noop = () => {
+};
 @Component({
   selector: 'amexio-creditcard',
   templateUrl: './creditcard.component.html',
-  styleUrls: ['./creditcard.component.css'],
+  providers: [{
+    provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioCreditcardComponent), multi: true,
+  }],
+
+  styleUrls: ['./creditcard.component.css']
+  ,
 })
-export class AmexioCreditcardComponent implements OnInit {
+export class AmexioCreditcardComponent implements ControlValueAccessor, OnInit {
   /*
   Properties
   name : yearcount
@@ -19,6 +28,7 @@ export class AmexioCreditcardComponent implements OnInit {
   description : the minexp will set the dropdown to user defined dropdown.
   */
   @Input('year-count') yearcount = 12;
+  creditCardModel: AmexioCreditCardModel;
   inp: string;
   cardName: any;
   cardPattern: any;
@@ -42,7 +52,28 @@ export class AmexioCreditcardComponent implements OnInit {
   year: Date = new Date();
   currentYear: any;
   yearList: any[] = [];
-  // method to check Owner name
+  // by the Control Value Accessor
+  private onTouchedCallback: () => void = noop;
+  private onChangeCallback: (_: any) => void = noop;
+
+  // From ControlValueAccessor Interface
+  writeValue(value: any) {
+    // Condition For Null Check
+    if (value) {
+      this.creditCardModel = value;
+    }
+  }
+  // From ControlValueAccessor Interface
+  registerOnChange(fn: any) {
+    this.onChangeCallback = fn;
+  }
+
+  // From ControlValueAccessor Interface
+  registerOnTouched(fn: any) {
+    this.onTouchedCallback = fn;
+  }
+
+  // method to check owners length
   onNameClick(inp: any) {
     if (inp.length > 0) {
       this.isNameValid = true;
@@ -56,7 +87,7 @@ export class AmexioCreditcardComponent implements OnInit {
   }
   // method to check Card Number
   onInput(inp: any) {
-  // Condition for null check
+    // Condition for null check
     if (inp.model !== '') {
       let fullPatternFlag: boolean;
       let fullPatternValue = '';
@@ -82,16 +113,16 @@ export class AmexioCreditcardComponent implements OnInit {
     } else {
       this.validEagerCardFromMap = '';
     }
-// Switch Case For Eagerpattern Of Card
+    // Switch Case For Eagerpattern Of Card
     switch (this.validEagerCardFromMap) {
       case 'eagerflagvisa':
-        this.cardName = 'assets/img/visacard.png';
+        this.cardName = 'src/styles/images/visacard.png';
         break;
       case 'mastereagerPattern':
-        this.cardName = 'assets/img/mastercard.png';
+        this.cardName = '/src/styles/images/visacard.png';
         break;
       case 'masttroeagerPattern':
-        this.cardName = 'assets/img/mastrocard.png';
+        this.cardName = '/styles/images/mastrocard.png';
         break;
       case '':
         this.cardName = '';
@@ -104,11 +135,10 @@ export class AmexioCreditcardComponent implements OnInit {
   // Map Implementation for key value pair
   ngOnInit() {
     this.cardRegexMap = new Map();
+    this.cardPatternMap = new Map();
     this.cardRegexMap.set('eagerflagvisa', this.visaEagerReg);
     this.cardRegexMap.set('mastereagerPattern', this.mastereagerPattern);
     this.cardRegexMap.set('masttroeagerPattern', this.masttroeagerPattern);
-
-    this.cardPatternMap = new Map();
     this.cardPatternMap.set('visaReg', this.visaReg);
     this.cardPatternMap.set('masterpattern', this.masterpattern);
     this.cardPatternMap.set('mastropattern', this.mastropattern);
@@ -119,6 +149,7 @@ export class AmexioCreditcardComponent implements OnInit {
     }
   }
   constructor() {
+    this.creditCardModel = new AmexioCreditCardModel();
     this.dateData = [
       {
         month: 'January',
