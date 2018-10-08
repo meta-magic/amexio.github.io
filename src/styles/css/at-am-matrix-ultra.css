@@ -5048,9 +5048,6 @@ header .billboard .content-button {
 .accordion:after {
   color: red; }
 
-.accordion amexio-accordion-header > * {
-  padding: 5px; }
-
 .panel {
   background-color: #000000;
   color: rgba(255, 255, 255, 0.7); }
@@ -5059,11 +5056,8 @@ header .billboard .content-button {
 .accordion-transparent {
   background: #000000; }
 
-.accordion amexio-accordion-header {
+.accordion .amexio-accordion-header {
   color: #FF6FFF; }
-
-.accordion-transparent amexio-accordion-header > * {
-  padding: 5px; }
 
 .accordion-transparent:after {
   color: red; }
@@ -5109,6 +5103,9 @@ header .billboard .content-button {
 .accordion-disable {
   opacity: 0.55;
   cursor: not-allowed; }
+
+.accordion .amexio-accordion-header > * {
+  padding: 5px; }
 
 /****************************************************************************
     Component Name : Cards

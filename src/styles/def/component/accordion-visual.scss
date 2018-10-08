@@ -10,12 +10,9 @@
 .accordion:after {
   color: red;
 }
-.accordion amexio-accordion-header > *{
-  padding: 5px;
-}
 
-.active:after {
-}
+
+
 .panel {
   background-color: $accordionPanelBGColor;
   color: $accordionPanelColor;
@@ -25,16 +22,8 @@
 .accordion-transparent{
   background:$accordionTransparentBG;
 }
-.accordion amexio-accordion-header{
+.accordion .amexio-accordion-header{
   color:$componentHeaderFontColor;
-}
-.accordion-transparent amexio-accordion-header > *{
-  padding: 5px;
-}
-
-
-.accordion-transparent .active-accordion, .accordion-transparent:hover {
-
 }
 
 .accordion-transparent:after {

@@ -3209,15 +3209,6 @@ input:checked + .toggle-slider:before {
   color: #4c4e56;
   border-radius: 10px; }
 
-.masterCard {
-  background: url("mastercard.png") 0 0 no-repeat; }
-
-.mastroCard {
-  background: url("mastrocard.png") 0 0 no-repeat; }
-
-.visaCard {
-  background: url("visacard.png") 0 0 no-repeat; }
-
 /****************************************************************************
     Component Name : Enterprise Content
     Version : Amexio v4.0 onwards
@@ -4907,9 +4898,6 @@ header .billboard .content-button {
 .accordion:after {
   color: red; }
 
-.accordion amexio-accordion-header > * {
-  padding: 5px; }
-
 .panel {
   background-color: #ffffff;
   color: #121212; }
@@ -4918,11 +4906,8 @@ header .billboard .content-button {
 .accordion-transparent {
   background: #ffffff; }
 
-.accordion amexio-accordion-header {
+.accordion .amexio-accordion-header {
   color: #f0f7ff; }
-
-.accordion-transparent amexio-accordion-header > * {
-  padding: 5px; }
 
 .accordion-transparent:after {
   color: red; }
@@ -4968,6 +4953,9 @@ header .billboard .content-button {
 .accordion-disable {
   opacity: 0.55;
   cursor: not-allowed; }
+
+.accordion .amexio-accordion-header > * {
+  padding: 5px; }
 
 /****************************************************************************
     Component Name : Cards

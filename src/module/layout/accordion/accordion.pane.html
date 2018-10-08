@@ -5,7 +5,7 @@
   <ng-container>
   {{header}}
     <div style="float: right">
-        <ng-content select="amexio-accordion-header"></ng-content>
+        <ng-content select="amexio-accordion-header">&nbsp;</ng-content> &nbsp;  
       <em *ngIf="!angleIcon" class="fa" [ngClass]="{'fa-plus' : !active,'fa-minus' : active}" aria-hidden="true"></em>
       <em *ngIf="angleIcon" class="fa" [ngClass]="{'fa-angle-down' : !active,'fa-angle-up' : active}" aria-hidden="true"></em>
     </div>
