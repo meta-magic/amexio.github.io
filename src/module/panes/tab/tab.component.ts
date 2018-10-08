@@ -477,6 +477,9 @@ description : If "true" add two context menus i.e close All and close Others tab
     if (this.tabCollection.length === 1) {
       this.closable = false;
     }
+    if (newTab.length === 1) {
+      newTab[0].closable = false;
+    }
   }
 
   activateTab(tabId: number) {
