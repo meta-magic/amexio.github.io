@@ -65,6 +65,25 @@ export class SideNavNodeComponent implements OnInit {
    */
   @Output() onDrag: any = new EventEmitter<any>();
 
+  /*
+   Properties
+   name : display-key
+   datatype : string
+   version : 5.2.0 onwards
+   default : text
+   description : Name of key inside response data to display on ui.
+   */
+  @Input('display-key') displaykey: string;
+  /*
+   Properties
+   name : child-array-key
+   datatype : string
+   version : 5.2.0 onwards
+   default : children
+   description : Name of key for child array name inside response data to display on ui.
+   */
+  @Input('child-array-key') childarraykey: string;
+
 
   constructor() {
   }
@@ -80,14 +99,14 @@ export class SideNavNodeComponent implements OnInit {
 
   activateNode(data: any[], node: any) {
     for (let i = 0; i < data.length; i++) {
-      if (node === data[i] && !data[i]['children']) {
+      if (node === data[i] && !data[i][this.childarraykey]) {
         data[i]['active'] = true;
       } else {
         data[i]['active'] = false;
       }
 
-      if (data[i]['children']) {
-        this.activateNode(data[i]['children'], node);
+      if (data[i][this.childarraykey]) {
+        this.activateNode(data[i][this.childarraykey], node);
       }
     }
   }
