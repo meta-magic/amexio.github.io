@@ -328,7 +328,6 @@ description : If "true" add two context menus i.e close All and close Others tab
       AmexioTabPillComponent,
     );
     const tp = this.target.createComponent(tpCF);
-
     // set the according properties on our component instance
     const instance: AmexioTabPillComponent = tp.instance as AmexioTabPillComponent;
     instance.title = title;
@@ -466,6 +465,9 @@ description : If "true" add two context menus i.e close All and close Others tab
       tab.active = false;
       if (tab.tabId === tabNode.tabId) {
         tabHighlightIndex = index;
+        let parentNodeData: any;
+        parentNodeData = document.getElementById(tab.tabId).parentNode;
+        parentNodeData.parentNode.removeChild(parentNodeData);
       } else if (tab.tabId !== tabNode.tabId) {
         newTab.push(tab);
       }

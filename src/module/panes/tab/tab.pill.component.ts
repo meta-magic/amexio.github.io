@@ -9,7 +9,7 @@ Component Description: Tab component for Angular Apps with multiple configuratio
 such as Tab, Icon support
 
 */
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild, ViewContainerRef} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild, ViewContainerRef } from '@angular/core';
 
 @Component({
   selector: 'amexio-tab', templateUrl: './tab.pill.component.html',
@@ -64,19 +64,20 @@ version : 4.1.9 onwards
 default : black
 description : Font color of label
 */
-@Input('amexio-color')  amexiocolor: string;
+  @Input('amexio-color') amexiocolor: string;
 
- /*
-Properties
-name : closable
-datatype : boolean
-version : 4.2 onwards
-default : false
-description : Font color of label
-*/
-@Input() closable: boolean = null;
+  /*
+ Properties
+ name : closable
+ datatype : boolean
+ version : 4.2 onwards
+ default : false
+ description : Font color of label
+ */
+  @Input() closable: boolean = null;
 
-  tabId: number;
+  tabId: any;
+
   @ViewChild('target', { read: ViewContainerRef }) public target: any;
 
   constructor() {
