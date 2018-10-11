@@ -3113,59 +3113,112 @@ input:checked + .toggle-slider:before {
 ****************************************************************************/
 /** CreditCard - Visual CSS **/
 /** CreditCard - Structure CSS **/
-.heading {
-  text-align: left;
-  display: flex;
-  justify-content: space-between; }
+/* CSS FOR SINGLE COLUMN */
+.creditCardFormSglCol {
+  max-width: 100%;
+  background-color: lightblue;
+  /* overflow: hidden; */
+  padding: 30px;
+  color: #4c4e56;
+  border-radius: 10px;
+  display: grid; }
 
-.ownerdetails {
+.ownerdetailsSglCol {
   margin-top: 7px; }
 
-.owner {
-  width: 55%;
-  float: left; }
+.ownerSglCol {
+  width: 100%; }
 
-.cvv {
-  width: 35%;
-  float: right; }
+.cvvSglCol {
+  width: 22%;
+  margin-top: 1%; }
 
-.cardNumber {
-  width: 100%;
-  float: left;
-  margin-top: 5px; }
+.cardNumberSglCol {
+  /* width:100%; */
+  margin-top: 7px; }
 
-.expiration-date {
-  float: left;
-  margin-top: 5px; }
+.expiration-dateSglCol {
+  display: flex; }
 
-.month {
-  float: left;
+.monthSglCol {
   margin-top: 5px;
   padding: 2px; }
 
-.date {
-  float: right;
+.dateSglCol {
   margin-top: 5px;
-  padding: 3.5px; }
+  padding: 2px; }
 
-.image {
-  width: 30%;
-  float: right;
-  margin-top: 4%; }
+.imageSglCol {
+  display: grid;
+  grid-template-columns: .1fr .1fr .1fr;
+  grid-gap: .2em; }
 
-.input-control-success {
+.input-control-successSglCol {
   border-bottom-color: green; }
 
-.input-control-failure {
+.input-control-failureSglCol {
   border-bottom-color: red; }
 
+.disable-component {
+  opacity: .5;
+  cursor: not-allowed; }
+
+/* CSS FOR DOUBLE COLUMN */
 .creditCardForm {
   max-width: 100%;
   border-style: dotted;
   overflow: hidden;
   padding: 30px;
   color: #4c4e56;
-  border-radius: 10px; }
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: repeat(1, 2fr 1.5fr);
+  grid-gap: 0.5em;
+  justify-items: stretch; }
+
+.cardNumber {
+  grid-column: 1/3; }
+
+.expiration-date {
+  display: grid;
+  grid-template-columns: 0.2fr 0.1fr;
+  grid-gap: .2em; }
+
+.expiration-date-label {
+  display: grid;
+  grid-template-columns: .1fr .3fr 3;
+  grid-gap: .2em;
+  /* grid-column: 1/3; */ }
+
+.image {
+  display: grid;
+  grid-template-columns: .1fr .1fr .1fr;
+  grid-gap: .2em; }
+
+.image-label {
+  display: grid;
+  grid-template-columns: .1fr .1fr .1fr;
+  grid-gap: .2em;
+  padding-top: 2em; }
+
+.cvv {
+  /* width:25%; */
+  display: grid; }
+
+.exp-month-date-label {
+  display: grid;
+  grid-template-columns: .1fr .1fr;
+  grid-gap: .2em; }
+
+@media (max-width: 500px) {
+  .creditCardForm {
+    display: block;
+    padding: 2em; } }
+.input-control-success {
+  border-bottom-color: green; }
+
+.input-control-failure {
+  border-bottom-color: red; }
 
 /****************************************************************************
     Component Name : Enterprise Content

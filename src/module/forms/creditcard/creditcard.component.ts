@@ -25,6 +25,15 @@ export class AmexioCreditcardComponent implements ControlValueAccessor, OnInit {
   description : the minexp will set the dropdown to user defined dropdown.
   */
   @Input('year-count') yearcount = 12;
+   /*
+  Properties
+  name : showlabel
+  datatype : boolean
+  version : 5.2.3onwards
+  default :
+  description : the showlabel will set the label of creditcard.
+  */
+ @Input('show-label') showlabel = 'false';
   creditCardModel: AmexioCreditCardModel;
   inp: string;
   cardName: any;
@@ -37,12 +46,10 @@ export class AmexioCreditcardComponent implements ControlValueAccessor, OnInit {
   visaReg: any = /^4\d{12}(\d{3}|\d{6})?$/;
   mastropattern: any = /^(?:5[06789]\d\d|(?!6011[0234])(?!60117[4789])(?!60118[6789])(?!60119)(?!64[456789])(?!65)6\d{3})\d{8,15}$/;
   masttroeagerPattern: any = /^(5(018|0[23]|[68])|6[37]|60111|60115|60117([56]|7[56])|60118[0-5]|64[0-3]|66)/;
-  dankorteagerPattern: any = /^5019/;
-  dankortpattern: any = /^5019\d{12}$/;
   masterpattern: any = /^5[1-5]\d{14}$/;
   mastereagerPattern: any = /^5[1-5]/;
-  validEagerCardFromMap: any;
-  validPatternCardFromMap: any;
+  validEagerCard: any;
+  validPatternCard: any;
   isFullCardValid = false;
   cvvRegex: any = /^[0-9]{3,4}$/;
   dateData: any;
@@ -54,6 +61,8 @@ export class AmexioCreditcardComponent implements ControlValueAccessor, OnInit {
   fullPatternValue = '';
   fullPatternflag: boolean;
   isValidFullString: boolean;
+  cardGroupData: any;
+  metamagic: string;
   // The internal dataviews model
   // Placeholders for the callbacks which are later provided
   // by the Control Value Accessor
@@ -62,34 +71,32 @@ export class AmexioCreditcardComponent implements ControlValueAccessor, OnInit {
 
   // From ControlValueAccessor Interface
   writeValue(modelValue: any) {
-    // let eagarflag: boolean;
-    // let eagarValue = '';
-    // let fullPatternValue = '';
-    // let fullPatternflag: boolean;
-    // Condition For Null Check
     if (modelValue) {
       this.creditCardModel = modelValue;
       this.isNameValid = true;
       this.isCvvValid = this.cvvRegex.test(this.creditCardModel.cvv);
+      this.creditCardModel.cardnumber = this.creditCardNumberSpaceRemove(this.creditCardModel.cardnumber);
+      const concatValueModel = this.replaceSpace(this.creditCardModel.cardnumber);
       this.cardRegexMap.forEach((value: any, key: string) => {
-        const isEagarValid = value.test(this.creditCardModel.cardnumber);
+        const isEagarValid = value.test(concatValueModel);
         if (isEagarValid) {
           this.eagarflag = isEagarValid;
           this.eagarValue = key;
         }
       });
-      this.validEagerCardFromMap = this.eagarValue;
+      this.validEagerCard = this.eagarValue;
       this.switchCaseMethod();
+      this.onCheckValidation();
       this.cardPatternMap.forEach((value: any, key: string) => {
         // Condition for Full String Regex
-        this.isValidFullString = value.test(this.creditCardModel.cardnumber);
+        this.isValidFullString = value.test(concatValueModel);
         if (this.isValidFullString) {
           this.fullPatternflag = this.isValidFullString;
           this.fullPatternValue = key;
         }
 
       });
-      this.validPatternCardFromMap = this.fullPatternValue;
+      this.validPatternCard = this.fullPatternValue;
     }
   }
   // From ControlValueAccessor Interface
@@ -119,30 +126,50 @@ export class AmexioCreditcardComponent implements ControlValueAccessor, OnInit {
     // Condition for null check
     if (inp.model !== '') {
       let fullPatternFlag: boolean;
+      let isValidFullString: boolean;
       let fullPatternValue = '';
+      const concatValue = this.replaceSpace(inp.model);
       this.cardPatternMap.forEach((value: any, key: string) => {
         // Condition for Full String Regex
-       const isValidFullString = value.test(inp.model);
-       if (isValidFullString) {
+        isValidFullString = value.test(concatValue);
+        if (isValidFullString) {
           fullPatternFlag = isValidFullString;
           fullPatternValue = key;
-          }
+        }
       });
-      this.validPatternCardFromMap = fullPatternValue;
+      this.validPatternCard = fullPatternValue;
       let eagarflag: boolean;
       let eagarValue = '';
       this.cardRegexMap.forEach((value: any, key: string) => {
-        const isEagarValid = value.test(inp.model);
+        const isEagarValid = value.test(concatValue);
         if (isEagarValid) {
           eagarflag = isEagarValid;
           eagarValue = key;
         }
       });
-      this.validEagerCardFromMap = eagarValue;
+      this.validEagerCard = eagarValue;
     } else {
-      this.validEagerCardFromMap = '';
+      this.validEagerCard = '';
     }
     this.switchCaseMethod();
+    this.onCheckValidation();
+    if (inp.model !== '') {
+      this.metamagic = this.creditCardNumberSpaceRemove(inp.model);
+    }
+
+  }
+  // THIS MEHTOD IS SUED FOR REPALCE SPACE WITH STRING AND RETURN TO REGEX
+  private replaceSpace(value: any): string {
+    let newString = '';
+    if ( value ) {
+      const stringArray = value.split(' ');
+      if (stringArray) {
+        stringArray.forEach( (element: any) => {
+          newString = newString.concat(element);
+        });
+      }
+    }
+    return newString;
   }
   // Map Implementation for key value pair
   ngOnInit() {
@@ -159,9 +186,26 @@ export class AmexioCreditcardComponent implements ControlValueAccessor, OnInit {
     for (let i = 0; i < this.yearcount; i++) {
       this.yearList.push(this.currentYear + i);
     }
+
+  }
+  creditCardNumberSpaceRemove(value: any) {
+    const v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+    const matches = v.match(/\d{4,16}/g);
+    const match = matches && matches[0] || '';
+    const parts = [];
+    let len;
+    let i;
+    for (i = 0, len = match.length; i < len; i += 4) {
+      parts.push(match.substring(i, i + 4));
+    }
+    if (parts.length) {
+      return parts.join(' ');
+    } else {
+      return value;
+    }
   }
   switchCaseMethod() {
-    switch (this.validEagerCardFromMap) {
+    switch (this.validEagerCard) {
       case 'eagerflagvisa':
         this.cardName = 'fa fa-cc-visa';
         break;
@@ -179,44 +223,70 @@ export class AmexioCreditcardComponent implements ControlValueAccessor, OnInit {
         break;
     }
   }
+  onCheckValidation() {
+    this.cardGroupData.forEach((element: any) => {
+      if (element.key === this.validEagerCard) {
+        element.color = 'blue';
+      } else {
+        element.color = 'black';
+      }
+    });
+  }
   constructor() {
     this.creditCardModel = new AmexioCreditCardModel();
     this.dateData = [
       {
-        month: 'January',
+        month: '01',
       },
       {
-        month: 'Feburary',
+        month: '02',
       },
       {
-        month: 'March',
+        month: '03',
       },
       {
-        month: 'April',
+        month: '04',
       },
       {
-        month: 'May',
+        month: '05',
       },
       {
-        month: 'June',
+        month: '06',
       },
       {
-        month: 'July',
+        month: '07',
       },
       {
-        month: 'August',
+        month: '08',
       },
       {
-        month: 'September',
+        month: '09',
       },
       {
-        month: 'October',
+        month: '10',
       },
       {
-        month: 'November',
+        month: '11',
       },
       {
-        month: 'December',
+        month: '12',
+      },
+    ];
+    this.cardGroupData = [
+      {
+        iconName: 'fa fa-cc-visa',
+        key: 'eagerflagvisa',
+        color: 'black',
+      },
+      {
+        iconName: 'fa fa-cc-mastercard',
+        key: 'mastereagerPattern',
+        color: 'black',
+      },
+      {
+        iconName: 'fa fa-credit-card',
+        key: 'masttroeagerPattern',
+        color: 'black',
       },
     ];
   }
