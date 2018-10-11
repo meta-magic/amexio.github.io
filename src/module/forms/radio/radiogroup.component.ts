@@ -7,6 +7,7 @@ import {Component, EventEmitter, forwardRef, Input, OnInit, Output} from '@angul
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {CommonDataService} from "../../services/data/common.data.service";
 
+
 const noop = () => {
 };
 
@@ -131,22 +132,13 @@ export class AmexioRadioGroupComponent implements OnInit {
   @Input() disabled: boolean;
   /*
    Events
-   name : onBonSelectionlur
+   name : onSelection
    datatype : any
    version : 4.0 onwards
    default :
    description : Fires selection event
    */
   @Output() onSelection: any = new EventEmitter<any>();
-  /*
-   Events
-   name : input
-   datatype : any
-   version : none
-   default :
-   description : 	On input event field.
-   */
-  @Output() input: any = new EventEmitter<any>();
 
   isValid: boolean;
 
@@ -157,21 +149,24 @@ export class AmexioRadioGroupComponent implements OnInit {
 
   @Output() isComponentValid: any = new EventEmitter<any>();
 
+
+  viewData: any;
+
+  // The internal dataviews model
+  private innerValue: any = '';
+
   constructor(public amxHttp: CommonDataService) {
   }
 
   ngOnInit() {
-
+    if(this.defaultSelectedValue) {
+      this.value =  this.defaultSelectedValue;
+    }
     this.isValid = this.allowblank;
     this.isComponentValid.emit(this.allowblank);
-
     if (this.httpmethod && this.httpurl) {
-      let responseData: any;
       this.amxHttp.fetchData(this.httpurl, this.httpmethod).subscribe((response) => {
-        responseData = response;
-      }, (error) => {
-      }, () => {
-        this.data = this.getResponseData(responseData);
+        this.data = this.getResponseData(response);
       });
     } else if (this.data != null) {
       this.data = this.getResponseData(this.data);
@@ -179,9 +174,8 @@ export class AmexioRadioGroupComponent implements OnInit {
   }
 
   checkDefaultValidation(viewData: any) {
-
     viewData.forEach((opt: any) => {
-      if (opt[this.valuefield] === this.defaultSelectedValue || (opt.hasOwnProperty('selected') && opt.selected)) {
+      if (opt[this.valuefield] === this.innerValue || (opt.hasOwnProperty('selected') && opt.selected)) {
         this.isValid = true;
         this.isComponentValid.emit(true);
         return;
@@ -191,7 +185,7 @@ export class AmexioRadioGroupComponent implements OnInit {
 
   checkSelectedFlag(viewData: any) {
     viewData.forEach((opt: any) => {
-      if (this.defaultSelectedValue == '' && (opt.hasOwnProperty('selected') && opt.selected)) {
+      if (this.innerValue === '' && (opt.hasOwnProperty('selected') && opt.selected)) {
         this.value = opt[this.valuefield];
         return;
       }
@@ -221,8 +215,8 @@ export class AmexioRadioGroupComponent implements OnInit {
 
   // From ControlValueAccessor interface
   writeValue(value: any) {
-    if (value !== this.defaultSelectedValue) {
-      this.defaultSelectedValue = value;
+    if (value !== this.innerValue) {
+      this.innerValue = value;
     }
   }
 
@@ -238,22 +232,21 @@ export class AmexioRadioGroupComponent implements OnInit {
 
   // get accessor
   get value(): any {
-    return this.defaultSelectedValue;
+    return this.innerValue;
   }
 
   // set accessor including call the onchange callback
   set value(v: any) {
-    if (v !== this.defaultSelectedValue) {
-      this.defaultSelectedValue = v;
+    if (v !== this.innerValue) {
+      this.innerValue = v;
       this.onChangeCallback(v);
     }
   }
 
   onClick(row: any) {
     this.isValid = true;
-    //this.defaultSelectedValue = row[this.valuefield];
+    this.value = row[this.valuefield];
     this.isComponentValid.emit(true);
     this.onSelection.emit(row);
   }
-
 }
