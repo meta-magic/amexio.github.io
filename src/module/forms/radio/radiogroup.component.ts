@@ -1,212 +1,217 @@
 /**
- * Created by pratik on 27/11/17.
- * Update Ketan Gote on 11/2/2018 - Field Label and Data Rendering changes.
+ * Created by dattaram on 10/10/18.
  */
-/*
- Component Name : Amexio Radiogroup
- Component Selector :  <amexio-radio-group>
- Component Description : Number input component has been created with different configurable attributes for validation (min/max value, allow blank, custom regex), custom error message, help, custom styles
-*/
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+
+
+import {Component, EventEmitter, forwardRef, Input, OnInit, Output} from '@angular/core';
+import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {CommonDataService} from "../../services/data/common.data.service";
 
-@Component({
-  selector: 'amexio-radio-group', templateUrl: './radiogroup.component.html', styleUrls: ['./radiogroup.component.scss']
-})
-export class AmexioRadioGroupComponent {
-  /*
-Properties
-name : allow-blank
-datatype : string
-version : 4.0 onwards
-default :
-description : Sets if field is required
-*/
-  @Input('allow-blank') allowblank: boolean = true;
-  /*
-Properties
-name :name
-datatype : boolean
-version : 4.0 onwards
-default : false
-description :
-*/
-  @Input() name: boolean;
+const noop = () => {
+};
 
-   /*
-Properties
-name : field-label
-datatype : string
-version : 4.0 onwards
-default :
-description : The label of this field
-*/
+@Component({
+  selector: 'amexio-radio-group',
+  templateUrl: './radiogroup.component.html',
+  providers: [{
+    provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioRadioGroupComponent), multi: true,
+  }],
+})
+
+export class AmexioRadioGroupComponent implements OnInit {
+
+  /*
+   Properties
+   name : allow-blank
+   datatype : string
+   version : 4.0 onwards
+   default :
+   description : Sets if field is required
+   */
+  @Input('allow-blank') allowblank = true;
+  /*
+   Properties
+   name :name
+   datatype : string
+   version : 4.0 onwards
+   default : false
+   description :
+   */
+  @Input() name: string;
+
+  /*
+   Properties
+   name : field-label
+   datatype : string
+   version : 4.0 onwards
+   default :
+   description : The label of this field
+   */
   @Input('field-label') fieldlabel: string;
-   /*
-Properties
-name : data-reader
-datatype : string
-version : 4.0 onwards
-default :
-description : 	Key in JSON datasource for records
-*/
+  /*
+   Properties
+   name : data-reader
+   datatype : string
+   version : 4.0 onwards
+   default :
+   description : 	Key in JSON datasource for records
+   */
   @Input('data-reader') datareader: string;
-   /*
-Properties
-name : http-method
-datatype : string
-version : 4.0 onwards
-default :
-description : Type of HTTP call, POST,GET.
-*/
+  /*
+   Properties
+   name : http-method
+   datatype : string
+   version : 4.0 onwards
+   default :
+   description : Type of HTTP call, POST,GET.
+   */
   @Input('http-method') httpmethod: string;
-   /*
-Properties
-name : http-url
-datatype : string
-version : 4.0 onwards
-default :
-description : 	REST url for fetching datasource.
-*/
+  /*
+   Properties
+   name : http-url
+   datatype : string
+   version : 4.0 onwards
+   default :
+   description : 	REST url for fetching datasource.
+   */
   @Input('http-url') httpurl: string;
-   /*
-Properties
-name : display-field
-datatype : string
-version : 4.0 onwards
-default :
-description : Name of key inside response data to display on ui.
-*/
+  /*
+   Properties
+   name : display-field
+   datatype : string
+   version : 4.0 onwards
+   default :
+   description : Name of key inside response data to display on ui.
+   */
   @Input('display-field') displayfield: string;
-   /*
-Properties
-name : value-field
-datatype : string
-version : 4.0 onwards
-default :
-description : Name of key inside response data.use to send to backend
-*/
+  /*
+   Properties
+   name : value-field
+   datatype : string
+   version : 4.0 onwards
+   default :
+   description : Name of key inside response data.use to send to backend
+   */
   @Input('value-field') valuefield: string;
-   /*
-Properties
-name : default-value
-datatype : string
-version : 4.0 onwards
-default :
-description : Default Value to be checked
-*/
-  @Input('default-value') defaultSelectedValue: string;
-   /*
-Properties
-name : horizontal
-datatype : boolean
-version : 4.0 onwards
-default : false
-description : Set true for horizontal checkbox
-*/
+  /*
+   Properties
+   name : default-value
+   datatype : string
+   version : 4.0 onwards
+   default :
+   description : Default Value to be checked
+   */
+  @Input('default-value') defaultSelectedValue = '';
+  /*
+   Properties
+   name : horizontal
+   datatype : boolean
+   version : 4.0 onwards
+   default : false
+   description : Set true for horizontal checkbox
+   */
   @Input() horizontal: boolean;
-   /*
-Properties
-name : data
-datatype : any
-version : 4.0 onwards
-default :
-description : 	Local data for radio group.
-*/
-  @Input() data: any;
-/*
-Properties
-name : disabled
-datatype : boolean
-version : 4.0 onwards
-default : false
-description : true to disable the field.
-*/
-  @Input() disabled: any;
-/*
-Events
-name : onBonSelectionlur
-datatype : any
-version : 4.0 onwards
-default :
-description : Fires selection event
-*/
+  /*
+   Properties
+   name : data
+   datatype : any
+   version : 4.0 onwards
+   default :
+   description : 	Local data for radio group.
+   */
+  @Input() data: any[] = [];
+  /*
+   Properties
+   name : disabled
+   datatype : boolean
+   version : 4.0 onwards
+   default : false
+   description : true to disable the field.
+   */
+  @Input() disabled: boolean;
+  /*
+   Events
+   name : onBonSelectionlur
+   datatype : any
+   version : 4.0 onwards
+   default :
+   description : Fires selection event
+   */
   @Output() onSelection: any = new EventEmitter<any>();
   /*
-Events
-name : input
-datatype : any
-version : none
-default :
-description : 	On input event field.
-*/
-@Output() input: any = new EventEmitter<any>();
+   Events
+   name : input
+   datatype : any
+   version : none
+   default :
+   description : 	On input event field.
+   */
+  @Output() input: any = new EventEmitter<any>();
 
-  viewData: any;
+  isValid: boolean;
 
-  responseData: any;
+  // Placeholders for the callbacks which are later provided
+  // by the Control Value Accessor
+  private onTouchedCallback: () => void = noop;
+  private onChangeCallback: (_: any) => void = noop;
 
-  // isComponentValid : boolean;
-  isValid : boolean;
-
-  @Output() isComponentValid:any=new EventEmitter<any>();
+  @Output() isComponentValid: any = new EventEmitter<any>();
 
   constructor(public amxHttp: CommonDataService) {
   }
 
-
-  onInput(input:any) {
-
-    // if(this.viewData)
-    // this.isComponentValid = true;
-    this.isValid=true;
-    this.input.emit();
-  }
-
   ngOnInit() {
 
-    // this.isComponentValid = this.allowblank;
-    this.isValid=this.allowblank;
+    this.isValid = this.allowblank;
     this.isComponentValid.emit(this.allowblank);
 
     if (this.httpmethod && this.httpurl) {
-      this.amxHttp.fetchData(this.httpurl, this.httpmethod).subscribe(response => {
-        this.responseData = response;
-      }, error => {
+      let responseData: any;
+      this.amxHttp.fetchData(this.httpurl, this.httpmethod).subscribe((response) => {
+        responseData = response;
+      }, (error) => {
       }, () => {
-        this.viewData = this.getResponseData(this.responseData);
+        this.data = this.getResponseData(responseData);
       });
     } else if (this.data != null) {
-      this.viewData = this.getResponseData(this.data);
+      this.data = this.getResponseData(this.data);
     }
   }
 
+  checkDefaultValidation(viewData: any) {
 
-   checkDefaultValidation(viewData: any) {
-    viewData.forEach((opt: any)=>{
-      if(opt[this.valuefield] == this.defaultSelectedValue || (opt.hasOwnProperty('selected') && opt.selected)){
-        // this.isComponentValid = true;
-        this.isValid=true;
+    viewData.forEach((opt: any) => {
+      if (opt[this.valuefield] === this.defaultSelectedValue || (opt.hasOwnProperty('selected') && opt.selected)) {
+        this.isValid = true;
         this.isComponentValid.emit(true);
         return;
       }
-
     });
   }
 
+  checkSelectedFlag(viewData: any) {
+    viewData.forEach((opt: any) => {
+      if (this.defaultSelectedValue == '' && (opt.hasOwnProperty('selected') && opt.selected)) {
+        this.value = opt[this.valuefield];
+        return;
+      }
+    });
+  }
 
   getResponseData(httpResponse: any) {
     let responsedata = httpResponse;
     if (this.datareader != null) {
-      let dr = this.datareader.split(".");
+      const dr = this.datareader.split('.');
       if (dr != null) {
-        for (let ir = 0; ir < dr.length; ir++) {
-          responsedata = responsedata[dr[ir]];
+        for (const ir of dr) {
+          responsedata = responsedata[ir];
         }
       }
     } else {
       responsedata = httpResponse;
     }
+    this.checkSelectedFlag(responsedata);
+
     if (!this.allowblank) {
       this.checkDefaultValidation(responsedata);
     }
@@ -214,23 +219,41 @@ description : 	On input event field.
     return responsedata;
   }
 
-  onClick(row: any) {
-    for (let r = 0; r < this.viewData.length; r++) {
-      if (this.viewData[r] == row) {
-        this.viewData[r]['selected'] = true;
-        // this.isComponentValid = true;
-        this.isValid=true;
-        this.isComponentValid.emit(true);
-      } else {
-        this.viewData[r]['selected'] = false;
-      }
+  // From ControlValueAccessor interface
+  writeValue(value: any) {
+    if (value !== this.defaultSelectedValue) {
+      this.defaultSelectedValue = value;
     }
-    this.onSelection.emit(row);
   }
 
-    //THIS MEHTOD CHECK INPUT IS VALID OR NOT 
-    checkValidity():boolean{
-      return this.isValid;
+  // From ControlValueAccessor interface
+  registerOnChange(fn: any) {
+    this.onChangeCallback = fn;
+  }
+
+  // From ControlValueAccessor interface
+  registerOnTouched(fn: any) {
+    this.onTouchedCallback = fn;
+  }
+
+  // get accessor
+  get value(): any {
+    return this.defaultSelectedValue;
+  }
+
+  // set accessor including call the onchange callback
+  set value(v: any) {
+    if (v !== this.defaultSelectedValue) {
+      this.defaultSelectedValue = v;
+      this.onChangeCallback(v);
     }
+  }
+
+  onClick(row: any) {
+    this.isValid = true;
+    //this.defaultSelectedValue = row[this.valuefield];
+    this.isComponentValid.emit(true);
+    this.onSelection.emit(row);
+  }
 
 }
