@@ -23,9 +23,7 @@ describe('amexio-radio-group-component', () => {
     fixture = TestBed.createComponent(AmexioRadioGroupComponent);
     comp = fixture.componentInstance;
   });
-  it('amxHttp: CommonDataService', () => {
-    expect(comp.amxHttp.fetchData(comp.httpurl, comp.httpmethod)).toBe(comp.data);
-  });
+ 
   it('check for condition', () => {
     comp.isValid = true;
     expect(comp.isValid).toEqual(true);
