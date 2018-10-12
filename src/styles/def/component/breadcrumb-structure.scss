@@ -17,7 +17,7 @@
         z-index: 1;
         margin-top: 8px;
         padding: 10px 0px;
-        overflow-y: auto;
+       
 }
       
 .context-menu-list1 .context-menu-list-items1 {
@@ -25,6 +25,8 @@
         display: inline-block;
         padding: 5px;
         display: block; 
+        width: 94%; 
+        overflow: hidden;
 }
 .arrow-icon-css {
         cursor: pointer;
@@ -76,6 +78,18 @@
             cursor: pointer;
     }
      
+    .dropdown-icon-css {
+        width: 20%; 
+        text-align:left;  
+        display:inline
+
+    }
+    .dropdown-label-css {
+
+        width:80%;
+        float: right; 
+         display:inline;
+    }
   
 
 

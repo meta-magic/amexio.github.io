@@ -19,13 +19,20 @@
                     <ng-container *ngFor="let node of nodeObject[childarraykey]">
                         <div class="context-menu-list-items1" [ngStyle]="{'cursor': node.disabled ? 'not-allowed':'pointer'}"
                             (click)="getSelectedItem({data:node,parentRef:nodeObject})">
-                            <ng-container *ngIf="node.icon">
-                                <amexio-form-icon [ngClass]="node.icon"></amexio-form-icon>
-                            </ng-container>&nbsp;
-                            <span>{{node[displaykey]}}&nbsp;&nbsp;</span>
+                            <div class="dropdown-icon-css"> 
+                                <ng-container *ngIf="node.icon">
+                                    <amexio-form-icon [ngClass]="node.icon"></amexio-form-icon>
+                                </ng-container>&nbsp;
+                            </div>
+                            <div class="dropdown-label-css">
+                                <span>{{node[displaykey]}}&nbsp;</span>
+                            </div>
                         </div>
                     </ng-container>
                 </div>
+
+
+
 
             </div>
 
