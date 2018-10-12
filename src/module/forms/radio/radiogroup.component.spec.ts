@@ -43,6 +43,12 @@ describe('amexio-radio-group-component', () => {
     });
   });
 
+  it('check checkValidity method', () => {
+
+    comp.checkValidity();
+    comp.isValid =  true;
+    expect(comp.isValid).toBe(true);
+  });
   // it('should emit greeting event onClick', () => {
   //   let row: any;
   //   comp.onClick(row);
