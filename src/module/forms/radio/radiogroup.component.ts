@@ -12,8 +12,7 @@
 
 import {Component, EventEmitter, forwardRef, Input, OnInit, Output} from '@angular/core';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
-import {CommonDataService} from "../../services/data/common.data.service";
-
+import {CommonDataService} from '../../services/data/common.data.service';
 
 const noop = () => {
 };
@@ -156,7 +155,6 @@ export class AmexioRadioGroupComponent implements OnInit {
 
   @Output() isComponentValid: any = new EventEmitter<any>();
 
-
   viewData: any;
 
   // The internal dataviews model
@@ -166,7 +164,7 @@ export class AmexioRadioGroupComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(this.defaultSelectedValue) {
+    if (this.defaultSelectedValue) {
       this.value =  this.defaultSelectedValue;
     }
     this.isValid = this.allowblank;
