@@ -1,4 +1,4 @@
-<div #tabpill  role="tabpanel" class="tab-pane active"  [hidden]="!active">
+<div #tabpill  [attr.id]="tabId" role="tabpanel" class="tab-pane active"  [hidden]="!active">
   <ng-content></ng-content>
   <ng-template #target></ng-template>
 </div>
