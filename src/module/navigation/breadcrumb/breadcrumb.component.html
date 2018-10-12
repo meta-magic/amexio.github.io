@@ -3,7 +3,7 @@
     <div *ngFor="let nodeObject of data">
 
         <div class="breadcrum-rightshift-css">
-            <div class="btn-group">
+            <div class="breadcrumb-group">
                 <label (click)="onButtonClick(nodeObject)" class="label-icon-css">
                     <ng-container *ngIf="nodeObject && nodeObject.icon">
                         <span [ngClass]="nodeObject.icon"></span>

@@ -3115,7 +3115,7 @@ input:checked + .toggle-slider:before {
 /* CSS FOR SINGLE COLUMN */
 .creditCardFormSglCol {
   max-width: 100%;
-  background-color: lightblue;
+  border-style: dotted;
   /* overflow: hidden; */
   padding: 30px;
   color: #4c4e56;
@@ -5002,14 +5002,14 @@ header .billboard .content-button {
 .context-menu-list1 :hover {
   background-color: #ecff82; }
 
-.btn-group:hover {
+.breadcrumb-group:hover {
   border: 1px solid #ecff82;
   display: table !important; }
 
-.btn-group {
+.breadcrumb-group {
   border-color: transparent; }
 
-.btn-group:hover {
+.breadcrumb-group:hover {
   border: 1px solid black;
   background-color: #ecff82; }
 
@@ -5052,10 +5052,10 @@ header .billboard .content-button {
   cursor: pointer;
   font-size: 16px; }
 
-.btn-group {
+.breadcrumb-group {
   padding: 7px; }
 
-.btn-group:hover {
+.breadcrumb-group:hover {
   padding: 6px; }
 
 .label {

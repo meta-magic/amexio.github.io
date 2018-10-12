@@ -24,26 +24,15 @@ describe('amexio-radio-group-component', () => {
     comp = fixture.componentInstance;
   });
   it('amxHttp: CommonDataService', () => {
-    expect(comp.amxHttp.fetchData(comp.httpurl, comp.httpmethod)).toBe(comp.responseData);
+    expect(comp.amxHttp.fetchData(comp.httpurl, comp.httpmethod)).toBe(comp.data);
   });
   it('check for condition', () => {
     comp.isValid = true;
     expect(comp.isValid).toEqual(true);
   });
-  it('should emit greeting event', () => {
-    comp.input.subscribe((g: any) => {
-      expect(fixture.nativeElement).toEqual({ fixture });
-    });
-  });
+ 
 
-  it('should emit greeting event on oninput method', () => {
-    let em: any;
-    comp.onInput(em);
-    comp.input.subscribe((g: any) => {
-      expect(em).toEqual(g);
-    });
-  });
-
+  
   it('should emit greeting event on ngOnInit method', () => {
     comp.ngOnInit();
     comp.isValid = true;
@@ -53,14 +42,6 @@ describe('amexio-radio-group-component', () => {
       expect(comp.allowblank).toEqual(g);
     });
   });
-
-  it('should checkValidity event', () => {
-    comp.checkValidity();
-
-    comp.isValid = true;
-      expect(comp.isValid).toEqual(true);
-  });
-
 
   // it('should emit greeting event onClick', () => {
   //   let row: any;

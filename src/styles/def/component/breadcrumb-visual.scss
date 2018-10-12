@@ -13,18 +13,18 @@
           background-color:$breadcrumbBGColor;
 }
 
-.btn-group:hover {
+.breadcrumb-group:hover {
   border: 1px solid $breadcrumbBGColor;
   display: table !important;
 }
 
 
-.btn-group {
+.breadcrumb-group {
   border-color: transparent;
 
 }
 
-.btn-group:hover {
+.breadcrumb-group:hover {
  
  border: 1px solid   $componentHoverFontColor;
   background-color: $breadcrumbBGColor;
