@@ -75,7 +75,7 @@ description : Font color of label
 */ 
 @Input() closable: boolean = null;
 
-  tabId: number;
+  tabId: any;
   @ViewChild('target', { read: ViewContainerRef }) public target: any;
 
    @ViewChild('tabpill', { read: ViewContainerRef }) public tabpill: any;
