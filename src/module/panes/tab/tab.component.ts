@@ -465,6 +465,9 @@ description : If "true" add two context menus i.e close All and close Others tab
     this.tabCollection.forEach((tab) => {
       tab.active = false;
       if (tab.tabId === tabNode.tabId) {
+        let parentNodeData: any;
+        parentNodeData = document.getElementById(tab.tabId).parentNode;
+        parentNodeData.parentNode.removeChild(parentNodeData);
         tabHighlightIndex = index;
       } else if (tab.tabId !== tabNode.tabId) {
         newTab.push(tab);
@@ -483,6 +486,9 @@ description : If "true" add two context menus i.e close All and close Others tab
     }
     if (this.tabCollection.length === 1) {
       this.closable = false;
+    }
+    if (newTab.length === 1) {
+      newTab[0].closable = false;
     }
     if (newTab.length === 1) {
       newTab[0].closable = false;
