@@ -249,4 +249,9 @@ export class AmexioRadioGroupComponent implements OnInit {
     this.isComponentValid.emit(true);
     this.onSelection.emit(row);
   }
+  
+  // THIS MEHTOD CHECK INPUT IS VALID OR NOT
+checkValidity(): boolean {
+return this.isValid;
+}
 }
