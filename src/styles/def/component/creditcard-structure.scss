@@ -2,8 +2,6 @@
 .creditCardFormSglCol{
     max-width: 100%;
     border-style: dotted;
-   //background-color:lightblue;
-    /* overflow: hidden; */
     padding: 30px;
     color: #4c4e56;
     border-radius:10px;
@@ -100,6 +98,7 @@
     display:grid;
     grid-template-columns: .1fr .1fr;
     grid-gap: .2em;
+    padding-top: 9px;
 }
 @media(max-width:500px){
     .creditCardForm{

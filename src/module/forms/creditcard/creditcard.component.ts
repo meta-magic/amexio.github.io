@@ -121,7 +121,7 @@ export class AmexioCreditcardComponent implements ControlValueAccessor, OnInit {
 
   // method to check owners length
   onNameClick(inp: any) {
-    if (inp.length > 0) {
+    if (inp.model.length > 0) {
       this.isNameValid = true;
     } else {
       this.isNameValid = false;

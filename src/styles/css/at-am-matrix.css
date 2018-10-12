@@ -3116,7 +3116,6 @@ input:checked + .toggle-slider:before {
 .creditCardFormSglCol {
   max-width: 100%;
   border-style: dotted;
-  /* overflow: hidden; */
   padding: 30px;
   color: #4c4e56;
   border-radius: 10px;
@@ -3207,7 +3206,8 @@ input:checked + .toggle-slider:before {
 .exp-month-date-label {
   display: grid;
   grid-template-columns: .1fr .1fr;
-  grid-gap: .2em; }
+  grid-gap: .2em;
+  padding-top: 9px; }
 
 @media (max-width: 500px) {
   .creditCardForm {
