@@ -1,5 +1,6 @@
 <!-- <pre><code>{{creditCardModel|json}}</code></pre> -->
-<div class="creditCardFormSglCol">
+<ng-container *ngIf="templateFlag">
+    <div class="creditCardFormSglCol">
     <div class="imageSglCol">
         <i *ngFor="let cardimage of cardGroupData" [style.color]="cardimage.color" [attr.class]="cardimage.iconName" style="font-size:50px">
         </i>
@@ -15,7 +16,7 @@
     <div class="cardNumberSglCol">
         <label *ngIf="showlabel">CARD NUMBER</label>
         <input type="text" placeholder="CARD NUMBER" maxlength="19" class="input-control" [(ngModel)]="creditCardModel.cardnumber"
-            [value]="metamagic" #inp="ngModel" [ngStyle]="{'border-bottom-color': validPatternCard ? 'green':'red'}" (keyup)="onInput(inp)"
+            [value]="cardNumberValue" #inp="ngModel" [ngStyle]="{'border-bottom-color': validPatternCard ? 'green':'red'}" (keyup)="onInput(inp)"
         />
     </div>
     <label *ngIf="showlabel">EXP DATE</label>
@@ -37,14 +38,17 @@
             type="text" placeholder="CVV" maxlength="3" class="input-control" [(ngModel)]="creditCardModel.cvv" (keyup)="onClick(inpcvv)">
     </div>
 </div>
+</ng-container>
+
 <br>
+<ng-container *ngIf="!templateFlag">
 <div class="creditCardForm">
     <div class="owner">
         <label *ngIf="showlabel">CARD HOLDER NAME</label>
         <input [ngClass]="{'input-control-success':isNameValid==true,'input-control-failure':isNameValid==false}" type="text" placeholder="CARD HOLDER NAME"
             class="input-control" [(ngModel)]="creditCardModel.owner" (keyup)="onNameClick(creditCardModel.owner)">
     </div>
-    <div [ngClass]="{'image-label':showlabel==true,'image':showlabel==false}">
+    <div [ngClass]="{'image-label':showlabel,'image':!showlabel}">
         <i *ngFor="let cardimage of cardGroupData" [style.color]="cardimage.color" [attr.class]="cardimage.iconName" style="font-size:40px"></i>
     </div>
 
@@ -55,7 +59,7 @@
             #inp="ngModel" [ngStyle]="{'border-bottom-color': validPatternCard ? 'green':'red'}" (keyup)="onInput(inp)" />
     </div>
 
-    <div [ngClass]="{'expiration-date-label':showlabel==true,'expiration-date':showlabel==false}" >
+    <div [ngClass]="{'expiration-date-label':showlabel,'expiration-date':!showlabel}" >
         <label *ngIf="showlabel">EXP DATE</label>
         <div class="exp-month-date-label">
             <div class="month">
@@ -78,3 +82,4 @@
             type="text" placeholder="CVV" maxlength="3" class="input-control" [(ngModel)]="creditCardModel.cvv" (keyup)="onClick(inpcvv)">
     </div>
 </div>
+</ng-container>

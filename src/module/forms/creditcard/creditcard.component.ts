@@ -25,15 +25,25 @@ export class AmexioCreditcardComponent implements ControlValueAccessor, OnInit {
   description : the minexp will set the dropdown to user defined dropdown.
   */
   @Input('year-count') yearcount = 12;
-   /*
-  Properties
-  name : showlabel
-  datatype : boolean
-  version : 5.2.3onwards
-  default :
-  description : the showlabel will set the label of creditcard.
-  */
- @Input('show-label') showlabel = 'false';
+  /*
+ Properties
+ name : showlabel
+ datatype : boolean
+ version : 5.2.3onwards
+ default :
+ description : the showlabel will set the label of creditcard.
+ */
+  @Input('show-label') showlabel = 'false';
+  /*
+ Properties
+ name : template
+ datatype : String
+ version : 5.2.3onwards
+ default :
+ description : the template
+ */
+  @Input('template') template: string;
+  templateFlag: boolean;
   creditCardModel: AmexioCreditCardModel;
   inp: string;
   cardName: any;
@@ -62,7 +72,7 @@ export class AmexioCreditcardComponent implements ControlValueAccessor, OnInit {
   fullPatternflag: boolean;
   isValidFullString: boolean;
   cardGroupData: any;
-  metamagic: string;
+  cardNumberValue: string;
   // The internal dataviews model
   // Placeholders for the callbacks which are later provided
   // by the Control Value Accessor
@@ -154,17 +164,17 @@ export class AmexioCreditcardComponent implements ControlValueAccessor, OnInit {
     this.switchCaseMethod();
     this.onCheckValidation();
     if (inp.model !== '') {
-      this.metamagic = this.creditCardNumberSpaceRemove(inp.model);
+      this.cardNumberValue = this.creditCardNumberSpaceRemove(inp.model);
     }
 
   }
   // THIS MEHTOD IS SUED FOR REPALCE SPACE WITH STRING AND RETURN TO REGEX
   private replaceSpace(value: any): string {
     let newString = '';
-    if ( value ) {
+    if (value) {
       const stringArray = value.split(' ');
       if (stringArray) {
-        stringArray.forEach( (element: any) => {
+        stringArray.forEach((element: any) => {
           newString = newString.concat(element);
         });
       }
@@ -183,6 +193,12 @@ export class AmexioCreditcardComponent implements ControlValueAccessor, OnInit {
     this.cardPatternMap.set('mastropattern', this.mastropattern);
     this.cardName = '';
     this.currentYear = this.year.getFullYear();
+
+    if (this.template === 'single-column') {
+      this.templateFlag = true;
+    } else if (this.template === 'double-column') {
+      this.templateFlag = false;
+    }
     for (let i = 0; i < this.yearcount; i++) {
       this.yearList.push(this.currentYear + i);
     }
@@ -233,6 +249,11 @@ export class AmexioCreditcardComponent implements ControlValueAccessor, OnInit {
     });
   }
   constructor() {
+    if (this.template === 'single-column') {
+      this.templateFlag = true;
+    } else if (this.template === 'double-column') {
+      this.templateFlag = false;
+    }
     this.creditCardModel = new AmexioCreditCardModel();
     this.dateData = [
       {

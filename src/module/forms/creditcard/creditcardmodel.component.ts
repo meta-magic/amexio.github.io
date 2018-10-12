@@ -8,7 +8,7 @@ export class AmexioCreditCardModel {
       this.owner = '';
       this.cvv = null;
       this.cardnumber = '';
-      this.expMonth = 'January';
+      this.expMonth = '01';
       this.expYear = 2018;
     }
   }
