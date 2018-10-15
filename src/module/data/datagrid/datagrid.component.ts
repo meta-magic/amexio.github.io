@@ -15,62 +15,63 @@ import {CommonDataService} from "../../services/data/common.data.service";
 @Component({
   selector: 'amexio-datagrid',
   template: `
-    <div class="datagrid">
-      <div class="datatabletitle">
-        <span> {{title}} </span>
-        <span *ngIf="enablecolumnfilter ? true:false" class="float-right" (click)="showToolTip = !showToolTip ; showGroupByColumn = false"
-              style=" cursor: pointer;">
+    <ng-container *ngIf="enabletitlebar">
+      <div class="datagrid">
+        <div class="datatabletitle">
+          <span> {{title}} </span>
+          <span *ngIf="enablecolumnfilter ? true:false" class="float-right" (click)="showToolTip = !showToolTip ; showGroupByColumn = false"
+                style=" cursor: pointer;">
           &nbsp;&nbsp;
           <span *ngIf="!show">&#9776;</span>
           <span *ngIf="show">&#9747;</span>
       </span>
 
-        <span *ngIf="groupby ? true : false" class="float-right" (click)="showGroupByColumn = !showGroupByColumn; showToolTip = false"
-              style=" cursor: pointer;">
+          <span *ngIf="groupby ? true : false" class="float-right" (click)="showGroupByColumn = !showGroupByColumn; showToolTip = false"
+                style=" cursor: pointer;">
           <!--<span class="fa fa-th-list"></span>-->
           <amexio-data-icon key="datagrid_list"></amexio-data-icon>
       </span>
-      </div>
-      <!--Filter with Checkbox datagrid start-->
-      <ng-container *ngIf="enabledatafilter ? true : false">
-        <div class="datatable datatable-row">
-          <ng-container *ngIf="enablecheckbox">
-            <div class="datatable-col col-group datatable-checkbox-width">
-              <div class="inputgroup">
-                <div class="input-box">
-                  <div *ngIf="!selectAll" (click)="selectAllRecord()" class="checkbox default"></div>
-                  <div *ngIf="selectAll" (click)="selectAllRecord()" class="checkbox active">&#10004;</div>
+        </div>
+        <!--Filter with Checkbox datagrid start-->
+        <ng-container *ngIf="enabledatafilter ? true : false">
+          <div class="datatable datatable-row">
+            <ng-container *ngIf="enablecheckbox">
+              <div class="datatable-col col-group datatable-checkbox-width">
+                <div class="inputgroup">
+                  <div class="input-box">
+                    <div *ngIf="!selectAll" (click)="selectAllRecord()" class="checkbox default"></div>
+                    <div *ngIf="selectAll" (click)="selectAllRecord()" class="checkbox active">&#10004;</div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </ng-container>
+            </ng-container>
 
-          <!--Filter datagrid start-->
-          <ng-container *ngIf="enabledatafilter ? true : false">
-            <ng-container *ngFor="let cols of columns">
-              <ng-container *ngIf="!cols.hidden">
-                <div class="datatable-col col-group" [style.width.%]="cols.width">
-                  <data-grid-filter [column]="cols" (filterObject)="getFilteredData($event)">
-                  </data-grid-filter>
-                </div>
+            <!--Filter datagrid start-->
+            <ng-container *ngIf="enabledatafilter ? true : false">
+              <ng-container *ngFor="let cols of columns">
+                <ng-container *ngIf="!cols.hidden">
+                  <div class="datatable-col col-group" [style.width.%]="cols.width">
+                    <data-grid-filter [column]="cols" (filterObject)="getFilteredData($event)">
+                    </data-grid-filter>
+                  </div>
+                </ng-container>
               </ng-container>
             </ng-container>
-          </ng-container>
 
-        </div>
-      </ng-container>
+          </div>
+        </ng-container>
 
-      <!--Filter datagrid start-->
-      <ng-container *ngIf="globalfilter ? true : false">
-        <div class="datatable datatable-row">
-          <ng-container class="datatable datatable-column">
-            <div class="inputgroup" style="padding-left: 1%; padding-right: 1%">
-              <input type="text"  [(ngModel)]="filterValue" (keyup)="keyUpSearch($event)" type="text" class="input-control" aria-label="Text input with dropdown button">
-              <!--<i class="fa fa-filter" aria-hidden="true" (click)="showToolTip = !showToolTip"></i>-->
-              <span class="datatable-filter-icon">
+        <!--Filter datagrid start-->
+        <ng-container *ngIf="globalfilter ? true : false">
+          <div class="datatable datatable-row">
+            <ng-container class="datatable datatable-column">
+              <div class="inputgroup" style="padding-left: 1%; padding-right: 1%">
+                <input type="text"  [(ngModel)]="filterValue" (keyup)="keyUpSearch($event)" type="text" class="input-control" aria-label="Text input with dropdown button">
+                <!--<i class="fa fa-filter" aria-hidden="true" (click)="showToolTip = !showToolTip"></i>-->
+                <span class="datatable-filter-icon">
                       <amexio-data-icon key="datagrid_filter" (click)="showToolTip = !showToolTip"></amexio-data-icon>
                   </span>
-              <span *ngIf="showToolTip" class="dropdown" style="width: 250px; right: 10px">
+                <span *ngIf="showToolTip" class="dropdown" style="width: 250px; right: 10px">
                       <ul class="dropdown-list" *ngFor="let opt of globalFilterOptions">
                           <li class="list-items">
                               <div (click)="selectedOption(opt)">
@@ -80,13 +81,13 @@ import {CommonDataService} from "../../services/data/common.data.service";
                           </li>
                       </ul>
                   </span>
-            </div>
-          </ng-container>
-        </div>
-      </ng-container>
+              </div>
+            </ng-container>
+          </div>
+        </ng-container>
 
-      <div>
-        <ng-container *ngIf="enablecolumnfilter ? true : false">
+        <div>
+          <ng-container *ngIf="enablecolumnfilter ? true : false">
           <span *ngIf="showToolTip" class="dropdown dropdown-right" style="width: 250px;">
               <ul class="dropdown-list">
                   <li class="list-items" *ngFor="let cols of columns;let i = index;" (click)="showToolTip = !showToolTip">
@@ -97,9 +98,9 @@ import {CommonDataService} from "../../services/data/common.data.service";
                   </li>
               </ul>
           </span>
-        </ng-container>
+          </ng-container>
 
-        <ng-container *ngIf="groupby ? true : false">
+          <ng-container *ngIf="groupby ? true : false">
           <span *ngIf="showGroupByColumn" class="dropdown dropdown-right" style="width: 250px;">
               <ul class="dropdown-list">
                   <li class="list-items" *ngFor="let cols of columns;let i = index;" (click)="showGroupByColumn = !showGroupByColumn">
@@ -109,9 +110,11 @@ import {CommonDataService} from "../../services/data/common.data.service";
                   </li>
               </ul>
           </span>
-        </ng-container>
+          </ng-container>
+        </div>
       </div>
-    </div>
+    </ng-container>
+   
 
     <!--Checkbox datagrid with datatypes condition start-->
     <div class="datatable">
@@ -355,6 +358,8 @@ import {CommonDataService} from "../../services/data/common.data.service";
 export class AmexioDatagridComponent implements OnInit, AfterContentInit{
 
   private componentLoaded: boolean;
+
+  @Input('enable-title-bar') enabletitlebar: boolean = true;
 
   /*
    Properties
