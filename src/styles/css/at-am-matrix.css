@@ -5929,7 +5929,8 @@ verticalalign-tableft {
 
 .modal-window-table .tablerow .tablecol {
   display: table-cell;
-  vertical-align: middle; }
+  vertical-align: middle;
+  width: 100%; }
 
 .modal-window-footer-max {
   bottom: 0px;
