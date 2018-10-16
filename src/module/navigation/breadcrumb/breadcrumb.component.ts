@@ -132,7 +132,6 @@ description : Type of HTTP call, POST,GET etc.
   // ICON ADDED WHEN THE ICON IS NOT GIVEN
 
   iconAddedMethod(nodeArray: any) {
-    console.log('.....dddd', nodeArray);
     if (nodeArray && nodeArray.length > 0) {
       nodeArray.forEach((node: any) => {
         if (node[this.childarraykey]) {
