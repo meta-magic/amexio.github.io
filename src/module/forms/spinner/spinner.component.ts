@@ -75,7 +75,7 @@ export class AmexioSpinnerComponent implements OnInit {
     this.assignColor();
   }
   private assignColor() {
-    if (this.type === 'spinnerRound' && this.color) {
+    if (this.type === 'spinnerround' && this.color) {
       let newColor: any;
       const r = parseInt(this.color.slice(1, 3), 16);
       const g = parseInt(this.color.slice(3, 5), 16);
