@@ -2542,8 +2542,24 @@ input:checked + .toggle-slider:before {
   padding: 10px;
   display: block; }
 
-.menu-right {
+.dropdownmenu-right {
   right: 10px; }
+
+.label-alignment-css {
+  float: right;
+  width: 80%;
+  text-align: left; }
+
+.dropdown-menu-icon-div {
+  width: 20%;
+  display: inline; }
+
+.dropdown-menu-a {
+  width: auto; }
+
+.icon-false-css {
+  width: 80%;
+  padding-left: 30px; }
 
 /*****************************************************************************
  Component Name : Toolbar
@@ -5779,7 +5795,8 @@ verticalalign-tableft {
 
 .modal-window-table .tablerow .tablecol {
   display: table-cell;
-  vertical-align: middle; }
+  vertical-align: middle;
+  width: 100%; }
 
 .modal-window-footer-max {
   bottom: 0px;

@@ -4,21 +4,21 @@
  Component Description : Amexio Dropdown component with various modes and configurations .
  */
 
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 @Component({
   selector: 'amexio-drop-down-menu-item',
   templateUrl: `./dropdownmenu.component.items.html`,
 })
 export class AmexioDropDownitemsComponent implements OnInit {
   toggle: boolean;
-/*
-   Properties
-   name : label
-   datatype : string
-   version : 4.2 onwards
-   default :
-   description : Label Dropdown
-   */
+  /*
+     Properties
+     name : label
+     datatype : string
+     version : 4.2 onwards
+     default :
+     description : Label Dropdown
+     */
   @Input() label: string;
   /*
    Properties
@@ -37,7 +37,7 @@ export class AmexioDropDownitemsComponent implements OnInit {
    default :
    description : Label-align for label right/left
    */
-  @Input ('label-align') labelalign: string;
+  @Input('label-align') labelalign: string;
   /*
    Properties
    name : icon-align
@@ -46,7 +46,7 @@ export class AmexioDropDownitemsComponent implements OnInit {
    default :
    description : icon-align for text field right/left
    */
-  @Input ('icon-align') iconalign: string;
+  @Input('icon-align') iconalign: string;
   /*
    Properties
    name : add-seperator
@@ -55,7 +55,7 @@ export class AmexioDropDownitemsComponent implements OnInit {
    default : false
    description : add divider to the dropdown menu list
    */
-  @Input ('separator') separator: boolean;
+  @Input('separator') separator: boolean;
 
   /*
    Properties
@@ -65,26 +65,32 @@ export class AmexioDropDownitemsComponent implements OnInit {
    default : false
    description : add divider to the dropdown menu list
    */
+  labelaligncss: boolean;
 
   @Output() onClick: any = new EventEmitter<any>();
   ngOnInit() {
-    if (this.iconalign && this.labelalign
+    if (this.iconalign && this.iconalign === 'right') {
+      this.labelalign = null;
+      this.labelaligncss = false;
+
+    } else if (this.iconalign && this.iconalign === 'left') {
+      this.iconalign = null;
+      this.labelaligncss = true;
+
+    } else if (this.iconalign && this.labelalign
       && this.iconalign.toLowerCase() === this.labelalign.toLowerCase()) {
       this.iconalign = null;
       this.labelalign = null;
-    } else if (this.iconalign && this.iconalign === 'left') {
-      this.labelalign = 'right';
-      this.iconalign = null;
-    } else if (this.iconalign && this.iconalign === 'right') {
-      this.labelalign = null;
+    } else if (this.iconalign == null || this.iconalign === '') {
+      this.iconalign = 'left';
     }
   }
   onItemClick(clickEvent: any) {
-  this.toggle = false;
-  const e = {
+    this.toggle = false;
+    const e = {
       event: clickEvent,
       this: this,
     };
-  this.onClick.emit(e);
+    this.onClick.emit(e);
   }
 }
