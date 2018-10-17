@@ -36,7 +36,7 @@
             <div class="cvvSglCol">
                 <label *ngIf="showlabel">CVV</label>
                 <input #inpcvv="ngModel" [ngClass]="{'input-control-success':isCvvValid,'input-control-failure':(!isCvvValid && inpcvv.touched)}"
-                    type="text" placeholder="CVV" maxlength="3" class="input-control" [(ngModel)]="creditCardModel.cvv" (keyup)="onClick(inpcvv)">
+                    type="password" placeholder="CVV" maxlength="3" class="input-control" [(ngModel)]="creditCardModel.cvv" (keyup)="onClick(inpcvv)">
             </div>
         </div>
         </ng-container>
@@ -79,7 +79,7 @@
             <div class="cvv">
                 <label *ngIf="showlabel">CVV</label>
                 <input #inpcvv="ngModel" [ngClass]="{'input-control-success':isCvvValid,'input-control-failure':(!isCvvValid && (inpcvv.dirty ||inpcvv.touched))}"
-                    type="text" placeholder="CVV" maxlength="3" class="input-control" [(ngModel)]="creditCardModel.cvv" (keyup)="onClick(inpcvv)">
+                    type="password" placeholder="CVV" maxlength="3" class="input-control" [(ngModel)]="creditCardModel.cvv" (keyup)="onClick(inpcvv)">
             </div>
         </div>
         </ng-container>
