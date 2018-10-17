@@ -40,6 +40,6 @@ version : 4.2onwards
 default : false
 description : This will specify the content border in timeline.
 */
-@Input('content-border') contentborder = false;
+@Input('content-border') contentborder = true;
   constructor() { }
 }

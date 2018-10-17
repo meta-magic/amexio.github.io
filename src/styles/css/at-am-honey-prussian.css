@@ -6222,7 +6222,7 @@ verticalalign-tableft {
 .timeline-event-container::before {
   content: '';
   position: absolute;
-  margin-left: 17px;
+  margin-left: 15px;
   height: 100%;
   width: 3px;
   background: #F3C22A; }
@@ -6267,7 +6267,7 @@ verticalalign-tableft {
   display: block;
   width: 24px t;
   left: 60% !important;
-  margin-left: 11px;
+  margin-left: 10px;
   margin-top: -12px;
   margin-top: 30%;
   padding-top: 3%; }
