@@ -1,0 +1,13 @@
+.chip {
+    display: inline-block;
+    padding: 0 25px;
+    height: 55px;
+    font-size: 20px;
+    line-height: 50px;
+    border-radius: 25px;
+    background-color: #f1f1f1;
+    margin: .2em;
+}
+.chip:hover{
+ background:$chipsHoverBG;
+}

@@ -3278,6 +3278,25 @@ input:checked + .toggle-slider:before {
 .input-control-failure {
   border-bottom-color: red; }
 
+/*****************************************************************************
+ Component Name : Chips
+    Version : Amexio v5.3onwards
+****************************************************************************/
+/** Chips - Visual CSS **/
+/** Chips- Structure CSS **/
+.chip {
+  display: inline-block;
+  padding: 0 25px;
+  height: 55px;
+  font-size: 20px;
+  line-height: 50px;
+  border-radius: 25px;
+  background-color: #f1f1f1;
+  margin: .2em; }
+
+.chip:hover {
+  background: #deb8ff; }
+
 /****************************************************************************
     Component Name : Enterprise Content
     Version : Amexio v4.0 onwards
