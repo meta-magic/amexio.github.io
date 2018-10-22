@@ -7,7 +7,7 @@
     <div style="white-space:nowrap">
       <div class="tree-node-label" *ngIf="node[childarraykey] && (node[childarraykey].length>0)">
         <em class="fa " [ngClass]="{'fa-angle-down':node.expand,'fa-angle-right':!node.expand}"></em>
-      </div>
+      </div> &nbsp;
 
       <div class="tree-node-label tree-node-label-hover" [ngClass]="{'tree-node-label-selected':node.isSelected ,'tree-node-label-not-selected':node.isSelected=='false'}"
         [attr.draggable]="enabledrag" (dragleave)="dragleave($event)" (drop)="drop({event:$event,data:node})" (dragover)="allowDrop({event:$event,data:node})"
