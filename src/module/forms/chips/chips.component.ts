@@ -22,20 +22,25 @@ export class AmexioChipsComponent implements OnInit {
    default : none
    description : It will fire only on selection of checkbox and gives you selected record data.
    */
-  @Output() selectedchipData: any = new EventEmitter<any>();
-  constructor() {
-  }
+  @Output('onLabelClick') onLabelClick: any = new EventEmitter<any>();
+
+  @Output('onCloseClick') onCloseClick: any = new EventEmitter<any>();
+
   ngOnInit() {
   }
-  onCloseClick(item: any) {
+
+  onCloseClickMethod(item: any) {
     this.data.forEach((element: any, index: number) => {
       if (element === item) {
         this.data.splice( index, 1 );
       }
     });
-    this.emitSelectedLabel(item);
+    this.onCloseClick.emit(item);
   }
-  emitSelectedLabel(item: any) {
-    this.selectedchipData.emit(item);
+  constructor() {
+  }
+
+  onLabelClickMethod(item: any) {
+    this.onLabelClick.emit(item);
   }
 }

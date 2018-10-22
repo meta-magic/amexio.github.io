@@ -1,5 +1,5 @@
 <ng-container *ngFor="let item of data">
-  <div class="chip" style="cursor: pointer;" (click)="emitSelectedLabel(item)">
+  <div class="chip" style="cursor: pointer;" (click)="onLabelClickMethod(item)">
     <amexio-form-icon [customclass]="item.icon"></amexio-form-icon>
     <amexio-label style="padding:10px">
       <span style="cursor: pointer;">
@@ -7,7 +7,7 @@
       </span>
     </amexio-label>
     <ng-container *ngIf="item.closable">
-      <i class="fa fa-times" style="cursor: pointer;" (click)="onCloseClick(item)"></i>
+      <i class="fa fa-times" style="cursor: pointer;" (click)="onCloseClickMethod(item)"></i>
     </ng-container>
   </div>
 </ng-container>
