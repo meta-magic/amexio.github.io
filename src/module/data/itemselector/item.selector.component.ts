@@ -258,6 +258,7 @@ export class AmexioItemSelectorComponent implements OnInit {
       this.availableData.forEach((option, index) => {
         if (option['isSelected']) {
           this.availableData.splice(index, 1);
+          option['selectedClick'] = false;
         }
       });
       this.switchingObject = null;
