@@ -1,14 +1,14 @@
 export class AmexioCreditCardModel {
     owner: string;
     cvv: number;
-    cardnumber: string;
-    expMonth: string;
+    cardnumber: number;
+    expMonth: number;
     expYear: number;
     constructor() {
       this.owner = '';
       this.cvv = null;
-      this.cardnumber = '';
-      this.expMonth = '01';
+      this.cardnumber = null;
+      this.expMonth = 1;
       this.expYear = 2018;
     }
   }
