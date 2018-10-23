@@ -73,6 +73,8 @@ export class AmexioCreditcardComponent implements ControlValueAccessor, OnInit {
   isValidFullString: boolean;
   cardGroupData: any;
   cardNumberValue: string;
+  dummyCreditCardNumber: string;
+  dummyMonth: string;
   // The internal dataviews model
   // Placeholders for the callbacks which are later provided
   // by the Control Value Accessor
@@ -83,12 +85,12 @@ export class AmexioCreditcardComponent implements ControlValueAccessor, OnInit {
   writeValue(modelValue: any) {
     if (modelValue) {
       this.creditCardModel = modelValue;
+      this.onChangeCardNumber(this.creditCardModel.cardnumber);
+      this.onChangeMonth('0' + this.creditCardModel.expMonth);
       this.isNameValid = true;
       this.isCvvValid = this.cvvRegex.test(this.creditCardModel.cvv);
-      this.creditCardModel.cardnumber = this.creditCardNumberSpaceRemove(this.creditCardModel.cardnumber);
-      const concatValueModel = this.replaceSpace(this.creditCardModel.cardnumber);
       this.cardRegexMap.forEach((value: any, key: string) => {
-        const isEagarValid = value.test(concatValueModel);
+        const isEagarValid = value.test(this.dummyCreditCardNumber);
         if (isEagarValid) {
           this.eagarflag = isEagarValid;
           this.eagarValue = key;
@@ -97,28 +99,31 @@ export class AmexioCreditcardComponent implements ControlValueAccessor, OnInit {
       this.validEagerCard = this.eagarValue;
       this.switchCaseMethod();
       this.onCheckValidation();
-      this.cardPatternMap.forEach((value: any, key: string) => {
-        // Condition for Full String Regex
-        this.isValidFullString = value.test(concatValueModel);
-        if (this.isValidFullString) {
-          this.fullPatternflag = this.isValidFullString;
-          this.fullPatternValue = key;
-        }
 
-      });
-      this.validPatternCard = this.fullPatternValue;
     }
+  }
+  onChangeCardNumber(event: any) {
+    this.dummyCreditCardNumber = this.creditCardNumberSpaceRemove(event);
+    const concatCardNumber = this.replaceSpace(this.dummyCreditCardNumber);
+    this.cardPatternMap.forEach((value: any, key: string) => {
+      // Condition for Full String Regex
+      this.isValidFullString = value.test(concatCardNumber);
+      if (this.isValidFullString) {
+        this.fullPatternflag = this.isValidFullString;
+        this.fullPatternValue = key;
+      }
+    });
+    this.validPatternCard = this.fullPatternValue;
+    this.creditCardModel.cardnumber = +concatCardNumber;
   }
   // From ControlValueAccessor Interface
   registerOnChange(fn: any) {
     this.onChangeCallback = fn;
   }
-
   // From ControlValueAccessor Interface
   registerOnTouched(fn: any) {
     this.onTouchedCallback = fn;
   }
-
   // method to check owners length
   onNameClick(inp: any) {
     if (inp.model.length > 0) {
@@ -205,6 +210,7 @@ export class AmexioCreditcardComponent implements ControlValueAccessor, OnInit {
 
   }
   creditCardNumberSpaceRemove(value: any) {
+    value = value.toString();
     const v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
     const matches = v.match(/\d{4,16}/g);
     const match = matches && matches[0] || '';
@@ -255,6 +261,7 @@ export class AmexioCreditcardComponent implements ControlValueAccessor, OnInit {
       this.templateFlag = false;
     }
     this.creditCardModel = new AmexioCreditCardModel();
+    this.dummyMonth = '0' + this.creditCardModel.expMonth;
     this.dateData = [
       {
         month: '01',
@@ -310,5 +317,9 @@ export class AmexioCreditcardComponent implements ControlValueAccessor, OnInit {
         color: 'black',
       },
     ];
+  }
+  onChangeMonth(event: any) {
+    this.dummyMonth = event;
+    this.creditCardModel.expMonth = +this.dummyMonth;
   }
 }

@@ -16,14 +16,14 @@
         
             <div class="cardNumberSglCol">
                 <label *ngIf="showlabel">CARD NUMBER</label>
-                <input type="text" placeholder="CARD NUMBER" maxlength="19" class="input-control" [(ngModel)]="creditCardModel.cardnumber"
+                <input type="text" placeholder="CARD NUMBER" maxlength="19" class="input-control" [ngModel]="dummyCreditCardNumber" (ngModelChange)="onChangeCardNumber($event)"
                 [value]="cardNumberValue" #inp="ngModel" [ngClass]="{'input-control-success':validPatternCard,'input-control-failure':(!validPatternCard && (inp.dirty || inp.touched))}" (keyup)="onInput(inp)"
                 />
             </div>
             <label *ngIf="showlabel">EXP DATE</label>
             <div class="expiration-dateSglCol">
                 <div class="monthSglCol">
-                    <select [(ngModel)]="creditCardModel.expMonth" placeholder="MM" style="padding:10px">
+                    <select [ngModel]="dummyMonth" (ngModelChange)="onChangeMonth($event)" placeholder="MM" style="padding:10px">
                         <option *ngFor="let months of dateData">{{months.month}}</option>
                     </select>
                 </div>
@@ -55,7 +55,7 @@
         
             <div class="cardNumber">
                 <label *ngIf="showlabel">CARD NUMBER</label>
-                <input type="text" placeholder="CARD NUMBER" maxlength="19" class="input-control" [(ngModel)]="creditCardModel.cardnumber"
+                <input type="text" placeholder="CARD NUMBER" maxlength="19" class="input-control" [ngModel]="dummyCreditCardNumber" (ngModelChange)="onChangeCardNumber($event)"
                 [value]="cardNumberValue"   #inp="ngModel" [ngClass]="{'input-control-success':validPatternCard,'input-control-failure':(!validPatternCard && (inp.dirty || inp.touched))}" (keyup)="onInput(inp)" />
             </div>
         
@@ -63,7 +63,7 @@
                 <label *ngIf="showlabel">EXP DATE</label>
                 <div class="exp-month-date-label">
                     <div class="month">
-                        <select [(ngModel)]="creditCardModel.expMonth" style="padding:10px" placeholder="MM">
+                        <select [ngModel]="dummyMonth" (ngModelChange)="onChangeMonth($event)" style="padding:10px" placeholder="MM">
                             <option *ngFor="let months of dateData">{{months.month}}</option>
                         </select>
                     </div>
