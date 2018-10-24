@@ -507,13 +507,11 @@ description : Context Menu provides the list of menus on right click.
   @HostListener('document:click')
   onWindowClick() {
     this.flag = false;
-    this.setSelectedFlag();
   }
 
   @HostListener('document:scroll')
   onscroll() {
     this.flag = false;
-    this.setSelectedFlag();
   }
 
   loadContextMenu(rightClickData: any) {
