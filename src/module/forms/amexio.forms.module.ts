@@ -14,7 +14,8 @@ import { AmexioButtonGroupComponent } from './buttongroup/button.group.component
 import { AmexioButtonComponent } from './buttons/button.component';
 import { AmexioCheckBoxGroupComponent } from './checkbox-group/checkbox.group.component';
 import { AmexioCheckBoxComponent } from './checkbox/checkbox.component';
-import {AmexioChipsComponent} from './chips/chips.component';
+import { AmexioChipComponent } from './chip/chip.component';
+import { AmexioChipsComponent } from './chips/chips.component';
 import { AmexioCreditcardComponent } from './creditcard/creditcard.component';
 import { AmexioCreditCardModel } from './creditcard/creditcardmodel.component';
 import { AmexioDateTimePickerComponent } from './datetimepicker/datetimepicker.component';
@@ -93,6 +94,7 @@ const FORM_COMPONENTS = [
   RecaptchaComponent,
   AmexioSpinnerComponent,
   AmexioCreditcardComponent,
+  AmexioChipComponent,
   AmexioChipsComponent,
 ];
 

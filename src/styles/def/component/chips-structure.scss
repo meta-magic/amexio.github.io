@@ -1,13 +1,44 @@
-.chip {
+// .chip {
+//     display: inline-block;
+//     padding: 0 25px;
+//     height: 55px;
+//     font-size: 20px;
+//     line-height: 50px;
+//     border-radius: 25px;
+//     background-color: #f1f1f1;
+//     margin: .2em;
+// }
+// .chip:hover{
+//  background:$chipsHoverBG;
+// }
+
+
+
+
+.chips {
     display: inline-block;
-    padding: 0 25px;
-    height: 55px;
-    font-size: 20px;
-    line-height: 50px;
+    padding: 0 5px;
+    height: 35px;
+    font-size: 16px;
+    // line-height: 50px;
     border-radius: 25px;
     background-color: #f1f1f1;
-    margin: .2em;
+    margin:3px;
 }
-.chip:hover{
- background:$chipsHoverBG;
+.chips:hover{
+    background:$chipsHoverBG;
+   }
+.badge{
+    padding: .0em .4em;
+    font-size: small;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    /* white-space: nowrap; */
+    vertical-align: baseline;
+    border-radius: 30rem;
+    margin-left: 3px;
+    background-color:black;
+    margin-right: 3px;
+    color: whitesmoke;
 }
