@@ -67,6 +67,7 @@ default : none
 description : Key in JSON Datasource for records.
 */
   @Input('data-reader') datareader: string;
+
 /*
   Properties
 name : display-key
@@ -506,14 +507,18 @@ description : Context Menu provides the list of menus on right click.
 
   @HostListener('document:click')
   onWindowClick() {
-    this.flag = false;
-    this.setSelectedFlag();
+    this.resetFlag();
   }
-
   @HostListener('document:scroll')
   onscroll() {
-    this.flag = false;
-    this.setSelectedFlag();
+    this.resetFlag();
+  }
+
+  resetFlag() {
+    if (this.flag) {
+      this.flag = false;
+      this.setSelectedFlag();
+    }
   }
 
   loadContextMenu(rightClickData: any) {

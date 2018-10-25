@@ -139,6 +139,25 @@ export class AmexioSideNavComponent implements OnInit {
    */
   @Input('enable-drag') enabledrag: boolean;
 
+  /*
+   Properties
+   name : display-key
+   datatype : string
+   version : 5.2.0 onwards
+   default : text
+   description : Name of key inside response data to display on ui.
+   */
+  @Input('display-key') displaykey: string;
+  /*
+   Properties
+   name : child-array-key
+   datatype : string
+   version : 5.2.0 onwards
+   default : children
+   description : Name of key for child array name inside response data to display on ui.
+   */
+  @Input('child-array-key') childarraykey: string;
+
   smalldevice: boolean;
 
   sidenavexpandedinsmalldevice: boolean;
@@ -153,6 +172,8 @@ export class AmexioSideNavComponent implements OnInit {
     this.sidenavexpandedinsmalldevice = false;
     this.width = '20%';
     const that = this;
+    this.displaykey = 'text';
+    this.childarraykey = 'children';
 
     /*---------------------------------------------------
      TAP INTO LISTENERS FOR WHEN DEVICE WIDTH CHANGES
@@ -212,14 +233,14 @@ export class AmexioSideNavComponent implements OnInit {
 
   activateNode(data: any[], node: any) {
     for (const i of data) {
-      if (node === i && !i['children']) {
+      if (node === i && !i[this.childarraykey]) {
         i['active'] = true;
       } else {
         i['active'] = false;
       }
 
-      if (i['children']) {
-        this.activateNode(i['children'], node);
+      if (i[this.childarraykey]) {
+        this.activateNode(i[this.childarraykey], node);
       }
     }
   }
