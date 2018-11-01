@@ -1,0 +1,19 @@
+
+  @media(min-width:720px){
+    .amexio-grid-container {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-gap: 5px;
+      }
+  }
+  @media(min-width:820px){
+    .amexio-grid-container {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-gap: 5px;
+      }
+  }
+  .amexio-grid-container> amexio-grid-item {
+    padding: 5px;
+  }
+  

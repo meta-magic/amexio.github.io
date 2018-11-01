@@ -2,10 +2,13 @@ import { CommonModule } from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
+
 import {AmexioGridColumnComponent} from './datagrid/data.grid.column';
 import {AmexioDatagridComponent} from './datagrid/datagrid.component';
 import {DataGridFilterComponent} from './datagrid/datagrid.filter.component';
 import {AmexioDataGridHeaderComponent} from './datagrid/datagrid.header.component';
+import {AmexioGridComponent} from './gridlayout/grid.component';
+import {AmexioGridItemComponent} from './gridlayout/griditem.component';
 import {AmexioDataIconComponent} from './icon/icon.component';
 import {AmexioItemSelectorComponent} from './itemselector/item.selector.component';
 import {AmexioListBoxComponent} from './listbox/listbox.component';
@@ -32,6 +35,8 @@ export * from '../services/icon/icon.service';
 export * from './treegrid/treedatatable.component';
 
 const DATA_COMPONENTS = [
+  AmexioGridComponent,
+  AmexioGridItemComponent,
   AmexioTreeViewComponent,
   AmexioListBoxComponent,
   AmexioDatagridComponent,
