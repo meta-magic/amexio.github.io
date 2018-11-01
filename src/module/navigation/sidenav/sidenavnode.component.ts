@@ -16,7 +16,24 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   selector: 'amexio-sidenav-node', templateUrl: './sidenavnode.component.html',
 })
 export class SideNavNodeComponent implements OnInit {
-
+  /*
+     Properties
+     name : separator
+     datatype : any
+     version : 5.3 onwards
+     default : none
+     description : separator for component separator.
+     */
+  @Input('separator') separator = false;
+  /*
+     Properties
+     name : expandIcon
+     datatype : any
+     version : 5.3 onwards
+     default : none
+     description : expandIcon icon for right side of sidenav.
+     */
+  @Input('expand-icon') expandIcon: boolean;
   /*
    Properties
    name : data
@@ -26,6 +43,36 @@ export class SideNavNodeComponent implements OnInit {
    description : Local data for sidenav.
    */
   @Input() data: any[];
+
+  /*
+   Properties
+   name : label
+   datatype : any
+   version : 5.2 onwards
+   default : none
+   description : Lable for sidenav.
+   */
+  @Input('label') label: any;
+
+  /*
+   Properties
+   name : icon
+   datatype : any
+   version : 5.2 onwards
+   default : none
+   description : icon for sidenav.
+   */
+  @Input('icon') icon: any;
+
+  /*
+   Properties
+   name : badge
+   datatype : any
+   version : 5.2 onwards
+   default : none
+   description : badges for sidenav.
+   */
+  @Input('badge') badge: any;
 
   /*
    Properties
@@ -85,7 +132,6 @@ export class SideNavNodeComponent implements OnInit {
    description : Name of key for child array name inside response data to display on ui.
    */
   @Input('child-array-key') childarraykey: string;
-
   constructor() {
   }
 

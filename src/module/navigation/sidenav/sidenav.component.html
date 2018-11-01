@@ -1,6 +1,5 @@
-<div *ngIf="(position !='relative' && smalldevice)"
-     [ngClass]="{'sidenav-mobile-bar-left':(position=='left' && position!='relative'),'sidenav-mobile-bar-right':(position=='right' && position!='relative')}"
-     class="sidenav-mobile-bar" (click)="toggleSideNav()">
+<div *ngIf="(position !='relative' && smalldevice)" [ngClass]="{'sidenav-mobile-bar-left':(position=='left' && position!='relative'),'sidenav-mobile-bar-right':(position=='right' && position!='relative')}"
+  class="sidenav-mobile-bar" (click)="toggleSideNav()">
   <amexio-nav-icon key="sidenav_bar"></amexio-nav-icon>
 </div>
 <div [ngStyle]="{'width':width}" style="height: 100%" [ngClass]="{'left':(position=='left' && position!='relative'),'right':(position=='right' && position!='relative')}">
@@ -9,7 +8,7 @@
       <li>
         <div *ngIf="sidenavtitle" class="title">
           <ng-container *ngIf="titleimage">
-            <p><img [attr.src]="titleimage" alt=" Title image" style="width: 60px;height: 60px;padding-left: 80px;"/></p>
+            <p><img [attr.src]="titleimage" alt=" Title image" style="width: 60px;height: 60px;padding-left: 80px;" /></p>
           </ng-container>
           <ng-container *ngIf="sidenavtitle">
             <p>{{sidenavtitle}}</p>
@@ -19,24 +18,39 @@
           </span>
         </div>
       </li>
-      <li  *ngFor="let node of data">
-        <div *ngIf="node[childarraykey] && (node[childarraykey].length>0)" class="border"></div>
-        <div [attr.draggable]="enabledrag" (dragstart)="dragStartEvent({event:$event,data:node})" class="headernode" [ngClass]="{'activenode':node.active}"  (click)="onNodeClick(node)" (click)="onClick(node)">
-          <span *ngIf="node.icon"><amexio-nav-icon class="node-icon" [customclass]="node.icon"></amexio-nav-icon></span>
-          <span>{{node[displaykey]}}</span>
-          <ng-container *ngIf="node.badge">
-            <span  class="nav-badge" >{{node.badge}}</span>
-          </ng-container>
-          <ng-container *ngIf="node[childarraykey] && (node[childarraykey].length>0)">
-            <span style="padding-right: 10px; float: right" *ngIf="node.expand" ><amexio-nav-icon key="sidenav-angle-up"></amexio-nav-icon></span>
-            <span style="padding-right: 10px;float: right" *ngIf="!node.expand" ><amexio-nav-icon key="sidenav-angle-down"></amexio-nav-icon></span>
-          </ng-container>
-        </div>
-        <div class="sidenav-submenu-details" [ngClass]="{'sidenav-submenu-expanded':node.expand}">
-          <amexio-sidenav-node [enable-drag]="enabledrag" [display-key]="displaykey" [child-array-key]="childarraykey"  *ngIf="node.expand && node[childarraykey] && (node[childarraykey].length>0)" [data]="node[childarraykey]" (onDrag)="dragStartEvent($event)" (nodeClick)="onNodeClick($event)" (onClick)="onClick($event)">
-          </amexio-sidenav-node>
-        </div>
 
+      <li *ngFor="let node of data">
+        <div *ngIf="node[childarraykey] && (node[childarraykey].length>0)" class="border"></div>
+        <div [attr.draggable]="enabledrag" (dragstart)="dragStartEvent({event:$event,data:node})" class="headernode"
+          [ngClass]="{'activenode':node.active}" (click)="onNodeClick(node)" (click)="onClick(node)">
+
+          <span *ngIf="node.icon">
+            <amexio-nav-icon class="node-icon" [customclass]="node.icon"></amexio-nav-icon>
+          </span>
+          <span>{{node[displaykey]}}</span>
+
+          <ng-container *ngIf="node.badge">
+            <span class="nav-badge">{{node.badge}}</span>
+          </ng-container>
+
+          <ng-container *ngIf="node[childarraykey] && (node[childarraykey].length>0)">
+            <span style="padding-right: 10px; float: right" *ngIf="node.expand">
+              <amexio-nav-icon key="sidenav-angle-up"></amexio-nav-icon>
+            </span>
+            <span style="padding-right: 10px;float: right" *ngIf="!node.expand">
+              <amexio-nav-icon key="sidenav-angle-down"></amexio-nav-icon>
+            </span>
+          </ng-container>
+        </div>
+        <span class="sidenav-submenu-details" [ngClass]="{'sidenav-submenu-expanded':node.expand}">
+          <amexio-sidenav-node [enable-drag]="enabledrag" [display-key]="displaykey" [child-array-key]="childarraykey"
+            *ngIf="node.expand && node[childarraykey] && (node[childarraykey].length>0)" [data]="node[childarraykey]"
+            (onDrag)="dragStartEvent($event)" (nodeClick)="onNodeClick($event)" (onClick)="onClick($event)">
+          </amexio-sidenav-node>
+        </span>
+      </li>
+      <li>
+        <ng-content></ng-content>
       </li>
     </ul>
   </div>

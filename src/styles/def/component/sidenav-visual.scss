@@ -103,6 +103,10 @@
   color: $sidenavHoverColor;
 }
 
+.sidenav .headernodeSeparator:hover {
+  background-color: $sidenavBGHoverColor;
+  color: $sidenavHoverColor;
+}
 
 .sidenav .defaultnode{
 //   cursor: pointer;

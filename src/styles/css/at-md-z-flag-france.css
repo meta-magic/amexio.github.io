@@ -4660,6 +4660,10 @@ header .billboard .content-button {
   background-color: #ffb8bf;
   color: #121212; }
 
+.sidenav .headernodeSeparator:hover {
+  background-color: #ffb8bf;
+  color: #121212; }
+
 .sidenav .defaultnode:hover {
   background-color: #ffb8bf;
   color: #121212; }
@@ -4737,6 +4741,16 @@ header .billboard .content-button {
   padding: 13px 0px 13px 17px;
   padding-left: 100%;
   margin-left: -100%; }
+
+.sidenav .headernodeSeparator {
+  cursor: pointer;
+  padding: 13px 0px 13px 17px;
+  padding-left: 100%;
+  margin-left: -100%;
+  border-top: 1px  solid #ced4da !important; }
+
+.sidenav .headernodeSeparator .node-icon {
+  padding-right: 20px; }
 
 .sidenav .defaultnode {
   cursor: pointer;

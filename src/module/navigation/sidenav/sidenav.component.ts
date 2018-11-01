@@ -31,6 +31,35 @@ export class AmexioSideNavComponent implements OnInit {
 
   /*
    Properties
+   name : label
+   datatype : any
+   version : 5.2 onwards
+   default : none
+   description : Lable for sidenav.
+   */
+  @Input('label') label: any;
+
+  /*
+   Properties
+   name : icon
+   datatype : any
+   version : 5.2 onwards
+   default : none
+   description : icon for sidenav.
+   */
+  @Input('icon') icon: string;
+
+  /*
+   Properties
+   name : badge
+   datatype : any
+   version : 5.2 onwards
+   default : none
+   description : badges for sidenav.
+   */
+  @Input('badge') badge: any;
+  /*
+   Properties
    name : http-url
    datatype : string
    version : 4.0 onwards
