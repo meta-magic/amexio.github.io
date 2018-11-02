@@ -24,50 +24,10 @@
     </div>
     <div class="submenu-details" [ngClass]="{'sidenav-submenu-expanded':node.expand}">
 
-      <amexio-sidenav-node *ngIf="node[childarraykey] && (node[childarraykey].length>0)" [badge]="badge" [enable-drag]="enabledrag"
-        [display-key]="displaykey" [child-array-key]="childarraykey" [label]="label" [data]="node[childarraykey]"
+      <amexio-sidenav-node *ngIf="node[childarraykey] && (node[childarraykey].length>0)"  [enable-drag]="enabledrag"
+        [display-key]="displaykey" [child-array-key]="childarraykey" [data]="node[childarraykey]"
         (onDrag)="dragStartEvent($event)" (nodeClick)="getOnNodeClick($event)" (onClick)="getOnClick($event)">
-
-
       </amexio-sidenav-node>
     </div>
   </li>
-<ng-container *ngIf="!data">
-  <li [ngClass]="separator ? 'headernodeSeparator':'headernode' ">
-    <ng-container *ngIf="icon || badge || label ">
-      <span>
-        <ng-container *ngIf="icon ">
-          <span style="padding-right: 20px;" (click)="clickData($event)">
-            <amexio-form-icon style="cursor: pointer;float: left; padding-top:5px"
-             [customclass]="icon"></amexio-form-icon>
-          </span> &nbsp;&nbsp;&nbsp;
-        </ng-container>
-        <ng-container *ngIf="label">
-          <span style="padding-right: 5px;" (click)="clickData($event)">
-            <amexio-label >
-              <span style="cursor: pointer;padding-left:4px">
-                {{label}}
-              </span>
-            </amexio-label>
-          </span>
-        </ng-container>
-        <ng-container *ngIf="badge">
-          <span class="nav-badge" (click)="clickData($event)">{{badge}}
-          </span>
-        </ng-container>
-        <ng-container *ngIf="expandIcon">
-          <span style="float: right;padding-right: 15px" (click)="clickData($event)">
-            <em class="fa fa-angle-down "></em>
-          </span>
-        </ng-container>
-      </span>
-    </ng-container>
-    <ng-container *ngIf="!icon || !label || !badge ">
-      <span>
-        <ng-content></ng-content>
-      </span>
-    </ng-container>
-  </li>
-
-</ng-container>
 </ul>
