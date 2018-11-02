@@ -37,13 +37,14 @@
     <ng-container *ngIf="icon || badge || label ">
       <span>
         <ng-container *ngIf="icon ">
-          <span style="padding-right: 20px;">
-            <amexio-form-icon style="cursor: pointer;float: left; padding-top:5px" [customclass]="icon"></amexio-form-icon>
+          <span style="padding-right: 20px;" (click)="clickData($event)">
+            <amexio-form-icon style="cursor: pointer;float: left; padding-top:5px"
+             [customclass]="icon"></amexio-form-icon>
           </span> &nbsp;&nbsp;&nbsp;
         </ng-container>
         <ng-container *ngIf="label">
-          <span style="padding-right: 5px;">
-            <amexio-label (click)=" onLabelClick($event)">
+          <span style="padding-right: 5px;" (click)="clickData($event)">
+            <amexio-label >
               <span style="cursor: pointer;padding-left:4px">
                 {{label}}
               </span>
@@ -51,11 +52,11 @@
           </span>
         </ng-container>
         <ng-container *ngIf="badge">
-          <span class="nav-badge">{{badge}}
+          <span class="nav-badge" (click)="clickData($event)">{{badge}}
           </span>
         </ng-container>
         <ng-container *ngIf="expandIcon">
-          <span style="float: right;padding-right: 15px">
+          <span style="float: right;padding-right: 15px" (click)="clickData($event)">
             <em class="fa fa-angle-down "></em>
           </span>
         </ng-container>

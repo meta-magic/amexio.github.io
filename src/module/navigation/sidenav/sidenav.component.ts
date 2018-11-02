@@ -117,6 +117,15 @@ export class AmexioSideNavComponent implements OnInit {
    description : Fire when sidenav bar menu click
    */
   @Output() nodeClick: any = new EventEmitter<any>();
+  /*
+  Events
+  name : sidenavNodeClick
+  datatype : none
+  version : none
+  default : none
+  description : Fire when sidenav node bar menu click
+  */
+  @Output() sidenavNodeClick: any = new EventEmitter<any>();
 
   /*
    Events
@@ -272,6 +281,10 @@ export class AmexioSideNavComponent implements OnInit {
         this.activateNode(i[this.childarraykey], node);
       }
     }
+  }
+
+  onSidenavNodeClick(data: any) {
+    this.sidenavNodeClick.emit(data);
   }
 
   onNodeClick(node: any) {
