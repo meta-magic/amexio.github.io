@@ -3641,9 +3641,6 @@ input:checked + .toggle-slider:before {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-gap: 5px; } }
-.amexio-grid-container > amexio-grid-item {
-  padding: 5px; }
-
 /****************************************************************************
     Component Name : Enterprise Content
     Version : Amexio v4.0 onwards
