@@ -32,7 +32,7 @@
       </amexio-sidenav-node>
     </div>
   </li>
-
+<ng-container *ngIf="!data">
   <li [ngClass]="separator ? 'headernodeSeparator':'headernode' ">
     <ng-container *ngIf="icon || badge || label ">
       <span>
@@ -68,4 +68,5 @@
     </ng-container>
   </li>
 
+</ng-container>
 </ul>
