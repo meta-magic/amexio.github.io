@@ -3242,7 +3242,7 @@ input:checked + .toggle-slider:before {
 /** Chips- Structure CSS **/
 .chips {
   display: inline-block;
-  padding: 0 5px;
+  padding: 0 15px;
   height: 35px;
   font-size: 16px;
   border-radius: 25px;
@@ -3261,7 +3261,7 @@ input:checked + .toggle-slider:before {
   /* white-space: nowrap; */
   vertical-align: baseline;
   border-radius: 30rem;
-  margin-left: 3px;
+  margin-left: 10px;
   background-color: black;
   margin-right: 3px;
   color: whitesmoke; }

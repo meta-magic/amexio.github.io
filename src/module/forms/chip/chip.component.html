@@ -2,12 +2,12 @@
 <div class="chips" style="cursor: pointer;" [ngStyle]="{'background-color': color}">
     <amexio-form-icon [customclass]="icon"></amexio-form-icon>
     <amexio-label (click)=" onLabelClick($event)">
-      <span style="cursor: pointer;padding-left:4px">
+      <span style="cursor: pointer;padding-left:10px">
         {{label}}
       </span>
     </amexio-label>
     <span class="badge">{{badge}}</span>
     <ng-container *ngIf="closable">
-      <i class="fa fa-times" style="cursor: pointer;" (click)="onCloseClick($event) "></i>
+      <i class="fa fa-times" style="cursor: pointer; margin-left:10px" (click)="onCloseClick($event) "></i>
     </ng-container>
   </div>

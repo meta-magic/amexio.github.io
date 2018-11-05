@@ -1,23 +1,6 @@
-// .chip {
-//     display: inline-block;
-//     padding: 0 25px;
-//     height: 55px;
-//     font-size: 20px;
-//     line-height: 50px;
-//     border-radius: 25px;
-//     background-color: #f1f1f1;
-//     margin: .2em;
-// }
-// .chip:hover{
-//  background:$chipsHoverBG;
-// }
-
-
-
-
 .chips {
     display: inline-block;
-    padding: 0 5px;
+    padding: 0 15px;
     height: 35px;
     font-size: 16px;
     // line-height: 50px;
@@ -37,7 +20,7 @@
     /* white-space: nowrap; */
     vertical-align: baseline;
     border-radius: 30rem;
-    margin-left: 3px;
+    margin-left: 10px;
     background-color:black;
     margin-right: 3px;
     color: whitesmoke;
