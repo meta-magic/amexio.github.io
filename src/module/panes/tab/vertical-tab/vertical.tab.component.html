@@ -5,7 +5,7 @@
         <ul>
           <li *ngFor="let tabnode of tabCollection">
             <div class="defaultnode" [ngClass]="{'leftactivetab':tabnode.active,'disabled-tab':tabnode.disabled }" (click)="onTabClick(tabnode)">
-              <span *ngIf="tabnode.icon" [ngClass]="tabnode.icon"  aria-hidden="true"></span>
+              <span *ngIf="tabnode.icon" [ngClass]="tabnode.icon" style="padding-right:8px"  aria-hidden="true"></span>
               <span>{{tabnode.title}}</span>
             </div>
           </li>
