@@ -5903,7 +5903,7 @@ verticalalign-tableft {
   color: #73C2FB; }
 
 .modal-window-header .toolbar {
-  background: #290500;
+  background: rgba(115, 194, 251, 0.4);
   font-size: 20px;
   color: #ffedeb; }
 
