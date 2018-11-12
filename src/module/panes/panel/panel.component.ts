@@ -25,7 +25,7 @@ import { AmexioPanelHeaderComponent} from './../panel/panel.header.component';
 
 @Component({
   selector: 'amexio-panel', template: `
-    <div #id class="panel-box"  (contextmenu)="loadContextMenu({event:$event,ref:id})" >
+    <div #id [ngClass]="{'panel-box-border':border}" style="width: 100%"  (contextmenu)="loadContextMenu({event:$event,ref:id})" >
       <ng-container *ngIf="header">
         <div class="panel-accordion" #btn1 >
           <amexio-toolbar>
@@ -104,7 +104,15 @@ default : false
 description : Pane will expand or collapse based on the boolean.
 */
   @Input() expanded: boolean;
-
+ /*
+Properties
+name : expanded
+datatype :  boolean
+version : 4.0 onwards
+default : false
+description : Pane will expand or collapse based on the boolean.
+*/
+@Input() border: boolean;
   /*
 Properties
 name : height

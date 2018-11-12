@@ -32,8 +32,12 @@
 }
 
 .panel-box {
-  border: 2px solid $panelBoxBorder;
+  // border: 2px solid $panelBoxBorder;
   width: 100%;
+}
+
+.panel-box-border {
+    border: 2px solid $panelBoxBorder;
 }
 
 
