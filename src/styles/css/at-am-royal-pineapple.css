@@ -5875,6 +5875,11 @@ verticalalign-tableft {
   z-index: 3;
   position: absolute; }
 
+.righttable .righttablerow .righttablecol {
+  padding-right: 5px;
+  padding-left: 5px;
+  vertical-align: middle; }
+
 /****************************************************************************
     Component Name : Window
     Version : Amexio v4.0 onwards
