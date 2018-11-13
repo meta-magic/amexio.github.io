@@ -4646,7 +4646,8 @@ header .billboard .content-button {
   padding: 5px; }
 
 .topnavbarunit2 {
-  line-height: 50px; }
+  line-height: 50px;
+  flex-grow: 1; }
 
 .topnavbarunit2-mobile {
   width: 100%;
