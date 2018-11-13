@@ -17,6 +17,72 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class SideNavNodeComponent implements OnInit {
   /*
+     Properties
+     name : nodedata
+     datatype : any
+     version : 5.2.0 onwards
+     default :
+     description : node data pass on click event.
+     */
+  @Input('node') nodedata: any;
+  /*
+   Properties
+   name : badge
+   datatype : string
+   version : 5.2.0 onwards
+   default :
+   description : badge Input for the side nav.
+   */
+  @Input('badge') badge: string;
+  /*
+    Properties
+    name : icon
+    datatype : string
+    version : 5.2.0 onwards
+    default :
+    description :  icon Input for the side nav.
+    */
+  @Input('icon') icon: string;
+  /*
+    Properties
+    name : label
+    datatype : string
+    version : 5.2.0 onwards
+    default :
+    description :  label Input for the side nav.
+    */
+  @Input('label') label: string;
+
+  /*
+   Properties
+   name : enableborder
+   datatype : boolean
+   version : 5.2.0 onwards
+   default : false
+   description :  border for the side nav .
+   */
+  @Input('enable-border') enableborder: boolean;
+
+  /*
+  Properties
+  name : active
+  datatype : boolean
+  version : 5.2.0 onwards
+  default : false
+  description :  active the data in the side nav .
+  */
+  @Input('active') active: boolean;
+
+  /*
+   Properties
+   name : collapsable
+   datatype : boolean
+   version : 5.2.0 onwards
+   default : false
+   description :  collapsable arrow at right side of side nav .
+   */
+  @Input('collapsable') collapsable: boolean;
+  /*
    Properties
    name : data
    datatype : any
@@ -24,7 +90,7 @@ export class SideNavNodeComponent implements OnInit {
    default : none
    description : Local data for sidenav.
    */
-  @Input() data: any[];
+  @Input('data') node: any[];
   /*
    Properties
    name : enable-drag
@@ -34,16 +100,6 @@ export class SideNavNodeComponent implements OnInit {
    description : nodes can be dragged
    */
   @Input('enable-drag') enabledrag: boolean;
-
-  /*
-   Events
-   name : onClick
-   datatype : none
-   version : none
-   default : none
-   description : fires on the click event
-   */
-  @Output() onClick: any = new EventEmitter<any>();
 
   /*
    Events
@@ -82,35 +138,33 @@ export class SideNavNodeComponent implements OnInit {
    description : Name of key for child array name inside response data to display on ui.
    */
   @Input('child-array-key') childarraykey: string;
+  expand: boolean;
   constructor() {
+    this.displaykey = 'text';
+    this.childarraykey = 'children';
   }
 
   ngOnInit() {
-  }
-
-  getOnClick(node: any) {
-    this.onClick.emit(node);
-  }
-
-  activateNode(data: any[], node: any) {
-    for (const i of data) {
-      if (node === i && !i[this.childarraykey]) {
-        i['active'] = true;
-      } else {
-        i['active'] = false;
-      }
-
-      if (i[this.childarraykey]) {
-        this.activateNode(i[this.childarraykey], node);
-      }
+    if (!this.node && !this.label) {
+      this.expand = true;
+      this.collapsable = false;
     }
   }
 
-  getOnNodeClick(node: any) {
+  onClick(node: any) {
+    this.expand = !this.expand;
     this.nodeClick.emit(node);
   }
 
-  dragStartEvent(nodeData: any) {
-    this.onDrag.emit(nodeData);
+  onNodeClick(node: any) {
+    this.nodeClick.emit(node);
   }
+
+  dragStartEvent(event: any) {
+    if (this.enabledrag) {
+      event.event.dataTransfer.setData('dragData', JSON.stringify(event.data));
+      this.onDrag.emit(event);
+    }
+  }
+
 }

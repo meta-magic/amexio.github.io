@@ -28,7 +28,6 @@ export class AmexioSideNavComponent implements OnInit {
    description : Local data for sidenav.
    */
   @Input() data: any[];
-
   /*
    Properties
    name : http-url
@@ -211,8 +210,8 @@ export class AmexioSideNavComponent implements OnInit {
   }
 
   onClick(node: any) {
-    node.expand = !node.expand;
     this.nodeClick.emit(node);
+    this.activateNode(this.data, node);
   }
 
   setData(httpResponse: any) {
@@ -242,14 +241,6 @@ export class AmexioSideNavComponent implements OnInit {
       if (i[this.childarraykey]) {
         this.activateNode(i[this.childarraykey], node);
       }
-    }
-  }
-
-  onNodeClick(node: any) {
-    this.activateNode(this.data, node);
-    this.nodeClick.emit(node);
-    if (!node.children) {
-      this.handleDeviceSettings(false);
     }
   }
 
@@ -294,12 +285,4 @@ export class AmexioSideNavComponent implements OnInit {
       this.close();
     }
   }
-
-  dragStartEvent(event: any) {
-    if (this.enabledrag) {
-      event.event.dataTransfer.setData('dragData', JSON.stringify(event.data));
-      this.onDrag.emit(event);
-    }
-  }
-
 }

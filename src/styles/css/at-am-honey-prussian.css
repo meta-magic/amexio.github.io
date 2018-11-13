@@ -4860,6 +4860,9 @@ header .billboard .content-button {
   z-index: 3;
   left: 0; }
 
+.sidenav-submenu-details .tablink {
+  padding: 0px; }
+
 .sidenav-mobile-bar-right {
   top: 10px;
   padding: 10px;

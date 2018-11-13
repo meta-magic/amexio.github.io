@@ -1,7 +1,7 @@
 
 <div class="listbox" [style.border]="border">
 
-  <div class="header" style="display: flex; justify-content: space-between">
+  <div *ngIf="enableHeader" class="header" style="display: flex; justify-content: space-between">
     <div style="display: flex;justify-content: flex-start;">
       <div *ngIf="enablecheckbox"  class="input-box">
         <div *ngIf="!selectAll" (click)="selectAllRecord()" class="checkbox default"></div>
