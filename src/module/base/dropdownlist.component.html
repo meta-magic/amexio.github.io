@@ -1,0 +1,19 @@
+    <ul class="dropdown-list">
+        <li  [ngClass]="{'list-items-selected': (i === highlightrow)}" 
+             class="list-items" 
+             [attr.valuefield]="item[valuefield]" 
+             [attr.displayfield]="item[displayfield]" 
+             *ngFor="let item of viewdata | async | filterpipe : displayfield : displayValue ; index as i"  
+            (mousedown)="onDropDownListClick(item)">
+            <ng-container *ngIf="!template">
+                <div>{{item[displayfield]}}</div>    
+            </ng-container>
+
+            <ng-container *ngIf="template">
+                <ng-template [ngTemplateOutlet]="template" [ngTemplateOutletContext]="{ $implicit: { text : row }, row: item }">
+                </ng-template>
+            </ng-container>
+    
+        </li>
+    </ul>
+
