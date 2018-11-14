@@ -3,8 +3,10 @@
  Component Selector :  <amexio-date-time-picker>
  Component Description : This component is flexible for both Date and time picker with all required configurations in Style.
  */
-import { ChangeDetectorRef, Component, ElementRef, EventEmitter, forwardRef, HostListener, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef,
+EventEmitter, forwardRef, Input, OnInit, Output, Renderer2 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ListBaseDatepickerComponent } from '../../base/list.base.datepicker.component';
 const noop = () => {
 };
 
@@ -17,7 +19,7 @@ const noop = () => {
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioDateTimePickerComponent), multi: true,
   }],
 })
-export class AmexioDateTimePickerComponent implements OnInit {
+export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<string> implements OnInit {
   /*
    Properties
    name : date-format
@@ -133,7 +135,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
    name : blur
    description : On blur event
    */
-  @Output() blur: EventEmitter<any> = new EventEmitter<any>();
+  // @Output() blur: EventEmitter<any> = new EventEmitter<any>();
   /*
    Properties
    name : change
@@ -151,7 +153,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
    name : focus
    description : On field focus event
    */
-  @Output() focus: EventEmitter<any> = new EventEmitter<any>();
+  // @Output() focus: EventEmitter<any> = new EventEmitter<any>();
   showToolTip: boolean;
   drop = false;
   elementId: string;
@@ -184,7 +186,8 @@ export class AmexioDateTimePickerComponent implements OnInit {
   // by the Control Value Accessor
   private onTouchedCallback: () => void = noop;
   private onChangeCallback: (_: any) => void = noop;
-  constructor(public element: ElementRef, private cdf: ChangeDetectorRef) {
+  constructor(public element: ElementRef, private cdf: ChangeDetectorRef, renderer: Renderer2) {
+    super(renderer, element, cdf);
     this.viewmode = '1';
 
     this.yearList1 = [{ year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
@@ -228,6 +231,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
   ngOnInit() {
     if (this.inlineDatepicker) {
       this.showToolTip = true;
+      this.dropdownstyle = {visibility: 'visible'};
     }
     this.isValid = !this.required;
     this.isComponentValid.emit(!this.required);
@@ -287,6 +291,9 @@ export class AmexioDateTimePickerComponent implements OnInit {
     }
   }
   onDateClick(dateObj: any) {
+    if (this.inlineDatepicker === false ) {
+      super.itemClicked();
+    }
     this.hostFlag = true;
     this.selectedDate = dateObj;
     this.selectedDate.setHours(this.hrs);
@@ -540,6 +547,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
     }
   }
   openPicker(elem: any) {
+    super.focus(elem);
     this.hostFlag = false;
     this.pickerele = elem;
     if (this.inlineDatepicker) {
@@ -575,7 +583,7 @@ export class AmexioDateTimePickerComponent implements OnInit {
   onSelect() {
     this.showToolTip = false;
   }
-  @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
+  // @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
   public onElementOutClick(targetElement: HTMLElement) {
     let parentFound = false;
     // when target found and parent is true(that is outside ui click done)
