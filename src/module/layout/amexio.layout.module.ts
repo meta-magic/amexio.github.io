@@ -10,6 +10,8 @@ import {FormsModule} from '@angular/forms';
 import {AmexioAccordionComponent} from './accordion/accordion.component';
 import {AmexioAccordionHeaderComponent} from './accordion/accordion.header.component';
 import {AmexioAccordionTabComponent} from './accordion/accordion.pane';
+import {AmexioLayoutComponent} from './basiclayout/layout.component';
+import {AmexioLayoutItemComponent} from './basiclayout/layoutitem.component';
 import {AmexioBorderLayoutComponent} from './border/borderlayout.component';
 import {AmexioBorderLayoutItemComponent} from './border/borderlayoutitem.component';
 import {AmexioBoxComponent} from './box/box.component';
@@ -46,6 +48,8 @@ const LAYOUT_COMPONENTS = [
   AmexioAccordionComponent,
   AmexioAccordionHeaderComponent,
   AmexioIconLayoutComponent,
+  AmexioLayoutComponent,
+  AmexioLayoutItemComponent,
 ];
 
 @NgModule({

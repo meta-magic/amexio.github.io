@@ -6386,6 +6386,14 @@ verticalalign-tableft {
   flex: 0 0 79.1666635%;
   max-width: 79.1666635%; }
 
+/****************************************************************************
+    Component Name : Layout
+    Version : Amexio v5.4 onwards
+*****************************************************************************/
+/** rowcol - Structure CSS **/
+amexio-layout-columns amexio-layout-item {
+  padding: 5px; }
+
 /** Initialze Animation variables ------------ */
 /****************************************************************************
                 Animation CSS for Checkbox 
