@@ -31,15 +31,15 @@ export enum KEY_CODE_window {
                   <ng-content select="amexio-header"></ng-content>
                   <ng-content select="amexio-window-header"></ng-content>
                 </div>
-                <div class="tablecol float-right">
+                <div class="tablecol float-right" >
                   <ng-container *ngIf="(!isFullWindow && maximize)">
-                    <amexio-pane-icon [key]="'window_maximize'" (onClick)="sizeChange()"></amexio-pane-icon>
+                    <amexio-pane-icon [key]="'window_maximize'" (onClick)="sizeChange()"></amexio-pane-icon> &nbsp;
                   </ng-container>
                   <ng-container *ngIf="(isFullWindow && maximize)">
-                    <amexio-pane-icon [key]="'window_restore'" (click)="sizeChange()"></amexio-pane-icon>
+                    <amexio-pane-icon [key]="'window_restore'" (click)="sizeChange()"></amexio-pane-icon> &nbsp;
                   </ng-container>
                   <ng-container *ngIf="closable">
-                    <amexio-pane-icon [key]="'window_close'" (onClick)="onCloseClick()"></amexio-pane-icon>
+                    <amexio-pane-icon [key]="'window_close'" (onClick)="onCloseClick()"></amexio-pane-icon> &nbsp;
                   </ng-container>
                 </div>
               </div>

@@ -2579,7 +2579,6 @@ input:checked + .toggle-slider:before {
   cursor: pointer;
   flex-direction: row;
   justify-content: space-between;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
   padding-top: 2px;
   position: relative;
   padding: 10px; }
@@ -5865,8 +5864,7 @@ verticalalign-tableft {
 
 .modal-window-table .tablerow .tablecol {
   display: table-cell;
-  vertical-align: middle;
-  width: 100%; }
+  vertical-align: baseline; }
 
 .modal-window-footer-max {
   bottom: 0px;
