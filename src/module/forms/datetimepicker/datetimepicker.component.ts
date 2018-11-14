@@ -337,18 +337,18 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       }
     }
   }
-  private nextMonth(event: any) {
+  public nextMonth(event: any) {
     this.setDateData('plus', 1, event);
     this.disableddays(this.diabledDate);
   }
-  private prevMonth(event: any) {
+  public prevMonth(event: any) {
     this.setDateData('minus', 1, event);
     this.disableddays(this.diabledDate);
   }
-  private nextYear(event: any) {
+  public nextYear(event: any) {
     this.setDateData1('plus', 12, event);
   }
-  private prevYear(event: any) {
+  public prevYear(event: any) {
     this.setDateData1('minus', 12, event);
   }
   // this function validates month
