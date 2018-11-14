@@ -32,7 +32,14 @@ script:
   - cd src/styles/ && sh sasstocss.sh
   - cd ../../ && pwd && gulp build
   - cd dist && npm pack
-  
+  - mv amexio-ng-extensions-*.tgz amexio-ng-extensions.tgz
+  - cd ../
+  - git clone https://github.com/meta-magic/amexio-ios.git 
+  - cd amexio-ios
+  - cp -rf ../dist/amexio-ng-extensions.tgz .
+  - git add amexio-ng-extensions.tgz
+  - git commit -m "date"
+  - git push --force --quiet "https://deepali-arvind:${GITHUB_TOKEN}@github.com/${GITHUB_REPO}.git" HEAD:master 
 after_success: 
   - gulp coveralls
   - codecov
