@@ -41,8 +41,8 @@ export class AmexioTypeAheadComponent extends ListBaseComponent<string> implemen
   private _haslabel: boolean;
   private _data: any;
   private _key: any;
-  private viewdata: any;
-  private displayValue = '';
+  public viewdata: any;
+  public displayValue = '';
   private componentLoaded: boolean;
 
   /*

@@ -10,7 +10,6 @@
   
 
   <div class="input-container">
-          <em [ngClass]="prefixiconclass"></em>
           <input type="text" class="input-control"
                   [ngClass]="{'input-control-error': ((model.dirty || model.touched || (value && value.length>0)) && !model.valid),
                   'input-disabled' : disabled}"
@@ -24,10 +23,9 @@
                   (blur)="blur($event)"/>
           <em *ngIf="(iconfeedback && (model.dirty || model.touched) && model.valid)" class="fa fa-check"></em>
           <em *ngIf="(iconfeedback && (model.dirty || model.touched) && !model.valid)" class="fa fa-times icon-error"></em>
-          <em *ngIf="suffixiconclass"  [ngClass]="suffixiconclass"></em>
   </div>
 
-  <input-help *ngIf="(enablepopover && showerror)" 
+  <input-help *ngIf="(enablepopover)" 
                   [error-msg]="errormsg" 
                   [min-msg]="minmsg" 
                   [max-msg]="maxmsg">
