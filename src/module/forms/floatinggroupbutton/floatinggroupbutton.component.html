@@ -12,8 +12,9 @@
         [position-right]="right">
 </amexio-floating-button>                
     
-
-<div class="floatinggroup"  *ngIf="togglefloatinggroup" [ngStyle]="{'top':floatinggroupyposition, 'left':floatinggroupxposition}">
+<!-- *ngIf="togglefloatinggroup" -->
+<div class="floatinggroup"  [ngStyle]="dropdownstyle" 
+[ngStyle]="{'top':floatinggroupyposition, 'left':floatinggroupxposition}">
     <div class="floatinggroupitems" *ngFor="let node of data" >
         <div *ngIf="node.icon" class="floatingbutton-circle" [ngClass]="node.typeclass" (click)="onButtonClick(node,$event)">
             <amexio-form-icon [customclass]="node.icon" >
