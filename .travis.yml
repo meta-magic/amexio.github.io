@@ -36,11 +36,10 @@ script:
   - cd ../
   - git clone https://github.com/meta-magic/amexio-ios.git 
   - cd amexio-ios
-  - mkdir themes
   - cp -rf ../dist/amexio-ng-extensions.tgz .
   - cp -rf ../src/styles/css/*  themes/
   - zip -r themes.zip themes/
-  - git add amexio-ng-extensions.tgz themes
+  - git add amexio-ng-extensions.tgz themes.zip
   - git commit -m "date"
   - git push --force --quiet "https://deepali-arvind:${GITHUB_TOKEN}@github.com/${GITHUB_REPO}.git" HEAD:master 
 after_success: 
