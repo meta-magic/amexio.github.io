@@ -7,11 +7,11 @@ Component Selector :  <amexio-floating-button>
 Component Description : A Floating button component with various position
 options (vertical/horizontal/top/bottom/left/right)
 */
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 @Component({
   selector: 'amexio-floating-button',
   templateUrl: './floatingbutton.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AmexioFloatingButtonComponent implements OnInit {
   /*
@@ -135,7 +135,7 @@ export class AmexioFloatingButtonComponent implements OnInit {
   description : Event is fired when button is click
   */
   @Output() onClick: any = new EventEmitter<any>();
-   /*
+  /*
   Properties
   name : size
   datatype : string
@@ -143,7 +143,7 @@ export class AmexioFloatingButtonComponent implements OnInit {
   default : none
   description : large, default, small & xsmall
   */
-  @Input('size') size : string;
+  @Input('size') size: string;
 
   positionclass: string;
   absoluteposition = false;
@@ -167,12 +167,7 @@ export class AmexioFloatingButtonComponent implements OnInit {
       this.btnPositionCss();
     }
     if (this.block === 'circle') {
-      if(this.size && (this.size === 'large' || this.size === 'small')){
-        this.positionclass = this.positionclass + ' floatingbutton-circle-'+this.size;
-      }else{
-        this.positionclass = this.positionclass + ' floatingbutton-circle';
-      }
-      this.label = '';
+      this.setCricle();
     } else if (this.block === 'square') {
       this.positionclass = this.positionclass + ' floatingbutton-square';
     }
@@ -193,33 +188,42 @@ export class AmexioFloatingButtonComponent implements OnInit {
     return this.positionclass;
   }
 
+  private setCricle() {
+    if (this.size && (this.size === 'large' || this.size === 'small')) {
+      this.positionclass = this.positionclass + ' floatingbutton-circle-' + this.size;
+    } else {
+      this.positionclass = this.positionclass + ' floatingbutton-circle';
+    }
+    this.label = '';
+  }
+
   // Method to call css class on the basis of theme color
   themeColorCss() {
     this.positionclass = this.disabled ? this.positionclass + ' floatingbutton-theme-color-disabled' :
-    this.positionclass + ' floatingbutton-theme-color';
+      this.positionclass + ' floatingbutton-theme-color';
   }
 
   // Css for button type default.
   defaultType() {
     this.positionclass = this.disabled ? this.positionclass + ' floatingbutton-default-disabled' :
-    this.positionclass + 'floatingbutton-default';
+      this.positionclass + 'floatingbutton-default';
   }
 
   // Css for button type yellow.
   yellowColorType() {
     this.positionclass = this.disabled ? this.positionclass + 'floatingbutton-yellow-disabled' :
-    this.positionclass + ' floatingbutton-yellow';
+      this.positionclass + ' floatingbutton-yellow';
   }
 
   // Css for button type red.
   redColorType() {
     this.positionclass = this.disabled ? this.positionclass + 'floatingbutton-red-disabled' :
-    this.positionclass + ' floatingbutton-red';
+      this.positionclass + ' floatingbutton-red';
   }
   // Css for button type green.
   greenColorType() {
     this.positionclass = this.disabled ? this.positionclass + ' floatingbutton-green-disabled' :
-    this.positionclass + ' floatingbutton-green';
+      this.positionclass + ' floatingbutton-green';
   }
 
   // Css on btn position
