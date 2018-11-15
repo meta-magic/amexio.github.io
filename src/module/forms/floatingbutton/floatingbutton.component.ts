@@ -7,10 +7,11 @@ Component Selector :  <amexio-floating-button>
 Component Description : A Floating button component with various position
 options (vertical/horizontal/top/bottom/left/right)
 */
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 @Component({
   selector: 'amexio-floating-button',
   templateUrl: './floatingbutton.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AmexioFloatingButtonComponent implements OnInit {
   /*
@@ -134,6 +135,16 @@ export class AmexioFloatingButtonComponent implements OnInit {
   description : Event is fired when button is click
   */
   @Output() onClick: any = new EventEmitter<any>();
+   /*
+  Properties
+  name : size
+  datatype : string
+  version : 5.4 onwards
+  default : none
+  description : large, default, small & xsmall
+  */
+  @Input('size') size : string;
+
   positionclass: string;
   absoluteposition = false;
   constructor() {
@@ -156,7 +167,11 @@ export class AmexioFloatingButtonComponent implements OnInit {
       this.btnPositionCss();
     }
     if (this.block === 'circle') {
-      this.positionclass = this.positionclass + ' floatingbutton-circle';
+      if(this.size && (this.size === 'large' || this.size === 'small')){
+        this.positionclass = this.positionclass + ' floatingbutton-circle-'+this.size;
+      }else{
+        this.positionclass = this.positionclass + ' floatingbutton-circle';
+      }
       this.label = '';
     } else if (this.block === 'square') {
       this.positionclass = this.positionclass + ' floatingbutton-square';

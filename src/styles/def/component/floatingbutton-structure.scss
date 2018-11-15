@@ -45,6 +45,20 @@
       line-height: 60px;
   }
 
-.floatingbutton-square{
-    padding: .5rem 1rem;
-}
+
+  .floatingbutton-circle-large{
+    border-radius: 50px;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+  }
+
+  .floatingbutton-circle-small{
+      border-radius: 50px;
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+  }  
+  .floatingbutton-square{
+      padding: .5rem 1rem;
+  }
