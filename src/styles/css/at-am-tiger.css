@@ -1910,26 +1910,32 @@ input:checked + .toggle-slider:before {
 
 .large {
   font-size: 36px;
-  line-height: 34px; }
+  line-height: 34px;
+  margin-top: 0px !important; }
 
 .medium {
-  font-size: 20px; }
+  font-size: 20px;
+  margin-top: 0px !important; }
 
 .small {
-  font-size: 18px; }
+  font-size: 18px;
+  margin-top: 0px !important; }
 
 .large-bold {
   font-size: 36px;
+  margin-top: 0px !important;
   font-weight: bold;
   line-height: 40px; }
 
 .medium-bold {
   font-size: 20px;
-  font-weight: bold; }
+  font-weight: bold;
+  margin-top: 0px !important; }
 
 .small-bold {
   font-size: 18px;
-  font-weight: bold; }
+  font-weight: bold;
+  margin-top: 0px !important; }
 
 /****************************************************************************
     Component Name : Box
@@ -2427,6 +2433,18 @@ input:checked + .toggle-slider:before {
   width: 60px;
   height: 60px;
   line-height: 60px; }
+
+.floatingbutton-circle-large {
+  border-radius: 50px;
+  width: 100px;
+  height: 100px;
+  line-height: 100px; }
+
+.floatingbutton-circle-small {
+  border-radius: 50px;
+  width: 30px;
+  height: 30px;
+  line-height: 30px; }
 
 .floatingbutton-square {
   padding: .5rem 1rem; }
@@ -5222,7 +5240,7 @@ amexio-layout-columns amexio-layout-item {
   border-color: #E84C1A;
   text-align: left;
   outline: none;
-  font-size: 15px;
+  font-size: 17px;
   transition: 0.4s; }
 
 .accordion:after {
@@ -5242,7 +5260,7 @@ amexio-layout-columns amexio-layout-item {
   border-color: #292b2c;
   text-align: left;
   outline: none;
-  font-size: 15px;
+  font-size: 17px;
   transition: 0.4s;
   box-shadow: none;
   border-top: 2px solid #E84C1A; }
