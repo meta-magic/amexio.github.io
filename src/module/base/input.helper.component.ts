@@ -6,10 +6,10 @@ import { Component, Input } from '@angular/core';
     styleUrls: ['./input.helper.scss'],
 })
 export class AmexioInputHelperComponent {
-    private _errormsg: string;
-    private _minmsg: string;
-    private _maxmsg: string;
-    private help: string[];
+    public _errormsg: string;
+    public _minmsg: string;
+    public _maxmsg: string;
+    public help: string[];
     constructor() {
         this.help = [];
     }

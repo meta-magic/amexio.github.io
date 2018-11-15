@@ -13,7 +13,7 @@ export class  ListBaseComponent<T> extends BaseInput<T> {
         this.hide();
     }
 
-    focus(event: any) {
+    onFocusEvent(event: any) {
         this.self = true;
         this.dropdownstyle = {visibility: 'visible'};
         this.bindDocumentClickListener();

@@ -3,19 +3,24 @@
  */
 
 /*
-
 Component Name : Amexio Typeahead Input
 Component Selector :  <amexio-typeahead>
 Component Description : Type Ahead Component provides a power type ahead on the
 text field where users entry is provided with a filtered result.
-
 */
+
 import {
-  Component, ElementRef, EventEmitter, forwardRef, HostListener, Input, OnChanges, OnInit, Output, Renderer2,
-  SimpleChanges,
-  ViewChild,
+  AfterViewInit, ChangeDetectorRef, Component, ContentChild,
+  ElementRef, EventEmitter, forwardRef, HostListener, Input,
+  OnChanges, OnInit, Output, QueryList, Renderer2,
+  SimpleChanges, TemplateRef, ViewChild, ViewChildren,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { NG_VALUE_ACCESSOR, NgModel} from '@angular/forms';
+
+import { of } from 'rxjs';
+
+import { DropDownListComponent } from '../../base/dropdownlist.component';
+import { ListBaseComponent } from '../../base/list.base.component';
 import { CommonDataService } from '../../services/data/common.data.service';
 
 const noop = () => {
@@ -25,10 +30,21 @@ const noop = () => {
   selector: 'amexio-typeahead',
   templateUrl: './typeahead.component.html',
   providers: [{
-    provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioTypeAheadComponent), multi: true,
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: AmexioTypeAheadComponent,
+    multi: true,
   }],
 })
-export class AmexioTypeAheadComponent implements ControlValueAccessor, OnChanges, OnInit {
+export class AmexioTypeAheadComponent extends ListBaseComponent<string> implements OnChanges, OnInit, AfterViewInit {
+
+  private _fieldlabel: string;
+  private _haslabel: boolean;
+  private _data: any;
+  private _key: any;
+  private viewdata: any;
+  private displayValue = '';
+  private componentLoaded: boolean;
+
   /*
    Properties
    name : field-label
@@ -37,179 +53,17 @@ export class AmexioTypeAheadComponent implements ControlValueAccessor, OnChanges
    default :
    description : The label of this field
    */
-  @Input('field-label') fieldlabel: string;
-  /*
-   Properties
-   name : allow-blank
-   datatype : string
-   version : 4.0 onwards
-   default :
-   description : Sets if field is required
-   */
-  @Input('allow-blank') allowblank: boolean;
-  /*
-   Properties
-   name : data
-   datatype : any
-   version : 4.0 onwards
-   default :
-   description : Local data for dropdown.
-   */
-  _data: any;
-  componentLoaded: boolean;
-  @Input('data')
-  set data(value: any) {
-    this._data = value;
-    if (this.componentLoaded) {
-      this.setData(this._data);
+  @Input('field-label')
+  set fieldlabel(v: string) {
+    if (v != null && v.length > 0) {
+      this._fieldlabel = v;
+      this.initComponent();
     }
   }
-  get data(): any {
-    return this._data;
-  }
-  /*
-   Properties
-   name : data-reader
-   datatype : string
-   version : 4.0 onwards
-   default :
-   description : Key in JSON datasource for records
-   */
-  @Input('data-reader') datareader: string;
-  /*
-   Properties
-   name : http-method
-   datatype : string
-   version : 4.0 onwards
-   default :
-   description : Type of HTTP call, POST,GET.
-   */
-  @Input('http-method') httpmethod: string;
-  /*
-   Properties
-   name : http-url
-   datatype : string
-   version : 4.0 onwards
-   default :
-   description : REST url for fetching datasource.
-   */
-  @Input('http-url') httpurl: string;
-  /*
-   Properties
-   name : display-field
-   datatype : string
-   version : 4.0 onwards
-   default :
-   description : Sets key inside response data to display.
-   */
-  @Input('display-field') displayfield: string;
-
-  @Input('value-field') valuefield: string;
-  /*
-   Events
-   name : onBlur
-   datatype : any
-   version : 4.0 onwards
-   default : none
-   description : On blur event
-   */
-  @Output() onBlur: any = new EventEmitter<any>();
-  /*
-   Events
-   name : input
-   datatype : any
-   version : none
-   default :
-   description : 	On input event field.
-   */
-  @Output() input: any = new EventEmitter<any>();
-  /*
-   Events
-   name : focus
-   datatype : any
-   version : none
-   default :
-   description : On focus event field.
-   */
-  @Output() focus: any = new EventEmitter<any>();
-  /*
-   Events
-   name : change
-   datatype : any
-   version : none
-   default :
-   description : On field value change event
-   */
-  @Output() change: any = new EventEmitter<any>();
-  /*
-   Events
-   name : onClick
-   datatype : any
-   version : none
-   default :
-   description : On click event
-   */
-  @Output() onClick: any = new EventEmitter<any>();
-
-  /*
-   Properties
-   name : error-msg
-   datatype : none
-   version : 4.0 onwards
-   default : none
-   description : Sets the error message
-   */
-  @Input('error-msg')
-  set errormsg(value: string) {
-    this.helpInfoMsg = value + '<br/>';
+  get fieldlabel() {
+    return this._fieldlabel;
   }
 
-  /*
-   Properties
-   name : place-holder
-   datatype : string
-   version : 4.0 onwards
-   default :
-   description : Show place-holder inside dropdown component
-   */
-  @Input('place-holder') placeholder: string;
-
-  /*
-   Properties
-   name : icon-feedback
-   datatype : boolean
-   version : 4.0 onwards
-   default : none
-   description :
-   */
-  @Input('icon-feedback') iconfeedback: boolean;
-  /*
-   Properties
-   name : font-style
-   datatype : string
-   version : 4.0 onwards
-   default :
-   description : Set font-style to field
-   */
-  @Input('font-style') fontstyle: string;
-  /*
-   Properties
-   name : font-family
-   datatype : string
-   version : 4.0 onwards
-   default :
-   description : Set font-family to field
-   */
-  @Input('font-family') fontfamily: string;
-  /*
-   Properties
-   name : font-size
-   datatype : string
-   version : 4.0 onwards
-   default :
-   description : Set font-size to field
-   */
-  @Input('font-size') fontsize: string;
   /*
    Properties
    name : has-label
@@ -218,100 +72,105 @@ export class AmexioTypeAheadComponent implements ControlValueAccessor, OnChanges
    default : false
    description : Flag to set label
    */
-  @Input('has-label') haslabel = true;
+  @Input('has-label')
+  set haslabel(v: boolean) {
+    this._haslabel = v;
+  }
+  get haslabel(): boolean {
+    return this._haslabel;
+  }
+
   /*
    Properties
-   name : enable-popover
-   datatype : string
+   name : data
+   datatype : any
    version : 4.0 onwards
    default :
-   description : Set enable / disable popover.
+   description : Local data for dropdown.
    */
+  @Input('data') data: any;
+
+  @Input('key')
+  set key(v: any) {
+    this._key = v;
+    this.displayfield = this._key;
+  }
+  get key(): any {
+    return this._key;
+  }
+
+  @Input('allow-blank') allowblank: boolean;
+
+  @Input('data-reader') datareader: string;
+
+  @Input('http-method') httpmethod: string;
+
+  @Input('http-url') httpurl: string;
+
+  @Input('display-field') displayfield: string;
+
+  @Input('value-field') valuefield: string;
+
+  @Input('error-msg') errormsg: string;
+
+  @Input('place-holder') placeholder: string;
+
+  @Input('icon-feedback') iconfeedback: boolean;
+
+  @Input('font-style') fontstyle: string;
+
+  @Input('font-family') fontfamily: string;
+
+  @Input('font-size') fontsize: string;
+
   @Input('enable-popover') enablepopover: boolean;
 
-  @Input() key: any;
-  /*
-   Properties
-   name : trigger-char
-   datatype : number
-   version : 4.0 onwards
-   default :
-   description : Sets the trigger char length
-   */
   @Input('trigger-char') triggerchar: number;
-
-  @ViewChild('rootDiv') rootDiv: any;
-
-  maskloader = true;
-
-  @ViewChild('dpList') dpList: any;
-
-  @ViewChild('dropdownitems', { read: ElementRef }) public dropdownitems: ElementRef;
-
-  posixUp: boolean;
-
-  activeindex = 0;
-
-  currentActive: any;
-
-  displayValue: any = '';
-
-  helpInfoMsg: string;
-
-  _errormsg: string;
-
-  isValid: boolean;
-
-  selectedindex = 0;
-
-  scrollposition = 30;
-
-  showToolTip: boolean;
 
   @Input() disabled: boolean;
 
+  @Output() onBlur: any = new EventEmitter<any>();
+
+  @Output('input') onInputOutput: any = new EventEmitter<any>();
+
+  @Output('focus') onFocusOutput: any = new EventEmitter<any>();
+
+  @Output() change: any = new EventEmitter<any>();
+
+  @Output() onClick: any = new EventEmitter<any>();
+
   @Output() isComponentValid: any = new EventEmitter<any>();
+
+  @ViewChild(NgModel) model: NgModel;
+
+  @ViewChildren(DropDownListComponent)
+  private dropdownlist: QueryList<DropDownListComponent>;
+
+  dropdown: DropDownListComponent[];
+
+  @ContentChild('amexioBodyTmpl') bodyTemplate: TemplateRef<any>;
+
+  rowindex = 0;
+
+  maskloader = true;
+
+  isValid: boolean;
 
   responseData: any;
 
   previousData: any;
 
-  viewData: any;
-
-  filteredResult: any;
-
-  // The internal dataviews model
-  private innerValue: any = '';
-
-  // Placeholders for the callbacks which are later provided
-  // by the Control Value Accessor
-  private onTouchedCallback: () => void = noop;
-  private onChangeCallback: (_: any) => void = noop;
-
-  geterrormsg(): string {
-    return this._errormsg;
+  constructor(public dataService: CommonDataService, public element: ElementRef, renderer: Renderer2, cd: ChangeDetectorRef) {
+    super(renderer, element, cd);
   }
 
-  navigateKey(event: any) {
-
-  }
-
-  @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
-  public onElementOutClick(targetElement: HTMLElement) {
-    let parentFound = false;
-    while (targetElement != null && !parentFound) {
-      if (targetElement === this.element.nativeElement) {
-        parentFound = true;
-      }
-      targetElement = targetElement.parentElement;
-    }
-    if (!parentFound) {
-      this.showToolTip = false;
-    }
-  }
-
-  constructor(public dataService: CommonDataService, public element: ElementRef, public renderer: Renderer2) {
-
+  ngAfterViewInit() {
+    this.dropdown = this.dropdownlist.toArray();
+    setTimeout(() => {
+      this.dropdown.forEach((dropdown) => {
+        dropdown.template = this.bodyTemplate;
+      });
+    }, 200);
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -319,8 +178,8 @@ export class AmexioTypeAheadComponent implements ControlValueAccessor, OnChanges
       this.placeholder = changes.placeholder.currentValue;
     }
   }
-  ngOnInit() {
 
+  ngOnInit() {
     this.isValid = this.allowblank;
     this.isComponentValid.emit(this.allowblank);
 
@@ -347,90 +206,105 @@ export class AmexioTypeAheadComponent implements ControlValueAccessor, OnChanges
     this.componentLoaded = true;
   }
 
-  onKeyUp(event: any) {
-    this.filteredResult = [];
-    this.showToolTip = false;
-    const keyword: any = event.target.value;
-    if (keyword != null && keyword !== ' ' && keyword.length >= this.triggerchar) {
-      const search_term = keyword.toLowerCase();
-      this.viewData.forEach((item: any) => {
-        if (item != null && item[this.key].toLowerCase().startsWith(search_term)) {
-            this.filteredResult.push(item);
-        }
-      });
-      if (this.filteredResult.length > 0) {
-        this.showToolTip = true;
-      } else {
-        this.showToolTip = false;
-      }
+  input(event: any) {
+    this.displayValue = event.target.value;
+    this.rowindex = 0;
+    if (this.displayValue.length >= 0 && !this.self && this.displayValue.length >= this.triggerchar) {
+      this.dropdownstyle = { visibility: 'visible' };
+      this.bindDocumentClickListener();
+    } else {
+      this.dropdownstyle = { visibility: 'hidden' };
     }
-    if (event.keyCode === 40 || event.keyCode === 38 || event.keyCode === 13) {
-      this.navigateUsingKey(event);
+    this.onInputOutput.emit(event);
+  }
+
+  focus(event: any) {
+    this.self = true;
+    this.dropdownstyle = { visibility: 'hidden' };
+    this.bindDocumentClickListener();
+    this.onFocusOutput.emit(event);
+  }
+  keyup(event: any) {
+    const keycode: number = event.keyCode;
+    if (keycode === 40) {
+      this.rowindex++;
+    } else if (keycode === 38) {
+      this.rowindex--;
+    } else if (keycode === 40 || keycode === 38) {
+      this.rowindex = 0;
+    }
+    if (this.rowindex < 0) {
+      this.rowindex = 0;
+    } else if (this.rowindex >= this.viewdata.value.length) {
+      this.rowindex = this.viewdata.value.length - 1;
+    }
+
+    if (keycode === 13) {
+      const data = this.dropdown[0].selectedItem();
+      this.value = data[0].attributes['valuefield'].value;
+      this.displayValue = data[0].attributes['displayfield'].value;
+      this.itemClicked();
+      this.isComponentValid.emit(true);
+    } else if (keycode === 40 || keycode === 38) {
+      this.dropdown[0].scroll(this.rowindex);
     }
   }
 
+  // METHOS FOR BLUR EVENT
+  blur(event: any) {
+    super.blur(event);
+    const userinput: string = event.target.value;
+    const listitems: any[] = this.viewdata.value;
+    listitems.forEach((item) => {
+      if ((item[this.displayfield] + '').toLowerCase() === userinput.toLowerCase()) {
+        this.displayValue = item[this.displayfield];
+        this.value = item[this.valuefield];
+        this.isComponentValid.emit(true);
+      }
+    });
+    this.onBlur.emit(event);
+  }
+
+  // METHOD TO DISPLAY ITEM WHEN SELECTED
+  onDropDownListItemClick(data: any) {
+    this.value = data[this.valuefield];
+    this.displayValue = data[this.displayfield];
+    this.onClick.emit(data);
+  }
+
+  writeValue(v: any) {
+    super.writeValue(v);
+    if (v && this.viewdata) {
+      this.showValue();
+    }
+  }
+
+  private showValue() {
+    const listitems: any[] = this.viewdata.value;
+    listitems.forEach((item) => {
+      if (item[this.valuefield] === this.value) {
+        this.displayValue = item[this.displayfield];
+        this.isComponentValid.emit(true);
+      }
+    });
+  }
+
+  // METHOD TO INITIALIZE COMPONENT
+  initComponent() {
+    if (this.fieldlabel != null && this.fieldlabel.length > 0) {
+      this.haslabel = true;
+    }
+  }
+
+  // METHOS TO EMIT CHANGE EVENT
   onChange(event: any) {
     if (event != null) {
-      this.value = event;
-      this.change.emit(this.value);
-    }
-
-  }
-
-  navigateUsingKey(event: any) {
-
-    if (this.selectedindex > this.filteredResult.length) {
-      this.selectedindex = 0;
-    }
-    if (event.keyCode === 40 || event.keyCode === 38 && this.selectedindex < this.filteredResult.length) {
-      if (!this.showToolTip) {
-        this.showToolTip = true;
-      }
-      let prevselectedindex = 0;
-      if (this.selectedindex === 0) {
-        this.selectedindex = 1;
-      } else {
-        prevselectedindex = this.selectedindex;
-        this.navigateByKeyCode(event);
-      }
-
-      if (this.filteredResult[this.selectedindex]) {
-        this.filteredResult[this.selectedindex].selected = true;
-      }
-      if (this.filteredResult[prevselectedindex]) {
-        this.filteredResult[prevselectedindex].selected = false;
-      }
-    }
-
-    if (event.keyCode === 13 && this.filteredResult[this.selectedindex]) {
-      this.onItemSelect(this.filteredResult[this.selectedindex]);
-    }
-
-  }
-
-  // Method to navigate by key code
-  private navigateByKeyCode(event: any) {
-    if (event.keyCode === 40) {
-      this.selectedindex++;
-      if ((this.selectedindex > 5)) {
-        this.dropdownitems.nativeElement.scroll(0, this.scrollposition);
-        this.scrollposition = this.scrollposition + 30;
-      }
-    } else if (event.keyCode === 38) {
-      this.selectedindex--;
-      if (this.scrollposition >= 0 && this.selectedindex > 1) {
-        this.dropdownitems.nativeElement.scroll(0, this.scrollposition);
-        this.scrollposition = this.scrollposition - 30;
-      }
-      if (this.selectedindex === 1) {
-        this.scrollposition = 30;
-      }
+      this.change.emit(event);
     }
   }
 
-  // Methos to set data in the dropdown
+  // METHOD TO SET DATA IN DROPDOWN
   setData(httpResponse: any) {
-    // Check if key is added?
     let responsedata = httpResponse;
     if (this.datareader != null) {
       const dr = this.datareader.split('.');
@@ -440,16 +314,15 @@ export class AmexioTypeAheadComponent implements ControlValueAccessor, OnChanges
     } else {
       responsedata = httpResponse;
     }
+    this.viewdata = of(responsedata);
 
-    this.viewData = responsedata;
-
-    // Set user selection
+    // SET USER SELECTION
     if (this.value != null) {
       const valueKey = this.valuefield;
       const displayKey = this.displayfield;
       const val = this.value;
 
-      this.viewData.forEach((item: any) => {
+      this.viewdata.forEach((item: any) => {
         if (item[valueKey] === val) {
           this.isValid = true;
           this.displayValue = item[displayKey];
@@ -459,84 +332,4 @@ export class AmexioTypeAheadComponent implements ControlValueAccessor, OnChanges
     this.maskloader = false;
   }
 
-  // Method Called at item Select
-  onItemSelect(row: any) {
-    this.value = row[this.valuefield];
-    this.displayValue = row[this.displayfield];
-    this.showToolTip = false;
-    this.isValid = true;
-    this.isComponentValid.emit(true);
-    this.onClick.emit(row);
-  }
-
-  // get accessor
-  get value(): any {
-    return this.innerValue;
-  }
-
-  // set accessor including call the onchange callback
-  set value(v: any) {
-    if (v !== this.innerValue) {
-      this.innerValue = v;
-      this.onChangeCallback(v);
-    }
-  }
-
-  // Set touched on blur
-  onblur() {
-    this.onTouchedCallback();
-    this.onBlur.emit(this.value);
-  }
-
-  // Method called at onFocus event
-  onFocus(elem: any) {
-    this.showToolTip = true;
-    this.posixUp = this.getListPosition(elem);
-    this.focus.emit(this.value);
-  }
-
-  // Method to position dropdown correctly
-  getListPosition(elementRef: any): boolean {
-    const dropdownHeight = 325; // must be same in dropdown.scss
-    if (window.screen.height - (elementRef.getBoundingClientRect().bottom) < dropdownHeight) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  // Method called at onInput
-  onInput(input: any) {
-    if (!this.allowblank) {
-      this.isValid = input.valid;
-    }
-    this.input.emit(this.value);
-  }
-
-  // From ControlValueAccessor interface
-  writeValue(value: any) {
-    if (value !== this.innerValue) {
-      this.innerValue = value;
-    }
-  }
-
-  // From ControlValueAccessor interface
-  registerOnChange(fn: any) {
-    this.onChangeCallback = fn;
-  }
-
-  // From ControlValueAccessor interface
-  registerOnTouched(fn: any) {
-    this.onTouchedCallback = fn;
-  }
-
-  // THIS MEHTOD CHECK INPUT IS VALID OR NOT
-  checkValidity(): boolean {
-    return this.isValid;
-  }
-
-  // Onclick Method
-  onclick() {
-
-  }
 }

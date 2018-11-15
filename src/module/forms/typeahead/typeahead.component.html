@@ -1,49 +1,42 @@
-<div class="inputgroup" #rootDiv>
+
+
+<div class="inputgroup">
 
   <label *ngIf="haslabel" [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
-    {{fieldlabel}}
+    {{fieldlabel}} 
   </label>
 
+  <input type="hidden" [(ngModel)]="value" name="name" (ngModelChange)="onChange($event)">
+  
 
-  <input type="hidden"
-         [ngModel]="value"
-         (ngModelChange)="onChange($event)"
-         #inp="ngModel"
-  />
+  <div class="input-container">
+          <em [ngClass]="prefixiconclass"></em>
+          <input type="text" class="input-control"
+                  [ngClass]="{'input-control-error': ((model.dirty || model.touched || (value && value.length>0)) && !model.valid),
+                  'input-disabled' : disabled}"
+                  [required]="!allowblank" 
+                  [value]="displayValue"
+                  [attr.placeholder]="placeholder"
+                  [attr.disabled] = "disabled ? true: null"
+                  (focus)="focus($event)"
+                  (input)="input($event)"
+                  (keyup)="keyup($event)"
+                  (blur)="blur($event)"/>
+          <em *ngIf="(iconfeedback && (model.dirty || model.touched) && model.valid)" class="fa fa-check"></em>
+          <em *ngIf="(iconfeedback && (model.dirty || model.touched) && !model.valid)" class="fa fa-times icon-error"></em>
+          <em *ngIf="suffixiconclass"  [ngClass]="suffixiconclass"></em>
+  </div>
 
-  <input type="text" class="input-control"
-         [ngClass]="{'input-control-error' : inp.invalid && (inp.dirty || inp.touched),'input-control-success' : inp.valid && (inp.dirty || inp.touched)}"
-         [value]="displayValue"
-         (blur)="onblur()"
-         (focus)="onFocus(rootDiv)"
-         (input)="onInput(inp)"
-         (keyup)="onKeyUp($event)"
-         (keydown)="navigateKey($event)"
-         (click)="onclick()"
-         [attr.placeholder]="placeholder"
-         [attr.disabled]="disabled ? true: null"
-         [required]="allowblank ? true: null"/>
-
-
-
-  <span #dropdownitems class="dropdown" [ngClass]="{'dropdown-up' : posixUp}" [ngClass]="{'loading-mask' : maskloader}" [ngStyle]="{'display': showToolTip ? 'block' : 'none'}" #dpList>
-        <ul class="dropdown-list">
-          <li class="list-items" [ngClass]="{'list-items-selected':item.selected}"
-              *ngFor="let item of filteredResult"  (click)="onItemSelect(item)">
-              <div>{{item[displayfield]}}</div>
-          </li>
-        </ul>
-    </span>
+  <input-help *ngIf="(enablepopover && showerror)" 
+                  [error-msg]="errormsg" 
+                  [min-msg]="minmsg" 
+                  [max-msg]="maxmsg">
+  </input-help>
+  
+  <dropdown-list-item class="dropdown" [ngStyle]="dropdownstyle"  
+                      [data]="viewdata" [display-field]="displayfield" [value-field]="valuefield" 
+                      [highlight-row]="rowindex" [display-value]="displayValue" 
+                      (itemclick)="onDropDownListItemClick($event)">
+  </dropdown-list-item>
 </div>
 
-
-<span *ngIf="iconfeedback && (inp.invalid && (inp.dirty || inp.touched) || inp.valid)"
-      class="input-control-feedback">
-        <span *ngIf="inp.invalid && (inp.dirty || inp.touched)">&#9888;</span>
-        <span *ngIf="inp.valid && (inp.dirty || inp.touched)"> &#10004;</span>
-
-    </span>
-
-<span *ngIf="showToolTip && enablepopover" class="tooltiptext">
-        <div [innerHTML]="helpInfoMsg"></div>
-</span>

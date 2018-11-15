@@ -14,7 +14,7 @@ export class FilterPipe implements PipeTransform {
         }
 
         return items.filter((singleItem) =>
-            singleItem[field].toLowerCase().includes(value.toLowerCase()),
+            singleItem[field].toLowerCase().startsWith(value.toLowerCase()),
         );
     }
 }
