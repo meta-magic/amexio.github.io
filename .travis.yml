@@ -38,7 +38,7 @@ script:
   - cd amexio-ios
   - cp -rf ../dist/amexio-ng-extensions.tgz .
   - cp -rf ../src/styles/css/*  themes/
-  - tar -zcf themes.tar.gz  themes/*
+  - tar -czvf themes.tar.gz  themes/*
   - git add amexio-ng-extensions.tgz  themes.tar.gz
   - git commit -m "date"
   - git push --force --quiet "https://deepali-arvind:${GITHUB_TOKEN}@github.com/${GITHUB_REPO}.git" HEAD:master 
