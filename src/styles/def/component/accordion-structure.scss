@@ -5,7 +5,7 @@
   border-color: $accordionBorderColor;
   text-align: left;
   outline: none;
-  font-size: 15px;
+  font-size: 17px;
   transition: 0.4s;
 }
 
@@ -23,6 +23,7 @@
 }
 
 
+
 /** Transparent Styling **/
 .accordion-transparent{
   cursor: pointer;
@@ -31,7 +32,7 @@
   border-color:$accordionTransparentBorder;
   text-align: left;
   outline: none;
-  font-size: 15px;
+  font-size: 17px;
   transition: 0.4s;
   box-shadow: none;
   border-top: $borderSize solid $accordionBorderColor;

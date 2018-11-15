@@ -1,5 +1,6 @@
 
 .label-content{
+  
 }
 .label-badge{
   margin-left: 10px;
@@ -13,22 +14,27 @@
   white-space: nowrap;
   vertical-align: middle;
   border-radius: 10px;
+  
 }
 
 .large{
   font-size: $largeFontSize;
   line-height: 34px;
+  margin-top: 0px !important;
 }
 .medium{
   font-size: $mediumFontSize;
+  margin-top: 0px !important;
 }
 
 .small{
   font-size: $smallFontSize;
+  margin-top: 0px !important;
 }
 
 .large-bold{
   font-size: $largeFontSize;
+  margin-top: 0px !important;
   font-weight: bold;
   line-height: 40px;
 }
@@ -36,9 +42,12 @@
 .medium-bold{
   font-size: $mediumFontSize;
   font-weight: bold;
+  margin-top: 0px !important;
 }
 
 .small-bold{
   font-size: $smallFontSize;
   font-weight: bold;
+  margin-top: 0px !important;
 }
+
