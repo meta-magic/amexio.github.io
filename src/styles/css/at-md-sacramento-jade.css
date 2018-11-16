@@ -3326,16 +3326,6 @@ input:checked + .toggle-slider:before {
 ****************************************************************************/
 /** Grid Layout- Visual CSS **/
 /** Grid Layout- Structure CSS **/
-@media (min-width: 720px) {
-  .amexio-grid-container {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-gap: 5px; } }
-@media (min-width: 820px) {
-  .amexio-grid-container {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-gap: 5px; } }
 /****************************************************************************
     Component Name : Enterprise Content
     Version : Amexio v4.0 onwards
@@ -6108,8 +6098,10 @@ verticalalign-tableft {
   transition: max-height 0.2s ease-out; }
 
 .panel-box {
-  border: 2px solid #00a86b;
   width: 100%; }
+
+.panel-box-border {
+  border: 2px solid #00a86b; }
 
 .panel-panel::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); }
