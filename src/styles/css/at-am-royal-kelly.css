@@ -2269,32 +2269,26 @@ input:checked + .toggle-slider:before {
 
 .large {
   font-size: 36px;
-  line-height: 34px;
-  margin-top: 0px !important; }
+  line-height: 34px; }
 
 .medium {
-  font-size: 20px;
-  margin-top: 0px !important; }
+  font-size: 20px; }
 
 .small {
-  font-size: 18px;
-  margin-top: 0px !important; }
+  font-size: 18px; }
 
 .large-bold {
   font-size: 36px;
-  margin-top: 0px !important;
   font-weight: bold;
   line-height: 40px; }
 
 .medium-bold {
   font-size: 20px;
-  font-weight: bold;
-  margin-top: 0px !important; }
+  font-weight: bold; }
 
 .small-bold {
   font-size: 18px;
-  font-weight: bold;
-  margin-top: 0px !important; }
+  font-weight: bold; }
 
 /****************************************************************************
     Component Name : Box
