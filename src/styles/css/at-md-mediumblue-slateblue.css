@@ -6108,10 +6108,8 @@ verticalalign-tableft {
   transition: max-height 0.2s ease-out; }
 
 .panel-box {
+  border: 2px solid #7b68ee;
   width: 100%; }
-
-.panel-box-border {
-  border: 2px solid #7b68ee; }
 
 .panel-panel::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); }
