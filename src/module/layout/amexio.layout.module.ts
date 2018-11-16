@@ -17,12 +17,17 @@ import {AmexioBorderLayoutItemComponent} from './border/borderlayoutitem.compone
 import {AmexioBoxComponent} from './box/box.component';
 import {AmexioCardComponent} from './card/card.component';
 import {AmexioColumnComponent} from './columns/column.component';
+import {AmexioGridComponent} from './gridlayout/grid.component';
+import {AmexioGridItemComponent} from './gridlayout/griditem.component';
+import {AmexioGridModel} from './gridlayout/gridmodel.component';
 import {AmexioIconLayoutComponent} from './icon/icon.component';
 import {AmexioRowComponent} from './rows/row.component';
 
 import {CommonDataService} from '../services/data/common.data.service';
 import {DeviceQueryService} from '../services/device/device.query.service';
 import {IconLoaderService} from '../services/icon/icon.service';
+
+import {AmexioGridLayoutService} from './gridlayout/amexiogridlayoutservice.service';
 
 export * from './accordion/accordion.header.component';
 export * from './accordion/accordion.pane';
@@ -33,13 +38,18 @@ export * from './border/borderlayout.component';
 export * from './box/box.component';
 export * from './card/card.component';
 export * from './columns/column.component';
+export * from './gridlayout/grid.component';
+export * from './gridlayout/griditem.component';
 export * from './rows/row.component';
 export * from '../services/data/common.data.service';
 export * from '../services/device/device.query.service';
 export * from '../services/icon/icon.service';
+export * from './gridlayout/amexiogridlayoutservice.service';
 const LAYOUT_COMPONENTS = [
   AmexioRowComponent,
   AmexioColumnComponent,
+  AmexioGridComponent,
+  AmexioGridItemComponent,
   AmexioBorderLayoutItemComponent,
   AmexioBorderLayoutComponent,
   AmexioCardComponent,
@@ -66,7 +76,7 @@ export class AmexioLayoutModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: AmexioLayoutModule,
-      providers: [CommonDataService, DeviceQueryService, IconLoaderService],
+      providers: [CommonDataService, DeviceQueryService, IconLoaderService, AmexioGridLayoutService],
     };
   }
 }
