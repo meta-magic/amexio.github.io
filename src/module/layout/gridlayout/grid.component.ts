@@ -4,7 +4,7 @@ import { AmexioGridItemComponent } from './griditem.component';
 import { AmexioGridModel } from './gridmodel.component';
 
 @Component({
-  selector: 'amexio-grid-component',
+  selector: 'amexio-layout-grid',
   templateUrl: './grid.component.html',
 })
 export class AmexioGridComponent implements AfterContentInit, OnInit {
