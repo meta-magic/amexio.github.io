@@ -43,11 +43,9 @@ import { AmexioPanelHeaderComponent} from './../panel/panel.header.component';
           </amexio-toolbar>
     </div>
   </ng-container>
-      <ng-container *ngIf="expanded">
-        <div class="panel-panel" [style.max-height.px]="height">
-          <ng-content></ng-content>
-        </div>
-      </ng-container>
+  <div class="panel-panel" [ngStyle]="{'visibility': expanded ? 'visible':'hidden'}" [style.max-height.px]="height">
+     <ng-content></ng-content>
+  </div>
 
     <span [ngStyle]="contextStyle">
     <ul *ngIf="flag" class="context-menu-list" [ngClass]="{'dropdown-up' : posixUp}">
