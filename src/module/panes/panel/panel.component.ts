@@ -24,44 +24,8 @@ import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@a
 import { AmexioPanelHeaderComponent} from './../panel/panel.header.component';
 
 @Component({
-  selector: 'amexio-panel', template: `
-    <div #id style="width: 100%"  (contextmenu)="loadContextMenu({event:$event,ref:id})" >
-      <ng-container *ngIf="header">
-        <div class="panel-accordion" #btn1 >
-          <amexio-toolbar>
-            <amexio-toolbar-item position-left>
-                <amexio-label size="small" >
-                {{title}}
-                </amexio-label>
-            </amexio-toolbar-item>
-            <amexio-toolbar-item position-right>
-                <ng-content select="amexio-panel-header"></ng-content>
-            </amexio-toolbar-item>
-            <amexio-toolbar-item position-right >
-                <i [class]="iconclassKey" aria-hidden="true" (click)="onTabClick(btn1)"></i>
-            </amexio-toolbar-item>
-          </amexio-toolbar>
-    </div>
-  </ng-container>
-  <div class="panel-panel"  [ngClass]="{'panel-box-border':border}"
-    [ngStyle]="{'visibility': expanded ? 'visible':'hidden'}" [style.max-height.px]="height">
-     <ng-content></ng-content>
-  </div>
-
-    <span [ngStyle]="contextStyle">
-    <ul *ngIf="flag" class="context-menu-list" [ngClass]="{'dropdown-up' : posixUp}">
-      <li (click)="onContextNodeClick(itemConfig)" class="context-menu-list-items"
-      [ngStyle]="{'cursor': itemConfig.disabled ? 'not-allowed':'pointer'}"
-        [ngClass]="{'context-menu-separator':itemConfig.seperator}" *ngFor="let itemConfig of contextmenu">
-        <em [ngStyle]="{'padding-left': itemConfig.icon ? '5px':'19px'}" [ngClass]="itemConfig.icon"></em>
-        <span style="white-space: nowrap;display: inline ; padding-left:5px">{{itemConfig.text}}
-        </span>
-      </li>
-    </ul>
-  </span>
-    </div>
-
-  `,
+  selector: 'amexio-panel',
+  templateUrl: './panel.component.html',
 })
 
 export class AmexioPanelComponent implements OnInit {
@@ -141,6 +105,9 @@ version : none
 default : none
 description : Fires the on accordion pane click event.
 */
+
+  @Input('fit') fit = true;
+
   @Output() onClick: EventEmitter<any> = new EventEmitter();
 
   @Output() nodeRightClick: any = new EventEmitter<any>();
