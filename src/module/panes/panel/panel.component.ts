@@ -43,7 +43,8 @@ import { AmexioPanelHeaderComponent} from './../panel/panel.header.component';
           </amexio-toolbar>
     </div>
   </ng-container>
-  <div class="panel-panel" [ngStyle]="{'visibility': expanded ? 'visible':'hidden'}" [style.max-height.px]="height">
+  <div class="panel-panel"  [ngClass]="{'panel-box-border':border}"
+    [ngStyle]="{'visibility': expanded ? 'visible':'hidden'}" [style.max-height.px]="height">
      <ng-content></ng-content>
   </div>
 
