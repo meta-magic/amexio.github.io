@@ -21,7 +21,7 @@ Component Description : Panel provides an easy way to organize big forms by
 grouping the fields in panel
 */
 import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
-import { AmexioPanelHeaderComponent} from './../panel/panel.header.component';
+import { AmexioPanelHeaderComponent } from './../panel/panel.header.component';
 
 @Component({
   selector: 'amexio-panel',
@@ -49,7 +49,7 @@ default : true
 description : 	Enable/Disabled header.
 */
   @Input() header: boolean;
-    /*
+  /*
 Properties
 name : paneltitle
 datatype :  boolean
@@ -57,7 +57,7 @@ version : 4.0 onwards
 default : true
 description : 	Enable/Disabled header.
 */
- // @Input() paneltitle: boolean;
+  // @Input() paneltitle: boolean;
   /*
 Properties
 name : expanded
@@ -67,15 +67,15 @@ default : false
 description : Pane will expand or collapse based on the boolean.
 */
   @Input() expanded: boolean;
- /*
-Properties
-name : expanded
-datatype :  boolean
-version : 4.0 onwards
-default : false
-description : Pane will expand or collapse based on the boolean.
-*/
-@Input() border: boolean;
+  /*
+ Properties
+ name : expanded
+ datatype :  boolean
+ version : 4.0 onwards
+ default : false
+ description : Pane will expand or collapse based on the boolean.
+ */
+  @Input() border: boolean;
   /*
 Properties
 name : height
@@ -130,6 +130,11 @@ description : Fires the on accordion pane click event.
 
   private faFaIconDownCss = 'fa fa-caret-down';
 
+  panelstyle: any;
+
+  constructor() {
+    this.panelstyle = { visibility: 'visible' };
+  }
   ngOnInit() {
     if (!this.header) {
       this.expanded = true;
@@ -138,6 +143,7 @@ description : Fires the on accordion pane click event.
     if (this.height) {
       return this.height;
     }
+    this.updatestyle();
   }
 
   onTabClick(btn: any) {
@@ -148,9 +154,23 @@ description : Fires the on accordion pane click event.
       this.iconclassKey = this.faFaIconDownCss;
     }
     this.expanded = !this.expanded;
+    this.updatestyle();
     this.onClick.emit();
   }
 
+  private updatestyle() {
+    if (this.fit && this.expanded) {
+      this.panelstyle = { visibility: 'visible' };
+    } else if (this.fit && !this.expanded) {
+      this.panelstyle = { visibility: 'hidden' };
+    } else if (!this.fit && this.expanded) {
+      this.panelstyle = { display: 'block' };
+    } else if (!this.fit && !this.expanded) {
+      this.panelstyle = { display: 'none' };
+    } else {
+      this.panelstyle = { visibility: 'visible' };
+    }
+  }
   getContextMenu() {
     if (this.contextmenu && this.contextmenu.length > 0) {
       this.flag = true;
