@@ -272,7 +272,6 @@ export class TreeMapComponent implements AfterContentInit, OnInit {
     return{
       color: this.mapTitleComponent.color ? this.mapTitleComponent.color : null,
         fontName: this.mapTitleComponent.fontname ? this.mapTitleComponent.fontname : null,
-        fontsize: this.mapTitleComponent.fontsize ? this.mapTitleComponent.fontsize : null,
         bold: this.mapTitleComponent.bold ? this.mapTitleComponent.bold : null,
         italic: this.mapTitleComponent.italic ? this.mapTitleComponent.italic : null,
       };

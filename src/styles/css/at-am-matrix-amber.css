@@ -6278,6 +6278,12 @@ verticalalign-tableft {
 .panel-icon {
   padding-left: 5px; }
 
+.panel-accordion amexio-toolbar-item amexio-panel-header * {
+  padding-right: 5px; }
+
+.panel-accordion amexio-toolbar-item {
+  margin: auto; }
+
 /****************************************************************************
     Component Name : Timeline
     Version : Amexio v5.2 onwards
