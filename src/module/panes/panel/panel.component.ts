@@ -69,13 +69,23 @@ description : Pane will expand or collapse based on the boolean.
   @Input() expanded: boolean;
   /*
  Properties
- name : expanded
+ name : border
  datatype :  boolean
  version : 4.0 onwards
  default : false
  description : Pane will expand or collapse based on the boolean.
  */
   @Input() border: boolean;
+
+  /*
+Properties
+name : collapsible
+datatype :  boolean
+version : 4.0 onwards
+default : false
+description : Pane will expand or collapse based on the boolean.
+*/
+  @Input() collapsible = true;
   /*
 Properties
 name : height
@@ -136,7 +146,7 @@ description : Fires the on accordion pane click event.
     this.panelstyle = { visibility: 'visible' };
   }
   ngOnInit() {
-    if (!this.header) {
+    if (!this.collapsible) {
       this.expanded = true;
     }
     this.iconclassKey = this.expanded ? this.faFaIconUPCss : this.faFaIconDownCss;

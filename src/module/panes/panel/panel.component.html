@@ -1,6 +1,6 @@
 <div #id style="width: 100%" (contextmenu)="loadContextMenu({event:$event,ref:id})">
-    <ng-container *ngIf="header">
-        <div class="panel-accordion"  (click)="onTabClick(btn1)">
+    <ng-container *ngIf="collapsible; else elseBlock">
+        <div *ngIf="header" class="panel-accordion" (click)="onTabClick(btn1)">
             <amexio-toolbar>
                 <amexio-toolbar-item position-left>
                     <amexio-label size="small">
@@ -16,6 +16,21 @@
             </amexio-toolbar>
         </div>
     </ng-container>
+
+    <ng-template #elseBlock>
+        <div *ngIf="header" class="panel-accordion" (click)="onTabClick(btn1)">
+            <amexio-toolbar>
+                <amexio-toolbar-item position-left>
+                    <amexio-label size="small">
+                        {{title}}
+                    </amexio-label>
+                </amexio-toolbar-item>
+                <amexio-toolbar-item position-right>
+                    <ng-content select="amexio-panel-header"></ng-content>
+                </amexio-toolbar-item>
+            </amexio-toolbar>
+        </div>
+    </ng-template>
 
     <div class="panel-panel" [ngClass]="{'panel-box-border':border}" [ngStyle]="panelstyle" [style.max-height.px]="height">
         <ng-content></ng-content>
