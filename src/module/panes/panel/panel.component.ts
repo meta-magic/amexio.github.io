@@ -85,7 +85,7 @@ version : 4.0 onwards
 default : false
 description : Pane will expand or collapse based on the boolean.
 */
-  @Input() collapsible: boolean;
+  @Input() collapsible = true;
   /*
 Properties
 name : height
