@@ -59,15 +59,6 @@ description : sets Font family name
   @Input('font-name') fontname: string;
 /*
 Properties
-name : font-size
-datatype : number
-version : 4.0 onwards
-default : none
-description : sets font size
-*/
-  @Input('font-size') fontsize: number;
-/*
-Properties
 name : bold
 datatype : boolean
 version : 4.0 onwards
