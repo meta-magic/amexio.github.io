@@ -1,6 +1,6 @@
 <div #id style="width: 100%" (contextmenu)="loadContextMenu({event:$event,ref:id})">
     <ng-container *ngIf="header">
-        <div class="panel-accordion" #btn1>
+        <div class="panel-accordion"  (click)="onTabClick(btn1)">
             <amexio-toolbar>
                 <amexio-toolbar-item position-left>
                     <amexio-label size="small">
@@ -11,7 +11,7 @@
                     <ng-content select="amexio-panel-header"></ng-content>
                 </amexio-toolbar-item>
                 <amexio-toolbar-item style="margin:auto" position-right>
-                    <i [class]="iconclassKey" aria-hidden="true" (click)="onTabClick(btn1)"></i>
+                    <i [class]="iconclassKey" aria-hidden="true" #btn1></i>
                 </amexio-toolbar-item>
             </amexio-toolbar>
         </div>
