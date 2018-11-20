@@ -21,48 +21,11 @@ Component Description : Panel provides an easy way to organize big forms by
 grouping the fields in panel
 */
 import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
-import { AmexioPanelHeaderComponent} from './../panel/panel.header.component';
+import { AmexioPanelHeaderComponent } from './../panel/panel.header.component';
 
 @Component({
-  selector: 'amexio-panel', template: `
-    <div #id [ngClass]="{'panel-box-border':border}" style="width: 100%"  (contextmenu)="loadContextMenu({event:$event,ref:id})" >
-      <ng-container *ngIf="header">
-        <div class="panel-accordion" #btn1 >
-          <amexio-toolbar>
-            <amexio-toolbar-item position-left>
-                <amexio-label size="small" >
-                {{title}}
-                </amexio-label>
-            </amexio-toolbar-item>
-            <amexio-toolbar-item position-right>
-                <ng-content select="amexio-panel-header"></ng-content>
-            </amexio-toolbar-item>
-            <amexio-toolbar-item position-right >
-                <i [class]="iconclassKey" aria-hidden="true" (click)="onTabClick(btn1)"></i>
-            </amexio-toolbar-item>
-          </amexio-toolbar>
-    </div>
-  </ng-container>
-      <ng-container *ngIf="expanded">
-        <div class="panel-panel" [style.max-height.px]="height">
-          <ng-content></ng-content>
-        </div>
-      </ng-container>
-
-    <span [ngStyle]="contextStyle">
-    <ul *ngIf="flag" class="context-menu-list" [ngClass]="{'dropdown-up' : posixUp}">
-      <li (click)="onContextNodeClick(itemConfig)" class="context-menu-list-items"
-      [ngStyle]="{'cursor': itemConfig.disabled ? 'not-allowed':'pointer'}"
-        [ngClass]="{'context-menu-separator':itemConfig.seperator}" *ngFor="let itemConfig of contextmenu">
-        <em [ngStyle]="{'padding-left': itemConfig.icon ? '5px':'19px'}" [ngClass]="itemConfig.icon"></em>
-        <span style="white-space: nowrap;display: inline ; padding-left:5px">{{itemConfig.text}}
-        </span>
-      </li>
-    </ul>
-  </span>
-    </div>
-
-  `,
+  selector: 'amexio-panel',
+  templateUrl: './panel.component.html',
 })
 
 export class AmexioPanelComponent implements OnInit {
@@ -86,7 +49,7 @@ default : true
 description : 	Enable/Disabled header.
 */
   @Input() header: boolean;
-    /*
+  /*
 Properties
 name : paneltitle
 datatype :  boolean
@@ -94,7 +57,7 @@ version : 4.0 onwards
 default : true
 description : 	Enable/Disabled header.
 */
- // @Input() paneltitle: boolean;
+  // @Input() paneltitle: boolean;
   /*
 Properties
 name : expanded
@@ -104,15 +67,25 @@ default : false
 description : Pane will expand or collapse based on the boolean.
 */
   @Input() expanded: boolean;
- /*
+  /*
+ Properties
+ name : border
+ datatype :  boolean
+ version : 4.0 onwards
+ default : false
+ description : Pane will expand or collapse based on the boolean.
+ */
+  @Input() border: boolean;
+
+  /*
 Properties
-name : expanded
+name : collapsible
 datatype :  boolean
 version : 4.0 onwards
 default : false
 description : Pane will expand or collapse based on the boolean.
 */
-@Input() border: boolean;
+  @Input() collapsible = true;
   /*
 Properties
 name : height
@@ -142,6 +115,9 @@ version : none
 default : none
 description : Fires the on accordion pane click event.
 */
+
+  @Input('fit') fit = true;
+
   @Output() onClick: EventEmitter<any> = new EventEmitter();
 
   @Output() nodeRightClick: any = new EventEmitter<any>();
@@ -164,14 +140,20 @@ description : Fires the on accordion pane click event.
 
   private faFaIconDownCss = 'fa fa-caret-down';
 
+  panelstyle: any;
+
+  constructor() {
+    this.panelstyle = { visibility: 'visible' };
+  }
   ngOnInit() {
-    if (!this.header) {
+    if (!this.collapsible) {
       this.expanded = true;
     }
     this.iconclassKey = this.expanded ? this.faFaIconUPCss : this.faFaIconDownCss;
     if (this.height) {
       return this.height;
     }
+    this.updatestyle();
   }
 
   onTabClick(btn: any) {
@@ -182,9 +164,23 @@ description : Fires the on accordion pane click event.
       this.iconclassKey = this.faFaIconDownCss;
     }
     this.expanded = !this.expanded;
+    this.updatestyle();
     this.onClick.emit();
   }
 
+  private updatestyle() {
+    if (this.fit && this.expanded) {
+      this.panelstyle = { visibility: 'visible' };
+    } else if (this.fit && !this.expanded) {
+      this.panelstyle = { visibility: 'hidden' };
+    } else if (!this.fit && this.expanded) {
+      this.panelstyle = { display: 'block' };
+    } else if (!this.fit && !this.expanded) {
+      this.panelstyle = { display: 'none' };
+    } else {
+      this.panelstyle = { visibility: 'visible' };
+    }
+  }
   getContextMenu() {
     if (this.contextmenu && this.contextmenu.length > 0) {
       this.flag = true;
