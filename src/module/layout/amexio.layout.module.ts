@@ -70,7 +70,7 @@ const LAYOUT_COMPONENTS = [
   ],
   exports: LAYOUT_COMPONENTS,
   declarations: LAYOUT_COMPONENTS,
-  providers : [CommonDataService, DeviceQueryService, IconLoaderService],
+  providers : [CommonDataService, DeviceQueryService, IconLoaderService, AmexioGridLayoutService],
 })
 export class AmexioLayoutModule {
   static forRoot(): ModuleWithProviders {
