@@ -1378,7 +1378,7 @@ textarea:required {
   border: 2px solid #417505; }
 
 .input-box-container {
-  display: block;
+  display: inline-block;
   position: relative;
   padding-left: 35px;
   padding-bottom: 10px;
