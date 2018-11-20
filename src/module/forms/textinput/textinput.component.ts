@@ -5,10 +5,9 @@ Component Description : Text input component has been created with
 different configurable attributes for validation (min/max length, allow
 blank, custom regex), custom error message, help, custom styles.
 */
-import {
-  Component, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild, ViewEncapsulation,
-} from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core';
+import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
+import { AmexioFormValidator } from './../form-validator/amexio.form.validator.component';
 
 const noop = () => {
 };
@@ -18,11 +17,13 @@ const noop = () => {
   templateUrl: './textinput.component.html',
   providers: [{
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioTextInputComponent), multi: true,
-  }],
+  }, {
+    provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioTextInputComponent), multi: true,
+}],
   encapsulation: ViewEncapsulation.None,
 })
 
-export class AmexioTextInputComponent implements ControlValueAccessor, OnInit {
+export class AmexioTextInputComponent extends AmexioFormValidator implements ControlValueAccessor, OnInit, Validators {
   /*
 Properties
 name : field-label
@@ -211,7 +212,7 @@ description : Apply Reg-ex to the field
       this.regEx = new RegExp(this._pattern);
     }
   }
-  /*
+/*
 Properties
 name : enable-popover
 datatype : string
@@ -220,7 +221,6 @@ default :
 description : Set enable / disable popover.
 */
   @Input('enable-popover') enablepopover: boolean;
-
   regex: RegExp;
 
   isValid: boolean;
@@ -228,6 +228,8 @@ description : Set enable / disable popover.
   componentClass: any;
 
   @Output() isComponentValid: any = new EventEmitter<any>();
+
+  @ViewChild(NgModel) model: NgModel;
 
   @ViewChild('ref', { read: ElementRef }) public inputRef: ElementRef;
   /*
@@ -268,6 +270,7 @@ description : On field value change event
   @Output() change: any = new EventEmitter<any>();
 
   constructor() {
+    super();
     this.showToolTip = false;
   }
 
@@ -383,4 +386,16 @@ description : On field value change event
       return (this.inputRef && this.inputRef.nativeElement && this.inputRef.nativeElement.validity
         && this.inputRef.nativeElement.validity.valid);
     }
+
+    isFieldValidate(): boolean {
+      return this.value && (this.value.length >= this.minlength);
+    }
+
+    public validate(c: FormControl) {
+      return ((!this.allowblank && this.isFieldValidate()) || this.allowblank ) ? null : {
+          jsonParseError: {
+              valid: true,
+          },
+      };
+  }
 }

@@ -7,7 +7,9 @@ Component Selector :  <amexio-checkbox>
 Component Description : Single checkbox having boolean based values.
 */
 import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
+import { AmexioFormValidator } from './../form-validator/amexio.form.validator.component';
+
 const noop = () => {
 };
 
@@ -16,9 +18,11 @@ const noop = () => {
   templateUrl: './checkbox.component.html',
   providers: [{
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioCheckBoxComponent), multi: true,
-  }],
+  }, {
+    provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioCheckBoxComponent), multi: true,
+}],
 })
-export class AmexioCheckBoxComponent implements ControlValueAccessor, OnInit {
+export class AmexioCheckBoxComponent extends AmexioFormValidator implements ControlValueAccessor, OnInit, Validators {
   // The internal dataviews model
   private innerValue: any = '';
   // Placeholders for the callbacks which are later provided
@@ -76,6 +80,7 @@ export class AmexioCheckBoxComponent implements ControlValueAccessor, OnInit {
   @Output() isComponentValid: any = new EventEmitter<any>();
 
   constructor() {
+    super();
   }
   ngOnInit() {
     this.isValid = !this.required;
@@ -134,4 +139,12 @@ export class AmexioCheckBoxComponent implements ControlValueAccessor, OnInit {
   checkValidity(): boolean {
     return this.isValid;
   }
+
+  public validate(c: FormControl) {
+    return ((this.required && this.value) || !this.required) ? null : {
+        jsonParseError: {
+            valid: true,
+        },
+    };
+}
 }

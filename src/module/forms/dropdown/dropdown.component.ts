@@ -14,9 +14,9 @@ import {
   Component, ContentChild, ElementRef, EventEmitter, forwardRef,
   HostListener, Input, OnInit, Output, Renderer2, TemplateRef, ViewChild,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
 import { CommonDataService } from '../../services/data/common.data.service';
-
+import { AmexioFormValidator } from './../form-validator/amexio.form.validator.component';
 const noop = () => {
 };
 
@@ -25,9 +25,11 @@ const noop = () => {
   templateUrl: './dropdown.component.html',
   providers: [{
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioDropDownComponent), multi: true,
-  }],
+  }, {
+    provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioDropDownComponent), multi: true,
+}],
 })
-export class AmexioDropDownComponent implements OnInit, ControlValueAccessor {
+export class AmexioDropDownComponent  extends AmexioFormValidator implements OnInit, ControlValueAccessor, Validators {
   /*
 Properties
 name : field-label
@@ -329,6 +331,7 @@ description : Set enable / disable popover.
     }
   }
   constructor(public dataService: CommonDataService, public element: ElementRef, public renderer: Renderer2) {
+  super();
   }
   ngOnInit() {
     this.isValid = this.allowblank;
@@ -644,4 +647,11 @@ description : Set enable / disable popover.
   checkValidity(): boolean {
     return this.isValid;
   }
+  public validate(c: FormControl) {
+    return ((!this.allowblank && (this.value && this.value.length > 0 )) || this.allowblank) ? null : {
+        jsonParseError: {
+            valid: true,
+        },
+    };
+ }
 }

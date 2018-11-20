@@ -4,7 +4,9 @@
  Component Description : Email input field
 */
 import { Component, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
+import { AmexioFormValidator } from './../form-validator/amexio.form.validator.component';
+
 const noop = () => {
 };
 
@@ -13,9 +15,11 @@ const noop = () => {
   templateUrl: './passwordinput.component.html',
   providers: [{
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioPasswordComponent), multi: true,
-  }],
+  }, {
+    provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioPasswordComponent), multi: true,
+}],
 })
-export class AmexioPasswordComponent implements ControlValueAccessor, OnInit {
+export class AmexioPasswordComponent extends AmexioFormValidator implements ControlValueAccessor, OnInit, Validators {
   /*
   Properties
   name : field-label
@@ -239,6 +243,7 @@ description : On field value change event
   @Output() isComponentValid: any = new EventEmitter<any>();
   @ViewChild('ref', {read: ElementRef}) public inputRef: ElementRef;
   constructor() {
+    super();
     this.showToolTip = false;
   }
   // The internal dataviews model
@@ -361,4 +366,16 @@ description : On field value change event
     return (this.inputRef && this.inputRef.nativeElement && this.inputRef.nativeElement.validity
       && this.inputRef.nativeElement.validity.valid);
   }
+
+  isFieldValidate(): boolean {
+   return this.value && (this.value.length >= this.minlength);
+  }
+
+  public validate(c: FormControl) {
+    return ((!this.allowblank && this.isFieldValidate()) || this.allowblank ) ? null : {
+        jsonParseError: {
+            valid: true,
+        },
+    };
+}
 }

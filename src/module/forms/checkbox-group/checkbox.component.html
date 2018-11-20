@@ -1,0 +1,10 @@
+<!-- <div style="display: flex;" (click)="toggleCheck()">
+    <input class="form-control" type="checkbox" [checked]="isChecked()" />
+    <label>{{label}}</label>
+</div> <br/> -->
+
+<label class="input-box-container" [ngClass]="{'disable-component' : disabled || disabled}">
+    {{label}}
+    <input type="checkbox" class="form-control" [ngClass]="{'checkbox-disable' : disabled}" [checked]="checked" (click)="toggleCheck()">
+    <span class="input-box-checkbox-label"></span>
+  </label>

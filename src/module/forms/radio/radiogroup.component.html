@@ -1,24 +1,29 @@
-<div class="inputgroup" >
-  <div *ngIf="fieldlabel">
-    <label>{{fieldlabel}}</label>
-  </div>
-  <ng-container *ngIf="horizontal">
-    <ng-container *ngFor="let rData of data">
-      <label class="input-box-container" (click)="onClick(rData)" [ngClass]="{'disable-component' : rData.disabled || disabled}">{{rData[displayfield]}}
-        <input type="radio" [attr.name]="name" [value]="rData[valuefield]" [attr.disabled] = "rData?.disabled ? true: null" [(ngModel)]="value" >
-        <span  class="input-box-radiobox-label" ></span>
-      </label>
-    </ng-container>
-  </ng-container>
-
-  <ng-container *ngIf="!horizontal">
-    <ng-container *ngFor="let rData of data">
-      <div>
-        <label class="input-box-container"  (click)="onClick(rData)" [ngClass]="{'disable-component' : rData.disabled || disabled}">{{rData[displayfield]}}
-          <input type="radio" [attr.name]="name" [value]="rData[valuefield]" [attr.disabled] = "rData?.disabled ? true: null" [(ngModel)]="value" >
+<div class="inputgroup from-group" >
+    <div *ngIf="fieldlabel">
+      <label>{{fieldlabel}}</label>
+    </div>
+    <ng-container *ngIf="horizontal">
+      <ng-container *ngFor="let rData of data">
+        <label class="input-box-container" (click)="onClick(rData)" 
+        [ngClass]="{'disable-component' : rData.disabled || disabled}">{{rData[displayfield]}}
+          <input type="radio"   [required]="!allowblank" [name]="name" [value]="rData[valuefield]" 
+          [attr.disabled] = "rData?.disabled ? true: null" [(ngModel)]="value"
+          [checked]="(value === rData[valuefield])" 
+          >
           <span  class="input-box-radiobox-label" ></span>
         </label>
-      </div>
+      </ng-container>
     </ng-container>
-  </ng-container>
-</div>
+  
+    <ng-container *ngIf="!horizontal">
+      <ng-container *ngFor="let rData of data">
+        <div>
+          <label class="input-box-container"  (click)="onClick(rData)" [ngClass]="{'disable-component' : rData.disabled || disabled}">{{rData[displayfield]}}
+            <input type="radio"[required]="!allowblank"   [name]="name" [checked]="(value === rData[valuefield])"  required  [value]="rData[valuefield]" [attr.disabled] = "rData?.disabled ? true: null" [(ngModel)]="value" >
+            <span  class="input-box-radiobox-label" ></span>
+          </label>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+  

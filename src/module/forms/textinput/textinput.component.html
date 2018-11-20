@@ -1,35 +1,24 @@
+<div class="inputgroup form-group">
 
-<div class="inputgroup ">
-
-  <label *ngIf="haslabel" [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
+    <label *ngIf="haslabel" [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
     {{fieldlabel}}
   </label>
 
-  <input type="text" class="input-control"
-         [(ngModel)]="value"
-         #inp="ngModel"
-         [ngClass]="componentClass"
-         (blur)="onblur(inp)"
-         (focus)="onFocus()"
-         (input)="onInput(inp)"
-         (change)="onChangeEv()"
-         name="name"
-         [pattern]="regEx"
-         #ref
-         [attr.placeholder]="placeholder"
-         [attr.maxlength]="maxlength"
-         [attr.minlength]="minlength"
-         [attr.disabled] = "disabled ? true: null"
-         [required]="!allowblank"/>
+    <input type="text" class="input-control" [(ngModel)]="value" #inp="ngModel" 
+    [ngClass]="componentClass" (blur)="onblur(inp)" (focus)="onFocus()"
+     (input)="onInput(inp)" (change)="onChangeEv()" name="name" 
+     [pattern]="regEx" #ref [attr.placeholder]="placeholder"
+        [maxlength]="maxlength" [minlength]="minlength"
+         [attr.disabled]="disabled ? true: null" 
+         [required]="!allowblank" />
 
-  <span *ngIf="iconfeedback && (inp.invalid && (inp.dirty || inp.touched) || inp.valid)" class="input-control-feedback">
+    <span *ngIf="iconfeedback && (inp.invalid && (inp.dirty || inp.touched) || inp.valid)" class="input-control-feedback">
         <span *ngIf="!isValid && inp.touched"><em class="fa fa-times"></em></span>
-        <span *ngIf="isValid && inp.touched"><em class="fa fa-check"></em></span>
+    <span *ngIf="isValid && inp.touched"><em class="fa fa-check"></em></span>
 
-  </span>
-  <span *ngIf="showToolTip && enablepopover" class="dropdown tooltiptext">
+    </span>
+    <span *ngIf="showToolTip && enablepopover" class="dropdown tooltiptext">
         <div  [innerHTML]="helpInfoMsg"></div>
   </span>
-  <span class="inputfieldbar"></span>
+    <span class="inputfieldbar"></span>
 </div>
-

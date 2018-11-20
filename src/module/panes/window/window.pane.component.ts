@@ -349,7 +349,6 @@ description : Context Menu provides the list of menus on right click.
     }
   }
   loadContextMenu(rightClickData: any) {
-    console.log('check data', rightClickData);
     this.mouseLocation.left = rightClickData.event.clientX;
     this.mouseLocation.top = rightClickData.event.clientY;
     this.getContextMenu();

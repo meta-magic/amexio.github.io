@@ -4,7 +4,8 @@
  Component Description : Email input field
  */
 import { Component, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
+import { AmexioFormValidator } from './../form-validator/amexio.form.validator.component';
 
 const noop = () => {
 };
@@ -13,9 +14,11 @@ const noop = () => {
   templateUrl: './emailinput.component.html',
   providers: [{
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioEmailInputComponent), multi: true,
-  }],
+  }, {
+    provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioEmailInputComponent), multi: true,
+}],
 })
-export class AmexioEmailInputComponent implements ControlValueAccessor, OnInit {
+export class AmexioEmailInputComponent extends AmexioFormValidator implements ControlValueAccessor, OnInit, Validators {
 
   /*
    Properties
@@ -198,6 +201,7 @@ export class AmexioEmailInputComponent implements ControlValueAccessor, OnInit {
   isValid: boolean;
 
   constructor() {
+    super();
     this.showToolTip = false;
   }
   ngOnInit() {
@@ -292,4 +296,12 @@ export class AmexioEmailInputComponent implements ControlValueAccessor, OnInit {
     return (this.inputRef && this.inputRef.nativeElement &&
       this.inputRef.nativeElement.validity && this.inputRef.nativeElement.validity.valid);
   }
+
+  public validate(c: FormControl) {
+    return ((!this.allowblank && this.emailpatter.test(this.value)) || this.allowblank) ? null : {
+        jsonParseError: {
+            valid: true,
+        },
+    };
+}
 }

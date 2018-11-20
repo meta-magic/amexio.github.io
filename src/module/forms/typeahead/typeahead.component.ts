@@ -15,13 +15,12 @@ import {
   OnChanges, OnInit, Output, QueryList, Renderer2,
   SimpleChanges, TemplateRef, ViewChild, ViewChildren,
 } from '@angular/core';
-import { NG_VALUE_ACCESSOR, NgModel} from '@angular/forms';
+import { FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators} from '@angular/forms';
+import { CommonDataService } from '../../services/data/common.data.service';
+import { DropDownListComponent } from './../../base/dropdownlist.component';
+import { ListBaseComponent } from './../../base/list.base.component';
 
 import { of } from 'rxjs';
-
-import { DropDownListComponent } from '../../base/dropdownlist.component';
-import { ListBaseComponent } from '../../base/list.base.component';
-import { CommonDataService } from '../../services/data/common.data.service';
 
 const noop = () => {
 };
@@ -33,9 +32,11 @@ const noop = () => {
     provide: NG_VALUE_ACCESSOR,
     useExisting: AmexioTypeAheadComponent,
     multi: true,
-  }],
+  }, {
+    provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioTypeAheadComponent), multi: true,
+}],
 })
-export class AmexioTypeAheadComponent extends ListBaseComponent<string> implements OnChanges, OnInit, AfterViewInit {
+export class AmexioTypeAheadComponent extends ListBaseComponent<string> implements OnChanges, OnInit, AfterViewInit, Validators {
 
   private _fieldlabel: string;
   private _haslabel: boolean;
@@ -126,6 +127,8 @@ export class AmexioTypeAheadComponent extends ListBaseComponent<string> implemen
   @Input('enable-popover') enablepopover: boolean;
 
   @Input('trigger-char') triggerchar: number;
+
+  @Input() name: string;
 
   @Input() disabled: boolean;
 
@@ -332,4 +335,11 @@ export class AmexioTypeAheadComponent extends ListBaseComponent<string> implemen
     this.maskloader = false;
   }
 
+  public validate(c: FormControl) {
+    return ((!this.allowblank && (this.value && this.value.length > 0 )) || this.allowblank) ? null : {
+        jsonParseError: {
+            valid: true,
+        },
+    };
+ }
 }

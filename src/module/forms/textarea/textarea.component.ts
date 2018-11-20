@@ -8,7 +8,8 @@ different configurable attributes for validation
 
 */
 import { Component, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
+import { AmexioFormValidator } from './../form-validator/amexio.form.validator.component';
 
 const noop = () => {
 };
@@ -18,9 +19,11 @@ const noop = () => {
   templateUrl: './textarea.component.html',
   providers: [{
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioTextAreaComponent), multi: true,
-  }],
+  }, {
+    provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioTextAreaComponent), multi: true,
+}],
 })
-export class AmexioTextAreaComponent implements ControlValueAccessor, OnInit {
+export class AmexioTextAreaComponent extends AmexioFormValidator implements ControlValueAccessor, OnInit, Validators {
 
   /*
 Properties
@@ -230,6 +233,7 @@ description : Set enable / disable popover.
   @Input('enable-popover') enablepopover: boolean;
 
   constructor() {
+    super();
     this.showToolTip = false;
   }
   ngOnInit() {
@@ -332,4 +336,12 @@ description : Set enable / disable popover.
     return (this.inputRef && this.inputRef.nativeElement &&
       this.inputRef.nativeElement.validity && this.inputRef.nativeElement.validity.valid);
   }
+
+  public validate(c: FormControl) {
+    return ((!this.allowblank && (this.value && this.value.length > 0)) || this.allowblank) ? null : {
+        jsonParseError: {
+            valid: true,
+        },
+    };
+}
 }

@@ -9,10 +9,13 @@
  configurable attributes for validation (min/max value, allow blank, custom regex),
  custom error message, help, custom styles
 */
+import {ChangeDetectorRef, Component, EventEmitter, forwardRef, Input, OnInit, Output} from '@angular/core';
+import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
+import { CommonDataService } from '../../services/data/common.data.service';
+import { ValueAccessorBase } from './../../base/value-accessor';
+import { AmexioFormValidator } from './../form-validator/amexio.form.validator.component';
 
-import {Component, EventEmitter, forwardRef, Input, OnInit, Output} from '@angular/core';
-import {NG_VALUE_ACCESSOR} from '@angular/forms';
-import {CommonDataService} from '../../services/data/common.data.service';
+import { of } from 'rxjs';
 
 const noop = () => {
 };
@@ -22,10 +25,12 @@ const noop = () => {
   templateUrl: './radiogroup.component.html',
   providers: [{
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioRadioGroupComponent), multi: true,
-  }],
+  }, {
+    provide: NG_VALIDATORS, useExisting: AmexioRadioGroupComponent, multi: true,
+}],
 })
 
-export class AmexioRadioGroupComponent implements OnInit {
+export class AmexioRadioGroupComponent extends ValueAccessorBase<string> implements  OnInit, Validators {
 
   /*
    Properties
@@ -35,7 +40,7 @@ export class AmexioRadioGroupComponent implements OnInit {
    default :
    description : Sets if field is required
    */
-  @Input('allow-blank') allowblank = true;
+  @Input('allow-blank') allowblank: boolean;
   /*
    Properties
    name :name
@@ -150,17 +155,18 @@ export class AmexioRadioGroupComponent implements OnInit {
 
   // Placeholders for the callbacks which are later provided
   // by the Control Value Accessor
-  private onTouchedCallback: () => void = noop;
-  private onChangeCallback: (_: any) => void = noop;
+  // private onTouchedCallback: () => void = noop;
+  // private onChangeCallback: (_: any) => void = noop;
 
   @Output() isComponentValid: any = new EventEmitter<any>();
 
   viewData: any;
 
   // The internal dataviews model
-  private innerValue: any = '';
+  // private innerValue: any = '';
 
-  constructor(public amxHttp: CommonDataService) {
+  constructor(public amxHttp: CommonDataService, private cd: ChangeDetectorRef) {
+    super();
   }
 
   ngOnInit() {
@@ -194,7 +200,7 @@ export class AmexioRadioGroupComponent implements OnInit {
         this.value = opt[this.valuefield];
         return;
       }
-    });
+   });
   }
 
   getResponseData(httpResponse: any) {
@@ -258,4 +264,11 @@ export class AmexioRadioGroupComponent implements OnInit {
    checkValidity(): boolean {
     return this.isValid;
   }
+  public validate(c: FormControl) {
+    return ((!this.allowblank && (this.value && this.value.length)) || this.allowblank) ? null : {
+        jsonParseError: {
+            valid: true,
+        },
+    };
+}
 }

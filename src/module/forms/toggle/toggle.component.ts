@@ -18,7 +18,8 @@
 import {
   AfterViewInit, Component, EventEmitter, forwardRef, Input, OnInit, Output, ViewEncapsulation,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
+import { AmexioFormValidator } from './../form-validator/amexio.form.validator.component';
 
 const noop = () => {
 };
@@ -28,11 +29,13 @@ const noop = () => {
   templateUrl: './toggle.component.html',
   providers: [{
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioToggleComponent), multi: true,
-  }],
+  }, {
+    provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioToggleComponent), multi: true,
+}],
   encapsulation: ViewEncapsulation.None,
 })
 
-export class AmexioToggleComponent implements OnInit, ControlValueAccessor {
+export class AmexioToggleComponent extends AmexioFormValidator implements OnInit, ControlValueAccessor, Validators {
   /*
 Properties
 name :shape
@@ -84,7 +87,7 @@ description : The label of this field.
   private onChangeCallback: (_: any) => void = noop;
 
   constructor() {
-
+    super();
   }
 
   ngOnInit() {
@@ -145,4 +148,11 @@ description : The label of this field.
     return this.isValid;
   }
 
+  public validate(c: FormControl) {
+    return ((this.required && this.value) || !this.required)  ? null : {
+        jsonParseError: {
+            valid: true,
+        },
+    };
+  }
 }
