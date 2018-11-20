@@ -75,7 +75,7 @@ export class AmexioCheckBoxComponent extends AmexioFormValidator implements Cont
   description : On input event field.
   */
   @Output() input: any = new EventEmitter<any>();
-
+  @Input('name') name: string;
   isValid: boolean;
   @Output() isComponentValid: any = new EventEmitter<any>();
 
@@ -83,6 +83,7 @@ export class AmexioCheckBoxComponent extends AmexioFormValidator implements Cont
     super();
   }
   ngOnInit() {
+    this.generateName();
     this.isValid = !this.required;
     this.isComponentValid.emit(!this.required);
   }
@@ -146,5 +147,22 @@ export class AmexioCheckBoxComponent extends AmexioFormValidator implements Cont
             valid: true,
         },
     };
+}
+ // THIS METHOD GENERATE RANDOM STRING
+ generateName() {
+  if (!this.name && this.fieldlabel ) {
+    console.log('sassas');
+    this.name = this.fieldlabel.replace(/\s/g, '');
+  } else if ( !this.name && !this.fieldlabel) {
+    this.name = 'textinput-' + this.getRandomString();
+  }
+}
+getRandomString(): string {
+  const possibleCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  let randomString = '';
+  for (let i = 0; i < 6; i++) {
+    randomString += possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
+  }
+  return randomString;
 }
 }

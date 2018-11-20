@@ -12,7 +12,7 @@
          (blur)="onBlur(inp)"
          (focus)="onFocus()"
          (input)="onInput(inp)"
-         name="name"
+         [name]="name"
          [pattern]="regEx"
          #ref
          [attr.placeholder]="placeholder"

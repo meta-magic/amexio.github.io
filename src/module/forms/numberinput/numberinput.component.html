@@ -6,7 +6,7 @@
   <input type="number" class="input-control" 
          #ref 
          #inp="ngModel"
-         name="name" 
+         [name]="name" 
          [(ngModel)]="value" 
          [ngClass]="componentClass" 
          (blur)="onBlur(inp)" 

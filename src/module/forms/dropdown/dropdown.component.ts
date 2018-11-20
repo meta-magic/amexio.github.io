@@ -316,6 +316,7 @@ description : Set enable / disable popover.
   private onChangeCallback: (_: any) => void = noop;
 
   @Output() isComponentValid: any = new EventEmitter<any>();
+  @Input('name') name: string;
   @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart',
     ['$event.target'])
   public onElementOutClick(targetElement: HTMLElement) {
@@ -334,6 +335,7 @@ description : Set enable / disable popover.
   super();
   }
   ngOnInit() {
+    this.generateName();
     this.isValid = this.allowblank;
     this.isComponentValid.emit(this.allowblank);
     if (this.placeholder === '' || this.placeholder ) {
@@ -654,4 +656,21 @@ description : Set enable / disable popover.
         },
     };
  }
+ // THIS METHOD GENERATE RANDOM STRING
+ generateName() {
+  if (!this.name && this.fieldlabel ) {
+    console.log('sassas');
+    this.name = this.fieldlabel.replace(/\s/g, '');
+  } else if ( !this.name && !this.fieldlabel) {
+    this.name = 'textinput-' + this.getRandomString();
+  }
+}
+getRandomString(): string {
+  const possibleCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  let randomString = '';
+  for (let i = 0; i < 6; i++) {
+    randomString += possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
+  }
+  return randomString;
+}
 }

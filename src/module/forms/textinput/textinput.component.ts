@@ -231,6 +231,8 @@ description : Set enable / disable popover.
 
   @ViewChild(NgModel) model: NgModel;
 
+  @Input('name') name: string;
+
   @ViewChild('ref', { read: ElementRef }) public inputRef: ElementRef;
   /*
   Events
@@ -275,6 +277,7 @@ description : On field value change event
   }
 
   ngOnInit() {
+    this.generateName();
     this.isComponentValid.emit(this.allowblank);
   }
 
@@ -397,5 +400,22 @@ description : On field value change event
               valid: true,
           },
       };
+  }
+  // THIS METHOD GENERATE RANDOM STRING
+  generateName() {
+    if (!this.name && this.fieldlabel ) {
+      console.log('sassas');
+      this.name = this.fieldlabel.replace(/\s/g, '');
+    } else if ( !this.name && !this.fieldlabel) {
+      this.name = 'textinput-' + this.getRandomString();
+    }
+  }
+  getRandomString(): string {
+    const possibleCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    let randomString = '';
+    for (let i = 0; i < 6; i++) {
+      randomString += possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
+    }
+    return randomString;
   }
 }

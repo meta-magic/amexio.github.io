@@ -242,6 +242,7 @@ description : On field value change event
   @Output() change: any = new EventEmitter<any>();
   @Output() isComponentValid: any = new EventEmitter<any>();
   @ViewChild('ref', {read: ElementRef}) public inputRef: ElementRef;
+  @Input('name') name: string;
   constructor() {
     super();
     this.showToolTip = false;
@@ -296,6 +297,7 @@ description : On field value change event
     this.onTouchedCallback = fn;
   }
   ngOnInit() {
+    this.generateName();
     this.isComponentValid.emit(this.allowblank);
   }
 
@@ -377,5 +379,22 @@ description : On field value change event
             valid: true,
         },
     };
+}
+// THIS METHOD GENERATE RANDOM STRING
+generateName() {
+  if (!this.name && this.fieldlabel ) {
+    console.log('sassas');
+    this.name = this.fieldlabel.replace(/\s/g, '');
+  } else if ( !this.name && !this.fieldlabel) {
+    this.name = 'textinput-' + this.getRandomString();
+  }
+}
+getRandomString(): string {
+  const possibleCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  let randomString = '';
+  for (let i = 0; i < 6; i++) {
+    randomString += possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
+  }
+  return randomString;
 }
 }

@@ -3,8 +3,8 @@
 <div class="inputgroup form-group" >
 
   <label class="input-box-container" >{{fieldlabel}}
-    <input type="checkbox" *ngIf="value" [ngClass]="{'checkbox-disable' : disabled}" checked="checked" (input)="onInput(inp)" (click)="onClick()" [attr.disabled] = "disabled ? true: null" [required]="required">
-    <input type="checkbox" *ngIf="!value" [ngClass]="{'checkbox-disable' : disabled}" (click)="onClick()" (input)="onInput(inp)" [attr.disabled] = "disabled ? true: null" [required]="required">
+    <input type="checkbox" *ngIf="value" [name]="name" [ngClass]="{'checkbox-disable' : disabled}" checked="checked" (input)="onInput(inp)" (click)="onClick()" [attr.disabled] = "disabled ? true: null" [required]="required">
+    <input type="checkbox" *ngIf="!value" [name]="name" [ngClass]="{'checkbox-disable' : disabled}" (click)="onClick()" (input)="onInput(inp)" [attr.disabled] = "disabled ? true: null" [required]="required">
     <span class="input-box-checkbox-label"></span>
   </label>
 

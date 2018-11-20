@@ -6,7 +6,7 @@
 
     <input type="text" class="input-control" [(ngModel)]="value" #inp="ngModel" 
     [ngClass]="componentClass" (blur)="onblur(inp)" (focus)="onFocus()"
-     (input)="onInput(inp)" (change)="onChangeEv()" name="name" 
+     (input)="onInput(inp)" (change)="onChangeEv()" [name]="name" 
      [pattern]="regEx" #ref [attr.placeholder]="placeholder"
         [maxlength]="maxlength" [minlength]="minlength"
          [attr.disabled]="disabled ? true: null" 
