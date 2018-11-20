@@ -16,7 +16,7 @@
 }
 
 .form-header{
-  display: flex;
+  // display: flex;
   padding: 10px 24px;
   border-bottom: $formBorderSize solid $formBorderColor;
   font-size: 20px;
@@ -24,7 +24,6 @@
   text-transform: capitalize;
   overflow: auto;
 }
-
 .form-body{
   font-size: 14px;
   line-height: 24px;

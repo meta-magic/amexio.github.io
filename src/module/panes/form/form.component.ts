@@ -274,5 +274,16 @@ description : Event fired if showError msg info button is clicked
   ngAfterContentChecked(): void {
     this.validateForm();
   }
+  findformStyleClass() {
+    if (this.headeralign === 'right') {
+      return 'flex-end';
+    }
+    if (this.headeralign === 'left') {
+      return 'flex-start';
+    }
+    if (this.headeralign === 'center') {
+      return 'flex-center';
+    }
+  }
 
 }

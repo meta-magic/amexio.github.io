@@ -1,6 +1,6 @@
 <form name="fname" #amexioForm="ngForm" class="form-group" (window:resize)="onResize()">
 
-    <header #formHeader class="form-header" [style.padding]="headerPadding" *ngIf="header">
+    <header #formHeader class="form-header" [style.padding]="headerPadding" *ngIf="header"[ngClass]="findformStyleClass()">
         <ng-content select="amexio-form-header"></ng-content>
     </header>
 

@@ -19,7 +19,6 @@ description : padding for header.
 @Input() padding: string;
   constructor() {
   }
-
   ngOnInit() {
   }
 }
