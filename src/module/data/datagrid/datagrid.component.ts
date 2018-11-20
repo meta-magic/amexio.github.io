@@ -1289,8 +1289,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit {
             this.data.sort((a, b) => {
               const x = a[sortColDataIndex].toLowerCase();
               const y = b[sortColDataIndex].toLowerCase();
-              this.noGrpBySortOrder(sortOrder, x, y);
-              return 0;
+              return this.noGrpBySortOrder(sortOrder, x, y);
             });
           }
         } else if (this.sortColumn.datatype === 'number') {
@@ -1345,6 +1344,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit {
         return 1;
       }
     }
+    return 0;
   }
 
   // Sort Order if group by is true

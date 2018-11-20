@@ -1378,7 +1378,7 @@ textarea:required {
   border: 3px solid #8D021F; }
 
 .input-box-container {
-  display: block;
+  display: inline-block;
   position: relative;
   padding-left: 35px;
   padding-bottom: 10px;
@@ -5384,7 +5384,6 @@ amexio-layout-columns amexio-layout-item {
   text-align: left; }
 
 .form-header {
-  display: flex;
   padding: 10px 24px;
   border-bottom: 3px solid #8D021F;
   font-size: 20px;
