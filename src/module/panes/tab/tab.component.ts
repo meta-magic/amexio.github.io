@@ -334,6 +334,8 @@ description : If "true" add two context menus i.e close All and close Others tab
     instance.active = true;
     instance.closable = closable;
 
+    instance['tabpillinstance'] = this.target;
+
     if (instance.amexiocolor === '') {
       instance.amexiocolor = 'amexio-top-tab-black';
     } else {
@@ -460,20 +462,22 @@ description : If "true" add two context menus i.e close All and close Others tab
     const newTab: AmexioTabPillComponent[] = [];
     let index = 0;
     let tabHighlightIndex = 0;
-
-    this.tabCollection.forEach((tab) => {
+    this.tabCollection.forEach((tab: any, i: number) => {
       tab.active = false;
       if (tab.tabId === tabNode.tabId) {
         tabHighlightIndex = index;
-        let parentNodeData: any;
-        parentNodeData = document.getElementById(tab.tabId).parentNode;
-        parentNodeData.parentNode.removeChild(parentNodeData);
+        if (tab.hasOwnProperty('tabpillinstance')) {
+          tab.tabpillinstance.remove();
+        } else {
+          const removeNode = document.getElementById(tab.tabId).parentNode;
+          const parentRefNode = removeNode.parentNode;
+          parentRefNode.removeChild(removeNode);
+        }
       } else if (tab.tabId !== tabNode.tabId) {
         newTab.push(tab);
       }
       index++;
     });
-
     if (tabHighlightIndex === newTab.length) {
       tabHighlightIndex--;
     }
