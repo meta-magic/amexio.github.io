@@ -7,7 +7,9 @@ Component Selector :  <amexio-checkbox>
 Component Description : Single checkbox having boolean based values.
 */
 import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
+import { AmexioFormValidator } from './../form-validator/amexio.form.validator.component';
+
 const noop = () => {
 };
 
@@ -16,9 +18,11 @@ const noop = () => {
   templateUrl: './checkbox.component.html',
   providers: [{
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioCheckBoxComponent), multi: true,
-  }],
+  }, {
+    provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioCheckBoxComponent), multi: true,
+}],
 })
-export class AmexioCheckBoxComponent implements ControlValueAccessor, OnInit {
+export class AmexioCheckBoxComponent extends AmexioFormValidator implements ControlValueAccessor, OnInit, Validators {
   // The internal dataviews model
   private innerValue: any = '';
   // Placeholders for the callbacks which are later provided
@@ -71,13 +75,15 @@ export class AmexioCheckBoxComponent implements ControlValueAccessor, OnInit {
   description : On input event field.
   */
   @Output() input: any = new EventEmitter<any>();
-
+  @Input('name') name: string;
   isValid: boolean;
   @Output() isComponentValid: any = new EventEmitter<any>();
 
   constructor() {
+    super();
   }
   ngOnInit() {
+    this.generateName();
     this.isValid = !this.required;
     this.isComponentValid.emit(!this.required);
   }
@@ -134,4 +140,29 @@ export class AmexioCheckBoxComponent implements ControlValueAccessor, OnInit {
   checkValidity(): boolean {
     return this.isValid;
   }
+
+  public validate(c: FormControl) {
+    return ((this.required && this.value) || !this.required) ? null : {
+        jsonParseError: {
+            valid: true,
+        },
+    };
+}
+ // THIS METHOD GENERATE RANDOM STRING
+ generateName() {
+  if (!this.name && this.fieldlabel ) {
+    console.log('sassas');
+    this.name = this.fieldlabel.replace(/\s/g, '');
+  } else if ( !this.name && !this.fieldlabel) {
+    this.name = 'textinput-' + this.getRandomString();
+  }
+}
+getRandomString(): string {
+  const possibleCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  let randomString = '';
+  for (let i = 0; i < 6; i++) {
+    randomString += possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
+  }
+  return randomString;
+}
 }

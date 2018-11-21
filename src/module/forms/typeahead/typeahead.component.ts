@@ -15,13 +15,12 @@ import {
   OnChanges, OnInit, Output, QueryList, Renderer2,
   SimpleChanges, TemplateRef, ViewChild, ViewChildren,
 } from '@angular/core';
-import { NG_VALUE_ACCESSOR, NgModel} from '@angular/forms';
+import { FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators} from '@angular/forms';
+import { CommonDataService } from '../../services/data/common.data.service';
+import { DropDownListComponent } from './../../base/dropdownlist.component';
+import { ListBaseComponent } from './../../base/list.base.component';
 
 import { of } from 'rxjs';
-
-import { DropDownListComponent } from '../../base/dropdownlist.component';
-import { ListBaseComponent } from '../../base/list.base.component';
-import { CommonDataService } from '../../services/data/common.data.service';
 
 const noop = () => {
 };
@@ -33,9 +32,11 @@ const noop = () => {
     provide: NG_VALUE_ACCESSOR,
     useExisting: AmexioTypeAheadComponent,
     multi: true,
-  }],
+  }, {
+    provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioTypeAheadComponent), multi: true,
+}],
 })
-export class AmexioTypeAheadComponent extends ListBaseComponent<string> implements OnChanges, OnInit, AfterViewInit {
+export class AmexioTypeAheadComponent extends ListBaseComponent<string> implements OnChanges, OnInit, AfterViewInit, Validators {
 
   private _fieldlabel: string;
   private _haslabel: boolean;
@@ -127,6 +128,8 @@ export class AmexioTypeAheadComponent extends ListBaseComponent<string> implemen
 
   @Input('trigger-char') triggerchar: number;
 
+  @Input() name: string;
+
   @Input() disabled: boolean;
 
   @Output() onBlur: any = new EventEmitter<any>();
@@ -180,6 +183,7 @@ export class AmexioTypeAheadComponent extends ListBaseComponent<string> implemen
   }
 
   ngOnInit() {
+    this.generateName();
     this.isValid = this.allowblank;
     this.isComponentValid.emit(this.allowblank);
 
@@ -332,4 +336,28 @@ export class AmexioTypeAheadComponent extends ListBaseComponent<string> implemen
     this.maskloader = false;
   }
 
+  public validate(c: FormControl) {
+    return ((!this.allowblank && (this.value && this.value.length > 0 )) || this.allowblank) ? null : {
+        jsonParseError: {
+            valid: true,
+        },
+    };
+ }
+ // THIS METHOD GENERATE RANDOM STRING
+ generateName() {
+  if (!this.name && this.fieldlabel ) {
+    console.log('sassas');
+    this.name = this.fieldlabel.replace(/\s/g, '');
+  } else if ( !this.name && !this.fieldlabel) {
+    this.name = 'textinput-' + this.getRandomString();
+  }
+}
+getRandomString(): string {
+  const possibleCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  let randomString = '';
+  for (let i = 0; i < 6; i++) {
+    randomString += possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
+  }
+  return randomString;
+}
 }

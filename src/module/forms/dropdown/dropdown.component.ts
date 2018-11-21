@@ -14,9 +14,9 @@ import {
   Component, ContentChild, ElementRef, EventEmitter, forwardRef,
   HostListener, Input, OnInit, Output, Renderer2, TemplateRef, ViewChild,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
 import { CommonDataService } from '../../services/data/common.data.service';
-
+import { AmexioFormValidator } from './../form-validator/amexio.form.validator.component';
 const noop = () => {
 };
 
@@ -25,9 +25,11 @@ const noop = () => {
   templateUrl: './dropdown.component.html',
   providers: [{
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioDropDownComponent), multi: true,
-  }],
+  }, {
+    provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioDropDownComponent), multi: true,
+}],
 })
-export class AmexioDropDownComponent implements OnInit, ControlValueAccessor {
+export class AmexioDropDownComponent  extends AmexioFormValidator implements OnInit, ControlValueAccessor, Validators {
   /*
 Properties
 name : field-label
@@ -314,6 +316,7 @@ description : Set enable / disable popover.
   private onChangeCallback: (_: any) => void = noop;
 
   @Output() isComponentValid: any = new EventEmitter<any>();
+  @Input('name') name: string;
   @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart',
     ['$event.target'])
   public onElementOutClick(targetElement: HTMLElement) {
@@ -329,8 +332,10 @@ description : Set enable / disable popover.
     }
   }
   constructor(public dataService: CommonDataService, public element: ElementRef, public renderer: Renderer2) {
+  super();
   }
   ngOnInit() {
+    this.generateName();
     this.isValid = this.allowblank;
     this.isComponentValid.emit(this.allowblank);
     if (this.placeholder === '' || this.placeholder ) {
@@ -644,4 +649,28 @@ description : Set enable / disable popover.
   checkValidity(): boolean {
     return this.isValid;
   }
+  public validate(c: FormControl) {
+    return ((!this.allowblank && (this.value && this.value.length > 0 )) || this.allowblank) ? null : {
+        jsonParseError: {
+            valid: true,
+        },
+    };
+ }
+ // THIS METHOD GENERATE RANDOM STRING
+ generateName() {
+  if (!this.name && this.fieldlabel ) {
+    console.log('sassas');
+    this.name = this.fieldlabel.replace(/\s/g, '');
+  } else if ( !this.name && !this.fieldlabel) {
+    this.name = 'textinput-' + this.getRandomString();
+  }
+}
+getRandomString(): string {
+  const possibleCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  let randomString = '';
+  for (let i = 0; i < 6; i++) {
+    randomString += possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
+  }
+  return randomString;
+}
 }

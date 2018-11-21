@@ -1,12 +1,12 @@
 
 
-<div class="inputgroup">
+<div class="inputgroup form-group">
 
   <label *ngIf="haslabel" [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
-    {{fieldlabel}} 
+    {{fieldlabel}}
   </label>
 
-  <input type="hidden" [(ngModel)]="value" name="name" (ngModelChange)="onChange($event)">
+  <input type="hidden" [(ngModel)]="value" [name]="name" #model="ngModel" required >
   
 
   <div class="input-container">

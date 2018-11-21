@@ -1,21 +1,21 @@
-/**
- * Created by ketangote on 11/21/17.
- */
-/*
-Component Name : Amexio Checkbox Group
-Component Selector :  <amexio-checkbox-group>
-Component Description : Checkbox input component has been created to
-render N numbers of check-box based on data-set configured.
-Data-set can be configured using HTTP call OR Define fix number of check-box.
-*/
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
+import { FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
+import { ValueAccessorBase } from '../../base/value-accessor';
 import { CommonDataService } from '../../services/data/common.data.service';
+
+import { of } from 'rxjs';
+
 @Component({
   selector: 'amexio-checkbox-group',
   templateUrl: './checkbox.group.component.html',
-})
-export class AmexioCheckBoxGroupComponent implements OnInit {
-  /*
+  providers: [
+  { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioCheckBoxGroupComponent), multi: true },
+  { provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioCheckBoxGroupComponent), multi: true },
+]})
+export class AmexioCheckBoxGroupComponent extends ValueAccessorBase<any>
+  implements OnInit, Validators {
+
+      /*
   Properties
   name : horizontal
   datatype : boolean
@@ -24,7 +24,30 @@ export class AmexioCheckBoxGroupComponent implements OnInit {
   description : Set true for horizontal checkbox
   */
   @Input() horizontal: boolean;
+
   /*
+  Properties
+  name : disabled
+  datatype : boolean
+  version : 4.0 onwards
+  default : false
+  description :  If true will not react on any user events and show disable icon over
+  */
+  @Input() disabled = false;
+
+  viewdata: any;
+  _data: any;
+  selectedCheckBox: any[];
+  @Input('data')
+  set data(v: any) {
+    this._data = v;
+    this.viewdata = of(this.data);
+  }
+
+  get data() {
+    return this._data;
+  }
+/*
   Properties
   name : field-label
   datatype : string
@@ -32,12 +55,40 @@ export class AmexioCheckBoxGroupComponent implements OnInit {
   default :
   description : The label of this field
   */
-  @Input('field-label') fieldlabel: string;
+  @Input('field-label') fieldlabel: any;
+
+/*
+  Properties
+  name : display-field
+  datatype : string
+  version : 4.0 onwards
+  default :
+  description : Name of key inside response data to display on ui.
+*/
+  @Input('display-field') displayfield: any;
   /*
-   not in use
+  Properties
+  name : value-field
+  datatype : string
+  version : 4.0 onwards
+  default :
+  description : Name of key inside response data.use to send to backend
   */
-  @Input('field-name') fieldname: string;
-  /*
+  @Input('value-field') valuefield: any;
+
+    /*
+ Properties
+ name : required
+ datatype : boolean
+ version : 4.1.7 onwards
+ default : false
+ description :  property to set if manditory
+ */
+  @Input('required') required: false;
+
+  @Input('name') name: string;
+
+   /*
   Properties
   name : data-reader
   datatype : string
@@ -65,130 +116,26 @@ export class AmexioCheckBoxGroupComponent implements OnInit {
   */
   @Input('http-url') httpurl: string;
 
-  /*
-Properties
-name : display-field
-datatype : string
-version : 4.0 onwards
-default :
-description : Name of key inside response data to display on ui.
-*/
-  @Input('display-field') displayfield: string;
-  /*
-  Properties
-  name : value-field
-  datatype : string
-  version : 4.0 onwards
-  default :
-  description : Name of key inside response data.use to send to backend
-  */
-  @Input('value-field') valuefield: string;
-  /* not in use */
-  @Input() search: boolean;
-  /*
-  Properties
-  name : disabled
-  datatype : boolean
-  version : 4.0 onwards
-  default : false
-  description :  If true will not react on any user events and show disable icon over
-  */
-  @Input() disabled = false;
-  /*
-  Properties
-  name : data
-  datatype : any
-  version : 4.0 onwards
-  default :
-  description : Local data for checkboxGroup.
-  */
-  _data: any;
-  componentLoaded: boolean;
-  @Input('data')
-  set data(value: any) {
-    this._data = value;
-    if (this.componentLoaded) {
-      this.setData(this._data);
-    }
-  }
-  get data(): any {
-    return this._data;
+  @Output() onSelection: any = new EventEmitter<any>();
+
+  private _model: any;
+
+  constructor(private httpService: CommonDataService) {
+    super();
   }
 
-  /*
- Properties
- name : required
- datatype : boolean
- version : 4.1.7 onwards
- default : false
- description :  property to set if manditory
- */
-  @Input() required = false;
-  mask = true;
-  /*
-  Events
-  name : onSelection
-  datatype : any
-  version : none
-  default :
-  description : fire when check box click
-  */
-  @Output() onSelection: any = new EventEmitter<any>();
-  calculatedColSize: any;
-  isValid: boolean;
-  @Output() isComponentValid: any = new EventEmitter<any>();
-  elementId: string;
-  responseData: any[];
-  viewData: any[];
-  textValue: string;
-  selectedCheckBox: any[];
-  previousValue: any;
-  constructor(private amxHttp: CommonDataService) {
-    this.selectedCheckBox = [];
-  }
   ngOnInit() {
-    this.isValid = !this.required;
-    this.isComponentValid.emit(!this.required);
+    let reponseData: any;
     if (this.httpmethod && this.httpurl) {
-      this.amxHttp.fetchData(this.httpurl, this.httpmethod).subscribe((response) => {
-        this.responseData = response;
+      this.httpService.fetchData(this.httpurl, this.httpmethod).subscribe((response) => {
+        reponseData = response;
       }, (error) => {
       }, () => {
-        this.setData(this.responseData);
+        this.data = this.getResponseData(reponseData);
       });
-    } else if (this.data) {
-      this.previousValue = JSON.parse(JSON.stringify(this.data));
-      this.setData(this.data);
+    } else if (this.data && this.datareader) {
+      this.data = this.getResponseData(this.data);
     }
-    if (this.required) {
-      this.checkDefaultValidation();
-    }
-    this.componentLoaded = true;
-  }
-  checkDefaultValidation() {
-    this.viewData.forEach((opt: any) => {
-      if (opt.hasOwnProperty('checked') && opt.checked) {
-        this.isValid = true;
-        this.isComponentValid.emit(true);
-        return;
-      }
-    });
-  }
-
-  setData(httpResponse: any) {
-    this.responseData = this.getResponseData(httpResponse);
-    this.viewData = this.getResponseData(httpResponse);
-    const viewDataWithIdArray: any[] = [];
-    this.viewData.forEach((viewDataObject: any) => {
-      viewDataObject.id = 'checkbox' + Math.floor(Math.random() * 90000) + 10000;
-      if (!viewDataObject.hasOwnProperty('disabled')) {
-        viewDataObject.disabled = false;
-      }
-      viewDataWithIdArray.push(viewDataObject);
-    });
-    this.viewData = [];
-    this.viewData = viewDataWithIdArray;
-    this.mask = false;
   }
   getResponseData(httpResponse: any) {
     let responsedata = httpResponse;
@@ -202,60 +149,58 @@ description : Name of key inside response data to display on ui.
     }
     return responsedata;
   }
-  filterData(event: any) {
-    if (this.textValue.length > 0) {
-      this.viewData = [];
-      for (const vd of this.responseData) {
-        const displayData = this.responseData[vd][this.displayfield];
-        if (displayData.toLowerCase().startsWith(this.textValue)) {
-          this.viewData.push(this.responseData[vd]);
+
+  contains(value: any): boolean {
+    if ( this._model instanceof Array) {
+      this._model.forEach((obj) => {
+         if (obj[this.displayfield] === value[this.displayfield]) {
+          return true;
         }
-      }
-    } else {
-      this.viewData = this.responseData;
+      });
     }
+    return false;
   }
 
-  setSelectedCheckBox(rowData: any, event: any) {
+   add(value: any) {
+    if (!this.contains(value)) {
+      if (this._model instanceof Array) {
+        this._model.push(value);
+      } else {
+        this._model = [value];
+      }
+      this.onChangeCallback(this._model);
+    }
+    this.emitCheckboxes(this._model);
+  }
+
+   remove(value: any) {
+    const index = this._model.indexOf(value);
+    if (!this._model || index < 0) {
+      return;
+    }
+    this._model.splice(index, 1);
+    this.onChangeCallback(this._model);
+    this.emitCheckboxes(this._model);
+  }
+  // THIS METHOD EMMIT SELECTED CHECKBOXES
+  emitCheckboxes(selectedCheckBoxes: any[]) {
     this.selectedCheckBox = [];
-    if (rowData.hasOwnProperty('disabled') && !rowData.disabled) {
-      rowData[this.valuefield] = !rowData[this.valuefield];
-      this.viewData.forEach((opt: any) => {
-        console.log(opt[this.valuefield]);
-        if (opt[this.valuefield]) {
-          this.selectedCheckBox.push(opt);
-        }
+    if (selectedCheckBoxes && selectedCheckBoxes.length > 0) {
+      selectedCheckBoxes.forEach((obj) => {
+        obj.checked = true;
+        this.selectedCheckBox.push(obj);
       });
-      this.emitSelectedRows();
     }
+    this.onSelection.emit(this.selectedCheckBox);
   }
 
-  emitSelectedRows() {
-    const sRows = [];
-    const cloneSelectedChecks = JSON.parse(JSON.stringify(this.selectedCheckBox));
-    for (const sr of cloneSelectedChecks) {
-      if (cloneSelectedChecks[sr]) {
-        // remove id from selected value
-        delete cloneSelectedChecks[sr].id;
-        sRows.push(cloneSelectedChecks[sr]);
-      }
-    }
-    if (this.selectedCheckBox.length > 0 && this.required) {
-      let isValid = false;
-      this.selectedCheckBox.forEach((c) => {
-        if (c.checked) {
-          isValid = true;
-        }
-      });
-      this.isValid = isValid;
-      this.isComponentValid.emit(isValid);
-    }
-    this.onSelection.emit(sRows);
+  public validate(c: FormControl) {
+    return (this.required && (this._model && this._model.length > 0)) || !this.required
+      ? null
+      : {
+          jsonParseError: {
+            valid: true,
+          },
+        };
   }
-
-  // THIS MEHTOD CHECK INPUT IS VALID OR NOT
-  checkValidity(): boolean {
-    return this.isValid;
-  }
-
 }

@@ -1,11 +1,12 @@
-<div class="inputgroup">
+<div class="inputgroup form-group">
   <label *ngIf="haslabel" [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
         {{fieldlabel}}
   </label>
 
   <input type="number" class="input-control" 
          #ref 
-         #inp="ngModel" 
+         #inp="ngModel"
+         [name]="name" 
          [(ngModel)]="value" 
          [ngClass]="componentClass" 
          (blur)="onBlur(inp)" 

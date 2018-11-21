@@ -5,8 +5,10 @@
  */
 import { ChangeDetectorRef, Component, ElementRef,
 EventEmitter, forwardRef, Input, OnInit, Output, Renderer2 } from '@angular/core';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
 import { ListBaseDatepickerComponent } from '../../base/list.base.datepicker.component';
+import { AmexioFormValidator } from './../form-validator/amexio.form.validator.component';
+
 const noop = () => {
 };
 
@@ -17,9 +19,11 @@ const noop = () => {
   `],
   providers: [{
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioDateTimePickerComponent), multi: true,
-  }],
+  }, {
+    provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioDateTimePickerComponent), multi: true,
+}],
 })
-export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<string> implements OnInit {
+export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<string> implements OnInit, Validators {
   /*
    Properties
    name : date-format
@@ -1027,4 +1031,12 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
   checkValidity(): boolean {
     return this.isValid;
   }
+
+  public validate(c: FormControl) {
+    return (this.value || !this.required) ? null : {
+        jsonParseError: {
+            valid: true,
+        },
+    };
+}
 }

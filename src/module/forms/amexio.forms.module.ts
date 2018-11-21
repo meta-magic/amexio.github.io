@@ -12,6 +12,7 @@ import { AmexioButtonDropDownItemComponent } from './button-dropdown/button.drop
 import { AmexioSpiltButtonDropdownComponent } from './button-dropdown/split.button.dropdown';
 import { AmexioButtonGroupComponent } from './buttongroup/button.group.component';
 import { AmexioButtonComponent } from './buttons/button.component';
+import { CheckboxComponent } from './checkbox-group/checkbox.component';
 import { AmexioCheckBoxGroupComponent } from './checkbox-group/checkbox.group.component';
 import { AmexioCheckBoxComponent } from './checkbox/checkbox.component';
 import { AmexioChipComponent } from './chip/chip.component';
@@ -57,6 +58,8 @@ import { LoadRecaptchaService } from './recaptcha/load.recaptcha.service';
 export * from '../services/data/common.data.service';
 export * from '../services/icon/icon.service';
 export * from './recaptcha/load.recaptcha.service';
+export * from './buttons/button.component';
+export * from './buttongroup/button.group.component';
 
 const FORM_COMPONENTS = [
   AmexioTextInputComponent,
@@ -77,6 +80,7 @@ const FORM_COMPONENTS = [
   AmexioSpiltButtonDropdownComponent,
   AmexioButtonDropDownItemComponent,
   AmexioCheckBoxGroupComponent,
+  CheckboxComponent,
   AmexioFormIconComponent,
   AmexioSliderComponent,
   AmexioTagsInputComponent,

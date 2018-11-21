@@ -1,5 +1,5 @@
 
-<div class="inputgroup ">
+<div class="inputgroup form-group">
 
   <label *ngIf="hasLabel" [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
     {{fieldlabel}}
@@ -13,7 +13,7 @@
          (focus)="onFocus()"
          (input)="onInput(inp)"
          (change)="onChangeEv()"
-         name="name"
+         [name]="name"
          [pattern]="regEx"
          #ref
          [attr.placeholder]="placeholder"

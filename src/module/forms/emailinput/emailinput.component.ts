@@ -4,7 +4,8 @@
  Component Description : Email input field
  */
 import { Component, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
+import { AmexioFormValidator } from './../form-validator/amexio.form.validator.component';
 
 const noop = () => {
 };
@@ -13,9 +14,11 @@ const noop = () => {
   templateUrl: './emailinput.component.html',
   providers: [{
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioEmailInputComponent), multi: true,
-  }],
+  }, {
+    provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioEmailInputComponent), multi: true,
+}],
 })
-export class AmexioEmailInputComponent implements ControlValueAccessor, OnInit {
+export class AmexioEmailInputComponent extends AmexioFormValidator implements ControlValueAccessor, OnInit, Validators {
 
   /*
    Properties
@@ -196,11 +199,13 @@ export class AmexioEmailInputComponent implements ControlValueAccessor, OnInit {
  private onTouchedCallback: () => void = noop;
  private onChangeCallback: (_: any) => void = noop;
   isValid: boolean;
-
+  @Input('name') name: string;
   constructor() {
+    super();
     this.showToolTip = false;
   }
   ngOnInit() {
+    this.generateName();
     this.isComponentValid.emit(this.allowblank);
   }
   // get accessor
@@ -292,4 +297,29 @@ export class AmexioEmailInputComponent implements ControlValueAccessor, OnInit {
     return (this.inputRef && this.inputRef.nativeElement &&
       this.inputRef.nativeElement.validity && this.inputRef.nativeElement.validity.valid);
   }
+
+  public validate(c: FormControl) {
+    return ((!this.allowblank && this.emailpatter.test(this.value)) || this.allowblank) ? null : {
+        jsonParseError: {
+            valid: true,
+        },
+    };
+}
+ // THIS METHOD GENERATE RANDOM STRING
+ generateName() {
+  if (!this.name && this.fieldlabel ) {
+    console.log('sassas');
+    this.name = this.fieldlabel.replace(/\s/g, '');
+  } else if ( !this.name && !this.fieldlabel) {
+    this.name = 'textinput-' + this.getRandomString();
+  }
+}
+getRandomString(): string {
+  const possibleCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  let randomString = '';
+  for (let i = 0; i < 6; i++) {
+    randomString += possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
+  }
+  return randomString;
+}
 }

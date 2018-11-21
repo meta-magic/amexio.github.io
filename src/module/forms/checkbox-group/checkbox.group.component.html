@@ -1,34 +1,18 @@
-<div style="height: 300px;" *ngIf="mask">
+<!-- <div style="height: 300px;" *ngIf="mask">
     <div class="spinner"></div>
-</div>
-<div class="inputgroup " *ngIf="!mask">
+</div> -->
+<div class="inputgroup form-group">
     <div *ngIf="fieldlabel">
         <label>{{fieldlabel}}</label>
     </div>
 
-    <ng-container *ngIf="horizontal">
-        <ng-container *ngFor="let row of viewData">
+    <div *ngIf="horizontal" style="display: inline-flex; flex-direction :row;">
+        <checkbox *ngFor="let data of viewdata | async" [checked]="data.checked" [value]="data" [disabled]="data?.disabled || disabled" [label]="data[displayfield]">
+        </checkbox>
+    </div>
 
-            <label class="input-box-container" [ngClass]="{'disable-component' : row?.disabled || disabled}">{{row[displayfield]}}
-        <input type="checkbox" *ngIf="row[valuefield]" [ngClass]="{'checkbox-disable' : disabled}" [required]="required" checked="checked" (click)="setSelectedCheckBox(row, $event)">
-        <input type="checkbox" *ngIf="!row[valuefield]" [ngClass]="{'checkbox-disable' : disabled}" [required]="required" (click)="setSelectedCheckBox(row, $event)">
-        <span class="input-box-checkbox-label"></span>
-      </label>
-
-        </ng-container>
-    </ng-container>
-
-    <ng-container *ngIf="!horizontal">
-        <ng-container *ngFor="let row of viewData">
-            <div [ngClass]="{'disable-component' : row?.disabled || disabled}">
-                <label class="input-box-container">{{row[displayfield]}}
-          <input type="checkbox" *ngIf="row[valuefield]" [ngClass]="{'checkbox-disable' : disabled}" [required]="required" checked="checked" (click)="setSelectedCheckBox(row, $event)">
-          <input type="checkbox" *ngIf="!row[valuefield]" [ngClass]="{'checkbox-disable' : disabled}" [required]="required" (click)="setSelectedCheckBox(row, $event)">
-          <span class="input-box-checkbox-label"></span>
-        </label>
-            </div>
-
-        </ng-container>
-    </ng-container>
-
+    <div *ngIf="!horizontal" style="display: inline-flex;flex-direction :column;">
+        <checkbox *ngFor="let data of viewdata | async" [checked]="data.checked" [value]="data" [disabled]="data?.disabled || disabled" [label]="data[displayfield]">
+        </checkbox>
+    </div>
 </div>

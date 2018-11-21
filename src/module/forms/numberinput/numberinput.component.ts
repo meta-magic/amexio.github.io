@@ -7,7 +7,8 @@
 */
 import {Component, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild,
  } from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
+import { AmexioFormValidator } from './../form-validator/amexio.form.validator.component';
 
 const noop = () => {
 };
@@ -17,9 +18,11 @@ const noop = () => {
   templateUrl: './numberinput.component.html',
   providers: [{
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioNumberInputComponent), multi: true,
-  }],
+  }, {
+    provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioNumberInputComponent), multi: true,
+}],
 })
-export class AmexioNumberInputComponent implements OnInit, ControlValueAccessor {
+export class AmexioNumberInputComponent extends AmexioFormValidator implements OnInit, ControlValueAccessor, Validators {
 
    /*
 Properties
@@ -204,6 +207,8 @@ description : Flag to set label
 */
   @Input('has-label') haslabel = true;
 
+  @Input('name') name: string;
+
   _pattern: string;
 
   get pattern(): string {
@@ -244,6 +249,7 @@ description : Set enable / disable popover.
   @Input('enable-popover') enablepopover: boolean;
 
   constructor() {
+    super();
     this.showToolTip = false;
   }
 
@@ -269,6 +275,7 @@ description : Set enable / disable popover.
   }
 
   ngOnInit() {
+    this.generateName();
     this.isComponentValid.emit(this.allowblank);
   }
 
@@ -323,4 +330,33 @@ description : Set enable / disable popover.
     return (this.inputRef && this.inputRef.nativeElement &&
       this.inputRef.nativeElement.validity && this.inputRef.nativeElement.validity.valid);
   }
+
+  isFieldValidate(): boolean {
+    return this.value && (this.value > this.minvalue && this.value < this.maxvalue);
+  }
+
+  public validate(c: FormControl) {
+    return ((!this.allowblank && this.isFieldValidate()) || this.allowblank) ? null : {
+        jsonParseError: {
+            valid: true,
+        },
+    };
+}
+// THIS METHOD GENERATE RANDOM STRING
+generateName() {
+  if (!this.name && this.fieldlabel ) {
+    console.log('sassas');
+    this.name = this.fieldlabel.replace(/\s/g, '');
+  } else if ( !this.name && !this.fieldlabel) {
+    this.name = 'textinput-' + this.getRandomString();
+  }
+}
+getRandomString(): string {
+  const possibleCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  let randomString = '';
+  for (let i = 0; i < 6; i++) {
+    randomString += possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
+  }
+  return randomString;
+}
 }

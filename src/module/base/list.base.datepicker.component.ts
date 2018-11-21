@@ -1,7 +1,8 @@
 import { ChangeDetectorRef, ElementRef, Renderer2 } from '@angular/core';
+import { AmexioFormValidator } from '../forms/form-validator/amexio.form.validator.component';
 import { BaseInput } from './base.input.component';
 
-export class  ListBaseDatepickerComponent<T> {
+export class  ListBaseDatepickerComponent<T> extends AmexioFormValidator {
 
     self = false;
     itemClick = false;
@@ -9,7 +10,8 @@ export class  ListBaseDatepickerComponent<T> {
     documentClickListener: any;
 
     constructor(private renderer: Renderer2, public element: ElementRef, private cd: ChangeDetectorRef) {
-         this.hide();
+      super();
+      this.hide();
     }
 
     focus(event: any) {
