@@ -8,7 +8,7 @@
  Component Description : Tab component for Angular Apps with multiple configurations such as Tab, Icon support,
  Closable tabs, Amexio-color, Tab Position at top/bottom/ Tab
 
-*/
+ */
 import {
   AfterContentInit,
   AfterViewInit,
@@ -60,73 +60,73 @@ export const BOTTOM_COMPONENT_CLASS_MAP: any = {
 export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnInit {
 
   /*
-Properties
-name : closable
-datatype : boolean
-version : 4.0 onwards
-default : false
-description : This flag will make tab closable.
-*/
+   Properties
+   name : closable
+   datatype : boolean
+   version : 4.0 onwards
+   default : false
+   description : This flag will make tab closable.
+   */
   @Input() closable: boolean;
 
   /*
-  Properties
-  name : header-align
-  datatype : string
-  version : 4.1.9 onwards
-  default : left
-  description : specify position of tabs(left/right/center).
-  */
+   Properties
+   name : header-align
+   datatype : string
+   version : 4.1.9 onwards
+   default : left
+   description : specify position of tabs(left/right/center).
+   */
   @Input('header-align') headeralign: string;
 
   /*
-  Properties
-  name : action
-  datatype : string
-  version : 4.1.9 onwards
-  default : left
-  description : This flag ensures the action component.
-  */
+   Properties
+   name : action
+   datatype : string
+   version : 4.1.9 onwards
+   default : left
+   description : This flag ensures the action component.
+   */
   @Input() action: boolean;
 
   /*
-  Properties
-  name : action-type-align
-  datatype : string
-  version : 4.1.9 onwards
-  default : left
-  description : specify position of action type(left/right).
-  */
+   Properties
+   name : action-type-align
+   datatype : string
+   version : 4.1.9 onwards
+   default : left
+   description : specify position of action type(left/right).
+   */
   @Input('action-type-align') typeActionAlign: string;
 
   /*
-  Properties
-  name : divide-header-equally
-  datatype : boolean
-  version : 4.1.9 onwards
-  default : false
-  description : If "true" divides all tab equally.
-  */
+   Properties
+   name : divide-header-equally
+   datatype : boolean
+   version : 4.1.9 onwards
+   default : false
+   description : If "true" divides all tab equally.
+   */
   @Input('divide-header-equally') fullPageTabs: boolean;
 
   /*
-  Properties
-  name :tab-position
-  datatype : string
-  version : 4.1.9 onwards
-  default : top
-  description : Position of tab can be (top/bottom)
-  */
+   Properties
+   name :tab-position
+   datatype : string
+   version : 4.1.9 onwards
+   default : top
+   description : Position of tab can be (top/bottom)
+   */
   @Input('tab-position') tabPosition: string;
 
   /*
-  Properties
-  name : header
-  datatype : string
-  version : 4.1.9 onwards
-  default : none
-  description : Header for Tab.
-  */
+   Properties
+   name : header
+   datatype : string
+   version : 4.1.9 onwards
+   default : none
+   description : Header for Tab.
+   */
   @Input() header: string;
 
   height: any;
@@ -134,43 +134,43 @@ description : This flag will make tab closable.
   minHeight: any;
 
   /*
-  Properties
-  name : body-height
-  datatype :   any
-  version : 4.2 onwards
-  default :
-  description : Provides form body height.
-  */
+   Properties
+   name : body-height
+   datatype :   any
+   version : 4.2 onwards
+   default :
+   description : Provides form body height.
+   */
   @Input('body-height') bodyheight: any;
 
   /*
-Properties
-name :  context-menu
-datatype : string
-version : 5.0.1 onwards
-default :
-description : Context Menu provides the list of menus on right click.
-*/
+   Properties
+   name :  context-menu
+   datatype : string
+   version : 5.0.1 onwards
+   default :
+   description : Context Menu provides the list of menus on right click.
+   */
   @Input('context-menu') contextmenu: any[] = [];
 
   /*
-Properties
-name : default-context-menu
-datatype : boolean
-version : 5.0.1 onwards
-default : false
-description : If "true" add two context menus i.e close All and close Others tabs.
-*/
+   Properties
+   name : default-context-menu
+   datatype : boolean
+   version : 5.0.1 onwards
+   default : false
+   description : If "true" add two context menus i.e close All and close Others tabs.
+   */
   @Input('default-context-menu') defaultContextMenu: boolean;
 
   /*
-  Events
-  name : rightClick
-  datatype : none
-  version : 5.0.1
-  default : none
-  description : It will gives you row clicked data.
-  */
+   Events
+   name : rightClick
+   datatype : none
+   version : 5.0.1
+   default : none
+   description : It will gives you row clicked data.
+   */
   @Output() rightClick: any = new EventEmitter<any>();
 
   @ViewChild('tab', { read: ElementRef }) public tabs: ElementRef;
@@ -187,13 +187,13 @@ description : If "true" add two context menus i.e close All and close Others tab
   @ContentChildren(AmexioTabActionComponent, { descendants: true }) queryAction: QueryList<AmexioTabActionComponent>;
 
   /*
-  Events
-  name : onClick
-  datatype : none
-  version : none
-  default : none
-  description : Callback to invoke on activated tab event.
-  */
+   Events
+   name : onClick
+   datatype : none
+   version : none
+   default : none
+   description : Callback to invoke on activated tab event.
+   */
   @Output() onClick: any = new EventEmitter<any>();
 
   /* for internal purpose .*/
@@ -241,6 +241,12 @@ description : If "true" add two context menus i.e close All and close Others tab
 
   contextStyle: any;
 
+  dummyArray: any[] = [];
+
+  tabPositionClass = '';
+
+  componentId = '';
+
   map = new Map<any, any>();
   constructor(public render: Renderer2, private componentFactoryResolver: ComponentFactoryResolver, viewContainerRef: ViewContainerRef) {
     this.headeralign = 'left';
@@ -251,6 +257,7 @@ description : If "true" add two context menus i.e close All and close Others tab
   }
   ngOnInit() {
     this.componentLoaded = true;
+    this.componentId = Math.floor(Math.random() * 90000) + 10000 + '_tabc';
   }
 
   updateTabComponent() {
@@ -271,6 +278,7 @@ description : If "true" add two context menus i.e close All and close Others tab
       this.tabPreviewData = JSON.parse(JSON.stringify(this.tabLocalData));
       this.tabCollection = this.tabLocalData;
     }
+    this.tabPositionClass = this.findTabStyleClass();
   }
 
   ngAfterViewInit() {
@@ -320,6 +328,8 @@ description : If "true" add two context menus i.e close All and close Others tab
       this.actionComp[0].checkActionComponent();
     }
 
+    this.tabPositionClass =  this.findTabStyleClass();
+
   }
 
   addDynamicTab(title: string, amexiocolor: string, closable: boolean, component: any) {
@@ -333,9 +343,7 @@ description : If "true" add two context menus i.e close All and close Others tab
     instance.title = title;
     instance.active = true;
     instance.closable = closable;
-
     instance['tabpillinstance'] = this.target;
-
     if (instance.amexiocolor === '') {
       instance.amexiocolor = 'amexio-top-tab-black';
     } else {
@@ -348,9 +356,10 @@ description : If "true" add two context menus i.e close All and close Others tab
     const dynCmp = tp.instance.target.createComponent(dynCF);
 
     // Push new tab and select it.
+    this.dummyArray.push(tp);
     this.tabCollection.push(tp.instance);
     this.selectTab(tp.instance);
-
+    this.adjustWidth();
     return dynCmp.instance;
   }
 
@@ -363,49 +372,140 @@ description : If "true" add two context menus i.e close All and close Others tab
     });
   }
 
-  // Method to close particular tabs
   closeTabs(data: any) {
+    const tabList: any[] = [];
     this.tabCollection.forEach((tabs) => {
+      tabs.active = false;
       data.forEach((opt: any) => {
         if (opt.toLowerCase() !== tabs.title.toLowerCase() && (tabs.closable === true || this.closable === true)) {
           this.closeTab(tabs);
+        } else {
+          tabList.push(tabs);
+          this.asignTabPillClass(tabs);
         }
       });
+
     });
+    tabList[tabList.length - 1].active = true;
+    this.asignTabPillClass(tabList[tabList.length - 1]);
+
   }
 
   // Method to set active tab on the basis of tab sequence or tab title
   setActiveTab(input: any) {
     let flag = false;
     if (typeof input === 'string') {
-      this.tabCollection.forEach((tabs) => {
+      this.tabCollection.forEach((tabs: any) => {
+        tabs.tabPillClass = '';
         if (input.trim().toLowerCase() === tabs.title.trim().toLowerCase()) {
           tabs.active = true;
           flag = true;
         } else {
           tabs.active = false;
         }
+        this.asignTabPillClass(tabs);
       });
     } else if (typeof input === 'number') {
       this.tabCollection.forEach((tabs: any, index: number) => {
+        tabs.tabPillClass = '';
         if (index + 1 === input) {
           tabs.active = true;
           flag = true;
         } else {
           tabs.active = false;
+
         }
+        this.asignTabPillClass(tabs);
       });
     }
     return flag;
 
   }
 
-  selectTab(tab: AmexioTabPillComponent) {
-    // deactivate all tabs
-    this.tabCollection.forEach((tab1: any) => (tab1.active = false));
-    tab.active = true;
+  setDisableTabs(disabledTabInput: any[]) {
+    const flag = false;
+    if (disabledTabInput.length > 0) {
+      disabledTabInput.forEach((ele: any) => {
+        if (typeof ele === 'string') {
+      this.disableTabByString(flag, ele);
+        } else if (typeof ele === 'number') {
+        this.disableTabByNumber(flag, ele);
+        }
+      });
+    }
+    return flag;
   }
 
+  disableTabByString(flag: boolean, ele: string) {
+    this.tabCollection.forEach((tabs: any) => {
+      tabs.tabPillClass = '';
+      if (ele.trim().toLowerCase() === tabs.title.trim().toLowerCase()) {
+        tabs.disabled = true;
+        flag = true;
+      }
+      this.asignTabPillClass(tabs);
+    });
+  }
+
+  disableTabByNumber(flag: boolean, ele: number) {
+    this.tabCollection.forEach((tabs: any, index: number) => {
+      tabs.tabPillClass = '';
+      if (index + 1 === ele) {
+        tabs.active = true;
+        flag = true;
+      } else {
+        tabs.active = false;
+      }
+      this.asignTabPillClass(tabs);
+    });
+  }
+  setEnableTabs(disabledTabInput: any[]) {
+    const flag = false;
+    if (disabledTabInput.length > 0) {
+      disabledTabInput.forEach((ele: any) => {
+        if (typeof ele === 'string') {
+        this.enableTabByString(flag, ele);
+        } else if (typeof ele === 'number') {
+          this.enableTabByNumber(flag, ele);
+        }
+      });
+    }
+
+    return flag;
+  }
+
+  enableTabByString(flag: boolean, ele: string) {
+    this.tabCollection.forEach((tabs: any) => {
+      tabs.tabPillClass = '';
+      if (ele.trim().toLowerCase() === tabs.title.trim().toLowerCase()) {
+        tabs.disabled = false;
+        flag = true;
+      }
+      this.asignTabPillClass(tabs);
+    });
+  }
+
+  enableTabByNumber(flag: boolean, ele: number) {
+    this.tabCollection.forEach((tabs: any, index: number) => {
+      tabs.tabPillClass = '';
+      if (index + 1 === ele) {
+        tabs.disabled = false;
+        flag = true;
+      }
+      this.asignTabPillClass(tabs);
+    });
+  }
+
+  selectTab(tab: AmexioTabPillComponent) {
+    // deactivate all tabs
+    this.tabCollection.forEach((tab1: any) => {
+      tab1.active = false;
+    });
+    tab.active = true;
+    this.tabCollection.forEach((tab1: any) => {
+      this.asignTabPillClass(tab1);
+    });
+  }
   tabNodeProperties() {
 
     const tabWidth = this.tabCollection.length;
@@ -422,6 +522,7 @@ description : If "true" add two context menus i.e close All and close Others tab
           this.tabCollection[i].closable = false;
         }
       }
+      this.asignTabPillClass(this.tabCollection[i]);
     }
   }
 
@@ -430,11 +531,16 @@ description : If "true" add two context menus i.e close All and close Others tab
       for (const i of this.tabCollection) {
         if (i === tab) {
           i['active'] = true;
+          this.asignTabPillClass(tab);
           this.onClick.emit(tab);
         } else {
           i['active'] = false;
+          i['tabPillClass'] = '';
         }
       }
+      this.tabCollection.forEach((tab1: any) => {
+        this.asignTabPillClass(tab1);
+      });
     }
   }
 
@@ -462,12 +568,13 @@ description : If "true" add two context menus i.e close All and close Others tab
     const newTab: AmexioTabPillComponent[] = [];
     let index = 0;
     let tabHighlightIndex = 0;
+
     this.tabCollection.forEach((tab: any, i: number) => {
       tab.active = false;
       if (tab.tabId === tabNode.tabId) {
         tabHighlightIndex = index;
         if (tab.hasOwnProperty('tabpillinstance')) {
-          tab.tabpillinstance.remove();
+          tab.target.remove();
         } else {
           const removeNode = document.getElementById(tab.tabId).parentNode;
           const parentRefNode = removeNode.parentNode;
@@ -478,6 +585,7 @@ description : If "true" add two context menus i.e close All and close Others tab
       }
       index++;
     });
+
     if (tabHighlightIndex === newTab.length) {
       tabHighlightIndex--;
     }
@@ -494,7 +602,6 @@ description : If "true" add two context menus i.e close All and close Others tab
       newTab[0].closable = false;
     }
   }
-
   activateTab(tabId: number) {
     if (tabId !== null) {
       this.tabCollection.forEach((tab) => {
@@ -502,25 +609,27 @@ description : If "true" add two context menus i.e close All and close Others tab
         if (tab.tabId === tabId) {
           tab.active = true;
         }
+        this.asignTabPillClass(tab);
       });
     }
   }
 
-  findStyleClass(tabData: any): string {
+  asignTabPillClass(tabData: any) {
+    tabData.tabPillClass = '';
     if ((!tabData.amexiocolor || tabData.amexiocolor === '') && tabData.active && (this.tabPosition === 'top')) {
-      return 'activetab';
+      tabData.tabPillClass = 'activetab';
     }
     if ((!tabData.amexiocolor || tabData.amexiocolor === '') && (this.tabPosition === 'bottom') && tabData.active) {
-      return 'bottomActivetab';
+      tabData.tabPillClass = 'bottomActivetab';
     }
     if (tabData.disabled) {
-      return 'disabled-tab';
+      tabData.tabPillClass = 'disabled-tab';
     }
     if ((tabData.amexiocolor !== '') && (this.tabPosition === 'top') && tabData.active) {
-      return 'activecolortab';
+      tabData.tabPillClass = 'activecolortab';
     }
     if ((tabData.amexiocolor !== '') && (this.tabPosition === 'bottom') && tabData.active) {
-      return 'activebottomcolortab';
+      tabData.tabPillClass = 'activebottomcolortab';
     }
   }
 
@@ -648,12 +757,17 @@ description : If "true" add two context menus i.e close All and close Others tab
 
   @HostListener('document:click')
   onWindowClick() {
-    this.contextMenuFlag = false;
+    this.setContextMenuFlag();
   }
 
   @HostListener('document:scroll')
   onscroll() {
-    this.contextMenuFlag = false;
+    this.setContextMenuFlag();
   }
 
+  setContextMenuFlag() {
+    if (this.contextMenuFlag) {
+      this.contextMenuFlag = false;
+    }
+  }
 }
