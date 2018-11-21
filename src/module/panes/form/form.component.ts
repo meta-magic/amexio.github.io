@@ -217,7 +217,9 @@ description : Event fired if showError msg info button is clicked
   ngAfterViewInit() {
     const ngContentModels = this.models.toArray();
     ngContentModels.forEach((model) => {
-      model.name = model.valueAccessor['name'];
+      if (!model.name || model.name === null) {
+        model.name = model.valueAccessor['name'];
+      }
       this.form.addControl(model);
     });
     this.btns.toArray().forEach((btnCom) => {
