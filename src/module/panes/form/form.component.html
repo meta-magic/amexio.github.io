@@ -1,6 +1,6 @@
-<form name="fname" #amexioForm="ngForm" class="form-group" (window:resize)="onResize()">
+<form name="fname" #amexioForm="ngForm" class="form-container form-group" (window:resize)="onResize()">
 
-    <header #formHeader class="form-header" [style.padding]="headerPadding" *ngIf="header"[ngClass]="findformStyleClass()">
+    <header #formHeader class="form-header" [style.padding]="headerPadding" *ngIf="header" [ngClass]="findformStyleClass()">
         <ng-content select="amexio-form-header"></ng-content>
     </header>
 
@@ -12,8 +12,7 @@
         <ng-content select="amexio-form-action"></ng-content>
         <br/>
         <div *ngIf="!amexioForm.form.valid" style="padding: 5px;">
-                <button class="button" [attr.title]="'click'" (click)="showErrors($event)"
-                [ngClass]="'button-warning button-small button-round'">
+            <button class="button" [attr.title]="'click'" (click)="showErrors($event)" [ngClass]="'button-warning button-small button-round'">
                         <span class="button-text">
                           <span style="padding-right: 5px;" *ngIf="icon">
                             <amexio-form-icon [customclass]="icon" >
@@ -25,23 +24,17 @@
                           ?
                         </span>
                 </button>
-                <amexio-dialogue [show-dialogue]="showDialogue"
-                  [custom]="true" [content-align]="'left'"
-                  [closable] = "false"
-                  [title]="'Invalid Fields'"
-                                [type]="'confirm'">
-      
-                  <amexio-body *ngFor="let msg of errorMsgArray let index=index">
+            <amexio-dialogue [show-dialogue]="showDialogue" [custom]="true" [content-align]="'left'" [closable]="false" [title]="'Invalid Fields'" [type]="'confirm'">
+
+                <amexio-body *ngFor="let msg of errorMsgArray let index=index">
                     <amexio-label>{{index+1}}) {{msg.label}}</amexio-label><br>
-                  </amexio-body>
-      
-                    <amexio-action>
-                        <amexio-button type="primary"
-                                        (onClick)="closeDialogue()"
-                                        [label]="'OK'">
-                        </amexio-button>
-                      </amexio-action>
-                </amexio-dialogue>
-            </div>
+                </amexio-body>
+
+                <amexio-action>
+                    <amexio-button type="primary" (onClick)="closeDialogue()" [label]="'OK'">
+                    </amexio-button>
+                </amexio-action>
+            </amexio-dialogue>
+        </div>
     </footer>
 </form>
