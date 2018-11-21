@@ -3,7 +3,7 @@ import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'amexio-form-header', template: `
-    <ng-content></ng-content>
+        <ng-content></ng-content>
   `,
 })
 

@@ -5750,6 +5750,10 @@ amexio-layout-columns amexio-layout-item {
   text-transform: capitalize;
   overflow: auto; }
 
+amexio-form-header {
+  display: flex;
+  justify-content: inherit; }
+
 .form-body {
   font-size: 14px;
   line-height: 24px;
