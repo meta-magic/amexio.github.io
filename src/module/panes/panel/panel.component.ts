@@ -116,7 +116,7 @@ default : none
 description : Fires the on accordion pane click event.
 */
 
-  @Input('fit') fit = true;
+  @Input('fit') fit: boolean;
 
   @Output() onClick: EventEmitter<any> = new EventEmitter();
 
