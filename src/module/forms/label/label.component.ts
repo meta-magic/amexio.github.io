@@ -49,7 +49,8 @@ export class AmexioLabelComponent implements OnInit {
   @Input('enable-click') enableclick = false;
   @Output() onClick: any = new EventEmitter<any>();
 
-  tempStyleArray: any = ['large', 'medium', 'small', 'bold', 'large-bold', 'medium-bold', 'small-bold'];
+  tempStyleArray: any = ['large', 'medium', 'small', 'bold', 'large-bold', 'medium-bold', 'small-bold',
+  'large-44', 'large-50', 'large-56', 'large-78'];
   constructor() { }
   ngOnInit() {
     if (this.styleClass == null) {
