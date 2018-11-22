@@ -87,7 +87,7 @@ export class AmexioCheckBoxComponent extends AmexioFormValidator implements Cont
     this.isValid = !this.required;
     this.isComponentValid.emit(!this.required);
   }
-  onInput(input: any) {
+  onInput() {
     this.isValid = this.value;
     this.isComponentValid.emit(this.value);
     this.input.emit(this.value);
