@@ -121,7 +121,20 @@ default : false
 description : Set true to show buttom block
 */
   @Input() block: boolean;
+
+  badgeCssClass = '';
+
   // THIS METHOD IS USED FOR ADDING CSS CLASS DYNAMICALLY
+  constructor() { }
+  buttonClick(event: any) {
+    if (!this.disabled) {
+      this.onClick.emit(event);
+    }
+  }
+  ngOnInit(): void {
+    this.badgeCssClass = this.badgeClass();
+  }
+
   badgeClass(): string {
     let className = '';
     if (this.type === 'primary' || this.type === 'theme-color') {
@@ -143,14 +156,6 @@ description : Set true to show buttom block
       className = 'btn-transparent-badge';
     }
     return className;
-  }
-  constructor() { }
-  buttonClick(event: any) {
-    if (!this.disabled) {
-      this.onClick.emit(event);
-    }
-  }
-  ngOnInit(): void {
   }
 
   // THIS METHOD SET DISABLED PROPERTY FOR BUTTON

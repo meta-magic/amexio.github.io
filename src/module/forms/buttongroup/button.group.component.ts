@@ -29,15 +29,15 @@ export class AmexioButtonGroupComponent implements AfterContentInit, OnChanges {
 
   _buttonGroupLocalData: any = [];
   @Input('buttonGroupLocalData')
-   set buttonGroupLocalData(value: any) {
-     this._buttonGroupLocalData = value;
-     if (this.componentLoaded) {
-       this.updateComponent();
-     }
-   }
-   get buttonGroupLocalData(): any {
-     return this._buttonGroupLocalData;
-   }
+  set buttonGroupLocalData(value: any) {
+    this._buttonGroupLocalData = value;
+    if (this.componentLoaded) {
+      this.updateComponent();
+    }
+  }
+  get buttonGroupLocalData(): any {
+    return this._buttonGroupLocalData;
+  }
   /*
   Properties
   name :  badge
@@ -88,45 +88,50 @@ export class AmexioButtonGroupComponent implements AfterContentInit, OnChanges {
       this.buttons = this.buttonGroupLocalData;
     } else {
       this.buttons = this.btns.toArray();
+      this.addBadgeCssClass();
     }
     this.setButtonSizes(this.buttons);
     this.componentLoaded = true;
   }
+
+  addBadgeCssClass() {
+    this.buttons.forEach((btn: any) => {
+      btn.badgeCssClass = this.badgeClass(btn);
+    });
+  }
+
+  badgeClass(button: any): string {
+    let btnStyleClass = '';
+    switch (button.type) {
+      case 'primary': {
+        return 'btn-group-primary-badge';
+      }
+      case 'theme-color': {
+        return 'btn-group-primary-badge';
+      }
+      case 'secondary': {
+        return 'btn-group-secondary-badge';
+      }
+      case 'theme-backgroundcolor': {
+        return 'btn-group-secondary-badge';
+      }
+      case 'success': {
+        return 'btn-group-success-badge';
+      }
+      case 'green': {
+        return 'btn-group-success-badge';
+      }
+    }
+    btnStyleClass = this.badgeMoreClass(button);
+    return btnStyleClass;
+  }
+
   setButtonSizes(btnArray: any) {
     if (btnArray.length > 0) {
       btnArray.forEach((btn: any) => {
         btn.size = this.size;
       });
     }
-  }
-
-  badgeClass(): string {
-    let className = '';
-    for (const button of this.buttons) {
-      switch (button.type) {
-        case 'primary': {
-          return 'btn-group-primary-badge';
-        }
-        case 'theme-color': {
-          return 'btn-group-primary-badge';
-        }
-        case 'secondary': {
-          return 'btn-group-secondary-badge';
-        }
-        case 'theme-backgroundcolor': {
-          return 'btn-group-secondary-badge';
-        }
-        case 'success': {
-          return 'btn-group-success-badge';
-        }
-        case 'green': {
-          return 'btn-group-success-badge';
-        }
-      }
-
-      className = this.badgeMoreClass(button);
-    }
-    return className;
   }
 
   badgeMoreClass(button: any): string {
