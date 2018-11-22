@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 
 const faFaCaretIcon  = 'fa fa-caret-down';
 
-const faFaTimesIcon    = 'fa fa-times'; 
+const faFaTimesIcon    = 'fa fa-times';
 
 const ICON_MAPPING =
 [
