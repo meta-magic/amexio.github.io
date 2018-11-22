@@ -16,7 +16,7 @@ import {IconLoaderService} from '../../services/icon/icon.service';
         <i class="{{customclass}}" aria-hidden="true" (click)="onClick.emit($event)"></i>
       </ng-container>
       <ng-container *ngIf="customclass == null">
-        <i class="{{getIconClass()}}" aria-hidden="true" (click)="onClick.emit($event)"></i>
+        <i class="{{iconClass}}" aria-hidden="true" (click)="onClick.emit($event)"></i>
       </ng-container>
     </ng-container>
     <ng-container *ngIf="iconLoaderService.iconToUse == 'mat'">
@@ -24,7 +24,7 @@ import {IconLoaderService} from '../../services/icon/icon.service';
         <i class="material-icons" (click)="onClick.emit($event)">{{customclass}}</i>
       </ng-container>
       <ng-container *ngIf="customclass == null">
-        <i class="material-icons" (click)="onClick.emit($event)">{{getIconClass()}}</i>
+        <i class="material-icons" (click)="onClick.emit($event)">{{iconClass}}</i>
       </ng-container>
     </ng-container>
   `,
@@ -58,9 +58,13 @@ default : none
 description : sets the customclass for icon
 */
   @Input() customclass: string;
+
+  iconClass: string;
+
   constructor(public iconLoaderService: IconLoaderService) {
   }
   ngOnInit() {
+    this.iconClass = this.getIconClass();
   }
   getIconClass(): string {
     if (this.iconLoaderService.iconMappings != null) {

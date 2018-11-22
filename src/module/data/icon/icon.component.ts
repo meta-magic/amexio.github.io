@@ -1,5 +1,5 @@
 /**
- * Created by pratik on 21/12/17.
+ * Created by dattaram on 21/12/17.
  */
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { IconLoaderService } from '../../services/icon/icon.service';
@@ -12,7 +12,7 @@ import { IconLoaderService } from '../../services/icon/icon.service';
         <i class="{{customclass}}" aria-hidden="true" (click)="onClick.emit($event)"></i>
       </ng-container>
       <ng-container *ngIf="customclass == null">
-        <i class="{{getIconClass()}}" aria-hidden="true" (click)="onClick.emit($event)"></i>
+        <i class="{{iconClass}}" aria-hidden="true" (click)="onClick.emit($event)"></i>
       </ng-container>
 
     </ng-container>
@@ -24,7 +24,7 @@ import { IconLoaderService } from '../../services/icon/icon.service';
       </ng-container>
 
       <ng-container *ngIf="customclass == null">
-        <i class="material-icons" (click)="onClick.emit($event)">{{getIconClass()}}</i>
+        <i class="material-icons" (click)="onClick.emit($event)">{{iconClass}}</i>
       </ng-container>
 
 
@@ -41,11 +41,14 @@ export class AmexioDataIconComponent implements OnInit {
 
   @Input() customclass: string;
 
+  iconClass: string;
+
   constructor(public iconLoaderService: IconLoaderService) {
 
   }
 
   ngOnInit() {
+    this.iconClass  = this.getIconClass();
   }
 
   getIconClass(): string {

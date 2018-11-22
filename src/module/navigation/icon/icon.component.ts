@@ -13,7 +13,7 @@ import {IconLoaderService} from '../../services/icon/icon.service';
         <i class="{{customclass}}" aria-hidden="true" (click)="onClick.emit($event)"></i>
       </ng-container>
       <ng-container *ngIf="customclass == null">
-        <i class="{{getIconClass()}}" aria-hidden="true" (click)="onClick.emit($event)"></i>
+        <i class="{{iconClass}}" aria-hidden="true" (click)="onClick.emit($event)"></i>
       </ng-container>
 
     </ng-container>
@@ -25,7 +25,7 @@ import {IconLoaderService} from '../../services/icon/icon.service';
       </ng-container>
 
       <ng-container *ngIf="customclass == null">
-        <i class="material-icons" (click)="onClick.emit($event)">{{getIconClass()}}</i>
+        <i class="material-icons" (click)="onClick.emit($event)">{{iconClass}}</i>
       </ng-container>
 
 
@@ -41,11 +41,14 @@ export class AmexioNavIconPaneComponent implements OnInit {
 
   @Output() onClick: EventEmitter<any> = new EventEmitter<any>();
 
+  iconClass: string;
+
   constructor(public iconLoaderService: IconLoaderService) {
 
   }
 
   ngOnInit() {
+    this.iconClass = this.getIconClass();
   }
 
   getIconClass(): string {
