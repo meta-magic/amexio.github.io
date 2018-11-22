@@ -8,27 +8,27 @@
 
   <div #tab class="tab" [ngClass]="{'bottomTab':tabPosition == 'bottom'}">
 
-    <div #tabslist class="tablistitems" [ngClass]="findTabStyleClass()">
+    <div #tabslist class="tablistitems {{tabPositionClass}}">
       <!-- HEADER -->
-     
+
       <div class="tablink" style="padding-bottom:0%" *ngIf="(this.action == true || header) && (fullPageTabs == false)">
-          <div class="table">
-            <div class="tablerow">   
-              <div class="tablecol">
-                {{header}}
-              </div>
-              <div class="tablecol">
-                <ng-content select="amexio-tab-action"></ng-content>
-              </div>
+        <div class="table">
+          <div class="tablerow">
+            <div class="tablecol">
+              {{header}}
+            </div>
+            <div class="tablecol">
+              <ng-content select="amexio-tab-action"></ng-content>
             </div>
           </div>
         </div>
-      
+      </div>
+
 
 
       <div>
-        <div *ngFor="let tabnode of tabCollection" class="tablink {{tabnode.amexiocolor}}" [style.width.px]="singleTabWidth" [ngClass]="findStyleClass(tabnode)"
-          (click)="onTabClick(tabnode)" (contextmenu)="loadContextMenu($event,tabnode, tab)">
+        <div *ngFor="let tabnode of tabCollection" class="tablink {{tabnode.amexiocolor+ ' '+tabnode.tabPillClass}}" [style.width.px]="singleTabWidth"
+             (click)="onTabClick(tabnode)" (contextmenu)="loadContextMenu($event,tabnode, tab)">
           <div class="table">
             <div class="tablerow">
               <div *ngIf="tabnode.icon" class="tablecol">
@@ -48,7 +48,7 @@
   </div>
 </div>
 
-<div class="tabcontent" [ngStyle]="{'height.px' : height,'overflow-y' : height!= null ? 'auto' : '','min-height.px' : minHeight}" >
+<div class="tabcontent" [attr.id]="componentId" [ngStyle]="{'height.px' : height,'overflow-y' : height!= null ? 'auto' : '','min-height.px' : minHeight}" >
   <ng-content></ng-content>
   <ng-template #target></ng-template>
 </div>
@@ -56,11 +56,10 @@
 <span [ngStyle]="contextStyle">
   <ul *ngIf="contextMenuFlag" class="context-menu-list" [ngClass]="{'dropdown-up' : posixUp}">
     <li (click)="onContextNodeClick(itemConfig)" class="context-menu-list-items" [ngStyle]="{'cursor': itemConfig.disabled ? 'not-allowed':'pointer'}" [ngClass]="{'context-menu-separator':itemConfig.seperator}"
-      *ngFor="let itemConfig of contextmenu">
+        *ngFor="let itemConfig of contextmenu">
       <em [ngStyle]="{'padding-left': itemConfig.icon ? '5px':'19px'}" [ngClass]="itemConfig.icon"></em>
       <span style="white-space: nowrap;display: inline ; padding-left:5px">{{itemConfig.text}}
       </span>
     </li>
   </ul>
 </span>
-
