@@ -517,7 +517,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     if (value !== this.innerValue) {
       this.innerValue = value;
       if (this.innerValue instanceof Date || ('number' === typeof this.innerValue)) {
-        if(('number' === typeof this.innerValue)) {
+        if (('number' === typeof this.innerValue)) {
           this.innerValue  = new Date(value);
         }
         this.dateModel = this.innerValue;
