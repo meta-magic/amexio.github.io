@@ -1,7 +1,4 @@
 /**
- * Created by dattaram on 12/11/18.
- */
-/**
  * Created by pratik on 1/12/17.
  */
 
@@ -12,16 +9,14 @@
  N numbers of drop-down items based on data-set configured. Data-set can be
  configured using HTTP call OR Define fix number of dropdown-items. User can configure different attributes
  for enabling filter, multi-select, maximum selection in case of multi select.
- */
+*/
 import {
-  ChangeDetectorRef, Component, ContentChild, ElementRef, EventEmitter, forwardRef, HostListener, Input, OnInit, Output,
-  Renderer2, TemplateRef, ViewChild,
+  Component, ContentChild, ElementRef, EventEmitter, forwardRef,
+  HostListener, Input, OnInit, Output, Renderer2, TemplateRef, ViewChild,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
 import { CommonDataService } from '../../services/data/common.data.service';
-import { ListBaseComponent } from '../../base/list.base.component';
-
+import { AmexioFormValidator } from './../form-validator/amexio.form.validator.component';
 const noop = () => {
 };
 
@@ -30,36 +25,38 @@ const noop = () => {
   templateUrl: './dropdown.component.html',
   providers: [{
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioDropDownComponent), multi: true,
-  }]
+  }, {
+    provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioDropDownComponent), multi: true,
+}],
 })
-export class AmexioDropDownComponent extends ListBaseComponent<string> implements OnInit, ControlValueAccessor {
+export class AmexioDropDownComponent  extends AmexioFormValidator implements OnInit, ControlValueAccessor, Validators {
   /*
-   Properties
-   name : field-label
-   datatype : string
-   version : 4.0 onwards
-   default :
-   description : The label of this field
-   */
+Properties
+name : field-label
+datatype : string
+version : 4.0 onwards
+default :
+description : The label of this field
+*/
   @Input('field-label') fieldlabel: string;
   /*
-   Properties
-   name : allow-blank
-   datatype : string
-   version : 4.0 onwards
-   default :
-   description : Sets if field is required
-   */
+Properties
+name : allow-blank
+datatype : string
+version : 4.0 onwards
+default :
+description : Sets if field is required
+*/
   @Input('allow-blank') allowblank: boolean;
 
   /*
-   Properties
-   name : data
-   datatype : any
-   version : 4.0 onwards
-   default :
-   description : Local data for dropdown.
-   */
+Properties
+name : data
+datatype : any
+version : 4.0 onwards
+default :
+description : Local data for dropdown.
+*/
   _data: any;
   componentLoaded: boolean;
   @Input('data')
@@ -73,88 +70,88 @@ export class AmexioDropDownComponent extends ListBaseComponent<string> implement
     return this._data;
   }
   /*
-   Properties
-   name : data-reader
-   datatype : string
-   version : 4.0 onwards
-   default :
-   description : Key in JSON datasource for records
-   */
+ Properties
+ name : data-reader
+ datatype : string
+ version : 4.0 onwards
+ default :
+ description : Key in JSON datasource for records
+ */
   @Input('data-reader') datareader: string;
 
   /*
-   Properties
-   name : http-method
-   datatype : string
-   version : 4.0 onwards
-   default :
-   description : Type of HTTP call, POST,GET.
-   */
+  Properties
+  name : http-method
+  datatype : string
+  version : 4.0 onwards
+  default :
+  description : Type of HTTP call, POST,GET.
+  */
   @Input('http-method') httpmethod: string;
 
   /*
-   Properties
-   name : http-url
-   datatype : string
-   version : 4.0 onwards
-   default :
-   description : REST url for fetching datasource.
-   */
+ Properties
+ name : http-url
+ datatype : string
+ version : 4.0 onwards
+ default :
+ description : REST url for fetching datasource.
+ */
   @Input('http-url') httpurl: string;
 
   /*
-   Properties
-   name : display-field
-   datatype : string
-   version : 4.0 onwards
-   default :
-   description : Name of key inside response data to display on ui.
-   */
+Properties
+name : display-field
+datatype : string
+version : 4.0 onwards
+default :
+description : Name of key inside response data to display on ui.
+*/
   @Input('display-field') displayfield: string;
   /*
-   Properties
-   name : value-field
-   datatype : string
-   version : 4.0 onwards
-   default :
-   description : Name of key inside response data.use to send to backend
-   */
+Properties
+name : value-field
+datatype : string
+version : 4.0 onwards
+default :
+description : Name of key inside response data.use to send to backend
+*/
   @Input('value-field') valuefield: string;
 
   /*
-   Properties
-   name : search
-   datatype : boolean
-   version : 4.0 onwards
-   default : false
-   description : true for search box enable
-   */
+Properties
+name : search
+datatype : boolean
+version : 4.0 onwards
+default : false
+description : true for search box enable
+*/
   @Input() search: boolean;
   /*
-   Properties
-   name : readonly
-   datatype : boolean
-   version : 4.2.1 onwards
-   default : false
-   description : true for set dropdown input readonly.
-   */
+  Properties
+  name : readonly
+  datatype : boolean
+  version : 4.2.1 onwards
+  default : false
+  description : true for set dropdown input readonly.
+  */
   @Input() readonly: boolean;
 
   /*
-   Properties
-   name : multi-select
-   datatype : boolean
-   version : 4.0 onwards
-   default : false
-   description : true for select multiple options
-   */
+Properties
+name : multi-select
+datatype : boolean
+version : 4.0 onwards
+default : false
+description : true for select multiple options
+*/
   @Input('multi-select') multiselect: boolean;
 
   @ViewChild('dropdownitems', { read: ElementRef }) public dropdownitems: ElementRef;
 
   helpInfoMsg: string;
 
-  displayValue = '';
+  displayValue: any;
 
   _errormsg: string;
 
@@ -164,141 +161,141 @@ export class AmexioDropDownComponent extends ListBaseComponent<string> implement
     return this._errormsg;
   }
   /*
-   Properties
-   name : error-msg
-   datatype : string
-   version : 4.0 onwards
-   default :
-   description : Sets the error message
-   */
+  Properties
+  name : error-msg
+  datatype : string
+  version : 4.0 onwards
+  default :
+  description : Sets the error message
+  */
   @Input('error-msg')
   set errormsg(value: string) {
     this.helpInfoMsg = value + '<br/>';
   }
   /*
-   Events
-   name : onBlur
-   datatype : any
-   version : 4.0 onwards
-   default :
-   description : 	On blur event
-   */
+  Events
+  name : onBlur
+  datatype : any
+  version : 4.0 onwards
+  default :
+  description : 	On blur event
+  */
   @Output() onBlur: any = new EventEmitter<any>();
   /*
-   Events
-   name : input
-   datatype : any
-   version : none
-   default :
-   description : 	On input event field.
-   */
+Events
+name : input
+datatype : any
+version : none
+default :
+description : 	On input event field.
+*/
   @Output() input: any = new EventEmitter<any>();
   /*
-   Events
-   name : focus
-   datatype : any
-   version : none
-   default :
-   description : On field focus event
-   */
+Events
+name : focus
+datatype : any
+version : none
+default :
+description : On field focus event
+*/
   @Output() focus: any = new EventEmitter<any>();
   /*
-   Events
-   name : onSingleSelect
-   datatype : any
-   version : none
-   default :
-   description : Fire when drop down item selected.
-   */
+Events
+name : onSingleSelect
+datatype : any
+version : none
+default :
+description : Fire when drop down item selected.
+*/
   @Output() onSingleSelect: any = new EventEmitter<any>();
   /*
-   Events
-   name : onMultiSelect
-   datatype : any
-   version :none
-   default :
-   description : Fire when multiple record select in drop down.this event is only
-   applied when multi-select=true
-   */
+Events
+name : onMultiSelect
+datatype : any
+version :none
+default :
+description : Fire when multiple record select in drop down.this event is only
+applied when multi-select=true
+*/
   @Output() onMultiSelect: any = new EventEmitter<any>();
   /*
-   Events
-   name : onClick
-   datatype : any
-   version :none
-   default :
-   description : On record select event.this event is only for normal dropdown.
-   */
+Events
+name : onClick
+datatype : any
+version :none
+default :
+description : On record select event.this event is only for normal dropdown.
+*/
   @Output() onClick: any = new EventEmitter<any>();
   showToolTip: boolean;
   /*
-   Properties
-   name : place-holder
-   datatype : string
-   version : 4.0 onwards
-   default :
-   description : 	Show place-holder inside dropdown component*/
+Properties
+name : place-holder
+datatype : string
+version : 4.0 onwards
+default :
+description : 	Show place-holder inside dropdown component*/
   @Input('place-holder') placeholder: string;
   /*
-   Properties
-   name : disabled
-   datatype :  boolean
-   version : 4.0 onwards
-   default : false
-   description : If true will not react on any user events and show disable icon over*/
+Properties
+name : disabled
+datatype :  boolean
+version : 4.0 onwards
+default : false
+description : If true will not react on any user events and show disable icon over*/
   @Input() disabled: boolean;
   /*
-   Properties
-   name : icon-feedback
-   datatype : boolean
-   version : 4.0 onwards
-   default : false
-   description : */
+Properties
+name : icon-feedback
+datatype : boolean
+version : 4.0 onwards
+default : false
+description : */
   @Input('icon-feedback') iconfeedback: boolean;
   /*
-   Properties
-   name : font-style
-   datatype : string
-   version : 4.0 onwards
-   default :
-   description : Set font-style to field
-   */
+Properties
+name : font-style
+datatype : string
+version : 4.0 onwards
+default :
+description : Set font-style to field
+*/
   @Input('font-style') fontstyle: string;
   /*
-   Properties
-   name : font-family
-   datatype : string
-   version : 4.0 onwards
-   default :
-   description : Set font-family to field
-   */
+Properties
+name : font-family
+datatype : string
+version : 4.0 onwards
+default :
+description : Set font-family to field
+*/
   @Input('font-family') fontfamily: string;
   /*
-   Properties
-   name : font-size
-   datatype : string
-   version : 4.0 onwards
-   default :
-   description : Set font-size to field
-   */
+Properties
+name : font-size
+datatype : string
+version : 4.0 onwards
+default :
+description : Set font-size to field
+*/
   @Input('font-size') fontsize: string;
   /*
-   Properties
-   name : has-label
-   datatype : boolean
-   version : 4.0 onwards
-   default : false
-   description : flag to set label
-   */
+Properties
+name : has-label
+datatype : boolean
+version : 4.0 onwards
+default : false
+description : flag to set label
+*/
   @Input('has-label') haslabel = true;
   /*
-   Properties
-   name : enable-popover
-   datatype : boolean
-   version : 4.0 onwards
-   default :false
-   description : Set enable / disable popover.
-   */
+Properties
+name : enable-popover
+datatype : boolean
+version : 4.0 onwards
+default :false
+description : Set enable / disable popover.
+*/
   @Input('enable-popover') enablepopover: boolean;
 
   @ContentChild('amexioBodyTmpl') bodyTemplate: TemplateRef<any>;
@@ -307,7 +304,7 @@ export class AmexioDropDownComponent extends ListBaseComponent<string> implement
   selectedindex = 0;
   responseData: any;
   previousData: any;
-  viewData: any[] = [];
+  viewData: any;
   multiselectValues: any[] = [];
   maskloader = true;
   scrollposition = 30;
@@ -319,27 +316,29 @@ export class AmexioDropDownComponent extends ListBaseComponent<string> implement
   private onChangeCallback: (_: any) => void = noop;
 
   @Output() isComponentValid: any = new EventEmitter<any>();
-  /* @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart',
-   ['$event.target'])
-   public onElementOutClick(targetElement: HTMLElement) {
-   let parentFound = false;
-   while (targetElement != null && !parentFound) {
-   if (targetElement === this.element.nativeElement) {
-   parentFound = true;
-   }
-   targetElement = targetElement.parentElement;
-   }
-   if (!parentFound) {
-   this.showToolTip = false;
-   }
-   }*/
-  constructor(public dataService: CommonDataService, public _http: HttpClient, private renderer: Renderer2, public element: ElementRef, public cd: ChangeDetectorRef) {
-    super(renderer, element, cd);
+  @Input('name') name: string;
+  @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart',
+    ['$event.target'])
+  public onElementOutClick(targetElement: HTMLElement) {
+    let parentFound = false;
+    while (targetElement != null && !parentFound) {
+      if (targetElement === this.element.nativeElement) {
+        parentFound = true;
+      }
+      targetElement = targetElement.parentElement;
+    }
+    if (!parentFound) {
+      this.showToolTip = false;
+    }
+  }
+  constructor(public dataService: CommonDataService, public element: ElementRef, public renderer: Renderer2) {
+  super();
   }
   ngOnInit() {
+    this.generateName();
     this.isValid = this.allowblank;
     this.isComponentValid.emit(this.allowblank);
-    if (this.placeholder === '' || this.placeholder) {
+    if (this.placeholder === '' || this.placeholder ) {
       this.placeholder = 'Choose Option';
     }
     if (this.httpmethod && this.httpurl) {
@@ -387,72 +386,62 @@ export class AmexioDropDownComponent extends ListBaseComponent<string> implement
       let preSelectedMultiValues = '';
       const optionsChecked: any = [];
       this.viewData.forEach((row: any) => {
-        if (row.hasOwnProperty('checked')) {
-          if (row.checked) {
-            optionsChecked.push(row[this.valuefield]);
-            this.multiselectValues.push(row);
-            preSelectedMultiValues === '' ? preSelectedMultiValues +=
-              row[this.displayfield] : preSelectedMultiValues += ',' + row[this.displayfield];
-          }
-        } else {
-          row['checked'] = false;
+        if (row.hasOwnProperty('checked') && row.checked) {
+          optionsChecked.push(row[this.valuefield]);
+          this.multiselectValues.push(row);
+          preSelectedMultiValues === '' ? preSelectedMultiValues +=
+            row[this.displayfield] : preSelectedMultiValues += ',' + row[this.displayfield];
         }
-
       });
-      this.displayValue = this.setMultiSelect();
+      this.displayValue = preSelectedMultiValues;
       this.onMultiSelect.emit(this.multiselectValues);
     }
   }
 
   setUserSelection() {
     // Set user selection
-    if (this.innerValue != null) {
+    if (this.value != null) {
       const valueKey = this.valuefield;
       const displayKey = this.displayfield;
-      const val = this.innerValue;
-      if (this.viewData.length > 0) {
-        this.viewData.forEach((item: any) => {
-          if (item[valueKey] === val) {
-            this.isValid = true;
-            this.isComponentValid.emit(true);
-            this.displayValue = item[displayKey];
-            this.onSingleSelect.emit(item);
-          }
-        });
-      }
-
+      const val = this.value;
+      this.viewData.forEach((item: any) => {
+        if (item[valueKey] === val) {
+          this.isValid = true;
+          this.isComponentValid.emit(true);
+          this.displayValue = item[displayKey];
+          this.onSingleSelect.emit(item);
+        }
+      });
     }
   }
-  onItemSelect(selectedItem: any) {
+  onItemSelect(row1: any) {
     if (this.multiselect) {
       const optionsChecked: any[] = [];
       this.multiselectValues = [];
-      if (selectedItem.hasOwnProperty('checked')) {
-        selectedItem.checked = !selectedItem.checked;
+      if (row1.hasOwnProperty('checked')) {
+        row1.checked = !row1.checked;
         this.filteredOptions.forEach((row: any) => {
           if (row.checked) {
             optionsChecked.push(row[this.valuefield]);
             this.multiselectValues.push(row);
           }
         });
-        this.innerValue = optionsChecked;
-        this.displayValue = this.setMultiSelect();
+        this.value = optionsChecked;
         this.onMultiSelect.emit(this.multiselectValues);
       }
     } else {
-      this.value = selectedItem[this.valuefield];  // Issue here?
-      this.displayValue = selectedItem[this.displayfield];
-      //  this.itemClicked();
+      this.value = row1[this.valuefield];  // Issue here?
+      this.displayValue = row1[this.displayfield];
       this.multiselect ? this.showToolTip = true : this.showToolTip = false;
-      this.onSingleSelect.emit(selectedItem);
+      this.onSingleSelect.emit(row1);
     }
     this.isValid = true;
     this.isComponentValid.emit(true);
   }
   setMultiSelectData() {
     this.multiselectValues = [];
-    if (this.innerValue.length > 0) {
-      const modelValue = this.innerValue;
+    if (this.value.length > 0) {
+      const modelValue = this.value;
       this.filteredOptions.forEach((test) => {
         modelValue.forEach((mdValue: any) => {
           if (test[this.valuefield] === mdValue) {
@@ -467,21 +456,22 @@ export class AmexioDropDownComponent extends ListBaseComponent<string> implement
   }
   navigateKey(event: any) {
   }
-  getDisplayText() {
-    if (this.innerValue != null || this.innerValue !== '' || this.innerValue !== ' ') {
+  getDisplayText(): string {
+    if (this.value != null || this.value !== '' || this.value !== ' ') {
       if (this.multiselect) {
-        this.displayValue = this.setMultiSelect();
+        return this.setMultiSelect();
       } else {
         this.displayValue = '';
         this.filteredOptions.forEach((test) => {
-          if (test[this.valuefield] === this.innerValue) {
+          if (test[this.valuefield] === this.value) {
             this.displayValue = test[this.displayfield];
           }
         });
-        this.displayValue = this.displayValue === undefined ? '' : this.displayValue;
+        return this.displayValue === undefined ? '' : this.displayValue;
       }
     }
   }
+
   setMultiSelect() {
     this.setMultiSelectData();
     let multiselectDisplayString: any = '';
@@ -496,13 +486,11 @@ export class AmexioDropDownComponent extends ListBaseComponent<string> implement
     }
   }
   onDropDownClick(event: any) {
-    /* this.getDisplayText();
-     this.onClick.emit(event);*/
+    this.onClick.emit(event);
   }
   onChange(event: any) {
-    this.innerValue = event;
+    this.value = event;
     this.isValid = true;
-    this.getDisplayText();
     this.isComponentValid.emit(true);
   }
   onInput(input: any) {
@@ -527,7 +515,7 @@ export class AmexioDropDownComponent extends ListBaseComponent<string> implement
       }
     }
     if (event.keyCode === 8) {
-      this.innerValue = '';
+      this.value = '';
     }
     if (event.keyCode === 40 || event.keyCode === 38 || event.keyCode === 13) {
       this.navigateUsingKey(event);
@@ -581,16 +569,16 @@ export class AmexioDropDownComponent extends ListBaseComponent<string> implement
       }
     }
   }
+
   // get accessor
   get value(): any {
     return this.innerValue;
   }
   // set accessor including call the onchange callback
   set value(v: any) {
-
     if (v != null && v !== this.innerValue) {
-      this.innerValue = v;
-      this.onChangeCallback(v);
+        this.innerValue = v;
+        this.onChangeCallback(v);
     }
   }
   // Set touched on blur
@@ -605,11 +593,9 @@ export class AmexioDropDownComponent extends ListBaseComponent<string> implement
       }
     }
     this.onTouchedCallback();
-    this.blur(event);
     this.onBlur.emit();
   }
   onFocus(elem: any) {
-    this.onFocusEvent(elem);
     this.showToolTip = true;
     this.posixUp = this.getListPosition(elem);
     this.focus.emit();
@@ -626,30 +612,23 @@ export class AmexioDropDownComponent extends ListBaseComponent<string> implement
   writeValue(value: any) {
     if (!this.allowblank) {
       if (value != null) {
-        this.writeChangedValue(value);
+       this.writeChangedValue(value);
       } else {
-        this.innerValue = '';
+        this.value = '';
         this.isValid = true;
       }
     }
   }
   writeChangedValue(value: any) {
     if (value !== this.innerValue) {
-      let status = false;
       if (this.viewData && this.viewData.length > 0) {
         this.viewData.forEach((item: any) => {
-          if (item[this.valuefield] == value) {
+          if (item[this.valuefield] === value) {
             this.isValid = true;
-            this.displayValue = item[this.displayfield];
-            status = true;
-            return;
           }
         });
       }
-      if (!status) {
-        this.displayValue = '';
-      }
-      this.value = value;
+      this.innerValue = value;
     }
   }
 
@@ -663,7 +642,6 @@ export class AmexioDropDownComponent extends ListBaseComponent<string> implement
   }
   onIconClick() {
     if (!this.disabled) {
-      this.onFocusEvent({});
       this.showToolTip = !this.showToolTip;
     }
   }
@@ -671,4 +649,28 @@ export class AmexioDropDownComponent extends ListBaseComponent<string> implement
   checkValidity(): boolean {
     return this.isValid;
   }
+  public validate(c: FormControl) {
+    return ((!this.allowblank && (this.value && this.value.length > 0 )) || this.allowblank) ? null : {
+        jsonParseError: {
+            valid: true,
+        },
+    };
+ }
+ // THIS METHOD GENERATE RANDOM STRING
+ generateName() {
+  if (!this.name && this.fieldlabel ) {
+    console.log('sassas');
+    this.name = this.fieldlabel.replace(/\s/g, '');
+  } else if ( !this.name && !this.fieldlabel) {
+    this.name = 'textinput-' + this.getRandomString();
+  }
+}
+getRandomString(): string {
+  const possibleCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  let randomString = '';
+  for (let i = 0; i < 6; i++) {
+    randomString += possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
+  }
+  return randomString;
+}
 }

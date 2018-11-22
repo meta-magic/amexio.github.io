@@ -1,19 +1,22 @@
-<div class="inputgroup" #rootDiv>
+<div class="inputgroup form-group" #rootDiv>
 
     <label *ngIf="haslabel" [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
       {{fieldlabel}}
     </label>
-  
+
     <input type="hidden"
            [ngModel]="value"
+           required
            (ngModelChange)="onChange($event)"
            #inp="ngModel"
     />
     <input type="text" class="input-control"
-           [value]="displayValue"
+           [value]="getDisplayText()"
            [ngClass]="{'input-control-error' : inp.invalid && (inp.dirty || inp.touched),'input-control-success' : inp.valid && (inp.dirty || inp.touched)}"
            (blur)="onblur($event)"
+           (click)="onDropDownClick($event)"
            (focus)="onFocus(rootDiv)"
+           (input)="onInput(inp)"
            [attr.placeholder]="placeholder"
            [readonly]="readonly ? true : null"
            [attr.disabled]="disabled ? true: null"
@@ -25,10 +28,10 @@
       <em class="fa fa-spinner fa-spin" *ngIf="maskloader"></em>
     </span>
   
-    <span #dropdownitems class="dropdown" [ngClass]="{'dropdown-up' : posixUp}" [ngStyle]="dropdownstyle">
+    <span #dropdownitems class="dropdown" [ngClass]="{'dropdown-up' : posixUp}" [ngStyle]="{'display': showToolTip ? 'block' : 'none'}">
           <ul class="dropdown-list">
   
-            <li class="list-items" [ngClass]="{'list-items-selected':item.selected}" *ngFor="let item of filteredOptions" (mousedown)="onItemSelect(item)">
+            <li class="list-items" [ngClass]="{'list-items-selected':item.selected}" *ngFor="let item of filteredOptions" (click)="onItemSelect(item)">
               <ng-container *ngIf="bodyTemplate">
                 <ng-template [ngTemplateOutlet]="bodyTemplate" [ngTemplateOutletContext]="{ $implicit: { text : row }, row: item }">
                   </ng-template>
@@ -56,7 +59,3 @@
   <span *ngIf="showToolTip && enablepopover" class="tooltiptext">
           <div [innerHTML]="helpInfoMsg"></div>
   </span>
-  
-  
-  
-  
