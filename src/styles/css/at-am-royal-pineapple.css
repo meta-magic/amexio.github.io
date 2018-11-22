@@ -1936,28 +1936,32 @@ input:checked + .toggle-slider:before {
 
 .large-44-bold {
   font-size: 44px;
-  font-weight: bold; }
+  font-weight: bold;
+  line-height: 45px; }
 
 .large-50 {
   font-size: 50px; }
 
 .large-50-bold {
   font-size: 50px;
-  font-weight: bold; }
+  font-weight: bold;
+  line-height: 55px; }
 
 .large-56 {
   font-size: 56px; }
 
 .large-56-bold {
   font-size: 56px;
-  font-weight: bold; }
+  font-weight: bold;
+  line-height: 60px; }
 
 .large-78 {
   font-size: 78px; }
 
 .large-78-bold {
   font-size: 78px;
-  font-weight: bold; }
+  font-weight: bold;
+  line-height: 70px; }
 
 /****************************************************************************
     Component Name : Box
