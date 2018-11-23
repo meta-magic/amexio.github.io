@@ -1975,15 +1975,16 @@ input:checked + .toggle-slider:before {
   font-weight: bold; }
 
 .large-44 {
-  font-size: 44px; }
+  font-size: 44px;
+  line-height: 45px; }
 
 .large-44-bold {
   font-size: 44px;
-  font-weight: bold;
-  line-height: 45px; }
+  font-weight: bold; }
 
 .large-50 {
-  font-size: 50px; }
+  font-size: 50px;
+  line-height: 55px; }
 
 .large-50-bold {
   font-size: 50px;
@@ -1991,7 +1992,8 @@ input:checked + .toggle-slider:before {
   line-height: 55px; }
 
 .large-56 {
-  font-size: 56px; }
+  font-size: 56px;
+  line-height: 60px; }
 
 .large-56-bold {
   font-size: 56px;
@@ -1999,7 +2001,8 @@ input:checked + .toggle-slider:before {
   line-height: 60px; }
 
 .large-78 {
-  font-size: 78px; }
+  font-size: 78px;
+  line-height: 70px; }
 
 .large-78-bold {
   font-size: 78px;
