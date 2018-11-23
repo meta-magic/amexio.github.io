@@ -20,7 +20,7 @@ Component Selector : <amexio-panel>
 Component Description : Panel provides an easy way to organize big forms by
 grouping the fields in panel
 */
-import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 
 import { AmexioPanelHeaderComponent } from './../panel/panel.header.component';
 
@@ -125,8 +125,6 @@ description : Fires the on accordion pane click event.
 
   @Output() rightClick: any = new EventEmitter<any>();
 
-  @ViewChild('paneldiv', { read: ElementRef }) public paneldiv: ElementRef;
-
   iconclassKey: string;
 
   panelWidth: any;
@@ -149,7 +147,6 @@ description : Fires the on accordion pane click event.
 
   constructor() {
     this.panelstyle = { visibility: 'visible' };
-    this.panelWidth = {width: '100%'};
   }
   ngOnInit() {
     if (!this.collapsible) {
@@ -166,9 +163,7 @@ description : Fires the on accordion pane click event.
     btn.classList.toggle('active-accordion');
     if (this.iconclassKey === this.faFaIconDownCss) {
       this.iconclassKey = this.faFaIconUPCss;
-      this.panelWidth = {width: '100%'};
     } else if (this.iconclassKey === this.faFaIconUPCss) {
-      this.panelWidth = { width: this.paneldiv.nativeElement.offsetWidth + 'px' };
       this.iconclassKey = this.faFaIconDownCss;
     }
     this.expanded = !this.expanded;
