@@ -13,7 +13,7 @@ import { FormBuilder } from '@angular/forms';
 import { AmexioButtonComponent } from './../../forms/buttons/button.component';
 import { AmexioFormActionComponent } from './form.action.component';
 import { AmexioFormBodyComponent } from './form.body.component';
-import { AmexioFormGroupComponent } from './form.group.component';
+import { AmexioFormGroupDirective } from './form.group.directive';
 import { AmexioFormHeaderComponent } from './form.header.component';
 
 @Component({
@@ -158,7 +158,7 @@ description : Event fired if showError msg info button is clicked
 
   @ContentChildren(NgModel, { descendants: true }) public models: QueryList<NgModel>;
 
-  @ContentChildren(AmexioFormGroupComponent, { descendants: true }) public fb: QueryList<AmexioFormGroupComponent>;
+  @ContentChildren(AmexioFormGroupDirective, { descendants: true }) public fb: QueryList<AmexioFormGroupDirective>;
 
   constructor(public formBuilder: FormBuilder) {
     this.checkForm = false;
