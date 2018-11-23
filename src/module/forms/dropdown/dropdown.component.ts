@@ -12,7 +12,7 @@
 */
 import {
   AfterViewInit, ChangeDetectorRef, Component, ContentChild,
-  ElementRef, EventEmitter, forwardRef, HostListener, Input,
+  ElementRef, EventEmitter, forwardRef, Input,
   OnInit, Output, Renderer2, TemplateRef, ViewChild,
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
