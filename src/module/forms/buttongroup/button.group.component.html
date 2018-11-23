@@ -16,7 +16,7 @@
 
       {{button.label}} 
       <ng-container *ngIf="button.badge">
-        <span [ngClass]="badgeClass()" >{{button.badge}}</span> 
+        <span [ngClass]="button.badgeCssClass" >{{button.badge}}</span> 
      </ng-container>
     </button>
     </ng-container>

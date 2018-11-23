@@ -34,7 +34,6 @@
 
 .large-bold{
   font-size: $largeFontSize;
- 
   font-weight: bold;
   line-height: 40px;
 }
@@ -51,3 +50,49 @@
  
 }
 
+.large-44{
+  font-size: $large44FontSize;
+  line-height: 45px;
+}
+
+.large-44-bold{
+  font-size: $large44FontSize;
+  font-weight: bold;
+}
+
+.large-50{
+  font-size: $large50FontSize;
+  line-height: 55px;
+
+}
+
+.large-50-bold{
+  font-size: $large50FontSize;
+  font-weight: bold;
+  line-height: 55px;
+}
+
+.large-56{
+  font-size: $large56FontSize;
+  line-height: 60px;
+
+}
+
+.large-56-bold{
+  font-size: $large56FontSize;
+  font-weight: bold;
+  line-height: 60px;
+
+}
+
+.large-78{
+  font-size: $large78FontSize;
+  line-height: 70px;
+
+}
+
+.large-78-bold{
+  font-size: $large78FontSize;
+  font-weight: bold;
+  line-height: 70px;
+}

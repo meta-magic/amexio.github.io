@@ -339,6 +339,7 @@ description : On field value change event
 
   validateComponent(inp: any): any {
     let classObj;
+    this.inputRef = inp;
     this.isValid = this.checkValidity();
     if (!this.isValid) {
       classObj = this.getCssClass();
@@ -362,7 +363,7 @@ description : On field value change event
   // Min Max Validation
   minMaxValidation() {
     let classObj;
-    if (this.value && (this.value.length >= this.minlength)) {
+    if (this.innerValue && (this.innerValue.length >= this.minlength)) {
       this.isValid = true;
     } else {
       classObj = this.getCssClass();
@@ -386,8 +387,7 @@ description : On field value change event
 
     // THIS MEHTOD CHECK INPUT IS VALID OR NOT
     checkValidity(): boolean {
-      return (this.inputRef && this.inputRef.nativeElement && this.inputRef.nativeElement.validity
-        && this.inputRef.nativeElement.validity.valid);
+      return (this.inputRef && this.inputRef.valid);
     }
 
     isFieldValidate(): boolean {

@@ -201,10 +201,10 @@ import { CommonDataService } from '../../services/data/common.data.service';
                 <div class="datatable-col datatable-checkbox-width checkbox-col">
                   <div class="inputgroup">
                     <div class="input-box">
-                      <div (click)="setSelectedRow(row, check)" [class]="setCheckBoxSelectClass(check)" #check>
-                        {{((setCheckBoxSelectClass(check) == 'checkbox active') &&
+                      <div (click)="setSelectedRow(row, check)" [class]="checkBoxSelectClass" #check>
+                        {{((checkBoxSelectClass == 'checkbox active') &&
                       (check.classList.value == 'checkbox active')) ||
-                      ((setCheckBoxSelectClass(check)
+                      ((checkBoxSelectClass
                       == 'checkbox default') && (check.classList.value == 'checkbox active')) ? '&#10004;'
                         : ''}}
                       </div>
@@ -724,6 +724,8 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit {
 
   private checkDefaultIcon = 'checkbox default';
 
+  checkBoxSelectClass = '';
+
   @ContentChildren(AmexioGridColumnComponent) columnRef: QueryList<AmexioGridColumnComponent>;
 
   constructor(public element: ElementRef, public dataTableService: CommonDataService, private cd: ChangeDetectorRef) {
@@ -769,6 +771,9 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit {
       this.previousData = JSON.parse(JSON.stringify(this.data));
     }
     this.componentLoaded = true;
+
+    this.checkBoxSelectClass = this.setCheckBoxSelectClass();
+
   }
 
   updateComponent() {
@@ -1236,7 +1241,7 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit {
 
   }
 
-  setCheckBoxSelectClass(event: any) {
+  setCheckBoxSelectClass() {
     if (this.selectAll) {
       return 'checkbox active';
     } else if (!this.selectAll) {

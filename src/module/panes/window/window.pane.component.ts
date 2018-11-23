@@ -23,7 +23,7 @@ export enum KEY_CODE_window {
          [ngStyle]="{'display' : show ? 'block' : 'none'}"
          (contextmenu)="loadContextMenu({event:$event,ref:id})" >
       <div class="modal-window-lg" [ngStyle]="{'height': bodyHeight ? '100%':'auto'}">
-        <div class="modal-window-content" [ngClass]="setClass()" [style.height]="bodyHeight+'%'">
+        <div class="modal-window-content" [ngClass]="styleClass" [style.height]="bodyHeight+'%'">
           <header [ngClass]="{ 'window-material-design-header':materialDesign,'modal-window-header':!materialDesign}" *ngIf="header"   >
             <div class="modal-window-table">
               <div class="tablerow">
@@ -243,6 +243,8 @@ description : Context Menu provides the list of menus on right click.
   headerComponentList: AmexioWindowHeaderComponent[];
 
   @Output() close: EventEmitter<any> = new EventEmitter<any>();
+  styleClass: string;
+
   constructor() {
     this.header = true;
     this.closable = true;
@@ -270,6 +272,7 @@ description : Context Menu provides the list of menus on right click.
 
   sizeChange() {
     this.isFullWindow = !this.isFullWindow;
+    this.setClass();
   }
 
   onCloseClick() {
@@ -314,6 +317,8 @@ description : Context Menu provides the list of menus on right click.
       this.horizontalposition = 'center';
     }
     this.positionclass = this.window + this.verticalposition + this.window + this.horizontalposition;
+    this.setClass();
+
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -324,14 +329,12 @@ description : Context Menu provides the list of menus on right click.
     }
 
   }
-  setClass(): any {
-    let styleClass: string;
+  setClass() {
     if (this.isFullWindow) {
-      styleClass = 'modal-window-content-max';
+      this.styleClass = 'modal-window-content-max';
     } else {
-      styleClass = this.positionclass;
+      this.styleClass = this.positionclass;
     }
-    return styleClass;
   }
   // context menu code below
   getContextMenu() {

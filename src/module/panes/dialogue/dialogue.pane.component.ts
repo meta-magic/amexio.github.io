@@ -64,12 +64,12 @@ export enum KEY_CODE {
                   'dialogue-footer':!materialDesign, 'flex-start':(footeralign=='left'),
                   'flex-end':(footeralign=='right'),'flex-center':(footeralign=='center')}">
             <amexio-button *ngIf="type =='confirm'"  [size]="buttonsize" [label]="secondaryactionlabel"
-            [type]="getDefaultStyle()" (onClick)="getStatus('cancel')"></amexio-button>&nbsp;&nbsp;
+            [type]="defaultStyle" (onClick)="getStatus('cancel')"></amexio-button>&nbsp;&nbsp;
             <div  class="custom-btn">
               <amexio-button *ngIf="type =='confirm' || type == 'alert'"   [size]="buttonsize"
               [label]="primaryactionlabel"
                              [ngStyle]="{'color':materialDesign ? 'blue':'white'}"
-                             [type]="getStyle()" (onClick)="getStatus('ok')">
+                             [type]="buttontype" (onClick)="getStatus('ok')">
                              </amexio-button>
             </div>
 
@@ -247,6 +247,8 @@ export class AmexiodialoguePaneComponent implements OnChanges, OnInit {
    */
   @Output() close: EventEmitter<any> = new EventEmitter<any>();
   value = 0;
+  defaultStyle: string;
+
   constructor() {
     this.closable = true;
     this.secondaryactionlabel  = 'Cancel';
@@ -280,6 +282,8 @@ export class AmexiodialoguePaneComponent implements OnChanges, OnInit {
     if (this.type == null) {
       this.type = 'confirm';
     }
+    this.defaultStyle = this.getDefaultStyle();
+    this.buttontype = this.getStyle();
   }
 
   ngOnChanges(changes: SimpleChanges) {

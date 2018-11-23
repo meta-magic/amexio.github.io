@@ -1,18 +1,17 @@
 /**
  * Created by pratik on 21/12/17.
  */
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {IconLoaderService} from '../../services/icon/icon.service';
 
 @Component({
   selector: 'amexio-pane-icon', template: `
     <ng-container *ngIf="iconLoaderService.iconToUse == 'fa'">
-
       <ng-container *ngIf="customclass != null">
         <i class="{{customclass}}" aria-hidden="true" (click)="onClick.emit($event)" style="cursor: pointer;"></i>
       </ng-container>
       <ng-container *ngIf="customclass == null">
-        <i class="{{getIconClass()}}" aria-hidden="true" (click)="onClick.emit($event)" style="cursor: pointer;"></i>
+        <i [ngClass]="iconClass" aria-hidden="true" (click)="onClick.emit($event)" style="cursor: pointer;"></i>
       </ng-container>
     </ng-container>
 
@@ -23,7 +22,7 @@ import {IconLoaderService} from '../../services/icon/icon.service';
       </ng-container>
 
       <ng-container *ngIf="customclass == null">
-        <i class="material-icons" (click)="onClick.emit($event)" style="cursor: pointer;">{{getIconClass()}}</i>
+        <i class="material-icons" (click)="onClick.emit($event)" style="cursor: pointer;">{{iconClass}}</i>
       </ng-container>
     </ng-container>
   `,
@@ -37,16 +36,18 @@ export class AmexioIconPaneComponent implements OnInit {
 
   @Output() onClick: EventEmitter<any> = new EventEmitter<any>();
 
+  iconClass: string;
+
   constructor(public iconLoaderService: IconLoaderService) {
 
   }
 
   ngOnInit() {
+    this.iconClass = this.getIconClass();
   }
 
-  getIconClass(): string {
+  private getIconClass(): string {
     if (this.iconLoaderService.iconMappings != null) {
-
       const iconObject = this.iconLoaderService.iconMappings.find((obj: any) => obj.component === this.key);
       if (iconObject != null) {
         return iconObject[this.iconLoaderService.iconToUse.toString()];

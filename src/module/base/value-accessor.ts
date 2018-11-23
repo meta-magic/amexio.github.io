@@ -11,12 +11,12 @@ export abstract class ValueAccessorBase<T> implements ControlValueAccessor {
     innerValue: T;
 
     // get accessor
-    get value(): any {
+    get value(): T {
       return this.innerValue;
     }
 
     // set accessor including call the onchange callback
-    set value(v: any) {
+    set value(v: T) {
       if (v !== this.innerValue) {
         this.innerValue = v;
         this.onChangeCallback(v);
