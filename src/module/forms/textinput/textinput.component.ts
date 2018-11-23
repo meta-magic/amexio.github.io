@@ -233,7 +233,7 @@ description : Set enable / disable popover.
 
   @Input('name') name: string;
 
-  @ViewChild('ref', { read: ElementRef }) public inputRef: ElementRef;
+  @ViewChild('ref') public inputRef: any;
   /*
   Events
   name : onBlur
