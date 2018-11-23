@@ -1,4 +1,4 @@
-<form name="fname" #amexioForm="ngForm" class="form-container form-group" (window:resize)="onResize()">
+<form name="fname" class="form-container form-group" (window:resize)="onResize()">
 
     <header #formHeader class="form-header" [style.padding]="headerPadding" *ngIf="header" [ngClass]="findformStyleClass()">
         <ng-content select="amexio-form-header"></ng-content>
@@ -11,7 +11,7 @@
     <footer #formFooter class="form-footer" [style.padding]="footerPadding" [ngClass]="{'flex-start':(footeralign=='left'),'flex-end':(footeralign=='right'),'flex-center':(footeralign=='center')}">
         <ng-content select="amexio-form-action"></ng-content>
         <br/>
-        <div *ngIf="!amexioForm.form.valid" style="padding: 5px;">
+        <div *ngIf="!form.valid" style="padding: 5px;">
             <button class="button" [attr.title]="'click'" (click)="showErrors($event)" [ngClass]="'button-warning button-small button-round'">
                         <span class="button-text">
                           <span style="padding-right: 5px;" *ngIf="icon">

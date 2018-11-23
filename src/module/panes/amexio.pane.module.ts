@@ -4,7 +4,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ModuleWithProviders, NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AmexioFooterComponent } from './action/pane.action.footer';
@@ -38,6 +38,7 @@ import { AmexioFormsModule } from '../forms/amexio.forms.module';
 import { CommonDataService } from '../services/data/common.data.service';
 import { DeviceQueryService } from '../services/device/device.query.service';
 import { IconLoaderService } from '../services/icon/icon.service';
+import { AmexioFormGroupComponent } from './form/form.group.component';
 
 export * from './action/pane.action.footer';
 export * from './body/pane.action.body';
@@ -90,6 +91,7 @@ const PANE_COMPONENTS = [
   AmexioFormActionComponent,
   AmexioFormHeaderComponent,
   AmexioFormBodyComponent,
+  AmexioFormGroupComponent,
   AmexioTabActionComponent,
   AmexiotimelineComponent,
   AmexiotimelineeventComponent,
@@ -99,6 +101,7 @@ const PANE_COMPONENTS = [
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     AmexioFormsModule,
     HttpClientModule,
   ],

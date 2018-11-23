@@ -9,9 +9,11 @@ import {
   ElementRef, EventEmitter, Input, OnInit, Output, QueryList, ViewChild,
    ViewChildren} from '@angular/core';
 import { FormGroup , NgForm, NgModel} from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { AmexioButtonComponent } from './../../forms/buttons/button.component';
 import { AmexioFormActionComponent } from './form.action.component';
 import { AmexioFormBodyComponent } from './form.body.component';
+import { AmexioFormGroupComponent } from './form.group.component';
 import { AmexioFormHeaderComponent } from './form.header.component';
 
 @Component({
@@ -152,13 +154,13 @@ description : Event fired if showError msg info button is clicked
   @ContentChildren(AmexioButtonComponent, { descendants: true }) btns: QueryList<AmexioButtonComponent>;
   buttons: AmexioButtonComponent[];
 
-  @ViewChild('amexioForm') amexioForm: FormGroup;
-
   @ViewChild(NgForm) public form: NgForm;
 
   @ContentChildren(NgModel, { descendants: true }) public models: QueryList<NgModel>;
 
-  constructor() {
+  @ContentChildren(AmexioFormGroupComponent, { descendants: true }) public fb: QueryList<AmexioFormGroupComponent>;
+
+  constructor(public formBuilder: FormBuilder) {
     this.checkForm = false;
     this.isFormValid = false;
     this.showDialogue = false;
@@ -215,13 +217,29 @@ description : Event fired if showError msg info button is clicked
   }
 
   ngAfterViewInit() {
+
     const ngContentModels = this.models.toArray();
-    ngContentModels.forEach((model) => {
-      if (!model.name || model.name === null) {
-        model.name = model.valueAccessor['name'];
-      }
-      this.form.addControl(model);
+    const innerModelArray: any[] = [];
+    this.fb.forEach((fbnode: any) => {
+        const modelarray = fbnode.modelsarray;
+        const fgc = {};
+        modelarray.forEach((m: any) => {
+            fgc[m.name] = m.control;
+            innerModelArray.push(m);
+        });
+        const grp = this.formBuilder.group(fgc);
+        this.form.form.registerControl(fbnode.group, grp);
     });
+
+    ngContentModels.forEach((model) => {
+      if (!this.isFieldPresentInParentAndChildBoth(innerModelArray, model.name )) {
+        if (!model.name || model.name === null) {
+          model.name = model.valueAccessor['name'];
+        }
+        this.form.control.registerControl(model.name, model.control);
+      }
+    });
+    this.form.form.updateValueAndValidity();
     this.btns.toArray().forEach((btnCom) => {
     if ((btnCom.formbind === this.fname) && !btnCom.disabled) {
       this.buttons.push(btnCom);
@@ -231,13 +249,22 @@ description : Event fired if showError msg info button is clicked
     this.onResize();
   }
 
+  isFieldPresentInParentAndChildBoth(innerModelArray: any[], name: string): boolean {
+    let isPresent = false;
+    innerModelArray.forEach((innerModel: any) => {
+      if (name === innerModel.name) {
+         isPresent = true;
+      }
+    });
+    return isPresent;
+  }
   closeDialogue() {
     this.showDialogue = !this.showDialogue;
   }
   // THIS METHOD IS USED FOR ADDING MSG
   addErrorMsg() {
-    if (this.amexioForm && this.amexioForm.status === 'INVALID') {
-      for ( const [key, value] of Object.entries( this.amexioForm.controls ) ) {
+    if (this.form && this.form.status === 'INVALID') {
+      for ( const [key, value] of Object.entries( this.form.controls ) ) {
         if (value && value.status === 'INVALID') {
           const errorObject: any = {};
           errorObject['label'] = key;
@@ -261,7 +288,7 @@ description : Event fired if showError msg info button is clicked
 
   // THIS METHOD IS USED FOR DISABLE BUTTON
   validateForm() {
-    if (this.amexioForm && this.amexioForm.status === 'INVALID') {
+    if (this.form && this.form.status === 'INVALID') {
       this.disableButton(true);
     } else {
      this.disableButton(false);
