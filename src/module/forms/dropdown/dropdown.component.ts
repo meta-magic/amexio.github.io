@@ -236,7 +236,7 @@ name : place-holder
 datatype : string
 version : 4.0 onwards
 default :
-description : 	Show place-holder inside dropdown component*/
+description : Show place-holder inside dropdown component*/
   @Input('place-holder') placeholder = '';
   /*
 Properties
