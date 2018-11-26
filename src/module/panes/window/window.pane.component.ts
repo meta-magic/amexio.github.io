@@ -269,7 +269,6 @@ description : Context Menu provides the list of menus on right click.
   absoluteposition = false;
   positionclass: string;
   globalListenFunc: () => void;
-  id = '';
   // THIS METHOD IS USED FOR SETTING CSS CLASSSES
 
   sizeChange() {
@@ -287,7 +286,6 @@ description : Context Menu provides the list of menus on right click.
     }
   }
   ngOnInit() {
-    this.id = Math.random() + 'tt' ;
     if (this.showWindow) {
       this.show = this.showWindow;
     }
