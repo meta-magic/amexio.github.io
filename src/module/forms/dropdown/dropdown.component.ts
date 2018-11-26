@@ -603,7 +603,6 @@ description : Set enable / disable popover.
   }
   // From ControlValueAccessor interface
   writeValue(value: any) {
-    console.log(this.displayValue);
     if (!this.allowblank) {
       if (value != null) {
         this.writeChangedValue(value);

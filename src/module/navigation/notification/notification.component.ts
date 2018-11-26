@@ -26,6 +26,15 @@ export class AmexioNotificationComponent implements OnInit {
   @Input('data') messageData: any[];
   /*
 Properties
+name : icon
+datatype : any
+version : 5.3.1 onwards
+default : none
+description : icon to the notification .
+*/
+  @Input('icon') icon: any;
+  /*
+Properties
 name : closable
 datatype : boolean
 version : 4.0 onwards
@@ -113,9 +122,9 @@ description : Position of notification window vertically:
 
   private notificationVertialCss = 'notification-vertical-';
 
-  private  notificationHorizontalCss = ' notification-horizontal-';
+  private notificationHorizontalCss = ' notification-horizontal-';
 
- @ContentChild('amexioNotificationTemp') notificationTemplate: TemplateRef<any>;
+  @ContentChild('amexioNotificationTemp') notificationTemplate: TemplateRef<any>;
 
   // Escape Key Functionality
   @HostListener('window:keyup.esc', ['$event']) keyEvent(event: KeyboardEvent) {

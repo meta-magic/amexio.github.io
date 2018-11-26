@@ -1539,6 +1539,7 @@ textarea:required {
   min-width: 250px;
   text-align: start;
   border-radius: 2px;
+  font-size: 17px;
   z-index: 1;
   display: block; }
   .notification i {
@@ -6249,7 +6250,11 @@ verticalalign-tableft {
   grid-template-areas: 'north north north north north north' 'east center center center center west' 'south south south south south south';
   grid-gap: 2px;
   padding: 2px;
+<<<<<<< HEAD
   grid-template-columns: repeat(6, 1fr); }
+=======
+  grid-template-columns: 16.66% 16.66% 16.66% 16.66% 16.66% 16.66%; }
+>>>>>>> 1ff6061aa91a75a73aea169427831896d37eb1d3
 
 .borderlayout-container-N-E-C-W-S aside {
   border: 0px solid none; }
@@ -6260,7 +6265,11 @@ verticalalign-tableft {
   grid-template-areas: 'north north north north north north' 'east center center center center center' 'south south south south south south';
   grid-gap: 2px;
   padding: 2px;
+<<<<<<< HEAD
   grid-template-columns: repeat(6, 1fr); }
+=======
+  grid-template-columns: 16.66% 16.66% 16.66% 16.66% 16.66% 16.66%; }
+>>>>>>> 1ff6061aa91a75a73aea169427831896d37eb1d3
 
 .borderlayout-container-N-E-C-S aside {
   border: 0px solid none; }
@@ -6271,7 +6280,11 @@ verticalalign-tableft {
   grid-template-areas: 'north north north north north north' 'center center center center center west' 'south south south south south south';
   grid-gap: 2px;
   padding: 2px;
+<<<<<<< HEAD
   grid-template-columns: repeat(6, 1fr); }
+=======
+  grid-template-columns: 16.66% 16.66% 16.66% 16.66% 16.66% 16.66%; }
+>>>>>>> 1ff6061aa91a75a73aea169427831896d37eb1d3
 
 .borderlayout-container-N-C-W-S aside {
   border: 0px solid none; }
@@ -6282,7 +6295,11 @@ verticalalign-tableft {
   grid-template-areas: 'east center center center center west' 'south south south south south south';
   grid-gap: 2px;
   padding: 2px;
+<<<<<<< HEAD
   grid-template-columns: repeat(6, 1fr); }
+=======
+  grid-template-columns: 16.66% 16.66% 16.66% 16.66% 16.66% 16.66%; }
+>>>>>>> 1ff6061aa91a75a73aea169427831896d37eb1d3
 
 .borderlayout-container-E-C-W-S aside {
   border: 0px solid none; }
@@ -6293,7 +6310,11 @@ verticalalign-tableft {
   grid-template-areas: 'north north north north north north' 'center center center center center center' 'south south south south south south';
   grid-gap: 2px;
   padding: 2px;
+<<<<<<< HEAD
   grid-template-columns: repeat(6, 1fr); }
+=======
+  grid-template-columns: 16.66% 16.66% 16.66% 16.66% 16.66% 16.66%; }
+>>>>>>> 1ff6061aa91a75a73aea169427831896d37eb1d3
 
 .borderlayout-container-N-C-S aside {
   border: 0px solid none; }
@@ -6304,7 +6325,11 @@ verticalalign-tableft {
   grid-template-areas: 'east center center center center center' 'south south south south south south';
   grid-gap: 2px;
   padding: 2px;
+<<<<<<< HEAD
   grid-template-columns: repeat(6, 1fr); }
+=======
+  grid-template-columns: 16.66% 16.66% 16.66% 16.66% 16.66% 16.66%; }
+>>>>>>> 1ff6061aa91a75a73aea169427831896d37eb1d3
 
 .borderlayout-container-E-C-S aside {
   border: 0px solid none; }
@@ -6315,7 +6340,11 @@ verticalalign-tableft {
   grid-template-areas: 'center center center center center west' 'south south south south south south';
   grid-gap: 2px;
   padding: 2px;
+<<<<<<< HEAD
   grid-template-columns: repeat(6, 1fr); }
+=======
+  grid-template-columns: 16.66% 16.66% 16.66% 16.66% 16.66% 16.66%; }
+>>>>>>> 1ff6061aa91a75a73aea169427831896d37eb1d3
 
 .borderlayout-container-C-W-S aside {
   border: 0px solid none; }
@@ -6326,7 +6355,11 @@ verticalalign-tableft {
   grid-template-areas: 'north north north north north north' 'center center center center center center';
   grid-gap: 2px;
   padding: 2px;
+<<<<<<< HEAD
   grid-template-columns: repeat(6, 1fr); }
+=======
+  grid-template-columns: 16.66% 16.66% 16.66% 16.66% 16.66% 16.66%; }
+>>>>>>> 1ff6061aa91a75a73aea169427831896d37eb1d3
 
 .borderlayout-container-N-C aside {
   border: 0px solid none; }
@@ -6337,7 +6370,11 @@ verticalalign-tableft {
   grid-template-areas: 'center center center center center center' 'south south south south south south';
   grid-gap: 2px;
   padding: 2px;
+<<<<<<< HEAD
   grid-template-columns: repeat(6, 1fr); }
+=======
+  grid-template-columns: 16.66% 16.66% 16.66% 16.66% 16.66% 16.66%; }
+>>>>>>> 1ff6061aa91a75a73aea169427831896d37eb1d3
 
 .borderlayout-container-C-S aside {
   border: 0px solid none; }

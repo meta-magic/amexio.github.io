@@ -1496,6 +1496,7 @@ textarea:required {
   min-width: 250px;
   text-align: start;
   border-radius: 2px;
+  font-size: 17px;
   z-index: 1;
   display: block; }
   .notification i {
