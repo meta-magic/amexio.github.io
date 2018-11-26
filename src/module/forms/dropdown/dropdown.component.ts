@@ -661,7 +661,6 @@ description : Set enable / disable popover.
   // THIS METHOD GENERATE RANDOM STRING
   generateName() {
     if (!this.name && this.fieldlabel) {
-      console.log('sassas');
       this.name = this.fieldlabel.replace(/\s/g, '');
     } else if (!this.name && !this.fieldlabel) {
       this.name = 'textinput-' + this.getRandomString();
