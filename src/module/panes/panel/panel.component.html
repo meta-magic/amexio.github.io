@@ -1,4 +1,4 @@
-<div #id [ngStyle]="panelWidth" (contextmenu)="loadContextMenu({event:$event,ref:id})">
+<div #id style="width: 100%" (contextmenu)="loadContextMenu({event:$event,ref:id})">
     <ng-container *ngIf="collapsible; else elseBlock">
         <div *ngIf="header" class="panel-accordion" (click)="onTabClick(btn1)">
             <amexio-toolbar>
@@ -32,7 +32,7 @@
         </div>
     </ng-template>
 
-    <div #paneldiv class="panel-panel" [ngClass]="{'panel-box-border':border}" [ngStyle]="panelstyle" [style.height.px]="height">
+    <div class="panel-panel" [ngClass]="{'panel-box-border':border}" [ngStyle]="panelstyle" [style.height.px]="height">
         <ng-content></ng-content>
     </div>
 

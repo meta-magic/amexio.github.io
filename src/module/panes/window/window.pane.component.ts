@@ -10,7 +10,7 @@
  */
 import {
   Component, ContentChildren, ElementRef, EventEmitter, HostListener,
-  Input, OnChanges, OnInit, Output, QueryList, SimpleChanges, ViewChild } from '@angular/core';
+  Input, OnChanges, OnDestroy, OnInit, Output, QueryList, Renderer2, SimpleChanges, ViewChild } from '@angular/core';
 import { AmexioWindowHeaderComponent } from './window.pane.header.component';
 export enum KEY_CODE_window {
   esc = 27,
@@ -74,7 +74,7 @@ export enum KEY_CODE_window {
   </span>
   `,
 })
-export class AmexioWindowPaneComponent implements OnChanges, OnInit {
+export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy {
   /*
    Properties
    name : vertical-position
@@ -245,7 +245,7 @@ description : Context Menu provides the list of menus on right click.
   @Output() close: EventEmitter<any> = new EventEmitter<any>();
   styleClass: string;
 
-  constructor() {
+  constructor(private renderer: Renderer2) {
     this.header = true;
     this.closable = true;
     this.closeonescape = true;
@@ -268,6 +268,7 @@ description : Context Menu provides the list of menus on right click.
   mouseLocation: { left: number; top: number } = { left: 0, top: 0 };
   absoluteposition = false;
   positionclass: string;
+  globalListenFunc: () => void;
   // THIS METHOD IS USED FOR SETTING CSS CLASSSES
 
   sizeChange() {
@@ -284,17 +285,7 @@ description : Context Menu provides the list of menus on right click.
 
     }
   }
-
-  // Escape Key Functionality
-  @HostListener('window:keyup', ['$event'])
-  keyEvent(event: KeyboardEvent) {
-    if (this.closeonescape === true && event.keyCode === KEY_CODE_window.esc) {
-        this.showWindow = false;
-        this.showChange.emit(false);
-    }
-  }
   ngOnInit() {
-
     if (this.showWindow) {
       this.show = this.showWindow;
     }
@@ -322,10 +313,16 @@ description : Context Menu provides the list of menus on right click.
   }
 
   ngOnChanges(changes: SimpleChanges) {
-
-    // reassign show
-    if (changes['showWindow']) {
-      this.show = changes.showWindow.currentValue;
+    if (changes['show']) {
+      this.show = changes.show.currentValue;
+      if (this.show && this.closeonescape) {
+        this.globalListenFunc = this.renderer.listen('document', 'keyup.esc', (e: any) => {
+          this.showWindow = false;
+          this.showChange.emit(false);
+        });
+      } else if (this.globalListenFunc) {
+          this.globalListenFunc();
+      }
     }
 
   }
@@ -393,5 +390,11 @@ description : Context Menu provides the list of menus on right click.
       'box-shadow': '1px 1px 2px #000000',
       'width': '15%',
     };
+  }
+
+  ngOnDestroy() {
+    if (this.globalListenFunc) {
+      this.globalListenFunc();
+    }
   }
 }
