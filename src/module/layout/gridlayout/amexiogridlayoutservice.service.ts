@@ -7,27 +7,29 @@ import { AmexioGridModel } from './gridmodel.component';
 export class AmexioGridLayoutService {
   servicevar: any;
   layoutData: any[] = [];
-  layoutcount: any;
   devicevar: any;
-  abc: any;
+  count: number;
+
   constructor() {
   }
   createLayout(key: string, devicetype?: string): any {
     this.servicevar = key;
     this.devicevar = devicetype;
     if (this.layoutData.length <= 0) {
-    this.modelData();
+      this.modelData();
     } else if (!this.layoutData.find((obj) => obj.name === this.servicevar)) {
-    this.modelData();
+      this.modelData();
     }
     return this;
   }
   modelData() {
-       const amexiogridmodel = new AmexioGridModel();
-       amexiogridmodel.name = this.servicevar;
-       this.layoutData.push(amexiogridmodel);
-     }
+    const amexiogridmodel = new AmexioGridModel();
+    amexiogridmodel.name = this.servicevar;
+    this.layoutData.push(amexiogridmodel);
+  }
+
   addlayout(layout: any[]): any {
+    this.count = layout.length;
     const counter = 0;
     let deviceName = '';
     this.layoutData.forEach((obj: any) => {

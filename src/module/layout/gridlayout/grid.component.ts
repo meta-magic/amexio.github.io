@@ -23,16 +23,20 @@ export class AmexioGridComponent implements AfterContentInit, OnInit {
   screenWidth: any;
   containerClass: any;
   className: string;
+  colCount: number;
+  templateCol: number;
   constructor(public _gridlayoutService: AmexioGridLayoutService) {
   }
   ngOnInit() {
+    this.colCount = this._gridlayoutService.count;
+    this.templateCol = 100 / this._gridlayoutService.count;
     this.containerClass = '';
     this.className = '';
     this.cssGenreration(this._gridlayoutService.getLayoutData(this.layout));
   }
 
   getCssAttribute(): string {
-    return 'display: grid;' + ' grid-gap: 5px;';
+    return 'display: grid;' + ' grid-gap: 5px;' + 'grid-template-columns: repeat(' + this.colCount + ',' + this.templateCol + '%);';
   }
   insertStyleSheetRuleParent(ruleText: any) {
     const sheets: any = document.styleSheets;
