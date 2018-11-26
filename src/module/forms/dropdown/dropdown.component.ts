@@ -237,7 +237,7 @@ datatype : string
 version : 4.0 onwards
 default :
 description : 	Show place-holder inside dropdown component*/
-  @Input('place-holder') placeholder: string;
+  @Input('place-holder') placeholder = '';
   /*
 Properties
 name : disabled
@@ -323,7 +323,7 @@ description : Set enable / disable popover.
   ngOnInit() {
     this.isValid = this.allowblank;
     this.isComponentValid.emit(this.allowblank);
-    if (this.placeholder === '' || this.placeholder) {
+    if (this.placeholder === '') {
       this.placeholder = 'Choose Option';
     }
     if (this.httpmethod && this.httpurl) {
