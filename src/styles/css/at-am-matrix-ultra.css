@@ -4281,7 +4281,7 @@ header .billboard .content-button {
   grid-template-areas: 'north north north north north north' 'east center center center center west' 'south south south south south south';
   grid-gap: 2px;
   padding: 2px;
-  grid-template-columns: 16.66% 16.66% 16.66% 16.66% 16.66% 16.66%; }
+  grid-template-columns: repeat(6, 1fr); }
 
 .borderlayout-container-N-E-C-W-S aside {
   border: 0px solid none; }
@@ -4292,7 +4292,7 @@ header .billboard .content-button {
   grid-template-areas: 'north north north north north north' 'east center center center center center' 'south south south south south south';
   grid-gap: 2px;
   padding: 2px;
-  grid-template-columns: 16.66% 16.66% 16.66% 16.66% 16.66% 16.66%; }
+  grid-template-columns: repeat(6, 1fr); }
 
 .borderlayout-container-N-E-C-S aside {
   border: 0px solid none; }
@@ -4303,7 +4303,7 @@ header .billboard .content-button {
   grid-template-areas: 'north north north north north north' 'center center center center center west' 'south south south south south south';
   grid-gap: 2px;
   padding: 2px;
-  grid-template-columns: 16.66% 16.66% 16.66% 16.66% 16.66% 16.66%; }
+  grid-template-columns: repeat(6, 1fr); }
 
 .borderlayout-container-N-C-W-S aside {
   border: 0px solid none; }
@@ -4314,7 +4314,7 @@ header .billboard .content-button {
   grid-template-areas: 'east center center center center west' 'south south south south south south';
   grid-gap: 2px;
   padding: 2px;
-  grid-template-columns: 16.66% 16.66% 16.66% 16.66% 16.66% 16.66%; }
+  grid-template-columns: repeat(6, 1fr); }
 
 .borderlayout-container-E-C-W-S aside {
   border: 0px solid none; }
@@ -4325,7 +4325,7 @@ header .billboard .content-button {
   grid-template-areas: 'north north north north north north' 'center center center center center center' 'south south south south south south';
   grid-gap: 2px;
   padding: 2px;
-  grid-template-columns: 16.66% 16.66% 16.66% 16.66% 16.66% 16.66%; }
+  grid-template-columns: repeat(6, 1fr); }
 
 .borderlayout-container-N-C-S aside {
   border: 0px solid none; }
@@ -4336,7 +4336,7 @@ header .billboard .content-button {
   grid-template-areas: 'east center center center center center' 'south south south south south south';
   grid-gap: 2px;
   padding: 2px;
-  grid-template-columns: 16.66% 16.66% 16.66% 16.66% 16.66% 16.66%; }
+  grid-template-columns: repeat(6, 1fr); }
 
 .borderlayout-container-E-C-S aside {
   border: 0px solid none; }
@@ -4347,7 +4347,7 @@ header .billboard .content-button {
   grid-template-areas: 'center center center center center west' 'south south south south south south';
   grid-gap: 2px;
   padding: 2px;
-  grid-template-columns: 16.66% 16.66% 16.66% 16.66% 16.66% 16.66%; }
+  grid-template-columns: repeat(6, 1fr); }
 
 .borderlayout-container-C-W-S aside {
   border: 0px solid none; }
@@ -4358,7 +4358,7 @@ header .billboard .content-button {
   grid-template-areas: 'north north north north north north' 'center center center center center center';
   grid-gap: 2px;
   padding: 2px;
-  grid-template-columns: 16.66% 16.66% 16.66% 16.66% 16.66% 16.66%; }
+  grid-template-columns: repeat(6, 1fr); }
 
 .borderlayout-container-N-C aside {
   border: 0px solid none; }
@@ -4369,7 +4369,7 @@ header .billboard .content-button {
   grid-template-areas: 'center center center center center center' 'south south south south south south';
   grid-gap: 2px;
   padding: 2px;
-  grid-template-columns: 16.66% 16.66% 16.66% 16.66% 16.66% 16.66%; }
+  grid-template-columns: repeat(6, 1fr); }
 
 .borderlayout-container-C-S aside {
   border: 0px solid none; }
