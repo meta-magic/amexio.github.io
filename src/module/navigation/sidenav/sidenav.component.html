@@ -25,6 +25,7 @@
                             [active]="(node && node.active)" 
                             [icon]="node.icon"
                             [badge]="node.badge"
+                            [enable-drag]="enabledrag"
                             (nodeClick)="onClick($event)"
                             (onDrag)="getNodeDragEvent($event)"
                             [expand]="node?.expand"
