@@ -21,7 +21,7 @@ const noop = () => {
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioTextAreaComponent), multi: true,
   }, {
     provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioTextAreaComponent), multi: true,
-}],
+  }],
 })
 export class AmexioTextAreaComponent extends AmexioFormValidator implements ControlValueAccessor, OnInit, Validators {
 
@@ -74,7 +74,7 @@ description : Sets if field is required
 
   @Output() isComponentValid: any = new EventEmitter<any>();
 
-  @ViewChild('ref', {read: ElementRef}) public inputRef: ElementRef;
+  @ViewChild('ref', { read: ElementRef }) public inputRef: ElementRef;
 
   // Placeholders for the callbacks which are later provided
   // by the Control Value Accessor
@@ -289,23 +289,24 @@ description : Set enable / disable popover.
   }
 
   validateClass(inp: any): any {
-    let classObj;
-    if (!this.allowblank) {
-      if (this.innerValue === null || this.innerValue === '') {
-        this.noInnerValue(inp);
-      } else if (inp.touched && !this.allowblank && (this.value === '' || this.value === null)) {
-        classObj = this.getCssClass();
-        this.isValid = false;
+    if (inp) {
+      let classObj;
+      if (!this.allowblank) {
+        if (this.innerValue === null || this.innerValue === '') {
+          this.noInnerValue(inp);
+        } else if (inp.touched && !this.allowblank && (this.value === '' || this.value === null)) {
+          classObj = this.getCssClass();
+          this.isValid = false;
+        } else {
+          this.otherValidation(inp);
+        }
       } else {
-        this.otherValidation(inp);
+        this.isValid = true;
       }
-    } else {
-      this.isValid = true;
+      this.isComponentValid.emit(this.isValid);
+      return classObj;
     }
-    this.isComponentValid.emit(this.isValid);
-    return classObj;
   }
-
   onInput(input: any) {
     this.componentClass = this.validateClass(input);
   }
@@ -342,25 +343,25 @@ description : Set enable / disable popover.
 
   public validate(c: FormControl) {
     return ((!this.allowblank && (this.value && this.value.length > 0)) || this.allowblank) ? null : {
-        jsonParseError: {
-            valid: true,
-        },
+      jsonParseError: {
+        valid: true,
+      },
     };
-}
- // THIS METHOD GENERATE RANDOM STRING
- generateName() {
-  if (!this.name && this.fieldlabel ) {
-    this.name = this.fieldlabel.replace(/\s/g, '');
-  } else if ( !this.name && !this.fieldlabel) {
-    this.name = 'textinput-' + this.getRandomString();
   }
-}
-getRandomString(): string {
-  const possibleCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-  let randomString = '';
-  for (let i = 0; i < 6; i++) {
-    randomString += possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
+  // THIS METHOD GENERATE RANDOM STRING
+  generateName() {
+    if (!this.name && this.fieldlabel) {
+      this.name = this.fieldlabel.replace(/\s/g, '');
+    } else if (!this.name && !this.fieldlabel) {
+      this.name = 'textinput-' + this.getRandomString();
+    }
   }
-  return randomString;
-}
+  getRandomString(): string {
+    const possibleCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    let randomString = '';
+    for (let i = 0; i < 6; i++) {
+      randomString += possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
+    }
+    return randomString;
+  }
 }
