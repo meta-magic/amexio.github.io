@@ -6217,69 +6217,128 @@ verticalalign-tableft {
   box-shadow: 0 3px 0 #ffffb8; }
 
 /** panel - Structure CSS **/
-.timeline {
-  overflow: hidden; }
-
-.timeline-event {
-  position: relative;
-  width: 100%;
+/* You can add global styles to this file, and also import other style files */
+amexio-layout amexio-layout-item {
   padding: 5px; }
 
-.timeline-event-container {
-  position: relative; }
+.timeline * {
+  box-sizing: border-box; }
 
-.timeline-event-container::before {
-  content: '';
+.card-container {
+  height: unset !important; }
+
+/* Timeline */
+.timeline {
+  padding: 20px;
+  position: relative;
+  display: block; }
+
+.timeline:before {
+  top: 40px;
+  bottom: 0;
   position: absolute;
-  margin-left: 15px;
-  height: 100%;
+  content: " ";
   width: 3px;
-  background: #ced4da; }
+  background-color: #eeeeee; }
 
-.timeline-event-icon {
+.timelineleft:before {
+  right: 2%;
+  margin-left: -1.5px; }
+
+.timelineright:before {
+  left: 2%;
+  margin-left: 0%; }
+
+.timelinecenter:before {
+  left: 50%;
+  margin-left: -1.5px; }
+
+.timeline .timeline-item {
+  margin-bottom: 20px;
   position: relative;
-  margin-top: .5%;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  box-shadow: 0 0 0 4px #ffff00, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05); }
-
-.timeline-event-contents {
-  display: flex; }
-
-.timeline-event-content {
-  position: relative;
-  padding: 1em;
   width: 100%;
-  margin: 0px 0px 10px 10px; }
+  display: block; }
 
-.timeline-event-content::before {
-  content: '';
+.timeline .timeline-item:before,
+.timeline .timeline-item:after {
+  content: "";
+  display: table; }
+
+.timeline .timeline-item:after {
+  clear: both; }
+
+.timeline .timeline-item .timeline-badge {
+  color: #fff;
+  width: 54px;
+  height: 54px;
+  line-height: 52px;
+  font-size: 22px;
+  text-align: center;
   position: absolute;
-  top: 16px;
-  right: 100%;
-  height: 0;
-  width: 0;
-  border: 7px solid transparent;
-  border-right: 7px solid #ffffb8; }
+  background-color: #333;
+  border: 3px solid #ffffff;
+  z-index: 100;
+  border-top-right-radius: 50%;
+  border-top-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  border-bottom-left-radius: 50%; }
 
-.timeline-event-content2 {
+.timeline-badge-center {
+  left: 50%;
+  margin-left: -25px; }
+
+.timeline-badge-left {
+  left: 0%;
+  margin-left: -11px; }
+
+.timeline-badge-right {
+  right: -0.75%; }
+
+.timeline .timeline-item .timeline-panel {
   position: relative;
-  padding: 1em;
-  width: 100%;
-  margin: 0px 0px 10px 10px; }
+  padding: 10px; }
 
-.timeline-event-icon .fa {
-  display: -webkit-box;
-  font: normal normal normal 14px/1 FontAwesome;
-  font-size: inherit;
-  display: block;
-  width: 24px t;
-  left: 60% !important;
-  margin-left: 10px;
-  margin-top: -12px;
-  margin-top: 30%;
-  padding-top: 3%; }
+.timeline .timeline-item .timeline-panel-center {
+  width: 45%; }
+
+.timeline .timeline-item .timeline-panel-left {
+  width: 96%; }
+
+.timeline .timeline-item .timeline-panel-right {
+  width: 96%; }
+
+.timeline .timeline-item .timeline-panel-border {
+  border: 1px solid #777;
+  border-radius: 2px;
+  -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175); }
+
+.timeline .timeline-item .timeline-panel-float-left {
+  float: left; }
+
+.timeline-panel-float-left:before {
+  position: absolute;
+  right: -16px;
+  display: inline-block;
+  border-top: 16px solid transparent;
+  border-left: 16px solid #777;
+  border-right: 0 solid #777;
+  border-bottom: 16px solid transparent;
+  content: " "; }
+
+.timeline .timeline-item .timeline-panel-float-right {
+  float: right; }
+
+.timeline-panel-float-right:before {
+  left: -16px;
+  transform: rotate(180deg);
+  position: absolute;
+  display: inline-block;
+  border-top: 16px solid transparent;
+  border-left: 16px solid #777;
+  border-right: 0 solid #777;
+  border-bottom: 16px solid transparent;
+  content: " "; }
 
 /****************************************************************************
     Component Name : Border Layout

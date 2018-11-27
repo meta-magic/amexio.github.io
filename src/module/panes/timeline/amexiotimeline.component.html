@@ -1,7 +1,5 @@
-<div class="timeline">
-  <div class="timeline-event">
-    <div class="timeline-event-container">
-        <ng-content></ng-content>
-    </div>
-  </div>
+<div class='timeline' [ngClass]="{'timelinecenter': (alignment == 'center'), 
+                                'timelineleft': (alignment == 'left'), 
+                                'timelineright': (alignment == 'right')}">
+  <ng-content></ng-content>
 </div>
