@@ -49,6 +49,16 @@
   font-weight: bold;
  
 }
+.large-24{
+  font-size: $large24FontSize;
+  line-height: 40px;
+}
+
+.large-24-bold{
+  font-size: $large24FontSize;
+  font-weight: bold;
+  line-height: 40px;
+}
 
 .large-44{
   font-size: $large44FontSize;
@@ -71,7 +81,18 @@
   font-weight: bold;
   line-height: 55px;
 }
+.large-54{
+  font-size: $large54FontSize;
+  line-height: 60px;
 
+}
+
+.large-54-bold{
+  font-size: $large54FontSize;
+  font-weight: bold;
+  line-height: 58px;
+
+}
 .large-56{
   font-size: $large56FontSize;
   line-height: 60px;
@@ -84,7 +105,42 @@
   line-height: 60px;
 
 }
+.large-60{
+  font-size: $large60FontSize;
+  line-height: 56px;
 
+}
+
+.large-60-bold{
+  font-size: $large60FontSize;
+  font-weight: bold;
+  line-height: 56px;
+
+}
+.large-64{
+  font-size: $large64FontSize;
+  line-height: 58px;
+
+}
+
+.large-64-bold{
+  font-size: $large64FontSize;
+  font-weight: bold;
+  line-height: 58px;
+
+}
+.large-68{
+  font-size: $large68FontSize;
+  line-height: 60px;
+
+}
+
+.large-68-bold{
+  font-size: $large68FontSize;
+  font-weight: bold;
+  line-height: 60px;
+
+}
 .large-78{
   font-size: $large78FontSize;
   line-height: 70px;
@@ -95,4 +151,25 @@
   font-size: $large78FontSize;
   font-weight: bold;
   line-height: 70px;
+}
+.large-9vw{
+  font-size: $large9vwFontSize;
+  line-height: 1;
+}
+
+.large-9vw-bold{
+  font-size: $large9vwFontSize;
+  font-weight: bold;
+  line-height: 1.5;
+}
+
+.large-4vw{
+  font-size: $large4vwFontSize;
+  line-height: 1;
+}
+
+.large-4vw-bold{
+  font-size: $large4vwFontSize;
+  font-weight: bold;
+  line-height: 1;
 }

@@ -1933,6 +1933,15 @@ input:checked + .toggle-slider:before {
   font-size: 18px;
   font-weight: bold; }
 
+.large-24 {
+  font-size: 24px;
+  line-height: 40px; }
+
+.large-24-bold {
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 40px; }
+
 .large-44 {
   font-size: 44px;
   line-height: 45px; }
@@ -1950,12 +1959,48 @@ input:checked + .toggle-slider:before {
   font-weight: bold;
   line-height: 55px; }
 
+.large-54 {
+  font-size: 54px;
+  line-height: 60px; }
+
+.large-54-bold {
+  font-size: 54px;
+  font-weight: bold;
+  line-height: 58px; }
+
 .large-56 {
   font-size: 56px;
   line-height: 60px; }
 
 .large-56-bold {
   font-size: 56px;
+  font-weight: bold;
+  line-height: 60px; }
+
+.large-60 {
+  font-size: 60px;
+  line-height: 56px; }
+
+.large-60-bold {
+  font-size: 60px;
+  font-weight: bold;
+  line-height: 56px; }
+
+.large-64 {
+  font-size: 64px;
+  line-height: 58px; }
+
+.large-64-bold {
+  font-size: 64px;
+  font-weight: bold;
+  line-height: 58px; }
+
+.large-68 {
+  font-size: 68px;
+  line-height: 60px; }
+
+.large-68-bold {
+  font-size: 68px;
   font-weight: bold;
   line-height: 60px; }
 
@@ -1967,6 +2012,24 @@ input:checked + .toggle-slider:before {
   font-size: 78px;
   font-weight: bold;
   line-height: 70px; }
+
+.large-9vw {
+  font-size: 9vw;
+  line-height: 1; }
+
+.large-9vw-bold {
+  font-size: 9vw;
+  font-weight: bold;
+  line-height: 1.5; }
+
+.large-4vw {
+  font-size: 4.2vw;
+  line-height: 1; }
+
+.large-4vw-bold {
+  font-size: 4.2vw;
+  font-weight: bold;
+  line-height: 1; }
 
 /****************************************************************************
     Component Name : Box
