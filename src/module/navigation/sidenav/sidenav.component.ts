@@ -272,6 +272,10 @@ export class AmexioSideNavComponent implements OnInit {
     }
   }
 
+  getNodeDragEvent(event: any) {
+   this.onDrag.emit(event);
+  }
+
   @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
   public onElementOutClick(targetElement: HTMLElement) {
     let parentFound = false;

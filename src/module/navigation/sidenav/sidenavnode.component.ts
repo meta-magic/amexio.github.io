@@ -138,7 +138,7 @@ export class SideNavNodeComponent implements OnInit {
    description : Name of key for child array name inside response data to display on ui.
    */
   @Input('child-array-key') childarraykey: string;
-  expand: boolean;
+  @Input() expand = false;
   constructor() {
     this.displaykey = 'text';
     this.childarraykey = 'children';

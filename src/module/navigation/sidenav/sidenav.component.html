@@ -26,6 +26,8 @@
                             [icon]="node.icon"
                             [badge]="node.badge"
                             (nodeClick)="onClick($event)"
+                            (onDrag)="getNodeDragEvent($event)"
+                            [expand]="node?.expand"
                             [label]="node[displaykey]"
                             [node]="node"
                             [data]="node[childarraykey]">
