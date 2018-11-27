@@ -292,9 +292,7 @@ description : Set enable / disable popover.
     if (inp) {
       let classObj;
       if (!this.allowblank) {
-        if (this.innerValue === null || this.innerValue === '') {
-          this.noInnerValue(inp);
-        } else if (inp.touched && !this.allowblank && (this.value === '' || this.value === null)) {
+        if (inp.touched && !this.allowblank && (this.value === '' || this.value === null)) {
           classObj = this.getCssClass();
           this.isValid = false;
         } else {
