@@ -299,21 +299,21 @@ description : On field value change event
     this.onTouchedCallback();
     this.showToolTip = false;
     this.componentClass = this.validateComponent(input);
-    this.onBlur.emit(this.value);
+    this.onBlur.emit(this.innerValue);
   }
 
   onFocus() {
     this.showToolTip = true;
-    this.focus.emit(this.value);
+    this.focus.emit(this.innerValue);
   }
 
   onInput(input: any) {
     this.componentClass = this.validateComponent(input);
-    this.input.emit(this.value);
+    this.input.emit(this.innerValue);
   }
 
   onChangeEv() {
-    this.change.emit(this.value);
+    this.change.emit(this.innerValue);
   }
 
   // From ControlValueAccessor interface
@@ -391,7 +391,7 @@ description : On field value change event
     }
 
     isFieldValidate(): boolean {
-      return this.value && ((this.value.length >= this.minlength) || this.value.length > 0);
+      return this.innerValue && ((this.innerValue.length >= this.minlength) || this.innerValue.length > 0);
     }
 
     public validate(c: FormControl) {
