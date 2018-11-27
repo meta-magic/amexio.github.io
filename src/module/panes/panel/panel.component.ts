@@ -107,6 +107,8 @@ description : Height of panel must be in px ex.100, 250..
  */
   @Input('context-menu') contextmenu: any[];
 
+  @Input('content-align') contentAlign = 'left';
+
   @Input() parentRef: any;
   /*
 Events
