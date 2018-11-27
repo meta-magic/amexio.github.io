@@ -9,11 +9,10 @@
  Confirmation/Alert based on type, title, body user has configured.
  */
 
-import {Component, EventEmitter, HostListener, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
-
-export enum KEY_CODE {
-  esc = 27,
-}
+import {
+  Component, EventEmitter, HostListener, Input, OnChanges, OnDestroy, OnInit, Output, Renderer2,
+  SimpleChanges,
+} from '@angular/core';
 @Component({
   selector: 'amexio-dialogue', template: `
     <div class="root-window"
@@ -79,7 +78,7 @@ export enum KEY_CODE {
     </div>
   `,
 })
-export class AmexiodialoguePaneComponent implements OnChanges, OnInit {
+export class AmexiodialoguePaneComponent implements OnChanges, OnInit, OnDestroy {
 
   /*
    Properties
@@ -248,8 +247,9 @@ export class AmexiodialoguePaneComponent implements OnChanges, OnInit {
   @Output() close: EventEmitter<any> = new EventEmitter<any>();
   value = 0;
   defaultStyle: string;
+  globalListenFunc: () => void;
 
-  constructor() {
+  constructor(private renderer: Renderer2) {
     this.closable = true;
     this.secondaryactionlabel  = 'Cancel';
     this.primaryactionlabel   = 'Ok';
@@ -257,15 +257,6 @@ export class AmexiodialoguePaneComponent implements OnChanges, OnInit {
     this.buttonsize = 'default';
     this.buttontype = 'theme-color';
     this.closeonescape = true;
-  }
-
-  @HostListener('window:keyup', ['$event'])
-  keyEvent(event: KeyboardEvent) {
-    if (this.closeonescape === true && event.keyCode === KEY_CODE.esc) {
-        this.showdialogue = false ;
-        this.show = false;
-        this.showChange.emit(false);
-    }
   }
 
   ngOnInit() {
@@ -287,10 +278,17 @@ export class AmexiodialoguePaneComponent implements OnChanges, OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-
-    // reassign show
     if (changes['showdialogue']) {
       this.show = changes.showdialogue.currentValue;
+      if (this.show && this.closeonescape) {
+        this.globalListenFunc = this.renderer.listen('document', 'keyup.esc', (e: any) => {
+          this.showdialogue = false ;
+          this.show = false;
+          this.showChange.emit(false);
+        });
+      } else if (this.globalListenFunc) {
+        this.globalListenFunc();
+      }
     }
   }
 
@@ -321,6 +319,12 @@ export class AmexiodialoguePaneComponent implements OnChanges, OnInit {
       return this.buttontype;
     } else {
       return this.buttontype;
+    }
+  }
+
+  ngOnDestroy(): void {
+    if (this.globalListenFunc) {
+      this.globalListenFunc();
     }
   }
 
