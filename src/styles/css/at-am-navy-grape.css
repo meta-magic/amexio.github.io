@@ -405,7 +405,6 @@ button {
   outline: none;
   user-select: none;
   border: 1px solid #000080;
-  padding: .5rem 1rem;
   border-radius: 5px;
   transition: all .2s ease-in-out; }
 
@@ -1099,20 +1098,16 @@ button {
 
 .drodown-caret-down {
   position: absolute;
-  top: 21px;
   right: 0;
+  bottom: 2px;
   display: block;
   width: 38px;
-  height: 38px;
   line-height: 38px;
   text-align: center; }
 
 .dropdown-right {
   right: 0;
   margin-right: 10px; }
-
-.drodown-caret-down {
-  top: 35px; }
 
 /****************************************************************************
     Component Name : Input
@@ -4283,7 +4278,7 @@ header .billboard .content-button {
   cursor: pointer; }
 
 .tree-node-label-hover {
-  width: 100%; }
+  width: 99%; }
 
 .tree-badge {
   margin-left: 10px;

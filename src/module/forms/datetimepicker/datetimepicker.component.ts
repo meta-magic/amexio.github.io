@@ -3,8 +3,10 @@
  Component Selector :  <amexio-date-time-picker>
  Component Description : This component is flexible for both Date and time picker with all required configurations in Style.
  */
-import { ChangeDetectorRef, Component, ElementRef,
-EventEmitter, forwardRef, Input, OnInit, Output, Renderer2 } from '@angular/core';
+import {
+  ChangeDetectorRef, Component, ElementRef,
+  EventEmitter, forwardRef, Input, OnInit, Output, Renderer2,
+} from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
 import { ListBaseDatepickerComponent } from '../../base/list.base.datepicker.component';
 import { AmexioFormValidator } from './../form-validator/amexio.form.validator.component';
@@ -21,7 +23,7 @@ const noop = () => {
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioDateTimePickerComponent), multi: true,
   }, {
     provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioDateTimePickerComponent), multi: true,
-}],
+  }],
 })
 export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<string> implements OnInit, Validators {
   /*
@@ -235,7 +237,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
   ngOnInit() {
     if (this.inlineDatepicker) {
       this.showToolTip = true;
-      this.dropdownstyle = {visibility: 'visible'};
+      this.dropdownstyle = { visibility: 'visible' };
     }
     this.isValid = !this.required;
     this.isComponentValid.emit(!this.required);
@@ -295,7 +297,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     }
   }
   onDateClick(dateObj: any) {
-    if (this.inlineDatepicker === false ) {
+    if (this.inlineDatepicker === false) {
       super.itemClicked();
     }
     this.hostFlag = true;
@@ -514,24 +516,31 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
   }
   // From ControlValueAccessor interface
   writeValue(value: any) {
-    if (value !== this.innerValue) {
-      this.innerValue = value;
-      if (this.innerValue instanceof Date || ('number' === typeof this.innerValue)) {
-        if (('number' === typeof this.innerValue)) {
-          this.innerValue  = new Date(value);
+    if (value !== '') {
+      if (value !== this.innerValue) {
+        this.innerValue = value;
+        if (this.innerValue instanceof Date || ('number' === typeof this.innerValue)) {
+          this.onWriteValue();
+        } else {
+          this.isValid = false;
+          this.hrs = 0;
+          this.min = 0;
         }
-        this.dateModel = this.innerValue;
-        this.currrentDate = this.dateModel;
-        this.selectedDate = this.currrentDate;
-        this.createDaysForCurrentMonths(this.dateModel);
-        if (this.required) {
-          this.isValid = true;
-        }
-      } else {
-        this.isValid = false;
-        this.hrs = 0;
-        this.min = 0;
       }
+    } else {
+      this.dateModel = '';
+    }
+  }
+  onWriteValue() {
+    if (('number' === typeof this.innerValue)) {
+      this.innerValue = new Date(this.innerValue);
+    }
+    this.dateModel = this.innerValue;
+    this.currrentDate = this.dateModel;
+    this.selectedDate = this.currrentDate;
+    this.createDaysForCurrentMonths(this.dateModel);
+    if (this.required) {
+      this.isValid = true;
     }
   }
   // From ControlValueAccessor interface
@@ -1037,9 +1046,9 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
 
   public validate(c: FormControl) {
     return (this.value || !this.required) ? null : {
-        jsonParseError: {
-            valid: true,
-        },
+      jsonParseError: {
+        valid: true,
+      },
     };
-}
+  }
 }
