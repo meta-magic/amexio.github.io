@@ -292,7 +292,7 @@ description : Set enable / disable popover.
     if (inp) {
       let classObj;
       if (!this.allowblank) {
-        if (inp.touched && !this.allowblank && (this.value === '' || this.value === null)) {
+        if (inp.touched && !this.allowblank && (this.innerValue === '' || this.innerValue === null)) {
           classObj = this.getCssClass();
           this.isValid = false;
         } else {
@@ -340,7 +340,7 @@ description : Set enable / disable popover.
   }
 
   public validate(c: FormControl) {
-    return ((!this.allowblank && (this.value && this.value.length > 0)) || this.allowblank) ? null : {
+    return ((!this.allowblank && (this.innerValue && this.innerValue.length > 0)) || this.allowblank) ? null : {
       jsonParseError: {
         valid: true,
       },

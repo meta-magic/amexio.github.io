@@ -332,7 +332,7 @@ description : Set enable / disable popover.
   }
 
   isFieldValidate(): boolean {
-    return this.value && (this.value > this.minvalue && this.value < this.maxvalue);
+    return this.innerValue && (this.innerValue > this.minvalue && this.innerValue < this.maxvalue);
   }
 
   public validate(c: FormControl) {
