@@ -8,8 +8,10 @@ Component Name : Amexio card
 Component Description : Amexio Card which renders card based on title, body and actions user has configured
 */
 
-import { AfterContentInit, AfterViewInit, Component, ElementRef,
-  EventEmitter, HostListener, Input, OnInit, Output, ViewChild } from '@angular/core';
+import {
+  AfterContentInit, AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output,
+  Renderer2, ViewChild
+} from '@angular/core';
 import { ContentChildren, QueryList } from '@angular/core';
 import { AmexioHeaderComponent } from '../../panes/header/pane.action.header';
 import { AmexioFooterComponent } from './../../panes/action/pane.action.footer';
@@ -34,8 +36,8 @@ import { AmexioBodyComponent } from './../../panes/body/pane.action.body';
     </footer>
   </div>
 
-  <span [ngStyle]="contextStyle">
-    <ul *ngIf="flag" class="context-menu-list" [ngClass]="{'dropdown-up' : posixUp}">
+  <span *ngIf="flag" [ngStyle]="contextStyle">
+    <ul class="context-menu-list" [ngClass]="{'dropdown-up' : posixUp}">
       <li (click)="onContextNodeClick(itemConfig)" class="context-menu-list-items"
       [ngStyle]="{'cursor': itemConfig.disabled ? 'not-allowed':'pointer'}"
         [ngClass]="{'context-menu-separator':itemConfig.seperator}" *ngFor="let itemConfig of contextmenu">
@@ -47,7 +49,7 @@ import { AmexioBodyComponent } from './../../panes/body/pane.action.body';
   </span>
   `,
 })
-export class AmexioCardComponent implements OnInit, AfterViewInit, AfterContentInit {
+export class AmexioCardComponent implements OnInit, OnDestroy, AfterViewInit, AfterContentInit {
   /*
 Properties
 name : header-align
@@ -164,7 +166,8 @@ description : Context Menu provides the list of menus on right click.
   bodyComponentList: AmexioBodyComponent[];
   @ContentChildren(AmexioFooterComponent) amexioFooter: QueryList<AmexioFooterComponent>;
   footerComponentList: AmexioFooterComponent[];
-  constructor() {
+  globalClickListenFunc: () => void;
+  constructor(private renderer: Renderer2) {
     this.headeralign = 'left';
     this.footeralign = 'right';
   }
@@ -219,6 +222,7 @@ description : Context Menu provides the list of menus on right click.
   getContextMenu() {
     if (this.contextmenu && this.contextmenu.length > 0) {
       this.flag = true;
+      this.addListner();
     }
   }
 
@@ -248,18 +252,10 @@ description : Context Menu provides the list of menus on right click.
         menuData: itemConfig,
         NodeData: this.rightClickNodeData,
       };
+      this.flag = false;
+      this.removeListner();
       this.rightClick.emit(obj);
     }
-  }
-
-  @HostListener('document:click')
-  onWindowClick() {
-    this.flag = false;
-  }
-
-  @HostListener('document:scroll')
-  onscroll() {
-    this.flag = false;
   }
 
   getContextMenuStyle() {
@@ -272,5 +268,24 @@ description : Context Menu provides the list of menus on right click.
       'box-shadow': '1px 1px 2px #000000',
       'width': '15%',
     };
+  }
+
+  addListner() {
+    this.globalClickListenFunc = this.renderer.listen('document', 'click', (e: any) => {
+      this.flag = false;
+      if (!this.flag) {
+        this.removeListner();
+      }
+    });
+  }
+
+  removeListner() {
+    if (this.globalClickListenFunc) {
+      this.globalClickListenFunc();
+    }
+  }
+
+  ngOnDestroy(): void {
+   this.removeListner();
   }
 }
