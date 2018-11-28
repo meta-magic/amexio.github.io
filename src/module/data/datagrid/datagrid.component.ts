@@ -7,8 +7,8 @@
  header and column data, displaying summation of numeric column.
  */
 import {
-  AfterContentInit, ChangeDetectorRef, Component, ContentChildren, ElementRef, EventEmitter, HostListener, Input, OnInit, Output,
-  QueryList,
+  AfterContentInit, ChangeDetectorRef, Component, ContentChildren, ElementRef, EventEmitter, HostListener, Input,
+  OnDestroy, OnInit, Output, QueryList, Renderer2,
 } from '@angular/core';
 import { AmexioGridColumnComponent } from './data.grid.column';
 
@@ -385,7 +385,7 @@ import { CommonDataService } from '../../services/data/common.data.service';
   `,
 })
 
-export class AmexioDatagridComponent implements OnInit, AfterContentInit {
+export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentInit {
   private componentLoaded: boolean;
   /*
    Properties
@@ -726,9 +726,14 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit {
 
   checkBoxSelectClass = '';
 
+  globalClickListenFunc: () => void;
+
   @ContentChildren(AmexioGridColumnComponent) columnRef: QueryList<AmexioGridColumnComponent>;
 
-  constructor(public element: ElementRef, public dataTableService: CommonDataService, private cd: ChangeDetectorRef) {
+  constructor(
+    public element: ElementRef, public dataTableService: CommonDataService,
+    private cd: ChangeDetectorRef, private renderer: Renderer2,
+  ) {
     this.selectedRows = [];
     this.sortBy = -1;
 
@@ -1465,9 +1470,11 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit {
     if (col.contextmenu && col.contextmenu.length > 0) {
       this.flag = true;
       this.tempContextMenu = col.contextmenu;
+      this.addListner();
     } else if (this.contextmenu && this.contextmenu.length > 0) {
       this.tempContextMenu = this.contextmenu;
       this.flag = true;
+      this.addListner();
     }
     this.posixUp = this.getListPosition(ref);
     event.preventDefault();
@@ -1483,6 +1490,8 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit {
         menuData: itemConfig,
         rowData: this.rightClickRowData,
       };
+      this.flag = false;
+      this.removeListner();
       this.rightClick.emit(obj);
     }
   }
@@ -1497,16 +1506,6 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit {
       'box-shadow': '1px 1px 2px #000000',
       'width': '15%',
     };
-  }
-
-  @HostListener('document:scroll')
-  onscroll() {
-    this.flag = false;
-  }
-
-  @HostListener('document: click')
-  onclick() {
-    this.flag = false;
   }
 
   // Method to get List position
@@ -1526,5 +1525,24 @@ export class AmexioDatagridComponent implements OnInit, AfterContentInit {
         row.isSelected = false;
       }
     });
+  }
+
+  addListner() {
+    this.globalClickListenFunc = this.renderer.listen('document', 'click', (e: any) => {
+      this.flag = false;
+      if (!this.flag) {
+        this.removeListner();
+      }
+    });
+  }
+
+  removeListner() {
+    if (this.globalClickListenFunc) {
+      this.globalClickListenFunc();
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.removeListner();
   }
 }
