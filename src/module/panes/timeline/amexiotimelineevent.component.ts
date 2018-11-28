@@ -18,7 +18,7 @@ import { Component, ContentChildren, EventEmitter, HostBinding, Input, OnInit, O
 </div>`,
 })
 export class AmexiotimelineeventComponent {
-  @HostBinding('class.timeline-item')
+  @HostBinding('attr.class') timelineclass = 'timeline-item';
   /*
 Properties
 name :label
