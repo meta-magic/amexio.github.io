@@ -8,15 +8,15 @@ Component Selector : <amexio-tree-filter-view>
 Component Description : A Expandable Tree Component for Angular, having Filtering functionality.
 */
 import {
-  AfterViewInit, ChangeDetectorRef, Component, ContentChild, ElementRef,
-  EventEmitter, HostListener, Input, OnInit, Output, TemplateRef,
+  AfterViewInit, ChangeDetectorRef, Component, ContentChild, ElementRef, EventEmitter, HostListener, Input, OnDestroy,
+  OnInit, Output, Renderer2, TemplateRef,
 } from '@angular/core';
 import { CommonDataService } from '../../services/data/common.data.service';
 
 @Component({
   selector: 'amexio-treeview', templateUrl: './tree.component.html',
 })
-export class AmexioTreeViewComponent implements AfterViewInit, OnInit {
+export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy {
   private componentLoaded: boolean;
   /*
 Properties
@@ -197,8 +197,6 @@ description : Context Menu provides the list of menus on right click.
 
   flag: boolean;
 
-  selectFlag: boolean;
-
   posixUp: boolean;
 
   rightClickNodeData: any;
@@ -207,7 +205,12 @@ description : Context Menu provides the list of menus on right click.
 
   mouseLocation: { left: number; top: number } = { left: 0, top: 0 };
 
-  constructor(public element: ElementRef, public dataService: CommonDataService, private cdf: ChangeDetectorRef) {
+  globalClickListenFunc: () => void;
+
+  constructor(
+    public element: ElementRef, public dataService: CommonDataService,
+    private cdf: ChangeDetectorRef, private renderer: Renderer2,
+  ) {
     this.isNode = true;
     this.acrosstree = false;
     this.displaykey = 'text';
@@ -502,16 +505,8 @@ description : Context Menu provides the list of menus on right click.
   getContextMenu() {
     if (this.contextmenu && this.contextmenu.length > 0) {
       this.flag = true;
+      this.addListner();
     }
-  }
-
-  @HostListener('document:click')
-  onWindowClick() {
-    this.resetFlag();
-  }
-  @HostListener('document:scroll')
-  onscroll() {
-    this.resetFlag();
   }
 
   resetFlag() {
@@ -541,6 +536,8 @@ description : Context Menu provides the list of menus on right click.
         menuData: itemConfig,
         NodeData: this.rightClickNodeData,
       };
+      this.resetFlag();
+      this.removeListner();
       this.rightClick.emit(obj);
     }
   }
@@ -564,5 +561,24 @@ description : Context Menu provides the list of menus on right click.
       'box-shadow': '1px 1px 2px #000000',
       'width': '15%',
     };
+  }
+
+  addListner() {
+    this.globalClickListenFunc = this.renderer.listen('document', 'click', (e: any) => {
+      this.resetFlag();
+      if (!this.flag) {
+        this.removeListner();
+      }
+    });
+  }
+
+  removeListner() {
+    if (this.globalClickListenFunc) {
+      this.globalClickListenFunc();
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.removeListner();
   }
 }
