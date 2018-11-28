@@ -10,21 +10,8 @@
 
  */
 import {
-  AfterContentInit,
-  AfterViewInit,
-  Component,
-  ComponentFactoryResolver,
-  ContentChildren,
-  ElementRef,
-  EventEmitter,
-  HostListener,
-  Input,
-  OnInit,
-  Output,
-  QueryList,
-  Renderer2,
-  ViewChild,
-  ViewContainerRef,
+  AfterContentInit, AfterViewInit, Component, ComponentFactoryResolver, ContentChildren, ElementRef, EventEmitter,
+  HostListener, Input, OnDestroy, OnInit, Output, QueryList, Renderer2, ViewChild, ViewContainerRef,
 } from '@angular/core';
 import { AmexioTabActionComponent } from './tab.action';
 import { AmexioTabPillComponent } from './tab.pill.component';
@@ -57,7 +44,7 @@ export const BOTTOM_COMPONENT_CLASS_MAP: any = {
   selector: 'amexio-tab-view',
   templateUrl: './tab.component.html',
 })
-export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnInit {
+export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnInit, OnDestroy {
 
   /*
    Properties
@@ -248,7 +235,13 @@ export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnIn
   componentId = '';
 
   map = new Map<any, any>();
-  constructor(public render: Renderer2, private componentFactoryResolver: ComponentFactoryResolver, viewContainerRef: ViewContainerRef) {
+
+  globalClickListenFunc: () => void;
+
+  constructor(
+    public render: Renderer2, private componentFactoryResolver: ComponentFactoryResolver,
+    private renderer: Renderer2,
+  ) {
     this.headeralign = 'left';
     this.typeActionAlign = 'left';
     this.tabPosition = 'top';
@@ -696,8 +689,10 @@ export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnIn
         this.contextmenu.push(obj, obj2);
       }
       this.contextMenuFlag = true;
+      this.addListner();
     } else if (this.contextmenu && this.contextmenu.length > 0) {
       this.contextMenuFlag = true;
+      this.addListner();
     }
   }
 
@@ -743,6 +738,8 @@ export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnIn
       if (itemConfig.text === this.closeOthersConst) {
         this.closeOtherTabs(temptab);
       }
+      this.contextMenuFlag = false;
+      this.removeListner();
       this.rightClick.emit(obj);
     }
   }
@@ -755,19 +752,22 @@ export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnIn
     });
   }
 
-  @HostListener('document:click')
-  onWindowClick() {
-    this.setContextMenuFlag();
-  }
-
-  @HostListener('document:scroll')
-  onscroll() {
-    this.setContextMenuFlag();
-  }
-
-  setContextMenuFlag() {
-    if (this.contextMenuFlag) {
+  addListner() {
+    this.globalClickListenFunc = this.renderer.listen('document', 'click', (e: any) => {
       this.contextMenuFlag = false;
+      if (!this.contextMenuFlag) {
+        this.removeListner();
+      }
+    });
+  }
+
+  removeListner() {
+    if (this.globalClickListenFunc) {
+      this.globalClickListenFunc();
     }
+  }
+
+  ngOnDestroy(): void {
+    this.removeListner();
   }
 }
