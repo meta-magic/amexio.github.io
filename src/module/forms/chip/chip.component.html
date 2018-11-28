@@ -6,7 +6,7 @@
         {{label}}
       </span>
     </amexio-label>
-    <span class="badge">{{badge}}</span>
+    <span class="badge" *ngIf="badge">{{badge}}</span>
     <ng-container *ngIf="closable">
       <i class="fa fa-times" style="cursor: pointer; margin-left:10px" (click)="onCloseClick($event) "></i>
     </ng-container>
