@@ -10,72 +10,15 @@
  */
 import {
   Component, ContentChildren, ElementRef, EventEmitter, HostListener,
-  Input, OnChanges, OnDestroy, OnInit, Output, QueryList, Renderer2, SimpleChanges, ViewChild } from '@angular/core';
+  Input, OnChanges, OnDestroy, OnInit, Output, QueryList, Renderer2, SimpleChanges, ViewChild,
+} from '@angular/core';
 import { AmexioWindowHeaderComponent } from './window.pane.header.component';
 export enum KEY_CODE_window {
   esc = 27,
 }
-
 @Component({
   selector: 'amexio-window',
-  template: `
-    <div #id class="root-window model-fade" [ngClass]="{'modal-window-max': isFullWindow,'modal-window-min': !isFullWindow}"
-         [ngStyle]="{'display' : show ? 'block' : 'none'}"
-         (contextmenu)="loadContextMenu({event:$event,ref:id})" >
-      <div class="modal-window-lg" [ngStyle]="{'height': bodyHeight ? '100%':'auto'}">
-        <div class="modal-window-content" [ngClass]="styleClass" [style.height]="bodyHeight+'%'">
-          <header [ngClass]="{ 'window-material-design-header':materialDesign,'modal-window-header':!materialDesign}" *ngIf="header"   >
-            <div class="modal-window-table">
-              <div class="tablerow">
-                <div class="tablecol">
-                  <ng-content select="amexio-header"></ng-content>
-                  <ng-content select="amexio-window-header"></ng-content>
-                </div>
-                <div class="tablecol float-right" >
-                  <ng-container *ngIf="(!isFullWindow && maximize)">
-                    <amexio-pane-icon [key]="'window_maximize'" (onClick)="sizeChange()"></amexio-pane-icon> &nbsp;
-                  </ng-container>
-                  <ng-container *ngIf="(isFullWindow && maximize)">
-                    <amexio-pane-icon [key]="'window_restore'" (click)="sizeChange()"></amexio-pane-icon> &nbsp;
-                  </ng-container>
-                  <ng-container *ngIf="closable">
-                    <amexio-pane-icon [key]="'window_close'" (onClick)="onCloseClick()"></amexio-pane-icon> &nbsp;
-                  </ng-container>
-                </div>
-              </div>
-            </div>
-          </header>
-          <div class="modal-window-middle">
-            <ng-content select="amexio-body"></ng-content>
-          </div>
-          <footer *ngIf="footer" class="modal-window-footer"
-                  [ngClass]="{'window-material-design-footer':materialDesign ,
-                  'modal-window-footer':!materialDesign,
-                  'modal-window-footer-max': isFullWindow && maximize,'flex-start':(footeralign =='left'),
-                  'flex-end':(footeralign=='right'),'flex-center':(footeralign=='center')}">
-            <div [ngClass]="{'footer-right-align': (isFullWindow && maximize)}">
-              <ng-content select="amexio-action"></ng-content>
-            </div>
-          </footer>
-        </div>
-
-      </div>
-    </div>
-    <ng-container *ngIf="flag">
-       <span [ngStyle]="contextStyle" style=" z-index: 5; position: absolute;">
-          <ul class="context-menu-list" [ngClass]="{'dropdown-up' : posixUp}">
-            <li (click)="onContextNodeClick(itemConfig)" class="context-menu-list-items"
-                [ngStyle]="{'cursor': itemConfig.disabled ? 'not-allowed':'pointer'}"
-                [ngClass]="{'context-menu-separator':itemConfig.seperator}" *ngFor="let itemConfig of contextmenu">
-              <em [ngStyle]="{'padding-left': itemConfig.icon ? '5px':'19px'}" [ngClass]="itemConfig.icon"></em>
-              <span style="white-space: nowrap;display: inline ; padding-left:5px">{{itemConfig.text}}
-              </span>
-            </li>
-          </ul>
-       </span>
-    </ng-container>
-   
-  `,
+  templateUrl: './window.pane.component.html',
 })
 export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy {
   /*
@@ -325,7 +268,7 @@ description : Context Menu provides the list of menus on right click.
           this.showChange.emit(false);
         });
       } else if (this.globalListenFunc) {
-          this.globalListenFunc();
+        this.globalListenFunc();
       }
     }
 
@@ -371,7 +314,7 @@ description : Context Menu provides the list of menus on right click.
         menuData: itemConfig,
         NodeData: this.rightClickNodeData,
       };
-      this.flag=false;
+      this.flag = false;
       this.removeListner();
       this.rightClick.emit(obj);
     }
