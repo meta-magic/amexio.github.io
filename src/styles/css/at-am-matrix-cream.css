@@ -405,8 +405,10 @@ button {
   outline: none;
   user-select: none;
   border: 1px solid #FFFDD0;
+  padding: .5rem 1rem;
   border-radius: 5px;
-  transition: all .2s ease-in-out; }
+  transition: all .2s ease-in-out;
+  margin-right: 5px !important; }
 
 .btn-badge {
   padding: .25em .4em;
