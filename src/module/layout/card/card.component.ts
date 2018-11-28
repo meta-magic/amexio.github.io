@@ -10,7 +10,7 @@ Component Description : Amexio Card which renders card based on title, body and 
 
 import {
   AfterContentInit, AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output,
-  Renderer2, ViewChild
+  Renderer2, ViewChild,
 } from '@angular/core';
 import { ContentChildren, QueryList } from '@angular/core';
 import { AmexioHeaderComponent } from '../../panes/header/pane.action.header';
