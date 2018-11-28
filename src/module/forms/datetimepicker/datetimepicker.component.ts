@@ -516,33 +516,39 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
   }
   // From ControlValueAccessor interface
   writeValue(value: any) {
-    if (value !== '') {
+     if (value !== '') {
       if (value !== this.innerValue) {
-        this.innerValue = value;
-        if (this.innerValue instanceof Date || ('number' === typeof this.innerValue)) {
-          this.onWriteValue();
-        } else {
-          this.isValid = false;
-          this.hrs = 0;
-          this.min = 0;
-        }
+        this.validateWriteValue(value);
       }
     } else {
       this.dateModel = '';
     }
   }
-  onWriteValue() {
-    if (('number' === typeof this.innerValue)) {
-      this.innerValue = new Date(this.innerValue);
-    }
-    this.dateModel = this.innerValue;
-    this.currrentDate = this.dateModel;
-    this.selectedDate = this.currrentDate;
-    this.createDaysForCurrentMonths(this.dateModel);
-    if (this.required) {
-      this.isValid = true;
+
+  validateWriteValue(value: any) {
+    this.innerValue = value;
+    if (this.innerValue instanceof Date || ('number' === typeof this.innerValue)) {
+      if (('number' === typeof this.innerValue)) {
+        this.innerValue = new Date(this.innerValue);
+      }
+      this.dateModel = this.innerValue;
+      this.currrentDate = this.dateModel;
+      this.selectedDate = this.currrentDate;
+      this.createDaysForCurrentMonths(this.dateModel);
+      if (this.required) {
+        this.isValid = true;
+      }
+    } else {
+      this.negateisValid();
     }
   }
+
+  negateisValid() {
+    this.isValid = false;
+    this.hrs = 0;
+    this.min = 0;
+  }
+
   // From ControlValueAccessor interface
   registerOnChange(fn: any) {
     this.onChangeCallback = fn;
