@@ -10,13 +10,13 @@
  change look and feel.
 */
 import {AfterViewInit, Component, ContentChild, EventEmitter,
-  HostListener, Input, OnInit, Output, TemplateRef } from '@angular/core';
+        HostListener, Input, OnDestroy, OnInit, Output, Renderer2, TemplateRef } from '@angular/core';
 import {CommonDataService} from '../../services/data/common.data.service';
 
 @Component({
   selector: 'amexio-listbox', templateUrl: './listbox.component.html',
 })
-export class AmexioListBoxComponent implements AfterViewInit, OnInit {
+export class AmexioListBoxComponent implements AfterViewInit, OnInit, OnDestroy {
 
   private componentLoaded: boolean;
    contextMenuStyle: any;
@@ -217,7 +217,9 @@ description : It will gives you row clicked data.
 
   rightClickRowData: any;
 
-  constructor(public dataService: CommonDataService) {
+  globalClickListenFunc: () => void;
+
+  constructor(public dataService: CommonDataService, private renderer: Renderer2) {
     this.filter = false;
     this.enablecheckbox = false;
     this.selectedData = [];
@@ -340,21 +342,12 @@ description : It will gives you row clicked data.
     this.contextMenuStyle = this.getContextMenuStyle();
 
   }
-
+  // getcontextmenu
   getContextMenu() {
     if (this.contextmenu && this.contextmenu.length > 0) {
       this.contextMenuFlag = true;
+      this.addListner();
     }
-  }
-
-  @HostListener('document:click')
-  onWindowClick() {
-    this.contextMenuFlag = false;
-  }
-
-  @HostListener('document:scroll')
-  onscroll() {
-    this.contextMenuFlag = false;
   }
 
   tempSelectedFlag(rows: any) {
@@ -391,8 +384,29 @@ description : It will gives you row clicked data.
         menuData: itemConfig,
         rowData: this.rightClickRowData,
       };
+      this.contextMenuFlag = false;
+      this.removeListner();
       this.rightClick.emit(obj);
     }
+  }
+
+  addListner() {
+    this.globalClickListenFunc = this.renderer.listen('document', 'click', (e: any) => {
+      this.contextMenuFlag = false;
+      if (!this.contextMenuFlag) {
+        this.removeListner();
+      }
+    });
+  }
+
+  removeListner() {
+    if (this.globalClickListenFunc) {
+      this.globalClickListenFunc();
+    }
+  }
+
+  ngOnDestroy(): void {
+   this.removeListner();
   }
 
 }

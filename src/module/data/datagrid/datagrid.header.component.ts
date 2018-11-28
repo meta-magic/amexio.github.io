@@ -1,5 +1,5 @@
 
-import {Component, HostBinding, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'amexio-datagrid-header', template: `

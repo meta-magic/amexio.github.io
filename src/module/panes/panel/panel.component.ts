@@ -20,7 +20,7 @@ Component Selector : <amexio-panel>
 Component Description : Panel provides an easy way to organize big forms by
 grouping the fields in panel
 */
-import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output, Renderer2} from '@angular/core';
 
 import { AmexioPanelHeaderComponent } from './../panel/panel.header.component';
 
@@ -29,7 +29,7 @@ import { AmexioPanelHeaderComponent } from './../panel/panel.header.component';
   templateUrl: './panel.component.html',
 })
 
-export class AmexioPanelComponent implements OnInit {
+export class AmexioPanelComponent implements OnInit, OnDestroy {
 
   /*
 Properties
@@ -146,8 +146,8 @@ description : Fires the on accordion pane click event.
   private faFaIconDownCss = 'fa fa-caret-down';
 
   panelstyle: any;
-
-  constructor() {
+  globalClickListenFunc: () => void;
+  constructor(private renderer: Renderer2) {
     this.panelstyle = { visibility: 'visible' };
   }
   ngOnInit() {
@@ -186,9 +186,11 @@ description : Fires the on accordion pane click event.
       this.panelstyle = { visibility: 'visible' };
     }
   }
+  // getcontextmenu
   getContextMenu() {
     if (this.contextmenu && this.contextmenu.length > 0) {
       this.flag = true;
+      this.addListner();
     }
   }
 
@@ -218,18 +220,10 @@ description : Fires the on accordion pane click event.
         menuData: itemConfig,
         NodeData: this.rightClickNodeData,
       };
+      this.flag = false;
+      this.removeListner();
       this.rightClick.emit(obj);
     }
-  }
-
-  @HostListener('document:click')
-  onWindowClick() {
-    this.flag = false;
-  }
-
-  @HostListener('document:scroll')
-  onscroll() {
-    this.flag = false;
   }
 
   getContextMenuStyle() {
@@ -242,6 +236,25 @@ description : Fires the on accordion pane click event.
       'box-shadow': '1px 1px 2px #000000',
       'width': '15%',
     };
+  }
+
+  addListner() {
+    this.globalClickListenFunc = this.renderer.listen('document', 'click', (e: any) => {
+      this.flag = false;
+      if (!this.flag) {
+        this.removeListner();
+      }
+    });
+  }
+
+  removeListner() {
+    if (this.globalClickListenFunc) {
+      this.globalClickListenFunc();
+    }
+  }
+
+  ngOnDestroy(): void {
+   this.removeListner();
   }
 
 }
