@@ -197,19 +197,6 @@ export class AmexioRatingComponent implements OnInit, ControlValueAccessor, Vali
     this.buildRanges();
   }
   // -------------------------------------------------------------------------
-  // Host Bindings
-  // -------------------------------------------------------------------------
-  @HostListener('keydown', ['$event'])
-  onKeydown(event: KeyboardEvent): void {
-    if ([37, 38, 39, 40].indexOf(event.which) === -1 || this.hovered) {
-      return;
-    }
-    event.preventDefault();
-    event.stopPropagation();
-    const increment = this.float ? 0.5 : 1;
-    this.rate(this.model + (event.which === 38 || event.which === 39 ? increment : increment * -1));
-  }
-  // -------------------------------------------------------------------------
   // Public Methods
   // -------------------------------------------------------------------------
   calculateWidth(item: number) {
