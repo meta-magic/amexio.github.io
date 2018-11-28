@@ -511,6 +511,7 @@ description : Set enable / disable popover.
     if (event.keyCode === 40 || event.keyCode === 38 || event.keyCode === 13) {
       this.navigateUsingKey(event);
     }
+    this.onBaseFocusEvent({});
   }
   navigateUsingKey(event: any) {
     if (this.selectedindex > this.filteredOptions.length) {
