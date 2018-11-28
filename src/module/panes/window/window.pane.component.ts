@@ -61,17 +61,20 @@ export enum KEY_CODE_window {
 
       </div>
     </div>
-    <span [ngStyle]="contextStyle" style=" z-index: 5; position: absolute;">
-    <ul *ngIf="flag" class="context-menu-list" [ngClass]="{'dropdown-up' : posixUp}">
-      <li (click)="onContextNodeClick(itemConfig)" class="context-menu-list-items"
-      [ngStyle]="{'cursor': itemConfig.disabled ? 'not-allowed':'pointer'}"
-        [ngClass]="{'context-menu-separator':itemConfig.seperator}" *ngFor="let itemConfig of contextmenu">
-        <em [ngStyle]="{'padding-left': itemConfig.icon ? '5px':'19px'}" [ngClass]="itemConfig.icon"></em>
-        <span style="white-space: nowrap;display: inline ; padding-left:5px">{{itemConfig.text}}
-        </span>
-      </li>
-    </ul>
-  </span>
+    <ng-container *ngIf="flag">
+       <span [ngStyle]="contextStyle" style=" z-index: 5; position: absolute;">
+          <ul class="context-menu-list" [ngClass]="{'dropdown-up' : posixUp}">
+            <li (click)="onContextNodeClick(itemConfig)" class="context-menu-list-items"
+                [ngStyle]="{'cursor': itemConfig.disabled ? 'not-allowed':'pointer'}"
+                [ngClass]="{'context-menu-separator':itemConfig.seperator}" *ngFor="let itemConfig of contextmenu">
+              <em [ngStyle]="{'padding-left': itemConfig.icon ? '5px':'19px'}" [ngClass]="itemConfig.icon"></em>
+              <span style="white-space: nowrap;display: inline ; padding-left:5px">{{itemConfig.text}}
+              </span>
+            </li>
+          </ul>
+       </span>
+    </ng-container>
+   
   `,
 })
 export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy {
@@ -269,6 +272,7 @@ description : Context Menu provides the list of menus on right click.
   absoluteposition = false;
   positionclass: string;
   globalListenFunc: () => void;
+  globalClickListenFunc: () => void;
   // THIS METHOD IS USED FOR SETTING CSS CLASSSES
 
   sizeChange() {
@@ -337,6 +341,7 @@ description : Context Menu provides the list of menus on right click.
   getContextMenu() {
     if (this.contextmenu && this.contextmenu.length > 0) {
       this.flag = true;
+      this.addListner();
     }
   }
 
@@ -366,18 +371,10 @@ description : Context Menu provides the list of menus on right click.
         menuData: itemConfig,
         NodeData: this.rightClickNodeData,
       };
+      this.flag=false;
+      this.removeListner();
       this.rightClick.emit(obj);
     }
-  }
-
-  @HostListener('document:click')
-  onWindowClick() {
-    this.flag = false;
-  }
-
-  @HostListener('document:scroll')
-  onscroll() {
-    this.flag = false;
   }
 
   getContextMenuStyle() {
@@ -392,7 +389,23 @@ description : Context Menu provides the list of menus on right click.
     };
   }
 
+  addListner() {
+    this.globalClickListenFunc = this.renderer.listen('document', 'click', (e: any) => {
+      this.flag = false;
+      if (!this.flag) {
+        this.removeListner();
+      }
+    });
+  }
+
+  removeListner() {
+    if (this.globalClickListenFunc) {
+      this.globalClickListenFunc();
+    }
+  }
+
   ngOnDestroy() {
+    this.removeListner();
     if (this.globalListenFunc) {
       this.globalListenFunc();
     }
