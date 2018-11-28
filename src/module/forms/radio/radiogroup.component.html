@@ -4,7 +4,7 @@
   </div>
   <ng-container *ngIf="horizontal">
     <ng-container *ngFor="let rData of data">
-      <span class="input-box-container" (click)="onClick(rData)" 
+      <span class="input-box-container" style="padding-bottom:0px !important; margin: 5px !important" (click)="onClick(rData)" 
       [ngClass]="{'disable-component' : rData.disabled || disabled}">{{rData[displayfield]}}
         <input type="radio" [required]="!allowblank" [name]="name" 
         [value]="rData[valuefield]" [attr.disabled]="rData?.disabled ? true: null"
@@ -17,7 +17,7 @@
   <ng-container *ngIf="!horizontal">
     <ng-container *ngFor="let rData of data">
       <div>
-        <span class="input-box-container" (click)="onClick(rData)" [ngClass]="{'disable-component' : rData.disabled || disabled}">{{rData[displayfield]}}
+        <span class="input-box-container" style="padding-bottom:0px !important" (click)="onClick(rData)" [ngClass]="{'disable-component' : rData.disabled || disabled}">{{rData[displayfield]}}
           <input type="radio" [required]="!allowblank" [name]="name" [checked]="(value === rData[valuefield])" required
             [value]="rData[valuefield]" [attr.disabled]="rData?.disabled ? true: null" [(ngModel)]="value">
           <span class="input-box-radiobox-label"></span>
