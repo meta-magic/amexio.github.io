@@ -186,6 +186,7 @@ description : Fires the on accordion pane click event.
       this.panelstyle = { visibility: 'visible' };
     }
   }
+  // getcontextmenu
   getContextMenu() {
     if (this.contextmenu && this.contextmenu.length > 0) {
       this.flag = true;

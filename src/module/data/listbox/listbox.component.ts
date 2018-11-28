@@ -342,7 +342,7 @@ description : It will gives you row clicked data.
     this.contextMenuStyle = this.getContextMenuStyle();
 
   }
-
+  // getcontextmenu
   getContextMenu() {
     if (this.contextmenu && this.contextmenu.length > 0) {
       this.contextMenuFlag = true;
