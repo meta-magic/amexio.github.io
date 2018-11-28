@@ -6449,7 +6449,7 @@ amexio-layout amexio-layout-item {
   margin-left: -11px; }
 
 .timeline-badge-right {
-  right: -0.75%; }
+  right: -3%; }
 
 .timeline .timeline-item .timeline-panel {
   position: relative;
@@ -6459,10 +6459,10 @@ amexio-layout amexio-layout-item {
   width: 45%; }
 
 .timeline .timeline-item .timeline-panel-left {
-  width: 96%; }
+  width: 94%; }
 
 .timeline .timeline-item .timeline-panel-right {
-  width: 96%; }
+  width: 94%; }
 
 .timeline .timeline-item .timeline-panel-border {
   border: 1px solid #777;
