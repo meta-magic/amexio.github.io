@@ -8,9 +8,9 @@ amexio-layout amexio-layout-item {
   box-sizing: border-box;
 }
 
-.card-container{
-  height: unset!important;
-}
+// .card-container{
+//   height: unset!important;
+// }
 
 /* Timeline */
 .timeline {
@@ -67,7 +67,7 @@ content: "";
   position: absolute;
   background-color: #333;
   border: 3px solid #ffffff;
-  z-index: 100;
+  // z-index: 100;
   border-top-right-radius: 50%;
   border-top-left-radius: 50%;
   border-bottom-right-radius: 50%;
@@ -142,6 +142,26 @@ content: "";
   border-bottom: 16px solid transparent;
   content: " ";
 } 
+
+@media(max-width:767px) {
+.timeline-badge-left {
+  margin-left: -32px;
+}
+
+.timeline .timeline-item .timeline-panel-right {
+  width: 84%;
+}
+}
+
+@media(min-width:768px) and (max-width:1024px) {
+  .timeline-badge-left {
+    margin-left: -38px;
+  }
+  
+  .timeline .timeline-item .timeline-panel-right {
+    width: 94%;
+}
+  }
  
 
 

@@ -6741,9 +6741,6 @@ amexio-layout amexio-layout-item {
 .timeline * {
   box-sizing: border-box; }
 
-.card-container {
-  height: unset !important; }
-
 /* Timeline */
 .timeline {
   padding: 20px;
@@ -6794,7 +6791,6 @@ amexio-layout amexio-layout-item {
   position: absolute;
   background-color: #333;
   border: 3px solid #ffffff;
-  z-index: 100;
   border-top-right-radius: 50%;
   border-top-left-radius: 50%;
   border-bottom-right-radius: 50%;
@@ -6857,6 +6853,18 @@ amexio-layout amexio-layout-item {
   border-bottom: 16px solid transparent;
   content: " "; }
 
+@media (max-width: 767px) {
+  .timeline-badge-left {
+    margin-left: -32px; }
+
+  .timeline .timeline-item .timeline-panel-right {
+    width: 84%; } }
+@media (min-width: 768px) and (max-width: 1024px) {
+  .timeline-badge-left {
+    margin-left: -38px; }
+
+  .timeline .timeline-item .timeline-panel-right {
+    width: 94%; } }
 /****************************************************************************
                     Media Query for width - 375
 *****************************************************************************/
