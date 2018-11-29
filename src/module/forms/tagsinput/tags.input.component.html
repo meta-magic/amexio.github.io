@@ -17,7 +17,7 @@
     </div>
 
 
-    <span #dropdownitems class="dropdown" [ngClass]="{'dropdown-up' : posixUp}" [ngStyle]="{'display': showToolTip ? 'block' : 'none'}" #tagDropRef>
+    <span #dropdownitems class="dropdown" [ngClass]="{'dropdown-up' : posixUp}" [ngStyle]="dropdownstyle" #tagDropRef>
     <ul class="dropdown-list">
       <li class="list-items" [ngClass]="{'list-items-selected':item.selected}"
           *ngFor="let item of filteredResult"

@@ -264,7 +264,7 @@ description : Context Menu provides the list of menus on right click.
       this.setShowFlag(changes.show.currentValue);
     }
     if (changes['showWindow']) {
-      this.setShowFlag(changes.show.currentValue);
+      this.setShowFlag(changes.showWindow.currentValue);
     }
   }
   setShowFlag(changedValue: any) {
