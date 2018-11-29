@@ -63,7 +63,7 @@ import {
                   'dialogue-footer':!materialDesign, 'flex-start':(footeralign=='left'),
                   'flex-end':(footeralign=='right'),'flex-center':(footeralign=='center')}">
             <amexio-button *ngIf="type =='confirm'"  [size]="buttonsize" [label]="secondaryactionlabel"
-            [type]="defaultStyle" (onClick)="getStatus('cancel')"></amexio-button>&nbsp;&nbsp;
+            [type]="defaultStyle" (onClick)="getStatus('cancel')"></amexio-button>
             <div  class="custom-btn">
               <amexio-button *ngIf="type =='confirm' || type == 'alert'"   [size]="buttonsize"
               [label]="primaryactionlabel"
