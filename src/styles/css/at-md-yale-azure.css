@@ -5753,11 +5753,11 @@ fieldset {
 
 .verticalnavtab-left {
   font-weight: bold;
-  width: 110px; }
+  width: auto; }
 
 .verticalnavtab-right {
   font-weight: bold;
-  width: 110px; }
+  width: auto; }
 
 verticalalign-tableft {
   vertical-align: top !important;
