@@ -370,7 +370,8 @@ description : On field value change event
   }
 
   isFieldValidate(): boolean {
-   return this.value && (this.value.length >= this.minlength);
+   return ( this.value && (this.value.length >= this.minlength) ) ||
+   (!this.minlength && this.value && this.value.length > 0);
   }
 
   public validate(c: FormControl) {

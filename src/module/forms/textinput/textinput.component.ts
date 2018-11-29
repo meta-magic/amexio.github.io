@@ -391,7 +391,8 @@ description : On field value change event
     }
 
     isFieldValidate(): boolean {
-      return this.innerValue && ((this.innerValue.length >= this.minlength) || this.innerValue.length > 0);
+      return (this.innerValue && ((this.innerValue.length >= this.minlength) && this.innerValue.length > 0)) ||
+      (!this.minlength && this.innerValue && this.innerValue.length > 0);
     }
 
     public validate(c: FormControl) {
