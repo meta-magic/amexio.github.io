@@ -129,6 +129,17 @@ body {
   padding-left: 5px;
   vertical-align: middle; }
 
+.vertical-table {
+  display: table;
+  padding: 5px; }
+
+.vertical-table .vertical-tablerow {
+  display: table-row; }
+
+.vertical-table .vertical-tablerow .vertical-tablecol {
+  display: table-cell;
+  vertical-align: middle; }
+
 .listbox .header .table .tablerow .tablecol {
   padding-right: 0px !important; }
 
@@ -5723,24 +5734,30 @@ fieldset {
 .verticalnavtab .defaultnode {
   cursor: pointer;
   color: #121212;
-  padding: 10px; }
+  padding: 10px;
+  width: 100%; }
 
 .verticalnavtab .defaultnode:hover {
-  font-weight: bold; }
+  font-weight: bold;
+  width: 100%; }
 
 .verticalnavtab .leftactivetab {
   font-weight: bold;
+  width: 100%;
   border-right: 3px solid #e52e90; }
 
 .verticalnavtab .rightactivetab {
   font-weight: bold;
+  width: 100%;
   border-left: 3px solid #e52e90; }
 
 .verticalnavtab-left {
-  font-weight: bold; }
+  font-weight: bold;
+  width: 110px; }
 
 .verticalnavtab-right {
-  font-weight: bold; }
+  font-weight: bold;
+  width: 110px; }
 
 verticalalign-tableft {
   vertical-align: top !important;
@@ -5815,8 +5832,6 @@ verticalalign-tableft {
   position: absolute; }
 
 .righttable .righttablerow .righttablecol {
-  padding-right: 5px;
-  padding-left: 5px;
   vertical-align: middle; }
 
 /****************************************************************************

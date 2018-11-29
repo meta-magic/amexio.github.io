@@ -130,6 +130,22 @@ body {
     vertical-align: middle;
 }
 
+.vertical-table {
+    display: table;
+    padding: 5px;
+}
+
+.vertical-table .vertical-tablerow {
+    display: table-row;
+}
+
+.vertical-table .vertical-tablerow .vertical-tablecol {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+
+
 .listbox .header .table .tablerow .tablecol {
     padding-right: 0px!important;
 }
