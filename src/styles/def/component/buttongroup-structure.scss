@@ -1,33 +1,33 @@
-
 .btn-group span {
-   /* border: $btnGrpBorderSize solid $btnGrpBorderColor; 
-   
+    /* border: $btnGrpBorderSize solid $btnGrpBorderColor;
+
     cursor: pointer; /* Pointer/hand icon */
-   
-  }
-  
-  .btn-group button{
-    //padding-right: 10px;
+}
+
+.btn-group button {
+    margin-right: 0px!important;
     cursor: pointer;
-  }
-  
-  /* Clear floats (clearfix hack) */
-  .btn-group:after {
+}
+
+
+/* Clear floats (clearfix hack) */
+
+.btn-group:after {
     content: "";
     clear: both;
     display: table;
-  }
-  
-  .btn-group span:not(:last-child) {
-    border-right: none; /* Prevent double borders */
-  }
-  
-  .button-group{
+}
+
+.btn-group span:not(:last-child) {
+    border-right: none;
+    /* Prevent double borders */
+}
+
+.button-group {
     position: relative;
-  }
-  
-  
- .btn-group-badge{
+}
+
+.btn-group-badge {
     padding: .25em .4em;
     font-size: inherit;
     font-weight: 700;
@@ -39,18 +39,7 @@
     margin-left: 3px;
 }
 
-.btn-group-primary-badge{
-    padding: .25em .4em;
-    font-size: inherit;
-    font-weight: 700;
-    line-height: 1;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: baseline;
-    border-radius: .25rem;
-    margin-left: 3px;
-}
-.btn-group-secondary-badge{
+.btn-group-primary-badge {
     padding: .25em .4em;
     font-size: inherit;
     font-weight: 700;
@@ -62,7 +51,7 @@
     margin-left: 3px;
 }
 
-.btn-group-success-badge{
+.btn-group-secondary-badge {
     padding: .25em .4em;
     font-size: inherit;
     font-weight: 700;
@@ -74,7 +63,7 @@
     margin-left: 3px;
 }
 
-.btn-group-danger-badge{
+.btn-group-success-badge {
     padding: .25em .4em;
     font-size: inherit;
     font-weight: 700;
@@ -86,7 +75,7 @@
     margin-left: 3px;
 }
 
-.btn-group-warning-badge{
+.btn-group-danger-badge {
     padding: .25em .4em;
     font-size: inherit;
     font-weight: 700;
@@ -98,7 +87,19 @@
     margin-left: 3px;
 }
 
-.btn-group-transparent-badge{
+.btn-group-warning-badge {
+    padding: .25em .4em;
+    font-size: inherit;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    margin-left: 3px;
+}
+
+.btn-group-transparent-badge {
     padding: .25em .4em;
     font-size: inherit;
     font-weight: 700;
@@ -114,21 +115,20 @@
     display: inline-block;
 }
 
-.disabled
-{
-  pointer-events: none;
+.disabled {
+    pointer-events: none;
 }
 
-.button-small{
+.button-small {
     padding: .25rem .5rem;
 }
 
-.button-default{
+.button-default {
     padding: .5rem 1rem;
     font-size: 1rem;
 }
 
-.button-large{
+.button-large {
     padding: .75rem 1.5rem;
     font-size: 1.25rem;
 }
@@ -139,11 +139,11 @@
 }
 
 .button-transparent {
-    border : none !important;
+    border: none !important;
     box-shadow: none !important;
-  }
+}
 
-  .button-round{
+.button-round {
     border-radius: 50%;
     vertical-align: middle;
 }
