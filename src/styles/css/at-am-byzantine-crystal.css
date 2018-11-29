@@ -87,6 +87,17 @@ body {
   padding-left: 5px;
   vertical-align: middle; }
 
+.vertical-table {
+  display: table;
+  padding: 5px; }
+
+.vertical-table .vertical-tablerow {
+  display: table-row; }
+
+.vertical-table .vertical-tablerow .vertical-tablecol {
+  display: table-cell;
+  vertical-align: middle; }
+
 .listbox .header .table .tablerow .tablecol {
   padding-right: 0px !important; }
 
@@ -596,11 +607,12 @@ button {
 
 /** buttongroup - Structure CSS **/
 .btn-group span {
-  /* border: $btnGrpBorderSize solid $btnGrpBorderColor; 
-  
-   cursor: pointer; /* Pointer/hand icon */ }
+    /* border: $btnGrpBorderSize solid $btnGrpBorderColor;
+
+    cursor: pointer; /* Pointer/hand icon */ }
 
 .btn-group button {
+  margin-right: 0px !important;
   cursor: pointer; }
 
 /* Clear floats (clearfix hack) */
@@ -5881,24 +5893,30 @@ fieldset {
 .verticalnavtab .defaultnode {
   cursor: pointer;
   color: #70196F;
-  padding: 10px; }
+  padding: 10px;
+  width: 100%; }
 
 .verticalnavtab .defaultnode:hover {
-  font-weight: bold; }
+  font-weight: bold;
+  width: 100%; }
 
 .verticalnavtab .leftactivetab {
   font-weight: bold;
+  width: 100%;
   border-right: 3px solid #E84C1A; }
 
 .verticalnavtab .rightactivetab {
   font-weight: bold;
+  width: 100%;
   border-left: 3px solid #E84C1A; }
 
 .verticalnavtab-left {
-  font-weight: bold; }
+  font-weight: bold;
+  width: auto; }
 
 .verticalnavtab-right {
-  font-weight: bold; }
+  font-weight: bold;
+  width: auto; }
 
 verticalalign-tableft {
   vertical-align: top !important;
@@ -5973,8 +5991,6 @@ verticalalign-tableft {
   position: absolute; }
 
 .righttable .righttablerow .righttablecol {
-  padding-right: 5px;
-  padding-left: 5px;
   vertical-align: middle; }
 
 /****************************************************************************
@@ -6433,7 +6449,7 @@ amexio-layout amexio-layout-item {
   font-size: 22px;
   text-align: center;
   position: absolute;
-  background-color: #333;
+  background-color: #E84C1A;
   border: 3px solid #ffffff;
   border-top-right-radius: 50%;
   border-top-left-radius: 50%;
