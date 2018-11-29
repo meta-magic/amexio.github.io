@@ -595,11 +595,12 @@ button {
 
 /** buttongroup - Structure CSS **/
 .btn-group span {
-  /* border: $btnGrpBorderSize solid $btnGrpBorderColor; 
-  
-   cursor: pointer; /* Pointer/hand icon */ }
+    /* border: $btnGrpBorderSize solid $btnGrpBorderColor;
+
+    cursor: pointer; /* Pointer/hand icon */ }
 
 .btn-group button {
+  margin-right: 0px !important;
   cursor: pointer; }
 
 /* Clear floats (clearfix hack) */
@@ -6432,7 +6433,7 @@ amexio-layout amexio-layout-item {
   font-size: 22px;
   text-align: center;
   position: absolute;
-  background-color: #333;
+  background-color: #73C2FB;
   border: 3px solid #ffffff;
   border-top-right-radius: 50%;
   border-top-left-radius: 50%;
