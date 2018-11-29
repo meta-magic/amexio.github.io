@@ -1,7 +1,7 @@
 /**
  * Created by dattaram on 21/12/17.
  */
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { IconLoaderService } from '../../services/icon/icon.service';
 
 @Component({
@@ -33,7 +33,7 @@ import { IconLoaderService } from '../../services/icon/icon.service';
   `,
 })
 
-export class AmexioDataIconComponent implements OnInit {
+export class AmexioDataIconComponent implements OnInit, OnChanges {
 
   @Input() key: string;
 
@@ -48,7 +48,7 @@ export class AmexioDataIconComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.iconClass  = this.getIconClass();
+    this.iconClass = this.getIconClass();
   }
 
   getIconClass(): string {
@@ -61,4 +61,11 @@ export class AmexioDataIconComponent implements OnInit {
       }
     }
   }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['key']) {
+      this.key = changes.key.currentValue;
+      this.iconClass = this.getIconClass();
+    }
+  }
+
 }

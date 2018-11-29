@@ -2,8 +2,8 @@
  * Created by pratik on 21/12/17.
  */
 
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
-import {IconLoaderService} from '../../services/icon/icon.service';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { IconLoaderService } from '../../services/icon/icon.service';
 
 @Component({
   selector: 'amexio-nav-icon', template: `
@@ -33,7 +33,7 @@ import {IconLoaderService} from '../../services/icon/icon.service';
   `,
 })
 
-export class AmexioNavIconPaneComponent implements OnInit {
+export class AmexioNavIconPaneComponent implements OnInit, OnChanges {
 
   @Input() key: string;
 
@@ -56,10 +56,16 @@ export class AmexioNavIconPaneComponent implements OnInit {
 
       const iconObject = this.iconLoaderService.iconMappings.find((obj: any) => obj.component === this.key);
       if (iconObject != null) {
-        return iconObject [this.iconLoaderService.iconToUse.toString()];
-      }else {
+        return iconObject[this.iconLoaderService.iconToUse.toString()];
+      } else {
         return '';
-        }
       }
+    }
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['key']) {
+      this.key = changes.key.currentValue;
+      this.iconClass = this.getIconClass();
+    }
   }
 }

@@ -405,8 +405,10 @@ button {
   outline: none;
   user-select: none;
   border: 1px solid #000080;
+  padding: .5rem 1rem;
   border-radius: 5px;
-  transition: all .2s ease-in-out; }
+  transition: all .2s ease-in-out;
+  margin-right: 5px !important; }
 
 .btn-badge {
   padding: .25em .4em;
@@ -6443,10 +6445,10 @@ amexio-layout amexio-layout-item {
 
 .timeline-badge-left {
   left: 0%;
-  margin-left: -11px; }
+  margin-left: -28px; }
 
 .timeline-badge-right {
-  right: -0.75%; }
+  right: -3%; }
 
 .timeline .timeline-item .timeline-panel {
   position: relative;
@@ -6456,10 +6458,10 @@ amexio-layout amexio-layout-item {
   width: 45%; }
 
 .timeline .timeline-item .timeline-panel-left {
-  width: 96%; }
+  width: 94%; }
 
 .timeline .timeline-item .timeline-panel-right {
-  width: 96%; }
+  width: 94%; }
 
 .timeline .timeline-item .timeline-panel-border {
   border: 1px solid #777;

@@ -19,8 +19,9 @@ export class  EventBaseComponent<T> extends BaseInput<T> {
         this.bindDocumentClickListener();
     }
 
-    onBaseBlurEvent(event: any) {
+    onBaseBlurEvent(event: any): boolean {
         this.onBaseItemClicked();
+        return false;
     }
 
     onBaseItemClicked() {

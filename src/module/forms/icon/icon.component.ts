@@ -6,7 +6,7 @@
  Component Selector :  <amexio-form-icon>
  Component Description :
 */
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {IconLoaderService} from '../../services/icon/icon.service';
 @Component({
   selector: 'amexio-form-icon',
@@ -30,7 +30,8 @@ import {IconLoaderService} from '../../services/icon/icon.service';
   `,
 })
 
-export class AmexioFormIconComponent implements OnInit {
+export class AmexioFormIconComponent implements OnInit, OnChanges {
+
 /*
 Properties
 name : key
@@ -75,6 +76,12 @@ description : sets the customclass for icon
        } else {
         return '';
        }
+    }
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['key']) {
+      this.key = changes.key.currentValue;
+      this.iconClass = this.getIconClass();
     }
   }
 }

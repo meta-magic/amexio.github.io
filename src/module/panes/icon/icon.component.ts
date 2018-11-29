@@ -1,7 +1,7 @@
 /**
  * Created by pratik on 21/12/17.
  */
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {IconLoaderService} from '../../services/icon/icon.service';
 
 @Component({
@@ -28,7 +28,7 @@ import {IconLoaderService} from '../../services/icon/icon.service';
   `,
 })
 
-export class AmexioIconPaneComponent implements OnInit {
+export class AmexioIconPaneComponent implements OnInit, OnChanges {
 
   @Input() key: string;
 
@@ -54,6 +54,12 @@ export class AmexioIconPaneComponent implements OnInit {
        } else {
         return '';
         }
+    }
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['key']) {
+      this.key = changes.key.currentValue;
+      this.iconClass = this.getIconClass();
     }
   }
 }

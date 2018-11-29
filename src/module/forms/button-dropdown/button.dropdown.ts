@@ -7,15 +7,16 @@
  Component Description : Amexio Dropdown Button component with various modes and configurations .
 */
 import {
-  AfterContentInit, Component, ContentChildren, ElementRef, EventEmitter, HostListener, Input, OnInit, Output,
-  QueryList, ViewChild, ViewContainerRef,
+  AfterContentInit, ChangeDetectorRef, Component, ContentChildren, ElementRef, EventEmitter, Input,
+  Output, QueryList, Renderer2, ViewChild,
 } from '@angular/core';
+import {BaseFormValidator} from '../../base/base.validator.component';
 import {AmexioButtonDropDownItemComponent} from './button.dropdown.item';
 
 @Component({
   selector: 'amexio-btn-dropdown', template: `
     <div class="button-group" #rootDiv>
-       <button class="button-dropdown-main" (click)="onClick(rootDiv)" #btnRef
+       <button class="button-dropdown-main" (blur)="onblur($event)" (click)="onClick(rootDiv)" #btnRef
                [ngClass]="{'button-default': size=='default' || size ==null,
                'button-small': size=='small',
                'button-large' : size=='large',
@@ -27,11 +28,11 @@ import {AmexioButtonDropDownItemComponent} from './button.dropdown.item';
          <span [attr.disabled]="disabled ? true: null">{{label}} &nbsp;&nbsp;</span>
          <!--<i class="fa fa-caret-down" style="float:right;" ></i>-->
        </button>
-      <div class="button-dropdown" [ngClass]="{'button-dropdown-up' : posixUp}"  [ngStyle]="{'display' : openContent ? 'block' : 'none'}">
+      <div class="button-dropdown" [ngClass]="{'button-dropdown-up' : posixUp}"  [ngStyle]="dropdownstyle">
         <ng-container *ngFor="let itemData of dropdownItemData">
           <div [ngClass]="{'button-default': size=='default' || size ==null,'button-small': size=='small','button-large' : size=='large'}">
             <div [ngStyle]="{'cursor': itemData.disabled ? 'not-allowed':'pointer'}"
-                 (click)="itemClick($event,itemData)">
+                 (click)="btnItemClick($event,itemData)">
               <amexio-form-icon style="padding-right: 5px;" [customclass]="itemData.iconStyleClass"></amexio-form-icon>
               <span [attr.disabled]="itemData.disabled ? true: null">{{itemData.label}}&nbsp;&nbsp;</span>
               <!--<i [class]="itemData.iconStyleClass" aria-hidden="true" style="float:right;" ></i>-->
@@ -46,7 +47,7 @@ import {AmexioButtonDropDownItemComponent} from './button.dropdown.item';
   `,
 })
 
-export class AmexioButtonDropdownComponent implements AfterContentInit {
+export class AmexioButtonDropdownComponent extends BaseFormValidator<any> implements AfterContentInit {
   @ViewChild('btnRef')  btnReference: any;
   private componentLoaded: boolean;
 /*
@@ -114,22 +115,6 @@ default : none
 description : Badge  describes the badge value that has to be displayed on button
 */
 @Input('badge') badge: number;
-// badgeClass():string{
-//   let className='';
-// if(this.type=="primary" || this.type=="theme-color" )
-// className="btn-primary-badge1";
-// if(this.type=="secondary" || this.type=="theme-backgroundcolor")
-// className="btn-secondary-badge1";
-// if(this.type=="success" || this.type=="green")
-// className="btn-success-badge1";
-// if(this.type=="danger" || this.type=="red")
-// className="btn-danger-badge1";
-// if(this.type=="warning" || this.type=="yellow")
-// className="btn-warning-badge1";
-// if(this.type=="transparent")
-// className="btn-transparent-badge1"
-// return className;
-// }
 /*
 Events
 name : click
@@ -149,7 +134,10 @@ description : Fire when button-dropdown item button/link click
 */
   @Output() getLinkData: any = new EventEmitter<any>();
   buttonGroupPreviewData: any;
-  constructor(public element: ElementRef) {
+  constructor(
+    public element: ElementRef, renderer: Renderer2, _cd: ChangeDetectorRef,
+  ) {
+    super(renderer, element, _cd);
   }
   updateComponent() {
     if (JSON.stringify(this.buttonGroupPreviewData) !== JSON.stringify(this.buttonGroupLocalData)) {
@@ -185,6 +173,11 @@ description : Fire when button-dropdown item button/link click
   }
   onClick(elem: any) {
     this.openContent = !this.openContent;
+    if (this.openContent) {
+      this.onBaseFocusEvent({});
+    } else {
+     this.openContent = this.onBaseBlurEvent(elem);
+    }
     this.posixUp = this.getListPosition(elem);
     this.click.emit();
   }
@@ -197,29 +190,19 @@ description : Fire when button-dropdown item button/link click
     }
   }
 
-  itemClick(clickEvent: any, itemData: any) {
+  onblur(eve: any) {
+    this.openContent = this.onBaseBlurEvent(eve);
+  }
+
+  btnItemClick(clickEvent: any, itemData: any) {
     if (this.buttonGroupLocalData && this.buttonGroupLocalData.length > 0) {
       this.getLinkData.emit({event: clickEvent, parentRef: this, data: itemData});
     } else {
       if (!itemData.disabled) {
         itemData.onItemClick.emit(clickEvent);
         this.openContent = !this.openContent;
+        this.onBaseBlurEvent(event);
       }
-    }
-  }
-
-  @HostListener('document: click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
-  public onElementOutClick(targetElement: HTMLElement) {
-
-    let parentFound = false;
-    while (targetElement !== null && !parentFound) {
-      if (targetElement === this.btnReference.nativeElement) {
-        parentFound = true;
-      }
-      targetElement = targetElement.parentElement;
-    }
-    if (!parentFound) {
-      this.openContent = false;
     }
   }
 }
