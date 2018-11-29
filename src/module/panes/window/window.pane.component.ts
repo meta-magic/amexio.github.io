@@ -261,17 +261,22 @@ description : Context Menu provides the list of menus on right click.
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['show']) {
-      this.show = changes.show.currentValue;
-      if (this.show && this.closeonescape) {
-        this.globalListenFunc = this.renderer.listen('document', 'keyup.esc', (e: any) => {
-          this.showWindow = false;
-          this.showChange.emit(false);
-        });
-      } else if (this.globalListenFunc) {
-        this.globalListenFunc();
-      }
+      this.setShowFlag(changes.show.currentValue);
     }
-
+    if (changes['showWindow']) {
+      this.setShowFlag(changes.show.currentValue);
+    }
+  }
+  setShowFlag(changedValue: any) {
+    this.show = changedValue;
+    if (this.show && this.closeonescape) {
+      this.globalListenFunc = this.renderer.listen('document', 'keyup.esc', (e: any) => {
+        this.showWindow = false;
+        this.showChange.emit(false);
+      });
+    } else if (this.globalListenFunc) {
+      this.globalListenFunc();
+    }
   }
   setClass() {
     if (this.isFullWindow) {
