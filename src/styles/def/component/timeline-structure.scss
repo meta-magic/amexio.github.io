@@ -1,5 +1,3 @@
-/* You can add global styles to this file, and also import other style files */
-
 amexio-layout amexio-layout-item {
   padding: 5px;
 }
@@ -8,101 +6,107 @@ amexio-layout amexio-layout-item {
   box-sizing: border-box;
 }
 
-// .card-container{
-//   height: unset!important;
-// }
 
 /* Timeline */
 .timeline {
-  padding: 20px;
-  position: relative;
-  display: block;
+padding: 20px;
+position: relative;
+display: block;
 }
 .timeline:before {
-  top: 40px;
-  bottom: 0;
-  position: absolute;
-  content: " ";
-  width: 3px;
-  background-color: #eeeeee;
+top: 40px;
+bottom: 0;
+position: absolute;
+content: " ";
+width: 3px;
+background-color: #eeeeee;
 }
 
 .timelineleft:before{
-  right: 2%;
-  margin-left: -1.5px;
+/* right: 2%;
+margin-left: -1.5px; */
+/* left:94%; */
+margin-left: 86%;
 }
 
 .timelineright:before{
-  left: 2%;
-  margin-left: 0%;
+left: 3%;
+margin-left: 0%;
+/* right:91%;
+margin-right:-2%; */
 }
 
 .timelinecenter:before{
-  left: 50%;
-  margin-left: -1.5px;
+left: 50%;
+margin-left: -1.5px;
 }
 
 .timeline .timeline-item {
-  margin-bottom: 20px;
-  position: relative;
-  width: 100%;
-  display:  block;
+margin-bottom: 20px;
+position: relative;
+width: 100%;
+display:  block;
 }
 
 .timeline .timeline-item:before,
 .timeline .timeline-item:after {
 content: "";
-  display: table;
+display: table;
 }
 .timeline .timeline-item:after {
-  clear: both;
+clear: both;
 }
 .timeline .timeline-item .timeline-badge {
-  color: #fff;
-  width: 54px;
-  height: 54px;
-  line-height: 52px;
-  font-size: 22px;
-  text-align: center;
-  position: absolute;
-   background-color: $timeBadgeColor;
-  border: 3px solid #ffffff;
-  // z-index: 100;
-  border-top-right-radius: 50%;
-  border-top-left-radius: 50%;
-  border-bottom-right-radius: 50%;
-  border-bottom-left-radius: 50%;
+color: #fff;
+width: 54px;
+height: 54px;
+line-height: 52px;
+font-size: 22px;
+text-align: center;
+position: absolute;
+background-color: $timeBadgeColor;
+border: 3px solid #ffffff;
+border-top-right-radius: 50%;
+border-top-left-radius: 50%;
+border-bottom-right-radius: 50%;
+border-bottom-left-radius: 50%;
 }
 
 .timeline-badge-center {
-  left: 50%;
-  margin-left: -25px;
+left: 50%;
+margin-left: -25px;
+
 }
 
 .timeline-badge-left {
-  left: 0%;
-  margin-left: -28px;
+left: 0%;
+margin-left: -11px;
+/* left:4%; */
+
 }
 
 .timeline-badge-right {
-  right: -3%;
+/* right: -0.75%; */
+left:88%;
 }
 
 .timeline .timeline-item .timeline-panel {
-  position: relative;
-  padding: 10px;
+position: relative;
+/* width: 46%; */
+padding: 10px;
+
 }
 
 .timeline .timeline-item .timeline-panel-center{
-  width: 45%;
+width: 45%;
 }
 
 .timeline .timeline-item .timeline-panel-left{
-  width: 94%;
+width: 84%;
 }
 
 .timeline .timeline-item .timeline-panel-right{
-  width: 94%;
+width: 92%;
 }
 
 .timeline .timeline-item .timeline-panel-border{
@@ -110,60 +114,65 @@ content: "";
   border-radius: 2px;
   -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+  content:" ";
 }
 
+.timeline .timeline-item .timeline-panel-border1{
+border: 1px solid #777;
+border-radius: 2px;
+-webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+}
+
+
 .timeline .timeline-item  .timeline-panel-float-left{
-  float: left;
+float: left;
 
 }
 .timeline-panel-float-left:before {
-  position: absolute;
-  right: -16px; 
-  display: inline-block;
-  border-top: 16px solid transparent;
-  border-left: 16px solid $timeBadgeColor;
-  border-right: 0 solid $timeBadgeColor;
-  border-bottom: 16px solid transparent;
-  content: " ";
+position: absolute;
+right: -16px; 
+display: inline-block;
+border-top: 16px solid transparent;
+border-left: 16px solid $timeBadgeColor;
+border-right: 0 solid $timeBadgeColor;
+border-bottom: 16px solid transparent;
+content: " ";
 } 
 
 .timeline .timeline-item  .timeline-panel-float-right{
   float: right;
-  
 }
 .timeline-panel-float-right:before {
-  left: -16px;
-  transform: rotate(180deg);
-  position: absolute;
-  display: inline-block;
-  border-top: 16px solid transparent;
-  border-left: 16px solid $timeBadgeColor;
-  border-right: 0 solid $timeBadgeColor;
-  border-bottom: 16px solid transparent;
-  content: " ";
+left: -16px;
+transform: rotate(180deg);
+position: absolute;
+display: inline-block;
+border-top: 16px solid transparent;
+border-left: 16px solid $timeBadgeColor;
+border-right: 0 solid $timeBadgeColor;
+border-bottom: 16px solid transparent;
+content: " ";
 } 
-
 @media(max-width:767px) {
-.timeline-badge-left {
-  margin-left: -32px;
-}
-
-.timeline .timeline-item .timeline-panel-right {
-  width: 84%;
-}
-}
-
-@media(min-width:768px) and (max-width:1024px) {
   .timeline-badge-left {
-    margin-left: -38px;
+    margin-left: -32px;
   }
   
   .timeline .timeline-item .timeline-panel-right {
-    width: 94%;
-}
+    width: 84%;
   }
- 
-
-
+  }
+  
+  @media(min-width:768px) and (max-width:1024px) {
+    .timeline-badge-left {
+      margin-left: -38px;
+    }
+    
+    .timeline .timeline-item .timeline-panel-right {
+      width: 94%;
+  }
+    }
+   
 
 

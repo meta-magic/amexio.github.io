@@ -6235,7 +6235,6 @@ verticalalign-tableft {
   box-shadow: 0 3px 0 #eab8ff; }
 
 /** panel - Structure CSS **/
-/* You can add global styles to this file, and also import other style files */
 amexio-layout amexio-layout-item {
   padding: 5px; }
 
@@ -6257,12 +6256,16 @@ amexio-layout amexio-layout-item {
   background-color: #eeeeee; }
 
 .timelineleft:before {
-  right: 2%;
-  margin-left: -1.5px; }
+  /* right: 2%;
+  margin-left: -1.5px; */
+  /* left:94%; */
+  margin-left: 86%; }
 
 .timelineright:before {
-  left: 2%;
-  margin-left: 0%; }
+  left: 3%;
+  margin-left: 0%;
+  /* right:91%;
+  margin-right:-2%; */ }
 
 .timelinecenter:before {
   left: 50%;
@@ -6303,26 +6306,36 @@ amexio-layout amexio-layout-item {
 
 .timeline-badge-left {
   left: 0%;
-  margin-left: -28px; }
+  margin-left: -11px;
+  /* left:4%; */ }
 
 .timeline-badge-right {
-  right: -3%; }
+  /* right: -0.75%; */
+  left: 88%; }
 
 .timeline .timeline-item .timeline-panel {
   position: relative;
+  /* width: 46%; */
   padding: 10px; }
 
 .timeline .timeline-item .timeline-panel-center {
   width: 45%; }
 
 .timeline .timeline-item .timeline-panel-left {
-  width: 94%; }
+  width: 84%; }
 
 .timeline .timeline-item .timeline-panel-right {
-  width: 94%; }
+  width: 92%; }
 
 .timeline .timeline-item .timeline-panel-border {
   border: 1px solid #4b0082;
+  border-radius: 2px;
+  -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+  content: " "; }
+
+.timeline .timeline-item .timeline-panel-border1 {
+  border: 1px solid #777;
   border-radius: 2px;
   -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175); }
