@@ -1,6 +1,5 @@
 
-import {
-  AfterContentInit, AfterViewInit, Component, ContentChild, ContentChildren,
+import { AfterContentInit, AfterViewInit, Component, ContentChild, ContentChildren,
   Directive, ElementRef, EventEmitter,
   HostListener, Input, OnInit, Output, QueryList,
   ViewChild, ViewChildren,
