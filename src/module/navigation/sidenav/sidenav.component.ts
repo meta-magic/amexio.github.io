@@ -268,25 +268,12 @@ export class AmexioSideNavComponent implements OnInit {
       } else {
         this.width = '20%';
         this.smalldevice = false;
+        console.log('test');
       }
     }
   }
 
   getNodeDragEvent(event: any) {
    this.onDrag.emit(event);
-  }
-
-  @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
-  public onElementOutClick(targetElement: HTMLElement) {
-    let parentFound = false;
-    while (targetElement != null && !parentFound) {
-      if (targetElement === this.element.nativeElement) {
-        parentFound = true;
-      }
-      targetElement = targetElement.parentElement;
-    }
-    if (!parentFound) {
-      this.close();
-    }
   }
 }
