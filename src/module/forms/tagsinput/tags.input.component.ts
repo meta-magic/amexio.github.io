@@ -179,7 +179,7 @@ version : none
 default :
 description : on change event
 */
-  @Output() tagOnChange: EventEmitter<any> = new EventEmitter<any>();
+  @Output() onChange: EventEmitter<any> = new EventEmitter<any>();
   /*
 Events
 name : focus
@@ -438,7 +438,7 @@ description : On field focus event
   setValue(value: any, ref: any) {
     this.inpHandle.nativeElement.value = '';
     this.onSelections.push(value);
-    this.tagOnChange.emit(this.onSelections);
+    this.onChange.emit(this.onSelections);
     if (this.onSelections.length > 0) {
       this.isValid = true;
       this.isComponentValid.emit(true);
@@ -458,7 +458,7 @@ description : On field focus event
       this.isValid = false;
       this.isComponentValid.emit(false);
     }
-    this.tagOnChange.emit(this.onSelections);
+    this.onChange.emit(this.onSelections);
   }
      // THIS MEHTOD CHECK INPUT IS VALID OR NOT
   checkValidity(): boolean {

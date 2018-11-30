@@ -191,18 +191,5 @@ super(renderer, elementref, cdf);
    this.togglefloatinggroup = !this.togglefloatinggroup;
    this.onClick.emit({ this: node, parent: this, event: clickEvent });
  }
-//  @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
- public onElementOutClick(targetElement: HTMLElement) {
-   let parentFound = false;
-   while (targetElement !== null && !parentFound) {
-     if (targetElement === this.elementref.nativeElement) {
-       parentFound = true;
-     }
-     targetElement = targetElement.parentElement;
-   }
-   if (!parentFound) {
-     this.togglefloatinggroup = false;
-   }
- }
 
 }
