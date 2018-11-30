@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AmexioGridModel } from './gridmodel.component';
 
+import { GridConfig } from '../../../models/GridConfig';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -12,45 +14,28 @@ export class AmexioGridLayoutService {
 
   constructor() {
   }
-  createLayout(key: string, devicetype?: string): any {
-    this.servicevar = key;
-    this.devicevar = devicetype;
-    if (this.layoutData.length <= 0) {
-      this.modelData();
-    } else if (!this.layoutData.find((obj) => obj.name === this.servicevar)) {
-      this.modelData();
-    }
-    return this;
-  }
-  modelData() {
-    const amexiogridmodel = new AmexioGridModel();
-    amexiogridmodel.name = this.servicevar;
-    this.layoutData.push(amexiogridmodel);
-  }
 
-  addlayout(layout: any[]): any {
-    this.count = layout.length;
-    const counter = 0;
-    let deviceName = '';
-    this.layoutData.forEach((obj: any) => {
-      if (this.devicevar === '') {
-        deviceName = 'desktop';
-      } else {
-        for (let i = 0; i < Object.entries(obj).length; i++) {
-          if ((Object.keys(obj)[i]) === this.devicevar) {
-            deviceName = this.devicevar;
-          }
+  createLayout(dataLayout: GridConfig) {
+    let findStatus = false;
+    this.count = dataLayout.count;
+    const data = dataLayout.getLayout();
+    if (this.layoutData.length <= 0) {
+      this.layoutData.push(data);
+    } else {
+      this.layoutData.forEach((obj: any) => {
+        if (obj.name === data.name) {
+          obj[data.layoutType] = data[data.layoutType];
+          findStatus = true;
         }
+      });
+      if (!findStatus) {
+        this.layoutData.push(data);
       }
-    });
-    this.layoutData.forEach((obj: any) => {
-      if (obj.name === this.servicevar) {
-        obj[deviceName].push(layout);
-      }
-    });
-    return this;
-  }
+    }
+}
+
   getLayoutData(layoutName: string) {
     return this.layoutData.find((obj) => obj.name === layoutName);
   }
+
 }

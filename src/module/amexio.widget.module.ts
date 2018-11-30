@@ -17,6 +17,8 @@ export * from './services/data/common.data.service';
 export * from './services/device/device.query.service';
 export * from './services/icon/icon.service';
 export * from './services/icon/icon.mapping.config';
+export * from '../models/GridConfig';
+export * from '../models/GridConstants';
 
 @NgModule({
   imports: [
