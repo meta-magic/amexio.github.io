@@ -6399,9 +6399,6 @@ amexio-layout amexio-layout-item {
 .timeline * {
   box-sizing: border-box; }
 
-.card-container {
-  height: unset !important; }
-
 /* Timeline */
 .timeline {
   padding: 20px;
