@@ -1,28 +1,28 @@
 
-import { AfterContentInit, AfterViewInit, Component, ContentChild, ContentChildren,
-  Directive, ElementRef, EventEmitter,
-  HostListener, Input, OnInit, Output, QueryList,
-  ViewChild, ViewChildren,
+import {
+  AfterContentInit, ChangeDetectorRef, Component, ContentChild, ElementRef,
+  EventEmitter, Input, OnInit, Output, Renderer2, ViewChild,
 } from '@angular/core';
 import { AmexioSearchAdvanceComponent } from '../advancesearch/searchadvance.component';
 
+import {BaseFormValidator} from '../../base/base.validator.component';
 import { CommonDataService } from '../../services/data/common.data.service';
 @Component({
   selector: 'amexio-searchbox',
   templateUrl: './searchboxtool.component.html',
 })
-export class SearchboxtoolComponent implements OnInit, AfterContentInit {
+export class SearchboxtoolComponent extends BaseFormValidator<string> implements OnInit, AfterContentInit {
   private componentLoaded: boolean;
   /*
-  Properties
-  name : data
-  datatype : any
-  version : 4.2 onwards
-  default : none
-  description : Local data for dropdown.
-  */
- _data: any;
- @Input('data')
+   Properties
+   name : data
+   datatype : any
+   version : 4.2 onwards
+   default : none
+   description : Local data for dropdown.
+   */
+  _data: any;
+  @Input('data')
   set data(value: any[]) {
     this._data = value;
     if (this.componentLoaded) {
@@ -33,94 +33,94 @@ export class SearchboxtoolComponent implements OnInit, AfterContentInit {
     return this._data;
   }
   /*
-  Properties
-  name : data-reader
-  datatype : string
-  version : 4.2 onwards
-  default : none
-  description : Key in JSON datasource for records
-  */
+   Properties
+   name : data-reader
+   datatype : string
+   version : 4.2 onwards
+   default : none
+   description : Key in JSON datasource for records
+   */
   @Input('data-reader') datareader: any;
   /*
-  Properties
-  name : http-url
-  datatype : string
-  version : 4.2 onwards
-  default : none
-  description : REST url for fetching datasource.
-  */
+   Properties
+   name : http-url
+   datatype : string
+   version : 4.2 onwards
+   default : none
+   description : REST url for fetching datasource.
+   */
   @Input('http-url') httpurl: string;
   /*
-  Properties
-  name : place-holder
-  datatype : string
-  version : 4.2 onwards
-  default : none
-  description : Show place-holder inside dropdown component
-  */
+   Properties
+   name : place-holder
+   datatype : string
+   version : 4.2 onwards
+   default : none
+   description : Show place-holder inside dropdown component
+   */
   @Input('place-holder') placeholder: string;
   /*
-  Properties
-  name : display-field
-  datatype : string
-  version : 4.2 onwards
-  default : none
-  description : Sets key inside response data to display.
-  */
+   Properties
+   name : display-field
+   datatype : string
+   version : 4.2 onwards
+   default : none
+   description : Sets key inside response data to display.
+   */
   @Input('display-field') displayfield: string;
   /*
-  Properties
-  name : http-method
-  datatype : string
-  version : 4.2 onwards
-  default : none
-  description : Type of HTTP call, POST,GET.
-  */
+   Properties
+   name : http-method
+   datatype : string
+   version : 4.2 onwards
+   default : none
+   description : Type of HTTP call, POST,GET.
+   */
   @Input('http-method') httpmethod: string;
   /*
-  Properties
-  name : title
-  datatype : string
-  version : 4.2 onwards
-  default : none
-  description : sets title to advance search form
-  */
+   Properties
+   name : title
+   datatype : string
+   version : 4.2 onwards
+   default : none
+   description : sets title to advance search form
+   */
   @Input() title = 'Advance Search';
   /*
-  Properties
-  name : value-field
-  datatype : string
-  version : 4.2 onwards
-  default : none
-  description : Name of key inside response data.use to send to backend
-  */
+   Properties
+   name : value-field
+   datatype : string
+   version : 4.2 onwards
+   default : none
+   description : Name of key inside response data.use to send to backend
+   */
   @Input('value-field') valuefield: string;
   /*
-  Properties
-  name : width
-  datatype : number
-  version : 4.2 onwards
-  default : none
-  description : Sets width to auto recommendation list.
-  */
+   Properties
+   name : width
+   datatype : number
+   version : 4.2 onwards
+   default : none
+   description : Sets width to auto recommendation list.
+   */
   @Input() width = 500;
   /*
-  Events
-  name : keyup
-  description : Fires when keyup event occurs
-  */
+   Events
+   name : keyup
+   description : Fires when keyup event occurs
+   */
   @Output() keyup: any = new EventEmitter<any>();
   /*
-  Events
-  name : onSearchItemClick
-  description : Fires when search item is selected
-  */
+   Events
+   name : onSearchItemClick
+   description : Fires when search item is selected
+   */
   @Output() onSearchItemClick: any = new EventEmitter<any>();
   /*
-  Events
-  name : onSearchClick
-  description : Fires when search button is clicked
-  */
+   Events
+   name : onSearchClick
+   description : Fires when search button is clicked
+   */
   @Output() onSearchClick: any = new EventEmitter<any>();
   @ContentChild(AmexioSearchAdvanceComponent) advanceSearchRef: AmexioSearchAdvanceComponent;
   @ViewChild('dropdownitems', { read: ElementRef }) public dropdownitems: ElementRef;
@@ -144,7 +144,11 @@ export class SearchboxtoolComponent implements OnInit, AfterContentInit {
   enableAdvanceSearch = false;
   advanceButtonLabel: string;
   enableAdvnSearch: boolean;
-  constructor(private element: ElementRef, private dataService: CommonDataService) {
+  constructor(
+    public element: ElementRef, private dataService: CommonDataService,
+    public renderer: Renderer2, _cd: ChangeDetectorRef,
+  ) {
+    super(renderer, element, _cd);
   }
 
   ngAfterContentInit() {
@@ -181,31 +185,19 @@ export class SearchboxtoolComponent implements OnInit, AfterContentInit {
       this.setData(this.data);
     }
   }
-  @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
-  public onElementOutClick(targetElement: HTMLElement) {
-    let parentFound = false;
-    while (targetElement != null && !parentFound) {
-      if (targetElement === this.element.nativeElement) {
-        parentFound = true;
-      }
-      targetElement = targetElement.parentElement;
-    }
-    if (!parentFound) {
-      this.searchFlag = false;
-    }
-  }
   onSelectClick() {
     this.advanceSearchFlag = false;
   }
   onInputClick(event: any) {
     this.searchFlag = true;
+    this.onBaseFocusEvent({});
     const keyword: any = event.target.value;
     this.viewData = [];
     if (keyword != null && keyword !== ' ') {
       const search_term = keyword.toLowerCase();
       this.localData.forEach((item: any) => {
         if (item != null && item[this.displayfield].toLowerCase().startsWith(search_term)) {
-            this.viewData.push(item);
+          this.viewData.push(item);
         }
       });
       this.keyup.emit(event);
@@ -230,10 +222,11 @@ export class SearchboxtoolComponent implements OnInit, AfterContentInit {
         this.localData.forEach((item1: any) => {
           if (item1 != null && item1[this.displayfield].toLowerCase().startsWith(search_term)) {
             // if word exist in start
-              this.viewData.push(item1);
+            this.viewData.push(item1);
           }
         });
         this.searchFlag = true;
+        this.onBaseFocusEvent({});
         this.keyup.emit(event);
       }
       this.selectedValueOnFocus();
@@ -312,13 +305,13 @@ export class SearchboxtoolComponent implements OnInit, AfterContentInit {
   onItemSelect(item: any) {
     this.value = item[this.valuefield];
     this.selectedValue = item[this.displayfield];
-    this.searchFlag = false;
+    this.searchFlag = this.onBaseBlurEvent({});
     this.onSearchItemClick.emit(item);
   }
   advanceSearch() {
     this.advanceSearchRef.advanceSearchFlag = true;
     this.advanceSearchFlag = true;
-    this.searchFlag = false;
+    this.searchFlag = this.onBaseBlurEvent({});
   }
   closeSearchForm() {
     this.advanceSearchFlag = false;
