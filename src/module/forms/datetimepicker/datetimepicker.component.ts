@@ -605,24 +605,6 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
   onSelect() {
     this.showToolTip = false;
   }
-  // @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
-  public onElementOutClick(targetElement: HTMLElement) {
-    let parentFound = false;
-    // when target found and parent is true(that is outside ui click done)
-    while (targetElement != null && !parentFound) {
-      if (targetElement === this.element.nativeElement) {
-        parentFound = true;
-      }
-      targetElement = targetElement.parentElement;
-    }
-    if (!parentFound && this.showToolTip && !this.inlineDatepicker) {
-      if (!this.hostFlag) {
-        this.showToolTip = false;
-      } else {
-        this.hostFlag = false;
-      }
-    }
-  }
   private validateDays(days: any) {
     const max = new Date(this.maxDate);
     const min = new Date(this.minDate);
@@ -692,6 +674,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     this.hostFlag = true;
     this.tempFlag = false;
     this.drop = true;
+    super.focus({});
   }
 
   // Added method to avois recursive code
@@ -760,6 +743,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       default:
         break;
     }
+    super.focus({});
   }
   // this function broken from chk month getDropdownMonth()
   chkMonth(element: any, month: any) {
@@ -795,6 +779,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       this.yearFlag(element, year);
     });
     this.yearNo = year.year;
+    super.focus({});
   }
   navigateDropdown() {
     this.hostFlag = true;
@@ -822,6 +807,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     this.daysArray = [];
     this.createDaysForCurrentMonths(this.selectedDate);
     this.disableddays(this.diabledDate);
+    super.focus({});
   }
   cancelDropdown() {
     this.drop = false;
