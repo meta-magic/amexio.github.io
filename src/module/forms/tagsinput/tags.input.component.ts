@@ -8,19 +8,18 @@ Component Selector :  <amexio-tag-input>
 Component Description : Tags based multi input with typeahead facility.
 */
 import {
-  Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, Renderer2,
-  ViewChild,
+  ChangeDetectorRef, Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, Renderer2, ViewChild,
 } from '@angular/core';
 
 import { CommonDataService } from '../../services/data/common.data.service';
 
-import { noop } from 'rxjs/index';
+import {BaseFormValidator} from '../../base/base.validator.component';
 
 @Component({
   selector: 'amexio-tag-input', templateUrl: './tags.input.component.html',
 })
 
-export class AmexioTagsInputComponent implements OnInit {
+export class AmexioTagsInputComponent extends BaseFormValidator<any> implements OnInit {
   /*
 Properties
 name : field-label
@@ -180,7 +179,7 @@ version : none
 default :
 description : on change event
 */
-  @Output() onChange: EventEmitter<any> = new EventEmitter<any>();
+  @Output() tagOnChange: EventEmitter<any> = new EventEmitter<any>();
   /*
 Events
 name : focus
@@ -208,11 +207,6 @@ description : On field focus event
   selectedindex = 0;
 
   scrollposition = 30;
-
-  private innerValue: any = '';
-
-  private onTouchedCallback: () => void = noop;
-  private onChangeCallback: (_: any) => void = noop;
 
   get errormsg(): string {
     return this._errormsg;
@@ -245,8 +239,11 @@ description : On field focus event
 
   maskloader = true;
 
-  constructor(public dataService: CommonDataService, public element: ElementRef, public renderer: Renderer2) {
-
+  constructor(
+    public dataService: CommonDataService, public element: ElementRef,
+    public renderer: Renderer2, _cd: ChangeDetectorRef,
+  ) {
+    super(renderer, element, _cd);
   }
 
   ngOnInit() {
@@ -287,13 +284,14 @@ description : On field focus event
       const search_term = keyword.toLowerCase();
       this.viewData.forEach((item: any) => {
         if (item != null && item[this.key].toLowerCase().startsWith(search_term)) {
-          this.filteredResult.push(item);
+            this.filteredResult.push(item);
         }
       });
       if (this.filteredResult.length > 0) {
         this.showToolTip = true;
+        this.onBaseFocusEvent({});
       } else {
-        this.showToolTip = false;
+        this.showToolTip = this.onBaseBlurEvent({});
       }
     }
     if (event.keyCode === 40 || event.keyCode === 38 || event.keyCode === 13) {
@@ -404,6 +402,7 @@ description : On field focus event
   onFocus(elem: any) {
     this.inpHandle.nativeElement.placeholder = '';
     this.showToolTip = true;
+    this.onBaseFocusEvent({});
     this.posixUp = this.getListPosition(elem);
     this.focus.emit(this.value);
   }
@@ -439,7 +438,7 @@ description : On field focus event
   setValue(value: any, ref: any) {
     this.inpHandle.nativeElement.value = '';
     this.onSelections.push(value);
-    this.onChange.emit(this.onSelections);
+    this.tagOnChange.emit(this.onSelections);
     if (this.onSelections.length > 0) {
       this.isValid = true;
       this.isComponentValid.emit(true);
@@ -459,24 +458,11 @@ description : On field focus event
       this.isValid = false;
       this.isComponentValid.emit(false);
     }
-    this.onChange.emit(this.onSelections);
+    this.tagOnChange.emit(this.onSelections);
   }
-
-  @HostListener('document:click', ['$event.target']) @HostListener('document: touchstart', ['$event.target'])
-  public onElementOutClick(targetElement: HTMLElement) {
-    let parentFound = false;
-    while (targetElement != null && !parentFound) {
-      if (targetElement === this.element.nativeElement) {
-        parentFound = true;
-      }
-      targetElement = targetElement.parentElement;
-    }
-    if (!parentFound) {
-      this.showToolTip = false;
-    }
-  }
-  // THIS MEHTOD CHECK INPUT IS VALID OR NOT
+     // THIS MEHTOD CHECK INPUT IS VALID OR NOT
   checkValidity(): boolean {
     return this.isValid;
   }
+
 }

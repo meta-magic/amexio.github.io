@@ -3,10 +3,10 @@ import { ValueAccessorBase } from './value-accessor';
 
 export class BaseInput<T> extends ValueAccessorBase<T> {
 
-    onFocus(event: any) {
+    onBaseInputFocus(event: any) {
         this.checkValidity();
     }
-    onInput(event: any) {
+    onBaseInput(event: any) {
         this.checkValidity();
     }
 
@@ -14,7 +14,7 @@ export class BaseInput<T> extends ValueAccessorBase<T> {
         this.checkValidity();
     }
 
-    onChange(event: any) {
+    onBaseInputChange(event: any) {
         this.checkValidity();
     }
 

@@ -1,56 +1,41 @@
-  
- 
- 
-  <div class="input-group">
-    <div class="input-group-prepend">
-      <input type="text" class="form-control" 
-       (keyup)="onInputClick($event)"
-        #inp  [(ngModel)]="selectedValue"  [attr.placeholder]="placeholder"
-        (click)="onSelectClick()" (focus)="onFocus()">
-    </div>
-
-    
-
-    <div   class="input-group-text-search " (click)="onSearchButtonClick($event)">
-      <em  class="fa fa-search iconColor" >
-      </em>
-    </div>
-
+<div class="input-group">
+  <div class="input-group-prepend">
+    <input type="text" class="form-control" (keyup)="onInputClick($event)" #inp [(ngModel)]="selectedValue"
+      [attr.placeholder]="placeholder" (click)="onSelectClick()" (focus)="onFocus()">
   </div>
- 
 
- 
-  <form *ngIf=" searchFlag" class="dropdownposition">
-    <ng-container *ngIf="!advanceSearchFlag">
-        <ul #dropdownitems [style.width]="width+'px'" class="search-dropdown-list"   [ngClass]="selectCssClass()">
-    
-            <li class="search-list-items "  [ngClass]="{'search-list-items-selected':item.selected}"  
-            *ngFor="let item of viewData" (click)="onItemSelect(item)">
-              <div style="white-space: nowrap;display: inline;">{{item[displayfield]}}</div>
-            </li>
-          </ul>
-     <ng-container *ngIf="selectedValue.length > 0">  
-        <div  [style.width]="width+'px'" class="advancesearchbuttondiv">
-            <button   class="fa fa-search btncolor" 
-            [style.width]="width+'px'"
-             class="advancesearchbtn fa fa-search"
-            (click)="advanceSearch()" >
+
+
+  <div class="input-group-text-search " (click)="onSearchButtonClick($event)">
+    <em class="fa fa-search iconColor">
+    </em>
+  </div>
+
+</div>
+
+
+
+<form [ngStyle]="dropdownstyle" class="dropdownposition">
+  <ng-container *ngIf="!advanceSearchFlag">
+    <ul #dropdownitems [style.width]="width+'px'" class="search-dropdown-list" [ngClass]="selectCssClass()">
+
+      <li class="search-list-items " [ngClass]="{'search-list-items-selected':item.selected}" *ngFor="let item of viewData"
+        (click)="onItemSelect(item)">
+        <div style="white-space: nowrap;display: inline;">{{item[displayfield]}}</div>
+      </li>
+    </ul>
+    <ng-container *ngIf="selectedValue.length > 0">
+      <div [style.width]="width+'px'" class="advancesearchbuttondiv">
+        <button class="fa fa-search btncolor" [style.width]="width+'px'" class="advancesearchbtn fa fa-search" (click)="advanceSearch()">
           {{advanceButtonLabel}}
-          </button>
-        </div>
-    </ng-container>          
-         
+        </button>
+      </div>
     </ng-container>
-  </form>
 
-  <div [ngStyle]="{'block': advanceSearchRef.advanceSearchFlag ? 'block' : 'none'}" >
-    
-      <ng-content></ng-content>
-  </div>
-  
-     
+  </ng-container>
+</form>
 
+<div [ngStyle]="{'block': advanceSearchRef.advanceSearchFlag ? 'block' : 'none'}">
 
-
- 
-  
+  <ng-content></ng-content>
+</div>
