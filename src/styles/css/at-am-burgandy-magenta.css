@@ -6480,7 +6480,7 @@ amexio-layout amexio-layout-item {
   width: 94%; }
 
 .timeline .timeline-item .timeline-panel-border {
-  border: 1px solid #777;
+  border: 1px solid #FF0090;
   border-radius: 2px;
   -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175); }
@@ -6493,8 +6493,8 @@ amexio-layout amexio-layout-item {
   right: -16px;
   display: inline-block;
   border-top: 16px solid transparent;
-  border-left: 16px solid #777;
-  border-right: 0 solid #777;
+  border-left: 16px solid #FF0090;
+  border-right: 0 solid #FF0090;
   border-bottom: 16px solid transparent;
   content: " "; }
 
@@ -6507,8 +6507,8 @@ amexio-layout amexio-layout-item {
   position: absolute;
   display: inline-block;
   border-top: 16px solid transparent;
-  border-left: 16px solid #777;
-  border-right: 0 solid #777;
+  border-left: 16px solid #FF0090;
+  border-right: 0 solid #FF0090;
   border-bottom: 16px solid transparent;
   content: " "; }
 
