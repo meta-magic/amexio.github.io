@@ -1,15 +1,15 @@
 import {
-  AfterContentInit, Component, ContentChildren, ElementRef, EventEmitter,
-  HostListener, Input, OnInit, Output, QueryList,
+  AfterContentInit, ChangeDetectorRef, Component, ContentChildren, ElementRef, EventEmitter, HostListener, Input,
+  OnInit, Output, QueryList, Renderer2,
 } from '@angular/core';
-import { AmexioDropDownitemsComponent } from './dropdownmenu.component.items';
-
+import { BaseFormValidator } from '../../base/base.validator.component';
 import { DeviceQueryService } from '../../services/device/device.query.service';
+import { AmexioDropDownitemsComponent } from './dropdownmenu.component.items';
 @Component({
   selector: 'amexio-drop-down-menu',
   templateUrl: `./dropdownmenu.component.html`,
 })
-export class AmexioDropDownMenuComponent implements AfterContentInit, OnInit {
+export class AmexioDropDownMenuComponent extends BaseFormValidator<any> implements AfterContentInit, OnInit {
   toggle: boolean;
   xposition = false;
   top: number;
@@ -91,7 +91,11 @@ export class AmexioDropDownMenuComponent implements AfterContentInit, OnInit {
   @Output() onClick: any = new EventEmitter<any>();
   @ContentChildren(AmexioDropDownitemsComponent) dropdowns: QueryList<AmexioDropDownitemsComponent>;
   optionsCollection: AmexioDropDownitemsComponent[] = [];
-  constructor(public element: ElementRef, public matchMediaService: DeviceQueryService) {
+  constructor(
+    public element: ElementRef, public matchMediaService: DeviceQueryService,
+    public renderer: Renderer2, _cd: ChangeDetectorRef,
+  ) {
+    super(renderer, element, _cd);
     this.iconalign = 'left';
     this.padding = '5px 10px';
   }
@@ -113,22 +117,14 @@ export class AmexioDropDownMenuComponent implements AfterContentInit, OnInit {
       this.toggle = false;
     }));
   }
-  @HostListener('document:click', ['$event.target'])
-  @HostListener('document: touchstart', ['$event.target'])
-  public onElementOutClick(targetElement: HTMLElement) {
-    let parentFound = false;
-    while (targetElement !== null && !parentFound) {
-      if (targetElement === this.element.nativeElement) {
-        parentFound = true;
-      }
-      targetElement = targetElement.parentElement;
-    }
-    if (!parentFound) {
-      this.toggle = false;
-    }
-  }
+
   showDropDownContent(event: any) {
     this.toggle = !this.toggle;
+    if (this.toggle) {
+      this.onBaseFocusEvent({});
+    } else {
+      this.onBaseBlurEvent({});
+    }
     this.top = event.target.getBoundingClientRect().top + 25;
     if ((this.matchMediaService.browserWindow().innerWidth - event.clientX) < 200) {
       this.xposition = true;

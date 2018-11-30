@@ -1,26 +1,19 @@
-<div (click)="showDropDownContent($event)" class="dropdown-menu" 
-     [style.padding]="padding"
-     [ngStyle]="{'background-color':(transparent)?'unset':'null'}">
+<div (click)="showDropDownContent($event)" class="dropdown-menu" [style.padding]="padding" [ngStyle]="{'background-color':(transparent)?'unset':'null'}">
 
-  <span >
+  <span>
     <em *ngIf="icon" style="padding-right: 5px;" [ngClass]="icon">&nbsp;</em>{{title}}&nbsp;</span>
   <ng-container *ngIf="downArrowIcon">
-    <em *ngIf="!toggle"  class="fa fa-angle-down "></em>
-    <em *ngIf="toggle"  class="fa fa-angle-up "></em>
+    <em [ngStyle]="dropdownstyle" class="fa fa-angle-down "></em>
+    <em [ngStyle]="dropdownstyle" class="fa fa-angle-up "></em>
   </ng-container>
 
 </div>
 
-<div   *ngIf="toggle" class="dropdown-menu-content"
-     [style.height]="height"   [ngClass]="{'menu-right':xposition}">
+<div [ngStyle]="dropdownstyle" class="dropdown-menu-content" [style.height]="height" [ngClass]="{'menu-right':xposition}">
 
   <ng-content></ng-content>
-  <amexio-drop-down-menu-item (onClick)="onDropDownMenuClick($event)"  *ngFor="let node of data"
-                                [icon-align]="node.iconalign"
-                                [label-align]="node.labelalign"
-                                [label]="node.label"
-                                [separator]="node.separator"
-                                [icon]="node.icon">
+  <amexio-drop-down-menu-item (onClick)="onDropDownMenuClick($event)" *ngFor="let node of data" [icon-align]="node.iconalign"
+    [label-align]="node.labelalign" [label]="node.label" [separator]="node.separator" [icon]="node.icon">
   </amexio-drop-down-menu-item>
 
 </div>
