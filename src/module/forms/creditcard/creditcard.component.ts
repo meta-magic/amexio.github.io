@@ -4,7 +4,7 @@ Created By:Ankita
 */
 import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { AmexioCreditCardModel } from './../creditcard/creditcardmodel.component';
+import { AmexioCreditCardModel } from '../../../models/creditcardmodel.component';
 const noop = () => {
 };
 @Component({

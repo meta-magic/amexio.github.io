@@ -18,7 +18,6 @@ import { AmexioCheckBoxComponent } from './checkbox/checkbox.component';
 import { AmexioChipComponent } from './chip/chip.component';
 import { AmexioChipsComponent } from './chips/chips.component';
 import { AmexioCreditcardComponent } from './creditcard/creditcard.component';
-import { AmexioCreditCardModel } from './creditcard/creditcardmodel.component';
 import { AmexioDateTimePickerComponent } from './datetimepicker/datetimepicker.component';
 import { AmexioDropDownMenuComponent } from './dropdown-menu/dropdownmenu.component';
 import { AmexioDropDownitemsComponent } from './dropdown-menu/dropdownmenu.component.items';
