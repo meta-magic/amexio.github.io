@@ -151,11 +151,18 @@ UI Components powered by HTML5 & CSS3 for <b>Responsive Web Design & 50+ built-
 - [License](#license)
 
 ## Features
-- __Pure TypeScript:__ Amexio is a pure Typescript library with 0 Dependencies & Angular 5 Support.
+
+- __Pure TypeScript:__ Amexio is a pure Typescript library with 0 Dependencies & Angular 4/5/6 Support.
+- __140+ High Grade Components:__ We make sure you're nothing short of while building your app.
+- __Forrms:__ Amexio API supports both Template Driven Forms and Reactive Forms. 
+- __Layouts:__ With v5.4 release More than half a dozen layout options are supported including CSS3 Grids. 
+- __Responsive Web Design:__ Out of the box Responsive Web Design with 50+ Material Design based Themes.
+_ __Charts, Dashboads, D3:__ Powerful Charting library including D3 Charts with Drillable capabilities. 
 - __Server Rending Support:__ Components support & optimized for server side rendering.
 - __Highly Customizable Styling:__ Lot of customization can be done easily using the Amexio SCSS files.
-- __100+ High Grade Components:__ We make sure you're nothing short of while building your app
+- __Security & Quality:__ Every Amexio build goes thru Security Scanning using Sonar to ensure very High Quality Standards. 
 - __Modular Support:__ Load Only what you want, amexio is Modular.
+- __FOSS:__ Amexio API is Free and Open Source Software based on Apache 2 License
 
 
 ## Angular CLI - Installation
