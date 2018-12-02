@@ -10,7 +10,7 @@
 
 <div align="center">
   <b>Amexio (Angular MetaMagic EXtensions for Inputs and Outputs)</b> is a rich set of  140+  Angular (4/5/6)
-UI Components powered by HTML5 & CSS3 for <b>Responsive Web Design & 50+ built-in Material Design Themes.</b> Components includes Form components, charts, maps, dashboards, Tabs, Grids, Trees, Layouts etc. We added D3 Charts support with Amexio Drillable Charts option. We augmented the Amexio Layouts with more layout options and brought CSS Grid Layout to Amexio with Responsive Design Pattern.
+UI Components powered by HTML5 & CSS3 for <b>Responsive Web Design & 50+ built-in Material Design Themes.</b> Components includes Form components, charts, maps, dashboards, Tabs, Grids, Trees, Layouts etc. We added <b>D3 Charts support </b>with <b>Amexio Drillable Charts</b> option. We augmented the <b>Amexio Layouts</b> with more layout options and brought <b>CSS3 Grid Layout</b> to Amexio with Responsive Design Pattern.
 
 </div>
 <br/>
@@ -491,6 +491,6 @@ Fill up the required Component Params
 
 Copyright © [MetaMagic Global Inc](http://www.metamagicglobal.com/), 2017-18. [Amexio Angular EXtensions](http://www.amexio.tech). All rights reserved.
 
-Licensed under the [Apache 2.0](http://www.amexio.org/metamagic-showcase/license.html)  License.
+Licensed under the [Apache 2.0](http://www.amexio.org/metamagic-showcase/license.html)  License. API Docs by CC By 4.0
 
 **Enjoy!**
