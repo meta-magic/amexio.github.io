@@ -157,7 +157,7 @@ UI Components powered by HTML5 & CSS3 for <b>Responsive Web Design & 50+ built-
 - __Forrms:__ Amexio API supports both Template Driven Forms and Reactive Forms. 
 - __Layouts:__ With v5.4 release More than half a dozen layout options are supported including CSS3 Grids. 
 - __Responsive Web Design:__ Out of the box Responsive Web Design with 50+ Material Design based Themes.
-_ __Charts, Dashboads, D3:__ Powerful Charting library including D3 Charts with Drillable capabilities. 
+- __Charts, Dashboads, D3:__ Powerful Charting library including D3 Charts with Drillable capabilities. 
 - __Server Rending Support:__ Components support & optimized for server side rendering.
 - __Highly Customizable Styling:__ Lot of customization can be done easily using the Amexio SCSS files.
 - __Security & Quality:__ Every Amexio build goes thru Security Scanning using Sonar to ensure very High Quality Standards. 
