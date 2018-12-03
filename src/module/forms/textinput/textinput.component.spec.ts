@@ -33,14 +33,14 @@ describe('NUMBER INPUT', () => {
     expect(comp['innerValue']).toEqual(comp.value);
   });
 
-  //wrking 1- set errormsg
+  // working 1- set errormsg
   it('set errormsg', () => {
     comp.errormsg = 'data incorect';
     expect(comp.helpInfoMsg).toEqual('data incorect<br/>');
   });
 
   it('get errormsg', () => {
-    //  comp.errormsg='data incorect';
+    // comp.errormsg='data incorect';
     expect(comp.errormsg).toEqual(comp._errormsg);
   });
 
@@ -94,24 +94,18 @@ describe('NUMBER INPUT', () => {
   it('on blur()', () => {
     comp.onblur(fixture);
     expect(comp.showToolTip).toEqual(false);
-    expect(comp.componentClass).toEqual(comp.validateComponent(fixture));
-
   })
-  it('getCssClass()', () => {
-    comp.getCssClass();
-    expect(comp.getCssClass).toBeUndefined;
-  });
-  //working 3 get maxerrormsg
+  // working 3 get maxerrormsg
   it('get _maxerrormsg', () => {
     comp.maxerrormsg = 'trial';
     expect(comp.maxerrormsg).toEqual(comp._maxerrormsg);
   })
   it('get helpinfomsg', () => {
-    comp.helpInfoMsg = "test";
+    comp.helpInfoMsg = 'test';
     expect(comp.helpInfoMsg).toEqual(comp.helpInfoMsg);
   })
   it('set minerroromsg', () => {
-    comp.helpInfoMsg = "test";
+    comp.helpInfoMsg = 'test';
     comp.minerrormsg = 'min error';
     comp.helpInfoMsg = comp.helpInfoMsg + '<b>Min Length<b/>: ' + comp.minerrormsg + '<br/>';
     expect(comp.helpInfoMsg).toContain(comp.minerrormsg);
@@ -120,15 +114,6 @@ describe('NUMBER INPUT', () => {
     comp.isValid = true;
     expect(comp.isValid).toEqual(true);
   });
-  it('noInnerValue()', () => {
-    comp.noInnerValue(fixture);
-    expect(comp.noInnerValue).toBeUndefined;
-  });
-  it('otherValidation()', () => {
-    comp.otherValidation(fixture);
-    expect(comp.otherValidation(fixture.nativeElement)).toBeUndefined;
-  });
-
   // it('set validation flag', () => {
   //   //comp.helpInfoMsg="test";
   //   let flag: boolean;
@@ -149,6 +134,5 @@ describe('NUMBER INPUT', () => {
   //   let str = comp.helpInfoMsg + 'Min value: ' + comp.value+ '<br/>';
   //   expect(comp.helpInfoMsg).toBe(str);
   // });
-
 
 });
