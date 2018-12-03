@@ -298,7 +298,6 @@ description : On field value change event
   onblur(input: any) {
     this.onTouchedCallback();
     this.showToolTip = false;
-    this.componentClass = this.validateComponent(input);
     this.onBlur.emit(this.innerValue);
   }
 
@@ -308,7 +307,6 @@ description : On field value change event
   }
 
   onInput(input: any) {
-    this.componentClass = this.validateComponent(input);
     this.input.emit(this.innerValue);
   }
 
@@ -332,71 +330,17 @@ description : On field value change event
   registerOnTouched(fn: any) {
     this.onTouchedCallback = fn;
   }
-
-  getCssClass(): any {
-    return { 'input-control-error': true };
-  }
-
-  validateComponent(inp: any): any {
-    let classObj;
-    this.inputRef = inp;
-    this.isValid = this.checkValidity();
-    if (!this.isValid) {
-      classObj = this.getCssClass();
-    }
-    this.isComponentValid.emit(this.isValid);
-    return classObj;
-  }
-
-  // If inner value is black or null
-  noInnerValue(inp: any) {
-    let classObj;
-    if (inp.touched) {
-      classObj = this.getCssClass();
-      this.isValid = false;
-    } else {
-      this.isValid = false;
-    }
-    return classObj;
-  }
-
-  // Min Max Validation
-  minMaxValidation() {
-    let classObj;
-    if (this.innerValue && (this.innerValue.length >= this.minlength)) {
-      this.isValid = true;
-    } else {
-      classObj = this.getCssClass();
-      this.isValid = false;
-    }
-    return classObj;
-  }
-
-  // Else Block for validations
-  otherValidation(inp: any) {
-    let classObj;
-    classObj = {
-      'input-control-error': inp.invalid && (inp.dirty || inp.touched),
-      'input-control-success': inp.valid && (inp.dirty || inp.touched),
-    };
-    if (inp.valid) {
-      this.isValid = true;
-    }
-    return classObj;
-  }
-
-    // THIS MEHTOD CHECK INPUT IS VALID OR NOT
-    checkValidity(): boolean {
-      return (this.inputRef && this.inputRef.valid);
-    }
-
     isFieldValidate(): boolean {
       return (this.innerValue && ((this.innerValue.length >= this.minlength) && this.innerValue.length > 0)) ||
       (!this.minlength && this.innerValue && this.innerValue.length > 0);
     }
 
     public validate(c: FormControl) {
-      return ((!this.allowblank && this.isFieldValidate()) || this.allowblank ) ? null : {
+      const isValid: boolean = (!this.allowblank && this.isFieldValidate()) || this.allowblank;
+      if (this.inputRef.nativeElement && this.inputRef.nativeElement.selectionStart) {
+        this.componentClass = isValid ? 'input-control-success' : 'input-control-error';
+      }
+      return isValid ? null : {
           jsonParseError: {
               valid: true,
           },
