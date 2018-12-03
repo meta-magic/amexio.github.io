@@ -3,9 +3,7 @@ import { AmexioGridModel } from './gridmodel.component';
 
 import { GridConfig } from '../../../models/GridConfig';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class AmexioGridLayoutService {
   servicevar: any;
   layoutData: any[] = [];
