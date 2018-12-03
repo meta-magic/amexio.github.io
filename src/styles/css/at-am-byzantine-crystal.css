@@ -3545,10 +3545,6 @@ header .billboard .content-button {
   text-transform: uppercase;
   transition: transform 0.5s; }
 
-.button-small i:hover {
-  border: solid 2px #fff;
-  transform: scale(1.1); }
-
 .close-button {
   cursor: pointer;
   padding-left: 98%;
