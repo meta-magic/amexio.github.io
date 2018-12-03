@@ -156,11 +156,11 @@ header .billboard .content-button {
   //color: #fff;      //theme color?
   transition: transform 0.5s;
 }
-
-.button-small i:hover {
-  border: solid 2px #fff;   //theme color?
-  transform: scale(1.1);
-}
+// button icon hover css , Removed
+// .button-small i:hover {
+//   border: solid 2px #fff;   //theme color?
+//   transform: scale(1.1);
+// }
 
 .close-button {
   cursor: pointer;
