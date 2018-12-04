@@ -286,8 +286,8 @@ description : Set enable / disable popover.
   }
 
   isFieldValidate(): boolean {
-    return (this.value && ((this.value.length >= this.minlength) && this.value.length > 0)) ||
-      (!this.minlength && this.value && this.value.length > 0);
+    return (this.value && (this.value.length >= this.minlength)) ||
+      (!this.minlength && this.value );
   }
 
   public validate(c: FormControl) {
