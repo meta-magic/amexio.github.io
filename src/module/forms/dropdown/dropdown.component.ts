@@ -652,7 +652,7 @@ description : Set enable / disable popover.
     return this.isValid;
   }
   public validate(c: FormControl) {
-    return ((!this.allowblank && this.value ) || this.allowblank) ? null : {
+    return ((!this.allowblank && (this.value || this.value === 0) ) || this.allowblank) ? null : {
       jsonParseError: {
         valid: true,
       },
