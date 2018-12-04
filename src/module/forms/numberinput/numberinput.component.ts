@@ -51,7 +51,7 @@ version : 4.0 onwards
 default :
 description : Defines the min range limit for number input.
 */
-  @Input('min-value') minvalue: number;
+  @Input('min-value') minvalue: any;
   /*
 Properties
 name : max-value
@@ -60,7 +60,7 @@ version : 4.0 onwards
 default :
 description : Defines the max range limit for number input.
 */
-  @Input('max-value') maxvalue: number;
+  @Input('max-value') maxvalue: any;
 
   helpInfoMsg: string;
 
@@ -286,12 +286,12 @@ description : Set enable / disable popover.
   }
 
    isFieldValidate(): boolean {
-    if(this.minvalue && !this.maxvalue) {
+    if (this.minvalue && !this.maxvalue) {
       return this.innerValue && (this.innerValue > this.minvalue);
-    } else if(!this.minvalue && this.maxvalue) {
+    } else if (!this.minvalue && this.maxvalue) {
       return this.innerValue && (this.innerValue < this.maxvalue);
-    } else if(!this.minvalue && !this.maxvalue) {
-      return this.innerValue;
+    } else if (!this.minvalue && !this.maxvalue && this.innerValue) {
+      return true;
     } else {
       return this.innerValue && (this.innerValue > this.minvalue && this.innerValue < this.maxvalue);
     }
