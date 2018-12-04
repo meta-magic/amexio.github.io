@@ -337,7 +337,7 @@ export class AmexioTypeAheadComponent extends ListBaseComponent<string> implemen
   }
 
   public validate(c: FormControl) {
-    return ((!this.allowblank && (this.value && this.value.length > 0 )) || this.allowblank) ? null : {
+    return ((!this.allowblank && this.value) || this.allowblank) ? null : {
         jsonParseError: {
             valid: true,
         },
