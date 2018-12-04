@@ -266,7 +266,7 @@ export class AmexioRadioGroupComponent extends ValueAccessorBase<string> impleme
     return this.isValid;
   }
   public validate(c: FormControl) {
-    return ((!this.allowblank && (this.value && this.value.length)) || this.allowblank) ? null : {
+    return ((!this.allowblank && this.value) || this.allowblank) ? null : {
         jsonParseError: {
             valid: true,
         },
