@@ -8,8 +8,8 @@ different configurable attributes for validation
 
 */
 import { Component, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
-import { AmexioFormValidator } from './../form-validator/amexio.form.validator.component';
+import { FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
+import { ValueAccessorBase } from '../../base/value-accessor';
 
 const noop = () => {
 };
@@ -23,7 +23,7 @@ const noop = () => {
     provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioTextAreaComponent), multi: true,
   }],
 })
-export class AmexioTextAreaComponent extends AmexioFormValidator implements ControlValueAccessor, OnInit, Validators {
+export class AmexioTextAreaComponent extends ValueAccessorBase<string> implements OnInit, Validators {
 
   /*
 Properties
@@ -75,15 +75,6 @@ description : Sets if field is required
   @Output() isComponentValid: any = new EventEmitter<any>();
 
   @ViewChild('ref', { read: ElementRef }) public inputRef: ElementRef;
-
-  // Placeholders for the callbacks which are later provided
-  // by the Control Value Accessor
-  private onTouchedCallback: () => void = noop;
-  private onChangeCallback: (_: any) => void = noop;
-
-  // The internal dataviews model
-  private innerValue: any = '';
-
   get errormsg(): string {
     return this._errormsg;
   }
@@ -243,94 +234,13 @@ description : Set enable / disable popover.
     this.isComponentValid.emit(this.allowblank);
   }
 
-  // get accessor
-  get value(): any {
-    return this.innerValue;
-  }
-
-  // set accessor including call the onchange callback
-  set value(v: any) {
-    if (v !== this.innerValue) {
-      this.innerValue = v;
-      this.onChangeCallback(v);
-    }
-  }
-
   // Set touched on blur
   onBlur(input: any) {
-    this.onTouchedCallback();
     this.showToolTip = false;
-    this.componentClass = this.validateClass(input);
   }
 
   onFocus() {
     this.showToolTip = true;
-  }
-
-  // From ControlValueAccessor interface
-  writeValue(value: any) {
-    if (value !== this.innerValue) {
-      this.innerValue = value;
-    }
-  }
-
-  // From ControlValueAccessor interface
-  registerOnChange(fn: any) {
-    this.onChangeCallback = fn;
-  }
-
-  // From ControlValueAccessor interface
-  registerOnTouched(fn: any) {
-    this.onTouchedCallback = fn;
-  }
-
-  getCssClass(): any {
-    return { 'input-control-error': true };
-  }
-
-  validateClass(inp: any): any {
-    if (inp) {
-      let classObj;
-      if (!this.allowblank) {
-        if (inp.touched && !this.allowblank && (this.innerValue === '' || this.innerValue === null)) {
-          classObj = this.getCssClass();
-          this.isValid = false;
-        } else {
-          this.otherValidation(inp);
-        }
-      } else {
-        this.isValid = true;
-      }
-      this.isComponentValid.emit(this.isValid);
-      return classObj;
-    }
-  }
-  onInput(input: any) {
-    this.componentClass = this.validateClass(input);
-  }
-
-  noInnerValue(inp: any) {
-    let classObj;
-    if (inp.touched) {
-      classObj = this.getCssClass();
-      this.isValid = false;
-    } else {
-      this.isValid = false;
-    }
-    return classObj;
-  }
-
-  // Else Block for validations
-  otherValidation(inp: any) {
-    let classObj;
-    classObj = {
-      'input-control-error': inp.invalid && (inp.dirty || inp.touched),
-      'input-control-success': inp.valid && (inp.dirty || inp.touched),
-    };
-    if (inp.valid) {
-      this.isValid = true;
-    }
-    return classObj;
   }
 
   // THIS MEHTOD CHECK INPUT IS VALID OR NOT

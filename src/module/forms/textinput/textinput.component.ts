@@ -6,8 +6,8 @@ different configurable attributes for validation (min/max length, allow
 blank, custom regex), custom error message, help, custom styles.
 */
 import { Component, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core';
-import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
-import { AmexioFormValidator } from './../form-validator/amexio.form.validator.component';
+import { FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
+import { ValueAccessorBase } from '../../base/value-accessor';
 
 const noop = () => {
 };
@@ -19,11 +19,11 @@ const noop = () => {
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioTextInputComponent), multi: true,
   }, {
     provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioTextInputComponent), multi: true,
-}],
+  }],
   encapsulation: ViewEncapsulation.None,
 })
 
-export class AmexioTextInputComponent extends AmexioFormValidator implements ControlValueAccessor, OnInit, Validators {
+export class AmexioTextInputComponent extends ValueAccessorBase<string> implements OnInit, Validators {
   /*
 Properties
 name : field-label
@@ -68,14 +68,6 @@ description : Sets if field is required
   showToolTip: boolean;
 
   _errormsg: string;
-
-  // The internal dataviews model
-  private innerValue: any = '';
-
-  // Placeholders for the callbacks which are later provided
-  // by the Control Value Accessor
-  private onTouchedCallback: () => void = noop;
-  private onChangeCallback: (_: any) => void = noop;
 
   get errormsg(): string {
     return this._errormsg;
@@ -212,14 +204,14 @@ description : Apply Reg-ex to the field
       this.regEx = new RegExp(this._pattern);
     }
   }
-/*
-Properties
-name : enable-popover
-datatype : string
-version : 4.0 onwards
-default :
-description : Set enable / disable popover.
-*/
+  /*
+  Properties
+  name : enable-popover
+  datatype : string
+  version : 4.0 onwards
+  default :
+  description : Set enable / disable popover.
+  */
   @Input('enable-popover') enablepopover: boolean;
   regex: RegExp;
 
@@ -281,76 +273,47 @@ description : On field value change event
     this.isComponentValid.emit(this.allowblank);
   }
 
-  // get accessor
-  get value(): any {
-    return this.innerValue;
-  }
-
-  // set accessor including call the onchange callback
-  set value(v: any) {
-    if (v !== this.innerValue) {
-      this.innerValue = v;
-      this.onChangeCallback(v);
-    }
-  }
-
   // Set touched on blur
   onblur(input: any) {
-    this.onTouchedCallback();
     this.showToolTip = false;
-    this.onBlur.emit(this.innerValue);
+    this.onBlur.emit(this.value);
   }
 
   onFocus() {
     this.showToolTip = true;
-    this.focus.emit(this.innerValue);
+    this.focus.emit(this.value);
   }
 
   onInput(input: any) {
-    this.input.emit(this.innerValue);
+    this.input.emit(this.value);
   }
 
   onChangeEv() {
-    this.change.emit(this.innerValue);
+    this.change.emit(this.value);
   }
 
-  // From ControlValueAccessor interface
-  writeValue(value: any) {
-    if (value !== this.innerValue) {
-      this.innerValue = value;
+  isFieldValidate(): boolean {
+    return (this.value && ((this.value.length >= this.minlength) && this.value.length > 0)) ||
+      (!this.minlength && this.value && this.value.length > 0);
+  }
+
+  public validate(c: FormControl) {
+    const isValid: boolean = (!this.allowblank && this.isFieldValidate()) || this.allowblank;
+    this.isValid = isValid;
+    if (this.inputRef.nativeElement && this.inputRef.nativeElement.selectionStart) {
+      this.componentClass = isValid ? 'input-control-success' : 'input-control-error';
     }
-  }
-
-  // From ControlValueAccessor interface
-  registerOnChange(fn: any) {
-    this.onChangeCallback = fn;
-  }
-
-  // From ControlValueAccessor interface
-  registerOnTouched(fn: any) {
-    this.onTouchedCallback = fn;
-  }
-    isFieldValidate(): boolean {
-      return (this.innerValue && ((this.innerValue.length >= this.minlength) && this.innerValue.length > 0)) ||
-      (!this.minlength && this.innerValue && this.innerValue.length > 0);
-    }
-
-    public validate(c: FormControl) {
-      const isValid: boolean = (!this.allowblank && this.isFieldValidate()) || this.allowblank;
-      if (this.inputRef.nativeElement && this.inputRef.nativeElement.selectionStart) {
-        this.componentClass = isValid ? 'input-control-success' : 'input-control-error';
-      }
-      return isValid ? null : {
-          jsonParseError: {
-              valid: true,
-          },
-      };
+    return isValid ? null : {
+      jsonParseError: {
+        valid: true,
+      },
+    };
   }
   // THIS METHOD GENERATE RANDOM STRING
   generateName() {
-    if (!this.name && this.fieldlabel ) {
+    if (!this.name && this.fieldlabel) {
       this.name = this.fieldlabel.replace(/\s/g, '');
-    } else if ( !this.name && !this.fieldlabel) {
+    } else if (!this.name && !this.fieldlabel) {
       this.name = 'textinput-' + this.getRandomString();
     }
   }
