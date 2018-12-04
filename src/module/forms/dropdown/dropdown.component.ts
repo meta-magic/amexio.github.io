@@ -604,11 +604,11 @@ description : Set enable / disable popover.
   }
   // From ControlValueAccessor interface
   writeValue(value: any) {
-    if (!this.allowblank) {
-      if (value != null) {
-        this.writeChangedValue(value);
-      } else {
-        this.innerValue = '';
+    if (value != null) {
+      this.writeChangedValue(value);
+    } else {
+      this.innerValue = '';
+      if (this.allowblank) {
         this.isValid = true;
       }
     }
