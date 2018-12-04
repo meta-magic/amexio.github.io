@@ -285,9 +285,16 @@ description : Set enable / disable popover.
       this.inputRef.nativeElement.validity && this.inputRef.nativeElement.validity.valid);
   }
 
-  isFieldValidate(): boolean {
-    return (this.value && (this.value >= this.minlength)) ||
-      (!this.minlength && this.value );
+   isFieldValidate(): boolean {
+    if(this.minvalue && !this.maxvalue) {
+      return this.innerValue && (this.innerValue > this.minvalue);
+    } else if(!this.minvalue && this.maxvalue) {
+      return this.innerValue && (this.innerValue < this.maxvalue);
+    } else if(!this.minvalue && !this.maxvalue) {
+      return this.innerValue;
+    } else {
+      return this.innerValue && (this.innerValue > this.minvalue && this.innerValue < this.maxvalue);
+    }
   }
 
   public validate(c: FormControl) {
