@@ -184,6 +184,9 @@ export class AmexioTypeAheadComponent extends ListBaseComponent<string> implemen
 
   ngOnInit() {
     this.generateName();
+    if (!this.valuefield) {
+      this.valuefield = this.displayfield;
+    }
     this.isValid = this.allowblank;
     this.isComponentValid.emit(this.allowblank);
 
@@ -271,7 +274,11 @@ export class AmexioTypeAheadComponent extends ListBaseComponent<string> implemen
 
   // METHOD TO DISPLAY ITEM WHEN SELECTED
   onDropDownListItemClick(data: any) {
-    this.value = data[this.valuefield];
+    if (this.valuefield) {
+      this.value = data[this.valuefield];
+    }else {
+      this.value = data[this.displayfield];
+    }
     this.displayValue = data[this.displayfield];
     this.onClick.emit(data);
   }
