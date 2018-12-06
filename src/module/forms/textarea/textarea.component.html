@@ -9,8 +9,9 @@
          [(ngModel)]="value"
          #inp="ngModel"
          [ngClass]="componentClass"
-         (blur)="onBlur(inp)"
+         (blur)="onBlur()"
          (focus)="onFocus()"
+         (input)="onInput()"
          [name]="name"
          [pattern]="regEx"
          #ref

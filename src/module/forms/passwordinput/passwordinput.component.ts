@@ -3,12 +3,9 @@
  Component Selector :  <amexio-email-input>
  Component Description : Email input field
 */
-import { Component, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
 import { ValueAccessorBase } from '../../base/value-accessor';
-
-const noop = () => {
-};
 
 @Component({
   selector: 'amexio-password-input',
@@ -240,65 +237,48 @@ default :
 description : On field value change event
 */
   @Output() change: any = new EventEmitter<any>();
-  @Output() isComponentValid: any = new EventEmitter<any>();
-  @ViewChild('ref', { read: ElementRef }) public inputRef: ElementRef;
+  @ViewChild(NgModel) model: NgModel;
   @Input('name') name: string;
   constructor() {
     super();
     this.showToolTip = false;
   }
 
-  // Set touched on blur
-  onblur(input: any) {
+  // THIS METHOD USED FOR BLUR EVENT.
+  onblur() {
     this.showToolTip = false;
     this.onBlur.emit(this.value);
   }
-  onInput(input: any) {
-    this.input.emit(this.value);
-  }
+  // THIS METHOD USED FOR FOCUS EVENT .
   onFocus() {
     this.showToolTip = true;
     this.focus.emit(this.value);
   }
+  // THIS METHOD USED FOR  INPUT EVENT .
+  onInput() {
+    this.isValid = this.isFieldValid();
+    this.input.emit(this.value);
+  }
+  // THIS METHOD USED FOR CHANGE EVENT  .
   onChangeEv() {
     this.change.emit(this.value);
   }
 
   ngOnInit() {
-    this.generateName();
-    this.isComponentValid.emit(this.allowblank);
+    this.isValid = this.isFieldValid();
+    this.name = this.generateName(this.name, this.fieldlabel, 'textinput');
   }
 
-  isFieldValidate(): boolean {
-    return (this.value && (this.value.length >= this.minlength)) ||
-      (!this.minlength && this.value && this.value.length > 0);
+  // THIS METHOD IS USED FOR VALIDATION
+  isFieldValid(): boolean {
+    return (!this.allowblank && (this.value && ((this.value.length >= this.minlength) && this.value.length > 0)) ||
+      (!this.minlength && this.value && this.value.length > 0)) || this.allowblank;
   }
-
   public validate(c: FormControl) {
-    const isValid: boolean = (!this.allowblank && this.isFieldValidate()) || this.allowblank;
-    if (this.inputRef.nativeElement && this.inputRef.nativeElement.selectionStart) {
-      this.componentClass = isValid ? 'input-control-success' : 'input-control-error';
-    }
-    return isValid ? null : {
+    return this.isFieldValid() ? null : {
       jsonParseError: {
         valid: true,
       },
     };
-  }
-  // THIS METHOD GENERATE RANDOM STRING
-  generateName() {
-    if (!this.name && this.fieldlabel) {
-      this.name = this.fieldlabel.replace(/\s/g, '');
-    } else if (!this.name && !this.fieldlabel) {
-      this.name = 'textinput-' + this.getRandomString();
-    }
-  }
-  getRandomString(): string {
-    const possibleCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-    let randomString = '';
-    for (let i = 0; i < 6; i++) {
-      randomString += possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
-    }
-    return randomString;
   }
 }

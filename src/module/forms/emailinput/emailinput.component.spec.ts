@@ -91,12 +91,6 @@ describe('amexio-email-input', () => {
     expect((<any>comp).isValid).toEqual(true);
   });
 
-  it('check method onblur', () => {
-    comp.onblur({ 'inp': false });
-    comp.showToolTip = false;
-    expect((<any>comp).showToolTip).toEqual(false);
-  });
-
   it('check onchnage method for emit data ', () => {
 
     comp.onChangeEv();
@@ -104,30 +98,11 @@ describe('amexio-email-input', () => {
       expect(comp.value).toEqual(g);
     });
   });
-  it('check onInput method for emit data ', () => {
 
-    comp.onInput('event');
-    comp.input.subscribe((g: any) => {
-      expect(comp.value).toEqual(g);
-    });
-  });
+ 
 
-  it('check isComponentValid method for emit data ', () => {
+ 
 
-    comp.ngOnInit();
-
-    comp.isComponentValid.subscribe((g: any) => {
-      expect(comp.allowblank).toEqual(g);
-    });
-  });
-
-  it('check onblur method for emit data ', () => {
-
-    comp.onblur('event');
-    comp.onBlur.subscribe((g: any) => {
-      expect(comp.value).toEqual(g);
-    });
-  });
 
   it('set errormsg', () => {
     comp.errormsg = 'data incorect';

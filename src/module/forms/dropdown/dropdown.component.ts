@@ -321,6 +321,7 @@ description : Set enable / disable popover.
 
   }
   ngOnInit() {
+    this.name = this.generateName(this.name, this.fieldlabel, 'textinput');
     this.isValid = this.allowblank;
     this.isComponentValid.emit(this.allowblank);
     if (this.placeholder === '') {
@@ -657,21 +658,5 @@ description : Set enable / disable popover.
         valid: true,
       },
     };
-  }
-  // THIS METHOD GENERATE RANDOM STRING
-  generateName() {
-    if (!this.name && this.fieldlabel) {
-      this.name = this.fieldlabel.replace(/\s/g, '');
-    } else if (!this.name && !this.fieldlabel) {
-      this.name = 'textinput-' + this.getRandomString();
-    }
-  }
-  getRandomString(): string {
-    const possibleCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-    let randomString = '';
-    for (let i = 0; i < 6; i++) {
-      randomString += possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
-    }
-    return randomString;
   }
 }

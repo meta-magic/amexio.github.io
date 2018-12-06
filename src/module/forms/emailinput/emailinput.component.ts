@@ -7,8 +7,6 @@ import { Component, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output,
 import { FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
 import { ValueAccessorBase } from '../../base/value-accessor';
 
-const noop = () => {
-};
 @Component({
   selector: 'amexio-email-input',
   templateUrl: './emailinput.component.html',
@@ -16,7 +14,7 @@ const noop = () => {
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioEmailInputComponent), multi: true,
   }, {
     provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioEmailInputComponent), multi: true,
-}],
+  }],
 })
 export class AmexioEmailInputComponent extends ValueAccessorBase<string> implements OnInit, Validators {
 
@@ -72,7 +70,6 @@ export class AmexioEmailInputComponent extends ValueAccessorBase<string> impleme
   set errormsg(value: string) {
     this.helpInfoMsg = value + '<br/>';
   }
-  @Output() isComponentValid: any = new EventEmitter<any>();
 
   @ViewChild('ref', { read: ElementRef }) public inputRef: ElementRef;
 
@@ -123,7 +120,7 @@ export class AmexioEmailInputComponent extends ValueAccessorBase<string> impleme
    */
   @Input('font-size') fontsize: string;
 
-  emailpatter: any = /\S+@\S+\.\S+/;
+  emailpattern: any = /\S+@\S+\.\S+/;
 
   _pattern: string;
 
@@ -200,22 +197,23 @@ export class AmexioEmailInputComponent extends ValueAccessorBase<string> impleme
     this.showToolTip = false;
   }
   ngOnInit() {
-    this.generateName();
-    this.isComponentValid.emit(this.allowblank);
+    this.name = this.generateName(this.name, this.fieldlabel, 'textinput');
   }
-
+  // THIS METHOD USED FOR BLUR EVENT.
+  onblur() {
+    this.showToolTip = false;
+    this.onBlur.emit(this.value);
+  }
+  // THIS METHOD USED FOR FOCUS EVENT .
   onFocus() {
     this.showToolTip = true;
     this.focus.emit(this.value);
   }
-  // Set touched on blur
-  onblur(input: any) {
-    this.showToolTip = false;
-    this.onBlur.emit(this.value);
-  }
-  onInput(input: any) {
+  // THIS METHOD USED FOR  INPUT EVENT .
+  onInput() {
     this.input.emit(this.value);
   }
+  // THIS METHOD USED FOR CHANGE EVENT  .
   onChangeEv() {
     this.change.emit(this.value);
   }
@@ -227,26 +225,10 @@ export class AmexioEmailInputComponent extends ValueAccessorBase<string> impleme
   }
 
   public validate(c: FormControl) {
-    return ((!this.allowblank && this.emailpatter.test(this.value)) || this.allowblank) ? null : {
-        jsonParseError: {
-            valid: true,
-        },
+    return ((!this.allowblank && this.emailpattern.test(this.value)) || this.allowblank) ? null : {
+      jsonParseError: {
+        valid: true,
+      },
     };
-}
- // THIS METHOD GENERATE RANDOM STRING
- generateName() {
-  if (!this.name && this.fieldlabel ) {
-    this.name = this.fieldlabel.replace(/\s/g, '');
-  } else if ( !this.name && !this.fieldlabel) {
-    this.name = 'textinput-' + this.getRandomString();
   }
-}
-getRandomString(): string {
-  const possibleCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-  let randomString = '';
-  for (let i = 0; i < 6; i++) {
-    randomString += possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
-  }
-  return randomString;
-}
 }

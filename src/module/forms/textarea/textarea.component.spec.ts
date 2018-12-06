@@ -86,12 +86,8 @@ describe('TextArea ', () => {
     comp.onFocus();
     expect(comp.showToolTip).toEqual(true);
   });
-  //on blur()
-  it('on blur()', () => {
-    comp.onBlur(fixture);
-    expect(comp.showToolTip).toEqual(false);
-   // expect(comp.componentClass).toEqual(comp.validateClass(fixture));
-  });
+
+  
 
   it('writeValue()', () => {
     comp.writeValue(fixture);
