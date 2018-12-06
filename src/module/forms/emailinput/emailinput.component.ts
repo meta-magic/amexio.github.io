@@ -45,6 +45,7 @@ export class AmexioEmailInputComponent extends ValueAccessorBase<string> impleme
    description : Sets if field is required
    */
   @Input('allow-blank') allowblank: boolean;
+  @ViewChild(NgModel) model: NgModel;
 
   helpInfoMsg: string;
 
@@ -188,14 +189,13 @@ export class AmexioEmailInputComponent extends ValueAccessorBase<string> impleme
    */
   @Output() change: any = new EventEmitter<any>();
 
-  componentClass: any;
-
   isValid: boolean;
   @Input('name') name: string;
   constructor() {
     super();
     this.showToolTip = false;
   }
+
   ngOnInit() {
     this.name = this.generateName(this.name, this.fieldlabel, 'textinput');
   }
@@ -211,6 +211,7 @@ export class AmexioEmailInputComponent extends ValueAccessorBase<string> impleme
   }
   // THIS METHOD USED FOR  INPUT EVENT .
   onInput() {
+    this.isValid = this.isFieldValid();
     this.input.emit(this.value);
   }
   // THIS METHOD USED FOR CHANGE EVENT  .
@@ -224,8 +225,12 @@ export class AmexioEmailInputComponent extends ValueAccessorBase<string> impleme
       this.inputRef.nativeElement.validity && this.inputRef.nativeElement.validity.valid);
   }
 
+  // THIS METHOD IS USED FOR VALIDATION
+  isFieldValid(): boolean {
+    return (!this.allowblank  && this.emailpattern.test(this.value)) || this.allowblank;
+  }
   public validate(c: FormControl) {
-    return ((!this.allowblank && this.emailpattern.test(this.value)) || this.allowblank) ? null : {
+    return this.isFieldValid() ? null : {
       jsonParseError: {
         valid: true,
       },

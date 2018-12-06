@@ -270,7 +270,7 @@ default :
 description : Set enable / disable popover.
 */
   @Input('enable-popover') enablepopover: boolean;
-
+  @ViewChild(NgModel) model: NgModel;
   constructor() {
     super();
     this.showToolTip = false;
