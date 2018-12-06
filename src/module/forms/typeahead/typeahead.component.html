@@ -6,7 +6,7 @@
     {{fieldlabel}}
   </label>
 
-  <input type="hidden" [(ngModel)]="value" [name]="name" #model="ngModel" required >
+  <input type="hidden" [(ngModel)]="value" [name]="name" #model="ngModel" required (ngModelChange)="onChange($event)">
   
 
   <div class="input-container">
