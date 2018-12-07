@@ -1,7 +1,7 @@
 .datetimepicker{
   display: block;
   border: $datetimepickerBorderSize solid $datetimepickerBorderColor;
-  position: relative;
+  position: absolute;
   box-shadow: 0 1px 3px 0 $datetimepickerBorderColor;
   z-index: 3;
   width:290px;
