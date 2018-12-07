@@ -8,11 +8,8 @@ different configurable attributes for validation
 
 */
 import { Component, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
-import { AmexioFormValidator } from './../form-validator/amexio.form.validator.component';
-
-const noop = () => {
-};
+import { FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
+import { ValueAccessorBase } from '../../base/value-accessor';
 
 @Component({
   selector: 'amexio-textarea-input',
@@ -23,7 +20,7 @@ const noop = () => {
     provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioTextAreaComponent), multi: true,
   }],
 })
-export class AmexioTextAreaComponent extends AmexioFormValidator implements ControlValueAccessor, OnInit, Validators {
+export class AmexioTextAreaComponent extends ValueAccessorBase<string> implements OnInit, Validators {
 
   /*
 Properties
@@ -74,16 +71,44 @@ description : Sets if field is required
 
   @Output() isComponentValid: any = new EventEmitter<any>();
 
+  /*
+Events
+name : onBlur
+datatype : any
+version : 4.0 onwards
+default :
+description : On blur event
+*/
+  @Output() onBlur: any = new EventEmitter<any>();
+  /*
+ Events
+ name : input
+ datatype : any
+ version : none
+ default :
+ description : 	On input event field.
+ */
+  @Output() input: any = new EventEmitter<any>();
+  /*
+ Events
+ name : focus
+ datatype : any
+ version : none
+ default :
+ description : On focus event field.
+ */
+  @Output() focus: any = new EventEmitter<any>();
+  /*
+ Events
+ name : change
+ datatype : any
+ version : none
+ default :
+ description : On field value change event
+ */
+  @Output() change: any = new EventEmitter<any>();
+
   @ViewChild('ref', { read: ElementRef }) public inputRef: ElementRef;
-
-  // Placeholders for the callbacks which are later provided
-  // by the Control Value Accessor
-  private onTouchedCallback: () => void = noop;
-  private onChangeCallback: (_: any) => void = noop;
-
-  // The internal dataviews model
-  private innerValue: any = '';
-
   get errormsg(): string {
     return this._errormsg;
   }
@@ -239,127 +264,39 @@ description : Set enable / disable popover.
     this.showToolTip = false;
   }
   ngOnInit() {
-    this.generateName();
+    this.name = this.generateName(this.name, this.fieldlabel, 'textareainput');
     this.isComponentValid.emit(this.allowblank);
   }
 
-  // get accessor
-  get value(): any {
-    return this.innerValue;
-  }
-
-  // set accessor including call the onchange callback
-  set value(v: any) {
-    if (v !== this.innerValue) {
-      this.innerValue = v;
-      this.onChangeCallback(v);
-    }
-  }
-
   // Set touched on blur
-  onBlur(input: any) {
-    this.onTouchedCallback();
+  onBlurEvent() {
     this.showToolTip = false;
-    this.componentClass = this.validateClass(input);
+    this.onBlur.emit(this.value);
   }
 
   onFocus() {
     this.showToolTip = true;
+    this.focus.emit(this.value);
   }
 
-  // From ControlValueAccessor interface
-  writeValue(value: any) {
-    if (value !== this.innerValue) {
-      this.innerValue = value;
-    }
+  onInput() {
+    this.input.emit(this.value);
   }
 
-  // From ControlValueAccessor interface
-  registerOnChange(fn: any) {
-    this.onChangeCallback = fn;
+  onChangeEv() {
+    this.change.emit(this.value);
   }
 
-  // From ControlValueAccessor interface
-  registerOnTouched(fn: any) {
-    this.onTouchedCallback = fn;
+  // THIS METHOD IS USED FOR VALIDATION
+  isFieldValid(): boolean {
+    return (!this.allowblank && (this.value && (this.value.length > 0)) ||
+      (this.value && this.value.length > 0)) || this.allowblank;
   }
-
-  getCssClass(): any {
-    return { 'input-control-error': true };
-  }
-
-  validateClass(inp: any): any {
-    if (inp) {
-      let classObj;
-      if (!this.allowblank) {
-        if (inp.touched && !this.allowblank && (this.innerValue === '' || this.innerValue === null)) {
-          classObj = this.getCssClass();
-          this.isValid = false;
-        } else {
-          this.otherValidation(inp);
-        }
-      } else {
-        this.isValid = true;
-      }
-      this.isComponentValid.emit(this.isValid);
-      return classObj;
-    }
-  }
-  onInput(input: any) {
-    this.componentClass = this.validateClass(input);
-  }
-
-  noInnerValue(inp: any) {
-    let classObj;
-    if (inp.touched) {
-      classObj = this.getCssClass();
-      this.isValid = false;
-    } else {
-      this.isValid = false;
-    }
-    return classObj;
-  }
-
-  // Else Block for validations
-  otherValidation(inp: any) {
-    let classObj;
-    classObj = {
-      'input-control-error': inp.invalid && (inp.dirty || inp.touched),
-      'input-control-success': inp.valid && (inp.dirty || inp.touched),
-    };
-    if (inp.valid) {
-      this.isValid = true;
-    }
-    return classObj;
-  }
-
-  // THIS MEHTOD CHECK INPUT IS VALID OR NOT
-  checkValidity(): boolean {
-    return (this.inputRef && this.inputRef.nativeElement &&
-      this.inputRef.nativeElement.validity && this.inputRef.nativeElement.validity.valid);
-  }
-
   public validate(c: FormControl) {
-    return ((!this.allowblank && (this.innerValue && this.innerValue.length > 0)) || this.allowblank) ? null : {
+    return this.isFieldValid() ? null : {
       jsonParseError: {
         valid: true,
       },
     };
-  }
-  // THIS METHOD GENERATE RANDOM STRING
-  generateName() {
-    if (!this.name && this.fieldlabel) {
-      this.name = this.fieldlabel.replace(/\s/g, '');
-    } else if (!this.name && !this.fieldlabel) {
-      this.name = 'textinput-' + this.getRandomString();
-    }
-  }
-  getRandomString(): string {
-    const possibleCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-    let randomString = '';
-    for (let i = 0; i < 6; i++) {
-      randomString += possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
-    }
-    return randomString;
   }
 }

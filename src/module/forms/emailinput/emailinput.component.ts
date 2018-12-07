@@ -3,12 +3,10 @@
  Component Selector :  <amexio-email-input>
  Component Description : Email input field
  */
-import { Component, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
-import { AmexioFormValidator } from './../form-validator/amexio.form.validator.component';
+import { Component, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
+import { ValueAccessorBase } from '../../base/value-accessor';
 
-const noop = () => {
-};
 @Component({
   selector: 'amexio-email-input',
   templateUrl: './emailinput.component.html',
@@ -16,9 +14,9 @@ const noop = () => {
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioEmailInputComponent), multi: true,
   }, {
     provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioEmailInputComponent), multi: true,
-}],
+  }],
 })
-export class AmexioEmailInputComponent extends AmexioFormValidator implements ControlValueAccessor, OnInit, Validators {
+export class AmexioEmailInputComponent extends ValueAccessorBase<string> implements OnInit, Validators {
 
   /*
    Properties
@@ -47,6 +45,7 @@ export class AmexioEmailInputComponent extends AmexioFormValidator implements Co
    description : Sets if field is required
    */
   @Input('allow-blank') allowblank: boolean;
+  @ViewChild(NgModel) model: NgModel;
 
   helpInfoMsg: string;
 
@@ -72,9 +71,6 @@ export class AmexioEmailInputComponent extends AmexioFormValidator implements Co
   set errormsg(value: string) {
     this.helpInfoMsg = value + '<br/>';
   }
-  @Output() isComponentValid: any = new EventEmitter<any>();
-
-  @ViewChild('ref', { read: ElementRef }) public inputRef: ElementRef;
 
   @Input('place-holder') placeholder: string;
   /*
@@ -123,7 +119,7 @@ export class AmexioEmailInputComponent extends AmexioFormValidator implements Co
    */
   @Input('font-size') fontsize: string;
 
-  emailpatter: any = /\S+@\S+\.\S+/;
+  emailpattern: any = /\S+@\S+\.\S+/;
 
   _pattern: string;
 
@@ -191,134 +187,44 @@ export class AmexioEmailInputComponent extends AmexioFormValidator implements Co
    */
   @Output() change: any = new EventEmitter<any>();
 
-  componentClass: any;
- // The internal dataviews model
- private innerValue: any = '';
- // Placeholders for the callbacks which are later provided
- // by the Control Value Accessor
- private onTouchedCallback: () => void = noop;
- private onChangeCallback: (_: any) => void = noop;
   isValid: boolean;
   @Input('name') name: string;
   constructor() {
     super();
     this.showToolTip = false;
   }
+
   ngOnInit() {
-    this.generateName();
-    this.isComponentValid.emit(this.allowblank);
+    this.name = this.generateName(this.name, this.fieldlabel, 'emailinput');
   }
-  // get accessor
-  get value(): any {
-    return this.innerValue;
+  // THIS METHOD USED FOR BLUR EVENT.
+  onblur() {
+    this.showToolTip = false;
+    this.onBlur.emit(this.value);
   }
-  // set accessor including call the onchange callback
-  set value(v: any) {
-    if (v !== this.innerValue) {
-      this.innerValue = v;
-      this.onChangeCallback(v);
-    }
-  }
+  // THIS METHOD USED FOR FOCUS EVENT .
   onFocus() {
     this.showToolTip = true;
     this.focus.emit(this.value);
   }
-  // Set touched on blur
-  onblur(input: any) {
-    this.onTouchedCallback();
-    this.showToolTip = false;
-    this.componentClass = this.validateClasses(input);
-    this.onBlur.emit(this.value);
-  }
-  onInput(input: any) {
-    this.componentClass = this.validateClasses(input);
+  // THIS METHOD USED FOR  INPUT EVENT .
+  onInput() {
+    this.isValid = this.isFieldValid();
     this.input.emit(this.value);
   }
+  // THIS METHOD USED FOR CHANGE EVENT  .
   onChangeEv() {
     this.change.emit(this.value);
   }
-  // From ControlValueAccessor interface
-  writeValue(value: any) {
-    if (value !== this.innerValue) {
-      this.innerValue = value;
-    }
+  // THIS METHOD IS USED FOR VALIDATION
+  isFieldValid(): boolean {
+    return (!this.allowblank  && this.emailpattern.test(this.value)) || this.allowblank;
   }
-  // From ControlValueAccessor interface
-  registerOnChange(fn: any) {
-    this.onChangeCallback = fn;
-  }
-  // From ControlValueAccessor interface
-  registerOnTouched(fn: any) {
-    this.onTouchedCallback = fn;
-  }
-  validateClasses(inp: any): any {
-    let classObj;
-    if (!this.allowblank) {
-      classObj = this.onBlank(inp);
-    } else {
-      this.isValid = true;
-    }
-    this.isComponentValid.emit(this.isValid);
-    return classObj;
-  }
-
-  onBlank(inp: any) {
-    let classObj;
-    if (this.innerValue === null || this.innerValue === '') {
-      if (inp.touched) {
-        classObj = this.getCssClass();
-        this.isValid = false;
-      } else {
-        this.isValid = false;
-      }
-    } else if ((inp.touched && !this.allowblank
-      && (this.value === '' || this.value === null))
-      || (!this.emailpatter.test(this.value))) {
-      classObj = this.getCssClass();
-      this.isValid = false;
-    } else {
-      classObj = {
-        'input-control-error': inp.invalid && (inp.dirty || inp.touched),
-        'input-control-success': inp.valid && (inp.dirty || inp.touched),
-      };
-      if (inp.valid) {
-        this.isValid = true;
-      }
-    }
-    return classObj;
-  }
-
-  getCssClass(): any {
-    return { 'input-control-error': true };
-  }
-
-  // THIS MEHTOD CHECK INPUT IS VALID OR NOT
-  checkValidity(): boolean {
-    return (this.inputRef && this.inputRef.nativeElement &&
-      this.inputRef.nativeElement.validity && this.inputRef.nativeElement.validity.valid);
-  }
-
   public validate(c: FormControl) {
-    return ((!this.allowblank && this.emailpatter.test(this.value)) || this.allowblank) ? null : {
-        jsonParseError: {
-            valid: true,
-        },
+    return this.isFieldValid() ? null : {
+      jsonParseError: {
+        valid: true,
+      },
     };
-}
- // THIS METHOD GENERATE RANDOM STRING
- generateName() {
-  if (!this.name && this.fieldlabel ) {
-    this.name = this.fieldlabel.replace(/\s/g, '');
-  } else if ( !this.name && !this.fieldlabel) {
-    this.name = 'textinput-' + this.getRandomString();
   }
-}
-getRandomString(): string {
-  const possibleCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-  let randomString = '';
-  for (let i = 0; i < 6; i++) {
-    randomString += possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
-  }
-  return randomString;
-}
 }

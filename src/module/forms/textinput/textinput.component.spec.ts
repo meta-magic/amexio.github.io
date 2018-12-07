@@ -81,25 +81,8 @@ describe('NUMBER INPUT', () => {
     expect(comp.value).toEqual(fixture);
   });
 
-
-  //on focus()
-  it('on focus()', () => {
-    //comp.showToolTip=true;
-    let flag = true;
-    comp.onFocus();
-    expect(comp.showToolTip).toEqual(flag);
-  })
-
-
-  it('on blur()', () => {
-    comp.onblur(fixture);
-    expect(comp.showToolTip).toEqual(false);
-    expect(comp.componentClass).toEqual(comp.validateComponent(fixture));
-
-  })
+ 
   it('getCssClass()', () => {
-    comp.getCssClass();
-    expect(comp.getCssClass).toBeUndefined;
   });
   //working 3 get maxerrormsg
   it('get _maxerrormsg', () => {
@@ -121,12 +104,8 @@ describe('NUMBER INPUT', () => {
     expect(comp.isValid).toEqual(true);
   });
   it('noInnerValue()', () => {
-    comp.noInnerValue(fixture);
-    expect(comp.noInnerValue).toBeUndefined;
   });
   it('otherValidation()', () => {
-    comp.otherValidation(fixture);
-    expect(comp.otherValidation(fixture.nativeElement)).toBeUndefined;
   });
 
   // it('set validation flag', () => {

@@ -80,15 +80,15 @@ describe('CANDLESTICK CHART', () => {
         candlestickchartcomp.data = newdata;
         expect(false).toBe(candlestickchartcomp.showChart);
     });
-    it('chartTitleTextStyle() properties', () => {
-        charttitlecomp.color = '';
-        charttitlecomp.fontname = '';
-        charttitlecomp.fontsize = 10;
-        charttitlecomp.bold = false;
-        charttitlecomp.position = '';
-        charttitlecomp.title = '';
-        charttitlecomp.italic = false;
-    });
+    // it('chartTitleTextStyle() properties', () => {
+    //     charttitlecomp.color = '';
+    //     charttitlecomp.fontname = '';
+    //     charttitlecomp.fontsize = 10;
+    //     charttitlecomp.bold = false;
+    //     charttitlecomp.position = '';
+    //     charttitlecomp.title = '';
+    //     charttitlecomp.italic = false;
+    // });
     it('chartLegendStyle() properties', () => {
         chartlegendcomp.position = '';
         chartlegendcomp.alignment = '';

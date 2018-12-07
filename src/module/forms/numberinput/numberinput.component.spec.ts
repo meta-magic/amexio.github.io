@@ -90,15 +90,7 @@ describe('NUMBER INPUT', () => {
   })
 
   //on blur()
-  it('on blur()', () => {
-    // comp.showToolTip=true;
-    // let flag=true;
-    comp.onBlur(fixture);
-    //comp.onTouchedCallback();
-    expect(comp.showToolTip).toEqual(false);
-    expect(comp.componentClass).toEqual(comp.validateClass(fixture));
-
-  })
+  
 
   // it('writevalue', () => {
   //   comp.writeValue(fixture);
@@ -107,10 +99,7 @@ describe('NUMBER INPUT', () => {
 
   // })
 
-  it('getCssClass()', () => {
-    comp.getCssClass();
-    expect(comp.getCssClass).toBeUndefined;
-  });
+  
 
 
 
@@ -127,12 +116,7 @@ describe('NUMBER INPUT', () => {
     expect(comp.helpInfoMsg).toEqual(comp.helpInfoMsg);
   })
 
-  it('set validation flag', () => {
-    //comp.helpInfoMsg="test";
-    let flag: boolean;
-    comp.setValidationFlag(flag);
-    expect(comp.isValid).toEqual(flag);
-  })
+
 
 
 

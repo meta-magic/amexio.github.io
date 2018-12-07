@@ -116,7 +116,7 @@
         "check-separator",
         "check-type"
       ],
-      "no-output-on-prefix": true,
+      "no-output-on-prefix": false,
       "use-input-property-decorator": false,
       "use-output-property-decorator": false,
       "use-host-property-decorator": true,

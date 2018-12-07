@@ -33,8 +33,10 @@ script:
   - cd ../../ && pwd && gulp build
   - cd dist && npm pack
   - mv amexio-ng-extensions-*.tgz amexio-ng-extensions.tgz
+  
+after_success: 
   - cd ../
-  - git clone https://github.com/meta-magic/amexio-ios.git 
+  - git clone https://github.com/meta-magic/amexio-ios.git -b v5.4
   - cd amexio-ios
   - mkdir themes
   - cp -rf ../dist/amexio-ng-extensions.tgz .
@@ -42,8 +44,7 @@ script:
   - tar -czvf themes.tar.gz  themes/*
   - git add amexio-ng-extensions.tgz  themes.tar.gz
   - git commit -m "date"
-  - git push --force --quiet "https://deepali-arvind:${GITHUB_TOKEN}@github.com/${GITHUB_REPO}.git" HEAD:master 
-after_success: 
+  - git push --force --quiet "https://deepali-arvind:${GITHUB_TOKEN}@github.com/${GITHUB_REPO}.git" HEAD:v5.4 
   - gulp coveralls
   - codecov
 

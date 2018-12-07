@@ -268,7 +268,6 @@ export class AmexioSideNavComponent implements OnInit {
       } else {
         this.width = '20%';
         this.smalldevice = false;
-        console.log('test');
       }
     }
   }

@@ -5,13 +5,9 @@ Component Description : Text input component has been created with
 different configurable attributes for validation (min/max length, allow
 blank, custom regex), custom error message, help, custom styles.
 */
-import { Component, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core';
-import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
-import { AmexioFormValidator } from './../form-validator/amexio.form.validator.component';
-
-const noop = () => {
-};
-
+import { Component, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core';
+import { FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
+import { ValueAccessorBase } from '../../base/value-accessor';
 @Component({
   selector: 'amexio-text-input',
   templateUrl: './textinput.component.html',
@@ -19,19 +15,20 @@ const noop = () => {
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioTextInputComponent), multi: true,
   }, {
     provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioTextInputComponent), multi: true,
-}],
+  }],
   encapsulation: ViewEncapsulation.None,
 })
 
-export class AmexioTextInputComponent extends AmexioFormValidator implements ControlValueAccessor, OnInit, Validators {
+export class AmexioTextInputComponent extends ValueAccessorBase<string> implements OnInit, Validators {
+
   /*
-Properties
-name : field-label
-datatype : string
-version : 4.0 onwards
-default :
-description : The label of this field
-*/
+   Properties
+   name : field-label
+   datatype : string
+   version : 4.0 onwards
+   default :
+   description : The label of this field
+   */
   @Input('field-label') fieldlabel: string;
   /*
 Properties
@@ -69,25 +66,17 @@ description : Sets if field is required
 
   _errormsg: string;
 
-  // The internal dataviews model
-  private innerValue: any = '';
-
-  // Placeholders for the callbacks which are later provided
-  // by the Control Value Accessor
-  private onTouchedCallback: () => void = noop;
-  private onChangeCallback: (_: any) => void = noop;
-
   get errormsg(): string {
     return this._errormsg;
   }
   /*
-  Properties
-  name : error-msg
-  datatype : none
-  version : 4.0 onwards
-  default : none
-  description : Sets the error message
-  */
+ Properties
+ name : error-msg
+ datatype : none
+ version : 4.0 onwards
+ default : none
+ description : Sets the error message
+ */
   @Input('error-msg')
   set errormsg(value: string) {
     this.helpInfoMsg = value + '<br/>';
@@ -99,13 +88,13 @@ description : Sets if field is required
     return this._minerrormsg;
   }
   /*
-  Properties
-  name : min-error-msg
-  datatype : string
-  version : 4.0 onwards
-  default :
-  description : Sets the error message for min validation
-  */
+ Properties
+ name : min-error-msg
+ datatype : string
+ version : 4.0 onwards
+ default :
+ description : Sets the error message for min validation
+ */
   @Input('min-error-msg')
   set minerrormsg(value: string) {
     this.helpInfoMsg = this.helpInfoMsg + '<b>Min Length<b/>: ' + value + '<br/>';
@@ -117,13 +106,13 @@ description : Sets if field is required
     return this._maxerrormsg;
   }
   /*
-  Properties
-  name : max-error-msg
-  datatype : string
-  version : 4.0 onwards
-  default :
-  description : Sets the error message for max validation
-  */
+ Properties
+ name : max-error-msg
+ datatype : string
+ version : 4.0 onwards
+ default :
+ description : Sets the error message for max validation
+ */
   @Input('max-error-msg')
   set maxerrormsg(value: string) {
     this.helpInfoMsg = this.helpInfoMsg + 'Max Length: ' + value;
@@ -138,13 +127,13 @@ description : Show place-holder inside dropdown component
 */
   @Input('place-holder') placeholder: string;
   /*
-  Properties
-  name : disabled
-  datatype : boolean
-  version : 4.0 onwards
-  default : false
-  description : True to disable the field.
-  */
+ Properties
+ name : disabled
+ datatype : boolean
+ version : 4.0 onwards
+ default : false
+ description : True to disable the field.
+ */
   @Input() disabled: boolean;
   /*
 Properties
@@ -154,7 +143,7 @@ version : 4.0 onwards
 default :false
 description :
 */
-  @Input('icon-feedback') iconfeedback: boolean;
+  @Input('icon-feedback') iconfeedback = false;
   /*
 Properties
 name : font-style
@@ -212,36 +201,30 @@ description : Apply Reg-ex to the field
       this.regEx = new RegExp(this._pattern);
     }
   }
-/*
-Properties
-name : enable-popover
-datatype : string
-version : 4.0 onwards
-default :
-description : Set enable / disable popover.
-*/
+  /*
+ Properties
+ name : enable-popover
+ datatype : string
+ version : 4.0 onwards
+ default :
+ description : Set enable / disable popover.
+ */
   @Input('enable-popover') enablepopover: boolean;
-  regex: RegExp;
 
-  isValid: boolean;
-
-  componentClass: any;
-
-  @Output() isComponentValid: any = new EventEmitter<any>();
+  isValid = false;
 
   @ViewChild(NgModel) model: NgModel;
 
   @Input('name') name: string;
 
-  @ViewChild('ref') public inputRef: any;
   /*
-  Events
-  name : onBlur
-  datatype : any
-  version : 4.0 onwards
-  default :
-  description : On blur event
-  */
+ Events
+ name : onBlur
+ datatype : any
+ version : 4.0 onwards
+ default :
+ description : On blur event
+ */
   @Output() onBlur: any = new EventEmitter<any>();
   /*
 Events
@@ -249,7 +232,7 @@ name : input
 datatype : any
 version : none
 default :
-description : 	On input event field.
+description :   On input event field.
 */
   @Output() input: any = new EventEmitter<any>();
   /*
@@ -270,152 +253,47 @@ default :
 description : On field value change event
 */
   @Output() change: any = new EventEmitter<any>();
-
   constructor() {
     super();
     this.showToolTip = false;
   }
 
   ngOnInit() {
-    this.generateName();
-    this.isComponentValid.emit(this.allowblank);
+    this.isValid = this.isFieldValid();
+    this.name = this.generateName(this.name, this.fieldlabel, 'textinput');
   }
 
-  // get accessor
-  get value(): any {
-    return this.innerValue;
-  }
-
-  // set accessor including call the onchange callback
-  set value(v: any) {
-    if (v !== this.innerValue) {
-      this.innerValue = v;
-      this.onChangeCallback(v);
-    }
-  }
-
-  // Set touched on blur
-  onblur(input: any) {
-    this.onTouchedCallback();
+  // THIS METHOD USED FOR BLUR EVENT.
+  onBlurEvent() {
     this.showToolTip = false;
-    this.componentClass = this.validateComponent(input);
-    this.onBlur.emit(this.innerValue);
+    this.onBlur.emit(this.value);
   }
-
-  onFocus() {
+  // THIS METHOD USED FOR FOCUS EVENT .
+  onFocusEvent() {
     this.showToolTip = true;
-    this.focus.emit(this.innerValue);
+    this.focus.emit(this.value);
   }
-
-  onInput(input: any) {
-    this.componentClass = this.validateComponent(input);
-    this.input.emit(this.innerValue);
+  // THIS METHOD USED FOR  INPUT EVENT .
+  onInput() {
+    this.isValid = this.isFieldValid();
+    this.input.emit(this.value);
   }
-
+  // THIS METHOD USED FOR CHANGE EVENT  .
   onChangeEv() {
-    this.change.emit(this.innerValue);
+    this.change.emit(this.value);
   }
 
-  // From ControlValueAccessor interface
-  writeValue(value: any) {
-    if (value !== this.innerValue) {
-      this.innerValue = value;
-    }
+  // THIS METHOD IS USED FOR VALIDATION
+  isFieldValid(): boolean {
+    return (!this.allowblank && this.value && this.value.length > 0 &&
+      this.minlength !== undefined && this.value.length >= this.minlength) ||
+      (this.minlength === undefined && this.value && this.value.length > 0) || this.allowblank;
   }
-
-  // From ControlValueAccessor interface
-  registerOnChange(fn: any) {
-    this.onChangeCallback = fn;
-  }
-
-  // From ControlValueAccessor interface
-  registerOnTouched(fn: any) {
-    this.onTouchedCallback = fn;
-  }
-
-  getCssClass(): any {
-    return { 'input-control-error': true };
-  }
-
-  validateComponent(inp: any): any {
-    let classObj;
-    this.inputRef = inp;
-    this.isValid = this.checkValidity();
-    if (!this.isValid) {
-      classObj = this.getCssClass();
-    }
-    this.isComponentValid.emit(this.isValid);
-    return classObj;
-  }
-
-  // If inner value is black or null
-  noInnerValue(inp: any) {
-    let classObj;
-    if (inp.touched) {
-      classObj = this.getCssClass();
-      this.isValid = false;
-    } else {
-      this.isValid = false;
-    }
-    return classObj;
-  }
-
-  // Min Max Validation
-  minMaxValidation() {
-    let classObj;
-    if (this.innerValue && (this.innerValue.length >= this.minlength)) {
-      this.isValid = true;
-    } else {
-      classObj = this.getCssClass();
-      this.isValid = false;
-    }
-    return classObj;
-  }
-
-  // Else Block for validations
-  otherValidation(inp: any) {
-    let classObj;
-    classObj = {
-      'input-control-error': inp.invalid && (inp.dirty || inp.touched),
-      'input-control-success': inp.valid && (inp.dirty || inp.touched),
+  public validate(c: FormControl) {
+    return this.isFieldValid() ? null : {
+      jsonParseError: {
+        valid: true,
+      },
     };
-    if (inp.valid) {
-      this.isValid = true;
-    }
-    return classObj;
-  }
-
-    // THIS MEHTOD CHECK INPUT IS VALID OR NOT
-    checkValidity(): boolean {
-      return (this.inputRef && this.inputRef.valid);
-    }
-
-    isFieldValidate(): boolean {
-      return (this.innerValue && ((this.innerValue.length >= this.minlength) && this.innerValue.length > 0)) ||
-      (!this.minlength && this.innerValue && this.innerValue.length > 0);
-    }
-
-    public validate(c: FormControl) {
-      return ((!this.allowblank && this.isFieldValidate()) || this.allowblank ) ? null : {
-          jsonParseError: {
-              valid: true,
-          },
-      };
-  }
-  // THIS METHOD GENERATE RANDOM STRING
-  generateName() {
-    if (!this.name && this.fieldlabel ) {
-      this.name = this.fieldlabel.replace(/\s/g, '');
-    } else if ( !this.name && !this.fieldlabel) {
-      this.name = 'textinput-' + this.getRandomString();
-    }
-  }
-  getRandomString(): string {
-    const possibleCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-    let randomString = '';
-    for (let i = 0; i < 6; i++) {
-      randomString += possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
-    }
-    return randomString;
   }
 }

@@ -321,6 +321,7 @@ description : Set enable / disable popover.
 
   }
   ngOnInit() {
+    this.name = this.generateName(this.name, this.fieldlabel, 'dropdowninput');
     this.isValid = this.allowblank;
     this.isComponentValid.emit(this.allowblank);
     if (this.placeholder === '') {
@@ -604,11 +605,11 @@ description : Set enable / disable popover.
   }
   // From ControlValueAccessor interface
   writeValue(value: any) {
-    if (!this.allowblank) {
-      if (value != null) {
-        this.writeChangedValue(value);
-      } else {
-        this.innerValue = '';
+    if (value != null) {
+      this.writeChangedValue(value);
+    } else {
+      this.innerValue = '';
+      if (this.allowblank) {
         this.isValid = true;
       }
     }
@@ -652,26 +653,10 @@ description : Set enable / disable popover.
     return this.isValid;
   }
   public validate(c: FormControl) {
-    return ((!this.allowblank && (this.value && this.value.length > 0)) || this.allowblank) ? null : {
+    return ((!this.allowblank && (this.value || this.value === 0) ) || this.allowblank) ? null : {
       jsonParseError: {
         valid: true,
       },
     };
-  }
-  // THIS METHOD GENERATE RANDOM STRING
-  generateName() {
-    if (!this.name && this.fieldlabel) {
-      this.name = this.fieldlabel.replace(/\s/g, '');
-    } else if (!this.name && !this.fieldlabel) {
-      this.name = 'textinput-' + this.getRandomString();
-    }
-  }
-  getRandomString(): string {
-    const possibleCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-    let randomString = '';
-    for (let i = 0; i < 6; i++) {
-      randomString += possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
-    }
-    return randomString;
   }
 }

@@ -5,13 +5,11 @@
  with different configurable attributes for validation
  (min/max value,allow blank, custom regex), custom error message, help, custom styles
 */
-import {Component, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild,
- } from '@angular/core';
-import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
-import { AmexioFormValidator } from './../form-validator/amexio.form.validator.component';
-
-const noop = () => {
-};
+import {
+  Component, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild,
+} from '@angular/core';
+import { FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
+import { ValueAccessorBase } from '../../base/value-accessor';
 
 @Component({
   selector: 'amexio-number-input',
@@ -20,11 +18,11 @@ const noop = () => {
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioNumberInputComponent), multi: true,
   }, {
     provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioNumberInputComponent), multi: true,
-}],
+  }],
 })
-export class AmexioNumberInputComponent extends AmexioFormValidator implements OnInit, ControlValueAccessor, Validators {
+export class AmexioNumberInputComponent extends ValueAccessorBase<string> implements OnInit, Validators {
 
-   /*
+  /*
 Properties
 name : field-label
 datatype : string
@@ -50,7 +48,7 @@ version : 4.0 onwards
 default :
 description : Defines the min range limit for number input.
 */
-  @Input('min-value') minvalue: number;
+  @Input('min-value') minvalue: any;
   /*
 Properties
 name : max-value
@@ -59,7 +57,7 @@ version : 4.0 onwards
 default :
 description : Defines the max range limit for number input.
 */
-  @Input('max-value') maxvalue: number;
+  @Input('max-value') maxvalue: any;
 
   helpInfoMsg: string;
 
@@ -74,14 +72,14 @@ description : Defines the max range limit for number input.
   get errormsg(): string {
     return this._errormsg;
   }
-/*
-Properties
-name : error-msg
-datatype : none
-version : 4.0 onwards
-default : none
-description : Sets the error message
-*/
+  /*
+  Properties
+  name : error-msg
+  datatype : none
+  version : 4.0 onwards
+  default : none
+  description : Sets the error message
+  */
   @Input('error-msg')
   set errormsg(value: string) {
     this.helpInfoMsg = value + '<br/>';
@@ -92,14 +90,14 @@ description : Sets the error message
   get minerrormsg(): string {
     return this._minerrormsg;
   }
-/*
-Properties
-name : min-error-msg
-datatype : string
-version : 4.0 onwards
-default :
-description : Sets the error message for min validation
-*/
+  /*
+  Properties
+  name : min-error-msg
+  datatype : string
+  version : 4.0 onwards
+  default :
+  description : Sets the error message for min validation
+  */
   @Input('min-error-msg')
   set minerrormsg(value: string) {
     this.helpInfoMsg = this.helpInfoMsg + 'Min value: ' + value + '<br/>';
@@ -111,23 +109,21 @@ description : Sets the error message for min validation
     return this._maxerrormsg;
   }
 
-/*
-Properties
-name : max-error-msg
-datatype : string
-version : 4.0 onwards
-default :
-description : Sets the error message for max validation
-*/
+  /*
+  Properties
+  name : max-error-msg
+  datatype : string
+  version : 4.0 onwards
+  default :
+  description : Sets the error message for max validation
+  */
   @Input('max-error-msg')
   set maxerrormsg(value: string) {
     this.helpInfoMsg = this.helpInfoMsg + 'Max value: ' + value;
   }
 
-  isValid: boolean;
-  @Output() isComponentValid: any = new EventEmitter<any>();
-  @ViewChild('ref', {read: ElementRef}) public inputRef: ElementRef;
-   /*
+  isValid = false;
+  /*
 Properties
 name : place-holder
 datatype : string
@@ -136,7 +132,7 @@ default :
 description : 	Show place-holder inside dropdown component
 */
   @Input('place-holder') placeholder: string;
-   /*
+  /*
 Properties
 name : min-length
 datatype : number
@@ -147,7 +143,7 @@ the positive number closest to zero (without actually being zero).
 The smallest negative representable number is -min-length.
 */
   @Input('min-length') minlength: number;
-   /*
+  /*
 Properties
 name : max-length
 datatype : number
@@ -159,15 +155,51 @@ The smallest negative representable number is -max-length.
 */
   @Input('max-length') maxlength: number;
 
-/*
-Properties
-name : disabled
-datatype : boolean
-version : 4.0 onwards
-default : none
-description : True to disable the field.
-*/
+  /*
+  Properties
+  name : disabled
+  datatype : boolean
+  version : 4.0 onwards
+  default : none
+  description : True to disable the field.
+  */
   @Input() disabled: boolean;
+  /*
+  Events
+  name : onBlur
+  datatype : any
+  version : 4.0 onwards
+  default :
+  description : On blur event
+  */
+  @Output() onBlur: any = new EventEmitter<any>();
+  /*
+ Events
+ name : input
+ datatype : any
+ version : none
+ default :
+ description : 	On input event field.
+ */
+  @Output() input: any = new EventEmitter<any>();
+  /*
+ Events
+ name : focus
+ datatype : any
+ version : none
+ default :
+ description : On focus event field.
+ */
+  @Output() focus: any = new EventEmitter<any>();
+  /*
+ Events
+ name : change
+ datatype : any
+ version : none
+ default :
+ description : On field value change event
+ */
+  @Output() change: any = new EventEmitter<any>();
 
   @Input('icon-feedback') iconfeedback: boolean;
   /*
@@ -228,16 +260,6 @@ description : Apply Reg-ex to the field
       this.regEx = new RegExp(this.pattern);
     }
   }
-    /*
-Events
-name : input
-datatype : any
-version : none
-default :
-description : On input event field.
-*/
-@Output() input: any = new EventEmitter<any>();
-
   /*
 Properties
 name : enable-popover
@@ -248,114 +270,53 @@ description : Set enable / disable popover.
 */
   @Input('enable-popover') enablepopover: boolean;
 
+  @ViewChild(NgModel) model: NgModel;
+
   constructor() {
     super();
     this.showToolTip = false;
   }
 
-  // The internal dataviews model
-  private innerValue: any = '';
-
-  // Placeholders for the callbacks which are later provided
-  // by the Control Value Accessor
-  private onTouchedCallback: () => void = noop;
-  private onChangeCallback: (_: any) => void = noop;
-
-  // get accessor
-  get value(): any {
-    return this.innerValue;
-  }
-
-  // set accessor including call the onchange callback
-  set value(v: any) {
-    if (v !== this.innerValue) {
-      this.innerValue = v;
-      this.onChangeCallback(v);
-    }
-  }
-
   ngOnInit() {
-    this.generateName();
-    this.isComponentValid.emit(this.allowblank);
+    this.name = this.generateName(this.name, this.fieldlabel, 'numberinput');
   }
-
+  // THIS METHOD USED FOR BLUR EVENT.
+  onblur() {
+    this.showToolTip = false;
+    this.onBlur.emit(this.value);
+  }
+  // THIS METHOD USED FOR FOCUS EVENT .
   onFocus() {
     this.showToolTip = true;
+    this.focus.emit(this.value);
   }
-  // Set touched on blur
-  onBlur(input: any) {
-    this.onTouchedCallback();
-    this.showToolTip = false;
-    this.componentClass = this.validateClass(input);
+  // THIS METHOD USED FOR  INPUT EVENT .
+  onInput() {
+    this.input.emit(this.value);
   }
-  // THIS METHOD IS USED FOR COMPONENT VALIDATION
+  // THIS METHOD USED FOR CHANGE EVENT  .
   onChangeEv() {
-  }
-  onInput(input: any) {
-    this.componentClass = this.validateClass(input);
-    this.input.emit();
-  }
-  // From ControlValueAccessor interface
-  writeValue(value: any) {
-    if (value !== this.innerValue) {
-      this.innerValue = value;
-    }
-  }
-  // From ControlValueAccessor interface
-  registerOnChange(fn: any) {
-    this.onChangeCallback = fn;
-  }
-  // From ControlValueAccessor interface
-  registerOnTouched(fn: any) {
-    this.onTouchedCallback = fn;
-  }
-  getCssClass(): any {
-    return { 'input-control-error': true };
-  }
-  validateClass(inp: any): any {
-    let classObj;
-    const flag = this.checkValidity();
-    if (!flag) {
-      classObj = this.getCssClass();
-    }
-    this.setValidationFlag(flag);
-    this.isComponentValid.emit(this.isValid);
-    return classObj;
-  }
-  setValidationFlag(flag: boolean) {
-    this.isValid = flag;
-  }
-  // THIS MEHTOD CHECK INPUT IS VALID OR NOT
-  checkValidity(): boolean {
-    return (this.inputRef && this.inputRef.nativeElement &&
-      this.inputRef.nativeElement.validity && this.inputRef.nativeElement.validity.valid);
+    this.change.emit(this.value);
   }
 
   isFieldValidate(): boolean {
-    return this.innerValue && (this.innerValue > this.minvalue && this.innerValue < this.maxvalue);
+    if (this.minvalue && !this.maxvalue) {
+      return this.innerValue && (this.innerValue > this.minvalue);
+    } else if (!this.minvalue && this.maxvalue) {
+      return this.innerValue && (this.innerValue < this.maxvalue);
+    } else if (!this.minvalue && !this.maxvalue && this.innerValue) {
+      return true;
+    } else {
+      return this.innerValue && (this.innerValue > this.minvalue && this.innerValue < this.maxvalue);
+    }
   }
 
   public validate(c: FormControl) {
-    return ((!this.allowblank && this.isFieldValidate()) || this.allowblank) ? null : {
-        jsonParseError: {
-            valid: true,
-        },
+    const isValid: boolean = (!this.allowblank && this.isFieldValidate()) || this.allowblank;
+    return isValid ? null : {
+      jsonParseError: {
+        valid: true,
+      },
     };
-}
-// THIS METHOD GENERATE RANDOM STRING
-generateName() {
-  if (!this.name && this.fieldlabel ) {
-    this.name = this.fieldlabel.replace(/\s/g, '');
-  } else if ( !this.name && !this.fieldlabel) {
-    this.name = 'textinput-' + this.getRandomString();
   }
-}
-getRandomString(): string {
-  const possibleCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-  let randomString = '';
-  for (let i = 0; i < 6; i++) {
-    randomString += possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
-  }
-  return randomString;
-}
 }

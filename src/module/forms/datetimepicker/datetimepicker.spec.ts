@@ -184,8 +184,8 @@ describe('amexio-date-time-picker', () => {
 
     comp.disableYearFlag();
 
-    comp.onFocusOut(new Date());
-    expect(false).toBe(comp.isValid);
+    // comp.onFocusOut(new Date());
+    // expect(false).toBe(comp.isValid);
 
     comp.minMaxDateFound();
     expect(false).toBe(comp.forwardArrowFlag);

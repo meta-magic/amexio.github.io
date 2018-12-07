@@ -1,5 +1,4 @@
 
-
 <h1 align="center">
   <br>
   <a href="http://www.amexio.tech/"><img src="https://image.ibb.co/kdy6Ev/logo.png" alt="Amexio" width="200"></a>
@@ -142,6 +141,7 @@ UI Components powered by HTML5 & CSS3 for <b>Responsive Web Design & 50+ built-
 | IE 11, Edge last 5 versions| last 5 versions| last 5 versions| last 3 versions| last 4 versions| last 3 versions| last 3 versions
 
 ## Table of Content
+
 - [Features](#features)
 - [Overview](#overview)
 - [Getting Started](#getting-started)
@@ -154,7 +154,11 @@ UI Components powered by HTML5 & CSS3 for <b>Responsive Web Design & 50+ built-
 
 - __Pure TypeScript:__ Amexio is a pure Typescript library with 0 Dependencies & Angular 4/5/6 Support.
 - __140+ High Grade Components:__ We make sure you're nothing short of while building your app.
+<<<<<<< HEAD
 - __Forrms:__ Amexio API supports both Template Driven Forms and Reactive Forms. 
+=======
+- __Forms:__ Amexio API supports both Template Driven Forms and Reactive Forms. 
+>>>>>>> fe81129956523003d4a8812030a4a53b33fe9c01
 - __Layouts:__ With v5.4 release More than half a dozen layout options are supported including CSS3 Grids. 
 - __Responsive Web Design:__ Out of the box Responsive Web Design with 50+ Material Design based Themes.
 - __Charts, Dashboads, D3:__ Powerful Charting library including D3 Charts with Drillable capabilities. 

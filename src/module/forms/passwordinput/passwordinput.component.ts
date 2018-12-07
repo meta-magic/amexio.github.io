@@ -3,12 +3,9 @@
  Component Selector :  <amexio-email-input>
  Component Description : Email input field
 */
-import { Component, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
-import { AmexioFormValidator } from './../form-validator/amexio.form.validator.component';
-
-const noop = () => {
-};
+import { Component, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
+import { ValueAccessorBase } from '../../base/value-accessor';
 
 @Component({
   selector: 'amexio-password-input',
@@ -17,9 +14,9 @@ const noop = () => {
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioPasswordComponent), multi: true,
   }, {
     provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioPasswordComponent), multi: true,
-}],
+  }],
 })
-export class AmexioPasswordComponent extends AmexioFormValidator implements ControlValueAccessor, OnInit, Validators {
+export class AmexioPasswordComponent extends ValueAccessorBase<string> implements OnInit, Validators {
   /*
   Properties
   name : field-label
@@ -240,161 +237,48 @@ default :
 description : On field value change event
 */
   @Output() change: any = new EventEmitter<any>();
-  @Output() isComponentValid: any = new EventEmitter<any>();
-  @ViewChild('ref', {read: ElementRef}) public inputRef: ElementRef;
+  @ViewChild(NgModel) model: NgModel;
   @Input('name') name: string;
   constructor() {
     super();
     this.showToolTip = false;
   }
-  // The internal dataviews model
-  private innerValue: any = '';
-  // Placeholders for the callbacks which are later provided
-  // by the Control Value Accessor
-  private onTouchedCallback: () => void = noop;
-  private onChangeCallback: (_: any) => void = noop;
-  // get accessor
-  get value(): any {
-    return this.innerValue;
-  }
-  // set accessor including call the onchange callback
-  set value(v: any) {
-    if (v !== this.innerValue) {
-      this.innerValue = v;
-      this.onChangeCallback(v);
-    }
-  }
-  // Set touched on blur
-  onblur(input: any) {
-    this.onTouchedCallback();
+
+  // THIS METHOD USED FOR BLUR EVENT.
+  onblur() {
     this.showToolTip = false;
-    this.componentClass = this.validateClass(input);
     this.onBlur.emit(this.value);
   }
-  onInput(input: any) {
-    this.componentClass = this.validateClass(input);
-    this.input.emit(this.value);
-  }
+  // THIS METHOD USED FOR FOCUS EVENT .
   onFocus() {
     this.showToolTip = true;
     this.focus.emit(this.value);
   }
+  // THIS METHOD USED FOR  INPUT EVENT .
+  onInput() {
+    this.isValid = this.isFieldValid();
+    this.input.emit(this.value);
+  }
+  // THIS METHOD USED FOR CHANGE EVENT  .
   onChangeEv() {
     this.change.emit(this.value);
   }
-  // From ControlValueAccessor interface
-  writeValue(value: any) {
-    if (value !== this.innerValue) {
-      this.innerValue = value;
-    }
-  }
-  // From ControlValueAccessor interface
-  registerOnChange(fn: any) {
-    this.onChangeCallback = fn;
-  }
-  // From ControlValueAccessor interface
-  registerOnTouched(fn: any) {
-    this.onTouchedCallback = fn;
-  }
+
   ngOnInit() {
-    this.generateName();
-    this.isComponentValid.emit(this.allowblank);
+    this.isValid = this.isFieldValid();
+    this.name = this.generateName(this.name, this.fieldlabel, 'passwordinput');
   }
 
-  getCssClass(): any {
-    return { 'input-control-error': true };
+  // THIS METHOD IS USED FOR VALIDATION
+  isFieldValid(): boolean {
+    return (!this.allowblank && (this.value && ((this.value.length >= this.minlength) && this.value.length > 0)) ||
+      (!this.minlength && this.value && this.value.length > 0)) || this.allowblank;
   }
-
-  validateClass(inp: any): any {
-    if (inp) {
-      let classObj;
-      if (!this.allowblank) {
-        if (this.innerValue == null || this.innerValue === '') {
-          classObj = this.noInnerValue(inp);
-        } else if (inp.touched && !this.allowblank && (this.value === '' || this.value === null)) {
-          classObj = this.getCssClass();
-          this.isValid = false;
-        } else if (this.minlength != null && this.minlength !== 0) {
-          classObj = this.minMaxValidation();
-        } else {
-          classObj = this.otherValidation(inp);
-        }
-      } else {
-        this.isValid = true;
-      }
-      this.isComponentValid.emit(this.isValid);
-      return classObj;
-    }
-    return '';
-  }
-
-  // If inner value is black or null
-  noInnerValue(inp: any) {
-    let classObj;
-    if (inp.touched) {
-      classObj = this.getCssClass();
-      this.isValid = false;
-    } else {
-      this.isValid = false;
-    }
-    return classObj;
-  }
-  // Min Max Validation
-  minMaxValidation() {
-    let classObj;
-    if (this.value && (this.value.length >= this.minlength)) {
-      this.isValid = true;
-    } else {
-      classObj = this.getCssClass();
-      this.isValid = false;
-    }
-    return classObj;
-  }
-  // Else Block for validations
-  otherValidation(inp: any) {
-    let classObj;
-    classObj = {
-      'input-control-error': inp.invalid && (inp.dirty || inp.touched),
-      'input-control-success': inp.valid && (inp.dirty || inp.touched),
-    };
-    if (inp.valid) {
-      this.isValid = true;
-    }
-    return classObj;
-  }
-
-   // THIS MEHTOD CHECK INPUT IS VALID OR NOT
-   checkValidity(): boolean {
-    return (this.inputRef && this.inputRef.nativeElement && this.inputRef.nativeElement.validity
-      && this.inputRef.nativeElement.validity.valid);
-  }
-
-  isFieldValidate(): boolean {
-   return ( this.value && (this.value.length >= this.minlength) ) ||
-   (!this.minlength && this.value && this.value.length > 0);
-  }
-
   public validate(c: FormControl) {
-    return ((!this.allowblank && this.isFieldValidate()) || this.allowblank ) ? null : {
-        jsonParseError: {
-            valid: true,
-        },
+    return this.isFieldValid() ? null : {
+      jsonParseError: {
+        valid: true,
+      },
     };
-}
-// THIS METHOD GENERATE RANDOM STRING
-generateName() {
-  if (!this.name && this.fieldlabel ) {
-    this.name = this.fieldlabel.replace(/\s/g, '');
-  } else if ( !this.name && !this.fieldlabel) {
-    this.name = 'textinput-' + this.getRandomString();
   }
-}
-getRandomString(): string {
-  const possibleCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-  let randomString = '';
-  for (let i = 0; i < 6; i++) {
-    randomString += possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
-  }
-  return randomString;
-}
 }
