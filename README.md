@@ -154,7 +154,6 @@ UI Components powered by HTML5 & CSS3 for <b>Responsive Web Design & 50+ built-
 
 - __Pure TypeScript:__ Amexio is a pure Typescript library with 0 Dependencies & Angular 4/5/6 Support.
 - __140+ High Grade Components:__ We make sure you're nothing short of while building your app.
-- __Forrms:__ Amexio API supports both Template Driven Forms and Reactive Forms. 
 - __Forms:__ Amexio API supports both Template Driven Forms and Reactive Forms. 
 - __Layouts:__ With v5.4 release More than half a dozen layout options are supported including CSS3 Grids. 
 - __Responsive Web Design:__ Out of the box Responsive Web Design with 50+ Material Design based Themes.
