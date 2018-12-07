@@ -280,6 +280,7 @@ description : Set enable / disable popover.
   }
 
   onInput() {
+    this.isValid = this.isFieldValid();
     this.input.emit(this.value);
   }
 
