@@ -143,18 +143,11 @@ body {
     display: table-cell;
     vertical-align: middle;
 }
-
-
-
 .listbox .header .table .tablerow .tablecol {
     padding-right: 0px!important;
 }
 
-// input:disabled {
-//   opacity: 0.55;
-//   cursor: not-allowed;
-//   background-color: $componentDisabledBGColor;
-// }
+
 .disable-component {
     opacity: 0.50;
     pointer-events: none;
@@ -203,6 +196,15 @@ element over the whole parent element
     bottom: 0;
     left: 0;
 }
+ 
+
+
+
+
+input:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
 
 
 /*
