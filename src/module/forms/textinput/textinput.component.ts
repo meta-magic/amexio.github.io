@@ -143,7 +143,7 @@ version : 4.0 onwards
 default :false
 description :
 */
-  @Input('icon-feedback') iconfeedback: boolean;
+  @Input('icon-feedback') iconfeedback = false;
   /*
 Properties
 name : font-style
@@ -285,8 +285,8 @@ description : On field value change event
 
   // THIS METHOD IS USED FOR VALIDATION
   isFieldValid(): boolean {
-    return (!this.allowblank && (this.value && ((this.value.length >= this.minlength) && this.value.length > 0)) ||
-      (!this.minlength && this.value && this.value.length > 0)) || this.allowblank;
+    return (!this.allowblank && this.value && this.value.length > 0 && this.minlength !== undefined && this.value.length >= this.minlength) ||
+      (this.minlength === undefined && this.value && this.value.length > 0) || this.allowblank;
   }
   public validate(c: FormControl) {
     return this.isFieldValid() ? null : {
