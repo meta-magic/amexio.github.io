@@ -277,7 +277,7 @@ description : Set enable / disable popover.
   }
 
   ngOnInit() {
-    this.name = this.generateName(this.name, this.fieldlabel, 'textinput');
+    this.name = this.generateName(this.name, this.fieldlabel, 'numberinput');
   }
   // THIS METHOD USED FOR BLUR EVENT.
   onblur() {

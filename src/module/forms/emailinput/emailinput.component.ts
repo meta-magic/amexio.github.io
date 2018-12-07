@@ -3,7 +3,7 @@
  Component Selector :  <amexio-email-input>
  Component Description : Email input field
  */
-import { Component, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
 import { ValueAccessorBase } from '../../base/value-accessor';
 
@@ -71,8 +71,6 @@ export class AmexioEmailInputComponent extends ValueAccessorBase<string> impleme
   set errormsg(value: string) {
     this.helpInfoMsg = value + '<br/>';
   }
-
-  @ViewChild('ref', { read: ElementRef }) public inputRef: ElementRef;
 
   @Input('place-holder') placeholder: string;
   /*
@@ -197,7 +195,7 @@ export class AmexioEmailInputComponent extends ValueAccessorBase<string> impleme
   }
 
   ngOnInit() {
-    this.name = this.generateName(this.name, this.fieldlabel, 'textinput');
+    this.name = this.generateName(this.name, this.fieldlabel, 'emailinput');
   }
   // THIS METHOD USED FOR BLUR EVENT.
   onblur() {
@@ -218,13 +216,6 @@ export class AmexioEmailInputComponent extends ValueAccessorBase<string> impleme
   onChangeEv() {
     this.change.emit(this.value);
   }
-
-  // THIS MEHTOD CHECK INPUT IS VALID OR NOT
-  checkValidity(): boolean {
-    return (this.inputRef && this.inputRef.nativeElement &&
-      this.inputRef.nativeElement.validity && this.inputRef.nativeElement.validity.valid);
-  }
-
   // THIS METHOD IS USED FOR VALIDATION
   isFieldValid(): boolean {
     return (!this.allowblank  && this.emailpattern.test(this.value)) || this.allowblank;

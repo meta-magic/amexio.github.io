@@ -267,7 +267,7 @@ description : Set enable / disable popover.
     this.showToolTip = false;
   }
   ngOnInit() {
-    this.name = this.generateName(this.name, this.fieldlabel, 'textinput');
+    this.name = this.generateName(this.name, this.fieldlabel, 'textareainput');
     this.isComponentValid.emit(this.allowblank);
   }
 

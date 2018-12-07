@@ -213,8 +213,6 @@ description : Apply Reg-ex to the field
 
   isValid = false;
 
-  componentClass: any;
-
   @ViewChild(NgModel) model: NgModel;
 
   @Input('name') name: string;
@@ -277,6 +275,7 @@ description : On field value change event
   }
   // THIS METHOD USED FOR  INPUT EVENT .
   onInput() {
+    debugger;
     this.isValid = this.isFieldValid();
     this.input.emit(this.value);
   }
@@ -287,6 +286,7 @@ description : On field value change event
 
   // THIS METHOD IS USED FOR VALIDATION
   isFieldValid(): boolean {
+    debugger;
     return (!this.allowblank && (this.value && ((this.value.length >= this.minlength) && this.value.length > 0)) ||
       (!this.minlength && this.value && this.value.length > 0)) || this.allowblank;
   }

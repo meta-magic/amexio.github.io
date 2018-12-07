@@ -266,7 +266,7 @@ description : On field value change event
 
   ngOnInit() {
     this.isValid = this.isFieldValid();
-    this.name = this.generateName(this.name, this.fieldlabel, 'textinput');
+    this.name = this.generateName(this.name, this.fieldlabel, 'passwordinput');
   }
 
   // THIS METHOD IS USED FOR VALIDATION

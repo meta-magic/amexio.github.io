@@ -321,7 +321,7 @@ description : Set enable / disable popover.
 
   }
   ngOnInit() {
-    this.name = this.generateName(this.name, this.fieldlabel, 'textinput');
+    this.name = this.generateName(this.name, this.fieldlabel, 'dropdowninput');
     this.isValid = this.allowblank;
     this.isComponentValid.emit(this.allowblank);
     if (this.placeholder === '') {
