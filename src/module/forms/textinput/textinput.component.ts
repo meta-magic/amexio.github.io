@@ -264,12 +264,12 @@ description : On field value change event
   }
 
   // THIS METHOD USED FOR BLUR EVENT.
-  onblur() {
+  onBlurEvent() {
     this.showToolTip = false;
     this.onBlur.emit(this.value);
   }
   // THIS METHOD USED FOR FOCUS EVENT .
-  onFocus() {
+  onFocusEvent() {
     this.showToolTip = true;
     this.focus.emit(this.value);
   }

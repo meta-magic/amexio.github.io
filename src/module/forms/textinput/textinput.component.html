@@ -3,7 +3,7 @@
     <label *ngIf="haslabel" [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
       {{fieldlabel}}
   </label>
-    <input type="text" #inp="ngModel"  class="input-control" [ngClass]="inp.touched ? (isValid && inp.touched) ? 'input-control-success' : 'input-control-error' :''" [(ngModel)]="value" (blur)="onblur()" (focus)="onFocus()" (input)="onInput()" (change)="onChangeEv()"
+    <input type="text" #inp="ngModel"  class="input-control" [ngClass]="inp.touched ? (isValid && inp.touched) ? 'input-control-success' : 'input-control-error' :''" [(ngModel)]="value" (blur)="onBlurEvent()" (focus)="onFocusEvent()" (input)="onInput()" (change)="onChangeEv()"
         [name]="name" [pattern]="regEx" [attr.placeholder]="placeholder" [maxlength]="maxlength" [minlength]="minlength" [attr.disabled]="disabled ? true: null" [required]="!allowblank" />
 
 

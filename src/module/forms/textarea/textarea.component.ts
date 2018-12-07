@@ -11,9 +11,6 @@ import { Component, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output,
 import { FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
 import { ValueAccessorBase } from '../../base/value-accessor';
 
-const noop = () => {
-};
-
 @Component({
   selector: 'amexio-textarea-input',
   templateUrl: './textarea.component.html',
@@ -272,7 +269,7 @@ description : Set enable / disable popover.
   }
 
   // Set touched on blur
-  onblur() {
+  onBlurEvent() {
     this.showToolTip = false;
     this.onBlur.emit(this.value);
   }

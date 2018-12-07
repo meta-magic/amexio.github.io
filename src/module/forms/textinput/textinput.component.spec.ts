@@ -81,20 +81,7 @@ describe('NUMBER INPUT', () => {
     expect(comp.value).toEqual(fixture);
   });
 
-
-  //on focus()
-  it('on focus()', () => {
-    //comp.showToolTip=true;
-    let flag = true;
-    comp.onFocus();
-    expect(comp.showToolTip).toEqual(flag);
-  })
-
-
-  it('on blur()', () => {
-    comp.onblur(fixture);
-    expect(comp.showToolTip).toEqual(false);
-  })
+ 
   it('getCssClass()', () => {
   });
   //working 3 get maxerrormsg
