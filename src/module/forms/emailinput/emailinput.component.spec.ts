@@ -168,15 +168,15 @@ describe('amexio-email-input', () => {
   //   expect(comp.isValid).toBe(true);
   // });
 
-  it('check  isvalid is boolean', () => {
-    const blank = { invalid: true, valid: true, dirty: true, touched: true };
-    comp.value ='kedar@metamagic.in';
-    comp.allowblank = true;
-   // const inData = comp.onBlank(blank);
-   // expect(inData).toEqual({'input-control-error':true,'input-control-success':true});
+  // it('check  isvalid is boolean', () => {
+  //   const blank = { invalid: true, valid: true, dirty: true, touched: true };
+  //   comp.value ='kedar@metamagic.in';
+  //   comp.allowblank = true;
+  //  // const inData = comp.onBlank(blank);
+  //  // expect(inData).toEqual({'input-control-error':true,'input-control-success':true});
 
-    comp.inputRef = {'nativeElement':{'validity':{'valid':true}}};
-    const validity = comp.checkValidity();
-    expect(validity).toEqual(true);
-  });
+  //   comp.inputRef = {'nativeElement':{'validity':{'valid':true}}};
+  //   const validity = comp.checkValidity();
+  //   expect(validity).toEqual(true);
+  // });
 });
