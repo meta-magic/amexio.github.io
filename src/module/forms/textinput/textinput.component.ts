@@ -285,7 +285,8 @@ description : On field value change event
 
   // THIS METHOD IS USED FOR VALIDATION
   isFieldValid(): boolean {
-    return (!this.allowblank && this.value && this.value.length > 0 && this.minlength !== undefined && this.value.length >= this.minlength) ||
+    return (!this.allowblank && this.value && this.value.length > 0 &&
+      this.minlength !== undefined && this.value.length >= this.minlength) ||
       (this.minlength === undefined && this.value && this.value.length > 0) || this.allowblank;
   }
   public validate(c: FormControl) {
