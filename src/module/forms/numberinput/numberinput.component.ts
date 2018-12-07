@@ -6,7 +6,7 @@
  (min/max value,allow blank, custom regex), custom error message, help, custom styles
 */
 import {
-  Component, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild,
+  Component, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild,
 } from '@angular/core';
 import { FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
 import { ValueAccessorBase } from '../../base/value-accessor';
@@ -122,8 +122,7 @@ description : Defines the max range limit for number input.
     this.helpInfoMsg = this.helpInfoMsg + 'Max value: ' + value;
   }
 
-  isValid: boolean;
-  @ViewChild('ref', { read: ElementRef }) public inputRef: ElementRef;
+  isValid = false;
   /*
 Properties
 name : place-holder
@@ -270,7 +269,9 @@ default :
 description : Set enable / disable popover.
 */
   @Input('enable-popover') enablepopover: boolean;
+
   @ViewChild(NgModel) model: NgModel;
+
   constructor() {
     super();
     this.showToolTip = false;
@@ -298,12 +299,6 @@ description : Set enable / disable popover.
     this.change.emit(this.value);
   }
 
-  // THIS MEHTOD CHECK INPUT IS VALID OR NOT
-  checkValidity(): boolean {
-    return (this.inputRef && this.inputRef.nativeElement &&
-      this.inputRef.nativeElement.validity && this.inputRef.nativeElement.validity.valid);
-  }
-
   isFieldValidate(): boolean {
     if (this.minvalue && !this.maxvalue) {
       return this.innerValue && (this.innerValue > this.minvalue);
@@ -318,9 +313,6 @@ description : Set enable / disable popover.
 
   public validate(c: FormControl) {
     const isValid: boolean = (!this.allowblank && this.isFieldValidate()) || this.allowblank;
-    if (this.inputRef.nativeElement && this.inputRef.nativeElement.selectionStart) {
-      this.componentClass = isValid ? 'input-control-success' : 'input-control-error';
-    }
     return isValid ? null : {
       jsonParseError: {
         valid: true,
