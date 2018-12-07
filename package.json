@@ -138,5 +138,5 @@
       "@angular/animations",
       "@types/jasmine"
     ]
-  }
+  } 
 }
