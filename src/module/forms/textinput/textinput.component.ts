@@ -259,7 +259,6 @@ description : On field value change event
   }
 
   ngOnInit() {
-    this.isValid = this.isFieldValid();
     this.name = this.generateName(this.name, this.fieldlabel, 'textinput');
   }
 
@@ -283,11 +282,11 @@ description : On field value change event
     this.change.emit(this.value);
   }
 
-  // THIS METHOD IS USED FOR VALIDATION
   isFieldValid(): boolean {
-    return (!this.allowblank && this.value && this.value.length > 0 &&
-      this.minlength !== undefined && this.value.length >= this.minlength) ||
-      (this.minlength === undefined && this.value && this.value.length > 0) || this.allowblank;
+    let valid: boolean;
+    valid = (!this.allowblank && (this.value && ((this.value.length >= this.minlength) && this.value.length > 0)) ||
+      (!this.minlength && this.value && this.value.length > 0)) || this.allowblank;
+    return valid;
   }
   public validate(c: FormControl) {
     return this.isFieldValid() ? null : {
@@ -295,5 +294,5 @@ description : On field value change event
         valid: true,
       },
     };
-  }
+}
 }
