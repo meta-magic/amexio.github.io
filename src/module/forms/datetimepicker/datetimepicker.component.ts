@@ -583,25 +583,26 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
   getListPosition(elementRef: any): boolean {
     const dropdownHeight = 350; // must be same in dropdown.scss
     if (window.innerHeight - (elementRef.getBoundingClientRect().bottom) < dropdownHeight) {
-      if ((elementRef.getBoundingClientRect().top - dropdownHeight - elementRef.getBoundingClientRect().height) > 0) {
-        this.positionClass = {
-          top: (elementRef.getBoundingClientRect().top - dropdownHeight - elementRef.getBoundingClientRect().height) + 'px',
-        };
-      } else if ((dropdownHeight - elementRef.getBoundingClientRect().top) > 0) {
-        this.positionClass = {
-          top: (dropdownHeight - elementRef.getBoundingClientRect().top) + 'px',
-        };
-      } else if ((elementRef.getBoundingClientRect().top - dropdownHeight) > 0) {
-        this.positionClass = {
-          top: (elementRef.getBoundingClientRect().top - dropdownHeight) + 'px',
-        };
-      }
-      return true;
-    } else {
-      this.positionClass = {};
-      return false;
+    if ((elementRef.getBoundingClientRect().top - dropdownHeight - elementRef.getBoundingClientRect().height) > 0) {
+    this.positionClass = {
+    top: (elementRef.getBoundingClientRect().top - dropdownHeight - elementRef.getBoundingClientRect().height) + 'px',
+    };
+    } else if ((dropdownHeight - elementRef.getBoundingClientRect().top) > 0) {
+    this.positionClass = {
+    top: (dropdownHeight - elementRef.getBoundingClientRect().top) + 'px',
+    };
+    } else if ((elementRef.getBoundingClientRect().top - dropdownHeight) > 0) {
+    this.positionClass = {
+    top: (elementRef.getBoundingClientRect().top - dropdownHeight) + 'px',
+    };
     }
-  }
+    return true;
+    } else {
+    this.positionClass = {
+    top: (elementRef.getBoundingClientRect().top + elementRef.getBoundingClientRect().height) + 'px'};
+    return false;
+    }
+    }
   onSelect() {
     this.showToolTip = false;
   }
