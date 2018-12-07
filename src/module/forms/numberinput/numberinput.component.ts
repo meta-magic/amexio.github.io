@@ -281,7 +281,7 @@ description : Set enable / disable popover.
     this.name = this.generateName(this.name, this.fieldlabel, 'numberinput');
   }
   // THIS METHOD USED FOR BLUR EVENT.
-  onblur() {
+  onBlurEvent() {
     this.showToolTip = false;
     this.onBlur.emit(this.value);
   }
@@ -292,6 +292,7 @@ description : Set enable / disable popover.
   }
   // THIS METHOD USED FOR  INPUT EVENT .
   onInput() {
+    this.isValid = this.isFieldValidate();
     this.input.emit(this.value);
   }
   // THIS METHOD USED FOR CHANGE EVENT  .
