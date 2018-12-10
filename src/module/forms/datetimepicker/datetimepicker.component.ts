@@ -578,31 +578,28 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       this.showToolTip = true;
     }
     this.posixUp = this.getListPosition(elem);
+    
+    const visibility = this.dropdownstyle.visibility;
+    this.dropdownstyle = JSON.parse(JSON.stringify(this.positionClass));
+    this.dropdownstyle.visibility = visibility;
+    this.dropdownstyle.position = 'fixed';    
+    
     this.disableddays(this.diabledDate);
   }
   getListPosition(elementRef: any): boolean {
     const dropdownHeight = 350; // must be same in dropdown.scss
     if (window.innerHeight - (elementRef.getBoundingClientRect().bottom) < dropdownHeight) {
-    if ((elementRef.getBoundingClientRect().top - dropdownHeight - elementRef.getBoundingClientRect().height) > 0) {
-    this.positionClass = {
-    top: (elementRef.getBoundingClientRect().top - dropdownHeight - elementRef.getBoundingClientRect().height) + 'px',
-    };
-    } else if ((dropdownHeight - elementRef.getBoundingClientRect().top) > 0) {
-    this.positionClass = {
-    top: (dropdownHeight - elementRef.getBoundingClientRect().top) + 'px',
-    };
-    } else if ((elementRef.getBoundingClientRect().top - dropdownHeight) > 0) {
-    this.positionClass = {
-    top: (elementRef.getBoundingClientRect().top - dropdownHeight) + 'px',
-    };
-    }
-    return true;
+      this.positionClass = {
+        top: ((elementRef.getBoundingClientRect().top - dropdownHeight)+elementRef.getBoundingClientRect().height) + 'px',
+      };
+      return true;
     } else {
-    this.positionClass = {
-    top: (elementRef.getBoundingClientRect().top + elementRef.getBoundingClientRect().height) + 'px'};
-    return false;
-    }
-    }
+      this.positionClass = {
+        top: (elementRef.getBoundingClientRect().top + elementRef.getBoundingClientRect().height) + 'px',
+      };
+      return false;
+    }   
+  }
   onSelect() {
     this.showToolTip = false;
   }
