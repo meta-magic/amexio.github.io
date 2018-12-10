@@ -516,7 +516,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
   }
   // From ControlValueAccessor interface
   writeValue(value: any) {
-     if (value !== '') {
+    if (value !== '') {
       if (value !== this.innerValue) {
         this.validateWriteValue(value);
       }
@@ -578,19 +578,17 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       this.showToolTip = true;
     }
     this.posixUp = this.getListPosition(elem);
-    
     const visibility = this.dropdownstyle.visibility;
     this.dropdownstyle = JSON.parse(JSON.stringify(this.positionClass));
     this.dropdownstyle.visibility = visibility;
-    this.dropdownstyle.position = 'fixed';    
-    
+    this.dropdownstyle.position = 'fixed';
     this.disableddays(this.diabledDate);
   }
   getListPosition(elementRef: any): boolean {
     const dropdownHeight = 350; // must be same in dropdown.scss
     if (window.innerHeight - (elementRef.getBoundingClientRect().bottom) < dropdownHeight) {
       this.positionClass = {
-        top: ((elementRef.getBoundingClientRect().top - dropdownHeight)+elementRef.getBoundingClientRect().height) + 'px',
+        top: ((elementRef.getBoundingClientRect().top - dropdownHeight) + elementRef.getBoundingClientRect().height) + 'px',
       };
       return true;
     } else {
@@ -598,7 +596,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
         top: (elementRef.getBoundingClientRect().top + elementRef.getBoundingClientRect().height) + 'px',
       };
       return false;
-    }   
+    }
   }
   onSelect() {
     this.showToolTip = false;
