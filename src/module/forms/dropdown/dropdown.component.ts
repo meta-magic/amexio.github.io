@@ -149,29 +149,18 @@ description : true for select multiple options
 
   @ViewChild('dropdownitems', { read: ElementRef }) public dropdownitems: ElementRef;
 
-  helpInfoMsg: string;
-
   displayValue = '';
 
-  _errormsg: string;
-
   filteredOptions: any[] = [];
-
-  get errormsg(): string {
-    return this._errormsg;
-  }
   /*
-  Properties
-  name : error-msg
-  datatype : string
-  version : 4.0 onwards
-  default :
-  description : Sets the error message
-  */
-  @Input('error-msg')
-  set errormsg(value: string) {
-    this.helpInfoMsg = value + '<br/>';
-  }
+ Properties
+ name : error-msg
+ datatype : string
+ version : 4.0 onwards
+ default :
+ description : Sets the error message for validation
+ */
+  @Input('error-msg') errormsg: string;
   /*
   Events
   name : onBlur
@@ -651,7 +640,7 @@ description : Set enable / disable popover.
     return this.isValid;
   }
   public validate(c: FormControl) {
-    return ((!this.allowblank && (this.value || this.value === 0) ) || this.allowblank) ? null : {
+    return ((!this.allowblank && (this.value || this.value === 0)) || this.allowblank) ? null : {
       jsonParseError: {
         valid: true,
       },

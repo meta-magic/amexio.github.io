@@ -71,7 +71,7 @@ description : Defines the max range limit for number input.
  default :
  description : Sets the error message for min validation
  */
-@Input('min-error-msg') minerrormsgno: string;
+@Input('min-error-msg') minerrormsg: string;
 /*
 Properties
 name : max-error-msg
@@ -80,7 +80,7 @@ version : 4.0 onwards
 default :
 description : Sets the error message for max validation
 */
-@Input('max-error-msg') maxerrormsgno: string;
+@Input('max-error-msg') maxerrormsg: string;
 /*
 Properties
 name : error-msg

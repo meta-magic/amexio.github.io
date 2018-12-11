@@ -13,7 +13,7 @@ import {
 
 import { CommonDataService } from '../../services/data/common.data.service';
 
-import {BaseFormValidator} from '../../base/base.validator.component';
+import { BaseFormValidator } from '../../base/base.validator.component';
 
 @Component({
   selector: 'amexio-tag-input', templateUrl: './tags.input.component.html',
@@ -198,24 +198,11 @@ description : On field focus event
 
   currentActive: any;
 
-  helpInfoMsg: string;
-
-  _errormsg: string;
-
   posixUp: boolean;
 
   selectedindex = 0;
 
   scrollposition = 30;
-
-  get errormsg(): string {
-    return this._errormsg;
-  }
-
-  @Input('error-msg')
-  set errormsg(value: string) {
-    this.helpInfoMsg = value + '<br/>';
-  }
 
   showToolTip: boolean;
 
@@ -228,6 +215,16 @@ description : On field focus event
   filteredResult: any;
 
   @ViewChild('inp') inpHandle: any;
+
+  /*
+Properties
+name : error-msg
+datatype : string
+version : 4.0 onwards
+default :
+description : Sets the error message for validation
+*/
+  @Input('error-msg') errormsg: string;
 
   @ViewChild('tagDropRef') tagDropRef: any;
 
@@ -284,7 +281,7 @@ description : On field focus event
       const search_term = keyword.toLowerCase();
       this.viewData.forEach((item: any) => {
         if (item != null && item[this.key].toLowerCase().startsWith(search_term)) {
-            this.filteredResult.push(item);
+          this.filteredResult.push(item);
         }
       });
       if (this.filteredResult.length > 0) {
@@ -460,7 +457,7 @@ description : On field focus event
     }
     this.onChange.emit(this.onSelections);
   }
-     // THIS MEHTOD CHECK INPUT IS VALID OR NOT
+  // THIS MEHTOD CHECK INPUT IS VALID OR NOT
   checkValidity(): boolean {
     return this.isValid;
   }

@@ -7,6 +7,8 @@ import { Component, Input } from '@angular/core';
 })
 export class AmexioInputHelperComponent {
     public _errormsg: string;
+    public _maxerrormsgno: string;
+    public _minerrormsgno: string;
     public _minmsg: string;
     public _maxmsg: string;
     public help: string[];
@@ -18,8 +20,8 @@ export class AmexioInputHelperComponent {
     @Input('min-length') minlength: number;
     @Input('max-length') maxlength: number;
 
-    @Input('min-value') minvalue: any;
-    @Input('max-value') maxvalue: any;
+    @Input('min-value') minvalue: number;
+    @Input('max-value') maxvalue: number;
 
     // error Msg
     @Input('error-msg')

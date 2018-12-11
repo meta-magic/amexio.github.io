@@ -37,3 +37,10 @@
 <span *ngIf="showToolTip && enablepopover" class="tooltiptext">
         <div [innerHTML]="helpInfoMsg"></div>
 </span>
+
+<input-help *ngIf="showToolTip && enablepopover" 
+            [error-msg]="errormsg"
+            [min-msg]="minmsg" 
+            [max-msg]="maxmsg"
+             >
+</input-help>
