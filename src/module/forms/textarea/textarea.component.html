@@ -1,34 +1,35 @@
 
-<div class="inputgroup form-group">
+<div class="inputgroup">
 
-  <label *ngIf="haslabel" [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
-    {{fieldlabel}}
-  </label>
+    <label *ngIf="haslabel" [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
+      {{fieldlabel}}
+    </label>
+  
+    <textarea type="text" class="input-control"
+           [(ngModel)]="value"
+           [ngClass]="model.touched ? (isValid && model.touched) ? 'input-control-success' : 'input-control-error' :''" 
+           (blur)="onBlurEvent()"
+           (focus)="onFocusEvent()"
+           (input)="onInputEvent()"
+           [name]="name"
+           [pattern]="regEx"
+           [attr.placeholder]="placeholder"
+           [attr.rows]="rows"
+           [attr.cols]="columns"
+           [attr.disabled] = "disabled ? true: null"
+           [required]="!allowblank">
+    </textarea>
 
-  <textarea type="text" class="input-control"
-         [(ngModel)]="value"
-         #inp="ngModel"
-         [ngClass]="componentClass"
-         (blur)="onBlurEvent()"
-         (focus)="onFocus()"
-         (input)="onInput()"
-         [name]="name"
-         [pattern]="regEx"
-         #ref
-         [attr.placeholder]="placeholder"
-         [attr.rows]="rows"
-         [attr.cols]="columns"
-         [attr.disabled] = "disabled ? true: null"
-         [required]="!allowblank">
-  </textarea>
+    <ng-container *ngIf="iconfeedback">
+        <span class="input-control-feedback">
+          <span *ngIf="!isValid && model.touched"><em class="fa fa-times"></em></span>
+        <span *ngIf="isValid && model.touched"><em class="fa fa-check"></em></span>
+        </span>
+    </ng-container>
 
-  <span *ngIf="iconfeedback && (inp.invalid && (inp.dirty || inp.touched) || inp.valid)" class="input-control-feedback">
-        <span *ngIf="!isValid && inp.touched"><em class="fa fa-times"></em></span>
-        <span *ngIf="isValid && inp.touched"><em class="fa fa-check"></em></span>
-      </span>
-
-  <span *ngIf="showToolTip && enablepopover" class="dropdown tooltiptext">
-        <div  [innerHTML]="helpInfoMsg"></div>
-  </span>
-  <span class="inputfieldbar"></span>
-</div>
+    <span *ngIf="showToolTip && enablepopover" class="dropdown tooltiptext">
+          <div  [innerHTML]="helpInfoMsg"></div>
+    </span>
+    <span class="inputfieldbar"></span>
+  </div>
+  

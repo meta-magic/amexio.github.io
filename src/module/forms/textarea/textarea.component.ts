@@ -7,7 +7,7 @@ different configurable attributes for validation
 (min/max value, allow blank, custom regex), custom error message, help, custom styles.
 
 */
-import { Component, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
 import { ValueAccessorBase } from '../../base/value-accessor';
 
@@ -59,8 +59,6 @@ description : Sets if field is required
 */
   @Input('allow-blank') allowblank: boolean;
 
-  componentClass: any;
-
   helpInfoMsg: string;
 
   regEx: RegExp;
@@ -68,8 +66,6 @@ description : Sets if field is required
   showToolTip: boolean;
 
   _errormsg: string;
-
-  @Output() isComponentValid: any = new EventEmitter<any>();
 
   /*
 Events
@@ -108,7 +104,6 @@ description : On blur event
  */
   @Output() change: any = new EventEmitter<any>();
 
-  @ViewChild('ref', { read: ElementRef }) public inputRef: ElementRef;
   get errormsg(): string {
     return this._errormsg;
   }
@@ -227,7 +222,7 @@ description : flag to set label
 
   _pattern: string;
 
-  isValid: boolean;
+  isValid = false;
 
   get pattern(): string {
     return this._pattern;
@@ -259,13 +254,14 @@ description : Set enable / disable popover.
 
   @Input('name') name: string;
 
+  @ViewChild(NgModel) model: NgModel;
+
   constructor() {
     super();
     this.showToolTip = false;
   }
   ngOnInit() {
     this.name = this.generateName(this.name, this.fieldlabel, 'textareainput');
-    this.isComponentValid.emit(this.allowblank);
   }
 
   // Set touched on blur
@@ -274,12 +270,12 @@ description : Set enable / disable popover.
     this.onBlur.emit(this.value);
   }
 
-  onFocus() {
+  onFocusEvent() {
     this.showToolTip = true;
     this.focus.emit(this.value);
   }
 
-  onInput() {
+  onInputEvent() {
     this.isValid = this.isFieldValid();
     this.input.emit(this.value);
   }

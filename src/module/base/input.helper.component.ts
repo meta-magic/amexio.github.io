@@ -10,10 +10,13 @@ export class AmexioInputHelperComponent {
     public _minmsg: string;
     public _maxmsg: string;
     public help: string[];
+    public _minerrormsg: string;
+    public _maxerrormsg: string;
     constructor() {
         this.help = [];
     }
 
+    // error Msg
     @Input('error-msg')
     set errormsg(v: string) {
         this._errormsg = v;
@@ -21,6 +24,7 @@ export class AmexioInputHelperComponent {
     get errormsg() {
         return this._errormsg;
     }
+    // Min Msg
 
     @Input('min-msg')
     set minmsg(v: string) {
@@ -29,6 +33,7 @@ export class AmexioInputHelperComponent {
     get minmsg() {
         return this._minmsg;
     }
+    // Max Msg
 
     @Input('max-msg')
     set maxmsg(v: string) {
@@ -37,6 +42,27 @@ export class AmexioInputHelperComponent {
     get maxmsg() {
         return this._maxmsg;
     }
+
+    // mini error msg
+    @Input('min-error-msg')
+    set minerrormsg(v: string) {
+        this._minerrormsg = v;
+    }
+    get minerrormsg() {
+        return this._minerrormsg;
+    }
+
+    // max error msg
+    @Input('max-error-msg')
+    set maxerrormsg(v: string) {
+        this._maxerrormsg = v;
+    }
+    get maxerrormsg(): string {
+        return this._maxerrormsg;
+    }
+
+    @Input('min-length') minlength: number;
+    @Input('max-length') maxlength: number;
 
     private createHelpMsg() {
         if (this.errormsg && this.errormsg.length > 0) {

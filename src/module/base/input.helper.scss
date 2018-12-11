@@ -1,12 +1,7 @@
-.input-helper{
-    background-color: lightgrey;
-    display: block;
-    z-index: 1003;
-    opacity: 1;
+.input-helper {
     overflow: auto;
     position: absolute;
     width: 100%;
     max-height: 200px;
-    opacity: 1.01;
     box-shadow: 0 1px 3px 0 #ced4da;
-}
+} 

@@ -19,8 +19,6 @@ import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, Ng
 import { BaseFormValidator } from '../../base/base.validator.component';
 import { CommonDataService } from '../../services/data/common.data.service';
 import { AmexioFormValidator } from './../form-validator/amexio.form.validator.component';
-const noop = () => {
-};
 
 @Component({
   selector: 'amexio-dropdown',

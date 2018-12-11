@@ -303,7 +303,7 @@ export class AmexioTypeAheadComponent extends ListBaseComponent<string> implemen
     }
   }
 
-  // METHOS TO EMIT CHANGE EVENT
+  // METHOD TO EMIT CHANGE EVENT
   onChange(event: any) {
     if (event != null) {
       this.change.emit(event);
