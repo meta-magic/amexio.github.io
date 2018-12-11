@@ -478,18 +478,16 @@ description : Set enable / disable popover.
     this.isComponentValid.emit(input.valid);
   }
   onDropDownSearchKeyUp(event: any) {
-    if (this.search) {
+    if (this.search && this.viewData) {
       const keyword = event.target.value;
       if (keyword != null && keyword !== '' && keyword !== ' ') {
         this.filteredOptions = [];
         const search_Term = keyword.toLowerCase();
-        if (this.viewData) {
-          this.viewData.forEach((row: any) => {
-            if (row[this.displayfield].toLowerCase().startsWith(search_Term)) {
-              this.filteredOptions.push(row);
-            }
-          });
-        }
+        this.viewData.forEach((row: any) => {
+          if (row[this.displayfield].toLowerCase().startsWith(search_Term)) {
+            this.filteredOptions.push(row);
+          }
+        });
       }
       if (keyword === '') {
         this.filteredOptions = this.viewData;
