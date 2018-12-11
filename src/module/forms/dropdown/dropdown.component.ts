@@ -483,11 +483,13 @@ description : Set enable / disable popover.
       if (keyword != null && keyword !== '' && keyword !== ' ') {
         this.filteredOptions = [];
         const search_Term = keyword.toLowerCase();
-        this.viewData.forEach((row: any) => {
-          if (row[this.displayfield].toLowerCase().startsWith(search_Term)) {
-            this.filteredOptions.push(row);
-          }
-        });
+        if (this.viewData) {
+          this.viewData.forEach((row: any) => {
+            if (row[this.displayfield].toLowerCase().startsWith(search_Term)) {
+              this.filteredOptions.push(row);
+            }
+          });
+        }
       }
       if (keyword === '') {
         this.filteredOptions = this.viewData;
