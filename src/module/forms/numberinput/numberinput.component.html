@@ -31,9 +31,15 @@
       </span>
   </ng-container>
 
-
-  <span *ngIf="showToolTip && enablepopover" class="dropdown tooltiptext">
-      <div [innerHTML]="helpInfoMsg"></div>
-  </span>
+  <input-help *ngIf="showToolTip && enablepopover" 
+  [error-msg]="errormsg" 
+  [min-msg]="minmsg" 
+  [max-error-msg]="maxerrormsgno"
+  [min-error-msg]="minerrormsgno"
+  [min-value]="minvalue"
+  [max-value]="maxvalue"
+  [max-msg]="maxmsg">
+  </input-help>
+  
   <span class="inputfieldbar"></span>
 </div>
