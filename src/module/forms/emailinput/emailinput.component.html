@@ -26,9 +26,10 @@
           </span>
       </ng-container>
     
-    
-      <span *ngIf="showToolTip && enablepopover" class="dropdown tooltiptext">
-          <div [innerHTML]="helpInfoMsg"></div>
-      </span>
+      <input-help *ngIf="showToolTip && enablepopover" 
+      [error-msg]="errormsg" 
+      >
+      </input-help>
+     
       <span class="inputfieldbar"></span>
     </div>

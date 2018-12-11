@@ -6,6 +6,7 @@ import { AmexioButtonComponent } from './../buttons/button.component';
 import { AmexioFormIconComponent } from './../icon/icon.component';
 import { AmexioEmailInputComponent } from './emailinput.component';
 import { stringify } from 'querystring';
+import { AmexioInputHelperComponent } from '../../base/input.helper.component';
 
 describe('amexio-email-input', () => {
   let comp: AmexioEmailInputComponent;
@@ -14,7 +15,8 @@ describe('amexio-email-input', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
-      declarations: [AmexioEmailInputComponent, AmexioFormIconComponent, AmexioButtonComponent],
+      declarations: [AmexioEmailInputComponent, AmexioFormIconComponent, AmexioButtonComponent, AmexioInputHelperComponent],
+      
       providers: [IconLoaderService],
     });
     fixture = TestBed.createComponent(AmexioEmailInputComponent);
@@ -100,19 +102,6 @@ describe('amexio-email-input', () => {
   });
 
  
-
- 
-
-
-  it('set errormsg', () => {
-    comp.errormsg = 'data incorect';
-    expect(comp.helpInfoMsg).toEqual('data incorect<br/>');
-  });
-
-  it('get errormsg', () => {
-    //  comp.errormsg='data incorect';
-    expect(comp.errormsg).toEqual(comp._errormsg);
-  });
 
   //get pattern
   it('get pattern', () => {

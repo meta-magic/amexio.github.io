@@ -47,30 +47,9 @@ export class AmexioEmailInputComponent extends ValueAccessorBase<string> impleme
   @Input('allow-blank') allowblank: boolean;
   @ViewChild(NgModel) model: NgModel;
 
-  helpInfoMsg: string;
-
   regEx: RegExp;
 
   showToolTip: boolean;
-
-  _errormsg: string;
-
-  get errormsg(): string {
-    return this._errormsg;
-  }
-  /*
-   Properties
-   name : error-msg
-   datatype : none
-   version : 4.0 onwards
-   default : none
-   description : Sets the error message
-   */
-  @Input('error-msg')
-
-  set errormsg(value: string) {
-    this.helpInfoMsg = value + '<br/>';
-  }
 
   @Input('place-holder') placeholder: string;
   /*
@@ -119,13 +98,15 @@ export class AmexioEmailInputComponent extends ValueAccessorBase<string> impleme
    */
   @Input('font-size') fontsize: string;
 
-  emailpattern: any = /\S+@\S+\.\S+/;
-
-  _pattern: string;
-
-  get pattern(): string {
-    return this._pattern;
-  }
+  /*
+Properties
+name : error-msg
+datatype : string
+version : 4.0 onwards
+default :
+description : Sets the error message for validation
+*/
+  @Input('error-msg') errormsg: string;
   /*
    Properties
    name : pattern
@@ -134,6 +115,14 @@ export class AmexioEmailInputComponent extends ValueAccessorBase<string> impleme
    default :
    description : Apply Reg-ex to the field
    */
+  emailpattern: any = /\S+@\S+\.\S+/;
+
+  _pattern: string;
+
+  get pattern(): string {
+    return this._pattern;
+  }
+
   @Input('pattern')
   set pattern(value: string) {
     if (value != null) {
@@ -218,7 +207,7 @@ export class AmexioEmailInputComponent extends ValueAccessorBase<string> impleme
   }
   // THIS METHOD IS USED FOR VALIDATION
   isFieldValid(): boolean {
-    return (!this.allowblank  && this.emailpattern.test(this.value)) || this.allowblank;
+    return (!this.allowblank && this.emailpattern.test(this.value)) || this.allowblank;
   }
   public validate(c: FormControl) {
     return this.isFieldValid() ? null : {
