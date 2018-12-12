@@ -104,58 +104,33 @@ description : On blur event
  */
   @Output() change: any = new EventEmitter<any>();
 
-  get errormsg(): string {
-    return this._errormsg;
-  }
   /*
-  Properties
-  name : error-msg
-  datatype : none
-  version : 4.0 onwards
-  default : none
-  description : sets the error message
-  */
-  @Input('error-msg')
-  set errormsg(value: string) {
-    this.helpInfoMsg = value + '<br/>';
-  }
-
-  _minerrormsg: string;
-
-  get minerrormsg(): string {
-    return this._minerrormsg;
-  }
-  /*
-  Properties
-  name : min-error-msg
-  datatype : string
-  version : 4.0 onwards
-  default : none
-  description : sets the error message for min validation
-  */
-  @Input('min-error-msg')
-  set minerrormsg(value: string) {
-    this.helpInfoMsg = this.helpInfoMsg + '<b>Min Length<b/>: ' + value + '<br/>';
-  }
-
-  _maxerrormsg: string;
-
-  get maxerrormsg(): string {
-    return this._maxerrormsg;
-  }
+ Properties
+ name : min-error-msg
+ datatype : string
+ version : 4.0 onwards
+ default :
+ description : Sets the error message for min validation
+ */
+  @Input('min-error-msg') minerrormsg: string;
   /*
   Properties
   name : max-error-msg
   datatype : string
   version : 4.0 onwards
-  default : none
-  description : sets the error message for max validation
+  default :
+  description : Sets the error message for max validation
   */
-  @Input('max-error-msg')
-  set maxerrormsg(value: string) {
-    this.helpInfoMsg = this.helpInfoMsg + 'Max Length: ' + value;
-  }
-
+  @Input('max-error-msg') maxerrormsg: string;
+  /*
+  Properties
+  name : error-msg
+  datatype : string
+  version : 4.0 onwards
+  default :
+  description : Sets the error message for validation
+  */
+  @Input('error-msg') errormsg: string;
   /*
 Properties
 name : place-holder

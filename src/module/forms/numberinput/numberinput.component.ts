@@ -59,68 +59,37 @@ description : Defines the max range limit for number input.
 */
   @Input('max-value') maxvalue: any;
 
-  helpInfoMsg: string;
-
-  componentClass: any;
-
   regEx: RegExp;
 
   showToolTip: boolean;
 
-  _errormsg: string;
-
-  get errormsg(): string {
-    return this._errormsg;
-  }
   /*
-  Properties
-  name : error-msg
-  datatype : none
-  version : 4.0 onwards
-  default : none
-  description : Sets the error message
-  */
-  @Input('error-msg')
-  set errormsg(value: string) {
-    this.helpInfoMsg = value + '<br/>';
-  }
-
-  _minerrormsg: string;
-
-  get minerrormsg(): string {
-    return this._minerrormsg;
-  }
-  /*
-  Properties
-  name : min-error-msg
-  datatype : string
-  version : 4.0 onwards
-  default :
-  description : Sets the error message for min validation
-  */
-  @Input('min-error-msg')
-  set minerrormsg(value: string) {
-    this.helpInfoMsg = this.helpInfoMsg + 'Min value: ' + value + '<br/>';
-  }
-
-  _maxerrormsg: string;
-
-  get maxerrormsg(): string {
-    return this._maxerrormsg;
-  }
-
-  /*
-  Properties
-  name : max-error-msg
-  datatype : string
-  version : 4.0 onwards
-  default :
-  description : Sets the error message for max validation
-  */
-  @Input('max-error-msg')
-  set maxerrormsg(value: string) {
-    this.helpInfoMsg = this.helpInfoMsg + 'Max value: ' + value;
-  }
+ Properties
+ name : min-error-msg
+ datatype : string
+ version : 4.0 onwards
+ default :
+ description : Sets the error message for min validation
+ */
+@Input('min-error-msg') minerrormsg: string;
+/*
+Properties
+name : max-error-msg
+datatype : string
+version : 4.0 onwards
+default :
+description : Sets the error message for max validation
+*/
+@Input('max-error-msg') maxerrormsg: string;
+/*
+Properties
+name : error-msg
+datatype : string
+version : 4.0 onwards
+default :
+description : Sets the error message for validation
+*/
+@Input('error-msg') errormsg: string;
 
   isValid = false;
   /*
@@ -132,29 +101,6 @@ default :
 description : 	Show place-holder inside dropdown component
 */
   @Input('place-holder') placeholder: string;
-  /*
-Properties
-name : min-length
-datatype : number
-version : 4.0 onwards
-default :
-description : The smallest positive representable number -that is,
-the positive number closest to zero (without actually being zero).
-The smallest negative representable number is -min-length.
-*/
-  @Input('min-length') minlength: number;
-  /*
-Properties
-name : max-length
-datatype : number
-version : 4.0 onwards
-default :
-description : The smallest positive representable number -that is,
-the positive number closest to zero (without actually being zero).
-The smallest negative representable number is -max-length.
-*/
-  @Input('max-length') maxlength: number;
-
   /*
   Properties
   name : disabled

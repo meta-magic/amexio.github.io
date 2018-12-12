@@ -15,7 +15,13 @@ export class AmexioInputHelperComponent {
     constructor() {
         this.help = [];
     }
+    @Input('min-length') minlength: number;
+    @Input('max-length') maxlength: number;
 
+    @Input('min-value') minvalue: number;
+    @Input('max-value') maxvalue: number;
+
+    @Input('is-number') isNumberComponent = false;
     // error Msg
     @Input('error-msg')
     set errormsg(v: string) {
@@ -60,9 +66,6 @@ export class AmexioInputHelperComponent {
     get maxerrormsg(): string {
         return this._maxerrormsg;
     }
-
-    @Input('min-length') minlength: number;
-    @Input('max-length') maxlength: number;
 
     private createHelpMsg() {
         if (this.errormsg && this.errormsg.length > 0) {

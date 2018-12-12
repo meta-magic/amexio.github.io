@@ -6,6 +6,7 @@ import { AmexioFormIconComponent } from '../icon/icon.component';
 import { FormsModule } from '@angular/forms';
 import { IconLoaderService } from '../../../index'
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { AmexioInputHelperComponent } from '../../base/input.helper.component';
 describe('NUMBER INPUT', () => {
 
   let comp: AmexioNumberInputComponent;
@@ -13,7 +14,7 @@ describe('NUMBER INPUT', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
-      declarations: [AmexioNumberInputComponent, AmexioFormIconComponent],
+      declarations: [AmexioNumberInputComponent, AmexioFormIconComponent, AmexioInputHelperComponent],
       providers: [IconLoaderService]
     });
     fixture = TestBed.createComponent(AmexioNumberInputComponent);
@@ -37,22 +38,9 @@ describe('NUMBER INPUT', () => {
   //     }); 
 
   //wrking 1- set errormsg
-  it('set errormsg', () => {
-    comp.errormsg = 'data incorect';
-    expect(comp.helpInfoMsg).toEqual('data incorect<br/>');
-  });
-
-  it('get errormsg', () => {
-    //  comp.errormsg='data incorect';
-    expect(comp.errormsg).toEqual(comp._errormsg);
-  });
-
-  //working 2 get minerrormsg
-  it('get minerrormsg', () => {
-    // comp.minerrormsg="";
-    comp.minerrormsg = 'trial';
-    expect(comp.minerrormsg).toEqual(comp._minerrormsg);
-  })
+ 
+  
+  
 
   //get pattern
   it('get pattern', () => {
@@ -99,22 +87,6 @@ describe('NUMBER INPUT', () => {
 
   // })
 
-  
-
-
-
-
-  //working 3 get maxerrormsg
-  it('get _maxerrormsg', () => {
-    comp.maxerrormsg = 'trial';
-    expect(comp.maxerrormsg).toEqual(comp._maxerrormsg);
-  })
-
-
-  it('get helpinfomsg', () => {
-    comp.helpInfoMsg = "test";
-    expect(comp.helpInfoMsg).toEqual(comp.helpInfoMsg);
-  })
 
 
 
