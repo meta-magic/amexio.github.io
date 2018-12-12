@@ -5,19 +5,27 @@
   </label>
 
 
-    <div class="tag-input" [ngClass]="{'loading-mask' : maskloader}">
+    <div class="tag-input"
+     [ngClass]="{'loading-mask' : maskloader}">
         <div class="tag" *ngFor="let item of onSelections">
             {{item[key]}}
             <span class="closebtn" (click)="removePill(item)">&times;</span>
         </div>
 
-        <input type="text" class="input-control" [ngClass]="{'input-control-error' : inp.invalid && (inp.dirty || inp.touched),'input-control-success' : inp.valid && (inp.dirty || inp.touched)}" (focus)="onFocus(rootDiv)" (input)="onInput(inp)" (keyup)="onKeyUp($event)"
-            [attr.placeholder]="placeholder" [attr.disabled]="disabled ? true: null" [required]="allowblank ? true: null" #inp/>
+        <input type="text"
+         class="input-control" 
+         [ngClass]="{'input-control-error' : inp.invalid && (inp.dirty || inp.touched),'input-control-success' : inp.valid && (inp.dirty || inp.touched)}" (focus)="onFocus(rootDiv)" (input)="onInput(inp)" (keyup)="onKeyUp($event)"
+            [attr.placeholder]="placeholder" 
+            [attr.disabled]="disabled ? true: null" 
+            [required]="allowblank ? true: null"
+             #inp/>
 
     </div>
 
 
-    <span #dropdownitems class="dropdown" [ngClass]="{'dropdown-up' : posixUp}" [ngStyle]="dropdownstyle" #tagDropRef>
+    <span #dropdownitems class="dropdown"
+     [ngClass]="{'dropdown-up' : posixUp}"
+      [ngStyle]="dropdownstyle" #tagDropRef>
     <ul class="dropdown-list">
       <li class="list-items" [ngClass]="{'list-items-selected':item.selected}"
           *ngFor="let item of filteredResult"
@@ -30,13 +38,5 @@
 
 <span *ngIf="iconfeedback && (inp.invalid && (inp.dirty || inp.touched) || inp.valid)" class="input-control-feedback">
         <span *ngIf="inp.invalid && (inp.dirty || inp.touched)">&#9888;</span>
-<span *ngIf="inp.valid && (inp.dirty || inp.touched)"> &#10004;</span>
-
+         <span *ngIf="inp.valid && (inp.dirty || inp.touched)"> &#10004;</span>
 </span>
-
-<input-help *ngIf="showToolTip && enablepopover" 
-            [error-msg]="errormsg"
-            [min-msg]="minmsg" 
-            [max-msg]="maxmsg"
-             >
-</input-help>

@@ -16,9 +16,8 @@ import {
   OnInit, Output, Renderer2, TemplateRef, ViewChild,
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
-import { BaseFormValidator } from '../../base/base.validator.component';
+import { EventBaseComponent } from '../../base/event.base.component';
 import { CommonDataService } from '../../services/data/common.data.service';
-import { AmexioFormValidator } from './../form-validator/amexio.form.validator.component';
 
 @Component({
   selector: 'amexio-dropdown',
@@ -29,7 +28,7 @@ import { AmexioFormValidator } from './../form-validator/amexio.form.validator.c
     provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioDropDownComponent), multi: true,
   }],
 })
-export class AmexioDropDownComponent extends BaseFormValidator<any> implements OnInit, ControlValueAccessor, Validators {
+export class AmexioDropDownComponent extends EventBaseComponent<any> implements OnInit, ControlValueAccessor, Validators {
   /*
 Properties
 name : field-label
@@ -152,15 +151,6 @@ description : true for select multiple options
   displayValue = '';
 
   filteredOptions: any[] = [];
-  /*
- Properties
- name : error-msg
- datatype : string
- version : 4.0 onwards
- default :
- description : Sets the error message for validation
- */
-  @Input('error-msg') errormsg: string;
   /*
   Events
   name : onBlur

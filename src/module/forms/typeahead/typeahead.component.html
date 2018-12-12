@@ -24,12 +24,6 @@
           <em *ngIf="(iconfeedback && (model.dirty || model.touched) && model.valid)" class="fa fa-check"></em>
           <em *ngIf="(iconfeedback && (model.dirty || model.touched) && !model.valid)" class="fa fa-times icon-error"></em>
   </div>
-
-  <input-help *ngIf="(enablepopover)" 
-                  [error-msg]="errormsg" 
-                  [min-msg]="minmsg" 
-                  [max-msg]="maxmsg">
-  </input-help>
   
   <dropdown-list-item class="dropdown" [ngStyle]="dropdownstyle"  
                       [data]="viewdata" [display-field]="displayfield" [value-field]="valuefield" 
@@ -37,4 +31,3 @@
                       (itemclick)="onDropDownListItemClick($event)">
   </dropdown-list-item>
 </div>
-

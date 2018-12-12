@@ -108,8 +108,6 @@ export class AmexioTypeAheadComponent extends ListBaseComponent<string> implemen
 
   @Input('value-field') valuefield: string;
 
-  @Input('error-msg') errormsg: string;
-
   @Input('place-holder') placeholder: string;
 
   @Input('icon-feedback') iconfeedback: boolean;

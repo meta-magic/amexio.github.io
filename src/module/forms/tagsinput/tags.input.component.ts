@@ -10,16 +10,14 @@ Component Description : Tags based multi input with typeahead facility.
 import {
   ChangeDetectorRef, Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, Renderer2, ViewChild,
 } from '@angular/core';
-
+import { EventBaseComponent } from '../../base/event.base.component';
 import { CommonDataService } from '../../services/data/common.data.service';
-
-import { BaseFormValidator } from '../../base/base.validator.component';
 
 @Component({
   selector: 'amexio-tag-input', templateUrl: './tags.input.component.html',
 })
 
-export class AmexioTagsInputComponent extends BaseFormValidator<any> implements OnInit {
+export class AmexioTagsInputComponent extends EventBaseComponent<string> implements OnInit {
   /*
 Properties
 name : field-label
@@ -216,23 +214,11 @@ description : On field focus event
 
   @ViewChild('inp') inpHandle: any;
 
-  /*
-Properties
-name : error-msg
-datatype : string
-version : 4.0 onwards
-default :
-description : Sets the error message for validation
-*/
-  @Input('error-msg') errormsg: string;
-
   @ViewChild('tagDropRef') tagDropRef: any;
 
   @ViewChild('dropdownitems', { read: ElementRef }) public dropdownitems: ElementRef;
 
   isValid: boolean;
-
-  @Output() isComponentValid: any = new EventEmitter<any>();
 
   maskloader = true;
 
@@ -244,8 +230,6 @@ description : Sets the error message for validation
   }
 
   ngOnInit() {
-    this.isComponentValid.emit(this.allowblank);
-
     if (this.placeholder === '' || this.placeholder === null) {
       this.placeholder = 'Choose Option';
     }
@@ -266,11 +250,9 @@ description : Sets the error message for validation
       this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
     }
-
   }
 
   navigateKey(event: any) {
-
   }
 
   onKeyUp(event: any) {
@@ -383,19 +365,6 @@ description : Sets the error message for validation
     this.input.emit();
   }
 
-  // get accessor
-  get value(): any {
-    return this.innerValue;
-  }
-
-  // set accessor including call the onchange callback
-  set value(v: any) {
-    if (v !== this.innerValue) {
-      this.innerValue = v;
-      this.onChangeCallback(v);
-    }
-  }
-
   onFocus(elem: any) {
     this.inpHandle.nativeElement.placeholder = '';
     this.showToolTip = true;
@@ -438,7 +407,6 @@ description : Sets the error message for validation
     this.onChange.emit(this.onSelections);
     if (this.onSelections.length > 0) {
       this.isValid = true;
-      this.isComponentValid.emit(true);
     }
     this.showToolTip = false;
   }
@@ -453,7 +421,6 @@ description : Sets the error message for validation
     this.onSelections.splice(indexToRemove, 1);
     if (this.onSelections.length === 0) {
       this.isValid = false;
-      this.isComponentValid.emit(false);
     }
     this.onChange.emit(this.onSelections);
   }
