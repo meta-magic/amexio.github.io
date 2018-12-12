@@ -68,16 +68,16 @@ description : Key in JSON Datasource for records.
 */
   @Input('data-reader') datareader: string;
 
-/*
-  Properties
-name : display-key
-datatype : string
-version : 5.2.0 onwards
-default : text
-description : Name of key inside response data to display on ui.
-*/
-@Input('display-key') displaykey: string;
-   /*
+  /*
+    Properties
+  name : display-key
+  datatype : string
+  version : 5.2.0 onwards
+  default : text
+  description : Name of key inside response data to display on ui.
+  */
+  @Input('display-key') displaykey: string;
+  /*
 Properties
 name : child-array-key
 datatype : string
@@ -85,7 +85,7 @@ version : 5.2.0 onwards
 default : children
 description : Name of key for child array name inside response data to display on ui.
 */
-@Input('child-array-key') childarraykey: string;
+  @Input('child-array-key') childarraykey: string;
 
   /*
   Events
@@ -429,15 +429,18 @@ description : Context Menu provides the list of menus on right click.
   }
 
   getDropNode(dragData: any, node: any, event: any) {
-    dragData.data[this.childarraykey].forEach((child: any) => {
-      if (JSON.stringify(child) === JSON.stringify(node) || node.leaf === true) {
-        event.dataTransfer.dropEffect = 'none';
-      } else if (child.hasOwnProperty(this.childarraykey)) {
-        this.getDropNode(child[this.childarraykey], node, event);
-      }
-    });
+    if (JSON.stringify(dragData.data) === JSON.stringify(node)) {
+      event.dataTransfer.dropEffect = 'none';
+    } else {
+      dragData.data[this.childarraykey].forEach((child: any) => {
+        if (JSON.stringify(child) === JSON.stringify(node) || node.leaf === true) {
+          event.dataTransfer.dropEffect = 'none';
+        } else if (child.hasOwnProperty(this.childarraykey)) {
+          this.getDropNode({ data: child, event1: event }, node, event);
+        }
+      });
+    }
   }
-
   drop(dropData: any) {
     if (this.enabledrop) {
       dropData.event.target.style.border = '';
