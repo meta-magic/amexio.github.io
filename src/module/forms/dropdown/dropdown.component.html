@@ -44,7 +44,9 @@
         </span>
     <span class="inputfieldbar"></span>
   </div>
-  
+  <span *ngIf="showToolTip && enablepopover" class="tooltiptext">
+    <div [innerHTML]="helpInfoMsg"></div>
+  </span>
   
   <span *ngIf="iconfeedback && (inp.invalid && (inp.dirty || inp.touched) || inp.valid)"
         class="input-control-feedback">

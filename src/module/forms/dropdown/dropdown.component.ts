@@ -277,6 +277,18 @@ description : Set enable / disable popover.
 */
   @Input('enable-popover') enablepopover: boolean;
 
+  helpInfoMsg: string;
+  _errormsg: string;
+
+  get errormsg(): string {
+    return this._errormsg;
+  }
+
+  @Input('error-msg')
+  set errormsg(value: string) {
+    this.helpInfoMsg = value + '<br/>';
+  }
+
   @ContentChild('amexioBodyTmpl') bodyTemplate: TemplateRef<any>;
   posixUp: boolean;
   isValid: boolean;
