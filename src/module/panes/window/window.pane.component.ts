@@ -302,15 +302,17 @@ description : Context Menu provides the list of menus on right click.
     }
   }
   loadContextMenu(rightClickData: any) {
-    this.mouseLocation.left = rightClickData.event.clientX;
-    this.mouseLocation.top = rightClickData.event.clientY;
-    this.getContextMenu();
-    this.posixUp = this.getListPosition(rightClickData.ref);
-    rightClickData.event.preventDefault();
-    rightClickData.event.stopPropagation();
-    this.rightClickNodeData = rightClickData.data;
-    this.contextStyle = this.getContextMenuStyle();
-    this.nodeRightClick.emit(rightClickData);
+    if (this.contextmenu && this.contextmenu.length > 0) {
+      this.mouseLocation.left = rightClickData.event.clientX;
+      this.mouseLocation.top = rightClickData.event.clientY;
+      this.getContextMenu();
+      this.posixUp = this.getListPosition(rightClickData.ref);
+      rightClickData.event.preventDefault();
+      rightClickData.event.stopPropagation();
+      this.rightClickNodeData = rightClickData.data;
+      this.contextStyle = this.getContextMenuStyle();
+      this.nodeRightClick.emit(rightClickData);
+    }
   }
 
   onContextNodeClick(itemConfig: any) {

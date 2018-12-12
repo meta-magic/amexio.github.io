@@ -321,7 +321,7 @@ export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnIn
       this.actionComp[0].checkActionComponent();
     }
 
-    this.tabPositionClass =  this.findTabStyleClass();
+    this.tabPositionClass = this.findTabStyleClass();
 
   }
 
@@ -420,9 +420,9 @@ export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnIn
     if (disabledTabInput.length > 0) {
       disabledTabInput.forEach((ele: any) => {
         if (typeof ele === 'string') {
-      this.disableTabByString(flag, ele);
+          this.disableTabByString(flag, ele);
         } else if (typeof ele === 'number') {
-        this.disableTabByNumber(flag, ele);
+          this.disableTabByNumber(flag, ele);
         }
       });
     }
@@ -457,7 +457,7 @@ export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnIn
     if (disabledTabInput.length > 0) {
       disabledTabInput.forEach((ele: any) => {
         if (typeof ele === 'string') {
-        this.enableTabByString(flag, ele);
+          this.enableTabByString(flag, ele);
         } else if (typeof ele === 'number') {
           this.enableTabByNumber(flag, ele);
         }
@@ -655,16 +655,18 @@ export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnIn
   }
 
   loadContextMenu(event: any, row: any, id: any) {
-    this.tempSelectedFlag(this.tabCollection);
-    this.mouseLocation.left = event.clientX;
-    this.mouseLocation.top = event.clientY;
-    row.active = true;
-    this.getContextMenu();
-    this.posixUp = this.getListPosition(id);
-    event.preventDefault();
-    event.stopPropagation();
-    this.rightClickRowData = row;
-    this.contextStyle = this.getContextMenuStyle();
+    if (this.contextmenu && this.contextmenu.length > 0) {
+      this.tempSelectedFlag(this.tabCollection);
+      this.mouseLocation.left = event.clientX;
+      this.mouseLocation.top = event.clientY;
+      row.active = true;
+      this.getContextMenu();
+      this.posixUp = this.getListPosition(id);
+      event.preventDefault();
+      event.stopPropagation();
+      this.rightClickRowData = row;
+      this.contextStyle = this.getContextMenuStyle();
+    }
   }
 
   tempSelectedFlag(tabs: any) {

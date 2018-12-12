@@ -5,7 +5,7 @@ import { IconLoaderService } from '../../../index';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CommonDataService } from '../../services/data/common.data.service';
 import { HttpClient, HttpHandler } from '@angular/common/http';
-import { ElementRef, Renderer2 } from '@angular/core';
+import { Renderer2 } from '@angular/core';
 import { AmexioInputHelperComponent } from '../../base/input.helper.component';
 
 describe('TAG INPUT', () => {

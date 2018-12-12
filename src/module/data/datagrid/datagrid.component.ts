@@ -1460,28 +1460,28 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
   }
 
   loadContextMenu(event: any, row: any, col: any, ref: any) {
-    this.tempContextMenu = [];
-    this.tempSelectedFlag(this.viewRows);
+    if (this.contextmenu && this.contextmenu.length > 0) {
+      this.tempContextMenu = [];
+      this.tempSelectedFlag(this.viewRows);
+      this.mouseLocation.left = event.clientX;
+      this.mouseLocation.top = event.clientY;
+      row.isSelected = true;
 
-    this.mouseLocation.left = event.clientX;
-    this.mouseLocation.top = event.clientY;
-    row.isSelected = true;
-
-    if (col.contextmenu && col.contextmenu.length > 0) {
-      this.flag = true;
-      this.tempContextMenu = col.contextmenu;
-      this.addListner();
-    } else if (this.contextmenu && this.contextmenu.length > 0) {
-      this.tempContextMenu = this.contextmenu;
-      this.flag = true;
-      this.addListner();
+      if (col.contextmenu && col.contextmenu.length > 0) {
+        this.flag = true;
+        this.tempContextMenu = col.contextmenu;
+        this.addListner();
+      } else if (this.contextmenu && this.contextmenu.length > 0) {
+        this.tempContextMenu = this.contextmenu;
+        this.flag = true;
+        this.addListner();
+      }
+      this.posixUp = this.getListPosition(ref);
+      event.preventDefault();
+      event.stopPropagation();
+      this.rightClickRowData = row;
+      this.contextStyle = this.getContextMenuStyle();
     }
-    this.posixUp = this.getListPosition(ref);
-    event.preventDefault();
-    event.stopPropagation();
-    this.rightClickRowData = row;
-    this.contextStyle = this.getContextMenuStyle();
-
   }
 
   onContextNodeClick(itemConfig: any) {
