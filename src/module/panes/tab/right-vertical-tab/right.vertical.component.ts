@@ -35,6 +35,25 @@ export class AmexioRightVerticalTabComponent implements AfterContentInit, AfterV
 
   tabCollection: AmexioTabPillComponent[];
 
+  componentId = '';
+/*
+   Properties
+   name : closable
+   datatype : boolean
+   version : 4.0 onwards
+   default : false
+   description : This flag will make tab closable.
+   */
+  @Input() closable: boolean;
+  /*
+   Properties
+   name :tab-position
+   datatype : string
+   version : 4.1.9 onwards
+   default : top
+   description : Position of tab can be (top/bottom)
+   */
+  @Input() tabPosition: string;
   /*
 Events
 name : onClick
@@ -48,9 +67,11 @@ description : Callback to invoke on activated tab event.
   content: string;
 
   constructor(public render: Renderer2) {
+    this.tabPosition = 'top';
   }
 
   ngOnInit() {
+    this.componentId = Math.floor(Math.random() * 90000) + 10000 + '_tabc';
   }
 
   ngAfterViewInit() {
@@ -72,18 +93,39 @@ description : Callback to invoke on activated tab event.
       }
     }
   }
+  findTabStyleClass() {
+    if (this.tabPosition === 'top') {
+      return 'tabposition-right-top';
+    }
+    if (this.tabPosition === 'bottom') {
+      return 'tabposition-right-bottom';
+    }
+  }
+  closeAllTabs() {
+    this.tabCollection.forEach((tabs) => {
+      if (tabs.closable === true || this.closable === true) {
+        this.closeTab(tabs);
+      }
+    });
+  }
 
   closeTab(tabNode: AmexioTabPillComponent) {
     const newTab: AmexioTabPillComponent[] = [];
     let index = 0;
     let tabHighlightIndex = 0;
 
-    this.tabCollection.forEach((tab) => {
+    this.tabCollection.forEach((tab: any, i: number) => {
       tab.active = false;
       if (tab.tabId === tabNode.tabId) {
         tabHighlightIndex = index;
-      }
-      if (tab.tabId !== tabNode.tabId) {
+        if (tab.hasOwnProperty('tabpillinstance')) {
+          tab.target.remove();
+        } else {
+          const removeNode = document.getElementById(tab.tabId).parentNode;
+          const parentRefNode = removeNode.parentNode;
+          parentRefNode.removeChild(removeNode);
+        }
+      } else if (tab.tabId !== tabNode.tabId) {
         newTab.push(tab);
       }
       index++;
@@ -92,10 +134,19 @@ description : Callback to invoke on activated tab event.
     if (tabHighlightIndex === newTab.length) {
       tabHighlightIndex--;
     }
-    this.activateTab(newTab[tabHighlightIndex].tabId);
     this.tabCollection = newTab;
+    if (tabHighlightIndex > -1) {
+      this.activateTab(newTab[tabHighlightIndex].tabId);
+    } else {
+      this.activateTab(null);
+    }
+    if (this.tabCollection.length === 1) {
+      this.closable = false;
+    }
+    if (newTab.length === 1) {
+      newTab[0].closable = false;
+    }
   }
-
   activateTab(tabId: number) {
     this.tabCollection.forEach((tab) => {
       tab.active = false;

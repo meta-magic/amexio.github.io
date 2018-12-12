@@ -141,7 +141,7 @@ body {
 
 .vertical-table .vertical-tablerow .vertical-tablecol {
     display: table-cell;
-    vertical-align: middle;
+    // vertical-align: middle;
 }
 .listbox .header .table .tablerow .tablecol {
     padding-right: 0px!important;
@@ -160,12 +160,13 @@ body {
 }
 
 .verticalalign-tableft {
-    vertical-align: top !important;
+    // vertical-align: top !important;
     border-right: $borderSize solid $borderColor !important;
 }
 
 .verticalalign-tabright {
-    vertical-align: top !important;
+    // vertical-align: top !important;
+    display:inline-table;
     border-left: $borderSize solid $borderColor !important;
 }
 
