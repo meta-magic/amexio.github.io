@@ -14,55 +14,8 @@ for column header and column data, displaying summation of numeric column.
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonDataService } from '../../services/data/common.data.service';
 @Component({
-  selector: 'data-grid-filter', template: `
-    <ng-container *ngIf="column.datatype==='string'">
-      <div class="inputgroup">
-      <input type="text" [(ngModel)]="filterValue" [attr.placeholder]="column.text" (keyup)="keyUpSearch(column)"
-             type="text" class="input-control"
-             aria-label="Text input with dropdown button">
-      <!--<i class="fa fa-filter" aria-hidden="true" (click)="showToolTip = !showToolTip"></i>-->
-      <span class="datatable-filter-icon">
-        <amexio-data-icon key="datagrid_filter" (click)="showToolTip = !showToolTip"></amexio-data-icon>
-      </span>
-      <span *ngIf="showToolTip" class="dropdown" style="width: 250px;">
-        <ul class="dropdown-list" *ngFor="let opt of filterOptions">
-          <ng-container *ngIf="opt.type===column.datatype">
-          <li class="list-items">
-              <div (click)="selectedOption(column,opt)">
-              {{opt.key}}&nbsp;<i [class]="opt.checkedStatus" aria-hidden="true"></i>
-            </div>
-          </li>
-          </ng-container>
-         </ul>
-      </span>
-      </div>
-    </ng-container>
-
-    <ng-container *ngIf="column.datatype==='number'">
-              <div class="inputgroup float-right">
-
-        <input type="text" [(ngModel)]="filterValue" [attr.placeholder]="column.text" (keyup)="keyUpSearch(column)"
-               type="number" class="input-control"
-               aria-label="Text input with dropdown button">
-        <!--<i class="fa fa-filter" aria-hidden="true" (click)="showToolTip = !showToolTip"></i>-->
-     <span class="datatable-filter-icon">
-      <amexio-data-icon key="datagrid_filter" (click)="showToolTip = !showToolTip"></amexio-data-icon>
-     </span>
-       <span *ngIf="showToolTip" class="dropdown" style="width: 250px;">
-        <ul class="dropdown-list" *ngFor="let opt of filterOptions">
-          <ng-container *ngIf="opt.type===column.datatype">
-          <li class="list-items">
-              <div (click)="selectedOption(column,opt)">
-              {{opt.key}}&nbsp;<i [class]="opt.checkedStatus" aria-hidden="true"></i>
-            </div>
-          </li>
-          </ng-container>
-         </ul>
-      </span>
-              </div>
-    </ng-container>
-
-  `,
+  selector: 'data-grid-filter',
+  templateUrl: './datagrid.filter.component.html',
 })
 
 export class DataGridFilterComponent implements OnInit {
