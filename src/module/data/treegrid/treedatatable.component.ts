@@ -165,15 +165,15 @@ export class TreeDataTableComponent implements OnInit, AfterContentInit, AfterVi
    */
   _data: any;
   @Input('data')
-   set data(value: any[]) {
-     this._data = value;
-     if (this.componentLoaded) {
-       this.updateComponent();
-     }
-   }
-   get data(): any[] {
-     return this._data;
-   }
+  set data(value: any[]) {
+    this._data = value;
+    if (this.componentLoaded) {
+      this.updateComponent();
+    }
+  }
+  get data(): any[] {
+    return this._data;
+  }
 
   /*
    Properties
@@ -365,7 +365,18 @@ export class TreeDataTableComponent implements OnInit, AfterContentInit, AfterVi
     }
     return responsedata;
   }
-
+  removeAll() {
+    this.viewRows.forEach((node: any) => {
+      node.expanded = false;
+      this.removeRows(node);
+    });
+  }
+  expandAll() {
+    this.viewRows.forEach((node: any, index: number) => {
+      node.expanded = true;
+      this.addRows(node, index);
+    });
+  }
   toogle(row: any, index: number) {
     row.expanded = !row.expanded;
     if (row.expanded) {
