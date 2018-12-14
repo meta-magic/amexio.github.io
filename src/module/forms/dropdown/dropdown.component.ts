@@ -357,7 +357,7 @@ description : Set enable / disable popover.
     }
   }
   multiSelection() {
-    if (this.multiselect) {
+    if (this.multiselect && this.viewData) {
       let preSelectedMultiValues = '';
       const optionsChecked: any = [];
       this.viewData.forEach((row: any) => {
