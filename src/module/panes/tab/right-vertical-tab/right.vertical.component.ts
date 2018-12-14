@@ -11,6 +11,7 @@ import {
   AfterContentInit,
   AfterViewInit,
   Component,
+  ComponentFactoryResolver,
   ContentChildren,
   ElementRef,
   EventEmitter,
@@ -20,6 +21,7 @@ import {
   QueryList,
   Renderer2,
   ViewChild,
+  ViewContainerRef,
 } from '@angular/core';
 import { AmexioTabPillComponent } from '../tab.pill.component';
 
@@ -33,7 +35,11 @@ export class AmexioRightVerticalTabComponent implements AfterContentInit, AfterV
 
   @ContentChildren(AmexioTabPillComponent) queryTabs: QueryList<AmexioTabPillComponent>;
 
+  @ViewChild('target', { read: ViewContainerRef }) target: any;
+
   tabCollection: AmexioTabPillComponent[];
+
+  dummyArray: any[] = [];
 
   componentId = '';
 /*
@@ -66,7 +72,7 @@ description : Callback to invoke on activated tab event.
 
   content: string;
 
-  constructor(public render: Renderer2) {
+  constructor(public render: Renderer2, private componentFactoryResolver: ComponentFactoryResolver) {
     this.tabPosition = 'top';
   }
 
@@ -82,17 +88,40 @@ description : Callback to invoke on activated tab event.
   }
 
   onTabClick(tab: any) {
-    if (!tab.disabled) {
-      for (const i of this.tabCollection) {
-        if (i === tab) {
-          i['active'] = true;
-          this.onClick.emit(tab);
+    if (!tab.disabled && !tab.header) {
+     for (const i of this.tabCollection) {
+       if (i === tab) {
+         i['active'] = true;
+         this.asignTabPillClass(tab);
+         this.onClick.emit(tab);
         } else {
-          i['active'] = false;
-        }
-      }
-    }
+         i['active'] = false;
+         i['tabPillClass'] = '';
+       }
+     }
+     this.tabCollection.forEach((tab1: any) => {
+       this.asignTabPillClass(tab1);
+     });
+   }
+ }
+ asignTabPillClass(tabData: any) {
+  tabData.tabPillClass = '';
+  if ((!tabData.amexiocolor || tabData.amexiocolor === '') && tabData.active && (this.tabPosition === 'top')) {
+    tabData.tabPillClass = 'activetab';
   }
+  if ((!tabData.amexiocolor || tabData.amexiocolor === '') && (this.tabPosition === 'bottom') && tabData.active) {
+    tabData.tabPillClass = 'bottomActivetab';
+  }
+  if (tabData.disabled) {
+    tabData.tabPillClass = 'disabled-tab';
+  }
+  if ((tabData.amexiocolor !== '') && (this.tabPosition === 'top') && tabData.active) {
+    tabData.tabPillClass = 'activecolortab';
+  }
+  if ((tabData.amexiocolor !== '') && (this.tabPosition === 'bottom') && tabData.active) {
+    tabData.tabPillClass = 'activebottomcolortab';
+  }
+}
   findTabStyleClass() {
     if (this.tabPosition === 'top') {
       return 'tabposition-right-top';
@@ -106,6 +135,43 @@ description : Callback to invoke on activated tab event.
       if (tabs.closable === true || this.closable === true) {
         this.closeTab(tabs);
       }
+    });
+  }
+  addDynamicTab(title: string, amexiocolor: string, closable: boolean, component: any) {
+    // get a component factory for our TabComponent
+    const tpCF = this.componentFactoryResolver.resolveComponentFactory(AmexioTabPillComponent);
+    const tp = this.target.createComponent(tpCF);
+    // set the according properties on our component instance
+    const instance: AmexioTabPillComponent = tp.instance as AmexioTabPillComponent;
+    instance.title = title;
+    instance.active = true;
+    instance.closable = closable;
+    instance['tabpillinstance'] = this.target;
+    if (instance.amexiocolor === '') {
+      instance.amexiocolor = 'amexio-top-tab-black';
+    } else {
+      instance.amexiocolor = 'amexio-top-tab-' + amexiocolor;
+    }
+    // create dynamic component
+    const dynCF = this.componentFactoryResolver.resolveComponentFactory(
+      component,
+    );
+    const dynCmp = tp.instance.target.createComponent(dynCF);
+
+    // Push new tab and select it.
+    this.dummyArray.push(tp);
+    this.tabCollection.push(tp.instance);
+    this.selectTab(tp.instance);
+    return dynCmp.instance;
+  }
+  selectTab(tab: AmexioTabPillComponent) {
+    // deactivate all tabs
+    this.tabCollection.forEach((tab1: any) => {
+      tab1.active = false;
+    });
+    tab.active = true;
+    this.tabCollection.forEach((tab1: any) => {
+      this.asignTabPillClass(tab1);
     });
   }
 
