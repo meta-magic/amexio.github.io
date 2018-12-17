@@ -42,7 +42,7 @@
 
     </div>
 </div>
-<ng-container *ngIf="flag">
+<!-- <ng-container *ngIf="flag">
     <span [ngStyle]="contextStyle" style=" z-index: 5; position: absolute;">
         <ul class="context-menu-list" [ngClass]="{'dropdown-up' : posixUp}">
             <li (click)="onContextNodeClick(itemConfig)" class="context-menu-list-items" [ngStyle]="{'cursor': itemConfig.disabled ? 'not-allowed':'pointer'}"
@@ -53,4 +53,16 @@
             </li>
         </ul>
     </span>
-</ng-container>
+</ng-container> -->
+
+<ng-container *ngIf="flag">
+    <base-contextmenu style=" z-index: 5; position: absolute;"
+    [base-context-menu]="contextmenu" 
+    [mouse-location-top]="mouseLocation.top"
+    [mouse-location-left]="mouseLocation.left" 
+    [is-FlagShow]="flag" 
+    [right-click-data]="nodeRightClick"
+    (onRightClick) ="rightClickDataEmit($event)"
+    [position-up]="posixUp" >
+    </base-contextmenu>
+  </ng-container>

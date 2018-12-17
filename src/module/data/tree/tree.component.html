@@ -44,13 +44,15 @@
   </div>
 </div>
 
-<span [ngStyle]="contextStyle">
-  <ul *ngIf="flag" class="context-menu-list" [ngClass]="{'dropdown-up' : posixUp}">
-    <li (click)="onContextNodeClick(itemConfig)" class="context-menu-list-items" [ngStyle]="{'cursor': itemConfig.disabled ? 'not-allowed':'pointer'}" [ngClass]="{'context-menu-separator':itemConfig.seperator}"
-      *ngFor="let itemConfig of contextmenu">
-      <em [ngStyle]="{'padding-left': itemConfig.icon ? '5px':'19px'}" [ngClass]="itemConfig.icon"></em>
-      <span style="white-space: nowrap;display: inline ; padding-left:5px">{{itemConfig.text}}
-      </span>
-    </li>
-  </ul>
-</span>
+
+<ng-container *ngIf="flag">
+  <base-contextmenu 
+  [base-context-menu]="contextmenu" 
+  [mouse-location-top]="mouseLocation.top"
+  [mouse-location-left]="mouseLocation.left" 
+  [is-FlagShow]="flag" 
+  [right-click-data]="rightClickNodeData"
+  (onRightClick) ="rightClickDataEmit($event)"
+  [position-up]="posixUp" >
+  </base-contextmenu>
+</ng-container>

@@ -1113,32 +1113,11 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
       event.preventDefault();
       event.stopPropagation();
       this.rightClickRowData = row;
-      this.contextStyle = this.getContextMenuStyle();
     }
   }
 
-  onContextNodeClick(itemConfig: any) {
-    if (!itemConfig.disabled) {
-      const obj = {
-        menuData: itemConfig,
-        rowData: this.rightClickRowData,
-      };
-      this.flag = false;
-      this.removeListner();
-      this.rightClick.emit(obj);
-    }
-  }
-
-  getContextMenuStyle() {
-    return {
-      'cursor': 'default',
-      'position': 'fixed',
-      'display': this.flag ? 'block' : 'none',
-      'left': this.mouseLocation.left + 'px',
-      'top': this.mouseLocation.top + 'px',
-      'box-shadow': '1px 1px 2px #000000',
-      'width': '15%',
-    };
+  rightClickDataEmit(Data: any) {
+    this.rightClick.emit(Data);
   }
 
   // Method to get List position

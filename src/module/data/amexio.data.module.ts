@@ -19,6 +19,8 @@ import {HorizontalTreeViewComponent} from './tree/horizontaltreeview.component';
 import {AmexioTreeViewComponent} from './tree/tree.component';
 import {TreeDataTableComponent} from './treegrid/treedatatable.component';
 
+import { AmexioBaseContextMenuModule } from '../base/base.contextmenu.component.module';
+
 import {AmexioLayoutModule} from '../layout/amexio.layout.module';
 import {AmexioPaneModule} from '../panes/amexio.pane.module';
 
@@ -57,6 +59,7 @@ const DATA_COMPONENTS = [
     AmexioPaneModule,
     AmexioLayoutModule,
     HttpClientModule,
+    AmexioBaseContextMenuModule,
   ],
   exports: DATA_COMPONENTS,
   declarations: DATA_COMPONENTS,

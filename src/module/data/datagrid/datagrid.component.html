@@ -333,7 +333,7 @@
 <!--Group BY and Filter Data datagrid end-->
  
 <!-- Context Menu  -->
-<span [ngStyle]="contextStyle">
+<!-- <span [ngStyle]="contextStyle">
     <ul *ngIf="flag" class="context-menu-list" [ngClass]="{'dropdown-up' : posixUp}">
         <li (click)="onContextNodeClick(itemConfig)" class="context-menu-list-items" [ngStyle]="{'cursor': itemConfig.disabled ? 'not-allowed':'pointer'}"
             [ngClass]="{'context-menu-separator':itemConfig.seperator}" *ngFor="let itemConfig of tempContextMenu">
@@ -343,7 +343,19 @@
             </span>
         </li>
     </ul>
-</span>
+</span> -->
+
+<ng-container *ngIf="flag">
+    <base-contextmenu 
+    [base-context-menu]="contextmenu" 
+    [mouse-location-top]="mouseLocation.top"
+    [mouse-location-left]="mouseLocation.left" 
+    [is-FlagShow]="flag" 
+    [right-click-data]="rightClickRowData"
+    (onRightClick) ="rightClickDataEmit($event)"
+    [position-up]="posixUp" >
+    </base-contextmenu>
+  </ng-container>
 
 <!-- Footer of the grid -->
 <div class="footer">

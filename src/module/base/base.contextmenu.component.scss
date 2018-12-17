@@ -1,0 +1,13 @@
+.context-menu-list {
+    display: block;
+    position: absolute;
+    flex-direction: column;
+    min-width: 180px;
+    cursor: pointer;
+    max-height: 150px;
+    z-index: 1;
+    padding: 10px 0px;
+    overflow-y: auto;
+    background-color: white !important;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}

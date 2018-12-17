@@ -531,20 +531,7 @@ description : Context Menu provides the list of menus on right click.
       rightClickData.event.stopPropagation();
     }
     this.rightClickNodeData = rightClickData.data;
-    this.contextStyle = this.getContextMenuStyle();
     this.nodeRightClick.emit(rightClickData);
-  }
-
-  onContextNodeClick(itemConfig: any) {
-    if (!itemConfig.disabled) {
-      const obj = {
-        menuData: itemConfig,
-        NodeData: this.rightClickNodeData,
-      };
-      this.resetFlag();
-      this.removeListner();
-      this.rightClick.emit(obj);
-    }
   }
 
   getListPosition(elementRef: any): boolean {
@@ -556,16 +543,8 @@ description : Context Menu provides the list of menus on right click.
     }
   }
 
-  getContextMenuStyle() {
-    return {
-      'cursor': 'default',
-      'position': 'fixed',
-      'display': this.flag ? 'block' : 'none',
-      'left': this.mouseLocation.left + 'px',
-      'top': this.mouseLocation.top + 'px',
-      'box-shadow': '1px 1px 2px #000000',
-      'width': '15%',
-    };
+  rightClickDataEmit(Data: any) {
+    this.rightClick.emit(Data);
   }
 
   addListner() {

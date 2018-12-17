@@ -1,0 +1,11 @@
+<span [ngStyle]="contextStyle"> 
+    <ul class="context-menu-list" [ngClass]="{'dropdown-up' : posixUp}">
+        <li (click)="onContextNodeClick(itemConfig)" class="context-menu-list-items"
+         [ngStyle]="{'cursor': itemConfig.disabled ? 'not-allowed':'pointer'}"
+            [ngClass]="{'context-menu-separator':itemConfig.seperator}" *ngFor="let itemConfig of contextmenu">
+            <em [ngStyle]="{'padding-left': itemConfig.icon ? '5px':'19px'}" [ngClass]="itemConfig.icon"></em>
+            <span style="white-space: nowrap;display: inline ; padding-left:5px">{{itemConfig.text}}
+            </span>
+        </li>
+    </ul>
+</span>

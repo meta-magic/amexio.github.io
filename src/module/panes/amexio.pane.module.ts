@@ -34,6 +34,8 @@ import { AmexiotimelineeventComponent} from './timeline/amexiotimelineevent.comp
 import { AmexioWindowPaneComponent } from './window/window.pane.component';
 import { AmexioWindowHeaderComponent } from './window/window.pane.header.component';
 
+import { AmexioBaseContextMenuModule } from '../base/base.contextmenu.component.module';
+
 import { AmexioFormsModule } from '../forms/amexio.forms.module';
 import { CommonDataService } from '../services/data/common.data.service';
 import { DeviceQueryService } from '../services/device/device.query.service';
@@ -104,6 +106,7 @@ const PANE_COMPONENTS = [
     ReactiveFormsModule,
     AmexioFormsModule,
     HttpClientModule,
+    AmexioBaseContextMenuModule,
   ],
   entryComponents: [AmexioTabPillComponent],
   exports: PANE_COMPONENTS,
