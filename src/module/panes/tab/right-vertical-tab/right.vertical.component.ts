@@ -186,10 +186,9 @@ description : Callback to invoke on activated tab event.
         tabHighlightIndex = index;
         if (tab.hasOwnProperty('tabpillinstance')) {
           tab.target.remove();
+          this.tabDomRemove(tab);
         } else {
-          const removeNode = document.getElementById(tab.tabId).parentNode;
-          const parentRefNode = removeNode.parentNode;
-          parentRefNode.removeChild(removeNode);
+          this.tabDomRemove(tab);
         }
       } else if (tab.tabId !== tabNode.tabId) {
         newTab.push(tab);
@@ -212,6 +211,12 @@ description : Callback to invoke on activated tab event.
     if (newTab.length === 1) {
       newTab[0].closable = false;
     }
+  }
+  tabDomRemove(tab: any) {
+    const removeNode = document.getElementById(tab.tabId).parentNode;
+    const parentRefNode = removeNode.parentNode;
+    parentRefNode.removeChild(removeNode);
+
   }
   activateTab(tabId: number) {
     this.tabCollection.forEach((tab) => {

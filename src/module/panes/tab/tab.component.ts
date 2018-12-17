@@ -568,10 +568,9 @@ export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnIn
         tabHighlightIndex = index;
         if (tab.hasOwnProperty('tabpillinstance')) {
           tab.target.remove();
+          this.tabDomRemove(tab);
         } else {
-          const removeNode = document.getElementById(tab.tabId).parentNode;
-          const parentRefNode = removeNode.parentNode;
-          parentRefNode.removeChild(removeNode);
+          this.tabDomRemove(tab);
         }
       } else if (tab.tabId !== tabNode.tabId) {
         newTab.push(tab);
@@ -606,7 +605,12 @@ export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnIn
       });
     }
   }
+  tabDomRemove(tab: any) {
+    const removeNode = document.getElementById(tab.tabId).parentNode;
+    const parentRefNode = removeNode.parentNode;
+    parentRefNode.removeChild(removeNode);
 
+  }
   asignTabPillClass(tabData: any) {
     tabData.tabPillClass = '';
     if ((!tabData.amexiocolor || tabData.amexiocolor === '') && tabData.active && (this.tabPosition === 'top')) {

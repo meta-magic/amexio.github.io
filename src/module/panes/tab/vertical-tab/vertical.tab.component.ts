@@ -130,10 +130,9 @@ description : Callback to invoke on activated tab event.
         tabHighlightIndex = index;
         if (tab.hasOwnProperty('tabpillinstance')) {
           tab.target.remove();
+          this.tabDomRemove(tab);
         } else {
-          const removeNode = document.getElementById(tab.tabId).parentNode;
-          const parentRefNode = removeNode.parentNode;
-          parentRefNode.removeChild(removeNode);
+          this.tabDomRemove(tab);
         }
       } else if (tab.tabId !== tabNode.tabId) {
         newTab.push(tab);
@@ -173,6 +172,12 @@ description : Callback to invoke on activated tab event.
     });
     tabList[tabList.length - 1].active = true;
     this.asignTabPillClass(tabList[tabList.length - 1]);
+
+  }
+  tabDomRemove(tab: any) {
+    const removeNode = document.getElementById(tab.tabId).parentNode;
+    const parentRefNode = removeNode.parentNode;
+    parentRefNode.removeChild(removeNode);
 
   }
   addDynamicTab(title: string, amexiocolor: string, closable: boolean, component: any) {
