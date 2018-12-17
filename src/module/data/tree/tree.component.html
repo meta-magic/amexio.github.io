@@ -17,7 +17,7 @@
         </div>
         <div class="tree-node-label" (click)="onNodeClick(node)">
           <div class="tree-node-label" *ngIf="templates == null">
-            <div class="tree-node-label" *ngIf="node.icon" [ngClass]="node.icon" aria-hidden="true">
+            <div class="tree-node-label" *ngIf="node.icon" [ngClass]="node.icon" aria-hidden="true" style="padding-right: 5px;">
             </div>
             <div class="tree-node-label">
               {{node[displaykey]}}
