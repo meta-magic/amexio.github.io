@@ -186,7 +186,6 @@ description : Callback to invoke on activated tab event.
         tabHighlightIndex = index;
         if (tab.hasOwnProperty('tabpillinstance')) {
           tab.target.remove();
-          this.tabDomRemove(tab);
         } else {
           this.tabDomRemove(tab);
         }

@@ -568,9 +568,7 @@ export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnIn
         if (tab.hasOwnProperty('tabpillinstance')) {
           tab.target.remove();
         } else {
-          const removeNode = document.getElementById(tab.tabId).parentNode;
-          const parentRefNode = removeNode.parentNode;
-          parentRefNode.removeChild(removeNode);
+         this.tabDomRemove(tab);
         }
       } else if (tab.tabId !== tabNode.tabId) {
         newTab.push(tab);
@@ -592,6 +590,12 @@ export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnIn
     if (newTab.length === 1) {
       newTab[0].closable = false;
     }
+  }
+  tabDomRemove(tab: any) {
+    const removeNode = document.getElementById(tab.tabId).parentNode;
+    const parentRefNode = removeNode.parentNode;
+    parentRefNode.removeChild(removeNode);
+
   }
   activateTab(tabId: number) {
     if (tabId !== null) {
