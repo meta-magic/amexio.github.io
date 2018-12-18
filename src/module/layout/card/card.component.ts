@@ -129,6 +129,8 @@ description : Context Menu provides the list of menus on right click.
 
   contextStyle: any;
 
+  timeOut: any;
+
   mouseLocation: { left: number; top: number } = { left: 0, top: 0 };
 
   @ContentChildren(AmexioHeaderComponent) amexioHeader: QueryList<AmexioHeaderComponent>;
@@ -145,7 +147,7 @@ description : Context Menu provides the list of menus on right click.
   ngOnInit() {
   }
   ngAfterViewInit() {
-    setTimeout(() => {
+    this.timeOut = setTimeout(() => {
       this.onResize();
     }, 500);
   }
@@ -238,6 +240,7 @@ description : Context Menu provides the list of menus on right click.
   }
 
   ngOnDestroy(): void {
+    clearTimeout(this.timeOut);
     this.removeListner();
   }
 }

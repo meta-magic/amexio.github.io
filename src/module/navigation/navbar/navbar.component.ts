@@ -9,13 +9,15 @@
 Nav bar has Logo/Title left align, than link, text field, button and menus on right side.
 v4.1 Nav bar is not backward compatible of v4.0, for v4.0 refer link
 */
-import {AfterContentInit, AfterViewInit, Component, ContentChildren, ElementRef, EventEmitter,
-  Input, OnInit, Output, QueryList, ViewChild} from '@angular/core';
-import {AmexioNavActionComponent } from './navaction.component';
-import {AmexioNavItemComponent } from './navitem.component';
-import {AmexioNavMenuComponent } from './navmenu.component';
+import {
+  AfterContentInit, AfterViewInit, Component, ContentChildren, ElementRef, EventEmitter,
+  Input, OnInit, Output, QueryList, ViewChild,
+} from '@angular/core';
+import { AmexioNavActionComponent } from './navaction.component';
+import { AmexioNavItemComponent } from './navitem.component';
+import { AmexioNavMenuComponent } from './navmenu.component';
 
-import {DeviceQueryService} from '../../services/device/device.query.service';
+import { DeviceQueryService } from '../../services/device/device.query.service';
 
 @Component({
   selector: 'amexio-nav', templateUrl: 'navbar.component.html',
@@ -60,12 +62,12 @@ description : Indicate if side-nav-bar is present
 
   navItemComponents: AmexioNavItemComponent[];
 
-  @ViewChild('navbar', {read: ElementRef}) public navbar: ElementRef;
-  @ViewChild('navbarfixed', {read: ElementRef}) public navbarfixed: ElementRef;
-  @ViewChild('navbaritems', {read: ElementRef}) public navbaritems: ElementRef;
-  @ViewChild('navbaritems1', {read: ElementRef}) public navbaritems1: ElementRef;
-  @ViewChild('navbaritems2', {read: ElementRef}) public navbaritems2: ElementRef;
-  @ViewChild('navbaritems3', {read: ElementRef}) public navbaritems3: ElementRef;
+  @ViewChild('navbar', { read: ElementRef }) public navbar: ElementRef;
+  @ViewChild('navbarfixed', { read: ElementRef }) public navbarfixed: ElementRef;
+  @ViewChild('navbaritems', { read: ElementRef }) public navbaritems: ElementRef;
+  @ViewChild('navbaritems1', { read: ElementRef }) public navbaritems1: ElementRef;
+  @ViewChild('navbaritems2', { read: ElementRef }) public navbaritems2: ElementRef;
+  @ViewChild('navbaritems3', { read: ElementRef }) public navbaritems3: ElementRef;
 
   navclass: string;
   toggle = true;
@@ -83,7 +85,8 @@ description : Indicate if side-nav-bar is present
 
   ngAfterViewInit() {
     if (!this.logo) {
-      this.loadNavItems(); }
+      this.loadNavItems();
+    }
   }
 
   ngAfterContentInit() {
@@ -96,9 +99,9 @@ description : Indicate if side-nav-bar is present
   loadNavItems() {
     this.handleNavItems();
     this.navitemwidth = (5 +
-    (this.navbaritems2.nativeElement.offsetWidth) +
-    (this.navbaritems2.nativeElement.offsetWidth) +
-    (this.navbaritems3.nativeElement.offsetWidth));
+      (this.navbaritems2.nativeElement.offsetWidth) +
+      (this.navbaritems2.nativeElement.offsetWidth) +
+      (this.navbaritems3.nativeElement.offsetWidth));
     this.handleDeviceSetting();
   }
 
@@ -161,7 +164,7 @@ description : Indicate if side-nav-bar is present
       this.mobilemode = true;
       this.toggle = false;
       this.notifyNavItems(navbarwidth);
-    }else {
+    } else {
       this.mobilemode = false;
       this.toggle = true;
       this.notifyNavItems(navbarwidth);
@@ -170,13 +173,13 @@ description : Indicate if side-nav-bar is present
   }
   sideNavbar() {
     if (this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone()) {
-        this.sidenav = true;
-      }else {
-        this.sidenav = false;
-      }
+      this.sidenav = true;
+    } else {
+      this.sidenav = false;
+    }
   }
 
   resize(event: any) {
-     this.handleDeviceSetting();
+    this.handleDeviceSetting();
   }
 }
