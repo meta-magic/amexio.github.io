@@ -32,7 +32,7 @@ description : The name is for determining the name of item.
   }
 
   ngOnInit() {
-   this.insertStyleSheetRule ('.' + this.name + '{ grid-area: ' + this.name + ' } ' );
+    this.insertStyleSheetRule ('.' + this.name + '{ grid-area: ' + this.name + ' ; padding: 5px } ' );
    }
 
    insertStyleSheetRule(ruleText: any) {
