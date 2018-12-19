@@ -7,7 +7,7 @@
   
     <textarea type="text" class="input-control"
            [(ngModel)]="value"
-           [ngClass]="model.touched ? (isValid && model.touched) ? 'input-control-success' : 'input-control-error' :''" 
+           [ngClass]="model.touched ? allowblank ? '' : (isValid && model.touched) ? 'input-control-success' : 'input-control-error' :''" 
            (blur)="onBlurEvent()"
            (focus)="onFocusEvent()"
            (input)="onInputEvent()"

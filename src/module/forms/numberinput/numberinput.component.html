@@ -9,7 +9,7 @@
 
   <input type="number" 
          class="input-control"
-         [ngClass]="model.touched ? (isValid && model.touched) ? 'input-control-success' : 'input-control-error' :''"
+         [ngClass]="model.touched ? allowblank ? '' : (isValid && model.touched) ? 'input-control-success' : 'input-control-error' :''"
          [(ngModel)]="value"
          (blur)="onBlurEvent()" 
          (focus)="onFocus()" 
