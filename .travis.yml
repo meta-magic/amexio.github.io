@@ -30,8 +30,8 @@ script:
   - gulp test
   - sonar-scanner
   - cd src/styles/ && sh sasstocss.sh
-  - rm -rf src/styles/css/*.map
-  - git add src/styles/css
+  - rm -rf css/*.map
+  - git add css
   - git commit -m " [skip travis] css added"
   - git push --force --quiet "https://deepali-arvind:${TOKEN_REPO}@github.com/${REPO}.git" HEAD:v5.4
   - cd ../../ && pwd && gulp build
