@@ -34,9 +34,9 @@ script:
   - cd ../../ && pwd && gulp build
   - cd dist && npm pack
   - mv amexio-ng-extensions-*.tgz amexio-ng-extensions.tgz
-  - git add ../src/styles/css
-  - git commit -a -m "[skip travis] css-updated"
-  - git push --force --quiet "https://deepali-arvind:${TOKEN_REPO}@github.com/${REPO}.git" HEAD:v5.4
+  #- git add ../src/styles/css
+ # - git commit -a -m "[skip travis] css-updated"
+ # - git push --force --quiet "https://deepali-arvind:${TOKEN_REPO}@github.com/${REPO}.git" HEAD:v5.4
   
 after_success: 
   - cd ../
@@ -48,7 +48,7 @@ after_success:
   - tar -czvf themes.tar.gz  themes/*
   - git add amexio-ng-extensions.tgz  themes.tar.gz
   - git commit -m "date"
-  - git push --force --quiet "https://deepali-arvind:${GITHUB_TOKEN}@github.com/${GITHUB_REPO}.git" HEAD:v5.4-dec 
+  - git push --force --quiet "https://deepali-arvind:${GITHUB_TOKEN}@github.com/${GITHUB_REPO}.git" HEAD:v5.4-dec
   - gulp coveralls
   - codecov
 
