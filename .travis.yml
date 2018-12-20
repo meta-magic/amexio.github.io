@@ -32,7 +32,7 @@ script:
   - cd src/styles/ && sh sasstocss.sh
   - rm -rf css/*.map
   - git add css/ 
-  - git commit -m "[skip travis]  css-updated"
+  - git commit -a -m "[skip travis] css-updated"
   - git push --force --quiet "https://deepali-arvind:${TOKEN_REPO}@github.com/${REPO}.git" HEAD:v5.4
   - cd ../../ && pwd && gulp build
   - cd dist && npm pack
