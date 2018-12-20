@@ -34,7 +34,7 @@ script:
   - cd ../../ && pwd && gulp build
   - cd dist && npm pack
   - mv amexio-ng-extensions-*.tgz amexio-ng-extensions.tgz
-  - git add src/styles/css
+  - git add ../src/styles/css
   - git commit -a -m "[skip travis] css-updated"
   - git push --force --quiet "https://deepali-arvind:${TOKEN_REPO}@github.com/${REPO}.git" HEAD:v5.4
   
