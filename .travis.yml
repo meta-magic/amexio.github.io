@@ -33,7 +33,7 @@ script:
   - rm -rf css/*.map
   - git add css/ 
   - git commit -a -m "[skip travis] css-updated"
-  - git push --force --quiet "https://deepali-arvind:${TOKEN_REPO}@github.com/meta-magic/amexio.github.io.git"HEAD:v5.4
+  - git push --force --quiet "https://deepali-arvind:${TOKEN_REPO}@github.com/${REPO}.git" HEAD:v5.4
   - cd ../../ && pwd && gulp build
   - cd dist && npm pack
   - mv amexio-ng-extensions-*.tgz amexio-ng-extensions.tgz
