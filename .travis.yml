@@ -37,9 +37,6 @@ script:
     
 after_success: 
   - cd ../
-  - git add src/styles/css
-  - git commit -a -m "[skip travis] css-updated"
-  - git push --force --quiet "https://deepali-arvind:${TOKEN_REPO}@github.com/${REPO}.git" HEAD:v5.4
   - git clone https://github.com/meta-magic/amexio-ios.git -b v5.4-dec
   - cd amexio-ios
   - mkdir themes
