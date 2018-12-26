@@ -1,11 +1,18 @@
 
 <div class="inputgroup form-group">
 
-  <label *ngIf="haslabel" [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
+  <label *ngIf="haslabel"  role="textarea" for="AreaFirst" id="textAreaID" [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
     {{fieldlabel}}
   </label>
 
   <textarea type="text" class="input-control"
+
+  role="text" 
+  id="AreaFirst" 
+  name="AreaFirst"
+  aria-labelledby="textAreaID"
+  aria-describedby="textAreaDes"
+
          [(ngModel)]="value"
          #inp="ngModel"
          [ngClass]="componentClass"
@@ -27,7 +34,9 @@
       </span>
 
   <span *ngIf="showToolTip && enablepopover" class="dropdown tooltiptext">
-        <div  [innerHTML]="helpInfoMsg"></div>
+        <div  [innerHTML]="helpInfoMsg"
+        id="textAreaDes"
+        ></div>
   </span>
   <span class="inputfieldbar"></span>
 </div>
