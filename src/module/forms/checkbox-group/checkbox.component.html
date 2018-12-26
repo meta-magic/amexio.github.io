@@ -1,45 +1,5 @@
-<!-- <div style="display: flex;" (click)="toggleCheck()">
-    <input class="form-control" type="checkbox" [checked]="isChecked()" />
-    <label>{{label}}</label>
-</div> <br/> -->
-
-<!-- <label class="input-box-container" 
-[ngClass]="{'disable-component' : disabled || disabled}">
-    {{label}}
-    <input type="checkbox"
-     class="form-control"
-      [ngClass]="{'checkbox-disable' : disabled}" 
-      [checked]="checked" 
-      (click)="toggleCheck()">
-    <span class="input-box-checkbox-label"></span>
-  </label> -->
-
-  <!-- <div class="checkboxes">
-    <div role="checkbox"
-    aria-labelledby="id-group-label"
-    [attr.aria-checked]="checked"
-    [ngClass]="{'checkbox-disable' : disabled}"
-    [attr.checked]="checked" 
-    (click)="toggleCheck()"     
-    [attr.disabled] = "disabled ? true: null" 
-    tabindex="0"
-    id="id-group-label">
-    {{label}}
-  </div>
-  </div> -->
-
-  <div class="inputgroup form-group" >
-    <label role="checkbox1"
-    [attr.aria-checked]="checked ? true : null" 
-    [attr.aria-labelledby]="cond1"
-    tabindex="0" class="input-box-container" >{{label}}
-        <input 
-        id="cond1" type="checkbox"
-        [ngClass]="{'checkbox-disable' : disabled}" 
-        [attr.checked]="checked ? true: null"
-        (click)="toggleCheck()" 
-       >
-        <span class="input-box-checkbox-label"
-      ></span>
-      </label>
-  </div>
+<label class="input-box-container" [ngClass]="{'disable-component' : disabled || disabled}">
+  {{label}}
+  <input type="checkbox" class="form-control" [ngClass]="{'checkbox-disable' : disabled}" [checked]="checked" (click)="toggleCheck()">
+  <span class="input-box-checkbox-label"></span>
+</label>
