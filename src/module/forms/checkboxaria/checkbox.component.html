@@ -1,0 +1,23 @@
+
+<!-- <div class="inputgroup form-group" >
+    <label class="input-box-container" >{{fieldlabel}}
+        <input type="checkbox"  [ngClass]="{'checkbox-disable' : disabled}" 
+        [attr.checked]="value ? true: null" 
+        (input)="onInput()" (click)="onClick()" [attr.disabled] = "disabled ? true: null" [required]="required">
+        <span class="input-box-checkbox-label"></span>
+      </label>
+</div> -->
+
+<div class="checkboxes">
+    <div role="checkbox"
+    [attr.checked]="value ? true: null"
+    [attr.required]="required"
+    [attr.aria-checked]="value ? true : null"
+    [ngClass]="{'checkbox-disable' : disabled}"
+    (input)="onInput()"
+    (click)="onClick()"  
+    [attr.disabled] = "disabled ? true: null" 
+    tabindex="0">
+    {{fieldlabel}}
+  </div>
+  </div>

@@ -15,6 +15,7 @@ import { AmexioButtonComponent } from './buttons/button.component';
 import { CheckboxComponent } from './checkbox-group/checkbox.component';
 import { AmexioCheckBoxGroupComponent } from './checkbox-group/checkbox.group.component';
 import { AmexioCheckBoxComponent } from './checkbox/checkbox.component';
+import { AmexioCheckBox1Component } from './checkboxaria/checkbox.component';
 import { AmexioChipComponent } from './chip/chip.component';
 import { AmexioChipsComponent } from './chips/chips.component';
 import { AmexioCreditcardComponent } from './creditcard/creditcard.component';
@@ -100,6 +101,7 @@ const FORM_COMPONENTS = [
   SearchboxtoolComponent,
   AmexioSearchAdvanceComponent,
   RecaptchaComponent,
+  AmexioCheckBox1Component,
   AmexioSpinnerComponent,
   AmexioCreditcardComponent,
   AmexioChipComponent,

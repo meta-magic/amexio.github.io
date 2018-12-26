@@ -3,8 +3,23 @@
     <label>{{label}}</label>
 </div> <br/> -->
 
-<label class="input-box-container" [ngClass]="{'disable-component' : disabled || disabled}">
+<!-- <label class="input-box-container" [ngClass]="{'disable-component' : disabled || disabled}">
     {{label}}
     <input type="checkbox" class="form-control" [ngClass]="{'checkbox-disable' : disabled}" [checked]="checked" (click)="toggleCheck()">
     <span class="input-box-checkbox-label"></span>
-  </label>
+  </label> -->
+
+  <div class="checkboxes">
+    <div role="checkbox"
+    [attr.aria-labelledby]="id-group-label"
+    [attr.required]="required"
+    [attr.aria-checked]="checked"
+    [ngClass]="{'checkbox-disable' : disabled}"
+    [attr.checked]="checked" 
+    (click)="toggleCheck()"     
+    [attr.disabled] = "disabled ? true: null" 
+    tabindex="0"
+    id="id-group-label">
+    {{label}}
+  </div>
+  </div>
