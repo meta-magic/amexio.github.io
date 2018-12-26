@@ -47,7 +47,7 @@
 .tabcontent {
     width: inherit;
     position: relative;
-    vertical-align: top !important;
+    // vertical-align: top !important;
     padding: 10px 0px;
 }
 
@@ -76,28 +76,37 @@
     //background-color: $tabBGColor;
     color: $tabColor;
     padding: 10px;
-    width: 100%
+    // width: 100%-------------for close to come on right side
 }
 
 .verticalnavtab .defaultnode:hover {
     //background-color: $tabActiveBGColor;
     font-weight: bold;
-    width: 100%;
+    // width: 100%;
 }
 
 .verticalnavtab .leftactivetab {
     //background-color: $tabActiveBGColor;
     font-weight: bold;
     //color : $tabActiveColor;
-    width: 100%;
+    // width: 100%;-------for close to come on right side
     border-right: $tabActiveBorderSize solid $tabActiveBorder;
 }
-
+.tabposition-top{
+    display:table-cell;
+    vertical-align: top; 
+ 
+ }
+ 
+ .tabposition-bottom{
+     display:table-cell;
+     vertical-align: bottom; 
+ }
 .verticalnavtab .rightactivetab {
     //background-color: $tabActiveBGColor;
     //background-color: $tabActiveBGColor;
     font-weight: bold;
-    width: 100%;
+    // width: 100%;
     //color : $tabActiveColor;
     border-left: $tabActiveBorderSize solid $tabActiveBorder;
 }
@@ -114,13 +123,13 @@
     //  border-left: $tabBorderSize solid $tabBorderColor;
 }
 
-verticalalign-tableft {
-    vertical-align: top !important;
+.verticalalign-tableft {
+    // vertical-align: top !important;
     border-right: $tabBorderSize solid $tabBorderColor !important;
 }
 
 .verticalalign-tabright {
-    vertical-align: top !important;
+    // vertical-align: top !important;
     border-left: $tabBorderSize solid $tabBorderColor !important;
 }
 
@@ -217,5 +226,14 @@ verticalalign-tableft {
 .righttable .righttablerow .righttablecol {
     // padding-right: 5px;
     // padding-left: 5px;
-    vertical-align: middle;
+    display: table;
 }
+.tabposition-right-top{
+    display:table-cell;
+    vertical-align: top; 
+ 
+ }
+ .tabposition-right-bottom{
+     display:table-cell;
+     vertical-align: bottom; 
+ }

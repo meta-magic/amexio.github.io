@@ -141,7 +141,7 @@ body {
 
 .vertical-table .vertical-tablerow .vertical-tablecol {
     display: table-cell;
-    vertical-align: middle;
+    // vertical-align: middle;
 }
 
 
@@ -165,20 +165,26 @@ body {
 .defaultcolor {
     color: $themeFontColor;
 }
+.vertical-table .vertical-tablerow .vertical-tablecol {
+    display: table-cell;
+    // vertical-align: middle;
+}
 
 .verticalalign-tableft {
-    vertical-align: top !important;
-    border-right: $borderSize solid $borderColor !important;
+    // vertical-align: top !important;
+    // border-right: $borderSize solid $borderColor !important;
 }
 
 .verticalalign-tabright {
-    vertical-align: top !important;
-    border-left: $borderSize solid $borderColor !important;
+    // vertical-align: top !important;
+    // display:inline-table;
+    // border-left: $borderSize solid $borderColor !important;
 }
 
 .verticalalign-tabcontent {
-    vertical-align: top !important;
+    // vertical-align: top !important;
 }
+
 
 
 /*
