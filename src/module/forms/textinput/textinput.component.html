@@ -1,10 +1,18 @@
 <div class="inputgroup form-group">
 
-    <label *ngIf="haslabel" [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
+    <label *ngIf="haslabel" role="input" id="textLabelID"  for="textID" [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
     {{fieldlabel}}
   </label>
 
-    <input type="text" class="input-control" [(ngModel)]="value" #inp="ngModel" 
+    <input type="text"
+      
+    role="text" 
+        id="textID" 
+        name="textID"
+        aria-labelledby="textLabelID"
+        aria-describedby="textDec"
+    
+    class="input-control" [(ngModel)]="value" #inp="ngModel" 
     [ngClass]="componentClass" (blur)="onblur(inp)" (focus)="onFocus()"
      (input)="onInput(inp)" (change)="onChangeEv()" [name]="name" 
      [pattern]="regEx" #ref [attr.placeholder]="placeholder"
@@ -18,7 +26,9 @@
 
     </span>
     <span *ngIf="showToolTip && enablepopover" class="dropdown tooltiptext">
-        <div  [innerHTML]="helpInfoMsg"></div>
+        <div  [innerHTML]="helpInfoMsg"
+        id="textDec"
+        ></div>
   </span>
     <span class="inputfieldbar"></span>
 </div>
