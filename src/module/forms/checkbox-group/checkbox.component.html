@@ -30,16 +30,16 @@
 
   <div class="inputgroup form-group" >
     <label role="checkbox1"
-    aria-checked="value ? true : null" 
-    aria-labelledby="cond1"
+    [attr.aria-checked]="checked ? true : null" 
+    [attr.aria-labelledby]="cond1"
     tabindex="0" class="input-box-container" >{{label}}
         <input 
         id="cond1" type="checkbox"
         [ngClass]="{'checkbox-disable' : disabled}" 
-        [attr.checked]="value ? true: null"
-        (input)="onInput()" (click)="onClick()" 
+        [attr.checked]="checked ? true: null"
+        (click)="toggleCheck()" 
         [attr.disabled] = "disabled ? true: null"
-        [attr.required]="required" >
+       >
         <span class="input-box-checkbox-label"
       ></span>
       </label>
