@@ -44,7 +44,7 @@ after_success:
   - tar -czvf themes.tar.gz  themes/*
   - git add amexio-ng-extensions.tgz  themes.tar.gz
   - git commit -m "date"
-  - git push --force --quiet "https://deepali-arvind:${GITHUB_TOKEN}@github.com/${GITHUB_REPO}.git" HEAD:master 
+  - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then git push --force --quiet "https://deepali-arvind:${GITHUB_TOKEN}@github.com/${GITHUB_REPO}.git" HEAD:master; fi 
   - gulp coveralls
   - codecov
 
