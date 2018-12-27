@@ -123,10 +123,11 @@ description : Set true to show buttom block
   @Input() block: boolean;
 
   badgeCssClass = '';
-
+  ispressed = false;
   // THIS METHOD IS USED FOR ADDING CSS CLASS DYNAMICALLY
   constructor() { }
   buttonClick(event: any) {
+    this.ispressed = true;
     if (!this.disabled) {
       this.onClick.emit(event);
     }
