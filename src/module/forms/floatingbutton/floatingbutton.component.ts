@@ -147,6 +147,7 @@ export class AmexioFloatingButtonComponent implements OnInit {
 
   positionclass: string;
   absoluteposition = false;
+  ispressed = false;
   constructor() {
   }
   ngOnInit() {
@@ -240,6 +241,7 @@ export class AmexioFloatingButtonComponent implements OnInit {
 
   // Method for button click
   buttonClick(clickEvent: any) {
+    this.ispressed = true;
     if (!this.disabled) {
       this.onClick.emit({ thisObj: this, event: clickEvent });
     }
