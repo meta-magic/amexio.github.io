@@ -20,7 +20,7 @@ Component Selector : <amexio-panel>
 Component Description : Panel provides an easy way to organize big forms by
 grouping the fields in panel
 */
-import { Component, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output, Renderer2} from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output, Renderer2 } from '@angular/core';
 
 import { AmexioPanelHeaderComponent } from './../panel/panel.header.component';
 
@@ -173,6 +173,10 @@ description : Fires the on accordion pane click event.
     this.onClick.emit();
   }
 
+  rightClickDataEmit(Data: any) {
+    this.rightClick.emit(Data);
+  }
+
   private updatestyle() {
     if (this.fit && this.expanded) {
       this.panelstyle = { visibility: 'visible' };
@@ -203,39 +207,16 @@ description : Fires the on accordion pane click event.
     }
   }
   loadContextMenu(rightClickData: any) {
-    this.mouseLocation.left = rightClickData.event.clientX;
-    this.mouseLocation.top = rightClickData.event.clientY;
-    this.getContextMenu();
-    this.posixUp = this.getListPosition(rightClickData.ref);
-    rightClickData.event.preventDefault();
-    rightClickData.event.stopPropagation();
-    this.rightClickNodeData = rightClickData.data;
-    this.contextStyle = this.getContextMenuStyle();
-    this.nodeRightClick.emit(rightClickData);
-  }
-
-  onContextNodeClick(itemConfig: any) {
-    if (!itemConfig.disabled) {
-      const obj = {
-        menuData: itemConfig,
-        NodeData: this.rightClickNodeData,
-      };
-      this.flag = false;
-      this.removeListner();
-      this.rightClick.emit(obj);
+    if (this.contextmenu && this.contextmenu.length > 0) {
+      this.mouseLocation.left = rightClickData.event.clientX;
+      this.mouseLocation.top = rightClickData.event.clientY;
+      this.getContextMenu();
+      this.posixUp = this.getListPosition(rightClickData.ref);
+      rightClickData.event.preventDefault();
+      rightClickData.event.stopPropagation();
+      this.rightClickNodeData = rightClickData.data;
+      this.nodeRightClick.emit(rightClickData);
     }
-  }
-
-  getContextMenuStyle() {
-    return {
-      'cursor': 'default',
-      'position': 'fixed',
-      'display': this.flag ? 'block' : 'none',
-      'left': this.mouseLocation.left + 'px',
-      'top': this.mouseLocation.top + 'px',
-      'box-shadow': '1px 1px 2px #000000',
-      'width': '15%',
-    };
   }
 
   addListner() {
@@ -254,7 +235,7 @@ description : Fires the on accordion pane click event.
   }
 
   ngOnDestroy(): void {
-   this.removeListner();
+    this.removeListner();
   }
 
 }

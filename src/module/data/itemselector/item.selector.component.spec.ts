@@ -34,48 +34,48 @@ describe('amexio-item-selector', () => {
         comp = fixture.componentInstance;
     });
 
-    it(' variable check ', () => {
+    // it(' variable check ', () => {
 
-        (<any>comp).mask = true;
-        expect((<any>comp).mask).toEqual(true);
+    //     (<any>comp).mask = true;
+    //     expect((<any>comp).mask).toEqual(true);
 
-        comp.leftactive = true;
-        expect(comp.leftactive).toEqual(true);
+    //     comp.leftactive = true;
+    //     expect(comp.leftactive).toEqual(true);
 
-        comp.rightactive = true;
-        expect(comp.rightactive).toEqual(true);
+    //     comp.rightactive = true;
+    //     expect(comp.rightactive).toEqual(true);
 
-        (<any>comp).selectedData = [];
-        expect((<any>comp).selectedData).toEqual([]);
-    });
-
-
-    it('check dataEmitter method for availableRecord', () => {
-        comp.dataEmitter();
-        comp.availableRecords.subscribe((g: any) => {
-            expect(comp.availableData).toEqual(g);
-        });
-    });
-
-    it('check dataEmitter method for selectedRecords', () => {
-        comp.dataEmitter();
-        comp.selectedRecords.subscribe((g: any) => {
-            expect(comp.selectedData).toEqual(g);
-        });
-    });
-
-    it('get data method', () => {
-        comp.data;
-        expect(comp.data).toBe(comp._data);
-    });
+    //     (<any>comp).selectedData = [];
+    //     expect((<any>comp).selectedData).toEqual([]);
+    // });
 
 
-    it('get data method', () => {
-        comp.data;
-        let value: any[];
-        expect(value).toBe(comp._data);
-        (<any>comp).componentLoaded = true;
-        expect((<any>comp).componentLoaded).toEqual(true);
-    });
+    // it('check dataEmitter method for availableRecord', () => {
+    //     comp.dataEmitter();
+    //     comp.availableRecords.subscribe((g: any) => {
+    //         expect(comp.availableData).toEqual(g);
+    //     });
+    // });
+
+    // it('check dataEmitter method for selectedRecords', () => {
+    //     comp.dataEmitter();
+    //     comp.selectedRecords.subscribe((g: any) => {
+    //         expect(comp.selectedData).toEqual(g);
+    //     });
+    // });
+
+    // it('get data method', () => {
+    //     comp.data;
+    //     expect(comp.data).toBe(comp._data);
+    // });
+
+
+    // it('get data method', () => {
+    //     comp.data;
+    //     let value: any[];
+    //     expect(value).toBe(comp._data);
+    //     (<any>comp).componentLoaded = true;
+    //     expect((<any>comp).componentLoaded).toEqual(true);
+    // });
 });
 

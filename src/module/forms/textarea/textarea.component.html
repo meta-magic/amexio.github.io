@@ -1,26 +1,27 @@
 
-<div class="inputgroup form-group">
+<div class="inputgroup">
 
-  <label *ngIf="haslabel"  role="textarea" for="AreaFirst" id="textAreaID" [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
+  <label *ngIf="haslabel" role="textarea" for="AreaFirst" id="textAreaID"  [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
     {{fieldlabel}}
   </label>
+ 
+  <textarea type="text"
 
-  <textarea type="text" class="input-control"
+        role="text" 
+        id="AreaFirst" 
+        name="AreaFirst"
+        aria-labelledby="textAreaID"
+        aria-describedby="textAreaDes"
+         
 
-  role="text" 
-  id="AreaFirst" 
-  name="AreaFirst"
-  aria-labelledby="textAreaID"
-  aria-describedby="textAreaDes"
-
+         class="input-control"
          [(ngModel)]="value"
-         #inp="ngModel"
-         [ngClass]="componentClass"
-         (blur)="onBlur(inp)"
-         (focus)="onFocus()"
+         [ngClass]="model.touched ? allowblank ? '' : (isValid && model.touched) ? 'input-control-success' : 'input-control-error' :''" 
+         (blur)="onBlurEvent()"
+         (focus)="onFocusEvent()"
+         (input)="onInputEvent()"
          [name]="name"
          [pattern]="regEx"
-         #ref
          [attr.placeholder]="placeholder"
          [attr.rows]="rows"
          [attr.cols]="columns"
@@ -28,15 +29,21 @@
          [required]="!allowblank">
   </textarea>
 
-  <span *ngIf="iconfeedback && (inp.invalid && (inp.dirty || inp.touched) || inp.valid)" class="input-control-feedback">
-        <span *ngIf="!isValid && inp.touched"><em class="fa fa-times"></em></span>
-        <span *ngIf="isValid && inp.touched"><em class="fa fa-check"></em></span>
+  <ng-container *ngIf="iconfeedback">
+      <span class="input-control-feedback">
+        <span *ngIf="!isValid && model.touched"><em class="fa fa-times"></em></span>
+      <span *ngIf="isValid && model.touched"><em class="fa fa-check"></em></span>
       </span>
+  </ng-container>
 
-  <span *ngIf="showToolTip && enablepopover" class="dropdown tooltiptext">
-        <div  [innerHTML]="helpInfoMsg"
+  <input-help *ngIf="showToolTip && enablepopover" 
         id="textAreaDes"
-        ></div>
-  </span>
+        [error-msg]="errormsg" 
+        [min-msg]="minmsg" 
+        [max-msg]="maxmsg"
+        [max-error-msg]="maxerrormsg"
+        [min-error-msg]="minerrormsg" >
+  </input-help>
+
   <span class="inputfieldbar"></span>
 </div>

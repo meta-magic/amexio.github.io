@@ -9,7 +9,7 @@
  configurable attributes for validation (min/max value, allow blank, custom regex),
  custom error message, help, custom styles
 */
-import {ChangeDetectorRef, Component, EventEmitter, forwardRef, Input, OnInit, Output} from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
 import { CommonDataService } from '../../services/data/common.data.service';
 import { ValueAccessorBase } from './../../base/value-accessor';
@@ -27,10 +27,10 @@ const noop = () => {
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioRadioGroupComponent), multi: true,
   }, {
     provide: NG_VALIDATORS, useExisting: AmexioRadioGroupComponent, multi: true,
-}],
+  }],
 })
 
-export class AmexioRadioGroupComponent extends ValueAccessorBase<string> implements  OnInit, Validators {
+export class AmexioRadioGroupComponent extends ValueAccessorBase<string> implements OnInit, Validators {
 
   /*
    Properties
@@ -170,9 +170,9 @@ export class AmexioRadioGroupComponent extends ValueAccessorBase<string> impleme
   }
 
   ngOnInit() {
-    this.generateName();
+    this.name = this.generateName(this.name, this.fieldlabel, 'textinput');
     if (this.defaultSelectedValue) {
-      this.value =  this.defaultSelectedValue;
+      this.value = this.defaultSelectedValue;
     }
     this.isValid = this.allowblank;
     this.isComponentValid.emit(this.allowblank);
@@ -201,7 +201,7 @@ export class AmexioRadioGroupComponent extends ValueAccessorBase<string> impleme
         this.value = opt[this.valuefield];
         return;
       }
-   });
+    });
   }
 
   getResponseData(httpResponse: any) {
@@ -261,31 +261,15 @@ export class AmexioRadioGroupComponent extends ValueAccessorBase<string> impleme
     this.isComponentValid.emit(true);
     this.onSelection.emit(row);
   }
-   // THIS MEHTOD CHECK INPUT IS VALID OR NOT
-   checkValidity(): boolean {
+  // THIS MEHTOD CHECK INPUT IS VALID OR NOT
+  checkValidity(): boolean {
     return this.isValid;
   }
   public validate(c: FormControl) {
     return ((!this.allowblank && this.value) || this.allowblank) ? null : {
-        jsonParseError: {
-            valid: true,
-        },
+      jsonParseError: {
+        valid: true,
+      },
     };
-}
-// THIS METHOD GENERATE RANDOM STRING
-generateName() {
-  if (!this.name && this.fieldlabel ) {
-    this.name = this.fieldlabel.replace(/\s/g, '');
-  } else if ( !this.name && !this.fieldlabel) {
-    this.name = 'textinput-' + this.getRandomString();
   }
-}
-getRandomString(): string {
-  const possibleCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-  let randomString = '';
-  for (let i = 0; i < 6; i++) {
-    randomString += possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
-  }
-  return randomString;
-}
 }

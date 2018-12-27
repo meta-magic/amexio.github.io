@@ -143,18 +143,11 @@ body {
     display: table-cell;
     // vertical-align: middle;
 }
-
-
-
 .listbox .header .table .tablerow .tablecol {
     padding-right: 0px!important;
 }
 
-// input:disabled {
-//   opacity: 0.55;
-//   cursor: not-allowed;
-//   background-color: $componentDisabledBGColor;
-// }
+
 .disable-component {
     opacity: 0.50;
     pointer-events: none;
@@ -165,26 +158,21 @@ body {
 .defaultcolor {
     color: $themeFontColor;
 }
-.vertical-table .vertical-tablerow .vertical-tablecol {
-    display: table-cell;
-    // vertical-align: middle;
-}
 
 .verticalalign-tableft {
     // vertical-align: top !important;
-    // border-right: $borderSize solid $borderColor !important;
+    border-right: $borderSize solid $borderColor !important;
 }
 
 .verticalalign-tabright {
     // vertical-align: top !important;
-    // display:inline-table;
-    // border-left: $borderSize solid $borderColor !important;
+    display:inline-table;
+    border-left: $borderSize solid $borderColor !important;
 }
 
 .verticalalign-tabcontent {
-    // vertical-align: top !important;
+    vertical-align: top !important;
 }
-
 
 
 /*
@@ -209,6 +197,15 @@ element over the whole parent element
     bottom: 0;
     left: 0;
 }
+ 
+
+
+
+
+input:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
 
 
 /*

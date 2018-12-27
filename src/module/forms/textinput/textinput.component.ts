@@ -5,13 +5,9 @@ Component Description : Text input component has been created with
 different configurable attributes for validation (min/max length, allow
 blank, custom regex), custom error message, help, custom styles.
 */
-import { Component, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
 import { ValueAccessorBase } from '../../base/value-accessor';
-
-const noop = () => {
-};
-
 @Component({
   selector: 'amexio-text-input',
   templateUrl: './textinput.component.html',
@@ -24,14 +20,15 @@ const noop = () => {
 })
 
 export class AmexioTextInputComponent extends ValueAccessorBase<string> implements OnInit, Validators {
+
   /*
-Properties
-name : field-label
-datatype : string
-version : 4.0 onwards
-default :
-description : The label of this field
-*/
+   Properties
+   name : field-label
+   datatype : string
+   version : 4.0 onwards
+   default :
+   description : The label of this field
+   */
   @Input('field-label') fieldlabel: string;
   /*
 Properties
@@ -61,65 +58,38 @@ description : Sets if field is required
 */
   @Input('allow-blank') allowblank: boolean;
 
-  helpInfoMsg: string;
-
   regEx: RegExp;
 
   showToolTip: boolean;
 
-  _errormsg: string;
-
-  get errormsg(): string {
-    return this._errormsg;
-  }
   /*
-  Properties
-  name : error-msg
-  datatype : none
-  version : 4.0 onwards
-  default : none
-  description : Sets the error message
-  */
-  @Input('error-msg')
-  set errormsg(value: string) {
-    this.helpInfoMsg = value + '<br/>';
-  }
-
-  _minerrormsg: string;
-
-  get minerrormsg(): string {
-    return this._minerrormsg;
-  }
+ Properties
+ name : min-error-msg
+ datatype : string
+ version : 4.0 onwards
+ default :
+ description : Sets the error message for min validation
+ */
+  @Input('min-error-msg') minerrormsg: string;
   /*
-  Properties
-  name : min-error-msg
-  datatype : string
-  version : 4.0 onwards
-  default :
-  description : Sets the error message for min validation
-  */
-  @Input('min-error-msg')
-  set minerrormsg(value: string) {
-    this.helpInfoMsg = this.helpInfoMsg + '<b>Min Length<b/>: ' + value + '<br/>';
-  }
+ Properties
+ name : max-error-msg
+ datatype : string
+ version : 4.0 onwards
+ default :
+ description : Sets the error message for max validation
+ */
+  @Input('max-error-msg') maxerrormsg: string;
+ /*
+ Properties
+ name : error-msg
+ datatype : string
+ version : 4.0 onwards
+ default :
+ description : Sets the error message for validation
+ */
+  @Input('error-msg') errormsg: string;
 
-  _maxerrormsg: string;
-
-  get maxerrormsg(): string {
-    return this._maxerrormsg;
-  }
-  /*
-  Properties
-  name : max-error-msg
-  datatype : string
-  version : 4.0 onwards
-  default :
-  description : Sets the error message for max validation
-  */
-  @Input('max-error-msg')
-  set maxerrormsg(value: string) {
-    this.helpInfoMsg = this.helpInfoMsg + 'Max Length: ' + value;
-  }
   /*
 Properties
 name : place-holder
@@ -130,13 +100,13 @@ description : Show place-holder inside dropdown component
 */
   @Input('place-holder') placeholder: string;
   /*
-  Properties
-  name : disabled
-  datatype : boolean
-  version : 4.0 onwards
-  default : false
-  description : True to disable the field.
-  */
+ Properties
+ name : disabled
+ datatype : boolean
+ version : 4.0 onwards
+ default : false
+ description : True to disable the field.
+ */
   @Input() disabled: boolean;
   /*
 Properties
@@ -146,7 +116,7 @@ version : 4.0 onwards
 default :false
 description :
 */
-  @Input('icon-feedback') iconfeedback: boolean;
+  @Input('icon-feedback') iconfeedback = false;
   /*
 Properties
 name : font-style
@@ -205,35 +175,29 @@ description : Apply Reg-ex to the field
     }
   }
   /*
-  Properties
-  name : enable-popover
-  datatype : string
-  version : 4.0 onwards
-  default :
-  description : Set enable / disable popover.
-  */
+ Properties
+ name : enable-popover
+ datatype : string
+ version : 4.0 onwards
+ default :
+ description : Set enable / disable popover.
+ */
   @Input('enable-popover') enablepopover: boolean;
-  regex: RegExp;
 
-  isValid: boolean;
-
-  componentClass: any;
-
-  @Output() isComponentValid: any = new EventEmitter<any>();
+  isValid = false;
 
   @ViewChild(NgModel) model: NgModel;
 
   @Input('name') name: string;
 
-  @ViewChild('ref') public inputRef: any;
   /*
-  Events
-  name : onBlur
-  datatype : any
-  version : 4.0 onwards
-  default :
-  description : On blur event
-  */
+ Events
+ name : onBlur
+ datatype : any
+ version : 4.0 onwards
+ default :
+ description : On blur event
+ */
   @Output() onBlur: any = new EventEmitter<any>();
   /*
 Events
@@ -241,7 +205,7 @@ name : input
 datatype : any
 version : none
 default :
-description : 	On input event field.
+description :   On input event field.
 */
   @Output() input: any = new EventEmitter<any>();
   /*
@@ -262,67 +226,46 @@ default :
 description : On field value change event
 */
   @Output() change: any = new EventEmitter<any>();
-
   constructor() {
     super();
     this.showToolTip = false;
   }
 
   ngOnInit() {
-    this.generateName();
-    this.isComponentValid.emit(this.allowblank);
+    this.name = this.generateName(this.name, this.fieldlabel, 'textinput');
   }
 
-  // Set touched on blur
-  onblur(input: any) {
+  // THIS METHOD USED FOR BLUR EVENT.
+  onBlurEvent() {
     this.showToolTip = false;
     this.onBlur.emit(this.value);
   }
-
-  onFocus() {
+  // THIS METHOD USED FOR FOCUS EVENT .
+  onFocusEvent() {
     this.showToolTip = true;
     this.focus.emit(this.value);
   }
-
-  onInput(input: any) {
+  // THIS METHOD USED FOR  INPUT EVENT .
+  onInput() {
+    this.isValid = this.isFieldValid();
     this.input.emit(this.value);
   }
-
+  // THIS METHOD USED FOR CHANGE EVENT  .
   onChangeEv() {
     this.change.emit(this.value);
   }
 
-  isFieldValidate(): boolean {
-    return (this.value && ((this.value.length >= this.minlength) && this.value.length > 0)) ||
-      (!this.minlength && this.value && this.value.length > 0);
+  isFieldValid(): boolean {
+    let valid: boolean;
+    valid = (!this.allowblank && (this.value && ((this.value.length >= this.minlength) && this.value.length > 0)) ||
+      (!this.minlength && this.value && this.value.length > 0)) || this.allowblank;
+    return valid;
   }
-
   public validate(c: FormControl) {
-    const isValid: boolean = (!this.allowblank && this.isFieldValidate()) || this.allowblank;
-    this.isValid = isValid;
-    if (this.inputRef.nativeElement && this.inputRef.nativeElement.selectionStart) {
-      this.componentClass = isValid ? 'input-control-success' : 'input-control-error';
-    }
-    return isValid ? null : {
+    return this.isFieldValid() ? null : {
       jsonParseError: {
         valid: true,
       },
     };
-  }
-  // THIS METHOD GENERATE RANDOM STRING
-  generateName() {
-    if (!this.name && this.fieldlabel) {
-      this.name = this.fieldlabel.replace(/\s/g, '');
-    } else if (!this.name && !this.fieldlabel) {
-      this.name = 'textinput-' + this.getRandomString();
-    }
-  }
-  getRandomString(): string {
-    const possibleCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-    let randomString = '';
-    for (let i = 0; i < 6; i++) {
-      randomString += possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
-    }
-    return randomString;
   }
 }

@@ -10,16 +10,14 @@ Component Description : Tags based multi input with typeahead facility.
 import {
   ChangeDetectorRef, Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, Renderer2, ViewChild,
 } from '@angular/core';
-
+import { EventBaseComponent } from '../../base/event.base.component';
 import { CommonDataService } from '../../services/data/common.data.service';
-
-import {BaseFormValidator} from '../../base/base.validator.component';
 
 @Component({
   selector: 'amexio-tag-input', templateUrl: './tags.input.component.html',
 })
 
-export class AmexioTagsInputComponent extends BaseFormValidator<any> implements OnInit {
+export class AmexioTagsInputComponent extends EventBaseComponent<string> implements OnInit {
   /*
 Properties
 name : field-label
@@ -198,24 +196,11 @@ description : On field focus event
 
   currentActive: any;
 
-  helpInfoMsg: string;
-
-  _errormsg: string;
-
   posixUp: boolean;
 
   selectedindex = 0;
 
   scrollposition = 30;
-
-  get errormsg(): string {
-    return this._errormsg;
-  }
-
-  @Input('error-msg')
-  set errormsg(value: string) {
-    this.helpInfoMsg = value + '<br/>';
-  }
 
   showToolTip: boolean;
 
@@ -235,8 +220,6 @@ description : On field focus event
 
   isValid: boolean;
 
-  @Output() isComponentValid: any = new EventEmitter<any>();
-
   maskloader = true;
 
   constructor(
@@ -247,8 +230,6 @@ description : On field focus event
   }
 
   ngOnInit() {
-    this.isComponentValid.emit(this.allowblank);
-
     if (this.placeholder === '' || this.placeholder === null) {
       this.placeholder = 'Choose Option';
     }
@@ -269,11 +250,9 @@ description : On field focus event
       this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
     }
-
   }
 
   navigateKey(event: any) {
-
   }
 
   onKeyUp(event: any) {
@@ -284,7 +263,7 @@ description : On field focus event
       const search_term = keyword.toLowerCase();
       this.viewData.forEach((item: any) => {
         if (item != null && item[this.key].toLowerCase().startsWith(search_term)) {
-            this.filteredResult.push(item);
+          this.filteredResult.push(item);
         }
       });
       if (this.filteredResult.length > 0) {
@@ -386,19 +365,6 @@ description : On field focus event
     this.input.emit();
   }
 
-  // get accessor
-  get value(): any {
-    return this.innerValue;
-  }
-
-  // set accessor including call the onchange callback
-  set value(v: any) {
-    if (v !== this.innerValue) {
-      this.innerValue = v;
-      this.onChangeCallback(v);
-    }
-  }
-
   onFocus(elem: any) {
     this.inpHandle.nativeElement.placeholder = '';
     this.showToolTip = true;
@@ -441,7 +407,6 @@ description : On field focus event
     this.onChange.emit(this.onSelections);
     if (this.onSelections.length > 0) {
       this.isValid = true;
-      this.isComponentValid.emit(true);
     }
     this.showToolTip = false;
   }
@@ -456,11 +421,10 @@ description : On field focus event
     this.onSelections.splice(indexToRemove, 1);
     if (this.onSelections.length === 0) {
       this.isValid = false;
-      this.isComponentValid.emit(false);
     }
     this.onChange.emit(this.onSelections);
   }
-     // THIS MEHTOD CHECK INPUT IS VALID OR NOT
+  // THIS MEHTOD CHECK INPUT IS VALID OR NOT
   checkValidity(): boolean {
     return this.isValid;
   }

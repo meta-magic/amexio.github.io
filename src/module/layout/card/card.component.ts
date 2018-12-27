@@ -18,36 +18,7 @@ import { AmexioFooterComponent } from './../../panes/action/pane.action.footer';
 import { AmexioBodyComponent } from './../../panes/body/pane.action.body';
 @Component({
   selector: 'amexio-card',
-  template: `
-  <div  #id  class="card-container" *ngIf="show"  (window:resize)="onResize()"
-  (contextmenu)="loadContextMenu({event:$event,ref:id})">
-    <header #cardHeader  [style.padding]="headerPadding"  class="card-header" *ngIf="header"
-
-            [ngClass]="{'flex-start':(headeralign=='left'),'flex-end':(headeralign=='right'),'flex-center':(headeralign=='center')}">
-      <ng-content select="amexio-header"></ng-content>
-    </header>
-<div class="card-body cardbody" [style.padding]="bodyPadding"
-[ngStyle]="{'height.px' : height,'overflow-y' : height!= null ? 'auto' : '','min-height.px' : minHeight}">
-      <ng-content select="amexio-body"></ng-content>
-    </div>
-    <footer  #cardFooter [style.padding]="footerPadding"  class="card-footer" *ngIf="footer"
-            [ngClass]="{'flex-start':(footeralign=='left'),'flex-end':(footeralign=='right'),'flex-center':(footeralign=='center')}">
-      <ng-content select="amexio-action"></ng-content>
-    </footer>
-  </div>
-
-  <span *ngIf="flag" [ngStyle]="contextStyle">
-    <ul class="context-menu-list" [ngClass]="{'dropdown-up' : posixUp}">
-      <li (click)="onContextNodeClick(itemConfig)" class="context-menu-list-items"
-      [ngStyle]="{'cursor': itemConfig.disabled ? 'not-allowed':'pointer'}"
-        [ngClass]="{'context-menu-separator':itemConfig.seperator}" *ngFor="let itemConfig of contextmenu">
-        <em [ngStyle]="{'padding-left': itemConfig.icon ? '5px':'19px'}" [ngClass]="itemConfig.icon"></em>
-        <span style="white-space: nowrap;display: inline ; padding-left:5px">{{itemConfig.text}}
-        </span>
-      </li>
-    </ul>
-  </span>
-  `,
+  templateUrl: './card.component.html',
 })
 export class AmexioCardComponent implements OnInit, OnDestroy, AfterViewInit, AfterContentInit {
   /*
@@ -158,6 +129,8 @@ description : Context Menu provides the list of menus on right click.
 
   contextStyle: any;
 
+  timeOut: any;
+
   mouseLocation: { left: number; top: number } = { left: 0, top: 0 };
 
   @ContentChildren(AmexioHeaderComponent) amexioHeader: QueryList<AmexioHeaderComponent>;
@@ -174,9 +147,7 @@ description : Context Menu provides the list of menus on right click.
   ngOnInit() {
   }
   ngAfterViewInit() {
-    setTimeout(() => {
-      this.onResize();
-    }, 500);
+    this.onResize();
   }
   ngAfterContentInit() {
     // FOR HEADER PADING
@@ -235,39 +206,20 @@ description : Context Menu provides the list of menus on right click.
     }
   }
   loadContextMenu(rightClickData: any) {
-    this.mouseLocation.left = rightClickData.event.clientX;
-    this.mouseLocation.top = rightClickData.event.clientY;
-    this.getContextMenu();
-    this.posixUp = this.getListPosition(rightClickData.ref);
-    rightClickData.event.preventDefault();
-    rightClickData.event.stopPropagation();
-    this.rightClickNodeData = rightClickData.data;
-    this.contextStyle = this.getContextMenuStyle();
-    this.nodeRightClick.emit(rightClickData);
-  }
-
-  onContextNodeClick(itemConfig: any) {
-    if (!itemConfig.disabled) {
-      const obj = {
-        menuData: itemConfig,
-        NodeData: this.rightClickNodeData,
-      };
-      this.flag = false;
-      this.removeListner();
-      this.rightClick.emit(obj);
+    if (this.contextmenu && this.contextmenu.length > 0) {
+      this.mouseLocation.left = rightClickData.event.clientX;
+      this.mouseLocation.top = rightClickData.event.clientY;
+      this.getContextMenu();
+      this.posixUp = this.getListPosition(rightClickData.ref);
+      rightClickData.event.preventDefault();
+      rightClickData.event.stopPropagation();
+      this.rightClickNodeData = rightClickData.data;
+      this.nodeRightClick.emit(rightClickData);
     }
   }
 
-  getContextMenuStyle() {
-    return {
-      'cursor': 'default',
-      'position': 'fixed',
-      'display': this.flag ? 'block' : 'none',
-      'left': this.mouseLocation.left + 'px',
-      'top': this.mouseLocation.top + 'px',
-      'box-shadow': '1px 1px 2px #000000',
-      'width': '15%',
-    };
+  rightClickDataEmit(Data: any) {
+    this.rightClick.emit(Data);
   }
 
   addListner() {
@@ -286,6 +238,6 @@ description : Context Menu provides the list of menus on right click.
   }
 
   ngOnDestroy(): void {
-   this.removeListner();
+    this.removeListner();
   }
 }

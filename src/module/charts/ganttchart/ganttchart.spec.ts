@@ -60,9 +60,6 @@ describe('GANTT CHART', () => {
     ['toWork', 'Walk to work', 'walk', null, null,(10 * 24 * 60 * 60 * 1000), 0, 'train'],
     ['work', 'Sit down at desk', null, null, null,(2 * 24 * 60 * 60 * 1000), 0, 'toWork']
   ];
-  it('createTable()', () => {
-    comp.createTable(array);
-  });
 
   it('dont show chart', () => {
     let newdata;

@@ -1,5 +1,24 @@
-<div class="input-helper">
-    {{errormsg}} <br/>
-    {{minmsg}} <br/>
-    {{maxmsg}} <br/>
+<div  class="input-helper dropdown tooltiptext">
+    <div *ngIf="minmsg">
+        {{minmsg}}
+    </div>
+    <div *ngIf="maxmsg">
+        {{maxmsg}}
+    </div>
+    <div *ngIf="errormsg">
+        {{errormsg}}
+    </div>
+    <div *ngIf="!isNumberComponent && minerrormsg">
+        <b>Min Length:</b> {{minerrormsg}} 
+    </div>
+    <div *ngIf="!isNumberComponent && maxerrormsg">
+        <b>Max Length: </b> {{maxerrormsg}} 
+    </div> 
+    <div *ngIf="isNumberComponent && minvalue && minvalue >0 && minerrormsg">
+        <b>Min Value:</b> {{minerrormsg}} 
+    </div>
+    <div *ngIf="isNumberComponent && maxvalue && maxvalue >0 && maxerrormsg">
+        <b>Min Value:</b> {{maxerrormsg}} 
+    </div>
+  
 </div>

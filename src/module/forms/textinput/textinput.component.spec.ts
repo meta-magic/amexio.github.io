@@ -10,6 +10,7 @@ import { AmexioFormIconComponent } from '../icon/icon.component';
 import { FormsModule } from '@angular/forms';
 import { IconLoaderService } from '../../../index'
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { AmexioInputHelperComponent } from '../../base/input.helper.component';
 
 describe('NUMBER INPUT', () => {
 
@@ -18,7 +19,7 @@ describe('NUMBER INPUT', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
-      declarations: [AmexioTextInputComponent, AmexioFormIconComponent],
+      declarations: [AmexioTextInputComponent, AmexioFormIconComponent, AmexioInputHelperComponent],
       providers: [IconLoaderService]
     });
     fixture = TestBed.createComponent(AmexioTextInputComponent);
@@ -33,23 +34,8 @@ describe('NUMBER INPUT', () => {
     expect(comp['innerValue']).toEqual(comp.value);
   });
 
-  //wrking 1- set errormsg
-  it('set errormsg', () => {
-    comp.errormsg = 'data incorect';
-    expect(comp.helpInfoMsg).toEqual('data incorect<br/>');
-  });
 
-  it('get errormsg', () => {
-    //  comp.errormsg='data incorect';
-    expect(comp.errormsg).toEqual(comp._errormsg);
-  });
 
-  //working 2 get minerrormsg
-  it('get minerrormsg', () => {
-    // comp.minerrormsg="";
-    comp.minerrormsg = 'trial';
-    expect(comp.minerrormsg).toEqual(comp._minerrormsg);
-  })
 
   //get pattern
   it('get pattern', () => {
@@ -81,37 +67,11 @@ describe('NUMBER INPUT', () => {
     expect(comp.value).toEqual(fixture);
   });
 
-
-  //on focus()
-  it('on focus()', () => {
-    //comp.showToolTip=true;
-    let flag = true;
-    comp.onFocus();
-    expect(comp.showToolTip).toEqual(flag);
-  })
-
-
-  it('on blur()', () => {
-    comp.onblur(fixture);
-    expect(comp.showToolTip).toEqual(false);
-  })
+ 
   it('getCssClass()', () => {
   });
-  //working 3 get maxerrormsg
-  it('get _maxerrormsg', () => {
-    comp.maxerrormsg = 'trial';
-    expect(comp.maxerrormsg).toEqual(comp._maxerrormsg);
-  })
-  it('get helpinfomsg', () => {
-    comp.helpInfoMsg = "test";
-    expect(comp.helpInfoMsg).toEqual(comp.helpInfoMsg);
-  })
-  it('set minerroromsg', () => {
-    comp.helpInfoMsg = "test";
-    comp.minerrormsg = 'min error';
-    comp.helpInfoMsg = comp.helpInfoMsg + '<b>Min Length<b/>: ' + comp.minerrormsg + '<br/>';
-    expect(comp.helpInfoMsg).toContain(comp.minerrormsg);
-  });
+  
+ 
   it('check for isValid', () => {
     comp.isValid = true;
     expect(comp.isValid).toEqual(true);

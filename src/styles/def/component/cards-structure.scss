@@ -30,6 +30,7 @@
   font-size: 14px;
   line-height: 24px;
   font-weight: 400;
+  flex-grow: 1;
   padding-left: 16px;
   padding-right: 16px;
   //overflow-x: hidden; /**This is affecting menus.**/
@@ -45,6 +46,7 @@
 .cardbody::-webkit-scrollbar
 {
   width: 6px ;
+
   height: 6px;
 }
 

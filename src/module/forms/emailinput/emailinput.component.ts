@@ -3,12 +3,10 @@
  Component Selector :  <amexio-email-input>
  Component Description : Email input field
  */
-import { Component, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
 import { ValueAccessorBase } from '../../base/value-accessor';
 
-const noop = () => {
-};
 @Component({
   selector: 'amexio-email-input',
   templateUrl: './emailinput.component.html',
@@ -16,7 +14,7 @@ const noop = () => {
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioEmailInputComponent), multi: true,
   }, {
     provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioEmailInputComponent), multi: true,
-}],
+  }],
 })
 export class AmexioEmailInputComponent extends ValueAccessorBase<string> implements OnInit, Validators {
 
@@ -47,34 +45,11 @@ export class AmexioEmailInputComponent extends ValueAccessorBase<string> impleme
    description : Sets if field is required
    */
   @Input('allow-blank') allowblank: boolean;
-
-  helpInfoMsg: string;
+  @ViewChild(NgModel) model: NgModel;
 
   regEx: RegExp;
 
   showToolTip: boolean;
-
-  _errormsg: string;
-
-  get errormsg(): string {
-    return this._errormsg;
-  }
-  /*
-   Properties
-   name : error-msg
-   datatype : none
-   version : 4.0 onwards
-   default : none
-   description : Sets the error message
-   */
-  @Input('error-msg')
-
-  set errormsg(value: string) {
-    this.helpInfoMsg = value + '<br/>';
-  }
-  @Output() isComponentValid: any = new EventEmitter<any>();
-
-  @ViewChild('ref', { read: ElementRef }) public inputRef: ElementRef;
 
   @Input('place-holder') placeholder: string;
   /*
@@ -123,13 +98,15 @@ export class AmexioEmailInputComponent extends ValueAccessorBase<string> impleme
    */
   @Input('font-size') fontsize: string;
 
-  emailpatter: any = /\S+@\S+\.\S+/;
-
-  _pattern: string;
-
-  get pattern(): string {
-    return this._pattern;
-  }
+  /*
+Properties
+name : error-msg
+datatype : string
+version : 4.0 onwards
+default :
+description : Sets the error message for validation
+*/
+  @Input('error-msg') errormsg: string;
   /*
    Properties
    name : pattern
@@ -138,6 +115,14 @@ export class AmexioEmailInputComponent extends ValueAccessorBase<string> impleme
    default :
    description : Apply Reg-ex to the field
    */
+  emailpattern: any = /\S+@\S+\.\S+/;
+
+  _pattern: string;
+
+  get pattern(): string {
+    return this._pattern;
+  }
+
   @Input('pattern')
   set pattern(value: string) {
     if (value != null) {
@@ -191,62 +176,44 @@ export class AmexioEmailInputComponent extends ValueAccessorBase<string> impleme
    */
   @Output() change: any = new EventEmitter<any>();
 
-  componentClass: any;
-
   isValid: boolean;
   @Input('name') name: string;
   constructor() {
     super();
     this.showToolTip = false;
   }
-  ngOnInit() {
-    this.generateName();
-    this.isComponentValid.emit(this.allowblank);
-  }
 
+  ngOnInit() {
+    this.name = this.generateName(this.name, this.fieldlabel, 'emailinput');
+  }
+  // THIS METHOD USED FOR BLUR EVENT.
+  onblur() {
+    this.showToolTip = false;
+    this.onBlur.emit(this.value);
+  }
+  // THIS METHOD USED FOR FOCUS EVENT .
   onFocus() {
     this.showToolTip = true;
     this.focus.emit(this.value);
   }
-  // Set touched on blur
-  onblur(input: any) {
-    this.showToolTip = false;
-    this.onBlur.emit(this.value);
-  }
-  onInput(input: any) {
+  // THIS METHOD USED FOR  INPUT EVENT .
+  onInput() {
+    this.isValid = this.isFieldValid();
     this.input.emit(this.value);
   }
+  // THIS METHOD USED FOR CHANGE EVENT  .
   onChangeEv() {
     this.change.emit(this.value);
   }
-
-  // THIS MEHTOD CHECK INPUT IS VALID OR NOT
-  checkValidity(): boolean {
-    return (this.inputRef && this.inputRef.nativeElement &&
-      this.inputRef.nativeElement.validity && this.inputRef.nativeElement.validity.valid);
+  // THIS METHOD IS USED FOR VALIDATION
+  isFieldValid(): boolean {
+    return (!this.allowblank && this.emailpattern.test(this.value)) || this.allowblank;
   }
-
   public validate(c: FormControl) {
-    return ((!this.allowblank && this.emailpatter.test(this.value)) || this.allowblank) ? null : {
-        jsonParseError: {
-            valid: true,
-        },
+    return this.isFieldValid() ? null : {
+      jsonParseError: {
+        valid: true,
+      },
     };
-}
- // THIS METHOD GENERATE RANDOM STRING
- generateName() {
-  if (!this.name && this.fieldlabel ) {
-    this.name = this.fieldlabel.replace(/\s/g, '');
-  } else if ( !this.name && !this.fieldlabel) {
-    this.name = 'textinput-' + this.getRandomString();
   }
-}
-getRandomString(): string {
-  const possibleCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-  let randomString = '';
-  for (let i = 0; i < 6; i++) {
-    randomString += possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
-  }
-  return randomString;
-}
 }

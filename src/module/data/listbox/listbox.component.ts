@@ -2,16 +2,18 @@
  * Created by ketangote on 11/22/17.
  */
 
- /*
- Component Name : Amexio listbox
- Component Selector : <amexio-listbox>
- Component Description : Simple list box which allows user to select one of
- more items from list based on configuration. User can provide custom template to
- change look and feel.
+/*
+Component Name : Amexio listbox
+Component Selector : <amexio-listbox>
+Component Description : Simple list box which allows user to select one of
+more items from list based on configuration. User can provide custom template to
+change look and feel.
 */
-import {AfterViewInit, Component, ContentChild, EventEmitter,
-        HostListener, Input, OnDestroy, OnInit, Output, Renderer2, TemplateRef } from '@angular/core';
-import {CommonDataService} from '../../services/data/common.data.service';
+import {
+  AfterViewInit, Component, ContentChild, EventEmitter,
+  HostListener, Input, OnDestroy, OnInit, Output, Renderer2, TemplateRef,
+} from '@angular/core';
+import { CommonDataService } from '../../services/data/common.data.service';
 
 @Component({
   selector: 'amexio-listbox', templateUrl: './listbox.component.html',
@@ -19,7 +21,7 @@ import {CommonDataService} from '../../services/data/common.data.service';
 export class AmexioListBoxComponent implements AfterViewInit, OnInit, OnDestroy {
 
   private componentLoaded: boolean;
-   contextMenuStyle: any;
+  contextMenuStyle: any;
 
   /*
 Properties
@@ -41,7 +43,7 @@ description : Heading for ListBox.
 */
   @Input() header: string;
 
-      /*
+  /*
 Properties
 name : enable-header
 datatype : boolean
@@ -49,7 +51,7 @@ version : 4.2.4 onwards
 default : true
 description : User can disabled header of listbox to false..
 */
-@Input('enable-header') enableHeader = true;
+  @Input('enable-header') enableHeader = true;
 
   /*
 Properties
@@ -79,17 +81,17 @@ version : 4.0 onwards
 default : none
 description : Local Data binding.
 */
-_data: any;
-@Input('data')
- set data(value: any[]) {
-   this._data = value;
-   if (this.componentLoaded) {
-     this.updateComponent();
-   }
- }
- get data(): any[] {
-   return this._data;
- }
+  _data: any;
+  @Input('data')
+  set data(value: any[]) {
+    this._data = value;
+    if (this.componentLoaded) {
+      this.updateComponent();
+    }
+  }
+  get data(): any[] {
+    return this._data;
+  }
 
   /*
 Properties
@@ -171,7 +173,7 @@ description : It will gives you row clicked data.
   */
   @Input() border: any;
 
-    /*
+  /*
 Properties
 name :  context-menu
 datatype : string
@@ -179,17 +181,17 @@ version : 5.0.1 onwards
 default :
 description : Context Menu provides the list of menus on right click.
 */
-@Input('context-menu') contextmenu: any[];
+  @Input('context-menu') contextmenu: any[];
 
-/*
-Events
-name : rightClick
-datatype : none
-version : 5.0.1
-default : none
-description : It will gives you row clicked data.
-*/
-@Output() rightClick: any = new EventEmitter<any>();
+  /*
+  Events
+  name : rightClick
+  datatype : none
+  version : 5.0.1
+  default : none
+  description : It will gives you row clicked data.
+  */
+  @Output() rightClick: any = new EventEmitter<any>();
 
   @ContentChild('amexioBodyTmpl') bodyTemplate: TemplateRef<any>;
 
@@ -248,7 +250,7 @@ description : It will gives you row clicked data.
     }
   }
 
- setData(httpResponse: any) {
+  setData(httpResponse: any) {
     let responsedata = httpResponse;
     if (this.datareader != null) {
       const dr = this.datareader.split('.');
@@ -330,17 +332,17 @@ description : It will gives you row clicked data.
   }
 
   loadContextMenu(event: any, row: any, id: any) {
-    this.tempSelectedFlag(this.viewData);
-    this.mouseLocation.left = event.clientX;
-    this.mouseLocation.top = event.clientY;
-    row.isSelected = true;
-    this.getContextMenu();
-    this.posixUp = this.getListPosition(id);
-    event.preventDefault();
-    event.stopPropagation();
-    this.rightClickRowData = row;
-    this.contextMenuStyle = this.getContextMenuStyle();
-
+    if (this.contextmenu && this.contextmenu.length > 0) {
+      this.tempSelectedFlag(this.viewData);
+      this.mouseLocation.left = event.clientX;
+      this.mouseLocation.top = event.clientY;
+      row.isSelected = true;
+      this.getContextMenu();
+      this.posixUp = this.getListPosition(id);
+      event.preventDefault();
+      event.stopPropagation();
+      this.rightClickRowData = row;
+    }
   }
   // getcontextmenu
   getContextMenu() {
@@ -366,28 +368,9 @@ description : It will gives you row clicked data.
       return false;
     }
   }
-  getContextMenuStyle() {
-    return {
-      'cursor': 'default',
-      'position': 'fixed',
-      'display': this.contextMenuFlag ? 'block' : 'none',
-      'left': this.mouseLocation.left + 'px',
-      'top': this.mouseLocation.top + 'px',
-      'box-shadow': '1px 1px 2px #000000',
-      'width': '15%',
-    };
-  }
 
-  onContextNodeClick(itemConfig: any) {
-    if (!itemConfig.disabled) {
-      const obj = {
-        menuData: itemConfig,
-        rowData: this.rightClickRowData,
-      };
-      this.contextMenuFlag = false;
-      this.removeListner();
-      this.rightClick.emit(obj);
-    }
+  rightClickDataEmit(Data: any) {
+    this.rightClick.emit(Data);
   }
 
   addListner() {
@@ -406,7 +389,7 @@ description : It will gives you row clicked data.
   }
 
   ngOnDestroy(): void {
-   this.removeListner();
+    this.removeListner();
   }
 
 }

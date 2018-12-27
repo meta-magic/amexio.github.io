@@ -1,34 +1,45 @@
 
-<div class="inputgroup form-group">
+<div class="inputgroup">
 
-  <label *ngIf="hasLabel" [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
+  <label *ngIf="hasLabel"  role="email" for="FirstEmail" id="mailID" [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
     {{fieldlabel}}
-  </label>
+  </label> 
 
-  <input type="email" class="input-control"
+  <input type="email" 
+
+        role="email" 
+        id="FirstEmail" 
+        name="FirstEmail"
+        aria-labelledby="mailID"
+        aria-describedby="emailDes"
+
+         class="input-control"
+         [ngClass]="model.touched ? allowblank ? '' : (isValid && model.touched) ? 'input-control-success' : 'input-control-error' :''"
          [(ngModel)]="value"
-         #inp="ngModel"
-         [ngClass]="componentClass"
-         (blur)="onblur(inp)"
+         (blur)="onblur()"
          (focus)="onFocus()"
-         (input)="onInput(inp)"
+         (input)="onInput()"
          (change)="onChangeEv()"
          [name]="name"
          [pattern]="regEx"
-         #ref
          [attr.placeholder]="placeholder"
          [attr.disabled] = "disabled ? true: null"
          [required]="!allowblank"/>
 
-  <span *ngIf="iconfeedback && (inp.invalid && (inp.dirty || inp.touched) || inp.valid)" class="input-control-feedback">
-        <span *ngIf="!isValid && inp.touched"><em class="fa fa-times"></em></span>
-        <span *ngIf="isValid && inp.touched"><em class="fa fa-check"></em></span>
-  </span>   
-
-  <span *ngIf="showToolTip && enablepopover" class="dropdown tooltiptext">
-        <div  [innerHTML]="helpInfoMsg"></div>
-  </span>
-
-  <span class="inputfieldbar"></span>
-</div>
-
+         <ng-container *ngIf="iconfeedback">
+          <span class="input-control-feedback">
+              <span *ngIf="!isValid && model.touched"><em class="fa fa-times"></em></span>
+              <span *ngIf="isValid && model.touched"><em class="fa fa-check"></em></span>
+          </span>
+      </ng-container>
+    
+      <input-help *ngIf="showToolTip && enablepopover"
+      id="emailDes" 
+      [error-msg]="errormsg" 
+      [min-msg]="minmsg" 
+      [max-msg]="maxmsg"
+      >
+      </input-help>
+     
+      <span class="inputfieldbar"></span>
+    </div>

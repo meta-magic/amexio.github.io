@@ -32,11 +32,13 @@ import { AmexioTabPillComponent } from '../tab.pill.component';
   selector: 'amexio-vertical-tab-view',
   templateUrl: './vertical.tab.component.html',
 })
+
 export class AmexioVerticalTabComponent implements AfterContentInit, AfterViewInit, OnInit {
 
   @ViewChild('tab', { read: ElementRef }) public tabs: ElementRef;
 
   @ContentChildren(AmexioTabPillComponent) queryTabs: QueryList<AmexioTabPillComponent>;
+
   @ViewChild('target', { read: ViewContainerRef }) target: any;
 
   /*
@@ -73,40 +75,35 @@ description : Callback to invoke on activated tab event.
 
   componentId = '';
 
-  content: string;
-
   constructor(public render: Renderer2, private componentFactoryResolver: ComponentFactoryResolver) {
     this.tabPosition = 'top';
   }
-
   ngOnInit() {
     this.componentId = Math.floor(Math.random() * 90000) + 10000 + '_tabc';
   }
-
   ngAfterViewInit() {
   }
-
   ngAfterContentInit() {
     this.tabCollection = this.queryTabs.toArray();
   }
-
   onTabClick(tab: any) {
     if (!tab.disabled && !tab.header) {
-      for (const i of this.tabCollection) {
-        if (i === tab) {
-          i['active'] = true;
-          this.asignTabPillClass(tab);
-          this.onClick.emit(tab);
+     for (const i of this.tabCollection) {
+       if (i === tab) {
+         i['active'] = true;
+         this.asignTabPillClass(tab);
+         this.onClick.emit(tab);
         } else {
-          i['active'] = false;
-          i['tabPillClass'] = '';
-        }
-      }
-      this.tabCollection.forEach((tab1: any) => {
-        this.asignTabPillClass(tab1);
-      });
-    }
-  }
+         i['active'] = false;
+         i['tabPillClass'] = '';
+       }
+     }
+     this.tabCollection.forEach((tab1: any) => {
+       this.asignTabPillClass(tab1);
+     });
+   }
+ }
+  // Code to be done
   findTabStyleClass() {
     if (this.tabPosition === 'top') {
       return 'tabposition-top';
@@ -122,7 +119,6 @@ description : Callback to invoke on activated tab event.
       }
     });
   }
-
   closeTab(tabNode: AmexioTabPillComponent) {
     const newTab: AmexioTabPillComponent[] = [];
     let index = 0;
@@ -159,12 +155,6 @@ description : Callback to invoke on activated tab event.
       newTab[0].closable = false;
     }
   }
-  tabDomRemove(tab: any) {
-    const removeNode = document.getElementById(tab.tabId).parentNode;
-    const parentRefNode = removeNode.parentNode;
-    parentRefNode.removeChild(removeNode);
-
-  }
   closeTabs(data: any) {
     const tabList: any[] = [];
     this.tabCollection.forEach((tabs) => {
@@ -181,6 +171,12 @@ description : Callback to invoke on activated tab event.
     });
     tabList[tabList.length - 1].active = true;
     this.asignTabPillClass(tabList[tabList.length - 1]);
+
+  }
+  tabDomRemove(tab: any) {
+    const removeNode = document.getElementById(tab.tabId).parentNode;
+    const parentRefNode = removeNode.parentNode;
+    parentRefNode.removeChild(removeNode);
 
   }
   addDynamicTab(title: string, amexiocolor: string, closable: boolean, component: any) {

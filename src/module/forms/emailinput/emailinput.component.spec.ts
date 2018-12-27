@@ -6,6 +6,7 @@ import { AmexioButtonComponent } from './../buttons/button.component';
 import { AmexioFormIconComponent } from './../icon/icon.component';
 import { AmexioEmailInputComponent } from './emailinput.component';
 import { stringify } from 'querystring';
+import { AmexioInputHelperComponent } from '../../base/input.helper.component';
 
 describe('amexio-email-input', () => {
   let comp: AmexioEmailInputComponent;
@@ -14,7 +15,8 @@ describe('amexio-email-input', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
-      declarations: [AmexioEmailInputComponent, AmexioFormIconComponent, AmexioButtonComponent],
+      declarations: [AmexioEmailInputComponent, AmexioFormIconComponent, AmexioButtonComponent, AmexioInputHelperComponent],
+      
       providers: [IconLoaderService],
     });
     fixture = TestBed.createComponent(AmexioEmailInputComponent);
@@ -91,12 +93,6 @@ describe('amexio-email-input', () => {
     expect((<any>comp).isValid).toEqual(true);
   });
 
-  it('check method onblur', () => {
-    comp.onblur({ 'inp': false });
-    comp.showToolTip = false;
-    expect((<any>comp).showToolTip).toEqual(false);
-  });
-
   it('check onchnage method for emit data ', () => {
 
     comp.onChangeEv();
@@ -104,40 +100,8 @@ describe('amexio-email-input', () => {
       expect(comp.value).toEqual(g);
     });
   });
-  it('check onInput method for emit data ', () => {
 
-    comp.onInput('event');
-    comp.input.subscribe((g: any) => {
-      expect(comp.value).toEqual(g);
-    });
-  });
-
-  it('check isComponentValid method for emit data ', () => {
-
-    comp.ngOnInit();
-
-    comp.isComponentValid.subscribe((g: any) => {
-      expect(comp.allowblank).toEqual(g);
-    });
-  });
-
-  it('check onblur method for emit data ', () => {
-
-    comp.onblur('event');
-    comp.onBlur.subscribe((g: any) => {
-      expect(comp.value).toEqual(g);
-    });
-  });
-
-  it('set errormsg', () => {
-    comp.errormsg = 'data incorect';
-    expect(comp.helpInfoMsg).toEqual('data incorect<br/>');
-  });
-
-  it('get errormsg', () => {
-    //  comp.errormsg='data incorect';
-    expect(comp.errormsg).toEqual(comp._errormsg);
-  });
+ 
 
   //get pattern
   it('get pattern', () => {
@@ -193,15 +157,15 @@ describe('amexio-email-input', () => {
   //   expect(comp.isValid).toBe(true);
   // });
 
-  it('check  isvalid is boolean', () => {
-    const blank = { invalid: true, valid: true, dirty: true, touched: true };
-    comp.value ='kedar@metamagic.in';
-    comp.allowblank = true;
-   // const inData = comp.onBlank(blank);
-   // expect(inData).toEqual({'input-control-error':true,'input-control-success':true});
+  // it('check  isvalid is boolean', () => {
+  //   const blank = { invalid: true, valid: true, dirty: true, touched: true };
+  //   comp.value ='kedar@metamagic.in';
+  //   comp.allowblank = true;
+  //  // const inData = comp.onBlank(blank);
+  //  // expect(inData).toEqual({'input-control-error':true,'input-control-success':true});
 
-    comp.inputRef = {'nativeElement':{'validity':{'valid':true}}};
-    const validity = comp.checkValidity();
-    expect(validity).toEqual(true);
-  });
+  //   comp.inputRef = {'nativeElement':{'validity':{'valid':true}}};
+  //   const validity = comp.checkValidity();
+  //   expect(validity).toEqual(true);
+  // });
 });

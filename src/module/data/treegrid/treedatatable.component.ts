@@ -24,131 +24,8 @@ import { AmexioGridColumnComponent } from '../datagrid/data.grid.column';
 
 import { CommonDataService } from '../../services/data/common.data.service';
 @Component({
-  selector: 'amexio-tree-data-table', template: `
-    <div (window:resize)="onResize()">
-      <div #header class="datatable">
-        <div class="datatable-header">
-          <ng-container *ngFor="let cols of columns;let i = index">
-            <ng-container *ngIf="cols.datatype=='string'">
-              <div class="datatable-col" [ngClass]="{'header' : i == 0}">
-                <ng-container *ngIf="cols.headerTemplate">
-                  <ng-template  [ngTemplateOutlet]="cols.headerTemplate"
-                                [ngTemplateOutletContext]="{column:cols ,index: i}"></ng-template>
-                </ng-container>
-                <ng-container *ngIf="!cols.headerTemplate">
-                  {{cols.text}}
-                </ng-container>
-              </div>
-            </ng-container>
-            <ng-container *ngIf="cols.datatype=='number'">
-              <ng-container *ngIf="cols.headerTemplate">
-                <ng-template  [ngTemplateOutlet]="cols.headerTemplate"
-                              [ngTemplateOutletContext]="{column:cols ,index: i}"></ng-template>
-              </ng-container>
-              <ng-container *ngIf="!cols.headerTemplate">
-               <span class="float-right">
-               <div class="datatable-col" [ngClass]="{'header' : i == 0}"> {{cols.text}}</div>
-            </span>
-              </ng-container>
-
-            </ng-container>
-          </ng-container>
-        </div>
-      </div>
-
-      <div class="datatable-height" [style.height.px]="height">
-        <div class="datatable">
-          <div style="height: 300px;" *ngIf="mask">
-            <div class="spinner"></div>
-          </div>
-          <ng-container *ngIf="!mask">
-            <div class="datatable-row" (click)="toogle(row,i)" *ngFor="let row of viewRows;let i=index"
-            (click)="setSelectedRow(row, $event)">
-              <ng-container *ngFor="let cols of columns;let colIndex = index">
-                <ng-container *ngIf="cols.datatype=='string' && !cols?.bodyTemplate">
-                  <div class="datatable-col" [attr.data-label]="cols.text">
-                    <ng-container *ngIf="colIndex == 0">
-              <span [ngStyle]="{'padding-left':(20*row.level)+'px'}">
-                <ng-container *ngIf="!row.expanded && row.children">
-                  <amexio-data-icon key="tree_collapse"></amexio-data-icon>
-                </ng-container>
-                <ng-container *ngIf="row.expanded && row.children">
-                  <amexio-data-icon key="tree_expand"></amexio-data-icon>
-                </ng-container>
-                 <ng-container *ngIf="row[cols.dataindex]!= null && row[cols.dataindex]!= '' ;else elseBlock">
-                      {{row[cols.dataindex]}}
-                    </ng-container>
-                    <ng-template #elseBlock>
-                      &nbsp;
-                    </ng-template>
-               </span>
-                    </ng-container>
-
-                    <ng-container *ngIf="colIndex > 0">
-                      <ng-container *ngIf="row[cols.dataindex]!= null && row[cols.dataindex]!= '' ;else elseBlock">
-                        {{row[cols.dataindex]}}
-                      </ng-container>
-                      <ng-template #elseBlock>
-                        &nbsp;
-                      </ng-template>
-                    </ng-container>
-                  </div>
-                </ng-container>
-                <ng-container *ngIf="cols.datatype=='number' && !cols?.bodyTemplate">
-                  <div class="datatable-col" [attr.data-label]="cols.text" >
-                    <ng-container *ngIf="colIndex == 0">
-              <span [ngStyle]="{'padding-left':(20*row.level)+'px'}">
-                <ng-container *ngIf="!row.expanded && row.children">
-                  <amexio-data-icon key="tree_collapse"></amexio-data-icon>
-                </ng-container>
-                <ng-container *ngIf="row.expanded && row.children">
-                  <amexio-data-icon key="tree_expand"></amexio-data-icon>
-                </ng-container>
-                 <span class="float-right">
-                    <ng-container *ngIf="row[cols.dataindex]!= null;else elseBlock">
-                      {{row[cols.dataindex]}}
-                    </ng-container>
-                    <ng-template #elseBlock>
-                      &nbsp;
-                    </ng-template>
-                 </span>
-               </span>
-                    </ng-container>
-
-                    <ng-container *ngIf="colIndex > 0">
-               <span class="float-right">
-               <ng-container *ngIf="row[cols.dataindex]!= null;else elseBlock">
-                      {{row[cols.dataindex]}}
-               </ng-container>
-                 <ng-template #elseBlock>
-                      &nbsp;
-                 </ng-template>
-               </span>
-                    </ng-container>
-                  </div>
-
-
-                </ng-container>
-
-                <ng-container *ngIf="cols.bodyTemplate">
-                  <div class="datatable-col" [attr.data-label]="cols.text">
-                    <ng-template  [ngTemplateOutlet]="cols.bodyTemplate"
-                                  [ngTemplateOutletContext]="{ $implicit: { text : row[cols.dataindex] }, row: row }"></ng-template>
-                  </div>
-                </ng-container>
-
-
-
-              </ng-container>
-
-
-            </div>
-          </ng-container>
-
-        </div>
-      </div>
-    </div>
-  `,
+  selector: 'amexio-tree-data-table',
+  templateUrl: './treedatatable.component.html',
 
 })
 
@@ -165,15 +42,15 @@ export class TreeDataTableComponent implements OnInit, AfterContentInit, AfterVi
    */
   _data: any;
   @Input('data')
-   set data(value: any[]) {
-     this._data = value;
-     if (this.componentLoaded) {
-       this.updateComponent();
-     }
-   }
-   get data(): any[] {
-     return this._data;
-   }
+  set data(value: any[]) {
+    this._data = value;
+    if (this.componentLoaded) {
+      this.updateComponent();
+    }
+  }
+  get data(): any[] {
+    return this._data;
+  }
 
   /*
    Properties
@@ -365,7 +242,18 @@ export class TreeDataTableComponent implements OnInit, AfterContentInit, AfterVi
     }
     return responsedata;
   }
-
+  removeAll() {
+    this.viewRows.forEach((node: any) => {
+      node.expanded = false;
+      this.removeRows(node);
+    });
+  }
+  expandAll() {
+    this.viewRows.forEach((node: any, index: number) => {
+      node.expanded = true;
+      this.addRows(node, index);
+    });
+  }
   toogle(row: any, index: number) {
     row.expanded = !row.expanded;
     if (row.expanded) {

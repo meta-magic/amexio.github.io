@@ -7,12 +7,9 @@ different configurable attributes for validation
 (min/max value, allow blank, custom regex), custom error message, help, custom styles.
 
 */
-import { Component, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
 import { ValueAccessorBase } from '../../base/value-accessor';
-
-const noop = () => {
-};
 
 @Component({
   selector: 'amexio-textarea-input',
@@ -62,8 +59,6 @@ description : Sets if field is required
 */
   @Input('allow-blank') allowblank: boolean;
 
-  componentClass: any;
-
   helpInfoMsg: string;
 
   regEx: RegExp;
@@ -72,61 +67,70 @@ description : Sets if field is required
 
   _errormsg: string;
 
-  @Output() isComponentValid: any = new EventEmitter<any>();
-
-  @ViewChild('ref', { read: ElementRef }) public inputRef: ElementRef;
-  get errormsg(): string {
-    return this._errormsg;
-  }
   /*
-  Properties
-  name : error-msg
-  datatype : none
-  version : 4.0 onwards
-  default : none
-  description : sets the error message
-  */
-  @Input('error-msg')
-  set errormsg(value: string) {
-    this.helpInfoMsg = value + '<br/>';
-  }
-
-  _minerrormsg: string;
-
-  get minerrormsg(): string {
-    return this._minerrormsg;
-  }
+Events
+name : onBlur
+datatype : any
+version : 4.0 onwards
+default :
+description : On blur event
+*/
+  @Output() onBlur: any = new EventEmitter<any>();
   /*
-  Properties
-  name : min-error-msg
-  datatype : string
-  version : 4.0 onwards
-  default : none
-  description : sets the error message for min validation
-  */
-  @Input('min-error-msg')
-  set minerrormsg(value: string) {
-    this.helpInfoMsg = this.helpInfoMsg + '<b>Min Length<b/>: ' + value + '<br/>';
-  }
+ Events
+ name : input
+ datatype : any
+ version : none
+ default :
+ description : 	On input event field.
+ */
+  @Output() input: any = new EventEmitter<any>();
+  /*
+ Events
+ name : focus
+ datatype : any
+ version : none
+ default :
+ description : On focus event field.
+ */
+  @Output() focus: any = new EventEmitter<any>();
+  /*
+ Events
+ name : change
+ datatype : any
+ version : none
+ default :
+ description : On field value change event
+ */
+  @Output() change: any = new EventEmitter<any>();
 
-  _maxerrormsg: string;
-
-  get maxerrormsg(): string {
-    return this._maxerrormsg;
-  }
+  /*
+ Properties
+ name : min-error-msg
+ datatype : string
+ version : 4.0 onwards
+ default :
+ description : Sets the error message for min validation
+ */
+  @Input('min-error-msg') minerrormsg: string;
   /*
   Properties
   name : max-error-msg
   datatype : string
   version : 4.0 onwards
-  default : none
-  description : sets the error message for max validation
+  default :
+  description : Sets the error message for max validation
   */
-  @Input('max-error-msg')
-  set maxerrormsg(value: string) {
-    this.helpInfoMsg = this.helpInfoMsg + 'Max Length: ' + value;
-  }
-
+  @Input('max-error-msg') maxerrormsg: string;
+  /*
+  Properties
+  name : error-msg
+  datatype : string
+  version : 4.0 onwards
+  default :
+  description : Sets the error message for validation
+  */
+  @Input('error-msg') errormsg: string;
   /*
 Properties
 name : place-holder
@@ -193,7 +197,7 @@ description : flag to set label
 
   _pattern: string;
 
-  isValid: boolean;
+  isValid = false;
 
   get pattern(): string {
     return this._pattern;
@@ -225,51 +229,46 @@ description : Set enable / disable popover.
 
   @Input('name') name: string;
 
+  @ViewChild(NgModel) model: NgModel;
+
   constructor() {
     super();
     this.showToolTip = false;
   }
   ngOnInit() {
-    this.generateName();
-    this.isComponentValid.emit(this.allowblank);
+    this.name = this.generateName(this.name, this.fieldlabel, 'textareainput');
   }
 
   // Set touched on blur
-  onBlur(input: any) {
+  onBlurEvent() {
     this.showToolTip = false;
+    this.onBlur.emit(this.value);
   }
 
-  onFocus() {
+  onFocusEvent() {
     this.showToolTip = true;
+    this.focus.emit(this.value);
   }
 
-  // THIS MEHTOD CHECK INPUT IS VALID OR NOT
-  checkValidity(): boolean {
-    return (this.inputRef && this.inputRef.nativeElement &&
-      this.inputRef.nativeElement.validity && this.inputRef.nativeElement.validity.valid);
+  onInputEvent() {
+    this.isValid = this.isFieldValid();
+    this.input.emit(this.value);
   }
 
+  onChangeEv() {
+    this.change.emit(this.value);
+  }
+
+  // THIS METHOD IS USED FOR VALIDATION
+  isFieldValid(): boolean {
+    return (!this.allowblank && (this.value && (this.value.length > 0)) ||
+      (this.value && this.value.length > 0)) || this.allowblank;
+  }
   public validate(c: FormControl) {
-    return ((!this.allowblank && (this.innerValue && this.innerValue.length > 0)) || this.allowblank) ? null : {
+    return this.isFieldValid() ? null : {
       jsonParseError: {
         valid: true,
       },
     };
-  }
-  // THIS METHOD GENERATE RANDOM STRING
-  generateName() {
-    if (!this.name && this.fieldlabel) {
-      this.name = this.fieldlabel.replace(/\s/g, '');
-    } else if (!this.name && !this.fieldlabel) {
-      this.name = 'textinput-' + this.getRandomString();
-    }
-  }
-  getRandomString(): string {
-    const possibleCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-    let randomString = '';
-    for (let i = 0; i < 6; i++) {
-      randomString += possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
-    }
-    return randomString;
   }
 }

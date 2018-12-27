@@ -68,16 +68,16 @@ description : Key in JSON Datasource for records.
 */
   @Input('data-reader') datareader: string;
 
-/*
-  Properties
-name : display-key
-datatype : string
-version : 5.2.0 onwards
-default : text
-description : Name of key inside response data to display on ui.
-*/
-@Input('display-key') displaykey: string;
-   /*
+  /*
+    Properties
+  name : display-key
+  datatype : string
+  version : 5.2.0 onwards
+  default : text
+  description : Name of key inside response data to display on ui.
+  */
+  @Input('display-key') displaykey: string;
+  /*
 Properties
 name : child-array-key
 datatype : string
@@ -85,7 +85,7 @@ version : 5.2.0 onwards
 default : children
 description : Name of key for child array name inside response data to display on ui.
 */
-@Input('child-array-key') childarraykey: string;
+  @Input('child-array-key') childarraykey: string;
 
   /*
   Events
@@ -429,15 +429,18 @@ description : Context Menu provides the list of menus on right click.
   }
 
   getDropNode(dragData: any, node: any, event: any) {
-    dragData.data[this.childarraykey].forEach((child: any) => {
-      if (JSON.stringify(child) === JSON.stringify(node) || node.leaf === true) {
-        event.dataTransfer.dropEffect = 'none';
-      } else if (child.hasOwnProperty(this.childarraykey)) {
-        this.getDropNode(child[this.childarraykey], node, event);
-      }
-    });
+    if (JSON.stringify(dragData.data) === JSON.stringify(node)) {
+      event.dataTransfer.dropEffect = 'none';
+    } else {
+      dragData.data[this.childarraykey].forEach((child: any) => {
+        if (JSON.stringify(child) === JSON.stringify(node) || node.leaf === true) {
+          event.dataTransfer.dropEffect = 'none';
+        } else if (child.hasOwnProperty(this.childarraykey)) {
+          this.getDropNode({ data: child, event1: event }, node, event);
+        }
+      });
+    }
   }
-
   drop(dropData: any) {
     if (this.enabledrop) {
       dropData.event.target.style.border = '';
@@ -523,23 +526,12 @@ description : Context Menu provides the list of menus on right click.
     rightClickData.data['isSelected'] = true;
     this.getContextMenu();
     this.posixUp = this.getListPosition(rightClickData.ref);
-    rightClickData.event.preventDefault();
-    rightClickData.event.stopPropagation();
-    this.rightClickNodeData = rightClickData.data;
-    this.contextStyle = this.getContextMenuStyle();
-    this.nodeRightClick.emit(rightClickData);
-  }
-
-  onContextNodeClick(itemConfig: any) {
-    if (!itemConfig.disabled) {
-      const obj = {
-        menuData: itemConfig,
-        NodeData: this.rightClickNodeData,
-      };
-      this.resetFlag();
-      this.removeListner();
-      this.rightClick.emit(obj);
+    if (this.contextmenu && this.contextmenu.length > 0) {
+      rightClickData.event.preventDefault();
+      rightClickData.event.stopPropagation();
     }
+    this.rightClickNodeData = rightClickData.data;
+    this.nodeRightClick.emit(rightClickData);
   }
 
   getListPosition(elementRef: any): boolean {
@@ -551,16 +543,8 @@ description : Context Menu provides the list of menus on right click.
     }
   }
 
-  getContextMenuStyle() {
-    return {
-      'cursor': 'default',
-      'position': 'fixed',
-      'display': this.flag ? 'block' : 'none',
-      'left': this.mouseLocation.left + 'px',
-      'top': this.mouseLocation.top + 'px',
-      'box-shadow': '1px 1px 2px #000000',
-      'width': '15%',
-    };
+  rightClickDataEmit(Data: any) {
+    this.rightClick.emit(Data);
   }
 
   addListner() {

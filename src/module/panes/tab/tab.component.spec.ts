@@ -21,17 +21,5 @@ describe('amexio-tab', () => {
             comp = fixture.componentInstance;
         });
 
-    it('check showprev variable ', () => {
-
-        comp.showprev = false;
-        expect(comp.showprev).toEqual(false);
-    });
-
-    it('check showprev variable ', () => {
-        comp.shownext = false;
-            expect(comp.shownext).toEqual(false);
-    });
-
-
 
 });

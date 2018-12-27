@@ -3,6 +3,8 @@ import { AmexioGridLayoutService } from './amexiogridlayoutservice.service';
 import { AmexioGridItemComponent } from './griditem.component';
 import { AmexioGridModel } from './gridmodel.component';
 
+import { GridConstants } from '../../../models/GridConstants';
+
 @Component({
   selector: 'amexio-layout-grid',
   templateUrl: './grid.component.html',
@@ -24,6 +26,9 @@ export class AmexioGridComponent implements AfterContentInit, OnInit {
   containerClass: any;
   className: string;
   colCount: number;
+  desktopWidth = '(min-width: 1025px)';
+  mobileWidth = '(max-width: 767px)';
+  tabletWidth = '(min-width: 768px) and (max-width: 1024px)';
   constructor(public _gridlayoutService: AmexioGridLayoutService) {
   }
   ngOnInit() {
@@ -61,9 +66,38 @@ export class AmexioGridComponent implements AfterContentInit, OnInit {
 
   cssGenreration(layoutData: any) {
     this.className = this.className + '' + layoutData.name;
-    this.cssGenerationCommonMethod(layoutData, '(max-width: 767px)', 'mobile');
-    this.cssGenerationCommonMethod(layoutData, '(min-width: 1025px)', 'desktop');
-    this.cssGenerationCommonMethod(layoutData, '(min-width: 768px) and (max-width: 1024px)', 'tab');
+    if (layoutData.desktop.length > 0) {
+      this.cssGenerationCommonMethod(layoutData, this.desktopWidth, GridConstants.Desktop);
+      if (layoutData.tab.length === 0) {
+        this.cssGenerationCommonMethod(layoutData, this.tabletWidth, GridConstants.Desktop);
+      } else {
+        this.cssGenerationCommonMethod(layoutData, this.tabletWidth, GridConstants.Desktop);
+
+        this.cssGenerationCommonMethod(layoutData, this.tabletWidth, GridConstants.Tablet);
+      }
+      if (layoutData.mobile.length === 0 && layoutData.tab.length === 0) {
+        this.cssGenerationCommonMethod(layoutData, this.mobileWidth, GridConstants.Desktop);
+      } else if (layoutData.mobile.length === 0 && layoutData.tab.length > 0) {
+        this.cssGenerationCommonMethod(layoutData, this.mobileWidth, GridConstants.Tablet);
+      } else {
+        this.cssGenerationCommonMethod(layoutData, this.mobileWidth, GridConstants.Mobile);
+      }
+    } else {
+      this.cssGenerationNoDesktop(layoutData);
+    }
+  }
+// Refactored above method
+  cssGenerationNoDesktop(layoutData: any) {
+    if (layoutData.tab.length > 0 && layoutData.mobile.length === 0) {
+      this.cssGenerationCommonMethod(layoutData, this.desktopWidth, GridConstants.Tablet);
+      this.cssGenerationCommonMethod(layoutData, this.tabletWidth, GridConstants.Tablet);
+      this.cssGenerationCommonMethod(layoutData, this.mobileWidth, GridConstants.Tablet);
+
+    } else if (layoutData.tab.length === 0 && layoutData.mobile.length > 0) {
+      this.cssGenerationCommonMethod(layoutData, this.mobileWidth, GridConstants.Mobile);
+      this.cssGenerationCommonMethod(layoutData, this.tabletWidth, GridConstants.Mobile);
+      this.cssGenerationCommonMethod(layoutData, this.desktopWidth, GridConstants.Mobile);
+    }
   }
 
   cssGenerationCommonMethod(layoutData: any, screenWidth: string, deviceType: string) {

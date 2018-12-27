@@ -1,0 +1,26 @@
+<div #id class="card-container" *ngIf="show" (window:resize)="onResize()" (contextmenu)="loadContextMenu({event:$event,ref:id})">
+    <header #cardHeader [style.padding]="headerPadding" class="card-header" *ngIf="header"
+     [ngClass]="{'flex-start':(headeralign=='left'),'flex-end':(headeralign=='right'),'flex-center':(headeralign=='center')}">
+        <ng-content select="amexio-header"></ng-content>
+    </header>
+    <div class="card-body cardbody" [style.padding]="bodyPadding"
+     [ngStyle]="{'height.px' : height,'overflow-y' : height!= null ? 'auto' : '','min-height.px' : minHeight}">
+        <ng-content select="amexio-body"></ng-content>
+    </div>
+    <footer #cardFooter [style.padding]="footerPadding" class="card-footer" *ngIf="footer"
+     [ngClass]="{'flex-start':(footeralign=='left'),'flex-end':(footeralign=='right'),'flex-center':(footeralign=='center')}">
+        <ng-content select="amexio-action"></ng-content>
+    </footer>
+</div>
+
+<ng-container *ngIf="flag">
+    <base-contextmenu 
+    [base-context-menu]="contextmenu" 
+    [mouse-location-top]="mouseLocation.top"
+    [mouse-location-left]="mouseLocation.left" 
+    [is-FlagShow]="flag" 
+    [right-click-data]="nodeRightClick"
+    (onRightClick) ="rightClickDataEmit($event)"
+    [position-up]="posixUp">
+    </base-contextmenu>
+</ng-container>

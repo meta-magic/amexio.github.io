@@ -321,7 +321,7 @@ export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnIn
       this.actionComp[0].checkActionComponent();
     }
 
-    this.tabPositionClass =  this.findTabStyleClass();
+    this.tabPositionClass = this.findTabStyleClass();
 
   }
 
@@ -359,7 +359,7 @@ export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnIn
   // Method to close all tab
   closeAllTabs() {
     this.tabCollection.forEach((tabs) => {
-      if (tabs.closable === true || this.closable === true) {
+      if (tabs.closable || this.closable) {
         this.closeTab(tabs);
       }
     });
@@ -370,7 +370,7 @@ export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnIn
     this.tabCollection.forEach((tabs) => {
       tabs.active = false;
       data.forEach((opt: any) => {
-        if (opt.toLowerCase() !== tabs.title.toLowerCase() && (tabs.closable === true || this.closable === true)) {
+        if (opt.toLowerCase() !== tabs.title.toLowerCase() && (tabs.closable || this.closable)) {
           this.closeTab(tabs);
         } else {
           tabList.push(tabs);
@@ -420,9 +420,9 @@ export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnIn
     if (disabledTabInput.length > 0) {
       disabledTabInput.forEach((ele: any) => {
         if (typeof ele === 'string') {
-      this.disableTabByString(flag, ele);
+          this.disableTabByString(flag, ele);
         } else if (typeof ele === 'number') {
-        this.disableTabByNumber(flag, ele);
+          this.disableTabByNumber(flag, ele);
         }
       });
     }
@@ -457,7 +457,7 @@ export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnIn
     if (disabledTabInput.length > 0) {
       disabledTabInput.forEach((ele: any) => {
         if (typeof ele === 'string') {
-        this.enableTabByString(flag, ele);
+          this.enableTabByString(flag, ele);
         } else if (typeof ele === 'number') {
           this.enableTabByNumber(flag, ele);
         }
@@ -561,7 +561,6 @@ export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnIn
     const newTab: AmexioTabPillComponent[] = [];
     let index = 0;
     let tabHighlightIndex = 0;
-
     this.tabCollection.forEach((tab: any, i: number) => {
       tab.active = false;
       if (tab.tabId === tabNode.tabId) {
@@ -569,16 +568,13 @@ export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnIn
         if (tab.hasOwnProperty('tabpillinstance')) {
           tab.target.remove();
         } else {
-          const removeNode = document.getElementById(tab.tabId).parentNode;
-          const parentRefNode = removeNode.parentNode;
-          parentRefNode.removeChild(removeNode);
+         this.tabDomRemove(tab);
         }
       } else if (tab.tabId !== tabNode.tabId) {
         newTab.push(tab);
       }
       index++;
     });
-
     if (tabHighlightIndex === newTab.length) {
       tabHighlightIndex--;
     }
@@ -594,6 +590,12 @@ export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnIn
     if (newTab.length === 1) {
       newTab[0].closable = false;
     }
+  }
+  tabDomRemove(tab: any) {
+    const removeNode = document.getElementById(tab.tabId).parentNode;
+    const parentRefNode = removeNode.parentNode;
+    parentRefNode.removeChild(removeNode);
+
   }
   activateTab(tabId: number) {
     if (tabId !== null) {
@@ -661,10 +663,12 @@ export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnIn
     row.active = true;
     this.getContextMenu();
     this.posixUp = this.getListPosition(id);
-    event.preventDefault();
-    event.stopPropagation();
+    if (this.contextmenu && this.contextmenu.length > 0) {
+
+      event.preventDefault();
+      event.stopPropagation();
+    }
     this.rightClickRowData = row;
-    this.contextStyle = this.getContextMenuStyle();
   }
 
   tempSelectedFlag(tabs: any) {
@@ -696,18 +700,6 @@ export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnIn
     }
   }
 
-  getContextMenuStyle() {
-    return {
-      'cursor': 'default',
-      'position': 'fixed',
-      'display': this.contextMenuFlag ? 'block' : 'none',
-      'left': this.mouseLocation.left + 'px',
-      'top': this.mouseLocation.top + 'px',
-      'box-shadow': '1px 1px 2px #000000',
-      'width': '15%',
-    };
-  }
-
   getListPosition(elementRef: any) {
     const height = 240;
     if ((window.screen.height - elementRef.getBoundingClientRect().bottom) < height) {
@@ -717,36 +709,28 @@ export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnIn
     }
   }
 
-  onContextNodeClick(itemConfig: any) {
+  rightClickDataEmit(Data: any) {
     let temptab;
     this.tabCollection.forEach((obj) => {
       if (obj.active) {
         temptab = obj;
       }
     });
-    if (itemConfig.active) {
-      temptab = itemConfig;
+    if (Data.nodeData.active) {
+      temptab = Data;
     }
-    if (!itemConfig.disabled) {
-      const obj = {
-        menuData: itemConfig,
-        rowData: this.rightClickRowData,
-      };
-      if (itemConfig.text === 'Close All') {
-        this.closeAllTabs();
-      }
-      if (itemConfig.text === this.closeOthersConst) {
-        this.closeOtherTabs(temptab);
-      }
-      this.contextMenuFlag = false;
-      this.removeListner();
-      this.rightClick.emit(obj);
+    if (Data.menuData.text === 'Close All') {
+      this.closeAllTabs();
     }
+    if (Data.menuData.text === this.closeOthersConst) {
+      this.closeOtherTabs(temptab);
+    }
+    this.rightClick.emit(Data);
   }
 
   closeOtherTabs(data: any) {
     this.tabCollection.forEach((tabs) => {
-      if (data.title.toLowerCase() !== tabs.title.toLowerCase() && (tabs.closable === true || this.closable === true)) {
+      if (data.nodeData.title.toLowerCase() !== tabs.title.toLowerCase() && (tabs.closable || this.closable)) {
         this.closeTab(tabs);
       }
     });

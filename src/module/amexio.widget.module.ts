@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
 import { ModuleWithProviders, NgModule } from '@angular/core';
+import { AmexioBaseContextMenuModule } from './base/base.contextmenu.component.module';
 import {AmexioDataModule} from './data/amexio.data.module';
 import {AmexioFormsModule} from './forms/amexio.forms.module';
 import {AmexioLayoutModule} from './layout/amexio.layout.module';
@@ -31,6 +32,7 @@ export * from '../models/GridConstants';
     AmexioMediaModule,
     AmexioPaneModule,
     HttpClientModule,
+    AmexioBaseContextMenuModule,
   ],
   entryComponents: [AmexioTabPillComponent],
   exports: [
@@ -40,6 +42,7 @@ export * from '../models/GridConstants';
     AmexioLayoutModule,
     AmexioMediaModule,
     AmexioPaneModule,
+    AmexioBaseContextMenuModule,
   ],
   declarations: [],
   providers: [CommonDataService, DeviceQueryService, IconLoaderService],

@@ -1,34 +1,49 @@
-<div class="inputgroup form-group">
+<div class="inputgroup">
 
     <label *ngIf="haslabel" role="input" id="textLabelID"  for="textID" [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
-    {{fieldlabel}}
+      {{fieldlabel}}
   </label>
+    <input type="text" 
 
-    <input type="text"
-      
-    role="text" 
+        role="text" 
         id="textID" 
         name="textID"
         aria-labelledby="textLabelID"
         aria-describedby="textDec"
-    
-    class="input-control" [(ngModel)]="value" #inp="ngModel" 
-    [ngClass]="componentClass" (blur)="onblur(inp)" (focus)="onFocus()"
-     (input)="onInput(inp)" (change)="onChangeEv()" [name]="name" 
-     [pattern]="regEx" #ref [attr.placeholder]="placeholder"
-        [maxlength]="maxlength" [minlength]="minlength"
-         [attr.disabled]="disabled ? true: null" 
-         [required]="!allowblank" />
 
-    <span *ngIf="iconfeedback && (inp.invalid && (inp.dirty || inp.touched) || inp.valid)" class="input-control-feedback">
-        <span *ngIf="!isValid "><em class="fa fa-times"></em></span>
-    <span *ngIf="isValid"><em class="fa fa-check"></em></span>
 
-    </span>
-    <span *ngIf="showToolTip && enablepopover" class="dropdown tooltiptext">
-        <div  [innerHTML]="helpInfoMsg"
-        id="textDec"
-        ></div>
-  </span>
+        class="input-control" 
+        [ngClass]="model.touched ? allowblank ? '' : (isValid && model.touched) ? 'input-control-success' : 'input-control-error' :''" 
+        [(ngModel)]="value"
+        (blur)="onBlurEvent()" 
+        (focus)="onFocusEvent()" 
+        (input)="onInput()"
+        (change)="onChangeEv()"
+        [name]="name" 
+        [pattern]="regEx" 
+        [attr.placeholder]="placeholder" 
+        [maxlength]="maxlength" 
+        [minlength]="minlength" 
+        [attr.disabled]="disabled ? true: null"
+        [required]="!allowblank" />
+
+    <ng-container *ngIf="iconfeedback">
+        <span class="input-control-feedback">
+          <span *ngIf="!isValid && model.touched"><em class="fa fa-times"></em></span>
+        <span *ngIf="isValid && model.touched"><em class="fa fa-check"></em></span>
+        </span>
+    </ng-container>
+
+      <input-help *ngIf="showToolTip && enablepopover" 
+      id="textDec"
+      [error-msg]="errormsg" 
+      [min-msg]="minmsg" 
+      [max-error-msg]="maxerrormsg"
+      [min-error-msg]="minerrormsg"
+      [min-length]="minlength"
+      [max-length]="maxlength"
+      [max-msg]="maxmsg">
+      </input-help>
+   
     <span class="inputfieldbar"></span>
 </div>

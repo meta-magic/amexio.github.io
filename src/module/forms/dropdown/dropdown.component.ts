@@ -16,11 +16,8 @@ import {
   OnInit, Output, Renderer2, TemplateRef, ViewChild,
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
-import { BaseFormValidator } from '../../base/base.validator.component';
+import { EventBaseComponent } from '../../base/event.base.component';
 import { CommonDataService } from '../../services/data/common.data.service';
-import { AmexioFormValidator } from './../form-validator/amexio.form.validator.component';
-const noop = () => {
-};
 
 @Component({
   selector: 'amexio-dropdown',
@@ -31,7 +28,7 @@ const noop = () => {
     provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioDropDownComponent), multi: true,
   }],
 })
-export class AmexioDropDownComponent extends BaseFormValidator<any> implements OnInit, ControlValueAccessor, Validators {
+export class AmexioDropDownComponent extends EventBaseComponent<any> implements OnInit, ControlValueAccessor, Validators {
   /*
 Properties
 name : field-label
@@ -151,29 +148,9 @@ description : true for select multiple options
 
   @ViewChild('dropdownitems', { read: ElementRef }) public dropdownitems: ElementRef;
 
-  helpInfoMsg: string;
-
   displayValue = '';
 
-  _errormsg: string;
-
   filteredOptions: any[] = [];
-
-  get errormsg(): string {
-    return this._errormsg;
-  }
-  /*
-  Properties
-  name : error-msg
-  datatype : string
-  version : 4.0 onwards
-  default :
-  description : Sets the error message
-  */
-  @Input('error-msg')
-  set errormsg(value: string) {
-    this.helpInfoMsg = value + '<br/>';
-  }
   /*
   Events
   name : onBlur
@@ -300,6 +277,18 @@ description : Set enable / disable popover.
 */
   @Input('enable-popover') enablepopover: boolean;
 
+  helpInfoMsg: string;
+  _errormsg: string;
+
+  get errormsg(): string {
+    return this._errormsg;
+  }
+
+  @Input('error-msg')
+  set errormsg(value: string) {
+    this.helpInfoMsg = value + '<br/>';
+  }
+
   @ContentChild('amexioBodyTmpl') bodyTemplate: TemplateRef<any>;
   posixUp: boolean;
   isValid: boolean;
@@ -321,6 +310,7 @@ description : Set enable / disable popover.
 
   }
   ngOnInit() {
+    this.name = this.generateName(this.name, this.fieldlabel, 'dropdowninput');
     this.isValid = this.allowblank;
     this.isComponentValid.emit(this.allowblank);
     if (this.placeholder === '') {
@@ -367,7 +357,7 @@ description : Set enable / disable popover.
     }
   }
   multiSelection() {
-    if (this.multiselect) {
+    if (this.multiselect && this.viewData) {
       let preSelectedMultiValues = '';
       const optionsChecked: any = [];
       this.viewData.forEach((row: any) => {
@@ -490,7 +480,7 @@ description : Set enable / disable popover.
     this.isComponentValid.emit(input.valid);
   }
   onDropDownSearchKeyUp(event: any) {
-    if (this.search) {
+    if (this.search && this.viewData) {
       const keyword = event.target.value;
       if (keyword != null && keyword !== '' && keyword !== ' ') {
         this.filteredOptions = [];
@@ -652,26 +642,10 @@ description : Set enable / disable popover.
     return this.isValid;
   }
   public validate(c: FormControl) {
-    return ((!this.allowblank && (this.value || this.value === 0) ) || this.allowblank) ? null : {
+    return ((!this.allowblank && (this.value || this.value === 0)) || this.allowblank) ? null : {
       jsonParseError: {
         valid: true,
       },
     };
-  }
-  // THIS METHOD GENERATE RANDOM STRING
-  generateName() {
-    if (!this.name && this.fieldlabel) {
-      this.name = this.fieldlabel.replace(/\s/g, '');
-    } else if (!this.name && !this.fieldlabel) {
-      this.name = 'textinput-' + this.getRandomString();
-    }
-  }
-  getRandomString(): string {
-    const possibleCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-    let randomString = '';
-    for (let i = 0; i < 6; i++) {
-      randomString += possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
-    }
-    return randomString;
   }
 }

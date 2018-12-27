@@ -21,10 +21,6 @@ import { DropDownListComponent } from './../../base/dropdownlist.component';
 import { ListBaseComponent } from './../../base/list.base.component';
 
 import { of } from 'rxjs';
-
-const noop = () => {
-};
-
 @Component({
   selector: 'amexio-typeahead',
   templateUrl: './typeahead.component.html',
@@ -112,8 +108,6 @@ export class AmexioTypeAheadComponent extends ListBaseComponent<string> implemen
 
   @Input('value-field') valuefield: string;
 
-  @Input('error-msg') errormsg: string;
-
   @Input('place-holder') placeholder: string;
 
   @Input('icon-feedback') iconfeedback: boolean;
@@ -183,7 +177,10 @@ export class AmexioTypeAheadComponent extends ListBaseComponent<string> implemen
   }
 
   ngOnInit() {
-    this.generateName();
+    this.name = this.generateName(this.name, this.fieldlabel, 'typeaheadinput');
+    if (!this.valuefield) {
+      this.valuefield = this.displayfield;
+    }
     this.isValid = this.allowblank;
     this.isComponentValid.emit(this.allowblank);
 
@@ -271,7 +268,11 @@ export class AmexioTypeAheadComponent extends ListBaseComponent<string> implemen
 
   // METHOD TO DISPLAY ITEM WHEN SELECTED
   onDropDownListItemClick(data: any) {
-    this.value = data[this.valuefield];
+    if (this.valuefield) {
+      this.value = data[this.valuefield];
+    }else {
+      this.value = data[this.displayfield];
+    }
     this.displayValue = data[this.displayfield];
     this.onClick.emit(data);
   }
@@ -300,7 +301,7 @@ export class AmexioTypeAheadComponent extends ListBaseComponent<string> implemen
     }
   }
 
-  // METHOS TO EMIT CHANGE EVENT
+  // METHOD TO EMIT CHANGE EVENT
   onChange(event: any) {
     if (event != null) {
       this.change.emit(event);
@@ -343,20 +344,4 @@ export class AmexioTypeAheadComponent extends ListBaseComponent<string> implemen
         },
     };
  }
- // THIS METHOD GENERATE RANDOM STRING
- generateName() {
-  if (!this.name && this.fieldlabel ) {
-    this.name = this.fieldlabel.replace(/\s/g, '');
-  } else if ( !this.name && !this.fieldlabel) {
-    this.name = 'textinput-' + this.getRandomString();
-  }
-}
-getRandomString(): string {
-  const possibleCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-  let randomString = '';
-  for (let i = 0; i < 6; i++) {
-    randomString += possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
-  }
-  return randomString;
-}
 }
