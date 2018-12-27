@@ -12,7 +12,7 @@
         name="FirstEmail"
         aria-labelledby="mailID"
         aria-describedby="emailDes"
-
+        [attr.aria-disabled]="disabled ? true: null"
          class="input-control"
          [ngClass]="model.touched ? allowblank ? '' : (isValid && model.touched) ? 'input-control-success' : 'input-control-error' :''"
          [(ngModel)]="value"
