@@ -10,11 +10,11 @@
   <input type="number" 
 
 
-        role="math" 
-        id="numberID" 
-        name="numberID"
-        aria-labelledby="numberLabelID"
-        aria-describedby="numberDec"
+        role="number"
+        id="firstNumber"
+        aria-placeholder="firstNumber"
+        aria-labelledby="numberDes"
+        aria-describedby="numberDesc"
 
 
          class="input-control"
@@ -41,7 +41,8 @@
   </ng-container>
 
   <input-help *ngIf="showToolTip && enablepopover"
-  id="numberDec" 
+  id="numberDes"
+  role="tooltip"
   [error-msg]="errormsg" 
   [max-error-msg]="maxerrormsg"
   [min-error-msg]="minerrormsg"
