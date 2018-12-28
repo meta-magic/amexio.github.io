@@ -161,7 +161,7 @@ export class AmexioRadioGroupComponent extends ValueAccessorBase<string> impleme
   @Output() isComponentValid: any = new EventEmitter<any>();
 
   viewData: any;
-
+  componentId: any;
   // The internal dataviews model
   // private innerValue: any = '';
 
@@ -170,6 +170,8 @@ export class AmexioRadioGroupComponent extends ValueAccessorBase<string> impleme
   }
 
   ngOnInit() {
+    this.componentId = Math.random()*1000+'radiogrp';
+
     this.name = this.generateName(this.name, this.fieldlabel, 'textinput');
     if (this.defaultSelectedValue) {
       this.value = this.defaultSelectedValue;

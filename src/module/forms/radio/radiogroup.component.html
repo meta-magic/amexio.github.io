@@ -1,8 +1,8 @@
 <div role="radiogroup"
-     aria-labelledby="group_label_1"
+     attr.aria-labelledby="{{componentId}}"
      id="rg1" class="inputgroup from-group">
   <div *ngIf="fieldlabel">
-    <legend>{{fieldlabel}}</legend>
+    <legend id="{{componentId}}">{{fieldlabel}}</legend>
   </div>
   <ng-container *ngIf="horizontal">
     <ng-container *ngFor="let rData of data">

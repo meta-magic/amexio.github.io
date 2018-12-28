@@ -1,11 +1,11 @@
 <div
 [attr.aria-checked]="value ? true : null" 
- aria-labelledby="chkLabel"
- [attr.aria-disabled]="disabled ? true : null" 
+ attr.aria-labelledby="{{componentId}}"
+[attr.aria-disabled]="disabled ? true : null" 
  tabindex="0" class="inputgroup form-group" >
     <label  class="input-box-container" >{{fieldlabel}}
         <input 
-        id="chkLabel" type="checkbox"
+        id="{{componentId}}" type="checkbox"
         [ngClass]="{'checkbox-disable' : disabled}" 
         [attr.checked]="value ? true: null"
         (input)="onInput()" (click)="onClick()" 

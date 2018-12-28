@@ -77,12 +77,14 @@ export class AmexioCheckBoxComponent extends AmexioFormValidator implements Cont
   @Output() input: any = new EventEmitter<any>();
   @Input('name') name: string;
   isValid: boolean;
+  componentId: string;
   @Output() isComponentValid: any = new EventEmitter<any>();
 
   constructor() {
     super();
   }
   ngOnInit() {
+    this.componentId = Math.random()*1000+'chkbox';
     this.generateName();
     this.isValid = !this.required;
     this.isComponentValid.emit(!this.required);

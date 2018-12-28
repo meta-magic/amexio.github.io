@@ -120,11 +120,14 @@ export class AmexioCheckBoxGroupComponent extends ValueAccessorBase<any>
 
   private _model: any;
 
+  componentId: string;
+
   constructor(private httpService: CommonDataService) {
     super();
   }
 
   ngOnInit() {
+    this.componentId = Math.random()*1000+'chkboxgrp';
     let reponseData: any;
     if (this.httpmethod && this.httpurl) {
       this.httpService.fetchData(this.httpurl, this.httpmethod).subscribe((response) => {

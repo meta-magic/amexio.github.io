@@ -2,10 +2,10 @@
     <div class="spinner"></div>
 </div> -->
 <div role="group"
-     aria-labelledby="group_label_1"
+     attr.aria-labelledby="{{componentId}}"
      id="cb1" class="inputgroup form-group">
     <div *ngIf="fieldlabel">
-        <legend id="group_label_1">{{fieldlabel}}</legend>
+        <legend id="{{componentId}}">{{fieldlabel}}</legend>
     </div>
 
     <div *ngIf="horizontal" style="display: inline-flex; flex-direction :row;">
