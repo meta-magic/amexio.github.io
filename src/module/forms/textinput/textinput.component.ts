@@ -226,12 +226,14 @@ default :
 description : On field value change event
 */
   @Output() change: any = new EventEmitter<any>();
+  componentId: any;
   constructor() {
     super();
     this.showToolTip = false;
   }
 
   ngOnInit() {
+    this.componentId = Math.random() * 1000 + 'chkbox';
     this.name = this.generateName(this.name, this.fieldlabel, 'textinput');
   }
 

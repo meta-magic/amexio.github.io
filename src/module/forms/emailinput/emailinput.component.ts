@@ -175,7 +175,7 @@ description : Sets the error message for validation
    description : On field value change event
    */
   @Output() change: any = new EventEmitter<any>();
-
+  componentId: any;
   isValid: boolean;
   @Input('name') name: string;
   constructor() {
@@ -184,6 +184,7 @@ description : Sets the error message for validation
   }
 
   ngOnInit() {
+    this.componentId = Math.random() * 1000 + 'chkbox';
     this.name = this.generateName(this.name, this.fieldlabel, 'emailinput');
   }
   // THIS METHOD USED FOR BLUR EVENT.

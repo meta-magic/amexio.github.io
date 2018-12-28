@@ -1,6 +1,6 @@
 <div class="inputgroup">
 
-    <label *ngIf="haslabel" role="input" id="textLabelID"  for="textID" [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
+    <label *ngIf="haslabel" role="input" id="{{componentId}}"  for="textID" [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
       {{fieldlabel}}
   </label>
     <input type="text" 
@@ -8,7 +8,7 @@
         role="text" 
         id="textID" 
         name="textID"
-        aria-labelledby="textLabelID"
+        attr.aria-labelledby="{{componentId}}"
         aria-describedby="textDec"
 
 

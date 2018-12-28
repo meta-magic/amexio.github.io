@@ -1,7 +1,7 @@
 
 <div class="inputgroup">
 
-  <label *ngIf="hasLabel"  role="email" for="FirstEmail" id="mailID" [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
+  <label *ngIf="hasLabel"  role="email" for="FirstEmail" id="{{componentId}}" [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
     {{fieldlabel}}
   </label> 
 
@@ -10,9 +10,12 @@
         role="email" 
         id="FirstEmail" 
         name="FirstEmail"
-        aria-labelledby="mailID"
+        attr.aria-labelledby="{{componentId}}"
         aria-describedby="emailDes"
         [attr.aria-disabled]="disabled ? true: null"
+
+
+        
          class="input-control"
          [ngClass]="model.touched ? allowblank ? '' : (isValid && model.touched) ? 'input-control-success' : 'input-control-error' :''"
          [(ngModel)]="value"
