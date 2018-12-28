@@ -217,6 +217,7 @@ description : Set enable / disable popover.
   @Input('enable-popover') enablepopover: boolean;
 
   @ViewChild(NgModel) model: NgModel;
+  componentId: any;
 
   constructor() {
     super();
@@ -224,6 +225,7 @@ description : Set enable / disable popover.
   }
 
   ngOnInit() {
+    this.componentId = Math.random() * 1000 + 'chkbox';
     this.name = this.generateName(this.name, this.fieldlabel, 'numberinput');
   }
   // THIS METHOD USED FOR BLUR EVENT.

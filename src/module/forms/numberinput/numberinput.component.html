@@ -3,7 +3,7 @@
 
 <div class="inputgroup">
 
-  <label *ngIf="haslabel" role="number" id="numberLabelID"  for="numberID"  [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
+  <label *ngIf="haslabel" role="number" id="{{componentId}}"  for="numberID"  [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
       {{fieldlabel}}
   </label>
 
@@ -13,7 +13,7 @@
         role="number"
         id="firstNumber"
         aria-placeholder="firstNumber"
-        aria-labelledby="numberDes"
+        attr.aria-labelledby="{{componentId}}"
         aria-describedby="numberDesc"
 
 

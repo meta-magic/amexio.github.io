@@ -216,6 +216,7 @@ description : On field value change event
   @Output() change: any = new EventEmitter<any>();
   @ViewChild(NgModel) model: NgModel;
   @Input('name') name: string;
+  componentId: any;
   constructor() {
     super();
     this.showToolTip = false;
@@ -242,6 +243,7 @@ description : On field value change event
   }
 
   ngOnInit() {
+    this.componentId = Math.random() * 1000 + 'chkbox';
     this.isValid = this.isFieldValid();
     this.name = this.generateName(this.name, this.fieldlabel, 'passwordinput');
   }

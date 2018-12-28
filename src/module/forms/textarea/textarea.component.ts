@@ -230,12 +230,14 @@ description : Set enable / disable popover.
   @Input('name') name: string;
 
   @ViewChild(NgModel) model: NgModel;
+  componentId: any;
 
   constructor() {
     super();
     this.showToolTip = false;
   }
   ngOnInit() {
+    this.componentId = Math.random() * 1000 + 'chkbox';
     this.name = this.generateName(this.name, this.fieldlabel, 'textareainput');
   }
 
