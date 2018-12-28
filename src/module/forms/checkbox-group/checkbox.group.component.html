@@ -1,18 +1,23 @@
 <!-- <div style="height: 300px;" *ngIf="mask">
     <div class="spinner"></div>
 </div> -->
-<div  class="inputgroup form-group">
+<div role="group"
+     aria-labelledby="group_label_1"
+     id="cb1" class="inputgroup form-group">
     <div *ngIf="fieldlabel">
-        <legend>{{fieldlabel}}</legend>
+        <legend id="group_label_1">{{fieldlabel}}</legend>
     </div>
 
-    <div *ngIf="horizontal" style="display: inline-flex; flex-direction :row;">   
+    <div *ngIf="horizontal" style="display: inline-flex; flex-direction :row;">
+         
         <checkbox *ngFor="let data of viewdata | async" [checked]="data.checked" [value]="data" [disabled]="data?.disabled || disabled" [label]="data[displayfield]">
-        </checkbox>   
+        </checkbox>
+            
     </div>
 
     <div *ngIf="!horizontal" style="display: inline-flex;flex-direction :column;">
            <checkbox *ngFor="let data of viewdata | async" [checked]="data.checked" [value]="data" [disabled]="data?.disabled || disabled" [label]="data[displayfield]">
         </checkbox>
+        
     </div>
 </div>
