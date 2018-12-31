@@ -138,6 +138,7 @@ export class AmexioFloatingGroupButtonComponent extends ListBaseDatepickerCompon
  floatinggroupxposition: string;
  floatinggroupyposition: string;
  togglefloatinggroup = false;
+ ispressed = false;
  datacount = 0;
  constructor(private elementref: ElementRef, private cdf: ChangeDetectorRef, renderer: Renderer2) {
 super(renderer, elementref, cdf);
@@ -157,6 +158,7 @@ super(renderer, elementref, cdf);
    }
  }
  buttonClick(clickEvent: any) {
+   this.ispressed = true;
    const x = clickEvent.currentTarget.getBoundingClientRect().left;
    const y = clickEvent.currentTarget.getBoundingClientRect().top;
    if (!this.disabled) {
