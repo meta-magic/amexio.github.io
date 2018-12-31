@@ -12,7 +12,7 @@ today! As a contributor, here are the guidelines we would like you to follow:
  - [Coding Rules](#rules)
  - [Commit Message Guidelines](#commit)
 ## <a name="coc"></a> Code of Conduct
-Help us keep AMEXIO open and inclusive. Please read and follow our [Code of Conduct](https://github.com/meta-magic/amexio.github.io).
+Help us keep AMEXIO open and inclusive. Please read and follow our [Code of Conduct](https://github.com/meta-magic/amexio.github.io/CODE_OF_CONDUCT.md).
 
 ## <a name="question"></a> Got a Question or Problem?
 
