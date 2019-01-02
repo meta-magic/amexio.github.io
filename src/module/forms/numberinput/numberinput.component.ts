@@ -250,13 +250,13 @@ description : Set enable / disable popover.
 
   isFieldValidate(): boolean {
     if (this.minvalue && !this.maxvalue) {
-      return this.innerValue && (this.innerValue > this.minvalue);
+      return this.innerValue && (this.innerValue >= this.minvalue);
     } else if (!this.minvalue && this.maxvalue) {
-      return this.innerValue && (this.innerValue < this.maxvalue);
+      return this.innerValue && (this.innerValue <= this.maxvalue);
     } else if (!this.minvalue && !this.maxvalue && this.innerValue) {
       return true;
     } else {
-      return this.innerValue && (this.innerValue > this.minvalue && this.innerValue < this.maxvalue);
+      return this.innerValue && (this.innerValue >= this.minvalue && this.innerValue <= this.maxvalue);
     }
   }
 
