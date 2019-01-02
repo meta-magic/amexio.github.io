@@ -162,6 +162,7 @@ export class AmexioRadioGroupComponent extends ValueAccessorBase<string> impleme
 
   viewData: any;
   componentId: any;
+  tabindex = '-1';
   // The internal dataviews model
   // private innerValue: any = '';
 
@@ -191,6 +192,7 @@ export class AmexioRadioGroupComponent extends ValueAccessorBase<string> impleme
     viewData.forEach((opt: any) => {
       if (opt[this.valuefield] === this.innerValue || (opt.hasOwnProperty('selected') && opt.selected)) {
         this.isValid = true;
+        this.tabindex = '0';
         this.isComponentValid.emit(true);
         return;
       }

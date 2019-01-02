@@ -8,7 +8,7 @@
     <ng-container *ngFor="let rData of data">
       <span role="radio"
       aria-checked="(value === rData[displayfield])"
-      tabindex="0" class="input-box-container" style="padding-bottom:0px !important; margin: 5px !important" (click)="onClick(rData)" 
+      [tabindex]="(value === rData[valuefield]) ? 0 : -1" class="input-box-container" style="padding-bottom:0px !important; margin: 5px !important" (click)="onClick(rData)" 
       [ngClass]="{'disable-component' : rData.disabled || disabled}">{{rData[displayfield]}}
         <input type="radio" [required]="!allowblank" [name]="name" 
         [value]="rData[valuefield]" [attr.disabled]="rData?.disabled ? true: null"
@@ -23,7 +23,7 @@
       <div>
         <span role="radio"
         aria-checked="(value === rData[displayfield])"
-        tabindex="0" class="input-box-container" style="padding-bottom:0px !important" (click)="onClick(rData)" [ngClass]="{'disable-component' : rData.disabled || disabled}">{{rData[displayfield]}}
+        [tabindex]="(value === rData[valuefield]) ? 0 : -1" class="input-box-container" style="padding-bottom:0px !important" (click)="onClick(rData)" [ngClass]="{'disable-component' : rData.disabled || disabled}">{{rData[displayfield]}}
           <input type="radio" [required]="!allowblank" [name]="name" [checked]="(value === rData[valuefield])" required
             [value]="rData[valuefield]" [attr.disabled]="rData?.disabled ? true: null" [(ngModel)]="value">
           <span class="input-box-radiobox-label"></span>
