@@ -127,7 +127,7 @@ description : Set true to show buttom block
   // THIS METHOD IS USED FOR ADDING CSS CLASS DYNAMICALLY
   constructor() { }
   buttonClick(event: any) {
-    this.ispressed = true;
+    this.ispressed = !this.ispressed;
     if (!this.disabled) {
       this.onClick.emit(event);
     }
