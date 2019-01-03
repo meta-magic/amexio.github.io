@@ -241,7 +241,7 @@ export class AmexioFloatingButtonComponent implements OnInit {
 
   // Method for button click
   buttonClick(clickEvent: any) {
-    this.ispressed = true;
+    this.ispressed = !this.ispressed;
     if (!this.disabled) {
       this.onClick.emit({ thisObj: this, event: clickEvent });
     }

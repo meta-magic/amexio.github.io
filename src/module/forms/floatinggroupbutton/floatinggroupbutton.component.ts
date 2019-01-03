@@ -158,7 +158,7 @@ super(renderer, elementref, cdf);
    }
  }
  buttonClick(clickEvent: any) {
-   this.ispressed = true;
+   this.ispressed = !this.ispressed;
    const x = clickEvent.currentTarget.getBoundingClientRect().left;
    const y = clickEvent.currentTarget.getBoundingClientRect().top;
    if (!this.disabled) {
