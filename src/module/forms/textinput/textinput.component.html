@@ -6,10 +6,14 @@
     <input type="text" 
 
         role="text" 
+        tabindex="0"
         id="textID" 
         name="textID"
         attr.aria-labelledby="{{componentId}}"
         aria-describedby="textDec"
+        [attr.aria-required]="!allowblank"
+        [attr.aria-invalid]="!isValid "
+
 
 
         class="input-control" 
@@ -35,8 +39,10 @@
     </ng-container>
 
       <input-help *ngIf="showToolTip && enablepopover" 
+
       id="textDec"
-    role="tooltip"
+      role="tooltip"
+
       [error-msg]="errormsg" 
       [min-msg]="minmsg" 
       [max-error-msg]="maxerrormsg"

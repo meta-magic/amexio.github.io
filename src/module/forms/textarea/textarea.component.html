@@ -1,17 +1,21 @@
 
 <div class="inputgroup">
 
-  <label *ngIf="haslabel" role="textarea" for="AreaFirst" id="{{componentId}}"  [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
+  <label *ngIf="haslabel" role="textarea" for="areaText" id="{{componentId}}"  [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
     {{fieldlabel}}
   </label>
  
   <textarea type="text"
 
         role="text" 
-        id="AreaFirst" 
-        name="AreaFirst"
+        tabindex="0"
+        id="areaText" 
+        name="areaText"
         attr.aria-labelledby="{{componentId}}"
         aria-describedby="textAreaDes"
+        [attr.aria-required]="!allowblank"
+        [attr.aria-invalid]="!isValid "
+
          
 
          class="input-control"
