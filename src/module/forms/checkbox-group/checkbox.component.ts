@@ -15,6 +15,7 @@ export class CheckboxComponent implements OnInit {
 
   @Input() disabled: boolean;
 
+  componentId: string;
   constructor(@Host() private checkboxGroup: AmexioCheckBoxGroupComponent) {}
 
   toggleCheck() {
@@ -31,6 +32,7 @@ export class CheckboxComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.componentId = Math.random() * 1000 + 'chkboxgrp';
     setTimeout(() => {
       if (this.checked) {
        this.checkboxGroup.add(this.value);
