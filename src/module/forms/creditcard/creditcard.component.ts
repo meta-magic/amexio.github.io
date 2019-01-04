@@ -207,9 +207,9 @@ export class AmexioCreditcardComponent implements ControlValueAccessor, OnInit {
     for (let i = 0; i < this.yearcount; i++) {
       this.yearList.push(this.currentYear + i);
     }
-
   }
   creditCardNumberSpaceRemove(value: any) {
+    if (value) {
     value = value.toString();
     const v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
     const matches = v.match(/\d{4,16}/g);
@@ -226,6 +226,7 @@ export class AmexioCreditcardComponent implements ControlValueAccessor, OnInit {
       return value;
     }
   }
+}
   switchCaseMethod() {
     switch (this.validEagerCard) {
       case 'eagerflagvisa':
