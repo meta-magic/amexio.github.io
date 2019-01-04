@@ -1,47 +1,20 @@
-<!-- <div
-[attr.aria-checked]="value ? true : null" 
- attr.aria-labelledby="{{componentId}}"
-[attr.aria-disabled]="disabled ? true : null" 
- tabindex="0" class="inputgroup form-group" >
-    <label  class="input-box-container" >{{fieldlabel}}
-        <input 
-        id="{{componentId}}" type="checkbox"
-        [ngClass]="{'checkbox-disable' : disabled}" 
-        [attr.checked]="value ? true: null"
-        (input)="onInput()" (click)="onClick()" 
-        [attr.disabled] = "disabled ? true: null"
-        [required]="required" >
-        <span class="input-box-checkbox-label"
-      ></span>
-      </label>
-  </div> -->
-
-
-
-<!-- <div class="inputgroup form-group" >
-    <label class="input-box-container" >{{fieldlabel}}
-        <input type="checkbox"  [ngClass]="{'checkbox-disable' : disabled}" 
-        [attr.checked]="value ? true: null" 
-        (input)="onInput()" (click)="onClick()" [attr.disabled] = "disabled ? true: null" [required]="required">
-        <span class="input-box-checkbox-label"></span>
-      </label>
-</div> -->
-
 <div
-[attr.aria-checked]="value ? true : null"
-[attr.aria-disabled]="disabled ? true : false"  
- class="inputgroup form-group" >
-    <label  for="a" class="input-box-container" >
+[attr.aria-checked]="value"
+ class="inputgroup form-group"
+  >
+    <label  for="{{componentId}}" class="input-box-container" >
         <input 
-        id="a" type="checkbox"
+        id="{{componentId}}" type="checkbox" style="top:0; left:0"
         [ngClass]="{'checkbox-disable' : disabled}" 
         [attr.checked]="value ? true: null"
          tabindex="0"
         (input)="onInput()" (click)="onClick()" 
         [attr.disabled] = "disabled ? true: null"
+        [attr.aria-disabled]="disabled" 
+        [attr.aria-required]="required" 
         [required]="required" >
         {{fieldlabel}}
-        <span class="input-box-checkbox-label"> 
+        <span class="input-box-checkbox-label">
         </span>
       </label>
   </div>
