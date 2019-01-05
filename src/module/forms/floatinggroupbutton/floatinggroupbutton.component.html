@@ -13,8 +13,7 @@
 </amexio-floating-button>                
     
 <!-- *ngIf="togglefloatinggroup" -->
-<div class="floatinggroup" role="button" tabindex="-1" aria-haspopup="true" [attr.aria-pressed]="ispressed" [ngStyle]="dropdownstyle" 
-[ngStyle]="dropdownstyle" 
+<div class="floatinggroup" *ngIf="togglefloatinggroup" role="button" tabindex="-1" aria-haspopup="true" [attr.aria-pressed]="ispressed" 
 [ngStyle]="{'top':floatinggroupyposition, 'left':floatinggroupxposition}">
     <div class="floatinggroupitems" *ngFor="let node of data" >
         <div *ngIf="node.icon" class="floatingbutton-circle" [ngClass]="node.typeclass" (click)="onButtonClick(node,$event)">
