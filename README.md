@@ -497,8 +497,9 @@ Fill up the required Component Params
 
 ## License
 
-Copyright © [MetaMagic Global Inc](http://www.metamagicglobal.com/), 2017-18. [Amexio Angular EXtensions](http://www.amexio.tech). All rights reserved.
+Copyright © [MetaMagic Global Inc](http://www.metamagicglobal.com/), 2017-19. NJ, USA. [Amexio Angular EXtensions](http://www.amexio.tech). All rights reserved.<br>
+BetaMagic Global Pvt Ltd, Pune, Maharashtra, India is a wholly owned subsidiary of MetaMagic Global Inc, NJ, USA.
 
-Licensed under the [Apache 2.0](http://www.amexio.org/metamagic-showcase/license.html)  License. API Docs by CC By 4.0
+Licensed under the [Apache 2.0](http://www.amexio.org/metamagic-showcase/license.html)  License. [Amexio API Docs](http://api.amexio.org) by [CC By 4.0](https://creativecommons.org/licenses/by/4.0/legalcode)
 
 **Enjoy!**
