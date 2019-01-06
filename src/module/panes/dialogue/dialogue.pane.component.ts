@@ -88,7 +88,7 @@ export class AmexiodialoguePaneComponent implements OnChanges, OnInit, OnDestroy
    default : false
    description : Enables And Disables the Escape button.
    */
-  @Input('close-on-escape')  closeonescape: boolean;
+  @Input('close-on-escape') closeonescape: boolean;
 
   /*
    Properties
@@ -98,7 +98,7 @@ export class AmexiodialoguePaneComponent implements OnChanges, OnInit, OnDestroy
    default : theme-color
    description : show the type of button.
    */
-  @Input('button-type')  buttontype: string;
+  @Input('button-type') buttontype: string;
 
   /*
    Properties
@@ -192,7 +192,7 @@ export class AmexiodialoguePaneComponent implements OnChanges, OnInit, OnDestroy
    default : confirm
    description : Mode to open, alert or dialogue mode.
    */
-  @Input() type: 'confirm'| 'alert';
+  @Input() type: 'confirm' | 'alert';
 
   /*
    Properties
@@ -251,8 +251,8 @@ export class AmexiodialoguePaneComponent implements OnChanges, OnInit, OnDestroy
 
   constructor(private renderer: Renderer2) {
     this.closable = true;
-    this.secondaryactionlabel  = 'Cancel';
-    this.primaryactionlabel   = 'Ok';
+    this.secondaryactionlabel = 'Cancel';
+    this.primaryactionlabel = 'Ok';
     this.custom = false;
     this.buttonsize = 'default';
     this.buttontype = 'theme-color';
@@ -278,23 +278,31 @@ export class AmexiodialoguePaneComponent implements OnChanges, OnInit, OnDestroy
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['showdialogue']) {
+    debugger;
+    if (changes['show']) {
+      this.show = changes.show.currentValue;
+      this.escapeMethod();
+    } else if (changes['showdialogue']) {
       this.show = changes.showdialogue.currentValue;
-      if (this.show && this.closeonescape) {
-        this.globalListenFunc = this.renderer.listen('document', 'keyup.esc', (e: any) => {
-          this.showdialogue = false ;
-          this.show = false;
-          this.showChange.emit(false);
-        });
-      } else if (this.globalListenFunc) {
-        this.globalListenFunc();
-      }
+      this.escapeMethod();
     }
   }
 
+  // Method called on escape
+  escapeMethod() {
+    if (this.show && this.closeonescape) {
+      this.globalListenFunc = this.renderer.listen('document', 'keyup.esc', (e: any) => {
+        this.showdialogue = false;
+        this.show = false;
+        this.showChange.emit(false);
+      });
+    } else if (this.globalListenFunc) {
+      this.globalListenFunc();
+    }
+  }
   onCloseClick() {
     if (this.closable) {
-      this.showdialogue = false ;
+      this.showdialogue = false;
       this.show = false;
       this.showChange.emit(false);
       this.close.emit(false);
