@@ -6,16 +6,17 @@
     </label>
 
     <ng-container *ngIf="datepicker && !timepicker">
-      <input type="text" #pickerDt value="{{dateModel|date:dateformat}}" [attr.disabled]="disabled ? true: null" [required]="required ? true: null"
-             (blur)="onBlur()" (focus)="onFocus(rootDiv)" (focusout)="onFocusOut(pickerDt)" (change)="change.emit()" class="input-control"
-             [ngStyle]="{'cursor': readonly ? 'not-allowed':'pointer'}" placeholder="Choose Date" />
+      <input type="text" #pickerDt value="{{dateModel|date:dateformat}}" [attr.disabled]="disabled ? true: null"
+        [required]="required ? true: null" (blur)="onBlur()" (focus)="onFocus(rootDiv)" (focusout)="onFocusOut(pickerDt)"
+        (change)="change.emit()" class="input-control" [ngStyle]="{'cursor': readonly ? 'not-allowed':'pointer'}"
+        placeholder="Choose Date" />
     </ng-container>
 
     <ng-container *ngIf="timepicker">
-      <input type="text" [(ngModel)]="selectedDate" value="{{selectedDate|date:dateformat}} {{hrs + ' : ' + min}}" [attr.disabled]="disabled ? true: null"
-             [attr.required]="required ? true: null" (blur)="onBlur()" (focus)="onFocus(rootDiv)" (input)="onInput($event)"
-             (change)="change.emit()" class="input-control" [ngStyle]="{'cursor': readonly ? 'not-allowed':'pointer'}" placeholder="Choose Time"
-      />
+      <input type="text" [(ngModel)]="selectedDate" value="{{selectedDate|date:dateformat}} {{hrs + ' : ' + min}}"
+        [attr.disabled]="disabled ? true: null" [attr.required]="required ? true: null" (blur)="onBlur()" (focus)="onFocus(rootDiv)"
+        (input)="onInput($event)" (change)="change.emit()" class="input-control" [ngStyle]="{'cursor': readonly ? 'not-allowed':'pointer'}"
+        placeholder="Choose Time" />
     </ng-container>
 
     <div class="drodown-caret-down" style="cursor: pointer" (click)="openPicker(rootDiv)">
@@ -44,22 +45,22 @@
           <amexio-form-icon key="datepicker_next_fast" (onClick)="nextYear($event)"></amexio-form-icon>
         </li>
         <li>
-                    <span *ngIf="dropdownDatepicker">
-                    <span style="cursor:pointer"(click)="dropdownDatePicker()">
-                        {{selectedDate | date:'MMMM'}}
-                        <br>
-                        <span class="title">{{selectedDate | date:'y'}}</span>
-                    </span>
-                    <span  (onClick)=" dropdownDatePicker()" style="cursor:pointer">
-                        <amexio-form-icon key="dropdown_caret" (onClick)="dropdownDatePicker()"></amexio-form-icon>
-                    </span>
-                </span>
+          <span *ngIf="dropdownDatepicker">
+            <span style="cursor:pointer" (click)="dropdownDatePicker()">
+              {{selectedDate | date:'MMMM'}}
+              <br>
+              <span class="title">{{selectedDate | date:'y'}}</span>
+            </span>
+            <span (onClick)=" dropdownDatePicker()" style="cursor:pointer">
+              <amexio-form-icon key="dropdown_caret" (onClick)="dropdownDatePicker()"></amexio-form-icon>
+            </span>
+          </span>
 
           <span *ngIf="!dropdownDatepicker">
-                    {{selectedDate | date:'MMMM'}}
-                    <br>
-                    <span class="title" style="cursor:auto">{{selectedDate | date:'y'}}</span>
-                </span>
+            {{selectedDate | date:'MMMM'}}
+            <br>
+            <span class="title" style="cursor:auto">{{selectedDate | date:'y'}}</span>
+          </span>
 
         </li>
       </ul>
@@ -73,9 +74,9 @@
 
         <ng-container *ngFor="let dayArray of daysArray">
           <li *ngFor="let day of dayArray" (click)="onDateClick(day.date)" [ngClass]="{'date1':validateDays(day.date) , 'date1':day.isDisabled}">
-                        <span (click)="onDateClick(day.date)" class="day" [ngClass]="{'active':day.selected, 'currentMonth':day.isCurrentMonth, 'notCurrentMonth':!day.isCurrentMonth,'invaliddays':validateDays(day.date), 'disabled':day.isDisabled}">
-                            {{ day.date | date:'d' }}
-                        </span>
+            <span (click)="onDateClick(day.date)" class="day" [ngClass]="{'active':day.selected, 'currentMonth':day.isCurrentMonth, 'notCurrentMonth':!day.isCurrentMonth,'invaliddays':validateDays(day.date), 'disabled':day.isDisabled}">
+              {{ day.date | date:'d' }}
+            </span>
           </li>
         </ng-container>
 
@@ -87,7 +88,7 @@
 
       </ul>
     </div>
-    <table class="table"  [ngStyle]="{'display': timepicker ? 'block' : 'none'}" style="cursor : pointer;text-align: center;padding: 5px;">
+    <table class="table" [ngStyle]="{'display': timepicker ? 'block' : 'none'}" style="cursor : pointer;text-align: center;padding: 5px;">
       <!--if picker is true-->
       <tr style="padding: 10px;">
         <td colspan="2"></td>
@@ -120,64 +121,64 @@
 
       <div class="dropdiv1">
 
-                <span class="dropspan1">
-                    <ul class="dropul1">
-                        <li class="li4" (click)="getDropdownMonth(month)" *ngFor="let month of monthList1">
-                            <span [ngClass]="{'change4':month.flag}"> {{month.name}}</span>
-                        </li>
+        <span class="dropspan1">
+          <ul class="dropul1">
+            <li class="li4" (click)="getDropdownMonth(month)" *ngFor="let month of monthList1">
+              <span [ngClass]="{'change4':month.flag}"> {{month.name}}</span>
+            </li>
 
-                    </ul>
-                </span>
+          </ul>
+        </span>
 
         <span class="dropspan2">
-                    <ul class="dropul2">
-                        <li class="li4" (click)="getDropdownMonth(month)" *ngFor="let month of monthList2">
-                            <span [ngClass]="{'change4':month.flag}"> {{month.name}}</span>
-                        </li>
+          <ul class="dropul2">
+            <li class="li4" (click)="getDropdownMonth(month)" *ngFor="let month of monthList2">
+              <span [ngClass]="{'change4':month.flag}"> {{month.name}}</span>
+            </li>
 
-                    </ul>
-                </span>
+          </ul>
+        </span>
 
         <span class="dropspan1">
-                    <ul class="dropul1">
-                        <li [ngClass]="{ 'disablearrow':backArrowFlag}" class="dropiconpadding" (click)="arrowClickBack()">
-                            <amexio-form-icon key="paginator_first" (onClick)="arrowClickBack()"></amexio-form-icon>
-                        </li>
-                        <li [ngClass]="{ 'disablearrow':year.disabled}" class="li4" (click)="getDropdownYear(year)" *ngFor="let year of yearList1">
-                            <span [ngClass]="{'change4':year.flag && !year.disabled}">
-                                {{year.year}}
-                            </span>
-                        </li>
+          <ul class="dropul1">
+            <li [ngClass]="{ 'disablearrow':backArrowFlag}" class="dropiconpadding" (click)="arrowClickBack()">
+              <amexio-form-icon key="paginator_first" (onClick)="arrowClickBack()"></amexio-form-icon>
+            </li>
+            <li [ngClass]="{ 'disablearrow':year.disabled}" class="li4" (click)="getDropdownYear(year)" *ngFor="let year of yearList1">
+              <span [ngClass]="{'change4':year.flag && !year.disabled}">
+                {{year.year}}
+              </span>
+            </li>
 
 
-                    </ul>
-                </span>
+          </ul>
+        </span>
 
         <span class="dropspan4">
-                    <ul class="dropul2">
+          <ul class="dropul2">
 
-                        <li [ngClass]="{ 'disablearrow':forwardArrowFlag}" class="dropiconpadding" (click)="arrowClickForward()">
-                            <amexio-form-icon key="paginator_last" (onClick)="arrowClickForward()"></amexio-form-icon>
-                        </li>
-                        <li [ngClass]="{ 'disablearrow ':year.disabled}" class="li4" (click)="getDropdownYear(year)" *ngFor="let year of yearList2">
-                            <span [ngClass]="{'change4':year.flag && !year.disabled}">
-                                {{year.year}}
-                            </span>
-                        </li>
+            <li [ngClass]="{ 'disablearrow':forwardArrowFlag}" class="dropiconpadding" (click)="arrowClickForward()">
+              <amexio-form-icon key="paginator_last" (onClick)="arrowClickForward()"></amexio-form-icon>
+            </li>
+            <li [ngClass]="{ 'disablearrow ':year.disabled}" class="li4" (click)="getDropdownYear(year)" *ngFor="let year of yearList2">
+              <span [ngClass]="{'change4':year.flag && !year.disabled}">
+                {{year.year}}
+              </span>
+            </li>
 
-                    </ul>
-                </span>
+          </ul>
+        </span>
 
       </div>
       <div class="btndiv1">
-                <span class="dropbtnspan">
-                    <button (click)="navigateDropdown()" class="datedropbtn">
-                        ok
-                    </button>
-                    <button class="datedropbtn" (click)="negateDrop()">
-                        cancel
-                    </button>
-                </span>
+        <span class="dropbtnspan">
+          <button (click)="navigateDropdown()" class="datedropbtn">
+            ok
+          </button>
+          <button class="datedropbtn" (click)="negateDrop()">
+            cancel
+          </button>
+        </span>
 
 
       </div>
