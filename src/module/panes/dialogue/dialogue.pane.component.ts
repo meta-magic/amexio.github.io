@@ -278,7 +278,6 @@ export class AmexiodialoguePaneComponent implements OnChanges, OnInit, OnDestroy
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    debugger;
     if (changes['show']) {
       this.show = changes.show.currentValue;
       this.escapeMethod();
