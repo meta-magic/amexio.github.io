@@ -6,7 +6,7 @@
 <input type="checkbox"  
        style="top:0; left:0"
        class="form-control" 
-       tabindex="0"
+       [attr.tabindex]="disabled ? -1 : 0"
        id="{{componentId}}"
        [ngClass]="{'checkbox-disable' : disabled}" 
        [checked]="checked" 

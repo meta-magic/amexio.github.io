@@ -57,4 +57,8 @@ export abstract class ValueAccessorBase<T> implements ControlValueAccessor {
     }
     return randomString;
   }
+
+  createCompId(inputType: any, name: any) {
+    return inputType + '_' + name + '_' + Math.floor(Math.random() * 1000 + 999);
+  }
 }
