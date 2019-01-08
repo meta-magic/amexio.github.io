@@ -11,38 +11,38 @@ import { DomHandler } from './slider.handler';
 @Component({
   selector: 'amexio-slider',
   template: `
-  <div id="id" [ngStyle]="style" [class]="styleClass"
-  [ngClass]="{'ui-slider ui-widget ui-widget-content ui-corner-all':true,'disable-component':disabled,
-          'ui-slider-horizontal':orientation == 'horizontal',
-          'ui-slider-vertical':orientation == 'vertical','ui-slider-animate':animate}"
-       (click)="onBarClick($event)">
-       <div role="slider"  tabindex="0" aria-labelledby="id"
-       [attr.aria-orientation] = "orientation" [attr.aria-valuenow] = "value"
-       aria-valuemin="1" aria-valuemax="10"></div>
-    <span *ngIf="range && orientation == 'horizontal'" class="ui-slider-range ui-widget-header ui-corner-all"
-    [ngStyle]="{'left':handleValues[0] + '%',width: (handleValues[1] - handleValues[0] + '%')}"></span>
-    <span *ngIf="range && orientation == 'vertical'" class="ui-slider-range ui-widget-header ui-corner-all"
-    [ngStyle]="{'bottom':handleValues[0] + '%',height: (handleValues[1] - handleValues[0] + '%')}"></span>
-    <span *ngIf="!range && orientation=='vertical'" class="ui-slider-range ui-slider-range-min ui-widget-header ui-corner-all"
-    [ngStyle]="{'height': handleValue + '%'}"></span>
-    <span *ngIf="!range && orientation=='horizontal'" class="ui-slider-range ui-slider-range-min ui-widget-header ui-corner-all"
-    [ngStyle]="{'width': handleValue + '%'}"></span>
-    <span *ngIf="!range" class="ui-slider-handle ui-state-default ui-corner-all ui-clickable"
-    (mousedown)="onMouseDown($event)" (touchstart)="onTouchStart($event)" (touchmove)="onTouchMove($event)" (touchend)="dragging=false"
-          [style.transition]="dragging ? 'none': null" [ngStyle]="{'left': orientation == 'horizontal' ? handleValue + '%' : null,
-          'bottom': orientation == 'vertical' ? handleValue + '%' : null}"></span>
-    <span *ngIf="range" (mousedown)="onMouseDown($event,0)"
-    (touchstart)="onTouchStart($event,0)" (touchmove)="onTouchMove($event,0)" (touchend)="dragging=false"
-    [style.transition]="dragging ? 'none': null" class="ui-slider-handle ui-state-default ui-corner-all ui-clickable"
-          [ngStyle]="{'left': rangeStartLeft, 'bottom': rangeStartBottom}"
-          [ngClass]="{'ui-slider-handle-active':handleIndex==0}"></span>
-    <span *ngIf="range" (mousedown)="onMouseDown($event,1)"
-    (touchstart)="onTouchStart($event,1)" (touchmove)="onTouchMove($event,1)"
-    (touchend)="dragging=false"
-    [style.transition]="dragging ? 'none': null"
-    class="ui-slider-handle ui-state-default ui-corner-all ui-clickable"
-          [ngStyle]="{'left': rangeEndLeft, 'bottom': rangeEndBottom}" [ngClass]="{'ui-slider-handle-active':handleIndex==1}"></span>
-  </div>
+  <div id="id"  [ngStyle]="style" [class]="styleClass"
+    [ngClass]="{'ui-slider ui-widget ui-widget-content ui-corner-all':true,'disable-component':disabled,
+            'ui-slider-horizontal':orientation == 'horizontal',
+            'ui-slider-vertical':orientation == 'vertical','ui-slider-animate':animate}"
+         (click)="onBarClick($event)">
+         <div role="slider" tabindex="0"  aria-labelledby="id"
+          [attr.aria-orientation] = "orientation" [attr.aria-valuenow] = "value"
+          aria-valuemin="1" aria-valuemax="10" [attr.aria-valuetext]="value" (keyup)="onKeyUp($event);"></div>
+      <span *ngIf="range && orientation == 'horizontal'" class="ui-slider-range ui-widget-header ui-corner-all"
+      [ngStyle]="{'left':handleValues[0] + '%',width: (handleValues[1] - handleValues[0] + '%')}"></span>
+      <span *ngIf="range && orientation == 'vertical'" class="ui-slider-range ui-widget-header ui-corner-all"
+      [ngStyle]="{'bottom':handleValues[0] + '%',height: (handleValues[1] - handleValues[0] + '%')}"></span>
+      <span *ngIf="!range && orientation=='vertical'" class="ui-slider-range ui-slider-range-min ui-widget-header ui-corner-all"
+      [ngStyle]="{'height': handleValue + '%'}"></span>
+      <span *ngIf="!range && orientation=='horizontal'" class="ui-slider-range ui-slider-range-min ui-widget-header ui-corner-all"
+      [ngStyle]="{'width': handleValue + '%'}"></span>
+      <span *ngIf="!range" class="ui-slider-handle ui-state-default ui-corner-all ui-clickable"
+      (mousedown)="onMouseDown($event)" (touchstart)="onTouchStart($event)" (touchmove)="onTouchMove($event)" (touchend)="dragging=false"
+            [style.transition]="dragging ? 'none': null" [ngStyle]="{'left': orientation == 'horizontal' ? handleValue + '%' : null,
+            'bottom': orientation == 'vertical' ? handleValue + '%' : null}"></span>
+      <span *ngIf="range" (mousedown)="onMouseDown($event,0)"
+      (touchstart)="onTouchStart($event,0)" (touchmove)="onTouchMove($event,0)" (touchend)="dragging=false"
+      [style.transition]="dragging ? 'none': null" class="ui-slider-handle ui-state-default ui-corner-all ui-clickable"
+            [ngStyle]="{'left': rangeStartLeft, 'bottom': rangeStartBottom}"
+            [ngClass]="{'ui-slider-handle-active':handleIndex==0}"></span>
+      <span *ngIf="range" (mousedown)="onMouseDown($event,1)"
+      (touchstart)="onTouchStart($event,1)" (touchmove)="onTouchMove($event,1)"
+      (touchend)="dragging=false"
+      [style.transition]="dragging ? 'none': null"
+      class="ui-slider-handle ui-state-default ui-corner-all ui-clickable"
+            [ngStyle]="{'left': rangeEndLeft, 'bottom': rangeEndBottom}" [ngClass]="{'ui-slider-handle-active':handleIndex==1}"></span>
+    </div>
   `,
   providers: [{
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioSliderComponent), multi: true,
@@ -174,6 +174,8 @@ description : Triggers when slider reaches the end
   public handleValue: number;
 
   public handleValues: number[] = [];
+
+  public slidevar: any;
 
   public onModelChange: any = () => { };
 
@@ -440,6 +442,24 @@ description : Triggers when slider reaches the end
 
   getValueFromHandle(handleValue: number): number {
     return (this.max - this.min) * (handleValue / 100) + this.min;
+  }
+  onKeyUp(event: any) {
+    const keycode: number = event.keyCode;
+    if ((keycode === 37 || keycode === 40) && (this.handleValue !== this.min)) {
+      this.slidevar = this.handleValue - this.step;
+      this.handleValue = this.slidevar;
+    } else if ((keycode === 38 || keycode === 39) && (this.handleValue !== this.max)) {
+      this.slidevar = this.handleValue + this.step;
+      this.handleValue = this.slidevar;
+    } else if (keycode === 35) {
+      this.handleValue = this.max;
+    } else if (keycode === 36) {
+      this.handleValue = this.min;
+    } else if (keycode === 33) {
+      this.slidevar = this.handleValue + 10;
+    } else if (keycode === 34) {
+      this.slidevar = this.handleValue + 10;
+    }
   }
 
   ngOnDestroy() {
