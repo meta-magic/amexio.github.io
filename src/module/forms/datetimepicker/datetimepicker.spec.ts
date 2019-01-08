@@ -7,13 +7,15 @@ import { FormsModule } from '@angular/forms';
 import { ChangeDetectorRef, ElementRef } from '@angular/core';
 import { IconLoaderService } from '../../../index';
 import { DebugElement } from '@angular/core';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+
 describe('amexio-date-time-picker', () => {
   let comp: AmexioDateTimePickerComponent;
   let fixture: ComponentFixture<AmexioDateTimePickerComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule],
+      imports: [FormsModule, NoopAnimationsModule],
       declarations: [AmexioDateTimePickerComponent, AmexioFormIconComponent, AmexioButtonComponent],
       providers: [IconLoaderService ]
     });
