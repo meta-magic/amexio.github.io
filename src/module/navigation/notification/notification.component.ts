@@ -23,7 +23,7 @@ export class AmexioNotificationComponent implements OnInit {
  default : none
  description :  what you want to display on notification window by using data.
  */
-  @Input('data') messageData: any[];
+  @Input('data') messageData: any[] = [];
   /*
 Properties
 name : icon
@@ -142,8 +142,10 @@ description : Position of notification window vertically:
       }
       if (this.messageData !== null) {
         setInterval(() => {
-          this.messageData.shift();
-          this.ref.markForCheck();
+          if (this.messageData.length > 0) {
+            this.messageData.shift();
+            this.ref.markForCheck();
+          }
         }, this.autodismissmsginterval);
       }
     }
