@@ -7,6 +7,7 @@ Component Name : Amexio Tag Input
 Component Selector :  <amexio-tag-input>
 Component Description : Tags based multi input with typeahead facility.
 */
+import { animate, state, style, transition, trigger} from '@angular/animations';
 import {
   ChangeDetectorRef, Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, Renderer2, ViewChild,
 } from '@angular/core';
@@ -14,7 +15,19 @@ import { EventBaseComponent } from '../../base/event.base.component';
 import { CommonDataService } from '../../services/data/common.data.service';
 
 @Component({
-  selector: 'amexio-tag-input', templateUrl: './tags.input.component.html',
+  selector: 'amexio-tag-input',
+  templateUrl: './tags.input.component.html',
+  animations: [
+    trigger('changeState', [
+      state('visible', style({
+        'max-height': '200px',
+      })),
+      state('hidden', style({
+        'max-height': '0px',
+      })),
+      transition('*=>*', animate('200ms')),
+    ]),
+  ],
 })
 
 export class AmexioTagsInputComponent extends EventBaseComponent<string> implements OnInit {

@@ -3,6 +3,7 @@
  Component Selector :  <amexio-date-time-picker>
  Component Description : This component is flexible for both Date and time picker with all required configurations in Style.
  */
+import { animate, state, style, transition, trigger} from '@angular/animations';
 import {
   ChangeDetectorRef, Component, ElementRef,
   EventEmitter, forwardRef, Input, OnInit, Output, Renderer2,
@@ -17,8 +18,17 @@ const noop = () => {
 @Component({
   selector: 'amexio-date-time-picker',
   templateUrl: './datetimepicker.component.html',
-  styles: [`
-  `],
+  animations: [
+    trigger('changeState', [
+      state('visible', style({
+        transform: 'scale(1)',
+      })),
+      state('hidden', style({
+        transform: 'scale(0)',
+      })),
+      transition('*=>*', animate('200ms')),
+    ]),
+  ],
   providers: [{
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioDateTimePickerComponent), multi: true,
   }, {
@@ -358,14 +368,14 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     this.setDateData1('minus', 12, event);
   }
   // this function validates month
-  setDateData(state: string, mon: number, event: any) {
+  setDateData(state1: string, mon: number, event: any) {
     const d = new Date(this.currrentDate.getFullYear(), this.currrentDate.getMonth(), this.currrentDate.getDate());
     const min = new Date(this.minDate);
     const max = new Date(this.maxDate);
     // checks if selected date is within maximum range of month
-    if (state === 'plus') {
+    if (state1 === 'plus') {
       this.setPlusData(d, max, mon);
-    } else if (state === 'minus') {
+    } else if (state1 === 'minus') {
       this.setMinusData(d, min, mon);
     }
     this.currrentDate = d;
@@ -416,12 +426,12 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     }
   }
   // this function validates year
-  setDateData1(state: string, mon: number, event: any) {
+  setDateData1(state1: string, mon: number, event: any) {
     const d = new Date(this.currrentDate.getFullYear(), this.currrentDate.getMonth(), this.currrentDate.getDate());
     const min = new Date(this.minDate);
     const max = new Date(this.maxDate);
     // checks if selected date is within maximum range of year
-    if (state === 'plus') {
+    if (state1 === 'plus') {
       if (this.maxDate.length > 0) {
         if (d.getFullYear() <= max.getFullYear() - 1) {
           d.setMonth(d.getMonth() + mon);
@@ -429,7 +439,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       } else {
         d.setMonth(d.getMonth() + mon);
       }  // checks if selected date is within minimum range of year
-    } else if (state === 'minus') {
+    } else if (state1 === 'minus') {
       if (this.minDate.length > 0) {
         if (d.getFullYear() >= min.getFullYear() + 1) {
           d.setMonth(d.getMonth() - mon);

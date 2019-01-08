@@ -10,6 +10,7 @@
  configured using HTTP call OR Define fix number of dropdown-items. User can configure different attributes
  for enabling filter, multi-select, maximum selection in case of multi select.
 */
+import { animate, state, style, transition, trigger} from '@angular/animations';
 import {
   AfterViewInit, ChangeDetectorRef, Component, ContentChild,
   ElementRef, EventEmitter, forwardRef, Input,
@@ -22,6 +23,17 @@ import { CommonDataService } from '../../services/data/common.data.service';
 @Component({
   selector: 'amexio-dropdown',
   templateUrl: './dropdown.component.html',
+  animations: [
+    trigger('changeState', [
+      state('visible', style({
+        'max-height': '200px',
+      })),
+      state('hidden', style({
+        'max-height': '0px',
+      })),
+      transition('*=>*', animate('200ms')),
+    ]),
+  ],
   providers: [{
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioDropDownComponent), multi: true,
   }, {
