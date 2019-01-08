@@ -1,0 +1,29 @@
+<div class="button-group" #rootDiv>
+    <button class="button-dropdown-main" (blur)="onblur($event)" (click)="onClick(rootDiv)" #btnRef
+            [ngClass]="{'button-default': size=='default' || size ==null,
+            'button-small': size=='small',
+            'button-large' : size=='large',
+            'button-primary' : type == 'primary' || type == null || type == 'theme-color',
+            'button-success' : type == 'success' || type == 'green',
+            'button-danger' : type=='danger' || type == 'red',
+            'button-warning' : type=='warning' ||  type == 'yellow'}">
+      <amexio-form-icon style="float:right;" key="button_caret-down"></amexio-form-icon>
+      <span [attr.disabled]="disabled ? true: null">{{label}} &nbsp;&nbsp;</span>
+      <!--<i class="fa fa-caret-down" style="float:right;" ></i>-->
+    </button>
+   <div class="button-dropdown" [ngClass]="{'button-dropdown-up' : posixUp}"  [@changeState]="dropdownstyle.visibility"     [ngStyle]="dropdownstyle">
+     <ng-container *ngFor="let itemData of dropdownItemData">
+       <div [ngClass]="{'button-default': size=='default' || size ==null,'button-small': size=='small','button-large' : size=='large'}">
+         <div [ngStyle]="{'cursor': itemData.disabled ? 'not-allowed':'pointer'}"
+              (click)="btnItemClick($event,itemData)">
+           <amexio-form-icon style="padding-right: 5px;" [customclass]="itemData.iconStyleClass"></amexio-form-icon>
+           <span [attr.disabled]="itemData.disabled ? true: null">{{itemData.label}}&nbsp;&nbsp;</span>
+           <!--<i [class]="itemData.iconStyleClass" aria-hidden="true" style="float:right;" ></i>-->
+           <ng-container *ngIf="itemData.badge">
+           <span class="btn-dropdown-badge">{{itemData.badge}}</span>
+           </ng-container>
+         </div>
+       </div>
+     </ng-container>
+   </div>
+ </div>
