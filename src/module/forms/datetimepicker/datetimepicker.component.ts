@@ -21,10 +21,10 @@ const noop = () => {
   animations: [
     trigger('changeState', [
       state('visible', style({
-        transform: 'scale(1)',
+        'max-height': 'auto',
       })),
       state('hidden', style({
-        transform: 'scale(0)',
+        'max-height': '0px',
       })),
       transition('*=>*', animate('200ms')),
     ]),
