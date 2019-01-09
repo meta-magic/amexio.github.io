@@ -32,7 +32,7 @@
 
   </div>
 
-  <div [ngStyle]="dropdownstyle" [ngClass]="{'datetimepicker1':inlineDatepicker , 'datetimepicker':!inlineDatepicker}">
+  <div  [@changeState]="dropdownstyle.visibility"   [ngStyle]="dropdownstyle" [ngClass]="{'datetimepicker1':inlineDatepicker , 'datetimepicker':!inlineDatepicker}">
 
     <div class="datetimepickertopbar" [ngStyle]="{'display': datepicker ? 'block' : 'none'}">
       <ul>

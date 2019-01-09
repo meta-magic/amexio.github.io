@@ -8,6 +8,7 @@
  Component Description:  Window Pane component is a customizable Modal Pane in which user can enter custom content
 
  */
+import { animate, state, style, transition, trigger} from '@angular/animations';
 import {
   Component, ContentChildren, ElementRef, EventEmitter, HostListener,
   Input, OnChanges, OnDestroy, OnInit, Output, QueryList, Renderer2, SimpleChanges, ViewChild,
@@ -19,6 +20,19 @@ export enum KEY_CODE_window {
 @Component({
   selector: 'amexio-window',
   templateUrl: './window.pane.component.html',
+  animations: [
+    trigger('animation', [
+      state('void', style({
+        transform: 'translate3d(0, 25%, 0) scale(0.9)',
+        opacity: 0,
+      })),
+      state('visible', style({
+        transform: 'none',
+        opacity: 1,
+      })),
+      transition('* => *', animate('400ms cubic-bezier(0.25, 0.8, 0.25, 1)')),
+    ]),
+  ],
 })
 export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy {
   /*

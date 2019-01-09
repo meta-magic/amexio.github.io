@@ -25,7 +25,7 @@
           <em *ngIf="(iconfeedback && (model.dirty || model.touched) && !model.valid)" class="fa fa-times icon-error"></em>
   </div>
   
-  <dropdown-list-item class="dropdown" [ngStyle]="dropdownstyle"  
+  <dropdown-list-item [@changeState]="dropdownstyle.visibility" class="dropdown" [ngStyle]="dropdownstyle"  
                       [data]="viewdata" [display-field]="displayfield" [value-field]="valuefield" 
                       [highlight-row]="rowindex" [display-value]="displayValue" 
                       (itemclick)="onDropDownListItemClick($event)">

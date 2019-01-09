@@ -8,75 +8,27 @@
  Component Description :A Simple dialogue which renders various prompts like
  Confirmation/Alert based on type, title, body user has configured.
  */
-
+import { animate, state, style, transition, trigger} from '@angular/animations';
 import {
   Component, EventEmitter, HostListener, Input, OnChanges, OnDestroy, OnInit, Output, Renderer2,
   SimpleChanges,
 } from '@angular/core';
 @Component({
-  selector: 'amexio-dialogue', template: `
-    <div class="root-window"
-         [ngStyle]="{'display' : show  ? 'block' : 'none'}">
-      <div class="dialogue-sm">
-        <div class="dialogue-content">
-          <header [ngClass]="{ 'dialogue-material-design':materialDesign ,'dialogue-header':!materialDesign }"
-          >
-            <div class="dialogue-table">
-              <div class="tablerow">
-                <div class="tablecol">
-                  {{title}}
-                </div>
-                <div class="tablecol float-right">
-                  <div *ngIf="closable" class="icon-style">
-                    <amexio-pane-icon [key]="'window_close'" (onClick)="onCloseClick()"></amexio-pane-icon>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </header>
-          <div class="dialogue-middle" [ngStyle]="{'text-align':custom ? contentalign :'center'}">
-            <span class="dialogue-icon">
-              <span
-                [ngClass]="{'dialogue-success': messagetype  == 'help','dialogue-danger':messagetype  == 'error',
-                'dialogue-warning': messagetype  == 'warning'}"
-                *ngIf="messagetype  || messagetype  != '' ">
-                <amexio-pane-icon [key]="'window-msgtype-'+ messagetype "></amexio-pane-icon>
-              </span>
-               <ng-container *ngIf="!custom">
-                 <span class="dialogue-message">
-                        {{message}}
-                 </span>
-            </ng-container>
-            </span>
-            <ng-container *ngIf="custom">
-              <ng-content select="amexio-body"></ng-content>
-            </ng-container>
-
-          </div>
-          <footer *ngIf="custom" class="dialogue-footer"
-                  [ngClass]="{'flex-start':(footeralign=='left'),'flex-end':(footeralign=='right'),'flex-center':(footeralign=='center')}">
-            <ng-content select="amexio-action"></ng-content>
-          </footer>
-
-          <footer *ngIf="!custom" class="dialogue-footer"
-                  [ngClass]="{'dialogue-material-design-footer':materialDesign ,
-                  'dialogue-footer':!materialDesign, 'flex-start':(footeralign=='left'),
-                  'flex-end':(footeralign=='right'),'flex-center':(footeralign=='center')}">
-            <amexio-button *ngIf="type =='confirm'"  [size]="buttonsize" [label]="secondaryactionlabel"
-            [type]="defaultStyle" (onClick)="getStatus('cancel')"></amexio-button>
-            <div  class="custom-btn">
-              <amexio-button *ngIf="type =='confirm' || type == 'alert'"   [size]="buttonsize"
-              [label]="primaryactionlabel"
-                             [ngStyle]="{'color':materialDesign ? 'blue':'white'}"
-                             [type]="buttontype" (onClick)="getStatus('ok')">
-                             </amexio-button>
-            </div>
-
-          </footer>
-        </div>
-      </div>
-    </div>
-  `,
+  selector: 'amexio-dialogue',
+  templateUrl: './dialogue.pane.component.html',
+  animations: [
+    trigger('animation', [
+      state('void', style({
+        transform: 'translate3d(0, 25%, 0) scale(0.9)',
+        opacity: 0,
+      })),
+      state('visible', style({
+        transform: 'none',
+        opacity: 1,
+      })),
+      transition('* => *', animate('400ms cubic-bezier(0.25, 0.8, 0.25, 1)')),
+    ]),
+  ],
 })
 export class AmexiodialoguePaneComponent implements OnChanges, OnInit, OnDestroy {
 

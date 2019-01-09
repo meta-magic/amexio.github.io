@@ -1,0 +1,56 @@
+<div class="root-window" *ngIf="show">
+  <!-- Generate BG shade for below modal -->
+</div>
+
+<div class="dialogue-sm" [@animation]="{value: 'visible', params: {transitionParams: transitionOptions}}" *ngIf="show">
+  <div class="dialogue-content">
+    <header [ngClass]="{ 'dialogue-material-design':materialDesign ,'dialogue-header':!materialDesign }">
+      <div class="dialogue-table">
+        <div class="tablerow">
+          <div class="tablecol">
+            {{title}}
+          </div>
+          <div class="tablecol float-right">
+            <div *ngIf="closable" class="icon-style">
+              <amexio-pane-icon [key]="'window_close'" (onClick)="onCloseClick()"></amexio-pane-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="dialogue-middle" [ngStyle]="{'text-align':custom ? contentalign :'center'}">
+      <span class="dialogue-icon">
+        <span [ngClass]="{'dialogue-success': messagetype  == 'help','dialogue-danger':messagetype  == 'error',
+                      'dialogue-warning': messagetype  == 'warning'}"
+          *ngIf="messagetype  || messagetype  != '' ">
+          <amexio-pane-icon [key]="'window-msgtype-'+ messagetype "></amexio-pane-icon>
+        </span>
+        <ng-container *ngIf="!custom">
+          <span class="dialogue-message">
+            {{message}}
+          </span>
+        </ng-container>
+      </span>
+      <ng-container *ngIf="custom">
+        <ng-content select="amexio-body"></ng-content>
+      </ng-container>
+
+    </div>
+    <footer *ngIf="custom" class="dialogue-footer" [ngClass]="{'flex-start':(footeralign=='left'),'flex-end':(footeralign=='right'),'flex-center':(footeralign=='center')}">
+      <ng-content select="amexio-action"></ng-content>
+    </footer>
+
+    <footer *ngIf="!custom" class="dialogue-footer" [ngClass]="{'dialogue-material-design-footer':materialDesign ,
+                        'dialogue-footer':!materialDesign, 'flex-start':(footeralign=='left'),
+                        'flex-end':(footeralign=='right'),'flex-center':(footeralign=='center')}">
+      <amexio-button *ngIf="type =='confirm'" [size]="buttonsize" [label]="secondaryactionlabel" [type]="defaultStyle"
+        (onClick)="getStatus('cancel')"></amexio-button>
+      <div class="custom-btn">
+        <amexio-button *ngIf="type =='confirm' || type == 'alert'" [size]="buttonsize" [label]="primaryactionlabel"
+          [ngStyle]="{'color':materialDesign ? 'blue':'white'}" [type]="buttontype" (onClick)="getStatus('ok')">
+        </amexio-button>
+      </div>
+
+    </footer>
+  </div>
+</div>

@@ -9,28 +9,40 @@ Component Description : Type Ahead Component provides a power type ahead on the
 text field where users entry is provided with a filtered result.
 */
 
+import { animate, state, style, transition, trigger} from '@angular/animations';
 import {
   AfterViewInit, ChangeDetectorRef, Component, ContentChild,
   ElementRef, EventEmitter, forwardRef, HostListener, Input,
   OnChanges, OnInit, Output, QueryList, Renderer2,
   SimpleChanges, TemplateRef, ViewChild, ViewChildren,
 } from '@angular/core';
-import { FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators} from '@angular/forms';
+import { FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
+import { of } from 'rxjs';
 import { CommonDataService } from '../../services/data/common.data.service';
 import { DropDownListComponent } from './../../base/dropdownlist.component';
 import { ListBaseComponent } from './../../base/list.base.component';
 
-import { of } from 'rxjs';
 @Component({
   selector: 'amexio-typeahead',
   templateUrl: './typeahead.component.html',
+  animations: [
+    trigger('changeState', [
+      state('visible', style({
+        'max-height': '200px',
+      })),
+      state('hidden', style({
+        'max-height': '0px',
+      })),
+      transition('*=>*', animate('200ms')),
+    ]),
+  ],
   providers: [{
     provide: NG_VALUE_ACCESSOR,
     useExisting: AmexioTypeAheadComponent,
     multi: true,
   }, {
     provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioTypeAheadComponent), multi: true,
-}],
+  }],
 })
 export class AmexioTypeAheadComponent extends ListBaseComponent<string> implements OnChanges, OnInit, AfterViewInit, Validators {
 
@@ -270,7 +282,7 @@ export class AmexioTypeAheadComponent extends ListBaseComponent<string> implemen
   onDropDownListItemClick(data: any) {
     if (this.valuefield) {
       this.value = data[this.valuefield];
-    }else {
+    } else {
       this.value = data[this.displayfield];
     }
     this.displayValue = data[this.displayfield];
@@ -339,9 +351,9 @@ export class AmexioTypeAheadComponent extends ListBaseComponent<string> implemen
 
   public validate(c: FormControl) {
     return ((!this.allowblank && this.value) || this.allowblank) ? null : {
-        jsonParseError: {
-            valid: true,
-        },
+      jsonParseError: {
+        valid: true,
+      },
     };
- }
+  }
 }
