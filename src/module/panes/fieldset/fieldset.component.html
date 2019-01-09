@@ -1,20 +1,20 @@
 <fieldset>
   <legend *ngIf="(title && title.length>0) || collapsible " class="collapsible-legend" (click)="onLegendClick()">
 
-      <ng-container *ngIf="!collapsible">
-        {{title}}
-      </ng-container>
+    <ng-container *ngIf="!collapsible">
+      {{title}}
+    </ng-container>
 
-      <ng-container *ngIf="collapsible && !isActive">
-        <amexio-pane-icon style="padding-right:5px" key="fieldset_expand"></amexio-pane-icon>{{title}}
-      </ng-container>
+    <ng-container *ngIf="collapsible && !isActive">
+      <amexio-pane-icon style="padding-right:5px" key="fieldset_expand"></amexio-pane-icon>{{title}}
+    </ng-container>
 
-      <ng-container *ngIf="collapsible && isActive">
-        <amexio-pane-icon style="padding-right:5px" key="fieldset_collpase"></amexio-pane-icon>{{title}}
-      </ng-container>
+    <ng-container *ngIf="collapsible && isActive">
+      <amexio-pane-icon style="padding-right:5px" key="fieldset_collpase"></amexio-pane-icon>{{title}}
+    </ng-container>
 
   </legend>
-  <div class="collapsible-fieldset" [ngClass]="{'active' : isActive}">
+  <div class="collapsible-fieldset"  [@fieldsetContent]="!isActive ? {value: 'hidden', params: {transitionParams: transitionOptions}} : {value: 'visible', params: {transitionParams: transitionOptions}}">
     <ng-content></ng-content>
   </div>
 </fieldset>
