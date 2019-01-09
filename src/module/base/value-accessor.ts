@@ -41,7 +41,7 @@ export abstract class ValueAccessorBase<T> implements ControlValueAccessor {
 
   // THIS METHOD GENERATE RANDOM STRING
   generateName(name: string, fieldlabel: string, inputType: string): string {
-    let newName: string;
+    let newName = name;
     if (!name && fieldlabel) {
       newName = fieldlabel.replace(/\s/g, '');
     } else if (!name && !fieldlabel) {
