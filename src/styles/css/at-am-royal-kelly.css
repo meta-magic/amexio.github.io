@@ -1125,6 +1125,9 @@ button {
   border-radius: .25rem;
   margin-left: 3px; }
 
+.button-dropdown-main {
+  cursor: pointer; }
+
 .button-dropdown {
   position: absolute;
   padding: .5rem 1rem;
@@ -6569,7 +6572,10 @@ fieldset {
   padding-top: 18%;
   /* Location of the box */
   width: 30%;
-  padding-left: 35%; }
+  padding-left: 35%;
+  z-index: 3;
+  top: 0;
+  left: 0; }
 
 .dialogue-content {
   margin: auto;
@@ -6993,7 +6999,10 @@ amexio-layout amexio-layout-item {
     padding-top: 60%;
     /* Location of the box */
     width: 100%;
-    padding-left: 0px; } }
+    padding-left: 0px;
+    z-index: 3;
+    top: 0;
+    left: 0; } }
 /************************************************************************/
 /*        Enterprise Media-Q COMPONENT         */
 /************************************************************************/
@@ -7176,7 +7185,10 @@ amexio-layout amexio-layout-item {
     padding-top: 60%;
     /* Location of the box */
     width: 100%;
-    padding-left: 0px; } }
+    padding-left: 0px;
+    z-index: 3;
+    top: 0;
+    left: 0; } }
 /************************************************************************/
 /*        Enterprise Media-Q COMPONENT         */
 /************************************************************************/
@@ -7342,7 +7354,10 @@ amexio-layout amexio-layout-item {
     padding-top: 60%;
     /* Location of the box */
     width: 80%;
-    padding-left: 10%; } }
+    padding-left: 10%;
+    z-index: 3;
+    top: 0;
+    left: 0; } }
 /************************************************************************/
 /*        Enterprise Media-Q COMPONENT         */
 /************************************************************************/
@@ -7553,7 +7568,10 @@ amexio-layout amexio-layout-item {
     padding-top: 60%;
     /* Location of the box */
     width: 80%;
-    padding-left: 10%; } }
+    padding-left: 10%;
+    z-index: 3;
+    top: 0;
+    left: 0; } }
 /************************************************************************/
 /*        Enterprise Media-Q COMPONENT         */
 /************************************************************************/
@@ -7961,7 +7979,10 @@ amexio-layout amexio-layout-item {
     padding-top: 60%;
     /* Location of the box */
     width: 80%;
-    padding-left: 10%; } }
+    padding-left: 10%;
+    z-index: 3;
+    top: 0;
+    left: 0; } }
 /************************************************************************/
 /*        Enterprise Media-Q COMPONENT         */
 /************************************************************************/
