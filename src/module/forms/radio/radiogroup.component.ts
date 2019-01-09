@@ -162,7 +162,8 @@ export class AmexioRadioGroupComponent extends ValueAccessorBase<string> impleme
 
   viewData: any;
   componentId: any;
-  tabindex = '-1';
+  listCopy: any;
+
   // The internal dataviews model
   // private innerValue: any = '';
 
@@ -171,9 +172,9 @@ export class AmexioRadioGroupComponent extends ValueAccessorBase<string> impleme
   }
 
   ngOnInit() {
-    this.componentId = Math.random() * 1000 + 'radiogrp';
+    this.componentId = this.createCompId('radiogroup', this.name);
 
-    this.name = this.generateName(this.name, this.fieldlabel, 'textinput');
+    this.name = this.generateName(this.name, this.fieldlabel, 'radiogroup');
     if (this.defaultSelectedValue) {
       this.value = this.defaultSelectedValue;
     }
@@ -190,11 +191,25 @@ export class AmexioRadioGroupComponent extends ValueAccessorBase<string> impleme
 
   checkDefaultValidation(viewData: any) {
     viewData.forEach((opt: any) => {
+      opt['tabindex'] = '-1';
+      opt['radioId'] = 'radio' + '_' + opt[this.valuefield] + '_' + this.getRandomString();
       if (opt[this.valuefield] === this.innerValue || (opt.hasOwnProperty('selected') && opt.selected)) {
         this.isValid = true;
-        this.tabindex = '0';
+        opt['selected'] = true;
+        opt['tabindex'] = '0';
         this.isComponentValid.emit(true);
         return;
+      } else {
+        opt['selected'] = false;
+        const tempArray: any = [];
+        viewData.forEach((option: any) => {
+          if (option.selected === false) {
+            tempArray.push('0');
+            if (tempArray.length === viewData.length) {
+              viewData[0].tabindex = '0';
+            }
+          }
+        });
       }
     });
   }
@@ -203,6 +218,7 @@ export class AmexioRadioGroupComponent extends ValueAccessorBase<string> impleme
     viewData.forEach((opt: any) => {
       if (this.innerValue === '' && (opt.hasOwnProperty('selected') && opt.selected)) {
         this.value = opt[this.valuefield];
+        opt.tabindex = '0';
         return;
       }
     });
@@ -233,6 +249,7 @@ export class AmexioRadioGroupComponent extends ValueAccessorBase<string> impleme
   writeValue(value: any) {
     if (value !== this.innerValue) {
       this.innerValue = value;
+      this.checkDefaultValidation(this.data);
     }
   }
 
@@ -260,10 +277,27 @@ export class AmexioRadioGroupComponent extends ValueAccessorBase<string> impleme
   }
 
   onClick(row: any) {
-    this.isValid = true;
-    this.value = row[this.valuefield];
-    this.isComponentValid.emit(true);
-    this.onSelection.emit(row);
+    for (const r of this.data) {
+      if (r.selected) {
+        r.selected = false;
+      }
+    }
+    for (const r of this.data) {
+      if (r === row) {
+        r.selected = true;
+        this.isValid = true;
+        this.value = row[this.valuefield];
+        this.listCopy = Object.assign([], row);
+        delete this.listCopy.tabindex;
+        delete this.listCopy.radioId;
+        this.onSelection.emit(this.listCopy);
+        delete row.tabindex;
+        this.isComponentValid.emit(true);
+        this.onSelection.emit(row);
+      } else {
+        r.selected = false;
+      }
+    }
   }
   // THIS MEHTOD CHECK INPUT IS VALID OR NOT
   checkValidity(): boolean {
