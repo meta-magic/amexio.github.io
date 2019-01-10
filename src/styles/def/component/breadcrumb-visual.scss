@@ -30,8 +30,13 @@
   background-color: $breadcrumbBGColor;
 }
 
+
+.breadcrumb-group:hover .arrow-group-css{
+  border-left: 1px solid $componentHoverFontColor; 
+}
+
+
 .arrow-group-css:hover {
-  
   border-left: 1px solid $componentHoverFontColor;
 }
 
