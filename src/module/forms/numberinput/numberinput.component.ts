@@ -247,6 +247,15 @@ description : Set enable / disable popover.
   onChangeEv() {
     this.change.emit(this.value);
   }
+  // THIS METHOD FOR KEYBORAD KEY PRESS.
+  onKeyUp(event: any) {
+    const keycode: number = event.keyCode;
+    if (keycode === 35) {
+      this.value = this.maxvalue;
+    } else if (keycode === 36) {
+      this.value = this.minvalue;
+    }
+  }
 
   isFieldValidate(): boolean {
     if (this.minvalue && !this.maxvalue) {
