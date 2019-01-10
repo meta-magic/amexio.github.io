@@ -71,25 +71,25 @@ description : Defines the max range limit for number input.
  default :
  description : Sets the error message for min validation
  */
-@Input('min-error-msg') minerrormsg: string;
-/*
-Properties
-name : max-error-msg
-datatype : string
-version : 4.0 onwards
-default :
-description : Sets the error message for max validation
-*/
-@Input('max-error-msg') maxerrormsg: string;
-/*
-Properties
-name : error-msg
-datatype : string
-version : 4.0 onwards
-default :
-description : Sets the error message for validation
-*/
-@Input('error-msg') errormsg: string;
+  @Input('min-error-msg') minerrormsg: string;
+  /*
+  Properties
+  name : max-error-msg
+  datatype : string
+  version : 4.0 onwards
+  default :
+  description : Sets the error message for max validation
+  */
+  @Input('max-error-msg') maxerrormsg: string;
+  /*
+  Properties
+  name : error-msg
+  datatype : string
+  version : 4.0 onwards
+  default :
+  description : Sets the error message for validation
+  */
+  @Input('error-msg') errormsg: string;
 
   isValid = false;
   /*
@@ -247,14 +247,13 @@ description : Set enable / disable popover.
   onChangeEv() {
     this.change.emit(this.value);
   }
-  // THIS METHOD FOR KEYBORAD KEY PRESS.
-  onKeyUp(event: any) {
-    const keycode: number = event.keyCode;
-    if (keycode === 35) {
-      this.value = this.maxvalue;
-    } else if (keycode === 36) {
-      this.value = this.minvalue;
-    }
+  // THIS METHOD FOR KEYBORAD KEY HOME PRESS.
+  onKeyUpHome() {
+    this.value = this.minvalue;
+  }
+  // THIS METHOD FOR KEYBORAD KEY END PRESS.
+  onKeyUpEnd() {
+    this.value = this.maxvalue;
   }
 
   isFieldValidate(): boolean {

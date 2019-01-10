@@ -17,7 +17,9 @@
         aria-describedby="numberDes"
         aria-labelledby="numberID"
         aria-required="true"
-        (keyup)="onKeyUp($event)"
+        (keyup.home)="onKeyUpHome($event)"
+        (keyup.end)="onKeyUpEnd($event)"
+
 
 
          class="input-control"
