@@ -20,6 +20,8 @@ Component Selector : <amexio-panel>
 Component Description : Panel provides an easy way to organize big forms by
 grouping the fields in panel
 */
+
+import { animate, state, style, transition, trigger} from '@angular/animations';
 import { Component, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output, Renderer2 } from '@angular/core';
 
 import { AmexioPanelHeaderComponent } from './../panel/panel.header.component';
@@ -27,6 +29,27 @@ import { AmexioPanelHeaderComponent } from './../panel/panel.header.component';
 @Component({
   selector: 'amexio-panel',
   templateUrl: './panel.component.html',
+  animations: [
+    trigger('panelState', [
+      state('hidden', style({
+        visibility: 'hidden',
+        height: '0px',
+      })),
+      state('visible', style({
+        visibility: 'visible',
+        height: '*',
+      })),
+      state('block', style({
+        display: 'block',
+        height: '*',
+      })),
+      state('none', style({
+        display: 'none',
+        height: '0px',
+      })),
+      transition('*=>*',  animate('200ms')),
+    ]),
+  ],
 })
 
 export class AmexioPanelComponent implements OnInit, OnDestroy {
@@ -179,15 +202,15 @@ description : Fires the on accordion pane click event.
 
   private updatestyle() {
     if (this.fit && this.expanded) {
-      this.panelstyle = { visibility: 'visible' };
+      this.panelstyle = { visibility: 'visible', state: 'visible' };
     } else if (this.fit && !this.expanded) {
-      this.panelstyle = { visibility: 'hidden' };
+      this.panelstyle = { visibility: 'hidden', state: 'hidden'  };
     } else if (!this.fit && this.expanded) {
-      this.panelstyle = { display: 'block' };
+      this.panelstyle = { display: 'block' , state: 'block' };
     } else if (!this.fit && !this.expanded) {
-      this.panelstyle = { display: 'none' };
+      this.panelstyle = { display: 'none' , state: 'none' };
     } else {
-      this.panelstyle = { visibility: 'visible' };
+      this.panelstyle = { visibility: 'visible', state: 'visible'  };
     }
   }
   // getcontextmenu

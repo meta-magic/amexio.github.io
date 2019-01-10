@@ -32,19 +32,15 @@
         </div>
     </ng-template>
 
-    <div class="panel-panel" [ngClass]="{'panel-box-border':border}" [style.textAlign]="contentAlign" [ngStyle]="panelstyle" [style.height.px]="height">
+    <div class="panel-panel" [ngClass]="{'panel-box-border':border}" [style.textAlign]="contentAlign" [style.height.px]="height"
+        [@panelState]="panelstyle.state">
         <ng-content></ng-content>
     </div>
 
     <ng-container *ngIf="flag && (this.contextmenu && this.contextmenu.length > 0)">
-        <base-contextmenu 
-        [base-context-menu]="contextmenu" 
-        [mouse-location-top]="mouseLocation.top"
-        [mouse-location-left]="mouseLocation.left" 
-        [is-FlagShow]="flag" 
-        [right-click-data]="nodeRightClick"
-        (onRightClick) ="rightClickDataEmit($event)"
-        [position-up]="posixUp" >
+        <base-contextmenu [base-context-menu]="contextmenu" [mouse-location-top]="mouseLocation.top"
+            [mouse-location-left]="mouseLocation.left" [is-FlagShow]="flag" [right-click-data]="nodeRightClick"
+            (onRightClick)="rightClickDataEmit($event)" [position-up]="posixUp">
         </base-contextmenu>
     </ng-container>
 </div>
