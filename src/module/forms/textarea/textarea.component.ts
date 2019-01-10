@@ -237,7 +237,7 @@ description : Set enable / disable popover.
     this.showToolTip = false;
   }
   ngOnInit() {
-    this.componentId = Math.random() * 1000 + 'chkbox';
+    this.componentId = this.createCompId('textareainput', this.name);
     this.name = this.generateName(this.name, this.fieldlabel, 'textareainput');
   }
 

@@ -31,7 +31,7 @@ const noop = () => {
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioToggleComponent), multi: true,
   }, {
     provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioToggleComponent), multi: true,
-}],
+  }],
   encapsulation: ViewEncapsulation.None,
 })
 
@@ -151,14 +151,14 @@ description : The label of this field.
   }
 
   public validate(c: FormControl) {
-    return ((this.required && this.value) || !this.required)  ? null : {
-        jsonParseError: {
-            valid: true,
-        },
+    return ((this.required && this.value) || !this.required) ? null : {
+      jsonParseError: {
+        valid: true,
+      },
     };
   }
 
-  onEventFilter(event: any){
+  onEventFilter(event: any) {
     this.checked = !this.checked;
     this.value = this.checked;
     this.isValid = this.value;

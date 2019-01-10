@@ -184,7 +184,7 @@ description : Sets the error message for validation
   }
 
   ngOnInit() {
-    this.componentId = Math.random() * 1000 + 'chkbox';
+    this.componentId = this.createCompId('emailinput', this.name);
     this.name = this.generateName(this.name, this.fieldlabel, 'emailinput');
   }
   // THIS METHOD USED FOR BLUR EVENT.

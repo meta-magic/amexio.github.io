@@ -243,7 +243,7 @@ description : On field value change event
   }
 
   ngOnInit() {
-    this.componentId = Math.random() * 1000 + 'chkbox';
+    this.componentId = this.createCompId('passwordinput', this.name);
     this.isValid = this.isFieldValid();
     this.name = this.generateName(this.name, this.fieldlabel, 'passwordinput');
   }
