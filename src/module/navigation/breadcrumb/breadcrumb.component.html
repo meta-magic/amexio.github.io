@@ -8,14 +8,14 @@
                     <ng-container *ngIf="nodeObject && nodeObject.icon">
                         <span [ngClass]="nodeObject.icon"></span>
                     </ng-container>&nbsp;
-                    <span>{{nodeObject[displaykey]}} &nbsp;&nbsp;</span>
+                    <span>{{nodeObject[displaykey]}}&nbsp;&nbsp;</span>
                 </label>
                 <ng-container *ngIf="nodeObject[childarraykey]">
                     <amexio-form-icon (click)="onArrowClick(nodeObject)" class="arrow-group-css" [key]="arrowKey"></amexio-form-icon>
                 </ng-container>
 
 
-                <div class="context-menu-list1" *ngIf="nodeObject.expand">
+                <div class="context-menu-list1" [@breadCrumbStateState]="nodeObject.expand ? 'visible':'hidden'">
                     <ng-container *ngFor="let node of nodeObject[childarraykey]">
                         <div class="context-menu-list-items1" [ngStyle]="{'cursor': node.disabled ? 'not-allowed':'pointer'}"
                             (click)="getSelectedItem({data:node,parentRef:nodeObject})">

@@ -9,11 +9,26 @@ Component Description : Simple list box which allows user to select one of
 more items from list based on configuration. User can provide custom template to
 change look and feel.
 */
+import { animate, state, style, transition, trigger} from '@angular/animations';
 import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 import { CommonDataService } from '../../services/data/common.data.service';
 
 @Component({
-  selector: 'amexio-breadcrumb', templateUrl: './breadcrumb.component.html',
+  selector: 'amexio-breadcrumb',
+  templateUrl: './breadcrumb.component.html',
+  animations: [
+    trigger('breadCrumbStateState', [
+      state('hidden', style({
+        'transform': 'scale(0)',
+        'transform-origin': 'left top 0px',
+      })),
+      state('visible', style({
+        'transform-origin': 'left top 0px',
+        'transform': 'scale(1)',
+      })),
+      transition('*=>*',  animate('200ms')),
+    ]),
+  ],
 })
 export class AmexioBreadcrumbComponent implements OnInit {
 
