@@ -12,6 +12,6 @@
   </ng-container>
 
 </button>
-<div *ngIf="active" class="panel">
+<div [@accordionState]="active ? 'visible':'hidden'" class="panel">
   <ng-content></ng-content>
 </div>
