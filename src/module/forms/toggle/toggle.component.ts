@@ -76,6 +76,8 @@ description : The label of this field.
 
   isValid: boolean;
 
+  checked: boolean;
+
   @Output() isComponentValid: any = new EventEmitter<any>();
 
   // The internal dataviews model
@@ -154,5 +156,13 @@ description : The label of this field.
             valid: true,
         },
     };
+  }
+
+  onEventFilter(event: any){
+    this.checked = !this.checked;
+    this.value = this.checked;
+    this.isValid = this.value;
+    this.isComponentValid.emit(this.value);
+    this.onChange.emit(this.value);
   }
 }
