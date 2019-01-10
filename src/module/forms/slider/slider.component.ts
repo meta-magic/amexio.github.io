@@ -15,11 +15,15 @@ import { DomHandler } from './slider.handler';
     [ngClass]="{'ui-slider ui-widget ui-widget-content ui-corner-all':true,'disable-component':disabled,
             'ui-slider-horizontal':orientation == 'horizontal',
             'ui-slider-vertical':orientation == 'vertical','ui-slider-animate':animate}"
-         (click)="onBarClick($event)">
-         <div role="slider" tabindex="0"  aria-labelledby="id"
-          [attr.aria-orientation] = "orientation" [attr.aria-valuenow] = "value"
-          aria-valuemin="1" aria-valuemax="10" [attr.aria-valuetext]="value" (keyup)="onKeyUp($event);"></div>
-      <span *ngIf="range && orientation == 'horizontal'" class="ui-slider-range ui-widget-header ui-corner-all"
+         (click)="onBarClick($event);">
+         <div role="slider" [tabindex]="disabled ? -1 : 0" aria-labelledby="id"
+        [attr.aria-orientation]="orientation" [attr.aria-valuenow]="value"
+         aria-valuemin="1" aria-valuemax="10" [attr.aria-valuetext]="value"
+         (keydown.arrowdown)="onKeyLeftDown($event)" (keydown.arrowup)="onKeyRightUp($event)"
+         (keydown.arrowright)="onKeyRightUp($event)" (keydown.arrowleft)="onKeyLeftDown($event)" (keydown.home)="onKeyHome($event)"
+         (keydown.end)="onKeyEnd($event)" (keydown.pageup)="onKeyPageUp($event)"
+         (keydown.pagedown)="onKeyPageDown($event)"></div>
+      <span *ngIf="range && orientation == 'horizontal'"  class="ui-slider-range ui-widget-header ui-corner-all"
       [ngStyle]="{'left':handleValues[0] + '%',width: (handleValues[1] - handleValues[0] + '%')}"></span>
       <span *ngIf="range && orientation == 'vertical'" class="ui-slider-range ui-widget-header ui-corner-all"
       [ngStyle]="{'bottom':handleValues[0] + '%',height: (handleValues[1] - handleValues[0] + '%')}"></span>
@@ -31,8 +35,9 @@ import { DomHandler } from './slider.handler';
       (mousedown)="onMouseDown($event)" (touchstart)="onTouchStart($event)" (touchmove)="onTouchMove($event)" (touchend)="dragging=false"
             [style.transition]="dragging ? 'none': null" [ngStyle]="{'left': orientation == 'horizontal' ? handleValue + '%' : null,
             'bottom': orientation == 'vertical' ? handleValue + '%' : null}"></span>
-      <span *ngIf="range" (mousedown)="onMouseDown($event,0)"
-      (touchstart)="onTouchStart($event,0)" (touchmove)="onTouchMove($event,0)" (touchend)="dragging=false"
+      <span *ngIf="range" (mousedown)="onMouseDown($event,0)" aria-labelledby="id"
+      (touchstart)="onTouchStart($event,0)" (touchmove)="onTouchMove($event,0)"
+      (touchend)="dragging=false"setValueFromHandle(event,this.slidevar);
       [style.transition]="dragging ? 'none': null" class="ui-slider-handle ui-state-default ui-corner-all ui-clickable"
             [ngStyle]="{'left': rangeStartLeft, 'bottom': rangeStartBottom}"
             [ngClass]="{'ui-slider-handle-active':handleIndex==0}"></span>
@@ -399,7 +404,6 @@ description : Triggers when slider reaches the end
   updateValue(val: number, valueEvent?: Event): void {
     if (this.range) {
       let value = val;
-
       if (this.handleIndex === 0) {
         if (value < this.min) {
           value = this.min;
@@ -464,5 +468,53 @@ description : Triggers when slider reaches the end
 
   ngOnDestroy() {
     this.unbindDragListeners();
+  }
+  onKeyLeftDown(event: Event) {
+    if (!this.step) {
+      this.step = 10;
+      this.step = this.max / this.step;
+    }else if (!this.max && !this.step && !this.min) {
+      this.step = this.max / this.step;
+    }
+    this.handleValue = this.handleValue - this.step;
+    this.setValueFromHandle(event, this.handleValue);
+  }
+  onKeyRightUp(event: Event) {
+    if (!this.step) {
+      this.step = 10;
+      this.step = this.max / this.step;
+    }else if (!this.max && !this.step && !this.min) {
+      this.step = this.max / this.step;
+    }
+    this.handleValue = this.handleValue + this.step;
+    this.setValueFromHandle(event, this.handleValue);
+  }
+  onKeyHome(event: Event) {
+    if (!this.step) {
+      this.step = 10;
+      this.step = this.max / this.step;
+    }else if (!this.max && !this.step && !this.min) {
+      this.step = this.max / this.step;
+    }
+    this.handleValue = this.min;
+    this.setValueFromHandle(event, this.handleValue);
+  }
+  onKeyEnd(event: Event) {
+    if (!this.step) {
+      this.step = 10;
+      this.step = this.max / this.step;
+    }else if (!this.max && !this.step && !this.min) {
+      this.step = this.max / this.step;
+    }
+    this.handleValue = this.max;
+    this.setValueFromHandle(event, this.handleValue);
+  }
+  onKeyPageUp(event: Event) {
+    this.handleValue = this.handleValue + 10;
+    this.setValueFromHandle(event, this.handleValue);
+  }
+  onKeyPageDown(event: Event) {
+    this.handleValue = this.handleValue - 10;
+    this.setValueFromHandle(event, this.handleValue);
   }
 }
