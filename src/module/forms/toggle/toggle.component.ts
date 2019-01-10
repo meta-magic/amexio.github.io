@@ -106,6 +106,8 @@ description : The label of this field.
   }
 
   onToggle() {
+    this.checked = !this.checked;
+    this.value = this.checked;
     this.isValid = this.value;
     this.isComponentValid.emit(this.value);
     this.onChange.emit(this.value);
@@ -164,10 +166,6 @@ description : The label of this field.
   }
 
   onEventFilter(event: any) {
-    this.checked = !this.checked;
-    this.value = this.checked;
-    this.isValid = this.value;
-    this.isComponentValid.emit(this.value);
-    this.onChange.emit(this.value);
+   this.onToggle();
   }
 }
