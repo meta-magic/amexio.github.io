@@ -19,7 +19,8 @@ import { AfterViewInit, Component, EventEmitter, Input, Output, ViewChild } from
         display: 'block',
         height: '*',
       })),
-      transition('*=>*',  animate('200ms')),
+      transition('*=>hidden',  animate('0ms')),
+      transition('*=>visible',  animate('200ms')),
     ]),
   ],
 })

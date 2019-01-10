@@ -26,7 +26,8 @@ import { CommonDataService } from '../../services/data/common.data.service';
         'transform-origin': 'left top 0px',
         'transform': 'scale(1)',
       })),
-      transition('*=>*',  animate('200ms')),
+      transition('*=>hidden',  animate('0ms')),
+      transition('*=>visible',  animate('200ms')),
     ]),
   ],
 })
