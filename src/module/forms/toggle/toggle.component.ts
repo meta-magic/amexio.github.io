@@ -78,6 +78,8 @@ description : The label of this field.
 
   checked: boolean;
 
+  componentId: string;
+
   @Output() isComponentValid: any = new EventEmitter<any>();
 
   // The internal dataviews model
@@ -93,6 +95,9 @@ description : The label of this field.
   }
 
   ngOnInit() {
+
+    this.componentId =  this.createCompId('togglebtn',this.fieldlabel);
+
     if (this.shape === '' || this.shape == null) {
       this.shape = 'round';
     }
