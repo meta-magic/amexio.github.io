@@ -225,7 +225,7 @@ description : Set enable / disable popover.
   }
 
   ngOnInit() {
-    this.componentId = Math.random() * 1000 + 'chkbox';
+    this.componentId = this.createCompId('number', this.fieldlabel);
     this.name = this.generateName(this.name, this.fieldlabel, 'numberinput');
   }
   // THIS METHOD USED FOR BLUR EVENT.
@@ -248,11 +248,11 @@ description : Set enable / disable popover.
     this.change.emit(this.value);
   }
   // THIS METHOD FOR KEYBORAD KEY HOME PRESS.
-  onKeyUpHome() {
+  onKeyUpHome(event: any) {
     this.value = this.minvalue;
   }
   // THIS METHOD FOR KEYBORAD KEY END PRESS.
-  onKeyUpEnd() {
+  onKeyUpEnd(event: any) {
     this.value = this.maxvalue;
   }
 

@@ -3,7 +3,7 @@
 
 <div class="inputgroup">
 
-  <label *ngIf="haslabel" role="number"  id="numberDes"  for="numberText"  [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
+  <label *ngIf="haslabel" role="number"  id="numberDes"  [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
       {{fieldlabel}}
   </label>
 
@@ -12,11 +12,11 @@
 
         role="number"
         tabindex="0"
-        id="numberText"
-        name="numberText"
+       
         aria-describedby="numberDes"
-        aria-labelledby="numberID"
-        aria-required="true"
+        attr.aria-labelledby="{{componentId}}"
+        [attr.aria-required]="!allowblank"
+        [attr.aria-invalid]="!isValid "
         (keyup.home)="onKeyUpHome($event)"
         (keyup.end)="onKeyUpEnd($event)"
 
@@ -47,7 +47,7 @@
 
   <input-help *ngIf="showToolTip && enablepopover"
 
-  id="numberID"
+  id="{{componentId}}"
   role="tooltip"
 
   [error-msg]="errormsg" 
