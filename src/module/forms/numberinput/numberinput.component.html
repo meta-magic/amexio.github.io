@@ -3,7 +3,7 @@
 
 <div class="inputgroup">
 
-  <label *ngIf="haslabel" role="number"  id="numberDes"  [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
+  <label *ngIf="haslabel" role="number"  id="{{componentId}}"  [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
       {{fieldlabel}}
   </label>
 
@@ -47,7 +47,7 @@
 
   <input-help *ngIf="showToolTip && enablepopover"
 
-  id="{{componentId}}"
+  id="numberDes"
   role="tooltip"
 
   [error-msg]="errormsg" 
