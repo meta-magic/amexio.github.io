@@ -96,7 +96,7 @@ description : The label of this field.
 
   ngOnInit() {
 
-    this.componentId =  this.createCompId('togglebtn',this.fieldlabel);
+    this.componentId =  this.createCompId('togglebtn', this.fieldlabel);
 
     if (this.shape === '' || this.shape == null) {
       this.shape = 'round';
