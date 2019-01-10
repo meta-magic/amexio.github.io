@@ -190,6 +190,26 @@ export class AmexiodialoguePaneComponent implements OnChanges, OnInit, OnDestroy
 
   /*
    Events
+   name : onSuccess
+   datatype :  none
+   version : none
+   default : none
+   description : Fire when click on yes or no button
+   */
+  @Output() onSuccess: EventEmitter<any> = new EventEmitter<any>();
+
+  /*
+   Events
+   name : onFailure
+   datatype :  none
+   version : none
+   default : none
+   description : Fire when click on yes or no button
+   */
+  @Output() onCancel: EventEmitter<any> = new EventEmitter<any>();
+
+  /*
+   Events
    name : close
    datatype :  none
    version : none
@@ -262,6 +282,11 @@ export class AmexiodialoguePaneComponent implements OnChanges, OnInit, OnDestroy
   getStatus(v: any) {
     this.onCloseClick();
     this.actionStatus.emit(v);
+    if (v === 'ok') {
+      this.onSuccess.emit(v);
+    } else {
+      this.onCancel.emit(v);
+    }
   }
 
   getDefaultStyle() {
