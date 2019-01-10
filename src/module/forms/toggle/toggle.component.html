@@ -1,20 +1,21 @@
-<div class="inputgroup "
-[attr.aria-checked]="checked"
->
+<div  id="{{componentId}}" class="inputgroup">
+  {{fieldlabel}}
 
-<label for="{{componentId}}">{{fieldlabel}}</label>
-<label tabindex="0" class="toggle" (keyup.space)="onEventFilter($event)"    
-> 
-  <input id="{{componentId}}" style="top:0; left:0" type="checkbox"
-         [name]="checked"
-         [attr.checked]="checked ? true: null"
-         [attr.aria-required]="required" 
-         (keyup.space)="onEventFilter('Enter Key')"
-         (blur)="onBlur()"
-         [(ngModel)]="value"
-         (change)="onToggle()"
-         >
-  <span class="toggle-slider {{shape}}"></span>
-</label>
+  <label  role="switch" attr.aria-labelledby="{{componentId}}" [attr.aria-checked]="checked" tabindex="0" for="toggleId" 
+  class="toggle" 
+  (keyup.space)="onEventFilter($event)">
+
+    <input id="toggleId" type="checkbox"
+     style="top:0; left:0" 
+     [attr.checked]="checked"
+     data-check-switch = ""
+      [attr.aria-required]="required"
+      #rangeHndl 
+      [(ngModel)]="value"
+      (blur)="onBlur()"
+      [attr.aria-checked]="checked" 
+      (change)="onToggle()">
+    <span class="toggle-slider {{shape}}">
+    </span>
+  </label>
 </div>
-
