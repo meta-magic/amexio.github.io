@@ -246,4 +246,8 @@ export class AmexioFloatingButtonComponent implements OnInit {
       this.onClick.emit({ thisObj: this, event: clickEvent });
     }
   }
+
+  togglebtn() {
+    this.ispressed = !this.ispressed;
+  }
 }
