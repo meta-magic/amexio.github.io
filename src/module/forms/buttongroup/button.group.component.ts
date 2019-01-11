@@ -57,6 +57,7 @@ export class AmexioButtonGroupComponent implements AfterContentInit, OnChanges {
   */
   buttonGroupPreviewData: any;
   previousData: any;
+  ispressed = false;
   @Output() getButton: any = new EventEmitter<any>();
   @ContentChildren(AmexioButtonComponent) btns: QueryList<AmexioButtonComponent>;
   buttons: AmexioButtonComponent[] = [];
@@ -76,6 +77,7 @@ export class AmexioButtonGroupComponent implements AfterContentInit, OnChanges {
     }
   }
   buttonGroupClick(clickEvent: any, btnObj: any) {
+    this.ispressed = !this.ispressed;
     if (this.buttonGroupLocalData || this.buttonGroupLocalData.length > 0) {
       this.getButton.emit({ event: clickEvent, buttonObject: btnObj });
     } else {
