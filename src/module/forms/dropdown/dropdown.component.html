@@ -1,6 +1,6 @@
 <div class="inputgroup" #rootDiv>
 
-    <label *ngIf="haslabel" [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
+    <label  id="fieldlabel" for="input"  *ngIf="haslabel" [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
       {{fieldlabel}}
     </label>
   
@@ -9,7 +9,13 @@
            (ngModelChange)="onChange($event)"
            #inp="ngModel"
     />
-    <input type="text" class="input-control"
+    <input 
+          id="input"
+          aria-autocomplete="list"	
+          role="combobox"
+          [attr.aria-expanded]="showToolTip"
+    
+           type="text" class="input-control"
            [value]="displayValue"
            [ngClass]="{'input-control-error' : inp.invalid && (inp.dirty || inp.touched),'input-control-success' : inp.valid && (inp.dirty || inp.touched)}"
            (blur)="onblur($event)"
@@ -20,15 +26,19 @@
            [required]="!allowblank" (keyup)="onDropDownSearchKeyUp($event)" (keydown)="navigateKey($event)"/>
   
   
-    <span class="drodown-caret-down" (click)="onIconClick()">
+    <span class="drodown-caret-down" tabindex="1" role="listbox" 
+    [attr.aria-expanded]="showToolTip" (click)="onIconClick()">
       <amexio-form-icon key="dropdown_caret" *ngIf="!maskloader" ></amexio-form-icon>
       <em class="fa fa-spinner fa-spin" *ngIf="maskloader"></em>
-    </span>
+  </span>
   
     <span #dropdownitems [@changeState]="dropdownstyle.visibility"  class="dropdown" [ngClass]="{'dropdown-up' : posixUp}" [ngStyle]="dropdownstyle">
-          <ul class="dropdown-list">
+          <ul  aria-labelledby="fieldlabel" 
+               role="listbox"
+               aria-haspopup="listbox"
+               tabindex="-1" class="dropdown-list">
   
-            <li class="list-items" [ngClass]="{'list-items-selected':item.selected}" *ngFor="let item of filteredOptions" (mousedown)="onItemSelect(item)">
+            <li  role="option"  tabindex="0"  id="listitem" class="list-items" [ngClass]="{'list-items-selected':item.selected}" *ngFor="let item of filteredOptions" (mousedown)="onItemSelect(item)">
               <ng-container *ngIf="bodyTemplate">
                 <ng-template [ngTemplateOutlet]="bodyTemplate" [ngTemplateOutletContext]="{ $implicit: { text : row }, row: item }">
                   </ng-template>
