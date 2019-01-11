@@ -21,7 +21,7 @@ export class AmexioGoogleMapComponent implements AfterViewChecked {
 
     @Input('initial-zoom-level') initialzoomlevel = 2;
 
-    @Input() overlays: GoogleMapOverlays[];
+    @Input('data') data: GoogleMapOverlays[];
 
     @Output() onMarkerClick: EventEmitter<any> = new EventEmitter();
 
@@ -53,9 +53,9 @@ export class AmexioGoogleMapComponent implements AfterViewChecked {
             map: this.map,
         });
 
-        if (this.overlays) {
+        if (this.data) {
             this.localoverlays = [];
-            for (const overlay of this.overlays) {
+            for (const overlay of this.data) {
                 this.localoverlays.push(new google.maps.Marker({ position: { lat: overlay.lat, lng: overlay.lng },
                     icon: overlay.icon, title: overlay.title, data: overlay.data }));
             }

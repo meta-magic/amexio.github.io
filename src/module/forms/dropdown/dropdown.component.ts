@@ -10,7 +10,7 @@
  configured using HTTP call OR Define fix number of dropdown-items. User can configure different attributes
  for enabling filter, multi-select, maximum selection in case of multi select.
 */
-import { animate, state, style, transition, trigger} from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import {
   AfterViewInit, ChangeDetectorRef, Component, ContentChild,
   ElementRef, EventEmitter, forwardRef, Input,
@@ -289,6 +289,10 @@ description : Set enable / disable popover.
 */
   @Input('enable-popover') enablepopover: boolean;
 
+  @Input('enable-sort') enablesort = false;
+
+  @Input('sort') sort = '';
+
   helpInfoMsg: string;
   _errormsg: string;
 
@@ -329,7 +333,7 @@ description : Set enable / disable popover.
       this.placeholder = 'Choose Option';
     }
     if (this.httpmethod && this.httpurl) {
-      this.dataService.fetchData(this.httpurl, this.httpmethod).subscribe((response) => {
+      this.dataService.fetchData(this.httpurl, this.httpmethod).subscribe((response: any) => {
         this.responseData = response;
       }, (error) => {
       }, () => {
@@ -362,12 +366,35 @@ description : Set enable / disable popover.
   }
   setResponseData(responsedata: any) {
     if (responsedata) {
-      this.viewData = responsedata.sort((a: any, b: any) => a[this.displayfield].toLowerCase()
-        !== b[this.displayfield].toLowerCase() ?
-        a[this.displayfield].toLowerCase() < b[this.displayfield].toLowerCase() ? -1 : 1 : 0);
-      this.filteredOptions = this.viewData;
+
+      if (this.enablesort === true && (this.sort === '' || this.sort === 'asc')) {
+        this.sortDataAscending(responsedata);
+
+      } else if (this.enablesort === true && this.sort === 'desc') {
+        this.sortDataDescending(responsedata);
+
+      } else if (this.enablesort === false) {
+        this.viewData = responsedata;
+        this.filteredOptions = this.viewData;
+      }
     }
   }
+
+  sortDataAscending(data: any) {
+    this.viewData = data.sort((a: any, b: any) => a[this.displayfield].toLowerCase()
+      !== b[this.displayfield].toLowerCase() ?
+      a[this.displayfield].toLowerCase() < b[this.displayfield].toLowerCase() ? -1 : 1 : 0);
+    this.filteredOptions = this.viewData;
+
+  }
+  sortDataDescending(data: any) {
+    this.viewData = data.sort((a: any, b: any) => a[this.displayfield].toLowerCase()
+      !== b[this.displayfield].toLowerCase() ?
+      a[this.displayfield].toLowerCase() > b[this.displayfield].toLowerCase() ? -1 : 1 : 0);
+    this.filteredOptions = this.viewData;
+
+  }
+
   multiSelection() {
     if (this.multiselect && this.viewData) {
       let preSelectedMultiValues = '';
@@ -531,15 +558,16 @@ description : Set enable / disable popover.
     if (!this.showToolTip) {
       this.showToolTip = true;
     }
-    let prevselectedindex = 0;
-    if (this.selectedindex === 0) {
-      this.selectedindex = 1;
+    let prevselectedindex = -1;
+    if (this.selectedindex === -1) {
+      this.selectedindex = 0;
     } else {
       prevselectedindex = this.selectedindex;
       this.scrollPositionIndex(event);
     }
     if (this.filteredOptions[this.selectedindex]) {
       this.filteredOptions[this.selectedindex].selected = true;
+
     }
     if (this.filteredOptions[prevselectedindex]) {
       this.filteredOptions[prevselectedindex].selected = false;
@@ -644,10 +672,17 @@ description : Set enable / disable popover.
     this.onTouchedCallback = fn;
   }
   onIconClick() {
+
     if (!this.disabled) {
-      this.onBaseFocusEvent({});
-      this.showToolTip = !this.showToolTip;
+      const showflag = this.showToolTip;
+      if (!this.showToolTip) {
+        this.onBaseFocusEvent({});
+      } else {
+        this.onBaseBlurEvent({});
+      }
+      this.showToolTip = !showflag;
     }
+
   }
   // THIS MEHTOD CHECK INPUT IS VALID OR NOT
   checkValidity(): boolean {
