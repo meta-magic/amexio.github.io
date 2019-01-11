@@ -26,6 +26,7 @@ import {AmexioPaneModule} from '../panes/amexio.pane.module';
 
 import {CommonDataService} from '../services/data/common.data.service';
 import {IconLoaderService} from '../services/icon/icon.service';
+import { AmexioGoogleMapComponent } from './googlemap/googlemap.component';
 
 export * from '../services/data/common.data.service';
 export * from './listbox/listbox.component';
@@ -33,12 +34,14 @@ export * from './tree/tree.component';
 export * from './paginator/paginator.component';
 export * from '../services/icon/icon.service';
 export * from './treegrid/treedatatable.component';
+export * from './googlemap/googlemap.component';
 
 const DATA_COMPONENTS = [
   AmexioTreeViewComponent,
   AmexioListBoxComponent,
   AmexioDatagridComponent,
   AmexioDataGridHeaderComponent,
+  AmexioGoogleMapComponent,
   DataGridFilterComponent,
   AmexioPaginatorComponent,
   AmexioGridColumnComponent,

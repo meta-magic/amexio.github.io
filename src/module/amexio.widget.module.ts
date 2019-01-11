@@ -21,6 +21,7 @@ export * from './services/icon/icon.mapping.config';
 export * from '../models/creditcardmodel.component';
 export * from '../models/GridConfig';
 export * from '../models/GridConstants';
+export * from '../models/googlemap.model';
 
 @NgModule({
   imports: [
