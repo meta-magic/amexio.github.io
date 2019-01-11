@@ -1,15 +1,21 @@
-/**
- * Created by ketangote on 12/1/17.
- */
-
 /*
- Component Name : Amexio sidenav node
- Component Selector : <amexio-sidenav-node>
- Component Description : The Side Nav Bar Component is a familiar side
- navigation pattern for users. Side nav bar can be placed on left or right side.
- It can fit as many navigation links as needed, scrolling when the content
- exceeds the viewport. Take a look at Datastructure format which this component can consume in datasource tab.
+* Copyright [2019] [Metamagic]
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* Created by ketangote on 12/1/17.
 */
+
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
