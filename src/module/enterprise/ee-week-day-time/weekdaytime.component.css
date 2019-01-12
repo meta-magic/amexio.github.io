@@ -1,0 +1,17 @@
+.weekdaycomponent {
+    display: block;
+    border: 1px solid #ced4da;
+    box-shadow: 0 1px 3px 0 #ced4da;
+}
+
+.availableweekday{
+    color: white;
+    background-color: black;
+    cursor: pointer;
+}
+ 
+.notavailableweekday {
+    text-decoration: line-through;
+    cursor: not-allowed;
+    color: lightgray;
+}

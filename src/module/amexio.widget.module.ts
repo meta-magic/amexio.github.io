@@ -22,6 +22,10 @@ export * from '../models/creditcardmodel.component';
 export * from '../models/GridConfig';
 export * from '../models/GridConstants';
 export * from '../models/googlemap.model';
+export * from '../models/availableslots.model';
+export * from '../models/day.model';
+export * from '../models/time.model';
+export * from '../models/time.util';
 
 @NgModule({
   imports: [
