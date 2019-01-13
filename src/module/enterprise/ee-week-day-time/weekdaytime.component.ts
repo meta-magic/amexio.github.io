@@ -12,11 +12,11 @@ import { TimeUtil } from '../../../models/time.util';
 })
 export class AmexioWeekDayAvailiblityComponent {
 
-    private currentDate: Date;
+    currentDate: Date;
 
-    private datesavailable: AvailableSlotsModel[];
+    datesavailable: AvailableSlotsModel[];
 
-    private viewData: DayModel[];
+    viewData: DayModel[];
 
     @Input('start-time') startTime: number;
 
