@@ -18,6 +18,8 @@ export class AmexioWeekDayAvailiblityComponent {
 
     viewData: DayModel[];
 
+    @Input('height') height = 'auto';
+
     @Input('start-time') startTime: number;
 
     @Input('end-time') endTime: number;

@@ -1,3 +1,4 @@
+
 <div class="weekdaycomponent">
     <div class="datetimepicker1" style="width: 100%;">
 
@@ -8,7 +9,7 @@
             </li>
 
         </ul>
-        <ul *ngIf="viewData && (viewData.length == 7)" class="weekdays">
+        <ul *ngIf="viewData && (viewData.length == 7)" class="weekdays" [style.height]="height" style="overflow: auto;">
             <li *ngFor="let day of [0,1,2,3,4,5,6]" style="width: 14.28%;">
                 <ng-container *ngIf="viewData[day] && viewData[day].timeslots &&  viewData[day].timeslots.length>0">
                     <ng-container *ngFor="let time of  viewData[day].timeslots">
