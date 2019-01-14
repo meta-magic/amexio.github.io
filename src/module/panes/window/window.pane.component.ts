@@ -83,6 +83,16 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy {
    description : Takes top position in percentage or pixel
    */
   @Input('position-top') top: string;
+   /*
+   Properties
+   name : top
+   datatype : none
+   version : 4.2 onwards
+   default : none
+   description : Takes top position to window in percentage or pixel
+   */
+  @Input ('top') windowTop: string;
+
   /*
    Properties
    name : position-bottom
