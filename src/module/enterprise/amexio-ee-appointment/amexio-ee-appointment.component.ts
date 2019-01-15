@@ -7,7 +7,7 @@ import { TimeUtil } from '../../../models/time.util';
 
 @Component({
     selector: 'amexio-ee-appointment',
-    templateUrl: './amexio-ee-appoiamexio-ee-appointmentntment.component.html',
+    templateUrl: './amexio-ee-appointment.component.html',
 })
 export class AmexioWeekDayAvailiblityComponent {
 
