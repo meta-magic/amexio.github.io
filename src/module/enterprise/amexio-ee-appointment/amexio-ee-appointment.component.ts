@@ -6,9 +6,9 @@ import { DayModel } from '../../../models/day.model';
 import { TimeUtil } from '../../../models/time.util';
 
 @Component({
-    selector: 'amexio-ee-week-daytime-availiblity',
-    templateUrl: './weekdaytime.component.html',
-    styleUrls: ['./weekdaytime.component.css'],
+    selector: 'amexio-ee-appointment',
+    templateUrl: './amexio-ee-appointment.component.html',
+    styleUrls: ['./amexio-ee-appointment.component.css'],
 })
 export class AmexioWeekDayAvailiblityComponent {
 
@@ -16,7 +16,11 @@ export class AmexioWeekDayAvailiblityComponent {
 
     datesavailable: AvailableSlotsModel[];
 
+    noOfDaysArray: any = [];
+
     viewData: DayModel[];
+
+    @Input('no-of-days') noOfDays = 7;
 
     @Input('height') height = 'auto';
 
@@ -63,11 +67,14 @@ export class AmexioWeekDayAvailiblityComponent {
     private initComponent() {
         if (this.currentDate) {
             this.viewData = [];
-            let startDate = this.getMonday(this.currentDate);
+            let startDate = this.currentDate;
             const d1 = new DayModel(new Date(startDate.getTime()), true, this.availableslots);
             d1.setTimeSlots(new TimeUtil().timeData(true));
             this.viewData.push(d1);
-            for (let i = 1; i < 7; i++) {
+            for (let i = 0; i < this.noOfDays; i++) {
+                this.noOfDaysArray.push(i);
+            }
+            for (let i = 1; i < this.noOfDays; i++) {
                 const wdate = this.createWeekDays(startDate, i);
                 const d2 = new DayModel(new Date(wdate.getTime()), true, this.availableslots);
                 d2.setTimeSlots(new TimeUtil().timeData(true));

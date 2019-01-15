@@ -2,15 +2,15 @@
 <div class="weekdaycomponent">
     <div class="datetimepicker1" style="width: 100%;">
 
-        <ul *ngIf="viewData && (viewData.length == 7)" class="weekdays">
-            <li *ngFor="let day of [0,1,2,3,4,5,6]" style="width: 14.28%;">
+        <ul *ngIf="viewData && (viewData.length == noOfDays)" class="weekdays">
+            <li *ngFor="let day of noOfDaysArray" style="width: 14.28%;">
                 <label>{{viewData[day].date| date:'E'}} </label><br />
                 <label style="font-size: 10px;">{{viewData[day].date| date:'dd/MM/yy'}}</label>
             </li>
 
         </ul>
-        <ul *ngIf="viewData && (viewData.length == 7)" class="weekdays" [style.height]="height" style="overflow: auto;">
-            <li *ngFor="let day of [0,1,2,3,4,5,6]" style="width: 14.28%;">
+        <ul *ngIf="viewData && (viewData.length == noOfDays)" class="weekdays" [style.height]="height" style="overflow: auto;">
+            <li *ngFor="let day of noOfDaysArray" style="width: 14.28%;">
                 <ng-container *ngIf="viewData[day] && viewData[day].timeslots &&  viewData[day].timeslots.length>0">
                     <ng-container *ngFor="let time of  viewData[day].timeslots">
                         <div *ngIf="(time.timeId >= startTime && time.timeId <= endTime)" style="padding:5px;"

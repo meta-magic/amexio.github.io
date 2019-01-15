@@ -13,7 +13,7 @@ import {ContentComponent} from './ee-content/ee.content';
 import {CommonDataService} from '../services/data/common.data.service';
 import {DeviceQueryService} from '../services/device/device.query.service';
 
-import {AmexioWeekDayAvailiblityComponent} from './ee-week-day-time/weekdaytime.component';
+import {AmexioWeekDayAvailiblityComponent} from './amexio-ee-appointment/amexio-ee-appointment.component';
 import {AmexioYoutubePlayerComponent} from './youtube-player/youtube.player.component';
 
 export * from './ee-carousel/ee.carousel.component';
@@ -21,7 +21,7 @@ export * from './ee-content/ee.content';
 export * from '../services/data/common.data.service';
 export * from '../services/device/device.query.service';
 export * from './youtube-player/youtube.player.component';
-export * from './ee-week-day-time/weekdaytime.component';
+export * from './amexio-ee-appointment/amexio-ee-appointment.component';
 
 const ENTERPRISE_COMPONENTS = [
   MultiMediaCarouselComponent,
