@@ -1,5 +1,7 @@
-import { AfterViewChecked, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, IterableDiffers, Output } from '@angular/core';
+import { AfterViewChecked, ChangeDetectorRef, Component, ElementRef, EventEmitter,
+Input, IterableDiffers, OnInit, Output} from '@angular/core';
 import { GoogleMapOverlays } from '../../../models/googlemap.model';
+import { GoogleMapScriptService } from '../../services/script/script.data.service';
 
 declare var google: any;
 
@@ -7,7 +9,8 @@ declare var google: any;
     selector: 'amexio-google-map',
     templateUrl: './googlemap.component.html',
 })
-export class AmexioGoogleMapComponent implements AfterViewChecked {
+export class AmexioGoogleMapComponent implements AfterViewChecked, OnInit {
+    @Input('data-key') datakey: string;
 
     @Input() style: any;
 
@@ -27,6 +30,10 @@ export class AmexioGoogleMapComponent implements AfterViewChecked {
 
     @Output() onReady: EventEmitter<any> = new EventEmitter();
 
+    @Output() onSuccess = new EventEmitter<any>();
+
+    @Output() onFailure = new EventEmitter<any>();
+
     localoverlays: any[];
 
     differ: any;
@@ -35,10 +42,41 @@ export class AmexioGoogleMapComponent implements AfterViewChecked {
 
     infoWindow: any;
 
-    constructor(public el: ElementRef, differs: IterableDiffers) {
+    componentId: any;
+
+    responseStructure: any;
+    constructor(public el: ElementRef, differs: IterableDiffers, public _loadGoogleMapService: GoogleMapScriptService) {
         this.differ = differs.find([]).create(null);
     }
 
+    ngOnInit() {
+        this.componentId =
+            +Math.floor(Math.random() * 90000) + 10000 + 'google';
+
+        const script = this._loadGoogleMapService.loadScript();
+        const body = document.body as HTMLDivElement;
+        script.onload = () => {
+            google.ready(() => {
+                this.googleMap();
+            });
+        };
+        body.appendChild(script);
+    }
+    googleMap() {
+        google.render(this.componentId, {
+            sitekey: this.datakey, callback: (response: any) => {
+                if (response && response.length > 0) {
+                    this.responseStructure['success'] = true;
+                    this.responseStructure['response'] = response;
+                    this.onSuccess.emit(this.responseStructure);
+                } else {
+                    this.responseStructure['success'] = false;
+                    this.responseStructure['response'] = '';
+                    this.onFailure.emit(this.responseStructure);
+                }
+            },
+        });
+    }
     ngAfterViewChecked() {
         if (!this.map && this.el.nativeElement.offsetParent) {
             this.initialize();
@@ -56,8 +94,10 @@ export class AmexioGoogleMapComponent implements AfterViewChecked {
         if (this.data) {
             this.localoverlays = [];
             for (const overlay of this.data) {
-                this.localoverlays.push(new google.maps.Marker({ position: { lat: overlay.lat, lng: overlay.lng },
-                    icon: overlay.icon, title: overlay.title, data: overlay.data }));
+                this.localoverlays.push(new google.maps.Marker({
+                    position: { lat: overlay.lat, lng: overlay.lng },
+                    icon: overlay.icon, title: overlay.title, data: overlay.data,
+                }));
             }
 
             for (const overlay of this.localoverlays) {
