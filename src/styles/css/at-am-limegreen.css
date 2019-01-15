@@ -2556,6 +2556,30 @@ input:checked + .toggle-slider:before {
 .floatingbutton-square {
   padding: .5rem 1rem; }
 
+.floatingbtntooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; }
+
+.floatingbtntooltip .floatingbtntooltiptext {
+  visibility: hidden;
+  line-height: 20px;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 209%;
+  margin-left: -60px; }
+
+.floatingbtntooltip:hover .floatingbtntooltiptext {
+  visibility: visible; }
+
 /****************************************************************************
     Component Name : Floating button group
     Version : Amexio v4.1 onwards
@@ -3552,7 +3576,7 @@ header .billboard .content-button {
 .close-button {
   cursor: pointer;
   padding-left: 98%;
-  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, transparent 70%, transparent 100%); }
+  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 100%); }
 
 /****************************************************************************
     Component Name : Enterprise Youtube
@@ -3561,7 +3585,7 @@ header .billboard .content-button {
 /** enterprise-youtube - Visual CSS **/
 .close-button {
   color: grey;
-  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, transparent 70%, transparent 100%); }
+  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 100%); }
 
 .close-button i:hover {
   color: red; }
@@ -3585,8 +3609,8 @@ header .billboard .content-button {
   font-size: 20px; }
 
 .tile__details {
-  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%); }
+  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%); }
 
 .tile__details:after,
 .tile__details:before {
@@ -3594,8 +3618,8 @@ header .billboard .content-button {
 
 .tile__details_v {
   font-size: 10px;
-  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%); }
+  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%); }
 
 .tile__details_v:after,
 .tile__details_v:before {
@@ -5196,6 +5220,9 @@ amexio-layout-columns amexio-layout-item {
   border: 1px solid black;
   background-color: #ecff82; }
 
+.breadcrumb-group:hover .arrow-group-css {
+  border-left: 1px solid black; }
+
 .arrow-group-css:hover {
   border-left: 1px solid black; }
 
@@ -5558,7 +5585,6 @@ fieldset {
   cursor: pointer; }
 
 .collapsible-fieldset {
-  height: 0;
   overflow: hidden; }
 
 .collapsible-fieldset.active {

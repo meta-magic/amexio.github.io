@@ -145,6 +145,16 @@ export class AmexioFloatingButtonComponent implements OnInit {
   */
   @Input('size') size: string;
 
+    /*
+  Properties
+  name : tooltip
+  datatype : string
+  version : 5.5.2 onwards
+  default : none
+  description : Provides Tooltip for button.
+  */
+  @Input('tool-tip') tooltip: string;
+
   positionclass: string;
   absoluteposition = false;
   ispressed = false;
