@@ -1,4 +1,5 @@
-<div class="floatingbutton floatingbtntooltip" role="button" tabindex="0"  
+<div [ngClass]="{floatingbtntooltip: tooltip}">
+<div class="floatingbutton" role="button"  tabindex="0"  
 [attr.aria-pressed]="ispressed"
  attr.aria-describedby="{{componentId}}" 
 [ngClass]="addCSSClasses()" 
@@ -11,5 +12,5 @@
     {{label}}
     
     <span id="{{componentId}}" role="tooltip" *ngIf="tooltip" class="floatingbtntooltiptext">{{tooltip}}</span>
-
+</div>
 </div>
