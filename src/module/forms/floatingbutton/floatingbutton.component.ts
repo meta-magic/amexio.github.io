@@ -145,22 +145,25 @@ export class AmexioFloatingButtonComponent implements OnInit {
   */
   @Input('size') size: string;
 
-    /*
-  Properties
-  name : tooltip
-  datatype : string
-  version : 5.5.2 onwards
-  default : none
-  description : Provides Tooltip for button.
-  */
+  /*
+Properties
+name : tooltip
+datatype : string
+version : 5.5.2 onwards
+default : none
+description : Provides Tooltip for button.
+*/
   @Input('tool-tip') tooltip: string;
 
   positionclass: string;
   absoluteposition = false;
   ispressed = false;
+  componentId: string;
+
   constructor() {
   }
   ngOnInit() {
+    this.componentId = this.createCompId('checkbox');
     this.addCSSClasses();
   }
   // THIS METHOD IS USED FOR SETTING CSS CLASSSES
@@ -257,7 +260,14 @@ export class AmexioFloatingButtonComponent implements OnInit {
     }
   }
 
-  togglebtn() {
+  togglebtn(event1: any) {
     this.ispressed = !this.ispressed;
+    if (!this.disabled) {
+      this.onClick.emit({ thisObj: this, event: event1 });
+    }
+  }
+
+  createCompId(inputType: any) {
+    return inputType + '_' + Math.floor(Math.random() * 1000 + 999);
   }
 }
