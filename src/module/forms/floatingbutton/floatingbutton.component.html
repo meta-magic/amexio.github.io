@@ -1,16 +1,11 @@
 <div [ngClass]="{floatingbtntooltip: tooltip}">
-<div class="floatingbutton" role="button"  tabindex="0"  
-[attr.aria-pressed]="ispressed"
- attr.aria-describedby="{{componentId}}" 
-[ngClass]="addCSSClasses()" 
-[ngStyle]="{'top':top,'bottom':bottom,'left':left,'right':right}" 
-(click)="buttonClick($event)"
-(keyup.enter)="togglebtn($event)"
- (keyup.space)="togglebtn($event)" >
-    <amexio-form-icon *ngIf="icon" [customclass]="icon">
-    </amexio-form-icon>
-    {{label}}
-    
-    <span id="{{componentId}}" role="tooltip" *ngIf="tooltip" class="floatingbtntooltiptext">{{tooltip}}</span>
-</div>
+    <div class="floatingbutton" role="button" tabindex="0" [attr.aria-pressed]="ispressed" attr.aria-describedby="{{componentId}}"
+        [ngClass]="addCSSClasses()" [ngStyle]="{'top':top,'bottom':bottom,'left':left,'right':right}" (click)="buttonClick($event)"
+        (keyup.enter)="togglebtn($event)" (keyup.space)="togglebtn($event)">
+        <amexio-form-icon *ngIf="icon" [customclass]="icon">
+        </amexio-form-icon>
+        {{label}}
+
+        <span id="{{componentId}}" role="tooltip" *ngIf="tooltip" class="floatingbtntooltiptext">{{tooltip}}</span>
+    </div>
 </div>
