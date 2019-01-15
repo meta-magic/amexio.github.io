@@ -7,8 +7,7 @@ import { TimeUtil } from '../../../models/time.util';
 
 @Component({
     selector: 'amexio-ee-appointment',
-    templateUrl: './amexio-ee-appointment.component.html',
-    styleUrls: ['./amexio-ee-appointment.component.css'],
+    templateUrl: './amexio-ee-appoiamexio-ee-appointmentntment.component.html',
 })
 export class AmexioWeekDayAvailiblityComponent {
 
@@ -71,6 +70,7 @@ export class AmexioWeekDayAvailiblityComponent {
             const d1 = new DayModel(new Date(startDate.getTime()), true, this.availableslots);
             d1.setTimeSlots(new TimeUtil().timeData(true));
             this.viewData.push(d1);
+            this.noOfDaysArray = [];
             for (let i = 0; i < this.noOfDays; i++) {
                 this.noOfDaysArray.push(i);
             }
