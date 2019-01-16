@@ -23,7 +23,10 @@
     color: $tabActiveColor;
     //border-left: $tabActiveBorderSize solid $tabActiveBorder;
 }
-
+.tabcontent::-webkit-scrollbar-track
+{
+  background-color:$tabScrollBGColor;
+}
 .tabcontent::-webkit-scrollbar
 {
   background-color: $tabScrollBGColor;

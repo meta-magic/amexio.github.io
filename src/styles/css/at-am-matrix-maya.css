@@ -3871,11 +3871,6 @@ header .billboard .content-button {
   border-top: 3px solid white; }
 
 /****************************************************************************
-    Component Name : Enterprise Appointment
-    Version : Amexio v5.5.2 onwards
-*****************************************************************************/
-/** enterprise-carousel - Visual CSS **/
-/****************************************************************************
     Component Name : Datapoints
     Version : Amexio v4.0 onwards
 *****************************************************************************/
@@ -5724,6 +5719,9 @@ fieldset {
 .verticalnavtab .rightactivetab {
   background-color: #000000;
   color: #73C2FB; }
+
+.tabcontent::-webkit-scrollbar-track {
+  background-color: #a09e9e; }
 
 .tabcontent::-webkit-scrollbar {
   background-color: #a09e9e; }
