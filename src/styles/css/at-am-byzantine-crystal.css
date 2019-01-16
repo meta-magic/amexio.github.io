@@ -1076,7 +1076,7 @@ button {
   background-color: #e99fe9; }
 
 .drodown-caret-down {
-  color: black; }
+  color: rgba(0, 0, 0, 0.42); }
 
 .list-items-selected {
   background-color: #f3c8f2;
@@ -1140,7 +1140,8 @@ button {
 .input-control {
   font-size: 14px;
   background-color: white;
-  color: #70196F; }
+  color: #70196F;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.42); }
 
 ::placeholder {
   color: #70196F; }
@@ -1192,7 +1193,6 @@ button {
   line-height: 2;
   border-radius: 0px;
   border: none;
-  border-bottom: 2px solid #70196F;
   transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s; }
 
 .input-control:focus {
@@ -3871,6 +3871,11 @@ header .billboard .content-button {
   height: 5px;
   border-top: 3px solid white; }
 
+/****************************************************************************
+    Component Name : Enterprise Appointment
+    Version : Amexio v5.5.2 onwards
+*****************************************************************************/
+/** enterprise-carousel - Visual CSS **/
 /****************************************************************************
     Component Name : Datapoints
     Version : Amexio v4.0 onwards
