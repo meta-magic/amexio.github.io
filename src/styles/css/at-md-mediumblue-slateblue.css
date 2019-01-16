@@ -3914,6 +3914,26 @@ header .billboard .content-button {
   border-top: 3px solid white; }
 
 /****************************************************************************
+    Component Name : Enterprise Appointment
+    Version : Amexio v5.5.2 onwards
+*****************************************************************************/
+/** enterprise - Visual CSS **/
+.weekdaycomponent {
+  display: block;
+  border: 1px solid #ced4da;
+  box-shadow: 0 1px 3px 0 #ced4da; }
+
+.availableweekday {
+  color: #ffffff;
+  background-color: #7b68ee;
+  cursor: pointer; }
+
+.notavailableweekday {
+  text-decoration: line-through;
+  cursor: not-allowed;
+  color: lightgray; }
+
+/****************************************************************************
     Component Name : Datapoints
     Version : Amexio v4.0 onwards
 *****************************************************************************/
