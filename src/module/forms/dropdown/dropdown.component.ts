@@ -477,7 +477,7 @@ description : Set enable / disable popover.
       });
     }
   }
-  navigateKey(event: any) {
+   navigateKey(event: any) {
   }
   getDisplayText() {
     if (this.innerValue != null || this.innerValue !== '') {

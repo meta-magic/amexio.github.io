@@ -1,7 +1,6 @@
 import { AfterViewChecked, ChangeDetectorRef, Component, ElementRef, EventEmitter,
 Input, IterableDiffers, OnInit, Output} from '@angular/core';
 import { GoogleMapOverlays } from '../../../models/googlemap.model';
-import { GoogleMapScriptService } from '../../services/script/script.data.service';
 
 declare var google: any;
 
@@ -9,9 +8,7 @@ declare var google: any;
     selector: 'amexio-google-map',
     templateUrl: './googlemap.component.html',
 })
-export class AmexioGoogleMapComponent implements AfterViewChecked, OnInit {
-    @Input('data-key') datakey: string;
-
+export class AmexioGoogleMapComponent implements AfterViewChecked {
     @Input() style: any;
 
     @Input() height = '250px';
@@ -30,10 +27,6 @@ export class AmexioGoogleMapComponent implements AfterViewChecked, OnInit {
 
     @Output() onReady: EventEmitter<any> = new EventEmitter();
 
-    @Output() onSuccess = new EventEmitter<any>();
-
-    @Output() onFailure = new EventEmitter<any>();
-
     localoverlays: any[];
 
     differ: any;
@@ -42,41 +35,11 @@ export class AmexioGoogleMapComponent implements AfterViewChecked, OnInit {
 
     infoWindow: any;
 
-    componentId: any;
-
     responseStructure: any;
-    constructor(public el: ElementRef, differs: IterableDiffers, public _loadGoogleMapService: GoogleMapScriptService) {
+    constructor(public el: ElementRef, differs: IterableDiffers) {
         this.differ = differs.find([]).create(null);
     }
-
-    ngOnInit() {
-        this.componentId =
-            +Math.floor(Math.random() * 90000) + 10000 + 'google';
-
-        const script = this._loadGoogleMapService.loadScript();
-        const body = document.body as HTMLDivElement;
-        script.onload = () => {
-            google.ready(() => {
-                this.googleMap();
-            });
-        };
-        body.appendChild(script);
-    }
-    googleMap() {
-        google.render(this.componentId, {
-            sitekey: this.datakey, callback: (response: any) => {
-                if (response && response.length > 0) {
-                    this.responseStructure['success'] = true;
-                    this.responseStructure['response'] = response;
-                    this.onSuccess.emit(this.responseStructure);
-                } else {
-                    this.responseStructure['success'] = false;
-                    this.responseStructure['response'] = '';
-                    this.onFailure.emit(this.responseStructure);
-                }
-            },
-        });
-    }
+   
     ngAfterViewChecked() {
         if (!this.map && this.el.nativeElement.offsetParent) {
             this.initialize();

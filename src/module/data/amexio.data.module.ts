@@ -27,10 +27,8 @@ import { AmexioPaneModule } from '../panes/amexio.pane.module';
 
 import { CommonDataService } from '../services/data/common.data.service';
 import { IconLoaderService } from '../services/icon/icon.service';
-import { GoogleMapScriptService } from '../services/script/script.data.service';
 
 export * from '../services/data/common.data.service';
-export * from '../services/script/script.data.service';
 export * from './listbox/listbox.component';
 export * from './tree/tree.component';
 export * from './paginator/paginator.component';
@@ -68,13 +66,13 @@ const DATA_COMPONENTS = [
   ],
   exports: DATA_COMPONENTS,
   declarations: DATA_COMPONENTS,
-  providers: [CommonDataService, GoogleMapScriptService, IconLoaderService],
+  providers: [CommonDataService, IconLoaderService],
 })
 export class AmexioDataModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: AmexioDataModule,
-      providers: [CommonDataService, GoogleMapScriptService, IconLoaderService],
+      providers: [CommonDataService, IconLoaderService],
     };
   }
 }
