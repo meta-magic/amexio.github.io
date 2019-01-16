@@ -39,7 +39,6 @@ export class AmexioGoogleMapComponent implements AfterViewChecked {
     constructor(public el: ElementRef, differs: IterableDiffers) {
         this.differ = differs.find([]).create(null);
     }
-   
     ngAfterViewChecked() {
         if (!this.map && this.el.nativeElement.offsetParent) {
             this.initialize();
