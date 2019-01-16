@@ -15,17 +15,17 @@ export class AmexioWeekDayAvailiblityComponent {
 
     datesavailable: AvailableSlotsModel[];
 
-    noOfDaysArray: any = [];
-
     viewData: DayModel[];
 
-    @Input('no-of-days') noOfDays = 7;
+    noOfDaysArray: any = [];
 
     @Input('height') height = 'auto';
 
     @Input('start-time') startTime: number;
 
     @Input('end-time') endTime: number;
+
+    @Input('no-of-days') noOfDays = 7;
 
     @Input('date')
     set date(v: Date) {
@@ -64,9 +64,11 @@ export class AmexioWeekDayAvailiblityComponent {
     }
 
     private initComponent() {
+
         if (this.currentDate) {
             this.viewData = [];
-            let startDate = this.currentDate;
+            const clonedDate = new Date(this.currentDate.getTime());
+            let startDate = clonedDate;
             const d1 = new DayModel(new Date(startDate.getTime()), true, this.availableslots);
             d1.setTimeSlots(new TimeUtil().timeData(true));
             this.viewData.push(d1);
