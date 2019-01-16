@@ -27,15 +27,26 @@ export class AmexioGoogleMapComponent implements OnInit {
 
     @Input('initial-zoom-level') initialzoomlevel = 2;
 
-    @Input('data') data: GoogleMapOverlays[];
-
     @Output() onMarkerClick: EventEmitter<any> = new EventEmitter();
 
     @Output() onReady: EventEmitter<any> = new EventEmitter();
+    @Input('data')
+    set data(v: GoogleMapOverlays[]) {
+        if (v) {
+            this._data = v;
+            this.initalize();
+        }
+    }
+
+    get data() {
+        return this._data;
+    }
 
     localoverlays: any[];
 
     differ: any;
+
+    _data: GoogleMapOverlays[];
 
     map: any;
 
@@ -69,7 +80,7 @@ export class AmexioGoogleMapComponent implements OnInit {
     }
 
     initalize() {
-        if (this.data) {
+        if (this.data && this.map) {
             this.localoverlays = [];
             for (const overlay of this.data) {
                 this.localoverlays.push(new google.maps.Marker({
@@ -77,10 +88,19 @@ export class AmexioGoogleMapComponent implements OnInit {
                     icon: overlay.icon, title: overlay.title, data: overlay.data,
                 }));
             }
+
             for (const overlay of this.localoverlays) {
                 overlay.setMap(this.map);
                 this.bindOverlayEvents(overlay);
             }
+        }
+        const changes = this.differ.diff(this.localoverlays);
+        if (changes && this.map) {
+            changes.forEachRemovedItem((record: any) => {
+                google.maps.event.clearInstanceListeners(record.item);
+                record.item.setMap(null);
+            });
+
         }
     }
 
