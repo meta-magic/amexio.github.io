@@ -7,10 +7,10 @@ export class GoogleMapScriptService {
   constructor() {
   }
 
-  loadScript(): any {
+  loadScript(id: string): any {
     const script = document.createElement('script');
     script.innerHTML = '';
-    script.src = 'https://maps.google.com/maps/api/js?render=explicit';
+    script.src = 'https://maps.google.com/maps/api/js?key=' + id;
     script.async = true;
     script.defer = true;
     return script;

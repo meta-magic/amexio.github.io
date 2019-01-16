@@ -1,6 +1,9 @@
-import { AfterViewChecked, ChangeDetectorRef, Component, ElementRef, EventEmitter,
-Input, IterableDiffers, OnInit, Output} from '@angular/core';
+import {
+    AfterViewChecked, ChangeDetectorRef, Component, ElementRef, EventEmitter,
+    Input, IterableDiffers, OnInit, Output,
+} from '@angular/core';
 import { GoogleMapOverlays } from '../../../models/googlemap.model';
+import { GoogleMapScriptService } from '../../services/script/script.data.service';
 
 declare var google: any;
 
@@ -8,7 +11,10 @@ declare var google: any;
     selector: 'amexio-google-map',
     templateUrl: './googlemap.component.html',
 })
-export class AmexioGoogleMapComponent implements AfterViewChecked {
+
+export class AmexioGoogleMapComponent implements OnInit {
+    @Input('google-map-key') googlemapkey: string;
+
     @Input() style: any;
 
     @Input() height = '250px';
@@ -35,24 +41,34 @@ export class AmexioGoogleMapComponent implements AfterViewChecked {
 
     infoWindow: any;
 
+    componentId: any;
+
     responseStructure: any;
-    constructor(public el: ElementRef, differs: IterableDiffers) {
+    constructor(public el: ElementRef, differs: IterableDiffers, public _loadGoogleMapService: GoogleMapScriptService) {
         this.differ = differs.find([]).create(null);
     }
-    ngAfterViewChecked() {
-        if (!this.map && this.el.nativeElement.offsetParent) {
-            this.initialize();
-            this.infoWindow = new google.maps.InfoWindow();
+    ngOnInit() {
+        this.componentId =
+            +Math.floor(Math.random() * 90000) + 10000 + 'google';
+        if (this.googlemapkey) {
+            const script = this._loadGoogleMapService.loadScript(this.googlemapkey);
+            const body = document.body as HTMLDivElement;
+            const options = { center: { lat: this.initiallat, lng: this.initiallng }, zoom: this.initialzoomlevel };
+            script.onload = () => {
+                this.map = new google.maps.Map(this.el.nativeElement.children[0], options);
+                this.onReady.emit({
+                    map: this.map,
+                });
+                if (!this.map && this.el.nativeElement.offsetParent) {
+                    this.infoWindow = new google.maps.InfoWindow();
+                }
+                this.initalize();
+            };
+            body.appendChild(script);
         }
     }
 
-    initialize() {
-        const options = { center: { lat: this.initiallat, lng: this.initiallng }, zoom: this.initialzoomlevel };
-        this.map = new google.maps.Map(this.el.nativeElement.children[0], options);
-        this.onReady.emit({
-            map: this.map,
-        });
-
+    initalize() {
         if (this.data) {
             this.localoverlays = [];
             for (const overlay of this.data) {
@@ -61,13 +77,11 @@ export class AmexioGoogleMapComponent implements AfterViewChecked {
                     icon: overlay.icon, title: overlay.title, data: overlay.data,
                 }));
             }
-
             for (const overlay of this.localoverlays) {
                 overlay.setMap(this.map);
                 this.bindOverlayEvents(overlay);
             }
         }
-
     }
 
     bindOverlayEvents(overlay: any) {
