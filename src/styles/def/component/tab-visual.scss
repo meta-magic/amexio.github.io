@@ -24,6 +24,16 @@
     //border-left: $tabActiveBorderSize solid $tabActiveBorder;
 }
 
+.tabcontent::-webkit-scrollbar
+{
+  background-color: $tabScrollBGColor;
+}
+
+.tabcontent::-webkit-scrollbar-thumb
+{
+  background-color: $tabScrollThumbColor;
+}
+
 
 /** Theme Colors for Tab*/
 
