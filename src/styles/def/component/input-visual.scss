@@ -17,7 +17,7 @@
   color: $inputBorderColor;
 }
 .input-control:focus {
-  border-color: $borderColorFocus;
+  border-bottom: 1px solid $borderColorFocus;
 }
 .input-control-success {
   border-color:$success;

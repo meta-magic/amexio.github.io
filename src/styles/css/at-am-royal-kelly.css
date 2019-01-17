@@ -1513,7 +1513,7 @@ button {
   color: #4CBB17; }
 
 .input-control:focus {
-  border-color: #5cb3fd; }
+  border-bottom: 1px solid #5cb3fd; }
 
 .input-control-success {
   border-color: #5cb85c; }
@@ -1551,6 +1551,7 @@ button {
   line-height: 2;
   border-radius: 0px;
   border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.42);
   transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s; }
 
 .input-control:focus {
