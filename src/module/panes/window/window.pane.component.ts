@@ -16,7 +16,7 @@
 * Created by ketangote on 12/18/17.
 */
 
-import { animate, state, style, transition, trigger} from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import {
   Component, ContentChildren, ElementRef, EventEmitter, HostListener,
   Input, OnChanges, OnDestroy, OnInit, Output, QueryList, Renderer2, SimpleChanges, ViewChild,
@@ -83,15 +83,15 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy {
    description : Takes top position in percentage or pixel
    */
   @Input('position-top') top: string;
-   /*
-   Properties
-   name : top
-   datatype : none
-   version : 4.2 onwards
-   default : none
-   description : Takes top position to window in percentage or pixel
-   */
-  @Input ('top') windowTop: string;
+  /*
+  Properties
+  name : top
+  datatype : none
+  version : 5.2 onwards
+  default : none
+  description : Takes top height to window in percentage or pixel
+  */
+  @Input('top') windowTop: string;
 
   /*
    Properties
@@ -304,7 +304,9 @@ description : Context Menu provides the list of menus on right click.
     if (this.show && this.closeonescape) {
       this.globalListenFunc = this.renderer.listen('document', 'keyup.esc', (e: any) => {
         this.showWindow = false;
+        this.show = false;
         this.showChange.emit(false);
+        this.close.emit(this.showWindow);
       });
     } else if (this.globalListenFunc) {
       this.globalListenFunc();
