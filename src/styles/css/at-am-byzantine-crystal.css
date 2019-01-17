@@ -2870,7 +2870,7 @@ input:checked + .toggle-slider:before {
   left: 8% !important; }
 
 .spinner-horizontal-center {
-  left: 52% !important; }
+  left: 50% !important; }
 
 .spinner-horizontal-right {
   right: 10% !important; }
