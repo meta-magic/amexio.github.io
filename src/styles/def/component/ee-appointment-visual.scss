@@ -5,9 +5,19 @@
 }
 
 .availableweekday{
-    color: $primaryColor;
-    background-color: $primaryBGColor;
+    color: $themePrimaryColor;
+    background-color: $componentActiveBGColor;
     cursor: pointer;
+}
+
+.availableweekday:hover{
+    background-color:$componentHeaderBGColor;
+    color:$componentHeaderFontColor
+}
+
+.selectedDay{
+    background-color:$componentHeaderBGColor;
+    color:$componentHeaderFontColor
 }
  
 .notavailableweekday {

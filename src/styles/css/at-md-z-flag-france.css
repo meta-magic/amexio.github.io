@@ -3923,9 +3923,17 @@ header .billboard .content-button {
   box-shadow: 0 1px 3px 0 #ced4da; }
 
 .availableweekday {
-  color: #ffffff;
-  background-color: #e0162b;
+  color: #0052a5;
+  background-color: #ff6b7a;
   cursor: pointer; }
+
+.availableweekday:hover {
+  background-color: #e0162b;
+  color: #fffafb; }
+
+.selectedDay {
+  background-color: #e0162b;
+  color: #fffafb; }
 
 .notavailableweekday {
   text-decoration: line-through;

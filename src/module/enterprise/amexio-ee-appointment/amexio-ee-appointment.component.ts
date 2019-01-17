@@ -59,6 +59,14 @@ export class AmexioWeekDayAvailiblityComponent {
 
     onTimeClick(event1: any, dayModel1: DayModel, time1: any) {
         if (time1 && time1.available) {
+            dayModel1.timeslots.forEach((obj) => {
+                if (obj === time1) {
+                    obj.selected = true;
+                } else {
+                    obj.selected = false;
+                }
+            });
+
             this.onSelection.emit({ event: event1, day: dayModel1, time: time1 });
         }
     }

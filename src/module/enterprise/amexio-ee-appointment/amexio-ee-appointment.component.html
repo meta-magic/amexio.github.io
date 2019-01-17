@@ -14,7 +14,7 @@
                 <ng-container *ngIf="viewData[day] && viewData[day].timeslots &&  viewData[day].timeslots.length>0">
                     <ng-container *ngFor="let time of  viewData[day].timeslots">
                         <div *ngIf="(time.timeId >= startTime && time.timeId <= endTime)" style="padding:5px;"
-                            [ngClass]="{'availableweekday': time.available,'notavailableweekday': !time.available}"
+                            [ngClass]="{'availableweekday': time.available,'notavailableweekday': !time.available,'selectedDay':time.selected}"
                             (click)="onTimeClick($event,viewData[day],time)">
                             {{time.time}}
                         </div>
