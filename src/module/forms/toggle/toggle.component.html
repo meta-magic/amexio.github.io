@@ -1,11 +1,11 @@
 <div  id="{{componentId}}" class="inputgroup">
   {{fieldlabel}}
 
-  <label  role="switch" attr.aria-labelledby="{{componentId}}" [attr.aria-checked]="checked" tabindex="0" for="toggleId" 
+  <label  role="switch" attr.aria-labelledby="{{componentId}}" [attr.aria-checked]="checked" tabindex="0" for="{{toggleId}}" 
   class="toggle" 
   (keyup.space)="onEventFilter($event)">
 
-    <input id="toggleId" type="checkbox"
+    <input id="{{toggleId}}" type="checkbox"
      style="top:0; left:0" 
      [attr.checked]="checked"
      data-check-switch = ""
