@@ -19,6 +19,8 @@ export class AmexioWeekDayAvailiblityComponent {
 
     noOfDaysArray: any = [];
 
+    selectedDays: any = [];
+
     @Input('height') height = 'auto';
 
     @Input('start-time') startTime: number;
@@ -26,6 +28,8 @@ export class AmexioWeekDayAvailiblityComponent {
     @Input('end-time') endTime: number;
 
     @Input('no-of-days') noOfDays = 7;
+
+    @Input('multi-select') multiSelect = false;
 
     @Input('date')
     set date(v: Date) {
@@ -51,23 +55,28 @@ export class AmexioWeekDayAvailiblityComponent {
         return this.datesavailable;
     }
 
-    @Output() onSelection: EventEmitter<any> = new EventEmitter<any>();
+    @Output() onSingleSelect: EventEmitter<any> = new EventEmitter<any>();
+    @Output() onMultiSelect: EventEmitter<any> = new EventEmitter<any>();
 
     constructor() {
 
     }
 
     onTimeClick(event1: any, dayModel1: DayModel, time1: any) {
-        if (time1 && time1.available) {
-            dayModel1.timeslots.forEach((obj) => {
-                if (obj === time1) {
-                    obj.selected = true;
-                } else {
-                    obj.selected = false;
-                }
-            });
+        if (time1 && time1.available && this.multiSelect) {
+            this.onMultiSelection(dayModel1, time1);
+        } else if (time1 && time1.available && !this.multiSelect) {
 
-            this.onSelection.emit({ event: event1, day: dayModel1, time: time1 });
+            this.viewData.forEach((object) => {
+                object.timeslots.forEach((element) => {
+                    if (element === time1) {
+                        element.selected = true;
+                    } else {
+                        element.selected = false;
+                    }
+                });
+            });
+            this.onSingleSelect.emit({ date: dayModel1.date, time: time1.time });
         }
     }
 
@@ -108,5 +117,31 @@ export class AmexioWeekDayAvailiblityComponent {
             }
         }
         return date;
+    }
+
+    onMultiSelection(dayModel1: any, time1: any) {
+        dayModel1.timeslots.forEach((obj: any) => {
+            if (obj === time1) {
+                const selectedAppointDate = {
+                    date: dayModel1.date,
+                    time: obj.time,
+                };
+                obj.selected = true;
+                if (this.selectedDays.length > 0) {
+                    this.selectedDays.forEach((item: any, index: number) => {
+                        if (item.date === selectedAppointDate.date) {
+                            this.selectedDays.splice(index, 1);
+                        }
+                    });
+                    this.selectedDays.push(selectedAppointDate);
+                } else {
+                    this.selectedDays.push(selectedAppointDate);
+                }
+            } else {
+                obj.selected = false;
+            }
+        });
+        this.onSingleSelect.emit({ date: dayModel1.date, time: time1.time });
+        this.onMultiSelect.emit(this.selectedDays);
     }
 }
