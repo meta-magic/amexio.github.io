@@ -1,5 +1,9 @@
+<div class="spinner-sm" [ngClass]="positionSpinnerClass">
+
+
+
 <div #loadindicator [ngStyle]="{'display': show ? 'block': 'none'}" 
-[style.color]='color' [style.font-size]= 'size'
+[style.color]='color' 
  [ngClass]="{
         'rectangle-bounces' :type == 'rectanglebounce',
         'rings' :type == 'ring',
@@ -11,3 +15,5 @@
         'spinner-rounds' :type == 'spinnerround'}
         ">
 </div>
+</div>
+

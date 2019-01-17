@@ -1,4 +1,37 @@
+
+.spinner-sm {
+  position: fixed !important;
+  z-index: 4 !important;
+  padding-top: 0% !important;
+  padding-left: 0% !important;
+  width: 0% !important;
+}
+
+
+
+
+.spinner-vertical-top{
+  top:2%;
+}
+.spinner-vertical-center{
+  top: 35%;
+}
+.spinner-vertical-bottom{
+  bottom: 2% !important;
+}
+
+.spinner-horizontal-left{
+left: 8% !important;
+}
+.spinner-horizontal-center{
+  left: 50% !important;
+}
+.spinner-horizontal-right{
+  right: 10% !important;
+}
+
 //  rectanglebounce spinner 0
+
 
 .rectangle-bounces,
 .rectangle-bounces:before,

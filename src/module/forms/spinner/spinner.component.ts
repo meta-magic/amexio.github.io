@@ -54,6 +54,31 @@ export class AmexioSpinnerComponent implements OnInit {
   */
   @Input() show = true;
 
+/*
+Properties
+name : vertical-position
+datatype : string
+version : 4.2 onwards
+default : none
+description : Position of spinner window vertically:
+ top or bottom or center. This attribute is ignored if user specify
+  position explicitly (using position-top/position-bottom/position-center/position-right/position-left)
+*/
+
+@Input('vertical-position') verticalposition: string;
+/*
+Properties
+name : horizontal-position
+datatype : string
+version : 4.2 onwards
+default : none
+description : Position of spinner Window horizontally:
+left or right or center. This attribute is ignored if user specify
+ position explicitly (using position-top/position-bottom/position-center/position-left/position-right)
+*/
+
+@Input('horizontal-position') horizontalposition: string;
+
   /*
   Events
   name : size
@@ -64,6 +89,12 @@ export class AmexioSpinnerComponent implements OnInit {
   */
   @Input('size') size: string;
 
+  positionSpinnerClass: string;
+
+  private spinnerVertialCss = 'spinner-vertical-';
+
+  private  spinnerHorizontalCss = ' spinner-horizontal-';
+
   @ViewChild('loadindicator') element: ElementRef;
 
   alpha = '0.2';
@@ -73,6 +104,12 @@ export class AmexioSpinnerComponent implements OnInit {
 
   ngOnInit() {
     this.assignColor();
+    if (this.verticalposition === null) {
+      this.verticalposition = 'top';
+    } else if (this.horizontalposition === null) {
+      this.horizontalposition = 'right';
+    }
+    this.positionSpinnerClass = this.spinnerVertialCss + this.verticalposition + this.spinnerHorizontalCss + this.horizontalposition;
   }
   private assignColor() {
     if (this.type === 'spinnerround' && this.color) {

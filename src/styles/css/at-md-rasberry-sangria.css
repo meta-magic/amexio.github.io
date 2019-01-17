@@ -2892,6 +2892,31 @@ input:checked + .toggle-slider:before {
 ****************************************************************************/
 /** Searchbox - Visual CSS **/
 /** Searchbox - Structure CSS **/
+.spinner-sm {
+  position: fixed !important;
+  z-index: 4 !important;
+  padding-top: 0% !important;
+  padding-left: 0% !important;
+  width: 0% !important; }
+
+.spinner-vertical-top {
+  top: 2%; }
+
+.spinner-vertical-center {
+  top: 35%; }
+
+.spinner-vertical-bottom {
+  bottom: 2% !important; }
+
+.spinner-horizontal-left {
+  left: 8% !important; }
+
+.spinner-horizontal-center {
+  left: 50% !important; }
+
+.spinner-horizontal-right {
+  right: 10% !important; }
+
 .rectangle-bounces,
 .rectangle-bounces:before,
 .rectangle-bounces:after {
@@ -3619,7 +3644,7 @@ header .billboard .content-button {
 .close-button {
   cursor: pointer;
   padding-left: 98%;
-  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 100%); }
+  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, transparent 70%, transparent 100%); }
 
 /****************************************************************************
     Component Name : Enterprise Youtube
@@ -3628,7 +3653,7 @@ header .billboard .content-button {
 /** enterprise-youtube - Visual CSS **/
 .close-button {
   color: grey;
-  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 100%); }
+  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, transparent 70%, transparent 100%); }
 
 .close-button i:hover {
   color: red; }
@@ -3652,8 +3677,8 @@ header .billboard .content-button {
   font-size: 20px; }
 
 .tile__details {
-  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%); }
+  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%); }
 
 .tile__details:after,
 .tile__details:before {
@@ -3661,8 +3686,8 @@ header .billboard .content-button {
 
 .tile__details_v {
   font-size: 10px;
-  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%); }
+  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%); }
 
 .tile__details_v:after,
 .tile__details_v:before {
@@ -6671,11 +6696,11 @@ amexio-layout-columns amexio-layout-item {
 *****************************************************************************/
 @keyframes checkboxripple {
   0% {
-    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0); }
+    box-shadow: 0px 0px 0px 1px transparent; }
   50% {
     box-shadow: 0px 0px 0px 15px rgba(0, 0, 0, 0.1); }
   100% {
-    box-shadow: 0px 0px 0px 15px rgba(0, 0, 0, 0); } }
+    box-shadow: 0px 0px 0px 15px transparent; } }
 /* Show the input-box-container-label when checked */
 .input-box-container input:checked ~ .input-box-checkbox-label:after {
   animation: checkboxripple .3s ease-in; }
@@ -6685,11 +6710,11 @@ amexio-layout-columns amexio-layout-item {
 *****************************************************************************/
 @keyframes radioripple {
   0% {
-    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0); }
+    box-shadow: 0px 0px 0px 1px transparent; }
   50% {
     box-shadow: 0px 0px 0px 15px rgba(0, 0, 0, 0.1); }
   100% {
-    box-shadow: 0px 0px 0px 15px rgba(0, 0, 0, 0); } }
+    box-shadow: 0px 0px 0px 15px transparent; } }
 /* Show the input-box-container-label when checked */
 .input-box-container input:checked ~ .input-box-radiobox-label:after {
   animation: radioripple 0.3s linear forwards; }
