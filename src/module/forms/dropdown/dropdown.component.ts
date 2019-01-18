@@ -308,7 +308,7 @@ description : Set enable / disable popover.
   @ContentChild('amexioBodyTmpl') bodyTemplate: TemplateRef<any>;
   posixUp: boolean;
   isValid: boolean;
-  selectedindex = 0;
+  selectedindex = -1;
   responseData: any;
   previousData: any;
   viewData: any;
@@ -507,6 +507,11 @@ description : Set enable / disable popover.
       return '';
     }
   }
+  onDropDownClick(event: any) {
+    this.onBaseFocusEvent(event);
+    this.showToolTip = true;
+    this.onClick.emit(event);
+  }
   onChange(event: string) {
     this.innerValue = event;
     this.isValid = true;
@@ -517,6 +522,9 @@ description : Set enable / disable popover.
     this.input.emit();
     this.isValid = input.valid;
     this.isComponentValid.emit(input.valid);
+  }
+  closeOnEScape(event: any) {
+    this.hide();
   }
   onDropDownSearchKeyUp(event: any) {
     if (this.search && this.viewData) {
