@@ -12,7 +12,7 @@ import { Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, 
   templateUrl: './spinner.component.html',
 })
 
-export class AmexioSpinnerComponent implements OnInit {
+export class AmexioSpinnerComponent implements OnInit, OnChanges {
   private _type: string;
   private _color: string;
 
@@ -54,30 +54,30 @@ export class AmexioSpinnerComponent implements OnInit {
   */
   @Input() show = true;
 
-/*
-Properties
-name : vertical-position
-datatype : string
-version : 4.2 onwards
-default : none
-description : Position of spinner window vertically:
- top or bottom or center. This attribute is ignored if user specify
-  position explicitly (using position-top/position-bottom/position-center/position-right/position-left)
-*/
+  /*
+  Properties
+  name : vertical-position
+  datatype : string
+  version : 4.2 onwards
+  default : none
+  description : Position of spinner window vertically:
+   top or bottom or center. This attribute is ignored if user specify
+    position explicitly (using position-top/position-bottom/position-center/position-right/position-left)
+  */
 
-@Input('vertical-position') verticalposition: string;
-/*
-Properties
-name : horizontal-position
-datatype : string
-version : 4.2 onwards
-default : none
-description : Position of spinner Window horizontally:
-left or right or center. This attribute is ignored if user specify
- position explicitly (using position-top/position-bottom/position-center/position-left/position-right)
-*/
+  @Input('vertical-position') verticalposition: string;
+  /*
+  Properties
+  name : horizontal-position
+  datatype : string
+  version : 4.2 onwards
+  default : none
+  description : Position of spinner Window horizontally:
+  left or right or center. This attribute is ignored if user specify
+   position explicitly (using position-top/position-bottom/position-center/position-left/position-right)
+  */
 
-@Input('horizontal-position') horizontalposition: string;
+  @Input('horizontal-position') horizontalposition: string;
 
   /*
   Events
@@ -89,11 +89,15 @@ left or right or center. This attribute is ignored if user specify
   */
   @Input('size') size: string;
 
+  @Input('relative') relative = false;
+
   positionSpinnerClass: string;
 
   private spinnerVertialCss = 'spinner-vertical-';
 
-  private  spinnerHorizontalCss = ' spinner-horizontal-';
+  private spinnerHorizontalCss = ' spinner-horizontal-';
+
+  private spinnerRelativeCss = 'spinnerCss-relative';
 
   @ViewChild('loadindicator') element: ElementRef;
 
@@ -104,13 +108,26 @@ left or right or center. This attribute is ignored if user specify
 
   ngOnInit() {
     this.assignColor();
-    if (this.verticalposition === null) {
-      this.verticalposition = 'top';
-    } else if (this.horizontalposition === null) {
-      this.horizontalposition = 'right';
-    }
-    this.positionSpinnerClass = this.spinnerVertialCss + this.verticalposition + this.spinnerHorizontalCss + this.horizontalposition;
+    this.positionChangeClass();
   }
+
+  ngOnChanges() {
+    this.positionChangeClass();
+  }
+
+  positionChangeClass() {
+    if (this.relative) {
+      this.positionSpinnerClass = this.spinnerRelativeCss;
+    } else {
+      if (this.verticalposition === null) {
+        this.verticalposition = 'top';
+      } else if (this.horizontalposition === null) {
+        this.horizontalposition = 'right';
+      }
+      this.positionSpinnerClass = this.spinnerVertialCss + this.verticalposition + this.spinnerHorizontalCss + this.horizontalposition;
+    }
+  }
+
   private assignColor() {
     if (this.type === 'spinnerround' && this.color) {
       let newColor: any;
