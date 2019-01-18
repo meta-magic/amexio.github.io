@@ -1,14 +1,21 @@
-/**
- * Created by pratik on 27/11/17.
- * Update Ketan Gote on 11/2/2018 - Field Label and Data Rendering changes.
- */
 /*
- Component Name : Amexio Radiogroup
- Component Selector :  <amexio-radio-group>
- Component Description : Number input component has been created with different
- configurable attributes for validation (min/max value, allow blank, custom regex),
- custom error message, help, custom styles
+* Copyright [2019] [Metamagic]
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* Created by  Pratik on 27/11/17.
 */
+
 import { ChangeDetectorRef, Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
 import { CommonDataService } from '../../services/data/common.data.service';

@@ -1,12 +1,21 @@
-/**
- * Created by pratik on 7/2/18.
- */
 /*
- Component Name : Amexio Label
- Component Selector :  <'amexio-label>
- Component Description :Amexio Label can be easily wrapped
- around any text and configure using the different responsive styling
+* Copyright [2019] [Metamagic]
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* Created by  Pratik on 7/2/18.
 */
+
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 @Component({
   selector: 'amexio-label',
