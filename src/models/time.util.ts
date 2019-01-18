@@ -11,7 +11,7 @@ export class TimeUtil {
     }
 
     private twentfourhourformatdata(): TimeModel[] {
-        return this.data(' :00');
+        return this.data(':00');
     }
 
     private ampmdata(): TimeModel[] {

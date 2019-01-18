@@ -76,7 +76,7 @@ export class AmexioWeekDayAvailiblityComponent {
                     }
                 });
             });
-            this.onSingleSelect.emit({ date: dayModel1.date, time: time1.time });
+            this.onSingleSelect.emit({ date: dayModel1.date, time: time1.time, timeId: time1.timeId });
         }
     }
 
@@ -125,6 +125,7 @@ export class AmexioWeekDayAvailiblityComponent {
                 const selectedAppointDate = {
                     date: dayModel1.date,
                     time: obj.time,
+                    timeId: obj.timeId,
                 };
                 obj.selected = true;
                 if (this.selectedDays.length > 0) {
@@ -141,7 +142,7 @@ export class AmexioWeekDayAvailiblityComponent {
                 obj.selected = false;
             }
         });
-        this.onSingleSelect.emit({ date: dayModel1.date, time: time1.time });
+        this.onSingleSelect.emit({ date: dayModel1.date, time: time1.time, timeId: time1.timeId });
         this.onMultiSelect.emit(this.selectedDays);
     }
 }
