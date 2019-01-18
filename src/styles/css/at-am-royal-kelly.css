@@ -3215,6 +3215,10 @@ input:checked + .toggle-slider:before {
   padding-left: 0% !important;
   width: 0% !important; }
 
+.spinnerCss-relative {
+  position: relative !important;
+  padding-left: 35% !important; }
+
 .spinner-vertical-top {
   top: 2%; }
 
