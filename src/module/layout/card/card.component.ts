@@ -17,7 +17,7 @@
 */
 
 import {
-  AfterContentInit, AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output,
+  AfterContentChecked, AfterContentInit, AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output,
   Renderer2, ViewChild,
 } from '@angular/core';
 import { ContentChildren, QueryList } from '@angular/core';
@@ -28,7 +28,7 @@ import { AmexioBodyComponent } from './../../panes/body/pane.action.body';
   selector: 'amexio-card',
   templateUrl: './card.component.html',
 })
-export class AmexioCardComponent implements OnInit, OnDestroy, AfterViewInit, AfterContentInit {
+export class AmexioCardComponent implements OnInit, OnDestroy, AfterContentChecked, AfterViewInit, AfterContentInit {
   /*
 Properties
 name : header-align
@@ -155,6 +155,8 @@ description : Context Menu provides the list of menus on right click.
   ngOnInit() {
   }
   ngAfterViewInit() {
+  }
+  ngAfterContentChecked() {
     this.onResize();
   }
   ngAfterContentInit() {
