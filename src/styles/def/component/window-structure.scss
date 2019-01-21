@@ -27,10 +27,13 @@
   // background-color: #fefefe;
   margin: auto;
   padding: 0px;
-  border-radius: .3rem;
-  border: 1px solid #888;
+  // border-radius: .3rem;
+  // border: 1px solid #888;
   width: 80%;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  //box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  border: 0px;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+
 }
 
 .modal-window-max{
@@ -58,7 +61,7 @@
   display: flex;
   border-bottom: $modalBorderSize solid $modalBorderColor;
   font-weight: 300;
-  border-radius: .3rem;
+  //border-radius: .3rem;
   font-size: 20px;
   text-transform: capitalize;
 }
@@ -66,7 +69,7 @@
 .modal-window-header{
   display: flex;
   //background: $cardHeaderBGColor;
-  border-bottom: $modalBorderSize solid $modalBorderColor;
+  //border-bottom: $modalBorderSize solid $modalBorderColor;
   // font-size: 20px;
   // color: $cardHeaderColor;
   font-weight: 300;
@@ -110,7 +113,7 @@
 
   padding-right: 16px;
   background-color: white;
-  border-radius: 0 0 .3rem .3rem;
+  //border-radius: 0 0 .3rem .3rem;
 }
 
 .modal-window-footer{
