@@ -25,7 +25,7 @@ export class  ListBaseDatepickerComponent<T> extends AmexioFormValidator {
     dropdownstyle: any;
     documentClickListener: any;
 
-    constructor(private renderer: Renderer2, public element: ElementRef, private cd: ChangeDetectorRef) {
+    constructor(public renderer: Renderer2, public element: ElementRef, private cd: ChangeDetectorRef) {
       super();
       this.hide();
     }
