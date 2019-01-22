@@ -2,7 +2,7 @@
   <div class="inputgroup" *ngIf="!inlineDatepicker" #rootDiv>
 
     <label>
-      {{fieldlabel}}-{{dropdownstyle.visibility}}
+      {{fieldlabel}}
     </label>
 
     <ng-container *ngIf="datepicker && !timepicker">
@@ -21,7 +21,7 @@
 
     <div class="drodown-caret-down" 
     [ngStyle]="{'cursor':disabled ? 'not-allowed' : 'pointer'}"
-     style="cursor: pointer" (click)="openPicker(rootDiv)">
+       (click)="openPicker(rootDiv)">
       <ng-container *ngIf="timepicker">
         <amexio-form-icon key="datepicker-clock-icon"></amexio-form-icon>
       </ng-container>
@@ -75,8 +75,8 @@
       <ul class="days" [ngStyle]="{'display': datepicker ? 'block' : 'none'}">
 
         <ng-container *ngFor="let dayArray of daysArray">
-          <li *ngFor="let day of dayArray" (click)="onDateClick(day, $event)" [ngClass]="{'date1':validateDays(day.date) , 'date1':day.isDisabled , 'notclickable':isDisabled}">
-            <span (click)="onDateClick(day, $event)" class="day" [ngClass]="{'active':day.selected, 'currentMonth':day.isCurrentMonth, 'notCurrentMonth':!day.isCurrentMonth,'invaliddays':validateDays(day.date), 'disabled':day.isDisabled}">
+          <li   [ngStyle]="{'cursor': day.isDisabled ? 'not-allowed' : 'pointer'}"  *ngFor="let day of dayArray" (click)="onDateClick(day, $event)" [ngClass]="{'date1':validateDays(day.date) , 'date1':day.isDisabled , 'notclickable':isDisabled}">
+            <span  (click)="onDateClick(day, $event)" class="day" [ngClass]="{'active':day.selected, 'currentMonth':day.isCurrentMonth, 'notCurrentMonth':!day.isCurrentMonth,'invaliddays':validateDays(day.date), 'disabled':day.isDisabled}">
               {{ day.date | date:'d' }}
             </span>
           </li>
