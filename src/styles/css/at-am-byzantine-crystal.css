@@ -755,6 +755,9 @@ button {
   background-color: #a09e9e;
   color: #70196F; }
 
+.button-group-list-items {
+  background-color: #f3c8f2; }
+
 /** buttondropdown - Structure CSS **/
 .btn-dropdown-badge {
   padding: .25em .4em;
@@ -779,9 +782,6 @@ button {
 
 .button-dropdown-up {
   bottom: 100%; }
-
-.list-items {
-  background-color: #b8dfff; }
 
 /****************************************************************************
     Component Name : Datetime
@@ -1193,7 +1193,7 @@ button {
 
 .input-control {
   width: 100%;
-  padding: .375rem 0 0 10px;
+  padding: .375rem 0;
   line-height: 2;
   border-radius: 0px;
   border: none;

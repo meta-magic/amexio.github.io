@@ -18,7 +18,7 @@
          <div [ngStyle]="{'cursor': itemData.disabled ? 'not-allowed':'pointer'}"
               (click)="btnItemClick($event,itemData)">
            <amexio-form-icon style="padding-right: 5px;" [customclass]="itemData.iconStyleClass"></amexio-form-icon>
-           <span  [ngClass]="{'list-items':itemData.selected}" [attr.disabled]="itemData.disabled ? true: null">{{itemData.label}}&nbsp;&nbsp;</span>
+           <span  [ngClass]="{'button-group-list-items':itemData.selected}" [attr.disabled]="itemData.disabled ? true: null">{{itemData.label}}&nbsp;&nbsp;</span>
            <!--<i [class]="itemData.iconStyleClass" aria-hidden="true" style="float:right;" ></i>-->
            <ng-container *ngIf="itemData.badge">
            <span class="btn-dropdown-badge">{{itemData.badge}}</span>
