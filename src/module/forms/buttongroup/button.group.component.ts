@@ -88,7 +88,7 @@ export class AmexioButtonGroupComponent implements AfterContentInit, OnChanges {
   }
   buttonGroupClick(clickEvent: any, btnObj: any) {
     this.ispressed = !this.ispressed;
-    if (this.buttonGroupLocalData || this.buttonGroupLocalData.length > 0) {
+    if (this.buttonGroupLocalData && this.buttonGroupLocalData.length > 0) {
       this.getButton.emit({ event: clickEvent, buttonObject: btnObj });
     } else {
       btnObj.onClick.emit(clickEvent);
