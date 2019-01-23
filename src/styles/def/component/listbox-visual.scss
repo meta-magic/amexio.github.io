@@ -1,17 +1,17 @@
 
 .listbox-height::-webkit-scrollbar-track
 {
-  background-color:$listScrollBGColor;
+  background-color:$scrollBGColor;
 }
 
 .listbox-height::-webkit-scrollbar
 {
-  background-color:$listScrollBGColor;
+  background-color:$scrollBGColor;
 }
 
 .listbox-height::-webkit-scrollbar-thumb
 {
-  background-color: $listScrollThumbBGColor;
+  background-color: $scrollThumbColor;
 }
 
 

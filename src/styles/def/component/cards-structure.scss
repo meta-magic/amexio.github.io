@@ -3,8 +3,10 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  border: $cardBorderSize solid $cardBorderColor;
-  box-shadow: 0 2px 2px 0$cardBorderShadow;
+  //border: $cardBorderSize solid $cardBorderColor;
+  //box-shadow: 0 2px 2px 0$cardBorderShadow;
+  border: 0px;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
   height: 100%;
   //z-index: 1;
 }
@@ -19,7 +21,7 @@
 .card-header{
   display: flex;
   padding: 10px 24px;
-  border-bottom: $cardBorderSize solid $cardBorderColor;
+  //border-bottom: $cardBorderSize solid $cardBorderColor;
   font-size: 20px;
   font-weight: 300;
   text-transform: capitalize;

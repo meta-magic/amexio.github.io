@@ -27,9 +27,9 @@ import {
   AfterContentInit, ChangeDetectorRef, Component, ContentChildren, ElementRef, EventEmitter, HostListener, Input,
   OnDestroy, OnInit, Output, QueryList, Renderer2,
 } from '@angular/core';
+import { CommonDataService } from '../../services/data/common.data.service';
 import { AmexioGridColumnComponent } from './data.grid.column';
 
-import { CommonDataService } from '../../services/data/common.data.service';
 @Component({
   selector: 'amexio-datagrid',
   templateUrl: './datagrid.component.html',
@@ -348,7 +348,7 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
 
   filterValue: any;
 
-  globalFilterOptions: any;
+  globalFilterOptions: any[] = [];
 
   flag: boolean;
 
@@ -388,11 +388,11 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
     this.sortBy = -1;
 
     this.globalFilterOptions = [{
-      key: 'Start With', value: '1', checkedStatus: this.checkIcon,
+      key: 'Start With', value: '1', checkedStatus: this.checkIcon, type: 'string',
     }, {
-      key: 'Ends With', value: '2', checkedStatus: '',
+      key: 'Ends With', value: '2', checkedStatus: '', type: 'string',
     }, {
-      key: 'Contains', value: '3', checkedStatus: '',
+      key: 'Contains', value: '3', checkedStatus: '', type: 'string',
     }];
   }
 
@@ -518,6 +518,15 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
 
   setChangeData(httpResponse: any) {
     this.setSelectedFlag(httpResponse);
+    if (this.groupby) {
+      this.cloneData = JSON.parse(JSON.stringify(this.data));
+    }
+    if (this.enabledatafilter) {
+      this.filterCloneData = JSON.parse(JSON.stringify(this.data));
+    }
+    if (this.globalfilter) {
+      this.filterCloneData = JSON.parse(JSON.stringify(this.data));
+    }
     if (!this.groupby) {
       this.renderData();
     }
@@ -578,19 +587,20 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
     this.getGlobalFilteredData(filter);
   }
 
-  checkStatus() {
-    this.globalFilterOptions.forEach((opt: any) => {
-      opt.checkedStatus = '';
+  checkStatus(opt: any) {
+    this.globalFilterOptions.forEach((item: any) => {
+      item.checkedStatus = '';
     });
+    opt.checkedStatus = this.checkIcon;
   }
 
   selectedOption(opt: any) {
-    this.checkStatus();
+    this.checkStatus(opt);
     const filter: any = {
       value: this.filterValue,
       filter: opt.value,
+      type: opt.type,
     };
-    opt.checkedStatus = this.checkIcon;
     if (this.filterValue) {
       this.getGlobalFilteredData(filter);
     }
@@ -600,33 +610,52 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
     this.filterValue = '';
   }
   getGlobalFilteredData(filteredObj: any) {
-    this.data = [];
-    this.filterCloneData.forEach((option: any) => {
-      this.columns.forEach((opt: any) => {
-        let status = false;
-        const optvalue = option[opt.dataindex].toLowerCase();
-        const filtervalue = filteredObj.value.toLowerCase();
-        if (filteredObj.filter === '1') {
-          status = optvalue.startsWith(filtervalue);
-        } else if (filteredObj.filter === '2') {
-          status = optvalue.endsWith(filtervalue);
-        } else if (filteredObj.filter === '3') {
-          status = optvalue.includes(filtervalue);
-        }
-        if (status) {
-          this.data.push(option);
+    const resultData: any[] = [];
+    if (filteredObj) {
+      this.filterCloneData.forEach((row: any) => {
+        if (this.checkValueInColumn(row, filteredObj)) {
+          resultData.push(row);
         }
       });
-    });
-
-    if (this.data.length > (1 * this.pagesize)) {
+      if (resultData.length > (1 * this.pagesize)) {
+        this.pagingRegenration();
+        this.renderData();
+      } else {
+        this.viewRows = resultData;
+        this.currentPage = 1;
+        this.maxPage = 1;
+      }
+    } else {
+      this.data = this.filterCloneData;
       this.pagingRegenration();
       this.renderData();
-    } else {
-      this.viewRows = this.data;
-      this.currentPage = 1;
-      this.maxPage = 1;
     }
+  }
+
+  checkValueInColumn(row: any, filteredObj: any): boolean {
+    let searchStatus = false;
+    const statusCollection: any[] = [];
+    this.columns.forEach((opt: any) => {
+      let optvalue = '';
+      let filtervalue = '';
+      if (typeof row[opt.dataindex] === 'string') {
+        optvalue = row[opt.dataindex].toLowerCase();
+      }
+      if (typeof filteredObj.value === 'string') {
+        filtervalue = filteredObj.value.toLowerCase();
+      }
+      if (filteredObj.filter === '1') {
+        statusCollection.push(optvalue.startsWith(filtervalue));
+      } else if (filteredObj.filter === '2') {
+        statusCollection.push(optvalue.endsWith(filtervalue));
+      } else if (filteredObj.filter === '3') {
+        statusCollection.push(optvalue.includes(filtervalue));
+      }
+    });
+    if (statusCollection.filter((status: boolean) => status === true).length > 0) {
+      searchStatus = true;
+    }
+    return searchStatus;
   }
 
   filterConditionMethod(filteredObj: any, option: any, opt: any) {
@@ -647,7 +676,6 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
     }
 
   }
-
   // Refactored code to avoid duplication: for filter grid
   setstatus(condition: any) {
     if (condition) {
@@ -788,21 +816,18 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
   }
 
   getFilteredData(filteredObj: any) {
-    let status = false;
+    const resultData: any[] = [];
     if (filteredObj.length > 0) {
-      this.data = [];
       this.filterCloneData.forEach((option: any) => {
-        status = this.filterOpertion(option, filteredObj);
-        if (status) {
-          this.data.push(option);
-          status = false;
+        if (this.filterOpertion(option, filteredObj)) {
+          resultData.push(option);
         }
       });
-      if (this.data.length > (1 * this.pagesize)) {
+      if (resultData.length > (1 * this.pagesize)) {
         this.pagingRegenration();
         this.renderData();
       } else {
-        this.viewRows = this.data;
+        this.viewRows = resultData;
         this.currentPage = 1;
         this.maxPage = 1;
       }
@@ -811,6 +836,24 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
       this.pagingRegenration();
       this.renderData();
     }
+  }
+
+  filterOpertion(data: any, filteredObj: any) {
+    const statusCollection: any = [];
+    let condition = false;
+    filteredObj.forEach((filterOpt: any) => {
+      if (filterOpt.type === 'string') {
+        statusCollection.push(this.checkStringFilter(filterOpt.filter, data[filterOpt.key].toLowerCase(), filterOpt.value.toLowerCase()));
+
+      } else if (filterOpt.type === 'number') {
+        statusCollection.push(this.checkNumberFilter(filterOpt.filter, data[filterOpt.key], filterOpt.value));
+      }
+    });
+
+    if (statusCollection.filter((status: boolean) => status === true).length > 0) {
+      condition = true;
+    }
+    return condition;
   }
 
   checkNumberFilter(filter: string, key: any, value: number): boolean {
@@ -841,26 +884,6 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
     } else {
       return key !== value;
     }
-  }
-
-  filterOpertion(data: any, filteredObj: any) {
-    const statusArray: any = [];
-    let condition: boolean;
-    filteredObj.forEach((filterOpt: any) => {
-      if (filterOpt.type === 'string') {
-        condition = this.checkStringFilter(filterOpt.filter, data[filterOpt.key].toLowerCase(), filterOpt.value.toLowerCase());
-
-      } else if (filterOpt.type === 'number') {
-        condition = this.checkNumberFilter(filterOpt.filter, data[filterOpt.key], filterOpt.value);
-      }
-      statusArray.push(condition);
-    });
-    statusArray.forEach((opt: any) => {
-      if (opt === false) {
-        condition = false;
-      }
-    });
-    return condition;
   }
 
   pagingRegenration() {

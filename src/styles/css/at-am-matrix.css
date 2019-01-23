@@ -858,9 +858,8 @@ button {
 /** datetime - Structure CSS **/
 .datetimepicker {
   display: block;
-  border: 2px solid #16E73C;
   position: absolute;
-  box-shadow: 0 1px 3px 0 #16E73C;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   z-index: 3;
   width: 290px; }
   .datetimepicker .datetimepickertopbar {
@@ -916,8 +915,7 @@ button {
 
 .datetimepicker1 {
   display: block;
-  border: 2px solid #16E73C;
-  box-shadow: 0 1px 3px 0 #16E73C;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   z-index: 3;
   width: 290px; }
   .datetimepicker1 .datetimepickertopbar {
@@ -1058,6 +1056,9 @@ button {
   cursor: not-allowed;
   pointer-events: none; }
 
+.notclickable {
+  pointer-events: none; }
+
 /****************************************************************************
     Component Name : Dropdown
     Version : Amexio v4.0 onwards
@@ -1188,7 +1189,7 @@ button {
 
 .input-control {
   width: 100%;
-  padding: .375rem 0;
+  padding: .375rem 0 0 10px;
   line-height: 2;
   border-radius: 0px;
   border: none;
@@ -4004,8 +4005,8 @@ header .billboard .content-button {
 
 .datatable {
   display: table;
-  border: 2px solid #16E73C;
-  border-collapse: collapse;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  border: 0px;
   margin: 0;
   padding: 0;
   width: 100%;
@@ -4016,7 +4017,8 @@ header .billboard .content-button {
 
 .datatable-height {
   overflow-y: auto;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); }
 
 .datatable-height::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); }
@@ -4037,7 +4039,7 @@ header .billboard .content-button {
   vertical-align: middle; }
 
 .datatable .datatable-row {
-  border: 2px solid #16E73C;
+  border-bottom: 2px solid #16E73C;
   display: table-row;
   height: 50px; }
 
@@ -4222,10 +4224,10 @@ header .billboard .content-button {
 *****************************************************************************/
 /** Listbox - Visual CSS **/
 .listbox-height::-webkit-scrollbar-track {
-  background-color: rgba(41, 105, 70, 0.4); }
+  background-color: #f5f5f5; }
 
 .listbox-height::-webkit-scrollbar {
-  background-color: rgba(41, 105, 70, 0.4); }
+  background-color: #f5f5f5; }
 
 .listbox-height::-webkit-scrollbar-thumb {
   background-color: #000000; }
@@ -4246,14 +4248,11 @@ header .billboard .content-button {
 /** Listbox - Structure CSS **/
 .listbox {
   margin-bottom: 1rem;
-  border: 2px solid #16E73C; }
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); }
 
 .listbox-height {
   overflow-y: auto;
   overflow-x: hidden; }
-
-.listbox-height::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); }
 
 .listbox-height::-webkit-scrollbar {
   width: 6px; }
@@ -5474,8 +5473,8 @@ amexio-layout-columns amexio-layout-item {
   position: relative;
   display: flex;
   flex-direction: column;
-  border: 2px solid #16E73C;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
+  border: 0px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   height: 100%; }
 
 .card-container > * {
@@ -5485,7 +5484,6 @@ amexio-layout-columns amexio-layout-item {
 .card-header {
   display: flex;
   padding: 10px 24px;
-  border-bottom: 2px solid #16E73C;
   font-size: 20px;
   font-weight: 300;
   text-transform: capitalize; }
@@ -5554,8 +5552,7 @@ amexio-layout-columns amexio-layout-item {
   position: relative;
   display: flex;
   flex-direction: column;
-  border: 2px solid #16E73C;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14); }
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); }
 
 .form-container > * {
   padding: 10px;
@@ -5563,7 +5560,6 @@ amexio-layout-columns amexio-layout-item {
 
 .form-header {
   padding: 10px 24px;
-  border-bottom: 2px solid #16E73C;
   font-size: 20px;
   font-weight: 300;
   text-transform: capitalize;
@@ -6163,10 +6159,9 @@ fieldset {
   position: absolute;
   margin: auto;
   padding: 0px;
-  border-radius: .3rem;
-  border: 1px solid #888;
   width: 80%;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+  border: 0px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); }
 
 .modal-window-content > * {
   padding: 10px;
@@ -6182,13 +6177,11 @@ fieldset {
   display: flex;
   border-bottom: 2px solid #16E73C;
   font-weight: 300;
-  border-radius: .3rem;
   font-size: 20px;
   text-transform: capitalize; }
 
 .modal-window-header {
   display: flex;
-  border-bottom: 2px solid #16E73C;
   font-weight: 300;
   text-transform: capitalize; }
 
@@ -6212,8 +6205,7 @@ fieldset {
   display: flex;
   border-top: 1px solid #eceeef;
   padding-right: 16px;
-  background-color: white;
-  border-radius: 0 0 .3rem .3rem; }
+  background-color: white; }
 
 .modal-window-footer {
   display: flex;
@@ -6322,8 +6314,7 @@ fieldset {
   padding: 0px;
   width: 80%;
   height: 80%;
-  border-radius: .3rem;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); }
 
 .dialogue-min {
   padding-top: 70px; }
@@ -6333,7 +6324,6 @@ fieldset {
 
 .dialogue-material-design {
   display: flex;
-  border-radius: .3rem;
   font-size: 20px;
   font-weight: 300;
   text-transform: capitalize;

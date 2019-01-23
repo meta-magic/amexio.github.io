@@ -92,7 +92,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
    default : false
    description : Disable Date/Time Picker field
    */
-  @Input('disabled') disabled: boolean;
+  @Input('disabled') disabled = false;
   /*
    Properties
    name : read-only
@@ -318,25 +318,31 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       this.daysArray.push(rowDays);
     }
   }
-  onDateClick(dateObj: any) {
-    if (this.inlineDatepicker === false) {
-      super.itemClicked();
-    }
-    this.hostFlag = true;
-    this.selectedDate = dateObj;
-    this.selectedDate.setHours(this.hrs);
-    this.selectedDate.setMinutes(this.min);
-    this.resetSelection(dateObj);
-    this.dateModel = this.selectedDate;
-    this.value = this.selectedDate;
-    this.isValid = true;
-    this.isComponentValid.emit(true);
-    if (this.inlineDatepicker) {
-      this.showToolTip = true;
+
+  onDateClick(dateObj: any, event: any) {
+    if (dateObj.isDisabled === false) {
+      if (this.inlineDatepicker === false) {
+        super.itemClicked();
+      }
+      this.hostFlag = true;
+      this.selectedDate = dateObj.date;
+      this.selectedDate.setHours(this.hrs);
+      this.selectedDate.setMinutes(this.min);
+      this.resetSelection(dateObj.date);
+      this.dateModel = this.selectedDate;
+      this.value = this.selectedDate;
+      this.isValid = true;
+      this.isComponentValid.emit(true);
+      if (this.inlineDatepicker) {
+        this.showToolTip = true;
+      } else {
+        this.showToolTip = !this.showToolTip;
+      }
     } else {
-      this.showToolTip = !this.showToolTip;
+       event.stopPropagation();
     }
   }
+
   resetSelection(dateObj: any) {
     for (const i of this.daysArray) {
       for (const j of i) {
@@ -590,22 +596,26 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       this.isValid = true;
     }
   }
+
   openPicker(elem: any) {
-    super.focus(elem);
-    this.hostFlag = false;
-    this.pickerele = elem;
-    if (this.inlineDatepicker) {
-      this.showToolTip = this.inlineDatepicker;
-    } else {
-      this.showToolTip = true;
+    if (this.disabled === false) {
+      super.focus(elem);
+      this.hostFlag = false;
+      this.pickerele = elem;
+      if (this.inlineDatepicker) {
+        this.showToolTip = this.inlineDatepicker;
+      } else {
+        this.showToolTip = true;
+      }
+      this.posixUp = this.getListPosition(elem);
+      const visibility = this.dropdownstyle.visibility;
+      this.dropdownstyle = JSON.parse(JSON.stringify(this.positionClass));
+      this.dropdownstyle.visibility = visibility;
+      this.dropdownstyle.position = 'fixed';
+      this.disableddays(this.diabledDate);
     }
-    this.posixUp = this.getListPosition(elem);
-    const visibility = this.dropdownstyle.visibility;
-    this.dropdownstyle = JSON.parse(JSON.stringify(this.positionClass));
-    this.dropdownstyle.visibility = visibility;
-    this.dropdownstyle.position = 'fixed';
-    this.disableddays(this.diabledDate);
   }
+
   getListPosition(elementRef: any): boolean {
     const dropdownHeight = 350; // must be same in dropdown.scss
     if (window.innerHeight - (elementRef.getBoundingClientRect().bottom) < dropdownHeight) {
