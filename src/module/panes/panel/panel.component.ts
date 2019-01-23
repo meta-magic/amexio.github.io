@@ -16,7 +16,7 @@
 *Created by pratik on 14/12/17.
 */
 
-import { animate, state, style, transition, trigger} from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output, Renderer2 } from '@angular/core';
 
 import { AmexioPanelHeaderComponent } from './../panel/panel.header.component';
@@ -42,7 +42,7 @@ import { AmexioPanelHeaderComponent } from './../panel/panel.header.component';
         display: 'none',
         height: '0px',
       })),
-      transition('*=>*',  animate('200ms')),
+      transition('*=>*', animate('200ms')),
     ]),
   ],
 })
@@ -164,11 +164,13 @@ description : Fires the on accordion pane click event.
   private faFaIconDownCss = 'fa fa-caret-down';
 
   panelstyle: any;
+  componentId: any;
   globalClickListenFunc: () => void;
   constructor(private renderer: Renderer2) {
     this.panelstyle = { visibility: 'visible' };
   }
   ngOnInit() {
+    this.componentId = Math.random() * 1000 + 'panel';
     if (!this.collapsible) {
       this.expanded = true;
     }
@@ -199,13 +201,13 @@ description : Fires the on accordion pane click event.
     if (this.fit && this.expanded) {
       this.panelstyle = { visibility: 'visible', state: 'visible' };
     } else if (this.fit && !this.expanded) {
-      this.panelstyle = { visibility: 'hidden', state: 'hidden'  };
+      this.panelstyle = { visibility: 'hidden', state: 'hidden' };
     } else if (!this.fit && this.expanded) {
-      this.panelstyle = { display: 'block' , state: 'block' };
+      this.panelstyle = { display: 'block', state: 'block' };
     } else if (!this.fit && !this.expanded) {
-      this.panelstyle = { display: 'none' , state: 'none' };
+      this.panelstyle = { display: 'none', state: 'none' };
     } else {
-      this.panelstyle = { visibility: 'visible', state: 'visible'  };
+      this.panelstyle = { visibility: 'visible', state: 'visible' };
     }
   }
   // getcontextmenu

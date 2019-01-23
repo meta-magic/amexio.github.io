@@ -779,6 +779,9 @@ button {
 .button-dropdown-up {
   bottom: 100%; }
 
+.list-items {
+  background-color: #b8dfff; }
+
 /****************************************************************************
     Component Name : Datetime
     Version : Amexio v4.0 onwards
@@ -4005,6 +4008,7 @@ header .billboard .content-button {
 
 .datatable {
   display: table;
+  border-collapse: collapse;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   border: 0px;
   margin: 0;

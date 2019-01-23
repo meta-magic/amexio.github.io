@@ -1,9 +1,27 @@
-<div #id style="width: 100%" (contextmenu)="loadContextMenu({event:$event,ref:id})">
-    <ng-container *ngIf="collapsible; else elseBlock">
-        <div *ngIf="header" class="panel-accordion" (click)="onTabClick(btn1)">
-            <amexio-toolbar>
-                <amexio-toolbar-item position-left>
-                    <amexio-label size="small">
+
+
+
+<div    #id style="width: 100%" (contextmenu)="loadContextMenu({event:$event,ref:id})"  >
+    <ng-container *ngIf="collapsible; else elseBlock"> 
+        <div   
+        
+        id="{{componentId}}"
+       
+        
+        
+        *ngIf="header" class="panel-accordion" 
+        (click)="onTabClick(btn1)"    >
+            <amexio-toolbar
+            tabindex="0" 
+            role="heading"
+            [attr.aria-expanded]="expanded"
+            (keyup.enter)="onTabClick(btn1)"
+            (keyup.space)="onTabClick(btn1)"
+
+            
+            >
+                <amexio-toolbar-item position-left  attr.aria-label="{{title}}">
+                    <amexio-label  attr.aria-labelledby="{{componentId}}" size="small">
                         {{title}}
                     </amexio-label>
                 </amexio-toolbar-item>
@@ -17,11 +35,17 @@
         </div>
     </ng-container>
 
-    <ng-template #elseBlock>
-        <div *ngIf="header" class="panel-accordion" (click)="onTabClick(btn1)">
-            <amexio-toolbar>
-                <amexio-toolbar-item position-left>
-                    <amexio-label size="small">
+    <ng-template #elseBlock> {{expanded}}
+        <div    id="{{componentId}}"   *ngIf="header" class="panel-accordion" (click)="onTabClick(btn1)">
+            <amexio-toolbar
+            tabindex="0" 
+            [attr.aria-expanded]="expanded"
+            (keyup.enter)="onTabClick(btn1)"
+            (keyup.space)="onTabClick(btn1)"
+            
+            >
+                <amexio-toolbar-item position-left tabindex="0" [attr.aria-expanded]="expanded"  attr.aria-label="{{title}}">
+                    <amexio-label  size="small"   attr.aria-labelledby="{{componentId}}" >
                         {{title}}
                     </amexio-label>
                 </amexio-toolbar-item>
@@ -31,14 +55,14 @@
             </amexio-toolbar>
         </div>
     </ng-template>
-
-    <div class="panel-panel" [ngClass]="{'panel-box-border':border}" [style.textAlign]="contentAlign" [style.height.px]="height"
+    
+    <div tabindex="0"  id="panelpanelId" class="panel-panel" [ngClass]="{'panel-box-border':border}" [style.textAlign]="contentAlign" [style.height.px]="height"
         [@panelState]="panelstyle.state">
-        <ng-content></ng-content>
+        <ng-content aria-labelledby="panelpanelId" ></ng-content>
     </div>
 
     <ng-container *ngIf="flag && (this.contextmenu && this.contextmenu.length > 0)">
-        <base-contextmenu [base-context-menu]="contextmenu" [mouse-location-top]="mouseLocation.top"
+        <base-contextmenu tabindex="0" [base-context-menu]="contextmenu" [mouse-location-top]="mouseLocation.top"
             [mouse-location-left]="mouseLocation.left" [is-FlagShow]="flag" [right-click-data]="nodeRightClick"
             (onRightClick)="rightClickDataEmit($event)" [position-up]="posixUp">
         </base-contextmenu>
