@@ -1232,7 +1232,7 @@ button {
 
 .input-control {
   width: 100%;
-  padding: .375rem 0;
+  padding: .375rem 0 0 10px;
   line-height: 2;
   border-radius: 0px;
   border: none;
