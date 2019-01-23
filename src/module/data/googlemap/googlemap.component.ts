@@ -4,7 +4,7 @@ import {
 } from '@angular/core';
 import { GoogleMapOverlays } from '../../../models/googlemap.model';
 import { GoogleMapScriptService } from '../../services/script/script.data.service';
-
+import { GOOGLEMAP_CONSTANT } from './googlemap.constant';
 declare var google: any;
 
 @Component({
@@ -62,23 +62,43 @@ export class AmexioGoogleMapComponent implements OnInit {
         this.componentId =
             +Math.floor(Math.random() * 90000) + 10000 + 'google';
         if (this.googlemapkey) {
-            const script = this._loadGoogleMapService.loadScript(this.googlemapkey);
-            const body = document.body as HTMLDivElement;
-            const options = { center: { lat: this.initiallat, lng: this.initiallng }, zoom: this.initialzoomlevel };
-            script.onload = () => {
-                this.map = new google.maps.Map(this.el.nativeElement.children[0], options);
-                this.onReady.emit({
-                    map: this.map,
-                });
-                if (!this.map && this.el.nativeElement.offsetParent) {
-                    this.infoWindow = new google.maps.InfoWindow();
-                }
-                this.initalize();
-            };
-            body.appendChild(script);
+          const fullScriptTag = GOOGLEMAP_CONSTANT.GOOGLE_MAP_URL + this.googlemapkey;
+          const isScriptPresent = this._loadGoogleMapService.isScriptAlreadyPresent(fullScriptTag);
+          const options = { center: { lat: this.initiallat, lng: this.initiallng }, zoom: this.initialzoomlevel };
+          if ( !isScriptPresent ) {
+          const script = this._loadGoogleMapService.loadScript(this.googlemapkey);
+          this.loadScriptWithMap(script, options);
+         } else {
+          this.loadMap(options);
+         }
         }
     }
 
+    // HERE LOAD SCRIPT + MAP
+   private loadScriptWithMap(script: any, options: any) {
+      if (script != null) {
+        const body = document.body as HTMLDivElement;
+        script.onload = () => {
+           this.loadMap(options);
+        };
+        body.appendChild(script);
+      } else {
+        this.loadMap(options);
+      }
+    }
+
+    // THIS FUNCTION IS LOADING MAP
+    private loadMap(options: any) {
+      this.map = new google.maps.Map(this.el.nativeElement.children[0], options);
+      this.onReady.emit({
+          map: this.map,
+      });
+      if (!this.map && this.el.nativeElement.offsetParent) {
+          this.infoWindow = new google.maps.InfoWindow();
+      }
+      this.initalize();
+    }
+    // INITALIZATION OF DATA AND SEND DATA TO MAP
     initalize() {
         if (this.data && this.map) {
             this.localoverlays = [];
