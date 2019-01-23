@@ -15,14 +15,13 @@
                         </div>
                     </li>
                 </ng-container>
-            </ul> 
+            </ul>
         </span>
     </div>
 </ng-container>
 
 <ng-container *ngIf="column.datatype==='number'">
-    <div class="inputgroup float-right">
-
+    <div class="inputgroup">
         <input type="text" [(ngModel)]="filterValue" [attr.placeholder]="column.text" (keyup)="keyUpSearch(column)"
             type="number" class="input-control" aria-label="Text input with dropdown button">
         <!--<i class="fa fa-filter" aria-hidden="true" (click)="showToolTip = !showToolTip"></i>-->
