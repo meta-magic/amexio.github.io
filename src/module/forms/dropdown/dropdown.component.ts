@@ -19,7 +19,6 @@ import {
 import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
 import { EventBaseComponent } from '../../base/event.base.component';
 import { CommonDataService } from '../../services/data/common.data.service';
-
 @Component({
   selector: 'amexio-dropdown',
   templateUrl: './dropdown.component.html',
@@ -312,9 +311,10 @@ description : Set enable / disable popover.
   responseData: any;
   previousData: any;
   viewData: any;
+  componentId :string;
   multiselectValues: any[] = [];
   maskloader = true;
-  scrollposition = 30;
+  activedescendant = 'aria-activedescendant';
   // The internal dataviews model
 
   @Output() isComponentValid: any = new EventEmitter<any>();
@@ -327,6 +327,7 @@ description : Set enable / disable popover.
   }
   ngOnInit() {
     this.name = this.generateName(this.name, this.fieldlabel, 'dropdowninput');
+    this.componentId =this.displayfield+ Math.floor(Math.random() * 1000 + 999);
     this.isValid = this.allowblank;
     this.isComponentValid.emit(this.allowblank);
     if (this.placeholder === '') {
@@ -344,6 +345,7 @@ description : Set enable / disable popover.
       this.setData(this.data);
     }
     this.componentLoaded = true;
+
   }
   setData(httpResponse: any) {
     // Check if key is added?
@@ -367,15 +369,16 @@ description : Set enable / disable popover.
   setResponseData(responsedata: any) {
     if (responsedata) {
 
-      if (this.enablesort === true && (this.sort === '' || this.sort === 'asc')) {
+      if (this.enablesort === true && (this.sort === '' || this.sort.toLowerCase() === 'asc')) {
         this.sortDataAscending(responsedata);
 
-      } else if (this.enablesort === true && this.sort === 'desc') {
+      } else if (this.enablesort === true && this.sort.toLowerCase() === 'desc') {
         this.sortDataDescending(responsedata);
 
       } else if (this.enablesort === false) {
         this.viewData = responsedata;
         this.filteredOptions = this.viewData;
+        this.generateIndex(this.filteredOptions);
       }
     }
   }
@@ -385,6 +388,7 @@ description : Set enable / disable popover.
       !== b[this.displayfield].toLowerCase() ?
       a[this.displayfield].toLowerCase() < b[this.displayfield].toLowerCase() ? -1 : 1 : 0);
     this.filteredOptions = this.viewData;
+    this.generateIndex(this.filteredOptions);
 
   }
   sortDataDescending(data: any) {
@@ -392,7 +396,13 @@ description : Set enable / disable popover.
       !== b[this.displayfield].toLowerCase() ?
       a[this.displayfield].toLowerCase() > b[this.displayfield].toLowerCase() ? -1 : 1 : 0);
     this.filteredOptions = this.viewData;
+    this.generateIndex(this.filteredOptions);
+  }
 
+  generateIndex(data: any) {
+    data.forEach((element: any, index: number) => {
+      element['index'] = this.componentId +'listitem' + index;
+    });
   }
 
   multiSelection() {
@@ -433,12 +443,11 @@ description : Set enable / disable popover.
           }
         });
       }
-
     }
   }
   onItemSelect(selectedItem: any) {
     if (this.multiselect) {
-      const optionsChecked: any[] = [];
+      const optionsChecked: any = [];
       this.multiselectValues = [];
       if (selectedItem.hasOwnProperty('checked')) {
         selectedItem.checked = !selectedItem.checked;
@@ -477,7 +486,7 @@ description : Set enable / disable popover.
       });
     }
   }
-   navigateKey(event: any) {
+  navigateKey(event: any) {
   }
   getDisplayText() {
     if (this.innerValue != null || this.innerValue !== '') {
@@ -511,6 +520,37 @@ description : Set enable / disable popover.
     this.onBaseFocusEvent(event);
     this.showToolTip = true;
     this.onClick.emit(event);
+    if (!this.multiselect) {
+      if (this.selectedindex > -1) {
+      this.filteredOptions[this.selectedindex].selected = false;
+      this.selectedindex = -1;
+      this.selectedindex = this.selectedindex + 1;
+      this.filteredOptions[this.selectedindex].selected = true;
+      const inputid = document.getElementById(this.componentId);
+      inputid.setAttribute(this.activedescendant, this.filteredOptions[this.selectedindex].index);
+      const listitems = this.element.nativeElement.getElementsByClassName('list-items')[this.selectedindex];
+      if (listitems) {
+        listitems.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+    }
+  }
+  focusToLast(event: any) {
+    if (this.selectedindex > -1) {
+    this.filteredOptions[this.selectedindex].selected = false;
+    this.selectedindex = this.filteredOptions.length - 1;
+    this.filteredOptions[this.filteredOptions.length - 1].selected = true;
+    const inputid = document.getElementById(this.componentId);
+    inputid.setAttribute(this.activedescendant, this.filteredOptions[this.filteredOptions.length - 1].index);
+    const listitems = this.element.nativeElement.getElementsByClassName('list-items')[this.selectedindex];
+    if (listitems) {
+      listitems.scrollIntoView({ behavior: 'smooth' });
+    }
+   }
+ }
+  closeOnEScape(event: any) {
+    this.showToolTip = false;
+    this.hide();
   }
   onChange(event: string) {
     this.innerValue = event;
@@ -522,9 +562,6 @@ description : Set enable / disable popover.
     this.input.emit();
     this.isValid = input.valid;
     this.isComponentValid.emit(input.valid);
-  }
-  closeOnEScape(event: any) {
-    this.hide();
   }
   onDropDownSearchKeyUp(event: any) {
     if (this.search && this.viewData) {
@@ -550,53 +587,61 @@ description : Set enable / disable popover.
     }
     this.onBaseFocusEvent({});
   }
+  //navigate using keys
   navigateUsingKey(event: any) {
+    if (!this.showToolTip) {
+      this.showToolTip = true;
+    }
     if (this.selectedindex > this.filteredOptions.length) {
       this.selectedindex = 0;
     }
     if (event.keyCode === 40 || event.keyCode === 38 && this.selectedindex <
       this.filteredOptions.length) {
-      this.navigateFilterOptions();
+      let prevselectedindex = -1;
+      if (this.selectedindex === -1) {
+         this.selectedindex;
+      } else {
+        prevselectedindex = this.selectedindex;
+      }
+      if (event.keyCode === 40) {
+        this.selectedindex++;
+      }else if (event.keyCode === 38) {
+        this.selectedindex--;
+      }
+      this.navigateFilterOptions(prevselectedindex);
     }
     if (event.keyCode === 13 && this.filteredOptions[this.selectedindex]) {
       this.onItemSelect(this.filteredOptions[this.selectedindex]);
     }
   }
-  navigateFilterOptions() {
-    if (!this.showToolTip) {
-      this.showToolTip = true;
-    }
-    let prevselectedindex = -1;
-    if (this.selectedindex === -1) {
-      this.selectedindex = 0;
-    } else {
-      prevselectedindex = this.selectedindex;
-      this.scrollPositionIndex(event);
-    }
+  // for highlight  navigated options
+  navigateFilterOptions(previndex: number) {
     if (this.filteredOptions[this.selectedindex]) {
       this.filteredOptions[this.selectedindex].selected = true;
-
+      const inputid = document.getElementById(this.componentId);
+      inputid.setAttribute(this.activedescendant, this.filteredOptions[this.selectedindex].index);
     }
-    if (this.filteredOptions[prevselectedindex]) {
-      this.filteredOptions[prevselectedindex].selected = false;
+    if (this.filteredOptions[previndex]) {
+      this.filteredOptions[previndex].selected = false;
+      this.toNavigateFirstAndLastOption();
+    }
+    const listitems = this.element.nativeElement.getElementsByClassName('list-items')[this.selectedindex];
+    if (listitems) {
+      listitems.scrollIntoView({ behavior: 'smooth' });
     }
   }
-  scrollPositionIndex(event: any) {
-    if (event.keyCode === 40) {
-      this.selectedindex++;
-      if ((this.selectedindex > 5)) {
-        this.dropdownitems.nativeElement.scroll(0, this.scrollposition);
-        this.scrollposition = this.scrollposition + 30;
-      }
-    } else if (event.keyCode === 38) {
-      this.selectedindex--;
-      if (this.scrollposition >= 0 && this.selectedindex > 1) {
-        this.dropdownitems.nativeElement.scroll(0, this.scrollposition);
-        this.scrollposition = this.scrollposition - 30;
-      }
-      if (this.selectedindex === 1) {
-        this.scrollposition = 30;
-      }
+  //to navigate first and last option
+  toNavigateFirstAndLastOption() {
+    if (this.selectedindex === -1) {
+      this.selectedindex = this.filteredOptions.length - 1;
+      this.filteredOptions[this.filteredOptions.length - 1].selected = true;
+      const inputid = document.getElementById(this.componentId);
+      inputid.setAttribute(this.activedescendant, this.filteredOptions[this.filteredOptions.length - 1].index);
+    }else if (this.selectedindex === this.filteredOptions.length) {
+      this.selectedindex = 0;
+      this.filteredOptions[this.selectedindex].selected = true;
+      const inputid = document.getElementById(this.componentId);
+      inputid.setAttribute(this.activedescendant, this.filteredOptions[this.selectedindex].index);
     }
   }
   // get accessor
@@ -680,7 +725,6 @@ description : Set enable / disable popover.
     this.onTouchedCallback = fn;
   }
   onIconClick() {
-
     if (!this.disabled) {
       const showflag = this.showToolTip;
       if (!this.showToolTip) {
