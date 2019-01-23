@@ -311,7 +311,7 @@ description : Set enable / disable popover.
   responseData: any;
   previousData: any;
   viewData: any;
-  componentId :string;
+  componentId: string;
   multiselectValues: any[] = [];
   maskloader = true;
   activedescendant = 'aria-activedescendant';
@@ -327,7 +327,7 @@ description : Set enable / disable popover.
   }
   ngOnInit() {
     this.name = this.generateName(this.name, this.fieldlabel, 'dropdowninput');
-    this.componentId =this.displayfield+ Math.floor(Math.random() * 1000 + 999);
+    this.componentId = this.displayfield + Math.floor(Math.random() * 1000 + 999);
     this.isValid = this.allowblank;
     this.isComponentValid.emit(this.allowblank);
     if (this.placeholder === '') {
@@ -401,7 +401,7 @@ description : Set enable / disable popover.
 
   generateIndex(data: any) {
     data.forEach((element: any, index: number) => {
-      element['index'] = this.componentId +'listitem' + index;
+      element['index'] = this.componentId + 'listitem' + index;
     });
   }
 
@@ -520,34 +520,34 @@ description : Set enable / disable popover.
     this.onBaseFocusEvent(event);
     this.showToolTip = true;
     this.onClick.emit(event);
-    if (!this.multiselect) {
-      if (this.selectedindex > -1) {
+    if (!this.multiselect && this.selectedindex > -1) {
       this.filteredOptions[this.selectedindex].selected = false;
       this.selectedindex = -1;
       this.selectedindex = this.selectedindex + 1;
       this.filteredOptions[this.selectedindex].selected = true;
       const inputid = document.getElementById(this.componentId);
       inputid.setAttribute(this.activedescendant, this.filteredOptions[this.selectedindex].index);
-      const listitems = this.element.nativeElement.getElementsByClassName('list-items')[this.selectedindex];
-      if (listitems) {
-        listitems.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
+      this.generateScroll(this.selectedindex);
     }
   }
-  focusToLast(event: any) {
-    if (this.selectedindex > -1) {
-    this.filteredOptions[this.selectedindex].selected = false;
-    this.selectedindex = this.filteredOptions.length - 1;
-    this.filteredOptions[this.filteredOptions.length - 1].selected = true;
-    const inputid = document.getElementById(this.componentId);
-    inputid.setAttribute(this.activedescendant, this.filteredOptions[this.filteredOptions.length - 1].index);
-    const listitems = this.element.nativeElement.getElementsByClassName('list-items')[this.selectedindex];
+
+  generateScroll(index: any) {
+    const listitems = this.element.nativeElement.getElementsByClassName('list-items')[index];
     if (listitems) {
       listitems.scrollIntoView({ behavior: 'smooth' });
     }
-   }
- }
+  }
+
+  focusToLast(event: any) {
+    if (this.selectedindex > -1) {
+      this.filteredOptions[this.selectedindex].selected = false;
+      this.selectedindex = this.filteredOptions.length - 1;
+      this.filteredOptions[this.filteredOptions.length - 1].selected = true;
+      const inputid = document.getElementById(this.componentId);
+      inputid.setAttribute(this.activedescendant, this.filteredOptions[this.filteredOptions.length - 1].index);
+      this.generateScroll(this.selectedindex);
+    }
+  }
   closeOnEScape(event: any) {
     this.showToolTip = false;
     this.hide();
@@ -587,7 +587,7 @@ description : Set enable / disable popover.
     }
     this.onBaseFocusEvent({});
   }
-  //navigate using keys
+  // navigate using keys
   navigateUsingKey(event: any) {
     if (!this.showToolTip) {
       this.showToolTip = true;
@@ -598,14 +598,10 @@ description : Set enable / disable popover.
     if (event.keyCode === 40 || event.keyCode === 38 && this.selectedindex <
       this.filteredOptions.length) {
       let prevselectedindex = -1;
-      if (this.selectedindex === -1) {
-         this.selectedindex;
-      } else {
-        prevselectedindex = this.selectedindex;
-      }
+      prevselectedindex = this.selectedindex;
       if (event.keyCode === 40) {
         this.selectedindex++;
-      }else if (event.keyCode === 38) {
+      } else if (event.keyCode === 38) {
         this.selectedindex--;
       }
       this.navigateFilterOptions(prevselectedindex);
@@ -625,19 +621,16 @@ description : Set enable / disable popover.
       this.filteredOptions[previndex].selected = false;
       this.toNavigateFirstAndLastOption();
     }
-    const listitems = this.element.nativeElement.getElementsByClassName('list-items')[this.selectedindex];
-    if (listitems) {
-      listitems.scrollIntoView({ behavior: 'smooth' });
-    }
+    this.generateScroll(this.selectedindex);
   }
-  //to navigate first and last option
+  // to navigate first and last option
   toNavigateFirstAndLastOption() {
     if (this.selectedindex === -1) {
       this.selectedindex = this.filteredOptions.length - 1;
       this.filteredOptions[this.filteredOptions.length - 1].selected = true;
       const inputid = document.getElementById(this.componentId);
       inputid.setAttribute(this.activedescendant, this.filteredOptions[this.filteredOptions.length - 1].index);
-    }else if (this.selectedindex === this.filteredOptions.length) {
+    } else if (this.selectedindex === this.filteredOptions.length) {
       this.selectedindex = 0;
       this.filteredOptions[this.selectedindex].selected = true;
       const inputid = document.getElementById(this.componentId);
