@@ -16,7 +16,7 @@
 * Created by pratik on 20/12/17.
 */
 
-import { animate, state, style, transition, trigger} from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import {
   ChangeDetectorRef, Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, Renderer2, ViewChild,
 } from '@angular/core';
@@ -220,7 +220,7 @@ description : On field focus event
 
   posixUp: boolean;
 
-  selectedindex = 0;
+  selectedindex = -1;
 
   scrollposition = 30;
 
@@ -255,11 +255,9 @@ description : On field focus event
     if (this.placeholder === '' || this.placeholder === null) {
       this.placeholder = 'Choose Option';
     }
-
     if (!this.triggerchar) {
       this.triggerchar = 1;
     }
-
     if (this.httpmethod && this.httpurl) {
       this.dataService.fetchData(this.httpurl, this.httpmethod).subscribe((response) => {
         this.responseData = response;
@@ -300,59 +298,49 @@ description : On field focus event
     }
   }
   navigateUsingKey(event: any) {
-
     if (this.selectedindex > this.filteredResult.length) {
       this.selectedindex = 0;
     }
     if (event.keyCode === 40 || event.keyCode === 38 && this.selectedindex < this.filteredResult.length) {
       this.keyUpDownMethod(event);
     }
-
     if (event.keyCode === 13 && this.filteredResult[this.selectedindex]) {
-      this.onItemSelect(this.filteredResult[this.selectedindex]);
+      this.onItemSelect(this.filteredResult[this.selectedindex] , this.selectedindex);
     }
 
   }
-
   // Method when up arrow or down arrow is pressed
 
   keyUpDownMethod(event: any) {
     if (!this.showToolTip) {
       this.showToolTip = true;
     }
-    let prevselectedindex = 0;
-    if (this.selectedindex === 0) {
-      this.selectedindex = 1;
-    } else {
-      prevselectedindex = this.selectedindex;
-      if (event.keyCode === 40) {
-        this.selectedindex++;
-        if ((this.selectedindex > 5)) {
-          this.dropdownitems.nativeElement.scroll(0, this.scrollposition);
-          this.scrollposition = this.scrollposition + 30;
-        }
-      } else if (event.keyCode === 38) {
-        this.keyUpMethod();
-      }
+    let prevselectedindex = -1;
+    prevselectedindex = this.selectedindex;
+    if (event.keyCode === 40) {
+      this.selectedindex++;
+    } else if (event.keyCode === 38) {
+      this.selectedindex--;
     }
-
     if (this.filteredResult[this.selectedindex]) {
       this.filteredResult[this.selectedindex].selected = true;
     }
     if (this.filteredResult[prevselectedindex]) {
       this.filteredResult[prevselectedindex].selected = false;
+      this.toNavigateFirstAndLastOption();
+    }
+    const listitems = this.element.nativeElement.getElementsByClassName('list-items')[this.selectedindex];
+    if (listitems) {
+      listitems.scrollIntoView({ behavior: 'smooth' });
     }
   }
-
-  // Method when keyCode is 38 i.e Up
-  keyUpMethod() {
-    this.selectedindex--;
-    if (this.scrollposition >= 0 && this.selectedindex > 1) {
-      this.dropdownitems.nativeElement.scroll(0, this.scrollposition);
-      this.scrollposition = this.scrollposition - 30;
-    }
-    if (this.selectedindex === 1) {
-      this.scrollposition = 30;
+  toNavigateFirstAndLastOption() {
+    if (this.selectedindex === -1) {
+      this.selectedindex = this.filteredResult.length - 1;
+      this.filteredResult[this.filteredResult.length - 1].selected = true;
+    } else if (this.selectedindex === this.filteredResult.length) {
+      this.selectedindex = 0;
+      this.filteredResult[this.selectedindex].selected = true;
     }
   }
   showAllData(activerow: number) {
@@ -374,15 +362,14 @@ description : On field focus event
     if (this.filteredResult.length > 0) {
       this.showToolTip = true;
     }
-
   }
 
-  onItemSelect(row: any) {
+  onItemSelect(row: any, index: any) {
     this.value = row[this.valuefield];
     this.displayValue = row[this.displayfield];
+    this.setValue(row, {}, index);
     this.showToolTip = false;
   }
-
   onInput(input: any) {
     this.input.emit();
   }
@@ -423,15 +410,18 @@ description : On field focus event
     this.maskloader = false;
   }
 
-  setValue(value: any, ref: any) {
+  setValue(value: any, ref: any, index: any) {
     this.inpHandle.nativeElement.value = '';
     this.onSelections.push(value);
     this.onChange.emit(this.onSelections);
     if (this.onSelections.length > 0) {
       this.isValid = true;
     }
+    this.hide();
+    this.filteredResult[index].selected = false;
+    this.selectedindex = -1;
     this.showToolTip = false;
-  }
+   }
 
   removePill(item: any) {
     let indexToRemove: number = null;
