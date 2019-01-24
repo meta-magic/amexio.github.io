@@ -157,7 +157,7 @@ description : Context Menu provides the list of menus on right click.
   ngAfterViewInit() {
   }
   ngAfterContentChecked() {
-    this.onResize();
+    
   }
   ngAfterContentInit() {
     // FOR HEADER PADING
@@ -181,6 +181,7 @@ description : Context Menu provides the list of menus on right click.
         this.footerPadding = item.padding;
       }
     });
+    this.onResize();
   }
   // Calculate body size based on browser height
   onResize() {
