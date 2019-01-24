@@ -40,9 +40,9 @@ after_success:
   - cd amexio-ios
   - mkdir themes
   - cp -rf ../dist/amexio-ng-extensions.tgz .
-  - cp -rf ../src/styles/css/*  themes/
-  - tar -czvf themes.tar.gz  themes/*
-  - git add amexio-ng-extensions.tgz  themes.tar.gz
+ # - cp -rf ../src/styles/css/*  themes/
+  #- tar -czvf themes.tar.gz  themes/*
+  - git add amexio-ng-extensions.tgz 
   - git commit -m "date"
   - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then git push --force --quiet "https://deepali-arvind:${GITHUB_TOKEN}@github.com/${GITHUB_REPO}.git" HEAD:v5.5 ; fi 
   - gulp coveralls
