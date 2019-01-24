@@ -157,7 +157,7 @@ description : Context Menu provides the list of menus on right click.
   ngAfterViewInit() {
   }
   ngAfterContentChecked() {
-    
+
   }
   ngAfterContentInit() {
     // FOR HEADER PADING
