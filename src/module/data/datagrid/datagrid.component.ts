@@ -843,7 +843,9 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
     let condition = false;
     filteredObj.forEach((filterOpt: any) => {
       if (filterOpt.type === 'string') {
-        statusCollection.push(this.checkStringFilter(filterOpt.filter, data[filterOpt.key].toLowerCase(), filterOpt.value.toLowerCase()));
+        if (filterOpt.value && data[filterOpt.key] && typeof data[filterOpt.key] === 'string') {
+          statusCollection.push(this.checkStringFilter(filterOpt.filter, data[filterOpt.key].toLowerCase(), filterOpt.value.toLowerCase()));
+        }
 
       } else if (filterOpt.type === 'number') {
         statusCollection.push(this.checkNumberFilter(filterOpt.filter, data[filterOpt.key], filterOpt.value));
