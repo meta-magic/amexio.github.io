@@ -30,7 +30,7 @@ const noop = () => {
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioCheckBoxComponent), multi: true,
   }, {
     provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioCheckBoxComponent), multi: true,
-}],
+  }],
 })
 export class AmexioCheckBoxComponent extends AmexioFormValidator implements ControlValueAccessor, OnInit, Validators {
   // The internal dataviews model
@@ -137,6 +137,7 @@ export class AmexioCheckBoxComponent extends AmexioFormValidator implements Cont
   writeValue(value: any) {
     if (value !== this.innerValue) {
       this.innerValue = value;
+      this.value = this.innerValue;
     }
   }
   // From ControlValueAccessor interface
@@ -155,25 +156,25 @@ export class AmexioCheckBoxComponent extends AmexioFormValidator implements Cont
 
   public validate(c: FormControl) {
     return ((this.required && this.value) || !this.required) ? null : {
-        jsonParseError: {
-            valid: true,
-        },
+      jsonParseError: {
+        valid: true,
+      },
     };
-}
- // THIS METHOD GENERATE RANDOM STRING
- generateName() {
-  if (!this.name && this.fieldlabel ) {
-    this.name = this.fieldlabel.replace(/\s/g, '');
-  } else if ( !this.name && !this.fieldlabel) {
-    this.name = 'textinput-' + this.getRandomString();
   }
-}
-getRandomString(): string {
-  const possibleCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-  let randomString = '';
-  for (let i = 0; i < 6; i++) {
-    randomString += possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
+  // THIS METHOD GENERATE RANDOM STRING
+  generateName() {
+    if (!this.name && this.fieldlabel) {
+      this.name = this.fieldlabel.replace(/\s/g, '');
+    } else if (!this.name && !this.fieldlabel) {
+      this.name = 'textinput-' + this.getRandomString();
+    }
   }
-  return randomString;
-}
+  getRandomString(): string {
+    const possibleCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    let randomString = '';
+    for (let i = 0; i < 6; i++) {
+      randomString += possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
+    }
+    return randomString;
+  }
 }
