@@ -1,0 +1,6 @@
+<ng-container *ngIf="type ==='google'">
+    <amexio-google-auth-provider [client-id]="key" (onLogin)="onLoginClick($event)"></amexio-google-auth-provider>
+</ng-container>
+<ng-container *ngIf="type === 'linkedin'">
+    <amexio-linkedin-auth-provider [client-id]="key" (onLogin)="onLoginClick($event)"></amexio-linkedin-auth-provider>
+</ng-container>
