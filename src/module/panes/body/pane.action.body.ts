@@ -16,13 +16,13 @@
 * Created by pratik on 18/12/17.
 */
 
-import { AfterContentChecked, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterContentInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'amexio-body', template: '<ng-content></ng-content>',
 })
 
-export class AmexioBodyComponent implements OnInit, AfterContentChecked {
+export class AmexioBodyComponent implements OnInit, AfterContentInit {
   /*
  Properties
  name :padding
@@ -41,8 +41,7 @@ export class AmexioBodyComponent implements OnInit, AfterContentChecked {
   ngOnInit() {
   }
 
-  ngAfterContentChecked() {
-    this.init.emit(this);
+  ngAfterContentInit() {
   }
 
 }

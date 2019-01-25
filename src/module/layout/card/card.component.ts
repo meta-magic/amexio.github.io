@@ -166,7 +166,6 @@ description : Context Menu provides the list of menus on right click.
       if (item.padding) {
         this.headerPadding = item.padding;
       }
-      item.init.subscribe((eventdata: any) => this.adjustHeight(eventdata));
     });
     // FOR BODY PADDING
     this.bodyComponentList = this.amexioBody.toArray();
@@ -174,7 +173,6 @@ description : Context Menu provides the list of menus on right click.
       if (item.padding) {
         this.bodyPadding = item.padding;
       }
-      item.init.subscribe((eventdata: any) => this.adjustHeight(eventdata));
     });
     // FOR FOOTER PADDING
     this.footerComponentList = this.amexioFooter.toArray();
@@ -182,8 +180,8 @@ description : Context Menu provides the list of menus on right click.
       if (item.padding) {
         this.footerPadding = item.padding;
       }
-      item.init.subscribe((eventdata: any) => this.adjustHeight(eventdata));
     });
+    this.onResize();
   }
 
   adjustHeight(event: any) {

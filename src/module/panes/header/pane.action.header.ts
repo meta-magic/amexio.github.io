@@ -16,7 +16,7 @@
 * Created by pratik on 18/12/17.
 */
 
-import { AfterContentChecked, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterContentInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'amexio-header', template: `
@@ -24,7 +24,7 @@ import { AfterContentChecked, Component, EventEmitter, Input, OnInit, Output } f
   `,
 })
 
-export class AmexioHeaderComponent implements OnInit, AfterContentChecked {
+export class AmexioHeaderComponent implements OnInit, AfterContentInit {
   /*
  Properties
  name :padding
@@ -43,7 +43,6 @@ export class AmexioHeaderComponent implements OnInit, AfterContentChecked {
   ngOnInit() {
   }
 
-  ngAfterContentChecked() {
-    this.init.emit(this);
+  ngAfterContentInit() {
   }
 }
