@@ -16,7 +16,7 @@
 * Created by pratik on 18/12/17.
 */
 
-import {Component, Input, OnInit} from '@angular/core';
+import { AfterContentChecked, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'amexio-header', template: `
@@ -24,20 +24,26 @@ import {Component, Input, OnInit} from '@angular/core';
   `,
 })
 
-export class AmexioHeaderComponent implements OnInit {
- /*
-Properties
-name :padding
-datatype : string
-version : 4.2 onwards
-default : left
-description : padding for header.
-*/
+export class AmexioHeaderComponent implements OnInit, AfterContentChecked {
+  /*
+ Properties
+ name :padding
+ datatype : string
+ version : 4.2 onwards
+ default : left
+ description : padding for header.
+ */
   @Input() padding: string;
+
+  @Output() init: any = new EventEmitter<any>();
 
   constructor() {
   }
 
   ngOnInit() {
+  }
+
+  ngAfterContentChecked() {
+    this.init.emit(this);
   }
 }
