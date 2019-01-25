@@ -1,0 +1,72 @@
+<div class="stepwizard" *ngIf="(index && !block && !icon)">
+    <div class="stepwizard-row setup-panel">
+        <div *ngFor="let stepBlock of stepBlockArray; let i = index" class="stepwizard-step">
+            <button type="button" [disabled]="!stepBlock.active"  [ngClass]="{'disabled index-step-inactive':!stepBlock.active,
+        'active':stepBlock.active}"
+                class="btn-circle button button-primary" (click)="onStepClick(stepBlock,$event)">{{i + 1}}
+            </button>
+            <ng-container *ngIf="stepBlock.label && !stepBlock.active" >
+                <p>{{stepBlock.label}}</p>
+            </ng-container>
+            <ng-container *ngIf="stepBlock.label && stepBlock.active">
+                <p><strong class="step-label-highlight">{{stepBlock.label}}</strong></p>
+            </ng-container>
+        </div>
+    </div>
+</div>
+
+<!--this code use when user give icon true bydefault it is false-->
+<div class="stepwizard" *ngIf="(icon && !index && !block)">
+    <div class="stepwizard-row setup-panel">
+        <div *ngFor="let stepBlock of stepBlockArray; let i = index" class="stepwizard-step">
+            <ng-container *ngIf="stepBlock.icon && stepBlock.active">
+                <span [ngClass]="{'step-box-icon-active':stepBlock.active}" (onClick)="onStepClick(stepBlock,$event)">
+                    <amexio-pane-icon [customclass]="stepBlock.icon"></amexio-pane-icon>
+                </span>
+            </ng-container>
+            <ng-container *ngIf="stepBlock.icon && !stepBlock.active">
+                <span [ngClass]="{'step-block-icon-disable':!stepBlock.active}">
+                    <amexio-pane-icon [customclass]="stepBlock.icon" (onClick)="onStepClick(stepBlock,$event)"></amexio-pane-icon>
+                </span>
+            </ng-container>
+            <ng-container *ngIf="stepBlock.icon=='' || !stepBlock.icon">
+                <br>
+            </ng-container>
+            <ng-container *ngIf="stepBlock.label && !stepBlock.active">
+                <p style="cursor:not-allowed;" (onClick)="onStepClick(stepBlock,$event)">{{stepBlock.label}}</p>
+            </ng-container>
+            <ng-container *ngIf="stepBlock.label && stepBlock.active">
+                <p style="cursor:pointer;"><strong class="step-label-highlight" [ngClass]="{'step-box-label-active':stepBlock.active}">{{stepBlock.label}}</strong></p>
+            </ng-container>
+        </div>
+    </div>
+</div>
+
+<!--This code use for steps of boxes-->
+<div *ngIf="block">
+    <div *ngIf="block" role="tablist" class="step-box-sqaure">
+        <div class="step-box-table">
+            <ng-container  *ngFor="let stepBlock of stepBlockArray; let i = index" >
+                <div role="link" class="step-box-table-item" [tabindex]="stepBlock.active ? 0 : -1" [attr.aria-labelleby]="stepBlock.label" (click)="onStepClick(stepBlock,$event)" style="padding-top: 10px;"
+                    [ngClass]="{'disabled step-box-table-item-hover ':!stepBlock.active,'active':stepBlock.active}">
+                    <a>
+                        <ng-container *ngIf="index">
+                            {{i + 1}}<br>
+                        </ng-container>
+                        <ng-container *ngIf="icon && stepBlock.icon">
+                            <amexio-pane-icon [customclass]="stepBlock.icon"></amexio-pane-icon>
+                        </ng-container>
+                        <ng-container *ngIf="stepBlock.label && !stepBlock.active">
+                            <p style="word-wrap: break-word;">{{stepBlock.label}}</p>
+                        </ng-container>
+                        <ng-container *ngIf="stepBlock.label && stepBlock.active">
+                            <p style="word-wrap: break-word;"><strong>{{stepBlock.label}}</strong></p>
+                        </ng-container>
+                    </a>
+                </div>
+            </ng-container>
+
+        </div>
+    </div>
+
+</div>
