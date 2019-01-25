@@ -53,12 +53,17 @@ import {FilterPipe} from '../pipe/filter.pipe';
 import { CommonDataService } from '../services/data/common.data.service';
 import { IconLoaderService } from '../services/icon/icon.service';
 
+import { ScriptLoadService } from '../services/script/script.load.service';
 import { LoadRecaptchaService } from './recaptcha/load.recaptcha.service';
+import { GoogleAuthComponent } from './socialmedia/googleauth/google.auth.component';
+import { LinkedInAuthComponent } from './socialmedia/linkedinauth/linkedin.auth.component';
+import { AmexioSocialComponent } from './socialmedia/social.component';
 export * from '../services/data/common.data.service';
 export * from '../services/icon/icon.service';
 export * from './recaptcha/load.recaptcha.service';
 export * from './buttons/button.component';
 export * from './buttongroup/button.group.component';
+export * from '../services/script/script.load.service';
 
 const FORM_COMPONENTS = [
   AmexioTextInputComponent,
@@ -105,6 +110,9 @@ const FORM_COMPONENTS = [
   AmexioChipComponent,
   AmexioChipsComponent,
   FilterPipe,
+  GoogleAuthComponent,
+  LinkedInAuthComponent,
+  AmexioSocialComponent,
 ];
 
 @NgModule({
@@ -116,14 +124,14 @@ const FORM_COMPONENTS = [
   ],
   exports: FORM_COMPONENTS,
   declarations: FORM_COMPONENTS,
-  providers: [CommonDataService, IconLoaderService, DomHandler,
+  providers: [CommonDataService, IconLoaderService, DomHandler, ScriptLoadService,
   ],
 })
 export class AmexioFormsModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: AmexioFormsModule,
-      providers: [CommonDataService, IconLoaderService, LoadRecaptchaService],
+      providers: [CommonDataService, IconLoaderService, LoadRecaptchaService, ScriptLoadService],
     };
   }
 }

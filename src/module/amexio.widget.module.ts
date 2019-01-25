@@ -26,7 +26,6 @@ export * from '../models/availableslots.model';
 export * from '../models/day.model';
 export * from '../models/time.model';
 export * from '../models/time.util';
-
 @NgModule({
   imports: [
     CommonModule,
