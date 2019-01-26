@@ -1,7 +1,7 @@
 
 <div class="inputgroup">
 
-  <label *ngIf="hasLabel"  role="email" for="emailText" id="{{componentId}}" [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
+  <label *ngIf="hasLabel"  role="email" for="{{componentId}}" id="{{componentId}}" [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
     {{fieldlabel}}
   </label> 
 
@@ -9,7 +9,7 @@
 
         role="email" 
         tabindex="0"
-        id="emailText" 
+        id="{{componentId}}" 
         name="emailText"
         attr.aria-labelledby="{{componentId}}"
         aria-describedby="emailDes"
