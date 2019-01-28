@@ -1,9 +1,8 @@
 
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-
-import { AvailableSlotsModel } from '../../../models/availableslots.model';
-import { DayModel } from '../../../models/day.model';
-import { TimeUtil } from '../../../models/time.util';
+import {AvailableSlotsModel} from './../../../models/availableslots.model';
+import {DayModel} from './../../../models/day.model';
+import {TimeUtil} from './../../../models/time.util';
 
 @Component({
     selector: 'amexio-ee-appointment',
@@ -31,7 +30,15 @@ export class AmexioWeekDayAvailiblityComponent {
 
     @Input('multi-select') multiSelect = false;
 
-    @Input('date')
+    @Input('available-slots-bg-color') availableSlotsBgColor = '';
+
+    @Input('available-slots-color') availableSlotsColor = '';
+
+    @Input('selected-slot-color') selectedSlotColor = '';
+
+    @Input('selected-slot-bg-color') selectedSlotBgColor = '';
+
+  @Input('date')
     set date(v: Date) {
         if (v != null && v) {
             this.currentDate = new Date(v.getTime());
@@ -87,7 +94,7 @@ export class AmexioWeekDayAvailiblityComponent {
             const clonedDate = new Date(this.currentDate.getTime());
             let startDate = clonedDate;
             const d1 = new DayModel(new Date(startDate.getTime()), true, this.availableslots);
-            d1.setTimeSlots(new TimeUtil().timeData(true));
+            d1.setTimeSlots(this.setStyle(new TimeUtil().timeData(true)));
             this.viewData.push(d1);
             this.noOfDaysArray = [];
             for (let i = 0; i < this.noOfDays; i++) {
@@ -96,7 +103,7 @@ export class AmexioWeekDayAvailiblityComponent {
             for (let i = 1; i < this.noOfDays; i++) {
                 const wdate = this.createWeekDays(startDate, i);
                 const d2 = new DayModel(new Date(wdate.getTime()), true, this.availableslots);
-                d2.setTimeSlots(new TimeUtil().timeData(true));
+                d2.setTimeSlots(this.setStyle(new TimeUtil().timeData(true)));
                 this.viewData.push(d2);
                 startDate = wdate;
             }
@@ -145,4 +152,26 @@ export class AmexioWeekDayAvailiblityComponent {
         this.onSingleSelect.emit({ date: dayModel1.date, time: time1.time, timeId: time1.timeId });
         this.onMultiSelect.emit(this.selectedDays);
     }
+
+  getAvailableStyle(): any {
+     return {
+        'background-color': this.availableSlotsBgColor,
+        'color': this.availableSlotsColor,
+      };
+    }
+
+  getSelectedStyle(): any {
+    return  {
+      'background-color': this.selectedSlotBgColor,
+      'color': this.selectedSlotColor,
+    };
+  }
+
+  setStyle(timeModelData: any): any {
+      timeModelData.forEach((time: any) => {
+        time.selectedStyleClass = this.getSelectedStyle();
+        time.availableStyleClass = this.getAvailableStyle();
+      });
+      return timeModelData;
+  }
 }
