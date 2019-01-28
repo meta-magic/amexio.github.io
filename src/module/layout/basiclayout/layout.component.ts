@@ -16,6 +16,7 @@
 */
 
 import { Component, HostBinding, Input,  OnInit } from '@angular/core';
+import { DeviceQueryService } from './../../services/device/device.query.service';
 import { LayoutConstant } from './layout.constant';
 @Component({
     selector: 'amexio-layout-columns',
@@ -50,8 +51,22 @@ export class AmexioLayoutComponent implements OnInit {
 
     @HostBinding('style.height') public height: string;
 
+    constructor(private matchMediaService: DeviceQueryService) {
+      const that = this;
+      this.matchMediaService.OnDesktop((mediaQueryList: MediaQueryList) => {
+        that.handleDeviceSettings();
+      });
+      this.matchMediaService.OnTablet((mediaQueryList: MediaQueryList) => {
+        that.handleDeviceSettings();
+      });
+      this.matchMediaService.OnPhone((mediaQueryList: MediaQueryList) => {
+        that.handleDeviceSettings();
+      });
+    }
+
     ngOnInit() {
         this.setLayoutDefination();
+        this.handleDeviceSettings();
     }
 
     public setLayoutDefination() {
@@ -62,11 +77,16 @@ export class AmexioLayoutComponent implements OnInit {
     }
 
     private setorientation() {
-        if (this.orientation && this.orientation.toLowerCase() === 'vertical') {
-            this.orientationDirection = 'column';
-        } else {
-            this.orientationDirection = 'row';
-        }
+      this.updateOrientation(this.orientation);
+    }
+
+    // THIS FUNCTION IS USED FOR UPDATING ORIENTATION
+    private updateOrientation(orientationName: string) {
+      if (orientationName && orientationName.toLowerCase() === 'vertical') {
+        this.orientationDirection = 'column';
+      } else {
+        this.orientationDirection = 'row';
+      }
     }
 
     private setAlignment() {
@@ -88,5 +108,14 @@ export class AmexioLayoutComponent implements OnInit {
         if (this.fit) {
             this.height = '100%';
         }
+    }
+
+    // THIS FUNCTION HANDLE THE ORITENATION AS PER DEVICE
+    private handleDeviceSettings() {
+      if (this.matchMediaService.IsPhone()) {
+          this.updateOrientation('vertical');
+      } else {
+        this.updateOrientation(this.orientation);
+      }
     }
 }
