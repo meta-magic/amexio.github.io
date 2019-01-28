@@ -19,6 +19,8 @@ export class AmexioGoogleMapComponent implements OnInit {
 
     @Input() height = '250px';
 
+    @Input('min-height') minheight = '250px';
+
     @Input() width = '100%';
 
     @Input('initial-lat') initiallat = 51.507351;
@@ -62,41 +64,41 @@ export class AmexioGoogleMapComponent implements OnInit {
         this.componentId =
             +Math.floor(Math.random() * 90000) + 10000 + 'google';
         if (this.googlemapkey) {
-          const fullScriptTag = GOOGLEMAP_CONSTANT.GOOGLE_MAP_URL + this.googlemapkey;
-          const isScriptPresent = this._loadGoogleMapService.isScriptAlreadyPresent(fullScriptTag);
-          const options = { center: { lat: this.initiallat, lng: this.initiallng }, zoom: this.initialzoomlevel };
-          if ( !isScriptPresent ) {
-          const script = this._loadGoogleMapService.loadScript(this.googlemapkey);
-          this.loadScriptWithMap(script, options);
-         } else {
-          this.loadMap(options);
-         }
+            const fullScriptTag = GOOGLEMAP_CONSTANT.GOOGLE_MAP_URL + this.googlemapkey;
+            const isScriptPresent = this._loadGoogleMapService.isScriptAlreadyPresent(fullScriptTag);
+            const options = { center: { lat: this.initiallat, lng: this.initiallng }, zoom: this.initialzoomlevel };
+            if (!isScriptPresent) {
+                const script = this._loadGoogleMapService.loadScript(this.googlemapkey);
+                this.loadScriptWithMap(script, options);
+            } else {
+                this.loadMap(options);
+            }
         }
     }
 
     // HERE LOAD SCRIPT + MAP
-   private loadScriptWithMap(script: any, options: any) {
-      if (script != null) {
-        const body = document.body as HTMLDivElement;
-        script.onload = () => {
-           this.loadMap(options);
-        };
-        body.appendChild(script);
-      } else {
-        this.loadMap(options);
-      }
+    private loadScriptWithMap(script: any, options: any) {
+        if (script != null) {
+            const body = document.body as HTMLDivElement;
+            script.onload = () => {
+                this.loadMap(options);
+            };
+            body.appendChild(script);
+        } else {
+            this.loadMap(options);
+        }
     }
 
     // THIS FUNCTION IS LOADING MAP
     private loadMap(options: any) {
-      this.map = new google.maps.Map(this.el.nativeElement.children[0], options);
-      this.onReady.emit({
-          map: this.map,
-      });
-      if (!this.map && this.el.nativeElement.offsetParent) {
-          this.infoWindow = new google.maps.InfoWindow();
-      }
-      this.initalize();
+        this.map = new google.maps.Map(this.el.nativeElement.children[0], options);
+        this.onReady.emit({
+            map: this.map,
+        });
+        if (!this.map && this.el.nativeElement.offsetParent) {
+            this.infoWindow = new google.maps.InfoWindow();
+        }
+        this.initalize();
     }
     // INITALIZATION OF DATA AND SEND DATA TO MAP
     initalize() {
