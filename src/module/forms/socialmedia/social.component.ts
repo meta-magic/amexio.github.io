@@ -20,7 +20,7 @@ import {Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SocialUserInfo } from './social.user.info.model';
 
 @Component({
-  selector : 'amexio-social',
+  selector : 'amexio-login-social',
   templateUrl : 'social.component.html',
 })
 
