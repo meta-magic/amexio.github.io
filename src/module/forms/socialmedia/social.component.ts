@@ -51,6 +51,9 @@ export class AmexioSocialComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.type) {
+      this.type = this.type.toLocaleLowerCase();
+    }
   }
 
   onLoginClick(socialUserInfo: any) {
