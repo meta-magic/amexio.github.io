@@ -44,7 +44,13 @@ export class GoogleAuthComponent implements OnInit {
    */
   @Input('client-id') clientId: string;
 
+  @Input('label') label: string;
+
+  @Input('style-type') styleType = 'square';
+
   @Output() onLogin = new EventEmitter<any>();
+
+  isCircle: boolean;
 
   constructor(
     private meta: Meta,
@@ -56,6 +62,12 @@ export class GoogleAuthComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.styleType && this.styleType.toLowerCase() === 'circle') {
+      this.isCircle = true;
+    }
+    if (!this.label && this.styleType && this.styleType.toLowerCase() !== 'circle') {
+      this.label = 'GOOGLE';
+    }
     this.initialize();
     this.meta.addTag({
       name: 'google-signin-client_id',

@@ -1,2 +1,2 @@
-<!-- <div class="g-signin2" (click)="onClick()"></div> -->
-<div style="cursor:pointer;" (click)="onClick()"><img src="https://i.ibb.co/GMGSF83/google.png"></div>
+<amexio-button *ngIf="!isCircle" [label]="label" [type]="'green'" [tooltip]="'Google'" [icon]="'fa fa-google'" (onClick)="onClick()"></amexio-button>
+<amexio-floating-button *ngIf="isCircle" [relative]="true" [icon]="'fa fa-google'" [type]="'green'" [tool-tip]="'Google'" (onClick)="onClick()"></amexio-floating-button>

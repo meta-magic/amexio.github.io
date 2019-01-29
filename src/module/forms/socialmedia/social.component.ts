@@ -45,6 +45,10 @@ export class AmexioSocialComponent implements OnInit {
    */
   @Input('api-key') key: string;
 
+  @Input('label') label: string;
+
+  @Input('style-type') styleType: string;
+
   @Output() onLogin = new EventEmitter<any>();
 
   constructor() {
