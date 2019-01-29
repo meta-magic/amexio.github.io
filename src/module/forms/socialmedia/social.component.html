@@ -4,3 +4,7 @@
 <ng-container *ngIf="type === 'linkedin'">
     <amexio-linkedin-auth-provider [client-id]="key" [label]="label" [style-type]="styleType" (onLogin)="onLoginClick($event)"></amexio-linkedin-auth-provider>
 </ng-container>
+
+<ng-container *ngIf="type === 'facebook'">
+    <amexio-facebook-auth-provider [client-id]="key" [label]="label" [style-type]="styleType" (onLogin)="onLoginClick($event)"></amexio-facebook-auth-provider>
+</ng-container>

@@ -55,6 +55,7 @@ import { IconLoaderService } from '../services/icon/icon.service';
 
 import { ScriptLoadService } from '../services/script/script.load.service';
 import { LoadRecaptchaService } from './recaptcha/load.recaptcha.service';
+import { FacebookAuthComponent } from './socialmedia/facebookauth/facebook.auth.component';
 import { GoogleAuthComponent } from './socialmedia/googleauth/google.auth.component';
 import { LinkedInAuthComponent } from './socialmedia/linkedinauth/linkedin.auth.component';
 import { AmexioSocialComponent } from './socialmedia/social.component';
@@ -112,6 +113,7 @@ const FORM_COMPONENTS = [
   FilterPipe,
   GoogleAuthComponent,
   LinkedInAuthComponent,
+  FacebookAuthComponent,
   AmexioSocialComponent,
 ];
 

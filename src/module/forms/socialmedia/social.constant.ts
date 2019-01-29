@@ -20,6 +20,7 @@ export const SOCIAL_CONSTANT = {
   GOOGLE : 'google',
   FACEBOOK : 'facebook',
   LINKEDIN : 'linkedin',
+  FACEBOOK_API_URL : 'https://connect.facebook.net/en_US/sdk.js',
   GOOGLE_GMAIL_API_URL : 'https://apis.google.com/js/platform.js',
   LINKEDIN_API_URL : 'https://platform.linkedin.com/in.js',
 };
