@@ -59,6 +59,10 @@ export class GoogleAuthComponent implements OnInit {
     this.loginProviderObj.id = this.clientId;
     this.loginProviderObj.name = SOCIAL_CONSTANT.GOOGLE;
     this.loginProviderObj.url = SOCIAL_CONSTANT.GOOGLE_GMAIL_API_URL;
+    this.meta.addTag({
+      name: 'google-signin-client_id',
+      content: this.clientId,
+    });
   }
 
   ngOnInit() {
@@ -69,14 +73,10 @@ export class GoogleAuthComponent implements OnInit {
       this.label = 'GOOGLE';
     }
     this.initialize();
-    this.meta.addTag({
-      name: 'google-signin-client_id',
-      content: this.clientId,
-    });
   }
 
   // ON CLICK EVENT CALL SIGNIN FUNCTION
-  onClick() {
+  onButtonClick() {
     this.signIn();
   }
 

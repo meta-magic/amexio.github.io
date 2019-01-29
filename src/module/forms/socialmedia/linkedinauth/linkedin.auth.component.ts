@@ -38,12 +38,24 @@ export class LinkedInAuthComponent implements OnInit {
   // tslint:disable-next-line:no-input-rename
   @Input('client-id') clientId: string;
 
+  @Input('label') label: string;
+
+  @Input('style-type') styleType = 'square';
+
+  isCircle: boolean;
+
   @Output() onLogin = new EventEmitter<any>();
 
   constructor(private scriptLoadService: ScriptLoadService) {
   }
 
   ngOnInit() {
+    if (this.styleType && this.styleType.toLowerCase() === 'circle') {
+      this.isCircle = true;
+    }
+    if (!this.label && this.styleType && this.styleType.toLowerCase() !== 'circle') {
+      this.label = 'Linkedin';
+    }
     this.loginProviderObj.id = this.clientId;
     this.loginProviderObj.name = SOCIAL_CONSTANT.LINKEDIN;
     this.loginProviderObj.url = SOCIAL_CONSTANT.LINKEDIN_API_URL;
@@ -51,7 +63,7 @@ export class LinkedInAuthComponent implements OnInit {
   }
 
   // ON CLICK EVENT CALL SIGNIN FUNCTION
-  onClick() {
+  onButtonClick() {
     if (IN && IN.User.authorize()) {
       console.log('User already loggedin...');
       return;

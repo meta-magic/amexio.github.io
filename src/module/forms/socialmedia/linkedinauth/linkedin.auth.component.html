@@ -1,1 +1,2 @@
-<div style="cursor:pointer;" (click)="onClick()"><img src="https://i.ibb.co/BThp4GP/linkedin.png"></div>
+<amexio-button *ngIf="!isCircle" [bg-color]="'#0082ca'" [color]="'#fff'" [label]="label" [tooltip]="'Linkedin'" [icon]="'fa fa-linkedin'" (onClick)="onButtonClick()"></amexio-button>
+<amexio-floating-button *ngIf="isCircle" [relative]="true" [type]="'default'" [icon]="'fa fa-linkedin'" [tool-tip]="'Linkedin'" (onClick)="onButtonClick()"></amexio-floating-button>
