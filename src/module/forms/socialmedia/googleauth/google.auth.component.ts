@@ -75,7 +75,7 @@ export class GoogleAuthComponent implements OnInit {
        this.loginProviderObj,
         () => {
           gapi.load('auth2', () => {
-            this.auth2 = gapi.auth2.init({
+            this.auth2 = gapi.auth2.getAuthInstance({
               client_id: this.clientId,
               scope: 'email',
             });
