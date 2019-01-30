@@ -135,21 +135,21 @@ description : Set true to show buttom block
 Properties
 name : bg-color
 datatype :  string
-version : 5.5.1 onwards
+version : 5.5.3 onwards
 default :
 description : Set the background color
 */
-@Input('bg-color') bgcolor: boolean;
+@Input('bg-color') bgcolor: string;
 
   /*
 Properties
 name : color
 datatype :  string
-version : 5.5.1 onwards
+version : 5.5.3 onwards
 default :
 description : Set the color
 */
-@Input('color') color: boolean;
+@Input('color') color: string;
 
 bgBorderColor = '';
 

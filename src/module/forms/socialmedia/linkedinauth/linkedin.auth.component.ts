@@ -63,10 +63,9 @@ export class LinkedInAuthComponent extends SocialBaseComponent implements OnInit
     if (IN && IN.User.authorize()) {
       console.log('User already loggedin...');
       return;
+    }else {
+      this.signIn();
     }
-    // tslint:disable-next-line:no-commented-code
-    // this.onLinkedInLoad();
-    this.signIn();
   }
   // THIS FUNCTION IS USED FOR INITALIZE THE AUTH2 OBJECT AND RETURN USER INFO
   initialize(): Promise<SocialUserInfo> {
@@ -111,10 +110,15 @@ export class LinkedInAuthComponent extends SocialBaseComponent implements OnInit
 
   private signIn(): Promise<SocialUserInfo> {
     return new Promise((resolve, reject) => {
-      IN.User.authorize( () => {
-        IN.API.Raw('/people/~:(id,first-name,last-name,email-address,picture-url)').result( (res: LinkedInResponse) => {
-          resolve(this.getLoginInUserInfo(res));
-        });
+      // tslint:disable-next-line:no-identical-functions
+      IN.Event.on(IN, 'auth', () => {
+        if (IN.User.isAuthorized()) {
+          IN.API.Raw(
+            '/people/~:(id,first-name,last-name,email-address,picture-url)',
+          ).result( (res: LinkedInResponse) => {
+            resolve(this.getLoginInUserInfo(res));
+          });
+        }
       });
     });
   }
