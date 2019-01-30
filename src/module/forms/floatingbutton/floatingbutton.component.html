@@ -10,14 +10,15 @@
      (keyup.enter)="togglebtn($event)" 
      (keyup.space)="togglebtn($event)"
 
-
         [ngClass]="addCSSClasses()" 
-        [ngStyle]="{'top':top,'bottom':bottom,'left':left,'right':right}"
+        [ngStyle]="{'top':top,'bottom':bottom,'left':left,'right':right, 'background-color': bgcolorflag ? bgcolor : ''}"
          (click)="buttonClick($event)"
 
          
       >
-        <amexio-form-icon *ngIf="icon" [customclass]="icon">
+      <!-- attr.color="iconcolor" -->
+        <amexio-form-icon *ngIf="icon" [customclass]="icon" [faiconcolor]="iconcolor"
+        >
         </amexio-form-icon>
         {{label}}
 

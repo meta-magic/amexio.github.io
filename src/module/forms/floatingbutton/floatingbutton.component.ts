@@ -110,6 +110,25 @@ export class AmexioFloatingButtonComponent implements OnInit {
   @Input('icon') icon: string;
   /*
   Properties
+  name : color
+  datatype : string
+  version : 5.6 onwards
+  default : white color
+  description : sets icon color.
+  */
+  @Input('color') iconcolor = 'white';
+  /*
+   Properties
+   name : bg-color
+   datatype : string
+   version : 5.6 onwards
+   default : none
+   description : sets background color of floating button.
+   */
+  @Input('bg-color') bgcolor = '';
+
+  /*
+  Properties
   name : type
   datatype : string
   version : 4.1 onwards
@@ -168,6 +187,9 @@ description : Provides Tooltip for button.
   absoluteposition = false;
   ispressed = false;
   componentId: string;
+  buttoncolor: string;
+  bgcolorflag = false;
+  floatingButtonCss = ' floatingbutton-';
 
   constructor() {
   }
@@ -194,19 +216,11 @@ description : Provides Tooltip for button.
     } else if (this.block === 'square') {
       this.positionclass = this.positionclass + ' floatingbutton-square';
     }
-    if (this.type === 'theme-color') {
-      this.themeColorCss();
-    } else if (this.type === 'green') {
-      this.greenColorType();
-
-    } else if (this.type === 'red') {
-      this.redColorType();
-
-    } else if (this.type === 'yellow') {
-      this.yellowColorType();
-
+    if (this.bgcolor.length > 1) {
+      this.bgcolorflag = true;
     } else {
-      this.defaultType();
+      this.positionclass = this.disabled ? this.positionclass + this.floatingButtonCss + this.type + '-disabled' :
+        this.positionclass + this.floatingButtonCss + this.type;
     }
     return this.positionclass;
   }
@@ -219,36 +233,9 @@ description : Provides Tooltip for button.
     }
     this.label = '';
   }
-
+  // --------------------------------------------------------
   // Method to call css class on the basis of theme color
-  themeColorCss() {
-    this.positionclass = this.disabled ? this.positionclass + ' floatingbutton-theme-color-disabled' :
-      this.positionclass + ' floatingbutton-theme-color';
-  }
-
-  // Css for button type default.
-  defaultType() {
-    this.positionclass = this.disabled ? this.positionclass + ' floatingbutton-default-disabled' :
-      this.positionclass + 'floatingbutton-default';
-  }
-
-  // Css for button type yellow.
-  yellowColorType() {
-    this.positionclass = this.disabled ? this.positionclass + 'floatingbutton-yellow-disabled' :
-      this.positionclass + ' floatingbutton-yellow';
-  }
-
-  // Css for button type red.
-  redColorType() {
-    this.positionclass = this.disabled ? this.positionclass + 'floatingbutton-red-disabled' :
-      this.positionclass + ' floatingbutton-red';
-  }
-  // Css for button type green.
-  greenColorType() {
-    this.positionclass = this.disabled ? this.positionclass + ' floatingbutton-green-disabled' :
-      this.positionclass + ' floatingbutton-green';
-  }
-
+  // ---------------------------------------------------------------
   // Css on btn position
   btnPositionCss() {
     if (this.verticalposition === null) {
@@ -256,8 +243,8 @@ description : Provides Tooltip for button.
     } else if (this.horizontalposition === null) {
       this.horizontalposition = 'right';
     }
-    this.positionclass = this.positionclass + ' floatingbutton-' +
-      this.verticalposition + ' floatingbutton-' + this.horizontalposition +
+    this.positionclass = this.positionclass + this.floatingButtonCss +
+      this.verticalposition + this.floatingButtonCss + this.horizontalposition +
       ' floatingbutton-default';
   }
 

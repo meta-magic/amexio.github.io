@@ -21,20 +21,20 @@ import {IconLoaderService} from '../../services/icon/icon.service';
 @Component({
   selector: 'amexio-form-icon',
    template: `
-    <ng-container *ngIf="iconLoaderService.iconToUse == 'fa' ">
+    <ng-container  *ngIf="iconLoaderService.iconToUse == 'fa' ">
       <ng-container *ngIf="customclass != null">
-        <i class="{{customclass}}" aria-hidden="true" (click)="onClick.emit($event)"></i>
+        <i [ngStyle]="{'color':faiconcolor}" class="{{customclass}}" aria-hidden="true" (click)="onClick.emit($event)"></i>
       </ng-container>
       <ng-container *ngIf="customclass == null">
-        <i class="{{iconClass}}" aria-hidden="true" (click)="onClick.emit($event)"></i>
+        <i [ngStyle]="{'color':faiconcolor}" class="{{iconClass}}" aria-hidden="true" (click)="onClick.emit($event)"></i>
       </ng-container>
     </ng-container>
     <ng-container *ngIf="iconLoaderService.iconToUse == 'mat'">
       <ng-container *ngIf="customclass != null">
-        <i class="material-icons" (click)="onClick.emit($event)">{{customclass}}</i>
+        <i [ngStyle]="{'color':faiconcolor}" class="material-icons" (click)="onClick.emit($event)">{{customclass}}</i>
       </ng-container>
       <ng-container *ngIf="customclass == null">
-        <i class="material-icons" (click)="onClick.emit($event)">{{iconClass}}</i>
+        <i [ngStyle]="{'color':faiconcolor}" class="material-icons" (click)="onClick.emit($event)">{{iconClass}}</i>
       </ng-container>
     </ng-container>
   `,
@@ -71,7 +71,7 @@ description : sets the customclass for icon
   @Input() customclass: string;
 
   iconClass: string;
-
+  @Input() faiconcolor = 'white';
   constructor(public iconLoaderService: IconLoaderService) {
   }
   ngOnInit() {
