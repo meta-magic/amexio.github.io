@@ -68,55 +68,7 @@ export class GoogleAuthComponent  extends SocialBaseComponent implements OnInit 
     this.signIn();
   }
 
-  // // THIS FUNCTION IS USED FOR INITALIZE THE AUTH2 OBJECT AND RETURN USER INFO
-  // initialize(): Promise<SocialUserInfo> {
-  //   return new Promise((resolve, reject) => {
-  //     this.scriptLoadService.loadScript(
-  //      this.loginProviderObj,
-  //       () => {
-  //         gapi.load('auth2', () => {
-  //           this.auth2 = gapi.auth2.getInstance({
-  //             client_id: this.clientId,
-  //             scope: 'email',
-  //           });
-  //           this.auth2.then(() => {
-  //             if (this.auth2.isSignedIn.get()) {
-  //               resolve(this.getLoginInUserInfo());
-  //             }
-  //           });
-  //         });
-  //       },
-  //     );
-  //   });
-  // }
-
-  // // THIS FUNCTION IS USED FOR SIGN IN AND GET USER INFO
-  // private signIn(): Promise<SocialUserInfo> {
-  //   return new Promise((resolve, reject) => {
-  //     const promise = this.auth2.signIn();
-  //     promise.then(() => {
-  //       resolve(this.getLoginInUserInfo());
-  //     });
-  //   });
-  // }
-
-  // // THIS FUNCTION IS USED FOR GETTING USER INFO
-  // private getLoginInUserInfo(): SocialUserInfo {
-  //   const user: SocialUserInfo = new SocialUserInfo();
-  //   const profile = this.auth2.currentUser.get().getBasicProfile();
-  //   const authResponseObj = this.auth2.currentUser.get().getAuthResponse(true);
-  //   if (profile && authResponseObj) {
-  //     user.id = profile.getId();
-  //     user.name = profile.getName();
-  //     user.email = profile.getEmail();
-  //     user.image = profile.getImageUrl();
-  //     user.token = authResponseObj.access_token;
-  //     user.idToken = authResponseObj.id_token;
-  //     this.onLogin.emit(user);
-  //   }
-  //   return user;
-  // }
-
+  // THIS FUNCTION IS USED FOR INITALIZE THE AUTH2 OBJECT AND RETURN USER INFO
   initialize(): Promise<SocialUserInfo> {
     return new Promise((resolve, reject) => {
       this.scriptLoadService.loadScript(this.loginProviderObj, () => {
@@ -128,7 +80,7 @@ export class GoogleAuthComponent  extends SocialBaseComponent implements OnInit 
 
             this.auth2.then(() => {
               if (this.auth2.isSignedIn.get()) {
-                resolve(this.drawUser());
+                resolve(this.getLoginInUserInfo());
               }
             });
           });
@@ -136,7 +88,8 @@ export class GoogleAuthComponent  extends SocialBaseComponent implements OnInit 
     });
   }
 
-  drawUser(): SocialUserInfo {
+  // THIS FUNCTION IS USED FOR GETTING USER INFO
+  getLoginInUserInfo(): SocialUserInfo {
     const user: SocialUserInfo = new SocialUserInfo();
     const profile = this.auth2.currentUser.get().getBasicProfile();
     const authResponseObj = this.auth2.currentUser.get().getAuthResponse(true);
@@ -152,11 +105,12 @@ export class GoogleAuthComponent  extends SocialBaseComponent implements OnInit 
     return user;
   }
 
+ // THIS FUNCTION IS USED FOR SIGN IN AND GET USER INFO
   signIn(): Promise<SocialUserInfo> {
     return new Promise((resolve, reject) => {
       const promise = this.auth2.signIn();
       promise.then(() => {
-        resolve(this.drawUser());
+        resolve(this.getLoginInUserInfo());
       });
     });
   }
