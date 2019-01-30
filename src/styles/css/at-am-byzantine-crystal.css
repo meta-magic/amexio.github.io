@@ -5004,6 +5004,16 @@ amexio-layout-columns amexio-layout-item {
 .sidenav::-webkit-scrollbar-thumb {
   background-color: white; }
 
+.sidenav-submenu-details::-webkit-scrollbar-track {
+  background-color: #f5f5f5; }
+
+.sidenav-submenu-details::-webkit-scrollbar {
+  width: 6px;
+  background-color: #f5f5f5; }
+
+.sidenav-submenu-details::-webkit-scrollbar-thumb {
+  background-color: white; }
+
 .left {
   background-color: white; }
 
