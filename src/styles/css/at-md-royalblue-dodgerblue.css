@@ -4844,6 +4844,16 @@ header .billboard .content-button {
 .sidenav::-webkit-scrollbar-thumb {
   background-color: #1e90ff; }
 
+.sidenav-submenu-details::-webkit-scrollbar-track {
+  background-color: #c2cfdb; }
+
+.sidenav-submenu-details::-webkit-scrollbar {
+  width: 6px;
+  background-color: #c2cfdb; }
+
+.sidenav-submenu-details::-webkit-scrollbar-thumb {
+  background-color: #84c2ff; }
+
 .left {
   background-color: #ffffff; }
 
