@@ -1,3 +1,4 @@
+import { SocialBaseComponent } from './../social.base.component';
 /*
  * Copyright [2019] [Metamagic]
  *
@@ -30,23 +31,17 @@ declare let FB: any;
   selector: 'amexio-facebook-auth-provider',
   templateUrl: './facebook.auth.component.html',
 })
-export class FacebookAuthComponent implements OnInit {
+export class FacebookAuthComponent extends SocialBaseComponent implements OnInit {
 
   public loginProviderObj: LoginProvider = new LoginProvider();
   private auth2: any;
-
-  // tslint:disable-next-line:no-input-rename
-  @Input('client-id') clientId: string;
-
-  @Input('label') label: string;
-
-  @Input('style-type') styleType = 'square';
 
   isCircle: boolean;
 
   @Output() onLogin = new EventEmitter<any>();
 
   constructor(private scriptLoadService: ScriptLoadService) {
+    super();
   }
 
   ngOnInit() {

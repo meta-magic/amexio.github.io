@@ -1,3 +1,4 @@
+
 /*
  * Copyright [2019] [Metamagic]
  *
@@ -22,6 +23,7 @@ import { Meta } from '@angular/platform-browser';
 import { ScriptLoadService } from '../../../services/script/script.load.service';
 import { LinkedInResponse } from '../models/linkedin.response.model';
 import { LoginProvider } from './../login.provider';
+import { SocialBaseComponent } from './../social.base.component';
 import { SOCIAL_CONSTANT } from './../social.constant';
 import { SocialUserInfo } from './../social.user.info.model';
 declare let IN: any;
@@ -30,23 +32,17 @@ declare let IN: any;
   selector: 'amexio-linkedin-auth-provider',
   templateUrl: './linkedin.auth.component.html',
 })
-export class LinkedInAuthComponent implements OnInit {
+export class LinkedInAuthComponent extends SocialBaseComponent implements OnInit {
 
   public loginProviderObj: LoginProvider = new LoginProvider();
   private auth2: any;
-
-  // tslint:disable-next-line:no-input-rename
-  @Input('client-id') clientId: string;
-
-  @Input('label') label: string;
-
-  @Input('style-type') styleType = 'square';
 
   isCircle: boolean;
 
   @Output() onLogin = new EventEmitter<any>();
 
   constructor(private scriptLoadService: ScriptLoadService) {
+    super();
   }
 
   ngOnInit() {
@@ -68,6 +64,8 @@ export class LinkedInAuthComponent implements OnInit {
       console.log('User already loggedin...');
       return;
     }
+    // tslint:disable-next-line:no-commented-code
+    // this.onLinkedInLoad();
     this.signIn();
   }
   // THIS FUNCTION IS USED FOR INITALIZE THE AUTH2 OBJECT AND RETURN USER INFO
@@ -78,7 +76,6 @@ export class LinkedInAuthComponent implements OnInit {
             api_key: this.clientId,
             authorize: true,
           });
-          this.onLinkedInLoad();
           IN.Event.on(IN, 'auth', () => {
             if (IN.User.isAuthorized()) {
               IN.API.Raw(
