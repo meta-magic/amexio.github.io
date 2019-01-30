@@ -44,7 +44,13 @@ export class GoogleAuthComponent implements OnInit {
    */
   @Input('client-id') clientId: string;
 
+  @Input('label') label: string;
+
+  @Input('style-type') styleType = 'square';
+
   @Output() onLogin = new EventEmitter<any>();
+
+  isCircle: boolean;
 
   constructor(
     private meta: Meta,
@@ -53,18 +59,24 @@ export class GoogleAuthComponent implements OnInit {
     this.loginProviderObj.id = this.clientId;
     this.loginProviderObj.name = SOCIAL_CONSTANT.GOOGLE;
     this.loginProviderObj.url = SOCIAL_CONSTANT.GOOGLE_GMAIL_API_URL;
-  }
-
-  ngOnInit() {
-    this.initialize();
     this.meta.addTag({
       name: 'google-signin-client_id',
       content: this.clientId,
     });
   }
 
+  ngOnInit() {
+    if (this.styleType && this.styleType.toLowerCase() === 'circle') {
+      this.isCircle = true;
+    }
+    if (!this.label && this.styleType && this.styleType.toLowerCase() !== 'circle') {
+      this.label = 'GOOGLE';
+    }
+    this.initialize();
+  }
+
   // ON CLICK EVENT CALL SIGNIN FUNCTION
-  onClick() {
+  onButtonClick() {
     this.signIn();
   }
 

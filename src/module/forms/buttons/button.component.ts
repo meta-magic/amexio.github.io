@@ -131,8 +131,31 @@ description : Set true to show buttom block
 */
   @Input() block: boolean;
 
+    /*
+Properties
+name : bg-color
+datatype :  string
+version : 5.5.1 onwards
+default :
+description : Set the background color
+*/
+@Input('bg-color') bgcolor: boolean;
+
+  /*
+Properties
+name : color
+datatype :  string
+version : 5.5.1 onwards
+default :
+description : Set the color
+*/
+@Input('color') color: boolean;
+
+bgBorderColor = '';
+
   badgeCssClass = '';
   ispressed = false;
+  bgColorClass = '';
   // THIS METHOD IS USED FOR ADDING CSS CLASS DYNAMICALLY
   constructor() { }
   buttonClick(event: any) {
@@ -142,6 +165,9 @@ description : Set true to show buttom block
     }
   }
   ngOnInit(): void {
+    if (this.getBGStyle() !== null) {
+      this.bgColorClass = this.getBGStyle();
+    }
     this.badgeCssClass = this.badgeClass();
   }
 
@@ -172,4 +198,18 @@ description : Set true to show buttom block
   setDisabled(disabled: boolean) {
     this.disabled = disabled;
   }
+
+  // THIS FUNCTION IS ADDING BACKGROUND AND COLOR STYTLE TO BUTTON
+  getBGStyle(): any {
+    if (this.bgcolor && this.color) {
+      this.type = 'default';
+      this.bgBorderColor = 'none';
+      return  {
+        'background-color': this.bgcolor,
+        'color': this.color,
+      };
+    }
+    return null;
+  }
+
 }

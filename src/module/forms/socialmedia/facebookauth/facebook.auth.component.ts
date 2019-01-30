@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  * Created by sagar on 23/1/19.
- * INFO: LINKEDIN AUTH COMPONENT IS USED FOR THIRD PARTY LOGIN USING LINKEDIN OAUTH API
+ * INFO: FACEBOOK AUTH COMPONENT IS USED FOR THIRD PARTY LOGIN USING FACEBOOK OAUTH API
  */
 
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
@@ -24,13 +24,13 @@ import { LinkedInResponse } from '../models/linkedin.response.model';
 import { LoginProvider } from './../login.provider';
 import { SOCIAL_CONSTANT } from './../social.constant';
 import { SocialUserInfo } from './../social.user.info.model';
-declare let IN: any;
+declare let FB: any;
 @Component({
   // tslint:disable-next-line:component-selector
-  selector: 'amexio-linkedin-auth-provider',
-  templateUrl: './linkedin.auth.component.html',
+  selector: 'amexio-facebook-auth-provider',
+  templateUrl: './facebook.auth.component.html',
 })
-export class LinkedInAuthComponent implements OnInit {
+export class FacebookAuthComponent implements OnInit {
 
   public loginProviderObj: LoginProvider = new LoginProvider();
   private auth2: any;
@@ -54,71 +54,66 @@ export class LinkedInAuthComponent implements OnInit {
       this.isCircle = true;
     }
     if (!this.label && this.styleType && this.styleType.toLowerCase() !== 'circle') {
-      this.label = 'Linkedin';
+      this.label = 'FACEBOOK';
     }
     this.loginProviderObj.id = this.clientId;
-    this.loginProviderObj.name = SOCIAL_CONSTANT.LINKEDIN;
-    this.loginProviderObj.url = SOCIAL_CONSTANT.LINKEDIN_API_URL;
+    this.loginProviderObj.name = SOCIAL_CONSTANT.FACEBOOK;
+    this.loginProviderObj.url = SOCIAL_CONSTANT.FACEBOOK_API_URL;
     this.initialize();
   }
-
-  // ON CLICK EVENT CALL SIGNIN FUNCTION
-  onButtonClick() {
-    if (IN && IN.User.authorize()) {
-      console.log('User already loggedin...');
-      return;
-    }
+   // ON CLICK EVENT CALL SIGNIN FUNCTION
+   onButtonClick() {
     this.signIn();
   }
+
   // THIS FUNCTION IS USED FOR INITALIZE THE AUTH2 OBJECT AND RETURN USER INFO
   initialize(): Promise<SocialUserInfo> {
     return new Promise((resolve, reject) => {
       this.scriptLoadService.loadScript(this.loginProviderObj, () => {
-          IN.init({
-            api_key: this.clientId,
-            authorize: true,
+          FB.init({
+            appId: this.clientId,
+            autoLogAppEvents: true,
+            cookie: true,
+            xfbml: true,
+            version: 'v2.10',
           });
-          this.onLinkedInLoad();
-          IN.Event.on(IN, 'auth', () => {
-            if (IN.User.isAuthorized()) {
-              IN.API.Raw(
-                '/people/~:(id,first-name,last-name,email-address,picture-url)',
-              ).result( (res: LinkedInResponse) => {
-                resolve(this.getLoginInUserInfo(res));
+          FB.AppEvents.logPageView();
+
+          FB.getLoginStatus(function(response: any) {
+            if (response.status === 'connected') {
+              const accessToken = FB.getAuthResponse()['accessToken'];
+              FB.api('/me?fields=name,email,picture', (res: any) => {
+                resolve(this.getUserinfo(Object.assign({}, {token: accessToken}, res)));
               });
             }
           });
-
         });
     });
   }
 
-  // THIS FUNCTION IS USED FOR LINKEDIN
-  onLinkedInLoad(): void {
-    IN.Event.on(IN, 'systemReady', () => {
-      IN.User.refresh();
-    });
-  }
-
-// THIS FUNCTION IS GET INFO OF LOGIINED USER
- private getLoginInUserInfo(response: LinkedInResponse): SocialUserInfo {
+   getUserinfo(response: any): SocialUserInfo {
     const user: SocialUserInfo = new SocialUserInfo();
-    user.id = response.emailAddress;
-    user.name = response.firstName + ' ' + response.lastName;
-    user.email = response.emailAddress;
-    user.image = response.pictureUrl;
-    user.token = IN.ENV.auth.oauth_token;
-    this.onLogin.emit(user);
+    user.id = response.id;
+    user.name = response.name;
+    user.email = response.email;
+    user.token = response.token;
+    user.image = 'https://graph.facebook.com/' + response.id + '/picture?type=normal';
+    if (user && user.name) {
+      this.onLogin.emit(user);
+    }
     return user;
   }
 
-  private signIn(): Promise<SocialUserInfo> {
+  signIn(): Promise<SocialUserInfo> {
     return new Promise((resolve, reject) => {
-      IN.User.authorize( () => {
-        IN.API.Raw('/people/~:(id,first-name,last-name,email-address,picture-url)').result( (res: LinkedInResponse) => {
-          resolve(this.getLoginInUserInfo(res));
-        });
-      });
+      FB.login((response: any) => {
+        if (response.authResponse) {
+          const accessToken = FB.getAuthResponse()['accessToken'];
+          FB.api('/me?fields=name,email,picture', (res: any) => {
+            resolve(this.getUserinfo(Object.assign({}, {token: accessToken}, res)));
+          });
+        }
+      }, { scope: 'email,public_profile' });
     });
   }
 }

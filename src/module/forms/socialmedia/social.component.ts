@@ -20,8 +20,12 @@ import {Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SocialUserInfo } from './social.user.info.model';
 
 @Component({
-  selector : 'amexio-social',
+  selector : 'amexio-login-social',
   templateUrl : 'social.component.html',
+  styles: [`
+  .social-button .button-default:hover {
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12)!important;
+  }`],
 })
 
 export class AmexioSocialComponent implements OnInit {
@@ -44,6 +48,10 @@ export class AmexioSocialComponent implements OnInit {
     description : key is client id
    */
   @Input('api-key') key: string;
+
+  @Input('label') label: string;
+
+  @Input('style-type') styleType: string;
 
   @Output() onLogin = new EventEmitter<any>();
 
