@@ -1,90 +1,101 @@
 
 .floatingbutton{
     
-    z-index: 3;
-    text-align:center;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
-    border-color: $borderColor;
-    cursor: pointer;
-  }
+  z-index: 3;
+  text-align:center;
+  border-color: $borderColor;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2) !important;
+}
 
-  .floatingbutton-relative{
-    position: relative;
-  }
-  .floatingbutton-fixed{
-    position: fixed;
-  }
-  
-  .floatingbutton-left{
-    left:5%;
-  }
-  
-  .floatingbutton-right{
-    right:5%;
-  }
-  
-  .floatingbutton-top{
-    top:10%;
-  }
-  
+.floatingbutton-relative{
+  position: relative;
+}
+.floatingbutton-fixed{
+  position: fixed;
+}
 
-  .floatingbutton-bottom{
-    bottom:10%;
-  }
+.floatingbutton-left{
+  left:5%;
+}
 
-  .floatingbutton-center{
-    top:50%;
-    left: 50%;
-  }
-   
+.floatingbutton-right{
+  right:5%;
+}
 
-  .floatingbutton-circle{
-      border-radius: 50px;
-      width:60px;
-      height:60px;
-      line-height: 60px;
-  }
+.floatingbutton-top{
+  top:10%;
+}
 
 
-  .floatingbutton-circle-large{
+.floatingbutton-bottom{
+  bottom:10%;
+}
+
+.floatingbutton-center{
+  top:50%;
+  left: 50%;
+}
+ 
+
+.floatingbutton-circle{
     border-radius: 50px;
-    width: 100px;
-    height: 100px;
-    line-height: 100px;
-  }
-
-  .floatingbutton-circle-small{
-      border-radius: 50px;
-      width: 30px;
-      height: 30px;
-      line-height: 30px;
-  }  
-  .floatingbutton-square{
-      padding: .5rem 1rem;
-  }
-  .floatingbtntooltip {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .floatingbtntooltip .floatingbtntooltiptext {
-    visibility: hidden;
-    line-height: 20px;
-    width: 120px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
+    width:60px;
+    height:60px;
+    line-height: 60px;
     
-    /* Position the tooltip */
-    position: absolute;
-    z-index: 1;
-    top: 50%;
-    left: 209%;
-    margin-left: -60px;
-  }
+}
+
+.floatingbutton:hover {
+
+  box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 
+  0 3px 14px 2px rgba(0,0,0,0.12),
+   0 5px 5px -3px rgba(0,0,0,0.2) !important; 
+  filter: grayscale(20%);
+  transform: perspective(1px) translateZ(0);
+  transition-duration: 0.5s;
+  transition-property: box-shadow;
+}
+
+.floatingbutton-circle-large{
+  border-radius: 50px;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+}
+
+.floatingbutton-circle-small{
+    border-radius: 50px;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+}  
+.floatingbutton-square{
+    padding: .5rem 1rem;
+}
+.floatingbtntooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.floatingbtntooltip .floatingbtntooltiptext {
+  visibility: hidden;
+  line-height: 20px;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
   
-  .floatingbtntooltip:hover .floatingbtntooltiptext {
-    visibility: visible;
-  }
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 209%;
+  margin-left: -60px;
+}
+
+.floatingbtntooltip:hover .floatingbtntooltiptext {
+  visibility: visible;
+}
