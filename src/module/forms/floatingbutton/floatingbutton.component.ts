@@ -112,7 +112,7 @@ export class AmexioFloatingButtonComponent implements OnInit {
   Properties
   name : color
   datatype : string
-  version : 5.6 onwards
+  version : 5.5.4 onwards
   default : white color
   description : sets icon color.
   */
@@ -121,7 +121,7 @@ export class AmexioFloatingButtonComponent implements OnInit {
    Properties
    name : bg-color
    datatype : string
-   version : 5.6 onwards
+   version : 5.5.4 onwards
    default : none
    description : sets background color of floating button.
    */
