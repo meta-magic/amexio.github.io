@@ -3,7 +3,7 @@
         <span> {{title}} </span>
         <span class="dataheaderFilter" class="float-right" style="padding-bottom:1.1%">
             <ng-content select="amexio-datagrid-header"></ng-content>
-            <span *ngIf="enablecolumnfilter ? true:false" class="float-right" (click)="showToolTip = !showToolTip ; showGroupByColumn = false"
+            <span *ngIf="enablecolumnfilter ? true:false" class="float-right" (click)="onEnableColumnClick($event)"
                 style=" cursor: pointer;">
                 &nbsp;
                 <span *ngIf="!show">&#9776;</span>
@@ -17,6 +17,7 @@
         </span>
     </div>
     <!--Filter with Checkbox datagrid start-->
+
     <ng-container *ngIf="enabledatafilter ? true : false">
         <div class="datatable datatable-row">
             <ng-container *ngIf="enablecheckbox">
@@ -31,11 +32,12 @@
             </ng-container>
 
             <!--Filter datagrid start-->
+
             <ng-container *ngIf="enabledatafilter ? true : false">
                 <ng-container *ngFor="let cols of columns">
                     <ng-container *ngIf="!cols.hidden">
                         <div class="datatable-col col-group" [style.width.%]="cols.width">
-                            <data-grid-filter [column]="cols" (filterObject)="getFilteredData($event)">
+                            <data-grid-filter (onFilterClick)="getFilterClick($event)"  [column]="cols" (filterObject)="getFilteredData($event)">
                             </data-grid-filter>
                         </div>
                     </ng-container>
@@ -52,12 +54,10 @@
                 <div class="inputgroup" style="padding-left: 1%; padding-right: 1%">
                     <input type="text" [(ngModel)]="filterValue" (keyup)="keyUpSearch($event)" type="text" class="input-control"
                         aria-label="Text input with dropdown button">
-                    <!--<i class="fa fa-filter" aria-hidden="true"
-            (click)="showToolTip = !showToolTip"></i>-->
                     <span class="datatable-filter-icon">
-                        <amexio-data-icon key="datagrid_filter" (click)="showToolTip = !showToolTip"></amexio-data-icon>
+                        <amexio-data-icon key="datagrid_filter" (click)="onFilterIconClick($event)"></amexio-data-icon>
                     </span>
-                    <span *ngIf="showToolTip" class="dropdown" style="width: 250px; right: 10px">
+                    <span *ngIf="showToolTip" class="dropdown" style="width: 250px; right: 0">
                         <ul class="dropdown-list" *ngFor="let opt of globalFilterOptions">
                             <li class="list-items">
                                 <div (click)="selectedOption(opt)">
@@ -72,11 +72,10 @@
         </div>
     </ng-container>
 
-    <div>
-        <ng-container *ngIf="enablecolumnfilter ? true : false">
-            <span *ngIf="showToolTip" class="dropdown dropdown-right" style="width: 250px;">
+    <ng-container *ngIf="enablecolumnfilter ? true : false">
+            <span *ngIf="showEnableColumnFilter" class="dropdown dropdown-right" [ngStyle]="{'top': globalfilter || enabledatafilter ? '10%':''}" style="width: 250px;">
                 <ul class="dropdown-list">
-                    <li class="list-items" *ngFor="let cols of columns;let i = index;" (click)="showToolTip = !showToolTip">
+                    <li class="list-items" *ngFor="let cols of columns;let i = index;" >
                         <div>
                             <input type="checkbox" [attr.checked]="!cols.hidden ? true: null" (click)="onColumnCheck(cols)" />
                             <label>{{cols.text}}</label>
@@ -86,7 +85,7 @@
             </span>
         </ng-container>
 
-        <ng-container *ngIf="groupby ? true : false">
+    <ng-container *ngIf="groupby ? true : false">
             <span *ngIf="showGroupByColumn" class="dropdown dropdown-right" style="width: 250px;">
                 <ul class="dropdown-list">
                     <li class="list-items" *ngFor="let cols of columns;let i = index;" (click)="showGroupByColumn = !showGroupByColumn">
@@ -97,7 +96,6 @@
                 </ul>
             </span>
         </ng-container>
-    </div>
 </div>
 
 <!--Checkbox datagrid with datatypes condition start-->
@@ -331,7 +329,7 @@
     </div>
 </ng-container>
 <!--Group BY and Filter Data datagrid end-->
- 
+
 <!-- Context Menu  -->
 <!-- <span [ngStyle]="contextStyle">
     <ul *ngIf="flag" class="context-menu-list" [ngClass]="{'dropdown-up' : posixUp}">
@@ -346,11 +344,11 @@
 </span> -->
 
 <ng-container *ngIf="flag">
-    <base-contextmenu 
-    [base-context-menu]="contextmenu" 
+    <base-contextmenu
+    [base-context-menu]="contextmenu"
     [mouse-location-top]="mouseLocation.top"
-    [mouse-location-left]="mouseLocation.left" 
-    [is-FlagShow]="flag" 
+    [mouse-location-left]="mouseLocation.left"
+    [is-FlagShow]="flag"
     [right-click-data]="rightClickRowData"
     (onRightClick) ="rightClickDataEmit($event)"
     [position-up]="posixUp" >

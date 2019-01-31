@@ -24,27 +24,28 @@
  header and column data, displaying summation of numeric column.
  */
 import {
-  AfterContentInit, ChangeDetectorRef, Component, ContentChildren, ElementRef, EventEmitter, HostListener, Input,
-  OnDestroy, OnInit, Output, QueryList, Renderer2,
+  AfterContentInit, AfterViewInit, ChangeDetectorRef, Component, ContentChildren, ElementRef, EventEmitter, HostListener, Input,
+  OnDestroy, OnInit, Output, QueryList, Renderer2, ViewChildren,
 } from '@angular/core';
 import { CommonDataService } from '../../services/data/common.data.service';
 import { AmexioGridColumnComponent } from './data.grid.column';
+import { DataGridFilterComponent } from './datagrid.filter.component';
 
 @Component({
   selector: 'amexio-datagrid',
   templateUrl: './datagrid.component.html',
 })
 
-export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentInit {
+export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentInit, AfterViewInit {
   private componentLoaded: boolean;
   /*
-   Properties
-   name : title
-   datatype : string
-   version : 4.0 onwards
-   default : none
-   description : Title for grid.
-   */
+ Properties
+ name : title
+ datatype : string
+ version : 4.0 onwards
+ default : none
+ description : Title for grid.
+ */
   @Input() title: string;
   /*
    Properties
@@ -378,6 +379,12 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
 
   globalClickListenFunc: () => void;
 
+  showEnableColumnFilter = false;
+
+  filterComRef: any[] = [];
+
+  @ViewChildren(DataGridFilterComponent) filterRef: QueryList<DataGridFilterComponent>;
+
   @ContentChildren(AmexioGridColumnComponent) columnRef: QueryList<AmexioGridColumnComponent>;
 
   constructor(
@@ -429,6 +436,12 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
 
     this.checkBoxSelectClass = this.setCheckBoxSelectClass();
 
+  }
+
+  ngAfterViewInit(): void {
+    if (this.enabledatafilter) {
+      this.filterComRef = this.filterRef.toArray();
+    }
   }
 
   updateComponent() {
@@ -610,7 +623,7 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
     this.filterValue = '';
   }
   getGlobalFilteredData(filteredObj: any) {
-    const resultData: any[] = [];
+    const resultData: any = [];
     if (filteredObj) {
       this.filterCloneData.forEach((row: any) => {
         if (this.checkValueInColumn(row, filteredObj)) {
@@ -634,7 +647,7 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
 
   checkValueInColumn(row: any, filteredObj: any): boolean {
     let searchStatus = false;
-    const statusCollection: any[] = [];
+    const statusCollection: any = [];
     this.columns.forEach((opt: any) => {
       let optvalue = '';
       let filtervalue = '';
@@ -652,7 +665,7 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
         statusCollection.push(optvalue.includes(filtervalue));
       }
     });
-    if (statusCollection.filter((status: boolean) => status === true).length > 0) {
+    if (statusCollection.filter((status: any) => status === true).length > 0) {
       searchStatus = true;
     }
     return searchStatus;
@@ -676,6 +689,7 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
     }
 
   }
+
   // Refactored code to avoid duplication: for filter grid
   setstatus(condition: any) {
     if (condition) {
@@ -816,7 +830,7 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
   }
 
   getFilteredData(filteredObj: any) {
-    const resultData: any[] = [];
+    const resultData: any = [];
     if (filteredObj.length > 0) {
       this.filterCloneData.forEach((option: any) => {
         if (this.filterOpertion(option, filteredObj)) {
@@ -852,7 +866,7 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
       }
     });
 
-    if (statusCollection.filter((status: boolean) => status === true).length > 0) {
+    if (statusCollection.filter((status: any) => status === true).length > 0) {
       condition = true;
     }
     return condition;
@@ -888,7 +902,7 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
     }
   }
 
-  pagingRegenration() {
+pagingRegenration() {
     this.maxPage = Math.floor((this.data.length / this.pagesize));
     if ((this.data.length % this.pagesize) > 0) {
       this.maxPage++;
@@ -1184,7 +1198,9 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
   addListner() {
     this.globalClickListenFunc = this.renderer.listen('document', 'click', (e: any) => {
       this.flag = false;
-      if (!this.flag) {
+      this.showToolTip = false;
+      this.showEnableColumnFilter = false;
+      if (!this.flag || !this.showToolTip || !this.showEnableColumnFilter) {
         this.removeListner();
       }
     });
@@ -1198,5 +1214,25 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
 
   ngOnDestroy(): void {
     this.removeListner();
+  }
+
+  onFilterIconClick(event: any) {
+    event.stopImmediatePropagation();
+    this.addListner();
+    this.showEnableColumnFilter = false;
+    this.showToolTip = !this.showToolTip;
+  }
+
+  onEnableColumnClick(event: any) {
+    event.stopImmediatePropagation();
+    this.addListner();
+    this.showToolTip = false;
+    this.showEnableColumnFilter = !this.showEnableColumnFilter;
+  }
+
+  getFilterClick() {
+    this.filterComRef.forEach((com: any) => {
+      com.showToolTip = false;
+    });
   }
 }

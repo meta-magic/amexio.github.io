@@ -25,7 +25,7 @@ client-side pagination, column hide/unhide, single/multi selection,Filtering
 (enable only for string and number type data) user define template for rendering
 for column header and column data, displaying summation of numeric column.
 */
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, Renderer2 } from '@angular/core';
 import { CommonDataService } from '../../services/data/common.data.service';
 @Component({
   selector: 'data-grid-filter',
@@ -40,9 +40,11 @@ For internal use
   @Input() column: any;
 
   /*
- for internal use
-*/
+  for internal use
+  */
   @Output() filterObject: any = new EventEmitter<any>();
+
+  @Output() onFilterClick: any = new EventEmitter<any>();
 
   filterValue: any;
 
@@ -50,11 +52,13 @@ For internal use
 
   elementId: any;
 
-  showToolTip: boolean;
+  showToolTip = false;
 
   private checkIcon = 'fa fa-check';
 
-  constructor(private dataTableService: CommonDataService) {
+  globalClickListenFunc: () => void;
+
+  constructor(private dataTableService: CommonDataService, private renderer: Renderer2) {
 
     this.filterOptions = [{
       key: 'Is Equal To', value: '==', type: 'string', checkedStatus: '',
@@ -116,7 +120,7 @@ For internal use
       };
       this.filterOptions.forEach((opt: any) => {
         if (opt.checkedStatus === this.checkIcon && col.datatype === opt.type) {
-            filter['filter'] = opt.value;
+          filter['filter'] = opt.value;
         }
       });
       this.filterDataObject(filter, col);
@@ -148,5 +152,27 @@ For internal use
     });
     this.dataTableService.filteredObject.push(filter);
     this.filterObject.emit(this.dataTableService.filteredObject);
+  }
+
+  onDataFilterIconClick(event: any) {
+    event.stopImmediatePropagation();
+    this.onFilterClick.emit();
+    this.addListner();
+    this.showToolTip = !this.showToolTip;
+  }
+
+  addListner() {
+    this.globalClickListenFunc = this.renderer.listen('document', 'click', (e: any) => {
+      this.showToolTip = false;
+      if (!this.showToolTip) {
+        this.removeListner();
+      }
+    });
+  }
+
+  removeListner() {
+    if (this.globalClickListenFunc) {
+      this.globalClickListenFunc();
+    }
   }
 }
