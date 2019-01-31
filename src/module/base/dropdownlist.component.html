@@ -1,10 +1,11 @@
-    <ul class="dropdown-list">
-        <li  [ngClass]="{'list-items-selected': (i === highlightrow)}" 
+    <ul role="list"  class="dropdown-list">
+        <li role="listitem" [ngClass]="{'list-items-selected': (i === highlightrow)}" 
              class="list-items" 
              [attr.valuefield]="item[valuefield]" 
              [attr.displayfield]="item[displayfield]" 
              *ngFor="let item of viewdata | async | filterpipe : displayfield : displayValue ; index as i"  
-            (mousedown)="onDropDownListClick(item)">
+            (mousedown)="onDropDownListClick(item)"
+            id="{{item.index}}">
             <ng-container *ngIf="!template">
                 <div>{{item[displayfield]}}</div>    
             </ng-container>

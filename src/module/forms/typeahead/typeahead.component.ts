@@ -168,13 +168,19 @@ export class AmexioTypeAheadComponent extends ListBaseComponent<string> implemen
 
   rowindex = 0;
 
+  componentId: string;
+
   maskloader = true;
+
+  ariaListExpand = false;
 
   isValid: boolean;
 
   responseData: any;
 
   previousData: any;
+
+  filterarray: any = [];
 
   constructor(public dataService: CommonDataService, public element: ElementRef, renderer: Renderer2, cd: ChangeDetectorRef) {
     super(renderer, element, cd);
@@ -197,6 +203,7 @@ export class AmexioTypeAheadComponent extends ListBaseComponent<string> implemen
 
   ngOnInit() {
     this.name = this.generateName(this.name, this.fieldlabel, 'typeaheadinput');
+    this.componentId = this.displayfield + Math.floor(Math.random() * 1000 + 999);
     if (!this.valuefield) {
       this.valuefield = this.displayfield;
     }
@@ -225,17 +232,49 @@ export class AmexioTypeAheadComponent extends ListBaseComponent<string> implemen
     }
     this.componentLoaded = true;
   }
+  generateIndex() {
+    this.viewdata.value.forEach((element: any, index: number) => {
+      element['index'] = this.componentId + 'listitem' + index;
+    });
+  }
+
+  closeOnEScapeKey(event: any) {
+    this.ariaListExpand = false;
+    this.hide();
+  }
 
   input(event: any) {
+    this.filterarray = [];
+    let value: string;
     this.displayValue = event.target.value;
     this.rowindex = 0;
-    if (this.displayValue.length >= 0 && !this.self && this.displayValue.length >= this.triggerchar) {
+    if (this.displayValue.length >= 0 && !this.self  && this.displayValue.length >= this.triggerchar) {
       this.dropdownstyle = { visibility: 'visible' };
+      this.ariaListExpand = true;
       this.bindDocumentClickListener();
     } else {
       this.dropdownstyle = { visibility: 'hidden' };
+      this.ariaListExpand = false;
     }
     this.onInputOutput.emit(event);
+    if (this.displayValue.length > 0) {
+    if (this.displayValue === this.displayValue.toUpperCase()) {
+      value = this.displayValue.toLowerCase();
+    } else {
+      value = this.displayValue;
+    }
+    this.viewdata.value.forEach((element: any) => {
+      if ((element[this.displayfield].toLowerCase()).startsWith(value)) {
+          this.filterarray.push(element);
+      }
+    });
+   }
+  }
+
+  focustoLast() {
+      this.rowindex = this.filterarray.length - 1;
+      this.setScrollToList(this.rowindex);
+      this.setAriaActiveDescendant(this.rowindex);
   }
 
   focus(event: any) {
@@ -254,11 +293,11 @@ export class AmexioTypeAheadComponent extends ListBaseComponent<string> implemen
       this.rowindex = 0;
     }
     if (this.rowindex < 0) {
+      this.rowindex = this.filterarray.length - 1;
+    } else if (this.rowindex >= this.filterarray.length) {
       this.rowindex = 0;
-    } else if (this.rowindex >= this.viewdata.value.length) {
-      this.rowindex = this.viewdata.value.length - 1;
     }
-
+    this.setAriaActiveDescendant(this.rowindex);
     if (keycode === 13) {
       const data = this.dropdown[0].selectedItem();
       this.value = data[0].attributes['valuefield'].value;
@@ -269,7 +308,6 @@ export class AmexioTypeAheadComponent extends ListBaseComponent<string> implemen
       this.dropdown[0].scroll(this.rowindex);
     }
   }
-
   // METHOS FOR BLUR EVENT
   blur(event: any) {
     super.blur(event);
@@ -294,8 +332,25 @@ export class AmexioTypeAheadComponent extends ListBaseComponent<string> implemen
     }
     this.displayValue = data[this.displayfield];
     this.onClick.emit(data);
+    this.ariaListExpand = false;
   }
-
+   // METHOD TO READ CURRENT ELEMENT FOCUSED
+   setAriaActiveDescendant(rowindex: any) {
+    if (this.filterarray.length > 0) {
+    const inputid = document.getElementById(this.componentId);
+    inputid.setAttribute('aria-activedescendant', this.filterarray[rowindex].index);
+    } else if (this.displayValue.length < 1) {
+      const inputid = document.getElementById(this.componentId);
+      inputid.setAttribute('aria-activedescendant', 'listitem');
+    }
+  }
+  // METHOD TO SET SCROLL BASED ON ROWINDEX
+  setScrollToList(rowindex: any) {
+  const listitems = this.element.nativeElement.getElementsByClassName('list-items')[rowindex];
+  if (listitems) {
+    listitems.scrollIntoView({ behavior: 'smooth' });
+  }
+}
   writeValue(v: any) {
     super.writeValue(v);
     if (v && this.viewdata) {
@@ -339,6 +394,7 @@ export class AmexioTypeAheadComponent extends ListBaseComponent<string> implemen
       responsedata = httpResponse;
     }
     this.viewdata = of(responsedata);
+    this.generateIndex();
 
     // SET USER SELECTION
     if (this.value != null) {
