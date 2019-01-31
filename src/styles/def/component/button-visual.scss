@@ -98,3 +98,23 @@
   color : $componentFontColor;
 }
 
+.button-transparent:hover:enabled{
+  background-color: $borderColor;
+}
+
+.button-transparent::after{
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background:  $borderColor;
+  opacity: 0;
+  border-radius: 100%;
+  -webkit-transform: scale(1,1) translate(-50%);
+  transform: scale(1,1) translate(-50%);
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+
+}
