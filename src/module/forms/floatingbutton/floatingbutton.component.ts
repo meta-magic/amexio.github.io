@@ -183,6 +183,16 @@ description : Provides Tooltip for button.
 */
   @Input('tool-tip') tooltip: string;
 
+  /*
+   Properties
+   name : absolute
+   datatype : boolean
+   version : 5.5.5 onwards
+   default : none
+   description : Place floating button at absolute position
+   */
+  @Input('absolute') absolute = false;
+
   positionclass: string;
   absoluteposition = false;
   ispressed = false;
@@ -203,8 +213,10 @@ description : Provides Tooltip for button.
       this.absoluteposition = true;
     }
     this.positionclass = '';
-    if (this.relative) {
+    if (this.relative && !this.absolute) {
       this.positionclass = ' floatingbutton-relative ';
+    } else if (this.absolute) {
+      this.positionclass = 'floatingbutton-absolute ';
     } else {
       this.positionclass = ' floatingbutton-fixed ';
     }
