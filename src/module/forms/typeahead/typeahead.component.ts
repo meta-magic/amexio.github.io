@@ -203,7 +203,7 @@ export class AmexioTypeAheadComponent extends ListBaseComponent<string> implemen
 
   ngOnInit() {
     this.name = this.generateName(this.name, this.fieldlabel, 'typeaheadinput');
-    this.componentId = this.displayfield + Math.floor(Math.random() * 1000 + 999);
+    this.componentId = this.createCompId('typeahead', this.displayfield);
     if (!this.valuefield) {
       this.valuefield = this.displayfield;
     }
