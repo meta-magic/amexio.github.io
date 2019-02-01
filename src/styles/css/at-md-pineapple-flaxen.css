@@ -365,6 +365,14 @@ image using the content attribute.
   background-color: #ffffff;
   color: #000000; }
 
+.fa-2x {
+  font-size: 2em !important;
+  margin-top: 24% !important; }
+
+.fa-3x {
+  font-size: 3em !important;
+  margin-top: 12% !important; }
+
 /** Initialze Component variables ------------ */
 /****************************************************************************
     Component Name : Button

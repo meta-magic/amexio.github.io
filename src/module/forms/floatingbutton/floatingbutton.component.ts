@@ -204,7 +204,7 @@ description : Provides Tooltip for button.
   constructor() {
   }
   ngOnInit() {
-    this.componentId = this.createCompId('checkbox');
+    this.componentId = this.createCompId('floatingBtn');
     this.addCSSClasses();
   }
   // THIS METHOD IS USED FOR SETTING CSS CLASSSES
