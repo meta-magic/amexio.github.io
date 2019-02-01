@@ -101,7 +101,6 @@ export class AmexioCreditcardComponent implements ControlValueAccessor, OnInit {
       this.creditCardModel = modelValue;
       this.onChangeCardNumber(this.creditCardModel.cardnumber);
       this.onChangeMonth('0' + this.creditCardModel.expMonth);
-      this.isNameValid = true;
       this.isCvvValid = this.cvvRegex.test(this.creditCardModel.cvv);
       this.cardRegexMap.forEach((value: any, key: string) => {
         const isEagarValid = value.test(this.dummyCreditCardNumber);
