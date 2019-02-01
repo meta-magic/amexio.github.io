@@ -385,7 +385,8 @@ image using the content attribute.
   color: #121212; }
 
 .button-secondary:hover:enabled {
-  background-color: #e6e6e6; }
+  background-color: #e6e6e6;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
 
 .btn-badge {
   background-color: #ff6b6b;
@@ -425,7 +426,8 @@ image using the content attribute.
   color: #a36262; }
 
 .button-primary:hover:enabled {
-  background-color: #505050; }
+  background-color: #505050;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
 
 .button-success {
   background-color: #5cb85c;
@@ -441,7 +443,8 @@ image using the content attribute.
   color: #ffffff; }
 
 .button-danger:hover:enabled {
-  background-color: #c9302c; }
+  background-color: #c9302c;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
 
 .button-warning {
   background-color: #f0ad4e;
@@ -449,14 +452,19 @@ image using the content attribute.
   color: #ffffff; }
 
 .button-warning:hover:enabled {
-  background-color: #ec971f; }
+  background-color: #ec971f;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
 
 .button-transparent {
   background: #ffffff;
   color: #121212; }
 
 .button-transparent:hover:enabled {
-  background-color: #ced4da; }
+  background-color: #ced4da;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+
+.button-default:hover:enabled {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important; }
 
 .button-transparent::after {
   content: '';

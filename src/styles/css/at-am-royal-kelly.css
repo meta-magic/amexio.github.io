@@ -701,7 +701,8 @@ $modalFooterColor : $cardFooterColor;*/
   color: #98FB98; }
 
 .button-secondary:hover:enabled {
-  background-color: #5e6578; }
+  background-color: #5e6578;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
 
 .btn-badge {
   background-color: #1b1d22;
@@ -741,7 +742,8 @@ $modalFooterColor : $cardFooterColor;*/
   color: #4CBB17; }
 
 .button-primary:hover:enabled {
-  background-color: #67f967; }
+  background-color: #67f967;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
 
 .button-success {
   background-color: #5cb85c;
@@ -757,7 +759,8 @@ $modalFooterColor : $cardFooterColor;*/
   color: black; }
 
 .button-danger:hover:enabled {
-  background-color: #c9302c; }
+  background-color: #c9302c;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
 
 .button-warning {
   background-color: #f0ad4e;
@@ -765,14 +768,19 @@ $modalFooterColor : $cardFooterColor;*/
   color: black; }
 
 .button-warning:hover:enabled {
-  background-color: #ec971f; }
+  background-color: #ec971f;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
 
 .button-transparent {
   background: #292b2c;
   color: rgba(255, 255, 255, 0.7); }
 
 .button-transparent:hover:enabled {
-  background-color: #4CBB17; }
+  background-color: #4CBB17;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+
+.button-default:hover:enabled {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important; }
 
 .button-transparent::after {
   content: '';
