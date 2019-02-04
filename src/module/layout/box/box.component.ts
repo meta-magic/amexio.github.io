@@ -20,46 +20,7 @@ import {IconLoaderService} from '../../services/icon/icon.service';
 
 @Component({
  selector: 'amexio-box',
- template: `
- <div class="box-content" *ngIf="close"
- [style.height] = "height ? height:'none'"
- [style.width] = "width ? width:'none'"
- [style.align] = "align ? align:'none'"
- [ngClass]="{
- 'box-default': borderColor=='default' || borderColor ==null,
- 'border-topbar': border=='top',
- 'border-bottombar': border =='bottom',
- 'border-rightbar': border =='right',
- 'border-leftbar': border =='left',
- 'border-all' : border =='all',
- 'border-top-bottom' : border =='top-bottom' || border =='bottom-top',
- 'border-right-left' : border =='right-left' || border =='left-right',
-
- 'bg-brown': bgColor=='brown',
- 'bg-red': bgColor=='red',
- 'bg-green': bgColor=='green',
- 'bg-yellow': bgColor=='yellow',
- 'bg-blue': bgColor=='blue',
- 'bg-purple': bgColor=='purple',
- 'bg-theme-color' : bgColor =='theme-color',
-
- 'border-theme-color' : borderColor =='theme-color',
- 'border-red' : borderColor =='red',
- 'border-yellow' : borderColor =='yellow',
- 'border-green' : borderColor =='green',
- 'border-blue' : borderColor =='blue',
- 'border-brown' : borderColor =='brown',
- 'border-purple' : borderColor =='purple',
- 'padding' : padding,
- 'border-dotted' : borderDotted
-  }" >
-  <span *ngIf="closable" class="box-close">
-  <amexio-layout-icon key="tab_close" (onClick)="closeBox($event)"></amexio-layout-icon>
-  </span>
-   <ng-content></ng-content>
-
- </div>
- `,
+ templateUrl: './box.component.html',
 })
 
 export class AmexioBoxComponent implements OnInit {

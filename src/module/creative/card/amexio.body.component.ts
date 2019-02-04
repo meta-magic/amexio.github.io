@@ -13,19 +13,26 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 *
-* Created by pratik on 18/12/17.
+*  Created by sagar on 4/02/2019.
 */
-
-import {Component, OnInit} from '@angular/core';
+import { Component, HostBinding, Input } from '@angular/core';
 
 @Component({
-  selector: 'amexio-action', template: '<ng-content></ng-content>',
+    selector : 'amexio-body-ce',
+    templateUrl : './amexio.body.component.html',
 })
+export class AmexioCardCEBodyComponent {
 
-export class AmexioFooterComponent implements OnInit {
-  constructor() {
-  }
+    @HostBinding('attr.class') cardclass = 'card-container-body';
 
-  ngOnInit() {
-  }
+    @Input('align') align = '';
+
+    // tslint:disable-next-line:no-input-rename
+    @Input('bg-image') bgimage: string ;
+
+    @Input('color') color: string;
+
+    @Input('background') background: string;
+
+    @Input('height') height: string;
 }

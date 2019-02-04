@@ -43,6 +43,7 @@ import {CommonDataService} from '../services/data/common.data.service';
 import {DeviceQueryService} from '../services/device/device.query.service';
 import {IconLoaderService} from '../services/icon/icon.service';
 
+import { AmexioCreativeModule } from './../creative/amexio.creative.module';
 import {AmexioGridLayoutService} from './gridlayout/amexiogridlayoutservice.service';
 
 export * from './accordion/accordion.header.component';
@@ -84,6 +85,7 @@ const LAYOUT_COMPONENTS = [
     FormsModule,
     HttpClientModule,
     AmexioBaseContextMenuModule,
+    AmexioCreativeModule,
   ],
   exports: LAYOUT_COMPONENTS,
   declarations: LAYOUT_COMPONENTS,

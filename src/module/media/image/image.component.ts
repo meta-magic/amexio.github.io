@@ -180,8 +180,71 @@ description : Description to display on hover
 */
   @Input('para') titlePara: string;
 
+   /*
+Properties
+name : position-top
+datatype :  string
+version : 4.1.9 onwards
+default :
+description :sets top attribute  to image
+*/
+  @Input('position-top') top: string;
+
+     /*
+Properties
+name : position-bottom
+datatype :  string
+version : 4.1.9 onwards
+default :
+description :sets bottom attribute  to image
+*/
+  @Input('position-bottom') bottom: string;
+
+       /*
+Properties
+name : position-left
+datatype :  string
+version : 4.1.9 onwards
+default :
+description :sets left attribute  to image
+*/
+  @Input('position-left') left: string;
+
+         /*
+Properties
+name : position-right
+datatype :  string
+version : 4.1.9 onwards
+default :
+description :sets right attribute  to image
+*/
+  @Input('position-right') right: string;
+
+           /*
+Properties
+name :absolute
+datatype :  string
+version : 4.1.9 onwards
+default :
+description :sets absolute attribute  to image
+*/
+  @Input('absolute') absolute = false;
+
+           /*
+Properties
+name :relative
+datatype :  string
+version : 4.1.9 onwards
+default :
+description :sets relative attribute  to image
+*/
+
+@Input('relative') relative = false;
+
   overlay = false;
+  absoluteposition = false;
   overlayTextClass: string;
+  imagepositionclass: string;
 
   private imageCss = ' image-';
 
@@ -232,5 +295,21 @@ description : Description to display on hover
       }
     }
   }
+  addimageCSSClass(): any {
+    if (this.top || this.bottom || this.right || this.left) {
+      this.absoluteposition = true;
+    }
+    this.imagepositionclass = '';
+    if (this.relative && !this.absolute) {
+      this.imagepositionclass = ' img-relative ';
+      this.top = '';
+      this.left = '';
+      this.right = '';
+      this.bottom = '';
+    } else if (this.absolute) {
+      this.imagepositionclass = 'img-absolute ';
+    }
 
+    return this.imagepositionclass;
+  }
 }

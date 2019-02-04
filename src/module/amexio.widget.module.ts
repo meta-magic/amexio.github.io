@@ -13,6 +13,7 @@ import {DeviceQueryService} from './services/device/device.query.service';
 import {IconLoaderService} from './services/icon/icon.service';
 
 import { AmexioTabPillComponent } from '../index';
+import { AmexioCreativeModule } from './creative/amexio.creative.module';
 
 export * from './services/data/common.data.service';
 export * from './services/device/device.query.service';
@@ -36,6 +37,7 @@ export * from '../models/time.util';
     AmexioMediaModule,
     AmexioPaneModule,
     HttpClientModule,
+    AmexioCreativeModule,
     AmexioBaseContextMenuModule,
   ],
   entryComponents: [AmexioTabPillComponent],
@@ -47,6 +49,7 @@ export * from '../models/time.util';
     AmexioMediaModule,
     AmexioPaneModule,
     AmexioBaseContextMenuModule,
+    AmexioCreativeModule,
   ],
   declarations: [],
   providers: [CommonDataService, DeviceQueryService, IconLoaderService],

@@ -2,26 +2,48 @@
     Component Name : Border Layout
     Version : Amexio v4.0 onwards
 *****************************************************************************/
+
 @import "component/borderlayout-vars.scss";
+
 /** borderlayout - Visual CSS **/
+
 @import "component/borderlayout-visual.scss";
+
 /** borderlayout - Structure CSS **/
+
 @import "component/borderlayout-structure.scss";
+
 /****************************************************************************
     Component Name : Row Column
     Version : Amexio v4.0 onwards
 *****************************************************************************/
-@import "component/rowcol-vars.scss";
-/** rowcol - Visual CSS **/
-@import "component/rowcol-visual.scss";
-/** rowcol - Structure CSS **/
-@import "component/rowcol-structure.scss";
 
+@import "component/rowcol-vars.scss";
+
+/** rowcol - Visual CSS **/
+
+@import "component/rowcol-visual.scss";
+
+/** rowcol - Structure CSS **/
+
+@import "component/rowcol-structure.scss";
 
 /****************************************************************************
     Component Name : Layout
     Version : Amexio v5.4 onwards
 *****************************************************************************/
 
+
 /** rowcol - Structure CSS **/
+
 @import "component/layout-structure.scss";
+
+/****************************************************************************
+    Component Name : Creative
+    Version : Amexio v5.5.5 onwards
+*****************************************************************************/
+
+
+/** rowcol - Structure CSS **/
+
+@import "component/cardce-visual.scss";

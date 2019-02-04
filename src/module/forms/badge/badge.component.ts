@@ -8,7 +8,7 @@ export class AmexioBadgeComponent implements OnInit {
 
     @Input('absolute') absolute: boolean;
 
-    @Input('bg-color') bgcolor: string;
+    @Input('background') background: string;
 
     @Input('color') color: string;
 
@@ -26,9 +26,14 @@ export class AmexioBadgeComponent implements OnInit {
 
     @Input('width') width: string;
 
+    cClass = '';
+
     constructor() {
     }
 
     ngOnInit() {
+      if (!this.color && !this.background) {
+        this.cClass = 'amexio-badge-color';
+      }
     }
 }

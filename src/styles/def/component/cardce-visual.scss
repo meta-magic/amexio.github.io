@@ -1,0 +1,109 @@
+.card-container-ce {
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: 0;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
+    height: 100%;
+}
+
+.card-container-ce-bg-color {
+    background-color: #fff;
+}
+
+.card-container-ce-color {
+    color: #121212;
+}
+
+.card-container-header {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+}
+
+.card-container-header .card-container-header-div {
+    height: auto;
+}
+
+.card-container-header>* {
+    padding-right: 10px;
+    margin-top: 0px;
+}
+
+.card-container-body {
+    padding: 10px;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 400;
+    flex-grow: 1;
+    position: relative;
+}
+
+.card-container-footer {
+    padding: 10px;
+    text-transform: capitalize;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.card-container-footer>* {
+    padding-right: 10px;
+    margin-top: 0px;
+}
+
+.card-action-border {
+    border-top: 1px solid rgba(0, 0, 0, .1)
+}
+
+.card-header-border {
+    border-bottom: 1px solid rgba(0, 0, 0, .1)
+}
+
+
+/* ONLY WIDER ACTION */
+
+.card-container-wider-action {
+    margin: 0px 10px;
+}
+
+.card-container-wider-action amexio-action-ce {
+    margin: 0px -10px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
+}
+
+
+/* ONLY NARROWER ACTION */
+
+.card-container-narrower-action {
+    margin: 10px 10px;
+}
+
+.card-container-narrower-action amexio-action-ce {
+    margin: -10px 10px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
+}
+
+
+/* ONLY WIDER HEADER */
+
+.card-container-wider-header {
+    margin: 0px 10px;
+}
+
+.card-container-wider-header amexio-header-ce {
+    margin: 0px -10px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
+}
+
+.card-container-narrower-header {
+    margin: 10px 10px;
+}
+
+.card-container-narrower-header amexio-header-ce {
+    margin: -10px 10px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
+}

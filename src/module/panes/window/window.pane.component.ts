@@ -1,22 +1,12 @@
-/*
-* Copyright [2019] [Metamagic]
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* Created by ketangote on 12/18/17.
-*/
+/**
+ * Created by ketangote on 12/18/17.
+ */
 
-import { animate, state, style, transition, trigger } from '@angular/animations';
+/*
+ Component Name : Amexio Window
+ Component Selector : <amexio-window>
+ Component Description:  Window Pane component is a customizable Modal Pane in which user can enter custom content
+ */
 import {
   Component, ContentChildren, ElementRef, EventEmitter, HostListener,
   Input, OnChanges, OnDestroy, OnInit, Output, QueryList, Renderer2, SimpleChanges, ViewChild,
@@ -28,19 +18,6 @@ export enum KEY_CODE_window {
 @Component({
   selector: 'amexio-window',
   templateUrl: './window.pane.component.html',
-  animations: [
-    trigger('animation', [
-      state('void', style({
-        transform: 'translate3d(0, 25%, 0) scale(0.9)',
-        opacity: 0,
-      })),
-      state('visible', style({
-        transform: 'none',
-        opacity: 1,
-      })),
-      transition('* => *', animate('400ms cubic-bezier(0.25, 0.8, 0.25, 1)')),
-    ]),
-  ],
 })
 export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy {
   /*
@@ -83,16 +60,6 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy {
    description : Takes top position in percentage or pixel
    */
   @Input('position-top') top: string;
-  /*
-  Properties
-  name : top
-  datatype : none
-  version : 5.2 onwards
-  default : none
-  description : Takes top height to window in percentage or pixel
-  */
-  @Input('top') windowTop: string;
-
   /*
    Properties
    name : position-bottom
@@ -304,9 +271,7 @@ description : Context Menu provides the list of menus on right click.
     if (this.show && this.closeonescape) {
       this.globalListenFunc = this.renderer.listen('document', 'keyup.esc', (e: any) => {
         this.showWindow = false;
-        this.show = false;
         this.showChange.emit(false);
-        this.close.emit(this.showWindow);
       });
     } else if (this.globalListenFunc) {
       this.globalListenFunc();
