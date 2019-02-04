@@ -38,7 +38,7 @@ export class AmexioCardCEComponent implements OnInit , AfterContentInit {
 
     @Input('style-type') styleType: string;
 
-    private cclass: string;
+    cclass: string;
 
     @ContentChildren(AmexioCardCEHeaderComponent) AmexioCardCEHeaderQueryList: QueryList<AmexioCardCEHeaderComponent>;
 
