@@ -215,6 +215,10 @@ description : Provides Tooltip for button.
     this.positionclass = '';
     if (this.relative && !this.absolute) {
       this.positionclass = ' floatingbutton-relative ';
+      this.top = '';
+      this.left = '';
+      this.right = '';
+      this.bottom = '';
     } else if (this.absolute) {
       this.positionclass = 'floatingbutton-absolute ';
     } else {
