@@ -21,8 +21,8 @@ import {
   AfterContentInit, Component, ContentChildren, ElementRef, EventEmitter, Input, OnChanges, OnDestroy,
   OnInit, Output, QueryList, Renderer2, SimpleChanges, ViewChild,
 } from '@angular/core';
-import { AmexioBodyComponent } from '../body/pane.action.body';
 import { AmexioFooterComponent } from '../action/pane.action.footer';
+import { AmexioBodyComponent } from '../body/pane.action.body';
 import { AmexioHeaderComponent } from '../header/pane.action.header';
 @Component({
   selector: 'amexio-window',
