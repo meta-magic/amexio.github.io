@@ -234,6 +234,8 @@ description : On field focus event
 
   filteredResult: any;
 
+ componentId: string;
+
   @ViewChild('inp') inpHandle: any;
 
   @ViewChild('tagDropRef') tagDropRef: any;
@@ -252,6 +254,7 @@ description : On field focus event
   }
 
   ngOnInit() {
+    this.componentId = this.createCompId('taginput', this.displayfield);
     if (this.placeholder === '' || this.placeholder === null) {
       this.placeholder = 'Choose Option';
     }
@@ -273,6 +276,24 @@ description : On field focus event
   }
 
   navigateKey(event: any) {
+  }
+  focusToLastElement(event: any) {
+    this.filteredResult[this.selectedindex].selected = false;
+    this.selectedindex = this.filteredResult.length - 1;
+    this.filteredResult[this.filteredResult.length - 1].selected = true;
+    this.setAriaActiveDescendant(this.selectedindex);
+    this.setScrollToList(this.selectedindex);
+  }
+  focusToFirstElement(event: any) {
+    this.filteredResult[this.selectedindex].selected = false;
+    this.selectedindex = 0;
+    this.filteredResult[0].selected = true;
+    this.setAriaActiveDescendant(this.selectedindex);
+    this.setScrollToList(this.selectedindex);
+  }
+  closeOnEScapeList(event: any) {
+    this.showToolTip = false;
+    this.hide();
   }
 
   onKeyUp(event: any) {
@@ -305,9 +326,9 @@ description : On field focus event
       this.keyUpDownMethod(event);
     }
     if (event.keyCode === 13 && this.filteredResult[this.selectedindex]) {
-      this.onItemSelect(this.filteredResult[this.selectedindex] , this.selectedindex);
+      this.onItemSelect(this.filteredResult[this.selectedindex], this.selectedindex);
     }
-
+    this.setScrollToList(this.selectedindex);
   }
   // Method when up arrow or down arrow is pressed
 
@@ -324,15 +345,13 @@ description : On field focus event
     }
     if (this.filteredResult[this.selectedindex]) {
       this.filteredResult[this.selectedindex].selected = true;
+      this.setAriaActiveDescendant(this.selectedindex);
     }
     if (this.filteredResult[prevselectedindex]) {
       this.filteredResult[prevselectedindex].selected = false;
       this.toNavigateFirstAndLastOption();
     }
-    const listitems = this.element.nativeElement.getElementsByClassName('list-items')[this.selectedindex];
-    if (listitems) {
-      listitems.scrollIntoView({ behavior: 'smooth' });
-    }
+
   }
   toNavigateFirstAndLastOption() {
     if (this.selectedindex === -1) {
@@ -341,6 +360,22 @@ description : On field focus event
     } else if (this.selectedindex === this.filteredResult.length) {
       this.selectedindex = 0;
       this.filteredResult[this.selectedindex].selected = true;
+    }
+    this.setAriaActiveDescendant(this.selectedindex);
+  }
+  setAriaActiveDescendant(rowindex: any) {
+    if (this.filteredResult.length > 0) {
+      const inputid = document.getElementById(this.componentId);
+      inputid.setAttribute('aria-activedescendant', this.filteredResult[rowindex].index);
+    } else if (this.displayValue.length < 1) {
+      const inputid = document.getElementById(this.componentId);
+      inputid.setAttribute('aria-activedescendant', 'listitem');
+    }
+  }
+  setScrollToList(rowindex: any) {
+    const listitems = this.element.nativeElement.getElementsByClassName('list-items')[rowindex];
+    if (listitems) {
+      listitems.scrollIntoView({ behavior: 'smooth' });
     }
   }
   showAllData(activerow: number) {
@@ -371,15 +406,17 @@ description : On field focus event
     this.showToolTip = false;
   }
   onInput(input: any) {
+    this.filteredResult[this.selectedindex].selected = false;
+    this.selectedindex = -1;
     this.input.emit();
   }
 
   onFocus(elem: any) {
     this.inpHandle.nativeElement.placeholder = '';
-    this.showToolTip = true;
     this.onBaseFocusEvent({});
     this.posixUp = this.getListPosition(elem);
     this.focus.emit(this.value);
+
   }
 
   getListPosition(elementRef: any): boolean {
@@ -407,9 +444,14 @@ description : On field focus event
     }
 
     this.viewData = responsedata;
+    this.generateIndex(this.viewData);
     this.maskloader = false;
   }
-
+  generateIndex(data: any) {
+    data.forEach((element: any, index: number) => {
+      element['index'] = this.componentId + 'listitem' + index;
+    });
+  }
   setValue(value: any, ref: any, index: any) {
     this.inpHandle.nativeElement.value = '';
     this.onSelections.push(value);
@@ -421,7 +463,7 @@ description : On field focus event
     this.filteredResult[index].selected = false;
     this.selectedindex = -1;
     this.showToolTip = false;
-   }
+  }
 
   removePill(item: any) {
     let indexToRemove: number = null;
