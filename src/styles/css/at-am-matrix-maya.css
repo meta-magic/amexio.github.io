@@ -2479,6 +2479,12 @@ input:checked + .toggle-slider:before {
   left: 50%;
   transform: translate(-50%, -50%); }
 
+.img-relative {
+  position: relative; }
+
+.img-absolute {
+  position: absolute; }
+
 /****************************************************************************
     Component Name : Float Button
     Version : Amexio v4.1 onwards

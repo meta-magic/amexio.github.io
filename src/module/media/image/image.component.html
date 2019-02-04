@@ -1,6 +1,6 @@
 <!--Normal image-->
 <ng-container *ngIf="iconclass && (!path && !mda) && overlay || overlayText || titlePara || imgTitle ">
-<div class="img-container">
+<div class="img-container" [ngClass]="addimageCSSClass()"  [ngStyle]="{'top':top,'bottom':bottom,'left':left,'right':right} ">
   <ng-container *ngIf="path || (path && iconclass)">
     <ng-container *ngIf="!(width || height)">
       <img alt="title" [src]="path" [attr.class]="cclass" (click)="onImageClick($event)" [attr.title]="tooltip">
