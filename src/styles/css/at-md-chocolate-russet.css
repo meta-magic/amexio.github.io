@@ -6055,7 +6055,7 @@ fieldset {
   color: #050300; }
 
 /** window - Structure CSS **/
-.root-window {
+.root-window-model {
   background: rgba(128, 127, 127, 0.6);
   height: 100%;
   width: 100%;
