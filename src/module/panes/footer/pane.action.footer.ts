@@ -16,16 +16,51 @@
 * Created by pratik on 18/12/17.
 */
 
-import {Component, OnInit} from '@angular/core';
+import { Component, HostBinding, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'amexio-action', template: '<ng-content></ng-content>',
+  selector: 'amexio-action', template: `
+    <ng-container *ngIf="footer">
+      <ng-content></ng-content>
+    </ng-container>
+  `,
 })
 
 export class AmexioFooterComponent implements OnInit {
+  @HostBinding('attr.class') className = 'modal-window-footer';
+
+  @Input('footer-align') footeralign: string;
+
+  @HostBinding('style.justify-content') alignClass: string;
+
+  footer = false;
+
   constructor() {
   }
 
   ngOnInit() {
+    this.setFooterAlignment(this.footeralign);
+
+  }
+
+  public setFooterAlignment(footeralign: string) {
+    switch (footeralign) {
+      case 'right': {
+        this.alignClass = 'flex-end';
+        break;
+      }
+      case 'center': {
+        this.alignClass = 'center';
+        break;
+      }
+      case 'left': {
+        this.alignClass = 'flex-start';
+        break;
+      }
+      default: {
+        this.alignClass = '';
+        break;
+      }
+    }
   }
 }

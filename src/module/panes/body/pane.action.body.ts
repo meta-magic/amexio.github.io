@@ -16,13 +16,14 @@
 * Created by pratik on 18/12/17.
 */
 
-import { AfterContentInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, HostBinding, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'amexio-body', template: '<ng-content></ng-content>',
-})
+  selector: 'amexio-body', template: `
+      <ng-content></ng-content>
+  `})
 
-export class AmexioBodyComponent implements OnInit, AfterContentInit {
+export class AmexioBodyComponent implements OnInit {
   /*
  Properties
  name :padding
@@ -31,17 +32,16 @@ export class AmexioBodyComponent implements OnInit, AfterContentInit {
  default : left
  description : padding for body.
  */
-  @Input() padding: string;
+  @HostBinding('style.height') height: string;
+  @HostBinding('attr.class') className = 'window-middle';
 
-  @Output() init: any = new EventEmitter<any>();
+  @Input('body-height') bodyHeight: number;
+  @Input() padding: string;
 
   constructor() {
   }
 
   ngOnInit() {
+    this.height = this.bodyHeight + '%';
   }
-
-  ngAfterContentInit() {
-  }
-
 }

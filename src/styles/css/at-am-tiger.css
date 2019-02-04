@@ -6214,113 +6214,62 @@ fieldset {
 
 /** window - Structure CSS **/
 .root-window {
-  flex-direction: column;
-  position: fixed;
-  /* Stay in place */
-  z-index: 3;
-  /* Sit on top */
-  width: 100%;
-  height: 100%; }
-
-.modal-window-lg {
-  flex-direction: column;
-  height: 100%; }
-
-.modal-window-content {
-  position: absolute;
-  margin: auto;
-  padding: 0px;
-  width: 80%;
-  border: 0px;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); }
-
-.modal-window-content > * {
-  padding: 10px;
-  min-height: auto !important; }
-
-.modal-window-content-max {
-  width: 100%;
+  background: rgba(128, 127, 127, 0.6);
   height: 100%;
-  top: 0% !important;
-  left: 0% !important; }
-
-.window-material-design-header {
+  width: 100%;
+  position: fixed;
+  z-index: 3;
   display: flex;
-  border-bottom: 2px solid #E84C1A;
-  font-weight: 300;
-  font-size: 20px;
-  text-transform: capitalize; }
+  flex-direction: row;
+  justify-content: center;
+  top: 0; }
+
+.root-window-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 96%;
+  margin-top: 1%; }
+
+.root-window-content > * {
+  padding: 10px 16px !important; }
+
+.amexio-layout-columns-height {
+  height: unset !important; }
+
+@media only screen and (max-width: 600px) {
+  .root-window-content {
+    width: 100%; } }
+.window-middle {
+  line-height: 24px;
+  font-weight: 400;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: white;
+  max-height: 100%; }
+
+.window-middle::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); }
+
+.window-middle::-webkit-scrollbar {
+  width: 6px; }
 
 .modal-window-header {
   display: flex;
+  font-size: 20px;
   font-weight: 300;
   text-transform: capitalize; }
 
-.modal-window-middle {
-  line-height: 24px;
-  font-weight: 400;
-  padding-left: 16px;
-  padding-right: 16px;
-  height: 80%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  background-color: white; }
-
-.modal-window-middle::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); }
-
-.modal-window-middle::-webkit-scrollbar {
-  width: 6px; }
-
-.window-material-design-footer {
-  display: flex;
-  border-top: 1px solid #eceeef;
-  padding-right: 16px;
-  background-color: white; }
-
 .modal-window-footer {
-  display: flex;
-  border-top: 2px solid #E84C1A; }
+  display: flex; }
 
-.modal-window-table {
-  display: table;
-  width: 100%; }
+.model-maximize {
+  width: 100%;
+  height: 100%;
+  top: 0; }
 
-.modal-window-table .tablerow {
-  display: table-row; }
-
-.window-material-design-header .modal-window-table .tablerow .tablecol {
-  display: table-cell;
-  vertical-align: middle;
-  padding-bottom: 15px; }
-
-.modal-window-table .tablerow .tablecol {
-  display: table-cell;
-  vertical-align: baseline; }
-
-.modal-window-footer-max {
-  bottom: 0px;
-  position: absolute;
-  width: 99%; }
-
-.footer-right-align {
-  padding-right: 7px; }
-
-.window-left {
-  left: 20px; }
-
-.window-right {
-  right: 7px; }
-
-.window-top {
-  top: 10px; }
-
-.window-center {
-  top: 20%;
-  left: 10%; }
-
-.window-bottom {
-  bottom: 10%; }
+.content-max-height .window-middle {
+  height: 100%; }
 
 /****************************************************************************
     Component Name : Dialogue
