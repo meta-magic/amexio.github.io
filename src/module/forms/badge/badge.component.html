@@ -1,0 +1,16 @@
+<div class="amexio-badge" 
+
+    [style.background-color]="bgcolor"
+    [style.color]="color" 
+    [style.top]="top" 
+    [style.left]="left" 
+    [style.right]="right" 
+    [style.bottom]="bottom" 
+    [style.height]="height" 
+    [style.width]="width" 
+    [ngStyle]="{'position': absolute ? 'absolute' : 'relative', 
+                'flex-direction': (orientation === 'horizontal') ? 'row' : 'column'
+                }">
+
+    <ng-content></ng-content>
+</div>

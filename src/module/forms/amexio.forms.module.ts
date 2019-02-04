@@ -54,6 +54,7 @@ import { CommonDataService } from '../services/data/common.data.service';
 import { IconLoaderService } from '../services/icon/icon.service';
 
 import { ScriptLoadService } from '../services/script/script.load.service';
+import { AmexioBadgeComponent } from './badge/badge.component';
 import { LoadRecaptchaService } from './recaptcha/load.recaptcha.service';
 import { FacebookAuthComponent } from './socialmedia/facebookauth/facebook.auth.component';
 import { GoogleAuthComponent } from './socialmedia/googleauth/google.auth.component';
@@ -115,6 +116,7 @@ const FORM_COMPONENTS = [
   LinkedInAuthComponent,
   FacebookAuthComponent,
   AmexioSocialComponent,
+  AmexioBadgeComponent,
 ];
 
 @NgModule({
