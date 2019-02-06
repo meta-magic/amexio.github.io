@@ -29,6 +29,8 @@ import {AmexioSideNavComponent} from './sidenav/sidenav.component';
 import {AmexioSideNavInnerNodeComponent} from './sidenav/sidenavinnernode.component';
 import {SideNavNodeComponent} from './sidenav/sidenavnode.component';
 
+import { AmexioCommonModule } from '../base/amexio.common.module';
+
 export * from '../services/data/common.data.service';
 export * from '../services/device/device.query.service';
 export * from './sidenav/sidenav.component';
@@ -63,6 +65,7 @@ const NAV_COMPONENTS = [
     AmexioLayoutModule,
     AmexioFormsModule,
     HttpClientModule,
+    AmexioCommonModule,
   ],
   exports: NAV_COMPONENTS,
   declarations: NAV_COMPONENTS,

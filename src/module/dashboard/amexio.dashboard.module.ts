@@ -15,6 +15,8 @@ import {GaugeChartComponent} from './gaugechart/gauge.chart.component';
 import {CommonDataService} from '../services/data/common.data.service';
 import {DashboardLoaderService} from './chart.loader.service';
 
+import { AmexioCommonModule } from '../base/amexio.common.module';
+
 export * from './chart.loader.service';
 export * from './dashboardtitle/dashboard.title.component';
 export * from './datapoints/center.component';
@@ -42,6 +44,7 @@ const DASHBOARD = [
     CommonModule,
     FormsModule,
     HttpClientModule,
+    AmexioCommonModule,
   ],
   exports: DASHBOARD,
   declarations: DASHBOARD,

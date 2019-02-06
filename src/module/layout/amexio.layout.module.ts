@@ -46,6 +46,8 @@ import {IconLoaderService} from '../services/icon/icon.service';
 import { AmexioCreativeModule } from './../creative/amexio.creative.module';
 import {AmexioGridLayoutService} from './gridlayout/amexiogridlayoutservice.service';
 
+import { AmexioCommonModule } from '../base/amexio.common.module';
+
 export * from './accordion/accordion.header.component';
 export * from './accordion/accordion.pane';
 export * from './accordion/accordion.component';
@@ -86,6 +88,7 @@ const LAYOUT_COMPONENTS = [
     HttpClientModule,
     AmexioBaseContextMenuModule,
     AmexioCreativeModule,
+    AmexioCommonModule,
   ],
   exports: LAYOUT_COMPONENTS,
   declarations: LAYOUT_COMPONENTS,

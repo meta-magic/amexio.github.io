@@ -26,6 +26,8 @@ import { VerticalAxisComponent } from './verticalaxis/chart.verticalaxis.compone
 import { CommonDataService } from '../services/data/common.data.service';
 import { ChartLoaderService } from './chart.loader.service';
 
+import { AmexioCommonModule } from '../base/amexio.common.module';
+
 export * from './areachart/area.chart.component';
 export * from './barchart/bar.chart.component';
 export * from './bubblechart/bubble.chart.component';
@@ -65,6 +67,7 @@ const CHART_COMPONENTS = [
     CommonModule,
     FormsModule,
     HttpClientModule,
+    AmexioCommonModule,
   ],
   exports: CHART_COMPONENTS,
   declarations: CHART_COMPONENTS,

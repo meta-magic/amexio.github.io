@@ -16,6 +16,8 @@ import {DeviceQueryService} from '../services/device/device.query.service';
 import {AmexioWeekDayAvailiblityComponent} from './amexio-ee-appointment/amexio-ee-appointment.component';
 import {AmexioYoutubePlayerComponent} from './youtube-player/youtube.player.component';
 
+import { AmexioCommonModule } from '../base/amexio.common.module';
+
 export * from './ee-carousel/ee.carousel.component';
 export * from './ee-content/ee.content';
 export * from '../services/data/common.data.service';
@@ -35,6 +37,7 @@ const ENTERPRISE_COMPONENTS = [
     CommonModule,
     FormsModule,
     AmexioFormsModule,
+    AmexioCommonModule,
     HttpClientModule,
   ],
   exports: ENTERPRISE_COMPONENTS,

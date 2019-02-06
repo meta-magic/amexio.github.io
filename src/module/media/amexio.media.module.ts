@@ -13,6 +13,8 @@ import {CommonDataService} from '../services/data/common.data.service';
 import {DeviceQueryService} from '../services/device/device.query.service';
 import {IconLoaderService} from '../services/icon/icon.service';
 
+import { AmexioCommonModule } from '../base/amexio.common.module';
+
 export * from './video-player/video.player.component';
 const MEDIA_COMPONENTS = [
   AmexioVideoPlayerComponent,
@@ -24,6 +26,7 @@ const MEDIA_COMPONENTS = [
     CommonModule,
     FormsModule,
     HttpClientModule,
+    AmexioCommonModule,
   ],
   exports: MEDIA_COMPONENTS,
   declarations: MEDIA_COMPONENTS,

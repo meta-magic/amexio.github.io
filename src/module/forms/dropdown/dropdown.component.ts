@@ -18,7 +18,9 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
 import { EventBaseComponent } from '../../base/event.base.component';
+
 import { CommonDataService } from '../../services/data/common.data.service';
+import { DisplayFieldService } from '../../services/data/display.field.service';
 @Component({
   selector: 'amexio-dropdown',
   templateUrl: './dropdown.component.html',
@@ -320,7 +322,8 @@ description : Set enable / disable popover.
   @Output() isComponentValid: any = new EventEmitter<any>();
   @Input('name') name: string;
   constructor(
-    public dataService: CommonDataService, public element: ElementRef, public renderer: Renderer2, _cd: ChangeDetectorRef,
+    public dataService: CommonDataService, private displayFieldService: DisplayFieldService, public element: ElementRef,
+    public renderer: Renderer2, _cd: ChangeDetectorRef,
   ) {
     super(renderer, element, _cd);
 
@@ -384,17 +387,19 @@ description : Set enable / disable popover.
   }
 
   sortDataAscending(data: any) {
-    this.viewData = data.sort((a: any, b: any) => a[this.displayfield].toLowerCase()
-      !== b[this.displayfield].toLowerCase() ?
-      a[this.displayfield].toLowerCase() < b[this.displayfield].toLowerCase() ? -1 : 1 : 0);
+    this.viewData = data.sort((a: any, b: any) => this.displayFieldService.findValue(this.displayfield, a).toLowerCase()
+      !== this.displayFieldService.findValue(this.displayfield, b).toLowerCase() ?
+      this.displayFieldService.findValue(this.displayfield, a).toLowerCase() <
+      this.displayFieldService.findValue(this.displayfield, b).toLowerCase() ? -1 : 1 : 0);
     this.filteredOptions = this.viewData;
     this.generateIndex(this.filteredOptions);
 
   }
   sortDataDescending(data: any) {
-    this.viewData = data.sort((a: any, b: any) => a[this.displayfield].toLowerCase()
-      !== b[this.displayfield].toLowerCase() ?
-      a[this.displayfield].toLowerCase() > b[this.displayfield].toLowerCase() ? -1 : 1 : 0);
+    this.viewData = data.sort((a: any, b: any) => this.displayFieldService.findValue(this.displayfield, a).toLowerCase()
+      !== this.displayFieldService.findValue(this.displayfield, b).toLowerCase() ?
+      this.displayFieldService.findValue(this.displayfield, a).toLowerCase() >
+      this.displayFieldService.findValue(this.displayfield, b).toLowerCase() ? -1 : 1 : 0);
     this.filteredOptions = this.viewData;
     this.generateIndex(this.filteredOptions);
   }
@@ -415,7 +420,8 @@ description : Set enable / disable popover.
             optionsChecked.push(row[this.valuefield]);
             this.multiselectValues.push(row);
             preSelectedMultiValues === '' ? preSelectedMultiValues +=
-              row[this.displayfield] : preSelectedMultiValues += ',' + row[this.displayfield];
+            this.displayFieldService.findValue(this.displayfield, row) : preSelectedMultiValues += ', ' +
+            this.displayFieldService.findValue(this.displayfield, row);
           }
         } else {
           row['checked'] = false;
@@ -463,7 +469,7 @@ description : Set enable / disable popover.
       }
     } else {
       this.value = selectedItem[this.valuefield];  // Issue here?
-      this.displayValue = selectedItem[this.displayfield];
+      this.displayValue = this.displayFieldService.findValue(this.displayfield, selectedItem);
       this.multiselect ? this.showToolTip = true : this.showToolTip = false;
       this.onSingleSelect.emit(selectedItem);
     }
@@ -496,7 +502,7 @@ description : Set enable / disable popover.
         this.displayValue = '';
         this.filteredOptions.forEach((test) => {
           if (test[this.valuefield] === this.innerValue) {
-            this.displayValue = test[this.displayfield];
+            this.displayValue = this.displayFieldService.findValue(this.displayfield, test);
           }
         });
         this.displayValue = this.displayValue === undefined ? '' : this.displayValue;
@@ -508,7 +514,8 @@ description : Set enable / disable popover.
     let multiselectDisplayString: any = '';
     this.multiselectValues.forEach((row: any) => {
       multiselectDisplayString === '' ? multiselectDisplayString +=
-        row[this.displayfield] : multiselectDisplayString += ',' + row[this.displayfield];
+      this.displayFieldService.findValue(this.displayfield, row) : multiselectDisplayString += ', '
+      + this.displayFieldService.findValue(this.displayfield, row);
     });
     if (this.multiselectValues.length > 0) {
       return multiselectDisplayString;
@@ -570,7 +577,7 @@ description : Set enable / disable popover.
         this.filteredOptions = [];
         const search_Term = keyword.toLowerCase();
         this.viewData.forEach((row: any) => {
-          if (row[this.displayfield].toLowerCase().startsWith(search_Term)) {
+          if (this.displayFieldService.findValue(this.displayfield, row).toLowerCase().startsWith(search_Term)) {
             this.filteredOptions.push(row);
           }
         });
@@ -655,7 +662,7 @@ description : Set enable / disable popover.
       this.filteredOptions.length === 1) {
       const fvalue = event.target.value;
       const row = this.filteredOptions[0];
-      const rvalue = row[this.displayfield];
+      const rvalue = this.displayFieldService.findValue(this.displayfield, row);
       if (fvalue && rvalue && (fvalue.toLowerCase() === rvalue.toLowerCase())) {
         this.onItemSelect(row);
       }
@@ -696,7 +703,7 @@ description : Set enable / disable popover.
         this.viewData.forEach((item: any) => {
           if (item[this.valuefield] === value) {
             this.isValid = true;
-            this.displayValue = item[this.displayfield];
+            this.displayValue = this.displayFieldService.findValue(this.displayfield, item);
             status = true;
             return;
           }

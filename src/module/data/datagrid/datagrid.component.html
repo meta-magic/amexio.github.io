@@ -3,8 +3,7 @@
         <span> {{title}} </span>
         <span class="dataheaderFilter" class="float-right" style="padding-bottom:1.1%">
             <ng-content select="amexio-datagrid-header"></ng-content>
-            <span *ngIf="enablecolumnfilter ? true:false" class="float-right" (click)="onEnableColumnClick($event)"
-                style=" cursor: pointer;">
+            <span *ngIf="enablecolumnfilter ? true:false" class="float-right" (click)="onEnableColumnClick($event)" style=" cursor: pointer;">
                 &nbsp;
                 <span *ngIf="!show">&#9776;</span>
                 <span *ngIf="show">&#9747;</span>
@@ -37,7 +36,7 @@
                 <ng-container *ngFor="let cols of columns">
                     <ng-container *ngIf="!cols.hidden">
                         <div class="datatable-col col-group" [style.width.%]="cols.width">
-                            <data-grid-filter (onFilterClick)="getFilterClick($event)"  [column]="cols" (filterObject)="getFilteredData($event)">
+                            <data-grid-filter (onFilterClick)="getFilterClick($event)" [column]="cols" (filterObject)="getFilteredData($event)">
                             </data-grid-filter>
                         </div>
                     </ng-container>
@@ -52,8 +51,7 @@
         <div class="datatable datatable-row">
             <ng-container class="datatable datatable-column">
                 <div class="inputgroup" style="padding-left: 1%; padding-right: 1%">
-                    <input type="text" [(ngModel)]="filterValue" (keyup)="keyUpSearch($event)" type="text" class="input-control"
-                        aria-label="Text input with dropdown button">
+                    <input type="text" [(ngModel)]="filterValue" (keyup)="keyUpSearch($event)" type="text" class="input-control" aria-label="Text input with dropdown button">
                     <span class="datatable-filter-icon">
                         <amexio-data-icon key="datagrid_filter" (click)="onFilterIconClick($event)"></amexio-data-icon>
                     </span>
@@ -73,29 +71,30 @@
     </ng-container>
 
     <ng-container *ngIf="enablecolumnfilter ? true : false">
-            <span *ngIf="showEnableColumnFilter" class="dropdown dropdown-right" [ngStyle]="{'top': globalfilter || enabledatafilter ? '10%':''}" style="width: 250px;">
-                <ul class="dropdown-list">
-                    <li class="list-items" *ngFor="let cols of columns;let i = index;" >
-                        <div>
-                            <input type="checkbox" [attr.checked]="!cols.hidden ? true: null" (click)="onColumnCheck(cols)" />
-                            <label>{{cols.text}}</label>
-                        </div>
-                    </li>
-                </ul>
-            </span>
-        </ng-container>
+        <span *ngIf="showEnableColumnFilter" class="dropdown dropdown-right" [ngStyle]="{'top': globalfilter || enabledatafilter ? '10%':''}"
+            style="width: 250px;">
+            <ul class="dropdown-list">
+                <li class="list-items" *ngFor="let cols of columns;let i = index;">
+                    <div>
+                        <input type="checkbox" [attr.checked]="!cols.hidden ? true: null" (click)="onColumnCheck(cols)" />
+                        <label>{{cols.text}}</label>
+                    </div>
+                </li>
+            </ul>
+        </span>
+    </ng-container>
 
     <ng-container *ngIf="groupby ? true : false">
-            <span *ngIf="showGroupByColumn" class="dropdown dropdown-right" style="width: 250px;">
-                <ul class="dropdown-list">
-                    <li class="list-items" *ngFor="let cols of columns;let i = index;" (click)="showGroupByColumn = !showGroupByColumn">
-                        <div (click)="setGroupByColumn(cols)">
-                            <label>{{cols.text}}</label>
-                        </div>
-                    </li>
-                </ul>
-            </span>
-        </ng-container>
+        <span *ngIf="showGroupByColumn" class="dropdown dropdown-right" style="width: 250px;">
+            <ul class="dropdown-list">
+                <li class="list-items" *ngFor="let cols of columns;let i = index;" (click)="showGroupByColumn = !showGroupByColumn">
+                    <div (click)="setGroupByColumn(cols)">
+                        <label>{{cols.text}}</label>
+                    </div>
+                </li>
+            </ul>
+        </span>
+    </ng-container>
 </div>
 
 <!--Checkbox datagrid with datatypes condition start-->
@@ -176,11 +175,8 @@
                             <div class="inputgroup">
                                 <div class="input-box">
                                     <div (click)="setSelectedRow(row, check)" [class]="checkBoxSelectClass" #check>
-                                        {{((checkBoxSelectClass == 'checkbox active') &&
-                                        (check.classList.value == 'checkbox active')) ||
-                                        ((checkBoxSelectClass
-                                        == 'checkbox default') && (check.classList.value == 'checkbox active')) ?
-                                        '&#10004;'
+                                        {{((checkBoxSelectClass == 'checkbox active') && (check.classList.value == 'checkbox active')) || ((checkBoxSelectClass ==
+                                        'checkbox default') && (check.classList.value == 'checkbox active')) ? '&#10004;'
                                         : ''}}
                                     </div>
                                 </div>
@@ -193,9 +189,9 @@
                             <ng-container *ngIf="cols.datatype=='number'">
                                 <div class="datatable-col" [style.width.%]="cols.width" scope="row" [attr.data-label]="cols.text">
                                     <span class="float-right">
-                                        <ng-container *ngIf="row[cols.dataindex]!= null;else elseBlock">
+                                        <ng-container *ngIf="row[cols.dataindex]!= '';else elseBlock">
                                             <div (contextmenu)="loadContextMenu($event,row, cols, id)">
-                                                {{row[cols.dataindex]}}
+                                                <amexio-display-field [data]="row" [data-index]="cols.dataindex"></amexio-display-field>
                                             </div>
                                         </ng-container>
                                         <ng-template #elseBlock>
@@ -207,9 +203,9 @@
                             </ng-container>
                             <ng-container *ngIf="!cols?.bodyTemplate && cols.datatype=='string'">
                                 <div class="datatable-col" [style.width.%]="cols.width" scope="row" [attr.data-label]="cols.text">
-                                    <ng-container *ngIf="row[cols.dataindex]!= null ;else elseBlock">
+                                    <ng-container *ngIf="row[cols.dataindex]!= '' ;else elseBlock">
                                         <div (contextmenu)="loadContextMenu($event,row, cols, id)">
-                                            {{row[cols.dataindex]}}
+                                            <amexio-display-field [data]="row" [data-index]="cols.dataindex"></amexio-display-field>
                                         </div>
                                     </ng-container>
                                     <ng-template #elseBlock>
@@ -282,11 +278,11 @@
                                 <div class="datatable-col" [style.width.%]="cols.width" [attr.data-label]="cols.text">
                                     <ng-container *ngIf="colIndex == 0">
                                         <span style="padding-left: 20px">
-                                            {{row[cols.dataindex]}}
+                                            <amexio-display-field [data]="row" [data-index]="cols.dataindex"></amexio-display-field>
                                         </span>
                                     </ng-container>
                                     <ng-container *ngIf="colIndex != 0">
-                                        {{row[cols.dataindex]}}
+                                        <amexio-display-field [data]="row" [data-index]="cols.dataindex"></amexio-display-field>
                                     </ng-container>
                                 </div>
                             </ng-container>
@@ -296,8 +292,8 @@
 
                                     <ng-container *ngIf="colIndex == 0">
                                         <span style="padding-left: 20px">
-                                            <ng-container *ngIf="row[cols.dataindex]!= null ;else elseBlock">
-                                                {{row[cols.dataindex]}}
+                                            <ng-container *ngIf="row[cols.dataindex]!= '' ;else elseBlock">
+                                                <amexio-display-field [data]="row" [data-index]="cols.dataindex"></amexio-display-field>
                                             </ng-container>
                                             <ng-template #elseBlock>
                                                 &nbsp;
@@ -307,8 +303,8 @@
                                     </ng-container>
                                     <ng-container *ngIf="colIndex != 0">
                                         <span class="float-right">
-                                            <ng-container *ngIf="row[cols.dataindex]!= null ;else elseBlock">
-                                                {{row[cols.dataindex]}}
+                                            <ng-container *ngIf="row[cols.dataindex]!= '' ;else elseBlock">
+                                                <amexio-display-field [data]="row" [data-index]="cols.dataindex"></amexio-display-field>
                                             </ng-container>
                                             <ng-template #elseBlock>
                                                 &nbsp;
@@ -344,16 +340,10 @@
 </span> -->
 
 <ng-container *ngIf="flag">
-    <base-contextmenu
-    [base-context-menu]="contextmenu"
-    [mouse-location-top]="mouseLocation.top"
-    [mouse-location-left]="mouseLocation.left"
-    [is-FlagShow]="flag"
-    [right-click-data]="rightClickRowData"
-    (onRightClick) ="rightClickDataEmit($event)"
-    [position-up]="posixUp" >
+    <base-contextmenu [base-context-menu]="contextmenu" [mouse-location-top]="mouseLocation.top" [mouse-location-left]="mouseLocation.left"
+        [is-FlagShow]="flag" [right-click-data]="rightClickRowData" (onRightClick)="rightClickDataEmit($event)" [position-up]="posixUp">
     </base-contextmenu>
-  </ng-container>
+</ng-container>
 
 <!-- Footer of the grid -->
 <div class="footer">

@@ -23,6 +23,8 @@ import { AmexioCardCEBodyComponent } from './../creative/card/amexio.body.compon
 import { AmexioCardCEComponent } from './../creative/card/amexio.cards.component';
 import { AmexioCardCEHeaderComponent } from './../creative/card/amexio.header.component';
 
+import { AmexioCommonModule } from '../base/amexio.common.module';
+
 export * from './../creative/card/amexio.action.component';
 export * from './../creative/card/amexio.body.component';
 export * from './../creative/card/amexio.cards.component';
@@ -37,6 +39,7 @@ const CREATIVE_COMPONENTS = [
 @NgModule({
   imports: [
     CommonModule,
+    AmexioCommonModule,
   ],
   exports: CREATIVE_COMPONENTS,
   declarations: CREATIVE_COMPONENTS,

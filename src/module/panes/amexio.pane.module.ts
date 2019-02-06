@@ -42,6 +42,8 @@ import { DeviceQueryService } from '../services/device/device.query.service';
 import { IconLoaderService } from '../services/icon/icon.service';
 import { AmexioFormGroupDirective } from './form/form.group.directive';
 
+import { AmexioCommonModule } from '../base/amexio.common.module';
+
 export * from './action/pane.action.footer';
 export * from './body/pane.action.body';
 export * from './carousel/carousel.component';
@@ -107,6 +109,7 @@ const PANE_COMPONENTS = [
     AmexioFormsModule,
     HttpClientModule,
     AmexioBaseContextMenuModule,
+    AmexioCommonModule,
   ],
   entryComponents: [AmexioTabPillComponent],
   exports: PANE_COMPONENTS,

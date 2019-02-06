@@ -20,12 +20,15 @@ import { HorizontalTreeViewComponent } from './tree/horizontaltreeview.component
 import { AmexioTreeViewComponent } from './tree/tree.component';
 import { TreeDataTableComponent } from './treegrid/treedatatable.component';
 
+import { AmexioCommonModule } from '../base/amexio.common.module';
 import { AmexioBaseContextMenuModule } from '../base/base.contextmenu.component.module';
 
 import { AmexioLayoutModule } from '../layout/amexio.layout.module';
 import { AmexioPaneModule } from '../panes/amexio.pane.module';
 
 import { CommonDataService } from '../services/data/common.data.service';
+import { DisplayFieldService } from '../services/data/display.field.service';
+
 import { IconLoaderService } from '../services/icon/icon.service';
 import { GoogleMapScriptService } from '../services/script/script.data.service';
 
@@ -65,16 +68,17 @@ const DATA_COMPONENTS = [
     AmexioLayoutModule,
     HttpClientModule,
     AmexioBaseContextMenuModule,
+    AmexioCommonModule,
   ],
   exports: DATA_COMPONENTS,
   declarations: DATA_COMPONENTS,
-  providers: [CommonDataService, GoogleMapScriptService, IconLoaderService],
+  providers: [CommonDataService, GoogleMapScriptService, IconLoaderService, DisplayFieldService],
 })
 export class AmexioDataModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: AmexioDataModule,
-      providers: [CommonDataService, GoogleMapScriptService, IconLoaderService],
+      providers: [CommonDataService, GoogleMapScriptService, IconLoaderService, DisplayFieldService],
     };
   }
 }

@@ -45,10 +45,12 @@ import { ToolBarActionComponent } from './toolbar/toolbaraction.component';
 import { ToolbaroneComponent } from './toolbar/toolbarone.component';
 import { AmexioTypeAheadComponent } from './typeahead/typeahead.component';
 
-import {DropDownListComponent} from '../base/dropdownlist.component';
-import {AmexioInputHelperComponent} from '../base/input.helper.component';
+import { AmexioCommonModule } from '../base/amexio.common.module';
+
+import { DropDownListComponent } from '../base/dropdownlist.component';
+import { AmexioInputHelperComponent } from '../base/input.helper.component';
 import { AmexioLayoutModule } from '../layout/amexio.layout.module';
-import {FilterPipe} from '../pipe/filter.pipe';
+import { FilterPipe } from '../pipe/filter.pipe';
 
 import { CommonDataService } from '../services/data/common.data.service';
 import { IconLoaderService } from '../services/icon/icon.service';
@@ -125,6 +127,7 @@ const FORM_COMPONENTS = [
     FormsModule,
     AmexioLayoutModule,
     HttpClientModule,
+    AmexioCommonModule,
   ],
   exports: FORM_COMPONENTS,
   declarations: FORM_COMPONENTS,
