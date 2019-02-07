@@ -3,8 +3,8 @@
      class="sidenav-mobile-bar" (click)="toggleSideNav()">
   <amexio-nav-icon key="sidenav_bar"></amexio-nav-icon>
 </div>
-<div [ngStyle]="{'width':width}" style="height: 100%" [ngClass]="{'left':(position=='left' && position!='relative'),'right':(position=='right' && position!='relative')}">
-  <div class="sidenav" [ngStyle]="{'height':height}">
+<div style="height: 100%"  [style.width]="width" [ngStyle]="{'background': bgimage ? 'url(' + bgimage + ') center/cover no-repeat' : null}" [ngClass]="{'left':(position=='left' && position!='relative'),'right':(position=='right' && position!='relative')}">
+  <div class="sidenav" [ngClass]="{'sidenav-color': !background}" [style.color]="color" [style.background]="background"  [style.height]="height">
     <ul>
       <li>
         <div *ngIf="sidenavtitle" class="title">
@@ -19,9 +19,8 @@
           </span>
         </div>
       </li>
-
       <amexio-sidenav-node  *ngFor="let node of data" 
-                            [enable-border]="(node && node[childarraykey] && (node[childarraykey].length>0))" 
+                            [enable-border]="enableborder && (node && node[childarraykey] && (node[childarraykey].length>0))" 
                             [active]="(node && node.active)" 
                             [icon]="node.icon"
                             [badge]="node.badge"

@@ -162,6 +162,42 @@ export class AmexioSideNavComponent implements OnInit {
    description : Name of key for child array name inside response data to display on ui.
    */
   @Input('child-array-key') childarraykey: string;
+  /*
+   Properties
+   name : enable-border
+   datatype : string
+   version : 5.5.5 onwards
+   default : children
+   description : By default enable-border is enabled
+   */
+  @Input('enable-border') enableborder = true;
+  /*
+   Properties
+   name : background
+   datatype : string
+   version : 5.5.5 onwards
+   default : children
+   description : User can define custom background color or pass gradient
+   */
+  @Input('background') background: string;
+  /*
+   Properties
+   name : color
+   datatype : string
+   version : 5.5.5 onwards
+   default : children
+   description : User can define custom background color or pass gradient
+   */
+  @Input('color') color: string;
+  /*
+   Properties
+   name : background-image
+   datatype : string
+   version : 5.5.5 onwards
+   default : children
+   description : User can pass background image
+   */
+  @Input('bg-image') bgimage: string;
 
   smalldevice: boolean;
 
@@ -279,6 +315,6 @@ export class AmexioSideNavComponent implements OnInit {
   }
 
   getNodeDragEvent(event: any) {
-   this.onDrag.emit(event);
+    this.onDrag.emit(event);
   }
 }
