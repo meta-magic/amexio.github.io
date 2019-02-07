@@ -41,24 +41,6 @@
   background-color: $sidenavScrollThumbColor;
 }
 
-.sidenav-submenu-details::-webkit-scrollbar-track
-{
-  //-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-  background-color: $sidenavScrollColor;
-}
-
-.sidenav-submenu-details::-webkit-scrollbar
-{
-  width: 6px;
-  background-color: $sidenavScrollColor;
-}
-
-.sidenav-submenu-details::-webkit-scrollbar-thumb
-{
-  background-color: lighten($sidenavScrollThumbColor,20%);
-}
-
-
 .left {
   // left: 0;
   // position: fixed;

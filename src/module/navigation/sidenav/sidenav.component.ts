@@ -165,9 +165,9 @@ export class AmexioSideNavComponent implements OnInit {
   /*
    Properties
    name : enable-border
-   datatype : string
+   datatype : boolean
    version : 5.5.5 onwards
-   default : children
+   default : true
    description : By default enable-border is enabled
    */
   @Input('enable-border') enableborder = true;
@@ -176,7 +176,7 @@ export class AmexioSideNavComponent implements OnInit {
    name : background
    datatype : string
    version : 5.5.5 onwards
-   default : children
+   default :
    description : User can define custom background color or pass gradient
    */
   @Input('background') background: string;
