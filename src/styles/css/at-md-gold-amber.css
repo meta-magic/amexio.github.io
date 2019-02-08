@@ -7050,7 +7050,7 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
   -o-transition: transform 0.5s, opacity 0.5s;
   -ms-transition: transform 0.5s, opacity 0.5s; }
 
-.floatingbutton:focus::after {
+.floatingbutton:active:after {
   opacity: 0.7;
   transform: scale(0, 0);
   -webkit-transform: scale(0, 0);
