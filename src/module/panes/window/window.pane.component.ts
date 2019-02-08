@@ -210,6 +210,8 @@ description : Context Menu provides the list of menus on right click.
 
   contextStyle: any;
 
+  componentId: string;
+
   mouseLocation: { left: number; top: number } = { left: 0, top: 0 };
   absoluteposition = false;
   positionclass: string;
@@ -255,7 +257,11 @@ description : Context Menu provides the list of menus on right click.
     }
     this.positionclass = this.window + this.verticalposition + this.window + this.horizontalposition;
     this.setClass();
+    this.componentId = this.createCompId('window', this.header);
 
+  }
+  createCompId(inputType: any, name: any) {
+    return inputType + '_' + name + '_' + Math.floor(Math.random() * 1000 + 999);
   }
 
   ngOnChanges(changes: SimpleChanges) {

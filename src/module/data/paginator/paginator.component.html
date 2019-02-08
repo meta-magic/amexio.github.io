@@ -1,14 +1,14 @@
-<div role="navigation" aria-labelledby="a" aria-label="pagination" class="paginator">
+<div role="navigation" attr.aria-labelledby="componentId" aria-label="pagination" class="paginator">
   <span class="paginator-pages">
-    <a role="radiogroup" id="a" aria-label="previous page" tabindex="1" class="paginator-page" (click)="onPrevious()">&lt;</a>
-    <a role="radiogroup" id="a" aria-label="previous set page" tabindex="1" class="paginator-page" (click)="onFirstClick()">&lt;&lt;</a>
+    <a role="radiogroup" id="{{componentId}}" aria-label="previous page" tabindex="1" class="paginator-page" (click)="onPrevious()">&lt;</a>
+    <a role="radiogroup" id="{{componentId}}" aria-label="previous set page" tabindex="1" class="paginator-page" (click)="onFirstClick()">&lt;&lt;</a>
   </span>
-  <span id="a" tabindex="1" attr.aria-label="Page{{i+1}}" role="link" class="paginator-pages" *ngFor="let page of activePages;let i = index">
+  <span id="{{componentId}}" tabindex="1" attr.aria-label="Page{{i+1}}" role="link" class="paginator-pages" *ngFor="let page of activePages;let i = index">
     <a class="paginator-page" [ngClass]="{'active' : activePageIndex == i  }" (click)="onPageClick(page,i)">{{page}}</a>
   </span>
   <span role="presentation" class="paginator-pages">
-    <a role="radiogroup" id="a" aria-label="next set page" tabindex="1" class="paginator-page" (click)="onLastClick()">&gt;&gt;</a>
-    <a role="radiogroup" id="a" aria-label="next page" tabindex="1" class="paginator-page" (click)="onNext()">&gt;</a>
+    <a role="radiogroup" id="{{componentId}}" aria-label="next set page" tabindex="1" class="paginator-page" (click)="onLastClick()">&gt;&gt;</a>
+    <a role="radiogroup" id="{{componentId}}" aria-label="next page" tabindex="1" class="paginator-page" (click)="onNext()">&gt;</a>
   </span>
   <ng-container *ngIf="pages > rows">
     <span class="paginator-pages">
