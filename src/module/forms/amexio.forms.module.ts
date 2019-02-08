@@ -47,7 +47,6 @@ import { AmexioTypeAheadComponent } from './typeahead/typeahead.component';
 
 import { AmexioCommonModule } from '../base/amexio.common.module';
 
-import { DropDownListComponent } from '../base/dropdownlist.component';
 import { AmexioInputHelperComponent } from '../base/input.helper.component';
 import { AmexioLayoutModule } from '../layout/amexio.layout.module';
 import { FilterPipe } from '../pipe/filter.pipe';
@@ -100,7 +99,6 @@ const FORM_COMPONENTS = [
   AmexioLabelComponent,
   AmexioFloatingButtonComponent,
   AmexioFloatingGroupButtonComponent,
-  DropDownListComponent,
   AmexioDropDownitemsComponent,
   AmexioDropDownMenuComponent,
   ToolbarComponent,

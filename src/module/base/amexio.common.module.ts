@@ -5,9 +5,11 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { DisplayFieldComponent } from './display-field/display-field.component';
+import { DropDownListComponent } from './dropdownlist.component';
 
 const COMMON_COMPONENTS = [
   DisplayFieldComponent,
+  DropDownListComponent,
 ];
 
 @NgModule({
