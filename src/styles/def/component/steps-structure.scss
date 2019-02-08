@@ -7,8 +7,16 @@
   margin-top: 0px;
   //color: #666;
 }
+// .stepwizard-row {
+//   display: table-row;
+
+// }
+
 .stepwizard-row {
-  display: table-row;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
 }
 .stepwizard {
   display: table;
@@ -29,11 +37,19 @@
   //background-color: $stepsBGColor;
   z-index: 0;
 }
+// .stepwizard-step {
+//   display: table-cell;
+//   text-align: center;
+//   position: relative;
+//   //cursor : not-allowed;
+// }
+
 .stepwizard-step {
+  width: 100%;
   display: table-cell;
   text-align: center;
   position: relative;
-  //cursor : not-allowed;
+  
 }
 
 .btn-circle {
