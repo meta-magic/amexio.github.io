@@ -24,12 +24,12 @@ import {IconLoaderService} from '../../services/icon/icon.service';
     <ng-container  *ngIf="iconLoaderService.iconToUse == 'fa' ">
       <ng-container *ngIf="customclass != null">
         <span [ngStyle]="{'color':faiconcolor}" class="{{customclass}}" aria-hidden="true"
-        (click)="onClick.emit($event)"> <span style="padding-left: 5px;font-family:Roboto, Trebuchet MS, Arial, Helvetica, sans-serif;" >
+        (click)="onClick.emit($event)"> <span style="padding-left: 5px;font-family:sans-serif;" >
         {{label}}</span></span>
       </ng-container>
       <ng-container *ngIf="customclass == null">
         <span [ngStyle]="{'color':faiconcolor}" class="{{iconClass}}" aria-hidden="true"
-        (click)="onClick.emit($event)"><span padding-left: 5px;font-family:Roboto, Trebuchet MS, Arial, Helvetica, sans-serif;>
+        (click)="onClick.emit($event)"><span padding-left: 5px;font-family:sans-serif;>
         {{label}}</span></span>
       </ng-container>
     </ng-container>
