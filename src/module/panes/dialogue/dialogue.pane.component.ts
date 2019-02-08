@@ -16,7 +16,7 @@
 * Created by dattaram on 23/1/18.
 */
 
-import { animate, state, style, transition, trigger} from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import {
   Component, EventEmitter, HostListener, Input, OnChanges, OnDestroy, OnInit, Output, Renderer2,
   SimpleChanges,
@@ -227,6 +227,7 @@ export class AmexiodialoguePaneComponent implements OnChanges, OnInit, OnDestroy
   @Output() close: EventEmitter<any> = new EventEmitter<any>();
   value = 0;
   defaultStyle: string;
+  componentId: string;
   globalListenFunc: () => void;
 
   constructor(private renderer: Renderer2) {
@@ -255,6 +256,7 @@ export class AmexiodialoguePaneComponent implements OnChanges, OnInit, OnDestroy
     }
     this.defaultStyle = this.getDefaultStyle();
     this.buttontype = this.getStyle();
+    this.componentId = this.createCompId('dialog', this.type);
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -318,6 +320,9 @@ export class AmexiodialoguePaneComponent implements OnChanges, OnInit, OnDestroy
     if (this.globalListenFunc) {
       this.globalListenFunc();
     }
+  }
+  createCompId(inputType: any, name: any) {
+    return inputType + '_' + name + '_' + Math.floor(Math.random() * 1000 + 999);
   }
 
 }
