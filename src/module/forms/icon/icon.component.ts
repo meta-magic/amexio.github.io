@@ -24,12 +24,12 @@ import {IconLoaderService} from '../../services/icon/icon.service';
     <ng-container  *ngIf="iconLoaderService.iconToUse == 'fa' ">
       <ng-container *ngIf="customclass != null">
         <span [ngStyle]="{'color':faiconcolor}" class="{{customclass}}" aria-hidden="true"
-        (click)="onClick.emit($event)"> <span style="padding-left: 5px;font-family:sans-serif;" >
+        (click)="onClick.emit($event)"> <span class="font-with-label" >
         {{label}}</span></span>
       </ng-container>
       <ng-container *ngIf="customclass == null">
         <span [ngStyle]="{'color':faiconcolor}" class="{{iconClass}}" aria-hidden="true"
-        (click)="onClick.emit($event)"><span padding-left: 5px;font-family:sans-serif;>
+        (click)="onClick.emit($event)"><span class="font-with-label">
         {{label}}</span></span>
       </ng-container>
     </ng-container>
@@ -46,6 +46,7 @@ import {IconLoaderService} from '../../services/icon/icon.service';
   .fa-2x,.fa-3x, .fa-4x, .fa-5x {
     margin-top:0px!important;
   }
+
   `],
 })
 
