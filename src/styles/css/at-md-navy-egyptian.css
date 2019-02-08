@@ -1720,8 +1720,8 @@ textarea:required {
 
 .checkbox-disable {
   opacity: 0.55;
+  cursor: not-allowed;
   pointer-events: none;
-  background-color: #c2c8db;
 }
 
 /** checkbox - Structure CSS **/
