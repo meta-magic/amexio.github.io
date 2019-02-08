@@ -406,7 +406,9 @@ description : On field focus event
     this.showToolTip = false;
   }
   onInput(input: any) {
+    if (this.selectedindex > -1) {
     this.filteredResult[this.selectedindex].selected = false;
+    }
     this.selectedindex = -1;
     this.input.emit();
   }
