@@ -3,7 +3,7 @@
   <br>
   <a href="http://www.amexio.tech/"><img src="https://image.ibb.co/kdy6Ev/logo.png" alt="Amexio" width="200"></a>
   <br>
-    Amexio Angular EXtensions v5.5.4
+    Amexio Angular EXtensions v5.5.5
   <br>
 </h1>
 
