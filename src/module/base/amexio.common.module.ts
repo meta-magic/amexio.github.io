@@ -7,9 +7,12 @@ import { FormsModule } from '@angular/forms';
 import { DisplayFieldComponent } from './display-field/display-field.component';
 import { DropDownListComponent } from './dropdownlist.component';
 
+import { FilterPipe } from '../pipe/filter.pipe';
+
 const COMMON_COMPONENTS = [
   DisplayFieldComponent,
   DropDownListComponent,
+  FilterPipe,
 ];
 
 @NgModule({

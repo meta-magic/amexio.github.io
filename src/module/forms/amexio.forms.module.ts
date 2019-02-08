@@ -49,7 +49,6 @@ import { AmexioCommonModule } from '../base/amexio.common.module';
 
 import { AmexioInputHelperComponent } from '../base/input.helper.component';
 import { AmexioLayoutModule } from '../layout/amexio.layout.module';
-import { FilterPipe } from '../pipe/filter.pipe';
 
 import { CommonDataService } from '../services/data/common.data.service';
 import { IconLoaderService } from '../services/icon/icon.service';
@@ -111,7 +110,6 @@ const FORM_COMPONENTS = [
   AmexioCreditcardComponent,
   AmexioChipComponent,
   AmexioChipsComponent,
-  FilterPipe,
   GoogleAuthComponent,
   LinkedInAuthComponent,
   FacebookAuthComponent,
