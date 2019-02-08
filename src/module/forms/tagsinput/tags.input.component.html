@@ -1,25 +1,30 @@
-<div class="inputgroup" #rootDiv (keyup.esc) ="closeOnEScapeList($event)">
+<div class="inputgroup" #rootDiv (keyup.esc)="closeOnEScapeList($event)">
 
-  <label *ngIf="haslabel"for="{{componentId}}" [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
+  <label *ngIf="haslabel" for="{{componentId}}" [style.font-style]="fontstyle" [style.font-family]="fontfamily" [style.font-size]="fontsize">
     {{fieldlabel}}
   </label>
 
   <div class="tag-input" [ngClass]="{'loading-mask' : maskloader}">
     <div class="tag" *ngFor="let item of onSelections">
-      {{item[key]}}
+      <amexio-display-field [data]="item" [data-index]="key"></amexio-display-field>
       <span class="closebtn" (click)="removePill(item)">&times;</span>
     </div>
-    <input  id="{{componentId}}" aria-autocomplete="list" role="combobox" [attr.aria-expanded]="showToolTip" type="text" class="input-control" [ngClass]="{'input-control-error' : inp.invalid && (inp.dirty || inp.touched),'input-control-success' : inp.valid && (inp.dirty || inp.touched)}"
-      (focus)="onFocus(rootDiv)" (input)="onInput(inp)" (keyup)="onKeyUp($event)" (keyup.end)="focusToLastElement($event)" (keyup.home)="focusToFirstElement($event)" [attr.placeholder]="placeholder" [attr.disabled]="disabled ? true: null"
-      [required]="allowblank ? true: null" #inp />
+    <input id="{{componentId}}" aria-autocomplete="list" role="combobox" [attr.aria-expanded]="showToolTip" type="text" class="input-control"
+      [ngClass]="{'input-control-error' : inp.invalid && (inp.dirty || inp.touched),'input-control-success' : inp.valid && (inp.dirty || inp.touched)}"
+      (focus)="onFocus(rootDiv)" (input)="onInput(inp)" (keyup)="onKeyUp($event)" (keyup.end)="focusToLastElement($event)"
+      (keyup.home)="focusToFirstElement($event)" [attr.placeholder]="placeholder" [attr.disabled]="disabled ? true: null" [required]="allowblank ? true: null"
+      #inp />
   </div>
 
 
   <span #dropdownitems class="dropdown" [@changeState]="dropdownstyle.visibility" [ngClass]="{'dropdown-up' : posixUp}" [ngStyle]="dropdownstyle"
     #tagDropRef>
     <ul role="list" class="dropdown-list">
-      <li tabindex="0" role="listitem" class="list-items" [ngClass]="{'list-items-selected':item.selected}" *ngFor="let item of filteredResult" id="{{item.index}}"  (click)="setValue(item,inp)">
-        <div>{{item[displayfield]}}</div>
+      <li tabindex="0" role="listitem" class="list-items" [ngClass]="{'list-items-selected':item.selected}" *ngFor="let item of filteredResult"
+        id="{{item.index}}" (click)="setValue(item,inp)">
+        <div>
+          <amexio-display-field [data]="item" [data-index]="displayfield"></amexio-display-field>
+        </div>
       </li>
     </ul>
   </span>

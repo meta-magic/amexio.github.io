@@ -84,6 +84,8 @@ description : It will gives you current page number
 
   currentRowIndex: number;
 
+  componentId: string;
+
   constructor() {
 
   }
@@ -93,6 +95,10 @@ description : It will gives you current page number
       this.size = 'medium';
     }
     this.initializePages();
+    this.componentId = this.createCompId('paginator', this.pages);
+  }
+  createCompId(inputType: any, name: any) {
+    return inputType + '_' + name + '_' + Math.floor(Math.random() * 1000 + 999);
   }
 
   ngOnChanges(change: SimpleChanges) {

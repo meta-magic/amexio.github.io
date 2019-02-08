@@ -2,15 +2,15 @@
   <!-- Generate BG shade for below modal -->
 </div>
 
-<div class="dialogue-sm" [@animation]="{value: 'visible', params: {transitionParams: transitionOptions}}" *ngIf="show">
-  <div class="dialogue-content">
-    <header [ngClass]="{ 'dialogue-material-design':materialDesign ,'dialogue-header':!materialDesign }">
-      <div class="dialogue-table">
-        <div class="tablerow">
-          <div class="tablecol">
+<div    class="dialogue-sm" [@animation]="{value: 'visible', params: {transitionParams: transitionOptions}}" *ngIf="show">
+  <div role="dialog" attr.aria-labelledby="componentId" class="dialogue-content">
+    <header   [ngClass]="{'dialogue-material-design':materialDesign ,'dialogue-header':!materialDesign }">
+      <div id="{{componentId}}" tabindex="1"  class="dialogue-table">
+        <div  class="tablerow">
+          <div  class="tablecol">
             {{title}}
           </div>
-          <div class="tablecol float-right">
+          <div  tabindex="1" aria-label="close button"class="tablecol float-right">
             <div *ngIf="closable" class="icon-style">
               <amexio-pane-icon [key]="'window_close'" (onClick)="onCloseClick()"></amexio-pane-icon>
             </div>
@@ -19,14 +19,14 @@
       </div>
     </header>
     <div class="dialogue-middle" [ngStyle]="{'text-align':custom ? contentalign :'center'}">
-      <span class="dialogue-icon">
-        <span [ngClass]="{'dialogue-success': messagetype  == 'help','dialogue-danger':messagetype  == 'error',
+      <span role="dialog" attr.aria-labelledby="componentId" class="dialogue-icon">
+        <span  [ngClass]="{'dialogue-success': messagetype  == 'help','dialogue-danger':messagetype  == 'error',
                       'dialogue-warning': messagetype  == 'warning'}"
           *ngIf="messagetype  || messagetype  != '' ">
           <amexio-pane-icon [key]="'window-msgtype-'+ messagetype "></amexio-pane-icon>
         </span>
         <ng-container *ngIf="!custom">
-          <span class="dialogue-message">
+          <span id="{{componentId}}" tabindex="1" class="dialogue-message">
             {{message}}
           </span>
         </ng-container>

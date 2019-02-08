@@ -1,16 +1,16 @@
 <div #id class="root-window model-fade" [ngClass]="{'modal-window-max': isFullWindow,'modal-window-min': !isFullWindow}"
     [ngStyle]="{'display' : show ? 'block' : 'none'}" (contextmenu)="loadContextMenu({event:$event,ref:id})">
-    <div class="modal-window-lg" [ngStyle]="{'height': bodyHeight ? '100%':'auto'}">
+    <div role="dialog" attr.aria-labelledby="componentId" class="modal-window-lg" [ngStyle]="{'height': bodyHeight ? '100%':'auto'}">
         <div class="modal-window-content" [ngClass]="styleClass" [style.height]="bodyHeight+'%'">
             <header [ngClass]="{ 'window-material-design-header':materialDesign,'modal-window-header':!materialDesign}"
                 *ngIf="header">
                 <div class="modal-window-table">
                     <div class="tablerow">
-                        <div class="tablecol">
+                        <div id="{{componentId}}" tabindex="1" class="tablecol">
                             <ng-content select="amexio-header"></ng-content>
                             <ng-content select="amexio-window-header"></ng-content>
                         </div>
-                        <div class="tablecol float-right">
+                        <div id="{{componentId}}" tabindex="1" aria-label="close button" class="tablecol float-right">
                             <ng-container *ngIf="(!isFullWindow && maximize)">
                                 <amexio-pane-icon [key]="'window_maximize'" (onClick)="sizeChange()"></amexio-pane-icon>
                                 &nbsp;
@@ -28,7 +28,10 @@
                 </div>
             </header>
             <div class="modal-window-middle">
-                <ng-content select="amexio-body"></ng-content>
+                <div aria-label="window body" id="{{componentId}}" tabindex="1" class="amexio-body">
+                    <ng-content></ng-content>
+                </div>
+
             </div>
             <footer *ngIf="footer" class="modal-window-footer" [ngClass]="{'window-material-design-footer':materialDesign ,
          'modal-window-footer':!materialDesign,
@@ -56,13 +59,8 @@
 </ng-container> -->
 
 <ng-container *ngIf="flag">
-    <base-contextmenu style=" z-index: 5; position: absolute;"
-    [base-context-menu]="contextmenu" 
-    [mouse-location-top]="mouseLocation.top"
-    [mouse-location-left]="mouseLocation.left" 
-    [is-FlagShow]="flag" 
-    [right-click-data]="nodeRightClick"
-    (onRightClick) ="rightClickDataEmit($event)"
-    [position-up]="posixUp" >
+    <base-contextmenu style=" z-index: 5; position: absolute;" [base-context-menu]="contextmenu" [mouse-location-top]="mouseLocation.top"
+        [mouse-location-left]="mouseLocation.left" [is-FlagShow]="flag" [right-click-data]="nodeRightClick"
+        (onRightClick)="rightClickDataEmit($event)" [position-up]="posixUp">
     </base-contextmenu>
-  </ng-container>
+</ng-container>

@@ -22,6 +22,7 @@ import {
 } from '@angular/core';
 import { EventBaseComponent } from '../../base/event.base.component';
 import { CommonDataService } from '../../services/data/common.data.service';
+import { DisplayFieldService } from '../../services/data/display.field.service';
 
 @Component({
   selector: 'amexio-tag-input',
@@ -234,7 +235,7 @@ description : On field focus event
 
   filteredResult: any;
 
- componentId: string;
+  componentId: string;
 
   @ViewChild('inp') inpHandle: any;
 
@@ -247,6 +248,7 @@ description : On field focus event
   maskloader = true;
 
   constructor(
+    private displayFieldService: DisplayFieldService,
     public dataService: CommonDataService, public element: ElementRef,
     public renderer: Renderer2, _cd: ChangeDetectorRef,
   ) {
@@ -303,7 +305,7 @@ description : On field focus event
     if (keyword !== null && keyword !== ' ' && keyword.length >= this.triggerchar) {
       const search_term = keyword.toLowerCase();
       this.viewData.forEach((item: any) => {
-        if (item != null && item[this.key].toLowerCase().startsWith(search_term)) {
+        if (item != null && this.displayFieldService.findValue(this.key, item).toLowerCase().startsWith(search_term)) {
           this.filteredResult.push(item);
         }
       });
@@ -401,13 +403,13 @@ description : On field focus event
 
   onItemSelect(row: any, index: any) {
     this.value = row[this.valuefield];
-    this.displayValue = row[this.displayfield];
+    this.displayFieldService.findValue(this.displayfield, row);
     this.setValue(row, {}, index);
     this.showToolTip = false;
   }
   onInput(input: any) {
     if (this.selectedindex > -1) {
-    this.filteredResult[this.selectedindex].selected = false;
+      this.filteredResult[this.selectedindex].selected = false;
     }
     this.selectedindex = -1;
     this.input.emit();
@@ -462,7 +464,9 @@ description : On field focus event
       this.isValid = true;
     }
     this.hide();
-    this.filteredResult[index].selected = false;
+    if (index) {
+      this.filteredResult[index].selected = false;
+    }
     this.selectedindex = -1;
     this.showToolTip = false;
   }

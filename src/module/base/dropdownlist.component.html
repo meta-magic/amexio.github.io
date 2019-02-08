@@ -7,7 +7,7 @@
             (mousedown)="onDropDownListClick(item)"
             id="{{item.index}}">
             <ng-container *ngIf="!template">
-                <div>{{item[displayfield]}}</div>    
+                <div><amexio-display-field [data]="item" [data-index]="displayfield"></amexio-display-field></div>    
             </ng-container>
 
             <ng-container *ngIf="template">
