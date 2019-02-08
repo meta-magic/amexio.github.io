@@ -23,8 +23,8 @@ describe('TAG INPUT', () => {
         it('true is true', () => expect(true).toBe(true));
     });
     // it('is valid', () => expect(comp.isValid).toBe(false));
-    it('get innervalue', () => {
-        comp.value = 'sagfaf';
-        expect(comp['innerValue']).toEqual(comp.value);
-    });
+    // it('get innervalue', () => {
+    //     comp.value = 'sagfaf';
+    //     expect(comp['innerValue']).toEqual(comp.value);
+    // });
 });
