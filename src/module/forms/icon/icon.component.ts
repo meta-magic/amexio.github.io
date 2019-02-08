@@ -23,10 +23,14 @@ import {IconLoaderService} from '../../services/icon/icon.service';
    template: `
     <ng-container  *ngIf="iconLoaderService.iconToUse == 'fa' ">
       <ng-container *ngIf="customclass != null">
-        <i [ngStyle]="{'color':faiconcolor}" class="{{customclass}}" aria-hidden="true" (click)="onClick.emit($event)"></i>
+        <span [ngStyle]="{'color':faiconcolor}" class="{{customclass}}" aria-hidden="true"
+        (click)="onClick.emit($event)"> <span style="padding-left: 5px;font-family:Roboto, Trebuchet MS, Arial, Helvetica, sans-serif;" >
+        {{label}}</span></span>
       </ng-container>
       <ng-container *ngIf="customclass == null">
-        <i [ngStyle]="{'color':faiconcolor}" class="{{iconClass}}" aria-hidden="true" (click)="onClick.emit($event)"></i>
+        <span [ngStyle]="{'color':faiconcolor}" class="{{iconClass}}" aria-hidden="true"
+        (click)="onClick.emit($event)"><span padding-left: 5px;font-family:Roboto, Trebuchet MS, Arial, Helvetica, sans-serif;>
+        {{label}}</span></span>
       </ng-container>
     </ng-container>
     <ng-container *ngIf="iconLoaderService.iconToUse == 'mat'">
@@ -38,6 +42,11 @@ import {IconLoaderService} from '../../services/icon/icon.service';
       </ng-container>
     </ng-container>
   `,
+  styles : [`
+  .fa-2x,.fa-3x, .fa-4x, .fa-5x {
+    margin-top:0px!important;
+  }
+  `],
 })
 
 export class AmexioFormIconComponent implements OnInit, OnChanges {
@@ -51,6 +60,15 @@ default : none
 description : sets the key for icon
 */
   @Input() key: string;
+  /*
+Properties
+name : label
+datatype : string
+version : 5.5.5 onwards
+default : none
+description : sets the key for icon
+*/
+@Input() label = '';
 /*
 Events
 name : onClick

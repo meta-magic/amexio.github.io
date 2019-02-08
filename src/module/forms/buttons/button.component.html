@@ -1,4 +1,5 @@
-<button #button class="button" role="button" tabindex="1" [attr.aria-pressed]="ispressed" [ngStyle]="{'cursor': disabled ? 'not-allowed':'pointer','background-color':bgcolor,'color':color,'box-shadow':bgBorderColor}" ng-disabled="disabled ? true: null" [attr.title]="tooltip" [ngClass]="{'button-default': size=='default'
+<button #button class="button" role="button" tabindex="1" [attr.aria-pressed]="ispressed" [ngStyle]="{'cursor': disabled ? 'not-allowed':'pointer','background-color':bgcolor,'color':color,'box-shadow':bgBorderColor}" ng-disabled="disabled ? true: null"
+    [attr.title]="tooltip" [ngClass]="{'button-default': size=='default'
         || size ==null,
         'button-small': size=='small',
         'button-large' : size=='large',
@@ -12,13 +13,14 @@
         'disabled' : disabled }" (click)="buttonClick($event)">
         <span class="button-text">
           <span style="padding-right: 5px;" *ngIf="icon">
-            <amexio-form-icon [customclass]="icon" >
+            <amexio-form-icon [customclass]="icon" [label]="label">
             </amexio-form-icon>
           </span>
           <span style="padding-right: 5px;" *ngIf="loading">
-            <amexio-form-icon key="button-loading-icon"></amexio-form-icon>
+            <amexio-form-icon key="button-loading-icon" [label]="label"></amexio-form-icon>
           </span>
-          {{label}}
+          <ng-container *ngIf="!icon">{{label}}</ng-container>
+
           <ng-container *ngIf="badge">
             <span [ngClass]="badgeCssClass" >{{badge}}</span>
          </ng-container>
