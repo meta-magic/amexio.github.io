@@ -71,7 +71,7 @@ description : sets the customclass for icon
   @Input() customclass: string;
 
   iconClass: string;
-  @Input() faiconcolor = 'white';
+  @Input() faiconcolor = '';
   constructor(public iconLoaderService: IconLoaderService) {
   }
   ngOnInit() {
