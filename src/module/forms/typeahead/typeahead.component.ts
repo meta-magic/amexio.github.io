@@ -16,7 +16,7 @@
 * Created by ketangote on 11/21/17
 */
 
-import { animate, state, style, transition, trigger} from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import {
   AfterViewInit, ChangeDetectorRef, Component, ContentChild,
   ElementRef, EventEmitter, forwardRef, HostListener, Input,
@@ -26,6 +26,8 @@ import {
 import { FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
 import { of } from 'rxjs';
 import { CommonDataService } from '../../services/data/common.data.service';
+import { DisplayFieldService } from '../../services/data/display.field.service';
+
 import { DropDownListComponent } from './../../base/dropdownlist.component';
 import { ListBaseComponent } from './../../base/list.base.component';
 
@@ -182,7 +184,9 @@ export class AmexioTypeAheadComponent extends ListBaseComponent<string> implemen
 
   filterarray: any = [];
 
-  constructor(public dataService: CommonDataService, public element: ElementRef, renderer: Renderer2, cd: ChangeDetectorRef) {
+  constructor(
+    private displayFieldService: DisplayFieldService,
+    public dataService: CommonDataService, public element: ElementRef, renderer: Renderer2, cd: ChangeDetectorRef) {
     super(renderer, element, cd);
   }
 
@@ -248,7 +252,7 @@ export class AmexioTypeAheadComponent extends ListBaseComponent<string> implemen
     let value: string;
     this.displayValue = event.target.value;
     this.rowindex = 0;
-    if (this.displayValue.length >= 0 && !this.self  && this.displayValue.length >= this.triggerchar) {
+    if (this.displayValue.length >= 0 && !this.self && this.displayValue.length >= this.triggerchar) {
       this.dropdownstyle = { visibility: 'visible' };
       this.ariaListExpand = true;
       this.bindDocumentClickListener();
@@ -258,23 +262,23 @@ export class AmexioTypeAheadComponent extends ListBaseComponent<string> implemen
     }
     this.onInputOutput.emit(event);
     if (this.displayValue.length > 0) {
-    if (this.displayValue === this.displayValue.toUpperCase()) {
-      value = this.displayValue.toLowerCase();
-    } else {
-      value = this.displayValue;
-    }
-    this.viewdata.value.forEach((element: any) => {
-      if ((element[this.displayfield].toLowerCase()).startsWith(value)) {
-          this.filterarray.push(element);
+      if (this.displayValue === this.displayValue.toUpperCase()) {
+        value = this.displayValue.toLowerCase();
+      } else {
+        value = this.displayValue;
       }
-    });
-   }
+      this.viewdata.value.forEach((element: any) => {
+        if ((this.displayFieldService.findValue(this.displayfield, element).toLowerCase()).startsWith(value)) {
+          this.filterarray.push(element);
+        }
+      });
+    }
   }
 
   focustoLast() {
-      this.rowindex = this.filterarray.length - 1;
-      this.setScrollToList(this.rowindex);
-      this.setAriaActiveDescendant(this.rowindex);
+    this.rowindex = this.filterarray.length - 1;
+    this.setScrollToList(this.rowindex);
+    this.setAriaActiveDescendant(this.rowindex);
   }
 
   focus(event: any) {
@@ -314,8 +318,8 @@ export class AmexioTypeAheadComponent extends ListBaseComponent<string> implemen
     const userinput: string = event.target.value;
     const listitems: any[] = this.viewdata.value;
     listitems.forEach((item) => {
-      if ((item[this.displayfield] + '').toLowerCase() === userinput.toLowerCase()) {
-        this.displayValue = item[this.displayfield];
+      if ((this.displayFieldService.findValue(this.displayfield, item) + '').toLowerCase() === userinput.toLowerCase()) {
+        this.displayValue = this.displayFieldService.findValue(this.displayfield, item);
         this.value = item[this.valuefield];
         this.isComponentValid.emit(true);
       }
@@ -328,17 +332,17 @@ export class AmexioTypeAheadComponent extends ListBaseComponent<string> implemen
     if (this.valuefield) {
       this.value = data[this.valuefield];
     } else {
-      this.value = data[this.displayfield];
+      this.value = this.displayFieldService.findValue(this.displayfield, data);
     }
-    this.displayValue = data[this.displayfield];
+    this.displayValue = this.displayFieldService.findValue(this.displayfield, data);
     this.onClick.emit(data);
     this.ariaListExpand = false;
   }
-   // METHOD TO READ CURRENT ELEMENT FOCUSED
-   setAriaActiveDescendant(rowindex: any) {
+  // METHOD TO READ CURRENT ELEMENT FOCUSED
+  setAriaActiveDescendant(rowindex: any) {
     if (this.filterarray.length > 0) {
-    const inputid = document.getElementById(this.componentId);
-    inputid.setAttribute('aria-activedescendant', this.filterarray[rowindex].index);
+      const inputid = document.getElementById(this.componentId);
+      inputid.setAttribute('aria-activedescendant', this.filterarray[rowindex].index);
     } else if (this.displayValue.length < 1) {
       const inputid = document.getElementById(this.componentId);
       inputid.setAttribute('aria-activedescendant', 'listitem');
@@ -346,11 +350,11 @@ export class AmexioTypeAheadComponent extends ListBaseComponent<string> implemen
   }
   // METHOD TO SET SCROLL BASED ON ROWINDEX
   setScrollToList(rowindex: any) {
-  const listitems = this.element.nativeElement.getElementsByClassName('list-items')[rowindex];
-  if (listitems) {
-    listitems.scrollIntoView({ behavior: 'smooth' });
+    const listitems = this.element.nativeElement.getElementsByClassName('list-items')[rowindex];
+    if (listitems) {
+      listitems.scrollIntoView({ behavior: 'smooth' });
+    }
   }
-}
   writeValue(v: any) {
     super.writeValue(v);
     if (v && this.viewdata) {
@@ -362,7 +366,7 @@ export class AmexioTypeAheadComponent extends ListBaseComponent<string> implemen
     const listitems: any[] = this.viewdata.value;
     listitems.forEach((item) => {
       if (item[this.valuefield] === this.value) {
-        this.displayValue = item[this.displayfield];
+        this.displayValue = this.displayFieldService.findValue(this.displayfield, item);
         this.isComponentValid.emit(true);
       }
     });

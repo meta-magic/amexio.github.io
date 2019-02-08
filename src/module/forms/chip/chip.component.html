@@ -2,7 +2,7 @@
 <div class="chips" style="cursor: pointer;" [ngStyle]="{'background-color': color}">
     <amexio-form-icon [customclass]="icon"></amexio-form-icon>
     <amexio-label (click)=" onLabelClick($event)">
-      <span style="cursor: pointer;padding-left:10px">
+      <span tabindex="-1" style="outline:none" [ngClass]="{'chiplabelicon': (icon !==''), 'chiplabel': (icon ==='')}">
         {{label}}
       </span>
     </amexio-label>

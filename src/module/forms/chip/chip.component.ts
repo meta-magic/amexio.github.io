@@ -31,7 +31,7 @@ version : 5.3.1 onwards
 default :
 description : The icon is for determining of icon.
 */
-  @Input('icon') icon: string;
+  @Input('icon') icon = '';
   /*
 Properties
 name : label
