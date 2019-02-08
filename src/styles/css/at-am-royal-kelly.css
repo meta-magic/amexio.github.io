@@ -2909,6 +2909,9 @@ input:checked + .toggle-slider:before {
   background-color: #f8d9ac;
   color: black; }
 
+.floatingbutton-circle:focus {
+  outline: none; }
+
 /** floatingbutton - Structure CSS **/
 .floatingbutton {
   z-index: 3;
@@ -3839,6 +3842,13 @@ input:checked + .toggle-slider:before {
   background-color: black;
   margin-right: 3px;
   color: whitesmoke; }
+
+.chiplabelicon {
+  cursor: pointer;
+  padding-left: 10px; }
+
+.chiplabel {
+  cursor: pointer; }
 
 /*****************************************************************************
  Component Name : Grid Layout
@@ -6207,7 +6217,10 @@ fieldset {
   margin-top: 0px; }
 
 .stepwizard-row {
-  display: table-row; }
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between; }
 
 .stepwizard {
   display: table;
@@ -6227,6 +6240,7 @@ fieldset {
   z-index: 0; }
 
 .stepwizard-step {
+  width: 100%;
   display: table-cell;
   text-align: center;
   position: relative; }
