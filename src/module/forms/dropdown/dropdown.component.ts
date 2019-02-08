@@ -333,9 +333,6 @@ description : Set enable / disable popover.
     this.componentId = this.createCompId('dropdown', this.displayfield);
     this.isValid = this.allowblank;
     this.isComponentValid.emit(this.allowblank);
-    if (this.placeholder === '') {
-      this.placeholder = 'Choose Option';
-    }
     if (this.httpmethod && this.httpurl) {
       this.dataService.fetchData(this.httpurl, this.httpmethod).subscribe((response: any) => {
         this.responseData = response;

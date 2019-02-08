@@ -84,6 +84,15 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
    description :The label of this field
    */
   @Input('field-label') fieldlabel: string;
+    /*
+   Properties
+   name : field-label
+   datatype : string
+   version : 5.5.5 onwards
+   default :
+   description :The label of this field
+   */
+  @Input('place-holder') placeholder = '';
   /*
    Properties
    name : disabled
