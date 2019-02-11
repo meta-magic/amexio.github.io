@@ -1,40 +1,28 @@
-<div *ngIf="(position !='relative' && smalldevice)"
-     [ngClass]="{'sidenav-mobile-bar-left':(position=='left' && position!='relative'),'sidenav-mobile-bar-right':(position=='right' && position!='relative')}"
-     class="sidenav-mobile-bar" (click)="toggleSideNav()">
-  <amexio-nav-icon key="sidenav_bar"></amexio-nav-icon>
+<div *ngIf="(position !='relative' && smalldevice)" [ngClass]="{'sidenav-mobile-bar-left':(position=='left' && position!='relative'),'sidenav-mobile-bar-right':(position=='right' && position!='relative')}" class="sidenav-mobile-bar" (click)="toggleSideNav()">
+    <amexio-nav-icon key="sidenav_bar" [color]=""></amexio-nav-icon>
 </div>
-<div style="height: 100%"  [style.width]="width" [ngStyle]="{'background': bgimage ? 'url(' + bgimage + ') center/cover no-repeat' : null}" [ngClass]="{'left':(position=='left' && position!='relative'),'right':(position=='right' && position!='relative')}">
-  <div class="sidenav" [ngClass]="{'sidenav-color': !background}" [style.color]="color" [style.background]="background"  [style.height]="height">
-    <ul>
-      <li>
-        <div *ngIf="sidenavtitle" class="title">
-          <ng-container *ngIf="titleimage">
-            <p><img [attr.src]="titleimage" alt=" Title image" style="width: 60px;height: 60px;padding-left: 80px;"/></p>
-          </ng-container>
-          <ng-container *ngIf="sidenavtitle">
-            <p>{{sidenavtitle}}</p>
-          </ng-container>
-          <span *ngIf="sidenavexpandedinsmalldevice" style="padding-right: 10px; float: right" (click)="close()">
+<div style="height: 100%" [style.width]="width" [ngStyle]="{'background': bgimage ? 'url(' + bgimage + ') center/cover no-repeat' : null}" [ngClass]="{'left':(position=='left' && position!='relative'),'right':(position=='right' && position!='relative')}">
+    <div class="sidenav" [ngClass]="{'sidenav-color': !background}" [style.color]="color" [style.background]="background" [style.height]="height">
+        <ul>
+            <li>
+                <div *ngIf="sidenavtitle" class="title">
+                    <ng-container *ngIf="titleimage">
+                        <p><img [attr.src]="titleimage" alt=" Title image" style="width: 60px;height: 60px;padding-left: 80px;" /></p>
+                    </ng-container>
+                    <ng-container *ngIf="sidenavtitle">
+                        <p>{{sidenavtitle}}</p>
+                    </ng-container>
+                    <span *ngIf="sidenavexpandedinsmalldevice" style="padding-right: 10px; float: right" (click)="close()">
             <amexio-nav-icon key="sidenav_close"></amexio-nav-icon>
           </span>
-        </div>
-      </li>
-      <amexio-sidenav-node  *ngFor="let node of data" 
-                            [enable-border]="enableborder && (node && node[childarraykey] && (node[childarraykey].length>0))" 
-                            [active]="(node && node.active)" 
-                            [icon]="node.icon"
-                            [badge]="node.badge"
-                            [enable-drag]="enabledrag"
-                            (nodeClick)="onClick($event)"
-                            (onDrag)="getNodeDragEvent($event)"
-                            [expand]="node?.expand"
-                            [label]="node[displaykey]"
-                            [node]="node"
-                            [data]="node[childarraykey]">
-      </amexio-sidenav-node>
+                </div>
+            </li>
+            <amexio-sidenav-node *ngFor="let node of data" [enable-border]="enableborder && (node && node[childarraykey] && (node[childarraykey].length>0))" [active]="(node && node.active)" [icon]="node.icon" [badge]="node.badge" [enable-drag]="enabledrag" (nodeClick)="onClick($event)"
+                (onDrag)="getNodeDragEvent($event)" [expand]="node?.expand" [label]="node[displaykey]" [node]="node" [icon-color]="node.iconcolor" [data]="node[childarraykey]">
+            </amexio-sidenav-node>
 
 
-      <ng-content></ng-content>
-    </ul>
-  </div>
+            <ng-content></ng-content>
+        </ul>
+    </div>
 </div>

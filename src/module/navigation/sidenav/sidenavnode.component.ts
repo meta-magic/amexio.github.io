@@ -145,6 +145,7 @@ export class SideNavNodeComponent implements OnInit {
    */
   @Input('child-array-key') childarraykey: string;
   @Input() expand = false;
+  @Input('icon-color') iconcolor: string;
   constructor() {
     this.displaykey = 'text';
     this.childarraykey = 'children';

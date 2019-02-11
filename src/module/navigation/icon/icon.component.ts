@@ -24,10 +24,10 @@ import { IconLoaderService } from '../../services/icon/icon.service';
     <ng-container *ngIf="iconLoaderService.iconToUse == 'fa'">
 
       <ng-container *ngIf="customclass != null">
-        <i class="{{customclass}}" aria-hidden="true" (click)="onClick.emit($event)"></i>
+        <i [ngStyle]="{'color':color}" class="{{customclass}}" aria-hidden="true" (click)="onClick.emit($event)"></i>
       </ng-container>
       <ng-container *ngIf="customclass == null">
-        <i class="{{iconClass}}" aria-hidden="true" (click)="onClick.emit($event)"></i>
+        <i [ngStyle]="{'color':color}" class="{{iconClass}}" aria-hidden="true" (click)="onClick.emit($event)"></i>
       </ng-container>
 
     </ng-container>
@@ -35,11 +35,11 @@ import { IconLoaderService } from '../../services/icon/icon.service';
     <ng-container *ngIf="iconLoaderService.iconToUse == 'mat'">
 
       <ng-container *ngIf="customclass != null">
-        <i class="material-icons" (click)="onClick.emit($event)">{{customclass}}</i>
+        <i [ngStyle]="{'color':color}" class="material-icons" (click)="onClick.emit($event)">{{customclass}}</i>
       </ng-container>
 
       <ng-container *ngIf="customclass == null">
-        <i class="material-icons" (click)="onClick.emit($event)">{{iconClass}}</i>
+        <i [ngStyle]="{'color':color}" class="material-icons" (click)="onClick.emit($event)">{{iconClass}}</i>
       </ng-container>
 
 
@@ -52,6 +52,8 @@ export class AmexioNavIconPaneComponent implements OnInit, OnChanges {
   @Input() key: string;
 
   @Input() customclass: string;
+
+  @Input() color: string;
 
   @Output() onClick: EventEmitter<any> = new EventEmitter<any>();
 
