@@ -2559,7 +2559,7 @@ input:checked + .toggle-slider:before {
 
 /** floatingbutton - Structure CSS **/
 .floatingbutton {
-  z-index: 3;
+  z-index: 1;
   text-align: center;
   border-color: #000080;
   cursor: pointer;
