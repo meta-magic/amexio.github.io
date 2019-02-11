@@ -18,6 +18,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, forwardRef, HostListener, Input, NgModule, OnInit, Output } from '@angular/core';
 import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, Validator } from '@angular/forms';
+import { AmexioFormValidator } from './../form-validator/amexio.form.validator.component';
+
 @Component({
   selector: 'amexio-rating-input',
   templateUrl: './rating.component.html',
@@ -33,7 +35,7 @@ import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR
   },
   ],
 })
-export class AmexioRatingComponent implements OnInit, ControlValueAccessor, Validator {
+export class AmexioRatingComponent extends AmexioFormValidator implements OnInit, ControlValueAccessor, Validator {
   /*
   Properties
   name : icon-class
@@ -133,6 +135,11 @@ export class AmexioRatingComponent implements OnInit, ControlValueAccessor, Vali
   get max() {
     return this._max;
   }
+
+  componentId: any;
+  starId: any;
+  ratingRangeData: any = [];
+
   // -------------------------------------------------------------------------
   // Outputs
   // -------------------------------------------------------------------------
@@ -172,6 +179,7 @@ export class AmexioRatingComponent implements OnInit, ControlValueAccessor, Vali
   // -------------------------------------------------------------------------
   writeValue(value: number): void {
     this.model = value;
+    this.setAttribute(value);
   }
   registerOnChange(fn: any): void {
     this.onChange = fn;
@@ -194,6 +202,16 @@ export class AmexioRatingComponent implements OnInit, ControlValueAccessor, Vali
   // Lifecycle callbacks
   // -------------------------------------------------------------------------
   ngOnInit() {
+    this.componentId = this.createCompId('rating', this.fieldlabel);
+    this.starId = 'star' + Math.floor(Math.random() * 1000 + 999);
+    for (let i = 0; i < this.ratingRange.length; i++) {
+      const obj = {};
+      obj['number'] = i + 1;
+      obj['selected'] = false;
+      obj['tabindex'] = '-1';
+      this.ratingRangeData.push(obj);
+    }
+
     this.buildRanges();
   }
   // -------------------------------------------------------------------------
@@ -215,6 +233,7 @@ export class AmexioRatingComponent implements OnInit, ControlValueAccessor, Vali
       this.hovered = hovered;
       this.onHover.emit(hovered);
     }
+    this.ratingMethod(hovered);
   }
   changeHovered(event: MouseEvent): void {
     if (!this.float) {
@@ -232,9 +251,36 @@ export class AmexioRatingComponent implements OnInit, ControlValueAccessor, Vali
   }
   rate(value: number) {
     if (!this.readonly && !this.disabled && value >= 0 && value <= this.ratingRange.length) {
+      this.setAttribute(value);
       const newValue = this.hoveredPercent ? (value - 1) + this.hoveredPercent / 100 : value;
       this.model = newValue;
     }
+  }
+
+  rate1(item: any) {
+    this.ratingMethod(item);
+  }
+
+  setAttribute(value: any) {
+    this.ratingRangeData.forEach((element: any) => {
+      element.selected = false;
+      element.tabindex = '-1';
+      if (value >= element.number) {
+        element.selected = true;
+      }
+      if (value === element.number) {
+        element.tabindex = 0;
+      }
+    });
+  }
+
+  ratingMethod(item: any) {
+    this.ratingRangeData.forEach((element: any) => {
+      element.selected = false;
+      if (item + 1 >= element.number) {
+        element.selected = true;
+      }
+    });
   }
   // -------------------------------------------------------------------------
   // Private Methods

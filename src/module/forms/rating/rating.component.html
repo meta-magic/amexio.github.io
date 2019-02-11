@@ -1,19 +1,28 @@
-<div class="inputgroup">
+<div tabindex="0" role="radiogroup" attr.aria-labelledby="{{componentId}}" class="inputgroup">
     <ng-container *ngIf="fieldlabel">
-        <label>
-          {{fieldlabel}}
-        </label>
+      <legend id="{{componentId}}">
+        {{fieldlabel}}
+      </legend>
     </ng-container>
-
-
-    <div (mouseleave)="resetHovered()" class="rating" [class.disabled]="disabled" [class.readonly]="readonly" tabindex="0" role="slider" aria-valuemin="0" [attr.aria-valuemax]="ratingRange.length" [attr.aria-valuenow]="model">
-        <span *ngFor="let item of ratingRange; let index = index">
-          <em (mouseenter)="setHovered(item)"
-             (mousemove)="changeHovered($event)"
-             (click)="rate(item)"
-             [attr.data-icon]="fullicon"
-             class="{{ iconclass }} half{{ calculateWidth(item) }}"
-             [title]="titles[index] || item">{{ emptyicon }}</em>
-      </span>
+  
+    <div (mouseleave)="resetHovered()" class="rating" 
+    >
+    <span *ngFor="let item of ratingRangeData; let index = index">
+        <input (keyup.space)="rate1(index)"
+          style="top:0; left:0; position: absolute;
+        opacity: 0;
+        cursor: pointer;" value="{{model}}" id="{{starId}}{{index}}" [attr.aria-checked]="item.selected"
+        type="radio" name="rating" role="radio">
+  
+      <label for="{{starId}}{{index}}">
+        <em role="tooltip" [attr.tabindex]="item.tabindex" (mouseenter)="setHovered(item.number)"
+        attr.aria-label="Star {{index+1}}"
+        (click)="rate(item.number)"
+        [attr.data-icon]="fullicon"
+         class="{{ iconclass }} half{{(item.selected? 100 : 0) }}"
+        [title]="titles[index] || item.number">{{ emptyicon }}</em>
+        </label>
+       
+    </span>
     </div>
-</div>
+  </div>
