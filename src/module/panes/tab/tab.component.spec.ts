@@ -3,7 +3,6 @@ import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { IconLoaderService } from '../../../index';
 import { AmexioTabComponent } from './tab.component';
-import { AmexioIconPaneComponent } from '../icon/icon.component';
 import {AmexioTabPillComponent} from './tab.pill.component';
 
 describe('amexio-tab', () => {
@@ -14,7 +13,7 @@ describe('amexio-tab', () => {
         beforeEach(() => {
             TestBed.configureTestingModule({
                 imports: [FormsModule],
-                declarations: [AmexioTabComponent, AmexioIconPaneComponent],
+                declarations: [AmexioTabComponent],
                 providers: [IconLoaderService],
             });
             fixture = TestBed.createComponent(AmexioTabComponent);

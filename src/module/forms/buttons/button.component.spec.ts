@@ -2,7 +2,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { IconLoaderService } from '../../../index';
-import { AmexioFormIconComponent } from './../icon/icon.component';
 import { AmexioButtonComponent } from './button.component';
 
 describe('amexio-button', () => {
@@ -12,7 +11,7 @@ describe('amexio-button', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
-      declarations: [AmexioButtonComponent, AmexioFormIconComponent, AmexioButtonComponent],
+      declarations: [AmexioButtonComponent, AmexioButtonComponent],
       providers: [IconLoaderService],
     });
     fixture = TestBed.createComponent(AmexioButtonComponent);
@@ -102,7 +101,7 @@ describe('amexio-button', () => {
       expect(btn).toEqual(g);
     });
   });
-    
+
 
     it('check setDisabled method', () => {
       let dis: boolean;

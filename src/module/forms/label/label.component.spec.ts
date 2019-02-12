@@ -3,7 +3,6 @@ import {FormsModule} from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { IconLoaderService } from '../../../index';
 import { AmexioButtonComponent } from './../buttons/button.component';
-import { AmexioFormIconComponent } from './../icon/icon.component';
 import { AmexioLabelComponent } from './label.component';
 
 describe('amexio-label' , () => {
@@ -13,7 +12,7 @@ describe('amexio-label' , () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports : [FormsModule],
-      declarations: [ AmexioLabelComponent, AmexioFormIconComponent, AmexioButtonComponent],
+      declarations: [ AmexioLabelComponent, AmexioButtonComponent],
       providers: [IconLoaderService],
     });
     fixture = TestBed.createComponent(AmexioLabelComponent);
@@ -44,7 +43,7 @@ describe('amexio-label' , () => {
     expect(comp.enableclick).toEqual(true);
   });
 
-  
+
   it('click enable check ',() => {
     comp.onLabel(event);
     expect(comp.enableclick).not.toEqual('null');

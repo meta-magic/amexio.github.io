@@ -3,7 +3,6 @@ import {FormsModule} from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { IconLoaderService } from '../../../index';
 import { AmexioButtonComponent } from './../buttons/button.component';
-import { AmexioFormIconComponent } from './../icon/icon.component';
 import { AmexioFloatingButtonComponent } from './floatingbutton.component';
 
 describe('amexio-floating-button' , () => {
@@ -13,7 +12,7 @@ describe('amexio-floating-button' , () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports : [FormsModule],
-      declarations: [ AmexioFloatingButtonComponent, AmexioFormIconComponent, AmexioButtonComponent],
+      declarations: [ AmexioFloatingButtonComponent, AmexioButtonComponent],
       providers: [IconLoaderService],
     });
     fixture = TestBed.createComponent(AmexioFloatingButtonComponent);
@@ -44,7 +43,7 @@ describe('amexio-floating-button' , () => {
     comp.disabled = '';
     expect((<any>comp).disabled).not.toEqual(true);
   });
-  
+
   it('check verticalposition is null', () => {
     comp.btnPositionCss();
     //comp.top = 'true';
@@ -57,7 +56,7 @@ describe('amexio-floating-button' , () => {
     comp.horizontalposition = null
     expect((<any>comp).horizontalposition).toEqual(null);
   });
-  
+
 
   it('check private variable absoluteposition boolean', () => {
     comp.addCSSClasses();
@@ -67,9 +66,9 @@ describe('amexio-floating-button' , () => {
     expect((<any>comp).absoluteposition).toEqual(true);
   });
 
-  
 
-  
+
+
 
 
 

@@ -13,7 +13,6 @@
 // limitations under the License.
 
 import { AmexioButtonComponent } from './../buttons/button.component';
-import { AmexioFormIconComponent } from './../icon/icon.component';
 import { AmexioDateTimePickerComponent } from './datetimepicker.component';
 import { By } from '@angular/platform-browser';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
@@ -30,7 +29,7 @@ describe('amexio-date-time-picker', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule, NoopAnimationsModule],
-      declarations: [AmexioDateTimePickerComponent, AmexioFormIconComponent, AmexioButtonComponent],
+      declarations: [AmexioDateTimePickerComponent, AmexioButtonComponent],
       providers: [IconLoaderService ]
     });
     fixture = TestBed.createComponent(AmexioDateTimePickerComponent);
@@ -353,7 +352,7 @@ describe('amexio-date-time-picker', () => {
     ];
     comp['nextMonth'](event);
 
-    // event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']); 
+    // event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
 
     comp.setDateData('plus', 1, event);
     // expect(event.preventDefault).toBeTruthy();
@@ -489,7 +488,7 @@ describe('amexio-date-time-picker', () => {
   //   let bool = comp['innerValue'] instanceof Date;
   //   expect(bool).toEqual(true);
 
-  // }); 
+  // });
 
   it('createDaysForCurrentMonths()', () => {
     event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
@@ -540,7 +539,7 @@ describe('amexio-date-time-picker', () => {
     let test1 = expect(days.getMonth()).toBeGreaterThanOrEqual(max.getMonth());
     expect(days.getFullYear()).toBeGreaterThanOrEqual(max.getFullYear());
 
-    //else if 
+    //else if
     max.setFullYear(2017);
     expect(days.getMonth()).toBeGreaterThan(max.getMonth());
     expect(days.getFullYear()).toEqual(max.getFullYear());
@@ -1058,7 +1057,7 @@ describe('amexio-date-time-picker', () => {
 
     comp.maxDate = '27-Mar-2016';
     comp.minDate = ''
-  
+
     expect(comp.maxDate.length).toBeGreaterThan(0);
     expect(comp.minDate.length).toBeLessThanOrEqual(0);
 
@@ -1132,7 +1131,7 @@ describe('amexio-date-time-picker', () => {
     comp['disableddays'](comp.diabledDate);
 
   });
- 
+
   //
   it('plus()', () => {
    let type = 'min';
@@ -1148,13 +1147,13 @@ describe('amexio-date-time-picker', () => {
     type = 'hrs';
     expect(type).toEqual('hrs')
     comp.hrs++;
-    
+
     comp.hrs = 24;
     expect(comp.hrs).toEqual(24);
     comp.hrs = 0;
-     
+
     comp.selectedDate.setHours(comp.hrs);
-     
+
     comp.selectedDate.setMinutes(comp.min);
     comp.value = comp.selectedDate;
     expect(comp.value).toEqual(comp.selectedDate);
@@ -1173,16 +1172,16 @@ it('onminus()', () => {
   expect(comp.min).toEqual(0);
   comp.min = 60;
   comp.hrs--;
-  
+
   type = 'hrs';
-  comp.hrs = 20;  
+  comp.hrs = 20;
   expect(type).toEqual('hrs');
   comp.hrs--;
 
   comp.hrs = 0;
   expect(comp.hrs).toEqual(0);
   comp.hrs = 23;
- 
+
   comp.selectedDate.setHours(comp.hrs);
   comp.selectedDate.setMinutes(comp.min);
   comp.value = comp.selectedDate;
@@ -1197,7 +1196,7 @@ it('onminus()', () => {
 // it('getListPosition()', () => {
 //   let elem: any;
 //   comp.getListPosition(elem);
-  
+
 // });
 
 });

@@ -3,7 +3,6 @@ import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { IconLoaderService } from '../../../index';
 import { AmexioButtonComponent } from './../buttons/button.component';
-import { AmexioFormIconComponent } from './../icon/icon.component';
 import { AmexioSpiltButtonDropdownComponent } from './split.button.dropdown';
 import { AmexioFloatingButtonComponent } from '../floatingbutton/floatingbutton.component'
 describe('amexio-spilt-button', () => {
@@ -13,7 +12,7 @@ describe('amexio-spilt-button', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
-      declarations: [AmexioSpiltButtonDropdownComponent, AmexioFloatingButtonComponent, AmexioFormIconComponent, AmexioButtonComponent],
+      declarations: [AmexioSpiltButtonDropdownComponent, AmexioFloatingButtonComponent, AmexioButtonComponent],
       providers: [IconLoaderService],
     });
     fixture = TestBed.createComponent(AmexioSpiltButtonDropdownComponent);
@@ -66,7 +65,7 @@ describe('amexio-spilt-button', () => {
     comp.type = 'green';
     expect(comp.type).toEqual('green');
       colorCode = '#5cb85c';
-    expect(colorCode).toBe('#5cb85c'); 
+    expect(colorCode).toBe('#5cb85c');
 
 
 

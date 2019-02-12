@@ -3,7 +3,6 @@ import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { IconLoaderService } from '../../../index';
 import { AmexioButtonComponent } from './../buttons/button.component';
-import { AmexioFormIconComponent } from './../icon/icon.component';
 import { AmexioEmailInputComponent } from './emailinput.component';
 import { stringify } from 'querystring';
 import { AmexioInputHelperComponent } from '../../base/input.helper.component';
@@ -15,8 +14,8 @@ describe('amexio-email-input', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
-      declarations: [AmexioEmailInputComponent, AmexioFormIconComponent, AmexioButtonComponent, AmexioInputHelperComponent],
-      
+      declarations: [AmexioEmailInputComponent, AmexioButtonComponent, AmexioInputHelperComponent],
+
       providers: [IconLoaderService],
     });
     fixture = TestBed.createComponent(AmexioEmailInputComponent);
@@ -101,7 +100,7 @@ describe('amexio-email-input', () => {
     });
   });
 
- 
+
 
   //get pattern
   it('get pattern', () => {

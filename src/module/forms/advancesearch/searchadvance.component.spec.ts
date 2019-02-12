@@ -4,7 +4,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { ChangeDetectorRef, ElementRef } from '@angular/core';
 import { AmexioButtonComponent } from './../buttons/button.component';
-import { AmexioFormIconComponent } from './../icon/icon.component';
 describe('searchadvance ', () => {
   let comp: AmexioSearchAdvanceComponent;
   let fixture: ComponentFixture<AmexioSearchAdvanceComponent>;
@@ -12,7 +11,7 @@ describe('searchadvance ', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
-      declarations: [AmexioSearchAdvanceComponent, AmexioFormIconComponent, AmexioButtonComponent],
+      declarations: [AmexioSearchAdvanceComponent, AmexioButtonComponent],
       providers: [IconLoaderService ]
     });
     fixture = TestBed.createComponent(AmexioSearchAdvanceComponent);
@@ -22,7 +21,7 @@ describe('searchadvance ', () => {
   });
 
 
-    it('true is true', () => 
+    it('true is true', () =>
     expect(true).toBe(true));
 
     it('closeSearchForm()', () => {
@@ -34,4 +33,3 @@ describe('searchadvance ', () => {
   });
 
 
-  

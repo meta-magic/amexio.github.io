@@ -1,6 +1,5 @@
 
 import { AmexioButtonComponent } from './../buttons/button.component';
-import { AmexioFormIconComponent } from './../icon/icon.component';
 import { AmexioTextAreaComponent } from './textarea.component';
 import { By } from '@angular/platform-browser';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
@@ -15,7 +14,7 @@ describe('TextArea ', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
-      declarations: [AmexioTextAreaComponent, AmexioFormIconComponent, AmexioInputHelperComponent],
+      declarations: [AmexioTextAreaComponent, AmexioInputHelperComponent],
       providers: [IconLoaderService]
     });
     fixture = TestBed.createComponent(AmexioTextAreaComponent);
@@ -27,13 +26,13 @@ describe('TextArea ', () => {
     comp.helpInfoMsg = "test";
     expect(comp.helpInfoMsg).toEqual(comp.helpInfoMsg);
   });
- 
+
 
 
   it('get pattern', () => {
     expect(comp.pattern).toEqual(comp._pattern);
   });
- 
+
   it('get errormsg', () => {
     expect(comp.errormsg).toEqual(comp._errormsg);
   });

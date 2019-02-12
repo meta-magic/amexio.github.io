@@ -4,8 +4,6 @@ import { By } from '@angular/platform-browser';
 import { IconLoaderService } from '../../services/icon/icon.service';
 
 import { AmexioButtonComponent } from '../../forms/buttons/button.component';
-import {AmexioFormIconComponent} from '../../forms/icon/icon.component';
-import {AmexioIconLayoutComponent} from '../../layout/icon/icon.component';
 import { AmexioBoxComponent } from './box.component';
 
 describe('amexio-box' , () => {
@@ -15,7 +13,7 @@ describe('amexio-box' , () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports : [FormsModule],
-      declarations: [ AmexioBoxComponent,AmexioFormIconComponent, AmexioIconLayoutComponent, AmexioButtonComponent],
+      declarations: [ AmexioBoxComponent, AmexioButtonComponent],
       providers: [IconLoaderService],
     });
     fixture = TestBed.createComponent(AmexioBoxComponent);
@@ -23,7 +21,7 @@ describe('amexio-box' , () => {
   });
 
   it('close check true',() => {
-   
+
     comp.close = true;
     expect(comp.close).toEqual(true);
   });
@@ -43,7 +41,7 @@ describe('amexio-box' , () => {
     expect(comp.bgColor).toBe(null);
     expect(comp.borderColor).toEqual('box-default');
     comp.bgColor = comp.borderColor;
-    expect(comp.bgColor).toEqual(comp.borderColor);    
-    
+    expect(comp.bgColor).toEqual(comp.borderColor);
+
   });
 });

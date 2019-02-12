@@ -1,5 +1,4 @@
 import { AmexioTagsInputComponent } from './tags.input.component';
-import { AmexioFormIconComponent } from '../icon/icon.component';
 import { FormsModule } from '@angular/forms';
 import { IconLoaderService } from '../../../index';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
@@ -14,7 +13,7 @@ describe('TAG INPUT', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule],
-            declarations: [AmexioTagsInputComponent, AmexioFormIconComponent, AmexioInputHelperComponent],
+            declarations: [AmexioTagsInputComponent, AmexioInputHelperComponent],
             providers: [IconLoaderService, Renderer2, CommonDataService, HttpClient, HttpHandler]
         });
         fixture = TestBed.createComponent(AmexioTagsInputComponent);

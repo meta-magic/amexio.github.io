@@ -3,8 +3,6 @@ import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { IconLoaderService } from '../../../index';
 import { AmexiodialoguePaneComponent } from './dialogue.pane.component';
-import { AmexioIconPaneComponent } from '../icon/icon.component';
-import { AmexioFormIconComponent } from '../../forms/icon/icon.component';
 
 import { AmexioButtonComponent } from '../../forms/buttons/button.component';
 
@@ -18,7 +16,7 @@ describe('amexio-steps', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule],
-            declarations: [AmexiodialoguePaneComponent, AmexioIconPaneComponent, AmexioFormIconComponent, AmexioButtonComponent],
+            declarations: [AmexiodialoguePaneComponent, AmexioButtonComponent],
             providers: [IconLoaderService],
         });
         fixture = TestBed.createComponent(AmexiodialoguePaneComponent);

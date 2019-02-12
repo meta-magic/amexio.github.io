@@ -12,7 +12,6 @@ import { AmexioRowComponent } from '../../layout/rows/row.component';
 
 import { AmexioHeaderComponent } from '../../panes/header/pane.action.header';
 import { AmexioCardComponent } from '../../layout/card/card.component';
-import { AmexioDataIconComponent } from '../icon/icon.component';
 import { AmexioBodyComponent } from '../../panes/body/pane.action.body';
 import { stringify } from 'querystring';
 import { CommonDataService } from '../../services/data/common.data.service';
@@ -27,7 +26,7 @@ describe('amexio-item-selector', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule],
-            declarations: [AmexioItemSelectorComponent, AmexioRowComponent, AmexioBodyComponent, AmexioHeaderComponent, AmexioCardComponent, AmexioDataIconComponent, AmexioColumnComponent],
+            declarations: [AmexioItemSelectorComponent, AmexioRowComponent, AmexioBodyComponent, AmexioHeaderComponent, AmexioCardComponent, AmexioColumnComponent],
             providers: [IconLoaderService, CommonDataService, HttpClient, HttpHandler,],
         });
         fixture = TestBed.createComponent(AmexioItemSelectorComponent);

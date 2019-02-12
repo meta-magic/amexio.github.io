@@ -5,7 +5,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { ChangeDetectorRef, ElementRef } from '@angular/core';
 import { AmexioButtonComponent } from './../buttons/button.component';
-import { AmexioFormIconComponent } from './../icon/icon.component';
 import { CommonDataService } from '../../services/data/common.data.service';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 
@@ -17,7 +16,7 @@ describe('searchboxtool ', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
-      declarations: [SearchboxtoolComponent,AmexioSearchAdvanceComponent, AmexioFormIconComponent, AmexioButtonComponent],
+      declarations: [SearchboxtoolComponent,AmexioSearchAdvanceComponent, AmexioButtonComponent],
       providers: [IconLoaderService, CommonDataService, HttpClient, HttpHandler]
     });
     fixture = TestBed.createComponent(SearchboxtoolComponent);
@@ -84,7 +83,7 @@ describe('searchboxtool ', () => {
     { selected: 'Jaipur' }];
 
     comp.selectCssClass();
-    
+
     expect(comp.viewData.length).toBeGreaterThan(5);
 
     comp.viewData = [{ selected: 'Mumbai' }, { selected: 'Pune' },
@@ -97,7 +96,7 @@ it(' closeSearchForm()', () => {
   comp.closeSearchForm();
   comp.advanceSearchFlag = false;
 });
-  
+
 //
 
 });

@@ -1,6 +1,5 @@
 
 import { AmexioButtonComponent } from './../buttons/button.component';
-import { AmexioFormIconComponent } from './../icon/icon.component';
 import { ToolBarActionComponent } from './toolbaraction.component';
 import { ToolbarComponent } from './toolbar.component';
 import { By } from '@angular/platform-browser';
@@ -15,7 +14,7 @@ describe('amexio-toolbar-item', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule],
-            declarations: [ToolBarActionComponent, ToolbarComponent, AmexioFormIconComponent],
+            declarations: [ToolBarActionComponent, ToolbarComponent],
             providers: [IconLoaderService]
         });
         fixture = TestBed.createComponent(ToolBarActionComponent);
@@ -26,11 +25,11 @@ describe('amexio-toolbar-item', () => {
     });
 
     it('check for actionComponent', () => {
-        expect(comp.actionComponent).toBe('');       
+        expect(comp.actionComponent).toBe('');
     });
 
     it('should emit ', (check) => {
-      
+
         const node = {
             title: 't',
             type: 'a',

@@ -3,7 +3,6 @@ import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { IconLoaderService } from '../../../index';
 import { AmexioStepsComponent } from './steps.component';
-import { AmexioIconPaneComponent} from '../icon/icon.component';
 import { toUnicode } from 'punycode';
 import { SSL_OP_NO_SESSION_RESUMPTION_ON_RENEGOTIATION } from 'constants';
 
@@ -14,7 +13,7 @@ describe('amexio-steps', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule],
-            declarations: [AmexioStepsComponent,AmexioIconPaneComponent],
+            declarations: [AmexioStepsComponent],
             providers: [IconLoaderService],
         });
         fixture = TestBed.createComponent(AmexioStepsComponent);

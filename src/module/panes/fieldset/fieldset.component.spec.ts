@@ -4,7 +4,6 @@ import { By } from '@angular/platform-browser';
 import { IconLoaderService } from '../../../index';
 import { AmexioFieldSetComponent } from './fieldset.component';
 import { AmexioStepsComponent } from '../steps/steps.component';
-import { AmexioIconPaneComponent } from '../icon/icon.component';
 import { toUnicode } from 'punycode';
 import { SSL_OP_NO_SESSION_RESUMPTION_ON_RENEGOTIATION } from 'constants';
 
@@ -15,7 +14,7 @@ describe('amexio-fieldset', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule],
-            declarations: [AmexioFieldSetComponent, AmexioStepsComponent, AmexioIconPaneComponent],
+            declarations: [AmexioFieldSetComponent, AmexioStepsComponent],
             providers: [IconLoaderService],
         });
         fixture = TestBed.createComponent(AmexioFieldSetComponent);

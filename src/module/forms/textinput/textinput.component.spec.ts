@@ -6,7 +6,6 @@
  * Created by pratik on 1/12/17.
  */
 import { AmexioTextInputComponent } from './textinput.component';
-import { AmexioFormIconComponent } from '../icon/icon.component';
 import { FormsModule } from '@angular/forms';
 import { IconLoaderService } from '../../../index'
 import { ComponentFixture, TestBed } from '@angular/core/testing';
@@ -19,7 +18,7 @@ describe('NUMBER INPUT', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
-      declarations: [AmexioTextInputComponent, AmexioFormIconComponent, AmexioInputHelperComponent],
+      declarations: [AmexioTextInputComponent, AmexioInputHelperComponent],
       providers: [IconLoaderService]
     });
     fixture = TestBed.createComponent(AmexioTextInputComponent);
@@ -67,11 +66,11 @@ describe('NUMBER INPUT', () => {
     expect(comp.value).toEqual(fixture);
   });
 
- 
+
   it('getCssClass()', () => {
   });
-  
- 
+
+
   it('check for isValid', () => {
     comp.isValid = true;
     expect(comp.isValid).toEqual(true);
