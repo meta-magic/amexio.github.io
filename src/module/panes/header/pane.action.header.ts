@@ -40,7 +40,6 @@ export class AmexioHeaderComponent implements OnInit {
   @HostBinding('style.background') private background = '';
 
   @HostBinding('style.color') color = '';
-  
   @Input() padding: string;
 
   closeable = false;
