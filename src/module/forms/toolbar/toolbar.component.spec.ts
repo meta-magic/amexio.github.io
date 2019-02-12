@@ -3,7 +3,6 @@ import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { IconLoaderService } from '../../../index';
 import { ToolbarComponent } from './toolbar.component';
-import { AmexioFormIconComponent } from '../../forms/icon/icon.component';
 import { AmexioButtonComponent } from '../../forms/buttons/button.component';
 
 import { toUnicode } from 'punycode';
@@ -16,7 +15,7 @@ describe('amexio-toolbar', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule],
-            declarations: [ToolbarComponent, AmexioFormIconComponent, AmexioButtonComponent],
+            declarations: [ToolbarComponent, AmexioButtonComponent],
             providers: [IconLoaderService],
         });
         fixture = TestBed.createComponent(ToolbarComponent);
@@ -61,7 +60,7 @@ describe('amexio-toolbar', () => {
 
 
     });
-    
+
 
     // it('onToolClick check method',() => {
     //     let tool: any;
