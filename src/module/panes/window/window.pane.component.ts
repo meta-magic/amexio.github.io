@@ -1,25 +1,48 @@
-/**
+/*
+ * Copyright [2019] [Metamagic]
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
  * Created by ketangote on 12/18/17.
  */
 
-/*
- Component Name : Amexio Window
- Component Selector : <amexio-window>
- Component Description:  Window Pane component is a customizable Modal Pane in which user can enter custom content
- */
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import {
-  Component, ContentChildren, ElementRef, EventEmitter, HostListener,
-  Input, OnChanges, OnDestroy, OnInit, Output, QueryList, Renderer2, SimpleChanges, ViewChild,
+  AfterContentInit, Component, ContentChildren, ElementRef, EventEmitter, Input, OnChanges, OnDestroy,
+  OnInit, Output, QueryList, Renderer2, SimpleChanges, ViewChild,
 } from '@angular/core';
-import { AmexioWindowHeaderComponent } from './window.pane.header.component';
-export enum KEY_CODE_window {
-  esc = 27,
-}
+import {AmexioFooterComponent} from '../action/pane.action.footer';
+import {AmexioBodyComponent} from '../body/pane.action.body';
+import {AmexioHeaderComponent} from '../header/pane.action.header';
 @Component({
   selector: 'amexio-window',
   templateUrl: './window.pane.component.html',
+  animations: [
+    trigger('animation', [
+      state('void', style({
+        transform: 'translate3d(0, 25%, 0) scale(0.9)',
+        opacity: 0,
+      })),
+      state('visible', style({
+        transform: 'none',
+        opacity: 1,
+      })),
+      transition('* => *', animate('400ms cubic-bezier(0.25, 0.8, 0.25, 1)')),
+    ]),
+  ],
 })
-export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy {
+export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy, AfterContentInit {
+
   /*
    Properties
    name : vertical-position
@@ -30,7 +53,7 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy {
    This attribute is ignored if user specify position explicitly
    (using position-top/position-bottom/position-left/position-right)
    */
-  @Input('vertical-position') verticalposition: string;
+  @Input('vertical-position') verticalposition = 'center';
   /*
    Properties
    name : horizontal-position
@@ -50,7 +73,7 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy {
    default : false
    description : Enables And Disables the Escape button.
    */
-  @Input('close-on-escape') closeonescape: boolean;
+  @Input('close-on-escape') closeonescape = true;
   /*
    Properties
    name : position-top
@@ -60,24 +83,6 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy {
    description : Takes top position in percentage or pixel
    */
   @Input('position-top') top: string;
-  /*
-   Properties
-   name : position-bottom
-   datatype : none
-   version : 4.2onwards
-   default : none
-   description : Takes top position in percentage or pixel
-   */
-  @Input('position-bottom') bottom: string;
-  /*
-   Properties
-   name : relative
-   datatype : boolean
-   version : 4.1 onwards
-   default : none
-   description : Place floating button at relative position
-   */
-  @Input('relative') relative = false;
 
   /*
    Properties
@@ -127,7 +132,7 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy {
    default :false
    description : User can maximize the window to full screen.
    */
-  @Input() maximize: boolean;
+  @Input() maximize = false;
 
   /*
    Properties
@@ -137,7 +142,7 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy {
    default : false
    description : User can close the window.
    */
-  @Input() closable: boolean;
+  @Input() closable = true;
 
   /*
    Properties
@@ -147,7 +152,7 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy {
    default : false
    description : it is flag that decides header visibility
    */
-  @Input() header: boolean;
+  @Input() header = true;
 
   /*
    Properties
@@ -168,39 +173,32 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy {
    */
   private window = ' window-';
   /*
-Properties
-name :  context-menu
-datatype : string
-version : 5.0.1 onwards
-default :
-description : Context Menu provides the list of menus on right click.
-*/
+   Properties
+   name :  context-menu
+   datatype : string
+   version : 5.0.1 onwards
+   default :
+   description : Context Menu provides the list of menus on right click.
+   */
   // context menu input output
   @Input('context-menu') contextmenu: any[];
 
-  @Input() parentRef: any;
+  @Input('width') width = '90%';
 
   @Output() nodeRightClick: any = new EventEmitter<any>();
 
   @Output() rightClick: any = new EventEmitter<any>();
 
-  @ContentChildren(AmexioWindowHeaderComponent) amexioHeader: QueryList<AmexioWindowHeaderComponent>;
-  headerComponentList: AmexioWindowHeaderComponent[];
-
+  @ContentChildren(AmexioHeaderComponent) amexioHeader: QueryList<AmexioHeaderComponent>;
+  @ContentChildren(AmexioFooterComponent) amexioFooter: QueryList<AmexioFooterComponent>;
+  @ContentChildren(AmexioBodyComponent) amexioBody: QueryList<AmexioBodyComponent>;
   @Output() close: EventEmitter<any> = new EventEmitter<any>();
-  styleClass: string;
+
+  maximumWindowStyle: any;
+
+  dummyWidth: string;
 
   constructor(private renderer: Renderer2) {
-    this.header = true;
-    this.closable = true;
-    this.closeonescape = true;
-    if (this.verticalposition == null) {
-      this.verticalposition = 'center';
-    }
-    if (this.horizontalposition == null) {
-      this.horizontalposition = 'center';
-    }
-    this.positionclass = this.window + this.verticalposition + this.window + this.horizontalposition;
   }
   flag: boolean;
 
@@ -208,21 +206,9 @@ description : Context Menu provides the list of menus on right click.
 
   rightClickNodeData: any;
 
-  contextStyle: any;
-
-  componentId: string;
-
   mouseLocation: { left: number; top: number } = { left: 0, top: 0 };
-  absoluteposition = false;
-  positionclass: string;
   globalListenFunc: () => void;
   globalClickListenFunc: () => void;
-  // THIS METHOD IS USED FOR SETTING CSS CLASSSES
-
-  sizeChange() {
-    this.isFullWindow = !this.isFullWindow;
-    this.setClass();
-  }
 
   onCloseClick() {
     if (this.closable) {
@@ -234,34 +220,101 @@ description : Context Menu provides the list of menus on right click.
     }
   }
   ngOnInit() {
+    this.setVerticlePosition();
+    this.setHorizontalPosition();
+    if (this.maximize) {
+      this.dummyWidth = this.width;
+      this.isFullWindow = true;
+      this.maximumWindowStyle = this.setMaximizeClass(this.isFullWindow);
+    }
     if (this.showWindow) {
       this.show = this.showWindow;
     }
 
-    if (this.maximize == null) {
-      this.maximize = false;
-      this.isFullWindow = false;
-    } else if (this.maximize) {
-      this.isFullWindow = true;
-      this.bodyHeight = '100%';
-    }
-    if (this.footeralign == null) {
-      this.footeralign = 'right';
-    }
-
-    if (this.verticalposition === '') {
-      this.verticalposition = 'center';
-    }
-    if (this.horizontalposition === '') {
-      this.horizontalposition = 'center';
-    }
-    this.positionclass = this.window + this.verticalposition + this.window + this.horizontalposition;
-    this.setClass();
-    this.componentId = this.createCompId('window', this.header);
-
   }
-  createCompId(inputType: any, name: any) {
-    return inputType + '_' + name + '_' + Math.floor(Math.random() * 1000 + 999);
+
+  setMaximizeClass(isFullWindow: boolean) {
+    this.isFullWindow = isFullWindow;
+    if (isFullWindow) {
+      this.width = '100%';
+      return {
+        'margin-top': '0', 'height': '100%',
+      };
+    } else {
+      this.width = this.dummyWidth;
+      return {
+        'margin-top': '1%', 'height': '96%',
+      };
+    }
+  }
+
+  setVerticlePosition() {
+    switch (this.verticalposition) {
+      case 'top': {
+        this.verticalposition = 'flex-start';
+        break;
+      }
+      case 'center': {
+        this.verticalposition = 'center';
+        break;
+      }
+      case 'bottom': {
+        this.verticalposition = 'flex-end';
+        break;
+      }
+      default : {
+        this.verticalposition = 'center';
+        break;
+      }
+    }
+  }
+
+  setHorizontalPosition() {
+    switch (this.horizontalposition) {
+      case 'left': {
+        this.horizontalposition = 'flex-start';
+        break;
+      }
+      case 'center': {
+        this.horizontalposition = 'center';
+        break;
+      }
+      case 'right': {
+        this.horizontalposition = 'flex-end';
+        break;
+      }
+      default : {
+        this.horizontalposition = 'center';
+        break;
+      }
+    }
+  }
+
+  /* ASSIGN PROPERTIES TO FOOTER AND HEADER*/
+
+  ngAfterContentInit(): void {
+    if (this.amexioFooter && this.footer) {
+      this.amexioFooter.toArray().forEach((footer: any) => {
+        footer.footer = this.footer;
+        footer.setFooterAlignment(this.footeralign);
+      });
+    }
+    if (this.amexioHeader && this.header) {
+      this.amexioHeader.toArray()[0].closeable = this.closable;
+      if (this.maximize) {
+        this.amexioHeader.toArray()[0].setMaximizeData(this.maximize, this.isFullWindow);
+        this.amexioHeader.toArray()[0].maximizeBehaiour.subscribe((max: any) => {
+          this.maximumWindowStyle = this.setMaximizeClass(max);
+        });
+      }
+      this.amexioHeader.toArray()[0].setMaterialDesignStatus(this.materialDesign);
+      this.amexioHeader.toArray()[0].closeableBehaiour.subscribe((close: any) => {
+        this.onCloseClick();
+      });
+    }
+    if (this.amexioBody && this.bodyHeight) {
+      this.amexioBody.toArray()[0].height = this.bodyHeight + '%';
+    }
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -277,19 +330,15 @@ description : Context Menu provides the list of menus on right click.
     if (this.show && this.closeonescape) {
       this.globalListenFunc = this.renderer.listen('document', 'keyup.esc', (e: any) => {
         this.showWindow = false;
+        this.show = false;
         this.showChange.emit(false);
+        this.close.emit(this.showWindow);
       });
     } else if (this.globalListenFunc) {
       this.globalListenFunc();
     }
   }
-  setClass() {
-    if (this.isFullWindow) {
-      this.styleClass = 'modal-window-content-max';
-    } else {
-      this.styleClass = this.positionclass;
-    }
-  }
+
   // context menu code below
   getContextMenu() {
     if (this.contextmenu && this.contextmenu.length > 0) {

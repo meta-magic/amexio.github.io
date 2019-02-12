@@ -1,16 +1,7 @@
 
 
-.root-window{
+.amexio-root-window{
   background-color: $modalBGColor; /* Black w/ opacity */
-}
-.modal-window-content{
-  background-color: $modalBGColor;
-}
-
-.modal-window-material{
-  background-color: white;
-  font-size: 20px;
-  color: black;
 }
 .modal-window-header{
   background: $modalHeaderBGColor;
@@ -23,18 +14,18 @@
   color: #ffedeb;
 }
 
-.modal-window-middle{
+.amexio-root-window-content{
   font-size: $modalWindowFontSize;
 }
-.modal-window-middle::-webkit-scrollbar-track
+.amexio-root-window-content::-webkit-scrollbar-track
 {
   background-color: $modalWindowScrollColor;
 }
-.modal-window-middle::-webkit-scrollbar
+.amexio-root-window-content::-webkit-scrollbar
 {
   background-color: $modalWindowScrollColor;
 }
-.modal-window-middle::-webkit-scrollbar-thumb
+.amexio-root-window-content::-webkit-scrollbar-thumb
 {
   background-color: $modalWindowScrollThumbColor;
 }
