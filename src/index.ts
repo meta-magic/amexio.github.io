@@ -15,3 +15,4 @@ export * from './module/dashboard/chart.loader.service';
 export * from './module/map/map.loader.service';
 export * from './module/services/icon/icon.mapping.config';
 export * from './module/layout/accordion/accordion.service';
+export * from './module/services/data/display.field.service';
