@@ -16,10 +16,12 @@
 * Created by ketangote on 1/4/18.
 */
 
-import { AfterContentInit, AfterViewInit, Component, ContentChildren, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output,
-  QueryList, ViewEncapsulation} from '@angular/core';
+import {
+  AfterContentInit, AfterViewInit, Component, ContentChildren, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output,
+  QueryList, ViewEncapsulation,
+} from '@angular/core';
 
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AmexioNavMenuComponent } from './navmenu.component';
 
 const noop = () => {
@@ -28,11 +30,12 @@ const noop = () => {
 @Component({
   selector: 'amexio-nav-item',
   templateUrl: 'navitem.component.html',
-  providers: [{provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioNavItemComponent), multi: true,
+  providers: [{
+    provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioNavItemComponent), multi: true,
   }],
   encapsulation: ViewEncapsulation.None,
 })
-export class AmexioNavItemComponent implements OnInit , ControlValueAccessor, AfterViewInit, AfterContentInit {
+export class AmexioNavItemComponent implements OnInit, ControlValueAccessor, AfterViewInit, AfterContentInit {
 
   /*
 Properties
@@ -84,7 +87,9 @@ description : Fire when nav item is clicked, This event is fired when nav item t
 
 */
   @Output() onNavItemClick: any = new EventEmitter<any>();
+  @ContentChildren(AmexioNavMenuComponent) navmenus: QueryList<AmexioNavMenuComponent>;
 
+  navMenusComponents: AmexioNavMenuComponent[];
   mobilemode = false;
 
   isAction = false;
@@ -92,6 +97,7 @@ description : Fire when nav item is clicked, This event is fired when nav item t
   isMenu = false;
   isMenuContainer = false;
   right: number;
+  itemcolor: string;
   navbarwidth: number;
   enablerightclass: boolean;
   private innerValue = '';
@@ -104,20 +110,19 @@ description : Fire when nav item is clicked, This event is fired when nav item t
   ngOnInit() {
     if (this.type === 'link' || this.type === 'button') {
       this.isAction = true;
-    }else if (this.type === 'textfield') {
+    } else if (this.type === 'textfield') {
       this.isTextField = true;
-    }else if (this.type === 'menu') {
+    } else if (this.type === 'menu') {
       this.isMenu = true;
-    }else if (this.type === 'menucontainer') {
+    } else if (this.type === 'menucontainer') {
       this.isMenuContainer = true;
     }
   }
 
   ngAfterViewInit() {
-   this.right = this.elementref.nativeElement.getBoundingClientRect().right;
+    this.right = this.elementref.nativeElement.getBoundingClientRect().right;
   }
   ngAfterContentInit() {
-
   }
 
   navItemClick(event: any) {
@@ -130,11 +135,12 @@ description : Fire when nav item is clicked, This event is fired when nav item t
 
   setNavbarWidth(navbarwidth: number) {
     this.navbarwidth = navbarwidth;
-    if (( this.navbarwidth - this.elementref.nativeElement.getBoundingClientRect().left) < 165) {
-      this.enablerightclass = true; }
+    if ((this.navbarwidth - this.elementref.nativeElement.getBoundingClientRect().left) < 165) {
+      this.enablerightclass = true;
+    }
   }
-//  MODEL BINDING FOR TEXT FIELD
-// The internal dataviews model
+  //  MODEL BINDING FOR TEXT FIELD
+  // The internal dataviews model
 
   // Placeholders for the callbacks which are later provided
   // by the Control Value Accessor

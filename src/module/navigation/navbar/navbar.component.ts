@@ -61,6 +61,26 @@ description : Indicate if side-nav-bar is present
 */
   @Input('enable-side-nav-position') sidenavspace = false;
 
+    /*
+Properties
+name : enable-side-nav-position
+datatype : boolean
+version : 4.0 onwards
+default : none
+description : transparent nav bar
+*/
+@Input('transparent') transparent = false;
+
+    /*
+Properties
+name : color
+datatype : string
+version : 5.5.6 onwards
+default : none
+description : Color
+*/
+@Input('color') color: string;
+
   @Output() onNavLogoClick: any = new EventEmitter<any>();
 
   @Output() onNavTitleClick: any = new EventEmitter<any>();
@@ -97,6 +117,10 @@ description : Indicate if side-nav-bar is present
   }
 
   ngAfterContentInit() {
+    this.navItemComponents = this.navitems.toArray();
+    this.navItemComponents.forEach((element: any) => {
+    element.itemcolor = this.color;
+    });
   }
 
   onImageLoad() {

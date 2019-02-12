@@ -1,5 +1,5 @@
 
-<nav #navbar class="topnav" [ngClass]="{'topnav-mobile':mobilemode}" (window:resize)="resize($event)">
+<nav #navbar class="topnav" [ngStyle]="{'color': color}" [ngClass]="{'topnav-mobile':mobilemode, 'transparentNav':transparent}" (window:resize)="resize($event)">
     <div #navbarfixed class="topnavbarunit1" [ngClass]="{'topnavbarunit1-mobile':mobilemode}" >
         <div class="float-left"  [ngStyle]="{'padding-left':sidenav ? '40px':'0px'}">
             <img alt="title" style="cursor: pointer" (click)="onNavLogoClick.emit($event)"  (load)="onImageLoad()" *ngIf="logo" [attr.src]="logo" class="navbar-logo">

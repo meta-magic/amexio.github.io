@@ -23,7 +23,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
   template:
   `
   <div class="nav-dropdown">
-    <a class="nav-dropbtn"  (click)="onHeaderClick($event)">
+    <a class="nav-dropbtn" [ngStyle]="{'color':color}" (click)="onHeaderClick($event)">
       <i *ngIf="icon" [ngClass]="icon"></i>{{title}}<i class="dropdownicon fa fa-angle-down"></i>
     </a>
     <div class="nav-dropdown-content">
@@ -96,7 +96,7 @@ description : Fire when nav item is clicked, This event is fired when nav item t
   @Output() navLinkClick: any = new EventEmitter<any>();
 
   mobilemode = false;
-
+  @Input('color') color: string;
   constructor() {
 
   }
