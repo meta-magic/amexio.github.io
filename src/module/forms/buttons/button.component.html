@@ -13,11 +13,11 @@
         'disabled' : disabled }" (click)="buttonClick($event)">
         <span class="button-text">
           <span style="padding-right: 5px;" *ngIf="icon">
-            <amexio-form-icon [customclass]="icon" [label]="label">
-            </amexio-form-icon>
+            <amexio-c-icon [customclass]="icon" [label]="label">
+            </amexio-c-icon>
           </span>
           <span style="padding-right: 5px;" *ngIf="loading">
-            <amexio-form-icon key="button-loading-icon" [label]="label"></amexio-form-icon>
+            <amexio-c-icon key="button-loading-icon" [label]="label"></amexio-c-icon>
           </span>
           <ng-container *ngIf="!icon">{{label}}</ng-container>
 

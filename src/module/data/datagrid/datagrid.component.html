@@ -6,13 +6,12 @@
             <span *ngIf="enablecolumnfilter ? true:false" class="float-right" (click)="onEnableColumnClick($event)" style=" cursor: pointer;">
                 &nbsp;
                 <span *ngIf="!show">&#9776;</span>
-                <span *ngIf="show">&#9747;</span>
-            </span>
+        <span *ngIf="show">&#9747;</span>
         </span>
-        <span *ngIf="groupby ? true : false" class="float-right" (click)="showGroupByColumn = !showGroupByColumn; showToolTip = false"
-            style=" cursor: pointer;">
+        </span>
+        <span *ngIf="groupby ? true : false" class="float-right" (click)="showGroupByColumn = !showGroupByColumn; showToolTip = false" style=" cursor: pointer;">
             <!--<span class="fa fa-th-list"></span>-->
-            <amexio-data-icon key="datagrid_list"></amexio-data-icon>
+        <amexio-c-icon key="datagrid_list"></amexio-c-icon>
         </span>
     </div>
     <!--Filter with Checkbox datagrid start-->
@@ -53,7 +52,7 @@
                 <div class="inputgroup" style="padding-left: 1%; padding-right: 1%">
                     <input type="text" [(ngModel)]="filterValue" (keyup)="keyUpSearch($event)" type="text" class="input-control" aria-label="Text input with dropdown button">
                     <span class="datatable-filter-icon">
-                        <amexio-data-icon key="datagrid_filter" (click)="onFilterIconClick($event)"></amexio-data-icon>
+                        <amexio-c-icon key="datagrid_filter" (click)="onFilterIconClick($event)"></amexio-c-icon>
                     </span>
                     <span *ngIf="showToolTip" class="dropdown" style="width: 250px; right: 0">
                         <ul class="dropdown-list" *ngFor="let opt of globalFilterOptions">
@@ -71,8 +70,7 @@
     </ng-container>
 
     <ng-container *ngIf="enablecolumnfilter ? true : false">
-        <span *ngIf="showEnableColumnFilter" class="dropdown dropdown-right" [ngStyle]="{'top': globalfilter || enabledatafilter ? '10%':''}"
-            style="width: 250px;">
+        <span *ngIf="showEnableColumnFilter" class="dropdown dropdown-right" [ngStyle]="{'top': globalfilter || enabledatafilter ? '10%':''}" style="width: 250px;">
             <ul class="dropdown-list">
                 <li class="list-items" *ngFor="let cols of columns;let i = index;">
                     <div>
@@ -125,12 +123,12 @@
 
                         </ng-container>
                         <ng-container *ngIf="this.sortBy==1   && cols.isColumnSort">
-                            <amexio-data-icon key="datagrid_arrowup"></amexio-data-icon>
+                            <amexio-c-icon key="datagrid_arrowup"></amexio-c-icon>
                             <!--&nbsp; <i class="fa fa-arrow-up"></i>-->
                         </ng-container>
                         <ng-container *ngIf="this.sortBy==2  && cols.isColumnSort">
                             <!--&nbsp;<i class="fa fa-arrow-down"></i>-->
-                            <amexio-data-icon key="datagrid_arrowdown"></amexio-data-icon>
+                            <amexio-c-icon key="datagrid_arrowdown"></amexio-c-icon>
                         </ng-container>
                     </div>
                 </ng-container>
@@ -143,12 +141,12 @@
                             <span class="float-right">
                                 {{cols.text}} &nbsp;
                                 <ng-container *ngIf="this.sortBy==1 && cols.isColumnSort">
-                                    <amexio-data-icon key="datagrid_arrowup"></amexio-data-icon>
+                                    <amexio-c-icon key="datagrid_arrowup"></amexio-c-icon>
                                     <!--&nbsp; <i class="fa fa-arrow-up"></i>-->
                                 </ng-container>
                                 <ng-container *ngIf="this.sortBy==2 && cols.isColumnSort">
                                     <!--&nbsp;<i class="fa fa-arrow-down"></i>-->
-                                    <amexio-data-icon key="datagrid_arrowdown"></amexio-data-icon>
+                                    <amexio-c-icon key="datagrid_arrowdown"></amexio-c-icon>
                                 </ng-container>
                             </span>
                         </ng-container>
@@ -167,17 +165,14 @@
                 <div class="spinner"></div>
             </div>
             <ng-container *ngIf="!mask">
-                <div #id class="datatable-row" *ngFor="let row of viewRows;let i=index" id="{{'row'+i}}" [ngClass]="{'datatable-row-active':row.isSelected}"
-                    (click)="onRowClick(row, i)">
+                <div #id class="datatable-row" *ngFor="let row of viewRows;let i=index" id="{{'row'+i}}" [ngClass]="{'datatable-row-active':row.isSelected}" (click)="onRowClick(row, i)">
 
                     <ng-container *ngIf="enablecheckbox">
                         <div class="datatable-col datatable-checkbox-width checkbox-col">
                             <div class="inputgroup">
                                 <div class="input-box">
                                     <div (click)="setSelectedRow(row, check)" [class]="checkBoxSelectClass" #check>
-                                        {{((checkBoxSelectClass == 'checkbox active') && (check.classList.value == 'checkbox active')) || ((checkBoxSelectClass ==
-                                        'checkbox default') && (check.classList.value == 'checkbox active')) ? '&#10004;'
-                                        : ''}}
+                                        {{((checkBoxSelectClass == 'checkbox active') && (check.classList.value == 'checkbox active')) || ((checkBoxSelectClass == 'checkbox default') && (check.classList.value == 'checkbox active')) ? '&#10004;' : ''}}
                                     </div>
                                 </div>
                             </div>
@@ -239,8 +234,7 @@
                 <div class="spinner"></div>
             </div>
             <ng-container *ngIf="!mask">
-                <div class="datatable-row" *ngFor="let row of viewRows;let i=index" id="{{'row'+i}}" [ngClass]="{'datatable-row-active':row.isSelected}"
-                    (click)="toogle(row, i)">
+                <div class="datatable-row" *ngFor="let row of viewRows;let i=index" id="{{'row'+i}}" [ngClass]="{'datatable-row-active':row.isSelected}" (click)="toogle(row, i)">
                     <ng-container *ngIf="enablecheckbox">
                         <div class="datatable-col datatable-checkbox-width checkbox-col">
                             <div class="inputgroup">
@@ -259,10 +253,10 @@
                                 <div class="datatable-col col-group">
                                     <!--<i *ngIf="!row.expanded" class="fa fa-caret-right" aria-hidden="true" (click)="toogle(row,i)"></i>-->
                                     <ng-container *ngIf="!row.expanded">
-                                        <amexio-data-icon key="datagrid_expand"></amexio-data-icon>
+                                        <amexio-c-icon key="datagrid_expand"></amexio-c-icon>
                                     </ng-container>
                                     <ng-container *ngIf="row.expanded">
-                                        <amexio-data-icon key="datagrid_collapse"></amexio-data-icon>
+                                        <amexio-c-icon key="datagrid_collapse"></amexio-c-icon>
                                     </ng-container>
                                     {{row.group}}
                                 </div>
@@ -340,8 +334,7 @@
 </span> -->
 
 <ng-container *ngIf="flag">
-    <base-contextmenu [base-context-menu]="contextmenu" [mouse-location-top]="mouseLocation.top" [mouse-location-left]="mouseLocation.left"
-        [is-FlagShow]="flag" [right-click-data]="rightClickRowData" (onRightClick)="rightClickDataEmit($event)" [position-up]="posixUp">
+    <base-contextmenu [base-context-menu]="contextmenu" [mouse-location-top]="mouseLocation.top" [mouse-location-left]="mouseLocation.left" [is-FlagShow]="flag" [right-click-data]="rightClickRowData" (onRightClick)="rightClickDataEmit($event)" [position-up]="posixUp">
     </base-contextmenu>
 </ng-container>
 

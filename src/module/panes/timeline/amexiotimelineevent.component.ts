@@ -22,7 +22,7 @@ import { Component, ContentChildren, EventEmitter, HostBinding, Input, OnInit, O
   template: `<div class="timeline-badge " [ngClass]="{'timeline-badge-center': (alignment === 'center')
   , 'timeline-badge-left': (alignment === 'right')
   , 'timeline-badge-right': (alignment === 'left')}">
-<amexio-pane-icon [customclass]="icon"></amexio-pane-icon>
+<amexio-c-icon [customclass]="icon"></amexio-c-icon>
 </div>
 <div class="timeline-panel" [ngClass]="{'timeline-panel-border':contentborder,
  'timeline-panel-float-right': (contentalignment == 'right'),

@@ -24,7 +24,7 @@ import {CommonDataService} from '../../services/data/common.data.service';
                  placeholder="Search" (keyup)="filterData()">
           <!--<i class="fa fa-filter" aria-hidden="true" (click)="showToolTip = !showToolTip"></i>-->
           <span class="datatable-filter-icon">
-          <amexio-data-icon key="tree_filter" (click)="showToolTip = !showToolTip"></amexio-data-icon>
+          <amexio-c-icon key="tree_filter" (click)="showToolTip = !showToolTip"></amexio-c-icon>
           </span>
           <!--  <div class="input-group-btn">-->
           <!-- <button type="button"
@@ -36,7 +36,7 @@ import {CommonDataService} from '../../services/data/common.data.service';
               <ul class="dropdown-list">
                 <li class="list-items" *ngFor="let opt of filterOptionData" (click)="filterOption(opt)">{{opt.key}}&nbsp;
                   <!--<i [class]="opt.checkedStatus" aria-hidden="true"></i>-->
-                  <amexio-data-icon key="opt.checkedStatus"></amexio-data-icon>
+                  <amexio-c-icon key="opt.checkedStatus"></amexio-c-icon>
                 </li>
               </ul>
             </span>

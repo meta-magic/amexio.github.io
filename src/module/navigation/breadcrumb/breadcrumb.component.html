@@ -11,17 +11,16 @@
                     <span>{{nodeObject[displaykey]}}&nbsp;&nbsp;</span>
                 </label>
                 <ng-container *ngIf="nodeObject[childarraykey]">
-                    <amexio-form-icon (click)="onArrowClick(nodeObject)" class="arrow-group-css" [key]="arrowKey"></amexio-form-icon>
+                    <amexio-c-icon (click)="onArrowClick(nodeObject)" class="arrow-group-css" [key]="arrowKey"></amexio-c-icon>
                 </ng-container>
 
 
                 <div class="context-menu-list1" [@breadCrumbStateState]="nodeObject.expand ? 'visible':'hidden'">
                     <ng-container *ngFor="let node of nodeObject[childarraykey]">
-                        <div class="context-menu-list-items1" [ngStyle]="{'cursor': node.disabled ? 'not-allowed':'pointer'}"
-                            (click)="getSelectedItem({data:node,parentRef:nodeObject})">
-                            <div class="dropdown-icon-css"> 
+                        <div class="context-menu-list-items1" [ngStyle]="{'cursor': node.disabled ? 'not-allowed':'pointer'}" (click)="getSelectedItem({data:node,parentRef:nodeObject})">
+                            <div class="dropdown-icon-css">
                                 <ng-container *ngIf="node.icon">
-                                    <amexio-form-icon [ngClass]="node.icon"></amexio-form-icon>
+                                    <amexio-c-icon [ngClass]="node.icon"></amexio-c-icon>
                                 </ng-container>&nbsp;
                             </div>
                             <div class="dropdown-label-css">
@@ -37,8 +36,7 @@
             </div>
 
             <ng-container *ngIf="nodeObject.show">
-                <amexio-breadcrumb [data]="childItem" [display-key]="displaykey" [childarray-key]="childarraykey"
-                    (onListItemClick)="getEventEmitClick($event)" (onClick)="onButtonClick($event)">
+                <amexio-breadcrumb [data]="childItem" [display-key]="displaykey" [childarray-key]="childarraykey" (onListItemClick)="getEventEmitClick($event)" (onClick)="onButtonClick($event)">
                 </amexio-breadcrumb>
             </ng-container>
         </div>

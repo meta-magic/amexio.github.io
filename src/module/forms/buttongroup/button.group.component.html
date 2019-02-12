@@ -11,12 +11,12 @@
     'button-transparent' : button.type=='transparent',
     'disabled' : button.disabled}">
       <ng-container *ngIf="button.icon!=null">
-        <amexio-form-icon style="padding-right: 5px;" [customclass]="button.icon"></amexio-form-icon>
+        <amexio-c-icon style="padding-right: 5px;" [customclass]="button.icon"></amexio-c-icon>
       </ng-container>
 
-      {{button.label}} 
+      {{button.label}}
       <ng-container *ngIf="button.badge">
-        <span [ngClass]="button.badgeCssClass" >{{button.badge}}</span> 
+        <span [ngClass]="button.badgeCssClass" >{{button.badge}}</span>
      </ng-container>
     </button>
     </ng-container>

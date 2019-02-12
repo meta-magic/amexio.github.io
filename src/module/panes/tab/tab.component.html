@@ -1,68 +1,60 @@
 <div class="tabwrapper">
-  <div *ngIf="showprev" [ngClass]="{'tabnavigation float-right tabnavigation-bottom-left':tabPosition=='bottom', 'tabnavigation float-left':tabPosition=='top'}" (click)="previous()">
-    <amexio-pane-icon key="tab_previous"></amexio-pane-icon>
-  </div>
-  <div *ngIf="shownext" [ngClass]="{'tabnavigation float-right tabnavigation-bottom-right':tabPosition=='bottom','tabnavigation float-right':tabPosition=='top'}" (click)="next()">
-    <amexio-pane-icon key="tab_next"></amexio-pane-icon>
-  </div>
-
-  <div #tab class="tab" [ngClass]="{'bottomTab':tabPosition == 'bottom'}">
-
-    <div #tabslist class="tablistitems {{tabPositionClass}}">
-      <!-- HEADER -->
-
-      <div class="tablink" style="padding-bottom:0%" *ngIf="(this.action == true || header) && (fullPageTabs == false)">
-        <div class="table">
-          <div class="tablerow">
-            <div class="tablecol">
-              {{header}}
-            </div>
-            <div class="tablecol">
-              <ng-content select="amexio-tab-action"></ng-content>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-
-      <div>
-        <div *ngFor="let tabnode of tabCollection" class="tablink {{tabnode.amexiocolor+ ' '+tabnode.tabPillClass}}" [style.width.px]="singleTabWidth"
-             (click)="onTabClick(tabnode)" (contextmenu)="loadContextMenu($event,tabnode, tab)">
-          <div class="table">
-            <div class="tablerow">
-              <div *ngIf="tabnode.icon" class="tablecol">
-                <amexio-pane-icon *ngIf="tabnode.icon" [customclass]="tabnode.icon"></amexio-pane-icon>
-              </div>
-              <div class="tablecol">
-                {{tabnode.title}}
-              </div>
-              <div *ngIf="tabnode.closable" class="tablecol">
-                <amexio-pane-icon key="tab_close" (onClick)="closeTab(tabnode)"></amexio-pane-icon>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div *ngIf="showprev" [ngClass]="{'tabnavigation float-right tabnavigation-bottom-left':tabPosition=='bottom', 'tabnavigation float-left':tabPosition=='top'}" (click)="previous()">
+        <amexio-c-icon key="tab_previous"></amexio-c-icon>
     </div>
-  </div>
+    <div *ngIf="shownext" [ngClass]="{'tabnavigation float-right tabnavigation-bottom-right':tabPosition=='bottom','tabnavigation float-right':tabPosition=='top'}" (click)="next()">
+        <amexio-c-icon key="tab_next"></amexio-c-icon>
+    </div>
+
+    <div #tab class="tab" [ngClass]="{'bottomTab':tabPosition == 'bottom'}">
+
+        <div #tabslist class="tablistitems {{tabPositionClass}}">
+            <!-- HEADER -->
+
+            <div class="tablink" style="padding-bottom:0%" *ngIf="(this.action == true || header) && (fullPageTabs == false)">
+                <div class="table">
+                    <div class="tablerow">
+                        <div class="tablecol">
+                            {{header}}
+                        </div>
+                        <div class="tablecol">
+                            <ng-content select="amexio-tab-action"></ng-content>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div>
+                <div *ngFor="let tabnode of tabCollection" class="tablink {{tabnode.amexiocolor+ ' '+tabnode.tabPillClass}}" [style.width.px]="singleTabWidth" (click)="onTabClick(tabnode)" (contextmenu)="loadContextMenu($event,tabnode, tab)">
+                    <div class="table">
+                        <div class="tablerow">
+                            <div *ngIf="tabnode.icon" class="tablecol">
+                                <amexio-c-icon *ngIf="tabnode.icon" [customclass]="tabnode.icon"></amexio-c-icon>
+                            </div>
+                            <div class="tablecol">
+                                {{tabnode.title}}
+                            </div>
+                            <div *ngIf="tabnode.closable" class="tablecol">
+                                <amexio-c-icon key="tab_close" (onClick)="closeTab(tabnode)"></amexio-c-icon>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div class="tabcontent" [attr.id]="componentId" [ngStyle]="{'height.px' : height,'overflow-y' : height!= null ? 'auto' : '','min-height.px' : minHeight}" >
-  <ng-content></ng-content>
-  <ng-template #target></ng-template>
+<div class="tabcontent" [attr.id]="componentId" [ngStyle]="{'height.px' : height,'overflow-y' : height!= null ? 'auto' : '','min-height.px' : minHeight}">
+    <ng-content></ng-content>
+    <ng-template #target></ng-template>
 </div>
 
 
 <ng-container *ngIf="contextMenuFlag">
-  <base-contextmenu
-  [base-context-menu]="contextmenu" 
-  [mouse-location-top]="mouseLocation.top"
-  [mouse-location-left]="mouseLocation.left" 
-  [is-FlagShow]="contextMenuFlag" 
-  [right-click-data]="rightClickRowData"
-  (onRightClick) ="rightClickDataEmit($event)"
-  [position-up]="posixUp" >
-  </base-contextmenu>
+    <base-contextmenu [base-context-menu]="contextmenu" [mouse-location-top]="mouseLocation.top" [mouse-location-left]="mouseLocation.left" [is-FlagShow]="contextMenuFlag" [right-click-data]="rightClickRowData" (onRightClick)="rightClickDataEmit($event)"
+        [position-up]="posixUp">
+    </base-contextmenu>
 </ng-container>
-

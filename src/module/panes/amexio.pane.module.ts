@@ -19,7 +19,6 @@ import { AmexioFormBodyComponent } from './form/form.body.component';
 import { AmexioFormComponent } from './form/form.component';
 import { AmexioFormHeaderComponent } from './form/form.header.component';
 import { AmexioHeaderComponent } from './header/pane.action.header';
-import { AmexioIconPaneComponent } from './icon/icon.component';
 import { AmexioPanelComponent } from './panel/panel.component';
 import { AmexioPanelHeaderComponent} from './panel/panel.header.component';
 import { StepBlockComponent } from './steps/step-block';
@@ -89,7 +88,6 @@ const PANE_COMPONENTS = [
   StepBlockComponent,
   AmexioPanelComponent,
   AmexioPanelHeaderComponent,
-  AmexioIconPaneComponent,
   AmexiodialoguePaneComponent,
   AmexioFormComponent,
   AmexioFormActionComponent,

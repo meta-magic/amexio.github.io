@@ -1,13 +1,12 @@
-
 <div class="chips" style="cursor: pointer;" [ngStyle]="{'background-color': color}">
-    <amexio-form-icon [customclass]="icon"></amexio-form-icon>
+    <amexio-c-icon [customclass]="icon"></amexio-c-icon>
     <amexio-label (click)=" onLabelClick($event)">
-      <span tabindex="-1" style="outline:none" [ngClass]="{'chiplabelicon': (icon !==''), 'chiplabel': (icon ==='')}">
+        <span tabindex="-1" style="outline:none" [ngClass]="{'chiplabelicon': (icon !==''), 'chiplabel': (icon ==='')}">
         {{label}}
       </span>
     </amexio-label>
     <span class="badge" *ngIf="badge">{{badge}}</span>
     <ng-container *ngIf="closable">
-      <i class="fa fa-times" style="cursor: pointer; margin-left:10px" (click)="onCloseClick($event) "></i>
+        <i class="fa fa-times" style="cursor: pointer; margin-left:10px" (click)="onCloseClick($event) "></i>
     </ng-container>
-  </div>
+</div>

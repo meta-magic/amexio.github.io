@@ -15,11 +15,11 @@
             <button class="button" [attr.title]="'click'" (click)="showErrors($event)" [ngClass]="'button-warning button-small button-round'">
                         <span class="button-text">
                           <span style="padding-right: 5px;" *ngIf="icon">
-                            <amexio-form-icon [customclass]="icon" >
-                            </amexio-form-icon>
+                            <amexio-c-icon [customclass]="icon" >
+                            </amexio-c-icon>
                           </span>
                           <span style="padding-right: 5px;" *ngIf="loading">
-                            <amexio-form-icon key="button-loading-icon"></amexio-form-icon>
+                            <amexio-c-icon key="button-loading-icon"></amexio-c-icon>
                           </span>
                           ?
                         </span>

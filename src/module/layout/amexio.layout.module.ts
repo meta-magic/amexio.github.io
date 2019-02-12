@@ -34,7 +34,6 @@ import {AmexioColumnComponent} from './columns/column.component';
 import {AmexioGridComponent} from './gridlayout/grid.component';
 import {AmexioGridItemComponent} from './gridlayout/griditem.component';
 import {AmexioGridModel} from './gridlayout/gridmodel.component';
-import {AmexioIconLayoutComponent} from './icon/icon.component';
 import {AmexioRowComponent} from './rows/row.component';
 
 import { AmexioBaseContextMenuModule } from '../base/base.contextmenu.component.module';
@@ -76,7 +75,6 @@ const LAYOUT_COMPONENTS = [
   AmexioAccordionTabComponent,
   AmexioAccordionComponent,
   AmexioAccordionHeaderComponent,
-  AmexioIconLayoutComponent,
   AmexioLayoutComponent,
   AmexioLayoutItemComponent,
 ];

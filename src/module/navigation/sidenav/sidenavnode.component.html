@@ -1,14 +1,14 @@
 <li>
     <div *ngIf="enableborder" class="border"></div>
     <div *ngIf="label || badge || icon" [attr.draggable]="enabledrag" (dragstart)="dragStartEvent({event:$event,data:node})" class="headernode" [ngClass]="{'activenode':active}" (click)="onClick(nodedata)">
-        <amexio-nav-icon *ngIf="icon" class="node-icon" [customclass]="icon" [color]="iconcolor"></amexio-nav-icon>
+        <amexio-c-icon *ngIf="icon" class="node-icon" [customclass]="icon" [color]="iconcolor"></amexio-c-icon>
         <span>{{label}} </span>
 
         <span *ngIf="badge" class="nav-badge">{{badge}}</span>
 
         <ng-container *ngIf="(node  && (node.length>0)) || collapsable">
-            <span style="padding-right: 10px; float: right" *ngIf="expand"><amexio-nav-icon key="sidenav-angle-up"></amexio-nav-icon></span>
-            <span style="padding-right: 10px;float: right" *ngIf="!expand"><amexio-nav-icon key="sidenav-angle-down"></amexio-nav-icon></span>
+            <span style="padding-right: 10px; float: right" *ngIf="expand"><amexio-c-icon key="sidenav-angle-up"></amexio-c-icon></span>
+            <span style="padding-right: 10px;float: right" *ngIf="!expand"><amexio-c-icon key="sidenav-angle-down"></amexio-c-icon></span>
         </ng-container>
 
     </div>

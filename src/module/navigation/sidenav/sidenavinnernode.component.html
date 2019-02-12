@@ -3,7 +3,7 @@
 
         <div [attr.draggable]="enabledrag" (dragstart)="dragStartEvent({event:$event,data:node})" class="defaultnode" [ngClass]="{'activenode':node.active}" (click)="onNodeClick(node)">
             <span *ngIf="node.icon">
-        <amexio-nav-icon class="node-icon" [customclass]="node.icon" [color]="node.iconcolor"></amexio-nav-icon>
+        <amexio-c-icon class="node-icon" [customclass]="node.icon" [color]="node.iconcolor"></amexio-c-icon>
       </span>
             <span>{{node[displaykey]}}</span>
             <ng-container *ngIf="node.badge">
@@ -11,11 +11,11 @@
             </ng-container>
             <ng-container *ngIf="node[childarraykey] && (node[childarraykey].length>0)">
                 <span style="padding-right: 10px; float: right" *ngIf="node.expand">
-          <amexio-nav-icon key="sidenav-angle-up" ></amexio-nav-icon>
+          <amexio-c-icon key="sidenav-angle-up" ></amexio-c-icon>
         </span>
 
                 <span style="padding-right: 10px;float: right;" *ngIf="!node.expand">
-          <amexio-nav-icon key="sidenav-angle-down" ></amexio-nav-icon>
+          <amexio-c-icon key="sidenav-angle-down" ></amexio-c-icon>
         </span>
             </ng-container>
         </div>

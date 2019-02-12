@@ -8,11 +8,14 @@ import { DisplayFieldComponent } from './display-field/display-field.component';
 import { DropDownListComponent } from './dropdownlist.component';
 
 import { FilterPipe } from '../pipe/filter.pipe';
+import { IconLoaderService } from '../services/icon/icon.service';
+import { CommonIconComponent } from './components/common.icon.component';
 
 const COMMON_COMPONENTS = [
   DisplayFieldComponent,
   DropDownListComponent,
   FilterPipe,
+  CommonIconComponent,
 ];
 
 @NgModule({
@@ -29,7 +32,7 @@ export class AmexioCommonModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: AmexioCommonModule,
-      providers: [],
+      providers: [IconLoaderService],
     };
   }
 }

@@ -8,7 +8,6 @@ import { AmexioDatagridComponent } from './datagrid/datagrid.component';
 import { DataGridFilterComponent } from './datagrid/datagrid.filter.component';
 import { AmexioDataGridHeaderComponent } from './datagrid/datagrid.header.component';
 import { AmexioGoogleMapComponent } from './googlemap/googlemap.component';
-import { AmexioDataIconComponent } from './icon/icon.component';
 import { AmexioItemSelectorComponent } from './itemselector/item.selector.component';
 import { AmexioListBoxComponent } from './listbox/listbox.component';
 import { AmexioPaginatorComponent } from './paginator/paginator.component';
@@ -56,7 +55,6 @@ const DATA_COMPONENTS = [
   HorizontalTreeViewComponent,
   AmexioFilterTreeComponent,
   TreeDataTableComponent,
-  AmexioDataIconComponent,
   AmexioItemSelectorComponent,
 ];
 

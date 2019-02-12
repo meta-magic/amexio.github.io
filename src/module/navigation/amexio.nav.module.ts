@@ -17,7 +17,6 @@ import {AmexioMediaModule} from '../media/amexio.media.module';
 import {AmexioBreadcrumbComponent} from './breadcrumb/breadcrumb.component';
 import {DockbarComponent} from './dockedbar/dockbaritem';
 import {DockedBarToolComponent} from './dockedbar/dockettoolbar.component';
-import {AmexioNavIconPaneComponent} from './icon/icon.component';
 import {AmexioMenuBarComponent} from './menubar/menubar.component';
 import {AmexioNavActionComponent } from './navbar/navaction.component';
 import {AmexioNavBarComponent} from './navbar/navbar.component';
@@ -51,7 +50,6 @@ const NAV_COMPONENTS = [
   DockbarComponent,
   DockedBarToolComponent,
   AmexioMenuBarComponent,
-  AmexioNavIconPaneComponent,
   AmexioBreadcrumbComponent,
   AmexioSideNavInnerNodeComponent,
 
@@ -65,17 +63,17 @@ const NAV_COMPONENTS = [
     AmexioLayoutModule,
     AmexioFormsModule,
     HttpClientModule,
-    AmexioCommonModule,
+    AmexioCommonModule.forRoot(),
   ],
   exports: NAV_COMPONENTS,
   declarations: NAV_COMPONENTS,
-  providers: [CommonDataService, DeviceQueryService, IconLoaderService],
+  providers: [CommonDataService, DeviceQueryService],
 })
 export class AmexioNavModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: AmexioNavModule,
-      providers: [CommonDataService, DeviceQueryService, IconLoaderService],
+      providers: [CommonDataService, DeviceQueryService],
     };
   }
 }

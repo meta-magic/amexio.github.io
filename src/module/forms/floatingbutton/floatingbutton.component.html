@@ -1,25 +1,9 @@
-
-
 <div [ngClass]="{floatingbtntooltip: tooltip}">
-    <div class="floatingbutton" 
-     title=""
-     role="button"
-     tabindex="1" 
-     [attr.aria-pressed]="ispressed"
-     attr.aria-describedby="{{componentId}}"
-     (keyup.enter)="togglebtn($event)" 
-     (keyup.space)="togglebtn($event)"
-
-        [ngClass]="addCSSClasses()" 
-        [ngStyle]="{'top':top,'bottom':bottom,'left':left,'right':right, 'background-color': bgcolorflag ? bgcolor : ''}"
-         (click)="buttonClick($event)"
-
-         
-      >
-      <!-- attr.color="iconcolor" -->
-        <amexio-form-icon *ngIf="icon" [customclass]="icon" [faiconcolor]="iconcolor"
-        >
-        </amexio-form-icon>
+    <div class="floatingbutton" title="" role="button" tabindex="1" [attr.aria-pressed]="ispressed" attr.aria-describedby="{{componentId}}" (keyup.enter)="togglebtn($event)" (keyup.space)="togglebtn($event)" [ngClass]="addCSSClasses()" [ngStyle]="{'top':top,'bottom':bottom,'left':left,'right':right, 'background-color': bgcolorflag ? bgcolor : ''}"
+        (click)="buttonClick($event)">
+        <!-- attr.color="iconcolor" -->
+        <amexio-c-icon *ngIf="icon" [customclass]="icon" [faiconcolor]="iconcolor">
+        </amexio-c-icon>
         {{label}}
 
     </div>

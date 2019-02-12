@@ -5,8 +5,7 @@
     <ng-container *ngIf='!fieldlabel'>
         <label for="fileName">Choose File</label>
     </ng-container>
-    <input type='file' aria-controls="fileUpload" id="fileName" class='input-control' [attr.accept]='filetype' (change)='uploadFile($event,false)'
-        [attr.multiple]='multiplefile' #inp>
+    <input type='file' aria-controls="fileUpload" id="fileName" class='input-control' [attr.accept]='filetype' (change)='uploadFile($event,false)' [attr.multiple]='multiplefile' #inp>
 </div>
 <ng-container *ngIf='droppable'>
     <ng-container *ngIf='fieldlabel'>
@@ -15,8 +14,7 @@
     <ng-container *ngIf='!fieldlabel'>
         <label for="dragFileName">Drag and Drop Files below</label>
     </ng-container>
-    <div class='upload-drop-zone {{dropClass}}' aria-controls="dragFileUpload" id="dragFileName" (drop)='onFileDrop($event)'
-        (dragover)='onDragOver($event)' (dragleave)='dropClass = "";' #drpZone>
+    <div class='upload-drop-zone {{dropClass}}' aria-controls="dragFileUpload" id="dragFileName" (drop)='onFileDrop($event)' (dragover)='onDragOver($event)' (dragleave)='dropClass = "";' #drpZone>
         Just drag and drop files here
     </div>
 </ng-container>
@@ -24,7 +22,7 @@
 <div class='file-upload-box' style='width: 100%'>
     <li *ngFor='let file of uploadedFiles ; let index = index' class='file-upload-info'>
         <span class='uploaded-file-name'>({{file.name}} &nbsp; &nbsp; ({{file.size}}) )</span>
-        <amexio-form-icon key='tab_close' class='close-icon' (onClick)='closeFile(file,index)'>
-        </amexio-form-icon>
+        <amexio-c-icon key='tab_close' class='close-icon' (onClick)='closeFile(file,index)'>
+        </amexio-c-icon>
     </li>
 </div>

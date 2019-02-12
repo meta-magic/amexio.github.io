@@ -29,7 +29,7 @@ import { DeviceQueryService } from '../../services/device/device.query.service';
           <div>
             <li *ngFor="let node of data" class="menulink">
               <a (click)="onClick(node)"  (mouseover)="onMouseOver($event)">
-                <amexio-nav-icon *ngIf="node.icon" [customclass]="node.icon"></amexio-nav-icon>&nbsp;&nbsp;{{node.text}}</a>
+                <amexio-c-icon *ngIf="node.icon" [customclass]="node.icon"></amexio-c-icon>&nbsp;&nbsp;{{node.text}}</a>
               <!--<i *ngIf="node.icon" [ngClass]="node.icon" aria-hidden="true"></i>-->
               <ng-container *ngIf="(node.children && node.children[0].children)">
 
@@ -44,7 +44,7 @@ import { DeviceQueryService } from '../../services/device/device.query.service';
                         *ngFor="let subnode of node.children">
                       <div class="content">
                         <div *ngIf="(subnode.text && subnode.text.length>0)" class="menu-links-header">
-                          <amexio-nav-icon *ngIf="subnode.icon" [customclass]="subnode.icon"></amexio-nav-icon>&nbsp;&nbsp;{{subnode.text}}
+                          <amexio-c-icon *ngIf="subnode.icon" [customclass]="subnode.icon"></amexio-c-icon>&nbsp;&nbsp;{{subnode.text}}
                           <!--<i *ngIf="subnode.icon" [ngClass]="subnode.icon" aria-hidden="true"></i>-->
                         </div>
                         <div *ngIf="subnode.image" style="padding: 10px;">
@@ -57,8 +57,8 @@ import { DeviceQueryService } from '../../services/device/device.query.service';
                             </div>
                             <!--<i *ngIf="subinnernode.icon" class="fa fa-ravelry"
                             aria-hidden="true"></i>-->
-                            <amexio-nav-icon *ngIf="subinnernode.icon" key="menubar_ravelry">
-                            </amexio-nav-icon>
+                            <amexio-c-icon *ngIf="subinnernode.icon" key="menubar_ravelry">
+                            </amexio-c-icon>
                             &nbsp;&nbsp;{{subinnernode.text}}{{subinnernode.template}}
                           </li>
                         </ul>
@@ -82,8 +82,8 @@ import { DeviceQueryService } from '../../services/device/device.query.service';
                               <img [attr.src]="subnode.image">
                             </div>
                             <!--<i *ngIf="subnode.icon" class="fa fa-ravelry" aria-hidden="true"></i>-->
-                            <amexio-nav-icon *ngIf="subnode.icon"
-                                             key="menubar_ravelry"></amexio-nav-icon>&nbsp;&nbsp;{{subnode.text}}
+                            <amexio-c-icon *ngIf="subnode.icon"
+                                             key="menubar_ravelry"></amexio-c-icon>&nbsp;&nbsp;{{subnode.text}}
                           </li>
                         </ul>
                       </div>

@@ -17,10 +17,10 @@
 
         <div class="drodown-caret-down" [ngStyle]="{'cursor':disabled ? 'not-allowed' : 'pointer'}" (click)="openPicker(rootDiv)">
             <ng-container *ngIf="timepicker">
-                <amexio-form-icon key="datepicker-clock-icon"></amexio-form-icon>
+                <amexio-c-icon key="datepicker-clock-icon"></amexio-c-icon>
             </ng-container>
             <ng-container *ngIf="!timepicker">
-                <amexio-form-icon key="datepicker_calendar"></amexio-form-icon>
+                <amexio-c-icon key="datepicker_calendar"></amexio-c-icon>
             </ng-container>
 
         </div>
@@ -33,12 +33,12 @@
         <div class="datetimepickertopbar" [ngStyle]="{'display': datepicker ? 'block' : 'none'}">
             <ul>
                 <li class="prev">
-                    <amexio-form-icon key="datepicker_previous_fast" (onClick)="prevYear($event)"></amexio-form-icon>
-                    <amexio-form-icon key="datepicker_previous" (onClick)="prevMonth($event)"></amexio-form-icon>
+                    <amexio-c-icon key="datepicker_previous_fast" (onClick)="prevYear($event)"></amexio-c-icon>
+                    <amexio-c-icon key="datepicker_previous" (onClick)="prevMonth($event)"></amexio-c-icon>
                 </li>
                 <li class="next">
-                    <amexio-form-icon key="datepicker_next" (onClick)="nextMonth($event)"></amexio-form-icon>
-                    <amexio-form-icon key="datepicker_next_fast" (onClick)="nextYear($event)"></amexio-form-icon>
+                    <amexio-c-icon key="datepicker_next" (onClick)="nextMonth($event)"></amexio-c-icon>
+                    <amexio-c-icon key="datepicker_next_fast" (onClick)="nextYear($event)"></amexio-c-icon>
                 </li>
                 <li>
                     <span *ngIf="dropdownDatepicker">
@@ -48,7 +48,7 @@
               <span class="title">{{selectedDate | date:'y'}}</span>
                     </span>
                     <span (onClick)=" dropdownDatePicker()" style="cursor:pointer">
-              <amexio-form-icon key="dropdown_caret" (onClick)="dropdownDatePicker()"></amexio-form-icon>
+              <amexio-c-icon key="dropdown_caret" (onClick)="dropdownDatePicker()"></amexio-c-icon>
             </span>
                     </span>
 
@@ -138,7 +138,7 @@
                 <span class="dropspan1">
           <ul class="dropul1">
             <li [ngClass]="{ 'disablearrow':backArrowFlag}" class="dropiconpadding" (click)="arrowClickBack()">
-              <amexio-form-icon key="paginator_first" (onClick)="arrowClickBack()"></amexio-form-icon>
+              <amexio-c-icon key="paginator_first" (onClick)="arrowClickBack()"></amexio-c-icon>
             </li>
             <li [ngClass]="{ 'disablearrow':year.disabled}" class="li4" (click)="getDropdownYear(year)" *ngFor="let year of yearList1">
               <span [ngClass]="{'change4':year.flag && !year.disabled}">
@@ -154,7 +154,7 @@
           <ul class="dropul2">
 
             <li [ngClass]="{ 'disablearrow':forwardArrowFlag}" class="dropiconpadding" (click)="arrowClickForward()">
-              <amexio-form-icon key="paginator_last" (onClick)="arrowClickForward()"></amexio-form-icon>
+              <amexio-c-icon key="paginator_last" (onClick)="arrowClickForward()"></amexio-c-icon>
             </li>
             <li [ngClass]="{ 'disablearrow ':year.disabled}" class="li4" (click)="getDropdownYear(year)" *ngFor="let year of yearList2">
               <span [ngClass]="{'change4':year.flag && !year.disabled}">

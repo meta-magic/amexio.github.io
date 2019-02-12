@@ -26,7 +26,6 @@ import { AmexioEmailInputComponent } from './emailinput/emailinput.component';
 import { AmexioFileUploadComponent } from './fileupload/fileupload.component';
 import { AmexioFloatingButtonComponent } from './floatingbutton/floatingbutton.component';
 import { AmexioFloatingGroupButtonComponent } from './floatinggroupbutton/floatinggroupbutton.component';
-import { AmexioFormIconComponent } from './icon/icon.component';
 import { AmexioLabelComponent } from './label/label.component';
 import { AmexioNumberInputComponent } from './numberinput/numberinput.component';
 import { AmexioPasswordComponent } from './passwordinput/passwordinput.component';
@@ -87,7 +86,6 @@ const FORM_COMPONENTS = [
   AmexioButtonDropDownItemComponent,
   AmexioCheckBoxGroupComponent,
   CheckboxComponent,
-  AmexioFormIconComponent,
   AmexioSliderComponent,
   AmexioTagsInputComponent,
   AmexioDateTimePickerComponent,
@@ -123,11 +121,11 @@ const FORM_COMPONENTS = [
     FormsModule,
     AmexioLayoutModule,
     HttpClientModule,
-    AmexioCommonModule,
+    AmexioCommonModule.forRoot(),
   ],
   exports: FORM_COMPONENTS,
   declarations: FORM_COMPONENTS,
-  providers: [CommonDataService, IconLoaderService, DomHandler, ScriptLoadService,
+  providers: [CommonDataService, DomHandler, ScriptLoadService,
   ],
 })
 export class AmexioFormsModule {

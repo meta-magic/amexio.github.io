@@ -1,5 +1,5 @@
 <div *ngIf="(position !='relative' && smalldevice)" [ngClass]="{'sidenav-mobile-bar-left':(position=='left' && position!='relative'),'sidenav-mobile-bar-right':(position=='right' && position!='relative')}" class="sidenav-mobile-bar" (click)="toggleSideNav()">
-    <amexio-nav-icon key="sidenav_bar" [color]=""></amexio-nav-icon>
+    <amexio-c-icon key="sidenav_bar" [color]=""></amexio-c-icon>
 </div>
 <div style="height: 100%" [style.width]="width" [ngStyle]="{'background': bgimage ? 'url(' + bgimage + ') center/cover no-repeat' : null}" [ngClass]="{'left':(position=='left' && position!='relative'),'right':(position=='right' && position!='relative')}">
     <div class="sidenav" [ngClass]="{'sidenav-color': !background}" [style.color]="color" [style.background]="background" [style.height]="height">
@@ -13,7 +13,7 @@
                         <p>{{sidenavtitle}}</p>
                     </ng-container>
                     <span *ngIf="sidenavexpandedinsmalldevice" style="padding-right: 10px; float: right" (click)="close()">
-            <amexio-nav-icon key="sidenav_close"></amexio-nav-icon>
+            <amexio-c-icon key="sidenav_close"></amexio-c-icon>
           </span>
                 </div>
             </li>

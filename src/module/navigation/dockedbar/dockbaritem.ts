@@ -27,7 +27,7 @@ import {Component, Input, OnInit} from '@angular/core';
         <div class="dockbar-title">
           {{title}}
           <span class="dockbar-item-close-bar" (click)="onBarIconClick()">
-            <amexio-nav-icon key="dockbar_close"></amexio-nav-icon>
+            <amexio-c-icon key="dockbar_close"></amexio-c-icon>
             <!--
                         <i class="fa fa-times" aria-hidden="true"></i>
             -->

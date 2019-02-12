@@ -1,12 +1,4 @@
-<div  
- for="boxText"
- id="{{componentId}}"
- 
- class="box-content" *ngIf="close"
-[style.height] = "height ? height:'none'"
-[style.width] = "width ? width:'none'"
-[style.align] = "align ? align:'none'"
-[ngClass]="{
+<div for="boxText" id="{{componentId}}" class="box-content" *ngIf="close" [style.height]="height ? height:'none'" [style.width]="width ? width:'none'" [style.align]="align ? align:'none'" [ngClass]="{
 'box-default': borderColor=='default' || borderColor ==null,
 'border-topbar': border=='top',
 'border-bottombar': border =='bottom',
@@ -33,11 +25,11 @@
 'border-purple' : borderColor =='purple',
 'padding' : padding,
 'border-dotted' : borderDotted
- }" >
- <span *ngIf="closable" class="box-close">
- <amexio-layout-icon key="tab_close" (onClick)="closeBox($event)"></amexio-layout-icon>
+ }">
+    <span *ngIf="closable" class="box-close">
+ <amexio-c-icon key="tab_close" (onClick)="closeBox($event)"></amexio-c-icon>
  </span>
- <span role="tooltip"  tabindex="0" id="boxText" name="boxText"  attr.aria-labelledby="{{componentId}}" >
+    <span role="tooltip" tabindex="0" id="boxText" name="boxText" attr.aria-labelledby="{{componentId}}">
   <ng-content ></ng-content>
 </span>
 </div>
