@@ -6,6 +6,7 @@ import { CommonDataService } from '../../services/data/common.data.service';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { Renderer2 } from '@angular/core';
 import { AmexioInputHelperComponent } from '../../base/input.helper.component';
+import { CommonIconComponent } from './../../base/components/common.icon.component';
 
 describe('TAG INPUT', () => {
     let comp: AmexioTagsInputComponent;
@@ -13,7 +14,7 @@ describe('TAG INPUT', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule],
-            declarations: [AmexioTagsInputComponent, AmexioInputHelperComponent],
+            declarations: [AmexioTagsInputComponent,CommonIconComponent, AmexioInputHelperComponent],
             providers: [IconLoaderService, Renderer2, CommonDataService, HttpClient, HttpHandler]
         });
         fixture = TestBed.createComponent(AmexioTagsInputComponent);

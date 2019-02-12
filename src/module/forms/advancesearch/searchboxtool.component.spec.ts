@@ -7,6 +7,7 @@ import { ChangeDetectorRef, ElementRef } from '@angular/core';
 import { AmexioButtonComponent } from './../buttons/button.component';
 import { CommonDataService } from '../../services/data/common.data.service';
 import { HttpClient, HttpHandler } from '@angular/common/http';
+import { CommonIconComponent } from './../../base/components/common.icon.component';
 
 describe('searchboxtool ', () => {
   let comp: SearchboxtoolComponent;
@@ -16,7 +17,7 @@ describe('searchboxtool ', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
-      declarations: [SearchboxtoolComponent,AmexioSearchAdvanceComponent, AmexioButtonComponent],
+      declarations: [SearchboxtoolComponent, AmexioSearchAdvanceComponent, AmexioButtonComponent,CommonIconComponent],
       providers: [IconLoaderService, CommonDataService, HttpClient, HttpHandler]
     });
     fixture = TestBed.createComponent(SearchboxtoolComponent);

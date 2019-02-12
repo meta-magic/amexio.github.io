@@ -5,6 +5,7 @@ import { IconLoaderService } from '../../../index';
 import { AmexioStepsComponent } from './steps.component';
 import { toUnicode } from 'punycode';
 import { SSL_OP_NO_SESSION_RESUMPTION_ON_RENEGOTIATION } from 'constants';
+import { CommonIconComponent } from './../../base/components/common.icon.component';
 
 describe('amexio-steps', () => {
     let comp: AmexioStepsComponent;
@@ -13,7 +14,7 @@ describe('amexio-steps', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule],
-            declarations: [AmexioStepsComponent],
+            declarations: [AmexioStepsComponent, CommonIconComponent],
             providers: [IconLoaderService],
         });
         fixture = TestBed.createComponent(AmexioStepsComponent);

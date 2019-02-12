@@ -8,6 +8,7 @@ import { AmexioButtonComponent } from '../../forms/buttons/button.component';
 
 import { toUnicode } from 'punycode';
 import { SSL_OP_NO_SESSION_RESUMPTION_ON_RENEGOTIATION } from 'constants';
+import { CommonIconComponent } from './../../base/components/common.icon.component';
 
 describe('amexio-steps', () => {
     let comp: AmexiodialoguePaneComponent;
@@ -16,7 +17,7 @@ describe('amexio-steps', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule],
-            declarations: [AmexiodialoguePaneComponent, AmexioButtonComponent],
+            declarations: [AmexiodialoguePaneComponent, AmexioButtonComponent, CommonIconComponent],
             providers: [IconLoaderService],
         });
         fixture = TestBed.createComponent(AmexiodialoguePaneComponent);

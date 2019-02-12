@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 import { IconLoaderService } from '../../../index';
 import { AmexioTabComponent } from './tab.component';
 import {AmexioTabPillComponent} from './tab.pill.component';
+import { CommonIconComponent } from './../../base/components/common.icon.component';
 
 describe('amexio-tab', () => {
     let comp: AmexioTabComponent;
@@ -13,7 +14,7 @@ describe('amexio-tab', () => {
         beforeEach(() => {
             TestBed.configureTestingModule({
                 imports: [FormsModule],
-                declarations: [AmexioTabComponent],
+                declarations: [AmexioTabComponent,CommonIconComponent],
                 providers: [IconLoaderService],
             });
             fixture = TestBed.createComponent(AmexioTabComponent);

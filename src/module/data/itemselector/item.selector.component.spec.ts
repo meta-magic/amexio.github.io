@@ -16,6 +16,7 @@ import { AmexioBodyComponent } from '../../panes/body/pane.action.body';
 import { stringify } from 'querystring';
 import { CommonDataService } from '../../services/data/common.data.service';
 import { HttpClient, HttpHandler } from '@angular/common/http';
+import { CommonIconComponent } from './../../base/components/common.icon.component';
 
 
 describe('amexio-item-selector', () => {
@@ -26,7 +27,7 @@ describe('amexio-item-selector', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule],
-            declarations: [AmexioItemSelectorComponent, AmexioRowComponent, AmexioBodyComponent, AmexioHeaderComponent, AmexioCardComponent, AmexioColumnComponent],
+            declarations: [AmexioItemSelectorComponent, CommonIconComponent, AmexioRowComponent, AmexioBodyComponent, AmexioHeaderComponent, AmexioCardComponent, AmexioColumnComponent],
             providers: [IconLoaderService, CommonDataService, HttpClient, HttpHandler,],
         });
         fixture = TestBed.createComponent(AmexioItemSelectorComponent);

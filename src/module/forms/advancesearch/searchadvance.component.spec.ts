@@ -1,5 +1,6 @@
 import { AmexioSearchAdvanceComponent } from './searchadvance.component';
 import { IconLoaderService } from '../../../index';
+import { CommonIconComponent } from './../../base/components/common.icon.component';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { ChangeDetectorRef, ElementRef } from '@angular/core';
@@ -11,7 +12,7 @@ describe('searchadvance ', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
-      declarations: [AmexioSearchAdvanceComponent, AmexioButtonComponent],
+      declarations: [AmexioSearchAdvanceComponent, AmexioButtonComponent, CommonIconComponent],
       providers: [IconLoaderService ]
     });
     fixture = TestBed.createComponent(AmexioSearchAdvanceComponent);

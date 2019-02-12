@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import {FormsModule} from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { IconLoaderService } from '../../../index';
+import { CommonIconComponent } from './../../base/components/common.icon.component';
 import { AmexioButtonComponent } from './../buttons/button.component';
 import { AmexioFloatingButtonComponent } from './floatingbutton.component';
 
@@ -12,7 +13,7 @@ describe('amexio-floating-button' , () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports : [FormsModule],
-      declarations: [ AmexioFloatingButtonComponent, AmexioButtonComponent],
+      declarations: [ AmexioFloatingButtonComponent, AmexioButtonComponent, CommonIconComponent],
       providers: [IconLoaderService],
     });
     fixture = TestBed.createComponent(AmexioFloatingButtonComponent);

@@ -3,6 +3,8 @@ import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { IconLoaderService } from '../../../index';
 import { AmexioButtonComponent } from './../buttons/button.component';
+// tslint:disable-next-line:ordered-imports
+import { CommonIconComponent } from './../../base/components/common.icon.component';
 import { AmexioFloatingGroupButtonComponent } from './floatinggroupbutton.component';
 import { AmexioFloatingButtonComponent } from '../floatingbutton/floatingbutton.component'
 describe('amexio-floating-group-button', () => {
@@ -12,7 +14,7 @@ describe('amexio-floating-group-button', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
-      declarations: [AmexioFloatingGroupButtonComponent, AmexioFloatingButtonComponent, AmexioButtonComponent],
+      declarations: [AmexioFloatingGroupButtonComponent, CommonIconComponent, AmexioFloatingButtonComponent, AmexioButtonComponent],
       providers: [IconLoaderService],
     });
     fixture = TestBed.createComponent(AmexioFloatingGroupButtonComponent);

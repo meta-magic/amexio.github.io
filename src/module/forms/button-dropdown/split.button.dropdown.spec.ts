@@ -2,9 +2,11 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { IconLoaderService } from '../../../index';
+import { AmexioFloatingButtonComponent } from '../floatingbutton/floatingbutton.component';
+import { CommonIconComponent } from './../../base/components/common.icon.component';
 import { AmexioButtonComponent } from './../buttons/button.component';
 import { AmexioSpiltButtonDropdownComponent } from './split.button.dropdown';
-import { AmexioFloatingButtonComponent } from '../floatingbutton/floatingbutton.component'
+
 describe('amexio-spilt-button', () => {
   let comp: AmexioSpiltButtonDropdownComponent;
   let fixture: ComponentFixture<AmexioSpiltButtonDropdownComponent>;
@@ -12,7 +14,7 @@ describe('amexio-spilt-button', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
-      declarations: [AmexioSpiltButtonDropdownComponent, AmexioFloatingButtonComponent, AmexioButtonComponent],
+      declarations: [AmexioSpiltButtonDropdownComponent,CommonIconComponent, AmexioFloatingButtonComponent, AmexioButtonComponent],
       providers: [IconLoaderService],
     });
     fixture = TestBed.createComponent(AmexioSpiltButtonDropdownComponent);

@@ -11,6 +11,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+import { CommonIconComponent } from './../../base/components/common.icon.component';
 
 import { AmexioButtonComponent } from './../buttons/button.component';
 import { AmexioDateTimePickerComponent } from './datetimepicker.component';
@@ -29,7 +30,7 @@ describe('amexio-date-time-picker', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule, NoopAnimationsModule],
-      declarations: [AmexioDateTimePickerComponent, AmexioButtonComponent],
+      declarations: [AmexioDateTimePickerComponent, AmexioButtonComponent ,CommonIconComponent],
       providers: [IconLoaderService ]
     });
     fixture = TestBed.createComponent(AmexioDateTimePickerComponent);

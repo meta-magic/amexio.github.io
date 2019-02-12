@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { IconLoaderService } from '../../../index';
+import { CommonIconComponent } from './../../base/components/common.icon.component';
 import { AmexioButtonComponent } from './button.component';
 
 describe('amexio-button', () => {
@@ -11,7 +12,7 @@ describe('amexio-button', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
-      declarations: [AmexioButtonComponent, AmexioButtonComponent],
+      declarations: [AmexioButtonComponent, AmexioButtonComponent, CommonIconComponent],
       providers: [IconLoaderService],
     });
     fixture = TestBed.createComponent(AmexioButtonComponent);

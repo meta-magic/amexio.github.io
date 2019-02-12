@@ -7,6 +7,7 @@ import { AmexioButtonComponent } from '../../forms/buttons/button.component';
 
 import { toUnicode } from 'punycode';
 import { SSL_OP_NO_SESSION_RESUMPTION_ON_RENEGOTIATION } from 'constants';
+import { CommonIconComponent } from './../../base/components/common.icon.component';
 
 describe('amexio-toolbar', () => {
     let comp: ToolbarComponent;
@@ -15,7 +16,7 @@ describe('amexio-toolbar', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule],
-            declarations: [ToolbarComponent, AmexioButtonComponent],
+            declarations: [ToolbarComponent, AmexioButtonComponent,CommonIconComponent],
             providers: [IconLoaderService],
         });
         fixture = TestBed.createComponent(ToolbarComponent);

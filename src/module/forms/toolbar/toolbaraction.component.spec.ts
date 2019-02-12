@@ -6,6 +6,7 @@ import { By } from '@angular/platform-browser';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { IconLoaderService } from '../../../index';
+import { CommonIconComponent } from './../../base/components/common.icon.component';
 
 describe('amexio-toolbar-item', () => {
     let comp: ToolBarActionComponent;
@@ -14,7 +15,7 @@ describe('amexio-toolbar-item', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule],
-            declarations: [ToolBarActionComponent, ToolbarComponent],
+            declarations: [ToolBarActionComponent, ToolbarComponent,CommonIconComponent],
             providers: [IconLoaderService]
         });
         fixture = TestBed.createComponent(ToolBarActionComponent);
