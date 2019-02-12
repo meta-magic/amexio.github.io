@@ -26,31 +26,33 @@
 // Disabled
 
 .floatingbutton-default-disabled{
-    background-color: $floatingDisabledBgColor; 
+    background-color: $floatingDefaultDisabledBgColor !important; 
     color: $floatingDisabledColor;
 }
 
+
 .floatingbutton-theme-color-disabled{
-    background-color: lighten($floatingPrimaryBgColor,20);
-    color: $floatingPrimaryColor;
+    background-color: $floatingDisabledBgColor;
+    color: $floatingDisabledColor;
 }
 
+
 .floatingbutton-green-disabled{
-    background-color:  lighten($floatingSuccessBgColor,20);
+    background-color: $floatingSuccessDisabledBgColor;
     color: $floatingSuccessColor;
 }
 
 .floatingbutton-red-disabled{
-    background-color:  lighten($floatingDangerBgColor,20);
+    background-color: $floatingDangerDisabledBgColor;
     color: $floatingDangerColor;
 }
 
 .floatingbutton-yellow-disabled{
-    background-color:  lighten($floatingWarningBgColor,20);
+    background-color:  $floatingWarningDisabledBgColor;
     color: $floatingWarningColor;
 }
 
-
+// Focus
 .floatingbutton-circle:focus{
 outline: none;
 }

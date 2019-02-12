@@ -234,11 +234,17 @@ description : Provides Tooltip for button.
     }
     if (this.bgcolor.length > 1) {
       this.bgcolorflag = true;
+      this.type = 'default';
+      this.getPositionClass();
     } else {
-      this.positionclass = this.disabled ? this.positionclass + this.floatingButtonCss + this.type + '-disabled' :
-        this.positionclass + this.floatingButtonCss + this.type;
+      this.getPositionClass();
     }
     return this.positionclass;
+  }
+
+  private getPositionClass() {
+    this.positionclass = this.disabled ? this.positionclass + this.floatingButtonCss + this.type + '-disabled' :
+      this.positionclass + this.floatingButtonCss + this.type;
   }
 
   private setCricle() {

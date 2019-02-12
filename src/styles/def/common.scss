@@ -12,8 +12,13 @@ $borderColor: #ced4da;
 $primaryBGColor: $themeSecondaryColor;
 $secondaryBGColor: $componentBGColor;
 $successBGColor: #5cb85c;
+$successDisabledBGColor: lighten($successBGColor, 20);
 $dangerBGColor: #d9534f;
+$dangerDisabledBGColor: lighten($dangerBGColor, 20);
 $warningBGColor: #f0ad4e;
+$warningDisabledBGColor: lighten($warningBGColor, 20);
+$defaultDisabledBGColor: lightgray;
+
 $primaryColor: $componentBGColor;
 $secondaryColor:$componentFontColor;
 $successColor: $componentBGColor;
