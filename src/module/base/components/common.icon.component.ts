@@ -20,31 +20,7 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges
 import { IconLoaderService } from './../../services/icon/icon.service';
 @Component({
   selector: 'amexio-c-icon',
-   template: `
-   <ng-container *ngIf="iconLoaderService.iconToUse == 'fa'">
-
-   <ng-container *ngIf="customclass != null">
-     <i [ngStyle]="{'color':color}" class="{{customclass}}" aria-hidden="true" (click)="onClick.emit($event)"></i>
-   </ng-container>
-   <ng-container *ngIf="customclass == null">
-     <i [ngStyle]="{'color':color}" class="{{iconClass}}" aria-hidden="true" (click)="onClick.emit($event)"></i>
-   </ng-container>
-
- </ng-container>
-
- <ng-container *ngIf="iconLoaderService.iconToUse == 'mat'">
-
-   <ng-container *ngIf="customclass != null">
-     <i [ngStyle]="{'color':color}" class="material-icons" (click)="onClick.emit($event)">{{customclass}}</i>
-   </ng-container>
-
-   <ng-container *ngIf="customclass == null">
-     <i [ngStyle]="{'color':color}" class="material-icons" (click)="onClick.emit($event)">{{iconClass}}</i>
-   </ng-container>
-
-
- </ng-container>
-  `,
+  templateUrl : './common.icon.component.html',
   styles : [`
   .fa-2x,.fa-3x, .fa-4x, .fa-5x {
     margin-top:0px!important;

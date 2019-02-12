@@ -1,0 +1,23 @@
+<ng-container *ngIf="iconLoaderService.iconToUse == 'fa'">
+
+    <ng-container *ngIf="customclass != null">
+        <i [ngStyle]="{'color':color}" class="{{customclass}}" aria-hidden="true" (click)="onClick.emit($event)"></i>
+    </ng-container>
+    <ng-container *ngIf="customclass == null">
+        <i [ngStyle]="{'color':color}" class="{{iconClass}}" aria-hidden="true" (click)="onClick.emit($event)"></i>
+    </ng-container>
+
+</ng-container>
+
+<ng-container *ngIf="iconLoaderService.iconToUse == 'mat'">
+
+    <ng-container *ngIf="customclass != null">
+        <i [ngStyle]="{'color':color}" class="material-icons" (click)="onClick.emit($event)">{{customclass}}</i>
+    </ng-container>
+
+    <ng-container *ngIf="customclass == null">
+        <i [ngStyle]="{'color':color}" class="material-icons" (click)="onClick.emit($event)">{{iconClass}}</i>
+    </ng-container>
+
+
+</ng-container>

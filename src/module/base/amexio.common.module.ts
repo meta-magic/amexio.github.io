@@ -11,6 +11,9 @@ import { FilterPipe } from '../pipe/filter.pipe';
 import { IconLoaderService } from '../services/icon/icon.service';
 import { CommonIconComponent } from './components/common.icon.component';
 
+export * from './display-field/display-field.component';
+export * from './components/common.icon.component';
+export * from './dropdownlist.component';
 const COMMON_COMPONENTS = [
   DisplayFieldComponent,
   DropDownListComponent,
