@@ -66,17 +66,17 @@ const DATA_COMPONENTS = [
     AmexioLayoutModule,
     HttpClientModule,
     AmexioBaseContextMenuModule,
-    AmexioCommonModule,
+    AmexioCommonModule.forRoot(),
   ],
   exports: DATA_COMPONENTS,
   declarations: DATA_COMPONENTS,
-  providers: [CommonDataService, GoogleMapScriptService, IconLoaderService, DisplayFieldService],
+  providers: [CommonDataService, GoogleMapScriptService],
 })
 export class AmexioDataModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: AmexioDataModule,
-      providers: [CommonDataService, GoogleMapScriptService, IconLoaderService, DisplayFieldService],
+      providers: [CommonDataService, GoogleMapScriptService],
     };
   }
 }

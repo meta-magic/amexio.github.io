@@ -132,7 +132,7 @@ export class AmexioFormsModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: AmexioFormsModule,
-      providers: [CommonDataService, IconLoaderService, LoadRecaptchaService, ScriptLoadService],
+      providers: [CommonDataService, LoadRecaptchaService, ScriptLoadService],
     };
   }
 }
