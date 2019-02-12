@@ -6,6 +6,7 @@ import { AmexioButtonComponent } from './../buttons/button.component';
 import { AmexioEmailInputComponent } from './emailinput.component';
 import { stringify } from 'querystring';
 import { AmexioInputHelperComponent } from '../../base/input.helper.component';
+import { CommonIconComponent } from './../../base/components/common.icon.component';
 
 describe('amexio-email-input', () => {
   let comp: AmexioEmailInputComponent;
@@ -14,7 +15,7 @@ describe('amexio-email-input', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
-      declarations: [AmexioEmailInputComponent, AmexioButtonComponent, AmexioInputHelperComponent],
+      declarations: [AmexioEmailInputComponent, CommonIconComponent, AmexioButtonComponent, AmexioInputHelperComponent],
 
       providers: [IconLoaderService],
     });
