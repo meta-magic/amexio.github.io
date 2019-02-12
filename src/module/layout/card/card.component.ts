@@ -180,6 +180,8 @@ description : Context Menu provides the list of menus on right click.
       if (item.padding) {
         this.footerPadding = item.padding;
       }
+      item.footer = this.footer;
+      item.setFooterAlignment(this.footeralign);
     });
     this.onResize();
   }

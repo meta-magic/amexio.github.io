@@ -180,77 +180,69 @@
 */
 
 
-
-
-
 /* WINDOW */
 
-
-
-.amexio-root-window{
-  background: rgba(128, 127, 127, 0.6);
-  height: 100%;
-  width: 100%;
-  position: fixed;
-  z-index: 3;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  top:0;
+.amexio-root-window {
+    background: rgba(128, 127, 127, 0.6);
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 3;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    top: 0;
+    left: 0;
 }
 
-.amexio-root-window-content{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 96%;
-  margin-top: 1%;
+.amexio-root-window-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 96%;
+    margin-top: 1%;
 }
 
-.amexio-root-window-content > * {
-  padding: 10px 16px!important;
-
+.amexio-root-window-content>* {
+    padding: 10px 16px!important;
 }
 
 .amexio-layout-columns-height {
-  height: unset !important;
+    height: unset !important;
 }
 
 @media only screen and (max-width: 600px) {
-
-  .amexio-root-window-content{
-    width: 100%;
-  }
-
+    .amexio-root-window-content {
+        width: 100%;
+    }
 }
 
-.window-middle{
-  line-height: 24px;
-  font-weight: 400;
-  overflow-y: auto;
-  overflow-x: hidden;
-  background-color: white;
-  max-height: 100%;
+.window-middle {
+    line-height: 24px;
+    font-weight: 400;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: white;
+    max-height: 100%;
 }
 
-.modal-window-header{
-  display: flex!important;
-  font-size: 20px!important;
-  font-weight: 300!important;
-  text-transform: capitalize!important;
+.modal-window-header {
+    display: flex!important;
+    font-size: 20px!important;
+    font-weight: 300!important;
+    text-transform: capitalize!important;
 }
 
 .modal-window-footer {
-  display: flex;
+    display: flex;
 }
 
 .model-maximize {
-  width: 100%!important;
-  height: 100%!important;
-  top: 0!important;
+    width: 100%!important;
+    height: 100%!important;
+    top: 0!important;
 }
 
-.content-max-height .window-middle{
-  height: 100%;
+.content-max-height .window-middle {
+    height: 100%;
 }
-
