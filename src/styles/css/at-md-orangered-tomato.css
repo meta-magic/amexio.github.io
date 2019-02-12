@@ -3084,13 +3084,13 @@ input:checked + .toggle-slider:before {
 }
 
 .floatingbutton-default-disabled {
-  background-color: #dbc6c2;
+  background-color: lightgray !important;
   color: #a36c62;
 }
 
 .floatingbutton-theme-color-disabled {
-  background-color: #ffb9ad;
-  color: #ffffff;
+  background-color: #dbc6c2;
+  color: #a36c62;
 }
 
 .floatingbutton-green-disabled {
@@ -5634,6 +5634,11 @@ header .billboard .content-button {
   color: #520c00;
 }
 
+.transparentNav {
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.6) !important;
+  background-color: transparent !important;
+}
+
 /** navbar - Structure CSS **/
 .topnav {
   position: fixed;
@@ -7455,11 +7460,11 @@ fieldset {
 }
 
 .amexio-root-window-content > * {
-  padding: 10px 16px !important;
+  padding: 10px 16px;
 }
 
 .amexio-layout-columns-height {
-  height: unset !important;
+  height: unset;
 }
 
 @media only screen and (max-width: 600px) {
@@ -7477,20 +7482,25 @@ fieldset {
 }
 
 .modal-window-header {
-  display: flex !important;
-  font-size: 20px !important;
-  font-weight: 300 !important;
-  text-transform: capitalize !important;
+  display: flex;
+  font-size: 20px;
+  font-weight: 300;
+  text-transform: capitalize;
 }
 
 .modal-window-footer {
   display: flex;
 }
 
+.modal-window-material-footer {
+  background-color: white;
+  color: black;
+}
+
 .model-maximize {
-  width: 100% !important;
-  height: 100% !important;
-  top: 0 !important;
+  width: 100%;
+  height: 100%;
+  top: 0;
 }
 
 .content-max-height .window-middle {
