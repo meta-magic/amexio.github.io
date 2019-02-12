@@ -38,7 +38,7 @@ export class AmexioHeaderComponent implements OnInit {
 
   @HostBinding('style.justify-content') jstyfy = 'space-between';
 
-  @HostBinding('style.background') private background = '';
+  @HostBinding('attr.class') materialClassName = '';
 
   @Input() padding: string;
 
@@ -62,11 +62,12 @@ export class AmexioHeaderComponent implements OnInit {
   setMaximizeData(maximize: boolean, isFullWindow: boolean) {
     this.maximize = maximize;
     this.isFullWindow = isFullWindow;
+    this.maximizeBehaiour.next(this.isFullWindow);
   }
 
   setMaterialDesignStatus(materialDesign: boolean) {
     if (materialDesign) {
-      this.background = 'white';
+      this.materialClassName = 'modal-window-material-footer';
     }
   }
 
