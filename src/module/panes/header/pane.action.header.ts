@@ -22,11 +22,11 @@ import {BehaviorSubject} from 'rxjs/index';
 @Component({
   selector: 'amexio-header', template: `
     <ng-content></ng-content>
-    <div>
-      <amexio-c-icon *ngIf="(isFullWindow && maximize )"  [key]="'window_maximize'" (onClick)="sizeChange()"></amexio-c-icon>
-      <amexio-c-icon *ngIf="(!isFullWindow && maximize )" [key]="'window_restore'" (click)="sizeChange()"></amexio-c-icon>
+   <div>
+      <amexio-c-icon *ngIf="(isFullWindow && maximize )" style="cursor: pointer;" [key]="'window_maximize'" (onClick)="sizeChange()"></amexio-c-icon>
+      <amexio-c-icon *ngIf="(!isFullWindow && maximize )" style="cursor: pointer;" [key]="'window_restore'" (click)="sizeChange()"></amexio-c-icon>
       &nbsp;
-      <amexio-c-icon *ngIf="closeable" [key]="'window_close'" (onClick)="onCloseClick()"></amexio-c-icon>
+      <amexio-c-icon *ngIf="closeable" style="cursor: pointer;" [key]="'window_close'" (onClick)="onCloseClick()"></amexio-c-icon>
     </div>
 
   `,
