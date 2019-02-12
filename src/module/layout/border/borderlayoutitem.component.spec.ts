@@ -3,7 +3,6 @@ import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { IconLoaderService } from '../../../index';
 import { AmexioBorderLayoutItemComponent } from './borderlayoutitem.component';
-import { AmexioFormIconComponent } from '../../forms/icon/icon.component';
 import { AmexioButtonComponent } from '../../forms/buttons/button.component';
 
 import { toUnicode } from 'punycode';
@@ -16,7 +15,7 @@ describe('amexio-borderlayout-item', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule],
-            declarations: [AmexioBorderLayoutItemComponent, AmexioFormIconComponent, AmexioButtonComponent],
+            declarations: [AmexioBorderLayoutItemComponent, AmexioButtonComponent],
             providers: [IconLoaderService],
         });
         fixture = TestBed.createComponent(AmexioBorderLayoutItemComponent);
@@ -38,4 +37,3 @@ describe('amexio-borderlayout-item', () => {
     // });
 
 });
-    
