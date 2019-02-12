@@ -7805,6 +7805,15 @@ fieldset {
   height: 100%;
 }
 
+.amexio-root-window-content .window-middle::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.amexio-root-window-content .window-middle::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
 /****************************************************************************
     Component Name : Dialogue
     Version : Amexio v4.0 onwards
