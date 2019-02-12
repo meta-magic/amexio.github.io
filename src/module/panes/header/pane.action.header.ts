@@ -23,12 +23,11 @@ import {BehaviorSubject} from 'rxjs/index';
   selector: 'amexio-header', template: `
     <ng-content></ng-content>
    <div>
-      <amexio-c-icon *ngIf="(isFullWindow && maximize )" style="cursor: pointer;" [key]="'window_maximize'" (onClick)="sizeChange()"></amexio-c-icon>
-      <amexio-c-icon *ngIf="(!isFullWindow && maximize )" style="cursor: pointer;" [key]="'window_restore'" (click)="sizeChange()"></amexio-c-icon>
+      <amexio-c-icon *ngIf="(isFullWindow && maximize )" [key]="'window_maximize'" (onClick)="sizeChange()"></amexio-c-icon>
+      <amexio-c-icon *ngIf="(!isFullWindow && maximize )" [key]="'window_restore'" (click)="sizeChange()"></amexio-c-icon>
       &nbsp;
-      <amexio-c-icon *ngIf="closeable" style="cursor: pointer;" [key]="'window_close'" (onClick)="onCloseClick()"></amexio-c-icon>
+      <amexio-c-icon *ngIf="closeable" [key]="'window_close'" (onClick)="onCloseClick()"></amexio-c-icon>
     </div>
-
   `,
 })
 
@@ -38,8 +37,10 @@ export class AmexioHeaderComponent implements OnInit {
 
   @HostBinding('style.justify-content') jstyfy = 'space-between';
 
-  @HostBinding('attr.class') materialClassName = '';
+  @HostBinding('style.background') private background = '';
 
+  @HostBinding('style.color') color = '';
+  
   @Input() padding: string;
 
   closeable = false;
@@ -67,7 +68,8 @@ export class AmexioHeaderComponent implements OnInit {
 
   setMaterialDesignStatus(materialDesign: boolean) {
     if (materialDesign) {
-      this.materialClassName = 'modal-window-material-footer';
+      this.background = 'white';
+      this.color = 'black';
     }
   }
 
