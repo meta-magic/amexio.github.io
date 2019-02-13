@@ -4747,10 +4747,6 @@ header .billboard .content-button {
 .nav-dropdown:hover .nav-dropdown-content .nav-menu-container a {
   color: #52001b; }
 
-.topnav .transparentNav {
-  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.6) !important;
-  background-color: transparent !important; }
-
 /** navbar - Structure CSS **/
 .topnav {
   position: fixed;
@@ -4760,6 +4756,10 @@ header .billboard .content-button {
   justify-content: space-between;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
   z-index: 2; }
+
+.transparentNav {
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.6) !important;
+  background-color: transparent !important; }
 
 .topnav-mobile {
   flex-direction: column;
