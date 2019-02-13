@@ -39,13 +39,13 @@ import { DataGridFilterComponent } from './datagrid.filter.component';
 export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentInit, AfterViewInit {
   private componentLoaded: boolean;
   /*
- Properties
- name : title
- datatype : string
- version : 4.0 onwards
- default : none
- description : Title for grid.
- */
+   Properties
+   name : title
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : Title for grid.
+   */
   @Input() title: string;
   /*
    Properties
@@ -239,6 +239,18 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
 
   /*
    Properties
+   name : total-data-count
+   datatype : number
+   version : 5.5 onwards
+   default : none
+   description :  sets data limit for server side data rendering
+   */
+  @Input('total-data-count') totalDataCount: number;
+
+  @Input('server-side-paging') serverSidePaging = false;
+
+  /*
+   Properties
    name : column-defintion
    datatype : any
    version : 4.0 onwards
@@ -298,6 +310,16 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
   @Input('context-menu') contextmenu: any[];
 
   @Output() rightClick: any = new EventEmitter<any>();
+
+  /*
+   Events
+   name : onPageChange
+   datatype : none
+   version : none
+   default : none
+   description : It will gives you current and next page info
+   */
+  @Output() onPageChange: EventEmitter<any> = new EventEmitter<any>();
 
   columns: any[] = [];
 
@@ -467,6 +489,7 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
   }
 
   createConfig() {
+    this.columns = [];
     let columnRefArray = [];
     columnRefArray = this.columnRef.toArray();
     for (const cr of columnRefArray) {
@@ -543,7 +566,12 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
     if (!this.groupby) {
       this.renderData();
     }
-    this.totalPages = this.pageNumbers.length;
+    if (this.serverSidePaging) {
+      this.pagesize = this.viewRows.length ;
+      this.totalPages = (this.totalDataCount / this.pagesize);
+    } else {
+      this.totalPages = this.pageNumbers.length;
+    }
     this.mask = false;
   }
 
@@ -564,7 +592,12 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
     if (this.groupby) {
       this.setColumnData();
     }
-    this.totalPages = this.pageNumbers.length;
+    if (this.serverSidePaging) {
+      this.pagesize = this.viewRows.length - 1;
+      this.totalPages = (this.totalDataCount / this.pagesize);
+    } else {
+      this.totalPages = this.pageNumbers.length;
+    }
     this.mask = false;
   }
 
@@ -824,9 +857,14 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
     this.selectedRowNo = rowIndex;
   }
 
-  loadPageData(pageNumber: number) {
-    this.currentPage = pageNumber;
-    this.renderData();
+  loadPageData(pageInfo: any) {
+    if (this.serverSidePaging) {
+      this.onPageChange.emit(pageInfo);
+    } else {
+      this.currentPage = pageInfo.pageNumber;
+      this.renderData();
+    }
+
   }
 
   getFilteredData(filteredObj: any) {
@@ -902,7 +940,7 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
     }
   }
 
-pagingRegenration() {
+  pagingRegenration() {
     this.maxPage = Math.floor((this.data.length / this.pagesize));
     if ((this.data.length % this.pagesize) > 0) {
       this.maxPage++;
