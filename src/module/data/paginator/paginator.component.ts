@@ -8,7 +8,7 @@
  Component Description : Paginator is a generic widget to display content in paged format.
 */
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import {PageInfo} from '../../../models/paginator.model';
+import { PageInfo } from '../../../models/paginator.model';
 
 @Component({
   selector: 'amexio-paginator', templateUrl: './paginator.component.html',
@@ -96,7 +96,7 @@ export class AmexioPaginatorComponent implements OnChanges, OnInit {
 
   cloneRow: number = null;
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {
     if (this.size == null || this.size === '') {
@@ -121,8 +121,8 @@ export class AmexioPaginatorComponent implements OnChanges, OnInit {
 
   initializePages() {
     if (this.serverSidePaging && this.rows >= 10) {
-        this.cloneRow = this.rows;
-        this.rows = 10;
+      this.cloneRow = this.rows;
+      this.rows = 10;
     }
     if (this.rows > this.pages) {
       this.rows = this.pages;
@@ -294,15 +294,13 @@ export class AmexioPaginatorComponent implements OnChanges, OnInit {
   setPageState(currentPageIndex: number, futurePageIndex: number) {
     this.currentState = new PageInfo(currentPageIndex, (this.rows * currentPageIndex), this.rows);
     this.futureState = new PageInfo(futurePageIndex, (this.rows * futurePageIndex), this.rows);
-    console.log('current state', JSON.stringify(this.currentState));
-    console.log('future state', JSON.stringify(this.futureState));
   }
 
   // CREATE ON PAGE EMIT OBJECT
 
   createOnPageEmitObject(activePage: number): any {
     return {
-      pageNumber : activePage,
+      pageNumber: activePage,
       current: this.currentState,
       next: this.futureState,
     };
