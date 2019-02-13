@@ -25,7 +25,7 @@ const noop = () => {
   selector: 'amexio-nav-textfield',
   template:
   `
-  <input type="text" class="top-nav-input-control" [(ngModel)]="value"/>
+  <input  [ngStyle]="{'color':color}" type="text" class="top-nav-input-control" [(ngModel)]="value"/>
 
   `,
   providers: [{
@@ -38,6 +38,8 @@ export class AmexioNavTextFieldComponent implements ControlValueAccessor, OnInit
   private innerValue: any = '';
   private onTouchedCallback: () => void = noop;
   private onChangeCallback: (_: any) => void = noop;
+
+  @Input('color') color: string;
 
   constructor() {
   }
