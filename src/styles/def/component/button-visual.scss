@@ -5,7 +5,7 @@
 }
 
 .button-secondary:hover:enabled {
-    background-color: darken($secondaryBGColor, 10%);
+    background-color: $secondaryBGHoverColor;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -56,7 +56,7 @@
 }
 
 .button-primary:hover:enabled {
-    background-color: darken($primaryBGColor, 10%);
+    background-color: $primaryBGHoverColor;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -67,7 +67,7 @@
 }
 
 .button-success:hover:enabled {
-    background-color: darken($successBGColor, 10%);
+    background-color: $successBGHoverColor;
 }
 
 .button-danger {
@@ -77,7 +77,7 @@
 }
 
 .button-danger:hover:enabled {
-    background-color: darken($dangerBGColor, 10%);
+    background-color: $dangerBGHoverColor;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -88,7 +88,7 @@
 }
 
 .button-warning:hover:enabled {
-    background-color: darken($warningBGColor, 10%);
+    background-color: $warningBGHoverColor;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -125,4 +125,44 @@
 .font-with-label {
     padding-left: 5px;
     font-family: Roboto, Trebuchet MS, Arial, Helvetica, sans-serif;
+}
+
+// button disabled
+.button-primary-disabled{
+    background-color: $buttonDisableBG ;
+    border-color: $buttonDisableBG ;
+    pointer-events: none;
+    color: $buttonDisableFontColor;
+    cursor: not-allowed;
+}
+
+.button-success-disabled{
+    background-color: $buttonSuccessDisabledBgColor;
+    border-color: $buttonSuccessDisabledBgColor;
+    pointer-events: none;
+    cursor: not-allowed;
+    color: $buttonDisableFontColor;
+}
+
+.button-danger-disabled{
+    background-color: $buttonDangerDisabledBgColor;
+    border-color: $buttonDangerDisabledBgColor;
+    pointer-events: none;
+    color: $buttonDisableFontColor;
+}
+
+.button-warning-disabled{
+    background-color:  $buttonWarningDisabledBgColor;
+    border-color: $buttonWarningDisabledBgColor;
+    color: $buttonDisableFontColor;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+.disabled {
+    background-color: $buttonDefaultDisabledBgColor;
+    border-color: $buttonDefaultDisabledBgColor;
+    color: $buttonDisableFontColor;
+    pointer-events: none;
+    cursor: not-allowed;
 }

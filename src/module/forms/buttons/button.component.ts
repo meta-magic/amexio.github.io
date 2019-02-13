@@ -84,7 +84,7 @@ export class AmexioButtonComponent implements OnInit {
   default : false
   description : Enable/Disables the button
   */
-  @Input() disabled: boolean;
+  @Input() disabled = false;
   /*
   Properties
   name : form-bind

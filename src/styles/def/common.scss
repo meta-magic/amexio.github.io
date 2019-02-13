@@ -19,6 +19,12 @@ $warningBGColor: #f0ad4e;
 $warningDisabledBGColor: lighten($warningBGColor, 20);
 $defaultDisabledBGColor: lightgray;
 
+$primaryBGHover: darken($primaryBGColor, 10);
+$secondaryBGHover: darken($secondaryBGColor, 10);
+$dangerBGHover: darken($dangerBGColor, 10);
+$successBGHover: darken($successBGColor, 10);
+$warningBGHover: darken($warningBGColor, 10);
+
 $primaryColor: $componentBGColor;
 $secondaryColor:$componentFontColor;
 $successColor: $componentBGColor;

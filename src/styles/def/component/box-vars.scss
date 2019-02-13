@@ -3,17 +3,18 @@ $boxBorderSize : 6px;
 $boxBackgroundColor : $componentBGColor;
 $boxFontColor :$themeFontColor;
 
-$boxBGRed : lighten($amexioColorRedLight,20);
+
+$boxBGRed : $boxBGRedColor;
 $boxBorderRed :$amexioColorRedDark;
-$boxBGGreen : lighten($amexioColorGreenLight,30);
+$boxBGGreen : $boxBGGreenColor;
 $boxBorderGreen:$amexioColorGreenDark;
-$boxBGPurple : lighten($amexioColorPurpleLight,40);
+$boxBGPurple : $boxBGPurpleColor;
 $boxBorderPurple: $amexioColorPurpleDark;
-$boxBGBlue: lighten($amexioColorBlueLight,40);
+$boxBGBlue: $boxBGBlueColor;
 $boxBorderBlue : $amexioColorBlueDark;
-$boxBGBrown : lighten($amexioColorBrownLight,20);
+$boxBGBrown : $boxBGBrownColor;
 $boxBorderBrown : $amexioColorBrownDark;
-$boxBGYellow : lighten($amexioColorYellowLight,20);
+$boxBGYellow : $boxBGYellowColor;
 $boxBorderYellow : $amexioColorYellowDark;
 
 $boxBorderColor : $borderColor;

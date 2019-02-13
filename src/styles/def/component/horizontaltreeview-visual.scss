@@ -4,8 +4,9 @@
   background-color: $horizontalnodeColor;
   color: $horizontalTreeviewColor;
 }
+
 .horizontaltreeview-node-label:hover{
-  border-color:  darken($horizontalnodeColor,10%);
+  // border-color:  darken($horizontalnodeColor,10%);
   color: $horizontaltreeviewLabelHoverColor;
   background-color: $horizontaltreeviewLabelHoverBGColor;
 }

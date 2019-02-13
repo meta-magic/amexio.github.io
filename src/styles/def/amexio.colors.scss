@@ -145,3 +145,9 @@ $amexioFontForYellowDark : #241500;
 	color: $amexioColorBlack;
 }
 
+$boxBGRedColor : lighten($amexioColorRedLight,20);
+$boxBGGreenColor : lighten($amexioColorGreenLight,30);
+$boxBGPurpleColor : lighten($amexioColorPurpleLight,40);
+$boxBGBlueColor : lighten($amexioColorBlueLight,40);
+$boxBGBrownColor : lighten($amexioColorBrownLight,20);
+$boxBGYellowColor : lighten($amexioColorYellowLight,20);
