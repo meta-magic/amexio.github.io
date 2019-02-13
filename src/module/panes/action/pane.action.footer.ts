@@ -60,7 +60,7 @@ export class AmexioFooterComponent implements OnInit {
         break;
       }
       default : {
-        this.alignClass = '';
+        this.alignClass = 'flex-end';
         break;
       }
     }
