@@ -10,12 +10,11 @@
         'button-danger' : type=='danger' || type == 'red' && disabled == false,
         'button-warning' : type=='warning' || type == 'yellow' && disabled == false,
         'button-transparent' : type=='transparent' && disabled == false,
-        'disabled' : type =='transparent' && disabled == 'true',
-        'disabled' : (type == 'secondary' || type == 'theme-backgroundcolor') && disabled == 'true',
-        'button-primary-disabled' : (type == 'primary' || type == 'theme-color') && disabled == 'true',
-        'button-success-disabled' : (type == 'success' || type == 'green') && disabled == 'true',
-        'button-danger-disabled' : (type == 'danger' || type == 'red') && disabled == 'true',
-        'button-warning-disabled' : (type == 'warning' || type == 'yellow') && disabled == 'true'}" (click)="buttonClick($event)">
+        'disabled' : (type =='transparent' && disabled) || (type == 'secondary' || type == 'theme-backgroundcolor') && disabled,
+        'button-primary-disabled' : (type == 'primary' || type == 'theme-color') && disabled,
+        'button-success-disabled' : (type == 'success' || type == 'green') && disabled,
+        'button-danger-disabled' : (type == 'danger' || type == 'red') && disabled,
+        'button-warning-disabled' : (type == 'warning' || type == 'yellow') && disabled}" (click)="buttonClick($event)">
         <span class="button-text">
           <span style="padding-right: 5px;" *ngIf="icon">
             <amexio-c-icon [customclass]="icon" [label]="label">
