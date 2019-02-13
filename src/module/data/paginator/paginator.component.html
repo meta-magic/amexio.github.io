@@ -10,7 +10,8 @@
     <a role="radiogroup" id="{{componentId}}" aria-label="next set page" tabindex="1" class="paginator-page" (click)="onLastClick()">&gt;&gt;</a>
     <a role="radiogroup" id="{{componentId}}" aria-label="next page" tabindex="1" class="paginator-page" (click)="onNext()">&gt;</a>
   </span>
-  <ng-container *ngIf="pages > rows">
+  <ng-container *ngIf="!serverSidePaging">
+    <ng-container *ngIf="pages > rows">
     <span class="paginator-pages">
       <a class="paginator-page" (click)="showColumnOptions()" style=" cursor: pointer;">{{currentRow}} &nbsp; &#9660;</a>
       <span *ngIf="show" class="dropdown" style="width: 50px;">
@@ -21,5 +22,6 @@
         </ul>
       </span>
     </span>
+    </ng-container>
   </ng-container>
 </div>
