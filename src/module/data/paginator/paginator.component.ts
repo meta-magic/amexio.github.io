@@ -13,7 +13,6 @@ import { PageInfo } from '../../../models/paginator.model';
 @Component({
   selector: 'amexio-paginator', templateUrl: './paginator.component.html',
 })
-
 export class AmexioPaginatorComponent implements OnChanges, OnInit {
 
   show: boolean;
@@ -21,53 +20,53 @@ export class AmexioPaginatorComponent implements OnChanges, OnInit {
   @Input('server-side-paging') serverSidePaging = false;
 
   /*
-   Properties
-   name : pages
-   datatype : any
-   version : 4.0 onwards
-   default : none
-   description : Total Number of records
-   */
+Properties
+name : pages
+datatype : any
+version : 4.0 onwards
+default : none
+description : Total Number of records
+*/
   @Input() pages: any;
 
   /*
-   Properties
-   name : rows
-   datatype : any
-   version : 4.0 onwards
-   default : none
-   description : number of records on one page
-   */
+Properties
+name : rows
+datatype : any
+version : 4.0 onwards
+default : none
+description : number of records on one page
+*/
   @Input() rows = 10;
 
   /*
-   Properties
-   name : size
-   datatype : any
-   version : 4.0 onwards
-   default : none
-   description : number of pages to be displayed
-   */
+Properties
+name : size
+datatype : any
+version : 4.0 onwards
+default : none
+description : number of pages to be displayed
+*/
   @Input() size: any;
 
   /*
-   Events
-   name : onRowChange
-   datatype : none
-   version : none
-   default : none
-   description : if you click on '<<' will get 1st record and if you click on '>>' will get last record.
-   */
+Events
+name : onRowChange
+datatype : none
+version : none
+default : none
+description : if you click on '<<' will get 1st record and if you click on '>>' will get last record.
+*/
   @Output() onRowChange: EventEmitter<any> = new EventEmitter<any>();
 
   /*
-   Events
-   name : onPageChange
-   datatype : none
-   version : none
-   default : none
-   description : It will gives you current page number
-   */
+Events
+name : onPageChange
+datatype : none
+version : none
+default : none
+description : It will gives you current page number
+*/
   @Output() onPageChange: EventEmitter<any> = new EventEmitter<any>();
 
   fullPageSet: any[] = [];
@@ -96,6 +95,8 @@ export class AmexioPaginatorComponent implements OnChanges, OnInit {
 
   cloneRow: number = null;
 
+  isCustomLogic: boolean;
+
   constructor() { }
 
   ngOnInit() {
@@ -120,7 +121,8 @@ export class AmexioPaginatorComponent implements OnChanges, OnInit {
   }
 
   initializePages() {
-    if (this.serverSidePaging && this.rows >= 10) {
+    if (this.rows > 10 && this.serverSidePaging) {
+      this.isCustomLogic = true;
       this.cloneRow = this.rows;
       this.rows = 10;
     }
@@ -292,8 +294,14 @@ export class AmexioPaginatorComponent implements OnChanges, OnInit {
   }
 
   setPageState(currentPageIndex: number, futurePageIndex: number) {
-    this.currentState = new PageInfo(currentPageIndex, (this.rows * currentPageIndex), this.rows);
-    this.futureState = new PageInfo(futurePageIndex, (this.rows * futurePageIndex), this.rows);
+    if (this.isCustomLogic) {
+      this.currentState = new PageInfo(currentPageIndex, (this.cloneRow * currentPageIndex), this.cloneRow);
+      this.futureState = new PageInfo(futurePageIndex, (this.cloneRow * futurePageIndex), this.cloneRow);
+    } else {
+      this.currentState = new PageInfo(currentPageIndex, (this.rows * currentPageIndex), this.rows);
+      this.futureState = new PageInfo(futurePageIndex, (this.rows * futurePageIndex), this.rows);
+
+    }
   }
 
   // CREATE ON PAGE EMIT OBJECT

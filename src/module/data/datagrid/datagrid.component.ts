@@ -566,7 +566,7 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
     if (!this.groupby) {
       this.renderData();
     }
-    if (this.serverSidePaging) {
+    if (this.serverSidePaging && this.totalDataCount) {
       this.pagesize = this.viewRows.length ;
       this.totalPages = (this.totalDataCount / this.pagesize);
     } else {
@@ -592,7 +592,7 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
     if (this.groupby) {
       this.setColumnData();
     }
-    if (this.serverSidePaging) {
+    if (this.serverSidePaging && this.totalDataCount) {
       this.pagesize = this.viewRows.length - 1;
       this.totalPages = (this.totalDataCount / this.pagesize);
     } else {
