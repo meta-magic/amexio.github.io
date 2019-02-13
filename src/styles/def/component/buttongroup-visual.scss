@@ -6,7 +6,7 @@
 }
 
 .button-secondary:hover:enabled{
-  background-color: darken($secondaryBGColor, 10%);
+  background-color: $secondaryBGHoverColor;
 }
 
 .btn-group-primary-badge{
@@ -54,7 +54,7 @@
 }
 
 .button-primary:hover:enabled{
-  background-color: darken($primaryBGColor, 10%);
+  background-color: $primaryBGHoverColor;
 }
 
 .button-success {
@@ -65,7 +65,7 @@
 }
 
 .button-success:hover:enabled{
-  background-color: darken($successBGColor, 10%);
+  background-color: $successBGHoverColor;
 }
 
 .button-danger {
@@ -75,7 +75,7 @@
 }
 
 .button-danger:hover:enabled{
-  background-color: darken($dangerBGColor, 10%);
+  background-color: $dangerBGHoverColor;
 }
 
 .button-warning {
@@ -85,7 +85,7 @@
 }
 
 .button-warning:hover:enabled{
-  background-color: darken($warningBGColor, 10%);
+  background-color: $warningBGHoverColor;
 }
 
 .button-transparent {
