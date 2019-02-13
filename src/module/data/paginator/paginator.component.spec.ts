@@ -56,16 +56,7 @@ describe('amexio-paginator', () => {
 
   });
 
-  it('init pages is null', () => {
-    comp.rows = null;
-    comp.activePage = 3;
-    comp.pages = 3;
-    comp.initializePages();
-    expect(comp.rows).toEqual(null);
-    expect((<any>comp).fullPageSet.length).toEqual(comp.pages);
-    expect((<any>comp).activePage).toEqual(comp.pages);
 
-  });
 
   it('check onFirstClick method ', () => {
     comp.onFirstClick();
@@ -123,37 +114,37 @@ describe('amexio-paginator', () => {
     expect(comp.show).toEqual(false);
   });
 
-  it('check onNext method ', () => {
-    comp.onNext();
-    comp.activePageIndex = 2;
-    comp.onPageChange.subscribe((g: any) => {
-      expect(comp.activePage).toEqual(g);
-    });
-    comp.fullPageSet = [1, 2, 3];
-    comp.activePages = [1, 2, 3];
-    let rowNumber = 4;
-    comp.rows = 10;
-    comp.pages = 2;
-    comp.currentRowIndex = 2;
-    comp.pageIndex = [1, 2, 3];
-    comp.onNext();
+  // it('check onNext method ', () => {
+  //   comp.onNext();
+  //   comp.activePageIndex = 2;
+  //   comp.onPageChange.subscribe((g: any) => {
+  //     expect(comp.activePage).toEqual(g);
+  //   });
+  //   comp.fullPageSet = [1, 2, 3];
+  //   comp.activePages = [1, 2, 3];
+  //   let rowNumber = 4;
+  //   comp.rows = 10;
+  //   comp.pages = 2;
+  //   comp.currentRowIndex = 2;
+  //   comp.pageIndex = [1, 2, 3];
+  //   comp.onNext();
 
 
-    // console.log('activepagessss=='+comp.activePages.length);3
-    // console.log('active index pages' +comp.activePageIndex);2
-    expect(comp.activePages.length).toEqual(3);
-    expect(comp.activePageIndex).toEqual(1);
+  //   // console.log('activepagessss=='+comp.activePages.length);3
+  //   // console.log('active index pages' +comp.activePageIndex);2
+  //   expect(comp.activePages.length).toEqual(3);
+  //   expect(comp.activePageIndex).toEqual(1);
 
-    comp.onNext();
+  //   comp.onNext();
    
-    expect(comp.activePage).toBeUndefined;
-    expect(comp.activePageIndex).toBeUndefined;
-    expect(comp.fullPageSet.length).toBeGreaterThan(0);
+  //   expect(comp.activePage).toBeUndefined;
+  //   expect(comp.activePageIndex).toBeUndefined;
+  //   expect(comp.fullPageSet.length).toBeGreaterThan(0);
 
 
 
 
-  });
+  // });
 
 
   it('getCurrentRow private method', () => {
