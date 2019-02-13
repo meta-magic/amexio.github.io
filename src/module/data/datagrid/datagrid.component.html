@@ -342,7 +342,7 @@
 <div class="footer">
     <ng-container *ngIf="pagesize && (data && data.length > pagesize)">
         <ng-container *ngIf="totalPages!=null">
-            <amexio-paginator [pages]="totalPages" [rows]="pagesize" (onPageChange)="loadPageData($event)"></amexio-paginator>
+            <amexio-paginator [server-side-paging]="serverSidePaging" [pages]="totalPages" [rows]="pagesize" (onPageChange)="loadPageData($event)"></amexio-paginator>
         </ng-container>
     </ng-container>
 </div>
