@@ -277,7 +277,7 @@ export class AmexioPaginatorComponent implements OnChanges, OnInit {
       this.currentState = new PageInfo(currentPageIndex, (this.rows * currentPageIndex), this.rows);
       this.futureState = new PageInfo(futurePageIndex, (this.rows * futurePageIndex), this.rows);
     }
-    this.onPageChange.emit(this.createOnPageEmitObject(this.activePage));
+    this.onPageChange.emit(this.createOnPageEmitObject(this.futureState.pageNumber));
   }
 
   // CREATE ON PAGE EMIT OBJECT
