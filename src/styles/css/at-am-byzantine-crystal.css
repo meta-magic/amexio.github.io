@@ -2626,10 +2626,14 @@ input:checked + .toggle-slider:before {
   left: 50%; }
 
 .floatingbutton-circle {
-  border-radius: 50px;
-  width: 60px;
-  height: 60px;
-  line-height: 60px; }
+  border-radius: 50%;
+  padding: 20px;
+  text-decoration: none;
+  font-size: 30px;
+  margin: 5px 2px;
+  text-align: center;
+  width: 30px;
+  height: 30px; }
 
 .floatingbutton:hover {
   box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2) !important;
@@ -3730,7 +3734,7 @@ header .billboard .content-button {
 .close-button {
   cursor: pointer;
   padding-left: 98%;
-  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, transparent 70%, transparent 100%); }
+  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 100%); }
 
 /****************************************************************************
     Component Name : Enterprise Youtube
@@ -3739,7 +3743,7 @@ header .billboard .content-button {
 /** enterprise-youtube - Visual CSS **/
 .close-button {
   color: grey;
-  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, transparent 70%, transparent 100%); }
+  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 100%); }
 
 .close-button i:hover {
   color: red; }
@@ -3763,8 +3767,8 @@ header .billboard .content-button {
   font-size: 20px; }
 
 .tile__details {
-  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%); }
+  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%); }
 
 .tile__details:after,
 .tile__details:before {
@@ -3772,8 +3776,8 @@ header .billboard .content-button {
 
 .tile__details_v {
   font-size: 10px;
-  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%); }
+  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%); }
 
 .tile__details_v:after,
 .tile__details_v:before {

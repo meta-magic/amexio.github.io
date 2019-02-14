@@ -25,13 +25,22 @@ import { IconLoaderService } from './../../services/icon/icon.service';
 
    <ng-container *ngIf="customclass != null">
      <span [ngStyle]="{'color':color}" class="{{customclass}}" aria-hidden="true"
-     (click)="onClick.emit($event)"><span class="font-with-label" >
-     {{label}}</span></span>
+     (click)="onClick.emit($event)">
+     <ng-container *ngIf="label != ''">
+     <span class="font-with-label" >
+     {{label}}</span>
+     </ng-container>
+     </span>
    </ng-container>
    <ng-container *ngIf="customclass == null">
      <span [ngStyle]="{'color':color}" class="{{iconClass}}" aria-hidden="true"
-     (click)="onClick.emit($event)"><span class="font-with-label">
-     {{label}}</span></span>
+     (click)="onClick.emit($event)">
+     <ng-container *ngIf="label != ''">
+     <span class="font-with-label">
+     {{label}}
+     </span>
+     </ng-container>
+     </span>
    </ng-container>
 
  </ng-container>
@@ -40,12 +49,18 @@ import { IconLoaderService } from './../../services/icon/icon.service';
 
    <ng-container *ngIf="customclass != null">
      <i [ngStyle]="{'color':color}" class="material-icons"
-     (click)="onClick.emit($event)">{{customclass}}</i><span class="font-with-label"> {{label}}</span>
+     (click)="onClick.emit($event)">{{customclass}}</i>
+<ng-container *ngIf="label != ''">
+     <span class="font-with-label"> {{label}}</span>
+</ng-container>
    </ng-container>
 
    <ng-container *ngIf="customclass == null">
      <i [ngStyle]="{'color':color}" class="material-icons"
-     (click)="onClick.emit($event)">{{iconClass}}</i><span class="font-with-label"> {{label}}</span>
+     (click)="onClick.emit($event)">{{iconClass}}</i>
+     <ng-container *ngIf="label != ''">
+     <span class="font-with-label"> {{label}}</span>
+     </ng-container>
    </ng-container>
 
 
