@@ -13,6 +13,7 @@ import { PageInfo } from '../../../models/paginator.model';
 @Component({
   selector: 'amexio-paginator', templateUrl: './paginator.component.html',
 })
+
 export class AmexioPaginatorComponent implements OnChanges, OnInit {
 
   show: boolean;
@@ -20,53 +21,53 @@ export class AmexioPaginatorComponent implements OnChanges, OnInit {
   @Input('server-side-paging') serverSidePaging = false;
 
   /*
-Properties
-name : pages
-datatype : any
-version : 4.0 onwards
-default : none
-description : Total Number of records
-*/
+   Properties
+   name : pages
+   datatype : any
+   version : 4.0 onwards
+   default : none
+   description : Total Number of records
+   */
   @Input() pages: any;
 
   /*
-Properties
-name : rows
-datatype : any
-version : 4.0 onwards
-default : none
-description : number of records on one page
-*/
+   Properties
+   name : rows
+   datatype : any
+   version : 4.0 onwards
+   default : none
+   description : number of records on one page
+   */
   @Input() rows = 10;
 
   /*
-Properties
-name : size
-datatype : any
-version : 4.0 onwards
-default : none
-description : number of pages to be displayed
-*/
+   Properties
+   name : size
+   datatype : any
+   version : 4.0 onwards
+   default : none
+   description : number of pages to be displayed
+   */
   @Input() size: any;
 
   /*
-Events
-name : onRowChange
-datatype : none
-version : none
-default : none
-description : if you click on '<<' will get 1st record and if you click on '>>' will get last record.
-*/
+   Events
+   name : onRowChange
+   datatype : none
+   version : none
+   default : none
+   description : if you click on '<<' will get 1st record and if you click on '>>' will get last record.
+   */
   @Output() onRowChange: EventEmitter<any> = new EventEmitter<any>();
 
   /*
-Events
-name : onPageChange
-datatype : none
-version : none
-default : none
-description : It will gives you current page number
-*/
+   Events
+   name : onPageChange
+   datatype : none
+   version : none
+   default : none
+   description : It will gives you current page number
+   */
   @Output() onPageChange: EventEmitter<any> = new EventEmitter<any>();
 
   fullPageSet: any[] = [];
@@ -78,10 +79,6 @@ description : It will gives you current page number
   activePage: number;
 
   pageIndex: any[] = [];
-
-  bFirst: any;
-
-  bLast: any;
 
   currentRow: number;
 
@@ -111,7 +108,6 @@ description : It will gives you current page number
   }
 
   ngOnChanges(change: SimpleChanges) {
-
     if (change.pages && !change.pages.isFirstChange()) {
       this.initializePages();
     }
@@ -121,21 +117,21 @@ description : It will gives you current page number
   }
 
   initializePages() {
+    this.resetData();
     if (this.rows > 10 && this.serverSidePaging) {
       this.isCustomLogic = true;
       this.cloneRow = this.rows;
       this.rows = 10;
     }
-    if (this.rows > this.pages) {
-      this.rows = this.pages;
-    }
-    this.fullPageSet.length = 0;
-    this.activePages.length = 0;
-    this.pageIndex.length = 0;
-
-    if (this.rows != null) {
+    if (this.rows && this.rows != null) {
+      if (this.rows > this.pages) {
+        this.rows = this.pages;
+      }
       for (let i = 0; i < this.pages; i++) {
         this.fullPageSet.push(i + 1);
+      }
+      for (let i = 0; i < this.rows; i++) {
+        this.activePages.push(i + 1);
       }
       this.calculateRows();
       this.setRows(this.rows);
@@ -145,35 +141,27 @@ description : It will gives you current page number
         this.activePages.push(i + 1);
       }
     }
-    this.setBoundaries();
     this.activePageIndex = 0;
     this.currentRowIndex = 0;
     this.activePage = this.activePageIndex + 1;
   }
 
   onFirstClick() {
-    this.setPageState(this.activePage, 1);
+    this.setAndEmitPageState(this.activePage, 1);
     this.activePageIndex = 0;
     this.changeRows(this.pageIndex[0], 0, null);
-    this.onPageChange.emit(this.createOnPageEmitObject(this.activePage));
   }
 
   onLastClick() {
-    this.activePageIndex = this.activePages.length - 1;
-    this.setPageState(this.activePage, this.pageIndex[this.pageIndex.length - 1]);
     this.changeRows(this.pageIndex[this.pageIndex.length - 1], this.pageIndex.length - 1, null);
-
     this.activePageIndex = this.activePages.length - 1;
     this.activePage = this.activePages[this.activePages.length - 1];
-    this.onPageChange.emit(this.createOnPageEmitObject(this.activePage));
+    this.setAndEmitPageState(this.activePage, this.pageIndex[this.pageIndex.length - 1]);
   }
 
   onPrevious() {
     if (this.activePageIndex !== 0) { // within row bounds
-      this.activePageIndex -= 1;
-      this.activePage = this.activePages[this.activePageIndex];
-      this.setPageState(this.activePageIndex, this.activePage);
-      this.onPageChange.emit(this.createOnPageEmitObject(this.activePage));
+      this.setNextOrPreviewsPage(this.activePageIndex -= 1);
     } else {
       // load prev rows
       let sIndx;
@@ -184,37 +172,35 @@ description : It will gives you current page number
       }
       if (sIndx > 0) {
         this.changeRows(this.pageIndex[this.currentRowIndex - 1], this.currentRowIndex - 1, null);
-        this.activePageIndex = this.activePages.length - 2;
-        this.activePage = this.activePages[this.activePages.length - 2];
-        this.setPageState(this.activePageIndex, this.activePage);
-        this.onPageChange.emit(this.createOnPageEmitObject(this.activePage));
+        this.setNextOrPreviewsPage(this.activePages.length - 2);
       }
     }
   }
 
   onNext() {
     if (this.activePageIndex !== this.activePages.length - 1) { // within row bounds
-      this.activePageIndex += 1;
-      this.activePage = this.activePages[this.activePageIndex];
-      this.setPageState(this.activePageIndex, this.activePage);
-      this.onPageChange.emit(this.createOnPageEmitObject(this.activePage));
+      this.setNextOrPreviewsPage(this.activePageIndex += 1);
     } else {
       // load next rows
       const sIndx = this.fullPageSet.indexOf(this.activePage) + 1;
       if (sIndx <= this.fullPageSet.length - 1) {
         this.changeRows(this.pageIndex[this.currentRowIndex + 1], this.currentRowIndex + 1, null);
-        this.activePageIndex = 1;
-        this.activePage = this.activePages[1];
-        this.setPageState(this.activePageIndex, this.activePage);
-        this.onPageChange.emit(this.createOnPageEmitObject(this.activePage));
+        this.setNextOrPreviewsPage(1);
       }
     }
   }
+
+  setNextOrPreviewsPage(index: number) {
+    this.activePageIndex = index;
+    this.activePage = this.activePages[index];
+    this.setAndEmitPageState(index, this.activePage);
+  }
+
   /* If page size is less then row*/
   changeRows(rowNumber: number, inDx: number, event: any) {
     if (rowNumber != null) {
       this.activePages = [];
-      if (this.pages < rowNumber) {
+      if (this.pages <= rowNumber) {
         this.currentRow = this.pages;
         for (let i = this.currentRow - this.rows + 1; i <= this.currentRow; i++) {
           if (i !== 0) {
@@ -245,29 +231,25 @@ description : It will gives you current page number
   private onPageChangeMethod(inDx: number) {
     this.currentRowIndex = inDx;
     this.onRowChange.emit(this.currentRow);
-    this.setBoundaries();
     this.activePageIndex = 0;
     this.activePage = this.activePages[0];
-    this.onPageChange.emit(this.createOnPageEmitObject(this.activePage));
   }
 
   onPageClick(page: number, index: number) {
-    this.setPageState(this.activePageIndex + 1, page);
+    this.setAndEmitPageState(this.activePageIndex + 1, page);
     this.activePageIndex = index;
     this.activePage = page;
-    this.onPageChange.emit(this.createOnPageEmitObject(this.activePage));
   }
 
   calculateRows() {
-    for (let i = 0; i < this.rows; i++) {
-      this.activePages.push(i + 1);
-    }
     this.currentRow = this.rows;
-    // calc rows
-    const loopI = Math.round(this.pages / this.rows);
-
+    const loopI = Math.ceil(this.pages / this.rows);
     for (let i = 1; i <= loopI; i++) {
-      this.pageIndex.push(this.rows * i);
+      if ((this.rows * i) > this.pages) {
+        this.pageIndex.push(this.pages);
+      } else {
+        this.pageIndex.push(this.rows * i);
+      }
     }
   }
 
@@ -281,27 +263,21 @@ description : It will gives you current page number
     for (let i = 0; i < this.currentRow; i++) {
       this.activePages.push(i + 1);
     }
-
-  }
-
-  setBoundaries() {
-    this.bFirst = this.activePages[0];
-    this.bLast = this.activePages[this.activePages.length - 1];
   }
 
   showColumnOptions() {
     this.show = !this.show;
   }
 
-  setPageState(currentPageIndex: number, futurePageIndex: number) {
+  setAndEmitPageState(currentPageIndex: number, futurePageIndex: number) {
     if (this.isCustomLogic) {
       this.currentState = new PageInfo(currentPageIndex, (this.cloneRow * currentPageIndex), this.cloneRow);
       this.futureState = new PageInfo(futurePageIndex, (this.cloneRow * futurePageIndex), this.cloneRow);
     } else {
       this.currentState = new PageInfo(currentPageIndex, (this.rows * currentPageIndex), this.rows);
       this.futureState = new PageInfo(futurePageIndex, (this.rows * futurePageIndex), this.rows);
-
     }
+    this.onPageChange.emit(this.createOnPageEmitObject(this.activePage));
   }
 
   // CREATE ON PAGE EMIT OBJECT
@@ -312,5 +288,11 @@ description : It will gives you current page number
       current: this.currentState,
       next: this.futureState,
     };
+  }
+
+  resetData() {
+    this.fullPageSet.length = 0;
+    this.activePages.length = 0;
+    this.pageIndex.length = 0;
   }
 }

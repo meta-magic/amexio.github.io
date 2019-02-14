@@ -80,7 +80,7 @@ describe('amexio-paginator', () => {
     });
   });
 
-  it('check previous 11111111method ', () => {
+ /* it('check previous 11111111method ', () => {
     comp.activePageIndex = 0;
     comp.fullPageSet = [1, 2, 3];
     comp.activePage = 2;
@@ -101,7 +101,7 @@ describe('amexio-paginator', () => {
       expect(comp.activePage).toEqual(g);
     });
 
-  });
+  });*/
   it('check changeRows method is not null ', () => {
     let rowNumber = 2;
     let inDx = 2;
@@ -136,7 +136,7 @@ describe('amexio-paginator', () => {
   //   expect(comp.activePageIndex).toEqual(1);
 
   //   comp.onNext();
-   
+
   //   expect(comp.activePage).toBeUndefined;
   //   expect(comp.activePageIndex).toBeUndefined;
   //   expect(comp.fullPageSet.length).toBeGreaterThan(0);

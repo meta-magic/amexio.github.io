@@ -340,9 +340,7 @@
 
 <!-- Footer of the grid -->
 <div class="footer">
-    <ng-container *ngIf="(pagesize && (data && data.length > pagesize)) || serverSidePaging">
-        <ng-container *ngIf="totalPages!=null">
-            <amexio-paginator [server-side-paging]="serverSidePaging" [pages]="totalPages" [rows]="pagesize" (onPageChange)="loadPageData($event)"></amexio-paginator>
-        </ng-container>
-    </ng-container>
+  <ng-container *ngIf="(pagesize && (data && data.length > pagesize)) || (serverSidePaging && totalPages)">
+    <amexio-paginator [server-side-paging]="serverSidePaging" [pages]="totalPages" [rows]="pagesize" (onPageChange)="loadPageData($event)"></amexio-paginator>
+  </ng-container>
 </div>

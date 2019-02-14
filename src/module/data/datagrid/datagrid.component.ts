@@ -566,12 +566,7 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
     if (!this.groupby) {
       this.renderData();
     }
-    if (this.serverSidePaging && this.totalDataCount) {
-      this.pagesize = this.viewRows.length ;
-      this.totalPages = Math.floor(this.totalDataCount / this.pagesize);
-    } else {
-      this.totalPages = this.pageNumbers.length;
-    }
+    this.setPaginatorData();
     this.mask = false;
   }
 
@@ -592,13 +587,19 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
     if (this.groupby) {
       this.setColumnData();
     }
-    if (this.serverSidePaging && this.totalDataCount) {
-      this.pagesize = this.viewRows.length - 1;
-      this.totalPages = Math.floor(this.totalDataCount / this.pagesize);
+    this.setPaginatorData();
+    this.mask = false;
+  }
+
+  setPaginatorData() {
+    if (this.serverSidePaging && this.totalDataCount && this.viewRows.length > 0) {
+      if (!this.pagesize && !this.totalPages) {
+        this.pagesize = this.viewRows.length ;
+        this.totalPages = Math.ceil(this.totalDataCount / this.pagesize);
+      }
     } else {
       this.totalPages = this.pageNumbers.length;
     }
-    this.mask = false;
   }
 
   setSelectedFlag(viewRows: any) {
