@@ -1032,10 +1032,25 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
           }
         } else if (this.sortColumn.datatype === 'number') {
           this.sortOrderByNumber(sortOrder, sortColDataIndex);
+        } else if (this.sortColumn.datatype === 'boolean') {
+         this.sortOrderByBoolean(sortOrder, sortColDataIndex);
         }
       }
     }
     this.renderData();
+  }
+
+  sortOrderByBoolean(sortOrder: any, sortColDataIndex: any) {
+    this.data.sort((a, b) => {
+      const x = a[sortColDataIndex];
+      const y = b[sortColDataIndex];
+      if (sortOrder === 1) {
+        return (x === y) ? 0 : x ? -1 : 1;
+      }
+    });
+    if (sortOrder === 2) {
+      this.data.reverse();
+    }
   }
 
   // Sort Order for number field
