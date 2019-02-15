@@ -21,11 +21,15 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 @Component({
   selector: 'amexio-searchbox-options',
   template: `
-  <form class="advancesearchform" *ngIf="advanceSearchFlag"  [style.width]="formwidth+'px'">
-    <label class="search-form-label">
+  <form [attr.aria-expanded]="advanceSearchFlag" class="advancesearchform"
+  *ngIf="advanceSearchFlag"  [style.width]="formwidth+'px'">
+    <label tabindex = "0" class="search-form-label" [attr.aria-labellledby]="title">
         {{title}}
     </label>
-    <span class="fa fa-window-close fa-1x close-icon"  (click)="closeSearchForm()"></span>
+    <span tabindex = "0"  aria-label="close form button"
+     class="fa fa-window-close fa-1x close-icon"
+     (keyup.esc)="closeSearchForm()"
+     (keyup.enter)="closeSearchForm()" (click)="closeSearchForm()"></span>
     <hr class="hrclass">
              <ng-content></ng-content>
 </form>

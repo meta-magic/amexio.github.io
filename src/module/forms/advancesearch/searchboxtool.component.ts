@@ -21,7 +21,7 @@ import {
 } from '@angular/core';
 import { AmexioSearchAdvanceComponent } from '../advancesearch/searchadvance.component';
 
-import {BaseFormValidator} from '../../base/base.validator.component';
+import { BaseFormValidator } from '../../base/base.validator.component';
 import { CommonDataService } from '../../services/data/common.data.service';
 @Component({
   selector: 'amexio-searchbox',
@@ -143,10 +143,12 @@ export class SearchboxtoolComponent extends BaseFormValidator<string> implements
   @ViewChild('inp', { read: ElementRef }) public inp: ElementRef;
   value: string;
   responseData: any;
+  searchformString = '';
   viewData: any;
   textValue: any;
   localData: any;
   caretFlag = false;
+  isListFlag = false;
   searchFlag = false;
   searchTextBox = false;
   displayValue: any;
@@ -155,11 +157,15 @@ export class SearchboxtoolComponent extends BaseFormValidator<string> implements
   advanceSearchFlag = false;
   labelValue: string;
   previousData: any;
-  selectedindex = 0;
+  selectedindex = -1;
   scrollposition = 30;
   enableAdvanceSearch = false;
   advanceButtonLabel: string;
   enableAdvnSearch: boolean;
+  componentId: string;
+  keystrokeflag = false;
+
+  isadvsearchbtnpressed = false;
   constructor(
     public element: ElementRef, private dataService: CommonDataService,
     public renderer: Renderer2, _cd: ChangeDetectorRef,
@@ -182,6 +188,7 @@ export class SearchboxtoolComponent extends BaseFormValidator<string> implements
   }
 
   ngOnInit() {
+    this.componentId = this.displayfield + Math.floor(Math.random() * 1000 + 999);
     if (this.httpmethod && this.httpurl) {
       this.dataService.fetchData(this.httpurl, this.httpmethod).subscribe((response) => {
         this.responseData = response;
@@ -209,11 +216,13 @@ export class SearchboxtoolComponent extends BaseFormValidator<string> implements
     this.onBaseFocusEvent({});
     const keyword: any = event.target.value;
     this.viewData = [];
+    this.isListFlag = false;
     if (keyword != null && keyword !== ' ') {
       const search_term = keyword.toLowerCase();
       this.localData.forEach((item: any) => {
         if (item != null && item[this.displayfield].toLowerCase().startsWith(search_term)) {
           this.viewData.push(item);
+          this.isListFlag = true;
         }
       });
       this.keyup.emit(event);
@@ -227,18 +236,21 @@ export class SearchboxtoolComponent extends BaseFormValidator<string> implements
     }
     if (!this.selectedValue || this.selectedValue === '') {
       this.viewData = [];
+      this.isListFlag = false;
     }
   }
   onFocus() {
     if (this.selectedValue.length > 0) {
       const keyword = this.selectedValue;
       this.viewData = [];
+      this.isListFlag = false;
       if (keyword != null && keyword !== ' ') {
         const search_term = keyword.toLowerCase();
         this.localData.forEach((item1: any) => {
           if (item1 != null && item1[this.displayfield].toLowerCase().startsWith(search_term)) {
             // if word exist in start
             this.viewData.push(item1);
+            this.isListFlag = true;
           }
         });
         this.searchFlag = true;
@@ -253,6 +265,7 @@ export class SearchboxtoolComponent extends BaseFormValidator<string> implements
   selectedValueOnFocus() {
     if (!this.selectedValue || this.selectedValue === '') {
       this.viewData = [];
+      this.isListFlag = false;
     }
   }
 
@@ -273,13 +286,19 @@ export class SearchboxtoolComponent extends BaseFormValidator<string> implements
 
   // Method will be called when keycode will be 40 or 38
   navigateKeysCondition(event: any) {
-    let prevselectedindex = 0;
-    if (this.selectedindex === 0) {
-      this.selectedindex = 1;
+    let prevselectedindex = -1;
+    if (this.selectedindex === -1) {
+      this.selectedindex = 0;
     } else {
       prevselectedindex = this.selectedindex;
       if (event.keyCode === 40) {
-        this.selectedindex++;
+        // mtd 1 start
+        if (this.selectedindex >= this.viewData.length - 1) {
+          this.selectedindex = 0;
+        } else {
+          this.selectedindex++;
+        }
+        // mtd 1 ends
         if ((this.selectedindex > 5)) {
           this.dropdownitems.nativeElement.scroll(0, this.scrollposition);
           this.scrollposition = this.scrollposition + 30;
@@ -290,6 +309,8 @@ export class SearchboxtoolComponent extends BaseFormValidator<string> implements
     }
     if (this.viewData[this.selectedindex]) {
       this.viewData[this.selectedindex].selected = true;
+      this.setAriaActiveDescendant(this.selectedindex);
+
     }
     if (this.viewData[prevselectedindex]) {
       this.viewData[prevselectedindex].selected = false;
@@ -299,6 +320,10 @@ export class SearchboxtoolComponent extends BaseFormValidator<string> implements
   // If keycode is 38
   eventKeyCodeCondition() {
     this.selectedindex--;
+    if (this.selectedindex === -1) {
+      this.selectedindex = this.viewData.length - 1;
+      this.setAriaActiveDescendant(this.selectedindex);
+    }
     if (this.scrollposition >= 0 && this.selectedindex > 1) {
       this.dropdownitems.nativeElement.scroll(1, this.scrollposition);
       this.scrollposition = this.scrollposition - 30;
@@ -325,10 +350,13 @@ export class SearchboxtoolComponent extends BaseFormValidator<string> implements
     this.onSearchItemClick.emit(item);
   }
   advanceSearch() {
+    this.isadvsearchbtnpressed = !this.isadvsearchbtnpressed;
+    this.searchformString = 'advance search form opened';
     this.advanceSearchRef.advanceSearchFlag = true;
     this.advanceSearchFlag = true;
     this.searchFlag = this.onBaseBlurEvent({});
   }
+
   closeSearchForm() {
     this.advanceSearchFlag = false;
   }
@@ -358,6 +386,55 @@ export class SearchboxtoolComponent extends BaseFormValidator<string> implements
       responsedata = httpResponse;
     }
     this.viewData = responsedata;
+    this.generateIndex();
     this.localData = JSON.parse(JSON.stringify(this.viewData));
   }
+
+  closeOnEscape() {
+    this.viewData = [];
+  }
+
+  closeFormOnEscape(event: any) {
+    this.advanceSearchRef.closeSearchForm();
+    this.viewData = [];
+    this.advanceSearchFlag = false;
+    this.selectedindex = -1;
+  }
+
+  generateIndex() {
+    this.viewData.forEach((element: any, index: number) => {
+      element['index'] = this.componentId + 'listitem' + index;
+    });
+  }
+
+  setAriaActiveDescendant(rowindex: any) {
+    if (this.viewData.length > 0) {
+      const inputid = document.getElementById(this.componentId);
+      inputid.setAttribute('aria-activedescendant', this.viewData[rowindex].index);
+    } else if (this.displayValue.length < 1) {
+      const inputid = document.getElementById(this.componentId);
+      inputid.setAttribute('aria-activedescendant', 'listitem');
+    }
+  }
+
+  // will be fired on end key press
+  focustolast() {
+    if (this.viewData.length > 0) {
+      this.viewData[this.selectedindex].selected = false;
+      this.selectedindex = this.viewData.length - 1;
+      this.viewData[this.selectedindex].selected = true;
+      this.setAriaActiveDescendant(this.selectedindex);
+    }
+  }
+
+  // will be fired on home key press
+  focustofirst() {
+    if (this.viewData.length > 0) {
+      this.viewData[this.selectedindex].selected = false;
+      this.selectedindex = 0;
+      this.viewData[this.selectedindex].selected = true;
+      this.setAriaActiveDescendant(this.selectedindex);
+    }
+  }
+
 }
