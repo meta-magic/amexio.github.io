@@ -178,7 +178,7 @@ super(renderer, elementref, cdf);
      }
      if (this.floatinggroupposition === 'top') {
        this.floatinggroupxposition = (x) + 'px';
-       this.floatinggroupyposition = (y - (70 * this.datacount)) + 'px';
+       this.floatinggroupyposition = (y - (80 * this.datacount)) + 'px';
      }
      this.toggleVisibility();
      this.togglefloatinggroup = !this.togglefloatinggroup;
