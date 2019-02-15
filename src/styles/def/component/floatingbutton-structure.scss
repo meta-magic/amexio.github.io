@@ -80,7 +80,14 @@ text-align: center;
     line-height: 30px;
 }  
 .floatingbutton-square{
-    padding: .5rem 1rem;
+    border-radius: 0px !important;
+    padding: 20px;
+text-decoration: none;
+font-size:30px;
+margin: 5px 2px;
+text-align: center;
+  width: 30px;
+  height: 30px;
 }
 .floatingbtntooltip {
   position: relative;
