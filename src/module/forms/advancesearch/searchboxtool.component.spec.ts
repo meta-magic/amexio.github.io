@@ -35,15 +35,15 @@ describe('searchboxtool ', () => {
     comp.advanceSearchFlag = false;
   });
 
-  it('set data', () => {
-    let value = '';
-    comp._data = value;
-    expect(comp._data).toEqual(value);
+  // it('set data', () => {
+  //   let value = '';
+  //   comp._data = value;
+  //   expect(comp._data).toEqual(value);
 
-    comp['componentLoaded'] = true;
-    expect(comp['componentLoaded']).toEqual(true);
-    comp.updateComponent();
-  });
+  //   comp['componentLoaded'] = true;
+  //   expect(comp['componentLoaded']).toEqual(true);
+  //   comp.updateComponent();
+  // });
 
   //
   it('selectedValueOnFocus()', () => {
@@ -52,31 +52,31 @@ describe('searchboxtool ', () => {
     comp.viewData = [];
   });
 
-  it('navigateKeys()', () => {
-    let event1 = { keyCode: 40 }
-    comp.viewData = [{ selected: 'Mumbai' }, { selected: 'Pune' }]
-    let len = comp.viewData.length;
-    comp.navigateKeys(event1);
-    comp.selectedindex = 44
+  // it('navigateKeys()', () => {
+  //   let event1 = { keyCode: 40 }
+  //   comp.viewData = [{ selected: 'Mumbai' }, { selected: 'Pune' }]
+  //   let len = comp.viewData.length;
+  //   comp.navigateKeys(event1);
+  //   comp.selectedindex = 44
 
-    // //put1
-    expect(comp.selectedindex).toBeGreaterThan(comp.viewData.length);
+  //   // //put1
+  //   expect(comp.selectedindex).toBeGreaterThan(comp.viewData.length);
 
-    comp.selectedindex = 0;
+  //   comp.selectedindex = 0;
 
-    expect(event1.keyCode).toEqual(40);
-    comp.selectedindex = 1;
+  //   expect(event1.keyCode).toEqual(40);
+  //   comp.selectedindex = 1;
 
-    //put2
-    expect(comp.selectedindex).toBeLessThan(comp.viewData.length)
-    comp.navigateKeysCondition(event1);
+  //   //put2
+  //   expect(comp.selectedindex).toBeLessThan(comp.viewData.length)
+  //   comp.navigateKeysCondition(event1);
 
-    event1.keyCode = 13;
-    comp.viewData[comp.selectedindex] = { selected: 'Delhi' }
-    expect(event1.keyCode).toEqual(13);
-    expect(comp.viewData[comp.selectedindex]).not.toBeNull;
-    comp.onItemSelect(comp.viewData[comp.selectedindex]);
-  });
+  //   event1.keyCode = 13;
+  //   comp.viewData[comp.selectedindex] = { selected: 'Delhi' }
+  //   expect(event1.keyCode).toEqual(13);
+  //   expect(comp.viewData[comp.selectedindex]).not.toBeNull;
+  //   comp.onItemSelect(comp.viewData[comp.selectedindex]);
+  // });
 
   it('selectCssClass()', () => {
     comp.viewData = [{ selected: 'Mumbai' }, { selected: 'Pune' },
