@@ -49,7 +49,6 @@ export class AmexioGridComponent implements AfterContentInit, OnInit {
   constructor(public _gridlayoutService: AmexioGridLayoutService) {
   }
   ngOnInit() {
-    this.colCount = this._gridlayoutService.count;
     this.containerClass = '';
     this.className = '';
     this.cssGenreration(this._gridlayoutService.getLayoutData(this.layout));
@@ -82,6 +81,7 @@ export class AmexioGridComponent implements AfterContentInit, OnInit {
   }
 
   cssGenreration(layoutData: any) {
+    this.colCount = layoutData.count;
     this.className = this.className + '' + layoutData.name;
     if (layoutData.desktop.length > 0) {
       this.cssGenerationCommonMethod(layoutData, this.desktopWidth, GridConstants.Desktop);
@@ -103,7 +103,7 @@ export class AmexioGridComponent implements AfterContentInit, OnInit {
       this.cssGenerationNoDesktop(layoutData);
     }
   }
-// Refactored above method
+  // Refactored above method
   cssGenerationNoDesktop(layoutData: any) {
     if (layoutData.tab.length > 0 && layoutData.mobile.length === 0) {
       this.cssGenerationCommonMethod(layoutData, this.desktopWidth, GridConstants.Tablet);

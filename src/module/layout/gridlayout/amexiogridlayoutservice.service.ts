@@ -33,6 +33,7 @@ export class AmexioGridLayoutService {
     let findStatus = false;
     this.count = dataLayout.count;
     const data = dataLayout.getLayout();
+    data.count = this.count;
     if (this.layoutData.length <= 0) {
       this.layoutData.push(data);
     } else {
