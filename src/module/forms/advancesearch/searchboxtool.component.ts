@@ -394,7 +394,7 @@ export class SearchboxtoolComponent extends BaseFormValidator<string> implements
     this.viewData = [];
   }
 
-  closeFormOnEscape(event: any) {
+  closeFormOnEscape() {
     this.advanceSearchRef.closeSearchForm();
     this.viewData = [];
     this.advanceSearchFlag = false;
