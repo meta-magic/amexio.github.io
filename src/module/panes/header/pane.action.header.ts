@@ -21,17 +21,25 @@ import {BehaviorSubject} from 'rxjs/index';
 
 @Component({
   selector: 'amexio-header', template: `
-    <ng-content></ng-content>
-   <div>
-      <amexio-c-icon style = "cursor:pointer" *ngIf="(isFullWindow && maximize )"
-      [key]="'window_maximize'" (onClick)="sizeChange()"></amexio-c-icon>
-      <amexio-c-icon style = "cursor:pointer" *ngIf="(!isFullWindow && maximize )"
-      [key]="'window_restore'" (click)="sizeChange()"></amexio-c-icon>
-      &nbsp;
-      <amexio-c-icon style = "cursor:pointer" *ngIf="closeable" [key]="'window_close'" (onClick)="onCloseClick()"></amexio-c-icon>
-    </div>
+  <ng-content></ng-content>
+  <span>
+  <amexio-c-icon class="cursor-style" *ngIf="(isFullWindow && maximize )"
+  [key]="'window_maximize'" (onClick)="sizeChange()"></amexio-c-icon>
+  <amexio-c-icon class="cursor-style" *ngIf="(!isFullWindow && maximize )"
+  [key]="'window_restore'" (click)="sizeChange()"></amexio-c-icon>
+  <amexio-c-icon class="cursor-style"
+  style = "padding-left: 10px"
+  *ngIf="closeable" [key]="'window_close'" (onClick)="onCloseClick()"></amexio-c-icon>
+  </span>
   `,
-})
+  styles: [
+  `
+  .cursor-style {
+  cursor:pointer;
+  }
+  `,
+  ],
+  })
 
 export class AmexioHeaderComponent implements OnInit {
 
