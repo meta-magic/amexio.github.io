@@ -1,8 +1,4 @@
 <div class="social-button">
-    <!-- <amexio-button *ngIf="!isCircle" [bg-color]="'#dd4b39'" [color]="'#fff'" [label]="label" [tooltip]="'Google'" [icon]="'fa fa-google'" (onClick)="onButtonClick()">
-    </amexio-button>
-    <amexio-floating-button [bg-color]="'#dd4b39'" [color]="'#fff'" *ngIf="isCircle" [type]="'default'" [relative]="true" [icon]="'fa fa-google'"  (onClick)="onButtonClick()">
-    </amexio-floating-button> -->
 
     <ng-container *ngIf="!isCircle && styleType != 'square'" >
             <amexio-button [bg-color]="'#dd4b39'" [color]="'#fff'" [label]="label" [tooltip]="'Google'" [icon]="'fa fa-google'" (onClick)="onButtonClick()"></amexio-button>
