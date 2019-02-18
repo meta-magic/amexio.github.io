@@ -48,8 +48,8 @@ export class FacebookAuthComponent extends SocialBaseComponent implements OnInit
     if (this.styleType && this.styleType.toLowerCase() === 'circle') {
       this.isCircle = true;
     }
-    if (!this.label && this.styleType && this.styleType.toLowerCase() !== 'circle') {
-      this.label = 'FACEBOOK';
+    if (this.styleType && this.styleType.toLowerCase() === 'square') {
+      this.isCircle = false;
     }
     this.loginProviderObj.id = this.clientId;
     this.loginProviderObj.name = SOCIAL_CONSTANT.FACEBOOK;
