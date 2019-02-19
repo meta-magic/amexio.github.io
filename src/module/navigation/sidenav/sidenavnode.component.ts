@@ -23,13 +23,13 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class SideNavNodeComponent implements OnInit {
   /*
-     Properties
-     name : nodedata
-     datatype : any
-     version : 5.2.0 onwards
-     default :
-     description : node data pass on click event.
-     */
+    Properties
+    name : nodedata
+    datatype : any
+    version : 5.2.0 onwards
+    default :
+    description : node data pass on click event.
+    */
   @Input('node') nodedata: any;
   /*
    Properties
@@ -125,7 +125,7 @@ export class SideNavNodeComponent implements OnInit {
    description : Fire when you drag node
    */
   @Output() onDrag: any = new EventEmitter<any>();
-
+  @Output() nodeEmitToSideNav: any = new EventEmitter<any>();
   /*
    Properties
    name : display-key
@@ -172,6 +172,10 @@ export class SideNavNodeComponent implements OnInit {
       event.event.dataTransfer.setData('dragData', JSON.stringify(event.data));
       this.onDrag.emit(event);
     }
+  }
+
+  emittednodedata(allNodeData: any) {
+    this.nodeEmitToSideNav.emit(allNodeData);
   }
 
 }

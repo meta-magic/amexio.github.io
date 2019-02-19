@@ -16,14 +16,15 @@
 * Created by ketangote on 12/1/17.
 */
 
-import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
+import { AfterContentInit, Component, ContentChildren, ElementRef, EventEmitter, HostListener, Input,
+  OnInit, Output, QueryList } from '@angular/core';
 import { CommonDataService } from '../../services/data/common.data.service';
 import { DeviceQueryService } from '../../services/device/device.query.service';
-
+import { SideNavNodeComponent } from '../sidenav/sidenavnode.component';
 @Component({
   selector: 'amexio-side-nav', templateUrl: './sidenav.component.html',
 })
-export class AmexioSideNavComponent implements OnInit {
+export class AmexioSideNavComponent implements OnInit, AfterContentInit {
 
   /*
    Properties
@@ -198,14 +199,17 @@ export class AmexioSideNavComponent implements OnInit {
    description : User can pass background image
    */
   @Input('bg-image') bgimage: string;
-
+  @ContentChildren(SideNavNodeComponent) sidennavnodearray: QueryList<SideNavNodeComponent>;
   smalldevice: boolean;
-
+  nodearray: any;
+  activenode: any;
   sidenavexpandedinsmalldevice: boolean;
 
   responseData: any;
 
   isSideNavExpand: boolean;
+
+  nodes: any = [];
 
   constructor(public dataService: CommonDataService, public matchMediaService: DeviceQueryService, public element: ElementRef) {
     this.position = 'left';
@@ -249,6 +253,36 @@ export class AmexioSideNavComponent implements OnInit {
     if (!this.height) {
       this.height = '100%';
     }
+  }
+
+  ngAfterContentInit() {
+    this.nodearray = this.sidennavnodearray.toArray();
+    this.nodearray.forEach((element: SideNavNodeComponent) => {
+      element.nodeEmitToSideNav.subscribe((node: any) => {
+        node.forEach((nodeelement: any) => {
+          if (nodeelement.active === true) {
+            this.activenode = nodeelement;
+          }
+        });
+        this.activateNode = JSON.parse(JSON.stringify(node));
+        this.findObj(node);
+      });
+    });
+  }
+
+  findObj(currentnode: any) {
+    this.nodearray.forEach((element: SideNavNodeComponent) => {
+      if (element.node && (element.node.length > 0)) {
+          (element.node).forEach((individualnode: any) => {
+             if ((this.activenode.text === individualnode.text)
+              && (this.activenode.active === individualnode.active)) {
+              individualnode.active = true;
+            }else {
+              individualnode.active = false;
+            }
+          });
+      }
+    });
   }
 
   onClick(node: any) {
@@ -317,4 +351,5 @@ export class AmexioSideNavComponent implements OnInit {
   getNodeDragEvent(event: any) {
     this.onDrag.emit(event);
   }
+
 }

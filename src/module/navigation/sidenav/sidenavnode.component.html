@@ -1,22 +1,31 @@
+<!-- node {{node | json}} -->
 <li>
     <div *ngIf="enableborder" class="border"></div>
-    <div *ngIf="label || badge || icon" [attr.draggable]="enabledrag" (dragstart)="dragStartEvent({event:$event,data:node})" class="headernode" [ngClass]="{'activenode':active}" (click)="onClick(nodedata)">
+    <div *ngIf="label || badge || icon" [attr.draggable]="enabledrag" (dragstart)="dragStartEvent({event:$event,data:node})"
+        class="headernode" [ngClass]="{'activenode':active}" (click)="onClick(nodedata)">
         <amexio-c-icon *ngIf="icon" class="node-icon" [customclass]="icon" [color]="iconcolor"></amexio-c-icon>
         <span>{{label}} </span>
 
         <span *ngIf="badge" class="nav-badge">{{badge}}</span>
 
         <ng-container *ngIf="(node  && (node.length>0)) || collapsable">
-            <span style="padding-right: 10px; float: right" *ngIf="expand"><amexio-c-icon key="sidenav-angle-up"></amexio-c-icon></span>
-            <span style="padding-right: 10px;float: right" *ngIf="!expand"><amexio-c-icon key="sidenav-angle-down"></amexio-c-icon></span>
+            <span style="padding-right: 10px; float: right" *ngIf="expand">
+                <amexio-c-icon key="sidenav-angle-up"></amexio-c-icon>
+            </span>
+            <span style="padding-right: 10px;float: right" *ngIf="!expand">
+                <amexio-c-icon key="sidenav-angle-down"></amexio-c-icon>
+            </span>
         </ng-container>
-
     </div>
+    
+    <!-- id [data] given      </div>
+ (emitNode) = "emittednodedata($event)" -->
     <div *ngIf="node" class="sidenav-submenu-details sidenav-submenu-expanded" [ngClass]="{'sidenav-submenu-expanded':expand}">
-        <amexio-sidenav-innernode *ngIf="node && (node.length>0)" (onClick)="onNodeClick($event)" [display-key]="displaykey" [child-array-key]="childarraykey" [enable-drag]="enabledrag" (onDrag)="dragStartEvent($event)" [data]="node">
-        </amexio-sidenav-innernode>
+        <amexio-sidenav-innernode1 *ngIf="node && (node.length>0)" (onClick)="onNodeClick($event)" [display-key]="displaykey" [child-array-key]="childarraykey"
+            [enable-drag]="enabledrag" (emitNode) = "emittednodedata($event)" (onDrag)="dragStartEvent($event)" [data]="node">
+        </amexio-sidenav-innernode1>
     </div>
-
+<!-- ng content block-->
     <div class="sidenav-submenu-details" style="padding-right: 20px;" [ngClass]="{'sidenav-submenu-expanded':expand}">
         <ng-content></ng-content>
     </div>

@@ -37,26 +37,29 @@ export class AmexioSideNavInnerNodeComponent implements OnInit {
 
   @Output() onDrag: any = new EventEmitter<any>();
 
+  @Output() emitNode: any = new EventEmitter<any>();
+
   ngOnInit() {
   }
 
   onNodeClick(node: any) {
     node.expand = !node.expand;
     this.getOnClick(node);
+    this.emitNode.emit(this.data);
   }
 
   getOnClick(node: any) {
     this.onClick.emit(node);
     this.activateNode(this.data, node);
   }
+
   activateNode(data: any[], node: any) {
-    for (const i of data) {
+    for (const i of this.data) {
       if (node === i && !i[this.childarraykey]) {
         i['active'] = true;
       } else {
         i['active'] = false;
       }
-
       if (i[this.childarraykey]) {
         this.activateNode(i[this.childarraykey], node);
       }
