@@ -232,8 +232,8 @@ export class AmexioRatingComponent extends AmexioFormValidator implements OnInit
     if (!this.readonly && !this.disabled) {
       this.hovered = hovered;
       this.onHover.emit(hovered);
+      this.ratingMethod(hovered);
     }
-    this.ratingMethod(hovered);
   }
   changeHovered(event: MouseEvent): void {
     if (!this.float) {

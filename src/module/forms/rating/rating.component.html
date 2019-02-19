@@ -5,7 +5,7 @@
       </legend>
     </ng-container>
   
-    <div (mouseleave)="resetHovered()" class="rating" 
+    <div (mouseleave)="resetHovered()" class="rating"  [class.disabled]="disabled" [class.readonly]="readonly"
     >
     <span *ngFor="let item of ratingRangeData; let index = index">
         <input (keyup.space)="rate1(index)"
