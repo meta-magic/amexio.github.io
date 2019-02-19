@@ -23,12 +23,12 @@ class="sidenav-mobile-bar" (click)="toggleSideNav()">
             </div>
         </li>
         <!-- (nodeEmitToSideNav) = "getNodesData($event)" -->
-        <amexio-sidenav-node1 *ngFor="let node of data" [enable-border]="enableborder && (node && node[childarraykey] && (node[childarraykey].length>0))"
+        <amexio-sidenav-node *ngFor="let node of data" [enable-border]="enableborder && (node && node[childarraykey] && (node[childarraykey].length>0))"
             [active]="(node && node.active)" [icon]="node.icon" [badge]="node.badge" [enable-drag]="enabledrag" (nodeClick)="onClick($event)"
             (onDrag)="getNodeDragEvent($event)" [expand]="node?.expand" [label]="node[displaykey]" [node]="node" [icon-color]="node.iconcolor"
             [data]="node[childarraykey]"
             >
-        </amexio-sidenav-node1>
+        </amexio-sidenav-node>
 
 
         <ng-content></ng-content>
