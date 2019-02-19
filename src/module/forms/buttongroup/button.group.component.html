@@ -1,23 +1,32 @@
 <div class="btn-group">
-    <ng-container *ngFor="let button of buttons">
-        <button role="button" tabindex="1" [attr.aria-pressed]="ispressed" [attr.disabled]="button.disabled ? true: null" [attr.title]="button.tooltip" (click)="buttonGroupClick($event,button)" [ngClass]="{'button-default': button.size=='default' || button.size ==null,
-    'button-small': button.size=='small',
-    'button-large' : button.size=='large',
-    'button-primary' : button.type == 'primary' || button.type == 'theme-color',
-    'button-secondary' : button.type == 'secondary' || button.type == null ||button.type == 'theme-backgroundcolor' ,
-    'button-success' : button.type == 'success' || button.type == 'green',
-    'button-danger' : button.type=='danger'|| button.type == 'red',
-    'button-warning' : button.type=='warning' || button.type == 'yellow',
-    'button-transparent' : button.type=='transparent',
-    'disabled' : button.disabled}">
-      <ng-container *ngIf="button.icon!=null">
-        <amexio-c-icon style="padding-right: 5px;" [customclass]="button.icon"></amexio-c-icon>
-      </ng-container>
-
-      {{button.label}}
-      <ng-container *ngIf="button.badge">
-        <span [ngClass]="button.badgeCssClass" >{{button.badge}}</span>
-     </ng-container>
-    </button>
+  <ng-container *ngFor="let button of buttons">
+      <button [ngStyle]="{'cursor': disabled ? 'not-allowed':'pointer','background-color':button.bgcolor,'color':button.color,'box-shadow':bgBorderColor}" 
+      role="button" tabindex="1" [attr.aria-pressed]="ispressed" [attr.disabled]="button.disabled ? true: null" [attr.title]="button.tooltip" 
+      (click)="buttonGroupClick($event,button)" 
+  [ngClass]="{'button-default': button.size=='default'
+  || size ==null,
+  'button-small': button.size=='small',
+  'button-large' : button.size=='large',
+  'button-block': button.block==true ,
+  'button-primary' : (button.type == 'primary' || button.type == 'theme-color') && button.disabled == false,
+  'button-secondary' : button.type == 'secondary' || button.type == 'theme-backgroundcolor' && button.disabled == false,
+  'button-success' : button.type == 'success' || button.type == 'green' && button.disabled == false,
+  'button-danger' : button.type =='danger' || button.type == 'red' && button.disabled == false,
+  'button-warning' : button.type =='warning' || button.type == 'yellow' && button.disabled == false,
+  'button-transparent' : button.type=='transparent' && button.disabled == false,
+  'disabled' : (button.type =='transparent' && button.disabled) || (button.type == 'secondary' || button.type == 'theme-backgroundcolor') && disabled,
+  'button-primary-disabled' : (button.type == 'primary' || button.type == 'theme-color') && button.disabled,
+  'button-success-disabled' : (button.type == 'success' || button.type == 'green') && button.disabled,
+  'button-danger-disabled' : (button.type == 'danger' || button.type == 'red') && button.disabled,
+  'button-warning-disabled' : (button.type == 'warning' || button.type == 'yellow') && button.disabled}">
+    <ng-container *ngIf="button.icon!=null">
+      <amexio-c-icon style="padding-right: 5px;" [customclass]="button.icon"></amexio-c-icon>
     </ng-container>
+
+    {{button.label}}
+    <ng-container *ngIf="button.badge">
+      <span [ngClass]="button.badgeCssClass" >{{button.badge}}</span>
+   </ng-container>
+  </button>
+  </ng-container>
 </div>
