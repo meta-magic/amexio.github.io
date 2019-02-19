@@ -1,10 +1,9 @@
-<ng-container *ngIf="data?.length > 0; else elseBlock">
-  <ng-container *ngFor="let item of data">
-      <amexio-chip [icon]="item.icon" [label]="item.label" [badge]="item.badge" [closable]="item.closable" [color]="item.color"
-          (closeClick)="onCloseChipsClick($event)" (labelClick)="emitSelectedLabel($event) ">
-      </amexio-chip>
-  </ng-container>
-</ng-container>
-<ng-template #elseBlock>
-      <ng-content></ng-content>
-</ng-template>
+
+<span  id="{{componentId}}" tabindex="0" role="listbox" (keyup.end)="focusToLastChip($event)"
+(keyup.home)="focusToFirstChip($event)" (keyup)="onchipsKeyup($event)" (keydown.control.x)="closeFocusedChip($event, data)"  *ngIf="data?.length > 0; else elseBlock">
+   <span  role="option"  tabindex="0" *ngFor="let item of data" id="{{item.index}}" attr.aria-label="{{item.label}}" >
+       <amexio-chip  [index]="item.index" [selected]="item.selected" [icon]="item.icon" [label]="item.label" [badge]="item.badge" [closable]="item.closable"
+           [color]="item.color" (closeClick)="onCloseChipsClick($event)" (labelClick)="emitSelectedLabel($event) ">
+       </amexio-chip>
+   </span>
+</span>

@@ -86,6 +86,10 @@ description : The closeable is for closing particular chip.
    description : It will fire only on selection of checkbox and gives you selected record data.
    */
   @Output() labelClick: any = new EventEmitter<any>();
+
+ @Input('index') index: string;
+
+ @Input('selected') selected: boolean;
   constructor() {
   }
   onCloseClick(event: any) {
