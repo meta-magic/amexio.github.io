@@ -46,6 +46,24 @@ description : Can use Angle Icons instead of default plus/minus icons
 */
   @Input('angle-icon') angleIcon: boolean;
 
+/*Properties
+name : background-color
+datatype : string
+version : 5.6.1 onwards
+default :
+description : provides background color for accordion header
+*/
+@Input('background-color') bgColor: string;
+
+/*Properties
+name : color
+datatype : string
+version : 5.6.1 onwards
+default :
+description : provides foreground color for accordion header
+*/
+@Input('color') color: string;
+
 @ContentChildren(AmexioAccordionTabComponent) queryTabs: QueryList<AmexioAccordionTabComponent>;
 accordionCollections: AmexioAccordionTabComponent[];
 constructor() {}
@@ -67,6 +85,12 @@ ngAfterContentInit() {
       }
       if (this.angleIcon) {
         node.angleIcon = true;
+      }
+      if (this.color) {
+        node.color = this.color;
+      }
+      if (this.bgColor) {
+        node.bgColor = this.bgColor;
       }
       });
 

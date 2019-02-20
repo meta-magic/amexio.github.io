@@ -94,6 +94,8 @@ export class AmexioAccordionTabComponent {
   @Input('disabled') disabled: boolean;
   isTransparent: boolean;
   currentstate: string;
+  bgColor: string;
+  color: string;
 
   constructor() {
     this.currentstate = 'hidden';

@@ -1,4 +1,4 @@
-<button (click)="emitEvent()" class="{{isTransparent ? 'accordion-transparent' : 'accordion'}} {{active ? 'active-accordion' : ''}} {{disabled ? 'accordion-disable' : ''}}">
+<button (mouseover)="hover=true" (mouseleave)="hover=false" [ngStyle]="{color: hover==true ? bgColor : color, backgroundColor: hover==true  ? color : bgColor}" (click)="emitEvent()" class="{{isTransparent ? 'accordion-transparent' : 'accordion'}} {{active ? 'active-accordion' : ''}} {{disabled ? 'accordion-disable' : ''}}">
   <div style="float: left;" *ngIf="leftIcon">
     <em class="fa {{leftIcon}}"></em>
   </div>
