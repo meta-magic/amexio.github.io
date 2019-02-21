@@ -3,12 +3,7 @@
 
 <div    #id style="width: 100%" (contextmenu)="loadContextMenu({event:$event,ref:id})"  >
     <ng-container *ngIf="collapsible; else elseBlock"> 
-        <div   
-        
-        id="{{componentId}}"
-       
-        
-        
+        <div id="{{componentId}}" [ngStyle]="{'background': bgColor, 'color': color}"
         *ngIf="header" class="panel-accordion" 
         (click)="onTabClick(btn1)"    >
             <amexio-toolbar
@@ -56,7 +51,7 @@
         </div>
     </ng-template>
     
-    <div tabindex="0"  id="panelpanelId" class="panel-panel" [ngClass]="{'panel-box-border':border}" [style.textAlign]="contentAlign" [style.height.px]="height"
+    <div tabindex="0"  id="panelpanelId" class="panel-panel" [ngStyle]="{'border-color': border && bgColor}" [ngClass]="{'panel-box-border':border}" [style.textAlign]="contentAlign" [style.height.px]="height"
         [@panelState]="panelstyle.state">
         <ng-content aria-labelledby="panelpanelId" ></ng-content>
     </div>

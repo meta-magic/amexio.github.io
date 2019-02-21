@@ -125,6 +125,26 @@ description : Height of panel must be in px ex.100, 250..
  */
   @Input('context-menu') contextmenu: any[];
 
+    /*
+Properties
+name : color
+datatype :  string
+version : 5.6.1 onwards
+default : none
+description : Provides color for panel header
+*/
+@Input() color: string;
+
+  /*
+Properties
+name : background
+datatype :  string
+version : 5.6.1 onwards
+default : none
+description : Provides background color for panel header
+*/
+@Input('background') bgColor: string;
+
   @Input('content-align') contentAlign = 'left';
 
   @Input() parentRef: any;
