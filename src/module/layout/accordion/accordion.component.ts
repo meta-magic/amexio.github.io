@@ -47,13 +47,13 @@ description : Can use Angle Icons instead of default plus/minus icons
   @Input('angle-icon') angleIcon: boolean;
 
 /*Properties
-name : background-color
+name : background
 datatype : string
 version : 5.6.1 onwards
 default :
 description : provides background color for accordion header
 */
-@Input('background-color') bgColor: string;
+@Input('background') bgColor: string;
 
 /*Properties
 name : color
