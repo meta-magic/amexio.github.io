@@ -96,6 +96,7 @@ export class AmexioAccordionTabComponent {
   currentstate: string;
   bgColor: string;
   color: string;
+hover: boolean;
 
   constructor() {
     this.currentstate = 'hidden';
