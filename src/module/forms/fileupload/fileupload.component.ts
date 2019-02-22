@@ -99,15 +99,22 @@ export class AmexioFileUploadComponent implements OnInit, AfterViewInit {
    */
   @Output() onRemove: EventEmitter<any> = new EventEmitter<any>();
 
+  @Output() onFileUpload: EventEmitter<any> = new EventEmitter<any>();
+
+  @Output() success: EventEmitter<any> = new EventEmitter<any>();
+
+  @Output() error: EventEmitter<any> = new EventEmitter<any>();
+
+
   uploadedFiles: any[] = [];
 
   dropClass: string;
 
-  constructor(public dataService: CommonDataService) {}
+  constructor(public dataService: CommonDataService) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
-  ngAfterViewInit() {}
+  ngAfterViewInit() { }
 
   formatBytes(bytes: number, decimals: any) {
     if (bytes === 0) {
@@ -150,64 +157,76 @@ export class AmexioFileUploadComponent implements OnInit, AfterViewInit {
 
   //  For Uploading files
   uploadFile(event: any, singleFile: boolean) {
+    debugger;
     if (singleFile) {
       const formData = new FormData();
-      formData.append(this.paramname, event);
-      this.dataService
-        .uploadFile(this.httpurl, this.httpmethod, formData)
-        .subscribe(
-          (response: any) => {
-            this.responseData = response;
-          },
-          (error: any) => {},
-          () => {
 
-          },
-        );
+      formData.append(this.paramname, event);
+      console.log('event1', formData);
+if (this.httpmethod && this.httpurl){
+  this.dataService
+    .uploadFile(this.httpurl, this.httpmethod, formData)
+    .subscribe(
+    (response: any) => {
+      this.responseData = response;
+    },
+    (error: any) => {
+      console.log('event', error);
+      this.error.emit(error);
+     },
+    () => {
+      this.success.emit();
+    },
+  );
+}
       this.uploadedFiles.push({
         name: event.name,
         size: this.formatBytes(event.size, 2),
+        formData: formData
       });
+
     } else {
       this.serviceCall(event);
-   }
+    }
+    console.log('event.......', this.uploadedFiles);
+    this.onFileUpload.emit(this.uploadedFiles);
   }
 
   serviceCall(event: any) {
     const fileList: FileList = event.target.files != null ? event.target.files : event;
     const formData = new FormData();
     if (fileList) {
-    // tslint:disable-next-line:prefer-for-of
-    for (let i = 0; i < fileList.length; i++) {
-      if (!this.paramname) {
-        this.paramname = 'file';
-      }
-      formData.append(this.paramname, fileList[i]);
-    }
-    this.uploadService(formData);
-    if (fileList.length === 1) {
-      const fsize = this.formatBytes(fileList[0].size, 2);
-      this.uploadedFiles.push({ name: fileList[0].name, size: fsize });
-    } else if (fileList.length > 1) {
       // tslint:disable-next-line:prefer-for-of
       for (let i = 0; i < fileList.length; i++) {
-        const fsize = this.formatBytes(fileList[i].size, 2);
-        this.uploadedFiles.push({ name: fileList[i].name, size: fsize });
+        if (!this.paramname) {
+          this.paramname = 'file';
+        }
+        formData.append(this.paramname, fileList[i]);
+      }
+      this.uploadService(formData);
+      if (fileList.length === 1) {
+        const fsize = this.formatBytes(fileList[0].size, 2);
+        this.uploadedFiles.push({ name: fileList[0].name, size: fsize });
+      } else if (fileList.length > 1) {
+        // tslint:disable-next-line:prefer-for-of
+        for (let i = 0; i < fileList.length; i++) {
+          const fsize = this.formatBytes(fileList[i].size, 2);
+          this.uploadedFiles.push({ name: fileList[i].name, size: fsize, formData: formData });
+        }
       }
     }
   }
-}
 
-uploadService(formData: FormData) {
-  this.dataService.uploadFile(this.httpurl, this.httpmethod, formData)
-  .subscribe(
-    (response: any) => {
-      this.responseData = response;
-    },
-    (error: any) => {},
-    () => {
+  uploadService(formData: FormData) {
+    this.dataService.uploadFile(this.httpurl, this.httpmethod, formData)
+      .subscribe(
+      (response: any) => {
+        this.responseData = response;
+      },
+      (error: any) => { },
+      () => {
 
-    },
-  );
-}
+      },
+    );
+  }
 }
