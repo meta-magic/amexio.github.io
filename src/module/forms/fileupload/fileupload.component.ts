@@ -105,7 +105,6 @@ export class AmexioFileUploadComponent implements OnInit, AfterViewInit {
 
   @Output() error: EventEmitter<any> = new EventEmitter<any>();
 
-
   uploadedFiles: any[] = [];
 
   dropClass: string;
@@ -157,32 +156,30 @@ export class AmexioFileUploadComponent implements OnInit, AfterViewInit {
 
   //  For Uploading files
   uploadFile(event: any, singleFile: boolean) {
-    debugger;
     if (singleFile) {
       const formData = new FormData();
 
       formData.append(this.paramname, event);
       console.log('event1', formData);
-if (this.httpmethod && this.httpurl){
-  this.dataService
-    .uploadFile(this.httpurl, this.httpmethod, formData)
-    .subscribe(
-    (response: any) => {
-      this.responseData = response;
-    },
-    (error: any) => {
-      console.log('event', error);
-      this.error.emit(error);
-     },
-    () => {
-      this.success.emit();
-    },
-  );
-}
+      if (this.httpmethod && this.httpurl) {
+        this.dataService
+          .uploadFile(this.httpurl, this.httpmethod, formData)
+          .subscribe(
+          (response: any) => {
+            this.responseData = response;
+          },
+          (error: any) => {
+            console.log('event', error);
+            this.error.emit(error);
+          },
+          () => {
+            this.success.emit();
+          },
+        );
+      }
       this.uploadedFiles.push({
         name: event.name,
         size: this.formatBytes(event.size, 2),
-        formData: formData
       });
 
     } else {
@@ -211,7 +208,7 @@ if (this.httpmethod && this.httpurl){
         // tslint:disable-next-line:prefer-for-of
         for (let i = 0; i < fileList.length; i++) {
           const fsize = this.formatBytes(fileList[i].size, 2);
-          this.uploadedFiles.push({ name: fileList[i].name, size: fsize, formData: formData });
+          this.uploadedFiles.push({ name: fileList[i].name, size: fsize });
         }
       }
     }
