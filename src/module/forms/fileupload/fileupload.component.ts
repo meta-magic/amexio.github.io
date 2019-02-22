@@ -160,7 +160,6 @@ export class AmexioFileUploadComponent implements OnInit, AfterViewInit {
       const formData = new FormData();
 
       formData.append(this.paramname, event);
-      console.log('event1', formData);
       if (this.httpmethod && this.httpurl) {
         this.dataService
           .uploadFile(this.httpurl, this.httpmethod, formData)
@@ -169,11 +168,10 @@ export class AmexioFileUploadComponent implements OnInit, AfterViewInit {
             this.responseData = response;
           },
           (error: any) => {
-            console.log('event', error);
             this.error.emit(error);
           },
           () => {
-            this.success.emit();
+            this.success.emit(this.responseData);
           },
         );
       }
@@ -185,7 +183,6 @@ export class AmexioFileUploadComponent implements OnInit, AfterViewInit {
     } else {
       this.serviceCall(event);
     }
-    console.log('event.......', this.uploadedFiles);
     this.onFileUpload.emit(this.uploadedFiles);
   }
 
