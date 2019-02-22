@@ -372,6 +372,12 @@ export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnIn
     });
   }
 
+  closeAll() {
+    this.tabCollection.forEach((tabs) => {
+        this.closeTab(tabs);
+    });
+  }
+
   closeTabs(data: any) {
     const tabList: any[] = [];
     this.tabCollection.forEach((tabs) => {

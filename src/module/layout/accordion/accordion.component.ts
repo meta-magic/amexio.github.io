@@ -15,63 +15,69 @@
 *
 */
 
-import {AfterContentInit, AfterViewInit, Component, ContentChildren, DebugElement, Input, OnInit, QueryList } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, ContentChildren, Input, OnInit, QueryList } from '@angular/core';
 import { AmexioAccordionTabComponent } from './accordion.pane';
-@Component ({selector : 'amexio-accordion', templateUrl : './accordion.component.html'})
+@Component({ selector: 'amexio-accordion', templateUrl: './accordion.component.html' })
 export class AmexioAccordionComponent implements OnInit, AfterContentInit {
-/*
-Properties
-name : expand-all
-datatype : boolean
-version : 4.0 onwards
-default : false
-description : Pane will expand or collapse based on the boolean
-*/
+  /*
+  Properties
+  name : expand-all
+  datatype : boolean
+  version : 4.0 onwards
+  default : false
+  description : Pane will expand or collapse based on the boolean
+  */
   @Input('expand-all') expandAll: boolean;
-/*
-Properties
-name : transparent
-datatype : boolean
-version : 4.0 onwards
-default : false
-description : Apply Transparent styles to accordion
-*/
+  /*
+  Properties
+  name : transparent
+  datatype : boolean
+  version : 4.0 onwards
+  default : false
+  description : Apply Transparent styles to accordion
+  */
   @Input('transparent') isTransparent: boolean;
-/*Properties
-name : angle-icon
-datatype : boolean
-version : 4.0 onwards
-default : false
-description : Can use Angle Icons instead of default plus/minus icons
-*/
+  /*Properties
+  name : angle-icon
+  datatype : boolean
+  version : 4.0 onwards
+  default : false
+  description : Can use Angle Icons instead of default plus/minus icons
+  */
   @Input('angle-icon') angleIcon: boolean;
-
-/*Properties
-name : background
-datatype : string
-version : 5.6.1 onwards
-default :
-description : provides background color for accordion header
+  /*Properties
+  name : background
+  datatype : string
+  version : 5.6.1 onwards
+  default :
+  description : provides background color for accordion header
 */
-@Input('background') bgColor: string;
+  @Input('background') bgColor: string;
 
-/*Properties
-name : color
-datatype : string
-version : 5.6.1 onwards
-default :
-description : provides foreground color for accordion header
-*/
-@Input('color') color: string;
+  /*Properties
+  name : color
+  datatype : string
+  version : 5.6.1 onwards
+  default :
+  description : provides foreground color for accordion header
+  */
+  @Input('color') color: string;
 
-@ContentChildren(AmexioAccordionTabComponent) queryTabs: QueryList<AmexioAccordionTabComponent>;
-accordionCollections: AmexioAccordionTabComponent[];
-constructor() {}
-ngOnInit() {}
-ngAfterContentInit() {
+  @ContentChildren(AmexioAccordionTabComponent) queryTabs: QueryList<AmexioAccordionTabComponent>;
+  accordionCollections: AmexioAccordionTabComponent[];
+  flag = false;
+  prevaccindex = -1;
+  accindex = -1;
+  constructor() {
+    this.flag = true;
+  }
+  ngOnInit() {
+  }
+
+  ngAfterContentInit() {
     this.accordionCollections = this.queryTabs.toArray();
     this.accordionCollections.forEach((node) => node.emittedEvent.subscribe((eventdata: any) => this.activateAccordionPane(eventdata)));
-    this.accordionCollections.forEach((node) => {
+    this.accordionCollections.forEach((node, index) => {
       if (this.expandAll) {
         node.active = true;
       } else if (node.active) {
@@ -79,7 +85,6 @@ ngAfterContentInit() {
       } else {
         node.active = false;
       }
-
       if (this.isTransparent) {
         node.isTransparent = true;
       }
@@ -92,15 +97,56 @@ ngAfterContentInit() {
       if (this.bgColor) {
         node.bgColor = this.bgColor;
       }
+      node['index'] = node.componentId;
+    });
+  }
+  activateAccordionPane(nodeEvent: any) {
+    const node = nodeEvent.current;
+    if (nodeEvent.keydown) {
+      this.onkeyDown();
+    } else if (nodeEvent.keyup) {
+      this.onkeyUp();
+    } else {
+      this.accordionCollections.forEach((tab) => {
+        if (tab === node) {
+          tab.active = node.active;
+        } else {
+          tab.active = false;
+        }
       });
-
     }
-
-activateAccordionPane(node: AmexioAccordionTabComponent) {
-    this.accordionCollections.forEach((tab) => {
-     if (tab === node) {
-        tab.active = node.active ;
-      } else {
-       tab.active = false ;
-      }});
- }}
+  }
+  onkeyDown() {
+    this.onPreAccIndex();
+    this.accindex++;
+    this.prevaccindex = this.accindex;
+    if (this.accindex >= this.accordionCollections.length) {
+      this.accindex = 0;
+      this.prevaccindex = 0;
+    }
+    this.setAccoordionActive(this.accindex);
+  }
+  onkeyUp() {
+    this.onPreAccIndex();
+    this.prevaccindex--;
+    if (this.prevaccindex === -1) {
+      this.prevaccindex = this.accordionCollections.length - 1;
+      this.accindex = -1;
+    }
+    this.setAccoordionActive(this.prevaccindex);
+    if (this.prevaccindex === 0) {
+      this.accindex = 0;
+    }
+  }
+  private onPreAccIndex() {
+    if (this.prevaccindex > -1) {
+      this.accordionCollections[this.prevaccindex]['isSelected'] = false;
+    }
+  }
+  private setAccoordionActive(index: number) {
+    this.accordionCollections[index]['isSelected'] = true;
+    if (this.accordionCollections[index]['isSelected']) {
+      this.accordionCollections[index].btn.nativeElement.focus();
+    }
+  }
+}

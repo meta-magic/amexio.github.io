@@ -31,10 +31,12 @@
     </ng-container>
     <span style="float : right">{{item?.checked ? '&#10004;': ''}}</span>
     </li>
+    
     <ng-template *ngIf="filteredOptions && (filteredOptions.length < 1)">
         <li class="list-items">No Options</li>
     </ng-template>
     </ul>
+    <ng-content></ng-content>
     </span>
     <span class="inputfieldbar"></span>
 </div>

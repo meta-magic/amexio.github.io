@@ -1165,7 +1165,6 @@ button {
   overflow: auto;
   position: absolute;
   width: 100%;
-  max-height: 200px;
   opacity: 1.01;
   box-shadow: 0 1px 3px 0 #8D021F; }
 
@@ -1177,6 +1176,8 @@ button {
   padding: 0;
   border: 0;
   outline: 0;
+  max-height: 200px;
+  overflow: auto;
   text-decoration: none;
   font-size: 100%;
   list-style: none; }
@@ -5598,7 +5599,7 @@ amexio-layout-columns amexio-layout-item {
   background-color: transparent;
   color: #8D021F; }
 
-.accordion .active-accordion, .accordion:hover {
+.accordion .active-accordion, .accordion:hover, .accordion:focus {
   background-color: #8D021F;
   color: white; }
 
