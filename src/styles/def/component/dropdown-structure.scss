@@ -6,7 +6,7 @@
   overflow: auto;
   position: absolute;
   width: 100%;
-  max-height: 200px;
+  // max-height: 200px;
   opacity: 1.01;
   box-shadow: 0 1px 3px 0 $dropdownBorderColor;
 }
@@ -20,6 +20,8 @@
   padding: 0;
   border: 0;
   outline: 0;
+    max-height: 200px;
+overflow: auto;
   text-decoration: none;
   font-size: $dropdownListFontSize;
   list-style: none;
