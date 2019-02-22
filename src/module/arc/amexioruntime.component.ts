@@ -17,9 +17,30 @@ export class AmexioRuntimeComponent implements OnInit {
 
     @ViewChild('vc', { read: ViewContainerRef }) _container: ViewContainerRef;
 
-    @Input('html-template') htmlTemplate: string;
+    _htmlTemplate: string;
+    _tsclass: any;
 
-    @Input('ts-class') tsClass: any;
+    @Input('html-template')
+    set htmltemplate(v: string) {
+        if (v != null && v.length > 0) {
+            this._htmlTemplate = v;
+            this.render();
+        }
+    }
+    get htmltemplate() {
+        return this._htmlTemplate;
+    }
+
+    @Input('ts-class')
+    set tsclass(v: any) {
+        if (v != null) {
+            this._tsclass = v;
+            this.render();
+        }
+    }
+    get tsclass() {
+        return this._tsclass;
+    }
 
     @Output('onInit') oninit = new EventEmitter<any>();
 
@@ -27,19 +48,18 @@ export class AmexioRuntimeComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.render();
     }
 
     render() {
-        if (!this.htmlTemplate || this.htmlTemplate.length === 0) {
-            this.htmlTemplate = 'TEMPLATE NOT DEFINED';
+        if (!this.htmltemplate || this.htmltemplate.length === 0) {
+            return;
         }
 
-        if (!this.tsClass) {
-            this.tsClass = defaultclass;
+        if (!this.tsclass) {
+            this.tsclass = defaultclass;
         }
 
-        const tmpCmp = Component({ template: this.htmlTemplate })(this.tsClass);
+        const tmpCmp = Component({ template: this.htmltemplate })(this.tsclass);
 
         const tmpModule = NgModule({
             providers: [HttpClientModule], imports: [FormsModule, AmexioWidgetModule, HttpClientModule],
