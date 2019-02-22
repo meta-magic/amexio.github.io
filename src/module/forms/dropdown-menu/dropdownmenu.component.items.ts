@@ -58,6 +58,8 @@ export class AmexioDropDownitemsComponent implements OnInit {
    */
   @Input ('separator') separator: boolean;
 
+  @Input('index') index: string;
+  @Input('selected') selected: boolean;
   /*
    Properties
    name : add-seperator

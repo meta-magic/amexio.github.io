@@ -1,7 +1,8 @@
 import {
-  AfterContentInit, Component, ContentChildren, ElementRef, EventEmitter,
+  AfterContentInit,  AfterViewInit, Component, ContentChildren, ElementRef, EventEmitter,
   HostListener, Input, OnInit, Output, QueryList,
 } from '@angular/core';
+import {ViewChildren} from '@angular/core';
 import { AmexioDropDownitemsComponent } from './dropdownmenu.component.items';
 
 import { DeviceQueryService } from '../../services/device/device.query.service';
@@ -87,6 +88,10 @@ export class AmexioDropDownMenuComponent implements AfterContentInit, OnInit {
    default :
    description : User can set the height to menu body..
    */
+  componentId: any;
+  dropdownmenuindex = -1;
+  prevdropdownmenuindex = -1;
+
   @Input() height: any;
   @Output() onClick: any = new EventEmitter<any>();
   @ContentChildren(AmexioDropDownitemsComponent) dropdowns: QueryList<AmexioDropDownitemsComponent>;
@@ -94,6 +99,7 @@ export class AmexioDropDownMenuComponent implements AfterContentInit, OnInit {
   constructor(public element: ElementRef, public matchMediaService: DeviceQueryService) {
     this.iconalign = 'left';
     this.padding = '5px 10px';
+    this.componentId = 'dropdownmenu' + Math.floor(Math.random() * 1000 + 999);
   }
   ngOnInit() {
     if (this.data) {
@@ -105,6 +111,7 @@ export class AmexioDropDownMenuComponent implements AfterContentInit, OnInit {
           node.labelalign = 'left';
         }
       });
+      this.generateIndex(this.data);
     }
   }
   ngAfterContentInit() {
@@ -128,6 +135,9 @@ export class AmexioDropDownMenuComponent implements AfterContentInit, OnInit {
     }
   }
   showDropDownContent(event: any) {
+    if (this.dropdownmenuindex > -1) {
+      this.data[this.dropdownmenuindex]['selected'] = false;
+     }
     this.toggle = !this.toggle;
     this.top = event.target.getBoundingClientRect().top + 25;
     if ((this.matchMediaService.browserWindow().innerWidth - event.clientX) < 200) {
@@ -135,6 +145,10 @@ export class AmexioDropDownMenuComponent implements AfterContentInit, OnInit {
     } else {
       this.xposition = false;
     }
+    const inputid = document.getElementById(this.componentId);
+    inputid.setAttribute('aria-activedescendant', 'dropdownitem');
+    this.dropdownmenuindex = -1;
+    this.prevdropdownmenuindex = -1;
   }
   getIconPosition(childposition: any, parentIconPosition: string): boolean {
     if (childposition.hasOwnProperty('iconalign') && childposition.iconalign !== '') {
@@ -170,4 +184,77 @@ export class AmexioDropDownMenuComponent implements AfterContentInit, OnInit {
       }
     }
   }
+// Aria Logic Starts
+generateIndex(data: any) {
+  data.forEach((element: any, index: number) => {
+    element['index'] = this.componentId + 'dropdownmenuitem' + index;
+    element['selected'] = false;
+  });
+}
+  navigateOptions(item: any) {
+    if (item.keyCode === 38) {
+      this.upArrowKeyNavigation(item);
+    } else if (item.keyCode === 40) {
+      this.downArrowKeyNavigation(item);
+    } else if (item.keyCode === 13 && this.dropdownmenuindex > -1) {
+        const emitdata = this.createEmitObject(this.data[this.dropdownmenuindex]);
+        const e = {
+          event: item,
+          this: emitdata,
+        };
+        this.onClick.emit(e);
+    }
+  }
+  upArrowKeyNavigation(event: any) {
+    if (this.prevdropdownmenuindex > -1) {
+      this.data[this.prevdropdownmenuindex]['selected'] = false;
+    }
+    this.prevdropdownmenuindex--;
+    if (this.prevdropdownmenuindex === -1) {
+      this.prevdropdownmenuindex = this.data.length - 1;
+      this.dropdownmenuindex = -1;
+    }
+    this.setAriaActiveDescendant(this.prevdropdownmenuindex);
+    if (this.prevdropdownmenuindex === 0) {
+      this.dropdownmenuindex = 0;
+    }
+  }
+  downArrowKeyNavigation(event: any) {
+    if (this.prevdropdownmenuindex > -1) {
+      this.data[this.prevdropdownmenuindex]['selected'] = false;
+
+    }
+    this.dropdownmenuindex++;
+    this.prevdropdownmenuindex = this.dropdownmenuindex;
+    if (this.dropdownmenuindex >= this.data.length) {
+      this.dropdownmenuindex = 0;
+      this.prevdropdownmenuindex = 0;
+    }
+    this.setAriaActiveDescendant(this.dropdownmenuindex);
+  }
+createEmitObject(object: any): any {
+  const obj = {};
+  if (object['icon']) {
+     obj['icon'] = object['icon'];
+  }
+  if (object['label']) {
+    obj['label'] = object['label'];
+  }
+  if (object['labelalign']) {
+    obj['labelalign'] = object['labelalign'];
+  }
+  if (object['iconalign']) {
+    obj['iconalign'] = object['iconalign'];
+  }
+  if (object['separator']) {
+    obj['separator'] = object['separator'];
+  }
+  return obj;
+}
+
+setAriaActiveDescendant(rowindex: any) {
+  this.data[rowindex]['selected'] = true;
+  const inputid =  document.getElementById(this.componentId);
+  inputid.setAttribute('aria-activedescendant', this.data[rowindex]['index']);
+}
 }
