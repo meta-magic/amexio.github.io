@@ -54,7 +54,7 @@ export class AmexioSideNavInnerNodeComponent implements OnInit {
   }
 
   activateNode(data: any[], node: any) {
-    for (const i of this.data) {
+    for (const i of data) {
       if (node === i && !i[this.childarraykey]) {
         i['active'] = true;
       } else {
