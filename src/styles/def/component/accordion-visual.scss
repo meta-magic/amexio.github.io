@@ -2,7 +2,7 @@
   background-color: $accordionBGColor;
   color: $accordionColor;
 }
-.accordion .active-accordion, .accordion:hover {
+.accordion .active-accordion, .accordion:hover , .accordion:focus{
   background-color: $accordionActiveBGColor;
   color: $accordionActiveColor;
 }

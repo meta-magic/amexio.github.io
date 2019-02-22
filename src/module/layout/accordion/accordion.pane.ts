@@ -15,9 +15,8 @@
 *
 */
 
-import { animate, state, style, transition, trigger} from '@angular/animations';
-import { AfterViewInit, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
-
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer, ViewChild} from '@angular/core';
 @Component({
   selector: 'amexio-accordion-tab',
   templateUrl: './accordion.pane.html',
@@ -31,14 +30,12 @@ import { AfterViewInit, Component, EventEmitter, Input, Output, ViewChild } from
         display: 'block',
         height: '*',
       })),
-      transition('*=>hidden',  animate('0ms')),
-      transition('*=>visible',  animate('200ms')),
+      transition('*=>hidden', animate('0ms')),
+      transition('*=>visible', animate('200ms')),
     ]),
   ],
 })
-
-export class AmexioAccordionTabComponent {
-
+export class AmexioAccordionTabComponent implements OnInit {
   /*
   Properties
   name : header
@@ -92,21 +89,31 @@ export class AmexioAccordionTabComponent {
   description : 	Disabled specific panes
   */
   @Input('disabled') disabled: boolean;
+  @Input('data') data: any;
+  @ViewChild('btn') btn: ElementRef;
   isTransparent: boolean;
   currentstate: string;
+  expanded = false;
+  componentId: any;
+  isSelected = false;
   bgColor: string;
   color: string;
-hover: boolean;
+  hover: boolean;
 
   constructor() {
     this.currentstate = 'hidden';
   }
+
+  ngOnInit() {
+    this.componentId = '' + Math.floor(Math.random() * 1000 + 999);
+    this.emittedEvent.emit({ keydown: true, current: this });
+
+  }
   emitEvent() {
     if (!this.disabled) {
       this.active = !this.active;
-      this.emittedEvent.emit(this);
+      this.emittedEvent.emit({ keydown: false, current: this });
     }
-
     if (this.active) {
       this.currentstate = 'visible';
     } else {
@@ -114,4 +121,14 @@ hover: boolean;
     }
 
   }
+  onEnterClick() {
+    this.expanded = !this.expanded;
+  }
+  onArrowDown() {
+    this.emittedEvent.emit({ keydown: true, current: this });
+  }
+  onArrowUp() {
+      this.emittedEvent.emit({ keyup: true, current: this });
+  }
+
 }

@@ -1,17 +1,19 @@
-<button (mouseover)="hover=true" (mouseleave)="hover=false" [ngStyle]="{color: hover==true ? bgColor : color, backgroundColor: hover==true  ? color : bgColor}" (click)="emitEvent()" class="{{isTransparent ? 'accordion-transparent' : 'accordion'}} {{active ? 'active-accordion' : ''}} {{disabled ? 'accordion-disable' : ''}}">
+<button #btn role="button" id="{{componentId}}" tabindex="0" (click)="emitEvent()" [attr.aria-expanded]="active"
+  (keyup.enter)="onEnterClick()" (keyup.arrowdown)="onArrowDown()" (keyup.arrowup)="onArrowUp()" class="{{isTransparent ? 'accordion-transparent' : 'accordion'}} {{active ? 'active-accordion' : ''}} {{disabled ? 'accordion-disable' : ''}}"
+  (mouseover)="hover=true" (mouseleave)="hover=false" [ngStyle]="{color: hover==true ? bgColor : color, backgroundColor: hover==true  ? color : bgColor}">
   <div style="float: left;" *ngIf="leftIcon">
     <em class="fa {{leftIcon}}"></em>
   </div>
   <ng-container>
-  {{header}}
-    <div style="float: right">
-        <ng-content select="amexio-accordion-header">&nbsp;</ng-content> &nbsp;  
+    {{header}}
+    <div style="float: right" role="img" aria-label="close push button" tabindex="0">
+      <ng-content select="amexio-accordion-header">&nbsp;</ng-content> &nbsp;
       <em *ngIf="!angleIcon" class="fa" [ngClass]="{'fa-plus' : !active,'fa-minus' : active}" aria-hidden="true"></em>
       <em *ngIf="angleIcon" class="fa" [ngClass]="{'fa-angle-down' : !active,'fa-angle-up' : active}" aria-hidden="true"></em>
     </div>
   </ng-container>
-
 </button>
-<div [@accordionState]="active ? 'visible':'hidden'" class="panel">
+<div role="region" attr.aria-labelledby="{{componentId}}" tabindex="0" [@accordionState]="active ? 'visible':'hidden'"
+  class="panel">
   <ng-content></ng-content>
 </div>
