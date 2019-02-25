@@ -253,6 +253,7 @@ export class AmexioRatingComponent extends AmexioFormValidator implements OnInit
     if (!this.readonly && !this.disabled && value >= 0 && value <= this.ratingRange.length) {
       this.setAttribute(value);
       const newValue = this.hoveredPercent ? (value - 1) + this.hoveredPercent / 100 : value;
+      this.onChange(newValue);
       this.model = newValue;
     }
   }

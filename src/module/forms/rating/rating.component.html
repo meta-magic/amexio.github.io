@@ -15,7 +15,7 @@
         type="radio" name="rating" role="radio">
   
       <label for="{{starId}}{{index}}">
-        <em role="tooltip" [attr.tabindex]="item.tabindex" (mouseenter)="setHovered(item.number)"
+        <em [ngStyle]="{'cursor': readonly ? 'not-allowed' : 'pointer'}" role="tooltip" [attr.tabindex]="item.tabindex" (mouseenter)="setHovered(item.number)"
         attr.aria-label="Star {{index+1}}"
         (click)="rate(item.number)"
         [attr.data-icon]="fullicon"
