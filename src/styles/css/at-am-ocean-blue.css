@@ -3561,6 +3561,76 @@ input:checked + .toggle-slider:before {
   background: #1C2949;
   color: white; }
 
+/*****************************************************************************
+ Component Name : Amexio Progress-ce
+ Version : Amexio v5.6.0 onwards
+****************************************************************************/
+/** Amexio Progress-ce- Structure CSS **/
+.circularProgress {
+  float: left;
+  margin-left: 30px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  position: relative;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%; }
+
+.innerCircle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+
+/* FOR RADIAL */
+.radial {
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  margin-left: 16px;
+  margin-top: 16px;
+  text-align: center;
+  line-height: 108px;
+  font-size: 24px; }
+
+/*  FOR RING */
+.ring {
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  margin-left: 16px;
+  margin-top: 16px;
+  text-align: center;
+  line-height: 108px;
+  font-size: 24px; }
+
+/*  FOR PIE */
+.pie {
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  margin-left: 16px;
+  margin-top: 16px;
+  text-align: center;
+  line-height: 108px;
+  font-size: 24px; }
+
+/** Amexio Progress-ce- Vars CSS **/
+/** Amexio Progress-ce- Visual CSS **/
+.circularProgress {
+  border: 2px solid #f2f2f2;
+  background-color: #1C2949; }
+
+/* FOR RADIAL */
+.radial {
+  background-color: #1C2949; }
+
+/*  FOR RING */
+.ring {
+  background-color: #1C2949; }
+
 /****************************************************************************
     Component Name : Enterprise Content
     Version : Amexio v4.0 onwards
@@ -3733,7 +3803,7 @@ header .billboard .content-button {
 .close-button {
   cursor: pointer;
   padding-left: 98%;
-  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 100%); }
+  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, transparent 70%, transparent 100%); }
 
 /****************************************************************************
     Component Name : Enterprise Youtube
@@ -3742,7 +3812,7 @@ header .billboard .content-button {
 /** enterprise-youtube - Visual CSS **/
 .close-button {
   color: grey;
-  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 100%); }
+  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, transparent 70%, transparent 100%); }
 
 .close-button i:hover {
   color: red; }
@@ -3766,8 +3836,8 @@ header .billboard .content-button {
   font-size: 20px; }
 
 .tile__details {
-  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%); }
+  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%); }
 
 .tile__details:after,
 .tile__details:before {
@@ -3775,8 +3845,8 @@ header .billboard .content-button {
 
 .tile__details_v {
   font-size: 10px;
-  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%); }
+  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%); }
 
 .tile__details_v:after,
 .tile__details_v:before {

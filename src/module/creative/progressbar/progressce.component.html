@@ -1,0 +1,36 @@
+<ng-container *ngIf="type =='radial'">
+    <div tabindex="0" class="circularProgress" [style.width]="outerWidth" [style.height]="outerHeight" [ngStyle]="pStyle">
+        <div tabindex="0" [style.background-color]="background" [style.width]="width+'px'" [style.height]="height+'px'"
+            class="innerCircle" [ngClass]="type">
+            <label tabindex="0" attr.aria-label="{{progressvalue}} {{unit}}" [style.color]="labelcolor"
+                [style.font-size]="size">
+                <ng-container *ngIf="showlabel">{{progressvalue }}</ng-container>
+                <ng-container *ngIf="showunit"> {{unit}}</ng-container>
+            </label>
+        </div>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="type =='ring'">
+    <div tabindex="0" class="circularProgress" [style.width]="outerWidth" [style.height]="outerHeight" [ngStyle]="pStyle">
+        <div [style.width]="width+'px'" [style.height]="height+'px'" class="innerCircle" [ngClass]="type">
+            <label tabindex="0" attr.aria-label="{{progressvalue}}" [style.color]="labelcolor" [style.font-size]="size">
+                <ng-container *ngIf="showlabel">{{progressvalue }}</ng-container>
+                <ng-container *ngIf="showunit"> {{unit}}</ng-container>
+
+            </label>
+        </div>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="type =='pie'">
+    <div tabindex="0" class="circularProgress" [style.width]="outerWidth" [style.height]="outerHeight" [ngStyle]="pStyle">
+        <div [style.width]="width+'px'" [style.height]="height+'px'" [ngClass]="type" class="innerCircle">
+            <label [style.font-size]="size" [style.color]="labelcolor">
+                <ng-container *ngIf="showlabel">{{progressvalue }}</ng-container>
+                <ng-container *ngIf="showunit"> {{unit}}</ng-container>
+
+            </label>
+        </div>
+    </div>
+</ng-container>

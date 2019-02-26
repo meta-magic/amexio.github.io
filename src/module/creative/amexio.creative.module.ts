@@ -18,6 +18,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ModuleWithProviders } from '@angular/core';
+
+import { AmexioProgressCEComponent } from './progressbar/progressce.component';
+
 import { AmexioCardCEActionComponent } from './../creative/card/amexio.action.component';
 import { AmexioCardCEBodyComponent } from './../creative/card/amexio.body.component';
 import { AmexioCardCEComponent } from './../creative/card/amexio.cards.component';
@@ -30,10 +33,11 @@ export * from './../creative/card/amexio.body.component';
 export * from './../creative/card/amexio.cards.component';
 export * from './../creative/card/amexio.header.component';
 const CREATIVE_COMPONENTS = [
-    AmexioCardCEHeaderComponent,
-    AmexioCardCEBodyComponent,
-    AmexioCardCEActionComponent,
-    AmexioCardCEComponent,
+  AmexioCardCEHeaderComponent,
+  AmexioCardCEBodyComponent,
+  AmexioCardCEActionComponent,
+  AmexioCardCEComponent,
+  AmexioProgressCEComponent,
 ];
 
 @NgModule({
@@ -43,7 +47,7 @@ const CREATIVE_COMPONENTS = [
   ],
   exports: CREATIVE_COMPONENTS,
   declarations: CREATIVE_COMPONENTS,
-  providers : [],
+  providers: [],
 })
 export class AmexioCreativeModule {
   static forRoot(): ModuleWithProviders {
