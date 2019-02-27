@@ -17,6 +17,9 @@ import {AmexioWeekDayAvailiblityComponent} from './amexio-ee-appointment/amexio-
 import {AmexioYoutubePlayerComponent} from './youtube-player/youtube.player.component';
 
 import { AmexioCommonModule } from '../base/amexio.common.module';
+import { AmexioCalendarComponent } from './calendar/calendar.component';
+import { AmexioCalendarDayTimeWiseComponent } from './calendar/calendar.daytimewise.component';
+import { AmexioCalendarMonthComponent } from './calendar/calendar.month';
 
 export * from './ee-carousel/ee.carousel.component';
 export * from './ee-content/ee.content';
@@ -24,12 +27,18 @@ export * from '../services/data/common.data.service';
 export * from '../services/device/device.query.service';
 export * from './youtube-player/youtube.player.component';
 export * from './amexio-ee-appointment/amexio-ee-appointment.component';
+export * from './calendar/calendar.component';
+export * from './calendar/calendar.daytimewise.component';
+export * from './calendar/calendar.month';
 
 const ENTERPRISE_COMPONENTS = [
   MultiMediaCarouselComponent,
   ContentComponent,
   AmexioYoutubePlayerComponent,
   AmexioWeekDayAvailiblityComponent,
+  AmexioCalendarComponent,
+  AmexioCalendarDayTimeWiseComponent,
+  AmexioCalendarMonthComponent,
 ];
 
 @NgModule({
