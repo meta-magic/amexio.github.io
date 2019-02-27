@@ -3620,7 +3620,6 @@ input:checked + .toggle-slider:before {
 /** Amexio Progress-ce- Vars CSS **/
 /** Amexio Progress-ce- Visual CSS **/
 .circularProgress {
-  border: 2px solid #f2f2f2;
   background-color: #000000; }
 
 /* FOR RADIAL */
