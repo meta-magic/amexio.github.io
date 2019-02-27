@@ -245,9 +245,9 @@ description : Context Menu provides the list of menus on right click.
   ngOnInit() {
 
     if (this.httpmethod && this.httpurl) {
-      this.dataService.fetchData(this.httpurl, this.httpmethod).subscribe((response: any) => {
+      this.dataService.fetchData(this.httpurl, this.httpmethod).subscribe((response) => {
         this.response = response;
-      }, (error: any) => {
+      }, (error) => {
       }, () => {
         this.setData(this.response);
       });
@@ -256,81 +256,63 @@ description : Context Menu provides the list of menus on right click.
       this.setData(this.data);
     }
     this.componentLoaded = true;
-    this.onHoverFlagClick(this.data);
     this.componentId = 'listbox' + Math.floor(Math.random() * 1000 + 999);
-  }
-  onHoverFlagClick(data: any) {
-    const arr = this.data['response']['data'];
-    arr.forEach((element: any, index: any) => {
-      if (index === 0) {
-        element['ishoverselected'] = true;
-      } else {
-        element['ishoverselected'] = false;
-      }
-      element['index'] = ['listbox' + Math.floor(Math.random() * 1000 + 999)] + index;
-    });
-    this.data['response']['data'] = arr;
-
   }
 
   onArrowdown() {
     if (this.flag) {
       this.listindex1 = this.findlistindex(this.data);
-      if (this.listindex1 < (this.data['response']['data'].length - 1)) {
-        this.data['response']['data'][this.listindex1].ishoverselected = false;
-        this.data['response']['data'][this.listindex1 + 1].ishoverselected = true;
+      if (this.listindex1 < (this.viewData.length - 1)) {
+        this.viewData[this.listindex1].ishoverselected = false;
+        this.viewData[this.listindex1 + 1].ishoverselected = true;
         this.selectedCheckBox(this.data);
         const divid = document.getElementById(this.componentId);
-        divid.setAttribute(this.activedescendant, this.data['response']['data'][this.listindex1 + 1].index);
-      } else if (this.listindex1 === this.data['response']['data'].length - 1) {
-        this.data['response']['data'][this.listindex1].ishoverselected = false;
-        this.data['response']['data'][0].ishoverselected = true;
+        divid.setAttribute(this.activedescendant, this.viewData[this.listindex1 + 1].index);
+      }else if (this.listindex1 === this.viewData.length - 1) {
+        this.viewData[this.listindex1].ishoverselected = false;
+        this.viewData[0].ishoverselected = true;
         const divid = document.getElementById(this.componentId);
-        divid.setAttribute(this.activedescendant, this.data['response']['data'][0].index);
+        divid.setAttribute(this.activedescendant, this.viewData[0].index);
       }
-    } else {
-      this.data['response']['data'][0].selected = true;
+    }else {
+      this.viewData[0].selected = true;
       const divid = document.getElementById(this.componentId);
-      divid.setAttribute(this.activedescendant, this.data['response']['data'][0].index);
+      divid.setAttribute(this.activedescendant, this.viewData[0].index);
       this.flag = true;
     }
   }
   onArrowUp() {
     if (this.flag) {
       this.listindex1 = this.findlistindex(this.data);
-      if ((this.listindex1 < (this.data['response']['data'].length - 1)) && this.listindex1 !== 0) {
-        this.data['response']['data'][this.listindex1].ishoverselected = false;
-        this.data['response']['data'][this.listindex1 - 1].ishoverselected = true;
+      if ((this.listindex1 < (this.viewData.length - 1)) && this.listindex1 !== 0) {
+        this.arrowUpHovSelected();
+      }else if (this.listindex1 === (this.viewData.length - 1)) {
+        this.arrowUpHovSelected();
+      }else if (this.listindex1 === 0) {
+        this.viewData[this.viewData.length - 1].ishoverselected = true;
+        this.viewData[this.listindex1].ishoverselected = false;
         const divid = document.getElementById(this.componentId);
-        divid.setAttribute(this.activedescendant, this.data['response']['data'][this.listindex1 - 1].index);
-      } else if (this.listindex1 === (this.data['response']['data'].length - 1)) {
-        this.onKeyArrowUp();
-      } else if (this.listindex1 === 0) {
-        this.data['response']['data'][this.data['response']['data'].length - 1].ishoverselected = true;
-        this.data['response']['data'][this.listindex1].ishoverselected = false;
-        const divid = document.getElementById(this.componentId);
-        divid.setAttribute(this.activedescendant, this.data['response']['data'][this.data['response']['data'].length - 1].index);
+        divid.setAttribute(this.activedescendant, this.viewData[this.viewData.length - 1].index);
       }
-    } else {
-      this.data['response']['data'][this.data['response']['data'].length - 1].ishoverselected = true;
+    }else {
+      this.viewData[this.viewData.length - 1].ishoverselected = true;
       const divid = document.getElementById(this.componentId);
-      divid.setAttribute(this.activedescendant, this.data['response']['data'][this.data['response']['data'].length - 1].index);
+      divid.setAttribute(this.activedescendant, this.viewData[this.viewData.length - 1].index);
       this.flag = true;
     }
   }
-  onKeyArrowUp() {
-    this.data['response']['data'][this.listindex1].ishoverselected = false;
-    this.data['response']['data'][this.listindex1 - 1].ishoverselected = true;
+  arrowUpHovSelected() {
+    this.viewData[this.listindex1].ishoverselected = false;
+    this.viewData[this.listindex1 - 1].ishoverselected = true;
     const divid = document.getElementById(this.componentId);
-    divid.setAttribute(this.activedescendant, this.data['response']['data'][this.listindex1 - 1].index);
-
+    divid.setAttribute(this.activedescendant, this.viewData[this.listindex1 - 1].index);
   }
   onEnterPress() {
-    this.data['response']['data'].forEach((element: any, index: any) => {
+    this.viewData.forEach((element, index) => {
       if (element.ishoverselected === true) {
         if (element.isSelected === true) {
           element.isSelected = false;
-        } else {
+        }else {
           element.isSelected = true;
         }
       }
@@ -338,10 +320,10 @@ description : Context Menu provides the list of menus on right click.
   }
   findlistindex(data: any) {
     let listindex;
-    this.data['response']['data'].forEach((element: any, index: any) => {
+
+    this.viewData.forEach((element, index) => {
       if (element.ishoverselected === true) {
         listindex = index;
-
       }
     });
     return listindex;
@@ -355,7 +337,7 @@ description : Context Menu provides the list of menus on right click.
 
   setData(httpResponse: any) {
     let responsedata = httpResponse;
-    if (this.datareader != null) {
+    if (this.datareader) {
       const dr = this.datareader.split('.');
       for (const ir of dr) {
         responsedata = responsedata[ir];
@@ -369,12 +351,17 @@ description : Context Menu provides the list of menus on right click.
   }
 
   setSelectedFlag(viewRows: any) {
-    viewRows.forEach((row: any) => {
+    viewRows.forEach((row: any, index: number) => {
       if (!row.hasOwnProperty('isSelected')) {
         row['isSelected'] = false;
       }
+      if (index === 0) {
+        row['ishoverselected'] = true;
+      }else {
+        row['ishoverselected'] = false;
+      }
+      row['index'] = 'listbox' + Math.floor(Math.random() * 1000 + 999) + index;
     });
-
     this.maskloader = false;
   }
 
