@@ -17,9 +17,10 @@
 
 import {
   AfterContentChecked, AfterContentInit, AfterViewInit, Component, ContentChildren,
-  ElementRef, EventEmitter, Input, OnInit, Output, QueryList, ViewChild,
-   ViewChildren} from '@angular/core';
-import { FormGroup , NgForm, NgModel} from '@angular/forms';
+  ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, QueryList, ViewChild,
+  ViewChildren,
+} from '@angular/core';
+import { FormGroup, NgForm, NgModel } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { AmexioButtonComponent } from './../../forms/buttons/button.component';
 import { AmexioFormActionComponent } from './form.action.component';
@@ -31,16 +32,16 @@ import { AmexioFormHeaderComponent } from './form.header.component';
   selector: 'amexio-form',
   templateUrl: './form.component.html',
 })
-export class AmexioFormComponent implements OnInit, AfterViewInit, AfterContentInit, AfterContentChecked {
+export class AmexioFormComponent implements OnDestroy, OnInit, AfterViewInit, AfterContentInit, AfterContentChecked {
 
-/*
-Properties
-name : header-align
-datatype : string
-version : 4.2 onwards
-default : left
-description : Align of item elements inside card header example [right center left].
-*/
+  /*
+  Properties
+  name : header-align
+  datatype : string
+  version : 4.2 onwards
+  default : left
+  description : Align of item elements inside card header example [right center left].
+  */
   @Input('header-align') headeralign: string;
 
   /*
@@ -111,14 +112,14 @@ default :
 description : Provides form body height.
 */
   @Input('body-height') bodyheight: any;
-/*
-Properties
-name : form-group
-datatype :   any
-version : 5.3.2 onwards
-default :
-description : This attribute use for form binding.
-*/
+  /*
+  Properties
+  name : form-group
+  datatype :   any
+  version : 5.3.2 onwards
+  default :
+  description : This attribute use for form binding.
+  */
 
   @ViewChild('formHeader', { read: ElementRef }) public formHeader: ElementRef;
 
@@ -149,6 +150,8 @@ description : Event fired if showError msg info button is clicked
   showDialogue: boolean;
 
   checkForm: boolean;
+
+  clearTimeout: any;
 
   @ContentChildren(AmexioFormHeaderComponent) amexioHeader: QueryList<AmexioFormHeaderComponent>;
 
@@ -232,29 +235,31 @@ description : Event fired if showError msg info button is clicked
     const ngContentModels = this.models.toArray();
     const innerModelArray: any[] = [];
     this.fb.forEach((fbnode: any) => {
-        const modelarray = fbnode.modelsarray;
-        const fgc = {};
-        modelarray.forEach((m: any) => {
-            fgc[m.name] = m.control;
-            innerModelArray.push(m);
-        });
-        const grp = this.formBuilder.group(fgc);
-        this.form.form.registerControl(fbnode.group, grp);
+      const modelarray = fbnode.modelsarray;
+      const fgc = {};
+      modelarray.forEach((m: any) => {
+        fgc[m.name] = m.control;
+        innerModelArray.push(m);
+      });
+      const grp = this.formBuilder.group(fgc);
+      this.form.form.registerControl(fbnode.group, grp);
     });
 
     ngContentModels.forEach((model) => {
-      if (!this.isFieldPresentInParentAndChildBoth(innerModelArray, model.name )) {
+      if (!this.isFieldPresentInParentAndChildBoth(innerModelArray, model.name)) {
         if (!model.name || model.name === null) {
           model.name = model.valueAccessor['name'];
         }
         this.form.control.registerControl(model.name, model.control);
       }
     });
-    this.form.form.updateValueAndValidity();
+    this.clearTimeout = setTimeout(() => {
+      this.form.form.updateValueAndValidity();
+    }, 100);
     this.btns.toArray().forEach((btnCom) => {
-    if ((btnCom.formbind === this.fname) && !btnCom.disabled) {
-      this.buttons.push(btnCom);
-    }
+      if ((btnCom.formbind === this.fname) && !btnCom.disabled) {
+        this.buttons.push(btnCom);
+      }
     });
     this.validateForm();
     this.onResize();
@@ -264,7 +269,7 @@ description : Event fired if showError msg info button is clicked
     let isPresent = false;
     innerModelArray.forEach((innerModel: any) => {
       if (name === innerModel.name) {
-         isPresent = true;
+        isPresent = true;
       }
     });
     return isPresent;
@@ -275,13 +280,13 @@ description : Event fired if showError msg info button is clicked
   // THIS METHOD IS USED FOR ADDING MSG
   addErrorMsg() {
     if (this.form && this.form.status === 'INVALID') {
-      for ( const [key, value] of Object.entries( this.form.controls ) ) {
+      for (const [key, value] of Object.entries(this.form.controls)) {
         if (value && value.status === 'INVALID') {
           const errorObject: any = {};
           errorObject['label'] = key;
           this.errorMsgArray.push(errorObject);
-          }
         }
+      }
     }
   }
 
@@ -302,7 +307,7 @@ description : Event fired if showError msg info button is clicked
     if (this.form && this.form.status === 'INVALID') {
       this.disableButton(true);
     } else {
-     this.disableButton(false);
+      this.disableButton(false);
     }
   }
 
@@ -325,6 +330,10 @@ description : Event fired if showError msg info button is clicked
     if (this.headeralign === 'center') {
       return 'flex-center';
     }
+  }
+
+  ngOnDestroy() {
+    clearTimeout(this.clearTimeout);
   }
 
 }
