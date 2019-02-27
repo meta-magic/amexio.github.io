@@ -1,4 +1,4 @@
-<div class="calendar-header card-header">
+<div class="calendar-header">
     <div style="display: inline-flex;">
         <div *ngIf="(currentState === 'month')"> {{currrentDate | date : 'MMMM, y'}} </div>
         <div *ngIf="(currentState === 'week')"> {{displayHeaders[0] | date : 'd MMM'}} -
