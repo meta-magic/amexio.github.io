@@ -1,0 +1,28 @@
+<div *ngIf="showProgress" class="progress"
+ [ngStyle]="{'height':height}">
+
+  <span [ngClass]="progressclass" *ngIf="infinite" style="width: 100%;"
+      
+     tabindex="0" 
+     role="progressbar"
+     aria-readonly="true"
+     attr.aria-label="'inprogress {{label}}'"
+
+     >
+     {{label != null ? label : 'Loading...'}}
+  </span>
+
+    <span 
+    
+      tabindex="0" 
+      attr.aria-label="'progressbar {{tooltip}}'"
+      role="progressbar" 
+      attr.aria-valuenow="{{currentvalue}}" 
+      aria-valuemin="0" 
+      aria-valuemax="100"
+
+      [ngClass]="progressclass" *ngIf="!infinite"
+      [ngStyle]="{'width.%' : currentvalue}">
+
+    </span>
+</div>
