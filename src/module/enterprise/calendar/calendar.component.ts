@@ -17,6 +17,7 @@ export class AmexioCalendarComponent implements OnInit {
     calendarWeekData: any[] = [];
     currrentDate: any;
     currentState: string; // month/week/day
+    _calenadrDate: any;
 
     adu: AmexioDateUtils;
 
@@ -33,6 +34,23 @@ export class AmexioCalendarComponent implements OnInit {
     @Input('events') events: any[];
 
     @Input('title') title: string;
+
+    @Input('calendar-date')
+    set calendardate(v: any) {
+        if (v != null) {
+            try {
+                this._calenadrDate = v;
+                this.currrentDate = new Date(v);
+                this.createData(this.currrentDate);
+            } catch (e) {
+                this.currrentDate = new Date();
+            }
+        }
+    }
+
+    get calendardate() {
+        return this._calenadrDate;
+    }
 
     @Output('onEventClicked') onEventClicked = new EventEmitter<any>();
 
