@@ -221,8 +221,6 @@ description : Context Menu provides the list of menus on right click.
 
   rightClickRowData: any;
 
-  listindex1: number;
-
   activedescendant = 'aria-activedescendant';
 
   listId: string;
@@ -232,6 +230,10 @@ description : Context Menu provides the list of menus on right click.
   a: any;
 
   flag = false;
+
+  prevlistindex = -1;
+
+  listindex = -1;
   globalClickListenFunc: () => void;
 
   constructor(public dataService: CommonDataService, private renderer: Renderer2) {
@@ -260,74 +262,52 @@ description : Context Menu provides the list of menus on right click.
   }
 
   onArrowdown() {
-    if (this.flag) {
-      this.listindex1 = this.findlistindex(this.data);
-      if (this.listindex1 < (this.viewData.length - 1)) {
-        this.viewData[this.listindex1].ishoverselected = false;
-        this.viewData[this.listindex1 + 1].ishoverselected = true;
-        this.selectedCheckBox(this.data);
-        const divid = document.getElementById(this.componentId);
-        divid.setAttribute(this.activedescendant, this.viewData[this.listindex1 + 1].index);
-      }else if (this.listindex1 === this.viewData.length - 1) {
-        this.viewData[this.listindex1].ishoverselected = false;
-        this.viewData[0].ishoverselected = true;
-        const divid = document.getElementById(this.componentId);
-        divid.setAttribute(this.activedescendant, this.viewData[0].index);
-      }
-    }else {
-      this.viewData[0].selected = true;
+    if (this.prevlistindex > -1) {
+      this.viewData[this.prevlistindex]['ishoverselected'] = false;
+    }
+    this.listindex++;
+    this.prevlistindex = this.listindex;
+    if (this.listindex >= this.viewData.length) {
+      this.listindex = 0;
+      this.prevlistindex = 0;
+    }
+    this.viewData[this.listindex]['ishoverselected'] = true;
+    if (this.viewData[this.listindex]['ishoverselected']) {
       const divid = document.getElementById(this.componentId);
-      divid.setAttribute(this.activedescendant, this.viewData[0].index);
-      this.flag = true;
+      divid.setAttribute(this.activedescendant, this.viewData[this.listindex].index);
     }
   }
   onArrowUp() {
-    if (this.flag) {
-      this.listindex1 = this.findlistindex(this.data);
-      if ((this.listindex1 < (this.viewData.length - 1)) && this.listindex1 !== 0) {
-        this.arrowUpHovSelected();
-      }else if (this.listindex1 === (this.viewData.length - 1)) {
-        this.arrowUpHovSelected();
-      }else if (this.listindex1 === 0) {
-        this.viewData[this.viewData.length - 1].ishoverselected = true;
-        this.viewData[this.listindex1].ishoverselected = false;
-        const divid = document.getElementById(this.componentId);
-        divid.setAttribute(this.activedescendant, this.viewData[this.viewData.length - 1].index);
-      }
-    }else {
-      this.viewData[this.viewData.length - 1].ishoverselected = true;
+    if (this.prevlistindex > -1) {
+      this.viewData[this.prevlistindex]['ishoverselected'] = false;
+    }
+    this.prevlistindex--;
+    if (this.prevlistindex === -1) {
+      this.prevlistindex = this.viewData.length - 1;
+      this.listindex = -1;
+    }
+    this.viewData[this.prevlistindex]['ishoverselected'] = true;
+    if (this.viewData[this.prevlistindex]['ishoverselected']) {
       const divid = document.getElementById(this.componentId);
-      divid.setAttribute(this.activedescendant, this.viewData[this.viewData.length - 1].index);
-      this.flag = true;
+      divid.setAttribute(this.activedescendant, this.viewData[this.prevlistindex].index);
+    }
+    if (this.prevlistindex === 0) {
+      this.listindex = 0;
     }
   }
-  arrowUpHovSelected() {
-    this.viewData[this.listindex1].ishoverselected = false;
-    this.viewData[this.listindex1 - 1].ishoverselected = true;
-    const divid = document.getElementById(this.componentId);
-    divid.setAttribute(this.activedescendant, this.viewData[this.listindex1 - 1].index);
-  }
+
   onEnterPress() {
     this.viewData.forEach((element, index) => {
       if (element.ishoverselected === true) {
         if (element.isSelected === true) {
           element.isSelected = false;
-        }else {
+        } else {
           element.isSelected = true;
         }
       }
     });
   }
-  findlistindex(data: any) {
-    let listindex;
 
-    this.viewData.forEach((element, index) => {
-      if (element.ishoverselected === true) {
-        listindex = index;
-      }
-    });
-    return listindex;
-  }
   updateComponent() {
     if (JSON.stringify(this.previousData) !== JSON.stringify(this.data)) {
       this.previousData = JSON.parse(JSON.stringify(this.data));
@@ -354,11 +334,6 @@ description : Context Menu provides the list of menus on right click.
     viewRows.forEach((row: any, index: number) => {
       if (!row.hasOwnProperty('isSelected')) {
         row['isSelected'] = false;
-      }
-      if (index === 0) {
-        row['ishoverselected'] = true;
-      }else {
-        row['ishoverselected'] = false;
       }
       row['index'] = 'listbox' + Math.floor(Math.random() * 1000 + 999) + index;
     });

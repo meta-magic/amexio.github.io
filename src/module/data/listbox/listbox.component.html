@@ -1,11 +1,11 @@
 <div class="listbox" [style.border]="border">
   <div *ngIf="enableHeader" class="header" style="display: flex; justify-content: space-between">
     <div style="display: flex;justify-content: flex-start;">
-      <div role="checkbox" *ngIf="enablecheckbox" class="input-box">
+      <div role="checkbox"  tabindex="0" *ngIf="enablecheckbox" (keyup.enter)="selectAllRecord()" class="input-box">
         <div *ngIf="!selectAll" (click)="selectAllRecord()" class="checkbox default"></div>
         <div *ngIf="selectAll" (click)="selectAllRecord()" class="checkbox active">&#10004;</div>
       </div>
-      <div class="title">&nbsp;&nbsp;{{header}}</div>
+      <div  tabindex="0" attr.aria-label="{{header}} list" class="title">&nbsp;&nbsp;{{header}}</div>
     </div>
 
     <div *ngIf="(filter == true)">
