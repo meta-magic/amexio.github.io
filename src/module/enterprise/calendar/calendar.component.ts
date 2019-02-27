@@ -107,7 +107,7 @@ export class AmexioCalendarComponent implements OnInit {
     private createData(selectedPeriod: any) {
         if (this.currentState === CALENDAR.MONTH) {
             this.displayHeaders = CALENDAR.DAY_NAME[this.headertype];
-            this.createDaysForCurrentMonths(selectedPeriod);
+            this.calendarMonthData = this.createDaysForCurrentMonths(selectedPeriod, this.currrentDate);
         } else if (this.currentState === CALENDAR.WEEK || this.currentState === CALENDAR.DAY) {
             let weekDays = [];
             if (this.currentState === CALENDAR.WEEK) {
@@ -118,12 +118,27 @@ export class AmexioCalendarComponent implements OnInit {
             }
             this.displayHeaders = weekDays;
             this.createDaysForCurrentWeek(selectedPeriod);
+        } else if (this.currentState === CALENDAR.YEAR) {
+            this.displayHeaders = CALENDAR.DAY_NAME[CALENDAR.SHORT];
+            this.calendarMonthData = this.createYearData();
         }
     }
 
-    private createDaysForCurrentMonths(selectedPeriod: any) {
-        this.calendarMonthData = [];
-        const monthData: any[] = this.adu.createDaysForMonths(selectedPeriod, this.currrentDate);
+    private createYearData(): any[] {
+        const yearData = [];
+        const year = this.currrentDate.getUTCFullYear();
+        const months = CALENDAR.MONTH_NAME[CALENDAR.FULL];
+        for (let i = 0; i < months.length; i++) {
+            const monthDate = new Date(year, i, 1);
+            const monthData1 = this.createDaysForCurrentMonths(monthDate, new Date());
+            yearData.push(Object.assign({}, { month: monthDate, title: months[i], data: monthData1 }));
+        }
+        return yearData;
+    }
+
+    private createDaysForCurrentMonths(selectedPeriod: any, currrentDate: any): any[] {
+        const calendarMonthData: any[] = [];
+        const monthData: any[] = this.adu.createDaysForMonths(selectedPeriod, currrentDate);
         monthData.forEach((week: any[]) => {
             const rowDays: any[] = [];
             week.forEach((day) => {
@@ -135,13 +150,13 @@ export class AmexioCalendarComponent implements OnInit {
                 }
                 rowDays.push(day);
             });
-            this.calendarMonthData.push(rowDays);
+            calendarMonthData.push(rowDays);
         });
+        return calendarMonthData;
     }
 
     private createDaysForCurrentWeek(selectedPeriod: any) {
         this.calendarWeekData = [];
-
         const allday = Object.assign({}, this.weekHeaders);
         allday.daywiseevent = [];
         this.displayHeaders.forEach((date: any) => {
@@ -244,6 +259,8 @@ export class AmexioCalendarComponent implements OnInit {
             newDate = this.adu.getPrevSunday(newDate);
         } else if (this.currentState === CALENDAR.DAY) {
             newDate.setDate(newDate.getDate() - 1);
+        } else if (this.currentState === CALENDAR.YEAR) {
+            newDate.setUTCFullYear(newDate.getUTCFullYear() - 1);
         }
         this.currrentDate = new Date(newDate);
         this.createData(this.currrentDate);
@@ -257,6 +274,8 @@ export class AmexioCalendarComponent implements OnInit {
             newDate = this.adu.getNextSunday(newDate);
         } else if (this.currentState === CALENDAR.DAY) {
             newDate.setDate(newDate.getDate() + 1);
+        } else if (this.currentState === CALENDAR.YEAR) {
+            newDate.setUTCFullYear(newDate.getUTCFullYear() + 1);
         }
         this.currrentDate = new Date(newDate);
         this.createData(this.currrentDate);

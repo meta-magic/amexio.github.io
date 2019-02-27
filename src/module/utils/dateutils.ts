@@ -6,7 +6,8 @@ export class AmexioDateUtils {
 
         if (date1.getTime() === date2.getTime()) {
             return true;
-        }else if ((date1.getMonth() === date2.getMonth()) && (date1.getDate() === date2.getDate())) {
+        }else if ((date1.getUTCFullYear() === date2.getUTCFullYear()) && (date1.getMonth() === date2.getMonth())
+                    && (date1.getDate() === date2.getDate())) {
             return true;
         }
 

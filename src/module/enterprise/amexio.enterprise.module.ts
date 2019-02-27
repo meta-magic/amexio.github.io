@@ -20,6 +20,7 @@ import { AmexioCommonModule } from '../base/amexio.common.module';
 import { AmexioCalendarComponent } from './calendar/calendar.component';
 import { AmexioCalendarDayTimeWiseComponent } from './calendar/calendar.daytimewise.component';
 import { AmexioCalendarMonthComponent } from './calendar/calendar.month';
+import { AmexioCalendarYearComponent } from './calendar/calendar.year.component';
 
 export * from './ee-carousel/ee.carousel.component';
 export * from './ee-content/ee.content';
@@ -30,6 +31,7 @@ export * from './amexio-ee-appointment/amexio-ee-appointment.component';
 export * from './calendar/calendar.component';
 export * from './calendar/calendar.daytimewise.component';
 export * from './calendar/calendar.month';
+export * from './calendar/calendar.year.component';
 
 const ENTERPRISE_COMPONENTS = [
   MultiMediaCarouselComponent,
@@ -39,6 +41,7 @@ const ENTERPRISE_COMPONENTS = [
   AmexioCalendarComponent,
   AmexioCalendarDayTimeWiseComponent,
   AmexioCalendarMonthComponent,
+  AmexioCalendarYearComponent,
 ];
 
 @NgModule({

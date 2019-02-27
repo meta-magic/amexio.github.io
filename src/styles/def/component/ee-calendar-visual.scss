@@ -26,3 +26,8 @@
     background-color: $calendarActiveBGColor;
     color: $calendarActiveColor;
 }
+
+.calendar-year-month-hasevent{
+    color: $calendarActiveColor1;
+    cursor: pointer;
+}
