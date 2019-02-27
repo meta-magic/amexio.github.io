@@ -32,3 +32,11 @@
 *****************************************************************************/
 /** enterprise - Visual CSS **/
 @import "component/ee-appointment-visual.scss";
+
+/****************************************************************************
+    Component Name : Enterprise Calendar
+    Version : Amexio v5.7 onwards
+*****************************************************************************/
+@import "component/ee-calendar-vars.scss";
+@import "component/ee-calendar-visual.scss";
+@import "component/ee-calendar-structure.scss";

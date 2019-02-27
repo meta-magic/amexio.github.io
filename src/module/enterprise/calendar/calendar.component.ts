@@ -8,6 +8,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 @Component({
     selector: 'amexio-calendar',
     templateUrl: './calendar.component.html',
+    styleUrls: ['./calendar.component.css', './calendar.common.css'],
 })
 export class AmexioCalendarComponent implements OnInit {
 

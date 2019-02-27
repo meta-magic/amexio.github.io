@@ -1,0 +1,24 @@
+
+.calendar-header-items {   
+    border: 1px solid $calendarBorderColor;
+}
+
+.calendar-box-items {
+    border: 1px solid $calendarBorderColor;
+}
+
+.calendar-inactive {
+    color:  $calendarInActiveColor;
+}
+
+.calendar-active-box {
+    background-color: $calendarActiveBGColor;
+    color: $calendarActiveColor;
+    border: 1px solid $calendarBorderColor;
+}
+
+
+.calendar-week-active-timeslot{
+    background-color: $calendarActiveBGColor;
+    color: $calendarActiveColor;
+}

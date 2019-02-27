@@ -3,6 +3,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 @Component({
     selector: 'amexio-calendar-month',
     templateUrl: './calendar.month.html',
+    styleUrls: ['./calendar.common.css'],
 })
 export class AmexioCalendarMonthComponent {
 

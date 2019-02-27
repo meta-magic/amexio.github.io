@@ -3,6 +3,7 @@ import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild }
 @Component({
     selector: 'amexio-calendar-day-timewise',
     templateUrl: './calendar.daytimewise.component.html',
+    styleUrls: ['./calendar.common.css'],
 })
 export class AmexioCalendarDayTimeWiseComponent implements OnInit {
 
