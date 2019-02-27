@@ -20,7 +20,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 @Component({
   selector: 'amexio-label',
   template: `
-  <label role="text" [tabindex]="enableclick ? 0 : -1" class="label-content {{styleClass}}" (click)="onLabel($event)"
+  <label role="text" tabindex="1" class="label-content {{styleClass}}" (click)="onLabel($event)"
     [ngStyle]="{'color' : fontColor,'cursor': enableclick ? 'pointer': 'text'}">
     <ng-content></ng-content>
     <span class="label-badge" *ngIf="badge">{{badge}}</span>
