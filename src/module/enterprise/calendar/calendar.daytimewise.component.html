@@ -40,7 +40,7 @@
                                         class="calendar-box-items" 
                                         *ngFor="let day of calendarRow.daywiseevent">
 
-                                        <div class="calendar-week-day-timeslot"
+                                        <div (click)="eventClicked($event,day)"  class="calendar-week-day-timeslot"
                                             [ngClass]="{'calendar-week-active-timeslot': day.isEvent}"
                                             [ngStyle]="{'height': (day.isEvent && day.eventDetails && day.eventDetails.diff) ? day.eventDetails.diff+'px' : null}">
 

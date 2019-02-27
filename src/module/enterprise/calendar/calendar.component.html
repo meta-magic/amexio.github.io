@@ -1,20 +1,24 @@
-
-
-
 <div class="calendar-header card-header">
-    <div *ngIf="(currentState === 'month')" > {{currrentDate | date : 'MMMM, y'}} </div>
-    <div *ngIf="(currentState === 'week')" > {{displayHeaders[0] | date : 'd MMM'}} - {{displayHeaders[6] | date : 'd MMM'}} {{displayHeaders[6] | date : 'y'}} </div>
-    <div *ngIf="(currentState === 'day')" > {{currrentDate | date : 'd MMMM, y'}} </div>    
+    <div style="display: inline-flex;">
+        <div *ngIf="(currentState === 'month')"> {{currrentDate | date : 'MMMM, y'}} </div>
+        <div *ngIf="(currentState === 'week')"> {{displayHeaders[0] | date : 'd MMM'}} -
+            {{displayHeaders[6] | date : 'd MMM'}} {{displayHeaders[6] | date : 'y'}} </div>
+        <div *ngIf="(currentState === 'day')"> {{currrentDate | date : 'd MMMM, y'}} </div>
+
+        <div class="calendar-navigation">
+            <em style="padding-right: 20px;" class="fa fa-chevron-left" aria-hidden="true" (click)="previous()"></em>
+            <em style="padding-right: 20px;" class="fa fa-chevron-right" aria-hidden="true" (click)="next()"></em>
+        </div>
+    </div>
+    <div>{{title}}</div>
     <div>
         <button (click)="setState('day')">Day</button>
-        <button (click)="setState('week')">Week</button>        
+        <button (click)="setState('week')">Week</button>
         <button (click)="setState('month')">Month</button>
-        
-    </div>
-    <div style="display: flex; flex-direction: row; justify-content: space-between;">
-        <em style="padding-right: 20px;" class="fa fa-chevron-left" aria-hidden="true" (click)="previous()"></em> 
-        <em style="padding-right: 20px;" class="fa fa-chevron-right" aria-hidden="true" (click)="next()"></em>
+
     </div>
 </div>
-<amexio-calendar-month *ngIf="(currentState === 'month')" [headers]="displayHeaders" [calendar-data]="calendarMonthData" [calendar-row]="calendarRow"> </amexio-calendar-month>
-<amexio-calendar-day-timewise *ngIf="(currentState === 'week' || currentState === 'day')" [headers]="displayHeaders" [calendar-data]="calendarWeekData" > </amexio-calendar-day-timewise>
+<amexio-calendar-month *ngIf="(currentState === 'month')" [headers]="displayHeaders"
+    [calendar-data]="calendarMonthData" [calendar-row]="calendarRow" (onEventClicked)="onMonthEvent($event)"> </amexio-calendar-month>
+<amexio-calendar-day-timewise *ngIf="(currentState === 'week' || currentState === 'day')" [headers]="displayHeaders"
+    [calendar-data]="calendarWeekData" (onEventClicked)="onDayTimeWiseEvent($event)"> </amexio-calendar-day-timewise>
