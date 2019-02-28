@@ -40,7 +40,8 @@
     font-weight: 400;
     overflow-y: auto;
     overflow-x: hidden;
-    background-color: transparent;
+    background-color: $componentBGColor;
+    color: $componentFontColor;
     max-height: 100%;
 }
 
