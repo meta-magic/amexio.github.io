@@ -1,9 +1,8 @@
-import { AmexioDateUtils } from '../../utils/dateutils';
-
 import { CALENDAR } from './calendar.const';
 import { CalendarEventModel } from './calendarevent.model';
 
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AmexioDateUtils } from '../../utils/dateutils';
 
 @Component({
     selector: 'amexio-calendar',
@@ -41,7 +40,6 @@ export class AmexioCalendarComponent implements OnInit {
             try {
                 this._calenadrDate = v;
                 this.currrentDate = new Date(v);
-                this.createData(this.currrentDate);
             } catch (e) {
                 this.currrentDate = new Date();
             }
@@ -164,7 +162,6 @@ export class AmexioCalendarComponent implements OnInit {
                 if (eventDetails && eventDetails.isEvent) {
                     day.eventDetails = eventDetails;
                     day.isEvent = eventDetails.isEvent;
-
                 }
                 rowDays.push(day);
             });
@@ -220,7 +217,8 @@ export class AmexioCalendarComponent implements OnInit {
                 const isEvent = this.isEventPresent(event, wholeday, eventStartDate, weekDateSlotEnd, weekDateSlotStart);
                 if (event.hasTimeSlot && !wholeday && event.end && isEvent) {
                     const eventEndDate = adu.getDateWithSecondsZero(new Date(event.end).getTime());
-                    weekEventObject.diff = ((eventEndDate.getTime() - eventStartDate.getTime()) / 1000) / 60;
+                    weekEventObject.diff = (((eventEndDate.getTime() - eventStartDate.getTime())
+                        - (86400000 * Math.floor((eventEndDate - eventStartDate) / 86400000))) / 1000) / 60;
                     weekEventObject.diffwithslot = ((eventStartDate.getTime() - weekDateSlotStart.getTime()) / 1000) / 60;
                 }
                 if (isEvent && !weekEventObject.isEvent) {
@@ -230,10 +228,8 @@ export class AmexioCalendarComponent implements OnInit {
                     weekEventObject.details = event;
                     weekEventObject.title = event.title;
                 }
-
             });
         }
-
         return weekEventObject;
     }
 
