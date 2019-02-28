@@ -38,7 +38,7 @@
                                             *ngFor="let day of calendarRow">
                                             <ng-container *ngIf="(day.eventDetails && day.eventDetails.events)">
                                                 <ul class="calendar-ul">
-                                                    <li (click)="eventClicked($event,dayevent)" [attr.class]="'calendar-li '+' '+dayevent.details.eventclass"  *ngFor="let dayevent of day.eventDetails.events">
+                                                    <li (click)="eventClicked($event,dayevent)" class="calendar-li " [attr.class]="'calendar-li '+' '+dayevent.details.eventclass"  *ngFor="let dayevent of day.eventDetails.events">
                                                         <span class="calendar-user-active"  
                                                             *ngIf="dayevent.isEvent">
                                                             {{dayevent.details.title}} <br/>
