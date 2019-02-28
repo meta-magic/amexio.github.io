@@ -91,7 +91,7 @@
 }
 //STEP INDEX INACTIVE
 .index-step-inactive{
-  background-color: lighten($stepsActiveBGColor,30%);
+  background-color: $componentHoverBGColor;
   color : inherit;
 }
 
