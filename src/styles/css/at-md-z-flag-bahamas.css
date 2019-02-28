@@ -4168,6 +4168,136 @@ header .billboard .content-button {
   color: lightgray; }
 
 /****************************************************************************
+    Component Name : Enterprise Calendar
+    Version : Amexio v5.7 onwards
+*****************************************************************************/
+.calendar-header {
+  background-color: #fae042;
+  color: #231e01; }
+
+.calendar-header-items {
+  border: 1px solid #ced4da; }
+
+.calendar-box-items {
+  border: 1px solid #ced4da; }
+
+.calendar-inactive {
+  opacity: 0.5; }
+
+.calendar-active-box {
+  background-color: #fff5b8;
+  color: #524700;
+  border: 1px solid #ced4da; }
+
+.calendar-week-active-timeslot {
+  background-color: #fff5b8;
+  color: #524700; }
+
+.calendar-year-month-hasevent {
+  color: #ffeb6b;
+  cursor: pointer; }
+
+.calendar-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 24px;
+  font-size: 20px;
+  font-weight: 300;
+  text-transform: capitalize; }
+
+.calendar-header-items {
+  padding: 0.571em 1em;
+  text-align: center; }
+
+.calendar-mainbox {
+  vertical-align: top; }
+
+.calendar-scroller {
+  height: 100%;
+  overflow: auto; }
+
+.calendar-box-items {
+  padding: 0.571em 1em;
+  vertical-align: top;
+  text-align: right; }
+
+.calendar-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+.calendar-user-content {
+  position: relative;
+  padding-top: 20px; }
+
+.calendar-user-active {
+  font-size: 15px; }
+
+.calendar-user-active-timeslot {
+  font-size: 10px; }
+
+.calendar-week-timeslot {
+  font-size: 10px;
+  border-top: 0px;
+  border-bottom: 0px; }
+
+.calendar-week-timeslot .calendar-week-timeslotseries-div {
+  margin-top: -15px;
+  min-height: 60px; }
+
+.calendar-week-day-timeslot {
+  min-height: 60px; }
+
+.calendar-week-active-timeslot {
+  position: absolute;
+  padding: 0px 5px;
+  text-align: left;
+  cursor: pointer; }
+
+.calendar-ul {
+  margin-left: -20px;
+  list-style: none; }
+
+.calendar-li {
+  padding-bottom: 5px;
+  cursor: pointer; }
+
+.calendar-navigation {
+  padding-left: 20px;
+  margin-top: 2px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; }
+
+.calendar-year {
+  flex-direction: row;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; }
+
+.calendar-year-box {
+  text-align: center;
+  padding: 10px;
+  flex: 0 0 25%;
+  max-width: 50%;
+  box-sizing: border-box;
+  padding: 5px;
+  flex-wrap: wrap; }
+
+.calendar-year-month {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  padding: 10px;
+  line-height: 24px; }
+
+.calendar-year-month-today {
+  height: 100%;
+  width: 100%; }
+
+/****************************************************************************
     Component Name : Datapoints
     Version : Amexio v4.0 onwards
 *****************************************************************************/
@@ -5048,15 +5178,15 @@ header .billboard .content-button {
 
 .sidenav .headernode:hover {
   background-color: #fff5b8;
-  color: #121212; }
+  color: #524700; }
 
 .sidenav .headernodeSeparator:hover {
   background-color: #fff5b8;
-  color: #121212; }
+  color: #524700; }
 
 .sidenav .defaultnode:hover {
   background-color: #fff5b8;
-  color: #121212; }
+  color: #524700; }
 
 .sidenav .activenode {
   background-color: #ffeb6b;
@@ -5724,7 +5854,7 @@ fieldset {
   background-color: #dbd7c2; }
 
 .index-step-inactive {
-  background-color: white;
+  background-color: #fff5b8;
   color: inherit; }
 
 .step-box-table-item-hover:hover {
@@ -6183,7 +6313,7 @@ fieldset {
   background-color: #fae042; }
 
 .modal-window-footer {
-  background-color: white;
+  background-color: transparent;
   color: #554a02; }
 
 /** window - Structure CSS **/
@@ -6221,7 +6351,7 @@ fieldset {
   font-weight: 400;
   overflow-y: auto;
   overflow-x: hidden;
-  background-color: white;
+  background-color: transparent;
   max-height: 100%; }
 
 .modal-window-header {
