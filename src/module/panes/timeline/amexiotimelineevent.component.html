@@ -20,7 +20,7 @@ class="timeline-panel" [ngClass]="{'timeline-panel-border':contentborder,
  'timeline-panel-right': (alignment === 'right'),
  'timeline-panel-left': (alignment === 'left')}">
 <div 
- attr.aria-label="{{label}}"
+tabindex="1"
 *ngIf="label"><b>{{label}}</b></div>
 
 <ng-content></ng-content>
