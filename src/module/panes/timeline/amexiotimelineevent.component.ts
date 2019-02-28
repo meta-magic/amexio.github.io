@@ -19,20 +19,7 @@ import { Component, ContentChildren, EventEmitter, HostBinding, Input, OnInit, O
 
 @Component({
   selector: 'amexio-timeline-event',
-  template: `<div class="timeline-badge " [ngClass]="{'timeline-badge-center': (alignment === 'center')
-  , 'timeline-badge-left': (alignment === 'right')
-  , 'timeline-badge-right': (alignment === 'left')}">
-<amexio-c-icon [customclass]="icon"></amexio-c-icon>
-</div>
-<div class="timeline-panel" [ngClass]="{'timeline-panel-border':contentborder,
- 'timeline-panel-float-right': (contentalignment == 'right'),
- 'timeline-panel-float-left': (contentalignment == 'left'),
- 'timeline-panel-center': (alignment === 'center'),
- 'timeline-panel-right': (alignment === 'right'),
- 'timeline-panel-left': (alignment === 'left')}">
-<div *ngIf="label"><b>{{label}}</b></div>
-<ng-content></ng-content>
-</div>`,
+  templateUrl: './amexiotimelineevent.component.html',
 })
 export class AmexiotimelineeventComponent {
   @HostBinding('attr.class') timelineclass = 'timeline-item';

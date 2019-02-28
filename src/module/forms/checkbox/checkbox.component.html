@@ -3,7 +3,7 @@
         <input
         id="{{componentId}}" type="checkbox" style="top:0; left:0"
         [attr.checked]="value ? true: null"
-         tabindex="0"
+         tabindex="1"
         (input)="onInput()" (click)="onClick()"
         [attr.disabled] = "disabled ? true: null"
         [attr.aria-disabled]="disabled"

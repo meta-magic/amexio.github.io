@@ -6396,7 +6396,8 @@ fieldset {
 .tabcontent {
   width: inherit;
   position: relative;
-  padding: 10px 0px; }
+  padding: 10px 0px;
+  color: black; }
 
 .tabcontent::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); }
@@ -6473,7 +6474,7 @@ fieldset {
   align-content: center; }
 
 .activecolortab {
-  border-bottom: 3px solid !important; }
+  border-bottom: 3px solid #a9f74f !important; }
 
 .bottomTab {
   width: 100%;

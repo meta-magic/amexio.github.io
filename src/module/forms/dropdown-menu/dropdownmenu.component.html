@@ -21,7 +21,7 @@
 
 <ng-content></ng-content>
 <div  >
-<span  role="option" tabindex="0"  *ngFor="let node of data"   id="{{node.index}}"  >
+<span  role="option" tabindex="1"  *ngFor="let node of data"   id="{{node.index}}"  >
 <amexio-drop-down-menu-item   
                           (onClick)="onDropDownMenuClick($event)"  
                           [icon-align]="node.iconalign"
