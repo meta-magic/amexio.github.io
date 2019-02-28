@@ -1,6 +1,6 @@
 <div tabindex="1" role="radiogroup" attr.aria-labelledby="{{componentId}}" class="inputgroup">
     <ng-container *ngIf="fieldlabel">
-      <legend id="{{componentId}}">
+      <legend id="{{componentId}}" >
         {{fieldlabel}}
       </legend>
     </ng-container>
@@ -14,7 +14,7 @@
         cursor: pointer;" value="{{model}}" id="{{starId}}{{index}}" [attr.aria-checked]="item.selected"
         type="radio" name="rating" role="radio">
   
-      <label for="{{starId}}{{index}}">
+      <label for="{{starId}}{{index}}" style="display: inline-flex;">
         <em [ngStyle]="{'cursor': readonly ? 'not-allowed' : 'pointer'}" role="tooltip" [attr.tabindex]="item.tabindex" (mouseenter)="setHovered(item.number)"
         attr.aria-label="Star {{index+1}}"
         (click)="rate(item.number)"
