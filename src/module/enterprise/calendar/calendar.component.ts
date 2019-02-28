@@ -49,6 +49,7 @@ export class AmexioCalendarComponent implements OnInit {
     get calendardate() {
         return this._calenadrDate;
     }
+    @Input('event-color-grouping') eventColorGrouping: boolean;
 
     @Output('onEventClicked') onEventClicked = new EventEmitter<any>();
 
@@ -72,9 +73,16 @@ export class AmexioCalendarComponent implements OnInit {
 
     private validateEventData() {
         const newEvents: any[] = [];
+        let i = 1;
         this.events.forEach((event: any) => {
             if ((event.start + '').indexOf('T') !== -1) {
                 event.hasTimeSlot = true;
+            }
+            if (i > 9) {
+                i = 1;
+            }
+            if (this.eventColorGrouping) {
+                event['eventclass'] = 'calendar-active-' + i;
             }
             if (event.end) {
                 const events1 = this.generatEventData(new Date(event.start), new Date(event.end));
@@ -84,6 +92,7 @@ export class AmexioCalendarComponent implements OnInit {
                     newEvents.push(newobj);
                 });
             }
+            i++;
         });
         newEvents.forEach((event) => {
             this.events.push(event);
