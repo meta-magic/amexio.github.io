@@ -1,28 +1,24 @@
 <div tabindex="1" role="radiogroup" attr.aria-labelledby="{{componentId}}" class="inputgroup">
-    <ng-container *ngIf="fieldlabel">
-      <legend id="{{componentId}}" >
-        {{fieldlabel}}
-      </legend>
-    </ng-container>
-  
-    <div (mouseleave)="resetHovered()" class="rating"  [class.disabled]="disabled" [class.readonly]="readonly"
-    >
+  <ng-container *ngIf="fieldlabel">
+    <legend id="{{componentId}}">
+      {{fieldlabel}}
+    </legend>
+  </ng-container>
+
+  <div (mouseleave)="resetHovered()" class="rating" [class.disabled]="disabled" [class.readonly]="readonly">
     <span *ngFor="let item of ratingRangeData; let index = index">
-        <input (keyup.space)="rate1(index)"
-          style="top:0; left:0; position: absolute;
+      <input (keyup.space)="rate1(index)" style="top:0; left:0; position: absolute;
         opacity: 0;
-        cursor: pointer;" value="{{model}}" id="{{starId}}{{index}}" [attr.aria-checked]="item.selected"
-        type="radio" name="rating" role="radio">
-  
+        cursor: pointer;"
+        value="{{model}}" id="{{starId}}{{index}}" [attr.aria-checked]="item.selected" type="radio" name="rating" role="radio">
+
       <label for="{{starId}}{{index}}" style="display: inline-flex;">
-        <em [ngStyle]="{'cursor': readonly ? 'not-allowed' : 'pointer'}" role="tooltip" [attr.tabindex]="item.tabindex" (mouseenter)="setHovered(item.number)"
-        attr.aria-label="Star {{index+1}}"
-        (click)="rate(item.number)"
-        [attr.data-icon]="fullicon"
-         class="{{ iconclass }} half{{(item.selected? 100 : 0) }}"
-        [title]="titles[index] || item.number">{{ emptyicon }}</em>
-        </label>
-       
+        <em [ngStyle]="{'cursor': readonly ? 'not-allowed' : 'pointer'}" role="tooltip" [attr.tabindex]="item.tabindex"
+          (mouseenter)="setHovered(item.number)" attr.aria-label="Star {{index+1}}" (click)="rate(item.number)"
+          [attr.data-icon]="fullicon" class="{{ iconclass }} half{{(item.selected? 100 : 0) }}" [title]="titles[index] || item.number">{{
+          emptyicon }}</em>
+      </label>
+
     </span>
-    </div>
   </div>
+</div>
