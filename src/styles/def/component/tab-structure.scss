@@ -49,6 +49,7 @@
     position: relative;
     // vertical-align: top !important;
     padding: 10px 0px;
+    color: $tabColor;
 }
 
 
@@ -170,7 +171,7 @@
 }
 
 .activecolortab {
-    border-bottom: 3px solid !important;
+    border-bottom: 3px solid $tabActiveBGColor!important;
 }
 
 .bottomTab {
