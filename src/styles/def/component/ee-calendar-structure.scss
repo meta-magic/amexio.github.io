@@ -78,12 +78,11 @@
 .calendar-ul{
     list-style: none;
     list-style-position: inside;
-    padding: 10px
-}
-
+    padding: 10px 2px;
+}    
  
 .calendar-li{
-     padding-bottom: 5px;
+     padding: 5px;
      cursor: pointer;
 }
 
