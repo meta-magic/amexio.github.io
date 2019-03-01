@@ -44,6 +44,27 @@ export class AmexioSideNavInnerNodeComponent implements OnInit {
 
   onNodeClick(node: any) {
     node.expand = !node.expand;
+    if ( node.children && node.expand === false) {
+      node.children.forEach((element: any) => {
+          element['tabindex'] = '-1';
+      });
+    } else if ( node.children && node.expand === true) {
+      node.children.forEach((element: any) => {
+        element['tabindex'] = '1';
+    });
+    }
+    this.getOnClick(node);
+    this.emitNode.emit(this.data);
+  }
+
+  onenterNodeClick(event: any, node: any) {
+    event.stopImmediatePropagation();
+    node.expand = !node.expand;
+    if (node.children && node.expand === true) {
+      node.children.forEach((element: any, index: any) => {
+         element['tabindex'] = '1';
+      });
+    }
     this.getOnClick(node);
     this.emitNode.emit(this.data);
   }

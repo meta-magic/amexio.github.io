@@ -160,6 +160,15 @@ export class SideNavNodeComponent implements OnInit {
 
   onClick(node: any) {
     this.expand = !this.expand;
+    if ( this.nodedata.children && this.expand === false) {
+      this.nodedata.children.forEach((element: any) => {
+          element['tabindex'] = '-1';
+      });
+    } else if (this.nodedata.children && this.expand === true) {
+      this.nodedata.children.forEach((element: any) => {
+        element['tabindex'] = '1';
+    });
+    }
     this.nodeClick.emit(node);
   }
 
