@@ -12,7 +12,7 @@ export class StepWizardComponent implements AfterContentInit {
 
   @Input('header-background') headerBackground: string;
 
-  @Output() onDoneClick: any = new EventEmitter<any>();
+  @Output() finalStage: any = new EventEmitter<any>();
 
   @ContentChildren(StepWizardItemComponent) stepItemQueryList: QueryList<StepWizardItemComponent>;
 
@@ -79,7 +79,7 @@ export class StepWizardComponent implements AfterContentInit {
         this.stepItemList[ind - 1].active = false;
       }
     });
-    this.onDoneClick.emit(this.data);
+    this.finalStage.emit(this.data);
   }
 
   // ON PREVIOUS STEP CLICK
