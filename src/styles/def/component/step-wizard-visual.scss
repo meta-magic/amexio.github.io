@@ -71,6 +71,7 @@ ul.step-wizard li.active a .circle {
 
 ul.step-wizard li.completed a .circle {
     background-color: $stepWizardCompletedColor;
+    color: $stepWizardColor;
 }
 
 .step-wizard li a .circle {

@@ -4374,7 +4374,8 @@ ul.step-wizard li.active a .circle {
   color: rgba(0, 43, 87, 0.7); }
 
 ul.step-wizard li.completed a .circle {
-  background-color: #02468D; }
+  background-color: #02468D;
+  color: rgba(0, 43, 87, 0.7); }
 
 .step-wizard li a .circle {
   display: inline-block;
