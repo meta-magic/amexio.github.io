@@ -85,6 +85,8 @@ description : Font color of label
 
   tabId: any;
 
+  tablk: any;
+
   @ViewChild('target', { read: ViewContainerRef }) public target: any;
 
   constructor() {

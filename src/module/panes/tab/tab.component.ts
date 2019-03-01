@@ -292,10 +292,10 @@ export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnIn
     this.totalTabs = this.tabCollection.length;
     setTimeout(() => {
       this.updateTabComponent();
+      this.tabCollection.forEach((element, index) => {
+        element['tablk'] = Math.floor(Math.random() * 90000) + 10000 + '_tablk';
+      });
     }, 500);
-    this.tabCollection.forEach((element, index) => {
-      element['tablk'] = Math.floor(Math.random() * 90000) + 10000 + '_tablk';
-    });
   }
 
   adjustWidth() {
