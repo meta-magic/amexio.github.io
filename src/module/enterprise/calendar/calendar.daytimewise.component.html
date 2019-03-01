@@ -6,7 +6,7 @@
                 <table>
                     <tr #headerRow>
                         <td class="calendar-header-items calendar-user-active-timeslot" style="width:50px;"> &nbsp;</td>
-                        <td class="calendar-header-items" *ngFor="let header of headers">
+                        <td class="calendar-header-items" style="cursor: pointer;" (click)="onHeaderClick(header)"  *ngFor="let header of headers">
                             <span>{{header | date : 'EE'}}</span> <br />
                             <b style="font-size:20px;">{{header | date : 'd'}}</b>
                         </td>

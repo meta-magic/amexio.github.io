@@ -38,7 +38,7 @@ export class AmexioDateUtils {
                 };
                 day.date = new Date(date.getTime());
                 day.isActivePeriod = (date.getMonth() === selectedPeriod.getMonth());
-                day.isActive = this.isDateEqual(day.date, currrentDate);
+                day.isActive = this.isDateEqual(day.date, new Date());
                 rowDays.push(day);
                 date.setDate(date.getDate() + 1);
             }

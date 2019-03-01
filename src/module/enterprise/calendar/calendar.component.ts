@@ -311,4 +311,27 @@ export class AmexioCalendarComponent implements OnInit {
     onDayTimeWiseEvent(event: any) {
         this.onEventClicked.emit(event);
     }
+
+    onYearEvent(event: any) {
+        this.navigateToDayMode(event.this.date);
+    }
+
+    onDaytimeHeaderClick(event: any) {
+        if (this.currentState === CALENDAR.WEEK) {
+            this.navigateToDayMode(event);
+        }
+    }
+
+    onYearHeaderClicked(event: any) {
+        this.currrentDate = new Date(event.month);
+        this.currentState = CALENDAR.MONTH;
+        this.createData(this.currrentDate);
+    }
+
+    navigateToDayMode(date: any) {
+        this.currentState = CALENDAR.DAY;
+        this.currrentDate = new Date(date);
+        this.createData(this.currrentDate);
+    }
+
 }
