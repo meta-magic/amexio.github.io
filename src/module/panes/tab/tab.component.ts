@@ -20,6 +20,7 @@ import {
   AfterContentInit, AfterViewInit, Component, ComponentFactoryResolver, ContentChildren, ElementRef, EventEmitter,
   HostListener, Input, OnDestroy, OnInit, Output, QueryList, Renderer2, ViewChild, ViewContainerRef,
 } from '@angular/core';
+import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
 import { AmexioTabActionComponent } from './tab.action';
 import { AmexioTabPillComponent } from './tab.pill.component';
 
@@ -51,7 +52,7 @@ export const BOTTOM_COMPONENT_CLASS_MAP: any = {
   selector: 'amexio-tab-view',
   templateUrl: './tab.component.html',
 })
-export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnInit, OnDestroy {
+export class AmexioTabComponent extends LifeCycleBaseComponent implements AfterContentInit, AfterViewInit, OnInit, OnDestroy {
 
   /*
    Properties
@@ -255,6 +256,7 @@ export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnIn
     public render: Renderer2, private componentFactoryResolver: ComponentFactoryResolver,
     private renderer: Renderer2,
   ) {
+    super();
     this.headeralign = 'left';
     this.typeActionAlign = 'left';
     this.tabPosition = 'top';
@@ -264,6 +266,7 @@ export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnIn
   ngOnInit() {
     this.componentLoaded = true;
     this.componentId = Math.floor(Math.random() * 90000) + 10000 + '_tabc';
+    super.ngOnInit();
   }
 
   updateTabComponent() {
@@ -296,6 +299,7 @@ export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnIn
         element['tablk'] = Math.floor(Math.random() * 90000) + 10000 + '_tablk';
       });
     }, 500);
+    super.ngAfterViewInit();
   }
 
   adjustWidth() {
@@ -818,5 +822,6 @@ export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnIn
 
   ngOnDestroy(): void {
     this.removeListner();
+    super.ngOnDestroy();
   }
 }

@@ -17,8 +17,8 @@
 */
 
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output, Renderer2 } from '@angular/core';
-
+import { AfterViewInit, Component, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output, Renderer2 } from '@angular/core';
+import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
 import { AmexioPanelHeaderComponent } from './../panel/panel.header.component';
 
 @Component({
@@ -47,7 +47,7 @@ import { AmexioPanelHeaderComponent } from './../panel/panel.header.component';
   ],
 })
 
-export class AmexioPanelComponent implements OnInit, OnDestroy {
+export class AmexioPanelComponent extends LifeCycleBaseComponent implements AfterViewInit, OnInit, OnDestroy {
 
   /*
 Properties
@@ -187,6 +187,7 @@ description : Fires the on accordion pane click event.
   componentId: any;
   globalClickListenFunc: () => void;
   constructor(private renderer: Renderer2) {
+    super();
     this.panelstyle = { visibility: 'visible' };
   }
   ngOnInit() {
@@ -199,6 +200,10 @@ description : Fires the on accordion pane click event.
       return this.height;
     }
     this.updatestyle();
+    super.ngOnInit();
+  }
+  ngAfterViewInit() {
+    super.ngAfterViewInit();
   }
 
   onTabClick(btn: any) {
@@ -275,6 +280,7 @@ description : Fires the on accordion pane click event.
   }
 
   ngOnDestroy(): void {
+    super.ngOnDestroy();
     this.removeListner();
   }
 
