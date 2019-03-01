@@ -245,6 +245,9 @@ export class AmexioSideNavComponent implements OnInit, AfterContentInit {
         this.setData(this.responseData);
       });
     }
+    if (this.data) {
+      this.generateIndex(this.data);
+    }
 
     if (this.position == null) {
       this.position = 'left';
@@ -289,6 +292,31 @@ export class AmexioSideNavComponent implements OnInit, AfterContentInit {
     this.nodeClick.emit(node);
     this.activateNode(this.data, node);
   }
+
+  onenterClick(divref: any, nodedata: any) {
+    if (divref.tabIndex === 1 && nodedata.children) {
+      nodedata.expand = !nodedata.expand;
+    }
+    if (nodedata.children && nodedata.expand === true) {
+      nodedata.children.forEach((element: any, index: any) => {
+        element['tabindex'] = '1';
+      });
+    }
+    this.onClick(nodedata);
+  }
+
+ generateIndex(data: any) {
+  data.forEach((element: any, index: any) => {
+    if (element[this.childarraykey]) {
+       element[this.childarraykey].forEach((innerelement: any) => {
+        innerelement['tabindex'] = '-1';
+        innerelement[this.childarraykey].forEach((innerelement2: any) => {
+          innerelement2['tabindex'] = '-1';
+        });
+      });
+   }
+  });
+}
 
   setData(httpResponse: any) {
     // Check if key is added?

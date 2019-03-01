@@ -21,14 +21,17 @@ import {
   Renderer2, ViewChild,
 } from '@angular/core';
 import { ContentChildren, QueryList } from '@angular/core';
+import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
 import { AmexioHeaderComponent } from '../../panes/header/pane.action.header';
 import { AmexioFooterComponent } from './../../panes/action/pane.action.footer';
 import { AmexioBodyComponent } from './../../panes/body/pane.action.body';
+
 @Component({
   selector: 'amexio-card',
   templateUrl: './card.component.html',
 })
-export class AmexioCardComponent implements OnInit, OnDestroy, AfterContentChecked, AfterViewInit, AfterContentInit {
+export class AmexioCardComponent extends LifeCycleBaseComponent implements OnInit, OnDestroy, AfterContentChecked,
+ AfterViewInit, AfterContentInit {
   /*
 Properties
 name : header-align
@@ -149,12 +152,15 @@ description : Context Menu provides the list of menus on right click.
   footerComponentList: AmexioFooterComponent[];
   globalClickListenFunc: () => void;
   constructor(private renderer: Renderer2) {
+    super();
     this.headeralign = 'left';
     this.footeralign = 'right';
   }
   ngOnInit() {
+    super.ngOnInit();
   }
   ngAfterViewInit() {
+    super.ngAfterViewInit();
   }
   ngAfterContentChecked() {
 
@@ -256,6 +262,7 @@ description : Context Menu provides the list of menus on right click.
   }
 
   ngOnDestroy(): void {
+    super.ngOnDestroy();
     this.removeListner();
   }
 }

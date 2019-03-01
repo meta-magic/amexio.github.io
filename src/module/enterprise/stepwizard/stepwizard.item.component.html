@@ -1,0 +1,12 @@
+<form [ngStyle]="{'display':active ? 'block':'none'}" class="form-container form-group">
+    <div class="form-body formbody">
+        <ng-content></ng-content>
+    </div>
+    <footer #formFooter class="form-footer">
+        <amexio-button *ngIf="showPreviousButton" [icon]="previousIcon" [label]="'Previous'" [type]="'theme-color'" [tooltip]="'Previous'" (onClick)="onPreviousClick($event)">
+        </amexio-button>
+        <span *ngIf="!showPreviousButton"></span>
+        <amexio-button *ngIf="showNextButton" [disabled]="isNextButtonDisable" [icon]="nextIcon" [label]="nextLabel" [form-bind]="'validateForm'" [type]="'theme-color'" [tooltip]="'Next'" (onClick)="onNextClick($event)">
+        </amexio-button>
+    </footer>
+</form>

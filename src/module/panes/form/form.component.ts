@@ -22,6 +22,7 @@ import {
 } from '@angular/core';
 import { FormGroup, NgForm, NgModel } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
+import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
 import { AmexioButtonComponent } from './../../forms/buttons/button.component';
 import { AmexioFormActionComponent } from './form.action.component';
 import { AmexioFormBodyComponent } from './form.body.component';
@@ -32,7 +33,8 @@ import { AmexioFormHeaderComponent } from './form.header.component';
   selector: 'amexio-form',
   templateUrl: './form.component.html',
 })
-export class AmexioFormComponent implements OnDestroy, OnInit, AfterViewInit, AfterContentInit, AfterContentChecked {
+export class AmexioFormComponent extends LifeCycleBaseComponent implements OnDestroy, OnInit, AfterViewInit,
+                    AfterContentInit, AfterContentChecked {
 
   /*
   Properties
@@ -175,6 +177,7 @@ description : Event fired if showError msg info button is clicked
   @ContentChildren(AmexioFormGroupDirective, { descendants: true }) public fb: QueryList<AmexioFormGroupDirective>;
 
   constructor(public formBuilder: FormBuilder) {
+    super();
     this.checkForm = false;
     this.isFormValid = false;
     this.showDialogue = false;
@@ -228,10 +231,11 @@ description : Event fired if showError msg info button is clicked
   }
   ngOnInit() {
     this.buttons = [];
+    super.ngOnInit();
   }
 
   ngAfterViewInit() {
-
+    super.ngAfterViewInit();
     const ngContentModels = this.models.toArray();
     const innerModelArray: any[] = [];
     this.fb.forEach((fbnode: any) => {
@@ -333,6 +337,7 @@ description : Event fired if showError msg info button is clicked
   }
 
   ngOnDestroy() {
+    super.ngOnDestroy();
     clearTimeout(this.clearTimeout);
   }
 

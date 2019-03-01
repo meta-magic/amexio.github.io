@@ -1,7 +1,7 @@
 <div class="calendar-year">
     <div class="calendar-year-box" *ngFor="let month of calendaryData">
         <div class="calendar-year-month">
-            <div><b>{{month.title}}</b> </div>
+            <div style="cursor: pointer;" (click)="monthClicked(month)"><b>{{month.title}}</b> </div>
             <table>
                 <thead>
                     <tr>
@@ -15,7 +15,8 @@
                         <td [ngClass]="{'calendar-inactive': (!day.isActivePeriod),                                         
                                         'calendar-year-month-hasevent': (day.isActivePeriod && day.isEvent)}"
                             (click)="eventClicked($event, day)" *ngFor="let day of week" style="text-align: center;">
-                            <div [ngClass]="{'calendar-active-box calendar-year-month-today': (day.isActivePeriod && day.isActive)}" style="height:30px; width: 30px;" style="text-align: center;">{{day.date | date :'dd'}}
+                            <div [ngClass]="{'calendar-active-box calendar-year-month-today': (day.isActivePeriod && day.isActive)}" style="height:30px; width: 30px;" style="text-align: center; cursor: pointer;">
+                                {{day.date | date :'dd'}}
                             </div>
                         </td>
                     </tr>

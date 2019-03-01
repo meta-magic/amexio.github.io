@@ -21,7 +21,7 @@
   line-height: 2;
   border-radius: 0px;
   border: none;
-  border-bottom: 1px solid rgba(0,0,0,.42);
+  border-bottom: 1px solid $componentFontColor;
   transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s; 
 }
 

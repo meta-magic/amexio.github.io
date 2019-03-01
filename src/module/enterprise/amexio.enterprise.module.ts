@@ -17,10 +17,15 @@ import {AmexioWeekDayAvailiblityComponent} from './amexio-ee-appointment/amexio-
 import {AmexioYoutubePlayerComponent} from './youtube-player/youtube.player.component';
 
 import { AmexioCommonModule } from '../base/amexio.common.module';
+import { AmexioMediaModule } from '../media/amexio.media.module';
+import { AmexioPaneModule } from '../panes/amexio.pane.module';
+import { AmexioCreativeModule } from './../creative/amexio.creative.module';
 import { AmexioCalendarComponent } from './calendar/calendar.component';
 import { AmexioCalendarDayTimeWiseComponent } from './calendar/calendar.daytimewise.component';
 import { AmexioCalendarMonthComponent } from './calendar/calendar.month';
 import { AmexioCalendarYearComponent } from './calendar/calendar.year.component';
+import { StepWizardComponent } from './stepwizard/stepwizard.component';
+import { StepWizardItemComponent } from './stepwizard/stepwizard.item.component';
 
 export * from './ee-carousel/ee.carousel.component';
 export * from './ee-content/ee.content';
@@ -42,6 +47,8 @@ const ENTERPRISE_COMPONENTS = [
   AmexioCalendarDayTimeWiseComponent,
   AmexioCalendarMonthComponent,
   AmexioCalendarYearComponent,
+  StepWizardComponent,
+  StepWizardItemComponent,
 ];
 
 @NgModule({
@@ -49,6 +56,9 @@ const ENTERPRISE_COMPONENTS = [
     CommonModule,
     FormsModule,
     AmexioFormsModule,
+    AmexioPaneModule,
+    AmexioMediaModule,
+    AmexioCreativeModule,
     AmexioCommonModule,
     HttpClientModule,
   ],

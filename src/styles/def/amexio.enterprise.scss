@@ -2,41 +2,71 @@
     Component Name : Enterprise Content
     Version : Amexio v4.0 onwards
 *****************************************************************************/
+
 @import "component/enterprise-content-vars.scss";
+
 /** enterprise-content - Visual CSS **/
+
 @import "component/enterprise-content-visual.scss";
+
 /** enterprise-content - Structure CSS **/
+
 @import "component/enterprise-content-structure.scss";
+
 /****************************************************************************
     Component Name : Enterprise Youtube
     Version : Amexio v4.0 onwards
 *****************************************************************************/
+
 @import "component/enterprise-youtube-vars.scss";
+
 /** enterprise-youtube - Visual CSS **/
+
 @import "component/enterprise-youtube-visual.scss";
+
 /** enterprise-youtube - Structure CSS **/
+
 @import "component/enterprise-youtube-structure.scss";
+
 /****************************************************************************
     Component Name : Enterprise Carousel
     Version : Amexio v4.0 onwards
 *****************************************************************************/
+
 @import "component/enterprise-carousel-vars.scss";
+
 /** enterprise-carousel - Visual CSS **/
+
 @import "component/enterprise-carousel-visual.scss";
+
 /** enterprise-carousel - Structure CSS **/
+
 @import "component/enterprise-carousel-structure.scss";
 
 /****************************************************************************
     Component Name : Enterprise Appointment
     Version : Amexio v5.5.2 onwards
 *****************************************************************************/
+
+
 /** enterprise - Visual CSS **/
+
 @import "component/ee-appointment-visual.scss";
 
 /****************************************************************************
     Component Name : Enterprise Calendar
     Version : Amexio v5.7 onwards
 *****************************************************************************/
+
 @import "component/ee-calendar-vars.scss";
 @import "component/ee-calendar-visual.scss";
 @import "component/ee-calendar-structure.scss";
+
+/****************************************************************************
+    Component Name : Enterprise Step Wizard
+    Version : Amexio v5.5.2 onwards
+*****************************************************************************/
+
+@import "component/step-wizard-vars.scss";
+@import "component/step-wizard-visual.scss";
+@import "component/step-wizard-structure.scss";

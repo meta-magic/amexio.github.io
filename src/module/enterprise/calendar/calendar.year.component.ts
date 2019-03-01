@@ -13,16 +13,20 @@ export class AmexioCalendarYearComponent {
 
     @Output('onEventClicked') onEventClicked = new EventEmitter<any>();
 
+    @Output('onHeaderClicked') onHeaderClicked = new EventEmitter<any>();
+
     constructor() {
     }
 
     eventClicked(event1: any, eventData: any) {
-        if (eventData.isEvent) {
-            const eventObject = {
-                event: event1,
-                this: eventData,
-            };
-            this.onEventClicked.emit(eventObject);
-        }
+        const eventObject = {
+            event: event1,
+            this: eventData,
+        };
+        this.onEventClicked.emit(eventObject);
+    }
+
+    monthClicked(event: any) {
+        this.onHeaderClicked.emit(event);
     }
 }

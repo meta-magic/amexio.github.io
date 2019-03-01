@@ -1,0 +1,43 @@
+.step-wizard {
+    padding: 0.8rem 1.5rem 0.5rem 1.5rem;
+}
+
+.step-wizard-horizontal li {
+    margin-right: 15px;
+}
+
+.step-wizard-horizontal li:not(:last-child):after {
+    flex: 1;
+    height: 1px;
+}
+
+.step-wizard li a {
+    padding: 0.4rem;
+}
+
+.step-wizard li.completed a .label {
+    font-weight: 600;
+}
+
+.step-wizard li.active a .label {
+    font-weight: 600;
+}
+
+.step-wizard li a .circle {
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    margin-right: .5rem;
+}
+
+.step-wizard li.completed a .label {
+    font-weight: 600;
+    margin-right: 7px;
+}
+
+.step-wizard li.active a .label {
+    font-weight: 600;
+    margin-right: 7px;
+}

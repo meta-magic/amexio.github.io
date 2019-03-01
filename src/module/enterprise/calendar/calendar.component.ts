@@ -49,6 +49,7 @@ export class AmexioCalendarComponent implements OnInit {
     get calendardate() {
         return this._calenadrDate;
     }
+    @Input('event-color-grouping') eventColorGrouping: boolean;
 
     @Output('onEventClicked') onEventClicked = new EventEmitter<any>();
 
@@ -72,9 +73,16 @@ export class AmexioCalendarComponent implements OnInit {
 
     private validateEventData() {
         const newEvents: any[] = [];
+        let i = 1;
         this.events.forEach((event: any) => {
             if ((event.start + '').indexOf('T') !== -1) {
                 event.hasTimeSlot = true;
+            }
+            if (i > 9) {
+                i = 1;
+            }
+            if (this.eventColorGrouping) {
+                event['eventclass'] = 'calendar-active-' + i;
             }
             if (event.end) {
                 const events1 = this.generatEventData(new Date(event.start), new Date(event.end));
@@ -84,6 +92,7 @@ export class AmexioCalendarComponent implements OnInit {
                     newEvents.push(newobj);
                 });
             }
+            i++;
         });
         newEvents.forEach((event) => {
             this.events.push(event);
@@ -302,4 +311,27 @@ export class AmexioCalendarComponent implements OnInit {
     onDayTimeWiseEvent(event: any) {
         this.onEventClicked.emit(event);
     }
+
+    onYearEvent(event: any) {
+        this.navigateToDayMode(event.this.date);
+    }
+
+    onDaytimeHeaderClick(event: any) {
+        if (this.currentState === CALENDAR.WEEK) {
+            this.navigateToDayMode(event);
+        }
+    }
+
+    onYearHeaderClicked(event: any) {
+        this.currrentDate = new Date(event.month);
+        this.currentState = CALENDAR.MONTH;
+        this.createData(this.currrentDate);
+    }
+
+    navigateToDayMode(date: any) {
+        this.currentState = CALENDAR.DAY;
+        this.currrentDate = new Date(date);
+        this.createData(this.currrentDate);
+    }
+
 }

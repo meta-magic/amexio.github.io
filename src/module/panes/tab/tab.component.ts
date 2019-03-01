@@ -20,6 +20,7 @@ import {
   AfterContentInit, AfterViewInit, Component, ComponentFactoryResolver, ContentChildren, ElementRef, EventEmitter,
   HostListener, Input, OnDestroy, OnInit, Output, QueryList, Renderer2, ViewChild, ViewContainerRef,
 } from '@angular/core';
+import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
 import { AmexioTabActionComponent } from './tab.action';
 import { AmexioTabPillComponent } from './tab.pill.component';
 
@@ -51,7 +52,7 @@ export const BOTTOM_COMPONENT_CLASS_MAP: any = {
   selector: 'amexio-tab-view',
   templateUrl: './tab.component.html',
 })
-export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnInit, OnDestroy {
+export class AmexioTabComponent extends LifeCycleBaseComponent implements AfterContentInit, AfterViewInit, OnInit, OnDestroy {
 
   /*
    Properties
@@ -243,12 +244,19 @@ export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnIn
 
   map = new Map<any, any>();
 
+  prevtabindex = -1;
+
+  currtabindex = -1;
+
+  tablk: any;
+
   globalClickListenFunc: () => void;
 
   constructor(
     public render: Renderer2, private componentFactoryResolver: ComponentFactoryResolver,
     private renderer: Renderer2,
   ) {
+    super();
     this.headeralign = 'left';
     this.typeActionAlign = 'left';
     this.tabPosition = 'top';
@@ -258,6 +266,7 @@ export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnIn
   ngOnInit() {
     this.componentLoaded = true;
     this.componentId = Math.floor(Math.random() * 90000) + 10000 + '_tabc';
+    super.ngOnInit();
   }
 
   updateTabComponent() {
@@ -286,7 +295,11 @@ export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnIn
     this.totalTabs = this.tabCollection.length;
     setTimeout(() => {
       this.updateTabComponent();
+      this.tabCollection.forEach((element, index) => {
+        element['tablk'] = Math.floor(Math.random() * 90000) + 10000 + '_tablk';
+      });
     }, 500);
+    super.ngAfterViewInit();
   }
 
   adjustWidth() {
@@ -374,7 +387,7 @@ export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnIn
 
   closeAll() {
     this.tabCollection.forEach((tabs) => {
-        this.closeTab(tabs);
+      this.closeTab(tabs);
     });
   }
 
@@ -549,6 +562,49 @@ export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnIn
       });
     }
   }
+  onArrowRight() {
+    if (this.prevtabindex > -1) {
+      this.tabCollection[this.prevtabindex]['isSelected'] = false;
+    }
+    this.currtabindex++;
+    this.prevtabindex = this.currtabindex;
+    if (this.currtabindex >= this.tabCollection.length) {
+      this.currtabindex = 0;
+      this.prevtabindex = 0;
+    }
+    const currentTab: any = this.tabCollection[this.currtabindex];
+    this.commonFocus(currentTab);
+  }
+  onArrowLeft() {
+    if (this.prevtabindex > -1) {
+      this.tabCollection[this.prevtabindex]['isSelected'] = false;
+    }
+    this.prevtabindex--;
+    if (this.prevtabindex === -1) {
+      this.prevtabindex = this.tabCollection.length - 1;
+      this.currtabindex = -1;
+    }
+    this.tabCollection[this.prevtabindex]['isSelected'] = true;
+    const currentTab: any = this.tabCollection[this.prevtabindex];
+    this.commonFocus(currentTab);
+    if (this.prevtabindex === 0) {
+      this.currtabindex = 0;
+    }
+  }
+  onHomeClick() {
+    const currentTab: any = this.tabCollection[0];
+    this.commonFocus(currentTab);
+  }
+
+  onEndClick() {
+    const currentTab: any = this.tabCollection[this.tabCollection.length - 1];
+    this.commonFocus(currentTab);
+  }
+  commonFocus(currentTab: any) {
+    currentTab['isSelected'] = true;
+    const tablk = document.getElementById(currentTab.tablk);
+    tablk.focus();
+  }
 
   next() {
     const nxt = this.tabs.nativeElement;
@@ -581,7 +637,7 @@ export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnIn
         if (tab.hasOwnProperty('tabpillinstance')) {
           tab.target.remove();
         } else {
-         this.tabDomRemove(tab);
+          this.tabDomRemove(tab);
         }
       } else if (tab.tabId !== tabNode.tabId) {
         newTab.push(tab);
@@ -766,5 +822,6 @@ export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnIn
 
   ngOnDestroy(): void {
     this.removeListner();
+    super.ngOnDestroy();
   }
 }

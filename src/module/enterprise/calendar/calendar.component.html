@@ -23,6 +23,6 @@
     [calendar-data]="calendarMonthData" [calendar-row]="calendarRow" (onEventClicked)="onMonthEvent($event)">
 </amexio-calendar-month>
 <amexio-calendar-day-timewise *ngIf="(currentState === 'week' || currentState === 'day')" [headers]="displayHeaders"
-    [calendar-data]="calendarWeekData" (onEventClicked)="onDayTimeWiseEvent($event)"> </amexio-calendar-day-timewise>
+    [calendar-data]="calendarWeekData" (onHeaderClicked)="onDaytimeHeaderClick($event)"  (onEventClicked)="onDayTimeWiseEvent($event)"> </amexio-calendar-day-timewise>
 <amexio-calendar-year *ngIf="(currentState === 'year')" [headers]="displayHeaders" [calendar-data]="calendarMonthData"
-    (onEventClicked)="onMonthEvent($event)"> </amexio-calendar-year>
+(onHeaderClicked)="onYearHeaderClicked($event)"  (onEventClicked)="onYearEvent($event)"> </amexio-calendar-year>

@@ -15,10 +15,12 @@
 *
 */
 
-import { AfterContentInit, AfterViewInit, Component, ContentChildren, Input, OnInit, QueryList } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, ContentChildren, Input, OnDestroy, OnInit, QueryList } from '@angular/core';
+import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
 import { AmexioAccordionTabComponent } from './accordion.pane';
+
 @Component({ selector: 'amexio-accordion', templateUrl: './accordion.component.html' })
-export class AmexioAccordionComponent implements OnInit, AfterContentInit {
+export class AmexioAccordionComponent extends LifeCycleBaseComponent implements AfterContentInit, AfterViewInit, OnInit, OnDestroy {
   /*
   Properties
   name : expand-all
@@ -69,9 +71,14 @@ export class AmexioAccordionComponent implements OnInit, AfterContentInit {
   prevaccindex = -1;
   accindex = -1;
   constructor() {
+    super();
     this.flag = true;
   }
   ngOnInit() {
+    super.ngOnInit();
+  }
+  ngAfterViewInit() {
+    super.ngAfterViewInit();
   }
 
   ngAfterContentInit() {
@@ -148,5 +155,8 @@ export class AmexioAccordionComponent implements OnInit, AfterContentInit {
     if (this.accordionCollections[index]['isSelected']) {
       this.accordionCollections[index].btn.nativeElement.focus();
     }
+  }
+   ngOnDestroy(): void {
+    super.ngOnDestroy();
   }
 }

@@ -1,0 +1,29 @@
+<amexio-card-ce>
+    <amexio-header-ce [background]="headerBackground">
+        {{title}}
+    </amexio-header-ce>
+    <ul class="step-wizard step-wizard-horizontal">
+        <li *ngFor="let item of stepItemList; let i = index" [ngClass]="item.activeClass">
+            <a>
+                <span class="circle ">
+                          <ng-container *ngIf="item.icon ">
+                          <amexio-image [icon-class]="item.icon "></amexio-image></ng-container>
+                          <ng-container *ngIf="!item.icon && showStepNumber ">{{i+1}}</ng-container>
+                        </span>
+                <ng-container *ngIf="item.title ">
+                    <ng-container *ngIf="item.icon && showStepNumber ">
+                        {{i+1}}
+                    </ng-container>
+                    <ng-container *ngIf="isPhone">
+                        {{item.title}}
+                    </ng-container>
+
+                </ng-container>
+            </a>
+        </li>
+    </ul>
+    <amexio-body-ce>
+        <ng-content select="amexio-step-wizard-item">
+        </ng-content>
+    </amexio-body-ce>
+</amexio-card-ce>

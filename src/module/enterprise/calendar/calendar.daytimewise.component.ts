@@ -15,6 +15,8 @@ export class AmexioCalendarDayTimeWiseComponent implements OnInit {
 
     @Output('onEventClicked') onEventClicked = new EventEmitter<any>();
 
+    @Output('onHeaderClicked') onHeaderClicked = new EventEmitter<any>();
+
     width: number;
 
     constructor() {
@@ -34,4 +36,9 @@ export class AmexioCalendarDayTimeWiseComponent implements OnInit {
         };
         this.onEventClicked.emit(eventObject);
     }
+
+    onHeaderClick(event: any) {
+        this.onHeaderClicked.emit(event);
+    }
+
 }
