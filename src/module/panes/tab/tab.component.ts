@@ -243,6 +243,12 @@ export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnIn
 
   map = new Map<any, any>();
 
+  prevtabindex = -1;
+
+  currtabindex = -1;
+
+  tablk: any;
+
   globalClickListenFunc: () => void;
 
   constructor(
@@ -287,6 +293,9 @@ export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnIn
     setTimeout(() => {
       this.updateTabComponent();
     }, 500);
+    this.tabCollection.forEach((element, index) => {
+      element['tablk'] = Math.floor(Math.random() * 90000) + 10000 + '_tablk';
+    });
   }
 
   adjustWidth() {
@@ -374,7 +383,7 @@ export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnIn
 
   closeAll() {
     this.tabCollection.forEach((tabs) => {
-        this.closeTab(tabs);
+      this.closeTab(tabs);
     });
   }
 
@@ -549,6 +558,49 @@ export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnIn
       });
     }
   }
+  onArrowRight() {
+    if (this.prevtabindex > -1) {
+      this.tabCollection[this.prevtabindex]['isSelected'] = false;
+    }
+    this.currtabindex++;
+    this.prevtabindex = this.currtabindex;
+    if (this.currtabindex >= this.tabCollection.length) {
+      this.currtabindex = 0;
+      this.prevtabindex = 0;
+    }
+    const currentTab: any = this.tabCollection[this.currtabindex];
+    this.commonFocus(currentTab);
+  }
+  onArrowLeft() {
+    if (this.prevtabindex > -1) {
+      this.tabCollection[this.prevtabindex]['isSelected'] = false;
+    }
+    this.prevtabindex--;
+    if (this.prevtabindex === -1) {
+      this.prevtabindex = this.tabCollection.length - 1;
+      this.currtabindex = -1;
+    }
+    this.tabCollection[this.prevtabindex]['isSelected'] = true;
+    const currentTab: any = this.tabCollection[this.prevtabindex];
+    this.commonFocus(currentTab);
+    if (this.prevtabindex === 0) {
+      this.currtabindex = 0;
+    }
+  }
+  onHomeClick() {
+    const currentTab: any = this.tabCollection[0];
+    this.commonFocus(currentTab);
+  }
+
+  onEndClick() {
+    const currentTab: any = this.tabCollection[this.tabCollection.length - 1];
+    this.commonFocus(currentTab);
+  }
+  commonFocus(currentTab: any) {
+    currentTab['isSelected'] = true;
+    const tablk = document.getElementById(currentTab.tablk);
+    tablk.focus();
+  }
 
   next() {
     const nxt = this.tabs.nativeElement;
@@ -581,7 +633,7 @@ export class AmexioTabComponent implements AfterContentInit, AfterViewInit, OnIn
         if (tab.hasOwnProperty('tabpillinstance')) {
           tab.target.remove();
         } else {
-         this.tabDomRemove(tab);
+          this.tabDomRemove(tab);
         }
       } else if (tab.tabId !== tabNode.tabId) {
         newTab.push(tab);
