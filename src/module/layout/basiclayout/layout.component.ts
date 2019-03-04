@@ -35,6 +35,8 @@ export class AmexioLayoutComponent implements OnInit {
 
     @Input('orientation') orientation = 'horizontal';
 
+    @Input('responsive-mode') responsiveMode = false;
+
     @Input('alignment') alignment: string;
 
     @Input('border') border = true;
@@ -112,10 +114,12 @@ export class AmexioLayoutComponent implements OnInit {
 
     // THIS FUNCTION HANDLE THE ORITENATION AS PER DEVICE
     private handleDeviceSettings() {
-      if (this.matchMediaService.IsPhone()) {
-          this.updateOrientation('vertical');
-      } else {
-        this.updateOrientation(this.orientation);
-      }
+        if (!this.responsiveMode) {
+            if (this.matchMediaService.IsPhone()) {
+                this.updateOrientation('vertical');
+            } else {
+                this.updateOrientation(this.orientation);
+            }
+        }
     }
 }
