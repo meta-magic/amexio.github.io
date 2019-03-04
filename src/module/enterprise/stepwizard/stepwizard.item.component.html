@@ -2,7 +2,7 @@
     <div class="form-body formbody">
         <ng-content></ng-content>
     </div>
-    <footer #formFooter class="form-footer">
+    <footer #formFooter class="form-footer"  [ngStyle]="{'justify-content': footerAlign}">
         <amexio-button *ngIf="showPreviousButton" [icon]="previousIcon" [label]="'Previous'" [type]="'theme-color'" [tooltip]="'Previous'" (onClick)="onPreviousClick($event)">
         </amexio-button>
         <span *ngIf="!showPreviousButton"></span>

@@ -14,6 +14,7 @@ export class StepWizardItemComponent  implements OnInit, AfterContentChecked, Af
   @Input('icon') icon: string;
 
   @Input('active') active = false;
+  @Input('footer-align') footerAlign = 'space-between';
 
   @Output() onNextStep: any = new EventEmitter<any>();
 

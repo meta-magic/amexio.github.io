@@ -12,8 +12,8 @@ export class StepWizardComponent implements AfterContentInit {
 
   @Input('header-background') headerBackground: string;
 
+  @Input('footer-align') footerAlign = 'space-between';
   @Output() finalStage: any = new EventEmitter<any>();
-
   @ContentChildren(StepWizardItemComponent) stepItemQueryList: QueryList<StepWizardItemComponent>;
 
   stepItemList: StepWizardItemComponent[];
@@ -45,6 +45,7 @@ export class StepWizardComponent implements AfterContentInit {
         node.onPreviousStep.subscribe((eventdata: any) =>
           this.onPreviousStepClick(eventdata),
         );
+        this.stepItemList[index].footerAlign = this.footerAlign;
       } catch ( Error ) {
 
       }
