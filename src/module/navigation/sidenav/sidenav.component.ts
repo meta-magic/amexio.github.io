@@ -212,17 +212,19 @@ export class AmexioSideNavComponent implements OnInit, AfterContentInit {
   nodes: any = [];
 
   constructor(public dataService: CommonDataService, public matchMediaService: DeviceQueryService, public element: ElementRef) {
-    if (this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone()) {
-        this.smalldevice = true;
-    }
     this.position = 'left';
     this.smalldevice = false;
     this.sidenavexpandedinsmalldevice = false;
-    this.width = '20%';
+    this.width = '0%';
     const that = this;
     this.displaykey = 'text';
     this.childarraykey = 'children';
-
+    if (this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone()) {
+        this.smalldevice = true;
+        this.width = '0%';
+    } else {
+      this.width = '19%';
+    }
     /*---------------------------------------------------
      TAP INTO LISTENERS FOR WHEN DEVICE WIDTH CHANGES
      ---------------------------------------------------*/
@@ -373,7 +375,7 @@ export class AmexioSideNavComponent implements OnInit, AfterContentInit {
           this.sidenavexpandedinsmalldevice = false;
         }
       } else {
-        this.width = '20%';
+        this.width = '19%';
         this.smalldevice = false;
       }
     }
