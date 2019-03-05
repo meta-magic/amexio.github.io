@@ -10,7 +10,7 @@
     <li attr.aria-label="'carousel {{rowno}}'" tabindex="1" id="{{header}}{{rowno}}" class="tablistitems" *ngFor="let item of data let rowno= index" [ngClass]="{'list-carousel-items':item.isSelected}"
       (mouseover)="stopTimeInterval($event)" (mouseleave)="startTimeInterval($event)" (keyup.arrowleft)="onArrowLeft(rowno)"
       (keyup.arrowright)="onArrowRight(rowno)">
-      <ng-template tabindex="1" [amexioTemplateWrapper1]="itemTemplate" [item]="item"></ng-template>
+      <ng-template tabindex="1" [amexioTemplateWrapper]="itemTemplate" [item]="item"></ng-template>
     </li>
   </ul>
 </div>
