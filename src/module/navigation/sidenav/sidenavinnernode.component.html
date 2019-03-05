@@ -1,6 +1,6 @@
 <ul>
-    <li class="innerSideNav" [attr.tabindex]= "node.tabindex" (keyup.enter)="onenterNodeClick($event,node)" role="option" *ngFor="let node of data">
-         <div [attr.draggable]="enabledrag" (dragstart)="dragStartEvent({event:$event,data:node})" class="defaultnode" [ngClass]="{'activenode':node.active}"
+    <li  role="option" *ngFor="let node of data">
+         <div [attr.tabindex]= "node.tabindex" (keyup.enter)="onenterNodeClick($event,node)" [attr.draggable]="enabledrag" (dragstart)="dragStartEvent({event:$event,data:node})" class="defaultnode" [ngClass]="{'activenode':node.active}"
             (click)="onNodeClick(node)">
             <span *ngIf="node.icon">
                 <amexio-c-icon class="node-icon" [customclass]="node.icon" [color]="node.iconcolor"></amexio-c-icon>
