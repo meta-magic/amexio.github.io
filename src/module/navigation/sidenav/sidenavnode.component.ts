@@ -31,6 +31,9 @@ export class SideNavNodeComponent implements OnInit {
     description : node data pass on click event.
     */
   @Input('node') nodedata: any;
+
+  @Input('currentdivref') currentdivref: any;
+
   /*
    Properties
    name : badge
@@ -185,6 +188,18 @@ export class SideNavNodeComponent implements OnInit {
 
   emittednodedata(allNodeData: any) {
     this.nodeEmitToSideNav.emit(allNodeData);
+  }
+
+  onenterClick(divref: any, nodedata: any) {
+    if (divref.tabIndex === 1 && nodedata.children) {
+      nodedata.expand = !nodedata.expand;
+    }
+    if (nodedata.children && nodedata.expand === true) {
+      nodedata.children.forEach((element: any, index: any) => {
+        element['tabindex'] = '1';
+      });
+    }
+    this.onClick(nodedata);
   }
 
 }

@@ -1,7 +1,7 @@
 <!-- node {{node | json}} -->
 <li>
     <div *ngIf="enableborder" class="border"></div>
-    <div *ngIf="label || badge || icon" [attr.draggable]="enabledrag" (dragstart)="dragStartEvent({event:$event,data:node})"
+    <div tabindex="1" (keyup.enter)="onenterClick(currentdivref,node)" *ngIf="label || badge || icon" [attr.draggable]="enabledrag" (dragstart)="dragStartEvent({event:$event,data:node})"
         class="headernode" [ngClass]="{'activenode':active}" (click)="onClick(nodedata)">
         <amexio-c-icon *ngIf="icon" class="node-icon" [customclass]="icon" [color]="iconcolor"></amexio-c-icon>
         <span>{{label}} </span>

@@ -141,6 +141,22 @@ body {
     vertical-align: middle;
 }
 
+.table {
+    display: table;
+    padding: 5px;
+}
+
+.table .tablerow {
+    display: table-row;
+}
+
+.table .tablerow .tablecol {
+    display: table-cell;
+    padding-right: 5px;
+    padding-left: 5px;
+    vertical-align: middle;
+}
+
 .vertical-table {
     display: table;
     padding: 5px;

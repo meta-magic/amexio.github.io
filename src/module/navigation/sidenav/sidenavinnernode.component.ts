@@ -44,14 +44,14 @@ export class AmexioSideNavInnerNodeComponent implements OnInit {
 
   onNodeClick(node: any) {
     node.expand = !node.expand;
-    if ( node.children && node.expand === false) {
+    if (node.children && node.expand === false) {
       node.children.forEach((element: any) => {
-          element['tabindex'] = '-1';
+        element['tabindex'] = '-1';
       });
-    } else if ( node.children && node.expand === true) {
+    } else if (node.children && node.expand === true) {
       node.children.forEach((element: any) => {
         element['tabindex'] = '1';
-    });
+      });
     }
     this.getOnClick(node);
     this.emitNode.emit(this.data);
@@ -62,7 +62,7 @@ export class AmexioSideNavInnerNodeComponent implements OnInit {
     node.expand = !node.expand;
     if (node.children && node.expand === true) {
       node.children.forEach((element: any, index: any) => {
-         element['tabindex'] = '1';
+        element['tabindex'] = '1';
       });
     }
     this.getOnClick(node);
