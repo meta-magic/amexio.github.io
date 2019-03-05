@@ -212,6 +212,9 @@ export class AmexioSideNavComponent implements OnInit, AfterContentInit {
   nodes: any = [];
 
   constructor(public dataService: CommonDataService, public matchMediaService: DeviceQueryService, public element: ElementRef) {
+    if (this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone()) {
+        this.smalldevice = true;
+    }
     this.position = 'left';
     this.smalldevice = false;
     this.sidenavexpandedinsmalldevice = false;
