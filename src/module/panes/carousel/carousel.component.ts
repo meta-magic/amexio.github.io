@@ -19,32 +19,16 @@
 import {
   AfterContentInit, Component, ContentChildren, ElementRef, Input, OnInit, QueryList, TemplateRef, ViewChild,
 } from '@angular/core';
-import {AmexioTemplateDirective} from './carousel.template.directive';
-import {AmexioTemplateWrapperDirective} from './carousel.wrapper.template.directive';
+import { AmexioTemplateDirective } from './carousel.template.directive';
 
 @Component({
-  selector: 'amexio-carousel', template: `
-    <h4>{{header}}</h4>
-    <div class="tabwrapper">
-      <div class="carouselnavigation float-left" (click)="previous()">
-        <amexio-c-icon key="carousel_previous"></amexio-c-icon>
-      </div>
-      <div class="carouselnavigation float-right" (click)="next()">
-        <amexio-c-icon key="carousel_next"></amexio-c-icon>
-      </div>
-      <ul #tab class="tab">
-        <li class="tablistitems" *ngFor="let item of data" (mouseover)="stopTimeInterval($event)"
-            (mouseleave)="startTimeInterval($event)">
-          <ng-template [amexioTemplateWrapper]="itemTemplate" [item]="item"></ng-template>
-        </li>
-      </ul>
-    </div>
-  `,
+  selector: 'amexio-carousel',
+  templateUrl: './carousel.component.html',
 })
 
-export class AmexioCarouselComponent implements  AfterContentInit, OnInit {
+export class AmexioCarouselComponent implements AfterContentInit, OnInit {
 
-    /*
+  /*
 Properties
 name : header
 datatype : string
@@ -54,18 +38,18 @@ description : User can bind title for accordion tab.
 */
   @Input() header: string;
 
-   /*
-  @Input() mode: 'single' | 'multiple';
-  */
+  /*
+ @Input() mode: 'single' | 'multiple';
+ */
 
-/*
-Properties
-name : data
-datatype : any
-version : 4.0 onwards
-default :
-description : Data Containing Image Path, Information and Video URL Refer the DataSource Tab
-*/
+  /*
+  Properties
+  name : data
+  datatype : any
+  version : 4.0 onwards
+  default :
+  description : Data Containing Image Path, Information and Video URL Refer the DataSource Tab
+  */
   @Input() data: any;
 
   /*
@@ -80,23 +64,32 @@ description : Time interval for shuffling images
 
   timeInterval: any;
 
+  imgId: any;
+
   public itemTemplate: TemplateRef<any>;
 
   @ContentChildren(AmexioTemplateDirective) templates: QueryList<any>;
 
-  @ViewChild('tab', {read: ElementRef}) public tabs: ElementRef;
+  @ViewChild('tab', { read: ElementRef }) public tabs: ElementRef;
+  // @ViewChild('kk') kk: ElementRef;
+
+  prevImage = -1;
+  nextImage = -1;
+  currImage = 0;
 
   constructor() {
   }
 
   ngOnInit() {
-   this.startTimeInterval();
+    this.startTimeInterval();
+    console.log('data', this.data.length);
   }
 
   ngAfterContentInit() {
     this.templates.forEach((item: any) => {
-        this.itemTemplate = item.template;
+      this.itemTemplate = item.template;
     });
+
   }
 
   scrollData() {
@@ -113,14 +106,27 @@ description : Time interval for shuffling images
   }
 
   shuffle() {
-
+  }
+  onArrowRight(item: any) {
+    if (this.data.length - 1 > item) {
+      const currentitem: any = item + 1;
+      const itemId = this.header + currentitem;
+      document.getElementById(itemId).focus();
+    }
+  }
+  onArrowLeft(item: any) {
+    if (item > 0) {
+      const currentitem: any = item - 1;
+      const itemId = this.header + currentitem;
+      document.getElementById(itemId).focus();
+    }
   }
 
   startTimeInterval() {
     if (this.shuffleinterval != null) {
       this.timeInterval = setInterval(() => {
         const carouselItemPosix = this.tabs.nativeElement;
-        if (!((carouselItemPosix.scrollWidth - carouselItemPosix.offsetWidth - carouselItemPosix.scrollLeft ) <= 0)) {
+        if (!((carouselItemPosix.scrollWidth - carouselItemPosix.offsetWidth - carouselItemPosix.scrollLeft) <= 0)) {
           // go next
           carouselItemPosix.scrollLeft = carouselItemPosix.scrollLeft + 200;
         } else if (carouselItemPosix.scrollLeft > 0) {
@@ -134,5 +140,4 @@ description : Time interval for shuffling images
   stopTimeInterval() {
     clearTimeout(this.timeInterval);
   }
-
 }

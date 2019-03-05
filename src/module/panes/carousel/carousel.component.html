@@ -1,0 +1,16 @@
+<h4>{{header}}</h4>
+<div class="tabwrapper">
+  <div class="carouselnavigation float-left" (click)="previous()">
+    <amexio-c-icon key="carousel_previous"></amexio-c-icon>
+  </div>
+  <div class="carouselnavigation float-right" (click)="next()">
+    <amexio-c-icon key="carousel_next"></amexio-c-icon>
+  </div>
+  <ul #tab class="tab">
+    <li attr.aria-label="'carousel {{rowno}}'" tabindex="1" id="{{header}}{{rowno}}" class="tablistitems" *ngFor="let item of data let rowno= index" [ngClass]="{'list-carousel-items':item.isSelected}"
+      (mouseover)="stopTimeInterval($event)" (mouseleave)="startTimeInterval($event)" (keyup.arrowleft)="onArrowLeft(rowno)"
+      (keyup.arrowright)="onArrowRight(rowno)">
+      <ng-template tabindex="1" [amexioTemplateWrapper]="itemTemplate" [item]="item"></ng-template>
+    </li>
+  </ul>
+</div>
