@@ -1491,9 +1491,6 @@ textarea:required {
   cursor: not-allowed;
   pointer-events: none; }
 
-.input-box-checkbox-label:focus {
-  border: 2px solid #290500; }
-
 /** checkbox - Structure CSS **/
 .input-box {
   display: inline-block;

@@ -86,6 +86,19 @@ body {
   padding-left: 5px;
   vertical-align: middle; }
 
+.table {
+  display: table;
+  padding: 5px; }
+
+.table .tablerow {
+  display: table-row; }
+
+.table .tablerow .tablecol {
+  display: table-cell;
+  padding-right: 5px;
+  padding-left: 5px;
+  vertical-align: middle; }
+
 .vertical-table {
   display: table;
   padding: 5px; }
@@ -5609,9 +5622,19 @@ amexio-layout-columns amexio-layout-item {
   background-color: rgba(115, 194, 251, 0.4);
   color: #73C2FB; }
 
+.sidenav .headernode:focus {
+  background-color: rgba(115, 194, 251, 0.4);
+  color: #73C2FB;
+  outline: none !important; }
+
 .sidenav .headernodeSeparator:hover {
   background-color: rgba(115, 194, 251, 0.4);
   color: #73C2FB; }
+
+.sidenav .defaultnode:focus {
+  background-color: rgba(115, 194, 251, 0.4);
+  color: #73C2FB;
+  outline: none !important; }
 
 .sidenav .defaultnode:hover {
   background-color: rgba(115, 194, 251, 0.4);
@@ -6543,6 +6566,24 @@ fieldset {
 .amexio-top-tab-black {
   border-bottom: 1px solid #000000 !important;
   color: #000000; }
+
+.table1 {
+  display: table;
+  padding: 5px; }
+
+.table1 .tablerow {
+  display: table-row; }
+
+.table1 .tablerow .tablecol {
+  display: table-cell;
+  padding-right: 5px;
+  padding-left: 5px;
+  vertical-align: middle; }
+
+.table1:focus {
+  background-color: rgba(115, 194, 251, 0.4);
+  color: #73C2FB;
+  outline: none !important; }
 
 /** tab - Structure CSS **/
 .tab {
