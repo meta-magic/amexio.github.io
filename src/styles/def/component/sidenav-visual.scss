@@ -92,7 +92,7 @@
 
 }
 
-.parentSideNav:focus{
+.sidenav .headernode:focus{
   background-color: $sidenavBGHoverColor;
   color: $sidenavHoverColor;
   outline: none !important;
@@ -120,12 +120,6 @@
 .sidenav .defaultnode:hover {
   background-color: $sidenavBGHoverColor;
   color: $sidenavHoverColor;
-}
-
-.sidenav .defaultnode:focus {
-  background-color: $sidenavBGHoverColor;
-  color: $sidenavHoverColor;
-  outline: none !important;
 }
 
 .sidenav .activenode {

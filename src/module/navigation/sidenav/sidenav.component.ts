@@ -298,18 +298,6 @@ export class AmexioSideNavComponent implements OnInit, AfterContentInit {
     this.activateNode(this.data, node);
   }
 
-  onenterClick(divref: any, nodedata: any) {
-    if (divref.tabIndex === 1 && nodedata.children) {
-      nodedata.expand = !nodedata.expand;
-    }
-    if (nodedata.children && nodedata.expand === true) {
-      nodedata.children.forEach((element: any, index: any) => {
-        element['tabindex'] = '1';
-      });
-    }
-    this.onClick(nodedata);
-  }
-
  generateIndex(data: any) {
   data.forEach((element: any, index: any) => {
     if (element[this.childarraykey]) {

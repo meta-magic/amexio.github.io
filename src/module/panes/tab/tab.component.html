@@ -6,7 +6,7 @@
         <amexio-c-icon key="tab_next"></amexio-c-icon>
     </div>
 
-    <div #tab class="tab"  role="tablist" tabindex="1" aria-labelledby="Tablist" [ngClass]="{'bottomTab':tabPosition == 'bottom'}">
+    <div #tab class="tab"  role="tablist" aria-labelledby="Tablist" [ngClass]="{'bottomTab':tabPosition == 'bottom'}">
 
         <div #tabslist class="tablistitems {{tabPositionClass}}">
             <!-- HEADER -->
@@ -28,7 +28,7 @@
 
             <div>
                 <div *ngFor="let tabnode of tabCollection" class="tablink {{tabnode.amexiocolor+ ' '+tabnode.tabPillClass}}" [style.width.px]="singleTabWidth"  (contextmenu)="loadContextMenu($event,tabnode, tab)">
-                    <div class="table" id="{{tabnode.tablk}}" tabindex="1" attr.aria-controls="{{tabnode.tabId}}" role="tab" (click)="onTabClick(tabnode)"
+                    <div class="table1" id="{{tabnode.tablk}}" tabindex="1" attr.aria-controls="{{tabnode.tabId}}" role="tab" (click)="onTabClick(tabnode)"
                     (keyup.arrowright)="onArrowRight()" (keyup.arrowleft)="onArrowLeft()" (keyup.enter)="onTabClick(tabnode)" (keyup.home)="onHomeClick()" 
                     (keyup.end)="onEndClick()">
                         <div class="tablerow">
