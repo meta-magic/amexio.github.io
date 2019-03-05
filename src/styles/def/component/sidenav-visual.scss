@@ -98,11 +98,11 @@
   outline: none !important;
 }
 
-.innerSideNav:focus {
-  background-color: $sidenavBGHoverColor;
-  color: $sidenavHoverColor;
-  outline: none !important;
-}
+// .innerSideNav:focus {
+//   background-color: $sidenavBGHoverColor;
+//   color: $sidenavHoverColor;
+//   outline: none !important;
+// }
 
 .sidenav .headernodeSeparator:hover {
   background-color: $sidenavBGHoverColor;
@@ -115,6 +115,12 @@
 //   padding-left: 100%;
 //   margin-left: -100%;
 // ;
+}
+
+.sidenav .defaultnode:focus{
+  background-color: $sidenavBGHoverColor;
+  color: $sidenavHoverColor;
+  outline: none !important;
 }
 
 .sidenav .defaultnode:hover {

@@ -6746,8 +6746,8 @@ fieldset {
   background-color: rgba(115, 194, 251, 0.4); }
 
 .modal-window-footer {
-  background-color: transparent;
-  color: #73C2FB; }
+  background: #000000;
+  color: rgba(255, 255, 255, 0.7); }
 
 /** window - Structure CSS **/
 /* WINDOW */

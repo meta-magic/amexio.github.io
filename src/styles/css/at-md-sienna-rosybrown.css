@@ -6498,8 +6498,8 @@ fieldset {
   background-color: #bc8f8f; }
 
 .modal-window-footer {
-  background-color: transparent;
-  color: #402626; }
+  background: #ffffff;
+  color: #121212; }
 
 /** window - Structure CSS **/
 /* WINDOW */

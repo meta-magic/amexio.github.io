@@ -129,6 +129,19 @@ body {
   padding-left: 5px;
   vertical-align: middle; }
 
+.table {
+  display: table;
+  padding: 5px; }
+
+.table .tablerow {
+  display: table-row; }
+
+.table .tablerow .tablecol {
+  display: table-cell;
+  padding-right: 5px;
+  padding-left: 5px;
+  vertical-align: middle; }
+
 .vertical-table {
   display: table;
   padding: 5px; }
@@ -1477,6 +1490,9 @@ textarea:required {
   opacity: 0.55;
   cursor: not-allowed;
   pointer-events: none; }
+
+.input-box-checkbox-label:focus {
+  border: 2px solid #290500; }
 
 /** checkbox - Structure CSS **/
 .input-box {
@@ -5360,9 +5376,19 @@ amexio-step-wizard .form-footer {
   background-color: #ffc0b8;
   color: #520a00; }
 
+.sidenav .headernode:focus {
+  background-color: #ffc0b8;
+  color: #520a00;
+  outline: none !important; }
+
 .sidenav .headernodeSeparator:hover {
   background-color: #ffc0b8;
   color: #520a00; }
+
+.sidenav .defaultnode:focus {
+  background-color: #ffc0b8;
+  color: #520a00;
+  outline: none !important; }
 
 .sidenav .defaultnode:hover {
   background-color: #ffc0b8;
@@ -6296,6 +6322,24 @@ fieldset {
   border-bottom: 1px solid #000000 !important;
   color: #000000; }
 
+.table1 {
+  display: table;
+  padding: 5px; }
+
+.table1 .tablerow {
+  display: table-row; }
+
+.table1 .tablerow .tablecol {
+  display: table-cell;
+  padding-right: 5px;
+  padding-left: 5px;
+  vertical-align: middle; }
+
+.table1:focus {
+  background-color: #ffc0b8;
+  color: #520a00;
+  outline: none !important; }
+
 /** tab - Structure CSS **/
 .tab {
   position: relative;
@@ -6498,8 +6542,8 @@ fieldset {
   background-color: #290500; }
 
 .modal-window-footer {
-  background-color: transparent;
-  color: #050100; }
+  background: #ffffff;
+  color: #121212; }
 
 /** window - Structure CSS **/
 /* WINDOW */
