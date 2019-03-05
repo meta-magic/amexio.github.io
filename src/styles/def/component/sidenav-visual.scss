@@ -84,6 +84,26 @@
   color: $sidenavHoverColor;
 }
 
+.innerSideNav{
+
+}
+
+.parentSideNav{
+
+}
+
+.parentSideNav:focus{
+  background-color: $sidenavBGHoverColor;
+  color: $sidenavHoverColor;
+  outline: none !important;
+}
+
+.innerSideNav:focus {
+  background-color: $sidenavBGHoverColor;
+  color: $sidenavHoverColor;
+  outline: none !important;
+}
+
 .sidenav .headernodeSeparator:hover {
   background-color: $sidenavBGHoverColor;
   color: $sidenavHoverColor;
@@ -100,6 +120,12 @@
 .sidenav .defaultnode:hover {
   background-color: $sidenavBGHoverColor;
   color: $sidenavHoverColor;
+}
+
+.sidenav .defaultnode:focus {
+  background-color: $sidenavBGHoverColor;
+  color: $sidenavHoverColor;
+  outline: none !important;
 }
 
 .sidenav .activenode {
