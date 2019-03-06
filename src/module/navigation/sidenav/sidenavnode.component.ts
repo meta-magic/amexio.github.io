@@ -17,7 +17,7 @@
 */
 
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-
+import { DeviceQueryService } from '../../services/device/device.query.service';
 @Component({
   selector: 'amexio-sidenav-node', templateUrl: './sidenavnode.component.html',
 })
@@ -149,9 +149,14 @@ export class SideNavNodeComponent implements OnInit {
   @Input('child-array-key') childarraykey: string;
   @Input() expand = false;
   @Input('icon-color') iconcolor: string;
-  constructor() {
+  @Input('show-only-icon') isShowOnlyIcon: boolean;
+  isMobile = false;
+  constructor(public matchMediaService: DeviceQueryService) {
     this.displaykey = 'text';
     this.childarraykey = 'children';
+    if (this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone()) {
+      this.isMobile = true;
+    }
   }
 
   ngOnInit() {

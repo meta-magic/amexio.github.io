@@ -82,7 +82,6 @@ description : Time interval for shuffling images
 
   ngOnInit() {
     this.startTimeInterval();
-    console.log('data', this.data.length);
   }
 
   ngAfterContentInit() {

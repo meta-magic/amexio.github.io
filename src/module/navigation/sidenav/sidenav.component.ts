@@ -199,6 +199,9 @@ export class AmexioSideNavComponent implements OnInit, AfterContentInit {
    description : User can pass background image
    */
   @Input('bg-image') bgimage: string;
+  @Input('home-page-type') homepageType: string;
+  @Output() onMouseleave: any = new EventEmitter<any>();
+  @Output() onMouseover: any = new EventEmitter<any>();
   @ContentChildren(SideNavNodeComponent) sidennavnodearray: QueryList<SideNavNodeComponent>;
   smalldevice: boolean;
   nodearray: any;
@@ -210,7 +213,8 @@ export class AmexioSideNavComponent implements OnInit, AfterContentInit {
   isSideNavExpand: boolean;
 
   nodes: any = [];
-
+  isShowOnlyIcon = false;
+  isSideNavEnable = true;
   constructor(public dataService: CommonDataService, public matchMediaService: DeviceQueryService, public element: ElementRef) {
     this.position = 'left';
     this.smalldevice = false;
@@ -296,6 +300,14 @@ export class AmexioSideNavComponent implements OnInit, AfterContentInit {
   onClick(node: any) {
     this.nodeClick.emit(node);
     this.activateNode(this.data, node);
+    if (this.homepageType === '2') {
+      this.closeMiniSideNav(node);
+    }
+    if (this.smalldevice && (!node.children || node.children === null || node.children === '')) {
+      this.isSideNavEnable = false;
+    } else {
+      this.isSideNavEnable = true;
+    }
   }
 
  generateIndex(data: any) {
@@ -342,6 +354,7 @@ export class AmexioSideNavComponent implements OnInit, AfterContentInit {
   }
 
   toggleSideNav() {
+    this.isSideNavEnable = true;
     this.handleDeviceSettings(!this.isSideNavExpand);
   }
 
@@ -363,8 +376,12 @@ export class AmexioSideNavComponent implements OnInit, AfterContentInit {
           this.sidenavexpandedinsmalldevice = false;
         }
       } else {
-        this.width = '19%';
-        this.smalldevice = false;
+       if (this.isShowOnlyIcon) {
+          this.width = '5%';
+        } else {
+          this.width = '19%';
+        }
+       this.smalldevice = false;
       }
     }
   }
@@ -372,5 +389,22 @@ export class AmexioSideNavComponent implements OnInit, AfterContentInit {
   getNodeDragEvent(event: any) {
     this.onDrag.emit(event);
   }
-
+  onMouseOverClick(event: any) {
+    if (this.homepageType === '2' && this.isShowOnlyIcon) {
+      this.isShowOnlyIcon = !this.isShowOnlyIcon;
+      this.width = '19%';
+      this.onMouseover.emit();
+    }
+  }
+  onMouseleaveClick(event: any) {
+    if (this.homepageType === '2' && this.isShowOnlyIcon) {
+      this.onMouseleave.emit();
+    }
+  }
+  closeMiniSideNav(node: any) {
+    if (this.homepageType === '2' && !node.children) {
+      this.isShowOnlyIcon = true;
+      this.width = '5%';
+    }
+  }
 }

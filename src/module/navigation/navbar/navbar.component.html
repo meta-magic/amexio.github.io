@@ -1,28 +1,39 @@
-
 <nav #navbar class="topnav" [ngStyle]="{'color': color}" [ngClass]="{'topnav-mobile':mobilemode, 'transparentNav':transparent}" (window:resize)="resize($event)">
-    <div #navbarfixed class="topnavbarunit1" [ngClass]="{'topnavbarunit1-mobile':mobilemode}" >
-        <div class="float-left"  [ngStyle]="{'padding-left':sidenav ? '40px':'0px'}">
-            <img alt="title" style="cursor: pointer" (click)="onNavLogoClick.emit($event)"  (load)="onImageLoad()" *ngIf="logo" [attr.src]="logo" class="navbar-logo">
-            <amexio-label (onClick)="onNavTitleClick.emit($event)" [enable-click]="true"  size="medium-bold">{{title}}</amexio-label>
+    <div #navbarfixed class="topnavbarunit1 topnav-lhs" [ngStyle]="{'flex': lhsWidth,'flex-width':lhsWidth}" (mouseover)=" onMouseOverClick($event) " (mouseleave)="onMouseLeaveClick($event) " [ngClass]="{ 'topnavbarunit1-mobile topnav-lhs-mobile':mobilemode} ">
+        <div>
+            <ng-container *ngIf="!isLHSHide || mobilemode">
+                <span style="float:left" [ngStyle]="{ 'padding-left':sidenav ? '40px': '0px'} ">   <img alt="title " style="cursor: pointer " (click)="onNavLogoClick.emit($event) " (load)="onImageLoad() " *ngIf="logo " [attr.src]="logo " class="navbar-logo ">
+                <amexio-label (onClick)="onNavTitleClick.emit($event) " [enable-click]="true " size="medium-bold ">{{title}}</amexio-label>
+               </span>
+            </ng-container>
+            <ng-container *ngIf="!mobilemode">
+                <span *ngIf="homepageType=='2' || isLHSHide " style="float:right;padding-right:38px"><amexio-image  [icon-class]=" 'fa fa-bars fa-2x' "></amexio-image></span>
+            </ng-container>
+            <ng-container *ngIf="!mobilemode && !isIconLeft ">
+                <span *ngIf="enableIcon" style="float:right;padding-right:35px"><amexio-image (onClick)="onArrowClick($event)" [icon-class]=" 'fa fa-arrow-circle-o-right fa-2x' "></amexio-image></span>
+            </ng-container>
+            <ng-container *ngIf="!mobilemode && isIconLeft ">
+                <span *ngIf="enableIcon" style="float:right;padding-right:35px"><amexio-image (onClick)="onArrowClick($event)" [icon-class]=" 'fa fa-arrow-circle-o-left fa-2x' "></amexio-image></span>
+            </ng-container>
         </div>
         <div *ngIf="mobilemode" class="float-right mobilebar" (click)="toggleDrawerPanel($event)">
-            <em *ngIf="!toggle"  class="fa fa-caret-down fa-2x"></em>
-            <em *ngIf="toggle"  class="fa fa-caret-up fa-2x"></em>
+            <em *ngIf="!toggle" class="fa fa-caret-down fa-2x"></em>
+            <em *ngIf="toggle" class="fa fa-caret-up fa-2x"></em>
         </div>
     </div>
-    <div #navbaritems *ngIf="toggle" class="topnavbarunit2"  [ngClass]="{'topnavbarunit2-mobile':mobilemode}" >
-        <div class="topnavmainbar"    [ngClass]="{'topnavmainbar-mobile':mobilemode}" >
-            <div #navbaritems1 class="topnavmainbaritems" [ngClass]="{'topnavmainbaritems-mobile':mobilemode}" >
+    <div #navbaritems *ngIf="toggle" class="topnavbarunit2" [ngClass]="{'topnavbarunit2-mobile':mobilemode}">
+        <div class="topnavmainbar" [ngClass]="{'topnavmainbar-mobile':mobilemode}">
+            <div #navbaritems1 class="topnavmainbaritems" [ngClass]="{'topnavmainbaritems-mobile':mobilemode}">
                 <ng-content select="[position-left]"></ng-content>
             </div>
-            <div #navbaritems2 class="topnavmainbaritems"  [ngClass]="{'topnavmainbaritems-mobile':mobilemode}" >
+            <div #navbaritems2 class="topnavmainbaritems" [ngClass]="{'topnavmainbaritems-mobile':mobilemode}">
                 <ng-content select="[position-center]"></ng-content>
             </div>
-            <div #navbaritems3 class="topnavmainbaritems"   [ngClass]="{'topnavmainbaritems-mobile':mobilemode}" >
-              <ng-content select="[position-right]"></ng-content>
+            <div #navbaritems3 class="topnavmainbaritems" [ngClass]="{'topnavmainbaritems-mobile':mobilemode}">
+                <ng-content select="[position-right]"></ng-content>
             </div>
 
-          </div>
+        </div>
     </div>
 
-  </nav>
+</nav>

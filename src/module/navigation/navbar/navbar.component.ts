@@ -81,9 +81,20 @@ description : Color
 */
 @Input('color') color: string;
 
+  // THIS IS LOCAL USE NOT EXPOSED
+  @Input('enable-icon') enableIcon = false;
+
+  // THIS IS LOCAL USE NOT EXPOSED
+  @Input('home-page-type') homepageType: string;
   @Output() onNavLogoClick: any = new EventEmitter<any>();
 
   @Output() onNavTitleClick: any = new EventEmitter<any>();
+
+  @Output() onIconArrowClick: any = new EventEmitter<any>();
+
+  @Output() onMouseOver: any = new EventEmitter<any>();
+
+  @Output() onMouseLeave: any = new EventEmitter<any>();
 
   @ContentChildren(AmexioNavItemComponent) navitems: QueryList<AmexioNavItemComponent>;
 
@@ -102,9 +113,16 @@ description : Color
   navitemwidth: number;
   navfixeditem: number;
   sidenav = false;
-
+  isIconLeft = true;
+  isLHSHide = false;
+  lhsWidth = '5%';
   constructor(public matchMediaService: DeviceQueryService) {
-
+    if (this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone()) {
+      this.mobilemode = true;
+      this.enableIcon = false;
+    } else {
+        this.mobilemode = false;
+    }
   }
 
   ngOnInit() {
@@ -212,5 +230,24 @@ description : Color
 
   resize(event: any) {
     this.handleDeviceSetting();
+  }
+  onArrowClick(event: any) {
+    this.onIconArrowClick.emit();
+    this.isIconLeft = !this.isIconLeft;
+  }
+  // THIS EVENT IS HOME COMPOENNT USE.NOT EXPOSED
+  onMouseOverClick() {
+    if (this.homepageType === '2') {
+      this.onMouseOver.emit();
+      this.lhsWidth = '0 0 19%';
+    }
+  }
+  // THIS EVENT IS USED FOR HOME COMPONENT NOT EXPOSED
+  onMouseLeaveClick() {
+    if (this.homepageType === '2') {
+      this.onMouseLeave.emit();
+      this.isLHSHide = true;
+      this.lhsWidth = '0 0 5%';
+    }
   }
 }
