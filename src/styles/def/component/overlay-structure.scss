@@ -1,0 +1,70 @@
+.overlay {
+  position: absolute;
+  z-index: 4;
+  padding: 10px;
+  margin: 10px;
+  background-color: white;
+  border-radius: 8px;
+  transition: opacity 0.3s;
+  max-height: 100%;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+}
+
+  .leftTopArrow::before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left:10px;
+    border-width: 15px;
+    border-style: solid;
+    transform: rotate(180deg);
+    border-color: $overlayHoverBG transparent transparent transparent;
+  }
+
+.rightTopArrow::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  right:10px;
+  border-width: 15px;
+  border-style: solid;
+  transform: rotate(180deg);
+  border-color: $overlayHoverBG transparent transparent transparent;
+}
+
+.rightBottomArrow::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  right:10px;
+  border-width: 15px;
+  border-style: solid;
+  border-color: $overlayHoverBG transparent transparent transparent;
+}
+
+.leftBottomArrow::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left:10px;
+  border-width: 15px;
+  border-style: solid;
+  border-color: $overlayHoverBG transparent transparent transparent;
+}
+
+  .hideoverlay{
+    display: none;
+  }
+  
+  .iconClass {
+    position: absolute;
+    top: -8px;
+    font-size: 20px;
+    cursor: pointer;
+    
+  }
+
+.containerClass {
+  overflow-y: auto;
+}
+  

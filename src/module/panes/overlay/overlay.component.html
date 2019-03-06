@@ -1,0 +1,15 @@
+  <div class="overlay {{arrowClass}}"
+       [ngClass]="{'hideoverlay': !show}"
+       [ngStyle]="renderPositionClass">
+    <i *ngIf="closable"
+       class="fa fa-times-circle-o iconClass " [ngStyle]="iconPosition"
+       aria-hidden="true" (click)="onClose()"></i>
+    <div class="containerClass" [style.height]="height">
+      <ng-content></ng-content>
+    </div>
+  </div>
+
+
+
+
+
