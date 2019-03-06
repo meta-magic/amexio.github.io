@@ -1,0 +1,13 @@
+.containerClass::-webkit-scrollbar-track
+{
+  background-color:$overlayScrollBGColor;
+}
+.containerClass::-webkit-scrollbar
+{
+  background-color: $overlayScrollBGColor;
+}
+
+.containerClass::-webkit-scrollbar-thumb
+{
+  background-color: $overlayScrollThumbColor;
+}
