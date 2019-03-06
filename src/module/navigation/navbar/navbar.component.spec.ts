@@ -13,6 +13,7 @@ import { AmexioNavTextFieldComponent } from './navtextfield.component';
 import { stringify } from 'querystring';
 import { AmexioLabelComponent } from '../../forms/label/label.component';
 import { DeviceQueryService } from '../../services/device/device.query.service';
+import { AmexioMediaModule } from './../../media/amexio.media.module';
 describe('amexio-navbar', () => {
 
     let comp: AmexioNavBarComponent;
@@ -20,7 +21,7 @@ describe('amexio-navbar', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [FormsModule],
+            imports: [FormsModule , AmexioMediaModule],
             declarations: [AmexioNavItemComponent, AmexioLabelComponent, AmexioNavBarComponent, AmexioNavActionComponent, AmexioNavMenuComponent, AmexioNavTextFieldComponent],
             providers: [IconLoaderService, DeviceQueryService],
         });
