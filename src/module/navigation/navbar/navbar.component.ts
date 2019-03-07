@@ -170,10 +170,12 @@ description : Color
   }
 
   notifyNavItems(navbarwidth: number) {
-    this.navItemComponents.forEach((node) => {
-      node.setMobileMode(this.mobilemode);
-      node.setNavbarWidth(navbarwidth);
-    });
+    if (this.navItemComponents) {
+      this.navItemComponents.forEach((node) => {
+        node.setMobileMode(this.mobilemode);
+        node.setNavbarWidth(navbarwidth);
+      });
+    }
   }
 
   handleDeviceSetting() {

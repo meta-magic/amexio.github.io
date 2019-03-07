@@ -315,9 +315,11 @@ export class AmexioSideNavComponent implements OnInit, AfterContentInit {
     if (element[this.childarraykey]) {
        element[this.childarraykey].forEach((innerelement: any) => {
         innerelement['tabindex'] = '-1';
-        innerelement[this.childarraykey].forEach((innerelement2: any) => {
-          innerelement2['tabindex'] = '-1';
-        });
+        if (innerelement[this.childarraykey]) {
+          innerelement[this.childarraykey].forEach((innerelement2: any) => {
+            innerelement2['tabindex'] = '-1';
+          });
+        }
       });
    }
   });
