@@ -5291,6 +5291,11 @@ amexio-layout-columns amexio-layout-item {
   .menubar .menuheader .menulink:hover .menu-content {
     display: block; }
 
+.menulink:focus {
+  outline: none !important;
+  background: #f3c8f2 !important;
+  color: #70196F; }
+
 .menu-content {
   display: none;
   padding: 10px;
@@ -5300,6 +5305,9 @@ amexio-layout-columns amexio-layout-item {
 
 .menu-content-display {
   display: block !important; }
+
+.menu-content-hide {
+  display: none !important; }
 
 .menu-content-left {
   left: 0;
@@ -5332,10 +5340,20 @@ amexio-layout-columns amexio-layout-item {
   padding: 10px;
   cursor: pointer; }
 
+.menu-links-header:focus {
+  outline: none !important;
+  background: #f3c8f2 !important;
+  color: #70196F; }
+
 .menu-content .menu-content-cols .content .menulinks {
   width: 100%;
   padding: 5px 10px 0px 10px;
   cursor: pointer; }
+
+.menulinks:focus {
+  outline: none !important;
+  background: #f3c8f2 !important;
+  color: #70196F; }
 
 /****************************************************************************
     Component Name : Navbar

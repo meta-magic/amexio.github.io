@@ -5041,6 +5041,11 @@ amexio-step-wizard .form-footer {
   .menubar .menuheader .menulink:hover .menu-content {
     display: block; }
 
+.menulink:focus {
+  outline: none !important;
+  background: #ffeeb8 !important;
+  color: #523f00; }
+
 .menu-content {
   display: none;
   padding: 10px;
@@ -5050,6 +5055,9 @@ amexio-step-wizard .form-footer {
 
 .menu-content-display {
   display: block !important; }
+
+.menu-content-hide {
+  display: none !important; }
 
 .menu-content-left {
   left: 0;
@@ -5082,10 +5090,20 @@ amexio-step-wizard .form-footer {
   padding: 10px;
   cursor: pointer; }
 
+.menu-links-header:focus {
+  outline: none !important;
+  background: #ffeeb8 !important;
+  color: #523f00; }
+
 .menu-content .menu-content-cols .content .menulinks {
   width: 100%;
   padding: 5px 10px 0px 10px;
   cursor: pointer; }
+
+.menulinks:focus {
+  outline: none !important;
+  background: #ffeeb8 !important;
+  color: #523f00; }
 
 /****************************************************************************
     Component Name : Navbar
