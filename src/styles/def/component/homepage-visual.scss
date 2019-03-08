@@ -1,0 +1,21 @@
+amexio-homepage-northpanel .topnav {
+    box-shadow: none!important;
+}
+amexio-homepage-northpanel .topnav-lhs {
+    background-color: $homepageTopnavLHS;
+    color: $homepageTopnavLHSColor;
+}
+
+amexio-homepage-northpanel .topnav-rhs {
+    flex-grow: inherit;
+    background: $homepageTopnavRHS;
+}
+
+amexio-homepage-westpanel .sidenav .border {
+    border-bottom: none;
+}
+amexio-homepage-westpanel .sidenav-color{
+    background-color: $homepageSideNavBG;
+    color: $homepageSideNavColor;
+  }
+  

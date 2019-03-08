@@ -1,0 +1,40 @@
+amexio-homepage-northpanel .topnav {
+    padding: 0px;
+}
+amexio-homepage-northpanel .topnav-lhs {
+    flex: 0 0 19%;
+    max-width: 19%;
+}
+
+amexio-homepage-northpanel .topnav-lhs-mobile {
+    flex: none;
+    max-width: 100%;
+}
+
+amexio-homepage-northpanel .topnav-rhs {
+    flex-grow: inherit;
+}
+
+amexio-homepage-northpanel .topnavbarunit1-mobile {
+    padding-left: 45px;
+}
+
+amexio-homepage-westpanel .homepage-westpanel {
+    padding-top: 50px;
+}
+
+amexio-homepage-centerpanel .homepage-centerpanel {
+    padding: 10px;
+}
+
+amexio-homepage-centerpanel .homepage-centerpanel {
+    /* padding-left: 20%; */
+}
+
+amexio-homepage-northpanel .top-nav-button {
+    padding-left: 0px;
+}
+
+amexio-homepage-westpanel .sidenav::-webkit-scrollbar {
+    width: 3px;
+}

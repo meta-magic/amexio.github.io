@@ -200,8 +200,8 @@ export class AmexioSideNavComponent implements OnInit, AfterContentInit {
    */
   @Input('bg-image') bgimage: string;
   @Input('home-page-type') homepageType: string;
-  @Output() onMouseleave: any = new EventEmitter<any>();
-  @Output() onMouseover: any = new EventEmitter<any>();
+  @Output() onMouseLeave: any = new EventEmitter<any>();
+  @Output() onMouseOver: any = new EventEmitter<any>();
   @ContentChildren(SideNavNodeComponent) sidennavnodearray: QueryList<SideNavNodeComponent>;
   smalldevice: boolean;
   nodearray: any;
@@ -392,15 +392,17 @@ export class AmexioSideNavComponent implements OnInit, AfterContentInit {
     this.onDrag.emit(event);
   }
   onMouseOverClick(event: any) {
-    if (this.homepageType === '2' && this.isShowOnlyIcon) {
+    if (this.homepageType === '2') {
       this.isShowOnlyIcon = !this.isShowOnlyIcon;
       this.width = '19%';
-      this.onMouseover.emit();
+      this.onMouseOver.emit();
     }
   }
-  onMouseleaveClick(event: any) {
-    if (this.homepageType === '2' && this.isShowOnlyIcon) {
-      this.onMouseleave.emit();
+  onMouseLeaveClick(event: any) {
+    if (this.homepageType === '2') {
+      this.isShowOnlyIcon = !this.isShowOnlyIcon;
+      this.width = '5%';
+      this.onMouseLeave.emit();
     }
   }
   closeMiniSideNav(node: any) {

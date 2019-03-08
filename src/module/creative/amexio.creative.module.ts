@@ -18,6 +18,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ModuleWithProviders } from '@angular/core';
+import { AmexioHomePageComponent } from './../creative/homepage/homepage.component';
 
 import { AmexioProgressCEComponent } from './progressbar/progressce.component';
 
@@ -27,23 +28,42 @@ import { AmexioCardCEComponent } from './../creative/card/amexio.cards.component
 import { AmexioCardCEHeaderComponent } from './../creative/card/amexio.header.component';
 
 import { AmexioCommonModule } from '../base/amexio.common.module';
+import { AmexioHomePageCenterPanelComponent } from './../creative/homepage/homepage.centerpanel.component';
+import { AmexioHomePageEastPanelComponent } from './../creative/homepage/homepage.eastpanel.component';
+import { AmexioHomePageNorthPanelComponent } from './../creative/homepage/homepage.northpanel.component';
+import { AmexioHomePageWestPanelComponent } from './../creative/homepage/homepage.westpanel.component';
+import { AmexioNavModule } from './../navigation/amexio.nav.module';
+import { AmexioLayoutModule } from './../layout/amexio.layout.module';
 
 export * from './../creative/card/amexio.action.component';
 export * from './../creative/card/amexio.body.component';
 export * from './../creative/card/amexio.cards.component';
 export * from './../creative/card/amexio.header.component';
+export * from './homepage/homepage.centerpanel.component';
+export * from './homepage/homepage.eastpanel.component';
+export * from './homepage/homepage.northpanel.component';
+export * from './homepage/homepage.westpanel.component';
+export * from './homepage/homepage.component';
+
 const CREATIVE_COMPONENTS = [
   AmexioCardCEHeaderComponent,
   AmexioCardCEBodyComponent,
   AmexioCardCEActionComponent,
   AmexioCardCEComponent,
   AmexioProgressCEComponent,
+  AmexioHomePageComponent,
+  AmexioHomePageCenterPanelComponent,
+  AmexioHomePageEastPanelComponent,
+  AmexioHomePageNorthPanelComponent,
+  AmexioHomePageWestPanelComponent,
 ];
 
 @NgModule({
   imports: [
     CommonModule,
-    AmexioCommonModule,
+    AmexioNavModule,
+    AmexioLayoutModule,
+    AmexioCommonModule.forRoot(),
   ],
   exports: CREATIVE_COMPONENTS,
   declarations: CREATIVE_COMPONENTS,

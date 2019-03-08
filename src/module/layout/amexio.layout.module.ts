@@ -42,7 +42,6 @@ import {CommonDataService} from '../services/data/common.data.service';
 import {DeviceQueryService} from '../services/device/device.query.service';
 import {IconLoaderService} from '../services/icon/icon.service';
 
-import { AmexioCreativeModule } from './../creative/amexio.creative.module';
 import {AmexioGridLayoutService} from './gridlayout/amexiogridlayoutservice.service';
 
 import { AmexioCommonModule } from '../base/amexio.common.module';
@@ -85,7 +84,6 @@ const LAYOUT_COMPONENTS = [
     FormsModule,
     HttpClientModule,
     AmexioBaseContextMenuModule,
-    AmexioCreativeModule,
     AmexioCommonModule,
   ],
   exports: LAYOUT_COMPONENTS,
