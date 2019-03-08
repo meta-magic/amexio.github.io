@@ -4447,6 +4447,56 @@ amexio-step-wizard .form-footer {
   font-weight: 600;
   margin-right: 7px; }
 
+amexio-homepage-northpanel .topnav {
+  padding: 0px; }
+
+amexio-homepage-northpanel .topnav-lhs {
+  flex: 0 0 19%;
+  max-width: 19%; }
+
+amexio-homepage-northpanel .topnav-lhs-mobile {
+  flex: none;
+  max-width: 100%; }
+
+amexio-homepage-northpanel .topnav-rhs {
+  flex-grow: inherit; }
+
+amexio-homepage-northpanel .topnavbarunit1-mobile {
+  padding-left: 45px; }
+
+amexio-homepage-westpanel .homepage-westpanel {
+  padding-top: 50px; }
+
+amexio-homepage-centerpanel .homepage-centerpanel {
+  padding: 10px; }
+
+amexio-homepage-centerpanel .homepage-centerpanel {
+  /* padding-left: 20%; */ }
+
+amexio-homepage-northpanel .top-nav-button {
+  padding-left: 0px; }
+
+amexio-homepage-westpanel .sidenav::-webkit-scrollbar {
+  width: 3px; }
+
+amexio-homepage-northpanel .topnav {
+  box-shadow: none !important; }
+
+amexio-homepage-northpanel .topnav-lhs {
+  background-color: #8D021F;
+  color: white; }
+
+amexio-homepage-northpanel .topnav-rhs {
+  flex-grow: inherit;
+  background: white; }
+
+amexio-homepage-westpanel .sidenav .border {
+  border-bottom: none; }
+
+amexio-homepage-westpanel .sidenav-color {
+  background-color: white;
+  color: #8D021F; }
+
 /****************************************************************************
     Component Name : Datapoints
     Version : Amexio v4.0 onwards
@@ -7292,7 +7342,7 @@ amexio-layout amexio-layout-item {
   background-color: white; }
 
 /** Amexio overlay Structure CSS **/
-.overlay {
+.overlayContainer {
   position: fixed;
   z-index: 4;
   padding: 10px;
