@@ -37,20 +37,8 @@ export class AmexioHomePageComponent implements OnInit, AfterContentInit {
       // NAVBAR
       this.amexioNavBarComponent.isLHSHide = true;
       this.amexioNavBarComponent.lhsWidth = '0 0 5%';
-      this.sideNavComponents[0].onMouseLeave.subscribe((eventdata: any) =>
-        this.westPanelOnMouseleave(),
-      );
-      this.sideNavComponents[0].onMouseOver.subscribe((eventdata: any) =>
-        this.westPanelOnMouseOver(),
-      );
-      this.sideNavComponents[0].nodeClick.subscribe((eventdata: any) =>
-        this.westPanelNodeClick(eventdata),
-      );
-      this.amexioNavBarComponent.onMouseOver.subscribe((eventdata: any) =>
-        this.northPanelMouseOver(),
-      );
-      this.amexioNavBarComponent.onMouseLeave.subscribe((eventdata: any) =>
-        this.northPanelMosueLeave(),
+      this.amexioNavBarComponent.onIconClick.subscribe((eventdata: any) =>
+        this.northPanelClick(eventdata),
       );
     }
     if (this.amexoHomePageNorthpanel) {
@@ -98,20 +86,21 @@ export class AmexioHomePageComponent implements OnInit, AfterContentInit {
     }
   }
 
-  // TO MOUSE OVER NORTH PANEL
-  northPanelMouseOver() {
-    this.amexioNavBarComponent.isLHSHide = false;
-    // SIDE NAV
-    this.sideNavComponents[0].isShowOnlyIcon = false;
-    this.sideNavComponents[0].width = '19%';
-    this.westPanelWidth = '0 0 19%';
+  // ON NORTH PANEL CLICK
+  northPanelClick(isExpand: any) {
+    if (isExpand) {
+      this.amexioNavBarComponent.isLHSHide = false;
+      // SIDE NAV
+      this.sideNavComponents[0].isShowOnlyIcon = false;
+      this.sideNavComponents[0].width = '19%';
+      this.westPanelWidth = '0 0 19%';
+    } else {
+      this.amexioNavBarComponent.isLHSHide = true;
+      // SIDE NAV
+      this.sideNavComponents[0].isShowOnlyIcon = true;
+      this.sideNavComponents[0].width = '5%';
+      this.westPanelWidth = '0 0 5%';
+    }
   }
-  // TO MOUSE LEAVE NORTH PANEL
-  northPanelMosueLeave() {
-    this.amexioNavBarComponent.isLHSHide = true;
-    // SIDE NAV
-    this.sideNavComponents[0].isShowOnlyIcon = true;
-    this.sideNavComponents[0].width = '5%';
-    this.westPanelWidth = '0 0 5%';
-  }
+
 }

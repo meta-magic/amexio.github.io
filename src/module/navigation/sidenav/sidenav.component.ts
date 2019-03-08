@@ -300,9 +300,6 @@ export class AmexioSideNavComponent implements OnInit, AfterContentInit {
   onClick(node: any) {
     this.nodeClick.emit(node);
     this.activateNode(this.data, node);
-    if (this.homepageType === '2') {
-      this.closeMiniSideNav(node);
-    }
     if (this.smalldevice && (!node.children || node.children === null || node.children === '')) {
       this.isSideNavEnable = false;
     } else {

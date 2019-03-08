@@ -92,9 +92,7 @@ description : Color
 
   @Output() onIconArrowClick: any = new EventEmitter<any>();
 
-  @Output() onMouseOver: any = new EventEmitter<any>();
-
-  @Output() onMouseLeave: any = new EventEmitter<any>();
+  @Output() onIconClick: any = new EventEmitter<any>();
 
   @ContentChildren(AmexioNavItemComponent) navitems: QueryList<AmexioNavItemComponent>;
 
@@ -116,6 +114,7 @@ description : Color
   isIconLeft = true;
   isLHSHide = false;
   lhsWidth = '5%';
+  isExapnd = false;
   constructor(public matchMediaService: DeviceQueryService) {
     if (this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone()) {
       this.mobilemode = true;
@@ -240,18 +239,17 @@ description : Color
     this.isIconLeft = !this.isIconLeft;
   }
   // THIS EVENT IS HOME COMPOENNT USE.NOT EXPOSED
-  onMouseOverClick() {
+  onExpandIconClick() {
+    console.log(this.isExapnd);
     if (this.homepageType === '2') {
-      this.onMouseOver.emit();
-      this.lhsWidth = '0 0 19%';
-    }
-  }
-  // THIS EVENT IS USED FOR HOME COMPONENT NOT EXPOSED
-  onMouseLeaveClick() {
-    if (this.homepageType === '2') {
-      this.onMouseLeave.emit();
-      this.isLHSHide = true;
-      this.lhsWidth = '0 0 5%';
+      if (!this.isExapnd) {
+        this.lhsWidth = '0 0 19%';
+      } else  {
+        this.isLHSHide = true;
+        this.lhsWidth = '0 0 5%';
+      }
+      this.onIconClick.emit(!this.isExapnd);
+      this.isExapnd = !this.isExapnd;
     }
   }
 }

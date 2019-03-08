@@ -1,21 +1,87 @@
-amexio-homepage-northpanel .topnav {
-    box-shadow: none!important;
-}
-amexio-homepage-northpanel .topnav-lhs {
-    background-color: $homepageTopnavLHS;
-    color: $homepageTopnavLHSColor;
+.homepage-centerpanel-flex {
+    flex-grow: 1;
+    padding-top: 50px;
 }
 
-amexio-homepage-northpanel .topnav-rhs {
-    flex-grow: inherit;
-    background: $homepageTopnavRHS;
+.homepage-northpanel-flex {
+    display: flex;
+    flex-direction: row
 }
 
-amexio-homepage-westpanel .sidenav .border {
+.homepage-1 .sidenav .border,
+.homepage-2 .sidenav .border {
     border-bottom: none;
 }
-amexio-homepage-westpanel .sidenav-color{
-    background-color: $homepageSideNavBG;
-    color: $homepageSideNavColor;
-  }
-  
+
+.homepage-1 .topnav,
+.homepage-2 .topnav {
+    // box-shadow: none!important;
+}
+
+.homepage-1 .topnav-lhs-color,
+.homepage-2 .topnav-lhs-color {
+    // background-color: $homepageTopnavBGColorLHS;
+    // color: $homepageTopnavLHSColor;
+}
+
+.homepage-1 .topnav-rhs-color,
+.homepage-2 .topnav-rhs-color {
+    // background-color: $homepageTopnavBGColorRHS;
+    // color: $homepageTopnavColorRHS;
+}
+
+.homepage-1 .sidenav-color,
+.homepage-2 .sidenav-color {
+    // background-color: $homepageSideNavBG;
+    // color: $homepageSideNavColor;
+}
+
+.collaspe-icon-style {
+    margin-right: -26px;
+    z-index: 2;
+    height: 50px;
+    // background-color: $homepageSideNavColor;
+    // color: $homepageSideNavBG;
+    background-color: $homepageTopnavBGColorLHS;
+    color: $homepageTopnavLHSColor;
+    width: 50px;
+    border-radius: 100%;
+    justify-content: center;
+    display: flex;
+    cursor: pointer;
+    box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2) !important;
+    filter: grayscale(20%);
+    transform: perspective(1px) translateZ(0);
+    transition-duration: 0.5s;
+    transition-property: box-shadow;
+}
+
+.homepage-1 .topnavmainbarinneritems .nav-dropdown-content,
+.homepage-2 .topnavmainbarinneritems .nav-dropdown-content {
+    // background-color: $homepageTopnavBGColorRHS;
+    // color: $homepageTopnavColorRHS;
+}
+
+.homepage-2 .homepage-expand {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.homepage-2 .homepage-collapse {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+.homepage-1 .homepage-expand {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.homepage-1 .homepage-collapse {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
