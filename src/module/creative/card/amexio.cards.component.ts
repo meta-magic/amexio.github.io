@@ -43,6 +43,8 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
 
   cclass: string;
 
+  windowFlag = false;
+
   @ContentChildren(AmexioCardCEHeaderComponent) AmexioCardCEHeaderQueryList: QueryList<AmexioCardCEHeaderComponent>;
 
   amexioCardHeaderList: AmexioCardCEHeaderComponent[];
@@ -108,7 +110,8 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
 
   ngAfterContentInit() {
     if (this.AmexioCardCEHeaderQueryList) {
-      this.AmexioCardCEHeaderQueryList.toArray()[0].setWindowFlag(true);
+      this.amexioCardHeaderList = this.AmexioCardCEHeaderQueryList.toArray();
+      this.amexioCardHeaderList[0].setWindowFlag(false);
     }
     this.setCardAligementForAllInnerComponent();
   }
