@@ -18,9 +18,12 @@
 // Dialogue
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import {
-  Component, EventEmitter, HostListener, Input, OnChanges, OnDestroy, OnInit, Output, Renderer2,
+  AfterContentInit, Component, ContentChildren, EventEmitter, HostListener, Input,
+  OnChanges, OnDestroy, OnInit, Output, QueryList, Renderer2,
   SimpleChanges,
 } from '@angular/core';
+
+import { AmexioFooterComponent } from '../action/pane.action.footer';
 @Component({
   selector: 'amexio-dialogue',
   templateUrl: './dialogue.pane.component.html',
@@ -38,7 +41,7 @@ import {
     ]),
   ],
 })
-export class AmexiodialoguePaneComponent implements OnChanges, OnInit, OnDestroy {
+export class AmexiodialoguePaneComponent implements AfterContentInit, OnChanges, OnInit, OnDestroy {
 
   /*
    Properties
@@ -225,6 +228,9 @@ export class AmexiodialoguePaneComponent implements OnChanges, OnInit, OnDestroy
    description : Fire when user close dialogue
    */
   @Output() close: EventEmitter<any> = new EventEmitter<any>();
+
+  @ContentChildren(AmexioFooterComponent) amexioFooter: QueryList<AmexioFooterComponent>;
+
   value = 0;
   defaultStyle: string;
   componentId: string;
@@ -257,6 +263,14 @@ export class AmexiodialoguePaneComponent implements OnChanges, OnInit, OnDestroy
     this.defaultStyle = this.getDefaultStyle();
     this.buttontype = this.getStyle();
     this.componentId = this.createCompId('dialog', this.type);
+  }
+
+  ngAfterContentInit(): void {
+    if (this.amexioFooter) {
+      this.amexioFooter.toArray().forEach((footer: any) => {
+        footer.footer = true;
+      });
+    }
   }
 
   ngOnChanges(changes: SimpleChanges) {
