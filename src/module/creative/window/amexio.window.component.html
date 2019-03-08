@@ -1,0 +1,10 @@
+<div *ngIf="show" class="amexio-root-window-ce" [style.justify-content]="horizontalposition">
+  <div class="amexio-root-window-content-ce" [@animation]="{value: 'visible', params: {transitionParams: transitionOptions}}"
+    [style.width]="width" [style.justify-content]="verticalposition" [ngStyle]="maximumWindowStyle" [ngClass]="{'content-max-height': (maximize && isFullWindow)}">
+    <div [ngStyle]="{'background': bgimage ? 'url(' + bgimage + ') center/cover no-repeat' : null}" [ngClass]="cclass">
+      <div [ngStyle]="{'justify-content': (align === 'start' || align === 'end') ? 'flex-'+align:align , 'color':color, 'background': background}">
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </div>
+</div>

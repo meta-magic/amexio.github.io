@@ -24,7 +24,7 @@
                           ?
                         </span>
                 </button>
-            <amexio-dialogue [show-dialogue]="showDialogue" [custom]="true" [content-align]="'left'" [closable]="false" [title]="'Invalid Fields'" [type]="'confirm'">
+            <amexio-dialogue [close-on-escape]="true" [(show)]="showDialogue" [custom]="true" [content-align]="'left'" [closable]="false" [title]="'Invalid Fields'" [type]="'confirm'">
 
                 <amexio-body *ngFor="let msg of errorMsgArray let index=index">
                     <amexio-label>{{index+1}}) {{msg.label}}</amexio-label><br>

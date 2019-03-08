@@ -15,12 +15,13 @@
 *
 *  Created by sagar on 4/02/2019.
 */
-import { AfterContentInit, AfterViewInit, Component, ContentChildren, HostBinding, Input, OnDestroy, OnInit, QueryList,
+import {
+  AfterContentInit, AfterViewInit, Component, ContentChildren, HostBinding, Input, OnDestroy, OnInit, QueryList,
 } from '@angular/core';
 import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
-import { AmexioCardCEActionComponent } from './amexio.action.component';
-import { AmexioCardCEBodyComponent } from './amexio.body.component';
-import { AmexioCardCEHeaderComponent } from './amexio.header.component';
+import { AmexioCardCEActionComponent } from '../common/amexio.action.component';
+import { AmexioCardCEBodyComponent } from '../common/amexio.body.component';
+import { AmexioCardCEHeaderComponent } from '../common/amexio.header.component';
 
 @Component({
   selector: 'amexio-card-ce',
@@ -41,6 +42,8 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
   @Input('style-type') styleType: string;
 
   cclass: string;
+
+  windowFlag = false;
 
   @ContentChildren(AmexioCardCEHeaderComponent) AmexioCardCEHeaderQueryList: QueryList<AmexioCardCEHeaderComponent>;
 
@@ -67,6 +70,7 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
     }
     this.setWiderAndNarrower();
     super.ngOnInit();
+
   }
   ngAfterViewInit() {
     super.ngAfterViewInit();
@@ -105,6 +109,10 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
   }
 
   ngAfterContentInit() {
+    if (this.AmexioCardCEHeaderQueryList) {
+      this.amexioCardHeaderList = this.AmexioCardCEHeaderQueryList.toArray();
+      this.amexioCardHeaderList[0].setWindowFlag(false);
+    }
     this.setCardAligementForAllInnerComponent();
   }
 

@@ -219,7 +219,16 @@ export class AmexioItemSelectorComponent implements OnInit {
     }
 
     this.availableData = responsedata;
+    this.generateIndex(this.availableData);
     this.mask = false;
+  }
+
+  generateIndex(getAvailableData: any) {
+    if (getAvailableData) {
+      getAvailableData.forEach((element: any, index: any) => {
+        element['id'] = 'itemselector' + Math.floor(Math.random() * 10000 + 99999);
+      });
+    }
   }
 
   itemClick(data: any, index: any, left: boolean, right: boolean) {
@@ -233,7 +242,6 @@ export class AmexioItemSelectorComponent implements OnInit {
       } else {
         ir['isSelected'] = false;
       }
-
     }
 
     if (right) {
@@ -245,12 +253,76 @@ export class AmexioItemSelectorComponent implements OnInit {
         }
       }
     }
+  }
+  dataFormLeftToRightMove(dragData: any) {
+    this.itemClick(dragData.data, dragData.index, true, false);
+    let currentNode: any;
+    if (this.availableData && this.availableData.length !== 1) {
+      this.availableData.forEach((element: any, index: any) => {
+        if (element.id && dragData.data.id) {
+          if (element.id === dragData.data.id) {
+            currentNode = index - 1;
+          }
+          if (index === 0) {
+            currentNode = index + 1;
+          }
+        }
+      });
+      const focusId = (this.availableData[currentNode]);
+      document.getElementById(focusId['id']).focus();
+    }
+    this.rightSwitch();
+  }
 
+  dataFormRightToLeftMove(dragData: any) {
+    this.itemClick(dragData.data, dragData.index, false, true);
+    if (this.selectedData.length !== 1) {
+      this.shiftFocusMethod(dragData);
+    }
+    this.leftSwitch();
+  }
+
+  shiftFocusMethod(dragData: any) {
+    let currentIndex: any;
+    if (this.selectedData && this.selectedData.length > 0) {
+      this.selectedData.forEach((element: any, index: any) => {
+        if (element.id === dragData.data.id) {
+          currentIndex = index - 1;
+        }
+        if (index === 0) {
+          currentIndex = index + 1;
+        }
+      });
+    }
+    const focusId = (this.selectedData[currentIndex]);
+    document.getElementById(focusId['id']).focus();
+  }
+
+  upSwitchOnTab(ArrowPress: any) {
+    this.itemClick(ArrowPress.data, ArrowPress.index, false, true);
+    this.upSwitch();
+    this.itemClick(ArrowPress.data, ArrowPress.index, false, true);
+  }
+
+  moveTopOnTab(ArrowPress: any) {
+    this.itemClick(ArrowPress.data, ArrowPress.index, false, true);
+    this.moveTop();
+    this.itemClick(ArrowPress.data, ArrowPress.index, false, true);
+  }
+
+  downSwitchOnTab(ArrowPress: any) {
+    this.itemClick(ArrowPress.data, ArrowPress.index, false, true);
+    this.downSwitch();
+  }
+
+  moveBottomOnTab(ArrowPress: any) {
+    this.itemClick(ArrowPress.data, ArrowPress.index, false, true);
+    this.moveBottom();
   }
 
   rightSwitch() {
     this.selectedData.forEach((element) => {
-     this.dragDropValidation(element);
+      this.dragDropValidation(element);
     });
     if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected') && this.switchingObject['isSelected']) {
       this.selectedData.push(this.switchingObject);

@@ -1,0 +1,21 @@
+<div [ngClass]="cclass" [ngStyle]="{'background': ' url(' + bgimage + ') center/cover no-repeat' }">
+    <header class="window-header-ce" [ngStyle]="{'color': color,'background':background,'height': height}">
+        <div class="window-header-div-ce" [ngStyle]="{'justify-content': (align === 'start' || align === 'end') ? 'flex-'+align:align,
+                     'flex-direction' : (!window && direction) ? direction : null}">
+            <div class="window-header-content-ce" [style.justify-content]="verticalalign">
+                <ng-content>
+
+                </ng-content>
+            </div>
+        </div>
+        <div class="window-header-inner-div-ce"></div>
+
+        <div class="window-header-content-ce" [style.justify-content]="verticalalign">
+            <div style="flex-direction:row;">
+                <amexio-c-icon class="cursor-style" *ngIf="(isFullWindow && maximize )" [key]="'window_maximize'" (onClick)="sizeChange()"></amexio-c-icon>
+                <amexio-c-icon class="cursor-style" *ngIf="(!isFullWindow && maximize )" [key]="'window_restore'" (click)="sizeChange()"></amexio-c-icon>
+                <amexio-c-icon class="cursor-style" style="padding-left: 10px" *ngIf="closeable" [key]="'window_close'" (onClick)="onCloseClick()"></amexio-c-icon>
+            </div>
+        </div>
+    </header>
+</div>

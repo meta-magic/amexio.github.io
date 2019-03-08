@@ -129,8 +129,8 @@
 }
 
 .sidenav .activenode {
-  background-color: $sidenavactive;
-  color: inherit;
+  background-color: $sidenavactive !important;
+  color: inherit !important;
 }
 
 .sidenav .border{

@@ -5222,7 +5222,8 @@ amexio-layout-columns amexio-layout-item {
   line-height: 24px;
   font-weight: 400;
   flex-grow: 1;
-  position: relative; }
+  position: relative;
+  display: block; }
 
 .card-container-footer {
   padding: 10px;
@@ -5709,8 +5710,8 @@ amexio-layout-columns amexio-layout-item {
   color: black; }
 
 .sidenav .activenode {
-  background-color: #a9f74f;
-  color: inherit; }
+  background-color: #a9f74f !important;
+  color: inherit !important; }
 
 .sidenav .border {
   border-bottom: 2px solid #417505; }
@@ -6051,6 +6052,22 @@ amexio-layout-columns amexio-layout-item {
   width: 80%;
   float: right;
   display: inline; }
+
+.context-menu-list-items1:focus {
+  background-color: #ecff82;
+  outline: none; }
+
+.breadcrumb-group:focus {
+  background: #ecff82;
+  outline: none; }
+
+.arrow-group-css:focus {
+  background: #ecff82;
+  outline: none; }
+
+.label-icon-css:focus {
+  background: #ecff82;
+  outline: none; }
 
 /****************************************************************************
     Component Name : Accordion
@@ -7342,7 +7359,7 @@ amexio-layout amexio-layout-item {
 
 /** Amexio overlay Structure CSS **/
 .overlayContainer {
-  position: fixed;
+  position: absolute;
   z-index: 4;
   padding: 10px;
   margin: 10px;
@@ -7407,6 +7424,73 @@ amexio-layout amexio-layout-item {
 .containerClass::-webkit-scrollbar {
   width: 6px;
   height: 6px; }
+
+/****************************************************************************
+    Component Name : Window CE
+    Version : Amexio v5.8 onwards
+*****************************************************************************/
+/** windowce - Vars CSS **/
+/** windowce - Visual CSS **/
+.amexio-root-window-ce {
+  background: rgba(128, 127, 127, 0.6); }
+
+/** windowce - Structure CSS **/
+.amexio-root-window-ce {
+  background: rgba(128, 127, 127, 0.6);
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 3;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  top: 0;
+  left: 0; }
+
+.amexio-root-window-content-ce {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 96%;
+  margin-top: 1%; }
+
+.amexio-root-window-content-ce > * {
+  padding: 0px; }
+
+.card-container-body {
+  padding: 10px;
+  font-size: 14px;
+  display: block;
+  line-height: 24px;
+  font-weight: 400;
+  flex-grow: 1;
+  position: relative; }
+
+/* .amexio-root-window-content-ce .window-middle::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.amexio-root-window-content-ce .window-middle::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+} */
+.window-header-ce {
+  padding: 10px;
+  position: relative;
+  display: flex; }
+
+.window-header-div-ce {
+  display: flex;
+  flex-grow: 50;
+  flex-direction: row; }
+
+.window-header-content-ce {
+  display: flex;
+  flex-direction: column; }
+
+.window-header-inner-div-ce {
+  flex-grow: 1;
+  flex-direction: row; }
 
 /****************************************************************************
                     Media Query for width - 375

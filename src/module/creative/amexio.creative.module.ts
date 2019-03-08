@@ -22,10 +22,10 @@ import { AmexioHomePageComponent } from './../creative/homepage/homepage.compone
 
 import { AmexioProgressCEComponent } from './progressbar/progressce.component';
 
-import { AmexioCardCEActionComponent } from './../creative/card/amexio.action.component';
-import { AmexioCardCEBodyComponent } from './../creative/card/amexio.body.component';
 import { AmexioCardCEComponent } from './../creative/card/amexio.cards.component';
-import { AmexioCardCEHeaderComponent } from './../creative/card/amexio.header.component';
+import { AmexioCardCEActionComponent } from './../creative/common/amexio.action.component';
+import { AmexioCardCEBodyComponent } from './../creative/common/amexio.body.component';
+import { AmexioCardCEHeaderComponent } from './../creative/common/amexio.header.component';
 
 import { AmexioCommonModule } from '../base/amexio.common.module';
 import { AmexioHomePageCenterPanelComponent } from './../creative/homepage/homepage.centerpanel.component';
@@ -35,15 +35,20 @@ import { AmexioHomePageWestPanelComponent } from './../creative/homepage/homepag
 import { AmexioLayoutModule } from './../layout/amexio.layout.module';
 import { AmexioNavModule } from './../navigation/amexio.nav.module';
 
-export * from './../creative/card/amexio.action.component';
-export * from './../creative/card/amexio.body.component';
+import { AmexioWindowCEComponent } from './../creative/window/amexio.window.component';
+
+import { IconLoaderService } from '../services/icon/icon.service';
+
+export * from './../creative/common/amexio.action.component';
+export * from './../creative/common/amexio.body.component';
 export * from './../creative/card/amexio.cards.component';
-export * from './../creative/card/amexio.header.component';
+export * from './../creative/common/amexio.header.component';
 export * from './homepage/homepage.centerpanel.component';
 export * from './homepage/homepage.eastpanel.component';
 export * from './homepage/homepage.northpanel.component';
 export * from './homepage/homepage.westpanel.component';
 export * from './homepage/homepage.component';
+export * from './../creative/window/amexio.window.component';
 
 const CREATIVE_COMPONENTS = [
   AmexioCardCEHeaderComponent,
@@ -56,6 +61,7 @@ const CREATIVE_COMPONENTS = [
   AmexioHomePageEastPanelComponent,
   AmexioHomePageNorthPanelComponent,
   AmexioHomePageWestPanelComponent,
+  AmexioWindowCEComponent,
 ];
 
 @NgModule({
@@ -67,13 +73,13 @@ const CREATIVE_COMPONENTS = [
   ],
   exports: CREATIVE_COMPONENTS,
   declarations: CREATIVE_COMPONENTS,
-  providers: [],
+  providers: [IconLoaderService],
 })
 export class AmexioCreativeModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: AmexioCreativeModule,
-      providers: [],
+      providers: [IconLoaderService],
     };
   }
 }
