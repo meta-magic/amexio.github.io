@@ -18,9 +18,9 @@
 import { AfterContentInit, AfterViewInit, Component, ContentChildren, HostBinding, Input, OnDestroy, OnInit, QueryList,
 } from '@angular/core';
 import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
-import { AmexioCardCEActionComponent } from './amexio.action.component';
-import { AmexioCardCEBodyComponent } from './amexio.body.component';
-import { AmexioCardCEHeaderComponent } from './amexio.header.component';
+import { AmexioCardCEActionComponent } from '../common/amexio.action.component';
+import { AmexioCardCEBodyComponent } from '../common/amexio.body.component';
+import { AmexioCardCEHeaderComponent } from '../common/amexio.header.component';
 
 @Component({
   selector: 'amexio-card-ce',

@@ -3825,7 +3825,7 @@ header .billboard .content-button {
 .close-button {
   cursor: pointer;
   padding-left: 98%;
-  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 100%); }
+  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, transparent 70%, transparent 100%); }
 
 /****************************************************************************
     Component Name : Enterprise Youtube
@@ -3834,7 +3834,7 @@ header .billboard .content-button {
 /** enterprise-youtube - Visual CSS **/
 .close-button {
   color: grey;
-  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 100%); }
+  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, transparent 70%, transparent 100%); }
 
 .close-button i:hover {
   color: red; }
@@ -3858,8 +3858,8 @@ header .billboard .content-button {
   font-size: 20px; }
 
 .tile__details {
-  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%); }
+  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%); }
 
 .tile__details:after,
 .tile__details:before {
@@ -3867,8 +3867,8 @@ header .billboard .content-button {
 
 .tile__details_v {
   font-size: 10px;
-  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%); }
+  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%); }
 
 .tile__details_v:after,
 .tile__details_v:before {
@@ -5172,7 +5172,8 @@ amexio-layout-columns amexio-layout-item {
   line-height: 24px;
   font-weight: 400;
   flex-grow: 1;
-  position: relative; }
+  position: relative;
+  display: block; }
 
 .card-container-footer {
   padding: 10px;
@@ -7357,6 +7358,73 @@ amexio-layout amexio-layout-item {
 .containerClass::-webkit-scrollbar {
   width: 6px;
   height: 6px; }
+
+/****************************************************************************
+    Component Name : Window CE
+    Version : Amexio v5.8 onwards
+*****************************************************************************/
+/** windowce - Vars CSS **/
+/** windowce - Visual CSS **/
+.amexio-root-window-ce {
+  background: rgba(128, 127, 127, 0.6); }
+
+/** windowce - Structure CSS **/
+.amexio-root-window-ce {
+  background: rgba(128, 127, 127, 0.6);
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 3;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  top: 0;
+  left: 0; }
+
+.amexio-root-window-content-ce {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 96%;
+  margin-top: 1%; }
+
+.amexio-root-window-content-ce > * {
+  padding: 0px; }
+
+.card-container-body {
+  padding: 10px;
+  font-size: 14px;
+  display: block;
+  line-height: 24px;
+  font-weight: 400;
+  flex-grow: 1;
+  position: relative; }
+
+/* .amexio-root-window-content-ce .window-middle::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.amexio-root-window-content-ce .window-middle::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+} */
+.window-header-ce {
+  padding: 10px;
+  position: relative;
+  display: flex; }
+
+.window-header-div-ce {
+  display: flex;
+  flex-grow: 50;
+  flex-direction: row; }
+
+.window-header-content-ce {
+  display: flex;
+  flex-direction: column; }
+
+.window-header-inner-div-ce {
+  flex-grow: 1;
+  flex-direction: row; }
 
 /****************************************************************************
                     Media Query for width - 375
