@@ -3,7 +3,7 @@
         <ng-content select="amexio-homepage-northpanel">
         </ng-content>
     </div>
-    <div style="display:flex;" [ngStyle]="{'flex-direction': isDisableWestPanel ? 'row' : 'column'}">
+    <div [ngStyle]="{'display': !isPhone ? 'flex':'','flex-direction': isDisableWestPanel ? 'row' : 'column'}">
         <div [ngStyle]="{'flex':isPhone ? '0 0 0%':westPanelWidth}">
             <ng-content *ngIf="isDisableWestPanel" select="amexio-homepage-westpanel">
             </ng-content>
