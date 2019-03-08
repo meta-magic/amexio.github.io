@@ -90,8 +90,9 @@ export class OverlayContainerComponent implements OnInit, OnDestroy {
       this.marginLeft = null;
     }
     return {
-      'bottom': this.bottom + 'px', 'margin-left': this.marginLeft + 'px', 'right': this.right +
-      'px', 'margin-top': this.top + 'px', 'left': this.left + 'px', 'width': this.width,
+      'bottom': this.bottom + 'px', 'margin-left': this.marginLeft + 'px',
+      'right': this.right + 'px', 'margin-top': this.top + 'px',
+      'left': this.left + 'px', 'width': this.width,
     };
   }
 
