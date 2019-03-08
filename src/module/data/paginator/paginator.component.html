@@ -3,8 +3,8 @@
     <a role="radiogroup" id="{{componentId}}" aria-label="previous page" tabindex="1" class="paginator-page" (click)="onPrevious()">&lt;</a>
     <a role="radiogroup" id="{{componentId}}" aria-label="previous set page" tabindex="1" class="paginator-page" (click)="onFirstClick()">&lt;&lt;</a>
   </span>
-  <span id="{{componentId}}" tabindex="1" attr.aria-label="Page{{i+1}}" role="link" class="paginator-pages" *ngFor="let page of activePages;let i = index">
-    <a class="paginator-page" [ngClass]="{'active' : activePageIndex == i  }" (click)="onPageClick(page,i)">{{page}}</a>
+  <span id="{{componentId}}" tabindex="1" attr.aria-label="Page{{i+1}}" role="link" (keyup.enter)="onPageClick(page,i)" class="paginator-pages" *ngFor="let page of activePages;let i = index">
+    <a class="paginator-page" [ngClass]="{'active' : activePageIndex == i  }"  (click)="onPageClick(page,i)">{{page}}</a>
   </span>
   <span role="presentation" class="paginator-pages">
     <a role="radiogroup" id="{{componentId}}" aria-label="next set page" tabindex="1" class="paginator-page" (click)="onLastClick()">&gt;&gt;</a>

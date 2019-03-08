@@ -147,11 +147,13 @@ description : Color
 
   loadNavItems() {
     this.handleNavItems();
-    this.navitemwidth = (5 +
-      (this.navbaritems2.nativeElement.offsetWidth) +
-      (this.navbaritems2.nativeElement.offsetWidth) +
-      (this.navbaritems3.nativeElement.offsetWidth));
-    this.handleDeviceSetting();
+    if (this.navbaritems2.nativeElement) {
+      this.navitemwidth = (5 +
+        (this.navbaritems2.nativeElement.offsetWidth) +
+        (this.navbaritems2.nativeElement.offsetWidth) +
+        (this.navbaritems3.nativeElement.offsetWidth));
+      this.handleDeviceSetting();
+    }
   }
 
   toggleDrawerPanel(event: any) {
