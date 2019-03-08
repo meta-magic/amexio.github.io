@@ -8,7 +8,8 @@
         </div>
     </header>
 </div> 
- <div *ngIf="window" [ngClass]="cclass"  [ngStyle]="{'background': ' url(' + bgimage + ') center/cover no-repeat' }">
+
+  <div *ngIf="window" [ngClass]="cclass"  [ngStyle]="{'background': ' url(' + bgimage + ') center/cover no-repeat' }">
      <header class="window-header-ce"  [ngStyle]="{'color': color,'background':background,'height': height}">  
          <div class="window-header-div-ce" [ngStyle]="{'justify-content': (align === 'start' || align === 'end') ? 'flex-'+align:align}">       
         <div class="window-header-content-ce" [style.justify-content]="verticalalign">
@@ -25,7 +26,7 @@
             </div>
         </div> 
        </header> 
-</div> 
+</div>  
 
 
 

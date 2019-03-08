@@ -15,7 +15,8 @@
 *
 *  Created by sagar on 4/02/2019.
 */
-import { AfterContentInit, AfterViewInit, Component, ContentChildren, HostBinding, Input, OnDestroy, OnInit, QueryList,
+import {
+  AfterContentInit, AfterViewInit, Component, ContentChildren, HostBinding, Input, OnDestroy, OnInit, QueryList,
 } from '@angular/core';
 import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
 import { AmexioCardCEActionComponent } from '../common/amexio.action.component';
@@ -67,6 +68,7 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
     }
     this.setWiderAndNarrower();
     super.ngOnInit();
+
   }
   ngAfterViewInit() {
     super.ngAfterViewInit();
@@ -105,6 +107,9 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
   }
 
   ngAfterContentInit() {
+    if (this.AmexioCardCEHeaderQueryList) {
+      this.AmexioCardCEHeaderQueryList.toArray()[0].setWindowFlag(true);
+    }
     this.setCardAligementForAllInnerComponent();
   }
 
