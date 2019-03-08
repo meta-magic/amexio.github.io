@@ -6412,6 +6412,22 @@ amexio-layout-columns amexio-layout-item {
   float: right;
   display: inline; }
 
+.context-menu-list-items1:focus {
+  background-color: rgba(255, 253, 208, 0.4);
+  outline: none; }
+
+.breadcrumb-group:focus {
+  background: rgba(255, 253, 208, 0.4);
+  outline: none; }
+
+.arrow-group-css:focus {
+  background: rgba(255, 253, 208, 0.4);
+  outline: none; }
+
+.label-icon-css:focus {
+  background: rgba(255, 253, 208, 0.4);
+  outline: none; }
+
 /****************************************************************************
     Component Name : Accordion
     Version : Amexio v4.0 onwards

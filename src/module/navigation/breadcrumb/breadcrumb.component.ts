@@ -16,7 +16,7 @@
 * Created by kedarkokil on 26/09/18.
 */
 
-import { animate, state, style, transition, trigger} from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 import { CommonDataService } from '../../services/data/common.data.service';
 
@@ -33,8 +33,8 @@ import { CommonDataService } from '../../services/data/common.data.service';
         'transform-origin': 'left top 0px',
         'transform': 'scale(1)',
       })),
-      transition('*=>hidden',  animate('0ms')),
-      transition('*=>visible',  animate('200ms')),
+      transition('*=>hidden', animate('0ms')),
+      transition('*=>visible', animate('200ms')),
     ]),
   ],
 })
@@ -158,11 +158,23 @@ description : Type of HTTP call, POST,GET etc.
     if (nodeArray && nodeArray.length > 0) {
       nodeArray.forEach((node: any) => {
         if (node[this.childarraykey]) {
-          node[this.childarraykey].forEach((element: any) => {
+          node[this.childarraykey].forEach((element: any, index: any) => {
+            element['id'] = Math.floor(Math.random() * 90000) + 10000 + '_id';
+            if (node[this.childarraykey]) {
+              this.iconAddedMethod(node[this.childarraykey]);
+            }
+            this.setTabindex(index, element);
             this.childIconCheckMethod(element);
           });
         }
       });
+    }
+  }
+  setTabindex(index: any, element: any) {
+    if (index === 0) {
+      element['tabindex'] = 1;
+    } else {
+      element['tabindex'] = -1;
     }
   }
 
@@ -200,6 +212,35 @@ description : Type of HTTP call, POST,GET etc.
     } else {
       this.arrowKey = this.buttonAngleRightCss;
     }
+  }
+  onArrowDown(nodeArray: any, node: any, index: any) {
+    let currentindex;
+    if (index < nodeArray[this.childarraykey].length - 1) {
+      nodeArray[this.childarraykey].forEach((element: any) => {
+        if (node['id'] === element['id']) {
+          currentindex = index + 1;
+        }
+      });
+    } else if (index === nodeArray[this.childarraykey].length - 1) {
+      currentindex = 0;
+    }
+    const itemid = nodeArray[this.childarraykey][currentindex];
+    document.getElementById(itemid['id']).focus();
+  }
+  onArrowUp(nodeArray: any, node: any, index: any) {
+    let currentindex;
+    if (index !== 0) {
+      nodeArray[this.childarraykey].forEach((element: any) => {
+        if (node['id'] === element['id']) {
+          currentindex = index - 1;
+        }
+      });
+    } else if (index === 0) {
+      currentindex = nodeArray[this.childarraykey].length - 1;
+    }
+
+    const itemid = nodeArray[this.childarraykey][currentindex];
+    document.getElementById(itemid['id']).focus();
   }
 
   onButtonClick(event: any) {

@@ -90,6 +90,22 @@
         float: right; 
          display:inline;
     }
+    .context-menu-list-items1:focus{
+        background-color: $breadcrumbBGColor;
+        outline:none;
+     }
+     .breadcrumb-group:focus{
+        background:$breadcrumbBGColor;
+        outline: none;
+     }
+     .arrow-group-css:focus{
+        background:$breadcrumbBGColor;
+        outline: none;
+     }
+     .label-icon-css:focus{
+        background:$breadcrumbBGColor;
+        outline: none;
+     }
   
 
 

@@ -20,7 +20,8 @@ import { Component, Input, OnInit } from '@angular/core';
 @Component({
   selector: 'amexio-toolbar-item',
   template: `
-  <div [ngClass]="{'toolbaritemseperatorright':(seperatorposition === 'right'),'toolbaritemseperatorleft':(seperatorposition === 'left')}">
+  <div tabindex="1" [ngClass]="{'toolbaritemseperatorright':(seperatorposition === 'right'),
+  'toolbaritemseperatorleft':(seperatorposition === 'left')}">
   <ng-content></ng-content>
   </div>
    `,

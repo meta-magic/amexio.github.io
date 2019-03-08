@@ -5803,6 +5803,22 @@ amexio-homepage-westpanel .sidenav-color {
   float: right;
   display: inline; }
 
+.context-menu-list-items1:focus {
+  background-color: #ffc0b8;
+  outline: none; }
+
+.breadcrumb-group:focus {
+  background: #ffc0b8;
+  outline: none; }
+
+.arrow-group-css:focus {
+  background: #ffc0b8;
+  outline: none; }
+
+.label-icon-css:focus {
+  background: #ffc0b8;
+  outline: none; }
+
 /** Initialze Panels and Layouts variables ------------ */
 /****************************************************************************
     Component Name : Accordion
