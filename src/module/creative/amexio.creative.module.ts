@@ -32,8 +32,8 @@ import { AmexioHomePageCenterPanelComponent } from './../creative/homepage/homep
 import { AmexioHomePageEastPanelComponent } from './../creative/homepage/homepage.eastpanel.component';
 import { AmexioHomePageNorthPanelComponent } from './../creative/homepage/homepage.northpanel.component';
 import { AmexioHomePageWestPanelComponent } from './../creative/homepage/homepage.westpanel.component';
-import { AmexioNavModule } from './../navigation/amexio.nav.module';
 import { AmexioLayoutModule } from './../layout/amexio.layout.module';
+import { AmexioNavModule } from './../navigation/amexio.nav.module';
 
 export * from './../creative/card/amexio.action.component';
 export * from './../creative/card/amexio.body.component';

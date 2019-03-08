@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewInit, Component , ContentChild, ContentChildren, Input, OnInit, QueryList } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, ContentChild, ContentChildren, Input, OnInit, QueryList } from '@angular/core';
 import { AmexioNavBarComponent } from './../../navigation/navbar/navbar.component';
 import { AmexioSideNavComponent } from './../../navigation/sidenav/sidenav.component';
 import { DeviceQueryService } from './../../services/device/device.query.service';
@@ -9,14 +9,14 @@ import { AmexioHomePageNorthPanelComponent } from './homepage.northpanel.compone
 })
 export class AmexioHomePageComponent implements OnInit, AfterContentInit {
 
-  @Input('type')type: string = '0';
+  @Input('type') type = '0';
   @ContentChild(AmexioHomePageNorthPanelComponent)
   amexoHomePageNorthpanel: AmexioHomePageNorthPanelComponent;
 
   @ContentChildren(AmexioSideNavComponent, { descendants: true }) sideNavList: QueryList<AmexioSideNavComponent>;
   sideNavComponents: AmexioSideNavComponent[];
 
-  @ContentChild(AmexioNavBarComponent)amexioNavBarComponent: AmexioNavBarComponent;
+  @ContentChild(AmexioNavBarComponent) amexioNavBarComponent: AmexioNavBarComponent;
 
   isDisableWestPanel = true;
   isPhone = false;
@@ -26,7 +26,7 @@ export class AmexioHomePageComponent implements OnInit, AfterContentInit {
       this.isPhone = true;
     }
   }
-  ngOnInit() {}
+  ngOnInit() { }
   ngAfterContentInit() {
     this.sideNavComponents = this.sideNavList.toArray();
     if (this.type === '2') {
