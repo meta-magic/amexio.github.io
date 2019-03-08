@@ -3868,7 +3868,7 @@ header .billboard .content-button {
 .close-button {
   cursor: pointer;
   padding-left: 98%;
-  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 100%); }
+  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, transparent 70%, transparent 100%); }
 
 /****************************************************************************
     Component Name : Enterprise Youtube
@@ -3877,7 +3877,7 @@ header .billboard .content-button {
 /** enterprise-youtube - Visual CSS **/
 .close-button {
   color: grey;
-  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 100%); }
+  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, transparent 70%, transparent 100%); }
 
 .close-button i:hover {
   color: red; }
@@ -3901,8 +3901,8 @@ header .billboard .content-button {
   font-size: 20px; }
 
 .tile__details {
-  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%); }
+  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%); }
 
 .tile__details:after,
 .tile__details:before {
@@ -3910,8 +3910,8 @@ header .billboard .content-button {
 
 .tile__details_v {
   font-size: 10px;
-  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%); }
+  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%); }
 
 .tile__details_v:after,
 .tile__details_v:before {
@@ -4489,6 +4489,56 @@ amexio-step-wizard .form-footer {
 .step-wizard li.active a .label {
   font-weight: 600;
   margin-right: 7px; }
+
+amexio-homepage-northpanel .topnav {
+  padding: 0px; }
+
+amexio-homepage-northpanel .topnav-lhs {
+  flex: 0 0 19%;
+  max-width: 19%; }
+
+amexio-homepage-northpanel .topnav-lhs-mobile {
+  flex: none;
+  max-width: 100%; }
+
+amexio-homepage-northpanel .topnav-rhs {
+  flex-grow: inherit; }
+
+amexio-homepage-northpanel .topnavbarunit1-mobile {
+  padding-left: 45px; }
+
+amexio-homepage-westpanel .homepage-westpanel {
+  padding-top: 50px; }
+
+amexio-homepage-centerpanel .homepage-centerpanel {
+  padding: 10px; }
+
+amexio-homepage-centerpanel .homepage-centerpanel {
+  /* padding-left: 20%; */ }
+
+amexio-homepage-northpanel .top-nav-button {
+  padding-left: 0px; }
+
+amexio-homepage-westpanel .sidenav::-webkit-scrollbar {
+  width: 3px; }
+
+amexio-homepage-northpanel .topnav {
+  box-shadow: none !important; }
+
+amexio-homepage-northpanel .topnav-lhs {
+  background-color: #0052a5;
+  color: #f0f7ff; }
+
+amexio-homepage-northpanel .topnav-rhs {
+  flex-grow: inherit;
+  background: #ffffff; }
+
+amexio-homepage-westpanel .sidenav .border {
+  border-bottom: none; }
+
+amexio-homepage-westpanel .sidenav-color {
+  background-color: #ffffff;
+  color: #002952; }
 
 /****************************************************************************
     Component Name : Datapoints
@@ -7043,7 +7093,7 @@ amexio-layout amexio-layout-item {
   background-color: #0052a5; }
 
 /** Amexio overlay Structure CSS **/
-.overlay {
+.overlayContainer {
   position: fixed;
   z-index: 4;
   padding: 10px;
@@ -7061,7 +7111,7 @@ amexio-layout amexio-layout-item {
   border-width: 15px;
   border-style: solid;
   transform: rotate(180deg);
-  border-color: #66ff66 transparent transparent transparent; }
+  border-color: #b8dbff transparent transparent transparent; }
 
 .rightTopArrow::before {
   content: "";
@@ -7071,7 +7121,7 @@ amexio-layout amexio-layout-item {
   border-width: 15px;
   border-style: solid;
   transform: rotate(180deg);
-  border-color: #66ff66 transparent transparent transparent; }
+  border-color: #b8dbff transparent transparent transparent; }
 
 .rightBottomArrow::before {
   content: "";
@@ -7080,7 +7130,7 @@ amexio-layout amexio-layout-item {
   right: 10px;
   border-width: 15px;
   border-style: solid;
-  border-color: #66ff66 transparent transparent transparent; }
+  border-color: #b8dbff transparent transparent transparent; }
 
 .leftBottomArrow::before {
   content: "";
@@ -7089,7 +7139,7 @@ amexio-layout amexio-layout-item {
   left: 10px;
   border-width: 15px;
   border-style: solid;
-  border-color: #66ff66 transparent transparent transparent; }
+  border-color: #b8dbff transparent transparent transparent; }
 
 .hideoverlay {
   display: none; }
@@ -7408,11 +7458,11 @@ amexio-layout-columns amexio-layout-item {
 *****************************************************************************/
 @keyframes checkboxripple {
   0% {
-    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0); }
+    box-shadow: 0px 0px 0px 1px transparent; }
   50% {
     box-shadow: 0px 0px 0px 15px rgba(0, 0, 0, 0.1); }
   100% {
-    box-shadow: 0px 0px 0px 15px rgba(0, 0, 0, 0); } }
+    box-shadow: 0px 0px 0px 15px transparent; } }
 /* Show the input-box-container-label when checked */
 .input-box-container input:checked ~ .input-box-checkbox-label:after {
   animation: checkboxripple .3s ease-in; }
@@ -7422,11 +7472,11 @@ amexio-layout-columns amexio-layout-item {
 *****************************************************************************/
 @keyframes radioripple {
   0% {
-    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0); }
+    box-shadow: 0px 0px 0px 1px transparent; }
   50% {
     box-shadow: 0px 0px 0px 15px rgba(0, 0, 0, 0.1); }
   100% {
-    box-shadow: 0px 0px 0px 15px rgba(0, 0, 0, 0); } }
+    box-shadow: 0px 0px 0px 15px transparent; } }
 /* Show the input-box-container-label when checked */
 .input-box-container input:checked ~ .input-box-radiobox-label:after {
   animation: radioripple 0.3s linear forwards; }
