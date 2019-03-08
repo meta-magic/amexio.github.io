@@ -1,16 +1,16 @@
 <nav #navbar class="topnav" [ngStyle]="{'color': color}" [ngClass]="{'topnav-mobile':mobilemode, 'transparentNav':transparent}" (window:resize)="resize($event)">
-    <div #navbarfixed class="topnavbarunit1 topnav-lhs topnav-lhs-color" [ngStyle]="{'flex': lhsWidth,'flex-width':lhsWidth}" [ngClass]="{ 'topnavbarunit1-mobile topnav-lhs-mobile':mobilemode} ">
-        <div [ngClass]="{'homepage-expand': isExapnd,'homepage-collapse':!isExapnd }">
+    <div #navbarfixed class="topnavbarunit1 " [ngStyle]="{'flex': !mobilemode ? lhsWidth : '','flex-width': !mobilemode ? lhsWidth :'' }" [ngClass]="{ 'topnavbarunit1-mobile topnav-lhs-mobile':mobilemode,'topnav-lhs topnav-lhs-color':!mobilemode} ">
+        <div [ngClass]="{'homepage-expand': (isExpand && !mobilemode),'homepage-collapse':(!isExpand && !mobilemode) }">
             <ng-container *ngIf="!isLHSHide || mobilemode">
                 <span [ngStyle]="{ 'padding-left':sidenav ? '40px': '0px'} ">
-              <img alt="title " style="cursor: pointer " (click)="onNavLogoClick.emit($event) " (load)="onImageLoad() " *ngIf="logo " [attr.src]="logo " class="navbar-logo ">
-              <a (click)="onNavTitleClick.emit($event) ">{{title}}</a>
+                <img alt="title " style="cursor: pointer " (click)="onNavLogoClick.emit($event) " (load)="onImageLoad() " *ngIf="logo " [attr.src]="logo " class="navbar-logo ">
+                <a (click)="onNavTitleClick.emit($event) ">{{title}}</a>
              </span>
             </ng-container>
             <ng-container *ngIf="!mobilemode">
                 <span style="cursor:pointer" *ngIf="homepageType=='2' || isLHSHide " (click)="onExpandIconClick($event) ">
-                <amexio-image *ngIf="!isExapnd" [icon-class]=" 'fa fa-bars' "></amexio-image>
-                <amexio-image *ngIf="isExapnd" [icon-class]=" 'fa fa-times' "></amexio-image>
+                <amexio-image *ngIf="!isExpand" [icon-class]=" 'fa fa-bars' "></amexio-image>
+                <amexio-image *ngIf="isExpand" [icon-class]=" 'fa fa-times' "></amexio-image>
               </span>
             </ng-container>
             <ng-container *ngIf="!mobilemode && !isIconLeft ">
@@ -25,8 +25,8 @@
             <em *ngIf="toggle" class="fa fa-caret-up fa-2x"></em>
         </div>
     </div>
-    <div #navbaritems *ngIf="toggle" class="topnavbarunit2 topnav-rhs topnav-rhs-color" [ngClass]="{'topnavbarunit2-mobile':mobilemode}">
-        <div class="topnavmainbar" [ngClass]="{'topnavmainbar-mobile':mobilemode}">
+    <div #navbaritems *ngIf="toggle" class="topnavbarunit2" [ngClass]="{'topnavbarunit2-mobile':mobilemode}">
+        <div class="topnavmainbar" [ngClass]="{'topnavmainbar-mobile':mobilemode,'topnav-rhs topnav-rhs-color':!mobilemode}">
             <div #navbaritems1 class="topnavmainbaritems" [ngClass]="{'topnavmainbaritems-mobile':mobilemode}">
                 <ng-content select="[position-left]"></ng-content>
             </div>

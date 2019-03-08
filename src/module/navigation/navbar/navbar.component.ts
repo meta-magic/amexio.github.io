@@ -114,7 +114,7 @@ description : Color
   isIconLeft = true;
   isLHSHide = false;
   lhsWidth = '5%';
-  isExapnd = false;
+  isExpand = false;
   constructor(public matchMediaService: DeviceQueryService) {
     if (this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone()) {
       this.mobilemode = true;
@@ -240,16 +240,15 @@ description : Color
   }
   // THIS EVENT IS HOME COMPOENNT USE.NOT EXPOSED
   onExpandIconClick() {
-    console.log(this.isExapnd);
     if (this.homepageType === '2') {
-      if (!this.isExapnd) {
+      if (!this.isExpand) {
         this.lhsWidth = '0 0 19%';
       } else  {
         this.isLHSHide = true;
         this.lhsWidth = '0 0 5%';
       }
-      this.onIconClick.emit(!this.isExapnd);
-      this.isExapnd = !this.isExapnd;
+      this.onIconClick.emit(!this.isExpand);
+      this.isExpand = !this.isExpand;
     }
   }
 }
