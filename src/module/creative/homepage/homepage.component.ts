@@ -9,7 +9,7 @@ import { AmexioHomePageNorthPanelComponent } from './homepage.northpanel.compone
 })
 export class AmexioHomePageComponent implements OnInit, AfterContentInit {
 
-  @Input('type') type = '0';
+  @Input('type') type = '1';
   @ContentChild(AmexioHomePageNorthPanelComponent)
   amexoHomePageNorthpanel: AmexioHomePageNorthPanelComponent;
 
@@ -29,7 +29,7 @@ export class AmexioHomePageComponent implements OnInit, AfterContentInit {
   ngOnInit() { }
   ngAfterContentInit() {
     this.sideNavComponents = this.sideNavList.toArray();
-    if (this.type === '2') {
+    if (this.type === '3') {
       this.sideNavComponents[0].isShowOnlyIcon = true;
       this.sideNavComponents[0].width = '5%';
       this.westPanelWidth = '0 0 5%';

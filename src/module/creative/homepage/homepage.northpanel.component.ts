@@ -23,7 +23,7 @@ constructor(public matchMediaService: DeviceQueryService) {
 
  }
  ngAfterViewInit() {
-   if (this.amexioNavBarComponent && this.type === '1' && !(this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone())) {
+   if (this.amexioNavBarComponent && this.type === '2' && !(this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone())) {
      this.amexioNavBarComponent.enableIcon = true;
      this.amexioNavBarComponent.homepageType = this.type;
    }

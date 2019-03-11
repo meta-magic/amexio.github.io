@@ -240,7 +240,7 @@ description : Color
   }
   // THIS EVENT IS HOME COMPOENNT USE.NOT EXPOSED
   onExpandIconClick() {
-    if (this.homepageType === '2') {
+    if (this.homepageType === '3') {
       if (!this.isExpand) {
         this.lhsWidth = '0 0 19%';
       } else  {

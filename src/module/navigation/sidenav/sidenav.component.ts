@@ -389,21 +389,21 @@ export class AmexioSideNavComponent implements OnInit, AfterContentInit {
     this.onDrag.emit(event);
   }
   onMouseOverClick(event: any) {
-    if (this.homepageType === '2') {
+    if (this.homepageType === '3') {
       this.isShowOnlyIcon = !this.isShowOnlyIcon;
       this.width = '19%';
       this.onMouseOver.emit();
     }
   }
   onMouseLeaveClick(event: any) {
-    if (this.homepageType === '2') {
+    if (this.homepageType === '3') {
       this.isShowOnlyIcon = !this.isShowOnlyIcon;
       this.width = '5%';
       this.onMouseLeave.emit();
     }
   }
   closeMiniSideNav(node: any) {
-    if (this.homepageType === '2' && !node.children) {
+    if (this.homepageType === '3' && !node.children) {
       this.isShowOnlyIcon = true;
       this.width = '5%';
     }
