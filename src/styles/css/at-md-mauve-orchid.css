@@ -4498,11 +4498,21 @@ amexio-homepage-northpanel .topnav-lhs {
   max-width: 19%; }
 
 amexio-homepage-northpanel .topnav-lhs-mobile {
-  flex: none;
-  max-width: 100%; }
+  flex-direction: row;
+  justify-content: space-evenly;
+  display: flex; }
+
+amexio-homepage-northpanel .topnav-lhs-mobile > div {
+  flex-grow: 1; }
+
+amexio-homepage-northpanel .topnav-lhs-mobile .mobilebar {
+  flex-grow: 1; }
+
+amexio-homepage-northpanel .topnav-lhs-mobile > div > span {
+  padding: 0px !important; }
 
 amexio-homepage-northpanel .topnav-rhs {
-  flex-grow: inherit; }
+  flex-grow: 1; }
 
 amexio-homepage-northpanel .topnavbarunit1-mobile {
   padding-left: 45px; }
@@ -4511,34 +4521,60 @@ amexio-homepage-westpanel .homepage-westpanel {
   padding-top: 50px; }
 
 amexio-homepage-centerpanel .homepage-centerpanel {
-  padding: 10px; }
-
-amexio-homepage-centerpanel .homepage-centerpanel {
-  /* padding-left: 20%; */ }
+  padding: 10px;
+  padding-top: 15px; }
 
 amexio-homepage-northpanel .top-nav-button {
   padding-left: 0px; }
 
-amexio-homepage-westpanel .sidenav::-webkit-scrollbar {
+.homepage-1 .sidenav::-webkit-scrollbar,
+.homepage-2 .sidenav::-webkit-scrollbar {
   width: 3px; }
 
-amexio-homepage-northpanel .topnav {
-  box-shadow: none !important; }
+.homepage-centerpanel-flex {
+  flex-grow: 1;
+  padding-top: 50px; }
 
-amexio-homepage-northpanel .topnav-lhs {
+.homepage-northpanel-flex {
+  display: flex;
+  flex-direction: row; }
+
+.collaspe-icon-style {
+  margin-right: -26px;
+  z-index: 2;
+  height: 50px;
   background-color: #af69ee;
-  color: #faf6fe; }
+  color: #faf6fe;
+  width: 50px;
+  border-radius: 100%;
+  justify-content: center;
+  display: flex;
+  cursor: pointer;
+  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2) !important;
+  filter: grayscale(20%);
+  transform: perspective(1px) translateZ(0);
+  transition-duration: 0.5s;
+  transition-property: box-shadow; }
 
-amexio-homepage-northpanel .topnav-rhs {
-  flex-grow: inherit;
-  background: #ffffff; }
+.homepage-2 .homepage-expand {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row; }
 
-amexio-homepage-westpanel .sidenav .border {
-  border-bottom: none; }
+.homepage-2 .homepage-collapse {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row; }
 
-amexio-homepage-westpanel .sidenav-color {
-  background-color: #ffffff;
-  color: #2c0052; }
+.homepage-1 .homepage-expand {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row; }
+
+.homepage-1 .homepage-collapse {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row; }
 
 /****************************************************************************
     Component Name : Datapoints
@@ -7203,19 +7239,10 @@ amexio-layout amexio-layout-item {
   flex-direction: column;
   justify-content: center;
   height: 96%;
-  margin-top: 1%; }
+  padding: 5px; }
 
 .amexio-root-window-content-ce > * {
   padding: 0px; }
-
-.card-container-body {
-  padding: 10px;
-  font-size: 14px;
-  display: block;
-  line-height: 24px;
-  font-weight: 400;
-  flex-grow: 1;
-  position: relative; }
 
 /* .amexio-root-window-content-ce .window-middle::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
