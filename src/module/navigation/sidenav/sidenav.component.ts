@@ -279,6 +279,9 @@ export class AmexioSideNavComponent implements OnInit, AfterContentInit {
         this.activateNode = JSON.parse(JSON.stringify(node));
         this.findObj(node);
       });
+      if (this.homepageType === '3') {
+        this.element['isShowOnlyIcon'] = true;
+      }
     });
   }
 
@@ -293,6 +296,9 @@ export class AmexioSideNavComponent implements OnInit, AfterContentInit {
               individualnode.active = false;
             }
           });
+          if (this.homepageType === '3') {
+            this.element['isShowOnlyIcon'] = true;
+          }
       }
     });
   }
