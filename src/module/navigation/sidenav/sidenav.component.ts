@@ -16,7 +16,7 @@
 * Created by ketangote on 12/1/17.
 */
 
-import { AfterContentInit, Component, ContentChildren, ElementRef, EventEmitter, HostListener, Input,
+import { AfterContentInit, ChangeDetectorRef, Component, ContentChildren, ElementRef, EventEmitter, HostListener, Input,
   OnInit, Output, QueryList } from '@angular/core';
 import { CommonDataService } from '../../services/data/common.data.service';
 import { DeviceQueryService } from '../../services/device/device.query.service';
@@ -199,7 +199,7 @@ export class AmexioSideNavComponent implements OnInit, AfterContentInit {
    description : User can pass background image
    */
   @Input('bg-image') bgimage: string;
-  @Input('home-page-type') homepageType: string;
+  homepageType: string;
   @Output() onMouseLeave: any = new EventEmitter<any>();
   @Output() onMouseOver: any = new EventEmitter<any>();
   @ContentChildren(SideNavNodeComponent) sidennavnodearray: QueryList<SideNavNodeComponent>;
@@ -215,7 +215,8 @@ export class AmexioSideNavComponent implements OnInit, AfterContentInit {
   nodes: any = [];
   isShowOnlyIcon = false;
   isSideNavEnable = true;
-  constructor(public dataService: CommonDataService, public matchMediaService: DeviceQueryService, public element: ElementRef) {
+  constructor(public dataService: CommonDataService, public matchMediaService: DeviceQueryService,
+              public element: ElementRef, private cd: ChangeDetectorRef) {
     this.position = 'left';
     this.smalldevice = false;
     this.sidenavexpandedinsmalldevice = false;
@@ -279,9 +280,6 @@ export class AmexioSideNavComponent implements OnInit, AfterContentInit {
         this.activateNode = JSON.parse(JSON.stringify(node));
         this.findObj(node);
       });
-      if (this.homepageType === '3') {
-        this.element['isShowOnlyIcon'] = true;
-      }
     });
   }
 
@@ -296,9 +294,6 @@ export class AmexioSideNavComponent implements OnInit, AfterContentInit {
               individualnode.active = false;
             }
           });
-          if (this.homepageType === '3') {
-            this.element['isShowOnlyIcon'] = true;
-          }
       }
     });
   }
@@ -394,24 +389,14 @@ export class AmexioSideNavComponent implements OnInit, AfterContentInit {
   getNodeDragEvent(event: any) {
     this.onDrag.emit(event);
   }
-  onMouseOverClick(event: any) {
+  // THIS METHOD IS USED FOR SETTING HOMEPAGE TYPE
+  setHomePageType(type: any) {
+    this.homepageType = type;
     if (this.homepageType === '3') {
-      this.isShowOnlyIcon = !this.isShowOnlyIcon;
-      this.width = '19%';
-      this.onMouseOver.emit();
+      this.nodearray.forEach((element: SideNavNodeComponent) => {
+        element.setShowOnlyIconFlag(this.isShowOnlyIcon);
+      });
     }
-  }
-  onMouseLeaveClick(event: any) {
-    if (this.homepageType === '3') {
-      this.isShowOnlyIcon = !this.isShowOnlyIcon;
-      this.width = '5%';
-      this.onMouseLeave.emit();
-    }
-  }
-  closeMiniSideNav(node: any) {
-    if (this.homepageType === '3' && !node.children) {
-      this.isShowOnlyIcon = true;
-      this.width = '5%';
-    }
+    this.cd.detectChanges();
   }
 }

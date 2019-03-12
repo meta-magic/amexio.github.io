@@ -18,6 +18,7 @@
 
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DeviceQueryService } from '../../services/device/device.query.service';
+import { IconLoaderService } from './../../services/icon/icon.service';
 @Component({
   selector: 'amexio-sidenav-node', templateUrl: './sidenavnode.component.html',
 })
@@ -151,7 +152,7 @@ export class SideNavNodeComponent implements OnInit {
   @Input('icon-color') iconcolor: string;
   @Input('show-only-icon') isShowOnlyIcon: boolean;
   isMobile = false;
-  constructor(public matchMediaService: DeviceQueryService) {
+  constructor(public matchMediaService: DeviceQueryService, private iconService: IconLoaderService) {
     this.displaykey = 'text';
     this.childarraykey = 'children';
     if (this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone()) {
@@ -168,15 +169,18 @@ export class SideNavNodeComponent implements OnInit {
 
   onClick(node: any) {
     this.expand = !this.expand;
-    if ( this.nodedata.children && this.expand === false) {
-      this.nodedata.children.forEach((element: any) => {
-          element['tabindex'] = '-1';
+    if (this.nodedata) {
+      if (this.nodedata.children && this.expand === false) {
+        this.nodedata.children.forEach((element: any) => {
+            element['tabindex'] = '-1';
+        });
+      } else if (this.nodedata.children && this.expand === true) {
+        this.nodedata.children.forEach((element: any) => {
+          element['tabindex'] = '1';
       });
-    } else if (this.nodedata.children && this.expand === true) {
-      this.nodedata.children.forEach((element: any) => {
-        element['tabindex'] = '1';
-    });
+      }
     }
+
     this.nodeClick.emit(node);
   }
 
@@ -207,4 +211,15 @@ export class SideNavNodeComponent implements OnInit {
     this.onClick(nodedata);
   }
 
+  setShowOnlyIconFlag(isIcon: any) {
+    if (!this.icon) {
+      const iconObject = this.iconService.getIconObject('sidenavnode-icon');
+      if (this.iconService._iconToUse === 'fa') {
+         this.icon = iconObject.fa;
+       } else {
+          this.icon = iconObject.mat;
+       }
+    }
+    this.isShowOnlyIcon = isIcon;
+  }
 }

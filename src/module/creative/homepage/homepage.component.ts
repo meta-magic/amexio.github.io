@@ -33,7 +33,7 @@ export class AmexioHomePageComponent implements OnInit, AfterContentInit {
       this.sideNavComponents[0].isShowOnlyIcon = true;
       this.sideNavComponents[0].width = '5%';
       this.westPanelWidth = '0 0 5%';
-      this.sideNavComponents[0].homepageType = this.type;
+      this.sideNavComponents[0].setHomePageType(this.type);
       // NAVBAR
       this.amexioNavBarComponent.isLHSHide = true;
       this.amexioNavBarComponent.lhsWidth = '0 0 5%';
@@ -58,36 +58,6 @@ export class AmexioHomePageComponent implements OnInit, AfterContentInit {
       this.isPhone = false;
     }
   }
-  // THIS MEHOD CALL WHEN USED MOUSE LEAVE FROM SIDENAV
-  westPanelOnMouseleave() {
-    this.sideNavComponents[0].isShowOnlyIcon = true;
-    this.sideNavComponents[0].width = '5%';
-    this.westPanelWidth = '0 0 5%';
-
-    // NAVBAR
-    this.amexioNavBarComponent.isLHSHide = true;
-    this.amexioNavBarComponent.lhsWidth = '0 0 5%';
-  }
-  westPanelOnMouseOver() {
-    this.sideNavComponents[0].isShowOnlyIcon = false;
-    this.sideNavComponents[0].width = '19%';
-    this.westPanelWidth = '0 0 19%';
-    // NAVBAR
-    this.amexioNavBarComponent.isLHSHide = false;
-    this.amexioNavBarComponent.lhsWidth = '0 0 19%';
-  }
-  westPanelNodeClick(event: any) {
-    if (
-      event &&
-      (!event.children || event.children === '' || event.children === null)
-    ) {
-      this.sideNavComponents[0].isShowOnlyIcon = true;
-      this.westPanelWidth = '0 0 5%';
-      // NAVBAR
-      this.amexioNavBarComponent.isLHSHide = true;
-      this.amexioNavBarComponent.lhsWidth = '0 0 5%';
-    }
-  }
   showHideWestPanel() {
     this.isDisableWestPanel = !this.isDisableWestPanel;
     if (this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone()) {
@@ -110,6 +80,7 @@ export class AmexioHomePageComponent implements OnInit, AfterContentInit {
       this.sideNavComponents[0].width = '5%';
       this.westPanelWidth = '0 0 5%';
     }
+    this.sideNavComponents[0].setHomePageType(this.type);
   }
 
 }

@@ -1,3 +1,4 @@
+import { Component } from '@angular/core';
 /*
 * Copyright [2019] [Metamagic]
 *
@@ -312,6 +313,11 @@ const ICON_MAPPING =
     fa: 'fa fa-clock-o',
     mat: 'access_time',
   },
+  {
+    component: 'sidenavnode-icon',
+    fa: 'fa fa-user',
+    mat: 'person_pin',
+  },
 ];
 
 @Injectable()
@@ -360,5 +366,14 @@ export class IconLoaderService {
         }
       });
     }
+  }
+  // TO GET ICON OBJECT
+  getIconObject(componentName: string): any {
+    this.iconMappings.forEach((object: any) => {
+      if (object.component === componentName) {
+        return object;
+      }
+    });
+    return null;
   }
 }
