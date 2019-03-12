@@ -152,6 +152,7 @@ export class SideNavNodeComponent implements OnInit {
   @Input('icon-color') iconcolor: string;
   @Input('show-only-icon') isShowOnlyIcon: boolean;
   isMobile = false;
+  isDefaultUserIcon = false;
   constructor(public matchMediaService: DeviceQueryService, private iconService: IconLoaderService) {
     this.displaykey = 'text';
     this.childarraykey = 'children';
@@ -212,13 +213,19 @@ export class SideNavNodeComponent implements OnInit {
   }
 
   setShowOnlyIconFlag(isIcon: any) {
-    if (!this.icon) {
-      const iconObject = this.iconService.getIconObject('sidenavnode-icon');
-      if (this.iconService._iconToUse === 'fa') {
-         this.icon = iconObject.fa;
-       } else {
-          this.icon = iconObject.mat;
-       }
+    let icon: any = '';
+    const iconObject = this.iconService.getIconObject('sidenavnode-icon');
+    if (this.iconService.iconToUse === 'fa') {
+      icon = iconObject.fa;
+     } else {
+      icon = iconObject.mat;
+     }
+    if (this.isDefaultUserIcon && this.icon === 'fa fa-user-circle') {
+      this.icon = '';
+      this.isDefaultUserIcon = false;
+    } else if ((!this.icon || this.icon === '') && !this.isDefaultUserIcon) {
+      this.icon = icon;
+      this.isDefaultUserIcon = true;
     }
     this.isShowOnlyIcon = isIcon;
   }

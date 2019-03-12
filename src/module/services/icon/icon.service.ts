@@ -315,7 +315,7 @@ const ICON_MAPPING =
   },
   {
     component: 'sidenavnode-icon',
-    fa: 'fa fa-user',
+    fa: 'fa fa-user-circle',
     mat: 'person_pin',
   },
 ];
@@ -369,11 +369,14 @@ export class IconLoaderService {
   }
   // TO GET ICON OBJECT
   getIconObject(componentName: string): any {
-    this.iconMappings.forEach((object: any) => {
-      if (object.component === componentName) {
-        return object;
-      }
-    });
-    return null;
+     let obj = null;
+     if (this.iconMappings !== null) {
+      this.iconMappings.forEach((object: any) => {
+        if (object.component === componentName) {
+          obj = object;
+        }
+      });
+    }
+     return obj;
   }
 }
