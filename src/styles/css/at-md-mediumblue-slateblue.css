@@ -7871,7 +7871,7 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
     color: #fff;
     text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3); }
 
-  /*
+    /*
 
   h3 {
     font-size: 9pt;
@@ -7949,6 +7949,9 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
 @media screen and (max-width: 600px) {
   .footer-right-align {
     padding-right: 15px; } }
+@media only screen and (max-width: 375px) {
+  amexio-homepage-northpanel .topnav-lhs-mobile .mobilebar {
+    flex-grow: 0.2; } }
 /****************************************************************************
                     Media Query for width - 450
 *****************************************************************************/
@@ -8057,7 +8060,7 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
     color: #fff;
     text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3); }
 
-  /*
+    /*
 
   h3 {
     font-size: 9pt;
@@ -8135,6 +8138,9 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
 @media screen and (max-width: 600px) {
   .footer-right-align {
     padding-right: 15px; } }
+@media only screen and (min-width: 375px) and (max-width: 450px) {
+  amexio-homepage-northpanel .topnav-lhs-mobile .mobilebar {
+    flex-grow: 0.2; } }
 /****************************************************************************
                     Media Query for width - 767
 *****************************************************************************/
@@ -8362,13 +8368,7 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
 /************************************************************************/
 /*        HOMEPAGE LAYOUT Media Q COMPONENT         */
 /************************************************************************/
-@media only screen and (max-width: 768px) {
-  amexio-homepage-northpanel .topnav-lhs-mobile .mobilebar {
-    flex-grow: 0.3; } }
-@media only screen and (max-width: 1024px) and (min-width: 768px) {
-  amexio-homepage-northpanel .topnav-lhs-mobile .mobilebar {
-    flex-grow: 0.1; } }
-@media only screen and (max-width: 1366px) and (min-width: 1024px) {
+@media only screen and (min-width: 568px) and (max-width: 768px) {
   amexio-homepage-northpanel .topnav-lhs-mobile .mobilebar {
     flex-grow: 0.1; } }
 /****************************************************************************
@@ -8480,7 +8480,8 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
 /*        ITEM SELECTOR Media-Q COMPONENT         */
 /************************************************************************/
 @media only screen and (max-width: 767px) {
-  .flex-col-45pt, .flex-col-10pt {
+  .flex-col-45pt,
+  .flex-col-10pt {
     max-width: 100%; }
 
   .item-selector-action-panel .card-header {
@@ -8569,11 +8570,23 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
   .flex-row {
     flex-direction: column; }
 
-  .flex-col-1, .flex-col-2, .flex-col-3, .flex-col-4, .flex-col-5, .flex-col-6, .flex-col-7, .flex-col-8, .flex-col-9, .flex-col-10, .flex-col-11, .flex-col-12 {
+  .flex-col-1,
+  .flex-col-2,
+  .flex-col-3,
+  .flex-col-4,
+  .flex-col-5,
+  .flex-col-6,
+  .flex-col-7,
+  .flex-col-8,
+  .flex-col-9,
+  .flex-col-10,
+  .flex-col-11,
+  .flex-col-12 {
     max-width: 100%;
     flex: 0 0 100%; } }
 @media only screen and (max-width: 1024px) {
-  .flex-col-2pt5, .flex-col-9pt5 {
+  .flex-col-2pt5,
+  .flex-col-9pt5 {
     flex: 0 0 100%;
     max-width: 100%; } }
 /************************************************************************/
@@ -8583,8 +8596,11 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
 /*        Window Treenode Media Q COMPONENT         */
 /************************************************************************/
 /************************************************************************/
-/*        Window LAYOUT Media Q COMPONENT         */
+/*        HOMEPAGE LAYOUT Media Q COMPONENT         */
 /************************************************************************/
+@media only screen and (max-width: 1024px) {
+  amexio-homepage-northpanel .topnav-lhs-mobile .mobilebar {
+    flex-grow: 0.1; } }
 /****************************************************************************
                     Media Query for width - 1440
 *****************************************************************************/
@@ -8691,7 +8707,8 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
 /*        ITEM SELECTOR Media-Q COMPONENT         */
 /************************************************************************/
 @media only screen and (max-width: 767px) {
-  .flex-col-45pt, .flex-col-10pt {
+  .flex-col-45pt,
+  .flex-col-10pt {
     max-width: 100%; }
 
   .item-selector-action-panel .card-header {
@@ -8780,8 +8797,11 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
 /*        Window Treenode Media Q COMPONENT         */
 /************************************************************************/
 /************************************************************************/
-/*        Window LAYOUT Media Q COMPONENT         */
+/*        HOMEPAGE LAYOUT Media Q COMPONENT         */
 /************************************************************************/
+@media only screen and (max-width: 1440px) {
+  amexio-homepage-northpanel .topnav-lhs-mobile .mobilebar {
+    flex-grow: 0.1; } }
 /****************************************************************************
                     Media Query for width - 1440
 *****************************************************************************/
@@ -8891,7 +8911,8 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
 /*        ITEM SELECTOR Media-Q COMPONENT         */
 /************************************************************************/
 @media only screen and (max-width: 767px) {
-  .flex-col-45pt, .flex-col-10pt {
+  .flex-col-45pt,
+  .flex-col-10pt {
     max-width: 100%; }
 
   .item-selector-action-panel .card-header {
@@ -8980,11 +9001,23 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
   .flex-row {
     flex-direction: column; }
 
-  .flex-col-1, .flex-col-2, .flex-col-3, .flex-col-4, .flex-col-5, .flex-col-6, .flex-col-7, .flex-col-8, .flex-col-9, .flex-col-10, .flex-col-11, .flex-col-12 {
+  .flex-col-1,
+  .flex-col-2,
+  .flex-col-3,
+  .flex-col-4,
+  .flex-col-5,
+  .flex-col-6,
+  .flex-col-7,
+  .flex-col-8,
+  .flex-col-9,
+  .flex-col-10,
+  .flex-col-11,
+  .flex-col-12 {
     max-width: 100%;
     flex: 0 0 100%; } }
 @media only screen and (max-width: 1024px) {
-  .flex-col-2pt5, .flex-col-9pt5 {
+  .flex-col-2pt5,
+  .flex-col-9pt5 {
     flex: 0 0 100%;
     max-width: 100%; } }
 /************************************************************************/
@@ -8994,7 +9027,7 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
 /*        Window Treenode Media Q COMPONENT         */
 /************************************************************************/
 /************************************************************************/
-/*        Window LAYOUT Media Q COMPONENT         */
+/*        HOMEPAGE LAYOUT Media Q COMPONENT         */
 /************************************************************************/
 /** 
   Amexio Support ---------------------------------- 
