@@ -1,276 +1,286 @@
-
 /************************************************************************/
+
+
 /*        BORDER LAYOUT Media Q COMPONENT         */
+
+
 /************************************************************************/
 
 @media only screen and (max-width: 767px) {
-  
-  @import '../component/borderlayout-areas.scss';
-
-  .borderlayout-container-N-E-C-W-S{
-    grid-template-areas:
-      'north north north north north north'
-      'east east east east east east '
-      'center center center center center center'
-      'west west west west west west'
-      'south south south south south south';
-  }
-
-  .borderlayout-container-N-E-C-S{
-    grid-template-areas:
-      'north north north north north north'
-      'east east east east east east '
-      'center center center center center center'
-      'south south south south south south';
-  }
-
-  .borderlayout-container-N-C-W-S{
-    grid-template-areas:
-      'north north north north north north'
-      'center center center center center center'
-      'west west west west west west'
-      'south south south south south south';
-  }
-
-  .borderlayout-container-E-C-W-S{
-    display: grid;
-    grid-template-areas:
-      'east east east east east east '
-      'center center center center center center'
-      'west west west west west west'
-      'south south south south south south';
-  }
-
-  .borderlayout-container-E-C-S{
-    display: grid;
-    grid-template-areas:
-      'east east east east east east '
-      'center center center center center center'
-      'south south south south south south';
-  }
-
-  .borderlayout-container-C-W-S{
-    display: grid;
-    grid-template-areas:
-      'center center center center center center'
-      'west west west west west west'
-      'south south south south south south';
-  }
-}
-
-/************************************************************************/
-/*        Card MediaQ COMPONENT         */
-/************************************************************************/
-
-
-@media screen and (max-width: 768px) {
-  .card-header{
-      display: flex;
-      padding: 10px 24px;
-      background: $cardHeaderBGColor;
-      border-bottom: $borderSize solid $cardBorderColor;
-      font-size: 18px;
-      color: $cardHeaderColor;
-      font-weight: 300;
-      text-transform: capitalize;
-      overflow: auto;
+    @import '../component/borderlayout-areas.scss';
+    .borderlayout-container-N-E-C-W-S {
+        grid-template-areas: 'north north north north north north' 'east east east east east east ' 'center center center center center center' 'west west west west west west' 'south south south south south south';
+    }
+    .borderlayout-container-N-E-C-S {
+        grid-template-areas: 'north north north north north north' 'east east east east east east ' 'center center center center center center' 'south south south south south south';
+    }
+    .borderlayout-container-N-C-W-S {
+        grid-template-areas: 'north north north north north north' 'center center center center center center' 'west west west west west west' 'south south south south south south';
+    }
+    .borderlayout-container-E-C-W-S {
+        display: grid;
+        grid-template-areas: 'east east east east east east ' 'center center center center center center' 'west west west west west west' 'south south south south south south';
+    }
+    .borderlayout-container-E-C-S {
+        display: grid;
+        grid-template-areas: 'east east east east east east ' 'center center center center center center' 'south south south south south south';
+    }
+    .borderlayout-container-C-W-S {
+        display: grid;
+        grid-template-areas: 'center center center center center center' 'west west west west west west' 'south south south south south south';
     }
 }
-/************************************************************************/
-/*        DATATABLE MediaQ COMPONENT         */
-/************************************************************************/
-
-/************************************************************************/
-/*        Datetime Media-Q COMPONENT         */
-/************************************************************************/
 
 
 /************************************************************************/
-/*        Dialogue Media-Q COMPONENT         */
+
+
+/*        Card MediaQ COMPONENT         */
+
+
 /************************************************************************/
-
-
 
 @media screen and (max-width: 768px) {
-  .dialogue-sm{
-    flex-direction: column;
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 60%; /* Location of the box */
-    width: 80%;
-    //min-height: 50%; /* Enable scroll if needed */
-    padding-left: 10%;
-    z-index: 3;
-    top: 0;
-    left: 0;
-
-  }
+    .card-header {
+        display: flex;
+        padding: 10px 24px;
+        background: $cardHeaderBGColor;
+        border-bottom: $borderSize solid $cardBorderColor;
+        font-size: 18px;
+        color: $cardHeaderColor;
+        font-weight: 300;
+        text-transform: capitalize;
+        overflow: auto;
+    }
 }
 
+
 /************************************************************************/
+
+
+/*        DATATABLE MediaQ COMPONENT         */
+
+
+/************************************************************************/
+
+
+/************************************************************************/
+
+
+/*        Datetime Media-Q COMPONENT         */
+
+
+/************************************************************************/
+
+
+/************************************************************************/
+
+
+/*        Dialogue Media-Q COMPONENT         */
+
+
+/************************************************************************/
+
+@media screen and (max-width: 768px) {
+    .dialogue-sm {
+        flex-direction: column;
+        position: fixed;
+        /* Stay in place */
+        z-index: 1;
+        /* Sit on top */
+        padding-top: 60%;
+        /* Location of the box */
+        width: 80%;
+        //min-height: 50%; /* Enable scroll if needed */
+        padding-left: 10%;
+        z-index: 3;
+        top: 0;
+        left: 0;
+    }
+}
+
+
+/************************************************************************/
+
+
 /*        Enterprise Media-Q COMPONENT         */
+
+
 /************************************************************************/
 
 @media screen and (min-width: 1400px) {
-  .maincontent > div {
-    height: 32vw;
-    padding-bottom: 20px;
-  }
+    .maincontent>div {
+        height: 32vw;
+        padding-bottom: 20px;
+    }
 }
 
 @media (max-width: 799px) {
-  .maincontent div {
-    font-size: 11px;
-  }
-
-  .maincontent > div {
-    top: 10px;
-    width: 33vw;
-    min-width: 330px;
-    color: #999;
-    line-height: 1.3;
-  }
-
-  .maincontent > div > table {
-    height: 50px;
-  }
+    .maincontent div {
+        font-size: 11px;
+    }
+    .maincontent>div {
+        top: 10px;
+        width: 33vw;
+        min-width: 330px;
+        color: #999;
+        line-height: 1.3;
+    }
+    .maincontent>div>table {
+        height: 50px;
+    }
 }
 
+
 /************************************************************************/
+
+
 /*        Image Media-Q COMPONENT         */
+
+
 /************************************************************************/
 
 @media only screen and (max-width: 767px) {
-  .image-title{
-    display: -webkit-inline-box;
-  }
+    .image-title {
+        display: -webkit-inline-box;
+    }
 }
 
+
 /************************************************************************/
+
+
 /*        ITEM SELECTOR Media-Q COMPONENT         */
+
+
 /************************************************************************/
 
 @media only screen and (max-width: 767px) {
-
-  .flex-col-45pt,.flex-col-10pt{
-    max-width: 100%;
-  }
-
-  .item-selector-action-panel{
-
-    .card-header{
-      display: none;
+    .flex-col-45pt,
+    .flex-col-10pt {
+        max-width: 100%;
     }
-    .actionbar{
-      flex-direction: row;
-
-      .actionbarinner{
-        max-height: 30px;
-        flex-direction: row;
-        justify-content: space-around;
-        width: 100%;
-
-        .movetop{  display: none; }
-        .moveup{  display: none;}
-        .moveleft{  display: block;}
-        .moveright{  display: block;}
-        .movedown{  display: none;}
-        .movebottom{  display: none;}
-
-        .action{
-          transform: rotate(90deg);
+    .item-selector-action-panel {
+        .card-header {
+            display: none;
         }
-      }
-
-
+        .actionbar {
+            flex-direction: row;
+            .actionbarinner {
+                max-height: 30px;
+                flex-direction: row;
+                justify-content: space-around;
+                width: 100%;
+                .movetop {
+                    display: none;
+                }
+                .moveup {
+                    display: none;
+                }
+                .moveleft {
+                    display: block;
+                }
+                .moveright {
+                    display: block;
+                }
+                .movedown {
+                    display: none;
+                }
+                .movebottom {
+                    display: none;
+                }
+                .action {
+                    transform: rotate(90deg);
+                }
+            }
+        }
     }
-  }
-
 }
+
 @media only screen and (min-width: 768px) {
-  .label-content{
-
-  }
-
-  .large{
-    font-size: 36px;
-  }
-
-  .medium{
-    font-size: 20px;
-  }
-
-  .small{
-    font-size: 18px;
-  }
-
-
-
-  .large-bold{
-    font-size: 36px;
-    font-weight: bold;
-  }
-
-  .medium-bold{
-    font-size: 20px;
-    font-weight: bold;
-  }
-
-  .small-bold{
-    font-size: 18px;
-    font-weight: bold;
-  }
+    .label-content {}
+    .large {
+        font-size: 36px;
+    }
+    .medium {
+        font-size: 20px;
+    }
+    .small {
+        font-size: 18px;
+    }
+    .large-bold {
+        font-size: 36px;
+        font-weight: bold;
+    }
+    .medium-bold {
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .small-bold {
+        font-size: 18px;
+        font-weight: bold;
+    }
 }
 
+
 /************************************************************************/
+
+
 /*        Label Media COMPONENT         */
+
+
 /************************************************************************/
+
+
 /************************************************************************/
+
+
 /*        MENU COMPONENT         */
+
+
 /************************************************************************/
 
 @media only screen and (max-width: 959px) {
-  .menu-content .menu-content-cols .col-menu-nodes{
-    width: 100%;
-  }
-
-  .menu-content{
-    width:100%;
-  }
-  .menubar  .menuheader .menulink {
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    border-bottom: 1px solid $borderColor;
-
-  }
-  .menubar  .menuheader .menulink a {
-    //width: 100%;
-  }
-
-  .menu-content .menu-content-cols{
-    width: 100%;
-    padding: 0px;
-  }
-
-  .menu-content .menu-content-cols .col-menu-nodes{
-    width: 100%;
-  }
-
-
-  .menubar .menuheader .menulink:hover {
-    display: block;
-    .menu-content{
-      display: none;
+    .menu-content .menu-content-cols .col-menu-nodes {
+        width: 100%;
     }
-    a{
-      color: $menuHoverColor;
+    .menu-content {
+        width: 100%;
     }
-  }
+    .menubar .menuheader .menulink {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        border-bottom: 1px solid $borderColor;
+    }
+    .menubar .menuheader .menulink a {
+        //width: 100%;
+    }
+    .menu-content .menu-content-cols {
+        width: 100%;
+        padding: 0px;
+    }
+    .menu-content .menu-content-cols .col-menu-nodes {
+        width: 100%;
+    }
+    .menubar .menuheader .menulink:hover {
+        display: block;
+        .menu-content {
+            display: none;
+        }
+        a {
+            color: $menuHoverColor;
+        }
+    }
 }
 
+
 /************************************************************************/
+
+
 /*        NAVBAR Media-Q COMPONENT         */
+
+
 /************************************************************************/
 
 // @media only screen and (max-width: 1024px) {
@@ -279,9 +289,7 @@
 //     .navbar-logo-unit {
 //       padding-left: 40px;
 //     }
-
 //   }
-
 // }
 // @media only screen and (max-width: 767px) {
 //   .navbar-container{
@@ -291,7 +299,6 @@
 //     .nav-bar{
 //       //padding: 10px;
 //       background-color: lighten($navbarBGColor,20%);
-
 //       .nav-item amexio-nav-item{
 //         border-bottom: 1px solid $navbarColor;
 //         cursor: pointer;
@@ -300,84 +307,102 @@
 //         }
 //       }
 //     }
-
 //     .navbar-logo-unit{
 //       padding-left: 40px;
 //       display: flex;
 //       justify-content: space-between;
-
 //       .navbar-mobile-bars{
 //         display: block;
 //         top: 10px;
 //         margin-right: 25px;
 //         position: relative;
 //       }
-
 //     }
-
 //   }
-
-
 //   .nav-bar{
 //     display: block;
 //     margin:0;
 //     padding: 0px;
-
 //     .nav-item{
 //       display: flex;
 //       flex-direction: column;
 //       padding: 0px;
-
 //       > *{
 //         padding:10px;
 //       }
 //     }
 //   }
-
-
 // }
 
 /************************************************************************/
+
+
 /*        ROW-COLUMN MediaQ COMPONENT         */
+
+
 /************************************************************************/
 
 @media only screen and (max-width: 767px) {
-  .flex-row{
-    flex-direction: column;
-  }
-  .flex-col {
-
-  }
-  .flex-col-1,.flex-col-2,.flex-col-3,.flex-col-4,.flex-col-5,.flex-col-6,.flex-col-7,.flex-col-8,.flex-col-9,.flex-col-10,.flex-col-11,.flex-col-12{
-    max-width: 100%;
-    flex: 0 0 100%;
-  }
+    .flex-row {
+        flex-direction: column;
+    }
+    .flex-col {}
+    .flex-col-1,
+    .flex-col-2,
+    .flex-col-3,
+    .flex-col-4,
+    .flex-col-5,
+    .flex-col-6,
+    .flex-col-7,
+    .flex-col-8,
+    .flex-col-9,
+    .flex-col-10,
+    .flex-col-11,
+    .flex-col-12 {
+        max-width: 100%;
+        flex: 0 0 100%;
+    }
 }
 
 @media only screen and (max-width: 1024px) {
-
-  .flex-col-2pt5,.flex-col-9pt5{
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
+    .flex-col-2pt5,
+    .flex-col-9pt5 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
 }
 
+
 /************************************************************************/
+
+
 /*        SIDENAV MediaQ COMPONENT         */
-/************************************************************************/
-
-
-@media only screen and (max-width: 767px) {
-
-}
 
 
 /************************************************************************/
+
+@media only screen and (max-width: 767px) {}
+
+
+/************************************************************************/
+
+
 /*        Window Treenode Media Q COMPONENT         */
+
+
 /************************************************************************/
 
 
 /************************************************************************/
-/*        Window LAYOUT Media Q COMPONENT         */
+
+
+/*        HOMEPAGE LAYOUT Media Q COMPONENT         */
+
+
 /************************************************************************/
 
+@media only screen and (max-width: 1024px) {
+    amexio-homepage-northpanel .topnav-lhs-mobile .mobilebar {
+        flex-grow: 0.1;
+    }
+}

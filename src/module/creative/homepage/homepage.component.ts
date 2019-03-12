@@ -49,6 +49,15 @@ export class AmexioHomePageComponent implements OnInit, AfterContentInit {
     }
     this.amexioNavBarComponent.homepageType = this.type;
   }
+
+  // tslint:disable-next-line:no-identical-functions
+  resize(event: any) {
+    if (this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone()) {
+      this.isPhone = true;
+    } else {
+      this.isPhone = false;
+    }
+  }
   // THIS MEHOD CALL WHEN USED MOUSE LEAVE FROM SIDENAV
   westPanelOnMouseleave() {
     this.sideNavComponents[0].isShowOnlyIcon = true;

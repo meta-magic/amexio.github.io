@@ -180,7 +180,12 @@ description : Color
   }
 
   handleDeviceSetting() {
-
+    if (this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone()) {
+      this.mobilemode = true;
+      this.enableIcon = false;
+    } else {
+        this.mobilemode = false;
+    }
     if (this.sidenavspace) {
       this.sideNavbar();
     }
@@ -233,6 +238,15 @@ description : Color
 
   resize(event: any) {
     this.handleDeviceSetting();
+    if (this.homepageType === '3') {
+      if (!this.isExpand) {
+        this.lhsWidth = '0 0 19%';
+      } else  {
+        this.isLHSHide = true;
+        this.lhsWidth = '0 0 5%';
+      }
+      this.isExpand = !this.isExpand;
+    }
   }
   onArrowClick(event: any) {
     this.onIconArrowClick.emit();

@@ -1,142 +1,158 @@
-
 /************************************************************************/
+
+
 /*        BORDER LAYOUT Media Q COMPONENT         */
-/************************************************************************/
+
 
 /************************************************************************/
+
+
+/************************************************************************/
+
+
 /*        Card MediaQ COMPONENT         */
+
+
 /************************************************************************/
 
-
 @media screen and (max-width: 600px) {
-  .card-header{
-      display: flex;
-      padding: 10px 24px;
-      background: $cardHeaderBGColor;
-      border-bottom: $borderSize solid $cardBorderColor;
-      font-size: 18px;
-      color: $cardHeaderColor;
-      font-weight: 300;
-      text-transform: capitalize;
-      overflow: auto;
+    .card-header {
+        display: flex;
+        padding: 10px 24px;
+        background: $cardHeaderBGColor;
+        border-bottom: $borderSize solid $cardBorderColor;
+        font-size: 18px;
+        color: $cardHeaderColor;
+        font-weight: 300;
+        text-transform: capitalize;
+        overflow: auto;
     }
 }
 
+
 /************************************************************************/
+
+
 /*        DATATABLE MediaQ COMPONENT         */
+
+
 /************************************************************************/
 
 @media screen and (max-width: 600px) {
-
-  .datatable {
-    border: 0;
-  }
-
-  .datatable .datatable-header{
-    border: none;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-  }
-
-
-  .datatable .datatable-row{
-    border-bottom: 3px solid #ddd;
-    display: block;
-    margin-bottom: .625em;
-    height: auto!important;
-  }
-
-  .datatable .datatable-header .datatable-col{
-    height: auto!important;
-    font-weight: 500;
-  }
-  .datatable .datatable-col{
-    border-bottom: $borderSize solid $borderColor;
-    display: block;
-    font-size: .8em;
-    text-align: right;
-    width: auto!important;
-
-    .float-right{
-      float: unset!important;
+    .datatable {
+        border: 0;
     }
-  }
-
-  .datatable .datatable-col:before{
-    content: attr(data-label);
-    float: left;
-    font-weight: bold;
-  }
-  .col-hidden {
-    display: none!important;
-  }
-
-  .checkbox-col {
-    text-align: unset!important;
-  }
-  .datatable-icon-right {
-    float: right;
-  }
-  .text-input-width {
-    width: 92%;
-  }
+    .datatable .datatable-header {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+    .datatable .datatable-row {
+        border-bottom: 3px solid #ddd;
+        display: block;
+        margin-bottom: .625em;
+        height: auto!important;
+    }
+    .datatable .datatable-header .datatable-col {
+        height: auto!important;
+        font-weight: 500;
+    }
+    .datatable .datatable-col {
+        border-bottom: $borderSize solid $borderColor;
+        display: block;
+        font-size: .8em;
+        text-align: right;
+        width: auto!important;
+        .float-right {
+            float: unset!important;
+        }
+    }
+    .datatable .datatable-col:before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+    }
+    .col-hidden {
+        display: none!important;
+    }
+    .checkbox-col {
+        text-align: unset!important;
+    }
+    .datatable-icon-right {
+        float: right;
+    }
+    .text-input-width {
+        width: 92%;
+    }
 }
 
+
 /************************************************************************/
+
+
 /*        Datetime Media-Q COMPONENT         */
+
+
 /************************************************************************/
 
-
 @media screen and (max-width: 600px) {
-  .datetimepicker .days .date-today{
-    padding-top: 1%;
-    padding-left: 36%;
-  }
+    .datetimepicker .days .date-today {
+        padding-top: 1%;
+        padding-left: 36%;
+    }
 }
 
 
 /************************************************************************/
+
+
 /*        Dialogue Media-Q COMPONENT         */
-/************************************************************************/
 
+
+/************************************************************************/
 
 @media screen and (max-width: 600px) {
-  .dialogue-sm{
-    flex-direction: column;
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 60%; /* Location of the box */
-    width: 100%;
-    //min-height: 50%; /* Enable scroll if needed */
-    padding-left: 0px;
-    z-index: 3;
-    top: 0;
-    left: 0;
-  }
+    .dialogue-sm {
+        flex-direction: column;
+        position: fixed;
+        /* Stay in place */
+        z-index: 1;
+        /* Sit on top */
+        padding-top: 60%;
+        /* Location of the box */
+        width: 100%;
+        //min-height: 50%; /* Enable scroll if needed */
+        padding-left: 0px;
+        z-index: 3;
+        top: 0;
+        left: 0;
+    }
 }
 
-/************************************************************************/
-/*        Enterprise Media-Q COMPONENT         */
+
 /************************************************************************/
 
+
+/*        Enterprise Media-Q COMPONENT         */
+
+
+/************************************************************************/
 
 @media (max-width: 480px) {
-
-
-  .content-title {
-    width: 100%;
-    font-size: 180%;
-    font-weight: 700;
-    line-height: 130%;
-    color: #fff;
-    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
-  }
-  /*
+    .content-title {
+        width: 100%;
+        font-size: 180%;
+        font-weight: 700;
+        line-height: 130%;
+        color: #fff;
+        text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+    }
+    /*
 
   h3 {
     font-size: 9pt;
@@ -154,69 +170,86 @@
     font-size: 6pt;
   }
   */
-
-  .maincontent {
-    position: relative;
-    width: 100%; /* for IE 6 */
-    height: 35vh;
-    width: 100%;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-  }
+    .maincontent {
+        position: relative;
+        width: 100%;
+        /* for IE 6 */
+        height: 35vh;
+        width: 100%;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
 }
 
+
 /************************************************************************/
+
+
 /*        Image Media-Q COMPONENT         */
-/************************************************************************/
+
 
 /************************************************************************/
+
+
+/************************************************************************/
+
+
 /*        ITEM SELECTOR Media-Q COMPONENT         */
-/************************************************************************/
+
 
 /************************************************************************/
+
+
+/************************************************************************/
+
+
 /*        Label Media COMPONENT         */
+
+
 /************************************************************************/
 
 @media only screen and (max-width: 450px) {
-  /* phones */
-  .label-content{
-
-  }
-
-  .large{
-    font-size: 32px;
-  }
-
-  .medium{
-    font-size: 18px;
-  }
-
-  .small{
-    font-size: 16px;
-  }
-
-  .large-bold{
-    font-size: 32px;
-    font-weight: bold;
-  }
-
-  .medium-bold{
-    font-size: 18px;
-    font-weight: bold;
-  }
-
-  .small-bold{
-    font-size: 16px;
-    font-weight: bold;
-  }
+    /* phones */
+    .label-content {}
+    .large {
+        font-size: 32px;
+    }
+    .medium {
+        font-size: 18px;
+    }
+    .small {
+        font-size: 16px;
+    }
+    .large-bold {
+        font-size: 32px;
+        font-weight: bold;
+    }
+    .medium-bold {
+        font-size: 18px;
+        font-weight: bold;
+    }
+    .small-bold {
+        font-size: 16px;
+        font-weight: bold;
+    }
 }
 
 
 /************************************************************************/
+
+
 /*        MENU COMPONENT         */
+
+
 /************************************************************************/
+
+
 /************************************************************************/
+
+
 /*        NAVBAR Media-Q COMPONENT         */
+
+
 /************************************************************************/
 
 // @media only screen and (max-width: 1024px) {
@@ -225,33 +258,54 @@
 //     .navbar-logo-unit {
 //       padding-left: 40px;
 //     }
-
 //   }
 // }
 
 /************************************************************************/
+
+
 /*        ROW-COLUMN MediaQ COMPONENT         */
-/************************************************************************/
+
 
 /************************************************************************/
+
+
+/************************************************************************/
+
+
 /*        SIDENAV MediaQ COMPONENT         */
-/************************************************************************/
+
 
 /************************************************************************/
+
+
+/************************************************************************/
+
+
 /*        Window Treenode Media Q COMPONENT         */
+
+
+/************************************************************************/
+
+@media screen and (max-width: 600px) {}
+
+
 /************************************************************************/
 
 
-@media screen and (max-width: 600px) {
-}
-
-/************************************************************************/
 /*        Window LAYOUT Media Q COMPONENT         */
+
+
 /************************************************************************/
 
 @media screen and (max-width: 600px) {
-  .footer-right-align {
-    padding-right: 15px;
-  }
+    .footer-right-align {
+        padding-right: 15px;
+    }
 }
 
+@media only screen and (min-width: 375px) and (max-width: 450px) {
+    amexio-homepage-northpanel .topnav-lhs-mobile .mobilebar {
+        flex-grow: 0.2;
+    }
+}

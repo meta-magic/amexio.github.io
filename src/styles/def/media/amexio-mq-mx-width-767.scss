@@ -401,19 +401,7 @@
 
 /************************************************************************/
 
-@media only screen and (max-width: 768px) {
-    amexio-homepage-northpanel .topnav-lhs-mobile .mobilebar {
-        flex-grow: 0.3;
-    }
-}
-
-@media only screen and (max-width: 1024px) and (min-width: 768px) {
-    amexio-homepage-northpanel .topnav-lhs-mobile .mobilebar {
-        flex-grow: 0.1;
-    }
-}
-
-@media only screen and (max-width: 1366px) and (min-width: 1024px) {
+@media only screen and (min-width: 568px) and (max-width: 768px) {
     amexio-homepage-northpanel .topnav-lhs-mobile .mobilebar {
         flex-grow: 0.1;
     }
