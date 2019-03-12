@@ -4484,34 +4484,23 @@ amexio-homepage-centerpanel .homepage-centerpanel {
 amexio-homepage-northpanel .top-nav-button {
   padding-left: 0px; }
 
-.homepage-1 .sidenav::-webkit-scrollbar,
-.homepage-2 .sidenav::-webkit-scrollbar {
+.homepage-2 .sidenav::-webkit-scrollbar,
+.homepage-3 .sidenav::-webkit-scrollbar {
   width: 3px; }
 
 .homepage-centerpanel-flex {
   flex-grow: 1;
   padding-top: 50px; }
 
-.homepage-northpanel-flex {
+.homepage-3 .homepage-expand {
   display: flex;
+  justify-content: space-between;
   flex-direction: row; }
 
-.collaspe-icon-style {
-  margin-right: -26px;
-  z-index: 2;
-  height: 50px;
-  background-color: #000080;
-  color: white;
-  width: 50px;
-  border-radius: 100%;
-  justify-content: center;
+.homepage-3 .homepage-collapse {
   display: flex;
-  cursor: pointer;
-  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2) !important;
-  filter: grayscale(20%);
-  transform: perspective(1px) translateZ(0);
-  transition-duration: 0.5s;
-  transition-property: box-shadow; }
+  justify-content: space-around;
+  flex-direction: row; }
 
 .homepage-2 .homepage-expand {
   display: flex;
@@ -4520,18 +4509,31 @@ amexio-homepage-northpanel .top-nav-button {
 
 .homepage-2 .homepage-collapse {
   display: flex;
-  justify-content: space-around;
-  flex-direction: row; }
-
-.homepage-1 .homepage-expand {
-  display: flex;
   justify-content: space-between;
   flex-direction: row; }
 
-.homepage-1 .homepage-collapse {
+.homepage-northpanel-flex {
   display: flex;
-  justify-content: space-between;
   flex-direction: row; }
+
+.collaspe-icon-style {
+  margin-right: -26px;
+  width: 50px;
+  border-radius: 100%;
+  height: 50px; }
+
+.collaspe-icon-style {
+  z-index: 2;
+  background-color: #000080;
+  color: white;
+  justify-content: center;
+  display: flex;
+  cursor: pointer;
+  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2) !important;
+  filter: grayscale(20%);
+  transform: perspective(1px) translateZ(0);
+  transition-duration: 0.5s;
+  transition-property: box-shadow; }
 
 /****************************************************************************
     Component Name : Datapoints
@@ -7501,21 +7503,22 @@ amexio-layout amexio-layout-item {
     width: 6px;
     height: 6px;
 } */
-.window-header-ce {
+/** creative header - Structure CSS **/
+.header-ce {
   padding: 10px;
   position: relative;
   display: flex; }
 
-.window-header-div-ce {
+.header-div-ce {
   display: flex;
   flex-grow: 50;
   flex-direction: row; }
 
-.window-header-content-ce {
+.header-content-ce {
   display: flex;
   flex-direction: column; }
 
-.window-header-inner-div-ce {
+.header-inner-div-ce {
   flex-grow: 1;
   flex-direction: row; }
 
