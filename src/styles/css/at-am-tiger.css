@@ -4484,34 +4484,23 @@ amexio-homepage-centerpanel .homepage-centerpanel {
 amexio-homepage-northpanel .top-nav-button {
   padding-left: 0px; }
 
-.homepage-1 .sidenav::-webkit-scrollbar,
-.homepage-2 .sidenav::-webkit-scrollbar {
+.homepage-2 .sidenav::-webkit-scrollbar,
+.homepage-3 .sidenav::-webkit-scrollbar {
   width: 3px; }
 
 .homepage-centerpanel-flex {
   flex-grow: 1;
   padding-top: 50px; }
 
-.homepage-northpanel-flex {
+.homepage-3 .homepage-expand {
   display: flex;
+  justify-content: space-between;
   flex-direction: row; }
 
-.collaspe-icon-style {
-  margin-right: -26px;
-  z-index: 2;
-  height: 50px;
-  background-color: linear-gradient(#40434D, #000000);
-  color: #E84C1A;
-  width: 50px;
-  border-radius: 100%;
-  justify-content: center;
+.homepage-3 .homepage-collapse {
   display: flex;
-  cursor: pointer;
-  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2) !important;
-  filter: grayscale(20%);
-  transform: perspective(1px) translateZ(0);
-  transition-duration: 0.5s;
-  transition-property: box-shadow; }
+  justify-content: space-around;
+  flex-direction: row; }
 
 .homepage-2 .homepage-expand {
   display: flex;
@@ -4520,18 +4509,31 @@ amexio-homepage-northpanel .top-nav-button {
 
 .homepage-2 .homepage-collapse {
   display: flex;
-  justify-content: space-around;
-  flex-direction: row; }
-
-.homepage-1 .homepage-expand {
-  display: flex;
   justify-content: space-between;
   flex-direction: row; }
 
-.homepage-1 .homepage-collapse {
+.homepage-northpanel-flex {
   display: flex;
-  justify-content: space-between;
   flex-direction: row; }
+
+.collaspe-icon-style {
+  margin-right: -26px;
+  width: 50px;
+  border-radius: 100%;
+  height: 50px; }
+
+.collaspe-icon-style {
+  z-index: 2;
+  background-color: linear-gradient(#40434D, #000000);
+  color: #E84C1A;
+  justify-content: center;
+  display: flex;
+  cursor: pointer;
+  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2) !important;
+  filter: grayscale(20%);
+  transform: perspective(1px) translateZ(0);
+  transition-duration: 0.5s;
+  transition-property: box-shadow; }
 
 /****************************************************************************
     Component Name : Datapoints
@@ -7501,21 +7503,22 @@ amexio-layout amexio-layout-item {
     width: 6px;
     height: 6px;
 } */
-.window-header-ce {
+/** creative header - Structure CSS **/
+.header-ce {
   padding: 10px;
   position: relative;
   display: flex; }
 
-.window-header-div-ce {
+.header-div-ce {
   display: flex;
   flex-grow: 50;
   flex-direction: row; }
 
-.window-header-content-ce {
+.header-content-ce {
   display: flex;
   flex-direction: column; }
 
-.window-header-inner-div-ce {
+.header-inner-div-ce {
   flex-grow: 1;
   flex-direction: row; }
 
@@ -7624,7 +7627,7 @@ amexio-layout amexio-layout-item {
     color: #fff;
     text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3); }
 
-  /*
+    /*
 
   h3 {
     font-size: 9pt;
@@ -7702,6 +7705,9 @@ amexio-layout amexio-layout-item {
 @media screen and (max-width: 600px) {
   .footer-right-align {
     padding-right: 15px; } }
+@media only screen and (max-width: 375px) {
+  amexio-homepage-northpanel .topnav-lhs-mobile .mobilebar {
+    flex-grow: 0.2; } }
 /****************************************************************************
                     Media Query for width - 450
 *****************************************************************************/
@@ -7810,7 +7816,7 @@ amexio-layout amexio-layout-item {
     color: #fff;
     text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3); }
 
-  /*
+    /*
 
   h3 {
     font-size: 9pt;
@@ -7888,6 +7894,9 @@ amexio-layout amexio-layout-item {
 @media screen and (max-width: 600px) {
   .footer-right-align {
     padding-right: 15px; } }
+@media only screen and (min-width: 375px) and (max-width: 450px) {
+  amexio-homepage-northpanel .topnav-lhs-mobile .mobilebar {
+    flex-grow: 0.2; } }
 /****************************************************************************
                     Media Query for width - 767
 *****************************************************************************/
@@ -7997,7 +8006,8 @@ amexio-layout amexio-layout-item {
 /*        ITEM SELECTOR Media-Q COMPONENT         */
 /************************************************************************/
 @media only screen and (max-width: 767px) {
-  .flex-col-45pt, .flex-col-10pt {
+  .flex-col-45pt,
+  .flex-col-10pt {
     max-width: 100%; }
 
   .item-selector-action-panel .card-header {
@@ -8086,11 +8096,23 @@ amexio-layout amexio-layout-item {
   .flex-row {
     flex-direction: column; }
 
-  .flex-col-1, .flex-col-2, .flex-col-3, .flex-col-4, .flex-col-5, .flex-col-6, .flex-col-7, .flex-col-8, .flex-col-9, .flex-col-10, .flex-col-11, .flex-col-12 {
+  .flex-col-1,
+  .flex-col-2,
+  .flex-col-3,
+  .flex-col-4,
+  .flex-col-5,
+  .flex-col-6,
+  .flex-col-7,
+  .flex-col-8,
+  .flex-col-9,
+  .flex-col-10,
+  .flex-col-11,
+  .flex-col-12 {
     max-width: 100%;
     flex: 0 0 100%; } }
 @media only screen and (max-width: 1024px) {
-  .flex-col-2pt5, .flex-col-9pt5 {
+  .flex-col-2pt5,
+  .flex-col-9pt5 {
     flex: 0 0 100%;
     max-width: 100%; } }
 /************************************************************************/
@@ -8100,8 +8122,11 @@ amexio-layout amexio-layout-item {
 /*        Window Treenode Media Q COMPONENT         */
 /************************************************************************/
 /************************************************************************/
-/*        Window LAYOUT Media Q COMPONENT         */
+/*        HOMEPAGE LAYOUT Media Q COMPONENT         */
 /************************************************************************/
+@media only screen and (min-width: 568px) and (max-width: 768px) {
+  amexio-homepage-northpanel .topnav-lhs-mobile .mobilebar {
+    flex-grow: 0.1; } }
 /****************************************************************************
                     Media Query for width - 1024
 *****************************************************************************/
@@ -8211,7 +8236,8 @@ amexio-layout amexio-layout-item {
 /*        ITEM SELECTOR Media-Q COMPONENT         */
 /************************************************************************/
 @media only screen and (max-width: 767px) {
-  .flex-col-45pt, .flex-col-10pt {
+  .flex-col-45pt,
+  .flex-col-10pt {
     max-width: 100%; }
 
   .item-selector-action-panel .card-header {
@@ -8300,11 +8326,23 @@ amexio-layout amexio-layout-item {
   .flex-row {
     flex-direction: column; }
 
-  .flex-col-1, .flex-col-2, .flex-col-3, .flex-col-4, .flex-col-5, .flex-col-6, .flex-col-7, .flex-col-8, .flex-col-9, .flex-col-10, .flex-col-11, .flex-col-12 {
+  .flex-col-1,
+  .flex-col-2,
+  .flex-col-3,
+  .flex-col-4,
+  .flex-col-5,
+  .flex-col-6,
+  .flex-col-7,
+  .flex-col-8,
+  .flex-col-9,
+  .flex-col-10,
+  .flex-col-11,
+  .flex-col-12 {
     max-width: 100%;
     flex: 0 0 100%; } }
 @media only screen and (max-width: 1024px) {
-  .flex-col-2pt5, .flex-col-9pt5 {
+  .flex-col-2pt5,
+  .flex-col-9pt5 {
     flex: 0 0 100%;
     max-width: 100%; } }
 /************************************************************************/
@@ -8314,8 +8352,11 @@ amexio-layout amexio-layout-item {
 /*        Window Treenode Media Q COMPONENT         */
 /************************************************************************/
 /************************************************************************/
-/*        Window LAYOUT Media Q COMPONENT         */
+/*        HOMEPAGE LAYOUT Media Q COMPONENT         */
 /************************************************************************/
+@media only screen and (max-width: 1024px) {
+  amexio-homepage-northpanel .topnav-lhs-mobile .mobilebar {
+    flex-grow: 0.1; } }
 /****************************************************************************
                     Media Query for width - 1440
 *****************************************************************************/
@@ -8422,7 +8463,8 @@ amexio-layout amexio-layout-item {
 /*        ITEM SELECTOR Media-Q COMPONENT         */
 /************************************************************************/
 @media only screen and (max-width: 767px) {
-  .flex-col-45pt, .flex-col-10pt {
+  .flex-col-45pt,
+  .flex-col-10pt {
     max-width: 100%; }
 
   .item-selector-action-panel .card-header {
@@ -8511,8 +8553,11 @@ amexio-layout amexio-layout-item {
 /*        Window Treenode Media Q COMPONENT         */
 /************************************************************************/
 /************************************************************************/
-/*        Window LAYOUT Media Q COMPONENT         */
+/*        HOMEPAGE LAYOUT Media Q COMPONENT         */
 /************************************************************************/
+@media only screen and (max-width: 1440px) {
+  amexio-homepage-northpanel .topnav-lhs-mobile .mobilebar {
+    flex-grow: 0.1; } }
 /****************************************************************************
                     Media Query for width - 1440
 *****************************************************************************/
@@ -8622,7 +8667,8 @@ amexio-layout amexio-layout-item {
 /*        ITEM SELECTOR Media-Q COMPONENT         */
 /************************************************************************/
 @media only screen and (max-width: 767px) {
-  .flex-col-45pt, .flex-col-10pt {
+  .flex-col-45pt,
+  .flex-col-10pt {
     max-width: 100%; }
 
   .item-selector-action-panel .card-header {
@@ -8711,11 +8757,23 @@ amexio-layout amexio-layout-item {
   .flex-row {
     flex-direction: column; }
 
-  .flex-col-1, .flex-col-2, .flex-col-3, .flex-col-4, .flex-col-5, .flex-col-6, .flex-col-7, .flex-col-8, .flex-col-9, .flex-col-10, .flex-col-11, .flex-col-12 {
+  .flex-col-1,
+  .flex-col-2,
+  .flex-col-3,
+  .flex-col-4,
+  .flex-col-5,
+  .flex-col-6,
+  .flex-col-7,
+  .flex-col-8,
+  .flex-col-9,
+  .flex-col-10,
+  .flex-col-11,
+  .flex-col-12 {
     max-width: 100%;
     flex: 0 0 100%; } }
 @media only screen and (max-width: 1024px) {
-  .flex-col-2pt5, .flex-col-9pt5 {
+  .flex-col-2pt5,
+  .flex-col-9pt5 {
     flex: 0 0 100%;
     max-width: 100%; } }
 /************************************************************************/
@@ -8725,7 +8783,7 @@ amexio-layout amexio-layout-item {
 /*        Window Treenode Media Q COMPONENT         */
 /************************************************************************/
 /************************************************************************/
-/*        Window LAYOUT Media Q COMPONENT         */
+/*        HOMEPAGE LAYOUT Media Q COMPONENT         */
 /************************************************************************/
 /*----------------------------------------------------------------------*/
 /*       Royal Tiger -Structure */
