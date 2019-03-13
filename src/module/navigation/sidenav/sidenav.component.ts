@@ -256,7 +256,7 @@ export class AmexioSideNavComponent implements OnInit, AfterContentInit {
       });
     }
     if (this.data && (!this.httpmethod || !this.httpurl)) {
-      this.setData(this.data);
+       this.setData(this.data);
     }
 
     if (this.position == null) {
