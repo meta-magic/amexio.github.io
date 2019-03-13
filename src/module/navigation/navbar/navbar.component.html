@@ -12,7 +12,7 @@
             <ng-container *ngIf="!mobilemode">
                 <span *ngIf="homepageType=='3' || isLHSHide " (click)="onExpandIconClick($event) " class="homepage3-bar">
                 <amexio-image *ngIf="!isExpand" [icon-class]=" 'fa fa-bars' "></amexio-image>
-                <amexio-image *ngIf="isExpand" [icon-class]=" 'fa fa-times' "></amexio-image>
+                <amexio-image *ngIf="isExpand" [icon-class]=" 'fa fa-times-circle' "></amexio-image>
               </span>
             </ng-container>
             <ng-container *ngIf="!mobilemode && !isIconLeft ">
