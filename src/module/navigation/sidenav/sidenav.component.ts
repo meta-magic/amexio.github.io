@@ -255,8 +255,8 @@ export class AmexioSideNavComponent implements OnInit, AfterContentInit {
         this.setData(this.responseData);
       });
     }
-    if (this.data) {
-      this.generateIndex(this.data);
+    if (this.data && (!this.httpmethod || !this.httpurl)) {
+      this.setData(this.data);
     }
 
     if (this.position == null) {
@@ -335,6 +335,7 @@ export class AmexioSideNavComponent implements OnInit, AfterContentInit {
       responsedata = httpResponse;
     }
     this.data = responsedata;
+    this.generateIndex(this.data);
     this.activateNode(this.data, null);
     this.handleDeviceSettings(false);
   }
