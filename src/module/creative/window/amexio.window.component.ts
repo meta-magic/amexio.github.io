@@ -73,8 +73,6 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
 
   isFullWindow: boolean;
 
-  windowFlag = true;
-
   @Input() maximize = false;
 
   @Input() closable = true;
@@ -197,7 +195,6 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
   ngAfterContentInit(): void {
     if (this.amexioHeader) {
       this.amexioHeader.toArray()[0].closeable = this.closable;
-      this.amexioHeader.toArray()[0].setWindowFlag(true);
 
       if (this.maximize) {
         this.amexioHeader.toArray()[0].setMaximizeData(this.maximize, this.isFullWindow);

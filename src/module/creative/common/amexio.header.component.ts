@@ -33,7 +33,7 @@ export class AmexioCardCEHeaderComponent implements OnInit {
 
   @Input('align') align = '';
 
-  @Input('vertical-align') verticalalign = '';
+  @Input('icon-valign') verticalalign = '';
 
   @Input('bg-image') bgimage: string;
 
@@ -55,17 +55,20 @@ export class AmexioCardCEHeaderComponent implements OnInit {
 
   isFullWindow = false;
 
-  window: boolean;
-
   closeableBehaiour = new BehaviorSubject(false);
 
   maximizeBehaiour = new BehaviorSubject(false);
+
+  iconPosition: {
+    top: string;
+    bottom: string;
+  };
 
   ngOnInit() {
     if (this.borderbottom) {
       this.cclass = 'card-header-border';
     }
-    this.setVerticlePosition();
+    this.setIconPosition();
   }
   setMaximizeData(maximize: boolean, isFullWindow: boolean) {
     this.maximize = maximize;
@@ -82,29 +85,30 @@ export class AmexioCardCEHeaderComponent implements OnInit {
     this.closeableBehaiour.next(false);
   }
 
-   setVerticlePosition() {
+  setIconPosition() {
     switch (this.verticalalign) {
       case 'top': {
-        this.verticalalign = 'flex-start';
+        this.iconPosition = {
+          top: '0',
+          bottom: '',
+        };
         break;
       }
       case 'center': {
-        this.verticalalign = 'center';
+        this.iconPosition = {
+          top: '',
+          bottom  : '',
+        };
         break;
       }
       case 'bottom': {
-        this.verticalalign = 'flex-end';
-        break;
-      }
-      default: {
-        this.verticalalign = 'center';
+        this.iconPosition = {
+          top: '',
+          bottom: '0',
+        };
         break;
       }
     }
-  }
-
-  setWindowFlag(window: boolean) {
-   this.window = window;
   }
 
 }

@@ -112,7 +112,6 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
     if (this.AmexioCardCEHeaderQueryList) {
       this.amexioCardHeaderList = this.AmexioCardCEHeaderQueryList.toArray();
       if (this.amexioCardHeaderList && this.amexioCardHeaderList.length > 1) {
-      this.amexioCardHeaderList[0].setWindowFlag(false);
       }
     }
     this.setCardAligementForAllInnerComponent();
