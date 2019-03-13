@@ -82,9 +82,6 @@ description : Color
 @Input('color') color: string;
 
   // THIS IS LOCAL USE NOT EXPOSED
-  @Input('enable-icon') enableIcon = false;
-
-  // THIS IS LOCAL USE NOT EXPOSED
   @Input('home-page-type') homepageType: string;
   @Output() onNavLogoClick: any = new EventEmitter<any>();
 
@@ -118,7 +115,6 @@ description : Color
   constructor(public matchMediaService: DeviceQueryService) {
     if (this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone()) {
       this.mobilemode = true;
-      this.enableIcon = false;
     } else {
         this.mobilemode = false;
     }
@@ -182,7 +178,6 @@ description : Color
   handleDeviceSetting() {
     if (this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone()) {
       this.mobilemode = true;
-      this.enableIcon = false;
     } else {
         this.mobilemode = false;
     }

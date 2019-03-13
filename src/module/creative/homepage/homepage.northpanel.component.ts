@@ -24,7 +24,6 @@ constructor(public matchMediaService: DeviceQueryService) {
  }
  ngAfterViewInit() {
    if (this.amexioNavBarComponent && this.type === '2' && !(this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone())) {
-     this.amexioNavBarComponent.enableIcon = true;
      this.amexioNavBarComponent.homepageType = this.type;
    }
    this.amexioNavBarComponent.onIconArrowClick.subscribe((eventdata: any) =>

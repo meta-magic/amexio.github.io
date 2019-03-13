@@ -15,13 +15,14 @@
                 <amexio-image *ngIf="isExpand" [icon-class]=" 'fa fa-times-circle' "></amexio-image>
               </span>
             </ng-container>
-            <ng-container *ngIf="!mobilemode && !isIconLeft ">
-                <span class="collaspe-icon-style" (click)="onArrowClick($event)" *ngIf="enableIcon"><amexio-image [icon-class]=" 'fa fa-chevron-right' "></amexio-image></span>
+            <ng-container *ngIf="homepageType=='2' && !sidenav">
+                <ng-container *ngIf="!isIconLeft">
+                    <span class="collaspe-icon-style" (click)="onArrowClick($event)"><amexio-image [icon-class]=" 'fa fa-chevron-right' "></amexio-image></span>
+                </ng-container>
+                <ng-container *ngIf="isIconLeft">
+                    <span class="collaspe-icon-style" (click)="onArrowClick($event)"><amexio-image  [icon-class]=" 'fa fa-chevron-left' "></amexio-image></span>
+                </ng-container>
             </ng-container>
-            <ng-container *ngIf="!mobilemode && isIconLeft ">
-                <span class="collaspe-icon-style" (click)="onArrowClick($event)" *ngIf="enableIcon"><amexio-image  [icon-class]=" 'fa fa-chevron-left' "></amexio-image></span>
-            </ng-container>
-
         </div>
         <div *ngIf="mobilemode" class="float-right mobilebar" (click)="toggleDrawerPanel($event)">
             <em *ngIf="!toggle" class="fa fa-caret-down fa-2x"></em>
