@@ -1,3 +1,27 @@
+.creative-header {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+}
+
+.creative-header .creative-header-div {
+    height: auto;
+}
+
+.creative-header>* {
+    padding-right: 10px;
+    margin-top: 0px;
+}
+
+.creative-header-icon-div{
+    position:absolute; 
+    right:0%;
+     padding:5px 10px
+}
+
+
 .header-ce{
     padding:10px;
     position:relative;

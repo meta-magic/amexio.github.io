@@ -4523,6 +4523,10 @@ amexio-homepage-northpanel .top-nav-button {
   border-radius: 100%;
   height: 50px; }
 
+.homepage-bar-collapse {
+  padding-left: 10px;
+  padding-right: 15px; }
+
 .collaspe-icon-style {
   z-index: 2;
   background-color: #70196F;
@@ -4535,6 +4539,13 @@ amexio-homepage-northpanel .top-nav-button {
   transform: perspective(1px) translateZ(0);
   transition-duration: 0.5s;
   transition-property: box-shadow; }
+
+.homepage-bar-collapse {
+  cursor: pointer;
+  transition: all .2s ease-in-out;
+  transition-duration: .4s;
+  transition-property: color,margin;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1); }
 
 /****************************************************************************
     Component Name : Datapoints
@@ -7505,6 +7516,25 @@ amexio-layout amexio-layout-item {
     height: 6px;
 } */
 /** creative header - Structure CSS **/
+.creative-header {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative; }
+
+.creative-header .creative-header-div {
+  height: auto; }
+
+.creative-header > * {
+  padding-right: 10px;
+  margin-top: 0px; }
+
+.creative-header-icon-div {
+  position: absolute;
+  right: 0%;
+  padding: 5px 10px; }
+
 .header-ce {
   padding: 10px;
   position: relative;
