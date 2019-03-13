@@ -13,6 +13,11 @@ fieldset {
   font-weight: bold;
   cursor: pointer;
 }
+.collapsible-legend:focus{
+  outline: none;
+  background-color: $collapsibleHovColor;
+  color: $collapsibleHovFontColor;
+}
 
 .collapsible-fieldset {
   overflow: hidden;
