@@ -1,5 +1,5 @@
 <nav #navbar class="topnav" [ngStyle]="{'color': color}" [ngClass]="{'topnav-mobile':mobilemode, 'transparentNav':transparent}" (window:resize)="resize($event)">
-    <div #navbarfixed class="topnavbarunit1 " [ngStyle]="{'flex': !mobilemode ? lhsWidth : '','flex-width': !mobilemode ? lhsWidth :'' }" [ngClass]="{ 'topnavbarunit1-mobile topnav-lhs-mobile':mobilemode,'topnav-lhs topnav-lhs-color':!mobilemode} ">
+    <div #navbarfixed [ngStyle]="{'flex': !mobilemode ? lhsWidth : '','flex-width': !mobilemode ? lhsWidth :'' }" [ngClass]="{ ' topnav-lhs-mobile':mobilemode,'topnav-lhs topnav-lhs-color':!mobilemode} ">
         <div [ngClass]="{'homepage-expand': (isExpand && !mobilemode),'homepage-collapse':(!isExpand && !mobilemode) }">
 
             <ng-container *ngIf="!isLHSHide || mobilemode">
@@ -29,8 +29,8 @@
             <em *ngIf="toggle" class="fa fa-caret-up fa-2x"></em>
         </div>
     </div>
-    <div #navbaritems *ngIf="toggle" class="topnavbarunit2" [ngClass]="{'topnavbarunit2-mobile':mobilemode}">
-        <div class="topnavmainbar" [ngClass]="{'topnavmainbar-mobile':mobilemode,'topnav-rhs topnav-rhs-color':!mobilemode}">
+    <div #navbaritems *ngIf="toggle" [ngClass]="{'topnavbarunit2-mobile':mobilemode,'topnav-rhs topnav-rhs-color':!mobilemode}">
+        <div class="topnavmainbar" [ngClass]="{'topnavmainbar-mobile':mobilemode}">
             <div #navbaritems1 class="topnavmainbaritems" [ngClass]="{'topnavmainbaritems-mobile':mobilemode}">
                 <ng-content select="[position-left]"></ng-content>
             </div>
