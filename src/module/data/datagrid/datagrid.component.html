@@ -9,7 +9,7 @@
         <span *ngIf="show">&#9747;</span>
         </span>
         </span>
-    <span *ngIf="groupby ? true : false" class="float-right" (click)="showGroupByColumn = !showGroupByColumn; showToolTip = false" style=" cursor: pointer;">
+    <span *ngIf="groupby ? true : false" class="float-right" tabindex = "1" (keyup.enter)="showGroupCol()" (click)="showGroupByColumn = !showGroupByColumn; showToolTip = false" style=" cursor: pointer;">
             <!--<span class="fa fa-th-list"></span>-->
         <amexio-c-icon key="datagrid_list"></amexio-c-icon>
         </span>
@@ -85,7 +85,7 @@
   <ng-container *ngIf="groupby ? true : false">
         <span *ngIf="showGroupByColumn" class="dropdown dropdown-right" style="width: 250px;">
             <ul class="dropdown-list">
-                <li class="list-items" *ngFor="let cols of columns;let i = index;" (click)="showGroupByColumn = !showGroupByColumn">
+              <li #listId id = {{i}} (keyup.arrowup)="onArrowUpList(listId.id)" (keyup.arrowdown)="onArrowdownList(listId.id)" role="option" tabindex="1" class="list-items" *ngFor="let cols of columns;let i = index;" (click)="showGroupByColumn = !showGroupByColumn">
                     <div (click)="setGroupByColumn(cols)">
                         <label>{{cols.text}}</label>
                     </div>
@@ -253,7 +253,7 @@
             <ng-container *ngIf="isGroupChecking(row)">
 
               <ng-container *ngIf="colIndex == 0">
-                <div class="datatable-col col-group">
+                <div class="datatable-col col-group" tabindex="1">
                   <!--<i *ngIf="!row.expanded" class="fa fa-caret-right" aria-hidden="true" (click)="toogle(row,i)"></i>-->
                   <ng-container *ngIf="!row.expanded">
                     <amexio-c-icon key="datagrid_expand"></amexio-c-icon>

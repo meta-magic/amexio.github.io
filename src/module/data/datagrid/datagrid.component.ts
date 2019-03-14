@@ -1544,4 +1544,8 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
       this.keyControlEnd();
     }
   }
+
+  showGroupCol() {
+    this.showGroupByColumn = !this.showGroupByColumn;
+  }
 }

@@ -294,20 +294,44 @@ export class AmexioItemSelectorComponent implements OnInit {
     document.getElementById(focusId['id']).focus();
   }
   downArrowPress(event: any, index: any) {
-    const nextitem = this.availableData[index + 1];
-    document.getElementById(nextitem['id']).focus();
+    if (this.availableData[index] === 0) {
+      this.focusDetectionOnAvailableData(event, index);
+    } else {
+      const nextitem = this.availableData[index + 1];
+      document.getElementById(nextitem['id']).focus();
+    }
   }
   upArrowPress(event: any, index: any) {
-    const nextitem = this.availableData[index - 1];
+    if (this.availableData[index] === 0) {
+      this.focusDetectionOnAvailableData(event, index);
+    } else {
+      const nextitem = this.availableData[index - 1];
+      document.getElementById(nextitem['id']).focus();
+    }
+  }
+  downSwitchOnTab(event: any, index: any) {
+    if (this.selectedData[index] === 0) {
+      this.focusDetectionOnSelected(event, index);
+    } else {
+      const nextitem = this.selectedData[index + 1];
+      document.getElementById(nextitem['id']).focus();
+    }
+  }
+  upSwitchOnTab(event: any, index: any) {
+    if (this.selectedData[index] === 0) {
+      this.focusDetectionOnSelected(event, index);
+    } else {
+      const nextitem = this.selectedData[index - 1];
+      document.getElementById(nextitem['id']).focus();
+    }
+  }
+  focusDetectionOnAvailableData(event: any, index: any) {
+    const nextitem = this.availableData[0];
     document.getElementById(nextitem['id']).focus();
   }
 
-  downSwitchOnTab(event: any, index: any) {
-    const nextitem = this.selectedData[index + 1];
-    document.getElementById(nextitem['id']).focus();
-  }
-  upSwitchOnTab(event: any, index: any) {
-    const nextitem = this.selectedData[index - 1];
+  focusDetectionOnSelected(event: any, index: any) {
+    const nextitem = this.selectedData[0];
     document.getElementById(nextitem['id']).focus();
   }
 

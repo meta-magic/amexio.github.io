@@ -6,9 +6,9 @@
                 <div style="height: 220px;" *ngIf="mask">
                     <div class="spinner"></div>
                 </div>
-                <div tabindex="1" [style.height.px]="height" (dragover)="allowDrop({event:$event,data:data})" (drop)="dropLeft($event)"
-                    *ngIf="!mask" style="overflow: auto">
-                    <div id="{{data.id}}" tabindex="1"
+                <div tabindex="1" role="listbox" [style.height.px]="height" (dragover)="allowDrop({event:$event,data:data})" (drop)="dropLeft($event)"
+                    *ngIf="!mask" style="overflow: auto;outline: none;">
+                    <div id="{{data.id}}" tabindex="1" role="option"
                      (keyup.enter)="dataFormLeftToRightMove({event:$event,data:data,index:i})"
                      (keyup.arrowdown)="downArrowPress($event,i)" 
                     (keyup.arrowup)="upArrowPress($event,i)"
@@ -70,7 +70,7 @@
             <amexio-body>
                 <div role="listbox" [style.height.px]="height" style="overflow: auto" (dragover)="allowDrop({event:$event,data:data})"
                     (drop)="dropRight($event)">
-                    <div [attr.tabindex]="data['selectedClick'] ? 2 : -1" role="textbox" contenteditable="false"
+                    <div [attr.tabindex]="data['selectedClick'] ? 2 : -1" role="option" contenteditable="false"
                         (keyup.enter)="enterFocus({event:$event,data:data,index:i})" id="{{data.id}}" [attr.draggable]="enabledrag"
                         (keyup.arrowdown)="downSwitchOnTab($event,i)" (keyup.arrowup)="upSwitchOnTab( $event,i)" class="itemselector-list"
                         *ngFor="let data of selectedData; let i = index" (click)="itemClick(data,i, false,true)"

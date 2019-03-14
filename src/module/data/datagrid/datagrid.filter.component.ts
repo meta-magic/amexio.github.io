@@ -91,6 +91,7 @@ For internal use
   }
 
   ngOnInit() {
+    this.sortFilterData();
   }
 
   selectedOption(col: any, opt: any) {
@@ -185,7 +186,6 @@ For internal use
     if (previousId >= 0) {
       document.getElementById(previousId.toString()).focus();
     } else {
-      this.sortFilterData(datatype);
       if (datatype === 'string') {
         nextId = this.stringFilterArray.length;
       } else {
@@ -200,10 +200,9 @@ For internal use
     const unitId = parseInt(listId, 10);
     const nextId = unitId + 1;
     let datatypeLength: number;
-    this.sortFilterData(datatype);
     if (datatype === 'string') {
       datatypeLength = this.stringFilterArray.length;
-    } else {
+    } else if (datatype === 'number') {
       datatypeLength = this.numberFilterArray.length;
     }
     if (nextId < datatypeLength) {
@@ -214,7 +213,7 @@ For internal use
     }
   }
 
-  sortFilterData(datatype: any) {
+  sortFilterData() {
     this.stringFilterArray = [];
     this.numberFilterArray = [];
     this.filterOptions.forEach((element: any) => {

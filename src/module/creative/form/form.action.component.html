@@ -1,0 +1,27 @@
+  <ng-container *ngIf="enableaction">  
+    <span  *ngIf="!form.valid" style="padding-bottom:10px;position:relative">
+            <button class="button" [attr.title]="'click'" (click)="showErrors($event)" [ngClass]="'button-warning button-small button-round'">
+                        <span class="button-text">
+                          <span style="padding-right: 5px;" *ngIf="icon">
+                            <amexio-c-icon [customclass]="icon" >
+                            </amexio-c-icon>
+                          </span>
+    <span style="padding-right: 5px;" *ngIf="loading">
+                            <amexio-c-icon key="button-loading-icon"></amexio-c-icon>
+                          </span> ?
+    </span>
+    </button>
+    <amexio-dialogue class="dailogue-header-ce" [(show)]="showDialogue" [custom]="true" [content-align]="'left'" [closable]="false"
+        [title]="'Invalid Fields'" [type]="'confirm'">
+
+        <amexio-body *ngFor="let msg of errorMsgArray let index=index">
+            <amexio-label>{{index+1}}) {{msg.label}}</amexio-label><br>
+        </amexio-body>
+
+        <amexio-action>
+            <amexio-button type="primary" (onClick)="closeDialogue()" [label]="'OK'">
+            </amexio-button>
+        </amexio-action>
+    </amexio-dialogue>
+    </span>
+  </ng-container>  
