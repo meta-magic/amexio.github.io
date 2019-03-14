@@ -4526,6 +4526,12 @@ amexio-homepage-northpanel .top-nav-button {
   padding-left: 10px;
   padding-right: 15px; }
 
+.homepage-bar-collapse .fa {
+  font-size: 26px; }
+
+.homepage3-bar .fa {
+  font-size: 26px; }
+
 .collaspe-icon-style {
   z-index: 2;
   background-color: linear-gradient(#40434D, #000000);
@@ -4543,8 +4549,11 @@ amexio-homepage-northpanel .top-nav-button {
   cursor: pointer;
   transition: all .2s ease-in-out;
   transition-duration: .4s;
-  transition-property: color,margin;
+  transition-property: color, margin;
   transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1); }
+
+.homepage3-bar {
+  cursor: pointer; }
 
 /****************************************************************************
     Component Name : Datapoints
@@ -4791,6 +4800,12 @@ amexio-homepage-northpanel .top-nav-button {
 
 .itemselector-list-active {
   background-color: #1b1d22; }
+
+.itemselector-list-active:focus {
+  background-color: #1b1d22; }
+
+.itemselector-list:focus {
+  background-color: rgba(255, 253, 208, 0.4); }
 
 .itemselector-list:hover {
   background-color: rgba(255, 253, 208, 0.4); }
@@ -8384,7 +8399,7 @@ amexio-layout amexio-layout-item {
 /************************************************************************/
 /*        HOMEPAGE LAYOUT Media Q COMPONENT         */
 /************************************************************************/
-@media only screen and (max-width: 1024px) {
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
   amexio-homepage-northpanel .topnav-lhs-mobile .mobilebar {
     flex-grow: 0.1; } }
 /****************************************************************************
@@ -8585,9 +8600,6 @@ amexio-layout amexio-layout-item {
 /************************************************************************/
 /*        HOMEPAGE LAYOUT Media Q COMPONENT         */
 /************************************************************************/
-@media only screen and (max-width: 1440px) {
-  amexio-homepage-northpanel .topnav-lhs-mobile .mobilebar {
-    flex-grow: 0.1; } }
 /****************************************************************************
                     Media Query for width - 1440
 *****************************************************************************/
