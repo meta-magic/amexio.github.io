@@ -69,7 +69,7 @@ export * from './timeline/amexiotimelineevent.component';
 export * from './window/window.pane.component';
 export * from './window/window.pane.header.component';
 export * from './overlay/overlay.component';
-
+export * from './form/form.group.directive';
 export * from '../services/icon/icon.service';
 
 const PANE_COMPONENTS = [

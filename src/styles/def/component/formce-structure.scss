@@ -1,0 +1,25 @@
+.form-container-ce {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+}
+
+.form-container-ce > * {
+    /* padding: 10px; */
+
+}
+
+.card-container-body {
+    padding: 10px;
+    font-size: 14px;
+    display: block;
+    line-height: 24px;
+    font-weight: 400;
+    flex-grow: 1;
+    position: relative;
+}
+
+.dailogue-header-ce .dialogue-table{
+    display: flex;
+}

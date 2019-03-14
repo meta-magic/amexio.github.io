@@ -1,0 +1,7 @@
+<div [ngStyle]="{'background': bgimage ? 'url(' + bgimage + ') center/cover no-repeat' : null}" [ngClass]="cclass">
+    <div [ngStyle]="{'justify-content': (align === 'start' || align === 'end') ? 'flex-'+align:align , 'color':color, 'background': background}">
+        <form name="fname" class="form-container-ce form-group">
+            <ng-content></ng-content>
+        </form>
+    <div>
+</div>

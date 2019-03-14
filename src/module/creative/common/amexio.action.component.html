@@ -1,5 +1,7 @@
-<div [ngStyle]="{'background': ' url(' + bgimage + ') center/cover no-repeat','height': height }" [ngClass]="cclass">
-    <footer class="card-container-footer" [style.flex-direction]="direction" [ngStyle]="{'color': color, 'background':background, 'justify-content': (align === 'start' || align === 'end') ? 'flex-'+align:align}">
+
+<div   [ngStyle]="{'background': ' url(' + bgimage + ') center/cover no-repeat','height': height }" [ngClass]="cclass">
+    <div class="creative-footer" [style.flex-direction]="direction" [ngStyle]="{'color': color, 'background':background, 'justify-content': (align === 'start' || align === 'end') ? 'flex-'+align:align}">
         <ng-content></ng-content>
-    </footer>
+        <form-action-ce *ngIf="(formFlag && showError)"></form-action-ce>
+    </div>
 </div>

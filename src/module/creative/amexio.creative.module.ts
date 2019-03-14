@@ -18,6 +18,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ModuleWithProviders } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AmexioHomePageComponent } from './../creative/homepage/homepage.component';
 
 import { AmexioProgressCEComponent } from './progressbar/progressce.component';
@@ -28,12 +29,18 @@ import { AmexioCardCEBodyComponent } from './../creative/common/amexio.body.comp
 import { AmexioCardCEHeaderComponent } from './../creative/common/amexio.header.component';
 
 import { AmexioCommonModule } from '../base/amexio.common.module';
+
+import { AmexioFormCEComponent } from './../creative/form/amexio.form.component';
+import { AmexioFormActionCEComponent } from './../creative/form/form.action.component';
+
 import { AmexioHomePageCenterPanelComponent } from './../creative/homepage/homepage.centerpanel.component';
 import { AmexioHomePageEastPanelComponent } from './../creative/homepage/homepage.eastpanel.component';
 import { AmexioHomePageNorthPanelComponent } from './../creative/homepage/homepage.northpanel.component';
 import { AmexioHomePageWestPanelComponent } from './../creative/homepage/homepage.westpanel.component';
+import { AmexioFormsModule } from './../forms/amexio.forms.module';
 import { AmexioLayoutModule } from './../layout/amexio.layout.module';
 import { AmexioNavModule } from './../navigation/amexio.nav.module';
+import { AmexioPaneModule } from './../panes/amexio.pane.module';
 
 import { AmexioWindowCEComponent } from './../creative/window/amexio.window.component';
 
@@ -43,6 +50,8 @@ export * from './../creative/common/amexio.action.component';
 export * from './../creative/common/amexio.body.component';
 export * from './../creative/card/amexio.cards.component';
 export * from './../creative/common/amexio.header.component';
+export * from './../creative/form/form.action.component';
+export * from './../creative/form/amexio.form.component';
 export * from './homepage/homepage.centerpanel.component';
 export * from './homepage/homepage.eastpanel.component';
 export * from './homepage/homepage.northpanel.component';
@@ -55,6 +64,8 @@ const CREATIVE_COMPONENTS = [
   AmexioCardCEBodyComponent,
   AmexioCardCEActionComponent,
   AmexioCardCEComponent,
+  AmexioFormActionCEComponent,
+  AmexioFormCEComponent,
   AmexioProgressCEComponent,
   AmexioHomePageComponent,
   AmexioHomePageCenterPanelComponent,
@@ -67,8 +78,12 @@ const CREATIVE_COMPONENTS = [
 @NgModule({
   imports: [
     CommonModule,
+     FormsModule,
+     ReactiveFormsModule,
+    AmexioFormsModule,
     AmexioNavModule,
     AmexioLayoutModule,
+    AmexioPaneModule,
     AmexioCommonModule.forRoot(),
   ],
   exports: CREATIVE_COMPONENTS,

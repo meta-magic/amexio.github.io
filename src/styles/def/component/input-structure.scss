@@ -1,6 +1,10 @@
 
 .inputgroup {
   position: relative;
+  
+}
+.inputgroup ::placeholder{
+    padding-left: 5px!important;
 }
 
 .inputgroup > label {
