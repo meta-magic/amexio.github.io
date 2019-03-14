@@ -25,7 +25,7 @@
  */
 import {
   AfterContentInit, AfterViewInit, ChangeDetectorRef, Component, ContentChildren, ElementRef, EventEmitter, HostListener, Input,
-  OnDestroy, OnInit, Output, QueryList, Renderer2, ViewChildren,
+  OnDestroy, OnInit, Output, QueryList, Renderer2, ViewChild, ViewChildren,
 } from '@angular/core';
 import { CommonDataService } from '../../services/data/common.data.service';
 import { AmexioGridColumnComponent } from './data.grid.column';
@@ -405,9 +405,33 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
 
   filterComRef: any[] = [];
 
+  columnCountArray: any[] = [];
+
+  arrayTabIndex: any[] = [];
+
+  tabindex = '-1';
+
+  columnHiddenIndexArray: any[] = [];
+
+  prevlistindex = -1;
+
+  firstIndex: 1;
+
+  listindex = -1;
+
+  componentId: string;
+
+  gridId: string;
+
+  stringFilterArray: any[] = [];
+
+  numberFilterArray: any[] = [];
+
   @ViewChildren(DataGridFilterComponent) filterRef: QueryList<DataGridFilterComponent>;
 
   @ContentChildren(AmexioGridColumnComponent) columnRef: QueryList<AmexioGridColumnComponent>;
+
+  @ViewChild('pageId') pageId: any;
 
   constructor(
     public element: ElementRef, public dataTableService: CommonDataService,
@@ -458,6 +482,9 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
 
     this.checkBoxSelectClass = this.setCheckBoxSelectClass();
 
+    this.componentId = 'gridcolumn' + Math.floor(Math.random() * 1000 + 999);
+
+    this.gridId = 'grid' + Math.floor(Math.random() * 1000 + 999);
   }
 
   ngAfterViewInit(): void {
@@ -486,6 +513,8 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
     } else {
       this.createConfig();
     }
+    this.getColumnCount();
+    this.checkFirstTabIndex(1);
   }
 
   createConfig() {
@@ -594,7 +623,7 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
   setPaginatorData() {
     if (this.serverSidePaging && this.totalDataCount && this.viewRows.length > 0) {
       if (!this.pagesize && !this.totalPages) {
-        this.pagesize = this.viewRows.length ;
+        this.pagesize = this.viewRows.length;
         this.totalPages = Math.ceil(this.totalDataCount / this.pagesize);
       }
     } else {
@@ -840,6 +869,8 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
 
   onColumnCheck(column: any) {
     column.hidden = !column.hidden;
+    this.getColumnCount();
+    this.checkFirstTabIndex(1);
   }
 
   onRowClick(rowData: any, rowIndex: any) {
@@ -1033,7 +1064,7 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
         } else if (this.sortColumn.datatype === 'number') {
           this.sortOrderByNumber(sortOrder, sortColDataIndex);
         } else if (this.sortColumn.datatype === 'boolean') {
-         this.sortOrderByBoolean(sortOrder, sortColDataIndex);
+          this.sortOrderByBoolean(sortOrder, sortColDataIndex);
         }
       }
     }
@@ -1288,5 +1319,229 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
     this.filterComRef.forEach((com: any) => {
       com.showToolTip = false;
     });
+  }
+  // TAB NAVIGATION
+  // LEFT ARROW
+  arrowLeft(ref: any) {
+    const intId = (ref.id).substring(ref.id.search('-') + 1, (ref.id).length);
+    const unitId = parseInt(intId, 10) % 10;
+    const firstId = intId.slice(0, -1);
+    this.findPreviousColumn(unitId, firstId);
+  }
+
+  // RIGHT ARROW
+  arrowRight(ref: any) {
+    const intId = (ref.id).substring(ref.id.search('-') + 1, (ref.id).length);
+    const unitId = parseInt(intId, 10) % 10;
+    const firstId = intId.slice(0, -1);
+    this.findNextColumn(unitId, firstId);
+  }
+
+  // UP ARROW
+  arrowUp(ref: any) {
+    const intId = (ref.id).substring(ref.id.search('-') + 1, (ref.id).length);
+    const unitId = intId.slice(0, -1);
+    if (unitId > 1) {
+      document.getElementById(this.title + '-' + (parseInt(intId, 10) - 10).toString()).focus();
+    }
+  }
+
+  // DOWN ARROW
+  arrowDown(ref: any) {
+    const intId = (ref.id).substring(ref.id.search('-') + 1, (ref.id).length);
+    const firstId = parseInt(intId.slice(0, -1), 10);
+    if (this.pagesize && firstId < this.pagesize && firstId < this.viewRows.length || firstId <= this.viewRows.length - 1) {
+      document.getElementById(this.title + '-' + (parseInt(intId, 10) + 10).toString()).focus();
+    }
+  }
+
+  // END
+  keyEnd(ref: any) {
+    const intId = (ref.id).substring(ref.id.search('-') + 1, (ref.id).length);
+    const unitId = parseInt(intId, 10) % 10;
+    const firstId = intId.slice(0, -1);
+    const newLastId = this.columns.length;
+    this.findHomeColumn(unitId, firstId, newLastId);
+  }
+
+  // END: TO FIND LAST COLUMN
+  findLastColumn(unitId: any, firstId: any, newLastId: any) {
+    if (this.columnHiddenIndexArray.length >= 1 && this.columnHiddenIndexArray.includes(newLastId)) {
+      this.findHomeColumn(unitId, firstId, newLastId - 1);
+    } else {
+      const generatedId = firstId + '' + newLastId;
+      document.getElementById(this.title + '-' + (parseInt(generatedId, 10)).toString()).focus();
+    }
+  }
+
+  // HOME
+  keyHome(ref: any) {
+    const intId = (ref.id).substring(ref.id.search('-') + 1, (ref.id).length);
+    const unitId = parseInt(intId, 10) % 10;
+    this.findHomeColumn(unitId, intId.slice(0, -1), 1);
+  }
+
+  // HOME: TO FIND FIRST COLUMN
+  findHomeColumn(unitId: any, firstId: any, newFirstId: any) {
+    if (this.columnHiddenIndexArray.length >= 1 && this.columnHiddenIndexArray.includes(newFirstId)) {
+      this.findHomeColumn(unitId, firstId, newFirstId + 1);
+    } else {
+      const generatedId = firstId + '' + newFirstId;
+      document.getElementById(this.title + '-' + (parseInt(generatedId, 10)).toString()).focus();
+    }
+  }
+
+  // CONTROL HOME
+  keyControlHome() {
+    const unitId = 1;
+    const firstId = 1;
+    this.findControlHomeColumn(unitId, firstId);
+  }
+
+  // CONTROL HOME COLUMN
+  findControlHomeColumn(unitId: any, firstId: any) {
+    if (this.columnHiddenIndexArray.length >= 1 && this.columnHiddenIndexArray.includes(unitId)) {
+      this.findControlHomeColumn(unitId + 1, firstId);
+    } else {
+      const generatedId = firstId + '' + unitId;
+      document.getElementById(this.title + '-' + (parseInt(generatedId, 10)).toString()).focus();
+    }
+  }
+
+  // CONTROL END
+  keyControlEnd() {
+    const unitId = this.columns.length;
+    const firstId = this.pagesize;
+    this.findControlEndColumn(unitId, firstId);
+  }
+
+  // CONTROL END COLUMN
+  findControlEndColumn(unitId: any, firstId: any) {
+    if (this.columnHiddenIndexArray.length >= 1 && this.columnHiddenIndexArray.includes(unitId)) {
+      this.findControlHomeColumn(unitId - 1, firstId);
+    } else {
+      const generatedId = firstId + '' + unitId;
+      document.getElementById(this.title + '-' + (parseInt(generatedId, 10)).toString()).focus();
+    }
+
+  }
+
+  // TO GET COLUMN COUNT EXCLUDING HIDDEN COLUMNS
+  getColumnCount() {
+    if (this.columns) {
+      this.columnHiddenIndexArray = [];
+      this.columns.forEach((element: any, index: any) => {
+        if (!element.hidden) {
+          this.columnCountArray.push(element);
+        } else {
+          this.columnHiddenIndexArray.push(index + 1);
+        }
+      });
+    }
+  }
+
+  // TO FIND NEXT COLUMN: RIGHT ARROW
+  findNextColumn(index: any, firstId: any) {
+    if (index < this.columns.length) {
+      if (this.columnHiddenIndexArray.length >= 1 && this.columnHiddenIndexArray.includes(index + 1)) {
+        index = index + 1;
+        this.findNextColumn(index, firstId);
+      } else {
+        const generatedId = firstId + '' + (index + 1);
+        document.getElementById(this.title + '-' + (parseInt(generatedId, 10)).toString()).focus();
+      }
+    }
+  }
+
+  // TO FIND PREVIOUS COLUMN: LEFT ARROW
+  findPreviousColumn(index: any, firstId: any) {
+    if (index > 1) {
+      if (this.columnHiddenIndexArray.length >= 1 && this.columnHiddenIndexArray.includes(index - 1)) {
+        index = index - 1;
+        this.findPreviousColumn(index, firstId);
+      } else {
+        const generatedId = firstId + '' + (index - 1);
+        document.getElementById(this.title + '-' + (parseInt(generatedId, 10)).toString()).focus();
+      }
+    }
+  }
+
+  // DEFAULT FIRST TAB
+  checkFirstTabIndex(index: any) {
+    if (this.columnHiddenIndexArray.length >= 1) {
+      if (this.columnHiddenIndexArray.includes(index)) {
+        this.firstIndex = index + 1;
+        this.checkFirstTabIndex(this.firstIndex);
+      }
+    } else {
+      this.firstIndex = 1;
+    }
+  }
+
+  // DOWN COLUMN: DOWN ARROW
+  onArrowdownList(listId: any) {
+    const unitId = parseInt(listId, 10);
+    const nextId = unitId + 1;
+    if (nextId < this.columns.length) {
+      document.getElementById(nextId.toString()).focus();
+    } else {
+      listId = '-1';
+      this.onArrowdownList(listId);
+    }
+  }
+
+  // UP COLUMN: UP ARROW
+  onArrowUpList(listId: any) {
+    const unitId = parseInt(listId, 10);
+    const previousId = unitId - 1;
+    if (previousId >= 0) {
+      document.getElementById(previousId.toString()).focus();
+    } else {
+      const nextId = this.columns.length;
+      listId = nextId.toString();
+      this.onArrowUpList(listId);
+    }
+  }
+
+  onArrowUpGlobalList(listId: any) {
+    const unitId = parseInt(listId, 10);
+    const previousId = unitId - 1;
+    if (previousId >= 0) {
+      document.getElementById(previousId.toString()).focus();
+    } else {
+      const nextId = this.globalFilterOptions.length;
+      listId = nextId.toString();
+      this.onArrowUpGlobalList(listId);
+    }
+  }
+
+  onArrowdownGlobalList(listId: any) {
+    const unitId = parseInt(listId, 10);
+    const nextId = unitId + 1;
+    if (nextId < this.globalFilterOptions.length) {
+      document.getElementById(nextId.toString()).focus();
+    } else {
+      listId = '-1';
+      this.onArrowdownGlobalList(listId);
+    }
+  }
+
+  onPageDownClick() {
+    if (this.pageId.activePage < this.pagesize) {
+      this.pageId.onPageClick(this.pageId.activePage + 1, this.pageId.activePage);
+      const pageInfo = { pageNumber: this.pageId.activePage, current: this.pageId.activePage, next: this.pageId.activePage + 1 };
+      this.loadPageData(pageInfo);
+      this.checkFirstTabIndex(1);
+      this.keyControlHome();
+    }
+  }
+
+  onPageUpClick() {
+    if (this.pageId.activePage > 1) {
+      this.pageId.onPageClick(this.pageId.activePage - 1, this.pageId.activePage - 2);
+      const pageInfo = { pageNumber: this.pageId.activePage - 1, current: this.pageId.activePage, next: this.pageId.activePage + 1 };
+      this.loadPageData(pageInfo);
+      this.keyControlEnd();
+    }
   }
 }

@@ -17,7 +17,9 @@ export class DisplayFieldService {
     this.rowData = data;
     if (dataIndex != null) {
       const index = dataIndex.split('.');
-
+      if (index.includes('')) {
+        index.splice(1);
+      }
       for (const ir of index) {
         this.rowData = this.rowData[ir];
       }
