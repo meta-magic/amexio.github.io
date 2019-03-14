@@ -1,14 +1,13 @@
 
-<div  [ngClass]="cclass" class="creative-header-div" [ngStyle]="{'background': ' url(' + bgimage + ') center/cover no-repeat' }">
-    <header  class="creative-header"
-    [ngStyle]="{ 'color': color,'background':background,'height': height}">
-         <span style="display:flex;flex-grow:1;"   [style.flex-direction]="direction"  [ngStyle]="{ 'justify-content': (align === 'start' || align === 'end') ? 'flex-'+align:align }">
+ <div  [ngClass]="cclass" class="creative-header-div" [ngStyle]="{'background': ' url(' + bgimage + ') center/cover no-repeat' }">
+    <header  class="creative-header" [style.flex-direction]="direction"
+    [ngStyle]="{'justify-content': (align === 'start' || align === 'end') ? 'flex-'+align:align , 'color': color,'background':background,'height': height}">
+          
             <ng-content></ng-content>
-         </span>
-         <span class="creative-header-icon-div" [ngStyle]="iconPosition">
+        <span *ngIf="windowFlag" class="creative-header-icon-div" [ngStyle]="iconPosition">
             <amexio-c-icon class="cursor-style" *ngIf="(isFullWindow && maximize )" [key]="'window_maximize'" (onClick)="sizeChange()"></amexio-c-icon>
             <amexio-c-icon class="cursor-style" *ngIf="(!isFullWindow && maximize )" [key]="'window_restore'" (click)="sizeChange()"></amexio-c-icon>
-            <amexio-c-icon class="cursor-style"  *ngIf="closeable" [key]="'window_close'" (onClick)="onCloseClick()"></amexio-c-icon>
+            <amexio-c-icon class="cursor-style" style="padding-left:5px;" *ngIf="closeable" [key]="'window_close'" (onClick)="onCloseClick()"></amexio-c-icon>
          </span> 
     </header>
 </div> 

@@ -55,6 +55,8 @@ export class AmexioCardCEHeaderComponent implements OnInit {
 
   isFullWindow = false;
 
+  windowFlag: boolean;
+
   closeableBehaiour = new BehaviorSubject(false);
 
   maximizeBehaiour = new BehaviorSubject(false);

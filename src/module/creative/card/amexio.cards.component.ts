@@ -120,6 +120,7 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
   // TO SET ALIGN TO ALL INNER COMPONENT IN CARD
   setCardAligementForAllInnerComponent() {
     this.amexioCardHeaderList = this.AmexioCardCEHeaderQueryList.toArray();
+    this.amexioCardHeaderList[0].windowFlag = false;
     if (this.amexioCardHeaderList[0] !== undefined && !this.amexioCardHeaderList[0].align &&
       this.amexioCardHeaderList[0].align.length > 0) {
       this.amexioCardHeaderList[0].align = this.align;
