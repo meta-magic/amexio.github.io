@@ -3,13 +3,13 @@
         <div [ngClass]="{'homepage-expand': (isExpand && !mobilemode),'homepage-collapse':(!isExpand && !mobilemode) }">
 
             <ng-container *ngIf="!isLHSHide || mobilemode">
-                <span [ngStyle]="{ 'padding-left':sidenav ? '40px': '0px'} ">
-                <span *ngIf="homepageType=='1' && !mobilemode" class="homepage-bar-collapse"  (click)="onArrowClick($event)"  ><amexio-image [icon-class]=" 'fa fa-bars' "></amexio-image></span>
+                <span [ngClass]=" sidenav ? 'sidenav-padding':'' " [ngStyle]="{ 'padding-left':sidenav ? '40px': '0px'} ">
+                <span *ngIf="homepageType=='1' && !isPhone" class="homepage-bar-collapse"  (click)="onArrowClick($event)"  ><amexio-image [icon-class]=" 'fa fa-bars' "></amexio-image></span>
                 <img alt="title " style="cursor: pointer " (click)="onNavLogoClick.emit($event) " (load)="onImageLoad() " *ngIf="logo " [attr.src]="logo " class="navbar-logo ">
                 <a (click)="onNavTitleClick.emit($event) ">{{title}}</a>
                 </span>
             </ng-container>
-            <ng-container *ngIf="!mobilemode">
+            <ng-container *ngIf="!isPhone">
                 <span *ngIf="homepageType=='3' || isLHSHide " (click)="onExpandIconClick($event) " class="homepage3-bar">
                 <amexio-image *ngIf="!isExpand" [icon-class]=" 'fa fa-bars' "></amexio-image>
                 <amexio-image *ngIf="isExpand" [icon-class]=" 'fa fa-times-circle' "></amexio-image>

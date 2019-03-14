@@ -308,3 +308,9 @@
 
 
 /************************************************************************/
+
+@media only screen and (min-width:1024px) and (max-width:1366px) {
+    amexio-homepage-northpanel .topnav-lhs-mobile .mobilebar {
+        flex-grow: 0.1;
+    }
+}

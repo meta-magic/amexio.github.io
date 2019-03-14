@@ -112,11 +112,14 @@ description : Color
   isLHSHide = false;
   lhsWidth = '5%';
   isExpand = false;
+  isPhone = false;
   constructor(public matchMediaService: DeviceQueryService) {
     if (this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone()) {
       this.mobilemode = true;
+      this.isPhone = true;
     } else {
         this.mobilemode = false;
+        this.isPhone = false;
     }
   }
 
@@ -178,8 +181,10 @@ description : Color
   handleDeviceSetting() {
     if (this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone()) {
       this.mobilemode = true;
+      this.isPhone = true;
     } else {
         this.mobilemode = false;
+        this.isPhone = false;
     }
     if (this.sidenavspace) {
       this.sideNavbar();

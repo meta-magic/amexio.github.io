@@ -8,17 +8,17 @@
     z-index: 2;
 }
 
- .transparentNav {
+.transparentNav {
     box-shadow: 0px 0px 0px $navbarBGBoxShadow !important;
     background-color: transparent !important;
 }
 
-.topnav-mobile{
+.topnav-mobile {
     flex-direction: column;
     padding: 0px;
 }
 
-.topnav *{
+.topnav * {
     vertical-align: middle;
 }
 
@@ -31,7 +31,8 @@
     line-height: 1.5;
     outline: none;
 }
-.top-nav-button{
+
+.top-nav-button {
     //background-color: #fff;
     border: none;
     box-shadow: none;
@@ -40,108 +41,114 @@
     //padding: .5rem 1rem;
     font-size: 1rem;
 }
-.topnav a{
+
+.topnav a {
     cursor: pointer;
     padding: 0px 8px;
     //color : $navbarColor
 }
-.topnav a label{
+
+.topnav a label {
     //color: $navbarColor;
 }
 
-.topnavbarunit1{
+.topnavbarunit1 {
     line-height: 50px;
 }
 
-.topnavbarunit1-mobile{
+.topnavbarunit1-mobile {
     width: 100%;
     padding: 5px;
 }
-.topnavbarunit2{
+
+.topnavbarunit2 {
     //background-color: grey;
     //width: 80%;
     line-height: 50px;
     flex-grow: 1;
 }
-.topnavbarunit2-mobile{
+
+.topnavbarunit2-mobile {
     width: 100%;
     //padding: 5px;
     box-shadow: 0px 0px 2px 0px $navbarBorder;
     //background-color: $navbarActiveBG;
 }
 
-.topnavmainbar{
-    display: flex; justify-content: space-between;
+.topnavmainbar {
+    display: flex;
+    justify-content: space-between;
 }
 
-.topnavmainbar-mobile{
+.topnavmainbar-mobile {
     flex-direction: column;
 }
 
-.topnavmainbaritems{
+.topnavmainbaritems {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
 }
-.topnavmainbaritems-mobile{
+
+.topnavmainbaritems-mobile {
     flex-direction: column;
 }
 
-.topnavmainbarinneritems{
+.topnavmainbarinneritems {
     display: inline-block;
     padding: 0px 8px;
 }
 
-.topnavmainbarinneritems-mobile{
+.topnavmainbarinneritems-mobile {
     width: 100%;
     border-bottom: 1px solid $navbarBorder;
 }
 
 .topnavmainbarinneritems .nav-dropdown {
     float: left;
-    overflow: hidden;    
+    overflow: hidden;
 }
 
 .topnavmainbarinneritems-mobile .nav-dropdown {
     width: 100%;
 }
 
-.top-nav-link{
+.top-nav-link {
     padding: 0px 8px;
 }
-.top-nav-link i{
+
+.top-nav-link i {
     padding: 0px 5px;
 }
-    
-.topnavmainbarinneritems-mobile .nav-dropdown .nav-dropbtn .dropdownicon{
+
+.topnavmainbarinneritems-mobile .nav-dropdown .nav-dropbtn .dropdownicon {
     float: right;
     margin-right: 20px;
     line-height: 50px;
 }
 
-.nav-dropdown .nav-dropbtn i{
+.nav-dropdown .nav-dropbtn i {
     padding: 0px 5px;
 }
 
 .nav-dropdown .nav-dropbtn {
     padding: 0px 8px;
 }
- 
-.topnavmainbarinneritems .nav-dropdown-content { 
+
+.topnavmainbarinneritems .nav-dropdown-content {
     display: none;
     position: absolute;
     //background-color: $navbarActiveBG;
     min-width: 160px;
-    z-index: 3; 
+    z-index: 3;
     padding: 10px 0px;
     box-shadow: 0px 5px 5px $navbarBGBoxShadow;
-
     transition: all 0.3s ease;
     //transform: scale(0);
     transform-origin: 0 0;
 }
 
-.topnavmainbarinneritems-mobile .nav-dropdown-content{
+.topnavmainbarinneritems-mobile .nav-dropdown-content {
     display: none;
     margin: 0px 5px;
     padding: 0px 5px;
@@ -160,42 +167,54 @@
 
 .nav-dropdown:hover {
     //background-color: $navbarActiveBG;
-    .nav-dropbtn .dropdownicon{
+    .nav-dropbtn .dropdownicon {
         transform: rotate(180deg);
     }
-
     .nav-dropdown-content {
         display: block;
         //transform: scale(1);
-       
     }
-   
-    
 }
 
-
-.topnavmainbarinneritems-mobile .top-nav-input-control{
+.topnavmainbarinneritems-mobile .top-nav-input-control {
     width: 100%;
-    
 }
 
-.mobilebar{
-    display:inline-block;
-    float :right;
+.mobilebar {
+    display: inline-block;
+    float: right;
     //color: $navbarColor;
-    padding-right : 10px;
+    padding-right: 10px;
     cursor: pointer;
 }
 
-
 .topnavmainbaritems amexio-nav-item1:last-child {
-    .topnavmainbarinneritems .nav-dropdown-content { 
-       right: 10px;
+    .topnavmainbarinneritems .nav-dropdown-content {
+        right: 10px;
     }
 }
 
 .nav-dropdown-content-right .nav-dropdown-content {
     right: 10px;
-    
 }
 
+.navbar-logo {
+    width: 40px;
+    height: 40px;
+}
+
+.sidenav-padding {
+    display: inline-flex;
+    flex-direction: row;
+}
+
+.sidenav-mobile-bar {
+    height: 50px;
+}
+
+.sidenav-mobile-bar-left {
+    flex-direction: column;
+    justify-content: center;
+    padding: 0px 10px;
+    left: 0;
+}
