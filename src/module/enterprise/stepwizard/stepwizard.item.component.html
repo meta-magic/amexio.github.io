@@ -1,8 +1,8 @@
-<form [ngStyle]="{'display':active ? 'block':'none'}" class="form-container form-group">
-    <div class="form-body formbody">
+<form   [ngStyle]="{'display':active ? 'block':'none'}" class="form-container form-group">
+    <div class="form-body formbody" tabindex="1">
         <ng-content></ng-content>
     </div>
-    <footer #formFooter class="form-footer"  [ngStyle]="{'justify-content': footerAlign}">
+    <footer  #formFooter class="form-footer"  [ngStyle]="{'justify-content': footerAlign}">
         <amexio-button *ngIf="showPreviousButton" [icon]="previousIcon" [label]="'Previous'" [type]="'theme-color'" [tooltip]="'Previous'" (onClick)="onPreviousClick($event)">
         </amexio-button>
         <span *ngIf="!showPreviousButton"></span>
@@ -10,3 +10,4 @@
         </amexio-button>
     </footer>
 </form>
+

@@ -22,9 +22,11 @@
 }  
 .itemselector-list-active:focus{
   background-color: $itemselectorListActiveBGColor;
+  outline: none;
 }  
 .itemselector-list:focus{
     background-color: $itemselectorListHoverBGColor;
+    outline: none;
     //color : $itemselectorListActiveBGColor;
 }
 .itemselector-list:hover{

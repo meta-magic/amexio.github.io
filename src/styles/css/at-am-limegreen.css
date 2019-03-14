@@ -4825,10 +4825,12 @@ amexio-homepage-northpanel .top-nav-button {
   background-color: #a9f74f; }
 
 .itemselector-list-active:focus {
-  background-color: #a9f74f; }
+  background-color: #a9f74f;
+  outline: none; }
 
 .itemselector-list:focus {
-  background-color: #ecff82; }
+  background-color: #ecff82;
+  outline: none; }
 
 .itemselector-list:hover {
   background-color: #ecff82; }

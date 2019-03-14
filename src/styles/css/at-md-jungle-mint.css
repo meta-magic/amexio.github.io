@@ -4868,10 +4868,12 @@ amexio-homepage-northpanel .top-nav-button {
   background-color: #6bff6b; }
 
 .itemselector-list-active:focus {
-  background-color: #6bff6b; }
+  background-color: #6bff6b;
+  outline: none; }
 
 .itemselector-list:focus {
-  background-color: #b8ffb8; }
+  background-color: #b8ffb8;
+  outline: none; }
 
 .itemselector-list:hover {
   background-color: #b8ffb8; }
