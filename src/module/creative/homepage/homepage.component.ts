@@ -29,6 +29,7 @@ export class AmexioHomePageComponent implements OnInit, AfterContentInit {
   ngOnInit() { }
   ngAfterContentInit() {
     this.sideNavComponents = this.sideNavList.toArray();
+
     if (this.type === '3') {
       this.sideNavComponents[0].isShowOnlyIcon = true;
       this.sideNavComponents[0].width = '5%';

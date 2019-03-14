@@ -1,3 +1,31 @@
+.lhs-mobile {
+    flex: 1 1 100% !important;
+    max-width: 100% !important;
+}
+
+.rhs-mobile {
+    flex: 1 1 100% !important;
+    max-width: 100% !important;
+    height: 100% !important;
+}
+
+.topnav-lhs-inner {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
+
+.topnav-lhs-inner-mobile {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.topnavmainbaritems-mobile {
+    width: 100%;
+}
+
+// ABOVE CLASS ARE NEW
 amexio-homepage-northpanel .topnav {
     padding: 0px;
 }
@@ -27,6 +55,7 @@ amexio-homepage-northpanel .topnav-lhs-mobile>div>span {
 
 amexio-homepage-northpanel .topnav-rhs {
     flex-grow: 1;
+    height: 50px;
 }
 
 amexio-homepage-northpanel .topnav-lhs-mobile {
@@ -86,7 +115,9 @@ amexio-homepage-northpanel .top-nav-button {
 }
 
 .collaspe-icon-style {
-    margin-right: -26px;
+    position: fixed;
+    left: 17%;
+    top: 0px;
     width: 50px;
     border-radius: 100%;
     height: 50px;
