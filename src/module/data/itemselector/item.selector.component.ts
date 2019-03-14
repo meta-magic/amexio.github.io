@@ -274,12 +274,8 @@ export class AmexioItemSelectorComponent implements OnInit {
     this.rightSwitch();
   }
 
-  dataFormRightToLeftMove(dragData: any) {
-    this.itemClick(dragData.data, dragData.index, false, true);
-    if (this.selectedData.length !== 1) {
-      this.shiftFocusMethod(dragData);
-    }
-    this.leftSwitch();
+  enterFocus(focus: any) {
+    this.itemClick(focus.data, focus.index, false, true);
   }
 
   shiftFocusMethod(dragData: any) {
@@ -297,27 +293,22 @@ export class AmexioItemSelectorComponent implements OnInit {
     const focusId = (this.selectedData[currentIndex]);
     document.getElementById(focusId['id']).focus();
   }
-
-  upSwitchOnTab(ArrowPress: any) {
-    this.itemClick(ArrowPress.data, ArrowPress.index, false, true);
-    this.upSwitch();
-    this.itemClick(ArrowPress.data, ArrowPress.index, false, true);
+  downArrowPress(event: any, index: any) {
+    const nextitem = this.availableData[index + 1];
+    document.getElementById(nextitem['id']).focus();
+  }
+  upArrowPress(event: any, index: any) {
+    const nextitem = this.availableData[index - 1];
+    document.getElementById(nextitem['id']).focus();
   }
 
-  moveTopOnTab(ArrowPress: any) {
-    this.itemClick(ArrowPress.data, ArrowPress.index, false, true);
-    this.moveTop();
-    this.itemClick(ArrowPress.data, ArrowPress.index, false, true);
+  downSwitchOnTab(event: any, index: any) {
+    const nextitem = this.selectedData[index + 1];
+    document.getElementById(nextitem['id']).focus();
   }
-
-  downSwitchOnTab(ArrowPress: any) {
-    this.itemClick(ArrowPress.data, ArrowPress.index, false, true);
-    this.downSwitch();
-  }
-
-  moveBottomOnTab(ArrowPress: any) {
-    this.itemClick(ArrowPress.data, ArrowPress.index, false, true);
-    this.moveBottom();
+  upSwitchOnTab(event: any, index: any) {
+    const nextitem = this.selectedData[index - 1];
+    document.getElementById(nextitem['id']).focus();
   }
 
   rightSwitch() {
@@ -326,6 +317,8 @@ export class AmexioItemSelectorComponent implements OnInit {
     });
     if (this.switchingObject != null && this.switchingObject.hasOwnProperty('isSelected') && this.switchingObject['isSelected']) {
       this.selectedData.push(this.switchingObject);
+      this.selectedData[0]['selectedClick'] = true;
+
       this.switchingObject['isSelected'] = true;
       this.availableData.forEach((option, index) => {
         if (option['isSelected']) {
@@ -333,6 +326,7 @@ export class AmexioItemSelectorComponent implements OnInit {
           option['selectedClick'] = false;
         }
       });
+
       this.switchingObject = null;
       this.dataEmitter();
     }

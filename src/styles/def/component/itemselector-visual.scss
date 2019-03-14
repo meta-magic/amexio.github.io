@@ -20,10 +20,21 @@
   background-color: $itemselectorListActiveBGColor;
   //color : $itemselectorListActiveColor;
 }  
-  
+.itemselector-list-active:focus{
+  background-color: $itemselectorListActiveBGColor;
+}  
+.itemselector-list:focus{
+    background-color: $itemselectorListHoverBGColor;
+    //color : $itemselectorListActiveBGColor;
+}
 .itemselector-list:hover{
     background-color: $itemselectorListHoverBGColor;
     //color : $itemselectorListHoverColor;
 }
+
+
+
+
+
   
 
