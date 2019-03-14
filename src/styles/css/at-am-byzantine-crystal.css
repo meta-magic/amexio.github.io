@@ -3826,7 +3826,7 @@ header .billboard .content-button {
 .close-button {
   cursor: pointer;
   padding-left: 98%;
-  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, transparent 70%, transparent 100%); }
+  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 100%); }
 
 /****************************************************************************
     Component Name : Enterprise Youtube
@@ -3835,7 +3835,7 @@ header .billboard .content-button {
 /** enterprise-youtube - Visual CSS **/
 .close-button {
   color: grey;
-  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, transparent 70%, transparent 100%); }
+  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 100%); }
 
 .close-button i:hover {
   color: red; }
@@ -3859,8 +3859,8 @@ header .billboard .content-button {
   font-size: 20px; }
 
 .tile__details {
-  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%); }
+  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%); }
 
 .tile__details:after,
 .tile__details:before {
@@ -3868,8 +3868,8 @@ header .billboard .content-button {
 
 .tile__details_v {
   font-size: 10px;
-  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%); }
+  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%); }
 
 .tile__details_v:after,
 .tile__details_v:before {
@@ -4625,6 +4625,26 @@ amexio-homepage-northpanel .top-nav-button {
 
 .datatable-row:nth-child(odd) {
   background-color: #ECEFF1; }
+
+.datatable-col:focus {
+  background-color: #f3c8f2;
+  color: #70196F;
+  outline: none; }
+
+.float-right .enablecolumnfilter:focus {
+  background-color: #f3c8f2;
+  color: #70196F;
+  outline: none; }
+
+.dropdown-list .list-items:focus {
+  background-color: #f3c8f2;
+  color: #70196F;
+  outline: none; }
+
+.datatable-filter-icon:focus {
+  background-color: #f3c8f2;
+  color: #70196F;
+  outline: none; }
 
 /** Datatable - Visual CSS **/
 .datatabletitle {
@@ -6417,6 +6437,11 @@ fieldset {
   font-weight: bold;
   cursor: pointer; }
 
+.collapsible-legend:focus {
+  outline: none;
+  background-color: #f3c8f2;
+  color: #70196F; }
+
 .collapsible-fieldset {
   overflow: hidden; }
 
@@ -7035,6 +7060,21 @@ amexio-window-header > amexio-toolbar > .toolbar {
 
 .dialogue-header {
   background: #70196F;
+  color: #70196F; }
+
+.dialogue-table:focus {
+  outline: none;
+  background-color: #f3c8f2;
+  color: #70196F; }
+
+.tablecol:focus {
+  outline: none;
+  background-color: #f3c8f2;
+  color: #70196F; }
+
+.dialogue-message:focus {
+  outline: none;
+  background-color: #f3c8f2;
   color: #70196F; }
 
 .dialogue-footer {

@@ -56,6 +56,10 @@ For internal use
 
   private checkIcon = 'fa fa-check';
 
+  numberFilterArray: any[] = [];
+
+  stringFilterArray: any[] = [];
+
   globalClickListenFunc: () => void;
 
   constructor(private dataTableService: CommonDataService, private renderer: Renderer2) {
@@ -79,9 +83,7 @@ For internal use
       key: 'Is greater Than', value: '<', type: 'number', checkedStatus: '',
     }, {
       key: 'Is less Than', value: '>', type: 'number', checkedStatus: '',
-    },
-
-    {
+    }, {
       key: 'Is less Than or equal to', value: '>=', type: 'number', checkedStatus: '',
     }, {
       key: 'Is greater Than or equal to', value: '=<', type: 'number', checkedStatus: this.checkIcon,
@@ -174,5 +176,53 @@ For internal use
     if (this.globalClickListenFunc) {
       this.globalClickListenFunc();
     }
+  }
+
+  onArrowUpList(listId: any, datatype: any) {
+    const unitId = parseInt(listId, 10);
+    const previousId = unitId - 1;
+    let nextId: number;
+    if (previousId >= 0) {
+      document.getElementById(previousId.toString()).focus();
+    } else {
+      this.sortFilterData(datatype);
+      if (datatype === 'string') {
+        nextId = this.stringFilterArray.length;
+      } else {
+        nextId = this.numberFilterArray.length;
+      }
+      listId = nextId.toString();
+      this.onArrowUpList(listId, datatype);
+    }
+  }
+
+  onArrowdownList(listId: any, datatype: any) {
+    const unitId = parseInt(listId, 10);
+    const nextId = unitId + 1;
+    let datatypeLength: number;
+    this.sortFilterData(datatype);
+    if (datatype === 'string') {
+      datatypeLength = this.stringFilterArray.length;
+    } else {
+      datatypeLength = this.numberFilterArray.length;
+    }
+    if (nextId < datatypeLength) {
+      document.getElementById(nextId.toString()).focus();
+    } else {
+      listId = '-1';
+      this.onArrowdownList(listId, datatype);
+    }
+  }
+
+  sortFilterData(datatype: any) {
+    this.stringFilterArray = [];
+    this.numberFilterArray = [];
+    this.filterOptions.forEach((element: any) => {
+      if (element.type === 'string') {
+        this.stringFilterArray.push(element);
+      } else {
+        this.numberFilterArray.push(element);
+      }
+    });
   }
 }

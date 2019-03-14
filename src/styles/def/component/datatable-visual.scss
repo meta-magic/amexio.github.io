@@ -58,3 +58,27 @@
 .datatable-row:nth-child(odd){
   background-color: $datatableOddRowColor;
 }
+
+.datatable-col:focus {
+background-color: $datatableRowHoverBG;
+color : $componentHoverFontColor;
+outline: none;
+}
+
+.float-right .enablecolumnfilter:focus{
+background-color: $datatableRowHoverBG;
+color : $componentHoverFontColor;
+outline: none;
+}
+
+.dropdown-list .list-items:focus{
+background-color: $datatableRowHoverBG;
+color : $componentHoverFontColor;
+outline: none;
+}
+
+.datatable-filter-icon:focus{
+  background-color: $datatableRowHoverBG;
+color : $componentHoverFontColor;
+outline: none;
+}

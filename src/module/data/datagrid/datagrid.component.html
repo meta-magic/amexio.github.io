@@ -1,9 +1,9 @@
 <div class="datagrid">
   <div  class="datatabletitle">
-    <span *ngIf="title"> {{title}} </span>
+    <span *ngIf="title" id="{{gridId}}"> {{title}} </span>
     <span class="dataheaderFilter" class="float-right" style="padding-bottom:1.1%">
             <ng-content select="amexio-datagrid-header"></ng-content>
-            <span *ngIf="enablecolumnfilter ? true:false" class="float-right" (click)="onEnableColumnClick($event)" style=" cursor: pointer;">
+            <span tabindex='1' *ngIf="enablecolumnfilter ? true:false" (keyup.enter)="onEnableColumnClick($event)" class="float-right enablecolumnfilter" (click)="onEnableColumnClick($event)" style=" cursor: pointer;">
                 &nbsp;
                 <span *ngIf="!show">&#9776;</span>
         <span *ngIf="show">&#9747;</span>
@@ -50,13 +50,13 @@
     <div class="datatable datatable-row">
       <ng-container class="datatable datatable-column">
         <div class="inputgroup" style="padding-left: 1%; padding-right: 1%">
-          <input type="text" [(ngModel)]="filterValue" (keyup)="keyUpSearch($event)" type="text" class="input-control" aria-label="Text input with dropdown button">
-          <span class="datatable-filter-icon">
+          <input type="text" tabindex="1" [(ngModel)]="filterValue" (keyup)="keyUpSearch($event)" type="text" class="input-control" aria-label="Text input with dropdown button">
+          <span  tabindex = "1" (keyup.enter)="onFilterIconClick($event)" class="datatable-filter-icon">
                         <amexio-c-icon key="datagrid_filter" (click)="onFilterIconClick($event)"></amexio-c-icon>
                     </span>
           <span *ngIf="showToolTip" class="dropdown" style="width: 250px; right: 0">
-                        <ul class="dropdown-list" *ngFor="let opt of globalFilterOptions">
-                            <li class="list-items">
+                        <ul class="dropdown-list" *ngFor="let opt of globalFilterOptions;  let i = index">
+                          <li #listId id = {{i}} (keyup.enter)="selectedOption(opt)" (keyup.arrowup)="onArrowUpGlobalList(listId.id)" (keyup.arrowdown)="onArrowdownGlobalList(listId.id)" role="option" tabindex="1" class="list-items">
                                 <div (click)="selectedOption(opt)">
                                     {{opt.key}}&nbsp;
                                     <i [class]="opt.checkedStatus" aria-hidden="true"></i>
@@ -71,14 +71,14 @@
 
   <ng-container *ngIf="enablecolumnfilter ? true : false">
         <span *ngIf="showEnableColumnFilter" class="dropdown dropdown-right" [ngStyle]="{'top': globalfilter || enabledatafilter ? '10%':''}" style="width: 250px;">
-            <ul class="dropdown-list">
-                <li class="list-items" *ngFor="let cols of columns;let i = index;">
-                    <div>
-                        <input type="checkbox" [attr.checked]="!cols.hidden ? true: null" (click)="onColumnCheck(cols)" />
-                        <label>{{cols.text}}</label>
-                    </div>
-                </li>
-            </ul>
+          <ul  role="listbox" class="dropdown-list">
+            <li #listId id = {{i}} (keyup.arrowup)="onArrowUpList(listId.id)" (keyup.arrowdown)="onArrowdownList(listId.id)" role="option" tabindex="1" class="list-items" *ngFor="let cols of columns;let i = index;">
+              <div [attr.aria-checked]="!cols.hidden" (keyup.enter)="onColumnCheck(cols)">
+                <input tabindex="1" role="checkbox" id="{{componentId}}" type="checkbox" [attr.checked]="!cols.hidden ? true: null"  (click)="onColumnCheck(cols)" />
+                <label>{{cols.text}}</label>
+              </div>
+            </li>
+          </ul>
         </span>
   </ng-container>
 
@@ -96,7 +96,7 @@
 </div>
 
 <!--Checkbox datagrid with datatypes condition start-->
-<div class="datatable">
+<div class="datatable" role="grid" attr.aria-labelledby="{{gridId}}">
   <div class="datatable-header">
     <ng-container *ngIf="enablecheckbox">
       <div class="datatable-col datatable-checkbox-width checkbox-col">
@@ -113,7 +113,7 @@
       <ng-container *ngIf="!cols.hidden">
         <ng-container *ngIf="(cols.datatype=='string' || cols.datatype == 'boolean')">
           <!-- -------------------- -->
-          <div class="datatable-col" [style.width.%]="cols.width" (click)="sortOnColHeaderClick(cols, $event)">
+          <div class="datatable-col" tabindex="1" [style.width.%]="cols.width" (click)="sortOnColHeaderClick(cols, $event)">
 
             <ng-container *ngIf="cols.headerTemplate">
               <ng-template [ngTemplateOutlet]="cols.headerTemplate" [ngTemplateOutletContext]="{column:cols ,index: i}"></ng-template>
@@ -133,7 +133,7 @@
           </div>
         </ng-container>
         <ng-container *ngIf="cols.datatype=='number'">
-          <div class="datatable-col" [style.width.%]="cols.width" (click)="sortOnColHeaderClick(cols, $event)">
+          <div class="datatable-col" tabindex="1" [style.width.%]="cols.width" (click)="sortOnColHeaderClick(cols, $event)">
             <ng-container *ngIf="cols.headerTemplate">
               <ng-template [ngTemplateOutlet]="cols.headerTemplate" [ngTemplateOutletContext]="{column:cols ,index: i}"></ng-template>
             </ng-container>
@@ -160,7 +160,7 @@
 <!--Group BY datagrid start-->
 <ng-container *ngIf="!groupby">
   <div class="datatable-height" [style.height.px]="height">
-    <div class="datatable">
+    <div class="datatable"  role="grid">
       <div style="height: 300px;" *ngIf="mask">
         <div class="spinner"></div>
       </div>
@@ -182,8 +182,9 @@
           <ng-container *ngFor="let cols of columns;let colIndex = index">
             <ng-container *ngIf="!cols.hidden">
               <ng-container *ngIf="cols.datatype=='number'">
-                <div class="datatable-col" [style.width.%]="cols.width" scope="row" [attr.data-label]="cols.text">
-                                    <span class="float-right">
+                <div #ref id="{{title}}-{{i+1}}{{colIndex+1}}" class="datatable-col" [attr.tabindex] = "(((i+1== 1) && (colIndex + 1 == firstIndex))? 1: tabindex)" [style.width.%]="cols.width" scope="row" [attr.data-label]="cols.text" (keyup.arrowright)="arrowRight(ref)"
+                (keyup.arrowleft)="arrowLeft(ref)" (keyup.arrowdown)="arrowDown(ref)" (keyup.arrowup)="arrowUp(ref)" (keyup.end)="keyEnd(ref)" (keyup.home)="keyHome(ref)" (keyup.control.end)="keyControlEnd(ref)" (keyup.control.home)="keyControlHome(ref)" (keyup.pagedown)="onPageDownClick()" (keyup.pageup)="onPageUpClick()"
+                 (keyup.enter)="onRowClick(row, i)" [style.width.%]="cols.width" scope="row" [attr.data-label]="cols.text">                                    <span class="float-right">
                                         <ng-container *ngIf="row[cols.dataindex]!= '';else elseBlock">
                                             <div (contextmenu)="loadContextMenu($event,row, cols, id)">
                                                 <amexio-display-field [data]="row" [data-index]="cols.dataindex"></amexio-display-field>
@@ -197,10 +198,11 @@
                 </div>
               </ng-container>
               <ng-container *ngIf="!cols?.bodyTemplate && (cols.datatype == 'string' || cols.datatype == 'boolean')">
-                <div class="datatable-col" [style.width.%]="cols.width" scope="row" [attr.data-label]="cols.text">
+                <div #ref id="{{title}}-{{i+1}}{{colIndex+1}}" class="datatable-col" [attr.tabindex] = "(((i+1== 1) && (colIndex + 1 == firstIndex))? 1: tabindex)" [style.width.%]="cols.width" scope="row" [attr.data-label]="cols.text" (keyup.arrowright)="arrowRight(ref)"
+                (keyup.arrowleft)="arrowLeft(ref)" (keyup.enter)="onRowClick(row, i)" (keyup.arrowdown)="arrowDown(ref)" (keyup.arrowup)="arrowUp(ref)" (keyup.end)="keyEnd(ref)" (keyup.home)="keyHome(ref)" (keyup.control.end)="keyControlEnd()" (keyup.control.home)="keyControlHome(ref)" (keyup.pagedown)="onPageDownClick(ref)">
                   <ng-container *ngIf="(cols.datatype == 'boolean' ? true : row[cols.dataindex]!= null ? true : false);else elseBlock">
-                    <div (contextmenu)="loadContextMenu($event,row, cols, id)">
-                      <amexio-display-field [data]="row" [data-index]="cols.dataindex"></amexio-display-field>
+                    <div  (contextmenu)="loadContextMenu($event,row, cols, id)">
+                      <amexio-display-field  [data]="row" [data-index]="cols.dataindex"></amexio-display-field>
                     </div>
                   </ng-container>
                   <ng-template #elseBlock>
@@ -209,7 +211,8 @@
                 </div>
               </ng-container>
               <ng-container *ngIf="cols.bodyTemplate">
-                <div class="datatable-col" [style.width.%]="cols.width" scope="row" [attr.data-label]="cols.text">
+                <div  #ref id="{{title}}-{{i+1}}{{colIndex+1}}" class="datatable-col" [attr.tabindex] = "(((i+1== 1) && (colIndex + 1 == firstIndex))? 1: tabindex)" [style.width.%]="cols.width" scope="row" [attr.data-label]="cols.text" (keyup.arrowright)="arrowRight(ref)"
+                (keyup.arrowleft)="arrowLeft(ref)" (keyup.arrowdown)="arrowDown(ref)" (keyup.arrowup)="arrowUp(ref)" (keyup.end)="keyEnd(ref)" (keyup.home)="keyHome(ref)" (keyup.control.end)="keyControlEnd()" (keyup.control.home)="keyControlHome(ref)" (keyup.pagedown)="onPageDownClick(ref)" class="datatable-col" [style.width.%]="cols.width" scope="row" [attr.data-label]="cols.text">
                   <ng-template [ngTemplateOutlet]="cols.bodyTemplate" [ngTemplateOutletContext]="{ $implicit: { text : row[cols.dataindex] }, row: row }"></ng-template>
                 </div>
               </ng-container>
@@ -229,7 +232,7 @@
 <!--Group BY and Filter Data datagrid start-->
 <ng-container *ngIf="groupby && !enabledatafilter">
   <div class="datatable-height" [style.height.px]="height">
-    <div class="datatable" style="table-layout: inherit !important;">
+    <div class="datatable" role="grid" style="table-layout: inherit !important;">
       <div style="height: 300px;" *ngIf="mask">
         <div class="spinner"></div>
       </div>
@@ -269,7 +272,7 @@
             </ng-container>
             <ng-container *ngIf="!isGroupChecking(row)">
               <ng-container *ngIf="cols.datatype=='string' || cols.datatype == 'boolean'">
-                <div class="datatable-col" [style.width.%]="cols.width" [attr.data-label]="cols.text">
+                <div class="datatable-col" tabindex="1" [style.width.%]="cols.width" [attr.data-label]="cols.text">
                   <ng-container *ngIf="colIndex == 0">
                                         <span style="padding-left: 20px">
                                             <amexio-display-field [data]="row" [data-index]="cols.dataindex"></amexio-display-field>
@@ -282,7 +285,7 @@
               </ng-container>
               <ng-container *ngIf="cols.datatype=='number'">
 
-                <div class="datatable-col" [style.width.%]="cols.width" [attr.data-label]="cols.text">
+                <div class="datatable-col" tabindex="1" [style.width.%]="cols.width" [attr.data-label]="cols.text">
 
                   <ng-container *ngIf="colIndex == 0">
                                         <span style="padding-left: 20px">
@@ -341,6 +344,6 @@
 <!-- Footer of the grid -->
 <div class="footer">
   <ng-container *ngIf="(pagesize && (data && data.length > pagesize)) || (serverSidePaging && totalPages)">
-    <amexio-paginator [server-side-paging]="serverSidePaging" [pages]="totalPages" [rows]="pagesize" (onPageChange)="loadPageData($event)"></amexio-paginator>
+    <amexio-paginator #pageId [server-side-paging]="serverSidePaging" [pages]="totalPages" [rows]="pagesize" (onPageChange)="loadPageData($event)"></amexio-paginator>
   </ng-container>
 </div>
