@@ -35,3 +35,7 @@
   color: $rangeHeaderColor;
   font-weight: $rangeHeaderFontWeight;
 }
+.focusOnSlider:focus{
+  outline: none;
+  border: 2px solid $sliderHoverColor;
+ }

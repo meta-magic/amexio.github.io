@@ -50,6 +50,15 @@ default :
 description : The color is for determining color of particular chip.
 */
   @Input ('color') color: any;
+   /*
+Properties
+name : color
+datatype :
+version : 5.3.1onwards
+default :
+description : The color is for determining color of particular chip.
+*/
+@Input ('font-color') fontcolor: 'black';
   /*
 Properties
 name : badge
@@ -107,6 +116,7 @@ description : The closeable is for closing particular chip.
     obj['badge'] = this.badge;
     obj['closable'] = this.closable;
     obj['color'] = this.color;
+    obj['fontcolor'] = this.fontcolor;
     return obj;
   }
 }
