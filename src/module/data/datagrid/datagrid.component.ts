@@ -1538,7 +1538,9 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
       const pageInfo = { pageNumber: this.pageId.activePage, current: this.pageId.activePage, next: this.pageId.activePage + 1 };
       this.loadPageData(pageInfo);
       this.checkFirstTabIndex(1);
-      this.keyControlHome();
+      setTimeout(() => {
+        this.keyControlHome();
+      }, 100);
     }
   }
 
@@ -1547,7 +1549,9 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
       this.pageId.onPageClick(this.pageId.activePage - 1, this.pageId.activePage - 2);
       const pageInfo = { pageNumber: this.pageId.activePage - 1, current: this.pageId.activePage, next: this.pageId.activePage + 1 };
       this.loadPageData(pageInfo);
-      this.keyControlEnd();
+      setTimeout(() => {
+        this.keyControlEnd();
+      }, 100);
     }
   }
 
