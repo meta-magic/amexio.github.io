@@ -14,6 +14,8 @@ export class StepWizardComponent implements AfterContentInit {
 
   @Input('footer-align') footerAlign = 'space-between';
   @Output() finalStage: any = new EventEmitter<any>();
+  @Output() onNextStepClick: any = new EventEmitter<any>();
+  @Output() onPreviousStepClick: any = new EventEmitter<any>();
   @ContentChildren(StepWizardItemComponent) stepItemQueryList: QueryList<StepWizardItemComponent>;
 
   stepItemList: StepWizardItemComponent[];
@@ -40,10 +42,10 @@ export class StepWizardComponent implements AfterContentInit {
       try {
         this.stepItemList[index].index = time + index;
         node.onNextStep.subscribe((eventdata: any) =>
-          this.onNextStepClick(eventdata),
+          this.onNextStep(eventdata),
         );
         node.onPreviousStep.subscribe((eventdata: any) =>
-          this.onPreviousStepClick(eventdata),
+          this.onPreviousStep(eventdata),
         );
         this.stepItemList[index].footerAlign = this.footerAlign;
       } catch ( Error ) {
@@ -59,7 +61,8 @@ export class StepWizardComponent implements AfterContentInit {
   }
 
   // ON NEXT STEP CLICK
-  private onNextStepClick(event: any) {
+  private onNextStep(event: any) {
+
     let activeIndex = 0;
     const updatedTitle = event.title.replace(/\s/g, '').toLowerCase();
     this.data[updatedTitle] = event.data;
@@ -80,11 +83,19 @@ export class StepWizardComponent implements AfterContentInit {
         this.stepItemList[ind - 1].active = false;
       }
     });
+    if (event && event.emitData && event.emitData.currentdata) {
+      // tslint:disable-next-line:max-line-length
+      this.onNextStepClick.emit({title: event.title, currentdata: event.emitData.currentdata, data: this.data, event: event.emitData.event});
+    }
     this.finalStage.emit(this.data);
   }
 
   // ON PREVIOUS STEP CLICK
-  private onPreviousStepClick(event: any) {
+  private onPreviousStep(event: any) {
+    if (event && event.emitData && event.emitData.currentdata) {
+      // tslint:disable-next-line:max-line-length
+      this.onPreviousStepClick.emit({title: event.title, currentdata: event.emitData.currentdata, data: this.data, event: event.emitData.event});
+    }
     let activeIndex = 0;
     this.stepItemList.forEach((stepItem: any, index: any) => {
       if (stepItem.index === event.index) {
