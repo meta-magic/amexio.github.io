@@ -7,3 +7,14 @@
 .toolbaritemseperatorright{
     border-right: 1px solid $toolbarSeperatorColor;
 }
+.toolbar:focus{
+    background-color: $toolbarHoverBGColor;
+    color: $toolbarHoverFontColor;
+    outline: none;
+  }
+
+  .toolbar-item:focus{
+    background-color: $toolbarHoverBGColor;
+    color: $toolbarHoverFontColor;
+    outline: none;
+  }

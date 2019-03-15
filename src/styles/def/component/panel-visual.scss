@@ -43,3 +43,9 @@
 {
   background-color: $panelScrollThumbBG;
 }
+
+.panel-panel:focus{
+  background-color: $panelHoverBGColor;
+  color: $panelHoverFontColor;
+  
+}
