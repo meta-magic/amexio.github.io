@@ -3,13 +3,15 @@
         {{title}}
     </amexio-header-ce>
     <ul class="step-wizard step-wizard-horizontal">
-        <li  [attr.tabindex]="(item.activeClass === 'active') ? 1: -1"   *ngFor="let item of stepItemList; let i = index" [ngClass]="item.activeClass">
+        <li [attr.tabindex]="(item.activeClass === 'active') ? 1: -1" *ngFor="let item of stepItemList; let i = index"
+            [ngClass]="item.activeClass">
             <a>
                 <span class="circle ">
-                          <ng-container *ngIf="item.icon ">
-                          <amexio-image [icon-class]="item.icon "></amexio-image></ng-container>
-                          <ng-container *ngIf="!item.icon && showStepNumber ">{{i+1}}</ng-container>
-                        </span>
+                    <ng-container *ngIf="item.icon ">
+                        <amexio-image [icon-class]="item.icon "></amexio-image>
+                    </ng-container>
+                    <ng-container *ngIf="!item.icon && showStepNumber ">{{i+1}}</ng-container>
+                </span>
                 <ng-container *ngIf="item.title ">
                     <ng-container *ngIf="item.icon && showStepNumber ">
                         {{i+1}}
@@ -22,7 +24,7 @@
             </a>
         </li>
     </ul>
-    <amexio-body-ce >
+    <amexio-body-ce>
         <ng-content select="amexio-step-wizard-item">
         </ng-content>
     </amexio-body-ce>

@@ -8,9 +8,11 @@
        class="form-control" 
        [attr.tabindex]="disabled ? -1 : 0"
        id="{{componentId}}"
+       (focus)="onFocus()"
+       (blur)="onBlur()"
        [ngClass]="{'checkbox-disable' : disabled}" 
        [checked]="checked" 
        [attr.aria-disabled]="disabled"
        (click)="toggleCheck()">
-<span class="input-box-checkbox-label"></span>
+<span class="input-box-checkbox-label"  [ngClass]="{'focusOnCheckbox':tabFocus}"></span>
 </label>

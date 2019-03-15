@@ -14,3 +14,11 @@
   background-color: $paginatorActiveBGColor;
   color: $paginatorActiveColor;
 }
+.paginator-page:focus{
+  outline: none;
+  background-color: $paginatorHoverBGColor;
+}
+.paginator-pages:focus{
+  outline: none;
+  background-color: $paginatorHoverBGColor;
+}

@@ -43,5 +43,8 @@
   .search-dropdown-list{ 
     border-color: $dropdownBorderColor;
     background-color:$dropdownBG;
-               }
-               
+      }
+  .input-group:focus{
+    outline: none
+  }
+            
