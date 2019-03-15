@@ -169,7 +169,7 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
 
   @Input() parentRef: any;
 
-  @Input() node1: any;
+  @Input('filter-tree-flag') filtertreeflag = false;
 
   @ContentChild('amexioTreeTemplate') parentTmp: TemplateRef<any>;
   /*
@@ -285,12 +285,6 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
       node.expand = !node.expand;
   }
   onArrowDown(event: any, data: any, node: any, index: any) {
-      if (this.globalTreeData[0]['id'] === data[0]['id'] && data[0]['id'] === node['id']) {
-          let currentindex = -1;
-          currentindex = currentindex + 1;
-          const itemid = data[0][this.childarraykey][currentindex];
-          this.setFocus(itemid);
-      } else {
           const incrementindex = index + 1;
           const itemid = data[incrementindex];
           if (node.expand === true && node[this.childarraykey]) {
@@ -303,26 +297,26 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
                    this.focusTONextParent(node);
                 }
           }
-      }
   }
   onArrowUp(data: any, node: any, index: any) {
-      const newindex = index - 1;
-      if (newindex >= 0) {
-          const previousindex = data[newindex];
-          this.setFocus(previousindex);
-          this.focusToInnerLastItem(previousindex);
-      } else {
-          const id = node.id;
-          const spiltID = this.splitID(id);
-          const randomnumber = spiltID[0];
-          const currentid = spiltID[1];
-
-          const newid = parseInt(currentid.slice(0, -1), 10);
-          const id2: any = newid;
-          const focusid1 = randomnumber + '-' + id2;
-          if (document.getElementById(focusid1)) {
-              document.getElementById(focusid1).focus();
-          }
+      if (this.filtertreeflag === false ) {
+        const newindex = index - 1;
+        if (newindex >= 0) {
+            const previousindex = data[newindex];
+            this.setFocus(previousindex);
+            this.focusToInnerLastItem(previousindex);
+        } else {
+            const id = node.id;
+            const spiltID = this.splitID(id);
+            const randomnumber = spiltID[0];
+            const currentid = spiltID[1];
+            const newid = parseInt(currentid.slice(0, -1), 10);
+            const id2: any = newid;
+            const focusid1 = randomnumber + '-' + id2;
+            if (document.getElementById(focusid1)) {
+                document.getElementById(focusid1).focus();
+            }
+        }
       }
   }
   focusToInnerLastItem(node: any) {
@@ -403,9 +397,7 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
       this.parentRef = this.data;
       if (this.globalTreeData.length === 0) {
       this.globalTreeData = this.data;
-      if (this.globalTreeData[0][this.childarraykey]) {
-        this.generateIndex(this.globalTreeData[0][this.childarraykey] , 1, Math.floor(Math.random() * 1000 + 999 + 1));
-    }
+      this.generateIndex(this.globalTreeData , 1, Math.floor(Math.random() * 1000 + 999 + 1));
       }
       this.setSelectedFlag();
       this.activateNode(this.data, null);
