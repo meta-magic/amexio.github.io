@@ -1341,7 +1341,7 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
   arrowUp(ref: any) {
     const intId = (ref.id).substring(ref.id.search('-') + 1, (ref.id).length);
     const unitId = intId.slice(0, -1);
-    if (unitId > 1) {
+    if (unitId > 1 && document.getElementById(this.title + '-' + (parseInt(intId, 10) - 10).toString())) {
       document.getElementById(this.title + '-' + (parseInt(intId, 10) - 10).toString()).focus();
     }
   }
@@ -1350,7 +1350,8 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
   arrowDown(ref: any) {
     const intId = (ref.id).substring(ref.id.search('-') + 1, (ref.id).length);
     const firstId = parseInt(intId.slice(0, -1), 10);
-    if (this.pagesize && firstId < this.pagesize && firstId < this.viewRows.length || firstId <= this.viewRows.length - 1) {
+    if ((this.pagesize && firstId < this.pagesize && firstId < this.viewRows.length || (firstId <= this.viewRows.length - 1))
+      && document.getElementById(this.title + '-' + (parseInt(intId, 10) + 10).toString())) {
       document.getElementById(this.title + '-' + (parseInt(intId, 10) + 10).toString()).focus();
     }
   }
@@ -1554,5 +1555,21 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
     this.showGroupByColumn = !this.showGroupByColumn;
   }
 
-  findContolEndGrpBy() {}
+  findContolEndGrpBy() {
+    if (this.viewRows && this.viewRows.length > 0) {
+      const firstLevelGrid: any[] = [];
+      const unitId = this.columns.length;
+      const firstId = this.viewRows.length;
+      this.viewRows.forEach((element, index) => {
+        if (element.hasOwnProperty('expanded')) {
+          firstLevelGrid.push(element);
+        }
+      });
+      if (!firstLevelGrid[firstLevelGrid.length - 1].expanded) {
+        this.findControlEndColumn(1, firstId);
+      } else {
+        this.findControlEndColumn(unitId, firstId);
+      }
+    }
+  }
 }
