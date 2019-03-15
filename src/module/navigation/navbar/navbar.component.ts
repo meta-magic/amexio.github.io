@@ -217,7 +217,7 @@ description : Color
 
     const navbaravailablewidth = (navbarwidth - (this.navfixeditem + this.navitemwidth));
 
-    if ((navbaravailablewidth < 100 || navbarheight > 100)) {
+    if ((navbaravailablewidth < 10 || navbarheight > 100)) {
       this.mobilemode = true;
       this.toggle = false;
       this.notifyNavItems(navbarwidth);
