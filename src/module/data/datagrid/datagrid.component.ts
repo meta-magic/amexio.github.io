@@ -1411,8 +1411,13 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
   // CONTROL END
   keyControlEnd() {
     const unitId = this.columns.length;
-    const firstId = this.pagesize;
-    this.findControlEndColumn(unitId, firstId);
+    if (this.pagesize && this.viewRows.length >= this.pagesize) {
+      const firstId = this.pagesize;
+      this.findControlEndColumn(unitId, firstId);
+    } else {
+      const firstId = this.viewRows.length;
+      this.findControlEndColumn(unitId, firstId);
+    }
   }
 
   // CONTROL END COLUMN
@@ -1548,4 +1553,6 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
   showGroupCol() {
     this.showGroupByColumn = !this.showGroupByColumn;
   }
+
+  findContolEndGrpBy() {}
 }

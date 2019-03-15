@@ -9,7 +9,7 @@
         <span *ngIf="show">&#9747;</span>
         </span>
         </span>
-    <span *ngIf="groupby ? true : false" class="float-right" tabindex = "1" (keyup.enter)="showGroupCol()" (click)="showGroupByColumn = !showGroupByColumn; showToolTip = false" style=" cursor: pointer;">
+    <span *ngIf="groupby ? true : false" class="float-right-datagridlist" tabindex = "1" (keyup.enter)="showGroupCol()" (click)="showGroupByColumn = !showGroupByColumn; showToolTip = false" style=" cursor: pointer;">
             <!--<span class="fa fa-th-list"></span>-->
         <amexio-c-icon key="datagrid_list"></amexio-c-icon>
         </span>
@@ -199,7 +199,7 @@
               </ng-container>
               <ng-container *ngIf="!cols?.bodyTemplate && (cols.datatype == 'string' || cols.datatype == 'boolean')">
                 <div #ref id="{{title}}-{{i+1}}{{colIndex+1}}" class="datatable-col" [attr.tabindex] = "(((i+1== 1) && (colIndex + 1 == firstIndex))? 1: tabindex)" [style.width.%]="cols.width" scope="row" [attr.data-label]="cols.text" (keyup.arrowright)="arrowRight(ref)"
-                (keyup.arrowleft)="arrowLeft(ref)" (keyup.enter)="onRowClick(row, i)" (keyup.arrowdown)="arrowDown(ref)" (keyup.arrowup)="arrowUp(ref)" (keyup.end)="keyEnd(ref)" (keyup.home)="keyHome(ref)" (keyup.control.end)="keyControlEnd()" (keyup.control.home)="keyControlHome(ref)" (keyup.pagedown)="onPageDownClick(ref)">
+                (keyup.arrowleft)="arrowLeft(ref)" (keyup.enter)="onRowClick(row, i)" (keyup.arrowdown)="arrowDown(ref)" (keyup.arrowup)="arrowUp(ref)" (keyup.end)="keyEnd(ref)" (keyup.home)="keyHome(ref)" (keyup.control.end)="keyControlEnd()" (keyup.control.home)="keyControlHome(ref)" (keyup.pageup)="onPageUpClick()" (keyup.pagedown)="onPageDownClick(ref)">
                   <ng-container *ngIf="(cols.datatype == 'boolean' ? true : row[cols.dataindex]!= null ? true : false);else elseBlock">
                     <div  (contextmenu)="loadContextMenu($event,row, cols, id)">
                       <amexio-display-field  [data]="row" [data-index]="cols.dataindex"></amexio-display-field>
@@ -212,7 +212,7 @@
               </ng-container>
               <ng-container *ngIf="cols.bodyTemplate">
                 <div  #ref id="{{title}}-{{i+1}}{{colIndex+1}}" class="datatable-col" [attr.tabindex] = "(((i+1== 1) && (colIndex + 1 == firstIndex))? 1: tabindex)" [style.width.%]="cols.width" scope="row" [attr.data-label]="cols.text" (keyup.arrowright)="arrowRight(ref)"
-                (keyup.arrowleft)="arrowLeft(ref)" (keyup.arrowdown)="arrowDown(ref)" (keyup.arrowup)="arrowUp(ref)" (keyup.end)="keyEnd(ref)" (keyup.home)="keyHome(ref)" (keyup.control.end)="keyControlEnd()" (keyup.control.home)="keyControlHome(ref)" (keyup.pagedown)="onPageDownClick(ref)" class="datatable-col" [style.width.%]="cols.width" scope="row" [attr.data-label]="cols.text">
+                (keyup.arrowleft)="arrowLeft(ref)" (keyup.arrowdown)="arrowDown(ref)" (keyup.arrowup)="arrowUp(ref)" (keyup.end)="keyEnd(ref)" (keyup.home)="keyHome(ref)" (keyup.control.end)="keyControlEnd()" (keyup.control.home)="keyControlHome(ref)" (keyup.pagedown)="onPageDownClick(ref)" (keyup.pageup)="onPageUpClick()" class="datatable-col" [style.width.%]="cols.width" scope="row" [attr.data-label]="cols.text">
                   <ng-template [ngTemplateOutlet]="cols.bodyTemplate" [ngTemplateOutletContext]="{ $implicit: { text : row[cols.dataindex] }, row: row }"></ng-template>
                 </div>
               </ng-container>
@@ -253,7 +253,12 @@
             <ng-container *ngIf="isGroupChecking(row)">
 
               <ng-container *ngIf="colIndex == 0">
-                <div class="datatable-col col-group" tabindex="1">
+                <div #grpref class="datatable-col col-group" class="datatable-col col-group" id="{{title}}-{{i+1}}{{colIndex+1}}" tabindex="1"
+                (keyup.arrowdown)="arrowDown(grpref)"
+                (keyup.arrowup)="arrowUp(grpref)"
+                (keyup.control.end)="findContolEndGrpBy()" 
+                (keyup.control.home)="keyControlHome()"
+                (keyup.enter)="toogle(row, i)">
                   <!--<i *ngIf="!row.expanded" class="fa fa-caret-right" aria-hidden="true" (click)="toogle(row,i)"></i>-->
                   <ng-container *ngIf="!row.expanded">
                     <amexio-c-icon key="datagrid_expand"></amexio-c-icon>
@@ -272,7 +277,13 @@
             </ng-container>
             <ng-container *ngIf="!isGroupChecking(row)">
               <ng-container *ngIf="cols.datatype=='string' || cols.datatype == 'boolean'">
-                <div class="datatable-col" tabindex="1" [style.width.%]="cols.width" [attr.data-label]="cols.text">
+                <div #grpref id="{{title}}-{{i+1}}{{colIndex+1}}" (keyup.arrowdown)="arrowDown(grpref)" 
+                (keyup.arrowup)="arrowUp(grpref)"
+                (keyup.arrowright)="arrowRight(grpref)"
+                (keyup.arrowleft)="arrowLeft(grpref)"
+                (keyup.end)="keyEnd(grpref)" (keyup.home)="keyHome(grpref)" 
+                (keyup.control.end)="findContolEndGrpBy()" (keyup.control.home)="keyControlHome()" 
+                (keyup.pagedown)="onPageDownClick()" (keyup.pageup)="onPageUpClick()" class="datatable-col" tabindex="1" [style.width.%]="cols.width" [attr.data-label]="cols.text">
                   <ng-container *ngIf="colIndex == 0">
                                         <span style="padding-left: 20px">
                                             <amexio-display-field [data]="row" [data-index]="cols.dataindex"></amexio-display-field>
@@ -285,7 +296,13 @@
               </ng-container>
               <ng-container *ngIf="cols.datatype=='number'">
 
-                <div class="datatable-col" tabindex="1" [style.width.%]="cols.width" [attr.data-label]="cols.text">
+                <div #grpref id="{{title}}-{{i+1}}{{colIndex+1}}" (keyup.arrowdown)="arrowDown(grpref)" 
+                (keyup.arrowup)="arrowUp(grpref)"
+                (keyup.arrowright)="arrowRight(grpref)"
+                (keyup.arrowleft)="arrowLeft(grpref)"
+                (keyup.end)="keyEnd(grpref)" (keyup.home)="keyHome(grpref)" 
+                (keyup.control.end)="findContolEndGrpBy()" (keyup.control.home)="keyControlHome()" 
+                (keyup.pagedown)="onPageDownClick()" (keyup.pageup)="onPageUpClick()" class="datatable-col" tabindex="1" [style.width.%]="cols.width" [attr.data-label]="cols.text">
 
                   <ng-container *ngIf="colIndex == 0">
                                         <span style="padding-left: 20px">
