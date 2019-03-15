@@ -6,6 +6,10 @@
   height: 34px;
   vertical-align: middle
 }
+.toggle:focus{
+  outline:none;
+  border : 2px solid $toggleFGChecked;
+}
 
 .toggle input {display:none;}
 

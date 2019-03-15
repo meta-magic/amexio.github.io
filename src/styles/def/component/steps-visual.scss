@@ -18,6 +18,12 @@
   // width: 100%;
   // position: relative;
 }
+.step-box-table-item:focus{
+  outline: none;
+  background-color: $stepsHoverBGColor !important;
+  color: $stepHoverFontColor;
+
+}
 .stepwizard-row:before {
   // top: 14px;
   // bottom: 0;
@@ -85,7 +91,7 @@
 }
 
 .step-box-table-item.active{
-  background-color: $stepsActiveBGColor!important;
+  background-color: $stepsActiveBGColor;
   //cursor : not-allowed;
 }
 

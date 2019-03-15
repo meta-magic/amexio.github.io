@@ -38,3 +38,24 @@
 
 
 }
+.progress .success:focus{
+  border: 2px solid $progressHoverColor;
+  outline:none;
+}
+.progress .warning:focus{
+  border: 2px solid $progressHoverColor;
+  outline:none;
+}
+.progress .danger:focus{
+  border: 2px solid $progressHoverColor;
+  outline:none;
+}
+.progress .red:focus{
+  border: 2px solid $progressHoverColor;
+  outline:none;
+}
+.progress .stripped:focus{
+  border: 2px solid $progressHoverColor;
+  outline:none;
+}
+
