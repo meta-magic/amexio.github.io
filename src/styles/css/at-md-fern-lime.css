@@ -4750,6 +4750,14 @@ amexio-homepage-northpanel .top-nav-button {
   color: #405200;
   outline: none; }
 
+.float-right-datagridlist {
+  float: right; }
+
+.float-right-datagridlist:focus {
+  background-color: #f0ffb8;
+  color: #405200;
+  outline: none; }
+
 /** Datatable - Visual CSS **/
 .datatabletitle {
   font-size: 1.5em;
@@ -5064,6 +5072,11 @@ amexio-homepage-northpanel .top-nav-button {
 .tree-node-label-hover:hover {
   background-color: #f0ffb8;
   color: #405200; }
+
+.tree-node-label-hover:focus {
+  background-color: #f0ffb8;
+  color: #405200;
+  outline: none; }
 
 .treenode-label-active {
   background-color: #dfff6b;
@@ -5495,6 +5508,7 @@ amexio-homepage-northpanel .top-nav-button {
   display: inline-block;
   float: right;
   padding-right: 10px;
+  padding-top: 8px;
   cursor: pointer; }
 
 .topnavmainbaritems amexio-nav-item1:last-child .topnavmainbarinneritems .nav-dropdown-content {
