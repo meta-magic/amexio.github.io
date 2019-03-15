@@ -920,6 +920,10 @@ button {
     color: #153746; }
   .datedropdown li {
     color: #628ea3; }
+  .datedropdown li:focus {
+    outline: none;
+    background: #b8e8ff !important;
+    color: #003852 !important; }
 
 .datetimepicker {
   background: #ffffff; }
@@ -933,6 +937,10 @@ button {
       color: #628ea3; }
     .datetimepicker .days li:hover {
       color: #6bd0ff; }
+    .datetimepicker .days li:focus {
+      outline: none;
+      background: #b8e8ff !important;
+      color: #003852 !important; }
     .datetimepicker .days .active {
       background: #6bd0ff;
       color: #153746; }
@@ -951,6 +959,10 @@ button {
       color: #628ea3; }
     .datetimepicker1 .days li:hover {
       color: #6bd0ff; }
+    .datetimepicker1 .days li:focus {
+      outline: none;
+      background: #b8e8ff !important;
+      color: #003852 !important; }
     .datetimepicker1 .days .active {
       background: #6bd0ff;
       color: #153746; }
@@ -3905,7 +3917,7 @@ header .billboard .content-button {
 .close-button {
   cursor: pointer;
   padding-left: 98%;
-  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 100%); }
+  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, transparent 70%, transparent 100%); }
 
 /****************************************************************************
     Component Name : Enterprise Youtube
@@ -3914,7 +3926,7 @@ header .billboard .content-button {
 /** enterprise-youtube - Visual CSS **/
 .close-button {
   color: grey;
-  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 100%); }
+  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, transparent 70%, transparent 100%); }
 
 .close-button i:hover {
   color: red; }
@@ -3938,8 +3950,8 @@ header .billboard .content-button {
   font-size: 20px; }
 
 .tile__details {
-  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%); }
+  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%); }
 
 .tile__details:after,
 .tile__details:before {
@@ -3947,8 +3959,8 @@ header .billboard .content-button {
 
 .tile__details_v {
   font-size: 10px;
-  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%); }
+  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%); }
 
 .tile__details_v:after,
 .tile__details_v:before {
@@ -5077,7 +5089,7 @@ amexio-homepage-northpanel .top-nav-button {
   background-color: #b8e8ff;
   color: #003852; }
 
-.tree-node-label-hover:focus {
+.tree-node-label:focus {
   background-color: #b8e8ff;
   color: #003852;
   outline: none; }
@@ -5450,7 +5462,7 @@ amexio-homepage-northpanel .top-nav-button {
 
 .topnavmainbarinneritems-mobile {
   width: 100%;
-  height: 40px;
+  height: 50px;
   border-bottom: 1px solid #ced4da; }
 
 .topnavmainbarinneritems .nav-dropdown {
@@ -5459,7 +5471,9 @@ amexio-homepage-northpanel .top-nav-button {
 
 .topnavmainbarinneritems-mobile .nav-dropdown {
   width: 100%;
-  line-height: 50px; }
+  line-height: 50px;
+  flex-direction: column;
+  display: flex; }
 
 .top-nav-link {
   padding: 0px 8px; }
@@ -5469,6 +5483,7 @@ amexio-homepage-northpanel .top-nav-button {
 
 .topnavmainbarinneritems-mobile .nav-dropdown .nav-dropbtn .dropdownicon {
   float: right;
+  margin-top: 20px;
   margin-right: 20px; }
 
 .nav-dropdown .nav-dropbtn i {
@@ -7789,11 +7804,11 @@ amexio-layout-columns amexio-layout-item {
 *****************************************************************************/
 @keyframes checkboxripple {
   0% {
-    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0); }
+    box-shadow: 0px 0px 0px 1px transparent; }
   50% {
     box-shadow: 0px 0px 0px 15px rgba(0, 0, 0, 0.1); }
   100% {
-    box-shadow: 0px 0px 0px 15px rgba(0, 0, 0, 0); } }
+    box-shadow: 0px 0px 0px 15px transparent; } }
 /* Show the input-box-container-label when checked */
 .input-box-container input:checked ~ .input-box-checkbox-label:after {
   animation: checkboxripple .3s ease-in; }
@@ -7803,11 +7818,11 @@ amexio-layout-columns amexio-layout-item {
 *****************************************************************************/
 @keyframes radioripple {
   0% {
-    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0); }
+    box-shadow: 0px 0px 0px 1px transparent; }
   50% {
     box-shadow: 0px 0px 0px 15px rgba(0, 0, 0, 0.1); }
   100% {
-    box-shadow: 0px 0px 0px 15px rgba(0, 0, 0, 0); } }
+    box-shadow: 0px 0px 0px 15px transparent; } }
 /* Show the input-box-container-label when checked */
 .input-box-container input:checked ~ .input-box-radiobox-label:after {
   animation: radioripple 0.3s linear forwards; }
