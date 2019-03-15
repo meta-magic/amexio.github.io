@@ -87,6 +87,7 @@ export class AmexioCheckBoxComponent extends AmexioFormValidator implements Cont
   @Output() input: any = new EventEmitter<any>();
   @Input('name') name: string;
   isValid: boolean;
+  tabFocus = false;
   componentId: string;
   @Output() isComponentValid: any = new EventEmitter<any>();
 
@@ -128,9 +129,11 @@ export class AmexioCheckBoxComponent extends AmexioFormValidator implements Cont
   }
   // Set touched on blur
   onBlur() {
+    this.tabFocus = false;
     this.onTouchedCallback();
   }
   onFocus() {
+    this.tabFocus = true;
   }
 
   // From ControlValueAccessor interface

@@ -17,11 +17,18 @@
 
 import { Component, Host, Input, OnInit } from '@angular/core';
 import { AmexioCheckBoxGroupComponent } from './checkbox.group.component';
+
+const noop = () => {
+};
 @Component({
   selector: 'checkbox',
   templateUrl: './checkbox.component.html',
 })
 export class CheckboxComponent implements OnInit {
+  // Placeholders for the callbacks which are later provided
+  // by the Control Value Accessor
+  private onTouchedCallback: () => void = noop;
+  private onChangeCallback: (_: any) => void = noop;
   @Input() label: any;
 
   @Input() value: any;
@@ -30,10 +37,12 @@ export class CheckboxComponent implements OnInit {
 
   @Input() checked: boolean;
 
+  tabFocus = false;
+
   @Input() disabled: boolean;
 
   componentId: string;
-  constructor( @Host() private checkboxGroup: AmexioCheckBoxGroupComponent) { }
+  constructor(@Host() private checkboxGroup: AmexioCheckBoxGroupComponent) { }
 
   toggleCheck() {
     if (!this.checked) {
@@ -46,6 +55,13 @@ export class CheckboxComponent implements OnInit {
 
   isChecked() {
     return this.checked || this.checkboxGroup.contains(this.value);
+  }
+  onBlur() {
+    this.tabFocus = false;
+    this.onTouchedCallback();
+  }
+  onFocus() {
+    this.tabFocus = true;
   }
 
   ngOnInit() {

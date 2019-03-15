@@ -4,13 +4,16 @@
         id="{{componentId}}" type="checkbox" style="top:0; left:0"
         [attr.checked]="value ? true: null"
          tabindex="1"
-        (input)="onInput()" (click)="onClick()"
+        (input)="onInput()" 
+        (click)="onClick()"
+        (focus)="onFocus()"
+        (blur)="onBlur()"
         [attr.disabled] = "disabled ? true: null"
         [attr.aria-disabled]="disabled"
         [attr.aria-required]="required"
         [required]="required" >
         {{fieldlabel}}
-        <span class="input-box-checkbox-label">
+        <span class="input-box-checkbox-label" [ngClass]="{'focusOnCheckbox':tabFocus}">
         </span>
       </label>
 </div>

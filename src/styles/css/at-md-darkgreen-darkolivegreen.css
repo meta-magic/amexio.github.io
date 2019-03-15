@@ -1494,6 +1494,9 @@ textarea:required {
   cursor: not-allowed;
   pointer-events: none; }
 
+.focusOnCheckbox {
+  border: solid #ced4da !important; }
+
 /** checkbox - Structure CSS **/
 .input-box {
   display: inline-block;
@@ -1666,6 +1669,26 @@ textarea:required {
     background-size: 30px 30px;
     background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent); }
 
+.progress .success:focus {
+  border: 2px solid #e5ffb8;
+  outline: none; }
+
+.progress .warning:focus {
+  border: 2px solid #e5ffb8;
+  outline: none; }
+
+.progress .danger:focus {
+  border: 2px solid #e5ffb8;
+  outline: none; }
+
+.progress .red:focus {
+  border: 2px solid #e5ffb8;
+  outline: none; }
+
+.progress .stripped:focus {
+  border: 2px solid #e5ffb8;
+  outline: none; }
+
 /** progress - Structure CSS **/
 .progress {
   height: 20px;
@@ -1808,6 +1831,10 @@ input:checked + .toggle-slider {
   width: 60px;
   height: 34px;
   vertical-align: middle; }
+
+.toggle:focus {
+  outline: none;
+  border: 2px solid #345200; }
 
 .toggle input {
   display: none; }
@@ -2900,6 +2927,9 @@ input:checked + .toggle-slider:before {
 .search-dropdown-list {
   border-color: #ced4da;
   background-color: #ffffff; }
+
+.input-group:focus {
+  outline: none; }
 
 /** Searchbox - Structure CSS **/
 .hrclass {
@@ -4493,6 +4523,28 @@ amexio-step-wizard .form-footer {
   font-weight: 600;
   margin-right: 7px; }
 
+.lhs-mobile {
+  flex: 1 1 100% !important;
+  max-width: 100% !important; }
+
+.rhs-mobile {
+  flex: 1 1 100% !important;
+  max-width: 100% !important;
+  height: 100% !important; }
+
+.topnav-lhs-inner {
+  display: flex;
+  flex-direction: row;
+  justify-content: start; }
+
+.topnav-lhs-inner-mobile {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; }
+
+.topnavmainbaritems-mobile {
+  width: 100%; }
+
 amexio-homepage-northpanel .topnav {
   padding: 0px; }
 
@@ -4515,9 +4567,10 @@ amexio-homepage-northpanel .topnav-lhs-mobile > div > span {
   padding: 0px !important; }
 
 amexio-homepage-northpanel .topnav-rhs {
-  flex-grow: 1; }
+  flex-grow: 1;
+  height: 50px; }
 
-amexio-homepage-northpanel .topnavbarunit1-mobile {
+amexio-homepage-northpanel .topnav-lhs-mobile {
   padding-left: 45px; }
 
 amexio-homepage-westpanel .homepage-westpanel {
@@ -4563,7 +4616,9 @@ amexio-homepage-northpanel .top-nav-button {
   flex-direction: row; }
 
 .collaspe-icon-style {
-  margin-right: -26px;
+  position: fixed;
+  left: 17%;
+  top: 0px;
   width: 50px;
   border-radius: 100%;
   height: 50px; }
@@ -4577,6 +4632,10 @@ amexio-homepage-northpanel .top-nav-button {
 
 .homepage3-bar .fa {
   font-size: 26px; }
+
+.collaspe-icon-style amexio-image {
+  display: flex;
+  align-items: center; }
 
 .collaspe-icon-style {
   z-index: 2;
@@ -5263,10 +5322,6 @@ amexio-homepage-northpanel .top-nav-button {
 .topnav a label {
   color: #ebffeb; }
 
-.topnavbarunit2-mobile {
-  background-color: #006400;
-  color: #ebffeb; }
-
 .topnavmainbarinneritems .nav-dropdown-content {
   background-color: #006400;
   color: #ebffeb; }
@@ -5343,16 +5398,11 @@ amexio-homepage-northpanel .top-nav-button {
   cursor: pointer;
   padding: 0px 8px; }
 
-.topnavbarunit1 {
-  line-height: 50px; }
-
-.topnavbarunit1-mobile {
+.topnav-lhs-mobile {
   width: 100%;
-  padding: 5px; }
-
-.topnavbarunit2 {
-  line-height: 50px;
-  flex-grow: 1; }
+  padding: 5px;
+  display: flex;
+  justify-content: space-between; }
 
 .topnavbarunit2-mobile {
   width: 100%;
@@ -5360,7 +5410,8 @@ amexio-homepage-northpanel .top-nav-button {
 
 .topnavmainbar {
   display: flex;
-  justify-content: space-between; }
+  justify-content: space-between;
+  height: inherit; }
 
 .topnavmainbar-mobile {
   flex-direction: column; }
@@ -5368,10 +5419,13 @@ amexio-homepage-northpanel .top-nav-button {
 .topnavmainbaritems {
   display: flex;
   justify-content: space-between;
-  flex-direction: row; }
+  flex-direction: row;
+  height: inherit;
+  align-items: center; }
 
 .topnavmainbaritems-mobile {
-  flex-direction: column; }
+  flex-direction: column;
+  align-items: unset; }
 
 .topnavmainbarinneritems {
   display: inline-block;
@@ -5379,6 +5433,7 @@ amexio-homepage-northpanel .top-nav-button {
 
 .topnavmainbarinneritems-mobile {
   width: 100%;
+  height: 40px;
   border-bottom: 1px solid #ced4da; }
 
 .topnavmainbarinneritems .nav-dropdown {
@@ -5386,7 +5441,8 @@ amexio-homepage-northpanel .top-nav-button {
   overflow: hidden; }
 
 .topnavmainbarinneritems-mobile .nav-dropdown {
-  width: 100%; }
+  width: 100%;
+  line-height: 50px; }
 
 .top-nav-link {
   padding: 0px 8px; }
@@ -5396,8 +5452,7 @@ amexio-homepage-northpanel .top-nav-button {
 
 .topnavmainbarinneritems-mobile .nav-dropdown .nav-dropbtn .dropdownicon {
   float: right;
-  margin-right: 20px;
-  line-height: 50px; }
+  margin-right: 20px; }
 
 .nav-dropdown .nav-dropbtn i {
   padding: 0px 5px; }
@@ -5425,7 +5480,7 @@ amexio-homepage-northpanel .top-nav-button {
 .topnavmainbarinneritems .nav-dropdown-content a {
   text-decoration: none;
   display: block;
-  padding: 0px 10px;
+  padding: 10px 10px;
   text-align: left; }
 
 .nav-dropdown:hover .nav-dropbtn .dropdownicon {
@@ -5449,12 +5504,14 @@ amexio-homepage-northpanel .top-nav-button {
   right: 10px; }
 
 .navbar-logo {
-  width: 40px;
-  height: 40px; }
+  width: 50px;
+  height: 50px; }
 
 .sidenav-padding {
   display: inline-flex;
-  flex-direction: row; }
+  flex-direction: row;
+  height: 50px;
+  align-items: center; }
 
 .sidenav-mobile-bar {
   height: 50px; }
@@ -5464,6 +5521,9 @@ amexio-homepage-northpanel .top-nav-button {
   justify-content: center;
   padding: 0px 10px;
   left: 0; }
+
+.homepage-collapse {
+  align-items: center; }
 
 /****************************************************************************
     Component Name : Paginator
@@ -5480,6 +5540,14 @@ amexio-homepage-northpanel .top-nav-button {
 .paginator .paginator-pages .active {
   background-color: #c9ff6b;
   color: #131f00; }
+
+.paginator-page:focus {
+  outline: none;
+  background-color: #e5ffb8; }
+
+.paginator-pages:focus {
+  outline: none;
+  background-color: #e5ffb8; }
 
 /** paginator - Structure CSS **/
 .paginator {
@@ -5579,13 +5647,11 @@ amexio-homepage-northpanel .top-nav-button {
 /** sidenav - Structure CSS **/
 .sidenav-mobile-bar {
   top: 10px;
-  padding: 10px;
   position: relative;
   z-index: 3; }
 
 .sidenav-mobile-bar-left {
   top: 10px;
-  padding: 10px;
   position: fixed;
   z-index: 3;
   left: 0; }
@@ -5595,7 +5661,6 @@ amexio-homepage-northpanel .top-nav-button {
 
 .sidenav-mobile-bar-right {
   top: 10px;
-  padding: 10px;
   position: fixed;
   z-index: 3;
   right: 0; }
@@ -5647,7 +5712,7 @@ amexio-homepage-northpanel .top-nav-button {
   padding: 13px 0px 13px 17px;
   padding-left: 100%;
   margin-left: -100%;
-  border-top: 1px  solid #ced4da !important; }
+  border-top: 1px solid #ced4da !important; }
 
 .sidenav .headernodeSeparator .node-icon {
   padding-right: 20px; }
@@ -6235,6 +6300,11 @@ fieldset {
 .step-block-icon-disable {
   color: #8ba362; }
 
+.step-box-table-item:focus {
+  outline: none;
+  background-color: #e5ffb8 !important;
+  color: #345200; }
+
 .stepwizard-row:before {
   background-color: #f5f5f5; }
 
@@ -6248,7 +6318,7 @@ fieldset {
   color: #121212; }
 
 .step-box-table-item.active {
-  background-color: #c9ff6b !important; }
+  background-color: #c9ff6b; }
 
 .step-box-table-item.disbaled {
   background-color: #d2dbc2;
