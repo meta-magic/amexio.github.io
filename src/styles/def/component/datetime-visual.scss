@@ -19,6 +19,12 @@
   li {
     color:$datetimepickerDaysColor;
   }
+
+  li:focus {
+    outline: none;    
+    background: $datetimeFocusBG !important;
+    color: $datetimeFocusColor !important;
+  }
 }
 
 .datetimepicker{
@@ -44,6 +50,14 @@
 
     li:hover {
       color: $datetimepickertopbarBGColor;
+    }
+
+    li:focus {
+      outline: none;    
+      background: $datetimeFocusBG !important;
+      color: $datetimeFocusColor !important; 
+      // border-radius: 135px;
+      // padding: 5px;
     }
     .active {
       background: $datetimepickertopbarBGColor;
@@ -79,6 +93,14 @@
 
     li:hover {
       color: $datetimepickertopbarBGColor;
+    }
+
+    li:focus {
+      outline: none;    
+      background: $datetimeFocusBG !important;
+      color: $datetimeFocusColor !important; 
+      // border-radius: 135px;
+      // padding: 5px;
     }
     .active {
       background: $datetimepickertopbarBGColor;

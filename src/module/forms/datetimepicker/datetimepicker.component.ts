@@ -15,7 +15,7 @@
 *
 */
 
-import { animate, state, style, transition, trigger} from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import {
   ChangeDetectorRef, Component, ElementRef,
   EventEmitter, forwardRef, Input, OnInit, Output, Renderer2,
@@ -48,14 +48,15 @@ const noop = () => {
   }],
 })
 export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<string> implements OnInit, Validators {
+
   /*
-   Properties
-   name : date-format
-   datatype : string
-   version : 4.0 onwards
-   default :
-   description : The label of this field
-   */
+ Properties
+ name : date-format
+ datatype : string
+ version : 4.0 onwards
+ default :
+ description : The label of this field
+ */
   @Input('date-format') dateformat: string;
   /*
    Properties
@@ -84,14 +85,14 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
    description :The label of this field
    */
   @Input('field-label') fieldlabel: string;
-    /*
-   Properties
-   name : field-label
-   datatype : string
-   version : 5.5.5 onwards
-   default :
-   description :The label of this field
-   */
+  /*
+  Properties
+  name : field-label
+  datatype : string
+  version : 5.5.5 onwards
+  default :
+  description :The label of this field
+  */
   @Input('place-holder') placeholder = '';
   /*
    Properties
@@ -191,6 +192,8 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
    description : On field focus event
    */
   // @Output() focus: EventEmitter<any> = new EventEmitter<any>();
+  inputtabindex = 0;
+  daystabindex = -1;
   showToolTip: boolean;
   drop = false;
   elementId: string;
@@ -217,6 +220,8 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
   hrs: number;
   min: number;
   viewmode: string;
+  okispressed = false;
+  cancelispressed = false;
   // The internal dataviews model
   private innerValue: any = '';
   // Placeholders for the callbacks which are later provided
@@ -227,17 +232,49 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     super(renderer, element, cdf);
     this.viewmode = '1';
 
-    this.yearList1 = [{ year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
-    { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
-    { year: 0, flag: false, disabled: false }];
+    this.yearList1 =
+      [{ year: 0, flag: false, disabled: false },
+      { year: 0, flag: false, disabled: false },
+      { year: 0, flag: false, disabled: false },
+      { year: 0, flag: false, disabled: false },
+      { year: 0, flag: false, disabled: false },
+      ];
+    // generate yearlist1 ids
+    this.yearList1.forEach((yearlist1element: any) => {
+      yearlist1element['id'] = Math.floor(Math.random() * 90000) + 10000 + '_id';
+    });
     this.yearList2 = [{ year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
     { year: 0, flag: false, disabled: false }, { year: 0, flag: false, disabled: false },
     { year: 0, flag: false, disabled: false }];
-    this.monthList1 = [{ name: 'Jan', flag: false, num: 4 }, { name: 'Feb', flag: false },
-    { name: 'Mar', flag: false }, { name: 'Apr', flag: false }, { name: 'May', flag: false },
-    { name: 'Jun', flag: false }];
-    this.monthList2 = [{ name: 'Jul', flag: false }, { name: 'Aug', flag: false }, { name: 'Sep', flag: false },
-    { name: 'Oct', flag: false }, { name: 'Nov', flag: false }, { name: 'Dec', flag: false }];
+    // generate yearlist2 ids
+    this.yearList2.forEach((yearlist2element: any) => {
+      yearlist2element['id'] = Math.floor(Math.random() * 90000) + 10000 + '_id';
+    });
+    this.monthList1 = [
+      { name: 'Jan', flag: false, num: 4, fullname: 'January' },
+      { name: 'Feb', flag: false, fullname: 'febuary' },
+      { name: 'Mar', flag: false, fullname: 'march' },
+      { name: 'Apr', flag: false, fullname: 'april' },
+      { name: 'May', flag: false, fullname: 'may' },
+      { name: 'Jun', flag: false, fullname: 'june' },
+    ];
+    // generate id for monthlist1
+    this.monthList1.forEach((monthlist1element: any) => {
+      monthlist1element['id'] = Math.floor(Math.random() * 90000) + 10000 + '_id';
+    });
+    this.monthList2 = [
+      { name: 'Jul', flag: false, fullname: 'july' },
+      { name: 'Aug', flag: false, fullname: 'august' },
+      { name: 'Sep', flag: false, fullname: 'september' },
+      { name: 'Oct', flag: false, fullname: 'october' },
+      { name: 'Nov', flag: false, fullname: 'november' },
+      { name: 'Dec', flag: false, fullname: 'december' },
+    ];
+    // generate id for monthlist 2
+    this.monthList2.forEach((monthlist2element: any) => {
+      monthlist2element['id'] = Math.floor(Math.random() * 90000) + 10000 + '_id';
+    });
+
     this.minDate = '';
     this.maxDate = '';
     this.elementId = new Date().getTime() + '';
@@ -290,6 +327,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       });
     }
   }
+
   private initDaysTitle() {
     this.daysTitle.push({ text: 'Mo' });
     this.daysTitle.push({ text: 'Tu' });
@@ -312,13 +350,21 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
         };
         day.date = new Date(date.getTime());
         day.isCurrentMonth = (date.getMonth() === selectedPeriod.getMonth());
-        if (this.dateModel && (date.getMonth() === this.dateModel.getMonth()) && (date.getDate() === this.dateModel.getDate())) {
+        day['id'] = Math.floor(Math.random() * 90000) + 10000 + '_id';
+        day['fulldate'] = (day.date).getDate() + ' ' +
+          this.getFullMonthName(day.date) + ' ' + (day.date).getFullYear() +
+          ' ' + this.getFullDayName(day.date);
+        if (this.dateModel && (date.getMonth() === this.dateModel.getMonth()) &&
+          (date.getDate() === this.dateModel.getDate())) {
           day.selected = true;
-        } else if ((date.getMonth() === this.currrentDate.getMonth()) && (date.getDate() === this.currrentDate.getDate())) {
+        } else if ((date.getMonth() === this.currrentDate.getMonth()) &&
+          (date.getDate() === this.currrentDate.getDate())) {
           if (this.dateModel) {
             day.selected = false;
+            day['tabindex'] = -1;
           } else {
             day.selected = true;
+            day['tabindex'] = 1;
           }
         }
         rowDays.push(day);
@@ -326,6 +372,32 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       }
       this.daysArray.push(rowDays);
     }
+  }
+
+  getFullMonthName(recevieddate: Date) {
+    const months = ['January', 'Febuary', 'March', 'April', 'May',
+      'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const datemonth = recevieddate.getMonth();
+    let monthString = '';
+    months.forEach((element: any, index: number) => {
+      if (datemonth === index) {
+        monthString = element;
+      }
+    });
+    return monthString;
+  }
+
+  getFullDayName(receiveddate: Date) {
+    const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday',
+      'Thursday', 'Friday', 'Saturday'];
+    const day = receiveddate.getDay();
+    let dayname = '';
+    weekdays.forEach((element: any, index: number) => {
+      if (day === index) {
+        dayname = element;
+      }
+    });
+    return dayname;
   }
 
   onDateClick(dateObj: any, event: any) {
@@ -348,7 +420,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
         this.showToolTip = !this.showToolTip;
       }
     } else {
-       event.stopPropagation();
+      event.stopPropagation();
     }
   }
 
@@ -487,6 +559,14 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
   initDate() {
     this.daysArray = [];
     this.createDaysForCurrentMonths(this.currrentDate);
+    this.daysArray.forEach((dayrow: any, outerindex: number) => {
+      dayrow.forEach((element: any, innerindex: number) => {
+        if (this.currrentDate === new Date(element.date)) {
+          const itemid = this.daysArray[outerindex][innerindex];
+          document.getElementById(itemid['id']).focus();
+        }
+      });
+    });
     this.selectedDate = this.currrentDate;
     this.dateModel = this.selectedDate;
     this.value = this.selectedDate;
@@ -607,12 +687,15 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
   }
 
   openPicker(elem: any) {
+    this.inputtabindex = -1;
+    this.daystabindex = 1;
     if (this.disabled === false) {
       super.focus(elem);
       this.hostFlag = false;
       this.pickerele = elem;
       if (this.inlineDatepicker) {
         this.showToolTip = this.inlineDatepicker;
+        this.setFocus();
       } else {
         this.showToolTip = true;
       }
@@ -622,9 +705,23 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       this.dropdownstyle.visibility = visibility;
       this.dropdownstyle.position = 'fixed';
       this.disableddays(this.diabledDate);
+      this.setFocus();
     }
+
   }
 
+  setFocus() {
+    setTimeout(() => {
+      // focus code starts
+      this.daysArray.forEach((row: any, index: number) => {
+        row.forEach((day: any, innerindex: number) => {
+          if (day.selected) {
+            document.getElementById(day.id).focus();
+          }
+        });
+      });
+    }, 0);
+  }
   getListPosition(elementRef: any): boolean {
     const dropdownHeight = 350; // must be same in dropdown.scss
     if (window.innerHeight - (elementRef.getBoundingClientRect().bottom) < dropdownHeight) {
@@ -712,6 +809,8 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     this.tempFlag = false;
     this.drop = true;
     super.focus({});
+    this.okispressed = false;
+    this.cancelispressed = false;
   }
 
   // Added method to avois recursive code
@@ -722,6 +821,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
   }
 
   negateDrop() {
+    this.cancelispressed = true;
     this.hostFlag = true;
     this.drop = false;
     this.showToolTip = true;
@@ -819,6 +919,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     super.focus({});
   }
   navigateDropdown() {
+    this.okispressed = true;
     this.hostFlag = true;
     this.selectedDate = new Date();
     if (this.yearNo != null && this.monthNo != null) {
@@ -850,7 +951,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     this.drop = false;
     this.showToolTip = true;
   }
-  arrowClickBack() {
+  arrowClickBack(event: any) {
     let i;
     // disable flag logic
     this.disableYearFlag();
@@ -867,6 +968,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     this.disableYearFlag();
     // rechking arrow flags after reinitialization of yrlist1 & 2
     this.rechkYearFlag();
+    event.stopPropagation();
   }
 
   // this function is obtained by breaking arrowClickBack() for dropdown year back arrow logic for if
@@ -1020,7 +1122,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     } // outer if ends
   }
 
-  arrowClickForward() {
+  arrowClickForward(event: any) {
     let i;
     // disable flag logic
     this.disableYearFlag();
@@ -1036,6 +1138,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     this.disableYearFlag();
     // rechking arrow flags after reinitialization of yrlist1 & 2
     this.rechkYearFlag();
+    event.stopPropagation();
   }
   // onInit Method: If min max date is provided
   minMaxDateFound() {
@@ -1080,4 +1183,305 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
       },
     };
   }
+
+  arrowright(day: any, month: any, event: any) {
+    let currentindex: number;
+    let ismonthchanged = false;
+    let drindex: number;
+    month.forEach((dayrow: any, dayrowindex: number) => {
+      dayrow.forEach((element: any, index: number) => {
+        if (day['id'] === element['id']) {
+          if (index < dayrow.length - 1) {
+            currentindex = index + 1;
+            drindex = dayrowindex;
+          } else {
+            if ((dayrowindex === (month.length - 1)) && (index === (dayrow.length - 1))) {
+              this.nextMonth(event);
+              ismonthchanged = true;
+            } else {
+              currentindex = 0;
+              drindex = dayrowindex + 1;
+            }
+          }
+        }
+      });
+    });
+    this.refactoredRightArrow(ismonthchanged, month, drindex, currentindex);
+  }
+
+  refactoredRightArrow(ismonthchanged: boolean, month: any, drindex: number, currentindex: number) {
+    if (!ismonthchanged) {
+      this.refactoredFocus(month, drindex, currentindex);
+    } else {
+      this.setFocus();
+    }
+  }
+
+  refactoredFocus(month: any, drindex: number, currentindex: number) {
+    let itemid;
+    itemid = month[drindex][currentindex];
+    document.getElementById(itemid['id']).focus();
+  }
+  arrowleft(day: any, month: any, event: any) {
+    let currentindex: number;
+    const flag = false;
+    let drindex: number;
+    let ismonthchanged = false;
+    month.forEach((dayrow: any, dayrowindex: number) => {
+      dayrow.forEach((element: any, index: number) => {
+        if (day['id'] === element['id']) {
+          if (index > 0) {
+            currentindex = index - 1;
+            drindex = dayrowindex;
+          } else {
+            if (dayrowindex === 0 && index === 0) {
+              this.prevMonth(event);
+              ismonthchanged = true;
+            } else {
+              drindex = dayrowindex - 1;
+              currentindex = 6;
+            }
+          }
+        }
+      });
+    });
+    this.refactoredarrow(ismonthchanged, month, drindex, currentindex);
+
+  }
+  refactoredarrow(ismonthchanged: boolean, month: any, drindex: number, currentindex: number) {
+    let itemid;
+    if (!ismonthchanged) {
+      itemid = month[drindex][currentindex];
+      document.getElementById(itemid['id']).focus();
+    } else {
+      this.setFocus();
+    }
+  }
+  arrowup(day: any, month: any, event: any) {
+    let isfirstrow = false;
+    let drindex: number;
+    let currentindex: number;
+    month.forEach((dayrow: any, dayrowindex: number) => {
+      dayrow.forEach((element: any, index: number) => {
+        if (day.id === element.id) {
+          if (dayrowindex === 0) {
+            isfirstrow = true;
+            this.prevMonth(event);
+          } else {
+            drindex = dayrowindex - 1;
+            currentindex = index;
+          }
+        }
+      });
+    });
+    if (!isfirstrow) {
+      let itemid;
+      itemid = this.daysArray[drindex][currentindex];
+      document.getElementById(itemid['id']).focus();
+    } else {
+      this.setFocus();
+    }
+
+  }
+
+  arrowdown(day: any, month: any, event: any) {
+    let islastrow = false;
+    let drindex: number;
+    let currentindex: number;
+    month.forEach((dayrow: any, dayrowindex: number) => {
+      dayrow.forEach((element: any, index: number) => {
+        if (day.id === element.id) {
+          if (dayrowindex === (month.length - 1)) {
+            islastrow = true;
+            this.nextMonth(event);
+          } else {
+            drindex = dayrowindex + 1;
+            currentindex = index;
+          }
+        }
+      });
+    });
+    if (!islastrow) {
+      let itemid;
+      itemid = this.daysArray[drindex][currentindex];
+      document.getElementById(itemid['id']).focus();
+    } else {
+      this.setFocus();
+    }
+
+  }
+
+  dropdownListOneArrowDown(currentmonth: any) {
+    let focusindex: number;
+    let islast = false;
+    this.monthList1.forEach((element, index) => {
+      if (element.id === currentmonth.id) {
+        if (index !== (this.monthList1.length - 1)) {
+          focusindex = index + 1;
+        } else {
+          islast = true;
+        }
+      }
+    });
+    let itemid;
+    if (!islast) {
+      itemid = this.monthList1[focusindex];
+      document.getElementById(itemid['id']).focus();
+
+    } else {
+      itemid = this.monthList2[0];
+      document.getElementById(itemid['id']).focus();
+    }
+  }
+
+  dropdownListOneArrowUp(currentmonth: any) {
+    let focusindex: number;
+    let isfirst = false;
+    this.monthList1.forEach((elementmonthList1: any, index: number) => {
+      if (elementmonthList1.id === currentmonth.id) {
+        if (index > 0) {
+          focusindex = index - 1;
+        } else {
+          isfirst = true;
+        }
+      }
+    });
+    let itemid;
+    if (!isfirst) {
+      itemid = this.monthList1[focusindex];
+    } else {
+      itemid = this.monthList2[this.monthList2.length - 1];
+    }
+    document.getElementById(itemid['id']).focus();
+  }
+
+  dropdownListTwoArrowDown(currentmonth: any) {
+    let focusindex: number;
+    let islast = false;
+    this.monthList2.forEach((element, index) => {
+      if (element.id === currentmonth.id) {
+        if (index !== (this.monthList2.length - 1)) {
+          focusindex = index + 1;
+        } else {
+          islast = true;
+        }
+      }
+    });
+    let itemid;
+    if (!islast) {
+      itemid = this.monthList2[focusindex];
+    } else {
+      itemid = this.monthList1[0];
+    }
+    document.getElementById(itemid['id']).focus();
+
+  }
+
+  dropdownListTwoArrowUp(currentmonth: any) {
+    let focusindex: number;
+    let isfirst = false;
+    this.monthList2.forEach((element: any, index: any) => {
+      if (element.id === currentmonth.id) {
+        if (index > 0) {
+          focusindex = index - 1;
+        } else {
+          isfirst = true;
+        }
+      }
+    });
+    let itemid;
+
+    if (!isfirst) {
+      itemid = this.monthList2[focusindex];
+    } else {
+      itemid = this.monthList1[this.monthList1.length - 1];
+    }
+    document.getElementById(itemid['id']).focus();
+  }
+
+  yearList1ArrowDown(currentyear: any) {
+    let focusindex: number;
+    let islast = false;
+    this.yearList1.forEach((element: any, index: number) => {
+      if (element.id === currentyear.id) {
+        if (index !== (this.yearList1.length - 1)) {
+          focusindex = index + 1;
+        } else {
+          islast = true;
+        }
+      }
+    });
+    let itemid;
+    if (!islast) {
+      itemid = this.yearList1[focusindex];
+    } else {
+      itemid = this.yearList2[0];
+    }
+    document.getElementById(itemid['id']).focus();
+  }
+
+  yearList2ArrowDown(currentyear: any) {
+    let focusindex: number;
+    let islast = false;
+    this.yearList2.forEach((element: any, index: number) => {
+      if (element.id === currentyear.id) {
+        if (index !== (this.yearList2.length - 1)) {
+          focusindex = index + 1;
+        } else {
+          islast = true;
+        }
+      }
+    });
+    let itemid;
+    if (!islast) {
+      itemid = this.yearList2[focusindex];
+    } else {
+      itemid = this.yearList1[0];
+    }
+    document.getElementById(itemid['id']).focus();
+  }
+
+  yearList1ArrowUp(currentyear: any) {
+    let focusindex: number;
+    let isfirst = false;
+    this.yearList1.forEach((elementyearList1: any, index: number) => {
+      if (elementyearList1.id === currentyear.id) {
+        if (index !== 0) {
+          focusindex = index - 1;
+        } else {
+          isfirst = true;
+        }
+      }
+    });
+    let itemid;
+    if (!isfirst) {
+      itemid = this.yearList1[focusindex];
+    } else {
+      itemid = this.yearList2[this.yearList2.length - 1];
+    }
+    document.getElementById(itemid['id']).focus();
+  }
+
+  yearList2ArrowUp(currentyear: any) {
+    let focusindex: number;
+    let isfirst = false;
+    this.yearList2.forEach((element: any, index: number) => {
+      if (element.id === currentyear.id) {
+        if (index !== 0) {
+          focusindex = index - 1;
+        } else {
+          isfirst = true;
+        }
+      }
+    });
+
+    let itemid;
+    if (!isfirst) {
+      itemid = this.yearList2[focusindex];
+    } else {
+      itemid = this.yearList1[this.yearList1.length - 1];
+    }
+    document.getElementById(itemid['id']).focus();
+  }
+
 }

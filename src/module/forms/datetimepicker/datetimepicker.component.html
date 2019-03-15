@@ -1,99 +1,136 @@
-<div>
-    <div class="inputgroup" *ngIf="!inlineDatepicker" #rootDiv>
-
+<div id="maindiv">
+    <div   tabindex="{{inputtabindex}}" (keyup.enter)="openPicker(rootDiv)" aria-label="datetimepicker push button" 
+   class="inputgroup" 
+    *ngIf="!inlineDatepicker"
+    #rootDiv>
+  
         <label>
-      {{fieldlabel}}
-    </label>
-
+            {{fieldlabel}}
+        </label>
+  
         <ng-container *ngIf="datepicker && !timepicker">
-            <input type="text" #pickerDt value="{{dateModel|date:dateformat}}" [attr.disabled]="disabled ? true: null" [required]="required ? true: null" (blur)="onBlur()" (focus)="onFocus(rootDiv)" (focusout)="onFocusOut(pickerDt)" (change)="change.emit()" class="input-control"
+            <input tabindex="-1" type="text" #pickerDt value="{{dateModel|date:dateformat}}" 
+            [attr.disabled]="disabled ? true: null" [required]="required ? true: null"
+                (blur)="onBlur()" (focus)="onFocus(rootDiv)" 
+                (focusout)="onFocusOut(pickerDt)" (change)="change.emit()" 
+                class="input-control"
                 [ngStyle]="{'cursor': readonly ? 'not-allowed':'pointer'}" [attr.placeholder]="placeholder" />
         </ng-container>
-
+  
         <ng-container *ngIf="timepicker">
-            <input type="text" [(ngModel)]="selectedDate" value="{{selectedDate|date:dateformat}} {{hrs + ' : ' + min}}" [attr.disabled]="disabled ? true: null" [attr.required]="required ? true: null" (blur)="onBlur()" (focus)="onFocus(rootDiv)" (input)="onInput($event)"
-                (change)="change.emit()" class="input-control" [ngStyle]="{'cursor': readonly ? 'not-allowed':'pointer'}" [attr.placeholder]="placeholder" />
+            <input type="text" [(ngModel)]="selectedDate" value="{{selectedDate|date:dateformat}} {{hrs + ' : ' + min}}" [attr.disabled]="disabled ? true: null"
+                [attr.required]="required ? true: null" (blur)="onBlur()" (focus)="onFocus(rootDiv)" (input)="onInput($event)"
+                (change)="change.emit()" class="input-control" [ngStyle]="{'cursor': readonly ? 'not-allowed':'pointer'}" [attr.placeholder]="placeholder"
+            />
         </ng-container>
-
+  
         <div class="drodown-caret-down" [ngStyle]="{'cursor':disabled ? 'not-allowed' : 'pointer'}" (click)="openPicker(rootDiv)">
             <ng-container *ngIf="timepicker">
+                <span  tabindex="1" (keyup.enter)="openPicker(rootDiv)" aria-label="timepicker push button" >
                 <amexio-c-icon key="datepicker-clock-icon"></amexio-c-icon>
+                </span>
             </ng-container>
             <ng-container *ngIf="!timepicker">
-                <amexio-c-icon key="datepicker_calendar"></amexio-c-icon>
+                <span>
+                         <amexio-c-icon key="datepicker_calendar"></amexio-c-icon>
+                </span>
+               
             </ng-container>
-
+  
         </div>
-
-
+  
+  
     </div>
+   
 
-    <div [@changeState]="dropdownstyle.visibility" [ngStyle]="dropdownstyle" [ngClass]="{'datetimepicker1':inlineDatepicker , 'datetimepicker':!inlineDatepicker}">
-
-        <div class="datetimepickertopbar" [ngStyle]="{'display': datepicker ? 'block' : 'none'}">
-            <ul>
-                <li class="prev">
-                    <amexio-c-icon key="datepicker_previous_fast" (onClick)="prevYear($event)"></amexio-c-icon>
-                    <amexio-c-icon key="datepicker_previous" (onClick)="prevMonth($event)"></amexio-c-icon>
-                </li>
-                <li class="next">
-                    <amexio-c-icon key="datepicker_next" (onClick)="nextMonth($event)"></amexio-c-icon>
-                    <amexio-c-icon key="datepicker_next_fast" (onClick)="nextYear($event)"></amexio-c-icon>
-                </li>
-                <li>
-                    <span *ngIf="dropdownDatepicker">
-            <span style="cursor:pointer" (click)="dropdownDatePicker()">
-              {{selectedDate | date:'MMMM'}}
-              <br>
-              <span class="title">{{selectedDate | date:'y'}}</span>
-                    </span>
-                    <span (onClick)=" dropdownDatePicker()" style="cursor:pointer">
-              <amexio-c-icon key="dropdown_caret" (onClick)="dropdownDatePicker()"></amexio-c-icon>
-            </span>
-                    </span>
-
-                    <span *ngIf="!dropdownDatepicker">
-            {{selectedDate | date:'MMMM'}}
-            <br>
-            <span class="title" style="cursor:auto">{{selectedDate | date:'y'}}</span>
-                    </span>
-
-                </li>
-            </ul>
-        </div>
-        <div *ngIf="!drop">
-            <ul class="weekdays" [ngStyle]="{'display': datepicker ? 'block' : 'none'}">
-                <li *ngFor="let dayTitle of daysTitle">{{dayTitle.text}}</li>
-            </ul>
-
-            <ul class="days" [ngStyle]="{'display': datepicker ? 'block' : 'none'}">
-
-                <ng-container *ngFor="let dayArray of daysArray">
-                    <li [ngStyle]="{'cursor': day.isDisabled ? 'not-allowed' : 'pointer'}" *ngFor="let day of dayArray" (click)="onDateClick(day, $event)" [ngClass]="{'date1':validateDays(day.date) , 'date1':day.isDisabled , 'notclickable':isDisabled}">
-                        <span (click)="onDateClick(day, $event)" class="day" [ngClass]="{'active':day.selected, 'currentMonth':day.isCurrentMonth, 'notCurrentMonth':!day.isCurrentMonth,'invaliddays':validateDays(day.date), 'disabled':day.isDisabled}">
-              {{ day.date | date:'d' }}
-            </span>
+    <div  
+     [@changeState]="dropdownstyle.visibility"
+     [ngStyle]="dropdownstyle"  
+    [ngClass]="{'datetimepicker1':inlineDatepicker , 'datetimepicker':!inlineDatepicker}">
+        <!-- datepicker starts -->
+        <span aria-label="datepicker window opened ">
+            <div aria-label="datetimepicker header" class="datetimepickertopbar" aria-label="datepicker header" [ngStyle]="{'display': datepicker ? 'block' : 'none'}">
+                <ul>
+                    <li class="prev">
+                        <span tabindex="1" aria-label="previous year push button" (keyup.enter)="prevYear($event)">
+                            <amexio-c-icon key="datepicker_previous_fast" (onClick)="prevYear($event)"></amexio-c-icon>
+                        </span>
+                        <span tabindex="1" aria-label="previous month push button " (keyup.enter)="prevMonth($event)">
+                            <amexio-c-icon key="datepicker_previous" (onClick)="prevMonth($event)"></amexio-c-icon>
+                        </span>
                     </li>
-                </ng-container>
-
-
-                <li class="date-today">
-                    <amexio-button type="primary" label="TODAY" (onClick)="setToday()" size="small"></amexio-button>
-                </li>
-
-
-            </ul>
-        </div>
-        <table class="table" [ngStyle]="{'display': timepicker ? 'block' : 'none'}" style="cursor : pointer;text-align: center;padding: 5px;">
+                    <li class="next">
+                        <span tabindex="1" aria-label="next month push button" (keyup.enter)="nextMonth($event)">
+                            <amexio-c-icon key="datepicker_next" (onClick)="nextMonth($event)"></amexio-c-icon>
+                        </span>
+                        <span tabindex="1" aria-label="next year push button" (keyup.enter)="nextYear($event)">
+                            <amexio-c-icon key="datepicker_next_fast" (onClick)="nextYear($event)"></amexio-c-icon>
+                        </span>
+                    </li>
+                    <li>
+                        <span *ngIf="dropdownDatepicker">
+                              <span  style="cursor:pointer" (click)="dropdownDatePicker()">
+                                {{selectedDate | date:'MMMM'}}
+                                <br>
+                                <span class="title">{{selectedDate | date:'y'}}</span>
+                            </span>
+                            <span tabindex="1" aria-label="dropdown datepicker push button" (keyup.enter)="dropdownDatePicker()" (onClick)=" dropdownDatePicker()" style="cursor:pointer">
+                                <amexio-c-icon key="dropdown_caret" (onClick)="dropdownDatePicker()"></amexio-c-icon>
+                            </span>
+                         </span>
+  
+                        <span *ngIf="!dropdownDatepicker">
+                            {{selectedDate | date:'MMMM'}}
+                            <br>
+                            <span class="title" style="cursor:auto">{{selectedDate | date:'y'}}</span>
+                        </span>
+  
+                    </li>
+                </ul>
+            </div>
+            <div *ngIf="!drop">
+                <ul class="weekdays" [ngStyle]="{'display': datepicker ? 'block' : 'none'}">
+                    <li *ngFor="let dayTitle of daysTitle">{{dayTitle.text}}</li>
+                </ul>
+  
+                <ul id="{{daystabindex}}" class="days" [ngStyle]="{'display': datepicker ? 'block' : 'none'}">
+  
+                    <ng-container *ngFor="let dayArray of daysArray">
+                        <li [attr.tabindex]="(day.selected ? 1: -1)" id="{{day.id}}" 
+                        (keyup.arrowleft)="arrowleft(day,daysArray,$event)"
+                         (keyup.arrowright)="arrowright(day,daysArray,$event)"
+                         (keyup.arrowdown)="arrowdown(day,daysArray,$event)"
+                         (keyup.arrowup) = "arrowup(day,daysArray,$event)"
+                         (keyup.enter) = "onDateClick(day, $event)"
+                        attr.aria-label="{{day.fulldate}}" [ngStyle]="{'cursor': day.isDisabled ? 'not-allowed' : 'pointer'}"
+                            *ngFor="let day of dayArray" (click)="onDateClick(day, $event)" [ngClass]="{'date1':validateDays(day.date) , 'date1':day.isDisabled , 'notclickable':isDisabled}">
+                            <span (click)="onDateClick(day, $event)" class="day"   
+                            [ngClass]="{'active':day.selected, 'currentMonth':day.isCurrentMonth, 'notCurrentMonth':!day.isCurrentMonth,'invaliddays':validateDays(day.date), 'disabled':day.isDisabled}">
+                                {{ day.date | date:'d' }}
+                             </span>
+                        </li>
+                    </ng-container>
+  
+  
+                    <li tabindex="1" (keyup.enter)="setToday()" class="date-today">
+                        <amexio-button type="primary" label="TODAY" (onClick)="setToday()" size="small"></amexio-button>
+                    </li>
+  
+  
+                </ul>
+            </div>
+        </span>
+        <!--datepicker ends  -->
+        <table aria-label="timepicker window opened" tabindex="1" class="table" [ngStyle]="{'display': timepicker ? 'block' : 'none'}" style="cursor : pointer;text-align: center;padding: 5px;">
             <!--if picker is true-->
             <tr style="padding: 10px;">
                 <td colspan="2"></td>
-                <td (click)="plus('hrs', $event);">&#9650;</td>
+                <td tabindex="1" aria-label="increment hour push button" (keyup.enter)="plus('hrs', $event)" (click)="plus('hrs', $event);">&#9650;</td>
                 <td></td>
-                <td (click)="plus('min', $event);">&#9650;</td>
+                <td tabindex="1" aria-label="increment minute push button" (keyup.enter)="plus('min', $event)" (click)="plus('min', $event);">&#9650;</td>
                 <td colspan="2"></td>
             </tr>
-            <tr>
+            <tr tabindex="1" attr.aria-label="{{hrs}} hours {{min}} minutes" >
                 <td colspan="2"></td>
                 <td>{{hrs}}</td>
                 <td>:</td>
@@ -103,81 +140,107 @@
             </tr>
             <tr>
                 <td colspan="2"></td>
-                <td (click)="minus('hrs', $event);">&#9660;</td>
+                <td tabindex="1" (keyup.enter)="minus('hrs', $event)" aria-label="decrement hour push button"  (click)="minus('hrs', $event);">&#9660;</td>
                 <td></td>
-                <td (click)="minus('min', $event);">&#9660;</td>
+                <td tabindex="1" (keyup.enter)="minus('min', $event)" aria-label="decrement min push button" (click)="minus('min', $event);">&#9660;</td>
                 <td colspan="2">
                 </td>
             </tr>
-
+  
         </table>
-
+  
         <!--dropdown datepicker -->
         <div [ngStyle]="positionClass" class="datedropdown" *ngIf="drop && !timepicker">
-
+  
             <div class="dropdiv1">
-
-                <span class="dropspan1">
-          <ul class="dropul1">
-            <li class="li4" (click)="getDropdownMonth(month)" *ngFor="let month of monthList1">
-              <span [ngClass]="{'change4':month.flag}"> {{month.name}}</span>
-                </li>
-
-                </ul>
+               <span  tabindex="1" aria-label="month list" >
+               
+                <span  class="dropspan1">
+                    <ul class="dropul1">
+                        <li tabindex="1" 
+                        id={{month.id}}
+                        class="li4" (click)="getDropdownMonth(month)" 
+                        *ngFor="let month of monthList1"
+                         attr.aria-label="{{month.fullname}}"
+                        (keyup.arrowdown)="dropdownListOneArrowDown(month)"
+                        (keyup.arrowup)="dropdownListOneArrowUp(month)"
+                        >
+                            <span [ngClass]="{'change4':month.flag}"> {{month.name}}</span>
+                        </li>
+  
+                    </ul>
                 </span>
-
+  
                 <span class="dropspan2">
-          <ul class="dropul2">
-            <li class="li4" (click)="getDropdownMonth(month)" *ngFor="let month of monthList2">
-              <span [ngClass]="{'change4':month.flag}"> {{month.name}}</span>
-                </li>
-
-                </ul>
+                    <ul class="dropul2">
+                        <li class="li4" 
+                        tabindex="1"
+                         id={{month.id}}
+                        (click)="getDropdownMonth(month)" 
+                        *ngFor="let month of monthList2"
+                        attr.aria-label="{{month.fullname}}"
+                        (keyup.arrowdown)="dropdownListTwoArrowDown(month)"
+                        (keyup.arrowup)="dropdownListTwoArrowUp(month)"
+                        >
+                            <span [ngClass]="{'change4':month.flag}"> {{month.name}}</span>
+                        </li>
+  
+                    </ul>
                 </span>
-
+  
+                </span>
+  
+                <span tabindex="1" aria-label="year list">
+  
                 <span class="dropspan1">
-          <ul class="dropul1">
-            <li [ngClass]="{ 'disablearrow':backArrowFlag}" class="dropiconpadding" (click)="arrowClickBack()">
-              <amexio-c-icon key="paginator_first" (onClick)="arrowClickBack()"></amexio-c-icon>
-            </li>
-            <li [ngClass]="{ 'disablearrow':year.disabled}" class="li4" (click)="getDropdownYear(year)" *ngFor="let year of yearList1">
-              <span [ngClass]="{'change4':year.flag && !year.disabled}">
-                {{year.year}}
-              </span>
-                </li>
-
-
-                </ul>
+                    <ul class="dropul1">
+                        <li tabindex="1" (keyup.enter)="arrowClickBack($event)"  id="prevyearbutton" aria-label="previous year list push button" [ngClass]="{ 'disablearrow':backArrowFlag}" class="dropiconpadding" (click)="arrowClickBack()">
+                            <amexio-c-icon key="paginator_first" (onClick)="arrowClickBack($event)"></amexio-c-icon>
+                        </li>
+                        <li tabindex="1" (keyup.arrowdown)="yearList1ArrowDown(year)" 
+                        (keyup.arrowup) = "yearList1ArrowUp(year)"
+                        id="{{year.id}}"  
+                        [ngClass]="{ 'disablearrow':year.disabled}" class="li4" 
+                        (click)="getDropdownYear(year)" *ngFor="let year of yearList1">
+                            <span [ngClass]="{'change4':year.flag && !year.disabled}">
+                                {{year.year}}
+                            </span>
+                        </li>
+  
+  
+                    </ul>
                 </span>
-
+  
                 <span class="dropspan4">
-          <ul class="dropul2">
-
-            <li [ngClass]="{ 'disablearrow':forwardArrowFlag}" class="dropiconpadding" (click)="arrowClickForward()">
-              <amexio-c-icon key="paginator_last" (onClick)="arrowClickForward()"></amexio-c-icon>
-            </li>
-            <li [ngClass]="{ 'disablearrow ':year.disabled}" class="li4" (click)="getDropdownYear(year)" *ngFor="let year of yearList2">
-              <span [ngClass]="{'change4':year.flag && !year.disabled}">
-                {{year.year}}
-              </span>
-                </li>
-
-                </ul>
+                    <ul class="dropul2">
+  
+                        <li tabindex="1" (keyup.enter)="arrowClickForward($event)"  id="nextyearbutton" aria-label="next year list push button" [ngClass]="{ 'disablearrow':forwardArrowFlag}" class="dropiconpadding" (click)="arrowClickForward()">
+                            <amexio-c-icon key="paginator_last" (onClick)="arrowClickForward($event)"></amexio-c-icon>
+                        </li>
+                        <li tabindex="1" (keyup.arrowdown)="yearList2ArrowDown(year)"
+                        (keyup.arrowup) = "yearList2ArrowUp(year)"
+                        id="{{year.id}}" [ngClass]="{ 'disablearrow ':year.disabled}" class="li4" (click)="getDropdownYear(year)" *ngFor="let year of yearList2">
+                            <span [ngClass]="{'change4':year.flag && !year.disabled}">
+                                {{year.year}}
+                            </span>
+                        </li>
+  
+                    </ul>
                 </span>
-
+  
+            </span>
             </div>
             <div class="btndiv1">
                 <span class="dropbtnspan">
-          <button (click)="navigateDropdown()" class="datedropbtn">
-            ok
-          </button>
-          <button class="datedropbtn" (click)="negateDrop()">
-            cancel
-          </button>
-        </span>
-
-
+                    <button tabindex="1" role="button" [attr.aria-pressed]="okispressed"
+                    (click)="navigateDropdown()" class="datedropbtn">
+                        ok
+                    </button>
+                    <button tabindex="1" role="button" [attr.aria-pressed]="cancelispressed" class="datedropbtn" (click)="negateDrop()">
+                        cancel
+                    </button>
+                </span>
             </div>
         </div>
     </div>
-</div>
+  </div>

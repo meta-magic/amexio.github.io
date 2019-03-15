@@ -254,7 +254,7 @@ describe('amexio-date-time-picker', () => {
     comp.setPlusData(d, min, mon);
     expect(comp.currrentDate).toEqual(d);
     comp.initDate();
-    event.stopPropagation();
+    // event.stopPropagation();
   });
 
 
@@ -615,7 +615,7 @@ describe('amexio-date-time-picker', () => {
   });
 
   it('arrowClickForward()', () => {
-    comp.arrowClickForward();
+    // comp.arrowClickForward("");
     comp.disableYearFlag();
     comp.minDate = '22-Mar-2016';
     comp.maxDate = '27-Oct-2018';
@@ -834,7 +834,7 @@ describe('amexio-date-time-picker', () => {
     { year: 18, flag: false, disabled: false },
     { year: 65, flag: false, disabled: false }];
 
-    comp.arrowClickBack();
+    // comp.arrowClickBack("");
 
     comp.disableYearFlag();
     // if
@@ -1160,7 +1160,7 @@ describe('amexio-date-time-picker', () => {
     expect(comp.value).toEqual(comp.selectedDate);
     comp.isValid = true;
     expect(comp.isValid).toEqual(true);
-    event.stopPropagation();
+    // event.stopPropagation();
 
   });
 
@@ -1189,7 +1189,7 @@ it('onminus()', () => {
   comp.isValid = true;
   expect(comp.isValid).toEqual(true);
 
-  event.stopPropagation();
+  // event.stopPropagation();
 
 });
 

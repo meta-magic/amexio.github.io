@@ -877,6 +877,10 @@ button {
     color: #F2870C; }
   .datedropdown li {
     color: #E84C1A; }
+  .datedropdown li:focus {
+    outline: none;
+    background: rgba(255, 253, 208, 0.4) !important;
+    color: rgba(255, 255, 255, 0.7) !important; }
 
 .datetimepicker {
   background: #292b2c; }
@@ -890,6 +894,10 @@ button {
       color: #E84C1A; }
     .datetimepicker .days li:hover {
       color: #1b1d22; }
+    .datetimepicker .days li:focus {
+      outline: none;
+      background: rgba(255, 253, 208, 0.4) !important;
+      color: rgba(255, 255, 255, 0.7) !important; }
     .datetimepicker .days .active {
       background: #1b1d22;
       color: #F2870C; }
@@ -908,6 +916,10 @@ button {
       color: #E84C1A; }
     .datetimepicker1 .days li:hover {
       color: #1b1d22; }
+    .datetimepicker1 .days li:focus {
+      outline: none;
+      background: rgba(255, 253, 208, 0.4) !important;
+      color: rgba(255, 255, 255, 0.7) !important; }
     .datetimepicker1 .days .active {
       background: #1b1d22;
       color: #F2870C; }
@@ -3862,7 +3874,7 @@ header .billboard .content-button {
 .close-button {
   cursor: pointer;
   padding-left: 98%;
-  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 100%); }
+  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, transparent 70%, transparent 100%); }
 
 /****************************************************************************
     Component Name : Enterprise Youtube
@@ -3871,7 +3883,7 @@ header .billboard .content-button {
 /** enterprise-youtube - Visual CSS **/
 .close-button {
   color: grey;
-  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0) 100%); }
+  background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0.4) 0, transparent 70%, transparent 100%); }
 
 .close-button i:hover {
   color: red; }
@@ -3895,8 +3907,8 @@ header .billboard .content-button {
   font-size: 20px; }
 
 .tile__details {
-  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%); }
+  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%); }
 
 .tile__details:after,
 .tile__details:before {
@@ -3904,8 +3916,8 @@ header .billboard .content-button {
 
 .tile__details_v {
   font-size: 10px;
-  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%); }
+  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%); }
 
 .tile__details_v:after,
 .tile__details_v:before {
@@ -5034,7 +5046,7 @@ amexio-homepage-northpanel .top-nav-button {
   background-color: rgba(255, 253, 208, 0.4);
   color: rgba(255, 255, 255, 0.7); }
 
-.tree-node-label-hover:focus {
+.tree-node-label:focus {
   background-color: rgba(255, 253, 208, 0.4);
   color: rgba(255, 255, 255, 0.7);
   outline: none; }
@@ -5700,7 +5712,7 @@ amexio-layout-columns amexio-layout-item {
 
 .topnavmainbarinneritems-mobile {
   width: 100%;
-  height: 40px;
+  height: 50px;
   border-bottom: 1px solid #E84C1A; }
 
 .topnavmainbarinneritems .nav-dropdown {
@@ -5709,7 +5721,9 @@ amexio-layout-columns amexio-layout-item {
 
 .topnavmainbarinneritems-mobile .nav-dropdown {
   width: 100%;
-  line-height: 50px; }
+  line-height: 50px;
+  flex-direction: column;
+  display: flex; }
 
 .top-nav-link {
   padding: 0px 8px; }
@@ -5719,6 +5733,7 @@ amexio-layout-columns amexio-layout-item {
 
 .topnavmainbarinneritems-mobile .nav-dropdown .nav-dropbtn .dropdownicon {
   float: right;
+  margin-top: 20px;
   margin-right: 20px; }
 
 .nav-dropdown .nav-dropbtn i {
