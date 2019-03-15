@@ -2,16 +2,18 @@
   <div class="spinner"></div>
 </div>
 
-<div class="treenode" *ngFor="let node of data"  >
-  <div #id class="treenode-content" (click)="onClick(node)">
+<div class="treenode" *ngFor="let node of data let rowindex = index">
+  <div #id class="treenode-content" (click)="onClick(node)" (keyup.enter)="onClick(node)">
     <div style="white-space:nowrap">
-      <div class="tree-node-label" *ngIf="node[childarraykey] && (node[childarraykey].length>0)">
-        <em class="fa " [ngClass]="{'fa-angle-down':node.expand,'fa-angle-right':!node.expand}"></em>
+      <div  aria-label="Dropdown button clickable" class="tree-node-label" *ngIf="node[childarraykey] && (node[childarraykey].length>0)">
+        <em class="fa" [ngClass]="{'fa-angle-down':node.expand,'fa-angle-right':!node.expand}"></em>
       </div> &nbsp;
-
-      <div class="tree-node-label tree-node-label-hover" [ngClass]="{'tree-node-label-selected':node.isSelected ,'tree-node-label-not-selected':node.isSelected=='false'}"
-        [attr.draggable]="enabledrag" (dragleave)="dragleave($event)" (drop)="drop({event:$event,data:node})" (dragover)="allowDrop({event:$event,data:node})"
-        (dragstart)="onDragStart({event:$event,data:node})" (contextmenu)="loadContextMenu({event:$event,data:node,ref:id})">
+      <div tabindex="1" id={{node.id}} role="treeitem" (keyup.arrowup)="onArrowUp(data,node,rowindex)"
+        (keyup.arrowdown)="onArrowDown($event,data,node,rowindex)" class="tree-node-label tree-node-label-hover"
+        [attr.aria-expanded]="node.expand" [ngClass]="{'tree-node-label-selected':node.isSelected ,'tree-node-label-not-selected':node.isSelected=='false'}"
+        [attr.draggable]="enabledrag" (dragleave)="dragleave($event)" (drop)="drop({event:$event,data:node})"
+        (dragover)="allowDrop({event:$event,data:node})" (dragstart)="onDragStart({event:$event,data:node})"
+        (contextmenu)="loadContextMenu({event:$event,data:node,ref:id})">
         <div class="tree-node-label" *ngIf="enablecheckbox">
           <input type="checkbox" [checked]="'checked'?node.checked:null" (click)="emitCheckedData(node)" />
         </div>
@@ -36,23 +38,19 @@
     </div>
   </div>
   <div class="treenode-children" style="display: block;" *ngIf="node.expand && node[childarraykey] && (node[childarraykey].length>0)">
-    <amexio-treeview [child-array-key]="childarraykey"  [display-key]="displaykey" [enable-drag]="enabledrag" [enable-drop]="enabledrop" [data]="node[childarraykey]" [dragData]="dragData" [parentRef]="parentRef"
-      (onDrag)=onDragStart($event) (onDrop)=drop($event) (nodeClick)="onNodeClick($event)" (dragleave)="($event)" (nodeRightClick)="loadContextMenu($event)"
-      [across-tree]="acrosstree" [templates]="templates" [enable-checkbox]="enablecheckbox" [badge]="badge" (onTreeNodeChecked)="this.onTreeNodeCheck($event)">
+    <amexio-treeview [child-array-key]="childarraykey" [display-key]="displaykey" [enable-drag]="enabledrag"
+      [enable-drop]="enabledrop" [data]="node[childarraykey]"  [dragData]="dragData" [parentRef]="parentRef" (onDrag)=onDragStart($event)
+      (onDrop)=drop($event) (nodeClick)="onNodeClick($event)" (dragleave)="($event)" (nodeRightClick)="loadContextMenu($event)"
+      [across-tree]="acrosstree" [templates]="templates"
+       [global-tree-data]="globalTreeData"
+       [enable-checkbox]="enablecheckbox" [badge]="badge"
+      (onTreeNodeChecked)="this.onTreeNodeCheck($event)">
     </amexio-treeview>
-
   </div>
 </div>
-
-
 <ng-container *ngIf="flag">
-  <base-contextmenu 
-  [base-context-menu]="contextmenu" 
-  [mouse-location-top]="mouseLocation.top"
-  [mouse-location-left]="mouseLocation.left" 
-  [is-FlagShow]="flag" 
-  [right-click-data]="rightClickNodeData"
-  (onRightClick) ="rightClickDataEmit($event)"
-  [position-up]="posixUp" >
+  <base-contextmenu [base-context-menu]="contextmenu" [mouse-location-top]="mouseLocation.top" [mouse-location-left]="mouseLocation.left"
+    [is-FlagShow]="flag" [right-click-data]="rightClickNodeData" (onRightClick)="rightClickDataEmit($event)"
+    [position-up]="posixUp">
   </base-contextmenu>
 </ng-container>

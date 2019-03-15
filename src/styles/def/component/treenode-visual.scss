@@ -12,7 +12,11 @@
   background-color: $treeNodeHoverBGColor;
   color: $treeNodeHoverColor
 }
-
+ .tree-node-label-hover:focus{
+  background-color: $treeNodeHoverBGColor;
+  color: $treeNodeHoverColor;
+  outline:none;
+}
 .treenode-label-active{
   background-color: $treeNodeActiveBGColor;
   color:$treeNodeActiveColor;

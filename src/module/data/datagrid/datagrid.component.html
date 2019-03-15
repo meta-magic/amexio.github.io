@@ -73,8 +73,8 @@
         <span *ngIf="showEnableColumnFilter" class="dropdown dropdown-right" [ngStyle]="{'top': globalfilter || enabledatafilter ? '10%':''}" style="width: 250px;">
           <ul  role="listbox" class="dropdown-list">
             <li #listId id = {{i}} (keyup.arrowup)="onArrowUpList(listId.id)" (keyup.arrowdown)="onArrowdownList(listId.id)" role="option" tabindex="1" class="list-items" *ngFor="let cols of columns;let i = index;">
-              <div [attr.aria-checked]="!cols.hidden" (keyup.enter)="onColumnCheck(cols)">
-                <input tabindex="1" role="checkbox" id="{{componentId}}" type="checkbox" [attr.checked]="!cols.hidden ? true: null"  (click)="onColumnCheck(cols)" />
+              <div [attr.aria-checked]="!cols.hidden" >
+                <input tabindex="1" role="checkbox" id="{{componentId}}" type="checkbox" [attr.checked]="!cols.hidden ? true: null"  (click)="onColumnCheck(cols)" (keyup.enter)="onColumnCheck(cols)"/>
                 <label>{{cols.text}}</label>
               </div>
             </li>
@@ -113,7 +113,7 @@
       <ng-container *ngIf="!cols.hidden">
         <ng-container *ngIf="(cols.datatype=='string' || cols.datatype == 'boolean')">
           <!-- -------------------- -->
-          <div class="datatable-col" tabindex="1" [style.width.%]="cols.width" (click)="sortOnColHeaderClick(cols, $event)">
+          <div class="datatable-col" tabindex="1" [style.width.%]="cols.width" (click)="sortOnColHeaderClick(cols, $event)" (keyup.enter)="sortOnColHeaderClick(cols, $event)">
 
             <ng-container *ngIf="cols.headerTemplate">
               <ng-template [ngTemplateOutlet]="cols.headerTemplate" [ngTemplateOutletContext]="{column:cols ,index: i}"></ng-template>
@@ -133,7 +133,7 @@
           </div>
         </ng-container>
         <ng-container *ngIf="cols.datatype=='number'">
-          <div class="datatable-col" tabindex="1" [style.width.%]="cols.width" (click)="sortOnColHeaderClick(cols, $event)">
+          <div class="datatable-col" tabindex="1" [style.width.%]="cols.width" (keyup.enter)="sortOnColHeaderClick(cols, $event)" (click)="sortOnColHeaderClick(cols, $event)">
             <ng-container *ngIf="cols.headerTemplate">
               <ng-template [ngTemplateOutlet]="cols.headerTemplate" [ngTemplateOutletContext]="{column:cols ,index: i}"></ng-template>
             </ng-container>
@@ -283,7 +283,7 @@
                 (keyup.arrowleft)="arrowLeft(grpref)"
                 (keyup.end)="keyEnd(grpref)" (keyup.home)="keyHome(grpref)" 
                 (keyup.control.end)="findContolEndGrpBy()" (keyup.control.home)="keyControlHome()" 
-                (keyup.pagedown)="onPageDownClick()" (keyup.pageup)="onPageUpClick()" class="datatable-col" tabindex="1" [style.width.%]="cols.width" [attr.data-label]="cols.text">
+                class="datatable-col" tabindex="1" [style.width.%]="cols.width" [attr.data-label]="cols.text">
                   <ng-container *ngIf="colIndex == 0">
                                         <span style="padding-left: 20px">
                                             <amexio-display-field [data]="row" [data-index]="cols.dataindex"></amexio-display-field>
@@ -302,7 +302,7 @@
                 (keyup.arrowleft)="arrowLeft(grpref)"
                 (keyup.end)="keyEnd(grpref)" (keyup.home)="keyHome(grpref)" 
                 (keyup.control.end)="findContolEndGrpBy()" (keyup.control.home)="keyControlHome()" 
-                (keyup.pagedown)="onPageDownClick()" (keyup.pageup)="onPageUpClick()" class="datatable-col" tabindex="1" [style.width.%]="cols.width" [attr.data-label]="cols.text">
+                 class="datatable-col" tabindex="1" [style.width.%]="cols.width" [attr.data-label]="cols.text">
 
                   <ng-container *ngIf="colIndex == 0">
                                         <span style="padding-left: 20px">

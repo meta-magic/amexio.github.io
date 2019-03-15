@@ -170,6 +170,7 @@ export class AmexioRadioGroupComponent extends ValueAccessorBase<string> impleme
   viewData: any;
   componentId: any;
   listCopy: any;
+  tabFocus = false;
 
   // The internal dataviews model
   // private innerValue: any = '';
@@ -281,6 +282,14 @@ export class AmexioRadioGroupComponent extends ValueAccessorBase<string> impleme
       this.innerValue = v;
       this.onChangeCallback(v);
     }
+  }
+
+  onBlur() {
+    this.tabFocus = false;
+    this.onTouchedCallback();
+  }
+  onFocus() {
+    this.tabFocus = true;
   }
 
   onClick(row: any) {
