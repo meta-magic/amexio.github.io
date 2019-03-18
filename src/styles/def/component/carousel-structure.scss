@@ -3,3 +3,7 @@
   padding: 125px 16px;
   cursor: pointer;
 }
+.tablistitems:focus {
+  border: 2px solid $tabBorderColor;
+  outline: none;
+}
