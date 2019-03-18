@@ -402,6 +402,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
 
   onDateClick(dateObj: any, event: any) {
     if (dateObj.isDisabled === false) {
+      this.change.emit(dateObj.date);
       if (this.inlineDatepicker === false) {
         super.itemClicked();
       }
@@ -447,7 +448,6 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
         this.hrs = hrs;
         this.min = mins;
         this.value = this.selectedDate;
-        this.change.emit(this.value);
         event.stopPropagation();
       }
     }
