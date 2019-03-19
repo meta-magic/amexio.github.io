@@ -15,6 +15,16 @@
     justify-content: start;
 }
 
+.topnav-lhs-nologo{
+    height: 50px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.topnav-lhs-nologo .mobilebar {
+    padding-top: 0px;
+}
 .topnav-lhs-inner-mobile {
     display: flex;
     flex-direction: row;
@@ -27,38 +37,38 @@
 
 // ABOVE CLASS ARE NEW
 amexio-homepage-northpanel .topnav {
-    padding: 0px;
+    padding: 0px!important;
 }
 
-amexio-homepage-northpanel .topnav-lhs {
+ .topnav-lhs {
     flex: 0 0 19%;
     max-width: 19%;
 }
 
-amexio-homepage-northpanel .topnav-lhs-mobile {
+ .topnav-lhs-mobile {
     flex-direction: row;
     justify-content: space-evenly;
     display: flex;
 }
 
-amexio-homepage-northpanel .topnav-lhs-mobile>div {
+ .topnav-lhs-mobile>div {
     flex-grow: 1;
 }
 
-amexio-homepage-northpanel .topnav-lhs-mobile .mobilebar {
+ .topnav-lhs-mobile .mobilebar {
     flex-grow: 1;
 }
 
-amexio-homepage-northpanel .topnav-lhs-mobile>div>span {
+ .topnav-lhs-mobile>div>span {
     padding: 0px !important;
 }
 
-amexio-homepage-northpanel .topnav-rhs {
+ .topnav-rhs {
     flex-grow: 1;
     height: 50px;
 }
 
-amexio-homepage-northpanel .topnav-lhs-mobile {
+ .topnav-lhs-mobile {
     padding-left: 45px;
 }
 
@@ -71,7 +81,7 @@ amexio-homepage-centerpanel .homepage-centerpanel {
     padding-top: 15px;
 }
 
-amexio-homepage-northpanel .top-nav-button {
+ .top-nav-button {
     padding-left: 0px;
 }
 

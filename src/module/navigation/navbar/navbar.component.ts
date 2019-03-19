@@ -49,7 +49,7 @@ version : 4.0 onwards
 default : none
 description : Logo of navbar.
 */
-  @Input() logo: string;
+  @Input() logo = '';
 
   /*
 Properties
