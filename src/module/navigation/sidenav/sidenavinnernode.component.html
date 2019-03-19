@@ -19,8 +19,13 @@
             </ng-container>
         </div>
         <div class="submenu-details" [ngClass]="{'sidenav-submenu-expanded':node.expand}">
-            <amexio-sidenav-innernode *ngIf="node[childarraykey] && (node[childarraykey].length>0)" [enable-drag]="enabledrag" (onDrag)="dragStartEvent($event)"
-                [display-key]="displaykey" [child-array-key]="childarraykey" [data]="node[childarraykey]" (onDrag)="dragStartEvent($event)"
+            <amexio-sidenav-innernode *ngIf="node[childarraykey] && (node[childarraykey].length>0)" 
+                [enable-drag]="enabledrag" 
+                (onDrag)="dragStartEvent($event)"
+                [display-key]="displaykey" 
+                [child-array-key]="childarraykey" 
+                [data]="node[childarraykey]" 
+                (onDrag)="dragStartEvent($event)"
                 (onClick)="getOnClick($event)">
             </amexio-sidenav-innernode>
         </div>
