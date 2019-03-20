@@ -3,7 +3,7 @@
         <div class="datatable-header">
             <ng-container *ngFor="let cols of columns;let i = index">
                 <ng-container *ngIf="cols.datatype=='string'">
-                    <div class="datatable-col" [ngClass]="{'header' : i == 0}" [style.width.%]="cols.width">
+                    <div class="datatable-col" tabindex = "1" [ngClass]="{'header' : i == 0}" [style.width.%]="cols.width">
                         <ng-container *ngIf="cols.headerTemplate">
                             <ng-template [ngTemplateOutlet]="cols.headerTemplate" [ngTemplateOutletContext]="{column:cols ,index: i}"></ng-template>
                         </ng-container>
@@ -18,7 +18,7 @@
                     </ng-container>
                     <ng-container *ngIf="!cols.headerTemplate">
                         <span class="float-right">
-                            <div class="datatable-col" [style.width.%]="cols.width" [ngClass]="{'header' : i == 0}"> {{cols.text}}</div>
+                            <div class="datatable-col" tabindex = "1" [style.width.%]="cols.width" [ngClass]="{'header' : i == 0}"> {{cols.text}}</div>
                         </span>
                     </ng-container>
 
@@ -33,10 +33,13 @@
                 <div class="spinner"></div>
             </div>
             <ng-container *ngIf="!mask">
-                <div class="datatable-row" (click)="toogle(row,i)" *ngFor="let row of viewRows;let i=index" (click)="setSelectedRow(row, $event)">
+                <div class="datatable-row" (click)="toogle(row,i)" *ngFor="let row of viewRows;let i=index"  (click)="setSelectedRow(row, $event)">
                     <ng-container *ngFor="let cols of columns;let colIndex = index">
                         <ng-container *ngIf="cols.datatype=='string' && !cols?.bodyTemplate">
-                            <div class="datatable-col" [attr.data-label]="cols.text" [style.width.%]="cols.width">
+                            <div #ref id="{{row.id}}{{i+1}}{{colIndex+1}}" [attr.tabindex] = "(((i+1== 1) && (colIndex + 1 == 1))? 1: -1)" (keyup.enter)="toogle(row,i)" (keyup.enter)="setSelectedRow(row, $event)" 
+                            class="datatable-col" (keyup.arrowright)="arrowRight(ref)" (keyup.arrowleft)="arrowLeft(ref)" (keyup.arrowup)="arrowUp(ref)" (keyup.arrowdown)="arrowDown(ref)" 
+                            (keyup.end)="keyEnd(ref)" (keyup.home)="keyHome(ref)" (keyup.control.end)="keyControlEnd(ref)" (keyup.control.home)="keyControlHome(ref)"
+                            [attr.data-label]="cols.text" [style.width.%]="cols.width">
                                 <ng-container *ngIf="colIndex == 0">
                                     <span [ngStyle]="{'padding-left':(20*row.level)+'px'}">
                                         <ng-container *ngIf="!row.expanded && row.children">
@@ -46,7 +49,7 @@
                                             <amexio-c-icon key="tree_expand"></amexio-c-icon>
                                         </ng-container>
                                         <ng-container *ngIf="row[cols.dataindex]!= null && row[cols.dataindex]!= '' ;else elseBlock">
-                                            {{row[cols.dataindex]}}
+                                            {{row[cols.dataindex]}} 
                                         </ng-container>
                                         <ng-template #elseBlock>
                                             &nbsp;
@@ -65,7 +68,10 @@
                             </div>
                         </ng-container>
                         <ng-container *ngIf="cols.datatype=='number' && !cols?.bodyTemplate">
-                            <div class="datatable-col" [attr.data-label]="cols.text" [style.width.%]="cols.width">
+                            <div #ref class="datatable-col" id="{{row.id}}{{i+1}}{{colIndex+1}}" 
+                            (keyup.end)="keyEnd(ref)" (keyup.home)="keyHome(ref)" (keyup.control.end)="keyControlEnd(ref)" (keyup.control.home)="keyControlHome(ref)"
+                            (keyup.arrowright)="arrowRight(ref)" (keyup.arrowleft)="arrowLeft(ref)" (keyup.arrowup)="arrowUp(ref)" (keyup.arrowdown)="arrowDown(ref)"
+                             [attr.tabindex] = "(((i+1== 1) && (colIndex + 1 == 1))? 1: -1)" (keyup.enter)="toogle(row,i)" (keyup.enter)="setSelectedRow(row, $event)" [attr.data-label]="cols.text" [style.width.%]="cols.width">
                                 <ng-container *ngIf="colIndex == 0">
                                     <span [ngStyle]="{'padding-left':(20*row.level)+'px'}">
                                         <ng-container *ngIf="!row.expanded && row.children">
@@ -97,12 +103,15 @@
                                 </ng-container>
                             </div>
 
-
                         </ng-container>
 
                         <ng-container *ngIf="cols.bodyTemplate">
 
-                            <div class="datatable-col" [attr.data-label]="cols.text" [style.width.%]="cols.width">
+                            <div #ref class="datatable-col"  id="{{row.id}}{{i+1}}{{colIndex+1}}" 
+                            (keyup.end)="keyEnd(ref)" (keyup.home)="keyHome(ref)" (keyup.control.end)="keyControlEnd(ref)" (keyup.control.home)="keyControlHome(ref)"
+                            (keyup.arrowright)="arrowRight(ref)" (keyup.arrowleft)="arrowLeft(ref)" (keyup.arrowup)="arrowUp(ref)" (keyup.arrowdown)="arrowDown(ref)"
+                            [attr.tabindex] = "(((i+1== 1) && (colIndex + 1 == 1))? 1: -1)" (keyup.enter)="toogle(row,i)" (keyup.enter)="setSelectedRow(row, $event)"
+                             [attr.data-label]="cols.text" [style.width.%]="cols.width">
                                 <ng-container *ngIf="colIndex == 0">
                                     <span [ngStyle]="{'padding-left':(20*row.level)+'px'}">
                                         <ng-container *ngIf="!row.expanded && row.children">
@@ -112,7 +121,6 @@
                                             <amexio-c-icon key="tree_expand"></amexio-c-icon>
                                         </ng-container>
                                         <ng-template [ngTemplateOutlet]="cols.bodyTemplate" [ngTemplateOutletContext]="{ $implicit: { text : row[cols.dataindex] }, row: row }"></ng-template>
-
                                     </span>
                                 </ng-container>
 
@@ -120,15 +128,10 @@
                                     <ng-template [ngTemplateOutlet]="cols.bodyTemplate" [ngTemplateOutletContext]="{ $implicit: { text : row[cols.dataindex] }, row: row }"></ng-template>
                                 </ng-container>
 
-
-
                             </div>
                         </ng-container>
 
-
-
                     </ng-container>
-
 
                 </div>
             </ng-container>

@@ -144,6 +144,8 @@ export class TreeDataTableComponent implements OnInit, AfterContentInit, AfterVi
 
   mask = true;
 
+  generatedId: any;
+
   @ContentChildren(AmexioGridColumnComponent) columnRef: QueryList<AmexioGridColumnComponent>;
   constructor(public treeDataTableService: CommonDataService) {
   }
@@ -229,6 +231,7 @@ export class TreeDataTableComponent implements OnInit, AfterContentInit, AfterVi
     } else {
       this.viewRows = [];
     }
+    this.generateIndex(this.viewRows, 1, Math.floor(Math.random() * 1000 + 999 + 1));
   }
   getResponseData(httpResponse: any) {
     let responsedata = httpResponse;
@@ -310,6 +313,155 @@ export class TreeDataTableComponent implements OnInit, AfterContentInit, AfterVi
         h = h - 40;
       }
       this.height = h;
+    }
+  }
+
+  // Tab Navigation
+
+  generateIndex(data: any, parentId: number, rannumber: any) {
+    data.forEach((element: any, index: number) => {
+      element['id'] = '' + rannumber + '-';
+      if (element['children']) {
+        this.generateIndex(element['children'], element.id.split('-')[1], rannumber);
+      }
+    });
+  }
+
+  splitID(id: any) {
+    return id.split('-');
+  }
+
+  arrowUp(ref: any) {
+    const id = ref.id;
+    const spiltID = this.splitID(id);
+    const randomNo = spiltID[0];
+    const currentId = spiltID[1];
+    const unitId = currentId.slice(0, -1);
+    if (unitId > 1 && document.getElementById(randomNo + '-' + (parseInt(currentId, 10) - 10).toString())) {
+      document.getElementById(randomNo + '-' + (parseInt(currentId, 10) - 10).toString()).focus();
+    }
+  }
+
+  arrowDown(ref: any) {
+    const id = ref.id;
+    const spiltID = this.splitID(id);
+    const randomNo = spiltID[0];
+    const currentId = spiltID[1];
+    const firstId = parseInt(currentId.slice(0, -1), 10);
+    if ((firstId < this.viewRows.length || (firstId <= this.viewRows.length - 1))
+      && document.getElementById(randomNo + '-' + (parseInt(currentId, 10) + 10).toString())) {
+      document.getElementById(randomNo + '-' + (parseInt(currentId, 10) + 10).toString()).focus();
+    }
+  }
+
+  arrowRight(ref: any) {
+    const id = ref.id;
+    const spiltID = this.splitID(id);
+    const randomNo = spiltID[0];
+    const currentId = spiltID[1];
+    const unitId = parseInt(currentId, 10) % 10;
+    const firstId = currentId.slice(0, -1);
+    this.findNextColumn(unitId, firstId, randomNo);
+  }
+
+  findNextColumn(index: any, firstId: any, randomNo: any) {
+    if (index < this.columns.length) {
+      if (this.columns.length >= 1 && this.columns.includes(index + 1)) {
+        index = index + 1;
+        this.findNextColumn(index, firstId, randomNo);
+      } else {
+        const generatedId = firstId + '' + (index + 1);
+        document.getElementById(randomNo + '-' + (parseInt(generatedId, 10)).toString()).focus();
+      }
+    }
+  }
+
+  arrowLeft(ref: any) {
+    const id = ref.id;
+    const spiltID = this.splitID(id);
+    const randomNo = spiltID[0];
+    const currentId = spiltID[1];
+    const unitId = parseInt(currentId, 10) % 10;
+    const firstId = currentId.slice(0, -1);
+    this.findPreviousColumn(unitId, firstId, randomNo);
+  }
+
+  findPreviousColumn(index: any, firstId: any, randomNo: any) {
+    if (index > 1) {
+      if (this.columns.length >= 1 && this.columns.includes(index - 1)) {
+        index = index - 1;
+        this.findPreviousColumn(index, firstId, randomNo);
+      } else {
+        const generatedId = firstId + '' + (index - 1);
+        document.getElementById(randomNo + '-' + (parseInt(generatedId, 10)).toString()).focus();
+      }
+    }
+  }
+
+  // HOME
+  keyHome(ref: any) {
+    const id = ref.id;
+    const spiltID = this.splitID(id);
+    const randomNo = spiltID[0];
+    const currentId = spiltID[1];
+    const unitId = parseInt(currentId, 10) % 10;
+    this.findHomeColumn(unitId, currentId.slice(0, -1), 1, randomNo);
+  }
+
+  // HOME: TO FIND FIRST COLUMN
+  findHomeColumn(unitId: any, firstId: any, newFirstId: any, randomNo: any) {
+    if (this.columns.length >= 1 && this.columns.includes(newFirstId)) {
+      this.findHomeColumn(unitId, firstId, newFirstId + 1, randomNo);
+    } else {
+      const generatedId = firstId + '' + newFirstId;
+      document.getElementById(randomNo + '-' + (parseInt(generatedId, 10)).toString()).focus();
+    }
+  }
+
+  // END
+  keyEnd(ref: any) {
+    const id = ref.id;
+    const spiltID = this.splitID(id);
+    const randomNo = spiltID[0];
+    const currentId = spiltID[1];
+    const unitId = parseInt(currentId, 10) % 10;
+    const firstId = currentId.slice(0, -1);
+    const newLastId = this.columns.length;
+    this.findHomeColumn(unitId, firstId, newLastId, randomNo);
+  }
+
+  keyControlHome(ref: any) {
+    const id = ref.id;
+    const spiltID = this.splitID(id);
+    const randomNo = spiltID[0];
+    this.findControlHomeColumn(1, 1, randomNo);
+  }
+
+  findControlHomeColumn(unitId: any, firstId: any, randomNo: any) {
+    if (this.columns.length >= 1 && this.columns.includes(unitId)) {
+      this.findControlHomeColumn(unitId + 1, firstId, randomNo);
+    } else {
+      const generatedId = firstId + '' + unitId;
+      document.getElementById(randomNo + '-' + (parseInt(generatedId, 10)).toString()).focus();
+    }
+  }
+
+  keyControlEnd(ref: any) {
+    const id = ref.id;
+    const spiltID = this.splitID(id);
+    const randomNo = spiltID[0];
+    const unitId = this.columns.length;
+    const firstId = this.viewRows.length;
+    this.findControlEndColumn(unitId, firstId, randomNo);
+
+  }
+
+  findControlEndColumn(unitId: any, firstId: any, randomNo: any) {
+    if (this.columns.length >= 1 && this.columns.includes(unitId)) {
+      this.findControlHomeColumn(unitId - 1, firstId, randomNo);
+    } else {
+      const generatedId = firstId + '' + unitId;
+      document.getElementById(randomNo + '-' + (parseInt(generatedId, 10)).toString()).focus();
     }
   }
 }
