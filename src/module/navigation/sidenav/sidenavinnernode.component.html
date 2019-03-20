@@ -2,10 +2,18 @@
     <li  role="option" *ngFor="let node of data">
          <div [attr.tabindex]= "node.tabindex" (keyup.enter)="onenterNodeClick($event,node)" [attr.draggable]="enabledrag" (dragstart)="dragStartEvent({event:$event,data:node})" class="defaultnode" [ngClass]="{'activenode':node.active}"
             (click)="onNodeClick(node)">
+            
             <span *ngIf="node.icon">
                 <amexio-c-icon class="node-icon" [customclass]="node.icon" [color]="node.iconcolor"></amexio-c-icon>
+                <span>{{node[displaykey]}}</span>
             </span>
-            <span>{{node[displaykey]}}</span>
+
+
+            <span *ngIf="!node.icon">
+                <amexio-c-icon class="node-icon" [customclass]="node.icon" [color]="node.iconcolor"></amexio-c-icon>
+                <span style="padding-left:40px;">{{node[displaykey]}}</span>
+            </span>
+
             <ng-container *ngIf="node.badge">
                 <span class="nav-badge">{{node.badge}}</span>
             </ng-container>
