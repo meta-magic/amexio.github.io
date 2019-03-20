@@ -53,6 +53,7 @@
 .disabled {
     background-color: $buttonDisableBG;
     color: $buttonDisableFontColor;
+    cursor: not-allowed;
 }
 
 .button-primary:hover:enabled {
@@ -131,7 +132,6 @@
 .button-primary-disabled{
     background-color: $buttonDisableBG ;
     border-color: $buttonDisableBG ;
-    pointer-events: none;
     color: $buttonDisableFontColor;
     cursor: not-allowed;
 }
@@ -139,7 +139,6 @@
 .button-success-disabled{
     background-color: $buttonSuccessDisabledBgColor;
     border-color: $buttonSuccessDisabledBgColor;
-    pointer-events: none;
     cursor: not-allowed;
     color: $buttonDisableFontColor;
 }
@@ -155,7 +154,6 @@
     background-color:  $buttonWarningDisabledBgColor;
     border-color: $buttonWarningDisabledBgColor;
     color: $buttonDisableFontColor;
-    pointer-events: none;
     cursor: not-allowed;
 }
 
@@ -163,6 +161,5 @@
     background-color: $buttonDefaultDisabledBgColor;
     border-color: $buttonDefaultDisabledBgColor;
     color: $buttonDisableFontColor;
-    pointer-events: none;
     cursor: not-allowed;
 }
