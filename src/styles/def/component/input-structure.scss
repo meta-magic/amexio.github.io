@@ -3,9 +3,6 @@
   position: relative;
   
 }
-.inputgroup ::placeholder{
-    padding-left: 5px!important;
-}
 
 .inputgroup > label {
   display: inline-block;
@@ -21,7 +18,7 @@
 }
 .input-control {
   width: 100%;
-  padding: .375rem 0;
+  padding: .375rem 0px .375rem 5px;
   line-height: 2;
   border-radius: 0px;
   border: none;

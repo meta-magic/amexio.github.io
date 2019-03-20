@@ -428,7 +428,8 @@ image using the content attribute.
 
 .disabled {
   background-color: #dbc2db;
-  color: #a362a3; }
+  color: #a362a3;
+  cursor: not-allowed; }
 
 .button-primary:hover:enabled {
   background-color: #cc00cc;
@@ -493,14 +494,12 @@ image using the content attribute.
 .button-primary-disabled {
   background-color: #dbc2db;
   border-color: #dbc2db;
-  pointer-events: none;
   color: #a362a3;
   cursor: not-allowed; }
 
 .button-success-disabled {
   background-color: #a3d7a3;
   border-color: #a3d7a3;
-  pointer-events: none;
   cursor: not-allowed;
   color: #a362a3; }
 
@@ -514,14 +513,12 @@ image using the content attribute.
   background-color: #f8d9ac;
   border-color: #f8d9ac;
   color: #a362a3;
-  pointer-events: none;
   cursor: not-allowed; }
 
 .disabled {
   background-color: lightgray;
   border-color: lightgray;
   color: #a362a3;
-  pointer-events: none;
   cursor: not-allowed; }
 
 /** button - Structure CSS **/
@@ -1316,9 +1313,6 @@ button {
 .inputgroup {
   position: relative; }
 
-.inputgroup ::placeholder {
-  padding-left: 5px !important; }
-
 .inputgroup > label {
   display: inline-block;
   margin-bottom: .5rem; }
@@ -1329,7 +1323,7 @@ button {
 
 .input-control {
   width: 100%;
-  padding: .375rem 0;
+  padding: .375rem 0px .375rem 5px;
   line-height: 2;
   border-radius: 0px;
   border: none;

@@ -744,7 +744,8 @@ $modalFooterColor : $cardFooterColor;*/
 
 .disabled {
   background-color: #a09e9e;
-  color: #4CBB17; }
+  color: #4CBB17;
+  cursor: not-allowed; }
 
 .button-primary:hover:enabled {
   background-color: #3a8e11;
@@ -809,14 +810,12 @@ $modalFooterColor : $cardFooterColor;*/
 .button-primary-disabled {
   background-color: #a09e9e;
   border-color: #a09e9e;
-  pointer-events: none;
   color: #4CBB17;
   cursor: not-allowed; }
 
 .button-success-disabled {
   background-color: #a3d7a3;
   border-color: #a3d7a3;
-  pointer-events: none;
   cursor: not-allowed;
   color: #4CBB17; }
 
@@ -830,14 +829,12 @@ $modalFooterColor : $cardFooterColor;*/
   background-color: #f8d9ac;
   border-color: #f8d9ac;
   color: #4CBB17;
-  pointer-events: none;
   cursor: not-allowed; }
 
 .disabled {
   background-color: lightgray;
   border-color: lightgray;
   color: #4CBB17;
-  pointer-events: none;
   cursor: not-allowed; }
 
 /** button - Structure CSS **/
@@ -1632,9 +1629,6 @@ button {
 .inputgroup {
   position: relative; }
 
-.inputgroup ::placeholder {
-  padding-left: 5px !important; }
-
 .inputgroup > label {
   display: inline-block;
   margin-bottom: .5rem; }
@@ -1645,7 +1639,7 @@ button {
 
 .input-control {
   width: 100%;
-  padding: .375rem 0;
+  padding: .375rem 0px .375rem 5px;
   line-height: 2;
   border-radius: 0px;
   border: none;
