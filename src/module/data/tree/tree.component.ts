@@ -299,7 +299,6 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
           }
   }
   onArrowUp(data: any, node: any, index: any) {
-      if (this.filtertreeflag === false ) {
         const newindex = index - 1;
         if (newindex >= 0) {
             const previousindex = data[newindex];
@@ -317,7 +316,6 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
                 document.getElementById(focusid1).focus();
             }
         }
-      }
   }
   focusToInnerLastItem(node: any) {
       if (node.hasOwnProperty('expand') && node.expand && node[this.childarraykey]) {
@@ -395,7 +393,7 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
       }
       this.data = responsedata;
       this.parentRef = this.data;
-      if (this.globalTreeData.length === 0) {
+      if (this.globalTreeData.length === 0 && !this.filtertreeflag) {
       this.globalTreeData = this.data;
       this.generateIndex(this.globalTreeData , 1, Math.floor(Math.random() * 1000 + 999 + 1));
       }

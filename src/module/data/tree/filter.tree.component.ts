@@ -20,10 +20,10 @@ import {CommonDataService} from '../../services/data/common.data.service';
     <div>
       <div>
         <div class="inputgroup">
-          <input type="text" class="input-control text-input-width" aria-label="Text input with dropdown button" [(ngModel)]="filterText"
+          <input  tabindex="1" type="text" class="input-control text-input-width" aria-label="Filter Tree Search" [(ngModel)]="filterText"
                  placeholder="Search" (keyup)="filterData()">
           <!--<i class="fa fa-filter" aria-hidden="true" (click)="showToolTip = !showToolTip"></i>-->
-          <span class="datatable-filter-icon">
+          <span tabindex="1" (keyup.enter)="showToolTip = !showToolTip" attr.aria-expanded="showToolTip" class="datatable-filter-icon">
           <amexio-c-icon key="tree_filter" (click)="showToolTip = !showToolTip"></amexio-c-icon>
           </span>
           <!--  <div class="input-group-btn">-->
@@ -34,8 +34,14 @@ import {CommonDataService} from '../../services/data/common.data.service';
            </button>-->
           <span *ngIf="showToolTip" class="dropdown">
               <ul class="dropdown-list">
-                <li class="list-items" *ngFor="let opt of filterOptionData" (click)="filterOption(opt)">{{opt.key}}&nbsp;
-                  <!--<i [class]="opt.checkedStatus" aria-hidden="true"></i>-->
+                <li tabindex="1" id={{opt.id}} role="option" class="list-items"
+                *ngFor="let opt of filterOptionData let rowindex = index"
+                 (click)="filterOption(opt)"
+                  (keyup.enter)="filterOption(opt)"
+                   (keyup.arrowup)="onArrowFilterUp(filterOptionData,opt,rowindex)"
+                   (keyup.arrowdown)="onArrowFilterDown(filterOptionData,opt,rowindex)">
+                 {{opt.key}}&nbsp;
+                 <!--<i [class]="opt.checkedStatus" aria-hidden="true"></i>-->
                   <amexio-c-icon key="opt.checkedStatus"></amexio-c-icon>
                 </li>
               </ul>
@@ -153,6 +159,7 @@ description : it will search for text relevant to entered character
 */
   @Input('trigger-char') triggerchar: number;
 
+  @Input('child-array-key') childarraykey: string;
   treeData: any;
 
   orgTreeData: any;
@@ -180,6 +187,7 @@ description : it will search for text relevant to entered character
   constructor(private _http: HttpClient, private cdf: ChangeDetectorRef, private  treeViewFilterService: CommonDataService) {
     this.filterIndex = 3;
     this.triggerchar = 1;
+    this.childarraykey = 'children';
     this.filterOptionData = [{
       key: 'Is Equal To', value: '1', type: 'string', checkedStatus: '',
     }, {
@@ -191,6 +199,7 @@ description : it will search for text relevant to entered character
     }, {
       key: 'Contains', value: '5', type: 'string', checkedStatus: '',
     }];
+    this.generatefilterOptionDataIndex(this.filterOptionData);
   }
 
   ngOnInit() {
@@ -226,7 +235,7 @@ description : it will search for text relevant to entered character
 
   filterData() {
     this.showToolTip = false;
-    if (this.filterText.length >= this.triggerchar) {
+    if (this.filterText && this.filterText.length >= this.triggerchar) {
       const tData = JSON.parse(JSON.stringify(this.orgTreeData));
       const treeNodes = this.searchTree(tData, this.filterText);
       this.treeData = treeNodes;
@@ -249,6 +258,8 @@ description : it will search for text relevant to entered character
       this.isDataFound = true;
       this.treeData = this.orgTreeData;
     }
+    this.generatefilterIndex(this.treeData , 1, Math.floor(Math.random() * 1000 + 999 + 1));
+
   }
    searchTree(data: any[], matchingTitle: string) {
     const fi = this.filterIndex;
@@ -290,6 +301,7 @@ description : it will search for text relevant to entered character
     if (tdata) {
       this.orgTreeData = JSON.parse(JSON.stringify(tdata));
       this.treeData = tdata;
+      this.generatefilterIndex(this.treeData , 1, Math.floor(Math.random() * 1000 + 999 + 1));
     }
     this.mask = false;
   }
@@ -321,5 +333,37 @@ description : it will search for text relevant to entered character
 
   onCheckSelect(data: any) {
     this.onTreeNodeChecked.emit(data);
+  }
+
+  generatefilterIndex(data: any, parentId: number, rannumber: any) {
+    data.forEach((element: any, index: number) => {
+        element['id'] = '' + rannumber + '-' + parentId + (index + 1);
+        if (element[this.childarraykey]) {
+            this.generatefilterIndex(element[this.childarraykey], element.id.split('-')[1], rannumber);
+        }
+    });
+}
+generatefilterOptionDataIndex(filteroptions: any) {
+  filteroptions.forEach((element: any, index: number) => {
+       element['id'] = Math.floor(Math.random() * 1000 + 999 + 1) + '-' + index;
+    });
+}
+onArrowFilterUp(data: any, opt: any, rowindex: number) {
+   if (rowindex > 0) {
+        const nextindex = rowindex - 1;
+        const focusdata = data[nextindex];
+        if (document.getElementById(focusdata.id)) {
+          document.getElementById(focusdata.id).focus();
+        }
+   }
+}
+  onArrowFilterDown(data: any, opt: any, rowindex: number) {
+    if (rowindex < data.length - 1) {
+      const nextindex = rowindex + 1;
+      const focusdata = data[nextindex];
+      if (document.getElementById(focusdata.id)) {
+        document.getElementById(focusdata.id).focus();
+      }
+    }
   }
 }

@@ -43,6 +43,7 @@
       (onDrop)=drop($event) (nodeClick)="onNodeClick($event)" (dragleave)="($event)" (nodeRightClick)="loadContextMenu($event)"
       [across-tree]="acrosstree" [templates]="templates"
        [global-tree-data]="globalTreeData"
+       [filter-tree-flag]="filtertreeflag"
        [enable-checkbox]="enablecheckbox" [badge]="badge"
       (onTreeNodeChecked)="this.onTreeNodeCheck($event)">
     </amexio-treeview>
