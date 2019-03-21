@@ -17,7 +17,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
     class="horizontaltreeview-node-label" (click)="onClick(node)" (keyup.enter)="onEnterClick(node)"
     (keyup.arrowup)="onArrowUp(data,node,i)"
     (keyup.arrowdown)="onArrowDown($event,data,node,i)">
-      {{node.text}}-{{node.id}}
+      {{node.text}}
       <span  *ngIf="node.children && (node.children.length>0)" class="float-right" (click)="onClick(node)" (keyup.enter)="onClick(node)">
         <amexio-c-icon *ngIf="node.expand" key="horizontal-tree-collapse"></amexio-c-icon>
         <amexio-c-icon *ngIf="!node.expand" key="horizontal-tree-expanded"></amexio-c-icon>
