@@ -309,6 +309,8 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
    */
   @Input('context-menu') contextmenu: any[];
 
+  @Input('enable-header') enableHeader = true;
+
   @Output() rightClick: any = new EventEmitter<any>();
 
   /*
