@@ -309,7 +309,7 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
    */
   @Input('context-menu') contextmenu: any[];
 
-  @Input('enable-header') enableHeader = true;
+  enableHeader: boolean;
 
   @Output() rightClick: any = new EventEmitter<any>();
 
@@ -580,7 +580,17 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
       }
 
       this.columns.push(columnData);
+      this.enableHeaderMethod();
     }
+  }
+
+  // Enables header if text to any of the column is given
+  enableHeaderMethod() {
+    this.columns.forEach((element: any) => {
+      if (element.text) {
+        this.enableHeader = true;
+      }
+    });
   }
 
   setChangeData(httpResponse: any) {

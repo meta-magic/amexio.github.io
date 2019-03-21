@@ -1,4 +1,3 @@
-<ng-container *ngIf="enableHeader">
   <div class="datagrid">
     <div class="datatabletitle">
       <span *ngIf="title" id="{{gridId}}"> {{title}} </span>
@@ -103,9 +102,9 @@
       </span>
     </ng-container>
   </div>
-</ng-container>
 
 <!--Checkbox datagrid with datatypes condition start-->
+<ng-container *ngIf="enableHeader">
 <div class="datatable" role="grid" attr.aria-labelledby="{{gridId}}">
   <div class="datatable-header">
     <ng-container *ngIf="enablecheckbox">
@@ -166,6 +165,7 @@
     </ng-container>
   </div>
 </div>
+</ng-container>
 
 <!--Group BY datagrid start-->
 <ng-container *ngIf="!groupby">
