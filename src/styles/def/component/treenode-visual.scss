@@ -51,3 +51,9 @@
   .context-menu-separator{
     border-bottom: 1px solid gray;
   }
+
+  .horizontaltreeview-node-label:focus {
+    outline: none;
+    background-color: $treeNodeHoverBGColor;
+    color: $treeNodeHoverColor;
+  }

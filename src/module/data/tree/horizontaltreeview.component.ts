@@ -2,19 +2,19 @@
  * Created by ketangote on 12/1/17.
  */
 
- /*
- Component Name : Amexio horizontal tree
- Component Selector : <amexio-horizontal-treeview>
- Component Description : A Horizontal Tree Component.
+/*
+Component Name : Amexio horizontal tree
+Component Selector : <amexio-horizontal-treeview>
+Component Description : A Horizontal Tree Component.
 */
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {CommonDataService} from '../../services/data/common.data.service';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { CommonDataService } from '../../services/data/common.data.service';
 
 @Component({
   selector: 'amexio-horizontal-treeview', template: `
 
     <div class="horizontaltreeview">
-      <span class="horizontaltreeview-node-label">{{label}}</span>
+      <span tabindex="1" class="horizontaltreeview-node-label">{{label}}</span>
       <div style="height: 300px;" *ngIf="mask">
         <div class="spinner"></div>
       </div>
@@ -116,10 +116,19 @@ description : It will gives you clicked node data.
     }
     this.data = responsedata;
     this.mask = false;
+    this.generateIndex(this.data, 1, Math.floor(Math.random() * 1000 + 999 + 1));
   }
 
   nodeclick(node: any) {
     this.nodeClick.emit(node);
   }
 
+  generateIndex(data: any, parentId: number, rannumber: any) {
+    data.forEach((element: any, index: number) => {
+      element['id'] = '' + rannumber + '-' + parentId + (index + 1);
+      if (element['children']) {
+        this.generateIndex(element['children'], element.id.split('-')[1], rannumber);
+      }
+    });
+  }
 }
