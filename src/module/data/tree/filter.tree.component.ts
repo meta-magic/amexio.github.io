@@ -189,15 +189,15 @@ description : it will search for text relevant to entered character
     this.triggerchar = 1;
     this.childarraykey = 'children';
     this.filterOptionData = [{
-      key: 'Is Equal To', value: '1', type: 'string', checkedStatus: '',
+      key: 'Is Equal To', value: 1 , type: 'string', checkedStatus: '',
     }, {
-      key: 'Is Not Equal To', value: '2', type: 'string', checkedStatus: '',
+      key: 'Is Not Equal To', value: 2 , type: 'string', checkedStatus: '',
     }, {
-      key: 'Start With', value: '3', type: 'string', checkedStatus: 'fa fa-check',
+      key: 'Start With', value: 3 , type: 'string', checkedStatus: 'fa fa-check',
     }, {
-      key: 'Ends With', value: '4', type: 'string', checkedStatus: '',
+      key: 'Ends With', value: 4 , type: 'string', checkedStatus: '',
     }, {
-      key: 'Contains', value: '5', type: 'string', checkedStatus: '',
+      key: 'Contains', value: 5 , type: 'string', checkedStatus: '',
     }];
     this.generatefilterOptionDataIndex(this.filterOptionData);
   }
