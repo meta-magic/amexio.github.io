@@ -20,11 +20,9 @@
     color:$datetimepickerDaysColor;
   }
 
-  li:focus {
-    outline: none;    
-    background: $datetimeFocusBG !important;
-    color: $datetimeFocusColor !important;
-  }
+  // li:focus {
+   
+  // }
 }
 
 .datetimepicker{
@@ -145,4 +143,12 @@
 
 .change4{
   background-color:$componentActiveBGColor ;
+}
+
+.day:focus{
+  outline: none;   
+  border-radius: 135px;
+  padding: 5px; 
+  background: $datetimeFocusBG !important;
+  color: $datetimeFocusColor !important;
 }
