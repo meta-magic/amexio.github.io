@@ -239,7 +239,7 @@ description : it will search for text relevant to entered character
       const tData = JSON.parse(JSON.stringify(this.orgTreeData));
       const treeNodes = this.searchTree(tData, this.filterText);
       this.treeData = treeNodes;
-      if (this.treeData.length === 0) {
+      if (this.treeData && this.treeData.length === 0) {
         this.isDataFound = false;
       } else {
         this.isDataFound = true;
@@ -249,24 +249,28 @@ description : it will search for text relevant to entered character
       const treeNodes = this.searchTree(tData, this.filterText);
       this.treeData = treeNodes;
       this.onClickSearch = false;
-      if (this.treeData.length === 0) {
-        this.isDataFound = false;
-      } else {
+      if (this.treeData && this.treeData.length === 0) {
         this.isDataFound = true;
+      } else {
+        this.isDataFound = false;
       }
     } else {
       this.isDataFound = true;
       this.treeData = this.orgTreeData;
     }
-    this.generatefilterIndex(this.treeData , 1, Math.floor(Math.random() * 1000 + 999 + 1));
+    if (this.treeData) {
+      this.generatefilterIndex(this.treeData , 1, Math.floor(Math.random() * 1000 + 999 + 1));
+    }
 
   }
    searchTree(data: any[], matchingTitle: string) {
     const fi = this.filterIndex;
-    return this.filterActualData (data, fi, matchingTitle);
+    if (matchingTitle) {
+      return this.filterActualData (data, fi, matchingTitle);
+    }
   }
 
-  filterActualData(data: any[], fi: any, matchingTitle: any): any {
+  filterActualData(data: any[], fi: number, matchingTitle: string): any {
     return data.filter(function f(node) {
       if ( (fi === 5 && node.text.toLowerCase().includes(matchingTitle.toLowerCase())) ||
       (fi === 3 && node.text.toLowerCase().startsWith(matchingTitle.toLowerCase())) ||

@@ -1,9 +1,9 @@
-import {Component,Input} from "@angular/core";
-import {PropertyGridModel} from "../../../models/propertyGridModel";
+import { Component, Input } from '@angular/core';
+import { PropertyGridModel } from '../../../models/propertyGridModel';
 
 @Component({
-    selector : 'amexio-property-grid',
-    templateUrl : './propertygrid.component.html',
+    selector: 'amexio-property-grid',
+    templateUrl: './propertygrid.component.html',
 })
 export class PropertyGridComponent {
 
@@ -15,7 +15,5 @@ export class PropertyGridComponent {
 
     constructor() {
 
-      }
+    }
 }
-
-

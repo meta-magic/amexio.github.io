@@ -283,8 +283,6 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
   }
   onClick(node: any) {
       node.expand = !node.expand;
-      this.nodeClick.emit(node);
-      this.activateNode(this.data, node);
   }
   onArrowDown(event: any, data: any, node: any, index: any) {
           const incrementindex = index + 1;
