@@ -134,6 +134,7 @@ description : Position of notification window vertically:
   positionclass: string;
 
   customClass: boolean;
+  componentID: any;
 
   private notificationVertialCss = 'notification-vertical-';
 
@@ -150,7 +151,7 @@ description : Position of notification window vertically:
   constructor(private ref: ChangeDetectorRef) {
   }
   ngOnInit() {
-
+    this.componentID = Math.floor(Math.random() * 1000 + 999);
     if (this.autodismissmsg) {
       if (!this.autodismissmsginterval) {
         this.autodismissmsginterval = 1500;
