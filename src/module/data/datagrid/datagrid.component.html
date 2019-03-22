@@ -59,7 +59,7 @@
             </span>
             <span *ngIf="showToolTip" class="dropdown" style="width: 250px; right: 0">
               <ul class="dropdown-list" *ngFor="let opt of globalFilterOptions;  let i = index">
-                <li #listId id={ {i}} (keyup.enter)="selectedOption(opt)" (keyup.arrowup)="onArrowUpGlobalList(listId.id)" (keyup.arrowdown)="onArrowdownGlobalList(listId.id)"
+                <li #listId id={{i}} (keyup.enter)="selectedOption(opt)" (keyup.arrowup)="onArrowUpGlobalList(listId.id)" (keyup.arrowdown)="onArrowdownGlobalList(listId.id)"
                   role="option" tabindex="1" class="list-items">
                   <div (click)="selectedOption(opt)">
                     {{opt.key}}&nbsp;
@@ -77,7 +77,7 @@
       <span *ngIf="showEnableColumnFilter" class="dropdown dropdown-right" [ngStyle]="{'top': globalfilter || enabledatafilter ? '10%':''}"
         style="width: 250px;">
         <ul role="listbox" class="dropdown-list">
-          <li #listId id={ {i}} (keyup.arrowup)="onArrowUpList(listId.id)" (keyup.arrowdown)="onArrowdownList(listId.id)" role="option"
+          <li #listId id={{i}} (keyup.arrowup)="onArrowUpList(listId.id)" (keyup.arrowdown)="onArrowdownList(listId.id)" role="option"
             tabindex="1" class="list-items" *ngFor="let cols of columns;let i = index;">
             <div [attr.aria-checked]="!cols.hidden">
               <input tabindex="1" role="checkbox" id="{{componentId}}" type="checkbox" [attr.checked]="!cols.hidden ? true: null" (click)="onColumnCheck(cols)"
@@ -92,7 +92,7 @@
     <ng-container *ngIf="groupby ? true : false">
       <span *ngIf="showGroupByColumn" class="dropdown dropdown-right" style="width: 250px;">
         <ul class="dropdown-list">
-          <li #listId id={ {i}} (keyup.arrowup)="onArrowUpList(listId.id)" (keyup.arrowdown)="onArrowdownList(listId.id)" role="option"
+          <li #listId id={{i}} (keyup.arrowup)="onArrowUpList(listId.id)" (keyup.arrowdown)="onArrowdownList(listId.id)" role="option"
             tabindex="1" class="list-items" *ngFor="let cols of columns;let i = index;" (click)="showGroupByColumn = !showGroupByColumn">
             <div (click)="setGroupByColumn(cols)">
               <label>{{cols.text}}</label>
