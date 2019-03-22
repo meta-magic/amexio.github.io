@@ -9,7 +9,7 @@ export class PropertyGridComponent {
 
     @Input('key-value-data') data: PropertyGridModel[];
 
-    @Input('has-border') hasBorder = true;
+    @Input('has-border') hasBorder = false;
 
     @Input('has-colon') hasColon = false;
 
