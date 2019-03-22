@@ -17,6 +17,12 @@ export class AmexioCalendarComponent implements OnInit {
     currrentDate: any;
     currentState: string; // month/week/day
     _calenadrDate: any;
+    prevMonthPressed = false;
+    nextMonthPressed = false;
+    dayPressed = false;
+    weekPressed = false;
+    monthPressed = false;
+    yearPressed = false;
 
     adu: AmexioDateUtils;
 
@@ -27,7 +33,12 @@ export class AmexioCalendarComponent implements OnInit {
     };
 
     weekHeaders: { title: any, daywiseevent: any, time: any };
-
+    prevbtnid: any;
+    nextbtnid: any;
+    daybtnid: any;
+    weekbtnid: any;
+    monthbtnid: any;
+    yearbtnid: any;
     @Input('header-type') headertype: string; // short/full/min
 
     @Input('events') events: any[];
@@ -69,6 +80,12 @@ export class AmexioCalendarComponent implements OnInit {
     initCalendar() {
         this.validateEventData();
         this.createData(this.currrentDate);
+        this.prevbtnid = Math.floor(Math.random() * 90000) + 10000 + '_previd';
+        this.nextbtnid = Math.floor(Math.random() * 90000) + 10000 + '_nextid';
+        this.daybtnid = Math.floor(Math.random() * 90000) + 10000 + '_dayid';
+        this.weekbtnid = Math.floor(Math.random() * 90000) + 10000 + '_weekid';
+        this.monthbtnid = Math.floor(Math.random() * 90000) + 10000 + '_monthid';
+        this.yearbtnid = Math.floor(Math.random() * 90000) + 10000 + '_yearid';
     }
 
     private validateEventData() {
@@ -186,6 +203,7 @@ export class AmexioCalendarComponent implements OnInit {
         this.displayHeaders.forEach((date: any) => {
             const eventDetails1 = this.hasWeekEvent(date, true);
             const weekobj = Object.assign({}, this.weekobject);
+
             weekobj.title = eventDetails1.title;
             weekobj.eventDateTime = date;
             weekobj.isEvent = eventDetails1.isEvent;
@@ -268,6 +286,21 @@ export class AmexioCalendarComponent implements OnInit {
     }
 
     setState(state: string) {
+        this.dayPressed = false;
+        this.weekPressed = false;
+        this.yearPressed = false;
+        this.monthPressed = false;
+        if (state === 'day') {
+            this.dayPressed = true;
+
+        } else if (state === 'week') {
+            this.weekPressed = true;
+
+        } else if (state === 'month') {
+            this.monthPressed = true;
+        } else if (state === 'year') {
+            this.yearPressed = true;
+        }
         this.currentState = state;
         this.currrentDate = new Date();
         this.createData(this.currrentDate);
@@ -275,6 +308,7 @@ export class AmexioCalendarComponent implements OnInit {
     }
 
     previous() {
+        this.prevMonthPressed = true;
         let newDate = new Date(this.currrentDate.getTime());
         if (this.currentState === CALENDAR.MONTH) {
             newDate.setMonth(newDate.getMonth() - 1);
@@ -290,6 +324,7 @@ export class AmexioCalendarComponent implements OnInit {
     }
 
     next() {
+        this.nextMonthPressed = true;
         let newDate = new Date(this.currrentDate.getTime());
         if (this.currentState === CALENDAR.MONTH) {
             newDate.setMonth(newDate.getMonth() + 1);

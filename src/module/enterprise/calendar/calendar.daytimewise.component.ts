@@ -6,7 +6,6 @@ import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild }
     styleUrls: ['./calendar.common.css'],
 })
 export class AmexioCalendarDayTimeWiseComponent implements OnInit {
-
     @Input('headers') headers: any[];
 
     @Input('calendar-data') calendaryData: any[];
@@ -39,6 +38,24 @@ export class AmexioCalendarDayTimeWiseComponent implements OnInit {
 
     onHeaderClick(event: any) {
         this.onHeaderClicked.emit(event);
+    }
+
+    fulldate(date: Date) {
+        const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+        const months = ['january', 'febuary', 'march', 'april', 'may', 'june', 'july', 'august',
+            'september', 'october', 'november', 'december'];
+        let ariadate = date.getDate();
+        months.forEach((element: any, index: number) => {
+            if (date.getMonth() === index) {
+                ariadate = ariadate + element;
+            }
+        });
+        days.forEach((individualday: any, index: number) => {
+            if (date.getDay() === index) {
+                ariadate = ariadate + individualday;
+            }
+        });
+        return ariadate;
     }
 
 }

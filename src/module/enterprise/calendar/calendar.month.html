@@ -1,11 +1,10 @@
-
 <table>
     <thead>
         <tr>
             <td [attr.colspan]="headers.length">
                 <table>
                     <tr>
-                        <td class="calendar-header-items" *ngFor="let header of headers"> 
+                        <td class="calendar-header-items" *ngFor="let header of headers">
                             <b>{{header}}</b>
                             <!-- <b *ngIf="(currentState === 'week')">{{header | date : 'EEEE d'}}</b> -->
                         </td>
@@ -23,10 +22,14 @@
                             <div class="calendar-bg">
                                 <table>
                                     <tr>
-                                        <td [ngClass]="{'calendar-active-box': day.isActive}" class="calendar-box-items"
-                                            *ngFor="let day of calendarRow">
-                                            <span
-                                                [ngClass]="{'calendar-inactive': !day.isActivePeriod}">{{ day.date | date:'d' }}</span>
+                                        <!-- here down -->
+                                        <td attr.aria-label="{{ariadatalabel}}" tabindex="1" (focus)="ondatefocus(day)" (keyup.arrowright)="nextrightday(day)" (keyup.arrowleft)="nextleftday(day)"
+                                            (keyup.arrowdown)="nextbottomday(day)" (keyup.arrowup)="nexttopday(day)" attr.id="{{day.id}}"
+                                            [ngClass]="{'calendar-active-box': day.isActive}" 
+                                            class="calendar-box-items" *ngFor="let day of calendarRow">
+                                            <span [ngClass]="{'calendar-inactive': !day.isActivePeriod}">
+                                                {{ day.date | date:'d' }}
+                                            </span>
                                         </td>
                                     </tr>
                                 </table>
@@ -34,21 +37,21 @@
                             <div class="calendar-user-content">
                                 <table>
                                     <tr>
-                                        <td [ngClass]="{'calendar-user-active': (day.eventDetails && day.eventDetails.isEvent)}"
-                                            *ngFor="let day of calendarRow">
+                                        <td [ngClass]="{'calendar-user-active': (day.eventDetails && day.eventDetails.isEvent)}" *ngFor="let day of calendarRow">
                                             <ng-container *ngIf="(day.eventDetails && day.eventDetails.events)">
                                                 <ul class="calendar-ul">
-                                                    <li (click)="eventClicked($event,dayevent)" class="calendar-li " [attr.class]="'calendar-li '+' '+dayevent.details.eventclass"  *ngFor="let dayevent of day.eventDetails.events">
-                                                        <span class="calendar-user-active"  
-                                                            *ngIf="dayevent.isEvent">
-                                                            {{dayevent.details.title}} <br/>
-                                                            <span class="calendar-user-active-timeslot"   
-                                                            *ngIf="(dayevent.details && dayevent.details.hasTimeSlot)">
-                                                            {{dayevent.details.start |  date: "shortTime"}}
-                                                            <ng-container *ngIf="(dayevent.details && dayevent.details.end)">
-                                                                - {{dayevent.details.end |  date: "shortTime"}}
-                                                            </ng-container>
-                                                        </span>
+                                                    <li (click)="eventClicked($event,dayevent)" class="calendar-li " [attr.class]="'calendar-li '+' '+dayevent.details.eventclass"
+                                                        *ngFor="let dayevent of day.eventDetails.events">
+                                                        <span tabindex="1" (keyup.enter)="eventClicked($event,dayevent)" attr.aria-label="{{day.date | date : 'EEEE, MMMM d, y'}} {{dayevent.details.title}} {{dayevent.details.start |  date: 'shortTime'}} {{dayevent.details.end |  date: 'shortTime'}}"
+                                                            class="calendar-user-active" *ngIf="dayevent.isEvent">
+                                                            {{dayevent.details.title}}
+                                                            <br/>
+                                                            <span class="calendar-user-active-timeslot" *ngIf="(dayevent.details && dayevent.details.hasTimeSlot)">
+                                                                {{dayevent.details.start | date: "shortTime"}}
+                                                                <ng-container *ngIf="(dayevent.details && dayevent.details.end)">
+                                                                    - {{dayevent.details.end | date: "shortTime"}}
+                                                                </ng-container>
+                                                            </span>
                                                         </span>
                                                     </li>
                                                 </ul>

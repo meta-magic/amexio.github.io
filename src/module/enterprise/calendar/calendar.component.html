@@ -1,28 +1,39 @@
 <div class="calendar-header card-header">
     <div style="display: inline-flex;">
         <div *ngIf="(currentState === 'month')"> {{currrentDate | date : 'MMMM, y'}} </div>
-        <div *ngIf="(currentState === 'week')"> {{displayHeaders[0] | date : 'd MMM'}} -
-            {{displayHeaders[6] | date : 'd MMM'}} {{displayHeaders[6] | date : 'y'}} </div>
+        <div *ngIf="(currentState === 'week')"> {{displayHeaders[0] | date : 'd MMM'}} - {{displayHeaders[6] | date : 'd MMM'}} {{displayHeaders[6] | date : 'y'}}
+            </div>
         <div *ngIf="(currentState === 'day')"> {{currrentDate | date : 'd MMMM, y'}} </div>
         <div *ngIf="(currentState === 'year')"> {{currrentDate | date : 'y'}} </div>
 
         <div class="calendar-navigation">
-            <em style="padding-right: 20px;" class="fa fa-chevron-left" aria-hidden="true" (click)="previous()"></em>
-            <em style="padding-right: 20px;" class="fa fa-chevron-right" aria-hidden="true" (click)="next()"></em>
+            <em id={{prevbtnid}} role="button" 
+            [attr.aria-pressed]="prevMonthPressed" 
+            (keyup.enter)="previous()" aria-label="previous month"
+                tabindex="1" style="padding-right: 20px;" class="fa fa-chevron-left" aria-hidden="true" (click)="previous()"></em>
+            <em id="{{nextbtnid}}" role="button" 
+            [attr.aria-pressed]="nextMonthPressed" (keyup.enter)="next()" 
+            aria-label="next month"
+                tabindex="1" style="padding-right: 20px;" 
+                class="fa fa-chevron-right" aria-hidden="true" 
+                (click)="next()"></em>
         </div>
     </div>
     <div>{{title}}</div>
     <div>
-        <button (click)="setState('day')">Day</button>
-        <button (click)="setState('week')">Week</button>
-        <button (click)="setState('month')">Month</button>
-        <button (click)="setState('year')">Year</button>
+        <button id="{{daybtnid}}" role="button" tabindex="1" [attr.aria-pressed]="dayPressed" (keyup.enter)="setState('day')" (click)="setState('day')">Day</button>
+        <button id="{{weekbtnid}}" [attr.aria-pressed]="weekPressed" role="button" aria-label="week" tabindex="1" (keyup.enter)="setState('week')"
+            (click)="setState('week')">Week</button>
+        <button id="{{monthbtnid}}" [attr.aria-pressed]="monthPressed" role="button" aria-label="month" tabindex="1" (keyup.enter)="setState('month')"
+            (click)="setState('month')">Month</button>
+        <button id="{{yearbtnid}}" [attr.aria-pressed]="yearPressed" role="button" aria-label="year" tabindex="1" (keyup.enter)="setState('year')"
+            (click)="setState('year')">Year</button>
     </div>
 </div>
-<amexio-calendar-month *ngIf="(currentState === 'month')" [headers]="displayHeaders"
-    [calendar-data]="calendarMonthData" [calendar-row]="calendarRow" (onEventClicked)="onMonthEvent($event)">
+<amexio-calendar-month *ngIf="(currentState === 'month')" [headers]="displayHeaders" [calendar-data]="calendarMonthData"
+    [calendar-row]="calendarRow" (onEventClicked)="onMonthEvent($event)">
 </amexio-calendar-month>
-<amexio-calendar-day-timewise *ngIf="(currentState === 'week' || currentState === 'day')" [headers]="displayHeaders"
-    [calendar-data]="calendarWeekData" (onHeaderClicked)="onDaytimeHeaderClick($event)"  (onEventClicked)="onDayTimeWiseEvent($event)"> </amexio-calendar-day-timewise>
-<amexio-calendar-year *ngIf="(currentState === 'year')" [headers]="displayHeaders" [calendar-data]="calendarMonthData"
-(onHeaderClicked)="onYearHeaderClicked($event)"  (onEventClicked)="onYearEvent($event)"> </amexio-calendar-year>
+<amexio-calendar-day-timewise *ngIf="(currentState === 'week' || currentState === 'day')" [headers]="displayHeaders" [calendar-data]="calendarWeekData"
+    (onHeaderClicked)="onDaytimeHeaderClick($event)" (onEventClicked)="onDayTimeWiseEvent($event)"> </amexio-calendar-day-timewise>
+<amexio-calendar-year *ngIf="(currentState === 'year')" [headers]="displayHeaders" [calendar-data]="calendarMonthData" (onHeaderClicked)="onYearHeaderClicked($event)"
+    (onEventClicked)="onYearEvent($event)"> </amexio-calendar-year>

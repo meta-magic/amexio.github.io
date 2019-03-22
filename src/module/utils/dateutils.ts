@@ -6,8 +6,8 @@ export class AmexioDateUtils {
 
         if (date1.getTime() === date2.getTime()) {
             return true;
-        }else if ((date1.getUTCFullYear() === date2.getUTCFullYear()) && (date1.getMonth() === date2.getMonth())
-                    && (date1.getDate() === date2.getDate())) {
+        } else if ((date1.getUTCFullYear() === date2.getUTCFullYear()) && (date1.getMonth() === date2.getMonth())
+            && (date1.getDate() === date2.getDate())) {
             return true;
         }
 
@@ -36,6 +36,7 @@ export class AmexioDateUtils {
                     date: null, selected: false, isActivePeriod: null, isDisabled: false,
                     isActive: false, isEvent: false, eventDetails: null,
                 };
+                day['id'] = Math.floor(Math.random() * 90000) + 10000 + '_monthid';
                 day.date = new Date(date.getTime());
                 day.isActivePeriod = (date.getMonth() === selectedPeriod.getMonth());
                 day.isActive = this.isDateEqual(day.date, new Date());
@@ -77,7 +78,7 @@ export class AmexioDateUtils {
     getWeekSunday(date: Date) {
         if (date.getDay() === 0) {
             return date;
-        }else {
+        } else {
             const diff = date.getDate() - date.getDay() + (date.getDay() === 0 ? -6 : 1);
             const monday = new Date(date.setDate(diff));
             return new Date(monday.setDate(monday.getDate() - 1));
