@@ -874,10 +874,6 @@ button {
     color: #F3C22A; }
   .datedropdown li {
     color: #02468D; }
-  .datedropdown li:focus {
-    outline: none;
-    background: #0378f2 !important;
-    color: rgba(0, 43, 87, 0.7) !important; }
 
 .datetimepicker {
   background: rgba(0, 43, 87, 0.7); }
@@ -943,6 +939,13 @@ button {
 
 .change4 {
   background-color: #2c92fc; }
+
+.day:focus {
+  outline: none;
+  border-radius: 135px;
+  padding: 5px;
+  background: #0378f2 !important;
+  color: rgba(0, 43, 87, 0.7) !important; }
 
 /** datetime - Structure CSS **/
 .datetimepicker {
@@ -2829,6 +2832,9 @@ input:checked + .toggle-slider:before {
   background-color: #0378f2;
   color: rgba(0, 43, 87, 0.7);
   outline: none; }
+
+.toolbar-header {
+  width: 100% !important; }
 
 /** Toolbar - Structure CSS **/
 .toolbar {
@@ -5181,6 +5187,20 @@ amexio-homepage-centerpanel .homepage-centerpanel {
   font-size: 14px !important;
   padding: 5px;
   display: block; }
+
+/****************************************************************************
+    Component Name : PropertyGrid
+    Version : Amexio v5.8.2 onwards
+*****************************************************************************/
+/** propertygrid - Visual CSS **/
+/** propertygrid - Structure CSS **/
+.borderStyle {
+  border: 1px solid black;
+  border-collapse: collapse; }
+
+.field-name-align {
+  word-break: break-all;
+  padding-left: 5px; }
 
 /****************************************************************************
     Component Name : Border Layout

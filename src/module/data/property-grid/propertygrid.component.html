@@ -1,0 +1,19 @@
+
+<ng-container *ngIf="data && data.length > 0">
+   <table [ngClass]="{'borderStyle': hasBorder}" style="width: 100%">
+       <tr *ngFor="let item of data" >
+          <td class="field-name-align" [ngClass]="{'borderStyle': hasBorder}">
+              <span *ngIf="item.fieldIcon" style="padding-right: 5px">
+                <amexio-c-icon class="fa + {{item.fieldIcon}}"></amexio-c-icon>
+              </span>
+            <span *ngIf="!item.onlyIcon"><b>{{item.fieldName}}</b></span>
+              <span *ngIf="hasColon"> :</span>
+          </td>
+          <td class="field-name-align"
+              [ngClass]="{'borderStyle': hasBorder}">
+              {{item.fieldValue}}
+          </td>
+       </tr>
+   </table>
+</ng-container>
+

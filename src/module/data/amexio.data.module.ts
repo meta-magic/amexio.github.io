@@ -13,6 +13,7 @@ import { AmexioListBoxComponent } from './listbox/listbox.component';
 import { AmexioPaginatorComponent } from './paginator/paginator.component';
 import { AmexioProgressMultiBarComponent } from './progress/bar.component';
 import { AmexioProgressBarComponent } from './progress/progress.component';
+import { PropertyGridComponent } from './property-grid/propertygrid.component';
 import { AmexioFilterTreeComponent } from './tree/filter.tree.component';
 import { HorizontalTreeViewNodeComponent } from './tree/horizontalnode.component';
 import { HorizontalTreeViewComponent } from './tree/horizontaltreeview.component';
@@ -49,6 +50,7 @@ const DATA_COMPONENTS = [
   DataGridFilterComponent,
   AmexioPaginatorComponent,
   AmexioGridColumnComponent,
+  PropertyGridComponent,
   AmexioProgressMultiBarComponent,
   AmexioProgressBarComponent,
   HorizontalTreeViewNodeComponent,
