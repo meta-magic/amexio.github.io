@@ -7,16 +7,10 @@
         <div *ngIf="(currentState === 'year')"> {{currrentDate | date : 'y'}} </div>
 
         <div class="calendar-navigation">
-            <em id={{prevbtnid}} role="button" 
-            [attr.aria-pressed]="prevMonthPressed" 
-            (keyup.enter)="previous()" aria-label="previous month"
+            <em id={{prevbtnid}} role="button" [attr.aria-pressed]="prevMonthPressed" (keyup.enter)="previous()" aria-label="previous month"
                 tabindex="1" style="padding-right: 20px;" class="fa fa-chevron-left" aria-hidden="true" (click)="previous()"></em>
-            <em id="{{nextbtnid}}" role="button" 
-            [attr.aria-pressed]="nextMonthPressed" (keyup.enter)="next()" 
-            aria-label="next month"
-                tabindex="1" style="padding-right: 20px;" 
-                class="fa fa-chevron-right" aria-hidden="true" 
-                (click)="next()"></em>
+            <em id="{{nextbtnid}}" role="button" [attr.aria-pressed]="nextMonthPressed" (keyup.enter)="next()" aria-label="next month"
+                tabindex="1" style="padding-right: 20px;" class="fa fa-chevron-right" aria-hidden="true" (click)="next()"></em>
         </div>
     </div>
     <div>{{title}}</div>
@@ -35,5 +29,6 @@
 </amexio-calendar-month>
 <amexio-calendar-day-timewise *ngIf="(currentState === 'week' || currentState === 'day')" [headers]="displayHeaders" [calendar-data]="calendarWeekData"
     (onHeaderClicked)="onDaytimeHeaderClick($event)" (onEventClicked)="onDayTimeWiseEvent($event)"> </amexio-calendar-day-timewise>
-<amexio-calendar-year *ngIf="(currentState === 'year')" [headers]="displayHeaders" [calendar-data]="calendarMonthData" (onHeaderClicked)="onYearHeaderClicked($event)"
+<amexio-calendar-year *ngIf="(currentState === 'year')" [headers]="displayHeaders" [calendar-data]="calendarMonthData" (onLeftNavigate)="previous()"
+    (onRightNavigate)="next()" (onTopNavigate)="previous()" (onBottomNavigate)="next()" (onHeaderClicked)="onYearHeaderClicked($event)"
     (onEventClicked)="onYearEvent($event)"> </amexio-calendar-year>

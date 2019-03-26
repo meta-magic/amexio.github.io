@@ -14,10 +14,12 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let week of month.data" class="calendar-week-timeslot">
-                        <td [ngClass]="{'calendar-inactive': (!day.isActivePeriod),                                         
+                        <td class="focuscls" attr.id="{{day.id}}" tabindex="1" role="button" [attr.aria-pressed]="isdaypressed" (keyup.arrowright)="navigateright(day)"
+                            (keyup.arrowleft)="navigateleft(day)" (keyup.arrowdown)="navigatedown(day)" (keyup.arrowup)="navigateup(day)"
+                            attr.aria-label="{{day.date | date : 'EEEE, MMMM d, y'}} " [ngClass]="{'calendar-inactive': (!day.isActivePeriod),                                         
                                         'calendar-year-month-hasevent': (day.isActivePeriod && day.isEvent)}" (click)="eventClicked($event, day)"
-                            *ngFor="let day of week" style="text-align: center;">
-                            <div [ngClass]="{'calendar-active-box calendar-year-month-today': (day.isActivePeriod && day.isActive)}" style="height:30px; width: 30px;"
+                            (keyup.enter)="eventClicked($event, day)" *ngFor="let day of week" style="text-align: center;">
+                            <div  [ngClass]="{'calendar-active-box calendar-year-month-today': (day.isActivePeriod && day.isActive)}" style="height:30px; width: 30px;"
                                 style="text-align: center; cursor: pointer;">
                                 {{day.date | date :'dd'}}
                             </div>

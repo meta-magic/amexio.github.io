@@ -4327,6 +4327,10 @@ header .billboard .content-button {
   outline: none; }
 
 .calendar-user-active:focus {
+  background-color: #ffb8c6 !important;
+  outline: none; }
+
+.focuscls:focus {
   background-color: #ffb8c6;
   outline: none; }
 

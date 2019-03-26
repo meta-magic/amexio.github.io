@@ -86,6 +86,16 @@
 }
 
 .calendar-user-active:focus{
+    background-color: $calendarActiveBGColor !important;
+    outline: none;
+}
+
+.focuscls:focus{
     background-color: $calendarActiveBGColor;
     outline: none;
 }
+
+// .calendar-year-month-today:focus{
+//     background-color: $calendarActiveBGColor;
+//     outline: none;
+// }
