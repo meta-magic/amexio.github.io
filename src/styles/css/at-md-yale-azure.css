@@ -4636,6 +4636,11 @@ amexio-homepage-centerpanel .homepage-centerpanel {
 
 .homepage-centerpanel-flex {
   flex-grow: 1;
+  padding-top: 50px;
+  width: 81%; }
+
+.homepage-centerpanel-flex-fullview {
+  flex-grow: 1;
   padding-top: 50px; }
 
 .homepage-3 .homepage-expand {
