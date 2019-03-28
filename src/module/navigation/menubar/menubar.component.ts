@@ -29,7 +29,7 @@ import { DeviceQueryService } from '../../services/device/device.query.service';
           <div>
             <li role="menuitem" tabindex="{{node.tabindex}}"  id="{{rowindex}}" *ngFor="let node of data let rowindex = index "
             (keyup)="onMenubarKeyup($event,false,rowindex,node,data)" class="menulink">
-            <a (click)="onClick(node)" (mouseover)="onMouseOver($event)">
+            <a (click)="onClick(node)" (mouseover)="onMouseOver($event, node)">
               <amexio-c-icon *ngIf="node.icon" [customclass]="node.icon"></amexio-c-icon>&nbsp;&nbsp;{{node.text}}</a>
               <!--<i *ngIf="node.icon" [ngClass]="node.icon" aria-hidden="true"></i>-->
               <span *ngIf="(node.children && node.children[0].children)">
@@ -190,6 +190,7 @@ description : Fire when menubar bar click.
     }
   }
   onClick(node: any) {
+    node['expandflag'] = !node['expandflag'];
     if (this.matchMediaService.IsPhone() || this.matchMediaService.IsTablet()) {
       for (const i of 'length') {
         if (this.data[i] === node) {
@@ -203,6 +204,7 @@ description : Fire when menubar bar click.
   }
 
   onSubInnerNodeClick(subinnernode: any, mainnode: any) {
+
     if (mainnode['expandflag']) {
       mainnode['expandflag'] = false;
     }
@@ -210,6 +212,7 @@ description : Fire when menubar bar click.
   }
 
   onInnerNodeClick(subnode: any, mainnode: any) {
+
     if (mainnode['expandflag']) {
       mainnode['expandflag'] = false;
     }
@@ -307,6 +310,7 @@ description : Fire when menubar bar click.
     }
   }
   onnavigateChildEnterClick(event: any, rowindex: any, node: any, data: any, nodedata: any) {
+
     event.stopImmediatePropagation();
     if (nodedata['expandflag']) {
       nodedata['expandflag'] = false;
@@ -315,6 +319,7 @@ description : Fire when menubar bar click.
   }
 
   onEnterClick(rowindex: any, node: any) {
+
     if (node['expandflag']) {
       node['expandflag'] = false;
     }
@@ -360,6 +365,7 @@ description : Fire when menubar bar click.
     }
   }
   onInnerChildEnterClick(subinnernode: any, mainnode: any) {
+
     event.stopImmediatePropagation();
     mainnode['expandflag'] = false;
     this.nodeClick.emit(subinnernode);
@@ -411,15 +417,15 @@ description : Fire when menubar bar click.
     let responsedata = httpResponse;
     if (this.datareader != null) {
       const dr = this.datareader.split('.');
-      for (const ir of 'length') {
-        responsedata = responsedata[dr[ir]];
+      for (const ir of dr) {
+        responsedata = responsedata[ir];
       }
     }
     this.data = httpResponse;
     this.generateIndex(this.data);
   }
 
-  onMouseOver(event: any) {
+  onMouseOver(event: any, node: any) {
     if (!(this.matchMediaService.IsPhone() || this.matchMediaService.IsTablet())) {
       if ((this.matchMediaService.browserWindow().innerWidth - event.clientX) < 200) {
         this.xposition = true;
@@ -429,5 +435,6 @@ description : Fire when menubar bar click.
     } else {
       this.xposition = false;
     }
+    node['expandflag'] = true;
   }
 }
