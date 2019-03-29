@@ -291,15 +291,16 @@ export class AmexioTabComponent extends LifeCycleBaseComponent implements AfterC
   }
 
   ngAfterViewInit() {
-    this.tabWidth1 = this.tabs.nativeElement.offsetWidth;
-    this.totalTabs = this.tabCollection.length;
+    // set time out
     setTimeout(() => {
+      this.tabWidth1 = this.tabs.nativeElement.offsetWidth;
+      this.totalTabs = this.tabCollection.length;
       this.updateTabComponent();
       this.tabCollection.forEach((element, index) => {
         element['tablk'] = Math.floor(Math.random() * 90000) + 10000 + '_tablk';
+        super.ngAfterViewInit();
       });
     }, 500);
-    super.ngAfterViewInit();
   }
 
   adjustWidth() {

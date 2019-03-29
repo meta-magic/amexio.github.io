@@ -4204,6 +4204,11 @@ header .billboard .content-button {
   background-color: #1b1d22;
   cursor: pointer; }
 
+.availableweekday:focus {
+  outline: none;
+  color: #E84C1A;
+  background: linear-gradient(#40434D, #000000); }
+
 .availableweekday:hover {
   background-color: linear-gradient(#40434D, #000000);
   color: #E84C1A; }

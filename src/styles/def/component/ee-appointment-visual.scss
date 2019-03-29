@@ -9,6 +9,11 @@
     background-color: $componentActiveBGColor;
     cursor: pointer;
 }
+.availableweekday:focus{
+    outline: none;
+    color: $componentHeaderFontColor;
+    background: $componentHeaderBGColor;
+}
 
 .availableweekday:hover{
     background-color:$componentHeaderBGColor;

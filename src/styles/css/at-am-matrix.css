@@ -4204,6 +4204,11 @@ header .billboard .content-button {
   background-color: #000000;
   cursor: pointer; }
 
+.availableweekday:focus {
+  outline: none;
+  color: #16E73C;
+  background: rgba(41, 105, 70, 0.4); }
+
 .availableweekday:hover {
   background-color: rgba(41, 105, 70, 0.4);
   color: #16E73C; }
