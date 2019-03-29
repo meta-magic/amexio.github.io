@@ -2787,6 +2787,14 @@ input:checked + .toggle-slider:before {
     Version : Amexio v4.1 onwards
 *****************************************************************************/
 /** floatingbuttongroup - Visual CSS **/
+.floatinggroupitems:focus {
+  border: 3px solid #ffb8ff !important;
+  outline: none; }
+
+.floatingbutton-circle:focus {
+  border: 3px solid #ffb8ff !important;
+  outline: none; }
+
 /** floatingbuttongroup - Structure CSS **/
 .floatinggroup {
   position: fixed;
