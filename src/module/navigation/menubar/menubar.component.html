@@ -1,0 +1,78 @@
+<div class="menu-container">
+    <div class="menubar">
+        <ul role="menubar" class="menuheader">
+            <li class="menulink">{{label}}</li>
+            <div>
+                <li role="menuitem" tabindex="{{node.tabindex}}" id="{{rowindex}}" *ngFor="let node of data let rowindex = index "
+                    (keyup)="onMenubarKeyup($event,false,rowindex,node,data)" class="menulink">
+                    <a (click)="onClick(node)" (mouseover)="onMouseOver($event, node)">
+                        <amexio-c-icon *ngIf="node.icon" [customclass]="node.icon"></amexio-c-icon>&nbsp;&nbsp;{{node.text}}
+                    </a>
+                    <!--<i *ngIf="node.icon" [ngClass]="node.icon" aria-hidden="true"></i>-->
+                    <span *ngIf="(node.children && node.children[0].children)">
+                        <div *ngIf="(node.children && node.children.length>0)" class="menu-content" [ngClass]="{'menu-content-display':node.expand,'menu-content-hide':!node.expandflag,
+                  ' menu-content-left': (node.children && node.children.length>3),'menu-right':xposition}">
+                            <ul class="menu-content-cols">
+                                <li class="col-menu-nodes" [ngClass]="{'col-menu-nodes-fixed': (node.children && node.children.length<4),
+                    'col-menu-nodes-percentage': (node.children && node.children.length>3)}"
+                                    *ngFor="let subnode of node.children let rowindex = index">
+                                    <div class="content">
+                                        <div *ngIf="(subnode.text && subnode.text.length>0)" id="{{subnode.index}}"
+                                            tabindex="{{subnode.tabindex}}" (click)="onInnerNodeClick(subnode,node)"
+                                            (keyup)="navigateChild($event,true,rowindex,subnode,node.children,node)"
+                                            class="menu-links-header">
+                                            <amexio-c-icon *ngIf="subnode.icon" [customclass]="subnode.icon"></amexio-c-icon>&nbsp;&nbsp;{{subnode.text}}
+                                            <!--<i *ngIf="subnode.icon" [ngClass]="subnode.icon" aria-hidden="true"></i>-->
+                                        </div>
+                                        <div *ngIf="subnode.image" style="padding: 10px;">
+                                            <img [attr.src]="subnode.image">
+                                        </div>
+                                        <ul class="menu-content-cols">
+                                            <li *ngFor="let subinnernode of subnode.children let subinnerindex = index"
+                                                tabindex="{{subinnernode.tabindex}}" (click)="onSubInnerNodeClick(subinnernode,node)"
+                                                id={{subinnernode.index}} (keyup)="updownInnerChildNavigation($event,subinnerindex,subnode.children,subinnernode,node)"
+                                                class="menulinks">
+                                                <div *ngIf="subinnernode.image" style="padding: 10px;">
+                                                    <img [attr.src]="subinnernode.image">
+                                                </div>
+                                                <!--<i *ngIf="subinnernode.icon" class="fa fa-ravelry"
+                          aria-hidden="true"></i>-->
+                                                <amexio-c-icon *ngIf="subinnernode.icon" key="menubar_ravelry">
+                                                </amexio-c-icon>
+                                                &nbsp;&nbsp;{{subinnernode.text}}{{subinnernode.template}}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                    </span>
+                    <ng-container *ngIf="(node.children && !node.children[0].children)">
+                        <div class="menu-content" [ngClass]="{'menu-content-display':node.expand}">
+                            <ul class="menu-content-cols">
+                                <li class="col-menu-nodes col-menu-nodes-fixed">
+                                    <div class="content">
+                                        <ul class="menu-content-cols">
+                                            <li *ngFor="let subnode of node.children" class="menulinks">
+                                                <div *ngIf="subnode.image" style="padding: 10px;">
+                                                    <img [attr.src]="subnode.image">
+                                                </div>
+                                                <!--<i *ngIf="subnode.icon" class="fa fa-ravelry" aria-hidden="true"></i>-->
+                                                <amexio-c-icon *ngIf="subnode.icon" key="menubar_ravelry"></amexio-c-icon>&nbsp;&nbsp;{{subnode.text}}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </ng-container>
+
+
+                </li>
+            </div>
+
+        </ul>
+    </div>
+</div>
