@@ -447,7 +447,7 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
                     }
                 });
             }
-            this.onTreeNodeChecked.emit(this.data);
+            this.emitData(checkedData);
         }
     }
 
@@ -480,7 +480,7 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
     }
 
     onTreeNodeCheck(data: any) {
-        this.onTreeNodeChecked.emit(this.data);
+        this.onTreeNodeChecked.emit(data);
     }
 
     // Method to drag parent with node
