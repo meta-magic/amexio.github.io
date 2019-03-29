@@ -1,33 +1,26 @@
-
 <div class="weekdaycomponent">
     <div class="datetimepicker1" style="width: 100%;">
-
         <ul *ngIf="viewData && (viewData.length == noOfDays)" class="weekdays" style="padding: 5px 0!important">
             <li *ngFor="let day of noOfDaysArray" style="width: 14.28%;">
                 <label>{{viewData[day].date| date:'E'}} </label><br />
                 <label style="font-size: 10px;">{{viewData[day].date| date:'dd/MM/yy'}}</label>
             </li>
-
         </ul>
         <ul *ngIf="viewData && (viewData.length == noOfDays)" class="weekdays" [style.height]="height" style="overflow: auto;padding: 5px 0!important">
             <li *ngFor="let day of noOfDaysArray" style="width: 14.28%;">
                 <ng-container *ngIf="viewData[day] && viewData[day].timeslots &&  viewData[day].timeslots.length>0">
                     <ng-container *ngFor="let time of  viewData[day].timeslots">
-                        <div *ngIf="(time.timeId >= startTime && time.timeId <= endTime)" style="padding:5px;"
-                             [ngStyle]="time.selected ? time.selectedStyleClass: (time.available ? time.availableStyleClass : '')"
-                             [ngClass]="{'availableweekday': time.available,'notavailableweekday': !time.available,'selectedDay':time.selected}"
-                            (click)="onTimeClick($event,viewData[day],time)">
+                        <div (focus)="readtime(time,viewData[day])" id={{time.ariaId}} [tabindex]="time.available ? 0 : -1"
+                            attr.aria-label="{{viewData[day].fulldate | date : 'EEEE, MMMM d, y'}} {{actualtime}}"
+                            *ngIf="(time.timeId >= startTime && time.timeId <= endTime)" style="padding:5px;" [ngStyle]="time.selected ? time.selectedStyleClass: (time.available ? time.availableStyleClass : '')"
+                            [ngClass]="{'availableweekday': time.available,'notavailableweekday': !time.available,'selectedDay':time.selected}"
+                            (click)="onTimeClick($event,viewData[day],time)" (keyup.arrowdown)="onArrowDown(time)"
+                            (keyup.arrowup)="onArrowUp(time)" (keyup.arrowright)="onArrowRight(time)" (keyup.arrowleft)="onArrowLeft(time)" (keyup.enter)="onTimeClick($event,viewData[day],time)">
                             {{time.time}}
                         </div>
                     </ng-container>
-
                 </ng-container>
-
-
             </li>
-
         </ul>
-
     </div>
-
 </div>
