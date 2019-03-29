@@ -15,7 +15,8 @@
 *
 *  Created by sagar on 18/8/17.
 */
-import { AfterContentInit, Component, ContentChildren, ElementRef, Input, OnInit, QueryList, ViewChild} from '@angular/core';
+import { AfterContentInit, Component, ContentChildren, ElementRef, EventEmitter,
+Input, OnInit, Output, QueryList, ViewChild } from '@angular/core';
 
 import { MapTitleComponent } from '../maptitle/map.title.component';
 
@@ -236,6 +237,8 @@ export class TreeMapComponent implements AfterContentInit, OnInit {
   */
   @Input('max-post-depth') maxpostdepth: number;
 
+  @Output() onClick = new EventEmitter<any>();
+
   @ContentChildren(MapTitleComponent) maptleComp: QueryList<MapTitleComponent>;
 
   mapTitleArray: MapTitleComponent[];
@@ -250,15 +253,23 @@ export class TreeMapComponent implements AfterContentInit, OnInit {
   }
 
   drawChart() {
+    let chart: any;
+    const localData = this._data;
     if (this.showChart) {
       this.treemapData = google.visualization.arrayToDataTable(this._data);
       this.initializeOptions();
 
       if (this.treemapData) {
-        this.chart = new google.visualization.TreeMap(this.treemapmap.nativeElement);
+        chart = new google.visualization.TreeMap(this.treemapmap.nativeElement);
         this.hasLoaded = true;
-        this.chart.draw(this.treemapData, this.options);
-        google.visualization.events.addListener(this.chart, 'click', this.click);
+        chart.draw(this.treemapData, this.options);
+        google.visualization.events.addListener(chart, 'select', (eve: any, event: any) => {
+          localData.forEach((element: any, index: any) => {
+            if ((chart.getSelection())[0].row + 1 === index) {
+              this.onClick.emit(element);
+            }
+          });
+        });
       }
     }
   }
@@ -274,12 +285,12 @@ export class TreeMapComponent implements AfterContentInit, OnInit {
     };
   }
   mapTitleTextStyle() {
-    return{
+    return {
       color: this.mapTitleComponent.color ? this.mapTitleComponent.color : null,
-        fontName: this.mapTitleComponent.fontname ? this.mapTitleComponent.fontname : null,
-        bold: this.mapTitleComponent.bold ? this.mapTitleComponent.bold : null,
-        italic: this.mapTitleComponent.italic ? this.mapTitleComponent.italic : null,
-      };
+      fontName: this.mapTitleComponent.fontname ? this.mapTitleComponent.fontname : null,
+      bold: this.mapTitleComponent.bold ? this.mapTitleComponent.bold : null,
+      italic: this.mapTitleComponent.italic ? this.mapTitleComponent.italic : null,
+    };
   }
 
   click(e: any) {
