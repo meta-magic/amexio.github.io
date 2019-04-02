@@ -6,7 +6,7 @@
               <span *ngIf="item.fieldIcon" style="padding-right: 5px">
                 <amexio-c-icon class="fa + {{item.fieldIcon}}"></amexio-c-icon>
               </span>
-            <span *ngIf="!item.onlyIcon"><b>{{item.fieldName}}</b></span>
+            <span *ngIf="!item.onlyIcon" [ngStyle]="{'font-weight': enableKeyBold ? 'bold': 'normal'}">{{item.fieldName}}</span>
               <span *ngIf="hasColon"> :</span>
           </td>
           <td class="field-name-align"

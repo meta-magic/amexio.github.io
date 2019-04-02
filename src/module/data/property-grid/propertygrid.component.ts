@@ -13,6 +13,8 @@ export class PropertyGridComponent {
 
     @Input('has-colon') hasColon = false;
 
+    @Input('enable-key-bold') enableKeyBold = false;
+
     constructor() {
 
     }
