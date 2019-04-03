@@ -44,6 +44,14 @@
 *****************************************************************************/
 
 
-/** rowcol - Structure CSS **/
+/** creative card - var CSS **/
+
+@import "component/cardce-vars.scss";
+
+/** creative card - Visual CSS **/
 
 @import "component/cardce-visual.scss";
+
+/** creative card - Structure CSS **/
+
+@import "component/cardce-structure.scss";

@@ -1,7 +1,10 @@
 
  <div  [ngClass]="cclass" class="creative-header-div" [ngStyle]="{'background': ' url(' + bgimage + ') center/cover no-repeat' }">
     <header  class="creative-header" [style.flex-direction]="direction"
-    [ngStyle]="{'justify-content': (align === 'start' || align === 'end') ? 'flex-'+align:align , 'color': color,'background':background,'height': height}">
+    [ngStyle]="{'justify-content': (align === 'start' || align === 'end') ? 'flex-'+align:align ,
+     'color': color,'background':background,'height': height}"
+     [ngClass]="{'card-container-ce-theme-color': applyThemeColor}"
+     >
           
             <ng-content></ng-content>
         <span *ngIf="windowFlag" class="creative-header-icon-div" [ngStyle]="iconPosition">

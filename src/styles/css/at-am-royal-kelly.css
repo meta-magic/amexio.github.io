@@ -5797,7 +5797,8 @@ amexio-layout-columns amexio-layout-item {
     Component Name : Creative
     Version : Amexio v5.5.5 onwards
 *****************************************************************************/
-/** rowcol - Structure CSS **/
+/** creative card - var CSS **/
+/** creative card - Visual CSS **/
 .card-container-ce {
   height: 100%;
   position: relative;
@@ -5812,6 +5813,10 @@ amexio-layout-columns amexio-layout-item {
 
 .card-container-ce-color {
   color: #121212; }
+
+.card-container-ce-theme-color {
+  color: #4CBB17;
+  background-color: linear-gradient(#40434D, #000000); }
 
 .card-container-header {
   padding: 10px;
@@ -5884,6 +5889,7 @@ amexio-layout-columns amexio-layout-item {
   margin: -10px 10px;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); }
 
+/** creative card - Structure CSS **/
 /****************************************************************************
     Component Name : Menubar
     Version : Amexio v4.0 onwards

@@ -47,6 +47,8 @@ export class AmexioCardCEHeaderComponent implements OnInit {
 
   @Input('direction') direction = 'row';
 
+  @Input('apply-theme-color') applyThemeColor = false;
+
   cclass = '';
 
   closeable = false;

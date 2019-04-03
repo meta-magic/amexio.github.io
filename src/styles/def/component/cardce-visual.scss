@@ -15,6 +15,10 @@
 .card-container-ce-color {
     color: #121212;
 }
+.card-container-ce-theme-color {
+    color: $cardceHeaderColor;
+    background-color: $cardceHeaderBGColor;
+}
 
 .card-container-header {
     padding: 10px;
