@@ -82,6 +82,7 @@
 
 .calendar-box-items:focus{
     background-color: $calendarActiveBGColor;
+    color: $calendarActiveColor;
     outline: none;
 }
 

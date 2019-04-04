@@ -158,6 +158,16 @@ export class AmexioTabComponent extends LifeCycleBaseComponent implements AfterC
    */
   @Input('default-context-menu') defaultContextMenu: boolean;
 
+   /*
+ Properties
+ name : active-bg-color
+ datatype : boolean
+ version : 5.9.3 onwards
+ default : false
+ description : sets background color for active tab
+ */
+@Input('active-bg-color') activeBGColor: boolean;
+
   /*
    Events
    name : rightClick
@@ -546,11 +556,12 @@ export class AmexioTabComponent extends LifeCycleBaseComponent implements AfterC
     }
   }
 
-  onTabClick(tab: any) {
+  onTabClick(tab: any, index: any) {
     if (!tab.disabled && !tab.header) {
       for (const i of this.tabCollection) {
         if (i === tab) {
           i['active'] = true;
+          i['index'] = index;
           this.asignTabPillClass(tab);
           this.onClick.emit(tab);
         } else {
@@ -690,8 +701,11 @@ export class AmexioTabComponent extends LifeCycleBaseComponent implements AfterC
     if (tabData.disabled) {
       tabData.tabPillClass = 'disabled-tab';
     }
-    if ((tabData.amexiocolor !== '') && (this.tabPosition === 'top') && tabData.active) {
+    if ((tabData.amexiocolor !== '') && (this.tabPosition === 'top') && tabData.active && !this.activeBGColor) {
       tabData.tabPillClass = 'activecolortab';
+    }
+    if ((tabData.amexiocolor !== '') && (this.tabPosition === 'top') && tabData.active && this.activeBGColor) {
+      tabData.tabPillClass = 'activebgcolortab';
     }
     if ((tabData.amexiocolor !== '') && (this.tabPosition === 'bottom') && tabData.active) {
       tabData.tabPillClass = 'activebottomcolortab';

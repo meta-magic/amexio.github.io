@@ -15,6 +15,13 @@ $amexioColorYellowDark : #ff9900;
 $amexioColorBlack : #000000;
 $amexioColorWhite : #ffffff;
 
+//Button Disabled Color
+$amexioColorRedLighten : #ffcab6;
+$amexioColorGreenLighten : #9f9;
+$amexioColorPurpleLighten : #fcf;
+$amexioColorBlueLighten : #ccf2ff;
+$amexioColorBrownLighten : #fbdbbf;
+$amexioColorYellowLighten : #ffe766;
 
 /** Theme Additional Std Font Colors : Light and Dark shades --- */
 $amexioFontForRedLight : #240a00;
@@ -145,9 +152,9 @@ $amexioFontForYellowDark : #241500;
 	color: $amexioColorBlack;
 }
 
-$boxBGRedColor : lighten($amexioColorRedLight,20);
-$boxBGGreenColor : lighten($amexioColorGreenLight,30);
-$boxBGPurpleColor : lighten($amexioColorPurpleLight,40);
-$boxBGBlueColor : lighten($amexioColorBlueLight,40);
-$boxBGBrownColor : lighten($amexioColorBrownLight,20);
-$boxBGYellowColor : lighten($amexioColorYellowLight,20);
+$redColorLighten : lighten($amexioColorRedLight,20);
+$greenColorLighten : lighten($amexioColorGreenLight,30);
+$purpleColorLighten : lighten($amexioColorPurpleLight,40);
+$blueColorLighten : lighten($amexioColorBlueLight,40);
+$brownColorLighten : lighten($amexioColorBrownLight,20);
+$yellowColorLighten : lighten($amexioColorYellowLight,20);

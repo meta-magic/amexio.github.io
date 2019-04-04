@@ -27,9 +27,9 @@
 
 
             <div>
-                <div *ngFor="let tabnode of tabCollection" class="tablink {{tabnode.amexiocolor+ ' '+tabnode.tabPillClass}}" [style.width.px]="singleTabWidth"  (contextmenu)="loadContextMenu($event,tabnode, tab)">
-                    <div class="table1" id="{{tabnode.tablk}}" tabindex="1" attr.aria-controls="{{tabnode.tabId}}" role="tab" (click)="onTabClick(tabnode)"
-                    (keyup.arrowright)="onArrowRight()" (keyup.arrowleft)="onArrowLeft()" (keyup.enter)="onTabClick(tabnode)" (keyup.home)="onHomeClick()" 
+                <div *ngFor="let tabnode of tabCollection, let index = index" class="tablink {{tabnode.amexiocolor+ ' '+tabnode.tabPillClass}}" [style.width.px]="singleTabWidth"  (contextmenu)="loadContextMenu($event,tabnode, tab)">
+                    <div class="table1" id="{{tabnode.tablk}}" tabindex="1" attr.aria-controls="{{tabnode.tabId}}" role="tab" (click)="onTabClick(tabnode, index)"
+                    (keyup.arrowright)="onArrowRight()" (keyup.arrowleft)="onArrowLeft()" (keyup.enter)="onTabClick(tabnode, index)" (keyup.home)="onHomeClick()" 
                     (keyup.end)="onEndClick()">
                         <div class="tablerow">
                             <div *ngIf="tabnode.icon" class="tablecol">

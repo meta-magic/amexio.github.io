@@ -5,8 +5,9 @@ $btnGrpBorderSize : 1px;
 $btnBadgeColor:$componentHeaderBGColor;
 $btnBadgeColorBG:$componentActiveBGColor;
 
-$primaryBGHoverColor: $primaryBGHover;
-$secondaryBGHoverColor: $secondaryBGHover;
-$dangerBGHoverColor: $dangerBGHover;
-$successBGHoverColor: $successBGHover;
-$warningBGHoverColor: $warningBGHover;
+$primaryBGHoverColor: $componentHoverBGColor;
+$primaryFontHoverColor: $componentHoverFontColor;
+// $secondaryBGHoverColor: $secondaryBGHover;
+$dangerBGHoverColor: $amexioColorRedDark;
+$successBGHoverColor: $amexioColorGreenDark;
+$warningBGHoverColor: $amexioColorYellowDark;

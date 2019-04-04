@@ -12,18 +12,18 @@ $borderColor: #ced4da;
 $primaryBGColor: $themeSecondaryColor;
 $secondaryBGColor: $componentBGColor;
 $successBGColor: #5cb85c;
-$successDisabledBGColor: lighten($successBGColor, 20);
+// $successDisabledBGColor: lighten($successBGColor, 20);
 $dangerBGColor: #d9534f;
-$dangerDisabledBGColor: lighten($dangerBGColor, 20);
+// $dangerDisabledBGColor: lighten($dangerBGColor, 20);
 $warningBGColor: #f0ad4e;
-$warningDisabledBGColor: lighten($warningBGColor, 20);
+// $warningDisabledBGColor: lighten($warningBGColor, 20);
 $defaultDisabledBGColor: lightgray;
 
-$primaryBGHover: darken($primaryBGColor, 10);
-$secondaryBGHover: darken($secondaryBGColor, 10);
-$dangerBGHover: darken($dangerBGColor, 10);
-$successBGHover: darken($successBGColor, 10);
-$warningBGHover: darken($warningBGColor, 10);
+// $primaryBGHover: darken($primaryBGColor, 10);
+// $secondaryBGHover: darken($secondaryBGColor, 10);
+// $dangerBGHover: darken($dangerBGColor, 10);
+// $successBGHover: darken($successBGColor, 10);
+// $warningBGHover: darken($warningBGColor, 10);
 
 $primaryColor: $componentBGColor;
 $secondaryColor:$componentFontColor;
@@ -46,7 +46,7 @@ body {
     overflow-x: hidden;
     overflow-y: auto;
     font-weight: 400;
-    color: $themeFontColor;
+    color: $appForegroundColor;
     font-size: 1em;
     margin: 0px;
     padding: 0px;

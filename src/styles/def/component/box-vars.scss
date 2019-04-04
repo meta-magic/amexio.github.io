@@ -4,17 +4,17 @@ $boxBackgroundColor : $componentBGColor;
 $boxFontColor :$themeFontColor;
 
 
-$boxBGRed : $boxBGRedColor;
+$boxBGRed : $redColorLighten;
 $boxBorderRed :$amexioColorRedDark;
-$boxBGGreen : $boxBGGreenColor;
+$boxBGGreen : $greenColorLighten;
 $boxBorderGreen:$amexioColorGreenDark;
-$boxBGPurple : $boxBGPurpleColor;
+$boxBGPurple : $purpleColorLighten;
 $boxBorderPurple: $amexioColorPurpleDark;
-$boxBGBlue: $boxBGBlueColor;
+$boxBGBlue: $blueColorLighten;
 $boxBorderBlue : $amexioColorBlueDark;
-$boxBGBrown : $boxBGBrownColor;
+$boxBGBrown : $brownColorLighten;
 $boxBorderBrown : $amexioColorBrownDark;
-$boxBGYellow : $boxBGYellowColor;
+$boxBGYellow : $yellowColorLighten;
 $boxBorderYellow : $amexioColorYellowDark;
 
 $boxBorderColor : $borderColor;

@@ -5,7 +5,7 @@
 }
 
 .button-secondary:hover:enabled {
-    background-color: $secondaryBGHoverColor;
+    // background-color: $secondaryBGHoverColor;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -15,8 +15,8 @@
 }
 
 .btn-primary-badge {
-    background-color: $primaryColor;
-    color: $primaryBGColor;
+    background-color: $componentBGColor;
+    color: $componentFontColor;
 }
 
 .btn-secondary-badge {
@@ -47,7 +47,7 @@
 .button-primary {
     background-color: $primaryBGColor;
     border-color: $primaryBGColor;
-    color: $primaryColor;
+    color: $btnFontColor;
 }
 
 .disabled {
@@ -57,7 +57,8 @@
 }
 
 .button-primary:hover:enabled {
-    background-color: $primaryBGHoverColor;
+    background-color: $btnHoverBGColor;   //Need to Change
+    color: $btnHoverFontColor; 
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -68,6 +69,7 @@
 }
 
 .button-success:hover:enabled {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     background-color: $successBGHoverColor;
 }
 
@@ -99,8 +101,8 @@
 }
 
 .button-transparent:hover:enabled {
-    background-color: $borderColor;
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    // background-color: $borderColor;
+    // box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .button-default:hover:enabled {

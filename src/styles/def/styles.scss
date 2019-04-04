@@ -1,147 +1,147 @@
-/* You can add global styles to this file, and also import other style files */
+// /* You can add global styles to this file, and also import other style files */
 
 
-$color: #404c51;
+// $color: #404c51;
 
-$oppColor: white;
+// $oppColor: white;
 
-$backgroundcolor: #ECEFF1;
+// $backgroundcolor: #ECEFF1;
 
-$borderSize : 1px;
+// $borderSize : 1px;
 
-$borderRadius : 2px;
+// $borderRadius : 2px;
 
-$borderColor : #ced4da;
+// $borderColor : #ced4da;
 
-$borderColor-focus: #5cb3fd;
+// $borderColor-focus: #5cb3fd;
 
-$primaryBGColor: #455A64;
+// $primaryBGColor: #455A64;
 
-$secondaryBGColor: #ffffff;
+// $secondaryBGColor: #ffffff;
 
-$successBGColor : #5cb85c;
+// $successBGColor : #5cb85c;
 
-$dangerBGColor : #d9534f;
+// $dangerBGColor : #d9534f;
 
-$warningBGColor : #f0ad4e;
-
-
-$primaryColor: #FFFFFF;
-
-$secondaryColor: $color;
-
-$successColor : $oppColor;
-
-$dangerColor : $oppColor;
-
-$warningColor : $oppColor;
-
-$success: $successBGColor;
-
-$error : $dangerBGColor;
-
-$hoverColor : $primaryColor;
-
-$hoverBGColor : $primaryBGColor;
+// $warningBGColor : #f0ad4e;
 
 
-$sidenavHeaderBGColor: white;
-$sidenavHeaderColor: $color;
-$sidenavBGColor : white;
-$sidenavColor: black;
-$sidenavactive:#eee;
+// $primaryColor: #FFFFFF;
 
-$treeNodeActiveBGColor : $sidenavactive;
-$treeNodeActiveColor : $sidenavColor;
+// $secondaryColor: $color;
 
+// $successColor : $oppColor;
 
-$tabBorderSize: $borderSize;
-$tabBorderColor : $borderColor;
-$tabActiveBorder : red;
-$tabActiveBGColor : $borderColor;
-$tabActiveBorderSize : 3px;
+// $dangerColor : $oppColor;
 
-$menubarBGColor : #3498DB;
-$menubarColor : white;
-$menuHoverColor: orange;
-$subMenuCotentBGColor : white;
-$subMenuCotentColor : #777;
+// $warningColor : $oppColor;
 
-$modalBGColor: lighten(black,50%);
+// $success: $successBGColor;
 
-$cardBGColor: #FFFFFF;
-$cardColor: black;
+// $error : $dangerBGColor;
 
-$cardHeaderBGColor: #455A64;
-$cardHeaderColor: #FFFFFF;
-$cardFooterBGColor: #455A64;
-$cardFooterColor: #FFFFFF;
-$cardBorderColor: $borderColor;
+// $hoverColor : $primaryColor;
 
-$toastBGColor : $primaryBGColor;
-$toastColor : $primaryColor;
+// $hoverBGColor : $primaryBGColor;
 
 
-/* You can add global styles to this file, and also import other style files */
+// $sidenavHeaderBGColor: white;
+// $sidenavHeaderColor: $color;
+// $sidenavBGColor : white;
+// $sidenavColor: black;
+// $sidenavactive:#eee;
 
-.float-right {
-  float: right;
-}
-
-.float-left {
-  float: left;
-}
-
-$accordionBGColor:$cardHeaderBGColor;
-$accordionColor:$cardHeaderColor;
-
-$borderLayoutBorder : 0px;
-$borderLayoutBorderColor : none;
-
-$menubarBGColor : black;
-$menubarColor : white;
-$menuHoverColor: orange;
-
-$subMenuCotentBGColor : white;
-$subMenuCotentColor : #777;
-$menuborderColor:#ced4da;
-$menuborderSize:1px;
-
-$navbarBGColor : #90A4AE;
-$navbarBoxShadow:#666;
-$navbarColor : white;
+// $treeNodeActiveBGColor : $sidenavactive;
+// $treeNodeActiveColor : $sidenavColor;
 
 
-$datapointBGColor : #ffffff;
-$datapointColor : #455A64;
-$datapointBorderColor : $borderColor;
+// $tabBorderSize: $borderSize;
+// $tabBorderColor : $borderColor;
+// $tabActiveBorder : red;
+// $tabActiveBGColor : $borderColor;
+// $tabActiveBorderSize : 3px;
 
-$componentBGColor: #ffffff;
+// $menubarBGColor : #3498DB;
+// $menubarColor : white;
+// $menuHoverColor: orange;
+// $subMenuCotentBGColor : white;
+// $subMenuCotentColor : #777;
 
-$ratingBorderColor : $borderColor;
-$ratingActiveColor : $primaryBGColor;
+// $modalBGColor: lighten(black,50%);
+
+// $cardBGColor: #FFFFFF;
+// $cardColor: black;
+
+// $cardHeaderBGColor: #455A64;
+// $cardHeaderColor: #FFFFFF;
+// $cardFooterBGColor: #455A64;
+// $cardFooterColor: #FFFFFF;
+// $cardBorderColor: $borderColor;
+
+// $toastBGColor : $primaryBGColor;
+// $toastColor : $primaryColor;
 
 
-$datetimepickerBGColor : white;
-$datetimepickertopbarBGColor : $primaryBGColor;
-$datetimepickerActiveColor : $datetimepickerBGColor;
+// /* You can add global styles to this file, and also import other style files */
 
-$fieldSetBorderSize : $borderSize;
-$fieldSetBorderColor : $borderColor;
-$collapsibleLegendColor : $themeColor;
+// .float-right {
+//   float: right;
+// }
 
-body {
-  background: $backgroundcolor;
-  min-height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
-  font-family: Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
-  font-weight: 400;
-  color: $color;
-  font-size: 1em;
-  margin: 0px;
-  padding: 0px;
+// .float-left {
+//   float: left;
+// }
 
-}
+// $accordionBGColor:$cardHeaderBGColor;
+// $accordionColor:$cardHeaderColor;
 
-@import "../mda/at-md-blue";   // Default Theme to load
+// $borderLayoutBorder : 0px;
+// $borderLayoutBorderColor : none;
+
+// $menubarBGColor : black;
+// $menubarColor : white;
+// $menuHoverColor: orange;
+
+// $subMenuCotentBGColor : white;
+// $subMenuCotentColor : #777;
+// $menuborderColor:#ced4da;
+// $menuborderSize:1px;
+
+// $navbarBGColor : #90A4AE;
+// $navbarBoxShadow:#666;
+// $navbarColor : white;
+
+
+// $datapointBGColor : #ffffff;
+// $datapointColor : #455A64;
+// $datapointBorderColor : $borderColor;
+
+// $componentBGColor: #ffffff;
+
+// $ratingBorderColor : $borderColor;
+// $ratingActiveColor : $primaryBGColor;
+
+
+// $datetimepickerBGColor : white;
+// $datetimepickertopbarBGColor : $primaryBGColor;
+// $datetimepickerActiveColor : $datetimepickerBGColor;
+
+// $fieldSetBorderSize : $borderSize;
+// $fieldSetBorderColor : $borderColor;
+// $collapsibleLegendColor : $themeColor;
+
+// body {
+//   background: $backgroundcolor;
+//   min-height: 100%;
+//   overflow-x: hidden;
+//   overflow-y: auto;
+//   font-family: Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
+//   font-weight: 400;
+//   color: $color;
+//   font-size: 1em;
+//   margin: 0px;
+//   padding: 0px;
+
+// }
+
+// @import "../mda/at-md-blue";   // Default Theme to load

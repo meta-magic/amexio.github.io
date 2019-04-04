@@ -6,7 +6,7 @@
 }
 
 .button-secondary:hover:enabled{
-  background-color: $secondaryBGHoverColor;
+  // background-color: $secondaryBGHoverColor;
 }
 
 .btn-group-primary-badge{
@@ -41,11 +41,11 @@
 
 
 
-.button-primary {
-  background-color: $primaryBGColor;
-  border-color: $primaryBGColor;
-  color: $primaryColor;
-}
+// .button-primary {
+//   background-color: $primaryBGColor;
+//   border-color: $primaryBGColor;
+//   color: $primaryColor;
+// }
 
 .disabled
 {
@@ -54,7 +54,7 @@
 }
 
 .button-primary:hover:enabled{
-  background-color: $primaryBGHoverColor;
+  // background-color: $primaryBGHoverColor;
 }
 
 .button-success {

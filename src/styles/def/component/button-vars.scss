@@ -11,17 +11,22 @@ $closeBtnColor : $componentHoverBGColor;
 $closeBtnHoverColor : $componentActiveBGColor;
 $btnBadgeColor:$componentHeaderBGColor;
 $btnBadgeColorBG:$componentActiveBGColor;
+$btnFontColor: $componentHeaderFontColor;
 
 $buttonDisableBG : $componentDisabledBGColor;
 $buttonDisableFontColor : $componentDisabledFontColor;
 
-$buttonWarningDisabledBgColor: $warningDisabledBGColor;
-$buttonSuccessDisabledBgColor: $successDisabledBGColor;
-$buttonDangerDisabledBgColor: $dangerDisabledBGColor;
+$buttonWarningDisabledBgColor: $amexioColorYellowLighten;
+$buttonSuccessDisabledBgColor: $amexioColorGreenLighten;
+$buttonDangerDisabledBgColor: $amexioColorRedLighten;
 $buttonDefaultDisabledBgColor: $defaultDisabledBGColor;
 
-$primaryBGHoverColor: $primaryBGHover;
-$secondaryBGHoverColor: $secondaryBGHover;
-$dangerBGHoverColor: $dangerBGHover;
-$successBGHoverColor: $successBGHover;
-$warningBGHoverColor: $warningBGHover;
+$btnHoverFontColor: $componentHoverFontColor;
+$btnHoverBGColor: $componentHoverBGColor;
+
+$dangerBGHoverColor: $amexioColorRedDark;
+$successBGHoverColor: $amexioColorGreenDark;
+$warningBGHoverColor: $amexioColorYellowDark;
+
+$componentBGColor : $componentBGColor;
+$componentFontColor : $componentFontColor;
