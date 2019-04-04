@@ -57,6 +57,15 @@ explicitly (using position-top/position-bottom/position-left/position-right)
   @Input('position-top') top: string;
   /*
   Properties
+  name : size
+  datatype : string
+  version : 5.4 onwards
+  default : none
+  description : large, default, small & xsmall
+  */
+  @Input('size') size: string;
+  /*
+  Properties
   name : position-bottom
   datatype : none
   version : 4.1 onwards
@@ -148,12 +157,15 @@ explicitly (using position-top/position-bottom/position-left/position-right)
   @Output() onClick: any = new EventEmitter<any>();
   floatinggroupxposition: string;
   floatinggroupyposition: string;
+  positionclass: string;
   togglefloatinggroup = false;
   ispressed = false;
+  color = 'red-color';
   datacount = 0;
   constructor(private elementref: ElementRef, private cdf: ChangeDetectorRef, renderer: Renderer2) {
     super(renderer, elementref, cdf);
   }
+
   ngOnInit() {
     this.dropdownstyle = { visibility: 'hidden' };
     if (this.data && this.data.length > 0) {
@@ -167,25 +179,65 @@ explicitly (using position-top/position-bottom/position-left/position-right)
           node['index'] = index;
           node['typeclass'] = 'floatingbutton-' + node['type'];
         }
+        this.addCssToBtnGroup();
       });
     }
   }
+  addCssToBtnGroup() {
+    if (this.data && this.data.length > 0) {
+      this.data.forEach((node: any) => {
+        if (this.size && (this.size === 'large')) {
+          node['typeclass'] = node['typeclass'] + ' floatingbutton-circle-' + this.size;
+        }
+        if (this.size && (this.size === 'small')) {
+          node['typeclass'] = node['typeclass'] + ' floatingbutton-circle-' + this.size;
+        }
+        if ((this.size !== 'large') && (this.size !== 'small')) {
+          node['typeclass'] = node['typeclass'] + ' floatingbutton-circle';
+        }
+      });
+    }
+  }
+
   buttonClick(clickEvent: any) {
     this.ispressed = !this.ispressed;
     const x = clickEvent.currentTarget.getBoundingClientRect().left;
     const y = clickEvent.currentTarget.getBoundingClientRect().top;
     if (!this.disabled) {
-      if (this.floatinggroupposition === 'bottom') {
+      if (this.size === 'small' && this.floatinggroupposition === 'bottom') {
+        this.floatinggroupxposition = (x) + 'px';
+        this.floatinggroupyposition = (y + 34) + 'px';
+      }
+      if (this.size === 'large' && this.floatinggroupposition === 'bottom') {
+        this.floatinggroupxposition = (x) + 'px';
+        this.floatinggroupyposition = (y + 108) + 'px';
+      }
+      if (((this.size !== 'large') && (this.size !== 'small')) && this.floatinggroupposition === 'bottom') {
         this.floatinggroupxposition = (x) + 'px';
         this.floatinggroupyposition = (y + 70) + 'px';
       }
-      if (this.floatinggroupposition === 'top') {
-        this.floatinggroupxposition = (x) + 'px';
-        this.floatinggroupyposition = (y - (80 * this.datacount)) + 'px';
-      }
+      this.floatingBtnGroupTopPostion(event);
       this.toggleVisibility();
       this.togglefloatinggroup = !this.togglefloatinggroup;
       this.onClick.emit({ thisObj: this, event: clickEvent });
+    }
+  }
+
+  floatingBtnGroupTopPostion(clickEvent: any) {
+    const x = clickEvent.currentTarget.getBoundingClientRect().left;
+    const y = clickEvent.currentTarget.getBoundingClientRect().top;
+
+    if (this.size === 'small' && this.floatinggroupposition === 'top') {
+      this.floatinggroupxposition = (x) + 'px';
+      this.floatinggroupyposition = (y - (38 * this.datacount)) + 'px';
+    }
+    if (this.size === 'large' && this.floatinggroupposition === 'top') {
+      this.floatinggroupxposition = (x) + 'px';
+      this.floatinggroupyposition = (y - (108 * this.datacount)) + 'px';
+    }
+    if (((this.size !== 'large') && (this.size !== 'small')) && this.floatinggroupposition === 'top') {
+      this.floatinggroupxposition = (x) + 'px';
+      this.floatinggroupyposition = (y - (80 * this.datacount)) + 'px';
     }
   }
 
