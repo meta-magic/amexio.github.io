@@ -66,6 +66,7 @@ export * from './recaptcha/load.recaptcha.service';
 export * from './buttons/button.component';
 export * from './buttongroup/button.group.component';
 export * from '../services/script/script.load.service';
+export * from './toggle/toggle.component';
 
 const FORM_COMPONENTS = [
   AmexioTextInputComponent,
