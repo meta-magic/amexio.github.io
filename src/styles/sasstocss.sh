@@ -30,27 +30,27 @@ sass mda/at-md-army-olive.scss:css/at-md-army-olive.css;
 sass mda/at-md-ash-stone-black.scss:css/at-md-ash-stone-black.css;
 
 sass mda/at-md-blue.scss:css/at-md-blue.css;
-# sass mda/at-md-blue-grey.scss:css/at-md-blue-grey.css;
-# sass mda/at-md-bruntor-tangerine.scss:css/at-md-bruntor-tangerine.css;
-# sass mda/at-md-cerise-magenta.scss:css/at-md-cerise-magenta.css;
+sass mda/at-md-blue-grey.scss:css/at-md-blue-grey.css;
+sass mda/at-md-bruntor-tangerine.scss:css/at-md-bruntor-tangerine.css;
+sass mda/at-md-cerise-magenta.scss:css/at-md-cerise-magenta.css;
 
-# sass mda/at-md-charcoal-iron.scss:css/at-md-charcoal-iron.css;
-# sass mda/at-md-chocolate-russet.scss:css/at-md-chocolate-russet.css;
-# sass mda/at-md-darkgreen-darkolivegreen.scss:css/at-md-darkgreen-darkolivegreen.css;
-# sass mda/at-md-darkgreen-teal.scss:css/at-md-darkgreen-teal.css;
-# sass mda/at-md-darkkhaki-moccasin.scss:css/at-md-darkkhaki-moccasin.css;
+sass mda/at-md-charcoal-iron.scss:css/at-md-charcoal-iron.css;
+sass mda/at-md-chocolate-russet.scss:css/at-md-chocolate-russet.css;
+sass mda/at-md-darkgreen-darkolivegreen.scss:css/at-md-darkgreen-darkolivegreen.css;
+sass mda/at-md-darkgreen-teal.scss:css/at-md-darkgreen-teal.css;
+sass mda/at-md-darkkhaki-moccasin.scss:css/at-md-darkkhaki-moccasin.css;
 
-# sass mda/at-md-darkmagenta-darkorchid.scss:css/at-md-darkmagenta-darkorchid.css;
-# sass mda/at-md-darkslateblue-indigo.scss:css/at-md-darkslateblue-indigo.css;
-# sass mda/at-md-darkslategray-dimgray.scss:css/at-md-darkslategray-dimgray.css;
-# sass mda/at-md-darkturquoise-aquamarine.scss:css/at-md-darkturquoise-aquamarine.css;
-# sass mda/at-md-fern-lime.scss:css/at-md-fern-lime.css;
+sass mda/at-md-darkmagenta-darkorchid.scss:css/at-md-darkmagenta-darkorchid.css;
+sass mda/at-md-darkslateblue-indigo.scss:css/at-md-darkslateblue-indigo.css;
+sass mda/at-md-darkslategray-dimgray.scss:css/at-md-darkslategray-dimgray.css;
+sass mda/at-md-darkturquoise-aquamarine.scss:css/at-md-darkturquoise-aquamarine.css;
+sass mda/at-md-fern-lime.scss:css/at-md-fern-lime.css;
 
-# sass mda/at-md-firebrick-crimson.scss:css/at-md-firebrick-crimson.css;
-# sass mda/at-md-frenchrose-mulberry.scss:css/at-md-frenchrose-mulberry.css;
-# sass mda/at-md-gingerbread.scss:css/at-md-gingerbread.css;
-# sass mda/at-md-gold-amber.scss:css/at-md-gold-amber.css;
-# sass mda/at-md-grape-violet.scss:css/at-md-grape-violet.css;
+sass mda/at-md-firebrick-crimson.scss:css/at-md-firebrick-crimson.css;
+sass mda/at-md-frenchrose-mulberry.scss:css/at-md-frenchrose-mulberry.css;
+sass mda/at-md-gingerbread.scss:css/at-md-gingerbread.css;
+sass mda/at-md-gold-amber.scss:css/at-md-gold-amber.css;
+sass mda/at-md-grape-violet.scss:css/at-md-grape-violet.css;
 
 # sass mda/at-md-honey-mustard.scss:css/at-md-honey-mustard.css;
 # sass mda/at-md-hot-pink-fuchsia.scss:css/at-md-hot-pink-fuchsia.css;
