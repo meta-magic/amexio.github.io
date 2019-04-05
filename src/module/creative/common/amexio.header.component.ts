@@ -15,7 +15,7 @@
 *
 *  Created by sagar on 4/02/2019.
 */
-import { Component, HostBinding, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/index';
 
 @Component({
@@ -33,7 +33,7 @@ export class AmexioCardCEHeaderComponent implements OnInit {
 
   @Input('align') align = '';
 
-  @Input('icon-valign') verticalalign = '';
+  @Input('icon-align') verticalalign = '';
 
   @Input('bg-image') bgimage: string;
 

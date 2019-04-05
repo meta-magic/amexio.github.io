@@ -15,7 +15,7 @@
 *
 *  Created by sagar on 4/02/2019.
 */
-import { AfterViewInit, Component, ContentChildren, HostBinding, Input, OnInit, QueryList, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ContentChildren, Input, OnInit, QueryList, ViewChild } from '@angular/core';
 import { FormBuilder, NgForm } from '@angular/forms';
 import { AmexioButtonGroupComponent } from '../../forms/buttongroup/button.group.component';
 import { AmexioButtonComponent } from '../../forms/buttons/button.component';
