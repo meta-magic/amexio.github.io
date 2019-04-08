@@ -402,28 +402,35 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
     }
     // To add isSelected flag explicitily in tree Data
     setSelectedFlag() {
-        this.parentRef.forEach((node: any) => {
-            if (node.hasOwnProperty('isSelected')) {
-                node.isSelected = false;
-            } else {
-                node['isSelected'] = false;
-            }
-            if (node.hasOwnProperty(this.childarraykey) && node[this.childarraykey].length > 0) {
-                this.setSelectedFlagInChild(node);
-            }
-        });
+        if (this.parentRef && this.parentRef.length > 0) {
+            this.parentRef.forEach((node: any) => {
+                if (node) {
+                    if (node.hasOwnProperty('isSelected')) {
+                        node.isSelected = false;
+                    } else {
+                        node['isSelected'] = false;
+                    }
+                    if (node.hasOwnProperty(this.childarraykey) && node[this.childarraykey] && node[this.childarraykey].length > 0) {
+                        this.setSelectedFlagInChild(node);
+                    }
+                }
+            });
+        }
     }
     setSelectedFlagInChild(node: any) {
-        node[this.childarraykey].forEach((childcom: any) => {
-            if (childcom.hasOwnProperty('isSelected')) {
-                childcom.isSelected = false;
-            } else {
-                childcom['isSelected'] = false;
-            }
-            if (childcom.hasOwnProperty(this.childarraykey) && childcom[this.childarraykey].length > 0) {
-                this.setSelectedFlagInChild(childcom);
-            }
-        });
+        if (node[this.childarraykey] && node[this.childarraykey].length > 0) {
+            node[this.childarraykey].forEach((childcom: any) => {
+                if (childcom.hasOwnProperty('isSelected')) {
+                    childcom.isSelected = false;
+                } else {
+                    childcom['isSelected'] = false;
+                }
+                if (childcom.hasOwnProperty(this.childarraykey)
+                && childcom[this.childarraykey] && childcom[this.childarraykey].length > 0) {
+                    this.setSelectedFlagInChild(childcom);
+                }
+            });
+        }
     }
 
     emitCheckedData(checkedData: any) {

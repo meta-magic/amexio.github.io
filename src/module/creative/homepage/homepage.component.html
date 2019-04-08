@@ -8,7 +8,7 @@
             <ng-content *ngIf="isDisableWestPanel" select="amexio-homepage-westpanel">
             </ng-content>
         </div>
-        <div [ngClass]="{'homepage-centerpanel-flex':!isPhone, 'homepage-centerpanel-flex-fullview':(!isDisableWestPanel && !isPhone),'homepage-centerpanel-flex':(isDisableWestPanel && !isPhone) }">
+        <div [ngClass]="{'homepage-centerpanel-flex':!isPhone || (isDisableWestPanel && !isPhone), 'homepage-centerpanel-flex-fullview':(!isDisableWestPanel && !isPhone) }">
             <ng-content select="amexio-homepage-centerpanel">
             </ng-content>
         </div>
