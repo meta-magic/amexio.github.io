@@ -8,7 +8,7 @@
       <div  aria-label="Dropdown button clickable" class="tree-node-label" *ngIf="node[childarraykey] && (node[childarraykey].length>0)">
         <em class="fa" [ngClass]="{'fa-angle-down':node.expand,'fa-angle-right':!node.expand}"></em>
       </div> &nbsp;
-      <div tabindex="1" id={{node.id}} role="treeitem" (keyup.arrowup)="onArrowUp(data,node,rowindex)"
+      <div tabindex="1" id={{node.elementId}} role="treeitem" (keyup.arrowup)="onArrowUp(data,node,rowindex)"
         (keyup.arrowdown)="onArrowDown($event,data,node,rowindex)" class="tree-node-label tree-node-label-hover"
         [attr.aria-expanded]="node.expand" [ngClass]="{'tree-node-label-selected':node.isSelected ,'tree-node-label-not-selected':node.isSelected=='false'}"
         [attr.draggable]="enabledrag" (dragleave)="dragleave($event)" (drop)="drop({event:$event,data:node})"

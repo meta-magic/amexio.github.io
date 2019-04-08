@@ -305,7 +305,7 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
             this.setFocus(previousindex);
             this.focusToInnerLastItem(previousindex);
         } else {
-            const id = node.id;
+            const id = node.elementId;
             const spiltID = this.splitID(id);
             const randomnumber = spiltID[0];
             const currentid = spiltID[1];
@@ -327,7 +327,7 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
         }
     }
     focusTONextParent(node: any) {
-        const sliceId = this.splitID(node.id);
+        const sliceId = this.splitID(node.elementId);
         const randomnumber = sliceId[0];
         const currentid = sliceId[1];
 
@@ -349,8 +349,8 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
         return id.split('-');
     }
     setFocus(focuselement: any) {
-        if (document.getElementById(focuselement.id)) {
-            document.getElementById(focuselement.id).focus();
+        if (document.getElementById(focuselement.elementId)) {
+            document.getElementById(focuselement.elementId).focus();
         }
     }
     onNodeClick(node: any) {
@@ -359,9 +359,9 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
     }
     generateIndex(data: any, parentId: number, rannumber: any) {
         data.forEach((element: any, index: number) => {
-            element['id'] = '' + rannumber + '-' + parentId + (index + 1);
+            element['elementId'] = '' + rannumber + '-' + parentId + (index + 1);
             if (element[this.childarraykey]) {
-                this.generateIndex(element[this.childarraykey], element.id.split('-')[1], rannumber);
+                this.generateIndex(element[this.childarraykey], element.elementId.split('-')[1], rannumber);
             }
         });
     }
