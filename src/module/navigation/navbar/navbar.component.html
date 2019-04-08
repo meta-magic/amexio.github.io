@@ -1,7 +1,7 @@
 <nav #navbar class="topnav" [ngStyle]="{'color': color}" [ngClass]="{'topnav-mobile':mobilemode, 'transparentNav':transparent}" (window:resize)="resize($event)">
 
-    <div #navbarfixed class="topnav-lhs" [ngClass]="{'lhs-mobile':mobilemode}"
-     [ngStyle]="{'flex': !(title || logo) ? 'none':''}">
+    <div #navbarfixed  [ngClass]="{'lhs-mobile':mobilemode}"
+     [ngStyle]="{'flex': !title || !logo ? 'none':''}">
         <div class="topnav-lhs-inner" [ngClass]="{'topnav-lhs-inner-mobile':mobilemode, 'topnav-lhs-nologo': logo==''}">
             <span>
 
