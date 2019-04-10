@@ -4,15 +4,15 @@
   position: relative;
   text-align: left;
 }
-.ui-slider .ui-slider-handle {
-  position: absolute;
-  width: 1.2em;
-  height: 1.2em;
-  cursor: default;
-  -ms-touch-action: none;
-  touch-action: none;
-  z-index: 1;
-}
+// .ui-slider .ui-slider-handle {
+//   position: absolute;
+//   width: 1.2em;
+//   height: 1.2em;
+//   cursor: default;
+//   -ms-touch-action: none;
+//   touch-action: none;
+//   z-index: 1;
+// }
 .ui-slider .ui-slider-handle.ui-slider-handle-active {
   z-index: 2;
 }
