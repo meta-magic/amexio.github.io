@@ -34,7 +34,7 @@ import {CommonDataService} from '../../services/data/common.data.service';
            </button>-->
           <span *ngIf="showToolTip" class="dropdown">
               <ul class="dropdown-list">
-                <li tabindex="1" id={{opt.id}} role="option" class="list-items"
+                <li tabindex="1" id={{opt.index}} role="option" class="list-items"
                 *ngFor="let opt of filterOptionData let rowindex = index"
                  (click)="filterOption(opt)"
                   (keyup.enter)="filterOption(opt)"
@@ -341,23 +341,23 @@ description : it will search for text relevant to entered character
 
   generatefilterIndex(data: any, parentId: number, rannumber: any) {
     data.forEach((element: any, index: number) => {
-        element['id'] = '' + rannumber + '-' + parentId + (index + 1);
+        element['index'] = '' + rannumber + '-' + parentId + (index + 1);
         if (element[this.childarraykey]) {
-            this.generatefilterIndex(element[this.childarraykey], element.id.split('-')[1], rannumber);
+            this.generatefilterIndex(element[this.childarraykey], element.index.split('-')[1], rannumber);
         }
     });
 }
 generatefilterOptionDataIndex(filteroptions: any) {
   filteroptions.forEach((element: any, index: number) => {
-       element['id'] = Math.floor(Math.random() * 1000 + 999 + 1) + '-' + index;
+       element['index'] = Math.floor(Math.random() * 1000 + 999 + 1) + '-' + index;
     });
 }
 onArrowFilterUp(data: any, opt: any, rowindex: number) {
    if (rowindex > 0) {
         const nextindex = rowindex - 1;
         const focusdata = data[nextindex];
-        if (document.getElementById(focusdata.id)) {
-          document.getElementById(focusdata.id).focus();
+        if (document.getElementById(focusdata.index)) {
+          document.getElementById(focusdata.index).focus();
         }
    }
 }
@@ -365,8 +365,8 @@ onArrowFilterUp(data: any, opt: any, rowindex: number) {
     if (rowindex < data.length - 1) {
       const nextindex = rowindex + 1;
       const focusdata = data[nextindex];
-      if (document.getElementById(focusdata.id)) {
-        document.getElementById(focusdata.id).focus();
+      if (document.getElementById(focusdata.index)) {
+        document.getElementById(focusdata.index).focus();
       }
     }
   }
