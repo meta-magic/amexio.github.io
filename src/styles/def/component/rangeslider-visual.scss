@@ -1,0 +1,45 @@
+
+.amexio-slider .amexio-slider-range {
+  font-size: $rangeSliderFontSize;
+}
+.amexio-slider .amexio-slider-handle {
+ background: $rangeSliderNotchBGColor;
+ color: $rangeSliderNotchColor;
+}
+
+.amexio-slider {
+  background:$sliderBGColor;
+}
+.amexio-slider-widget-content {
+  background:$sliderWidgetBGColor;
+  color: $sliderWidgetColor;
+}
+.amexio-slider-widget {
+  font-size: $sliderWidgetFontSize;
+}
+.amexio-slider .amexio-slider-range {
+  font-size: $rangeSliderFontSize;
+}
+.amexio-slider .amexio-slider-range {
+  font-size: $rangeSliderFontSize;
+  background: $rangeSliderBGColor;   /** use card header here **/
+}
+
+.amexio-slider-widget-header {
+  background: $rangeWidgetBG1 0 0 repeat-x;
+  background: -moz-linear-gradient(top, $rangeWidgetBG1 0%, $rangeWidgetBG2 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $rangeWidgetBG1), color-stop(100%, $rangeWidgetBG2));
+  background: -webkit-linear-gradient(top, $rangeWidgetBG1 0%, $rangeWidgetBG2 100%);
+  background: -o-linear-gradient(top, $rangeWidgetBG1 0%, $rangeWidgetBG2 100%);
+  background: -ms-linear-gradient(top, $rangeWidgetBG1 0%, $rangeWidgetBG2 100%);
+  background: linear-gradient(to bottom, $rangeWidgetBG1 0%, $rangeWidgetBG2 100%);
+}
+.amexio-slider-widget-header {
+  background: $rangeWidgetBG1;
+  color: $rangeHeaderColor;
+  font-weight: $rangeHeaderFontWeight;
+}
+.focusOnSlider:focus{
+  outline: none;
+  border: 2px solid $sliderHoverColor;
+ }

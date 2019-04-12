@@ -469,3 +469,18 @@
 @import "component/progressce-visual.scss";
 
 
+/****************************************************************************
+    Component Name : Range slider
+    Version : Amexio v5.10 onwards
+*****************************************************************************/
+
+@import "component/rangeslider-vars.scss";
+
+/** range - Visual CSS **/
+
+@import "component/rangeslider-visual.scss";
+
+/** range - Structure CSS **/
+
+@import "component/rangeslider-structure.scss";
+

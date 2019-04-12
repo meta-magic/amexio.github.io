@@ -1,0 +1,42 @@
+
+<div [ngStyle]="style" [class]="styleClass" 
+[ngClass]="{'amexio-slider amexio-slider-widget amexio-slider-widget-content ui-corner-all':true,
+'ui-state-disabled':disabled,
+'amexio-slider-horizontal':orientation == 'horizontal',
+'amexio-slider-vertical':orientation == 'vertical',
+'amexio-slider-animate':animate}"
+(click)="onSlideBarClick($event)">
+
+<span *ngIf=" range && orientation == 'horizontal'"
+class="amexio-slider-range amexio-slider-widget-header ui-corner-all" 
+[ngStyle]="{'left':handleValues[0] + '%',width: (handleValues[1] - handleValues[0] + '%')}">
+</span>
+
+<span *ngIf="range && orientation == 'vertical'" 
+class="amexio-slider-range amexio-slider-widget-header ui-corner-all" 
+[ngStyle]="{'bottom':handleValues[0] + '%',height: (handleValues[1] - handleValues[0] + '%')}">
+</span>
+
+
+
+
+<span *ngIf="range" (mousedown)="onMouseMove($event,0)" 
+[style.transition]="dragData ? 'none': null"
+class="amexio-slider-handle ui-state-default ui-corner-all ui-clickable " 
+   [ngStyle]="{'left': rangeStartLeft, 'bottom': rangeStartBottom}"
+    [ngClass]="{'amexio-slider-handle-active':handleIndex==0}">
+    {{values[0]}} 
+</span>
+
+
+   <span *ngIf="range" (mousedown)="onMouseMove($event,1)" 
+    [style.transition]="dragData ? 'none': null" 
+    class="amexio-slider-handle ui-state-default ui-corner-all ui-clickable" 
+   [ngStyle]="{'left': rangeEndLeft, 'bottom': rangeEndBottom}" 
+   [ngClass]="{'amexio-slider-handle-active':handleIndex==1}">
+   <span style="margin-bottom: 30px;">
+       {{values[1]}}
+   </span>
+ 
+</span>
+</div>
