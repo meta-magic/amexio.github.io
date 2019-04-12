@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Viewport.Content.BodyComponent } from './viewport.content.body.component';
+import { ViewportContentBodyComponent } from './viewport.content.body.component';
 
-describe('Viewport.Content.BodyComponent', () => {
-  let component: Viewport.Content.BodyComponent;
-  let fixture: ComponentFixture<Viewport.Content.BodyComponent>;
+describe('ViewportContentBodyComponent', () => {
+  let component: ViewportContentBodyComponent;
+  let fixture: ComponentFixture<ViewportContentBodyComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ Viewport.Content.BodyComponent ]
+      declarations: [ ViewportContentBodyComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(Viewport.Content.BodyComponent);
+    fixture = TestBed.createComponent(ViewportContentBodyComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
