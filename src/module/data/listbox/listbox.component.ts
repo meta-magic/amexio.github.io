@@ -234,6 +234,9 @@ description : Context Menu provides the list of menus on right click.
   prevlistindex = -1;
 
   listindex = -1;
+
+  documentClickListener: any;
+
   globalClickListenFunc: () => void;
 
   constructor(public dataService: CommonDataService, private renderer: Renderer2) {
@@ -259,6 +262,23 @@ description : Context Menu provides the list of menus on right click.
     }
     this.componentLoaded = true;
     this.componentId = 'listbox' + Math.floor(Math.random() * 1000 + 999);
+
+    this.listenListboxOutClick();
+  }
+
+  listenListboxOutClick() {
+    this.documentClickListener = this.renderer
+      .listen('document', 'click', (event: any) => {
+        if (this.viewData.length > 0) {
+          this.viewData.forEach((element: any, index: number) => {
+            if (this.viewData[this.prevlistindex]['ishoverselected'] === true) {
+              this.viewData[this.prevlistindex]['ishoverselected'] = false;
+              this.prevlistindex = -1;
+              this.listindex = -1;
+            }
+          });
+        }
+      });
   }
 
   onArrowdown() {

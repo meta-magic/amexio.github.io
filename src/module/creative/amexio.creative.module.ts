@@ -37,6 +37,12 @@ import { AmexioHomePageCenterPanelComponent } from './../creative/homepage/homep
 import { AmexioHomePageEastPanelComponent } from './../creative/homepage/homepage.eastpanel.component';
 import { AmexioHomePageNorthPanelComponent } from './../creative/homepage/homepage.northpanel.component';
 import { AmexioHomePageWestPanelComponent } from './../creative/homepage/homepage.westpanel.component';
+
+import { ViewportBackgroundComponent } from './../creative/viewport/viewport.background/viewport.background.component';
+import { ViewportContentBodyComponent } from './../creative/viewport/viewport.content.body/viewport.content.body.component';
+import { ViewportContentComponent } from './../creative/viewport/viewport.content/viewport.content.component';
+import { ViewportComponent } from './../creative/viewport/viewport/viewport.component';
+
 import { AmexioFormsModule } from './../forms/amexio.forms.module';
 import { AmexioLayoutModule } from './../layout/amexio.layout.module';
 import { AmexioNavModule } from './../navigation/amexio.nav.module';
@@ -73,13 +79,17 @@ const CREATIVE_COMPONENTS = [
   AmexioHomePageNorthPanelComponent,
   AmexioHomePageWestPanelComponent,
   AmexioWindowCEComponent,
+  ViewportComponent,
+  ViewportBackgroundComponent,
+  ViewportContentComponent,
+  ViewportContentBodyComponent,
 ];
 
 @NgModule({
   imports: [
     CommonModule,
-     FormsModule,
-     ReactiveFormsModule,
+    FormsModule,
+    ReactiveFormsModule,
     AmexioFormsModule,
     AmexioNavModule,
     AmexioLayoutModule,
