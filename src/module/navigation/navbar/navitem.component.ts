@@ -48,44 +48,43 @@ description : Indicate the type of menu-items (link / button / textfield /menu )
   @Input() type: string;
 
   /*
-Properties
-name : title
-datatype : string
-version : 4.0 onwards
-default : none
-description : Title for link, button and menu header
-*/
+  Properties
+  name : title
+  datatype : string
+  version : 4.0 onwards
+  default : none
+  description : Title for link, button and menu header
+  */
   @Input() title: string;
 
   /*
-Properties
-name : icon
-datatype : string
-version : 4.0 onwards
-default : none
-description : Icon for link, button and menu header
-*/
+  Properties
+  name : icon
+  datatype : string
+  version : 4.0 onwards
+  default : none
+  description : Icon for link, button and menu header
+  */
   @Input() icon: string;
 
   /*
-Properties
-name : data
-datatype : string
-version : 4.0 onwards
-default : none
-description : Standard JSON format array data which is used for rendering menus. This is used when type=menu is defined.
-*/
+  Properties
+  name : data
+  datatype : string
+  version : 4.0 onwards
+  default : none
+  description : Standard JSON format array data which is used for rendering menus. This is used when type=menu is defined.
+  */
   @Input() data: any[];
 
   /*
-Events
-name : onNavItemClick
-datatype : any
-version : none
-default : none
-description : Fire when nav item is clicked, This event is fired when nav item type is defined as 'link/button/menu'
-
-*/
+  Events
+  name : onNavItemClick
+  datatype : any
+  version : none
+  default : none
+  description : Fire when nav item is clicked, This event is fired when nav item type is defined as 'link/button/menu'
+  */
   @Output() onNavItemClick: any = new EventEmitter<any>();
   @ContentChildren(AmexioNavMenuComponent) navmenus: QueryList<AmexioNavMenuComponent>;
 
@@ -117,12 +116,38 @@ description : Fire when nav item is clicked, This event is fired when nav item t
     } else if (this.type === 'menucontainer') {
       this.isMenuContainer = true;
     }
+    // this.data.forEach((node: any, index: number) => {
+    //   if (index === (this.data.length - 1)) {
+    //     node['islast'] = true;
+    //   } else {
+    //     node['islast'] = false;
+    //   }
+    //   this.setHoverattr(node);
+    //   this.setSubmenuIcon(node);
+    // });
   }
 
   ngAfterViewInit() {
-    this.right = this.elementref.nativeElement.getBoundingClientRect().right;
   }
+
   ngAfterContentInit() {
+    setTimeout(() => {
+      this.right = this.elementref.nativeElement.getBoundingClientRect().right;
+    }, 100);
+  }
+
+  setSubmenuIcon(node: any) {
+    if (node.submenus && (node.submenus.length > 0)) {
+      node.submenus['iconposition'] = 'left';
+      this.setSubmenuIcon(node.submenus);
+    }
+  }
+
+  setHoverattr(node: any) {
+    node['ishover'] = false;
+    if (node.submenus && (node.submenus.length > 0)) {
+      this.setHoverattr(node.submenus);
+    }
   }
 
   navItemClick(event: any) {
@@ -134,10 +159,14 @@ description : Fire when nav item is clicked, This event is fired when nav item t
   }
 
   setNavbarWidth(navbarwidth: number) {
-    this.navbarwidth = navbarwidth;
-    if ((this.navbarwidth - this.elementref.nativeElement.getBoundingClientRect().left) < 165) {
-      this.enablerightclass = true;
-    }
+
+    setTimeout(() => {
+      this.navbarwidth = navbarwidth;
+      if ((this.navbarwidth - this.elementref.nativeElement.getBoundingClientRect().left) < 165) {
+        this.enablerightclass = true;
+      }
+    }, 0);
+
   }
   //  MODEL BINDING FOR TEXT FIELD
   // The internal dataviews model
@@ -175,4 +204,18 @@ description : Fire when nav item is clicked, This event is fired when nav item t
     this.onTouchedCallback = fn;
   }
 
+  hoverfun() {
+    this.data.forEach((node: any) => {
+      this.ResetHoverattr(node);
+    });
+  }
+
+  ResetHoverattr(node: any) {
+    node.ishover = false;
+    if (node.submenus && (node.submenus.length > 0)) {
+      node.submenus.forEach((element: any) => {
+        this.ResetHoverattr(node.submenus);
+      });
+    }
+  }
 }

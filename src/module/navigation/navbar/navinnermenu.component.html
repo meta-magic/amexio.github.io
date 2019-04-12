@@ -1,0 +1,27 @@
+<ng-container *ngFor="let node of data">
+    <div class="nav-dropdown-content-subnode">
+
+        <div style="padding: 10px">
+            <span *ngIf="submenuposition == 'left' && node.submenus">
+                <i class="fa fa-angle-left" style="padding-bottom:5px" aria-hidden="true"></i>
+                <!-- {{node.text}} -->
+            </span>
+            <span style="padding: 10px">{{node.text}}</span>
+        </div>
+
+        <div style="padding: 10px">
+            <span *ngIf="submenuposition == 'right' && node.submenus">
+                <!-- {{node.text}} -->
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </span>
+            <!-- <span>{{node.text}}</span> -->
+        </div>
+
+        <div [ngClass]="{'innersubmenunodes':submenuposition == 'right', 'innersubmenunodesright':submenuposition == 'left' }" *ngIf="node.submenus">
+            <amexio-nav-innermenu [color]="itemcolor" [submenuposition]="submenuposition" [data]="node.submenus" (navLinkClick)="navItemClick($event)">
+            </amexio-nav-innermenu>
+        </div>
+
+    </div>
+    <br/>
+</ng-container>

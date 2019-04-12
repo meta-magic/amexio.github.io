@@ -1,0 +1,44 @@
+<div class="nav-dropdown">
+    <a class="nav-dropbtn" [ngStyle]="{'color':color}" (mouseover)="onMouseoverTitle($event)" (click)="onHeaderClick($event)">
+        <span>
+            <i *ngIf="icon" [ngClass]="icon"></i>
+        </span>
+        {{title}}
+        <span>
+            <i class="dropdownicon fa fa-angle-down"></i>
+        </span>
+    </a>
+
+    <div class="nav-dropdown-content">
+
+        <a *ngFor="let node of data" (click)="onClick(node, $event)" (mouseover)="onNodeHover(node, $event)">
+
+            <div>
+                <span class="nav-dropdown-content-node">
+                    <i *ngIf="icon" [ngClass]="node.icon"></i>&nbsp;
+                    <span>
+                        <span *ngIf="position == 'left' && node.submenus">
+                            <i class="fa fa-angle-left" style="padding-bottom:5px" aria-hidden="true"></i>
+                        </span>
+                        {{node.text}}
+                        <span *ngIf="position == 'right' && node.submenus">
+                            <i class="fa fa-angle-right" style="float:right ;padding-top:5px" aria-hidden="true"></i>
+
+                        </span>
+                    </span>
+                </span>
+
+                <span [ngClass]="{'submenunodes':position == 'right', 'submenunodesright':position == 'left' }" *ngIf="node.submenus">
+                    <amexio-nav-innermenu [color]="itemcolor" [submenuposition]="position" [data]="node.submenus" (navLinkClick)="navItemClick($event)">
+                    </amexio-nav-innermenu>
+                </span>
+            </div>
+        </a>
+
+        <div *ngIf="type==='menucontainer'" class="nav-menu-container">
+            <a *ngFor="let node of data" (click)="onClick(node, $event)">
+                <i *ngIf="icon" [ngClass]="node.icon"></i>&nbsp;{{node.text}}</a>
+            <ng-content></ng-content>
+        </div>
+    </div>
+</div>
