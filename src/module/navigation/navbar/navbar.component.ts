@@ -113,6 +113,7 @@ description : Color
   lhsWidth = '5%';
   isExpand = false;
   isPhone = false;
+  top: any;
   constructor(public matchMediaService: DeviceQueryService) {
     if (this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone()) {
       this.mobilemode = true;

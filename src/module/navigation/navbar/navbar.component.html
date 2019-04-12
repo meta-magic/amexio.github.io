@@ -1,4 +1,4 @@
-<nav #navbar class="topnav" [ngStyle]="{'color': color}" [ngClass]="{'topnav-mobile':mobilemode, 'transparentNav':transparent}" (window:resize)="resize($event)">
+<nav #navbar class="topnav" [ngStyle]="{'color': color, 'top': top}" [ngClass]="{'topnav-mobile':mobilemode, 'transparentNav':transparent}" (window:resize)="resize($event)">
 
     <div #navbarfixed  [ngClass]="{'lhs-mobile':mobilemode}"
      [ngStyle]="{'flex': !title || !logo ? 'none':''}">
