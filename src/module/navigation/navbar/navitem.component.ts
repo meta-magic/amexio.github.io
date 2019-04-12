@@ -116,15 +116,6 @@ description : Indicate the type of menu-items (link / button / textfield /menu )
     } else if (this.type === 'menucontainer') {
       this.isMenuContainer = true;
     }
-    // this.data.forEach((node: any, index: number) => {
-    //   if (index === (this.data.length - 1)) {
-    //     node['islast'] = true;
-    //   } else {
-    //     node['islast'] = false;
-    //   }
-    //   this.setHoverattr(node);
-    //   this.setSubmenuIcon(node);
-    // });
   }
 
   ngAfterViewInit() {

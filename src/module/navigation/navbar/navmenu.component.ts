@@ -152,26 +152,12 @@ export class AmexioNavMenuComponent implements OnInit {
   getMenuPosition(event: any) {
     const remainingleft = event.currentTarget.getBoundingClientRect().left;
     const remainingright = window.screen.width - event.currentTarget.getBoundingClientRect().right;
-    const componentwidth = event.currentTarget.getBoundingClientRect().width;
     let directionflag: string;
-    let comparevalue;
-    if(remainingright > remainingleft) {
-      // comparevalue = remainingright;
+    if (remainingright > remainingleft) {
       directionflag = 'right';
-
     } else {
-      // comparevalue = remainingright;
       directionflag = 'left';
     }
-
-    // if (remainingright >= componentwidth) {
-    //   directionflag = 'right';
-    //   // return 'right';
-    // } 
-    // if (remainingleft >= componentwidth) {
-    //   directionflag = 'left';
-    //   // return 'left';
-    // }
     return directionflag;
   }
 
@@ -184,7 +170,6 @@ export class AmexioNavMenuComponent implements OnInit {
   }
 
   onMouseoverTitle(event: any) {
-    debugger;
     this.position = this.getMenuPosition(event);
   }
 }

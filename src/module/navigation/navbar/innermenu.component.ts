@@ -125,7 +125,6 @@ export class AmexioInnerNavMenuComponent implements OnInit {
         if (node.submenus && (node.submenus.length > 0)) {
             node.ishover = true;
         }
-        // this.position = this.getMenuPosition(node);
         event.stopPropagation();
     }
 
@@ -145,5 +144,5 @@ export class AmexioInnerNavMenuComponent implements OnInit {
         }
 
     }
- 
+
 }
