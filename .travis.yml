@@ -4,10 +4,10 @@ dist: trusty
 #install google chrome, using addons
 addons:
   apt:
-  #  sources:
-   #   - google-chrome
-    #packages:
-     # - google-chrome-stable
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
   sonarcloud:
     organization: "deepali-arvind-github" # the key of the org you chose at step #3
     token:
