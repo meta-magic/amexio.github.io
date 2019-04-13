@@ -25,7 +25,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
     (click)="onClick($event)"><i *ngIf="icon" [ngClass]="icon"></i>{{title}}</a>
 
     <button *ngIf="(type=='button')" class="top-nav-button" (click)="onClick($event)">
-    <i *ngIf="icon" [ngClass]="icon"></i>{{title}}</button>
+    <i *ngIf="icon" style="padding-right:10px" [ngClass]="icon"></i>{{title}}</button>
   `,
 })
 export class AmexioNavActionComponent implements OnInit {
