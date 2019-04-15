@@ -6727,7 +6727,7 @@ fieldset {
 *****************************************************************************/
 /** tab - Visual CSS **/
 .verticalnavtab .defaultnode {
-  background-color: #6bffff;
+  background-color: #fff;
   color: #001f1f; }
 
 .verticalnavtab .leftactivetab {
