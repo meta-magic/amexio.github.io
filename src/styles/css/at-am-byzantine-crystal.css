@@ -3847,7 +3847,7 @@ input:checked + .toggle-slider:before {
   cursor: default;
   outline: none;
   border-radius: 2em;
-  line-height: 30px;
+  line-height: 31px;
   text-align: center;
   border: none;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2) inset; }
