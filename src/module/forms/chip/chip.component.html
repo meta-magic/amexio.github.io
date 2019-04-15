@@ -1,12 +1,12 @@
 <div  class="chips" id="{{index}}" attr.aria-label="{{label}}"  style="cursor: pointer;" [ngStyle]="{'background-color': color,'filter': selected ? 'contrast(70%)':''}">
-    <amexio-c-icon [customclass]="icon"></amexio-c-icon>
-    <amexio-label  (click)="onLabelClick($event)">
-      <span [style.color]="fontcolor" style="cursor: pointer;padding-left:10px">
-        {{label}}
-      </span>
-    </amexio-label>
-    <span class="badge" *ngIf="badge">{{badge}}</span>
-    <span  *ngIf="closable">      
-      <i class="fa fa-times" style="cursor: pointer; margin-left:10px" (click)="onCloseClick($event) "></i>
+  <amexio-c-icon [customclass]="icon"></amexio-c-icon>
+  <amexio-label  (click)="onLabelClick($event)">
+    <span [style.color]="fontcolor" style="cursor: pointer;padding-left:10px;">
+      {{label}}
     </span>
-  </div>
+  </amexio-label>
+  <span class="badge" *ngIf="badge">{{badge}}</span>
+  <span  *ngIf="closable">      
+    <i class="fa fa-times" style="cursor: pointer; margin-left:10px" (click)="onCloseClick($event)"></i>
+  </span>
+</div>

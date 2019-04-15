@@ -49,16 +49,7 @@ version : 5.3.1onwards
 default :
 description : The color is for determining color of particular chip.
 */
-  @Input ('color') color: any;
-   /*
-Properties
-name : color
-datatype :
-version : 5.3.1onwards
-default :
-description : The color is for determining color of particular chip.
-*/
-@Input ('font-color') fontcolor: 'black';
+  @Input('color') color: any;
   /*
 Properties
 name : badge
@@ -76,6 +67,15 @@ version : 5.3.1onwards
 default :
 description : The closeable is for closing particular chip.
 */
+  /*
+Properties
+name : color
+datatype :
+version : 5.3.1onwards
+default :
+description : The color is for determining color of particular chip.
+*/
+  @Input('font-color') fontcolor = 'red';
   @Input('closable') closable: false;
   /*
     Events
@@ -96,27 +96,18 @@ description : The closeable is for closing particular chip.
    */
   @Output() labelClick: any = new EventEmitter<any>();
 
- @Input('index') index: string;
+  @Input('index') index: string;
 
- @Input('selected') selected: boolean;
+  @Input('selected') selected: boolean;
+
   constructor() {
   }
   onCloseClick(event: any) {
-    this.closeClick.emit(this.createObject());
+    this.closeClick.emit(event);
   }
   onLabelClick(event: any) {
-    this.labelClick.emit(this.createObject());
+    this.labelClick.emit(event);
   }
   ngOnInit() {
-  }
-  createObject(): object {
-    const obj = {};
-    obj['icon'] = this.icon;
-    obj['label'] = this.label;
-    obj['badge'] = this.badge;
-    obj['closable'] = this.closable;
-    obj['color'] = this.color;
-    obj['fontcolor'] = this.fontcolor;
-    return obj;
   }
 }
