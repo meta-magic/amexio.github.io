@@ -1854,8 +1854,12 @@ input:checked + .toggle-slider:before {
 
 .ui-slider .ui-slider-range {
   font-size: 0.7em;
-  background: linear-gradient(#40434D, #000000);
+  background: rgba(255, 253, 208, 0.4);
   /** use card header here **/ }
+
+.ui-slider .ui-slider-handle {
+  background: linear-gradient(#40434D, #000000);
+  color: #FEE12B; }
 
 .ui-widget-header {
   background: #292b2c 0 0 repeat-x;
@@ -1893,7 +1897,7 @@ input:checked + .toggle-slider:before {
   height: .8em; }
 
 .ui-slider-horizontal .ui-slider-handle {
-  top: -.25em;
+  top: -.55em;
   margin-left: -.6em; }
 
 .ui-slider-horizontal .ui-slider-range {
@@ -1911,7 +1915,7 @@ input:checked + .toggle-slider:before {
   height: 100px; }
 
 .ui-slider-vertical .ui-slider-handle {
-  left: -.25em;
+  left: -.45em;
   margin-left: 0;
   margin-bottom: -.6em; }
 
@@ -1997,14 +2001,13 @@ input:checked + .toggle-slider:before {
 .ui-slider .ui-slider-handle {
   position: absolute;
   z-index: 0;
-  width: 17px !important;
+  width: 21px !important;
   height: 21px !important;
   cursor: default;
-  background: url("slider.png") 0 0 no-repeat;
   outline: none;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
-  border-radius: 0;
+  border-radius: 3em;
   border: none; }
 
 /****************************************************************************

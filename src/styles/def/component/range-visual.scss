@@ -18,8 +18,13 @@
 }
 .ui-slider .ui-slider-range {
   font-size: $rangeSliderFontSize;
-  background: $rangeSliderBGColor;   /** use card header here **/
+  background: $sliderHoverColor;   /** use card header here **/
 }
+.ui-slider .ui-slider-handle {
+  background: $rangeSliderBGColor;
+  color: $rangeHeaderColor;
+ }
+ 
 
 .ui-widget-header {
   background: $rangeWidgetBG1 0 0 repeat-x;
