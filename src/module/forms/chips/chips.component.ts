@@ -51,7 +51,8 @@ export class AmexioChipsComponent implements AfterContentInit {
   chipindex = -1;
   prevchipindex = -1;
   chiplabel: any;
- documentClickListener: any;
+  documentClickListener: any;
+  obj: any = {};
   constructor(public renderer: Renderer2) {
     this.componentId = 'chips' + Math.floor(Math.random() * 1000 + 999);
   }
@@ -77,46 +78,58 @@ export class AmexioChipsComponent implements AfterContentInit {
             }
           });
         }
-    });
+      });
   }
   onCloseChipsClick(item: any) {
     if (this.chipindex > -1) {
       this.data[this.chipindex]['selected'] = false;
-      }
+    }
     if (this.data.length > 0) {
-    this.data.forEach((element: any, index: number) => {
-      if (element.label === item.label) {
-        this.data.splice(index, 1);
-      }
-    });
-    this.emitSelectedLabel(item);
-   }
- }
- closeFocusedChip(item: any, chipdata: any) {
-  let closeindex: number;
-  let emitdata: any;
-  const obj = {};
-  if (this.data.length > 0) {
-    chipdata.forEach((element: any, index: number) => {
-      if (chipdata[index]['selected'] === true) {
-        emitdata = element;
-        this.chiplabel = chipdata[index]['label'] + 'closed';
-        this.data.splice(index, 1);
-        closeindex = index;
-      }
-    });
-    obj['icon'] = emitdata.icon;
-    obj['label'] = emitdata.label;
-    obj['badge'] = emitdata.badge;
-    obj['closable'] = emitdata.closable;
-    obj['color'] = emitdata.color;
-    this.closeChip(closeindex);
-    this.emitSelectedLabel(obj);
+      this.data.forEach((element: any, index: number) => {
+        if (element.label === item.label) {
+          this.data.splice(index, 1);
+        }
+      });
+      this.emitSelectedLabel(item);
+    }
   }
-}
+  closeFocusedChip(item: any, chipdata: any) {
+    let closeindex: number;
+    let emitdata: any;
+    this.obj = {};
+    if (this.data.length > 0) {
+      chipdata.forEach((element: any, index: number) => {
+        if (chipdata[index]['selected'] === true) {
+          emitdata = element;
+          this.chiplabel = chipdata[index]['label'] + 'closed';
+          this.data.splice(index, 1);
+          closeindex = index;
+        }
+      });
+      this.obj['icon'] = emitdata.icon;
+      this.obj['label'] = emitdata.label;
+      this.obj['badge'] = emitdata.badge;
+      this.obj['closable'] = emitdata.closable;
+      this.obj['color'] = emitdata.color;
+
+      this.closeChip(closeindex);
+      this.emitSelectedLabel(chipdata);
+    }
+  }
 
   emitSelectedLabel(item: any) {
-    this.selectedchipsData.emit(item);
+    const cloneNode = JSON.parse(JSON.stringify(item));
+    delete cloneNode['index'];
+    if (this.chipCollection.length > 0) {
+      this.obj['icon'] = item.icon;
+      this.obj['label'] = item.label;
+      this.obj['badge'] = item.badge;
+      this.obj['closable'] = item.closable;
+      this.obj['color'] = item.color;
+      this.selectedchipsData.emit(this.obj);
+    } else {
+      this.selectedchipsData.emit(cloneNode);
+    }
   }
   generateIndex() {
     this.data.forEach((element, index) => {
@@ -126,8 +139,8 @@ export class AmexioChipsComponent implements AfterContentInit {
   }
   onchipsKeyup(event: any) {
     if (this.data.length > 0) {
-    this.navigateChips(event);
-     }
+      this.navigateChips(event);
+    }
   }
   navigateChips(event: any) {
     if (event.keyCode === 37) {

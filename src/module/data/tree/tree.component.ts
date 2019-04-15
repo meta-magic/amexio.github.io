@@ -354,8 +354,19 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
         }
     }
     onNodeClick(node: any) {
-        this.nodeClick.emit(node);
+        const cloneNode = JSON.parse(JSON.stringify(node));
+        this.cloneMethod(cloneNode);
+        this.nodeClick.emit(cloneNode);
         this.activateNode(this.data, node);
+    }
+
+    cloneMethod(cloneNode: any) {
+        delete cloneNode['elementId'];
+        if (cloneNode.children) {
+            cloneNode.children.forEach((element: any) => {
+                this.cloneMethod(element);
+            });
+        }
     }
     generateIndex(data: any, parentId: number, rannumber: any) {
         data.forEach((element: any, index: number) => {
