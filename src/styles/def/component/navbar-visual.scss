@@ -22,6 +22,10 @@
     color: $navbarColor;
 }
 
+.topnavmainbarinneritems .nav-dropdown-content-transparent {
+    background-color: transparent !important;
+}
+
 // .topnavmainbarinneritems .nav-dropdown-content:hover {
 //     //display: none;
 //     background-color: $navbarHoverBG;
