@@ -62,6 +62,8 @@ export class AmexioRangeSliderComponent implements OnDestroy, OnInit, ControlVal
 
   @Input() style: any;
 
+  @Input('type') type: string;
+
   fullRange = false;
 
   @Input() styleClass: string;
