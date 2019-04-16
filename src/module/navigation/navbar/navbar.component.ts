@@ -91,6 +91,8 @@ description : Color
 
   @Output() onIconClick: any = new EventEmitter<any>();
 
+  @Output() navSubmenuClick: any = new EventEmitter<any>();
+
   @ContentChildren(AmexioNavItemComponent) navitems: QueryList<AmexioNavItemComponent>;
 
   navItemComponents: AmexioNavItemComponent[];

@@ -72,6 +72,7 @@ export class AmexioNavMenuComponent implements OnInit {
   description : Fire when nav item is clicked, This event is fired when nav item type is defined as 'link/button/menu'
   */
   @Output() navLinkClick: any = new EventEmitter<any>();
+  @Output() onNavItemClick: any = new EventEmitter<any>();
 
   mobilemode = false;
   issubmenu = false;
@@ -90,16 +91,6 @@ export class AmexioNavMenuComponent implements OnInit {
 
   setMobileMode(flag: boolean) {
     this.mobilemode = flag;
-  }
-  onClick(_node: any, _event: any) {
-    const n = {
-      title: this.title,
-      data: this.data,
-      icon: this.icon,
-      node: _node,
-      mobilemode: this.mobilemode,
-    };
-    this.navLinkClick.emit(this.dataObject(n, _event));
   }
   dataObject(n: any, _event: any): any {
     return { data: n, event: _event };
@@ -171,5 +162,21 @@ export class AmexioNavMenuComponent implements OnInit {
 
   onMouseoverTitle(event: any) {
     this.position = this.getMenuPosition(event);
+  }
+
+  onClick(_node: any, _event: any) {
+    const n = {
+      title: this.title,
+      data: this.data,
+      icon: this.icon,
+      node: _node,
+      mobilemode: this.mobilemode,
+    };
+    this.onNavItemClick.emit(this.dataObject(n, _event));
+  }
+
+  navItemClick(event: any) {
+    event.event.stopPropagation();
+    this.onNavItemClick.emit(event);
   }
 }

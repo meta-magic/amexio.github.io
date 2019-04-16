@@ -6,7 +6,7 @@
                 <i class="fa fa-angle-left" style="padding-bottom:5px" aria-hidden="true"></i>
                 <!-- {{node.text}} -->
             </span>
-            <span style="padding: 10px">{{node.text}}</span>
+            <span (click)="onClick(node, $event)" style="padding: 10px">{{node.text}}</span>
         </div>
 
         <div style="padding: 10px">
