@@ -2,7 +2,7 @@
   <amexio-c-icon [customclass]="icon"></amexio-c-icon>
   <amexio-label  (click)="onLabelClick($event)">
     <span [style.color]="fontcolor" style="cursor: pointer;padding-left:10px;">
-      {{label}}
+      {{item[displayfield]}}
     </span>
   </amexio-label>
   <span class="badge" *ngIf="badge">{{badge}}</span>
