@@ -11,6 +11,8 @@ export class ViewportContentBodyComponent implements OnInit {
 
   @Input('scrollable') scrollable = false;
 
+  navbarOpacity: boolean;
+
   constructor() { }
 
   ngOnInit() { }
