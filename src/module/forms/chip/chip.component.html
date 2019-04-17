@@ -1,7 +1,7 @@
 <div  class="chips" id="{{index}}" attr.aria-label="{{label}}"  style="cursor: pointer;" [ngStyle]="{'background-color': color,'filter': selected ? 'contrast(70%)':''}">
   <amexio-c-icon [customclass]="icon"></amexio-c-icon>
   <amexio-label  (click)="onLabelClick($event)">
-    <span [style.color]="fontcolor" style="cursor: pointer;padding-left:10px;">
+    <span [style.color]="fontcolor" style="cursor: pointer;"[ngStyle]="{'padding-left': icon ? '10px':'0px'}">
       {{item[displayfield]}}
     </span>
   </amexio-label>

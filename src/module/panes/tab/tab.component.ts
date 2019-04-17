@@ -158,15 +158,15 @@ export class AmexioTabComponent extends LifeCycleBaseComponent implements AfterC
    */
   @Input('default-context-menu') defaultContextMenu: boolean;
 
-   /*
- Properties
- name : active-bg-color
- datatype : boolean
- version : 5.9.3 onwards
- default : false
- description : sets background color for active tab
- */
-@Input('active-bg-color') activeBGColor: boolean;
+  /*
+Properties
+name : active-bg-color
+datatype : boolean
+version : 5.9.3 onwards
+default : false
+description : sets background color for active tab
+*/
+  @Input('active-bg-color') activeBGColor: boolean;
 
   /*
    Events
@@ -838,5 +838,62 @@ export class AmexioTabComponent extends LifeCycleBaseComponent implements AfterC
   ngOnDestroy(): void {
     this.removeListner();
     super.ngOnDestroy();
+  }
+  showTab(input: any) {
+    if (typeof input === 'string') {
+      this.tabCollection.forEach((tabs: any) => {
+        if (input.trim().toLowerCase() !== tabs.title.trim().toLowerCase()) {
+          tabs.hide = true;
+          tabs['showflag'] = true;
+          tabs.active = false;
+        } else {
+          tabs.hide = false;
+          tabs['showflag'] = false;
+          tabs.active = true;
+        }
+        this.asignTabPillClass(tabs);
+      });
+    }else if (typeof input === 'number') {
+      this.tabCollection.forEach((tabs: any, index: any) => {
+        if (index !== input) {
+          tabs.hide = true;
+          tabs['showflag'] = true;
+          tabs.active = false;
+        } else {
+          tabs.hide = false;
+          tabs['showflag'] = false;
+          tabs.active = true;
+        }
+      });
+    }
+  }
+  // Method to hide tab
+  hideTab(input: any) {
+    if (typeof input === 'string') {
+      this.tabCollection.forEach((tabs: any, index: any) => {
+        if (input.trim().toLowerCase() === tabs.title.trim().toLowerCase() && tabs.active) {
+          const i = index + 1;
+          tabs.hide = false;
+          this.tabCollection[i].active = true;
+          const newTab = this.tabCollection[i];
+          tabs.active = false;
+          tabs['showflag'] = true;
+          this.asignTabPillClass(newTab);
+        } else if (input.trim().toLowerCase() === tabs.title.trim().toLowerCase() && !tabs.active) {
+          tabs.hide = true;
+          tabs['showflag'] = true;
+        }
+      });
+    }else if (typeof input === 'number') {
+      this.tabCollection.forEach((tabs: any, index: any) => {
+        if (index !== input) {
+          tabs.hide = true;
+          tabs['showflag'] = false;
+        } else {
+          tabs.hide = false;
+          tabs['showflag'] = true;
+        }
+      });
+    }
   }
 }
