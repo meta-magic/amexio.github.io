@@ -19,6 +19,8 @@ export class ViewportComponent implements AfterContentInit, OnInit {
 
   @Input('type') type = '1';
 
+  @Input('page-color') pageColor = 'black';
+
   @HostListener('window:scroll', [])
   onWindowScroll($event: any) {
     if ((this.type === '2') && (this.scrollable && window.scrollY > 0)) {
@@ -42,6 +44,9 @@ export class ViewportComponent implements AfterContentInit, OnInit {
   constructor() { }
 
   ngOnInit() {
+
+    document.body.style.backgroundColor = this.pageColor;
+
     if (this.scrollable) {
       this.overflow = 'auto';
     } else {
