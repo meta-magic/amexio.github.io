@@ -57,11 +57,9 @@ export class AmexioTypeAheadComponent extends ListBaseComponent<string> implemen
 
   private _fieldlabel: string;
   private _haslabel: boolean;
-  private _data: any;
   private _key: any;
   public viewdata: any;
   public displayValue = '';
-  private componentLoaded: boolean;
 
   /*
    Properties
@@ -106,8 +104,18 @@ export class AmexioTypeAheadComponent extends ListBaseComponent<string> implemen
    default :
    description : Local data for dropdown.
    */
-  @Input('data') data: any;
-
+  _data: any;
+  componentLoaded: boolean;
+  @Input('data')
+  set data(value: any) {
+    this._data = value;
+    if (this.componentLoaded) {
+      this.setData(this._data);
+    }
+  }
+  get data(): any {
+    return this._data;
+  }
   @Input('key')
   set key(v: any) {
     this._key = v;
