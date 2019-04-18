@@ -67,8 +67,18 @@ version : 4.0 onwards
 default :
 description : Input data source
 */
-  @Input() data: any;
-  /*
+  _data: any;
+  componentLoaded: boolean;
+  @Input('data')
+  set data(value: any) {
+    this._data = value;
+    if (this.componentLoaded) {
+      this.setData(this._data);
+    }
+  }
+  get data(): any {
+    return this._data;
+  }  /*
  Properties
  name : data-reader
  datatype : string
@@ -275,6 +285,7 @@ description : On field focus event
       this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
     }
+    this.componentLoaded = true;
   }
 
   navigateKey(event: any) {
