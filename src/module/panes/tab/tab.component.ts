@@ -853,7 +853,7 @@ description : sets background color for active tab
         }
         this.asignTabPillClass(tabs);
       });
-    }else if (typeof input === 'number') {
+    } else if (typeof input === 'number') {
       this.tabCollection.forEach((tabs: any, index: any) => {
         if (index !== input) {
           tabs.hide = true;
@@ -884,7 +884,7 @@ description : sets background color for active tab
           tabs['showflag'] = true;
         }
       });
-    }else if (typeof input === 'number') {
+    } else if (typeof input === 'number') {
       this.tabCollection.forEach((tabs: any, index: any) => {
         if (index !== input) {
           tabs.hide = true;
@@ -895,5 +895,56 @@ description : sets background color for active tab
         }
       });
     }
+  }
+  disableTab(input: any, flag: boolean) {
+    if (typeof input === 'string') {
+      this.tabCollection.forEach((tabs: any) => {
+        if (input.trim().toLowerCase() === tabs.title.trim().toLowerCase()) {
+          tabs.disabled = true;
+          flag = true;
+        }
+        this.asignTabPillClass(tabs);
+      });
+    } else if (typeof input === 'number') {
+      this.tabCollection.forEach((tabs: any, index: any) => {
+        if (index === input) {
+          tabs.disabled = true;
+          flag = true;
+        }
+        this.asignTabPillClass(tabs);
+      });
+    } else if (typeof input === 'object') {
+      this.disabledsplitmethod(input, flag);
+    }
+  }
+  disabledsplitmethod(input: any, flag: any) {
+    input.forEach((element: string) => {
+      if (typeof element === 'string') {
+        this.tabCollection.forEach((tabs: any) => {
+          if (element.trim().toLowerCase() === tabs.title.trim().toLowerCase()) {
+            tabs.disabled = true;
+            flag = true;
+          }
+          this.asignTabPillClass(tabs);
+        });
+      } else if (typeof element === 'number') {
+        this.tabCollection.forEach((tabs: any, index: any) => {
+          if (index === element) {
+            tabs.disabled = true;
+            flag = true;
+          }
+          this.asignTabPillClass(tabs);
+        });
+      }
+    });
+  }
+  getCurrentTab() {
+    let currentindex;
+    this.tabCollection.forEach((tabs: any, index: any) => {
+      if (tabs.active === true) {
+        currentindex = index;
+      }
+    });
+    return currentindex;
   }
 }
