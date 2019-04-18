@@ -1,12 +1,19 @@
-<div  class="chips" id="{{index}}" attr.aria-label="{{label}}"  style="cursor: pointer;" [ngStyle]="{'background-color': color,'filter': selected ? 'contrast(70%)':''}">
+<div class="chips" id="{{index}}" attr.aria-label="{{label}}" style="cursor: pointer;" [ngStyle]="{'background-color': color,'filter': selected ? 'contrast(70%)':''}">
   <amexio-c-icon [customclass]="icon"></amexio-c-icon>
-  <amexio-label  (click)="onLabelClick($event)">
-    <span [style.color]="fontcolor" style="cursor: pointer;"[ngStyle]="{'padding-left': icon ? '10px':'0px'}">
+  <amexio-label (click)="onLabelClick()">
+    <ng-container *ngIf="!label">
+    <span [style.color]="fontcolor" style="cursor: pointer;" [ngStyle]="{'padding-left': icon ? '10px':'0px'}">
       {{item[displayfield]}}
     </span>
+  </ng-container>
+  <ng-container *ngIf="label">
+    <span [style.color]="fontcolor" style="cursor: pointer;" [ngStyle]="{'padding-left': icon ? '10px':'0px'}">
+      {{label}}
+    </span>
+  </ng-container>
   </amexio-label>
   <span class="badge" *ngIf="badge">{{badge}}</span>
-  <span  *ngIf="closable">      
-    <i class="fa fa-times" style="cursor: pointer; margin-left:10px" (click)="onCloseClick($event)"></i>
+  <span *ngIf="closable">
+    <i class="fa fa-times" style="cursor: pointer; margin-left:10px" (click)="onCloseClick()"></i>
   </span>
 </div>
