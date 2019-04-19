@@ -21,7 +21,10 @@ import { ModuleWithProviders } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AmexioHomePageComponent } from './../creative/homepage/homepage.component';
 
+import { AmexioCarouselCEComponent } from './carousel/amexio.carouselce.component';
 import { AmexioProgressCEComponent } from './progressbar/progressce.component';
+
+import { AmexioMediaModule } from '../media/amexio.media.module';
 
 import { AmexioCardCEComponent } from './../creative/card/amexio.cards.component';
 import { AmexioCardCEActionComponent } from './../creative/common/amexio.action.component';
@@ -83,6 +86,7 @@ const CREATIVE_COMPONENTS = [
   ViewportBackgroundComponent,
   ViewportContentComponent,
   ViewportContentBodyComponent,
+  AmexioCarouselCEComponent,
 ];
 
 @NgModule({
@@ -94,6 +98,7 @@ const CREATIVE_COMPONENTS = [
     AmexioNavModule,
     AmexioLayoutModule,
     AmexioPaneModule,
+    AmexioMediaModule,
     AmexioCommonModule.forRoot(),
   ],
   exports: CREATIVE_COMPONENTS,
