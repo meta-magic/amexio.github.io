@@ -1,6 +1,6 @@
 <div class="chips" id="{{index}}" attr.aria-label="{{label}}" style="cursor: pointer;" [ngStyle]="{'background-color': color,'filter': selected ? 'contrast(70%)':''}">
   <amexio-c-icon [customclass]="icon"></amexio-c-icon>
-  <amexio-label (click)="onLabelClick()">
+  <amexio-label (click)="onLabelClick($event)">
     <ng-container *ngIf="!label">
     <span [style.color]="fontcolor" style="cursor: pointer;" [ngStyle]="{'padding-left': icon ? '10px':'0px'}">
       {{item[displayfield]}}
@@ -14,6 +14,6 @@
   </amexio-label>
   <span class="badge" *ngIf="badge">{{badge}}</span>
   <span *ngIf="closable">
-    <i class="fa fa-times" style="cursor: pointer; margin-left:10px" (click)="onCloseClick()"></i>
+    <i class="fa fa-times" style="cursor: pointer; margin-left:10px" (click)="onCloseClick($event)"></i>
   </span>
 </div>

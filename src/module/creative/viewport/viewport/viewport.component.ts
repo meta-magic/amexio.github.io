@@ -56,6 +56,14 @@ export class ViewportComponent implements AfterContentInit, OnInit {
 
   ngAfterContentInit() {
     this.contentCollection = this.queryContent.toArray();
+    if (this.type === '2') {
+      this.contentCollection.forEach((element: any) => {
+        if (element.contentTemplate.navTemplate) {
+          element.contentTemplate.navTemplate.opacity = 0.7;
+          element.contentTemplate.navTemplate.top = 'unset';
+        }
+      });
+    }
     if (this.scrollable) {
       this.contentCollection.forEach((element: any) => {
         element.internalScroll = false;

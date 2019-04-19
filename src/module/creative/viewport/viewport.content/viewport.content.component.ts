@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewInit, Component, ContentChild, Input, OnInit} from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, ContentChild, Input, OnInit } from '@angular/core';
 import { ViewportBackgroundComponent } from '../viewport.background/viewport.background.component';
 import { ViewportContentBodyComponent } from '../viewport.content.body/viewport.content.body.component';
 
@@ -18,12 +18,15 @@ export class ViewportContentComponent implements OnInit, AfterContentInit, After
 
   height: string;
 
+  bgvid: any;
+
   @Input('scrollable') scrollable = false;
 
   // For internal use
   internalScroll: boolean;
 
   backgroundColor: string;
+  tempUrl: string;
   ngOnInit() {
 
   }
@@ -33,10 +36,20 @@ export class ViewportContentComponent implements OnInit, AfterContentInit, After
   }
 
   ngAfterContentInit() {
+    if (this.bgImageTemplate.backgroundColor) {
+      this.backgroundColor = this.bgImageTemplate.backgroundColor;
+    }
+    // IMAGE
+    if (this.bgImageTemplate.imagePath) {
+      this.backgroundCss = 'bgCss' + Math.floor(Math.random() * 1000) + 'backgound';
+      this.insertStyleSheetRule('.' + this.backgroundCss + '{ background-image: url(' + this.bgImageTemplate.imagePath + ')}');
+    }
 
-    this.backgroundCss = 'bgCss' + Math.floor(Math.random() * 1000) + 'backgound';
-    this.backgroundColor = this.bgImageTemplate.backgroundColor;
-    this.insertStyleSheetRule('.' + this.backgroundCss + '{ background-image: url(' + this.bgImageTemplate.imagePath + ')}');
+    // VIDEO
+    if (this.bgImageTemplate.videoPath) {
+      this.bgvid = 'videoId' + Math.floor(Math.random() * 1000);
+      this.tempUrl = this.bgImageTemplate.videoPath;
+    }
   }
 
   insertStyleSheetRule(ruleText: any) {

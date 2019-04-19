@@ -81,6 +81,8 @@ description : Color
 */
 @Input('color') color: string;
 
+opacity: number;
+
   // THIS IS LOCAL USE NOT EXPOSED
   @Input('home-page-type') homepageType: string;
   @Output() onNavLogoClick: any = new EventEmitter<any>();

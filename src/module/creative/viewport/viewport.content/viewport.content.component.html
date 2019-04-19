@@ -5,3 +5,11 @@
         <ng-content select="amexio-viewport-content-body"></ng-content>
 
 </div>
+
+<video id="{{bgvid}}" playsinline autoplay muted loop>
+    <source
+    src="{{tempUrl}}">
+<div class="viewportBody" [ngStyle]="{'overflow-y': internalScroll ? 'scroll' : 'hidden',
+'background-color':backgroundColor, 'height':height}">
+</div>
+<ng-content select="amexio-viewport-content-body"></ng-content>
