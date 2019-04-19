@@ -18,7 +18,7 @@
 import { HttpClient } from '@angular/common/http';
 
 import {
-  Component, ContentChildren, Input, OnDestroy, OnInit, QueryList,
+  Component, ContentChild, Input, OnDestroy, OnInit, QueryList, TemplateRef,
 } from '@angular/core';
 import { CommonDataService } from '../../services/data/common.data.service';
 
@@ -76,7 +76,7 @@ description : Local Data binding.
   previousTitle: any;
   centerTitle: any;
   nextTitle: any;
-
+  @ContentChild('amexioCreativeCarousel') creativeCarousel: TemplateRef<any>;
   constructor(public http: HttpClient, private dataService: CommonDataService) {
   }
 

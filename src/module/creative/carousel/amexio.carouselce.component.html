@@ -3,15 +3,13 @@
         <div class="ce-caroueslimages">
             <amexio-image [path]="centerImagePath">
             </amexio-image>
-            <ng-content></ng-content>
-            <ng-template [ngTemplateOutlet]="notificationTemplate">
-
-            </ng-template>
         </div>
 
-        <div class="ce-caroueslloading" style="display: none;">Loading...</div>
+        <div class="ce-carousel-textdata">
+            <ng-template [ngTemplateOutlet]="creativeCarousel">
+            </ng-template>
+        </div>
         <div class="ce-caroueslbar">
-
             <div class="ce-caroueslnav">
                 <a class="ce-caroueslnav-prev">
                     <span>Previous</span>
