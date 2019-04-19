@@ -947,4 +947,45 @@ description : sets background color for active tab
     });
     return currentindex;
   }
+  deleteTab(input: any) {
+    if (typeof input === 'string') {
+      this.tabCollection.forEach((tabs: any) => {
+        if (input.trim().toLowerCase() === tabs.title.trim().toLowerCase()) {
+          this.closeTab(tabs);
+        }
+      });
+    } else if (typeof input === 'number') {
+      this.tabCollection.forEach((tabs: any, index: any) => {
+        if (index === input) {
+          this.closeTab(tabs);
+        }
+      });
+    }else if (typeof input === 'object') {
+      this.deletetypeObject(input);
+    }
+  }
+  deletetypeObject(input: any) {
+    input.forEach((element: any) => {
+      if (typeof element === 'string') {
+        this.tabCollection.forEach((tabs: any) => {
+          if (element.trim().toLowerCase() === tabs.title.trim().toLowerCase()) {
+            this.closeTab(tabs);
+          }
+        });
+      } else if (typeof element === 'number') {
+        this.tabCollection.forEach((tabs: any, index: any) => {
+          if (element === index) {
+            this.closeTab(tabs);
+          }
+        });
+      }
+    });
+  }
+  replaceTab(input: number, replacetab: any) {
+    this.tabCollection.forEach((tabs: any, index: any) => {
+      if (input === index) {
+        tabs.title = replacetab;
+      }
+    });
+  }
 }
