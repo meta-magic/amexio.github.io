@@ -1,16 +1,20 @@
 
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+.ce-carousel-textdata{
+    position: absolute;
+    left: 0%;
+    height: 410px;
+    float: left;
+}
+
 .ce-caroueslslideshow{
-    /* overflow: -webkit-paged-x; */
     width: 820px;
     height: 410px;
-    display: -webkit-box;
+    display: inline-flex;
     position: relative;
     margin: 0 auto;
-    background: #fff;
-    border-top: 5px solid #d0ab47;
-    -webkit-box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-    -moz-box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-    box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  
 }
 
 .ce-caroueslimages{
@@ -19,13 +23,11 @@
     position: relative;
 }
 .ce-caroueslbar{
-    background:  #ccffff;
     height: 74px;
     position: absolute;
     bottom: 0px;
     right: 50px;
     left: 50px;
-    color: #f8f8f8;
 	z-index: 999;
 }
 .ce-caroueslnav-content{
@@ -40,11 +42,8 @@
 .ce-caroueslnav-content div{
     float: left;
     width: 130px;
-    color:#aaa;
 }
-.ce-caroueslnav-content span{
-    color:#777;
-}
+
 .ce-caroueslnav-content div.ce-caroueslnav-content-current{
     text-align: center;
     width: 280px;
@@ -54,18 +53,13 @@
     margin-left:-140px;
 }
 
-.ce-caroueslnav-content-current span{
-    color:#ecb828;
-}
 .ce-caroueslnav-content div.ce-caroueslnav-content-prev{
     margin-left: 20px;
-    color: orange;
 }
 .ce-caroueslnav-content div.ce-caroueslnav-content-next{
     text-align: right;
     margin-right: 20px;
     float:right;
-    color: orange;
 }
 .ce-caroueslnav-content div span{
     display: block;
@@ -107,12 +101,7 @@ a.ce-caroueslnav-next{
 	-ms-transition: all 0.4s ease;
 	transition: all 0.4s ease;
 }
-.ce-caroueslnav a.ce-caroueslnav-prev span{
-    background: #003566 url(https://i.ibb.co/wgJFSLh/prev.png) no-repeat center center;
-}
-.ce-caroueslnav a.ce-caroueslnav-next span{
-    background: #114066 url(https://i.ibb.co/bsGQGBs/next.png) no-repeat center center;
-}
+
 .ce-caroueslnav a div{
     width: 0px;
     height: 0px;
@@ -142,7 +131,6 @@ a.ce-caroueslnav-next{
     opacity: 0.6;
     margin: -50px 0 0 -50px;
     background-size: 22px 32px;
-    background-color:#a8872d;
 }
 .ce-caroueslnav a:hover div{
     width: 90px;

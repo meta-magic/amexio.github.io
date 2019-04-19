@@ -1,0 +1,47 @@
+
+.ce-carousel-textdata{
+    color: $carouselHeaderFontColor;
+    background: transparent url(https://i.ibb.co/Px4vFwF/bar.png) repeat top left;
+
+}
+
+.ce-caroueslbar{
+    background: transparent url(https://i.ibb.co/Px4vFwF/bar.png) repeat top left;
+    color: $carouselHeaderFontColor;
+}
+
+.ce-caroueslnav-content div{
+   
+    color: $carouselHeaderFontColor;
+}
+.ce-caroueslnav-content span{
+    color: $carouselHeaderFontColor;
+}
+
+.ce-caroueslnav-content-current span{
+    color:$carouselFontColor;
+}
+.ce-caroueslnav-content div.ce-caroueslnav-content-prev{
+ 
+    color: $carouselHeaderFontColor;
+}
+.ce-caroueslnav-content div.ce-caroueslnav-content-next{
+   
+    color: $carouselHeaderFontColor;
+}
+
+.ce-caroueslnav a.ce-caroueslnav-prev span{
+    background: $carouselHoverBG url(https://i.ibb.co/wgJFSLh/prev.png) no-repeat center center;
+}
+.ce-caroueslnav a.ce-caroueslnav-next span{
+    background: $carouselHoverBG url(https://i.ibb.co/bsGQGBs/next.png) no-repeat center center;
+}
+
+
+.ce-caroueslnav a:hover span{
+  
+    background-color: $carouselHeaderBGColor
+}
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
