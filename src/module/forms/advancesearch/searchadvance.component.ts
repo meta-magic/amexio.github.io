@@ -38,7 +38,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 export class AmexioSearchAdvanceComponent implements OnInit {
   @Input() title = 'Advance Search';
-  @Input('form-width') formwidth: number;
+  @Input('form-width') formwidth = 0;
   advanceSearchFlag = false;
   constructor() { }
   closeSearchForm() {

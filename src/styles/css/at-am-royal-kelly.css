@@ -3297,7 +3297,8 @@ input:checked + .toggle-slider:before {
   padding: .5%; }
 
 .dropdownposition {
-  position: absolute; }
+  position: absolute;
+  z-index: 1; }
 
 .search-form-label {
   font-weight: bold; }

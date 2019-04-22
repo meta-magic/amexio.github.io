@@ -2981,7 +2981,8 @@ input:checked + .toggle-slider:before {
   padding: .5%; }
 
 .dropdownposition {
-  position: absolute; }
+  position: absolute;
+  z-index: 1; }
 
 .search-form-label {
   font-weight: bold; }
@@ -9595,6 +9596,23 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
   height: 100%;
   overflow-x: hidden; }
 
+video {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  transform: translateX(-50%) translateY(-50%);
+  /*  background: url('//demosthenes.info/assets/images/polina.jpg') no-repeat; */
+  background-size: cover;
+  transition: 1s opacity; }
+
+.stopfade {
+  opacity: .5; }
+
 /** menubar - Vars CSS **/
 /** menubar - Visual CSS **/
 /****************************************************************************
@@ -9604,7 +9622,8 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
 /** creative carousel - var CSS **/
 /** creative carousel - Visual CSS **/
 .ce-carousel-textdata {
-  color: #131111; }
+  color: #131111;
+  background: transparent url(https://i.ibb.co/Px4vFwF/bar.png) repeat top left; }
 
 .ce-caroueslbar {
   background: transparent url(https://i.ibb.co/Px4vFwF/bar.png) repeat top left;
@@ -9640,7 +9659,6 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
 .ce-carousel-textdata {
   position: absolute;
   left: 0%;
-  width: 820px;
   height: 410px;
   float: left; }
 
