@@ -1,0 +1,115 @@
+<!--this div contains fieldlabel inputbox and icon -->
+<div tabindex="{{inputtabindex}}" (keyup.enter)="openPicker(rootDiv)" aria-label="datetimepicker push button" class="inputgroup"
+    *ngIf="!inlineDatepicker" #rootDiv>
+
+    <label>
+        {{fieldlabel}}
+    </label>
+    <!-- datepicker input -->
+    <ng-container *ngIf="datepicker && !timepicker">
+        <input tabindex="-1" type="text" #pickerDt value="{{dateModel|date:dateformat}}" [attr.disabled]="disabled ? true: null"
+            [required]="required ? true: null" (blur)="onBlur()" (focusout)="onFocusOut(pickerDt)" class="input-control" [ngStyle]="{'cursor': readonly ? 'not-allowed':'pointer'}"
+            [attr.placeholder]="placeholder" />
+    </ng-container>
+
+    <div class="drodown-caret-down" [ngStyle]="{'cursor':disabled ? 'not-allowed' : 'pointer'}" (click)="openPicker(rootDiv)">
+        <!-- datepicker icon -->
+        <ng-container *ngIf="!timepicker">
+            <span>
+                <amexio-c-icon key="datepicker_calendar"></amexio-c-icon>
+            </span>
+
+        </ng-container>
+
+    </div>
+
+
+</div>
+
+<div [@changeState]="dropdownstyle.visibility" [ngStyle]="dropdownstyle">
+
+    <table>
+
+        <tr>
+            <td style="display: inline-flex; flex-flow: wrap">
+
+                <div tabindex="1" aria-label="previous month list" role="button" style="padding: 125px 0px; cursor:pointer; opacity:0.7"
+                    class="float-left" (click)="updateMonthList('minus',$event)" (keyup.enter)="updateMonthList('minus',$event)">
+
+                    <amexio-floating-button [size]="'small'" [relative]="true" [icon]="'fa fa-angle-left'" [type]="'theme-color'">
+                    </amexio-floating-button>
+                </div>
+
+                <ng-container *ngFor="let itemdaysArray of  completeDaysArray; index as i">
+
+                    <span [ngStyle]="{'padding-left': ((i+1) > count) ? '28px':'0px'}">
+
+                        <span style="position: relative;" [ngClass]="{'datetimepicker':!inlineDatepicker}">
+                            <!-- datepicker starts -->
+                            <span aria-label="datepicker window opened ">
+                                <!-- datepicker header starts and contains: 4 angles drop icon and title -->
+                                <div aria-label="datetimepicker header" class="datetimepickertopbar" aria-label="datepicker header" [ngStyle]="{'display': datepicker ? 'block' : 'none'}">
+                                    <ul>
+
+                                        <li>
+
+                                            <span *ngIf="!dropdownDatepicker">
+                                                <!-- {{itemdaysArray.month}} -->
+                                                {{itemdaysArray.date | date:'MMMM'}}
+
+                                                <br>
+                                                <span class="title" style="cursor:auto">
+                                                    {{itemdaysArray.date | date:'y'}}
+                                                    <!-- {{itemdaysArray.year}} -->
+                                                </span>
+                                            </span>
+
+                                        </li>
+                                    </ul>
+                                </div>
+
+
+                                <div *ngIf="!drop">
+                                    <ul class="weekdays" [ngStyle]="{'display': datepicker ? 'block' : 'none'}">
+                                        <li *ngFor="let dayTitle of daysTitle">{{dayTitle.text}}</li>
+                                    </ul>
+
+                                    <ul id="{{daystabindex}}" class="days" [ngStyle]="{'display': datepicker ? 'block' : 'none'}">
+
+                                        <ng-container *ngFor="let dayArray of itemdaysArray.montharray">
+                                            <li [ngStyle]="{'cursor': day.isDisabled ? 'not-allowed' : 'pointer'}" *ngFor="let day of dayArray" (click)="onDateClick(day, $event)"
+                                                [ngClass]="{'date1':validateDays(day.date) , 'date1':day.isDisabled , 'notclickable':isDisabled}">
+                                                <span [attr.tabindex]="(day.selected ? 1: -1)" id="{{day.id}}" (keyup.arrowleft)="arrowleft(day,daysArray,$event)" (keyup.arrowright)="arrowright(day,daysArray,$event)"
+                                                    (keyup.arrowdown)="arrowdown(day,daysArray,$event)" (keyup.arrowup)="arrowup(day,daysArray,$event)"
+                                                    (keyup.enter)="onDateClick(day, $event)" attr.aria-label="{{day.fulldate}}"
+                                                    (click)="onDateClick(day, $event)" class="day" [ngClass]="{'active':day.selected, 'currentMonth':day.isCurrentMonth, 'notCurrentMonth':!day.isCurrentMonth,'invaliddays':validateDays(day.date), 'disabled':day.isDisabled}">
+                                                    {{ day.date | date:'d' }}
+                                                </span>
+                                            </li>
+                                        </ng-container>
+
+
+
+                                    </ul>
+                                </div>
+                            </span>
+                            <!--datepicker ends  -->
+
+                        </span>
+
+                    </span>
+                    <!-- </ng-container> -->
+                </ng-container>
+
+
+                <div tabindex="1" aria-label="next month list" role="button" style="padding: 125px 0px; cursor:pointer; opacity:0.7" class="float-right"
+                    (click)="updateMonthList('plus',$event)" (keyup.enter)="updateMonthList('plus',$event)">
+
+                    <amexio-floating-button [size]="'small'" [relative]="true" [icon]="'fa fa-angle-right'" [type]="'theme-color'">
+                    </amexio-floating-button>
+
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>

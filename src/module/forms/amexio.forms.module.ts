@@ -28,6 +28,7 @@ import { AmexioFileUploadComponent } from './fileupload/fileupload.component';
 import { AmexioFloatingButtonComponent } from './floatingbutton/floatingbutton.component';
 import { AmexioFloatingGroupButtonComponent } from './floatinggroupbutton/floatinggroupbutton.component';
 import { AmexioLabelComponent } from './label/label.component';
+import { AmexioMultipleDatePickerComponent } from './multidatepicker/multidatepicker.component';
 import { AmexioNumberInputComponent } from './numberinput/numberinput.component';
 import { AmexioPasswordComponent } from './passwordinput/passwordinput.component';
 import { AmexioRadioGroupComponent } from './radio/radiogroup.component';
@@ -117,6 +118,7 @@ const FORM_COMPONENTS = [
   AmexioBadgeComponent,
   DarkmodeComponent,
   AmexioRangeSliderComponent,
+  AmexioMultipleDatePickerComponent,
 ];
 
 @NgModule({

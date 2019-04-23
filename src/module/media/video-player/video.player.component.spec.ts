@@ -22,10 +22,10 @@ describe('amexio-video-player', () => {
     });
 
 
-    it('check routeBackToApp method',() => {
-        comp.currentVolume = 1;
-            expect(comp.currentVolume).toEqual(1);
-    });
+    // it('check routeBackToApp method',() => {
+    //     comp.currentVolume = 1;
+    //         expect(comp.currentVolume).toEqual(1);
+    // });
 
 
    
