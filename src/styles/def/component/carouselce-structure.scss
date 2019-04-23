@@ -7,6 +7,35 @@
     height: 410px;
     float: left;
 }
+.ce-carousel-textdata{
+    position: absolute;
+    left: 0px;
+    right: 30px;
+    height: 410px;
+    float: left;
+}
+.ce-carousel-textdata-right{
+    position: absolute;
+    left: 60%;
+    right: 0%;
+   
+    height: 410px;
+    float: left;
+}
+.ce-carousel-textdata-left{
+    position: absolute;
+    left: 0%;
+    right: 60%;
+    height: 410px;
+    float: left;
+}
+.ce-carousel-textdata-center{
+    position: absolute;
+    left: 30%;
+    right: 30%;
+    height: 410px;
+    float: left;
+}
 
 .ce-caroueslslideshow{
     width: 820px;

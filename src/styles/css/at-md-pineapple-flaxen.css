@@ -9625,6 +9625,18 @@ video {
   color: #1c1707;
   background: transparent url(https://i.ibb.co/Px4vFwF/bar.png) repeat top left; }
 
+.ce-carousel-textdata-right {
+  background: transparent url(https://i.ibb.co/Px4vFwF/bar.png) repeat top left;
+  color: #1c1707; }
+
+.ce-carousel-textdata-left {
+  background: transparent url(https://i.ibb.co/Px4vFwF/bar.png) repeat top left;
+  color: #1c1707; }
+
+.ce-carousel-textdata-center {
+  background: transparent url(https://i.ibb.co/Px4vFwF/bar.png) repeat top left;
+  color: #1c1707; }
+
 .ce-caroueslbar {
   background: transparent url(https://i.ibb.co/Px4vFwF/bar.png) repeat top left;
   color: #1c1707; }
@@ -9659,6 +9671,34 @@ video {
 .ce-carousel-textdata {
   position: absolute;
   left: 0%;
+  height: 410px;
+  float: left; }
+
+.ce-carousel-textdata {
+  position: absolute;
+  left: 0px;
+  right: 30px;
+  height: 410px;
+  float: left; }
+
+.ce-carousel-textdata-right {
+  position: absolute;
+  left: 60%;
+  right: 0%;
+  height: 410px;
+  float: left; }
+
+.ce-carousel-textdata-left {
+  position: absolute;
+  left: 0%;
+  right: 60%;
+  height: 410px;
+  float: left; }
+
+.ce-carousel-textdata-center {
+  position: absolute;
+  left: 30%;
+  right: 30%;
   height: 410px;
   float: left; }
 

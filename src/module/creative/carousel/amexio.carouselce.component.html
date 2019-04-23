@@ -1,45 +1,52 @@
-<div class="wrapper">
-    <div class="ce-caroueslslideshow">
-        <div class="ce-caroueslimages">
-            <amexio-image [path]="centerImagePath">
-            </amexio-image>
-        </div>
+<div class="wrapper" #tab>
+    <div *ngFor="let item of imageData ;let i=index">
+        <ng-container *ngIf="item.active">
 
-        <div class="ce-carousel-textdata">
-            <ng-template [ngTemplateOutlet]="creativeCarousel">
-            </ng-template>
-        </div>
-        <div class="ce-caroueslbar">
-            <div class="ce-caroueslnav">
-                <a class="ce-caroueslnav-prev">
-                    <span>Previous</span>
-                    <div (click)="onClickLeft()" (mouseenter)="onPreBtnHover()">
-                        <amexio-image [path]='preImagePath'>
-                        </amexio-image>
-                    </div>
-                </a>
-                <a class="ce-caroueslnav-next">
-                    <span>Next</span>
-                    <div (click)="onClickRight()" (mouseenter)="onNextBtnHover()">
-                        <amexio-image [path]="nextImagePath">
-                        </amexio-image>
-                    </div>
-                </a>
-            </div>
+            <div class="ce-caroueslslideshow" [ngStyle]="{'visibility':item.active ? 'visible':'hidden'}">
+                <div class="ce-caroueslimages">
 
-            <div class="ce-caroueslnav-content">
-                <div class="ce-caroueslnav-content-prev">
-                    <span> {{previousTitle}}</span>
+                    <amexio-image path="{{item.imagepath}}">
+                    </amexio-image>
                 </div>
-                <div class="ce-caroueslnav-content-current">
-                    <amexio-label>
-                        {{centerTitle}}
-                    </amexio-label>
+                <div [ngClass]="{'ce-carousel-textdata-left': position =='left',
+                                        'ce-carousel-textdata-right':position == 'right',
+                                        'ce-carousel-textdata-center': position == 'center'}">
+                    <ng-template tabindex="1" [amexioTemplateWrapper]="itemTemplate" [item]="item"></ng-template>
                 </div>
-                <div class="ce-caroueslnav-content-next">
-                    <span> {{nextTitle}}</span>
+
+                <div class="ce-caroueslbar">
+                    <div class="ce-caroueslnav">
+                        <a class="ce-caroueslnav-prev">
+                            <span>Previous</span>
+                            <div (click)="previousClick()" (mouseenter)="onPreBtnHover(i)">
+                                <amexio-image [path]='preImagePath'>
+                                </amexio-image>
+                            </div>
+                        </a>
+                        <a class="ce-caroueslnav-next">
+                            <span>Next</span>
+                            <div (click)="nextClick()" (mouseenter)="onNextBtnHover(i)">
+                                <amexio-image [path]="nextImagePath">
+                                </amexio-image>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="ce-caroueslnav-content">
+                        <div class="ce-caroueslnav-content-prev">
+                            <span> {{titleModel.previousTitle}}</span>
+                        </div>
+                        <div class="ce-caroueslnav-content-current">
+                            <amexio-label>
+                                {{titleModel.centerTitle}}
+                            </amexio-label>
+                        </div>
+                        <div class="ce-caroueslnav-content-next">
+                            <span> {{titleModel.nextTitle}}</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </ng-container>
     </div>
 </div>

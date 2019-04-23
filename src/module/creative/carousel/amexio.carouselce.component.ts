@@ -18,15 +18,17 @@
 import { HttpClient } from '@angular/common/http';
 
 import {
-  Component, ContentChild, Input, OnDestroy, OnInit, QueryList, TemplateRef,
+  AfterContentInit, Component, ContentChild, ContentChildren, ElementRef, Input, OnDestroy, OnInit, QueryList, TemplateRef, ViewChild,
 } from '@angular/core';
+import { AmexioTemplateDirective } from '../../panes/amexio.pane.module';
 import { CommonDataService } from '../../services/data/common.data.service';
+import { TitleModel } from '../carousel/amexio.carouselce.model';
 
 @Component({
   selector: 'amexio-carousel-ce',
   templateUrl: './amexio.carouselce.component.html',
 })
-export class AmexioCarouselCEComponent implements OnInit {
+export class AmexioCarouselCEComponent implements OnInit, AfterContentInit {
   /*
 Properties
 name : data
@@ -66,18 +68,33 @@ description : Local Data binding.
   */
   @Input('http-method') httpmethod: string;
 
-  imageData: any;
+  responseData: any;
   currentImageIndex = 0;
+  imageData: any;
   centerImagePath: string;
   nextImagePath: string;
   preImagePath: string;
-  responseData: any;
 
   previousTitle: any;
   centerTitle: any;
   nextTitle: any;
-  @ContentChild('amexioCreativeCarousel') creativeCarousel: TemplateRef<any>;
+
+  @Input('position') position: any;
+
+  public itemTemplate: TemplateRef<any>;
+
+  @ContentChildren(AmexioTemplateDirective) templates: QueryList<any>;
+
+  @ViewChild('tab', { read: ElementRef }) public tabs: ElementRef;
+
+  itemData: any;
+
+  currentObj: any;
+
+  titleModel: TitleModel;
+
   constructor(public http: HttpClient, private dataService: CommonDataService) {
+    this.titleModel = new TitleModel();
   }
 
   ngOnInit() {
@@ -93,8 +110,15 @@ description : Local Data binding.
     }
   }
 
+  ngAfterContentInit() {
+    this.templates.forEach((item: any) => {
+      this.itemTemplate = item.template;
+    });
+  }
+
   setData(httpResponse: any) {
     let responsedata = httpResponse;
+    // Check if key is added?
     if (this.datareader != null) {
       const dr = this.datareader.split('.');
       for (const ir of dr) {
@@ -104,67 +128,101 @@ description : Local Data binding.
       responsedata = httpResponse;
     }
     this.imageData = responsedata;
-    this.centerImagePath = this.imageData[0].imagepath;
-    this.centerTitle = this.imageData[0].title;
-    this.previousTitle = this.imageData[this.imageData.length - 1].title;
-    this.nextTitle = this.imageData[1].title;
+    this.titleModel.previousTitle = this.imageData[this.imageData.length - 1].title ? this.imageData[this.imageData.length - 1].title : '';
+    this.titleModel.centerTitle = this.imageData[0].title ? this.imageData[0].title : '';
+    this.titleModel.nextTitle = this.imageData[1].title ? this.imageData[1].title : '';
   }
 
-  onClickLeft() {
+  dividedPreviousMethod() {
+    this.imageData.forEach((element: any, index: any) => {
+      if (element && element.active) {
+        this.currentImageIndex = index;
+      }
+    });
+  }
+  previousClick() {
+    this.dividedPreviousMethod();
     if (this.currentImageIndex === 0) {
-      this.centerImagePath = this.imageData[this.imageData.length - 1].imagepath;
-      this.centerTitle = this.imageData[this.imageData.length - 1].title;
-      this.currentImageIndex = this.imageData.length - 1;
-      this.previousTitle = this.imageData[this.currentImageIndex - 1].title;
-      this.nextTitle = this.imageData[0].title;
-    } else if (this.imageData && (this.imageData.length !== this.currentImageIndex) && this.currentImageIndex !== 0) {
-      this.centerImagePath = this.imageData[this.currentImageIndex - 1].imagepath;
-      this.centerTitle = this.imageData[this.currentImageIndex - 1].title;
-      this.currentImageIndex--;
-      if (this.currentImageIndex === 0) {
-        this.previousTitle = this.imageData[this.imageData.length - 1].title;
-        this.nextTitle = this.imageData[1].title;
+      this.previousClickMethod();
+    } else {
+      this.imageData.forEach((element: any, index: any) => {
+        if (index === this.currentImageIndex - 1) {
+          const duplicateIndex = this.currentImageIndex - 1;
+          this.imageData[duplicateIndex].active = true;
+          if (this.imageData[duplicateIndex] && this.imageData[duplicateIndex - 1] &&
+            this.imageData[duplicateIndex].title && this.imageData[duplicateIndex + 1].title) {
+            this.titleModel.setTitle(this.imageData[duplicateIndex - 1].title,
+              this.imageData[duplicateIndex].title, this.imageData[duplicateIndex + 1].title);
+          }
+        } else {
+          this.imageData[index].active = false;
+        }
+      });
+    }
+  }
 
+  previousClickMethod() {
+    this.imageData[this.currentImageIndex].active = true;
+    const lastIndex = this.imageData.length - 1;
+    this.currentImageIndex = this.imageData.length - 1;
+    this.imageData.forEach((element: any, index: any) => {
+      if (index === this.currentImageIndex) {
+        this.imageData[index].active = true;
+        if (this.imageData[lastIndex] && this.imageData[lastIndex].title) {
+          this.titleModel.setTitle(this.imageData[lastIndex - 1].title, this.imageData[0].title, this.imageData[lastIndex].title);
+        }
       } else {
-        this.previousTitle = this.imageData[this.currentImageIndex - 1].title;
-        this.nextTitle = this.imageData[this.currentImageIndex + 1].title;
+        this.imageData[index]['active'] = false;
       }
-    }
-    this.onPreBtnHover();
+    });
   }
-  onPreBtnHover() {
-    if (this.currentImageIndex === 0) {
+  onPreBtnHover(i: number) {
+    if (i === 0) {
       this.preImagePath = this.imageData[this.imageData.length - 1].imagepath;
-    }
-    if (this.imageData && this.imageData.length !== this.currentImageIndex && this.currentImageIndex !== 0) {
-      this.preImagePath = this.imageData[this.currentImageIndex - 1].imagepath;
+    } else {
+      const ind = i - 1;
+      this.preImagePath = this.imageData[ind].imagepath;
     }
   }
 
-  onNextBtnHover() {
-    if (this.imageData && this.imageData.length - 1 !== this.currentImageIndex) {
-      this.nextImagePath = this.imageData[this.currentImageIndex + 1].imagepath;
+  onNextBtnHover(i: number) {
+
+    if (i === 0) {
+      const ind = i + 1;
+      this.nextImagePath = this.imageData[ind].imagepath;
+    } else {
+      const ind = i + 1;
+      if (ind === this.imageData.length) {
+        this.nextImagePath = this.imageData[0].imagepath;
+      } else {
+        this.nextImagePath = this.imageData[ind].imagepath;
+      }
     }
   }
-  onClickRight() {
-    if ((this.currentImageIndex < this.imageData.length) && (this.imageData.length - 1 !== this.currentImageIndex)) {
-      this.centerImagePath = this.imageData[this.currentImageIndex + 1].imagepath;
-      this.centerTitle = this.imageData[this.currentImageIndex + 1].title;
-      this.currentImageIndex++;
-      if (this.currentImageIndex < this.imageData.length - 1) {
-        this.nextTitle = this.imageData[this.currentImageIndex + 1].title;
-        this.previousTitle = this.imageData[this.currentImageIndex - 1].title;
-      } else if (this.currentImageIndex === this.imageData.length - 1) {
-        this.nextTitle = this.imageData[0].title;
-        this.previousTitle = this.imageData[this.currentImageIndex - 1].title;
+
+  nextClick() {
+    this.dividedPreviousMethod();
+    if (this.currentImageIndex === 0) {
+      this.currentImageIndex = 1;
+      this.imageData[this.currentImageIndex].active = true;
+      this.setFlag();
+    } else {
+      if (this.currentImageIndex === this.imageData.length - 1) {
+        this.currentImageIndex = 0;
+      } else {
+        this.currentImageIndex++;
       }
-    } else if (this.currentImageIndex === this.imageData.length - 1) {
-      this.currentImageIndex = 0;
-      this.nextTitle = this.imageData[this.currentImageIndex + 1].title;
-      this.centerImagePath = this.imageData[this.currentImageIndex].imagepath;
-      this.centerTitle = this.imageData[this.currentImageIndex].title;
-      this.previousTitle = this.imageData[this.imageData.length - 1].title;
+      this.setFlag();
     }
-    this.onNextBtnHover();
+  }
+
+  setFlag() {
+    this.imageData.forEach((element: any, index: any) => {
+      if (index === this.currentImageIndex) {
+        this.imageData[index].active = true;
+      } else {
+        this.imageData[index]['active'] = false;
+      }
+    });
   }
 }
