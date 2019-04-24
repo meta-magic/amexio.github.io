@@ -8322,11 +8322,14 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
   background-size: cover;
   background-position: center center;
   position: relative;
-  height: 100%; }
+  height: 100%;
+  width: 100%; }
 
 .viewportBody {
   position: absolute;
-  top: 0; }
+  top: 0;
+  width: 100%;
+  height: 100%; }
 
 video {
   position: fixed;
