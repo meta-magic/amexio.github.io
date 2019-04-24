@@ -50,6 +50,9 @@ description :  Width of the video player window
 */
   @Input() width: any;
 
+  // Internal Use Only
+  @Input() rederVideo = true;
+
   @ViewChild('videoRef') videoPlayer: any;
 
   @ViewChild('progressbar') progressBar: any;

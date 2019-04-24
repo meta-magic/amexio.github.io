@@ -1,26 +1,10 @@
-<!-- <div class="viewportContent {{backgroundCss}}" [ngStyle]="{'height':height}">
-    <div class="viewportBody" [ngStyle]="{'overflow-y': internalScroll ? 'scroll' : 'hidden',
-'background-color':backgroundColor, 'height':height}">
-        </div>
-        <ng-content select="amexio-viewport-content-body"></ng-content>
-
-</div>
-
-<video id="{{bgvid}}" playsinline autoplay muted loop>
-    <source
-    src="{{tempUrl}}">
-<div class="viewportBody" [ngStyle]="{'overflow-y': internalScroll ? 'scroll' : 'hidden',
-'background-color':backgroundColor, 'height':height}">
-</div>
-<ng-content select="amexio-viewport-content-body"></ng-content> -->
 
 <div class="viewportContent {{backgroundCss}}" [ngStyle]="{'height':height}" onscroll="myFunction()">
-    <video id="{{bgvid}}" autoplay muted loop>
-            <source src="{{tempUrl}}" type="video/mp4">
-        </video>
-<div class="viewportBody" [ngStyle]="{'overflow-y': internalScroll ? 'scroll' : 'hidden',
+    <video id="{{bgvid}}" src="{{tempUrl}}" type="video/mp4" poster loop autoplay playsinline>
+    </video>
+    <div class="viewportBody" [ngStyle]="{'overflow-y': internalScroll ? 'scroll' : 'hidden',
 'background-color':backgroundColor, 'height':height}">
-    <ng-content select="amexio-viewport-content-body"></ng-content>
+        <ng-content select="amexio-viewport-content-body"></ng-content>
 
-</div>
+    </div>
 </div>
