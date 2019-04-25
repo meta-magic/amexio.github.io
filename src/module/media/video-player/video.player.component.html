@@ -1,5 +1,7 @@
 
+  <ng-container *ngIf="rederVideo">
   <video [style.width.px]="width" controls>
       <source [attr.src]="path">
       Your browser does not support HTML5 video.
   </video>
+</ng-container>

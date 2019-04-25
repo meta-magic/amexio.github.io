@@ -47,6 +47,7 @@ export class ViewportContentComponent implements OnInit, AfterContentInit, After
 
     // VIDEO
     if (this.bgImageTemplate.videoPath) {
+      this.bgImageTemplate.videoTemplate.rederVideo = false;
       this.bgvid = 'videoId' + Math.floor(Math.random() * 1000);
       this.tempUrl = this.bgImageTemplate.videoPath;
     }
