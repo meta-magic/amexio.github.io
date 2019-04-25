@@ -23,6 +23,10 @@
 
 cp mda/search-icon.png css/;
 cp mda/slider.png css/;
+cp mda/prev.png css/;
+cp mda/next.png css/;
+
+
 sass mda/at-md-black.scss:css/at-md-black.css;
 sass mda/at-md-blue.scss:css/at-md-blue.css;
 

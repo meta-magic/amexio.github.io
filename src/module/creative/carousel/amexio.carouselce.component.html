@@ -1,33 +1,36 @@
+<br />
 <div class="wrapper" #tab>
     <div *ngFor="let item of imageData ;let i=index">
         <ng-container *ngIf="item.active">
 
             <div class="ce-caroueslslideshow" [ngStyle]="{'visibility':item.active ? 'visible':'hidden'}">
                 <div class="ce-caroueslimages">
+                    <img src={{item.imagepath}} style='height: 100%; width: 100%; object-fit: cover' />
 
-                    <amexio-image path="{{item.imagepath}}">
-                    </amexio-image>
                 </div>
-                <div [ngClass]="{'ce-carousel-textdata-left': position =='left',
-                                        'ce-carousel-textdata-right':position == 'right',
-                                        'ce-carousel-textdata-center': position == 'center'}">
-                    <ng-template tabindex="1" [amexioTemplateWrapper]="itemTemplate" [item]="item"></ng-template>
-                </div>
+                <ng-container *ngIf="itemTemplate">
+                    <div style=" position: absolute;" [style.left]="positionLeft+'%'" [style.right]="positionRight+'%'">
+                        <ng-template tabindex="1" [amexioTemplateWrapper]="itemTemplate" [item]="item"></ng-template>
+                    </div>
 
+                </ng-container>
                 <div class="ce-caroueslbar">
                     <div class="ce-caroueslnav">
                         <a class="ce-caroueslnav-prev">
                             <span>Previous</span>
-                            <div (click)="previousClick()" (mouseenter)="onPreBtnHover(i)">
-                                <amexio-image [path]='preImagePath'>
-                                </amexio-image>
+                            <div (click)="previousClick(i)" (mouseenter)="onPreBtnHover(i)">
+                                <!-- <amexio-image [path]='preImagePath'>
+                                </amexio-image> -->
+                                <img src="{{preImagePath}}" style='height: 100%; width: 100%; object-fit: cover' />
+
                             </div>
                         </a>
                         <a class="ce-caroueslnav-next">
                             <span>Next</span>
-                            <div (click)="nextClick()" (mouseenter)="onNextBtnHover(i)">
-                                <amexio-image [path]="nextImagePath">
-                                </amexio-image>
+                            <div (click)="nextClick(i)" (mouseenter)="onNextBtnHover(i)">
+
+                                <img src="{{nextImagePath}}" style='height: 100%; width: 100%; object-fit: cover' />
+
                             </div>
                         </a>
                     </div>
@@ -37,9 +40,9 @@
                             <span> {{titleModel.previousTitle}}</span>
                         </div>
                         <div class="ce-caroueslnav-content-current">
-                            <amexio-label>
+                            <span>
                                 {{titleModel.centerTitle}}
-                            </amexio-label>
+                            </span>
                         </div>
                         <div class="ce-caroueslnav-content-next">
                             <span> {{titleModel.nextTitle}}</span>

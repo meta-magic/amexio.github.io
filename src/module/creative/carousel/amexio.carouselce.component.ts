@@ -78,6 +78,9 @@ description : Local Data binding.
   previousTitle: any;
   centerTitle: any;
   nextTitle: any;
+  positionLeft: any;
+  positionRight: any;
+  @Input('template-width') templateWidth: any;
 
   @Input('position') position: any;
 
@@ -108,12 +111,39 @@ description : Local Data binding.
     } else if (this.data) {
       this.setData(this.data);
     }
+    this.positionCalculation();
   }
 
   ngAfterContentInit() {
     this.templates.forEach((item: any) => {
       this.itemTemplate = item.template;
     });
+  }
+  positionCalculation() {
+
+    if (this.templateWidth) {
+      if (this.position === 'left') {
+        this.positionRight = (100 - this.templateWidth);
+        this.positionLeft = 0;
+      } else if (this.position === 'right') {
+        this.positionRight = 0;
+        this.positionLeft = (100 - this.templateWidth);
+      } else if (this.position === 'center') {
+        this.positionLeft = ((100 - this.templateWidth) / 2);
+        this.positionRight = this.positionLeft;
+      }
+    } else {
+      if (this.position === 'left') {
+        this.positionRight = 60;
+        this.positionLeft = 0;
+      } else if (this.position === 'right') {
+        this.positionRight = 0;
+        this.positionLeft = 60;
+      } else if (this.position === 'center') {
+        this.positionLeft = 30;
+        this.positionRight = 30;
+      }
+    }
   }
 
   setData(httpResponse: any) {
@@ -153,6 +183,9 @@ description : Local Data binding.
             this.imageData[duplicateIndex].title && this.imageData[duplicateIndex + 1].title) {
             this.titleModel.setTitle(this.imageData[duplicateIndex - 1].title,
               this.imageData[duplicateIndex].title, this.imageData[duplicateIndex + 1].title);
+          } else {
+            this.titleModel.setTitle(this.imageData[this.imageData.length - 1].title,
+              this.imageData[0].title, this.imageData[this.currentImageIndex].title);
           }
         } else {
           this.imageData[index].active = false;
@@ -169,7 +202,8 @@ description : Local Data binding.
       if (index === this.currentImageIndex) {
         this.imageData[index].active = true;
         if (this.imageData[lastIndex] && this.imageData[lastIndex].title) {
-          this.titleModel.setTitle(this.imageData[lastIndex - 1].title, this.imageData[0].title, this.imageData[lastIndex].title);
+          this.titleModel.setTitle(this.imageData[lastIndex - 1].title,
+            this.imageData[lastIndex].title, this.imageData[0].title);
         }
       } else {
         this.imageData[index]['active'] = false;
@@ -205,12 +239,27 @@ description : Local Data binding.
     if (this.currentImageIndex === 0) {
       this.currentImageIndex = 1;
       this.imageData[this.currentImageIndex].active = true;
+      const nextIndex = this.currentImageIndex;
+      if (this.imageData[nextIndex] && this.imageData[nextIndex].title) {
+        this.titleModel.setTitle(this.imageData[nextIndex - 1].title, this.imageData[nextIndex].title,
+          this.imageData[nextIndex + 1].title);
+      }
       this.setFlag();
     } else {
       if (this.currentImageIndex === this.imageData.length - 1) {
         this.currentImageIndex = 0;
+        this.titleModel.setTitle(this.imageData[this.imageData.length - 1].title,
+          this.imageData[this.currentImageIndex].title, this.imageData[this.currentImageIndex + 1].title);
       } else {
         this.currentImageIndex++;
+        const nextIndex = this.currentImageIndex;
+        if (this.currentImageIndex < this.imageData.length - 1) {
+          this.titleModel.setTitle(this.imageData[nextIndex - 1].title,
+            this.imageData[nextIndex].title, this.imageData[nextIndex + 1].title);
+        } else {
+          this.titleModel.setTitle(this.imageData[nextIndex - 1].title,
+            this.imageData[nextIndex].title, this.imageData[0].title);
+        }
       }
       this.setFlag();
     }

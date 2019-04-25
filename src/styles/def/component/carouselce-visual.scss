@@ -1,53 +1,52 @@
 
 .ce-carousel-textdata{
     color: $carouselHeaderFontColor;
-    background: transparent url(https://i.ibb.co/Px4vFwF/bar.png) repeat top left;
-
+    background: transparent ;
 }
 
 .ce-carousel-textdata-right{
-    background: transparent url(https://i.ibb.co/Px4vFwF/bar.png) repeat top left;
+    background: transparent;
      color: $carouselHeaderFontColor;
 }
 .ce-carousel-textdata-left{
-    background: transparent url(https://i.ibb.co/Px4vFwF/bar.png) repeat top left;
+    background: transparent ;
      color: $carouselHeaderFontColor;
 }
 .ce-carousel-textdata-center{
-    background: transparent url(https://i.ibb.co/Px4vFwF/bar.png) repeat top left;
+    background: transparent ;
      color: $carouselHeaderFontColor;
 }
 
 .ce-caroueslbar{
-    background: transparent url(https://i.ibb.co/Px4vFwF/bar.png) repeat top left;
-    color: $carouselHeaderFontColor;
+    background: $carouselHoverBG repeat top left;
+    color: $carouselNavHeaderBG;
 }
 
 .ce-caroueslnav-content div{
    
-    color: $carouselHeaderFontColor;
+    color: $carouselNavHeaderBG;
 }
 .ce-caroueslnav-content span{
-    color: $carouselHeaderFontColor;
+    color: $carouselNavHeaderBG;
 }
 
 .ce-caroueslnav-content-current span{
-    color:$carouselFontColor;
+    color: $carouselNavHeaderBG;
 }
 .ce-caroueslnav-content div.ce-caroueslnav-content-prev{
  
-    color: $carouselHeaderFontColor;
+    color: $carouselNavHeaderBG;
 }
 .ce-caroueslnav-content div.ce-caroueslnav-content-next{
    
-    color: $carouselHeaderFontColor;
+    color: $carouselNavHeaderBG;
 }
 
 .ce-caroueslnav a.ce-caroueslnav-prev span{
-    background: $carouselHoverBG url(https://i.ibb.co/wgJFSLh/prev.png) no-repeat center center;
+    background: $carouselNavHeaderBG url('prev.png') no-repeat center center;
 }
 .ce-caroueslnav a.ce-caroueslnav-next span{
-    background: $carouselHoverBG url(https://i.ibb.co/bsGQGBs/next.png) no-repeat center center;
+    background: $carouselNavHeaderBG url('next.png') no-repeat center center;
 }
 
 
