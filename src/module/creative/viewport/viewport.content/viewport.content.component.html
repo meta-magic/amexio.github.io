@@ -1,7 +1,18 @@
 
-<div class="viewportContent {{backgroundCss}}" [ngStyle]="{'height':height}" onscroll="myFunction()">
+<!-- <div class="viewportContent {{backgroundCss}}" [ngStyle]="{'height':height}" onscroll="myFunction()">
     <video id="{{bgvid}}" src="{{tempUrl}}" type="video/mp4" poster loop autoplay playsinline>
     </video>
+    <div class="viewportBody" [ngStyle]="{'overflow-y': internalScroll ? 'scroll' : 'hidden',
+'background-color':backgroundColor, 'height':height}">
+        <ng-content select="amexio-viewport-content-body"></ng-content>
+
+    </div>
+</div> -->
+
+
+
+<div class="viewportContent {{backgroundCss}}" [ngStyle]="{'height':height}" onscroll="myFunction()">
+    <video #videoId src="{{tempUrl}}" muted="muted" poster="" loop="" autoplay="true" webkit-playsinline="true" playsinline="true"></video>
     <div class="viewportBody" [ngStyle]="{'overflow-y': internalScroll ? 'scroll' : 'hidden',
 'background-color':backgroundColor, 'height':height}">
         <ng-content select="amexio-viewport-content-body"></ng-content>

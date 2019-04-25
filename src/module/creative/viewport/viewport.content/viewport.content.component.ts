@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewInit, Component, ContentChild, Input, OnInit } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, ContentChild, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { ViewportBackgroundComponent } from '../viewport.background/viewport.background.component';
 import { ViewportContentBodyComponent } from '../viewport.content.body/viewport.content.body.component';
 
@@ -7,6 +7,8 @@ import { ViewportContentBodyComponent } from '../viewport.content.body/viewport.
   templateUrl: './viewport.content.component.html',
 })
 export class ViewportContentComponent implements OnInit, AfterContentInit, AfterViewInit {
+
+  @ViewChild('videoId') videoId: ElementRef;
 
   @ContentChild(ViewportBackgroundComponent) bgImageTemplate: ViewportBackgroundComponent;
   @ContentChild(ViewportContentBodyComponent) contentTemplate: ViewportContentBodyComponent;
@@ -50,7 +52,14 @@ export class ViewportContentComponent implements OnInit, AfterContentInit, After
       this.bgImageTemplate.videoTemplate.rederVideo = false;
       this.bgvid = 'videoId' + Math.floor(Math.random() * 1000);
       this.tempUrl = this.bgImageTemplate.videoPath;
+      this.playVideo();
     }
+  }
+
+  playVideo() {
+    const media = this.videoId.nativeElement;
+    media.muted = true;
+    media.play();
   }
 
   insertStyleSheetRule(ruleText: any) {
