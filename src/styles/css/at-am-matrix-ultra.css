@@ -3643,7 +3643,8 @@ input:checked + .toggle-slider:before {
 .amexio-badge {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   text-transform: uppercase;
-  cursor: pointer; }
+  cursor: pointer;
+  z-index: 900; }
 
 .amexio-badge-color {
   background: #000000;
