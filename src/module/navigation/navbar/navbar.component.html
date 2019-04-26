@@ -31,7 +31,7 @@
         </div>
     </div>
 
-    <div #navbaritems *ngIf="toggle" class="topnav-rhs" [ngClass]="{'rhs-mobile':mobilemode}">
+    <div #navbaritems *ngIf="toggle" class="topnav-rhs" [ngClass]="{'rhs-mobile':mobilemode, 'transparentNav1':transparent && mobilemode}">
         <div class="topnavmainbar" [ngClass]="{'topnavmainbar-mobile':mobilemode}">
             <div #navbaritems1 class="topnavmainbaritems" [ngClass]="{'topnavmainbaritems-mobile':mobilemode}">
                 <ng-content select="[position-left]"></ng-content>

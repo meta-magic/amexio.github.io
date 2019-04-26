@@ -340,3 +340,9 @@
 .homepage-collapse {
     align-items: center;
 }
+
+.transparentNav1 {
+    box-shadow: 0px 0px 0px $navbarBGBoxShadow !important;
+    background-color: $navbarBGColor !important;
+    opacity: 0.9 !important;
+}

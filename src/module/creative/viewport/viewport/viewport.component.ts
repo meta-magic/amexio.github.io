@@ -59,7 +59,7 @@ export class ViewportComponent implements AfterContentInit, OnInit {
     if (this.type === '2') {
       this.contentCollection.forEach((element: any) => {
         if (element.contentTemplate.navTemplate) {
-          element.contentTemplate.navTemplate.opacity = 0.7;
+          element.contentTemplate.navTemplate.opacity = 0.8;
           element.contentTemplate.navTemplate.top = 'unset';
         }
       });
