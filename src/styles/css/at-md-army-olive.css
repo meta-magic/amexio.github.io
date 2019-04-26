@@ -8404,12 +8404,6 @@ video {
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 /** creative carousel - Structure CSS **/
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-.ce-carousel-textdata {
-  position: absolute;
-  left: 0%;
-  height: 100%;
-  float: left; }
-
 .ce-caroueslslideshow {
   width: 100%;
   height: 100%;
@@ -8425,7 +8419,7 @@ video {
 .ce-caroueslbar {
   height: 74px;
   position: absolute;
-  bottom: 7px !important;
+  bottom: 6px !important;
   right: 50px;
   left: 50px;
   z-index: 999; }
