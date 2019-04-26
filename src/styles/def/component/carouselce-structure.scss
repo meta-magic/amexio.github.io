@@ -14,7 +14,7 @@
     position: relative;
 }
 .ce-caroueslbar{
-    height: 74px;
+    height: 19%;
     position: absolute;
     bottom: 6px !important;
     right: 50px;
@@ -63,13 +63,13 @@
 }
 .ce-caroueslnav-content div span{
     display: block;
-    padding-top: 18px;
+    padding-top: 16%;
    
 }
 .ce-caroueslnav > a{
     position: absolute;
     top: 0px;
-    height: 80px;
+    height: 100%;
     width: 70px;
 }
 a.ce-caroueslnav-prev{
@@ -191,3 +191,9 @@ a.ce-caroueslnav-next{
         background: transparent;
      }
     }
+
+    @media (min-width: 1024px) and (max-width: 1100px)  {
+        .ce-caroueslnav-content{
+            top: 0%;
+          }
+        }

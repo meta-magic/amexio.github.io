@@ -13,7 +13,8 @@
 }
 
 .card-container-ce-color {
-    color: #121212;
+    color: $cardColor;
+    background: $cardBGColor;
 }
 .card-container-ce-theme-color {
     color: $cardceHeaderColor;

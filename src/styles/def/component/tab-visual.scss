@@ -1,12 +1,12 @@
 .verticalnavtab .defaultnode {
     //cursor: pointer;
-    background-color: #fff;
+    background-color: $tabBGColor;
     color: $tabActiveColor;
     //padding: 10px;
 }
 
 .verticalnavtab .leftactivetab {
-    background-color: $tabActiveBGColor;
+    background-color: $tabBGColor;
     font-weight: bold;
     color: $tabActiveColor;
     //border-right: $tabActiveBorderSize solid $tabActiveBorder;
