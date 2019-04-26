@@ -3595,7 +3595,8 @@ input:checked + .toggle-slider:before {
   font-size: 16px;
   border-radius: 25px;
   background-color: #f1f1f1;
-  margin: 3px; }
+  margin: 3px;
+  color: black; }
 
 .chips:hover {
   background: #90a4d4; }
@@ -5610,7 +5611,8 @@ amexio-layout-columns amexio-layout-item {
   background-color: #fff; }
 
 .card-container-ce-color {
-  color: #121212; }
+  color: white;
+  background: #1C2949; }
 
 .card-container-ce-theme-color {
   color: #1C2949;
@@ -7015,7 +7017,7 @@ fieldset {
   color: white; }
 
 .verticalnavtab .leftactivetab {
-  background-color: #1C2949;
+  background-color: #6b85c6;
   font-weight: bold;
   color: white; }
 

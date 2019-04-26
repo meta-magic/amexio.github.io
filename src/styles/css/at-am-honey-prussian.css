@@ -3595,7 +3595,8 @@ input:checked + .toggle-slider:before {
   font-size: 16px;
   border-radius: 25px;
   background-color: #f1f1f1;
-  margin: 3px; }
+  margin: 3px;
+  color: black; }
 
 .chips:hover {
   background: #0378f2; }
@@ -5610,7 +5611,8 @@ amexio-layout-columns amexio-layout-item {
   background-color: #fff; }
 
 .card-container-ce-color {
-  color: #121212; }
+  color: #1FBCD2;
+  background: rgba(0, 43, 87, 0.7); }
 
 .card-container-ce-theme-color {
   color: #F3C22A;
@@ -7015,7 +7017,7 @@ fieldset {
   color: rgba(0, 43, 87, 0.7); }
 
 .verticalnavtab .leftactivetab {
-  background-color: rgba(0, 43, 87, 0.7);
+  background-color: #2c92fc;
   font-weight: bold;
   color: rgba(0, 43, 87, 0.7); }
 
