@@ -1,9 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { PropertyGridModel } from '../../../models/propertyGridModel';
 
 @Component({
     selector: 'amexio-property-grid',
     templateUrl: './propertygrid.component.html',
+    styleUrls: ['./propertygrid.component.css'],
 })
 export class PropertyGridComponent {
 
@@ -15,7 +16,17 @@ export class PropertyGridComponent {
 
     @Input('enable-key-bold') enableKeyBold = false;
 
+    @Input('enable-value-click') enableValueClick = false;
+
+    @Output('onValueClick') onValueClick = new EventEmitter<any>();
+
     constructor() {
+    }
+
+    onClick(event: any) {
+        if (this.enableValueClick) {
+            this.onValueClick.emit(event);
+        }
 
     }
 }
