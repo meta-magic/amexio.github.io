@@ -24,7 +24,7 @@ export class PropertyGridComponent {
     }
 
     onClick(event: PropertyGridModel) {
-        if (event.link && event.link.length>0) {
+        if (event.link && event.link.length > 0) {
             this.onValueClick.emit(event);
         }
     }
