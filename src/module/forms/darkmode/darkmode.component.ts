@@ -1,5 +1,5 @@
 import { Component, Inject, Injectable, Input, OnInit } from '@angular/core';
-
+import { AmexioToggleComponent } from './../toggle/toggle.component';
 @Component({
     selector: 'amexio-darkmode',
     templateUrl: './darkmode.component.html',
