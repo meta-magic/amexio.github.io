@@ -3,7 +3,8 @@
         <span>
             <i *ngIf="icon" [ngClass]="icon"></i>
         </span>
-        {{title}}
+        <span>{{title}}</span>
+        
         <span>
             <i class="dropdownicon fa fa-angle-down"></i>
         </span>
@@ -21,6 +22,7 @@
                             <i class="fa fa-angle-left" style="padding-bottom:5px" aria-hidden="true"></i>
                         </span>
                         {{node.text}}
+                    
                         <span *ngIf="position == 'right' && node.submenus">
                             <i class="fa fa-angle-right" style="float:right ;padding-top:5px" aria-hidden="true"></i>
 

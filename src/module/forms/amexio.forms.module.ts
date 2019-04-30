@@ -129,6 +129,7 @@ const FORM_COMPONENTS = [
     HttpClientModule,
     AmexioCommonModule.forRoot(),
   ],
+  entryComponents: [AmexioToggleComponent],
   exports: FORM_COMPONENTS,
   declarations: FORM_COMPONENTS,
   providers: [CommonDataService, DomHandler, ScriptLoadService,
