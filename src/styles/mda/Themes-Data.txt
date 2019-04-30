@@ -1,6 +1,7 @@
 // Amexio Themes v4.0 - Jan 31, 2018
 // Design-Type : Material Design
 // Theme-Version : 4.0
+// Date : Jan 31, 2018
 army-olive,#4B5320,#708238
 ash-stone-black,#544C4A,#877F7D
 black,#000000,#290500
@@ -33,6 +34,7 @@ yale-azure,#0E4C92,#2196F3
 // Amexio Themes v4.1 - Feb 28, 2018
 // Design-Type : Material Design
 // Theme-Version : 4.1
+// Date : Feb 28, 2018
 hot-pink-violetred,#F81894,#C71585
 orangered-tomato,#FF4500,#FF6347
 rebeccapurple-orchid,#663399,#BA55D3
@@ -65,6 +67,7 @@ z-flag-japan,#FFFFFF,#DC143C
 // Amexio Themes v5.11 - April 26, 2019
 // Design-Type : Material Design
 // Theme-Version : 5.11
+// Date : April 26, 2019
 // Color-Algo : 2
 z-ce-cas-firebrick, #B22222
 z-ce-cas-deep-blue, #0914F5

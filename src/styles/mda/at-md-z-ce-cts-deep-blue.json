@@ -1,0 +1,89 @@
+{
+"metaData": {"themeName": "Cts Deep Blue","style": "Material Design","releaseDate": "April 26, 2019","version": 5.11,"algorithmName": "Color Triadic Six","algorithmID": 7,"rgb": 467185,"hue": 234,"themes": ["#0720F1","#071ff2","#f2071f","#f2db07","#f2db07","#07f2db"],"navBarBGColor": "#0720f1","navBarFontColor": "#f5f6ff","themeFileName": "at-md-z-ce-cts-deep-blue.scss","themeFilePath": "../node_modules/amexio-ng-extensions/styles/mda/at-md-z-ce-cts-deep-blue.scss","link": "AT-MD-Z-Ce-Cts-Deep-Blue.jpg"},
+"themeColor": [
+
+{ "key": "--appTransparency", "value": "rgba(0,0,0,0.87);"},
+{ "key": "--themePrimaryColor", "value": "#0720f1;"},
+{ "key": "--themeSecondaryColor", "value": "#071ff2;"},
+{ "key": "--theme3rdColor", "value": "#f2071f;"},
+{ "key": "--theme4thColor", "value": "#f2db07;"},
+{ "key": "--theme5thColor", "value": "#f2db07;"},
+{ "key": "--theme6thColor", "value": "#07f2db;"},
+
+{ "key": "--themePrimaryColorHSLA", "value": "hsla(234,94%,49%,0.0);"},
+{ "key": "--themeSecondaryColorHSLA", "value": "hsla(234,94%,49%,0.0);"},
+{ "key": "--theme3rdColorHSLA", "value": "hsla(354,94%,49%,0.0);"},
+{ "key": "--theme4thColorHSLA", "value": "hsla(54,94%,49%,0.0);"},
+{ "key": "--theme5thColorHSLA", "value": "hsla(54,94%,49%,0.0);"},
+{ "key": "--theme6thColorHSLA", "value": "hsla(174,94%,49%,0.0);"},
+
+{ "key": "--themePrimaryColorShade0", "value": "#000105;"},
+{ "key": "--themePrimaryColorShade1", "value": "#000638;"},
+{ "key": "--themePrimaryColorShade2", "value": "#00109e;"},
+{ "key": "--themePrimaryColorShade3", "value": "#051eff;"},
+{ "key": "--themePrimaryColorShade4", "value": "#6b7aff;"},
+{ "key": "--themePrimaryColorShade5", "value": "#d1d6ff;"},
+{ "key": "--themePrimaryColorShade6", "value": "#f5f6ff;"},
+
+{ "key": "--themePrimaryColorGradient", "value": "linear-gradient(#000b6b, #051eff, #b8bfff);"},
+{ "key": "--themeSecondaryColorGradient", "value": "linear-gradient(#000b6b, #051eff, #b8bfff);"},
+{ "key": "--theme3rdColorGradient", "value": "linear-gradient(#6b000b, #ff051e, #ffb8bf);"},
+{ "key": "--theme4thColorGradient", "value": "linear-gradient(#6b6000, #ffe605, #fff8b8);"},
+{ "key": "--theme5thColorGradient", "value": "linear-gradient(#6b6000, #ffe605, #fff8b8);"},
+{ "key": "--theme6thColorGradient", "value": "linear-gradient(#006b60, #05ffe6, #b8fff8);"},
+
+{ "key": "--themeFontColor", "value": "#00031f;"},
+{ "key": "--themeFontFamily ", "value": "Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;"},
+
+{ "key": "--themePrimaryFontColor", "value": "#f5f6ff;"},
+{ "key": "--themeSecondaryFontColor", "value": "#f5f6ff;"},
+{ "key": "--theme3rdFontColor", "value": "#fffafb;"},
+{ "key": "--theme4thFontColor", "value": "#231f01;"},
+{ "key": "--theme5thzFontColor", "value": "#231f01;"},
+{ "key": "--theme6thFontColor", "value": "#01231f;"},
+
+{ "key": "--amexioColorRedLight", "value": "#ff7f50;"},
+{ "key": "--amexioColorRedDark", "value": "#dc143c;"},
+{ "key": "--amexioColorGreenLight", "value": "#00ff00;"},
+{ "key": "--amexioColorGreenDark", "value": "#2e8b57;"},
+{ "key": "--amexioColorPurpleLight", "value": "#ff00ff;"},
+{ "key": "--amexioColorPurpleDark", "value": "#8b008b;"},
+{ "key": "--amexioColorBlueLight", "value": "#00bfff;"},
+{ "key": "--amexioColorBlueDark", "value": "#00008b;"},
+{ "key": "--amexioColorBrownLight", "value": "#f4a460;"},
+{ "key": "--amexioColorBrownDark", "value": "#800000;"},
+{ "key": "--amexioColorYellowLight", "value": "#ffd700;"},
+{ "key": "--amexioColorYellowDark", "value": "#ff9900;"}
+
+],
+"appColor": [
+{ "key": "--appBackground", "value": "#f5f5f5;"},
+{ "key": "--appBackgroundImage", "value": "none;"},
+{ "key": "--appForegroundColor", "value": "#121212;"},
+{ "key": "--appHeaderBGColor", "value": "#0720f1;"},
+{ "key": "--appHeaderFontColor", "value": "#f5f6ff;"},
+{ "key": "--appHeaderMenuBGColor", "value": "#0720f1;"},
+{ "key": "--appHeaderMenuFontColor", "value": "#f5f6ff;"},
+{ "key": "--appHeaderHoverBGColor", "value": "#e1e4fe;"},
+{ "key": "--appHeaderHoverFontColor", "value": "#020945;"}
+],
+"compColor": [
+{ "key": "--componentBGColor", "value": "#ffffff;"},
+{ "key": "--componentFontColor", "value": "#121212;"},
+{ "key": "--componentHeaderBGColor", "value": "#071ff2;"},
+{ "key": "--componentHeaderFontColor", "value": "#f5f6ff;"},
+{ "key": "--componentFooterBGColor", "value": "#e1e4fe;"},
+{ "key": "--componentFooterFontColor", "value": "#010314;"},
+{ "key": "--componentDataBGColor", "value": "#00031f;"},
+{ "key": "--componentDataFontColor", "value": "#9ea8ff;"},
+{ "key": "--componentHoverBGColor", "value": "#b8bfff;"},
+{ "key": "--componentHoverFontColor", "value": "#000852;"},
+{ "key": "--componentActiveBGColor", "value": "#6b7aff;"},
+{ "key": "--componentActiveFontColor", "value": "#00031f;"},
+{ "key": "--componentDisabledBGColor", "value": "#c2c5db;"},
+{ "key": "--componentDisabledFontColor", "value": "#6269a3;"},
+
+{ "key": "--componentBoxShadow", "value": "0 0px 1px 0 white, 0 2px 10px 0 rgba(0, 0, 0, 0.12);"}
+
+]
+}
