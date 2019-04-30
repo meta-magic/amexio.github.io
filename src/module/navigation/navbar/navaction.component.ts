@@ -15,18 +15,21 @@
 *
 *  Created by ketangote on 1/4/18.
 */
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'amexio-nav-action',
   template:
-  `
+    `
     <a *ngIf="(type=='link')" [ngStyle]="{'color':color}" class="top-nav-link"
     (click)="onClick($event)"><i *ngIf="icon" [ngClass]="icon"></i>{{title}}</a>
 
     <button *ngIf="(type=='button')" class="top-nav-button" (click)="onClick($event)">
     <i *ngIf="icon" style="padding-right:10px" [ngClass]="icon"></i>{{title}}</button>
-  `,
+    <div  *ngIf="(type=='toggle')" class="top-nav-button">
+    <amexio-darkmode></amexio-darkmode>
+    </div>
+    `,
 })
 export class AmexioNavActionComponent implements OnInit {
 
@@ -73,12 +76,12 @@ description : Fire when nav item is clicked, This event is fired when nav item t
   }
 
   onClick(event: any) {
-      const node = {
-        // 'title': this.title,
-        // 'type' : this.type,
-        // 'icon' : this.icon,
-      };
-      this.navLinkClick.emit({ node, event});
+    const node = {
+      // 'title': this.title,
+      // 'type' : this.type,
+      // 'icon' : this.icon,
+    };
+    this.navLinkClick.emit({ node, event });
 
   }
 

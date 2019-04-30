@@ -107,7 +107,7 @@ description : Indicate the type of menu-items (link / button / textfield /menu )
   }
 
   ngOnInit() {
-    if (this.type === 'link' || this.type === 'button') {
+    if (this.type === 'link' || this.type === 'button' || this.type === 'toggle') {
       this.isAction = true;
     } else if (this.type === 'textfield') {
       this.isTextField = true;

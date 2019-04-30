@@ -1,6 +1,6 @@
 
 .breadcrum-rightshift-css {
-  background-color: #ffffff;
+  background-color: $breadcrumbBackgroundColor;
 
 }
 
@@ -28,6 +28,7 @@
  
  border: 1px solid   $componentHoverFontColor;
   background-color: $breadcrumbBGColor;
+  color: $breadcrumbColor;
 }
 
 

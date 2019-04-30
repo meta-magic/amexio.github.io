@@ -20,7 +20,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 @Component({
   selector: 'amexio-label',
   template: `
-  <label style="outline: none" role="text" tabindex="1" class="label-content {{styleClass}}" (click)="onLabel($event)"
+  <label [ngClass]="{'labelFontClass': blackLabel}" style="outline: none"
+  role="text" tabindex="1" class="label-content {{styleClass}}" (click)="onLabel($event)"
     [ngStyle]="{'color' : fontColor,'cursor': enableclick ? 'pointer': 'text'}">
     <ng-content></ng-content>
     <span class="label-badge" *ngIf="badge">{{badge}}</span>
@@ -56,6 +57,10 @@ export class AmexioLabelComponent implements OnInit {
   */
   @Input('font-color') fontColor: string;
   @Input('enable-click') enableclick = false;
+
+  // For internal use
+  @Input() blackLabel = false;
+
   @Output() onClick: any = new EventEmitter<any>();
 
   tempStyleArray: any = ['large', 'medium', 'small', 'bold', 'large-bold', 'medium-bold', 'small-bold',

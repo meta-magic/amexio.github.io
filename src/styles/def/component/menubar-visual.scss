@@ -42,7 +42,8 @@
   }
 
   a{
-    color: $menuHoverColor;
+    color: $menuHoverFontColor;
+    background-color: $menuHoverBGColor;
   }
 
 }
@@ -109,7 +110,7 @@
 }
 
 .menu-content .menu-content-cols .content .menu-links-header:hover{
-  color: $menuHoverColor;
+  color: $menuHoverFontColor;
   background-color: $menuHoverBGColor;;
 }
 
@@ -124,7 +125,7 @@
 }
 
 .menu-content .menu-content-cols .content .menulinks:hover{
-  color: $menuHoverColor;
+  color: $menuHoverFontColor;
   background-color: $menuHoverBGColor;
 }
 

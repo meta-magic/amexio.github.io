@@ -1,0 +1,184 @@
+/** 
+  Amexio Colors v2.0. Copyright (c) 2018-19 MetaMagic Global Inc, NJ, USA 
+*/
+:root{
+--appTransparency : rgba(0,0,0,0.87);
+
+/** Theme Color in CSS Variables ------------------------------- */
+--themePrimaryColor : #af0306;
+--themeSecondaryColor : #b00306;
+--theme3rdColor : #06b003;
+--theme4thColor : #03b0ad;
+--theme5thColor : #03b0ad;
+--theme6thColor : #ad03b0;
+
+--themePrimaryColorHSLA : hsla(359,97%,35%,0.0);
+--themeSecondaryColorHSLA : hsla(359,97%,35%,0.0);
+--theme3rdColorHSLA : hsla(119,97%,35%,0.0);
+--theme4thColorHSLA : hsla(179,97%,35%,0.0);
+--theme5thColorHSLA : hsla(179,97%,35%,0.0);
+--theme6thColorHSLA : hsla(299,97%,35%,0.0);
+
+/** Primary Color shades -------------------------- */
+--themePrimaryColorShade0 : #050000;
+--themePrimaryColorShade1 : #380001;
+--themePrimaryColorShade2 : #9e0003;
+--themePrimaryColorShade3 : #ff0509;
+--themePrimaryColorShade4 : #ff6b6e;
+--themePrimaryColorShade5 : #ffd1d2;
+--themePrimaryColorShade6 : #fff5f5;
+
+/** Theme Color Gradients -------------------------- */
+--themePrimaryColorGradient : linear-gradient(#6b0002, #ff0509, #ffb8b9);
+--themeSecondaryColorGradient : linear-gradient(#6b0002, #ff0509, #ffb8b9);
+--theme3rdColorGradient : linear-gradient(#026b00, #09ff05, #b9ffb8);
+--theme4thColorGradient : linear-gradient(#006b69, #05fffb, #b8fffe);
+--theme5thColorGradient : linear-gradient(#006b69, #05fffb, #b8fffe);
+--theme6thColorGradient : linear-gradient(#69006b, #fb05ff, #feb8ff);
+
+/** Theme Font Family -------------------------- */
+--themeFontColor : #1f0001;
+--themeFontFamily : Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
+
+--themePrimaryFontColor : #fffafa;
+--themeSecondaryFontColor : #fffafa;
+--theme3rdFontColor : #ebffeb;
+--theme4thFontColor : #ebfffe;
+--theme5thzFontColor : #ebfffe;
+--theme6thFontColor : #fffaff;
+
+/** Theme Additional Std CSS Colors : Light and Dark shades --- */
+--amexioColorRedLight : #ff7f50;
+--amexioColorRedDark : #dc143c;
+--amexioColorGreenLight : #00ff00;
+--amexioColorGreenDark : #2e8b57;
+--amexioColorPurpleLight : #ff00ff;
+--amexioColorPurpleDark : #8b008b;
+--amexioColorBlueLight : #00bfff;
+--amexioColorBlueDark : #00008b;
+--amexioColorBrownLight : #f4a460;
+--amexioColorBrownDark : #800000;
+--amexioColorYellowLight : #ffd700;
+--amexioColorYellowDark : #ff9900;
+
+/** App Color CSS Variables ------------------------ */
+--appBackground :#f5f5f5;
+--appBackgroundImage : none;
+--appForegroundColor :#121212;
+--appHeaderBGColor :#af0306;
+--appHeaderFontColor :#fffafa;
+--appHeaderMenuBGColor :#af0306;
+--appHeaderMenuFontColor :#fffafa;
+--appHeaderHoverBGColor :#fd9b9c;
+--appHeaderHoverFontColor :#050000;
+
+/** Component Color CSS Variables ------------------------ */
+--componentBGColor :#ffffff;
+--componentFontColor :#121212;
+--componentHeaderBGColor :#b00306;
+--componentHeaderFontColor :#fffafa;
+--componentFooterBGColor :#fd9b9c;
+--componentFooterFontColor :#050000;
+--componentDataBGColor :#1f0001;
+--componentDataFontColor :#ff9ea0;
+--componentHoverBGColor :#ffb8b9;
+--componentHoverFontColor :#520001;
+--componentActiveBGColor :#ff6b6e;
+--componentActiveFontColor :#1f0001;
+--componentDisabledBGColor :#dbc2c3;
+--componentDisabledFontColor :#a36264;
+
+--componentBoxShadow :0 0px 1px 0 white, 0 2px 10px 0 rgba(0, 0, 0, 0.12)
+
+}
+$appTransparency : var(--appTransparency);
+
+/** Theme Color Variables ------------------------------- */
+$themePrimaryColor : var(--themePrimaryColor);
+$themeSecondaryColor : var(--themeSecondaryColor);
+$theme3rdColor : var(--theme3rdColor);
+$theme4thColor : var(--theme4thColor);
+$theme5thColor : var(--theme5thColor);
+$theme6thColor : var(--theme6thColor);
+
+/** Primary Color shades -------------------------- */
+$themePrimaryColorShade0 : var(--themePrimaryColorShade0);
+$themePrimaryColorShade1 : var(--themePrimaryColorShade1);
+$themePrimaryColorShade2 : var(--themePrimaryColorShade2);
+$themePrimaryColorShade3 : var(--themePrimaryColorShade3);
+$themePrimaryColorShade4 : var(--themePrimaryColorShade4);
+$themePrimaryColorShade5 : var(--themePrimaryColorShade5);
+$themePrimaryColorShade6 : var(--themePrimaryColorShade6);
+
+/** Theme Color Gradients -------------------------- */
+$themePrimaryColorGradient : var(--themePrimaryColorGradient);
+$themeSecondaryColorGradient : var(--themeSecondaryColorGradient);
+$theme3rdColorGradient : var(--theme3rdColorGradient);
+$theme4thColorGradient : var(--theme4thColorGradient);
+$theme5thColorGradient : var(--theme5thColorGradient);
+$theme6thColorGradient : var(--theme6thColorGradient);
+
+/** Theme Font Family -------------------------- */
+$themeFontColor : var(--themeFontColor);
+$themeFontFamily : var(--themeFontFamily);
+
+$themePrimaryFontColor : var(--themePrimaryFontColor);
+$themeSecondaryFontColor : var(--themeSecondaryFontColor);
+$theme3rdFontColor : var(--theme3rdFontColor);
+$theme4thFontColor : var(--theme4thFontColor);
+$theme5thFontColor : var(--theme5thFontColor);
+$theme6thFontColor : var(--theme6thFontColor);
+
+/** Theme Additional Std Colors : Light and Dark shades --- */
+$amexioColorRedLight : var(--amexioColorRedLight);
+$amexioColorRedDark : var(--amexioColorRedDark);
+$amexioColorGreenLight : var(--amexioColorGreenLight);
+$amexioColorGreenDark : var(--amexioColorGreenDark);
+$amexioColorPurpleLight : var(--amexioColorPurpleLight);
+$amexioColorPurpleDark : var(--amexioColorPurpleDark);
+$amexioColorBlueLight : var(--amexioColorBlueLight);
+$amexioColorBlueDark : var(--amexioColorBlueDark);
+$amexioColorBrownLight : var(--amexioColorBrownLight);
+$amexioColorBrownDark : var(--amexioColorBrownDark);
+$amexioColorYellowLight : var(--amexioColorYellowLight);
+$amexioColorYellowDark : var(--amexioColorYellowDark);
+
+/** App Color Variables ------------------------ */
+$appBackground : var(--appBackground);
+$appBackgroundImage : var(--appBackgroundImage);
+$appForegroundColor : var(--appForegroundColor);
+$appHeaderBGColor : var(--appHeaderBGColor);
+$appHeaderFontColor : var(--appHeaderFontColor);
+$appHeaderMenuBGColor : var(--appHeaderMenuBGColor);
+$appHeaderMenuFontColor : var(--appHeaderMenuFontColor);
+$appHeaderHoverBGColor : var(--appHeaderHoverBGColor);
+$appHeaderHoverFontColor : var(--appHeaderHoverFontColor);
+
+/** Component Color Variables ------------------------ */
+$componentBGColor : var(--componentBGColor);
+$componentFontColor : var(--componentFontColor);
+$componentHeaderBGColor : var(--componentHeaderBGColor);
+$componentHeaderFontColor : var(--componentHeaderFontColor);
+$componentFooterBGColor : var(--componentFooterBGColor);
+$componentFooterFontColor : var(--componentFooterFontColor);
+$componentDataBGColor : var(--componentDataBGColor);
+$componentDataFontColor : var(--componentDataFontColor);
+$componentHoverBGColor : var(--componentHoverBGColor);
+$componentHoverFontColor : var(--componentHoverFontColor);
+$componentActiveBGColor : var(--componentActiveBGColor);
+$componentActiveFontColor : var(--componentActiveFontColor);
+$componentDisabledBGColor : var(--componentDisabledBGColor);
+$componentDisabledFontColor : var(--componentDisabledFontColor);
+
+$componentBoxShadow  : var(--componentBoxShadow);
+
+
+/** 
+  Amexio Colors v2.0 Updated on April 10, 2019.
+  Amexio Support ---------------------------------- 
+  Contact  : amexiosupport@metamagic.in 
+  Home     : http://www.amexio.tech/
+  API Docs : http://api.amexio.tech/
+  Demos    : http://demo.amexio.tech/
+  Source   : https://github.com/meta-magic/amexio.github.io
+*/

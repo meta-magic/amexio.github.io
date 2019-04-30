@@ -1,0 +1,58 @@
+/** 
+  Amexio Colors v2.0. Copyright (c) 2018-19 MetaMagic Global Inc, NJ, USA 
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  THE SOFTWARE.
+
+  This program and the accompanying materials are licensed under
+  the terms of the Apache 2 License version 2.0 as published by the Apache
+  Software Foundation.
+*/
+
+
+/** Initialze Theme variables ------------ */
+@import "../mda/at-md-z-ce-cad-real-blue-init.scss";
+
+
+/** Initialze HTML variables ------------ */
+@import "../def/common.scss";
+
+/** Initialze Component variables ------------ */
+@import "../def/amexio.forminputs.scss";
+@import "../def/amexio.enterprise.scss";
+@import "../def/amexio.data.scss";
+@import "../def/amexio.nav.scss";
+
+/** Initialze Panels and Layouts variables ------------ */
+@import "../def/amexio.panes.scss";
+@import "../def/amexio.layouts.scss";
+
+/** Initialze Animation variables ------------ */
+@import "../def/amexio.animation.scss";
+
+/** Initialze Responsive Design variables ------------ */
+@import "../def/amexio.media.query.scss";
+
+/** Initialze Creative Components ------------ */
+@import "../def/amexio.creative.scss";
+/** 
+  Amexio Colors v2.0 Updated on April 10, 2019.
+  Amexio Support ---------------------------------- 
+  Contact  : amexiosupport@metamagic.in 
+  Home     : http://www.amexio.tech/
+  API Docs : http://api.amexio.tech/
+  Demos    : http://demo.amexio.tech/
+  Source   : https://github.com/meta-magic/amexio.github.io
+*/

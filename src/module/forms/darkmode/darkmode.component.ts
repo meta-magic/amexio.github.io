@@ -5,8 +5,12 @@ import { Component, Inject, Injectable, Input, OnInit } from '@angular/core';
     templateUrl: './darkmode.component.html',
 })
 export class DarkmodeComponent implements OnInit {
+
+    @Input('field-label') fieldLabel: string;
+
     themesdata: any = [];
     themeStyles: any[] = [];
+
     constructor() {
         this.themesdata = [
             {

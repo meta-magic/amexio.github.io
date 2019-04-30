@@ -31,6 +31,7 @@ sacramento-jade,#043927,#00A86B
 tronbone-royal,#D2B558,#FADA5E
 yale-azure,#0E4C92,#2196F3
 // Amexio Themes v4.1 - Feb 28, 2018
+// Design-Type : Material Design
 // Theme-Version : 4.1
 hot-pink-violetred,#F81894,#C71585
 orangered-tomato,#FF4500,#FF6347
@@ -61,3 +62,42 @@ z-flag-italy,#008000,#0052A5
 z-flag-germany,#E0162B,#ffff00
 z-flag-bahamas,#00ABC9,#FAE042
 z-flag-japan,#FFFFFF,#DC143C
+// Amexio Themes v5.11 - April 26, 2019
+// Design-Type : Material Design
+// Theme-Version : 5.11
+// Color-Algo : 2
+z-ce-cas-firebrick, #B22222
+z-ce-cas-deep-blue, #0914F5
+z-ce-cas-fluro-green, #09F551
+z-ce-cas-fluro-lime, #CAF509
+z-ce-cas-zen-pink, #E309F5
+z-ce-cas-cool-violet, #8A09F5
+z-ce-cas-real-blue, #1B09F5
+z-ce-cas-brick-red, #F50929
+z-ce-cas-dark-red, #AF0306
+z-ce-cas-military-green, #028C0A
+z-ce-cas-forest-green, #738C02
+// Color-Algo : 3
+z-ce-cad-firebrick, #B22222
+z-ce-cad-deep-blue, #0914F5
+z-ce-cad-fluro-green, #09F551
+z-ce-cad-fluro-lime, #CAF509
+z-ce-cad-zen-pink, #E309F5
+z-ce-cad-cool-violet, #8A09F5
+z-ce-cad-real-blue, #1B09F5
+z-ce-cad-brick-red, #F50929
+z-ce-cad-dark-red, #AF0306
+z-ce-cad-military-green, #028C0A
+z-ce-cad-forest-green, #738C02
+// Color-Algo : 7
+z-ce-cts-firebrick, #F11D07
+z-ce-cts-deep-blue, #0720F1
+z-ce-cts-fluro-green, #C0F107
+z-ce-cts-fluro-lime, #D1F107
+z-ce-cts-zen-pink, #F107DC
+z-ce-cts-cool-violet, #AE07F1
+z-ce-cts-real-blue, #070EF1
+z-ce-cts-brick-red, #F10739
+z-ce-cts-dark-red, #AF0306
+z-ce-cts-military-green, #028C0A
+z-ce-cts-forest-green, #738C02

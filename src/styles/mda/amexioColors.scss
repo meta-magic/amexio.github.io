@@ -1,0 +1,147 @@
+
+/** Theme Additional Std Colors in CSS : Light and Dark shades --- */
+--amexioColorRedLight : #ff7f50;
+--amexioColorRedDark : #dc143c;
+--amexioColorGreenLight : #00ff00;
+--amexioColorGreenDark : #2e8b57;
+--amexioColorPurpleLight : #ff00ff;
+--amexioColorPurpleDark : #8b008b;
+--amexioColorBlueLight : #00bfff;
+--amexioColorBlueDark : #00008b;
+--amexioColorBrownLight : #f4a460;
+--amexioColorBrownDark : #800000;
+--amexioColorYellowLight : #ffd700;
+--amexioColorYellowDark : #ff9900;
+--amexioColorBlack : #000000;
+--amexioColorWhite : #ffffff;
+
+
+/** Theme Additional Std Font Colors in CSS : Light and Dark shades --- */
+--amexioFontForRedLight : #240a00;
+--amexioFontForRedDark : #fffafb;
+--amexioFontForGreenLight : #002400;
+--amexioFontForGreenDark : #f0faf4;
+--amexioFontForPurpleLight : #fffaff;
+--amexioFontForPurpleDark : #fffaff;
+--amexioFontForBlueLight : #f0fbff;
+--amexioFontForBlueDark : #f5f5ff;
+--amexioFontForBrownLight : #211102;
+--amexioFontForBrownDark : #ffebeb;
+--amexioFontForYellowLight : #241e00;
+--amexioFontForYellowDark : #241500;
+
+
+/** CSS Class definitions for the Amexio Colors --- */
+/** Amexio Colors --- 
+   Coral: #ff7f50 rgb(255,127,80,0.0);
+   240a00: #240a00 rgb(36,10,0,0.0);
+*/
+.amexio-red-light {
+	background-color: #ff7f50;
+	color: #240a00;
+}
+/** Amexio Colors --- 
+   Crimson: #dc143c rgb(220,20,60,0.0);
+   fffafb: #fffafb rgb(255,250,251,0.0);
+*/
+.amexio-red {
+	background-color: #dc143c;
+	color: #fffafb;
+}
+/** Amexio Colors --- 
+   Lime: #00ff00 rgb(0,255,0,0.0);
+   002400: #002400 rgb(0,36,0,0.0);
+*/
+.amexio-green-light {
+	background-color: #00ff00;
+	color: #002400;
+}
+/** Amexio Colors --- 
+   SeaGreen: #2e8b57 rgb(46,139,87,0.0);
+   f0faf4: #f0faf4 rgb(240,250,244,0.0);
+*/
+.amexio-green {
+	background-color: #2e8b57;
+	color: #f0faf4;
+}
+/** Amexio Colors --- 
+   Magenta: #ff00ff rgb(255,0,255,0.0);
+   fffaff: #fffaff rgb(255,250,255,0.0);
+*/
+.amexio-purple-light {
+	background-color: #ff00ff;
+	color: #fffaff;
+}
+/** Amexio Colors --- 
+   DarkMagenta: #8b008b rgb(139,0,139,0.0);
+   fffaff: #fffaff rgb(255,250,255,0.0);
+*/
+.amexio-purple {
+	background-color: #8b008b;
+	color: #fffaff;
+}
+/** Amexio Colors --- 
+   DeepSkyBlue: #00bfff rgb(0,191,255,0.0);
+   f0fbff: #f0fbff rgb(240,251,255,0.0);
+*/
+.amexio-blue-light {
+	background-color: #00bfff;
+	color: #f0fbff;
+}
+/** Amexio Colors --- 
+   DarkBlue: #00008b rgb(0,0,139,0.0);
+   f5f5ff: #f5f5ff rgb(245,245,255,0.0);
+*/
+.amexio-blue {
+	background-color: #00008b;
+	color: #f5f5ff;
+}
+/** Amexio Colors --- 
+   SandyBrown: #f4a460 rgb(244,164,96,0.0);
+   211102: #211102 rgb(33,17,2,0.0);
+*/
+.amexio-brown-light {
+	background-color: #f4a460;
+	color: #211102;
+}
+/** Amexio Colors --- 
+   Maroon: #800000 rgb(128,0,0,0.0);
+   ffebeb: #ffebeb rgb(255,235,235,0.0);
+*/
+.amexio-brown {
+	background-color: #800000;
+	color: #ffebeb;
+}
+/** Amexio Colors --- 
+   Gold: #ffd700 rgb(255,215,0,0.0);
+   241e00: #241e00 rgb(36,30,0,0.0);
+*/
+.amexio-yellow-light {
+	background-color: #ffd700;
+	color: #241e00;
+}
+/** Amexio Colors --- 
+   ff9900: #ff9900 rgb(255,153,0,0.0);
+   241500: #241500 rgb(36,21,0,0.0);
+*/
+.amexio-yellow {
+	background-color: #ff9900;
+	color: #241500;
+}
+/** Amexio Colors --- 
+   Black: #000000 rgb(0,0,0,0.0);
+   White: #ffffff rgb(255,255,255,0.0);
+*/
+.amexio-black {
+	background-color: #000000;
+	color: #ffffff;
+}
+/** Amexio Colors --- 
+   White: #ffffff rgb(255,255,255,0.0);
+   Black: #000000 rgb(0,0,0,0.0);
+*/
+.amexio-white {
+	background-color: #ffffff;
+	color: #000000;
+}
+

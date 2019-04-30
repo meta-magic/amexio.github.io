@@ -8,7 +8,7 @@
 }
 .toggle:focus{
   outline:none;
-  border : 2px solid $toggleFGChecked;
+  border : 0.5px solid $toggleBGBeforeColor;
 }
 
 .toggle input {display:none;}

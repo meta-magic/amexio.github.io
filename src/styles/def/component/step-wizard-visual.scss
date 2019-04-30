@@ -42,7 +42,7 @@
     -webkit-box-flex: 1;
     -webkit-flex: 1;
     -ms-flex: 1;
-    background-color: $stepWizardColor;
+    background-color: $stepWizardFontColor;
 }
 
 .step-wizard li a {
@@ -76,7 +76,7 @@ ul.step-wizard li.completed a .circle {
 
 .step-wizard li a .circle {
     display: inline-block;
-    color: $stepWizardFontColor;
+    color: $stepWizardHoverFontColor;
     background: $stepWizardDefaultColor;
     text-align: center;
 }
@@ -104,4 +104,8 @@ amexio-step-wizard .form-footer {
 
 amexio-step-wizard .card-container-ce {
     // box-shadow: none;
+}
+
+.stepTitleColor {
+    color: $stepWizardFontColor;
 }

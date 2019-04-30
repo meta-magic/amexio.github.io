@@ -65,9 +65,9 @@
 
 .nav-dropdown:hover .nav-dropdown-content .nav-menu-container {
     background-color: $navbarComponentBGColor;
-    color: $navbarHoverFontColor;
+    color: $navbarComponentColor;
 }
 
 .nav-dropdown:hover .nav-dropdown-content .nav-menu-container a {
-    color: $navbarHoverFontColor;
+    color: $navbarComponentColor;
 }
