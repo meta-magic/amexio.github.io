@@ -38,7 +38,23 @@ export class AmexioGridComponent implements AfterContentInit, OnInit {
  default : Data is the a 2D array which user can pass.
  description : The data is for defining the input to be passed.
  */
-  @Input('layout') layout: string;
+  _layout: string;
+  isInit = false;
+
+  get layout(): string {
+    return this._layout;
+  }
+
+  @Input('layout')
+  set layout(value: string) {
+    if (value != null) {
+      this._layout = value;
+      if (this.isInit) {
+        this.gridInit();
+      }
+    }
+  }
+
   screenWidth: any;
   containerClass: any;
   className: string;
@@ -49,14 +65,19 @@ export class AmexioGridComponent implements AfterContentInit, OnInit {
   constructor(public _gridlayoutService: AmexioGridLayoutService) {
   }
   ngOnInit() {
+    this.gridInit();
+    this.isInit = true;
+  }
+
+  gridInit() {
     this.containerClass = '';
     this.className = '';
     this.cssGenreration(this._gridlayoutService.getLayoutData(this.layout));
   }
-
   getCssAttribute(): string {
     return 'display: grid;' + ' grid-gap: 5px;' + 'grid-template-columns: repeat(' + this.colCount + ', 1fr);';
   }
+
   insertStyleSheetRuleParent(ruleText: any) {
     const sheets: any = document.styleSheets;
     if (sheets.length === 0) {
@@ -64,8 +85,17 @@ export class AmexioGridComponent implements AfterContentInit, OnInit {
       style.appendChild(document.createTextNode(''));
       document.head.appendChild(style);
     }
-    const sheet: any = sheets[sheets.length - 1];
-    sheet.insertRule(ruleText, sheet.rules ? sheet.rules.length : sheet.cssRules.length);
+    let isCssAdded = false;
+    for (const sh of sheets) {
+      const sheet: any = sh;
+      if (!isCssAdded && (sheet && sheet.href === null && sheet.rules)) {
+        try {
+          sheet.insertRule(ruleText, 0);
+          isCssAdded = true;
+        } catch (e) {
+        }
+      }
+    }
   }
 
   ngAfterContentInit() {
