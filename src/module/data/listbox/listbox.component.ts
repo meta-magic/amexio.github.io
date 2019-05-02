@@ -199,7 +199,7 @@ description : Context Menu provides the list of menus on right click.
 
   orgData: any[];
 
-  filterText= '' ;
+  filterText = '';
 
   selectAll = false;
 
@@ -271,7 +271,8 @@ description : Context Menu provides the list of menus on right click.
       .listen('document', 'click', (event: any) => {
         if (this.viewData.length > 0) {
           this.viewData.forEach((element: any, index: number) => {
-            if (this.prevlistindex !== -1 && this.viewData[this.prevlistindex]['ishoverselected'] === true) {
+            if (this.prevlistindex !== -1 && this.viewData[this.prevlistindex].hasOwnProperty('ishoverselected')
+              && this.viewData[this.prevlistindex]['ishoverselected'] === true) {
               this.viewData[this.prevlistindex]['ishoverselected'] = false;
               this.prevlistindex = -1;
               this.listindex = -1;
