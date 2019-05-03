@@ -27,7 +27,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
     <button *ngIf="(type=='button')" class="top-nav-button" (click)="onClick($event)">
     <i *ngIf="icon" style="padding-right:10px" [ngClass]="icon"></i>{{title}}</button>
     <div  *ngIf="(type=='toggle')" class="top-nav-button">
-    <amexio-darkmode></amexio-darkmode>
+    <amexio-darkmode [size]="'small'"></amexio-darkmode>
     </div>
     `,
 })

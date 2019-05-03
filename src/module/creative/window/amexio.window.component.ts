@@ -195,9 +195,11 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
   /* ASSIGN PROPERTIES TO FOOTER AND HEADER*/
 
   ngAfterContentInit(): void {
-    if (this.amexioHeader && this.amexioHeader.toArray.length > 0) {
-      this.amexioHeader.toArray()[0].closeable = this.closable;
-      this.amexioHeader.toArray()[0].windowFlag = true;
+    if (this.amexioHeader && this.amexioHeader.toArray().length > 0) {
+      setTimeout(() => {
+        this.amexioHeader.toArray()[0].closeable = this.closable;
+        this.amexioHeader.toArray()[0].windowFlag = true;
+      }, 3000);
 
       if (this.maximize) {
         this.amexioHeader.toArray()[0].setMaximizeData(this.maximize, this.isFullWindow);
@@ -214,12 +216,12 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['show']) {
-      this.setShowFlag(changes.show.currentValue);
-    }
-    if (changes['showWindow']) {
-      this.setShowFlag(changes.showWindow.currentValue);
-    }
+      if (changes['show']) {
+        this.setShowFlag(changes.show.currentValue);
+      }
+      if (changes['showWindow']) {
+        this.setShowFlag(changes.showWindow.currentValue);
+      }
   }
   setShowFlag(changedValue: any) {
     this.show = changedValue;

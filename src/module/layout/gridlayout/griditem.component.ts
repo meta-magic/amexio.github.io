@@ -52,25 +52,23 @@ description : The name is for determining the name of item.
    }
 
    insertStyleSheetRule(ruleText: any) {
-     if (document && document.styleSheets) {
-      const sheets: any = document.styleSheets;
-      if (sheets.length === 0) {
-        const style = document.createElement('style');
-        if (style) {
-          style.appendChild(document.createTextNode(''));
-          document.head.appendChild(style);
+    const sheets: any = document.styleSheets;
+    if (sheets.length === 0) {
+      const style = document.createElement('style');
+      style.appendChild(document.createTextNode(''));
+      document.head.appendChild(style);
+    }
+    let isCssAdded = false;
+    for (const sh of sheets) {
+      const sheet: any = sh;
+      if (!isCssAdded && (sheet && sheet.href === null && sheet.rules)) {
+        try {
+          sheet.insertRule(ruleText, 0);
+          isCssAdded = true;
+        } catch (e) {
         }
       }
-      if (sheets && sheets.length > 1) {
-        const sheet: any = sheets[sheets.length - 1];
-        this.addRule(sheet, ruleText);
-      }
     }
   }
-  // TO ADD RULE
-  addRule(sheet: any, ruleText: any) {
-    if (sheet) {
-      sheet.insertRule(ruleText, sheet.rules ? sheet.rules.length : sheet.cssRules.length);
-    }
-  }
+
 }

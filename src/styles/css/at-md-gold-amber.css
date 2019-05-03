@@ -1901,34 +1901,119 @@ textarea:required {
     Version : Amexio v4.0 onwards
 *****************************************************************************/
 /** toggle - Visual CSS **/
-.toggle-slider {
+/* Rounded sliders */
+.round {
+  border: 1px solid #ced4da; }
+
+/*  small size */
+.smallToggleSlider {
+  border: 1px solid #ced4da;
   background-color: var(--componentBGColor); }
 
-.toggle-slider:before {
+.smallToggleSlider:before {
   background-color: var(--componentActiveBGColor); }
 
-input:checked + .toggle-slider {
+input:checked + .smallToggleSlider {
   background-color: var(--componentHoverBGColor); }
 
+input:focus + .smallToggleSlider {
+  box-shadow: 0 0 1px #ced4da; }
+
+/* medium size  */
+.mediumToggleSlider {
+  border: 1px solid #ced4da;
+  background-color: var(--componentBGColor); }
+
+.mediumToggleSlider:before {
+  background-color: var(--componentActiveBGColor); }
+
+input:checked + .mediumToggleSlider {
+  background-color: var(--componentHoverBGColor); }
+
+input:focus + .mediumToggleSlider {
+  box-shadow: 0 0 1px #ced4da; }
+
+/* large size */
+.largeToggleSlider {
+  border: 1px solid #ced4da;
+  background-color: var(--componentBGColor); }
+
+.largeToggleSlider:before {
+  background-color: var(--componentActiveBGColor); }
+
+input:checked + .largeToggleSlider {
+  background-color: var(--componentHoverBGColor); }
+
+input:focus + .largeToggleSlider {
+  box-shadow: 0 0 1px #ced4da; }
+
+.smallType2ToggleSlider {
+  border: 1px solid #ced4da;
+  background-color: var(--componentBGColor); }
+
+.mediumType2ToggleSlider {
+  border: 1px solid #ced4da;
+  background-color: var(--componentBGColor); }
+
+.largeType2ToggleSlider {
+  border: 1px solid #ced4da;
+  background-color: var(--componentBGColor); }
+
+.largeType2ToggleSlider:before {
+  background-color: var(--componentActiveBGColor); }
+
+.mediumType2ToggleSlider:before {
+  background-color: var(--componentActiveBGColor); }
+
+.smallType2ToggleSlider:before {
+  background-color: var(--componentActiveBGColor); }
+
+input:checked + .smallType2ToggleSlider {
+  background-color: var(--componentHoverBGColor); }
+
+input:checked + .mediumType2ToggleSlider {
+  background-color: var(--componentHoverBGColor); }
+
+input:checked + .largeType2ToggleSlider {
+  background-color: var(--componentHoverBGColor); }
+
+.smallToggleSlider:focus {
+  outline: 1px solid var(--componentActiveBGColor); }
+
+.mediumToggleSlider:focus {
+  outline: 1px solid var(--componentActiveBGColor); }
+
+.largeToggleSlider:focus {
+  outline: 1px solid var(--componentActiveBGColor); }
+
+.largeType2ToggleSlider:focus {
+  outline: 1px solid var(--componentActiveBGColor); }
+
+.mediumType2ToggleSlider:focus {
+  outline: 1px solid var(--componentActiveBGColor); }
+
+.smallType2ToggleSlider:focus {
+  outline: 1px solid var(--componentActiveBGColor); }
+
 /** toggle - Structure CSS **/
-.toggle {
+/* Rounded sliders */
+.round {
+  border-radius: 34px; }
+
+.round:before {
+  border-radius: 50%; }
+
+/*  small size */
+.smallToggle {
   position: relative;
   display: inline-block;
-  width: 60px;
-  height: 34px;
+  width: 57px;
+  height: 28px;
   vertical-align: middle; }
 
-.toggle:focus {
-  outline: none;
-  border: 0.5px solid var(--componentActiveBGColor); }
-
-.toggle input {
-  display: none; }
-
-.toggle-slider {
+.smallToggleSlider {
   position: absolute;
   cursor: pointer;
-  border: 1px solid #ced4da;
   top: 0;
   left: 0;
   right: 0;
@@ -1936,31 +2021,186 @@ input:checked + .toggle-slider {
   -webkit-transition: .4s;
   transition: .4s; }
 
-.toggle-slider:before {
+.smallToggleSlider:before {
   position: absolute;
   content: "";
-  height: 26px;
-  width: 26px;
+  height: 20px;
+  width: 20px;
   left: 4px;
+  bottom: 4px;
+  top: 2px;
+  -webkit-transition: .4s;
+  transition: .4s; }
+
+input:checked + .smallToggleSlider:before {
+  -webkit-transform: translateX(28px);
+  -ms-transform: translateX(28px);
+  transform: translateX(28px); }
+
+/* medium size  */
+.mediumToggle {
+  position: relative;
+  display: inline-block;
+  width: 77px;
+  height: 38px;
+  vertical-align: middle; }
+
+.mediumToggleSlider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-transition: .4s;
+  transition: .4s; }
+
+.mediumToggleSlider:before {
+  position: absolute;
+  content: "";
+  height: 30px;
+  width: 30px;
+  left: 4px;
+  top: 2px;
   bottom: 4px;
   -webkit-transition: .4s;
   transition: .4s; }
 
-input:focus + .toggle-slider {
-  box-shadow: 0 0 1px #ced4da; }
+input:checked + .mediumToggleSlider:before {
+  -webkit-transform: translateX(37px);
+  -ms-transform: translateX(37px);
+  transform: translateX(37px); }
 
-input:checked + .toggle-slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px); }
+/* large size */
+.largeToggle {
+  position: relative;
+  display: inline-block;
+  width: 97px;
+  height: 48px;
+  vertical-align: middle; }
 
-/* Rounded sliders */
-.round {
-  border-radius: 34px;
-  border: 1px solid #ced4da; }
+.largeToggleSlider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-transition: .4s;
+  transition: .4s; }
 
-.round:before {
-  border-radius: 50%; }
+.largeToggleSlider:before {
+  position: absolute;
+  content: "";
+  height: 40px;
+  width: 40px;
+  left: 4px;
+  top: 2px;
+  bottom: 4px;
+  -webkit-transition: .4s;
+  transition: .4s; }
+
+input:checked + .largeToggleSlider:before {
+  -webkit-transform: translateX(47px);
+  -ms-transform: translateX(47px);
+  transform: translateX(47px); }
+
+.smallType2ToggleSlider:before {
+  position: absolute;
+  content: "";
+  height: 28px;
+  width: 28px;
+  left: -1px;
+  bottom: -9px;
+  -webkit-transition: .4s;
+  transition: .4s; }
+
+.smallType2Toggle {
+  position: relative;
+  display: inline-block;
+  width: 57px;
+  height: 14px;
+  vertical-align: middle; }
+
+.smallType2ToggleSlider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-transition: .4s;
+  transition: .4s; }
+
+input:checked + .smallType2ToggleSlider:before {
+  -webkit-transform: translateX(32px);
+  -ms-transform: translateX(32px);
+  transform: translateX(32px); }
+
+.mediumType2ToggleSlider:before {
+  position: absolute;
+  content: "";
+  height: 35px;
+  width: 35px;
+  left: -1px;
+  bottom: -13px;
+  -webkit-transition: .4s;
+  transition: .4s; }
+
+.mediumType2Toggle {
+  position: relative;
+  display: inline-block;
+  width: 75px;
+  height: 14px;
+  vertical-align: middle; }
+
+.mediumType2ToggleSlider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-transition: .4s;
+  transition: .4s; }
+
+input:checked + .mediumType2ToggleSlider:before {
+  -webkit-transform: translateX(39px);
+  -ms-transform: translateX(39px);
+  transform: translateX(39px); }
+
+/* type 2 large */
+.largeType2ToggleSlider:before {
+  position: absolute;
+  content: "";
+  height: 45px;
+  width: 45px;
+  left: -1px;
+  bottom: -15px;
+  -webkit-transition: .4s;
+  transition: .4s; }
+
+.largeType2Toggle {
+  position: relative;
+  display: inline-block;
+  width: 97px;
+  height: 17px;
+  vertical-align: middle; }
+
+.largeType2ToggleSlider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-transition: .4s;
+  transition: .4s; }
+
+input:checked + .largeType2ToggleSlider:before {
+  -webkit-transform: translateX(50px);
+  -ms-transform: translateX(50px);
+  transform: translateX(50px); }
 
 /****************************************************************************
     Component Name : Range

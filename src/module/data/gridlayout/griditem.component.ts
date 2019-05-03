@@ -59,7 +59,16 @@ description : The name is for determining the name of item.
       style.appendChild(document.createTextNode(''));
       document.head.appendChild(style);
     }
-    const sheet: any = sheets[sheets.length - 1];
-    sheet.insertRule(ruleText, sheet.rules ? sheet.rules.length : sheet.cssRules.length);
+    let isCssAdded = false;
+    for (const sh of sheets) {
+      const sheet: any = sh;
+      if (!isCssAdded && (sheet && sheet.href === null && sheet.rules)) {
+        try {
+          sheet.insertRule(ruleText, 0);
+          isCssAdded = true;
+        } catch (e) {
+        }
+      }
+    }
   }
 }
