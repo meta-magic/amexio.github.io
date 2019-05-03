@@ -195,7 +195,7 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
   /* ASSIGN PROPERTIES TO FOOTER AND HEADER*/
 
   ngAfterContentInit(): void {
-    if (this.amexioHeader) {
+    if (this.amexioHeader && this.amexioHeader.toArray.length > 0) {
       this.amexioHeader.toArray()[0].closeable = this.closable;
       this.amexioHeader.toArray()[0].windowFlag = true;
 

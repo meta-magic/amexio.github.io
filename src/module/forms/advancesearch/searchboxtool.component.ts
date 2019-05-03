@@ -121,6 +121,15 @@ export class SearchboxtoolComponent extends BaseFormValidator<string> implements
    */
   @Input() width = 500;
   /*
+   Properties
+   name : enablefilter
+   datatype : boolean
+   version : 5.11 onwards
+   default : none
+   description : Enable.
+   */
+  @Input('enable-global-filter') enablefilter: boolean;
+  /*
    Events
    name : keyup
    description : Fires when keyup event occurs
@@ -164,6 +173,7 @@ export class SearchboxtoolComponent extends BaseFormValidator<string> implements
   enableAdvnSearch: boolean;
   componentId: string;
   keystrokeflag = false;
+  a: any;
 
   isadvsearchbtnpressed = false;
   constructor(
@@ -220,10 +230,7 @@ export class SearchboxtoolComponent extends BaseFormValidator<string> implements
     if (keyword != null && keyword !== ' ') {
       const search_term = keyword.toLowerCase();
       this.localData.forEach((item: any) => {
-        if (item != null && item[this.displayfield].toLowerCase().startsWith(search_term)) {
-          this.viewData.push(item);
-          this.isListFlag = true;
-        }
+        this.tempOnInputClick(item, search_term);
       });
       this.keyup.emit(event);
     }
@@ -239,6 +246,25 @@ export class SearchboxtoolComponent extends BaseFormValidator<string> implements
       this.isListFlag = false;
     }
   }
+  tempOnInputClick(item: any, search_term: any) {
+    for (const [key, value] of Object.entries(item)) {
+      let val: any;
+      val = value;
+      this.a = key;
+      // For New Input enable-filter
+      if (item && (this.enablefilter) && (val.startsWith(search_term))
+       && item !== null && item[this.displayfield]) {
+        this.isListFlag = true;
+        this.viewData.push(item);
+      } else {
+        if ((!this.enablefilter) && item !== null && val.startsWith(search_term)
+        && item[this.displayfield].toLowerCase().startsWith(search_term)) {
+          this.isListFlag = true;
+          this.viewData.push(item);
+        }
+      }
+    }
+  }
   onFocus() {
     if (this.selectedValue.length > 0) {
       const keyword = this.selectedValue;
@@ -247,11 +273,7 @@ export class SearchboxtoolComponent extends BaseFormValidator<string> implements
       if (keyword != null && keyword !== ' ') {
         const search_term = keyword.toLowerCase();
         this.localData.forEach((item1: any) => {
-          if (item1 != null && item1[this.displayfield].toLowerCase().startsWith(search_term)) {
-            // if word exist in start
-            this.viewData.push(item1);
-            this.isListFlag = true;
-          }
+          this.tempOnInputClick(item1, search_term);
         });
         this.searchFlag = true;
         this.onBaseFocusEvent({});
