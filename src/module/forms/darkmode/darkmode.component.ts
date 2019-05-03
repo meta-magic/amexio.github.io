@@ -9,6 +9,8 @@ export class DarkmodeComponent implements OnInit {
     @Input('field-label') fieldLabel: string;
 
     @Input('shape') shape: 'round';
+    @Input('type') type: any;
+    @Input('size') size = 'medium';
 
     themesdata: any = [];
     themeStyles: any[] = [];
