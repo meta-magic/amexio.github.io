@@ -115,3 +115,15 @@ input:focus + .largeToggleSlider {
 .smallType2ToggleSlider:before  {
   background-color: $toggleBGBeforeColor;
 }
+
+input:checked + .smallType2ToggleSlider {
+  background-color: $toggleBGChecked;
+}
+
+input:checked + .mediumType2ToggleSlider {
+  background-color: $toggleBGChecked;
+}
+
+input:checked + .largeType2ToggleSlider {
+  background-color: $toggleBGChecked;
+}
