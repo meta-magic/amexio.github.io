@@ -1,63 +1,272 @@
 
-.toggle {
-  position: relative;
-  display: inline-block;
-  width: 60px;  
-  height: 34px;
-  vertical-align: middle
-}
-.toggle:focus{
-  outline:none;
-  border : 0.5px solid $toggleBGBeforeColor;
-}
 
-.toggle input {display:none;}
-
-.toggle-slider {
-  position: absolute;
-  cursor: pointer;
-  border :$toggleBorderSize solid $toggleBorderColor;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  //background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-.toggle-slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  //background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-input:checked + .toggle-slider {
-  //background-color: $primaryBGColor;
-}
-
-input:focus + .toggle-slider {
-  box-shadow: 0 0 1px $toggleBorderColor;
-}
-
-input:checked + .toggle-slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
 
 /* Rounded sliders */
 .round {
   border-radius: 34px;
-  border :$toggleBorderSize solid $toggleBorderColor;
+  // border :$toggleBorderSize solid $toggleBorderColor;
 }
 
 .round:before {
   border-radius: 50%;
+}
+
+/*  small size */
+.smallToggle {
+  position: relative;
+  display: inline-block;
+  width: 57px;  
+  height: 28px;
+  vertical-align: middle
+}
+.smallToggleSlider {
+  position: absolute;
+  cursor: pointer;
+  // border :$toggleBorderSize solid $toggleBorderColor;
+  // background-color: $toggleBGColor;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+ 
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.smallToggleSlider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  top: 2px;
+  // background-color: $toggleBGBeforeColor;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+// input:checked + .smallToggleSlider {
+//   background-color: $toggleBGChecked;
+// }
+
+// input:focus + .smallToggleSlider {
+//   box-shadow: 0 0 1px $toggleBorderColor;
+// }
+
+input:checked + .smallToggleSlider:before {
+  -webkit-transform: translateX(28px);
+  -ms-transform: translateX(28px);
+  transform: translateX(28px);
+}
+
+
+
+ /* medium size  */
+
+ .mediumToggle {
+  position: relative;
+  display: inline-block;
+  width: 77px;  
+  height: 38px;
+  vertical-align: middle
+}
+.mediumToggleSlider {
+  position: absolute;
+  cursor: pointer;
+  // border :$toggleBorderSize solid $toggleBorderColor;
+  // background-color: $toggleBGColor;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.mediumToggleSlider:before {
+  position: absolute;
+  content: "";
+  height: 30px;
+  width: 30px;
+  left: 4px;
+  top: 2px;
+  bottom: 4px;
+  // background-color: $toggleBGBeforeColor;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+// input:checked + .mediumToggleSlider {
+//   background-color: $toggleBGChecked;
+// }
+
+// input:focus + .mediumToggleSlider {
+//   box-shadow: 0 0 1px $toggleBorderColor;
+// }
+
+input:checked + .mediumToggleSlider:before {
+  -webkit-transform: translateX(37px);
+  -ms-transform: translateX(37px);
+  transform: translateX(37px);
+}
+
+/* large size */
+
+
+.largeToggle {
+  position: relative;
+  display: inline-block;
+  width: 97px;  
+  height: 48px;
+  vertical-align: middle
+}
+.largeToggleSlider {
+  position: absolute;
+  cursor: pointer;
+  // border :$toggleBorderSize solid $toggleBorderColor;
+  // background-color: $toggleBGColor;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.largeToggleSlider:before {
+  position: absolute;
+  content: "";
+  height: 40px;
+  width: 40px;
+  left: 4px;
+  top:2px;
+  bottom: 4px;
+ // background-color: $toggleBGBeforeColor;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+// input:checked + .largeToggleSlider {
+//   background-color: $toggleBGChecked;
+// }
+
+// input:focus + .largeToggleSlider {
+//   box-shadow: 0 0 1px $toggleBorderColor;
+// }
+
+input:checked + .largeToggleSlider:before {
+  -webkit-transform: translateX(47px);
+  -ms-transform: translateX(47px);
+  transform: translateX(47px);
+}
+
+
+// type 2: small
+
+
+.smallType2ToggleSlider:before {
+  position: absolute;
+  content: "";
+  height:  28px;
+  width: 28px;
+  left: -1px;
+  bottom: -9px;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.smallType2Toggle {
+  position: relative;
+  display: inline-block;
+  width: 57px;  
+  height: 14px;
+  vertical-align: middle
+}
+.smallType2ToggleSlider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+input:checked + .smallType2ToggleSlider:before {
+  -webkit-transform: translateX(32px);
+  -ms-transform: translateX(32px);
+  transform: translateX(32px);
+}
+
+// type 2: medium
+
+.mediumType2ToggleSlider:before {
+  position: absolute;
+  content: "";
+  height: 35px;
+  width: 35px;
+  left: -1px;
+  bottom: -13px;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.mediumType2Toggle {
+  position: relative;
+  display: inline-block;
+  width: 75px;  
+  height: 14px;
+  vertical-align: middle
+}
+.mediumType2ToggleSlider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+  
+input:checked + .mediumType2ToggleSlider:before {
+  -webkit-transform: translateX(39px);
+  -ms-transform: translateX(39px);
+  transform: translateX(39px);
+}
+
+/* type 2 large */
+.largeType2ToggleSlider:before {
+  position: absolute;
+  content: "";
+  height: 45px;
+  width: 45px;
+  left: -1px;
+  bottom: -15px;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.largeType2Toggle {
+  position: relative;
+  display: inline-block;
+  width: 97px;  
+  height: 17px;
+  vertical-align: middle
+}
+.largeType2ToggleSlider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .largeType2ToggleSlider:before {
+  -webkit-transform: translateX(50px);
+  -ms-transform: translateX(50px);
+  transform: translateX(50px);
 }

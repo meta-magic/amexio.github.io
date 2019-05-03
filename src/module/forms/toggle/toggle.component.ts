@@ -72,6 +72,9 @@ description : The label of this field.
   */
   @Input() required: boolean;
 
+  @Input('size') size: any;
+  @Input('type') type: number;
+
   @Output() onChange: EventEmitter<any> = new EventEmitter<any>();
 
   isValid: boolean;

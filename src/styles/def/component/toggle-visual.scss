@@ -1,13 +1,117 @@
 
 
-.toggle-slider {
+// .toggle-slider {
+//   background-color: $toggleBGColor;
+// }
+
+// .toggle-slider:before {
+//   background-color: $toggleBGBeforeColor;
+// }
+
+// input:checked + .toggle-slider {
+//   background-color: $toggleBGChecked;
+// }
+
+
+
+
+
+/* Rounded sliders */
+.round {
+  border :$toggleBorderSize solid $toggleBorderColor;
+}
+
+
+
+/*  small size */
+
+.smallToggleSlider {
+  border :$toggleBorderSize solid $toggleBorderColor;
+  background-color: $toggleBGColor;
+ 
+}
+
+.smallToggleSlider:before {
+  background-color: $toggleBGBeforeColor;
+}
+input:checked + .smallToggleSlider {
+  background-color: $toggleBGChecked;
+}
+
+input:focus + .smallToggleSlider {
+  box-shadow: 0 0 1px $toggleBorderColor;
+}
+
+
+
+ /* medium size  */
+
+.mediumToggleSlider {
+  border :$toggleBorderSize solid $toggleBorderColor;
   background-color: $toggleBGColor;
 }
 
-.toggle-slider:before {
+.mediumToggleSlider:before {
+  background-color: $toggleBGBeforeColor;
+}
+input:checked + .mediumToggleSlider {
+  background-color: $toggleBGChecked;
+}
+
+input:focus + .mediumToggleSlider {
+  box-shadow: 0 0 1px $toggleBorderColor;
+}
+
+
+/* large size */
+
+.largeToggleSlider {
+  border :$toggleBorderSize solid $toggleBorderColor;
+  background-color: $toggleBGColor;
+}
+
+.largeToggleSlider:before {
+  background-color: $toggleBGBeforeColor;
+}
+input:checked + .largeToggleSlider {
+  background-color: $toggleBGChecked;
+}
+
+input:focus + .largeToggleSlider {
+  box-shadow: 0 0 1px $toggleBorderColor;
+}
+
+
+//  type 2 : small
+
+.smallType2ToggleSlider {
+  border :$toggleBorderSize solid $toggleBorderColor;
+  background-color: $toggleBGColor;
+}
+
+// medium
+
+.mediumType2ToggleSlider {
+  border :$toggleBorderSize solid $toggleBorderColor;
+  background-color: $toggleBGColor;
+}
+
+// large
+
+.largeType2ToggleSlider {
+  border :$toggleBorderSize solid $toggleBorderColor;
+  background-color: $toggleBGColor;
+}
+
+.largeType2ToggleSlider:before {
   background-color: $toggleBGBeforeColor;
 }
 
-input:checked + .toggle-slider {
-  background-color: $toggleBGChecked;
+.mediumType2ToggleSlider:before  {
+  background-color: $toggleBGBeforeColor;
+  
+}
+
+.smallType2ToggleSlider:before  {
+  background-color: $toggleBGBeforeColor;
 }

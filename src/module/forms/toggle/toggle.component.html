@@ -1,21 +1,35 @@
-<div  id="{{componentId}}" class="inputgroup">
+<div id="{{componentId}}" class="inputgroup">
   {{fieldlabel}}
 
-  <label  role="switch" attr.aria-labelledby="{{componentId}}" [attr.aria-checked]="checked" tabindex="1" for="{{toggleId}}" 
-  class="toggle" 
-  (keyup.space)="onEventFilter($event)">
 
-    <input id="{{toggleId}}" type="checkbox"
-     style="top:0; left:0" 
-     [attr.checked]="checked"
-     data-check-switch = ""
-      [attr.aria-required]="required"
-      #rangeHndl 
-      [(ngModel)]="value"
-      (blur)="onBlur()"
-      [attr.aria-checked]="checked" 
+  <label role="switch" attr.aria-labelledby="{{componentId}}" [attr.aria-checked]="checked" tabindex="1" for="{{toggleId}}"
+    [ngClass]="{smallToggle:(size == 'small' && type != 2),
+    smallType2Toggle:(size == 'small' && type == 2),
+
+    mediumToggle:(size == 'medium' && type != 2),
+    mediumType2Toggle:(size == 'medium' && type == 2),
+
+    largeToggle:(size == 'large' && type != 2),
+    largeType2Toggle:(size == 'large' && type == 2)
+
+}"
+    (keyup.space)="onEventFilter($event)">
+
+    <input id="{{toggleId}}" type="checkbox" style="top:0; left:0" [attr.checked]="checked" data-check-switch=""
+      [attr.aria-required]="required" #rangeHndl [(ngModel)]="value" (blur)="onBlur()" [attr.aria-checked]="checked"
       (change)="onToggle()">
-    <span class="toggle-slider {{shape}}">
+    <span class="toggle-slider {{shape}}" [ngClass]="
+    {
+      smallToggleSlider :(size == 'small' && type != 2),
+      smallType2ToggleSlider :(size == 'small' && type == 2),
+
+     mediumToggleSlider : (size == 'medium' && type !=2),
+     mediumType2ToggleSlider : (size == 'medium' && type ==2),
+
+     largeToggleSlider : (size == 'large' && type !=2),
+     largeType2ToggleSlider : (size == 'large' && type ==2)
+  }">
+
     </span>
   </label>
 </div>
