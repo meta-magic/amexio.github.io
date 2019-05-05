@@ -127,3 +127,36 @@ input:checked + .mediumType2ToggleSlider {
 input:checked + .largeType2ToggleSlider {
   background-color: $toggleBGChecked;
 }
+
+.smallToggleSlider:focus{
+  outline: 1px solid $toggleBGBeforeColor;
+}
+
+.mediumToggleSlider:focus {
+  outline: 1px solid $toggleBGBeforeColor;
+
+}
+
+.largeToggleSlider:focus {
+  outline: 1px solid $toggleBGBeforeColor;
+
+}
+//  type 2
+.largeType2ToggleSlider:focus {
+  outline: 1px solid $toggleBGBeforeColor;
+
+}
+
+.mediumType2ToggleSlider:focus {
+  outline: 1px solid $toggleBGBeforeColor;
+
+}
+
+.smallType2ToggleSlider:focus {
+  outline: 1px solid $toggleBGBeforeColor;
+
+}
+
+
+
+

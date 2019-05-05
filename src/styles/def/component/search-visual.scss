@@ -12,13 +12,13 @@
     border-color: $dropdownBorderColor;
 }
  .form-control{
-    color: $dropdownlistFontColor;
+    color: $searchFontColor;
     background-color:$dropdownBG;
     border-color: $dropdownBorderColor;
  }
  
  .search-form-label{
-   color:$dropdownlistFontColor;
+   color: $searchFontColor;
  }
  
  .iconColor{
@@ -34,10 +34,12 @@
     background-color:$dropdownBG;;
   }
    
-  .search-dropdown-list li:hover{background:$dropdownHoverBGColor;}
+  .search-dropdown-list li:hover{background:$dropdownHoverBGColor;
+  color: $dropdownHoverColor}
 
   .search-list-items-selected {
     background-color: $dropdownHoverBGColor!important;
+    color: $dropdownHoverColor !important; 
       }
 
   .search-dropdown-list{ 

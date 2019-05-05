@@ -2028,7 +2028,7 @@ input:checked + .largeType2ToggleSlider {
   width: 20px;
   left: 4px;
   bottom: 4px;
-  top: 2px;
+  top: 3px;
   -webkit-transition: .4s;
   transition: .4s; }
 
@@ -2061,7 +2061,7 @@ input:checked + .smallToggleSlider:before {
   height: 30px;
   width: 30px;
   left: 4px;
-  top: 2px;
+  top: 3px;
   bottom: 4px;
   -webkit-transition: .4s;
   transition: .4s; }
@@ -2095,7 +2095,7 @@ input:checked + .mediumToggleSlider:before {
   height: 40px;
   width: 40px;
   left: 4px;
-  top: 2px;
+  top: 3px;
   bottom: 4px;
   -webkit-transition: .4s;
   transition: .4s; }
@@ -3260,12 +3260,12 @@ input:checked + .largeType2ToggleSlider:before {
   border-color: #ced4da; }
 
 .form-control {
-  color: var(--componentActiveFontColor);
+  color: var(--componentFontColor);
   background-color: var(--componentBGColor);
   border-color: #ced4da; }
 
 .search-form-label {
-  color: var(--componentActiveFontColor); }
+  color: var(--componentFontColor); }
 
 .iconColor {
   color: var(--componentHeaderFontColor); }
@@ -3278,10 +3278,12 @@ input:checked + .largeType2ToggleSlider:before {
   background-color: var(--componentBGColor); }
 
 .search-dropdown-list li:hover {
-  background: var(--componentHoverBGColor); }
+  background: var(--componentHoverBGColor);
+  color: var(--componentHoverFontColor); }
 
 .search-list-items-selected {
-  background-color: var(--componentHoverBGColor) !important; }
+  background-color: var(--componentHoverBGColor) !important;
+  color: var(--componentHoverFontColor) !important; }
 
 .search-dropdown-list {
   border-color: #ced4da;
@@ -3306,7 +3308,8 @@ input:checked + .largeType2ToggleSlider:before {
   font-weight: normal;
   border-width: 1px;
   border-style: solid;
-  padding: .5%; }
+  padding: .5%;
+  z-index: 99; }
 
 .dropdownposition {
   position: absolute;

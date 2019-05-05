@@ -437,7 +437,7 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
                     childcom['isSelected'] = false;
                 }
                 if (childcom.hasOwnProperty(this.childarraykey)
-                && childcom[this.childarraykey] && childcom[this.childarraykey].length > 0) {
+                    && childcom[this.childarraykey] && childcom[this.childarraykey].length > 0) {
                     this.setSelectedFlagInChild(childcom);
                 }
             });
@@ -540,7 +540,7 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
     getDropNode(dragData: any, node: any, event: any) {
         if (JSON.stringify(dragData.data) === JSON.stringify(node)) {
             event.dataTransfer.dropEffect = 'none';
-        } else {
+        } else if (dragData.data[this.childarraykey] && dragData.data[this.childarraykey].length > 0) {
             dragData.data[this.childarraykey].forEach((child: any) => {
                 if (JSON.stringify(child) === JSON.stringify(node) || node.leaf === true) {
                     event.dataTransfer.dropEffect = 'none';
