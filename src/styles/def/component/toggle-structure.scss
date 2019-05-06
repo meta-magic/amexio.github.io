@@ -40,7 +40,7 @@
   width: 20px;
   left: 4px;
   bottom: 4px;
-  top: 2px;
+  top: 3px;
   // background-color: $toggleBGBeforeColor;
   -webkit-transition: .4s;
   transition: .4s;
@@ -90,7 +90,7 @@ input:checked + .smallToggleSlider:before {
   height: 30px;
   width: 30px;
   left: 4px;
-  top: 2px;
+  top: 3px;
   bottom: 4px;
   // background-color: $toggleBGBeforeColor;
   -webkit-transition: .4s;
@@ -139,7 +139,7 @@ input:checked + .mediumToggleSlider:before {
   height: 40px;
   width: 40px;
   left: 4px;
-  top:2px;
+  top: 3px;
   bottom: 4px;
  // background-color: $toggleBGBeforeColor;
   -webkit-transition: .4s;
