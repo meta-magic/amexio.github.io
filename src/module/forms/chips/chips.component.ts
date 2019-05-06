@@ -56,6 +56,8 @@ export class AmexioChipsComponent implements AfterContentInit {
     description : It will fire only on selection of checkbox and gives you selected record data.
     */
   @Output() selectedchipsData: any = new EventEmitter<any>();
+
+  @Output() closeClick: any = new EventEmitter<any>();
   componentId: any;
   chipindex = -1;
   prevchipindex = -1;
@@ -136,8 +138,10 @@ export class AmexioChipsComponent implements AfterContentInit {
       this.obj['closable'] = item.closable;
       this.obj['color'] = item.color;
       this.selectedchipsData.emit(this.obj);
+      this.closeClick.emit(this.obj);
     } else {
       this.selectedchipsData.emit(cloneNode);
+      this.closeClick.emit(this.obj);
     }
   }
   generateIndex() {
