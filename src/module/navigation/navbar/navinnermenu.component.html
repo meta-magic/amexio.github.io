@@ -1,12 +1,12 @@
 <ng-container *ngFor="let node of data">
     <div class="nav-dropdown-content-subnode">
 
-        <div style="padding: 10px">
+        <div style="padding: 10px; padding-left: 20px;">
             <span *ngIf="submenuposition == 'left' && node.submenus">
                 <i class="fa fa-angle-left" style="padding-bottom:5px" aria-hidden="true"></i>
                 <!-- {{node.text}} -->
             </span>
-            <span (click)="onClick(node, $event)" style="padding: 10px">{{node.text}}</span>
+            <span (click)="onClick(node, $event)" >{{node.text}}</span>
         </div>
 
         <div style="padding: 10px">
