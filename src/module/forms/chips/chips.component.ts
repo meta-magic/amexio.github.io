@@ -101,8 +101,25 @@ export class AmexioChipsComponent implements AfterContentInit {
           this.data.splice(index, 1);
         }
       });
-      this.emitSelectedLabel(item);
+      this.emitCloseData(item);
     }
+  }
+
+  emitCloseData(item: any) {
+
+    const cloneNode = JSON.parse(JSON.stringify(item));
+    delete cloneNode['index'];
+    if (this.chipCollection.length > 0) {
+      this.obj['icon'] = item.icon;
+      this.obj['label'] = item.label;
+      this.obj['badge'] = item.badge;
+      this.obj['closable'] = item.closable;
+      this.obj['color'] = item.color;
+      this.closeClick.emit(this.obj);
+    } else {
+      this.closeClick.emit(cloneNode);
+    }
+
   }
   closeFocusedChip(item: any, chipdata: any) {
     let closeindex: number;
@@ -138,10 +155,8 @@ export class AmexioChipsComponent implements AfterContentInit {
       this.obj['closable'] = item.closable;
       this.obj['color'] = item.color;
       this.selectedchipsData.emit(this.obj);
-      this.closeClick.emit(this.obj);
     } else {
       this.selectedchipsData.emit(cloneNode);
-      this.closeClick.emit(this.obj);
     }
   }
   generateIndex() {
