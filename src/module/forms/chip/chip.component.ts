@@ -86,7 +86,6 @@ description : This will display json key to be displayed as a chip.
 */
   @Input('display-field') displayfield: any;
   @Input('item') item: any;
-
   @Input('closable') closable: false;
   /*
     Events
