@@ -597,6 +597,8 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
     this.setSelectedFlag(httpResponse);
     if (this.groupby) {
       this.cloneData = JSON.parse(JSON.stringify(this.data));
+      const groups = {};
+      this.commonMethod(this.cloneData, groups);
     }
     if (this.enabledatafilter) {
       this.filterCloneData = JSON.parse(JSON.stringify(this.data));
@@ -775,17 +777,21 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
   setColumnData() {
     this.data = this.cloneData;
     const groups = {};
-    this.data.forEach((option) => {
+    this.commonMethod(this.data, groups);
+  }
+
+  commonMethod(data: any, groups: any) {
+    data.forEach((option: any) => {
       const groupName = option[this.groupbydataindex];
       if (!groups[groupName]) {
         groups[groupName] = [];
       }
       groups[groupName].push(option);
     });
-    this.data = [];
+    data = [];
     for (const groupName in groups) {
       if (groups.hasOwnProperty(groupName)) {
-        this.data.push({ expanded: false, isSelected: false, group: groupName, groupData: groups[groupName] });
+        data.push({ expanded: false, isSelected: false, group: groupName, groupData: groups[groupName] });
       }
     }
     /*-------Aggregation---------*/
