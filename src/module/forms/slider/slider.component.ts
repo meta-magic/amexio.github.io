@@ -104,6 +104,15 @@ description : Styling class applied slider
 */
   @Input('style-class') styleClass: string;
   /*
+Properties
+name : input
+datatype : number
+version : 5.11.2 onwards
+default :
+description : Type applied to slider
+*/
+@Input('type') type: number;
+  /*
 Events
 name : onChange
 datatype : any
@@ -111,6 +120,7 @@ version : 4.0 onwards
 default :
 description : Triggers when slider is moved
 */
+
   @Output() onChange: EventEmitter<any> = new EventEmitter();
   /*
 Events
