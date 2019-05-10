@@ -22,6 +22,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AmexioHomePageComponent } from './../creative/homepage/homepage.component';
 
 import { AmexioCarouselCEComponent } from './carousel/amexio.carouselce.component';
+import { AmexioMenuCEComponent } from './menu/menu.component';
 import { AmexioProgressCEComponent } from './progressbar/progressce.component';
 
 import { AmexioMediaModule } from '../media/amexio.media.module';
@@ -87,6 +88,7 @@ const CREATIVE_COMPONENTS = [
   ViewportContentComponent,
   ViewportContentBodyComponent,
   AmexioCarouselCEComponent,
+  AmexioMenuCEComponent,
 ];
 
 @NgModule({

@@ -1,0 +1,5 @@
+<div class="content">
+  <div *ngFor="let node of data" [ngClass]='animatedClass'>
+    <a style="text-decoration: none;" href="#" (mouseover)="node.hover=true" (mouseleave)="node.hover=false" [ngStyle]="{'font-family':font, 'font-size': size+'px'}">{{node.label}}</a>
+  </div>
+</div>
