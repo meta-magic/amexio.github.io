@@ -2430,6 +2430,23 @@ input:checked + .largeType2ToggleSlider:before {
   border-radius: 3em;
   border: none; }
 
+.ui-slider-horizontal2 {
+  height: 15px;
+  top: 10px; }
+
+.ui-slider-handle2 {
+  position: absolute;
+  z-index: 0;
+  width: 42px !important;
+  height: 42px !important;
+  cursor: default;
+  outline: none;
+  border-radius: 3em;
+  border: none;
+  background: #2196f3;
+  color: #f0f8fe;
+  bottom: -15px; }
+
 /****************************************************************************
     Component Name : Label
     Version : Amexio v4.0 onwards
@@ -4453,7 +4470,7 @@ fsw .widgetSprite.icCalendar {
   border-bottom: 2px solid var(--componentActiveBGColor) !important; }
 
 .datesrange {
-  background: var(--appHeaderHoverFontColor);
+  background: var(--appHeaderHoverBGColor);
   color: var(--componentDisabledFontColor);
   padding: 5px;
   border-radius: 50%; }
