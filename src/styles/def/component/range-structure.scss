@@ -139,30 +139,14 @@
   outline: none;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
-  border-radius: 3em;
+  border-radius: 3em !important;
   border: none;
 }
 .ui-slider-horizontal2 {
   height:15px;
   top: 10px;
   }
-  .ui-slider-vertical2 {
   
-  }
-  .ui-slider-handle2 {
-     position: absolute;
-      z-index: 0;
-      width: 42px !important;
-      height: 42px !important;
-      cursor: default;
-      outline: none;
-      border-radius: 3em;
-      border: none;
-      background: #2196f3;
-      color: #f0f8fe;
-      bottom:-15px;
-    
-  }
   .ui-slider-horizontal2 {
     height:15px;
     top: 10px;
@@ -175,11 +159,12 @@
        height: 42px !important;
        cursor: default;
        outline: none;
-       border-radius: 3em;
+       border-radius: 3em !important;
        border: none;
        background: #2196f3;
        color: #f0f8fe;
        bottom:-15px;
+       margin-left: -.9em;
      
     }
     .ui-slider-vertical2 {
@@ -197,6 +182,8 @@
        border-radius: 3em;
        border: none;
        background: $rangeSliderBGColor;
+       margin-bottom: -2em;
+       margin-top: -2em;
       
     }
     .ui-slider-handle1 {
