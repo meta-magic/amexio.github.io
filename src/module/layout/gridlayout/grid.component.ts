@@ -29,7 +29,9 @@ import { GridConstants } from '../../../models/GridConstants';
 export class AmexioGridComponent implements AfterContentInit, OnInit {
   @ContentChildren(AmexioGridItemComponent) queryItem: QueryList<AmexioGridItemComponent>;
   itemCollection: AmexioGridItemComponent[];
-
+  itemCollectionMap: AmexioGridItemComponent[];
+  gridtemplatecolumnconfig = '';
+  gridItemCollapsible = false;
   /*
  Properties
  name : data
@@ -65,8 +67,7 @@ export class AmexioGridComponent implements AfterContentInit, OnInit {
   constructor(public _gridlayoutService: AmexioGridLayoutService) {
   }
   ngOnInit() {
-    this.gridInit();
-    this.isInit = true;
+
   }
 
   gridInit() {
@@ -75,7 +76,14 @@ export class AmexioGridComponent implements AfterContentInit, OnInit {
     this.cssGenreration(this._gridlayoutService.getLayoutData(this.layout));
   }
   getCssAttribute(): string {
-    return 'display: grid;' + ' grid-gap: 5px;' + 'grid-template-columns: repeat(' + this.colCount + ', 1fr);';
+    if (this.gridItemCollapsible) {
+      return 'display: grid; border:1px solid lightgray;' + ' grid-gap: 0px;'
+        + 'grid-template-columns: repeat(' + this.colCount + ', 1fr);';
+    } else {
+      return 'display: grid;' + ' grid-gap: 5px;'
+        + 'grid-template-columns: repeat(' + this.colCount + ', 1fr);';
+    }
+
   }
 
   insertStyleSheetRuleParent(ruleText: any) {
@@ -100,6 +108,47 @@ export class AmexioGridComponent implements AfterContentInit, OnInit {
 
   ngAfterContentInit() {
     this.itemCollection = this.queryItem.toArray();
+
+    this.itemCollectionMap = [];
+    this.itemCollection.forEach((cmp) => {
+      this.itemCollectionMap[cmp.name] = cmp;
+      if (!this.gridItemCollapsible) {
+        this.gridItemCollapsible = (cmp.hcEnabled || cmp.vcEnabled);
+      }
+      return cmp.onToggle.subscribe((cmpObject: any) => this.subscribeToGridItemEvents(cmpObject));
+    });
+    this.gridInit();
+    this.isInit = true;
+  }
+
+  subscribeToGridItemEvents(cmp: AmexioGridItemComponent) {
+    this.gridtemplatecolumnconfig = '';
+    let rowConfig: any[] = [];
+    const layouts: any[] = this._gridlayoutService.getLayoutData(this.layout).desktop;
+    layouts.forEach((rows: string[]) => {
+      rows.forEach((name: string) => {
+        if (name === cmp.name && rowConfig.length === 0) {
+          rowConfig = rows;
+        }
+      });
+    });
+    const colConfig: string[] = [];
+    let prevConfig = '';
+    rowConfig.forEach((name: string) => {
+      const griditemcmp = this.itemCollectionMap[name];
+      if (griditemcmp.showContent) {
+        colConfig.push(' 1fr ');
+      } else if (griditemcmp.name === prevConfig) {
+        colConfig[colConfig.length - 1] = ' 1fr ';
+        colConfig.push(' 1fr ');
+      } else {
+        colConfig.push(' auto ');
+      }
+      prevConfig = griditemcmp.name;
+    });
+    colConfig.forEach((name: string) => {
+      this.gridtemplatecolumnconfig = this.gridtemplatecolumnconfig + name;
+    });
   }
 
   dataCreation(deviceName: any[]): string {

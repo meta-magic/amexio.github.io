@@ -14,13 +14,11 @@
 * limitations under the License.
 *
 */
-import {Component,  HostBinding, Input, OnInit} from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'amexio-grid-item',
-  template: `
-          <ng-content></ng-content>
-  `,
+  templateUrl: './griditem.component.html',
 })
 export class AmexioGridItemComponent implements OnInit {
   /*
@@ -34,7 +32,7 @@ description : The name is for determining the name of item.
   @HostBinding('class') hostname: any;
   private _name: string;
 
-  get name(): string{
+  get name(): string {
     return this._name;
   }
 
@@ -44,14 +42,48 @@ description : The name is for determining the name of item.
     this.hostname = this._name;
   }
 
+  @Input('title') title: string;
+
+  @Input('hc-enabled') hcEnabled: boolean;
+
+  @Input('hc-direction') hcDirection = 'right';
+
+  @Input('vc-enabled') vcEnabled: boolean;
+
+  @Input('vc-direction') vcDirection = 'top';
+
+  @Output('onToggle') onToggle = new EventEmitter<any>();
+
+  hcPosition: string;
+  vcPosition: string;
+  cPosition: string;
+  iconDegree: string;
+  iconDegreeData: string[];
+  showContent = true;
+  containerDirection = 'column';
+
   constructor() {
+    this.iconDegreeData = [];
+    this.iconDegreeData['vc-towards-top-true'] = 'rotate(270deg)';
+    this.iconDegreeData['vc-towards-bottom-true'] = 'rotate(90deg)';
+    this.iconDegreeData['hc-towards-left-true'] = 'rotate(180deg)';
+    this.iconDegreeData['hc-towards-right-true'] = 'rotate(0deg)';
+
+    this.iconDegreeData['vc-towards-top-false'] = 'rotate(90deg)';
+    this.iconDegreeData['vc-towards-bottom-false'] = 'rotate(270deg)';
+    this.iconDegreeData['hc-towards-left-false'] = 'rotate(0deg)';
+    this.iconDegreeData['hc-towards-right-false'] = 'rotate(180deg)';
   }
 
   ngOnInit() {
-    this.insertStyleSheetRule ('.' + this.name + '{ grid-area: ' + this.name + ' ; padding: 5px } ' );
-   }
+    if (this.hcEnabled || this.vcEnabled) {
+      this.insertStyleSheetRule('.' + this.name + '{ grid-area: ' + this.name + ' ; padding: 0px } ');
+    } else {
+      this.insertStyleSheetRule('.' + this.name + '{ grid-area: ' + this.name + ' ; padding: 5px } ');
+    }
+  }
 
-   insertStyleSheetRule(ruleText: any) {
+  insertStyleSheetRule(ruleText: any) {
     const sheets: any = document.styleSheets;
     if (sheets.length === 0) {
       const style = document.createElement('style');
@@ -69,6 +101,26 @@ description : The name is for determining the name of item.
         }
       }
     }
+    this.setClassDefinition();
   }
 
+  setClassDefinition(): void {
+    if (this.hcEnabled) {
+      this.hcPosition = 'hc-towards-' + this.hcDirection;
+      this.cPosition = 'grid-' + this.hcPosition;
+      this.iconDegree = this.iconDegreeData[this.hcPosition + '-' + this.showContent];
+      this.containerDirection = (this.showContent) ? 'column' : 'row';
+    } else if (this.vcEnabled) {
+      this.vcPosition = 'vc-towards-' + this.vcDirection;
+      this.cPosition = 'grid-' + this.vcPosition;
+      this.iconDegree = this.iconDegreeData[this.vcPosition + '-' + this.showContent];
+      this.containerDirection = 'column';
+    }
+  }
+
+  toggle() {
+    this.showContent = !this.showContent;
+    this.setClassDefinition();
+    this.onToggle.emit(this);
+  }
 }

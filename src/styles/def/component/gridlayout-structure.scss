@@ -1,17 +1,115 @@
 
-  // @media(min-width:720px){
-  //   .amexio-grid-container {
-  //       display: grid;
-  //       grid-template-columns: repeat(6, 1fr);
-  //       grid-gap: 5px;
-  //     }
-  // }
-  // @media(min-width:820px){
-  //   .amexio-grid-container {
-  //       display: grid;
-  //       grid-template-columns: repeat(6, 1fr);
-  //       grid-gap: 5px;
-  //     }
-  // }
- 
-  
+.griditemcontainer{
+  height: 100%; 
+  width: 100%;
+  position: relative;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.griditemcontainer-header{
+  padding: 10px;
+  border-bottom: 1px solid $borderColor;
+  background-color: var(--componentHeaderBGColor);
+  color: var(--componentHeaderFontColor);
+  font-size: 15px;
+}
+
+.collapsibleicon{
+  background-color: var(--componentHeaderFontColor);
+  color: var(--componentHeaderBGColor);
+}
+
+.griditemcontainer-header-collapsed{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.griditemcontainer-header-collapsed label{
+  transform: rotate(270deg);
+}
+.grid-vc-towards-top{
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.vc-towards-top{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: -5px;
+  height: 10px;
+  background-color: $borderColor;
+  margin-left: -1px;
+  margin-right: -1px;
+}
+
+.vc-towards-top i {
+  cursor: pointer;
+}
+
+.grid-vc-towards-bottom{
+  display: flex;
+  flex-direction: column;
+}
+
+
+.vc-towards-bottom{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: -10px;
+  height: 10px;
+  background-color: $borderColor;
+  margin-left: -1px;
+  margin-right: -1px;
+}
+.vc-towards-bottom i {
+  cursor: pointer;
+}
+.grid-hc-towards-left{
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.hc-towards-left{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: -5px;
+  background-color: $borderColor;
+  margin-top: -1px;
+  margin-bottom: -1px;
+  width: 7px;
+}
+
+
+.hc-towards-left i {
+  cursor: pointer;
+}
+
+.grid-hc-towards-right{
+  display: flex;
+  flex-direction: row;
+}
+
+
+
+.hc-towards-right{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: -5px;
+  background-color: $borderColor;
+  margin-top: -1px;
+  margin-bottom: -1px;
+  width: 7px;
+}
+
+.hc-towards-right i {
+  cursor: pointer;
+}
+
+
