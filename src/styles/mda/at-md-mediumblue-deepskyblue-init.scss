@@ -41,12 +41,12 @@
 --themePrimaryColorShade6 : #f5f5ff;
 
 /** Theme Color Gradients -------------------------- */
---themePrimaryColorGradient : linear-gradient(#00006b, #0505ff, #b8b8ff);
---themeSecondaryColorGradient : linear-gradient(#00506b, #05c1ff, #b8edff);
---theme3rdColorGradient : linear-gradient(#6b006b, #ff05ff, #ffb8ff);
---theme4thColorGradient : linear-gradient(#6b0036, #ff0582, #ffb8db);
---theme5thColorGradient : linear-gradient(#6b0000, #ff0505, #ffb8b8);
---theme6thColorGradient : linear-gradient(#6b3600, #ff8205, #ffdbb8);
+--themePrimaryColorGradient : linear-gradient(to right, #00006b, #0505ff, #b8b8ff);
+--themeSecondaryColorGradient : linear-gradient(to right, #00506b, #05c1ff, #b8edff);
+--theme3rdColorGradient : linear-gradient(to right, #6b006b, #ff05ff, #ffb8ff);
+--theme4thColorGradient : linear-gradient(to right, #6b0036, #ff0582, #ffb8db);
+--theme5thColorGradient : linear-gradient(to right, #6b0000, #ff0505, #ffb8b8);
+--theme6thColorGradient : linear-gradient(to right, #6b3600, #ff8205, #ffdbb8);
 
 /** Theme Font Family -------------------------- */
 --themeFontColor : #00001f;
@@ -56,7 +56,7 @@
 --themeSecondaryFontColor : #00171f;
 --theme3rdFontColor : #fffaff;
 --theme4thFontColor : #fffafc;
---theme5thzFontColor : #ffebeb;
+--theme5thFontColor : #ffebeb;
 --theme6thFontColor : #fff5eb;
 
 /** Theme Additional Std CSS Colors : Light and Dark shades --- */

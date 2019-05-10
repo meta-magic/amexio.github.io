@@ -130,4 +130,4 @@ sass mda/at-md-z-flag-india.scss:css/at-md-z-flag-india.css;
 
 sass mda/at-md-z-flag-italy.scss:css/at-md-z-flag-italy.css;
 sass mda/at-md-z-flag-japan.scss:css/at-md-z-flag-japan.css;
-sass mda/at-md-z-flag-uSA.scss:css/at-md-z-flag-usa.css;
+sass mda/at-md-z-flag-usa.scss:css/at-md-z-flag-usa.css;

@@ -58,12 +58,12 @@
   --themePrimaryColorShade5: #d1f1ff;
   --themePrimaryColorShade6: #f5fcff;
   /** Theme Color Gradients -------------------------- */
-  --themePrimaryColorGradient: linear-gradient(#004b6b, #05b4ff, #b8eaff);
-  --themeSecondaryColorGradient: linear-gradient(#00496b, #05b0ff, #b8e8ff);
-  --theme3rdColorGradient: linear-gradient(#20006b, #5005ff, #cdb8ff);
-  --theme4thColorGradient: linear-gradient(#56006b, #cd05ff, #f1b8ff);
-  --theme5thColorGradient: linear-gradient(#6b004b, #ff05b4, #ffb8ea);
-  --theme6thColorGradient: linear-gradient(#6b0015, #ff0537, #ffb8c6);
+  --themePrimaryColorGradient: linear-gradient(to right, #004b6b, #05b4ff, #b8eaff);
+  --themeSecondaryColorGradient: linear-gradient(to right, #00496b, #05b0ff, #b8e8ff);
+  --theme3rdColorGradient: linear-gradient(to right, #20006b, #5005ff, #cdb8ff);
+  --theme4thColorGradient: linear-gradient(to right, #56006b, #cd05ff, #f1b8ff);
+  --theme5thColorGradient: linear-gradient(to right, #6b004b, #ff05b4, #ffb8ea);
+  --theme6thColorGradient: linear-gradient(to right, #6b0015, #ff0537, #ffb8c6);
   /** Theme Font Family -------------------------- */
   --themeFontColor: #00151f;
   --themeFontFamily: Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
@@ -71,7 +71,7 @@
   --themeSecondaryFontColor: #f6f8f9;
   --theme3rdFontColor: #f9f7fd;
   --theme4thFontColor: #fdfbfe;
-  --theme5thzFontColor: #fefbfd;
+  --theme5thFontColor: #fefbfd;
   --theme6thFontColor: #fefbfc;
   /** Theme Additional Std CSS Colors : Light and Dark shades --- */
   --amexioColorRedLight: #ff7f50;
@@ -464,6 +464,55 @@ image using the content attribute.
 .amexio-white {
   background-color: #ffffff;
   color: #000000; }
+
+/* You can add global styles to this file, and also import other style files */
+.amexio-theme-color1 {
+  background-color: var(--themePrimaryColor) !important;
+  color: var(--themePrimaryFontColor); }
+
+.amexio-theme-color2 {
+  background-color: var(--themeSecondaryColor) !important;
+  color: var(--themeSecondaryFontColor); }
+
+.amexio-theme-color3 {
+  background-color: var(--theme3rdColor) !important;
+  color: var(--theme3rdFontColor); }
+
+.amexio-theme-color4 {
+  background-color: var(--theme4thColor) !important;
+  color: var(--theme4thFontColor); }
+
+.amexio-theme-color5 {
+  background-color: var(--theme5thColor) !important;
+  color: var(--theme5thFontColor); }
+
+.amexio-theme-color6 {
+  background-color: var(--theme6thColor) !important;
+  color: var(--theme6thFontColor); }
+
+.amexio-theme-color1-Gradient {
+  background-image: var(--themePrimaryColorGradient) !important;
+  color: var(--themePrimaryFontColor); }
+
+.amexio-theme-color2-Gradient {
+  background-image: var(--themeSecondaryColorGradient) !important;
+  color: var(--themeSecondaryFontColor); }
+
+.amexio-theme-color3-Gradient {
+  background-image: var(--theme3rdColorGradient) !important;
+  color: var(--theme3rdFontColor); }
+
+.amexio-theme-color4-Gradient {
+  background-image: var(--theme4thColorGradient) !important;
+  color: var(--theme4thFontColor); }
+
+.amexio-theme-color5-Gradient {
+  background-image: var(--theme5thColorGradient) !important;
+  color: var(--theme5thFontColor); }
+
+.amexio-theme-color6-Gradient {
+  background-image: var(--theme6thColorGradient) !important;
+  color: var(--theme6thFontColor); }
 
 /** Initialze Component variables ------------ */
 /****************************************************************************
@@ -4250,6 +4299,173 @@ input:checked + .largeType2ToggleSlider:before {
   border: none;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2) inset; }
 
+.ui-slider-horizontal2 {
+  height: 15px;
+  top: 10px; }
+
+.ui-slider-handle2 {
+  position: absolute;
+  z-index: 0;
+  width: 42px !important;
+  height: 42px !important;
+  cursor: default;
+  outline: none;
+  border-radius: 3em;
+  border: none;
+  background: var(--componentHeaderBGColor);
+  color: var(--componentHeaderFontColor);
+  bottom: -15px;
+  border-radius: 50px !important; }
+
+/****************************************************************************
+    Component Name : Multi Date Time
+    Version : Amexio v5.12 onwards
+*****************************************************************************/
+/** multidatepicker - Visual CSS **/
+/** multidatepicker - Structure CSS **/
+.lbl_input {
+  text-transform: uppercase; }
+
+.appendButton10 {
+  margin-bottom: 10px; }
+
+.latoBold {
+  font-weight: 700; }
+
+.fromdiv {
+  padding: 5px;
+  background-color: white;
+  border: #e6e6e6 1px;
+  cursor: pointer;
+  width: max-content;
+  border-style: outset; }
+
+.fromdiv:hover {
+  color: var(--appHeaderHoverFontColor);
+  background: var(--appHeaderHoverBGColor); }
+
+.dropicon {
+  color: var(--themePrimaryColor);
+  font-weight: bolder; }
+
+.font30 {
+  font-size: 30px;
+  line-height: 30px; }
+
+.lactoBlack {
+  font-weight: 800; }
+
+.blackText {
+  color: #000; }
+
+.font20 {
+  font-size: 20px;
+  line-height: 20px; }
+
+#parentdate {
+  display: block;
+  /* margin:1em; */ }
+
+.mainspan {
+  display: flex; }
+
+.datePickerContaier {
+  width: 625px;
+  border-radius: 4px;
+  background-color: #fff;
+  position: absolute;
+  left: 0;
+  top: 30px;
+  z-index: 999999; }
+
+.dayPickerFlightWrap .RangeExample {
+  display: block; }
+
+.fsw .dayPickerFlightWrap .RangeExample .dayPickerHeader {
+  padding: 13px 10px;
+  background-color: #fff;
+  border-radius: 4px 4px 0 0; }
+
+.makeFlex {
+  display: flex; }
+
+.dashed {
+  padding-top: 15px; }
+
+.font16 {
+  font-size: 16px;
+  line-height: 16px; }
+
+.appendRight30 {
+  margin-right: 30px; }
+
+.appendRight10 {
+  margin-right: 10px; }
+
+fsw .widgetSprite.icCalendar {
+  width: 10px;
+  height: 10px;
+  background-position: -5px -5px; }
+
+.fsw .dateFiled.active .selectedDateField {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  background-color: #eaf5ff;
+  position: relative; }
+
+.pointer {
+  cursor: pointer; }
+
+.haltcursor {
+  opacity: 0.2;
+  cursor: not-allowed; }
+
+.fsw .dateFiled.active .selectedDateField:after {
+  width: 100%;
+  height: 3px;
+  background: var(--appHeaderHoverBGColor);
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -9px; }
+
+.datetimepicker .datetimepickertopbar {
+  padding: 1px 25px;
+  text-align: center; }
+
+/* every individual month header font color  */
+.datetimepicker .datetimepickertopbar ul li {
+  color: black; }
+
+/* every individual month header background color  */
+.datetimepicker .datetimepickertopbar {
+  background: white; }
+
+.arrowiconshadow {
+  color: var(--themePrimaryColor); }
+
+.arrowiconshadow:hover {
+  text-shadow: 2px 2px 5px var(--appHeaderHoverFontColor); }
+
+/* .activecolortab class replica from tab */
+.activecolordatetab {
+  border-bottom: 2px solid var(--componentActiveBGColor) !important; }
+
+.datesrange {
+  background: var(--appHeaderHoverFontColor);
+  color: var(--componentDisabledFontColor);
+  padding: 5px;
+  border-radius: 50%; }
+
+.ab {
+  display: absolute;
+  overflow-y: scroll; }
+
+.datetabs {
+  background-color: white;
+  padding-left: 5px; }
+
 /****************************************************************************
     Component Name : Enterprise Content
     Version : Amexio v4.0 onwards
@@ -7464,7 +7680,6 @@ fieldset {
   /* Black w/ opacity */ }
 
 .modal-window-header {
-  background: var(--componentHeaderBGColor);
   font-size: 20px;
   color: var(--componentHeaderFontColor); }
 
@@ -8456,6 +8671,179 @@ amexio-layout-columns amexio-layout-item {
 .card-container-narrower-header amexio-header-ce {
   margin: -10px 10px;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); }
+
+/** creative card - Structure CSS **/
+/****************************************************************************
+    Component Name : Creative Menus
+    Version : Amexio v5.12 onwards
+*****************************************************************************/
+/** creative card - var CSS **/
+/** creative card - Visual CSS **/
+.content {
+  position: relative;
+  width: 580px;
+  margin: 0 auto; }
+
+.bmenu {
+  padding: 0px;
+  margin: 0 0 10px 0;
+  position: relative; }
+
+.bmenu a {
+  color: transparent;
+  display: block;
+  text-transform: uppercase;
+  text-shadow: 0px 0px 5px black;
+  letter-spacing: 1px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  text-decoration: none; }
+
+.bmenu a:hover {
+  /* color: black; */
+  text-shadow: 0px 0px 1px #fff;
+  padding-left: 10px; }
+
+.bmenu1 a {
+  display: block;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 2px rgba(89, 22, 20, 0.3);
+  color: #581514;
+  padding: 5px 20px;
+  margin: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  letter-spacing: 1px;
+  -webkit-transform: skew(-12deg);
+  -moz-transform: skew(-12deg);
+  -o-transform: skew(-12deg);
+  -ms-transform: skew(-12deg);
+  transform: skew(-12deg);
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out; }
+
+.bmenu1 a:hover {
+  background: transparent;
+  text-shadow: 1px 1px 10px rgba(89, 22, 20, 0.6);
+  color: #581514; }
+
+.bmenu2 a {
+  white-space: nowrap;
+  color: transparent;
+  display: block;
+  text-transform: uppercase;
+  text-align: center;
+  text-shadow: 0px 0px 6px black;
+  letter-spacing: 1px;
+  -moz-transform: scale(0.5);
+  -ms-transform: scale(0.5);
+  -o-transform: scale(0.5);
+  -webkit-transform: scale(0.5);
+  transform: scale(0.5);
+  -webkit-transition: all 0.6s linear;
+  -moz-transition: all 0.6s linear;
+  -o-transition: all 0.6s linear;
+  -ms-transition: all 0.6s linear;
+  transition: all 0.6s linear; }
+
+.bmenu2 a:hover {
+  text-shadow: 0px 0px 1px black;
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  -webkit-transform: scale(1);
+  transform: scale(1); }
+
+.bmenu3 a {
+  display: block;
+  text-transform: uppercase;
+  text-shadow: 0px 0px 2px #eeb213;
+  color: #eeb213;
+  padding: 5px 20px;
+  margin: 2px;
+  background: rgba(0, 0, 0, 0.7);
+  letter-spacing: 1px;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  -ms-transition: all 0.2s linear;
+  transition: all 0.2s linear; }
+
+.bmenu3 a:hover {
+  background: black;
+  text-shadow: 0px 0px 1px #eeb213; }
+
+.bmenu4 a {
+  color: transparent;
+  display: block;
+  text-transform: uppercase;
+  text-shadow: 0px 0px 4px black;
+  letter-spacing: 1px;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out; }
+
+.bmenu4 a:hover {
+  color: black;
+  text-shadow: 0px 0px 1px black;
+  padding-left: 10px; }
+
+.bmenu5 a {
+  white-space: nowrap;
+  display: block;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 2px rgba(71, 80, 23, 0.3);
+  color: #fff;
+  padding: 5px 20px;
+  margin: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  letter-spacing: 1px;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out; }
+
+.bmenu5 a:hover {
+  background: transparent;
+  text-shadow: 1px 1px 10px rgba(71, 80, 23, 0.6);
+  color: #c4d85a; }
+
+.bmenu6 a {
+  white-space: nowrap;
+  color: transparent;
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 0px 0px 3px black;
+  letter-spacing: 1px;
+  -moz-transform: scale(0.8);
+  -ms-transform: scale(0.8);
+  -o-transform: scale(0.8);
+  -webkit-transform: scale(0.8);
+  transform: scale(0.8);
+  -webkit-transition: all 0.4s linear;
+  -moz-transition: all 0.4s linear;
+  -o-transition: all 0.4s linear;
+  -ms-transition: all 0.4s linear;
+  transition: all 0.4s linear; }
+
+.bmenu6 a:hover {
+  text-shadow: none;
+  color: black;
+  background: rgba(129, 6, 29, 0.8);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  -webkit-transform: scale(1);
+  transform: scale(1); }
 
 /** creative card - Structure CSS **/
 /** Initialze Animation variables ------------ */

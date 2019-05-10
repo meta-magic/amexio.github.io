@@ -336,3 +336,58 @@ image using the content attribute.
 //     font-size: 3em !important;
 //     margin-top: 12% !important;
 // }
+
+/* You can add global styles to this file, and also import other style files */
+
+
+// Change the Position of these CSS
+.amexio-theme-color1{
+    background-color: $themePrimaryColor !important;
+    color: $themePrimaryFontColor;
+    }
+    .amexio-theme-color2{
+    background-color: $themeSecondaryColor !important;
+    color: $themeSecondaryFontColor;
+    }
+    .amexio-theme-color3{
+        background-color: $theme3rdColor !important;
+    color: $theme3rdFontColor;
+    }
+    .amexio-theme-color4{
+        background-color: $theme4thColor !important;
+    color: $theme4thFontColor;
+    }
+    .amexio-theme-color5{
+        background-color: $theme5thColor !important;
+    color: $theme5thFontColor;
+    }
+    .amexio-theme-color6{
+        background-color: $theme6thColor !important;
+    color: $theme6thFontColor;
+    }
+    
+    
+    .amexio-theme-color1-Gradient{
+        background-image: $themePrimaryColorGradient !important;
+    color: $themePrimaryFontColor;
+    }
+    .amexio-theme-color2-Gradient{
+        background-image: $themeSecondaryColorGradient !important;
+    color: $themeSecondaryFontColor;
+    }
+    .amexio-theme-color3-Gradient{
+        background-image: $theme3rdColorGradient !important;
+    color: $theme3rdFontColor;
+    }
+    .amexio-theme-color4-Gradient{
+        background-image: $theme4thColorGradient !important;
+    color: $theme4thFontColor;
+    }
+    .amexio-theme-color5-Gradient{
+        background-image: $theme5thColorGradient !important;
+    color: $theme5thFontColor;
+    }
+    .amexio-theme-color6-Gradient{
+        background-image: $theme6thColorGradient!important;
+    color: $theme6thFontColor;
+    }
