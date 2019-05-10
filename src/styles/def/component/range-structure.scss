@@ -80,7 +80,7 @@
 .ui-corner-all {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
-  border-radius: 3px;
+  border-radius: 3em;
 }
 .ui-widget-content {
   border: 1px solid #D5D5D5;
@@ -161,8 +161,7 @@
        outline: none;
        border-radius: 3em !important;
        border: none;
-       background: #2196f3;
-       color: #f0f8fe;
+       background: $rangeSliderBGColor;
        bottom:-15px;
        margin-left: -.9em;
      
