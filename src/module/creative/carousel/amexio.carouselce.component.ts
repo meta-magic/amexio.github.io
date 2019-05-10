@@ -15,18 +15,35 @@
 *
 *  Created by kedar on 18/4/2019.
 */
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { HttpClient } from '@angular/common/http';
-
 import {
   AfterContentInit, Component, ContentChild, ContentChildren, ElementRef, Input, OnDestroy, OnInit, QueryList, TemplateRef, ViewChild,
 } from '@angular/core';
 import { AmexioTemplateDirective } from '../../panes/amexio.pane.module';
 import { CommonDataService } from '../../services/data/common.data.service';
 import { TitleModel } from '../carousel/amexio.carouselce.model';
-
 @Component({
   selector: 'amexio-carousel-ce',
   templateUrl: './amexio.carouselce.component.html',
+  animations: [
+    trigger(
+      'move',
+      [
+        transition(
+          ':enter', [
+            style({ opacity: 0 }),
+            animate('2s', style({ opacity: 1 })),
+          ],
+        ),
+        transition(
+          ':leave', [
+            style({ opacity: 1 }),
+            animate('2s', style({ opacity: 0 })),
+          ],
+        ),
+      ],
+    )],
 })
 export class AmexioCarouselCEComponent implements OnInit, AfterContentInit {
   /*

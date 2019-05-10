@@ -3,10 +3,9 @@
     <div *ngFor="let item of imageData ;let i=index">
         <ng-container *ngIf="item.active">
 
-            <div class="ce-caroueslslideshow" [ngStyle]="{'visibility':item.active ? 'visible':'hidden'}">
+            <div class="ce-caroueslslideshow" >
                 <div class="ce-caroueslimages">
-                    <img src={{item.imagepath}} style='height: 100%; width: 100%; object-fit: cover' />
-
+                        <img src="{{item.imagepath}}" @move style='height: 100%; width: 100%; object-fit: cover' />
                 </div>
                 <ng-container *ngIf="itemTemplate">
                     <div style=" position: absolute;" [style.left]="positionLeft+'%'" [style.right]="positionRight+'%'">
