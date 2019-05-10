@@ -2,7 +2,7 @@ import { Directive, ElementRef, Host, Input, OnInit, Optional, Self, ViewContain
 import { ColorPaletteConstants } from './color-palette-constant';
 
 @Directive({
-  selector: '[appColorPalette]',
+  selector: '[amexioColorPalette]',
 })
 
 export class ColorPaletteDirective implements OnInit {
