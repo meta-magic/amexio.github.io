@@ -231,6 +231,10 @@ export class AmexiodialoguePaneComponent implements AfterContentInit, OnChanges,
 
   @ContentChildren(AmexioFooterComponent) amexioFooter: QueryList<AmexioFooterComponent>;
 
+  themeCss: any;
+
+  amexioComponentId = 'amexio-dialogue';
+
   value = 0;
   defaultStyle: string;
   componentId: string;
@@ -339,4 +343,8 @@ export class AmexiodialoguePaneComponent implements AfterContentInit, OnChanges,
     return inputType + '_' + name + '_' + Math.floor(Math.random() * 1000 + 999);
   }
 
+  // Theme Apply
+  setColorPalette(themeClass: any) {
+    this.themeCss = themeClass;
+  }
 }

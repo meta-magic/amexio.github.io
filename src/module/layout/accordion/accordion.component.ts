@@ -123,6 +123,7 @@ export class AmexioAccordionComponent extends LifeCycleBaseComponent implements 
       });
     }
   }
+
   onkeyDown() {
     this.onPreAccIndex();
     this.accindex++;
@@ -156,7 +157,7 @@ export class AmexioAccordionComponent extends LifeCycleBaseComponent implements 
       this.accordionCollections[index].btn.nativeElement.focus();
     }
   }
-   ngOnDestroy(): void {
+  ngOnDestroy(): void {
     super.ngOnDestroy();
   }
 }

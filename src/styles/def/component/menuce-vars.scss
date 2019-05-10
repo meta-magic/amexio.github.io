@@ -1,14 +1,11 @@
 
-// $cardCeBackground : none;
-$cardCeBGColor: $componentBGColor;
-$cardCeColor: $componentFontColor;
 
-$cardceHeaderBGColor: $componentHeaderBGColor;
-$cardceHeaderColor: $componentHeaderFontColor;
-// $cardCeFooterBGColor: $componentBGColor;
-// $cardCeFooterColor: $componentFooterFontColor;
-// $cardCeBorderColor: $borderColor;
+// $menuCeBGColor: $componentBGColor;
+// $menuCeFontColor: $componentFontColor;
 
-// $cardCeBodyScrollBGColor : $scrollBGColor;
-// $cardCeBodyScrollThumbColor : $scrollThumbColor;
+$menuCeBGColor: $componentHeaderBGColor;
+$menuCeFontColor: $componentHeaderFontColor;
 
+
+$menuCeHoverFontColor : $componentHoverFontColor;
+$menuCeHoverBGColor : $componentHoverBGColor;

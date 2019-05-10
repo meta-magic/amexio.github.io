@@ -1,4 +1,4 @@
-<div for="boxText" id="{{componentId}}" class="box-content" *ngIf="close" [style.height]="height ? height:'none'" [style.width]="width ? width:'none'" [style.align]="align ? align:'none'" [ngClass]="{
+<div for="boxText" id="{{componentId}}" class="box-content {{themeCss}}"  *ngIf="close" [style.height]="height ? height:'none'" [style.width]="width ? width:'none'" [style.align]="align ? align:'none'" [ngClass]="{
 'box-default': borderColor=='default' || borderColor ==null,
 'border-topbar': border=='top',
 'border-bottombar': border =='bottom',

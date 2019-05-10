@@ -145,6 +145,10 @@ description : Context Menu provides the list of menus on right click.
 
   mouseLocation: { left: number; top: number } = { left: 0, top: 0 };
 
+  amexioComponentId = 'amexio-card';
+
+  themeCss: any;
+
   @ContentChildren(AmexioHeaderComponent) amexioHeader: QueryList<AmexioHeaderComponent>;
   headerComponentList: AmexioHeaderComponent[];
   @ContentChildren(AmexioBodyComponent) amexioBody: QueryList<AmexioBodyComponent>;
@@ -265,5 +269,10 @@ description : Context Menu provides the list of menus on right click.
   ngOnDestroy(): void {
     super.ngOnDestroy();
     this.removeListner();
+  }
+
+  // Theme Apply
+  setColorPalette(themeClass: any) {
+   this.themeCss = themeClass;
   }
 }

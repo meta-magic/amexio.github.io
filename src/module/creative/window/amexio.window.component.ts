@@ -81,6 +81,8 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
 
   @Input('width') width = '90%';
 
+  amexioComponentId = 'amexio-window';
+
   @ContentChildren(AmexioCardCEHeaderComponent) amexioHeader: QueryList<AmexioCardCEHeaderComponent>;
   amexioCardHeaderList: AmexioCardCEHeaderComponent[];
 
@@ -197,6 +199,7 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
   ngAfterContentInit(): void {
     if (this.amexioHeader && this.amexioHeader.toArray().length > 0) {
       setTimeout(() => {
+        this.amexioHeader.toArray()[0].amexioComponentId = this.amexioComponentId;
         this.amexioHeader.toArray()[0].closeable = this.closable;
         this.amexioHeader.toArray()[0].windowFlag = true;
       }, 3000);

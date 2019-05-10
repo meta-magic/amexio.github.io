@@ -125,7 +125,7 @@ description : Height of panel must be in px ex.100, 250..
  */
   @Input('context-menu') contextmenu: any[];
 
-    /*
+  /*
 Properties
 name : color
 datatype :  string
@@ -133,7 +133,7 @@ version : 5.6.1 onwards
 default : none
 description : Provides color for panel header
 */
-@Input() color: string;
+  @Input() color: string;
 
   /*
 Properties
@@ -143,7 +143,7 @@ version : 5.6.1 onwards
 default : none
 description : Provides background color for panel header
 */
-@Input('background') bgColor: string;
+  @Input('background') bgColor: string;
 
   @Input('content-align') contentAlign = 'left';
 
@@ -182,6 +182,10 @@ description : Fires the on accordion pane click event.
   private faFaIconUPCss = 'fa fa-caret-up';
 
   private faFaIconDownCss = 'fa fa-caret-down';
+
+  themeCss: any;
+
+  amexioComponentId = 'amexio-panel';
 
   panelstyle: any;
   componentId: any;
@@ -282,6 +286,11 @@ description : Fires the on accordion pane click event.
   ngOnDestroy(): void {
     super.ngOnDestroy();
     this.removeListner();
+  }
+
+  // Theme Apply
+  setColorPalette(themeClass: any) {
+    this.themeCss = themeClass;
   }
 
 }

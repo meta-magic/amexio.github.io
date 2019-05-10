@@ -4,7 +4,7 @@
 
 <div class="dialogue-sm" [@animation]="{value: 'visible', params: {transitionParams: transitionOptions}}" *ngIf="show">
     <div role="dialog" attr.aria-labelledby="componentId" class="dialogue-content">
-        <header [ngClass]="{'dialogue-material-design':materialDesign ,'dialogue-header':!materialDesign }">
+        <header [ngClass]="{'dialogue-material-design':materialDesign ,'dialogue-header':!materialDesign, 'themeCss':(materialDesign || !materialDesign) }">
             <div id="{{componentId}}" tabindex="1" class="dialogue-table">
                 <div class="tablerow">
                     <div class="tablecol">

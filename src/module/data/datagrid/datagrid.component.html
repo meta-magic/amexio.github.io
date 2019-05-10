@@ -106,7 +106,7 @@
 <!--Checkbox datagrid with datatypes condition start-->
 <ng-container *ngIf="enableHeader">
   <div class="datatable" role="grid" attr.aria-labelledby="{{gridId}}">
-    <div class="datatable-header">
+    <div class="datatable-header" [ngClass]="themeCss">
       <ng-container *ngIf="enablecheckbox">
         <div class="datatable-col datatable-checkbox-width checkbox-col">
           <div class="inputgroup">

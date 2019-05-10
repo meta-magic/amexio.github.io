@@ -59,9 +59,13 @@ export class AmexioCardCEHeaderComponent implements OnInit {
 
   windowFlag: boolean;
 
+  themeCss: any;
+
   closeableBehaiour = new BehaviorSubject(false);
 
   maximizeBehaiour = new BehaviorSubject(false);
+
+  amexioComponentId: string;
 
   iconPosition: {
     top: string;
@@ -113,6 +117,10 @@ export class AmexioCardCEHeaderComponent implements OnInit {
         break;
       }
     }
+  }
+
+  setColorPalette(themeClass: any) {
+    this.themeCss = themeClass;
   }
 
 }

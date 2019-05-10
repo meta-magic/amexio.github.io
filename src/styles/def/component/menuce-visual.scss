@@ -10,7 +10,7 @@
     position: relative;
 }
 
-.bmenu a {
+.bmenu1 a {
     color: transparent;
     display: block;
     text-transform: uppercase;
@@ -25,38 +25,40 @@
 }
 
 
-.bmenu a:hover {
+.bmenu1 a:hover {
     /* color: black; */
-    text-shadow: 0px 0px 1px #fff;
+    text-shadow: 0px 0px 1px $menuCeBGColor;
     padding-left: 10px;
 }
 
-.bmenu1 a {
-    display: block;
-    text-transform: uppercase;
-    text-shadow: 1px 1px 2px rgba(89,22,20,0.3);
-    color: #581514;
-    padding: 5px 20px;
-    margin: 2px;
-    background: rgba(255,255,255,0.2);
-    letter-spacing: 1px;
-    -webkit-transform: skew(-12deg);
-    -moz-transform: skew(-12deg);
-    -o-transform: skew(-12deg);
-    -ms-transform: skew(-12deg);
-    transform: skew(-12deg);
-    -webkit-transition: all 0.4s ease-in-out;
-    -moz-transition: all 0.4s ease-in-out;
-    -o-transition: all 0.4s ease-in-out;
-    -ms-transition: all 0.4s ease-in-out;
-    transition: all 0.4s ease-in-out;
-}
+// .bmenu1 a {
+//     display: block;
+//     text-transform: uppercase;
+//     text-shadow: 1px 1px 2px $menuCeBGColor;
+//     // color: #581514;
+//     color: $menuCeFontColor;
+//     padding: 5px 20px;
+//     margin: 2px;
+//     // background: rgba(255,255,255,0.2);
+//     background: $menuCeBGColor;
+//     letter-spacing: 1px;
+//     -webkit-transform: skew(-12deg);
+//     -moz-transform: skew(-12deg);
+//     -o-transform: skew(-12deg);
+//     -ms-transform: skew(-12deg);
+//     transform: skew(-12deg);
+//     -webkit-transition: all 0.4s ease-in-out;
+//     -moz-transition: all 0.4s ease-in-out;
+//     -o-transition: all 0.4s ease-in-out;
+//     -ms-transition: all 0.4s ease-in-out;
+//     transition: all 0.4s ease-in-out;
+// }
 
-.bmenu1 a:hover {
-    background: transparent;
-    text-shadow: 1px 1px 10px rgba(89,22,20,0.6);
-    color: #581514;
-}
+// .bmenu1 a:hover {
+//     background: transparent;
+//     text-shadow: 1px 1px 10px rgba(89,22,20,0.6);
+//     color: $menuCeHoverFontColor;
+// }
 
 .bmenu2 a{
     white-space: nowrap;
@@ -79,7 +81,7 @@
 }
 
 .bmenu2 a:hover{
-    text-shadow: 0px 0px 1px black;
+    text-shadow: 0px 0px 1px $menuCeBGColor;
     -moz-transform: scale(1);
     -ms-transform: scale(1);
     -o-transform: scale(1);
@@ -87,28 +89,28 @@
     transform: scale(1);
 }
 
+// .bmenu3 a{
+//     display: block;
+//     text-transform: uppercase;
+//     text-shadow: 0px 0px 2px #eeb213;
+//     color: $menuCeFontColor;
+//     padding: 5px 20px;
+//     margin: 2px;
+//     background: $menuCeBGColor;
+//     letter-spacing: 1px;
+//     -webkit-transition: all 0.2s linear;
+//     -moz-transition: all 0.2s linear;
+//     -o-transition: all 0.2s linear;
+//     -ms-transition: all 0.2s linear;
+//     transition: all 0.2s linear;
+// }
+
+// .bmenu3 a:hover{
+//     background: $menuCeHoverBGColor;
+//     text-shadow: 0px 0px 1px #eeb213;
+// }
+
 .bmenu3 a{
-    display: block;
-    text-transform: uppercase;
-    text-shadow: 0px 0px 2px #eeb213;
-    color: #eeb213;
-    padding: 5px 20px;
-    margin: 2px;
-    background: rgba(0,0,0,0.7);
-    letter-spacing: 1px;
-    -webkit-transition: all 0.2s linear;
-    -moz-transition: all 0.2s linear;
-    -o-transition: all 0.2s linear;
-    -ms-transition: all 0.2s linear;
-    transition: all 0.2s linear;
-}
-
-.bmenu3 a:hover{
-    background: rgba(0,0,0,1.0);
-    text-shadow: 0px 0px 1px #eeb213;
-}
-
-.bmenu4 a{
     color: transparent;
     display: block;
     text-transform: uppercase;
@@ -121,36 +123,36 @@
     transition: all 0.2s ease-in-out;
 }
 
-.bmenu4 a:hover{
-    color: black;
+.bmenu3 a:hover{
+    color: $menuCeHoverFontColor;
     text-shadow: 0px 0px 1px black;
     padding-left: 10px;
 }
 
-.bmenu5 a{
-    white-space: nowrap;
-    display: block;
-    text-transform: uppercase;
-    text-shadow: 1px 1px 2px rgba(71,80,23,0.3);
-    color: #fff;
-    padding: 5px 20px;
-    margin: 2px;
-    background: rgba(255,255,255,0.2);
-    letter-spacing: 1px;
-    -webkit-transition: all 0.4s ease-in-out;
-    -moz-transition: all 0.4s ease-in-out;
-    -o-transition: all 0.4s ease-in-out;
-    -ms-transition: all 0.4s ease-in-out;
-    transition: all 0.4s ease-in-out;
-}
+// .bmenu5 a{
+//     white-space: nowrap;
+//     display: block;
+//     text-transform: uppercase;
+//     text-shadow: 1px 1px 2px rgba(71,80,23,0.3);
+//     color: $menuCeFontColor;
+//     padding: 5px 20px;
+//     margin: 2px;
+//     background: $menuCeBGColor;
+//     letter-spacing: 1px;
+//     -webkit-transition: all 0.4s ease-in-out;
+//     -moz-transition: all 0.4s ease-in-out;
+//     -o-transition: all 0.4s ease-in-out;
+//     -ms-transition: all 0.4s ease-in-out;
+//     transition: all 0.4s ease-in-out;
+// }
 
-.bmenu5 a:hover{
-    background: transparent;
-    text-shadow: 1px 1px 10px rgba(71,80,23,0.6);
-    color: #c4d85a;
-}
+// .bmenu5 a:hover{
+//     background: transparent;
+//     text-shadow: 1px 1px 10px rgba(71,80,23,0.6);
+//     color: $menuCeHoverFontColor;
+// }
 
-.bmenu6 a{
+.bmenu4 a{
     white-space: nowrap;
     color: transparent;
     display: block;
@@ -169,12 +171,13 @@
     -ms-transition: all 0.4s linear;
     transition: all 0.4s linear;
 
-}
+} 
 
-.bmenu6 a:hover{
+.bmenu4 a:hover{
     text-shadow: none;
-    color: black;
-    background: rgba(129,6,29,0.8);
+    color: $menuCeHoverFontColor;
+    background: $menuCeHoverBGColor;
+
     -moz-transform: scale(1);
     -ms-transform: scale(1);
     -o-transform: scale(1);

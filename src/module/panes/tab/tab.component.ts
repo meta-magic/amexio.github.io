@@ -260,6 +260,9 @@ description : sets background color for active tab
 
   tablk: any;
 
+  themeCss: any;
+  amexioComponentId = 'amexio-tab';
+
   globalClickListenFunc: () => void;
 
   constructor(

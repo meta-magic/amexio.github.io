@@ -18,6 +18,8 @@ import { CommonDataService } from './services/data/common.data.service';
 import { DeviceQueryService } from './services/device/device.query.service';
 import { IconLoaderService } from './services/icon/icon.service';
 
+import { ColorPaletteDirective } from './directive/color-palette.directive';
+
 export * from './services/data/common.data.service';
 export * from './services/device/device.query.service';
 export * from './services/icon/icon.service';
@@ -56,8 +58,9 @@ export * from '../models/propertyGridModel';
     AmexioBaseContextMenuModule,
     AmexioCreativeModule,
     AmexioRuntimeModule,
+    ColorPaletteDirective,
   ],
-  declarations: [],
+  declarations: [ColorPaletteDirective],
   providers: [CommonDataService, DeviceQueryService, IconLoaderService],
 })
 export class AmexioWidgetModule {

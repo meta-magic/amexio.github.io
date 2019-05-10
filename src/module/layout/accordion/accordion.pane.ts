@@ -16,7 +16,7 @@
 */
 
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer, ViewChild} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer, ViewChild } from '@angular/core';
 @Component({
   selector: 'amexio-accordion-tab',
   templateUrl: './accordion.pane.html',
@@ -99,6 +99,8 @@ export class AmexioAccordionTabComponent implements OnInit {
   bgColor: string;
   color: string;
   hover: boolean;
+  themeCss: any;
+  amexioComponentId = 'amexio-accordion';
 
   constructor() {
     this.currentstate = 'hidden';
@@ -128,7 +130,11 @@ export class AmexioAccordionTabComponent implements OnInit {
     this.emittedEvent.emit({ keydown: true, current: this });
   }
   onArrowUp() {
-      this.emittedEvent.emit({ keyup: true, current: this });
+    this.emittedEvent.emit({ keyup: true, current: this });
   }
 
+  // Theme Apply
+  setColorPalette(themeClass: any) {
+    this.themeCss = themeClass;
+  }
 }

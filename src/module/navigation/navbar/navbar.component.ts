@@ -82,6 +82,8 @@ description : Color
 @Input('color') color: string;
 
 opacity: number;
+themeCss: any;
+amexioComponentId = 'amexio-navbar';
 
   // THIS IS LOCAL USE NOT EXPOSED
   @Input('home-page-type') homepageType: string;
@@ -270,4 +272,8 @@ opacity: number;
       this.isExpand = !this.isExpand;
     }
   }
+
+  setColorPalette(themeClass: any) {
+    this.themeCss = themeClass;
+   }
 }

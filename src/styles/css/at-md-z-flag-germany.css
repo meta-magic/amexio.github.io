@@ -2427,8 +2427,12 @@ input:checked + .largeType2ToggleSlider:before {
   outline: none;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
-  border-radius: 3em;
+  border-radius: 3em !important;
   border: none; }
+
+.ui-slider-horizontal2 {
+  height: 15px;
+  top: 10px; }
 
 .ui-slider-horizontal2 {
   height: 15px;
@@ -2441,11 +2445,48 @@ input:checked + .largeType2ToggleSlider:before {
   height: 42px !important;
   cursor: default;
   outline: none;
-  border-radius: 3em;
+  border-radius: 3em !important;
   border: none;
   background: #2196f3;
   color: #f0f8fe;
-  bottom: -15px; }
+  bottom: -15px;
+  margin-left: -.9em; }
+
+.ui-slider-vertical2 {
+  width: 1em;
+  height: 100px; }
+
+.ui-slider-handle3 {
+  margin-left: -15px;
+  position: absolute;
+  z-index: 0;
+  width: 42px !important;
+  height: 42px !important;
+  cursor: default;
+  outline: none;
+  border-radius: 3em;
+  border: none;
+  background: var(--componentHeaderBGColor);
+  margin-bottom: -2em;
+  margin-top: -2em; }
+
+.ui-slider-handle1 {
+  margin-left: -6px;
+  position: absolute;
+  z-index: 0;
+  width: 21px !important;
+  height: 21px !important;
+  cursor: default;
+  outline: none;
+  border-radius: 3em;
+  border: none;
+  background: var(--componentHeaderBGColor); }
+
+.ui-slider-range2 {
+  background: #b8dfff; }
+
+.ui-slider-range3 {
+  background: #b8dfff; }
 
 /****************************************************************************
     Component Name : Label
@@ -4068,6 +4109,101 @@ input:checked + .largeType2ToggleSlider:before {
 ****************************************************************************/
 /** Grid Layout- Visual CSS **/
 /** Grid Layout- Structure CSS **/
+.griditemcontainer {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column; }
+
+.griditemcontainer-header {
+  padding: 10px;
+  border-bottom: 1px solid #ced4da;
+  background-color: var(--componentHeaderBGColor);
+  color: var(--componentHeaderFontColor);
+  font-size: 15px; }
+
+.collapsibleicon {
+  background-color: var(--componentHeaderFontColor);
+  color: var(--componentHeaderBGColor); }
+
+.griditemcontainer-header-collapsed {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+
+.griditemcontainer-header-collapsed label {
+  transform: rotate(270deg); }
+
+.grid-vc-towards-top {
+  display: flex;
+  flex-direction: column-reverse; }
+
+.vc-towards-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: -5px;
+  height: 10px;
+  background-color: #ced4da;
+  margin-left: -1px;
+  margin-right: -1px; }
+
+.vc-towards-top i {
+  cursor: pointer; }
+
+.grid-vc-towards-bottom {
+  display: flex;
+  flex-direction: column; }
+
+.vc-towards-bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: -10px;
+  height: 10px;
+  background-color: #ced4da;
+  margin-left: -1px;
+  margin-right: -1px; }
+
+.vc-towards-bottom i {
+  cursor: pointer; }
+
+.grid-hc-towards-left {
+  display: flex;
+  flex-direction: row-reverse; }
+
+.hc-towards-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: -5px;
+  background-color: #ced4da;
+  margin-top: -1px;
+  margin-bottom: -1px;
+  width: 7px; }
+
+.hc-towards-left i {
+  cursor: pointer; }
+
+.grid-hc-towards-right {
+  display: flex;
+  flex-direction: row; }
+
+.hc-towards-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: -5px;
+  background-color: #ced4da;
+  margin-top: -1px;
+  margin-bottom: -1px;
+  width: 7px; }
+
+.hc-towards-right i {
+  cursor: pointer; }
+
 /*****************************************************************************
  Component Name : Amexio Badge
  Version : Amexio v5.5.5 onwards
@@ -4315,24 +4451,6 @@ input:checked + .largeType2ToggleSlider:before {
   text-align: center;
   border: none;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2) inset; }
-
-.ui-slider-horizontal2 {
-  height: 15px;
-  top: 10px; }
-
-.ui-slider-handle2 {
-  position: absolute;
-  z-index: 0;
-  width: 42px !important;
-  height: 42px !important;
-  cursor: default;
-  outline: none;
-  border-radius: 3em;
-  border: none;
-  background: var(--componentHeaderBGColor);
-  color: var(--componentHeaderFontColor);
-  bottom: -15px;
-  border-radius: 50px !important; }
 
 /****************************************************************************
     Component Name : Multi Date Time
@@ -8706,7 +8824,7 @@ amexio-layout-columns amexio-layout-item {
   margin: 0 0 10px 0;
   position: relative; }
 
-.bmenu a {
+.bmenu1 a {
   color: transparent;
   display: block;
   text-transform: uppercase;
@@ -8719,35 +8837,10 @@ amexio-layout-columns amexio-layout-item {
   transition: all 0.3s ease-in-out;
   text-decoration: none; }
 
-.bmenu a:hover {
-  /* color: black; */
-  text-shadow: 0px 0px 1px #fff;
-  padding-left: 10px; }
-
-.bmenu1 a {
-  display: block;
-  text-transform: uppercase;
-  text-shadow: 1px 1px 2px rgba(89, 22, 20, 0.3);
-  color: #581514;
-  padding: 5px 20px;
-  margin: 2px;
-  background: rgba(255, 255, 255, 0.2);
-  letter-spacing: 1px;
-  -webkit-transform: skew(-12deg);
-  -moz-transform: skew(-12deg);
-  -o-transform: skew(-12deg);
-  -ms-transform: skew(-12deg);
-  transform: skew(-12deg);
-  -webkit-transition: all 0.4s ease-in-out;
-  -moz-transition: all 0.4s ease-in-out;
-  -o-transition: all 0.4s ease-in-out;
-  -ms-transition: all 0.4s ease-in-out;
-  transition: all 0.4s ease-in-out; }
-
 .bmenu1 a:hover {
-  background: transparent;
-  text-shadow: 1px 1px 10px rgba(89, 22, 20, 0.6);
-  color: #581514; }
+  /* color: black; */
+  text-shadow: 0px 0px 1px var(--componentHeaderBGColor);
+  padding-left: 10px; }
 
 .bmenu2 a {
   white-space: nowrap;
@@ -8769,7 +8862,7 @@ amexio-layout-columns amexio-layout-item {
   transition: all 0.6s linear; }
 
 .bmenu2 a:hover {
-  text-shadow: 0px 0px 1px black;
+  text-shadow: 0px 0px 1px var(--componentHeaderBGColor);
   -moz-transform: scale(1);
   -ms-transform: scale(1);
   -o-transform: scale(1);
@@ -8777,25 +8870,6 @@ amexio-layout-columns amexio-layout-item {
   transform: scale(1); }
 
 .bmenu3 a {
-  display: block;
-  text-transform: uppercase;
-  text-shadow: 0px 0px 2px #eeb213;
-  color: #eeb213;
-  padding: 5px 20px;
-  margin: 2px;
-  background: rgba(0, 0, 0, 0.7);
-  letter-spacing: 1px;
-  -webkit-transition: all 0.2s linear;
-  -moz-transition: all 0.2s linear;
-  -o-transition: all 0.2s linear;
-  -ms-transition: all 0.2s linear;
-  transition: all 0.2s linear; }
-
-.bmenu3 a:hover {
-  background: black;
-  text-shadow: 0px 0px 1px #eeb213; }
-
-.bmenu4 a {
   color: transparent;
   display: block;
   text-transform: uppercase;
@@ -8807,33 +8881,12 @@ amexio-layout-columns amexio-layout-item {
   -ms-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out; }
 
-.bmenu4 a:hover {
-  color: black;
+.bmenu3 a:hover {
+  color: var(--componentHoverFontColor);
   text-shadow: 0px 0px 1px black;
   padding-left: 10px; }
 
-.bmenu5 a {
-  white-space: nowrap;
-  display: block;
-  text-transform: uppercase;
-  text-shadow: 1px 1px 2px rgba(71, 80, 23, 0.3);
-  color: #fff;
-  padding: 5px 20px;
-  margin: 2px;
-  background: rgba(255, 255, 255, 0.2);
-  letter-spacing: 1px;
-  -webkit-transition: all 0.4s ease-in-out;
-  -moz-transition: all 0.4s ease-in-out;
-  -o-transition: all 0.4s ease-in-out;
-  -ms-transition: all 0.4s ease-in-out;
-  transition: all 0.4s ease-in-out; }
-
-.bmenu5 a:hover {
-  background: transparent;
-  text-shadow: 1px 1px 10px rgba(71, 80, 23, 0.6);
-  color: #c4d85a; }
-
-.bmenu6 a {
+.bmenu4 a {
   white-space: nowrap;
   color: transparent;
   display: block;
@@ -8852,10 +8905,10 @@ amexio-layout-columns amexio-layout-item {
   -ms-transition: all 0.4s linear;
   transition: all 0.4s linear; }
 
-.bmenu6 a:hover {
+.bmenu4 a:hover {
   text-shadow: none;
-  color: black;
-  background: rgba(129, 6, 29, 0.8);
+  color: var(--componentHoverFontColor);
+  background: var(--componentHoverBGColor);
   -moz-transform: scale(1);
   -ms-transform: scale(1);
   -o-transform: scale(1);

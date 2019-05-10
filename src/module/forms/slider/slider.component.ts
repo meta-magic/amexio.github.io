@@ -111,7 +111,7 @@ version : 5.11.2 onwards
 default :
 description : Type applied to slider
 */
-@Input('type') type: number;
+@Input('type') type = 1;
   /*
 Events
 name : onChange

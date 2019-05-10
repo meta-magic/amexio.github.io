@@ -323,6 +323,10 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
    */
   @Output() onPageChange: EventEmitter<any> = new EventEmitter<any>();
 
+  themeCss: any;
+
+  amexioComponentId = 'amexio-grid';
+
   columns: any[] = [];
 
   viewRows: any[] = [];
@@ -1593,5 +1597,9 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
         this.findControlEndColumn(unitId, firstId);
       }
     }
+  }
+
+  setColorPalette(themeClass: any) {
+    this.themeCss = themeClass;
   }
 }

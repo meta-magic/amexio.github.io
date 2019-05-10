@@ -206,6 +206,10 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy, 
 
   rightClickNodeData: any;
 
+  themeCss: any;
+
+  amexioComponentId = 'amexio-window';
+
   mouseLocation: { left: number; top: number } = { left: 0, top: 0 };
   globalListenFunc: () => void;
   globalClickListenFunc: () => void;
@@ -393,4 +397,9 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy, 
       this.globalListenFunc();
     }
   }
+
+    // Theme Apply
+    setColorPalette(themeClass: any) {
+      this.themeCss = themeClass;
+    }
 }

@@ -41,6 +41,10 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
 
   @Input('style-type') styleType: string;
 
+  themeCss: any;
+
+  amexioComponentId = 'amexio-card';
+
   cclass: string;
 
   windowFlag = false;
@@ -112,6 +116,9 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
     if (this.AmexioCardCEHeaderQueryList) {
       this.amexioCardHeaderList = this.AmexioCardCEHeaderQueryList.toArray();
       if (this.amexioCardHeaderList && this.amexioCardHeaderList.length > 1) {
+        this.amexioCardHeaderList.forEach((element: any) => {
+          element.amexioComponentId = this.amexioComponentId;
+        });
       }
     }
     this.setCardAligementForAllInnerComponent();

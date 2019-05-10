@@ -1,5 +1,5 @@
 <div #id class="card-container" *ngIf="show" (window:resize)="onResize()" (contextmenu)="loadContextMenu({event:$event,ref:id})">
-    <header #cardHeader [style.padding]="headerPadding" class="card-header" *ngIf="header"
+    <header #cardHeader [ngClass]="themeCss" [style.padding]="headerPadding" class="card-header" *ngIf="header"
      [ngClass]="{'flex-start':(headeralign=='left'),'flex-end':(headeralign=='right'),'flex-center':(headeralign=='center')}">
         <ng-content select="amexio-header"></ng-content>
     </header>

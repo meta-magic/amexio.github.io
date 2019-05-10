@@ -4,7 +4,7 @@
 <div    #id style="width: 100%" (contextmenu)="loadContextMenu({event:$event,ref:id})"  >
     <ng-container *ngIf="collapsible; else elseBlock"> 
         <div id="{{componentId}}" [ngStyle]="{'background': bgColor, 'color': color}"
-        *ngIf="header" class="panel-accordion" 
+        *ngIf="header" class="panel-accordion"  [ngClass]="themeCss"
         (click)="onTabClick(btn1)"    >
             <amexio-toolbar
             tabindex="0" 

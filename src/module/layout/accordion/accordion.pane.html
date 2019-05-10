@@ -1,4 +1,4 @@
-<button #btn role="button" id="{{componentId}}" tabindex="0" (click)="emitEvent()" [attr.aria-expanded]="active"
+<button #btn [ngClass]="themeCss" role="button" id="{{componentId}}" tabindex="0" (click)="emitEvent()" [attr.aria-expanded]="active"
   (keyup.enter)="onEnterClick()" (keyup.arrowdown)="onArrowDown()" (keyup.arrowup)="onArrowUp()" class="{{isTransparent ? 'accordion-transparent' : 'accordion'}} {{active ? 'active-accordion' : ''}} {{disabled ? 'accordion-disable' : ''}}"
   (mouseover)="hover=true" (mouseleave)="hover=false" [ngStyle]="{color: hover==true ? bgColor : color, backgroundColor: hover==true  ? color : bgColor}">
   <div style="float: left;" *ngIf="leftIcon">
