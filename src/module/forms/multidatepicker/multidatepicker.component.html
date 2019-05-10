@@ -1,48 +1,108 @@
-<!--this div contains fieldlabel inputbox and icon -->
-<div tabindex="{{inputtabindex}}" (keyup.enter)="openPicker(rootDiv)" aria-label="datetimepicker push button" class="inputgroup"
-    *ngIf="!inlineDatepicker" #rootDiv>
+<div #rootDiv>
 
-    <label>
-        {{fieldlabel}}
-    </label>
-    <!-- datepicker input -->
-    <ng-container *ngIf="datepicker && !timepicker">
-        <input tabindex="-1" type="text" #pickerDt value="{{dateModel|date:dateformat}}" [attr.disabled]="disabled ? true: null"
-            [required]="required ? true: null" (blur)="onBlur()" (focusout)="onFocusOut(pickerDt)" class="input-control" [ngStyle]="{'cursor': readonly ? 'not-allowed':'pointer'}"
-            [attr.placeholder]="placeholder" />
-    </ng-container>
 
-    <div class="drodown-caret-down" [ngStyle]="{'cursor':disabled ? 'not-allowed' : 'pointer'}" (click)="openPicker(rootDiv)">
-        <!-- datepicker icon -->
-        <ng-container *ngIf="!timepicker">
-            <span>
-                <amexio-c-icon key="datepicker_calendar"></amexio-c-icon>
+    <span class="mainspan">
+
+        <div (click)="fromPicker(rootDiv, $event)" style="background-color: white; border-right-style: outset;" class="fromdiv">
+            <span class="lbl_text appendButton10 latoBold">
+                {{fromlabel}}
+            </span>
+            <i class="fa fa-angle-down dropicon"></i>
+            <span id="parentdate" class="blackText font20">
+                <span class="font30 lactoBlack">
+                    {{fromdate | date :'dd'}}
+                </span>
+                <span class="">
+                    {{fromdate | date: 'MMM'}} '
+                </span>
+                <span class="">
+                    {{fromdate | date: 'yy'}}
+                </span>
+                <span>
+                    <!-- <br> -->
+                    <!-- <code> -->
+                    <h6 style="padding: 0%; margin:1%; opacity:0.5">
+                        {{fromdate | date: 'EEEE'}}
+                    </h6>
+                    <!-- </code> -->
+                </span>
             </span>
 
-        </ng-container>
+        </div>
 
-    </div>
+        <div (click)="toPicker(rootDiv, $event)" style="background-color: white" class="fromdiv pointer">
+            <span class="lbl_text appendButton10 latoBold">
+                {{tolabel}}
+            </span>
+            <i class="fa fa-angle-down dropicon"></i>
+            <span id="parentdate" class="blackText font20">
+                <span class="font30 lactoBlack">
+                    {{todate | date :'dd'}}
+                </span>
+                <span class="">
+                    {{todate | date: 'MMM'}} '
+                </span>
+                <span class="">
+                    {{todate | date: 'yy'}}
+                </span>
+                <span>
+                    <!-- <br> -->
+                    <!-- <code> -->
+                    <h6 style="padding: 0%; margin:1%; opacity:0.5">
+                        {{todate | date: 'EEEE'}}
+                    </h6>
+                    <!-- </code> -->
+                </span>
+            </span>
+        </div>
 
+    </span>
+    <div [ngStyle]="dropdownstyle" [style.width]="totalwidth+'px'" *ngIf="datepicker" class="datePickerContainer datetabs">
+        <div class="flightCalOverlay">
+            <div class="dayPickerFlightWrap">
+                <div class="RangeExample">
+                    <div class="dayPickerHeader dayToFromCont blackText">
+                        <div class="calHeading makeFlex">
+                            <div class="dateFiled active" [ngClass]="{'activecolordatetab':fromtab}" (click)="fromPicker(rootDiv, $event)">
+                                <p class="font16 blackText latoBold appendRight30">
+                                    <span class="widgetSprite icCalendar appendRight10">
+                                        <amexio-c-icon key="datepicker_calendar"></amexio-c-icon>
+                                    </span>
+                                    <span class="selectedDateField appendBottom8 pointer">
+                                        {{fromdate | date: 'dd'}} {{fromdate | date: 'MMM'}} {{fromdate | date: 'yy'}}
+                                        <!-- 15 Sep 19 -->
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="font16 blackText lactoBlack dashed appendRight30"> - </div>
+                            <div class="dateFiled active" [ngClass]="{'activecolordatetab':totab}" (click)="toPicker(rootDiv, $event)">
+                                <p class="font16 blackText latoBold appendRight30">
+                                    <span class="widgetSprite icCalendar appendRight10">
+                                        <amexio-c-icon key="datepicker_calendar"></amexio-c-icon>
+                                    </span>
+                                    <span class="selectedDateField appendBottom8 pointer">
+                                        {{todate | date: 'dd'}} {{todate | date: 'MMM'}} {{todate | date: 'yy'}}
+                                        <!-- 15 Sep 19 -->
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
 
-</div>
-
-<div [@changeState]="dropdownstyle.visibility" [ngStyle]="dropdownstyle">
-
-    <table>
-
-        <tr>
-            <td style="display: inline-flex; flex-flow: wrap">
-
-                <div tabindex="1" aria-label="previous month list" role="button" style="padding: 125px 0px; cursor:pointer; opacity:0.7"
-                    class="float-left" (click)="updateMonthList('minus',$event)" (keyup.enter)="updateMonthList('minus',$event)">
-
-                    <amexio-floating-button [size]="'small'" [relative]="true" [icon]="'fa fa-angle-left'" [type]="'theme-color'">
-                    </amexio-floating-button>
                 </div>
+            </div>
+        </div>
+        <!--  -->
+        <!-- [@changeState]="dropdownstyle.visibility" [ngStyle]="dropdownstyle"  -->
+        <div style="position: absolute; width:100%; padding-right:5px; overflow-y: scroll">
+            <div style="display: inline-flex; flex-flow: wrap;">
 
                 <ng-container *ngFor="let itemdaysArray of  completeDaysArray; index as i">
+                    <!-- {{itterablemontharray | json}} -->
+                    <!-- <ng-container *ngIf=" item % 3 == 0 " ng> -->
 
                     <span [ngStyle]="{'padding-left': ((i+1) > count) ? '28px':'0px'}">
+
 
                         <span style="position: relative;" [ngClass]="{'datetimepicker':!inlineDatepicker}">
                             <!-- datepicker starts -->
@@ -50,18 +110,24 @@
                                 <!-- datepicker header starts and contains: 4 angles drop icon and title -->
                                 <div aria-label="datetimepicker header" class="datetimepickertopbar" aria-label="datepicker header" [ngStyle]="{'display': datepicker ? 'block' : 'none'}">
                                     <ul>
-
+                                        <!-- 
+                          -->
                                         <li>
+                                            <span (click)="updateMonthList('minus',$event)" (keyup.enter)="updateMonthList('minus',$event)" [ngStyle]="{'cursor': backarrowflag ? 'not-allowed':'pointer'}"
+                                                *ngIf="itemdaysArray.prevarrow" tabindex="0" role="button" aria-label="Previous Month">
+                                                <!-- left arrow icon -->
+                                                <i class="fa fa-arrow-left arrowiconshadow" [ngStyle]="{'opacity': backarrowflag ? '0.2' : ''}" style="float:left" aria-hidden="true"></i>
+                                            </span>
 
-                                            <span *ngIf="!dropdownDatepicker">
+                                            <span (click)="updateMonthList('plus',$event)" (keyup.enter)="updateMonthList('plus',$event)" class="pointer" *ngIf="itemdaysArray.nextarrow"
+                                                [ngStyle]="{'cursor': forwardarrowflag ? 'not-allowed':'pointer'}" tabindex="0"
+                                                role="button" aria-label="Next Month">
+                                                <!-- right arrow icon -->
+                                                <i class="fa fa-arrow-right arrowiconshadow" [ngStyle]="{'opacity': forwardarrowflag ? '0.2' : ''}" style="float:right" aria-hidden="true"></i>
+                                            </span>
+                                            <span class="title" style="cursor:auto">
                                                 <!-- {{itemdaysArray.month}} -->
-                                                {{itemdaysArray.date | date:'MMMM'}}
-
-                                                <br>
-                                                <span class="title" style="cursor:auto">
-                                                    {{itemdaysArray.date | date:'y'}}
-                                                    <!-- {{itemdaysArray.year}} -->
-                                                </span>
+                                                {{itemdaysArray.date | date:'MMMM'}} {{itemdaysArray.date | date:'y'}}
                                             </span>
 
                                         </li>
@@ -77,19 +143,15 @@
                                     <ul id="{{daystabindex}}" class="days" [ngStyle]="{'display': datepicker ? 'block' : 'none'}">
 
                                         <ng-container *ngFor="let dayArray of itemdaysArray.montharray">
-                                            <li [ngStyle]="{'cursor': day.isDisabled ? 'not-allowed' : 'pointer'}" *ngFor="let day of dayArray" (click)="onDateClick(day, $event)"
-                                                [ngClass]="{'date1':validateDays(day.date) , 'date1':day.isDisabled , 'notclickable':isDisabled}">
+                                            <li [ngStyle]="{'cursor': day.isDisabled ? 'not-allowed' : 'pointer'}" *ngFor="let day of dayArray" [ngClass]="{'date1':validateDays(day.date) , 'date1':day.isDisabled , 'notclickable':isDisabled}">
                                                 <span [attr.tabindex]="(day.selected ? 1: -1)" id="{{day.id}}" (keyup.arrowleft)="arrowleft(day,daysArray,$event)" (keyup.arrowright)="arrowright(day,daysArray,$event)"
                                                     (keyup.arrowdown)="arrowdown(day,daysArray,$event)" (keyup.arrowup)="arrowup(day,daysArray,$event)"
                                                     (keyup.enter)="onDateClick(day, $event)" attr.aria-label="{{day.fulldate}}"
-                                                    (click)="onDateClick(day, $event)" class="day" [ngClass]="{'active':day.selected, 'currentMonth':day.isCurrentMonth, 'notCurrentMonth':!day.isCurrentMonth,'invaliddays':validateDays(day.date), 'disabled':day.isDisabled}">
+                                                    (click)="onDateClick(day, $event)" class="day" [ngClass]="{'active': (day.from || day.to) , 'datesrange': day.range, 'currentMonth':day.isCurrentMonth, 'notCurrentMonth':!day.isCurrentMonth,'invaliddays':validateDays(day.date), 'disabled':day.isDisabled}">
                                                     {{ day.date | date:'d' }}
                                                 </span>
                                             </li>
                                         </ng-container>
-
-
-
                                     </ul>
                                 </div>
                             </span>
@@ -100,16 +162,9 @@
                     </span>
                     <!-- </ng-container> -->
                 </ng-container>
+            </div>
+        </div>
+    </div>
 
 
-                <div tabindex="1" aria-label="next month list" role="button" style="padding: 125px 0px; cursor:pointer; opacity:0.7" class="float-right"
-                    (click)="updateMonthList('plus',$event)" (keyup.enter)="updateMonthList('plus',$event)">
-
-                    <amexio-floating-button [size]="'small'" [relative]="true" [icon]="'fa fa-angle-right'" [type]="'theme-color'">
-                    </amexio-floating-button>
-
-                </div>
-            </td>
-        </tr>
-    </table>
 </div>
