@@ -2377,7 +2377,7 @@ input:checked + .largeType2ToggleSlider:before {
 .ui-corner-all {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
-  border-radius: 3px; }
+  border-radius: 3em; }
 
 .ui-widget-content {
   border: 1px solid #D5D5D5; }
@@ -2447,8 +2447,7 @@ input:checked + .largeType2ToggleSlider:before {
   outline: none;
   border-radius: 3em !important;
   border: none;
-  background: #2196f3;
-  color: #f0f8fe;
+  background: var(--componentHeaderBGColor);
   bottom: -15px;
   margin-left: -.9em; }
 
@@ -6545,7 +6544,7 @@ amexio-homepage-centerpanel .homepage-centerpanel {
 
 .transparentNav1 {
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.6) !important;
-  background-color: var(--appHeaderBGColor) !important;
+  background-color: transparent !important;
   opacity: 0.9 !important; }
 
 /****************************************************************************
@@ -8847,7 +8846,6 @@ amexio-layout-columns amexio-layout-item {
   color: transparent;
   display: block;
   text-transform: uppercase;
-  text-align: center;
   text-shadow: 0px 0px 6px black;
   letter-spacing: 1px;
   -moz-transform: scale(0.5);
@@ -8890,7 +8888,6 @@ amexio-layout-columns amexio-layout-item {
   white-space: nowrap;
   color: transparent;
   display: block;
-  text-align: center;
   text-transform: uppercase;
   text-shadow: 0px 0px 3px black;
   letter-spacing: 1px;

@@ -1,0 +1,39 @@
+ [
+    {
+      "themeName": "amexio-theme-color1"
+    },
+    {
+      "themeName": "amexio-theme-color2"
+    },
+    {
+      "themeName": "amexio-theme-color3"
+    },
+    {
+      "themeName": "amexio-theme-color4"
+    },
+    {
+      "themeName": "amexio-theme-color5"
+    },
+    {
+      "themeName": "amexio-theme-color6"
+    },
+    {
+      "themeName": "amexio-theme-color1-Gradient"
+    } ,
+    {
+      "themeName": "amexio-theme-color2-Gradient"
+    } ,
+    {
+      "themeName": "amexio-theme-color3-Gradient"
+    } ,
+    {
+      "themeName": "amexio-theme-color4-Gradient"
+    } ,
+    {
+      "themeName": "amexio-theme-color5-Gradient"
+    } ,
+    {
+      "themeName": "amexio-theme-color6-Gradient"
+    } 
+   
+  ]
