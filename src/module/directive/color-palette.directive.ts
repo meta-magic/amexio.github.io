@@ -11,7 +11,7 @@ export class ColorPaletteDirective implements OnInit {
   @Input('amexio-color') themeColor: string;
   @Input('gradient') gradient = false;
   hostComponent: any;
-  constructor(el: ElementRef, private _viewContainerRef: ViewContainerRef,
+  constructor(private _viewContainerRef: ViewContainerRef,
   ) {
 
   }
