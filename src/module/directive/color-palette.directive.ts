@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Directive, ElementRef, Host, Input, OnInit, Optional, Self, ViewContainerRef } from '@angular/core';
 import { ColorPaletteConstants } from './color-palette-constant';
 
@@ -11,21 +12,61 @@ export class ColorPaletteDirective implements OnInit {
   @Input('amexio-color') themeColor: string;
   @Input('gradient') gradient = false;
   hostComponent: any;
-  constructor(private _viewContainerRef: ViewContainerRef,
+  themejson: any;
+  constructor(private _viewContainerRef: ViewContainerRef, private _httpClient: HttpClient,
+
   ) {
 
   }
   ngOnInit() {
+    this.themejson = [
+      {
+        themeName: 'amexio-theme-color1',
+      },
+      {
+        themeName: 'amexio-theme-color2',
+      },
+      {
+        themeName: 'amexio-theme-color3',
+      },
+      {
+        themeName: 'amexio-theme-color4',
+      },
+      {
+        themeName: 'amexio-theme-color5',
+      },
+      {
+        themeName: 'amexio-theme-color6',
+      },
+      {
+        themeName: 'amexio-theme-color1-Gradient',
+      },
+      {
+        themeName: 'amexio-theme-color2-Gradient',
+      },
+      {
+        themeName: 'amexio-theme-color3-Gradient',
+      },
+      {
+        themeName: 'amexio-theme-color4-Gradient',
+      },
+      {
+        themeName: 'amexio-theme-color5-Gradient',
+      },
+      {
+        themeName: 'amexio-theme-color6-Gradient',
+      },
+    ],
 
-    this.hostComponent = this._viewContainerRef['_data'].componentView.component;
+      this.hostComponent = this._viewContainerRef['_data'].componentView.component;
     if (this.colorPalette === 'classic' && !this.gradient) {
       this.hostComponent.setColorPalette(ColorPaletteConstants.amexioClassicTheme);
     } else if (this.colorPalette === 'classic' && this.gradient) {
       this.hostComponent.setColorPalette(ColorPaletteConstants.amexioClassicThemeGradient);
     }
-    if (this.colorPalette === 'random' && !this.gradient && this.hostComponent.amexioComponentId !== ColorPaletteConstants.navbar) {
+    if (this.colorPalette !== 'classic' && this.colorPalette !== 'vibrant' && this.colorPalette !== 'random' && !this.gradient) {
       this.hostComponent.setColorPalette(this.themeColor);
-    } else if (this.colorPalette === 'random' && this.gradient && this.hostComponent.amexioComponentId !== ColorPaletteConstants.navbar) {
+    } else if (this.colorPalette !== 'classic' && this.colorPalette !== 'vibrant' && this.colorPalette !== 'random' && this.gradient) {
       this.hostComponent.setColorPalette(this.themeColor + '-Gradient');
     }
 
@@ -33,6 +74,10 @@ export class ColorPaletteDirective implements OnInit {
       this.getBGColorStyles(this.hostComponent);
     } else if (this.colorPalette === 'vibrant' && this.gradient) {
       this.getGradientStyles(this.hostComponent);
+    }
+
+    if (this.colorPalette === 'random') {
+      this.randomThemeCall();
     }
 
   }
@@ -117,5 +162,10 @@ export class ColorPaletteDirective implements OnInit {
         break;
       }
     }
+  }
+
+  randomThemeCall() {
+    const randomIndex = Math.round(Math.random() * (this.themejson.length - 1));
+    this.hostComponent.setColorPalette(this.themejson[randomIndex]);
   }
 }
