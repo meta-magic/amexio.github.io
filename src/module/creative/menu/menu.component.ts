@@ -38,6 +38,7 @@ export class AmexioMenuCEComponent implements OnInit {
 
   @Input('animation-type') type: any;
 
+  @Input('menu-alignment') menuAlignment = 'left';
   animatedClass: any;
 
   ngOnInit() {
