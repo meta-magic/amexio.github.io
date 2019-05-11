@@ -54,6 +54,8 @@ description : The name is for determining the name of item.
 
   @Output('onToggle') onToggle = new EventEmitter<any>();
 
+  @Input('min-content') mincontent: boolean;
+
   hcPosition: string;
   vcPosition: string;
   cPosition: string;
