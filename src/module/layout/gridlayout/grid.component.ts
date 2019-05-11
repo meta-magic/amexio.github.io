@@ -137,10 +137,10 @@ export class AmexioGridComponent implements AfterContentInit, OnInit {
     rowConfig.forEach((name: string) => {
       const griditemcmp = this.itemCollectionMap[name];
       if (griditemcmp.showContent) {
-        colConfig.push(' 1fr ');
+        colConfig.push((griditemcmp.mincontent ? ' min-content ' : ' 1fr '));
       } else if (griditemcmp.name === prevConfig) {
         colConfig[colConfig.length - 1] = ' 1fr ';
-        colConfig.push(' 1fr ');
+        colConfig.push((griditemcmp.mincontent ? ' min-content ' : ' 1fr '));
       } else {
         colConfig.push(' auto ');
       }
