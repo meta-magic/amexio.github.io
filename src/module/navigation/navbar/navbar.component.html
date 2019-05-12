@@ -10,7 +10,7 @@
             <span *ngIf="(!(mobilemode && sidenav) && homepageType ==='1')" class="homepage-bar-collapse" (click)="onArrowClick($event)"><amexio-image [icon-class]=" 'fa fa-bars' "></amexio-image> &nbsp;</span>
 
             <img alt="title " style="cursor: pointer " (click)="onNavLogoClick.emit($event) " (load)="onImageLoad() " *ngIf="logo " [attr.src]="logo " class="navbar-logo ">
-            <a (click)="onNavTitleClick.emit($event) ">{{title}}</a>
+            <a (click)="onNavTitleClick.emit($event)" [ngStyle]="{'color': color}">{{title}}</a>
 
 
             <ng-container *ngIf="homepageType=='2' && !sidenav">
