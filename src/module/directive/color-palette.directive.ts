@@ -13,6 +13,7 @@ export class ColorPaletteDirective implements OnInit {
   @Input('gradient') gradient = false;
   hostComponent: any;
   themejson: any;
+  gradientThemeJson: any;
   constructor(private _viewContainerRef: ViewContainerRef, private _httpClient: HttpClient,
 
   ) {
@@ -37,26 +38,27 @@ export class ColorPaletteDirective implements OnInit {
       },
       {
         themeName: 'amexio-theme-color6',
-      },
-      {
-        themeName: 'amexio-theme-color1-Gradient',
-      },
-      {
-        themeName: 'amexio-theme-color2-Gradient',
-      },
-      {
-        themeName: 'amexio-theme-color3-Gradient',
-      },
-      {
-        themeName: 'amexio-theme-color4-Gradient',
-      },
-      {
-        themeName: 'amexio-theme-color5-Gradient',
-      },
-      {
-        themeName: 'amexio-theme-color6-Gradient',
-      },
-    ],
+      }],
+      this.gradientThemeJson = [
+        {
+          themeName: 'amexio-theme-color1-Gradient',
+        },
+        {
+          themeName: 'amexio-theme-color2-Gradient',
+        },
+        {
+          themeName: 'amexio-theme-color3-Gradient',
+        },
+        {
+          themeName: 'amexio-theme-color4-Gradient',
+        },
+        {
+          themeName: 'amexio-theme-color5-Gradient',
+        },
+        {
+          themeName: 'amexio-theme-color6-Gradient',
+        },
+      ],
 
       this.hostComponent = this._viewContainerRef['_data'].componentView.component;
     if (this.colorPalette === 'classic' && !this.gradient) {
@@ -65,9 +67,9 @@ export class ColorPaletteDirective implements OnInit {
       this.hostComponent.setColorPalette(ColorPaletteConstants.amexioClassicThemeGradient);
     }
     if (this.colorPalette !== 'classic' && this.colorPalette !== 'vibrant' && this.colorPalette !== 'random' && !this.gradient) {
-      this.hostComponent.setColorPalette(this.themeColor);
+      this.hostComponent.setColorPalette(this.colorPalette);
     } else if (this.colorPalette !== 'classic' && this.colorPalette !== 'vibrant' && this.colorPalette !== 'random' && this.gradient) {
-      this.hostComponent.setColorPalette(this.themeColor + '-Gradient');
+      this.hostComponent.setColorPalette(this.colorPalette + '-Gradient');
     }
 
     if (this.colorPalette === 'vibrant' && !this.gradient) {
@@ -165,7 +167,12 @@ export class ColorPaletteDirective implements OnInit {
   }
 
   randomThemeCall() {
-    const randomIndex = Math.round(Math.random() * (this.themejson.length - 1));
-    this.hostComponent.setColorPalette(this.themejson[randomIndex]);
+    if (!this.gradient) {
+      const randomIndex = Math.round(Math.random() * (this.themejson.length - 1));
+      this.hostComponent.setColorPalette(this.themejson[randomIndex].themeName);
+    } else {
+      const randomIndex = Math.round(Math.random() * (this.themejson.length - 1));
+      this.hostComponent.setColorPalette(this.gradientThemeJson[randomIndex].themeName);
+    }
   }
 }

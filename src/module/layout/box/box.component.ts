@@ -109,7 +109,7 @@ export class AmexioBoxComponent implements OnInit {
   */
   @Input('closable') closable = false;
   themeCss: string;
-  colorPaletteFlag = false;
+  amexioComponentId = 'amexio-box';
   constructor() { }
   close = true;
   ngOnInit() {
@@ -128,7 +128,6 @@ export class AmexioBoxComponent implements OnInit {
   // Theme Apply
   setColorPalette(themeClass: any) {
     if (themeClass) {
-      this.colorPaletteFlag = true;
       this.themeCss = themeClass;
     }
   }

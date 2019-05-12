@@ -115,7 +115,7 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
   ngAfterContentInit() {
     if (this.AmexioCardCEHeaderQueryList) {
       this.amexioCardHeaderList = this.AmexioCardCEHeaderQueryList.toArray();
-      if (this.amexioCardHeaderList && this.amexioCardHeaderList.length > 1) {
+      if (this.amexioCardHeaderList && this.amexioCardHeaderList.length > 0) {
         this.amexioCardHeaderList.forEach((element: any) => {
           element.amexioComponentId = this.amexioComponentId;
         });
