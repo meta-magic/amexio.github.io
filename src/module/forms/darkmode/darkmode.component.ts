@@ -19,7 +19,7 @@ export class DarkmodeComponent implements OnInit {
         this.themesdata = [
             {
                 varName: '--appBackground',
-                darkValue: '#121212',
+                darkValue: '#2d2d2d',
                 themeValue: '#f5f5f5',
             },
             {
