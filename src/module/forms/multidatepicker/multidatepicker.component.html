@@ -2,7 +2,7 @@
 
 
     <span class="mainspan">
-
+  
         <div (click)="fromPicker(rootDiv, $event)" style="background-color: white; border-right-style: outset;" class="fromdiv">
             <span class="lbl_text appendButton10 latoBold">
                 {{fromlabel}}
@@ -13,7 +13,7 @@
                     {{fromdate | date :'dd'}}
                 </span>
                 <span class="">
-                    {{fromdate | date: 'MMM'}} '
+                    {{fromdate | date: 'MMM'}} <ng-container *ngIf = "fromdate !== null"> ' </ng-container>
                 </span>
                 <span class="">
                     {{fromdate | date: 'yy'}}
@@ -27,10 +27,10 @@
                     <!-- </code> -->
                 </span>
             </span>
-
+  
         </div>
-
-        <div (click)="toPicker(rootDiv, $event)" style="background-color: white" class="fromdiv pointer">
+  
+        <div [ngClass] = "{'disabled':(todate == null)}" (click)="toPicker(rootDiv, $event)" style="background-color: white" class="fromdiv pointer">
             <span class="lbl_text appendButton10 latoBold">
                 {{tolabel}}
             </span>
@@ -40,7 +40,7 @@
                     {{todate | date :'dd'}}
                 </span>
                 <span class="">
-                    {{todate | date: 'MMM'}} '
+                    {{todate | date: 'MMM'}} <ng-container *ngIf = "todate !== null"> ' </ng-container>
                 </span>
                 <span class="">
                     {{todate | date: 'yy'}}
@@ -55,7 +55,7 @@
                 </span>
             </span>
         </div>
-
+  
     </span>
     <div [ngStyle]="dropdownstyle" [style.width]="totalwidth+'px'" *ngIf="datepicker" class="datePickerContainer datetabs">
         <div class="flightCalOverlay">
@@ -75,7 +75,7 @@
                                 </p>
                             </div>
                             <div class="font16 blackText lactoBlack dashed appendRight30"> - </div>
-                            <div class="dateFiled active" [ngClass]="{'activecolordatetab':totab}" (click)="toPicker(rootDiv, $event)">
+                            <div class="dateFiled active" [ngClass]="{'activecolordatetab':totab, 'disabled': (todate == null)}" (click)="toPicker(rootDiv, $event)">
                                 <p class="font16 blackText latoBold appendRight30">
                                     <span class="widgetSprite icCalendar appendRight10">
                                         <amexio-c-icon key="datepicker_calendar"></amexio-c-icon>
@@ -88,7 +88,7 @@
                             </div>
                         </div>
                     </div>
-
+  
                 </div>
             </div>
         </div>
@@ -96,14 +96,14 @@
         <!-- [@changeState]="dropdownstyle.visibility" [ngStyle]="dropdownstyle"  -->
         <div style="position: absolute; width:100%; padding-right:5px; overflow-y: scroll">
             <div style="display: inline-flex; flex-flow: wrap;">
-
+  
                 <ng-container *ngFor="let itemdaysArray of  completeDaysArray; index as i">
                     <!-- {{itterablemontharray | json}} -->
                     <!-- <ng-container *ngIf=" item % 3 == 0 " ng> -->
-
+  
                     <span [ngStyle]="{'padding-left': ((i+1) > count) ? '28px':'0px'}">
-
-
+  
+  
                         <span style="position: relative;" [ngClass]="{'datetimepicker':!inlineDatepicker}">
                             <!-- datepicker starts -->
                             <span aria-label="datepicker window opened ">
@@ -118,7 +118,7 @@
                                                 <!-- left arrow icon -->
                                                 <i class="fa fa-arrow-left arrowiconshadow" [ngStyle]="{'opacity': backarrowflag ? '0.2' : ''}" style="float:left" aria-hidden="true"></i>
                                             </span>
-
+  
                                             <span (click)="updateMonthList('plus',$event)" (keyup.enter)="updateMonthList('plus',$event)" class="pointer" *ngIf="itemdaysArray.nextarrow"
                                                 [ngStyle]="{'cursor': forwardarrowflag ? 'not-allowed':'pointer'}" tabindex="0"
                                                 role="button" aria-label="Next Month">
@@ -129,25 +129,25 @@
                                                 <!-- {{itemdaysArray.month}} -->
                                                 {{itemdaysArray.date | date:'MMMM'}} {{itemdaysArray.date | date:'y'}}
                                             </span>
-
+  
                                         </li>
                                     </ul>
                                 </div>
-
-
+  
+  
                                 <div *ngIf="!drop">
                                     <ul class="weekdays" [ngStyle]="{'display': datepicker ? 'block' : 'none'}">
                                         <li *ngFor="let dayTitle of daysTitle">{{dayTitle.text}}</li>
                                     </ul>
-
+  
                                     <ul id="{{daystabindex}}" class="days" [ngStyle]="{'display': datepicker ? 'block' : 'none'}">
-
+  
                                         <ng-container *ngFor="let dayArray of itemdaysArray.montharray">
                                             <li [ngStyle]="{'cursor': day.isDisabled ? 'not-allowed' : 'pointer'}" *ngFor="let day of dayArray" [ngClass]="{'date1':validateDays(day.date) , 'date1':day.isDisabled , 'notclickable':isDisabled}">
                                                 <span [attr.tabindex]="(day.selected ? 1: -1)" id="{{day.id}}" (keyup.arrowleft)="arrowleft(day,daysArray,$event)" (keyup.arrowright)="arrowright(day,daysArray,$event)"
                                                     (keyup.arrowdown)="arrowdown(day,daysArray,$event)" (keyup.arrowup)="arrowup(day,daysArray,$event)"
-                                                    (keyup.enter)="onDateClick(day, $event)" attr.aria-label="{{day.fulldate}}"
-                                                    (click)="onDateClick(day, $event)" class="day" [ngClass]="{'active': (day.from || day.to) , 'datesrange': day.range, 'currentMonth':day.isCurrentMonth, 'notCurrentMonth':!day.isCurrentMonth,'invaliddays':validateDays(day.date), 'disabled':day.isDisabled}">
+                                                    (keyup.enter)="onDateClick(day, $event, rootDiv)" attr.aria-label="{{day.fulldate}}"
+                                                    (click)="onDateClick(day, $event, rootDiv)" class="day" [ngClass]="{'active': (day.from || day.to) , 'datesrange': day.range, 'currentMonth':day.isCurrentMonth, 'notCurrentMonth':!day.isCurrentMonth,'invaliddays':validateDays(day.date), 'disabled':day.isDisabled}">
                                                     {{ day.date | date:'d' }}
                                                 </span>
                                             </li>
@@ -156,15 +156,15 @@
                                 </div>
                             </span>
                             <!--datepicker ends  -->
-
+  
                         </span>
-
+  
                     </span>
                     <!-- </ng-container> -->
                 </ng-container>
             </div>
         </div>
     </div>
-
-
-</div>
+  
+  
+  </div>

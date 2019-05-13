@@ -156,8 +156,11 @@ export class AmexioMultipleDatePickerComponent extends ListBaseDatepickerCompone
     this.todate.setDate(this.fromdate.getDate() + 7);
 
     // set from to on completedayarray
-    this.setfromtooncompletedayarray();
+    // this.setfromtooncompletedayarray();
     this.calculateMonthBlocks();
+
+    this.fromdate = null;
+    this.todate = null;
   }
 
   setfromtooncompletedayarray() {
@@ -181,6 +184,7 @@ export class AmexioMultipleDatePickerComponent extends ListBaseDatepickerCompone
   }
 
   fromPicker(elem: any, event: any) {
+    this.resetDisabledaysBeforeFrom();
     this.calculateMonthBlocks();
     this.fromtab = true;
     this.totab = false;
@@ -197,7 +201,7 @@ export class AmexioMultipleDatePickerComponent extends ListBaseDatepickerCompone
   }
 
   toPicker(elem: any, event: any) {
-
+    this.setDisableDaysBeforeFrom();
     this.fromtab = false;
     this.totab = true;
 
@@ -312,38 +316,94 @@ export class AmexioMultipleDatePickerComponent extends ListBaseDatepickerCompone
     this.validateDaysForMinMax();
   }
 
-  onDateClick(dateObj: any, event: any) {
+  setDisableDaysBeforeFrom() {
+    if (this.fromdate) {
+      this.completeDaysArray.forEach((daysarray: any) => {
+        daysarray.montharray.forEach((dayobject: any) => {
+          dayobject.forEach((singleday: any) => {
+            if (singleday.date < this.fromdate) {
+              singleday.isDisabled = true;
+            }
+          });
+        });
+      });
+    }
+  }
+
+  resetDisabledaysBeforeFrom() {
+    if (this.fromdate) {
+      this.completeDaysArray.forEach((daysarray: any) => {
+        daysarray.montharray.forEach((dayobject: any) => {
+          dayobject.forEach((singleday: any) => {
+            if (singleday.date < this.fromdate) {
+              singleday.isDisabled = false;
+            }
+          });
+        });
+      });
+    }
+    this.disableddays();
+  }
+
+  onDateClick(dateObj: any, event: any, elem: any) {
     // refactored code
     this.setVisibility(dateObj);
-
     if (dateObj.isDisabled === false) {
-
       if (this.fromcardselected) {
-        //  dateObj will be new from
-        if (this.fromdate && this.todate && (this.todate.getDate() !== this.fromdate.getDate() + 1)) {
-          // refactor ondateclick()
-          this.fromdateRefactored(dateObj);
-        } else if (this.fromdate && (this.todate.getDate() === this.fromdate.getDate() + 1)) {
-          // update only todate
-          this.clearTo();
-          this.assignTo(dateObj);
-          this.todate = dateObj.date;
-        }
+        this.refactoredOnDateClick(dateObj, event, elem);
+        this.onfromCardSelected(dateObj, event, elem);
       }
 
-      if (this.tocardselected && this.fromdate) {
-        this.clearTo();
-        this.assignTo(dateObj);
-        this.todate = dateObj.date;
+      if (this.tocardselected) {
+        this.onToCardSelected(dateObj, event, elem);
       }
-
       this.change.emit(dateObj.date);
-
     } else {
       event.stopPropagation();
     }
     this.resetRange();
     this.setRange();
+  }
+
+  refactoredOnDateClick(dateObj: any, event: any, elem: any) {
+    if ((this.fromdate == null) && (this.todate == null)) {
+      this.clearFrom();
+      this.assignFrom(dateObj);
+      this.fromdate = dateObj.date;
+      this.toPicker(elem, event);
+      this.clearTo();
+      this.todate = null;
+      this.setDisableDaysBeforeFrom();
+    } else if (this.fromdate && (this.todate == null)) {
+      this.clearFrom();
+      this.assignFrom(dateObj);
+      this.fromdate = dateObj.date;
+      this.toPicker(elem, event);
+      this.setDisableDaysBeforeFrom();
+    }
+  }
+
+  onfromCardSelected(dateObj: any, event: any, elem: any) {
+    if (this.fromdate && this.todate) {
+      this.clearFrom();
+      this.assignFrom(dateObj);
+      this.fromdate = dateObj.date;
+
+      if (dateObj.date > this.todate) {
+        this.clearTo();
+        this.todate = null;
+        this.toPicker(elem, event);
+        this.setDisableDaysBeforeFrom();
+      }
+    }
+  }
+
+  onToCardSelected(dateObj: any, event: any, elem: any) {
+    if (this.fromdate && (dateObj.date > this.fromdate)) {
+      this.clearTo();
+      this.assignTo(dateObj);
+      this.todate = dateObj.date;
+    }
   }
 
   setVisibility(dateObj: any) {
@@ -540,6 +600,9 @@ export class AmexioMultipleDatePickerComponent extends ListBaseDatepickerCompone
     this.validateMinMaxDate();
     this.disableddays();
     this.validateDaysForMinMax();
+    // call set range
+    this.resetRange();
+    this.setRange();
   }
 
   incrementMonthList(event: any) {
