@@ -7308,7 +7308,7 @@ fieldset {
   color: var(--componentHoverFontColor); }
 
 .collapsible-fieldset {
-  overflow: hidden; }
+  overflow: inherit; }
 
 .collapsible-fieldset.active {
   height: auto; }
@@ -7814,6 +7814,11 @@ fieldset {
   /* Black w/ opacity */ }
 
 .modal-window-header {
+  background: var(--componentHeaderBGColor);
+  font-size: 20px;
+  color: var(--componentHeaderFontColor); }
+
+.modal-card-header {
   font-size: 20px;
   color: var(--componentHeaderFontColor); }
 

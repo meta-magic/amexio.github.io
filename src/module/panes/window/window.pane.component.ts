@@ -305,6 +305,7 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy, 
     }
     if (this.amexioHeader && this.header) {
       this.amexioHeader.toArray()[0].closeable = this.closable;
+      this.amexioHeader.toArray()[0].aComponent1 = 'window';
       if (this.maximize) {
         this.amexioHeader.toArray()[0].setMaximizeData(this.maximize, this.isFullWindow);
         this.amexioHeader.toArray()[0].maximizeBehaiour.subscribe((max: any) => {

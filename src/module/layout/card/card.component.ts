@@ -174,6 +174,7 @@ description : Context Menu provides the list of menus on right click.
     // FOR HEADER PADING
     this.headerComponentList = this.amexioHeader.toArray();
     this.headerComponentList.forEach((item: AmexioHeaderComponent, currentIndex) => {
+      item.aComponent = 'card';
       if (item.padding) {
         this.headerPadding = item.padding;
       }

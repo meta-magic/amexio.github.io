@@ -16,8 +16,8 @@
  * Created by pratik on 18/12/17.
  */
 
-import {Component, HostBinding, Input, OnInit} from '@angular/core';
-import {BehaviorSubject} from 'rxjs/index';
+import { Component, HostBinding, Input, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs/index';
 
 @Component({
   selector: 'amexio-header', template: `
@@ -33,17 +33,18 @@ import {BehaviorSubject} from 'rxjs/index';
   </span>
   `,
   styles: [
-  `
+    `
   .cursor-style {
   cursor:pointer;
   }
   `,
   ],
-  })
+})
 
 export class AmexioHeaderComponent implements OnInit {
 
-  @HostBinding('attr.class') className = 'modal-window-header';
+  @HostBinding('class.modal-card-header') get c1() { return this.aComponent; }
+  @HostBinding('class.modal-window-header') get c2() { return this.aComponent1; }
 
   @HostBinding('style.justify-content') jstyfy = 'space-between';
 
@@ -61,6 +62,9 @@ export class AmexioHeaderComponent implements OnInit {
   closeableBehaiour = new BehaviorSubject(false);
 
   maximizeBehaiour = new BehaviorSubject(false);
+
+  aComponent: string;
+  aComponent1: string;
 
   constructor() {
   }

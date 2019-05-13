@@ -73,9 +73,13 @@ export class ColorPaletteDirective implements OnInit {
     }
 
     if (this.colorPalette === 'vibrant' && !this.gradient) {
-      this.getBGColorStyles(this.hostComponent);
+      setTimeout(() => {
+        this.getBGColorStyles(this.hostComponent);
+      }, 1000);
     } else if (this.colorPalette === 'vibrant' && this.gradient) {
-      this.getGradientStyles(this.hostComponent);
+      setTimeout(() => {
+        this.getGradientStyles(this.hostComponent);
+      }, 1000);
     }
 
     if (this.colorPalette === 'random') {

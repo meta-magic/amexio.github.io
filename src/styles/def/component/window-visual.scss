@@ -4,6 +4,12 @@
 }
 
 .modal-window-header {
+    background: $modalHeaderBGColor;
+    font-size: $modalHeaderFontSize;
+    color: $modalHeaderColor;
+}
+
+.modal-card-header {
     // background: $modalHeaderBGColor;
     font-size: $modalHeaderFontSize;
     color: $modalHeaderColor;
