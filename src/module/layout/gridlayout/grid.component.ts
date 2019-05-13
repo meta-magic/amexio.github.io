@@ -167,8 +167,6 @@ export class AmexioGridComponent implements AfterContentInit, OnInit {
       if (layoutData.tab.length === 0) {
         this.cssGenerationCommonMethod(layoutData, this.tabletWidth, GridConstants.Desktop);
       } else {
-        this.cssGenerationCommonMethod(layoutData, this.tabletWidth, GridConstants.Desktop);
-
         this.cssGenerationCommonMethod(layoutData, this.tabletWidth, GridConstants.Tablet);
       }
       if (layoutData.mobile.length === 0 && layoutData.tab.length === 0) {

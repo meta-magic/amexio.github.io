@@ -4220,7 +4220,7 @@ input:checked + .largeType2ToggleSlider:before {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   text-transform: uppercase;
   cursor: pointer;
-  z-index: 900; }
+  z-index: 100; }
 
 .amexio-badge-color {
   background: var(--componentBGColor);
@@ -7850,7 +7850,7 @@ fieldset {
   height: 100%;
   width: 100%;
   position: fixed;
-  z-index: 3;
+  z-index: 300;
   display: flex;
   flex-direction: row;
   justify-content: center;
