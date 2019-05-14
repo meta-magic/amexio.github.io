@@ -24,7 +24,7 @@
 
             </span>
 
-            <span *ngIf="mobilemode" class="float-right mobilebar" (click)="toggleDrawerPanel($event)">
+            <span *ngIf="mobilemode && navItemPresent" class="float-right mobilebar" (click)="toggleDrawerPanel($event)">
               <em *ngIf="!toggle" class="fa fa-caret-down fa-2x"></em>
               <em *ngIf="toggle" class="fa fa-caret-up fa-2x"></em>
           </span>

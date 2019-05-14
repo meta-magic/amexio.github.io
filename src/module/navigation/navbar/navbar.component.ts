@@ -119,6 +119,7 @@ amexioComponentId = 'amexio-navbar';
   lhsWidth = '5%';
   isExpand = false;
   isPhone = false;
+  navItemPresent = false;
   top: any;
   constructor(public matchMediaService: DeviceQueryService) {
     if (this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone()) {
@@ -141,9 +142,13 @@ amexioComponentId = 'amexio-navbar';
 
   ngAfterContentInit() {
     this.navItemComponents = this.navitems.toArray();
-    this.navItemComponents.forEach((element: any) => {
-    element.itemcolor = this.color;
-    });
+    if (this.navItemComponents && this.navItemComponents.length > 0) {
+      this.navItemPresent = true;
+      this.navItemComponents.forEach((element: any) => {
+        element.itemcolor = this.color;
+        });
+    }
+
   }
 
   onImageLoad() {
