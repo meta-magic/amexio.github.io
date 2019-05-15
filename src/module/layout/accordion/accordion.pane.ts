@@ -16,7 +16,12 @@
 */
 
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer, ViewChild } from '@angular/core';
+import {
+  AfterContentInit, Component, ContentChildren, ElementRef,
+  EventEmitter, Input, OnInit, Output, QueryList, Renderer, ViewChild,
+} from '@angular/core';
+import { AmexioAccordionHeaderComponent } from './accordion.header.component';
+
 @Component({
   selector: 'amexio-accordion-tab',
   templateUrl: './accordion.pane.html',
@@ -35,7 +40,7 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Outp
     ]),
   ],
 })
-export class AmexioAccordionTabComponent implements OnInit {
+export class AmexioAccordionTabComponent implements OnInit, AfterContentInit {
   /*
   Properties
   name : header
@@ -101,7 +106,10 @@ export class AmexioAccordionTabComponent implements OnInit {
   hover: boolean;
   themeCss: any;
   amexioComponentId = 'amexio-accordion';
-
+  accordionHeaderData: any;
+  headerPresent: boolean;
+  gradientFlag: boolean;
+  @ContentChildren(AmexioAccordionHeaderComponent) amexioAccHeader: QueryList<AmexioAccordionHeaderComponent>;
   constructor() {
     this.currentstate = 'hidden';
   }
@@ -109,8 +117,18 @@ export class AmexioAccordionTabComponent implements OnInit {
   ngOnInit() {
     this.componentId = '' + Math.floor(Math.random() * 1000 + 999);
     this.emittedEvent.emit({ keydown: true, current: this });
+  }
+
+  ngAfterContentInit() {
+    setTimeout(() => {
+      this.accordionHeaderData = this.amexioAccHeader.toArray();
+      if (this.accordionHeaderData && this.accordionHeaderData.length > 0) {
+        this.headerPresent = true;
+      }
+    }, 500);
 
   }
+
   emitEvent() {
     if (!this.disabled) {
       this.active = !this.active;
@@ -136,5 +154,9 @@ export class AmexioAccordionTabComponent implements OnInit {
   // Theme Apply
   setColorPalette(themeClass: any) {
     this.themeCss = themeClass;
+  }
+
+  changeHeaderColor() {
+    this.gradientFlag = true;
   }
 }

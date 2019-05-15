@@ -11,19 +11,16 @@
             role="heading"
             [attr.aria-expanded]="expanded"
             (keyup.enter)="onTabClick(btn1)"
-            (keyup.space)="onTabClick(btn1)"
-
-            
-            >
-                <amexio-toolbar-item position-left  attr.aria-label="{{title}}">
+            (keyup.space)="onTabClick(btn1)">
+                <amexio-toolbar-item [ngStyle]="{'color': gradientFlag ? 'white':''}" position-left  attr.aria-label="{{title}}">
                     <amexio-label  attr.aria-labelledby="{{componentId}}" size="small">
                         {{title}}
                     </amexio-label>
                 </amexio-toolbar-item>
-                <amexio-toolbar-item position-right>
+                <amexio-toolbar-item [ngStyle]="{'color': gradientFlag ? 'black':''}" position-right>
                     <ng-content select="amexio-panel-header"></ng-content>
                 </amexio-toolbar-item>
-                <amexio-toolbar-item style="margin:auto" position-right>
+                <amexio-toolbar-item [ngStyle]="{'color': gradientFlag ? 'black':''}" style="margin:auto" position-right>
                     <i [class]="iconclassKey" aria-hidden="true" #btn1></i>
                 </amexio-toolbar-item>
             </amexio-toolbar>

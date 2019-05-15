@@ -72,18 +72,16 @@ export class ColorPaletteDirective implements OnInit {
       this.hostComponent.setColorPalette(this.colorPalette + '-Gradient');
     }
 
-    if (this.colorPalette === 'vibrant' && !this.gradient) {
-      setTimeout(() => {
-        this.getBGColorStyles(this.hostComponent);
-      }, 1000);
-    } else if (this.colorPalette === 'vibrant' && this.gradient) {
-      setTimeout(() => {
-        this.getGradientStyles(this.hostComponent);
-      }, 1000);
+    if (this.colorPalette === 'vibrant') {
+      this.vibrantThemeCall();
     }
 
     if (this.colorPalette === 'random') {
       this.randomThemeCall();
+    }
+
+    if ((ColorPaletteConstants.accordion || ColorPaletteConstants.panel) && this.gradient) {
+      this.hostComponent.changeHeaderColor();
     }
 
   }
@@ -177,6 +175,18 @@ export class ColorPaletteDirective implements OnInit {
     } else {
       const randomIndex = Math.round(Math.random() * (this.themejson.length - 1));
       this.hostComponent.setColorPalette(this.gradientThemeJson[randomIndex].themeName);
+    }
+  }
+
+  vibrantThemeCall() {
+    if (!this.gradient) {
+      setTimeout(() => {
+        this.getBGColorStyles(this.hostComponent);
+      }, 1000);
+    } else if (this.gradient) {
+      setTimeout(() => {
+        this.getGradientStyles(this.hostComponent);
+      }, 1000);
     }
   }
 }

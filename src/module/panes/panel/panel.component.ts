@@ -171,6 +171,8 @@ description : Fires the on accordion pane click event.
 
   flag: boolean;
 
+  gradientFlag: boolean;
+
   posixUp: boolean;
 
   rightClickNodeData: any;
@@ -291,6 +293,10 @@ description : Fires the on accordion pane click event.
   // Theme Apply
   setColorPalette(themeClass: any) {
     this.themeCss = themeClass;
+  }
+
+  changeHeaderColor() {
+    this.gradientFlag = true;
   }
 
 }
