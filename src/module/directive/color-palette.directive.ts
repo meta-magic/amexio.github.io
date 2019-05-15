@@ -80,7 +80,8 @@ export class ColorPaletteDirective implements OnInit {
       this.randomThemeCall();
     }
 
-    if ((ColorPaletteConstants.accordion || ColorPaletteConstants.panel) && this.gradient) {
+    if ((this.hostComponent.amexioComponentId === ColorPaletteConstants.accordion ||
+      this.hostComponent.amexioComponentId === ColorPaletteConstants.panel) && this.gradient) {
       this.hostComponent.changeHeaderColor();
     }
 
