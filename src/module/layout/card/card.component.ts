@@ -116,6 +116,8 @@ description : Context Menu provides the list of menus on right click.
 */
   @Input('context-menu') contextmenu: any[];
 
+  @Input('style-type') styletype: any;
+
   @Input() parentRef: any;
 
   @Output() nodeRightClick: any = new EventEmitter<any>();
@@ -148,6 +150,9 @@ description : Context Menu provides the list of menus on right click.
   amexioComponentId = 'amexio-card';
 
   themeCss: any;
+  polarideStyleMap: Map<any, string>;
+
+  tempPolaride: any;
 
   @ContentChildren(AmexioHeaderComponent) amexioHeader: QueryList<AmexioHeaderComponent>;
   headerComponentList: AmexioHeaderComponent[];
@@ -163,6 +168,17 @@ description : Context Menu provides the list of menus on right click.
   }
   ngOnInit() {
     super.ngOnInit();
+    this.polarideStyleMap = new Map();
+    this.polarideStyleMap.set('tilted-minus-2-degree', 'card-container-pol-styl');
+    this.polarideStyleMap.set('tilted-2-degree', 'card-container-pol-styl2');
+    this.polarideStyleMap.set('tilted-4-degree', 'card-container-pol-styl3');
+    this.polarideStyleMap.set('tilted-minus-4-degree', 'card-container-pol-styl4');
+    this.polarideStyleMap.forEach((ele: any, key: any) => {
+      if (key === this.styletype) {
+         this.tempPolaride = ele;
+      }
+    });
+    return 'this.tempPolaide';
   }
   ngAfterViewInit() {
     super.ngAfterViewInit();

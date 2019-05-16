@@ -1,4 +1,4 @@
-<div style="height:100%;" [ngStyle]="{'background': bgimage ? 'url(' + bgimage + ') center/cover no-repeat' : null}" [ngClass]="cclass">
+<div style="height:100%;"  class="{{tempPolarideCE}}" [ngStyle]="{'background': bgimage ? 'url(' + bgimage + ') center/cover no-repeat' : null}" [ngClass]="cclass">
     <div class="card-container-ce" [ngStyle]="{'justify-content': (align === 'start' || align === 'end') ? 'flex-'+align:align , 'color':color, 'background': background}">
         <ng-content></ng-content>
         <div>

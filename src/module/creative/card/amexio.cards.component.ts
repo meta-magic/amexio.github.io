@@ -41,6 +41,8 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
 
   @Input('style-type') styleType: string;
 
+  @Input('transform-type') transformType: any;
+
   themeCss: any;
 
   amexioComponentId = 'amexio-card';
@@ -48,6 +50,10 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
   cclass: string;
 
   windowFlag = false;
+
+  polarideStyleMapCE: Map<any, string>;
+
+  tempPolarideCE: any;
 
   @ContentChildren(AmexioCardCEHeaderComponent) AmexioCardCEHeaderQueryList: QueryList<AmexioCardCEHeaderComponent>;
 
@@ -74,6 +80,17 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
     }
     this.setWiderAndNarrower();
     super.ngOnInit();
+    this.polarideStyleMapCE = new Map();
+    this.polarideStyleMapCE.set('tilted-minus-2-degree', 'card-container-pol-styl');
+    this.polarideStyleMapCE.set('tilted-2-degree', 'card-container-pol-styl2');
+    this.polarideStyleMapCE.set('tilted-4-degree', 'card-container-pol-styl3');
+    this.polarideStyleMapCE.set('tilted-minus-4-degree', 'card-container-pol-styl4');
+    this.polarideStyleMapCE.forEach((ele: any, key: any) => {
+      if (key === this.transformType) {
+        this.tempPolarideCE = ele;
+      }
+    });
+    return 'this.tempPolaideCE';
 
   }
   ngAfterViewInit() {
