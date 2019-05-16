@@ -6320,7 +6320,7 @@ amexio-homepage-centerpanel .homepage-centerpanel {
   display: flex;
   justify-content: space-between;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
-  z-index: 2; }
+  z-index: 500; }
 
 .transparentNav {
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.6) !important;
@@ -7128,6 +7128,38 @@ amexio-accordion > amexio-accordion-tab {
 .card-footer {
   background-color: var(--componentBGColor);
   color: var(--componentFooterFontColor); }
+
+.card-container-pol-styl {
+  transform: rotate(2deg);
+  margin: 2em; }
+
+.card-container-pol-styl2 {
+  transform: rotate(-2deg);
+  margin: 2em; }
+
+.card-container-pol-styl3 {
+  transform: rotate(4deg);
+  margin: 2em; }
+
+.card-container-pol-styl4 {
+  transform: rotate(-4deg);
+  margin: 2em; }
+
+.card-container-pol-styl:hover {
+  transform: scale(1.2);
+  z-index: 10; }
+
+.card-container-pol-styl2:hover {
+  transform: scale(1.2);
+  z-index: 10; }
+
+.card-container-pol-styl3:hover {
+  transform: scale(1.2);
+  z-index: 10; }
+
+.card-container-pol-styl4:hover {
+  transform: scale(1.2);
+  z-index: 10; }
 
 /** cards - Structure CSS **/
 .card-container {

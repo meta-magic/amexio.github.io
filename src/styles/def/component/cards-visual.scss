@@ -35,3 +35,36 @@
   background-color: $cardFooterBGColor;
   color: $cardFooterColor;
 }
+.card-container-pol-styl{
+  transform: rotate(2deg);
+  margin: 2em;
+}
+.card-container-pol-styl2{
+  transform: rotate(-2deg);
+  margin:2em
+}
+.card-container-pol-styl3{
+  transform: rotate(4deg);
+  margin: 2em;
+}
+.card-container-pol-styl4{
+  transform: rotate(-4deg);
+  margin: 2em;
+}
+
+.card-container-pol-styl:hover{
+  transform: scale(1.2);
+  z-index: 10;
+}
+.card-container-pol-styl2:hover{
+  transform: scale(1.2);
+  z-index: 10;
+}
+.card-container-pol-styl3:hover{
+  transform: scale(1.2);
+  z-index: 10;
+}
+.card-container-pol-styl4:hover{
+  transform: scale(1.2);
+  z-index: 10;
+}
