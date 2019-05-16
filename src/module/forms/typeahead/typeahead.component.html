@@ -13,6 +13,7 @@
                   id="{{componentId}}"
                   aria-autocomplete="list"	
                   role="combobox"
+                  [(ngModel)]="value"
                   [attr.aria-expanded]="ariaListExpand"
                   type="text" class="input-control"
                   [ngClass]="{'input-control-error': ((model.dirty || model.touched || (value && value.length>0)) && !model.valid),
