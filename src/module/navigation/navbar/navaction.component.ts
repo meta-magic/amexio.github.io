@@ -26,9 +26,12 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
     <button *ngIf="(type=='button')" class="top-nav-button" (click)="onClick($event)">
     <i *ngIf="icon" style="padding-right:10px" [ngClass]="icon"></i>{{title}}</button>
-    <div  *ngIf="(type=='toggle')" style="width: 60px;
+    <div  *ngIf="(type=='slider')" style="width: 60px;
     padding-bottom: 20px;" class="top-nav-button">
     <amexio-darkmode [type]="2"  [mode]="'sepia'" [size]="'small'"></amexio-darkmode>
+    </div>
+    <div  *ngIf="(type=='toggle')" class="top-nav-button">
+    <amexio-darkmode [type]="2"  [mode]="'day-night'" [size]="'small'"></amexio-darkmode>
     </div>
     `,
 })
