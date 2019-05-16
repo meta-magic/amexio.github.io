@@ -2441,14 +2441,14 @@ input:checked + .largeType2ToggleSlider:before {
 .ui-slider-handle2 {
   position: absolute;
   z-index: 0;
-  width: 42px !important;
-  height: 42px !important;
+  width: 29px !important;
+  height: 29px !important;
   cursor: default;
   outline: none;
   border-radius: 3em !important;
   border: none;
   background: var(--componentHeaderBGColor);
-  bottom: -15px;
+  bottom: -10px;
   margin-left: -.9em; }
 
 .ui-slider-vertical2 {
@@ -8818,10 +8818,23 @@ amexio-layout-columns amexio-layout-item {
 *****************************************************************************/
 /** creative card - var CSS **/
 /** creative card - Visual CSS **/
-.content {
+.textLeftPosition {
+  width: max-content;
+  padding-left: 3%;
+  float: left;
+  position: relative; }
+
+.textRightPosition {
+  width: max-content;
+  padding-right: 3%;
+  float: right;
+  position: relative; }
+
+.textCenterPosition {
+  text-align: center;
   position: relative;
-  width: 580px;
-  margin: 0 auto; }
+  padding-left: 30%;
+  width: max-content; }
 
 .bmenu {
   padding: 0px;

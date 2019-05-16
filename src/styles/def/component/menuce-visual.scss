@@ -1,8 +1,28 @@
-.content{
+// .content{
+//     position: relative;
+//     width: 580px;
+//     margin: 0 auto;
+// }
+.textLeftPosition {
+    width:max-content;
+    padding-left: 3%;
+    float: left;
     position: relative;
-    width: 580px;
-    margin: 0 auto;
-}
+    }
+    
+    .textRightPosition {
+    width:max-content;
+    padding-right: 3%;
+    float: right;
+    position: relative;
+    }
+    
+    .textCenterPosition {
+    text-align: center;
+    position: relative;
+    padding-left: 30%;
+    width: max-content;
+    }
 
 .bmenu {
     padding: 0px;

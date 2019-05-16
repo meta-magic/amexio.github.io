@@ -155,14 +155,14 @@
     .ui-slider-handle2 {
       position: absolute;
        z-index: 0;
-       width: 42px !important;
-       height: 42px !important;
+       width: 29px !important;
+       height: 29px !important;
        cursor: default;
        outline: none;
        border-radius: 3em !important;
        border: none;
        background: $rangeSliderBGColor;
-       bottom:-15px;
+       bottom:-10px;
        margin-left: -.9em;
      
     }
