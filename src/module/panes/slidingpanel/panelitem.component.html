@@ -1,0 +1,30 @@
+<div [@slide]="!showrow ? 'right' : ''">
+
+    <ng-container *ngIf="showrow">
+      <div style="cursor: pointer" (click)=" onPanelClick($event)">
+        <div class="panelitemrow" >
+          <span style="padding-right: 5px;" *ngIf="icon">
+            <amexio-c-icon [customclass]="icon" [label]="title">
+            </amexio-c-icon>
+          </span>
+          <span *ngIf="!icon">
+            {{title}}
+          </span>
+          <span *ngIf="hasContent" style="float:right;padding-right:2%">
+            <amexio-c-icon [customclass]="'fa fa-arrow-right'">
+            </amexio-c-icon>
+          </span>
+        </div>
+  
+      </div>
+    </ng-container>
+  
+  </div>
+     <div [@slide]="!showngcontent ? 'left' : ''" #tref [ngStyle]="{'display':showngcontent ? 'block': 'none'}">
+  
+      <ng-content>
+  
+      </ng-content>
+    </div>
+  
+   

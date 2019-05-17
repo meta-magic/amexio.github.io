@@ -44,6 +44,9 @@ import { AmexioFormGroupDirective } from './form/form.group.directive';
 import { AmexioCommonModule } from '../base/amexio.common.module';
 import { OverlayContainerComponent } from './overlay/overlay.component';
 
+import { PanelItemComponent } from '../panes/slidingpanel/panelitem.component';
+import { SlidingPanelComponent } from '../panes/slidingpanel/slidingpanel.component';
+
 export * from './action/pane.action.footer';
 export * from './body/pane.action.body';
 export * from './carousel/carousel.component';
@@ -100,6 +103,8 @@ const PANE_COMPONENTS = [
   AmexiotimelineComponent,
   AmexiotimelineeventComponent,
   OverlayContainerComponent,
+  PanelItemComponent,
+  SlidingPanelComponent,
 ];
 
 @NgModule({
