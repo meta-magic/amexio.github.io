@@ -2449,7 +2449,8 @@ input:checked + .largeType2ToggleSlider:before {
   border: none;
   background: var(--componentHeaderBGColor);
   bottom: -10px;
-  margin-left: -.9em; }
+  margin-left: -.9em;
+  cursor: pointer; }
 
 .ui-slider-vertical2 {
   width: 1em;
@@ -6382,7 +6383,7 @@ amexio-homepage-centerpanel .homepage-centerpanel {
   align-items: unset; }
 
 .topnavmainbarinneritems {
-  display: inline-block;
+  display: contents;
   padding: 0px 8px; }
 
 .topnavmainbarinneritems-mobile {
@@ -6675,7 +6676,7 @@ amexio-homepage-centerpanel .homepage-centerpanel {
 .sidenav-mobile-bar-left {
   top: 10px;
   position: fixed;
-  z-index: 3;
+  z-index: 9000;
   left: 0; }
 
 .sidenav-submenu-details .tablink {
@@ -8544,6 +8545,39 @@ amexio-layout amexio-layout-item {
 .dailogue-header-ce .dialogue-table {
   display: flex; }
 
+/*****************************************************************************
+ Component Name : Amexio slidingpanel container 
+  Version : Amexio v5.12 onwards
+****************************************************************************/
+/** Amexio slidingpanel Vars CSS **/
+/** Amexio slidingpanel Visual CSS **/
+.parentpanel {
+  color: var(--componentActiveFontColor);
+  background-color: var(--componentActiveBGColor); }
+
+.parentpanel:hover {
+  color: var(--componentHoverFontColor);
+  background-color: var(--componentHoverBGColor); }
+
+.panelitemrow {
+  color: var(--componentActiveFontColor);
+  background-color: var(--componentActiveBGColor); }
+
+.panelitemrow:hover {
+  color: var(--componentHoverFontColor);
+  background-color: var(--componentHoverBGColor); }
+
+/** Amexio slidingpanel Structure CSS **/
+.parentpanel {
+  width: 100%;
+  height: 4%; }
+
+.panelitemrow {
+  width: 100%;
+  margin: 0 auto;
+  padding: 1%;
+  border-bottom: 1px solid var(--themeSecondaryColor); }
+
 /****************************************************************************
     Component Name : Border Layout
     Version : Amexio v4.0 onwards
@@ -8858,7 +8892,7 @@ amexio-layout-columns amexio-layout-item {
 
 .textRightPosition {
   width: max-content;
-  padding-right: 3%;
+  padding-right: 7%;
   float: right;
   position: relative; }
 
