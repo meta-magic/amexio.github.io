@@ -30,7 +30,7 @@ export class AmexioMenuCEComponent implements OnInit {
 
   @Input() data: any;
 
-  @Input() font: string;
+  @Input('font') font = 'Titillium Web';
 
   @Input() size: string;
 
