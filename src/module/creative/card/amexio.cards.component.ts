@@ -41,7 +41,7 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
 
   @Input('style-type') styleType: string;
 
-  @Input('transform-type') transformType: any;
+  @Input('polaroid-type') transformType: any;
 
   themeCss: any;
 

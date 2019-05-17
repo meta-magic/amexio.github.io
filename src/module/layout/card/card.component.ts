@@ -116,7 +116,7 @@ description : Context Menu provides the list of menus on right click.
 */
   @Input('context-menu') contextmenu: any[];
 
-  @Input('style-type') styletype: any;
+  @Input('polaroid-type') styletype: any;
 
   @Input() parentRef: any;
 
