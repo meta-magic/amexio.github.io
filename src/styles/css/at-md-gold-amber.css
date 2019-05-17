@@ -1750,7 +1750,7 @@ textarea:required {
 /** notification - Structure CSS **/
 .notification-content {
   position: fixed;
-  z-index: 3; }
+  z-index: 9900; }
 
 .notification-vertical-top {
   top: 0%; }
@@ -8567,6 +8567,10 @@ amexio-layout amexio-layout-item {
   color: var(--componentHoverFontColor);
   background-color: var(--componentHoverBGColor); }
 
+.panelheader {
+  background-color: var(--componentHeaderBGColor);
+  color: var(--componentHeaderFontColor); }
+
 /** Amexio slidingpanel Structure CSS **/
 .parentpanel {
   width: 100%;
@@ -8576,7 +8580,13 @@ amexio-layout amexio-layout-item {
   width: 100%;
   margin: 0 auto;
   padding: 1%;
-  border-bottom: 1px solid var(--themeSecondaryColor); }
+  border: 1px solid var(--themeSecondaryColor); }
+
+.panelheader {
+  width: 100%;
+  margin: 0 auto;
+  padding: 1%;
+  border: 1px solid var(--themeSecondaryColor); }
 
 /****************************************************************************
     Component Name : Border Layout
