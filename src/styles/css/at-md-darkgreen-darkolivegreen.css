@@ -6676,7 +6676,7 @@ amexio-homepage-centerpanel .homepage-centerpanel {
 .sidenav-mobile-bar-left {
   top: 10px;
   position: fixed;
-  z-index: 9000;
+  z-index: 9900;
   left: 0; }
 
 .sidenav-submenu-details .tablink {
