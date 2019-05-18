@@ -68,9 +68,11 @@ export class PanelItemComponent implements OnInit, AfterContentInit, AfterViewIn
         this.hasContent = this.tref.nativeElement.childNodes.length > 0;
     }
     onPanelClick(event: any) {
-        this.isSwipeTriggered = true;
-        this.clicked = true;
-        this.childPanelClicked.emit(this.title);
+        if (this.hasContent) {
+            this.isSwipeTriggered = true;
+            this.clicked = true;
+            this.childPanelClicked.emit(this.title);
+        }
     }
 
 }
