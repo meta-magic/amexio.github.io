@@ -228,6 +228,7 @@ description : Triggers when slider reaches the end
     }
 
     if (!this.sliderHandleClick) {
+      debugger;
       this.updateDomData();
       this.handleChange(event);
     }
