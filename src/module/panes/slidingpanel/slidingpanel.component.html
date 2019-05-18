@@ -2,7 +2,7 @@
     <div *ngIf="header && !showbackarrow" class="panelheader" style="font-weight: bold">
         {{header}}
     </div>
-    <div *ngIf="showbackarrow" class="parentpanel">
+    <div *ngIf="showbackarrow" class="panelheader">
         <span style="cursor:pointer" (click)="restorePanelState()">
             <amexio-c-icon [customclass]="'fa fa-arrow-left'">
             </amexio-c-icon>
