@@ -1,33 +1,39 @@
-<nav #navbar class="topnav {{themeCss}}" [ngStyle]="{'color': color, 'top': top, 'opacity': opacity}" [ngClass]="{'topnav-mobile':mobilemode, 'transparentNav':transparent}" (window:resize)="resize($event)">
+<nav #navbar class="topnav {{themeCss}}" [ngStyle]="{'color': color, 'top': top, 'opacity': opacity}" [ngClass]="{'topnav-mobile':mobilemode, 'transparentNav':transparent}"
+    (window:resize)="resize($event)">
 
-    <div #navbarfixed  [ngClass]="{'lhs-mobile':mobilemode}"
-     [ngStyle]="{'flex': !title || !logo ? 'none':''}">
+    <div #navbarfixed [ngClass]="{'lhs-mobile':mobilemode}" [ngStyle]="{'flex': !title || !logo ? 'none':''}">
         <div class="topnav-lhs-inner" [ngClass]="{'topnav-lhs-inner-mobile':mobilemode, 'topnav-lhs-nologo': logo==''}">
             <span>
 
-            <span style="padding-left: 40px;" *ngIf="sidenav">  &nbsp;</span>
+                <span style="padding-left: 40px;" *ngIf="sidenav"> &nbsp;</span>
+                <span *ngIf="(!mobilemode && !sidenav && homepageType ==='1')" class="homepage-bar-collapse" (click)="onArrowClick($event)">
+                    <amexio-image [icon-class]=" 'fa fa-bars' "></amexio-image> &nbsp;
+                </span>
 
-            <span *ngIf="(!(mobilemode && sidenav) && homepageType ==='1')" class="homepage-bar-collapse" (click)="onArrowClick($event)"><amexio-image [icon-class]=" 'fa fa-bars' "></amexio-image> &nbsp;</span>
+                <img alt="title " style="cursor: pointer " (click)="onNavLogoClick.emit($event) " (load)="onImageLoad() "
+                    *ngIf="logo " [attr.src]="logo " class="navbar-logo ">
+                <a (click)="onNavTitleClick.emit($event)" [ngStyle]="{'color': color}">{{title}}</a>
 
-            <img alt="title " style="cursor: pointer " (click)="onNavLogoClick.emit($event) " (load)="onImageLoad() " *ngIf="logo " [attr.src]="logo " class="navbar-logo ">
-            <a (click)="onNavTitleClick.emit($event)" [ngStyle]="{'color': color}">{{title}}</a>
 
-
-            <ng-container *ngIf="homepageType=='2' && !sidenav">
-                <ng-container *ngIf="!isIconLeft">
-                    <span class="collaspe-icon-style" (click)="onArrowClick($event)"><amexio-image [icon-class]=" 'fa fa-chevron-right' "></amexio-image></span>
+                <ng-container *ngIf="homepageType=='2' && !sidenav">
+                    <ng-container *ngIf="!isIconLeft">
+                        <span class="collaspe-icon-style" (click)="onArrowClick($event)">
+                            <amexio-image [icon-class]=" 'fa fa-chevron-right' "></amexio-image>
+                        </span>
+                    </ng-container>
+                    <ng-container *ngIf="isIconLeft">
+                        <span class="collaspe-icon-style" (click)="onArrowClick($event)">
+                            <amexio-image [icon-class]=" 'fa fa-chevron-left' "></amexio-image>
+                        </span>
+                    </ng-container>
                 </ng-container>
-                <ng-container *ngIf="isIconLeft">
-                    <span class="collaspe-icon-style" (click)="onArrowClick($event)"><amexio-image  [icon-class]=" 'fa fa-chevron-left' "></amexio-image></span>
-                </ng-container>
-            </ng-container>
 
             </span>
 
             <span *ngIf="mobilemode && navItemPresent" class="float-right mobilebar" (click)="toggleDrawerPanel($event)">
-              <em *ngIf="!toggle" class="fa fa-caret-down fa-2x"></em>
-              <em *ngIf="toggle" class="fa fa-caret-up fa-2x"></em>
-          </span>
+                <em *ngIf="!toggle" class="fa fa-caret-down fa-2x"></em>
+                <em *ngIf="toggle" class="fa fa-caret-up fa-2x"></em>
+            </span>
         </div>
     </div>
 
