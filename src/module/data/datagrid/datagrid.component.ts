@@ -798,6 +798,7 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
         data.push({ expanded: false, isSelected: false, group: groupName, groupData: groups[groupName] });
       }
     }
+    this.data = data;
     /*-------Aggregation---------*/
     this.renderData();
     this.cd.detectChanges();
