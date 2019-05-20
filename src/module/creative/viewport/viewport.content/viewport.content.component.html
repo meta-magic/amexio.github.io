@@ -12,7 +12,7 @@
 
 
 <div class="viewportContent {{backgroundCss}}" [ngStyle]="{'height':height}" onscroll="myFunction()">
-    <video #videoId src="{{tempUrl}}" muted="muted" poster="" loop="" autoplay="true" webkit-playsinline="true" playsinline="true"></video>
+    <video class="viewportvideo" #videoId src="{{tempUrl}}" muted="muted" poster="" loop="" autoplay="true" webkit-playsinline="true" playsinline="true"></video>
     <div class="viewportBody" [ngStyle]="{'overflow-y': internalScroll ? 'scroll' : 'hidden',
 'background-color':backgroundColor, 'height':height}">
         <ng-content select="amexio-viewport-content-body"></ng-content>
