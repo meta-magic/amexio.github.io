@@ -154,38 +154,37 @@
     
     .ui-slider-handle2 {
       position: absolute;
-       z-index: 0;
-       width: 29px !important;
-       height: 29px !important;
-       cursor: default;
-       outline: none;
-       border-radius: 3em !important;
-       border: none;
-       background: $rangeSliderBGColor;
-       bottom:-10px;
-       margin-left: -.9em;
-       cursor: pointer;
-     
-    }
+      z-index: 0;
+      width: 29px !important;
+      height: 29px !important;
+      cursor: default;
+      outline: none;
+      border-radius: 3em !important;
+      border: none;
+      background: $rangeSliderBGColor;
+      bottom: -8px;
+      margin-left: -.9em;
+      cursor: pointer; }
+
     .ui-slider-vertical2 {
       width: 1em;
       height: 100px;
     }
     .ui-slider-handle3 {
-       margin-left: -15px;
-       position: absolute;
-       z-index: 0;
-       width: 42px !important;
-       height: 42px !important;
-       cursor: default;
-       outline: none;
-       border-radius: 3em;
-       border: none;
-       background: $rangeSliderBGColor;
-       margin-bottom: -2em;
-       margin-top: -2em;
-      
-    }
+      margin-left: -17px;
+      position: absolute;
+      z-index: 0;
+      width: 42px !important;
+      height: 42px !important;
+      cursor: default;
+      outline: none;
+      border-radius: 3em;
+      border: none;
+      background: $rangeSliderBGColor;
+      margin-bottom: -2em;
+      margin-top: -2em;
+      }
+
     .ui-slider-handle1 {
       margin-left: -6px;
        position: absolute;
