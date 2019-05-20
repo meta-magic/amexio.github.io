@@ -6663,6 +6663,9 @@ amexio-homepage-centerpanel .homepage-centerpanel {
 .sidenav .border {
   border-bottom: 1px solid #ced4da; }
 
+.sidenav-submenu-expanded {
+  overflow-x: hidden !important; }
+
 .nav-badge {
   background-color: var(--componentHeaderBGColor);
   color: var(--componentHeaderFontColor); }

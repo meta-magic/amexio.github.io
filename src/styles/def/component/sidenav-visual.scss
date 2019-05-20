@@ -158,7 +158,7 @@
 
 .sidenav-submenu-expanded {
   // max-height: 1000px;
-  // overflow: auto;
+  overflow-x: hidden !important;
 }
 
 .nav-badge{
