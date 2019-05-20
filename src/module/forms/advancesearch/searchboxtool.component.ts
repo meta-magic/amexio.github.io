@@ -198,6 +198,7 @@ export class SearchboxtoolComponent extends BaseFormValidator<string> implements
   }
 
   ngOnInit() {
+
     this.componentId = this.displayfield + Math.floor(Math.random() * 1000 + 999);
     if (this.httpmethod && this.httpurl) {
       this.dataService.fetchData(this.httpurl, this.httpmethod).subscribe((response) => {
@@ -247,19 +248,22 @@ export class SearchboxtoolComponent extends BaseFormValidator<string> implements
     }
   }
   tempOnInputClick(item: any, search_term: any) {
+    let filterCounter = true;
     for (const [key, value] of Object.entries(item)) {
       let val: any;
       val = value;
       this.a = key;
       // For New Input enable-filter
-      if (item && (this.enablefilter) && (val.startsWith(search_term))
+      if (filterCounter && item && (this.enablefilter) && (val.startsWith(search_term))
        && item !== null && item[this.displayfield]) {
         this.isListFlag = true;
+        filterCounter = false;
         this.viewData.push(item);
       } else {
-        if ((!this.enablefilter) && item !== null && val.startsWith(search_term)
+        if (filterCounter && (!this.enablefilter) && item !== null && val.startsWith(search_term)
         && item[this.displayfield].toLowerCase().startsWith(search_term)) {
           this.isListFlag = true;
+          filterCounter = false;
           this.viewData.push(item);
         }
       }
