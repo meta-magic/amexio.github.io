@@ -171,7 +171,7 @@ export class AmexioGoogleMapComponent implements OnInit {
   bindOverlayEvents(overlay: any) {
     overlay.addListener('click', (event: any) => {
       this.onMarkerClick.emit(overlay.data);
-      if (overlay && overlay.title) {
+      if (overlay && overlay.title && this.infoWindow) {
         this.infoWindow.setContent('<div>' + overlay.title + '</div>');
         this.infoWindow.open(this.map, overlay);
       }
