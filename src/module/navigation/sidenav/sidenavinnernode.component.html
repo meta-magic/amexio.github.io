@@ -1,23 +1,17 @@
 <ul>
-    <li  role="option" *ngFor="let node of data">
-         <div [attr.tabindex]= "node.tabindex" (keyup.enter)="onenterNodeClick($event,node)" [attr.draggable]="enabledrag" (dragstart)="dragStartEvent({event:$event,data:node})" class="defaultnode" [ngClass]="{'activenode':node.active}"
+    <li role="option" *ngFor="let node of data">
+        <div [attr.tabindex]="node.tabindex" (keyup.enter)="onenterNodeClick($event,node)" [attr.draggable]="enabledrag"
+            (dragstart)="dragStartEvent({event:$event,data:node})" class="defaultnode" [ngClass]="{'activenode':node.active}"
             (click)="onNodeClick(node)">
-            
-            <span *ngIf="node.icon">
+
+            <span *ngIf="node.icon" class="sideInnerNodeCss">
                 <amexio-c-icon class="node-icon" [customclass]="node.icon" [color]="node.iconcolor"></amexio-c-icon>
-                <span>{{node[displaykey]}}</span>
-                </span>
-                
-                
-                <span *ngIf="!node.icon">
-                <amexio-c-icon class="node-icon" [customclass]="node.icon" [color]="node.iconcolor"></amexio-c-icon>
-                <span style="padding-left:40px;">{{node[displaykey]}}</span>
+                <span  class="sideInnerNodeFlex">{{node[displaykey]}}
+                    <ng-container *ngIf="node.badge">
+                        <span class="nav-badge">{{node.badge}}</span>
+                    </ng-container>
                 </span>
 
-
-            <ng-container *ngIf="node.badge">
-                <span class="nav-badge">{{node.badge}}</span>
-            </ng-container>
             <ng-container *ngIf="node[childarraykey] && (node[childarraykey].length>0)">
                 <span style="padding-right: 10px; float: right" *ngIf="node.expand">
                     <amexio-c-icon key="sidenav-angle-up"></amexio-c-icon>
@@ -26,11 +20,34 @@
                     <amexio-c-icon key="sidenav-angle-down"></amexio-c-icon>
                 </span>
             </ng-container>
+            </span>
+
+
+            <span *ngIf="!node.icon" class="sideInnerNodeCss">
+                <amexio-c-icon class="node-icon" [customclass]="node.icon" [color]="node.iconcolor"></amexio-c-icon>
+                <span class="sideInnerNodeFlex">{{node[displaykey]}}
+                    <ng-container *ngIf="node.badge">
+                        <span class="nav-badge">{{node.badge}}</span>
+                    </ng-container>
+                </span>
+
+            <ng-container *ngIf="node[childarraykey] && (node[childarraykey].length>0)">
+                <span style="padding-right: 10px; float: right" *ngIf="node.expand">
+                    <amexio-c-icon key="sidenav-angle-up"></amexio-c-icon>
+                </span>
+                <span style="padding-right: 10px;float: right;" *ngIf="!node.expand">
+                    <amexio-c-icon key="sidenav-angle-down"></amexio-c-icon>
+                </span>
+            </ng-container>
+            </span>
+
+
+
         </div>
         <div class="submenu-details" [ngClass]="{'sidenav-submenu-expanded':node.expand}">
-            <amexio-sidenav-innernode *ngIf="node[childarraykey] && (node[childarraykey].length>0)" [enable-drag]="enabledrag" (onDrag)="dragStartEvent($event)"
-                [display-key]="displaykey" [child-array-key]="childarraykey" [data]="node[childarraykey]" (onDrag)="dragStartEvent($event)"
-                (onClick)="getOnClick($event)">
+            <amexio-sidenav-innernode *ngIf="node[childarraykey] && (node[childarraykey].length>0)" [enable-drag]="enabledrag"
+                (onDrag)="dragStartEvent($event)" [display-key]="displaykey" [child-array-key]="childarraykey" [data]="node[childarraykey]"
+                (onDrag)="dragStartEvent($event)" (onClick)="getOnClick($event)">
             </amexio-sidenav-innernode>
         </div>
     </li>
