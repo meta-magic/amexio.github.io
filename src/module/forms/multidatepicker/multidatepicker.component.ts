@@ -222,6 +222,7 @@ export class AmexioMultipleDatePickerComponent extends ListBaseDatepickerCompone
       this.validateMinMaxDate();
       this.disableddays();
       this.validateDaysForMinMax();
+      this.clearClicks();
     }
   }
 
