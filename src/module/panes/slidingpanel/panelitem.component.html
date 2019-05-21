@@ -20,7 +20,9 @@
     </ng-container>
   
   </div>
-     <div [@slide]="!showngcontent ? 'left' : ''" #tref [ngStyle]="{'display':showngcontent ? 'block': 'none'}">
+     <div  [@slide]="!showngcontent ? 'left' : ''" #tref style="width: 100%;
+     padding: 1%;" class="panelborder"
+     [ngStyle]="{'display':showngcontent ? 'block': 'none'}">
   
       <ng-content>
   

@@ -1,5 +1,5 @@
 import {
-    AfterContentInit, Component, ContentChild, ContentChildren, Input, OnInit,
+    AfterContentInit, Component, ContentChild, ContentChildren, EventEmitter, Input, OnInit, Output,
     QueryList,
 } from '@angular/core';
 import { PanelItemComponent } from './panelitem.component';
@@ -11,8 +11,10 @@ import { PanelItemComponent } from './panelitem.component';
 export class SlidingPanelComponent implements OnInit, AfterContentInit {
     @Input() header: string;
     @ContentChildren(PanelItemComponent) queryTabs: QueryList<PanelItemComponent>;
+    @Output() onPanelItemClick: any = new EventEmitter<any>();
     ChildPanelSlidersCollection: PanelItemComponent[];
     title: string;
+    panelItemName: string;
     showbackarrow = false;
 
     ngOnInit() {
@@ -33,6 +35,8 @@ export class SlidingPanelComponent implements OnInit, AfterContentInit {
     }
 
     onPaneClick(title: any) {
+        this.panelItemName = title;
+        this.onPanelItemClick.emit(title);
         this.showbackarrow = true;
         this.ChildPanelSlidersCollection.forEach((node: any) => {
             if (node.title === title) {

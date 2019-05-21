@@ -57,8 +57,7 @@ export class PanelItemComponent implements OnInit, AfterContentInit, AfterViewIn
     }
 
     ngOnInit() {
-        console.log('showrow', this.showrow);
-    }
+     }
 
     ngAfterViewInit() {
 
