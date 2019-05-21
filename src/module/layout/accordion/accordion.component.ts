@@ -65,6 +65,15 @@ export class AmexioAccordionComponent extends LifeCycleBaseComponent implements 
   */
   @Input('color') color: string;
 
+  /*Properties
+  name : color
+  datatype : string
+  version : 5.6.1 onwards
+  default :
+  description : provides foreground color for accordion header
+  */
+  @Input('multi-open') multiopen: boolean;
+
   @ContentChildren(AmexioAccordionTabComponent) queryTabs: QueryList<AmexioAccordionTabComponent>;
   accordionCollections: AmexioAccordionTabComponent[];
   flag = false;
@@ -117,6 +126,8 @@ export class AmexioAccordionComponent extends LifeCycleBaseComponent implements 
       this.accordionCollections.forEach((tab) => {
         if (tab === node) {
           tab.active = node.active;
+        } else if (this.multiopen && tab.active) {
+          tab.active = true;
         } else {
           tab.active = false;
         }
