@@ -4506,6 +4506,7 @@ input:checked + .largeType2ToggleSlider:before {
 
 .mainspan {
   display: flex;
+  margin-bottom: 1px;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); }
 
 .datePickerContaier {
@@ -4574,11 +4575,11 @@ fsw .widgetSprite.icCalendar {
   text-align: center; }
 
 /* every individual month header font color  */
-.multidatetimepicker .datetimepickertopbar ul li {
+.datetimepicker .datetimepickertopbar ul li {
   color: black; }
 
 /* every individual month header background color  */
-.multidatetimepicker .datetimepickertopbar {
+.datetimepicker .datetimepickertopbar {
   background: white; }
 
 .arrowiconshadow {
@@ -4589,6 +4590,7 @@ fsw .widgetSprite.icCalendar {
 
 /* .activecolortab class replica from tab */
 .activecolordatetab {
+  padding-left: 8px;
   border-bottom: 2px solid var(--componentActiveBGColor) !important; }
 
 .datesrange {
@@ -4602,65 +4604,11 @@ fsw .widgetSprite.icCalendar {
   overflow-y: scroll; }
 
 .datetabs {
-  background-color: white;
-  padding-left: 5px; }
+  padding: 0px !important;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); }
 
-.multidatetimepicker {
-  display: block;
-  position: absolute;
-  box-shadow: none;
-  z-index: 3;
-  width: 290px; }
-  .multidatetimepicker .datetimepickertopbar {
-    padding: 10px 25px;
-    text-align: center; }
-    .multidatetimepicker .datetimepickertopbar .title {
-      font-size: 18px;
-      cursor: pointer; }
-    .multidatetimepicker .datetimepickertopbar ul {
-      margin: 0;
-      padding: 0;
-      list-style: none; }
-    .multidatetimepicker .datetimepickertopbar ul li {
-      font-size: 18px;
-      text-transform: uppercase;
-      letter-spacing: 3px; }
-    .multidatetimepicker .datetimepickertopbar .prev {
-      float: left;
-      padding-top: 10px;
-      cursor: pointer; }
-    .multidatetimepicker .datetimepickertopbar .next {
-      float: right;
-      padding-top: 10px;
-      cursor: pointer; }
-  .multidatetimepicker .weekdays {
-    margin: 0;
-    padding: 10px 0;
-    list-style: none; }
-    .multidatetimepicker .weekdays li {
-      display: inline-block;
-      width: 13.6%;
-      text-align: center; }
-  .multidatetimepicker .days {
-    padding: 10px 0;
-    margin: 0;
-    cursor: pointer;
-    list-style: none; }
-    .multidatetimepicker .days li {
-      list-style-type: none;
-      display: inline-block;
-      width: 13.6%;
-      height: 20px;
-      text-align: center;
-      margin-bottom: 5px;
-      font-size: 12px;
-      cursor: pointer; }
-    .multidatetimepicker .days .active {
-      border-radius: 135px;
-      padding: 5px; }
-    .multidatetimepicker .days .date-today {
-      padding-top: 1%;
-      padding-left: 42%; }
+.datetabs .datetimepicker {
+  box-shadow: unset; }
 
 /****************************************************************************
     Component Name : Enterprise Content
@@ -6217,8 +6165,7 @@ amexio-homepage-centerpanel .homepage-centerpanel {
   background-color: var(--componentActiveBGColor); }
 
 .menubar .menuheader .menulink a {
-  color: var(--componentHoverFontColor);
-  background-color: var(--componentActiveBGColor); }
+  color: var(--componentHoverFontColor); }
 
 /** menubar - Structure CSS **/
 .menu-right {
@@ -7111,7 +7058,8 @@ amexio-homepage-centerpanel .homepage-centerpanel {
 
 /** Transparent Styling **/
 .accordion-transparent {
-  background: var(--componentBGColor); }
+  background: var(--componentBGColor);
+  color: var(--componentFontColor); }
 
 .accordion .amexio-accordion-header {
   color: var(--componentHeaderFontColor); }
@@ -8649,6 +8597,9 @@ amexio-layout amexio-layout-item {
   width: 100%;
   margin: 0 auto;
   padding: 1%;
+  border: 1px solid var(--themeSecondaryColor); }
+
+.panelborder {
   border: 1px solid var(--themeSecondaryColor); }
 
 .panelchild {

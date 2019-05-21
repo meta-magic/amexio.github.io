@@ -54,6 +54,8 @@ export class DarkmodeComponent implements OnInit {
         if (this.mode === 'custom') {
             this.maxValue = this.colorData.length - 1;
             this.otherMode();
+        } else {
+            this.addDynamicCss('white', 'black');
         }
     }
     onToggleClick(event: any) {
@@ -91,9 +93,11 @@ export class DarkmodeComponent implements OnInit {
     sepiaMode() {
         if (this.stepVal === 0) {
             this.onToggleClick(false);
+            this.addDynamicCss('white', 'black');
         }
 
         if (this.stepVal === 1) {
+            this.addDynamicCss(this.sepiaColorCode, 'black');
             document.documentElement.style.setProperty(this.appBackground, this.sepiaColorCode);
             document.documentElement.style.setProperty(this.appForeground, this.sepiaFontColor);
             document.documentElement.style.setProperty(this.componentBackground, this.sepiaColorCode);
@@ -101,6 +105,7 @@ export class DarkmodeComponent implements OnInit {
         }
         if (this.stepVal === 2) {
             this.onToggleClick(true);
+            this.addDynamicCss('black', 'white');
         }
     }
 
@@ -108,6 +113,7 @@ export class DarkmodeComponent implements OnInit {
         if (this.colorData && this.colorData.length > 0) {
             this.colorData.forEach((element: any, index: any) => {
                 if (this.stepVal === index) {
+                    this.addDynamicCss(element.bgColor, element.fgColor);
                     document.documentElement.style.setProperty(this.appBackground, element.bgColor);
                     document.documentElement.style.setProperty(this.appForeground, element.fgColor);
                     document.documentElement.style.setProperty(this.componentBackground, element.bgColor);
@@ -118,4 +124,19 @@ export class DarkmodeComponent implements OnInit {
         }
     }
 
+    insertStyleSheetRule(ruleText: any) {
+        const sheets: any = document.styleSheets;
+        if (sheets.length === 0) {
+            const style = document.createElement('style');
+            style.appendChild(document.createTextNode(''));
+            document.head.appendChild(style);
+        }
+        const sheet: any = sheets[sheets.length - 1];
+        sheet.insertRule(ruleText, sheet.rules ? sheet.rules.length : sheet.cssRules.length);
+    }
+
+    addDynamicCss(circleColor: any, borderColor: any) {
+        this.insertStyleSheetRule('.ui-slider-handle2' +
+        '{ background:' + circleColor + '!important; border: 1px solid ' + borderColor + ' !important; }');
+    }
 }

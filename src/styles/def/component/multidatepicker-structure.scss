@@ -56,6 +56,7 @@
 
 .mainspan {
     display: flex;
+    margin-bottom: 1px;
     // border: 1px solid black;
     box-shadow:0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
@@ -142,12 +143,12 @@ cursor: not-allowed;
     text-align: center;
 }
 /* every individual month header font color  */
-.multidatetimepicker .datetimepickertopbar ul li {
+.datetimepicker .datetimepickertopbar ul li {
     color: black;
 }
 /* every individual month header background color  */
 
- .multidatetimepicker .datetimepickertopbar {
+ .datetimepicker .datetimepickertopbar {
     background: white;
 }
 
@@ -162,6 +163,7 @@ cursor: not-allowed;
 
 /* .activecolortab class replica from tab */
 .activecolordatetab {
+    padding-left: 8px;
     border-bottom: 2px solid $componentActiveBGColor !important ;
  }
 
@@ -178,92 +180,11 @@ cursor: not-allowed;
     overflow-y: scroll;
 }
 
-.datetabs {
-    background-color: white; 
-     padding-left:5px;
-}
-
-.multidatetimepicker{
-    display: block;
-    //border: $datetimepickerBorderSize solid $datetimepickerBorderColor;
-    position: absolute;
-    //box-shadow: 0 1px 3px 0 $datetimepickerBorderColor;
-    box-shadow: none;
-    z-index: 3;
-    width:290px;
-    .datetimepickertopbar {
-      padding: 10px 25px;
-      text-align: center;
-   
-      .title{
-        font-size:18px;
-        cursor:pointer;
-      }
-   
-      ul {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-      }
-   
-      ul li {
-        font-size: 18px;
-        text-transform: uppercase;
-        letter-spacing: 3px;
-      }
-   
-   
-      .prev {
-        float: left;
-        padding-top: 10px;
-        cursor:pointer;
-      }
-   
-      .next {
-        float: right;
-        padding-top: 10px;
-        cursor : pointer;
-      }
-    }
-   
-    .weekdays {
-      margin: 0;
-      padding: 10px 0;
-   
-      list-style: none;
-      li {
-        display: inline-block;
-        width: 13.6%;
-        text-align: center;
-      }
-    }
-   
-    .days {
-      padding: 10px 0;
-      margin: 0;
-      cursor : pointer;
-      list-style: none;
-   
-      li {
-        list-style-type: none;
-        display: inline-block;
-        width: 13.6%;
-        height: 20px;
-        text-align: center;
-        margin-bottom: 5px;
-        font-size:12px;
-        cursor: pointer;
-      }
-   
-      .active {
-        border-radius: 135px;
-        padding: 5px;
-      }
-   
-   
-      .date-today{
-        padding-top: 1%;
-        padding-left: 42%;
-      }
-    }
-   }
+.datetabs{
+    padding: 0px!important;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  }
+  
+  .datetabs .datetimepicker{
+    box-shadow: unset;
+  }
