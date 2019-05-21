@@ -817,6 +817,7 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
       for (let pageNo = 1; pageNo <= this.maxPage; pageNo++) {
         this.pageNumbers.push(pageNo);
       }
+      this.totalPages = this.pageNumbers.length;
     }
     if (this.pagesize >= 1) {
       this.getPageSize();
@@ -930,19 +931,16 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
           resultData.push(option);
         }
       });
-      if (resultData.length > (1 * this.pagesize)) {
-        this.pagingRegenration();
-        this.renderData();
-      } else {
-        this.viewRows = resultData;
+      if (resultData.length < (1 * this.pagesize)) {
         this.currentPage = 1;
         this.maxPage = 1;
       }
+      this.data = resultData;
     } else {
       this.data = this.filterCloneData;
-      this.pagingRegenration();
-      this.renderData();
     }
+
+    this.renderData();
   }
 
   filterOpertion(data: any, filteredObj: any) {
@@ -1003,6 +1001,7 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
     for (let pageNo = 1; pageNo <= this.maxPage; pageNo++) {
       this.pageNumbers.push(pageNo);
     }
+    this.totalPages = this.pageNumbers.length;
   }
 
   setSelectedRow(rowData: any, event: any) {

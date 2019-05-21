@@ -94,12 +94,15 @@ export class AmexioPaginatorComponent implements OnChanges, OnInit {
 
   isCustomLogic: boolean;
 
+  dummyRowData: any;
+
   constructor() { }
 
   ngOnInit() {
     if (this.size == null || this.size === '') {
       this.size = 'medium';
     }
+    this.dummyRowData = JSON.parse(JSON.stringify(this.rows));
     this.initializePages();
     this.componentId = this.createCompId('paginator', this.pages);
   }
@@ -112,6 +115,7 @@ export class AmexioPaginatorComponent implements OnChanges, OnInit {
       this.initializePages();
     }
     if (change.rows && !change.rows.isFirstChange()) {
+      this.dummyRowData = change.rows.currentValue;
       this.initializePages();
     }
   }
@@ -294,5 +298,6 @@ export class AmexioPaginatorComponent implements OnChanges, OnInit {
     this.fullPageSet.length = 0;
     this.activePages.length = 0;
     this.pageIndex.length = 0;
+    this.rows = this.dummyRowData;
   }
 }
