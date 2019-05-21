@@ -711,19 +711,16 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
           resultData.push(row);
         }
       });
-      if (resultData.length > (1 * this.pagesize)) {
-        this.pagingRegenration();
-        this.renderData();
-      } else {
-        this.viewRows = resultData;
+
+      if (resultData.length < (1 * this.pagesize)) {
         this.currentPage = 1;
         this.maxPage = 1;
       }
+      this.data = resultData;
     } else {
       this.data = this.filterCloneData;
-      this.pagingRegenration();
-      this.renderData();
     }
+    this.renderData();
   }
 
   checkValueInColumn(row: any, filteredObj: any): boolean {
@@ -991,17 +988,6 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
     } else {
       return key !== value;
     }
-  }
-
-  pagingRegenration() {
-    this.maxPage = Math.floor((this.data.length / this.pagesize));
-    if ((this.data.length % this.pagesize) > 0) {
-      this.maxPage++;
-    }
-    for (let pageNo = 1; pageNo <= this.maxPage; pageNo++) {
-      this.pageNumbers.push(pageNo);
-    }
-    this.totalPages = this.pageNumbers.length;
   }
 
   setSelectedRow(rowData: any, event: any) {
