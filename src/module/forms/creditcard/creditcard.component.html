@@ -28,7 +28,7 @@
                     </select>
                 </div>
                 <div class="dateSglCol">
-                    <select [(ngModel)]="creditCardModel.expYear" yearControl="yearControl" style="padding:10px" placeholder="YY">
+                    <select [(ngModel)]="creditCardModel.expYear"   (ngModelChange)="onChangeYear($event)"   yearControl="yearControl" style="padding:10px" placeholder="YY">
                         <option *ngFor="let year of yearList">{{year}}</option>
                     </select>
                 </div>
@@ -68,7 +68,7 @@
                         </select>
                     </div>
                     <div class="date">
-                        <select [(ngModel)]="creditCardModel.expYear" yearControl="yearControl" style="padding:10px" placeholder="YY">
+                        <select [(ngModel)]="creditCardModel.expYear" (ngModelChange)="onChangeYear($event)" yearControl="yearControl" style="padding:10px" placeholder="YY">
                             <option *ngFor="let year of yearList">{{year}}</option>
                         </select>
                     </div>

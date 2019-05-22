@@ -9,6 +9,5 @@ export class AmexioCreditCardModel {
       this.cvv = null;
       this.cardnumber = null;
       this.expMonth = 1;
-      this.expYear = 2018;
-    }
+      this.expYear  = new Date().getFullYear();    }
   }

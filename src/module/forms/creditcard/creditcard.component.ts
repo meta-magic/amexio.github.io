@@ -101,6 +101,7 @@ export class AmexioCreditcardComponent implements ControlValueAccessor, OnInit {
       this.creditCardModel = modelValue;
       this.onChangeCardNumber(this.creditCardModel.cardnumber);
       this.onChangeMonth('0' + this.creditCardModel.expMonth);
+      this.onChangeYear(this.creditCardModel.expYear);
       this.isCvvValid = this.cvvRegex.test(this.creditCardModel.cvv);
       this.cardRegexMap.forEach((value: any, key: string) => {
         const isEagarValid = value.test(this.dummyCreditCardNumber);
@@ -201,6 +202,7 @@ export class AmexioCreditcardComponent implements ControlValueAccessor, OnInit {
   }
   // Map Implementation for key value pair
   ngOnInit() {
+    this.creditCardModel = new AmexioCreditCardModel();
     this.cardRegexMap = new Map();
     this.cardPatternMap = new Map();
     this.cardRegexMap.set('eagerflagvisa', this.visaEagerReg);
@@ -335,5 +337,8 @@ export class AmexioCreditcardComponent implements ControlValueAccessor, OnInit {
   onChangeMonth(event: any) {
     this.dummyMonth = event;
     this.creditCardModel.expMonth = +this.dummyMonth;
+  }
+  onChangeYear(event: any) {
+    this.creditCardModel.expYear = event;
   }
 }
