@@ -11,7 +11,7 @@
       </span>
     </span>
     <span *ngIf="groupby ? true : false" class="float-right-datagridlist" tabindex="1" (keyup.enter)="showGroupCol()"
-      (click)="showGroupByColumn = !showGroupByColumn; showToolTip = false" style=" cursor: pointer;">
+      (click)="groupbyIconClick()" style=" cursor: pointer;">
       <!--<span class="fa fa-th-list"></span>-->
       <amexio-c-icon key="datagrid_list"></amexio-c-icon>
     </span>
