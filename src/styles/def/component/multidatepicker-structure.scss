@@ -12,8 +12,9 @@
 
 .fromdiv {
     padding: 5px;
-    background-color: white;
-    border: #e6e6e6 0px;
+    background-color: $datetimepickerDaysBGColor;
+    border: $datetimepickerDaysBGColor 0px;
+    color: $datetimepickerDaysFontColor;
     cursor: pointer;
     width: max-content;
     border-style: outset;

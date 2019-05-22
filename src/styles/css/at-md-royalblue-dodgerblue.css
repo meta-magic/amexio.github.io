@@ -58,12 +58,12 @@
   --themePrimaryColorShade5: #d1ddff;
   --themePrimaryColorShade6: #f5f7ff;
   /** Theme Color Gradients -------------------------- */
-  --themePrimaryColorGradient: linear-gradient(to right, #001b6b, #0544ff, #b8c9ff);
-  --themeSecondaryColorGradient: linear-gradient(to right, #00366b, #0582ff, #b8dbff);
-  --theme3rdColorGradient: linear-gradient(to right, #50006b, #c105ff, #edb8ff);
-  --theme4thColorGradient: linear-gradient(to right, #6b0050, #ff05c1, #ffb8ed);
-  --theme5thColorGradient: linear-gradient(to right, #6b001b, #ff0544, #ffb8c9);
-  --theme6thColorGradient: linear-gradient(to right, #6b1b00, #ff4405, #ffc9b8);
+  --themePrimaryColorGradient: linear-gradient(to right, #001452, #0544ff, #85a3ff);
+  --themeSecondaryColorGradient: linear-gradient(to right, #002952, #0582ff, #85c2ff);
+  --theme3rdColorGradient: linear-gradient(to right, #3d0052, #c105ff, #e085ff);
+  --theme4thColorGradient: linear-gradient(to right, #52003d, #ff05c1, #ff85e0);
+  --theme5thColorGradient: linear-gradient(to right, #520014, #ff0544, #ff85a3);
+  --theme6thColorGradient: linear-gradient(to right, #521400, #ff4405, #ffa385);
   /** Theme Font Family -------------------------- */
   --themeFontColor: #00081f;
   --themeFontFamily: Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
@@ -4472,8 +4472,9 @@ input:checked + .largeType2ToggleSlider:before {
 
 .fromdiv {
   padding: 5px;
-  background-color: white;
-  border: #e6e6e6 0px;
+  background-color: var(--componentBGColor);
+  border: var(--componentBGColor) 0px;
+  color: var(--componentFontColor);
   cursor: pointer;
   width: max-content;
   border-style: outset; }
