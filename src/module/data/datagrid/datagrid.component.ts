@@ -1315,12 +1315,17 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
     this.showEnableColumnFilter = false;
     this.showToolTip = !this.showToolTip;
   }
-
-  onEnableColumnClick(event: any) {
+  groupbyIconClick() {
+    this.showEnableColumnFilter = false;
+    this.showGroupByColumn = !this.showGroupByColumn;
+    this.showToolTip = false;
+}
+onEnableColumnClick(event: any) {
     event.stopImmediatePropagation();
     this.addListner();
     this.showToolTip = false;
     this.showEnableColumnFilter = !this.showEnableColumnFilter;
+    this.showGroupByColumn = false;
   }
 
   getFilterClick() {
