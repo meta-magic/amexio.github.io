@@ -9,7 +9,16 @@
     padding: 1%;
     border: 1px solid $panelBoxBorder;
 }
+.panelborder {
+    border: 1px solid $panelBoxBorder;
+}
 
+.panelchild{
+    width: 100%; 
+    margin: 0 auto;
+    padding: 1%;
+    border: 1px solid $panelBoxBorder;
+}
 .panelheader {
     width: 100%;
     margin: 0 auto;
