@@ -236,7 +236,12 @@ description : Triggers when slider reaches the end
   }
 
   handleChange(event: Event) {
-    const handleValue = this.calculateHandleValue(event);
+    let handleValue = this.calculateHandleValue(event);
+    if (handleValue > 99) {
+      handleValue = 100;
+    } else if (handleValue < 1) {
+      handleValue = 0;
+    }
     this.setValueFromHandle(event, handleValue);
   }
 
