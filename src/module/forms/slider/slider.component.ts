@@ -111,7 +111,7 @@ version : 5.11.2 onwards
 default :
 description : Type applied to slider
 */
-@Input('type') type = 1;
+  @Input('type') type = 1;
   /*
 Events
 name : onChange
@@ -175,7 +175,7 @@ description : Triggers when slider reaches the end
   public onModelTouched: any = () => { };
 
   constructor(public el: ElementRef, public domHandler: DomHandler, public renderer: Renderer2, private ngZone: NgZone) {
-  this.componentId = 'slider' + '_' + Math.floor(Math.random() * 1000 + 999);
+    this.componentId = 'slider' + '_' + Math.floor(Math.random() * 1000 + 999);
   }
   onMouseDown(event: Event, index?: number) {
     if (this.disabled) {
@@ -237,9 +237,10 @@ description : Triggers when slider reaches the end
 
   handleChange(event: Event) {
     let handleValue = this.calculateHandleValue(event);
-    if (handleValue > 99) {
+    const stepvalue = parseInt(this.step + '', 10);
+    if ((handleValue + stepvalue) > 99) {
       handleValue = 100;
-    } else if (handleValue < 1) {
+    } else if ((handleValue - stepvalue) < 1) {
       handleValue = 0;
     }
     this.setValueFromHandle(event, handleValue);
@@ -459,7 +460,7 @@ description : Triggers when slider reaches the end
     if (!this.step) {
       this.step = 10;
       this.step = this.max / this.step;
-    }else if (!this.max && !this.step && !this.min) {
+    } else if (!this.max && !this.step && !this.min) {
       this.step = this.max / this.step;
     }
     this.handleValue = this.handleValue + this.step;
@@ -469,7 +470,7 @@ description : Triggers when slider reaches the end
     if (!this.step) {
       this.step = 10;
       this.step = this.max / this.step;
-    }else if (!this.max && !this.step && !this.min) {
+    } else if (!this.max && !this.step && !this.min) {
       this.step = this.max / this.step;
     }
     this.handleValue = this.min;
@@ -479,7 +480,7 @@ description : Triggers when slider reaches the end
     if (!this.step) {
       this.step = 10;
       this.step = this.max / this.step;
-    }else if (!this.max && !this.step && !this.min) {
+    } else if (!this.max && !this.step && !this.min) {
       this.step = this.max / this.step;
     }
     this.handleValue = this.max;
