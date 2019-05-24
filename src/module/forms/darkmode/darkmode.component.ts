@@ -82,7 +82,8 @@ export class DarkmodeComponent implements OnInit {
 
     }
 
-    onChange() {
+    onChange(eventV: any) {
+        this.stepVal = eventV;
         if (this.mode === 'sepia') {
             this.sepiaMode();
         } else if (this.mode === 'custom') {
@@ -136,7 +137,7 @@ export class DarkmodeComponent implements OnInit {
     }
 
     addDynamicCss(circleColor: any, borderColor: any) {
-        this.insertStyleSheetRule('.ui-slider-handle2' +
+        this.insertStyleSheetRule('.slider::-webkit-slider-thumb' +
         '{ background:' + circleColor + '!important; border: 1px solid ' + borderColor + ' !important; }');
     }
 }

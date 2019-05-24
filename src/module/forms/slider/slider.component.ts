@@ -20,6 +20,8 @@ import { Component, ElementRef, EventEmitter, forwardRef, Input, NgZone, OnDestr
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DomHandler } from './slider.handler';
 
+import { ValueAccessorBase } from '../../base/value-accessor';
+
 @Component({
   selector: 'amexio-slider',
   templateUrl: 'slider.component.html',
@@ -27,7 +29,7 @@ import { DomHandler } from './slider.handler';
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioSliderComponent), multi: true,
   }],
 })
-export class AmexioSliderComponent implements OnDestroy, ControlValueAccessor {
+export class AmexioSliderComponent  extends ValueAccessorBase<number> implements OnDestroy, ControlValueAccessor {
 
   /*
 Properties
@@ -132,6 +134,9 @@ description : Triggers when slider reaches the end
 */
   @Output() onSlideEnd: EventEmitter<any> = new EventEmitter();
 
+  // For input use only
+  @Input('darkmode-slider') darkmodeSlider = false;
+
   public dragging: boolean;
 
   public dragListener: any;
@@ -175,6 +180,7 @@ description : Triggers when slider reaches the end
   public onModelTouched: any = () => { };
 
   constructor(public el: ElementRef, public domHandler: DomHandler, public renderer: Renderer2, private ngZone: NgZone) {
+    super();
     this.componentId = 'slider' + '_' + Math.floor(Math.random() * 1000 + 999);
   }
   onMouseDown(event: Event, index?: number) {
@@ -321,24 +327,6 @@ description : Triggers when slider reaches the end
 
     this.updateValue(val);
     this.updateHandleValue();
-  }
-
-  writeValue(value: any): void {
-    if (this.range) {
-      this.values = value || [0, 0];
-    } else {
-      this.value = value || 0;
-    }
-
-    this.updateHandleValue();
-  }
-
-  registerOnChange(fn: any): void {
-    this.onModelChange = fn;
-  }
-
-  registerOnTouched(fn: any): void {
-    this.onModelTouched = fn;
   }
 
   setDisabledState(val: boolean): void {
@@ -500,5 +488,4 @@ description : Triggers when slider reaches the end
   onBlur(event: Event) {
     this.sliderFocus = false;
   }
-
 }

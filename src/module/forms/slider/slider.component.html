@@ -1,46 +1,51 @@
-<div id="value" role="slider" [ngStyle]="style" [class]="styleClass" [ngClass]="{'ui-slider ui-widget ui-widget-content ui-corner-all':true,'disable-component':disabled,
+<ng-container *ngIf="!darkmodeSlider">
+    <div id="value" role="slider" [ngStyle]="style" [class]="styleClass" [ngClass]="{'ui-slider ui-widget ui-widget-content ui-corner-all':true,'disable-component':disabled,
             'ui-slider-horizontal':(orientation == 'horizontal' && type != 2),
             'ui-slider-horizontal2':(orientation == 'horizontal' && type == 2),
             'ui-slider-vertical':(orientation == 'vertical' && type != 2),
             'ui-slider-vertical2':(orientation =='vertical' && type == 2),
-            'ui-slider-animate':animate}"
-    (click)="onBarClick($event);">
-    <div attr.aria-labelled={{value}} role="slider" [tabindex]="disabled ? -1 : 0" [attr.aria-orientation]="orientation"
-        [attr.aria-valuenow]="value" aria-valuemin="1" aria-valuemax="10" [attr.aria-valuetext]="value"
-        (keydown.arrowdown)="onKeyLeftDown($event)" (keydown.arrowup)="onKeyRightUp($event)" (keydown.arrowright)="onKeyRightUp($event)"
-        (keydown.arrowleft)="onKeyLeftDown($event)" (keydown.home)="onKeyHome($event)" (keydown.end)="onKeyEnd($event)"
-        (focus)="onFocus($event)" (blur)="onBlur($event)" [ngClass]="{'focusOnSlider':sliderFocus}" (keydown.pageup)="onKeyPageUp($event)"
-        (keydown.pagedown)="onKeyPageDown($event)"></div>
+            'ui-slider-animate':animate}" (click)="onBarClick($event);">
+        <div attr.aria-labelled={{value}} role="slider" [tabindex]="disabled ? -1 : 0" [attr.aria-orientation]="orientation" [attr.aria-valuenow]="value"
+            aria-valuemin="1" aria-valuemax="10" [attr.aria-valuetext]="value" (keydown.arrowdown)="onKeyLeftDown($event)" (keydown.arrowup)="onKeyRightUp($event)"
+            (keydown.arrowright)="onKeyRightUp($event)" (keydown.arrowleft)="onKeyLeftDown($event)" (keydown.home)="onKeyHome($event)"
+            (keydown.end)="onKeyEnd($event)" (focus)="onFocus($event)" (blur)="onBlur($event)" [ngClass]="{'focusOnSlider':sliderFocus}"
+            (keydown.pageup)="onKeyPageUp($event)" (keydown.pagedown)="onKeyPageDown($event)"></div>
 
 
-    <span *ngIf="range && orientation == 'horizontal'" class=" ui-slider-range ui-widget-header ui-corner-all"
-        [ngStyle]="{'left':handleValues[0] + '%',width: (handleValues[1] - handleValues[0] + '%')}">
-    </span>
-    <span *ngIf="range && orientation == 'vertical'" class="ui-slider-range ui-widget-header ui-corner-all" [ngStyle]="{'bottom':handleValues[0] + '%',height: (handleValues[1] - handleValues[0] + '%')}"></span>
+        <span *ngIf="range && orientation == 'horizontal'" class=" ui-slider-range ui-widget-header ui-corner-all" [ngStyle]="{'left':handleValues[0] + '%',width: (handleValues[1] - handleValues[0] + '%')}">
+        </span>
+        <span *ngIf="range && orientation == 'vertical'" class="ui-slider-range ui-widget-header ui-corner-all" [ngStyle]="{'bottom':handleValues[0] + '%',height: (handleValues[1] - handleValues[0] + '%')}"></span>
 
-    <span *ngIf="!range && orientation=='vertical'" class="ui-slider-range-min ui-widget-header ui-corner-all"
-        [ngClass]="{'ui-slider-range':type != 2,'ui-slider-range2':type == 2}" [ngStyle]="{'height': handleValue + '%'}"></span>
+        <span *ngIf="!range && orientation=='vertical'" class="ui-slider-range-min ui-widget-header ui-corner-all" [ngClass]="{'ui-slider-range':type != 2,'ui-slider-range2':type == 2}"
+            [ngStyle]="{'height': handleValue + '%'}"></span>
 
-    <span *ngIf="!range && orientation=='horizontal'" class="ui-slider-range ui-slider-range-min ui-widget-header ui-corner-all"
-        [ngStyle]="{'width': handleValue + '%'}"></span>
+        <span *ngIf="!range && orientation=='horizontal'" class="ui-slider-range ui-slider-range-min ui-widget-header ui-corner-all"
+            [ngStyle]="{'width': handleValue + '%'}"></span>
 
-    <span *ngIf="!range" class="ui-state-default ui-corner-all ui-clickable" [ngClass]="{'ui-slider-handle': (orientation == 'horizontal' && type !=2),
+        <span *ngIf="!range" class="ui-state-default ui-corner-all ui-clickable" [ngClass]="{'ui-slider-handle': (orientation == 'horizontal' && type !=2),
                 'ui-slider-handle2': (orientation == 'horizontal' && type == 2),
             'ui-slider-handle1':(orientation =='vertical' && type!=2),
-            'ui-slider-handle3':(orientation =='vertical' && type ==2)}"
-        (mousedown)="onMouseDown($event)" (touchstart)="onTouchStart($event)" (touchmove)="onTouchMove($event)"
-        (touchend)="dragging=false" [style.transition]="dragging ? 'none': null" [ngStyle]="{'left': orientation == 'horizontal' ? handleValue + '%' : null,
+            'ui-slider-handle3':(orientation =='vertical' && type ==2)}" (mousedown)="onMouseDown($event)" (touchstart)="onTouchStart($event)"
+            (touchmove)="onTouchMove($event)" (touchend)="dragging=false" [style.transition]="dragging ? 'none': null" [ngStyle]="{'left': orientation == 'horizontal' ? handleValue + '%' : null,
             'bottom': orientation == 'vertical' ? handleValue + '%' : null}"></span>
 
-    <span *ngIf="range" (mousedown)="onMouseDown($event,0)" aria-labelledby="id" (touchstart)="onTouchStart($event,0)"
-        (touchmove)="onTouchMove($event,0)" (touchend)="dragging=false" setValueFromHandle(event,this.slidevar);
-        [style.transition]="dragging ? 'none': null" class="ui-slider-handle ui-state-default ui-corner-all ui-clickable"
-        [ngStyle]="{'left': rangeStartLeft, 'bottom': rangeStartBottom}" [ngClass]="{'ui-slider-handle-active':handleIndex==0}
+        <span *ngIf="range" (mousedown)="onMouseDown($event,0)" aria-labelledby="id" (touchstart)="onTouchStart($event,0)" (touchmove)="onTouchMove($event,0)"
+            (touchend)="dragging=false" setValueFromHandle(event,this.slidevar); [style.transition]="dragging ? 'none': null"
+            class="ui-slider-handle ui-state-default ui-corner-all ui-clickable" [ngStyle]="{'left': rangeStartLeft, 'bottom': rangeStartBottom}"
+            [ngClass]="{'ui-slider-handle-active':handleIndex==0}
         "></span>
 
-    <span *ngIf="range" (mousedown)="onMouseDown($event,1)" (touchstart)="onTouchStart($event,1)" (touchmove)="onTouchMove($event,1)"
-        (touchend)="dragging=false" [style.transition]="dragging ? 'none': null" [ngStyle]="{'left': rangeEndLeft, 'bottom': rangeEndBottom}"
-        [ngClass]="{'ui-slider-handle-active':handleIndex==1 ,'ui-slider-range3': type == 2
+        <span *ngIf="range" (mousedown)="onMouseDown($event,1)" (touchstart)="onTouchStart($event,1)" (touchmove)="onTouchMove($event,1)"
+            (touchend)="dragging=false" [style.transition]="dragging ? 'none': null" [ngStyle]="{'left': rangeEndLeft, 'bottom': rangeEndBottom}"
+            [ngClass]="{'ui-slider-handle-active':handleIndex==1 ,'ui-slider-range3': type == 2
       
     }"></span>
-</div>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="darkmodeSlider">
+    <div class="slidecontainer">
+        <input class="slider" name="value" type="range" min="{{min}}" max="{{max}}" step={{step}} value="1"
+            [(ngModel)]="value">
+    </div>
+</ng-container>
