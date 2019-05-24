@@ -85,6 +85,16 @@ body {
     float: left;
 }
 
+.flex-inline {
+   display: flex;
+   flex-direction: row;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+ }
+ 
 .flex-center {
     justify-content: center;
 }
@@ -95,6 +105,11 @@ body {
 
 .flex-end {
     justify-content: flex-end;
+}
+
+
+.flex-spacebetween {
+    justify-content: space-between
 }
 
 .border-bottom {

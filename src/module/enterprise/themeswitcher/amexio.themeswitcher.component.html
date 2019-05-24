@@ -1,0 +1,41 @@
+<div class="flex-row">
+    <div class="flex-col flex-col-12">
+        <div class="flex-inline flex-start">
+            <label role="text" style="outline: none; cursor: text;" class="label-content medium-bold">
+                More Details: &nbsp;
+            </label>
+            <amexio-toggle (onChange)="onChange($event)" [size]="'small'" [type]="1" shape="square"> </amexio-toggle>
+        </div>
+    </div>
+</div>
+<div class="flex-row" *ngFor="let row of data">
+    <div [class]="'flex-col  flex-col-'+(12/row.length)" *ngFor="let col of row">
+        <div class="card-container">
+            <header class="card-header flex-inline flex-spacebetween" style="padding: 10px;"
+                [ngStyle]="{'background-color':col.navBarBGColor, 'color':col.navBarFontColor}">
+                <label role="text" style="outline: none; cursor: text;" class="label-content medium-bold">
+                    {{col.themeName}}
+                </label>
+                <amexio-button *ngIf="testmode" [icon]="'fa fa-check'" [type]="'transparent'"
+                    (onClick)="themeChange(col)"></amexio-button>
+            </header>
+            <div *ngIf="isMoreDetails" class="card-body cardbody">
+                <img [attr.alt]="col.themeName" [attr.src]="'https://meta-magic.github.io/amexio-content/theme-icons/'+col.themeImageFile"
+                    class="img-fluid" />
+                <br />
+                <label role="text" style="outline: none; cursor: text;" class="label-content small-bold">
+                    Version: {{col.version}}
+                </label>
+                <br />
+                <label role="text" style="outline: none; cursor: text;" class="label-content small-bold">
+                    Style: {{col.style}}
+                </label>
+
+            </div>
+            <footer class="card-footer flex-center">
+                <div *ngFor="let color of col.themes" class="themecolorpalette" [ngStyle]="{'background-color': color}">
+                </div>
+            </footer>
+        </div>
+    </div>
+<div>
