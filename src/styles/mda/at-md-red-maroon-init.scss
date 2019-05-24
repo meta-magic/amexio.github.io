@@ -41,12 +41,12 @@
 --themePrimaryColorShade6 : #fff5f5;
 
 /** Theme Color Gradients -------------------------- */
---themePrimaryColorGradient : linear-gradient(to right, #520000, #ff0505, #ff8585);
---themeSecondaryColorGradient : linear-gradient(to right, #520000, #ff0505, #ff8585);
---theme3rdColorGradient : linear-gradient(to right, #525200, #ffff05, #ffff85);
---theme4thColorGradient : linear-gradient(to right, #295200, #82ff05, #c2ff85);
---theme5thColorGradient : linear-gradient(to right, #005200, #05ff05, #85ff85);
---theme6thColorGradient : linear-gradient(to right, #005229, #05ff82, #85ffc2);
+--themePrimaryColorGradient : linear-gradient(to right, #520000, #e00000, #ff5c5c);
+--themeSecondaryColorGradient : linear-gradient(to right, #520000, #e00000, #ff5c5c);
+--theme3rdColorGradient : linear-gradient(to right, #525200, #e0e000, #ffff5c);
+--theme4thColorGradient : linear-gradient(to right, #295200, #70e000, #adff5c);
+--theme5thColorGradient : linear-gradient(to right, #005200, #00e000, #5cff5c);
+--theme6thColorGradient : linear-gradient(to right, #005229, #00e070, #5cffad);
 
 /** Theme Font Family -------------------------- */
 --themeFontColor : #1f0000;

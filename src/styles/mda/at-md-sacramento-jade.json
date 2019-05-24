@@ -25,12 +25,12 @@
 { "key": "--themePrimaryColorShade5", "value": "#d1fff0"},
 { "key": "--themePrimaryColorShade6", "value": "#f5fffc"},
 
-{ "key": "--themePrimaryColorGradient", "value": "linear-gradient(to right, #005236, #05ffac, #85ffd6)"},
-{ "key": "--themeSecondaryColorGradient", "value": "linear-gradient(to right, #005234, #05ffa3, #85ffd2)"},
-{ "key": "--theme3rdColorGradient", "value": "linear-gradient(to right, #001b52, #0558ff, #85adff)"},
-{ "key": "--theme4thColorGradient", "value": "linear-gradient(to right, #0e0052, #2f05ff, #9985ff)"},
-{ "key": "--theme5thColorGradient", "value": "linear-gradient(to right, #360052, #ac05ff, #d685ff)"},
-{ "key": "--theme6thColorGradient", "value": "linear-gradient(to right, #520044, #ff05d5, #ff85eb)"},
+{ "key": "--themePrimaryColorGradient", "value": "linear-gradient(to right, #005236, #00e096, #5cffc9)"},
+{ "key": "--themeSecondaryColorGradient", "value": "linear-gradient(to right, #005234, #00e08e, #5cffc3)"},
+{ "key": "--theme3rdColorGradient", "value": "linear-gradient(to right, #001b52, #004be0, #5c92ff)"},
+{ "key": "--theme4thColorGradient", "value": "linear-gradient(to right, #0e0052, #2500e0, #775cff)"},
+{ "key": "--theme5thColorGradient", "value": "linear-gradient(to right, #360052, #9600e0, #c95cff)"},
+{ "key": "--theme6thColorGradient", "value": "linear-gradient(to right, #520044, #e000bb, #ff5ce4)"},
 
 { "key": "--themeFontColor", "value": "#001f14"},
 { "key": "--themeFontFamily ", "value": "Roboto,Trebuchet MS,Arial,Helvetica,sans-serif"},
