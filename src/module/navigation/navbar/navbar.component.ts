@@ -31,7 +31,7 @@ import { DeviceQueryService } from '../../services/device/device.query.service';
 })
 export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterContentInit {
 
-  /*
+   /*
 Properties
 name : title
 datatype : string
@@ -39,9 +39,9 @@ version : 4.0 onwards
 default : none
 description : Title for link, button and menu header
 */
-  @Input() title: string;
+@Input() title: string;
 
-  /*
+/*
 Properties
 name : logo
 datatype : string
@@ -49,9 +49,9 @@ version : 4.0 onwards
 default : none
 description : Logo of navbar.
 */
-  @Input() logo = '';
+@Input() logo = '';
 
-  /*
+/*
 Properties
 name : enable-side-nav-position
 datatype : boolean
@@ -59,9 +59,9 @@ version : 4.0 onwards
 default : none
 description : Indicate if side-nav-bar is present
 */
-  @Input('enable-side-nav-position') sidenavspace = false;
+@Input('enable-side-nav-position') sidenavspace = false;
 
-    /*
+  /*
 Properties
 name : enable-side-nav-position
 datatype : boolean
@@ -71,7 +71,7 @@ description : transparent nav bar
 */
 @Input('transparent') transparent = false;
 
-    /*
+  /*
 Properties
 name : color
 datatype : string
@@ -81,79 +81,82 @@ description : Color
 */
 @Input('color') color: string;
 
+@Input('enable-more-mode') enableMoreMode = false;
+
 opacity: number;
 themeCss: any;
 amexioComponentId = 'amexio-navbar';
 
-  // THIS IS LOCAL USE NOT EXPOSED
-  @Input('home-page-type') homepageType: string;
-  @Output() onNavLogoClick: any = new EventEmitter<any>();
+// THIS IS LOCAL USE NOT EXPOSED
+@Input('home-page-type') homepageType: string;
+@Output() onNavLogoClick: any = new EventEmitter<any>();
 
-  @Output() onNavTitleClick: any = new EventEmitter<any>();
+@Output() onNavTitleClick: any = new EventEmitter<any>();
 
-  @Output() onIconArrowClick: any = new EventEmitter<any>();
+@Output() onIconArrowClick: any = new EventEmitter<any>();
 
-  @Output() onIconClick: any = new EventEmitter<any>();
+@Output() onIconClick: any = new EventEmitter<any>();
 
-  @Output() navSubmenuClick: any = new EventEmitter<any>();
+@Output() navSubmenuClick: any = new EventEmitter<any>();
 
-  @ContentChildren(AmexioNavItemComponent) navitems: QueryList<AmexioNavItemComponent>;
+@ContentChildren(AmexioNavItemComponent) navitems: QueryList<AmexioNavItemComponent>;
 
-  navItemComponents: AmexioNavItemComponent[];
+navItemComponents: AmexioNavItemComponent[];
 
-  @ViewChild('navbar', { read: ElementRef }) public navbar: ElementRef;
-  @ViewChild('navbarfixed', { read: ElementRef }) public navbarfixed: ElementRef;
-  @ViewChild('navbaritems', { read: ElementRef }) public navbaritems: ElementRef;
-  @ViewChild('navbaritems1', { read: ElementRef }) public navbaritems1: ElementRef;
-  @ViewChild('navbaritems2', { read: ElementRef }) public navbaritems2: ElementRef;
-  @ViewChild('navbaritems3', { read: ElementRef }) public navbaritems3: ElementRef;
+@ViewChild('navbar', { read: ElementRef }) public navbar: ElementRef;
+@ViewChild('navbarfixed', { read: ElementRef }) public navbarfixed: ElementRef;
+@ViewChild('navbaritems', { read: ElementRef }) public navbaritems: ElementRef;
+@ViewChild('navbaritems1', { read: ElementRef }) public navbaritems1: ElementRef;
+@ViewChild('navbaritems2', { read: ElementRef }) public navbaritems2: ElementRef;
+@ViewChild('navbaritems3', { read: ElementRef }) public navbaritems3: ElementRef;
 
-  navclass: string;
-  toggle = true;
-  mobilemode = false;
-  navitemwidth: number;
-  navfixeditem: number;
-  sidenav = false;
-  isIconLeft = true;
-  isLHSHide = false;
-  lhsWidth = '5%';
-  isExpand = false;
-  isPhone = false;
-  navItemPresent = false;
-  top: any;
-  constructor(public matchMediaService: DeviceQueryService) {
-    if (this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone()) {
-      this.mobilemode = true;
-      this.isPhone = true;
-    } else {
-        this.mobilemode = false;
-        this.isPhone = false;
-    }
-  }
+navclass: string;
+toggle = true;
+mobilemode = false;
+navitemwidth: number;
+navfixeditem: number;
+sidenav = false;
+isIconLeft = true;
+isLHSHide = false;
+lhsWidth = '5%';
+isExpand = false;
+isPhone = false;
+navItemPresent = false;
+top: any;
+type: string;
+moreBucket: AmexioNavItemComponent[] = [];
+resizeItemCollection: AmexioNavItemComponent[] = [];
+isItemRemoved = false;
+morePadding= 0;
+moreCheckWidth = 0;
+constructor(public matchMediaService: DeviceQueryService) {
+}
 
-  ngOnInit() {
-  }
+ngOnInit() {
 
-  ngAfterViewInit() {
-    if (!this.logo) {
-      this.loadNavItems();
-    }
-  }
+}
 
-  ngAfterContentInit() {
-    this.navItemComponents = this.navitems.toArray();
-    if (this.navItemComponents && this.navItemComponents.length > 0) {
-      this.navItemPresent = true;
-      this.navItemComponents.forEach((element: any) => {
-        element.itemcolor = this.color;
-        });
-    }
-
-  }
-
-  onImageLoad() {
+ngAfterViewInit() {
+  if (!this.logo) {
     this.loadNavItems();
   }
+}
+
+ngAfterContentInit() {
+  this.navItemComponents = this.navitems.toArray();
+  if (this.navItemComponents && this.navItemComponents.length > 0) {
+    this.navItemPresent = true;
+    this.navItemComponents.forEach((element: any) => {
+      element.itemcolor = this.color;
+      });
+
+  }
+  this.type = this.navItemComponents[0].type;
+}
+
+onImageLoad() {
+  this.loadNavItems();
+}
 
   loadNavItems() {
     this.handleNavItems();
@@ -162,123 +165,183 @@ amexioComponentId = 'amexio-navbar';
         (this.navbaritems2.nativeElement.offsetWidth) +
         (this.navbaritems2.nativeElement.offsetWidth) +
         (this.navbaritems3.nativeElement.offsetWidth));
+    }
+    if (this.navbarfixed && this.navbarfixed.nativeElement) {
+      this.moreCheckWidth = this.moreCheckWidth + this.navbarfixed.nativeElement.offsetWidth;
+    }
+    if (this.navbaritems1 && this.navbaritems1.nativeElement) {
+      this.moreCheckWidth = this.moreCheckWidth + this.navbarfixed.nativeElement.offsetWidth;
+    }
+    if (this.navbaritems2 && this.navbaritems2.nativeElement) {
+      this.moreCheckWidth = this.moreCheckWidth + this.navbarfixed.nativeElement.offsetWidth;
+    }
+    if (!this.enableMoreMode) {
       this.handleDeviceSetting();
-    }
-  }
-
-  toggleDrawerPanel(event: any) {
-    this.toggle = !this.toggle;
-  }
-
-  handleNavItems() {
-    this.navItemComponents = this.navitems.toArray();
-    this.navItemComponents.forEach((node) => node.onNavItemClick.subscribe((eventdata: any) => this.handleNavItemEvent(eventdata)));
-  }
-
-  handleNavItemEvent(event: any) {
-    if (event && event.data && event.data.node && !event.data.node.header && this.mobilemode) {
-      this.toggle = false;
-    }
-  }
-
-  notifyNavItems(navbarwidth: number) {
-    if (this.navItemComponents) {
-      this.navItemComponents.forEach((node) => {
-        node.setMobileMode(this.mobilemode);
-        node.setNavbarWidth(navbarwidth);
-      });
-    }
-  }
-
-  handleDeviceSetting() {
-    if (this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone()) {
-      this.mobilemode = true;
-      this.isPhone = true;
     } else {
+      if (this.matchMediaService.IsPhone()) {
+        this.mobilemode = true;
+        this.isPhone = true;
+      } else {
         this.mobilemode = false;
         this.isPhone = false;
-    }
-    if (this.sidenavspace) {
-      this.sideNavbar();
-    }
-
-    const navbarwidth = this.navbar.nativeElement.offsetWidth;
-    const navbarheight = this.navbar.nativeElement.offsetHeight;
-
-    if (!this.navfixeditem) {
-      this.navfixeditem = this.navbarfixed.nativeElement.offsetWidth;
-    }
-
-    if (!this.navitemwidth) {
-      let navbaritems1Width = 0;
-      let navbaritems2Width = 0;
-      let navbaritems3Width = 0;
-
-      if (this.navbaritems1) {
-        navbaritems1Width = this.navbaritems1.nativeElement.offsetWidth;
       }
-      if (this.navbaritems2) {
-        navbaritems2Width = this.navbaritems2.nativeElement.offsetWidth;
-      }
-
-      if (this.navbaritems3) {
-        navbaritems3Width = this.navbaritems3.nativeElement.offsetWidth;
-      }
-      this.navitemwidth = (this.navfixeditem + navbaritems1Width + navbaritems2Width + navbaritems3Width);
+      this.createMoreContent();
     }
-
-    const navbaravailablewidth = (navbarwidth - (this.navfixeditem + this.navitemwidth));
-
-    if ((navbaravailablewidth < 10 || navbarheight > 100)) {
-      this.mobilemode = true;
-      this.toggle = false;
-      this.notifyNavItems(navbarwidth);
-    } else {
-      this.mobilemode = false;
-      this.toggle = true;
-      this.notifyNavItems(navbarwidth);
-    }
-
   }
-  sideNavbar() {
-    if (this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone()) {
+
+toggleDrawerPanel(event: any) {
+  this.toggle = !this.toggle;
+}
+
+handleNavItems() {
+  this.navItemComponents = this.navitems.toArray();
+  this.navItemComponents.forEach((node) => node.onNavItemClick.subscribe((eventdata: any) => this.handleNavItemEvent(eventdata)));
+}
+
+handleNavItemEvent(event: any) {
+  if (event && event.data && event.data.node && !event.data.node.header && this.mobilemode) {
+    this.toggle = false;
+  }
+}
+
+notifyNavItems(navbarwidth: number) {
+  if (this.navItemComponents) {
+    this.navItemComponents.forEach((node) => {
+      node.setMobileMode(this.mobilemode);
+      node.setNavbarWidth(navbarwidth);
+    });
+  }
+}
+
+handleDeviceSetting() {
+  if (this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone()) {
+    this.mobilemode = true;
+    this.toggle = false;
+    this.isPhone = true;
+    if (this.sidenavspace) {
       this.sidenav = true;
-    } else {
+    }
+  } else {
+    this.mobilemode = false;
+    this.toggle = true;
+    this.isPhone = false;
+    if (this.sidenavspace) {
       this.sidenav = false;
     }
   }
+}
+
+sideNavbar() {
+  if (this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone()) {
+    this.sidenav = true;
+  } else {
+    this.sidenav = false;
+  }
+}
 
   resize(event: any) {
-    this.handleDeviceSetting();
+    if (!this.enableMoreMode) {
+      this.handleDeviceSetting();
+    } else {
+      if (this.matchMediaService.IsPhone()) {
+        this.mobilemode = true;
+        this.toggle = false;
+        this.isPhone = true;
+      } else {
+        this.mobilemode = false;
+        this.toggle = true;
+        this.isPhone = false;
+      }
+
+      this.createMoreContent();
+    }
+
     if (this.homepageType === '3') {
       if (!this.isExpand) {
         this.lhsWidth = '0 0 19%';
-      } else  {
+      } else {
         this.isLHSHide = true;
         this.lhsWidth = '0 0 5%';
       }
       this.isExpand = !this.isExpand;
     }
   }
-  onArrowClick(event: any) {
-    this.onIconArrowClick.emit();
-    this.isIconLeft = !this.isIconLeft;
-  }
-  // THIS EVENT IS HOME COMPOENNT USE.NOT EXPOSED
-  onExpandIconClick() {
-    if (this.homepageType === '3') {
-      if (!this.isExpand) {
-        this.lhsWidth = '0 0 19%';
-      } else  {
-        this.isLHSHide = true;
-        this.lhsWidth = '0 0 5%';
-      }
-      this.onIconClick.emit(!this.isExpand);
-      this.isExpand = !this.isExpand;
+onArrowClick(event: any) {
+  this.onIconArrowClick.emit();
+  this.isIconLeft = !this.isIconLeft;
+}
+// THIS EVENT IS HOME COMPOENNT USE.NOT EXPOSED
+onExpandIconClick() {
+  if (this.homepageType === '3') {
+    if (!this.isExpand) {
+      this.lhsWidth = '0 0 19%';
+    } else  {
+      this.isLHSHide = true;
+      this.lhsWidth = '0 0 5%';
     }
+    this.onIconClick.emit(!this.isExpand);
+    this.isExpand = !this.isExpand;
+  }
+}
+
+setColorPalette(themeClass: any) {
+  this.themeCss = themeClass;
+ }
+ createMoreContent() {
+  this.resizeItemCollection = [];
+  this.moreBucket = [];
+  if (!this.mobilemode) {
+    if (!this.isItemRemoved && this.navItemComponents && this.navItemComponents.length > 0) {
+      this.navItemComponents.forEach((nvitem: any) => {
+        if (nvitem.type === 'menu') {
+          nvitem.offsetWidth = nvitem.elementref.nativeElement.offsetWidth;
+          const node: HTMLElement = document.getElementById(nvitem.componentId);
+          node.parentNode.removeChild(node);
+        }
+      });
+      this.isItemRemoved = true;
+    }
+    if (this.navItemComponents && this.navItemComponents.length > 0) {
+      this.contentOperation();
+    }
+  } else {
+    this.navItemComponents.forEach((nvitem: any) => {
+      if (nvitem.type === 'menu') {
+        this.resizeItemCollection.push(nvitem);
+      }
+    });
+
   }
 
-  setColorPalette(themeClass: any) {
-    this.themeCss = themeClass;
-   }
+  this.setPadding();
+}
+
+  contentOperation() {
+    let itemsWidth = 0;
+    let gapWidth = 0;
+    if (this.moreCheckWidth === 0 || this.moreCheckWidth < 200) {
+      gapWidth = 200;
+    } else {
+      gapWidth = 0;
+      itemsWidth = this.moreCheckWidth;
+    }
+    this.navItemComponents.forEach((nvitem: any) => {
+      if (nvitem.type === 'menu') {
+      if (this.navbar.nativeElement.offsetWidth > (itemsWidth + gapWidth) || ((this.navbar.nativeElement.offsetWidth - itemsWidth) > 200)) {
+        itemsWidth = (itemsWidth + nvitem.offsetWidth );
+        this.resizeItemCollection.push(nvitem);
+      } else {
+        this.moreBucket.push(nvitem);
+      }
+    }
+    });
+  }
+
+  setPadding() {
+    if (this.moreBucket.length > 0) {
+      this.morePadding = 50;
+    } else {
+      this.morePadding = 0;
+    }
+  }
 }

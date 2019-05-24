@@ -19,6 +19,7 @@ import {DockbarComponent} from './dockedbar/dockbaritem';
 import {DockedBarToolComponent} from './dockedbar/dockettoolbar.component';
 import {AmexioMenuBarComponent} from './menubar/menubar.component';
 import {AmexioInnerNavMenuComponent} from './navbar/innermenu.component';
+import {MoreContentComponent} from './navbar/morecontent.component';
 import {AmexioNavActionComponent } from './navbar/navaction.component';
 import {AmexioNavBarComponent} from './navbar/navbar.component';
 import {AmexioNavItemComponent} from './navbar/navitem.component';
@@ -41,6 +42,7 @@ export * from './notification/notification.component';
 const NAV_COMPONENTS = [
   AmexioSideNavComponent,
   SideNavNodeComponent,
+  MoreContentComponent,
   AmexioNavBarComponent,
   AmexioNavItemComponent,
   AmexioNotificationComponent,

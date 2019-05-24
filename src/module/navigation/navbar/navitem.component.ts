@@ -102,8 +102,11 @@ description : Indicate the type of menu-items (link / button / textfield /menu )
   private innerValue = '';
   private onTouchedCallback: () => void = noop;
   private onChangeCallback: (_: any) => void = noop;
+  componentId = '';
+  offsetWidth = 0;
   constructor(private elementref: ElementRef) {
-
+    this.componentId = Math.floor(Math.random() * 90000) + 10000 + '_navctyt';
+    this.offsetWidth = this.elementref.nativeElement.offsetWidth;
   }
 
   ngOnInit() {

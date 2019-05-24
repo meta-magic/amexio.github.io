@@ -1,0 +1,22 @@
+
+
+<div style=" display: flex;margin-bottom: 40%; flex-direction: column; margin-left: 60px " class="topnavmainbaritems">
+        <div style="position: fixed;right:0;cursor: pointer;" (click)="moreToggle()">
+            <div>
+                
+               <span >More</span>
+                <span *ngIf="!showMoreContent">
+                        <i class="fa fa-angle-down" style="padding: 0px 5px;margin-bottom: 2px;;" aria-hidden="true"></i>
+                </span>
+                <span *ngIf="showMoreContent">
+                        <i class="fa fa-angle-up" style="padding: 0px 5px;margin-bottom: 2px;;" aria-hidden="true"></i>
+                </span>
+            </div>
+            <ng-container *ngIf="showMoreContent">
+                    <div class="more-content" style="right: 5px;">
+                        <amexio-nav-item style="display: block; margin-bottom: 10px;" [icon]="node.icon" *ngFor="let node of data" [type]="node.type" [title]="node.title" [data]="node.data">
+                        </amexio-nav-item>
+        
+                    </div>        
+                </ng-container>
+        </div>

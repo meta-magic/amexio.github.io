@@ -47,6 +47,15 @@
             </div>
             <div #navbaritems3 class="topnavmainbaritems" [ngClass]="{'topnavmainbaritems-mobile':mobilemode}">
                 <ng-content select="[position-right]"></ng-content>
+               
+                <ng-container *ngIf="enableMoreMode"> 
+                    <amexio-nav-item  *ngFor="let node of resizeItemCollection" [type]="node.type"
+                    [title]="node.title"  [data]="node.data" [icon]="node.icon">
+                     </amexio-nav-item >
+                
+                            <more-content  *ngIf="moreBucket.length"  #moreItem [data]="moreBucket" [isMobileView]="mobilemode"></more-content>             
+       
+                </ng-container>               
             </div>
         </div>
     </div>

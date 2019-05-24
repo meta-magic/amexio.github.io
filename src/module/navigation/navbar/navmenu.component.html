@@ -1,11 +1,11 @@
 <div class="nav-dropdown">
-    <a class="nav-dropbtn" [ngStyle]="{'color':color}" (mouseover)="onMouseoverTitle($event)" (click)="onHeaderClick($event)">
-        <span>
+    <a class="nav-dropbtn"  style="white-space: nowrap" [ngStyle]="{'color':color}" (mouseover)="onMouseoverTitle($event)" (click)="onHeaderClick($event)">
+        <span style="white-space: nowrap">
             <i *ngIf="icon" [ngClass]="icon"></i>
         </span>
-        <span>{{title}}</span>
+        <span style="white-space: nowrap">{{title}}</span>
         
-        <span>
+        <span style="white-space: nowrap">
             <i class="dropdownicon fa fa-angle-down"></i>
         </span>
     </a>
