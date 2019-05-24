@@ -15,7 +15,7 @@ export class AmexioThemeSwitcherComponent implements OnInit {
 
     @Input('mda') isMDA = true;
 
-    @Input('col-size') colsize = 4;
+    @Input('col-size') colsize = 3;
     constructor(private service: AmexioThemeSwitcherService) {
 
     }

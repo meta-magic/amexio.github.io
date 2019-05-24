@@ -9,7 +9,7 @@
     </div>
 </div>
 <div class="flex-row" *ngFor="let row of data">
-    <div [class]="'flex-col'" [class]="'flex-col-'+colsize" *ngFor="let col of row">
+    <div [class]="'flex-col'" [class]="'flex-col-'+(12/colsize)" *ngFor="let col of row">
         <div class="card-container">
             <header class="card-header flex-inline flex-spacebetween" style="padding: 10px;"
                 [ngStyle]="{'background-color':col.navBarBGColor, 'color':col.navBarFontColor}">
@@ -27,8 +27,12 @@
                     Version: {{col.version}}
                 </label>
                 <br />
-                <label role="text" style="outline: none; cursor: text;" class="label-content small-bold">
-                    Style: {{col.style}}
+                <label *ngIf="col.algorithmName" role="text" style="outline: none; cursor: text;" class="label-content small-bold">
+                    Algorithm Name: {{col.algorithmName}}<br />
+                </label>
+                
+                <label *ngIf="col.releaseDate" role="text" style="outline: none; cursor: text;" class="label-content small-bold">
+                    Release Date: {{col.releaseDate}}
                 </label>
 
             </div>
