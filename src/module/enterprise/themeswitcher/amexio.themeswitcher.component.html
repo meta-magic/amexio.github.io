@@ -9,7 +9,7 @@
     </div>
 </div>
 <div class="flex-row" *ngFor="let row of data">
-    <div [class]="'flex-col  flex-col-'+(12/row.length)" *ngFor="let col of row">
+    <div [class]="'flex-col'" [class]="'flex-col-'+colsize" *ngFor="let col of row">
         <div class="card-container">
             <header class="card-header flex-inline flex-spacebetween" style="padding: 10px;"
                 [ngStyle]="{'background-color':col.navBarBGColor, 'color':col.navBarFontColor}">
