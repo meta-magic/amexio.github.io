@@ -239,6 +239,8 @@ description : Context Menu provides the list of menus on right click.
 
   globalClickListenFunc: () => void;
 
+  tempData: any[];
+
   constructor(public dataService: CommonDataService, private renderer: Renderer2) {
     this.filter = false;
     this.enablecheckbox = false;
@@ -348,7 +350,14 @@ description : Context Menu provides the list of menus on right click.
     }
     this.viewData = responsedata;
     this.setSelectedFlag(this.viewData);
+    this.onSelectClick(this.viewData);
     this.orgData = JSON.parse(JSON.stringify(this.viewData));
+  }
+  onSelectClick(viewRows: any) {
+    this.viewData.forEach((elem: any) => {
+      elem['onClickFlag'] = false;
+    });
+
   }
 
   setSelectedFlag(viewRows: any) {
@@ -388,7 +397,11 @@ description : Context Menu provides the list of menus on right click.
         this.selectedData.push(node);
       }
     });
-    this.selectedRows.emit(this.selectedData);
+    const tempData = JSON.parse(JSON.stringify(rowData));
+    delete tempData['index'];
+    delete tempData['onClickFlag'];
+    delete tempData['isSelected'];
+    this.selectedRows.emit(tempData);
   }
   selectAllRecord() {
     this.selectedData = [];
@@ -408,8 +421,23 @@ description : Context Menu provides the list of menus on right click.
   }
 
   onClick(data: any) {
-    this.onRowClick.emit(data);
-  }
+
+    if (!this.enablecheckbox) {
+      this.viewData.forEach((elem: any) => {
+        elem.onClickFlag = false;
+      });
+      this.viewData.forEach((ele: any) => {
+        if (ele.index === data.index) {
+          ele.onClickFlag = true;
+        }
+      });
+    }
+    const tempData = JSON.parse(JSON.stringify(data));
+    delete tempData['index'];
+    delete tempData['onClickFlag'];
+    delete tempData['isSelected'];
+    this.onRowClick.emit(tempData);
+    }
 
   ngAfterViewInit() {
 

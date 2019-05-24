@@ -18,7 +18,7 @@
       <li #id role="option" [attr.aria-selected]="row.isSelected"
        class="list-items" *ngFor="let row of viewData let rowno = index "
         [ngClass]="{'tree-node-label-selected':row.isSelected ,
-        'list-box-items':row.ishoverselected,
+        'list-box-items':row.ishoverselected, 'list-items-click': row.onClickFlag,
         'tree-node-label-not-selected':row.isSelected=='false'}"
         id="{{row.index}}">
         <div (click)="onClick(row)" (contextmenu)="loadContextMenu($event,row, id)">
