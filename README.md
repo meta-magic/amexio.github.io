@@ -8,8 +8,8 @@
 </h1>
 
 <div align="center">
-  <b>Amexio (Angular MetaMagic EXtensions for Inputs and Outputs)</b> is a rich set of  140+  Angular (4/5/6)
-UI Components powered by HTML5 & CSS3 for <b>Responsive Web Design & 50+ built-in Material Design Themes.</b> Components includes Form components, charts, maps, dashboards, Tabs, Grids, Trees, Layouts etc <b>with Accessibility support and Animation effect</b>. We added <b>D3 Charts support </b>with <b>Amexio Drillable Charts</b> option. We augmented the <b>Amexio Layouts</b> with more layout options and brought <b>CSS3 Grid Layout</b> to Amexio with Responsive Design Pattern.
+  <b>Amexio (Angular MetaMagic EXtensions for Inputs and Outputs)</b> is a rich set of  160+  Angular (4/5/6)
+UI Components powered by HTML5 & CSS3 for <b>Responsive Web Design & 80+ built-in Material Design Themes.</b> Components includes Form components, charts, maps, dashboards, Tabs, Grids, Trees, Layouts etc <b>with Accessibility support and Animation effect</b>. We added <b>D3 Charts support </b>with <b>Amexio Drillable Charts</b> option. We augmented the <b>Amexio Layouts</b> with more layout options and brought <b>CSS3 Grid Layout</b> to Amexio with Responsive Design Pattern.
 
 </div>
 <br/>
@@ -153,7 +153,7 @@ UI Components powered by HTML5 & CSS3 for <b>Responsive Web Design & 50+ built-
 ## Features
 
 - __Pure TypeScript:__ Amexio is a pure Typescript library with 0 Dependencies & Angular 4/5/6 Support.
-- __140+ High Grade Components:__ We make sure you're nothing short of while building your app.
+- __160+ High Grade Components:__ We make sure you're nothing short of while building your app.
 - __Forms:__ Amexio API supports both Template Driven Forms and Reactive Forms. 
 - __Layouts:__ With v5.4 release More than half a dozen layout options are supported including CSS3 Grids. 
 - __Responsive Web Design:__ Out of the box Responsive Web Design with 50+ Material Design based Themes.
