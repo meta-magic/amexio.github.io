@@ -1,14 +1,17 @@
-<amexio-floating-button *ngIf="relative" (onClick)="togglePanel()" [relative]="true" [icon]="'fa fa-ellipsis-v'"
-    [type]="'red'">
+<amexio-floating-button *ngIf="relative && enableToggle" (onClick)="togglePanel()" [relative]="true"
+    [icon]="'fa fa-ellipsis-v'" [type]="'red'">
 </amexio-floating-button>
 
-<amexio-floating-button *ngIf="!relative" style="position: fixed; right: 10px; bottom: 25px;" (onClick)="togglePanel()" [relative]="true" [icon]="'fa fa-ellipsis-v'"
-    [type]="'red'">
+<amexio-floating-button *ngIf="!relative && enableToggle" style="position: fixed; right: 10px; bottom: 25px;"
+    (onClick)="togglePanel()" [relative]="true" [icon]="'fa fa-ellipsis-v'" [type]="'red'">
 </amexio-floating-button>
 
 <amexio-card-ce *ngIf="toggle" [ngStyle]="{'position': (relative) ? 'relative':'fixed',  
                 'margin-top': (relative) ? '20px':'0px',
-                'width': ((250*colsize)+30)+'px'}" style="display:block; right: 10px; bottom: 25px;  z-index: 1000; ">
+                'width': (!enableToggle) ? '100%': ((250*colsize)+30)+'px',
+                'right': (enableToggle) ? '10px' : unset,
+                'bottom': (enableToggle) ? '25px' : unset
+                }" style="display:block;  z-index: 1000; ">
     <amexio-header-ce [align]="'space-between'" [border-bottom]="true">
         <div style="width:100%;">
             <div class="flex-inline flex-spacebetween">
@@ -16,8 +19,8 @@
                     Material Design Themes
                 </amexio-label>
 
-                <amexio-image style="display: block; cursor: pointer;" [icon-class]="'fa fa-times ng-star-inserted'"
-                    (onClick)="togglePanel()">
+                <amexio-image *ngIf="enableToggle" style="display: block; cursor: pointer;"
+                    [icon-class]="'fa fa-times ng-star-inserted'" (onClick)="togglePanel()">
                 </amexio-image>
 
             </div>
@@ -31,7 +34,8 @@
             </div>
         </div>
     </amexio-header-ce>
-    <amexio-body-ce style="overflow: auto;height: 400px; display: block;">
+    <amexio-body-ce style="overflow: auto;height: 400px; display: block;"
+        [ngStyle]="{'height': (enableToggle)?'400px' : '100%'}">
         <div class="flex-row">
             <ng-container *ngFor="let row of data">
                 <div [class]="'flex-col'" [class]="'flex-col-'+(12/colsize)" *ngFor="let col of row">

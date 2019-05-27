@@ -19,6 +19,8 @@ export class AmexioThemeSwitcherComponent implements OnInit {
 
     @Input('relative') relative = false;
 
+    @Input('enable-toggle') enableToggle = true;
+
     toggle = false;
 
     constructor(private service: AmexioThemeSwitcherService) {
@@ -26,6 +28,10 @@ export class AmexioThemeSwitcherComponent implements OnInit {
     }
 
     ngOnInit() {
+        if (!this.enableToggle) {
+            this.toggle = true;
+            this.relative = true;
+        }
         this.loadMDAThemes();
     }
 
