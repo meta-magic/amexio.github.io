@@ -1,13 +1,12 @@
-<amexio-floating-button *ngIf="relative && enableToggle" (onClick)="togglePanel()" [relative]="true"
-    [icon]="'fa fa-ellipsis-v'" [type]="'red'">
-</amexio-floating-button>
+<amexio-button *ngIf="relative && enableToggle" (onClick)="togglePanel()" [label]="'Theme Selector'" [type]="'theme-color'"
+    [tooltip]="'Theme Selector'"> </amexio-button>
 
 <amexio-floating-button *ngIf="!relative && enableToggle" style="position: fixed; right: 10px; bottom: 25px;"
     (onClick)="togglePanel()" [relative]="true" [icon]="'fa fa-ellipsis-v'" [type]="'red'">
 </amexio-floating-button>
 
 <amexio-card-ce *ngIf="toggle" [ngStyle]="{'position': (relative) ? 'relative':'fixed',  
-                'margin-top': (relative) ? '20px':'0px',
+                'margin-top': (relative) ? '30px':'0px',
                 'width': (!enableToggle) ? '100%': ((250*colsize)+30)+'px',
                 'right': (enableToggle) ? '10px' : unset,
                 'bottom': (enableToggle) ? '25px' : unset
