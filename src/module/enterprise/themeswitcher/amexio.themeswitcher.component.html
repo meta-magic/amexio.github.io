@@ -1,45 +1,77 @@
-<div class="flex-row">
-    <div class="flex-col flex-col-12">
-        <div class="flex-inline flex-start">
-            <label role="text" style="outline: none; cursor: text;" class="label-content medium-bold">
-                More Details: &nbsp;
-            </label>
-            <amexio-toggle (onChange)="onChange($event)" [size]="'small'" [type]="1" shape="square"> </amexio-toggle>
-        </div>
-    </div>
-</div>
-<div class="flex-row" *ngFor="let row of data">
-    <div [class]="'flex-col'" [class]="'flex-col-'+(12/colsize)" *ngFor="let col of row">
-        <div class="card-container">
-            <header class="card-header flex-inline flex-spacebetween" style="padding: 10px;"
-                [ngStyle]="{'background-color':col.navBarBGColor, 'color':col.navBarFontColor}">
-                <label role="text" style="outline: none; cursor: text;" class="label-content medium-bold">
-                    {{col.themeName}}
-                </label>
-                <amexio-button *ngIf="testmode" [icon]="'fa fa-check'" [type]="'transparent'"
-                    (onClick)="themeChange(col)"></amexio-button>
-            </header>
-            <div *ngIf="isMoreDetails" class="card-body cardbody">
-                <img [attr.alt]="col.themeName" [attr.src]="'https://meta-magic.github.io/amexio-content/theme-icons/'+col.themeImageFile"
-                    class="img-fluid" />
-                <br />
-                <label role="text" style="outline: none; cursor: text;" class="label-content small-bold">
-                    Version: {{col.version}}
-                </label>
-                <br />
-                <label *ngIf="col.algorithmName" role="text" style="outline: none; cursor: text;" class="label-content small-bold">
-                    Algorithm Name: {{col.algorithmName}}<br />
-                </label>
-                
-                <label *ngIf="col.releaseDate" role="text" style="outline: none; cursor: text;" class="label-content small-bold">
-                    Release Date: {{col.releaseDate}}
-                </label>
+<amexio-floating-button *ngIf="relative" (onClick)="togglePanel()" [relative]="true" [icon]="'fa fa-ellipsis-v'"
+    [type]="'red'">
+</amexio-floating-button>
+
+<amexio-floating-button *ngIf="!relative" style="position: fixed; right: 10px; bottom: 25px;" (onClick)="togglePanel()" [relative]="true" [icon]="'fa fa-ellipsis-v'"
+    [type]="'red'">
+</amexio-floating-button>
+
+<amexio-card-ce *ngIf="toggle" [ngStyle]="{'position': (relative) ? 'relative':'fixed',  
+                'margin-top': (relative) ? '20px':'0px',
+                'width': ((250*colsize)+30)+'px'}" style="display:block; right: 10px; bottom: 25px;  z-index: 1000; ">
+    <amexio-header-ce [align]="'space-between'" [border-bottom]="true">
+        <div style="width:100%;">
+            <div class="flex-inline flex-spacebetween">
+                <amexio-label [size]="'medium-bold'">
+                    Material Design Themes
+                </amexio-label>
+
+                <amexio-image style="display: block; cursor: pointer;" [icon-class]="'fa fa-times ng-star-inserted'"
+                    (onClick)="togglePanel()">
+                </amexio-image>
 
             </div>
-            <footer class="card-footer flex-center">
-                <div *ngFor="let color of col.themes" class="themecolorpalette" [ngStyle]="{'background-color': color}">
-                </div>
-            </footer>
+            <br />
+            <div style="display: inline-flex;">
+                <amexio-label [size]="'small'">
+                    More Details: &nbsp;
+                </amexio-label>
+                <amexio-toggle (onChange)="onChange($event)" [size]="'small'" [type]="1" shape="square">
+                </amexio-toggle>
+            </div>
         </div>
-    </div>
-<div>
+    </amexio-header-ce>
+    <amexio-body-ce style="overflow: auto;height: 400px; display: block;">
+        <div class="flex-row">
+            <ng-container *ngFor="let row of data">
+                <div [class]="'flex-col'" [class]="'flex-col-'+(12/colsize)" *ngFor="let col of row">
+                    <div class="card-container" style="margin: 5px;">
+                        <header class="card-header flex-inline flex-spacebetween" style="padding: 10px;"
+                            [ngStyle]="{'background-color':col.navBarBGColor, 'color':col.navBarFontColor}">
+                            <label role="text" style="outline: none; cursor: text;" class="label-content medium-bold">
+                                {{col.themeName}}
+                            </label>
+                            <amexio-button *ngIf="testmode" [icon]="'fa fa-check'" [type]="'transparent'"
+                                (onClick)="themeChange(col)"></amexio-button>
+                        </header>
+                        <div *ngIf="isMoreDetails" class="card-body cardbody">
+                            <img [attr.alt]="col.themeName"
+                                [attr.src]="'https://meta-magic.github.io/amexio-content/theme-icons/'+col.themeImageFile"
+                                class="img-fluid" />
+                            <br />
+                            <label role="text" style="outline: none; cursor: text;" class="label-content small-bold">
+                                Version: {{col.version}}
+                            </label>
+                            <br />
+                            <label *ngIf="col.algorithmName" role="text" style="outline: none; cursor: text;"
+                                class="label-content small-bold">
+                                Algorithm Name: {{col.algorithmName}}<br />
+                            </label>
+
+                            <label *ngIf="col.releaseDate" role="text" style="outline: none; cursor: text;"
+                                class="label-content small-bold">
+                                Release Date: {{col.releaseDate}}
+                            </label>
+
+                        </div>
+                        <footer class="card-footer flex-center">
+                            <div *ngFor="let color of col.themes" class="themecolorpalette"
+                                [ngStyle]="{'background-color': color}">
+                            </div>
+                        </footer>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </amexio-body-ce>
+</amexio-card-ce>

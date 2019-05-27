@@ -16,6 +16,11 @@ export class AmexioThemeSwitcherComponent implements OnInit {
     @Input('mda') isMDA = true;
 
     @Input('col-size') colsize = 3;
+
+    @Input('relative') relative = false;
+
+    toggle = false;
+
     constructor(private service: AmexioThemeSwitcherService) {
 
     }
@@ -44,6 +49,10 @@ export class AmexioThemeSwitcherComponent implements OnInit {
 
     onChange(value: boolean) {
         this.isMoreDetails = value;
+    }
+
+    togglePanel() {
+        this.toggle = !this.toggle;
     }
 
 }
