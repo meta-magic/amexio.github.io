@@ -1,11 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { AmexioThemeSwitcherService } from '../../services/data/amexio.theme.service';
 
 @Component({
     selector: 'amexio-theme-switcher',
     templateUrl: './amexio.themeswitcher.component.html',
 })
-export class AmexioThemeSwitcherComponent implements OnInit {
+export class AmexioThemeSwitcherComponent implements OnInit, OnChanges {
 
     @Input('data') data: any[];
 
@@ -19,18 +19,27 @@ export class AmexioThemeSwitcherComponent implements OnInit {
 
     @Input('relative') relative = false;
 
-    @Input('enable-toggle') enableToggle = true;
+    @Input('horizontal-position') horizontalPosition = 'right';
 
-    toggle = false;
+    @Input('vertical-position') verticalPosition = 'bottom';
+
+    @Output('onClose') onclose = new EventEmitter<any>();
+
+    @Input('show') show: boolean;
+
+    positionMapData: string[];
 
     constructor(private service: AmexioThemeSwitcherService) {
-
+        this.positionMapData = [];
+        this.positionMapData['hpos-right'] = { position: 'right', value: '10px' };
+        this.positionMapData['hpos-left'] = { position: 'left', value: '10px' };
+        this.positionMapData['vpos-bottom'] = { position: 'bottom', value: '25px' };
+        this.positionMapData['vpos-top'] = { position: 'top', value: '25px' };
     }
 
     ngOnInit() {
-        if (!this.enableToggle) {
-            this.toggle = true;
-            this.relative = true;
+        if (this.relative) {
+            this.show = true;
         }
         this.loadMDAThemes();
     }
@@ -49,6 +58,13 @@ export class AmexioThemeSwitcherComponent implements OnInit {
         }
     }
 
+    ngOnChanges(changes: SimpleChanges) {
+        if (changes['show']) {
+            this.show = changes.show.currentValue;
+        }
+
+    }
+
     themeChange(theme: any) {
         this.service.switchTheme(theme);
     }
@@ -58,7 +74,37 @@ export class AmexioThemeSwitcherComponent implements OnInit {
     }
 
     togglePanel() {
-        this.toggle = !this.toggle;
+        this.show = !this.show;
+        this.onclose.emit(this);
+    }
+
+    themeStyle(): any {
+        const style = {};
+        style['position'] = (this.relative) ? 'relative' : 'fixed';
+        style['display'] = 'block';
+        style['z-index'] = '1000';
+
+        if (!this.relative) {
+            const hpos = this.positionMapData['hpos-' + this.horizontalPosition];
+            const vpos = this.positionMapData['vpos-' + this.verticalPosition];
+            if (hpos) {
+                style[hpos.position] = hpos.value;
+            }
+            if (vpos) {
+                style[vpos.position] = vpos.value;
+            }
+
+        } else {
+            style['margin-top'] = '10px';
+        }
+
+        if (!this.relative) {
+            style['width'] = ((250 * this.colsize) + 30) + 'px';
+        } else {
+            style['width'] = '100%';
+        }
+        console.log(JSON.stringify(style));
+        return style;
     }
 
 }
