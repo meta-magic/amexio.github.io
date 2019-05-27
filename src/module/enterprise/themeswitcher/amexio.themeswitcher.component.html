@@ -8,10 +8,10 @@
     <div style="width:100%;">
         <div class="flex-inline flex-spacebetween">
             <amexio-label [size]="'medium-bold'">
-                Material Design Themes
+                Material Design Themes {{toggle}}
             </amexio-label>
 
-            <amexio-image *ngIf="!relative" style="display: block; cursor: pointer;"
+            <amexio-image *ngIf="closeable" style="display: block; cursor: pointer;"
                 [icon-class]="'fa fa-times ng-star-inserted'" (onClick)="togglePanel()">
             </amexio-image>
 
@@ -27,7 +27,7 @@
     </div>
 </amexio-header-ce>
 <amexio-body-ce style="overflow: auto;display: block;"
-    [ngStyle]="{'height': (!relative)?'400px' : '100%'}">
+    [ngStyle]="{'height': (closeable)?'400px' : '100%'}">
     <div class="flex-row">
         <ng-container *ngFor="let row of data">
             <div [class]="'flex-col'" [class]="'flex-col-'+(12/colsize)" *ngFor="let col of row">

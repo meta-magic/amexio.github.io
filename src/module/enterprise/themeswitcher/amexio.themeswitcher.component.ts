@@ -27,6 +27,8 @@ export class AmexioThemeSwitcherComponent implements OnInit, OnChanges {
 
     @Input('show') show: boolean;
 
+    @Input('closeable') closeable: boolean;
+
     positionMapData: string[];
 
     constructor(private service: AmexioThemeSwitcherService) {
@@ -34,7 +36,8 @@ export class AmexioThemeSwitcherComponent implements OnInit, OnChanges {
         this.positionMapData['hpos-right'] = { position: 'right', value: '10px' };
         this.positionMapData['hpos-left'] = { position: 'left', value: '10px' };
         this.positionMapData['vpos-bottom'] = { position: 'bottom', value: '25px' };
-        this.positionMapData['vpos-top'] = { position: 'top', value: '25px' };
+        this.positionMapData['vpos-top'] = { position: 'top', value: '55px' };
+        this.closeable = true;
     }
 
     ngOnInit() {
@@ -83,6 +86,7 @@ export class AmexioThemeSwitcherComponent implements OnInit, OnChanges {
         style['position'] = (this.relative) ? 'relative' : 'fixed';
         style['display'] = 'block';
         style['z-index'] = '1000';
+        style['min-width'] = '200px';
 
         if (!this.relative) {
             const hpos = this.positionMapData['hpos-' + this.horizontalPosition];
@@ -98,12 +102,11 @@ export class AmexioThemeSwitcherComponent implements OnInit, OnChanges {
             style['margin-top'] = '10px';
         }
 
-        if (!this.relative) {
-            style['width'] = ((250 * this.colsize) + 30) + 'px';
+        if (this.closeable) {
+            style['width'] = (15 * this.colsize) + '%';
         } else {
             style['width'] = '100%';
         }
-        console.log(JSON.stringify(style));
         return style;
     }
 
