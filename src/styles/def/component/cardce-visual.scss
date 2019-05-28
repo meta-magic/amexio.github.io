@@ -103,6 +103,7 @@
 .card-container-wider-header amexio-header-ce {
     margin: 0px -10px;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
+    z-index: 2;
 }
 
 .card-container-narrower-header {
@@ -113,3 +114,21 @@
     margin: -10px 10px;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
 }
+// Ribbon CSS
+.ce-header-ribbon-l {
+    border-color: transparent $cardceHeaderBGColor transparent transparent;
+    left: -20px;
+  }
+  .ce-header-ribbon-r {
+    border-color: transparent transparent transparent $cardceHeaderBGColor;
+    right: -20px;
+  }
+  .ce-header-ribbon {
+    border-style:solid;
+    border-width:10px;
+    height:0px;
+    width:0px;
+    position: absolute;
+    top: -10px;
+    // z-index: -1;
+  }
