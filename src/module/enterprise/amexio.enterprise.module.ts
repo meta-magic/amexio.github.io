@@ -27,8 +27,12 @@ import { AmexioCalendarYearComponent } from './calendar/calendar.year.component'
 import { StepWizardComponent } from './stepwizard/stepwizard.component';
 import { StepWizardItemComponent } from './stepwizard/stepwizard.item.component';
 import { AmexioThemeSwitcherComponent } from './themeswitcher/amexio.themeswitcher.component';
+import {TreeTabComponent} from './tree-tab/tree-tab.component';
 
 import { AmexioThemeSwitcherService } from '../services/data/amexio.theme.service';
+
+import { AmexioLayoutModule } from '../layout/amexio.layout.module';
+import { AmexioNavModule } from '../navigation/amexio.nav.module';
 
 export * from './ee-carousel/ee.carousel.component';
 export * from './ee-content/ee.content';
@@ -55,6 +59,7 @@ const ENTERPRISE_COMPONENTS = [
   AmexioThemeSwitcherComponent,
   StepWizardComponent,
   StepWizardItemComponent,
+  TreeTabComponent,
 ];
 
 @NgModule({
@@ -67,6 +72,9 @@ const ENTERPRISE_COMPONENTS = [
     AmexioCreativeModule,
     AmexioCommonModule,
     HttpClientModule,
+    AmexioNavModule,
+    AmexioLayoutModule,
+
   ],
   exports: ENTERPRISE_COMPONENTS,
   declarations: ENTERPRISE_COMPONENTS,

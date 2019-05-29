@@ -1,3 +1,7 @@
 <div [ngStyle]="{'justify-content': (align === 'start' || align === 'end') ? 'flex-'+align:align,'background': ' url(' + bgimage + ') center/cover no-repeat', 'color': color,'background-color':background, 'height': height }">
     <ng-content></ng-content>
 </div>
+<ng-container *ngIf="getRibbonType">
+    <div class="ce-header-ribbon ce-header-ribbon-l"></div>
+    <div class="ce-header-ribbon ce-header-ribbon-r"></div>
+</ng-container>

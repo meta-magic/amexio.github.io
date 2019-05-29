@@ -35,4 +35,6 @@ export class AmexioCardCEBodyComponent {
     @Input('background') background: string;
 
     @Input('height') height: string;
+
+    getRibbonType = false;
 }

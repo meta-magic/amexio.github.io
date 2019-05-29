@@ -347,3 +347,12 @@
     background-color: transparent !important;
     opacity: 0.9 !important;
 }
+
+.navBannerCss {
+    background-color: $navbarBGColor;
+    color: $navbarColor;
+    width: 100%;
+    display: flex;
+    height: auto;
+    padding: 10px;
+}

@@ -1,0 +1,12 @@
+<amexio-row>
+    <amexio-column size="3" [fit]="false">
+        <amexio-side-nav [data]="data" [data-reader]="dataReader" [width]="'275px'" [position]="'relative'"
+            (nodeClick)='addtab($event)'>
+        </amexio-side-nav>
+    </amexio-column>
+    <amexio-column size="8" [fit]="false">
+        <amexio-tab-view style="border-bottom: 0px solid black" #tab [closable]="false" [tab-position]="'top'" [header-align]="'left'">
+           
+        </amexio-tab-view>
+    </amexio-column>
+</amexio-row>

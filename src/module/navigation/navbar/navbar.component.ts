@@ -20,6 +20,7 @@ import {
   AfterContentInit, AfterViewInit, Component, ContentChildren, ElementRef, EventEmitter,
   Input, OnInit, Output, QueryList, ViewChild,
 } from '@angular/core';
+import {AmexioBannerComponent} from './banner.component';
 import { AmexioNavActionComponent } from './navaction.component';
 import { AmexioNavItemComponent } from './navitem.component';
 import { AmexioNavMenuComponent } from './navmenu.component';
@@ -99,6 +100,8 @@ amexioComponentId = 'amexio-navbar';
 
   @ContentChildren(AmexioNavItemComponent) navitems: QueryList<AmexioNavItemComponent>;
 
+  @ContentChildren(AmexioBannerComponent) bannerItem: QueryList<AmexioBannerComponent>;
+
   navItemComponents: AmexioNavItemComponent[];
 
   @ViewChild('navbar', { read: ElementRef }) public navbar: ElementRef;
@@ -121,6 +124,7 @@ amexioComponentId = 'amexio-navbar';
   isPhone = false;
   navItemPresent = false;
   top: any;
+  showBanner = false;
   constructor(public matchMediaService: DeviceQueryService) {
     if (this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone()) {
       this.mobilemode = true;
@@ -141,6 +145,16 @@ amexioComponentId = 'amexio-navbar';
   }
 
   ngAfterContentInit() {
+    if (this.bannerItem) {
+      const bItem = this.bannerItem.toArray();
+      if (bItem.length > 0) {
+        this.showBanner = true;
+        bItem[0].hideBanner.subscribe((flag: boolean) => {
+          this.showBanner = flag;
+        });
+      }
+
+    }
     this.navItemComponents = this.navitems.toArray();
     if (this.navItemComponents && this.navItemComponents.length > 0) {
       this.navItemPresent = true;

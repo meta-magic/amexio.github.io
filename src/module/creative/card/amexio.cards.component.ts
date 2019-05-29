@@ -128,7 +128,6 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
         break;
     }
   }
-
   ngAfterContentInit() {
     if (this.AmexioCardCEHeaderQueryList) {
       this.amexioCardHeaderList = this.AmexioCardCEHeaderQueryList.toArray();
@@ -136,6 +135,13 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
         this.amexioCardHeaderList.forEach((element: any) => {
           element.amexioComponentId = this.amexioComponentId;
         });
+      }
+    }
+    if (this.AmexioCardCEBodyQueryList) {
+      this.amexioCardBodyList = this.AmexioCardCEBodyQueryList.toArray();
+      if (this.styleType === 'ribbon-style') {
+        this.amexioCardBodyList[0].getRibbonType = true;
+        this.cclass = this.cclass + ' card-container-wider-header';
       }
     }
     this.setCardAligementForAllInnerComponent();
