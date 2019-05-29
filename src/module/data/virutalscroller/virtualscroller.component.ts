@@ -3,7 +3,7 @@ import { Component, ContentChild, Input, TemplateRef } from '@angular/core';
 @Component({
     selector: 'amexio-virtualscroller',
     templateUrl: './virtualscroller.component.html',
-    styleUrls: ['./virtualscroller.component.css']
+    styleUrls: ['./virtualscroller.component.css'],
 
 })
 export class VirtualScrollerComponent {
