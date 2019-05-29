@@ -1,6 +1,5 @@
-
-export class GridConstants {
-    static readonly Tablet = 'tab';
-    static readonly Desktop = 'desktop';
-    static readonly Mobile = 'mobile';
-  }
+export const GridConstants = {
+  Tablet: 'tab',
+  Desktop : 'desktop',
+  Mobile : 'mobile'
+  };
