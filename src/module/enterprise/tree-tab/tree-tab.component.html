@@ -1,13 +1,9 @@
-<amexio-row>
-    <amexio-column size="3" [fit]="false">
-        <amexio-side-nav class="sideNavBorder" [http-url]="httpUrl"
-        [http-method]="httpMethod"[data]="data" [data-reader]="dataReader" [width]="width" [position]="'relative'"
-            (nodeClick)='addtab($event)'>
-        </amexio-side-nav>
-    </amexio-column>
-    <amexio-column size="9" [fit]="false">
-        <amexio-tab-view style="border-bottom: 0px solid black" #tab [closable]="false" [tab-position]="'top'" [header-align]="'left'">
-           
-        </amexio-tab-view>
-    </amexio-column>
-</amexio-row>
+<span style="display: flex">
+
+    <amexio-side-nav1 class="sideNavBorder" [data]="data" [data-reader]="dataReader" [width]="width" [position]="'relative'"
+        (nodeClick)='addtab($event)'>
+    </amexio-side-nav1>
+
+    <amexio-tab-view1 style="padding-left:10px" #tab [closable]="false" [tab-position]="'top'" [header-align]="'left'">
+    </amexio-tab-view1>
+</span>
