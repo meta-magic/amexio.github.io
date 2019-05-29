@@ -86,7 +86,11 @@ export class AmexioThemeSwitcherComponent implements OnInit, OnChanges {
         style['position'] = (this.relative) ? 'relative' : 'fixed';
         style['display'] = 'block';
         style['z-index'] = '1000';
-        style['min-width'] = '200px';
+        if (this.colsize <= 3) {
+            style['min-width'] = '250px';
+        } else {
+            style['min-width'] = '200px';
+        }
 
         if (!this.relative) {
             const hpos = this.positionMapData['hpos-' + this.horizontalPosition];
