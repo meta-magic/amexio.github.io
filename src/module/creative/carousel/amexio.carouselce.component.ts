@@ -27,23 +27,33 @@ import { TitleModel } from '../carousel/amexio.carouselce.model';
   selector: 'amexio-carousel-ce',
   templateUrl: './amexio.carouselce.component.html',
   animations: [
-    trigger(
-      'move',
-      [
-        transition(
-          ':enter', [
-            style({ opacity: 0 }),
-            animate('2s', style({ opacity: 1 })),
-          ],
-        ),
-        transition(
-          ':leave', [
-            style({ opacity: 1 }),
-            animate('2s', style({ opacity: 0 })),
-          ],
-        ),
-      ],
-    )],
+    trigger('changeState', [
+      state('block1', style({
+        opacity: 1,
+      })),
+      state('none1', style({
+        opacity: 0,
+      })),
+      state('block2', style({
+        transform: 'translateX(0%)',
+      })),
+      state('none2', style({
+        transform: 'translateX(-100%)',
+      })),
+      state('block3', style({
+        transform: 'translateX(0%)',
+      })),
+      state('none3', style({
+        transform: 'translateX(100%)',
+      })),
+      transition('block1 => none1', animate('2s')),
+      transition('none1 => block1', animate('2s')),
+      transition('block2 => none2', animate('200ms')),
+      transition('none2 => block2', animate('200ms')),
+      transition('block3 => none3', animate('200ms')),
+      transition('none3 => block3', animate('200ms')),
+    ]),
+  ],
 })
 export class AmexioCarouselCEComponent implements OnInit, AfterContentInit {
   /*
@@ -84,6 +94,8 @@ description : Local Data binding.
   description : Type of HTTP call, POST,GET etc.
   */
   @Input('http-method') httpmethod: string;
+
+  @Input('type') type = 1;
 
   responseData: any;
   currentImageIndex = 0;

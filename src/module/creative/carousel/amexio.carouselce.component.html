@@ -1,54 +1,54 @@
 <br />
 <div class="wrapper" #tab>
-    <div *ngFor="let item of imageData ;let i=index">
-        <ng-container *ngIf="item.active">
+    <div *ngFor="let item of imageData ;let i=index" style="width: 100%; height: 100%;  position: relative;  display: flex; overflow: hidden;">
+        <ng-container >
+            <div [@changeState]="(item.active) ? 'block'+type:'none'+type" [ngStyle]="{display: (item.active) ? 'block':'none'}"
+                class="ce-caroueslimages">
+                <img src="{{item.imagepath}}" style='height: 100%; width: 100%; object-fit: cover' />
+            </div>
 
-            <div class="ce-caroueslslideshow" >
-                <div class="ce-caroueslimages">
-                        <img src="{{item.imagepath}}" @move style='height: 100%; width: 100%; object-fit: cover' />
+            <ng-container *ngIf="itemTemplate">
+                <div style=" position: absolute;" [style.left]="positionLeft+'%'" [style.right]="positionRight+'%'">
+                    <ng-template tabindex="1" [amexioTemplateWrapper]="itemTemplate" [item]="item"></ng-template>
                 </div>
-                <ng-container *ngIf="itemTemplate">
-                    <div style=" position: absolute;" [style.left]="positionLeft+'%'" [style.right]="positionRight+'%'">
-                        <ng-template tabindex="1" [amexioTemplateWrapper]="itemTemplate" [item]="item"></ng-template>
-                    </div>
+            </ng-container>
 
-                </ng-container>
-                <div class="ce-caroueslbar">
-                    <div class="ce-caroueslnav">
-                        <a class="ce-caroueslnav-prev">
-                            <span>Previous</span>
-                            <div (click)="previousClick(i)" (mouseenter)="onPreBtnHover(i)">
-                                <!-- <amexio-image [path]='preImagePath'>
+        </ng-container>
+
+        <div class="ce-caroueslbar" >
+            <div class="ce-caroueslnav">
+                <a class="ce-caroueslnav-prev">
+                    <span>Previous</span>
+                    <div (click)="previousClick(i)" (mouseenter)="onPreBtnHover(i)">
+                        <!-- <amexio-image [path]='preImagePath'>
                                 </amexio-image> -->
-                                <img src="{{preImagePath}}" style='height: 100%; width: 100%; object-fit: cover; cursor:pointer' />
+                        <img src="{{preImagePath}}" style='height: 100%; width: 100%; object-fit: cover; cursor:pointer' />
 
-                            </div>
-                        </a>
-                        <a class="ce-caroueslnav-next">
-                            <span>Next</span>
-                            <div (click)="nextClick(i)" (mouseenter)="onNextBtnHover(i)">
-
-                                <img src="{{nextImagePath}}" style='height: 100%; width: 100%; object-fit: cover; cursor:pointer' />
-
-                            </div>
-                        </a>
                     </div>
+                </a>
+                <a class="ce-caroueslnav-next">
+                    <span>Next</span>
+                    <div (click)="nextClick(i)" (mouseenter)="onNextBtnHover(i)">
 
-                    <div class="ce-caroueslnav-content">
-                        <div class="ce-caroueslnav-content-prev">
-                            <span> {{titleModel.previousTitle}}</span>
-                        </div>
-                        <div class="ce-caroueslnav-content-current">
-                            <span>
-                                {{titleModel.centerTitle}}
-                            </span>
-                        </div>
-                        <div class="ce-caroueslnav-content-next">
-                            <span> {{titleModel.nextTitle}}</span>
-                        </div>
+                        <img src="{{nextImagePath}}" style='height: 100%; width: 100%; object-fit: cover; cursor:pointer' />
+
                     </div>
+                </a>
+            </div>
+
+            <div class="ce-caroueslnav-content">
+                <div class="ce-caroueslnav-content-prev">
+                    <span> {{titleModel.previousTitle}}</span>
+                </div>
+                <div class="ce-caroueslnav-content-current">
+                    <span>
+                        {{titleModel.centerTitle}}
+                    </span>
+                </div>
+                <div class="ce-caroueslnav-content-next">
+                    <span> {{titleModel.nextTitle}}</span>
                 </div>
             </div>
-        </ng-container>
+        </div>
     </div>
 </div>
