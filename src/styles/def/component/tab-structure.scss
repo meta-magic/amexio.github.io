@@ -49,7 +49,7 @@
     width: inherit;
     position: relative;
     // vertical-align: top !important;
-    padding: 10px 0px;
+    padding: 10px 5px;
     color: $tabColor;
 }
 
@@ -256,3 +256,32 @@
      display:table-cell;
      vertical-align: bottom; 
  }
+
+
+#tabclass {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    transform-origin:top left; 
+    transform: rotate(-90deg) ;   
+    left:0px;  
+
+
+
+}
+#tabclass li {
+    float: right;
+    width: auto;
+    padding: 1px;
+      display: block; 
+     
+}
+
+
+.verticalnavtab .leftactiverotatetab {
+  font-weight: bold;
+    //color : $tabActiveColor;
+    // width: 100%;-------for close to come on right side
+    border-bottom: $tabActiveBorderSize solid $tabActiveBorder;
+}

@@ -47,6 +47,9 @@ export class AmexioVerticalTabComponent implements AfterContentInit, AfterViewIn
 
   @ViewChild('target', { read: ViewContainerRef }) target: any;
 
+  @ViewChild('tabId') tabId: ElementRef;
+
+  @ViewChild('icon') icon: ElementRef;
   /*
    Properties
    name : closable
@@ -66,6 +69,16 @@ export class AmexioVerticalTabComponent implements AfterContentInit, AfterViewIn
    */
   @Input() tabPosition: string;
   /*
+   Properties
+   name :rotate
+   datatype : boolean
+   version : 5.12.2 onwards
+   default : false
+   description : tab header alignment
+   */
+  @Input() rotate = false;
+
+  /*
 Events
 name : onClick
 datatype : none
@@ -81,6 +94,9 @@ description : Callback to invoke on activated tab event.
 
   componentId = '';
 
+  height = 580;
+  rotatedtabsHeight: string;
+  iconCount: number;
   constructor(public render: Renderer2, private componentFactoryResolver: ComponentFactoryResolver) {
     this.tabPosition = 'top';
   }
@@ -88,9 +104,21 @@ description : Callback to invoke on activated tab event.
     this.componentId = Math.floor(Math.random() * 90000) + 10000 + '_tabc';
   }
   ngAfterViewInit() {
+     const tabsheight = this.tabId.nativeElement.offsetWidth ;
+     if (tabsheight > this.height) {
+     this.height = tabsheight;
+     }
+     this.rotatedtabsHeight = tabsheight;
   }
   ngAfterContentInit() {
     this.tabCollection = this.queryTabs.toArray();
+    const testarray: any[] = [];
+    this.tabCollection.forEach((element: any) => {
+    if (element.icon) {
+      testarray.push(element.icon);
+    }
+    });
+    this.iconCount = testarray.length;
   }
   onTabClick(tab: any) {
     if (!tab.disabled && !tab.header) {
