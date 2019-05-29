@@ -20,7 +20,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 @Component({
   selector: 'amexio-label',
   template: `
-  <label [ngClass]="{'labelFontClass': blackLabel}" style="outline: none"
+  <label class="eclipse" [ngClass]="{'labelFontClass': blackLabel}" style="outline: none"
   role="text" tabindex="1" class="label-content {{styleClass}}" (click)="onLabel($event)"
     [ngStyle]="{'color' : fontColor,'cursor': enableclick ? 'pointer': 'text'}">
     <ng-content></ng-content>

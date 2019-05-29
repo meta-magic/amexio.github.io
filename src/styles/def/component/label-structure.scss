@@ -173,3 +173,8 @@
   font-weight: bold;
   line-height: 1;
 }
+.eclipse {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
