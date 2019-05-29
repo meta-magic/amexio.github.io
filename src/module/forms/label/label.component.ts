@@ -57,7 +57,7 @@ export class AmexioLabelComponent implements OnInit {
   */
   @Input('font-color') fontColor: string;
   @Input('enable-click') enableclick = false;
-  @Input('word-wrap') wordwrap =true;
+  @Input('word-wrap') wordwrap = true;
 
   // For internal use
   @Input() blackLabel = false;
