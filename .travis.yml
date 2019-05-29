@@ -30,7 +30,7 @@ script:
   - gulp test
   - sonar-scanner
   - cd src/styles/ && sh sasstocss.sh
-  - cd ../../ && pwd && gulp build
+  - cd ../../ && pwd && gulp build --max_old_space_size=4096
   - cd dist && npm pack
   - mv amexio-ng-extensions-*.tgz amexio-ng-extensions.tgz
   
