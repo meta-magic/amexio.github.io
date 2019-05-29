@@ -1,0 +1,6 @@
+
+    <cdk-virtual-scroll-viewport [style.height]="height" itemSize="10">
+        <ng-container *cdkVirtualFor="let row of data">
+            <ng-template *ngIf="bodyTemplate" [ngTemplateOutlet]="bodyTemplate" [ngTemplateOutletContext]="{ row: row }"></ng-template>
+        </ng-container>
+    </cdk-virtual-scroll-viewport>

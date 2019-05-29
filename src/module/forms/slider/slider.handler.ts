@@ -249,7 +249,7 @@ export class DomHandler {
 
   public matches(element: any, selector: string): boolean {
     const p = Element.prototype;
-    const f = p['matches'] || p.webkitMatchesSelector || p['mozMatchesSelector'] || p.msMatchesSelector || function(s: any) {
+    const f = p['matches'] || p.webkitMatchesSelector || p['mozMatchesSelector'] || p['msMatchesSelector'] || function(s: any) {
       return [].indexOf.call(document.querySelectorAll(s), this) !== -1;
     };
     return f.call(element, selector);
