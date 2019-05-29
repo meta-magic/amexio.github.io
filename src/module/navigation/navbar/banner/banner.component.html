@@ -1,0 +1,7 @@
+<span class="bannerContent {{themeCss}}" [style.justify-content]="alignment">
+<amexio-image style = "padding-left: 10px;" [icon-class]="icon"></amexio-image>
+<amexio-label style = "padding-left: 10px;">{{title}}</amexio-label>
+</span>
+<amexio-c-icon *ngIf="closeable"
+[key]="'window_close'" (onClick)="onCloseClick()">
+</amexio-c-icon>

@@ -18,7 +18,6 @@ import {AmexioBreadcrumbComponent} from './breadcrumb/breadcrumb.component';
 import {DockbarComponent} from './dockedbar/dockbaritem';
 import {DockedBarToolComponent} from './dockedbar/dockettoolbar.component';
 import {AmexioMenuBarComponent} from './menubar/menubar.component';
-import {AmexioBannerComponent} from './navbar/banner.component';
 import {AmexioInnerNavMenuComponent} from './navbar/innermenu.component';
 import {AmexioNavActionComponent } from './navbar/navaction.component';
 import {AmexioNavBarComponent} from './navbar/navbar.component';
@@ -29,6 +28,8 @@ import {AmexioNotificationComponent} from './notification/notification.component
 import {AmexioSideNavComponent} from './sidenav/sidenav.component';
 import {AmexioSideNavInnerNodeComponent} from './sidenav/sidenavinnernode.component';
 import {SideNavNodeComponent} from './sidenav/sidenavnode.component';
+
+import { AmexioBannerComponent } from './navbar/banner/banner.component';
 
 import { AmexioCommonModule } from '../base/amexio.common.module';
 

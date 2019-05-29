@@ -1,20 +1,20 @@
 /*
-* Copyright [2019] [Metamagic]
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* Created by ketangote on 1/4/18.
-*/
+ * Copyright [2019] [Metamagic]
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * Created by ketangote on 1/4/18.
+ */
 
 import {
   AfterContentInit, AfterViewInit, Component, ContentChildren, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output,
@@ -22,7 +22,7 @@ import {
 } from '@angular/core';
 
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { AmexioNavMenuComponent } from './navmenu.component';
+import {AmexioNavMenuComponent} from './navmenu.component';
 
 const noop = () => {
 };
@@ -38,53 +38,53 @@ const noop = () => {
 export class AmexioNavItemComponent implements OnInit, ControlValueAccessor, AfterViewInit, AfterContentInit {
 
   /*
-Properties
-name : type
-datatype : string
-version : 4.0 onwards
-default : none
-description : Indicate the type of menu-items (link / button / textfield /menu )
-*/
+   Properties
+   name : type
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : Indicate the type of menu-items (link / button / textfield /menu )
+   */
   @Input() type: string;
 
   /*
-  Properties
-  name : title
-  datatype : string
-  version : 4.0 onwards
-  default : none
-  description : Title for link, button and menu header
-  */
+   Properties
+   name : title
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : Title for link, button and menu header
+   */
   @Input() title: string;
 
   /*
-  Properties
-  name : icon
-  datatype : string
-  version : 4.0 onwards
-  default : none
-  description : Icon for link, button and menu header
-  */
+   Properties
+   name : icon
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : Icon for link, button and menu header
+   */
   @Input() icon: string;
 
   /*
-  Properties
-  name : data
-  datatype : string
-  version : 4.0 onwards
-  default : none
-  description : Standard JSON format array data which is used for rendering menus. This is used when type=menu is defined.
-  */
+   Properties
+   name : data
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : Standard JSON format array data which is used for rendering menus. This is used when type=menu is defined.
+   */
   @Input() data: any[];
 
   /*
-  Events
-  name : onNavItemClick
-  datatype : any
-  version : none
-  default : none
-  description : Fire when nav item is clicked, This event is fired when nav item type is defined as 'link/button/menu'
-  */
+   Events
+   name : onNavItemClick
+   datatype : any
+   version : none
+   default : none
+   description : Fire when nav item is clicked, This event is fired when nav item type is defined as 'link/button/menu'
+   */
   @Output() onNavItemClick: any = new EventEmitter<any>();
   @ContentChildren(AmexioNavMenuComponent) navmenus: QueryList<AmexioNavMenuComponent>;
 
@@ -102,9 +102,18 @@ description : Indicate the type of menu-items (link / button / textfield /menu )
   private innerValue = '';
   private onTouchedCallback: () => void = noop;
   private onChangeCallback: (_: any) => void = noop;
-  constructor(private elementref: ElementRef) {
+
+  componentId = '';
+  offsetWidth = 0;
+  constructor(public elementref: ElementRef) {
+    this.componentId = Math.floor(Math.random() * 90000) + 10000 + '_navctyt';
+    this.offsetWidth = this.elementref.nativeElement.offsetWidth;
 
   }
+
+  // resize(event: any) {
+  //   this.offsetWidth = this.elementref.nativeElement.offsetWidth;
+  // }
 
   ngOnInit() {
     if (this.type === 'link' || this.type === 'button' || this.type === 'toggle' ||  this.type === 'slider') {
