@@ -1,0 +1,39 @@
+.cehovereffect:hover {
+}
+
+.container {
+    position: relative;
+    /* opacity: 1; */
+     }
+ 
+    .overlay:hover {
+        opacity: 1;
+        transition: all 2s ease-in-out;
+     }
+
+    /* fading effect */
+    .overlay {        
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        transition: .5s ease;
+         transition-duration: 3s;
+      }
+      
+    /* sliding effect  */
+    .overlayslider {
+      transform:   translateX(-300%);
+      transition: all 0.3s ease-in-out;
+    }
+
+     .overlaysliderhover {
+        transform: translateX(0%);
+        transition-delay: 500ms;
+        background-color: $cecardBGHoverColor;
+        color: $cecardFontHoverColor;
+      }
+
+      .maincecard {
+        height:100%; 
+        overflow: hidden;
+        }

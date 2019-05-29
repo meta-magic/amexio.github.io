@@ -43,6 +43,14 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
 
   @Input('polaroid-type') transformType: any;
 
+  @Input('overlay-type') overlaytype: string;
+
+  slidereffecton = false;
+  ishover = false;
+  slidercss = '';
+  slidercssclass = '';
+  csseffect = 'slider-effect';
+
   themeCss: any;
 
   amexioComponentId = 'amexio-card';
@@ -72,6 +80,9 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
   }
 
   ngOnInit() {
+    if (this.overlaytype === this.csseffect) {
+      this.slidercssclass = 'overlayslider';
+    }
     if (!this.color) {
       this.cclass = 'card-container-ce-color';
     }
@@ -176,5 +187,23 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
   }
   ngOnDestroy() {
     super.ngOnDestroy();
+  }
+
+  onmouseover() {
+    if (this.overlaytype === this.csseffect) {
+      this.ishover = true;
+    }
+  }
+
+  onmouseleave() {
+    if (this.overlaytype === this.csseffect) {
+      this.ishover = false;
+    }
+  }
+
+  onhover() {
+    if (this.overlaytype === this.csseffect) {
+      this.slidereffecton = true;
+    }
   }
 }
