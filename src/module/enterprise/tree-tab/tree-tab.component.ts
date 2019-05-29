@@ -11,7 +11,9 @@ export class TreeTabComponent implements OnInit, AfterViewInit {
     @ViewChild('tab') tab: ElementRef;
     @Output('nodeClick') nodeClick: any = new EventEmitter<any>();
     @Output('onLoad') onLoad: any = new EventEmitter<any>();
-    @Input('width') width: string;
+    @Input('width') width = '200px';
+    @Input('http-url') httpUrl: string;
+    @Input('http-method') httpMethod: string;
 
     emitData: any = {};
     constructor() { }
