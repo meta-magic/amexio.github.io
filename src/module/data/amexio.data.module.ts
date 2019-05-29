@@ -33,7 +33,7 @@ import { DisplayFieldService } from '../services/data/display.field.service';
 
 import { IconLoaderService } from '../services/icon/icon.service';
 import { GoogleMapScriptService } from '../services/script/script.data.service';
-import { AmexioVirtualScrollerComponent } from './virutalscroller/virtualscroller.component';
+import {  VirtualScrollerComponent } from './virutalscroller/virtualscroller.component';
 
 export * from '../services/data/common.data.service';
 export * from '../services/script/script.data.service';
@@ -61,7 +61,7 @@ const DATA_COMPONENTS = [
   AmexioFilterTreeComponent,
   TreeDataTableComponent,
   AmexioItemSelectorComponent,
-  AmexioVirtualScrollerComponent,
+  VirtualScrollerComponent,
 ];
 
 @NgModule({

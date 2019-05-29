@@ -61,3 +61,13 @@
 @import "component/propertygrid-visual.scss";
 /** propertygrid - Structure CSS **/
 @import "component/propertygrid-structure.scss";
+
+/****************************************************************************
+    Component Name : Virtual Scroller
+    Version : Amexio v5.12.3 onwards
+*****************************************************************************/
+@import "component/virtualscroller-vars.scss";
+/** propertygrid - Visual CSS **/
+@import "component/virtualscroller-visual.scss";
+/** propertygrid - Structure CSS **/
+@import "component/virtualscroller-structure.scss";

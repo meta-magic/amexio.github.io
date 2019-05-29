@@ -3,8 +3,10 @@ import { Component, ContentChild, Input, TemplateRef } from '@angular/core';
 @Component({
     selector: 'amexio-virtualscroller',
     templateUrl: './virtualscroller.component.html',
+    styleUrls: ['./virtualscroller.component.css']
+
 })
-export class AmexioVirtualScrollerComponent {
+export class VirtualScrollerComponent {
 
     @Input('height') height: string;
 
@@ -12,7 +14,7 @@ export class AmexioVirtualScrollerComponent {
 
     @ContentChild('amexioBodyTmpl') bodyTemplate: TemplateRef<any>;
 
-    itemSize: number;
+    @Input('itemsize') itemSize: number;
 
     constructor() {
         this.height = '200px';
