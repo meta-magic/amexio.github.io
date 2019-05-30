@@ -157,6 +157,8 @@
     transition: all 0.3s ease;
     //transform: scale(0);
     transform-origin: 0 0;
+    max-height: 500px;
+    overflow: auto;
 }
 
 .topnavmainbarinneritems-mobile .nav-dropdown-content {
