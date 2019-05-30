@@ -35,8 +35,8 @@
     .card-ce-overlay-slideeffect-hover {
         transform: translateX(0%);
         transition-delay: 500ms;
-        background-color: blue;
-        color: white;
+        background-color: $cecardBGHoverColor;
+        color: $cecardFontHoverColor;
       }
 
   

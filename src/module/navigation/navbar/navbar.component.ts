@@ -20,11 +20,11 @@ import {
   AfterContentInit, AfterViewInit, Component, ContentChild, ContentChildren, ElementRef, EventEmitter, Input, OnInit,
   Output, QueryList, ViewChild,
 } from '@angular/core';
-import {AmexioNavItemComponent} from './navitem.component';
+import { AmexioNavItemComponent } from './navitem.component';
 
-import {AmexioBannerComponent} from './banner/banner.component';
+import { AmexioBannerComponent } from './banner/banner.component';
 
-import {DeviceQueryService} from '../../services/device/device.query.service';
+import { DeviceQueryService } from '../../services/device/device.query.service';
 
 @Component({
   selector: 'amexio-nav', templateUrl: 'navbar.component.html',
@@ -105,6 +105,8 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
 
   navItemComponents: AmexioNavItemComponent[];
 
+  @Output() onNavLoad: any = new EventEmitter<any>();
+
   @ViewChild('navbar', { read: ElementRef }) public navbar: ElementRef;
   @ViewChild('navbarfixed', { read: ElementRef }) public navbarfixed: ElementRef;
   @ViewChild('navbaritems', { read: ElementRef }) public navbaritems: ElementRef;
@@ -155,6 +157,7 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
         this.showBanner = true;
         bItem[0].hideBanner.subscribe((flag: boolean) => {
           this.showBanner = flag;
+          this.onNavLoad.emit({ offsetHeight: this.navbar.nativeElement.offsetHeight });
         });
       }
 
@@ -177,19 +180,19 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
     this.handleNavItems();
     if (this.navbaritems2.nativeElement) {
       this.navitemwidth = (5 +
-      (this.navbaritems2.nativeElement.offsetWidth) +
-      (this.navbaritems2.nativeElement.offsetWidth) +
-      (this.navbaritems3.nativeElement.offsetWidth));
+        (this.navbaritems2.nativeElement.offsetWidth) +
+        (this.navbaritems2.nativeElement.offsetWidth) +
+        (this.navbaritems3.nativeElement.offsetWidth));
     }
 
     if (this.navbarfixed && this.navbarfixed.nativeElement) {
-      this.moreCheckWidth = this.moreCheckWidth  + this.navbarfixed.nativeElement.offsetWidth;
+      this.moreCheckWidth = this.moreCheckWidth + this.navbarfixed.nativeElement.offsetWidth;
     }
     if (this.navbaritems1 && this.navbaritems1.nativeElement) {
-      this.moreCheckWidth = this.moreCheckWidth  + this.navbarfixed.nativeElement.offsetWidth;
+      this.moreCheckWidth = this.moreCheckWidth + this.navbarfixed.nativeElement.offsetWidth;
     }
     if (this.navbaritems2 && this.navbaritems2.nativeElement) {
-      this.moreCheckWidth = this.moreCheckWidth  + this.navbarfixed.nativeElement.offsetWidth;
+      this.moreCheckWidth = this.moreCheckWidth + this.navbarfixed.nativeElement.offsetWidth;
     }
 
     if (!this.enableMoreMode) {
@@ -274,7 +277,7 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
     if (this.homepageType === '3') {
       if (!this.isExpand) {
         this.lhsWidth = '0 0 19%';
-      } else  {
+      } else {
         this.isLHSHide = true;
         this.lhsWidth = '0 0 5%';
       }
@@ -290,7 +293,7 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
     if (this.homepageType === '3') {
       if (!this.isExpand) {
         this.lhsWidth = '0 0 19%';
-      } else  {
+      } else {
         this.isLHSHide = true;
         this.lhsWidth = '0 0 5%';
       }
@@ -306,6 +309,7 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
   createMoreContent() {
     this.resizeItemCollection = [];
     this.moreBucket = [];
+    this.onNavLoad.emit({ offsetHeight: this.navbar.nativeElement.offsetHeight });
     this.notifyNavItems(this.navbar.nativeElement.offsetWidth);
     if (!this.mobilemode) {
       this.removeNodeFromDom();
@@ -314,7 +318,7 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
       }
 
     } else {
-     this.mobileModePresent();
+      this.mobileModePresent();
     }
     if (this.moreBucket.length > 0) {
       this.morePadding = 50;
@@ -326,51 +330,51 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
   mobileModePresent() {
     this.removeNodeFromDom();
     this.navItemComponents.forEach((nvitem: any) => {
-        if (nvitem.type === 'menu') {
-          this.resizeItemCollection.push(nvitem);
-        }
-      });
+      if (nvitem.type === 'menu') {
+        this.resizeItemCollection.push(nvitem);
+      }
+    });
   }
 
   createMoreData() {
     let itemsWidth = 0;
     let gapWidth = 0;
     if (this.moreCheckWidth === 0 || this.moreCheckWidth < 200) {
-          gapWidth = 200;
-        } else {
-          gapWidth = 0;
-          itemsWidth = this.moreCheckWidth;
-        }
+      gapWidth = 200;
+    } else {
+      gapWidth = 0;
+      itemsWidth = this.moreCheckWidth;
+    }
     this.navItemComponents.forEach((nvitem: any) => {
-          if (nvitem.type === 'menu') {
-            if (this.navbar.nativeElement.offsetWidth > (itemsWidth + gapWidth) ||
-                ((this.navbar.nativeElement.offsetWidth - itemsWidth) > 200)) {
-              itemsWidth = (itemsWidth + nvitem.offsetWidth );
-              this.resizeItemCollection.push(nvitem);
-            } else {
-              const dd = {
-                text: nvitem.title,
-                submenus: nvitem.data,
-              };
-              this.moreBucket.push(dd);
-            }
-          }
-        });
+      if (nvitem.type === 'menu') {
+        if (this.navbar.nativeElement.offsetWidth > (itemsWidth + gapWidth) ||
+          ((this.navbar.nativeElement.offsetWidth - itemsWidth) > 200)) {
+          itemsWidth = (itemsWidth + nvitem.offsetWidth);
+          this.resizeItemCollection.push(nvitem);
+        } else {
+          const dd = {
+            text: nvitem.title,
+            submenus: nvitem.data,
+          };
+          this.moreBucket.push(dd);
+        }
+      }
+    });
   }
 
   removeNodeFromDom() {
     if (!this.isItemRemoved && this.navItemComponents && this.navItemComponents.length > 0) {
-        this.navItemComponents.forEach((nvitem: any) => {
-          if (nvitem.type === 'menu') {
-            nvitem.offsetWidth =  nvitem.elementref.nativeElement.offsetWidth;
-            const node: HTMLElement = document.getElementById(nvitem.componentId);
-            if (node) {
-              node.parentNode.removeChild(node);
-            }
+      this.navItemComponents.forEach((nvitem: any) => {
+        if (nvitem.type === 'menu') {
+          nvitem.offsetWidth = nvitem.elementref.nativeElement.offsetWidth;
+          const node: HTMLElement = document.getElementById(nvitem.componentId);
+          if (node) {
+            node.parentNode.removeChild(node);
           }
-        });
-        this.isItemRemoved = true;
-      }
+        }
+      });
+      this.isItemRemoved = true;
+    }
   }
 
   externalLink(event: any) {
