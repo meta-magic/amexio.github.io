@@ -32,9 +32,9 @@
         <ng-container *ngFor="let row of data">
             <div [class]="'flex-col'" [class]="'flex-col-'+(12/colsize)" *ngFor="let col of row">
                 <div class="card-container" style="margin: 5px;">
-                    <header class="card-header flex-inline flex-spacebetween" style="padding: 10px;width: 90%"
+                    <header class="card-header flex-inline flex-spacebetween" style="padding: 10px;"
                         [ngStyle]="{'background-color':col.navBarBGColor, 'color':col.navBarFontColor}">
-                        <label role="text" style="outline: none; cursor: text; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" class="label-content medium-bold">
+                        <label role="text" style="width:90%;outline: none; cursor: text; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" class="label-content medium-bold">
                             {{col.themeName}}
                         </label>
                         <amexio-button *ngIf="testmode" [icon]="'fa fa-check'" [type]="'transparent'"
