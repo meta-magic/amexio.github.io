@@ -1,13 +1,13 @@
 /**
  * Created by dattaram on 28/5/19.
  */
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'amexio-banner',
   templateUrl: 'banner.component.html',
   styles: [
-      `
+    `
       :host{
         display: inline-flex;
         justify-content: space-between;
@@ -33,7 +33,9 @@ export class AmexioBannerComponent implements OnInit {
 
   @Input('closable') closeable = false;
 
-  @Input() interval = 0 ;
+  showBanner = true;
+
+  @Input() interval = 0;
 
   @Input() title = '';
 
@@ -54,6 +56,7 @@ export class AmexioBannerComponent implements OnInit {
     if (this.interval !== 0) {
       setTimeout(() => {
         this.hideBanner.emit(false);
+        this.showBanner = false;
       }, this.interval);
     }
     if (this.alignment === 'end') {
@@ -63,6 +66,7 @@ export class AmexioBannerComponent implements OnInit {
   }
   onCloseClick() {
     this.hideBanner.emit(false);
+    this.showBanner = false;
   }
 
   setColorPalette(themeClass: any) {
