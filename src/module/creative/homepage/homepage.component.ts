@@ -57,7 +57,13 @@ export class AmexioHomePageComponent implements OnInit, AfterContentInit {
       if (this.amexioHomePageWestPanelComponent) {
         this.amexioNavBarComponent.onNavLoad.subscribe((onLoadData: any) => {
           this.northPanelHeight = onLoadData.offsetHeight;
-          this.amexioHomePageWestPanelComponent.setPadding(onLoadData.offsetHeight);
+          if (this.sideNavComponents[0].sidenavexpandedinsmalldevice) {
+            this.amexioHomePageWestPanelComponent.setPadding(this.northPanelHeight);
+          } else if (this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone()) {
+            this.amexioHomePageWestPanelComponent.setPadding(0);
+          } else {
+            this.amexioHomePageWestPanelComponent.setPadding(this.northPanelHeight);
+          }
         });
       }
     }, 0);

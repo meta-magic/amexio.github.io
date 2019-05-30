@@ -313,7 +313,6 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
   createMoreContent() {
     this.resizeItemCollection = [];
     this.moreBucket = [];
-    this.onNavLoad.emit({ offsetHeight: this.navbar.nativeElement.offsetHeight });
     this.notifyNavItems(this.navbar.nativeElement.offsetWidth);
     if (!this.mobilemode) {
       this.removeNodeFromDom();
@@ -330,6 +329,7 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
     } else {
       this.morePadding = 0;
     }
+    this.onNavLoad.emit({ offsetHeight: this.navbar.nativeElement.offsetHeight });
   }
 
   mobileModePresent() {
