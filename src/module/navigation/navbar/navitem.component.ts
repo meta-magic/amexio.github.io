@@ -89,7 +89,7 @@ export class AmexioNavItemComponent implements OnInit, ControlValueAccessor, Aft
   @ContentChildren(AmexioNavMenuComponent) navmenus: QueryList<AmexioNavMenuComponent>;
 
   navMenusComponents: AmexioNavMenuComponent[];
-  mobilemode = false;
+  @Input() mobilemode = false;
 
   isAction = false;
   isTextField = false;
