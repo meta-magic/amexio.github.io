@@ -3,6 +3,7 @@ import { AmexioNavBarComponent } from './../../navigation/navbar/navbar.componen
 import { AmexioSideNavComponent } from './../../navigation/sidenav/sidenav.component';
 import { DeviceQueryService } from './../../services/device/device.query.service';
 import { AmexioHomePageNorthPanelComponent } from './homepage.northpanel.component';
+import { AmexioHomePageWestPanelComponent } from './homepage.westpanel.component';
 @Component({
   selector: 'amexio-homepage-ce',
   templateUrl: './homepage.component.html',
@@ -15,6 +16,8 @@ export class AmexioHomePageComponent implements OnInit, AfterContentInit {
 
   @ContentChildren(AmexioSideNavComponent, { descendants: true }) sideNavList: QueryList<AmexioSideNavComponent>;
   sideNavComponents: AmexioSideNavComponent[];
+
+  @ContentChild(AmexioHomePageWestPanelComponent) amexioHomePageWestPanelComponent: AmexioHomePageWestPanelComponent;
 
   @ContentChild(AmexioNavBarComponent) amexioNavBarComponent: AmexioNavBarComponent;
 
@@ -49,6 +52,11 @@ export class AmexioHomePageComponent implements OnInit, AfterContentInit {
       );
     }
     this.amexioNavBarComponent.homepageType = this.type;
+    if (this.amexioHomePageWestPanelComponent) {
+      this.amexioNavBarComponent.onNavLoad.subscribe((onLoadData: any) => {
+        this.amexioHomePageWestPanelComponent.setPadding(onLoadData.offsetHeight);
+      });
+    }
   }
 
   // tslint:disable-next-line:no-identical-functions

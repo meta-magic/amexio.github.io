@@ -1,4 +1,4 @@
-import { Component , ContentChild, EventEmitter, Input, OnInit} from '@angular/core';
+import { Component, ContentChild, EventEmitter, Input, OnInit } from '@angular/core';
 import { DeviceQueryService } from './../../services/device/device.query.service';
 
 @Component({
@@ -7,12 +7,16 @@ import { DeviceQueryService } from './../../services/device/device.query.service
 })
 export class AmexioHomePageWestPanelComponent implements OnInit {
 
-@Input('type') type: string;
+  @Input('type') type: string;
 
-constructor(public matchMediaService: DeviceQueryService) {
+  padding = 50;
 
-}
- ngOnInit() {
+  constructor(public matchMediaService: DeviceQueryService) {
+  }
+  ngOnInit() {
+  }
 
- }
+  setPadding(paddding: any) {
+    this.padding = paddding;
+  }
 }
