@@ -24,6 +24,7 @@ export class AmexioHomePageComponent implements OnInit, AfterContentInit {
   isDisableWestPanel = true;
   isPhone = false;
   westPanelWidth = '0 0 19%';
+  northPanelHeight = 50;
   constructor(public matchMediaService: DeviceQueryService) {
     if (this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone()) {
       this.isPhone = true;
@@ -55,6 +56,7 @@ export class AmexioHomePageComponent implements OnInit, AfterContentInit {
       this.amexioNavBarComponent.homepageType = this.type;
       if (this.amexioHomePageWestPanelComponent) {
         this.amexioNavBarComponent.onNavLoad.subscribe((onLoadData: any) => {
+          this.northPanelHeight = onLoadData.offsetHeight;
           this.amexioHomePageWestPanelComponent.setPadding(onLoadData.offsetHeight);
         });
       }
@@ -74,6 +76,11 @@ export class AmexioHomePageComponent implements OnInit, AfterContentInit {
     if (this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone()) {
       this.isPhone = true;
       this.sideNavComponents[0].toggle();
+      if (this.sideNavComponents[0].sidenavexpandedinsmalldevice) {
+        this.amexioHomePageWestPanelComponent.setPadding(this.northPanelHeight);
+      } else {
+        this.amexioHomePageWestPanelComponent.setPadding(0);
+      }
     }
   }
 

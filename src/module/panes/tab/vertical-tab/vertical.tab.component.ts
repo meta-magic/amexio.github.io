@@ -104,39 +104,41 @@ description : Callback to invoke on activated tab event.
     this.componentId = Math.floor(Math.random() * 90000) + 10000 + '_tabc';
   }
   ngAfterViewInit() {
-     const tabsheight = this.tabId.nativeElement.offsetWidth ;
-     if (tabsheight > this.height) {
-     this.height = tabsheight;
-     }
-     this.rotatedtabsHeight = tabsheight;
+    if (this.tabId && this.tabId.nativeElement && this.tabId.nativeElement.offsetWidth) {
+      const tabsheight = this.tabId.nativeElement.offsetWidth;
+      if (tabsheight > this.height) {
+        this.height = tabsheight;
+      }
+      this.rotatedtabsHeight = tabsheight;
+    }
   }
   ngAfterContentInit() {
     this.tabCollection = this.queryTabs.toArray();
     const testarray: any[] = [];
     this.tabCollection.forEach((element: any) => {
-    if (element.icon) {
-      testarray.push(element.icon);
-    }
+      if (element.icon) {
+        testarray.push(element.icon);
+      }
     });
     this.iconCount = testarray.length;
   }
   onTabClick(tab: any) {
     if (!tab.disabled && !tab.header) {
-     for (const i of this.tabCollection) {
-       if (i === tab) {
-         i['active'] = true;
-         this.asignTabPillClass(tab);
-         this.onClick.emit(tab);
+      for (const i of this.tabCollection) {
+        if (i === tab) {
+          i['active'] = true;
+          this.asignTabPillClass(tab);
+          this.onClick.emit(tab);
         } else {
-         i['active'] = false;
-         i['tabPillClass'] = '';
-       }
-     }
-     this.tabCollection.forEach((tab1: any) => {
-       this.asignTabPillClass(tab1);
-     });
-   }
- }
+          i['active'] = false;
+          i['tabPillClass'] = '';
+        }
+      }
+      this.tabCollection.forEach((tab1: any) => {
+        this.asignTabPillClass(tab1);
+      });
+    }
+  }
   // Code to be done
   findTabStyleClass() {
     if (this.tabPosition === 'top') {

@@ -9,7 +9,7 @@
             </ng-content>
         </div>
         <div [ngClass]="{'homepage-centerpanel-flex':!isPhone || (isDisableWestPanel && !isPhone), 'homepage-centerpanel-flex-fullview':(!isDisableWestPanel && !isPhone) }"
-        [style.padding-top.px]="amexioNavBarComponent.navbar.nativeElement.offsetHeight"
+        [style.padding-top.px]="northPanelHeight"
         >
             <ng-content select="amexio-homepage-centerpanel">
             </ng-content>
