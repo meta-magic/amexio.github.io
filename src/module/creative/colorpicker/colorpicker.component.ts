@@ -25,9 +25,9 @@ export class ColorPickerComponent extends ValueAccessorBase<string> implements O
   @Output() selectedColor: any = new EventEmitter<any>();
   @Input('inline-color-picker') inlineColorPicker = false;
   @Input('field-label') fieldlabel: string;
-  public hue: string;
+  public hue = 'rgba(255,3,0,1)';
   public color: string;
-  showColorPicker = false;
+  showColorPicker: boolean;
   offsetY: any;
   position: any;
   constructor() {
@@ -53,8 +53,10 @@ export class ColorPickerComponent extends ValueAccessorBase<string> implements O
      ('0' + parseInt(rgbColor[3], 10).toString(16)).slice(-2) : '';
   }
   selectedHue(data: any) {
-     this.offsetY = data.offsetY;
-     this.hue = data.color;
+    if (data) {
+      this.offsetY = data.offsetY;
+      this.hue = data.color;
+    }
   }
   openColorPicker() {
     this.showColorPicker = !this.showColorPicker;
