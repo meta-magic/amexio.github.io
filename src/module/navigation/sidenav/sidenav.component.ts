@@ -207,7 +207,7 @@ export class AmexioSideNavComponent implements OnInit, AfterContentInit {
   nodearray: any;
   activenode: any;
   sidenavexpandedinsmalldevice: boolean;
-
+  handleMobileDevice = true;
   responseData: any;
 
   isSideNavExpand: boolean;
@@ -281,6 +281,9 @@ export class AmexioSideNavComponent implements OnInit, AfterContentInit {
         this.findObj(node);
       });
     });
+  }
+  toggle() {
+    this.handleDeviceSettings(true);
   }
 
   findObj(currentnode: any) {

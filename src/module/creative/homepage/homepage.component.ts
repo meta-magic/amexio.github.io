@@ -71,6 +71,7 @@ export class AmexioHomePageComponent implements OnInit, AfterContentInit {
     this.isDisableWestPanel = !this.isDisableWestPanel;
     if (this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone()) {
       this.isPhone = true;
+      this.sideNavComponents[0].toggle();
     }
   }
 

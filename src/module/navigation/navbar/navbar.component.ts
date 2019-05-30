@@ -286,6 +286,7 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
   }
   onArrowClick(event: any) {
     this.onIconArrowClick.emit();
+    this.onNavLoad.emit({ offsetHeight: this.navbar.nativeElement.offsetHeight });
     this.isIconLeft = !this.isIconLeft;
   }
   // THIS EVENT IS HOME COMPOENNT USE.NOT EXPOSED
@@ -318,6 +319,7 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
       }
 
     } else {
+      this.toggle = false;
       this.mobileModePresent();
     }
     if (this.moreBucket.length > 0) {

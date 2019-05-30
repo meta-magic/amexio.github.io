@@ -1,4 +1,4 @@
-<div *ngIf="(position !='relative' && smalldevice )" [ngClass]="{'sidenav-mobile-bar-left':(position=='left' && position!='relative'),'sidenav-mobile-bar-right':(position=='right' && position!='relative')}" class="sidenav-mobile-bar"
+<div *ngIf="handleMobileDevice && (position !='relative' && smalldevice )" [ngClass]="{'sidenav-mobile-bar-left':(position=='left' && position!='relative'),'sidenav-mobile-bar-right':(position=='right' && position!='relative')}" class="sidenav-mobile-bar"
     (click)="toggleSideNav()">
     <amexio-c-icon class="homepage3-bar" key="sidenav_bar" [color]=""></amexio-c-icon>
 </div>

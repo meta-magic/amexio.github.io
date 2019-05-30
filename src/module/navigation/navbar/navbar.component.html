@@ -11,7 +11,7 @@
             <span>
 
                 <span style="padding-left: 40px;" *ngIf="sidenav"> &nbsp;</span>
-                <span *ngIf="(!mobilemode && !sidenav && homepageType ==='1')" class="homepage-bar-collapse" (click)="onArrowClick($event)">
+                <span *ngIf="( homepageType ==='1')" class="homepage-bar-collapse" (click)="onArrowClick($event)">
                     <amexio-image [icon-class]=" 'fa fa-bars' "></amexio-image> &nbsp;
                 </span>
 

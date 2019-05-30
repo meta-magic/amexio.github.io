@@ -17,6 +17,10 @@ export class AmexioHomePageWestPanelComponent implements OnInit {
   }
 
   setPadding(paddding: any) {
-    this.padding = paddding;
+    if (this.matchMediaService.IsPhone()) {
+      this.padding = 0;
+    } else {
+      this.padding = paddding;
+    }
   }
 }
