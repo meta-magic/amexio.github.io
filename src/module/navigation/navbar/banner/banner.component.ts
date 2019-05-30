@@ -1,7 +1,7 @@
 /**
  * Created by dattaram on 28/5/19.
  */
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'amexio-banner',
@@ -45,11 +45,9 @@ export class AmexioBannerComponent implements OnInit {
 
   @Input() alignment = 'center';
 
-  themeCss: any;
-
   amexioComponentId = 'amexio-banner';
 
-  constructor() {
+  constructor(private renderer: Renderer2, private el: ElementRef) {
   }
 
   ngOnInit() {
@@ -70,6 +68,6 @@ export class AmexioBannerComponent implements OnInit {
   }
 
   setColorPalette(themeClass: any) {
-    this.themeCss = themeClass;
+    this.renderer.addClass(this.el.nativeElement, themeClass);
   }
 }
