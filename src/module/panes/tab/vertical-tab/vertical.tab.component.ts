@@ -95,7 +95,7 @@ description : Callback to invoke on activated tab event.
   componentId = '';
 
   height = 580;
-  rotatedtabsHeight: string;
+  rotatedtabsHeight = '342';
   iconCount: number;
   constructor(public render: Renderer2, private componentFactoryResolver: ComponentFactoryResolver) {
     this.tabPosition = 'top';
