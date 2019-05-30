@@ -1,0 +1,63 @@
+:host {
+    display: block;  
+    padding: 16px;
+  }
+  .color-wrapper {
+     
+    display: flex;
+     
+    z-index:1010;
+  }
+  .color-inline-picker {
+  padding:10px 10px 2px 10px;
+  display: flex;
+  height: 200%;
+  width: 200%;
+  position:fixed;
+  z-index:1010;
+  }
+    
+  .text {
+    flex: 1;
+    font-family: 'Helvetica';
+    line-height: 32px;
+  }
+  .block-css {
+    display: inline-block;
+    width: 20px; 
+    height: 20px;
+    vertical-align: middle;
+  }
+  .color-picker-icon{
+    position: absolute;
+    right: 0;
+    display: block;
+    width: 38px;
+    line-height: 38px;
+    text-align: center;
+  }
+  .input-control-class {
+    width: 100%;
+    padding: .375rem 0;
+    line-height: 2;
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid black;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  }   
+  .color-slider:hover {
+    cursor: pointer;
+  }
+  .color-slider{
+    border: 5px solid #323232;
+  }
+  .color-palette:hover {
+    cursor: pointer;
+  }
+  .color-palette{
+    border: 5px solid #323232;
+    border-right:0px;
+  }  
+  :host {   
+    display: block;
+  }
