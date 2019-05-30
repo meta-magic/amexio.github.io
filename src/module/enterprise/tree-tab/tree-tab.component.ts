@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Outp
 @Component({
     selector: 'amexio-tree-tab',
     templateUrl: './tree-tab.component.html',
+    styleUrls: ['./tree-tab.component.css'],
 })
 
 export class TreeTabComponent implements OnInit, AfterViewInit {

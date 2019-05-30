@@ -1,0 +1,11 @@
+:host{
+    display: flex;
+    flex-direction: row;
+}
+
+amexio-tab-view{
+    padding-left: 10px;
+    display: block;
+    width: 100%;
+    overflow: hidden;
+}
