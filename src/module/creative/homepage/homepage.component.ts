@@ -31,32 +31,34 @@ export class AmexioHomePageComponent implements OnInit, AfterContentInit {
   }
   ngOnInit() { }
   ngAfterContentInit() {
-    this.sideNavComponents = this.sideNavList.toArray();
-
-    if (this.type === '3') {
-      this.sideNavComponents[0].isShowOnlyIcon = true;
-      this.sideNavComponents[0].width = '5%';
-      this.westPanelWidth = '0 0 5%';
-      this.sideNavComponents[0].setHomePageType(this.type);
-      // NAVBAR
-      this.amexioNavBarComponent.isLHSHide = true;
-      this.amexioNavBarComponent.lhsWidth = '0 0 5%';
-      this.amexioNavBarComponent.onIconClick.subscribe((eventdata: any) =>
-        this.northPanelClick(eventdata),
-      );
-    }
-    if (this.amexoHomePageNorthpanel) {
-      this.amexoHomePageNorthpanel.type = this.type;
-      this.amexoHomePageNorthpanel.nothPanelIconClick.subscribe(
-        (eventdata: any) => this.showHideWestPanel(),
-      );
-    }
-    this.amexioNavBarComponent.homepageType = this.type;
-    if (this.amexioHomePageWestPanelComponent) {
-      this.amexioNavBarComponent.onNavLoad.subscribe((onLoadData: any) => {
-        this.amexioHomePageWestPanelComponent.setPadding(onLoadData.offsetHeight);
-      });
-    }
+    setTimeout(() => {
+      this.sideNavComponents = this.sideNavList.toArray();
+      this.sideNavComponents[0].handleMobileDevice = false;
+      if (this.type === '3') {
+        this.sideNavComponents[0].isShowOnlyIcon = true;
+        this.sideNavComponents[0].width = '5%';
+        this.westPanelWidth = '0 0 5%';
+        this.sideNavComponents[0].setHomePageType(this.type);
+        // NAVBAR
+        this.amexioNavBarComponent.isLHSHide = true;
+        this.amexioNavBarComponent.lhsWidth = '0 0 5%';
+        this.amexioNavBarComponent.onIconClick.subscribe((eventdata: any) =>
+          this.northPanelClick(eventdata),
+        );
+      }
+      if (this.amexoHomePageNorthpanel) {
+        this.amexoHomePageNorthpanel.type = this.type;
+        this.amexoHomePageNorthpanel.nothPanelIconClick.subscribe(
+          (eventdata: any) => this.showHideWestPanel(),
+        );
+      }
+      this.amexioNavBarComponent.homepageType = this.type;
+      if (this.amexioHomePageWestPanelComponent) {
+        this.amexioNavBarComponent.onNavLoad.subscribe((onLoadData: any) => {
+          this.amexioHomePageWestPanelComponent.setPadding(onLoadData.offsetHeight);
+        });
+      }
+    }, 0);
   }
 
   // tslint:disable-next-line:no-identical-functions
