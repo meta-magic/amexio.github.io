@@ -93,6 +93,10 @@ export class ColorPaletteDirective implements OnInit {
         hostComponent.setColorPalette(ColorPaletteConstants.amexioTheme4);
         break;
       }
+      case (ColorPaletteConstants.banner): {
+        hostComponent.setColorPalette(ColorPaletteConstants.amexioTheme4);
+        break;
+      }
       case (ColorPaletteConstants.navbar): {
         hostComponent.setColorPalette(ColorPaletteConstants.amexioClassicTheme);
         break;
@@ -131,6 +135,10 @@ export class ColorPaletteDirective implements OnInit {
   getGradientStyles(hostComponent: any) {
     switch (hostComponent.amexioComponentId) {
       case (ColorPaletteConstants.card): {
+        hostComponent.setColorPalette(ColorPaletteConstants.amexioThemeGradient4);
+        break;
+      }
+      case (ColorPaletteConstants.banner): {
         hostComponent.setColorPalette(ColorPaletteConstants.amexioThemeGradient4);
         break;
       }
