@@ -159,7 +159,7 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
           this.showBanner = flag;
           this.resize(null);
           setTimeout(() => {
-            this.onNavLoad.emit({ offsetHeight: this.navbar.nativeElement.offsetHeight });  
+            this.onNavLoad.emit({ offsetHeight: this.navbar.nativeElement.offsetHeight });
           }, 200);
         });
       }
