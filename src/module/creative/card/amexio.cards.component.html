@@ -1,16 +1,15 @@
-<!-- <div style="height:100%;"  class="{{tempPolarideCE}}" [ngStyle]="{'background': bgimage ? 'url(' + bgimage + ') center/cover no-repeat' : null}" [ngClass]="cclass">
-    <div class="card-container-ce" [ngStyle]="{'justify-content': (align === 'start' || align === 'end') ? 'flex-'+align:align , 'color':color, 'background': background}">
-        <ng-content></ng-content>
-        <div>
-        </div> -->
+<div class="card-container-ce-main" 
+(mouseover)="onmouseover()" 
+(mouseleave)="onmouseleave()" 
+[ngStyle]="{'background': bgimage ? 'url(' + bgimage + ') center/cover no-repeat' : null}"
+[ngClass]="cclass">
 
-<div class="container maincecard" (mouseover)="onmouseover()" (mouseleave)="onmouseleave()" class="{{tempPolarideCE}}" [ngStyle]="{'background': bgimage ? 'url(' + bgimage + ') center/cover no-repeat' : null}"
-    [ngClass]="cclass">
 
-    <div class="card-container-ce" [ngStyle]="{'justify-content': (align === 'start' || align === 'end') ? 'flex-'+align:align , 'color':color, 'background': background}">
-        <div class={{slidercssclass}} [ngClass]="{overlay: overlaytype == 'fade-effect',
-                        'overlaysliderhover': ishover }">
-            <ng-content></ng-content>
+<div class="card-container-ce" [ngStyle]="{'justify-content': (align === 'start' || align === 'end') ? 'flex-'+align:align , 'color':color, 'background': background}">
+
+        <div [class]="overlayclass" [ngClass]="{
+                'card-ce-overlay-slideeffect-hover': ishover }">
+                <ng-content></ng-content>
         </div>
         <div>
         </div>

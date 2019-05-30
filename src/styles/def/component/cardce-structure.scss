@@ -1,18 +1,24 @@
 .cehovereffect:hover {
 }
 
-.container {
+.card-container-ce-main {
     position: relative;
     /* opacity: 1; */
      }
  
-    .overlay:hover {
+     .card-ce-overflowhidden {
+      height:100%; 
+      overflow: hidden;
+      }
+
+
+    .card-ce-overlay-fadeeffect:hover {
         opacity: 1;
         transition: all 2s ease-in-out;
      }
 
     /* fading effect */
-    .overlay {        
+    .card-ce-overlay-fadeeffect {        
         height: 100%;
         width: 100%;
         opacity: 0;
@@ -21,19 +27,16 @@
       }
       
     /* sliding effect  */
-    .overlayslider {
+    .card-ce-overlay-slideeffect {
       transform:   translateX(-300%);
       transition: all 0.3s ease-in-out;
     }
 
-     .overlaysliderhover {
+    .card-ce-overlay-slideeffect-hover {
         transform: translateX(0%);
         transition-delay: 500ms;
-        background-color: $cecardBGHoverColor;
-        color: $cecardFontHoverColor;
+        background-color: blue;
+        color: white;
       }
 
-      .maincecard {
-        height:100%; 
-        overflow: hidden;
-        }
+  

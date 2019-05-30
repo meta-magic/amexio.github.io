@@ -31,6 +31,8 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
 
   @Input('bg-image') bgimage: string;
 
+  @Input('overlay-type') overlaytype: string;
+
   @Input('color') color: string;
 
   @Input('background') background: string;
@@ -43,16 +45,10 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
 
   @Input('polaroid-type') transformType: any;
 
-  @Input('overlay-type') overlaytype: string;
-
   slidereffecton = false;
-  ishover = false;
-  slidercss = '';
-  slidercssclass = '';
-  csseffect = 'slider-effect';
 
   themeCss: any;
-
+  ishover = false;
   amexioComponentId = 'amexio-card';
 
   cclass: string;
@@ -61,7 +57,7 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
 
   polarideStyleMapCE: Map<any, string>;
 
-  tempPolarideCE: any;
+  slidercss = '';
 
   @ContentChildren(AmexioCardCEHeaderComponent) AmexioCardCEHeaderQueryList: QueryList<AmexioCardCEHeaderComponent>;
 
@@ -75,19 +71,28 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
 
   amexioCardActionList: AmexioCardCEActionComponent[];
 
+  overlayclass = '';
+  slidereffect = 'slider-effect';
   constructor() {
     super();
   }
 
   ngOnInit() {
-    if (this.overlaytype === this.csseffect) {
-      this.slidercssclass = 'overlayslider';
-    }
+
     if (!this.color) {
       this.cclass = 'card-container-ce-color';
     }
     if (!this.background) {
       this.cclass = this.cclass + ' card-container-ce-bg-color';
+    }
+    if (this.overlaytype) {
+      this.cclass = this.cclass + '  card-ce-overflowhidden';
+
+      if (this.overlaytype === this.slidereffect) {
+        this.overlayclass = ' card-ce-overlay-slideeffect ';
+      } else if (this.overlaytype === 'fade-effect') {
+        this.overlayclass = ' card-ce-overlay-fadeeffect ';
+      }
     }
     this.setWiderAndNarrower();
     super.ngOnInit();
@@ -98,7 +103,9 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
     this.polarideStyleMapCE.set('tilted-minus-4-degree', 'card-container-pol-styl4');
     this.polarideStyleMapCE.forEach((ele: any, key: any) => {
       if (key === this.transformType) {
-        this.tempPolarideCE = ele;
+
+        this.cclass = this.cclass + ' ' + ele;
+
       }
     });
     return 'this.tempPolaideCE';
@@ -139,6 +146,7 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
         break;
     }
   }
+
   ngAfterContentInit() {
     if (this.AmexioCardCEHeaderQueryList) {
       this.amexioCardHeaderList = this.AmexioCardCEHeaderQueryList.toArray();
@@ -146,13 +154,6 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
         this.amexioCardHeaderList.forEach((element: any) => {
           element.amexioComponentId = this.amexioComponentId;
         });
-      }
-    }
-    if (this.AmexioCardCEBodyQueryList) {
-      this.amexioCardBodyList = this.AmexioCardCEBodyQueryList.toArray();
-      if (this.styleType === 'ribbon-style') {
-        this.amexioCardBodyList[0].getRibbonType = true;
-        this.cclass = this.cclass + ' card-container-wider-header';
       }
     }
     this.setCardAligementForAllInnerComponent();
@@ -190,20 +191,21 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
   }
 
   onmouseover() {
-    if (this.overlaytype === this.csseffect) {
+    if (this.overlaytype === this.slidereffect) {
       this.ishover = true;
     }
   }
 
   onmouseleave() {
-    if (this.overlaytype === this.csseffect) {
+    if (this.overlaytype === this.slidereffect) {
       this.ishover = false;
     }
   }
 
   onhover() {
-    if (this.overlaytype === this.csseffect) {
+    if (this.overlaytype === this.slidereffect) {
       this.slidereffecton = true;
     }
   }
+
 }
