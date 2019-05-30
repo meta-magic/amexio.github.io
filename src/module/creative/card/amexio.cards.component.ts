@@ -73,6 +73,7 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
 
   overlayclass = '';
   slidereffect = 'slider-effect';
+  tempPolarideCE: string;
   constructor() {
     super();
   }
@@ -103,9 +104,7 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
     this.polarideStyleMapCE.set('tilted-minus-4-degree', 'card-container-pol-styl4');
     this.polarideStyleMapCE.forEach((ele: any, key: any) => {
       if (key === this.transformType) {
-
         this.cclass = this.cclass + ' ' + ele;
-
       }
     });
     return 'this.tempPolaideCE';
@@ -154,6 +153,13 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
         this.amexioCardHeaderList.forEach((element: any) => {
           element.amexioComponentId = this.amexioComponentId;
         });
+      }
+    }
+    if (this.AmexioCardCEBodyQueryList) {
+      this.amexioCardBodyList = this.AmexioCardCEBodyQueryList.toArray();
+      if (this.styleType === 'ribbon-style') {
+        this.amexioCardBodyList[0].getRibbonType = true;
+        this.cclass = this.cclass + ' card-container-wider-header';
       }
     }
     this.setCardAligementForAllInnerComponent();
