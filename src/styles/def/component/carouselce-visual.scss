@@ -43,10 +43,10 @@
 }
 
 .ce-caroueslnav a.ce-caroueslnav-prev span{
-    background: $carouselNavHeaderBG url('prev.png') no-repeat center center;
+    background: $primaryBGColor url('prev.png') no-repeat center center;
 }
 .ce-caroueslnav a.ce-caroueslnav-next span{
-    background: $carouselNavHeaderBG url('next.png') no-repeat center center;
+    background: $primaryBGColor url('next.png') no-repeat center center;
 }
 
 
