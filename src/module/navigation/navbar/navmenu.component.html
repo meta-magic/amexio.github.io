@@ -10,7 +10,7 @@
         </span>
   </a>
 
-  <div class="nav-dropdown-content" >
+  <div class="nav-dropdown-content" [ngStyle]="{'width' : mobilemode ? '94%' : '250px'}">
 
     <a *ngFor="let node of data" >
 
