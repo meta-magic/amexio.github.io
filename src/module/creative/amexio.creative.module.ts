@@ -22,6 +22,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AmexioHomePageComponent } from './../creative/homepage/homepage.component';
 
 import { AmexioCarouselCEComponent } from './carousel/amexio.carouselce.component';
+import {ColorPaletteComponent} from './colorpicker/colorpalette/colorpalette.component';
+import {ColorPickerComponent} from './colorpicker/colorpicker.component';
+import {ColorsliderComponent} from './colorpicker/colorslider/colorslider.component';
 import { AmexioMenuCEComponent } from './menu/menu.component';
 import { AmexioProgressCEComponent } from './progressbar/progressce.component';
 
@@ -33,7 +36,6 @@ import { AmexioCardCEBodyComponent } from './../creative/common/amexio.body.comp
 import { AmexioCardCEHeaderComponent } from './../creative/common/amexio.header.component';
 
 import { AmexioCommonModule } from '../base/amexio.common.module';
-
 import { AmexioFormCEComponent } from './../creative/form/amexio.form.component';
 import { AmexioFormActionCEComponent } from './../creative/form/form.action.component';
 
@@ -46,7 +48,6 @@ import { ViewportBackgroundComponent } from './../creative/viewport/viewport.bac
 import { ViewportContentBodyComponent } from './../creative/viewport/viewport.content.body/viewport.content.body.component';
 import { ViewportContentComponent } from './../creative/viewport/viewport.content/viewport.content.component';
 import { ViewportComponent } from './../creative/viewport/viewport/viewport.component';
-
 import { AmexioFormsModule } from './../forms/amexio.forms.module';
 import { AmexioLayoutModule } from './../layout/amexio.layout.module';
 import { AmexioNavModule } from './../navigation/amexio.nav.module';
@@ -83,6 +84,9 @@ const CREATIVE_COMPONENTS = [
   AmexioHomePageNorthPanelComponent,
   AmexioHomePageWestPanelComponent,
   AmexioWindowCEComponent,
+  ColorPickerComponent,
+  ColorPaletteComponent,
+  ColorsliderComponent,
   ViewportComponent,
   ViewportBackgroundComponent,
   ViewportContentComponent,

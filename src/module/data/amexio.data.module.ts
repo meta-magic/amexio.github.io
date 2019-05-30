@@ -3,8 +3,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { ScrollingModule } from '@angular/cdk/scrolling';
-
 import { AmexioGridColumnComponent } from './datagrid/data.grid.column';
 import { AmexioDatagridComponent } from './datagrid/datagrid.component';
 import { DataGridFilterComponent } from './datagrid/datagrid.filter.component';
@@ -33,7 +31,6 @@ import { DisplayFieldService } from '../services/data/display.field.service';
 
 import { IconLoaderService } from '../services/icon/icon.service';
 import { GoogleMapScriptService } from '../services/script/script.data.service';
-import {  VirtualScrollerComponent } from './virutalscroller/virtualscroller.component';
 
 export * from '../services/data/common.data.service';
 export * from '../services/script/script.data.service';
@@ -61,14 +58,12 @@ const DATA_COMPONENTS = [
   AmexioFilterTreeComponent,
   TreeDataTableComponent,
   AmexioItemSelectorComponent,
-  VirtualScrollerComponent,
 ];
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    ScrollingModule,
     AmexioPaneModule,
     AmexioLayoutModule,
     HttpClientModule,

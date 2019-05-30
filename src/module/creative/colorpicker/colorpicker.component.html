@@ -1,0 +1,29 @@
+<div class="inputgroup form-group">
+
+  <label>
+    {{fieldlabel}}
+  </label>
+  <br/>
+
+  <div *ngIf="!inlineColorPicker" class="input-container" style="display: inline-flex;
+    align-items: center;" (click)="openColorPicker()">
+    <input type="text" class="input-control" name="value" [(ngModel)]="value" />
+    <span *ngIf="value" style="display: inline-block; width:32px; height:32px;" [style.background]="value"></span>
+    &nbsp;
+    <i class="fa fa-paint-brush" style="cursor: pointer;"></i>
+  </div>
+
+  <div  *ngIf="showColorPicker || inlineColorPicker " [@changeState]="showColorPicker || inlineColorPicker "
+       [ngClass]="{'card-container': (!inlineColorPicker)}" 
+       [ngStyle]="{'position': (inlineColorPicker) ? 'relative':'absolute',
+                     'height': (showColorPicker) ? '270px': 'auto' }"
+       style="align-items: center;">
+    <div class="color-wrapper"  style="justify-content: center;">
+      <color-palette [hue]="hue" [position]="position" (color)="selectedPaletteColor($event)"></color-palette>
+      <color-slider [offsetY]="offsetY" [selected-hue]="hue" (color)="selectedHue($event)" style="margin-left:0px">
+      </color-slider>
+    </div>
+    <amexio-button *ngIf="!inlineColorPicker" [size]="'small'" (onClick)="closeColorPicker()" [label]="'Close'" [type]="'theme-color'" [tooltip]="'Close'">
+    </amexio-button>
+  </div>
+</div>

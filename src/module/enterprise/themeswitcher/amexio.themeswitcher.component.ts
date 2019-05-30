@@ -85,7 +85,7 @@ export class AmexioThemeSwitcherComponent implements OnInit, OnChanges {
         const style = {};
         style['position'] = (this.relative) ? 'relative' : 'fixed';
         style['display'] = 'block';
-        style['z-index'] = '1000';
+        style['z-index'] = '100';
         if (this.colsize <= 3) {
             style['min-width'] = '250px';
         } else {
