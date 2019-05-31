@@ -1,30 +1,32 @@
 /*
- * Copyright [2019] [Metamagic]
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
- *  Created by ketangote on 12/8/17.
- */
+* Copyright [2019] [Metamagic]
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+*  Created by ketangote on 12/8/17.
+*/
 
 import {
-  AfterContentInit, AfterViewInit, Component, ContentChild, ContentChildren, ElementRef, EventEmitter, Input, OnInit,
-  Output, QueryList, ViewChild,
+  AfterContentInit, AfterViewInit, Component, ContentChildren, ElementRef, EventEmitter,
+  Input, OnInit, Output, QueryList, ViewChild,
 } from '@angular/core';
+import { AmexioNavActionComponent } from './navaction.component';
 import { AmexioNavItemComponent } from './navitem.component';
-
-import { AmexioBannerComponent } from './banner/banner.component';
+import { AmexioNavMenuComponent } from './navmenu.component';
 
 import { DeviceQueryService } from '../../services/device/device.query.service';
+
+import { AmexioBannerComponent } from './banner/banner.component';
 
 @Component({
   selector: 'amexio-nav', templateUrl: 'navbar.component.html',
@@ -32,63 +34,63 @@ import { DeviceQueryService } from '../../services/device/device.query.service';
 export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterContentInit {
 
   /*
-   Properties
-   name : title
-   datatype : string
-   version : 4.0 onwards
-   default : none
-   description : Title for link, button and menu header
-   */
+Properties
+name : title
+datatype : string
+version : 4.0 onwards
+default : none
+description : Title for link, button and menu header
+*/
   @Input() title: string;
 
   /*
-   Properties
-   name : logo
-   datatype : string
-   version : 4.0 onwards
-   default : none
-   description : Logo of navbar.
-   */
+Properties
+name : logo
+datatype : string
+version : 4.0 onwards
+default : none
+description : Logo of navbar.
+*/
   @Input() logo = '';
 
   /*
-   Properties
-   name : enable-side-nav-position
-   datatype : boolean
-   version : 4.0 onwards
-   default : none
-   description : Indicate if side-nav-bar is present
-   */
+Properties
+name : enable-side-nav-position
+datatype : boolean
+version : 4.0 onwards
+default : none
+description : Indicate if side-nav-bar is present
+*/
   @Input('enable-side-nav-position') sidenavspace = false;
 
-  /*
-   Properties
-   name : enable-side-nav-position
-   datatype : boolean
-   version : 4.0 onwards
-   default : none
-   description : transparent nav bar
-   */
-  @Input('transparent') transparent = false;
+    /*
+Properties
+name : enable-side-nav-position
+datatype : boolean
+version : 4.0 onwards
+default : none
+description : transparent nav bar
+*/
+@Input('transparent') transparent = false;
 
-  /*
-   Properties
-   name : color
-   datatype : string
-   version : 5.5.6 onwards
-   default : none
-   description : Color
-   */
-  @Input('color') color: string;
+    /*
+Properties
+name : color
+datatype : string
+version : 5.5.6 onwards
+default : none
+description : Color
+*/
+@Input('color') color: string;
 
-  @Input('enable-more-mode') enableMoreMode = false;
-
-  opacity: number;
-  themeCss: any;
-  amexioComponentId = 'amexio-navbar';
+opacity: number;
+themeCss: any;
+amexioComponentId = 'amexio-navbar';
 
   // THIS IS LOCAL USE NOT EXPOSED
   @Input('home-page-type') homepageType: string;
+  @Output() onNavLoad: any = new EventEmitter<any>();
+
   @Output() onNavLogoClick: any = new EventEmitter<any>();
 
   @Output() onNavTitleClick: any = new EventEmitter<any>();
@@ -101,11 +103,7 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
 
   @ContentChildren(AmexioNavItemComponent) navitems: QueryList<AmexioNavItemComponent>;
 
-  @ContentChildren(AmexioBannerComponent) bannerItem: QueryList<AmexioBannerComponent>;
-
   navItemComponents: AmexioNavItemComponent[];
-
-  @Output() onNavLoad: any = new EventEmitter<any>();
 
   @ViewChild('navbar', { read: ElementRef }) public navbar: ElementRef;
   @ViewChild('navbarfixed', { read: ElementRef }) public navbarfixed: ElementRef;
@@ -113,6 +111,7 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
   @ViewChild('navbaritems1', { read: ElementRef }) public navbaritems1: ElementRef;
   @ViewChild('navbaritems2', { read: ElementRef }) public navbaritems2: ElementRef;
   @ViewChild('navbaritems3', { read: ElementRef }) public navbaritems3: ElementRef;
+  @ContentChildren(AmexioBannerComponent) bannerItem: QueryList<AmexioBannerComponent>;
 
   navclass: string;
   toggle = true;
@@ -127,21 +126,19 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
   isPhone = false;
   navItemPresent = false;
   top: any;
-  type: string;
-  moreBucket: any[] = [];
-  resizeItemCollection: AmexioNavItemComponent[] = [];
-  isItemRemoved = false;
-  morePadding = 0;
-
-  moreCheckWidth = 0;
   showBanner = false;
 
   constructor(public matchMediaService: DeviceQueryService) {
-
+    if (this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone()) {
+      this.mobilemode = true;
+      this.isPhone = true;
+    } else {
+        this.mobilemode = false;
+        this.isPhone = false;
+    }
   }
 
   ngOnInit() {
-
   }
 
   ngAfterViewInit() {
@@ -170,9 +167,9 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
       this.navItemPresent = true;
       this.navItemComponents.forEach((element: any) => {
         element.itemcolor = this.color;
-      });
-
+        });
     }
+
   }
 
   onImageLoad() {
@@ -186,30 +183,9 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
         (this.navbaritems2.nativeElement.offsetWidth) +
         (this.navbaritems2.nativeElement.offsetWidth) +
         (this.navbaritems3.nativeElement.offsetWidth));
-    }
-
-    if (this.navbarfixed && this.navbarfixed.nativeElement) {
-      this.moreCheckWidth = this.moreCheckWidth + this.navbarfixed.nativeElement.offsetWidth;
-    }
-    if (this.navbaritems1 && this.navbaritems1.nativeElement) {
-      this.moreCheckWidth = this.moreCheckWidth + this.navbarfixed.nativeElement.offsetWidth;
-    }
-    if (this.navbaritems2 && this.navbaritems2.nativeElement) {
-      this.moreCheckWidth = this.moreCheckWidth + this.navbarfixed.nativeElement.offsetWidth;
-    }
-
-    if (!this.enableMoreMode) {
       this.handleDeviceSetting();
-    } else {
-      if (this.matchMediaService.IsPhone()) {
-        this.mobilemode = true;
-        this.isPhone = true;
-      } else {
-        this.mobilemode = false;
-        this.isPhone = false;
-      }
-      this.createMoreContent();
     }
+    this.onNavLoad.emit({ offsetHeight: this.navbar.nativeElement.offsetHeight });
   }
 
   toggleDrawerPanel(event: any) {
@@ -239,48 +215,66 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
   handleDeviceSetting() {
     if (this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone()) {
       this.mobilemode = true;
-      this.toggle = false;
       this.isPhone = true;
-      if (this.sidenavspace) {
-        this.sidenav = true;
+    } else {
+        this.mobilemode = false;
+        this.isPhone = false;
+    }
+    if (this.sidenavspace) {
+      this.sideNavbar();
+    }
+
+    const navbarwidth = this.navbar.nativeElement.offsetWidth;
+
+    if (!this.navfixeditem) {
+      this.navfixeditem = this.navbarfixed.nativeElement.offsetWidth;
+    }
+
+    if (!this.navitemwidth) {
+      let navbaritems1Width = 0;
+      let navbaritems2Width = 0;
+      let navbaritems3Width = 0;
+
+      if (this.navbaritems1) {
+        navbaritems1Width = this.navbaritems1.nativeElement.offsetWidth;
       }
+      if (this.navbaritems2) {
+        navbaritems2Width = this.navbaritems2.nativeElement.offsetWidth;
+      }
+
+      if (this.navbaritems3) {
+        navbaritems3Width = this.navbaritems3.nativeElement.offsetWidth;
+      }
+      this.navitemwidth = (this.navfixeditem + navbaritems1Width + navbaritems2Width + navbaritems3Width);
+    }
+
+    const navbaravailablewidth = (navbarwidth - (this.navfixeditem + this.navitemwidth));
+
+    if ((navbaravailablewidth < 10)) {
+      this.mobilemode = true;
+      this.toggle = false;
+      this.notifyNavItems(navbarwidth);
     } else {
       this.mobilemode = false;
-      this.isPhone = false;
       this.toggle = true;
-      if (this.sidenavspace) {
-        this.sidenav = false;
-      }
-    }
-    if (this.navbar) {
-      this.notifyNavItems(this.navbar.nativeElement.offsetWidth);
+      this.notifyNavItems(navbarwidth);
     }
 
   }
+  sideNavbar() {
+    if (this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone()) {
+      this.sidenav = true;
+    } else {
+      this.sidenav = false;
+    }
+  }
 
   resize(event: any) {
-    if (!this.enableMoreMode) {
-      this.handleDeviceSetting();
-    } else {
-      if (this.matchMediaService.IsPhone()) {
-        this.mobilemode = true;
-        this.toggle = false;
-        this.isPhone = true;
-      } else {
-        this.mobilemode = false;
-        this.toggle = true;
-        this.isPhone = false;
-      }
-      this.createMoreContent();
-      if (this.navbar) {
-        this.notifyNavItems(this.navbar.nativeElement.offsetWidth);
-      }
-
-    }
+    this.handleDeviceSetting();
     if (this.homepageType === '3') {
       if (!this.isExpand) {
         this.lhsWidth = '0 0 19%';
-      } else {
+      } else  {
         this.isLHSHide = true;
         this.lhsWidth = '0 0 5%';
       }
@@ -297,7 +291,7 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
     if (this.homepageType === '3') {
       if (!this.isExpand) {
         this.lhsWidth = '0 0 19%';
-      } else {
+      } else  {
         this.isLHSHide = true;
         this.lhsWidth = '0 0 5%';
       }
@@ -308,90 +302,5 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
 
   setColorPalette(themeClass: any) {
     this.themeCss = themeClass;
-  }
-
-  createMoreContent() {
-    this.resizeItemCollection = [];
-    this.moreBucket = [];
-    this.notifyNavItems(this.navbar.nativeElement.offsetWidth);
-    if (!this.mobilemode) {
-      this.removeNodeFromDom();
-      if (this.navItemComponents && this.navItemComponents.length > 0) {
-        this.createMoreData();
-      }
-
-    } else {
-      this.toggle = false;
-      this.mobileModePresent();
-    }
-    if (this.moreBucket.length > 0) {
-      this.morePadding = 50;
-    } else {
-      this.morePadding = 0;
-    }
-    this.onNavLoad.emit({ offsetHeight: this.navbar.nativeElement.offsetHeight });
-  }
-
-  mobileModePresent() {
-    this.removeNodeFromDom();
-    this.navItemComponents.forEach((nvitem: any) => {
-      if (nvitem.type === 'menu') {
-        this.resizeItemCollection.push(nvitem);
-      }
-    });
-  }
-
-  createMoreData() {
-    let itemsWidth = 0;
-    let gapWidth = 0;
-    if (this.moreCheckWidth === 0 || this.moreCheckWidth < 200) {
-      gapWidth = 200;
-    } else {
-      gapWidth = 0;
-      itemsWidth = this.moreCheckWidth;
-    }
-    this.navItemComponents.forEach((nvitem: any) => {
-      if (nvitem.type === 'menu') {
-        if (this.navbar.nativeElement.offsetWidth > (itemsWidth + gapWidth) ||
-          ((this.navbar.nativeElement.offsetWidth - itemsWidth) > 200)) {
-          itemsWidth = (itemsWidth + nvitem.offsetWidth);
-          this.resizeItemCollection.push(nvitem);
-        } else {
-          const dd = {
-            text: nvitem.title,
-            submenus: nvitem.data,
-          };
-          this.moreBucket.push(dd);
-        }
-      }
-    });
-  }
-
-  removeNodeFromDom() {
-    if (!this.isItemRemoved && this.navItemComponents && this.navItemComponents.length > 0) {
-      this.navItemComponents.forEach((nvitem: any) => {
-        if (nvitem.type === 'menu') {
-          nvitem.offsetWidth = nvitem.elementref.nativeElement.offsetWidth;
-          const node: HTMLElement = document.getElementById(nvitem.componentId);
-          if (node) {
-            node.parentNode.removeChild(node);
-          }
-        }
-      });
-      this.isItemRemoved = true;
-    }
-  }
-
-  externalLink(event: any) {
-    if (this.navItemComponents && this.navItemComponents.length > 0) {
-      let isFound = false;
-      this.navItemComponents.forEach((element: any) => {
-        if (!isFound && element.type === 'menu') {
-          element.navItemClick(event);
-          isFound = true;
-        }
-      });
-
-    }
-  }
+   }
 }

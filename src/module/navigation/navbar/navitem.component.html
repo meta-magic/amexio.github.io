@@ -1,11 +1,10 @@
-<div  [attr.id]="componentId" class="topnavmainbarinneritems" [ngClass]="{'topnavmainbarinneritems-mobile':mobilemode,
+<div class="topnavmainbarinneritems" [ngClass]="{'topnavmainbarinneritems-mobile':mobilemode,
  'nav-dropdown-content-right':enablerightclass}">
-  <amexio-nav-action *ngIf="isAction" [color]="itemcolor" [type]="type" [title]="title" [icon]="icon" (navLinkClick)="navItemClick($event)"></amexio-nav-action>
-  <amexio-nav-textfield *ngIf="isTextField" [color]="itemcolor" [(ngModel)]="value" [title]="title"></amexio-nav-textfield>
-  <amexio-nav-menu *ngIf="isMenu" [mobilemode]="mobilemode" [color]="itemcolor" [title]="title" [icon]="icon" [data]="data" (onNavItemClick)="navItemClick($event)">
-  </amexio-nav-menu>
-  <amexio-nav-menu *ngIf="isMenuContainer" [mobilemode]="mobilemode" [color]="itemcolor" [title]="title" [icon]="icon" [type]="type" (navLinkClick)="navItemClick($event)">
-    <ng-content></ng-content>
-  </amexio-nav-menu>
+    <amexio-nav-action *ngIf="isAction" [color]="itemcolor" [type]="type" [title]="title" [icon]="icon" (navLinkClick)="navItemClick($event)"></amexio-nav-action>
+    <amexio-nav-textfield *ngIf="isTextField" [color]="itemcolor" [(ngModel)]="value" [title]="title"></amexio-nav-textfield>
+    <amexio-nav-menu *ngIf="isMenu" [color]="itemcolor" [title]="title" [icon]="icon" [data]="data" (onNavItemClick)="navItemClick($event)">
+    </amexio-nav-menu>
+    <amexio-nav-menu *ngIf="isMenuContainer" [color]="itemcolor" [title]="title" [icon]="icon" [type]="type" (navLinkClick)="navItemClick($event)">
+        <ng-content></ng-content>
+    </amexio-nav-menu>
 </div>
-

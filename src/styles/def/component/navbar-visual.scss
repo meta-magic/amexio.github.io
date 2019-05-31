@@ -41,8 +41,8 @@
 }
 
 .topnavmainbarinneritems .nav-dropdown-content a:hover {
-    //background-color: $navbarHoverBG;
-    color: $navbarHoverBG!important
+    background-color: $navbarHoverBG;
+    color: $navbarHoverColor!important
 }
 
 .nav-dropdown:active {

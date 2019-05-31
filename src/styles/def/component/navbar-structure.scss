@@ -157,8 +157,6 @@
     transition: all 0.3s ease;
     //transform: scale(0);
     transform-origin: 0 0;
-    max-height: 500px;
-    overflow: auto;
 }
 
 .topnavmainbarinneritems-mobile .nav-dropdown-content {
@@ -348,47 +346,4 @@
     box-shadow: 0px 0px 0px $navbarBGBoxShadow !important;
     background-color: transparent !important;
     opacity: 0.9 !important;
-}
-
-.navBannerCss {
-    background-color: $navbarBGColor;
-    color: $navbarColor;
-    width: 100%;
-    display: flex;
-    height: auto;
-    padding: 10px;
-}
-.testClass {
-
-}
-
-.testClass .nav-dropdown-content {
-max-height: 500px;
-right: 10px;
-overflow: auto;
-}
-
-.topnavmainbarinneritems .nav-dropdown-content {
-width: 250px;
-max-width: 1000px;
-display: none;
-position: absolute;
-z-index: 3;
-padding: 10px 0px;
-box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
-transition: all 0.3s ease;
--webkit-transform-origin: 0 0;
-transform-origin: 0 0;;
-}
-
-.topnavmainbarinneritems .nav-dropdown-content-mobile {
-width: 94%;
-display: none;
-position: absolute;
-z-index: 3;
-padding: 10px 0px;
-box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
-transition: all 0.3s ease;
--webkit-transform-origin: 0 0;
-transform-origin: 0 0;;
 }
