@@ -58,12 +58,12 @@
   --themePrimaryColorShade5: #d1ddff;
   --themePrimaryColorShade6: #f5f7ff;
   /** Theme Color Gradients -------------------------- */
-  --themePrimaryColorGradient: linear-gradient(to right, #001452, #0544ff, #85a3ff);
-  --themeSecondaryColorGradient: linear-gradient(to right, #002952, #0582ff, #85c2ff);
-  --theme3rdColorGradient: linear-gradient(to right, #3d0052, #c105ff, #e085ff);
-  --theme4thColorGradient: linear-gradient(to right, #52003d, #ff05c1, #ff85e0);
-  --theme5thColorGradient: linear-gradient(to right, #520014, #ff0544, #ff85a3);
-  --theme6thColorGradient: linear-gradient(to right, #521400, #ff4405, #ffa385);
+  --themePrimaryColorGradient: linear-gradient(to right, #001452, #0038e0, #5c85ff);
+  --themeSecondaryColorGradient: linear-gradient(to right, #002952, #0070e0, #5cadff);
+  --theme3rdColorGradient: linear-gradient(to right, #3d0052, #a800e0, #d65cff);
+  --theme4thColorGradient: linear-gradient(to right, #52003d, #e000a8, #ff5cd6);
+  --theme5thColorGradient: linear-gradient(to right, #520014, #e00038, #ff5c85);
+  --theme6thColorGradient: linear-gradient(to right, #521400, #e03800, #ff855c);
   /** Theme Font Family -------------------------- */
   --themeFontColor: #00081f;
   --themeFontFamily: Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
@@ -172,6 +172,14 @@ body {
 .float-left {
   float: left; }
 
+.flex-inline {
+  display: flex;
+  flex-direction: row; }
+
+.flex-col {
+  display: flex;
+  flex-direction: column; }
+
 .flex-center {
   justify-content: center; }
 
@@ -180,6 +188,9 @@ body {
 
 .flex-end {
   justify-content: flex-end; }
+
+.flex-spacebetween {
+  justify-content: space-between; }
 
 .border-bottom {
   border-bottom: 1px solid #cccccc; }
@@ -468,51 +479,51 @@ image using the content attribute.
 /* You can add global styles to this file, and also import other style files */
 .amexio-theme-color1 {
   background-color: var(--themePrimaryColor) !important;
-  color: var(--themePrimaryFontColor); }
+  color: var(--themePrimaryFontColor) !important; }
 
 .amexio-theme-color2 {
   background-color: var(--themeSecondaryColor) !important;
-  color: var(--themeSecondaryFontColor); }
+  color: var(--themeSecondaryFontColor) !important; }
 
 .amexio-theme-color3 {
   background-color: var(--theme3rdColor) !important;
-  color: var(--theme3rdFontColor); }
+  color: var(--theme3rdFontColor) !important; }
 
 .amexio-theme-color4 {
   background-color: var(--theme4thColor) !important;
-  color: var(--theme4thFontColor); }
+  color: var(--theme4thFontColor) !important; }
 
 .amexio-theme-color5 {
   background-color: var(--theme5thColor) !important;
-  color: var(--theme5thFontColor); }
+  color: var(--theme5thFontColor) !important; }
 
 .amexio-theme-color6 {
   background-color: var(--theme6thColor) !important;
-  color: var(--theme6thFontColor); }
+  color: var(--theme6thFontColor) !important; }
 
 .amexio-theme-color1-Gradient {
   background-image: var(--themePrimaryColorGradient) !important;
-  color: var(--themePrimaryFontColor); }
+  color: white !important; }
 
 .amexio-theme-color2-Gradient {
   background-image: var(--themeSecondaryColorGradient) !important;
-  color: var(--themeSecondaryFontColor); }
+  color: white !important; }
 
 .amexio-theme-color3-Gradient {
   background-image: var(--theme3rdColorGradient) !important;
-  color: var(--theme3rdFontColor); }
+  color: white !important; }
 
 .amexio-theme-color4-Gradient {
   background-image: var(--theme4thColorGradient) !important;
-  color: var(--theme4thFontColor); }
+  color: white !important; }
 
 .amexio-theme-color5-Gradient {
   background-image: var(--theme5thColorGradient) !important;
-  color: var(--theme5thFontColor); }
+  color: white !important; }
 
 .amexio-theme-color6-Gradient {
   background-image: var(--theme6thColorGradient) !important;
-  color: var(--theme6thFontColor); }
+  color: white !important; }
 
 .tabwapper .tab .tablistitems .tablink .table {
   padding: 0px !important; }
@@ -1121,7 +1132,7 @@ button {
   display: block;
   position: absolute;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-  z-index: 3;
+  z-index: 700;
   width: 290px; }
   .datetimepicker .datetimepickertopbar {
     padding: 10px 25px;
@@ -1346,7 +1357,7 @@ button {
 /** dropdown - Structure CSS **/
 .dropdown {
   display: block;
-  z-index: 1003;
+  z-index: 1;
   opacity: 1;
   overflow: auto;
   position: absolute;
@@ -1488,12 +1499,12 @@ button {
 *****************************************************************************/
 /** fileupload - Visual CSS **/
 .upload-drop-zone {
-  color: var(--componentHeaderFontColor);
-  border-color: var(--componentHeaderFontColor); }
+  color: var(--appHeaderMenuBGColor);
+  border-color: var(--appHeaderMenuBGColor); }
 
 .upload-drop-zone.drop {
-  color: var(--themeFontColor);
-  border-color: var(--themeFontColor); }
+  color: var(--appHeaderMenuBGColor);
+  border-color: var(--appHeaderMenuBGColor); }
 
 /** fileupload - Structure CSS **/
 .upload-drop-zone {
@@ -2491,6 +2502,38 @@ input:checked + .largeType2ToggleSlider:before {
 .ui-slider-range3 {
   background: #b8dfff; }
 
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 10px;
+  border-radius: 5px;
+  background: var(--componentBGColor);
+  color: var(--themeFontColor);
+  border: 1px solid #D5D5D5;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  opacity: 1; }
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  cursor: pointer; }
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  cursor: pointer; }
+
+.slidecontainer {
+  width: 100%;
+  padding-top: 17px; }
+
 /****************************************************************************
     Component Name : Label
     Version : Amexio v4.0 onwards
@@ -2640,6 +2683,11 @@ input:checked + .largeType2ToggleSlider:before {
   font-size: 4.2vw;
   font-weight: bold;
   line-height: 1; }
+
+.eclipse {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
 
 /****************************************************************************
     Component Name : Box
@@ -3119,7 +3167,7 @@ input:checked + .largeType2ToggleSlider:before {
 
 /** floatingbutton - Structure CSS **/
 .floatingbutton {
-  z-index: 1;
+  z-index: 501;
   text-align: center;
   border-color: #ced4da;
   cursor: pointer;
@@ -3230,12 +3278,13 @@ input:checked + .largeType2ToggleSlider:before {
 /** floatingbuttongroup - Structure CSS **/
 .floatinggroup {
   position: fixed;
-  padding-bottom: 20px;
-  z-index: 3; }
+  z-index: 3;
+  outline: none; }
 
 .floatinggroup .floatinggroupitems {
   list-style: none;
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+  outline: none; }
 
 .floatingbutton-circle {
   text-align: center;
@@ -4591,7 +4640,6 @@ fsw .widgetSprite.icCalendar {
 
 /* .activecolortab class replica from tab */
 .activecolordatetab {
-  padding-left: 8px;
   border-bottom: 2px solid var(--componentActiveBGColor) !important; }
 
 .datesrange {
@@ -4617,23 +4665,23 @@ fsw .widgetSprite.icCalendar {
 *****************************************************************************/
 /** enterprise-content - Visual CSS **/
 .content-title {
-  color: var(--componentActiveFontColor); }
+  color: var(--componentHoverBGColor); }
 
 .content-area {
-  color: var(--componentActiveFontColor); }
+  color: var(--componentHoverBGColor); }
 
 /* Button Related CSS */
 .content-button {
-  color: var(--componentActiveFontColor); }
+  color: var(--componentHoverBGColor); }
 
 header .billboard .content-button {
-  color: var(--componentActiveFontColor); }
+  color: var(--componentHoverBGColor); }
 
 .content-button i {
-  color: var(--componentActiveFontColor); }
+  color: var(--componentHoverBGColor); }
 
 .content-button-small i {
-  color: var(--componentActiveFontColor); }
+  color: var(--componentHoverBGColor); }
 
 .close-button {
   color: gray; }
@@ -5296,6 +5344,14 @@ header .billboard .content-button {
   width: 100%; }
 
 /****************************************************************************
+    Component Name : Enterprise Calendar
+    Version : Amexio v5.12.1 onwards
+*****************************************************************************/
+.themecolorpalette {
+  display: block;
+  flex-grow: 1; }
+
+/****************************************************************************
     Component Name : Enterprise Step Wizard
     Version : Amexio v5.5.2 onwards
 *****************************************************************************/
@@ -5578,6 +5634,13 @@ amexio-homepage-centerpanel .homepage-centerpanel {
 
 .homepage3-bar {
   cursor: pointer; }
+
+/****************************************************************************
+    Component Name : Tree Tab Calendar
+    Version : Amexio v5.13 onwards
+*****************************************************************************/
+.sideNavBorder .sidenav {
+  border-right: 1px solid #ced4da; }
 
 /****************************************************************************
     Component Name : Datapoints
@@ -5937,6 +6000,9 @@ amexio-homepage-centerpanel .homepage-centerpanel {
     color: rgba(0, 0, 0, 0.87); }
     .listbox .list .title a {
       color: rgba(0, 0, 0, 0.87) !important; }
+
+.list-items-click {
+  background-color: var(--componentActiveBGColor); }
 
 /** Listbox - Structure CSS **/
 .listbox {
@@ -7004,7 +7070,6 @@ amexio-homepage-centerpanel .homepage-centerpanel {
   height: 120%;
   padding-top: 12px;
   padding-bottom: 8px;
-  color: var(--appHeaderMenuFontColor);
   border-left: 1px solid #f7f3f3; }
 
 .label-icon-css {
@@ -7507,6 +7572,11 @@ fieldset {
   font-weight: bold;
   color: var(--componentActiveFontColor); }
 
+.verticalnavtab .leftactiverotatetab {
+  background-color: var(--componentActiveBGColor);
+  font-weight: bold;
+  color: var(--componentActiveFontColor); }
+
 .verticalnavtab .rightactivetab {
   background-color: var(--componentActiveBGColor);
   color: var(--componentActiveFontColor); }
@@ -7722,7 +7792,7 @@ fieldset {
 .tabcontent {
   width: inherit;
   position: relative;
-  padding: 10px 0px;
+  padding: 10px 5px;
   color: var(--componentFontColor); }
 
 .tabcontent::-webkit-scrollbar-track {
@@ -7859,6 +7929,25 @@ fieldset {
   display: table-cell;
   vertical-align: bottom; }
 
+#tabclass {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  transform-origin: top left;
+  transform: rotate(-90deg);
+  left: 0px; }
+
+#tabclass li {
+  float: right;
+  width: auto;
+  padding: 1px;
+  display: block; }
+
+.verticalnavtab .leftactiverotatetab {
+  font-weight: bold;
+  border-bottom: 3px solid var(--themePrimaryColor); }
+
 /****************************************************************************
     Component Name : Window
     Version : Amexio v4.0 onwards
@@ -7905,7 +7994,7 @@ fieldset {
   height: 100%;
   width: 100%;
   position: fixed;
-  z-index: 300;
+  z-index: 700;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -7917,7 +8006,7 @@ fieldset {
   flex-direction: column;
   justify-content: center;
   height: 96%;
-  margin-top: 1%; }
+  margin-top: 5%; }
 
 .amexio-root-window-content > * {
   padding: 10px 16px; }
@@ -8513,7 +8602,8 @@ amexio-layout amexio-layout-item {
   display: flex;
   flex-direction: row;
   align-items: center;
-  position: relative; }
+  position: relative;
+  z-index: 2; }
 
 .creative-header .creative-header-div {
   height: auto; }
@@ -8905,7 +8995,8 @@ amexio-layout-columns amexio-layout-item {
 
 .card-container-wider-header amexio-header-ce {
   margin: 0px -10px;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); }
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  z-index: 2; }
 
 .card-container-narrower-header {
   margin: 10px 10px; }
@@ -8914,7 +9005,56 @@ amexio-layout-columns amexio-layout-item {
   margin: -10px 10px;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); }
 
+.ce-header-ribbon-l {
+  border-color: transparent var(--componentHeaderBGColor) transparent transparent;
+  left: -20px; }
+
+.ce-header-ribbon-r {
+  border-color: transparent transparent transparent var(--componentHeaderBGColor);
+  right: -20px; }
+
+.ce-header-ribbon {
+  border-style: solid;
+  border-width: 10px;
+  height: 0px;
+  width: 0px;
+  position: absolute;
+  top: -10px; }
+
+.card-container-ribbon-style amexio-header-ce {
+  box-shadow: none; }
+
 /** creative card - Structure CSS **/
+.card-container-ce-main {
+  position: relative;
+  height: 100%; }
+
+.card-ce-overflowhidden {
+  overflow: hidden; }
+
+.card-ce-overlay-fadeeffect:hover {
+  opacity: 1;
+  transition: all 2s ease-in-out; }
+
+/* fading effect */
+.card-ce-overlay-fadeeffect {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  transition-duration: 3s; }
+
+/* sliding effect  */
+.card-ce-overlay-slideeffect {
+  transform: translateX(-300%);
+  transition: all 0.3s ease-in-out; }
+
+.card-ce-overlay-slideeffect-hover {
+  transform: translateX(0%);
+  transition-delay: 500ms;
+  background-color: var(--componentHoverBGColor);
+  color: var(--componentFontColor); }
+
 /****************************************************************************
     Component Name : Creative Menus
     Version : Amexio v5.12 onwards
@@ -10578,10 +10718,10 @@ input:focus ~ .inputfieldbar:before, input:focus ~ .inputfieldbar:after {
   color: var(--appHeaderBGColor); }
 
 .ce-caroueslnav a.ce-caroueslnav-prev span {
-  background: var(--appHeaderBGColor) url("prev.png") no-repeat center center; }
+  background: var(--themeSecondaryColor) url("prev.png") no-repeat center center; }
 
 .ce-caroueslnav a.ce-caroueslnav-next span {
-  background: var(--appHeaderBGColor) url("next.png") no-repeat center center; }
+  background: var(--themeSecondaryColor) url("next.png") no-repeat center center; }
 
 .ce-caroueslnav a:hover span {
   background-color: var(--componentHeaderBGColor); }
@@ -10752,6 +10892,72 @@ a.ce-caroueslnav-next {
 @media (min-width: 1024px) and (max-width: 1100px) {
   .ce-caroueslnav-content {
     top: 0%; } }
+/****************************************************************************
+    Component Name : Color Picker
+    Version : Amexio v5.12 onwards
+*****************************************************************************/
+/** creative carousel - Structure CSS **/
+:host {
+  display: block;
+  padding: 16px; }
+
+.color-wrapper {
+  display: flex;
+  padding-bottom: 0px;
+  z-index: 1010; }
+
+.color-inline-picker {
+  padding: 10px 10px 2px 10px;
+  display: flex;
+  height: 200%;
+  width: 200%;
+  position: fixed;
+  z-index: 1010; }
+
+.text {
+  flex: 1;
+  font-family: 'Helvetica';
+  line-height: 32px; }
+
+.block-css {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  vertical-align: middle; }
+
+.color-picker-icon {
+  position: absolute;
+  right: 0;
+  display: block;
+  width: 38px;
+  line-height: 38px;
+  text-align: center; }
+
+.input-control-class {
+  width: 100%;
+  padding: .375rem 0;
+  line-height: 2;
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px solid black;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out; }
+
+.color-slider:hover {
+  cursor: pointer; }
+
+.color-slider {
+  border: 5px solid #323232; }
+
+.color-palette:hover {
+  cursor: pointer; }
+
+.color-palette {
+  border: 5px solid #323232;
+  border-right: 0px; }
+
+:host {
+  display: block; }
+
 /** 
   Amexio Colors v2.0 Updated on April 10, 2019.
   Amexio Support ---------------------------------- 
