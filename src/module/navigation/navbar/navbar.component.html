@@ -16,7 +16,7 @@
 
                     <img alt="title " style="cursor: pointer " (click)="onNavLogoClick.emit($event) " (load)="onImageLoad() " *ngIf="logo " [attr.src]="logo "
                         class="navbar-logo ">
-                    <a (click)="onNavTitleClick.emit($event)" [ngStyle]="{'color': color}">{{mobilemode}}</a>
+                    <a (click)="onNavTitleClick.emit($event)" [ngStyle]="{'color': color}">{{title}}</a>
 
 
                     <ng-container *ngIf="homepageType=='2' && !sidenav">
