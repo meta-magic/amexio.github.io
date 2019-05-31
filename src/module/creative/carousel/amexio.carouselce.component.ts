@@ -26,33 +26,34 @@ import { TitleModel } from '../carousel/amexio.carouselce.model';
 @Component({
   selector: 'amexio-carousel-ce',
   templateUrl: './amexio.carouselce.component.html',
-  animations: [
-    trigger('changeState', [
-      state('block1', style({
-        opacity: 1,
-      })),
-      state('none1', style({
-        opacity: 0,
-      })),
-      state('block2', style({
-        transform: 'translateX(0%)',
-      })),
-      state('none2', style({
-        transform: 'translateX(-100%)',
-      })),
-      state('block3', style({
-        transform: 'translateX(0%)',
-      })),
-      state('none3', style({
-        transform: 'translateX(100%)',
-      })),
-      transition('block1 => none1', animate('2s')),
-      transition('none1 => block1', animate('2s')),
-      transition('block2 => none2', animate('200ms')),
-      transition('none2 => block2', animate('200ms')),
-      transition('block3 => none3', animate('200ms')),
-      transition('none3 => block3', animate('200ms')),
-    ]),
+  animations: [trigger('changeState', [
+    state('block1-1', style({
+      opacity: 1,
+    })),
+    state('none1-1', style({
+      opacity: 0,
+    })),
+    state('block1-2', style({
+      opacity: 1,
+    })),
+    state('none1-2', style({
+      opacity: 0,
+    })),
+    state('block2-1', style({
+      transform: 'translateX(0%)',
+    })),
+    state('none2-1', style({
+      transform: 'translateX(-100%)',
+    })),
+    state('block2-2', style({
+      transform: 'translateX(0%)',
+    })),
+    state('none2-2', style({
+      transform: 'translateX(100%)',
+    })),
+    transition('*=>*', animate('200ms')),
+
+  ]),
   ],
 })
 export class AmexioCarouselCEComponent implements OnInit, AfterContentInit {
@@ -120,6 +121,8 @@ description : Local Data binding.
   @ViewChild('tab', { read: ElementRef }) public tabs: ElementRef;
 
   itemData: any;
+
+  navigationType = 2;
 
   currentObj: any;
 
@@ -200,27 +203,67 @@ description : Local Data binding.
     });
   }
   previousClick() {
-    this.dividedPreviousMethod();
-    if (this.currentImageIndex === 0) {
-      this.previousClickMethod();
-    } else {
-      this.imageData.forEach((element: any, index: any) => {
-        if (index === this.currentImageIndex - 1) {
-          const duplicateIndex = this.currentImageIndex - 1;
-          this.imageData[duplicateIndex].active = true;
-          if (this.imageData[duplicateIndex] && this.imageData[duplicateIndex - 1] &&
-            this.imageData[duplicateIndex].title && this.imageData[duplicateIndex + 1].title) {
-            this.titleModel.setTitle(this.imageData[duplicateIndex - 1].title,
-              this.imageData[duplicateIndex].title, this.imageData[duplicateIndex + 1].title);
+    this.navigationType = 1;
+    setTimeout(() => {
+      this.dividedPreviousMethod();
+      if (this.currentImageIndex === 0) {
+        this.previousClickMethod();
+      } else {
+        this.imageData.forEach((element: any, index: any) => {
+          if (index === this.currentImageIndex - 1) {
+            const duplicateIndex = this.currentImageIndex - 1;
+            this.imageData[duplicateIndex].active = true;
+            if (this.imageData[duplicateIndex] && this.imageData[duplicateIndex - 1] &&
+              this.imageData[duplicateIndex].title && this.imageData[duplicateIndex + 1].title) {
+              this.titleModel.setTitle(this.imageData[duplicateIndex - 1].title,
+                this.imageData[duplicateIndex].title, this.imageData[duplicateIndex + 1].title);
+            } else {
+              this.titleModel.setTitle(this.imageData[this.imageData.length - 1].title,
+                this.imageData[0].title, this.imageData[this.currentImageIndex].title);
+            }
           } else {
-            this.titleModel.setTitle(this.imageData[this.imageData.length - 1].title,
-              this.imageData[0].title, this.imageData[this.currentImageIndex].title);
+            this.imageData[index].active = false;
           }
-        } else {
-          this.imageData[index].active = false;
-        }
-      });
+        });
+      }
+    }, 500);
+  }
+
+  nextClickCurrentIndexLogic() {
+    const nextIndex = this.currentImageIndex;
+    if (this.imageData[nextIndex] && this.imageData[nextIndex].title) {
+      this.titleModel.setTitle(this.imageData[nextIndex - 1].title, this.imageData[nextIndex].title,
+        this.imageData[nextIndex + 1].title);
     }
+  }
+  nextClick() {
+    this.navigationType = 2;
+    setTimeout(() => {
+      this.dividedPreviousMethod();
+      if (this.currentImageIndex === 0) {
+        this.currentImageIndex = 1;
+        this.imageData[this.currentImageIndex].active = true;
+        this.nextClickCurrentIndexLogic();
+        this.setFlag();
+      } else {
+        if (this.currentImageIndex === this.imageData.length - 1) {
+          this.currentImageIndex = 0;
+          this.titleModel.setTitle(this.imageData[this.imageData.length - 1].title,
+            this.imageData[this.currentImageIndex].title, this.imageData[this.currentImageIndex + 1].title);
+        } else {
+          this.currentImageIndex++;
+          const nextIndex = this.currentImageIndex;
+          if (this.currentImageIndex < this.imageData.length - 1) {
+            this.titleModel.setTitle(this.imageData[nextIndex - 1].title,
+              this.imageData[nextIndex].title, this.imageData[nextIndex + 1].title);
+          } else {
+            this.titleModel.setTitle(this.imageData[nextIndex - 1].title,
+              this.imageData[nextIndex].title, this.imageData[0].title);
+          }
+        }
+        this.setFlag();
+      }
+    }, 500);
   }
 
   previousClickMethod() {
@@ -260,37 +303,6 @@ description : Local Data binding.
       } else {
         this.nextImagePath = this.imageData[ind].imagepath;
       }
-    }
-  }
-
-  nextClick() {
-    this.dividedPreviousMethod();
-    if (this.currentImageIndex === 0) {
-      this.currentImageIndex = 1;
-      this.imageData[this.currentImageIndex].active = true;
-      const nextIndex = this.currentImageIndex;
-      if (this.imageData[nextIndex] && this.imageData[nextIndex].title) {
-        this.titleModel.setTitle(this.imageData[nextIndex - 1].title, this.imageData[nextIndex].title,
-          this.imageData[nextIndex + 1].title);
-      }
-      this.setFlag();
-    } else {
-      if (this.currentImageIndex === this.imageData.length - 1) {
-        this.currentImageIndex = 0;
-        this.titleModel.setTitle(this.imageData[this.imageData.length - 1].title,
-          this.imageData[this.currentImageIndex].title, this.imageData[this.currentImageIndex + 1].title);
-      } else {
-        this.currentImageIndex++;
-        const nextIndex = this.currentImageIndex;
-        if (this.currentImageIndex < this.imageData.length - 1) {
-          this.titleModel.setTitle(this.imageData[nextIndex - 1].title,
-            this.imageData[nextIndex].title, this.imageData[nextIndex + 1].title);
-        } else {
-          this.titleModel.setTitle(this.imageData[nextIndex - 1].title,
-            this.imageData[nextIndex].title, this.imageData[0].title);
-        }
-      }
-      this.setFlag();
     }
   }
 
