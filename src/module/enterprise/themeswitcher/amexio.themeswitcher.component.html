@@ -37,8 +37,9 @@
                         <label role="text" style="width:90%;outline: none; cursor: text; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" class="label-content medium-bold">
                             {{col.themeName}}
                         </label>
-                        <amexio-button *ngIf="testmode" [icon]="'fa fa-check'" [type]="'transparent'"
-                            (onClick)="themeChange(col)"></amexio-button>
+                        <span *ngIf="testmode" style="cursor: pointer;" (click)="themeChange(col)"><i class="fa fa-check"></i></span>
+                        <!-- <amexio-button *ngIf="testmode" [icon]="'fa fa-check'" [type]="'transparent'"
+                            (onClick)="themeChange(col)"></amexio-button> -->
                     </header>
                     <div *ngIf="isMoreDetails" class="card-body cardbody">
                         <img [attr.alt]="col.themeName"
@@ -51,18 +52,18 @@
                         <br />
                         <label *ngIf="col.algorithmName" role="text" style="outline: none; cursor: text;"
                             class="label-content small-bold">
-                            Algorithm Name: {{col.algorithmName}}<br />
+                            Algorithm: {{col.algorithmName}}<br />
                         </label>
 
                         <label *ngIf="col.releaseDate" role="text" style="outline: none; cursor: text;"
                             class="label-content small-bold">
-                            Release Date: {{col.releaseDate}}
+                            Release: {{col.releaseDate}}
                         </label>
 
                     </div>
-                    <footer class="card-footer flex-center">
-                        <div *ngFor="let color of col.themes" class="themecolorpalette"
-                            [ngStyle]="{'background-color': color}">
+                    <footer class="card-footer flex-center"  [ngStyle]="{ 'height': (closeable) ? '25px':'unset'}" >
+                        <div *ngFor="let color of col.themes"  class="themecolorpalette"
+                            [ngStyle]="{'background-color': color,'height': (!closeable) ? '50px':'unset','margin': (!closeable) ? ' 0px 5px':'0px 2px'}">
                         </div>
                     </footer>
                 </div>
