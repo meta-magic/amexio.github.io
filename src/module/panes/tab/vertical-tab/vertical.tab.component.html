@@ -1,6 +1,6 @@
 <div class="vertical-table" style="position:relative;">
     <div class="vertical-tablerow" [ngStyle]="{'height': height + 'px'}">
-        <div *ngIf="rotate;else elseBlock" style="width:44px;" class="vertical-tablecol verticalalign-tableft" [ngClass]="{'tabposition-top': (tabPosition==='top'),'tabposition-bottom':(tabPosition==='bottom')}">
+        <div *ngIf="rotate;else elseBlock" style="width:44px;" class="vertical-tablecol verticalalign-tableft" [ngClass]="{'tabposition-top': (tabPosition==='top')}">
             <ul #tabId id="tabclass" [ngStyle]="{'top': rotatedtabsHeight + 'px'}" style="padding:1px" class="verticalnavtab verticalnavtab-left">
                 <li *ngFor="let tabnode of tabCollection">
                     <div class="defaultnode" [ngClass]="{'leftactiverotatetab':tabnode.active,'disabled-tab':tabnode.disabled}" (click)="onTabClick(tabnode)"

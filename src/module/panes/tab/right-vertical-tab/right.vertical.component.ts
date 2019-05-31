@@ -46,6 +46,8 @@ export class AmexioRightVerticalTabComponent implements AfterContentInit, AfterV
 
   @ViewChild('target', { read: ViewContainerRef }) target: any;
 
+  @ViewChild('tabId') tabId: ElementRef;
+
   tabCollection: AmexioTabPillComponent[];
 
   dummyArray: any[] = [];
@@ -69,6 +71,15 @@ export class AmexioRightVerticalTabComponent implements AfterContentInit, AfterV
    description : Position of tab can be (top/bottom)
    */
   @Input() tabPosition: string;
+    /*
+   Properties
+   name :rotate
+   datatype : boolean
+   version : 5.12.2 onwards
+   default : false
+   description : tab header alignment
+   */
+  @Input() rotate = false;
   /*
 Events
 name : onClick
@@ -81,6 +92,7 @@ description : Callback to invoke on activated tab event.
 
   content: string;
 
+  height = 580;
   constructor(public render: Renderer2, private componentFactoryResolver: ComponentFactoryResolver) {
     this.tabPosition = 'top';
   }
@@ -90,6 +102,12 @@ description : Callback to invoke on activated tab event.
   }
 
   ngAfterViewInit() {
+     if (this.tabId && this.tabId.nativeElement && this.tabId.nativeElement.offsetWidth) {
+      const tabsheight = this.tabId.nativeElement.offsetWidth + 50;
+      if (tabsheight > this.height) {
+        this.height = tabsheight;
+      }
+    }
   }
 
   ngAfterContentInit() {

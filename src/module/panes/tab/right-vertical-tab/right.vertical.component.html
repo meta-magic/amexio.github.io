@@ -1,13 +1,28 @@
-<div class="righttable">
+<div class="righttable" style="position:relative;padding-right:10px">
     <div class="righttablerow">
-        <div class="tablecol verticalalign-tabcontent">
+        <div class="tablecol verticalalign-tabcontent" style="padding-right:30px">
             <div style="float:left" class="tabcontent" [attr.id]="componentId">
                 <ng-content></ng-content>
                 <ng-template #target></ng-template>
             </div>
         </div>
-
-        <div style="float:right;height:580px" class="righttablecol verticalalign-tabright">
+        <div #tab *ngIf="rotate;
+         else elseBlock" [ngStyle]="{'height': height + 'px'}" class="verticalnavtab-right verticalalign-rotatetabright" [ngClass]="{'tabposition-rightrotate-top': (tabPosition==='top')}">
+            <ul #tabId id="rightclass">
+                <li *ngFor="let tabnode of tabCollection">
+                    <div class="righttabdefaultnode" [ngClass]="{'rightactivetabrotate':tabnode.active,'disabled-tab':tabnode.disabled }" (click)="onTabClick(tabnode)"
+                        [ngStyle]="{'color': tabnode.amexiocolor}">
+                        <span *ngIf="tabnode.icon" [ngClass]="tabnode.icon" aria-hidden="true"></span>
+                        <span style="padding-left:5px">{{tabnode.title}}</span>
+                        <span *ngIf="closable" class="tablecol">
+                <amexio-c-icon key="tab_close" (onClick)="closeTab(tabnode)" style="padding-left:5px;float:right"></amexio-c-icon>
+              </span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+     <ng-template #elseBlock>
+          <div style="float:right;height:580px" class="righttablecol verticalalign-tabright">
             <div #tab class="verticalnavtab verticalnavtab-right" [ngClass]="{'tabposition-right-top': (tabPosition==='top'),'tabposition-right-bottom':(tabPosition==='bottom')}">
                 <ul>
                     <li *ngFor="let tabnode of tabCollection">
@@ -22,6 +37,6 @@
                 </ul>
             </div>
         </div>
-
+     </ng-template>   
     </div>
 </div>

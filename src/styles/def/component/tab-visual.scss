@@ -19,6 +19,13 @@
     //border-right: $tabActiveBorderSize solid $tabActiveBorder;
 }
 
+.rightactivetabrotate{
+ background-color: $tabActiveBGColor;
+    font-weight: bold;
+    color: $tabActiveColor;
+    //border-left: $tabActiveBorderSize solid $tabActiveBorder;
+}
+
 .disabled-tab {
     //color : $tabDisabledColor;
     // background-color: $tabDisabledBG !important;
