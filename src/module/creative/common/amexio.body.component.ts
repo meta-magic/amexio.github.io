@@ -36,5 +36,5 @@ export class AmexioCardCEBodyComponent {
 
     @Input('height') height: string;
 
-    getRibbonType = false;
+    ribbonType = false;
 }
