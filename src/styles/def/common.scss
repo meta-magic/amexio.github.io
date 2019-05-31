@@ -358,53 +358,53 @@ image using the content attribute.
 // Change the Position of these CSS
 .amexio-theme-color1{
     background-color: $themePrimaryColor !important;
-    color: $themePrimaryFontColor;
+    color: $themePrimaryFontColor !important;
     }
     .amexio-theme-color2{
     background-color: $themeSecondaryColor !important;
-    color: $themeSecondaryFontColor;
+    color: $themeSecondaryFontColor !important;
     }
     .amexio-theme-color3{
         background-color: $theme3rdColor !important;
-    color: $theme3rdFontColor;
+    color: $theme3rdFontColor !important;
     }
     .amexio-theme-color4{
         background-color: $theme4thColor !important;
-    color: $theme4thFontColor;
+    color: $theme4thFontColor !important;
     }
     .amexio-theme-color5{
         background-color: $theme5thColor !important;
-    color: $theme5thFontColor;
+    color: $theme5thFontColor !important;
     }
     .amexio-theme-color6{
         background-color: $theme6thColor !important;
-    color: $theme6thFontColor;
+    color: $theme6thFontColor !important;
     }
     
     
     .amexio-theme-color1-Gradient{
         background-image: $themePrimaryColorGradient !important;
-    color: $themePrimaryFontColor;
+    color: white !important;
     }
     .amexio-theme-color2-Gradient{
         background-image: $themeSecondaryColorGradient !important;
-    color: $themeSecondaryFontColor;
+    color: white !important;
     }
     .amexio-theme-color3-Gradient{
         background-image: $theme3rdColorGradient !important;
-    color: $theme3rdFontColor;
+    color: white !important;
     }
     .amexio-theme-color4-Gradient{
         background-image: $theme4thColorGradient !important;
-    color: $theme4thFontColor;
+    color: white !important;
     }
     .amexio-theme-color5-Gradient{
         background-image: $theme5thColorGradient !important;
-    color: $theme5thFontColor;
+    color: white !important;
     }
     .amexio-theme-color6-Gradient{
         background-image: $theme6thColorGradient!important;
-    color: $theme6thFontColor;
+    color: white !important;
     }
 
     .tabwapper .tab .tablistitems .tablink .table {
