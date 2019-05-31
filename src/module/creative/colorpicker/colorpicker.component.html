@@ -16,14 +16,16 @@
   <div  *ngIf="showColorPicker || inlineColorPicker " [@changeState]="showColorPicker "
        [ngClass]="{'card-container': (!inlineColorPicker)}" 
        [ngStyle]="{'position': (inlineColorPicker) ? 'relative':'absolute',
-                     'height': (showColorPicker) ? '270px': 'auto' }"
+                     'height': (showColorPicker) ? '270px': 'auto','margin-top': (showColorPicker) ? '15px': '0px' }"
        style="align-items: center;">
     <div class="color-wrapper"  style="justify-content: center;">
       <color-palette [hue]="hue" [position]="position" (color)="selectedPaletteColor($event)"></color-palette>
       <color-slider [offsetY]="offsetY" [selected-hue]="hue" (color)="selectedHue($event)" style="margin-left:0px">
       </color-slider>
     </div>
+    <span>
     <amexio-button *ngIf="!inlineColorPicker" [size]="'small'" (onClick)="closeColorPicker()" [label]="'Close'" [type]="'theme-color'" [tooltip]="'Close'">
     </amexio-button>
+  </span>
   </div>
 </div>
