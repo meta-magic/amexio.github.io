@@ -1,0 +1,8 @@
+
+
+    <cdk-virtual-scroll-viewport [style.height]="height" [itemSize]="itemSize">
+        <div [ngClass]="{'virtual-row-even': isEven}"  *cdkVirtualFor="let row of data; index as i; first as isFirst; even as isEven; odd as isOdd; last as isLast">
+            <ng-template *ngIf="bodyTemplate" [ngTemplateOutlet]="bodyTemplate" [ngTemplateOutletContext]="{ row: row }">
+            </ng-template>
+        </div>
+    </cdk-virtual-scroll-viewport>

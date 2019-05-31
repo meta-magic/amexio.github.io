@@ -1,3 +1,4 @@
+import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ModuleWithProviders, NgModule } from '@angular/core';
@@ -19,6 +20,7 @@ import { HorizontalTreeViewNodeComponent } from './tree/horizontalnode.component
 import { HorizontalTreeViewComponent } from './tree/horizontaltreeview.component';
 import { AmexioTreeViewComponent } from './tree/tree.component';
 import { TreeDataTableComponent } from './treegrid/treedatatable.component';
+import {VirtualScrollerComponent} from './virutalscroller/virtualscroller.component';
 
 import { AmexioCommonModule } from '../base/amexio.common.module';
 import { AmexioBaseContextMenuModule } from '../base/base.contextmenu.component.module';
@@ -58,12 +60,14 @@ const DATA_COMPONENTS = [
   AmexioFilterTreeComponent,
   TreeDataTableComponent,
   AmexioItemSelectorComponent,
+  VirtualScrollerComponent,
 ];
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    ScrollingModule,
     AmexioPaneModule,
     AmexioLayoutModule,
     HttpClientModule,

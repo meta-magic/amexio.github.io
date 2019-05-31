@@ -3,12 +3,12 @@
   <br>
   <a href="http://www.amexio.tech/"><img src="https://image.ibb.co/kdy6Ev/logo.png" alt="Amexio" width="200"></a>
   <br>
-    Amexio Angular EXtensions v5.13
+    Amexio Angular EXtensions v5.71
   <br>
 </h1>
 
 <div align="center">
-  <b>Amexio (Angular MetaMagic EXtensions for Inputs and Outputs)</b> is a rich set of  160+  Angular (4/5/6)
+  <b>Amexio (Angular MetaMagic EXtensions for Inputs and Outputs)</b> is a rich set of  160+  Angular (4/5/6/7)
 UI Components powered by HTML5 & CSS3 for <b>Responsive Web Design & 80+ built-in Material Design Themes.</b> Components includes Form components, charts, maps, dashboards, Tabs, Grids, Trees, Layouts etc <b>with Accessibility support and Animation effect</b>. We added <b>D3 Charts support </b>with <b>Amexio Drillable Charts</b> option. We augmented the <b>Amexio Layouts</b> with more layout options and brought <b>CSS3 Grid Layout</b> to Amexio with Responsive Design Pattern.
 
 </div>
