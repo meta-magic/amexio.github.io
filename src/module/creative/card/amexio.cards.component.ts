@@ -153,13 +153,16 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
         this.amexioCardHeaderList.forEach((element: any) => {
           element.amexioComponentId = this.amexioComponentId;
         });
+        if (this.styleType === 'ribbon-style') {
+          this.amexioCardHeaderList[0].ribbonType = true;
+        }
       }
     }
     if (this.AmexioCardCEBodyQueryList) {
       this.amexioCardBodyList = this.AmexioCardCEBodyQueryList.toArray();
       if (this.styleType === 'ribbon-style') {
-        this.amexioCardBodyList[0].getRibbonType = true;
-        this.cclass = this.cclass + ' card-container-wider-header';
+        this.amexioCardBodyList[0].ribbonType = true;
+        this.cclass = this.cclass + ' card-container-wider-header card-container-ribbon-style';
       }
     }
     this.setCardAligementForAllInnerComponent();

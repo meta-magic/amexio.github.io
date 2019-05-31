@@ -67,6 +67,7 @@ export class AmexioCardCEHeaderComponent implements OnInit {
 
   amexioComponentId: string;
 
+  ribbonType = false;
   iconPosition: {
     top: string;
     bottom: string;

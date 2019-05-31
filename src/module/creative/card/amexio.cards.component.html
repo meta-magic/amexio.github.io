@@ -1,12 +1,8 @@
-<div class="card-container-ce-main"  (mouseover)="onmouseover()" (mouseleave)="onmouseleave()"
-        [ngStyle]="{'background': bgimage ? 'url(' + bgimage + ') center/cover no-repeat' : null}" [ngClass]="cclass">
-
-
+<div class="card-container-ce-main" (mouseover)="onmouseover()" (mouseleave)="onmouseleave()" [ngStyle]="{'background': bgimage ? 'url(' + bgimage + ') center/cover no-repeat' : null}"
+        [ngClass]="cclass">
         <div class="card-container-ce" [class]="overlayclass" [ngClass]="{
 'card-ce-overlay-slideeffect-hover': ishover }"
                 [ngStyle]="{'justify-content': (align === 'start' || align === 'end') ? 'flex-'+align:align , 'color':color, 'background': background}">
-
                 <ng-content></ng-content>
-
                 <div>
                 </div>

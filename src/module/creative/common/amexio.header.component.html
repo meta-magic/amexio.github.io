@@ -1,4 +1,5 @@
 <div [ngClass]="cclass" class="creative-header-div" [ngStyle]="{'background': ' url(' + bgimage + ') center/cover no-repeat' }">
+    <div *ngIf="ribbonType"> &nbsp;</div>
     <header class="creative-header {{themeCss}}" [style.flex-direction]="direction" [ngStyle]="{'justify-content': (align === 'start' || align === 'end') ? 'flex-'+align:align ,
      'color': color,'background':background,'height': height}"
         [ngClass]="{'card-container-ce-theme-color': applyThemeColor}">
