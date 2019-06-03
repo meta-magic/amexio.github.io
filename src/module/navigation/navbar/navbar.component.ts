@@ -21,9 +21,9 @@ import {
   Input, OnInit, Output, QueryList, ViewChild,
 } from '@angular/core';
 import { AmexioBannerComponent } from './banner/banner.component';
-import {AmexioNavItemComponent} from './navitem.component';
+import { AmexioNavItemComponent } from './navitem.component';
 
-import {DeviceQueryService} from '../../services/device/device.query.service';
+import { DeviceQueryService } from '../../services/device/device.query.service';
 
 @Component({
   selector: 'amexio-nav', templateUrl: 'navbar.component.html',
@@ -182,9 +182,9 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
     this.handleNavItems();
     if (this.navbaritems2.nativeElement) {
       this.navitemwidth = (5 +
-      (this.navbaritems2.nativeElement.offsetWidth) +
-      (this.navbaritems2.nativeElement.offsetWidth) +
-      (this.navbaritems3.nativeElement.offsetWidth));
+        (this.navbaritems2.nativeElement.offsetWidth) +
+        (this.navbaritems2.nativeElement.offsetWidth) +
+        (this.navbaritems3.nativeElement.offsetWidth));
     }
 
     if (this.navbarfixed && this.navbarfixed.nativeElement) {
@@ -260,7 +260,15 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
     if (!this.enableMoreMode) {
       this.handleDeviceSetting();
     } else {
-      this.checkMobileMode();
+      if (this.matchMediaService.IsPhone()) {
+        this.mobilemode = true;
+        this.toggle = false;
+        this.isPhone = true;
+      } else {
+        this.mobilemode = false;
+        this.toggle = true;
+        this.isPhone = false;
+      }
       this.createMoreContent();
       if (this.navbar) {
         this.notifyNavItems(this.navbar.nativeElement.offsetWidth);
@@ -278,6 +286,7 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
     }
     this.onNavLoad.emit({ offsetHeight: this.navbar.nativeElement.offsetHeight });
   }
+
   onArrowClick(event: any) {
     this.onIconArrowClick.emit();
     this.onNavLoad.emit({ offsetHeight: this.navbar.nativeElement.offsetHeight });
