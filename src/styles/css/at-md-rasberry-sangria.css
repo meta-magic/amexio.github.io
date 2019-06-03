@@ -58,12 +58,12 @@
   --themePrimaryColorShade5: #ffd4d1;
   --themePrimaryColorShade6: #fff5f5;
   /** Theme Color Gradients -------------------------- */
-  --themePrimaryColorGradient: linear-gradient(to right, #520500, #e00f00, #ff675c);
-  --themeSecondaryColorGradient: linear-gradient(to right, #52000e, #e00025, #ff5c77);
-  --theme3rdColorGradient: linear-gradient(to right, #4c5200, #d1e000, #f4ff5c);
-  --theme4thColorGradient: linear-gradient(to right, #225200, #5ee000, #a0ff5c);
-  --theme5thColorGradient: linear-gradient(to right, #005204, #00e00b, #5cff64);
-  --theme6thColorGradient: linear-gradient(to right, #00522e, #00e07f, #5cffb8);
+  --themePrimaryColorGradient: linear-gradient(to right, #380400, #e00f00, #ff675c);
+  --themeSecondaryColorGradient: linear-gradient(to right, #380009, #e00025, #ff5c77);
+  --theme3rdColorGradient: linear-gradient(to right, #343800, #d1e000, #f4ff5c);
+  --theme4thColorGradient: linear-gradient(to right, #173800, #5ee000, #a0ff5c);
+  --theme5thColorGradient: linear-gradient(to right, #003803, #00e00b, #5cff64);
+  --theme6thColorGradient: linear-gradient(to right, #003820, #00e07f, #5cffb8);
   /** Theme Font Family -------------------------- */
   --themeFontColor: #1f0200;
   --themeFontFamily: Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
@@ -7577,6 +7577,11 @@ fieldset {
   font-weight: bold;
   color: var(--componentActiveFontColor); }
 
+.rightactivetabrotate {
+  background-color: var(--componentActiveBGColor);
+  font-weight: bold;
+  color: var(--componentActiveFontColor); }
+
 .verticalnavtab .rightactivetab {
   background-color: var(--componentActiveBGColor);
   color: var(--componentActiveFontColor); }
@@ -7947,6 +7952,50 @@ fieldset {
 .verticalnavtab .leftactiverotatetab {
   font-weight: bold;
   border-bottom: 3px solid var(--themePrimaryColor); }
+
+/* right align rotate tab */
+#rightclass {
+  width: max-content;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  transform-origin: 0 0;
+  transform: rotate(90deg);
+  top: 0px;
+  left: 46px; }
+
+#rightclass li {
+  float: left;
+  width: auto;
+  padding: 1px;
+  display: block; }
+
+.righttabdefaultnode {
+  position: relative;
+  cursor: pointer;
+  /* color: $tabColor; */
+  padding: 10px; }
+
+.defaultnode:hover {
+  /* font-weight: bold; */ }
+
+.tabposition-rightrotate-top {
+  display: block;
+  vertical-align: top; }
+
+.tabposition-rightrotate-bottom {
+  display: block;
+  vertical-align: top; }
+
+.rightactivetabrotate {
+  font-weight: bold;
+  border-bottom: 3px solid var(--themePrimaryColor); }
+
+.verticalalign-rotatetabright {
+  border-left: 1px solid #ced4da !important;
+  position: relative;
+  left: 97%; }
 
 /****************************************************************************
     Component Name : Window
