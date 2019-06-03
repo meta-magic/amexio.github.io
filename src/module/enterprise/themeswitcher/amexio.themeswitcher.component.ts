@@ -51,7 +51,7 @@ export class AmexioThemeSwitcherComponent implements OnInit, OnChanges {
     loadMDAThemes() {
         if (this.isMDA) {
             let responseData: any;
-            this.service.loadThemes('assets/themes/json/amexio-mda.json')
+            this.service.loadThemes('assets/amexiomdathemes/json/amexio-mda.json')
                 .subscribe((data: any) => {
                     responseData = data;
                 }, (error: any) => {
