@@ -1,7 +1,9 @@
 /**
  * Created by dattaram on 28/5/19.
  */
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2 } from '@angular/core';
+import { AfterContentInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2 } from '@angular/core';
+
+import {DeviceQueryService} from '../../../services/device/device.query.service';
 
 @Component({
   selector: 'amexio-banner',
@@ -23,7 +25,6 @@ import { Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2 }
       .bannerContent {
         flex-grow: 1;
         display: inline-flex;
-        flex-direction: column;
         width: 100px;
       }
 
@@ -31,7 +32,7 @@ import { Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2 }
   ],
 })
 
-export class AmexioBannerComponent implements OnInit {
+export class AmexioBannerComponent implements AfterContentInit, OnInit {
 
   @Input('closable') closeable = false;
 
@@ -49,7 +50,9 @@ export class AmexioBannerComponent implements OnInit {
 
   amexioComponentId = 'amexio-banner';
 
-  constructor(private renderer: Renderer2, private el: ElementRef) {
+  mobileMode: boolean;
+
+  constructor(private renderer: Renderer2, private el: ElementRef, public matchMediaService: DeviceQueryService) {
   }
 
   ngOnInit() {
@@ -64,6 +67,16 @@ export class AmexioBannerComponent implements OnInit {
     }
 
   }
+
+  ngAfterContentInit() {
+    if (this.matchMediaService.IsPhone() || this.matchMediaService.IsTablet()) {
+      this.mobileMode = true;
+    } else {
+      this.mobileMode = false;
+    }
+    console.log('ttt', this.mobileMode);
+  }
+
   onCloseClick() {
     this.hideBanner.emit(false);
     this.showBanner = false;
@@ -71,5 +84,13 @@ export class AmexioBannerComponent implements OnInit {
 
   setColorPalette(themeClass: any) {
     this.renderer.addClass(this.el.nativeElement, themeClass);
+  }
+
+  resize(event: any) {
+    if (this.matchMediaService.IsPhone()) {
+      this.mobileMode = true;
+    } else {
+      this.mobileMode = false;
+    }
   }
 }

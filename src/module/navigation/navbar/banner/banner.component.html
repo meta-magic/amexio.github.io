@@ -1,6 +1,6 @@
 <ng-container *ngIf="showBanner">
 
-    <span class="bannerContent" [style.justify-content]="alignment">
+    <span class="bannerContent" [style.justify-content]="alignment" [ngStyle]="{'flex-direction': mobileMode ? 'column': 'unset'}" (window:resize)="resize($event)">
         <amexio-image style="padding-left: 10px;" [icon-class]="icon"></amexio-image>
         <amexio-label [word-wrap] = "false" style="padding-left: 10px;">{{title}}</amexio-label>
     </span>
