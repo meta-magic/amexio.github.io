@@ -58,7 +58,7 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
    default : none
    description : Indicate if side-nav-bar is present
    */
-  @Input('enable-side-nav-position') sidenavspace = false;
+  @Input('enable-side-nav-position') sidenav = false;
 
   /*
    Properties
@@ -119,7 +119,6 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
   mobilemode = false;
   navitemwidth: number;
   navfixeditem: number;
-  sidenav = false;
   isIconLeft = true;
   isLHSHide = false;
   lhsWidth = '5%';
@@ -201,14 +200,19 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
     if (!this.enableMoreMode) {
       this.handleDeviceSetting();
     } else {
-      if (this.matchMediaService.IsPhone()) {
-        this.mobilemode = true;
-        this.isPhone = true;
-      } else {
-        this.mobilemode = false;
-        this.isPhone = false;
-      }
+      this.checkMobileMode();
       this.createMoreContent();
+    }
+    this.onNavLoad.emit({ offsetHeight: this.navbar.nativeElement.offsetHeight });
+  }
+
+  checkMobileMode() {
+    if (this.matchMediaService.IsPhone()) {
+      this.mobilemode = true;
+      this.isPhone = true;
+    } else {
+      this.mobilemode = false;
+      this.isPhone = false;
     }
   }
 
@@ -241,16 +245,10 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
       this.mobilemode = true;
       this.toggle = false;
       this.isPhone = true;
-      if (this.sidenavspace) {
-        this.sidenav = true;
-      }
     } else {
       this.mobilemode = false;
       this.isPhone = false;
       this.toggle = true;
-      if (this.sidenavspace) {
-        this.sidenav = false;
-      }
     }
     if (this.navbar) {
       this.notifyNavItems(this.navbar.nativeElement.offsetWidth);
@@ -262,15 +260,7 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
     if (!this.enableMoreMode) {
       this.handleDeviceSetting();
     } else {
-      if (this.matchMediaService.IsPhone()) {
-        this.mobilemode = true;
-        this.toggle = false;
-        this.isPhone = true;
-      } else {
-        this.mobilemode = false;
-        this.toggle = true;
-        this.isPhone = false;
-      }
+      this.checkMobileMode();
       this.createMoreContent();
       if (this.navbar) {
         this.notifyNavItems(this.navbar.nativeElement.offsetWidth);
@@ -286,6 +276,7 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
       }
       this.isExpand = !this.isExpand;
     }
+    this.onNavLoad.emit({ offsetHeight: this.navbar.nativeElement.offsetHeight });
   }
   onArrowClick(event: any) {
     this.onIconArrowClick.emit();
@@ -329,7 +320,6 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
     } else {
       this.morePadding = 0;
     }
-    this.onNavLoad.emit({ offsetHeight: this.navbar.nativeElement.offsetHeight });
   }
 
   mobileModePresent() {

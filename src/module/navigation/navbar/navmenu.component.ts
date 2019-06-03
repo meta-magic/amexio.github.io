@@ -74,7 +74,7 @@ export class AmexioNavMenuComponent implements OnInit {
   @Output() navLinkClick: any = new EventEmitter<any>();
   @Output() onNavItemClick: any = new EventEmitter<any>();
 
-  mobilemode = false;
+  @Input() mobilemode = false;
   issubmenu = false;
   divid: any;
   position = 'right';

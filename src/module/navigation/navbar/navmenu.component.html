@@ -31,7 +31,7 @@
                 </span>
 
                 <span [ngClass]="{'submenunodes':position == 'right', 'submenunodesright':position == 'left' }" *ngIf="node.submenus">
-                    <amexio-nav-innermenu [color]="itemcolor" [submenuposition]="position" [data]="node.submenus" (navLinkClick)="navItemClick($event)">
+                    <amexio-nav-innermenu [mobilemode]="mobilemode" [color]="itemcolor" [submenuposition]="position" [data]="node.submenus" (navLinkClick)="navItemClick($event)">
                     </amexio-nav-innermenu>
                 </span>
             </div>
