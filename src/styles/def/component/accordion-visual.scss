@@ -6,6 +6,10 @@
   background-color: $accordionActiveBGColor;
   color: $accordionActiveColor;
 }
+.accordion-transparent:focus , .accordion-transparent:hover {
+  background-color: $transparentHoverBGColor;
+  color: $accordionActiveColor;
+}
 
 .accordion:after {
   color: $amexioColorRedDark;
