@@ -23,6 +23,8 @@ import { Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2 }
       .bannerContent {
         flex-grow: 1;
         display: inline-flex;
+        flex-direction: column;
+        width: 100px;
       }
 
     `,
