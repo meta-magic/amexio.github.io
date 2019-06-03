@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { AfterContentInit, Component, ElementRef, EventEmitter, Input, OnChanges, OnInit } from '@angular/core';
+import {Output, SimpleChanges, ViewChild } from '@angular/core';
 import { AmexioThemeSwitcherService } from '../../services/data/amexio.theme.service';
 
 @Component({
@@ -6,7 +7,6 @@ import { AmexioThemeSwitcherService } from '../../services/data/amexio.theme.ser
     templateUrl: './amexio.themeswitcher.component.html',
 })
 export class AmexioThemeSwitcherComponent implements OnInit, OnChanges {
-
     @Input('data') data: any[];
 
     @Input('more-details') isMoreDetails: boolean;
@@ -18,6 +18,8 @@ export class AmexioThemeSwitcherComponent implements OnInit, OnChanges {
     @Input('col-size') colsize = 3;
 
     @Input('relative') relative = false;
+
+    @Input('button-type') buttonType: string;
 
     @Input('horizontal-position') horizontalPosition = 'right';
 
@@ -41,19 +43,18 @@ export class AmexioThemeSwitcherComponent implements OnInit, OnChanges {
     }
 
     ngOnInit() {
-        if (this.relative) {
+        if (this.relative && !this.closeable) {
             this.show = true;
         }
         this.loadMDAThemes();
     }
-
     loadMDAThemes() {
         if (this.isMDA) {
             let responseData: any;
-            this.service.loadThemes('https://raw.githubusercontent.com/meta-magic/amexio-api-website/master/api/json/amexio-mda.json')
-                .subscribe((data) => {
+            this.service.loadThemes('assets/themes/json/amexio-mda.json')
+                .subscribe((data: any) => {
                     responseData = data;
-                }, (error) => {
+                }, (error: any) => {
                     console.log('Unable to make http call');
                 }, () => {
                     this.data = responseData;
@@ -82,8 +83,10 @@ export class AmexioThemeSwitcherComponent implements OnInit, OnChanges {
     }
 
     themeStyle(): any {
-        const style = {};
-        style['position'] = (this.relative) ? 'relative' : 'fixed';
+        const windowWidth = window.innerWidth;
+        const perBlockWidth = ((windowWidth / 100) * 35) / 3;
+        const style1 = {};
+        const style = this.getPostion(style1);
         style['display'] = 'block';
         if (this.closeable === true) {
             style['z-index'] = '600';
@@ -111,11 +114,21 @@ export class AmexioThemeSwitcherComponent implements OnInit, OnChanges {
         }
 
         if (this.closeable) {
-            style['width'] = (15 * this.colsize) + '%';
+            style['width'] = (perBlockWidth * this.colsize) + 'px';
         } else {
             style['width'] = '100%';
         }
         return style;
     }
-
+getPostion(style: any) {
+ if (!this.closeable) {
+     style['position'] = 'relative';
+ } else if (this.closeable && this.relative) {
+        style['position'] = 'absolute';
+        style['right'] = '0';
+     } else {
+        style['position'] = 'fixed';
+     }
+ return style;
+}
 }
