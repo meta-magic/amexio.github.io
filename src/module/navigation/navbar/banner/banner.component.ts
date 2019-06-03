@@ -87,7 +87,7 @@ export class AmexioBannerComponent implements AfterContentInit, OnInit {
   }
 
   resize(event: any) {
-    if (this.matchMediaService.IsPhone()) {
+    if (this.matchMediaService.IsPhone() || this.matchMediaService.IsTablet()) {
       this.mobileMode = true;
     } else {
       this.mobileMode = false;
