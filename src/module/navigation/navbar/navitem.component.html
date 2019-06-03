@@ -1,4 +1,4 @@
-<div class="topnavmainbarinneritems" [ngClass]="{'topnavmainbarinneritems-mobile':mobilemode,
+<div [attr.id]="componentId" class="topnavmainbarinneritems" [ngClass]="{'topnavmainbarinneritems-mobile':mobilemode,
  'nav-dropdown-content-right':enablerightclass}">
     <amexio-nav-action *ngIf="isAction" [color]="itemcolor" [type]="type" [title]="title" [icon]="icon" (navLinkClick)="navItemClick($event)"></amexio-nav-action>
     <amexio-nav-textfield *ngIf="isTextField" [color]="itemcolor" [(ngModel)]="value" [title]="title"></amexio-nav-textfield>

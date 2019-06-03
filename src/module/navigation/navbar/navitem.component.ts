@@ -22,6 +22,7 @@ import {
 } from '@angular/core';
 
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+
 import { AmexioNavMenuComponent } from './navmenu.component';
 
 const noop = () => {
@@ -89,7 +90,7 @@ description : Indicate the type of menu-items (link / button / textfield /menu )
   @ContentChildren(AmexioNavMenuComponent) navmenus: QueryList<AmexioNavMenuComponent>;
 
   navMenusComponents: AmexioNavMenuComponent[];
-  mobilemode = false;
+  @Input() mobilemode = false;
 
   isAction = false;
   isTextField = false;
@@ -102,7 +103,11 @@ description : Indicate the type of menu-items (link / button / textfield /menu )
   private innerValue = '';
   private onTouchedCallback: () => void = noop;
   private onChangeCallback: (_: any) => void = noop;
-  constructor(private elementref: ElementRef) {
+  componentId = '';
+  offsetWidth = 0;
+  constructor(public elementref: ElementRef) {
+    this.componentId = Math.floor(Math.random() * 90000) + 10000 + '_navctyt';
+    this.offsetWidth = this.elementref.nativeElement.offsetWidth;
 
   }
 

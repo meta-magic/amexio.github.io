@@ -3,10 +3,10 @@
 
         <div style="padding: 10px; padding-left: 20px;">
             <span *ngIf="submenuposition == 'left' && node.submenus">
-                <i class="fa fa-angle-left" style="padding-bottom:5px" aria-hidden="true"></i>
+                <i class="fa fa-angle-left" style="padding-bottom:5px;padding-right: 10px" aria-hidden="true"></i>
                 <!-- {{node.text}} -->
             </span>
-            <span (click)="onClick(node, $event)" >{{node.text}}</span>
+            <span (click)="onClick(node, $event)">{{node.text}}</span>
         </div>
 
         <div style="padding: 10px">
@@ -17,11 +17,10 @@
             <!-- <span>{{node.text}}</span> -->
         </div>
 
-        <div [ngClass]="{'innersubmenunodes':submenuposition == 'right', 'innersubmenunodesright':submenuposition == 'left' }" *ngIf="node.submenus">
-            <amexio-nav-innermenu [color]="itemcolor" [submenuposition]="submenuposition" [data]="node.submenus" (navLinkClick)="navItemClick($event)">
-            </amexio-nav-innermenu>
-        </div>
-
+      <div [ngClass]="{'innersubmenunodes':submenuposition == 'right', 'innersubmenunodesright':submenuposition == 'left' }" *ngIf="node.submenus">
+        <amexio-nav-innermenu [color]="itemcolor" [submenuposition]="submenuposition" [data]="node.submenus" (navLinkClick)="navItemClick($event)">
+        </amexio-nav-innermenu>
+      </div>
     </div>
     <br/>
 </ng-container>

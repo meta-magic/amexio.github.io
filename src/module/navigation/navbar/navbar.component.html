@@ -1,7 +1,7 @@
 <nav #navbar style="flex-direction: column" class="topnav {{themeCss}}" [ngStyle]="{'color': color, 'top': top, 'opacity': opacity}"
     [ngClass]="{'topnav-mobile':mobilemode, 'transparentNav':transparent}" (window:resize)="resize($event)">
     <div [style.display]="showBanner ? 'block': 'none'">
-        <ng-content select="amexio-banner"></ng-content>
+        <ng-content select="amexio-banner-1"></ng-content>
     </div>
     <div [ngClass]="{'flex-col': mobilemode, 'flex-inline': !mobilemode}">
 
@@ -40,7 +40,7 @@
                 </span>
             </div>
         </div>
-    
+
 
     <div #navbaritems *ngIf="toggle" class="topnav-rhs" [ngClass]="{'rhs-mobile':mobilemode, 'transparentNav1':transparent && mobilemode}">
         <div class="topnavmainbar" [ngClass]="{'topnavmainbar-mobile':mobilemode}">
@@ -50,58 +50,24 @@
             <div #navbaritems2 class="topnavmainbaritems" [ngClass]="{'topnavmainbaritems-mobile':mobilemode}">
                 <ng-content select="[position-center]"></ng-content>
             </div>
-            <div #navbaritems3 class="topnavmainbaritems" [ngClass]="{'topnavmainbaritems-mobile':mobilemode}">
-                <ng-content select="[position-right]"></ng-content>
-            </div>
+          <div #navbaritems3 class="topnavmainbaritems" [ngClass]="{'topnavmainbaritems-mobile':mobilemode}">
+            <ng-content select="[position-right]"></ng-content>
+            <amexio-nav-item  *ngFor="let node of resizeItemCollection" [type]="node.type" (onNavItemClick)="externalLink($event)"
+                              [title]="node.title" [mobilemode]="mobilemode"  [data]="node.data" [icon]="node.icon">
+            </amexio-nav-item>
+
+            <ng-container *ngIf="enableMoreMode && moreBucket.length > 0">
+                     <span class="testClass">
+                        <amexio-nav-item  [type]="'menu'"
+                                          [mobilemode]="mobilemode"
+                                          (onNavItemClick)="externalLink($event)"
+                                          [data]="moreBucket"
+                                          [title]="'More'">
+                      </amexio-nav-item>
+                     </span>
+            </ng-container>
+          </div>
         </div>
     </div>
 </div>
-    <!--
-  <div #navbarfixed [ngStyle]="{'flex': !mobilemode ? lhsWidth : '','flex-width': !mobilemode ? lhsWidth :'' }"
-               [ngClass]="{ ' topnav-lhs-mobile':mobilemode,'topnav-lhs topnav-lhs-color':!mobilemode} ">
-      <div [ngClass]="{'homepage-expand': (isExpand && !mobilemode),'homepage-collapse':(!isExpand && !mobilemode) }">
-
-          <ng-container *ngIf="!isLHSHide || mobilemode">
-              <span [ngClass]=" sidenav ? 'sidenav-padding':'' " [ngStyle]="{ 'padding-left':sidenav ? '40px': '0px'} ">
-            <span *ngIf="homepageType=='1' && !isPhone" class="homepage-bar-collapse"  (click)="onArrowClick($event)"  ><amexio-image [icon-class]=" 'fa fa-bars' "></amexio-image></span>
-              <img alt="title " style="cursor: pointer " (click)="onNavLogoClick.emit($event) " (load)="onImageLoad() " *ngIf="logo " [attr.src]="logo " class="navbar-logo ">
-              <a (click)="onNavTitleClick.emit($event) ">{{title}}</a>
-              </span>
-          </ng-container>
-          <ng-container *ngIf="!isPhone">
-              <span *ngIf="homepageType=='3' || isLHSHide " (click)="onExpandIconClick($event) " class="homepage3-bar">
-            <amexio-image *ngIf="!isExpand" [icon-class]=" 'fa fa-bars' "></amexio-image>
-            <amexio-image *ngIf="isExpand" [icon-class]=" 'fa fa-times-circle' "></amexio-image>
-          </span>
-          </ng-container>
-          <ng-container *ngIf="homepageType=='2' && !sidenav">
-              <ng-container *ngIf="!isIconLeft">
-                  <span class="collaspe-icon-style" (click)="onArrowClick($event)"><amexio-image [icon-class]=" 'fa fa-chevron-right' "></amexio-image></span>
-              </ng-container>
-              <ng-container *ngIf="isIconLeft">
-                  <span class="collaspe-icon-style" (click)="onArrowClick($event)"><amexio-image  [icon-class]=" 'fa fa-chevron-left' "></amexio-image></span>
-              </ng-container>
-          </ng-container>
-      </div>
-      <div *ngIf="mobilemode" class="float-right mobilebar" (click)="toggleDrawerPanel($event)">
-          <em *ngIf="!toggle" class="fa fa-caret-down fa-2x"></em>
-          <em *ngIf="toggle" class="fa fa-caret-up fa-2x"></em>
-      </div>
-  </div>
-  <div #navbaritems *ngIf="toggle" [ngClass]="{'topnav-rhs topnav-rhs-color':!mobilemode}">
-      <div class="topnavmainbar" [ngClass]="{'topnavmainbar-mobile':mobilemode}">
-          <div #navbaritems1 class="topnavmainbaritems" [ngClass]="{'topnavmainbaritems-mobile':mobilemode}">
-              <ng-content select="[position-left]"></ng-content>
-          </div>
-          <div #navbaritems2 class="topnavmainbaritems" [ngClass]="{'topnavmainbaritems-mobile':mobilemode}">
-              <ng-content select="[position-center]"></ng-content>
-          </div>
-          <div #navbaritems3 class="topnavmainbaritems" [ngClass]="{'topnavmainbaritems-mobile':mobilemode}">
-              <ng-content select="[position-right]"></ng-content>
-          </div>
-
-      </div>
-  </div>
-
--->
 </nav>

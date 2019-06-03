@@ -1,11 +1,11 @@
 <div class="nav-dropdown">
-    <a class="nav-dropbtn" [ngStyle]="{'color':color}" (mouseover)="onMouseoverTitle($event)" (click)="onHeaderClick($event)">
-        <span>
+    <a class="nav-dropbtn" style="white-space: nowrap" [ngStyle]="{'color':color}" (mouseover)="onMouseoverTitle($event)" (click)="onHeaderClick($event)">
+        <span >
             <i *ngIf="icon" [ngClass]="icon"></i>
-        </span>
-        <span>{{title}}</span>
-        
-        <span>
+        </span >
+        <span >{{title}}</span>
+
+        <span >
             <i class="dropdownicon fa fa-angle-down"></i>
         </span>
     </a>
@@ -22,7 +22,7 @@
                             <i class="fa fa-angle-left" style="padding-bottom:6px; padding-right:6px;" aria-hidden="true"></i>
                         </span>
                         {{node.text}}
-                    
+
                         <span *ngIf="position == 'right' && node.submenus">
                             <i class="fa fa-angle-right" style="float:right ;padding-top:5px" aria-hidden="true"></i>
 
@@ -35,6 +35,7 @@
                     </amexio-nav-innermenu>
                 </span>
             </div>
+
         </a>
 
         <div *ngIf="type==='menucontainer'" class="nav-menu-container">
