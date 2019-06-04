@@ -147,6 +147,7 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
     if (!this.logo) {
       this.loadNavItems();
     }
+    this.navOnLoad();
   }
 
   ngAfterContentInit() {
@@ -157,9 +158,7 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
         bItem[0].hideBanner.subscribe((flag: boolean) => {
           this.showBanner = flag;
           this.resize(null);
-          setTimeout(() => {
-            this.onNavLoad.emit({ offsetHeight: this.navbar.nativeElement.offsetHeight });
-          }, 200);
+          this.navOnLoad();
         });
       }
 
@@ -203,7 +202,7 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
       this.checkMobileMode();
       this.createMoreContent();
     }
-    this.onNavLoad.emit({ offsetHeight: this.navbar.nativeElement.offsetHeight });
+    this.navOnLoad();
   }
 
   checkMobileMode() {
@@ -284,12 +283,12 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
       }
       this.isExpand = !this.isExpand;
     }
-    this.onNavLoad.emit({ offsetHeight: this.navbar.nativeElement.offsetHeight });
+    this.navOnLoad();
   }
 
   onArrowClick(event: any) {
     this.onIconArrowClick.emit();
-    this.onNavLoad.emit({ offsetHeight: this.navbar.nativeElement.offsetHeight });
+    this.navOnLoad();
     this.isIconLeft = !this.isIconLeft;
   }
   // THIS EVENT IS HOME COMPOENNT USE.NOT EXPOSED
@@ -388,5 +387,11 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
       });
 
     }
+  }
+
+  navOnLoad() {
+    setTimeout(() => {
+      this.onNavLoad.emit({ offsetHeight: this.navbar.nativeElement.offsetHeight });
+    }, 0);
   }
 }
