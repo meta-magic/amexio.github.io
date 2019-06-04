@@ -56,13 +56,13 @@ export class AmexioHomePageComponent implements OnInit, AfterContentInit {
       this.amexioNavBarComponent.homepageType = this.type;
       if (this.amexioHomePageWestPanelComponent) {
         this.amexioNavBarComponent.onNavLoad.subscribe((onLoadData: any) => {
-          this.northPanelHeight = onLoadData.offsetHeight - 5;
+          this.northPanelHeight = onLoadData.offsetHeight;
           if (this.sideNavComponents[0].sidenavexpandedinsmalldevice) {
-            this.amexioHomePageWestPanelComponent.setPadding(this.northPanelHeight - 5);
+            this.amexioHomePageWestPanelComponent.setPadding(this.northPanelHeight);
           } else if (this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone()) {
             this.amexioHomePageWestPanelComponent.setPadding(0);
           } else {
-            this.amexioHomePageWestPanelComponent.setPadding(this.northPanelHeight - 5);
+            this.amexioHomePageWestPanelComponent.setPadding(this.northPanelHeight);
           }
         });
       }
@@ -83,7 +83,7 @@ export class AmexioHomePageComponent implements OnInit, AfterContentInit {
       this.isPhone = true;
       this.sideNavComponents[0].toggle();
       if (this.sideNavComponents[0].sidenavexpandedinsmalldevice) {
-        this.amexioHomePageWestPanelComponent.setPadding(this.northPanelHeight - 5);
+        this.amexioHomePageWestPanelComponent.setPadding(this.northPanelHeight);
       } else {
         this.amexioHomePageWestPanelComponent.setPadding(0);
       }
