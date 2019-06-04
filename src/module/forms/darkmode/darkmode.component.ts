@@ -128,12 +128,21 @@ export class DarkmodeComponent implements OnInit {
     insertStyleSheetRule(ruleText: any) {
         const sheets: any = document.styleSheets;
         if (sheets.length === 0) {
-            const style = document.createElement('style');
-            style.appendChild(document.createTextNode(''));
-            document.head.appendChild(style);
+          const style = document.createElement('style');
+          style.appendChild(document.createTextNode(''));
+          document.head.appendChild(style);
         }
-        const sheet: any = sheets[sheets.length - 1];
-        sheet.insertRule(ruleText, sheet.rules ? sheet.rules.length : sheet.cssRules.length);
+        let isCssAdded = false;
+        for (const sh of sheets) {
+          const sheet: any = sh;
+          if (!isCssAdded && (sheet && sheet.href === null && sheet.rules)) {
+            try {
+              sheet.insertRule(ruleText, sheet.rules ? sheet.rules.length : sheet.cssRules.length);
+              isCssAdded = true;
+            } catch (e) {
+            }
+          }
+        }
     }
 
     addDynamicCss(circleColor: any, borderColor: any) {
