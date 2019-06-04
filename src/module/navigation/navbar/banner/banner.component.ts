@@ -74,7 +74,6 @@ export class AmexioBannerComponent implements AfterContentInit, OnInit {
     } else {
       this.mobileMode = false;
     }
-    console.log('ttt', this.mobileMode);
   }
 
   onCloseClick() {
