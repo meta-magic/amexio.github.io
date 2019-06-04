@@ -1,7 +1,12 @@
 /**
  * Created by dattaram on 28/5/19.
  */
-import { AfterContentInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2 } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+
+import {
+  AfterContentInit, Component, ElementRef, EventEmitter, HostListener,
+  Inject, Input, OnInit, Output, Renderer2,
+} from '@angular/core';
 
 import { DeviceQueryService } from '../../../services/device/device.query.service';
 
@@ -48,11 +53,32 @@ export class AmexioBannerComponent implements AfterContentInit, OnInit {
 
   @Input() alignment = 'center';
 
+  @Input('close-on-scroll') closeOnScroll = false;
+
   amexioComponentId = 'amexio-banner';
 
   mobileMode: boolean;
 
-  constructor(private renderer: Renderer2, private el: ElementRef, public matchMediaService: DeviceQueryService) {
+  constructor(
+    @Inject(DOCUMENT) private document: any,
+    private renderer: Renderer2,
+    private el: ElementRef,
+    public matchMediaService: DeviceQueryService,
+    ) {
+  }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+
+    if (this.closeOnScroll) {
+      const offset =
+        this.document.documentElement.scrollTop || this.document.body.scrollTop || 0;
+      if (offset !== 0) {
+        this.onCloseClick();
+      } else {
+        this.onShowClick();
+      }
+    }
   }
 
   ngOnInit() {
@@ -91,5 +117,10 @@ export class AmexioBannerComponent implements AfterContentInit, OnInit {
     } else {
       this.mobileMode = false;
     }
+  }
+
+  onShowClick() {
+    this.hideBanner.emit(true);
+    this.showBanner = true;
   }
 }
