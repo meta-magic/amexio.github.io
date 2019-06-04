@@ -3,7 +3,7 @@
  */
 import { AfterContentInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2 } from '@angular/core';
 
-import {DeviceQueryService} from '../../../services/device/device.query.service';
+import { DeviceQueryService } from '../../../services/device/device.query.service';
 
 @Component({
   selector: 'amexio-banner',
@@ -69,11 +69,7 @@ export class AmexioBannerComponent implements AfterContentInit, OnInit {
   }
 
   ngAfterContentInit() {
-    if (this.matchMediaService.IsPhone() || this.matchMediaService.IsTablet()) {
-      this.mobileMode = true;
-    } else {
-      this.mobileMode = false;
-    }
+    this.responsiveMethod();
   }
 
   onCloseClick() {
@@ -86,6 +82,10 @@ export class AmexioBannerComponent implements AfterContentInit, OnInit {
   }
 
   resize(event: any) {
+    this.responsiveMethod();
+  }
+
+  responsiveMethod() {
     if (this.matchMediaService.IsPhone() || this.matchMediaService.IsTablet()) {
       this.mobileMode = true;
     } else {
