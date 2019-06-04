@@ -226,7 +226,7 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
 
   handleNavItemEvent(event: any) {
     if (event && event.data && event.data.node && !event.data.node.header && this.mobilemode) {
-      this.toggle = false;
+      this.toggle = true;
     }
   }
 

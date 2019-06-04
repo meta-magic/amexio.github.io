@@ -24,53 +24,53 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class AmexioNavMenuComponent implements OnInit {
   /*
- Properties
- name : type
- datatype : string
- version : 4.0 onwards
- default : none
- description : Indicate the type of menu-items (link / button / textfield /menu )
- */
+   Properties
+   name : type
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : Indicate the type of menu-items (link / button / textfield /menu )
+   */
   @Input() type: string;
 
   /*
-  Properties
-  name : title
-  datatype : string
-  version : 4.0 onwards
-  default : none
-  description : Title for link, button and menu header
-  */
+   Properties
+   name : title
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : Title for link, button and menu header
+   */
   @Input() title: string;
 
   /*
-  Properties
-  name : data
-  datatype : string
-  version : 4.0 onwards
-  default : none
-  description : Standard JSON format array data which is used for rendering menus. This is used when type=menu is defined.
-  */
+   Properties
+   name : data
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : Standard JSON format array data which is used for rendering menus. This is used when type=menu is defined.
+   */
   @Input() data: any;
 
   /*
-  Properties
-  name : icon
-  datatype : string
-  version : 4.0 onwards
-  default : none
-  description : Icon for link, button and menu header
-  */
+   Properties
+   name : icon
+   datatype : string
+   version : 4.0 onwards
+   default : none
+   description : Icon for link, button and menu header
+   */
   @Input() icon: string;
 
   /*
-  Events
-  name : navLinkClick
-  datatype : any
-  version : none
-  default : none
-  description : Fire when nav item is clicked, This event is fired when nav item type is defined as 'link/button/menu'
-  */
+   Events
+   name : navLinkClick
+   datatype : any
+   version : none
+   default : none
+   description : Fire when nav item is clicked, This event is fired when nav item type is defined as 'link/button/menu'
+   */
   @Output() navLinkClick: any = new EventEmitter<any>();
   @Output() onNavItemClick: any = new EventEmitter<any>();
 
@@ -105,6 +105,10 @@ export class AmexioNavMenuComponent implements OnInit {
   }
 
   onNodeHover(node: any, event: any) {
+    if (!this.mobilemode) {
+      node['isExpanded'] = true;
+    }
+
     this.ishovered = false;
     // clear hover flag;
     this.data.forEach((element: any) => {
@@ -173,10 +177,21 @@ export class AmexioNavMenuComponent implements OnInit {
       mobilemode: this.mobilemode,
     };
     this.onNavItemClick.emit(this.dataObject(n, _event));
+    this.onIconClick(_event, _node);
   }
 
   navItemClick(event: any) {
     event.event.stopPropagation();
     this.onNavItemClick.emit(event);
+  }
+
+  onIconClick(event: any, node: any) {
+    event.stopPropagation();
+    if (node.hasOwnProperty('isExpanded')) {
+      node.isExpanded = ! node.isExpanded;
+    } else {
+      node['isExpanded'] = true;
+    }
+
   }
 }

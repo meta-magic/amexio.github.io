@@ -78,11 +78,14 @@ export class AmexioInnerNavMenuComponent implements OnInit {
     @Output() navLinkClick: any = new EventEmitter<any>();
 
   @Input() mobilemode = false;
+
+  @Input() padding = 20;
     issubmenu = false;
     divid: any;
     position: any;
     ishovered = true;
     @Input('color') color: string;
+    isExpanded = false;
     constructor() {
         this.divid = Math.floor(Math.random() * 90000) + 10000 + '_menuid';
     }

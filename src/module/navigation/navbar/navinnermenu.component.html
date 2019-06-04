@@ -1,26 +1,27 @@
-<ng-container *ngFor="let node of data">
-    <div class="nav-dropdown-content-subnode">
 
-        <div style="padding: 10px; padding-left: 20px;">
-            <span *ngIf="submenuposition == 'left' && node.submenus">
-                <i class="fa fa-angle-left" style="padding-bottom:5px;padding-right: 10px" aria-hidden="true"></i>
-                <!-- {{node.text}} -->
+<ng-container *ngFor="let node of data; let i= index">
+  <div class="nav-dropdown-content-subnode" [style.display]="mobilemode ? 'block' : 'inline-flex'">
+    <div style="padding: 10px 0px 10px 0px;" [style.padding-left.px]="mobilemode ? padding : 20">
+            <span *ngIf="submenuposition == 'left' && node.submenus && !mobilemode">
+               <i class="fa fa-angle-left" style="padding-bottom:5px" aria-hidden="true"></i>
             </span>
-            <span (click)="onClick(node, $event)">{{node.text}}</span>
-        </div>
-
-        <div style="padding: 10px">
-            <span *ngIf="submenuposition == 'right' && node.submenus">
-                <!-- {{node.text}} -->
-                <i class="fa fa-angle-right" aria-hidden="true"></i>
-            </span>
-            <!-- <span>{{node.text}}</span> -->
-        </div>
-
-      <div [ngClass]="{'innersubmenunodes':submenuposition == 'right', 'innersubmenunodesright':submenuposition == 'left' }" *ngIf="node.submenus">
-        <amexio-nav-innermenu [color]="itemcolor" [submenuposition]="submenuposition" [data]="node.submenus" (navLinkClick)="navItemClick($event)">
-        </amexio-nav-innermenu>
-      </div>
+      <span (click)="onClick(node, $event)">{{node.text}} </span>
     </div>
-    <br/>
+    <div>
+            <span *ngIf="(submenuposition == 'right' && node.submenus) || ( mobilemode && node.submenus)"
+                  (click)="onIconClick($event)"
+                  [style.padding-right.px]="mobilemode ? 27:10" [style.padding-top.px]="mobilemode ? 0:5"
+                  style="float:right;"
+            >
+                <i *ngIf="!isExpanded" class="fa fa-angle-down"  aria-hidden="true"></i>
+                <i *ngIf="isExpanded" class="fa fa-angle-up"  aria-hidden="true"></i>
+            </span>
+    </div>
+    <div *ngIf="node.submenus"  [ngClass]="{'innersubmenunodes': (submenuposition == 'right' && !mobilemode), 'innersubmenunodesright':(submenuposition == 'left' && !mobilemode) }">
+      <amexio-nav-innermenu [mobilemode]="mobilemode" [color]="itemcolor" [padding]="padding+20" [submenuposition]="submenuposition" [data]="node.submenus" (navLinkClick)="navItemClick($event)">
+      </amexio-nav-innermenu>
+    </div>
+  </div>
+
+
 </ng-container>
