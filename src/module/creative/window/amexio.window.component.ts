@@ -18,7 +18,7 @@
 
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import {
-  AfterContentInit, AfterViewInit, Component, ContentChildren, ElementRef, EventEmitter, Input, OnChanges, OnDestroy,
+  AfterContentInit, AfterViewInit, Component, ContentChildren, ElementRef, EventEmitter, HostListener, Input, OnChanges, OnDestroy,
   OnInit, Output, QueryList, Renderer2, SimpleChanges, ViewChild,
 } from '@angular/core';
 import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
@@ -51,7 +51,7 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
 
   @Input('background') background: string;
 
-  @Input('height') height: string;
+  @Input('height') height: any;
 
   @Input('align') align: string;
 
@@ -79,7 +79,7 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
 
   private window = ' window-';
 
-  @Input('width') width = '90%';
+  @Input('width') width: any = '90%';
 
   amexioComponentId = 'amexio-window';
 
@@ -94,25 +94,65 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
 
   @Output() close: EventEmitter<any> = new EventEmitter<any>();
 
+  @Input() draggable: boolean;
+
   maximumWindowStyle: any;
 
   dummyWidth: string;
 
   windowFlag = true;
 
+  x: number;
+
+  y: number;
+
+  px: number;
+
+  py: number;
+
+  minArea: number;
+
+  draggingCorner: boolean;
+
+  draggingWindow: boolean;
+
   globalListenFunc: () => void;
   globalClickListenFunc: () => void;
 
   constructor(private renderer: Renderer2) {
     super();
+    this.x = 0;
+    this.y = 0;
+    this.px = 0;
+    this.py = 0;
+    this.draggingCorner = false;
+    this.draggingWindow = false;
+    this.minArea = 20000;
   }
+  @HostListener('document:mousemove', ['$event'])
+  onCornerMove(event: MouseEvent) {
+    const lastX = this.x;
+    const lastY = this.y;
+    const pWidth = this.width;
+    const pHeight = this.height;
 
+    if (this.area() < this.minArea) {
+      this.x = lastX;
+      this.y = lastY;
+      this.width = pWidth;
+      this.height = pHeight;
+    }
+    this.px = event.clientX;
+    this.py = event.clientY;
+  }
   onCloseClick() {
     if (this.closable) {
       this.showWindow = false;
       this.show = false;
       this.showChange.emit(false);
       this.close.emit(this.showWindow);
+      this.x = 0;
+      this.y = 0;
 
     }
   }
@@ -136,7 +176,31 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
     super.ngOnInit();
 
   }
+  area() {
+    return this.width * this.height;
+  }
+  onWindowPress(event: MouseEvent) {
+    if (this.draggable) {
+      this.draggingWindow = true;
+      this.px = event.clientX;
+      this.py = event.clientY;
+    }
+  }
 
+  onWindowDrag(event: MouseEvent) {
+    if (this.draggable) {
+      if (!this.draggingWindow) {
+        return;
+      }
+      const offsetX = event.clientX - this.px;
+      const offsetY = event.clientY - this.py;
+
+      this.x += offsetX;
+      this.y += offsetY;
+      this.px = event.clientX;
+      this.py = event.clientY;
+    }
+  }
   setMaximizeClass(isFullWindow: boolean) {
     this.isFullWindow = isFullWindow;
     if (isFullWindow) {
@@ -278,5 +342,10 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
   }
   ngOnDestroy() {
     super.ngOnDestroy();
+  }
+  @HostListener('document:mouseup', ['$event'])
+  onCornerRelease(event: MouseEvent) {
+    this.draggingWindow = false;
+    this.draggingCorner = false;
   }
 }
