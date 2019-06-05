@@ -33,6 +33,8 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
 
   @Input('overlay-type') overlaytype: string;
 
+  @Input('flip-effect') flip = false;
+
   @Input('color') color: string;
 
   @Input('background') background: string;
