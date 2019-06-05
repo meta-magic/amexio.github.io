@@ -1,1 +1,116 @@
+
+.textLeftPosition {
+    width:max-content;
+    display: grid;
+    justify-content: center;
+    position: relative;
+    }
+    
+    .textRightPosition {
+    width:max-content;
+   text-align: right;
+    float: right;
+    position: relative;
+    }
+    
+    .textCenterPosition {
+    text-align: center;
+    position: relative;
+    width: 100%;
+    }
+
+.bmenu {
+    padding: 0px;
+    margin: 0 0 10px 0;
+    position: relative;
+}
+
+.bmenu1 a {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+}
+
+
+.bmenu1 a:hover {
  
+    padding-left: 10px;
+}
+
+
+.bmenu2 a{
+    white-space: nowrap;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    -moz-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    -o-transform: scale(0.5);
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    -webkit-transition: all 0.6s linear;
+    -moz-transition: all 0.6s linear;
+    -o-transition: all 0.6s linear;
+    -ms-transition: all 0.6s linear;
+    transition: all 0.6s linear;
+}
+
+.bmenu2 a:hover{
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+
+
+.bmenu3 a{
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+.bmenu3 a:hover{
+    padding-left: 10px;
+}
+
+
+
+.bmenu4 a{
+    white-space: nowrap;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    -moz-transform: scale(0.8);
+    -ms-transform: scale(0.8);
+    -o-transform: scale(0.8);
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    transition: all 0.4s linear;
+
+} 
+
+.bmenu4 a:hover{
+
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
