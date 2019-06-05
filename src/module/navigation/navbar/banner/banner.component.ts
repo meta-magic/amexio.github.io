@@ -64,7 +64,7 @@ export class AmexioBannerComponent implements AfterContentInit, OnInit {
     private renderer: Renderer2,
     private el: ElementRef,
     public matchMediaService: DeviceQueryService,
-    ) {
+  ) {
   }
 
   @HostListener('window:scroll', [])
@@ -74,7 +74,7 @@ export class AmexioBannerComponent implements AfterContentInit, OnInit {
       const offset =
         this.document.documentElement.scrollTop || this.document.body.scrollTop || 0;
       if (offset !== 0) {
-        this.onCloseClick();
+        this.onCloseCommon();
       } else {
         this.onShowClick();
       }
@@ -97,10 +97,15 @@ export class AmexioBannerComponent implements AfterContentInit, OnInit {
   ngAfterContentInit() {
     this.responsiveMethod();
   }
+  onCloseCommon() {
+    this.hideBanner.emit(false);
+    this.showBanner = false;
+  }
 
   onCloseClick() {
     this.hideBanner.emit(false);
     this.showBanner = false;
+    this.closeOnScroll = false;
   }
 
   setColorPalette(themeClass: any) {
