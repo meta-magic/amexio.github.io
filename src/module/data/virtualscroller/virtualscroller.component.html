@@ -1,0 +1,6 @@
+<div id="scroll-content" style="overflow-y: scroll;" [ngStyle]="{'height': height+'px'}" (scroll)="scrollHandler($event)">
+    <div *ngFor="let row of currentViewData" [ngStyle]="{'height': itemSize+'px'}">
+        <ng-template *ngIf="bodyTemplate" [ngTemplateOutlet]="bodyTemplate" [ngTemplateOutletContext]="{ row: row }">
+        </ng-template>
+    </div>
+</div>

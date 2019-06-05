@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { AmexioVirtualScrollerComponent } from './virtualscroller/virtualscroller.component';
 
 import { AmexioGridColumnComponent } from './datagrid/data.grid.column';
 import { AmexioDatagridComponent } from './datagrid/datagrid.component';
@@ -58,6 +59,7 @@ const DATA_COMPONENTS = [
   AmexioFilterTreeComponent,
   TreeDataTableComponent,
   AmexioItemSelectorComponent,
+  AmexioVirtualScrollerComponent,
 ];
 
 @NgModule({
