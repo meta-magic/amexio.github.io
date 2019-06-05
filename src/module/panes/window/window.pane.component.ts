@@ -18,12 +18,12 @@
 
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import {
-  AfterContentInit, Component, ContentChildren, ElementRef, EventEmitter, Input, OnChanges, OnDestroy,
+  AfterContentInit, Component, ContentChildren, ElementRef, EventEmitter, HostListener, Input, OnChanges, OnDestroy,
   OnInit, Output, QueryList, Renderer2, SimpleChanges, ViewChild,
 } from '@angular/core';
-import {AmexioFooterComponent} from '../action/pane.action.footer';
-import {AmexioBodyComponent} from '../body/pane.action.body';
-import {AmexioHeaderComponent} from '../header/pane.action.header';
+import { AmexioFooterComponent } from '../action/pane.action.footer';
+import { AmexioBodyComponent } from '../body/pane.action.body';
+import { AmexioHeaderComponent } from '../header/pane.action.header';
 @Component({
   selector: 'amexio-window',
   templateUrl: './window.pane.component.html',
@@ -42,7 +42,35 @@ import {AmexioHeaderComponent} from '../header/pane.action.header';
   ],
 })
 export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy, AfterContentInit {
+  maximumWindowStyle: any;
 
+  dummyWidth: string;
+
+  x: number;
+
+  y: number;
+
+  px: number;
+
+  py: number;
+
+  width1: number;
+
+  height: number;
+
+  minArea: number;
+
+  draggingWindow: boolean;
+
+  flag: boolean;
+
+  posixUp: boolean;
+
+  rightClickNodeData: any;
+
+  themeCss: any;
+
+  amexioComponentId = 'amexio-window';
   /*
    Properties
    name : vertical-position
@@ -183,7 +211,7 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy, 
   // context menu input output
   @Input('context-menu') contextmenu: any[];
 
-  @Input('width') width = '90%';
+  @Input('width') width: any = '90%';
 
   @Output() nodeRightClick: any = new EventEmitter<any>();
 
@@ -193,34 +221,41 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy, 
   @ContentChildren(AmexioFooterComponent) amexioFooter: QueryList<AmexioFooterComponent>;
   @ContentChildren(AmexioBodyComponent) amexioBody: QueryList<AmexioBodyComponent>;
   @Output() close: EventEmitter<any> = new EventEmitter<any>();
-
-  maximumWindowStyle: any;
-
-  dummyWidth: string;
-
-  constructor(private renderer: Renderer2) {
-  }
-  flag: boolean;
-
-  posixUp: boolean;
-
-  rightClickNodeData: any;
-
-  themeCss: any;
-
-  amexioComponentId = 'amexio-window';
-
+  @Input() draggable: boolean;
   mouseLocation: { left: number; top: number } = { left: 0, top: 0 };
   globalListenFunc: () => void;
   globalClickListenFunc: () => void;
+  constructor(private renderer: Renderer2) {
+    this.x = 0;
+    this.y = 0;
+    this.px = 0;
+    this.py = 0;
+    this.width1 = 600;
+    this.height = 300;
+    this.draggingWindow = false;
+  }
+  @HostListener('document:mousemove', ['$event'])
+  onCornerMove(event: MouseEvent) {
+    const lastX = this.x;
+    const lastY = this.y;
+    const pWidth = this.width;
+    const pHeight = this.height;
 
+    if (this.area() < this.minArea) {
+      this.x = lastX;
+      this.y = lastY;
+      this.width = pWidth;
+      this.height = pHeight;
+    }
+    this.px = event.clientX;
+    this.py = event.clientY;
+  }
   onCloseClick() {
     if (this.closable) {
       this.showWindow = false;
       this.show = false;
       this.showChange.emit(false);
       this.close.emit(this.showWindow);
-
     }
   }
   ngOnInit() {
@@ -266,7 +301,7 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy, 
         this.verticalposition = 'flex-end';
         break;
       }
-      default : {
+      default: {
         this.verticalposition = 'center';
         break;
       }
@@ -287,7 +322,7 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy, 
         this.horizontalposition = 'flex-end';
         break;
       }
-      default : {
+      default: {
         this.horizontalposition = 'center';
         break;
       }
@@ -399,8 +434,36 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy, 
     }
   }
 
-    // Theme Apply
-    setColorPalette(themeClass: any) {
-      this.themeCss = themeClass;
+  // Theme Apply
+  setColorPalette(themeClass: any) {
+    this.themeCss = themeClass;
+  }
+  area() {
+    return this.width * this.height;
+  }
+  onWindowPress(event: MouseEvent) {
+    if (this.draggable) {
+      this.draggingWindow = true;
+      this.px = event.clientX;
+      this.py = event.clientY;
     }
+  }
+  onWindowDrag(event: MouseEvent) {
+    if (this.draggable) {
+      if (!this.draggingWindow) {
+        return;
+      }
+      const offsetX = event.clientX - this.px;
+      const offsetY = event.clientY - this.py;
+      this.x += offsetX;
+      this.y += offsetY;
+      this.px = event.clientX;
+      this.py = event.clientY;
+    }
+  }
+
+  @HostListener('document:mouseup', ['$event'])
+  onCornerRelease(event: MouseEvent) {
+    this.draggingWindow = false;
+  }
 }

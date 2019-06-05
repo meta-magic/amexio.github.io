@@ -1,12 +1,12 @@
 
 <div #id *ngIf="show" class="amexio-root-window"  [style.justify-content]="horizontalposition">
-  <div class="amexio-root-window-content"
+  <div class="amexio-root-window-content"(mousedown)='onWindowPress($event)' (mousemove)='onWindowDrag($event)'
        (contextmenu)="loadContextMenu({event:$event,ref:id})"
        [style.justify-content]="verticalposition"
        [ngStyle]="maximumWindowStyle"
        [ngClass]="{'content-max-height': (maximize && isFullWindow)}"
        [@animation]="{value: 'visible', params: {transitionParams: transitionOptions}}"
-       [style.width]="width">
+       [style.width]="width" [style.height]="height" [style.top.px]='y' [style.left.px]='x'>
     <ng-content></ng-content>
   </div>
 </div>
