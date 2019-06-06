@@ -96,6 +96,7 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
 
   @Input() draggable: boolean;
 
+  @Input() resizable: boolean;
   maximumWindowStyle: any;
 
   dummyWidth: string;
