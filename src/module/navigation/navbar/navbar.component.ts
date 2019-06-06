@@ -374,7 +374,7 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
       this.isItemRemoved = true;
     }
   }
-
+// external link
   externalLink(event: any) {
     if (this.navItemComponents && this.navItemComponents.length > 0) {
       let isFound = false;
