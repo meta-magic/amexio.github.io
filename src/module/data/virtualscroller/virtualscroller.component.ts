@@ -3,13 +3,10 @@ import { Component , ContentChild, EventEmitter, Input, NgZone, OnInit, Output, 
 @Component({
   selector: 'amexio-virtual-scroller',
   templateUrl: 'virtualscroller.component.html',
-  styles: [`
-  #scroll-content>div {
-    background: #c0c0c0;
+  styles: [`#scroll-content>div {
     height: 40px;
     margin-bottom: 5px;
-  }
-  `],
+  }`],
 })
 export class AmexioVirtualScrollerComponent implements OnInit {
 
