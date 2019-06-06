@@ -1,4 +1,4 @@
-import { Component , ContentChild, EventEmitter, Input, NgZone, OnInit, Output, TemplateRef} from '@angular/core';
+import { Component , ContentChild, ElementRef, EventEmitter, Input, NgZone, OnInit, Output, TemplateRef, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'amexio-virtual-scroller',
@@ -19,6 +19,8 @@ export class AmexioVirtualScrollerComponent implements OnInit {
   @Output() onScrollDown: any = new EventEmitter<any>();
 
   @ContentChild('amexioBodyTmpl') bodyTemplate: TemplateRef<any>;
+
+  @ViewChild('virtualscoller') public virtualscoller: ElementRef;
 
   currentViewData: any[] = [];
   totalCount: number;
@@ -56,7 +58,7 @@ export class AmexioVirtualScrollerComponent implements OnInit {
   // ON SCROLL HANDLE
   // tslint:disable-next-line:cognitive-complexity
   scrollHandler(event: any) {
-    const scroller = document.querySelector('#scroll-content');
+    const scroller = this.virtualscoller.nativeElement;
     const height = scroller.clientHeight;
     const scrollHeight = scroller.scrollHeight - height;
     const scrollTop = scroller.scrollTop;
