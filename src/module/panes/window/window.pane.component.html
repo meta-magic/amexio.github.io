@@ -6,7 +6,7 @@
        [ngStyle]="maximumWindowStyle"
        [ngClass]="{'content-max-height': (maximize && isFullWindow)}"
        [@animation]="{value: 'visible', params: {transitionParams: transitionOptions}}"
-       [style.width]="width" [style.height]="height" [style.top.px]='y' [style.left.px]='x'>
+       [style.width]="width" [style.height]="height" [style.top.px]='y' [style.left.px]='x' [style.cursor]="draggable ? 'all-scroll':'' ">
     <ng-content></ng-content>
   </div>
 </div>
