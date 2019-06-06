@@ -62,6 +62,9 @@ import { FacebookAuthComponent } from './socialmedia/facebookauth/facebook.auth.
 import { GoogleAuthComponent } from './socialmedia/googleauth/google.auth.component';
 import { LinkedInAuthComponent } from './socialmedia/linkedinauth/linkedin.auth.component';
 import { AmexioSocialComponent } from './socialmedia/social.component';
+
+import { AmexioInputPatternDirective } from '../directive/input-mask';
+
 export * from '../services/data/common.data.service';
 export * from '../services/icon/icon.service';
 export * from './recaptcha/load.recaptcha.service';
@@ -119,6 +122,7 @@ const FORM_COMPONENTS = [
   DarkmodeComponent,
   AmexioRangeSliderComponent,
   AmexioMultipleDatePickerComponent,
+  AmexioInputPatternDirective,
 ];
 
 @NgModule({
