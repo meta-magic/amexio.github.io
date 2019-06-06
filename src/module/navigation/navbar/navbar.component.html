@@ -1,5 +1,5 @@
 <nav #navbar style="flex-direction: column" class="topnav {{themeCss}}" [ngStyle]="{'color': color, 'top': top, 'opacity': opacity}"
-    [ngClass]="{'topnav-mobile':mobilemode, 'transparentNav':transparent}" (window:resize)="resize($event, false)">
+    [ngClass]="{'topnav-mobile':mobilemode, 'transparentNav':transparent}" (window:resize)="resize($event)">
     <div [style.display]="showBanner ? 'block': 'none'">
         <ng-content select="amexio-banner"></ng-content>
     </div>

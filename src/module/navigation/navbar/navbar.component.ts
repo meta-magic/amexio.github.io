@@ -157,7 +157,7 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
         this.showBanner = true;
         bItem[0].hideBanner.subscribe((flag: boolean) => {
           this.showBanner = flag;
-          this.resize(null, true);
+          this.resizeAfterBannerClose();
           this.navOnLoad();
         });
       }
@@ -255,37 +255,46 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
 
   }
 
-  resize(event: any, isbannerEvent: boolean) {
+  resize(event: any) {
     if (!this.enableMoreMode) {
-    this.handleDeviceSetting();
+      this.handleDeviceSetting();
     } else {
-    if (this.matchMediaService.IsPhone()) {
-    this.mobilemode = true;
-    this.isPhone = true;
-    if (!isbannerEvent) {
-      this.toggle = false;
+      if (this.matchMediaService.IsPhone()) {
+        this.mobilemode = true;
+        this.isPhone = true;
+        this.toggle = false;
+      } else {
+        this.mobilemode = false;
+        this.isPhone = false;
+        this.toggle = true;
       }
-    } else {
-    this.mobilemode = false;
-    this.isPhone = false;
-    this.toggle = true;
-    }
-    this.createMoreContent();
-    if (this.navbar) {
-    this.notifyNavItems(this.navbar.nativeElement.offsetWidth);
-    }
+      this.createMoreContent();
+      if (this.navbar) {
+        this.notifyNavItems(this.navbar.nativeElement.offsetWidth);
+      }
     }
     if (this.homepageType === '3') {
-    if (!this.isExpand) {
-    this.lhsWidth = '0 0 19%';
-    } else {
-    this.isLHSHide = true;
-    this.lhsWidth = '0 0 5%';
-    }
-    this.isExpand = !this.isExpand;
+      if (!this.isExpand) {
+        this.lhsWidth = '0 0 19%';
+      } else {
+        this.isLHSHide = true;
+        this.lhsWidth = '0 0 5%';
+      }
+      this.isExpand = !this.isExpand;
     }
     this.navOnLoad();
+  }
+
+  resizeAfterBannerClose() {
+    if (!this.enableMoreMode) {
+      this.handleDeviceSetting();
+    } else {
+      if (this.navbar) {
+        this.notifyNavItems(this.navbar.nativeElement.offsetWidth);
+      }
     }
+    this.navOnLoad();
+  }
   onArrowClick(event: any) {
     this.onIconArrowClick.emit();
     this.navOnLoad();
@@ -320,7 +329,8 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
       }
 
     } else {
-       this.mobileModePresent();
+      this.toggle = false;
+      this.mobileModePresent();
     }
     if (this.moreBucket.length > 0) {
       this.morePadding = 50;
@@ -374,7 +384,7 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
       this.isItemRemoved = true;
     }
   }
-// external link
+  // external link
   externalLink(event: any) {
     if (this.navItemComponents && this.navItemComponents.length > 0) {
       let isFound = false;
