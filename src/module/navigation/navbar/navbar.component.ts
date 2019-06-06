@@ -157,7 +157,7 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
         this.showBanner = true;
         bItem[0].hideBanner.subscribe((flag: boolean) => {
           this.showBanner = flag;
-          this.resize(null);
+          this.resize(null, true);
           this.navOnLoad();
         });
       }
@@ -255,37 +255,36 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
 
   }
 
-  resize(event: any) {
+  resize(event: any, isbannerEvent: boolean) {
     if (!this.enableMoreMode) {
-      this.handleDeviceSetting();
+    this.handleDeviceSetting();
     } else {
-      if (this.matchMediaService.IsPhone()) {
-        this.mobilemode = true;
-        this.toggle = false;
-        this.isPhone = true;
-      } else {
-        this.mobilemode = false;
-        this.toggle = true;
-        this.isPhone = false;
-      }
-      this.createMoreContent();
-      if (this.navbar) {
-        this.notifyNavItems(this.navbar.nativeElement.offsetWidth);
-      }
-
+    if (this.matchMediaService.IsPhone()) {
+    this.mobilemode = true;
+    this.isPhone = true;
+    } else {
+    this.mobilemode = false;
+    this.isPhone = false;
+    }
+    if (!isbannerEvent) {
+    this.toggle = false;
+    }
+    this.createMoreContent();
+    if (this.navbar) {
+    this.notifyNavItems(this.navbar.nativeElement.offsetWidth);
+    }
     }
     if (this.homepageType === '3') {
-      if (!this.isExpand) {
-        this.lhsWidth = '0 0 19%';
-      } else {
-        this.isLHSHide = true;
-        this.lhsWidth = '0 0 5%';
-      }
-      this.isExpand = !this.isExpand;
+    if (!this.isExpand) {
+    this.lhsWidth = '0 0 19%';
+    } else {
+    this.isLHSHide = true;
+    this.lhsWidth = '0 0 5%';
+    }
+    this.isExpand = !this.isExpand;
     }
     this.navOnLoad();
-  }
-
+    }
   onArrowClick(event: any) {
     this.onIconArrowClick.emit();
     this.navOnLoad();
@@ -320,8 +319,7 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
       }
 
     } else {
-      this.toggle = false;
-      this.mobileModePresent();
+       this.mobileModePresent();
     }
     if (this.moreBucket.length > 0) {
       this.morePadding = 50;
