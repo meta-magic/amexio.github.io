@@ -262,13 +262,15 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
     if (this.matchMediaService.IsPhone()) {
     this.mobilemode = true;
     this.isPhone = true;
+    if (!isbannerEvent) {
+      this.toggle = false;
+      }
     } else {
     this.mobilemode = false;
     this.isPhone = false;
+    this.toggle = true;
     }
-    if (!isbannerEvent) {
-    this.toggle = false;
-    }
+    
     this.createMoreContent();
     if (this.navbar) {
     this.notifyNavItems(this.navbar.nativeElement.offsetWidth);
