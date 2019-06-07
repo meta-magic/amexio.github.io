@@ -97,6 +97,8 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
   @Input() draggable: boolean;
 
   @Input() resizable: boolean;
+
+  @Input() windowposition: boolean;
   maximumWindowStyle: any;
 
   dummyWidth: string;
@@ -119,6 +121,7 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
 
   globalListenFunc: () => void;
   globalClickListenFunc: () => void;
+  globalDragListenFunc: () => void;
 
   constructor(private renderer: Renderer2) {
     super();
@@ -130,31 +133,16 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
     this.draggingWindow = false;
     this.minArea = 20000;
   }
-  @HostListener('document:mousemove', ['$event'])
-  onCornerMove(event: MouseEvent) {
-    const lastX = this.x;
-    const lastY = this.y;
-    const pWidth = this.width;
-    const pHeight = this.height;
-
-    if (this.area() < this.minArea) {
-      this.x = lastX;
-      this.y = lastY;
-      this.width = pWidth;
-      this.height = pHeight;
-    }
-    this.px = event.clientX;
-    this.py = event.clientY;
-  }
   onCloseClick() {
     if (this.closable) {
       this.showWindow = false;
       this.show = false;
       this.showChange.emit(false);
       this.close.emit(this.showWindow);
-      this.x = 0;
-      this.y = 0;
-
+      if (this.windowposition) {
+        this.x = 0;
+        this.y = 0;
+      }
     }
   }
   ngOnInit() {
@@ -174,11 +162,11 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
     if (this.showWindow) {
       this.show = this.showWindow;
     }
+    this.globalDragListenFunc = this.renderer.listen('document', 'mouseup', (e: any) => {
+      this.draggingWindow = false;
+    });
     super.ngOnInit();
 
-  }
-  area() {
-    return this.width * this.height;
   }
   onWindowPress(event: MouseEvent) {
     if (this.draggable) {
@@ -284,12 +272,12 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
   }
 
   ngOnChanges(changes: SimpleChanges) {
-      if (changes['show']) {
-        this.setShowFlag(changes.show.currentValue);
-      }
-      if (changes['showWindow']) {
-        this.setShowFlag(changes.showWindow.currentValue);
-      }
+    if (changes['show']) {
+      this.setShowFlag(changes.show.currentValue);
+    }
+    if (changes['showWindow']) {
+      this.setShowFlag(changes.showWindow.currentValue);
+    }
   }
   setShowFlag(changedValue: any) {
     this.show = changedValue;
@@ -343,10 +331,8 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
   }
   ngOnDestroy() {
     super.ngOnDestroy();
-  }
-  @HostListener('document:mouseup', ['$event'])
-  onCornerRelease(event: MouseEvent) {
-    this.draggingWindow = false;
-    this.draggingCorner = false;
+    if (this.globalDragListenFunc) {
+      this.globalDragListenFunc();
+    }
   }
 }

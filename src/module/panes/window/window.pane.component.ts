@@ -54,12 +54,6 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy, 
 
   py: number;
 
-  width1: number;
-
-  height: number;
-
-  minArea: number;
-
   draggingWindow: boolean;
 
   flag: boolean;
@@ -222,33 +216,18 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy, 
   @ContentChildren(AmexioBodyComponent) amexioBody: QueryList<AmexioBodyComponent>;
   @Output() close: EventEmitter<any> = new EventEmitter<any>();
   @Input() draggable: boolean;
+  @Input() resizable: boolean;
+  @Input() windowposition: boolean;
   mouseLocation: { left: number; top: number } = { left: 0, top: 0 };
   globalListenFunc: () => void;
   globalClickListenFunc: () => void;
+  globalDragListenFunc: () => void;
   constructor(private renderer: Renderer2) {
     this.x = 0;
     this.y = 0;
     this.px = 0;
     this.py = 0;
-    this.width1 = 600;
-    this.height = 300;
     this.draggingWindow = false;
-  }
-  @HostListener('document:mousemove', ['$event'])
-  onCornerMove(event: MouseEvent) {
-    const lastX = this.x;
-    const lastY = this.y;
-    const pWidth = this.width;
-    const pHeight = this.height;
-
-    if (this.area() < this.minArea) {
-      this.x = lastX;
-      this.y = lastY;
-      this.width = pWidth;
-      this.height = pHeight;
-    }
-    this.px = event.clientX;
-    this.py = event.clientY;
   }
   onCloseClick() {
     if (this.closable) {
@@ -256,6 +235,10 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy, 
       this.show = false;
       this.showChange.emit(false);
       this.close.emit(this.showWindow);
+      if (this.windowposition) {
+        this.x = 0;
+        this.y = 0;
+      }
     }
   }
   ngOnInit() {
@@ -269,7 +252,9 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy, 
     if (this.showWindow) {
       this.show = this.showWindow;
     }
-
+    this.globalDragListenFunc = this.renderer.listen('document', 'mouseup', (e: any) => {
+      this.draggingWindow = false;
+    });
   }
 
   setMaximizeClass(isFullWindow: boolean) {
@@ -432,14 +417,14 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy, 
     if (this.globalListenFunc) {
       this.globalListenFunc();
     }
+    if (this.globalDragListenFunc) {
+      this.globalDragListenFunc();
+    }
   }
 
   // Theme Apply
   setColorPalette(themeClass: any) {
     this.themeCss = themeClass;
-  }
-  area() {
-    return this.width * this.height;
   }
   onWindowPress(event: MouseEvent) {
     if (this.draggable) {
@@ -460,10 +445,5 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy, 
       this.px = event.clientX;
       this.py = event.clientY;
     }
-  }
-
-  @HostListener('document:mouseup', ['$event'])
-  onCornerRelease(event: MouseEvent) {
-    this.draggingWindow = false;
   }
 }
