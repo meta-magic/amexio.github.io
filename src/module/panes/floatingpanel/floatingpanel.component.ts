@@ -26,7 +26,7 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
 
     @Output('onClose') onclose = new EventEmitter<any>();
 
-    @Input('closeable') closeable: boolean;
+    @Input('closeable') closeable = false;
 
     @Input('show-panel') showPanel = false;
 
@@ -44,7 +44,6 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
         this.positionMapData['hpos-left'] = { position: 'left', value: '10px' };
         this.positionMapData['vpos-bottom'] = { position: 'bottom', value: '25px' };
         this.positionMapData['vpos-top'] = { position: 'top', value: '55px' };
-        this.closeable = true;
     }
     ngAfterViewInit() {
 
