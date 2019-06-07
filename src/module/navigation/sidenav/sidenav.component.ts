@@ -16,8 +16,10 @@
 * Created by ketangote on 12/1/17.
 */
 
-import { AfterContentInit, ChangeDetectorRef, Component, ContentChildren, ElementRef, EventEmitter, HostListener, Input,
-  OnInit, Output, QueryList } from '@angular/core';
+import {
+  AfterContentInit, ChangeDetectorRef, Component, ContentChildren, ElementRef, EventEmitter, HostListener, Input,
+  OnInit, Output, QueryList,
+} from '@angular/core';
 import { CommonDataService } from '../../services/data/common.data.service';
 import { DeviceQueryService } from '../../services/device/device.query.service';
 import { SideNavNodeComponent } from '../sidenav/sidenavnode.component';
@@ -225,8 +227,8 @@ export class AmexioSideNavComponent implements OnInit, AfterContentInit {
     this.displaykey = 'text';
     this.childarraykey = 'children';
     if (this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone()) {
-        this.smalldevice = true;
-        this.width = '0%';
+      this.smalldevice = true;
+      this.width = '0%';
     } else {
       this.width = '19%';
     }
@@ -256,7 +258,7 @@ export class AmexioSideNavComponent implements OnInit, AfterContentInit {
       });
     }
     if (this.data && (!this.httpmethod || !this.httpurl)) {
-       this.setData(this.data);
+      this.setData(this.data);
     }
 
     if (this.position == null) {
@@ -289,42 +291,53 @@ export class AmexioSideNavComponent implements OnInit, AfterContentInit {
   findObj(currentnode: any) {
     this.nodearray.forEach((element: SideNavNodeComponent) => {
       if (element.node && (element.node.length > 0)) {
-          (element.node).forEach((individualnode: any) => {
-             if ((this.activenode.text === individualnode.text)
-              && (this.activenode.active === individualnode.active)) {
-              individualnode.active = true;
-            }else {
-              individualnode.active = false;
-            }
-          });
+        (element.node).forEach((individualnode: any) => {
+          if ((this.activenode.text === individualnode.text)
+            && (this.activenode.active === individualnode.active)) {
+            individualnode.active = true;
+          } else {
+            individualnode.active = false;
+          }
+        });
       }
     });
   }
 
   onClick(node: any) {
-    this.nodeClick.emit(node);
     this.activateNode(this.data, node);
+    if (this.matchMediaService.IsTablet() || this.matchMediaService.IsPhone()) {
+      this.smalldevice = true;
+    } else {
+      this.smalldevice = false;
+    }
+    this.nodeClick.emit(node);
     if (this.smalldevice && (!node.children || node.children === null || node.children === '')) {
-      this.isSideNavEnable = false;
+      this.isSideNavExpand = false;
     } else {
       this.isSideNavEnable = true;
     }
   }
 
- generateIndex(data: any) {
-  data.forEach((element: any, index: any) => {
-    if (element[this.childarraykey]) {
-       element[this.childarraykey].forEach((innerelement: any) => {
-        innerelement['tabindex'] = '-1';
-        if (innerelement[this.childarraykey]) {
-          innerelement[this.childarraykey].forEach((innerelement2: any) => {
-            innerelement2['tabindex'] = '-1';
-          });
-        }
-      });
-   }
-  });
-}
+  collapseSidenav() {
+    this.width = '0%';
+    this.isSideNavExpand = false;
+    this.sidenavexpandedinsmalldevice = false;
+  }
+
+  generateIndex(data: any) {
+    data.forEach((element: any, index: any) => {
+      if (element[this.childarraykey]) {
+        element[this.childarraykey].forEach((innerelement: any) => {
+          innerelement['tabindex'] = '-1';
+          if (innerelement[this.childarraykey]) {
+            innerelement[this.childarraykey].forEach((innerelement2: any) => {
+              innerelement2['tabindex'] = '-1';
+            });
+          }
+        });
+      }
+    });
+  }
 
   setData(httpResponse: any) {
     // Check if key is added?
@@ -380,12 +393,12 @@ export class AmexioSideNavComponent implements OnInit, AfterContentInit {
           this.sidenavexpandedinsmalldevice = false;
         }
       } else {
-       if (this.isShowOnlyIcon) {
+        if (this.isShowOnlyIcon) {
           this.width = '5%';
         } else {
           this.width = '19%';
         }
-       this.smalldevice = false;
+        this.smalldevice = false;
       }
     }
   }

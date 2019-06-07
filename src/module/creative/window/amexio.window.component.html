@@ -1,7 +1,7 @@
 <div *ngIf="show" class="amexio-root-window-ce" [style.justify-content]="horizontalposition">
   <div class="amexio-root-window-content-ce" (mousedown)='onWindowPress($event)' (mousemove)='onWindowDrag($event)' [@animation]="{value: 'visible', params: {transitionParams: transitionOptions}}"
     [style.width]="width" [style.height]="height" [style.top.px]='y' [style.left.px]='x' [style.justify-content]="verticalposition" [ngStyle]="maximumWindowStyle" [ngClass]="{'content-max-height': (maximize && isFullWindow)}">
-    <div [ngStyle]="{'background': bgimage ? 'url(' + bgimage + ') center/cover no-repeat' : null}" [ngClass]="cclass">
+    <div [ngStyle]="{'background': bgimage ? 'url(' + bgimage + ') center/cover no-repeat' : null,'resize': resizable ? 'both':'','overflow':resizable ?'auto':''}" [ngClass]="cclass">
       <div [ngStyle]="{'justify-content': (align === 'start' || align === 'end') ? 'flex-'+align:align , 'color':color, 'background': background, 'cursor': draggable ? 'all-scroll':''}">
         <ng-content></ng-content>
       </div>

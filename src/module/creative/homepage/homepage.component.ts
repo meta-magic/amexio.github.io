@@ -34,6 +34,7 @@ export class AmexioHomePageComponent implements OnInit, AfterContentInit {
   ngAfterContentInit() {
     setTimeout(() => {
       this.sideNavComponents = this.sideNavList.toArray();
+      this.setTimeoutMethodSeoerate();
       this.sideNavComponents[0].handleMobileDevice = false;
       if (this.type === '3') {
         this.sideNavComponents[0].isShowOnlyIcon = true;
@@ -67,6 +68,22 @@ export class AmexioHomePageComponent implements OnInit, AfterContentInit {
         });
       }
     }, 0);
+  }
+  setTimeoutMethodSeoerate() {
+    this.sideNavComponents.forEach((sidenav: any) => {
+      sidenav.nodeClick.subscribe((node: any) => {
+        if (sidenav.smalldevice && (!node.children || node.children === null || node.children === '')) {
+          this.sideNavComponents[0].collapseSidenav();
+          if (this.sideNavComponents[0].sidenavexpandedinsmalldevice) {
+            this.amexioHomePageWestPanelComponent.setPadding(this.northPanelHeight);
+          } else {
+            this.amexioHomePageWestPanelComponent.setPadding(0);
+          }
+        } else {
+          this.sideNavComponents[0].isSideNavEnable = true;
+        }
+      });
+    });
   }
 
   // tslint:disable-next-line:no-identical-functions
