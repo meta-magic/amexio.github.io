@@ -1,19 +1,14 @@
-
-<div #id *ngIf="show" class="amexio-root-window"  [style.justify-content]="horizontalposition">
-  <div class="amexio-root-window-content"(mousedown)='onWindowPress($event)' (mousemove)='onWindowDrag($event)'
-       (contextmenu)="loadContextMenu({event:$event,ref:id})"
-       [style.justify-content]="verticalposition"
-       [ngStyle]="maximumWindowStyle"
-       [ngClass]="{'content-max-height': (maximize && isFullWindow)}"
-       [@animation]="{value: 'visible', params: {transitionParams: transitionOptions}}"
-       [style.width]="width" [style.height]="height" [style.top.px]='y' [style.left.px]='x' [style.cursor]="draggable ? 'all-scroll':'' ">
-    <ng-content></ng-content>
+<div #id *ngIf="show" class="amexio-root-window" [style.justify-content]="horizontalposition">
+  <div class="amexio-root-window-content" (mousedown)='onWindowPress($event)' (mousemove)='onWindowDrag($event)'
+    (contextmenu)="loadContextMenu({event:$event,ref:id})" [style.justify-content]="verticalposition" [ngStyle]="maximumWindowStyle"
+    [ngClass]="{'content-max-height': (maximize && isFullWindow)}" [@animation]="{value: 'visible', params: {transitionParams: transitionOptions}}"
+    [style.width]="width" [style.height]="height" [style.top.px]='y' [style.left.px]='x' [style.cursor]="draggable ? 'all-scroll':'' " [style.resize]="resizable ? 'both':'' " [style.overflow]="resizable? 'auto':''" >
+      <ng-content></ng-content>
   </div>
 </div>
-
 <ng-container *ngIf="flag">
   <base-contextmenu style=" z-index: 5; position: absolute;" [base-context-menu]="contextmenu" [mouse-location-top]="mouseLocation.top"
-                    [mouse-location-left]="mouseLocation.left" [is-FlagShow]="flag" [right-click-data]="nodeRightClick"
-                    (onRightClick)="rightClickDataEmit($event)" [position-up]="posixUp">
+    [mouse-location-left]="mouseLocation.left" [is-FlagShow]="flag" [right-click-data]="nodeRightClick" (onRightClick)="rightClickDataEmit($event)"
+    [position-up]="posixUp">
   </base-contextmenu>
 </ng-container>

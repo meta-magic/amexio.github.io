@@ -98,7 +98,7 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
 
   @Input() resizable: boolean;
 
-  @Input() windowposition: boolean;
+  @Input('remember-window-position') windowposition: boolean;
   maximumWindowStyle: any;
 
   dummyWidth: string;
@@ -115,8 +115,6 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
 
   minArea: number;
 
-  draggingCorner: boolean;
-
   draggingWindow: boolean;
 
   globalListenFunc: () => void;
@@ -129,7 +127,6 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
     this.y = 0;
     this.px = 0;
     this.py = 0;
-    this.draggingCorner = false;
     this.draggingWindow = false;
     this.minArea = 20000;
   }

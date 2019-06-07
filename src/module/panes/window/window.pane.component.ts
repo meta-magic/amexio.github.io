@@ -217,7 +217,7 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy, 
   @Output() close: EventEmitter<any> = new EventEmitter<any>();
   @Input() draggable: boolean;
   @Input() resizable: boolean;
-  @Input() windowposition: boolean;
+  @Input('remember-window-position') windowposition: boolean;
   mouseLocation: { left: number; top: number } = { left: 0, top: 0 };
   globalListenFunc: () => void;
   globalClickListenFunc: () => void;
