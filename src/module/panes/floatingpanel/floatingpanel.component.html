@@ -1,0 +1,19 @@
+
+
+  <div *ngIf="showPanel" [ngStyle]="panelStyle()">
+      <div class='creative-header amexio-theme-color6-Gradient' >        
+            <div class="flex-spacebetween">
+                <amexio-label [word-wrap]="false" style="width:90%" [size]="'medium-bold'">
+                   {{title}}
+                </amexio-label>
+                  <span  class="creative-header-icon-div" style="padding-top: 1px">
+                      <span  class="fa fa-times ng-star-inserted" style="cursor: pointer;" (click)="togglePanel()"></span>                   
+                </span>
+              </div>
+              <br/>                      
+        </div>
+      <div class= "card-container-body card-container-ce-color" style="overflow: auto;display: block;" [ngStyle]="{'height':height + 'px'}">
+          <ng-content></ng-content>                       
+      </div>
+    </div>
+

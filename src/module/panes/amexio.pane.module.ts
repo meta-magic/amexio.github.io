@@ -14,6 +14,7 @@ import { AmexioTemplateDirective } from './carousel/carousel.template.directive'
 import { AmexioTemplateWrapperDirective } from './carousel/carousel.wrapper.template.directive';
 import { AmexiodialoguePaneComponent } from './dialogue/dialogue.pane.component';
 import { AmexioFieldSetComponent } from './fieldset/fieldset.component';
+import {AmexioFloatingPanelComponent} from './floatingpanel/floatingpanel.component';
 import { AmexioFormActionComponent } from './form/form.action.component';
 import { AmexioFormBodyComponent } from './form/form.body.component';
 import { AmexioFormComponent } from './form/form.component';
@@ -21,7 +22,6 @@ import { AmexioFormHeaderComponent } from './form/form.header.component';
 import { AmexioHeaderComponent } from './header/pane.action.header';
 import { AmexioPanelComponent } from './panel/panel.component';
 import { AmexioPanelHeaderComponent} from './panel/panel.header.component';
-import { StepBlockComponent } from './steps/step-block';
 import { AmexioStepsComponent } from './steps/steps.component';
 import { AmexioRightVerticalTabComponent } from './tab/right-vertical-tab/right.vertical.component';
 import { AmexioTabActionComponent } from './tab/tab.action';
@@ -33,19 +33,21 @@ import { AmexiotimelineeventComponent} from './timeline/amexiotimelineevent.comp
 import { AmexioWindowPaneComponent } from './window/window.pane.component';
 import { AmexioWindowHeaderComponent } from './window/window.pane.header.component';
 
-import { AmexioBaseContextMenuModule } from '../base/base.contextmenu.component.module';
-
-import { AmexioFormsModule } from '../forms/amexio.forms.module';
 import { CommonDataService } from '../services/data/common.data.service';
 import { DeviceQueryService } from '../services/device/device.query.service';
 import { IconLoaderService } from '../services/icon/icon.service';
 import { AmexioFormGroupDirective } from './form/form.group.directive';
 
+import { AmexioFormsModule } from '../forms/amexio.forms.module';
+
 import { AmexioCommonModule } from '../base/amexio.common.module';
 import { OverlayContainerComponent } from './overlay/overlay.component';
 
+import { AmexioBaseContextMenuModule } from '../base/base.contextmenu.component.module';
 import { PanelItemComponent } from '../panes/slidingpanel/panelitem.component';
 import { SlidingPanelComponent } from '../panes/slidingpanel/slidingpanel.component';
+
+import { StepBlockComponent } from './steps/step-block';
 
 export * from './action/pane.action.footer';
 export * from './body/pane.action.body';
@@ -80,6 +82,7 @@ const PANE_COMPONENTS = [
   AmexioFooterComponent,
   AmexioBodyComponent,
   AmexioFieldSetComponent,
+  AmexioFloatingPanelComponent,
   AmexioWindowPaneComponent,
   AmexioWindowHeaderComponent,
   AmexioStepsComponent,
