@@ -24,9 +24,14 @@
                          <span *ngIf="(position == 'right' && node.submenus) || ( mobilemode && node.submenus)"
                                [style.padding-right.px]="mobilemode ? 18:10" [style.padding-top.px]="mobilemode ? 0:5"
                                style="float:right;" (click)="onIconClick($event,node)">
-
+                           <ng-container *ngIf="!mobilemode">
+                              <i class="fa fa-angle-right"  aria-hidden="true"></i>
+                           </ng-container>
+                             <ng-container *ngIf="mobilemode">
                             <i *ngIf="!node.isExpanded" class="fa fa-angle-down"  aria-hidden="true"></i>
                             <i *ngIf="node.isExpanded" class="fa fa-angle-up"  aria-hidden="true"></i>
+                           </ng-container>
+
 
                         </span>
                     </span>
