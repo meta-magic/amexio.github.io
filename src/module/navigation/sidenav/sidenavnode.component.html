@@ -8,7 +8,7 @@
         <ng-container *ngIf="icon">
             <amexio-c-icon class="node-icon" [customclass]="icon" [color]="iconcolor"></amexio-c-icon>
             <ng-container *ngIf="!isShowOnlyIcon || isMobile">
-                <span class="sideInnerNodeFlex">{{label}}
+                <span class="sideInnerNodeFlex"><span style="padding-right: 10px">{{label}}</span>
                     <span *ngIf="badge" class="nav-badge">{{badge}}</span>
                 </span>
 
@@ -18,7 +18,7 @@
         <ng-container *ngIf="!icon">
             <amexio-c-icon class="node-icon" [customclass]="icon" [color]="iconcolor"></amexio-c-icon>
             <ng-container *ngIf="!isShowOnlyIcon || isMobile">
-                <span class="sideInnerNodeFlex">{{label}}
+              <span class="sideInnerNodeFlex"><span style="padding-right: 10px">{{label}}</span>
                     <span *ngIf="badge" class="nav-badge">{{badge}}</span>
                 </span>
 
