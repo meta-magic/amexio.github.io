@@ -65,11 +65,10 @@ export class AmexioBannerComponent implements AfterContentInit, OnInit {
     private el: ElementRef,
     public matchMediaService: DeviceQueryService,
   ) {
+    this.callWindowScroll();
   }
 
-  @HostListener('window:scroll', [])
   onWindowScroll() {
-
     if (this.closeOnScroll) {
       const offset =
         this.document.documentElement.scrollTop || this.document.body.scrollTop || 0;
@@ -79,6 +78,11 @@ export class AmexioBannerComponent implements AfterContentInit, OnInit {
         this.onShowClick();
       }
     }
+  }
+
+  callWindowScroll() {
+    this.renderer
+      .listen('window', 'scroll', (event: any) => this.onWindowScroll());
   }
 
   ngOnInit() {
