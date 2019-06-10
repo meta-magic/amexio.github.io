@@ -55,6 +55,8 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
         if (this.width === '') {
             this.width = 400;
         }
+
+        this.panelStyle();
     }
 
     ngOnChanges(changes: SimpleChanges) {
@@ -85,7 +87,6 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
         } else {
             this.style['margin-top'] = '3px';
         }
-        return this.style;
     }
 
 setPanelStylePostion() {
