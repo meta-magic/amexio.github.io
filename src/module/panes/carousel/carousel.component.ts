@@ -130,7 +130,7 @@ description : Time interval for shuffling images
           carouselItemPosix.scrollLeft = carouselItemPosix.scrollLeft + 200;
         } else if (carouselItemPosix.scrollLeft > 0) {
           // go previous
-          carouselItemPosix.scrollLeft = carouselItemPosix.scrollLeft - 200;
+          carouselItemPosix.scrollLeft = 0;
         }
       }, this.shuffleinterval);
     }
