@@ -8,6 +8,7 @@
     <a style="text-decoration: none;" href="#"
     (mouseover)="node.hover=true" 
     (mouseleave)="node.hover=false"
+    (click)="onMenuClick(node)"
     [ngStyle]="{'font-family':font, 'font-size': size+'px'}"
     >{{node.label}}</a>
   </div>
