@@ -18,7 +18,7 @@
                     <a (click)="onNavTitleClick.emit($event)" [ngStyle]="{'color': color}">{{title}}</a>
 
 
-                    <ng-container *ngIf="homepageType=='2' && !sidenav">
+                    <ng-container *ngIf="homepageType=='2'">
                         <ng-container *ngIf="!isIconLeft">
                             <span class="collaspe-icon-style" (click)="onArrowClick($event)">
                                 <amexio-image [icon-class]=" 'fa fa-chevron-right' "></amexio-image>
