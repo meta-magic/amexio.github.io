@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, ContentChildren, HostBinding, Input, QueryList, ViewChild } from '@angular/core';
+import { AfterContentInit, Component, ContentChildren, HostBinding, Input, ViewChild } from '@angular/core';
 import { FormBuilder, NgForm } from '@angular/forms';
 @Component({
     selector: 'form-action-ce',

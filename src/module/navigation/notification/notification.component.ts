@@ -17,7 +17,7 @@
 */
 
 import {
-  AfterContentInit, ChangeDetectorRef, Component, ContentChild, EventEmitter, HostListener, Input, OnInit, Output, QueryList,
+  AfterContentInit, ChangeDetectorRef, Component, ContentChild, EventEmitter, HostListener, Input, OnInit, Output,
   TemplateRef,
 } from '@angular/core';
 

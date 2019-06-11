@@ -18,7 +18,7 @@
 
 import {
   AfterContentInit, AfterViewInit, Component, ContentChildren, ElementRef, EventEmitter, Input, OnChanges, OnDestroy,
-  OnInit, Output, QueryList, Renderer2, SimpleChanges, ViewChild,
+  OnInit, Output, Renderer2, SimpleChanges, ViewChild,
 } from '@angular/core';
 @Component({
   selector: 'amexio-menu-ce',

@@ -15,7 +15,7 @@
 *
 */
 
-import { Component, ContentChildren, EventEmitter, HostBinding, Input, OnInit, Output, QueryList, ViewChild } from '@angular/core';
+import { Component, ContentChildren, EventEmitter, HostBinding, Input, OnInit, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'amexio-timeline-event',
