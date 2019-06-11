@@ -21,11 +21,12 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   selector: 'amexio-nav-action',
   template:
     `
-    <a *ngIf="(type=='link')" [ngStyle]="{'color':color}" class="top-nav-link"
+    <a *ngIf="(type=='link')" [ngStyle]="{'color':color}" class="top-nav-link" style="margin-right:20px"
     (click)="onClick($event)"><i *ngIf="icon" [ngClass]="icon"></i>{{title}}</a>
 
     <button *ngIf="(type=='button')" [ngStyle]="{'color':color}" class="top-nav-button" (click)="onClick($event)">
     <i *ngIf="icon" style="padding-right:10px" [ngClass]="icon"></i>{{title}}</button>
+
     <div  *ngIf="(type=='slider')" style="width: 60px;
     padding-bottom: 20px;" class="top-nav-button">
     <amexio-darkmode [type]="2"  [mode]="'sepia'" [size]="'small'"></amexio-darkmode>

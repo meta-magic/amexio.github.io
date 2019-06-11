@@ -36,6 +36,8 @@ export class AmexioMenuCEComponent implements OnInit {
 
   @Input() color: string;
 
+  @Output() onClick: any = new EventEmitter<any>();
+
   @Input('animation-type') type: any;
 
   @Input('menu-positioning') position = 'left';
@@ -51,5 +53,8 @@ export class AmexioMenuCEComponent implements OnInit {
     if (this.type) {
       this.animatedClass = 'bmenu' + this.type;
     }
+  }
+  onMenuClick(event: any) {
+    this.onClick.emit(event);
   }
 }
