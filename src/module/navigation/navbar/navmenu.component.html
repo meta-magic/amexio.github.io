@@ -12,7 +12,7 @@
 
   <div class="nav-dropdown-content" [ngClass]="{'mobileModeNav': mobilemode}">
 
-    <a *ngFor="let node of data" [style.border-bottom]="node?.separator ? '1px solid' : 'none'"  (mouseover)="onNodeHover(node, $event)">
+    <a *ngFor="let node of data" [ngStyle]="{'padding' : subMenuPadding + ' 10px'}" [style.border-bottom]="node?.separator ? '1px solid' : 'none'"  (mouseover)="onNodeHover(node, $event)">
                 <span class="nav-dropdown-content-node" (click)="onClick(node, $event)" >
                     <i *ngIf="icon" [ngClass]="node.icon"></i>&nbsp;
                     <span>
@@ -38,7 +38,7 @@
                 </span>
 
       <span *ngIf="node.submenus && node.isExpanded" [ngClass]="{'submenunodes': (position == 'right' && !mobilemode), 'submenunodesright': (position == 'left' && !mobilemode) }" >
-                    <amexio-nav-innermenu [mobilemode]="mobilemode" [color]="itemcolor" [submenuposition]="position" [data]="node.submenus" (navLinkClick)="navItemClick($event)">
+                    <amexio-nav-innermenu [sub-menu-height-padding]="subMenuPadding"  [mobilemode]="mobilemode" [color]="itemcolor" [submenuposition]="position" [data]="node.submenus" (navLinkClick)="navItemClick($event)">
                     </amexio-nav-innermenu>
                 </span>
 

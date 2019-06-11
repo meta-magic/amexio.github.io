@@ -1,7 +1,7 @@
 
 <ng-container *ngFor="let node of data; let i= index">
   <div class="nav-dropdown-content-subnode" [style.border-bottom]="node?.separator ? '1px solid' : 'none'" [style.display]="mobilemode ? 'block' : 'inline-flex'">
-    <div style="padding: 10px 0px 10px 0px;" [style.padding-left.px]="mobilemode ? padding : 20">
+    <div [ngStyle]="{'padding' : subMenuPadding + ' 0px'}" [style.padding-left.px]="mobilemode ? padding : 20">
             <span *ngIf="submenuposition == 'left' && node.submenus && !mobilemode">
                <i class="fa fa-angle-left" style="padding-bottom:5px" aria-hidden="true"></i>
             </span>
@@ -18,7 +18,7 @@
             </span>
     </div>
     <div *ngIf="node.submenus"  [ngClass]="{'innersubmenunodes': (submenuposition == 'right' && !mobilemode), 'innersubmenunodesright':(submenuposition == 'left' && !mobilemode) }">
-      <amexio-nav-innermenu [mobilemode]="mobilemode" [color]="itemcolor" [padding]="padding+20" [submenuposition]="submenuposition" [data]="node.submenus" (navLinkClick)="navItemClick($event)">
+      <amexio-nav-innermenu [sub-menu-height-padding]="subMenuPadding" [mobilemode]="mobilemode" [color]="itemcolor" [padding]="padding+20" [submenuposition]="submenuposition" [data]="node.submenus" (navLinkClick)="navItemClick($event)">
       </amexio-nav-innermenu>
     </div>
   </div>

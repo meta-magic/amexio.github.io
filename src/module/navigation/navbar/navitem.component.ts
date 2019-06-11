@@ -91,6 +91,7 @@ description : Indicate the type of menu-items (link / button / textfield /menu )
 
   navMenusComponents: AmexioNavMenuComponent[];
   @Input() mobilemode = false;
+  @Input('sub-menu-height-padding') subMenuPadding = '10px';
 
   isAction = false;
   isTextField = false;

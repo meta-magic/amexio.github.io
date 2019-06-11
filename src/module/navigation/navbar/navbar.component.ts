@@ -363,6 +363,7 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
           const dd = {
             text: nvitem.title,
             submenus: nvitem.data,
+            subMenuPadding: nvitem.subMenuPadding,
           };
           this.moreBucket.push(dd);
         }

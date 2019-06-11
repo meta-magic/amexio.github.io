@@ -8,6 +8,9 @@ import {
   Inject, Input, OnInit, Output, Renderer2,
 } from '@angular/core';
 
+import { fromEvent } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
+
 import { DeviceQueryService } from '../../../services/device/device.query.service';
 
 @Component({
@@ -69,10 +72,15 @@ export class AmexioBannerComponent implements AfterContentInit, OnInit {
   }
 
   onWindowScroll() {
+
     if (this.closeOnScroll) {
-      const offset =
-        this.document.documentElement.scrollTop || this.document.body.scrollTop || 0;
-      if (offset !== 0) {
+      const h = document.documentElement;
+      const b = document.body;
+      const st = 'scrollTop';
+      const sh = 'scrollHeight';
+
+      const percent = (h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight) * 100;
+      if (percent > 15) {
         this.onCloseCommon();
       } else {
         this.onShowClick();
@@ -81,8 +89,10 @@ export class AmexioBannerComponent implements AfterContentInit, OnInit {
   }
 
   callWindowScroll() {
-    this.renderer
-      .listen('window', 'scroll', (event: any) => this.onWindowScroll());
+    const clicks = fromEvent(window, 'scroll');
+    debounceTime(200);
+
+    clicks.subscribe((x: any) => this.onWindowScroll());
   }
 
   ngOnInit() {

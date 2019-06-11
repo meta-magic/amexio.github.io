@@ -78,6 +78,7 @@ export class AmexioInnerNavMenuComponent implements OnInit {
     @Output() navLinkClick: any = new EventEmitter<any>();
 
   @Input() mobilemode = false;
+  @Input('sub-menu-height-padding') subMenuPadding = '10px';
 
   @Input() padding = 20;
     issubmenu = false;
