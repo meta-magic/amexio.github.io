@@ -11,8 +11,11 @@
   </a>
 
   <div class="nav-dropdown-content" [ngClass]="{'mobileModeNav': mobilemode}">
-
-    <a *ngFor="let node of data" [ngStyle]="{'padding' : subMenuPadding + ' 10px'}" [style.border-bottom]="node?.separator ? '1px solid' : 'none'"  (mouseover)="onNodeHover(node, $event)">
+    <ng-container *ngFor="let node of data">
+        <ng-container *ngIf="node?.separatorHeader">
+        <div [style.border-top]="node?.separator ? '1px solid' : 'none'" style="padding: 10px; font-weight: 600" class="nav-dropdown-content-node" >{{node?.separatorHeader}}</div>
+        </ng-container>
+    <a  [ngStyle]="{'padding' : subMenuPadding + ' 10px'}" [style.border-top]="(node?.separator && !node?.separatorHeader) ? '1px solid' : 'none'" (mouseover)="onNodeHover(node, $event)">
                 <span class="nav-dropdown-content-node" (click)="onClick(node, $event)" >
                     <i *ngIf="icon" [ngClass]="node.icon"></i>&nbsp;
                     <span>
@@ -43,6 +46,7 @@
                 </span>
 
     </a>
+    </ng-container>
 
     <div *ngIf="type==='menucontainer'" class="nav-menu-container">
       <a *ngFor="let node of data" (click)="onClick(node, $event)">

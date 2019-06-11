@@ -1,6 +1,11 @@
 
 <ng-container *ngFor="let node of data; let i= index">
-  <div class="nav-dropdown-content-subnode" [style.border-bottom]="node?.separator ? '1px solid' : 'none'" [style.display]="mobilemode ? 'block' : 'inline-flex'">
+    <ng-container *ngIf="node?.separatorHeader">
+        <span [style.border-top]="node?.separator ? '1px solid' : 'none'" class="separator-header" style="padding: 10px">
+        {{node?.separatorHeader}}
+        </span>
+        </ng-container>
+  <div class="nav-dropdown-content-subnode" [style.border-top]="(node?.separator && !node?.separatorHeader ) ? '1px solid' : 'none'" [style.display]="mobilemode ? 'block' : 'inline-flex'">
     <div [ngStyle]="{'padding' : subMenuPadding + ' 0px'}" [style.padding-left.px]="mobilemode ? padding : 20">
             <span *ngIf="submenuposition == 'left' && node.submenus && !mobilemode">
                <i class="fa fa-angle-left" style="padding-bottom:5px" aria-hidden="true"></i>

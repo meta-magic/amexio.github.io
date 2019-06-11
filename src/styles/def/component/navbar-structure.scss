@@ -393,4 +393,13 @@
   overflow-y:auto !important;
 }
 
+
+.separator-header{
+    display: inline-flex;
+    justify-content: space-between;
+    text-decoration: none;
+    width: 100%;
+    color: $navbarColor;
+    font-weight: 600;
+    }
   
