@@ -45,11 +45,14 @@ export class AmexioVirtualScrollerComponent implements OnInit, OnDestroy {
  private pageAndTotalCountCal() {
    const el = this.virtualscoller.nativeElement;
    this.height = this.windowScroll ? el.clientHeight : this.height;
+   if ( this.height === 0) {
+    this.height = 450;
+   }
    if (this.data && this.height && this.itemSize && this.data.length > 0) {
      this.totalCount = this.data.length;
      this.pageSize = Math.round(this.height / this.itemSize);
    }
-   this.newheight = this.height + 'px';
+   this.newheight = this.height + ' px';
  }
 
  // TO INIT LOAD DATA
