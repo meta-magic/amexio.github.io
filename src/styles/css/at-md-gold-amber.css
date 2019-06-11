@@ -6659,6 +6659,14 @@ amexio-homepage-centerpanel .homepage-centerpanel {
   height: 250px !important;
   overflow-y: auto !important; }
 
+.separator-header {
+  display: inline-flex;
+  justify-content: space-between;
+  text-decoration: none;
+  width: 100%;
+  color: var(--appHeaderFontColor);
+  font-weight: 600; }
+
 /****************************************************************************
     Component Name : Paginator
     Version : Amexio v4.0 onwards
@@ -9119,10 +9127,6 @@ amexio-layout-columns amexio-layout-item {
   box-shadow: none; }
 
 /** creative card - Structure CSS **/
-.card-container-ce-main1 {
-  position: relative;
-  height: 100%; }
-
 .card-ce-overflowhidden {
   overflow: hidden; }
 
@@ -9149,37 +9153,6 @@ amexio-layout-columns amexio-layout-item {
   background-color: var(--componentHoverBGColor);
   color: var(--componentFontColor); }
 
-.flip-card {
-  background-color: transparent;
-  width: 300px;
-  height: 300px;
-  perspective: 1000px; }
-
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); }
-
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg); }
-
-.flip-card-front, .flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden; }
-
-/* dn */
-/* dn */
-.flip-card-back {
-  background-color: var(--componentHoverBGColor);
-  color: var(--componentFontColor);
-  transform: rotateY(180deg); }
-
 .maincontainer {
   position: relative;
   /* width: 250px;
@@ -9194,25 +9167,22 @@ amexio-layout-columns amexio-layout-item {
   position: relative;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-  transition: all 0.8s ease; }
+  height: 100%; }
 
-.back {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  overflow: hidden;
-  background-color: var(--componentHoverBGColor);
-  color: var(--componentFontColor);
-  text-align: center;
+.card-container-ce-main-flip:hover .card-container-ce-flip {
   transform: rotateY(180deg); }
 
-.card-container-ce-main:hover {
+.card-container-ce-flip {
+  transition: transform 0.6s;
+  transform-style: preserve-3d; }
+
+.ce-flip-card-front, .ce-flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; }
+
+.ce-flip-card-back {
   transform: rotateY(180deg); }
 
 /****************************************************************************
