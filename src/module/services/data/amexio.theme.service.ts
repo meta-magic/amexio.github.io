@@ -1,6 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import * as Rx from 'rxjs';
+
 import { Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 
 @Injectable()
 export class AmexioThemeSwitcherService {
@@ -8,6 +11,8 @@ export class AmexioThemeSwitcherService {
   constructor(private _http: HttpClient) {
 
   }
+  // themeData: Observable<any>;
+  themeData = new Rx.BehaviorSubject(null);
 
   loadThemes(url: string): Observable<any> {
     return this._http.get(url);
@@ -19,6 +24,8 @@ export class AmexioThemeSwitcherService {
       response = data;
     }, (error) => {
     }, () => {
+      this.themeData.next(response);
+
       const themeColor = response.themeColor;
       const appColor = response.appColor;
       const compColor = response.compColor;

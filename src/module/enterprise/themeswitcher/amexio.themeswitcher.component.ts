@@ -1,5 +1,5 @@
 import { AfterContentInit, Component, ElementRef, EventEmitter, Input, OnChanges, OnInit } from '@angular/core';
-import {Output, SimpleChanges, ViewChild } from '@angular/core';
+import { Output, SimpleChanges, ViewChild } from '@angular/core';
 import { AmexioThemeSwitcherService } from '../../services/data/amexio.theme.service';
 
 @Component({
@@ -31,6 +31,9 @@ export class AmexioThemeSwitcherComponent implements OnInit, OnChanges {
 
     @Input('closeable') closeable: boolean;
 
+    @Output('onThemeClick') onThemeClick = new EventEmitter<any>();
+
+    respo: any = [];
     positionMapData: string[];
 
     constructor(private service: AmexioThemeSwitcherService) {
@@ -47,6 +50,11 @@ export class AmexioThemeSwitcherComponent implements OnInit, OnChanges {
             this.show = true;
         }
         this.loadMDAThemes();
+        this.service.themeData.subscribe((theme: any) => {
+            if (theme != null) {
+                this.onThemeClick.emit(theme);
+            }
+        });
     }
     loadMDAThemes() {
         if (this.isMDA) {
@@ -120,15 +128,15 @@ export class AmexioThemeSwitcherComponent implements OnInit, OnChanges {
         }
         return style;
     }
-getPostion(style: any) {
- if (!this.closeable) {
-     style['position'] = 'relative';
- } else if (this.closeable && this.relative) {
-        style['position'] = 'absolute';
-        style['right'] = '0';
-     } else {
-        style['position'] = 'fixed';
-     }
- return style;
-}
+    getPostion(style: any) {
+        if (!this.closeable) {
+            style['position'] = 'relative';
+        } else if (this.closeable && this.relative) {
+            style['position'] = 'absolute';
+            style['right'] = '0';
+        } else {
+            style['position'] = 'fixed';
+        }
+        return style;
+    }
 }
