@@ -33,8 +33,6 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
 
   @Input('overlay-type') overlaytype: string;
 
-  @Input('flip-effect') flip = false;
-
   @Input('color') color: string;
 
   @Input('background') background: string;
@@ -46,6 +44,10 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
   @Input('style-type') styleType: string;
 
   @Input('polaroid-type') transformType: any;
+
+  @Input('flip') flip: boolean;
+
+  @Input('cover-image') coverimage: string;
 
   slidereffecton = false;
 
@@ -73,17 +75,19 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
 
   amexioCardActionList: AmexioCardCEActionComponent[];
 
-  overlayclass = '';
+  innerCardCss = '';
   slidereffect = 'slider-effect';
   tempPolarideCE: string;
+
   constructor() {
     super();
   }
 
   ngOnInit() {
-
+    this.cclass = ' card-container-ce-main ';
+    this.innerCardCss = ' card-container-ce ';
     if (!this.color) {
-      this.cclass = 'card-container-ce-color';
+      this.cclass = this.cclass +  'card-container-ce-color';
     }
     if (!this.background) {
       this.cclass = this.cclass + ' card-container-ce-bg-color';
@@ -92,13 +96,14 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
       this.cclass = this.cclass + '  card-ce-overflowhidden';
 
       if (this.overlaytype === this.slidereffect) {
-        this.overlayclass = ' card-ce-overlay-slideeffect ';
+        this.innerCardCss = this.innerCardCss + ' card-ce-overlay-slideeffect ';
       } else if (this.overlaytype === 'fade-effect') {
-        this.overlayclass = ' card-ce-overlay-fadeeffect ';
+        this.innerCardCss = this.innerCardCss + ' card-ce-overlay-fadeeffect ';
       }
     }
     this.setWiderAndNarrower();
     super.ngOnInit();
+    this.setFlipCard();
     this.polarideStyleMapCE = new Map();
     this.polarideStyleMapCE.set('tilted-minus-2-degree', 'card-container-pol-styl');
     this.polarideStyleMapCE.set('tilted-2-degree', 'card-container-pol-styl2');
@@ -114,6 +119,13 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
   }
   ngAfterViewInit() {
     super.ngAfterViewInit();
+  }
+
+  private setFlipCard() {
+    if (this.flip) {
+      this.cclass = this.cclass + ' card-container-ce-main-flip';
+      this.innerCardCss = this.innerCardCss + ' card-container-ce-flip ';
+    }
   }
 
   // THIS METHOD CALLL FOR HEADER AND ACTION STYLE
@@ -202,21 +214,14 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
   }
 
   onmouseover() {
-    if (this.overlaytype === this.slidereffect) {
+    if (!this.flip && this.overlaytype === this.slidereffect) {
       this.ishover = true;
     }
   }
 
   onmouseleave() {
-    if (this.overlaytype === this.slidereffect) {
+    if (!this.flip && this.overlaytype === this.slidereffect) {
       this.ishover = false;
     }
   }
-
-  onhover() {
-    if (this.overlaytype === this.slidereffect) {
-      this.slidereffecton = true;
-    }
-  }
-
 }
