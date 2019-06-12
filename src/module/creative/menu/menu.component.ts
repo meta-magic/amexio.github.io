@@ -34,7 +34,7 @@ export class AmexioMenuCEComponent implements OnInit {
 
   @Input() size: string;
 
-  @Input() color: string;
+  @Input('font-color') fontColor: string;
 
   @Output() onClick: any = new EventEmitter<any>();
 

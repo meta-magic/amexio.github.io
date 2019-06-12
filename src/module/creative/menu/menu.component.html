@@ -9,7 +9,7 @@
     (mouseover)="node.hover=true" 
     (mouseleave)="node.hover=false"
     (click)="onMenuClick(node)"
-    [ngStyle]="{'font-family':font, 'font-size': size+'px'}"
+    [ngStyle]="{'font-family':font, 'font-size': size+'px', 'color': fontColor}"
     >{{node.label}}</a>
   </div>
 </div>
