@@ -68,5 +68,7 @@
  
 .ce-flip-card-back {
   transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
 }
 

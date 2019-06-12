@@ -9183,7 +9183,9 @@ amexio-layout-columns amexio-layout-item {
   backface-visibility: hidden; }
 
 .ce-flip-card-back {
-  transform: rotateY(180deg); }
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column; }
 
 /****************************************************************************
     Component Name : Creative Menus
