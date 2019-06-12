@@ -1,0 +1,10 @@
+.bubble{
+    background: $bubbleItemBGColor;
+}
+.speecharrowleft:after{
+    border-color: transparent $bubbleItemBGColor;
+}
+
+.speecharrowright:after {
+    border-color: transparent $bubbleItemBGColor;
+}

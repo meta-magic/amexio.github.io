@@ -1,0 +1,18 @@
+<div class="bubble" [ngClass]="{speecharrowleft:(position == 'left'),speecharrowright:(position == 'right')}">
+  <ng-container *ngIf="data">
+    <amexio-c-icon style="float:right;font-size:25px;cursor: pointer;"  key="sidenav-angle-down" (onClick)="onarrowClick($event)"></amexio-c-icon>
+    <div class="sidedivclass"  [ngStyle]="dropdownstyle" [ngClass]="{speecharrowleftposition:(position == 'left')}">
+      <ng-container [ngStyle]="{'cursor': arrowpress ? 'all-scroll':''}" *ngIf="arrowpress" >
+        <span [ngStyle]="contextStyle">
+          <ul class="context-menu-list">
+            <li (click)="onBubbleNodeClick(itemConfig)" class="context-menu-list-items" *ngFor="let itemConfig of data">
+              <span style="white-space: nowrap;display: inline ; padding-left:5px">{{itemConfig.label}}</span>
+              <amexio-c-icon style="float:left;padding:5px" class="fa + {{itemConfig.icon}}"></amexio-c-icon>
+            </li>
+          </ul>
+        </span>
+      </ng-container>
+    </div>
+  </ng-container>
+  <ng-content></ng-content>
+</div>

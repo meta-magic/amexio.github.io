@@ -15,6 +15,7 @@ import { AmexioPaginatorComponent } from './paginator/paginator.component';
 import { AmexioProgressMultiBarComponent } from './progress/bar.component';
 import { AmexioProgressBarComponent } from './progress/progress.component';
 import { PropertyGridComponent } from './property-grid/propertygrid.component';
+import { SpeechBubbleComponent } from './speech-bubble/speech-bubble.component';
 import { AmexioFilterTreeComponent } from './tree/filter.tree.component';
 import { HorizontalTreeViewNodeComponent } from './tree/horizontalnode.component';
 import { HorizontalTreeViewComponent } from './tree/horizontaltreeview.component';
@@ -52,6 +53,7 @@ const DATA_COMPONENTS = [
   AmexioPaginatorComponent,
   AmexioGridColumnComponent,
   PropertyGridComponent,
+  SpeechBubbleComponent,
   AmexioProgressMultiBarComponent,
   AmexioProgressBarComponent,
   HorizontalTreeViewNodeComponent,
