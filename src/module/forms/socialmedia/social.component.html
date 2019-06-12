@@ -8,3 +8,7 @@
 <ng-container *ngIf="type === 'facebook'">
     <amexio-facebook-auth-provider [client-id]="key" [label]="label" [style-type]="styleType" (onLogin)="onLoginClick($event)"></amexio-facebook-auth-provider>
 </ng-container>
+
+<ng-container *ngIf="type === 'github'">
+    <amexio-github-auth-provider (onLogin)="onLoginClick($event)" [client-id]="key" [style-type]="styleType" [label]="label"></amexio-github-auth-provider>
+</ng-container>

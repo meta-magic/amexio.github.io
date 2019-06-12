@@ -59,6 +59,7 @@ import { ScriptLoadService } from '../services/script/script.load.service';
 import { AmexioBadgeComponent } from './badge/badge.component';
 import { LoadRecaptchaService } from './recaptcha/load.recaptcha.service';
 import { FacebookAuthComponent } from './socialmedia/facebookauth/facebook.auth.component';
+import {GithubAuthComponent} from './socialmedia/githubauth/github.auth.component';
 import { GoogleAuthComponent } from './socialmedia/googleauth/google.auth.component';
 import { LinkedInAuthComponent } from './socialmedia/linkedinauth/linkedin.auth.component';
 import { AmexioSocialComponent } from './socialmedia/social.component';
@@ -114,6 +115,7 @@ const FORM_COMPONENTS = [
   AmexioCreditcardComponent,
   AmexioChipComponent,
   AmexioChipsComponent,
+  GithubAuthComponent,
   GoogleAuthComponent,
   LinkedInAuthComponent,
   FacebookAuthComponent,
