@@ -98,6 +98,10 @@ description : Local Data binding.
 
   @Input('type') type = 1;
 
+  @Input('translucent') translucent = false;
+
+  @Input('translucent-value') translucentValue: any;
+
   responseData: any;
   currentImageIndex = 0;
   imageData: any;

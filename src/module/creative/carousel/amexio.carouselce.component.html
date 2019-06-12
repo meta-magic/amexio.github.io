@@ -15,7 +15,9 @@
 
         </ng-container>
 
-        <div class="ce-caroueslbar">
+        <div class="ce-caroueslbar" 
+    [ngStyle]="{'opacity': translucent ? '0.7' : 'inherit'}"
+        >
             <div class="ce-caroueslnav">
                 <a class="ce-caroueslnav-prev">
                     <span>Previous</span>
