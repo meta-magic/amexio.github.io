@@ -43,15 +43,15 @@
 
             <div class="ce-caroueslnav-content">
                 <div class="ce-caroueslnav-content-prev">
-                    <span> {{titleModel.previousTitle}}</span>
+                    <span [style.color]="barFontColor"> {{titleModel.previousTitle}}</span>
                 </div>
                 <div class="ce-caroueslnav-content-current">
-                    <span>
+                    <span [style.color]="barFontColor">
                         {{titleModel.centerTitle}}
                     </span>
                 </div>
                 <div class="ce-caroueslnav-content-next">
-                    <span> {{titleModel.nextTitle}}</span>
+                    <span [style.color]="barFontColor"> {{titleModel.nextTitle}}</span>
                 </div>
             </div>
         </div>

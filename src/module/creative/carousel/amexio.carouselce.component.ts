@@ -103,6 +103,7 @@ description : Local Data binding.
   @Input('translucent-value') translucentValue: any;
 
   @Input('bar-bg-color') barBGColor: any;
+  @Input('bar-font-color') barFontColor: any;
 
   responseData: any;
   currentImageIndex = 0;
