@@ -271,7 +271,7 @@ description : Context Menu provides the list of menus on right click.
   listenListboxOutClick() {
     this.documentClickListener = this.renderer
       .listen('document', 'click', (event: any) => {
-        if (this.viewData.length > 0) {
+        if (this.viewData && this.viewData.length > 0) {
           this.viewData.forEach((element: any, index: number) => {
             if (this.prevlistindex !== -1 && this.viewData[this.prevlistindex].hasOwnProperty('ishoverselected')
               && this.viewData[this.prevlistindex]['ishoverselected'] === true) {
@@ -437,7 +437,7 @@ description : Context Menu provides the list of menus on right click.
     delete tempData['onClickFlag'];
     delete tempData['isSelected'];
     this.onRowClick.emit(tempData);
-    }
+  }
 
   ngAfterViewInit() {
 
