@@ -12,20 +12,22 @@
     margin-right: 50%;
   }
   .speecharrowleft:after{
+    bottom:12px;
     /* z-index: -1; */
     content: "";
     border-style: solid;
-    position: absolute !important;
+    position: absolute ;
     left: -50px;
     border-width: 10px 50px 10px 0;
     // border-color: transparent #00aabb;
   } 
   .speecharrowright:after {
+    bottom:12px;
     /* z-index: -1; */
     content: "";
     border-style: solid;
     /* display: block; */
-    position: absolute !important;
+    position: absolute ;
     /* top: 38px; */
     right: -50px;
     /* bottom: auto; */
