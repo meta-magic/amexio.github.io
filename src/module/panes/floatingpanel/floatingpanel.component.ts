@@ -30,6 +30,8 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
 
     @Input('show-panel') showPanel = false;
 
+    @Input('arrow') arrow: boolean;
+
     @ViewChild(AmexioButtonComponent) buttonRef: AmexioButtonComponent;
     positionMapData: string[];
     showfloatingButton = false;
@@ -86,6 +88,8 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
         }
         if (!this.relative) {
             this.setPanelStylePostion();
+        } else if (this.arrow) {
+            this.style['margin-top'] = '16px';
         } else {
             this.style['margin-top'] = '3px';
         }
