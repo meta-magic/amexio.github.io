@@ -1,5 +1,5 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input} from '@angular/core';
-import { OnChanges, OnInit, Output, SimpleChanges, ViewChild} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input } from '@angular/core';
+import { OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { AmexioButtonComponent } from '../../forms/buttons/button.component';
 
 @Component({
@@ -30,6 +30,8 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
 
     @Input('show-panel') showPanel = false;
 
+    @Input('arrow') arrow: boolean;
+
     @ViewChild(AmexioButtonComponent) buttonRef: AmexioButtonComponent;
     positionMapData: string[];
     showfloatingButton = false;
@@ -55,13 +57,15 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
         if (this.width === '') {
             this.width = 400;
         }
-
-        this.panelStyle();
+        if (this.showPanel) {
+            this.panelStyle();
+        }
     }
 
     ngOnChanges(changes: SimpleChanges) {
         if (changes['showPanel']) {
             this.showPanel = changes.showPanel.currentValue;
+            this.panelStyle();
         }
 
     }
@@ -84,12 +88,14 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
         }
         if (!this.relative) {
             this.setPanelStylePostion();
+        } else if (this.arrow) {
+            this.style['margin-top'] = '16px';
         } else {
             this.style['margin-top'] = '3px';
         }
     }
 
-setPanelStylePostion() {
+    setPanelStylePostion() {
         if (this.topPosition) {
             this.style['top'] = this.topPosition;
         }
@@ -103,5 +109,5 @@ setPanelStylePostion() {
         if (this.leftPosition) {
             this.style['left'] = this.leftPosition;
         }
-}
+    }
 }
