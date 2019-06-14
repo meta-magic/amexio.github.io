@@ -39,6 +39,8 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
 
   @Input('height') height: string;
 
+  @Input('width') width: string;
+
   @Input('align') align: string;
 
   @Input('style-type') styleType: string;

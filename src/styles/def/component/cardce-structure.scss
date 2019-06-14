@@ -50,8 +50,15 @@
 }
 
 
-.card-container-ce-main-flip:hover .card-container-ce-flip {
-  transform: rotateY(180deg);
+.card-container-ce-main-flip:hover {
+
+  .card-container-ce-flip{
+    transform: rotateY(180deg);
+  }
+  .ce-flip-card-back {
+    overflow: auto;
+  }
+  
 }
 
 .card-container-ce-flip {
