@@ -1,16 +1,20 @@
-<div (mouseover)="onmouseover()" (mouseleave)="onmouseleave()"
-        [ngStyle]="{'background': bgimage ? 'url(' + bgimage + ') center/cover no-repeat' : null}" 
-        [ngClass]="cclass">
-        <div [class]="innerCardCss" 
-                [ngClass]="{'card-ce-overlay-slideeffect-hover': ishover }"
-                [ngStyle]="{'justify-content': (align === 'start' || align === 'end') ? 'flex-'+align:align , 'color':color, 'background': background}">
+<div (mouseover)="onmouseover()" 
+(mouseleave)="onmouseleave()" 
+[ngStyle]="{'background': bgimage ? 'url(' + bgimage + ') center/cover no-repeat' : null, 
+        'height': height , 'overflow': (height === '100%' ) ? null :'auto'}"
+
+         [ngClass]="cclass">
+        <div [class]="innerCardCss" [ngClass]="{'card-ce-overlay-slideeffect-hover': ishover }"
+                [ngStyle]="{'justify-content': (align === 'start' || align === 'end') ? 'flex-'+align:align ,
+                'color':color, 'height': (height === '100%') ? '100%' : 'unset',
+                'background': background}">
 
                 <div class="ce-flip-card-front" *ngIf="flip">
-                        <img [src]="coverimage" class="img-fluid" style="height: 100%;"/>
-                </div> 
+                        <img [src]="coverimage" class="img-fluid" style="height: 100%;" />
+                </div>
 
                 <div [ngClass]="{'ce-flip-card-back': flip, 'card-container-ce ' : !flip}">
                         <ng-content></ng-content>
-                </div>                                        
-        <div>
-</div>
+                </div>
+                <div>
+                </div>

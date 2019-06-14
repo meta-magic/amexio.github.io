@@ -81,13 +81,14 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
 
   constructor() {
     super();
+    this.height = '100%';
   }
 
   ngOnInit() {
     this.cclass = ' card-container-ce-main ';
     this.innerCardCss = ' card-container-ce ';
     if (!this.color) {
-      this.cclass = this.cclass +  'card-container-ce-color';
+      this.cclass = this.cclass + 'card-container-ce-color';
     }
     if (!this.background) {
       this.cclass = this.cclass + ' card-container-ce-bg-color';
