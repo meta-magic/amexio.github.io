@@ -10,15 +10,16 @@
 }
 
 .speecharrowbottomleft:after{
-    border-color: transparent $bubbleItemBGColor;
+    border-color:$bubbleItemBGColor transparent;
 }
 
 .speecharrowbottomright:after{
-    border-color: transparent $bubbleItemBGColor;
+    border-color:  $bubbleItemBGColor transparent;
 }
 .speecharrowtopleft:after{
-    border-color: transparent $bubbleItemBGColor;
+     border-color: $bubbleItemBGColor transparent;
+
 }
 .speecharrowtopright:after{
-    border-color: transparent $bubbleItemBGColor;
+     border-color: $bubbleItemBGColor transparent;
 }
