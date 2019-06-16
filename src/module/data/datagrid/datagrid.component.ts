@@ -433,6 +433,8 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
 
   numberFilterArray: any[] = [];
 
+  fliterFlag = false;
+
   @ViewChildren(DataGridFilterComponent) filterRef: QueryList<DataGridFilterComponent>;
 
   @ContentChildren(AmexioGridColumnComponent) columnRef: QueryList<AmexioGridColumnComponent>;
@@ -500,7 +502,7 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
   }
 
   updateComponent() {
-    if (this.previousData != null && JSON.stringify(this.previousData) !== JSON.stringify(this.data)) {
+    if (!this.fliterFlag && this.previousData != null && JSON.stringify(this.previousData) !== JSON.stringify(this.data)) {
       this.previousData = JSON.parse(JSON.stringify(this.data));
       this.setChangeData(this.data);
     }
@@ -509,7 +511,7 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
       this.columnPreviewData = JSON.parse(JSON.stringify(this.columndefintion));
       this.columns = this.columndefintion;
     }
-
+    this.fliterFlag = false;
   }
 
   ngAfterContentInit() {
@@ -704,6 +706,7 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
     this.filterValue = '';
   }
   getGlobalFilteredData(filteredObj: any) {
+    this.fliterFlag = true;
     const resultData: any = [];
     if (filteredObj) {
       this.filterCloneData.forEach((row: any) => {
@@ -921,6 +924,7 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
   }
 
   getFilteredData(filteredObj: any) {
+    this.fliterFlag = true;
     const resultData: any = [];
     if (filteredObj.length > 0) {
       this.filterCloneData.forEach((option: any) => {
