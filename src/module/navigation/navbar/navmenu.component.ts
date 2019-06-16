@@ -75,6 +75,7 @@ export class AmexioNavMenuComponent implements OnInit {
   @Output() onNavItemClick: any = new EventEmitter<any>();
   @Input('sub-menu-height-padding') subMenuPadding = '10px';
   @Input() mobilemode = false;
+  mobileToggleModel: boolean;
   issubmenu = false;
   divid: any;
   position = 'right';
@@ -101,6 +102,7 @@ export class AmexioNavMenuComponent implements OnInit {
       title: this.title,
       icon: this.icon,
     };
+    this.mobileToggleModel = !this.mobileToggleModel;
     this.onClick(node, event);
   }
 
@@ -174,6 +176,7 @@ export class AmexioNavMenuComponent implements OnInit {
       data: this.data,
       icon: this.icon,
       node: _node,
+      mobileToggleModel: this.mobileToggleModel,
       mobilemode: this.mobilemode,
     };
     this.onNavItemClick.emit(this.dataObject(n, _event));
@@ -188,7 +191,7 @@ export class AmexioNavMenuComponent implements OnInit {
   onIconClick(event: any, node: any) {
     event.stopPropagation();
     if (node.hasOwnProperty('isExpanded')) {
-      node.isExpanded = ! node.isExpanded;
+      node.isExpanded = !node.isExpanded;
     } else {
       node['isExpanded'] = true;
     }

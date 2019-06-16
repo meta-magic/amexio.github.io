@@ -10,7 +10,9 @@
         </span>
   </a>
 
-  <div class="nav-dropdown-content" [ngClass]="{'mobileModeNav': mobilemode}">
+  <div [ngStyle]="{'display': (mobilemode && mobileToggleModel) ? 'block':null}"
+  [ngClass]="{'mobileModeNav': mobilemode , 'nav-dropdown-content':!mobilemode , 'nav-dropdown-content-mobile':mobilemode }">
+
     <ng-container *ngFor="let node of data">
         <ng-container *ngIf="node?.separatorHeader">
         <div [style.border-top]="node?.separator ? '1px solid' : 'none'" style="padding: 10px; font-weight: 600" class="nav-dropdown-content-node" >{{node?.separatorHeader}}</div>

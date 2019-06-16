@@ -77,16 +77,17 @@ export class AmexioInnerNavMenuComponent implements OnInit {
   */
     @Output() navLinkClick: any = new EventEmitter<any>();
 
-  @Input() mobilemode = false;
-  @Input('sub-menu-height-padding') subMenuPadding = '10px';
+    @Input() mobilemode = false;
+    @Input('sub-menu-height-padding') subMenuPadding = '10px';
 
-  @Input() padding = 20;
+    @Input() padding = 20;
     issubmenu = false;
     divid: any;
     position: any;
     ishovered = true;
     @Input('color') color: string;
     isExpanded = false;
+    mobileToggleModel: boolean;
     constructor() {
         this.divid = Math.floor(Math.random() * 90000) + 10000 + '_menuid';
     }
@@ -105,6 +106,7 @@ export class AmexioInnerNavMenuComponent implements OnInit {
             node: _node,
             mobilemode: this.mobilemode,
         };
+        this.mobileToggleModel = !this.mobileToggleModel;
         this.navLinkClick.emit(this.dataObject(n, _event));
     }
     dataObject(n: any, _event: any): any {
