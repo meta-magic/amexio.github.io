@@ -49,6 +49,8 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
 
   @Input('flip') flip: boolean;
 
+  @Input('zoom') zoom: boolean;
+
   @Input('cover-image') coverimage: string;
 
   slidereffecton = false;
@@ -107,6 +109,7 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
     this.setWiderAndNarrower();
     super.ngOnInit();
     this.setFlipCard();
+    this.setZoomCard();
     this.polarideStyleMapCE = new Map();
     this.polarideStyleMapCE.set('tilted-minus-2-degree', 'card-container-pol-styl');
     this.polarideStyleMapCE.set('tilted-2-degree', 'card-container-pol-styl2');
@@ -128,6 +131,13 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
     if (this.flip) {
       this.cclass = this.cclass + ' card-container-ce-main-flip';
       this.innerCardCss = this.innerCardCss + ' card-container-ce-flip ';
+    }
+  }
+
+  private setZoomCard() {
+    if (this.zoom) {
+      this.cclass = this.cclass + ' card-container-ce-main-zoom';
+      this.innerCardCss = this.innerCardCss + ' card-container-ce-zoom ';
     }
   }
 
@@ -217,13 +227,13 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
   }
 
   onmouseover() {
-    if (!this.flip && this.overlaytype === this.slidereffect) {
+    if ((!this.flip || !this.zoom) && this.overlaytype === this.slidereffect) {
       this.ishover = true;
     }
   }
 
   onmouseleave() {
-    if (!this.flip && this.overlaytype === this.slidereffect) {
+    if ((!this.flip || !this.zoom)  && this.overlaytype === this.slidereffect) {
       this.ishover = false;
     }
   }

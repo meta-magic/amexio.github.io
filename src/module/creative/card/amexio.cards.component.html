@@ -4,12 +4,15 @@
                 'color':color, 
                 'background': background}">
 
-                <div class="ce-flip-card-front" *ngIf="flip"
+                <div [ngClass]="{'ce-flip-card-front': flip,
+                                 'ce-flip-card-zoom' : zoom}" 
+                                 class="ce-flip-card-front" 
+                                 *ngIf="flip || zoom"
                         [ngStyle]="{'height': height , 'width': width }">
                         <img [src]="coverimage" class="img-fluid" style="height: 100%; width: 100%" />
                 </div>
 
-                <div [ngClass]="{'ce-flip-card-back': flip, 'card-container-ce ' : !flip}"
+                <div [ngClass]="{'ce-flip-card-back': flip , 'ce-zoom-card-back':zoom, 'card-container-ce ' : !(flip && !zoom)}"
                         [ngStyle]="{'height': height,'width': width}">
                         <ng-content></ng-content>
                 </div>
