@@ -6194,6 +6194,110 @@ amexio-homepage-centerpanel .homepage-centerpanel {
   padding-left: 5px; }
 
 /****************************************************************************
+    Component Name : Speech Bubble
+    Version : Amexio v5.14.1onwards
+*****************************************************************************/
+/** speechbubble - Visual CSS **/
+.bubble {
+  background: var(--componentActiveBGColor); }
+
+.speecharrowleft:after {
+  border-color: transparent var(--componentActiveBGColor); }
+
+.speecharrowright:after {
+  border-color: transparent var(--componentActiveBGColor); }
+
+.speecharrowbottomleft:after {
+  border-color: var(--componentActiveBGColor) transparent; }
+
+.speecharrowbottomright:after {
+  border-color: var(--componentActiveBGColor) transparent; }
+
+.speecharrowtopleft:after {
+  border-color: var(--componentActiveBGColor) transparent; }
+
+.speecharrowtopright:after {
+  border-color: var(--componentActiveBGColor) transparent; }
+
+/** speechbubble - Structure CSS **/
+.bubble {
+  position: relative;
+  padding: 15px;
+  margin: 1em 0 3em;
+  border-radius: .4em; }
+
+.speecharrowleft {
+  margin-left: 7%;
+  float: left; }
+
+.speecharrowright {
+  margin-right: 7%;
+  float: right; }
+
+.speecharrowtopleft {
+  float: left; }
+
+.speecharrowtopright {
+  float: right; }
+
+.speecharrowbottomleft {
+  float: left; }
+
+.speecharrowbottomright {
+  float: right; }
+
+.speecharrowleft:after {
+  bottom: 12px;
+  content: "";
+  border-style: solid;
+  position: absolute;
+  left: -26px;
+  border-width: 15px 26px 10px 0; }
+
+.speecharrowright:after {
+  bottom: 5px;
+  content: "";
+  border-style: solid;
+  position: absolute;
+  right: -24px;
+  left: auto;
+  border-width: 19px 0 20px 33px; }
+
+.speecharrowbottomleft:after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 34px;
+  border-width: 15px 15px 0;
+  border-style: solid;
+  width: 0; }
+
+.speecharrowbottomright:after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  right: 34px;
+  border-width: 15px 15px 0;
+  border-style: solid;
+  width: 0; }
+
+.speecharrowtopleft:after {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: 30px;
+  border-style: solid;
+  border-width: 0 15px 15px; }
+
+.speecharrowtopright:after {
+  content: "";
+  position: absolute;
+  top: -15px;
+  right: 34px;
+  border-style: solid;
+  border-width: 0 15px 15px; }
+
+/****************************************************************************
     Component Name : Menubar
     Version : Amexio v4.0 onwards
 *****************************************************************************/
@@ -6506,18 +6610,33 @@ amexio-homepage-centerpanel .homepage-centerpanel {
   transition: all 0.3s ease;
   transform-origin: 0 0; }
 
+.topnavmainbarinneritems .nav-dropdown-content a {
+  text-decoration: none;
+  display: block;
+  padding: 10px 10px;
+  text-align: left; }
+
+.topnavmainbarinneritems .nav-dropdown-content-mobile {
+  position: absolute;
+  min-width: 160px;
+  z-index: 3;
+  padding: 10px 0px;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
+  transition: all 0.3s ease;
+  transform-origin: 0 0; }
+
+.topnavmainbarinneritems .nav-dropdown-content-mobile a {
+  text-decoration: none;
+  display: block;
+  padding: 10px 10px;
+  text-align: left; }
+
 .topnavmainbarinneritems-mobile .nav-dropdown-content {
   display: none;
   margin: 0px 5px;
   padding: 0px 5px;
   position: relative;
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.6); }
-
-.topnavmainbarinneritems .nav-dropdown-content a {
-  text-decoration: none;
-  display: block;
-  padding: 10px 10px;
-  text-align: left; }
 
 .nodehover {
   display: none; }
@@ -8705,7 +8824,7 @@ amexio-layout amexio-layout-item {
   flex-direction: row;
   align-items: center;
   position: relative;
-  z-index: 0; }
+  z-index: 1; }
 
 .creative-header .creative-header-div {
   height: auto; }
@@ -8806,6 +8925,24 @@ amexio-layout amexio-layout-item {
   margin: 0 auto;
   padding: 1%;
   border: 1px solid var(--themeSecondaryColor); }
+
+/*****************************************************************************
+ Component Name : Amexio floating panel container 
+  Version : Amexio v5.14 onwards
+****************************************************************************/
+/** Amexio slidingpanel Vars CSS **/
+/** Amexio slidingpanel Visual CSS **/
+.floatarrow:after {
+  border-color: var(--theme6thColor) transparent; }
+
+/** Amexio slidingpanel Structure CSS **/
+.floatarrow:after {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: 30px;
+  border-style: solid;
+  border-width: 0 15px 15px; }
 
 /****************************************************************************
     Component Name : Border Layout
@@ -9056,7 +9193,8 @@ amexio-layout-columns amexio-layout-item {
   font-weight: 400;
   flex-grow: 1;
   position: relative;
-  display: block; }
+  display: block;
+  overflow: auto; }
 
 .creative-footer {
   padding: 10px;
@@ -9171,6 +9309,8 @@ amexio-layout-columns amexio-layout-item {
 
 .card-container-ce-main-flip:hover .card-container-ce-flip {
   transform: rotateY(180deg); }
+.card-container-ce-main-flip:hover .ce-flip-card-back {
+  overflow: auto; }
 
 .card-container-ce-flip {
   transition: transform 0.6s;
