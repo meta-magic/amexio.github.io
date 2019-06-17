@@ -15,7 +15,7 @@
 
     <ng-container *ngFor="let node of data">
         <ng-container *ngIf="node?.separatorHeader">
-        <div [style.border-top]="node?.separator ? '1px solid' : 'none'" style="padding: 10px; font-weight: 600" class="nav-dropdown-content-node" >{{node?.separatorHeader}}</div>
+        <div [style.border-top]="node?.separator ? '1px solid' : 'none'" style="padding: 10px; font-weight: 600; opacity: 0.6" class="nav-dropdown-content-node" >{{node?.separatorHeader}}</div>
         </ng-container>
     <a  [ngStyle]="{'padding' : subMenuPadding + ' 10px'}" [style.border-top]="(node?.separator && !node?.separatorHeader) ? '1px solid' : 'none'" (mouseover)="onNodeHover(node, $event)">
                 <span class="nav-dropdown-content-node" (click)="onClick(node, $event)" >
