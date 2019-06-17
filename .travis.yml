@@ -43,7 +43,7 @@ after_success:
  # - cp -rf ../src/styles/css/*  themes/
   #- tar -czvf themes.tar.gz  themes/*
   - git add amexio-ng-extensions.tgz 
-  - git commit -m "date"
+  - git commit -m "update"
   - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then git push "https://deepali-arvind:${GITHUB_TOKEN}@github.com/${GITHUB_REPO}.git" HEAD:v5.14 ; fi 
   - gulp coveralls
   - codecov
