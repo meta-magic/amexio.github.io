@@ -158,6 +158,8 @@ export class AmexioRadioGroupComponent extends ValueAccessorBase<string> impleme
    */
   @Output() onSelection: any = new EventEmitter<any>();
 
+  @Output() onSelect: any = new EventEmitter<any>();
+
   isValid: boolean;
 
   // Placeholders for the callbacks which are later provided
@@ -292,7 +294,7 @@ export class AmexioRadioGroupComponent extends ValueAccessorBase<string> impleme
     this.tabFocus = true;
   }
 
-  onClick(row: any) {
+  onClick(row: any, event: any) {
     for (const r of this.data) {
       if (r.selected) {
         r.selected = false;
@@ -310,6 +312,10 @@ export class AmexioRadioGroupComponent extends ValueAccessorBase<string> impleme
         delete row.tabindex;
         this.isComponentValid.emit(true);
         this.onSelection.emit(row);
+        const obj = {};
+        obj['row'] = row;
+        obj['event'] = event;
+        this.onSelect.emit(obj);
       } else {
         r.selected = false;
       }

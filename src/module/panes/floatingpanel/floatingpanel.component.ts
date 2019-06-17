@@ -10,6 +10,8 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
 
     @Input('relative') relative = false;
 
+    @Input('absolute') absolute = false;
+
     @Input('height') height: any;
 
     @Input('width') width: any;
@@ -51,6 +53,9 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
 
     }
     ngOnInit() {
+        if (this.absolute) {
+            this.relative = false;
+        }
         if (this.height === '') {
             this.height = 200;
         }
@@ -65,7 +70,11 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
     ngOnChanges(changes: SimpleChanges) {
         if (changes['showPanel']) {
             this.showPanel = changes.showPanel.currentValue;
-            this.panelStyle();
+            if (this.absolute) {
+                this.setPanelAbsolutePostion();
+            } else {
+                this.panelStyle();
+            }
         }
 
     }
@@ -78,7 +87,7 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
         this.style = {};
         this.style['position'] = (this.relative) ? 'absolute' : 'fixed';
         this.style['display'] = 'block';
-        this.style['z-index'] = '1000';
+        this.style['z-index'] = '400';
         this.style['opacity'] = '1';
         this.style['box-shadow'] = '0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)';
         if (this.width !== '') {
@@ -88,11 +97,31 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
         }
         if (!this.relative) {
             this.setPanelStylePostion();
-        } else if (this.arrow) {
+        }
+        this.arrowPadding();
+    }
+
+    arrowPadding() {
+        if (this.arrow) {
             this.style['margin-top'] = '16px';
         } else {
             this.style['margin-top'] = '3px';
         }
+    }
+    setPanelAbsolutePostion() {
+        this.style = {};
+        this.style['position'] = 'absolute';
+        this.style['display'] = 'block';
+        this.style['z-index'] = '400';
+        this.style['opacity'] = '1';
+        this.style['box-shadow'] = '0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)';
+        if (this.width !== '') {
+            this.style['width'] = this.width + 'px';
+        } else {
+            this.style['width'] = '400px';
+        }
+        this.setPanelStylePostion();
+        this.arrowPadding();
     }
 
     setPanelStylePostion() {

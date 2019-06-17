@@ -10,7 +10,7 @@
       [attr.aria-checked]="value" 
       [attr.aria-disabled]="rData.disabled"
      
-        class="input-box-container" style="padding-bottom:0px !important; margin: 5px !important" (click)="onClick(rData)"
+        class="input-box-container" style="padding-bottom:0px !important; margin: 5px !important" (click)="onClick(rData, $event)"
         [ngClass]="{'disable-component' : rData.disabled || disabled}">
         {{rData[displayfield]}}
 
@@ -35,7 +35,7 @@
     <ng-container *ngFor="let rData of data let index=index">
       <div>
         <label for="{{name+rData[displayfield]+index}}" [attr.aria-checked]="value" [attr.aria-disabled]="rData.disabled"
-          class="input-box-container" style="padding-bottom:0px !important; margin: 5px !important" (click)="onClick(rData)"
+          class="input-box-container" style="padding-bottom:0px !important; margin: 5px !important" (click)="onClick(rData, $event)"
           [ngClass]="{'disable-component' : rData.disabled || disabled}">{{rData[displayfield]}}
           <input style="top:0; left:0" id="{{name+rData[displayfield]+index}}" type="radio"
           [attr.tabindex]="disabled ? -1 : 1" [required]="!allowblank" [attr.name]="name" [value]="rData?.selected ? rData[valuefield] : rData[valuefield] "
