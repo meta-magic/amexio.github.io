@@ -1,6 +1,6 @@
 <ng-container *ngFor="let node of data; let i= index">
   <ng-container *ngIf="node?.separatorHeader">
-    <span [style.border-top]="node?.separator ? '1px solid' : 'none'" class="separator-header" style="padding: 10px">
+    <span [style.border-top]="node?.separator ? '1px solid' : 'none'" class="separator-header" style="padding: 10px; opacity: 0.6">
       {{node?.separatorHeader}}
     </span>
   </ng-container>
