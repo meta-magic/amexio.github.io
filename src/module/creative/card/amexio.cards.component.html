@@ -1,5 +1,7 @@
-<div (mouseover)="onmouseover()" (mouseleave)="onmouseleave()" [ngStyle]="{'background': bgimage ? 'url(' + bgimage + ') center/cover no-repeat' : null, 
-        'height': height,'width': width }" [ngClass]="cclass">
+<div (mouseover)="onmouseover()" (mouseleave)="onmouseleave()" 
+[ngStyle]="{'background': bgimage ? 'url(' + bgimage + ') center/cover no-repeat' : null, 
+        'height': height,'width': width,  'transform-origin': zoom ? zoomtransitionorigin: null}" [ngClass]="cclass"
+        >
         <div [class]="innerCardCss" [ngClass]="{'card-ce-overlay-slideeffect-hover': ishover }" [ngStyle]="{'justify-content': (align === 'start' || align === 'end') ? 'flex-'+align:align ,
                 'color':color, 
                 'background': background}">

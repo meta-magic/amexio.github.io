@@ -53,6 +53,8 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
 
   @Input('cover-image') coverimage: string;
 
+  @Input('zoom-transition-origin') zoomtransitionorigin = 'center center';
+
   slidereffecton = false;
 
   themeCss: any;
