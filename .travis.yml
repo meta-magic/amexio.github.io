@@ -36,16 +36,16 @@ script:
   
 after_success: 
   - cd ../
-  - git clone https://github.com/meta-magic/amexio-ios.git -b v5.14
-  - cd amexio-ios
+  - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then git clone https://github.com/meta-magic/amexio-ios.git -b v5.14 ; fi 
+  - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then cd amexio-ios ; fi 
  # - mkdir themes
-  - cp -rf ../dist/amexio-ng-extensions.tgz .
+  - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then cp -rf ../dist/amexio-ng-extensions.tgz . ; fi 
  # - cp -rf ../src/styles/css/*  themes/
   #- tar -czvf themes.tar.gz  themes/*
-  - git add amexio-ng-extensions.tgz 
-  - git commit -m "date"
+  - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then git add amexio-ng-extensions.tgz ; fi 
+  - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then git commit -m "date" ; fi 
   - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then git push "https://deepali-arvind:${GITHUB_TOKEN}@github.com/${GITHUB_REPO}.git" HEAD:v5.14 ; fi 
-  - gulp coveralls
+  - gulp coveralls 
   - codecov
 
 cache:
