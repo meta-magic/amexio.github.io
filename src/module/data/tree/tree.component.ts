@@ -210,7 +210,7 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
     globalClickListenFunc: () => void;
 
     @Input('global-tree-data') globalTreeData: any[] = [];
-
+    cloneContextMenuData: any = [];
     constructor(
         public element: ElementRef, public dataService: CommonDataService,
         private cdf: ChangeDetectorRef, private renderer: Renderer2,
@@ -222,6 +222,7 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
     }
 
     ngOnInit() {
+        this.cloneContextMenuData = JSON.parse(JSON.stringify(this.contextmenu));
         if (this.httpmethod && this.httpurl) {
             this.dataService.fetchData(this.httpurl, this.httpmethod).subscribe((response: any) => {
                 this.responseData = response;
@@ -615,6 +616,7 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
     }
 
     getContextMenu() {
+        this.contextmenu = this.cloneContextMenuData;
         if (this.contextmenu && this.contextmenu.length > 0) {
             this.flag = true;
             this.addListner();
@@ -631,9 +633,16 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
     loadContextMenu(rightClickData: any) {
         this.setSelectedFlag();
         this.mouseLocation.left = rightClickData.event.clientX;
-        this.mouseLocation.top = rightClickData.event.clientY;
+        this.mouseLocation.top = rightClickData.evet.clientY;
         rightClickData.data['isSelected'] = true;
-        this.getContextMenu();
+        if (rightClickData.data.hasOwnProperty('rightClickData') && rightClickData.data.rightClickData.length > 0) {
+            this.contextmenu = [];
+            this.contextmenu = rightClickData.data.rightClickData;
+            this.flag = true;
+            this.addListner();
+        } else {
+            this.getContextMenu();
+        }
         this.posixUp = this.getListPosition(rightClickData.ref);
         if (this.contextmenu && this.contextmenu.length > 0) {
             rightClickData.event.preventDefault();
