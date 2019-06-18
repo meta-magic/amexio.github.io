@@ -7,7 +7,7 @@ import { AmexioToggleComponent } from './../toggle/toggle.component';
 export class DarkmodeComponent implements OnInit {
     @Input('field-label') fieldLabel: string;
 
-    @Input('shape') shape: 'round';
+    @Input('shape') shape: 'circle';
     @Input('type') type = 2;
     @Input('size') size = 'medium';
     @Input('mode') mode = 'day-night';
@@ -146,7 +146,7 @@ export class DarkmodeComponent implements OnInit {
     }
 
     addDynamicCss(circleColor: any, borderColor: any) {
-        this.insertStyleSheetRule('.slider::-webkit-slider-thumb' +
+        this.insertStyleSheetRule('.slider-' + this.shape + '::-webkit-slider-thumb' +
         '{ background:' + circleColor + '!important; border: 1px solid ' + borderColor + ' !important; }');
     }
 }

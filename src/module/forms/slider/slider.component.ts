@@ -16,7 +16,7 @@
 * Created by pratik on 29/1/18.
 */
 
-import { Component, ElementRef, EventEmitter, forwardRef, Input, NgZone, OnDestroy, Output, Renderer2 } from '@angular/core';
+import { Component, ElementRef, EventEmitter, forwardRef, Input, NgZone, OnDestroy, OnInit, Output, Renderer2 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DomHandler } from './slider.handler';
 
@@ -29,7 +29,7 @@ import { ValueAccessorBase } from '../../base/value-accessor';
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioSliderComponent), multi: true,
   }],
 })
-export class AmexioSliderComponent  extends ValueAccessorBase<number> implements OnDestroy, ControlValueAccessor {
+export class AmexioSliderComponent extends ValueAccessorBase<number> implements OnInit, OnDestroy, ControlValueAccessor {
 
   /*
 Properties
@@ -114,14 +114,25 @@ default :
 description : Type applied to slider
 */
   @Input('type') type = 1;
+
   /*
-Events
-name : onChange
-datatype : any
+Properties
+name :shape
+datatype : string
 version : 4.0 onwards
-default :
-description : Triggers when slider is moved
+default : round
+description : Round or Square Shape for toggle switch ,example shape=round,square .
 */
+  @Input() shape: string;
+  /*
+    /*
+  Events
+  name : onChange
+  datatype : any
+  version : 4.0 onwards
+  default :
+  description : Triggers when slider is moved
+  */
 
   @Output() onChange: EventEmitter<any> = new EventEmitter();
   /*
@@ -182,6 +193,13 @@ description : Triggers when slider reaches the end
   constructor(public el: ElementRef, public domHandler: DomHandler, public renderer: Renderer2, private ngZone: NgZone) {
     super();
     this.componentId = 'slider' + '_' + Math.floor(Math.random() * 1000 + 999);
+  }
+
+  ngOnInit() {
+    console.log('this.shape', this.shape);
+    if (this.shape === '' || this.shape == null) {
+      this.shape = 'circle';
+    }
   }
   onMouseDown(event: Event, index?: number) {
     if (this.disabled) {

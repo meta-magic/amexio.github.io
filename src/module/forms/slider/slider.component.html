@@ -45,7 +45,7 @@
 
 <ng-container *ngIf="darkmodeSlider">
     <div class="slidecontainer">
-        <input class="slider" name="value" type="range" min="{{min}}" max="{{max}}" step={{step}} value="1"
+        <input class="slider-{{shape}}" name="value" type="range" min="{{min}}" max="{{max}}" step={{step}} value="1"
             [(ngModel)]="value">
     </div>
 </ng-container>
