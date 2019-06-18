@@ -7,7 +7,7 @@ import { AmexioToggleComponent } from './../toggle/toggle.component';
 export class DarkmodeComponent implements OnInit {
     @Input('field-label') fieldLabel: string;
 
-    @Input('shape') shape: 'circle';
+    @Input('shape') shape: string;
     @Input('type') type = 2;
     @Input('size') size = 'medium';
     @Input('mode') mode = 'day-night';
@@ -51,6 +51,9 @@ export class DarkmodeComponent implements OnInit {
     }
 
     ngOnInit() {
+        if (this.shape === '' || this.shape == null) {
+            this.shape = 'circle';
+        }
         if (this.mode === 'custom') {
             this.maxValue = this.colorData.length - 1;
             this.otherMode();
@@ -128,25 +131,25 @@ export class DarkmodeComponent implements OnInit {
     insertStyleSheetRule(ruleText: any) {
         const sheets: any = document.styleSheets;
         if (sheets.length === 0) {
-          const style = document.createElement('style');
-          style.appendChild(document.createTextNode(''));
-          document.head.appendChild(style);
+            const style = document.createElement('style');
+            style.appendChild(document.createTextNode(''));
+            document.head.appendChild(style);
         }
         let isCssAdded = false;
         for (const sh of sheets) {
-          const sheet: any = sh;
-          if (!isCssAdded && (sheet && sheet.href === null && sheet.rules)) {
-            try {
-              sheet.insertRule(ruleText, sheet.rules ? sheet.rules.length : sheet.cssRules.length);
-              isCssAdded = true;
-            } catch (e) {
+            const sheet: any = sh;
+            if (!isCssAdded && (sheet && sheet.href === null && sheet.rules)) {
+                try {
+                    sheet.insertRule(ruleText, sheet.rules ? sheet.rules.length : sheet.cssRules.length);
+                    isCssAdded = true;
+                } catch (e) {
+                }
             }
-          }
         }
     }
 
     addDynamicCss(circleColor: any, borderColor: any) {
         this.insertStyleSheetRule('.slider-' + this.shape + '::-webkit-slider-thumb' +
-        '{ background:' + circleColor + '!important; border: 1px solid ' + borderColor + ' !important; }');
+            '{ background:' + circleColor + '!important; border: 1px solid ' + borderColor + ' !important; }');
     }
 }

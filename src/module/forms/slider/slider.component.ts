@@ -196,7 +196,6 @@ description : Triggers when slider reaches the end
   }
 
   ngOnInit() {
-    console.log('this.shape', this.shape);
     if (this.shape === '' || this.shape == null) {
       this.shape = 'circle';
     }
