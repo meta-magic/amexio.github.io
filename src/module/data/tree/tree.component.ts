@@ -222,7 +222,9 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
     }
 
     ngOnInit() {
-        this.cloneContextMenuData = JSON.parse(JSON.stringify(this.contextmenu));
+        if (this.contextmenu && this.contextmenu.length > 0) {
+            this.cloneContextMenuData = JSON.parse(JSON.stringify(this.contextmenu));
+        }
         if (this.httpmethod && this.httpurl) {
             this.dataService.fetchData(this.httpurl, this.httpmethod).subscribe((response: any) => {
                 this.responseData = response;
