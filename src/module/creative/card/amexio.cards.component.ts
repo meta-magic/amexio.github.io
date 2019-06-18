@@ -55,8 +55,11 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
 
   @Input('zoom-transition-origin') zoomtransitionorigin = 'center center';
 
-  slidereffecton = false;
+  @Input('show-cover-image') showcoverimg = false;
 
+  @Input('zoom-flip') zoomflipflag = false;
+
+  slidereffecton = false;
   themeCss: any;
   ishover = false;
   amexioComponentId = 'amexio-card';
@@ -91,6 +94,10 @@ export class AmexioCardCEComponent extends LifeCycleBaseComponent implements OnD
   }
 
   ngOnInit() {
+    if (this.zoomflipflag) {
+      this.zoom = true;
+      this.flip = true;
+    }
     this.cclass = ' card-container-ce-main ';
     this.innerCardCss = ' card-container-ce ';
     if (!this.color) {

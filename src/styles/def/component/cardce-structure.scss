@@ -94,13 +94,15 @@
     display: block;
     display: flex;
     flex-direction: column;
-    color: $cardCeColor;
+    // color: $cardCeColor;
     background: $cardCeBGColor;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
   } 
   -ms-transform: scale(1.2); /* IE 9 */
   -webkit-transform: scale(1.2); /* Safari 3-8 */
   transform: scale(1.2);
+  z-index: 700 !important;
+  // filter: grayscale(50%);
 }
 
 .card-container-ce-main-zoom{
