@@ -52,7 +52,7 @@ export class DarkmodeComponent implements OnInit {
 
     ngOnInit() {
         if (this.shape === '' || this.shape == null) {
-            this.shape = 'circle';
+            this.shape = 'round';
         }
         if (this.mode === 'custom') {
             this.maxValue = this.colorData.length - 1;

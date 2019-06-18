@@ -197,7 +197,7 @@ description : Triggers when slider reaches the end
 
   ngOnInit() {
     if (this.shape === '' || this.shape == null) {
-      this.shape = 'circle';
+      this.shape = 'round';
     }
   }
   onMouseDown(event: Event, index?: number) {
