@@ -635,7 +635,7 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
     loadContextMenu(rightClickData: any) {
         this.setSelectedFlag();
         this.mouseLocation.left = rightClickData.event.clientX;
-        this.mouseLocation.top = rightClickData.evet.clientY;
+        this.mouseLocation.top = rightClickData.event.clientY;
         rightClickData.data['isSelected'] = true;
         if (rightClickData.data.hasOwnProperty('rightClickData') && rightClickData.data.rightClickData.length > 0) {
             this.contextmenu = [];
