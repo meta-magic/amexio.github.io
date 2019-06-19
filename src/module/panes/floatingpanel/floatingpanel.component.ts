@@ -33,11 +33,14 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
     @Input('show-panel') showPanel = false;
 
     @Input('arrow') arrow: boolean;
+    themeCss: any;
+    amexioComponentId = 'amexio-floating-panel';
 
     @ViewChild(AmexioButtonComponent) buttonRef: AmexioButtonComponent;
     positionMapData: string[];
     showfloatingButton = false;
     showSimpleButton = false;
+    gradientFlag: boolean;
     btnStyle = {};
     style = {};
     horpadding: any;
@@ -138,5 +141,14 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
         if (this.leftPosition) {
             this.style['left'] = this.leftPosition;
         }
+    }
+
+    changeHeaderColor() {
+        this.gradientFlag = true;
+    }
+
+    // Theme Apply
+    setColorPalette(themeClass: any) {
+        this.themeCss = themeClass;
     }
 }

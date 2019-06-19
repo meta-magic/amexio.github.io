@@ -80,7 +80,8 @@ export class ColorPaletteDirective implements OnInit {
       this.randomThemeCall();
     }
 
-    if ((this.hostComponent.amexioComponentId === ColorPaletteConstants.accordion ||
+    if ((this.hostComponent.amexioComponentId === ColorPaletteConstants.floatingpanel ||
+      this.hostComponent.amexioComponentId === ColorPaletteConstants.accordion ||
       this.hostComponent.amexioComponentId === ColorPaletteConstants.panel) && this.gradient) {
       this.hostComponent.changeHeaderColor();
     }
@@ -106,6 +107,10 @@ export class ColorPaletteDirective implements OnInit {
         break;
       }
       case (ColorPaletteConstants.panel): {
+        hostComponent.setColorPalette(ColorPaletteConstants.amexioTheme2);
+        break;
+      }
+      case (ColorPaletteConstants.floatingpanel): {
         hostComponent.setColorPalette(ColorPaletteConstants.amexioTheme2);
         break;
       }
@@ -151,6 +156,10 @@ export class ColorPaletteDirective implements OnInit {
         break;
       }
       case (ColorPaletteConstants.panel): {
+        hostComponent.setColorPalette(ColorPaletteConstants.amexioThemeGradient2);
+        break;
+      }
+      case (ColorPaletteConstants.floatingpanel): {
         hostComponent.setColorPalette(ColorPaletteConstants.amexioThemeGradient2);
         break;
       }

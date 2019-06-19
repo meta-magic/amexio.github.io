@@ -1,12 +1,13 @@
 
 
+
   <div *ngIf="showPanel" [ngStyle]="style"  [ngClass]="{floatarrow:arrow}">
-      <div class='creative-header amexio-theme-color6-Gradient' >        
+      <div class='floatingpanel-header'   [ngClass]="themeCss" >        
             <div class="flex-spacebetween">
                 <amexio-label [word-wrap]="false" style="width:90%" [size]="'medium-bold'">
                    {{title}}
                 </amexio-label>
-                  <span *ngIf="closeable" class="creative-header-icon-div" style="padding-top: 1px">
+                  <span *ngIf="closeable" [ngStyle]="{'color': gradientFlag ? 'black':'white'}" class="creative-header-icon-div" style="padding-top: 1px">
                       <span  class="fa fa-times ng-star-inserted" style="cursor: pointer;" (click)="togglePanel()"></span>                   
                 </span>
               </div>

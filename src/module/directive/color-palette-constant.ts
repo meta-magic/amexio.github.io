@@ -9,6 +9,7 @@ export class ColorPaletteConstants {
     static  box = 'amexio-box';
     static  tab = 'amexio-tab';
     static banner = 'amexio-banner';
+    static floatingpanel = 'amexio-floating-panel';
 
     static amexioClassicTheme = 'amexio-theme-color1';
     static amexioClassicThemeGradient = 'amexio-theme-color1-Gradient';

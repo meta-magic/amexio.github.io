@@ -7,3 +7,28 @@
     border-width: 0 15px 15px;
     // border-color: $floatingpanelItemBGColor transparent;
   }
+
+  .floatingpanel-header {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.floatingpanel-header .floatingpanel-header-div {
+    height: auto;
+}
+
+.floatingpanel-header>* {
+    padding-right: 10px;
+    margin-top: 0px;
+    
+}
+
+.floatingpanel-header-icon-div{
+    position:absolute; 
+    right:0%;
+     padding:5px 10px;
+}
