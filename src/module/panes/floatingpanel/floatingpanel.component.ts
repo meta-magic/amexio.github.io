@@ -87,7 +87,7 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
         this.style = {};
         this.style['position'] = (this.relative) ? 'absolute' : 'fixed';
         this.style['display'] = 'block';
-        this.style['z-index'] = '400';
+        this.style['z-index'] = '600';
         this.style['opacity'] = '1';
         this.style['box-shadow'] = '0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)';
         if (this.width !== '') {
