@@ -94,15 +94,22 @@ export class AmexioGridComponent implements AfterContentInit, OnInit {
       document.head.appendChild(style);
     }
     let isCssAdded = false;
-    for (const sh of sheets) {
-      const sheet: any = sh;
-      if (!isCssAdded && (sheet && sheet.href === null && sheet.rules)) {
-        try {
-          sheet.insertRule(ruleText, 0);
-          isCssAdded = true;
-        } catch (e) {
+
+    if (navigator.userAgent.search('Firefox') === -1) {
+      for (const sh of sheets) {
+        const sheet: any = sh;
+        if (!isCssAdded && (sheet && sheet.href === null && sheet.rules)) {
+          try {
+            sheet.insertRule(ruleText, 0);
+            isCssAdded = true;
+          } catch (e) {
+          }
         }
       }
+    } else {
+      const sheet: any = sheets[sheets.length - 1];
+      isCssAdded = false;
+      sheet.insertRule(ruleText, sheet.rules ? sheet.rules.length : sheet.cssRules.length);
     }
   }
 
