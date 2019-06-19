@@ -321,7 +321,6 @@ export class AmexioNavBarComponent implements OnInit, AfterViewInit, AfterConten
   createMoreContent() {
     this.resizeItemCollection = [];
     this.moreBucket = [];
-    this.notifyNavItems(this.navbar.nativeElement.offsetWidth);
     if (!this.mobilemode) {
       this.removeNodeFromDom();
       if (this.navItemComponents && this.navItemComponents.length > 0) {
