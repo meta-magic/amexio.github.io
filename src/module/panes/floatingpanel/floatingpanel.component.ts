@@ -99,16 +99,16 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
             this.draggingPanel = true;
             this.px = event.clientX;
             this.py = event.clientY;
-            if (this.rightPosition && this.draggable ) {
+            if (this.rightPosition && this.draggable) {
                 this.x = event.clientX - parseFloat(this.rightPosition);
             }
-            if (this.bottomPosition && this.draggable ) {
+            if (this.bottomPosition && this.draggable) {
                 this.y = event.clientY - parseFloat(this.bottomPosition);
             }
-            if (this.topPosition && this.draggable ) {
+            if (this.topPosition && this.draggable) {
                 this.y = event.clientY - parseFloat(this.topPosition);
             }
-            if (this.leftPosition && this.draggable ) {
+            if (this.leftPosition && this.draggable) {
                 this.x = event.clientX - parseFloat(this.leftPosition);
             }
         }
