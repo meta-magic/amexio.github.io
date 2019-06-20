@@ -798,7 +798,7 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
         data.push({ expanded: false, isSelected: false, group: groupName, groupData: groups[groupName] });
       }
     }
-    this.data = data;
+    this._data = data;
     /*-------Aggregation---------*/
     this.renderData();
     this.cd.detectChanges();
@@ -898,7 +898,7 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
   }
 
   onRowClick(rowData: any, rowIndex: any) {
-    this.data.forEach((opt: any) => {
+    this.viewRows.forEach((opt: any) => {
       opt.isSelected = false;
       if (opt.hasOwnProperty('groupData')) {
         opt.groupData.forEach((optChild: any) => {
