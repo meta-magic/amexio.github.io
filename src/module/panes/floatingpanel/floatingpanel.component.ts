@@ -99,16 +99,16 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
             this.draggingPanel = true;
             this.px = event.clientX;
             this.py = event.clientY;
-            if (this.rightPosition && this.draggable && !this.relative) {
+            if (this.rightPosition && this.draggable ) {
                 this.x = event.clientX - parseFloat(this.rightPosition);
             }
-            if (this.bottomPosition && this.draggable && !this.relative) {
+            if (this.bottomPosition && this.draggable ) {
                 this.y = event.clientY - parseFloat(this.bottomPosition);
             }
-            if (this.topPosition && this.draggable && !this.relative) {
+            if (this.topPosition && this.draggable ) {
                 this.y = event.clientY - parseFloat(this.topPosition);
             }
-            if (this.leftPosition && this.draggable && !this.relative) {
+            if (this.leftPosition && this.draggable ) {
                 this.x = event.clientX - parseFloat(this.leftPosition);
             }
         }
@@ -172,13 +172,6 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
         if (!this.relative) {
             this.setPanelStylePostion();
         }
-        if (this.relative) {
-            this.style['left'] = '6px';
-            this.style['top'] = '60px';
-            this.x = parseFloat(this.style['left']);
-            this.y = parseFloat(this.style['top']);
-
-        }
         this.arrowPadding();
     }
 
@@ -200,12 +193,6 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
             this.style['width'] = this.width + 'px';
         } else {
             this.style['width'] = '400px';
-        }
-        if (this.absolute) {
-            this.style['left'] = '6px';
-            this.style['top'] = '60px';
-            this.x = parseFloat(this.style['left']);
-            this.y = parseFloat(this.style['top']);
         }
         this.setPanelStylePostion();
         this.arrowPadding();
