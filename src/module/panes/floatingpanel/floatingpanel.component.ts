@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Renderer2 } from '@angular/core';
 import { OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { AmexioButtonComponent } from '../../forms/buttons/button.component';
 
@@ -31,6 +31,11 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
     @Input('closeable') closeable = false;
 
     @Input('show-panel') showPanel = false;
+    @Input() resizable: boolean;
+
+    @Input('remember-panel-position') panelposition: boolean;
+
+    @Input() draggable: boolean;
 
     @Input('arrow') arrow: boolean;
     themeCss: any;
@@ -45,12 +50,27 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
     style = {};
     horpadding: any;
     virpadding: any;
-    constructor() {
+
+    globalListenFunc: () => void;
+    globalClickListenFunc: () => void;
+    globalDragListenFunc: () => void;
+
+    x: number;
+
+    y: number;
+    px: number;
+
+    py: number;
+    draggingPanel: boolean;
+
+    constructor(private renderer: Renderer2) {
         this.positionMapData = [];
         this.positionMapData['hpos-right'] = { position: 'right', value: '10px' };
         this.positionMapData['hpos-left'] = { position: 'left', value: '10px' };
         this.positionMapData['vpos-bottom'] = { position: 'bottom', value: '25px' };
         this.positionMapData['vpos-top'] = { position: 'top', value: '55px' };
+
+        this.draggingPanel = false;
     }
     ngAfterViewInit() {
 
@@ -68,18 +88,69 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
         if (this.showPanel) {
             this.panelStyle();
         }
+        this.globalDragListenFunc = this.renderer.listen('document', 'mouseup', (e: any) => {
+            this.draggingPanel = false;
+        });
+
+    }
+
+    onPanelPress(event: MouseEvent) {
+        if (this.draggable) {
+            this.draggingPanel = true;
+            this.px = event.clientX;
+            this.py = event.clientY;
+            if (this.rightPosition && this.draggable && !this.relative) {
+                this.x = event.clientX - parseFloat(this.rightPosition);
+            }
+            if (this.bottomPosition && this.draggable && !this.relative) {
+                this.y = event.clientY - parseFloat(this.bottomPosition);
+            }
+            if (this.topPosition && this.draggable && !this.relative) {
+                this.y = event.clientY - parseFloat(this.topPosition);
+            }
+            if (this.leftPosition && this.draggable && !this.relative) {
+                this.x = event.clientX - parseFloat(this.leftPosition);
+            }
+        }
+    }
+
+    onPanelDrag(event: MouseEvent) {
+        if (this.draggable) {
+            if (!this.draggingPanel) {
+                return;
+            }
+            const offsetX = event.clientX - this.px;
+            const offsetY = event.clientY - this.py;
+
+            this.x += offsetX;
+            this.y += offsetY;
+
+            delete this.style['bottom'];
+            delete this.style['right'];
+            this.style['top'] = this.y + 'px';
+            this.style['left'] = this.x + 'px';
+
+            this.px = event.clientX;
+            this.py = event.clientY;
+        }
     }
 
     ngOnChanges(changes: SimpleChanges) {
         if (changes['showPanel']) {
             this.showPanel = changes.showPanel.currentValue;
+            if (this.panelposition) {
+                this.x = 0;
+                this.y = 0;
+                this.style['top'] = this.y + 'px';
+                this.style['left'] = this.x + 'px';
+            }
+
             if (this.absolute) {
                 this.setPanelAbsolutePostion();
             } else {
                 this.panelStyle();
             }
         }
-
     }
 
     togglePanel() {
@@ -100,6 +171,13 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
         }
         if (!this.relative) {
             this.setPanelStylePostion();
+        }
+        if (this.relative) {
+            this.style['left'] = '6px';
+            this.style['top'] = '60px';
+            this.x = parseFloat(this.style['left']);
+            this.y = parseFloat(this.style['top']);
+
         }
         this.arrowPadding();
     }
@@ -122,6 +200,12 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
             this.style['width'] = this.width + 'px';
         } else {
             this.style['width'] = '400px';
+        }
+        if (this.absolute) {
+            this.style['left'] = '6px';
+            this.style['top'] = '60px';
+            this.x = parseFloat(this.style['left']);
+            this.y = parseFloat(this.style['top']);
         }
         this.setPanelStylePostion();
         this.arrowPadding();
