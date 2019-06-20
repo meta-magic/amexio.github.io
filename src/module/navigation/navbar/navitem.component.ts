@@ -93,6 +93,9 @@ description : Indicate the type of menu-items (link / button / textfield /menu )
   @Input() mobilemode = false;
   @Input('sub-menu-height-padding') subMenuPadding = '10px';
 
+  // For Internal Use
+  @Input('submenupos') submenupos = false;
+
   isAction = false;
   isTextField = false;
   isMenu = false;

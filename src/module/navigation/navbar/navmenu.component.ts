@@ -83,6 +83,10 @@ export class AmexioNavMenuComponent implements OnInit {
   @Input() rightflag: boolean;
 
   @Input('color') color: string;
+
+  // for internal use
+  @Input('submenupos') submenupos = false;
+
   constructor() {
 
   }
@@ -125,7 +129,10 @@ export class AmexioNavMenuComponent implements OnInit {
         }
       });
     }
-    this.position = this.getMenuPosition(event);
+    if (!this.submenupos) {
+      this.position = this.getMenuPosition(event);
+
+    }
     event.stopPropagation();
   }
 

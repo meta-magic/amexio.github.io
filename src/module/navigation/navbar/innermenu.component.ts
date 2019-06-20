@@ -66,6 +66,7 @@ export class AmexioInnerNavMenuComponent implements OnInit {
     @Input() icon: string;
 
     @Input() submenuposition = 'right';
+    @Input('submenupos') submenupos = false;
 
     /*
   Events

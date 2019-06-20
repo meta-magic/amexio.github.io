@@ -29,7 +29,7 @@
                          <span *ngIf="(position == 'right' && node.submenus) || ( mobilemode && node.submenus)"
                                [style.padding-right.px]="mobilemode ? 18:10"
                                style="float:right;" (click)="onIconClick($event,node)">
-                           <ng-container *ngIf="!mobilemode">
+                           <ng-container *ngIf="!mobilemode && !submenupos">
                               <i class="fa fa-angle-right"  aria-hidden="true"></i>
                            </ng-container>
                              <ng-container *ngIf="mobilemode">
@@ -42,8 +42,8 @@
                     </span>
                 </span>
 
-      <span *ngIf="node.submenus && node.isExpanded" [ngClass]="{'submenunodes': (position == 'right' && !mobilemode), 'submenunodesright': (position == 'left' && !mobilemode) }" >
-                    <amexio-nav-innermenu [sub-menu-height-padding]="subMenuPadding"  [mobilemode]="mobilemode" [color]="itemcolor" [submenuposition]="position" [data]="node.submenus" (navLinkClick)="navItemClick($event)">
+      <span *ngIf="node.submenus && node.isExpanded" [ngClass]="{'submenunodes': (position == 'right' && !mobilemode && !submenupos), 'submenunodesright': (position == 'left' && !mobilemode && !submenupos), 'submenunodesright': submenupos }" >
+                    <amexio-nav-innermenu [sub-menu-height-padding]="subMenuPadding" [submenupos]="true" [mobilemode]="mobilemode" [color]="itemcolor" [submenuposition]="position" [data]="node.submenus" (navLinkClick)="navItemClick($event)">
                     </amexio-nav-innermenu>
                 </span>
 
