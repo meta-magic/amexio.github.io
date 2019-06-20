@@ -42,8 +42,10 @@
                     </span>
                 </span>
 
-      <span *ngIf="node.submenus && node.isExpanded" [ngClass]="{'submenunodes': (position == 'right' && !mobilemode && !submenupos), 'submenunodesright': (position == 'left' && !mobilemode && !submenupos), 'submenunodesright': submenupos }" >
-                    <amexio-nav-innermenu [sub-menu-height-padding]="subMenuPadding" [submenupos]="true" [mobilemode]="mobilemode" [color]="itemcolor" [submenuposition]="position" [data]="node.submenus" (navLinkClick)="navItemClick($event)">
+      <span *ngIf="node.submenus && node.isExpanded" 
+      [ngClass]="{'submenunodesright': ((position == 'left' && !mobilemode && !submenupos) || submenupos ),
+          'submenunodes': (position == 'right' && !mobilemode && !submenupos) }" >
+                    <amexio-nav-innermenu [sub-menu-height-padding]="subMenuPadding" [submenupos]="submenupos" [mobilemode]="mobilemode" [color]="itemcolor" [submenuposition]="position" [data]="node.submenus" (navLinkClick)="navItemClick($event)">
                     </amexio-nav-innermenu>
                 </span>
 

@@ -37,7 +37,7 @@
                  'innersubmenunodes-mobile': (submenuposition == 'right' && mobilemode),
                  'innersubmenunodesright-mobile':(submenuposition == 'left' && mobilemode),
                  'innersubmenunodesright': submenupos}">
-      <amexio-nav-innermenu [sub-menu-height-padding]="subMenuPadding" [submenupos]="true" [mobilemode]="mobilemode" [color]="itemcolor"
+      <amexio-nav-innermenu [sub-menu-height-padding]="subMenuPadding" [submenupos]="submenupos" [mobilemode]="mobilemode" [color]="itemcolor"
         [padding]="padding+20" [submenuposition]="submenuposition" [data]="node.submenus"
         (navLinkClick)="navItemClick($event)">
       </amexio-nav-innermenu>
