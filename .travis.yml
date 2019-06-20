@@ -9,9 +9,9 @@ addons:
     packages:
       - google-chrome-stable
   sonarcloud:
-    organization: "deepali-arvind-github" # the key of the org you chose at step #3
+    organization: "metamagic" # the key of the org you chose at step #3
     token:
-      secure: 081e2012239f75d61242a6d1d6605f0ee29dc019 # encrypted value of your token   
+      secure: c52d859733b46f36e4e3d812f24f416b8fb6b9a0 # encrypted value of your token   
  
 language: node_js
 node_js:
