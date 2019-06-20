@@ -11,7 +11,7 @@ addons:
   sonarcloud:
     organization: "metamagic" # the key of the org you chose at step #3
     token:
-      secure: c5f99f1430c7c379e0e4dec089a81b244d57c598 # encrypted value of your token   4
+      secure: 66f7fcd00ad0ef5827f14c4f351f103122abb5de # encrypted value of your token   4
    
 language: node_js
 node_js:
