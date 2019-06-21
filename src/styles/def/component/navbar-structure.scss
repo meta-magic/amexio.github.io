@@ -1,3 +1,86 @@
+// NAVBAR REFACTORED CSS STARTS
+
+
+.amexio-nav-submenus {
+    display: block;
+    z-index: 3;
+    box-shadow: 0 5px 5px rgba(0,0,0,.6);
+    background-color: var(--appHeaderBGColor);
+    color: var(--appHeaderFontColor);
+    padding: 10px;
+}
+.amexio-nav-desktop-submenus{
+    width: 250px;
+    position: absolute;
+}
+
+.amexio-nav-mobile-submenus{
+    // width: 100%;
+    padding: 0px;
+    position: relative;
+}
+
+.amexio-nav-desktop-submenus .nav-desktop-link:hover{
+    background-color: var(--appHeaderHoverBGColor);
+    color: var(--appHeaderHoverFontColor);
+}
+
+.nav-desktop-link{
+    color: var(--appHeaderFontColor);
+    text-decoration: none;
+    display: inline-block;
+    text-align: left;
+    padding:5px 10px; 
+    margin:0px -10px; 
+}
+
+.nav-desktop-link > span{
+    padding: 10px 0px;
+    align-items: center;
+}
+
+.nav-desktop-link > i{
+    margin: 0px 5px;
+}
+
+
+.nav-menu-separator{
+    margin: 0px -10px;
+    border-top: 1px solid;
+}
+
+.nav-menu-header{
+    padding:5px 5px; 
+    opacity: 0.6;
+    font-weight: 600;
+}
+
+.nav-mobile-link{
+    color: var(--appHeaderFontColor);
+    text-decoration: none;
+    display: inline-block;
+    text-align: left;
+   
+}
+
+.nav-mobile-link > span{
+    margin: 0px 30px 0px 50px;
+    align-items: center;
+}
+
+.nav-mobile-link > i{
+    // margin: 0px 5px;
+}
+
+
+.nav-menu-mobile-separator{
+    border-top: 1px solid;
+}
+
+
+//NAVBAR REFACTORED CSS ENDS
+
+
 .topnav {
     position: fixed;
     width: 100%;
