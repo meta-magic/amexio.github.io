@@ -1,14 +1,14 @@
 /*
 * Copyright [2019] [Metamagic]
 *
-* Licensed under the Apache License, Version 2.0 (the "License");
+* Licensed under the Apache License, Version 2.0 (the 'License');
 * you may not use this file except in compliance with the License.
 * You may obtain a copy of the License at
 *
 * http://www.apache.org/licenses/LICENSE-2.0
 *
 * Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
+* distributed under the License is distributed on an 'AS IS' BASIS,
 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 * See the License for the specific language governing permissions and
 * limitations under the License.
@@ -16,13 +16,14 @@
 * Created by ketangote on 1/4/18.
 */
 
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'amexio-nav-menu',
   templateUrl: 'navmenu.component.html',
 })
-export class AmexioNavMenuComponent implements OnInit {
+export class AmexioNavMenuComponent implements OnInit, AfterViewInit {
   /*
    Properties
    name : type
@@ -87,6 +88,10 @@ export class AmexioNavMenuComponent implements OnInit {
   // for internal use
   @Input('submenupos') submenupos = false;
 
+  @ViewChild('navmenu', { read: ElementRef }) public navmenu: ElementRef;
+
+  showMenus: boolean;
+
   constructor() {
 
   }
@@ -94,12 +99,22 @@ export class AmexioNavMenuComponent implements OnInit {
   ngOnInit() {
   }
 
+  ngAfterViewInit() {
+    setTimeout(() => {
+      if ((window.innerWidth - this.navmenu.nativeElement.getBoundingClientRect().right) < 150) {
+        this.position = 'right';
+      } else {
+        this.position = 'left';
+      }
+    }, 100);
+  }
   setMobileMode(flag: boolean) {
     this.mobilemode = flag;
   }
   dataObject(n: any, _event: any): any {
     return { data: n, event: _event };
   }
+
   onHeaderClick(event: any) {
     const node = {
       header: true,
@@ -107,9 +122,33 @@ export class AmexioNavMenuComponent implements OnInit {
       icon: this.icon,
     };
     this.mobileToggleModel = !this.mobileToggleModel;
+    if (this.mobilemode) {
+      this.showMenus = !this.showMenus;
+    }
     this.onClick(node, event);
   }
 
+  onMouseOver(event: any) {
+    debounceTime(200);
+    if (this.mobilemode) {
+      return;
+    }
+    this.showMenus = true;
+  }
+
+  onMouseLeave(event: any) {
+    debounceTime(200);
+    if (this.mobilemode) {
+      return;
+    }
+    this.showMenus = false;
+  }
+
+  toggleMenu(event: any) {
+    if (this.mobilemode) {
+      this.showMenus = !this.showMenus;
+    }
+  }
   onNodeHover(node: any, event: any) {
     if (!this.mobilemode) {
       node['isExpanded'] = true;

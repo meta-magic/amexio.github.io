@@ -1,0 +1,7 @@
+amexio-nav-desktop{
+    margin-top : -50px;
+}
+
+amexio-nav-desktop > *{
+    cursor: pointer;
+}

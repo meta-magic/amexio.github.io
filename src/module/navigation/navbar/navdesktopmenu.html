@@ -1,0 +1,26 @@
+<div #menus style="display: flex; flex-direction: column;" *ngFor="let node of nodes">
+    <div *ngIf="node.separatorHeader" class="nav-menu-separator">
+        <!-- Add only border separator -->
+    </div>
+    <div *ngIf="node.separatorHeader" class="nav-menu-header">
+        {{node.separatorHeader}}
+    </div>
+    <div class="nav-desktop-link" (mouseover)="onMouseOver($event, node)"   (mouseleave)="onMouseLeave($event,node)"
+        [ngClass]="{'nav-menu-separator': (node.separator && !node.separatorHeader)}">
+
+        <span class="flex-inline" [ngStyle]="{'flex-direction': (position === 'left') ?'row':'row-reverse'}">
+            <i *ngIf="icon" [ngClass]="node.icon"></i>
+            <span style="flex-grow: 1; margin: 0px 5px; ">{{node.text}}</span>
+            <i *ngIf="node.submenus" class="fa " aria-hidden="true" [ngClass]="{'fa-angle-right': (position === 'left'), 
+                                             'fa-angle-left':(position === 'right')}"></i>
+        </span>
+
+        
+
+        <amexio-nav-desktop *ngIf="node.showInnerMenus" class="amexio-nav-submenus amexio-nav-desktop-submenus" [nodes]="node.submenus" [ngStyle]="{'left': (position === 'left') ? '100%':null,
+                                                         'right': (position === 'right') ? '100%':null}">
+        </amexio-nav-desktop>
+
+    </div>
+
+</div>

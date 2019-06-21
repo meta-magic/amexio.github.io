@@ -1,0 +1,24 @@
+<div #menus style="display: flex; flex-direction: column;" *ngFor="let node of nodes">
+    <div *ngIf="node.separatorHeader" class="nav-menu-separator">
+        <!-- Add only border separator -->
+    </div>
+    <div *ngIf="node.separatorHeader" class="nav-menu-header">
+        {{node.separatorHeader}}
+    </div>
+    <div class="nav-mobile-link"  [ngClass]="{'nav-menu-mobile-separator': (node.separator && !node.separatorHeader)}">
+
+        <span class="flex-inline" (click)="toggleMenu($event,node)">
+            <i *ngIf="icon" [ngClass]="node.icon"></i>
+            <span style="flex-grow: 1;">{{node.text}}</span>
+            <i *ngIf="node.submenus" class="fa fa-angle-down" aria-hidden="true"></i>
+        </span>
+
+        
+
+        <amexio-nav-mobile *ngIf="node.showInnerMenus" class="amexio-nav-submenus amexio-nav-mobile-submenus" 
+        [nodes]="node.submenus" >
+        </amexio-nav-mobile>
+
+    </div>
+
+</div>

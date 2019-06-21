@@ -1,3 +1,25 @@
+<div #navmenu class="nav-dropdown" (mouseover)="onMouseOver($event)" (mouseleave)="onMouseLeave($event)" >
+  <a class="nav-dropbtn" style="white-space: nowrap" [ngStyle]="{'color':color}" 
+    (click)="onHeaderClick($event)">
+    <span [style.padding-left.px]="icon ? 0 : 10">
+      <i *ngIf="icon" [ngClass]="icon"></i>
+    </span>
+    <span>{{title}}</span>
+    <span>
+      <i *ngIf="!mobilemode" class="dropdownicon fa fa-angle-down"></i>
+      <i *ngIf="mobilemode && showMenus" class="dropdownicon fa fa-angle-up"></i>
+      <i *ngIf="mobilemode && !showMenus" class="dropdownicon fa fa-angle-down"></i>
+    </span>
+  </a>
+  <amexio-nav-desktop  *ngIf="showMenus && !mobilemode"  class="amexio-nav-submenus amexio-nav-desktop-submenus"  [nodes]="data" [ngStyle]="{'right': (position === 'right') ? '10px':null}"></amexio-nav-desktop>
+
+  <amexio-nav-mobile  *ngIf="showMenus && mobilemode"  class="amexio-nav-submenus amexio-nav-mobile-submenus"  [nodes]="data"></amexio-nav-mobile>
+  
+</div>
+
+
+
+<!-- 
 <div class="nav-dropdown">
   <a class="nav-dropbtn" style="white-space: nowrap" [ngStyle]="{'color':color}" (mouseover)="onMouseoverTitle($event)" (click)="onHeaderClick($event)">
         <span  [style.padding-left.px]="icon ? 0 : 10">
@@ -58,4 +80,4 @@
       <ng-content></ng-content>
     </div>
   </div>
-</div>
+</div> -->
