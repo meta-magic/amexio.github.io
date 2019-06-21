@@ -1,6 +1,5 @@
 import { ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, Renderer2 } from '@angular/core';
 import { EventBaseComponent } from '../../base/event.base.component';
-import { formatDate } from '@angular/common';
 @Component({
   selector: 'amexio-speech-bubble',
   templateUrl: './speech-bubble.component.html',
@@ -19,17 +18,17 @@ export class SpeechBubbleComponent extends EventBaseComponent<any> implements On
 
   @Input('menu-option') data: any;
 
-  @Input('enable-date') enabledate: any;
+  @Input('enable-time') enabletime: any;
 
   @Output() onClick: any = new EventEmitter<any>();
 
-  todaydate : any;
+  todaydate: any;
 
   constructor(public element: ElementRef, public renderer: Renderer2, _cd: ChangeDetectorRef) {
     super(renderer, element, _cd);
   }
   ngOnInit() {
-    this.todaydate = new Date(this.enabledate);
+    this.todaydate = new Date(this.enabletime);
   }
   onarrowClick(event: any) {
     if (this.arrowpress) {
