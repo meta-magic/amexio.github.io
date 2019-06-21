@@ -81,6 +81,12 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
         if (this.showPanel) {
             this.panelStyle();
         }
+        if (this.draggable && this.arrow) {
+            this.draggable = false;
+        }
+        if (this.relative && this.draggable) {
+            this.style['position'] = 'absolute';
+        }
     }
 
     ngOnChanges(changes: SimpleChanges) {
@@ -96,7 +102,7 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
     }
 
     onMouseDown(event: any, floatingPanel: any) {
-        if (this.draggable  && event.target.getAttribute('name') && event.target.getAttribute('name') === 'floatingheader') {
+        if (this.draggable && event.target.getAttribute('name') && event.target.getAttribute('name') === 'floatingheader') {
             event = event || window.event;
             event.preventDefault();
             this.pos3 = event.clientX;
