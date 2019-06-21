@@ -22,6 +22,7 @@
            [attr.name]="name" 
            [value]="rData?.selected ? rData[valuefield] : rData[valuefield] "
           [attr.disabled]="rData?.disabled ? true: null" 
+          [(ngModel)]="value"
           (focus)="onFocus()"
           (blur)="onBlur()"
           [checked]="(value === rData[valuefield] || rData.selected)">
@@ -41,7 +42,7 @@
           [attr.tabindex]="disabled ? -1 : 1" [required]="!allowblank" [attr.name]="name" [value]="rData?.selected ? rData[valuefield] : rData[valuefield] "
           (focus)="onFocus()"
           (blur)="onBlur()"
-          [attr.disabled]="rData?.disabled ? true: null" [(ngModel)]="rData?.selected ? rData[valuefield] : value"
+          [attr.disabled]="rData?.disabled ? true: null" [(ngModel)]="value"
             [checked]="(value === rData[valuefield] || rData.selected)">
           <span class="input-box-radiobox-label" [ngClass]="{'focusOnCheckbox':tabFocus}"></span>
         </label>

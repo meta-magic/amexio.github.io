@@ -10,6 +10,7 @@
         (blur)="onBlur()"
         [attr.disabled] = "disabled ? true: null"
         [attr.aria-disabled]="disabled"
+        [(ngModel)]="value"
         [attr.aria-required]="required"
         [required]="required" >
         {{fieldlabel}}
