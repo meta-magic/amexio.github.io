@@ -31,11 +31,6 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
     @Input('closeable') closeable = false;
 
     @Input('show-panel') showPanel = false;
-    @Input() resizable: boolean;
-
-    @Input('remember-panel-position') panelposition: boolean;
-
-    @Input() draggable: boolean;
 
     @Input('arrow') arrow: boolean;
     themeCss: any;
@@ -51,26 +46,24 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
     horpadding: any;
     virpadding: any;
 
-    globalListenFunc: () => void;
-    globalClickListenFunc: () => void;
-    globalDragListenFunc: () => void;
+    //  resize and draggable functionality variables
 
-    x: number;
+    @Input() resizable: boolean;
+    @Input() draggable: boolean;
+    pos1 = 0;
+    pos2 = 0;
 
-    y: number;
-    px: number;
+    pos3 = 0;
+    pos4 = 0;
 
-    py: number;
-    draggingPanel: boolean;
-
-    constructor(private renderer: Renderer2) {
+    documentMouseUPListener: any;
+    documentMouseMoveListener: any;
+    constructor(private renderer: Renderer2, public element: ElementRef) {
         this.positionMapData = [];
         this.positionMapData['hpos-right'] = { position: 'right', value: '10px' };
         this.positionMapData['hpos-left'] = { position: 'left', value: '10px' };
         this.positionMapData['vpos-bottom'] = { position: 'bottom', value: '25px' };
         this.positionMapData['vpos-top'] = { position: 'top', value: '55px' };
-
-        this.draggingPanel = false;
     }
     ngAfterViewInit() {
 
@@ -88,71 +81,60 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
         if (this.showPanel) {
             this.panelStyle();
         }
-        this.globalDragListenFunc = this.renderer.listen('document', 'mouseup', (e: any) => {
-            this.draggingPanel = false;
-        });
-
-    }
-
-    onPanelPress(event: MouseEvent) {
-        if (this.draggable) {
-            this.draggingPanel = true;
-            this.px = event.clientX;
-            this.py = event.clientY;
-            if (this.rightPosition && this.draggable) {
-                this.x = event.clientX - parseFloat(this.rightPosition);
-            }
-            if (this.bottomPosition && this.draggable) {
-                this.y = event.clientY - parseFloat(this.bottomPosition);
-            }
-            if (this.topPosition && this.draggable) {
-                this.y = event.clientY - parseFloat(this.topPosition);
-            }
-            if (this.leftPosition && this.draggable) {
-                this.x = event.clientX - parseFloat(this.leftPosition);
-            }
-        }
-    }
-
-    onPanelDrag(event: MouseEvent) {
-        if (this.draggable) {
-            if (!this.draggingPanel) {
-                return;
-            }
-            const offsetX = event.clientX - this.px;
-            const offsetY = event.clientY - this.py;
-
-            this.x += offsetX;
-            this.y += offsetY;
-
-            delete this.style['bottom'];
-            delete this.style['right'];
-            this.style['top'] = this.y + 'px';
-            this.style['left'] = this.x + 'px';
-
-            this.px = event.clientX;
-            this.py = event.clientY;
-        }
     }
 
     ngOnChanges(changes: SimpleChanges) {
         if (changes['showPanel']) {
             this.showPanel = changes.showPanel.currentValue;
-            if (this.panelposition) {
-                this.x = 0;
-                this.y = 0;
-                this.style['top'] = this.y + 'px';
-                this.style['left'] = this.x + 'px';
-            }
-
             if (this.absolute) {
                 this.setPanelAbsolutePostion();
             } else {
                 this.panelStyle();
             }
         }
+
     }
 
+    onMouseDown(event: any, floatingPanel: any) {
+        if (this.draggable  && event.target.getAttribute('name') && event.target.getAttribute('name') === 'floatingheader') {
+            event = event || window.event;
+            event.preventDefault();
+            this.pos3 = event.clientX;
+            this.pos4 = event.clientY;
+
+            if (!this.documentMouseUPListener) {
+                this.documentMouseUPListener = this.renderer.listen('document', 'mouseup',
+                    // tslint:disable-next-line:no-shadowed-variable
+                    (event: any) => this.closeDragElement());
+            }
+
+            if (!this.documentMouseMoveListener) {
+                this.documentMouseMoveListener = this.renderer.listen('document', 'mousemove',
+                    // tslint:disable-next-line:no-shadowed-variable
+                    (event: any) => this.elementDrag(event, floatingPanel));
+            }
+        }
+    }
+    elementDrag(e: any, floatingPanel: any) {
+        e = e || window.event;
+        e.preventDefault();
+        this.pos1 = this.pos3 - e.clientX;
+        this.pos2 = this.pos4 - e.clientY;
+        this.pos3 = e.clientX;
+        this.pos4 = e.clientY;
+        if (this.bottomPosition) {
+            delete this.style['bottom'];
+        }
+        floatingPanel.style.top = (floatingPanel.offsetTop - this.pos2) + 'px';
+        floatingPanel.style.left = (floatingPanel.offsetLeft - this.pos1) + 'px';
+    }
+
+    closeDragElement() {
+        this.documentMouseMoveListener();
+        this.documentMouseUPListener();
+        this.documentMouseMoveListener = null;
+        this.documentMouseUPListener = null;
+    }
     togglePanel() {
         this.showPanel = !this.showPanel;
         this.onclose.emit(this);
@@ -178,8 +160,6 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
     arrowPadding() {
         if (this.arrow) {
             this.style['margin-top'] = '16px';
-        } else {
-            this.style['margin-top'] = '3px';
         }
     }
     setPanelAbsolutePostion() {
