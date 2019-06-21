@@ -1,18 +1,21 @@
-<div class="bubble" [style.width]="width" [ngClass]="{speecharrowleft:(position == 'left' ),speecharrowright:(position == 'right'),speecharrowbottomleft:(position == 'bottom-left'),speecharrowbottomright:(position == 'bottom-right'),speecharrowtopleft:(position == 'top-left'),speecharrowtopright:(position == 'top-right')}" >
+<div class="bubble" [style.width]="width" [ngClass]="{speecharrowleft:(position == 'left' ),speecharrowright:(position == 'right'),speecharrowbottomleft:(position == 'bottom-left'),speecharrowbottomright:(position == 'bottom-right'),speecharrowtopleft:(position == 'top-left'),speecharrowtopright:(position == 'top-right')}">
   <ng-container *ngIf="data">
-      <amexio-c-icon style="float:right;font-size:25px;cursor: pointer;"  key="sidenav-angle-down" (onClick)="onarrowClick($event)"></amexio-c-icon>
-      <div class="sidedivclass"  [ngStyle]="dropdownstyle">
-        <ng-container [ngStyle]="{'cursor': arrowpress ? 'all-scroll':''}" *ngIf="arrowpress" >
-          <span>
-            <ul style="right:10px;margin-top:18px" class="context-menu-list">
-              <li (click)="onBubbleNodeClick(itemConfig)" class="context-menu-list-items" *ngFor="let itemConfig of data">
-                <span style="white-space: nowrap;display: inline ; padding-left:5px">{{itemConfig.label}}</span>
-                <amexio-c-icon style="float:left;padding:5px" class="fa + {{itemConfig.icon}}"></amexio-c-icon>
-              </li>
-            </ul>
-          </span>
-        </ng-container>
-      </div>
-    </ng-container>
-<ng-content></ng-content>
+    <amexio-c-icon style="float:right;font-size:25px;cursor: pointer;" key="sidenav-angle-down" (onClick)="onarrowClick($event)"></amexio-c-icon>
+    <div class="sidedivclass" [ngStyle]="dropdownstyle">
+      <ng-container [ngStyle]="{'cursor': arrowpress ? 'all-scroll':''}" *ngIf="arrowpress">
+        <span>
+          <ul style="right:10px;margin-top:18px" class="context-menu-list">
+            <li (click)="onBubbleNodeClick(itemConfig)" class="context-menu-list-items" *ngFor="let itemConfig of data">
+              <span style="white-space: nowrap;display: inline ; padding-left:5px">{{itemConfig.label}}</span>
+              <amexio-c-icon style="float:left;padding:5px" class="fa + {{itemConfig.icon}}"></amexio-c-icon>
+            </li>
+          </ul>
+        </span>
+      </ng-container>
+    </div>
+  </ng-container>
+  <ng-content></ng-content>
+  <div class="time" *ngIf="enabledate" [ngClass]="{timeclass:(position =='top-right'||position =='bottom-right'||position=='right'),timeleftright:(position=='bottom-left'||position=='bottom-right')}">
+    {{todaydate | date: 'MMM d, y, h:mm:ss a'}}
+  </div>
 </div>
