@@ -1,11 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
     selector: 'amexio-calendar-month',
     templateUrl: './calendar.month.html',
     styleUrls: ['./calendar.common.css'],
 })
-export class AmexioCalendarMonthComponent implements OnInit {
+export class AmexioCalendarMonthComponent {
 
     @Input('headers') headers: any[];
 
@@ -25,26 +25,6 @@ export class AmexioCalendarMonthComponent implements OnInit {
     focusrindex: number;
     focusiindex: number;
     constructor() {}
-    ngOnInit() {
-        this.moreEventsMethod();
-    }
-
-    moreEventsMethod() {
-        if (this.calendaryData) {
-            this.calendaryData.forEach((calendarRow) => {
-                calendarRow.forEach((day: any) => {
-                    if (day.eventDetails && day.eventDetails.events) {
-                        if (day.eventDetails.events.length > this.noOfEvents) {
-                            day.eventDetails.events['moreEventFlag'] = true;
-                        } else {
-                            day.eventDetails.events['moreEventFlag'] = false;
-                        }
-                    }
-
-                });
-            });
-        }
-    }
 
     onMoreClicked(event: any, data: any) {
         if (this.calendaryData) {

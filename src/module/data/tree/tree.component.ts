@@ -171,6 +171,8 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
 
     @Input('filter-tree-flag') filtertreeflag = false;
 
+    @Input('word-wrap') wordwrap = true;
+
     @ContentChild('amexioTreeTemplate') parentTmp: TemplateRef<any>;
     /*
     Events
@@ -261,9 +263,14 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
 
     expandAllCall(node: any) {
         node.forEach((childCheck: any) => {
-            if (!childCheck.expand) {
-                childCheck.expand = true;
+            if (childCheck.expand.hasOwnProperty('expand')) {
+                if (!childCheck.expand) {
+                    childCheck.expand = true;
+                }
+            } else {
+                childCheck['expand'] = true;
             }
+
             if (childCheck.hasOwnProperty(this.childarraykey)) {
                 this.expandAllCall(childCheck[this.childarraykey]);
             }
