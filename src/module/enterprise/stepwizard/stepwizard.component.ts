@@ -3,8 +3,8 @@ import { DeviceQueryService } from './../../services/device/device.query.service
 import { StepWizardItemComponent } from './stepwizard.item.component';
 
 @Component({
-  selector : 'amexio-step-wizard',
-  templateUrl : './stepwizard.component.html',
+  selector: 'amexio-step-wizard',
+  templateUrl: './stepwizard.component.html',
 })
 export class StepWizardComponent implements AfterContentInit {
 
@@ -48,11 +48,11 @@ export class StepWizardComponent implements AfterContentInit {
           this.onPreviousStep(eventdata),
         );
         this.stepItemList[index].footerAlign = this.footerAlign;
-      } catch ( Error ) {
+      } catch (Error) {
 
       }
 
-  });
+    });
     this.stepItemList[0].showPreviousButton = false;
     this.stepItemList[0].activeClass = 'active';
     this.stepItemList[this.stepItemList.length - 1].nextLabel = 'Done';
@@ -77,15 +77,14 @@ export class StepWizardComponent implements AfterContentInit {
 
     this.stepItemList.forEach((stepItem: any, index: any) => {
       const ind = index + 1;
-      if (ind > activeIndex) {
-      } else {
+      if (!(ind > activeIndex)) {
         this.stepItemList[ind - 1].activeClass = 'completed';
         this.stepItemList[ind - 1].active = false;
       }
     });
     if (event && event.emitData && event.emitData.currentdata) {
       // tslint:disable-next-line:max-line-length
-      this.onNextStepClick.emit({title: event.title, currentdata: event.emitData.currentdata, data: this.data, event: event.emitData.event});
+      this.onNextStepClick.emit({ title: event.title, currentdata: event.emitData.currentdata, data: this.data, event: event.emitData.event });
     }
     this.finalStage.emit(this.data);
   }
@@ -94,7 +93,7 @@ export class StepWizardComponent implements AfterContentInit {
   private onPreviousStep(event: any) {
     if (event && event.emitData && event.emitData.currentdata) {
       // tslint:disable-next-line:max-line-length
-      this.onPreviousStepClick.emit({title: event.title, currentdata: event.emitData.currentdata, data: this.data, event: event.emitData.event});
+      this.onPreviousStepClick.emit({ title: event.title, currentdata: event.emitData.currentdata, data: this.data, event: event.emitData.event });
     }
     let activeIndex = 0;
     this.stepItemList.forEach((stepItem: any, index: any) => {

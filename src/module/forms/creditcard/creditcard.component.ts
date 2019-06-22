@@ -27,7 +27,6 @@ const noop = () => {
   providers: [{
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioCreditcardComponent), multi: true,
   }],
-  styleUrls: ['./creditcard.component.css'],
 })
 export class AmexioCreditcardComponent implements ControlValueAccessor, OnInit {
   /*
@@ -225,23 +224,23 @@ export class AmexioCreditcardComponent implements ControlValueAccessor, OnInit {
   }
   creditCardNumberSpaceRemove(value: any) {
     if (value) {
-    value = value.toString();
-    const v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
-    const matches = v.match(/\d{4,16}/g);
-    const match = matches && matches[0] || '';
-    const parts = [];
-    let len;
-    let i;
-    for (i = 0, len = match.length; i < len; i += 4) {
-      parts.push(match.substring(i, i + 4));
-    }
-    if (parts.length) {
-      return parts.join(' ');
-    } else {
-      return value;
+      value = value.toString();
+      const v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+      const matches = v.match(/\d{4,16}/g);
+      const match = matches && matches[0] || '';
+      const parts = [];
+      let len;
+      let i;
+      for (i = 0, len = match.length; i < len; i += 4) {
+        parts.push(match.substring(i, i + 4));
+      }
+      if (parts.length) {
+        return parts.join(' ');
+      } else {
+        return value;
+      }
     }
   }
-}
   switchCaseMethod() {
     switch (this.validEagerCard) {
       case 'eagerflagvisa':

@@ -20,8 +20,7 @@
                 </span>
                 </div>
             </li>
-            <!-- (nodeEmitToSideNav) = "getNodesData($event)" -->
-            <div #currentdivref role="option" *ngFor="let node of data" id="{{node.index}}">
+             <div #currentdivref role="option" *ngFor="let node of data" id="{{node.index}}">
                 <amexio-sidenav-node [show-only-icon]="isShowOnlyIcon" [enable-border]="enableborder && (node && node[childarraykey] && (node[childarraykey].length>0))" [currentdivref]="currentdivref" [active]="(node && node.active)" [icon]="node.icon" [badge]="node.badge"
                     [enable-drag]="enabledrag" (nodeClick)="onClick($event)" (onDrag)="getNodeDragEvent($event)" [expand]="node?.expand" [label]="node[displaykey]" [node]="node" [icon-color]="node.iconcolor" [data]="node[childarraykey]">
                 </amexio-sidenav-node>

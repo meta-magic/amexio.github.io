@@ -20,7 +20,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 @Component({
   selector: 'amexio-chip',
   templateUrl: './chip.component.html',
-  styleUrls: ['./chip.component.css'],
 })
 export class AmexioChipComponent implements OnInit {
   /*

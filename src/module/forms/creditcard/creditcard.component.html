@@ -1,85 +1,89 @@
-<!-- <pre><code>{{creditCardModel|json}}</code></pre> -->
 <ng-container *ngIf="templateFlag">
 
-        <div class="creditCardFormSglCol">
-            <div class="imageSglCol">
-                <i *ngFor="let cardimage of cardGroupData" [style.color]="cardimage.color" [attr.class]="cardimage.iconName" style="font-size:50px">
-                </i>
+    <div class="creditCardFormSglCol">
+        <div class="imageSglCol">
+            <i *ngFor="let cardimage of cardGroupData" [style.color]="cardimage.color" [attr.class]="cardimage.iconName" style="font-size:50px">
+            </i>
+        </div>
+        <div class="ownerdetailsSglCol">
+            <label *ngIf="showlabel">CARD HOLDER NAME</label>
+            <div class="ownerSglCol">
+                <input [ngClass]="{'input-control-success':isNameValid,'input-control-failure':(!isNameValid && inpowner.touched)}" type="text"
+                    placeholder="CARD HOLDER NAME" #inpowner="ngModel" class="input-control" [(ngModel)]="creditCardModel.owner"
+                    (keyup)="onNameClick(inpowner)">
             </div>
-            <div class="ownerdetailsSglCol">
-                <label *ngIf="showlabel">CARD HOLDER NAME</label>
-                <div class="ownerSglCol">
-                    <input [ngClass]="{'input-control-success':isNameValid,'input-control-failure':(!isNameValid && inpowner.touched)}" type="text" placeholder="CARD HOLDER NAME"
-                        #inpowner="ngModel" class="input-control" [(ngModel)]="creditCardModel.owner" (keyup)="onNameClick(inpowner)">
-                </div>
+        </div>
+
+        <div class="cardNumberSglCol">
+            <label *ngIf="showlabel">CARD NUMBER</label>
+            <input type="text" placeholder="CARD NUMBER" maxlength="19" class="input-control" [ngModel]="dummyCreditCardNumber" (ngModelChange)="onChangeCardNumber($event)"
+                [value]="cardNumberValue" #inp="ngModel" [ngClass]="{'input-control-success':validPatternCard,'input-control-failure':(!validPatternCard && (inp.dirty || inp.touched))}"
+                (keyup)="onInput(inp)" />
+        </div>
+        <label *ngIf="showlabel">EXP DATE</label>
+        <div class="expiration-dateSglCol">
+            <div class="monthSglCol">
+                <select [ngModel]="dummyMonth" (ngModelChange)="onChangeMonth($event)" placeholder="MM" style="padding:10px">
+                    <option *ngFor="let months of dateData">{{months.month}}</option>
+                </select>
             </div>
-        
-            <div class="cardNumberSglCol">
-                <label *ngIf="showlabel">CARD NUMBER</label>
-                <input type="text" placeholder="CARD NUMBER" maxlength="19" class="input-control" [ngModel]="dummyCreditCardNumber" (ngModelChange)="onChangeCardNumber($event)"
-                [value]="cardNumberValue" #inp="ngModel" [ngClass]="{'input-control-success':validPatternCard,'input-control-failure':(!validPatternCard && (inp.dirty || inp.touched))}" (keyup)="onInput(inp)"
-                />
+            <div class="dateSglCol">
+                <select [(ngModel)]="creditCardModel.expYear" (ngModelChange)="onChangeYear($event)" yearControl="yearControl" style="padding:10px"
+                    placeholder="YY">
+                    <option *ngFor="let year of yearList">{{year}}</option>
+                </select>
             </div>
+        </div>
+        <div class="cvvSglCol">
+            <label *ngIf="showlabel">CVV</label>
+            <input #inpcvv="ngModel" [ngClass]="{'input-control-success':isCvvValid,'input-control-failure':(!isCvvValid && inpcvv.touched)}"
+                type="password" placeholder="CVV" maxlength="3" class="input-control" [(ngModel)]="creditCardModel.cvv" (keyup)="onClick(inpcvv)">
+        </div>
+    </div>
+</ng-container>
+<br>
+<ng-container *ngIf="!templateFlag">
+    <div class="creditCardForm">
+        <div class="owner">
+            <label *ngIf="showlabel">CARD HOLDER NAME</label>
+            <input [ngClass]="{'input-control-success':isNameValid,'input-control-failure':(!isNameValid && inpowner.touched)}" type="text"
+                placeholder="CARD HOLDER NAME" #inpowner="ngModel" class="input-control" [(ngModel)]="creditCardModel.owner"
+                (keyup)="onNameClick(inpowner)">
+        </div>
+        <div [ngClass]="{'image-label':showlabel==true,'image':showlabel==false}">
+            <i *ngFor="let cardimage of cardGroupData" [style.color]="cardimage.color" [attr.class]="cardimage.iconName" style="font-size:40px"></i>
+        </div>
+
+
+        <div class="cardNumber">
+            <label *ngIf="showlabel">CARD NUMBER</label>
+            <input type="text" placeholder="CARD NUMBER" maxlength="19" class="input-control" [ngModel]="dummyCreditCardNumber" (ngModelChange)="onChangeCardNumber($event)"
+                [value]="cardNumberValue" #inp="ngModel" [ngClass]="{'input-control-success':validPatternCard,'input-control-failure':(!validPatternCard && (inp.dirty || inp.touched))}"
+                (keyup)="onInput(inp)" />
+        </div>
+
+        <div [ngClass]="{'expiration-date-label':showlabel==true,'expiration-date':showlabel==false}">
             <label *ngIf="showlabel">EXP DATE</label>
-            <div class="expiration-dateSglCol">
-                <div class="monthSglCol">
-                    <select [ngModel]="dummyMonth" (ngModelChange)="onChangeMonth($event)" placeholder="MM" style="padding:10px">
+            <div class="exp-month-date-label">
+                <div class="month">
+                    <select [ngModel]="dummyMonth" (ngModelChange)="onChangeMonth($event)" style="padding:10px" placeholder="MM">
                         <option *ngFor="let months of dateData">{{months.month}}</option>
                     </select>
                 </div>
-                <div class="dateSglCol">
-                    <select [(ngModel)]="creditCardModel.expYear"   (ngModelChange)="onChangeYear($event)"   yearControl="yearControl" style="padding:10px" placeholder="YY">
+                <div class="date">
+                    <select [(ngModel)]="creditCardModel.expYear" (ngModelChange)="onChangeYear($event)" yearControl="yearControl" style="padding:10px"
+                        placeholder="YY">
                         <option *ngFor="let year of yearList">{{year}}</option>
                     </select>
                 </div>
             </div>
-            <div class="cvvSglCol">
-                <label *ngIf="showlabel">CVV</label>
-                <input #inpcvv="ngModel" [ngClass]="{'input-control-success':isCvvValid,'input-control-failure':(!isCvvValid && inpcvv.touched)}"
-                    type="password" placeholder="CVV" maxlength="3" class="input-control" [(ngModel)]="creditCardModel.cvv" (keyup)="onClick(inpcvv)">
-            </div>
+
         </div>
-        </ng-container>
-        <br>
-        <ng-container *ngIf="!templateFlag">
-        <div class="creditCardForm">
-            <div class="owner">
-                <label *ngIf="showlabel">CARD HOLDER NAME</label>
-                <input [ngClass]="{'input-control-success':isNameValid,'input-control-failure':(!isNameValid && inpowner.touched)}" type="text" placeholder="CARD HOLDER NAME"
-                   #inpowner="ngModel" class="input-control" [(ngModel)]="creditCardModel.owner" (keyup)="onNameClick(inpowner)">
-            </div>
-            <div [ngClass]="{'image-label':showlabel==true,'image':showlabel==false}">
-                <i *ngFor="let cardimage of cardGroupData" [style.color]="cardimage.color" [attr.class]="cardimage.iconName" style="font-size:40px"></i>
-            </div>
-        
-        
-            <div class="cardNumber">
-                <label *ngIf="showlabel">CARD NUMBER</label>
-                <input type="text" placeholder="CARD NUMBER" maxlength="19" class="input-control" [ngModel]="dummyCreditCardNumber" (ngModelChange)="onChangeCardNumber($event)"
-                [value]="cardNumberValue"   #inp="ngModel" [ngClass]="{'input-control-success':validPatternCard,'input-control-failure':(!validPatternCard && (inp.dirty || inp.touched))}" (keyup)="onInput(inp)" />
-            </div>
-        
-            <div [ngClass]="{'expiration-date-label':showlabel==true,'expiration-date':showlabel==false}" >
-                <label *ngIf="showlabel">EXP DATE</label>
-                <div class="exp-month-date-label">
-                    <div class="month">
-                        <select [ngModel]="dummyMonth" (ngModelChange)="onChangeMonth($event)" style="padding:10px" placeholder="MM">
-                            <option *ngFor="let months of dateData">{{months.month}}</option>
-                        </select>
-                    </div>
-                    <div class="date">
-                        <select [(ngModel)]="creditCardModel.expYear" (ngModelChange)="onChangeYear($event)" yearControl="yearControl" style="padding:10px" placeholder="YY">
-                            <option *ngFor="let year of yearList">{{year}}</option>
-                        </select>
-                    </div>
-                </div>
-        
-            </div>
-        
-            <div class="cvv">
-                <label *ngIf="showlabel">CVV</label>
-                <input #inpcvv="ngModel" [ngClass]="{'input-control-success':isCvvValid,'input-control-failure':(!isCvvValid && (inpcvv.dirty ||inpcvv.touched))}"
-                    type="password" placeholder="CVV" maxlength="3" class="input-control" [(ngModel)]="creditCardModel.cvv" (keyup)="onClick(inpcvv)">
-            </div>
+
+        <div class="cvv">
+            <label *ngIf="showlabel">CVV</label>
+            <input #inpcvv="ngModel" [ngClass]="{'input-control-success':isCvvValid,'input-control-failure':(!isCvvValid && (inpcvv.dirty ||inpcvv.touched))}"
+                type="password" placeholder="CVV" maxlength="3" class="input-control" [(ngModel)]="creditCardModel.cvv" (keyup)="onClick(inpcvv)">
         </div>
-        </ng-container>
+    </div>
+</ng-container>

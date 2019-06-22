@@ -18,14 +18,11 @@
                 <span class="">
                     {{fromdate | date: 'yy'}}
                 </span>
-                <span>
-                    <!-- <br> -->
-                    <!-- <code> -->
+                <span> 
                     <h6 style="padding: 0%; margin:1%; opacity:0.5">
                         {{fromdate | date: 'EEEE'}}
                     </h6>
-                    <!-- </code> -->
-                </span>
+                 </span>
             </span>
   
         </div>
@@ -46,13 +43,11 @@
                     {{todate | date: 'yy'}}
                 </span>
                 <span>
-                    <!-- <br> -->
-                    <!-- <code> -->
+ 
                     <h6 style="padding: 0%; margin:1%; opacity:0.5">
                         {{todate | date: 'EEEE'}}
                     </h6>
-                    <!-- </code> -->
-                </span>
+                 </span>
             </span>
         </div>
   
@@ -70,8 +65,7 @@
                                     </span>
                                     <span class="selectedDateField appendBottom8 pointer">
                                         {{fromdate | date: 'dd'}} {{fromdate | date: 'MMM'}} {{fromdate | date: 'yy'}}
-                                        <!-- 15 Sep 19 -->
-                                    </span>
+                                     </span>
                                 </p>
                             </div>
                             <div class="font16 blackText lactoBlack dashed appendRight30"> - </div>
@@ -82,8 +76,7 @@
                                     </span>
                                     <span class="selectedDateField appendBottom8 pointer">
                                         {{todate | date: 'dd'}} {{todate | date: 'MMM'}} {{todate | date: 'yy'}}
-                                        <!-- 15 Sep 19 -->
-                                    </span>
+                                     </span>
                                 </p>
                             </div>
                         </div>
@@ -92,15 +85,11 @@
                 </div>
             </div>
         </div>
-        <!--  -->
-        <!-- [@changeState]="dropdownstyle.visibility" [ngStyle]="dropdownstyle"  -->
-        <div style="position: absolute; width:100%; padding-right:5px;">
+          <div style="position: absolute; width:100%; padding-right:5px;">
             <div style="display: inline-flex; flex-flow: wrap;box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);">
   
                 <ng-container *ngFor="let itemdaysArray of  completeDaysArray; index as i">
-                    <!-- {{itterablemontharray | json}} -->
-                    <!-- <ng-container *ngIf=" item % 3 == 0 " ng> -->
-  
+                     
                     <span [ngStyle]="{'padding-left': ((i+1) > count) ? '28px':'0px'}">
   
   
@@ -110,8 +99,7 @@
                                 <!-- datepicker header starts and contains: 4 angles drop icon and title -->
                                 <div aria-label="datetimepicker header" class="datetimepickertopbar" aria-label="datepicker header" [ngStyle]="{'display': datepicker ? 'block' : 'none'}">
                                     <ul>
-                                        <!-- 
-                          -->
+                              
                                         <li>
                                             <span (click)="updateMonthList('minus',$event)" (keyup.enter)="updateMonthList('minus',$event)" [ngStyle]="{'cursor': backarrowflag ? 'not-allowed':'pointer'}"
                                                 *ngIf="itemdaysArray.prevarrow" tabindex="0" role="button" aria-label="Previous Month">
@@ -126,8 +114,7 @@
                                                 <i class="fa fa-arrow-right arrowiconshadow" [ngStyle]="{'opacity': forwardarrowflag ? '0.2' : ''}" style="float:right" aria-hidden="true"></i>
                                             </span>
                                             <span class="title" style="cursor:auto">
-                                                <!-- {{itemdaysArray.month}} -->
-                                                {{itemdaysArray.date | date:'MMMM'}} {{itemdaysArray.date | date:'y'}}
+                                                 {{itemdaysArray.date | date:'MMMM'}} {{itemdaysArray.date | date:'y'}}
                                             </span>
   
                                         </li>
@@ -160,8 +147,7 @@
                         </span>
   
                     </span>
-                    <!-- </ng-container> -->
-                </ng-container>
+                 </ng-container>
             </div>
         </div>
     </div>
