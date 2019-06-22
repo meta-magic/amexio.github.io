@@ -1,3 +1,4 @@
+ <ul>
  <li>
     <div *ngIf="enableborder" class="border"></div>
     <div tabindex="1" (keyup.enter)="onenterClick(currentdivref,nodedata)" *ngIf="label || badge || icon"
@@ -45,3 +46,4 @@
         <ng-content *ngIf="!isShowOnlyIcon"></ng-content>
     </div>
 </li>
+</ul>

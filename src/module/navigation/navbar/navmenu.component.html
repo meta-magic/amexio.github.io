@@ -2,11 +2,11 @@
   <a class="nav-dropbtn" style="white-space: nowrap" [ngStyle]="{'color':color}" 
     (click)="onHeaderClick($event)">
     <span [style.padding-left.px]="icon ? 0 : 10">
-      <i *ngIf="icon" [ngClass]="icon"></i>
+      <em *ngIf="icon" [ngClass]="icon"></em>
     </span>
     <span>{{title}}</span>
     <span>
-      <i *ngIf="!mobilemode" class="dropdownicon fa fa-angle-down"></i>
+      <em *ngIf="!mobilemode" class="dropdownicon fa fa-angle-down"></em>
       <em *ngIf="mobilemode && showMenus" class="dropdownicon fa fa-angle-up"></em>
       <em *ngIf="mobilemode && !showMenus" class="dropdownicon fa fa-angle-down"></em>
     </span>

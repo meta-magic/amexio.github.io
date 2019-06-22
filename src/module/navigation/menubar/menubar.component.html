@@ -23,7 +23,7 @@
                                             <amexio-c-icon *ngIf="subnode.icon" [customclass]="subnode.icon"></amexio-c-icon>&nbsp;&nbsp;{{subnode.text}}
                                          </div>
                                         <div *ngIf="subnode.image" style="padding: 10px;">
-                                            <img [attr.src]="subnode.image">
+                                            <img [attr.src]="subnode.image" alt="">
                                         </div>
                                         <ul class="menu-content-cols">
                                             <li *ngFor="let subinnernode of subnode.children let subinnerindex = index"
@@ -31,7 +31,7 @@
                                                 id={{subinnernode.index}} (keyup)="updownInnerChildNavigation($event,subinnerindex,subnode.children,subinnernode,node)"
                                                 class="menulinks">
                                                 <div *ngIf="subinnernode.image" style="padding: 10px;">
-                                                    <img [attr.src]="subinnernode.image">
+                                                    <img [attr.src]="subinnernode.image" alt="">
                                                 </div>
                                                  
                                                 <amexio-c-icon *ngIf="subinnernode.icon" key="menubar_ravelry">
@@ -54,7 +54,7 @@
                                         <ul class="menu-content-cols">
                                             <li *ngFor="let subnode of node.children" class="menulinks">
                                                 <div *ngIf="subnode.image" style="padding: 10px;">
-                                                    <img [attr.src]="subnode.image">
+                                                    <img [attr.src]="subnode.image" alt="">
                                                 </div>
                                                  <amexio-c-icon *ngIf="subnode.icon" key="menubar_ravelry"></amexio-c-icon>&nbsp;&nbsp;{{subnode.text}}
                                             </li>
