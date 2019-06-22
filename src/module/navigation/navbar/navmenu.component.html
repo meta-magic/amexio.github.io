@@ -7,8 +7,8 @@
     <span>{{title}}</span>
     <span>
       <i *ngIf="!mobilemode" class="dropdownicon fa fa-angle-down"></i>
-      <i *ngIf="mobilemode && showMenus" class="dropdownicon fa fa-angle-up"></i>
-      <i *ngIf="mobilemode && !showMenus" class="dropdownicon fa fa-angle-down"></i>
+      <em *ngIf="mobilemode && showMenus" class="dropdownicon fa fa-angle-up"></em>
+      <em *ngIf="mobilemode && !showMenus" class="dropdownicon fa fa-angle-down"></em>
     </span>
   </a>
   <amexio-nav-desktop  *ngIf="showMenus && !mobilemode"  class="amexio-nav-submenus amexio-nav-desktop-submenus"  [nodes]="data" [ngStyle]="{'right': (position === 'right') ? '10px':null}"></amexio-nav-desktop>

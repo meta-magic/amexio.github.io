@@ -4,7 +4,7 @@
         <ng-container>
             <div [@changeState]="(item.active) ? 'block'+type+'-'+navigationType:'none'+type+'-'+navigationType" [ngStyle]="{display: (item.active) ? 'block':'none'}"
                 class="ce-caroueslimages">
-                <img src="{{item.imagepath}}" style='height: 100%; width: 100%; object-fit: cover' />
+                <img src="{{item.imagepath}}" alt="" style='height: 100%; width: 100%; object-fit: cover' />
             </div>
 
             <ng-container *ngIf="itemTemplate">
@@ -20,7 +20,7 @@
                 <a class="ce-caroueslnav-prev">
                     <span>Previous</span>
                     <div (click)="previousClick(i)" (mouseenter)="onPreBtnHover(i)">
-                        <img src="{{preImagePath}}" style='height: 100%; width: 100%; object-fit: cover; cursor:pointer' />
+                        <img src="{{preImagePath}}" alt="" style='height: 100%; width: 100%; object-fit: cover; cursor:pointer' />
 
                     </div>
                 </a>

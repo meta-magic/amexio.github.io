@@ -8,7 +8,7 @@
     <div class="nav-mobile-link"  [ngClass]="{'nav-menu-mobile-separator': (node.separator && !node.separatorHeader)}">
 
         <span class="flex-inline" (click)="toggleMenu($event,node)">
-            <i *ngIf="icon" [ngClass]="node.icon"></i>
+            <em *ngIf="icon" [ngClass]="node.icon"></em>
             <span style="flex-grow: 1;">{{node.text}}</span>
             <i *ngIf="node.submenus" class="fa fa-angle-down" aria-hidden="true"></i>
         </span>
