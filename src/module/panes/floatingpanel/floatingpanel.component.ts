@@ -50,6 +50,8 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
 
     @Input() resizable: boolean;
     @Input() draggable: boolean;
+    opacitiy = false;
+
     pos1 = 0;
     pos2 = 0;
 
@@ -111,7 +113,7 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
             if (!this.documentMouseUPListener) {
                 this.documentMouseUPListener = this.renderer.listen('document', 'mouseup',
                     // tslint:disable-next-line:no-shadowed-variable
-                    (event: any) => this.closeDragElement());
+                    (event: any) => this.closeDragElement(floatingPanel));
             }
 
             if (!this.documentMouseMoveListener) {
@@ -133,13 +135,17 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
         }
         floatingPanel.style.top = (floatingPanel.offsetTop - this.pos2) + 'px';
         floatingPanel.style.left = (floatingPanel.offsetLeft - this.pos1) + 'px';
+        floatingPanel.style.opacity = '0.7';
+        this.opacitiy = true;
     }
 
-    closeDragElement() {
+    closeDragElement(floatingPanel: any) {
         this.documentMouseMoveListener();
         this.documentMouseUPListener();
         this.documentMouseMoveListener = null;
         this.documentMouseUPListener = null;
+        this.opacitiy = false;
+        floatingPanel.style.opacity = 'unset';
     }
     togglePanel() {
         this.showPanel = !this.showPanel;
