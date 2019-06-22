@@ -66,6 +66,8 @@ export class AmexioCalendarComponent implements OnInit {
 
     @Output('onEventClicked') onEventClicked = new EventEmitter<any>();
 
+    @Output('onMoreEventClick') onMoreEventClick = new EventEmitter<any>();
+
     constructor() {
         this.currentState = CALENDAR.MONTH;
         this.headertype = CALENDAR.SHORT;
@@ -73,6 +75,10 @@ export class AmexioCalendarComponent implements OnInit {
         this.events = [];
         this.adu = new AmexioDateUtils();
         this.weekHeaders = { title: CALENDAR.ALL_DAY_TEXT, daywiseevent: null, time: null };
+    }
+
+    onMoreEventClicked() {
+        this.onMoreEventClick.emit(event);
     }
 
     ngOnInit() {
