@@ -12,7 +12,7 @@
                                  class="ce-flip-card-front" 
                                  *ngIf="flip || zoom"
                         [ngStyle]="{'height': height , 'width': width }">
-                        <img [src]="coverimage" class="img-fluid" style="height: 100%; width: 100%" />
+                        <img [src]="coverimage" alt="" class="img-fluid" style="height: 100%; width: 100%" />
                 </div>
 
                 <div [ngClass]="{'ce-flip-card-back': flip , 'ce-zoom-card-back':zoom, 'card-container-ce ' : !(flip && !zoom)}"

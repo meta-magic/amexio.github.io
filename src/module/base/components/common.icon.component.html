@@ -12,11 +12,11 @@
 <ng-container *ngIf="iconLoaderService.iconToUse == 'mat'">
 
     <ng-container *ngIf="customclass != null">
-        <i [ngStyle]="{'color':color}" class="material-icons" (click)="onClick.emit($event)">{{customclass}}</i>
+        <em [ngStyle]="{'color':color}" class="material-icons" (click)="onClick.emit($event)">{{customclass}}</em>
     </ng-container>
 
     <ng-container *ngIf="customclass == null">
-        <i [ngStyle]="{'color':color}" class="material-icons" (click)="onClick.emit($event)">{{iconClass}}</i>
+        <em [ngStyle]="{'color':color}" class="material-icons" (click)="onClick.emit($event)">{{iconClass}}</em>
     </ng-container>
 
 

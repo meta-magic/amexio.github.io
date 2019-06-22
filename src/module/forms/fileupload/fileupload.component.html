@@ -20,9 +20,11 @@
 </ng-container>
 
 <div class='file-upload-box' style='width: 100%'>
-    <li *ngFor='let file of uploadedFiles ; let index = index' class='file-upload-info'>
-        <span class='uploaded-file-name'>({{file.name}} &nbsp; &nbsp; ({{file.size}}) )</span>
-        <amexio-c-icon key='tab_close' class='close-icon' (onClick)='closeFile(file,index)'>
-        </amexio-c-icon>
-    </li>
+    <ul>
+            <li *ngFor='let file of uploadedFiles ; let index = index' class='file-upload-info'>
+                    <span class='uploaded-file-name'>({{file.name}} &nbsp; &nbsp; ({{file.size}}) )</span>
+                    <amexio-c-icon key='tab_close' class='close-icon' (onClick)='closeFile(file,index)'>
+                    </amexio-c-icon>
+                </li>
+    </ul>
 </div>

@@ -9,16 +9,16 @@
         {{errormsg}}
     </div>
     <div *ngIf="!isNumberComponent && minerrormsg">
-        <b>Min Length:</b> {{minerrormsg}} 
+        <strong>Min Length:</strong> {{minerrormsg}} 
     </div>
     <div *ngIf="!isNumberComponent && maxerrormsg">
-        <b>Max Length: </b> {{maxerrormsg}} 
+        <strong>Max Length: </strong> {{maxerrormsg}} 
     </div> 
     <div *ngIf="isNumberComponent && minvalue && minvalue >0 && minerrormsg">
-        <b>Min Value:</b> {{minerrormsg}} 
+        <strong>Min Value:</strong> {{minerrormsg}} 
     </div>
     <div *ngIf="isNumberComponent && maxvalue && maxvalue >0 && maxerrormsg">
-        <b>Max Value:</b> {{maxerrormsg}} 
+        <strong>Max Value:</strong> {{maxerrormsg}} 
     </div>
   
 </div>

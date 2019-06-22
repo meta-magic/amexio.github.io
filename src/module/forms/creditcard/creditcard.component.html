@@ -2,8 +2,8 @@
 
     <div class="creditCardFormSglCol">
         <div class="imageSglCol">
-            <i *ngFor="let cardimage of cardGroupData" [style.color]="cardimage.color" [attr.class]="cardimage.iconName" style="font-size:50px">
-            </i>
+            <em *ngFor="let cardimage of cardGroupData" [style.color]="cardimage.color" [attr.class]="cardimage.iconName" style="font-size:50px">
+            </em>
         </div>
         <div class="ownerdetailsSglCol">
             <label *ngIf="showlabel">CARD HOLDER NAME</label>
@@ -51,7 +51,7 @@
                 (keyup)="onNameClick(inpowner)">
         </div>
         <div [ngClass]="{'image-label':showlabel==true,'image':showlabel==false}">
-            <i *ngFor="let cardimage of cardGroupData" [style.color]="cardimage.color" [attr.class]="cardimage.iconName" style="font-size:40px"></i>
+            <em *ngFor="let cardimage of cardGroupData" [style.color]="cardimage.color" [attr.class]="cardimage.iconName" style="font-size:40px"></em>
         </div>
 
 

@@ -43,11 +43,11 @@
                                     {{col.themeName}}
                                 </label>
                                 <span *ngIf="testmode" style="cursor: pointer;" (click)="themeChange(col)">
-                                    <i class="fa fa-check"></i>
+                                    <em class="fa fa-check"></em>
                                 </span>
                             </header>
                             <div *ngIf="isMoreDetails" class="card-body cardbody">
-                                <img [attr.alt]="col.themeName" [attr.src]="'assets/amexiomdathemes/images/'+col.themeImageFile"
+                                <img [attr.alt]="col.themeName" alt="" [attr.src]="'assets/amexiomdathemes/images/'+col.themeImageFile"
                                     class="img-fluid" />
                                 <br />
                                 <label role="text" style="outline: none; cursor: text;" class="label-content small-bold">

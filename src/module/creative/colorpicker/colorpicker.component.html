@@ -10,7 +10,7 @@
     <input type="text" class="input-control" name="value" [(ngModel)]="value" />
     <span *ngIf="value" style="display: inline-block; width:32px; height:32px;" [style.background]="value"></span>
     &nbsp;
-    <i class="fa fa-paint-brush" style="cursor: pointer;"></i>
+    <em class="fa fa-paint-brush" style="cursor: pointer;"></em>
   </div>
 
   <div  *ngIf="showColorPicker || inlineColorPicker " [@changeState]="showColorPicker "

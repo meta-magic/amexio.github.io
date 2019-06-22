@@ -140,7 +140,6 @@ export class AmexioFileUploadComponent implements OnInit, AfterViewInit {
           this.uploadFile(f, true);
         }
       }
-    } else {
     }
   }
 
