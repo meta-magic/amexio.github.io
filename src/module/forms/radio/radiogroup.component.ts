@@ -295,6 +295,7 @@ export class AmexioRadioGroupComponent extends ValueAccessorBase<string> impleme
   }
 
   onClick(row: any, event: any) {
+    event.preventDefault();
     for (const r of this.data) {
       if (r.selected) {
         r.selected = false;
@@ -311,7 +312,6 @@ export class AmexioRadioGroupComponent extends ValueAccessorBase<string> impleme
         this.onSelection.emit(this.listCopy);
         delete row.tabindex;
         this.isComponentValid.emit(true);
-        this.onSelection.emit(row);
         const obj = {};
         obj['row'] = row;
         obj['event'] = event;
