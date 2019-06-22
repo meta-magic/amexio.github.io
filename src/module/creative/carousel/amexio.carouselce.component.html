@@ -1,10 +1,9 @@
 <br />
 <div class="wrapper" #tab>
-    <div *ngFor="let item of imageData ;let i=index"
-        style="width: 100%; height: 100%;  position: relative;  display: flex; overflow: hidden;">
+    <div *ngFor="let item of imageData ;let i=index" style="width: 100%; height: 100%;  position: relative;  display: flex; overflow: hidden;">
         <ng-container>
-            <div [@changeState]="(item.active) ? 'block'+type+'-'+navigationType:'none'+type+'-'+navigationType"
-                [ngStyle]="{display: (item.active) ? 'block':'none'}" class="ce-caroueslimages">
+            <div [@changeState]="(item.active) ? 'block'+type+'-'+navigationType:'none'+type+'-'+navigationType" [ngStyle]="{display: (item.active) ? 'block':'none'}"
+                class="ce-caroueslimages">
                 <img src="{{item.imagepath}}" style='height: 100%; width: 100%; object-fit: cover' />
             </div>
 
@@ -16,17 +15,12 @@
 
         </ng-container>
 
-        <div class="ce-caroueslbar" 
-        [ngStyle]="{'opacity': translucent ? '0.7' : 'inherit'}"
-            [style.background]="barBGColor">
+        <div class="ce-caroueslbar" [ngStyle]="{'opacity': translucent ? '0.7' : 'inherit'}" [style.background]="barBGColor">
             <div class="ce-caroueslnav">
                 <a class="ce-caroueslnav-prev">
                     <span>Previous</span>
                     <div (click)="previousClick(i)" (mouseenter)="onPreBtnHover(i)">
-                        <!-- <amexio-image [path]='preImagePath'>
-                                </amexio-image> -->
-                        <img src="{{preImagePath}}"
-                            style='height: 100%; width: 100%; object-fit: cover; cursor:pointer' />
+                        <img src="{{preImagePath}}" style='height: 100%; width: 100%; object-fit: cover; cursor:pointer' />
 
                     </div>
                 </a>
@@ -34,8 +28,7 @@
                     <span>Next</span>
                     <div (click)="nextClick(i)" (mouseenter)="onNextBtnHover(i)">
 
-                        <img src="{{nextImagePath}}"
-                            style='height: 100%; width: 100%; object-fit: cover; cursor:pointer' />
+                        <img src="{{nextImagePath}}" style='height: 100%; width: 100%; object-fit: cover; cursor:pointer' />
 
                     </div>
                 </a>

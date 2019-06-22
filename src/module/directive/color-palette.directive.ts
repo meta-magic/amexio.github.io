@@ -38,29 +38,29 @@ export class ColorPaletteDirective implements OnInit {
       },
       {
         themeName: 'amexio-theme-color6',
-      }],
-      this.gradientThemeJson = [
-        {
-          themeName: 'amexio-theme-color1-Gradient',
-        },
-        {
-          themeName: 'amexio-theme-color2-Gradient',
-        },
-        {
-          themeName: 'amexio-theme-color3-Gradient',
-        },
-        {
-          themeName: 'amexio-theme-color4-Gradient',
-        },
-        {
-          themeName: 'amexio-theme-color5-Gradient',
-        },
-        {
-          themeName: 'amexio-theme-color6-Gradient',
-        },
-      ],
+      }];
+    this.gradientThemeJson = [
+      {
+        themeName: 'amexio-theme-color1-Gradient',
+      },
+      {
+        themeName: 'amexio-theme-color2-Gradient',
+      },
+      {
+        themeName: 'amexio-theme-color3-Gradient',
+      },
+      {
+        themeName: 'amexio-theme-color4-Gradient',
+      },
+      {
+        themeName: 'amexio-theme-color5-Gradient',
+      },
+      {
+        themeName: 'amexio-theme-color6-Gradient',
+      },
+    ];
 
-      this.hostComponent = this._viewContainerRef['_data'].componentView.component;
+    this.hostComponent = this._viewContainerRef['_data'].componentView.component;
     if (this.colorPalette === 'classic' && !this.gradient) {
       this.hostComponent.setColorPalette(ColorPaletteConstants.amexioClassicTheme);
     } else if (this.colorPalette === 'classic' && this.gradient) {
