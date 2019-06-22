@@ -6,7 +6,7 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
     position: relative;
-    z-index: 1;
+    /* z-index: 1; */
 }
 
 .fpClass amexio-floating-panel div {

@@ -17,6 +17,8 @@ export class AmexioCalendarMonthComponent implements OnInit {
 
     @Output('onEventClicked') onEventClicked = new EventEmitter<any>();
 
+    @Output('onMorePanelClose') onMorePanelClose = new EventEmitter<any>();
+
     @Output('onMoreEventClicked') onMoreEventClicked = new EventEmitter<any>();
     openFloatingPanel = false;
     ariadatalabel: any;
@@ -60,7 +62,7 @@ export class AmexioCalendarMonthComponent implements OnInit {
 
     onCloseClick(event: any) {
         event.data.fpFlag = false;
-
+        this.onMorePanelClose.emit(event);
     }
 
     onChipClick(event: any) {

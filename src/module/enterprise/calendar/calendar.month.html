@@ -71,7 +71,7 @@
 
                                                             <div [ngClass]="{fpClass: !isLast, fpRightClass: isLast}">
                                                                 <amexio-floating-panel #panel [(show-panel)]="day.eventDetails.events.fpFlag" [relative]="true" [closeable]="true" [width]="'270'"
-                                                                    [height]="200" [title]="day.eventDetails.events[0].eventDateTime|date :'mediumDate'"
+                                                                     [title]="day.eventDetails.events[0].eventDateTime|date :'mediumDate'"
                                                                     (onClose)="onCloseClick({event: $event, data: day.eventDetails.events})">
 
 
@@ -79,10 +79,12 @@
                                                                         <amexio-layout-item [fit]="true">
 
                                                                             <amexio-layout-columns [fit]="true" [border]="false" [orientation]="'vertical'" [alignment]="start">
-                                                                                <amexio-layout-item *ngFor="let item of  day.eventDetails.events">
+                                                                                <amexio-layout-item>
 
-                                                                                    <amexio-chip [label]="item.title" [color]="'gray'" [closable]="false" [font-color]="'white'" (labelClick)="onChipClick({event: $event,item: item})">
-                                                                                    </amexio-chip>
+                                                                                    <!-- <amexio-chip [label]="item.title" [color]="'gray'" [closable]="false" [font-color]="'white'" (labelClick)="onChipClick({event: $event,item: item})">
+                                                                                    </amexio-chip> -->
+                                                                                    <amexio-chips [data]="day.eventDetails.events" (selectedchipsData)="onChipClick($event)" [display-field]="'title'"></amexio-chips>
+
                                                                                 </amexio-layout-item>
                                                                             </amexio-layout-columns>
                                                                         </amexio-layout-item>
