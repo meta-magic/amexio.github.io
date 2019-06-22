@@ -12,6 +12,11 @@
 .chips:hover{
     background:$chipsHoverBG;
    }
+
+   .chips label{
+    padding-top: 5px;
+  }
+  
 .badge{
     padding: .0em .4em;
     font-size: small;

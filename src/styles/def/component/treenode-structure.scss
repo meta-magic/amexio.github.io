@@ -99,3 +99,13 @@ border-radius: 10px;
   display: block;
 }
 
+.tree-node-label-no-wrap {
+  white-space: nowrap;
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  }
+

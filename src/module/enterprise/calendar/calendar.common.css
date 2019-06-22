@@ -8,3 +8,12 @@ table {
     position: relative;
     z-index: 1;
 }
+
+.fpClass amexio-floating-panel div {
+    bottom: 0px;
+    }
+    
+    .fpRightClass amexio-floating-panel div {
+      bottom: 0px;
+      right: 0px;
+      }

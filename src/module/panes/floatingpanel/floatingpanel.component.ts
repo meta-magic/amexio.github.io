@@ -32,6 +32,8 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
 
     @Input('show-panel') showPanel = false;
 
+    @Output() showPanelChange = new EventEmitter<any>();
+
     @Input('arrow') arrow: boolean;
     themeCss: any;
     amexioComponentId = 'amexio-floating-panel';
@@ -150,6 +152,7 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
     togglePanel() {
         this.showPanel = !this.showPanel;
         this.onclose.emit(this);
+        this.showPanelChange.emit(this.showPanel);
     }
     panelStyle(): any {
         this.style = {};

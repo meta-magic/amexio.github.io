@@ -1,11 +1,11 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
     selector: 'amexio-calendar-month',
     templateUrl: './calendar.month.html',
     styleUrls: ['./calendar.common.css'],
 })
-export class AmexioCalendarMonthComponent {
+export class AmexioCalendarMonthComponent implements OnInit {
 
     @Input('headers') headers: any[];
 
@@ -13,11 +13,58 @@ export class AmexioCalendarMonthComponent {
 
     @Input('calendar-row') calendarRow: any[];
 
+    @Input('no-of-events') noOfEvents: number;
+
     @Output('onEventClicked') onEventClicked = new EventEmitter<any>();
+
+    @Output('onMoreEventClicked') onMoreEventClicked = new EventEmitter<any>();
+    openFloatingPanel = false;
     ariadatalabel: any;
     focusrindex: number;
     focusiindex: number;
-    constructor() {
+    constructor() {}
+    ngOnInit() {
+        this.moreEventsMethod();
+    }
+
+    moreEventsMethod() {
+        if (this.calendaryData) {
+            this.calendaryData.forEach((calendarRow) => {
+                calendarRow.forEach((day: any) => {
+                    if (day.eventDetails && day.eventDetails.events) {
+                        if (day.eventDetails.events.length > this.noOfEvents) {
+                            day.eventDetails.events['moreEventFlag'] = true;
+                        } else {
+                            day.eventDetails.events['moreEventFlag'] = false;
+                        }
+                    }
+
+                });
+            });
+        }
+    }
+
+    onMoreClicked(event: any, data: any) {
+        if (this.calendaryData) {
+            this.calendaryData.forEach((calendarRow) => {
+                calendarRow.forEach((day: any) => {
+                    if (day.eventDetails) {
+                        day.eventDetails.events.fpFlag = false;
+                    }
+                });
+            });
+        }
+        data['fpFlag'] = true;
+        this.openFloatingPanel = true;
+    }
+
+    onCloseClick(event: any) {
+        event.data.fpFlag = false;
+
+    }
+
+    onChipClick(event: any) {
+        this.onMoreEventClicked.emit(event);
     }
 
     eventClicked(event1: any, eventData: any) {

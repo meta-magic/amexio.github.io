@@ -62,6 +62,8 @@ export class AmexioCalendarComponent implements OnInit {
     }
     @Input('event-color-grouping') eventColorGrouping: boolean;
 
+    @Input('no-of-events') noOfEvents = 2;
+
     @Output('onEventClicked') onEventClicked = new EventEmitter<any>();
 
     constructor() {

@@ -24,7 +24,7 @@
             (click)="setState('year')">Year</button>
     </div>
 </div>
-<amexio-calendar-month *ngIf="(currentState === 'month')" [headers]="displayHeaders" [calendar-data]="calendarMonthData"
+<amexio-calendar-month *ngIf="(currentState === 'month')" [no-of-events]="noOfEvents"  [headers]="displayHeaders" [calendar-data]="calendarMonthData"
     [calendar-row]="calendarRow" (onEventClicked)="onMonthEvent($event)">
 </amexio-calendar-month>
 <amexio-calendar-day-timewise *ngIf="(currentState === 'week' || currentState === 'day')" [headers]="displayHeaders" [calendar-data]="calendarWeekData"
