@@ -13,8 +13,8 @@
   >
   
      <div   class='floatingpanel-header'  name="floatingheader"
-    
-     style="cursor: move"
+      [ngStyle]="{'cursor': (draggable) ? 'move':null}"
+     
      [style.margin]="resizable  ? '-5px -5px 0px -5px': ''"
        [ngClass]="themeCss" >        
            <div class="flex-spacebetween">
