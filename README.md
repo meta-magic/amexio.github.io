@@ -171,10 +171,11 @@ UI Components powered by HTML5 & CSS3 for <b>Responsive Web Design & 80+ built-
 - [Showcase](http://showcase.amexio.org): Amexio Demo Apps for Standard, Enterprise and Creative Editions
 - [API Docs](http://api.amexio.org): Amexio API Documentation
 - [Brochure](https://api.amexio.org/AmexioBrochure.pdf): Amexio API Brochure
-- [Video Tutorials](https://www.youtube.com/watch?v=zpfpfnOV6Y0&list=PLi505KVOMPrGRUgJF4C3QoXbrhFGEOI4j)
+- [Video Tutorials](https://www.youtube.com/watch?v=zpfpfnOV6Y0&list=PLi505KVOMPrGRUgJF4C3QoXbrhFGEOI4j): 2+ Hours of Tutorials
 - [Beta Version](http://beta.amexio.org): Amexio Beta version API Docs
 - [Amexio Support](https://amexio.tech/support): Basic support is free. Paid Support - Bronze, Silver, Gold Packages
 - [Quality Assurance](https://amexio.tech/quality-assurance): Quality Assurance Details and Dashboard
+- [Roadmap](https://amexio.tech/roadmap): All the release details and future releases,
 
 ## Angular CLI - Installation
 
