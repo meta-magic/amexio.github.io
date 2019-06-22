@@ -8,8 +8,8 @@
 </h1>
 
 <div align="center">
-  <b>Amexio (Angular MetaMagic EXtensions for Inputs and Outputs)</b> is a rich set of  160+  Angular (4/5/6)
-UI Components powered by HTML5 & CSS3 for <b>Responsive Web Design & 80+ built-in Material Design Themes.</b> Components includes Form components, charts, maps, dashboards, Tabs, Grids, Trees, Layouts etc <b>with Accessibility support and Animation effect</b>. We added <b>D3 Charts support </b>with <b>Amexio Drillable Charts</b> option. We augmented the <b>Amexio Layouts</b> with more layout options and brought <b>CSS3 Grid Layout</b> to Amexio with Responsive Design Pattern.
+  <b>Amexio (Angular MetaMagic EXtensions for Inputs and Outputs)</b> is a rich set of  160+  Angular (4/5/6/7/8)
+UI Components powered by HTML5 & CSS3 for <b>Responsive Web Design & 80+ built-in Material Design Themes.</b> Components includes Form components, charts, maps, dashboards, Tabs, Grids, Trees, Layouts etc <b>with Accessibility support and Animation effect</b>. We added <b>D3 Charts support </b>with <b>Amexio Drillable Charts</b> option. We augmented the <b>Amexio Layouts</b> with more layout options and brought <b>CSS3 Grid Layout</b> to Amexio with Responsive Design Pattern. Amexio comes in three flavours - Standard Edition, Enterprise Edition and Creative Edition, All the ediitions are open source and free.
 
 </div>
 <br/>
@@ -99,15 +99,15 @@ UI Components powered by HTML5 & CSS3 for <b>Responsive Web Design & 80+ built-
       Website
     </a>
     <span> | </span>
-    <a href="http://api.amexio.tech">
+    <a href="http://api.amexio.org">
       API Docs
     </a>
     <span> | </span>
-    <a href="http://demo.amexio.tech/">
+    <a href="http://demo.amexio.org/">
       Demo SE
     </a>
     <span> | </span>
-    <a href="http://eedemo.amexio.tech/">
+    <a href="http://eedemo.amexio.org/">
       Demo EE
     </a>
     <span> | </span>
@@ -152,7 +152,7 @@ UI Components powered by HTML5 & CSS3 for <b>Responsive Web Design & 80+ built-
 
 ## Features
 
-- __Pure TypeScript:__ Amexio is a pure Typescript library with 0 Dependencies & Angular 4/5/6 Support.
+- __Pure TypeScript:__ Amexio is a pure Typescript library with 0 Dependencies & Angular 4/5/6/7/8 Support.
 - __160+ High Grade Components:__ We make sure you're nothing short of while building your app.
 - __Forms:__ Amexio API supports both Template Driven Forms and Reactive Forms. 
 - __Layouts:__ With v5.4 release More than half a dozen layout options are supported including CSS3 Grids. 
@@ -165,6 +165,16 @@ UI Components powered by HTML5 & CSS3 for <b>Responsive Web Design & 80+ built-
 - __Modular Support:__ Load Only what you want, amexio is Modular.
 - __FOSS:__ Amexio API is Free and Open Source Software based on Apache 2 License
 
+## Amexio References
+
+- [Home Page](http://www.amexio.tech): Amexio Suite of Products
+- [Showcase](http://showcase.amexio.org): Amexio Demo Apps for Standard, Enterprise and Creative Editions
+- [API Docs](http://api.amexio.org): Amexio API Documentation
+- [Brochure](https://api.amexio.org/AmexioBrochure.pdf): Amexio API Brochure
+- [Video Tutorials](https://www.youtube.com/watch?v=zpfpfnOV6Y0&list=PLi505KVOMPrGRUgJF4C3QoXbrhFGEOI4j)
+- [Beta Version](http://beta.amexio.org): Amexio Beta version API Docs
+- [Amexio Support](https://amexio.tech/support): Basic support is free. Paid Support - Bronze, Silver, Gold Packages
+- [Quality Assurance](https://amexio.tech/quality-assurance): Quality Assurance Details and Dashboard
 
 ## Angular CLI - Installation
 
