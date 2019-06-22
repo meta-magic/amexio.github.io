@@ -19,7 +19,7 @@ export class AmexioThemeSwitcherComponent implements OnInit, OnChanges {
 
     @Input('relative') relative = false;
 
-    @Input('button-type') buttonType: string;
+    @Input('button-type') buttonType = 'floatingbutton';
 
     @Input('horizontal-position') horizontalPosition = 'right';
 
@@ -35,7 +35,8 @@ export class AmexioThemeSwitcherComponent implements OnInit, OnChanges {
 
     respo: any = [];
     positionMapData: string[];
-
+    isFloatingButton = false;
+    isSimpleButton = false;
     constructor(private service: AmexioThemeSwitcherService) {
         this.positionMapData = [];
         this.positionMapData['hpos-right'] = { position: 'right', value: '10px' };
@@ -46,6 +47,11 @@ export class AmexioThemeSwitcherComponent implements OnInit, OnChanges {
     }
 
     ngOnInit() {
+        if (this.buttonType === 'floatingbutton') {
+          this.isFloatingButton = true;
+        }else if (this.buttonType === 'button') {
+            this.isSimpleButton = true;
+        }
         if (this.relative && !this.closeable) {
             this.show = true;
         }

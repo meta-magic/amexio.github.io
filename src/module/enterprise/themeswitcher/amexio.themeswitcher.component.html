@@ -1,10 +1,10 @@
-<ng-container>
+<ng-container *ngIf="isFloatingButton">
     <amexio-floating-button *ngIf="!relative" style="position: fixed; right: 10px; bottom: 25px;" (onClick)="togglePanel()" [relative]="true"
         [icon]="'fa fa-ellipsis-v'" [type]="'red'">
     </amexio-floating-button>
 </ng-container>
 <div style="display: block; position: relative; width: 100%;">
-    <ng-container>
+    <ng-container *ngIf="isSimpleButton">
         <amexio-button *ngIf="closeable" [label]="'Theme Selector'" [type]="'theme-color'" [tooltip]="'Theme Selector'" (onClick)="togglePanel()">
         </amexio-button>
     </ng-container>
