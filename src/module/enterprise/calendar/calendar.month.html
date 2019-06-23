@@ -82,6 +82,9 @@
                                                                                 <amexio-layout-item *ngFor="let item of day.eventDetails.events">
                                                                                     <amexio-chip [label]="item.title" [color]="'gray'" [closable]="false" [font-color]="'white'" (selectedchipData)="onChipClick({event: $event,item: item})">
                                                                                     </amexio-chip>
+                                                                                    <br>
+&nbsp;&nbsp;
+
                                                                                     {{item.details.start | date: "shortTime"}} - {{item.details.end | date: "shortTime"}}
 
                                                                                    <br>
