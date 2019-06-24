@@ -21,7 +21,7 @@
           <div class="tree-node-label" *ngIf="templates == null">
             <div class="tree-node-label" *ngIf="node.icon" [ngClass]="node.icon" aria-hidden="true" style="padding-right: 5px;">
             </div>
-            <div class="tree-node-label">
+            <div class="tree-node-label" [ngClass]="{'a':!wordwrap}">
               {{node[displaykey]}}
               <ng-container *ngIf="badge && node.badge">
                 <span class="tree-badge">{{node.badge}}</span>
@@ -39,7 +39,7 @@
   </div>
   <div class="treenode-children" style="display: block;" *ngIf="node.expand && node[childarraykey] && (node[childarraykey].length>0)">
     <amexio-treeview [child-array-key]="childarraykey" [display-key]="displaykey" [enable-drag]="enabledrag"
-      [enable-drop]="enabledrop" [data]="node[childarraykey]"  [dragData]="dragData" [parentRef]="parentRef" (onDrag)=onDragStart($event)
+      [enable-drop]="enabledrop" [word-wrap]="wordwrap" [data]="node[childarraykey]"  [dragData]="dragData" [parentRef]="parentRef" (onDrag)=onDragStart($event)
       (onDrop)=drop($event) (nodeClick)="onNodeClick($event)" (dragleave)="($event)" (nodeRightClick)="loadContextMenu($event)"
       [across-tree]="acrosstree" [templates]="templates"
        [global-tree-data]="globalTreeData"
