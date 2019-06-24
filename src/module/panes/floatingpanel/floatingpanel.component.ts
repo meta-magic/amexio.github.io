@@ -51,7 +51,7 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
     //  resize and draggable functionality variables
 
     @Input() resizable: boolean;
-    @Input() draggable: boolean;
+    @Input() draggable = true;
     opacitiy = false;
 
     pos1 = 0;
