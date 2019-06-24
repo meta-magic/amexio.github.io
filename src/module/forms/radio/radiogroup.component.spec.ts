@@ -21,6 +21,8 @@ describe('amexio-radio-group-component', () => {
     });
     fixture = TestBed.createComponent(AmexioRadioGroupComponent);
     comp = fixture.componentInstance;
+    event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
+
   });
 
   it('check for condition', () => {
@@ -41,34 +43,72 @@ describe('amexio-radio-group-component', () => {
   });
 
   it('check checkValidity method', () => {
-
     comp.checkValidity();
-    comp.isValid =  true;
+    comp.isValid = true;
     expect(comp.isValid).toBe(true);
   });
 
-   //on focus()
-   it('on focus()', () => {
+  //on focus()
+  it('on focus()', () => {
     //comp.showToolTip=true;
     let flag = true;
     comp.onFocus();
     expect(comp.tabFocus).toEqual(flag);
   })
 
+  // get value method check 
   it('initialize innervalue', () => {
-    comp.value = 'date';
+    comp.value = 'value';
     expect(comp['innerValue']).toEqual(comp.value);
   });
 
 
 
-   //on onBlur()
-   it('on onBlur()', () => {
+  //on onBlur()
+  it('on onBlur()', () => {
     //comp.showToolTip=true;w
-    let flag = false;
-    comp.onFocus();
-    expect(comp.tabFocus).not.toEqual(flag);
-  })
 
+    comp.onBlur();
+    expect(comp.tabFocus).toEqual(false);
+  });
 
+  // onRegistertouch method check
+  it('register on touched', () => {
+    let fn: any;
+    comp.registerOnTouched(fn);
+    expect(comp['onTouchedCallback']).toEqual(fn);
+  });
+  //  onRegisterChange method check 
+  it('register on change', () => {
+    let fn: any;
+    comp.registerOnChange(fn);
+    expect(comp['onChangeCallback']).toEqual(fn);
+  });
+  //
+
+  // write value method check 
+  it('writeValue()', () => {
+    comp.writeValue(fixture);
+    expect(comp.value).toEqual(fixture);
+  });
+
+  // onclick method check
+
+  // it('check onClick  method', () => {
+  //   let clickData: any;
+  //   let ev: any;
+  //   let ok = { event: ev, row: clickData }
+
+  //   comp.onClick(clickData, ev);
+  //   // event = { preventDefault: function () {} };
+
+  //   expect(comp.isValid).toEqual(true);
+
+  //   comp.onSelection.subscribe((g: any) => {
+  //     expect(ok).toEqual(g);
+  //   });
+  //   comp.onSelect.subscribe((g: any) => {
+  //     expect(clickData).toEqual(g);
+  //   })
+  // });
 });
