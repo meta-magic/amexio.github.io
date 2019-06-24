@@ -70,7 +70,7 @@
 
 
                                                             <div [ngClass]="{fpClass: !isLast, fpRightClass: isLast}">
-                                                                <amexio-floating-panel #panel [(show-panel)]="day.eventDetails.events.fpFlag" [relative]="true" [closeable]="true" [width]="'270'"
+                                                                <amexio-floating-panel #panel [(show-panel)]="day.eventDetails.events.fpFlag" [relative]="true" [closeable]="true" [width]="'200'"
                                                                     [title]="day.eventDetails.events[0].eventDateTime|date :'mediumDate'"
                                                                     (onClose)="onCloseClick({event: $event, data: day.eventDetails.events})">
 
@@ -80,14 +80,11 @@
 
                                                                             <amexio-layout-columns [fit]="true" [border]="false" [orientation]="'vertical'" [alignment]="start">
                                                                                 <amexio-layout-item *ngFor="let item of day.eventDetails.events">
-                                                                                    <amexio-chip [label]="item.title" [color]="'gray'" [closable]="false" [font-color]="'white'"
-                                                                                     (labelClick)="onChipClick({event: $event,item: item})">
-                                                                                    </amexio-chip>
-                                                                                    <br> &nbsp;&nbsp; {{item.details.start |
+                                                                                 {{item.details.start |
                                                                                     date: "shortTime"}} - {{item.details.end
                                                                                     | date: "shortTime"}}
-
                                                                                     <br>
+                                                                                    <a style="color: blue; cursor:pointer" (click)="onChipClick({event: $event,item: item})"><u>{{item.title}}</u></a>
 
                                                                                 </amexio-layout-item>
                                                                             </amexio-layout-columns>
