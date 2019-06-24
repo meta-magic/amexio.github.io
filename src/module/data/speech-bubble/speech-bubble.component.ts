@@ -18,7 +18,7 @@ export class SpeechBubbleComponent extends EventBaseComponent<any> implements On
 
   @Input('menu-option') data: any;
 
-  @Input('enable-time') enabletime: any;
+  @Input('enable-time') enabletime: boolean;
 
   @Output() onClick: any = new EventEmitter<any>();
 
@@ -28,7 +28,7 @@ export class SpeechBubbleComponent extends EventBaseComponent<any> implements On
     super(renderer, element, _cd);
   }
   ngOnInit() {
-    this.todaydate = new Date(this.enabletime);
+    this.todaydate = new Date();
   }
   onarrowClick(event: any) {
     if (this.arrowpress) {
