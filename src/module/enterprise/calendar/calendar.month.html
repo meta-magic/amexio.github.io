@@ -79,7 +79,7 @@
                                                                         <amexio-layout-item [fit]="true">
 
                                                                             <amexio-layout-columns [fit]="true" [border]="false" [orientation]="'vertical'" [alignment]="start">
-                                                                                <amexio-layout-item *ngFor="let item of day.eventDetails.events">cd <script></script>
+                                                                                <amexio-layout-item *ngFor="let item of day.eventDetails.events">
                                                                                     <amexio-chip [label]="item.title" [color]="'gray'" [closable]="false" [font-color]="'white'"
                                                                                      (labelClick)="onChipClick({event: $event,item: item})">
                                                                                     </amexio-chip>
