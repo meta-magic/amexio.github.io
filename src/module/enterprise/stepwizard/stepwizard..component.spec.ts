@@ -24,11 +24,11 @@ describe('amexio-step-wizard', () => {
     });
 
      // check variables 
-     it('check variables ', () => {
-        expect(comp.data).toEqual({});
-        expect(comp.isPhone).toEqual(false);
+    //  it('check variables ', () => {
+    //     expect(comp.data).toEqual({});
+    //     expect(comp.isPhone).toEqual(false);
 
-    });
+    // });
 
 
 

@@ -20,7 +20,7 @@ export class AmexioThemeSwitcherService {
 
   switchTheme(theme: any) {
     let response: any;
-    this._http.get('assets/amexiomdathemes/json/' + theme.themeJSONFile).subscribe((data) => {
+    this._http.get('https://api.amexio.org/api/mda/' + theme.themeJSONFile).subscribe((data) => {
       response = data;
     }, (error) => {
     }, () => {
