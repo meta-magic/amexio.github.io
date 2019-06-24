@@ -319,6 +319,7 @@ description : Set enable / disable popover.
   multiselectValues: any[] = [];
   maskloader = true;
   activedescendant = 'aria-activedescendant';
+  key = 'index';
   // The internal dataviews model
 
   @Output() isComponentValid: any = new EventEmitter<any>();
@@ -444,6 +445,7 @@ description : Set enable / disable popover.
             this.isValid = true;
             this.isComponentValid.emit(true);
             this.displayValue = item[displayKey];
+            delete item[this.key];
             this.onSingleSelect.emit(item);
           }
         });
@@ -471,6 +473,7 @@ description : Set enable / disable popover.
       this.value = selectedItem[this.valuefield];  // Issue here?
       this.displayValue = this.displayFieldService.findValue(this.displayfield, selectedItem);
       this.multiselect ? this.showToolTip = true : this.showToolTip = false;
+      delete selectedItem[this.key];
       this.onSingleSelect.emit(selectedItem);
     }
     this.isValid = true;
