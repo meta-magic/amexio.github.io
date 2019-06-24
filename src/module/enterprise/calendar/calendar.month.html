@@ -71,7 +71,7 @@
 
                                                             <div [ngClass]="{fpClass: !isLast, fpRightClass: isLast}">
                                                                 <amexio-floating-panel #panel [(show-panel)]="day.eventDetails.events.fpFlag" [relative]="true" [closeable]="true" [width]="'270'"
-                                                                     [title]="day.eventDetails.events[0].eventDateTime|date :'mediumDate'"
+                                                                    [title]="day.eventDetails.events[0].eventDateTime|date :'mediumDate'"
                                                                     (onClose)="onCloseClick({event: $event, data: day.eventDetails.events})">
 
 
@@ -79,15 +79,15 @@
                                                                         <amexio-layout-item [fit]="true">
 
                                                                             <amexio-layout-columns [fit]="true" [border]="false" [orientation]="'vertical'" [alignment]="start">
-                                                                                <amexio-layout-item *ngFor="let item of day.eventDetails.events">
-                                                                                    <amexio-chip [label]="item.title" [color]="'gray'" [closable]="false" [font-color]="'white'" (selectedchipData)="onChipClick({event: $event,item: item})">
+                                                                                <amexio-layout-item *ngFor="let item of day.eventDetails.events">cd <script></script>
+                                                                                    <amexio-chip [label]="item.title" [color]="'gray'" [closable]="false" [font-color]="'white'"
+                                                                                     (labelClick)="onChipClick({event: $event,item: item})">
                                                                                     </amexio-chip>
+                                                                                    <br> &nbsp;&nbsp; {{item.details.start |
+                                                                                    date: "shortTime"}} - {{item.details.end
+                                                                                    | date: "shortTime"}}
+
                                                                                     <br>
-&nbsp;&nbsp;
-
-                                                                                    {{item.details.start | date: "shortTime"}} - {{item.details.end | date: "shortTime"}}
-
-                                                                                   <br>
 
                                                                                 </amexio-layout-item>
                                                                             </amexio-layout-columns>
