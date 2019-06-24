@@ -39,4 +39,34 @@ describe('amexio-floating-panel', () => {
 
     });
 
+    it('ngOnInit()', () => {
+        comp.ngOnInit();
+        comp.absolute = true;
+        expect(comp.absolute).toEqual(true);
+        comp.height = 200;
+        expect(comp.height).toBe(200);
+
+        comp.width = 400;
+        expect(comp.width).toBe(400);
+        comp.draggable = false;
+        expect(comp.draggable).toEqual(false);
+        comp.showPanel = true;
+        expect(comp.showPanel).toEqual(true);
+
+
+    });
+    it('checking togglePanel method', () => {
+
+        comp.togglePanel();
+        comp.showPanel = false;
+        expect(comp.showPanel).toEqual(false);
+        comp.onclose.subscribe((g: any) => {
+            expect(comp.onclose).toEqual(g);
+        });
+        comp.showPanelChange.subscribe((g: any) => {
+            expect(comp.showPanelChange).toEqual(g);
+        });
+
+    });
+
 });
