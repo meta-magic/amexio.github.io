@@ -43,12 +43,14 @@
   --theme4thColor: #222220;
   --theme5thColor: #212220;
   --theme6thColor: #202220;
+  --themePrimaryDarker: #030203;
   --themePrimaryColorHSLA: hsla(330,3%,13%,0.0);
   --themeSecondaryColorHSLA: hsla(220,2%,29%,0.0);
   --theme3rdColorHSLA: hsla(30,3%,13%,0.0);
   --theme4thColorHSLA: hsla(60,3%,13%,0.0);
   --theme5thColorHSLA: hsla(90,3%,13%,0.0);
   --theme6thColorHSLA: hsla(120,3%,13%,0.0);
+  --themePrimaryDarkerHSLA: hsla(300,20%,1%,0.0);
   /** Primary Color shades -------------------------- */
   --themePrimaryColorShade0: #050003;
   --themePrimaryColorShade1: #38001c;
@@ -64,6 +66,7 @@
   --theme4thColorGradient: linear-gradient(to right, #383800, #e0e000, #ffff5c);
   --theme5thColorGradient: linear-gradient(to right, #1c3800, #70e000, #adff5c);
   --theme6thColorGradient: linear-gradient(to right, #003800, #00e000, #5cff5c);
+  --themePrimaryDarkerGradient: linear-gradient(to right, #380038, #e000e0, #ff5cff);
   /** Theme Font Family -------------------------- */
   --themeFontColor: #1f000f;
   --themeFontFamily: Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
@@ -73,6 +76,7 @@
   --theme4thFontColor: #f5f5f4;
   --theme5thFontColor: #f5f5f4;
   --theme6thFontColor: #f4f5f4;
+  --themePrimaryDarkerFontColor: #fdfcfd;
   /** Theme Additional Std CSS Colors : Light and Dark shades --- */
   --amexioColorRedLight: #ff7f50;
   --amexioColorRedDark: #dc143c;
@@ -476,6 +480,10 @@ image using the content attribute.
   color: #000000; }
 
 /* You can add global styles to this file, and also import other style files */
+.amexio-primary-darker-color {
+  background-color: var(--themePrimaryDarker) !important;
+  color: var(--themePrimaryDarkerFontColor) !important; }
+
 .amexio-theme-color1 {
   background-color: var(--themePrimaryColor) !important;
   color: var(--themePrimaryFontColor) !important; }
@@ -499,6 +507,10 @@ image using the content attribute.
 .amexio-theme-color6 {
   background-color: var(--theme6thColor) !important;
   color: var(--theme6thFontColor) !important; }
+
+.amexio-primary-darker-color-Gradient {
+  background-image: var(--themePrimaryDarkerGradient) !important;
+  color: white !important; }
 
 .amexio-theme-color1-Gradient {
   background-image: var(--themePrimaryColorGradient) !important;
@@ -4158,6 +4170,9 @@ input:checked + .largeType2ToggleSlider:before {
 .chips:hover {
   background: var(--componentHoverBGColor); }
 
+.chips label {
+  padding-top: 5px; }
+
 .badge {
   padding: .0em .4em;
   font-size: small;
@@ -5667,6 +5682,25 @@ amexio-homepage-centerpanel .homepage-centerpanel {
   border-right: 1px solid #ced4da; }
 
 /****************************************************************************
+    Component Name : Calendar
+    Version : Amexio v5.13 onwards
+*****************************************************************************/
+.fpClass amexio-floating-panel div {
+  bottom: 0px;
+  z-index: 300 !important; }
+
+.fpRightClass amexio-floating-panel div {
+  bottom: 0px;
+  right: 0px;
+  z-index: 300 !important; }
+
+.fpClass amexio-floating-panel div .card-container-body {
+  height: 100% !important; }
+
+.fpRightClass amexio-floating-panel div .card-container-body {
+  height: 100% !important; }
+
+/****************************************************************************
     Component Name : Datapoints
     Version : Amexio v4.0 onwards
 *****************************************************************************/
@@ -6166,7 +6200,12 @@ amexio-homepage-centerpanel .homepage-centerpanel {
   white-space: nowrap;
   display: inline-block;
   vertical-align: middle;
-  cursor: pointer; }
+  cursor: pointer;
+  max-width: 100%;
+  overflow: hidden; }
+
+.a {
+  text-overflow: ellipsis; }
 
 .tree-node-label-hover {
   width: 95%; }
@@ -6203,6 +6242,15 @@ amexio-homepage-centerpanel .homepage-centerpanel {
   font-size: 14px !important;
   padding: 5px;
   display: block; }
+
+.tree-node-label-no-wrap {
+  white-space: nowrap;
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis; }
 
 /****************************************************************************
     Component Name : PropertyGrid
@@ -6276,7 +6324,7 @@ amexio-homepage-centerpanel .homepage-centerpanel {
   content: "";
   border-style: solid;
   position: absolute;
-  left: -26px;
+  left: -25px;
   border-width: 15px 26px 10px 0; }
 
 .speecharrowright:after {
@@ -6321,6 +6369,22 @@ amexio-homepage-centerpanel .homepage-centerpanel {
   right: 34px;
   border-style: solid;
   border-width: 0 15px 15px; }
+
+.time {
+  opacity: 0.5;
+  position: absolute;
+  padding-top: 17px; }
+
+.timeclass {
+  right: 20px; }
+
+.timeright {
+  padding-top: 27px;
+  padding-right: 30px; }
+
+.timeleft {
+  padding-top: 27px;
+  padding-left: 30px; }
 
 /****************************************************************************
     Component Name : Menubar
@@ -6517,6 +6581,63 @@ amexio-homepage-centerpanel .homepage-centerpanel {
   color: var(--componentFontColor); }
 
 /** navbar - Structure CSS **/
+.amexio-nav-submenus {
+  display: block;
+  z-index: 3;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.6);
+  background-color: var(--appHeaderBGColor);
+  color: var(--appHeaderFontColor);
+  padding: 10px; }
+
+.amexio-nav-desktop-submenus {
+  width: 250px;
+  position: absolute; }
+
+.amexio-nav-mobile-submenus {
+  padding: 0px;
+  position: relative; }
+
+.amexio-nav-desktop-submenus .nav-desktop-link:hover {
+  background-color: var(--appHeaderHoverBGColor);
+  color: var(--appHeaderHoverFontColor); }
+
+.nav-desktop-link {
+  color: var(--appHeaderFontColor);
+  text-decoration: none;
+  display: inline-block;
+  text-align: left;
+  padding: 5px 10px;
+  margin: 0px -10px; }
+
+.nav-desktop-link > span {
+  padding: 10px 0px;
+  align-items: center; }
+
+.nav-desktop-link > i {
+  margin: 0px 5px; }
+
+.nav-menu-separator {
+  margin: 0px -10px;
+  border-top: 1px solid; }
+
+.nav-menu-header {
+  padding: 5px 5px;
+  opacity: 0.6;
+  font-weight: 600; }
+
+.nav-mobile-link {
+  color: var(--appHeaderFontColor);
+  text-decoration: none;
+  display: inline-block;
+  text-align: left; }
+
+.nav-mobile-link > span {
+  margin: 0px 30px 0px 50px;
+  align-items: center; }
+
+.nav-menu-mobile-separator {
+  border-top: 1px solid; }
+
 .topnav {
   position: fixed;
   width: 100%;
@@ -6618,7 +6739,7 @@ amexio-homepage-centerpanel .homepage-centerpanel {
   margin-top: 20px;
   margin-right: 20px; }
 
-.nav-dropdown .nav-dropbtn i {
+.nav-dropdown .nav-dropbtn em {
   padding: 0px 5px;
   margin-bottom: 2px; }
 
@@ -8960,6 +9081,10 @@ amexio-layout amexio-layout-item {
 .floatarrow:after {
   border-color: var(--theme6thColor) transparent; }
 
+.floatingpanel-header {
+  background: var(--componentHeaderBGColor);
+  color: var(--componentHeaderFontColor); }
+
 /** Amexio slidingpanel Structure CSS **/
 .floatarrow:after {
   content: "";
@@ -8968,6 +9093,26 @@ amexio-layout amexio-layout-item {
   left: 30px;
   border-style: solid;
   border-width: 0 15px 15px; }
+
+.floatingpanel-header {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  z-index: 1; }
+
+.floatingpanel-header .floatingpanel-header-div {
+  height: auto; }
+
+.floatingpanel-header > * {
+  padding-right: 10px;
+  margin-top: 0px; }
+
+.floatingpanel-header-icon-div {
+  position: absolute;
+  right: 0%;
+  padding: 5px 10px; }
 
 /****************************************************************************
     Component Name : Border Layout
@@ -9348,7 +9493,9 @@ amexio-layout-columns amexio-layout-item {
   position: absolute;
   width: 100%;
   height: 100%;
-  backface-visibility: hidden; }
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d; }
 
 .ce-flip-card-back {
   transform: rotateY(180deg);
@@ -9360,7 +9507,8 @@ amexio-layout-columns amexio-layout-item {
   /* IE 9 */
   -webkit-transform: scale(1.2);
   /* Safari 3-8 */
-  transform: scale(1.2); }
+  transform: scale(1.2);
+  z-index: 300 !important; }
   .card-container-ce-main-zoom:hover .ce-zoom-card-front {
     display: block; }
   .card-container-ce-main-zoom:hover .ce-zoom-card-back {
@@ -9368,7 +9516,6 @@ amexio-layout-columns amexio-layout-item {
     display: block;
     display: flex;
     flex-direction: column;
-    color: var(--componentFontColor);
     background: var(--componentBGColor);
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); }
 
