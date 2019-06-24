@@ -6243,15 +6243,6 @@ amexio-homepage-centerpanel .homepage-centerpanel {
   padding: 5px;
   display: block; }
 
-.tree-node-label-no-wrap {
-  white-space: nowrap;
-  display: inline-block;
-  vertical-align: middle;
-  cursor: pointer;
-  max-width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis; }
-
 /****************************************************************************
     Component Name : PropertyGrid
     Version : Amexio v5.8.2 onwards
