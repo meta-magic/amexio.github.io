@@ -46,13 +46,29 @@ describe('amexio-radio-group-component', () => {
     comp.isValid =  true;
     expect(comp.isValid).toBe(true);
   });
-  // it('should emit greeting event onClick', () => {
-  //   let row: any;
-  //   comp.onClick(row);
-  //   comp.onSelection.subscribe((g: any) => {
-  //     expect(row).toEqual(g);
-  //   });
-  // });
+
+   //on focus()
+   it('on focus()', () => {
+    //comp.showToolTip=true;
+    let flag = true;
+    comp.onFocus();
+    expect(comp.tabFocus).toEqual(flag);
+  })
+
+  it('initialize innervalue', () => {
+    comp.value = 'date';
+    expect(comp['innerValue']).toEqual(comp.value);
+  });
+
+
+
+   //on onBlur()
+   it('on onBlur()', () => {
+    //comp.showToolTip=true;w
+    let flag = false;
+    comp.onFocus();
+    expect(comp.tabFocus).not.toEqual(flag);
+  })
 
 
 });
