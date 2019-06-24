@@ -22,6 +22,9 @@ export class ColorPaletteDirective implements OnInit {
   ngOnInit() {
     this.themejson = [
       {
+        themeName: 'amexio-primary-darker-color',
+      },
+      {
         themeName: 'amexio-theme-color1',
       },
       {
@@ -40,6 +43,9 @@ export class ColorPaletteDirective implements OnInit {
         themeName: 'amexio-theme-color6',
       }];
     this.gradientThemeJson = [
+      {
+        themeName: 'amexio-primary-darker-color-Gradient',
+      },
       {
         themeName: 'amexio-theme-color1-Gradient',
       },
@@ -95,7 +101,7 @@ export class ColorPaletteDirective implements OnInit {
         break;
       }
       case (ColorPaletteConstants.banner): {
-        hostComponent.setColorPalette(ColorPaletteConstants.amexioTheme4);
+        hostComponent.setColorPalette(ColorPaletteConstants.amexioPrimaryDarkerTheme);
         break;
       }
       case (ColorPaletteConstants.navbar): {
@@ -144,7 +150,7 @@ export class ColorPaletteDirective implements OnInit {
         break;
       }
       case (ColorPaletteConstants.banner): {
-        hostComponent.setColorPalette(ColorPaletteConstants.amexioThemeGradient4);
+        hostComponent.setColorPalette(ColorPaletteConstants.amexioPrimaryDarkerGradient);
         break;
       }
       case (ColorPaletteConstants.navbar): {

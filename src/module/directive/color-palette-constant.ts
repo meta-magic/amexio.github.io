@@ -11,6 +11,9 @@ export class ColorPaletteConstants {
     static banner = 'amexio-banner';
     static floatingpanel = 'amexio-floating-panel';
 
+    static amexioPrimaryDarkerTheme = 'amexio-primary-darker-color';
+    static amexioPrimaryDarkerGradient = 'amexio-primary-darker-color-Gradient';
+
     static amexioClassicTheme = 'amexio-theme-color1';
     static amexioClassicThemeGradient = 'amexio-theme-color1-Gradient';
 

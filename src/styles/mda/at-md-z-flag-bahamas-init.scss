@@ -23,6 +23,7 @@
 --theme4thColor : #8100c7;
 --theme5thColor : #c700a9;
 --theme6thColor : #c70046;
+--themePrimaryDarker : #00687a;
 
 --themePrimaryColorHSLA : hsla(189,100%,39%,0.0);
 --themeSecondaryColorHSLA : hsla(52,95%,62%,0.0);
@@ -30,6 +31,7 @@
 --theme4thColorHSLA : hsla(279,100%,39%,0.0);
 --theme5thColorHSLA : hsla(309,100%,39%,0.0);
 --theme6thColorHSLA : hsla(339,100%,39%,0.0);
+--themePrimaryDarkerHSLA : hsla(189,100%,24%,0.0);
 
 /** Primary Color shades -------------------------- */
 --themePrimaryColorShade0 : #000405;
@@ -47,6 +49,7 @@
 --theme4thColorGradient : linear-gradient(to right, #240038, #9200e0, #c65cff);
 --theme5thColorGradient : linear-gradient(to right, #380030, #e000bf, #ff5ce7);
 --theme6thColorGradient : linear-gradient(to right, #380014, #e0004f, #ff5c95);
+--themePrimaryDarkerGradient : linear-gradient(to right, #003038, #00bfe0, #5ce7ff);
 
 /** Theme Font Family -------------------------- */
 --themeFontColor : #001a1f;
@@ -58,6 +61,7 @@
 --theme4thFontColor : #fbf5ff;
 --theme5thFontColor : #fffafe;
 --theme6thFontColor : #fffafc;
+--themePrimaryDarkerFontColor : #f0fdff;
 
 /** Theme Additional Std CSS Colors : Light and Dark shades --- */
 --amexioColorRedLight : #ff7f50;
@@ -112,6 +116,7 @@ $theme3rdColor : var(--theme3rdColor);
 $theme4thColor : var(--theme4thColor);
 $theme5thColor : var(--theme5thColor);
 $theme6thColor : var(--theme6thColor);
+$themePrimaryDarker: var(--themePrimaryDarker);
 
 /** Primary Color shades -------------------------- */
 $themePrimaryColorShade0 : var(--themePrimaryColorShade0);
@@ -129,6 +134,7 @@ $theme3rdColorGradient : var(--theme3rdColorGradient);
 $theme4thColorGradient : var(--theme4thColorGradient);
 $theme5thColorGradient : var(--theme5thColorGradient);
 $theme6thColorGradient : var(--theme6thColorGradient);
+$themePrimaryDarkerGradient: var(--themePrimaryDarkerGradient);
 
 /** Theme Font Family -------------------------- */
 $themeFontColor : var(--themeFontColor);
@@ -140,6 +146,7 @@ $theme3rdFontColor : var(--theme3rdFontColor);
 $theme4thFontColor : var(--theme4thFontColor);
 $theme5thFontColor : var(--theme5thFontColor);
 $theme6thFontColor : var(--theme6thFontColor);
+$themePrimaryDarkerFontColor: var(--themePrimaryDarkerFontColor);
 
 /** Theme Additional Std Colors : Light and Dark shades --- */
 $amexioColorRedLight : var(--amexioColorRedLight);

@@ -356,6 +356,12 @@ image using the content attribute.
 
 
 // Change the Position of these CSS
+
+.amexio-primary-darker-color{
+    background-color: $themePrimaryDarker !important;
+    color: $themePrimaryDarkerFontColor !important;
+    }
+
 .amexio-theme-color1{
     background-color: $themePrimaryColor !important;
     color: $themePrimaryFontColor !important;
@@ -381,7 +387,11 @@ image using the content attribute.
     color: $theme6thFontColor !important;
     }
     
-    
+    .amexio-primary-darker-color-Gradient{
+        background-image: $themePrimaryDarkerGradient !important;
+    color: white !important;
+    }
+
     .amexio-theme-color1-Gradient{
         background-image: $themePrimaryColorGradient !important;
     color: white !important;
