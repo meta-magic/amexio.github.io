@@ -207,6 +207,8 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
 
     contextStyle: any;
 
+    destroyExpandAll: any;
+
     mouseLocation: { left: number; top: number } = { left: 0, top: 0 };
 
     globalClickListenFunc: () => void;
@@ -258,12 +260,16 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
         }
     }
     public expandAll(node: any) {
-        this.expandAllCall(this.parentRef);
+        this.destroyExpandAll = setTimeout(() => {
+            if (this.parentRef) {
+                this.expandAllCall(this.parentRef);
+            }
+        }, 0);
     }
 
     expandAllCall(node: any) {
         node.forEach((childCheck: any) => {
-            if (childCheck.expand.hasOwnProperty('expand')) {
+            if (childCheck.hasOwnProperty('expand')) {
                 if (!childCheck.expand) {
                     childCheck.expand = true;
                 }
@@ -691,5 +697,8 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
 
     ngOnDestroy(): void {
         this.removeListner();
+        if (this.destroyExpandAll) {
+            this.destroyExpandAll.unsubscribe();
+        }
     }
 }
