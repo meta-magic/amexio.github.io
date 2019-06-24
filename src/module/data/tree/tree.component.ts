@@ -166,19 +166,12 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
    description : Context Menu provides the list of menus on right click.
    */
     @Input('context-menu') contextmenu: any[];
-    /*
-    Properties
-    name :  wordwrap
-    datatype : boolean
-    version : 5.15 onwards
-    default : true
-    description : It will show ... when set to false.
-*/
-    @Input('word-wrap') wordwrap = true;
 
     @Input() parentRef: any;
 
     @Input('filter-tree-flag') filtertreeflag = false;
+
+    @Input('word-wrap') wordwrap = true;
 
     @ContentChild('amexioTreeTemplate') parentTmp: TemplateRef<any>;
     /*
@@ -705,7 +698,7 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
     ngOnDestroy(): void {
         this.removeListner();
         if (this.destroyExpandAll) {
-            this.destroyExpandAll.unsubscribe();
+            clearTimeout(this.destroyExpandAll);
         }
     }
 }
