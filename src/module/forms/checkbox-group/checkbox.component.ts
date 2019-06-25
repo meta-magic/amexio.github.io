@@ -45,12 +45,13 @@ export class CheckboxComponent implements OnInit {
   constructor(@Host() private checkboxGroup: AmexioCheckBoxGroupComponent) { }
 
   toggleCheck() {
-    if (!this.checked) {
-      this.checkboxGroup.add(this.value);
+    if (this.checked) {
+      this.checked = !this.checked;
+      this.value.checked = this.checked;
     } else {
-      this.checkboxGroup.remove(this.value);
+      this.value['checked'] = true;
     }
-    this.checked = !this.checked;
+    this.checkboxGroup.emitData();
   }
 
   isChecked() {
@@ -66,11 +67,6 @@ export class CheckboxComponent implements OnInit {
 
   ngOnInit() {
     this.componentId = this.createCompId('checkbox', this.name);
-    setTimeout(() => {
-      if (this.checked) {
-        this.checkboxGroup.add(this.value);
-      }
-    }, 200);
   }
 
   createCompId(inputType: any, name: any) {

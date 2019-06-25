@@ -139,6 +139,7 @@ export class AmexioCheckBoxGroupComponent extends ValueAccessorBase<any>
 
   componentId: string;
 
+  SelectedCheckBox: any[] = [];
   constructor(private httpService: CommonDataService) {
     super();
   }
@@ -181,39 +182,15 @@ export class AmexioCheckBoxGroupComponent extends ValueAccessorBase<any>
     return false;
   }
 
-   add(value: any) {
-    if (!this.contains(value)) {
-      if (this._model instanceof Array) {
-        this._model.push(value);
-      } else {
-        this._model = [value];
+  emitData() {
+    this.SelectedCheckBox = [];
+    this.data.forEach((node: any) => {
+      if (node.checked) {
+        this.SelectedCheckBox.push(node);
       }
-      this.onChangeCallback(this._model);
-    }
-    this.emitCheckboxes(this._model);
-  }
-
-   remove(value: any) {
-    const index = this._model.indexOf(value);
-    if (!this._model || index < 0) {
-      return;
-    }
-    this._model.splice(index, 1);
-    this.onChangeCallback(this._model);
-    this.emitCheckboxes(this._model);
-  }
-  // THIS METHOD EMMIT SELECTED CHECKBOXES
-  emitCheckboxes(selectedCheckBoxes: any[]) {
-    this.selectedCheckBox = [];
-    if (selectedCheckBoxes && selectedCheckBoxes.length > 0) {
-      selectedCheckBoxes.forEach((obj) => {
-        obj.checked = true;
-        this.selectedCheckBox.push(obj);
-      });
-    }
-    this.onSelection.emit(this.selectedCheckBox);
-  }
-
+    });
+    this.onSelection.emit(this.SelectedCheckBox);
+   }
   public validate(c: FormControl) {
     return (this.required && (this._model && this._model.length > 0)) || !this.required
       ? null
