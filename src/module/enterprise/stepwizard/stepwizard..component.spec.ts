@@ -5,6 +5,7 @@ import { IconLoaderService } from '../../../index';
 import { StepWizardComponent } from './stepwizard.component';
 import { AmexioCreativeModule } from '../../creative/amexio.creative.module';
 import { AmexioMediaModule } from '../../media/amexio.media.module';
+import { DeviceQueryService } from './../../services/device/device.query.service';
 
 describe('amexio-step-wizard', () => {
     let comp: StepWizardComponent;
@@ -12,9 +13,9 @@ describe('amexio-step-wizard', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [FormsModule,AmexioCreativeModule,AmexioMediaModule],
+            imports: [FormsModule, AmexioCreativeModule, AmexioMediaModule],
             declarations: [StepWizardComponent],
-            providers: [IconLoaderService],
+            providers: [IconLoaderService, DeviceQueryService],
         });
         fixture = TestBed.createComponent(StepWizardComponent);
         comp = fixture.componentInstance;
@@ -23,15 +24,19 @@ describe('amexio-step-wizard', () => {
         it('true is true', () => expect(true).toBe(true));
     });
 
-     // check variables 
+    // check variables 
     //  it('check variables ', () => {
     //     expect(comp.data).toEqual({});
     //     expect(comp.isPhone).toEqual(false);
 
     // });
+    it('phonevariable check', () => {
+        comp.isPhone = false;
+    });
 
-
-
+    it('method ngAfterContentInit', () => {
+        const time = new Date().getTime();
+    })
 });
 
 
