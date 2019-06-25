@@ -66,22 +66,22 @@ describe('amexio-steps', () => {
 
     });
 
-    it('ngOnInit method check ', () => {
-        comp.ngOnInit();
-        comp.showdialogue = true;
-        expect(comp.showdialogue).toEqual(true);
-        comp.footeralign = null;
-        comp.ngOnInit();
-        expect(comp.footeralign).toEqual('right');
-        comp.contentalign = null;
-        comp.contentalign = '';
-        comp.ngOnInit();
-        expect(comp.contentalign).toEqual('center');
-        comp.type = null;
-        comp.ngOnInit();
-        expect(comp.type).toEqual('confirm');
+    // it('ngOnInit method check ', () => {
+    //     comp.ngOnInit();
+    //     comp.showdialogue = true;
+    //     expect(comp.showdialogue).toEqual(true);
+    //     comp.footeralign = null;
+    //     comp.ngOnInit();
+    //     expect(comp.footeralign).toEqual('right');
+    //     comp.contentalign = null;
+    //     comp.contentalign = '';
+    //     comp.ngOnInit();
+    //     expect(comp.contentalign).toEqual('center');
+    //     comp.type = null;
+    //     comp.ngOnInit();
+    //     expect(comp.type).toEqual('confirm');
 
-    });
+    // });
 
 
 });
