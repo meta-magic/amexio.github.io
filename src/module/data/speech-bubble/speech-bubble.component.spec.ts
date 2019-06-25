@@ -44,7 +44,9 @@ describe('speechbubl', () => {
  
   it('ngOnInit()', () => {
     comp1.ngOnInit();
-  comp1.todaydate = new Date(comp1.enabletime);
+  // comp1.todaydate = new Date(comp1.enabletime);
+  comp1.todaydate = new Date();
+
   });
 
   it('onarrowClick()', () => {
