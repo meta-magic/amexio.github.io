@@ -254,7 +254,7 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
     }
 
     updateComponent() {
-        if (JSON.stringify(this.previousValue) !== JSON.stringify(this.data) && this.previousValue != null && this.data != null) {
+        if (this.data != null && JSON.stringify(this.previousValue) !== JSON.stringify(this.data)) {
             this.previousValue = JSON.parse(JSON.stringify(this.data));
             this.setData(this.data);
         }
@@ -277,7 +277,7 @@ export class AmexioTreeViewComponent implements AfterViewInit, OnInit, OnDestroy
                 childCheck['expand'] = true;
             }
 
-            if (childCheck.hasOwnProperty(this.childarraykey)) {
+            if (childCheck.hasOwnProperty(this.childarraykey) && childCheck[this.childarraykey] != null) {
                 this.expandAllCall(childCheck[this.childarraykey]);
             }
         });
