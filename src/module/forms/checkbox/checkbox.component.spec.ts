@@ -26,29 +26,28 @@ describe('amexio-checkbox', () => {
   });
 
   //Check if correct field label is applied
-  it('should display correct label', () => {
-    let labelValue = 'UserName';
-    comp.fieldlabel = labelValue;     // => Set the field label
-    fixture.detectChanges();        // Fire Change
-    expect(el.textContent).toContain(labelValue);  // check ?
-  });
+  // it('should display correct label', () => {
+  //   let labelValue = 'UserName';
+  //   comp.fieldlabel = labelValue;     // => Set the field label
+  //   fixture.detectChanges();        // Fire Change
+  //   expect(el.textContent).toContain(labelValue);  // check ?
+  // });
 
   // it('callback method', () => {
   //   comp.onBlur();
   //   comp.tabFocus = false;
   //   comp['onTouchedCallback']();
   // });
-  it('tab Focus varible', () => {
-   comp.tabFocus = false;
-  });
+  // it('tab Focus varible', () => {
+  //  comp.tabFocus = false;
+  // });
 
-  // it('toogle method', () =>{
-  //   comp.isChecked()
+  // it('ngOnInit', () =>{
+  //   comp.ngOnInit();
+  //   comp.componentId =comp.createCompId('checkbox',comp.name);
   // })
-  it('ngOnInit', () =>{
-    comp.componentId =comp.createCompId('checkbox',comp.name);
-  })
-
-
-
+  // it('Toogle method', () =>{
+  //    comp.toogleCheck()
+  // })
+ 
 });
