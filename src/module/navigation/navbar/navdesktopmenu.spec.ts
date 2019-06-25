@@ -59,18 +59,18 @@ describe('navdesktopmenu', () => {
   });
 
     
-it('onMouseOver()', () => {
-  let event;
+// it('onMouseOver()', () => {
+//   let event;
   
-  let node={submenus: 'as'}
-  comp1.onMouseOver(event, node);
-  // debounceTime(200);
-  expect(node.submenus).toEqual(node.submenus);
-  expect(node.submenus.length).toBeGreaterThan(0);
-        // if (node.submenus && node.submenus.length > 0) {
-            node['showInnerMenus'] = true;
-        // }
-});
+//   let node={submenus: 'as'}
+//   comp1.onMouseOver(event, node);
+//   // debounceTime(200);
+//   expect(node.submenus).toEqual(node.submenus);
+//   expect(node.submenus.length).toBeGreaterThan(0);
+//         // if (node.submenus && node.submenus.length > 0) {
+//             node['showInnerMenus'] = true;
+//         // }
+// });
 
 // it('onMouseLeave()', () => {
 //   let event;
