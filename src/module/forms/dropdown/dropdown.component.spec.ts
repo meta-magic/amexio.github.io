@@ -57,10 +57,33 @@ it('onChange() method check', () => {
   expect(comp.innerValue).toBe(value);
   comp.isValid = true;
   expect(comp.isValid).toBe(true);
-  // comp.isComponentValid.subscribe((g: any) => {
-  //   expect(comp.isComponentValid).toEqual(g);
-  // });
+  comp.isComponentValid.subscribe((g: any) => {
+    expect(comp.isComponentValid).toEqual(g);
+  }); 
 });
+
+// closeOnEScape
+it('closeOnEScape() method check', () => {
+  
+  let ev = event
+  comp.closeOnEScape(ev);
+  comp.showToolTip = false;
+  expect(comp.showToolTip).toEqual(false);
+});
+
+// onInput mehtod
+// it('onInput() method check', () => {
+//   let value = comp.input;
+//   comp.onInput(value);
+//   comp.input.subscribe((g: any) => {
+//     expect(comp.input).toEqual(g);
+//   }); 
+
+//   comp.onInput(value);
+//   expect(comp.isValid).toBe(value.vaild);
+
+ 
+// });
 
 
   //multiSelection check

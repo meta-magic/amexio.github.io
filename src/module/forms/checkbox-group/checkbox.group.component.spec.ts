@@ -36,16 +36,7 @@ describe('amexio-checkbox-group', () => {
     expect(comp.selectedCheckBox).toBeUndefined();
   });
 
-  // it('check emitData() method', () => {
-  //   comp.emitData();
-  //   expect(comp.selectedCheckBox).toBe([]);
-
-
-  //   comp.onSelection.subscribe((g: any) => {
-  //     expect(comp.onSelection).toEqual(g);
-  // });
-
-  // });
+  
   // it('checking togglePanel method', () => {
 
 
