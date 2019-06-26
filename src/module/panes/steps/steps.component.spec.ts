@@ -22,18 +22,18 @@ describe('amexio-steps', () => {
     });
 
 
-    it('check onStepClick  method', () => {
-        let clickData: any;
-        let ev: any;
-        comp.onStepClick(clickData,ev);
-        let ok = {event: ev, data: clickData}
-        comp.getStepBlockData.subscribe((g: any) => {
-            expect(ok).toEqual(g);
-        });
-        comp.onClick.subscribe((g: any) => {
-            expect(clickData).toEqual(g);
-        })
-    });
+    // it('check onStepClick  method', () => {
+    //     let clickData: any;
+    //     let ev: any;
+    //     comp.onStepClick(clickData,ev);
+    //     let ok = {event: ev, data: clickData}
+    //     comp.getStepBlockData.subscribe((g: any) => {
+    //         expect(ok).toEqual(g);
+    //     });
+    //     comp.onClick.subscribe((g: any) => {
+    //         expect(clickData).toEqual(g);
+    //     })
+    // });
     // it('ngAfterContentInit method check',() => {
     //     comp.ngAfterContentInit();
     //     expect(comp.data.length).toBeGreaterThan(0);
