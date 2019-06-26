@@ -51,6 +51,17 @@ describe('amexio-dropdown', () => {
   
 });
 
+it('onChange() method check', () => {
+  let value = 'kedar';
+  comp.onChange(value);
+  expect(comp.innerValue).toBe(value);
+  comp.isValid = true;
+  expect(comp.isValid).toBe(true);
+  // comp.isComponentValid.subscribe((g: any) => {
+  //   expect(comp.isComponentValid).toEqual(g);
+  // });
+});
+
 
   //multiSelection check
 

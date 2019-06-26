@@ -14,16 +14,28 @@ import { AmexioCheckBoxGroupComponent } from './checkbox.group.component';
 describe('checkbox', () => {
   let comp: CheckboxComponent;
   let fixture: ComponentFixture<CheckboxComponent>;
+  let comp1: AmexioCheckBoxGroupComponent;
+  let fixture1: ComponentFixture<AmexioCheckBoxGroupComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule, HttpClientModule],
-      declarations: [CheckboxComponent],
+      declarations: [CheckboxComponent,AmexioCheckBoxGroupComponent],
       providers: [IconLoaderService, CommonDataService,AmexioCheckBoxGroupComponent],
     });
+
+
+    fixture1 = TestBed.createComponent(AmexioCheckBoxGroupComponent);
+    comp1 = fixture1.componentInstance;
+    comp1.data = [];
+
     fixture = TestBed.createComponent(CheckboxComponent);
-    comp = fixture.componentInstance;
+    comp = fixture.componentInstance; 
+    comp['checkboxGroup'] = comp1;
+    fixture.detectChanges();
+
     event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
+    comp.checked = true;
 
     it('true is true', () => expect(true).toBe(true));
   });
@@ -59,6 +71,17 @@ describe('checkbox', () => {
 
   it('ischecked method is check',() => {
     let name = comp.isChecked();
-    expect(name).toBe(false);
+    expect(name).toBe(true);
+  });
+
+  it('toggleCheck check method',() =>{
+
+    comp.checked = true;
+    comp.value = {};
+    comp.toggleCheck(); 
+    expect(comp.checked).toEqual(false);
+    comp.toggleCheck(); 
+    expect(comp.value.checked).toEqual(true);
+
   })
 });
