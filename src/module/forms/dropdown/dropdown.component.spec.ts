@@ -39,6 +39,19 @@ describe('amexio-dropdown', () => {
     expect(comp.displayValue).toBe('');
     expect(comp.filteredOptions).toEqual([]);
   });
+
+
+  it('should call get function and return true', () => {
+    // comp.data();
+    expect(comp.data).toBe(undefined);
+    let item = comp.value;
+    comp._data = item;
+    
+    expect(comp.componentLoaded).toBe(undefined);
+  
+});
+
+
   //multiSelection check
 
   // it('check multiSelection method',() =>{

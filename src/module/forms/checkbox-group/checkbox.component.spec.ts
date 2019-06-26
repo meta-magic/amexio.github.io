@@ -52,4 +52,13 @@ describe('checkbox', () => {
     comp.onFocus();
     expect(comp.tabFocus).toEqual(true);
   });
+  it('ngOnInit', () =>{
+    comp.ngOnInit();
+    comp.componentId =comp.createCompId('checkbox',comp.name);
+  });
+
+  it('ischecked method is check',() => {
+    let name = comp.isChecked();
+    expect(name).toBe(false);
+  })
 });
