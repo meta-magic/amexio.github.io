@@ -2,28 +2,28 @@
  * Created by pratik on 11/12/17.
  */
 
- /*
- Component Name : Amexio tree filter
- Component Selector : <amexio-tree-filter-view>
- Component Description : A Expandable Tree Component for Angular, having
- Filtering functionality.
+/*
+Component Name : Amexio tree filter
+Component Selector : <amexio-tree-filter-view>
+Component Description : A Expandable Tree Component for Angular, having
+Filtering functionality.
 */
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import {
   AfterViewInit, ChangeDetectorRef, Component, ContentChild, EventEmitter, Input, OnInit, Output,
-  TemplateRef} from '@angular/core';
+  TemplateRef,
+} from '@angular/core';
 
-import {CommonDataService} from '../../services/data/common.data.service';
-
+import { CommonDataService } from '../../services/data/common.data.service';
 @Component({
   selector: 'amexio-tree-filter-view', template: `
     <div>
       <div>
         <div class="inputgroup">
-          <input  tabindex="1" type="text" class="input-control text-input-width" aria-label="Filter Tree Search" [(ngModel)]="filterText"
+          <input type="text" class="input-control text-input-width" aria-label="Text input with dropdown button" [(ngModel)]="filterText"
                  placeholder="Search" (keyup)="filterData()">
           <!--<i class="fa fa-filter" aria-hidden="true" (click)="showToolTip = !showToolTip"></i>-->
-          <span tabindex="1" (keyup.enter)="showToolTip = !showToolTip" attr.aria-expanded="showToolTip" class="datatable-filter-icon">
+          <span class="datatable-filter-icon">
           <amexio-c-icon key="tree_filter" (click)="showToolTip = !showToolTip"></amexio-c-icon>
           </span>
           <!--  <div class="input-group-btn">-->
@@ -34,14 +34,8 @@ import {CommonDataService} from '../../services/data/common.data.service';
            </button>-->
           <span *ngIf="showToolTip" class="dropdown">
               <ul class="dropdown-list">
-                <li tabindex="1" id={{opt.index}} role="option" class="list-items"
-                *ngFor="let opt of filterOptionData let rowindex = index"
-                 (click)="filterOption(opt)"
-                  (keyup.enter)="filterOption(opt)"
-                   (keyup.arrowup)="onArrowFilterUp(filterOptionData,opt,rowindex)"
-                   (keyup.arrowdown)="onArrowFilterDown(filterOptionData,opt,rowindex)">
-                 {{opt.key}}&nbsp;
-                 <!--<i [class]="opt.checkedStatus" aria-hidden="true"></i>-->
+                <li class="list-items" *ngFor="let opt of filterOptionData" (click)="filterOption(opt)">{{opt.key}}&nbsp;
+                  <!--<i [class]="opt.checkedStatus" aria-hidden="true"></i>-->
                   <amexio-c-icon key="opt.checkedStatus"></amexio-c-icon>
                 </li>
               </ul>
@@ -50,10 +44,16 @@ import {CommonDataService} from '../../services/data/common.data.service';
         </div>
         <ng-container *ngIf="isDataFound">
           <amexio-treeview
-            [data]="treeData"
             [filter-tree-flag]="true"
+            [data]="treeData"
+            [parentRef] ="treeData"
+            [word-wrap]="wordwrap"
+            [child-array-key]="childarraykey"
+            [display-key]="displaykey"
             [enable-checkbox]="enablecheckbox"
             (onTreeNodeChecked)="onCheckSelect($event)"
+            (rightClick)="OnRightClickMenu($event)"
+            (nodeRightClick)="loadContextMenu($event)"
             (nodeClick)="onRowSelect($event)" [templates]="templates">
           </amexio-treeview>
         </ng-container>
@@ -68,7 +68,7 @@ import {CommonDataService} from '../../services/data/common.data.service';
   `,
 })
 export class AmexioFilterTreeComponent implements OnInit, AfterViewInit {
-private componentLoaded: boolean;
+  private componentLoaded: boolean;
   /*
 Properties
 name : http-url
@@ -107,17 +107,17 @@ version : 4.0 onwards
 default : none
 description : Local Data binding.
 */
-_data: any;
-@Input('data')
- set data(value: any[]) {
-   this._data = value;
-   if (this.componentLoaded) {
-     this.updateComponent();
-   }
- }
- get data(): any[] {
-   return this._data;
- }
+  _data: any;
+  @Input('data')
+  set data(value: any[]) {
+    this._data = value;
+    if (this.componentLoaded) {
+      this.updateComponent();
+    }
+  }
+  get data(): any[] {
+    return this._data;
+  }
 
   /*
 Properties
@@ -149,17 +149,31 @@ description : It will gives whole tree data with checked flag status.
 */
   @Output() onTreeNodeChecked: any = new EventEmitter<any>();
 
-/*
-Properties
-name : trigger-char
-datatype : number
-version : 4.0 onwards
-default : none
-description : it will search for text relevant to entered character
-*/
-  @Input('trigger-char') triggerchar: number;
+  /*
+  Properties
+  name : trigger-char
+  datatype : number
+  version : 4.0 onwards
+  default : none
+  description : it will search for text relevant to entered character
+  */
+ @Output() nodeRightClick: any = new EventEmitter<any>();
+
+ @Output() rightClick: any = new EventEmitter<any>();
+ @Input('trigger-char') triggerchar: number;
 
   @Input('child-array-key') childarraykey: string;
+
+  @Input('display-key') displaykey: string;
+
+  @Input('word-wrap') wordwrap = true;
+
+  @Input('context-menu') contextmenu: any[];
+
+  @Input('filter-tree-flag') filtertreeflag = false;
+
+  @Input() parentRef: any;
+
   treeData: any;
 
   orgTreeData: any;
@@ -182,40 +196,44 @@ description : it will search for text relevant to entered character
 
   mask = true;
 
+  destroyExpandAll: any;
+
+  isexpandAll = false;
+
   @ContentChild('amexioTreeTemplate') parentTmp: TemplateRef<any>;
 
-  constructor(private _http: HttpClient, private cdf: ChangeDetectorRef, private  treeViewFilterService: CommonDataService) {
+  constructor(private _http: HttpClient, private cdf: ChangeDetectorRef, private treeViewFilterService: CommonDataService) {
     this.filterIndex = 3;
     this.triggerchar = 1;
+    this.displaykey = 'text';
     this.childarraykey = 'children';
     this.filterOptionData = [{
-      key: 'Is Equal To', value: 1 , type: 'string', checkedStatus: '',
+      key: 'Is Equal To', value: '1', type: 'string', checkedStatus: '',
     }, {
-      key: 'Is Not Equal To', value: 2 , type: 'string', checkedStatus: '',
+      key: 'Is Not Equal To', value: '2', type: 'string', checkedStatus: '',
     }, {
-      key: 'Start With', value: 3 , type: 'string', checkedStatus: 'fa fa-check',
+      key: 'Start With', value: '3', type: 'string', checkedStatus: 'fa fa-check',
     }, {
-      key: 'Ends With', value: 4 , type: 'string', checkedStatus: '',
+      key: 'Ends With', value: '4', type: 'string', checkedStatus: '',
     }, {
-      key: 'Contains', value: 5 , type: 'string', checkedStatus: '',
+      key: 'Contains', value: '5', type: 'string', checkedStatus: '',
     }];
-    this.generatefilterOptionDataIndex(this.filterOptionData);
   }
 
   ngOnInit() {
     if (this.parentTmp != null) {
-      this.templates = {treeNodeTemplate: this.parentTmp};
+      this.templates = { treeNodeTemplate: this.parentTmp };
     } else if (this.templates != null) {
       this.parentTmp = this.templates.treeNodeTemplate;
-     }
+    }
   }
 
   ngAfterViewInit() {
     if (this.parentTmp != null) {
-      this.templates = {treeNodeTemplate: this.parentTmp};
+      this.templates = { treeNodeTemplate: this.parentTmp };
     } else if (this.templates != null) {
       this.parentTmp = this.templates.treeNodeTemplate;
-     }
+    }
 
     if (this.httpmethod && this.httpurl) {
       this.callService();
@@ -227,7 +245,7 @@ description : it will search for text relevant to entered character
   }
 
   updateComponent() {
-    if (JSON.stringify(this.previousValue) !== JSON.stringify(this.data)) {
+    if (this.data != null && JSON.stringify(this.previousValue) !== JSON.stringify(this.data)) {
       this.previousValue = JSON.parse(JSON.stringify(this.data));
       this.setData(this.data);
     }
@@ -235,11 +253,11 @@ description : it will search for text relevant to entered character
 
   filterData() {
     this.showToolTip = false;
-    if (this.filterText && this.filterText.length >= this.triggerchar) {
+    if (this.filterText.length >= this.triggerchar) {
       const tData = JSON.parse(JSON.stringify(this.orgTreeData));
       const treeNodes = this.searchTree(tData, this.filterText);
       this.treeData = treeNodes;
-      if (this.treeData && this.treeData.length === 0) {
+      if (this.treeData.length === 0) {
         this.isDataFound = false;
       } else {
         this.isDataFound = true;
@@ -249,37 +267,43 @@ description : it will search for text relevant to entered character
       const treeNodes = this.searchTree(tData, this.filterText);
       this.treeData = treeNodes;
       this.onClickSearch = false;
-      if (this.treeData && this.treeData.length === 0) {
-        this.isDataFound = true;
-      } else {
+      if (this.treeData.length === 0) {
         this.isDataFound = false;
+      } else {
+        this.isDataFound = true;
       }
     } else {
       this.isDataFound = true;
       this.treeData = this.orgTreeData;
     }
-    if (this.treeData) {
-      this.generatefilterIndex(this.treeData , 1, Math.floor(Math.random() * 1000 + 999 + 1));
+    if (this.isexpandAll) {
+      this.expandAll(this.treeData);
     }
+    this.generatefilterIndex(this.treeData, 1, Math.floor(Math.random() * 1000 + 999 + 1));
 
   }
-   searchTree(data: any[], matchingTitle: string) {
+  searchTree(data: any[], matchingTitle: string) {
     const fi = this.filterIndex;
-    if (matchingTitle) {
-      return this.filterActualData (data, fi, matchingTitle);
-    }
+    return this.filterActualData(data, fi, matchingTitle);
   }
 
-  filterActualData(data: any[], fi: number, matchingTitle: string): any {
+  filterActualData(data: any[], fi: any, matchingTitle: any): any {
+    let tempdisplay: string;
+    let tempchildarrayKey: string;
+    tempdisplay = this.displaykey;
+    tempchildarrayKey = this.childarraykey;
     return data.filter(function f(node) {
-      if ( (fi === 5 && node.text.toLowerCase().includes(matchingTitle.toLowerCase())) ||
-      (fi === 3 && node.text.toLowerCase().startsWith(matchingTitle.toLowerCase())) ||
-      (fi === 1 && node.text.toLowerCase() === matchingTitle.toLowerCase()) ||
-      (fi === 2 && node.text.toLowerCase() !== matchingTitle.toLowerCase()) ||
-      (fi === 4 && node.text.toLowerCase().endsWith(matchingTitle.toLowerCase()))) {
+      if ((fi === 5 && node[tempdisplay].toLowerCase().includes(matchingTitle.toLowerCase())) ||
+      (fi === 3 && node[tempdisplay].toLowerCase().startsWith(matchingTitle.toLowerCase())) ||
+      (fi === 1 && node[tempdisplay].toLowerCase() === matchingTitle.toLowerCase()) ||
+      (fi === 2 && node[tempdisplay].toLowerCase() !== matchingTitle.toLowerCase()) ||
+      (fi === 4 && node[tempdisplay].toLowerCase().endsWith(matchingTitle.toLowerCase()))) {
       return true;
       }
-      if (node.children) {return (node.children = node.children.filter(f)).length; }
+      if (node[tempchildarrayKey]) {
+        return (node[tempchildarrayKey] = node[tempchildarrayKey].filter(f)).length;
+      }
+
     });
   }
   filterOption(data: any) {
@@ -305,9 +329,9 @@ description : it will search for text relevant to entered character
     if (tdata) {
       this.orgTreeData = JSON.parse(JSON.stringify(tdata));
       this.treeData = tdata;
-      this.generatefilterIndex(this.treeData , 1, Math.floor(Math.random() * 1000 + 999 + 1));
     }
     this.mask = false;
+
   }
 
   getData(httpResponse: any) {
@@ -324,7 +348,7 @@ description : it will search for text relevant to entered character
   }
 
   callService() {
-    this.treeViewFilterService.fetchData(this.httpurl, this.httpmethod).subscribe((response) => {
+    this.treeViewFilterService.fetchData(this.httpurl, this.httpmethod).subscribe((response: any) => {
       this.data = response;
     }, () => {
       this.renderServiceData();
@@ -338,36 +362,43 @@ description : it will search for text relevant to entered character
   onCheckSelect(data: any) {
     this.onTreeNodeChecked.emit(data);
   }
-
+  OnRightClickMenu(data: any) {
+  this.rightClick.emit(data);
+}
+ loadContextMenu(data: any) {
+   this.nodeRightClick.emit(data);
+}
   generatefilterIndex(data: any, parentId: number, rannumber: any) {
     data.forEach((element: any, index: number) => {
-        element['index'] = '' + rannumber + '-' + parentId + (index + 1);
-        if (element[this.childarraykey]) {
-            this.generatefilterIndex(element[this.childarraykey], element.index.split('-')[1], rannumber);
-        }
-    });
-}
-generatefilterOptionDataIndex(filteroptions: any) {
-  filteroptions.forEach((element: any, index: number) => {
-       element['index'] = Math.floor(Math.random() * 1000 + 999 + 1) + '-' + index;
-    });
-}
-onArrowFilterUp(data: any, opt: any, rowindex: number) {
-   if (rowindex > 0) {
-        const nextindex = rowindex - 1;
-        const focusdata = data[nextindex];
-        if (document.getElementById(focusdata.index)) {
-          document.getElementById(focusdata.index).focus();
-        }
-   }
-}
-  onArrowFilterDown(data: any, opt: any, rowindex: number) {
-    if (rowindex < data.length - 1) {
-      const nextindex = rowindex + 1;
-      const focusdata = data[nextindex];
-      if (document.getElementById(focusdata.index)) {
-        document.getElementById(focusdata.index).focus();
+      element['id'] = '' + rannumber + '-' + parentId + (index + 1);
+      if (element[this.childarraykey]) {
+        this.generatefilterIndex(element[this.childarraykey], element.id.split('-')[1], rannumber);
       }
-    }
+    });
+  }
+
+  public expandAll(node: any) {
+    this.isexpandAll = true;
+    this.destroyExpandAll = setTimeout(() => {
+      if (this.treeData) {
+        this.expandAllCall(this.treeData);
+      }
+    }, 0);
+  }
+
+  expandAllCall(node: any) {
+    node.forEach((childCheck: any) => {
+      if (childCheck.hasOwnProperty('expand')) {
+        if (!childCheck.expand) {
+          childCheck.expand = true;
+        }
+      } else {
+        childCheck['expand'] = true;
+      }
+
+      if (childCheck.hasOwnProperty(this.childarraykey) && childCheck[this.childarraykey] != null) {
+        this.expandAllCall(childCheck[this.childarraykey]);
+      }
+    });
   }
 }
