@@ -42,8 +42,8 @@ export class CheckboxComponent implements OnInit {
   @Input() disabled: boolean;
 
   componentId: string;
-  constructor(@Host() private checkboxGroup: AmexioCheckBoxGroupComponent) { 
-    
+  constructor(@Host() private checkboxGroup: AmexioCheckBoxGroupComponent) {
+
   }
 
   toggleCheck() {
