@@ -1,11 +1,14 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+    Component, ComponentFactoryResolver, ElementRef, EventEmitter, Input, OnInit, Output,
+    Renderer2, ViewChild, ViewChildren, ViewContainerRef,
+} from '@angular/core';
 
 @Component({
     selector: 'amexio-calendar-month',
     templateUrl: './calendar.month.html',
     styleUrls: ['./calendar.common.css'],
 })
-export class AmexioCalendarMonthComponent {
+export class AmexioCalendarMonthComponent implements OnInit {
 
     @Input('headers') headers: any[];
 
@@ -17,15 +20,32 @@ export class AmexioCalendarMonthComponent {
 
     @Output('onEventClicked') onEventClicked = new EventEmitter<any>();
 
-    @Output('onMorePanelClose') onMorePanelClose = new EventEmitter<any>();
+    @Output('onCloseClick') onCloseClicked = new EventEmitter<any>();
 
     @Output('onMoreEventClicked') onMoreEventClicked = new EventEmitter<any>();
+
+    @ViewChildren('runtimeDiv', { read: ViewContainerRef }) runtimeDiv: any;
+
+    @ViewChildren('runtimeDiv1', { read: ViewContainerRef }) runtimeDiv1: any;
+
+    xValue: any;
     openFloatingPanel = false;
     ariadatalabel: any;
     focusrindex: number;
     focusiindex: number;
-    constructor() {}
+    nativeRuntimeDiv: any;
+    runTimeInstance: any;
+    widthPosition: string;
+    heightPosition: string;
+    calculatedWidth: number;
+    leftPositionPanel = 'leftPositionPanel';
+    rightPositionPanel = 'rightPositionPanel';
+    dropdownstyle: any;
 
+    constructor(private componentFactoryResolver: ComponentFactoryResolver, private renderer: Renderer2) { }
+
+    ngOnInit() {
+    }
     onMoreClicked(event: any, data: any) {
         if (this.calendaryData) {
             this.calendaryData.forEach((calendarRow) => {
@@ -42,18 +62,110 @@ export class AmexioCalendarMonthComponent {
 
     onCloseClick(event: any) {
         event.data.fpFlag = false;
-        this.onMorePanelClose.emit(event);
+        this.onCloseClicked.emit(event);
     }
 
-    onChipClick(event: any) {
-        this.onMoreEventClicked.emit(event);
+    onChipClick(event: any, item: any, runtimeDiv: any) {
+        const emitEvent = {};
+        emitEvent['event'] = event;
+        emitEvent['item'] = item;
+        emitEvent['this'] = this;
+        emitEvent['runtimeDiv'] = runtimeDiv;
+        this.xValue = event.pageX;
+
+        this.onMoreEventClicked.emit(emitEvent);
     }
 
-    eventClicked(event1: any, eventData: any) {
-        const eventObject = {
-            event: event1,
-            this: eventData.details,
-        };
+    addComponent(amexioComponent: any, event: any): any {
+        if (this.runTimeInstance) {
+            this.runTimeInstance.destroy();
+        }
+        event.runtimeDiv.innerHTML = '';
+        const id = event.runtimeDiv.id;
+        const runTimeDivs = this.runtimeDiv.toArray();
+        for (let i = 0; i <= runTimeDivs.length; i++) {
+            if (runTimeDivs[i].element.nativeElement.id === id) {
+                const tpCF = this.componentFactoryResolver.resolveComponentFactory(
+                    amexioComponent,
+                );
+                this.runTimeInstance = runTimeDivs[i].createComponent(tpCF);
+                this.nativeRuntimeDiv = runTimeDivs[i];
+                this.renderer.setStyle(this.nativeRuntimeDiv.element.nativeElement.nextElementSibling, 'visibility', 'hidden');
+
+                setTimeout(() => {
+                    if (455 > (screen.width - this.xValue)) {
+                        this.calculatedWidth = (screen.width - event.event.clientX);
+                        this.widthPosition = this.calculatedWidth + 'px';
+                        this.heightPosition = event.event.clientX + 'px';
+                        this.renderer.addClass(this.nativeRuntimeDiv.element.nativeElement.nextElementSibling, 'leftPositionPanel');
+                        this.renderer.setStyle(this.nativeRuntimeDiv.element.nativeElement.nextElementSibling, 'right', this.widthPosition);
+                        this.renderer.setStyle(this.nativeRuntimeDiv.element.nativeElement.nextElementSibling, 'visibility', 'visible');
+                    } else {
+                        this.calculatedWidth = event.event.clientX - (event.event.layerX + event.event.offsetX);
+                        this.widthPosition = this.calculatedWidth + 'px';
+                        this.renderer.addClass(this.nativeRuntimeDiv.element.nativeElement.nextElementSibling, 'rightPositionPanel');
+                        this.renderer.setStyle(this.nativeRuntimeDiv.element.nativeElement.nextElementSibling, 'left', this.widthPosition);
+                        this.renderer.setStyle(this.nativeRuntimeDiv.element.nativeElement.nextElementSibling, 'visibility', 'visible');
+
+                    }
+
+                }, 200);
+                return this.runTimeInstance;
+            }
+
+        }
+
+    }
+
+    addDynamicClass(calculatedWidth: any, nextSiblingElement: any, cssClass: any) {
+        this.widthPosition = calculatedWidth + 'px';
+        this.renderer.addClass(nextSiblingElement, cssClass);
+        this.renderer.setStyle(nextSiblingElement, 'left', this.widthPosition);
+        this.renderer.setStyle(this.nativeRuntimeDiv.element.nativeElement.nextElementSibling, 'visibility', 'visible');
+    }
+
+    addEventDetails(amexioComponent: any, event: any): any {
+        if (this.runTimeInstance) {
+            this.runTimeInstance.destroy();
+        }
+        event.runtimeDiv.innerHTML = '';
+        const id = event.runtimeDiv.id;
+        const runTimeDivs = this.runtimeDiv1.toArray();
+        for (let i = 0; i <= runTimeDivs.length; i++) {
+            if (runTimeDivs[i].element.nativeElement.id === id) {
+                const tpCF = this.componentFactoryResolver.resolveComponentFactory(
+                    amexioComponent,
+                );
+                this.runTimeInstance = runTimeDivs[i].createComponent(tpCF);
+                this.nativeRuntimeDiv = runTimeDivs[i];
+                this.renderer.setStyle(this.nativeRuntimeDiv.element.nativeElement.nextElementSibling, 'visibility', 'hidden');
+
+                setTimeout(() => {
+                    if (455 > (screen.width - event.event.pageX)) {
+                        this.calculatedWidth = (event.event.screenX - event.event.layerX);
+                        this.addDynamicClass(this.calculatedWidth, this.nativeRuntimeDiv.element.nativeElement.nextElementSibling,
+                            this.leftPositionPanel);
+                    } else {
+                        this.calculatedWidth = (event.event.layerX + event.event.offsetX - 50);
+                        this.addDynamicClass(this.calculatedWidth, this.nativeRuntimeDiv.element.nativeElement.nextElementSibling,
+                            this.rightPositionPanel);
+
+                    }
+
+                }, 200);
+                return this.runTimeInstance;
+
+            }
+        }
+
+    }
+
+    eventClicked(event1: any, eventData: any, runTimeDiv: any) {
+        const eventObject = {};
+        eventObject['event'] = event1;
+        eventObject['item'] = eventData;
+        eventObject['this'] = this;
+        eventObject['runtimeDiv'] = runTimeDiv;
         this.onEventClicked.emit(eventObject);
     }
 

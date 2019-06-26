@@ -9,6 +9,11 @@ table {
     /* z-index: 1; */
 }
 
+.EventDetailsContent {
+    position: absolute;
+  z-index: 800 !important;
+  }
+
 .fpClass amexio-floating-panel div {
     bottom: 0px;
     }
@@ -16,4 +21,18 @@ table {
     .fpRightClass amexio-floating-panel div {
       bottom: 0px;
       right: 0px;
+      }
+
+      .leftPositionPanel {
+        display: block;
+        position: absolute;
+        left: 50px;
+        right: 0px;
+      }
+      
+      .rightPositionPanel{
+        display: block;
+        position: absolute;
+        left: 0px;
+        right: 50px;
       }

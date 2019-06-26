@@ -45,6 +45,8 @@ export class AmexioCalendarComponent implements OnInit {
 
     @Input('title') title: string;
 
+    @Output('onCloseClick') onCloseClick = new EventEmitter<any>();
+
     @Input('calendar-date')
     set calendardate(v: any) {
         if (v != null) {
@@ -77,7 +79,7 @@ export class AmexioCalendarComponent implements OnInit {
         this.weekHeaders = { title: CALENDAR.ALL_DAY_TEXT, daywiseevent: null, time: null };
     }
 
-    onMoreEventClicked() {
+    onMoreEventClicked(event: any) {
         this.onMoreEventClick.emit(event);
     }
 
@@ -377,4 +379,7 @@ export class AmexioCalendarComponent implements OnInit {
         this.createData(this.currrentDate);
     }
 
+    onMoreCloseClick(event: any) {
+        this.onCloseClick.emit(event);
+    }
 }
