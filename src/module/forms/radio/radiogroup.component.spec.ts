@@ -2,6 +2,8 @@
  * Created by pratik on 27/11/17.
  */
 import { AmexioButtonComponent } from './../buttons/button.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+
 import { AmexioRadioGroupComponent } from './radiogroup.component';
 import { By } from '@angular/platform-browser';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
@@ -9,13 +11,13 @@ import { FormsModule, FormControl } from '@angular/forms';
 import { ValueAccessorBase } from './../../base/value-accessor';
 import { AmexioFormValidator } from './../form-validator/amexio.form.validator.component';
 import { CommonDataService } from '../../services/data/common.data.service';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 describe('amexio-radio-group-component', () => {
   let comp: AmexioRadioGroupComponent;
   let fixture: ComponentFixture<AmexioRadioGroupComponent>;
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule,HttpClientModule],
+      imports: [FormsModule, HttpClientModule, HttpClientTestingModule ],
       declarations: [AmexioRadioGroupComponent],
       providers: [CommonDataService,]
     });
@@ -43,7 +45,7 @@ describe('amexio-radio-group-component', () => {
     comp.defaultSelectedValue = 'ddrtfgf'
     expect(comp.defaultSelectedValue.length).toBeGreaterThan(0);
     comp.value = comp.defaultSelectedValue;
-    comp.httpmethod= 'get';
+    comp.httpmethod = 'get';
     comp.httpurl = 'https/rgh'
     expect(comp.httpmethod.length).toBeGreaterThan(0);
     expect(comp.httpurl.length).toBeGreaterThan(0);
@@ -86,64 +88,78 @@ describe('amexio-radio-group-component', () => {
 
   // onRegistertouch method check
   it('register on touched', () => {
-    let fn: any;
+    let fn;
     comp.registerOnTouched(fn);
-    expect(comp['onTouchedCallback']).toEqual(fn);
-  });
-  //  onRegisterChange method check 
-  // it('register on change', () => {
-  //   let fn: any;
-  //   comp.registerOnChange(fn);
-  //   comp.onChangeCallback = fn;
-
-  //  });
-  //
-
-  // write value method check 
-  it('writeValue()', () => {
-    let value = 'sdf';
-    comp.innerValue = 'sdsDf'
-    // comp.writeValue(fixture);
-    // expect(comp.value).toEqual(fixture);
-    // if (value !== this.innerValue) {
-      expect(value).not.toEqual(comp.innerValue);
-      comp.innerValue = value;
-      comp.checkDefaultValidation(comp.data);
-    
+    expect(comp.onTouchedCallback).toEqual(fn);
   });
 
-  // onclick method check
+  // it('writeValue()', () => {
+  //   // let value = 'sdf';
+  //   // comp.writeValue(value);
+  //   // comp.innerValue = 'amexio'
+  //   // expect(value).not.toEqual(comp.innerValue);
+  //   // comp.innerValue = value;
+  //   // if(!(comp.checkDefaultValidation(comp.data))) {
+  //   //   console.log("caught error")
+  //   // }
 
-  // it('check onClick  method', () => {
-  //   let clickData: any;
-  //   let ev: any;
-  //   let ok = { event: ev, row: clickData }
-
-  //   comp.onClick(clickData, ev);
-  //   // event = { preventDefault: function () {} };
-
-  //   expect(comp.isValid).toEqual(true);
-
-  //   comp.onSelection.subscribe((g: any) => {
-  //     expect(ok).toEqual(g);
-  //   });
-  //   comp.onSelect.subscribe((g: any) => {
-  //     expect(clickData).toEqual(g);
-  //   })
   // });
+  it('checkDefault Validation Method ', () => {
+    let viewData=[{
+         selected: false,
+         tabindex: '0',
+         radioId: '',
+         value: ''
+    },
+    {
+       tabindex: '1',
+      radioId: '',
+      value: ''
+ }
+  ]
+    comp.checkDefaultValidation(viewData);
 
-
-  // get value method check 
-  it(' validate method', () => {
-    // comp.value = 'value';
-    let c = new FormControl;
-    comp.validate(c);
-    // return ((!comp.allowblank && comp.value) || comp.allowblank) ? null : {
-    //   jsonParseError: {
-    //     valid: true,
-    //   },
-    // };  
-  });
+    viewData[0].tabindex= '-1';
+    comp.valuefield = 'value'
+    viewData[0].radioId = 'radio' + '_' + viewData[comp.valuefield] + '_' + comp.getRandomString();
+    // if (opt[this.valuefield] === this.innerValue || (opt.hasOwnProperty('selected') && opt.selected)) {
+     comp.innerValue = '';
+      expect(viewData[0][comp.valuefield]).toEqual(comp.innerValue);
+      expect(viewData[0].hasOwnProperty('selected')).toEqual(true);
+      expect(viewData[0].selected).toEqual(true);
+      comp.isValid = true;
+      viewData[0]['selected'] = true;
+        viewData[0]['tabindex'] = '0';
+        comp.isComponentValid.emit(true);
+        
+        // for else
+        comp.innerValue = 'in'
+        expect(viewData[1][comp.valuefield]).not.toEqual(comp.innerValue);
+        expect(viewData[1].hasOwnProperty('selected')).not.toEqual(false);
+        viewData[1].selected = false
+        expect(viewData[1].selected).toEqual(false);
+        viewData[1].selected = false;
+        const tempArray: any = [];
+        // if (option.selected === false) {
+          expect(viewData[1].selected).toEqual(false)
+          tempArray.push('0');
+          tempArray.push('1');
+          // if (tempArray.length === viewData.length) {
+            expect(tempArray.length).toEqual(viewData.length)
+            viewData[0].tabindex = '0';
+     
+      });
+  
+    // get value method check 
+    it(' validate method', () => {
+      let c = new FormControl;
+      comp.validate(c);
+      // return ((!comp.allowblank && comp.value) || comp.allowblank) ? null : {
+      //   jsonParseError: {
+      //     valid: true,
+      //   },
+      // };  
+    });
     it(' onClick Method', () => {
       // comp.value = 'value';
       comp.data = [
@@ -160,9 +176,24 @@ describe('amexio-radio-group-component', () => {
       event.preventDefault();
       for (const r of comp.data) {
         // if (r.selected) {
-          expect(r.selected).toEqual(true);
-          r.selected = false;
+        expect(r.selected).toEqual(true);
+        r.selected = false;
         // }
-      }  
+      }
     });
-});
+    it('check Selected Method', () => {
+      let viewData =
+        [{
+          selected: true, tabindex: "0"
+        }]
+      comp.checkSelectedFlag(viewData);
+      comp.innerValue = '';
+      expect(comp.innerValue).toEqual('');
+      expect(viewData[0].hasOwnProperty('selected')).toEqual(true);
+      expect(viewData[0].selected).toEqual(true);
+      comp.value = viewData[comp.valuefield];
+      viewData[0].tabindex = '0';
+      return;
+    });
+
+  });
