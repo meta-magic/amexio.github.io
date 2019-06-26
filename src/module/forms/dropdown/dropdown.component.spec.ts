@@ -30,7 +30,7 @@ describe('amexio-dropdown', () => {
   });
 
   //check variables 
-  it('check variables ', () => {
+  it('check variables in dropdown component ', () => {
     expect(comp.selectedindex).toEqual(-1);
     expect(comp.multiselectValues).toEqual([]);
     expect(comp.maskloader).toEqual(true);

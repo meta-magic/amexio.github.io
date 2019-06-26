@@ -33,7 +33,7 @@ describe('checkbox', () => {
     expect(comp.tabFocus).toBe(false);
   });
 
-
+// check private method
   it('check private methods', () => {
     let fn: any;
     comp['onTouchedCallback']();
