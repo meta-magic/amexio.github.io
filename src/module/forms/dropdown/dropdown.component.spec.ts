@@ -141,4 +141,49 @@ it('closeOnEScape() method check', () => {
   //   // comp.posixUp = comp.getListPosition(item);
   //   // comp.focus.emit();
   // });
+
+
+   //writeChangedValue () 
+   it('on writeChangedValue()', () => {
+    
+    comp.value  = 'kedar';
+    let item = comp.value;
+    comp.innerValue ='kokil';
+    comp.writeChangedValue(item);
+    expect(comp.innerValue).not.toBe('kokil');
+   
+    
+
+    //expect(comp.showToolTip).toEqual(true);
+    // comp.posixUp = comp.getListPosition(item);
+    // comp.focus.emit();
+  });
+
+  //writeValue () 
+  it('on writeValue()', () => {
+    comp.value  = 'kedar';
+    let item = comp.value;
+    comp.writeValue(item);  
+    expect(comp.value).not.toBe(null);
+    expect(comp.writeChangedValue(item)).toHaveBeenCalled;
+
+    let ok = '';
+    comp.writeValue(ok);
+    expect(comp.value).toBe(ok);
+    comp.innerValue = '';
+    expect(comp.innerValue).toEqual('');
+
+    comp.allowblank = true;
+    comp.isValid = true;
+    comp.writeValue(item);
+    expect(comp.allowblank).toEqual(true);
+    
+    expect(comp.isValid).toEqual(true);
+
+
+
+    expect(comp.showToolTip).toEqual(undefined);
+    // comp.posixUp = comp.getListPosition(item);
+    // comp.focus.emit();
+  });
 });
