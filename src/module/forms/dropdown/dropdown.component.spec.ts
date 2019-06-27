@@ -86,15 +86,20 @@ it('closeOnEScape() method check', () => {
 // });
 
 
-  //multiSelection check
+  //setUserSelection check
 
-  // it('check multiSelection method',() =>{
+  it('check setUserSelection method',() =>{
 
-  //   comp.multiSelection();
-  //   let checkData = true;
-  //   expect(comp.multiselect).toEqual(checkData);
-  //   expect(comp.viewData).toEqual(checkData);
+    comp.setUserSelection();
+    comp.innerValue = 'kedar';
+    expect(comp.innerValue).not.toBe(null);
+  
+    const valueKey = comp.valuefield;
+    expect(valueKey).toBe(undefined);
+    const val = comp.innerValue;
+
+    expect(val).toEqual(comp.innerValue);
     
 
-  // })
+  })
 });
