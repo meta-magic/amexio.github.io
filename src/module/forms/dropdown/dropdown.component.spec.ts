@@ -149,9 +149,17 @@ it('closeOnEScape() method check', () => {
     comp.value  = 'kedar';
     let item = comp.value;
     comp.innerValue ='kokil';
+    let status = false;
     comp.writeChangedValue(item);
     expect(comp.innerValue).not.toBe('kokil');
+    expect(status).toEqual(false);
    
+     status =  true;
+     comp.displayValue = '';
+     comp.writeChangedValue(item);
+
+     expect(comp.displayValue).toBe('');
+     expect(comp.value).toEqual(item);
     
 
     //expect(comp.showToolTip).toEqual(true);
@@ -167,15 +175,14 @@ it('closeOnEScape() method check', () => {
     expect(comp.value).not.toBe(null);
     expect(comp.writeChangedValue(item)).toHaveBeenCalled;
 
-    let ok = '';
-    comp.writeValue(ok);
-    expect(comp.value).toBe(ok);
-    comp.innerValue = '';
-    expect(comp.innerValue).toEqual('');
-
+    let ok = null;
+    comp.value = '';
+    comp.writeValue(ok);  
+    expect(comp.value).toBe('');
+    comp.innerValue = null;
+    expect(comp.innerValue).toBe(null);
     comp.allowblank = true;
     comp.isValid = true;
-    comp.writeValue(item);
     expect(comp.allowblank).toEqual(true);
     
     expect(comp.isValid).toEqual(true);
