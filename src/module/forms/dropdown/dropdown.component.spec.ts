@@ -124,6 +124,23 @@ it('closeOnEScape() method check', () => {
     expect(comp['onChangeCallback']).toEqual(fn);
   });
 
+  //onDropDownClick method
+  it('onDropDownClick()', () => {
+    let fn = event;
+    comp.showToolTip = true;
+    comp.multiselect = false;
+    comp.onDropDownClick(fn);
+    expect(comp.onBaseFocusEvent).toHaveBeenCalled;
+    expect(comp.showToolTip).toEqual(true);
+    comp.onClick.subscribe((g: any) => {
+      expect(comp.onClick).toEqual(g);
+    }); 
+ 
+    expect(comp.multiselect).toBe(false);
+
+
+  });
+
   //registerOnTouched method
   it('registerOnTouched()', () => {
     let fn;
@@ -141,6 +158,25 @@ it('closeOnEScape() method check', () => {
   //   // comp.posixUp = comp.getListPosition(item);
   //   // comp.focus.emit();
   // });
+
+  //on onIconClick()
+  it('on onIconClick()', () => {
+    let item = event;
+    comp.showToolTip = false;
+    comp.disabled = true;
+
+    comp.onIconClick();
+    expect(comp.disabled).toEqual(true);
+    const showflag = comp.showToolTip;
+    expect(comp.showToolTip).toBe(false);
+    expect(comp.onBaseFocusEvent({})).toHaveBeenCalled;
+
+    
+    comp.disabled = false;
+    expect(comp.disabled).toBe(false);
+    expect(comp.onBaseFocusEvent({})).toHaveBeenCalled;
+    expect(comp.showToolTip).not.toBe(true)
+  });
 
 
    //writeChangedValue () 
@@ -181,14 +217,11 @@ it('closeOnEScape() method check', () => {
     expect(comp.value).toBe('');
     comp.innerValue = null;
     expect(comp.innerValue).toBe(null);
+
     comp.allowblank = true;
     comp.isValid = true;
-    expect(comp.allowblank).toEqual(true);
     
     expect(comp.isValid).toEqual(true);
-
-
-
     expect(comp.showToolTip).toEqual(undefined);
     // comp.posixUp = comp.getListPosition(item);
     // comp.focus.emit();
