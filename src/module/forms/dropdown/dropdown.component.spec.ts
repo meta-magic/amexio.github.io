@@ -136,7 +136,17 @@ it('closeOnEScape() method check', () => {
       expect(comp.onClick).toEqual(g);
     }); 
  
+    comp.selectedindex = 2;
     expect(comp.multiselect).toBe(false);
+    expect(comp.selectedindex).toBeGreaterThan(-1);
+    // let ok = comp.filteredOptions[comp.selectedindex];
+    // ok.selected = false;
+    // comp.filteredOptions[comp.selectedindex].selected = false;
+    // expect(ok.selected).toBe(false);
+    // comp.selectedindex = -1;
+    // expect(comp.selectedindex).toBe(-1);
+
+
 
 
   });
