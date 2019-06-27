@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 describe('amexio-radio-group-component', () => {
   let comp: AmexioRadioGroupComponent;
   let fixture: ComponentFixture<AmexioRadioGroupComponent>;
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule, HttpClientModule, HttpClientTestingModule ],
@@ -24,7 +25,12 @@ describe('amexio-radio-group-component', () => {
     fixture = TestBed.createComponent(AmexioRadioGroupComponent);
     comp = fixture.componentInstance;
     event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
-
+    comp.data = [
+      {
+        selected: true,
+        tabindex: '0'
+      }
+    ];
   });
 
   it('check for condition', () => {
@@ -34,25 +40,26 @@ describe('amexio-radio-group-component', () => {
 
 
 
-  it('should emit greeting event on ngOnInit method', () => {
+  it('ngOnInit method', () => {
     comp.ngOnInit();
-    comp.isValid = true;
-    comp.allowblank = true;
-    expect(comp.allowblank).toEqual(comp.isValid);
-    comp.isComponentValid.subscribe((g: any) => {
-      expect(comp.allowblank).toEqual(g);
-    });
-    comp.defaultSelectedValue = 'ddrtfgf'
-    expect(comp.defaultSelectedValue.length).toBeGreaterThan(0);
-    comp.value = comp.defaultSelectedValue;
+    comp.componentId = comp.createCompId('radiogroup', comp.name);
+    comp.name = comp.generateName(comp.name, comp.fieldlabel, 'radiogroup');
+    if (this.defaultSelectedValue) 
+    expect(comp.defaultSelectedValue).toBeDefined();
+    // {
+      comp.value = comp.defaultSelectedValue;
+      comp.isValid = comp.allowblank;
+      comp.isComponentValid.emit(comp.allowblank);
+       
     comp.httpmethod = 'get';
     comp.httpurl = 'https/rgh'
-    expect(comp.httpmethod.length).toBeGreaterThan(0);
-    expect(comp.httpurl.length).toBeGreaterThan(0);
+    expect(comp.httpmethod).toBeDefined();
+    expect(comp.httpurl.length).toBeDefined();
     comp.amxHttp.fetchData(comp.httpurl, comp.httpmethod).subscribe((response) => {
       comp.data = comp.getResponseData(response);
     });
-    expect(comp.data).not.toEqual(null);
+     comp.data = [{tabindex: 'sdc'}]
+    expect(comp.data).not.toBeNull(null);
     comp.data = comp.getResponseData(comp.data);
   });
 
@@ -86,6 +93,17 @@ describe('amexio-radio-group-component', () => {
     expect(comp.tabFocus).toEqual(false);
   });
 
+  // it('set value()', () => {
+  //   //comp.showToolTip=true;w
+  //    let v='';
+  //    comp.innerValue = 'v';
+  //   comp.value(v);
+  //   // if (v !== this.innerValue) {
+  //     expect(v).not.toEqual(comp.innerValue);
+  //     comp.innerValue = v;
+  //     comp.onChangeCallback(v);  
+    // }
+
   // onRegistertouch method check
   it('register on touched', () => {
     let fn;
@@ -105,6 +123,7 @@ describe('amexio-radio-group-component', () => {
 
   // });
   it('checkDefault Validation Method ', () => {
+    let length = '';
     let viewData=[{
          selected: false,
          tabindex: '0',
@@ -134,7 +153,7 @@ describe('amexio-radio-group-component', () => {
         
         // for else
         comp.innerValue = 'in'
-        expect(viewData[1][comp.valuefield]).not.toEqual(comp.innerValue);
+        expect(viewData[0][comp.valuefield]).not.toEqual(comp.innerValue);
         expect(viewData[1].hasOwnProperty('selected')).not.toEqual(false);
         viewData[1].selected = false
         expect(viewData[1].selected).toEqual(false);
@@ -154,32 +173,42 @@ describe('amexio-radio-group-component', () => {
     it(' validate method', () => {
       let c = new FormControl;
       comp.validate(c);
-      // return ((!comp.allowblank && comp.value) || comp.allowblank) ? null : {
-      //   jsonParseError: {
-      //     valid: true,
-      //   },
-      // };  
+      return ((!comp.allowblank && comp.value) || comp.allowblank) ? null : {
+        jsonParseError: {
+          valid: true,
+        },
+      };  
     });
     it(' onClick Method', () => {
-      // comp.value = 'value';
-      comp.data = [
-        {
-          selected: true
-        },
-        {
-          selected: true
-        },
-        {
-          selected: true
-        }
-      ]
+      let row = {
+        selected: false,
+        tabindex: '0'
+      };
+      comp.onClick(row, event)
       event.preventDefault();
       for (const r of comp.data) {
-        // if (r.selected) {
-        expect(r.selected).toEqual(true);
-        r.selected = false;
-        // }
+        expect(r.selected).toEqual(false);
       }
+      for (const r of comp.data) {
+       expect(r).toEqual(row)
+       r.selected = true;
+       comp.isValid = true;
+       comp.value = row[comp.valuefield];
+
+       comp.listCopy = Object.assign([], row);
+       delete comp.listCopy.tabindex;
+       delete comp.listCopy.radioId;
+       comp.onSelection.emit(comp.listCopy);
+      //  delete row.tabindex;
+      //  comp.isComponentValid.emit(true);
+      //  const obj = {};
+      //  obj['row'] = row;
+      //  obj['event'] = event;
+      //  comp.onSelect.emit(obj);
+      //  row.selected = true;
+      //  expect(r).not.toEqual(row)
+      //  r.selected = false;
+        }
     });
     it('check Selected Method', () => {
       let viewData =
