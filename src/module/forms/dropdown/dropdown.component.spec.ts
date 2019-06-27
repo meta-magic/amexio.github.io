@@ -99,7 +99,46 @@ it('closeOnEScape() method check', () => {
     const val = comp.innerValue;
 
     expect(val).toEqual(comp.innerValue);
-    
-
   })
+
+
+   //on onBlur()
+   it('on onBlur()', () => {
+
+    let fn = event;
+    comp.onblur(fn);
+    // expect(comp.tabFocus).toEqual(false);
+    comp.onTouchedCallback();
+    expect(comp.onTouchedCallback()).toHaveBeenCalled;
+    comp.onBlur.subscribe((g: any) => {
+          expect(comp.onBlur).toEqual(g);
+        }); 
+     
+  });
+
+  // registerOnChange method
+  it('registerOnChange()', () => {
+    let fn;
+    comp.registerOnChange(fn);
+    comp['onChangeCallback'] = fn;
+    expect(comp['onChangeCallback']).toEqual(fn);
+  });
+
+  //registerOnTouched method
+  it('registerOnTouched()', () => {
+    let fn;
+    comp.registerOnTouched(fn);
+    comp['onTouchedCallback'] = fn;
+    expect(comp['onTouchedCallback']).toEqual(fn);
+  });
+
+  //on onFocus()
+  // it('on onFocus()', () => {
+  //   let item = event;
+  //   comp.showToolTip = true;
+  //   comp.onFocus(item);
+  //   expect(comp.showToolTip).toEqual(true);
+  //   // comp.posixUp = comp.getListPosition(item);
+  //   // comp.focus.emit();
+  // });
 });
