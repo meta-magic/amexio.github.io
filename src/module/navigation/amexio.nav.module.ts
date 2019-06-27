@@ -18,7 +18,6 @@ import { AmexioBreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { DockbarComponent } from './dockedbar/dockbaritem';
 import { DockedBarToolComponent } from './dockedbar/dockettoolbar.component';
 import { AmexioMenuBarComponent } from './menubar/menubar.component';
-import { AmexioInnerNavMenuComponent } from './navbar/innermenu.component';
 import { AmexioNavActionComponent } from './navbar/navaction.component';
 import { AmexioNavBarComponent } from './navbar/navbar.component';
 import { AmexioNavDesktopMenuComponent } from './navbar/navdesktopmenu';
@@ -54,7 +53,6 @@ const NAV_COMPONENTS = [
   AmexioNavDesktopMenuComponent,
   AmexioNavMobileMenuComponent,
   AmexioNavItemComponent,
-  AmexioInnerNavMenuComponent,
   DockbarComponent,
   DockedBarToolComponent,
   AmexioMenuBarComponent,

@@ -149,48 +149,7 @@ export class AmexioNavMenuComponent implements OnInit, AfterViewInit {
       this.showMenus = !this.showMenus;
     }
   }
-  onNodeHover(node: any, event: any) {
-    if (!this.mobilemode) {
-      node['isExpanded'] = true;
-    }
 
-    this.ishovered = false;
-    // clear hover flag;
-    this.data.forEach((element: any) => {
-      this.clearNodeHover(element);
-    });
-
-    if (node.submenus && (node.submenus.length > 0)) {
-      node.ishover = true;
-      this.data.forEach((element: any) => {
-        if (node === element) {
-          this.setNodeHover(node);
-        }
-      });
-    }
-    if (!this.submenupos) {
-      this.position = this.getMenuPosition(event);
-
-    }
-    event.stopPropagation();
-  }
-
-  setNodeHover(node: any) {
-    node.ishover = true;
-    if (node.submenus && (node.submenus.length > 0)) {
-      this.setNodeHover(node.submenus);
-    }
-  }
-
-  clearNodeHover(node: any) {
-    node.ishover = false;
-    if (node.submenus && (node.submenus.length > 0)) {
-      node.submenus.forEach((element: any) => {
-        this.clearNodeHover(element);
-      });
-    }
-
-  }
 
   getMenuPosition(event: any) {
     const remainingleft = event.currentTarget.getBoundingClientRect().left;
@@ -202,14 +161,6 @@ export class AmexioNavMenuComponent implements OnInit, AfterViewInit {
       directionflag = 'left';
     }
     return directionflag;
-  }
-
-  clearhover() {
-    setTimeout(() => {
-      this.data.forEach((element: any) => {
-        this.clearNodeHover(element);
-      });
-    }, 0);
   }
 
   onMouseoverTitle(event: any) {
