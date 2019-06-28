@@ -41,6 +41,10 @@ describe('navdesktopmenu', () => {
     });
     fixture1 = TestBed.createComponent(AmexioNavDesktopMenuComponent);
     comp1 = fixture1.componentInstance;
+
+  comp1.nodes = [{
+    subInnerMenus: false
+  }]
   });
 
   it('ngAfterViewInit()', () => {
@@ -73,14 +77,25 @@ describe('navdesktopmenu', () => {
     // }
   });
 
-  // it('onMouseLeave Method', () => {
-  //   let event;
-  //   let node ={
-  //     submenus:['as']
-  //   }
-  //   expect(node.submenus.length).toBeGreaterThan(0) 
-  //     node['showInnerMenus'] = false;
-  // });
+  it('onMouseLeave Method', () => {
+    // let event;
+    let node ={
+      submenus:[{submenu: 's'}, {submenu: 'u'}]
+    }
+    comp1.onMouseLeave(event, node);
+    expect(node.submenus.length).toBeGreaterThan(0);
+    node['showInnerMenus'] = false;
+
+  comp1.nodes = [{
+    subInnerMenus: false
+  }]
+
+    comp1.nodes.forEach((innernode: any) => {
+      innernode['showInnerMenus'] = false;
+  });
+
+    // node['showInnerMenus'] = false;
+  });
 
   // it('onMouseLeave()', () => {
   //   let event;
