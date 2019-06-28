@@ -113,4 +113,33 @@ describe('amexio-dropdown', () => {
     });
   });
 
+   // onMoreEventClicked method
+   it('onMoreEventClicked() method check', () => {
+    let fn = event;
+    comp.onMoreEventClicked(fn);
+    comp.onMoreEventClick.subscribe((g: any) => {
+      expect(comp.onMoreEventClick).toEqual(g);
+    });
+  });
+
+  // validateEventData method
+  // it('validateEventData() method check', () => {
+
+  //   comp.events = event;
+  //   comp['validateEventData()']
+   
+ 
+  // });
+
+  // initCalendar method
+  // it('initCalendar() method check', () => {
+
+   
+  //   comp.initCalendar();
+  //   expect(comp['validateEventData()']).toHaveBeenCalled;
+ 
+  // });
+
+
+
 });
