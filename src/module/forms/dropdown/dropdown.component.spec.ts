@@ -273,7 +273,7 @@ describe('amexio-dropdown', () => {
     expect(comp.helpInfoMsg).toEqual('data incorect<br/>');
   });
 
-  // it('get errormsg', () => {
-  //   expect(comp.errormsg).toEqual(comp._errormsg);
-  // });
+  it('get errormsg', () => {
+    expect(comp.errormsg).toEqual(comp._errormsg);
+  });
 });
