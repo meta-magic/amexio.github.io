@@ -50,7 +50,11 @@ describe('navdesktopmenu', () => {
   it('ngAfterViewInit()', () => {
     setTimeout(() => {
       comp1.ngAfterViewInit();
-
+      const fixture = TestBed.createComponent(AmexioNavDesktopMenuComponent);
+   fixture.detectChanges();
+   const compiled = fixture.debugElement.nativeElement;
+  //  if ((window.innerWidth - this.menus.nativeElement.getBoundingClientRect().right) < 300) {
+   expect(window.innerWidth- fixture.debugElement.nativeElement.getBoundingClientRect().right).toBeLessThan(300);
       // if ((window.innerWidth - this.menus.nativeElement.getBoundingClientRect().right) < 300) {
       // let a =  comp1.menus.nativeElement.getBoundingClientRect().right = 78;
       let a = 8;
@@ -58,6 +62,8 @@ describe('navdesktopmenu', () => {
       // expect(window.innerWidth - a).toBeLessThan(300);
       comp1.position = 'right';
       expect(window.innerWidth - a).toBeGreaterThan(300);
+      // expect(window.innerWidth- fixture.debugElement.nativeElement.getBoundingClientRect().right).toBeGreaterThan(300);
+
       comp1.position = 'left';
       // }
     }, 100);
