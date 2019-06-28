@@ -19,7 +19,7 @@ describe('amexio-dropdown', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule, HttpClientModule],
-      declarations: [AmexioDropDownComponent, DisplayFieldComponent,CommonIconComponent],
+      declarations: [AmexioDropDownComponent, DisplayFieldComponent, CommonIconComponent],
       providers: [IconLoaderService, CommonDataService],
     });
     fixture = TestBed.createComponent(AmexioDropDownComponent);
@@ -46,54 +46,74 @@ describe('amexio-dropdown', () => {
     expect(comp.data).toBe(undefined);
     let item = comp.value;
     comp._data = item;
-    
+
     expect(comp.componentLoaded).toBe(undefined);
-  
-});
 
-it('onChange() method check', () => {
-  let value = 'kedar';
-  comp.onChange(value);
-  expect(comp.innerValue).toBe(value);
-  comp.isValid = true;
-  expect(comp.isValid).toBe(true);
-  comp.isComponentValid.subscribe((g: any) => {
-    expect(comp.isComponentValid).toEqual(g);
-  }); 
-});
+  });
 
-// closeOnEScape
-it('closeOnEScape() method check', () => {
-  
-  let ev = event
-  comp.closeOnEScape(ev);
-  comp.showToolTip = false;
-  expect(comp.showToolTip).toEqual(false);
-});
+  it('onChange() method check', () => {
+    let value = 'kedar';
+    comp.onChange(value);
+    expect(comp.innerValue).toBe(value);
+    comp.isValid = true;
+    expect(comp.isValid).toBe(true);
+    comp.isComponentValid.subscribe((g: any) => {
+      expect(comp.isComponentValid).toEqual(g);
+    });
+  });
 
-// onInput mehtod
-// it('onInput() method check', () => {
-//   let value = comp.input;
-//   comp.onInput(value);
-//   comp.input.subscribe((g: any) => {
-//     expect(comp.input).toEqual(g);
-//   }); 
+  // closeOnEScape
+  it('closeOnEScape() method check', () => {
 
-//   comp.onInput(value);
-//   expect(comp.isValid).toBe(value.vaild);
+    let ev = event
+    comp.closeOnEScape(ev);
+    comp.showToolTip = false;
+    expect(comp.showToolTip).toEqual(false);
+  });
 
- 
-// });
+  // onInput mehtod
+  // it('onInput() method check', () => {
+  //   let value = comp.input;
+  //   comp.onInput(value);
+  //   comp.input.subscribe((g: any) => {
+  //     expect(comp.input).toEqual(g);
+  //   }); 
+
+  //   comp.onInput(value);
+  //   expect(comp.isValid).toBe(value.vaild);
+
+
+  // });
+
+
+  // ngOnInit mehtod
+  it('ngOnInit() method check', () => {
+
+    comp.name = comp.generateName(comp.name, comp.fieldlabel, 'dropdowninput');
+    let value = comp.name;
+    comp.ngOnInit();
+    expect(comp.name).toEqual(value);
+
+
+    // comp.input.subscribe((g: any) => {
+    //   expect(comp.input).toEqual(g);
+    // }); 
+
+    // comp.onIngOnInitnput(value);
+    // expect(comp.isValid).toBe(value.vaild);
+
+
+  });
 
 
   //setUserSelection check
 
-  it('check setUserSelection method',() =>{
+  it('check setUserSelection method', () => {
 
     comp.setUserSelection();
     comp.innerValue = 'kedar';
     expect(comp.innerValue).not.toBe(null);
-  
+
     const valueKey = comp.valuefield;
     expect(valueKey).toBe(undefined);
     const val = comp.innerValue;
@@ -102,8 +122,8 @@ it('closeOnEScape() method check', () => {
   })
 
 
-   //on onBlur()
-   it('on onBlur()', () => {
+  //on onBlur()
+  it('on onBlur()', () => {
 
     let fn = event;
     comp.onblur(fn);
@@ -111,9 +131,9 @@ it('closeOnEScape() method check', () => {
     comp.onTouchedCallback();
     expect(comp.onTouchedCallback()).toHaveBeenCalled;
     comp.onBlur.subscribe((g: any) => {
-          expect(comp.onBlur).toEqual(g);
-        }); 
-     
+      expect(comp.onBlur).toEqual(g);
+    });
+
   });
 
   // registerOnChange method
@@ -134,8 +154,8 @@ it('closeOnEScape() method check', () => {
     expect(comp.showToolTip).toEqual(true);
     comp.onClick.subscribe((g: any) => {
       expect(comp.onClick).toEqual(g);
-    }); 
- 
+    });
+
     comp.selectedindex = 2;
     expect(comp.multiselect).toBe(false);
     expect(comp.selectedindex).toBeGreaterThan(-1);
@@ -181,7 +201,7 @@ it('closeOnEScape() method check', () => {
     expect(comp.showToolTip).toBe(false);
     expect(comp.onBaseFocusEvent({})).toHaveBeenCalled;
 
-    
+
     comp.disabled = false;
     expect(comp.disabled).toBe(false);
     expect(comp.onBaseFocusEvent({})).toHaveBeenCalled;
@@ -189,24 +209,24 @@ it('closeOnEScape() method check', () => {
   });
 
 
-   //writeChangedValue () 
-   it('on writeChangedValue()', () => {
-    
-    comp.value  = 'kedar';
+  //writeChangedValue () 
+  it('on writeChangedValue()', () => {
+
+    comp.value = 'kedar';
     let item = comp.value;
-    comp.innerValue ='kokil';
+    comp.innerValue = 'kokil';
     let status = false;
     comp.writeChangedValue(item);
     expect(comp.innerValue).not.toBe('kokil');
     expect(status).toEqual(false);
-   
-     status =  true;
-     comp.displayValue = '';
-     comp.writeChangedValue(item);
 
-     expect(comp.displayValue).toBe('');
-     expect(comp.value).toEqual(item);
-    
+    status = true;
+    comp.displayValue = '';
+    comp.writeChangedValue(item);
+
+    expect(comp.displayValue).toBe('');
+    expect(comp.value).toEqual(item);
+
 
     //expect(comp.showToolTip).toEqual(true);
     // comp.posixUp = comp.getListPosition(item);
@@ -215,25 +235,45 @@ it('closeOnEScape() method check', () => {
 
   //writeValue () 
   it('on writeValue()', () => {
-    comp.value  = 'kedar';
+    comp.value = 'kedar';
     let item = comp.value;
-    comp.writeValue(item);  
+    comp.writeValue(item);
     expect(comp.value).not.toBe(null);
     expect(comp.writeChangedValue(item)).toHaveBeenCalled;
 
     let ok = null;
     comp.value = '';
-    comp.writeValue(ok);  
+    comp.writeValue(ok);
     expect(comp.value).toBe('');
     comp.innerValue = null;
     expect(comp.innerValue).toBe(null);
 
     comp.allowblank = true;
     comp.isValid = true;
-    
+
     expect(comp.isValid).toEqual(true);
     expect(comp.showToolTip).toEqual(undefined);
     // comp.posixUp = comp.getListPosition(item);
     // comp.focus.emit();
   });
+
+  //on onItemSelect()
+  it('on onItemSelect()', () => {
+    let item = event;
+    comp.showToolTip = false;
+    comp.onItemSelect(item);
+    expect(comp.showToolTip).toEqual(false);
+    // comp.posixUp = comp.getListPosition(item);
+    // comp.focus.emit();
+  });
+
+  //wrking 1- set errormsg
+  it('set errormsg', () => {
+    comp.errormsg = 'data incorect';
+    expect(comp.helpInfoMsg).toEqual('data incorect<br/>');
+  });
+
+  // it('get errormsg', () => {
+  //   expect(comp.errormsg).toEqual(comp._errormsg);
+  // });
 });
