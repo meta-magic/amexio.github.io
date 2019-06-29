@@ -149,7 +149,7 @@ export class AmexioNavMenuComponent implements OnInit, AfterViewInit {
       this.showMenus = !this.showMenus;
     }
   }
-  
+
   getMenuPosition(event: any) {
     const remainingleft = event.currentTarget.getBoundingClientRect().left;
     const remainingright = window.screen.width - event.currentTarget.getBoundingClientRect().right;
