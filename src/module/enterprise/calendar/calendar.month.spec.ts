@@ -84,6 +84,7 @@ describe('amexio-calendar-month', () => {
 
     innerindex = -1;
     comp.focusiindex = -1
+    comp.refactoredleftday(rowindex, innerindex, calendarrow);
     expect(innerindex).toBeLessThan(0);
     expect(comp.focusrindex).toEqual(rowindex);
     expect(comp.focusiindex).toEqual(innerindex);
@@ -92,14 +93,16 @@ describe('amexio-calendar-month', () => {
     innerindex = 0;
     comp.focusiindex = 2;
     calendarrow = 'fix';
+    comp.refactoredleftday(rowindex, innerindex, calendarrow);
     expect(innerindex).toEqual(0);
     expect(comp.focusrindex).toEqual(rowindex -1);
     expect(comp.focusiindex).toEqual(calendarrow.length - 1);
      
     innerindex = 3;
     comp.focusiindex = 2;
+    comp.refactoredleftday(rowindex, innerindex, calendarrow);
     expect(innerindex).toBe(3);
-    // expect(comp.focusrindex).toEqual(rowindex);
+    expect(comp.focusrindex).toEqual(rowindex);
     expect(comp.focusiindex).toEqual(innerindex -1);
 
 
