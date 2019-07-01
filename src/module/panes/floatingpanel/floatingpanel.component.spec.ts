@@ -84,18 +84,19 @@ describe('amexio-floating-panel', () => {
     //         expect(comp.relative).not.toEqual(true);
     //     }
     // })
-    // it('arrowPadding method', () => {
-    //     // comp.showPanel = true;
-    //     let margintop:'16px';       
-    //     comp.arrow = true;
-    //     comp.style['margin-top'] = margintop;
-    //     el.style['margin-top']= fixture.debugElement.query(By.css('#floatinpanel')).nativeElement;
-    //     // fixture.detectChanges();        // Fire Change
-    //     expect(comp .style['margin-top']).toContain(margintop);
+    it('arrowPadding method', () => {
+        let margintop:'16px';       
+        comp.arrow = true;
+        comp.style['margin-top'] = margintop;
+        // expect(comp .style['margin-top']).toContain(margintop);
        
-    // })
-    //     ;
+    })
+        ;
     // it('setpanelStyleposition', () => {
+    //     comp.topPosition='';
+    //     comp.bottomPosition='';
+    //     comp.rightPosition ='';
+    //     comp.leftPosition=''
     //     comp.style['top'].setvalue(comp.topPosition);
     //     comp.style['bottom'].setvalue(comp.bottomPosition);
     //     comp.style['right'].setvalue(comp.rightPosition);
@@ -105,17 +106,16 @@ describe('amexio-floating-panel', () => {
     //     expect(comp.bottomPosition).toEqual(true);
     //     expect(comp.rightPosition).toEqual(true);
     //     expect(comp.leftPosition).toEqual(true);
-
-    // })
-    // it('changeHeaderColor method', () => {
-    //     comp.gradientFlag = true;
-    //     comp.changeHeaderColor();
     // });
-    // it('setcolorpallete method', () => {
-    //     let themeClass: any;
-    //     comp.setColorPalette(themeClass);
-    //     comp.themeCss = themeClass;
-    // });
+    it('changeHeaderColor method', () => {
+        comp.gradientFlag = true;
+        comp.changeHeaderColor();
+    });
+    it('setcolorpallete method', () => {
+        let themeClass: any;
+        comp.setColorPalette(themeClass);
+        comp.themeCss = themeClass;
+    });
     // it('setpanelAbsolutePosition method', () => {
     //     comp.style = {};
     //     comp.style['position'] = 'absolute';
