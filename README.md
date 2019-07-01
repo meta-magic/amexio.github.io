@@ -30,7 +30,7 @@ UI Components powered by HTML5 & CSS3 for <b>Responsive Web Design & 80+ built-
    <a href="https://npmjs.org/package/amexio-ng-extensions">
     <img src="https://img.shields.io/npm/dt/amexio-ng-extensions.svg" alt="Total Downloads" />
   </a>
-  <img src="https://travis-ci.org/meta-magic/amexio.github.io.svg?branch=v5.1" />
+  <img src="https://travis-ci.org/meta-magic/amexio.github.io.svg?branch=v5.14" />
   <!--
   <a href="https://codecov.io/gh/meta-magic/amexio.github.io">
   <img src="https://codecov.io/gh/meta-magic/amexio.github.io/branch/v5.1/graph/badge.svg" />
