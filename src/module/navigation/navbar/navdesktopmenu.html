@@ -5,7 +5,7 @@
     <div *ngIf="node.separatorHeader" class="nav-menu-header">
         {{node.separatorHeader}}
     </div>
-    <div class="nav-desktop-link" (mouseover)="onMouseOver($event, node)"   (mouseleave)="onMouseLeave($event,node)"
+    <div class="nav-desktop-link" (click)="onClick($event,node)" (mouseover)="onMouseOver($event, node)"   (mouseleave)="onMouseLeave($event,node)"
         [ngClass]="{'nav-menu-separator': (node.separator && !node.separatorHeader)}">
 
         <span class="flex-inline" [ngStyle]="{'flex-direction': (position === 'left') ?'row':'row-reverse'}">
@@ -17,7 +17,7 @@
 
         
 
-        <amexio-nav-desktop *ngIf="node.showInnerMenus" class="amexio-nav-desktop amexio-nav-submenus amexio-nav-desktop-submenus" [nodes]="node.submenus" [ngStyle]="{'left': (position === 'left') ? '100%':null,
+        <amexio-nav-desktop *ngIf="node.showInnerMenus" (onNavItemClick)="onInnerClick($event)" class="amexio-nav-desktop amexio-nav-submenus amexio-nav-desktop-submenus" [nodes]="node.submenus" [ngStyle]="{'left': (position === 'left') ? '100%':null,
                                                          'right': (position === 'right') ? '100%':null}">
         </amexio-nav-desktop>
 

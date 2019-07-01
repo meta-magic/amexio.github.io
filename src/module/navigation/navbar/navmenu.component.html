@@ -11,8 +11,8 @@
       <em *ngIf="mobilemode && !showMenus" class="dropdownicon fa fa-angle-down"></em>
     </span>
   </a>
-  <amexio-nav-desktop  *ngIf="showMenus && !mobilemode"  class="amexio-nav-desktop amexio-nav-submenus amexio-nav-desktop-submenus"  [nodes]="data" [ngStyle]="{'right': (position === 'right') ? '10px':null}"></amexio-nav-desktop>
+  <amexio-nav-desktop  *ngIf="showMenus && !mobilemode" (onNavItemClick)="navItemClick($event)"  class="amexio-nav-desktop amexio-nav-submenus amexio-nav-desktop-submenus"  [nodes]="data" [ngStyle]="{'right': (position === 'right') ? '10px':null}"></amexio-nav-desktop>
 
-  <amexio-nav-mobile  *ngIf="showMenus && mobilemode"  class="amexio-nav-mobile amexio-nav-submenus amexio-nav-mobile-submenus"  [nodes]="data"></amexio-nav-mobile>
+  <amexio-nav-mobile  *ngIf="showMenus && mobilemode"  (onNavItemClick)="navItemClick($event)"   class="amexio-nav-mobile amexio-nav-submenus amexio-nav-mobile-submenus"  [nodes]="data"></amexio-nav-mobile>
   
 </div>

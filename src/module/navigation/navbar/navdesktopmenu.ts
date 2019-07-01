@@ -14,6 +14,8 @@ export class AmexioNavDesktopMenuComponent implements AfterViewInit {
 
     @ViewChild('menus', { read: ElementRef }) public menus: ElementRef;
 
+    @Output() onNavItemClick: any = new EventEmitter<any>();
+
     ngAfterViewInit() {
         setTimeout(() => {
             if ((window.innerWidth - this.menus.nativeElement.getBoundingClientRect().right) < 300) {
@@ -34,11 +36,19 @@ export class AmexioNavDesktopMenuComponent implements AfterViewInit {
 
     onMouseLeave(event: any, node: any) {
         debounceTime(200);
-        if (node.submenus.length > 0) {
+        if ( node.submenus && node.submenus.length > 0) {
             node['showInnerMenus'] = false;
         }
         this.nodes.forEach((innernode: any) => {
             innernode['showInnerMenus'] = false;
         });
+    }
+
+    onClick(_event: any, node: any) {
+        this.onNavItemClick.emit({ data: node, event: _event });
+    }
+
+    onInnerClick(event: any) {
+        this.onNavItemClick.emit(event);
     }
 }
