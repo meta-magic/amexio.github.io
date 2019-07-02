@@ -79,9 +79,9 @@ describe('amexio-checkbox-group', () => {
 // });
 it('getResponseData', () =>{
   let httpResponse:any;
+  comp.datareader = 'data.localdata'
   comp.getResponseData(httpResponse);
   let responsedata = httpResponse;
-  comp.datareader = 'data.localdata'
   expect(comp.datareader).not.toEqual(null);
   const dr = comp.datareader.split('.');
   for (const ir of dr) {
@@ -97,9 +97,9 @@ it('emitData', () =>{
   comp.emitData();
   comp.SelectedCheckBox = [];
   comp.data.forEach((node: any) => {
-    if (node.checked) {
-      comp.SelectedCheckBox.push(node);
-    }
+    node.checked = true;
+    expect(node.checked).toEqual(true);
+    comp.SelectedCheckBox.push(node);
   });
   comp.onSelection.emit(this.SelectedCheckBox);
 });
@@ -110,11 +110,11 @@ it('contains', () =>{
   comp['_model'] = [];
 expect(comp['_model'] instanceof Array).toEqual(true);
 comp['_model'].forEach((obj:any) => {
-  if (obj[this.displayfield] === value[this.displayfield]) {
+  expect(obj[comp.displayfield]).toEqual(value[this.displayfield]);
    return true;
- }
 });
 });
+
 
 
     // inject(
