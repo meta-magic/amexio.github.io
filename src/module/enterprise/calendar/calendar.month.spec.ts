@@ -42,8 +42,7 @@ describe('amexio-calendar-month', () => {
 
 
   });
-  it('true is true', () => expect(true).toBe(true));
-
+ 
   //check variables 
   it('check variables in dropdown component ', () => {
 
@@ -104,8 +103,93 @@ describe('amexio-calendar-month', () => {
     expect(innerindex).toBe(3);
     expect(comp.focusrindex).toEqual(rowindex);
     expect(comp.focusiindex).toEqual(innerindex -1);
-
-
   });
+
+
+  it('getFullDayName()', () => {
+      let receiveddate = new Date('16-Jul-2019');
+      comp.getFullDayName(receiveddate);
+      const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday',
+      'Thursday', 'Friday', 'Saturday'];
+  const day = receiveddate.getDay();
+  let dayname = '';
+  weekdays.forEach((element: any, index: number) => {
+    // if (day === index) {
+      if(index == 2) {
+  expect(day).toEqual(index);
+  dayname = element;}
+  });
+  return dayname;
+  });
+
+  it('getFullMonthName()', () => {
+    let receiveddate = new Date('16-Jul-2019');
+    comp.getFullMonthName(receiveddate);
+    const months = ['January', 'Febuary', 'March', 'April', 'May', 'June',
+            'July', 'August', 'September', 'October', 'November', 'December'];
+        const datemonth = receiveddate.getMonth();
+        let monthString = '';
+        months.forEach((element: any, index: number) => {
+           if(index == 6) {
+               expect(datemonth). toEqual(index);
+              monthString = element;
+           }
+         });
+         return monthString;
+});
+  
+it('receiveDateFormat()', () => {
+  let day = new Date();
+     comp.receiveDateFormat(day);
+     let datestring = '';
+     datestring = (day).getDate() + comp.getFullMonthName(new Date(day)) +
+         comp.getFullDayName(new Date(day));
+     return datestring;
+});
+
+it('formatAMPM()', () => {
+  let date = new Date();
+  let hours = date.getHours();
+  const minutes = date.getMinutes();
+  let lmins;
+  const ampm = hours >= 12 ? 'pm' : 'am';
+  hours = hours % 12;
+  hours = hours ? hours : 12; // the hour '0' should be '12'
+  lmins = minutes < 10 ? '0' + minutes : minutes;
+  return (hours + ':' + lmins + ' ' + ampm);
+});
+
+it('eventClicked()', () => {
+   let eventData: any = 'a';
+   let runTimeDiv: any = 'b';
+  comp.eventClicked(event, eventData, runTimeDiv);
+  const eventObject = {};
+  eventObject['event'] = event;
+  eventObject['item'] = eventData;
+  eventObject['this'] = comp;
+  eventObject['runtimeDiv'] = runTimeDiv;
+  comp.onEventClicked.emit(eventObject);
+});
+
+it('onCloseClick()', () => {
+  let event1 = {data: {fpFlag: false}}
+   comp.onCloseClick(event1);
+   event1.data.fpFlag = false;
+   comp.onCloseClicked.emit(event);
+});
+
+it('onChipClick()', () => {
+  let item: any = 'a';
+  let runtimeDiv: any = 'b';
+  let event1 = {pageX: 'page'}
+    comp.onChipClick(event1, item, runtimeDiv);
+    const emitEvent = {};
+        emitEvent['event'] = event;
+        emitEvent['item'] = item;
+        emitEvent['this'] = this;
+        emitEvent['runtimeDiv'] = runtimeDiv;
+        comp.xValue = event1.pageX;
+        comp.onMoreEventClicked.emit(emitEvent);
+});
 
 });
