@@ -12,10 +12,10 @@ import { DisplayFieldComponent } from '../../base/display-field/display-field.co
 import { CommonIconComponent } from '../../base/components/common.icon.component';
 
 
-describe('amexio-dropdown', () => {
+fdescribe('amexio-dropdown', () => {
   let comp: AmexioDropDownComponent;
   let fixture: ComponentFixture<AmexioDropDownComponent>;
-
+  let data: any;
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule, HttpClientModule],
@@ -25,7 +25,9 @@ describe('amexio-dropdown', () => {
     fixture = TestBed.createComponent(AmexioDropDownComponent);
     comp = fixture.componentInstance;
     event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
-
+     data = [{
+      index:'12345'
+    }];
     it('true is true', () => expect(true).toBe(true));
   });
 
@@ -142,6 +144,18 @@ describe('amexio-dropdown', () => {
         test.checked = true;
         comp.multiselectValues.push(test);
       });
+    });
+  });
+  it('generateIndex', () => {
+    data = [{
+      index:'12345'
+    }];
+    comp.generateIndex(data);
+    comp.componentId = '#compid'
+    data.forEach((element: any, index: number) => {
+      // let compid = comp.componentId + 'listitem' + index;
+      // element['index'] = compid;
+      element['index'] = comp.componentId + 'listitem' + index;
     });
   });
 
