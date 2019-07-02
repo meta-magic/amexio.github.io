@@ -22,8 +22,7 @@ import { AmexioContextMenuComponent } from '../../base/base.contextmenu.componen
 import { DeviceQueryService } from '../../services/device/device.query.service';
 import { SpeechBubbleComponent } from '../../data/speech-bubble/speech-bubble.component';
 import { AmexioNavMobileMenuComponent } from '../../navigation/navbar/navmobilemenu';
-// import { CommonIconComponent} from '../../base/components/common.icon.component';
-// import {  }
+
 describe('navmobilemenu', () => {
     let comp1: AmexioNavMobileMenuComponent;
     let fixture1: ComponentFixture<AmexioNavMobileMenuComponent>;
@@ -49,4 +48,7 @@ describe('navmobilemenu', () => {
         comp1.toggleMenu(event, node);
         node[0]['showInnerMenus'] = !node[0]['showInnerMenus'];
     });
+    it('onInnerClick',()=>{
+        comp1.onNavItemClick.emit(event);
+    })
 });
