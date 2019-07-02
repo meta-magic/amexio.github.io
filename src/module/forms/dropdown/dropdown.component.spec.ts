@@ -104,6 +104,46 @@ describe('amexio-dropdown', () => {
 
 
   });
+  // it('setData',()=>{
+  //   let httpResponse = {};
+  //   let datareader ='data.reader';
+  //   comp.setData(httpResponse);
+  //   let responsedata = httpResponse;
+  //   expect(comp.datareader).not.toEqual(null);
+  //   comp.multiselectValues = [];
+  //   const dr = comp.datareader.split('.');
+  //   expect(dr).toEqual(true);
+  //   for(const ir of dr) {
+  //     responsedata = responsedata[ir];
+  //   }
+  //   expect(dr).toEqual(false);
+  //   responsedata = httpResponse;
+  //   // comp.setResponseData(responsedata);
+  //   // comp.multiSelection();
+  //   // comp.setUserSelection();
+  //   // comp.maskloader = false;
+  // });
+  it('multiselectionData', () => {
+    comp.setMultiSelectData();
+    comp.multiselectValues = [];
+    comp.innerValue = ['valuefield'];
+    comp.filteredOptions = [{
+      valuefield: 'valuefield',
+      checked: false
+    }]
+    expect(comp.innerValue).toBeDefined();
+    expect(comp.innerValue.length).toBeGreaterThan(0);
+    const modelValue = comp.innerValue;
+    comp.valuefield = 'valuefield'
+    comp.filteredOptions.forEach((test) => {
+      modelValue.forEach((mdValue: any) => {
+        expect(test[comp.valuefield]).toEqual(mdValue);
+        expect(test.hasOwnProperty('checked')).toEqual(true);
+        test.checked = true;
+        comp.multiselectValues.push(test);
+      });
+    });
+  });
 
 
   //setUserSelection check
