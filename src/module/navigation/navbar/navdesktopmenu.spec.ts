@@ -41,6 +41,7 @@ describe('navdesktopmenu', () => {
     });
     fixture1 = TestBed.createComponent(AmexioNavDesktopMenuComponent);
     comp1 = fixture1.componentInstance;
+    event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
 
   comp1.nodes = [{
     subInnerMenus: false
@@ -102,27 +103,21 @@ describe('navdesktopmenu', () => {
 
     // node['showInnerMenus'] = false;
   });
+ 
+  it('onClick()', () => {
+    let node ={
+      submenus:[{submenu: 's'}, {submenu: 'u'}]
+    };
+    comp1.onClick(event, node);
+    comp1.onNavItemClick.emit({ data: node, event: event });
+  });
 
-  // it('onMouseLeave()', () => {
-  //   let event;
-  //   let node = { submenus: ['as'] };
-  //   comp1.onMouseLeave(event, node);
-  //   expect(node.submenus.length).toBeGreaterThan(0);
-  //   node['showInnerMenus'] = false;
-  //   // comp1.nodes = [{ a: '' }, { b: '' }]
-  //   comp1.nodes = [
-  //     {
-  //       showInnerMenus: false
-  //     }
-  //   ]
-  //   // comp1.nodes[0]['showInnerMenus'] = false;
-  //   // comp1.nodes.forEach((innernode: any) => {
-  //     // comp1.nodes[0]['showInnerMenus'] = false;
-
-  //     // comp1.nodes.forEach((innernode: any) => {
-  //       comp1.nodes['showInnerMenus'] = false;
-  //     // });
-  //   // });
-  // });
+  it('onInnerClick()', () => {
+    let node ={
+      submenus:[{submenu: 's'}, {submenu: 'u'}]
+    };
+    comp1.onInnerClick(event);
+    comp1.onNavItemClick.emit(event);
+  });
 
 });
