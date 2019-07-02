@@ -149,11 +149,13 @@ describe('amexio-treeview', () => {
     });
 
       it('resetFlag() on method call', () => {
-          comp.flag = false;
+          comp.flag = true;
+        comp.resetFlag();
+
+        comp.flag = false;
         comp.resetFlag();
         expect(comp.flag).toBe(false);
         expect(comp.setSelectedFlag()).toHaveBeenCalled;
-       
     });
 
 
