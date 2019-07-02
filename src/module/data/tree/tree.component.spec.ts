@@ -19,9 +19,10 @@ describe('amexio-treeview', () => {
         });
         fixture = TestBed.createComponent(AmexioTreeViewComponent);
         comp = fixture.componentInstance;
+        fixture.detectChanges();
+        const compiled = fixture.debugElement.nativeElement;
         event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
         let renderer = Renderer2;
-        fixture.detectChanges();
 
     });
     it('true is true', () => expect(true).toBe(true));
@@ -116,6 +117,42 @@ describe('amexio-treeview', () => {
     //     expect(comp.globalClickListenFunc()).toHaveBeenCalled;
     // });
 
+    // it('loadContextMenu() on method call', () => {
+
+    //     let rightClickData = {
+    //         "data": [
+    //             {
+    //                 "leaf": true,
+    //                 "text": "Application.js",
+    //                 "elementId": "1036-1111",
+    //                 "isSelected": true,
+    //                 "active": false
+    //             }
+    //         ],
+    //         "event": [
+    //             {
+    //                 "isTrusted": true,
+    //                 "screenX": 458,
+    //                 "screenY": 511,
+    //                 "clientX": 391,
+    //                 "clientY": 412
+    //             }
+    //         ]
+    //     };
+
+    //     rightClickData['event'];
+    //     rightClickData['event']['clientX'] = 391;
+    //     rightClickData['event']['clientY'] = 412;
+    //     rightClickData['data']['isSelected'] = true;
+
+    //     comp.loadContextMenu(rightClickData);
+    //     // expect(comp.mouseLocation.left).toBe(391);
+    //     // expect(comp.mouseLocation.top).toBe(412);
+    //     expect(comp.setSelectedFlag()).toHaveBeenCalled;
+    //     expect(rightClickData['data']['isSelected']).toEqual(true);
+    // });
+
+
 
     // it('removeListner() on method call', () => {
 
@@ -141,21 +178,50 @@ describe('amexio-treeview', () => {
             , { "text": "Send data in email", "icon": "" }];
         comp.contextmenu = comp.cloneContextMenuData;
         comp.getContextMenu();
-    
+
         expect(comp.contextmenu).toBe(comp.cloneContextMenuData);
         expect(comp.contextmenu.length).toBeGreaterThan(0);
         expect(comp.flag).toBe(true);
         expect(comp.addListner()).toHaveBeenCalled;
     });
 
-      it('resetFlag() on method call', () => {
-          comp.flag = true;
+    it('resetFlag() on method call', () => {
+        comp.flag = true;
         comp.resetFlag();
-
         comp.flag = false;
         comp.resetFlag();
         expect(comp.flag).toBe(false);
         expect(comp.setSelectedFlag()).toHaveBeenCalled;
+    });
+
+
+
+    it('emitCheckedData() on method call', () => {
+        let checkD = {
+            "checked":true,
+            "data": [
+                {
+                    "text": "Web App",
+                    "expand": true,
+                    
+                    "children": [
+                        {
+                            "text": "app",
+                            "expand": true
+                        }
+                    ]
+                }
+            ]
+        }
+        
+        checkD.checked = false;
+        comp.emitCheckedData(checkD);
+        expect(checkD.checked).toEqual(true)
+        expect(comp.setSelectedFlag()).toHaveBeenCalled;
+
+        checkD.checked = true;
+        comp.emitCheckedData(checkD);
+        // expect(checkD.data)
     });
 
 
