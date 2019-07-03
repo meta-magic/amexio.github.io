@@ -68,23 +68,23 @@ describe('amexio-floating-panel', () => {
     //     comp.style['position'] = 'absolute';
 
     // });
-    it('panel style method ', () => {
-        comp.panelStyle();
-        comp.style = {};
-        comp.style['position'] = (comp.relative) ? 'absolute' : 'fixed';
-        comp.style['display'] = 'block';
-        comp.style['z-index'] = '600';
-        comp.style['opacity'] = '1';
-        comp.style['box-shadow'] = '0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)';
-        comp.style['width'] = comp.width + 'px';
-        comp.style['width'] = '400px';
-        comp.width = '';
-        comp.relative= false;
-        // expect(comp.width).not.toEqual('');
-        expect(comp.width).toEqual('');
-        // if (!this.relative) {
-        expect(comp.relative).toEqual(false);
-    });
+    // it('panel style method ', () => {
+    //     comp.panelStyle();
+    //     comp.style = {};
+    //     comp.style['position'] = (comp.relative) ? 'absolute' : 'fixed';
+    //     comp.style['display'] = 'block';
+    //     comp.style['z-index'] = '600';
+    //     comp.style['opacity'] = '1';
+    //     comp.style['box-shadow'] = '0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)';
+    //     comp.style['width'] = comp.width + 'px';
+    //     comp.style['width'] = '400px';
+    //     comp.width = '';
+    //     comp.relative= false;
+    //     // expect(comp.width).not.toEqual('');
+    //     expect(comp.width).toEqual('');
+    //     // if (!this.relative) {
+    //     expect(comp.relative).toEqual(false);
+    // });
     it('arrowPadding method', () => {
         let margintop: '16px';
         comp.arrow = true;
