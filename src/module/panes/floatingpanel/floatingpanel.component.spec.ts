@@ -86,10 +86,11 @@ describe('amexio-floating-panel', () => {
     //     }
     // })
     it('arrowPadding method', () => {
+        comp.arrowPadding();
         let margintop:'16px';       
         comp.arrow = true;
         comp.style['margin-top'] = margintop;
-        // expect(comp .style['margin-top']).toContain(margintop);
+        expect(comp .style['margin-top']).toContain(margintop);
        
     });
     it('setpanelStyleposition', () => {
