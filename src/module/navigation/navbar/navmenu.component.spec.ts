@@ -7,7 +7,7 @@ import {AmexioNavMobileMenuComponent} from '../../navigation/navbar/navmobilemen
 describe('navmenu', () => {
     let comp: AmexioNavMenuComponent;
     let fixture: ComponentFixture<AmexioNavMenuComponent>;
-    // el: ElementRef;
+    let el: ElementRef;
     let timerCallback: any;
     beforeEach(() => {
         TestBed.configureTestingModule({
@@ -17,7 +17,7 @@ describe('navmenu', () => {
         });
         fixture = TestBed.createComponent(AmexioNavMenuComponent);
         comp = fixture.componentInstance;
-        this.el = fixture.debugElement.query(By.css('#navmenu'));
+        el = fixture.debugElement.query(By.css('#navmenu'));
         event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
 
     });
@@ -26,9 +26,9 @@ describe('navmenu', () => {
     comp.ngAfterViewInit();
     setTimeout(() => {
         expect(timerCallback).toHaveBeenCalled();
-        expect((window.innerWidth - this.el.nativeElement.getBoundingClientRect().right)).not.toBeGreaterThan(150);
+        expect((window.innerWidth - el.nativeElement.getBoundingClientRect().right)).not.toBeGreaterThan(150);
         comp.position = 'right';
-        expect((window.innerWidth - this.el.nativeElement.getBoundingClientRect().right)).toBeGreaterThan(150);
+        expect((window.innerWidth - el.nativeElement.getBoundingClientRect().right)).toBeGreaterThan(150);
         comp.position = 'left';
         fixture.detectChanges();
     }, 100);
