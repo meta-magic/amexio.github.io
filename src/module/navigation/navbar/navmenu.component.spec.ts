@@ -102,16 +102,16 @@ describe('navmenu', () => {
     // let directionflag: string;
     //    });
        
-       it('onIconClick() method check', () => {
-        let node ={
-            submenus:[{submenu: 's'}, {submenu: 'u'}],
-            isExpanded: false
-          }
-        comp.onIconClick(event, node);
-        event.stopPropagation();
-        // if (node.hasOwnProperty('isExpanded')) {
-        expect(node.hasOwnProperty('isExpanded')).toEqual(true);
-            node.isExpanded = !node.isExpanded;
-            node['isExpanded'] = true;
-        });  
+    //    it('onIconClick() method check', () => {
+    //     let node ={
+    //         submenus:[{submenu: 's'}, {submenu: 'u'}],
+    //         isExpanded: false
+    //       }
+    //     comp.onIconClick(event, node);
+    //     event.stopPropagation();
+    //     // if (node.hasOwnProperty('isExpanded')) {
+    //     expect(node.hasOwnProperty('isExpanded')).toEqual(true);
+    //         node.isExpanded = !node.isExpanded;
+    //         node['isExpanded'] = true;
+    //     });  
 });

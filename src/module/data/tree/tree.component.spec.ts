@@ -55,59 +55,6 @@ describe('amexio-treeview', () => {
         expect(comp.data).toEqual(comp._data);
     });
 
-    //    it('set data method',() => {
-    //     (<any>comp)['componentLoaded'] = true;  
-    //     (<any>comp).data();
-
-    //       expect((<any>comp)['componentLoaded'] ).toEqual(true);
-    //         expect((<any>comp).updateComponent()).toHaveBeenCalled;
-    //       });
-
-
-    //   it('onClick() on method call', () => {
-    //     let node: any;
-    //     node.extend = true;
-    //     comp.onClick(node);
-    //     expect(node.extend).toEqual(true);
-    //     node.extend = false;
-    //     comp.onClick(node);
-    //     expect(node.extend).toEqual(false);
-    //   });
-
-
-    // it('onArrowDown method', () => {
-
-    //     let data = {
-    //         "item": [{
-    //             "text": "Web App",
-    //             "expand": true,
-    //             "children": [
-    //                 {
-    //                     "text": "app",
-    //                     "expand": true,
-    //                     "children": [
-    //                         {
-    //                             "leaf": true,
-    //                             "text": "Application.js"
-    //                         }
-    //                     ]
-    //                 }
-    //             ]
-    //         }]
-    //     };
-    //     let event = data;
-    //     let node = data;
-    //     let index = 0;
-    //     comp.onArrowDown(event, data, node, index);
-    //     const incrementindex = index + 1;
-    //     expect(incrementindex).toBe(1);
-    //     // const itemid = data[incrementindex];
-
-    //     // node.expand = true;
-    //     // expect(node.expand).toBe(true);
-
-
-    // });
 
     it('onTreeNodeCheck() on method call', () => {
 
@@ -126,6 +73,188 @@ describe('amexio-treeview', () => {
         });
     });
 
+    it('ngOnDestroy() on method call', () => {
+
+        comp.destroyExpandAll = true;
+        comp.ngOnDestroy();
+        expect(comp.destroyExpandAll).toBe(true);
+        clearTimeout(comp.destroyExpandAll)
+    });
+
+    it('getContextMenu() on method call', () => {
+
+
+        comp.flag = true;
+        comp.cloneContextMenuData = [{ "text": "Add New", "icon": "fa fa-plus", "disabled": true }, { "text": "Edit", "icon": "", "seperator": true }
+            , { "text": "Send data in email", "icon": "" }];
+        comp.contextmenu = comp.cloneContextMenuData;
+        comp.getContextMenu();
+
+        expect(comp.contextmenu).toBe(comp.cloneContextMenuData);
+        expect(comp.contextmenu.length).toBeGreaterThan(0);
+        expect(comp.flag).toBe(true);
+        expect(comp.addListner()).toHaveBeenCalled;
+    });
+
+    it('ngOnInit() on method call', () => {
+        comp.contextmenu = [{ "text": "Add New", "icon": "fa fa-plus", "disabled": true }, { "text": "Edit", "icon": "", "seperator": true }
+            , { "text": "Send data in email", "icon": "" }];
+
+        comp.ngOnInit();
+        expect(comp.contextmenu).not.toBe(null);
+        expect(comp.contextmenu.length).toBeGreaterThan(0);
+
+
+    });
+    it('resetFlag() on method call', () => {
+        comp.flag = true;
+        comp.resetFlag();
+        comp.flag = false;
+        comp.resetFlag();
+        expect(comp.flag).toBe(false);
+        expect(comp.setSelectedFlag()).toHaveBeenCalled;
+    });
+
+
+    it('expandAll() on method call', () => {
+        let node: any;
+        comp.parentRef = true;
+        comp.expandAll(node);
+        comp.destroyExpandAll = setTimeout(() => {
+            expect(comp.parentRef).toBe(true);
+            comp.expandAllCall(comp.parentRef);
+        }, 0);
+    });
+
+    it('updateComponent() on method call', () => {
+        comp.previousValue = '90';
+
+        comp.updateComponent();
+        expect(comp.data).not.toBe(null);
+        expect(JSON.stringify(comp.previousValue)).toBe('"90"');
+        expect(JSON.stringify(comp.previousValue)).not.toEqual(JSON.stringify(comp.data));
+        comp.updateComponent();
+    });
+
+    
+
+    it('activateNode() on method call', () => {
+        let LocalData = [{
+            "checked": true,
+            "key": 'kedar',
+            "active": true,
+            "item": [
+                {
+                    "leaf": true,
+                    "text": "Application.js"
+                }
+            ]
+        }];
+        let LocalData2 = [{
+            "checked": true,
+            "key": 'kedar',
+            "active": true,
+            "item": [
+                {
+                    "leaf": true,
+                    "text": "Application.js",
+                    "expand": true,
+                    "children": [
+                        {
+                            "text": "app",
+                            "expand": true
+                        }
+                    ]
+                }
+            ]
+        }];
+        let node = {
+            "leaf": true,
+            "text": "Application.js"
+        }
+
+        comp.childarraykey = 'children'
+        comp.activateNode(LocalData, node);
+        for (const i of LocalData) {
+            i['active'] = true;
+            expect(i[comp.childarraykey]).not.toBe(comp.childarraykey);
+            expect(i.item[0]).toEqual(node);
+            expect(i['active']).toEqual(true);
+        }
+
+        // comp.activateNode(LocalData2, node);
+        // for (const i of LocalData2) {
+        //     i['active'] = false;
+        //     expect(i.item['children']).toBe('children');
+        //     expect(i.item[0]).not.toEqual(node);
+        //     expect(i['active']).toEqual(true);
+        // }
+
+    });
+
+
+
+
+
+
+    it('emitCheckedData() on method call', () => {
+        checkD = {
+            "checked": true,
+            "key": 'kedar',
+            "data": [
+                {
+                    "text": "Web App",
+                    "expand": true,
+                    "checked": true,
+                    "children": [
+                        {
+                            "text": "app",
+                            "expand": true,
+                            "children": [
+                                {
+                                    "leaf": true,
+                                    "text": "Application.js"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+        comp.displaykey = 'text';
+        comp.childarraykey = 'children';
+        checkD.checked = false;
+        comp.emitCheckedData(checkD);
+        expect(checkD.checked).toEqual(true)
+        expect(comp.setSelectedFlag()).toHaveBeenCalled;
+        checkD.checked = true;
+        comp.emitCheckedData(checkD);
+        //  expect(checkD.data.hasOwnProperty(comp.childarraykey)).toEqual(true);
+        // checkD.data[comp.childarraykey].forEach((option: any) => {
+        // option.checked = true;
+        // expect(option.hasOwnProperty(comp.childarraykey)).toEqual(true);
+        // comp.setCheckedStatusFromParent(option);
+        // expect(comp.setCheckedStatusFromParent(option)).toHaveBeenCalled;
+        // });
+
+        comp.emitData(checkD);
+    });
+
+    // it('onNodeClick() on method call', () => {
+    //     let node = [{
+    //         "leaf": true,
+    //         "text": "Application.js"
+    //     }]
+
+    //     comp.onNodeClick(node);
+    //     const cloneNode = JSON.parse(JSON.stringify(node));
+    //   //  comp.cloneMethod(cloneNode);
+    //     //   expect(comp.cloneMethod).toHaveBeenCalled;
+    //     comp.nodeClick.subscribe((g: any) => {
+    //         expect(comp.nodeClick).toEqual(g);
+    //     });
+    //     // comp.activateNode(checkD,node);
+    // });
     // it('addListner() on method call', () => {
 
     //     let value = true;
@@ -177,6 +306,14 @@ describe('amexio-treeview', () => {
     //     expect(rightClickData['data']['isSelected']).toEqual(true);
     // });
 
+      //    it('set data method',() => {
+    //     (<any>comp)['componentLoaded'] = true;  
+    //     (<any>comp).data();
+
+    //       expect((<any>comp)['componentLoaded'] ).toEqual(true);
+    //         expect((<any>comp).updateComponent()).toHaveBeenCalled;
+    //       });
+
 
 
     // it('removeListner() on method call', () => {
@@ -187,125 +324,54 @@ describe('amexio-treeview', () => {
     // });
 
 
-    it('ngOnDestroy() on method call', () => {
-
-        comp.destroyExpandAll = true;
-        comp.ngOnDestroy();
-        expect(comp.destroyExpandAll).toBe(true);
-        clearTimeout(comp.destroyExpandAll)
-    });
-
-    it('getContextMenu() on method call', () => {
-
-
-        comp.flag = true;
-        comp.cloneContextMenuData = [{ "text": "Add New", "icon": "fa fa-plus", "disabled": true }, { "text": "Edit", "icon": "", "seperator": true }
-            , { "text": "Send data in email", "icon": "" }];
-        comp.contextmenu = comp.cloneContextMenuData;
-        comp.getContextMenu();
-
-        expect(comp.contextmenu).toBe(comp.cloneContextMenuData);
-        expect(comp.contextmenu.length).toBeGreaterThan(0);
-        expect(comp.flag).toBe(true);
-        expect(comp.addListner()).toHaveBeenCalled;
-    });
-
-    it('ngOnInit() on method call', () => {
-        comp.contextmenu =[{ "text": "Add New", "icon": "fa fa-plus", "disabled": true }, { "text": "Edit", "icon": "", "seperator": true }
-        , { "text": "Send data in email", "icon": "" }];
-
-        comp.ngOnInit();
-        expect(comp.contextmenu).not.toBe(null);
-        expect(comp.contextmenu.length).toBeGreaterThan(0);
-      
-
-    });
-    it('resetFlag() on method call', () => {
-        comp.flag = true;
-        comp.resetFlag();
-        comp.flag = false;
-        comp.resetFlag();
-        expect(comp.flag).toBe(false);
-        expect(comp.setSelectedFlag()).toHaveBeenCalled;
-    });
+   
+    //   it('onClick() on method call', () => {
+    //     let node: any;
+    //     node.extend = true;
+    //     comp.onClick(node);
+    //     expect(node.extend).toEqual(true);
+    //     node.extend = false;
+    //     comp.onClick(node);
+    //     expect(node.extend).toEqual(false);
+    //   });
 
 
-    it('expandAll() on method call', () => {
-        let node: any;
-        comp.parentRef = true;
-        comp.expandAll(node);
-        comp.destroyExpandAll = setTimeout(() => {
-            expect(comp.parentRef).toBe(true);
-            comp.expandAllCall(comp.parentRef);
-        }, 0);
-    });
-    
-    it('updateComponent() on method call', () => {
-       comp.previousValue = '90';
+    // it('onArrowDown method', () => {
 
-        comp.updateComponent();
-        expect(comp.data).not.toBe(null);
-        expect(JSON.stringify(comp.previousValue)).toBe('"90"');
-        expect(JSON.stringify(comp.previousValue)).not.toEqual(JSON.stringify(comp.data));
-        comp.updateComponent();
-    });
+    //     let data = {
+    //         "item": [{
+    //             "text": "Web App",
+    //             "expand": true,
+    //             "children": [
+    //                 {
+    //                     "text": "app",
+    //                     "expand": true,
+    //                     "children": [
+    //                         {
+    //                             "leaf": true,
+    //                             "text": "Application.js"
+    //                         }
+    //                     ]
+    //                 }
+    //             ]
+    //         }]
+    //     };
+    //     let event = data;
+    //     let node = data;
+    //     let index = 0;
+    //     comp.onArrowDown(event, data, node, index);
+    //     const incrementindex = index + 1;
+    //     expect(incrementindex).toBe(1);
+    //     // const itemid = data[incrementindex];
 
-    it('focusTONextParent() on method call', () => {
-        
- 
-        //  comp.focusTONextParent();
-       
-     });
- 
+    //     // node.expand = true;
+    //     // expect(node.expand).toBe(true);
+
+
+    // });
+
 
     
-
-
-    it('emitCheckedData() on method call', () => {
-        checkD = {
-            "checked": true,
-            "key": 'kedar',
-            "data": [
-                {
-                    "text": "Web App",
-                    "expand": true,
-                    "checked": true,
-                    "children": [
-                        {
-                            "text": "app",
-                            "expand": true,
-                            "children": [
-                                {
-                                    "leaf": true,
-                                    "text": "Application.js"
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        }
-        comp.displaykey = 'text';
-        comp.childarraykey = 'children';
-        checkD.checked = false;
-        comp.emitCheckedData(checkD);
-        expect(checkD.checked).toEqual(true)
-        expect(comp.setSelectedFlag()).toHaveBeenCalled;
-        checkD.checked = true;
-        comp.emitCheckedData(checkD);
-      //  expect(checkD.data.hasOwnProperty(comp.childarraykey)).toEqual(true);
-       // checkD.data[comp.childarraykey].forEach((option: any) => {
-            // option.checked = true;
-            // expect(option.hasOwnProperty(comp.childarraykey)).toEqual(true);
-            // comp.setCheckedStatusFromParent(option);
-            // expect(comp.setCheckedStatusFromParent(option)).toHaveBeenCalled;
-       // });
-
-        comp.emitData(checkD);
-    });
-
-
-
 
 });
 
