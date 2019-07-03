@@ -1,10 +1,14 @@
+import {ElementRef} from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { AmexioNavMenuComponent } from '../../navigation/navbar/navmenu.component';
+import {By} from '@angular/platform-browser';
 import {AmexioNavDesktopMenuComponent} from '../../navigation/navbar/navdesktopmenu';
+import { AmexioNavMenuComponent } from '../../navigation/navbar/navmenu.component';
 import {AmexioNavMobileMenuComponent} from '../../navigation/navbar/navmobilemenu';
 describe('navmenu', () => {
     let comp: AmexioNavMenuComponent;
     let fixture: ComponentFixture<AmexioNavMenuComponent>;
+    el: ElementRef;
+    let timerCallback: any;
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [],
@@ -13,47 +17,61 @@ describe('navmenu', () => {
         });
         fixture = TestBed.createComponent(AmexioNavMenuComponent);
         comp = fixture.componentInstance;
+        this.el = fixture.debugElement.query(By.css('#navmenu'));
         event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
-        
+
     });
+
+    it('ngAfterViewInit', () => {
+    comp.ngAfterViewInit();
+    setTimeout(() => {
+        expect(timerCallback).toHaveBeenCalled();
+        expect((window.innerWidth - this.el.nativeElement.getBoundingClientRect().right)).not.toBeGreaterThan(150);
+        comp.position = 'right';
+        expect((window.innerWidth - this.el.nativeElement.getBoundingClientRect().right)).toBeGreaterThan(150);
+        comp.position = 'left';
+        fixture.detectChanges();
+    }, 100);
+
+  });
 
     it('check variable in navmenu', () => {
         expect(comp.issubmenu).toEqual(false);
         expect(comp.position).toEqual('right');
         expect(comp.ishovered).toEqual(true);
 
-    })
+    });
 
     it('setMobileMode() method check', () => {
-        let mobileMode = false;
-        let flag = false;
+        const mobileMode = false;
+        const flag = false;
         comp.setMobileMode(flag);
         expect(comp.mobilemode).toBe(flag);
-       
+
       });
 
-      it('dataObject() method check', () => {
+    it('dataObject() method check', () => {
           let n;
-         comp.dataObject(n, event);
-         return { data: n, event: event };
+          comp.dataObject(n, event);
+          return { data: n, event };
       });
 
-      it('onHeaderClick() method check', () => {
+    it('onHeaderClick() method check', () => {
        comp.onHeaderClick(event);
        const node = {
         header: true,
         title: comp.title,
         icon: comp.icon,
       };
-      comp.mobileToggleModel = !comp.mobileToggleModel;
-      comp.mobilemode = true;
-      comp.showMenus = true;
-      expect(comp.mobilemode).toEqual(true);
-      expect(comp.showMenus).toEqual(true);
-      comp.onClick(node, event);
+       comp.mobileToggleModel = !comp.mobileToggleModel;
+       comp.mobilemode = true;
+       comp.showMenus = true;
+       expect(comp.mobilemode).toEqual(true);
+       expect(comp.showMenus).toEqual(true);
+       comp.onClick(node, event);
      });
 
-     it('onMouseOver() method check', () => {
+    it('onMouseOver() method check', () => {
         comp.mobilemode = true;
         comp.showMenus = true;
         comp.onMouseOver(event);
@@ -65,9 +83,9 @@ describe('navmenu', () => {
     it('onMouseLeave() method check', () => {
         comp.mobilemode = true;
         comp.showMenus = false;
-       comp.onMouseLeave(event);
-       expect(comp.mobilemode).toEqual(true);
-       expect(comp.showMenus).toEqual(false);
+        comp.onMouseLeave(event);
+        expect(comp.mobilemode).toEqual(true);
+        expect(comp.showMenus).toEqual(false);
     });
 
     it('toggleMenu() method check', () => {
@@ -78,13 +96,13 @@ describe('navmenu', () => {
         expect(comp.showMenus).toEqual(true);
       });
 
-      it('navItem click method', () => {
-      let  event1 = {
-            'event':event
-        }
-        comp.navItemClick(event1);   
-        event1.event.stopPropagation(); 
-        comp.onNavItemClick.emit(event);
+    it('navItem click method', () => {
+      const  event1 = {
+            event,
+        };
+      comp.navItemClick(event1);
+      event1.event.stopPropagation();
+      comp.onNavItemClick.emit(event);
       });
     //   it('onMouseoverTitle() method check', () => {
     //     comp.onMouseoverTitle(event);
@@ -101,7 +119,7 @@ describe('navmenu', () => {
     // const remainingright = window.screen.width - compiled.getBoundingClientRect().right;
     // let directionflag: string;
     //    });
-       
+
     //    it('onIconClick() method check', () => {
     //     let node ={
     //         submenus:[{submenu: 's'}, {submenu: 'u'}],
@@ -113,5 +131,5 @@ describe('navmenu', () => {
     //     expect(node.hasOwnProperty('isExpanded')).toEqual(true);
     //         node.isExpanded = !node.isExpanded;
     //         node['isExpanded'] = true;
-    //     });  
+    //     });
 });
