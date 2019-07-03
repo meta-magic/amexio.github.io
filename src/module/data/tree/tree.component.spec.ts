@@ -11,6 +11,8 @@ describe('amexio-treeview', () => {
     let comp: AmexioTreeViewComponent;
     let fixture: ComponentFixture<AmexioTreeViewComponent>;
 
+    let checkD: any;
+
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule],
@@ -23,6 +25,29 @@ describe('amexio-treeview', () => {
         const compiled = fixture.debugElement.nativeElement;
         event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
         let renderer = Renderer2;
+        checkD = {
+            "checked": true,
+            "key": 'kedar',
+            "data": [
+                {
+                    "text": "Web App",
+                    "expand": true,
+
+                    "children": [
+                        {
+                            "text": "app",
+                            "expand": true,
+                            "children": [
+                                {
+                                    "leaf": true,
+                                    "text": "Application.js"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
 
     });
     it('true is true', () => expect(true).toBe(true));
@@ -195,34 +220,74 @@ describe('amexio-treeview', () => {
     });
 
 
+    it('expandAll() on method call', () => {
+        let node: any;
+        comp.parentRef = true;
+        comp.expandAll(node);
+        comp.destroyExpandAll = setTimeout(() => {
+            expect(comp.parentRef).toBe(true);
+            comp.expandAllCall(comp.parentRef);
+        }, 0);
+    });
+    
+    it('updateComponent() on method call', () => {
+       comp.previousValue = '90';
+
+        comp.updateComponent();
+        expect(comp.data).not.toBe(null);
+        expect(JSON.stringify(comp.previousValue)).toBe('"90"');
+        expect(JSON.stringify(comp.previousValue)).not.toEqual(JSON.stringify(comp.data));
+        comp.updateComponent();
+      
+
+      
+    });
+    
+
 
     it('emitCheckedData() on method call', () => {
-        let checkD = {
-            "checked":true,
+        checkD = {
+            "checked": true,
+            "key": 'kedar',
             "data": [
                 {
                     "text": "Web App",
                     "expand": true,
-                    
+                    "checked": true,
                     "children": [
                         {
                             "text": "app",
-                            "expand": true
+                            "expand": true,
+                            "children": [
+                                {
+                                    "leaf": true,
+                                    "text": "Application.js"
+                                }
+                            ]
                         }
                     ]
                 }
             ]
         }
-        
+        comp.childarraykey = 'children';
         checkD.checked = false;
         comp.emitCheckedData(checkD);
         expect(checkD.checked).toEqual(true)
         expect(comp.setSelectedFlag()).toHaveBeenCalled;
-
         checkD.checked = true;
         comp.emitCheckedData(checkD);
-        // expect(checkD.data)
+      //  expect(checkD.data.hasOwnProperty(comp.childarraykey)).toEqual(true);
+       // checkD.data[comp.childarraykey].forEach((option: any) => {
+            // option.checked = true;
+            // expect(option.hasOwnProperty(comp.childarraykey)).toEqual(true);
+            // comp.setCheckedStatusFromParent(option);
+            // expect(comp.setCheckedStatusFromParent(option)).toHaveBeenCalled;
+       // });
+
+        comp.emitData(checkD);
     });
+
+
 
 
 });
