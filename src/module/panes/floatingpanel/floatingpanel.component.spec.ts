@@ -3,13 +3,13 @@ import { FormsModule } from '@angular/forms';
 import { IconLoaderService } from '../../../index';
 import { AmexioFloatingPanelComponent } from './floatingpanel.component';
 import { AmexioFormsModule } from '../../forms/amexio.forms.module';
-import { DebugElement } from '@angular/core';
-import { By } from '@angular/platform-browser';
+// import { DebugElement } from '@angular/core';
+// import { By } from '@angular/platform-browser';
 
 describe('amexio-floating-panel', () => {
     let comp: AmexioFloatingPanelComponent;
     let fixture: ComponentFixture<AmexioFloatingPanelComponent>;
-    let de: DebugElement;    // => Handle to to Components DOM instance
+    // let de: DebugElement;    // => Handle to to Components DOM instance
     let el: HTMLElement;
 
     beforeEach(() => {
