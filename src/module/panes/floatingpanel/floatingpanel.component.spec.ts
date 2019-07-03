@@ -91,8 +91,22 @@ describe('amexio-floating-panel', () => {
         comp.style['margin-top'] = margintop;
         // expect(comp .style['margin-top']).toContain(margintop);
        
-    })
-        ;
+    });
+    it('setpanelStyleposition', () => {
+        comp.setPanelStylePostion();
+        comp.topPosition = '';
+        comp.bottomPosition = '';
+        comp.rightPosition = '';
+        comp.leftPosition = '';
+        expect(comp.topPosition).toEqual('');
+        expect(comp.bottomPosition).toEqual('');
+        expect(comp.rightPosition).toEqual('');
+        expect(comp.leftPosition).toEqual('');
+        comp.style['top'] = comp.topPosition;
+        comp.style['bottom'] = comp.bottomPosition;
+        comp.style['right'] = comp.rightPosition;
+        comp.style['left'] = comp.leftPosition;
+    });
     // it('setpanelStyleposition', () => {
     //     comp.topPosition='';
     //     comp.bottomPosition='';
