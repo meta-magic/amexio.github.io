@@ -125,27 +125,6 @@ describe('amexio-dropdown', () => {
   //   // comp.setUserSelection();
   //   // comp.maskloader = false;
   // });
-  it('multiselectionData', () => {
-    comp.setMultiSelectData();
-    comp.multiselectValues = [];
-    comp.innerValue = ['valuefield'];
-    comp.filteredOptions = [{
-      valuefield: 'valuefield',
-      checked: false
-    }]
-    expect(comp.innerValue).toBeDefined();
-    expect(comp.innerValue.length).toBeGreaterThan(0);
-    const modelValue = comp.innerValue;
-    comp.valuefield = 'valuefield'
-    comp.filteredOptions.forEach((test) => {
-      modelValue.forEach((mdValue: any) => {
-        expect(test[comp.valuefield]).toEqual(mdValue);
-        expect(test.hasOwnProperty('checked')).toEqual(true);
-        test.checked = true;
-        comp.multiselectValues.push(test);
-      });
-    });
-  });
   it('generateIndex', () => {
     data = [{
       index:'12345'
@@ -329,5 +308,26 @@ describe('amexio-dropdown', () => {
 
   it('get errormsg', () => {
     expect(comp.errormsg).toEqual(comp._errormsg);
+  });
+  it('multiselectionData', () => {
+    comp.setMultiSelectData();
+    comp.multiselectValues = [];
+    comp.valuefield = 'code';
+    comp.innerValue = ['apple'];
+    comp.filteredOptions = [{  checked :true, code  : "apple", fruitName  :  "apple",
+    index : "dropdown_fruitName_1169listitem0",  selected:false
+    }
+  ];
+    expect(comp.innerValue).toBeDefined();
+    expect(comp.innerValue.length).toBeGreaterThan(0);
+    const modelValue = comp.innerValue;
+    comp.filteredOptions.forEach((test) => {
+      modelValue.forEach((mdValue: any) => {
+        expect(test[comp.valuefield]).toEqual(mdValue);
+        expect(test.hasOwnProperty('checked')).toEqual(true);
+        test.checked = true;
+        comp.multiselectValues.push(test);
+      });
+    });
   });
 });
