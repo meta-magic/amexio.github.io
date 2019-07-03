@@ -5,13 +5,14 @@ import { AmexioFloatingPanelComponent } from './floatingpanel.component';
 import { AmexioFormsModule } from '../../forms/amexio.forms.module';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
+// import { SimpleChanges } from '@angular/core';
 
 describe('amexio-floating-panel', () => {
     let comp: AmexioFloatingPanelComponent;
     let fixture: ComponentFixture<AmexioFloatingPanelComponent>;
     let de: DebugElement;    // => Handle to to Components DOM instance
     let el: HTMLElement;
-
+    // let changes: SimpleChanges;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
@@ -58,36 +59,25 @@ describe('amexio-floating-panel', () => {
         comp.width = '';
         expect(comp.width).toEqual('');
         comp.width = 200;
-        comp.showPanel =true;
+        comp.showPanel = true;
         expect(comp.showPanel).toBe(true);
         comp.panelStyle();
-        comp.draggable =true;
+        comp.draggable = true;
         expect(comp.draggable).toBe(true);
-        comp.arrow =true;
+        comp.arrow = true;
         expect(comp.arrow).toBe(true);
         comp.draggable = false;
         // if (this.relative && this.draggable) {
 
-            comp.style['position'] = 'absolute';
-
-        // }
-        // comp.height = '';
-        // comp.width = '';
-        // comp.draggable = true;
-        // comp.showPanel = true;
-        // expect(comp.absolute).toEqual(true);
-        // expect(comp.height).toEqual('');
-        // comp.height = '200';
-        // expect(comp.width).toBe('');
-        // comp.height = '400';
-        // expect(comp.arrow).toBe(true);
-        // expect(comp.draggable).toBe(true);
-        // expect(comp.showPanel).toEqual(true);
-        // expect(comp.relative).toEqual(true);
-        // expect(comp.draggable).toBe(true);
-        // comp.style['position'] = 'absolute';
-
+        comp.style['position'] = 'absolute';
     });
+    // it('ngOnChange methord', () => {
+    //     fixture.detectChanges();
+    //     comp.ngOnChanges(changes);
+    //     changes['showPanel'];   
+    //     expect(changes['showPanel']).toBe(true);
+    //     comp.showPanel = changes.showPanel.currentValue;
+    // })
     it('panel style method ', () => {
         comp.panelStyle();
         comp.style = {};
@@ -100,9 +90,7 @@ describe('amexio-floating-panel', () => {
         comp.style['width'] = '400px';
         comp.width = '';
         comp.relative = false;
-        // expect(comp.width).not.toEqual('');
         expect(comp.width).toEqual('');
-        // if (!this.relative) {
         expect(comp.relative).toEqual(false);
         comp.arrowPadding();
         comp.setPanelStylePostion();
@@ -122,10 +110,10 @@ describe('amexio-floating-panel', () => {
         comp.bottomPosition = '';
         comp.rightPosition = '';
         comp.leftPosition = '';
-        expect(comp.topPosition).toBeDefined();
-        expect(comp.bottomPosition).toBeDefined();
-        expect(comp.rightPosition).toBeDefined();
-        expect(comp.leftPosition).toBeDefined();
+        expect(comp.topPosition).toEqual('');
+        expect(comp.bottomPosition).toEqual('');
+        expect(comp.rightPosition).toEqual('');
+        expect(comp.leftPosition).toEqual('');
         comp.style['top'] = comp.topPosition;
         comp.style['bottom'] = comp.bottomPosition;
         comp.style['right'] = comp.rightPosition;
@@ -153,7 +141,7 @@ describe('amexio-floating-panel', () => {
         comp.style['box-shadow'] = '0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)';
         comp.style['width'] = comp.width + 'px';
         comp.style['width'] = '400px';
-        comp.width='';
+        comp.width = '';
         // expect(comp.width).not.toEqual('');
         expect(comp.width).toEqual('');
     })
@@ -169,4 +157,15 @@ describe('amexio-floating-panel', () => {
         });
 
     });
+    // it('closeDragElement method',()=>{
+    //     let floatingPanel:any;
+    //     comp.closeDragElement(floatingPanel);
+    //     comp.documentMouseMoveListener();
+    //     comp.documentMouseUPListener();
+    //     comp.documentMouseMoveListener = null;
+    //     comp.documentMouseUPListener = null;
+    //     comp.opacitiy = false;
+    //     floatingPanel.style.opacity = 'unset';
+    
+    // })
 });
