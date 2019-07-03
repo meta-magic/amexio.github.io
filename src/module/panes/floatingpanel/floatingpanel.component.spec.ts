@@ -6,7 +6,7 @@ import { AmexioFormsModule } from '../../forms/amexio.forms.module';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
-fdescribe('amexio-floating-panel', () => {
+describe('amexio-floating-panel', () => {
     let comp: AmexioFloatingPanelComponent;
     let fixture: ComponentFixture<AmexioFloatingPanelComponent>;
     let de: DebugElement;    // => Handle to to Components DOM instance
