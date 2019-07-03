@@ -182,13 +182,17 @@ describe('amexio-treeview', () => {
             expect(i['active']).toEqual(true);
         }
 
-        // comp.activateNode(LocalData2, node);
-        // for (const i of LocalData2) {
-        //     i['active'] = false;
-        //     expect(i.item['children']).toBe('children');
-        //     expect(i.item[0]).not.toEqual(node);
-        //     expect(i['active']).toEqual(true);
-        // }
+        comp.activateNode(LocalData2, node);
+        for (const i of LocalData2) {
+            i['active'] = false;
+            expect(i.item[0]).not.toEqual(node);
+            expect(i['active']).toEqual(false);
+            i.item['children']= true;
+            expect(i.item['children']).toBe(true);
+            // comp.activateNode(i[comp.childarraykey], node);
+
+        }
+        
 
     });
 
