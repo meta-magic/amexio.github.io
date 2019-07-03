@@ -49,6 +49,9 @@ describe('navmobilemenu', () => {
         node[0]['showInnerMenus'] = !node[0]['showInnerMenus'];
     });
     it('onInnerClick',()=>{
+        let event: any;
+        comp1.onInnerClick(event);
         comp1.onNavItemClick.emit(event);
+        
     })
 });
