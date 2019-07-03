@@ -210,6 +210,16 @@ describe('amexio-treeview', () => {
         expect(comp.addListner()).toHaveBeenCalled;
     });
 
+    it('ngOnInit() on method call', () => {
+        comp.contextmenu =[{ "text": "Add New", "icon": "fa fa-plus", "disabled": true }, { "text": "Edit", "icon": "", "seperator": true }
+        , { "text": "Send data in email", "icon": "" }];
+
+        comp.ngOnInit();
+        expect(comp.contextmenu).not.toBe(null);
+        expect(comp.contextmenu.length).toBeGreaterThan(0);
+      
+
+    });
     it('resetFlag() on method call', () => {
         comp.flag = true;
         comp.resetFlag();
@@ -238,10 +248,16 @@ describe('amexio-treeview', () => {
         expect(JSON.stringify(comp.previousValue)).toBe('"90"');
         expect(JSON.stringify(comp.previousValue)).not.toEqual(JSON.stringify(comp.data));
         comp.updateComponent();
-      
-
-      
     });
+
+    it('focusTONextParent() on method call', () => {
+        
+ 
+        //  comp.focusTONextParent();
+       
+     });
+ 
+
     
 
 
@@ -269,6 +285,7 @@ describe('amexio-treeview', () => {
                 }
             ]
         }
+        comp.displaykey = 'text';
         comp.childarraykey = 'children';
         checkD.checked = false;
         comp.emitCheckedData(checkD);

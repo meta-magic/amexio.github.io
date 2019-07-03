@@ -52,68 +52,85 @@ describe('amexio-checkbox-group', () => {
     let value = comp.value;
     let resp: any;
 
-    
+
     comp.ngOnInit();
     comp.componentId = comp.createCompId('checkboxgroup', comp.name);
 
-    comp.data = 
-    {
-      "codeData": [
-        {
-        'id':1,
-        'name':'kedar'
+    comp.data =
+      {
+        "codeData": [
+          {
+            'id': 1,
+            'name': 'kedar'
+          }
+        ]
       }
-    ]
-  }
-  
-  comp.datareader = "codeData";
 
-  expect(comp.datareader).toBe('codeData');
-//   expect(comp.data).toBe({
-//     "codeData": [
-//       {
-//       'id':1,
-//       'name':'kedar'
-//     }
-//   ]
-// });
-it('getResponseData', () =>{
-  let httpResponse:any;
-  comp.datareader = 'data.localdata'
-  comp.getResponseData(httpResponse);
-  let responsedata = httpResponse;
-  expect(comp.datareader).not.toEqual(null);
-  const dr = comp.datareader.split('.');
-  for (const ir of dr) {
-    responsedata = responsedata[ir];
-  }
-  comp.datareader =null;
-  expect(comp.datareader).toEqual(null);
-  responsedata = httpResponse;
-  return responsedata;
-});
+    comp.datareader = "codeData";
 
-it('emitData', () =>{
-  comp.emitData();
-  comp.SelectedCheckBox = [];
-  comp.data.forEach((node: any) => {
-    node.checked = true;
-    expect(node.checked).toEqual(true);
-    comp.SelectedCheckBox.push(node);
-  });
-  comp.onSelection.emit(this.SelectedCheckBox);
-});
+    expect(comp.datareader).toBe('codeData');
+    //   expect(comp.data).toBe({
+    //     "codeData": [
+    //       {
+    //       'id':1,
+    //       'name':'kedar'
+    //     }
+    //   ]
+    // });
+    it('getResponseData', () => {
+      let httpResponse: any;
+      comp.datareader = 'data.localdata'
+      comp.getResponseData(httpResponse);
+      let responsedata = httpResponse;
+      expect(comp.datareader).not.toEqual(null);
+      const dr = comp.datareader.split('.');
+      for (const ir of dr) {
+        responsedata = responsedata[ir];
+      }
+      comp.datareader = null;
+      expect(comp.datareader).toEqual(null);
+      responsedata = httpResponse;
+      return responsedata;
+    });
 
-it('contains', () =>{
-  let value:any;
-  comp.contains(value);
-  comp['_model'] = [];
-expect(comp['_model'] instanceof Array).toEqual(true);
-comp['_model'].forEach((obj:any) => {
-  expect(obj[comp.displayfield]).toEqual(value[this.displayfield]);
-   return true;
-});
-});
+    it('emitData', () => {
+      comp.emitData();
+      comp.SelectedCheckBox = [];
+      comp.data.forEach((node: any) => {
+        node.checked = true;
+        expect(node.checked).toEqual(true);
+        comp.SelectedCheckBox.push(node);
+      });
+      comp.onSelection.emit(comp.SelectedCheckBox);
+    });
+
+    it('contains', () => {
+      comp.displayfield = "language";
+      let value =  {
+        "language": "Angular 2",
+        "checked": false
+      }
+      comp.contains(value);
+      comp['_model'] = [  {
+        "language": "Angular 2",
+        "checked": false
+      }];
+      comp.contains(value);
+      expect(comp['_model'] instanceof Array).toEqual(true);
+      comp['_model'].forEach((obj: any) => {
+        expect(obj[comp.displayfield]).toEqual(value[comp.displayfield]);
+        return true;
+      });
+      comp['_model'] = [];
+      comp['_model'].forEach((obj: any) => {
+        return false;
+      });
+
+      comp['_model'] = [];
+      comp.contains(value);
+      expect(comp['_model'] instanceof Array).toEqual(false);
+      return  false;
+    });
 
 
 
