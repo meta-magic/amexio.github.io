@@ -66,6 +66,11 @@ describe('amexio-floating-panel', () => {
         comp.arrow =true;
         expect(comp.arrow).toBe(true);
         comp.draggable = false;
+        // if (this.relative && this.draggable) {
+
+            comp.style['position'] = 'absolute';
+
+        // }
         // comp.height = '';
         // comp.width = '';
         // comp.draggable = true;
@@ -138,19 +143,20 @@ describe('amexio-floating-panel', () => {
         comp.setColorPalette(themeClass);
         comp.themeCss = themeClass;
     });
-    // it('setpanelAbsolutePosition method', () => {
-    //     comp.setPanelAbsolutePostion();
-    //     comp.style = {};
-    //     comp.style['position'] = 'absolute';
-    //     comp.style['display'] = 'block';
-    //     comp.style['z-index'] = '400';
-    //     comp.style['opacity'] = '1';
-    //     comp.style['box-shadow'] = '0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)';
-    //     comp.style['width'] = comp.width + 'px';
-    //     comp.style['width'] = '400px';
-    //     expect(comp.width).not.toEqual('');
-    //     expect(comp.width).toEqual('');
-    // })
+    it('setpanelAbsolutePosition method', () => {
+        comp.setPanelAbsolutePostion();
+        comp.style = {};
+        comp.style['position'] = 'absolute';
+        comp.style['display'] = 'block';
+        comp.style['z-index'] = '400';
+        comp.style['opacity'] = '1';
+        comp.style['box-shadow'] = '0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)';
+        comp.style['width'] = comp.width + 'px';
+        comp.style['width'] = '400px';
+        comp.width='';
+        // expect(comp.width).not.toEqual('');
+        expect(comp.width).toEqual('');
+    })
     it('checking togglePanel method', () => {
         comp.togglePanel();
         comp.showPanel = false;
