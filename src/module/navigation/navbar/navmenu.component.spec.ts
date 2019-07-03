@@ -7,7 +7,7 @@ import {AmexioNavMobileMenuComponent} from '../../navigation/navbar/navmobilemen
 describe('navmenu', () => {
     let comp: AmexioNavMenuComponent;
     let fixture: ComponentFixture<AmexioNavMenuComponent>;
-    el: ElementRef;
+    // el: ElementRef;
     let timerCallback: any;
     beforeEach(() => {
         TestBed.configureTestingModule({
