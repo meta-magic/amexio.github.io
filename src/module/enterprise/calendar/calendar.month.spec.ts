@@ -39,10 +39,32 @@ describe('amexio-calendar-month', () => {
     fixture = TestBed.createComponent(AmexioCalendarMonthComponent);
     comp = fixture.componentInstance;
     event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
+    comp.calendaryData = [
+      [
+        {
+          date: new Date(), eventDetails: {
+            isEvent: true,
+            events: [{
+              isEvent: true,
+              details: {
+                title: "Java Conference",
+                end: new Date(),
+                eventclass: "calendar-active-3",
+                hasTimeSlot: true,
+                people: [{ personName: "Priyanka Gokhale" }, { personName: "Seema Rai" }],
+                phone: "020-23456789",
+                start: new Date(),
+                url: "meet.google.com/izm-pooa-gns"
+              }, title: "Java Workshop", hasTimeSlot: true, eventDateTime: new Date(), events: null, fpFlag: false
+            }],
 
+          }, id: "59460_monthid", isActive: false, isActivePeriod: true, isDisabled: false, isEvent: true, selected: false
+        }
+      ]
+    ];
 
   });
- 
+
   //check variables 
   it('check variables in dropdown component ', () => {
 
@@ -72,7 +94,7 @@ describe('amexio-calendar-month', () => {
     let rowindex: any;
     let calendarrow: any;
 
-    
+
     rowindex = 0;
     innerindex = 2;
     comp.refactoredleftday(rowindex, innerindex, calendarrow);
@@ -94,102 +116,183 @@ describe('amexio-calendar-month', () => {
     calendarrow = 'fix';
     comp.refactoredleftday(rowindex, innerindex, calendarrow);
     expect(innerindex).toEqual(0);
-    expect(comp.focusrindex).toEqual(rowindex -1);
+    expect(comp.focusrindex).toEqual(rowindex - 1);
     expect(comp.focusiindex).toEqual(calendarrow.length - 1);
-     
+
     innerindex = 3;
     comp.focusiindex = 2;
     comp.refactoredleftday(rowindex, innerindex, calendarrow);
     expect(innerindex).toBe(3);
     expect(comp.focusrindex).toEqual(rowindex);
-    expect(comp.focusiindex).toEqual(innerindex -1);
+    expect(comp.focusiindex).toEqual(innerindex - 1);
   });
 
 
   it('getFullDayName()', () => {
-      let receiveddate = new Date('16-Jul-2019');
-      comp.getFullDayName(receiveddate);
-      const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday',
+    let receiveddate = new Date('16-Jul-2019');
+    comp.getFullDayName(receiveddate);
+    const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday',
       'Thursday', 'Friday', 'Saturday'];
-  const day = receiveddate.getDay();
-  let dayname = '';
-  weekdays.forEach((element: any, index: number) => {
-    // if (day === index) {
-      if(index == 2) {
-  expect(day).toEqual(index);
-  dayname = element;}
-  });
-  return dayname;
+    const day = receiveddate.getDay();
+    let dayname = '';
+    weekdays.forEach((element: any, index: number) => {
+      // if (day === index) {
+      if (index == 2) {
+        expect(day).toEqual(index);
+        dayname = element;
+      }
+    });
+    return dayname;
   });
 
   it('getFullMonthName()', () => {
     let receiveddate = new Date('16-Jul-2019');
     comp.getFullMonthName(receiveddate);
     const months = ['January', 'Febuary', 'March', 'April', 'May', 'June',
-            'July', 'August', 'September', 'October', 'November', 'December'];
-        const datemonth = receiveddate.getMonth();
-        let monthString = '';
-        months.forEach((element: any, index: number) => {
-           if(index == 6) {
-               expect(datemonth). toEqual(index);
-              monthString = element;
-           }
-         });
-         return monthString;
-});
-  
-it('receiveDateFormat()', () => {
-  let day = new Date();
-     comp.receiveDateFormat(day);
-     let datestring = '';
-     datestring = (day).getDate() + comp.getFullMonthName(new Date(day)) +
-         comp.getFullDayName(new Date(day));
-     return datestring;
-});
+      'July', 'August', 'September', 'October', 'November', 'December'];
+    const datemonth = receiveddate.getMonth();
+    let monthString = '';
+    months.forEach((element: any, index: number) => {
+      if (index == 6) {
+        expect(datemonth).toEqual(index);
+        monthString = element;
+      }
+    });
+    return monthString;
+  });
 
-it('formatAMPM()', () => {
-  let date = new Date();
-  let hours = date.getHours();
-  const minutes = date.getMinutes();
-  let lmins;
-  const ampm = hours >= 12 ? 'pm' : 'am';
-  hours = hours % 12;
-  hours = hours ? hours : 12; // the hour '0' should be '12'
-  lmins = minutes < 10 ? '0' + minutes : minutes;
-  return (hours + ':' + lmins + ' ' + ampm);
-});
+  it('receiveDateFormat()', () => {
+    let day = new Date();
+    comp.receiveDateFormat(day);
+    let datestring = '';
+    datestring = (day).getDate() + comp.getFullMonthName(new Date(day)) +
+      comp.getFullDayName(new Date(day));
+    return datestring;
+  });
 
-it('eventClicked()', () => {
-   let eventData: any = 'a';
-   let runTimeDiv: any = 'b';
-  comp.eventClicked(event, eventData, runTimeDiv);
-  const eventObject = {};
-  eventObject['event'] = event;
-  eventObject['item'] = eventData;
-  eventObject['this'] = comp;
-  eventObject['runtimeDiv'] = runTimeDiv;
-  comp.onEventClicked.emit(eventObject);
-});
+  it('formatAMPM()', () => {
+    let date = new Date();
+    comp.formatAMPM(date);
+    let hours = date.getHours();
+    const minutes = date.getMinutes();
+    let lmins;
+    const ampm = hours >= 12 ? 'pm' : 'am';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    lmins = minutes < 10 ? '0' + minutes : minutes;
+    return (hours + ':' + lmins + ' ' + ampm);
+  });
 
-it('onCloseClick()', () => {
-  let event1 = {data: {fpFlag: false}}
-   comp.onCloseClick(event1);
-   event1.data.fpFlag = false;
-   comp.onCloseClicked.emit(event);
-});
+  it('eventClicked()', () => {
+    let eventData: any = 'a';
+    let runTimeDiv: any = 'b';
+    comp.eventClicked(event, eventData, runTimeDiv);
+    const eventObject = {};
+    eventObject['event'] = event;
+    eventObject['item'] = eventData;
+    eventObject['this'] = comp;
+    eventObject['runtimeDiv'] = runTimeDiv;
+    comp.onEventClicked.emit(eventObject);
+  });
 
-it('onChipClick()', () => {
-  let item: any = 'a';
-  let runtimeDiv: any = 'b';
-  let event1 = {pageX: 'page'}
+  it('onCloseClick()', () => {
+    let event1 = { data: { fpFlag: false } }
+    comp.onCloseClick(event1);
+    event1.data.fpFlag = false;
+    comp.onCloseClicked.emit(event);
+  });
+
+  it('onChipClick()', () => {
+    let item: any = 'a';
+    let runtimeDiv: any = 'b';
+    let event1 = { pageX: 'page' }
     comp.onChipClick(event1, item, runtimeDiv);
     const emitEvent = {};
-        emitEvent['event'] = event;
-        emitEvent['item'] = item;
-        emitEvent['this'] = this;
-        emitEvent['runtimeDiv'] = runtimeDiv;
-        comp.xValue = event1.pageX;
-        comp.onMoreEventClicked.emit(emitEvent);
-});
+    emitEvent['event'] = event;
+    emitEvent['item'] = item;
+    emitEvent['this'] = this;
+    emitEvent['runtimeDiv'] = runtimeDiv;
+    comp.xValue = event1.pageX;
+    comp.onMoreEventClicked.emit(emitEvent);
+  });
+
+  it('onMoreClicked()', () => {
+    let data = [
+      {
+        detais: { title: "Java Conference", end: new Date(), eventclass: "calendar-active-3", hasTimeSlot: true, people: [{ personName: "Priyanka Gokhale" }, { personName: "Seema Rai" }], phone: "020-23456789", start: new Date(), url: "meet.google.com/izm-pooa-gns" },
+
+        eventDateTime: new Date(),
+        events: '',
+        hasTimeSlot: true,
+        isEvent: true,
+        title: "Java Conference"
+      },
+      {
+        detais: { title: "Angular Conference", end: new Date(), eventclass: "calendar-active-4", hasTimeSlot: true, people: [{ personName: "Arun jain" }, { personName: "Raj Rai" }], phone: "020-23456788", start: new Date(), url: "meet.google.com/izm-pooa-gns" },
+
+        eventDateTime: new Date(),
+        events: null,
+        hasTimeSlot: true,
+        isEvent: true,
+        title: "Angular Conference"
+      },
+      {
+        detais: { title: "Android Conference", end: new Date(), eventclass: "calendar-active-4", hasTimeSlot: true, people: [{ personName: "Arun jain" }, { personName: "Raj Rai" }], phone: "020-23456788", start: new Date(), url: "meet.google.com/izm-pooa-gns" },
+
+        eventDateTime: new Date(),
+        events: null,
+        hasTimeSlot: true,
+        isEvent: true,
+        title: "Android Conference"
+      },
+      {
+        detais: { title: "IOS Conference", end: new Date(), eventclass: "calendar-active-4", hasTimeSlot: true, people: [{ personName: "Arun jain" }, { personName: "Raj Rai" }], phone: "020-23456788", start: new Date(), url: "meet.google.com/izm-pooa-gns" },
+
+        eventDateTime: new Date(),
+        events: null,
+        hasTimeSlot: true,
+        isEvent: true,
+        title: "IOS Conference"
+      }
+    ];
+    comp.calendaryData = [
+      [
+        {
+          date: new Date(), eventDetails: {
+            isEvent: true,
+            events: [{
+              isEvent: true,
+              details: {
+                title: "Java Conference",
+                end: new Date(),
+                eventclass: "calendar-active-3",
+                hasTimeSlot: true,
+                people: [{ personName: "Priyanka Gokhale" }, { personName: "Seema Rai" }],
+                phone: "020-23456789",
+                start: new Date(),
+                url: "meet.google.com/izm-pooa-gns"
+              }, title: "Java Workshop", hasTimeSlot: true, eventDateTime: new Date(), events: null, fpFlag: false
+            }],
+
+          }, id: "59460_monthid", isActive: false, isActivePeriod: true, isDisabled: false, isEvent: true, selected: false
+        }
+      ]
+    ];
+
+    comp.onMoreClicked(event, data);
+       
+    expect(comp.calendaryData).toBeDefined();
+    comp.calendaryData.forEach((calendarRow) => {
+      calendarRow.forEach((day: any) => {
+        // if (day.eventDetails) {
+           expect(day.eventDetails).toBeDefined();
+          day.eventDetails.events.fpFlag = false;
+      });
+    });
+    data['fpFlag'] = true;
+    comp.openFloatingPanel = true;
+  });
+
+  
 
 });
