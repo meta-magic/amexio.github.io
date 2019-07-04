@@ -110,6 +110,8 @@ describe('amexio-checkbox-group', () => {
         expect(obj[comp.displayfield]).toEqual(value[comp.displayfield]);
         return true;
       });
+      comp['_model']={};
+      expect(comp['_model'] instanceof Array).toEqual(false);
       return  false;
     });
 
