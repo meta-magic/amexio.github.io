@@ -3,9 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { IconLoaderService } from '../../../index';
 import { AmexioProgressBarComponent } from './progress.component';
-import { AmexioRatingComponent } from './../../forms/rating/rating.component';
 
-import { toUnicode } from 'punycode';
 
 describe('amexio-progress-bar', () => {
     let comp: AmexioProgressBarComponent;
@@ -14,7 +12,7 @@ describe('amexio-progress-bar', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule],
-            declarations: [AmexioProgressBarComponent, AmexioRatingComponent],
+            declarations: [AmexioProgressBarComponent],
             providers: [IconLoaderService],
         });
         fixture = TestBed.createComponent(AmexioProgressBarComponent);

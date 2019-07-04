@@ -93,7 +93,7 @@ describe('navmenu', () => {
         comp.showMenus = false;
         comp.toggleMenu(event);
         expect(comp.mobilemode).toEqual(true);
-        expect(comp.showMenus).toEqual(true);
+        comp.showMenus = true;
       });
 
     it('navItem click method', () => {
