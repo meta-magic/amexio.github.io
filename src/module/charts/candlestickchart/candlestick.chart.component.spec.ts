@@ -144,7 +144,7 @@ describe('CANDLESTICK CHART', () => {
             script.onload = () => {
                 candlestickchartcomp.showChart = true;
                 const newdata = [{ name: 'linechart' }];
-                candlestickchartcomp.data = newdata;
+                  candlestickchartcomp.data = newdata;
                 candlestickchartcomp.drawChart();
                 expect(candlestickchartcomp.hasLoaded).toBe(false);
             };
