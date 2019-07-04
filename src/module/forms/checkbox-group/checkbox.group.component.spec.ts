@@ -77,23 +77,13 @@ describe('amexio-checkbox-group', () => {
     //     }
     //   ]
     // });
-    it('getResponseData', () => {
-      let httpResponse: any;
-      comp.datareader = 'data.localdata'
-      comp.getResponseData(httpResponse);
-      let responsedata = httpResponse;
-      expect(comp.datareader).not.toEqual(null);
-      const dr = comp.datareader.split('.');
-      for (const ir of dr) {
-        responsedata = responsedata[ir];
-      }
-      comp.datareader = null;
-      expect(comp.datareader).toEqual(null);
-      responsedata = httpResponse;
-      return responsedata;
-    });
+  });
 
     it('emitData', () => {
+      comp.data = [  {
+        "language": "Angular 2",
+        "checked": false
+      }];
       comp.emitData();
       comp.SelectedCheckBox = [];
       comp.data.forEach((node: any) => {
@@ -110,7 +100,6 @@ describe('amexio-checkbox-group', () => {
         "language": "Angular 2",
         "checked": false
       }
-      comp.contains(value);
       comp['_model'] = [  {
         "language": "Angular 2",
         "checked": false
@@ -121,14 +110,6 @@ describe('amexio-checkbox-group', () => {
         expect(obj[comp.displayfield]).toEqual(value[comp.displayfield]);
         return true;
       });
-      comp['_model'] = [];
-      comp['_model'].forEach((obj: any) => {
-        return false;
-      });
-
-      comp['_model'] = [];
-      comp.contains(value);
-      expect(comp['_model'] instanceof Array).toEqual(false);
       return  false;
     });
 
@@ -156,7 +137,7 @@ describe('amexio-checkbox-group', () => {
 
     //     httpMock.verify();
     //   });
-  });
+  
 
 
 });

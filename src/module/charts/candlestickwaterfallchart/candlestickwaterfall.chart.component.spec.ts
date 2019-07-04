@@ -1,29 +1,21 @@
-import { CandlestickWaterfallChartComponent } from './candlestickwaterfall.chart.component';
-//import { AmexioFormIconComponent } from '../icon/icon.component';
-import { FormsModule } from '@angular/forms';
-import { IconLoaderService } from '../../../index'
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { CommonDataService } from '../../services/data/common.data.service';
-import { ChartLoaderService } from './../chart.loader.service';
-import { ChartTitleComponent } from '../charttitle/chart.title.component';
-import { ChartLegendComponent } from '../chartlegend/chart.legend.component';
+import { FormsModule } from '@angular/forms';
 import { ChartAreaComponent } from '../chartarea/chart.area.component';
-import { VerticalAxisComponent } from '../verticalaxis/chart.verticalaxis.component';
+import { ChartLegendComponent } from '../chartlegend/chart.legend.component';
+import { ChartTitleComponent } from '../charttitle/chart.title.component';
 import {HorizontalAxisComponent} from '../horizontalaxis/chart.horizontalaxis.component';
+import { VerticalAxisComponent } from '../verticalaxis/chart.verticalaxis.component';
+import { ChartLoaderService } from './../chart.loader.service';
+import { CandlestickWaterfallChartComponent } from './candlestickwaterfall.chart.component';
 
 declare var google: any;
 describe('CANDLESTICKWATERFALL CHART', () => {
-    //let ChartTitleComponent=new ChartTitleComponent()
-    // let ChartTitleComponent = [{'name':'chart','title':'','position':'','color':'','fontname':'','fontsize':'','bold':false,'italic':''}];
     let candlestickwaterchartcomp: CandlestickWaterfallChartComponent;
     let charttitlecomp: ChartTitleComponent;
     let chartlegendcomp: ChartLegendComponent;
     let chartareacomp: ChartAreaComponent;
     let chartvercomp: VerticalAxisComponent;
     let charthorcomp: HorizontalAxisComponent;
-    let chartAreaArray: ChartAreaComponent[];
-    let chartLegendArray: ChartLegendComponent[];
-    let chartTitleComponent: ChartTitleComponent[];
     let chartverfixture: ComponentFixture<VerticalAxisComponent>;
     let charthorfixture: ComponentFixture<HorizontalAxisComponent>;
     let linefixture: ComponentFixture<CandlestickWaterfallChartComponent>;
@@ -37,28 +29,26 @@ describe('CANDLESTICKWATERFALL CHART', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule],
-            declarations: [CandlestickWaterfallChartComponent, ChartTitleComponent, ChartLegendComponent, ChartAreaComponent, VerticalAxisComponent,HorizontalAxisComponent],
-            providers: [ChartLoaderService]
+            declarations: [CandlestickWaterfallChartComponent, ChartTitleComponent, ChartLegendComponent, ChartAreaComponent, VerticalAxisComponent, HorizontalAxisComponent],
+            providers: [ChartLoaderService],
         }).compileComponents();
         linefixture = TestBed.createComponent(CandlestickWaterfallChartComponent);
         charttitlefixture = TestBed.createComponent(ChartTitleComponent);
         chartlegendfixture = TestBed.createComponent(ChartLegendComponent);
         chartareafixture = TestBed.createComponent(ChartAreaComponent);
         chartverfixture = TestBed.createComponent(VerticalAxisComponent);
-        charthorfixture=TestBed.createComponent(HorizontalAxisComponent);
+        charthorfixture = TestBed.createComponent(HorizontalAxisComponent);
         candlestickwaterchartcomp = linefixture.componentInstance;
         charttitlecomp = charttitlefixture.componentInstance;
         chartlegendcomp = chartlegendfixture.componentInstance;
         chartareacomp = chartareafixture.componentInstance;
         chartvercomp = chartverfixture.componentInstance;
-        charthorcomp=charthorfixture.componentInstance;
-
+        charthorcomp = charthorfixture.componentInstance;
 
         candlestickwaterchartcomp.chartTitleComponent = charttitlecomp;
-        //candlestickwaterchartcomp.chartLengendComponent=chartlegendcomp;
         candlestickwaterchartcomp.chartAreaComponent = chartareacomp;
         candlestickwaterchartcomp.verticalComponent = chartvercomp;
-        candlestickwaterchartcomp.horizontalComponent= charthorcomp;
+        candlestickwaterchartcomp.horizontalComponent = charthorcomp;
         chartAreaArray2 = [];
         chartAreaArray2.push(chartareacomp);
 
@@ -70,7 +60,7 @@ describe('CANDLESTICKWATERFALL CHART', () => {
         candlestickwaterchartcomp.showChart = false;
         charttitlecomp.title = '';
         expect(false).toBe(candlestickwaterchartcomp.showChart);
-        let newdata = [{ 'name': 'linechart' }];
+        const newdata = [{ name: 'linechart' }];
         candlestickwaterchartcomp.data = newdata;
     });
     it('dont show chart', () => {
@@ -104,25 +94,22 @@ describe('CANDLESTICKWATERFALL CHART', () => {
         chartareacomp.topposition = null;
 
     });
-    it('chartcolorstyle() properties',()=>{
-        candlestickwaterchartcomp.fallingcolor='red';
-        candlestickwaterchartcomp.risingcolor='red';
+    it('chartcolorstyle() properties', () => {
+        candlestickwaterchartcomp.fallingcolor = 'red';
+        candlestickwaterchartcomp.risingcolor = 'red';
         candlestickwaterchartcomp.chartColorStyle();
     }),
     it('drawchart()', () => {
         candlestickwaterchartcomp.drawChart();
         expect(candlestickwaterchartcomp.showChart).toBeUndefined;
         candlestickwaterchartcomp['options'];
-        
-        candlestickwaterchartcomp.chartTitleComponent;
-        candlestickwaterchartcomp.chartAreaComponent;
-        candlestickwaterchartcomp.chartLegendStyle;
+
+        candlestickwaterchartcomp.chartLegendStyle();
         candlestickwaterchartcomp.chartVerticalComponent();
         candlestickwaterchartcomp.chartHorizontalComponent();
         candlestickwaterchartcomp.chartColorStyle();
     });
     it('chartTitleTextStyle()', () => {
-        candlestickwaterchartcomp.chartTitleComponent;
         candlestickwaterchartcomp.chartTitleComponent.color = 'red';
         candlestickwaterchartcomp.chartTitleComponent.fontname = 'times new roman';
         candlestickwaterchartcomp.chartTitleComponent.fontsize = 5;
@@ -152,26 +139,23 @@ describe('CANDLESTICKWATERFALL CHART', () => {
         chartareacomp.topposition = 5;
         const chartlegendstyle = candlestickwaterchartcomp.chartLegendStyle();
 
-    })
+    });
     it('chartBackgroundStyle()', () => {
         candlestickwaterchartcomp.chartAreaComponent.chartbackgroundcolor = 'red';
         candlestickwaterchartcomp.chartAreaComponent.chartheight = 50;
         candlestickwaterchartcomp.chartAreaComponent.chartwidth = 100;
         candlestickwaterchartcomp.chartAreaComponent.leftposition = null;
-        //  const chartbgstyle = candlestickwaterchartcomp.chartBackGroundColor();
-        //const json1 = {"backgroundcolor":null,"left":null,"top":null,"height":50,"width":100}
-        //console.log(JSON.stringify(chartbgstyle));
-    })
+    });
     it('chartVerticalComponent()', () => {
-        chartvercomp.title='';
-        chartvercomp.titlecolor='';
+        chartvercomp.title = '';
+        chartvercomp.titlecolor = '';
         const chartverstyle = candlestickwaterchartcomp.chartVerticalComponent();
     });
-    it('chartHorizontalComponent()',()=>{
-        charthorcomp.title='';
-        chartvercomp.titlecolor='';
-        const charthorstyle=candlestickwaterchartcomp.chartHorizontalComponent();
-    })
+    it('chartHorizontalComponent()', () => {
+        charthorcomp.title = '';
+        chartvercomp.titlecolor = '';
+        const charthorstyle = candlestickwaterchartcomp.chartHorizontalComponent();
+    });
     it('ngOnInit()', () => {
         candlestickwaterchartcomp.ngOnInit();
         expect(false).toBe(candlestickwaterchartcomp.hasLoaded);
@@ -179,7 +163,6 @@ describe('CANDLESTICKWATERFALL CHART', () => {
     });
 
     it('get data method', () => {
-        candlestickwaterchartcomp.data;
         expect(candlestickwaterchartcomp.data).toBe(candlestickwaterchartcomp._data);
     });
 
@@ -191,25 +174,19 @@ describe('CANDLESTICKWATERFALL CHART', () => {
         script.defer = true;
         script.onload = () => {
             candlestickwaterchartcomp.showChart = true;
-            let newdata = [{ name: 'linechart' }];
+            const newdata = [{ name: 'linechart' }];
             candlestickwaterchartcomp.data = newdata;
             candlestickwaterchartcomp.drawChart();
             expect(false).toBe(candlestickwaterchartcomp.hasLoaded);
-            it('title',()=>{
-                charttitlecomp.title='CandleStickwaterfall chart';
+            it('title', () => {
+                charttitlecomp.title = 'CandleStickwaterfall chart';
                 expect(charttitlecomp.title).toBe(true);
                 expect(charttitlecomp.title).toBe(false);
-            })
-        }
+            });
+        };
     });
     it('onResize()', () => {
         candlestickwaterchartcomp.onResize(ComponentFixture);
         candlestickwaterchartcomp.drawChart();
     });
 });
-
-
-
-
-
-
