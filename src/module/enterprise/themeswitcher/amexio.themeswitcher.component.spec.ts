@@ -142,7 +142,7 @@ it('themeStyle()', () => {
         // if (this.closeable) {
             comp1.closeable = true;
             expect(comp1.closeable).toEqual(true);
-            style['width'] = (perBlockWidth * this.colsize) + 'px';
+            // style['width'] = (perBlockWidth * this.colsize) + 'px';
         // } else {
             comp1.closeable = false;
             expect(comp1.closeable).toEqual(false);

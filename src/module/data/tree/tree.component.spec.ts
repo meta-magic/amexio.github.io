@@ -116,15 +116,15 @@ describe('amexio-treeview', () => {
     });
 
 
-    it('expandAll() on method call', () => {
-        let node: any;
-        comp.parentRef = true;
-        comp.expandAll(node);
-        comp.destroyExpandAll = setTimeout(() => {
-            expect(comp.parentRef).toBe(true);
-            comp.expandAllCall(comp.parentRef);
-        }, 0);
-    });
+    // it('expandAll() on method call', () => {
+    //     let node: any;
+    //     comp.parentRef = true;
+    //     comp.expandAll(node);
+    //     comp.destroyExpandAll = setTimeout(() => {
+    //         expect(comp.parentRef).toBe(true);
+    //         comp.expandAllCall(comp.parentRef);
+    //     }, 0);
+    // });
 
     it('updateComponent() on method call', () => {
         comp.previousValue = '90';

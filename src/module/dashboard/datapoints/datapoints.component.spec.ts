@@ -1,10 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { By } from '@angular/platform-browser';
 import { IconLoaderService } from '../../../index';
-import { DataPointsComponent} from './datapoints.component';
-import { toUnicode } from 'punycode';
-import { SSL_OP_NO_SESSION_RESUMPTION_ON_RENEGOTIATION } from 'constants';
+import { DataPointsComponent } from './datapoints.component';
 
 describe('amexio-dataPoint', () => {
     let comp: DataPointsComponent;
@@ -13,7 +10,7 @@ describe('amexio-dataPoint', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule],
-            declarations: [DataPointsComponent ],
+            declarations: [DataPointsComponent],
             providers: [IconLoaderService],
         });
         fixture = TestBed.createComponent(DataPointsComponent);
@@ -39,8 +36,5 @@ describe('amexio-dataPoint', () => {
         expect(comp.east).toEqual(true);
         comp.colspan = 1;
         expect(comp.colspan).toEqual(comp.colspan++);
-
-        // expect((<any>comp).faFaIconDownCss).toEqual('fa fa-caret-down');
     });
 });
-    

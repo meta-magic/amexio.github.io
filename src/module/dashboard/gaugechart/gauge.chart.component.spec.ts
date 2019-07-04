@@ -1,11 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { By } from '@angular/platform-browser';
 import { IconLoaderService } from '../../../index';
 import { GaugeChartComponent } from './gauge.chart.component';
-import { toUnicode } from 'punycode';
 import { DashboardLoaderService } from '../chart.loader.service';
-import { SSL_OP_NO_SESSION_RESUMPTION_ON_RENEGOTIATION } from 'constants';
 
 describe('amexio-gauge-chart-dataPoint', () => {
     let comp: GaugeChartComponent;

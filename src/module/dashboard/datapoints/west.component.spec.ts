@@ -1,10 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { By } from '@angular/platform-browser';
 import { IconLoaderService } from '../../../index';
 import { DataPointWestComponent } from './west.component';
-import { toUnicode } from 'punycode';
-import { SSL_OP_NO_SESSION_RESUMPTION_ON_RENEGOTIATION } from 'constants';
 
 describe('amexio-west-dataPoint', () => {
     let comp: DataPointWestComponent;

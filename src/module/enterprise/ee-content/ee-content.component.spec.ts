@@ -1,13 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { By } from '@angular/platform-browser';
 import { IconLoaderService } from '../../../index';
 import { AmexioImageComponent } from '../../media/image/image.component';
 
 import { ContentComponent } from './ee.content';
 import { AmexioRatingComponent } from './../../forms/rating/rating.component';
 
-import { toUnicode } from 'punycode';
 
 describe('amexio-ee-content', () => {
     let comp: ContentComponent;
@@ -80,15 +78,6 @@ describe('amexio-ee-content', () => {
         wi = 700;
         expect(wi).toBeLessThan(768);
     });
-
-
-    // it('onResize method check', () => {
-    //     comp.onResize(event);
-    //     let re = event.target.innerwidth ;
-    //    // event.target.innerWidth = 900;
-    //     expect(comp.smallScreen).toEqual(true);
-    // });
-
 
 
 
