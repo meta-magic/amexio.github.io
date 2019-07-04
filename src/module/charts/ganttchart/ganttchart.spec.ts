@@ -18,6 +18,8 @@ describe('GANTT CHART', () => {
     comp.criticalPathEnabled = false;
     comp.innerGridTrackColor = '';
     comp.innerGridDarkTrack = '';
+    comp.hasLoaded = false;
+    comp.showChart = false;
 
   });
 
@@ -50,14 +52,14 @@ describe('GANTT CHART', () => {
 
 
   it('dont show chart', () => {
-    
-    expect(false).toBe(comp.showChart);
+    comp.showChart = false;
+    expect(comp.showChart).toBe(false);
   });
 
 
   it('ngOnInit()', () => {
     comp.ngOnInit();
-    expect(false).toBe(comp.hasLoaded);
+    expect(comp.hasLoaded).toBe(false);
     comp.drawChart();
   });
 
