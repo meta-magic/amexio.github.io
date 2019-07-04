@@ -137,6 +137,60 @@ describe('amexio-treeview', () => {
     });
 
     
+    it('call expandAllCall() on method call', () => {
+        let node1 =[ {            
+            "text": "Web App",
+            "children": [
+                {
+                    "text": "app",
+                    "children": [
+                        {
+                            "leaf": true,
+                            "text": "Application.js"
+                        }
+                    ]
+                }
+            ]
+        }
+    ];   
+        comp.childarraykey = 'children';
+        let node =[ {            
+                    "text": "Web App",
+                    "expand": true,
+                    "children": [
+                        {
+                            "text": "app",
+                            "expand": true,
+                            "children": [
+                                {
+                                    "leaf": true,
+                                    "text": "Application.js"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ];
+         comp.expandAllCall(node);       
+             node.forEach((childCheck: any) => {
+                    expect(childCheck.hasOwnProperty('expand')).toEqual(true);
+                    childCheck.expand = false;
+                    expect(childCheck.expand).not.toEqual(true);
+                    childCheck.expand = true;
+                    expect(childCheck.hasOwnProperty(comp.childarraykey)).toEqual(true); 
+                    expect(childCheck[comp.childarraykey]).not.toEqual(null);
+                    comp.expandAllCall(childCheck[comp.childarraykey]); 
+                  });  
+       comp.expandAllCall(node1);
+       node1.forEach((childCheck: any) => {
+        expect(childCheck.hasOwnProperty('expand')).toBeUndefined;
+        childCheck['expand'] = true;
+        expect(childCheck.hasOwnProperty(comp.childarraykey)).toEqual(true); 
+        expect(childCheck[comp.childarraykey]).not.toEqual(null);
+        comp.expandAllCall(childCheck[comp.childarraykey]); 
+      });    
+           
+    });
 
     it('activateNode() on method call', () => {
         let LocalData = [{
