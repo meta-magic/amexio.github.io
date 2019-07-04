@@ -118,17 +118,17 @@ describe('BUBBLE CHART', () => {
         bubblechartcomp.createTitleTextStyle();
         // console.log(JSON.stringify(charttextstyle));
     });
-    it('chartLegendStyle()', () => {
-        bubblechartcomp.chartLengendComponent.position = 'left';
-        bubblechartcomp.chartLengendComponent.maxlines = 5;
-        bubblechartcomp.chartLengendComponent.color = 'black';
-        bubblechartcomp.chartLengendComponent.fontsize = '12';
-        bubblechartcomp.chartLengendComponent.alignment = 'center';
-        bubblechartcomp.chartLengendComponent.fontname = 'times';
-        bubblechartcomp.chartLengendComponent.bold = true;
-        bubblechartcomp.createChartLegend();
+    // it('chartLegendStyle()', () => {
+    //     bubblechartcomp.chartLengendComponent.position = 'left';
+    //     bubblechartcomp.chartLengendComponent.maxlines = 5;
+    //     bubblechartcomp.chartLengendComponent.color = 'black';
+    //     bubblechartcomp.chartLengendComponent.fontsize = '12';
+    //     bubblechartcomp.chartLengendComponent.alignment = 'center';
+    //     bubblechartcomp.chartLengendComponent.fontname = 'times';
+    //     bubblechartcomp.chartLengendComponent.bold = true;
+    //     bubblechartcomp.createChartLegend();
 
-    });
+    // });
     it('createchartHorizontal()', () => {
         charthorcomp.title = '';
         charthorcomp.titlecolor = '';

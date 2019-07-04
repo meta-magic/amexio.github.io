@@ -49,13 +49,13 @@ describe('DONUT CHART', () => {
     it('show chart', () => {
         donutchartcomp.showChart = false;
         charttitlecomp.title = '';
-        expect(false).toBe(donutchartcomp.showChart);
+        expect(donutchartcomp.showChart).toBe(false);
         let newdata = [{ 'name': 'linechart' }];
         donutchartcomp.data = newdata;
     });
     it('dont show chart', () => {
         donutchartcomp.showChart = false;
-        expect(false).toBe(donutchartcomp.showChart);
+        expect(donutchartcomp.showChart).toBe(false);
     });
     it('chartTitleTextStyle() properties', () => {
         charttitlecomp.color = '';
@@ -100,7 +100,6 @@ describe('DONUT CHART', () => {
         donutchartcomp.chartTitleComponent.bold = true;
         donutchartcomp.chartTitleComponent.italic = true;
         donutchartcomp.chariTitleTextStyle();
-        // console.log(JSON.stringify(charttextstyle));
     });
     it('chartLegendStyle()', () => {
         donutchartcomp.chartLengendComponent.position = 'left';
@@ -110,8 +109,7 @@ describe('DONUT CHART', () => {
         donutchartcomp.chartLengendComponent.alignment = 'center';
         donutchartcomp.chartLengendComponent.fontname = 'times';
         donutchartcomp.chartLengendComponent.bold = true;
-        // donutchartcomp.chartLegendStyle();
-        
+
     })
     it('chartBackgroundStyle()', () => {
         donutchartcomp.chartAreaComponent.chartbackgroundcolor = 'red';
@@ -135,19 +133,30 @@ describe('DONUT CHART', () => {
         const script = document.createElement('script');
         script.type = 'text/javascript';
         script.src = 'https://www.gstatic.com/charts/loader.js';
-        script.async = true;
+        script.async = false;
         script.defer = true;
         script.onload = () => {
             donutchartcomp.showChart = true;
-            let newdata = [{ name: 'linechart' }];
+            const newdata = [{ name: 'linechart' }];
             donutchartcomp.data = newdata;
             donutchartcomp.drawChart();
             expect(false).toBe(donutchartcomp.hasLoaded);
-        }
+        };
     });
     it('onResize()', () => {
-        donutchartcomp.onResize(ComponentFixture);
-        donutchartcomp.drawChart();
+        const script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = 'https://www.gstatic.com/charts/loader.js';
+        script.async = false;
+        script.defer = true;
+        script.onload = () => {
+            donutchartcomp.showChart = true;
+            const newdata = [{ name: 'linechart' }];
+            donutchartcomp.data = newdata;
+            donutchartcomp.onResize(ComponentFixture);
+            donutchartcomp.drawChart();
+            expect(false).toBe(donutchartcomp.hasLoaded);
+        };
     });
 });
 

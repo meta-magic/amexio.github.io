@@ -1,30 +1,22 @@
 import { HistogramChartComponent } from './histogram.chart.component';
-//import { AmexioFormIconComponent } from '../icon/icon.component';
 import { FormsModule } from '@angular/forms';
-import { IconLoaderService } from '../../../index'
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { CommonDataService } from '../../services/data/common.data.service';
 import { ChartLoaderService } from './../chart.loader.service';
 import { ChartTitleComponent } from '../charttitle/chart.title.component';
 import { ChartLegendComponent } from '../chartlegend/chart.legend.component';
 import { ChartAreaComponent } from '../chartarea/chart.area.component';
 declare var google: any;
 describe('HISTOGRAM CHART', () => {
-    //let ChartTitleComponent=new ChartTitleComponent()
-    // let ChartTitleComponent = [{'name':'chart','title':'','position':'','color':'','fontname':'','fontsize':'','bold':false,'italic':''}];
     let histochartcomp: HistogramChartComponent;
     let charttitlecomp: ChartTitleComponent;
     let chartlegendcomp: ChartLegendComponent;
     let chartareacomp: ChartAreaComponent;
-    let chartAreaArray:ChartAreaComponent[];
-    let chartLegendArray: ChartLegendComponent[];
-    let chartTitleComponent:  ChartTitleComponent[];
+   
     let linefixture: ComponentFixture<HistogramChartComponent>;
     let charttitlefixture: ComponentFixture<ChartTitleComponent>;
     let chartlegendfixture: ComponentFixture<ChartLegendComponent>;
     let chartareafixture: ComponentFixture<ChartAreaComponent>;
-    let chartAreaArray2:ComponentFixture<ChartAreaComponent[]>;
-    let chartLegendArray2:ComponentFixture<ChartLegendComponent[]>;
+  
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule],
@@ -40,12 +32,12 @@ describe('HISTOGRAM CHART', () => {
         chartlegendcomp = chartlegendfixture.componentInstance;
         chartareacomp = chartareafixture.componentInstance;
         histochartcomp.chartTitleComponent = charttitlecomp;
-        histochartcomp.chartLengendComponent=chartlegendcomp;
-        histochartcomp.chartAreaComponent=chartareacomp;
+        histochartcomp.chartLengendComponent = chartlegendcomp;
+        histochartcomp.chartAreaComponent = chartareacomp;
 
     });
     it('show chart', () => {
-        histochartcomp.chartAreaComponent=chartareacomp;
+        histochartcomp.chartAreaComponent = chartareacomp;
         histochartcomp.showChart = false;
         charttitlecomp.title = '';
         expect(false).toBe(histochartcomp.showChart);
@@ -73,7 +65,7 @@ describe('HISTOGRAM CHART', () => {
         chartlegendcomp.fontname = '';
         chartlegendcomp.fontsize = '';
         chartlegendcomp.bold = false;
-        chartlegendcomp.maxlines=null;
+        chartlegendcomp.maxlines = null;
     });
     it('chartBackgroundStyle() properties', () => {
         chartareacomp.chartbackgroundcolor = '';
@@ -90,46 +82,43 @@ describe('HISTOGRAM CHART', () => {
         histochartcomp.chartegendStyle();
         histochartcomp.charttitleTextStyle();
         histochartcomp.chartAreaComponent;
-    
+
 
     });
     it('chartTitleTextStyle()', () => {
         histochartcomp.charttitleTextStyle();
         histochartcomp.chartTitleComponent.color = 'red';
-        histochartcomp.chartTitleComponent.fontname='times new roman';
-        histochartcomp.chartTitleComponent.fontsize=5;
-        histochartcomp.chartTitleComponent.bold=true;
-        histochartcomp.chartTitleComponent.italic=true;
-        const charttextstyle= histochartcomp.charttitleTextStyle();
-       // console.log(JSON.stringify(charttextstyle));
+        histochartcomp.chartTitleComponent.fontname = 'times new roman';
+        histochartcomp.chartTitleComponent.fontsize = 5;
+        histochartcomp.chartTitleComponent.bold = true;
+        histochartcomp.chartTitleComponent.italic = true;
+       histochartcomp.charttitleTextStyle();
+        // console.log(JSON.stringify(charttextstyle));
     });
-    it('chartLegendStyle()',()=>{
-        histochartcomp.chartLengendComponent.position='left';
-        histochartcomp.chartLengendComponent.maxlines=5;
-        histochartcomp.chartLengendComponent.color='black';
-        histochartcomp.chartLengendComponent.fontsize='12';
-        histochartcomp.chartLengendComponent.alignment='center';
-        histochartcomp.chartLengendComponent.fontname='times';
-        histochartcomp.chartLengendComponent.bold=true;
-        const chartlegendstyle= histochartcomp.chartegendStyle();
-        // const json1 = {"position":null,"maxLines":5,"textStyle":{"color":"black","fontsize":"12","fontName":"times","bold":null,"alignment":"center"}}
-        //console.log(JSON.stringify(chartlegendstyle));
-        // expect(chartlegendstyle).toEqual(json1);
+    it('chartLegendStyle()', () => {
+        histochartcomp.chartLengendComponent.position = 'left';
+        histochartcomp.chartLengendComponent.maxlines = 5;
+        histochartcomp.chartLengendComponent.color = 'black';
+        histochartcomp.chartLengendComponent.fontsize = '12';
+        histochartcomp.chartLengendComponent.alignment = 'center';
+        histochartcomp.chartLengendComponent.fontname = 'times';
+        histochartcomp.chartLengendComponent.bold = true;
+        histochartcomp.chartegendStyle();
+       
 
     })
-    it('chartBackgroundStyle()',()=>{
-        histochartcomp.chartAreaComponent.chartbackgroundcolor='red';
-        histochartcomp.chartAreaComponent.chartheight=50;
-        histochartcomp.chartAreaComponent.chartwidth=100;
-        histochartcomp.chartAreaComponent.leftposition=null;
-        const chartbgstyle = histochartcomp.chartBackground();
-        //const json1 = {"backgroundcolor":null,"left":null,"top":null,"height":50,"width":100}
-        //console.log(JSON.stringify(chartbgstyle));
+    it('chartBackgroundStyle()', () => {
+        histochartcomp.chartAreaComponent.chartbackgroundcolor = 'red';
+        histochartcomp.chartAreaComponent.chartheight = 50;
+        histochartcomp.chartAreaComponent.chartwidth = 100;
+        histochartcomp.chartAreaComponent.leftposition = null;
+        histochartcomp.chartBackground();
+        
     });
 
     it('get data method', () => {
         histochartcomp.data;
-        expect( histochartcomp.data).toBe( histochartcomp._data);
+        expect(histochartcomp.data).toBe(histochartcomp._data);
     });
     it('ngOnInit()', () => {
         histochartcomp.ngOnInit();
@@ -141,17 +130,17 @@ describe('HISTOGRAM CHART', () => {
         const script = document.createElement('script');
         script.type = 'text/javascript';
         script.src = 'https://www.gstatic.com/charts/loader.js';
-        script.async = true;
+        script.async = false;
         script.defer = true;
         script.onload = () => {
             histochartcomp.showChart = true;
-            let newdata = [{ name: 'linechart' }];
+            const newdata = [{ name: 'linechart' }];
             histochartcomp.data = newdata;
             histochartcomp.drawChart();
             expect(false).toBe(histochartcomp.hasLoaded);
-        }
+        };
     });
-}); 
+});
 
 
 
