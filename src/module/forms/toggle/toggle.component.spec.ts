@@ -3,7 +3,6 @@
  */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { By } from '@angular/platform-browser';
 import { IconLoaderService } from '../../../index';
 import { AmexioToggleComponent } from './toggle.component';
 

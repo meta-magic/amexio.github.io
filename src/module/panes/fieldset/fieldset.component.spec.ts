@@ -1,13 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { By } from '@angular/platform-browser';
 import { IconLoaderService } from '../../../index';
 import { AmexioFieldSetComponent } from './fieldset.component';
 import { AmexioStepsComponent } from '../steps/steps.component';
-import { toUnicode } from 'punycode';
-import { SSL_OP_NO_SESSION_RESUMPTION_ON_RENEGOTIATION } from 'constants';
 import { CommonIconComponent } from './../../base/components/common.icon.component';
-import{BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('amexio-fieldset', () => {
     let comp: AmexioFieldSetComponent;
@@ -15,8 +12,8 @@ describe('amexio-fieldset', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [FormsModule,BrowserAnimationsModule],
-            declarations: [AmexioFieldSetComponent, AmexioStepsComponent,CommonIconComponent],
+            imports: [FormsModule, BrowserAnimationsModule],
+            declarations: [AmexioFieldSetComponent, AmexioStepsComponent, CommonIconComponent],
             providers: [IconLoaderService],
         });
         fixture = TestBed.createComponent(AmexioFieldSetComponent);

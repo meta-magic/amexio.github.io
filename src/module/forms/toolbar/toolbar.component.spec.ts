@@ -1,12 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { By } from '@angular/platform-browser';
 import { IconLoaderService } from '../../../index';
 import { ToolbarComponent } from './toolbar.component';
-// import { AmexioButtonComponent } from '../../forms/buttons/button.component';
 
-import { toUnicode } from 'punycode';
-import { SSL_OP_NO_SESSION_RESUMPTION_ON_RENEGOTIATION } from 'constants';
 import { CommonIconComponent } from './../../base/components/common.icon.component';
 
 describe('amexio-toolbar', () => {
@@ -17,7 +13,6 @@ describe('amexio-toolbar', () => {
         TestBed.configureTestingModule({
             imports: [FormsModule],
             declarations: [ToolbarComponent, 
-                // AmexioButtonComponent,
                 CommonIconComponent],
             providers: [IconLoaderService],
         });

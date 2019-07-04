@@ -1,8 +1,6 @@
 
-import { AmexioButtonComponent } from './../buttons/button.component';
 import { ToolBarActionComponent } from './toolbaraction.component';
 import { ToolbarComponent } from './toolbar.component';
-import { By } from '@angular/platform-browser';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { IconLoaderService } from '../../../index';

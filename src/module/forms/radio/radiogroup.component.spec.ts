@@ -1,15 +1,11 @@
 /**
  * Created by pratik on 27/11/17.
  */
-import { AmexioButtonComponent } from './../buttons/button.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { AmexioRadioGroupComponent } from './radiogroup.component';
-import { By } from '@angular/platform-browser';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, FormControl } from '@angular/forms';
-import { ValueAccessorBase } from './../../base/value-accessor';
-import { AmexioFormValidator } from './../form-validator/amexio.form.validator.component';
 import { CommonDataService } from '../../services/data/common.data.service';
 import { HttpClientModule } from '@angular/common/http';
 describe('amexio-radio-group-component', () => {
@@ -44,7 +40,7 @@ describe('amexio-radio-group-component', () => {
     comp.ngOnInit();
     comp.componentId = comp.createCompId('radiogroup', comp.name);
     comp.name = comp.generateName(comp.name, comp.fieldlabel, 'radiogroup');
-    if (this.defaultSelectedValue) 
+    if (comp.defaultSelectedValue) 
     expect(comp.defaultSelectedValue).toBeDefined();
     // {
       comp.value = comp.defaultSelectedValue;

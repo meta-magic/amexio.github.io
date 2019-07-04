@@ -19,15 +19,15 @@ describe('amexio-ee-youtube-player', () => {
     });
 
 
-    it('check routeBackToApp method',() => {
+    it('check routeBackToApp method', () => {
         comp.routeBackToApp();
         comp.onCloseVideoPlayer.subscribe((g: any) => {
             expect(comp.url).toEqual(g);
-          });
+        });
     });
 
     it('ngoninit method', () => {
-        comp.height =null;
+        comp.height = null;
         expect(comp.height).toEqual(null);
         comp.ngOnInit();
         comp.height = 450;
@@ -35,7 +35,7 @@ describe('amexio-ee-youtube-player', () => {
 
 
 
-        comp.width =null;
+        comp.width = null;
         expect(comp.width).toEqual(null);
         comp.ngOnInit();
         comp.width = 98;
@@ -43,16 +43,16 @@ describe('amexio-ee-youtube-player', () => {
         expect(comp.width).toEqual(98);
         expect(comp.closePadding).toEqual(97);
 
-        comp.width =50;
+        comp.width = 50;
         expect(comp.width).toEqual(50);
         comp.ngOnInit();
         comp.closePadding = 49;
-        expect(comp.closePadding).toEqual(comp.width-1);
+        expect(comp.closePadding).toEqual(comp.width - 1);
 
         comp.url = 'https://www.youtube.com/channel/UC1sPlg3OhP4jQ6td90kspyg';
         comp.ngOnInit();
         expect(comp.url).toBe('https://www.youtube.com/channel/UC1sPlg3OhP4jQ6td90kspyg');
-});
+    });
 });
 
-    
+

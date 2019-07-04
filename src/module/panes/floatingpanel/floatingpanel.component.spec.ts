@@ -3,15 +3,10 @@ import { FormsModule } from '@angular/forms';
 import { IconLoaderService } from '../../../index';
 import { AmexioFloatingPanelComponent } from './floatingpanel.component';
 import { AmexioFormsModule } from '../../forms/amexio.forms.module';
-import { DebugElement } from '@angular/core';
-import { By } from '@angular/platform-browser';
 
 describe('amexio-floating-panel', () => {
     let comp: AmexioFloatingPanelComponent;
     let fixture: ComponentFixture<AmexioFloatingPanelComponent>;
-    let de: DebugElement;    // => Handle to to Components DOM instance
-    let el: HTMLElement;
-
 
     beforeEach(() => {
         TestBed.configureTestingModule({
@@ -22,8 +17,6 @@ describe('amexio-floating-panel', () => {
         fixture = TestBed.createComponent(AmexioFloatingPanelComponent);
         comp = fixture.componentInstance;
         event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
-        // de = fixture.debugElement.query(By.css('floatingPanel'));
-        // el = de.nativeElement;
 
         it('true is true', () => expect(true).toBe(true));
 
