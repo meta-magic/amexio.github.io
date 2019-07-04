@@ -8,7 +8,7 @@ import { CommonDataService } from '../../services/data/common.data.service';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { Renderer2, Renderer } from '@angular/core';
 import { CommonIconComponent } from './../../base/components/common.icon.component';
-fdescribe('amexio-tree-filter-view', () => {
+describe('amexio-tree-filter-view', () => {
     let comp: AmexioFilterTreeComponent;
     let fixture: ComponentFixture<AmexioFilterTreeComponent>;
 
