@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { IconLoaderService } from '../../../index';
 import { ToolbarComponent } from './toolbar.component';
-import { AmexioButtonComponent } from '../../forms/buttons/button.component';
+// import { AmexioButtonComponent } from '../../forms/buttons/button.component';
 
 import { toUnicode } from 'punycode';
 import { SSL_OP_NO_SESSION_RESUMPTION_ON_RENEGOTIATION } from 'constants';
@@ -16,7 +16,9 @@ describe('amexio-toolbar', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule],
-            declarations: [ToolbarComponent, AmexioButtonComponent,CommonIconComponent],
+            declarations: [ToolbarComponent, 
+                // AmexioButtonComponent,
+                CommonIconComponent],
             providers: [IconLoaderService],
         });
         fixture = TestBed.createComponent(ToolbarComponent);
