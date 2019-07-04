@@ -10,23 +10,26 @@ import { CommonDataService } from '../../services/data/common.data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { DisplayFieldComponent } from '../../base/display-field/display-field.component';
 import { CommonIconComponent } from '../../base/components/common.icon.component';
+import { DisplayFieldService } from '../../services/data/display.field.service';
 
 
 describe('amexio-dropdown', () => {
   let comp: AmexioDropDownComponent;
   let fixture: ComponentFixture<AmexioDropDownComponent>;
   let data: any;
+  let responsedata: true;
+  let displayService: DisplayFieldService;
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule, HttpClientModule],
       declarations: [AmexioDropDownComponent, DisplayFieldComponent, CommonIconComponent],
-      providers: [IconLoaderService, CommonDataService],
+      providers: [IconLoaderService, CommonDataService, DisplayFieldService],
     });
     fixture = TestBed.createComponent(AmexioDropDownComponent);
     comp = fixture.componentInstance;
     event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
-     data = [{
-      index:'12345'
+    data = [{
+      index: '12345'
     }];
     it('true is true', () => expect(true).toBe(true));
   });
@@ -42,15 +45,55 @@ describe('amexio-dropdown', () => {
     expect(comp.filteredOptions).toEqual([]);
   });
 
-
+  it('setter method', () => {
+    let value: any;
+    comp._data = value;
+    comp.componentLoaded = true;
+    expect(comp.componentLoaded).toEqual(true);
+    comp.setData(comp._data);
+  });
+  it('setData method', () => {
+    let responsedata: any;
+    let httpResponse: any;
+    comp.datareader = 'Ankita.jain';
+    expect(comp.datareader).not.toEqual(null);
+    comp.multiselectValues = [];
+    let dr = comp.datareader.split('.');
+    expect(dr).toBeDefined();
+    let ir:any;
+    // for (ir of dr) {
+    //   console.log(ir);
+    //   responsedata = responsedata[ir];
+    // }
+    // expect(dr).not.toBeDefined();
+    // responsedata = httpResponse;
+    // comp.setResponseData(responsedata);
+    // comp.multiSelection();
+    // comp.setUserSelection();
+    // comp.maskloader = false;
+  });
+  it('setResponseData', () => {
+    let responsedata = true;
+    expect(responsedata).toEqual(true);
+  })
+  // it('', () => {
+  //   let data: [{ personName: "Kailas Sharma", personAge: "45", designation: "Manager" },
+  //     { personName: "Pooja Bhardwaj", personAge: "30", designation: "Business Analyst" },
+  //     { personName: "Kalyani Bhandari", personAge: "26", designation: "Ui Developer" }
+  //   ]
+  //   comp.viewData = data.sort((a: any, b: any) =>  displayService.findValue(comp.displayfield, a).toLowerCase()
+  //   !==  displayService.findValue(comp.displayfield, b).toLowerCase() ?
+  //   displayService.findValue(comp.displayfield, a).toLowerCase() <
+  //   displayService.findValue(comp.displayfield, b).toLowerCase() ? -1 : 1 : 0);
+  //   comp.sortDataAscending(data);
+  //   comp.filteredOptions = comp.viewData;
+  //   this.generateIndex(comp.filteredOptions);
+  // })
   it('should call get function and return true', () => {
-    // comp.data();
     expect(comp.data).toBe(undefined);
     let item = comp.value;
     comp._data = item;
-
     expect(comp.componentLoaded).toBe(undefined);
-
   });
 
   it('onChange() method check', () => {
@@ -66,7 +109,6 @@ describe('amexio-dropdown', () => {
 
   // closeOnEScape
   it('closeOnEScape() method check', () => {
-
     let ev = event
     comp.closeOnEScape(ev);
     comp.showToolTip = false;
@@ -80,60 +122,31 @@ describe('amexio-dropdown', () => {
   //   comp.input.subscribe((g: any) => {
   //     expect(comp.input).toEqual(g);
   //   }); 
-
   //   comp.onInput(value);
   //   expect(comp.isValid).toBe(value.vaild);
-
-
+  //   comp.isComponentValid.emit(value.valid);
   // });
 
 
   // ngOnInit mehtod
   it('ngOnInit() method check', () => {
-
     comp.name = comp.generateName(comp.name, comp.fieldlabel, 'dropdowninput');
     let value = comp.name;
     comp.ngOnInit();
     expect(comp.name).toEqual(value);
-
-
     // comp.input.subscribe((g: any) => {
     //   expect(comp.input).toEqual(g);
     // }); 
-
     // comp.onIngOnInitnput(value);
     // expect(comp.isValid).toBe(value.vaild);
-
-
   });
-  // it('setData',()=>{
-  //   let httpResponse = {};
-  //   let datareader ='data.reader';
-  //   comp.setData(httpResponse);
-  //   let responsedata = httpResponse;
-  //   expect(comp.datareader).not.toEqual(null);
-  //   comp.multiselectValues = [];
-  //   const dr = comp.datareader.split('.');
-  //   expect(dr).toEqual(true);
-  //   for(const ir of dr) {
-  //     responsedata = responsedata[ir];
-  //   }
-  //   expect(dr).toEqual(false);
-  //   responsedata = httpResponse;
-  //   // comp.setResponseData(responsedata);
-  //   // comp.multiSelection();
-  //   // comp.setUserSelection();
-  //   // comp.maskloader = false;
-  // });
   it('generateIndex', () => {
     data = [{
-      index:'12345'
+      index: '12345'
     }];
     comp.generateIndex(data);
     comp.componentId = '#compid'
     data.forEach((element: any, index: number) => {
-      // let compid = comp.componentId + 'listitem' + index;
-      // element['index'] = compid;
       element['index'] = comp.componentId + 'listitem' + index;
     });
   });
@@ -314,10 +327,11 @@ describe('amexio-dropdown', () => {
     comp.multiselectValues = [];
     comp.valuefield = 'code';
     comp.innerValue = ['apple'];
-    comp.filteredOptions = [{  checked :true, code  : "apple", fruitName  :  "apple",
-    index : "dropdown_fruitName_1169listitem0",  selected:false
+    comp.filteredOptions = [{
+      checked: true, code: "apple", fruitName: "apple",
+      index: "dropdown_fruitName_1169listitem0", selected: false
     }
-  ];
+    ];
     expect(comp.innerValue).toBeDefined();
     expect(comp.innerValue.length).toBeGreaterThan(0);
     const modelValue = comp.innerValue;
