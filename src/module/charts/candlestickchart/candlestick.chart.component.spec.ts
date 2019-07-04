@@ -131,7 +131,6 @@ describe('CANDLESTICK CHART', () => {
             expect(false).toBe(candlestickchartcomp.hasLoaded);
             candlestickchartcomp.drawChart();
         });
-
     it('get data method', () => {
             expect(candlestickchartcomp.data).toBe(candlestickchartcomp._data);
         });
@@ -147,7 +146,7 @@ describe('CANDLESTICK CHART', () => {
                 const newdata = [{ name: 'linechart' }];
                 candlestickchartcomp.data = newdata;
                 candlestickchartcomp.drawChart();
-                expect(false).toBe(candlestickchartcomp.hasLoaded);
+                expect(candlestickchartcomp.hasLoaded).toBe(false);
             };
         });
     it('onResize()', () => {
@@ -162,7 +161,7 @@ describe('CANDLESTICK CHART', () => {
             candlestickchartcomp.data = newdata;
             candlestickchartcomp.onResize(ComponentFixture);
             candlestickchartcomp.drawChart();
-            expect(false).toBe(candlestickchartcomp.hasLoaded);
+            expect(candlestickchartcomp.hasLoaded).toBe(false);
           };
         });
     });

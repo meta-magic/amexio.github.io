@@ -1,9 +1,6 @@
-import { ScatterChartComponent} from './scatter.chart.component';
-//import { AmexioFormIconComponent } from '../icon/icon.component';
+import { ScatterChartComponent } from './scatter.chart.component';
 import { FormsModule } from '@angular/forms';
-import { IconLoaderService } from '../../../index'
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { CommonDataService } from '../../services/data/common.data.service';
 import { ChartLoaderService } from './../chart.loader.service';
 import { ChartTitleComponent } from '../charttitle/chart.title.component';
 import { ChartLegendComponent } from '../chartlegend/chart.legend.component';
@@ -13,32 +10,27 @@ import { HorizontalAxisComponent } from '../horizontalaxis/chart.horizontalaxis.
 
 declare var google: any;
 describe('SCATTER CHART', () => {
-    //let ChartTitleComponent=new ChartTitleComponent()
-    // let ChartTitleComponent = [{'name':'chart','title':'','position':'','color':'','fontname':'','fontsize':'','bold':false,'italic':''}];
     let scatterchartcomp: ScatterChartComponent;
     let charttitlecomp: ChartTitleComponent;
     let chartlegendcomp: ChartLegendComponent;
     let chartareacomp: ChartAreaComponent;
     let chartvercomp: VerticalAxisComponent;
-    let charthorcomp: HorizontalAxisComponent; 
-    let chartAreaArray:ChartAreaComponent[];
-    let chartLegendArray: ChartLegendComponent[];
-    let chartTitleComponent:  ChartTitleComponent[];
+    let charthorcomp: HorizontalAxisComponent;
     let linefixture: ComponentFixture<ScatterChartComponent>;
     let charttitlefixture: ComponentFixture<ChartTitleComponent>;
     let chartlegendfixture: ComponentFixture<ChartLegendComponent>;
     let chartareafixture: ComponentFixture<ChartAreaComponent>;
     let charthorfixture: ComponentFixture<HorizontalAxisComponent>;
     let chartverfixture: ComponentFixture<VerticalAxisComponent>;
-    
 
-    let chartAreaArray2: ChartAreaComponent [];
-    let chartLegendArray2: ChartLegendComponent []; 
+
+    let chartAreaArray2: ChartAreaComponent[];
+    let chartLegendArray2: ChartLegendComponent[];
 
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule],
-            declarations: [ScatterChartComponent, ChartTitleComponent, ChartLegendComponent, ChartAreaComponent,HorizontalAxisComponent,VerticalAxisComponent],
+            declarations: [ScatterChartComponent, ChartTitleComponent, ChartLegendComponent, ChartAreaComponent, HorizontalAxisComponent, VerticalAxisComponent],
             providers: [ChartLoaderService]
         }).compileComponents();
         linefixture = TestBed.createComponent(ScatterChartComponent);
@@ -52,34 +44,34 @@ describe('SCATTER CHART', () => {
         charttitlecomp = charttitlefixture.componentInstance;
         chartlegendcomp = chartlegendfixture.componentInstance;
         chartareacomp = chartareafixture.componentInstance;
-        charthorcomp =charthorfixture.componentInstance;
+        charthorcomp = charthorfixture.componentInstance;
         chartvercomp = chartverfixture.componentInstance;
 
 
         scatterchartcomp.chartTitleComponent = charttitlecomp;
-        scatterchartcomp.chartLengendComponent=chartlegendcomp;
-        scatterchartcomp.chartAreaComponent=chartareacomp;
-        scatterchartcomp.verticalComponent=chartvercomp;
-        scatterchartcomp.horizontalComponent=charthorcomp;
+        scatterchartcomp.chartLengendComponent = chartlegendcomp;
+        scatterchartcomp.chartAreaComponent = chartareacomp;
+        scatterchartcomp.verticalComponent = chartvercomp;
+        scatterchartcomp.horizontalComponent = charthorcomp;
 
         chartAreaArray2 = [];
         chartAreaArray2.push(chartareacomp);
 
         chartLegendArray2 = [];
         chartLegendArray2.push(chartlegendcomp);
+        scatterchartcomp.showChart = false;
 
     });
     it('show chart', () => {
-        scatterchartcomp.showChart = false;
+
         charttitlecomp.title = '';
-        expect(false).toBe( scatterchartcomp.showChart);
+        expect(scatterchartcomp.showChart).toBe(false);
         let newdata = [{ 'name': 'linechart' }];
         scatterchartcomp.data = newdata;
     });
     it('dont show chart', () => {
-        let newdata;
-        scatterchartcomp.data = newdata;
-        expect(false).toBe( scatterchartcomp.showChart);
+
+        expect(scatterchartcomp.showChart).toBe(false);
     });
     it('chartTitleTextStyle() properties', () => {
         charttitlecomp.color = '';
@@ -97,7 +89,7 @@ describe('SCATTER CHART', () => {
         chartlegendcomp.fontname = '';
         chartlegendcomp.fontsize = '';
         chartlegendcomp.bold = false;
-        chartlegendcomp.maxlines=null;
+        chartlegendcomp.maxlines = null;
     });
     it('chartBackgroundStyle() properties', () => {
         chartareacomp.chartbackgroundcolor = '';
@@ -115,49 +107,45 @@ describe('SCATTER CHART', () => {
     it('chartTitleTextStyle()', () => {
         scatterchartcomp.chartTitleTextStyle();
         scatterchartcomp.chartTitleComponent.color = 'red';
-        scatterchartcomp.chartTitleComponent.fontname='times new roman';
-        scatterchartcomp.chartTitleComponent.fontsize=5;
-        scatterchartcomp.chartTitleComponent.bold=true;
-        scatterchartcomp.chartTitleComponent.italic=true;
-        const charttextstyle= scatterchartcomp.chartTitleTextStyle();
-       // console.log(JSON.stringify(charttextstyle));
+        scatterchartcomp.chartTitleComponent.fontname = 'times new roman';
+        scatterchartcomp.chartTitleComponent.fontsize = 5;
+        scatterchartcomp.chartTitleComponent.bold = true;
+        scatterchartcomp.chartTitleComponent.italic = true;
+        scatterchartcomp.chartTitleTextStyle();
     });
-    it('chartLegendStyle()',()=>{
-        scatterchartcomp.chartLengendComponent.position='left';
-        scatterchartcomp.chartLengendComponent.maxlines=5;
-        scatterchartcomp.chartLengendComponent.color='black';
-        scatterchartcomp.chartLengendComponent.fontsize='12';
-        scatterchartcomp.chartLengendComponent.alignment='center';
-        scatterchartcomp.chartLengendComponent.fontname='times';
-        scatterchartcomp.chartLengendComponent.bold=true;
-        const chartlegendstyle= scatterchartcomp.chartLegendStyle();
-        // const json1 = {"position":null,"maxLines":5,"textStyle":{"color":"black","fontsize":"12","fontName":"times","bold":null,"alignment":"center"}}
-        //console.log(JSON.stringify(chartlegendstyle));
-        // expect(chartlegendstyle).toEqual(json1);
+    it('chartLegendStyle()', () => {
+        scatterchartcomp.chartLengendComponent.position = 'left';
+        scatterchartcomp.chartLengendComponent.maxlines = 5;
+        scatterchartcomp.chartLengendComponent.color = 'black';
+        scatterchartcomp.chartLengendComponent.fontsize = '12';
+        scatterchartcomp.chartLengendComponent.alignment = 'center';
+        scatterchartcomp.chartLengendComponent.fontname = 'times';
+        scatterchartcomp.chartLengendComponent.bold = true;
+        scatterchartcomp.chartLegendStyle();
+
 
     });
-    it('chartBackgroundStyle()',()=>{
-        scatterchartcomp.chartAreaComponent.chartbackgroundcolor='red';
-        scatterchartcomp.chartAreaComponent.chartheight=50;
-        scatterchartcomp.chartAreaComponent.chartwidth=100;
-        scatterchartcomp.chartAreaComponent.leftposition=null;
-        const chartbgstyle =  scatterchartcomp.chartBackgroundColor();
-        //const json1 = {"backgroundcolor":null,"left":null,"top":null,"height":50,"width":100}
-        //console.log(JSON.stringify(chartbgstyle));
+    it('chartBackgroundStyle()', () => {
+        scatterchartcomp.chartAreaComponent.chartbackgroundcolor = 'red';
+        scatterchartcomp.chartAreaComponent.chartheight = 50;
+        scatterchartcomp.chartAreaComponent.chartwidth = 100;
+        scatterchartcomp.chartAreaComponent.leftposition = null;
+        scatterchartcomp.chartBackgroundColor();
+
     });
-    it('chartVerticalStyle()',()=>{
-        chartvercomp.title='';
-        chartvercomp.titlecolor='red';
-        const chartverstyle =  scatterchartcomp.chartVerticalStyle();
+    it('chartVerticalStyle()', () => {
+        chartvercomp.title = '';
+        chartvercomp.titlecolor = 'red';
+        scatterchartcomp.chartVerticalStyle();
     });
-    it('chartHorizontalStyle()',()=>{
-        charthorcomp.title='';
-        charthorcomp.titlecolor='red';
-        const chartverstyle =  scatterchartcomp.chartHorizontalStyle();
+    it('chartHorizontalStyle()', () => {
+        charthorcomp.title = '';
+        charthorcomp.titlecolor = 'red';
+        scatterchartcomp.chartHorizontalStyle();
     });
     it('ngOnInit()', () => {
         scatterchartcomp.ngOnInit();
-        expect(false).toBe(scatterchartcomp.hasLoaded);
+        expect(scatterchartcomp.hasLoaded).toBe(false);
         scatterchartcomp.drawChart();
     });
 
@@ -172,21 +160,32 @@ describe('SCATTER CHART', () => {
         const script = document.createElement('script');
         script.type = 'text/javascript';
         script.src = 'https://www.gstatic.com/charts/loader.js';
-        script.async = true;
+        script.async = false;
         script.defer = true;
         script.onload = () => {
             scatterchartcomp.showChart = true;
-            let newdata = [{ name: 'linechart' }];
+            const newdata = [{ name: 'linechart' }];
             scatterchartcomp.data = newdata;
             scatterchartcomp.drawChart();
-            expect(false).toBe(scatterchartcomp.hasLoaded);
-        }
+            expect(scatterchartcomp.hasLoaded).toBe(false);
+        };
     });
-    it('onResize()',()=>{
-        scatterchartcomp.onResize(ComponentFixture);
-        scatterchartcomp.drawChart();
-      });
-}); 
+    it('onResize()', () => {
+        const script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = 'https://www.gstatic.com/charts/loader.js';
+        script.async = false;
+        script.defer = true;
+        script.onload = () => {
+            scatterchartcomp.showChart = true;
+            const newdata = [{ name: 'linechart' }];
+            scatterchartcomp.data = newdata;
+            scatterchartcomp.onResize(ComponentFixture);
+            scatterchartcomp.drawChart();
+            expect(scatterchartcomp.hasLoaded).toBe(false);
+        };
+    });
+});
 
 
 
