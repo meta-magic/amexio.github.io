@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { ChartAreaComponent } from '../chartarea/chart.area.component';
 import { ChartLegendComponent } from '../chartlegend/chart.legend.component';
 import { ChartTitleComponent } from '../charttitle/chart.title.component';
-import {HorizontalAxisComponent} from '../horizontalaxis/chart.horizontalaxis.component';
+import { HorizontalAxisComponent } from '../horizontalaxis/chart.horizontalaxis.component';
 import { VerticalAxisComponent } from '../verticalaxis/chart.verticalaxis.component';
 import { ChartLoaderService } from './../chart.loader.service';
 import { CandlestickWaterfallChartComponent } from './candlestickwaterfall.chart.component';
@@ -55,6 +55,8 @@ describe('CANDLESTICKWATERFALL CHART', () => {
         chartLegendArray2 = [];
         chartLegendArray2.push(chartlegendcomp);
 
+        candlestickwaterchartcomp.hasLoaded = false;
+
     });
     it('show chart', () => {
         candlestickwaterchartcomp.showChart = false;
@@ -64,8 +66,7 @@ describe('CANDLESTICKWATERFALL CHART', () => {
         candlestickwaterchartcomp.data = newdata;
     });
     it('dont show chart', () => {
-        let newdata;
-        candlestickwaterchartcomp.data = newdata;
+        candlestickwaterchartcomp.showChart = false;
         expect(false).toBe(candlestickwaterchartcomp.showChart);
     });
     it('chartTitleTextStyle() properties', () => {
@@ -99,45 +100,32 @@ describe('CANDLESTICKWATERFALL CHART', () => {
         candlestickwaterchartcomp.risingcolor = 'red';
         candlestickwaterchartcomp.chartColorStyle();
     }),
-    it('drawchart()', () => {
-        candlestickwaterchartcomp.drawChart();
-        expect(candlestickwaterchartcomp.showChart).toBeUndefined;
-        candlestickwaterchartcomp['options'];
+        it('drawchart()', () => {
+            candlestickwaterchartcomp.drawChart();
+            expect(candlestickwaterchartcomp.showChart).toBeUndefined;
+            candlestickwaterchartcomp['options'];
 
-        candlestickwaterchartcomp.chartLegendStyle();
-        candlestickwaterchartcomp.chartVerticalComponent();
-        candlestickwaterchartcomp.chartHorizontalComponent();
-        candlestickwaterchartcomp.chartColorStyle();
-    });
+            candlestickwaterchartcomp.chartLegendStyle();
+            candlestickwaterchartcomp.chartVerticalComponent();
+            candlestickwaterchartcomp.chartHorizontalComponent();
+            candlestickwaterchartcomp.chartColorStyle();
+        });
     it('chartTitleTextStyle()', () => {
         candlestickwaterchartcomp.chartTitleComponent.color = 'red';
         candlestickwaterchartcomp.chartTitleComponent.fontname = 'times new roman';
         candlestickwaterchartcomp.chartTitleComponent.fontsize = 5;
         candlestickwaterchartcomp.chartTitleComponent.bold = true;
         candlestickwaterchartcomp.chartTitleComponent.italic = true;
-        const charttextstyle = candlestickwaterchartcomp.chartTitleTextStyle();
+        candlestickwaterchartcomp.chartTitleTextStyle();
     });
-    // it('chartLegendStyle()',()=>{
-    //     candlestickwaterchartcomp.chartLengendComponent.position='left';
-    //     columnchartcomp.chartLengendComponent.maxlines=5;
-    //     columnchartcomp.chartLengendComponent.color='black';
-    //     columnchartcomp.chartLengendComponent.fontsize='12';
-    //     columnchartcomp.chartLengendComponent.alignment='center';
-    //     columnchartcomp.chartLengendComponent.fontname='times';
-    //     columnchartcomp.chartLengendComponent.bold=true;
-    //     const chartlegendstyle= columnchartcomp.chartLegendStyle();
-    //     // const json1 = {"position":null,"maxLines":5,"textStyle":{"color":"black","fontsize":"12","fontName":"times","bold":null,"alignment":"center"}}
-    //     //console.log(JSON.stringify(chartlegendstyle));
-    //     // expect(chartlegendstyle).toEqual(json1);
 
-    // })
     it(' chartLegendStyle()', () => {
         chartareacomp.leftposition = 5;
         chartareacomp.chartheight = 8;
         chartareacomp.chartwidth = 6;
         chartareacomp.chartbackgroundcolor = 'red';
         chartareacomp.topposition = 5;
-        const chartlegendstyle = candlestickwaterchartcomp.chartLegendStyle();
+        candlestickwaterchartcomp.chartLegendStyle();
 
     });
     it('chartBackgroundStyle()', () => {
@@ -149,16 +137,16 @@ describe('CANDLESTICKWATERFALL CHART', () => {
     it('chartVerticalComponent()', () => {
         chartvercomp.title = '';
         chartvercomp.titlecolor = '';
-        const chartverstyle = candlestickwaterchartcomp.chartVerticalComponent();
+        candlestickwaterchartcomp.chartVerticalComponent();
     });
     it('chartHorizontalComponent()', () => {
         charthorcomp.title = '';
         chartvercomp.titlecolor = '';
-        const charthorstyle = candlestickwaterchartcomp.chartHorizontalComponent();
+        candlestickwaterchartcomp.chartHorizontalComponent();
     });
     it('ngOnInit()', () => {
         candlestickwaterchartcomp.ngOnInit();
-        expect(false).toBe(candlestickwaterchartcomp.hasLoaded);
+        expect(candlestickwaterchartcomp.hasLoaded).toBe(false);
         candlestickwaterchartcomp.drawChart();
     });
 
@@ -170,23 +158,29 @@ describe('CANDLESTICKWATERFALL CHART', () => {
         const script = document.createElement('script');
         script.type = 'text/javascript';
         script.src = 'https://www.gstatic.com/charts/loader.js';
-        script.async = true;
+        script.async = false;
         script.defer = true;
         script.onload = () => {
             candlestickwaterchartcomp.showChart = true;
             const newdata = [{ name: 'linechart' }];
             candlestickwaterchartcomp.data = newdata;
             candlestickwaterchartcomp.drawChart();
-            expect(false).toBe(candlestickwaterchartcomp.hasLoaded);
-            it('title', () => {
-                charttitlecomp.title = 'CandleStickwaterfall chart';
-                expect(charttitlecomp.title).toBe(true);
-                expect(charttitlecomp.title).toBe(false);
-            });
+            expect(candlestickwaterchartcomp.hasLoaded).toBe(false);
         };
     });
     it('onResize()', () => {
-        candlestickwaterchartcomp.onResize(ComponentFixture);
-        candlestickwaterchartcomp.drawChart();
+        const script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = 'https://www.gstatic.com/charts/loader.js';
+        script.async = false;
+        script.defer = true;
+        script.onload = () => {
+            candlestickwaterchartcomp.showChart = true;
+            const newdata = [{ name: 'linechart' }];
+            candlestickwaterchartcomp.data = newdata;
+            candlestickwaterchartcomp.onResize(ComponentFixture);
+            candlestickwaterchartcomp.drawChart();
+            expect(candlestickwaterchartcomp.hasLoaded).toBe(false);
+        };
     });
 });
