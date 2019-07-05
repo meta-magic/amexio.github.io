@@ -136,61 +136,61 @@ describe('amexio-treeview', () => {
         comp.updateComponent();
     });
 
-    
-    // it('call expandAllCall() on method call', () => {
-    //     let node1 =[ {            
-    //         "text": "Web App",
-    //         "children": [
-    //             {
-    //                 "text": "app",
-    //                 "children": [
-    //                     {
-    //                         "leaf": true,
-    //                         "text": "Application.js"
-    //                     }
-    //                 ]
-    //             }
-    //         ]
-    //     }
-    // ];   
-    //     comp.childarraykey = 'children';
-    //     let node =[ {            
-    //                 "text": "Web App",
-    //                 "expand": true,
-    //                 "children": [
-    //                     {
-    //                         "text": "app",
-    //                         "expand": true,
-    //                         "children": [
-    //                             {
-    //                                 "leaf": true,
-    //                                 "text": "Application.js"
-    //                             }
-    //                         ]
-    //                     }
-    //                 ]
-    //             }
-    //         ];
-    //      comp.expandAllCall(node);       
-    //          node.forEach((childCheck: any) => {
-    //                 expect(childCheck.hasOwnProperty('expand')).toEqual(true);
-    //                 childCheck.expand = false;
-    //                 expect(childCheck.expand).not.toEqual(true);
-    //                 childCheck.expand = true;
-    //                 expect(childCheck.hasOwnProperty(comp.childarraykey)).toEqual(true); 
-    //                 expect(childCheck[comp.childarraykey]).not.toEqual(null);
-    //                 comp.expandAllCall(childCheck[comp.childarraykey]); 
-    //               });  
-    //    comp.expandAllCall(node1);
-    //    node1.forEach((childCheck: any) => {
-    //     expect(childCheck.hasOwnProperty('expand')).toBeUndefined;
-    //     childCheck['expand'] = true;
-    //     expect(childCheck.hasOwnProperty(comp.childarraykey)).toEqual(true); 
-    //     expect(childCheck[comp.childarraykey]).not.toEqual(null);
-    //     comp.expandAllCall(childCheck[comp.childarraykey]); 
-    //   });    
-           
-    // });
+
+    it('call expandAllCall() on method call', () => {
+        let node1 = [{
+            "text": "Web App",
+            "children": [
+                {
+                    "text": "app",
+                    "children": [
+                        {
+                            "leaf": true,
+                            "text": "Application.js"
+                        }
+                    ]
+                }
+            ]
+        }
+        ];
+        comp.childarraykey = 'children';
+        let node = [{
+            "text": "Web App",
+            "expand": true,
+            "children": [
+                {
+                    "text": "app",
+                    "expand": true,
+                    "children": [
+                        {
+                            "leaf": true,
+                            "text": "Application.js"
+                        }
+                    ]
+                }
+            ]
+        }
+        ];
+        comp.expandAllCall(node);
+        node.forEach((childCheck: any) => {
+            expect(childCheck.hasOwnProperty('expand')).toEqual(true);
+            childCheck.expand = false;
+            expect(childCheck.expand).not.toEqual(true);
+            childCheck.expand = true;
+            expect(childCheck.hasOwnProperty(comp.childarraykey)).toEqual(true);
+            expect(childCheck[comp.childarraykey]).not.toEqual(null);
+            comp.expandAllCall(childCheck[comp.childarraykey]);
+        });
+        comp.expandAllCall(node1);
+        node1.forEach((childCheck: any) => {
+            expect(childCheck.hasOwnProperty('expand')).toBeUndefined;
+            childCheck['expand'] = true;
+            expect(childCheck.hasOwnProperty(comp.childarraykey)).toEqual(true);
+            expect(childCheck[comp.childarraykey]).not.toEqual(null);
+            comp.expandAllCall(childCheck[comp.childarraykey]);
+        });
+
+    });
 
     it('activateNode() on method call', () => {
         let LocalData = [{
@@ -241,12 +241,12 @@ describe('amexio-treeview', () => {
             i['active'] = false;
             expect(i.item[0]).not.toEqual(node);
             expect(i['active']).toEqual(false);
-            i.item['children']= true;
+            i.item['children'] = true;
             expect(i.item['children']).toBe(true);
             // comp.activateNode(i[comp.childarraykey], node);
 
         }
-        
+
 
     });
 
@@ -364,7 +364,7 @@ describe('amexio-treeview', () => {
     //     expect(rightClickData['data']['isSelected']).toEqual(true);
     // });
 
-      //    it('set data method',() => {
+    //    it('set data method',() => {
     //     (<any>comp)['componentLoaded'] = true;  
     //     (<any>comp).data();
 
@@ -382,7 +382,7 @@ describe('amexio-treeview', () => {
     // });
 
 
-   
+
     //   it('onClick() on method call', () => {
     //     let node: any;
     //     node.extend = true;
@@ -429,7 +429,7 @@ describe('amexio-treeview', () => {
     // });
 
 
-    
+
 
 });
 
