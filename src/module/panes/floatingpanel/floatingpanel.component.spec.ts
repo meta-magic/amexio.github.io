@@ -45,20 +45,20 @@ describe('amexio-floating-panel', () => {
     it('ngOnInit method', () => {
         comp.ngOnInit();
         comp.absolute = true;
-        
         expect(comp.absolute).toEqual(true);
         comp.relative = false;
 
+        comp.ngOnInit();
         comp.height = '';
        
         expect(comp.height).toBe('');
         comp.height = 200;
-
+        comp.ngOnInit();
         comp.width = '';
        
         expect(comp.width).toBe('');
         comp.width = 400;
-        
+        comp.ngOnInit();
         comp.showPanel = true;
        
         expect(comp.showPanel).toBe(true);
@@ -66,11 +66,11 @@ describe('amexio-floating-panel', () => {
         
         comp.draggable = true;
         comp.arrow = true;
-        
+      
         expect(comp.draggable).toBe(true);
         expect(comp.arrow).toBe(true);
         comp.draggable = false;
-        
+     
         comp.draggable = true;
         comp.relative = true;
         expect(comp.draggable).toBe(true);
