@@ -140,6 +140,72 @@ describe('amexio-checkbox-group', () => {
     //     httpMock.verify();
     //   });
   
+    it('getResponseData()', () => {
+      let httpResponse = {
+        "data": [
+          {
+            "countryName": "Myanmar",
+            "countryCode1": "MM",
+            "countryCode2": "MMR",
+            "countryFlag": "MM.png",
+            "capital": "",
+            "currencyCode": "MMK",
+            "currencyName": "Kyat",
+            "currencySymbol": "K",
+            "isoNumeric": 104
+          },
+          {
+            "countryName": "U.S. Virgin Island",
+            "countryCode1": "VI",
+            "countryCode2": "VIR",
+            "countryFlag": "VI.png",
+            "capital": "",
+            "currencyCode": "USD",
+            "currencyName": "Dollar",
+            "currencySymbol": "$",
+            "isoNumeric": 850
+          }]
+      }
+      comp.datareader = "data";
+      comp.getResponseData(httpResponse);
+      let responsedata = httpResponse;
+ 
+      // if (this.datareader != null) {
+      expect(comp.datareader).not.toBeNull();
+      const dr = comp.datareader.split('.');
+      console.log("dr = ",dr)
+      for (const ir of dr) {
+        responsedata = responsedata[ir];
+      };
+      let httpResponse1 =  [
+           {
+            "countryName": "Myanmar",
+            "countryCode1": "MM",
+            "countryCode2": "MMR",
+            "countryFlag": "MM.png",
+            "capital": "",
+            "currencyCode": "MMK",
+            "currencyName": "Kyat",
+            "currencySymbol": "K",
+            "isoNumeric": 104
+          },
+          {
+            "countryName": "U.S. Virgin Island",
+            "countryCode1": "VI",
+            "countryCode2": "VIR",
+            "countryFlag": "VI.png",
+            "capital": "",
+            "currencyCode": "USD",
+            "currencyName": "Dollar",
+            "currencySymbol": "$",
+            "isoNumeric": 850
+          }
+        ]
+        comp.datareader = '';
+        expect(comp.datareader).not.toBeNull();
+        responsedata = httpResponse;
+    });
 
+     
 
 });
