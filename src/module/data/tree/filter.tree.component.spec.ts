@@ -289,16 +289,6 @@ describe('amexio-tree-filter-view', () => {
   });
  
 
-// it('searchTree()', () => {
-//     let data: any[];
-//     let matchingTitle;
-//  comp.searchTree(data, matchingTitle);
-//  const fi = comp.filterIndex;
-//     return comp.filterActualData(data, fi, matchingTitle);
-
-// });
-
-
 });
 
 
