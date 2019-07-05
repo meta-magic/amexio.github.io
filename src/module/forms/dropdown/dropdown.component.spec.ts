@@ -27,6 +27,7 @@ describe('amexio-dropdown', () => {
     });
     fixture = TestBed.createComponent(AmexioDropDownComponent);
     comp = fixture.componentInstance;
+    displayService = new DisplayFieldService();
     event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
     data = [{
       index: '12345'
@@ -52,30 +53,244 @@ describe('amexio-dropdown', () => {
     expect(comp.componentLoaded).toEqual(true);
     comp.setData(comp._data);
   });
-  it('setData method', () => {
+  it('setData method for datareader equal to null', () => {
     let responsedata: any;
     let httpResponse: any;
-    comp.datareader = 'Ankita.jain';
-    expect(comp.datareader).not.toEqual(null);
-    comp.multiselectValues = [];
-    let dr = comp.datareader.split('.');
-    expect(dr).toBeDefined();
-    let ir:any;
-    // for (ir of dr) {
-    //   console.log(ir);
-    //   responsedata = responsedata[ir];
-    // }
-    // expect(dr).not.toBeDefined();
-    // responsedata = httpResponse;
-    // comp.setResponseData(responsedata);
-    // comp.multiSelection();
-    // comp.setUserSelection();
-    // comp.maskloader = false;
+    httpResponse = {
+      "data": [
+        {
+          "countryName": "Myanmar",
+          "countryCode1": "MM",
+          "countryCode2": "MMR",
+          "countryFlag": "MM.png",
+          "capital": "",
+          "currencyCode": "MMK",
+          "currencyName": "Kyat",
+          "currencySymbol": "K",
+          "capitalLatitude": null,
+          "capitalLongitude": null,
+          "isoNumeric": 104
+        },
+        {
+          "countryName": "U.S. Virgin Island",
+          "countryCode1": "VI",
+          "countryCode2": "VIR",
+          "countryFlag": "VI.png",
+          "capital": "",
+          "currencyCode": "USD",
+          "currencyName": "Dollar",
+          "currencySymbol": "$",
+          "capitalLatitude": null,
+          "capitalLongitude": null,
+          "isoNumeric": 850
+        }]
+    }
+    comp.datareader = null;
+    expect(comp.datareader).toEqual(null);
+    responsedata = httpResponse;
+    comp.maskloader = false;
   });
-  it('setResponseData', () => {
-    let responsedata = true;
-    expect(responsedata).toEqual(true);
+  // it('setData method for datareader not equal to null', () => {
+  //   let responsedata: any;
+  //   let httpResponse: any;
+  //   httpResponse = {
+  //     "data": [
+  //       {
+  //         "countryName": "Myanmar",
+  //         "countryCode1": "MM",
+  //         "countryCode2": "MMR",
+  //         "countryFlag": "MM.png",
+  //         "capital": "",
+  //         "currencyCode": "MMK",
+  //         "currencyName": "Kyat",
+  //         "currencySymbol": "K",
+  //         "capitalLatitude": null,
+  //         "capitalLongitude": null,
+  //         "isoNumeric": 104
+  //       },
+  //       {
+  //         "countryName": "U.S. Virgin Island",
+  //         "countryCode1": "VI",
+  //         "countryCode2": "VIR",
+  //         "countryFlag": "VI.png",
+  //         "capital": "",
+  //         "currencyCode": "USD",
+  //         "currencyName": "Dollar",
+  //         "currencySymbol": "$",
+  //         "capitalLatitude": null,
+  //         "capitalLongitude": null,
+  //         "isoNumeric": 850
+  //       }]
+  //   }
+  //   comp.setData(httpResponse);
+  //   responsedata = httpResponse;
+  //   comp.datareader = 'data';
+  //   expect(comp.datareader).not.toEqual(null);
+  //   comp.multiselectValues = [];
+  //   let dr = comp.datareader.split('.');
+  //   expect(dr).toBeDefined();
+  //   for (const ir of dr) {
+  //     responsedata = responsedata[ir];
+  //   }
+  //   comp.setResponseData(responsedata);
+  //   // comp.multiSelection();
+  //   // comp.setUserSelection();
+  //   // comp.maskloader = false;
+  // });
+  // it('setResponseData method', () => {
+  //   let responsedata = {
+  //     "data": [
+  //       {
+  //         "countryName": "Myanmar",
+  //         "countryCode1": "MM",
+  //         "countryCode2": "MMR",
+  //         "countryFlag": "MM.png",
+  //         "capital": "",
+  //         "currencyCode": "MMK",
+  //         "currencyName": "Kyat",
+  //         "currencySymbol": "K",
+  //         "capitalLatitude": null,
+  //         "capitalLongitude": null,
+  //         "isoNumeric": 104
+  //       },
+  //       {
+  //         "countryName": "U.S. Virgin Island",
+  //         "countryCode1": "VI",
+  //         "countryCode2": "VIR",
+  //         "countryFlag": "VI.png",
+  //         "capital": "",
+  //         "currencyCode": "USD",
+  //         "currencyName": "Dollar",
+  //         "currencySymbol": "$",
+  //         "capitalLatitude": null,
+  //         "capitalLongitude": null,
+  //         "isoNumeric": 850
+  //       }]
+  //   }
+  //   comp.setResponseData(responsedata.data);
+  //   expect(responsedata.data).toBeDefined();
+  //   comp.enablesort = true;
+  //   expect(comp.enablesort).toEqual(true) 
+  //   comp.sort = 'asc';
+  //   // expect(comp.sort).toEqual('');
+  //   let setResponseData = comp.sort;
+  //   expect(setResponseData.toLowerCase()).toEqual('asc');  
+  //   comp.sortDataAscending(responsedata.data);
+  // })
+  it('sortDataAscending', () => {
+    let data2 = {
+      "data": [
+        {
+          "countryName": "Myanmar",
+          "countryCode1": "MM",
+          "countryCode2": "MMR",
+          "countryFlag": "MM.png",
+          "capital": "",
+          "currencyCode": "MMK",
+          "currencyName": "Kyat",
+          "currencySymbol": "K",
+          "capitalLatitude": null,
+          "capitalLongitude": null,
+          "isoNumeric": 104
+        },
+        {
+          "countryName": "U.S. Virgin Island",
+          "countryCode1": "VI",
+          "countryCode2": "VIR",
+          "countryFlag": "VI.png",
+          "capital": "",
+          "currencyCode": "USD",
+          "currencyName": "Dollar",
+          "currencySymbol": "$",
+          "capitalLatitude": null,
+          "capitalLongitude": null,
+          "isoNumeric": 850
+        }]
+    }
+    comp.sortDataAscending(data);
+    comp.displayfield = 'countryName';
+    comp.viewData = data2.data.sort((a: any, b: any) => displayService.findValue(comp.displayfield, a).toLowerCase()
+      !== displayService.findValue(comp.displayfield, b).toLowerCase() ?
+      displayService.findValue(comp.displayfield, a).toLowerCase() <
+        displayService.findValue(comp.displayfield, b).toLowerCase() ? -1 : 1 : 0);
+    comp.filteredOptions = comp.viewData;
+    comp.generateIndex(comp.filteredOptions);
+  });
+  it('sortDataDescending', () => {
+    let data3 = {
+      "data": [
+        {
+          "countryName": "Myanmar",
+          "countryCode1": "MM",
+          "countryCode2": "MMR",
+          "countryFlag": "MM.png",
+          "capital": "",
+          "currencyCode": "MMK",
+          "currencyName": "Kyat",
+          "currencySymbol": "K",
+          "capitalLatitude": null,
+          "capitalLongitude": null,
+          "isoNumeric": 104
+        },
+        {
+          "countryName": "U.S. Virgin Island",
+          "countryCode1": "VI",
+          "countryCode2": "VIR",
+          "countryFlag": "VI.png",
+          "capital": "",
+          "currencyCode": "USD",
+          "currencyName": "Dollar",
+          "currencySymbol": "$",
+          "capitalLatitude": null,
+          "capitalLongitude": null,
+          "isoNumeric": 850
+        }]
+    }
+    comp.displayfield = 'countryName';
+    comp.viewData = data3.data.sort((a: any, b: any) => displayService.findValue(comp.displayfield, a).toLowerCase()
+      !== displayService.findValue(comp.displayfield, b).toLowerCase() ?
+      displayService.findValue(comp.displayfield, a).toLowerCase() >
+      displayService.findValue(comp.displayfield, b).toLowerCase() ? -1 : 1 : 0);
+    comp.filteredOptions = comp.viewData;
+    comp.generateIndex(comp.filteredOptions);
   })
+  it('generateIndex Method ', () => {
+    let data1 = {
+      "data": [
+        {
+          "countryName": "Myanmar",
+          "countryCode1": "MM",
+          "countryCode2": "MMR",
+          "countryFlag": "MM.png",
+          "capital": "",
+          "currencyCode": "MMK",
+          "currencyName": "Kyat",
+          "currencySymbol": "K",
+          "capitalLatitude": null,
+          "capitalLongitude": null,
+          "isoNumeric": 104
+        },
+        {
+          "countryName": "U.S. Virgin Island",
+          "countryCode1": "VI",
+          "countryCode2": "VIR",
+          "countryFlag": "VI.png",
+          "capital": "",
+          "currencyCode": "USD",
+          "currencyName": "Dollar",
+          "currencySymbol": "$",
+          "capitalLatitude": null,
+          "capitalLongitude": null,
+          "isoNumeric": 850
+        }]
+    }
+    comp.generateIndex(data);
+    comp.componentId = "dropdown_countryName_1448";
+    data1.data.forEach((element: any, index: number) => {
+      element['index'] = comp.componentId + 'listitem' + index;
+    });
+  })
+
   // it('', () => {
   //   let data: [{ personName: "Kailas Sharma", personAge: "45", designation: "Manager" },
   //     { personName: "Pooja Bhardwaj", personAge: "30", designation: "Business Analyst" },
@@ -140,16 +355,7 @@ describe('amexio-dropdown', () => {
     // comp.onIngOnInitnput(value);
     // expect(comp.isValid).toBe(value.vaild);
   });
-  it('generateIndex', () => {
-    data = [{
-      index: '12345'
-    }];
-    comp.generateIndex(data);
-    comp.componentId = '#compid'
-    data.forEach((element: any, index: number) => {
-      element['index'] = comp.componentId + 'listitem' + index;
-    });
-  });
+
 
 
   //setUserSelection check
@@ -166,11 +372,8 @@ describe('amexio-dropdown', () => {
 
     expect(val).toEqual(comp.innerValue);
   })
-
-
   //on onBlur()
   it('on onBlur()', () => {
-
     let fn = event;
     comp.onblur(fn);
     // expect(comp.tabFocus).toEqual(false);
@@ -179,9 +382,7 @@ describe('amexio-dropdown', () => {
     comp.onBlur.subscribe((g: any) => {
       expect(comp.onBlur).toEqual(g);
     });
-
   });
-
   // registerOnChange method
   it('registerOnChange()', () => {
     let fn;
