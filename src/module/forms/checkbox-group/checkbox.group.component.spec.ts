@@ -205,6 +205,23 @@ describe('amexio-checkbox-group', () => {
         responsedata = httpResponse;
     });
 
+
+    it('ngOnInit()', () => { 
+      comp.ngOnInit();
+      comp.componentId = comp.createCompId('checkboxgroup', comp.name);
+      let reponseData: any;
+      comp.httpmethod = "get";
+      comp.httpurl = "sample.json"
+      // if (this.httpmethod && this.httpurl) {
+      expect(comp.httpmethod).toBeDefined();
+      expect(comp.httpurl).toBeDefined();
+      comp['httpService'].fetchData(comp.httpurl, comp.httpmethod).subscribe((response) => {
+        reponseData = response;
+      }, (error) => {
+      }, () => {
+        comp.data = comp.getResponseData(reponseData);
+      });
+    });
      
 
 });
