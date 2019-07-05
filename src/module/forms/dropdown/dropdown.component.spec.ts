@@ -279,44 +279,10 @@ describe('amexio-dropdown', () => {
       element['index'] = comp.componentId + 'listitem' + index;
     });
   });
-  // it('multiSelection',()=>{
-  //   comp.multiSelection();
-  //   comp.multiselect = true;
-  //   let viewdata = {
-  //     "data": [
-  //       {
-  //         "countryName": "Myanmar",
-  //         "countryCode1": "MM",
-  //         "countryCode2": "MMR",
-  //         "countryFlag": "MM.png",
-  //         "capital": "",
-  //         "currencyCode": "MMK",
-  //         "currencyName": "Kyat",
-  //         "currencySymbol": "K",
-  //         "isoNumeric": 104
-  //       },
-  //       {
-  //         "countryName": "U.S. Virgin Island",
-  //         "countryCode1": "VI",
-  //         "countryCode2": "VIR",
-  //         "countryFlag": "VI.png",
-  //         "capital": "",
-  //         "currencyCode": "USD",
-  //         "currencyName": "Dollar",
-  //         "currencySymbol": "$",
-  //         "isoNumeric": 850
-  //       }]
-  //   }
-  //   expect(comp.multiselect).toEqual(true);
-  //   expect(comp.viewData).toBeDefined();
-  //   let preSelectedMultiValues = '';
-  //   const optionsChecked: any = [];
-
-  // })
   it('setMultiSelect', () => {
     comp.multiselectValues = [{
       fruitName: "Apple", code: "Apple", checked: true, index: "dropdown_fruitName_1912listitem0"
-    },{
+    }, {
       fruitName: "Apple1", code: "Apple1", checked: true, index: "dropdown_fruitName_1912listitem1"
     }]
     comp.setMultiSelectData();
@@ -324,8 +290,8 @@ describe('amexio-dropdown', () => {
     let multiselectDisplayString: any = '';
     comp.multiselectValues.forEach((row: any) => {
       multiselectDisplayString === '' ? multiselectDisplayString +=
-      displayService.findValue(comp.displayfield, row) : multiselectDisplayString += ', '
-      + displayService.findValue(comp.displayfield, row);
+        displayService.findValue(comp.displayfield, row) : multiselectDisplayString += ', '
+        + displayService.findValue(comp.displayfield, row);
     });
     expect(2).toBeGreaterThan(0);
     return multiselectDisplayString;
@@ -348,39 +314,39 @@ describe('amexio-dropdown', () => {
       })
     })
   });
-  it('multiSelection', ()=>{
+  it('multiSelection', () => {
     comp.multiselect = true;
-    comp.viewData =[{fruitName: "Apple", code: "Apple", checked: true, index: "dropdown_fruitName_1953listitem0"},
-    {fruitName: "Avacado", code: "Avacado", checked: true, index: "dropdown_fruitName_1953listitem1"},
-    {fruitName: "Banana", code: "Banana", checked: true, index: "dropdown_fruitName_1953listitem2"}]
+    comp.viewData = [{ fruitName: "Apple", code: "Apple", checked: true, index: "dropdown_fruitName_1953listitem0" },
+    { fruitName: "Avacado", code: "Avacado", checked: true, index: "dropdown_fruitName_1953listitem1" },
+    { fruitName: "Banana", code: "Banana", checked: true, index: "dropdown_fruitName_1953listitem2" }]
     expect(comp.multiselect).toEqual(true)
     expect(comp.viewData).toBeDefined();
     let preSelectedMultiValues = '';
     const optionsChecked: any = [];
-    comp.displayfield ='fruitName'
+    comp.displayfield = 'fruitName'
     comp.viewData.forEach((row: any) => {
       expect(row.hasOwnProperty('checked')).toEqual(true);
-        expect(row.checked).toEqual(true) 
-          optionsChecked.push(row[comp.valuefield]);
-          comp.multiselectValues.push(row);
-          preSelectedMultiValues === '' ? preSelectedMultiValues +=
-          displayService.findValue(comp.displayfield, row) : preSelectedMultiValues += ', ' +
-          displayService.findValue(comp.displayfield, row);
-          // expect(row.checked).toEqual(false) 
-          row['checked'] = false;
+      expect(row.checked).toEqual(true)
+      optionsChecked.push(row[comp.valuefield]);
+      comp.multiselectValues.push(row);
+      preSelectedMultiValues === '' ? preSelectedMultiValues +=
+        displayService.findValue(comp.displayfield, row) : preSelectedMultiValues += ', ' +
+        displayService.findValue(comp.displayfield, row);
+      // expect(row.checked).toEqual(false) 
+      row['checked'] = false;
     });
   })
-  it('multiSelection for else', ()=>{
+  it('multiSelection for else', () => {
     comp.multiselect = true;
-    comp.viewData =[{fruitName: "Apple", code: "Apple", index: "dropdown_fruitName_1953listitem0"},
-    {fruitName: "Avacado", code: "Avacado", index: "dropdown_fruitName_1953listitem1"},
-    {fruitName: "Banana", code: "Banana", index: "dropdown_fruitName_1953listitem2"}]
+    comp.viewData = [{ fruitName: "Apple", code: "Apple", index: "dropdown_fruitName_1953listitem0" },
+    { fruitName: "Avacado", code: "Avacado", index: "dropdown_fruitName_1953listitem1" },
+    { fruitName: "Banana", code: "Banana", index: "dropdown_fruitName_1953listitem2" }]
     expect(comp.multiselect).toEqual(true)
     expect(comp.viewData).toBeDefined();
-    comp.displayfield ='fruitName'
+    comp.displayfield = 'fruitName'
     comp.viewData.forEach((row: any) => {
       expect(row.hasOwnProperty('checked')).toEqual(false);
-          row['checked'] = false;
+      row['checked'] = false;
     });
   })
   it('should call get function and return true', () => {
@@ -434,23 +400,28 @@ describe('amexio-dropdown', () => {
     // comp.onIngOnInitnput(value);
     // expect(comp.isValid).toBe(value.vaild);
   });
-
-
-
   //setUserSelection check
 
   it('check setUserSelection method', () => {
-
     comp.setUserSelection();
-    comp.innerValue = 'kedar';
+    comp.innerValue = 'AF';
+    comp.viewData = [{countryName: "Afghanistan", countryCode1: "AF", countryCode2: "AFG", countryFlag: "AF.png"}]
     expect(comp.innerValue).not.toBe(null);
-
+    comp.valuefield='countryCode1';
+    comp.displayfield ='countryName';
     const valueKey = comp.valuefield;
-    expect(valueKey).toBe(undefined);
+    const displayKey = comp.displayfield;
     const val = comp.innerValue;
-
-    expect(val).toEqual(comp.innerValue);
+    expect(comp.viewData.length).toBeGreaterThan(0);
+    comp.viewData.forEach((item: any) => {
+      expect(item[valueKey]).toEqual(val);
+      comp.isValid = true;
+      comp.isComponentValid.emit(true);
+      comp.displayValue = item[displayKey];
+      delete item[comp.key];
+      comp.onSingleSelect.emit(item);
   })
+})
   //on onBlur()
   it('on onBlur()', () => {
     let fn = event;
