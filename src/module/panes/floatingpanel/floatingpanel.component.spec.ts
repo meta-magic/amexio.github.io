@@ -29,19 +29,6 @@ describe('amexio-floating-panel', () => {
         expect(comp).toBeTruthy();
     }));
 
-    // check variables 
-    // it('check variables ', () => {
-    //     let flag = false;
-    //     expect(comp.btnStyle).toEqual({});
-    //     expect(comp.style).toEqual({});
-
-    //     expect(comp.pos1).toEqual(0);
-    //     expect(comp.pos2).toEqual(0);
-    //     expect(comp.pos3).toEqual(0);
-    //     expect(comp.pos4).toEqual(0);
-
-    // });
-
     it('ngOnInit method', () => {
         comp.ngOnInit();
         comp.absolute = true;
