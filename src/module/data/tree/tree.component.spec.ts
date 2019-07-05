@@ -96,16 +96,16 @@ describe('amexio-treeview', () => {
         expect(comp.addListner()).toHaveBeenCalled;
     });
 
-    it('Tree ngOnInit() on method call', () => {
-        comp.contextmenu = [{ "text": "Add New", "icon": "fa fa-plus", "disabled": true }, { "text": "Edit", "icon": "", "seperator": true }
-            , { "text": "Send data in email", "icon": "" }];
+    // it('Tree ngOnInit() on method call', () => {
+    //     comp.contextmenu = [{ "text": "Add New", "icon": "fa fa-plus", "disabled": true }, { "text": "Edit", "icon": "", "seperator": true }
+    //         , { "text": "Send data in email", "icon": "" }];
 
-        comp.ngOnInit();
-        expect(comp.contextmenu).not.toBe(null);
-        expect(comp.contextmenu.length).toBeGreaterThan(0);
+    //     comp.ngOnInit();
+    //     expect(comp.contextmenu).not.toBe(null);
+    //     expect(comp.contextmenu.length).toBeGreaterThan(0);
 
 
-    });
+    // });
     it('Tree resetFlag() on method call', () => {
         comp.flag = true;
         comp.resetFlag();
