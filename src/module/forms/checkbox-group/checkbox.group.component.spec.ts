@@ -47,37 +47,37 @@ describe('amexio-checkbox-group', () => {
   });
 
 
-  it('checking ngOnInit() method', () => {
+  // it('checking ngOnInit() method', () => {
 
-    let value = comp.value;
-    let resp: any;
+  //   let value = comp.value;
+  //   let resp: any;
 
 
-    comp.ngOnInit();
-    comp.componentId = comp.createCompId('checkboxgroup', comp.name);
+  //   comp.ngOnInit();
+  //   comp.componentId = comp.createCompId('checkboxgroup', comp.name);
 
-    comp.data =
-      {
-        "codeData": [
-          {
-            'id': 1,
-            'name': 'kedar'
-          }
-        ]
-      }
+  //   comp.data =
+  //     {
+  //       "codeData": [
+  //         {
+  //           'id': 1,
+  //           'name': 'kedar'
+  //         }
+  //       ]
+  //     }
 
-    comp.datareader = "codeData";
+  //   comp.datareader = "codeData";
 
-    expect(comp.datareader).toBe('codeData');
-    //   expect(comp.data).toBe({
-    //     "codeData": [
-    //       {
-    //       'id':1,
-    //       'name':'kedar'
-    //     }
-    //   ]
-    // });
-  });
+  //   expect(comp.datareader).toBe('codeData');
+  //   //   expect(comp.data).toBe({
+  //   //     "codeData": [
+  //   //       {
+  //   //       'id':1,
+  //   //       'name':'kedar'
+  //   //     }
+  //   //   ]
+  //   // });
+  // });
 
     it('emitData', () => {
       comp.data = [  {
@@ -214,6 +214,8 @@ describe('amexio-checkbox-group', () => {
       comp.httpurl = "sample.json"
        expect(comp.httpmethod).toBeDefined();
       expect(comp.httpurl).toBeDefined();
+      expect(comp.httpmethod).not.toBeNull();
+      expect(comp.httpurl).not.toBeNull();
       comp['httpService'].fetchData(comp.httpurl, comp.httpmethod).subscribe((response) => {
         reponseData = response;
       }, (error) => {
