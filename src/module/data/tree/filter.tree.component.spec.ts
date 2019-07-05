@@ -26,37 +26,24 @@ describe('amexio-tree-filter-view', () => {
         const compiled = fixture.debugElement.nativeElement;
         event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
         let renderer = Renderer2;
-         this.data = {
-            "text": "Home",
-            "icon" : "fa fa-home fa-fw",
-            "mdaIcon" : "home",
-            "link" : "/home/dashboard",
-            "selected":true,
-            "badge": "12"
-          };
-        checkD = {
-            "checked": true,
-            "key": 'kedar',
-            "data": [
+        
+        checkD = [ {            
+            "text": "Web App",
+            "expand": true,
+            "children": [
                 {
-                    "text": "Web App",
+                    "text": "app",
                     "expand": true,
-
                     "children": [
                         {
-                            "text": "app",
-                            "expand": true,
-                            "children": [
-                                {
-                                    "leaf": true,
-                                    "text": "Application.js"
-                                }
-                            ]
+                            "leaf": true,
+                            "text": "Application.js"
                         }
                     ]
                 }
             ]
         }
+    ];
 
     });
    
