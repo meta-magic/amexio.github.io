@@ -59,8 +59,127 @@ describe('amexio-calendar-month', () => {
             }],
 
           }, id: "59460_monthid", isActive: false, isActivePeriod: true, isDisabled: false, isEvent: true, selected: false
+        } 
+      ],
+      [
+        {
+          date: new Date(), eventDetails: {
+            isEvent: true,
+            events: [{
+              isEvent: true,
+              details: {
+                title: "Java Conference",
+                end: new Date(),
+                eventclass: "calendar-active-3",
+                hasTimeSlot: true,
+                people: [{ personName: "Priyanka Gokhale" }, { personName: "Seema Rai" }],
+                phone: "020-23456789",
+                start: new Date(),
+                url: "meet.google.com/izm-pooa-gns"
+              }, title: "Java Workshop", hasTimeSlot: true, eventDateTime: new Date(), events: null, fpFlag: false
+            }],
+
+          }, id: "59460_monthid", isActive: false, isActivePeriod: true, isDisabled: false, isEvent: true, selected: false
+        },
+        {
+          date: new Date(), eventDetails: {
+            isEvent: true,
+            events: [{
+              isEvent: true,
+              details: {
+                title: "Java Conference",
+                end: new Date(),
+                eventclass: "calendar-active-3",
+                hasTimeSlot: true,
+                people: [{ personName: "Priyanka Gokhale" }, { personName: "Seema Rai" }],
+                phone: "020-23456789",
+                start: new Date(),
+                url: "meet.google.com/izm-pooa-gns"
+              }, title: "Java Workshop", hasTimeSlot: true, eventDateTime: new Date(), events: null, fpFlag: false
+            }],
+
+          }, id: "59460_monthid", isActive: false, isActivePeriod: true, isDisabled: false, isEvent: true, selected: false
+        },
+        {
+          date: new Date(), eventDetails: {
+            isEvent: true,
+            events: [{
+              isEvent: true,
+              details: {
+                title: "Java Conference",
+                end: new Date(),
+                eventclass: "calendar-active-3",
+                hasTimeSlot: true,
+                people: [{ personName: "Priyanka Gokhale" }, { personName: "Seema Rai" }],
+                phone: "020-23456789",
+                start: new Date(),
+                url: "meet.google.com/izm-pooa-gns"
+              }, title: "Java Workshop", hasTimeSlot: true, eventDateTime: new Date(), events: null, fpFlag: false
+            }],
+
+          }, id: "59460_monthid", isActive: false, isActivePeriod: true, isDisabled: false, isEvent: true, selected: false
+        }
+      ],
+      [
+        {
+          date: new Date(), eventDetails: {
+            isEvent: true,
+            events: [{
+              isEvent: true,
+              details: {
+                title: "Java Conference",
+                end: new Date(),
+                eventclass: "calendar-active-3",
+                hasTimeSlot: true,
+                people: [{ personName: "Priyanka Gokhale" }, { personName: "Seema Rai" }],
+                phone: "020-23456789",
+                start: new Date(),
+                url: "meet.google.com/izm-pooa-gns"
+              }, title: "Java Workshop", hasTimeSlot: true, eventDateTime: new Date(), events: null, fpFlag: false
+            }],
+
+          }, id: "59460_monthid", isActive: false, isActivePeriod: true, isDisabled: false, isEvent: true, selected: false
+        },
+        {
+          date: new Date(), eventDetails: {
+            isEvent: true,
+            events: [{
+              isEvent: true,
+              details: {
+                title: "Java Conference",
+                end: new Date(),
+                eventclass: "calendar-active-3",
+                hasTimeSlot: true,
+                people: [{ personName: "Priyanka Gokhale" }, { personName: "Seema Rai" }],
+                phone: "020-23456789",
+                start: new Date(),
+                url: "meet.google.com/izm-pooa-gns"
+              }, title: "Java Workshop", hasTimeSlot: true, eventDateTime: new Date(), events: null, fpFlag: false
+            }],
+
+          }, id: "59460_monthid", isActive: false, isActivePeriod: true, isDisabled: false, isEvent: true, selected: false
+        },
+        {
+          date: new Date(), eventDetails: {
+            isEvent: true,
+            events: [{
+              isEvent: true,
+              details: {
+                title: "Java Conference",
+                end: new Date(),
+                eventclass: "calendar-active-3",
+                hasTimeSlot: true,
+                people: [{ personName: "Priyanka Gokhale" }, { personName: "Seema Rai" }],
+                phone: "020-23456789",
+                start: new Date(),
+                url: "meet.google.com/izm-pooa-gns"
+              }, title: "Java Workshop", hasTimeSlot: true, eventDateTime: new Date(), events: null, fpFlag: false
+            }],
+
+          }, id: "59460_monthid", isActive: false, isActivePeriod: true, isDisabled: false, isEvent: true, selected: false
         }
       ]
+
     ];
 
   });
@@ -280,19 +399,101 @@ describe('amexio-calendar-month', () => {
     ];
 
     comp.onMoreClicked(event, data);
-       
+
     expect(comp.calendaryData).toBeDefined();
     comp.calendaryData.forEach((calendarRow) => {
       calendarRow.forEach((day: any) => {
         // if (day.eventDetails) {
-           expect(day.eventDetails).toBeDefined();
-          day.eventDetails.events.fpFlag = false;
+        expect(day.eventDetails).toBeDefined();
+        day.eventDetails.events.fpFlag = false;
       });
     });
     data['fpFlag'] = true;
     comp.openFloatingPanel = true;
   });
 
-  
+  it('ondatefocus()', () => {
+    let day = {
+      eventDetails: {
+        isEvent: true,
+        events: [{
+          isEvent: true,
+          details: {
+            title: "Java Conference",
+            end: new Date(),
+            eventclass: "calendar-active-3",
+            hasTimeSlot: true,
+            people: [{ personName: "Priyanka Gokhale" }, { personName: "Seema Rai" }],
+            phone: "020-23456789",
+            start: new Date(),
+            url: "meet.google.com/izm-pooa-gns"
+          }, title: "Java Workshop", hasTimeSlot: true, eventDateTime: new Date(),
+          events: [{}], fpFlag: false
+        }],
+
+      }, date: new Date()
+    }
+    comp.ondatefocus(day);
+    // if (day.eventDetails && day.eventDetails !== null) {
+
+    expect(day.eventDetails).toBeDefined();
+    expect(day.eventDetails).not.toBeNull();
+    day.eventDetails.events.forEach((scheduledevent: any, index: number) => {
+      // if (index === 0) {
+      expect(index).toEqual(0)
+      comp.ariadatalabel = comp.receiveDateFormat(day.date);
+      // }
+
+      comp.ariadatalabel = comp.ariadatalabel + scheduledevent.details.title +
+        ' event scheduled ' +
+        comp.formatAMPM(new Date(scheduledevent.details.start)) +
+        ' to ' +
+        comp.formatAMPM(new Date(scheduledevent.details.end));
+      comp.ariadatalabel = comp.receiveDateFormat(day.date) + ' no events scheduled';
+
+    });
+
+  });
+
+  // it('nextrightday()', () => {
+  //   let day = { id: "59460_monthid" };
+  //   comp.nextrightday(day);
+  //   let focusrowindex: number;
+  //   let focusinnerindex: number;
+  //   comp.calendaryData.forEach((calendarrow: any, rowindex: number) => {
+  //     calendarrow.forEach((calendardata: any, innerindex: number) => {
+  //       // if (day.id === calendardata.id) {
+  //         if(rowindex == 0 && innerindex == 0) {
+  //       expect(day.id).toEqual(calendardata.id)
+  //       //  if ((calendarrow.length - 1) === innerindex) {
+  //       expect(calendarrow.length - 1).toEqual(innerindex);
+  //       focusinnerindex = 0;
+  //       focusrowindex = rowindex + 1;}
+  //     });
+  //   });
+
+  //   const itemid = comp.calendaryData[focusrowindex][focusinnerindex];
+ 
+  // });
+
+  // it('nextleftday()', () => {
+  //   let day = { id: "59460_monthid" };
+  //   comp.nextleftday(day);
+  //   let focusrowindex: number;
+  //   let focusinnerindex: number;
+  //   comp.calendaryData.forEach((calendarrow: any, rowindex: number) => {
+  //     calendarrow.forEach((individualday: any, innerindex: number) => {
+  //       // if (day.id === individualday.id) {
+  //       expect(day.id).toEqual(individualday.id)
+  //       comp.refactoredleftday(rowindex, innerindex, calendarrow);
+  //     });
+  //   });
+  //   comp.focusrindex = 1;
+  //   comp.focusiindex = 0;
+  //   const itemid = comp.calendaryData[comp.focusrindex][comp.focusiindex];
+ 
+  // });
+
+
 
 });
