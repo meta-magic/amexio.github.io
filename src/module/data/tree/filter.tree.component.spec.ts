@@ -145,34 +145,74 @@ describe('amexio-tree-filter-view', () => {
            
     });
 
-    // it('fliter tree generateindex on method call', () => {
-    //     let data2 =[ {            
-    //         "text": "Web App",
-    //         "expand": true,
-    //         "children": [
-    //             {
-    //                 "text": "app",
-    //                 "expand": true,
-    //                 "children": [
-    //                     {
-    //                         "leaf": true,
-    //                         "text": "Application.js"
-    //                     }
-    //                 ]
-    //             }
-    //         ]
-    //     }
-    // ];
-    //     let parentID = 14;
-    //     let rannumber = 3098;
-    //     comp.childarraykey = 'children';
-    //     comp.generatefilterIndex(data2,parentID,rannumber);
-    //     data2.forEach((element: any, index: number) => {
-    //         element['id'] = '' + rannumber + '-' + parentID + (index + 1);
-    //         expect(element[comp.childarraykey]).toEqual(true);
-    //         comp.generatefilterIndex(element[comp.childarraykey], element.id.split('-')[1], rannumber);
-    //       });    
-    // });
+    it('fliter tree getData()if on method call', () => {
+        let httpResponse = [
+        
+            {
+              "text": "Home",
+              "icon" : "fa fa-home fa-fw",
+              "mdaIcon" : "home",
+              "link" : "/home/dashboard",
+              "selected":true,
+              "badge": "12"
+            },
+            {
+              "text": "Email",
+              "icon" : "fa fa-envelope fa-fw",
+              "mdaIcon" : "email",
+              "link" : "/home/email",
+              "badge": "21"
+            },
+            {
+              "text": "Profile",
+              "icon" : "fa fa-user fa-fw",
+              "mdaIcon" : "account_box",
+              "link" : "/home/profile",
+              "badge": "32"
+            }];
+     
+        comp.getData(httpResponse);
+        let responsedata: any = httpResponse;
+        comp.datareader ='data';
+        expect(comp.datareader).not.toEqual(null);
+        const dr =  comp.datareader.split('.');
+      for (const ir of dr) {
+        responsedata = responsedata[ir];
+      }
+             return responsedata;
+       });
+
+       it('fliter tree getData() else on method call', () => {
+        let httpResponse = [
+        
+            {
+              "text": "Home",
+              "icon" : "fa fa-home fa-fw",
+              "mdaIcon" : "home",
+              "link" : "/home/dashboard",
+              "selected":true,
+              "badge": "12"
+            },
+            {
+              "text": "Email",
+              "icon" : "fa fa-envelope fa-fw",
+              "mdaIcon" : "email",
+              "link" : "/home/email",
+              "badge": "21"
+            },
+            {
+              "text": "Profile",
+              "icon" : "fa fa-user fa-fw",
+              "mdaIcon" : "account_box",
+              "link" : "/home/profile",
+              "badge": "32"
+            }];
+        comp.getData(httpResponse);
+        comp.datareader =null;
+        expect(comp.datareader).toEqual(null);
+         let responsedata = httpResponse;
+             return responsedata;
+       });
 });
 
 
