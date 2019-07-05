@@ -135,17 +135,17 @@ describe('amexio-floating-panel', () => {
     //     expect(comp.width).not.toEqual('');
     //     expect(comp.width).toEqual('');
     // })
-    // it('checking togglePanel method', () => {
-    //     comp.togglePanel();
-    //     comp.showPanel = false;
-    //     expect(comp.showPanel).toEqual(false);
-    //     comp.onclose.subscribe((g: any) => {
-    //         expect(comp.onclose).toEqual(g);
-    //     });
-    //     comp.showPanelChange.subscribe((g: any) => {
-    //         expect(comp.showPanelChange).toEqual(g);
-    //     });
-
-    // });
+    it('checking togglePanel method', () => {
+        comp.showPanel = false;
+        comp.togglePanel();
+        comp.showPanel = false;
+        expect(comp.showPanel).toEqual(false);
+        comp.onclose.subscribe((g: any) => {
+            expect(comp.onclose).toEqual(g);
+        });
+        comp.showPanelChange.subscribe((g: any) => {
+            expect(comp.showPanelChange).toEqual(g);
+        });
+    });
 });
 	
