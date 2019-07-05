@@ -69,10 +69,10 @@ describe('amexio-tree-filter-view', () => {
             "selected":true,
             "badge": "12"
           };
+        
         comp.isexpandAll = true;
         comp.expandAll(node);
         comp.destroyExpandAll = setTimeout(() => {
-            expect(checkD).toBe(true);
             comp.expandAllCall(checkD);
         }, 0);
     });

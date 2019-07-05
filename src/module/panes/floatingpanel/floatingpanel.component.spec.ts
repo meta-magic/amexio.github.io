@@ -19,6 +19,7 @@ describe('amexio-floating-panel', () => {
         event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
 
         it('true is true', () => expect(true).toBe(true));
+        
 
     });
     it('should create the app', async(() => {
@@ -44,25 +45,40 @@ describe('amexio-floating-panel', () => {
     it('ngOnInit method', () => {
         comp.ngOnInit();
         comp.absolute = true;
+        
         expect(comp.absolute).toEqual(true);
         comp.relative = false;
+
         comp.height = '';
+       
         expect(comp.height).toBe('');
         comp.height = 200;
+
         comp.width = '';
+       
         expect(comp.width).toBe('');
-        comp.width = 200;
+        comp.width = 400;
+        
         comp.showPanel = true;
+       
         expect(comp.showPanel).toBe(true);
         comp.panelStyle();
+        
         comp.draggable = true;
-        expect(comp.draggable).toBe(true);
         comp.arrow = true;
+        
+        expect(comp.draggable).toBe(true);
         expect(comp.arrow).toBe(true);
         comp.draggable = false;
-        comp.style['position'] = 'absolute';
+        
+        comp.draggable = true;
+        comp.relative = true;
+        expect(comp.draggable).toBe(true);
+        expect(comp.relative).toBe(true);
+        comp.style['position'] ='absolute';
+       
     });
-   
+
     // it('panel style method ', () => {
     //     comp.style = {};
     //     comp.style['position'] = (comp.relative) ? 'absolute' : 'fixed';
@@ -78,27 +94,24 @@ describe('amexio-floating-panel', () => {
     //         expect(comp.relative).not.toEqual(true);
     //     }
     // })
-    // it('arrowPadding method', () => {
-    //     comp.arrowPadding();
-    //     let margintop:'16px';   
-    //     comp.arrow = true;    
-    //     expect(comp.arrow).toEqual(true);
-    //     comp.style['margin-top'] = margintop;
-    // });
+    it('arrowPadding method', () => {
+        comp.arrow = true;
+        comp.arrowPadding();
+        expect(comp.arrow).toEqual(true);
+        expect(comp.style['margin-top']).toBe('16px');
+    });
     it('setpanelStyleposition', () => {
+        comp.topPosition = '20px';
+        comp.bottomPosition = '20px';
+        comp.rightPosition = '20px';
+        comp.leftPosition = '20px';
         comp.setPanelStylePostion();
-        comp.topPosition = '';
-        comp.bottomPosition = '';
-        comp.rightPosition = '';
-        comp.leftPosition = '';
-        expect(comp.topPosition).toEqual('');
-        expect(comp.bottomPosition).toEqual('');
-        expect(comp.rightPosition).toEqual('');
-        expect(comp.leftPosition).toEqual('');
-        comp.style['top'] = comp.topPosition;
-        comp.style['bottom'] = comp.bottomPosition;
-        comp.style['right'] = comp.rightPosition;
-        comp.style['left'] = comp.leftPosition;
+
+        expect(comp.style['top']).toEqual('20px');
+        expect(comp.style['left']).toEqual('20px');
+        expect(comp.style['bottom']).toEqual('20px');
+        expect(comp.style['right']).toEqual('20px');
+
     });
     it('changeHeaderColor method', () => {
         comp.gradientFlag = true;
@@ -148,4 +161,4 @@ describe('amexio-floating-panel', () => {
         });
     });
 });
-	
+
