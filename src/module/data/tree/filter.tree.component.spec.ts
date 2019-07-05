@@ -36,6 +36,9 @@ describe('amexio-tree-filter-view', () => {
 
 
 
+    comp.httpurl = "sample.json";
+    comp.httpmethod = "get";
+
     checkD = [{
       "text": "Web App",
       "expand": true,
@@ -272,6 +275,29 @@ describe('amexio-tree-filter-view', () => {
       expect(comp1.nodeRightClick).toEqual(g);
     });
   });
+
+
+  it('callService()', () => { 
+    comp.httpurl = "sample.json";
+    comp.httpmethod = "get";
+    comp.callService();
+    comp['treeViewFilterService'].fetchData(comp.httpurl, comp.httpmethod).subscribe((response: any) => {
+        comp.data = response;
+    }, () => {
+      comp.renderServiceData();
+    });
+  });
+ 
+
+// it('searchTree()', () => {
+//     let data: any[];
+//     let matchingTitle;
+//  comp.searchTree(data, matchingTitle);
+//  const fi = comp.filterIndex;
+//     return comp.filterActualData(data, fi, matchingTitle);
+
+// });
+
 
 });
 

@@ -1,0 +1,26 @@
+{
+    "data": [
+        {
+            "countryName": "Myanmar",
+            "countryCode1": "MM",
+            "countryCode2": "MMR",
+            "countryFlag": "MM.png",
+            "capital": "",
+            "currencyCode": "MMK",
+            "currencyName": "Kyat",
+            "currencySymbol": "K",
+            "isoNumeric": 104
+        },
+        {
+            "countryName": "U.S. Virgin Island",
+            "countryCode1": "VI",
+            "countryCode2": "VIR",
+            "countryFlag": "VI.png",
+            "capital": "",
+            "currencyCode": "USD",
+            "currencyName": "Dollar",
+            "currencySymbol": "$",
+            "isoNumeric": 850
+        }
+    ]
+}
