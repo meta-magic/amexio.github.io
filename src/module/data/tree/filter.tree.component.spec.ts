@@ -61,7 +61,7 @@ describe('amexio-tree-filter-view', () => {
     });
    
 
-    it('check variables ', () => {
+    it('fliter tree check variables ', () => {
 
         comp.isDataFound = true;
         expect(comp.isDataFound).toEqual(true);
@@ -73,7 +73,7 @@ describe('amexio-tree-filter-view', () => {
         expect(comp.isexpandAll).toEqual(false);
       });
 
-    it('expandAll() on method call', () => {
+    it('fliter tree expandAll() on method call', () => {
         let node = {
             "text": "Home",
             "icon" : "fa fa-home fa-fw",
@@ -90,7 +90,7 @@ describe('amexio-tree-filter-view', () => {
         }, 0);
     });
 
-    it('expandAllCall() on method call', () => {
+    it('fliter tree expandAllCall() on method call', () => {
         let node1 =[ {            
             "text": "Web App",
             "children": [
@@ -145,7 +145,7 @@ describe('amexio-tree-filter-view', () => {
            
     });
 
-    // it('generateindex on method call', () => {
+    // it('fliter tree generateindex on method call', () => {
     //     let data2 =[ {            
     //         "text": "Web App",
     //         "expand": true,

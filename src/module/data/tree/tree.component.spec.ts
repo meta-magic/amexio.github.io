@@ -50,13 +50,13 @@ describe('amexio-treeview', () => {
         }
 
     });
-    it('true is true', () => expect(true).toBe(true));
-    it('get data', () => {
+    it('  Tree true is true', () => expect(true).toBe(true));
+    it('Tree get data', () => {
         expect(comp.data).toEqual(comp._data);
     });
 
 
-    it('onTreeNodeCheck() on method call', () => {
+    it('Tree onTreeNodeCheck() on method call', () => {
 
         let data = comp.data;
         comp.onTreeNodeCheck(data);
@@ -64,7 +64,7 @@ describe('amexio-treeview', () => {
             expect(comp.onTreeNodeChecked).toEqual(g);
         });
     });
-    it('rightClickDataEmit() on method call', () => {
+    it('Tree rightClickDataEmit() on method call', () => {
 
         let data = comp.data;
         comp.rightClickDataEmit(data);
@@ -73,7 +73,7 @@ describe('amexio-treeview', () => {
         });
     });
 
-    it('ngOnDestroy() on method call', () => {
+    it('Tree ngOnDestroy() on method call', () => {
 
         comp.destroyExpandAll = true;
         comp.ngOnDestroy();
@@ -81,7 +81,7 @@ describe('amexio-treeview', () => {
         clearTimeout(comp.destroyExpandAll)
     });
 
-    it('getContextMenu() on method call', () => {
+    it('Tree getContextMenu() on method call', () => {
 
 
         comp.flag = true;
@@ -96,7 +96,7 @@ describe('amexio-treeview', () => {
         expect(comp.addListner()).toHaveBeenCalled;
     });
 
-    it('ngOnInit() on method call', () => {
+    it('Tree ngOnInit() on method call', () => {
         comp.contextmenu = [{ "text": "Add New", "icon": "fa fa-plus", "disabled": true }, { "text": "Edit", "icon": "", "seperator": true }
             , { "text": "Send data in email", "icon": "" }];
 
@@ -106,7 +106,7 @@ describe('amexio-treeview', () => {
 
 
     });
-    it('resetFlag() on method call', () => {
+    it('Tree resetFlag() on method call', () => {
         comp.flag = true;
         comp.resetFlag();
         comp.flag = false;
@@ -116,7 +116,7 @@ describe('amexio-treeview', () => {
     });
 
 
-    it('expandAll() on method call', () => {
+    it('Tree expandAll() on method call', () => {
         let node: any;
         comp.parentRef = true;
         comp.expandAll(node);
@@ -126,7 +126,7 @@ describe('amexio-treeview', () => {
         }, 0);
     });
 
-    it('updateComponent() on method call', () => {
+    it('Tree updateComponent() on method call', () => {
         comp.previousValue = '90';
 
         comp.updateComponent();
@@ -137,7 +137,7 @@ describe('amexio-treeview', () => {
     });
 
 
-    it('call expandAllCall() on method call', () => {
+    it(' Tree call expandAllCall() on method call', () => {
         let node1 = [{
             "text": "Web App",
             "children": [
@@ -192,7 +192,7 @@ describe('amexio-treeview', () => {
 
     });
 
-    it('activateNode() on method call', () => {
+    it('Tree activateNode() on method call', () => {
         let LocalData = [{
             "checked": true,
             "key": 'kedar',
@@ -255,50 +255,61 @@ describe('amexio-treeview', () => {
 
 
 
-    it('emitCheckedData() on method call', () => {
-        checkD = {
-            "checked": true,
-            "key": 'kedar',
-            "data": [
+    it('Tree emitCheckedData() on method call', () => {
+        checkD = [
+            {
+              "text": "Web App",
+              "expand": true,
+              "checked": false,
+              "children": [
                 {
-                    "text": "Web App",
-                    "expand": true,
-                    "checked": true,
-                    "children": [
-                        {
-                            "text": "app",
-                            "expand": true,
-                            "children": [
-                                {
-                                    "leaf": true,
-                                    "text": "Application.js"
-                                }
-                            ]
-                        }
-                    ]
+                  "text": "app",
+                  "expand": true,
+                  "checked": false,
+                  "children": [
+                    {
+                      "leaf": true,
+                      "checked": false,
+                      "text": "Application.js"
+                    }
+                  ]
                 }
-            ]
-        }
+              ]
+            }
+          ];
         comp.displaykey = 'text';
         comp.childarraykey = 'children';
+
+
         checkD.checked = false;
         comp.emitCheckedData(checkD);
-        expect(checkD.checked).toEqual(true)
-        expect(comp.setSelectedFlag()).toHaveBeenCalled;
         checkD.checked = true;
-        comp.emitCheckedData(checkD);
-        //  expect(checkD.data.hasOwnProperty(comp.childarraykey)).toEqual(true);
-        // checkD.data[comp.childarraykey].forEach((option: any) => {
-        // option.checked = true;
-        // expect(option.hasOwnProperty(comp.childarraykey)).toEqual(true);
-        // comp.setCheckedStatusFromParent(option);
-        // expect(comp.setCheckedStatusFromParent(option)).toHaveBeenCalled;
-        // });
+        expect(checkD.checked).toEqual(true);
 
+        expect(checkD[0].hasOwnProperty('children')).toEqual(true);
+        checkD[0][comp.childarraykey].forEach((option: any) => {
+            option.checked = true;
+            expect(option.hasOwnProperty(comp.childarraykey)).toEqual(true);
+            comp.setCheckedStatusFromParent(option);
+        });
         comp.emitData(checkD);
+
+        checkD.checked = false;
+        comp.emitCheckedData(checkD);
+        expect(checkD.checked).toBe(false);
+        expect(checkD[0].hasOwnProperty('children')).toEqual(true);
+        checkD[0][comp.childarraykey].forEach((option: any) => {
+            option.checked = false;
+            expect(option.hasOwnProperty(comp.childarraykey)).toEqual(true);
+            comp.searchObject(option);
+        });
+        comp.emitData(checkD);
+
+
+
     });
 
-    // it('onNodeClick() on method call', () => {
+    // it('Tree onNodeClick() on method call', () => {
     //     let node = [{
     //         "leaf": true,
     //         "text": "Application.js"
@@ -329,7 +340,7 @@ describe('amexio-treeview', () => {
     //     expect(comp.globalClickListenFunc()).toHaveBeenCalled;
     // });
 
-    // it('loadContextMenu() on method call', () => {
+    // it(' Tree loadContextMenu() on method call', () => {
 
     //     let rightClickData = {
     //         "data": [
@@ -364,7 +375,7 @@ describe('amexio-treeview', () => {
     //     expect(rightClickData['data']['isSelected']).toEqual(true);
     // });
 
-    //    it('set data method',() => {
+    //    it('Tree set data method',() => {
     //     (<any>comp)['componentLoaded'] = true;  
     //     (<any>comp).data();
 
@@ -374,7 +385,7 @@ describe('amexio-treeview', () => {
 
 
 
-    // it('removeListner() on method call', () => {
+    // it('Tree removeListner() on method call', () => {
 
     //     comp.removeListner();
     //     // expect(comp.globalClickListenFunc).toBe(value);
@@ -383,7 +394,7 @@ describe('amexio-treeview', () => {
 
 
 
-    //   it('onClick() on method call', () => {
+    //   it('Tree onClick() on method call', () => {
     //     let node: any;
     //     node.extend = true;
     //     comp.onClick(node);
@@ -394,7 +405,7 @@ describe('amexio-treeview', () => {
     //   });
 
 
-    // it('onArrowDown method', () => {
+    // it('Tree onArrowDown method', () => {
 
     //     let data = {
     //         "item": [{
