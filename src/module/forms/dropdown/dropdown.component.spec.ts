@@ -189,8 +189,6 @@ describe('amexio-dropdown', () => {
           "currencyCode": "MMK",
           "currencyName": "Kyat",
           "currencySymbol": "K",
-          "capitalLatitude": null,
-          "capitalLongitude": null,
           "isoNumeric": 104
         },
         {
@@ -202,8 +200,6 @@ describe('amexio-dropdown', () => {
           "currencyCode": "USD",
           "currencyName": "Dollar",
           "currencySymbol": "$",
-          "capitalLatitude": null,
-          "capitalLongitude": null,
           "isoNumeric": 850
         }]
     }
@@ -228,8 +224,6 @@ describe('amexio-dropdown', () => {
           "currencyCode": "MMK",
           "currencyName": "Kyat",
           "currencySymbol": "K",
-          "capitalLatitude": null,
-          "capitalLongitude": null,
           "isoNumeric": 104
         },
         {
@@ -241,8 +235,6 @@ describe('amexio-dropdown', () => {
           "currencyCode": "USD",
           "currencyName": "Dollar",
           "currencySymbol": "$",
-          "capitalLatitude": null,
-          "capitalLongitude": null,
           "isoNumeric": 850
         }]
     }
@@ -267,8 +259,6 @@ describe('amexio-dropdown', () => {
           "currencyCode": "MMK",
           "currencyName": "Kyat",
           "currencySymbol": "K",
-          "capitalLatitude": null,
-          "capitalLongitude": null,
           "isoNumeric": 104
         },
         {
@@ -280,8 +270,6 @@ describe('amexio-dropdown', () => {
           "currencyCode": "USD",
           "currencyName": "Dollar",
           "currencySymbol": "$",
-          "capitalLatitude": null,
-          "capitalLongitude": null,
           "isoNumeric": 850
         }]
     }
