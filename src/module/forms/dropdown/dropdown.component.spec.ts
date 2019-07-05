@@ -313,7 +313,11 @@ describe('amexio-dropdown', () => {
   //   const optionsChecked: any = [];
 
   // })
+  // it('setMultiSelect',()=>{
+  //   this.setMultiSelectData();
+  // })
   it('setMultiSelectData method', () => {
+    comp.setMultiSelectData();
     comp.multiselectValues = [];
     comp.innerValue = ['Apple'];
     comp.filteredOptions = [{ fruitName: "Apple", code: "Apple", checked: false, index: "dropdown_fruitName_1977listitem0" }];
