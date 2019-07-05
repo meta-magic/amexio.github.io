@@ -13,7 +13,7 @@ import { CommonIconComponent } from '../../base/components/common.icon.component
 import { DisplayFieldService } from '../../services/data/display.field.service';
 
 
-describe('amexio-dropdown', () => {
+fdescribe('amexio-dropdown', () => {
   let comp: AmexioDropDownComponent;
   let fixture: ComponentFixture<AmexioDropDownComponent>;
   let data: any;
@@ -348,6 +348,41 @@ describe('amexio-dropdown', () => {
       })
     })
   });
+  it('multiSelection', ()=>{
+    comp.multiselect = true;
+    comp.viewData =[{fruitName: "Apple", code: "Apple", checked: true, index: "dropdown_fruitName_1953listitem0"},
+    {fruitName: "Avacado", code: "Avacado", checked: true, index: "dropdown_fruitName_1953listitem1"},
+    {fruitName: "Banana", code: "Banana", checked: true, index: "dropdown_fruitName_1953listitem2"}]
+    expect(comp.multiselect).toEqual(true)
+    expect(comp.viewData).toBeDefined();
+    let preSelectedMultiValues = '';
+    const optionsChecked: any = [];
+    comp.displayfield ='fruitName'
+    comp.viewData.forEach((row: any) => {
+      expect(row.hasOwnProperty('checked')).toEqual(true);
+        expect(row.checked).toEqual(true) 
+          optionsChecked.push(row[comp.valuefield]);
+          comp.multiselectValues.push(row);
+          preSelectedMultiValues === '' ? preSelectedMultiValues +=
+          displayService.findValue(comp.displayfield, row) : preSelectedMultiValues += ', ' +
+          displayService.findValue(comp.displayfield, row);
+          // expect(row.checked).toEqual(false) 
+          row['checked'] = false;
+    });
+  })
+  it('multiSelection for else', ()=>{
+    comp.multiselect = true;
+    comp.viewData =[{fruitName: "Apple", code: "Apple", index: "dropdown_fruitName_1953listitem0"},
+    {fruitName: "Avacado", code: "Avacado", index: "dropdown_fruitName_1953listitem1"},
+    {fruitName: "Banana", code: "Banana", index: "dropdown_fruitName_1953listitem2"}]
+    expect(comp.multiselect).toEqual(true)
+    expect(comp.viewData).toBeDefined();
+    comp.displayfield ='fruitName'
+    comp.viewData.forEach((row: any) => {
+      expect(row.hasOwnProperty('checked')).toEqual(false);
+          row['checked'] = false;
+    });
+  })
   it('should call get function and return true', () => {
     expect(comp.data).toBe(undefined);
     let item = comp.value;

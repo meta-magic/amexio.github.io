@@ -173,7 +173,6 @@ describe('amexio-checkbox-group', () => {
       // if (this.datareader != null) {
       expect(comp.datareader).not.toBeNull();
       const dr = comp.datareader.split('.');
-      console.log("dr = ",dr)
       for (const ir of dr) {
         responsedata = responsedata[ir];
       };
