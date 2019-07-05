@@ -174,7 +174,7 @@ describe('amexio-dropdown', () => {
   //   comp.sort = 'asc';
   //   // expect(comp.sort).toEqual('');
   //   let setResponseData = comp.sort;
-  //   expect(setResponseData.toLowerCase()).toEqual('asc');  
+  //   expect(setResponseData.toLowerCase()).toEqual(asc);  
   //   comp.sortDataAscending(responsedata.data);
   // })
   it('sortDataAscending', () => {
@@ -246,6 +246,7 @@ describe('amexio-dropdown', () => {
           "isoNumeric": 850
         }]
     }
+    comp.sortDataDescending(data);
     comp.displayfield = 'countryName';
     comp.viewData = data3.data.sort((a: any, b: any) => displayService.findValue(comp.displayfield, a).toLowerCase()
       !== displayService.findValue(comp.displayfield, b).toLowerCase() ?
