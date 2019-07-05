@@ -8,7 +8,7 @@ import { CommonDataService } from '../../services/data/common.data.service';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { Renderer2, Renderer } from '@angular/core';
 import { CommonIconComponent } from './../../base/components/common.icon.component';
-describe('amexio-tree-filter-view', () => {
+fdescribe('amexio-tree-filter-view', () => {
     let comp: AmexioFilterTreeComponent;
     let fixture: ComponentFixture<AmexioFilterTreeComponent>;
 
@@ -213,6 +213,39 @@ describe('amexio-tree-filter-view', () => {
          let responsedata = httpResponse;
              return responsedata;
        });
+
+       it('fliter tree setData() method call', () => {
+        let httpResponse = [
+        
+            {
+              "text": "Home",
+              "icon" : "fa fa-home fa-fw",
+              "mdaIcon" : "home",
+              "link" : "/home/dashboard",
+              "selected":true,
+              "badge": "12"
+            },
+            {
+              "text": "Email",
+              "icon" : "fa fa-envelope fa-fw",
+              "mdaIcon" : "email",
+              "link" : "/home/email",
+              "badge": "21"
+            },
+            {
+              "text": "Profile",
+              "icon" : "fa fa-user fa-fw",
+              "mdaIcon" : "account_box",
+              "link" : "/home/profile",
+              "badge": "32"
+            }];
+           comp.setData(httpResponse);
+           const tdata = comp.getData(httpResponse);
+           expect(tdata).toBeDefined();
+           comp.orgTreeData = JSON.parse(JSON.stringify(tdata));
+           comp.treeData = tdata;
+           comp.mask = false;
+       }); 
 });
 
 
