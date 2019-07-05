@@ -212,8 +212,7 @@ describe('amexio-checkbox-group', () => {
       let reponseData: any;
       comp.httpmethod = "get";
       comp.httpurl = "sample.json"
-      // if (this.httpmethod && this.httpurl) {
-      expect(comp.httpmethod).toBeDefined();
+       expect(comp.httpmethod).toBeDefined();
       expect(comp.httpurl).toBeDefined();
       comp['httpService'].fetchData(comp.httpurl, comp.httpmethod).subscribe((response) => {
         reponseData = response;
