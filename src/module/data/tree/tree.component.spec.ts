@@ -296,6 +296,7 @@ describe('amexio-treeview', () => {
 
         checkD.checked = false;
         comp.emitCheckedData(checkD);
+        checkD.checked = false;
         expect(checkD.checked).toBe(false);
         expect(checkD[0].hasOwnProperty('children')).toEqual(true);
         checkD[0][comp.childarraykey].forEach((option: any) => {
