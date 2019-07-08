@@ -105,6 +105,18 @@ describe('TIMELINE CHART', () => {
     });
     it('drawchart()', () => {
         timelinechartcomp.drawChart();
+        const script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = 'https://www.gstatic.com/charts/loader.js';
+        script.async = false;
+        script.defer = true;
+        script.onload = () => {
+            timelinechartcomp.showChart = true;
+            const newdata = [{ name: 'linechart' }];
+            timelinechartcomp.data = newdata;
+            timelinechartcomp.drawChart();
+            expect(timelinechartcomp.hasLoaded).toBe(false);
+        };
         timelinechartcomp.chartTitleComponent.title = null;
         expect(timelinechartcomp.hasLoaded).toBeUndefined;
         timelinechartcomp.ngOnInit();
@@ -113,8 +125,19 @@ describe('TIMELINE CHART', () => {
 
     it('ngOnInit()', () => {
         timelinechartcomp.ngOnInit();
-        expect(timelinechartcomp.hasLoaded).toBe(false);
-        timelinechartcomp.drawChart();
+        const script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = 'https://www.gstatic.com/charts/loader.js';
+        script.async = false;
+        script.defer = true;
+        script.onload = () => {
+            timelinechartcomp.showChart = true;
+            const newdata = [{ name: 'linechart' }];
+            timelinechartcomp.data = newdata;
+            timelinechartcomp.drawChart();
+            expect(timelinechartcomp.hasLoaded).toBe(false);
+        };
+
     });
 
 
