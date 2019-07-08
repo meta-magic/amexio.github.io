@@ -29,42 +29,42 @@ describe('amexio-floating-panel', () => {
         expect(comp).toBeTruthy();
     }));
 
-    it('ngOnInit method', () => {
-        comp.ngOnInit();
-        comp.absolute = true;
-        expect(comp.absolute).toEqual(true);
-        comp.relative = false;
+    // it('ngOnInit method', () => {
+    //     comp.ngOnInit();
+    //     comp.absolute = true;
+    //     expect(comp.absolute).toEqual(true);
+    //     comp.relative = false;
 
-        comp.ngOnInit();
-        comp.height = '';
+    //     comp.ngOnInit();
+    //     comp.height = '';
        
-        expect(comp.height).toBe('');
-        comp.height = 200;
-        comp.ngOnInit();
-        comp.width = '';
+    //     expect(comp.height).toBe('');
+    //     comp.height = 200;
+    //     comp.ngOnInit();
+    //     comp.width = '';
        
-        expect(comp.width).toBe('');
-        comp.width = 400;
-        comp.ngOnInit();
-        comp.showPanel = true;
+    //     expect(comp.width).toBe('');
+    //     comp.width = 400;
+    //     comp.ngOnInit();
+    //     comp.showPanel = true;
        
-        expect(comp.showPanel).toBe(true);
-        comp.panelStyle();
+    //     expect(comp.showPanel).toBe(true);
+    //     comp.panelStyle();
         
-        comp.draggable = true;
-        comp.arrow = true;
+    //     comp.draggable = true;
+    //     comp.arrow = true;
       
-        expect(comp.draggable).toBe(true);
-        expect(comp.arrow).toBe(true);
-        comp.draggable = false;
+    //     expect(comp.draggable).toBe(true);
+    //     expect(comp.arrow).toBe(true);
+    //     comp.draggable = false;
      
-        comp.draggable = true;
-        comp.relative = true;
-        expect(comp.draggable).toBe(true);
-        expect(comp.relative).toBe(true);
-        comp.style['position'] ='absolute';
+    //     comp.draggable = true;
+    //     comp.relative = true;
+    //     expect(comp.draggable).toBe(true);
+    //     expect(comp.relative).toBe(true);
+    //     comp.style['position'] ='absolute';
        
-    });
+    // });
 
     // it('panel style method ', () => {
     //     comp.style = {};
