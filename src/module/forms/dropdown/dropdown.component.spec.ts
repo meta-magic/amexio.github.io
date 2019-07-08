@@ -13,7 +13,7 @@ import { CommonIconComponent } from '../../base/components/common.icon.component
 import { DisplayFieldService } from '../../services/data/display.field.service';
 
 
-fdescribe('amexio-dropdown', () => {
+describe('amexio-dropdown', () => {
   let comp: AmexioDropDownComponent;
   let fixture: ComponentFixture<AmexioDropDownComponent>;
   let data: any;
@@ -39,7 +39,7 @@ fdescribe('amexio-dropdown', () => {
     it('true is true', () => expect(true).toBe(true));
   });
 
-  it('Tree set data method', () => {
+  it('set data method', () => {
     let value: any;
     (<any>comp)._data = value;
     (<any>comp)['componentLoaded'] = true;
