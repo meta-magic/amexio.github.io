@@ -12,7 +12,7 @@ describe('amexio-button', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
-      declarations: [AmexioButtonComponent, AmexioButtonComponent, CommonIconComponent],
+      declarations: [AmexioButtonComponent, CommonIconComponent],
       providers: [IconLoaderService],
     });
     fixture = TestBed.createComponent(AmexioButtonComponent);

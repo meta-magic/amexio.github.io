@@ -102,6 +102,18 @@ describe('CANDLESTICKWATERFALL CHART', () => {
     }),
         it('drawchart()', () => {
             candlestickwaterchartcomp.drawChart();
+            const script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = 'https://www.gstatic.com/charts/loader.js';
+        script.async = false;
+        script.defer = true;
+        script.onload = () => {
+            candlestickwaterchartcomp.showChart = true;
+            const newdata = [{ name: 'linechart' }];
+            candlestickwaterchartcomp.data = newdata;
+            candlestickwaterchartcomp.drawChart();
+            expect(candlestickwaterchartcomp.hasLoaded).toBe(false);
+        };
             expect(candlestickwaterchartcomp.showChart).toBeUndefined;
             candlestickwaterchartcomp['options'];
 
@@ -146,8 +158,18 @@ describe('CANDLESTICKWATERFALL CHART', () => {
     });
     it('ngOnInit()', () => {
         candlestickwaterchartcomp.ngOnInit();
-        expect(candlestickwaterchartcomp.hasLoaded).toBe(false);
-        candlestickwaterchartcomp.drawChart();
+        const script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = 'https://www.gstatic.com/charts/loader.js';
+        script.async = false;
+        script.defer = true;
+        script.onload = () => {
+            candlestickwaterchartcomp.showChart = true;
+            const newdata = [{ name: 'linechart' }];
+            candlestickwaterchartcomp.data = newdata;
+            candlestickwaterchartcomp.drawChart();
+            expect(candlestickwaterchartcomp.hasLoaded).toBe(false);
+        };
     });
 
     it('get data method', () => {
