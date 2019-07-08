@@ -85,6 +85,19 @@ describe('DONUT CHART', () => {
     });
     it('drawchart()', () => {
         donutchartcomp.drawChart();
+        const script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = 'https://www.gstatic.com/charts/loader.js';
+        script.async = false;
+        script.defer = true;
+        script.onload = () => {
+            donutchartcomp.showChart = true;
+            const newdata = [{ name: 'linechart' }];
+            donutchartcomp.data = newdata;
+            donutchartcomp.drawChart();
+            expect(false).toBe(donutchartcomp.hasLoaded);
+        };
+       
         donutchartcomp.chartTitleComponent.title = null;
         donutchartcomp.chariTitleTextStyle();
         donutchartcomp.chartBackgroundColor();
@@ -120,8 +133,19 @@ describe('DONUT CHART', () => {
     })
     it('ngOnInit()', () => {
         donutchartcomp.ngOnInit();
-        expect(false).toBe(donutchartcomp.hasLoaded);
-        donutchartcomp.drawChart();
+        const script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = 'https://www.gstatic.com/charts/loader.js';
+        script.async = false;
+        script.defer = true;
+        script.onload = () => {
+            donutchartcomp.showChart = true;
+            const newdata = [{ name: 'linechart' }];
+            donutchartcomp.data = newdata;
+            donutchartcomp.drawChart();
+            expect(false).toBe(donutchartcomp.hasLoaded);
+        };
+       
     });
 
     it('get data method', () => {
