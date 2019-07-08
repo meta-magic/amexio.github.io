@@ -195,15 +195,7 @@ describe('amexio-radio-group-component', () => {
        delete comp.listCopy.tabindex;
        delete comp.listCopy.radioId;
        comp.onSelection.emit(comp.listCopy);
-      //  delete row.tabindex;
-      //  comp.isComponentValid.emit(true);
-      //  const obj = {};
-      //  obj['row'] = row;
-      //  obj['event'] = event;
-      //  comp.onSelect.emit(obj);
-      //  row.selected = true;
-      //  expect(r).not.toEqual(row)
-      //  r.selected = false;
+     
         }
     });
     it('check Selected Method', () => {
