@@ -22,16 +22,16 @@ describe('amexio-fieldset', () => {
     });
 
 
-    it('checking ngOnInit method', () => {
+    // it('checking ngOnInit method', () => {
 
-        comp.ngOnInit();
-        comp.collapsible = false;
-        expect(comp.collapsible).toEqual(false);
-        comp.isActive = true;
-        expect(comp.isActive).toEqual(true);
-    });
+    //     comp.ngOnInit();
+    //     comp.collapsible = false;
+    //     expect(comp.collapsible).toEqual(false);
+    //     comp.isActive = true;
+    //     expect(comp.isActive).toEqual(true);
+    // });
 
-    it('checking ngOnInit method', () => {
+    it('onLegendClick', () => {
 
         comp.onLegendClick();
         comp.collapsible = true;
