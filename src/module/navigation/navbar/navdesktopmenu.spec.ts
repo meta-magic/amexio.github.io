@@ -24,7 +24,7 @@ import { DeviceQueryService } from '../../services/device/device.query.service';
 import { AmexioNavDesktopMenuComponent } from '../../navigation/navbar/navdesktopmenu';
 // import { CommonIconComponent} from '../../base/components/common.icon.component';
 // import {  }
-fdescribe('navdesktopmenu', () => {
+describe('navdesktopmenu', () => {
   let comp1: AmexioNavDesktopMenuComponent;
   let fixture1: ComponentFixture<AmexioNavDesktopMenuComponent>;
   beforeEach(() => {
