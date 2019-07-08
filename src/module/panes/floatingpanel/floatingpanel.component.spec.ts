@@ -22,12 +22,12 @@ describe('amexio-floating-panel', () => {
         
 
     });
-    it('should create the app', async(() => {
-        const fixture = TestBed.createComponent(AmexioFloatingPanelComponent);
-        const comp = fixture.debugElement.componentInstance;
-        fixture.detectChanges();
-        expect(comp).toBeTruthy();
-    }));
+    // it('should create the app', async(() => {
+    //     const fixture = TestBed.createComponent(AmexioFloatingPanelComponent);
+    //     const comp = fixture.debugElement.componentInstance;
+    //     fixture.detectChanges();
+    //     expect(comp).toBeTruthy();
+    // }));
 
     // it('ngOnInit method', () => {
     //     comp.ngOnInit();

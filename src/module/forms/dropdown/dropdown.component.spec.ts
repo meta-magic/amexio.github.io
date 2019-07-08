@@ -39,15 +39,15 @@ describe('amexio-dropdown', () => {
     it('true is true', () => expect(true).toBe(true));
   });
 
-  it('set data method', () => {
-    let value: any;
-    (<any>comp)._data = value;
-    (<any>comp)['componentLoaded'] = true;
-    expect((<any>comp)).toBeDefined;
-    (<any>comp).setData((<any>comp)._data);
-    expect((<any>comp)['componentLoaded']).toEqual(true);
-    expect((<any>comp).setData()).toHaveBeenCalled;
-});
+//   it('set data method', () => {
+//     let value: any;
+//     (<any>comp)._data = value;
+//     (<any>comp)['componentLoaded'] = true;
+//     expect((<any>comp)).toBeDefined;
+//     (<any>comp).setData((<any>comp)._data);
+//     expect((<any>comp)['componentLoaded']).toEqual(true);
+//     expect((<any>comp).setData()).toHaveBeenCalled;
+// });
   //check variables 
   it('check variables in dropdown component ', () => {
     expect(comp.selectedindex).toEqual(-1);
