@@ -24,13 +24,13 @@ import { DeviceQueryService } from '../../services/device/device.query.service';
 import { AmexioNavDesktopMenuComponent } from '../../navigation/navbar/navdesktopmenu';
 // import { CommonIconComponent} from '../../base/components/common.icon.component';
 // import {  }
-describe('navdesktopmenu', () => {
+fdescribe('navdesktopmenu', () => {
   let comp1: AmexioNavDesktopMenuComponent;
   let fixture1: ComponentFixture<AmexioNavDesktopMenuComponent>;
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
-      declarations: [AmexioNavDesktopMenuComponent, 
+      declarations: [AmexioNavDesktopMenuComponent,
         // AmexioFormActionCEComponent, 
         // SpeechBubbleComponent,
         // AmexioButtonComponent, AmexioFooterComponent, AmexioHeaderComponent,
@@ -41,29 +41,29 @@ describe('navdesktopmenu', () => {
         // AmexioFormCEComponent,
         //  AmexioCardCEBodyComponent,
         // AmexioCardCEActionComponent,
-         AmexioImageComponent,
+        AmexioImageComponent,
         //  AmexioCardCEComponent,
         // AmexioCardCEHeaderComponent,
-         CommonIconComponent],
+        CommonIconComponent],
       providers: [IconLoaderService, DeviceQueryService],
     });
     fixture1 = TestBed.createComponent(AmexioNavDesktopMenuComponent);
     comp1 = fixture1.componentInstance;
     event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
 
-  comp1.nodes = [{
-    subInnerMenus: false
-  }]
+    comp1.nodes = [{
+      subInnerMenus: false
+    }]
   });
 
   it('ngAfterViewInit()', () => {
     setTimeout(() => {
       comp1.ngAfterViewInit();
       const fixture = TestBed.createComponent(AmexioNavDesktopMenuComponent);
-   fixture.detectChanges();
-   const compiled = fixture.debugElement.nativeElement;
-  //  if ((window.innerWidth - this.menus.nativeElement.getBoundingClientRect().right) < 300) {
-   expect(window.innerWidth- fixture.debugElement.nativeElement.getBoundingClientRect().right).toBeLessThan(300);
+      fixture.detectChanges();
+      const compiled = fixture.debugElement.nativeElement;
+      //  if ((window.innerWidth - this.menus.nativeElement.getBoundingClientRect().right) < 300) {
+      expect(window.innerWidth - fixture.debugElement.nativeElement.getBoundingClientRect().right).toBeLessThan(300);
       // if ((window.innerWidth - this.menus.nativeElement.getBoundingClientRect().right) < 300) {
       // let a =  comp1.menus.nativeElement.getBoundingClientRect().right = 78;
       let a = 8;
@@ -81,49 +81,55 @@ describe('navdesktopmenu', () => {
 
   it('onMouseOver()', () => {
     let event;
-
     let node = { submenus: 'as' }
     comp1.onMouseOver(event, node);
-    // debounceTime(200);
     expect(node.submenus).toBeDefined();
     expect(node.submenus.length).toBeGreaterThan(0);
     // if (node.submenus && node.submenus.length > 0) {
     node['showInnerMenus'] = true;
     // }
   });
-
+  it('onMouseOver() for else block', () => {
+    let event;
+    let node = { submenus: '' };
+    let nodes = [{}];
+    comp1.onMouseOver(event, node);
+    nodes.forEach((innernode: any) => {
+      innernode['showInnerMenus'] = false;
+    })
+  });
   it('onMouseLeave Method', () => {
     // let event;
-    let node ={
-      submenus:[{submenu: 's'}, {submenu: 'u'}]
+    let node = {
+      submenus: [{ submenu: 's' }, { submenu: 'u' }]
     }
     comp1.onMouseLeave(event, node);
     expect(node.submenus).toBeDefined();
     expect(node.submenus.length).toBeGreaterThan(0);
     node['showInnerMenus'] = false;
 
-  comp1.nodes = [{
-    subInnerMenus: false
-  }]
+    comp1.nodes = [{
+      subInnerMenus: false
+    }]
 
     comp1.nodes.forEach((innernode: any) => {
       innernode['showInnerMenus'] = false;
-  });
+    });
 
     // node['showInnerMenus'] = false;
   });
- 
+
   it('onClick()', () => {
-    let node ={
-      submenus:[{submenu: 's'}, {submenu: 'u'}]
+    let node = {
+      submenus: [{ submenu: 's' }, { submenu: 'u' }]
     };
     comp1.onClick(event, node);
     comp1.onNavItemClick.emit({ data: node, event: event });
   });
 
   it('onInnerClick()', () => {
-    let node ={
-      submenus:[{submenu: 's'}, {submenu: 'u'}]
+    let node = {
+      submenus: [{ submenu: 's' }, { submenu: 'u' }]
     };
     comp1.onInnerClick(event);
     comp1.onNavItemClick.emit(event);
