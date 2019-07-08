@@ -85,7 +85,7 @@ describe('navdesktopmenu', () => {
     let node = { submenus: 'as' }
     comp1.onMouseOver(event, node);
     // debounceTime(200);
-    expect(node.submenus).toEqual(node.submenus);
+    expect(node.submenus).toBeDefined();
     expect(node.submenus.length).toBeGreaterThan(0);
     // if (node.submenus && node.submenus.length > 0) {
     node['showInnerMenus'] = true;
@@ -98,6 +98,7 @@ describe('navdesktopmenu', () => {
       submenus:[{submenu: 's'}, {submenu: 'u'}]
     }
     comp1.onMouseLeave(event, node);
+    expect(node.submenus).toBeDefined();
     expect(node.submenus.length).toBeGreaterThan(0);
     node['showInnerMenus'] = false;
 
