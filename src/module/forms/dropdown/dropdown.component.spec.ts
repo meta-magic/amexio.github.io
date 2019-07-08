@@ -13,7 +13,7 @@ import { CommonIconComponent } from '../../base/components/common.icon.component
 import { DisplayFieldService } from '../../services/data/display.field.service';
 
 
-fdescribe('amexio-dropdown', () => {
+describe('amexio-dropdown', () => {
   let comp: AmexioDropDownComponent;
   let fixture: ComponentFixture<AmexioDropDownComponent>;
   let data: any;
