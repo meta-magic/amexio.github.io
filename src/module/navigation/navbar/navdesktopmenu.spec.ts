@@ -99,7 +99,6 @@ describe('navdesktopmenu', () => {
     })
   });
   it('onMouseLeave Method', () => {
-    // let event;
     let node = {
       submenus: [{ submenu: 's' }, { submenu: 'u' }]
     }
@@ -115,8 +114,17 @@ describe('navdesktopmenu', () => {
     comp1.nodes.forEach((innernode: any) => {
       innernode['showInnerMenus'] = false;
     });
-
     // node['showInnerMenus'] = false;
+  });
+  it('onMouseLeave Method else block', () => {
+    let node = {
+      submenus: [{ submenu: 's' }, { submenu: 'u' }]
+    }
+    comp1.onMouseLeave(event, node);
+    let nodes = [{}];
+    nodes.forEach((innernode: any) => {
+      innernode['showInnerMenus'] = false;
+    });
   });
 
   it('onClick()', () => {
