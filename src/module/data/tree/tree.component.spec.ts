@@ -26,7 +26,7 @@ describe('amexio-treeview', () => {
         const compiled = fixture.debugElement.nativeElement;
         event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
         let renderer = Renderer2;
-         DataJson =[ {            
+        DataJson = [{
             "text": "Web App",
             "expand": true,
             "children": [
@@ -42,7 +42,7 @@ describe('amexio-treeview', () => {
                 }
             ]
         }
-    ];
+        ];
 
         node = [{
             "text": "Web App",
@@ -58,7 +58,8 @@ describe('amexio-treeview', () => {
                         }
                     ]
                 }
-            ]}
+            ]
+        }
         ];
         comp.displaykey = 'text';
         comp.childarraykey = 'children';
@@ -148,7 +149,7 @@ describe('amexio-treeview', () => {
     });
 
     // it('Tree collapseAll() on method call', () => {
-      
+
     //     comp.collapseAll(comp.parentRef);
     //       comp.collapseAll(node);
     // });
@@ -160,33 +161,33 @@ describe('amexio-treeview', () => {
         expect(node.expand).toBe(false);
     });
 
-    // it('Tree collapseAllCall() on method call', () => {
-    //     comp.collapseAllCall(node);
-    //     node =[{
-    //         "text": "Web App",
-    //         "expand": true,
-    //         "children": [
-    //             {
-    //                 "text": "app",
-    //                 "expand": true,
-    //                 "children": [
-    //                     {
-    //                         "leaf": true,
-    //                         "text": "Application.js"
-    //                     }
-    //                 ]
-    //             }
-    //         ]
-    //     }
-    //     ];
-    //     comp.collapseAllCall(node);
-    //     node.forEach((childCheck: any) => {
-    //         expect(childCheck.hasOwnProperty('expand')).toEqual(true);
-    //         childCheck.expand = false;
-    //         expect(childCheck.hasOwnProperty(comp.childarraykey)).toEqual(true);
-    //         comp.collapseAllCall(childCheck[comp.childarraykey]);
-    //     });
-    // });
+    it('Tree collapseAllCall() on method call', () => {
+        comp.collapseAllCall(node);
+        node = [{
+            "text": "Web App",
+            "expand": true,
+            "children": [
+                {
+                    "text": "app",
+                    "expand": true,
+                    "children": [
+                        {
+                            "leaf": true,
+                            "text": "Application.js"
+                        }
+                    ]
+                }
+            ]
+        }
+        ];
+        comp.collapseAllCall(node);
+        node.forEach((childCheck: any) => {
+            expect(childCheck.hasOwnProperty('expand')).toEqual(true);
+            childCheck.expand = false;
+            expect(childCheck.hasOwnProperty(comp.childarraykey)).toEqual(true);
+            comp.collapseAllCall(childCheck[comp.childarraykey]);
+        });
+    });
 
     it(' Tree call expandAllCall() on method call', () => {
         let node1 = [{
@@ -308,26 +309,26 @@ describe('amexio-treeview', () => {
     it('Tree emitCheckedData() on method call', () => {
         checkD = [
             {
-              "text": "Web App",
-              "expand": true,
-              "checked": false,
-              "children": [
-                {
-                  "text": "app",
-                  "expand": true,
-                  "checked": false,
-                  "children": [
+                "text": "Web App",
+                "expand": true,
+                "checked": false,
+                "children": [
                     {
-                      "leaf": true,
-                      "checked": false,
-                      "text": "Application.js"
+                        "text": "app",
+                        "expand": true,
+                        "checked": false,
+                        "children": [
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "text": "Application.js"
+                            }
+                        ]
                     }
-                  ]
-                }
-              ]
+                ]
             }
-          ];
-        
+        ];
+
 
 
         checkD.checked = false;
@@ -425,13 +426,14 @@ describe('amexio-treeview', () => {
     //     expect(rightClickData['data']['isSelected']).toEqual(true);
     // });
 
-    //    it('Tree set data method',() => {
-    //     (<any>comp)['componentLoaded'] = true;  
-    //     (<any>comp).data();
-
-    //       expect((<any>comp)['componentLoaded'] ).toEqual(true);
-    //         expect((<any>comp).updateComponent()).toHaveBeenCalled;
-    //       });
+    it('Tree set data method', () => {
+        (<any>comp)._data = checkD;
+        (<any>comp)['componentLoaded'] = true;
+        expect((<any>comp)).toBeDefined;
+        (<any>comp).data((<any>comp)._data);
+        expect((<any>comp)['componentLoaded']).toEqual(true);
+        expect((<any>comp).updateComponent()).toHaveBeenCalled;
+    });
 
 
 
