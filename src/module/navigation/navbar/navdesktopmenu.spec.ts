@@ -76,20 +76,24 @@ describe('navdesktopmenu', () => {
     expect(node.submenus).not.toBe(null);
     expect(node.submenus.length).toBeGreaterThan(0);
     node['showInnerMenus'] = false;
-    // comp1.nodes = [{
-    //   subInnerMenus: false
-    // }]
-
-    // comp1.nodes.forEach((innernode: any) => {
-    //   innernode['showInnerMenus'] = false;
-    // });
-    // node['showInnerMenus'] = false;
   });
   it('onMouseLeave Method else block', () => {
     let node = {
-      submenus: [{ submenu: '' }]
+      submenus: ''
     }
     comp1.onMouseLeave(event, node);
+    expect(node.submenus).toBe('');
+    let nodes = [{}];
+    nodes.forEach((innernode: any) => {
+      innernode['showInnerMenus'] = false;
+    });
+  });
+  it('onMouseLeave Method else block2', () => {
+    let node = {
+      submenus: 'aaa'
+    }
+    comp1.onMouseLeave(event, node);
+    expect(node.submenus.length).toBeGreaterThan(0);
     let nodes = [{}];
     nodes.forEach((innernode: any) => {
       innernode['showInnerMenus'] = false;
