@@ -27,37 +27,4 @@ describe('amexio-notification', () => {
         comp['notificationHorizontalCss'] = ' notification-horizontal-';
         expect(comp['notificationHorizontalCss']).toBe(' notification-horizontal-');
     });
-
-    // check ngOnInit method
-    it('check ngOnInit method notification', () => {
-        comp.componentID = Math.floor(Math.random() * 1000 + 999);
-        comp.autodismissmsg = true;
-        comp.autodismissmsginterval = 100;
-        comp.messageData.push('There are unsaved changes');
-        comp.ngOnInit();
-        expect(comp.autodismissmsg).toEqual(true);
-        expect(comp.autodismissmsginterval).toEqual(100);
-        comp.autodismissmsginterval = 1500;
-        expect(comp.messageData).not.toBe(null);
-        setInterval(() => {
-            comp.messageData.push('There are unsaved changes');
-            expect(comp.messageData.length).toBeGreaterThan(0);
-            comp.messageData.shift();
-            ref.markForCheck();
-
-        }, comp.autodismissmsginterval);
-
-        
-        comp.ngOnInit();
-        comp.verticalposition = null;
-        comp.horizontalposition = null;
-        expect(comp.verticalposition).toBe(null);
-        comp.verticalposition = 'top';
-        expect(comp.horizontalposition).toBe(null);
-        comp.horizontalposition = 'right';
-        comp.positionclass = comp['notificationVertialCss'] + comp.verticalposition + comp['notificationHorizontalCss'] + comp.horizontalposition;
-
-
-    });
-
 });

@@ -160,7 +160,7 @@ describe('navmenu', () => {
   // let directionflag: string;
   //    });
 
-  it('onIconClick() method check', () => {
+  it('onIconClick() method if condition check', () => {
     let node = {
       submenus: [{ submenu: 's' }, { submenu: 'u' }],
       isExpanded: false
@@ -170,6 +170,19 @@ describe('navmenu', () => {
     // if (node.hasOwnProperty('isExpanded')) {
     expect(node.hasOwnProperty('isExpanded')).toEqual(true);
     node.isExpanded = !node.isExpanded;
+    node['isExpanded'] = true;
+  });
+
+
+
+  it('onIconClick() method else condition check', () => {
+    let node = {
+      submenus: [{ submenu: 's' }, { submenu: 'u' }],
+    }
+    comp.onIconClick(event, node);
+    event.stopPropagation();
+    // if (node.hasOwnProperty('isExpanded')) {
+    expect(node.hasOwnProperty('isExpanded')).toEqual(false);
     node['isExpanded'] = true;
   });
 });
