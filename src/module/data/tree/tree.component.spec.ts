@@ -153,12 +153,12 @@ describe('amexio-treeview', () => {
     //       comp.collapseAll(node);
     // });
 
-    // it('Tree onClick() on method call', () => {
-    //     node.expand = true;
-    //     comp.onClick(node);
-    //     node.expand = false;
-    //     expect(node.expand).toBe(false);
-    // });
+    it('Tree onClick() on method call', () => {
+        node.expand = true;
+        comp.onClick(node);
+        node.expand = false;
+        expect(node.expand).toBe(false);
+    });
 
     // it('Tree collapseAllCall() on method call', () => {
     //     comp.collapseAllCall(node);
