@@ -22,12 +22,20 @@ describe('navmenu', () => {
 
   });
 
-  it('ngAfterViewInit', () => {
+  it('ngAfterViewInit if condition', () => {
     comp.ngAfterViewInit();
     setTimeout(() => {
       expect(timerCallback).toHaveBeenCalled();
       expect((window.innerWidth - el.nativeElement.getBoundingClientRect().right)).not.toBeGreaterThan(150);
       comp.position = 'right';
+      fixture.detectChanges();
+    }, 100);
+
+  });
+  it('ngAfterViewInit else condition', () => {
+    comp.ngAfterViewInit();
+    setTimeout(() => {
+      expect(timerCallback).toHaveBeenCalled();
       expect((window.innerWidth - el.nativeElement.getBoundingClientRect().right)).toBeGreaterThan(150);
       comp.position = 'left';
       fixture.detectChanges();
@@ -84,7 +92,7 @@ describe('navmenu', () => {
     comp.onClick(node, event);
   });
 
-  
+
   it('onMouseOver() method if check', () => {
     comp.mobilemode = true;
     comp.showMenus = true;
