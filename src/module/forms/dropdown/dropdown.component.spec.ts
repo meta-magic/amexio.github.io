@@ -7,27 +7,30 @@ import { FormsModule } from '@angular/forms';
 import { IconLoaderService } from '../../../index';
 import { AmexioDropDownComponent } from './dropdown.component';
 import { CommonDataService } from '../../services/data/common.data.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule,HttpClient } from '@angular/common/http';
 import { DisplayFieldComponent } from '../../base/display-field/display-field.component';
 import { CommonIconComponent } from '../../base/components/common.icon.component';
 import { DisplayFieldService } from '../../services/data/display.field.service';
 
 
-describe('amexio-dropdown', () => {
+fdescribe('amexio-dropdown', () => {
   let comp: AmexioDropDownComponent;
   let fixture: ComponentFixture<AmexioDropDownComponent>;
   let data: any;
   let responsedata: true;
   let displayService: DisplayFieldService;
+  let dataService :CommonDataService;
+  let _http: HttpClient
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule, HttpClientModule],
       declarations: [AmexioDropDownComponent, DisplayFieldComponent, CommonIconComponent],
-      providers: [IconLoaderService, CommonDataService, DisplayFieldService],
+      providers: [IconLoaderService, CommonDataService, DisplayFieldService,HttpClient],
     });
     fixture = TestBed.createComponent(AmexioDropDownComponent);
     comp = fixture.componentInstance;
     displayService = new DisplayFieldService();
+    dataService = new CommonDataService(_http)
     event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
     data = [{
       index: '12345'
@@ -53,8 +56,56 @@ describe('amexio-dropdown', () => {
     expect(comp.componentLoaded).toEqual(true);
     comp.setData(comp._data);
   });
+
+  // it('setData method for datareader not equal to null', () => {
+  //   let responsedata: any;
+  //   let httpResponse: any;
+  //   httpResponse = {
+  //     "data": [
+  //       {
+  //         "countryName": "Myanmar",
+  //         "countryCode1": "MM",
+  //         "countryCode2": "MMR",
+  //         "countryFlag": "MM.png",
+  //         "capital": "",
+  //         "currencyCode": "MMK",
+  //         "currencyName": "Kyat",
+  //         "currencySymbol": "K",
+  //         "capitalLatitude": null,
+  //         "capitalLongitude": null,
+  //         "isoNumeric": 104
+  //       },
+  //       {
+  //         "countryName": "U.S. Virgin Island",
+  //         "countryCode1": "VI",
+  //         "countryCode2": "VIR",
+  //         "countryFlag": "VI.png",
+  //         "capital": "",
+  //         "currencyCode": "USD",
+  //         "currencyName": "Dollar",
+  //         "currencySymbol": "$",
+  //         "capitalLatitude": null,
+  //         "capitalLongitude": null,
+  //         "isoNumeric": 850
+  //       }]
+  //   }
+  //   comp.setData(httpResponse);
+  //   responsedata = httpResponse;
+  //   comp.datareader = 'data.qwert';
+  //   expect(comp.datareader).not.toEqual(null);
+  //   comp.multiselectValues = [];
+  //   let dr = comp.datareader.split('.');
+  //   expect(dr).toBeDefined();
+  //   for (const ir of dr) {
+  //     responsedata = responsedata[ir];
+  //   }
+  //   comp.setResponseData(responsedata);
+  //   comp.multiSelection();
+  //   comp.setUserSelection();
+  //   comp.maskloader = false;
+  // });
+
   it('setData method for datareader equal to null', () => {
-    let responsedata: any;
     let httpResponse: any;
     httpResponse = {
       "data": [
@@ -90,53 +141,6 @@ describe('amexio-dropdown', () => {
     responsedata = httpResponse;
     comp.maskloader = false;
   });
-  // it('setData method for datareader not equal to null', () => {
-  //   let responsedata: any;
-  //   let httpResponse: any;
-  //   httpResponse = {
-  //     "data": [
-  //       {
-  //         "countryName": "Myanmar",
-  //         "countryCode1": "MM",
-  //         "countryCode2": "MMR",
-  //         "countryFlag": "MM.png",
-  //         "capital": "",
-  //         "currencyCode": "MMK",
-  //         "currencyName": "Kyat",
-  //         "currencySymbol": "K",
-  //         "capitalLatitude": null,
-  //         "capitalLongitude": null,
-  //         "isoNumeric": 104
-  //       },
-  //       {
-  //         "countryName": "U.S. Virgin Island",
-  //         "countryCode1": "VI",
-  //         "countryCode2": "VIR",
-  //         "countryFlag": "VI.png",
-  //         "capital": "",
-  //         "currencyCode": "USD",
-  //         "currencyName": "Dollar",
-  //         "currencySymbol": "$",
-  //         "capitalLatitude": null,
-  //         "capitalLongitude": null,
-  //         "isoNumeric": 850
-  //       }]
-  //   }
-  //   comp.setData(httpResponse);
-  //   responsedata = httpResponse;
-  //   comp.datareader = 'data';
-  //   expect(comp.datareader).not.toEqual(null);
-  //   comp.multiselectValues = [];
-  //   let dr = comp.datareader.split('.');
-  //   expect(dr).toBeDefined();
-  //   for (const ir of dr) {
-  //     responsedata = responsedata[ir];
-  //   }
-  //   comp.setResponseData(responsedata);
-  //   // comp.multiSelection();
-  //   // comp.setUserSelection();
-  //   // comp.maskloader = false;
-  // });
   // it('setResponseData method', () => {
   //   let responsedata = {
   //     "data": [
@@ -149,8 +153,6 @@ describe('amexio-dropdown', () => {
   //         "currencyCode": "MMK",
   //         "currencyName": "Kyat",
   //         "currencySymbol": "K",
-  //         "capitalLatitude": null,
-  //         "capitalLongitude": null,
   //         "isoNumeric": 104
   //       },
   //       {
@@ -162,21 +164,97 @@ describe('amexio-dropdown', () => {
   //         "currencyCode": "USD",
   //         "currencyName": "Dollar",
   //         "currencySymbol": "$",
-  //         "capitalLatitude": null,
-  //         "capitalLongitude": null,
   //         "isoNumeric": 850
   //       }]
   //   }
-  //   comp.setResponseData(responsedata.data);
-  //   expect(responsedata.data).toBeDefined();
+
+  //   comp.setResponseData(responsedata);
+  //   expect(responsedata).toBeDefined();
+
   //   comp.enablesort = true;
-  //   expect(comp.enablesort).toEqual(true) 
+  //   expect(comp.enablesort).toEqual(true);
+
   //   comp.sort = 'asc';
-  //   // expect(comp.sort).toEqual('');
-  //   let setResponseData = comp.sort;
-  //   expect(setResponseData.toLowerCase()).toEqual(asc);  
-  //   comp.sortDataAscending(responsedata.data);
+  //   expect(comp.sort.toLowerCase()).toEqual('asc');
+  //   comp.sortDataAscending(responsedata);
+  // });
+  // it('setResponseData else block',()=>{
+  //   let responsedata = {
+  //     "data": [
+  //       {
+  //         "countryName": "Myanmar",
+  //         "countryCode1": "MM",
+  //         "countryCode2": "MMR",
+  //         "countryFlag": "MM.png",
+  //         "capital": "",
+  //         "currencyCode": "MMK",
+  //         "currencyName": "Kyat",
+  //         "currencySymbol": "K",
+  //         "isoNumeric": 104
+  //       },
+  //       {
+  //         "countryName": "U.S. Virgin Island",
+  //         "countryCode1": "VI",
+  //         "countryCode2": "VIR",
+  //         "countryFlag": "VI.png",
+  //         "capital": "",
+  //         "currencyCode": "USD",
+  //         "currencyName": "Dollar",
+  //         "currencySymbol": "$",
+  //         "isoNumeric": 850
+  //       }]
+  //   }
+  //   comp.setResponseData(responsedata);
+  //   expect(responsedata).toBeDefined();
+  //   comp.enablesort = true;
+  //   expect(comp.enablesort).toEqual(true);
+
+
+  //   comp.sort = 'dsc';
+  //   let sort1 = comp.sort;
+  //   expect(sort1.toLowerCase()).toEqual('dsc');
+  //   comp.sortDataDescending(responsedata);
+
+  // });
+  // it('setResponseData else block2',()=>{
+  //   let responsedata = {
+  //     "data": [
+  //       {
+  //         "countryName": "Myanmar",
+  //         "countryCode1": "MM",
+  //         "countryCode2": "MMR",
+  //         "countryFlag": "MM.png",
+  //         "capital": "",
+  //         "currencyCode": "MMK",
+  //         "currencyName": "Kyat",
+  //         "currencySymbol": "K",
+  //         "isoNumeric": 104
+  //       },
+  //       {
+  //         "countryName": "U.S. Virgin Island",
+  //         "countryCode1": "VI",
+  //         "countryCode2": "VIR",
+  //         "countryFlag": "VI.png",
+  //         "capital": "",
+  //         "currencyCode": "USD",
+  //         "currencyName": "Dollar",
+  //         "currencySymbol": "$",
+  //         "isoNumeric": 850
+  //       }]
+  //   }
+  //   comp.setResponseData(responsedata);
+  //   expect(responsedata).toBeDefined();
+  //   comp.enablesort = false;
+  //   expect(comp.enablesort).toEqual(false);
+
+  //   comp.viewData = responsedata;
+  //   comp.filteredOptions = comp.viewData;
+  //   comp.generateIndex(responsedata.data);
+
   // })
+
+
+
   it('sortDataAscending', () => {
     let data2 = {
       "data": [
@@ -213,8 +291,7 @@ describe('amexio-dropdown', () => {
     comp.generateIndex(comp.filteredOptions);
   });
   it('sortDataDescending', () => {
-    let data3 = {
-      "data": [
+    let data3 =  [
         {
           "countryName": "Myanmar",
           "countryCode1": "MM",
@@ -237,10 +314,9 @@ describe('amexio-dropdown', () => {
           "currencySymbol": "$",
           "isoNumeric": 850
         }]
-    }
     comp.sortDataDescending(data);
     comp.displayfield = 'countryName';
-    comp.viewData = data3.data.sort((a: any, b: any) => displayService.findValue(comp.displayfield, a).toLowerCase()
+    comp.viewData = data.sort((a: any, b: any) => displayService.findValue(comp.displayfield, a).toLowerCase()
       !== displayService.findValue(comp.displayfield, b).toLowerCase() ?
       displayService.findValue(comp.displayfield, a).toLowerCase() >
         displayService.findValue(comp.displayfield, b).toLowerCase() ? -1 : 1 : 0);
@@ -248,8 +324,7 @@ describe('amexio-dropdown', () => {
     comp.generateIndex(comp.filteredOptions);
   })
   it('generateIndex Method ', () => {
-    let data1 = {
-      "data": [
+    let data = [
         {
           "countryName": "Myanmar",
           "countryCode1": "MM",
@@ -272,14 +347,14 @@ describe('amexio-dropdown', () => {
           "currencySymbol": "$",
           "isoNumeric": 850
         }]
-    }
     comp.generateIndex(data);
     comp.componentId = "dropdown_countryName_1448";
-    data1.data.forEach((element: any, index: number) => {
+    data.forEach((element: any, index: number) => {
       element['index'] = comp.componentId + 'listitem' + index;
     });
   });
   it('setMultiSelect', () => {
+    comp.setMultiSelect();
     comp.multiselectValues = [{
       fruitName: "Apple", code: "Apple", checked: true, index: "dropdown_fruitName_1912listitem0"
     }, {
@@ -315,6 +390,7 @@ describe('amexio-dropdown', () => {
     })
   });
   it('multiSelection', () => {
+    comp.multiSelection();
     comp.multiselect = true;
     comp.viewData = [{ fruitName: "Apple", code: "Apple", checked: true, index: "dropdown_fruitName_1953listitem0" },
     { fruitName: "Avacado", code: "Avacado", checked: true, index: "dropdown_fruitName_1953listitem1" },
@@ -391,6 +467,16 @@ describe('amexio-dropdown', () => {
   // ngOnInit mehtod
   it('ngOnInit() method check', () => {
     comp.name = comp.generateName(comp.name, comp.fieldlabel, 'dropdowninput');
+    comp.componentId = comp.createCompId('dropdown', comp.displayfield);
+    comp.isValid = comp.allowblank;
+    comp.isComponentValid.emit(comp.allowblank);
+    // comp.httpmethod = 'get';
+    // comp.httpurl = 'https/rgh'
+    // expect(comp.httpmethod).toBeDefined();
+    // expect(comp.httpurl).toBeDefined();
+    // dataService.fetchData(comp.httpurl, comp.httpmethod).subscribe((response) => {
+    //   comp.responseData = response;
+    // });
     let value = comp.name;
     comp.ngOnInit();
     expect(comp.name).toEqual(value);
@@ -405,10 +491,10 @@ describe('amexio-dropdown', () => {
   it('check setUserSelection method', () => {
     comp.setUserSelection();
     comp.innerValue = 'AF';
-    comp.viewData = [{countryName: "Afghanistan", countryCode1: "AF", countryCode2: "AFG", countryFlag: "AF.png"}]
+    comp.viewData = [{ countryName: "Afghanistan", countryCode1: "AF", countryCode2: "AFG", countryFlag: "AF.png" }]
     expect(comp.innerValue).not.toBe(null);
-    comp.valuefield='countryCode1';
-    comp.displayfield ='countryName';
+    comp.valuefield = 'countryCode1';
+    comp.displayfield = 'countryName';
     const valueKey = comp.valuefield;
     const displayKey = comp.displayfield;
     const val = comp.innerValue;
@@ -420,8 +506,8 @@ describe('amexio-dropdown', () => {
       comp.displayValue = item[displayKey];
       delete item[comp.key];
       comp.onSingleSelect.emit(item);
+    })
   })
-})
   //on onBlur()
   it('on onBlur()', () => {
     let fn = event;
