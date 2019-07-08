@@ -106,19 +106,18 @@ describe('navdesktopmenu', () => {
     expect(node.submenus).toBeDefined();
     expect(node.submenus.length).toBeGreaterThan(0);
     node['showInnerMenus'] = false;
+    // comp1.nodes = [{
+    //   subInnerMenus: false
+    // }]
 
-    comp1.nodes = [{
-      subInnerMenus: false
-    }]
-
-    comp1.nodes.forEach((innernode: any) => {
-      innernode['showInnerMenus'] = false;
-    });
+    // comp1.nodes.forEach((innernode: any) => {
+    //   innernode['showInnerMenus'] = false;
+    // });
     // node['showInnerMenus'] = false;
   });
   it('onMouseLeave Method else block', () => {
     let node = {
-      submenus: [{ submenu: 's' }, { submenu: 'u' }]
+      submenus: [{ submenu: '' }]
     }
     comp1.onMouseLeave(event, node);
     let nodes = [{}];
