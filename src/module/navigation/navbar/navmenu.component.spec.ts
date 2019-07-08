@@ -167,22 +167,8 @@ describe('navmenu', () => {
     }
     comp.onIconClick(event, node);
     event.stopPropagation();
-    // if (node.hasOwnProperty('isExpanded')) {
     expect(node.hasOwnProperty('isExpanded')).toEqual(true);
     node.isExpanded = !node.isExpanded;
-    node['isExpanded'] = true;
-  });
-
-
-
-  it('onIconClick() method else condition check', () => {
-    let node = {
-      submenus: [{ submenu: 's' }, { submenu: 'u' }],
-    }
-    comp.onIconClick(event, node);
-    event.stopPropagation();
-    // if (node.hasOwnProperty('isExpanded')) {
-    expect(node.hasOwnProperty('isExpanded')).toEqual(false);
     node['isExpanded'] = true;
   });
 });
