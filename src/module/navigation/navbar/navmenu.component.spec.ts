@@ -136,6 +136,14 @@ describe('navmenu', () => {
     comp.showMenus = true;
   });
 
+  it('toggleMenu() method else check', () => {
+    comp.mobilemode = false;
+    comp.toggleMenu(event);
+    expect(comp.mobilemode).toEqual(false);
+  });
+
+
+
   it('navItem click method', () => {
     const event1 = {
       event,
@@ -167,8 +175,22 @@ describe('navmenu', () => {
     }
     comp.onIconClick(event, node);
     event.stopPropagation();
+    // if (node.hasOwnProperty('isExpanded')) {
     expect(node.hasOwnProperty('isExpanded')).toEqual(true);
     node.isExpanded = !node.isExpanded;
+    node['isExpanded'] = true;
+  });
+
+
+
+  it('onIconClick() method else condition check', () => {
+    let node = {
+      submenus: [{ submenu: 's' }, { submenu: 'u' }],
+        isExpanded: false
+    }
+    comp.onIconClick(event, node);
+    event.stopPropagation();
+    expect(node.hasOwnProperty('isExpanded')).not.toEqual(true);
     node['isExpanded'] = true;
   });
 });
