@@ -6,7 +6,7 @@ import { AmexioTreeViewComponent } from './tree.component';
 import { AmexioContextMenuComponent } from '../../base/base.contextmenu.component';
 import { CommonDataService } from '../../services/data/common.data.service';
 import { HttpClient, HttpHandler } from '@angular/common/http';
-import { Renderer2, Renderer } from '@angular/core';
+import { Renderer2, Renderer, TemplateRef } from '@angular/core';
 import { CommonIconComponent } from './../../base/components/common.icon.component';
 describe('amexio-tree-filter-view', () => {
   let comp: AmexioFilterTreeComponent;
@@ -16,6 +16,7 @@ describe('amexio-tree-filter-view', () => {
   let fixture1: ComponentFixture<AmexioTreeViewComponent>;
   let checkD: any;
   let data: any;
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
@@ -34,10 +35,13 @@ describe('amexio-tree-filter-view', () => {
     event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
     let renderer = Renderer2;
 
+    // let fixture1 = TestBed.createComponent(WrapperComponent);
+    // let wrapperComponent = fixture.componentInstance;
+    // let component = fixture1.componentInstance.myCustomComponent;
 
 
-    comp.httpurl = "sample.json";
-    comp.httpmethod = "get";
+    // comp.httpurl = "sample.json";
+    // comp.httpmethod = "get";
 
     checkD = [{
       "text": "Web App",
@@ -71,6 +75,145 @@ describe('amexio-tree-filter-view', () => {
     comp.isexpandAll = false;
     expect(comp.isexpandAll).toEqual(false);
   });
+
+
+  it('ngoninit() first else', () => {
+    comp.parentTmp = null;
+    comp.ngOnInit();
+    expect(comp.parentTmp).toBeNull();
+    comp.ngAfterViewInit()
+    expect(comp.parentTmp).toBeNull();
+
+  });
+
+  // it('ngAfterViewInit() first else', () => {
+
+  //   // comp.parentRef = null;
+  //   comp.ngAfterViewInit()
+  //    expect(comp.parentTmp).toBeNull();
+  // });
+
+  it('ngoninit() first if', () => {
+    // comp.parentTmp = new insertte
+    let fixture1 = TestBed.createComponent(AmexioFilterTreeComponent);
+    let wrapperComponent = fixture1.componentInstance;
+
+    // get a reference to the actual component we want
+    let component = fixture1.componentInstance.templates;
+    comp.parentRef = component;
+    comp.ngOnInit();
+    // if (this.parentTmp != null) {
+    expect(comp.parentTmp).not.toBeNull();
+    comp.templates = { treeNodeTemplate: comp.parentTmp };
+  });
+
+
+  it('ngoninit() second elseif', () => {
+    let fixture1 = TestBed.createComponent(AmexioFilterTreeComponent);
+    let wrapperComponent = fixture1.componentInstance;
+
+    // get a reference to the actual component we want
+    let component = fixture1.componentInstance.templates;
+    comp.templates = component;
+    comp.templates = { treeNodeTemplate: comp.parentTmp };
+    comp.ngOnInit();
+    expect(comp.templates).not.toBeNull();
+    comp.parentTmp = comp.templates.treeNodeTemplate;
+  });
+
+  it('ngoninit() second elseif else', () => {
+    comp.templates = null;
+    comp.ngOnInit();
+    expect(comp.templates).toBeNull();
+  });
+
+
+  it('ngAfterViewInit() second elseif else', () => {
+
+    comp.templates = null;
+    comp.ngAfterViewInit()
+    expect(comp.templates).toBeNull();
+  });
+  it('ngAfterViewInit() first if', () => {
+    // comp.parentTmp = new insertte
+    let fixture1 = TestBed.createComponent(AmexioFilterTreeComponent);
+    let wrapperComponent = fixture1.componentInstance;
+
+    // get a reference to the actual component we want
+    let component = fixture1.componentInstance.templates;
+    comp.parentRef = component;
+    comp.ngAfterViewInit()
+    //  if (this.parentTmp != null) {
+    expect(comp.parentTmp).not.toBeNull();
+    comp.templates = { treeNodeTemplate: comp.parentTmp };
+
+  });
+
+  
+
+  it('ngAfterViewInit() second elseif', () => {
+    let fixture1 = TestBed.createComponent(AmexioFilterTreeComponent);
+    let wrapperComponent = fixture1.componentInstance;
+
+    // get a reference to the actual component we want
+    let component = fixture1.componentInstance.templates;
+    comp.templates = component;
+    comp.templates = { treeNodeTemplate: comp.parentTmp };
+
+    comp.ngAfterViewInit()
+    // } else if (this.templates != null) {
+    expect(comp.templates).not.toBeNull();
+    comp.parentTmp = comp.templates.treeNodeTemplate;
+  });
+
+  it('ngAfterViewInit() third else', () => {
+  
+
+    comp.ngAfterViewInit()
+    // if (this.httpmethod && this.httpurl) {
+    expect(comp.httpmethod).not.toBeDefined();
+    expect(comp.httpurl).not.toBeDefined();
+  });
+
+  it('ngAfterViewInit() third if', () => {
+    comp.httpmethod = 'get';
+    comp.httpurl = 'asd.json'
+
+    comp.ngAfterViewInit()
+    // if (this.httpmethod && this.httpurl) {
+    expect(comp.httpmethod).toBeDefined();
+    expect(comp.httpurl).toBeDefined();
+    comp.callService();
+  });
+
+  it('ngAfterViewInit() forth elseif else', () => {
+  
+    comp.ngAfterViewInit()
+  // } else if (this.data) {
+     expect(comp.data).not.toBeDefined();
+  });  
+
+  it('ngAfterViewInit() forth elseif ', () => {
+    comp.data = [{a: 'a'}]
+    comp.ngAfterViewInit()
+  // } else if (this.data) {
+     expect(comp.data).toBeDefined();
+     comp.previousValue = JSON.parse(JSON.stringify(comp.data));
+     comp.setData(comp.data);
+
+  });  
+
+//   it('updateComponent()  first else ', () => {
+//     comp.previousValue = [{b: 'b'}]
+
+// comp.updateComponent();
+// // if (this.data != null && JSON.stringify(this.previousValue) !== JSON.stringify(this.data)) {
+// expect(comp.data).not.toBeNull();
+// expect(comp.previousValue).not.toEqual(comp.data);
+// comp.previousValue = JSON.parse(JSON.stringify(comp.data));
+// comp.setData(comp.data);
+//   });  
+
 
   it('fliter tree expandAll() on method call', () => {
     let node = {
@@ -277,17 +420,17 @@ describe('amexio-tree-filter-view', () => {
   });
 
 
-  it('callService()', () => { 
+  it('callService()', () => {
     comp.httpurl = "sample.json";
     comp.httpmethod = "get";
     comp.callService();
     comp['treeViewFilterService'].fetchData(comp.httpurl, comp.httpmethod).subscribe((response: any) => {
-        comp.data = response;
+      comp.data = response;
     }, () => {
       comp.renderServiceData();
     });
   });
- 
+
 
 });
 
