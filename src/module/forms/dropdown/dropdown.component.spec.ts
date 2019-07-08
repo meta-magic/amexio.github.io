@@ -13,14 +13,15 @@ import { CommonIconComponent } from '../../base/components/common.icon.component
 import { DisplayFieldService } from '../../services/data/display.field.service';
 
 
-describe('amexio-dropdown', () => {
+fdescribe('amexio-dropdown', () => {
   let comp: AmexioDropDownComponent;
   let fixture: ComponentFixture<AmexioDropDownComponent>;
   let data: any;
   let responsedata: true;
   let displayService: DisplayFieldService;
   let dataService :CommonDataService;
-  let _http: HttpClient
+  let _http: HttpClient;
+ 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule, HttpClientModule],
@@ -38,6 +39,15 @@ describe('amexio-dropdown', () => {
     it('true is true', () => expect(true).toBe(true));
   });
 
+  it('Tree set data method', () => {
+    let value: any;
+    (<any>comp)._data = value;
+    (<any>comp)['componentLoaded'] = true;
+    expect((<any>comp)).toBeDefined;
+    (<any>comp).setData((<any>comp)._data);
+    expect((<any>comp)['componentLoaded']).toEqual(true);
+    expect((<any>comp).setData()).toHaveBeenCalled;
+});
   //check variables 
   it('check variables in dropdown component ', () => {
     expect(comp.selectedindex).toEqual(-1);
@@ -49,13 +59,13 @@ describe('amexio-dropdown', () => {
     expect(comp.filteredOptions).toEqual([]);
   });
 
-  it('setter method', () => {
-    let value: any;
-    comp._data = value;
-    comp.componentLoaded = true;
-    expect(comp.componentLoaded).toEqual(true);
-    comp.setData(comp._data);
-  });
+  // it('setter method', () => {
+  //   let value: any;
+  //   comp._data = value;
+  //   comp.componentLoaded = true;
+  //   expect(comp.componentLoaded).toEqual(true);
+  //   comp.setData(comp._data);
+  // });
 
   // it('setData method for datareader not equal to null', () => {
   //   let responsedata: any;
