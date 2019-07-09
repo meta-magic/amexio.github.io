@@ -23,6 +23,7 @@ describe('navdesktopmenu', () => {
     comp1 = fixture1.componentInstance;
     event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
     el = fixture1.debugElement.query(By.css('#menus'));
+    comp1.menus = el;
     comp1.nodes = [{
       subInnerMenus: false
     }]
@@ -33,7 +34,7 @@ describe('navdesktopmenu', () => {
     setTimeout(() => {
       const fixture = TestBed.createComponent(AmexioNavDesktopMenuComponent);
       fixture.detectChanges();
-      expect(window.innerWidth - el.nativeElement.getBoundingClientRect().right).toBeLessThan(300);
+      expect(window.innerWidth - comp1.menus.nativeElement.getBoundingClientRect().right).toBeLessThan(300);
       comp1.position = 'right';
     }, 100);
   });
