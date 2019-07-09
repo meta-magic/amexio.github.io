@@ -86,12 +86,11 @@ describe('amexio-checkbox-group', () => {
   it('emitData if condition', () => {
     comp.data = [{
       "language": "Angular 2",
-      "checked": false
+      "checked": true
     }];
     comp.emitData();
     comp.SelectedCheckBox = [];
     comp.data.forEach((node: any) => {
-      node.checked = true;
       expect(node.checked).toEqual(true);
       comp.SelectedCheckBox.push(node);
     });
@@ -99,12 +98,12 @@ describe('amexio-checkbox-group', () => {
   });
 
   it('emitData else condition', () => {
+    comp.SelectedCheckBox = [];
     comp.data = [{
       "language": "Angular 2",
       "checked": false
     }];
     comp.emitData();
-    comp.SelectedCheckBox = [];
     comp.data.forEach((node: any) => {
       expect(node.checked).toEqual(false);
     });
@@ -261,7 +260,7 @@ describe('amexio-checkbox-group', () => {
     expect(comp['_model']).not.toBeNull();
     expect(comp.required).toBe(true);
     expect(comp['_model'].length).toBeGreaterThan(0);
-    return  {
+    return {
       jsonParseError: {
         valid: true,
       },
