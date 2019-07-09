@@ -7,7 +7,7 @@ import { CommonDataService } from '../../services/data/common.data.service';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { Renderer2, Renderer } from '@angular/core';
 
-describe('amexio-treeview', () => {
+fdescribe('amexio-treeview', () => {
     let comp: AmexioTreeViewComponent;
     let fixture: ComponentFixture<AmexioTreeViewComponent>;
 
@@ -109,13 +109,36 @@ describe('amexio-treeview', () => {
     });
 
     // it('Tree ngOnInit() on method call', () => {
-    //     comp.contextmenu = [{ "text": "Add New", "icon": "fa fa-plus", "disabled": true }, { "text": "Edit", "icon": "", "seperator": true }
-    //         , { "text": "Send data in email", "icon": "" }];
-
-    //     comp.ngOnInit();
-    //     expect(comp.contextmenu).not.toBe(null);
-    //     expect(comp.contextmenu.length).toBeGreaterThan(0);
-
+    //  let responseData = {
+    //         "data": [{
+    //           "text": "Web App",
+    //           "expand": true,
+    //           "children": [
+    //             {
+    //               "text": "app",
+    //               "expand": true,
+    //               "children": [
+    //                 {
+    //                   "leaf": true,
+    //                   "text": "Application.js"
+    //                 }
+    //               ]
+    //             },
+    //             {
+    //               "text": "button",
+    //               "expand": true,
+    //               "children": [
+    //                 {
+    //                   "leaf": true,
+    //                   "text": "Button.js"
+    //                 }
+    //               ]
+    //             }
+    //           ]
+    //         }]
+    //       }
+    //    comp.ngOnInit();
+    //    comp.setData(responseData);
 
     // });
     it('Tree resetFlag() on method call', () => {
@@ -447,15 +470,7 @@ describe('amexio-treeview', () => {
 
 
 
-    //   it('Tree onClick() on method call', () => {
-    //     let node: any;
-    //     node.extend = true;
-    //     comp.onClick(node);
-    //     expect(node.extend).toEqual(true);
-    //     node.extend = false;
-    //     comp.onClick(node);
-    //     expect(node.extend).toEqual(false);
-    //   });
+  
 
 
     // it('Tree onArrowDown method', () => {
@@ -474,27 +489,204 @@ describe('amexio-treeview', () => {
     //                             "text": "Application.js"
     //                         }
     //                     ]
-    //                 }
+    //                 },
+    //                 {
+    //                     "text": "button",
+    //                     "expand": true,
+    //                     "children": [
+    //                       {
+    //                         "leaf": true,
+    //                         "text": "Button.js"
+    //                       }
+    //                     ]
+    //                   }
     //             ]
     //         }]
     //     };
-    //     let event = data;
-    //     let node = data;
+    //     let node =  {
+    //         "text": "app",
+    //         "expand": true,
+    //         "children": [
+    //             {
+    //                 "leaf": true,
+    //                 "text": "Application.js"
+    //             }
+    //         ]
+    //     };
     //     let index = 0;
+    //     comp.childarraykey = 'children';
     //     comp.onArrowDown(event, data, node, index);
     //     const incrementindex = index + 1;
-    //     expect(incrementindex).toBe(1);
-    //     // const itemid = data[incrementindex];
-
-    //     // node.expand = true;
-    //     // expect(node.expand).toBe(true);
-
+    //     const itemid = data[incrementindex]
+    //     expect(node.expand).toEqual(true);
+    //     expect(node[comp.childarraykey]).toEqual(true);
+    //     const data1 = node[this.childarraykey][0];
+    //      comp.setFocus(data1);
 
     // });
 
 
+    it('Generate Index Method', () => {
+
+       let data = [
+            {
+              "text": "Web App",
+              "expand": true,
+              "children": [
+                {
+                  "text": "app",
+                  "expand": true,
+                  "children": [
+                    {
+                      "leaf": true,
+                      "text": "Application.js",
+                    }
+                  ]
+                },
+                {
+                  "text": "button",
+                  "expand": true,
+                  "children": [
+                    {
+                      "leaf": true,
+                      "text": "Button.js",
+                    }
+                  ] }] }]
+        let index = 0;
+        comp.childarraykey = 'children';
+        let parentId = 1;
+        let rannumber = Math.floor(Math.random() * 1000 + 999 + 1);
+        comp.generateIndex(data, parentId, rannumber);
+        console.log('data',data);
+        data.forEach((element: any,index:any) => {
+            element['elementId'] = '' + rannumber + '-' + parentId + (index + 1);
+            expect(element[comp.childarraykey]);
+            comp.generateIndex(element[comp.childarraykey], element.elementId.split('-')[1], rannumber);
+        });
+    });
+
+    //   it(' tree setData() method call if condition', () => {
+    //     let httpResponse = {
+    //         "data": [{
+    //           "text": "Web App",
+    //           "expand": true,
+    //           "children": [
+    //             {
+    //               "text": "app",
+    //               "expand": true,
+    //               "children": [
+    //                 {
+    //                   "leaf": true,
+    //                   "text": "Application.js"
+    //                 }
+    //               ]
+    //             },
+    //             {
+    //               "text": "button",
+    //               "expand": true,
+    //               "children": [
+    //                 {
+    //                   "leaf": true,
+    //                   "text": "Button.js"
+    //                 }
+    //               ]
+    //             }
+    //           ]
+    //         }]
+    //       }
+    //       let data1 = [
+    //         {
+    //           "text": "Web App",
+    //           "expand": true,
+    //           "children": [
+    //             {
+    //               "text": "app",
+    //               "expand": true,
+    //               "children": [
+    //                 {
+    //                   "leaf": true,
+    //                   "text": "Application.js",
+    //                 }
+    //               ]
+    //             },
+    //             {
+    //               "text": "button",
+    //               "expand": true,
+    //               "children": [
+    //                 {
+    //                   "leaf": true,
+    //                   "text": "Button.js",
+    //                 }
+    //               ] }] }]  
+    //  comp.filtertreeflag = false;   
+    //  comp.datareader = 'data';    
+    //  comp.setData(httpResponse);
+    // let responsedata: any = httpResponse;
+    // expect(comp.datareader).not.toEqual(null);
+    // const dr = comp.datareader.split('.');
+    // for (const ir of dr) {
+    //   responsedata = responsedata[ir];
+    // }
+    // comp.data = responsedata;
+    // comp.parentRef = comp.data;
+    // comp.globalTreeData = [];
+    // expect(comp.globalTreeData.length).toEqual(0);
+    // expect(comp.filtertreeflag).toEqual(false);
+    // comp.globalTreeData = comp.data;
+
+    // comp.generateIndex(httpResponse.data,1,Math.floor(Math.random() * 1000 + 999 + 1));
+    // // comp.setSelectedFlag();
+    // // comp.activateNode(comp.data,null);
+    //   });
 
 
+      it(' tree setData() method call else condition', () => {
+        let httpResponse = 
+         [
+                {
+                  "text": "Web App",
+                  "expand": true,
+                  "children": [
+                    {
+                      "text": "app",
+                      "expand": true,
+                      "children": [
+                        {
+                          "leaf": true,
+                          "text": "Application.js",
+                        }
+                      ]
+                    },
+                    {
+                      "text": "button",
+                      "expand": true,
+                      "children": [
+                        {
+                          "leaf": true,
+                          "text": "Button.js",
+                        }
+                      ] }] }]
+            
+     comp.filtertreeflag = false;       
+    comp.setData(httpResponse);
+    let responsedata: any = httpResponse;
+    comp.datareader = null;
+    expect(comp.datareader).toEqual(null);
+    responsedata = httpResponse;
+    comp.data = responsedata;
+    comp.parentRef = comp.data;
+    comp.globalTreeData = [];
+    expect(comp.globalTreeData.length).toEqual(0);
+    expect(comp.filtertreeflag).toEqual(false);
+    comp.globalTreeData = comp.data;
+    comp.generateIndex(comp.globalTreeData,1,Math.floor(Math.random() * 1000 + 999 + 1));
+    comp.setSelectedFlag();
+    comp.activateNode(comp.data,null);
+      });
+
+      it(' tree setSelectedFlag() method call', () => {
+       comp.setSelectedFlag();
+      });    
 });
 
 
