@@ -107,7 +107,6 @@ describe('amexio-tree-filter-view', () => {
     let component = fixture1.componentInstance.templates;
     comp.parentRef = component;
     comp.ngOnInit();
-    // if (this.parentTmp != null) {
     expect(comp.parentTmp).not.toBeNull();
     comp.templates = { treeNodeTemplate: comp.parentTmp };
   });
@@ -280,6 +279,60 @@ describe('amexio-tree-filter-view', () => {
       childCheck.expand = false;
       expect(childCheck.expand).not.toEqual(true);
       childCheck.expand = true;
+      expect(childCheck.hasOwnProperty(comp.childarraykey)).toEqual(true);
+      expect(childCheck[comp.childarraykey]).not.toEqual(null);
+      comp.expandAllCall(childCheck[comp.childarraykey]);
+    });
+    comp.expandAllCall(node1);
+    node1.forEach((childCheck: any) => {
+      expect(childCheck.hasOwnProperty('expand')).toBeUndefined;
+      childCheck['expand'] = true;
+      expect(childCheck.hasOwnProperty(comp.childarraykey)).toEqual(true);
+      expect(childCheck[comp.childarraykey]).not.toEqual(null);
+      comp.expandAllCall(childCheck[comp.childarraykey]);
+    });
+
+  });
+  it('fliter tree expandAllCall() on method call else block', () => {
+    let node1 = [{
+      "text": "Web App",
+      "children": [
+        {
+          "text": "app",
+          "children": [
+            {
+              "leaf": true,
+              "text": "Application.js"
+            }
+          ]
+        }
+      ]
+    }
+    ];
+    comp.childarraykey = 'children';
+    let node = [{
+      "text": "Web App",
+      "expand": true,
+      "children": [
+        {
+          "text": "app",
+          "expand": true,
+          "children": [
+            {
+              "leaf": true,
+              "text": "Application.js"
+            }
+          ]
+        }
+      ]
+    }
+    ];
+    comp.expandAllCall(node);
+    node.forEach((childCheck: any) => {
+      expect(childCheck.hasOwnProperty('expand')).toEqual(true);
+      // childCheck.expand = false;
+      expect(childCheck.expand).toEqual(true);
+      childCheck['expand'] = true;
       expect(childCheck.hasOwnProperty(comp.childarraykey)).toEqual(true);
       expect(childCheck[comp.childarraykey]).not.toEqual(null);
       comp.expandAllCall(childCheck[comp.childarraykey]);
