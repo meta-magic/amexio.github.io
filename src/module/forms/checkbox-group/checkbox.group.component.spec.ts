@@ -228,6 +228,25 @@ describe('amexio-checkbox-group', () => {
     responsedata = httpResponse;
   });
 
+  it('ngOnInit() else', () => {
+    comp.ngOnInit();
+    
+    expect(comp.httpmethod).not.toBeDefined();
+    expect(comp.httpurl).not.toBeDefined();
+    // expect(comp.httpmethod).not.toBeNull();
+    // expect(comp.httpurl).not.toBeNull();  
+  });
+
+
+  it('ngOnInit() second elseif else', () => {
+    comp.ngOnInit();
+  // } else if (this.data && this.datareader) {
+   expect(comp.data).not.toBeDefined();
+   expect(comp.datareader).not.toBeDefined();
+
+});
+
+
 
   it('ngOnInit()', () => {
     comp.ngOnInit();
@@ -266,6 +285,39 @@ describe('amexio-checkbox-group', () => {
       },
     };
   });
+  it('ngOnInit() second elseif', () => {
+    comp.data = {
+     "data": [
+       {
+         "countryName": "Myanmar",
+         "countryCode1": "MM",
+         "countryCode2": "MMR",
+         "countryFlag": "MM.png",
+         "capital": "",
+         "currencyCode": "MMK",
+         "currencyName": "Kyat",
+         "currencySymbol": "K",
+         "isoNumeric": 104
+       },
+       {
+         "countryName": "U.S. Virgin Island",
+         "countryCode1": "VI",
+         "countryCode2": "VIR",
+         "countryFlag": "VI.png",
+         "capital": "",
+         "currencyCode": "USD",
+         "currencyName": "Dollar",
+         "currencySymbol": "$",
+         "isoNumeric": 850
+       }]
+   }
+   comp.datareader = "data";
+   comp.ngOnInit();
+ //  expect(comp.data).toBeDefined();
+ //  expect(comp.datareader).toBeDefined();
+  comp.data = comp.getResponseData(comp.data);
+
+});
 
   //
   it('check validate ', () => {
