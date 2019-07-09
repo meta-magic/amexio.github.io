@@ -6,10 +6,11 @@ import { CommonIconComponent } from './../../base/components/common.icon.compone
 import { AmexioImageComponent } from '../../media/image/image.component';
 import { DeviceQueryService } from '../../services/device/device.query.service';
 import { AmexioNavDesktopMenuComponent } from '../../navigation/navbar/navdesktopmenu';
-
+import { ElementRef } from '@angular/core';
 describe('navdesktopmenu', () => {
   let comp1: AmexioNavDesktopMenuComponent;
   let fixture1: ComponentFixture<AmexioNavDesktopMenuComponent>;
+  let el: ElementRef;
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
@@ -21,7 +22,7 @@ describe('navdesktopmenu', () => {
     fixture1 = TestBed.createComponent(AmexioNavDesktopMenuComponent);
     comp1 = fixture1.componentInstance;
     event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
-
+    el = fixture1.debugElement.query(By.css('#menus'));
     comp1.nodes = [{
       subInnerMenus: false
     }]
@@ -33,7 +34,7 @@ describe('navdesktopmenu', () => {
       const fixture = TestBed.createComponent(AmexioNavDesktopMenuComponent);
       fixture.detectChanges();
       const compiled = fixture.debugElement.nativeElement;
-      expect(window.innerWidth - fixture.debugElement.nativeElement.getBoundingClientRect().right).toBeLessThan(300);
+      expect(window.innerWidth - el.nativeElement.getBoundingClientRect().right).toBeLessThan(300);
       // let a = 8;
       comp1.position = 'right';
       // expect(window.innerWidth - a).toBeGreaterThan(300);
@@ -45,7 +46,6 @@ describe('navdesktopmenu', () => {
       comp1.ngAfterViewInit();
       const fixture = TestBed.createComponent(AmexioNavDesktopMenuComponent);
       fixture.detectChanges();
-      const compiled = fixture.debugElement.nativeElement;
       let a = 8;
       expect(window.innerWidth - a).toBeGreaterThan(300);
       comp1.position = 'left';
