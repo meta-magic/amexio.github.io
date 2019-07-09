@@ -480,23 +480,55 @@ describe('amexio-dropdown', () => {
     comp.componentId = comp.createCompId('dropdown', comp.displayfield);
     comp.isValid = comp.allowblank;
     comp.isComponentValid.emit(comp.allowblank);
-    // comp.httpmethod = 'get';
-    // comp.httpurl = 'https/rgh'
-    // expect(comp.httpmethod).toBeDefined();
-    // expect(comp.httpurl).toBeDefined();
-    // dataService.fetchData(comp.httpurl, comp.httpmethod).subscribe((response) => {
-    //   comp.responseData = response;
-    // });
+  
     let value = comp.name;
     comp.ngOnInit();
     expect(comp.name).toEqual(value);
-    // comp.input.subscribe((g: any) => {
-    //   expect(comp.input).toEqual(g);
-    // }); 
-    // comp.onIngOnInitnput(value);
-    // expect(comp.isValid).toBe(value.vaild);
+     
   });
-  //setUserSelection check
+ 
+  it('ngOnInit() first else', () => {
+    comp.ngOnInit();
+    // if (this.httpmethod && this.httpurl) {
+     expect(comp.httpmethod).not.toBeDefined();
+     expect(comp.httpurl).not.toBeDefined();
+
+  });
+
+
+  it('ngOnInit() first if', () => {
+    comp.httpmethod = "get";
+    comp.httpurl = "sample.json";
+    comp.ngOnInit();
+    // if (this.httpmethod && this.httpurl) {
+     expect(comp.httpmethod).toBeDefined();
+     expect(comp.httpurl).toBeDefined();
+     comp.dataService.fetchData(comp.httpurl, comp.httpmethod).subscribe((response: any) => {
+      comp.responseData = response;
+      }, (error) => {
+      }, () => {
+        comp.setData(comp.responseData);
+      });
+
+  });
+
+  it('ngOnInit() second elseif else', () => {
+    comp.ngOnInit();
+    expect(comp.data).not.toBeDefined();
+
+  });
+
+  it('ngOnInit() second elseif ', () => {
+    comp.data = [{a: 'a'}]
+    comp.ngOnInit();
+    expect(comp.data).toBeDefined();
+    comp.previousData = JSON.parse(JSON.stringify(comp.data));
+      comp.setData(comp.data);
+  });
+
+
+
+
 
   it('check setUserSelection method', () => {
     comp.setUserSelection();
