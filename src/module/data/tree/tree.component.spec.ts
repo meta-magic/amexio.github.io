@@ -7,7 +7,7 @@ import { CommonDataService } from '../../services/data/common.data.service';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { Renderer2, Renderer } from '@angular/core';
 
-fdescribe('amexio-treeview', () => {
+describe('amexio-treeview', () => {
     let comp: AmexioTreeViewComponent;
     let fixture: ComponentFixture<AmexioTreeViewComponent>;
 
@@ -633,10 +633,9 @@ fdescribe('amexio-treeview', () => {
     // expect(comp.globalTreeData.length).toEqual(0);
     // expect(comp.filtertreeflag).toEqual(false);
     // comp.globalTreeData = comp.data;
-
     // comp.generateIndex(httpResponse.data,1,Math.floor(Math.random() * 1000 + 999 + 1));
-    // // comp.setSelectedFlag();
-    // // comp.activateNode(comp.data,null);
+    // comp.setSelectedFlag();
+    // comp.activateNode(comp.data,null);
     //   });
 
 
