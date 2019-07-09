@@ -4,7 +4,7 @@ import { By } from '@angular/platform-browser';
 import { AmexioNavDesktopMenuComponent } from '../../navigation/navbar/navdesktopmenu';
 import { AmexioNavMenuComponent } from '../../navigation/navbar/navmenu.component';
 import { AmexioNavMobileMenuComponent } from '../../navigation/navbar/navmobilemenu';
-describe('navmenu', () => {
+fdescribe('navmenu', () => {
   let comp: AmexioNavMenuComponent;
   let fixture: ComponentFixture<AmexioNavMenuComponent>;
   let el: ElementRef;
@@ -65,6 +65,8 @@ describe('navmenu', () => {
   });
 
   it('onHeaderClick() method  if check', () => {
+  //  let event1 = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
+
     comp.onHeaderClick(event);
     const node = {
       header: true,
@@ -73,13 +75,14 @@ describe('navmenu', () => {
     };
     comp.mobileToggleModel = !comp.mobileToggleModel;
     comp.mobilemode = true;
-    comp.showMenus = true;
+    comp.showMenus = false;
     expect(comp.mobilemode).toEqual(true);
-    comp.showMenus =!comp.showMenus;
+    comp.showMenus = true;
     comp.onClick(node, event);
   });
 
   it('onHeaderClick() method  else check', () => {
+    // let event1 = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
     comp.onHeaderClick(event);
     const node = {
       header: true,
@@ -88,11 +91,11 @@ describe('navmenu', () => {
     };
     comp.mobileToggleModel = !comp.mobileToggleModel;
     comp.mobilemode = false;
+    comp.showMenus = true;
     expect(comp.mobilemode).toEqual(false);
+    comp.showMenus = false;
     comp.onClick(node, event);
   });
-
-
   it('onMouseOver() method if check', () => {
     comp.mobilemode = true;
     comp.showMenus = true;
@@ -125,8 +128,6 @@ describe('navmenu', () => {
     expect(comp.mobilemode).toEqual(false);
     expect(comp.showMenus).toEqual(false);
   });
-
-
 
   it('toggleMenu() method if check', () => {
     comp.mobilemode = true;
