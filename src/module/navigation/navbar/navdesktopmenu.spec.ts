@@ -7,7 +7,7 @@ import { AmexioImageComponent } from '../../media/image/image.component';
 import { DeviceQueryService } from '../../services/device/device.query.service';
 import { AmexioNavDesktopMenuComponent } from '../../navigation/navbar/navdesktopmenu';
 import { ElementRef } from '@angular/core';
-fdescribe('navdesktopmenu', () => {
+describe('navdesktopmenu', () => {
   let comp1: AmexioNavDesktopMenuComponent;
   let fixture1: ComponentFixture<AmexioNavDesktopMenuComponent>;
   let el: ElementRef;
