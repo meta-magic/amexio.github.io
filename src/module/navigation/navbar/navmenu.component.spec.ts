@@ -4,7 +4,7 @@ import { By } from '@angular/platform-browser';
 import { AmexioNavDesktopMenuComponent } from '../../navigation/navbar/navdesktopmenu';
 import { AmexioNavMenuComponent } from '../../navigation/navbar/navmenu.component';
 import { AmexioNavMobileMenuComponent } from '../../navigation/navbar/navmobilemenu';
-fdescribe('navmenu', () => {
+describe('navmenu', () => {
   let comp: AmexioNavMenuComponent;
   let fixture: ComponentFixture<AmexioNavMenuComponent>;
   let el: ElementRef;
