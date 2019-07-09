@@ -141,6 +141,37 @@ describe('amexio-treeview', () => {
     //    comp.setData(responseData);
 
     // });
+
+
+    it('Tree AfterViewInit on method call if', () => {
+        setTimeout(() => {
+            let fixture1 = TestBed.createComponent(AmexioTreeViewComponent);
+            let wrapperComponent = fixture1.componentInstance; 
+            let component = fixture1.componentInstance.templates;
+            comp.ngAfterViewInit();
+            expect(comp.parentTmp).not.toBeNull();
+            comp.templates = { treeNodeTemplate: comp.parentTmp };
+            fixture.detectChanges();
+            comp['componentLoaded'] = true;
+          });
+    });
+    it('ngAfterViewInit() second else if', () => {
+        let fixture1 = TestBed.createComponent(AmexioTreeViewComponent);
+        let wrapperComponent = fixture1.componentInstance;
+    
+        // get a reference to the actual component we want
+        let component = fixture1.componentInstance.templates;
+        comp.templates = component;
+        comp.templates = { treeNodeTemplate: comp.parentTmp };
+    
+        comp.ngAfterViewInit()
+        // } else if (this.templates != null) {
+        expect(comp.templates).not.toBeNull();
+        comp.parentTmp = comp.templates.treeNodeTemplate;
+        fixture.detectChanges();
+        comp['componentLoaded'] = true;
+      });
+    
     it('Tree resetFlag() on method call', () => {
         comp.flag = true;
         comp.resetFlag();
