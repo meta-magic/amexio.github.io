@@ -38,21 +38,17 @@ describe('navdesktopmenu', () => {
       fixture.detectChanges();
       expect(window.innerWidth - comp1.menus.nativeElement.getBoundingClientRect().right).toBeLessThan(300);
       comp1.position = 'right';
-      let a = 8;
-      expect(window.innerWidth - a).toBeGreaterThan(300);
+    }, 100);
+  });
+  it('ngAfterViewInit else block', () => {
+    comp1.ngAfterViewInit();
+    setTimeout(() => {
+      const fixture = TestBed.createComponent(AmexioNavDesktopMenuComponent);
+      fixture.detectChanges();
+      expect(window.innerWidth - comp1.menus.nativeElement.getBoundingClientRect().right).toBeGreaterThan(300);
       comp1.position = 'left';
     }, 100);
   });
-  // it('ngAfterViewInit else block', () => {
-  //   comp1.ngAfterViewInit();
-  //   setTimeout(() => {
-  //     const fixture = TestBed.createComponent(AmexioNavDesktopMenuComponent);
-  //     fixture.detectChanges();
-  //     let a = 8;
-  //     expect(window.innerWidth - a).toBeGreaterThan(300);
-  //     comp1.position = 'left';
-  //   }, 100);
-  // });
   it('onMouseOver()', () => {
     let event;
     let node = { submenus: 'as' }
