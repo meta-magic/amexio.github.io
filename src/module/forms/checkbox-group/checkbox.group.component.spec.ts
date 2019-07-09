@@ -126,7 +126,35 @@ describe('amexio-checkbox-group', () => {
       expect(obj[comp.displayfield]).toEqual(value[comp.displayfield]);
       return true;
     });
+  });
+
+  it('contains if-else-if condition', () => {
+    comp.displayfield = "language";
+    let value = {
+      "language": "Angular 2",
+      "checked": false
+    }
+    comp['_model'] = [{
+      "language": "Angular",
+      "checked": false
+    }];
+    comp.contains(value);
+    expect(comp['_model'] instanceof Array).toEqual(true);
+    comp['_model'].forEach((obj: any) => {
+      expect(obj[comp.displayfield]).not.toEqual(value[comp.displayfield]);
+    });
     comp['_model'] = {};
+    expect(comp['_model'] instanceof Array).toEqual(false);
+
+  });
+  it('contains else condition', () => {
+    comp.displayfield = "language";
+    let value = {
+      "language": "Angular 2",
+      "checked": false
+    }
+    comp['_model'] = {};
+    comp.contains(value);
     expect(comp['_model'] instanceof Array).toEqual(false);
     return false;
   });
