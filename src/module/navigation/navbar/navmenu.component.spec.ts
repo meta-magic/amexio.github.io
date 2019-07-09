@@ -181,16 +181,4 @@ describe('navmenu', () => {
     node['isExpanded'] = true;
   });
 
-
-
-  it('onIconClick() method else condition check', () => {
-    let node = {
-      submenus: [{ submenu: 's' }, { submenu: 'u' }],
-        isExpanded: false
-    }
-    comp.onIconClick(event, node);
-    event.stopPropagation();
-    expect(node.hasOwnProperty('isExpanded')).not.toEqual(true);
-    node['isExpanded'] = true;
-  });
 });
