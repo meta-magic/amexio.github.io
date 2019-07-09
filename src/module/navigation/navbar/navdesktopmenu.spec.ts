@@ -7,7 +7,7 @@ import { AmexioImageComponent } from '../../media/image/image.component';
 import { DeviceQueryService } from '../../services/device/device.query.service';
 import { AmexioNavDesktopMenuComponent } from '../../navigation/navbar/navdesktopmenu';
 import { ElementRef } from '@angular/core';
-describe('navdesktopmenu', () => {
+fdescribe('navdesktopmenu', () => {
   let comp1: AmexioNavDesktopMenuComponent;
   let fixture1: ComponentFixture<AmexioNavDesktopMenuComponent>;
   let el: ElementRef;
@@ -36,18 +36,21 @@ describe('navdesktopmenu', () => {
       fixture.detectChanges();
       expect(window.innerWidth - comp1.menus.nativeElement.getBoundingClientRect().right).toBeLessThan(300);
       comp1.position = 'right';
-    }, 100);
-  });
-  it('ngAfterViewInit else block', () => {
-    comp1.ngAfterViewInit();
-    setTimeout(() => {
-      const fixture = TestBed.createComponent(AmexioNavDesktopMenuComponent);
-      fixture.detectChanges();
       let a = 8;
       expect(window.innerWidth - a).toBeGreaterThan(300);
       comp1.position = 'left';
     }, 100);
   });
+  // it('ngAfterViewInit else block', () => {
+  //   comp1.ngAfterViewInit();
+  //   setTimeout(() => {
+  //     const fixture = TestBed.createComponent(AmexioNavDesktopMenuComponent);
+  //     fixture.detectChanges();
+  //     let a = 8;
+  //     expect(window.innerWidth - a).toBeGreaterThan(300);
+  //     comp1.position = 'left';
+  //   }, 100);
+  // });
   it('onMouseOver()', () => {
     let event;
     let node = { submenus: 'as' }
