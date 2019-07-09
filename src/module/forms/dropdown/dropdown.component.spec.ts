@@ -59,61 +59,57 @@ describe('amexio-dropdown', () => {
     expect(comp.filteredOptions).toEqual([]);
   });
 
-  // it('setter method', () => {
-  //   let value: any;
-  //   comp._data = value;
-  //   comp.componentLoaded = true;
-  //   expect(comp.componentLoaded).toEqual(true);
-  //   comp.setData(comp._data);
+  // it('setUserSelection  method', () => {
+    
   // });
 
-  it('setData method for datareader not equal to null', () => {
-    let responsedata: any;
-    let httpResponse: any;
-    httpResponse = {
-      "data": [
-        {
-          "countryName": "Myanmar",
-          "countryCode1": "MM",
-          "countryCode2": "MMR",
-          "countryFlag": "MM.png",
-          "capital": "",
-          "currencyCode": "MMK",
-          "currencyName": "Kyat",
-          "currencySymbol": "K",
-          "capitalLatitude": null,
-          "capitalLongitude": null,
-          "isoNumeric": 104
-        },
-        {
-          "countryName": "U.S. Virgin Island",
-          "countryCode1": "VI",
-          "countryCode2": "VIR",
-          "countryFlag": "VI.png",
-          "capital": "",
-          "currencyCode": "USD",
-          "currencyName": "Dollar",
-          "currencySymbol": "$",
-          "capitalLatitude": null,
-          "capitalLongitude": null,
-          "isoNumeric": 850
-        }]
-    }
-    comp.setData(httpResponse);
-    responsedata = httpResponse;
-    comp.datareader = 'data';
-    expect(comp.datareader).not.toEqual(null);
-    comp.multiselectValues = [];
-    let dr = comp.datareader.split('.');
-    expect(dr).toBeDefined();
-    for (const ir of dr) {
-      responsedata = responsedata[ir];
-    }
-    comp.setResponseData(responsedata);
-    comp.multiSelection();
-    comp.setUserSelection();
-    comp.maskloader = false;
-  });
+  // it('setData method for datareader not equal to null', () => {
+  //   let responsedata: any;
+  //   let httpResponse: any;
+  //   httpResponse = {
+  //     "data": [
+  //       {
+  //         "countryName": "Myanmar",
+  //         "countryCode1": "MM",
+  //         "countryCode2": "MMR",
+  //         "countryFlag": "MM.png",
+  //         "capital": "",
+  //         "currencyCode": "MMK",
+  //         "currencyName": "Kyat",
+  //         "currencySymbol": "K",
+  //         "capitalLatitude": null,
+  //         "capitalLongitude": null,
+  //         "isoNumeric": 104
+  //       },
+  //       {
+  //         "countryName": "U.S. Virgin Island",
+  //         "countryCode1": "VI",
+  //         "countryCode2": "VIR",
+  //         "countryFlag": "VI.png",
+  //         "capital": "",
+  //         "currencyCode": "USD",
+  //         "currencyName": "Dollar",
+  //         "currencySymbol": "$",
+  //         "capitalLatitude": null,
+  //         "capitalLongitude": null,
+  //         "isoNumeric": 850
+  //       }]
+  //   }
+  //   comp.setData(httpResponse);
+  //   responsedata = httpResponse;
+  //   comp.datareader = 'data';
+  //   expect(comp.datareader).not.toEqual(null);
+  //   comp.multiselectValues = [];
+  //   let dr = comp.datareader.split('.');
+  //   expect(dr).toBeDefined();
+  //   for (const ir of dr) {
+  //     responsedata = responsedata[ir];
+  //   }
+  //   comp.setResponseData(responsedata);
+  //   comp.multiSelection();
+  //   comp.setUserSelection();
+  //   comp.maskloader = false;
+  // });
 
   it('setData method for datareader equal to null', () => {
     let httpResponse: any;
@@ -502,12 +498,13 @@ describe('amexio-dropdown', () => {
   //setUserSelection check
 
   it('check setUserSelection method', () => {
-    comp.setUserSelection();
-    comp.innerValue = 'AF';
-    comp.viewData = [{ countryName: "Afghanistan", countryCode1: "AF", countryCode2: "AFG", countryFlag: "AF.png" }]
-    expect(comp.innerValue).not.toBe(null);
+    comp.key ='index';
     comp.valuefield = 'countryCode1';
     comp.displayfield = 'countryName';
+    comp.innerValue = 'AF';
+    comp.viewData = [{ countryName: "Afghanistan", countryCode1: "AF", countryCode2: "AFG", countryFlag: "AF.png" }]
+    comp.setUserSelection();
+    expect(comp.innerValue).not.toBe(null);
     const valueKey = comp.valuefield;
     const displayKey = comp.displayfield;
     const val = comp.innerValue;
@@ -520,6 +517,15 @@ describe('amexio-dropdown', () => {
       delete item[comp.key];
       comp.onSingleSelect.emit(item);
     })
+  })
+  it('check setUserSelection method else condition', () => {
+    comp.key ='index';
+    comp.valuefield = 'countryCode1';
+    comp.displayfield = 'countryName';
+    comp.innerValue = null;
+    comp.viewData = [{ countryName: "Afghanistan", countryCode1: "AF", countryCode2: "AFG", countryFlag: "AF.png" }]
+    comp.setUserSelection();
+    expect(comp.innerValue).toBe(null);
   })
   //on onBlur()
   it('on onBlur()', () => {
