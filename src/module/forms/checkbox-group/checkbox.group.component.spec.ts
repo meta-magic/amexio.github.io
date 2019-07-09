@@ -3,7 +3,7 @@
  */
 
 import { ComponentFixture, TestBed, inject } from '@angular/core/testing';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormControl } from '@angular/forms';
 import { IconLoaderService } from '../../../index';
 import { AmexioCheckBoxGroupComponent } from './checkbox.group.component';
 import { AmexioCheckBoxComponent } from '../checkbox/checkbox.component';
@@ -23,6 +23,7 @@ describe('amexio-checkbox-group', () => {
   let fixture: ComponentFixture<AmexioCheckBoxGroupComponent>;
   let DataService: CommonDataService;
   let httpMock: HttpTestingController;
+  let formParameter : FormControl;
 
   let responsedata: any
 
@@ -246,5 +247,27 @@ describe('amexio-checkbox-group', () => {
     });
   });
 
+
+  //check validate 
+  it('check validate ', () => {
+    comp['_model'] = [{
+      "language": "Angular 2",
+      "checked": false
+    }];
+    comp.validate(formParameter);
+  
+    expect(comp['_model']).not.toBeNull();
+    expect(comp['_model'].length).toBeGreaterThan(0);
+  //   return (this.required && (this._model && this._model.length > 0)) || !this.required
+  //     ? null
+  //     : {
+  //         jsonParseError: {
+  //           valid: true,
+  //         },
+  //       };
+  // }
+
+
+  });
 
 });

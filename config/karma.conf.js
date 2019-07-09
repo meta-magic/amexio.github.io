@@ -1,6 +1,6 @@
 var webpack = require('./webpack.test');
 
-module.exports = function(config) {
+module.exports = function (config) {
     var _config = {
         basePath: '',
 
@@ -74,6 +74,10 @@ module.exports = function(config) {
         logLevel: config.LOG_INFO,
         failOnEmptyTestSuite: false,
         autoWatch: false,
+        captureTimeout: 60000,
+        browserDisconnectTimeout: 10000,
+        browserDisconnectTolerance: 3,
+        browserNoActivityTimeout: 60000,
         browsers: ['ChromeNoSandbox'],
 
 
