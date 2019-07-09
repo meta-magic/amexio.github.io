@@ -77,7 +77,12 @@ describe('amexio-tree-filter-view', () => {
   });
 
 
-  it('ngoninit() first else', () => {
+  it('ngoninit() first else', () => {  
+    comp.ngOnInit();  
+    expect(comp.parentTmp).toBeUndefined();
+    comp.ngAfterViewInit()
+    expect(comp.parentTmp).toBeUndefined();
+
     comp.parentTmp = null;
     comp.ngOnInit();
     expect(comp.parentTmp).toBeNull();
@@ -193,6 +198,18 @@ describe('amexio-tree-filter-view', () => {
      expect(comp.data).not.toBeDefined();
   });  
 
+//   it('updateComponent()  first else ', () => {
+//     // comp.previousValue = 'aaa'
+//     comp.data = [{a: 'a'}]
+//     comp.previousValue = [{b: 'b'}]
+// comp.updateComponent();
+// // if (this.data != null && JSON.stringify(this.previousValue) !== JSON.stringify(this.data)) {
+// expect(comp.data).not.toBeNull();
+// expect(comp.previousValue).not.toEqual(comp.data);
+// comp.previousValue = JSON.parse(JSON.stringify(comp.data));
+// comp.setData(comp.data);
+//   });  
+
   it('ngAfterViewInit() forth elseif ', () => {
     comp.data = [{a: 'a'}]
     comp.ngAfterViewInit()
@@ -203,16 +220,7 @@ describe('amexio-tree-filter-view', () => {
 
   });  
 
-//   it('updateComponent()  first else ', () => {
-//     comp.previousValue = [{b: 'b'}]
 
-// comp.updateComponent();
-// // if (this.data != null && JSON.stringify(this.previousValue) !== JSON.stringify(this.data)) {
-// expect(comp.data).not.toBeNull();
-// expect(comp.previousValue).not.toEqual(comp.data);
-// comp.previousValue = JSON.parse(JSON.stringify(comp.data));
-// comp.setData(comp.data);
-//   });  
 
 
   it('fliter tree expandAll() on method call', () => {
@@ -287,6 +295,17 @@ describe('amexio-tree-filter-view', () => {
 
   });
 
+  // 
+  it('fliter tree getData()if on method call', () => {
+    // if (this.datareader != null) {
+      let httpResponse;
+      let responsedata: any = httpResponse;
+    comp.datareader = null;
+    expect(comp.datareader).toBeNull();
+    responsedata = httpResponse;
+    
+  });
+  // 
   it('fliter tree getData()if on method call', () => {
     let httpResponse = [
 
