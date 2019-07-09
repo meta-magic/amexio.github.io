@@ -88,7 +88,9 @@ describe('navmenu', () => {
     };
     comp.mobileToggleModel = !comp.mobileToggleModel;
     comp.mobilemode = false;
+    comp.showMenus = false;
     expect(comp.mobilemode).toEqual(false);
+    expect(comp.showMenus).toEqual(false);
     comp.onClick(node, event);
   });
 
