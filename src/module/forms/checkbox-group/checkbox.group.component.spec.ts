@@ -23,7 +23,7 @@ describe('amexio-checkbox-group', () => {
   let fixture: ComponentFixture<AmexioCheckBoxGroupComponent>;
   let DataService: CommonDataService;
   let httpMock: HttpTestingController;
-  let formParameter : FormControl;
+  let formParameter: FormControl;
 
   let responsedata: any
 
@@ -40,6 +40,7 @@ describe('amexio-checkbox-group', () => {
     event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
 
     it('true is true', () => expect(true).toBe(true));
+    comp.required = false;
   });
 
   //check variables 
@@ -198,7 +199,7 @@ describe('amexio-checkbox-group', () => {
   });
 
   it('getResponseData() else condition', () => {
-    let httpResponse = 
+    let httpResponse =
       [
         {
           "countryName": "Myanmar",
@@ -222,10 +223,10 @@ describe('amexio-checkbox-group', () => {
           "currencySymbol": "$",
           "isoNumeric": 850
         }]
-    
-        comp.datareader = '';
-        expect(comp.datareader).not.toBeNull();
-        responsedata = httpResponse;
+
+    comp.datareader = '';
+    expect(comp.datareader).not.toBeNull();
+    responsedata = httpResponse;
   });
 
 
@@ -254,20 +255,31 @@ describe('amexio-checkbox-group', () => {
       "language": "Angular 2",
       "checked": false
     }];
+    comp.required = true;
+
     comp.validate(formParameter);
-  
+    expect(comp['_model']).not.toBeNull();
+    expect(comp.required).toBe(true);
+    expect(comp['_model'].length).toBeGreaterThan(0);
+    return  {
+      jsonParseError: {
+        valid: true,
+      },
+    };
+  });
+
+  //
+  it('check validate ', () => {
+    comp['_model'] = [{
+      "language": "Angular 2",
+      "checked": false
+    }];
+    comp.required = false;
+    comp.validate(formParameter);
     expect(comp['_model']).not.toBeNull();
     expect(comp['_model'].length).toBeGreaterThan(0);
-  //   return (this.required && (this._model && this._model.length > 0)) || !this.required
-  //     ? null
-  //     : {
-  //         jsonParseError: {
-  //           valid: true,
-  //         },
-  //       };
-  // }
-
-
+    expect(comp.required).toBe(false);
+    return null;
   });
 
 });

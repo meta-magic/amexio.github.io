@@ -101,7 +101,7 @@ export class AmexioCheckBoxGroupComponent extends ValueAccessorBase<any>
  default : false
  description :  property to set if manditory
  */
-  @Input('required') required: false;
+  @Input('required') required = false;
 
   @Input('name') name: string;
 
@@ -192,10 +192,7 @@ export class AmexioCheckBoxGroupComponent extends ValueAccessorBase<any>
     this.onSelection.emit(this.SelectedCheckBox);
    }
   public validate(c: FormControl) {
-    return (this.required && (this._model && this._model.length > 0)) || !this.required
-      ? null
-      : {
-          jsonParseError: {
+    return (this.required && (this._model && this._model.length > 0)) || !this.required? null: { jsonParseError: {
             valid: true,
           },
         };
