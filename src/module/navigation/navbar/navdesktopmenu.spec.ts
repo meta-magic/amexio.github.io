@@ -28,22 +28,18 @@ describe('navdesktopmenu', () => {
     }]
   });
 
-  it('ngAfterViewInit()', () => {
+  it('ngAfterViewInit method', () => {
+    comp1.ngAfterViewInit();
     setTimeout(() => {
-      comp1.ngAfterViewInit();
       const fixture = TestBed.createComponent(AmexioNavDesktopMenuComponent);
       fixture.detectChanges();
-      const compiled = fixture.debugElement.nativeElement;
       expect(window.innerWidth - el.nativeElement.getBoundingClientRect().right).toBeLessThan(300);
-      // let a = 8;
       comp1.position = 'right';
-      // expect(window.innerWidth - a).toBeGreaterThan(300);
-      // comp1.position = 'left';
     }, 100);
   });
-  it('ngAfterViewInit() else block', () => {
+  it('ngAfterViewInit else block', () => {
+    comp1.ngAfterViewInit();
     setTimeout(() => {
-      comp1.ngAfterViewInit();
       const fixture = TestBed.createComponent(AmexioNavDesktopMenuComponent);
       fixture.detectChanges();
       let a = 8;
