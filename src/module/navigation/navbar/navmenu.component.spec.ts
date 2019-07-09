@@ -65,8 +65,6 @@ describe('navmenu', () => {
   });
 
   it('onHeaderClick() method  if check', () => {
-  //  let event1 = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
-
     comp.onHeaderClick(event);
     const node = {
       header: true,
@@ -76,13 +74,13 @@ describe('navmenu', () => {
     comp.mobileToggleModel = !comp.mobileToggleModel;
     comp.mobilemode = true;
     comp.showMenus = false;
+    comp.onHeaderClick(event);
     expect(comp.mobilemode).toEqual(true);
-    comp.showMenus = true;
+    comp.showMenus = !comp.showMenus;;
     comp.onClick(node, event);
   });
 
   it('onHeaderClick() method  else check', () => {
-    // let event1 = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
     comp.onHeaderClick(event);
     const node = {
       header: true,
@@ -92,10 +90,15 @@ describe('navmenu', () => {
     comp.mobileToggleModel = !comp.mobileToggleModel;
     comp.mobilemode = false;
     comp.showMenus = true;
+    comp.onHeaderClick(event);
     expect(comp.mobilemode).toEqual(false);
-    comp.showMenus = false;
     comp.onClick(node, event);
   });
+
+
+
+
+
   it('onMouseOver() method if check', () => {
     comp.mobilemode = true;
     comp.showMenus = true;
