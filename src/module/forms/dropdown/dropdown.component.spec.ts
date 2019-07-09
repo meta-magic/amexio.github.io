@@ -67,55 +67,8 @@ describe('amexio-dropdown', () => {
   //   comp.setData(comp._data);
   // });
 
-  // it('setData method for datareader not equal to null', () => {
-  //   let responsedata: any;
-  //   let httpResponse: any;
-  //   httpResponse = {
-  //     "data": [
-  //       {
-  //         "countryName": "Myanmar",
-  //         "countryCode1": "MM",
-  //         "countryCode2": "MMR",
-  //         "countryFlag": "MM.png",
-  //         "capital": "",
-  //         "currencyCode": "MMK",
-  //         "currencyName": "Kyat",
-  //         "currencySymbol": "K",
-  //         "capitalLatitude": null,
-  //         "capitalLongitude": null,
-  //         "isoNumeric": 104
-  //       },
-  //       {
-  //         "countryName": "U.S. Virgin Island",
-  //         "countryCode1": "VI",
-  //         "countryCode2": "VIR",
-  //         "countryFlag": "VI.png",
-  //         "capital": "",
-  //         "currencyCode": "USD",
-  //         "currencyName": "Dollar",
-  //         "currencySymbol": "$",
-  //         "capitalLatitude": null,
-  //         "capitalLongitude": null,
-  //         "isoNumeric": 850
-  //       }]
-  //   }
-  //   comp.setData(httpResponse);
-  //   responsedata = httpResponse;
-  //   comp.datareader = 'data.qwert';
-  //   expect(comp.datareader).not.toEqual(null);
-  //   comp.multiselectValues = [];
-  //   let dr = comp.datareader.split('.');
-  //   expect(dr).toBeDefined();
-  //   for (const ir of dr) {
-  //     responsedata = responsedata[ir];
-  //   }
-  //   comp.setResponseData(responsedata);
-  //   comp.multiSelection();
-  //   comp.setUserSelection();
-  //   comp.maskloader = false;
-  // });
-
-  it('setData method for datareader equal to null', () => {
+  it('setData method for datareader not equal to null', () => {
+    let responsedata: any;
     let httpResponse: any;
     httpResponse = {
       "data": [
@@ -146,9 +99,59 @@ describe('amexio-dropdown', () => {
           "isoNumeric": 850
         }]
     }
+    comp.setData(httpResponse);
+    responsedata = httpResponse;
+    comp.datareader = 'data';
+    expect(comp.datareader).not.toEqual(null);
+    comp.multiselectValues = [];
+    let dr = comp.datareader.split('.');
+    expect(dr).toBeDefined();
+    for (const ir of dr) {
+      responsedata = responsedata[ir];
+    }
+    comp.setResponseData(responsedata);
+    comp.multiSelection();
+    comp.setUserSelection();
+    comp.maskloader = false;
+  });
+
+  it('setData method for datareader equal to null', () => {
+    let httpResponse: any;
+    httpResponse = 
+      [
+        {
+          "countryName": "Myanmar",
+          "countryCode1": "MM",
+          "countryCode2": "MMR",
+          "countryFlag": "MM.png",
+          "capital": "",
+          "currencyCode": "MMK",
+          "currencyName": "Kyat",
+          "currencySymbol": "K",
+          "capitalLatitude": null,
+          "capitalLongitude": null,
+          "isoNumeric": 104
+        },
+        {
+          "countryName": "U.S. Virgin Island",
+          "countryCode1": "VI",
+          "countryCode2": "VIR",
+          "countryFlag": "VI.png",
+          "capital": "",
+          "currencyCode": "USD",
+          "currencyName": "Dollar",
+          "currencySymbol": "$",
+          "capitalLatitude": null,
+          "capitalLongitude": null,
+          "isoNumeric": 850
+        }];
     comp.datareader = null;
+    comp.setData(httpResponse);
     expect(comp.datareader).toEqual(null);
     responsedata = httpResponse;
+    comp.setResponseData(responsedata);
+    comp.multiSelection();
+    comp.setUserSelection();
     comp.maskloader = false;
   });
   // it('setResponseData method', () => {
@@ -480,55 +483,23 @@ describe('amexio-dropdown', () => {
     comp.componentId = comp.createCompId('dropdown', comp.displayfield);
     comp.isValid = comp.allowblank;
     comp.isComponentValid.emit(comp.allowblank);
-  
+    // comp.httpmethod = 'get';
+    // comp.httpurl = 'https/rgh'
+    // expect(comp.httpmethod).toBeDefined();
+    // expect(comp.httpurl).toBeDefined();
+    // dataService.fetchData(comp.httpurl, comp.httpmethod).subscribe((response) => {
+    //   comp.responseData = response;
+    // });
     let value = comp.name;
     comp.ngOnInit();
     expect(comp.name).toEqual(value);
-     
+    // comp.input.subscribe((g: any) => {
+    //   expect(comp.input).toEqual(g);
+    // }); 
+    // comp.onIngOnInitnput(value);
+    // expect(comp.isValid).toBe(value.vaild);
   });
- 
-  it('ngOnInit() first else', () => {
-    comp.ngOnInit();
-    // if (this.httpmethod && this.httpurl) {
-     expect(comp.httpmethod).not.toBeDefined();
-     expect(comp.httpurl).not.toBeDefined();
-
-  });
-
-
-  it('ngOnInit() first if', () => {
-    comp.httpmethod = "get";
-    comp.httpurl = "sample.json";
-    comp.ngOnInit();
-    // if (this.httpmethod && this.httpurl) {
-     expect(comp.httpmethod).toBeDefined();
-     expect(comp.httpurl).toBeDefined();
-     comp.dataService.fetchData(comp.httpurl, comp.httpmethod).subscribe((response: any) => {
-      comp.responseData = response;
-      }, (error) => {
-      }, () => {
-        comp.setData(comp.responseData);
-      });
-
-  });
-
-  it('ngOnInit() second elseif else', () => {
-    comp.ngOnInit();
-    expect(comp.data).not.toBeDefined();
-
-  });
-
-  it('ngOnInit() second elseif ', () => {
-    comp.data = [{a: 'a'}]
-    comp.ngOnInit();
-    expect(comp.data).toBeDefined();
-    comp.previousData = JSON.parse(JSON.stringify(comp.data));
-      comp.setData(comp.data);
-  });
-
-
-
-
+  //setUserSelection check
 
   it('check setUserSelection method', () => {
     comp.setUserSelection();
