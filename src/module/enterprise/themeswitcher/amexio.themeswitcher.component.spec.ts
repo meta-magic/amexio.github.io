@@ -183,4 +183,10 @@ it('ngOnChanges()', () => {
         comp1.show = changes.show.currentValue;
     // }
 });
+it('ngOnChanges() else block', () => {
+    let changes: any;
+    changes = {show: false, currentValue: 12};
+    comp1.ngOnChanges(changes);
+        expect(changes['show']).toEqual(false);
+});
 });
