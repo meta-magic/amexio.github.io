@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { IconLoaderService } from '../../../index';
 import { AmexioFloatingPanelComponent } from './floatingpanel.component';
 import { AmexioFormsModule } from '../../forms/amexio.forms.module';
+import { SimpleChange } from '@angular/core';
 
 describe('amexio-floating-panel', () => {
     let comp: AmexioFloatingPanelComponent;
@@ -29,29 +30,58 @@ describe('amexio-floating-panel', () => {
     //     expect(comp).toBeTruthy();
     // }));
 
+ it('ngOnchanges method call if condition',() => {
+    let element = fixture.nativeElement;
+     let showPanel = true;
+     comp.absolute = true;
+       comp.showPanel = showPanel;
+       let currentshowpanel:boolean;
+       comp.ngOnChanges({
+        changes: new SimpleChange(null, showPanel,false)
+       }
+    );
+       fixture.detectChanges();
+       expect(comp.showPanel).toBe(showPanel);
+       expect(comp.absolute).toBe(true);
+       comp.setPanelAbsolutePostion();
+    });
+
+ it('ngOnchanges method call else condition',() => {
+      let element = fixture.nativeElement;
+      let showPanel = true;
+       comp.absolute = false;
+       comp.showPanel = showPanel;
+       let currentshowpanel:boolean;
+       comp.ngOnChanges({
+        changes: new SimpleChange(null, showPanel,false)
+       }
+    );
+       fixture.detectChanges();
+       expect(comp.showPanel).toBe(showPanel);
+       expect(comp.absolute).toBe(false);
+       comp.panelStyle();
+    });
     // it('ngOnInit method', () => {
-    //     comp.height = '';
     //     comp.absolute = true;
     //     comp.width = '';
-    //     comp.showPanel = true;
+    //     comp.showPanel = false;
     //     comp.arrow = true;
-    //     comp.draggable = true;
     //     comp.relative = true;
     //     comp.ngOnInit();
     //     expect(comp.absolute).toEqual(true);
-    //     comp.relative = false;               
+    //     comp.relative = false;  
+    //     comp.height = '';             
     //     expect(comp.height).toEqual('');
     //     comp.height = 200;
+    //     comp.width = '';
     //     expect(comp.width).toEqual('');    
     //     comp.width = 400;  
     //     expect(comp.showPanel).toEqual(true);        
-    //     comp.panelStyle();             
+    //     comp.panelStyle();    
+    //     comp.draggable = true;        
     //     expect(comp.draggable).toEqual(true);
     //     expect(comp.arrow).toEqual(true);
-    //      comp.draggable  = false;
-    //     expect(comp.draggable).toEqual(true);
-    //     expect(comp.relative).toEqual(true);
-    //     comp.style['position'] ='absolute';    
+    //      comp.draggable  = false;  
     // });
 
     it('panel style method if condition ', () => {
