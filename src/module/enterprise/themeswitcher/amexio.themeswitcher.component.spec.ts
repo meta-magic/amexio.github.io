@@ -36,10 +36,6 @@ import { SimpleChange } from '@angular/core';
 describe('theme switcher', () => {
     let comp1: AmexioThemeSwitcherComponent;
     let fixture1: ComponentFixture<AmexioThemeSwitcherComponent>;
-    let respo: any = [];
-    let positionMapData: string[];
-    let isFloatingButton = false;
-    let isSimpleButton = false;
     let service: AmexioThemeSwitcherService;
 
     beforeEach(() => {
@@ -58,21 +54,8 @@ describe('theme switcher', () => {
         fixture1 = TestBed.createComponent(AmexioThemeSwitcherComponent);
         comp1 = fixture1.componentInstance;
         service = TestBed.get(AmexioThemeSwitcherService);
-
-
     });
-
-    //   it('constructor()', () => {
-    //        comp1.constructor();
-    //        comp1.positionMapData = [];
-    //        comp1.positionMapData['hpos-right'] = { position: 'right', value: '10px' };
-    //        comp1.positionMapData['hpos-left'] = { position: 'left', value: '10px' };
-    //        comp1.positionMapData['vpos-bottom'] = { position: 'bottom', value: '25px' };
-    //        comp1.positionMapData['vpos-top'] = { position: 'top', value: '55px' };
-    //        comp1.closeable = true;
-    //   });
-
-    it('ngOninit method', () => {
+    it('ngOninit method if condition', () => {
         comp1.ngOnInit();
         comp1.buttonType = 'floatingbutton'
         expect(comp1.buttonType).toEqual('floatingbutton');
@@ -85,8 +68,13 @@ describe('theme switcher', () => {
         expect(comp1.relative).toEqual(true);
         expect(comp1.closeable).toEqual(false);
         comp1.show = true;
+        service.themeData.subscribe((theme:any) => {
+            theme='aaa';
+            expect(theme).not.toEqual(null);
+            comp1.onThemeClick.emit(theme);
+        });
     });
-    it('ngOninit method', () => {
+    it('ngOninit method else condition', () => {
         comp1.ngOnInit();
         comp1.buttonType = ''
         expect(comp1.buttonType).toEqual('');
@@ -98,12 +86,30 @@ describe('theme switcher', () => {
         expect(comp1.closeable).toEqual(true);
         comp1.loadMDAThemes();
         service.themeData.subscribe((theme: any) => {
-            if (theme != null) {
-                this.onThemeClick.emit(theme);
-            }
+            theme ='';
+            expect(theme).toEqual('');
+                comp1.onThemeClick.emit(theme);
         });
     });
+    // it('ngOninit method else condition', () => {
+    //     comp1.ngOnInit();
+    //     comp1.buttonType = ''
+    //     expect(comp1.buttonType).toEqual('');
+    //     comp1.buttonType = ''
+    //     expect(comp1.buttonType).toEqual('');
+    //     comp1.relative = false
+    //     comp1.closeable = true;
+    //     expect(comp1.relative).toEqual(false);
+    //     expect(comp1.closeable).toEqual(true);
+    //     comp1.loadMDAThemes();
+        // let theme: null;
+        // service.themeData.subscribe((theme: any) => {
+        //     expect(theme).not.toEqual(null)
+        //         comp1.onThemeClick.emit(theme);
+        // });
+    // });
     it('loadMDAThemes method', () => {
+        comp1.loadMDAThemes();
         expect(comp1.isMDA).toBeDefined();
         let responseData: any;
         service.loadThemes('assets/amexiomdathemes/json/amexio-mda.json')
@@ -115,6 +121,7 @@ describe('theme switcher', () => {
             });
     })
     it('loadMDAThemes method else block', () => {
+        comp1.loadMDAThemes();
         comp1.isMDA = false;
         expect(comp1.isMDA).toEqual(false);
     });
