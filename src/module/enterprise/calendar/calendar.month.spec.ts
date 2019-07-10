@@ -334,7 +334,44 @@ describe('amexio-calendar-month', () => {
     comp.xValue = event1.pageX;
     comp.onMoreEventClicked.emit(emitEvent);
   });
-
+  it('onMoreClicked() else block', () => {
+    let data = [
+      {
+        detais: { title: "Java Conference", end: new Date(), eventclass: "calendar-active-3", hasTimeSlot: true, people: [{ personName: "Priyanka Gokhale" }, { personName: "Seema Rai" }], phone: "020-23456789", start: new Date(), url: "meet.google.com/izm-pooa-gns" },
+        eventDateTime: new Date(),
+        events: '',
+        hasTimeSlot: true,
+        isEvent: true,
+        title: "Java Conference"
+      },
+      {
+        detais: { title: "Angular Conference", end: new Date(), eventclass: "calendar-active-4", hasTimeSlot: true, people: [{ personName: "Arun jain" }, { personName: "Raj Rai" }], phone: "020-23456788", start: new Date(), url: "meet.google.com/izm-pooa-gns" },
+        eventDateTime: new Date(),
+        events: null,
+        hasTimeSlot: true,
+        isEvent: true,
+        title: "Angular Conference"
+      },
+      {
+        detais: { title: "Android Conference", end: new Date(), eventclass: "calendar-active-4", hasTimeSlot: true, people: [{ personName: "Arun jain" }, { personName: "Raj Rai" }], phone: "020-23456788", start: new Date(), url: "meet.google.com/izm-pooa-gns" },
+        eventDateTime: new Date(),
+        events: null,
+        hasTimeSlot: true,
+        isEvent: true,
+        title: "Android Conference"
+      },
+      {
+        detais: { title: "IOS Conference", end: new Date(), eventclass: "calendar-active-4", hasTimeSlot: true, people: [{ personName: "Arun jain" }, { personName: "Raj Rai" }], phone: "020-23456788", start: new Date(), url: "meet.google.com/izm-pooa-gns" },
+        eventDateTime: new Date(),
+        events: null,
+        hasTimeSlot: true,
+        isEvent: true,
+        title: "IOS Conference"
+      }
+    ];
+    comp.onMoreClicked(event, data);
+    expect(comp.calendaryData).toBeDefined();
+  });
   it('onMoreClicked()', () => {
     let data = [
       {
@@ -411,6 +448,7 @@ describe('amexio-calendar-month', () => {
     data['fpFlag'] = true;
     comp.openFloatingPanel = true;
   });
+
 
   it('ondatefocus()', () => {
     let day = {
