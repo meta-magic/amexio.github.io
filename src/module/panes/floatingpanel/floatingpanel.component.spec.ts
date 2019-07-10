@@ -145,7 +145,8 @@ describe('amexio-floating-panel', () => {
         comp.setColorPalette(themeClass);
         comp.themeCss = themeClass;
     });
-    it('setpanelAbsolutePosition method', () => {
+    it('setpanelAbsolutePosition if  method', () => {
+        comp.width = '200';
         comp.setPanelAbsolutePostion();
         comp.style = {};
         comp.style['position'] = 'absolute';
@@ -153,24 +154,25 @@ describe('amexio-floating-panel', () => {
         comp.style['z-index'] = '400';
         comp.style['opacity'] = '1';
         comp.style['box-shadow'] = '0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)';
+        expect(comp.width).not.toEqual('')
         comp.style['width'] = comp.width + 'px';
-        comp.style['width'] = '400px';
-        comp.width = '';
-        // expect(comp.width).not.toEqual('');
-        expect(comp.width).toEqual('');
+        comp.setPanelStylePostion();
+        comp.arrowPadding();
     })
-    // it('setpanelAbsolutePosition method', () => {
-    //     comp.style = {};
-    //     comp.style['position'] = 'absolute';
-    //     comp.style['display'] = 'block';
-    //     comp.style['z-index'] = '400';
-    //     comp.style['opacity'] = '1';
-    //     comp.style['box-shadow'] = '0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)';
-    //     comp.style['width'] = comp.width + 'px';
-    //     comp.style['width'] = '400px';
-    //     expect(comp.width).not.toEqual('');
-    //     expect(comp.width).toEqual('');
-    // })
+    it('setpanelAbsolutePosition else  method', () => {
+        comp.width = '';
+        comp.setPanelAbsolutePostion();
+        comp.style = {};
+        comp.style['position'] = 'absolute';
+        comp.style['display'] = 'block';
+        comp.style['z-index'] = '400';
+        comp.style['opacity'] = '1';
+        comp.style['box-shadow'] = '0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)';
+        expect(comp.width).toEqual('');
+        comp.width = '400px';
+        comp.setPanelStylePostion();
+        comp.arrowPadding();      
+    })
     it('checking togglePanel method', () => {
         comp.showPanel = false;
         comp.togglePanel();
