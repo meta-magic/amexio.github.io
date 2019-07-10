@@ -33,7 +33,7 @@ import { SimpleChange } from '@angular/core';
 // import { CommonIconComponent} from '../../base/components/common.icon.component';
 // import {  }
 
-describe('theme switcher', () => {
+fdescribe('theme switcher', () => {
     let comp1: AmexioThemeSwitcherComponent;
     let fixture1: ComponentFixture<AmexioThemeSwitcherComponent>;
     let service: AmexioThemeSwitcherService;
@@ -50,7 +50,6 @@ describe('theme switcher', () => {
                 AmexioCardCEHeaderComponent, CommonIconComponent],
             providers: [IconLoaderService, HttpClient, HttpHandler, DeviceQueryService, AmexioThemeSwitcherService],
         });
-
         fixture1 = TestBed.createComponent(AmexioThemeSwitcherComponent);
         comp1 = fixture1.componentInstance;
         service = TestBed.get(AmexioThemeSwitcherService);
@@ -68,27 +67,27 @@ describe('theme switcher', () => {
         expect(comp1.relative).toEqual(true);
         expect(comp1.closeable).toEqual(false);
         comp1.show = true;
-        service.themeData.subscribe((theme:any) => {
-            theme='aaa';
+        service.themeData.subscribe((theme: any) => {
+            theme = 'aaa';
             expect(theme).not.toEqual(null);
             comp1.onThemeClick.emit(theme);
         });
     });
     it('ngOninit method else condition', () => {
         comp1.ngOnInit();
-        comp1.buttonType = ''
+        comp1.buttonType = '';
         expect(comp1.buttonType).toEqual('');
-        comp1.buttonType = ''
+        comp1.buttonType = '';
         expect(comp1.buttonType).toEqual('');
-        comp1.relative = false
+        comp1.relative = false;
         comp1.closeable = true;
         expect(comp1.relative).toEqual(false);
         expect(comp1.closeable).toEqual(true);
         comp1.loadMDAThemes();
         service.themeData.subscribe((theme: any) => {
-            theme ='';
+            theme = '';
             expect(theme).toEqual('');
-                comp1.onThemeClick.emit(theme);
+            comp1.onThemeClick.emit(theme);
         });
     });
     // it('ngOninit method else condition', () => {
@@ -102,12 +101,17 @@ describe('theme switcher', () => {
     //     expect(comp1.relative).toEqual(false);
     //     expect(comp1.closeable).toEqual(true);
     //     comp1.loadMDAThemes();
-        // let theme: null;
-        // service.themeData.subscribe((theme: any) => {
-        //     expect(theme).not.toEqual(null)
-        //         comp1.onThemeClick.emit(theme);
-        // });
+    // let theme: null;
+    // service.themeData.subscribe((theme: any) => {
+    //     expect(theme).not.toEqual(null)
+    //         comp1.onThemeClick.emit(theme);
     // });
+    // });
+    it('loadMDAThemes method else block', () => {
+        comp1.isMDA = false;
+        comp1.loadMDAThemes();
+        expect(comp1.isMDA).toEqual(false);
+    });
     it('loadMDAThemes method', () => {
         comp1.loadMDAThemes();
         expect(comp1.isMDA).toBeDefined();
@@ -119,12 +123,8 @@ describe('theme switcher', () => {
             }, () => {
                 comp1.data = responseData;
             });
-    })
-    it('loadMDAThemes method else block', () => {
-        comp1.loadMDAThemes();
-        comp1.isMDA = false;
-        expect(comp1.isMDA).toEqual(false);
     });
+
     it('getPostion() if condition', () => {
         let style = {}
         comp1.closeable = false;
