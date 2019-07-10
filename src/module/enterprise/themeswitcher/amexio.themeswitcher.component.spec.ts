@@ -82,7 +82,7 @@ describe('theme switcher', () => {
         comp1.getPostion(style);
         expect(comp1.closeable).toEqual(true);
         expect(comp1.relative).toEqual(true);
-       
+
         style['position'] = 'absolute';
         style['right'] = '0';
 
@@ -104,66 +104,9 @@ describe('theme switcher', () => {
         expect(comp1.closeable).toEqual(false);
         expect(comp1.relative).toEqual(false);
         style['position'] = 'fixed';
-    
-    });
-
-    it('themeStyle()', () => {
-        comp1.themeStyle();
-        const windowWidth = window.innerWidth;
-        const perBlockWidth = ((windowWidth / 100) * 35) / 3;
-        const style1 = {};
-        const style = comp1.getPostion(style1);
-        style['display'] = 'block';
-        comp1.closeable = true;
-        expect(comp1.closeable).toEqual(true);
-        style['z-index'] = '600';
-        comp1.closeable = false;
-        expect(comp1.closeable).toEqual(false);
-        style['z-index'] = '0';
-
-        // if (this.colsize <= 3) {
-        comp1.colsize = 3;
-        expect(comp1.colsize).toBeLessThanOrEqual(3)
-        style['min-width'] = '250px';
-        // } else {
-        comp1.colsize = 4;
-        expect(comp1.colsize).toBeGreaterThan(3)
-        style['min-width'] = '200px';
-        // }
-        // if (!this.relative) {
-        comp1.relative = false;
-        expect(comp1.relative).toEqual(false);
-        comp1.horizontalPosition = '50';
-        comp1.verticalPosition = '89'
-        const hpos = comp1.positionMapData['hpos-' + comp1.horizontalPosition];
-        const vpos = comp1.positionMapData['vpos-' + comp1.verticalPosition];
-        //  hpos
-        //  if (hpos) {
-        //  expect(hpos).toEqual(hpos);
-        // style[hpos.position] = hpos.value;
-        // }
-        // if (vpos) {
-        // expect(vpos).ToEqual(vpos);
-        // style[vpos.position] = vpos.value;
-        // }
-        comp1.relative = true;
-        expect(comp1.relative).toEqual(true);
-        style['margin-top'] = '10px';
-
-
-        // if (this.closeable) {
-        comp1.closeable = true;
-        expect(comp1.closeable).toEqual(true);
-        // style['width'] = (perBlockWidth * this.colsize) + 'px';
-        // } else {
-        comp1.closeable = false;
-        expect(comp1.closeable).toEqual(false);
-        style['width'] = '100%';
-        // }
-        return style;
-
 
     });
+
 
 
     it('togglePanel()', () => {
@@ -200,5 +143,81 @@ describe('theme switcher', () => {
         changes = { show: false, currentValue: 12 };
         comp1.ngOnChanges(changes);
         expect(changes['show']).toEqual(false);
+    });
+
+    it('themeStyle()', () => {
+        comp1.themeStyle();
+        const windowWidth = window.innerWidth;
+        const perBlockWidth = ((windowWidth / 100) * 35) / 3;
+        const style1 = {};
+        const style = comp1.getPostion(style1);
+        style['display'] = 'block';
+        comp1.closeable = true;
+        comp1.themeStyle();
+        expect(comp1.closeable).toEqual(true);
+        style['z-index'] = '600';
+
+        comp1.closeable = false;
+        comp1.themeStyle();
+        expect(comp1.closeable).toEqual(false);
+        style['z-index'] = '0';
+
+        comp1.colsize = 3;
+        comp1.themeStyle();
+        expect(comp1.colsize).toBeLessThanOrEqual(3)
+        style['min-width'] = '250px';
+
+        comp1.colsize = 4;
+        comp1.themeStyle();
+        expect(comp1.colsize).toBeGreaterThan(3)
+        style['min-width'] = '200px';
+
+        return style;
+
+
+    });
+
+
+    it('themeStyle() relative method if condition', () => {
+        const windowWidth = window.innerWidth;
+        const perBlockWidth = ((windowWidth / 100) * 35) / 3;
+        comp1.relative = false;
+        comp1.horizontalPosition = '50';
+        comp1.verticalPosition = '89'
+        const style1 = {};
+        const style = comp1.getPostion(style1);
+
+        comp1.themeStyle();
+
+        expect(comp1.relative).toEqual(false);
+        const hpos = comp1.positionMapData['hpos-' + comp1.horizontalPosition];
+        const vpos = comp1.positionMapData['vpos-' + comp1.verticalPosition];
+
+
+        comp1.closeable = true;
+        comp1.themeStyle();
+        expect(comp1.closeable).toEqual(true);
+        style['width'] = (perBlockWidth * comp1.colsize) + 'px';
+        return style;
+
+
+    });
+    it('themeStyle() relative method else condition', () => {
+        comp1.relative = true;
+
+        const style1 = {};
+        const style = comp1.getPostion(style1);
+
+        comp1.themeStyle();
+        expect(comp1.relative).toEqual(true);
+        style['margin-top'] = '10px';
+
+        comp1.closeable = false;
+        comp1.themeStyle();
+        expect(comp1.closeable).toEqual(false);
+        style['width'] = '100%';
+        return style;
+
+
     });
 });
