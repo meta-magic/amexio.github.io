@@ -33,14 +33,13 @@ import { SimpleChange } from '@angular/core';
 // import { CommonIconComponent} from '../../base/components/common.icon.component';
 // import {  }
 
-fdescribe('theme switcher', () => {
+describe('theme switcher', () => {
     let comp1: AmexioThemeSwitcherComponent;
     let fixture1: ComponentFixture<AmexioThemeSwitcherComponent>;
     let respo: any = [];
     let positionMapData: string[];
     let isFloatingButton = false;
     let isSimpleButton = false;
-    let _http: string;
     let service: AmexioThemeSwitcherService;
 
     beforeEach(() => {
