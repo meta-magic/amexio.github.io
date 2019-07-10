@@ -72,8 +72,8 @@
     
                                                                 <div [ngClass]="{fpClass: !isLast, fpRightClass: isLast}">
                                                                     <div class="EventDetailsContent" #runtimeDiv [attr.id]="day.date"></div>
-                                                                    <div class="floatingPanelIndex">
-                                                                        <amexio-floating-panel [(show-panel)]="day.eventDetails.events.fpFlag" [relative]="true" [closeable]="true" [width]="'200'"
+                                                                    <div class="floatingPanelIndex" >
+                                                                        <amexio-floating-panel class="amexio-floating-panel" [(show-panel)]="day.eventDetails.events.fpFlag" [relative]="true" [closeable]="true" [width]="'200'"
                                                                             [title]="day.eventDetails.events[0].eventDateTime|date :'mediumDate'"
                                                                             (onClose)="onCloseClick({event: $event, data: day.eventDetails.events})">
     
