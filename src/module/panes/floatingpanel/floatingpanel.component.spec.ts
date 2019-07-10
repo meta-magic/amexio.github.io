@@ -8,7 +8,7 @@ import { SimpleChange } from '@angular/core';
 describe('amexio-floating-panel', () => {
     let comp: AmexioFloatingPanelComponent;
     let fixture: ComponentFixture<AmexioFloatingPanelComponent>;
-
+    let event1:any;
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule, AmexioFormsModule],
@@ -18,7 +18,6 @@ describe('amexio-floating-panel', () => {
         fixture = TestBed.createComponent(AmexioFloatingPanelComponent);
         comp = fixture.componentInstance;
         event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
-
         it('true is true', () => expect(true).toBe(true));
         
 
@@ -184,6 +183,64 @@ describe('amexio-floating-panel', () => {
         comp.showPanelChange.subscribe((g: any) => {
             expect(comp.showPanelChange).toEqual(g);
         });
+    });
+    it('elementDrag method  if call', () => {
+        comp.pos1 = 0;
+        comp.pos2 = 0;
+        comp.pos3 = 0;
+        comp.pos4 = 0;
+        comp.bottomPosition = '20px';
+        comp.style =  {'bottom':'10px'};
+        let floatingPanel = {
+            'offsetTop':1200,
+            'offsetLeft':145,
+            'style': {
+                'top':'20px',
+                'left':'10px',
+                'opacity':'1'
+            }
+        }
+    let  e = jasmine.createSpyObj('e', [ 'preventDefault' ]); 
+    e['clientX'] = 1200;
+    e['clientY'] = 1400;         
+    comp.elementDrag(e,floatingPanel);
+    expect(e.preventDefault).toHaveBeenCalled(); 
+    comp.pos1 = comp.pos3 - e.clientX;
+    comp.pos2 = comp.pos4 - e.clientY;
+    comp.pos3 = e.clientX;
+    comp.pos4 = e.clientY;
+    expect(comp.bottomPosition).toBeDefined();
+    delete comp.style['bottom'];
+        floatingPanel.style.top = (floatingPanel.offsetTop - comp.pos2) + 'px';
+        floatingPanel.style.left = (floatingPanel.offsetLeft - comp.pos1) + 'px';
+        floatingPanel.style.opacity = '0.7';
+        comp.opacitiy = true;
+    });
+    it('elementDrag method else call', () => {
+        comp.pos1 = 0;
+        comp.pos2 = 0;
+        comp.pos3 = 0;
+        comp.pos4 = 0;
+        comp.style =  {'bottom':'10px'};
+        let floatingPanel = {
+            'offsetTop':1200,
+            'offsetLeft':145,
+            'style': {
+                'top':'20px',
+                'left':'10px',
+                'opacity':'1'
+            }
+        }
+    let  e = jasmine.createSpyObj('e', [ 'preventDefault' ]); 
+    e['clientX'] = 1200;
+    e['clientY'] = 1400;         
+    comp.elementDrag(e,floatingPanel);
+    expect(e.preventDefault).toHaveBeenCalled(); 
+    comp.pos1 = comp.pos3 - e.clientX;
+    comp.pos2 = comp.pos4 - e.clientY;
+    comp.pos3 = e.clientX;
+    comp.pos4 = e.clientY;
+    expect(comp.bottomPosition).toBeUndefined();
     });
 });
 
