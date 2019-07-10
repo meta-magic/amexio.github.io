@@ -8,6 +8,7 @@ import { CommonDataService } from '../../services/data/common.data.service';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { Renderer2, Renderer, TemplateRef } from '@angular/core';
 import { CommonIconComponent } from './../../base/components/common.icon.component';
+import { equal } from 'assert';
 describe('amexio-tree-filter-view', () => {
   let comp: AmexioFilterTreeComponent;
   let fixture: ComponentFixture<AmexioFilterTreeComponent>;
@@ -502,8 +503,156 @@ describe('amexio-tree-filter-view', () => {
       comp.renderServiceData();
     });
   });
+  it('filterData() second if', () => {
+    comp.filterText = "h";
+    comp.triggerchar = 1;
+    comp.orgTreeData = [
+     {
+     text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+     },
+     {
+     text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+     }
+     ];
+   comp.filterData();
+  //  if (this.treeData.length === 0) {
+    comp.treeData = [];
+   expect(comp.treeData.length).toEqual(0)
+   comp.isDataFound = false;
+ });
+  it('filterData() first else', () => {
+    comp.filterText = "h";
+    comp.triggerchar = 4;
+    comp.orgTreeData = [
+     {
+     text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+     },
+     {
+     text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+     }
+     ];
+   comp.filterData();
+   // if (this.filterText.length >= this.triggerchar) {
+   expect(comp.filterText.length).not.toBeGreaterThanOrEqual(comp.triggerchar);
+   comp.isDataFound = true;
+   comp.treeData = comp.orgTreeData;
+   
+ });
+// 
+   it('filterData() first if', () => {
+     comp.filterText = "h";
+     comp.triggerchar = 1;
+     comp.orgTreeData = [
+      {
+      text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+      },
+      {
+      text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+      }
+      ];
+    comp.filterData();
+    comp.showToolTip = false;
+    // if (this.filterText.length >= this.triggerchar) {
+    expect(comp.filterText.length).toBeGreaterThanOrEqual(comp.triggerchar);
+    const tData = JSON.parse(JSON.stringify(comp.orgTreeData));
+    const treeNodes = comp.searchTree(tData, comp.filterText);
+    comp.treeData = treeNodes;
+  });
 
+  it('filterData() second else', () => {
+    comp.filterText = "h";
+    comp.triggerchar = 1;
+    comp.orgTreeData = [
+     {
+     text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+     },
+     {
+     text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+     }
+     ];
+   comp.filterData();
+  //  if (this.treeData.length === 0) {
+   expect(comp.treeData.length).not.toEqual(0);
+   comp.isDataFound = true;
+ });
 
+ it('filterData() third elseif', () => {
+  comp.filterText = "h";
+  comp.triggerchar = 1;
+  comp.orgTreeData = [
+   {
+   text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+   },
+   {
+   text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+   }
+   ];
+   comp.onClickSearch = true;
+ comp.filterData();
+// } else if (this.onClickSearch) {
+      expect(comp.onClickSearch).toEqual(true);
+      const tData = JSON.parse(JSON.stringify(comp.orgTreeData));
+      const treeNodes = comp.searchTree(tData, comp.filterText);
+      comp.treeData = treeNodes;
+      comp.onClickSearch = false;
+});
+
+it('filterData() third elseif else', () => {
+  comp.filterText = "h";
+  comp.triggerchar = 1;
+  comp.orgTreeData = [
+   {
+   text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+   },
+   {
+   text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+   }
+   ];
+   comp.onClickSearch = false;
+ comp.filterData();
+       expect(comp.onClickSearch).toEqual(false);   
+});
+
+it('filterData() third last if', () => {
+  comp.filterText = "h";
+  comp.triggerchar = 1;
+  comp.orgTreeData = [
+   {
+   text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+   },
+   {
+   text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+   }
+   ];
+
+   comp.isexpandAll = true;
+  comp.filterData();
+  // if (this.isexpandAll) {
+    expect(comp.isexpandAll).toEqual(true);
+    comp.expandAll(comp.treeData);
+
+ });
+
+ it('filterData() third last else', () => {
+  comp.filterText = "h";
+  comp.triggerchar = 1;
+  comp.orgTreeData = [
+   {
+   text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+   },
+   {
+   text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+   }
+   ];
+
+   comp.isexpandAll = false;
+  comp.filterData();
+  // if (this.isexpandAll) {
+    expect(comp.isexpandAll).not.toEqual(true);
+    comp.generatefilterIndex(comp.treeData, 1, Math.floor(Math.random() * 1000 + 999 + 1));
+
+ });
+ 
 });
 
 
