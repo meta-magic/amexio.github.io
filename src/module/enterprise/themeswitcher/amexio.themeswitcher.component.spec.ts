@@ -59,14 +59,19 @@ describe('theme switcher', () => {
         comp1.buttonType = 'floatingbutton'
         expect(comp1.buttonType).toEqual('floatingbutton');
         comp1.isFloatingButton = true;
+
         comp1.buttonType = 'button'
+        comp1.ngOnInit();
         expect(comp1.buttonType).toEqual('button');
         comp1.isSimpleButton = true;
+
         comp1.relative = true
         comp1.closeable = false;
+        comp1.ngOnInit();
         expect(comp1.relative).toEqual(true);
         expect(comp1.closeable).toEqual(false);
         comp1.show = true;
+
         service.themeData.subscribe((theme: any) => {
             theme = 'aaa';
             expect(theme).not.toEqual(null);
@@ -77,10 +82,14 @@ describe('theme switcher', () => {
         comp1.ngOnInit();
         comp1.buttonType = '';
         expect(comp1.buttonType).toEqual('');
+
         comp1.buttonType = '';
+        comp1.ngOnInit();
         expect(comp1.buttonType).toEqual('');
+
         comp1.relative = false;
         comp1.closeable = true;
+        comp1.ngOnInit();
         expect(comp1.relative).toEqual(false);
         expect(comp1.closeable).toEqual(true);
         comp1.loadMDAThemes();
@@ -115,7 +124,156 @@ describe('theme switcher', () => {
     it('loadMDAThemes method', () => {
         comp1.loadMDAThemes();
         expect(comp1.isMDA).toBeDefined();
-        let responseData: any;
+        let responseData = [
+            [
+                {
+                    "themeName": "Army Olive",
+                    "style": "Material Design",
+                    "releaseDate": "Jan 31, 2018",
+                    "version": 4,
+                    "algorithmName": "Classic Dual Color",
+                    "algorithmID": 0,
+                    "rgb": 4936480,
+                    "hue": 69,
+                    "themes": [
+                        "#4B5320",
+                        "#708238",
+                        "#215429",
+                        "#215442",
+                        "#214d54",
+                        "#213354"
+                    ],
+                    "navBarBGColor": "#4b5320",
+                    "navBarFontColor": "#f8f9f0",
+                    "themeFilePath": "../node_modules/amexio-ng-extensions/styles/mda/at-md-army-olive.scss",
+                    "themeJSONFile": "at-md-army-olive.json",
+                    "themeCSS3File": "at-md-army-olive.scss",
+                    "themeImageFile": "AT-MD-Army-Olive.jpg"
+                },
+                {
+                    "themeName": "Ash Stone Black",
+                    "style": "Material Design",
+                    "releaseDate": "Jan 31, 2018",
+                    "version": 4,
+                    "algorithmName": "Classic Dual Color",
+                    "algorithmID": 0,
+                    "rgb": 5524554,
+                    "hue": 12,
+                    "themes": [
+                        "#544C4A",
+                        "#877f7d",
+                        "#52544a",
+                        "#4d544a",
+                        "#4a544c",
+                        "#4a5451"
+                    ],
+                    "navBarBGColor": "#544c4a",
+                    "navBarFontColor": "#f5f4f4",
+                    "themeFilePath": "../node_modules/amexio-ng-extensions/styles/mda/at-md-ash-stone-black.scss",
+                    "themeJSONFile": "at-md-ash-stone-black.json",
+                    "themeCSS3File": "at-md-ash-stone-black.scss",
+                    "themeImageFile": "AT-MD-Ash-Stone-Black.jpg"
+                },
+                {
+                    "themeName": "Black",
+                    "style": "Material Design",
+                    "releaseDate": "Jan 31, 2018",
+                    "version": 4,
+                    "algorithmName": "Classic Dual Color",
+                    "algorithmID": 0,
+                    "rgb": 0,
+                    "hue": 0,
+                    "themes": [
+                        "#000000",
+                        "#290500",
+                        "#000000",
+                        "#000000",
+                        "#000000",
+                        "#000000"
+                    ],
+                    "navBarBGColor": "#000000",
+                    "navBarFontColor": "#f5f5f5",
+                    "themeFilePath": "../node_modules/amexio-ng-extensions/styles/mda/at-md-black.scss",
+                    "themeJSONFile": "at-md-black.json",
+                    "themeCSS3File": "at-md-black.scss",
+                    "themeImageFile": "AT-MD-Black.jpg"
+                }
+            ],
+            [
+                {
+                    "themeName": "Blue",
+                    "style": "Material Design",
+                    "releaseDate": "Jan 31, 2018",
+                    "version": 4,
+                    "algorithmName": "Classic Dual Color",
+                    "algorithmID": 0,
+                    "rgb": 1402304,
+                    "hue": 212,
+                    "themes": [
+                        "#1565C0",
+                        "#2196f3",
+                        "#7115c1",
+                        "#c115bb",
+                        "#c11565",
+                        "#c11b15"
+                    ],
+                    "navBarBGColor": "#1565c0",
+                    "navBarFontColor": "#f1f7fd",
+                    "themeFilePath": "../node_modules/amexio-ng-extensions/styles/mda/at-md-blue.scss",
+                    "themeJSONFile": "at-md-blue.json",
+                    "themeCSS3File": "at-md-blue.scss",
+                    "themeImageFile": "AT-MD-Blue.jpg"
+                },
+                {
+                    "themeName": "Blue Grey",
+                    "style": "Material Design",
+                    "releaseDate": "Jan 31, 2018",
+                    "version": 4,
+                    "algorithmName": "Classic Dual Color",
+                    "algorithmID": 0,
+                    "rgb": 1390406,
+                    "hue": 198,
+                    "themes": [
+                        "#153746",
+                        "#455a64",
+                        "#241547",
+                        "#3d1547",
+                        "#471538",
+                        "#47151f"
+                    ],
+                    "navBarBGColor": "#153746",
+                    "navBarFontColor": "#f3f9fb",
+                    "themeFilePath": "../node_modules/amexio-ng-extensions/styles/mda/at-md-blue-grey.scss",
+                    "themeJSONFile": "at-md-blue-grey.json",
+                    "themeCSS3File": "at-md-blue-grey.scss",
+                    "themeImageFile": "AT-MD-Blue-Grey.jpg"
+                },
+                {
+                    "themeName": "Bruntor Tangerine",
+                    "style": "Material Design",
+                    "releaseDate": "Jan 31, 2018",
+                    "version": 4,
+                    "algorithmName": "Classic Dual Color",
+                    "algorithmID": 0,
+                    "rgb": 9846784,
+                    "hue": 26,
+                    "themes": [
+                        "#964000",
+                        "#cf912a",
+                        "#549400",
+                        "#0a9400",
+                        "#009440",
+                        "#00948a"
+                    ],
+                    "navBarBGColor": "#964000",
+                    "navBarFontColor": "#fff3eb",
+                    "themeFilePath": "../node_modules/amexio-ng-extensions/styles/mda/at-md-bruntor-tangerine.scss",
+                    "themeJSONFile": "at-md-bruntor-tangerine.json",
+                    "themeCSS3File": "at-md-bruntor-tangerine.scss",
+                    "themeImageFile": "AT-MD-Bruntor-Tangerine.jpg"
+                }
+            ]
+        ];
         service.loadThemes('assets/amexiomdathemes/json/amexio-mda.json')
             .subscribe((data: any) => {
                 responseData = data;
