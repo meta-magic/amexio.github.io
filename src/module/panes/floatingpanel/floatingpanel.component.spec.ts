@@ -204,6 +204,7 @@ describe('amexio-floating-panel', () => {
     e['clientX'] = 1200;
     e['clientY'] = 1400;         
     comp.elementDrag(e,floatingPanel);
+    e = e || window.event;
     expect(e.preventDefault).toHaveBeenCalled(); 
     comp.pos1 = comp.pos3 - e.clientX;
     comp.pos2 = comp.pos4 - e.clientY;
@@ -235,6 +236,7 @@ describe('amexio-floating-panel', () => {
     e['clientX'] = 1200;
     e['clientY'] = 1400;         
     comp.elementDrag(e,floatingPanel);
+    e = e || window.event;
     expect(e.preventDefault).toHaveBeenCalled(); 
     comp.pos1 = comp.pos3 - e.clientX;
     comp.pos2 = comp.pos4 - e.clientY;
