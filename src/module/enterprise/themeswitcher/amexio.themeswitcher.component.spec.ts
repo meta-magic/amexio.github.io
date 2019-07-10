@@ -33,13 +33,15 @@ import { SimpleChange } from '@angular/core';
 // import { CommonIconComponent} from '../../base/components/common.icon.component';
 // import {  }
 
-describe('theme switcher', () => {
+fdescribe('theme switcher', () => {
     let comp1: AmexioThemeSwitcherComponent;
     let fixture1: ComponentFixture<AmexioThemeSwitcherComponent>;
     let respo: any = [];
     let positionMapData: string[];
     let isFloatingButton = false;
     let isSimpleButton = false;
+    let _http: string;
+    let service: AmexioThemeSwitcherService;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
@@ -56,6 +58,7 @@ describe('theme switcher', () => {
 
         fixture1 = TestBed.createComponent(AmexioThemeSwitcherComponent);
         comp1 = fixture1.componentInstance;
+        service = TestBed.get(AmexioThemeSwitcherService);
 
 
     });
@@ -70,6 +73,52 @@ describe('theme switcher', () => {
     //        comp1.closeable = true;
     //   });
 
+    it('ngOninit method', () => {
+        comp1.ngOnInit();
+        comp1.buttonType = 'floatingbutton'
+        expect(comp1.buttonType).toEqual('floatingbutton');
+        comp1.isFloatingButton = true;
+        comp1.buttonType = 'button'
+        expect(comp1.buttonType).toEqual('button');
+        comp1.isSimpleButton = true;
+        comp1.relative = true
+        comp1.closeable = false;
+        expect(comp1.relative).toEqual(true);
+        expect(comp1.closeable).toEqual(false);
+        comp1.show = true;
+    });
+    it('ngOninit method', () => {
+        comp1.ngOnInit();
+        comp1.buttonType = ''
+        expect(comp1.buttonType).toEqual('');
+        comp1.buttonType = ''
+        expect(comp1.buttonType).toEqual('');
+        comp1.relative = false
+        comp1.closeable = true;
+        expect(comp1.relative).toEqual(false);
+        expect(comp1.closeable).toEqual(true);
+        comp1.loadMDAThemes();
+        service.themeData.subscribe((theme: any) => {
+            if (theme != null) {
+                this.onThemeClick.emit(theme);
+            }
+        });
+    });
+    it('loadMDAThemes method', () => {
+        expect(comp1.isMDA).toBeDefined();
+        let responseData: any;
+        service.loadThemes('assets/amexiomdathemes/json/amexio-mda.json')
+            .subscribe((data: any) => {
+                responseData = data;
+            }, (error: any) => {
+            }, () => {
+                comp1.data = responseData;
+            });
+    })
+    it('loadMDAThemes method else block', () => {
+        comp1.isMDA = false;
+        expect(comp1.isMDA).toEqual(false);
+    });
     it('getPostion() if condition', () => {
         let style = {}
         comp1.closeable = false;
