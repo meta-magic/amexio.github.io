@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { IconLoaderService } from '../../../index';
 import { AmexioFloatingPanelComponent } from './floatingpanel.component';
 import { AmexioFormsModule } from '../../forms/amexio.forms.module';
+import { SimpleChange } from '@angular/core';
 
 describe('amexio-floating-panel', () => {
     let comp: AmexioFloatingPanelComponent;
@@ -29,58 +30,93 @@ describe('amexio-floating-panel', () => {
     //     expect(comp).toBeTruthy();
     // }));
 
-    // it('ngOnInit method', () => {
-    //     comp.ngOnInit();
-    //     comp.absolute = true;
-    //     expect(comp.absolute).toEqual(true);
-    //     comp.relative = false;
+ it('ngOnchanges method call if condition',() => {
+    let element = fixture.nativeElement;
+     let showPanel = true;
+     comp.absolute = true;
+       comp.showPanel = showPanel;
+       let currentshowpanel:boolean;
+       comp.ngOnChanges({
+        changes: new SimpleChange(null, showPanel,false)
+       }
+    );
+       fixture.detectChanges();
+       expect(comp.showPanel).toBe(showPanel);
+       expect(comp.absolute).toBe(true);
+       comp.setPanelAbsolutePostion();
+    });
 
-    //     comp.ngOnInit();
-    //     comp.height = '';
-       
-    //     expect(comp.height).toBe('');
-    //     comp.height = 200;
-    //     comp.ngOnInit();
+ it('ngOnchanges method call else condition',() => {
+      let element = fixture.nativeElement;
+      let showPanel = true;
+       comp.absolute = false;
+       comp.showPanel = showPanel;
+       let currentshowpanel:boolean;
+       comp.ngOnChanges({
+        changes: new SimpleChange(null, showPanel,false)
+       }
+    );
+       fixture.detectChanges();
+       expect(comp.showPanel).toBe(showPanel);
+       expect(comp.absolute).toBe(false);
+       comp.panelStyle();
+    });
+    // it('ngOnInit method', () => {
+    //     comp.absolute = true;
     //     comp.width = '';
-       
-    //     expect(comp.width).toBe('');
-    //     comp.width = 400;
-    //     comp.ngOnInit();
-    //     comp.showPanel = true;
-       
-    //     expect(comp.showPanel).toBe(true);
-    //     comp.panelStyle();
-        
-    //     comp.draggable = true;
+    //     comp.showPanel = false;
     //     comp.arrow = true;
-      
-    //     expect(comp.draggable).toBe(true);
-    //     expect(comp.arrow).toBe(true);
-    //     comp.draggable = false;
-     
-    //     comp.draggable = true;
     //     comp.relative = true;
-    //     expect(comp.draggable).toBe(true);
-    //     expect(comp.relative).toBe(true);
-    //     comp.style['position'] ='absolute';
-       
+    //     comp.ngOnInit();
+    //     expect(comp.absolute).toEqual(true);
+    //     comp.relative = false;  
+    //     comp.height = '';             
+    //     expect(comp.height).toEqual('');
+    //     comp.height = 200;
+    //     comp.width = '';
+    //     expect(comp.width).toEqual('');    
+    //     comp.width = 400;  
+    //     expect(comp.showPanel).toEqual(true);        
+    //     comp.panelStyle();    
+    //     comp.draggable = true;        
+    //     expect(comp.draggable).toEqual(true);
+    //     expect(comp.arrow).toEqual(true);
+    //      comp.draggable  = false;  
     // });
 
-    // it('panel style method ', () => {
-    //     comp.style = {};
-    //     comp.style['position'] = (comp.relative) ? 'absolute' : 'fixed';
-    //     comp.style['display'] = 'block';
-    //     comp.style['z-index'] = '600';
-    //     comp.style['opacity'] = '1';
-    //     comp.style['box-shadow'] = '0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)';
-    //     comp.style['width'] = comp.width + 'px';
-    //     comp.style['width'] = '400px';
-    //     expect(this.width).not.toEqual('');
-    //     expect(this.width).toEqual('');
-    //     if (!this.relative) {
-    //         expect(comp.relative).not.toEqual(true);
-    //     }
-    // })
+    it('panel style method if condition ', () => {
+        comp.relative = true;
+        comp.width = '200';
+        comp.panelStyle();
+        comp.style = {};
+        expect(comp.relative).toEqual(true);
+        comp.style['position'] = 'absolute';
+        comp.style['display'] = 'block';
+        comp.style['z-index'] = '600';
+        comp.style['opacity'] = '1';
+        comp.style['box-shadow'] = '0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)';
+        expect(comp.width).not.toEqual('');
+        comp.style['width'] = comp.width + 'px';
+        comp.arrowPadding();
+    })
+
+    it('panel style method else condition ', () => {
+        comp.relative = false;
+        comp.width = '';
+        comp.panelStyle();
+        comp.style = {};
+        expect(comp.relative).toEqual(false);
+        comp.style['position'] = 'fixed';
+        comp.style['display'] = 'block';
+        comp.style['z-index'] = '600';
+        comp.style['opacity'] = '1';
+        comp.style['box-shadow'] = '0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)';
+        expect(comp.width).toEqual('');
+        comp.style['width'] = '400px';
+        expect(comp.relative).toEqual(false);
+        comp.setPanelStylePostion();
+        comp.arrowPadding();
+    })
     it('arrowPadding method', () => {
         comp.arrow = true;
         comp.arrowPadding();
@@ -109,7 +145,8 @@ describe('amexio-floating-panel', () => {
         comp.setColorPalette(themeClass);
         comp.themeCss = themeClass;
     });
-    it('setpanelAbsolutePosition method', () => {
+    it('setpanelAbsolutePosition if  method', () => {
+        comp.width = '200';
         comp.setPanelAbsolutePostion();
         comp.style = {};
         comp.style['position'] = 'absolute';
@@ -117,24 +154,25 @@ describe('amexio-floating-panel', () => {
         comp.style['z-index'] = '400';
         comp.style['opacity'] = '1';
         comp.style['box-shadow'] = '0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)';
+        expect(comp.width).not.toEqual('')
         comp.style['width'] = comp.width + 'px';
-        comp.style['width'] = '400px';
-        comp.width = '';
-        // expect(comp.width).not.toEqual('');
-        expect(comp.width).toEqual('');
+        comp.setPanelStylePostion();
+        comp.arrowPadding();
     })
-    // it('setpanelAbsolutePosition method', () => {
-    //     comp.style = {};
-    //     comp.style['position'] = 'absolute';
-    //     comp.style['display'] = 'block';
-    //     comp.style['z-index'] = '400';
-    //     comp.style['opacity'] = '1';
-    //     comp.style['box-shadow'] = '0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)';
-    //     comp.style['width'] = comp.width + 'px';
-    //     comp.style['width'] = '400px';
-    //     expect(comp.width).not.toEqual('');
-    //     expect(comp.width).toEqual('');
-    // })
+    it('setpanelAbsolutePosition else  method', () => {
+        comp.width = '';
+        comp.setPanelAbsolutePostion();
+        comp.style = {};
+        comp.style['position'] = 'absolute';
+        comp.style['display'] = 'block';
+        comp.style['z-index'] = '400';
+        comp.style['opacity'] = '1';
+        comp.style['box-shadow'] = '0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)';
+        expect(comp.width).toEqual('');
+        comp.width = '400px';
+        comp.setPanelStylePostion();
+        comp.arrowPadding();      
+    })
     it('checking togglePanel method', () => {
         comp.showPanel = false;
         comp.togglePanel();
