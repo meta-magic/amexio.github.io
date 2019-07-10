@@ -30,57 +30,63 @@ describe('amexio-floating-panel', () => {
     // }));
 
     // it('ngOnInit method', () => {
-    //     comp.ngOnInit();
-    //     comp.absolute = true;
-    //     expect(comp.absolute).toEqual(true);
-    //     comp.relative = false;
-
-    //     comp.ngOnInit();
     //     comp.height = '';
-       
-    //     expect(comp.height).toBe('');
-    //     comp.height = 200;
-    //     comp.ngOnInit();
+    //     comp.absolute = true;
     //     comp.width = '';
-       
-    //     expect(comp.width).toBe('');
-    //     comp.width = 400;
-    //     comp.ngOnInit();
     //     comp.showPanel = true;
-       
-    //     expect(comp.showPanel).toBe(true);
-    //     comp.panelStyle();
-        
-    //     comp.draggable = true;
     //     comp.arrow = true;
-      
-    //     expect(comp.draggable).toBe(true);
-    //     expect(comp.arrow).toBe(true);
-    //     comp.draggable = false;
-     
     //     comp.draggable = true;
     //     comp.relative = true;
-    //     expect(comp.draggable).toBe(true);
-    //     expect(comp.relative).toBe(true);
-    //     comp.style['position'] ='absolute';
-       
+    //     comp.ngOnInit();
+    //     expect(comp.absolute).toEqual(true);
+    //     comp.relative = false;               
+    //     expect(comp.height).toEqual('');
+    //     comp.height = 200;
+    //     expect(comp.width).toEqual('');    
+    //     comp.width = 400;  
+    //     expect(comp.showPanel).toEqual(true);        
+    //     comp.panelStyle();             
+    //     expect(comp.draggable).toEqual(true);
+    //     expect(comp.arrow).toEqual(true);
+    //      comp.draggable  = false;
+    //     expect(comp.draggable).toEqual(true);
+    //     expect(comp.relative).toEqual(true);
+    //     comp.style['position'] ='absolute';    
     // });
 
-    // it('panel style method ', () => {
-    //     comp.style = {};
-    //     comp.style['position'] = (comp.relative) ? 'absolute' : 'fixed';
-    //     comp.style['display'] = 'block';
-    //     comp.style['z-index'] = '600';
-    //     comp.style['opacity'] = '1';
-    //     comp.style['box-shadow'] = '0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)';
-    //     comp.style['width'] = comp.width + 'px';
-    //     comp.style['width'] = '400px';
-    //     expect(this.width).not.toEqual('');
-    //     expect(this.width).toEqual('');
-    //     if (!this.relative) {
-    //         expect(comp.relative).not.toEqual(true);
-    //     }
-    // })
+    it('panel style method if condition ', () => {
+        comp.relative = true;
+        comp.width = '200';
+        comp.panelStyle();
+        comp.style = {};
+        expect(comp.relative).toEqual(true);
+        comp.style['position'] = 'absolute';
+        comp.style['display'] = 'block';
+        comp.style['z-index'] = '600';
+        comp.style['opacity'] = '1';
+        comp.style['box-shadow'] = '0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)';
+        expect(comp.width).not.toEqual('');
+        comp.style['width'] = comp.width + 'px';
+        comp.arrowPadding();
+    })
+
+    it('panel style method else condition ', () => {
+        comp.relative = false;
+        comp.width = '';
+        comp.panelStyle();
+        comp.style = {};
+        expect(comp.relative).toEqual(false);
+        comp.style['position'] = 'fixed';
+        comp.style['display'] = 'block';
+        comp.style['z-index'] = '600';
+        comp.style['opacity'] = '1';
+        comp.style['box-shadow'] = '0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)';
+        expect(comp.width).toEqual('');
+        comp.style['width'] = '400px';
+        expect(comp.relative).toEqual(false);
+        comp.setPanelStylePostion();
+        comp.arrowPadding();
+    })
     it('arrowPadding method', () => {
         comp.arrow = true;
         comp.arrowPadding();
