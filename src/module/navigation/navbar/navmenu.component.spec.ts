@@ -21,17 +21,6 @@ describe('navmenu', () => {
     event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
 
   });
-
-  it('ngAfterViewInit if condition', () => {
-    comp.ngAfterViewInit();
-    setTimeout(() => {
-      expect(timerCallback).toHaveBeenCalled();
-      expect((window.innerWidth - el.nativeElement.getBoundingClientRect().right)).not.toBeGreaterThan(150);
-      comp.position = 'right';
-      fixture.detectChanges();
-    }, 100);
-
-  });
   it('ngAfterViewInit else condition', () => {
     comp.ngAfterViewInit();
     setTimeout(() => {
@@ -42,7 +31,16 @@ describe('navmenu', () => {
     }, 100);
 
   });
+  it('ngAfterViewInit if condition', () => {
+    comp.ngAfterViewInit();
+    setTimeout(() => {
+      expect(timerCallback).toHaveBeenCalled();
+      expect((window.innerWidth - el.nativeElement.getBoundingClientRect().right)).not.toBeGreaterThan(150);
+      comp.position = 'right';
+      fixture.detectChanges();
+    }, 100);
 
+  });
   it('check variable in navmenu', () => {
     expect(comp.issubmenu).toEqual(false);
     expect(comp.position).toEqual('right');
