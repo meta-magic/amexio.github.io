@@ -5,6 +5,7 @@ import { AmexioFloatingPanelComponent } from './floatingpanel.component';
 import { AmexioFormsModule } from '../../forms/amexio.forms.module';
 import { SimpleChange, ElementRef, Type, Renderer2 } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import { notDeepEqual } from 'assert';
 
 describe('amexio-floating-panel', () => {
     let comp: AmexioFloatingPanelComponent;
@@ -62,29 +63,48 @@ describe('amexio-floating-panel', () => {
        expect(comp.absolute).toBe(false);
        comp.panelStyle();
     });
-    // it('ngOnInit method', () => {
-    //     comp.absolute = true;
-    //     comp.width = '';
-    //     comp.showPanel = false;
-    //     comp.arrow = true;
-    //     comp.relative = true;
-    //     comp.ngOnInit();
-    //     expect(comp.absolute).toEqual(true);
-    //     comp.relative = false;  
-    //     comp.height = '';             
-    //     expect(comp.height).toEqual('');
-    //     comp.height = 200;
-    //     comp.width = '';
-    //     expect(comp.width).toEqual('');    
-    //     comp.width = 400;  
-    //     expect(comp.showPanel).toEqual(true);        
-    //     comp.panelStyle();    
-    //     comp.draggable = true;        
-    //     expect(comp.draggable).toEqual(true);
-    //     expect(comp.arrow).toEqual(true);
-    //      comp.draggable  = false;  
-    // });
-
+    it('ngOnInit method if ', () => {
+        comp.absolute = true;
+        comp.draggable = true; 
+        comp.showPanel = false;
+        comp.arrow = true;
+        comp.relative = true;
+        comp.ngOnInit();
+        expect(comp.absolute).toEqual(true);
+        comp.relative = false;  
+        comp.height = '';             
+        expect(comp.height).toEqual('');
+        comp.height = 200;
+        comp.width = '';
+        expect(comp.width).toEqual('');    
+        comp.width = 400;  
+        expect(comp.showPanel).toBeDefined();        
+        comp.panelStyle();               
+        expect(comp.draggable).toBeDefined();
+        expect(comp.arrow).toBeDefined();
+         comp.draggable  = false; 
+        expect(comp.relative).toBeDefined();
+        expect(comp.draggable).toBeDefined();
+        comp.style['position'] = 'absolute';
+    });
+    it('ngOnInit method else ', () => {
+        comp.relative = false;  
+        comp.draggable = false;
+        comp.showPanel = false;
+        comp.arrow = false;
+        comp.absolute = false;
+        comp.height = '440'; 
+        comp.width = '300';  
+        comp.ngOnInit();
+        expect(comp.absolute).toEqual(false);          
+        expect(comp.height).not.toEqual('');
+        expect(comp.width).not.toEqual('');    
+        expect(comp.showPanel).toEqual(false);                     
+        expect(comp.draggable).toEqual(false);
+        expect(comp.arrow).toEqual(false);
+        expect(comp.relative).toEqual(false);
+        expect(comp.draggable).toEqual(false);
+    });
     it('panel style method if condition ', () => {
         comp.relative = true;
         comp.width = '200';
