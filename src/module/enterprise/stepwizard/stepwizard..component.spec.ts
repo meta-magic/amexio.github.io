@@ -35,7 +35,6 @@ describe('amexio-step-wizard', () => {
             providers: [IconLoaderService, DeviceQueryService, FormBuilder],
         }).compileComponents();
     }));
-
     beforeEach(() => {
         service = TestBed.get(DeviceQueryService);
         fixture = TestBed.createComponent(TestWrapperComponent);
@@ -43,6 +42,11 @@ describe('amexio-step-wizard', () => {
         event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
         fixture.detectChanges();
     });
+    it('constructor', () => {
+        expect(service.IsTablet()).toBeDefined();
+        expect(service.IsPhone()).toBeDefined();
+        component.isPhone = true
+    })
 
     it('method ngAfterContentInit else block', () => {
         component.ngAfterContentInit();
@@ -61,7 +65,7 @@ describe('amexio-step-wizard', () => {
         expect(component.stepItemList.length).toBeGreaterThan(0);
         component.stepItemList[0].active = true;
     });
-    
+
 });
 
 
