@@ -182,16 +182,62 @@ describe('amexio-treeview', () => {
     });
 
 
-    it('Tree expandAll() on method call', () => {
-        let node: any;
-        comp.parentRef = true;
+    it('Tree expandAll() on if method call', () => {
+        let node = {
+            "text": "Web App",
+            "children": [
+                {
+                    "text": "app",
+                    "children": [
+                        {
+                            "leaf": true,
+                            "text": "Application.js"
+                        }
+                    ]
+                }
+            ]
+        }
+        comp.parentRef = {
+            "text": "Web App",
+            "children": [
+                {
+                    "text": "app",
+                    "children": [
+                        {
+                            "leaf": true,
+                            "text": "Application.js"
+                        }
+                    ]
+                }
+            ]
+        };
         comp.expandAll(node);
         comp.destroyExpandAll = setTimeout(() => {
-            expect(comp.parentRef).toBe(true);
+            expect(comp.parentRef).toBeDefined();
             comp.expandAllCall(comp.parentRef);
         }, 0);
     });
-
+    it('Tree expandAll() on else  method call', () => {
+        let node = {
+            "text": "Web App",
+            "children": [
+                {
+                    "text": "app",
+                    "children": [
+                        {
+                            "leaf": true,
+                            "text": "Application.js"
+                        }
+                    ]
+                }
+            ]
+        }
+        comp.parentRef = null ;
+        comp.expandAll(node);
+        comp.destroyExpandAll = setTimeout(() => {
+            expect(comp.parentRef).toBe(null);
+        }, 0);
+    });
     it('Tree updateComponent() on method call', () => {
         comp.previousValue = '90';
 
