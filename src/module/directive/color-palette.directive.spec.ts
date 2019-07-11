@@ -33,6 +33,52 @@ describe('Directive: Color', () => {
         dirIn = directiveEl.injector.get(ColorPaletteDirective);
         inputEl = fixture.debugElement.query(By.css('input'));
         dirIn.gradient = true;
+        dirIn.themejson = [
+            {
+              themeName: 'amexio-primary-darker-color',
+            },
+            {
+              themeName: 'amexio-theme-color1',
+            },
+            {
+              themeName: 'amexio-theme-color2',
+            },
+            {
+              themeName: 'amexio-theme-color3',
+            },
+            {
+              themeName: 'amexio-theme-color4',
+            },
+            {
+              themeName: 'amexio-theme-color5',
+            },
+            {
+              themeName: 'amexio-theme-color6',
+            }];
+          dirIn.gradientThemeJson = [
+            {
+              themeName: 'amexio-primary-darker-color-Gradient',
+            },
+            {
+              themeName: 'amexio-theme-color1-Gradient',
+            },
+            {
+              themeName: 'amexio-theme-color2-Gradient',
+            },
+            {
+              themeName: 'amexio-theme-color3-Gradient',
+            },
+            {
+              themeName: 'amexio-theme-color4-Gradient',
+            },
+            {
+              themeName: 'amexio-theme-color5-Gradient',
+            },
+            {
+              themeName: 'amexio-theme-color6-Gradient',
+            },
+          ];
+      
 
     });
     it('should create component', () => {
@@ -45,15 +91,18 @@ describe('Directive: Color', () => {
 
         dirIn.gradient = true;
         dirIn.vibrantThemeCall();
+        expect(dirIn.gradient).toEqual(true);
         setTimeout(() => {
             dirIn.getBGColorStyles(dirIn.hostComponent);
         }, 1000);
 
         dirIn.gradient = false;
         dirIn.vibrantThemeCall();
+        expect(dirIn.gradient).toEqual(false);
         setTimeout(() => {
             dirIn.getGradientStyles(dirIn.hostComponent);
         }, 1000);
     });
 
+   
 });

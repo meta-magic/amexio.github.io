@@ -295,24 +295,7 @@ describe('amexio-checkbox-group', () => {
   });
 
 
-  //check validate 
-  it('check validate ', () => {
-    comp['_model'] = [{
-      "language": "Angular 2",
-      "checked": false
-    }];
-    comp.required = true;
-
-    comp.validate(formParameter);
-    expect(comp['_model']).not.toBeNull();
-    expect(comp.required).toBe(true);
-    expect(comp['_model'].length).toBeGreaterThan(0);
-    return {
-      jsonParseError: {
-        valid: true,
-      },
-    };
-  });
+  
   it('ngOnInit() second elseif', () => {
     comp.data = {
      "data": [
@@ -347,8 +330,32 @@ describe('amexio-checkbox-group', () => {
 
 });
 
+//check validate 
+it('check validate if condition', () => {
+  comp['_model'] = [{
+    "language": "Angular 2",
+    "checked": false
+  }];
+  comp.required = true;
+  comp.validate(formParameter);
+  expect(comp['_model']).not.toBeNull();
+  expect(comp.required).toBe(true);
+  expect(comp['_model'].length).toBeGreaterThan(0);
+  comp.required = false;
+  comp['_model'] = null;
+  comp.validate(formParameter);
+  expect(comp.required).toBe(false);
+  expect(comp['_model']).toBeNull();
+  return {
+    jsonParseError: {
+      valid: true,
+    },
+  };
+});
+
+
   //
-  it('check validate ', () => {
+  it('check validate else condition', () => {
     comp['_model'] = [{
       "language": "Angular 2",
       "checked": false
