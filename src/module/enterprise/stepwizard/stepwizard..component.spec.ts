@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { IconLoaderService } from '../../../index';
@@ -6,37 +6,53 @@ import { StepWizardComponent } from './stepwizard.component';
 import { AmexioCreativeModule } from '../../creative/amexio.creative.module';
 import { AmexioMediaModule } from '../../media/amexio.media.module';
 import { DeviceQueryService } from './../../services/device/device.query.service';
+import { StepWizardItemComponent } from './stepwizard.item.component';
+import { DebugElement,Component, NO_ERRORS_SCHEMA } from '@angular/core';
+import { FormBuilder , FormGroup, NgForm, NgModel} from '@angular/forms';
 
+@Component({
+    selector: 'test-cmp',
+    template: `<amexio-step-wizard>
+        <amexio-step-wizard-item stepTitle="step1"></amexio-step-wizard-item>
+        <amexio-step-wizard-item stepTitle="step2"></amexio-step-wizard-item>
+    </amexio-step-wizard>`,
+  })
+  class TestWrapperComponent { }
 describe('amexio-step-wizard', () => {
-    let comp: StepWizardComponent;
-    let fixture: ComponentFixture<StepWizardComponent>;
+    let component: StepWizardComponent;
+    let fixture: ComponentFixture<TestWrapperComponent>;
+    let service: DeviceQueryService;
+    let queryitem: StepWizardItemComponent;
+    let fixture2: ComponentFixture<StepWizardItemComponent>
+    let de: DebugElement;
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+          schemas: [ NO_ERRORS_SCHEMA ],
+          declarations: [
+            StepWizardComponent,
+            StepWizardItemComponent, TestWrapperComponent
+          ],
+          providers: [IconLoaderService, DeviceQueryService, FormBuilder],
+        }).compileComponents();
+      }));
 
     beforeEach(() => {
-        TestBed.configureTestingModule({
-            imports: [FormsModule, AmexioCreativeModule, AmexioMediaModule],
-            declarations: [StepWizardComponent],
-            providers: [IconLoaderService, DeviceQueryService],
-        });
-        fixture = TestBed.createComponent(StepWizardComponent);
-        comp = fixture.componentInstance;
-        event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
-
-        it('true is true', () => expect(true).toBe(true));
-    });
-
-    // check variables 
-    //  it('check variables ', () => {
-    //     expect(comp.data).toEqual({});
-    //     expect(comp.isPhone).toEqual(false);
-
-    // });
-    it('phonevariable check', () => {
-        comp.isPhone = false;
+        service = TestBed.get(DeviceQueryService);
+        fixture = TestBed.createComponent(TestWrapperComponent);
+        component = fixture.debugElement.children[0].componentInstance;
+        fixture.detectChanges();
     });
 
     it('method ngAfterContentInit', () => {
+        component.ngAfterContentInit();
         const time = new Date().getTime();
+        fixture.detectChanges();
+        component.stepItemList = component.stepItemQueryList.toArray();
+        expect(component.stepItemList).toBeDefined();
+        expect(component.stepItemList.length).toBeGreaterThan(0);
+        component.stepItemList[0].active = true;
     })
+
 });
 
 
