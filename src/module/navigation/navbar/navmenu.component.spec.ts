@@ -19,17 +19,10 @@ describe('navmenu', () => {
     comp = fixture.componentInstance;
     el = fixture.debugElement.query(By.css('#navmenu'));
     event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
-
   });
-  
+
   it('ngAfterViewInit if condition', () => {
-    // el = fixture.debugElement.query(By.css('#navmenu'));
-    // event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
-    
-    fixture.detectChanges();
-    const navmenu: ElementRef = fixture.componentInstance.navmenu;
-    console.log('navmenu', navmenu);
-    expect(navmenu).toBeDefined();
+
     comp.ngAfterViewInit();
     setTimeout(() => {
       expect(timerCallback).toHaveBeenCalled();
@@ -52,7 +45,7 @@ describe('navmenu', () => {
     }, 100);
   });
 
-  
+
   it('check variable in navmenu', () => {
     expect(comp.issubmenu).toEqual(false);
     expect(comp.position).toEqual('right');

@@ -11,7 +11,6 @@ describe('navdesktopmenu', () => {
   let comp1: AmexioNavDesktopMenuComponent;
   let fixture1: ComponentFixture<AmexioNavDesktopMenuComponent>;
   let el: ElementRef;
-  let timerCallback: any;
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
@@ -30,22 +29,29 @@ describe('navdesktopmenu', () => {
     }]
   });
 
-  it('ngAfterViewInit method', () => {
+  it('ngAfterViewInit if method', () => {
+
+    fixture1.detectChanges();
+    const menus: ElementRef = fixture1.componentInstance.menus;
+    expect(menus).toBeDefined();
     comp1.ngAfterViewInit();
     setTimeout(() => {
-      expect(timerCallback).toHaveBeenCalled();
       const fixture = TestBed.createComponent(AmexioNavDesktopMenuComponent);
       fixture.detectChanges();
-      expect(window.innerWidth - comp1.menus.nativeElement.getBoundingClientRect().right).toBeLessThan(300);
+      let ok = 1264 - menus.nativeElement.getBoundingClientRect().right;
+      expect(window.innerWidth - ok).toBeLessThan(300);
       comp1.position = 'right';
     }, 100);
   });
   it('ngAfterViewInit else block', () => {
+    fixture1.detectChanges();
+    const menus: ElementRef = fixture1.componentInstance.menus;
+    expect(menus).toBeDefined();
     comp1.ngAfterViewInit();
     setTimeout(() => {
       const fixture = TestBed.createComponent(AmexioNavDesktopMenuComponent);
       fixture.detectChanges();
-      expect(window.innerWidth - comp1.menus.nativeElement.getBoundingClientRect().right).toBeGreaterThan(300);
+      expect(window.innerWidth - menus.nativeElement.getBoundingClientRect().right).toBeGreaterThan(300);
       comp1.position = 'left';
     }, 100);
   });
