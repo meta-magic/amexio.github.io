@@ -207,7 +207,87 @@ describe('amexio-treeview', () => {
     //     comp.collapseAll(comp.parentRef);
     //       comp.collapseAll(node);
     // });
-
+    it('Tree onNodeClick on method call', () => {
+        let node1 = [{
+            "text": "Web App",
+            "children": [
+                {
+                    "text": "app",
+                    "children": [
+                        {
+                            "leaf": true,
+                            "text": "Application.js"
+                        }
+                    ]
+                }
+            ]
+        }
+        ];
+        comp.data = [{
+            "text": "Web App",
+            "expand": true,
+            "children": [
+                {
+                    "text": "app",
+                    "expand": true,
+                    "children": [
+                        {
+                            "leaf": true,
+                            "text": "Application.js"
+                        }
+                    ]
+                }
+            ]
+        }
+        ];
+        comp.onNodeClick(node1);
+        const cloneNode = JSON.parse(JSON.stringify(node1));
+        comp.cloneMethod(cloneNode);
+        comp.nodeClick.emit(cloneNode);
+        comp.activateNode(comp.data, node1);
+    });
+    it('Tree clonemethod on method call', () => {
+        let cloneNode = {
+            "text": "Web App",
+            "elementId" : '14521',
+            "children": [
+                {
+                    "text": "app",
+                    "elementId" : '141521',
+                    "children": [
+                        {
+                            "elementId" : '142521',
+                            "leaf": true,
+                            "text": "Application.js"
+                        }
+                    ]
+                }
+            ]
+        };
+        comp.data = [{
+            "text": "Web App",
+            "expand": true,
+            "children": [
+                {
+                    "text": "app",
+                    "expand": true,
+                    "children": [
+                        {
+                            "leaf": true,
+                            "text": "Application.js"
+                        }
+                    ]
+                }
+            ]
+        }
+        ];
+   comp.cloneMethod(cloneNode);
+  delete cloneNode['elementId'];
+  expect(cloneNode.children).toBeDefined();
+  cloneNode.children.forEach((element: any) => {
+    comp.cloneMethod(element);
+});
+    });
     it('Tree onClick() on method call', () => {
         node.expand = true;
         comp.onClick(node);
