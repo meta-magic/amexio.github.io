@@ -588,7 +588,6 @@ describe('amexio-treeview', () => {
         let parentId = 1;
         let rannumber = Math.floor(Math.random() * 1000 + 999 + 1);
         comp.generateIndex(data, parentId, rannumber);
-        console.log('data',data);
         data.forEach((element: any,index:any) => {
             element['elementId'] = '' + rannumber + '-' + parentId + (index + 1);
             expect(element[comp.childarraykey]);
