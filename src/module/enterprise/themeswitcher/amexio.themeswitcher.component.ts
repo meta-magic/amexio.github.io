@@ -69,7 +69,6 @@ export class AmexioThemeSwitcherComponent implements OnInit, OnChanges {
                 .subscribe((data: any) => {
                     responseData = data;
                 }, (error: any) => {
-                    console.log('Unable to make http call');
                 }, () => {
                     this.data = responseData;
                 });

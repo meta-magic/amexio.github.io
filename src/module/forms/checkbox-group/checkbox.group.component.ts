@@ -26,20 +26,21 @@ import { of } from 'rxjs';
   selector: 'amexio-checkbox-group',
   templateUrl: './checkbox.group.component.html',
   providers: [
-  { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioCheckBoxGroupComponent), multi: true },
-  { provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioCheckBoxGroupComponent), multi: true },
-]})
+    { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AmexioCheckBoxGroupComponent), multi: true },
+    { provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioCheckBoxGroupComponent), multi: true },
+  ],
+})
 export class AmexioCheckBoxGroupComponent extends ValueAccessorBase<any>
   implements OnInit, Validators {
 
-      /*
-  Properties
-  name : horizontal
-  datatype : boolean
-  version : 4.0 onwards
-  default : false
-  description : Set true for horizontal checkbox
-  */
+  /*
+Properties
+name : horizontal
+datatype : boolean
+version : 4.0 onwards
+default : false
+description : Set true for horizontal checkbox
+*/
   @Input() horizontal: boolean;
 
   /*
@@ -64,24 +65,24 @@ export class AmexioCheckBoxGroupComponent extends ValueAccessorBase<any>
   get data() {
     return this._data;
   }
-/*
-  Properties
-  name : field-label
-  datatype : string
-  version : 4.0 onwards
-  default :
-  description : The label of this field
-  */
+  /*
+    Properties
+    name : field-label
+    datatype : string
+    version : 4.0 onwards
+    default :
+    description : The label of this field
+    */
   @Input('field-label') fieldlabel: any;
 
-/*
-  Properties
-  name : display-field
-  datatype : string
-  version : 4.0 onwards
-  default :
-  description : Name of key inside response data to display on ui.
-*/
+  /*
+    Properties
+    name : display-field
+    datatype : string
+    version : 4.0 onwards
+    default :
+    description : Name of key inside response data to display on ui.
+  */
   @Input('display-field') displayfield: any;
   /*
   Properties
@@ -93,26 +94,26 @@ export class AmexioCheckBoxGroupComponent extends ValueAccessorBase<any>
   */
   @Input('value-field') valuefield: any;
 
-    /*
- Properties
- name : required
- datatype : boolean
- version : 4.1.7 onwards
- default : false
- description :  property to set if manditory
- */
+  /*
+Properties
+name : required
+datatype : boolean
+version : 4.1.7 onwards
+default : false
+description :  property to set if manditory
+*/
   @Input('required') required = false;
 
   @Input('name') name: string;
 
-   /*
-  Properties
-  name : data-reader
-  datatype : string
-  version : 4.0 onwards
-  default :
-  description : Key in JSON datasource for records
-  */
+  /*
+ Properties
+ name : data-reader
+ datatype : string
+ version : 4.0 onwards
+ default :
+ description : Key in JSON datasource for records
+ */
   @Input('data-reader') datareader: string;
   /*
   Properties
@@ -172,9 +173,9 @@ export class AmexioCheckBoxGroupComponent extends ValueAccessorBase<any>
   }
 
   contains(value: any): boolean {
-    if ( this._model instanceof Array) {
+    if (this._model instanceof Array) {
       this._model.forEach((obj) => {
-         if (obj[this.displayfield] === value[this.displayfield]) {
+        if (obj[this.displayfield] === value[this.displayfield]) {
           return true;
         }
       });
@@ -190,11 +191,12 @@ export class AmexioCheckBoxGroupComponent extends ValueAccessorBase<any>
       }
     });
     this.onSelection.emit(this.SelectedCheckBox);
-   }
+  }
   public validate(c: FormControl) {
-    return (this.required && (this._model && this._model.length > 0)) || !this.required? null: { jsonParseError: {
-            valid: true,
-          },
-        };
+    return (this.required && (this._model && this._model.length > 0)) || !this.required ? null : {
+      jsonParseError: {
+        valid: true,
+      },
+    };
   }
 }

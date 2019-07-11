@@ -21,17 +21,15 @@ describe('navmenu', () => {
     event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
 
   });
-  it('ngAfterViewInit else condition', () => {
-    comp.ngAfterViewInit();
-    setTimeout(() => {
-      expect(timerCallback).toHaveBeenCalled();
-      expect((window.innerWidth - el.nativeElement.getBoundingClientRect().right)).toBeGreaterThan(150);
-      comp.position = 'left';
-      fixture.detectChanges();
-    }, 100);
-
-  });
+  
   it('ngAfterViewInit if condition', () => {
+    // el = fixture.debugElement.query(By.css('#navmenu'));
+    // event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
+    
+    fixture.detectChanges();
+    const navmenu: ElementRef = fixture.componentInstance.navmenu;
+    console.log('navmenu', navmenu);
+    expect(navmenu).toBeDefined();
     comp.ngAfterViewInit();
     setTimeout(() => {
       expect(timerCallback).toHaveBeenCalled();
@@ -41,6 +39,20 @@ describe('navmenu', () => {
     }, 100);
 
   });
+
+  it('ngAfterViewInit else condition', () => {
+    el = fixture.debugElement.query(By.css('#navmenu'));
+    event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
+    comp.ngAfterViewInit();
+    setTimeout(() => {
+      expect(timerCallback).toHaveBeenCalled();
+      expect((window.innerWidth - el.nativeElement.getBoundingClientRect().right)).toBeGreaterThan(150);
+      comp.position = 'left';
+      fixture.detectChanges();
+    }, 100);
+  });
+
+  
   it('check variable in navmenu', () => {
     expect(comp.issubmenu).toEqual(false);
     expect(comp.position).toEqual('right');
