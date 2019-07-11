@@ -76,16 +76,15 @@ describe('amexio-step-wizard', () => {
         e.data['email'] = "a@gmail.com";
         e.data['firstName'] = "ankita";
         e.data['lastName'] = "jain";
+        e['index']= 1562845194350;
         const updatedTitle = e.title.replace(/\s/g, '').toLowerCase();
         component.data[updatedTitle] = e.data;
         component.stepItemList.forEach((stepItem: any, index: any) => {
-            if (stepItem.index === e.index) {
+            expect(stepItem.index).toEqual(e.index);
                 activeIndex = index + 1;
                 component.stepItemList[activeIndex].activeClass = 'active';
                 component.stepItemList[activeIndex].active = true;
                 component.title = component.stepItemList[activeIndex].title;
-            }
-
         });
 
     })
