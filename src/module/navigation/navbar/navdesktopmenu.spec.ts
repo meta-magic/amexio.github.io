@@ -32,14 +32,13 @@ describe('navdesktopmenu', () => {
   it('ngAfterViewInit if method', () => {
 
     fixture1.detectChanges();
-    const menus: ElementRef = fixture1.componentInstance.menus;
+    let menus: ElementRef = fixture1.componentInstance.menus;
     expect(menus).toBeDefined();
     comp1.ngAfterViewInit();
     setTimeout(() => {
       const fixture = TestBed.createComponent(AmexioNavDesktopMenuComponent);
       fixture.detectChanges();
-      let ok = 1264 - menus.nativeElement.getBoundingClientRect().right;
-      expect(window.innerWidth - ok).toBeLessThan(300);
+      expect(window.innerWidth - menus.nativeElement.getBoundingClientRect().right).toBeLessThan(300);
       comp1.position = 'right';
     }, 100);
   });
