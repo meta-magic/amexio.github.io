@@ -304,6 +304,37 @@ describe('amexio-floating-panel', () => {
         expect(comp.draggable).toEqual(false);
         expect(event.target.getAttribute('name')).toBeNull();
         expect(event.target.getAttribute('name')).not.toEqual('floatingheader'); 
-    });  
+    });
+    
+    
+    it('onMouseDown method if nested call', () => {
+        comp.draggable =true;
+        let floatingPanel = {
+            'offsetTop':1200,
+            'offsetLeft':145,
+            'style': {
+                'top':'20px',
+                'left':'10px',
+                'opacity':'1'
+            }
+        }
+        let div = document.createElement('div');
+        div.setAttribute('name','floatingheader');
+        let  event = jasmine.createSpyObj('e', [ 'preventDefault' ]); 
+        event['clientX'] = 1200;
+        event['clientY'] = 1400; 
+        event['target'] =  div;    
+        comp.onMouseDown(event,floatingPanel);
+        expect(comp.draggable).toBeDefined();
+        expect(event.target.getAttribute('name')).toBeDefined();
+        expect(event.target.getAttribute('name')).toEqual('floatingheader');
+        event = window.event;
+        comp.pos3 = event.clientX;
+        comp.pos4 = event.clientY;
+        comp.documentMouseUPListener = 'kijjj';
+        comp.documentMouseMoveListener = 'mjkiii';
+       expect(comp.documentMouseUPListener).toBeDefined();
+       expect(comp.documentMouseMoveListener).toBeDefined();
+    });
 });
 
