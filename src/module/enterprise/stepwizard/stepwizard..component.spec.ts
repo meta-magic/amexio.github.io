@@ -62,8 +62,6 @@ describe('amexio-step-wizard', () => {
         component.stepItemList = component.stepItemQueryList.toArray();
         component.ngAfterContentInit();
         expect(component.stepItemList).toBeDefined();
-        console.log(component.stepItemList, component.stepItemList.length);
-
         expect(component.stepItemList.length).toBeGreaterThan(0);
         component.stepItemList[0].active = true;
     });
@@ -76,15 +74,15 @@ describe('amexio-step-wizard', () => {
         e.data['email'] = "a@gmail.com";
         e.data['firstName'] = "ankita";
         e.data['lastName'] = "jain";
-        e['index']= 1562845194350;
         const updatedTitle = e.title.replace(/\s/g, '').toLowerCase();
         component.data[updatedTitle] = e.data;
         component.stepItemList.forEach((stepItem: any, index: any) => {
+            e['index'] = stepItem.index;
             expect(stepItem.index).toEqual(e.index);
-                activeIndex = index + 1;
-                component.stepItemList[activeIndex].activeClass = 'active';
-                component.stepItemList[activeIndex].active = true;
-                component.title = component.stepItemList[activeIndex].title;
+            activeIndex = 0;
+            component.stepItemList[activeIndex].activeClass = 'active';
+            component.stepItemList[activeIndex].active = true;
+            component.title = component.stepItemList[activeIndex].title;
         });
 
     })
