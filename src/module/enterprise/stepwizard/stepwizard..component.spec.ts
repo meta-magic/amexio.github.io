@@ -51,6 +51,10 @@ describe('amexio-step-wizard', () => {
         expect(component.stepItemList).toBeDefined();
         expect(component.stepItemList.length).toBeGreaterThan(0);
         component.stepItemList[0].active = true;
+        component.ngAfterContentInit();
+        expect(component.stepItemList).not.toBeDefined();
+        expect(component.stepItemList.length).not.toBeGreaterThan(0);
+        
     })
 
 });
