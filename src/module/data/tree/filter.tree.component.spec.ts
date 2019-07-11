@@ -69,8 +69,8 @@ describe('amexio-tree-filter-view', () => {
 
     comp.isDataFound = true;
     expect(comp.isDataFound).toEqual(true);
-    comp.onClickSearch = false;
-    expect(comp.onClickSearch).toEqual(false);
+    // comp.onClickSearch = false;
+    // expect(comp.onClickSearch).toEqual(false);
     comp.mask = true;
     expect(comp.mask).toEqual(true);
     comp.isexpandAll = false;
@@ -576,6 +576,9 @@ describe('amexio-tree-filter-view', () => {
    comp.isDataFound = true;
  });
 
+
+ 
+
  it('filterData() third elseif', () => {
   comp.filterText = "h";
   comp.triggerchar = 1;
@@ -610,7 +613,7 @@ it('filterData() third elseif else', () => {
    ];
    comp.onClickSearch = false;
  comp.filterData();
-       expect(comp.onClickSearch).toEqual(false);   
+       expect(comp.onClickSearch).not.toEqual(true);   
 });
 
 it('filterData() third last if', () => {
@@ -644,7 +647,6 @@ it('filterData() third last if', () => {
    text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
    }
    ];
-
    comp.isexpandAll = false;
   comp.filterData();
   // if (this.isexpandAll) {
