@@ -115,8 +115,8 @@ export class LinkedInAuthComponent extends SocialBaseComponent implements OnInit
         if (IN.User.isAuthorized()) {
           IN.API.Raw(
             '/people/~:(id,first-name,last-name,email-address,picture-url)',
-          ).result( (res: LinkedInResponse) => {
-            resolve(this.getLoginInUserInfo(res));
+          ).result( (res1: LinkedInResponse) => {
+            resolve(this.getLoginInUserInfo(res1));
           });
         }
       });

@@ -231,7 +231,8 @@ export class AmexioCreditcardComponent implements ControlValueAccessor, OnInit {
       const parts = [];
       let len;
       let i;
-      for (i = 0, len = match.length; i < len; i += 4) {
+      len = match.length;
+      for (i = 0; i < len; i += 4) {
         parts.push(match.substring(i, i + 4));
       }
       if (parts.length) {
