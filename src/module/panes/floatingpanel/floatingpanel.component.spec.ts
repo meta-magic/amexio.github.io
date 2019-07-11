@@ -3,23 +3,25 @@ import { FormsModule } from '@angular/forms';
 import { IconLoaderService } from '../../../index';
 import { AmexioFloatingPanelComponent } from './floatingpanel.component';
 import { AmexioFormsModule } from '../../forms/amexio.forms.module';
-import { SimpleChange } from '@angular/core';
+import { SimpleChange, ElementRef, Type, Renderer2 } from '@angular/core';
+import { By } from '@angular/platform-browser';
 
 describe('amexio-floating-panel', () => {
     let comp: AmexioFloatingPanelComponent;
     let fixture: ComponentFixture<AmexioFloatingPanelComponent>;
     let event1:any;
+    const rendererMock = jasmine.createSpyObj('rendererMock', ['listen']);
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule, AmexioFormsModule],
             declarations: [AmexioFloatingPanelComponent],
-            providers: [IconLoaderService],
+            providers: [IconLoaderService,{provide: Renderer2, useValue: rendererMock}],
         }).compileComponents();
         fixture = TestBed.createComponent(AmexioFloatingPanelComponent);
         comp = fixture.componentInstance;
         event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
         it('true is true', () => expect(true).toBe(true));
-        
+   
 
     });
     // it('should create the app', async(() => {
@@ -244,5 +246,64 @@ describe('amexio-floating-panel', () => {
     comp.pos4 = e.clientY;
     expect(comp.bottomPosition).toBeUndefined();
     });
+
+
+    it('onMouseDown method if  call', () => {
+        comp.draggable =true;
+        let floatingPanel = {
+            'offsetTop':1200,
+            'offsetLeft':145,
+            'style': {
+                'top':'20px',
+                'left':'10px',
+                'opacity':'1'
+            }
+        }
+        let div = document.createElement('div');
+        div.setAttribute('name','floatingheader');
+        let  event = jasmine.createSpyObj('e', [ 'preventDefault' ]); 
+        event['clientX'] = 1200;
+        event['clientY'] = 1400; 
+        event['target'] =  div;    
+        comp.onMouseDown(event,floatingPanel);
+        expect(comp.draggable).toBeDefined();
+        expect(event.target.getAttribute('name')).toBeDefined();
+        expect(event.target.getAttribute('name')).toEqual('floatingheader');
+        event = event;
+        expect(event.preventDefault).toHaveBeenCalled(); 
+        comp.pos3 = event.clientX;
+        comp.pos4 = event.clientY;
+        comp.documentMouseUPListener = null;
+        comp.documentMouseMoveListener = null;
+       expect(comp.documentMouseUPListener).toBeNull();
+       comp.documentMouseUPListener = rendererMock.listen('document', 'mouseup',
+       (event: any) => comp.closeDragElement(floatingPanel));
+
+       expect(comp.documentMouseMoveListener).toBeNull();
+       comp.documentMouseMoveListener = rendererMock.listen('document', 'mousemove',
+       (event: any) => comp.elementDrag(event, floatingPanel));
+    });
+
+    it('onMouseDown method else ', () => {
+        comp.draggable = false;
+        let floatingPanel = {
+            'offsetTop':1200,
+            'offsetLeft':145,
+            'style': {
+                'top':'20px',
+                'left':'10px',
+                'opacity':'1'
+            }
+        }
+        let div = document.createElement('div');
+        let  event = jasmine.createSpyObj('e', [ 'preventDefault' ]); 
+        event['clientX'] = 1200;
+        event['clientY'] = 1400; 
+        event['target'] =  div; 
+        comp.onMouseDown(event,floatingPanel);
+        expect(comp.draggable).toEqual(false);
+        expect(event.target.getAttribute('name')).toBeNull();
+        expect(event.target.getAttribute('name')).not.toEqual('floatingheader'); 
+    });  
 });
 
