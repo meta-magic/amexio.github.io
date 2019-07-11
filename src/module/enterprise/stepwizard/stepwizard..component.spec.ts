@@ -18,7 +18,7 @@ import { FormBuilder , FormGroup, NgForm, NgModel} from '@angular/forms';
     </amexio-step-wizard>`,
   })
   class TestWrapperComponent { }
-fdescribe('amexio-step-wizard', () => {
+describe('amexio-step-wizard', () => {
     let component: StepWizardComponent;
     let fixture: ComponentFixture<TestWrapperComponent>;
     let service: DeviceQueryService;
