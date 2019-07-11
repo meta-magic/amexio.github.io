@@ -78,8 +78,8 @@ describe('amexio-tree-filter-view', () => {
   });
 
 
-  it('ngoninit() first else', () => {  
-    comp.ngOnInit();  
+  it('ngoninit() first else', () => {
+    comp.ngOnInit();
     expect(comp.parentTmp).toBeUndefined();
     comp.ngAfterViewInit()
     expect(comp.parentTmp).toBeUndefined();
@@ -154,7 +154,7 @@ describe('amexio-tree-filter-view', () => {
 
   });
 
-  
+
 
   it('ngAfterViewInit() second elseif', () => {
     let fixture1 = TestBed.createComponent(AmexioFilterTreeComponent);
@@ -172,7 +172,7 @@ describe('amexio-tree-filter-view', () => {
   });
 
   it('ngAfterViewInit() third else', () => {
-  
+
 
     comp.ngAfterViewInit()
     // if (this.httpmethod && this.httpurl) {
@@ -192,33 +192,33 @@ describe('amexio-tree-filter-view', () => {
   });
 
   it('ngAfterViewInit() forth elseif else', () => {
-  
-    comp.ngAfterViewInit()
-  // } else if (this.data) {
-     expect(comp.data).not.toBeDefined();
-  });  
 
-//   it('updateComponent()  first else ', () => {
-//     // comp.previousValue = 'aaa'
-//     comp.data = [{a: 'a'}]
-//     comp.previousValue = [{b: 'b'}]
-// comp.updateComponent();
-// // if (this.data != null && JSON.stringify(this.previousValue) !== JSON.stringify(this.data)) {
-// expect(comp.data).not.toBeNull();
-// expect(comp.previousValue).not.toEqual(comp.data);
-// comp.previousValue = JSON.parse(JSON.stringify(comp.data));
-// comp.setData(comp.data);
-//   });  
+    comp.ngAfterViewInit()
+    // } else if (this.data) {
+    expect(comp.data).not.toBeDefined();
+  });
+
+  //   it('updateComponent()  first else ', () => {
+  //     // comp.previousValue = 'aaa'
+  //     comp.data = [{a: 'a'}]
+  //     comp.previousValue = [{b: 'b'}]
+  // comp.updateComponent();
+  // // if (this.data != null && JSON.stringify(this.previousValue) !== JSON.stringify(this.data)) {
+  // expect(comp.data).not.toBeNull();
+  // expect(comp.previousValue).not.toEqual(comp.data);
+  // comp.previousValue = JSON.parse(JSON.stringify(comp.data));
+  // comp.setData(comp.data);
+  //   });  
 
   it('ngAfterViewInit() forth elseif ', () => {
-    comp.data = [{a: 'a'}]
+    comp.data = [{ a: 'a' }]
     comp.ngAfterViewInit()
-  // } else if (this.data) {
-     expect(comp.data).toBeDefined();
-     comp.previousValue = JSON.parse(JSON.stringify(comp.data));
-     comp.setData(comp.data);
+    // } else if (this.data) {
+    expect(comp.data).toBeDefined();
+    comp.previousValue = JSON.parse(JSON.stringify(comp.data));
+    comp.setData(comp.data);
 
-  });  
+  });
 
 
 
@@ -352,12 +352,12 @@ describe('amexio-tree-filter-view', () => {
   // 
   it('fliter tree getData()if on method call', () => {
     // if (this.datareader != null) {
-      let httpResponse;
-      let responsedata: any = httpResponse;
+    let httpResponse;
+    let responsedata: any = httpResponse;
     comp.datareader = null;
     expect(comp.datareader).toBeNull();
     responsedata = httpResponse;
-    
+
   });
   // 
   it('fliter tree getData()if on method call', () => {
@@ -507,49 +507,49 @@ describe('amexio-tree-filter-view', () => {
     comp.filterText = "h";
     comp.triggerchar = 1;
     comp.orgTreeData = [
-     {
-     text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
-     },
-     {
-     text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
-     }
-     ];
-   comp.filterData();
-  //  if (this.treeData.length === 0) {
+      {
+        text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+      },
+      {
+        text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+      }
+    ];
+    comp.filterData();
+    //  if (this.treeData.length === 0) {
     comp.treeData = [];
-   expect(comp.treeData.length).toEqual(0)
-   comp.isDataFound = false;
- });
+    expect(comp.treeData.length).toEqual(0)
+    comp.isDataFound = false;
+  });
   it('filterData() first else', () => {
     comp.filterText = "h";
     comp.triggerchar = 4;
     comp.orgTreeData = [
-     {
-     text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
-     },
-     {
-     text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
-     }
-     ];
-   comp.filterData();
-   // if (this.filterText.length >= this.triggerchar) {
-   expect(comp.filterText.length).not.toBeGreaterThanOrEqual(comp.triggerchar);
-   comp.isDataFound = true;
-   comp.treeData = comp.orgTreeData;
-   
- });
-// 
-   it('filterData() first if', () => {
-     comp.filterText = "h";
-     comp.triggerchar = 1;
-     comp.orgTreeData = [
       {
-      text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+        text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
       },
       {
-      text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+        text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
       }
-      ];
+    ];
+    comp.filterData();
+    // if (this.filterText.length >= this.triggerchar) {
+    expect(comp.filterText.length).not.toBeGreaterThanOrEqual(comp.triggerchar);
+    comp.isDataFound = true;
+    comp.treeData = comp.orgTreeData;
+
+  });
+  // 
+  it('filterData() first if', () => {
+    comp.filterText = "h";
+    comp.triggerchar = 1;
+    comp.orgTreeData = [
+      {
+        text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+      },
+      {
+        text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+      }
+    ];
     comp.filterData();
     comp.showToolTip = false;
     // if (this.filterText.length >= this.triggerchar) {
@@ -563,98 +563,154 @@ describe('amexio-tree-filter-view', () => {
     comp.filterText = "h";
     comp.triggerchar = 1;
     comp.orgTreeData = [
-     {
-     text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
-     },
-     {
-     text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
-     }
-     ];
-   comp.filterData();
-  //  if (this.treeData.length === 0) {
-   expect(comp.treeData.length).not.toEqual(0);
-   comp.isDataFound = true;
- });
+      {
+        text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+      },
+      {
+        text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+      }
+    ];
+    comp.filterData();
+    //  if (this.treeData.length === 0) {
+    expect(comp.treeData.length).not.toEqual(0);
+    comp.isDataFound = true;
+  });
 
+  it('filterData() third elseif', () => {
+    comp.filterText = "h";
+    comp.triggerchar = 1;
+    comp.orgTreeData = [
+      {
+        text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+      },
+      {
+        text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+      }
+    ];
+    comp.onClickSearch = true;
+    comp.filterData();
+    // } else if (this.onClickSearch) {
+    expect(comp.onClickSearch).toEqual(true);
+    const tData = JSON.parse(JSON.stringify(comp.orgTreeData));
+    const treeNodes = comp.searchTree(tData, comp.filterText);
+    comp.treeData = treeNodes;
+    comp.onClickSearch = false;
+  });
 
- 
+  it('filterData() third elseif else', () => {
+    comp.filterText = "h";
+    comp.triggerchar = 1;
+    comp.orgTreeData = [
+      {
+        text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+      },
+      {
+        text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+      }
+    ];
+    comp.onClickSearch = false;
+    comp.filterData();
+    expect(comp.onClickSearch).not.toEqual(true);
+  });
 
- it('filterData() third elseif', () => {
-  comp.filterText = "h";
-  comp.triggerchar = 1;
-  comp.orgTreeData = [
-   {
-   text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
-   },
-   {
-   text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
-   }
-   ];
-   comp.onClickSearch = true;
- comp.filterData();
-// } else if (this.onClickSearch) {
-      expect(comp.onClickSearch).toEqual(true);
-      const tData = JSON.parse(JSON.stringify(comp.orgTreeData));
-      const treeNodes = comp.searchTree(tData, comp.filterText);
-      comp.treeData = treeNodes;
-      comp.onClickSearch = false;
-});
+  it('filterData() third last if', () => {
+    comp.filterText = "h";
+    comp.triggerchar = 1;
+    comp.orgTreeData = [
+      {
+        text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+      },
+      {
+        text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+      }
+    ];
 
-it('filterData() third elseif else', () => {
-  comp.filterText = "h";
-  comp.triggerchar = 1;
-  comp.orgTreeData = [
-   {
-   text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
-   },
-   {
-   text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
-   }
-   ];
-   comp.onClickSearch = false;
- comp.filterData();
-       expect(comp.onClickSearch).not.toEqual(true);   
-});
-
-it('filterData() third last if', () => {
-  comp.filterText = "h";
-  comp.triggerchar = 1;
-  comp.orgTreeData = [
-   {
-   text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
-   },
-   {
-   text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
-   }
-   ];
-
-   comp.isexpandAll = true;
-  comp.filterData();
-  // if (this.isexpandAll) {
+    comp.isexpandAll = true;
+    comp.filterData();
+    // if (this.isexpandAll) {
     expect(comp.isexpandAll).toEqual(true);
     comp.expandAll(comp.treeData);
 
- });
+  });
 
- it('filterData() third last else', () => {
-  comp.filterText = "h";
-  comp.triggerchar = 1;
-  comp.orgTreeData = [
-   {
-   text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
-   },
-   {
-   text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
-   }
-   ];
-   comp.isexpandAll = false;
-  comp.filterData();
-  // if (this.isexpandAll) {
+  it('filterData() third last else', () => {
+    comp.filterText = "h";
+    comp.triggerchar = 1;
+    comp.orgTreeData = [
+      {
+        text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+      },
+      {
+        text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+      }
+    ];
+    comp.isexpandAll = false;
+    comp.filterData();
+    // if (this.isexpandAll) {
     expect(comp.isexpandAll).not.toEqual(true);
     comp.generatefilterIndex(comp.treeData, 1, Math.floor(Math.random() * 1000 + 999 + 1));
 
- });
- 
+  });
+
+  // 
+
+  it('filterOption() first for if', () => {
+    let data ={ key: "Is Not Equal To", value: 2, type: "string", checkedStatus: ""};
+    comp.filterOptionData = [ 
+      // {key: "Is Equal To", value: "1", type: "string", checkedStatus: ""},
+      {key: "Is Not Equal To", value: 2, type: "string", checkedStatus: ""}
+      ];
+      comp.filterText = "h";
+      comp.triggerchar = 1;
+      comp.orgTreeData = [
+        {
+          text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+        },
+        {
+          text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+        }
+      ];
+    comp.filterOption(data);
+     comp.onClickSearch = true;
+     comp.filterIndex = data.value;
+     comp.filterOptionData.forEach((opt: any) => {
+      // if (opt.value !== data.value) {
+        expect(opt.value).toEqual(data.value);
+        opt.checkedStatus = ''; 
+    });
+    comp.filterData();
+    comp.showToolTip = false;
+  });
+  it('filterOption() first for else', () => {
+    let data ={ key: "Is Not Equal To", value: 2, type: "string", checkedStatus: ""};
+    comp.filterOptionData = [ 
+      {key: "Is Equal To", value: "1", type: "string", checkedStatus: ""}
+      // {key: "Is Not Equal To", value: 2, type: "string", checkedStatus: ""}
+      ];
+      comp.filterText = "h";
+      comp.triggerchar = 1;
+      comp.orgTreeData = [
+        {
+          text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+        },
+        {
+          text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+        }
+      ];
+    comp.filterOption(data);
+     comp.onClickSearch = true;
+     comp.filterIndex = data.value;
+     comp.filterOptionData.forEach((opt: any) => {
+      // if (opt.value !== data.value) {
+        expect(opt.value).not.toEqual(data.value);
+        opt.checkedStatus = 'fa fa-check'; 
+    });
+    comp.filterData();
+    comp.showToolTip = false;
+  });
+
+  
+
 });
 
 
