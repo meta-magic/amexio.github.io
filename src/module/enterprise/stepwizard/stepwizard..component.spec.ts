@@ -51,8 +51,8 @@ describe('amexio-step-wizard', () => {
     it('method ngAfterContentInit else block', () => {
         component.ngAfterContentInit();
         fixture.detectChanges();
-        component.stepItemList = null;
-        expect(component.stepItemList).toEqual(null);
+        component.stepItemList = [];
+        expect(component.stepItemList.length).toEqual(0);
     });
 
     it('method ngAfterContentInit', () => {
@@ -62,9 +62,34 @@ describe('amexio-step-wizard', () => {
         component.stepItemList = component.stepItemQueryList.toArray();
         component.ngAfterContentInit();
         expect(component.stepItemList).toBeDefined();
+        console.log(component.stepItemList, component.stepItemList.length);
+
         expect(component.stepItemList.length).toBeGreaterThan(0);
         component.stepItemList[0].active = true;
     });
+    it('nextStep method', () => {
+        component.data = {};
+        let activeIndex = 0;
+        let e = jasmine.createSpyObj('e', ['preventDefault']);
+        e['title'] = 'userdetails';
+        e['data'] = {};
+        e.data['email'] = "a@gmail.com";
+        e.data['firstName'] = "ankita";
+        e.data['lastName'] = "jain";
+        const updatedTitle = e.title.replace(/\s/g, '').toLowerCase();
+        component.data[updatedTitle] = e.data;
+        component.stepItemList.forEach((stepItem: any, index: any) => {
+            if (stepItem.index === e.index) {
+                activeIndex = index + 1;
+                component.stepItemList[activeIndex].activeClass = 'active';
+                component.stepItemList[activeIndex].active = true;
+                component.title = component.stepItemList[activeIndex].title;
+            }
+
+        });
+
+    })
+
 
 });
 
