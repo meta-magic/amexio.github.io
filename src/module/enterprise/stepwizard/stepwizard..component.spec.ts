@@ -18,7 +18,7 @@ import { FormBuilder, FormGroup, NgForm, NgModel } from '@angular/forms';
     </amexio-step-wizard>`,
 })
 class TestWrapperComponent { }
-describe('amexio-step-wizard', () => {
+fdescribe('amexio-step-wizard', () => {
     let component: StepWizardComponent;
     let fixture: ComponentFixture<TestWrapperComponent>;
     let service: DeviceQueryService;
@@ -43,6 +43,8 @@ describe('amexio-step-wizard', () => {
         fixture.detectChanges();
     });
     it('constructor', () => {
+        service.IsTablet();
+        service.IsPhone();
         expect(service.IsTablet()).toBeDefined();
         expect(service.IsPhone()).toBeDefined();
         component.isPhone = true
@@ -69,7 +71,7 @@ describe('amexio-step-wizard', () => {
         component.data = {};
         let activeIndex = 0;
         let e = jasmine.createSpyObj('e', ['preventDefault']);
-        e['title'] = 'userdetails';
+        e['title'] = 'User Details';
         e['data'] = {};
         e.data['email'] = "a@gmail.com";
         e.data['firstName'] = "ankita";
@@ -77,17 +79,25 @@ describe('amexio-step-wizard', () => {
         const updatedTitle = e.title.replace(/\s/g, '').toLowerCase();
         component.data[updatedTitle] = e.data;
         component.stepItemList.forEach((stepItem: any, index: any) => {
+
             e['index'] = stepItem.index;
             expect(stepItem.index).toEqual(e.index);
-            activeIndex = 0;
+            activeIndex = index + 1;
+            activeIndex  = 0;
             component.stepItemList[activeIndex].activeClass = 'active';
             component.stepItemList[activeIndex].active = true;
             component.title = component.stepItemList[activeIndex].title;
-        });
+        }); 
+        component.stepItemList.forEach((stepItem: any, index: any) => {
+            let ind = index + 1;
+            ind = -1;
+            expect(ind).toBeLessThan(activeIndex);
+             ind = 1;
+              component.stepItemList[ind - 1].activeClass = 'completed';
+              component.stepItemList[ind - 1].active = false;
+          });
 
     })
-
-
 });
 
 
