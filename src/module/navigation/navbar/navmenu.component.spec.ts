@@ -25,7 +25,10 @@ describe('navmenu', () => {
 
     comp.ngAfterViewInit();
     setTimeout(() => {
-      expect(timerCallback).toHaveBeenCalled();
+      fixture.detectChanges();
+      el.nativeElement.getBoundingClientRect = () => ({
+        right : 1275
+        })
       expect((window.innerWidth - el.nativeElement.getBoundingClientRect().right)).not.toBeGreaterThan(150);
       comp.position = 'right';
       fixture.detectChanges();

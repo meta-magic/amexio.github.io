@@ -38,6 +38,9 @@ describe('navdesktopmenu', () => {
     setTimeout(() => {
       const fixture = TestBed.createComponent(AmexioNavDesktopMenuComponent);
       fixture.detectChanges();
+      menus.nativeElement.getBoundingClientRect = () => ({
+        right : 1264
+        })
       expect(window.innerWidth - menus.nativeElement.getBoundingClientRect().right).toBeLessThan(300);
       comp1.position = 'right';
     }, 100);
