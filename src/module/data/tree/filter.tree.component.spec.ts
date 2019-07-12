@@ -668,8 +668,9 @@ describe('amexio-tree-filter-view', () => {
         text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
       }
     ];
-    comp.onClickSearch = true;
+    
     comp.filterData();
+    comp.onClickSearch = true;
     expect(comp.filterText.length).not.toBeGreaterThanOrEqual(comp.triggerchar);
     expect(comp.onClickSearch).toEqual(true);
     const tData = JSON.parse(JSON.stringify(comp.orgTreeData));
@@ -680,15 +681,17 @@ describe('amexio-tree-filter-view', () => {
   });
   it('filterData() third 0 length else ', () => {
     comp.filterText = "h";
-    comp.triggerchar = 1;
+    comp.triggerchar = 4;
     comp.orgTreeData = [{
       text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
     },
     {
       text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
     }];
-    comp.onClickSearch = true;
+    
     comp.filterData();
+    comp.onClickSearch = true;
+    expect(comp.filterText.length).not.toBeGreaterThanOrEqual(comp.triggerchar);
     expect(comp.onClickSearch).toEqual(true);
     const tData = JSON.parse(JSON.stringify(comp.orgTreeData));
     const treeNodes = comp.searchTree(tData, comp.filterText);
@@ -715,10 +718,12 @@ describe('amexio-tree-filter-view', () => {
   });
   it('filterData() third 0 length if', () => {
     comp.filterText = "h";
-    comp.triggerchar = 1;
+    comp.triggerchar = 4;
     comp.orgTreeData = [];
-    comp.onClickSearch = true;
+    
     comp.filterData();
+    comp.onClickSearch = true;
+    expect(comp.filterText.length).not.toBeGreaterThanOrEqual(comp.triggerchar);
     expect(comp.onClickSearch).toEqual(true);
     const tData = JSON.parse(JSON.stringify(comp.orgTreeData));
     const treeNodes = comp.searchTree(tData, comp.filterText);
