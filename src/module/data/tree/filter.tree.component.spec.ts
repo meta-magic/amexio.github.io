@@ -672,7 +672,21 @@ describe('amexio-tree-filter-view', () => {
     expect(comp.treeData.length).not.toEqual(0);
     comp.isDataFound = true;
   });
-
+  it('filterData() else if inverse ', () => {
+    comp.filterText = "h";
+    comp.triggerchar = 1;
+    comp.orgTreeData = [{
+      text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+    },
+    {
+      text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+    }];
+    comp.onClickSearch = false;
+    comp.filterData();
+     expect(comp.onClickSearch).toEqual(false);
+      comp.isDataFound = true;
+      comp.treeData = comp.orgTreeData;
+  });
   it('filterData() third 0 length if', () => {
     comp.filterText = "h";
     comp.triggerchar = 1;
