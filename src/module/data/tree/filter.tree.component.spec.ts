@@ -118,7 +118,7 @@ describe('amexio-tree-filter-view', () => {
 
     // get a reference to the actual component we want
     let component = fixture1.componentInstance.templates;
-    comp.parentRef = component;
+    comp.parentTmp = component;
     comp.ngOnInit();
     expect(comp.parentTmp).not.toBeNull();
     comp.templates = { treeNodeTemplate: comp.parentTmp };
@@ -667,7 +667,8 @@ describe('amexio-tree-filter-view', () => {
     const tData = JSON.parse(JSON.stringify(comp.orgTreeData));
     const treeNodes = comp.searchTree(tData, comp.filterText);
     comp.treeData = treeNodes;
-    comp.onClickSearch = false;
+    comp.onClickSearch = false; 
+    comp.filterData();
     expect(comp.treeData.length).not.toEqual(0);
     comp.isDataFound = true;
   });
@@ -683,6 +684,7 @@ describe('amexio-tree-filter-view', () => {
     const treeNodes = comp.searchTree(tData, comp.filterText);
     comp.treeData = treeNodes;
     comp.onClickSearch = false;
+    comp.filterData();
     expect(comp.treeData.length).toEqual(0);
     comp.isDataFound = false;
   });
