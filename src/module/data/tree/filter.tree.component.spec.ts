@@ -9,7 +9,7 @@ import { HttpClient, HttpHandler } from '@angular/common/http';
 import { Renderer2, Renderer, TemplateRef } from '@angular/core';
 import { CommonIconComponent } from './../../base/components/common.icon.component';
 import { equal } from 'assert';
-describe('amexio-tree-filter-view', () => {
+fdescribe('amexio-tree-filter-view', () => {
   let comp: AmexioFilterTreeComponent;
   let fixture: ComponentFixture<AmexioFilterTreeComponent>;
 
@@ -838,7 +838,43 @@ describe('amexio-tree-filter-view', () => {
     comp.filterData();
     comp.showToolTip = false;
   });
-
+  it('generatefilterIndex method call', () => {
+  
+    let data = [
+      {
+        "text": "Web App",
+        "expand": true,
+        "children": [
+          {
+            "text": "app",
+            "expand": true,
+            "children": [
+              {
+                "leaf": true,
+                "text": "Application.js",
+              }
+            ]
+          },
+          {
+            "text": "button",
+            "expand": true,
+            "children": [
+              {
+                "leaf": true,
+                "text": "Button.js",
+              }
+            ] }] }]
+  let index = 0;
+  comp.childarraykey = 'children';
+  let parentId = 1;
+  let rannumber = Math.floor(Math.random() * 1000 + 999 + 1);
+  comp.generatefilterIndex(data, parentId, rannumber);
+  data.forEach((element: any,index:any) => {
+      element['elementId'] = '' + rannumber + '-' + parentId + (index + 1);
+      expect(element[comp.childarraykey]).toBeDefined();
+      comp.generatefilterIndex(element[comp.childarraykey], element.elementId.split('-')[1], rannumber);
+  });
+  });
   
 
 });
