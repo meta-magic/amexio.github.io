@@ -4,25 +4,24 @@ import { IconLoaderService } from '../../../index';
 import { AmexioFloatingPanelComponent } from './floatingpanel.component';
 import { AmexioFormsModule } from '../../forms/amexio.forms.module';
 import { SimpleChange, ElementRef, Type, Renderer2 } from '@angular/core';
-import { By } from '@angular/platform-browser';
-import { notDeepEqual } from 'assert';
+
 
 describe('amexio-floating-panel', () => {
     let comp: AmexioFloatingPanelComponent;
     let fixture: ComponentFixture<AmexioFloatingPanelComponent>;
-    let event1:any;
+    let event1: any;
     const rendererMock = jasmine.createSpyObj('rendererMock', ['listen']);
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule, AmexioFormsModule],
             declarations: [AmexioFloatingPanelComponent],
-            providers: [IconLoaderService,{provide: Renderer2, useValue: rendererMock}],
+            providers: [IconLoaderService, { provide: Renderer2, useValue: rendererMock }],
         }).compileComponents();
         fixture = TestBed.createComponent(AmexioFloatingPanelComponent);
         comp = fixture.componentInstance;
         event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
         it('true is true', () => expect(true).toBe(true));
-   
+
 
     });
     // it('should create the app', async(() => {
@@ -32,74 +31,74 @@ describe('amexio-floating-panel', () => {
     //     expect(comp).toBeTruthy();
     // }));
 
- it('ngOnchanges method call if condition',() => {
-    let element = fixture.nativeElement;
-     let showPanel = true;
-     comp.absolute = true;
-       comp.showPanel = showPanel;
-       let currentshowpanel:boolean;
-       comp.ngOnChanges({
-        changes: new SimpleChange(null, showPanel,false)
-       }
-    );
-       fixture.detectChanges();
-       expect(comp.showPanel).toBe(showPanel);
-       expect(comp.absolute).toBe(true);
-       comp.setPanelAbsolutePostion();
+    it('ngOnchanges method call if condition', () => {
+        let element = fixture.nativeElement;
+        let showPanel = true;
+        comp.absolute = true;
+        comp.showPanel = showPanel;
+        let currentshowpanel: boolean;
+        comp.ngOnChanges({
+            changes: new SimpleChange(null, showPanel, false)
+        }
+        );
+        fixture.detectChanges();
+        expect(comp.showPanel).toBe(showPanel);
+        expect(comp.absolute).toBe(true);
+        comp.setPanelAbsolutePostion();
     });
 
- it('ngOnchanges method call else condition',() => {
-      let element = fixture.nativeElement;
-      let showPanel = true;
-       comp.absolute = false;
-       comp.showPanel = showPanel;
-       let currentshowpanel:boolean;
-       comp.ngOnChanges({
-        changes: new SimpleChange(null, showPanel,false)
-       }
-    );
-       fixture.detectChanges();
-       expect(comp.showPanel).toBe(showPanel);
-       expect(comp.absolute).toBe(false);
-       comp.panelStyle();
+    it('ngOnchanges method call else condition', () => {
+        let element = fixture.nativeElement;
+        let showPanel = true;
+        comp.absolute = false;
+        comp.showPanel = showPanel;
+        let currentshowpanel: boolean;
+        comp.ngOnChanges({
+            changes: new SimpleChange(null, showPanel, false)
+        }
+        );
+        fixture.detectChanges();
+        expect(comp.showPanel).toBe(showPanel);
+        expect(comp.absolute).toBe(false);
+        comp.panelStyle();
     });
     it('ngOnInit method if ', () => {
         comp.absolute = true;
-        comp.draggable = true; 
+        comp.draggable = true;
         comp.showPanel = false;
         comp.arrow = true;
         comp.relative = true;
         comp.ngOnInit();
         expect(comp.absolute).toEqual(true);
-        comp.relative = false;  
-        comp.height = '';             
+        comp.relative = false;
+        comp.height = '';
         expect(comp.height).toEqual('');
         comp.height = 200;
         comp.width = '';
-        expect(comp.width).toEqual('');    
-        comp.width = 400;  
-        expect(comp.showPanel).toBeDefined();        
-        comp.panelStyle();               
+        expect(comp.width).toEqual('');
+        comp.width = 400;
+        expect(comp.showPanel).toBeDefined();
+        comp.panelStyle();
         expect(comp.draggable).toBeDefined();
         expect(comp.arrow).toBeDefined();
-         comp.draggable  = false; 
+        comp.draggable = false;
         expect(comp.relative).toBeDefined();
         expect(comp.draggable).toBeDefined();
         comp.style['position'] = 'absolute';
     });
     it('ngOnInit method else ', () => {
-        comp.relative = false;  
+        comp.relative = false;
         comp.draggable = false;
         comp.showPanel = false;
         comp.arrow = false;
         comp.absolute = false;
-        comp.height = '440'; 
-        comp.width = '300';  
+        comp.height = '440';
+        comp.width = '300';
         comp.ngOnInit();
-        expect(comp.absolute).toEqual(false);          
+        expect(comp.absolute).toEqual(false);
         expect(comp.height).not.toEqual('');
-        expect(comp.width).not.toEqual('');    
-        expect(comp.showPanel).toEqual(false);                     
+        expect(comp.width).not.toEqual('');
+        expect(comp.showPanel).toEqual(false);
         expect(comp.draggable).toEqual(false);
         expect(comp.arrow).toEqual(false);
         expect(comp.relative).toEqual(false);
@@ -192,7 +191,7 @@ describe('amexio-floating-panel', () => {
         expect(comp.width).toEqual('');
         comp.width = '400px';
         comp.setPanelStylePostion();
-        comp.arrowPadding();      
+        comp.arrowPadding();
     })
     it('checking togglePanel method', () => {
         comp.showPanel = false;
@@ -212,28 +211,28 @@ describe('amexio-floating-panel', () => {
         comp.pos3 = 0;
         comp.pos4 = 0;
         comp.bottomPosition = '20px';
-        comp.style =  {'bottom':'10px'};
+        comp.style = { 'bottom': '10px' };
         let floatingPanel = {
-            'offsetTop':1200,
-            'offsetLeft':145,
+            'offsetTop': 1200,
+            'offsetLeft': 145,
             'style': {
-                'top':'20px',
-                'left':'10px',
-                'opacity':'1'
+                'top': '20px',
+                'left': '10px',
+                'opacity': '1'
             }
         }
-    let  e = jasmine.createSpyObj('e', [ 'preventDefault' ]); 
-    e['clientX'] = 1200;
-    e['clientY'] = 1400;         
-    comp.elementDrag(e,floatingPanel);
-    e = e || window.event;
-    expect(e.preventDefault).toHaveBeenCalled(); 
-    comp.pos1 = comp.pos3 - e.clientX;
-    comp.pos2 = comp.pos4 - e.clientY;
-    comp.pos3 = e.clientX;
-    comp.pos4 = e.clientY;
-    expect(comp.bottomPosition).toBeDefined();
-    delete comp.style['bottom'];
+        let e = jasmine.createSpyObj('e', ['preventDefault']);
+        e['clientX'] = 1200;
+        e['clientY'] = 1400;
+        comp.elementDrag(e, floatingPanel);
+        e = e || window.event;
+        expect(e.preventDefault).toHaveBeenCalled();
+        comp.pos1 = comp.pos3 - e.clientX;
+        comp.pos2 = comp.pos4 - e.clientY;
+        comp.pos3 = e.clientX;
+        comp.pos4 = e.clientY;
+        expect(comp.bottomPosition).toBeDefined();
+        delete comp.style['bottom'];
         floatingPanel.style.top = (floatingPanel.offsetTop - comp.pos2) + 'px';
         floatingPanel.style.left = (floatingPanel.offsetLeft - comp.pos1) + 'px';
         floatingPanel.style.opacity = '0.7';
@@ -244,107 +243,133 @@ describe('amexio-floating-panel', () => {
         comp.pos2 = 0;
         comp.pos3 = 0;
         comp.pos4 = 0;
-        comp.style =  {'bottom':'10px'};
+        comp.style = { 'bottom': '10px' };
         let floatingPanel = {
-            'offsetTop':1200,
-            'offsetLeft':145,
+            'offsetTop': 1200,
+            'offsetLeft': 145,
             'style': {
-                'top':'20px',
-                'left':'10px',
-                'opacity':'1'
+                'top': '20px',
+                'left': '10px',
+                'opacity': '1'
             }
         }
-    let  e = jasmine.createSpyObj('e', [ 'preventDefault' ]); 
-    e['clientX'] = 1200;
-    e['clientY'] = 1400;         
-    comp.elementDrag(e,floatingPanel);
-    e = e || window.event;
-    expect(e.preventDefault).toHaveBeenCalled(); 
-    comp.pos1 = comp.pos3 - e.clientX;
-    comp.pos2 = comp.pos4 - e.clientY;
-    comp.pos3 = e.clientX;
-    comp.pos4 = e.clientY;
-    expect(comp.bottomPosition).toBeUndefined();
+        let e = jasmine.createSpyObj('e', ['preventDefault']);
+        e['clientX'] = 1200;
+        e['clientY'] = 1400;
+        comp.elementDrag(e, floatingPanel);
+        e = e || window.event;
+        expect(e.preventDefault).toHaveBeenCalled();
+        comp.pos1 = comp.pos3 - e.clientX;
+        comp.pos2 = comp.pos4 - e.clientY;
+        comp.pos3 = e.clientX;
+        comp.pos4 = e.clientY;
+        expect(comp.bottomPosition).toBeUndefined();
     });
 
 
-    it('onMouseDown method if  call', () => {
-        comp.draggable =true;
+    it('closeDragElement method', () => {
+
         let floatingPanel = {
-            'offsetTop':1200,
-            'offsetLeft':145,
+            'offsetTop': 1200,
+            'offsetLeft': 145,
             'style': {
-                'top':'20px',
-                'left':'10px',
-                'opacity':'1'
+                'top': '20px',
+                'left': '10px',
+                'opacity': '1'
+            }
+        }
+        comp.closeDragElement(floatingPanel);
+        spyOn(comp, 'documentMouseMoveListener').and.callThrough();
+        comp.closeDragElement(floatingPanel);
+        fixture.detectChanges();
+        expect(comp.documentMouseMoveListener()).toBeDefined();
+        expect(comp.documentMouseMoveListener()).toHaveBeenCalled();
+        expect(comp.documentMouseUPListener()).toHaveBeenCalled();
+        comp.documentMouseMoveListener = null;
+        comp.documentMouseUPListener = null;
+        comp.opacitiy = false;
+        floatingPanel.style.opacity = 'unset';
+
+    });
+    it('onMouseDown method if  call', () => {
+        comp.draggable = true;
+        let floatingPanel = {
+            'offsetTop': 1200,
+            'offsetLeft': 145,
+            'style': {
+                'top': '20px',
+                'left': '10px',
+                'opacity': '1'
             }
         }
         let div = document.createElement('div');
-        div.setAttribute('name','floatingheader');
-        let  event = jasmine.createSpyObj('e', [ 'preventDefault' ]); 
+        div.setAttribute('name', 'floatingheader');
+        let event = jasmine.createSpyObj('e', ['preventDefault']);
         event['clientX'] = 1200;
-        event['clientY'] = 1400; 
-        event['target'] =  div;    
-        comp.onMouseDown(event,floatingPanel);
+        event['clientY'] = 1400;
+        event['target'] = div;
+        comp.onMouseDown(event, floatingPanel);
         expect(comp.draggable).toBeDefined();
         expect(event.target.getAttribute('name')).toBeDefined();
         expect(event.target.getAttribute('name')).toEqual('floatingheader');
         event = event;
-        expect(event.preventDefault).toHaveBeenCalled(); 
+        expect(event.preventDefault).toHaveBeenCalled();
         comp.pos3 = event.clientX;
         comp.pos4 = event.clientY;
         comp.documentMouseUPListener = null;
         comp.documentMouseMoveListener = null;
-       expect(comp.documentMouseUPListener).toBeNull();
-       comp.documentMouseUPListener = rendererMock.listen('document', 'mouseup',
-       (event: any) => comp.closeDragElement(floatingPanel));
+        expect(comp.documentMouseUPListener).toBeNull();
+        comp.documentMouseUPListener = rendererMock.listen('document', 'mouseup',
+            (event: any) => comp.closeDragElement(floatingPanel));
 
-       expect(comp.documentMouseMoveListener).toBeNull();
-       comp.documentMouseMoveListener = rendererMock.listen('document', 'mousemove',
-       (event: any) => comp.elementDrag(event, floatingPanel));
+        expect(comp.documentMouseMoveListener).toBeNull();
+        comp.documentMouseMoveListener = rendererMock.listen('document', 'mousemove',
+            (event: any) => comp.elementDrag(event, floatingPanel));
     });
+
+
 
     it('onMouseDown method else ', () => {
         comp.draggable = false;
         let floatingPanel = {
-            'offsetTop':1200,
-            'offsetLeft':145,
+            'offsetTop': 1200,
+            'offsetLeft': 145,
             'style': {
-                'top':'20px',
-                'left':'10px',
-                'opacity':'1'
+                'top': '20px',
+                'left': '10px',
+                'opacity': '1'
             }
         }
         let div = document.createElement('div');
-        let  event = jasmine.createSpyObj('e', [ 'preventDefault' ]); 
+        let event = jasmine.createSpyObj('e', ['preventDefault']);
         event['clientX'] = 1200;
-        event['clientY'] = 1400; 
-        event['target'] =  div; 
-        comp.onMouseDown(event,floatingPanel);
+        event['clientY'] = 1400;
+        event['target'] = div;
+        comp.onMouseDown(event, floatingPanel);
         expect(comp.draggable).toEqual(false);
         expect(event.target.getAttribute('name')).toBeNull();
-        expect(event.target.getAttribute('name')).not.toEqual('floatingheader'); 
+        expect(event.target.getAttribute('name')).not.toEqual('floatingheader');
     });
-    
-    
+
+
     it('onMouseDown method if nested call', () => {
-        comp.draggable =true;
+        comp.draggable = true;
         let floatingPanel = {
-            'offsetTop':1200,
-            'offsetLeft':145,
+            'offsetTop': 1200,
+            'offsetLeft': 145,
             'style': {
-                'top':'20px',
-                'left':'10px',
-                'opacity':'1'
+                'top': '20px',
+                'left': '10px',
+                'opacity': '1'
             }
         }
         let div = document.createElement('div');
-        div.setAttribute('name','floatingheader');
-        let  event = jasmine.createSpyObj('e', [ 'preventDefault' ]); 
+        div.setAttribute('name', 'floatingheader');
+        let event = jasmine.createSpyObj('e', ['preventDefault']);
         event['clientX'] = 1200;
-        event['clientY'] = 1400; 
-        event['target'] =  div;    
-        comp.onMouseDown(event,floatingPanel);
+        event['clientY'] = 1400;
+        event['target'] = div;
+        comp.onMouseDown(event, floatingPanel);
         expect(comp.draggable).toBeDefined();
         expect(event.target.getAttribute('name')).toBeDefined();
         expect(event.target.getAttribute('name')).toEqual('floatingheader');
@@ -353,8 +378,8 @@ describe('amexio-floating-panel', () => {
         comp.pos4 = event.clientY;
         comp.documentMouseUPListener = 'kijjj';
         comp.documentMouseMoveListener = 'mjkiii';
-       expect(comp.documentMouseUPListener).toBeDefined();
-       expect(comp.documentMouseMoveListener).toBeDefined();
+        expect(comp.documentMouseUPListener).toBeDefined();
+        expect(comp.documentMouseMoveListener).toBeDefined();
     });
 });
 
