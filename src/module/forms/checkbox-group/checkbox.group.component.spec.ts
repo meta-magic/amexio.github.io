@@ -338,14 +338,10 @@ it('check validate if condition', () => {
   }];
   comp.required = true;
   comp.validate(formParameter);
-  expect(comp['_model']).not.toBeNull();
   expect(comp.required).toBe(true);
+  expect(comp['_model']).not.toBeNull();
   expect(comp['_model'].length).toBeGreaterThan(0);
-  comp.required = false;
-  comp['_model'] = null;
-  comp.validate(formParameter);
-  expect(comp.required).toBe(false);
-  expect(comp['_model']).toBeNull();
+
   return {
     jsonParseError: {
       valid: true,
