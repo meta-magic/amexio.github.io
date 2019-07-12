@@ -198,18 +198,37 @@ describe('amexio-tree-filter-view', () => {
     expect(comp.data).not.toBeDefined();
   });
 
-  //   it('updateComponent()  first else ', () => {
-  //     // comp.previousValue = 'aaa'
-  //     comp.data = [{a: 'a'}]
-  //     comp.previousValue = [{b: 'b'}]
-  // comp.updateComponent();
-  // // if (this.data != null && JSON.stringify(this.previousValue) !== JSON.stringify(this.data)) {
-  // expect(comp.data).not.toBeNull();
-  // expect(comp.previousValue).not.toEqual(comp.data);
-  // comp.previousValue = JSON.parse(JSON.stringify(comp.data));
-  // comp.setData(comp.data);
-  //   });  
+    it('updateComponent() method if  call ', () => {
+   comp.data=   [{
+        "text": "Web App",
+        "children": [
+          {
+            "text": "app",
+            "children": [
+              {
+                "leaf": true,
+                "text": "Application.js"
+              }
+            ]
+          }
+        ]
+      }
+      ];
+  comp.updateComponent();
+  comp.previousValue = null;
+  expect(comp.data).not.toBeNull();
+  expect(JSON.stringify(comp.previousValue)).not.toEqual(JSON.stringify(comp.data));
+  comp.previousValue = JSON.parse(JSON.stringify(comp.data));
+  comp.setData(comp.data);
+    });  
 
+    it('updateComponent() method  else call ', () => {
+     comp.updateComponent();
+     comp.previousValue = null;
+     comp.data =   null
+     expect(comp.data).toBeNull();
+     expect(JSON.stringify(comp.previousValue)).toEqual(JSON.stringify(comp.data));
+       });
   it('ngAfterViewInit() forth elseif ', () => {
     comp.data = [{ a: 'a' }]
     comp.ngAfterViewInit()
