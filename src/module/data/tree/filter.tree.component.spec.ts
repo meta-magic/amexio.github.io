@@ -162,7 +162,7 @@ describe('amexio-tree-filter-view', () => {
     ];
     comp.ngOnInit();
     comp.parentTmp = null;
-    expect(comp.parentTmp ).toBeNull();
+    expect(comp.parentTmp).toBeNull();
     expect(comp.templates).not.toEqual(null);
   });
 
@@ -235,37 +235,37 @@ describe('amexio-tree-filter-view', () => {
     expect(comp.data).not.toBeDefined();
   });
 
-    it('updateComponent() method if  call ', () => {
-   comp.data=   [{
-        "text": "Web App",
-        "children": [
-          {
-            "text": "app",
-            "children": [
-              {
-                "leaf": true,
-                "text": "Application.js"
-              }
-            ]
-          }
-        ]
-      }
-      ];
-  comp.updateComponent();
-  comp.previousValue = null;
-  expect(comp.data).not.toBeNull();
-  expect(JSON.stringify(comp.previousValue)).not.toEqual(JSON.stringify(comp.data));
-  comp.previousValue = JSON.parse(JSON.stringify(comp.data));
-  comp.setData(comp.data);
-    });  
+  it('updateComponent() method if  call ', () => {
+    comp.data = [{
+      "text": "Web App",
+      "children": [
+        {
+          "text": "app",
+          "children": [
+            {
+              "leaf": true,
+              "text": "Application.js"
+            }
+          ]
+        }
+      ]
+    }
+    ];
+    comp.updateComponent();
+    comp.previousValue = null;
+    expect(comp.data).not.toBeNull();
+    expect(JSON.stringify(comp.previousValue)).not.toEqual(JSON.stringify(comp.data));
+    comp.previousValue = JSON.parse(JSON.stringify(comp.data));
+    comp.setData(comp.data);
+  });
 
-    it('updateComponent() method  else call ', () => {
-     comp.updateComponent();
-     comp.previousValue = null;
-     comp.data =   null
-     expect(comp.data).toBeNull();
-     expect(JSON.stringify(comp.previousValue)).toEqual(JSON.stringify(comp.data));
-       });
+  it('updateComponent() method  else call ', () => {
+    comp.updateComponent();
+    comp.previousValue = null;
+    comp.data = null
+    expect(comp.data).toBeNull();
+    expect(JSON.stringify(comp.previousValue)).toEqual(JSON.stringify(comp.data));
+  });
   it('ngAfterViewInit() forth elseif ', () => {
     comp.data = [{ a: 'a' }]
     comp.ngAfterViewInit()
@@ -441,31 +441,31 @@ describe('amexio-tree-filter-view', () => {
   // 
   it('fliter tree getData()if on method call', () => {
     let httpResponse = {
-'data' : [
-  {
-    "text": "Home",
-    "icon": "fa fa-home fa-fw",
-    "mdaIcon": "home",
-    "link": "/home/dashboard",
-    "selected": true,
-    "badge": "12"
-  },
-  {
-    "text": "Email",
-    "icon": "fa fa-envelope fa-fw",
-    "mdaIcon": "email",
-    "link": "/home/email",
-    "badge": "21"
-  },
-  {
-    "text": "Profile",
-    "icon": "fa fa-user fa-fw",
-    "mdaIcon": "account_box",
-    "link": "/home/profile",
-    "badge": "32"
-  }
-]
-};
+      'data': [
+        {
+          "text": "Home",
+          "icon": "fa fa-home fa-fw",
+          "mdaIcon": "home",
+          "link": "/home/dashboard",
+          "selected": true,
+          "badge": "12"
+        },
+        {
+          "text": "Email",
+          "icon": "fa fa-envelope fa-fw",
+          "mdaIcon": "email",
+          "link": "/home/email",
+          "badge": "21"
+        },
+        {
+          "text": "Profile",
+          "icon": "fa fa-user fa-fw",
+          "mdaIcon": "account_box",
+          "link": "/home/profile",
+          "badge": "32"
+        }
+      ]
+    };
 
     comp.getData(httpResponse);
     let responsedata: any = httpResponse;
@@ -676,7 +676,7 @@ describe('amexio-tree-filter-view', () => {
     const treeNodes = comp.searchTree(tData, comp.filterText);
     comp.treeData = treeNodes;
     comp.onClickSearch = false;
-   
+
   });
   it('filterData() third 0 length else ', () => {
     comp.filterText = "h";
@@ -693,7 +693,7 @@ describe('amexio-tree-filter-view', () => {
     const tData = JSON.parse(JSON.stringify(comp.orgTreeData));
     const treeNodes = comp.searchTree(tData, comp.filterText);
     comp.treeData = treeNodes;
-    comp.onClickSearch = false; 
+    comp.onClickSearch = false;
     comp.filterData();
     expect(comp.treeData.length).not.toEqual(0);
     comp.isDataFound = true;
@@ -709,9 +709,9 @@ describe('amexio-tree-filter-view', () => {
     }];
     comp.onClickSearch = false;
     comp.filterData();
-     expect(comp.onClickSearch).toEqual(false);
-      comp.isDataFound = true;
-      comp.treeData = comp.orgTreeData;
+    expect(comp.onClickSearch).toEqual(false);
+    comp.isDataFound = true;
+    comp.treeData = comp.orgTreeData;
   });
   it('filterData() third 0 length if', () => {
     comp.filterText = "h";
@@ -786,61 +786,61 @@ describe('amexio-tree-filter-view', () => {
   // 
 
   it('filterOption() first for if', () => {
-    let data ={ key: "Is Not Equal To", value: 2, type: "string", checkedStatus: ""};
-    comp.filterOptionData = [ 
+    let data = { key: "Is Not Equal To", value: 2, type: "string", checkedStatus: "" };
+    comp.filterOptionData = [
       // {key: "Is Equal To", value: "1", type: "string", checkedStatus: ""},
-      {key: "Is Not Equal To", value: 2, type: "string", checkedStatus: ""}
-      ];
-      comp.filterText = "h";
-      comp.triggerchar = 1;
-      comp.orgTreeData = [
-        {
-          text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
-        },
-        {
-          text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
-        }
-      ];
+      { key: "Is Not Equal To", value: 2, type: "string", checkedStatus: "" }
+    ];
+    comp.filterText = "h";
+    comp.triggerchar = 1;
+    comp.orgTreeData = [
+      {
+        text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+      },
+      {
+        text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+      }
+    ];
     comp.filterOption(data);
-     comp.onClickSearch = true;
-     comp.filterIndex = data.value;
-     comp.filterOptionData.forEach((opt: any) => {
+    comp.onClickSearch = true;
+    comp.filterIndex = data.value;
+    comp.filterOptionData.forEach((opt: any) => {
       // if (opt.value !== data.value) {
-        expect(opt.value).toEqual(data.value);
-        opt.checkedStatus = ''; 
+      expect(opt.value).toEqual(data.value);
+      opt.checkedStatus = '';
     });
     comp.filterData();
     comp.showToolTip = false;
   });
   it('filterOption() first for else', () => {
-    let data ={ key: "Is Not Equal To", value: 2, type: "string", checkedStatus: ""};
-    comp.filterOptionData = [ 
-      {key: "Is Equal To", value: "1", type: "string", checkedStatus: ""}
+    let data = { key: "Is Not Equal To", value: 2, type: "string", checkedStatus: "" };
+    comp.filterOptionData = [
+      { key: "Is Equal To", value: "1", type: "string", checkedStatus: "" }
       // {key: "Is Not Equal To", value: 2, type: "string", checkedStatus: ""}
-      ];
-      comp.filterText = "h";
-      comp.triggerchar = 1;
-      comp.orgTreeData = [
-        {
-          text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
-        },
-        {
-          text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
-        }
-      ];
+    ];
+    comp.filterText = "h";
+    comp.triggerchar = 1;
+    comp.orgTreeData = [
+      {
+        text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+      },
+      {
+        text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+      }
+    ];
     comp.filterOption(data);
-     comp.onClickSearch = true;
-     comp.filterIndex = data.value;
-     comp.filterOptionData.forEach((opt: any) => {
+    comp.onClickSearch = true;
+    comp.filterIndex = data.value;
+    comp.filterOptionData.forEach((opt: any) => {
       // if (opt.value !== data.value) {
-        expect(opt.value).not.toEqual(data.value);
-        opt.checkedStatus = 'fa fa-check'; 
+      expect(opt.value).not.toEqual(data.value);
+      opt.checkedStatus = 'fa fa-check';
     });
     comp.filterData();
     comp.showToolTip = false;
   });
   it('generatefilterIndex method call', () => {
-  
+
     let data = [
       {
         "text": "Web App",
@@ -864,19 +864,67 @@ describe('amexio-tree-filter-view', () => {
                 "leaf": true,
                 "text": "Button.js",
               }
-            ] }] }]
-  let index = 0;
-  comp.childarraykey = 'children';
-  let parentId = 1;
-  let rannumber = Math.floor(Math.random() * 1000 + 999 + 1);
-  comp.generatefilterIndex(data, parentId, rannumber);
-  data.forEach((element: any,index:any) => {
+            ]
+          }]
+      }]
+    let index = 0;
+    comp.childarraykey = 'children';
+    let parentId = 1;
+    let rannumber = Math.floor(Math.random() * 1000 + 999 + 1);
+    comp.generatefilterIndex(data, parentId, rannumber);
+    data.forEach((element: any, index: any) => {
       element['elementId'] = '' + rannumber + '-' + parentId + (index + 1);
       expect(element[comp.childarraykey]).toBeDefined();
       comp.generatefilterIndex(element[comp.childarraykey], element.elementId.split('-')[1], rannumber);
+    });
   });
+
+
+
+  it('fliter tree filterActualData() method call', () => {
+    // if (this.datareader != null) {
+    let filterData = [
+      {
+        "text": "Web App",
+        "expand": true,
+        "children": [
+          {
+            "text": "app",
+            "expand": true,
+            "children": [
+              {
+                "leaf": true,
+                "text": "Application.js",
+              }
+            ]
+          },
+          {
+            "text": "button",
+            "expand": true,
+            "children": [
+              {
+                "leaf": true,
+                "text": "Button.js",
+              }
+            ]
+          }]
+      }]
+
+    let fi = 1;
+    let matchingTitle = 'H';
+    comp.displaykey = 'text';
+    comp.childarraykey = 'children';
+    comp.filterActualData(filterData, fi, matchingTitle);
+    let tempdisplay: string;
+    let tempchildarrayKey: string;
+    tempdisplay = comp.displaykey;
+    tempchildarrayKey = comp.childarraykey;
+    return filterData.filter(function f(node) {
+      expect(node[tempchildarrayKey]).toBeDefined();
+      return (node[tempchildarrayKey] = node[tempchildarrayKey].filter(f)).length;
+    });
+
   });
-  
 
 });
 
