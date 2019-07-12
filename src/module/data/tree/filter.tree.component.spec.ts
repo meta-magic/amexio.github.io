@@ -608,14 +608,47 @@ describe('amexio-tree-filter-view', () => {
     ];
     comp.onClickSearch = true;
     comp.filterData();
-    // } else if (this.onClickSearch) {
     expect(comp.onClickSearch).toEqual(true);
     const tData = JSON.parse(JSON.stringify(comp.orgTreeData));
     const treeNodes = comp.searchTree(tData, comp.filterText);
     comp.treeData = treeNodes;
     comp.onClickSearch = false;
+   
+  });
+  it('filterData() third 0 length else ', () => {
+    comp.filterText = "h";
+    comp.triggerchar = 1;
+    comp.orgTreeData = [{
+      text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+    },
+    {
+      text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
+    }];
+    comp.onClickSearch = true;
+    comp.filterData();
+    expect(comp.onClickSearch).toEqual(true);
+    const tData = JSON.parse(JSON.stringify(comp.orgTreeData));
+    const treeNodes = comp.searchTree(tData, comp.filterText);
+    comp.treeData = treeNodes;
+    comp.onClickSearch = false;
+    expect(comp.treeData.length).not.toEqual(0);
+    comp.isDataFound = true;
   });
 
+  it('filterData() third 0 length if', () => {
+    comp.filterText = "h";
+    comp.triggerchar = 1;
+    comp.orgTreeData = [];
+    comp.onClickSearch = true;
+    comp.filterData();
+    expect(comp.onClickSearch).toEqual(true);
+    const tData = JSON.parse(JSON.stringify(comp.orgTreeData));
+    const treeNodes = comp.searchTree(tData, comp.filterText);
+    comp.treeData = treeNodes;
+    comp.onClickSearch = false;
+    expect(comp.treeData.length).toEqual(0);
+    comp.isDataFound = false;
+  });
   it('filterData() third elseif else', () => {
     comp.filterText = "h";
     comp.triggerchar = 1;
