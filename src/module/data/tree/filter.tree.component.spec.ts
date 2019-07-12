@@ -186,7 +186,11 @@ describe('amexio-tree-filter-view', () => {
     comp.templates = { treeNodeTemplate: comp.parentTmp };
 
   });
-
+  it('ngAfterViewInit() first if inverse', () => {
+    comp.ngAfterViewInit();
+    comp.parentTmp = null;
+    expect(comp.parentTmp).toBeNull();
+  });
 
 
   it('ngAfterViewInit() second elseif', () => {
