@@ -16,11 +16,14 @@ import { AmexioLayoutComponent } from '../../layout/basiclayout/layout.component
 import { AmexioLayoutItemComponent } from '../../layout/basiclayout/layoutitem.component';
 import { AmexioFloatingPanelComponent } from '../../panes/floatingpanel/floatingpanel.component';
 import { AmexioLabelComponent } from '../../forms/label/label.component';
+import { By } from '@angular/platform-browser';
+import { Renderer2 } from '@angular/core';
 
 
 describe('amexio-calendar-month', () => {
   let comp: AmexioCalendarMonthComponent;
   let fixture: ComponentFixture<AmexioCalendarMonthComponent>;
+  const rendererMock = jasmine.createSpyObj('rendererMock', ['addClass', 'setStyle']);
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -34,7 +37,7 @@ describe('amexio-calendar-month', () => {
         AmexioCalendarYearComponent,
         AmexioLabelComponent
       ],
-      providers: [IconLoaderService, CommonDataService],
+      providers: [IconLoaderService, CommonDataService, { provide: Renderer2, useValue: rendererMock }],
     });
     fixture = TestBed.createComponent(AmexioCalendarMonthComponent);
     comp = fixture.componentInstance;
@@ -59,7 +62,7 @@ describe('amexio-calendar-month', () => {
             }],
 
           }, id: "59460_monthid", isActive: false, isActivePeriod: true, isDisabled: false, isEvent: true, selected: false
-        } 
+        }
       ],
       [
         {
@@ -493,6 +496,29 @@ describe('amexio-calendar-month', () => {
 
   });
 
+
+
+  it('addDynamicClass()', () => {
+    let calculatedWidth = 140;
+    let cssClass = 'rightPositionPanel';
+    let nextSiblingElement = document.createElement('app-events-panel');
+
+    comp.addDynamicClass(calculatedWidth, nextSiblingElement, cssClass);
+    comp.nativeRuntimeDiv['element'] = {
+      'nativeElement': {
+        'nextElementSibling': nextSiblingElement
+      }
+    }
+    comp.widthPosition = calculatedWidth + 'px';
+    rendererMock.addClass(nextSiblingElement, cssClass);
+    rendererMock.setStyle(nextSiblingElement, 'left', comp.widthPosition);
+    // rendererMock.setStyle(comp.nativeRuntimeDiv.element.nativeElement.nextElementSibling, 'visibility', 'visible');
+
+  });
+
+
+
+
   // it('nextrightday()', () => {
   //   let day = { id: "59460_monthid" };
   //   comp.nextrightday(day);
@@ -511,7 +537,7 @@ describe('amexio-calendar-month', () => {
   //   });
 
   //   const itemid = comp.calendaryData[focusrowindex][focusinnerindex];
- 
+
   // });
 
   // it('nextleftday()', () => {
@@ -529,7 +555,7 @@ describe('amexio-calendar-month', () => {
   //   comp.focusrindex = 1;
   //   comp.focusiindex = 0;
   //   const itemid = comp.calendaryData[comp.focusrindex][comp.focusiindex];
- 
+
   // });
 
 
