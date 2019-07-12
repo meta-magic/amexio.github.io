@@ -408,15 +408,6 @@ describe('amexio-tree-filter-view', () => {
   // 
   it('fliter tree getData()if on method call', () => {
     // if (this.datareader != null) {
-    let httpResponse;
-    let responsedata: any = httpResponse;
-    comp.datareader = null;
-    expect(comp.datareader).toBeNull();
-    responsedata = httpResponse;
-
-  });
-  // 
-  it('fliter tree getData()if on method call', () => {
     let httpResponse = [
 
       {
@@ -441,6 +432,40 @@ describe('amexio-tree-filter-view', () => {
         "link": "/home/profile",
         "badge": "32"
       }];
+    let responsedata: any = httpResponse;
+    comp.datareader = null;
+    expect(comp.datareader).toBeNull();
+    responsedata = httpResponse;
+    return responsedata;
+  });
+  // 
+  it('fliter tree getData()if on method call', () => {
+    let httpResponse = {
+'data' : [
+  {
+    "text": "Home",
+    "icon": "fa fa-home fa-fw",
+    "mdaIcon": "home",
+    "link": "/home/dashboard",
+    "selected": true,
+    "badge": "12"
+  },
+  {
+    "text": "Email",
+    "icon": "fa fa-envelope fa-fw",
+    "mdaIcon": "email",
+    "link": "/home/email",
+    "badge": "21"
+  },
+  {
+    "text": "Profile",
+    "icon": "fa fa-user fa-fw",
+    "mdaIcon": "account_box",
+    "link": "/home/profile",
+    "badge": "32"
+  }
+]
+};
 
     comp.getData(httpResponse);
     let responsedata: any = httpResponse;
