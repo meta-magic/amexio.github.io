@@ -104,6 +104,28 @@ describe('amexio-floating-panel', () => {
         expect(comp.relative).toEqual(false);
         expect(comp.draggable).toEqual(false);
     });
+    it('ngOnInit method relative-false ,draggable- true ', () => {
+        comp.relative = false;
+        comp.draggable = true;
+        comp.ngOnInit();
+        expect(comp.relative).toEqual(false);
+        expect(comp.draggable).toEqual(true);
+    });
+    it('ngOnInit method both true ', () => {
+        comp.relative = true;
+        comp.draggable = true;
+        comp.ngOnInit();
+        expect(comp.relative).toEqual(true);
+        expect(comp.draggable).toEqual(true);
+        comp.style['position'] = 'absolute';
+    });
+    it('ngOnInit method relative-true, draggable-false', () => {
+        comp.relative = true;
+        comp.draggable = false;
+        comp.ngOnInit();
+        expect(comp.relative).toEqual(true);
+        expect(comp.draggable).toEqual(false);
+    });
     it('panel style method if condition ', () => {
         comp.relative = true;
         comp.width = '200';
@@ -312,10 +334,11 @@ describe('amexio-floating-panel', () => {
         expect(comp.draggable).toBeDefined();
         expect(event.target.getAttribute('name')).toBeDefined();
         expect(event.target.getAttribute('name')).toEqual('floatingheader');
-        event = event;
+        event = event || window.event;
         expect(event.preventDefault).toHaveBeenCalled();
         comp.pos3 = event.clientX;
         comp.pos4 = event.clientY;
+        comp.onMouseDown(event, floatingPanel);
         comp.documentMouseUPListener = null;
         comp.documentMouseMoveListener = null;
         expect(comp.documentMouseUPListener).toBeNull();
@@ -352,7 +375,7 @@ describe('amexio-floating-panel', () => {
     });
 
 
-    it('onMouseDown method if nested call', () => {
+    it('onMouseDown method if nested call --checking else condition', () => {
         comp.draggable = true;
         let floatingPanel = {
             'offsetTop': 1200,
@@ -373,7 +396,7 @@ describe('amexio-floating-panel', () => {
         expect(comp.draggable).toBeDefined();
         expect(event.target.getAttribute('name')).toBeDefined();
         expect(event.target.getAttribute('name')).toEqual('floatingheader');
-        event = window.event;
+        event = event || window.event;
         comp.pos3 = event.clientX;
         comp.pos4 = event.clientY;
         comp.documentMouseUPListener = 'kijjj';
