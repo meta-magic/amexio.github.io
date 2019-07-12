@@ -91,7 +91,19 @@ describe('amexio-tree-filter-view', () => {
     expect(comp.parentTmp).toBeNull();
 
   });
+  // it('ngoninit()  else', () => {
+  //   comp.ngOnInit();
+  //   expect(comp.parentTmp).toBeUndefined();
+  //   comp.ngAfterViewInit()
+  //   expect(comp.parentTmp).toBeUndefined();
 
+  //   comp.parentTmp = null;
+  //   comp.ngOnInit();
+  //   expect(comp.parentTmp).toBeNull();
+  //   comp.ngAfterViewInit()
+  //   expect(comp.parentTmp).toBeNull();
+
+  // });
   // it('ngAfterViewInit() first else', () => {
 
   //   // comp.parentRef = null;
@@ -132,6 +144,27 @@ describe('amexio-tree-filter-view', () => {
     expect(comp.templates).toBeNull();
   });
 
+  it('ngoninit() inverse if', () => {
+    comp.templates = [{
+      "text": "Web App",
+      "children": [
+        {
+          "text": "app",
+          "children": [
+            {
+              "leaf": true,
+              "text": "Application.js"
+            }
+          ]
+        }
+      ]
+    }
+    ];
+    comp.ngOnInit();
+    comp.parentTmp = null;
+    expect(comp.parentTmp ).toBeNull();
+    expect(comp.templates).not.toEqual(null);
+  });
 
   it('ngAfterViewInit() second elseif else', () => {
 
