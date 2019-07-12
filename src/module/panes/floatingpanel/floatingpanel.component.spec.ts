@@ -248,6 +248,7 @@ describe('amexio-floating-panel', () => {
         e['clientY'] = 1400;
         comp.elementDrag(e, floatingPanel);
         e = e || window.event;
+        expect(e).toBe(e);
         expect(e.preventDefault).toHaveBeenCalled();
         comp.pos1 = comp.pos3 - e.clientX;
         comp.pos2 = comp.pos4 - e.clientY;
@@ -335,6 +336,7 @@ describe('amexio-floating-panel', () => {
         expect(event.target.getAttribute('name')).toBeDefined();
         expect(event.target.getAttribute('name')).toEqual('floatingheader');
         event = event || window.event;
+        expect(event).toBe(event);
         expect(event.preventDefault).toHaveBeenCalled();
         comp.pos3 = event.clientX;
         comp.pos4 = event.clientY;
@@ -353,7 +355,7 @@ describe('amexio-floating-panel', () => {
 
 
     it('onMouseDown method else ', () => {
-        comp.draggable = false;
+       
         let floatingPanel = {
             'offsetTop': 1200,
             'offsetLeft': 145,
@@ -368,6 +370,7 @@ describe('amexio-floating-panel', () => {
         event['clientX'] = 1200;
         event['clientY'] = 1400;
         event['target'] = div;
+        comp.draggable = false;
         comp.onMouseDown(event, floatingPanel);
         expect(comp.draggable).toEqual(false);
         expect(event.target.getAttribute('name')).toBeNull();
@@ -396,7 +399,8 @@ describe('amexio-floating-panel', () => {
         expect(comp.draggable).toBeDefined();
         expect(event.target.getAttribute('name')).toBeDefined();
         expect(event.target.getAttribute('name')).toEqual('floatingheader');
-        event = event || window.event;
+        event = window.event;
+        expect(event).toBe(window.event)
         comp.pos3 = event.clientX;
         comp.pos4 = event.clientY;
         comp.documentMouseUPListener = 'kijjj';
