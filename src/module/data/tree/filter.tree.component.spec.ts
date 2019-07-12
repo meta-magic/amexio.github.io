@@ -659,7 +659,7 @@ describe('amexio-tree-filter-view', () => {
 
   it('filterData() third elseif', () => {
     comp.filterText = "h";
-    comp.triggerchar = 1;
+    comp.triggerchar = 4;
     comp.orgTreeData = [
       {
         text: "Home", icon: "fa fa-home fa-fw", mdaIcon: "home", link: "/home/dashboard", selected: true, badge: "21"
@@ -670,6 +670,7 @@ describe('amexio-tree-filter-view', () => {
     ];
     comp.onClickSearch = true;
     comp.filterData();
+    expect(comp.filterText.length).not.toBeGreaterThanOrEqual(comp.triggerchar);
     expect(comp.onClickSearch).toEqual(true);
     const tData = JSON.parse(JSON.stringify(comp.orgTreeData));
     const treeNodes = comp.searchTree(tData, comp.filterText);
