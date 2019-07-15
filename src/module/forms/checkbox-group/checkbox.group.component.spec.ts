@@ -261,6 +261,10 @@ describe('amexio-checkbox-group', () => {
     
     expect(comp.httpmethod).not.toBeDefined();
     expect(comp.httpurl).not.toBeDefined();
+
+    expect(comp.httpmethod).toBeUndefined();
+    expect(comp.httpurl).toBeUndefined();
+    
     // expect(comp.httpmethod).not.toBeNull();
     // expect(comp.httpurl).not.toBeNull();  
   });
@@ -349,7 +353,6 @@ it('check validate if condition', () => {
   };
 });
 
-
   //
   it('check validate else condition', () => {
     comp['_model'] = [{
@@ -364,4 +367,16 @@ it('check validate if condition', () => {
     return null;
   });
 
+  it('check validate else2 condition', () => {
+    comp['_model'] = [{
+      "language": "Angular 2",
+      "checked": false
+    }];
+    comp.required = false;
+    comp.validate(formParameter);
+    // expect(comp['_model']).not.toBeNull();
+    // expect(comp['_model'].length).toBeGreaterThan(0);
+    expect(comp.required).toBe(false);
+    return null;
+  });
 });
