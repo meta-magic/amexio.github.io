@@ -3,7 +3,7 @@ import { DeviceQueryService } from './../../services/device/device.query.service
 
 @Component({
   selector: 'amexio-homepage-eastpanel',
-  templateUrl: './homepage.westpanel.component.html',
+  templateUrl: './homepage.eastpanel.component.html',
 })
 export class AmexioHomePageEastPanelComponent implements OnInit, AfterViewInit {
 
