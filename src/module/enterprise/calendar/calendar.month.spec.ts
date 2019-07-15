@@ -328,8 +328,14 @@ describe('amexio-calendar-month', () => {
     let item: any = 'a';
     let runtimeDiv: any = 'b';
     let event1 = { pageX: 'page' }
-    comp.onChipClick(event1, item, runtimeDiv);
     const emitEvent = {};
+    emitEvent['event'] = event;
+    emitEvent['item'] = item;
+    emitEvent['this'] = this;
+    emitEvent['runtimeDiv'] = runtimeDiv;
+    comp.xValue = event1.pageX;
+    comp.onChipClick(event1, item, runtimeDiv);
+    //  emitEvent = {};
     emitEvent['event'] = event;
     emitEvent['item'] = item;
     emitEvent['this'] = this;
