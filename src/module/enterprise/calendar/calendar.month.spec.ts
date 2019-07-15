@@ -562,24 +562,49 @@ describe('amexio-calendar-month', () => {
 
 
 
+  // it('addDynamicClass()', () => {
+  //   let calculatedWidth = 140;
+  //   let cssClass = 'rightPositionPanel';
+  //   let nextSiblingElement = document.createElement('app-events-panel');
+
+  //   comp.addDynamicClass(calculatedWidth, nextSiblingElement, cssClass);
+  //   comp.nativeRuntimeDiv['element'] = {
+  //     'nativeElement': {
+  //       'nextElementSibling': nextSiblingElement
+  //     }
+  //   }
+  //   comp.widthPosition = calculatedWidth + 'px';
+  //   rendererMock.addClass(nextSiblingElement, cssClass);
+  //   rendererMock.setStyle(nextSiblingElement, 'left', comp.widthPosition);
+  //   // rendererMock.setStyle(comp.nativeRuntimeDiv.element.nativeElement.nextElementSibling, 'visibility', 'visible');
+
+  // });
+
+   
   it('addDynamicClass()', () => {
     let calculatedWidth = 140;
     let cssClass = 'rightPositionPanel';
     let nextSiblingElement = document.createElement('app-events-panel');
-
-    comp.addDynamicClass(calculatedWidth, nextSiblingElement, cssClass);
+    comp.nativeRuntimeDiv = {};
+     comp.nativeRuntimeDiv['element'] = {}; 
+    comp.nativeRuntimeDiv.element = 
+    {
+        'nativeElement': {
+          'nextElementSibling': nextSiblingElement
+        }
+      }
     comp.nativeRuntimeDiv['element'] = {
       'nativeElement': {
         'nextElementSibling': nextSiblingElement
       }
     }
+    comp.addDynamicClass(calculatedWidth, nextSiblingElement, cssClass); 
     comp.widthPosition = calculatedWidth + 'px';
     rendererMock.addClass(nextSiblingElement, cssClass);
     rendererMock.setStyle(nextSiblingElement, 'left', comp.widthPosition);
-    // rendererMock.setStyle(comp.nativeRuntimeDiv.element.nativeElement.nextElementSibling, 'visibility', 'visible');
+    rendererMock.setStyle(comp.nativeRuntimeDiv.element.nativeElement.nextElementSibling, 'visibility', 'visible');
 
   });
-
 
 
 
