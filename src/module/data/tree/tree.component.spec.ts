@@ -243,9 +243,11 @@ describe('amexio-treeview', () => {
         }
         comp.parentRef = null ;
         comp.expandAll(node);
-        comp.destroyExpandAll = setTimeout(() => {
-            expect(comp.parentRef).toBe(null);
-        }, 0);
+        jasmine.clock().tick(101);
+        expect(comp.parentRef).toBe(null);
+        // comp.destroyExpandAll = setTimeout(() => {
+        //     expect(comp.parentRef).toBe(null);
+        // }, 0);
     });
     it('Tree updateComponent() on method call', () => {
         comp.previousValue = '90';
