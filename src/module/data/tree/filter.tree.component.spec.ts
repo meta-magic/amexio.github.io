@@ -671,6 +671,7 @@ describe('amexio-tree-filter-view', () => {
     comp.onClickSearch = true;
     comp.filterData();
     expect(comp.filterText.length).not.toBeGreaterThanOrEqual(comp.triggerchar);
+    comp.onClickSearch = true;
     expect(comp.onClickSearch).toEqual(true);
     const tData = JSON.parse(JSON.stringify(comp.orgTreeData));
     const treeNodes = comp.searchTree(tData, comp.filterText);
@@ -713,12 +714,14 @@ describe('amexio-tree-filter-view', () => {
     comp.isDataFound = true;
     comp.treeData = comp.orgTreeData;
   });
-  it('filterData() third 0 length if', () => {
+  it('filterData() third 0 length if this.onClickSearch true condition', () => {
     comp.filterText = "h";
-    comp.triggerchar = 1;
+    comp.triggerchar = 4;
     comp.orgTreeData = [];
     comp.onClickSearch = true;
     comp.filterData();
+    expect(comp.filterText.length).not.toBeGreaterThanOrEqual(comp.triggerchar);
+    comp.onClickSearch = true;
     expect(comp.onClickSearch).toEqual(true);
     const tData = JSON.parse(JSON.stringify(comp.orgTreeData));
     const treeNodes = comp.searchTree(tData, comp.filterText);
@@ -741,7 +744,9 @@ describe('amexio-tree-filter-view', () => {
     ];
     comp.onClickSearch = false;
     comp.filterData();
-    expect(comp.onClickSearch).not.toEqual(true);
+    comp.onClickSearch = false;
+
+    expect(comp.onClickSearch).toEqual(false);
   });
 
   it('filterData() third last if', () => {
@@ -881,7 +886,7 @@ describe('amexio-tree-filter-view', () => {
 
 
 
-  it('fliter tree filterActualData() method call', () => {
+  it('fliter tree filterActualData() method  node[tempchildarrayKey] call', () => {
     // if (this.datareader != null) {
     let filterData = [
       {
@@ -925,6 +930,7 @@ describe('amexio-tree-filter-view', () => {
     });
 
   });
+
 
 });
 
