@@ -26,6 +26,8 @@ describe('amexio-treeview', () => {
         const compiled = fixture.debugElement.nativeElement;
         event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
         let renderer = Renderer2;
+        jasmine.clock().uninstall();
+        jasmine.clock().install();
         DataJson = [{
             "text": "Web App",
             "expand": true,
@@ -212,10 +214,17 @@ describe('amexio-treeview', () => {
             ]
         };
         comp.expandAll(node);
-        comp.destroyExpandAll = setTimeout(() => {
-            expect(comp.parentRef).toBeDefined();
-            comp.expandAllCall(comp.parentRef);
-        }, 0);
+        spyOn(comp, 'expandAllCall');
+        expect(comp.expandAllCall).not.toHaveBeenCalled();
+        jasmine.clock().tick(101);
+        expect(comp.parentRef).toBeDefined();
+        expect( comp.expandAllCall).toHaveBeenCalled();
+        // expect(comp.parentRef).toBeDefined();
+        // comp.expandAllCall(comp.parentRef);
+        // comp.destroyExpandAll = setTimeout(() => {
+        //     expect(comp.parentRef).toBeDefined();
+        //     comp.expandAllCall(comp.parentRef);
+        // }, 0);
     });
     it('Tree expandAll() on else  method call', () => {
         let node = {
