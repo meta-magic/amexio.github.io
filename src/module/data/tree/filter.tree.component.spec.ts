@@ -639,7 +639,19 @@ describe('amexio-tree-filter-view', () => {
     const treeNodes = comp.searchTree(tData, comp.filterText);
     comp.treeData = treeNodes;
   });
-
+  it('filterData() first if inside if', () => {
+    comp.filterText = "h";
+    comp.triggerchar = 1;
+    comp.orgTreeData = [];
+    comp.filterData();
+    comp.showToolTip = false;
+    expect(comp.filterText.length).toBeGreaterThanOrEqual(comp.triggerchar);
+    const tData = JSON.parse(JSON.stringify(comp.orgTreeData));
+    const treeNodes = comp.searchTree(tData, comp.filterText);
+    comp.treeData = treeNodes;
+    expect(comp.treeData.length).toEqual(0);
+    comp.isDataFound = false;
+  });
   it('filterData() second else', () => {
     comp.filterText = "h";
     comp.triggerchar = 1;
