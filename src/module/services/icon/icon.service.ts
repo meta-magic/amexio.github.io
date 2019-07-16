@@ -358,25 +358,27 @@ export class IconLoaderService {
     this.iconMappings = ICON_MAPPING;
   }
 
-  modifyIconClass(componentKey: string, newValue: string) {
-    if (this.iconMappings != null) {
-      this.iconMappings.forEach((icon: any) => {
-        if (icon.component === componentKey) {
-          icon[this._iconToUse.toString()] = newValue;
-        }
-      });
-    }
+  modifyIconClass(componentName: string, newValue: string) {
+   let object = this.getCompareRes(componentName);
+   if(object != null) {
+    object[this._iconToUse.toString()] = newValue;
+   }
   }
   // TO GET ICON OBJECT
   getIconObject(componentName: string): any {
-     let obj = null;
-     if (this.iconMappings !== null) {
+     return this.getCompareRes(componentName);
+  }
+
+
+  getCompareRes(key: string): any {
+    let obj = null
+    if (this.iconMappings !== null) {
       this.iconMappings.forEach((object: any) => {
-        if (object.component === componentName) {
+        if (object.component === key) {
           obj = object;
         }
       });
-    }
-     return obj;
   }
+  return obj;
+}
 }
