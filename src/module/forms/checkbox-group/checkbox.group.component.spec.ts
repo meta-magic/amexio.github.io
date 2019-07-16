@@ -258,13 +258,13 @@ describe('amexio-checkbox-group', () => {
 
   it('ngOnInit() else', () => {
     comp.ngOnInit();
-    
+
     expect(comp.httpmethod).not.toBeDefined();
     expect(comp.httpurl).not.toBeDefined();
 
     expect(comp.httpmethod).toBeUndefined();
     expect(comp.httpurl).toBeUndefined();
-    
+
     // expect(comp.httpmethod).not.toBeNull();
     // expect(comp.httpurl).not.toBeNull();  
   });
@@ -272,11 +272,11 @@ describe('amexio-checkbox-group', () => {
 
   it('ngOnInit() second elseif else', () => {
     comp.ngOnInit();
-  // } else if (this.data && this.datareader) {
-   expect(comp.data).not.toBeDefined();
-   expect(comp.datareader).not.toBeDefined();
+    // } else if (this.data && this.datareader) {
+    expect(comp.data).not.toBeDefined();
+    expect(comp.datareader).not.toBeDefined();
 
-});
+  });
 
 
 
@@ -299,59 +299,59 @@ describe('amexio-checkbox-group', () => {
   });
 
 
-  
+
   it('ngOnInit() second elseif', () => {
     comp.data = {
-     "data": [
-       {
-         "countryName": "Myanmar",
-         "countryCode1": "MM",
-         "countryCode2": "MMR",
-         "countryFlag": "MM.png",
-         "capital": "",
-         "currencyCode": "MMK",
-         "currencyName": "Kyat",
-         "currencySymbol": "K",
-         "isoNumeric": 104
-       },
-       {
-         "countryName": "U.S. Virgin Island",
-         "countryCode1": "VI",
-         "countryCode2": "VIR",
-         "countryFlag": "VI.png",
-         "capital": "",
-         "currencyCode": "USD",
-         "currencyName": "Dollar",
-         "currencySymbol": "$",
-         "isoNumeric": 850
-       }]
-   }
-   comp.datareader = "data";
-   comp.ngOnInit();
- //  expect(comp.data).toBeDefined();
- //  expect(comp.datareader).toBeDefined();
-  comp.data = comp.getResponseData(comp.data);
+      "data": [
+        {
+          "countryName": "Myanmar",
+          "countryCode1": "MM",
+          "countryCode2": "MMR",
+          "countryFlag": "MM.png",
+          "capital": "",
+          "currencyCode": "MMK",
+          "currencyName": "Kyat",
+          "currencySymbol": "K",
+          "isoNumeric": 104
+        },
+        {
+          "countryName": "U.S. Virgin Island",
+          "countryCode1": "VI",
+          "countryCode2": "VIR",
+          "countryFlag": "VI.png",
+          "capital": "",
+          "currencyCode": "USD",
+          "currencyName": "Dollar",
+          "currencySymbol": "$",
+          "isoNumeric": 850
+        }]
+    }
+    comp.datareader = "data";
+    comp.ngOnInit();
+    //  expect(comp.data).toBeDefined();
+    //  expect(comp.datareader).toBeDefined();
+    comp.data = comp.getResponseData(comp.data);
 
-});
+  });
 
-//check validate 
-it('check validate if condition', () => {
-  comp['_model'] = [{
-    "language": "Angular 2",
-    "checked": false
-  }];
-  comp.required = true;
-  comp.validate(formParameter);
-  expect(comp.required).toBe(true);
-  expect(comp['_model']).not.toBeNull();
-  expect(comp['_model'].length).toBeGreaterThan(0);
+  //check validate 
+  it('check validate if condition', () => {
+    comp['_model'] = [{
+      "language": "Angular 2",
+      "checked": false
+    }];
+    comp.required = true;
+    comp.validate(formParameter);
+    expect(comp.required).toBe(true);
+    expect(comp['_model']).not.toBeNull();
+    expect(comp['_model'].length).toBeGreaterThan(0);
 
-  return {
-    jsonParseError: {
-      valid: true,
-    },
-  };
-});
+    return {
+      jsonParseError: {
+        valid: true,
+      },
+    };
+  });
 
   //
   it('check validate else condition', () => {
@@ -361,6 +361,7 @@ it('check validate if condition', () => {
     }];
     comp.required = false;
     comp.validate(formParameter);
+    expect(comp.required).toBe(false);
     expect(comp['_model']).not.toBeNull();
     expect(comp['_model'].length).toBeGreaterThan(0);
     expect(comp.required).toBe(false);
@@ -368,15 +369,18 @@ it('check validate if condition', () => {
   });
 
   it('check validate else2 condition', () => {
-    comp['_model'] = [{
-      "language": "Angular 2",
-      "checked": false
-    }];
-    comp.required = false;
+    comp['_model'] = null;
+    comp.required = true;
     comp.validate(formParameter);
-    // expect(comp['_model']).not.toBeNull();
-    // expect(comp['_model'].length).toBeGreaterThan(0);
-    expect(comp.required).toBe(false);
-    return null;
+    expect(comp.required).toBe(true);
+    expect(comp['_model']).toBeNull();
+    comp['_model'] = [];
+    expect(comp['_model'].length).not.toBeGreaterThan(0);
+    expect(comp.required).toBe(true);
+    return {
+      jsonParseError: {
+        valid: true,
+      },
+    };
   });
 });
