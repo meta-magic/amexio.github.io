@@ -1,7 +1,7 @@
 import { IconLoaderService } from './icon.service';
 import { inject, TestBed } from '@angular/core/testing';
 /**
- * Created by dattaram on 8/8/18.
+ * Created by kedar on 16-7-2019.
  */
 describe('IconLoaderService', () => {
   let service: any;
@@ -89,4 +89,58 @@ describe('IconLoaderService', () => {
     });
   });
 
+
+
+
+
+  it('getIconObject 1st if condition', () => {
+    service._iconToUse = 'fa';
+    let obj = null;
+    let componentKey = 'datepicker_previous';
+    service.iconMappings = [
+      {
+        component: 'datepicker_previous',
+        fa: 'fa fa-chevron-left',
+        mat: 'keyboard_arrow_left',
+      }
+    ];
+    service.getIconObject(componentKey);
+    expect(service.iconMappings).not.toBeNull();
+    service.iconMappings.forEach((icon: any) => {
+      expect(icon.component).toEqual(componentKey);
+      obj = icon;
+    });
+    return obj;
+  });
+
+
+  it('getIconObject 1st else condition', () => {
+    service._iconToUse = 'fa';
+    let obj = null;
+    let componentKey = 'datepicker_previous';
+    service.iconMappings = null;
+    service.getIconObject(componentKey);
+    expect(service.iconMappings).toBeNull();
+    return obj;
+
+  });
+
+  it('getIconObject with nested if-chi-else condition', () => {
+    service._iconToUse = 'fa';
+    let obj = null;
+    let componentKey = 'datepicker_previouss';
+    service.iconMappings = [
+      {
+        component: 'datepicker_previous',
+        fa: 'fa fa-chevron-left',
+        mat: 'keyboard_arrow_left',
+      }
+    ];
+    service.getIconObject(componentKey);
+    expect(service.iconMappings).not.toBeNull();
+    service.iconMappings.forEach((icon: any) => {
+      expect(icon.component).not.toEqual(componentKey);
+    });
+    return obj;
+  });
 });
