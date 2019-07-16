@@ -944,6 +944,33 @@ describe('amexio-tree-filter-view', () => {
   });
 
 
+  it('fliter tree expandAllCall() on expand false method call', () => {
+    let node1 = [{
+      "text": "Web App",
+      "expand": false,
+      "children": [
+        {
+          "text": "app",
+          "expand": false,
+          "children": [
+            {
+              "leaf": true,
+              "text": "Application.js"
+            }
+          ]
+        }
+      ]
+    }
+    ];
+    comp.expandAllCall(node1);
+    node1.forEach((childCheck: any) => {
+      expect(childCheck.hasOwnProperty('expand')).toEqual(true);
+      childCheck.expand = false;
+      expect(childCheck.expand).not.toEqual(true);
+      childCheck.expand = true;
+    });
+  });
+
 });
 
 
