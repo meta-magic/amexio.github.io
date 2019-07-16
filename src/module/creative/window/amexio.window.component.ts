@@ -99,17 +99,17 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
 
   dummyWidth: string;
 
-  x: number;
+  x = 0;
 
-  y: number;
+  y = 0;
 
-  px: number;
+  px = 0;
 
-  py: number;
+  py = 0;
 
-  minArea: number;
+  minArea = 20000;
 
-  draggingWindow: boolean;
+  draggingWindow = false;
 
   globalListenFunc: () => void;
   globalClickListenFunc: () => void;
@@ -117,12 +117,6 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
 
   constructor(private renderer: Renderer2) {
     super();
-    this.x = 0;
-    this.y = 0;
-    this.px = 0;
-    this.py = 0;
-    this.draggingWindow = false;
-    this.minArea = 20000;
   }
   onCloseClick() {
     if (this.closable) {
