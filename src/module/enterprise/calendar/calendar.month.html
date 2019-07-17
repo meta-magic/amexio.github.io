@@ -1,117 +1,112 @@
 <table>
-        <thead>
-            <tr>
-                <td [attr.colspan]="headers.length">
-                    <table>
-                        <tr>
-                            <td class="calendar-header-items" *ngFor="let header of headers">
-                                <strong>{{header}}</strong>
-                             </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="calendar-mainbox" [attr.colspan]="headers.length">
-                    <div class="calendar-scroller">
-                        <div style="width: 100%; position: relative;">
-                            <div style="min-height: 150px; position: relative;" *ngFor="let calendarRow of calendaryData;index as rowIndex;">
-                                <div class="calendar-bg">
-                                    <table>
-                                        <tr>
-                                            <!-- here down -->
-                                            <td attr.aria-label="{{ariadatalabel}}" tabindex="1" (focus)="ondatefocus(day)" (keyup.arrowright)="nextrightday(day)" (keyup.arrowleft)="nextleftday(day)"
-                                                (keyup.arrowdown)="nextbottomday(day)" (keyup.arrowup)="nexttopday(day)" attr.id="{{day.id}}"
-                                                [ngClass]="{'calendar-active-box': day.isActive}" class="calendar-box-items" *ngFor="let day of calendarRow">
-                                                <span [ngClass]="{'calendar-inactive': !day.isActivePeriod}">
-                                                    {{ day.date | date:'d' }}
-                                                </span>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
-                                <div class="calendar-user-content">
-                                    <table>
-                                        <tr>
-                                            <td [ngClass]="{'calendar-user-active': (day.eventDetails && day.eventDetails.isEvent)}" *ngFor="let day of calendarRow; last as isLast">
-                                                <ng-container *ngIf="(day.eventDetails && day.eventDetails.events)">
-                                                    <ul class="calendar-ul">
-                                                        <div *ngFor="let dayevent of day.eventDetails.events; let i = index">
-                                                                <div class="EventDetailsContent" #runtimeDiv1 id="{{day.date + i}}"></div>
-                                                            <li (click)="eventClicked($event,dayevent, runtimeDiv1)">
-                                                                <ng-container *ngIf="i + 1 <= noOfEvents; else elseBlock">
-                                                                    <div style="padding:5px" class="calendar-li " [attr.class]="'calendar-li '+' '+dayevent.details.eventclass">
-                                                                        <span tabindex="1" (keyup.enter)="eventClicked($event,dayevent, runtimeDiv1)" attr.aria-label="{{day.date | date : 'EEEE, MMMM d, y'}} {{dayevent.details.title}} {{dayevent.details.start |  date: 'shortTime'}} {{dayevent.details.end |  date: 'shortTime'}}"
-                                                                            class="calendar-user-active" *ngIf="dayevent.isEvent">
-    
-                                                                            {{dayevent.details.title}}
-    
-                                                                            <br/>
-                                                                            <span class="calendar-user-active-timeslot" *ngIf="(dayevent.details && dayevent.details.hasTimeSlot)">
-                                                                                {{dayevent.details.start | date: "shortTime"}}
-                                                                                <ng-container *ngIf="(dayevent.details && dayevent.details.end)">
-                                                                                    - {{dayevent.details.end | date: "shortTime"}}
-                                                                                </ng-container>
-                                                                            </span>
-                                                                        </span>
-                                                                    </div>
-                                                                </ng-container>
-    
-                                                            </li>
-                                                            <ng-container *ngIf="i + 1 == noOfEvents && (day.eventDetails.events.length - noOfEvents != 0) ">
-                                                                <div (click)="onMoreClicked($event, day.eventDetails.events)" class="calendar-li ">
-                                                                    <span tabindex="1" (keyup.enter)="eventClicked($event,dayevent)" class="calendar-user-active">
-                                                                        {{day.eventDetails.events.length - noOfEvents}} More
+    <thead>
+        <tr>
+            <td [attr.colspan]="headers.length">
+                <table>
+                    <tr>
+                        <td class="calendar-header-items" *ngFor="let header of headers">
+                            <strong>{{header}}</strong>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="calendar-mainbox" [attr.colspan]="headers.length">
+                <div class="calendar-scroller">
+                    <div style="width: 100%; position: relative;">
+                        <div style="min-height: 150px; position: relative;" *ngFor="let calendarRow of calendaryData;index as rowIndex;">
+                            <div class="calendar-bg">
+                                <table>
+                                    <tr>
+                                        <!-- here down -->
+                                        <td attr.aria-label="{{ariadatalabel}}" tabindex="1" (focus)="ondatefocus(day)" (keyup.arrowright)="nextrightday(day)" (keyup.arrowleft)="nextleftday(day)"
+                                            (keyup.arrowdown)="nextbottomday(day)" (keyup.arrowup)="nexttopday(day)" attr.id="{{day.id}}"
+                                            [ngClass]="{'calendar-active-box': day.isActive}" class="calendar-box-items" *ngFor="let day of calendarRow">
+                                            <span [ngClass]="{'calendar-inactive': !day.isActivePeriod}">
+                                                {{ day.date | date:'d' }}
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="calendar-user-content">
+                                <table>
+                                    <tr>
+                                        <td [ngClass]="{'calendar-user-active': (day.eventDetails && day.eventDetails.isEvent)}" *ngFor="let day of calendarRow; last as isLast">
+                                            <ng-container *ngIf="(day.eventDetails && day.eventDetails.events)">
+                                                <ul class="calendar-ul">
+                                                    <div *ngFor="let dayevent of day.eventDetails.events; let i = index">
+                                                        <div class="EventDetailsContent" #runtimeDiv1 id="{{day.date + i}}"></div>
+                                                        <li (click)="eventClicked($event,dayevent, runtimeDiv1)">
+                                                            <ng-container *ngIf="i + 1 <= noOfEvents; else elseBlock">
+                                                                <div style="padding:5px" class="calendar-li " [attr.class]="'calendar-li '+' '+dayevent.details.eventclass">
+                                                                    <span tabindex="1" (keyup.enter)="eventClicked($event,dayevent, runtimeDiv1)" attr.aria-label="{{day.date | date : 'EEEE, MMMM d, y'}} {{dayevent.details.title}} {{dayevent.details.start |  date: 'shortTime'}} {{dayevent.details.end |  date: 'shortTime'}}"
+                                                                        class="calendar-user-active" *ngIf="dayevent.isEvent">
+
+                                                                        {{dayevent.details.title}}
+
                                                                         <br/>
+                                                                        <span class="calendar-user-active-timeslot" *ngIf="(dayevent.details && dayevent.details.hasTimeSlot)">
+                                                                            {{dayevent.details.start | date: "shortTime"}}
+                                                                            <ng-container *ngIf="(dayevent.details && dayevent.details.end)">
+                                                                                - {{dayevent.details.end | date: "shortTime"}}
+                                                                            </ng-container>
+                                                                        </span>
                                                                     </span>
                                                                 </div>
-    
-    
-                                                                <div [ngClass]="{fpClass: !isLast, fpRightClass: isLast}">
-                                                                    <div class="EventDetailsContent" #runtimeDiv [attr.id]="day.date"></div>
-                                                                    <div class="floatingPanelIndex" >
-                                                                        <amexio-floating-panel class="amexio-floating-panel" [(show-panel)]="day.eventDetails.events.fpFlag" [relative]="true" [closeable]="true" [width]="'200'"
-                                                                            [title]="day.eventDetails.events[0].eventDateTime|date :'mediumDate'"
-                                                                            (onClose)="onCloseClick({event: $event, data: day.eventDetails.events})">
-    
-    
-                                                                            <amexio-layout-columns [orientation]="'horizontal'" [border]="false">
-                                                                                <amexio-layout-item [fit]="true">
-    
-                                                                                    <amexio-layout-columns [fit]="true" [border]="false" [orientation]="'vertical'" [alignment]="start">
-                                                                                        <amexio-layout-item *ngFor="let item of day.eventDetails.events">
-                                                                                            {{item.details.start | date: "shortTime"}} - {{item.details.end | date: "shortTime"}}
-                                                                                            <br>
-                                                                                            <a style="color: blue; cursor:pointer" (click)="onChipClick($event,item,runtimeDiv)">
-                                                                                                <u>{{item.title}}</u>
-                                                                                            </a>
-    
-                                                                                        </amexio-layout-item>
-                                                                                    </amexio-layout-columns>
-                                                                                </amexio-layout-item>
-                                                                            </amexio-layout-columns>
-                                                                        </amexio-floating-panel>
-                                                                    </div>
-    
-    
-                                                                </div>
-    
                                                             </ng-container>
-    
-                                                        </div>
-    
-                                                    </ul>
-                                                </ng-container>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
+
+                                                        </li>
+                                                        <ng-container *ngIf="i + 1 == noOfEvents && (day.eventDetails.events.length - noOfEvents != 0) ">
+                                                            <div (click)="onMoreClicked($event, day.eventDetails.events)" class="calendar-li ">
+                                                                <span tabindex="1" (keyup.enter)="eventClicked($event,dayevent)" class="calendar-user-active">
+                                                                    {{day.eventDetails.events.length - noOfEvents}} More
+                                                                    <br/>
+                                                                </span>
+                                                            </div>
+
+
+                                                            <div [ngClass]="{fpClass: !isLast, fpRightClass: isLast}">
+                                                                <div class="EventDetailsContent" #runtimeDiv [attr.id]="day.date"></div>
+                                                                <div class="floatingPanelIndex">
+                                                                    <amexio-floating-panel class="amexio-floating-panel" [(show-panel)]="day.eventDetails.events.fpFlag" [relative]="true" [closeable]="true"
+                                                                        [width]="'200'" [title]="day.eventDetails.events[0].eventDateTime|date :'mediumDate'"
+                                                                        (onClose)="onCloseClick({event: $event, data: day.eventDetails.events})">
+
+
+                                                                        <amexio-layout-columns [orientation]="'horizontal'" [border]="false">
+                                                                            <amexio-layout-item [fit]="true">
+
+                                                                                <amexio-layout-columns [fit]="true" [border]="false" [orientation]="'vertical'" [alignment]="start">
+                                                                                    <amexio-layout-item *ngFor="let item of day.eventDetails.events">
+                                                                                        {{item.details.start | date: "shortTime"}} - {{item.title}}
+                                                                                        <br>
+
+                                                                                    </amexio-layout-item>
+                                                                                </amexio-layout-columns>
+                                                                            </amexio-layout-item>
+                                                                        </amexio-layout-columns>
+                                                                    </amexio-floating-panel>
+                                                                </div>
+                                                            </div>
+
+                                                        </ng-container>
+
+                                                    </div>
+
+                                                </ul>
+                                            </ng-container>
+                                        </td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
                     </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
