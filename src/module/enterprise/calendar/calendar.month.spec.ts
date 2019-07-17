@@ -18,6 +18,12 @@ import { AmexioFloatingPanelComponent } from '../../panes/floatingpanel/floating
 import { AmexioLabelComponent } from '../../forms/label/label.component';
 import { By } from '@angular/platform-browser';
 import { Renderer2 } from '@angular/core';
+// import { DummyComponent } from '../../../../tmp/module/enterprise/calendar/calendar.month.spec';
+
+
+class DummyComponent {
+
+}
 
 
 describe('amexio-calendar-month', () => {
@@ -341,7 +347,7 @@ describe('amexio-calendar-month', () => {
     emitEvent['this'] = this;
     emitEvent['runtimeDiv'] = runtimeDiv;
     comp.xValue = event1.pageX;
-    comp.onMoreEventClicked.emit(emitEvent);
+    // comp.onMoreEventClicked.emit(emitEvent);
   });
   it('onMoreClicked() else block', () => {
     let data = [
@@ -379,7 +385,7 @@ describe('amexio-calendar-month', () => {
       }
     ];
     comp.onMoreClicked(event, data);
-    
+
     comp.calendaryData = undefined;
     expect(comp.calendaryData).toBeUndefined();
     data['fpFlag'] = true;
@@ -504,8 +510,8 @@ describe('amexio-calendar-month', () => {
     comp.calendaryData = [
       [
         {
-          date: new Date(), 
-           id: "59460_monthid", isActive: false, isActivePeriod: true, isDisabled: false, isEvent: true, selected: false
+          date: new Date(),
+          id: "59460_monthid", isActive: false, isActivePeriod: true, isDisabled: false, isEvent: true, selected: false
         }
       ]
     ];
@@ -567,34 +573,14 @@ describe('amexio-calendar-month', () => {
   });
 
 
-
-  // it('addDynamicClass()', () => {
-  //   let calculatedWidth = 140;
-  //   let cssClass = 'rightPositionPanel';
-  //   let nextSiblingElement = document.createElement('app-events-panel');
-
-  //   comp.addDynamicClass(calculatedWidth, nextSiblingElement, cssClass);
-  //   comp.nativeRuntimeDiv['element'] = {
-  //     'nativeElement': {
-  //       'nextElementSibling': nextSiblingElement
-  //     }
-  //   }
-  //   comp.widthPosition = calculatedWidth + 'px';
-  //   rendererMock.addClass(nextSiblingElement, cssClass);
-  //   rendererMock.setStyle(nextSiblingElement, 'left', comp.widthPosition);
-  //   // rendererMock.setStyle(comp.nativeRuntimeDiv.element.nativeElement.nextElementSibling, 'visibility', 'visible');
-
-  // });
-
-   
   it('addDynamicClass()', () => {
     let calculatedWidth = 140;
     let cssClass = 'rightPositionPanel';
     let nextSiblingElement = document.createElement('app-events-panel');
     comp.nativeRuntimeDiv = {};
-     comp.nativeRuntimeDiv['element'] = {}; 
-    comp.nativeRuntimeDiv.element = 
-    {
+    comp.nativeRuntimeDiv['element'] = {};
+    comp.nativeRuntimeDiv.element =
+      {
         'nativeElement': {
           'nextElementSibling': nextSiblingElement
         }
@@ -604,7 +590,7 @@ describe('amexio-calendar-month', () => {
         'nextElementSibling': nextSiblingElement
       }
     }
-    comp.addDynamicClass(calculatedWidth, nextSiblingElement, cssClass); 
+    comp.addDynamicClass(calculatedWidth, nextSiblingElement, cssClass);
     comp.widthPosition = calculatedWidth + 'px';
     rendererMock.addClass(nextSiblingElement, cssClass);
     rendererMock.setStyle(nextSiblingElement, 'left', comp.widthPosition);
@@ -621,7 +607,7 @@ describe('amexio-calendar-month', () => {
   //   let focusinnerindex: number;
   //   comp.calendaryData.forEach((calendarrow: any, rowindex: number) => {
   //     calendarrow.forEach((calendardata: any, innerindex: number) => {
-  //       // if (day.id === calendardata.id) {
+  //       // if (day.id === calendardata.id) { 
   //         if(rowindex == 0 && innerindex == 0) {
   //       expect(day.id).toEqual(calendardata.id)
   //       //  if ((calendarrow.length - 1) === innerindex) {
@@ -652,6 +638,43 @@ describe('amexio-calendar-month', () => {
   //   const itemid = comp.calendaryData[comp.focusrindex][comp.focusiindex];
 
   // });
+
+     
+  it('addEventDetails() method check', () => {
+    comp.nativeRuntimeDiv = [{
+      element: { nativeElement: { id: 12 } },
+      createComponent: function () { }
+    }, {
+      element: { nativeElement: { id: 12, nextElementSibling: '' } }, createComponent: function () { }
+    }];
+    let event1 = {
+      runtimeDiv: { innerHTML: 'asd', id: 12, event: { clientX: 12, clientY: 34, pageX: '', screenX: '', layerX:'' } }
+    };     
+    // comp. addEventDetails(DummyComponent, event1);
+    comp.runTimeInstance = { destroy: function () { } };
+    // if (this.runTimeInstance) {
+      expect(comp.runTimeInstance).toBeDefined();
+      comp.runTimeInstance.destroy();
+      const id = event1.runtimeDiv.id;
+      // const runTimeDivs = this.runtimeDiv1.toArray();
+      comp.runtimeDiv1 = {
+        toArray: function (): any[] { return [] }
+      }
+      const runTimeDivs = comp.runtimeDiv1.toArray();
+      for (let i = 0; i <= runTimeDivs.length -1; i++) {
+         expect(runTimeDivs[i].element.nativeElement.id).toEqual(id);
+       const tpCF = comp['componentFactoryResolver'].resolveComponentFactory(
+        DummyComponent);
+        comp.runTimeInstance = runTimeDivs[i].createComponent(tpCF);
+        comp.nativeRuntimeDiv = runTimeDivs[i];
+        // comp['renderer']= {data: '', appendChild: '', destroy: function () {  }, createElement: '', createComment: '', createText:'', destroyNode: ''}
+        // comp['renderer'].setStyle(comp.nativeRuntimeDiv.element.nativeElement.nextElementSibling, 'visibility', 'hidden');
+        rendererMock.setStyle(comp.nativeRuntimeDiv.element.nativeElement.nextElementSibling, 'visibility', 'hidden');
+      
+      }
+   });
+
+
 
 
 
