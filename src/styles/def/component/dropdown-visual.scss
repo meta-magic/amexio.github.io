@@ -22,3 +22,18 @@
   color:$dropdownHoverColor;
 }
 
+.dropdown-list::-webkit-scrollbar-track
+{
+background-color: $dropdownScrollColor;
+}
+
+.dropdown-list::-webkit-scrollbar
+{
+//width: 6px;
+background-color: $dropdownScrollColor;
+}
+
+.dropdown-list::-webkit-scrollbar-thumb
+{
+background-color: $dropdownScrollThumbColor;
+}
