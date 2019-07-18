@@ -669,9 +669,9 @@ description : Set enable / disable popover.
       if (fvalue && rvalue && (fvalue.toLowerCase() === rvalue.toLowerCase())) {
         this.onItemSelect(row);
       }
+      this.onBaseBlurEvent(event);
     }
     this.onTouchedCallback();
-    this.onBaseBlurEvent(event);
     this.onBlur.emit();
   }
   onFocus(elem: any) {
