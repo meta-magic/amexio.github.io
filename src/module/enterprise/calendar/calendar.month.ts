@@ -1,5 +1,5 @@
 import {
-    Component, ComponentFactoryResolver, ElementRef, EventEmitter, Input, OnInit, Output,
+    Component, ComponentFactoryResolver, ElementRef, EventEmitter, Input, Output,
     Renderer2, ViewChild, ViewChildren, ViewContainerRef,
 } from '@angular/core';
 
@@ -8,7 +8,7 @@ import {
     templateUrl: './calendar.month.html',
     styleUrls: ['./calendar.common.css'],
 })
-export class AmexioCalendarMonthComponent implements OnInit {
+export class AmexioCalendarMonthComponent {
 
     @Input('headers') headers: any[];
 
@@ -43,10 +43,7 @@ export class AmexioCalendarMonthComponent implements OnInit {
     dropdownstyle: any;
 
     constructor(private componentFactoryResolver: ComponentFactoryResolver, private renderer: Renderer2) { }
-
-    ngOnInit() {
-    }
-    onMoreClicked(event: any, data: any) {
+    onMoreClicked(data: any) {
         if (this.calendaryData) {
             this.calendaryData.forEach((calendarRow) => {
                 calendarRow.forEach((day: any) => {
