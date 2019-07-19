@@ -528,9 +528,24 @@ describe('amexio-dropdown', () => {
     expect(comp.innerValue).toBe(null);
   })
   //on onBlur()
-  it('on onBlur()', () => {
+  it('on onBlur() if condition', () => {
     let fn = event;
     comp.onblur(fn);
+    comp.showToolTip = true;
+    expect(comp.showToolTip).toEqual(true);
+    comp.showToolTip = !comp.showToolTip;
+    // expect(comp.tabFocus).toEqual(false);
+    comp.onTouchedCallback();
+    expect(comp.onTouchedCallback()).toHaveBeenCalled;
+    comp.onBlur.subscribe((g: any) => {
+      expect(comp.onBlur).toEqual(g);
+    });
+  });
+  it('on onBlur() else conditon', () => {
+    let fn = event;
+    comp.onblur(fn);
+    comp.showToolTip = false;
+    expect(comp.showToolTip).toEqual(false);
     // expect(comp.tabFocus).toEqual(false);
     comp.onTouchedCallback();
     expect(comp.onTouchedCallback()).toHaveBeenCalled;
@@ -601,21 +616,23 @@ describe('amexio-dropdown', () => {
     expect( comp.dropdownstyle.visibility).toEqual("hidden");
     comp.showToolTip = false;
     expect(comp.disabled).toEqual(true);
-    const showflag = comp.showToolTip;
     expect(comp.showToolTip).toBe(false);
     expect(comp.onBaseFocusEvent({})).toHaveBeenCalled;
     comp.showToolTip = !comp.showToolTip;  
 
+ 
+  });
+  it('on onIconClick() nestesd if condition', () => {
     comp.disabled = false;
+    comp.onIconClick();
     comp.dropdownstyle.visibility = "hidden";
     expect( comp.dropdownstyle.visibility).toEqual("hidden");
     comp.showToolTip = false;
     expect(comp.disabled).toBe(false);
     expect(comp.showToolTip).toEqual(false);
     expect(comp.onBaseFocusEvent({})).toHaveBeenCalled;
-    comp.showToolTip = !comp.showToolTip;  
+    comp.showToolTip = !comp.showToolTip; 
   });
-
   it('on onIconClick() else condition', () => {
     comp.disabled = false;
     comp.onIconClick();
@@ -627,7 +644,17 @@ describe('amexio-dropdown', () => {
     expect(comp.onBaseFocusEvent({})).toHaveBeenCalled;
     comp.showToolTip = !comp.showToolTip;  
   });
-
+  it('on onIconClick() nested if else condition', () => {
+    comp.disabled = false;
+    comp.onIconClick();
+    comp.showToolTip = true;
+    comp.dropdownstyle.visibility = "visible";
+    expect(comp.dropdownstyle.visibility).not.toEqual("hidden");
+    expect(comp.disabled).toBe(false);
+    expect(comp.showToolTip).not.toEqual(false);
+    expect(comp.onBaseBlurEvent({})).toHaveBeenCalled;
+    comp.showToolTip = !comp.showToolTip;  
+  });
 
   //writeChangedValue () 
   it('on writeChangedValue()', () => {
