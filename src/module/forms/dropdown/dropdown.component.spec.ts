@@ -609,18 +609,14 @@ describe('amexio-dropdown', () => {
   //on onIconClick()
   it('on onIconClick()', () => {
     let item = event;
-    comp.showToolTip = false;
     comp.disabled = true;
     comp.dropdownstyle.visibility = "hidden";
     comp.onIconClick();
     expect( comp.dropdownstyle.visibility).toEqual("hidden");
     comp.showToolTip = false;
     expect(comp.disabled).toEqual(true);
-    expect(comp.showToolTip).toBe(false);
-    expect(comp.onBaseFocusEvent({})).toHaveBeenCalled;
     comp.showToolTip = !comp.showToolTip;  
 
- 
   });
   it('on onIconClick() nestesd if condition', () => {
     comp.disabled = false;
@@ -633,16 +629,12 @@ describe('amexio-dropdown', () => {
     expect(comp.onBaseFocusEvent({})).toHaveBeenCalled;
     comp.showToolTip = !comp.showToolTip; 
   });
-  it('on onIconClick() else condition', () => {
+  it('on onIconClick() hidden else condition', () => {
     comp.disabled = false;
     comp.onIconClick();
     comp.showToolTip = undefined;
     comp.dropdownstyle.visibility = "visible";
-    expect(comp.dropdownstyle.visibility).not.toEqual("hidden");
-    expect(comp.disabled).toBe(false);
-    expect(comp.showToolTip).toEqual(undefined);
-    expect(comp.onBaseFocusEvent({})).toHaveBeenCalled;
-    comp.showToolTip = !comp.showToolTip;  
+    expect(comp.dropdownstyle.visibility).not.toEqual("hidden"); 
   });
   it('on onIconClick() nested if else condition', () => {
     comp.disabled = false;
@@ -655,7 +647,15 @@ describe('amexio-dropdown', () => {
     expect(comp.onBaseBlurEvent({})).toHaveBeenCalled;
     comp.showToolTip = !comp.showToolTip;  
   });
-
+  it('on onIconClick() showtooltip undefined  condition', () => {
+    comp.disabled = false;
+    comp.onIconClick();
+    comp.showToolTip = undefined;
+    expect(comp.disabled).toBe(false);
+    expect(comp.showToolTip).toEqual(undefined);
+    expect(comp.onBaseFocusEvent({})).toHaveBeenCalled;
+    comp.showToolTip = !comp.showToolTip;  
+  });
   //writeChangedValue () 
   it('on writeChangedValue()', () => {
 
