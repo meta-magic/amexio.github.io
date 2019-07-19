@@ -671,6 +671,9 @@ description : Set enable / disable popover.
       }
       this.onBaseBlurEvent(event);
     }
+    if (this.showToolTip) {
+      this.showToolTip = !this.showToolTip;
+   }
     this.onTouchedCallback();
     this.onBlur.emit();
   }
@@ -728,14 +731,16 @@ description : Set enable / disable popover.
     this.onTouchedCallback = fn;
   }
   onIconClick() {
+    if (this.dropdownstyle.visibility === 'hidden') {
+      this.showToolTip = false;
+    }
     if (!this.disabled) {
-      const showflag = this.showToolTip;
-      if (!this.showToolTip) {
+      if (this.showToolTip === undefined || this.showToolTip === false) {
         this.onBaseFocusEvent({});
       } else {
         this.onBaseBlurEvent({});
       }
-      this.showToolTip = !showflag;
+      this.showToolTip = !this.showToolTip;
     }
 
   }

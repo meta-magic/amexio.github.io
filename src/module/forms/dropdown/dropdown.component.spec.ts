@@ -596,18 +596,36 @@ describe('amexio-dropdown', () => {
     let item = event;
     comp.showToolTip = false;
     comp.disabled = true;
-
+    comp.dropdownstyle.visibility = "hidden";
     comp.onIconClick();
+    expect( comp.dropdownstyle.visibility).toEqual("hidden");
+    comp.showToolTip = false;
     expect(comp.disabled).toEqual(true);
     const showflag = comp.showToolTip;
     expect(comp.showToolTip).toBe(false);
     expect(comp.onBaseFocusEvent({})).toHaveBeenCalled;
-
+    comp.showToolTip = !comp.showToolTip;  
 
     comp.disabled = false;
+    comp.dropdownstyle.visibility = "hidden";
+    expect( comp.dropdownstyle.visibility).toEqual("hidden");
+    comp.showToolTip = false;
     expect(comp.disabled).toBe(false);
+    expect(comp.showToolTip).toEqual(false);
     expect(comp.onBaseFocusEvent({})).toHaveBeenCalled;
-    expect(comp.showToolTip).not.toBe(true)
+    comp.showToolTip = !comp.showToolTip;  
+  });
+
+  it('on onIconClick() else condition', () => {
+    comp.disabled = false;
+    comp.onIconClick();
+    comp.showToolTip = undefined;
+    comp.dropdownstyle.visibility = "visible";
+    expect(comp.dropdownstyle.visibility).not.toEqual("hidden");
+    expect(comp.disabled).toBe(false);
+    expect(comp.showToolTip).toEqual(undefined);
+    expect(comp.onBaseFocusEvent({})).toHaveBeenCalled;
+    comp.showToolTip = !comp.showToolTip;  
   });
 
 
