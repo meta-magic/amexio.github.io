@@ -629,14 +629,19 @@ describe('amexio-dropdown', () => {
     expect(comp.onBaseFocusEvent({})).toHaveBeenCalled;
     comp.showToolTip = !comp.showToolTip; 
   });
-  it('on onIconClick() hidden else condition', () => {
+  it('on onIconClick() hidden false else condition', () => {
     comp.disabled = false;
     comp.onIconClick();
-    comp.showToolTip = undefined;
     comp.dropdownstyle.visibility = "visible";
     expect(comp.dropdownstyle.visibility).not.toEqual("hidden"); 
   });
-  it('on onIconClick() nested if else condition', () => {
+  it('on onIconClick() hidden true  else condition', () => {
+    comp.disabled = false;
+    comp.onIconClick();
+    comp.dropdownstyle.visibility = "hidden";
+    expect(comp.dropdownstyle.visibility).toEqual("hidden"); 
+  });
+  it('on onIconClick() showToolTip not false  condition', () => {
     comp.disabled = false;
     comp.onIconClick();
     comp.showToolTip = true;
@@ -644,6 +649,17 @@ describe('amexio-dropdown', () => {
     expect(comp.dropdownstyle.visibility).not.toEqual("hidden");
     expect(comp.disabled).toBe(false);
     expect(comp.showToolTip).not.toEqual(false);
+    expect(comp.onBaseBlurEvent({})).toHaveBeenCalled;
+    comp.showToolTip = !comp.showToolTip;  
+  });
+  it('on onIconClick() showToolTip not undefined condition', () => {
+    comp.disabled = false;
+    comp.onIconClick();
+    comp.showToolTip = true;
+    comp.dropdownstyle.visibility = "visible";
+    expect(comp.dropdownstyle.visibility).not.toEqual("hidden");
+    expect(comp.disabled).toBe(false);
+    expect(comp.showToolTip).not.toEqual(undefined);
     expect(comp.onBaseBlurEvent({})).toHaveBeenCalled;
     comp.showToolTip = !comp.showToolTip;  
   });
