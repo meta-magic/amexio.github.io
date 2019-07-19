@@ -647,6 +647,15 @@ describe('amexio-dropdown', () => {
     expect(comp.onBaseBlurEvent({})).toHaveBeenCalled;
     comp.showToolTip = !comp.showToolTip;  
   });
+  it('on onIconClick()showToolTip false condition', () => {
+    comp.disabled = false;
+    comp.onIconClick();
+    comp.showToolTip = false;
+    expect(comp.disabled).toBe(false);
+    expect(comp.showToolTip).toEqual(false);
+    expect(comp.onBaseFocusEvent({})).toHaveBeenCalled;
+    comp.showToolTip = !comp.showToolTip;  
+  });
   it('on onIconClick() showtooltip undefined  condition', () => {
     comp.disabled = false;
     comp.onIconClick();
