@@ -315,7 +315,48 @@ describe('amexio-floating-panel', () => {
         expect(comp.bottomPosition).toBeUndefined();
     });
 
-
+    it('elementDrag method e first', () => {
+        comp.pos1 = 0;
+        comp.pos2 = 0;
+        comp.pos3 = 0;
+        comp.pos4 = 0;
+        comp.style = { 'bottom': '10px' };
+        let floatingPanel = {
+            'offsetTop': 1200,
+            'offsetLeft': 145,
+            'style': {
+                'top': '20px',
+                'left': '10px',
+                'opacity': '1'
+            }
+        }
+        let e = jasmine.createSpyObj('e', ['preventDefault']);
+        e['clientX'] = 1200;
+        e['clientY'] = 1400;
+        comp.elementDrag(e, floatingPanel);
+        e = e;
+    });
+    it('elementDrag method e second', () => {
+        comp.pos1 = 0;
+        comp.pos2 = 0;
+        comp.pos3 = 0;
+        comp.pos4 = 0;
+        comp.style = { 'bottom': '10px' };
+        let floatingPanel = {
+            'offsetTop': 1200,
+            'offsetLeft': 145,
+            'style': {
+                'top': '20px',
+                'left': '10px',
+                'opacity': '1'
+            }
+        }
+        let e = jasmine.createSpyObj('e', ['preventDefault']);
+        e['clientX'] = 1200;
+        e['clientY'] = 1400;
+        comp.elementDrag(e, floatingPanel);
+        e = window.event;
+    });
     // it('closeDragElement method', () => {
 
     //     let floatingPanel = {
