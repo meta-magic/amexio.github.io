@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Renderer2 } from '@angular/core';
 import { OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { AmexioButtonComponent } from '../../forms/buttons/button.component';
-
+import {CommonDataService} from '../../services/data/common.data.service';
 @Component({
     selector: 'amexio-floating-panel',
     templateUrl: './floatingpanel.component.html',
@@ -37,8 +37,9 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
     @Input('arrow') arrow: boolean;
     themeCss: any;
     amexioComponentId = 'amexio-floating-panel';
-
+    counter = 0;
     @ViewChild(AmexioButtonComponent) buttonRef: AmexioButtonComponent;
+    @ViewChild('floatingPanel') floatingPanelRef: ElementRef;
     positionMapData: string[];
     showfloatingButton = false;
     showSimpleButton = false;
@@ -47,7 +48,6 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
     style = {};
     horpadding: any;
     virpadding: any;
-
     //  resize and draggable functionality variables
 
     @Input() resizable: boolean;
@@ -62,7 +62,7 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
 
     documentMouseUPListener: any;
     documentMouseMoveListener: any;
-    constructor(private renderer: Renderer2, public element: ElementRef) {
+    constructor(public commanservice: CommonDataService, private renderer: Renderer2, public element: ElementRef) {
         this.positionMapData = [];
         this.positionMapData['hpos-right'] = { position: 'right', value: '10px' };
         this.positionMapData['hpos-left'] = { position: 'left', value: '10px' };
@@ -96,15 +96,19 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
     ngOnChanges(changes: SimpleChanges) {
         if (changes['showPanel']) {
             this.showPanel = changes.showPanel.currentValue;
+            this.getZindex( this.showPanel);
             if (this.absolute) {
                 this.setPanelAbsolutePostion();
             } else {
                 this.panelStyle();
             }
         }
-
     }
-
+ getZindex(showPanel: boolean) {
+    if (showPanel === true) {
+        this.commanservice.zindex = this.commanservice.zindex + 100;
+    }
+}
     onMouseDown(event: any, floatingPanel: any) {
         if (this.draggable && event.target.getAttribute('name') && event.target.getAttribute('name') === 'floatingheader') {
             event = event || window.event;
@@ -158,7 +162,7 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
         this.style = {};
         this.style['position'] = (this.relative) ? 'absolute' : 'fixed';
         this.style['display'] = 'block';
-        this.style['z-index'] = '600';
+        this.style['z-index'] = this.commanservice.zindex;
         this.style['opacity'] = '1';
         this.style['box-shadow'] = '0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)';
         if (this.width !== '') {
@@ -181,7 +185,7 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
         this.style = {};
         this.style['position'] = 'absolute';
         this.style['display'] = 'block';
-        this.style['z-index'] = '400';
+        this.style['z-index'] = this.commanservice.zindex;
         this.style['opacity'] = '1';
         this.style['box-shadow'] = '0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)';
         if (this.width !== '') {

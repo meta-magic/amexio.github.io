@@ -10,6 +10,7 @@ describe('amexio-floating-panel', () => {
     let comp: AmexioFloatingPanelComponent;
     let fixture: ComponentFixture<AmexioFloatingPanelComponent>;
     let event1: any;
+    let changes :any
     const rendererMock = jasmine.createSpyObj('rendererMock', ['listen']);
     beforeEach(() => {
         TestBed.configureTestingModule({
@@ -22,6 +23,8 @@ describe('amexio-floating-panel', () => {
         event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
         it('true is true', () => expect(true).toBe(true));
 
+        comp.showPanel = true;
+        changes =  new SimpleChange(null, comp.showPanel, false)
 
     });
     // it('should create the app', async(() => {
@@ -36,31 +39,51 @@ describe('amexio-floating-panel', () => {
         let showPanel = true;
         comp.absolute = true;
         comp.showPanel = showPanel;
-        let currentshowpanel: boolean;
-        comp.ngOnChanges({
-            changes: new SimpleChange(null, showPanel, false)
-        }
-        );
+        changes['showPanel'] = true;
+        comp.ngOnChanges(changes);       
         fixture.detectChanges();
-        expect(comp.showPanel).toBe(showPanel);
+        expect(changes['showPanel']).toEqual(true);
+        comp.getZindex(comp.showPanel);
         expect(comp.absolute).toBe(true);
         comp.setPanelAbsolutePostion();
     });
-
+ 
     it('ngOnchanges method call else condition', () => {
         let element = fixture.nativeElement;
         let showPanel = true;
         comp.absolute = false;
         comp.showPanel = showPanel;
-        let currentshowpanel: boolean;
-        comp.ngOnChanges({
-            changes: new SimpleChange(null, showPanel, false)
-        }
-        );
+        changes['showPanel'] = true;
+        comp.ngOnChanges(changes );
         fixture.detectChanges();
-        expect(comp.showPanel).toBe(showPanel);
+        expect(changes['showPanel']).toEqual(true);
+        comp.getZindex(comp.showPanel);
         expect(comp.absolute).toBe(false);
         comp.panelStyle();
+    });
+
+    it('ngOnchanges method first else condition', () => {
+        let element = fixture.nativeElement;
+        let showPanel = true;
+        comp.absolute = false;
+        comp.showPanel = showPanel;
+        changes['showPanel'] = false;
+        comp.ngOnChanges(changes );
+        fixture.detectChanges();
+        expect(changes['showPanel']).toEqual(false);
+    });
+    it('getZindex If Method', () => {
+        let showPanel = true;
+        comp.commanservice.zindex = 600;
+        comp.getZindex(showPanel);
+        expect(showPanel).toBe(true);
+        comp.commanservice.zindex = comp.commanservice.zindex + 100;
+    });
+    it('getZindex Else Method', () => {
+        let showPanel = false;
+        comp.commanservice.zindex = 600;
+        comp.getZindex(showPanel);
+        expect(showPanel).toBe(false);
     });
     it('ngOnInit method if ', () => {
         comp.absolute = true;
@@ -134,7 +157,7 @@ describe('amexio-floating-panel', () => {
         expect(comp.relative).toEqual(true);
         comp.style['position'] = 'absolute';
         comp.style['display'] = 'block';
-        comp.style['z-index'] = '600';
+        comp.style['z-index'] = comp.commanservice.zindex;
         comp.style['opacity'] = '1';
         comp.style['box-shadow'] = '0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)';
         expect(comp.width).not.toEqual('');
@@ -145,12 +168,13 @@ describe('amexio-floating-panel', () => {
     it('panel style method else condition ', () => {
         comp.relative = false;
         comp.width = '';
+        comp.commanservice.zindex = 600;
         comp.panelStyle();
         comp.style = {};
         expect(comp.relative).toEqual(false);
         comp.style['position'] = 'fixed';
         comp.style['display'] = 'block';
-        comp.style['z-index'] = '600';
+        comp.style['z-index'] = comp.commanservice.zindex;
         comp.style['opacity'] = '1';
         comp.style['box-shadow'] = '0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)';
         expect(comp.width).toEqual('');
@@ -189,11 +213,12 @@ describe('amexio-floating-panel', () => {
     });
     it('setpanelAbsolutePosition if  method', () => {
         comp.width = '200';
+        comp.commanservice.zindex = 600;
         comp.setPanelAbsolutePostion();
         comp.style = {};
         comp.style['position'] = 'absolute';
         comp.style['display'] = 'block';
-        comp.style['z-index'] = '400';
+        comp.style['z-index'] = comp.commanservice.zindex;
         comp.style['opacity'] = '1';
         comp.style['box-shadow'] = '0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)';
         expect(comp.width).not.toEqual('')
@@ -203,11 +228,12 @@ describe('amexio-floating-panel', () => {
     })
     it('setpanelAbsolutePosition else  method', () => {
         comp.width = '';
+        comp.commanservice.zindex = 600;
         comp.setPanelAbsolutePostion();
         comp.style = {};
         comp.style['position'] = 'absolute';
         comp.style['display'] = 'block';
-        comp.style['z-index'] = '400';
+        comp.style['z-index'] = comp.commanservice.zindex;
         comp.style['opacity'] = '1';
         comp.style['box-shadow'] = '0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)';
         expect(comp.width).toEqual('');

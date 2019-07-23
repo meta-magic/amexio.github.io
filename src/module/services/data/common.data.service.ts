@@ -23,6 +23,7 @@ import {Observable} from 'rxjs/index';
 @Injectable()
 export class CommonDataService {
   filteredObject: any = [];
+  zindex = 600;
   constructor(private _http: HttpClient) {
   }
 
