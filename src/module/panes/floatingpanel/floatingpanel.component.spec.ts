@@ -334,7 +334,7 @@ describe('amexio-floating-panel', () => {
         e['clientX'] = 1200;
         e['clientY'] = 1400;
         comp.elementDrag(e, floatingPanel);
-        e = e;
+        e = e || window.event;
     });
     it('elementDrag method e second', () => {
         comp.pos1 = 0;
@@ -355,7 +355,7 @@ describe('amexio-floating-panel', () => {
         e['clientX'] = 1200;
         e['clientY'] = 1400;
         comp.elementDrag(e, floatingPanel);
-        e = window.event;
+        e = window.event || e;
     });
     // it('closeDragElement method', () => {
 
