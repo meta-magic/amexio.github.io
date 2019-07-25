@@ -32,6 +32,7 @@ export class AmexioGridComponent implements AfterContentInit, OnInit {
   itemCollectionMap: AmexioGridItemComponent[];
   gridtemplatecolumnconfig = '';
   gridItemCollapsible = false;
+  prevConfigData: string[] = [];
   /*
  Properties
  name : data
@@ -131,6 +132,33 @@ export class AmexioGridComponent implements AfterContentInit, OnInit {
   subscribeToGridItemEvents(cmp: AmexioGridItemComponent) {
     this.gridtemplatecolumnconfig = '';
     let rowConfig: any[] = [];
+    let currentGridItem: any;
+    rowConfig = this.layoutMethod(cmp);
+    let colConfig: string[] = [];
+    let prevConfig = '';
+    rowConfig.forEach((name: string) => {
+      const griditemcmp = this.itemCollectionMap[name];
+      currentGridItem = griditemcmp;
+      if (this.prevConfigData.length === 0) {
+        if (griditemcmp.showContent) {
+          colConfig.push((griditemcmp.mincontent ? ' min-content ' : ' 1fr '));
+        } else if (griditemcmp.name === prevConfig) {
+          colConfig[colConfig.length - 1] = ' 1fr ';
+          colConfig.push((griditemcmp.mincontent ? ' min-content ' : ' 1fr '));
+        } else {
+          colConfig.push(' auto ');
+        }
+        prevConfig = griditemcmp.name;
+      }
+    });
+    colConfig = this.preConfigDataMethod(cmp, colConfig);
+    this.prevConfigData = colConfig;
+    colConfig.forEach((name: string) => {
+      this.gridtemplatecolumnconfig = this.gridtemplatecolumnconfig + name;
+    });
+  }
+  layoutMethod(cmp: any) {
+    let rowConfig: any[] = [];
     const layouts: any[] = this._gridlayoutService.getLayoutData(this.layout).desktop;
     layouts.forEach((rows: string[]) => {
       rows.forEach((name: string) => {
@@ -139,23 +167,37 @@ export class AmexioGridComponent implements AfterContentInit, OnInit {
         }
       });
     });
-    const colConfig: string[] = [];
-    let prevConfig = '';
-    rowConfig.forEach((name: string) => {
-      const griditemcmp = this.itemCollectionMap[name];
-      if (griditemcmp.showContent) {
-        colConfig.push((griditemcmp.mincontent ? ' min-content ' : ' 1fr '));
-      } else if (griditemcmp.name === prevConfig) {
-        colConfig[colConfig.length - 1] = ' 1fr ';
-        colConfig.push((griditemcmp.mincontent ? ' min-content ' : ' 1fr '));
+    return rowConfig;
+  }
+  preConfigDataMethod(cmp: any, colConfig: any) {
+    this.prevConfigData.forEach((data: string, index) => {
+      if (data === ' auto ') {
+        if (this.itemCollectionMap[cmp.name].showContent) {
+          colConfig = this.prevConfigData;
+          if (cmp.name === 'west' && index === 0) {
+            colConfig[index] = ' 1fr ';
+          } else if (cmp.name === 'east' && index === 5) {
+            colConfig[index] = ' 1fr  ';
+          }
+        } else {
+          colConfig[index] = data;
+        }
       } else {
-        colConfig.push(' auto ');
+        colConfig[index] = ' 1fr ';
       }
-      prevConfig = griditemcmp.name;
+      colConfig = this.subItemCollectionMap(cmp, index, colConfig);
     });
-    colConfig.forEach((name: string) => {
-      this.gridtemplatecolumnconfig = this.gridtemplatecolumnconfig + name;
-    });
+    return colConfig;
+  }
+  subItemCollectionMap(cmp: any, index: any, colConfig: any) {
+    if (this.itemCollectionMap[cmp.name].showContent === false) {
+      if (cmp.name === 'west' && index === 0) {
+        colConfig[0] = ' auto ';
+      } else if (cmp.name === 'east' && index === 5) {
+        colConfig[colConfig.length - 1] = ' auto ';
+      }
+    }
+    return colConfig;
   }
 
   dataCreation(deviceName: any[]): string {
