@@ -59,6 +59,7 @@ export class AmexioGridComponent implements AfterContentInit, OnInit {
 
   screenWidth: any;
   containerClass: any;
+  prevConfigData: string[] = [];
   className: string;
   colCount: number;
   desktopWidth = '(min-width: 1025px)';
@@ -128,36 +129,6 @@ export class AmexioGridComponent implements AfterContentInit, OnInit {
     this.isInit = true;
   }
 
-  subscribeToGridItemEvents(cmp: AmexioGridItemComponent) {
-    this.gridtemplatecolumnconfig = '';
-    let rowConfig: any[] = [];
-    const layouts: any[] = this._gridlayoutService.getLayoutData(this.layout).desktop;
-    layouts.forEach((rows: string[]) => {
-      rows.forEach((name: string) => {
-        if (name === cmp.name && rowConfig.length === 0) {
-          rowConfig = rows;
-        }
-      });
-    });
-    const colConfig: string[] = [];
-    let prevConfig = '';
-    rowConfig.forEach((name: string) => {
-      const griditemcmp = this.itemCollectionMap[name];
-      if (griditemcmp.showContent) {
-        colConfig.push((griditemcmp.mincontent ? ' min-content ' : ' 1fr '));
-      } else if (griditemcmp.name === prevConfig) {
-        colConfig[colConfig.length - 1] = ' 1fr ';
-        colConfig.push((griditemcmp.mincontent ? ' min-content ' : ' 1fr '));
-      } else {
-        colConfig.push(' auto ');
-      }
-      prevConfig = griditemcmp.name;
-    });
-    colConfig.forEach((name: string) => {
-      this.gridtemplatecolumnconfig = this.gridtemplatecolumnconfig + name;
-    });
-  }
-
   dataCreation(deviceName: any[]): string {
     this.containerClass = '';
     deviceName.forEach((ele: any) => {
@@ -205,5 +176,76 @@ export class AmexioGridComponent implements AfterContentInit, OnInit {
     this.insertStyleSheetRuleParent('@' + 'media' + screenWidth + '{' + '.' + layoutData.name +
       '{' + this.getCssAttribute() + ' grid-template-areas: ' +
       this.dataCreation(layoutData[deviceType]) + '}' + '}');
+  }
+
+  subscribeToGridItemEvents(cmp: AmexioGridItemComponent) {
+    this.gridtemplatecolumnconfig = '';
+    let rowConfig: any[] = [];
+    let currentGridItem: any;
+    rowConfig = this.layoutMethod(cmp);
+    let colConfig: string[] = [];
+    let prevConfig = '';
+    rowConfig.forEach((name: string) => {
+      const griditemcmp = this.itemCollectionMap[name];
+      currentGridItem = griditemcmp;
+      if (this.prevConfigData.length === 0) {
+        if (griditemcmp.showContent) {
+          colConfig.push((griditemcmp.mincontent ? ' min-content ' : ' 1fr '));
+        } else if (griditemcmp.name === prevConfig) {
+          colConfig[colConfig.length - 1] = ' 1fr ';
+          colConfig.push((griditemcmp.mincontent ? ' min-content ' : ' 1fr '));
+        } else {
+          colConfig.push(' auto ');
+        }
+        prevConfig = griditemcmp.name;
+      }
+    });
+    colConfig = this.preConfigDataMethod(cmp, colConfig);
+    this.prevConfigData = colConfig;
+    colConfig.forEach((name: string) => {
+      this.gridtemplatecolumnconfig = this.gridtemplatecolumnconfig + name;
+    });
+  }
+  layoutMethod(cmp: any) {
+    let rowConfig: any[] = [];
+    const layouts: any[] = this._gridlayoutService.getLayoutData(this.layout).desktop;
+    layouts.forEach((rows: string[]) => {
+      rows.forEach((name: string) => {
+        if (name === cmp.name && rowConfig.length === 0) {
+          rowConfig = rows;
+        }
+      });
+    });
+    return rowConfig;
+  }
+  preConfigDataMethod(cmp: any, colConfig: any) {
+    this.prevConfigData.forEach((data: string, index) => {
+      if (data === ' auto ') {
+        if (this.itemCollectionMap[cmp.name].showContent) {
+          colConfig = this.prevConfigData;
+          if (cmp.name === 'west' && index === 0) {
+            colConfig[index] = ' 1fr ';
+          } else if (cmp.name === 'east' && index === 5) {
+            colConfig[index] = ' 1fr  ';
+          }
+        } else {
+          colConfig[index] = data;
+        }
+      } else {
+        colConfig[index] = ' 1fr ';
+      }
+      colConfig = this.subItemCollectionMap(cmp, index, colConfig);
+    });
+    return colConfig;
+  }
+  subItemCollectionMap(cmp: any, index: any, colConfig: any) {
+    if (this.itemCollectionMap[cmp.name].showContent === false) {
+      if (cmp.name === 'west' && index === 0) {
+        colConfig[0] = ' auto ';
+      } else if (cmp.name === 'east' && index === 5) {
+        colConfig[colConfig.length - 1] = ' auto ';
+      }
+    }
+    return colConfig;
   }
 }
