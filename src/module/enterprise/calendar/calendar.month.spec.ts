@@ -382,7 +382,7 @@ describe('amexio-calendar-month', () => {
         title: "IOS Conference"
       }
     ];
-    comp.onMoreClicked(event);
+    comp.onMoreClicked(event, data);
 
     comp.calendaryData = undefined;
     expect(comp.calendaryData).toBeUndefined();
@@ -452,7 +452,7 @@ describe('amexio-calendar-month', () => {
       ]
     ];
 
-    comp.onMoreClicked(event);
+    comp.onMoreClicked(event, data);
 
     expect(comp.calendaryData).toBeDefined();
     comp.calendaryData.forEach((calendarRow) => {
@@ -514,7 +514,7 @@ describe('amexio-calendar-month', () => {
       ]
     ];
 
-    comp.onMoreClicked(event);
+    comp.onMoreClicked(event, data);
 
     expect(comp.calendaryData).toBeDefined();
     comp.calendaryData.forEach((calendarRow) => {
