@@ -43,7 +43,7 @@ export class AmexioCalendarMonthComponent {
     dropdownstyle: any;
 
     constructor(private componentFactoryResolver: ComponentFactoryResolver, private renderer: Renderer2) { }
-    onMoreClicked(data: any) {
+    onMoreClicked(data: any, dayData: any) {
         if (this.calendaryData) {
             this.calendaryData.forEach((calendarRow) => {
                 calendarRow.forEach((day: any) => {
@@ -53,7 +53,7 @@ export class AmexioCalendarMonthComponent {
                 });
             });
         }
-        data['fpFlag'] = true;
+        dayData['fpFlag'] = true;
         this.openFloatingPanel = true;
     }
 

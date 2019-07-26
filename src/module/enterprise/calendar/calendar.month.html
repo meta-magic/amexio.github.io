@@ -63,7 +63,7 @@
                                                         <ng-container *ngIf="i + 1 == noOfEvents && (day.eventDetails.events.length - noOfEvents != 0) ">
                                                             <div (click)="onMoreClicked($event, day.eventDetails.events)" class="calendar-li ">
                                                                 <span tabindex="1" (keyup.enter)="eventClicked($event,dayevent)" class="calendar-user-active">
-                                                                    {{day.eventDetails.events.length - noOfEvents}} More
+                                                                    {{day.eventDetails.events.length - noOfEvents}} More 
                                                                     <br/>
                                                                 </span>
                                                             </div>
