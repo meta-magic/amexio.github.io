@@ -82,7 +82,9 @@
 
                                                                                 <amexio-layout-columns [fit]="true" [border]="false" [orientation]="'vertical'" [alignment]="start">
                                                                                     <amexio-layout-item *ngFor="let item of day.eventDetails.events">
+                                                                                        <div style="cursor:pointer" (click)="onChipClick($event,item, runtimeDiv)">
                                                                                         {{item.details.start | date: "shortTime"}} - {{item.title}}
+                                                                                        </div>
                                                                                         <br>
 
                                                                                     </amexio-layout-item>
