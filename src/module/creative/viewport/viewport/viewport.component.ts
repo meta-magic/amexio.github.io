@@ -21,8 +21,8 @@ export class ViewportComponent implements AfterContentInit, OnInit {
 
   @Input('page-color') pageColor = 'black';
 
-  @HostListener('window:scroll', [])
-  onWindowScroll($event: any) {
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll(event: any) {
     if ((this.type === '2') && (this.scrollable && window.scrollY > 0)) {
       this.contentCollection.forEach((element: any) => {
         if (element.contentTemplate.navTemplate) {
