@@ -306,7 +306,7 @@ export class AmexioRadioGroupComponent extends ValueAccessorBase<string> impleme
         r.selected = true;
         this.isValid = true;
         this.value = row[this.valuefield];
-        this.listCopy = Object.assign([], row);
+        this.listCopy = Object.assign({}, row);
         delete this.listCopy.tabindex;
         delete this.listCopy.radioId;
         this.onSelection.emit(this.listCopy);
