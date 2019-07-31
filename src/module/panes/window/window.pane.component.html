@@ -7,7 +7,7 @@
   </div>
 </div>
 <ng-container *ngIf="flag">
-  <base-contextmenu style=" z-index: 5; position: absolute;" [base-context-menu]="contextmenu" [mouse-location-top]="mouseLocation.top"
+  <base-contextmenu style=" z-index: 800; position: absolute;" [base-context-menu]="contextmenu" [mouse-location-top]="mouseLocation.top"
     [mouse-location-left]="mouseLocation.left" [is-FlagShow]="flag" [right-click-data]="nodeRightClick" (onRightClick)="rightClickDataEmit($event)"
     [position-up]="posixUp">
   </base-contextmenu>
