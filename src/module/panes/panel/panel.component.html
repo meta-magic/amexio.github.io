@@ -5,13 +5,13 @@
     <ng-container *ngIf="collapsible; else elseBlock"> 
         <div id="{{componentId}}" [ngStyle]="{'background': bgColor, 'color': color}"
         *ngIf="header" class="panel-accordion"  [ngClass]="themeCss"
-        (click)="onTabClick(btn1)"    >
+        (click)="onTabClick(id)"    >
             <amexio-toolbar
             tabindex="0" 
             role="heading"
             [attr.aria-expanded]="expanded"
-            (keyup.enter)="onTabClick(btn1)"
-            (keyup.space)="onTabClick(btn1)">
+            (keyup.enter)="onTabClick(id)"
+            (keyup.space)="onTabClick(id)">
                 <amexio-toolbar-item [ngStyle]="{'color': gradientFlag ? 'white':''}" position-left  attr.aria-label="{{title}}">
                     <amexio-label  attr.aria-labelledby="{{componentId}}" size="small">
                         {{title}}
@@ -28,12 +28,12 @@
     </ng-container>
 
     <ng-template #elseBlock>
-        <div    id="{{componentId}}"   *ngIf="header" class="panel-accordion" (click)="onTabClick(btn1)">
+        <div    id="{{componentId}}"   *ngIf="header" class="panel-accordion" (click)="onTabClick(id)">
             <amexio-toolbar
             tabindex="0" 
             [attr.aria-expanded]="expanded"
-            (keyup.enter)="onTabClick(btn1)"
-            (keyup.space)="onTabClick(btn1)"
+            (keyup.enter)="onTabClick(id)"
+            (keyup.space)="onTabClick(id)"
             
             >
                 <amexio-toolbar-item position-left tabindex="0" [attr.aria-expanded]="expanded"  attr.aria-label="{{title}}">

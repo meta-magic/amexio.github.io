@@ -46,7 +46,7 @@ export class AmexioCreditcardComponent implements ControlValueAccessor, OnInit {
  default :
  description : the showlabel will set the label of creditcard.
  */
-  @Input('show-label') showlabel = 'false';
+  @Input('show-label') showlabel = false;
   /*
  Properties
  name : template

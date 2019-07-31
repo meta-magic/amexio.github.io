@@ -123,6 +123,8 @@ description : Provides form body height.
   description : This attribute use for form binding.
   */
 
+  @Input('icon') icon: any;
+
   @ViewChild('formHeader', { read: ElementRef }) public formHeader: ElementRef;
 
   @ViewChild('formFooter', { read: ElementRef }) public formFooter: ElementRef;

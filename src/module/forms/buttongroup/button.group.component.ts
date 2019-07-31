@@ -37,6 +37,16 @@ export class AmexioButtonGroupComponent implements AfterContentInit, OnChanges {
   @Input() size: string;
   /* for internal use*/
 
+    /*
+ Properties
+ name : disabled
+ datatype :  boolean
+ version : 5.17 onwards
+ default :
+ description : disables btn grp
+ */
+@Input() disabled: string;
+
   _buttonGroupLocalData: any = [];
   @Input('buttonGroupLocalData')
   set buttonGroupLocalData(value: any) {

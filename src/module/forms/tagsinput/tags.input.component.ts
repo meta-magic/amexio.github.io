@@ -415,7 +415,7 @@ description : On field focus event
   onItemSelect(row: any, index: any) {
     this.value = row[this.valuefield];
     this.displayFieldService.findValue(this.displayfield, row);
-    this.setValue(row, {}, index);
+    this.setValue(row, index);
     this.showToolTip = false;
   }
   onInput(input: any) {
@@ -467,7 +467,7 @@ description : On field focus event
       element['index'] = this.componentId + 'listitem' + index;
     });
   }
-  setValue(value: any, ref: any, index: any) {
+  setValue(value: any, index: any) {
     this.inpHandle.nativeElement.value = '';
     this.onSelections.push(value);
     this.onChange.emit(this.onSelections);

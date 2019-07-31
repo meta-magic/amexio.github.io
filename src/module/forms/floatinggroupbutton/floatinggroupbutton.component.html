@@ -31,8 +31,8 @@
    <div #ref attr.id="{{node.index}}" role="button" attr.aria-label="{{node.label}}" role="options"
     class="floatinggroupitems" style= "text-align:center;"
 
-       tabindex="1" *ngFor="let node of data" (keyup.enter)="onButtonClick(node,$event)" (keyup.arrowdown)="arrowDown(ref,node)"
-       (keyup.arrowup)="arrowUp(ref,node)">
+       tabindex="1" *ngFor="let node of data" (keyup.enter)="onButtonClick(node,$event)" (keyup.arrowdown)="arrowDown(ref)"
+       (keyup.arrowup)="arrowUp(ref)">
        <div *ngIf="node.icon" role="tooltip"  [ngClass]="node.typeclass" (click)="onButtonClick(node,$event)">
            <amexio-c-icon [customclass]="node.icon">
            </amexio-c-icon>

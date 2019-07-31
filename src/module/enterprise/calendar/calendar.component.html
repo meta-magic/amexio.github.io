@@ -25,7 +25,7 @@
     </div>
 </div>
 <amexio-calendar-month *ngIf="(currentState === 'month')" [no-of-events]="noOfEvents"  [headers]="displayHeaders" [calendar-data]="calendarMonthData"
-    [calendar-row]="calendarRow" (onMoreEventClicked)="onMoreEventClicked($event)" (onCloseClick)="onMoreCloseClick($event)" (onEventClicked)="onMonthEvent($event)">
+     (onMoreEventClicked)="onMoreEventClicked($event)" (onCloseClick)="onMoreCloseClick($event)" (onEventClicked)="onMonthEvent($event)">
 </amexio-calendar-month>
 <amexio-calendar-day-timewise *ngIf="(currentState === 'week' || currentState === 'day')" [headers]="displayHeaders" [calendar-data]="calendarWeekData"
     (onHeaderClicked)="onDaytimeHeaderClick($event)" (onEventClicked)="onDayTimeWiseEvent($event)"> </amexio-calendar-day-timewise>

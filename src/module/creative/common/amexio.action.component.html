@@ -2,6 +2,6 @@
 <div   [ngStyle]="{'background': ' url(' + bgimage + ') center/cover no-repeat','height': height }" [ngClass]="cclass">
     <div class="creative-footer" [style.flex-direction]="direction" [ngStyle]="{'color': color, 'background':background, 'justify-content': (align === 'start' || align === 'end') ? 'flex-'+align:align}">
         <ng-content></ng-content>
-        <form-action-ce *ngIf="(formFlag && showError)"></form-action-ce>
+        <form-action-ce *ngIf="(formFlag && showError)" [icon]="icon"></form-action-ce>
     </div>
 </div>

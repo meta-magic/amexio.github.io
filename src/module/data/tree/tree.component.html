@@ -10,7 +10,7 @@
       </div> &nbsp;
       <div tabindex="1" id={{node.elementId}} role="treeitem" (keyup.arrowup)="onArrowUp(data,node,rowindex)"
         (keyup.arrowdown)="onArrowDown($event,data,node,rowindex)" class="tree-node-label tree-node-label-hover"
-        [attr.aria-expanded]="node.expand" [ngClass]="{'tree-node-label-selected':node.isSelected ,'tree-node-label-not-selected':node.isSelected=='false'}"
+        [attr.aria-expanded]="node.expand" [ngClass]="{'tree-node-label-selected':node.isSelected ,'tree-node-label-not-selected':node.isSelected==false}"
         [attr.draggable]="enabledrag" (dragleave)="dragleave($event)" (drop)="drop({event:$event,data:node})"
         (dragover)="allowDrop({event:$event,data:node})" (dragstart)="onDragStart({event:$event,data:node})"
         (contextmenu)="loadContextMenu({event:$event,data:node,ref:id})">

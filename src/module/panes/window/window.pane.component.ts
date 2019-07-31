@@ -64,6 +64,8 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy, 
 
   themeCss: any;
 
+  transitionOptions = '400ms cubic-bezier(0.86, 0, 0.07, 1)';
+
   amexioComponentId = 'amexio-window';
   /*
    Properties

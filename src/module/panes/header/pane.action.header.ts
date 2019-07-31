@@ -48,7 +48,7 @@ export class AmexioHeaderComponent implements OnInit {
 
   @HostBinding('style.justify-content') jstyfy = 'space-between';
 
-  @HostBinding('style.background') private background = '';
+  @HostBinding('style.background') background = '';
 
   @HostBinding('style.color') color = '';
   @Input() padding: string;

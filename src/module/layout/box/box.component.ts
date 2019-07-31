@@ -110,9 +110,11 @@ export class AmexioBoxComponent implements OnInit {
   @Input('closable') closable = false;
   themeCss: string;
   amexioComponentId = 'amexio-box';
+  componentId: any;
   constructor() { }
   close = true;
   ngOnInit() {
+    this.componentId = +Math.floor(Math.random() * 90000) + 10000 + 'box';
     if (this.borderColor == null) {
       this.borderColor = 'box-default';
     }

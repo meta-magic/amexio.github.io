@@ -114,7 +114,7 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
   globalListenFunc: () => void;
   globalClickListenFunc: () => void;
   globalDragListenFunc: () => void;
-
+  transitionOptions = '400ms cubic-bezier(0.86, 0, 0.07, 1)';
   constructor(private renderer: Renderer2) {
     super();
   }

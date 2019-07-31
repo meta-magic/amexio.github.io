@@ -551,7 +551,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
     this.initDate();
     event.stopPropagation();
   }
-  private setToday() {
+  setToday() {
     this.currrentDate = new Date();
     this.initDate();
     this.showToolTip = !this.showToolTip;
@@ -739,7 +739,7 @@ export class AmexioDateTimePickerComponent extends ListBaseDatepickerComponent<s
   onSelect() {
     this.showToolTip = false;
   }
-  private validateDays(days: any) {
+  validateDays(days: any) {
     const max = new Date(this.maxDate);
     const min = new Date(this.minDate);
     // check1: if min max is null return false

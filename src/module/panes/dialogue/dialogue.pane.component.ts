@@ -235,6 +235,8 @@ export class AmexiodialoguePaneComponent implements AfterContentInit, OnChanges,
 
   amexioComponentId = 'amexio-dialogue';
 
+  transitionOptions = '400ms cubic-bezier(0.86, 0, 0.07, 1)';
+
   value = 0;
   defaultStyle: string;
   componentId: string;

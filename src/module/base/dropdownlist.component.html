@@ -11,7 +11,7 @@
             </ng-container>
 
             <ng-container *ngIf="template">
-                <ng-template [ngTemplateOutlet]="template" [ngTemplateOutletContext]="{ $implicit: { text : row }, row: item }">
+                <ng-template [ngTemplateOutlet]="template" [ngTemplateOutletContext]="{ text : item }">
                 </ng-template>
             </ng-container>
     

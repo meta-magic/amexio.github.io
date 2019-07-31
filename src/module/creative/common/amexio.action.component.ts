@@ -41,6 +41,8 @@ export class AmexioCardCEActionComponent implements AfterViewInit, OnInit {
 
   @Input('direction') direction = 'row';
 
+  @Input('icon') icon: string;
+
   cclass = '';
 
   formFlag = false;

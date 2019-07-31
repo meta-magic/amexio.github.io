@@ -2,7 +2,7 @@
   <div class="amexio-root-window-content" (mousedown)='onWindowPress($event)' (mousemove)='onWindowDrag($event)'
     (contextmenu)="loadContextMenu({event:$event,ref:id})" [style.justify-content]="verticalposition" [ngStyle]="maximumWindowStyle"
     [ngClass]="{'content-max-height': (maximize && isFullWindow)}" [@animation]="{value: 'visible', params: {transitionParams: transitionOptions}}"
-    [style.width]="width" [style.height]="height" [style.top.px]='y' [style.left.px]='x' [style.cursor]="draggable ? 'all-scroll':'' " [style.resize]="resizable ? 'both':'' " [style.overflow]="resizable? 'auto':''" >
+    [style.width]="width" [style.height]="bodyHeight" [style.top.px]='y' [style.left.px]='x' [style.cursor]="draggable ? 'all-scroll':'' " [style.resize]="resizable ? 'both':'' " [style.overflow]="resizable? 'auto':''" >
       <ng-content></ng-content>
   </div>
 </div>

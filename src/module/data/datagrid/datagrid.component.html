@@ -6,8 +6,8 @@
       <span tabindex='1' *ngIf="enablecolumnfilter ? true:false" (keyup.enter)="onEnableColumnClick($event)" class="float-right enablecolumnfilter"
         (click)="onEnableColumnClick($event)" style=" cursor: pointer;">
         &nbsp;
-        <span *ngIf="!show">&#9776;</span>
-        <span *ngIf="show">&#9747;</span>
+        <!-- <span *ngIf="!show">&#9776;</span>
+        <span *ngIf="show">&#9747;</span> -->
       </span>
     </span>
     <span *ngIf="groupby ? true : false" class="float-right-datagridlist" tabindex="1" (keyup.enter)="showGroupCol()" (click)="groupbyIconClick()"
@@ -36,7 +36,7 @@
         <ng-container *ngFor="let cols of columns">
           <ng-container *ngIf="!cols.hidden">
             <div class="datatable-col col-group" [style.width.%]="cols.width">
-              <data-grid-filter (onFilterClick)="getFilterClick($event)" [column]="cols" (filterObject)="getFilteredData($event)">
+              <data-grid-filter (onFilterClick)="getFilterClick()" [column]="cols" (filterObject)="getFilteredData($event)">
               </data-grid-filter>
             </div>
           </ng-container>
@@ -51,7 +51,7 @@
     <div class="datatable datatable-row">
       <ng-container class="datatable datatable-column">
         <div class="inputgroup" style="padding-left: 1%; padding-right: 1%">
-          <input type="text" tabindex="1" [(ngModel)]="filterValue" (keyup)="keyUpSearch($event)" type="text" class="input-control"
+          <input type="text" tabindex="1" [(ngModel)]="filterValue" (keyup)="keyUpSearch()" type="text" class="input-control"
             aria-label="Text input with dropdown button">
           <span style=" cursor: pointer;" tabindex="1" (click)="onFilterIconClick($event)" (keyup.enter)="onFilterIconClick($event)"
             class="datatable-filter-icon">
@@ -124,7 +124,7 @@
             <div class="datatable-col" tabindex="1" [style.width.%]="cols.width" (click)="sortOnColHeaderClick(cols, $event)" (keyup.enter)="sortOnColHeaderClick(cols, $event)">
 
               <ng-container *ngIf="cols.headerTemplate">
-                <ng-template [ngTemplateOutlet]="cols.headerTemplate" [ngTemplateOutletContext]="{column:cols ,index: i}"></ng-template>
+                <ng-template [ngTemplateOutlet]="cols.headerTemplate" [ngTemplateOutletContext]="{column:cols}"></ng-template>
               </ng-container>
               <ng-container *ngIf="!cols.headerTemplate">
                 {{cols.text}} &nbsp;
@@ -141,7 +141,7 @@
           <ng-container *ngIf="cols.datatype=='number'">
             <div class="datatable-col" tabindex="1" [style.width.%]="cols.width" (keyup.enter)="sortOnColHeaderClick(cols, $event)" (click)="sortOnColHeaderClick(cols, $event)">
               <ng-container *ngIf="cols.headerTemplate">
-                <ng-template [ngTemplateOutlet]="cols.headerTemplate" [ngTemplateOutletContext]="{column:cols ,index: i}"></ng-template>
+                <ng-template [ngTemplateOutlet]="cols.headerTemplate" [ngTemplateOutletContext]="{column:cols}"></ng-template>
               </ng-container>
               <ng-container *ngIf="!cols.headerTemplate">
                 <span class="float-right">
@@ -192,7 +192,7 @@
                 <div #ref id="{{title}}-{{i+1}}{{colIndex+1}}" class="datatable-col" [attr.tabindex]="(((i+1== 1) && (colIndex + 1 == firstIndex))? 1: tabindex)"
                   [style.width.%]="cols.width" scope="row" [attr.data-label]="cols.text" (keyup.arrowright)="arrowRight(ref)"
                   (keyup.arrowleft)="arrowLeft(ref)" (keyup.arrowdown)="arrowDown(ref)" (keyup.arrowup)="arrowUp(ref)" (keyup.end)="keyEnd(ref)"
-                  (keyup.home)="keyHome(ref)" (keyup.control.end)="keyControlEnd(ref)" (keyup.control.home)="keyControlHome(ref)"
+                  (keyup.home)="keyHome(ref)" (keyup.control.end)="keyControlEnd()" (keyup.control.home)="keyControlHome()"
                   (keyup.pagedown)="onPageDownClick()" (keyup.pageup)="onPageUpClick()" (keyup.enter)="onRowClick(row, i)"
                   [style.width.%]="cols.width" scope="row" [attr.data-label]="cols.text">
                   <span class="float-right">
@@ -212,7 +212,7 @@
                   [style.width.%]="cols.width" scope="row" [attr.data-label]="cols.text" (keyup.arrowright)="arrowRight(ref)"
                   (keyup.arrowleft)="arrowLeft(ref)" (keyup.enter)="onRowClick(row, i)" (keyup.arrowdown)="arrowDown(ref)"
                   (keyup.arrowup)="arrowUp(ref)" (keyup.end)="keyEnd(ref)" (keyup.home)="keyHome(ref)" (keyup.control.end)="keyControlEnd()"
-                  (keyup.control.home)="keyControlHome(ref)" (keyup.pageup)="onPageUpClick()" (keyup.pagedown)="onPageDownClick(ref)">
+                  (keyup.control.home)="keyControlHome()" (keyup.pageup)="onPageUpClick()" (keyup.pagedown)="onPageDownClick()">
                   <div (contextmenu)="loadContextMenu($event,row, cols, id)">
                     <amexio-display-field [data]="row" [data-index]="cols.dataindex"></amexio-display-field>
                   </div>
@@ -225,8 +225,8 @@
                 <div #ref id="{{title}}-{{i+1}}{{colIndex+1}}" class="datatable-col" [attr.tabindex]="(((i+1== 1) && (colIndex + 1 == firstIndex))? 1: tabindex)"
                   [style.width.%]="cols.width" scope="row" [attr.data-label]="cols.text" (keyup.arrowright)="arrowRight(ref)"
                   (keyup.arrowleft)="arrowLeft(ref)" (keyup.arrowdown)="arrowDown(ref)" (keyup.arrowup)="arrowUp(ref)" (keyup.end)="keyEnd(ref)"
-                  (keyup.home)="keyHome(ref)" (keyup.control.end)="keyControlEnd()" (keyup.control.home)="keyControlHome(ref)"
-                  (keyup.pagedown)="onPageDownClick(ref)" (keyup.pageup)="onPageUpClick()" class="datatable-col" [style.width.%]="cols.width"
+                  (keyup.home)="keyHome(ref)" (keyup.control.end)="keyControlEnd()" (keyup.control.home)="keyControlHome()"
+                  (keyup.pagedown)="onPageDownClick()" (keyup.pageup)="onPageUpClick()" class="datatable-col" [style.width.%]="cols.width"
                   scope="row" [attr.data-label]="cols.text">
                   <ng-template [ngTemplateOutlet]="cols.bodyTemplate" [ngTemplateOutletContext]="{ $implicit: { text : row[cols.dataindex] }, row: row }"></ng-template>
                 </div>

@@ -1,6 +1,6 @@
 <div class="btn-group">
   <ng-container *ngFor="let button of buttons">
-      <button [ngStyle]="{'cursor': disabled ? 'not-allowed':'pointer','background-color':button.bgcolor,'color':button.color,'box-shadow':bgBorderColor}" 
+      <button [ngStyle]="{'cursor': disabled ? 'not-allowed':'pointer','background-color':button.bgcolor,'color':button.color,'box-shadow':button.bgBorderColor}" 
       role="button" tabindex="1" [attr.aria-pressed]="ispressed" [attr.disabled]="button.disabled ? true: null" [attr.title]="button.tooltip" 
       (click)="buttonGroupClick($event,button)" 
   [ngClass]="{'button-default': button.size=='default'

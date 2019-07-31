@@ -90,7 +90,7 @@
   
                 <ng-container *ngFor="let itemdaysArray of  completeDaysArray; index as i">
                      
-                    <span [ngStyle]="{'padding-left': ((i+1) > count) ? '28px':'0px'}">
+                    <!-- <span [ngStyle]="{'padding-left': ((i+1) > count) ? '28px':'0px'}"> -->
   
   
                         <span style="position: relative;" [ngClass]="{'datetimepicker':!inlineDatepicker}">
@@ -122,17 +122,16 @@
                                 </div>
   
   
-                                <div *ngIf="!drop">
+                                <!-- <div *ngIf="!drop"> -->
                                     <ul class="weekdays" [ngStyle]="{'display': datepicker ? 'block' : 'none'}">
                                         <li *ngFor="let dayTitle of daysTitle">{{dayTitle.text}}</li>
                                     </ul>
   
-                                    <ul id="{{daystabindex}}" class="days" [ngStyle]="{'display': datepicker ? 'block' : 'none'}">
+                                    <ul class="days" [ngStyle]="{'display': datepicker ? 'block' : 'none'}">
   
                                         <ng-container *ngFor="let dayArray of itemdaysArray.montharray">
-                                            <li [ngStyle]="{'cursor': day.isDisabled ? 'not-allowed' : 'pointer'}" *ngFor="let day of dayArray" [ngClass]="{'date1':validateDays(day.date) , 'date1':day.isDisabled , 'notclickable':isDisabled}">
-                                                <span [attr.tabindex]="(day.selected ? 1: -1)" id="{{day.id}}" (keyup.arrowleft)="arrowleft(day,daysArray,$event)" (keyup.arrowright)="arrowright(day,daysArray,$event)"
-                                                    (keyup.arrowdown)="arrowdown(day,daysArray,$event)" (keyup.arrowup)="arrowup(day,daysArray,$event)"
+                                            <li [ngStyle]="{'cursor': day.isDisabled ? 'not-allowed' : 'pointer'}" *ngFor="let day of dayArray" [ngClass]="{'notclickable':disabled}">
+                                                <span [attr.tabindex]="(day.selected ? 1: -1)" id="{{day.id}}"
                                                     (keyup.enter)="onDateClick(day, $event, rootDiv)" attr.aria-label="{{day.fulldate}}"
                                                     (click)="onDateClick(day, $event, rootDiv)" class="day" [ngClass]="{'active': (day.from || day.to) , 'datesrange': day.range, 'currentMonth':day.isCurrentMonth, 'notCurrentMonth':!day.isCurrentMonth,'invaliddays':validateDays(day.date), 'disabled':day.isDisabled}">
                                                     {{ day.date | date:'d' }}
@@ -140,13 +139,13 @@
                                             </li>
                                         </ng-container>
                                     </ul>
-                                </div>
+                                <!-- </div> -->
                             </span>
                             <!--datepicker ends  -->
   
                         </span>
   
-                    </span>
+                    <!-- </span> -->
                  </ng-container>
             </div>
         </div>

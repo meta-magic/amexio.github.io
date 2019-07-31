@@ -20,6 +20,8 @@ export class AmexioFormActionCEComponent implements  AfterContentInit {
 
     enableaction = false;
 
+    @Input('icon') icon: string;
+
     constructor(public formBuilder: FormBuilder) {
         this.isFormValid = false;
         this.showDialogue = false;

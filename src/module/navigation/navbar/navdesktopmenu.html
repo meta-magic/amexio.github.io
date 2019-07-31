@@ -9,7 +9,7 @@
         [ngClass]="{'nav-menu-separator': (node.separator && !node.separatorHeader)}">
 
         <span class="flex-inline" [ngStyle]="{'flex-direction': (position === 'left') ?'row':'row-reverse'}">
-            <em *ngIf="icon" [ngClass]="node.icon"></em>
+            <em *ngIf="node.icon" [ngClass]="node.icon"></em>
             <span style="flex-grow: 1; margin: 0px 5px; ">{{node.text}}</span>
             <i *ngIf="node.submenus" class="fa " aria-hidden="true" [ngClass]="{'fa-angle-right': (position === 'left'), 
                                              'fa-angle-left':(position === 'right')}"></i>

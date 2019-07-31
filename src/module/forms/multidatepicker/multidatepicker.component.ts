@@ -312,7 +312,7 @@ export class AmexioMultipleDatePickerComponent extends ListBaseDatepickerCompone
     this.daysTitle.push({ text: 'Su' });
   }
 
-  private validateDays(days: any) {
+  validateDays(days: any) {
     this.disableddays();
     this.validateDaysForMinMax();
   }
