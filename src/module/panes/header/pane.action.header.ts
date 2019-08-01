@@ -23,7 +23,7 @@ import { BehaviorSubject } from 'rxjs/index';
   selector: 'amexio-header',
   template: `
 
-  <span #contentWrapper>
+  <span  style="flex: auto;" #contentWrapper>
   <ng-content></ng-content>
   </span>
 
