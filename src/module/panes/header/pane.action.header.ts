@@ -16,20 +16,32 @@
  * Created by pratik on 18/12/17.
  */
 
-import { Component, HostBinding, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, HostBinding, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/index';
 
 @Component({
-  selector: 'amexio-header', template: `
+  selector: 'amexio-header',
+  template: `
+
+  <span #contentWrapper>
   <ng-content></ng-content>
+  </span>
+
   <span>
-  <amexio-c-icon class="cursor-style" *ngIf="(isFullWindow && maximize )"
-  [key]="'window_maximize'" (onClick)="sizeChange()"></amexio-c-icon>
-  <amexio-c-icon class="cursor-style" *ngIf="(!isFullWindow && maximize )"
+  <i  *ngIf="minimize" class="fa fa-window-minimize" (click)="onMinimizeClick($event)"
+  style = "cursor: pointer"></i>
+
+  <amexio-c-icon style = "padding-left: 10px" class="cursor-style" *ngIf="(isFullWindow && maximize )"
+  [key]="'window_maximize'" (onClick)="sizeChange()">
+  </amexio-c-icon>
+  <amexio-c-icon style = "padding-left: 10px" class="cursor-style" *ngIf="(!isFullWindow && maximize )"
   [key]="'window_restore'" (click)="sizeChange()"></amexio-c-icon>
+
   <amexio-c-icon class="cursor-style"
   style = "padding-left: 10px"
-  *ngIf="closeable" [key]="'window_close'" (onClick)="onCloseClick()"></amexio-c-icon>
+  *ngIf="closeable" [key]="'window_close'" (onClick)="onCloseClick()">
+  </amexio-c-icon>
+
   </span>
   `,
   styles: [
@@ -41,17 +53,23 @@ import { BehaviorSubject } from 'rxjs/index';
   ],
 })
 
-export class AmexioHeaderComponent implements OnInit {
+export class AmexioHeaderComponent implements AfterViewInit, OnInit {
 
   @HostBinding('class.modal-card-header') get c1() { return this.aComponent; }
   @HostBinding('class.modal-window-header') get c2() { return this.aComponent1; }
 
   @HostBinding('style.justify-content') jstyfy = 'space-between';
 
-  @HostBinding('style.background') background = '';
+  @HostBinding('style.background') private background = '';
+
+  @ViewChild('contentWrapper') content: ElementRef;
 
   @HostBinding('style.color') color = '';
   @Input() padding: string;
+
+  @Output() minimizeWindow: any = new EventEmitter<any>();
+
+  minimize = false;
 
   closeable = false;
 
@@ -66,11 +84,16 @@ export class AmexioHeaderComponent implements OnInit {
   aComponent: string;
   aComponent1: string;
 
+  textName: any;
   constructor() {
+
   }
 
   ngOnInit() {
 
+  }
+  ngAfterViewInit() {
+    this.textName = this.content.nativeElement.textContent;
   }
 
   setMaximizeData(maximize: boolean, isFullWindow: boolean) {
@@ -93,5 +116,10 @@ export class AmexioHeaderComponent implements OnInit {
 
   onCloseClick() {
     this.closeableBehaiour.next(false);
+  }
+
+  onMinimizeClick() {
+    this.closeableBehaiour.next(false);
+    this.minimizeWindow.emit(this, this.textName);
   }
 }

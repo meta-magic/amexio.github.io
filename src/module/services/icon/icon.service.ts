@@ -81,6 +81,11 @@ const ICON_MAPPING =
       mat: 'close',
     },
     {
+      component: 'window_minimize',
+      fa: 'fa fa-window-minimize',
+      mat: 'minimize',
+    },
+    {
       component: 'window_close',
       fa: faFaTimesIcon,
       mat: 'close',

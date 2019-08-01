@@ -6,6 +6,12 @@
       <ng-content></ng-content>
   </div>
 </div>
+<ng-container *ngIf="minimizeFlag && !show">
+  <amexio-button [label]="textName" [type]="'theme-color'"
+    style="bottom: 0px; float:left;left: 0px; position: fixed; z-index: 9999;" [tooltip]="textName"
+    (onClick)="minimizeBtnClick($event)">
+  </amexio-button>
+</ng-container>
 <ng-container *ngIf="flag">
   <base-contextmenu style=" z-index: 800; position: absolute;" [base-context-menu]="contextmenu" [mouse-location-top]="mouseLocation.top"
     [mouse-location-left]="mouseLocation.left" [is-FlagShow]="flag" [right-click-data]="nodeRightClick" (onRightClick)="rightClickDataEmit($event)"

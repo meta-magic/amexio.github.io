@@ -157,6 +157,15 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy, 
    description : User can maximize the window to full screen.
    */
   @Input() maximize = false;
+  /*
+  Properties
+  name : minimize
+  datatype : boolean
+  version : 4.0 onwards
+  default :false
+  description : User can maximize the window to full screen.
+  */
+  @Input() minimize = false;
 
   /*
    Properties
@@ -208,6 +217,8 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy, 
   @Input('context-menu') contextmenu: any[];
 
   @Input('width') width: any = '90%';
+  minimizeFlag = false;
+  textName: any;
 
   @Output() nodeRightClick: any = new EventEmitter<any>();
 
@@ -242,6 +253,15 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy, 
         this.y = 0;
       }
     }
+    this.minimizeFlag = false;
+  }
+  onMinimizeClick(event: any) {
+    this.minimizeFlag = true;
+    this.show = !this.show;
+    this.minimizeBtnClick();
+  }
+  minimizeBtnClick() {
+    this.show = !this.show;
   }
   ngOnInit() {
     this.setVerticlePosition();
@@ -326,6 +346,17 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy, 
       });
     }
     if (this.amexioHeader && this.header) {
+      if (this.minimize) {
+        this.amexioHeader.toArray()[0].minimize = this.minimize;
+        this.amexioHeader.toArray()[0].minimizeWindow.subscribe((event: any) => {
+
+          this.textName = event.textName;
+          const array = [];
+          array.push(this.textName);
+          console.log('kkkkk', array);
+          this.onMinimizeClick(event);
+        });
+      }
       this.amexioHeader.toArray()[0].closeable = this.closable;
       this.amexioHeader.toArray()[0].aComponent1 = 'window';
       if (this.maximize) {
