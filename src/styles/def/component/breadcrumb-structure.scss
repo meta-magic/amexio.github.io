@@ -58,7 +58,7 @@
         margin-top: 0px !important;
         height: 120%;
         padding-left: 8px;
-        padding-top: 12px;
+        padding-top: 8px;
         padding-bottom: 8px;
         border-left: 1px solid #797575;
     }
@@ -69,11 +69,10 @@
         margin-top: 0px;
         padding-left: 8px;
         height: 120%;
-        padding-top: 12px;
+        padding-top: 8px;
         padding-bottom: 8px;
         // color: $breadcrumbFontColor;
-        border-left: 1px solid #f7f3f3;
-        
+        border-left: 1px solid #f7f3f3;       
     }
     .label-icon-css {
             cursor: pointer;
@@ -100,7 +99,7 @@
         outline: none;
      }
      .arrow-group-css:focus{
-        background:$breadcrumbBGColor;
+        // background:$breadcrumbBGColor;
         outline: none;
      }
      .label-icon-css:focus{
