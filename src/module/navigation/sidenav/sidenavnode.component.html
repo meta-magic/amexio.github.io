@@ -42,7 +42,7 @@
         </amexio-sidenav-innernode>
     </div>
     <!-- ng content block-->
-    <div class="sidenav-submenu-details" style="padding-right: 20px; width: 100%" [ngClass]="{'sidenav-submenu-expanded':expand}">
+    <div class="sidenav-submenu-details" style="width: 100%" [ngClass]="{'sidenav-submenu-expanded':expand}">
         <ng-content *ngIf="!isShowOnlyIcon"></ng-content>
     </div>
 </li>
