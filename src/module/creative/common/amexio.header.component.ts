@@ -15,7 +15,7 @@
 *
 *  Created by sagar on 4/02/2019.
 */
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/index';
 
 @Component({
@@ -29,7 +29,7 @@ import { BehaviorSubject } from 'rxjs/index';
   `,
   ],
 })
-export class AmexioCardCEHeaderComponent implements OnInit {
+export class AmexioCardCEHeaderComponent implements AfterViewInit, OnInit {
 
   @Input('align') align = '';
 
@@ -49,15 +49,23 @@ export class AmexioCardCEHeaderComponent implements OnInit {
 
   @Input('apply-theme-color') applyThemeColor = false;
 
+  @ViewChild('contentWrapper') content: ElementRef;
+
+  @Output() minimizeWindow: any = new EventEmitter<any>();
+
   cclass = '';
 
   closeable = false;
 
   maximize = false;
 
+  minimize = false;
+
   isFullWindow = false;
 
   windowFlag: boolean;
+
+  textName: any;
 
   themeCss: any;
 
@@ -79,6 +87,15 @@ export class AmexioCardCEHeaderComponent implements OnInit {
     }
     this.setIconPosition();
   }
+  ngAfterViewInit() {
+    this.textName = this.content.nativeElement.innerText;
+  }
+
+  onMinimizeClick() {
+    this.closeableBehaiour.next(false);
+    this.minimizeWindow.emit(this, this.textName);
+  }
+
   setMaximizeData(maximize: boolean, isFullWindow: boolean) {
     this.maximize = maximize;
     this.isFullWindow = isFullWindow;
@@ -106,7 +123,7 @@ export class AmexioCardCEHeaderComponent implements OnInit {
       case 'center': {
         this.iconPosition = {
           top: '',
-          bottom  : '',
+          bottom: '',
         };
         break;
       }

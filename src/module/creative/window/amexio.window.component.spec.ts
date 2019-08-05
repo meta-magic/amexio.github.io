@@ -7,6 +7,7 @@ import { HttpClient, HttpHandler } from '@angular/common/http';
 import { Renderer2, Renderer, TemplateRef } from '@angular/core';
 import { CommonIconComponent } from './../../base/components/common.icon.component';
 import { AmexioWindowCEComponent } from './amexio.window.component';
+import { AmexioButtonComponent } from '../../forms/amexio.forms.module';
 describe('amexio-window-ce', () => {
     let comp: AmexioWindowCEComponent;
     let fixture: ComponentFixture<AmexioWindowCEComponent>;
@@ -16,7 +17,7 @@ describe('amexio-window-ce', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule],
-            declarations: [CommonIconComponent, AmexioWindowCEComponent],
+            declarations: [CommonIconComponent, AmexioWindowCEComponent, AmexioButtonComponent],
             providers: [IconLoaderService, CommonDataService, Renderer2, HttpClient, HttpHandler],
         });
         fixture = TestBed.createComponent(AmexioWindowCEComponent);
