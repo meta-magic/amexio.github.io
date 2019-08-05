@@ -28,7 +28,7 @@ import { BehaviorSubject } from 'rxjs/index';
   </span>
 
   <span>
-  <i  *ngIf="minimize" class="fa fa-window-minimize" (click)="onMinimizeClick($event)"
+  <i  *ngIf="minimize" class="fa fa-window-minimize" (click)="onMinimizeClick()"
   style = "cursor: pointer"></i>
 
   <amexio-c-icon style = "padding-left: 10px" class="cursor-style" *ngIf="(isFullWindow && maximize )"
@@ -60,7 +60,7 @@ export class AmexioHeaderComponent implements AfterViewInit, OnInit {
 
   @HostBinding('style.justify-content') jstyfy = 'space-between';
 
-  @HostBinding('style.background') private background = '';
+  @HostBinding('style.background') background = '';
 
   @ViewChild('contentWrapper') content: ElementRef;
 
