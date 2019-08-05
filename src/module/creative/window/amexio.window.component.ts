@@ -56,6 +56,7 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
   @Input('align') align: string;
 
   cclass: string;
+  minimizeFlag = false;
 
   @Input('vertical-position') verticalposition = 'center';
 
@@ -74,6 +75,7 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
   isFullWindow: boolean;
 
   @Input() maximize = false;
+  @Input() minimize = false;
 
   @Input() closable = true;
 
@@ -96,7 +98,7 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
 
   @Input('remember-window-position') windowposition: boolean;
   maximumWindowStyle: any;
-
+  textName: any;
   dummyWidth: string;
 
   x = 0;
@@ -129,7 +131,17 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
         this.y = 0;
       }
     }
+    this.minimizeFlag = false;
   }
+  onMinimizeClick(event: any) {
+    this.minimizeFlag = true;
+    this.show = !this.show;
+    this.minimizeBtnClick();
+  }
+  minimizeBtnClick() {
+    this.show = !this.show;
+  }
+
   ngOnInit() {
     if (!this.color) {
       this.cclass = 'card-container-ce-color';
@@ -236,6 +248,13 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
 
   ngAfterContentInit(): void {
     if (this.amexioHeader && this.amexioHeader.toArray().length > 0) {
+      if (this.minimize) {
+        this.amexioHeader.toArray()[0].minimize = this.minimize;
+        this.amexioHeader.toArray()[0].minimizeWindow.subscribe((event: any) => {
+          this.textName = event.textName;
+          this.onMinimizeClick(event);
+        });
+      }
       setTimeout(() => {
         this.amexioHeader.toArray()[0].amexioComponentId = 'amexio-window';
         this.amexioHeader.toArray()[0].closeable = this.closable;
