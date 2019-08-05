@@ -25,11 +25,8 @@ describe('amexio-window-ce', () => {
 
         const compiled = fixture.debugElement.nativeElement;
         event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
-        let renderer = Renderer2;
-
 
     });
-
 
     it('variable check', () => {
         comp.x = 0;
@@ -44,9 +41,6 @@ describe('amexio-window-ce', () => {
         expect(comp.py).toEqual(0);
         expect(comp.minArea).toEqual(20000);
         expect(comp.draggingWindow).toEqual(false);
-
-
-
 
     });
 

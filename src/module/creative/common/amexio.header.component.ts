@@ -29,7 +29,7 @@ import { BehaviorSubject } from 'rxjs/index';
   `,
   ],
 })
-export class AmexioCardCEHeaderComponent implements AfterViewInit, OnInit {
+export class AmexioCardCEHeaderComponent implements OnInit {
 
   @Input('align') align = '';
 
@@ -49,23 +49,15 @@ export class AmexioCardCEHeaderComponent implements AfterViewInit, OnInit {
 
   @Input('apply-theme-color') applyThemeColor = false;
 
-  @ViewChild('contentWrapper') content: ElementRef;
-
-  @Output() minimizeWindow: any = new EventEmitter<any>();
-
   cclass = '';
 
   closeable = false;
 
   maximize = false;
 
-  minimize = false;
-
   isFullWindow = false;
 
   windowFlag: boolean;
-
-  textName: any;
 
   themeCss: any;
 
@@ -86,14 +78,6 @@ export class AmexioCardCEHeaderComponent implements AfterViewInit, OnInit {
       this.cclass = 'card-header-border';
     }
     this.setIconPosition();
-  }
-  ngAfterViewInit() {
-    this.textName = this.content.nativeElement.innerText;
-  }
-
-  onMinimizeClick() {
-    this.closeableBehaiour.next(false);
-    this.minimizeWindow.emit(this, this.textName);
   }
 
   setMaximizeData(maximize: boolean, isFullWindow: boolean) {
