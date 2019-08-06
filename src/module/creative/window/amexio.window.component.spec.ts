@@ -46,10 +46,14 @@ describe('amexio-window-ce', () => {
         expect(comp.minArea).toEqual(20000);
         expect(comp.draggingWindow).toEqual(false);
 
-
-
-
+    });
+    it('onCloseClick  method check', () => {
+        comp.onCloseClick();
+        comp.minimizeFlag = false;
     });
 
+    it('minimizeBtnClick  method check', () => {
+        comp.minimizeBtnClick();
+        comp.show = !comp.show;
+    });
 });
-
