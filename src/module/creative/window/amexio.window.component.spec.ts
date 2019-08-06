@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
-import { FormsModule, FormBuilder } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { IconLoaderService } from '../../../index';
 
 import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
@@ -20,10 +20,6 @@ class TestWindowComponent { }
 describe('amexio-window-ce', () => {
     let comp: AmexioWindowCEComponent;
     let fixture: ComponentFixture<TestWindowComponent>;
-
-    // let queryitem: AmexioCardCEHeaderComponent;
-    // let fixture2: ComponentFixture<AmexioCardCEHeaderComponent>
-    // let de: DebugElement;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({

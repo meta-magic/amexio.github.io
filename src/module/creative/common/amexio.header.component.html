@@ -12,8 +12,8 @@
         <span *ngIf="windowFlag" class="creative-header-icon-div" [ngStyle]="iconPosition">
             <amexio-c-icon class="cursor-style" *ngIf="(isFullWindow && maximize )" [key]="'window_maximize'" (onClick)="sizeChange()"></amexio-c-icon>
             <amexio-c-icon class="cursor-style" *ngIf="(!isFullWindow && maximize )" [key]="'window_restore'" (click)="sizeChange()"></amexio-c-icon>
-            <i  *ngIf="minimize" class="fa fa-window-minimize" (click)="onMinimizeClick($event)"
-            style = "cursor: pointer;padding-left:5px;"></i>
+            <em  *ngIf="minimize" class="fa fa-window-minimize" (click)="onMinimizeClick($event)"
+            style = "cursor: pointer;padding-left:5px;"></em>
             <amexio-c-icon class="cursor-style" style="padding-left:5px;" *ngIf="closeable" [key]="'window_close'"
                 (onClick)="onCloseClick()"></amexio-c-icon>
         </span>
