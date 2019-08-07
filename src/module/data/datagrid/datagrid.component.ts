@@ -401,7 +401,9 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
 
   private plusIcon = 'fa fa-plus';
 
-  private checkDefaultIcon = 'checkbox default';
+ checkDefaultIcon = 'checkbox default';
+
+ checkBoxActive = 'checkbox active';
 
   checkBoxSelectClass = '';
 
@@ -473,10 +475,10 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
     }
     if (this.httpmethod && this.httpurl) {
       this.dataTableService.fetchData(this.httpurl, this.httpmethod).subscribe(
-        (response) => {
+        (response: any) => {
           this.responseData = response;
         },
-        (error) => {
+        (error: any) => {
         },
         () => {
           this.setData(this.responseData);
@@ -862,12 +864,13 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
 
   selectAllRecord() {
     this.selectAll = !this.selectAll;
-
     if (this.selectAll) {
+      this.checkBoxSelectClass = this.checkBoxActive;
       for (const vr of this.viewRows) {
         this.selectedRows.push(vr);
       }
     } else {
+      this.checkBoxSelectClass = this.checkDefaultIcon;
       this.selectedRows = [];
     }
     this.emitSelectedRows();
@@ -997,10 +1000,10 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
   setSelectedRow(rowData: any, event: any) {
     if (event.classList.value === this.checkDefaultIcon) {
       this.selectedRows.push(rowData);
-      event.classList.value = 'checkbox active';
+      event.classList.value = this.checkBoxActive;
     } else {
       const indexOf = this.selectedRows.indexOf(rowData);
-      this.selectedRows.splice(indexOf, 0);
+      this.selectedRows.splice(indexOf, 1);
       event.classList.value = this.checkDefaultIcon;
     }
     this.emitSelectedRows();
@@ -1019,7 +1022,7 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
 
   setCheckBoxSelectClass() {
     if (this.selectAll) {
-      return 'checkbox active';
+      return this.checkBoxActive;
     } else if (!this.selectAll) {
       return this.checkDefaultIcon;
     }
