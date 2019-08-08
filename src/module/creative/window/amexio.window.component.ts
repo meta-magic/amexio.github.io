@@ -262,7 +262,7 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
       }, 3000);
 
       if (this.maximize) {
-        this.amexioHeader.toArray()[0].setMaximizeData(this.maximize, this.isFullWindow);
+        this.amexioHeader.toArray()[0].setMaximizeDataCE(this.maximize, this.isFullWindow);
         this.amexioHeader.toArray()[0].maximizeBehaiour.subscribe((max: any) => {
           this.maximumWindowStyle = this.setMaximizeClass(max);
         });

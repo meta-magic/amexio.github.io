@@ -57,11 +57,11 @@ export class AmexioCardCEHeaderComponent implements AfterViewInit, OnInit {
 
   closeable = false;
 
-  maximize = false;
+  maximizeCe = false;
 
   minimize = false;
 
-  isFullWindow = false;
+  isFullWindowCe = false;
 
   windowFlag: boolean;
 
@@ -71,7 +71,7 @@ export class AmexioCardCEHeaderComponent implements AfterViewInit, OnInit {
 
   closeableBehaiour = new BehaviorSubject(false);
 
-  maximizeBehaiour = new BehaviorSubject(false);
+  maximizeBehaiourCe = new BehaviorSubject(false);
 
   amexioComponentId: string;
 
@@ -96,15 +96,15 @@ export class AmexioCardCEHeaderComponent implements AfterViewInit, OnInit {
     this.minimizeWindow.emit(this, this.textName);
   }
 
-  setMaximizeData(maximize: boolean, isFullWindow: boolean) {
-    this.maximize = maximize;
-    this.isFullWindow = isFullWindow;
-    this.maximizeBehaiour.next(this.isFullWindow);
+  setMaximizeDataCE(maximize: boolean, isFullWindow: boolean) {
+    this.maximizeCe = maximize;
+    this.isFullWindowCe = isFullWindow;
+    this.maximizeBehaiourCe.next(this.isFullWindowCe);
   }
 
   sizeChange() {
-    this.isFullWindow = !this.isFullWindow;
-    this.maximizeBehaiour.next(this.isFullWindow);
+    this.isFullWindowCe = !this.isFullWindowCe;
+    this.maximizeBehaiourCe.next(this.isFullWindowCe);
   }
 
   onCloseClick() {
