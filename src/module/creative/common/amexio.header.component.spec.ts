@@ -32,12 +32,12 @@ describe('amexio-header-ce', () => {
 
         comp.cclass = '';
         comp.closeable = false;
-        comp.maximize = false;
+        comp.maximizeCe = false;
         comp.minimize = false;
-        comp.isFullWindow = false;
+        comp.isFullWindowCe = false;
         expect(comp.minimize).toBe(false);
         expect(comp.cclass).toBe('');
-        expect(comp.maximize).toBe(false);
+        expect(comp.maximizeCe).toBe(false);
     });
 
     it('onMinimizeClick  method check', () => {
