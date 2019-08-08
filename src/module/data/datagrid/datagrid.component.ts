@@ -489,9 +489,6 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
       this.previousData = JSON.parse(JSON.stringify(this.data));
     }
     this.componentLoaded = true;
-
-    this.checkBoxSelectClass = this.setCheckBoxSelectClass();
-
     this.componentId = 'gridcolumn' + Math.floor(Math.random() * 1000 + 999);
 
     this.gridId = 'grid' + Math.floor(Math.random() * 1000 + 999);
@@ -657,6 +654,10 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
     viewRows.forEach((row: any) => {
       if (!row.hasOwnProperty('isSelected')) {
         row['isSelected'] = false;
+        row['checkBoxSelectClass'] = this.checkDefaultIcon;
+      } else if (row.isSelected && this.enablecheckbox) {
+        row.isSelected = false;
+        row['checkBoxSelectClass'] = this.checkBoxActive;
       }
     });
   }
@@ -865,12 +866,14 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
   selectAllRecord() {
     this.selectAll = !this.selectAll;
     if (this.selectAll) {
-      this.checkBoxSelectClass = this.checkBoxActive;
       for (const vr of this.viewRows) {
+        vr.checkBoxSelectClass = this.checkBoxActive;
         this.selectedRows.push(vr);
       }
     } else {
-      this.checkBoxSelectClass = this.checkDefaultIcon;
+      for (const vr of this.viewRows) {
+        vr.checkBoxSelectClass = this.checkDefaultIcon;
+      }
       this.selectedRows = [];
     }
     this.emitSelectedRows();
