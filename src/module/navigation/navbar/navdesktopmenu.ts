@@ -11,8 +11,9 @@ export class AmexioNavDesktopMenuComponent implements AfterViewInit {
     @Input('nodes') nodes: any[];
 
     position = 'left';
-
+    marginTop: any;
     @ViewChild('menus', { read: ElementRef }) public menus: ElementRef;
+    @ViewChild('divRef', { read: ElementRef }) public divRef: ElementRef;
 
     @Output() onNavItemClick: any = new EventEmitter<any>();
 
@@ -50,5 +51,10 @@ export class AmexioNavDesktopMenuComponent implements AfterViewInit {
 
     onInnerClick(event: any) {
         this.onNavItemClick.emit(event);
+    }
+    onScroll() {
+        const scrollBottom = this.divRef.nativeElement.scrollHeight - this.divRef.nativeElement.clientHeight;
+        const marginTop = 330 - (scrollBottom - this.divRef.nativeElement.scrollTop)  ;
+        this.marginTop = '-' + marginTop + 'px';
     }
 }

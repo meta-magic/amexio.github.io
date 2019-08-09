@@ -7,7 +7,7 @@
     box-shadow: 0 5px 5px rgba(0,0,0,.6);
     background-color: var(--appHeaderBGColor);
     color: var(--appHeaderFontColor);
-    padding: 10px;
+    padding: 0px;
 }
 .amexio-nav-desktop-submenus{
     width: 250px;
@@ -518,4 +518,6 @@
     color: $navbarColor;
     font-weight: 600;
     }
-  
+    .navbar-scroll {
+      overflow-y:auto  
+    }
