@@ -354,8 +354,6 @@ export class AmexioWindowPaneComponent extends LifeCycleBaseComponent implements
         this.amexioHeader.toArray()[0].minimizeWindow.subscribe((event: any) => {
 
           this.textName = event.textName;
-          const array = [];
-          array.push(this.textName);
           this.onMinimizeClick(event);
         });
       }
