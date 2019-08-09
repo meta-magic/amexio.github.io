@@ -13,27 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * Created by pratik on 18/12/17.
+ * Created by kedar on 8/8/19.
  */
 
 import { AfterViewInit, Component, ElementRef, EventEmitter, HostBinding, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/index';
 
 @Component({
-  selector: 'amexio-header',
-  template: `
-
-  <span  style="flex: auto;" #contentWrapper>
-  <ng-content></ng-content>
+  selector: 'amexio-header', template: `
+  <span style=" flex: auto;"   #contentWrapper>
+  <ng-content ></ng-content>
   </span>
-
   <span>
-  <i  *ngIf="minimize" class="fa fa-window-minimize" (click)="onMinimizeClick($event)"
-  style = "cursor: pointer"></i>
+  <em  *ngIf="minimize" class="fa fa-window-minimize" (click)="onMinimizeClick($event)"
+  style = "cursor: pointer"></em>
 
   <amexio-c-icon style = "padding-left: 10px" class="cursor-style" *ngIf="(isFullWindow && maximize )"
-  [key]="'window_maximize'" (onClick)="sizeChange()">
-  </amexio-c-icon>
+  [key]="'window_maximize'" (onClick)="sizeChange()"></amexio-c-icon>
   <amexio-c-icon style = "padding-left: 10px" class="cursor-style" *ngIf="(!isFullWindow && maximize )"
   [key]="'window_restore'" (click)="sizeChange()"></amexio-c-icon>
 
@@ -53,7 +49,7 @@ import { BehaviorSubject } from 'rxjs/index';
   ],
 })
 
-export class AmexioHeaderComponent implements AfterViewInit, OnInit {
+export class AmexioHeaderComponent implements OnInit, AfterViewInit {
 
   @HostBinding('class.modal-card-header') get c1() { return this.aComponent; }
   @HostBinding('class.modal-window-header') get c2() { return this.aComponent1; }
@@ -68,6 +64,8 @@ export class AmexioHeaderComponent implements AfterViewInit, OnInit {
   @Input() padding: string;
 
   @Output() minimizeWindow: any = new EventEmitter<any>();
+
+  @Output() closeDataEmit: any = new EventEmitter<any>();
 
   minimize = false;
 
@@ -116,6 +114,7 @@ export class AmexioHeaderComponent implements AfterViewInit, OnInit {
 
   onCloseClick() {
     this.closeableBehaiour.next(false);
+    this.closeDataEmit.emit(this);
   }
 
   onMinimizeClick() {

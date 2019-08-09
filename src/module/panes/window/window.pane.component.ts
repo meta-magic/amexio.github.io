@@ -1,31 +1,35 @@
 /*
- * Copyright [2019] [Metamagic]
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
- * Created by ketangote on 12/18/17.
- */
+* Copyright [2019] [Metamagic]
+*
+* Licensed under the Apache License, Version 2.0 (the 'License');
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an 'AS IS' BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* Created by ketangote on 12/18/17.
+*/
 
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import {
-  AfterContentInit, Component, ContentChildren, ElementRef, EventEmitter, HostListener, Input, OnChanges, OnDestroy,
+  AfterContentInit, ApplicationRef, Component, ComponentFactoryResolver, ContentChildren, ElementRef, EmbeddedViewRef,
+  EventEmitter, Injector, Input, OnChanges, OnDestroy,
   OnInit, Output, QueryList, Renderer2, SimpleChanges, ViewChild,
 } from '@angular/core';
+import { MinimizeWindowComponent } from './minimize.window.component';
+
 import { AmexioFooterComponent } from '../action/pane.action.footer';
 import { AmexioBodyComponent } from '../body/pane.action.body';
 import { AmexioHeaderComponent } from '../header/pane.action.header';
 
-import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
+import { MinimizeService } from './minimize-service.service';
+
 @Component({
   selector: 'amexio-window',
   templateUrl: './window.pane.component.html',
@@ -43,7 +47,7 @@ import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
     ]),
   ],
 })
-export class AmexioWindowPaneComponent extends LifeCycleBaseComponent implements OnChanges, OnInit, OnDestroy, AfterContentInit {
+export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy, AfterContentInit {
   maximumWindowStyle: any;
 
   dummyWidth: string;
@@ -66,9 +70,7 @@ export class AmexioWindowPaneComponent extends LifeCycleBaseComponent implements
 
   themeCss: any;
 
-  transitionOptions = '400ms cubic-bezier(0.86, 0, 0.07, 1)';
-
-  amexioComponentId = 'amexio-window';
+  amexioComponentId = 'amexio-window' + Math.floor(Math.random() * 1000 + 999);
   /*
    Properties
    name : vertical-position
@@ -159,6 +161,7 @@ export class AmexioWindowPaneComponent extends LifeCycleBaseComponent implements
    description : User can maximize the window to full screen.
    */
   @Input() maximize = false;
+
   /*
   Properties
   name : minimize
@@ -168,7 +171,6 @@ export class AmexioWindowPaneComponent extends LifeCycleBaseComponent implements
   description : User can maximize the window to full screen.
   */
   @Input() minimize = false;
-
   /*
    Properties
    name : closable
@@ -225,6 +227,7 @@ export class AmexioWindowPaneComponent extends LifeCycleBaseComponent implements
   @Output() nodeRightClick: any = new EventEmitter<any>();
 
   @Output() rightClick: any = new EventEmitter<any>();
+  componentRef: any;
 
   @ContentChildren(AmexioHeaderComponent) amexioHeader: QueryList<AmexioHeaderComponent>;
   @ContentChildren(AmexioFooterComponent) amexioFooter: QueryList<AmexioFooterComponent>;
@@ -237,13 +240,14 @@ export class AmexioWindowPaneComponent extends LifeCycleBaseComponent implements
   globalListenFunc: () => void;
   globalClickListenFunc: () => void;
   globalDragListenFunc: () => void;
-  constructor(private renderer: Renderer2) {
-    super();
+  constructor(private appRef: ApplicationRef, private componentFactoryResolver: ComponentFactoryResolver, private injector: Injector,
+              private renderer: Renderer2, private _miniService: MinimizeService) {
     this.x = 0;
     this.y = 0;
     this.px = 0;
     this.py = 0;
     this.draggingWindow = false;
+
   }
   onCloseClick() {
     if (this.closable) {
@@ -258,15 +262,9 @@ export class AmexioWindowPaneComponent extends LifeCycleBaseComponent implements
     }
     this.minimizeFlag = false;
   }
-  onMinimizeClick(event: any) {
-    this.minimizeFlag = true;
-    this.show = !this.show;
-    this.minimizeBtnClick();
-  }
-  minimizeBtnClick() {
-    this.show = !this.show;
-  }
+
   ngOnInit() {
+    this.appendComponentToBody(MinimizeWindowComponent);
     this.setVerticlePosition();
     this.setHorizontalPosition();
     if (this.maximize) {
@@ -280,6 +278,33 @@ export class AmexioWindowPaneComponent extends LifeCycleBaseComponent implements
     this.globalDragListenFunc = this.renderer.listen('document', 'mouseup', (e: any) => {
       this.draggingWindow = false;
     });
+  }
+
+  appendComponentToBody(component: any) {
+    // 1. Create a component reference from the component;
+    this.componentRef = this.componentFactoryResolver
+      .resolveComponentFactory(MinimizeWindowComponent)
+      .create(this.injector);
+
+    // 2. Attach component to the appRef so that it's inside the ng component tree
+    this.appRef.attachView(this.componentRef.hostView);
+
+    // 3. Get DOM element from component
+    const domElem = (this.componentRef.hostView as EmbeddedViewRef<any>)
+      .rootNodes[0] as HTMLElement;
+
+    const element1 = document.getElementById('minimizeId');
+    if (element1) {
+      element1.parentNode.removeChild(element1);
+    }
+    // 4. Append DOM element to the body
+    domElem.setAttribute('id', 'minimizeId');
+    document.body.appendChild(domElem);
+    // 5. Wait some time and remove it from the component tree and from the DOM
+    // setTimeout(() => {
+    //     this.appRef.detachView(componentRef.hostView);
+    //     componentRef.destroy();
+    // }, 3000);
   }
 
   setMaximizeClass(isFullWindow: boolean) {
@@ -341,7 +366,7 @@ export class AmexioWindowPaneComponent extends LifeCycleBaseComponent implements
 
   /* ASSIGN PROPERTIES TO FOOTER AND HEADER*/
 
-  ngAfterContentInit(): void {
+  ngAfterContentInit() {
     if (this.amexioFooter && this.footer) {
       this.amexioFooter.toArray().forEach((footer: any) => {
         footer.footer = this.footer;
@@ -352,9 +377,11 @@ export class AmexioWindowPaneComponent extends LifeCycleBaseComponent implements
       if (this.minimize) {
         this.amexioHeader.toArray()[0].minimize = this.minimize;
         this.amexioHeader.toArray()[0].minimizeWindow.subscribe((event: any) => {
-
           this.textName = event.textName;
-          this.onMinimizeClick(event);
+          this._miniService.onMinimizeClick(this);
+        });
+        this.amexioHeader.toArray()[0].closeDataEmit.subscribe((event: any) => {
+          this._miniService.onCloseClick(this);
         });
       }
       this.amexioHeader.toArray()[0].closeable = this.closable;

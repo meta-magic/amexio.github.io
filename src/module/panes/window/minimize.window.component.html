@@ -1,0 +1,7 @@
+<div   style="display:block;position: fixed;z-index: 999; bottom: 0px;">
+<ng-container *ngIf="minimizeButton">
+        <amexio-button *ngFor="let item of localData" [label]="item.textName" [type]="'theme-color'"  [tooltip]="item.textName"
+        (onClick)="minimizeBtnClick(item)">
+    </amexio-button>
+    </ng-container>
+</div>

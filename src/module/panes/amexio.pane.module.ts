@@ -14,22 +14,23 @@ import { AmexioTemplateDirective } from './carousel/carousel.template.directive'
 import { AmexioTemplateWrapperDirective } from './carousel/carousel.wrapper.template.directive';
 import { AmexiodialoguePaneComponent } from './dialogue/dialogue.pane.component';
 import { AmexioFieldSetComponent } from './fieldset/fieldset.component';
-import {AmexioFloatingPanelComponent} from './floatingpanel/floatingpanel.component';
+import { AmexioFloatingPanelComponent } from './floatingpanel/floatingpanel.component';
 import { AmexioFormActionComponent } from './form/form.action.component';
 import { AmexioFormBodyComponent } from './form/form.body.component';
 import { AmexioFormComponent } from './form/form.component';
 import { AmexioFormHeaderComponent } from './form/form.header.component';
 import { AmexioHeaderComponent } from './header/pane.action.header';
 import { AmexioPanelComponent } from './panel/panel.component';
-import { AmexioPanelHeaderComponent} from './panel/panel.header.component';
+import { AmexioPanelHeaderComponent } from './panel/panel.header.component';
 import { AmexioStepsComponent } from './steps/steps.component';
 import { AmexioRightVerticalTabComponent } from './tab/right-vertical-tab/right.vertical.component';
 import { AmexioTabActionComponent } from './tab/tab.action';
 import { AmexioTabComponent } from './tab/tab.component';
 import { AmexioTabPillComponent } from './tab/tab.pill.component';
 import { AmexioVerticalTabComponent } from './tab/vertical-tab/vertical.tab.component';
-import { AmexiotimelineComponent} from './timeline/amexiotimeline.component';
-import { AmexiotimelineeventComponent} from './timeline/amexiotimelineevent.component';
+import { AmexiotimelineComponent } from './timeline/amexiotimeline.component';
+import { AmexiotimelineeventComponent } from './timeline/amexiotimelineevent.component';
+import { MinimizeWindowComponent } from './window/minimize.window.component';
 import { AmexioWindowPaneComponent } from './window/window.pane.component';
 import { AmexioWindowHeaderComponent } from './window/window.pane.header.component';
 
@@ -73,6 +74,7 @@ export * from './timeline/amexiotimeline.component';
 export * from './timeline/amexiotimelineevent.component';
 export * from './window/window.pane.component';
 export * from './window/window.pane.header.component';
+export * from './window/minimize.window.component';
 export * from './overlay/overlay.component';
 export * from './form/form.group.directive';
 export * from '../services/icon/icon.service';
@@ -108,6 +110,7 @@ const PANE_COMPONENTS = [
   OverlayContainerComponent,
   PanelItemComponent,
   SlidingPanelComponent,
+  MinimizeWindowComponent,
 ];
 
 @NgModule({
@@ -120,7 +123,7 @@ const PANE_COMPONENTS = [
     AmexioBaseContextMenuModule,
     AmexioCommonModule,
   ],
-  entryComponents: [AmexioTabPillComponent],
+  entryComponents: [AmexioTabPillComponent, MinimizeWindowComponent],
   exports: PANE_COMPONENTS,
   declarations: PANE_COMPONENTS,
   providers: [CommonDataService, DeviceQueryService, IconLoaderService],
