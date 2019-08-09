@@ -24,6 +24,8 @@ import {
 import { AmexioFooterComponent } from '../action/pane.action.footer';
 import { AmexioBodyComponent } from '../body/pane.action.body';
 import { AmexioHeaderComponent } from '../header/pane.action.header';
+
+import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
 @Component({
   selector: 'amexio-window',
   templateUrl: './window.pane.component.html',
@@ -41,7 +43,7 @@ import { AmexioHeaderComponent } from '../header/pane.action.header';
     ]),
   ],
 })
-export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy, AfterContentInit {
+export class AmexioWindowPaneComponent extends LifeCycleBaseComponent implements OnChanges, OnInit, OnDestroy, AfterContentInit {
   maximumWindowStyle: any;
 
   dummyWidth: string;
@@ -236,6 +238,7 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy, 
   globalClickListenFunc: () => void;
   globalDragListenFunc: () => void;
   constructor(private renderer: Renderer2) {
+    super();
     this.x = 0;
     this.y = 0;
     this.px = 0;
@@ -353,7 +356,6 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy, 
           this.textName = event.textName;
           const array = [];
           array.push(this.textName);
-          console.log('kkkkk', array);
           this.onMinimizeClick(event);
         });
       }

@@ -5,7 +5,7 @@
  role="menu"
 (keyup)="navigateOptions($event)"
 (keyup.enter) ="showDropDownContent($event)"
-(click)="showDropDownContent($event)" class="dropdown-menu" 
+(click)="showDropDownContent($event)" class="dropdown-menu {{roundedgeclass}}" 
 [style.padding]="padding"
 [ngStyle]="{'background-color':(transparent)?'unset':'null'}">
 <span >

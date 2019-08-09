@@ -10,11 +10,14 @@ on the progress of a workflow or action with simple yet flexible progress bars
 and easy to configure.
 */
 import { Component, Input, OnInit } from '@angular/core';
+
+import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
+
 @Component({
   selector: 'amexio-progress-bar',
   templateUrl: './progress.component.html',
 })
-export class AmexioProgressBarComponent implements OnInit {
+export class AmexioProgressBarComponent extends LifeCycleBaseComponent implements OnInit {
   /*
   Properties
   name : show
@@ -102,6 +105,7 @@ export class AmexioProgressBarComponent implements OnInit {
   private strippedCss = 'stripped ';
 
   constructor() {
+    super();
   }
   ngOnInit() {
     if (this.height) {

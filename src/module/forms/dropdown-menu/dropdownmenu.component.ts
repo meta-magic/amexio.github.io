@@ -6,11 +6,14 @@ import {ViewChildren} from '@angular/core';
 import { AmexioDropDownitemsComponent } from './dropdownmenu.component.items';
 
 import { DeviceQueryService } from '../../services/device/device.query.service';
+
+import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
+
 @Component({
   selector: 'amexio-drop-down-menu',
   templateUrl: `./dropdownmenu.component.html`,
 })
-export class AmexioDropDownMenuComponent implements AfterContentInit, OnInit {
+export class AmexioDropDownMenuComponent extends LifeCycleBaseComponent implements AfterContentInit, OnInit {
   toggle: boolean;
   xposition = false;
   top: number;
@@ -97,6 +100,7 @@ export class AmexioDropDownMenuComponent implements AfterContentInit, OnInit {
   @ContentChildren(AmexioDropDownitemsComponent) dropdowns: QueryList<AmexioDropDownitemsComponent>;
   optionsCollection: AmexioDropDownitemsComponent[] = [];
   constructor(public element: ElementRef, public matchMediaService: DeviceQueryService) {
+    super();
     this.iconalign = 'left';
     this.padding = '5px 10px';
     this.componentId = 'dropdownmenu' + Math.floor(Math.random() * 1000 + 999);

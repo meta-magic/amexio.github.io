@@ -2,7 +2,7 @@
 
     <div *ngFor="let nodeObject of data">
 
-        <div   class="breadcrum-rightshift-css">
+        <div   class="breadcrum-rightshift-css {{roundedgeclass}}">
             <div class="breadcrumb-group" tabindex="1" aria-label="breadcrum">
                 <label tabindex="1" (click)="onButtonClick(nodeObject)" (keyup.enter)="onButtonClick(nodeObject)" class="label-icon-css">
                     <ng-container *ngIf="nodeObject && nodeObject.icon">

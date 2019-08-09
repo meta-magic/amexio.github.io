@@ -4,7 +4,7 @@
   <div  *ngIf="showPanel"
   [ngStyle]="style" 
   [ngClass]="{floatarrow:arrow}"
-
+  class="{{roundedgeclass}}"
   #floatingPanel  (mousedown)="onMouseDown($event, floatingPanel)"
   [style.background]="'#ffffff'"
  [style.padding]="resizable  ? '5px':'0px'"

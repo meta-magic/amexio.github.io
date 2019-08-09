@@ -1,4 +1,4 @@
-<button #button class="button" role="button" tabindex="1" [attr.aria-pressed]="ispressed" [ngStyle]="{'cursor': disabled ? 'not-allowed':'pointer','background-color':bgcolor,'color':color,'box-shadow':bgBorderColor}" ng-disabled="disabled ? true: null"
+<button #button class="button {{roundedgeclass}}" role="button" tabindex="1" [attr.aria-pressed]="ispressed" [ngStyle]="{'cursor': disabled ? 'not-allowed':'pointer','background-color':bgcolor,'color':color,'box-shadow':bgBorderColor}" ng-disabled="disabled ? true: null"
     [attr.title]="tooltip" [ngClass]="{'button-default': size=='default'
         || size ==null,
         'button-small': size=='small',

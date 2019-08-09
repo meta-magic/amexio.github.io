@@ -21,6 +21,8 @@ import {
   TemplateRef,
 } from '@angular/core';
 
+import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
+
 export enum KEY_CODE_notify {
   esc = 27,
 }
@@ -28,7 +30,7 @@ export enum KEY_CODE_notify {
 @Component({
   selector: 'amexio-notification', templateUrl: './notification.component.html',
 })
-export class AmexioNotificationComponent implements OnInit {
+export class AmexioNotificationComponent extends LifeCycleBaseComponent implements OnInit {
 
   /*
  Properties
@@ -149,6 +151,7 @@ description : Position of notification window vertically:
     }
   }
   constructor(private ref: ChangeDetectorRef) {
+    super();
   }
   ngOnInit() {
     this.componentID = Math.floor(Math.random() * 1000 + 999);

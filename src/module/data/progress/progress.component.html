@@ -1,3 +1,4 @@
+<div class="{{roundedgeclass}}">
 <div *ngIf="showProgress" class="progress" [ngStyle]="{'height':height}">
 
   <span [ngClass]="progressclass" *ngIf="infinite" style="width: 100%;" tabindex="1" role="progressbar" aria-readonly="true"
@@ -7,4 +8,5 @@
   <span tabindex="1" attr.aria-label="'progressbar {{tooltip}}'" role="progressbar" attr.aria-valuenow="{{currentvalue}}"
     aria-valuemin="0" aria-valuemax="100" [ngClass]="progressclass" *ngIf="!infinite" [ngStyle]="{'width.%' : currentvalue}">
   </span>
+</div>
 </div>

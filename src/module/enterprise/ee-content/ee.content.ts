@@ -8,9 +8,12 @@ Component Description : A simple configurable star rating component with visual 
 
 */
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+
+import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
+
 @Component({
   selector: 'amexio-ee-content', template: `
-    <div class="main-content" [ngStyle]="{'background-image':'url('+bgImgUrl+')'}" (window:resize)="onResize($event)">
+    <div class="main-content {{roundEdgeClass}}" [ngStyle]="{'background-image':'url('+bgImgUrl+')'}" (window:resize)="onResize($event)">
        <span *ngIf="closeEnable" class="close-button">
         <i class="fa fa-times fa-lg" (click)="closeDetailPage()" aria-hidden="true"></i>
       </span>
@@ -61,7 +64,7 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges
     </div>`,
 })
 
-export class ContentComponent implements OnInit, OnChanges {
+export class ContentComponent extends LifeCycleBaseComponent implements OnInit, OnChanges {
 /*
 Properties
 name : bg-image-url
@@ -275,6 +278,7 @@ description : Get close content click.
   smallScreen: boolean;
 
   constructor() {
+    super();
     this.closeEnable = false;
     this.smallScreen = false;
   }

@@ -10,11 +10,13 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { PageInfo } from '../../../models/paginator.model';
 
+import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
+
 @Component({
   selector: 'amexio-paginator', templateUrl: './paginator.component.html',
 })
 
-export class AmexioPaginatorComponent implements OnChanges, OnInit {
+export class AmexioPaginatorComponent extends LifeCycleBaseComponent implements OnChanges, OnInit {
 
   show: boolean;
 
@@ -96,7 +98,9 @@ export class AmexioPaginatorComponent implements OnChanges, OnInit {
 
   dummyRowData: any;
 
-  constructor() { }
+  constructor() {
+    super();
+   }
 
   ngOnInit() {
     if (this.size == null || this.size === '') {

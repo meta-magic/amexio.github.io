@@ -19,12 +19,15 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonDataService } from '../../services/data/common.data.service';
 import { DeviceQueryService } from '../../services/device/device.query.service';
+
+import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
+
 @Component({
   selector: 'amexio-menu',
   templateUrl: './menubar.component.html',
   providers: [CommonDataService],
 })
-export class AmexioMenuBarComponent implements OnInit {
+export class AmexioMenuBarComponent extends LifeCycleBaseComponent implements OnInit {
 
   /*
 Properties
@@ -95,6 +98,7 @@ description : Fire when menubar bar click.
   currentnode: any;
 
   constructor(public matchMediaService: DeviceQueryService, public dataService: CommonDataService) {
+    super();
     this.expand = false;
   }
 

@@ -25,10 +25,12 @@ import {
   Component, Input, OnInit,
 } from '@angular/core';
 
+import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
+
 @Component({
   selector: 'amexio-datapoints', template: `
 
-  <div class="datapoints" [ngClass]="dpClass">
+  <div class="datapoints {{roundedgeclass}}" [ngClass]="dpClass">
       <table width="100%" [style.background-color]="backgroundcolor" [style.color]="fontcolor">
         <tr *ngIf="north">
           <td [attr.colspan]="colspan">
@@ -62,7 +64,7 @@ import {
   `],
 })
 
-export class DataPointsComponent implements OnInit {
+export class DataPointsComponent extends LifeCycleBaseComponent implements OnInit {
 
   /*
 Properties
@@ -149,6 +151,7 @@ description : Set font color
   dpClass: 'datapoint';
 
   constructor() {
+    super();
     this.colspan = 1;
   }
 

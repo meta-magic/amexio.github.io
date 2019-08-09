@@ -28,6 +28,7 @@ export class AmexioBadgeComponent implements OnInit {
 
     cClass = '';
 
+    roundedgeclass: string;
     constructor() {
     }
 
@@ -35,5 +36,9 @@ export class AmexioBadgeComponent implements OnInit {
       if (!this.color && !this.background) {
         this.cClass = 'amexio-badge-color';
       }
+    }
+
+    setRoundEdge() {
+      this.roundedgeclass = 'roundEdgeCommonCss';
     }
 }

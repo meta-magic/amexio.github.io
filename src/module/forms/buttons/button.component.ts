@@ -27,6 +27,8 @@ export const COMPONENT_CLASS_MAP: any = {
   styleUrls: ['./button.component.scss'],
 })
 export class AmexioButtonComponent implements OnInit {
+  roundedgeclass: string;
+
   badgeclsname: any;
   /*
   Properties
@@ -131,7 +133,7 @@ description : Set true to show buttom block
 */
   @Input() block: boolean;
 
-    /*
+  /*
 Properties
 name : bg-color
 datatype :  string
@@ -139,7 +141,7 @@ version : 5.5.3 onwards
 default :
 description : Set the background color
 */
-@Input('bg-color') bgcolor: string;
+  @Input('bg-color') bgcolor: string;
 
   /*
 Properties
@@ -149,9 +151,9 @@ version : 5.5.3 onwards
 default :
 description : Set the color
 */
-@Input('color') color: string;
+  @Input('color') color: string;
 
-bgBorderColor = '';
+  bgBorderColor = '';
 
   badgeCssClass = '';
   ispressed = false;
@@ -204,12 +206,16 @@ bgBorderColor = '';
     if (this.bgcolor && this.color) {
       this.type = 'default';
       this.bgBorderColor = 'none';
-      return  {
+      return {
         'background-color': this.bgcolor,
         'color': this.color,
       };
     }
     return null;
+  }
+
+  setRoundEdge() {
+    this.roundedgeclass = 'roundEdgeCommonCss';
   }
 
 }

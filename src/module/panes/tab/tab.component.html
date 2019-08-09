@@ -26,7 +26,7 @@
 
 
 
-            <div>
+            <div class="{{roundedgeclass}}">
                 <div  *ngFor="let tabnode of tabCollection, let index = index" class="tablink {{tabnode.amexiocolor+ ' '+tabnode.tabPillClass}}" 
                 [style.width.px]="singleTabWidth"  (contextmenu)="loadContextMenu($event,tabnode, tab)" (click)="onTabClick(tabnode, index)">
                     <div class="table1" tabindex="1" id="{{tabnode.tablk}}" attr.aria-controls="{{tabnode.tabId}}" role="tab"  [ngStyle]="{'display': tabnode.showflag ? 'none':'table-cell'}"

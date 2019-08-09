@@ -20,6 +20,8 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 import { CommonDataService } from '../../services/data/common.data.service';
 
+import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
+
 @Component({
   selector: 'amexio-breadcrumb',
   templateUrl: './breadcrumb.component.html',
@@ -38,7 +40,7 @@ import { CommonDataService } from '../../services/data/common.data.service';
     ]),
   ],
 })
-export class AmexioBreadcrumbComponent implements OnInit {
+export class AmexioBreadcrumbComponent extends LifeCycleBaseComponent implements OnInit {
 
   /*
 Properties
@@ -133,6 +135,7 @@ description : Type of HTTP call, POST,GET etc.
   buttonAngleRightCss = 'button_angle-right';
 
   constructor(public element: ElementRef, private dataService: CommonDataService) {
+    super();
     this.displaykey = 'text';
     this.childarraykey = 'children';
   }

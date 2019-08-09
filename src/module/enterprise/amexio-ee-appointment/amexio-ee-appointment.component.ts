@@ -1,14 +1,16 @@
 
-import { Component, EventEmitter, Input, Output} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AvailableSlotsModel } from './../../../models/availableslots.model';
 import { DayModel } from './../../../models/day.model';
 import { TimeUtil } from './../../../models/time.util';
+
+import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
 
 @Component({
     selector: 'amexio-ee-appointment',
     templateUrl: './amexio-ee-appointment.component.html',
 })
-export class AmexioWeekDayAvailiblityComponent {
+export class AmexioWeekDayAvailiblityComponent extends LifeCycleBaseComponent {
 
     currentDate: Date;
 
@@ -78,6 +80,7 @@ export class AmexioWeekDayAvailiblityComponent {
     @Output() onMultiSelect: EventEmitter<any> = new EventEmitter<any>();
 
     constructor() {
+        super();
     }
 
     onTimeClick(event1: any, dayModel1: DayModel, time1: any) {
@@ -112,7 +115,7 @@ export class AmexioWeekDayAvailiblityComponent {
         if (t1 <= 12) {
             if (t1 === 0) {
                 this.actualtime = 12 + ' ' + 'am';
-            }else {
+            } else {
                 this.actualtime = t1 + ' ' + 'am';
             }
         } else {
@@ -170,7 +173,7 @@ export class AmexioWeekDayAvailiblityComponent {
             const d1 = new DayModel(new Date(startDate.getTime()), true, this.availableslots);
             d1.setTimeSlots(this.setStyle(new TimeUtil().timeData(true)));
             d1['fulldate'] = this.getFullDayName(d1) + ' ' + d1.date.getDate() + ' ' + this.getFullMonthName(d1)
-            + ' ' + d1.date.getFullYear() + ' ' + d1.date.getUTCHours();
+                + ' ' + d1.date.getFullYear() + ' ' + d1.date.getUTCHours();
             this.viewData.push(d1);
             this.noOfDaysArray = [];
             for (let i = 0; i < this.noOfDays; i++) {
@@ -181,7 +184,7 @@ export class AmexioWeekDayAvailiblityComponent {
                 const d2 = new DayModel(new Date(wdate.getTime()), true, this.availableslots);
                 d2.setTimeSlots(this.setStyle(new TimeUtil().timeData(true)));
                 d2['fulldate'] = this.getFullDayName(d2) + ' ' + d2.date.getDate()
-                + ' ' + this.getFullMonthName(d2) + ' ' + d2.date.getFullYear() + ' ' + d2.date.getUTCHours();
+                    + ' ' + this.getFullMonthName(d2) + ' ' + d2.date.getFullYear() + ' ' + d2.date.getUTCHours();
                 this.viewData.push(d2);
                 startDate = wdate;
             }

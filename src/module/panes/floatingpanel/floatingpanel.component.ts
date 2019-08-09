@@ -2,11 +2,14 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Renderer2 } 
 import { OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { AmexioButtonComponent } from '../../forms/buttons/button.component';
 import {CommonDataService} from '../../services/data/common.data.service';
+
+import { LifeCycleBaseComponent } from '../../../module/base/lifecycle.base.component';
+
 @Component({
     selector: 'amexio-floating-panel',
     templateUrl: './floatingpanel.component.html',
 })
-export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterViewInit {
+export class AmexioFloatingPanelComponent extends LifeCycleBaseComponent implements OnChanges, OnInit, AfterViewInit {
 
     @Input('relative') relative = false;
 
@@ -63,6 +66,7 @@ export class AmexioFloatingPanelComponent implements OnChanges, OnInit, AfterVie
     documentMouseUPListener: any;
     documentMouseMoveListener: any;
     constructor(public commanservice: CommonDataService, private renderer: Renderer2, public element: ElementRef) {
+        super();
         this.positionMapData = [];
         this.positionMapData['hpos-right'] = { position: 'right', value: '10px' };
         this.positionMapData['hpos-left'] = { position: 'left', value: '10px' };

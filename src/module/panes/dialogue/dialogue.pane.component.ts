@@ -24,6 +24,9 @@ import {
 } from '@angular/core';
 
 import { AmexioFooterComponent } from '../action/pane.action.footer';
+
+import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
+
 @Component({
   selector: 'amexio-dialogue',
   templateUrl: './dialogue.pane.component.html',
@@ -41,7 +44,7 @@ import { AmexioFooterComponent } from '../action/pane.action.footer';
     ]),
   ],
 })
-export class AmexiodialoguePaneComponent implements AfterContentInit, OnChanges, OnInit, OnDestroy {
+export class AmexiodialoguePaneComponent extends LifeCycleBaseComponent implements AfterContentInit, OnChanges, OnInit, OnDestroy {
 
   /*
    Properties
@@ -243,6 +246,7 @@ export class AmexiodialoguePaneComponent implements AfterContentInit, OnChanges,
   globalListenFunc: () => void;
 
   constructor(private renderer: Renderer2) {
+    super();
     this.closable = true;
     this.secondaryactionlabel = 'Cancel';
     this.primaryactionlabel = 'Ok';

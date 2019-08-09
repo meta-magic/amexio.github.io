@@ -113,6 +113,8 @@ export class AmexioBoxComponent implements OnInit {
   componentId: any;
   constructor() { }
   close = true;
+  roundedgeclass: string;
+
   ngOnInit() {
     this.componentId = +Math.floor(Math.random() * 90000) + 10000 + 'box';
     if (this.borderColor == null) {
@@ -132,5 +134,9 @@ export class AmexioBoxComponent implements OnInit {
     if (themeClass) {
       this.themeCss = themeClass;
     }
+  }
+
+  setRoundEdge() {
+    this.roundedgeclass = 'roundEdgeCommonCss';
   }
 }

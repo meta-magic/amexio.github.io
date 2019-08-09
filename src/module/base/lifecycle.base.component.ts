@@ -23,7 +23,7 @@ export class LifeCycleBaseComponent implements OnDestroy, OnInit, AfterViewInit 
     @Output() initiated: any = new EventEmitter<any>();
     @Output() ready: any = new EventEmitter<any>();
     @Output() destroy: any = new EventEmitter<any>();
-
+    roundedgeclass: string;
     ngOnInit() {
         if (this.enableLifeCycleEvents === 'all' || this.enableLifeCycleEvents === 'init') {
             this.lifeCycleInit();
@@ -48,5 +48,9 @@ export class LifeCycleBaseComponent implements OnDestroy, OnInit, AfterViewInit 
     }
     lifeCycleDestroy() {
         this.destroy.emit();
+    }
+
+    setRoundEdge() {
+      this.roundedgeclass = 'roundEdgeCommonCss';
     }
 }

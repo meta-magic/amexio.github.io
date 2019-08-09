@@ -20,11 +20,13 @@ import { DeviceQueryService } from '../../services/device/device.query.service';
 import { AmexiotimelineeventComponent } from './amexiotimelineevent.component';
 import { AmexioTimeLineModel } from './amexiotimelinevent.model';
 
+import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
+
 @Component({
   selector: 'amexio-timeline',
   templateUrl: './amexiotimeline.component.html',
 })
-export class AmexiotimelineComponent implements OnInit, AfterContentInit {
+export class AmexiotimelineComponent extends LifeCycleBaseComponent implements OnInit, AfterContentInit {
 
   @ContentChildren(AmexiotimelineeventComponent) querylist: QueryList<AmexiotimelineeventComponent>;
 
@@ -37,6 +39,7 @@ export class AmexiotimelineComponent implements OnInit, AfterContentInit {
   timelineModel: AmexioTimeLineModel;
 
   constructor(public matchMediaService: DeviceQueryService) {
+    super();
     const that = this;
 
     this.matchMediaService.OnPhone((mediaQueryList: MediaQueryList) => {

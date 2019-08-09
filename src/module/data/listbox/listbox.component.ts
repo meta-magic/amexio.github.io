@@ -15,10 +15,12 @@ import {
 } from '@angular/core';
 import { CommonDataService } from '../../services/data/common.data.service';
 
+import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
+
 @Component({
   selector: 'amexio-listbox', templateUrl: './listbox.component.html',
 })
-export class AmexioListBoxComponent implements AfterViewInit, OnInit, OnDestroy {
+export class AmexioListBoxComponent extends LifeCycleBaseComponent implements AfterViewInit, OnInit, OnDestroy {
 
   private componentLoaded: boolean;
   contextMenuStyle: any;
@@ -242,6 +244,7 @@ description : Context Menu provides the list of menus on right click.
   tempData: any[];
 
   constructor(public dataService: CommonDataService, private renderer: Renderer2) {
+    super();
     this.filter = false;
     this.enablecheckbox = false;
     this.selectedData = [];

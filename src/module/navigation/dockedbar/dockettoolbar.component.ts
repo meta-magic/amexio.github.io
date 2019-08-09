@@ -16,8 +16,10 @@
 * Created by Ketan Gote on 8/21/17.
 */
 
-import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from '@angular/core';
-import {DockbarComponent} from './dockbaritem';
+import { AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList } from '@angular/core';
+import { DockbarComponent } from './dockbaritem';
+
+import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
 
 @Component({
   selector: 'amexio-dockbar', template: `
@@ -48,14 +50,14 @@ import {DockbarComponent} from './dockbaritem';
         </button>
       </ng-container>
     </div>
-    <div class="dockbar-content" [style.min-height]="height">
+    <div class="dockbar-content {{roundedgeclass}}" [style.min-height]="height">
       <ng-content></ng-content>
     </div>
 
   `,
 
 })
-export class DockedBarToolComponent implements AfterContentInit, OnInit {
+export class DockedBarToolComponent extends LifeCycleBaseComponent implements AfterContentInit, OnInit {
 
   @ContentChildren(DockbarComponent) dockbars: QueryList<DockbarComponent>;
 
@@ -72,7 +74,7 @@ description : Height of dockbar.
   @Input() height: string;
 
   constructor() {
-
+    super();
   }
 
   // on docker bar click event

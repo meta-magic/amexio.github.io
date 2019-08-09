@@ -17,6 +17,7 @@
 */
 import { animate, state, style, transition, trigger} from '@angular/animations';
 import { Component, Input, OnInit } from '@angular/core';
+import { LifeCycleBaseComponent } from '../../../module/base/lifecycle.base.component';
 
 @Component({
   selector: 'amexio-fieldset',
@@ -34,7 +35,7 @@ import { Component, Input, OnInit } from '@angular/core';
     ]),
   ],
 })
-export class AmexioFieldSetComponent implements OnInit {
+export class AmexioFieldSetComponent extends LifeCycleBaseComponent implements OnInit {
 
   /*
 Properties
@@ -59,6 +60,7 @@ description : Title for fieldset.
   isActive: boolean;
 
   constructor() {
+    super();
   }
 
   ngOnInit() {

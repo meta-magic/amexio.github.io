@@ -8,7 +8,7 @@
                     <a (click)="onClick(node)" (mouseover)="onMouseOver($event, node)">
                         <amexio-c-icon *ngIf="node.icon" [customclass]="node.icon"></amexio-c-icon>&nbsp;&nbsp;{{node.text}}
                     </a>
-                     <span *ngIf="(node.children && node.children[0].children)">
+                     <span *ngIf="(node.children && node.children[0].children)" class="{{roundedgeclass}}">
                         <div *ngIf="(node.children && node.children.length>0)" class="menu-content" [ngClass]="{'menu-content-display':node.expand,'menu-content-hide':!node.expandflag,
                   ' menu-content-left': (node.children && node.children.length>3),'menu-right':xposition}">
                             <ul class="menu-content-cols">

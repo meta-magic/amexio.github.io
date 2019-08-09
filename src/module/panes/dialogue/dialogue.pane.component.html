@@ -2,7 +2,7 @@
     <!-- Generate BG shade for below modal -->
 </div>
 
-<div class="dialogue-sm" [@animation]="{value: 'visible', params: {transitionParams: transitionOptions}}" *ngIf="show">
+<div class="dialogue-sm {{roundedgeclass}}" [@animation]="{value: 'visible', params: {transitionParams: transitionOptions}}" *ngIf="show">
     <div role="dialog" attr.aria-labelledby="componentId" class="dialogue-content">
         <header class="{{themeCss}}" [ngClass]="{'dialogue-material-design':materialDesign ,'dialogue-header':!materialDesign}">
             <div id="{{componentId}}" tabindex="1" class="dialogue-table">

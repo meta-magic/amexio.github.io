@@ -1,4 +1,4 @@
-<div class="notification-content" [ngClass]="positionclass">
+<div class="notification-content {{roundedgeclass}}" [ngClass]="positionclass">
 
     <ng-container *ngIf="!notificationTemplate">
         <div id="{{componentID}}" role="alert" [attr.aria-label]="'notification is'+ messageData" class="notification" *ngFor="let msg of messageData" [style.color]="foregroundColor" [style.background-color]="backgroundColor">

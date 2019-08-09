@@ -1,4 +1,4 @@
-<fieldset>
+<fieldset class="{{roundedgeclass}}">
     <legend tabindex="1" (keyup.enter)="onLegendClick()" (keyup.space)="onLegendClick()" role="heading" aria-expanded=" true"
         *ngIf="(title && title.length>0) || collapsible " class="collapsible-legend" (click)="onLegendClick()">
         <ng-container *ngIf="!collapsible">
