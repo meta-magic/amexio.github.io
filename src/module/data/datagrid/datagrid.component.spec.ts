@@ -11,7 +11,7 @@ import {DisplayFieldComponent} from './../../base/display-field/display-field.co
 import { AmexioContextMenuComponent } from './../../base/base.contextmenu.component';
 import { AmexioPaginatorComponent } from './../paginator/paginator.component';
 
-fdescribe('amexio-datagrid', () => {
+describe('amexio-datagrid', () => {
     let comp: AmexioDatagridComponent;
     let fixture: ComponentFixture<AmexioDatagridComponent>;
 
