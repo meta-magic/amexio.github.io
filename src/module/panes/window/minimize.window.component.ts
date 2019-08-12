@@ -17,10 +17,8 @@ export class MinimizeWindowComponent implements OnInit {
 
     ngOnInit() {
         this._minimizeService1.currentMessage.subscribe((shareData: any[]) => {
-            if (shareData) {
                 this.localData = shareData;
                 this.minimizeButton = true;
-            }
         });
     }
     minimizeBtnClick(data: any) {

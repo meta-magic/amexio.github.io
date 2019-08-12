@@ -27,7 +27,7 @@ describe('amexio-minimize-window', () => {
     });
 
 
-    it('should trigger ngOnInit with detectChanges if condition', () => {
+    it('should trigger ngOnInit with detectChanges', () => {
         comp.minimizeButton = true;
         comp.ngOnInit();
         service.currentMessage.subscribe((element: any) => {
@@ -38,14 +38,7 @@ describe('amexio-minimize-window', () => {
         })
 
     });
-    it('should trigger ngOnInit with detectChanges else condition', () => {
-        comp.ngOnInit();
-        service.currentMessage.subscribe((element: any) => {
-            element = [];
-            expect(element).toEqual([]);
-        })
-
-    });
+  
     it('check variables method ', () => {
         comp.localData = [];
         comp.minimizeButton = false;
