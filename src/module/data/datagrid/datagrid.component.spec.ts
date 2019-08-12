@@ -7,14 +7,13 @@ import { AmexioGridColumnComponent } from './data.grid.column';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { DataGridFilterComponent } from './datagrid.filter.component';
 import { CommonIconComponent } from './../../base/components/common.icon.component';
-import {DisplayFieldComponent} from './../../base/display-field/display-field.component';
+import { DisplayFieldComponent } from './../../base/display-field/display-field.component';
 import { AmexioContextMenuComponent } from './../../base/base.contextmenu.component';
 import { AmexioPaginatorComponent } from './../paginator/paginator.component';
 
-describe('amexio-datagrid', () => {
+fdescribe('amexio-datagrid', () => {
     let comp: AmexioDatagridComponent;
     let fixture: ComponentFixture<AmexioDatagridComponent>;
-
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule, HttpClientModule],
@@ -31,16 +30,16 @@ describe('amexio-datagrid', () => {
         comp.checkBoxActive = 'checkbox active';
     });
 
-    it('selectRecord Check', () => {       
+    it('selectRecord Check', () => {
         comp.selectAllRecord();
         comp.selectAll = false;
-       expect(comp.selectAll).toEqual(false);
-       comp.selectAll = true;
-       expect(comp.selectAll).toEqual(true);
-       for (const vr of comp.viewRows) {
-        vr.checkBoxSelectClass = comp.checkBoxActive;
-        comp.selectedRows.push(vr);
-       }
+        expect(comp.selectAll).toEqual(false);
+        comp.selectAll = true;
+        expect(comp.selectAll).toEqual(true);
+        for (const vr of comp.viewRows) {
+            vr.checkBoxSelectClass = comp.checkBoxActive;
+            comp.selectedRows.push(vr);
+        }
     })
 
     it('selectRow Else Check', () => {
@@ -63,9 +62,11 @@ describe('amexio-datagrid', () => {
 
     it('setSelectedRow If Check', () => {
         let rowData: any;
-        let event = { classList: {
-            value:'checkbox active'
-        }};
+        let event = {
+            classList: {
+                value: 'checkbox active'
+            }
+        };
         comp.setSelectedRow(rowData, event);
         expect(event.classList.value).toEqual(comp.checkDefaultIcon);
         comp.selectedRows.push(rowData);
@@ -73,15 +74,63 @@ describe('amexio-datagrid', () => {
     })
 
     it('setSelectedRow Else Check', () => {
-        let rowData: {countryName: "Myanmar", countryCode1: "MM", countryCode2: "MMR", countryFlag: "MM.png", capital: ""}
-        let event = { classList: {
-            value:'checkbox default'
-        }};
+        let rowData: { countryName: "Myanmar", countryCode1: "MM", countryCode2: "MMR", countryFlag: "MM.png", capital: "" }
+        let event = {
+            classList: {
+                value: 'checkbox default'
+            }
+        };
         comp.setSelectedRow(rowData, event);
         expect(event.classList.value).not.toEqual(comp.checkDefaultIcon);
         const indexOf = comp.selectedRows.indexOf(rowData);
         comp.selectedRows.splice(indexOf, 1);
         event.classList.value = comp.checkDefaultIcon;
 
+    })
+
+    it('setSelectedFlag If Check', () => {
+        let viewRows1 = [
+            { personName: "Jaydeep Saxena", personAge: "35", designation: "Developer" },
+            { personName: "Shweta Kulkarni", personAge: "24", designation: "Jr. Developer" },
+            { personName: "Karan Mathur", personAge: "35", designation: "Developer" },
+            { personName: "Krishna Sethi", personAge: "32", designation: "Software Tester" }
+        ];
+        comp.setSelectedFlag(viewRows1);
+        viewRows1 = [
+            { personName: "Jaydeep Saxena", personAge: "35", designation: "Developer" },
+            { personName: "Shweta Kulkarni", personAge: "24", designation: "Jr. Developer" },
+            { personName: "Karan Mathur", personAge: "35", designation: "Developer" },
+            { personName: "Krishna Sethi", personAge: "32", designation: "Software Tester" }
+        ];
+        viewRows1.forEach((row: any) => {
+            expect(row.hasOwnProperty('isSelected')).toEqual(false);
+            row['isSelected'] = false;
+            row['checkBoxSelectClass'] = comp.checkDefaultIcon;
+        })
+
+    })
+
+    it('setSelectedFlag ElseIf check', () => {
+        comp.enablecheckbox = true;
+        let viewRows2 = [
+            { personName: "Jaydeep Saxena", personAge: "35", designation: "Developer", isSelected: true },
+            { personName: "Shweta Kulkarni", personAge: "24", designation: "Jr. Developer", isSelected: true },
+            { personName: "Karan Malohtra", personAge: "35", designation: "Developer", isSelected: true },
+            { personName: "Krishna Sethi", personAge: "27", designation: "Software Eng" , isSelected: true }
+        ];
+        comp.setSelectedFlag(viewRows2);
+        viewRows2 = [
+            { personName: "Jaydeep Saxena", personAge: "35", designation: "Developer", isSelected: true },
+            { personName: "Shweta Kulkarni", personAge: "24", designation: "Jr. Developer", isSelected: true },
+            { personName: "Karan Malohtra", personAge: "35", designation: "Developer", isSelected: true },
+            { personName: "Krishna Sethi", personAge: "27", designation: "Software Eng" , isSelected: true }
+        ];
+        viewRows2.forEach((row: any) => {
+            expect(row.hasOwnProperty('isSelected')).toEqual(true);
+            expect(row.isSelected).toEqual(true);
+            expect(comp.enablecheckbox).toEqual(true);
+            row.isSelected = false;
+            row['checkBoxSelectClass'] = comp.checkBoxActive;
+        })
     })
 });
