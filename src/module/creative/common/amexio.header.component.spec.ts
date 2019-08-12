@@ -52,6 +52,28 @@ describe('amexio-header-ce', () => {
         comp.textName = comp.content.nativeElement.innerText;
     });
 
+    it('sizeChange method check true toggle', () => {
 
+        comp.sizeChange();
+        comp.isFullWindowCe = false;
+        expect(comp.isFullWindowCe).toEqual(false);
+        comp.isFullWindowCe = true;
+        comp.maximizeBehaiourCe.next(comp.isFullWindowCe);
+    });
+    it('sizeChange method check false toggle', () => {
+        comp.sizeChange();
+        comp.isFullWindowCe = true;
+        expect(comp.isFullWindowCe).toEqual(true);
+        comp.isFullWindowCe = false;
+        comp.maximizeBehaiourCe.next(comp.isFullWindowCe);
+    });
+    it('setMaximizeDataCE call', () => {
+        let maximize = true;
+        let isFullWindow = true;
+        comp.setMaximizeDataCE(maximize, isFullWindow);
+        comp.maximizeCe = maximize;
+        comp.isFullWindowCe = isFullWindow;
+        comp.maximizeBehaiourCe.next(comp.isFullWindowCe);
+    });
 });
 
