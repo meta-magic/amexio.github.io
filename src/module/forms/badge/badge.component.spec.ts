@@ -19,4 +19,9 @@ describe('amexio-badge', () => {
     it('on cClass Variable check', () => {
         expect(comp.cClass).toEqual('');
     })
+
+    it('check setRoundEdge method', () => {
+        comp.setRoundEdge();
+        comp.roundedgeclass = 'roundEdgeCommonCss';
+      });
 });
