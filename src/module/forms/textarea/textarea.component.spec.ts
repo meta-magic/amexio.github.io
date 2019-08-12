@@ -63,7 +63,7 @@ describe('TextArea ', () => {
   it('on focus()', () => {
     comp.showToolTip = true;
     let flag = true;
-    comp.onFocusEvent();
+    comp.onFocusEvent(event);
     expect(comp.showToolTip).toEqual(true);
   });
 

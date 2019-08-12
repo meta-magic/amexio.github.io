@@ -95,7 +95,7 @@ describe('amexio-email-input', () => {
   it('onfocus method check boolean value  showtooltip is true', () => {
     comp.showToolTip = true;
     comp.value = 'kedar@xyz.in';
-    comp.onFocus();
+    comp.onFocus(event);
     expect((<any>comp).showToolTip).toEqual(true);
     comp.focus.subscribe((g: any) => {
       expect(comp.focus).toEqual(g);
@@ -106,7 +106,7 @@ describe('amexio-email-input', () => {
   // on onInput()
   it('onInput method check boolean value  showtooltip is true', () => {
     comp.isValid = comp.isFieldValid();
-    comp.onInput();
+    comp.onInput(event);
     comp.input.subscribe((g: any) => {
       expect(comp.input).toEqual(g);
     });
@@ -122,7 +122,7 @@ describe('amexio-email-input', () => {
 
   // on onChangeEv()
   it('check onchnage method for emit data ', () => {
-    comp.onChangeEv();
+    comp.onChangeEv(event);
     comp.change.subscribe((g: any) => {
       expect(comp.value).toEqual(g);
     });

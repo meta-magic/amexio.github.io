@@ -72,7 +72,7 @@ describe('NUMBER INPUT', () => {
   it('on focus()', () => {
     //comp.showToolTip=true;
     let flag = true;
-    comp.onFocus();
+    comp.onFocus(event);
     expect(comp.showToolTip).toEqual(flag);
   })
 
