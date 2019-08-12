@@ -111,4 +111,8 @@ describe('amexio-button', () => {
       expect(comp.disabled).toEqual(comp.disabled);
     });
 
+    it('check setRoundEdge method', () => {
+      comp.setRoundEdge();
+      comp.roundedgeclass = 'roundEdgeCommonCss';
+    });
 });
