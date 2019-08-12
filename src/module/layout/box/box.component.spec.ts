@@ -19,7 +19,10 @@ describe('amexio-box' , () => {
     fixture = TestBed.createComponent(AmexioBoxComponent);
     comp = fixture.componentInstance;
   });
-
+  it('setRoundEdge() call', () => {
+    comp.setRoundEdge();
+    comp.roundedgeclass = 'roundEdgeCommonCss';
+  });
   it('close check true',() => {
 
     comp.close = true;

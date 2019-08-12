@@ -8,8 +8,8 @@ describe('amexio-minimize-window', () => {
     let comp: MinimizeWindowComponent;
     let fixture: ComponentFixture<MinimizeWindowComponent>
     let service: MinimizeService;
-    
-  
+
+
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [],
@@ -26,15 +26,23 @@ describe('amexio-minimize-window', () => {
         expect(comp).toBeTruthy();
     });
 
-    it('should trigger ngOnInit with detectChanges', () => {
+
+    it('should trigger ngOnInit with detectChanges if condition', () => {
         comp.minimizeButton = true;
         comp.ngOnInit();
         service.currentMessage.subscribe((element: any) => {
-            expect(element).toBeDefined();
             expect(element).not.toBeNull();
             comp.localData = element;
             expect(comp.minimizeButton).toEqual(true);
 
+        })
+
+    });
+    it('should trigger ngOnInit with detectChanges else condition', () => {
+        comp.ngOnInit();
+        service.currentMessage.subscribe((element: any) => {
+            element = [];
+            expect(element).toEqual([]);
         })
 
     });
