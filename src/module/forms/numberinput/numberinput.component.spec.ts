@@ -10,6 +10,7 @@ describe('NUMBER INPUT', () => {
 
   let comp: AmexioNumberInputComponent;
   let fixture: ComponentFixture<AmexioNumberInputComponent>;
+  event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
@@ -73,8 +74,22 @@ describe('NUMBER INPUT', () => {
     //comp.showToolTip=true;
     let flag = true;
     comp.onFocus(event);
+    event.stopPropagation();
     expect(comp.showToolTip).toEqual(flag);
   })
+
+  // On Change()
+  it('on change()', () => {
+    comp.onChangeEv(event);
+    event.stopPropagation();
+  })
+
+    // On Input()
+    it('on input()', () => {
+      comp.onInput(event);
+      event.stopPropagation();
+      comp.isValid = comp.isFieldValidate();
+    })
 
   //on blur()
 

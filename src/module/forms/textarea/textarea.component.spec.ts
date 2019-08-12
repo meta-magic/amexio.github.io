@@ -60,14 +60,6 @@ describe('TextArea ', () => {
     // comp.showToolTip;
     expect(comp.showToolTip).toBe(false);
   });
-  it('on focus()', () => {
-    comp.showToolTip = true;
-    let flag = true;
-    comp.onFocusEvent(event);
-    expect(comp.showToolTip).toEqual(true);
-  });
-
-
 
   it('writeValue()', () => {
     comp.writeValue(fixture);
@@ -88,4 +80,26 @@ describe('TextArea ', () => {
     comp.registerOnTouched(fn);
     expect(comp['onTouchedCallback']).toEqual(fn);
   });
+
+  //on focus()
+  it('on focus()', () => {
+    //comp.showToolTip=true;
+    let flag = true;
+    comp.onFocusEvent(event);
+    event.stopPropagation();
+    expect(comp.showToolTip).toEqual(flag);
+  })
+
+  // On Change()
+  it('on change()', () => {
+    comp.onChangeEv(event);
+    event.stopPropagation();
+  })
+
+  // On Input()
+  it('on input()', () => {
+    comp.onInputEvent(event);
+    event.stopPropagation();
+  })
+
 });

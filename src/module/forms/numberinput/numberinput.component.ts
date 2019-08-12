@@ -250,6 +250,7 @@ description : Set enable / disable popover.
   }
   // THIS METHOD USED FOR  INPUT EVENT .
   onInput(event: any) {
+    event.stopPropagation();
     this.isValid = this.isFieldValidate();
     this.input.emit(this.value);
   }

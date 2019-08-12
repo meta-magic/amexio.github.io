@@ -11,7 +11,7 @@ import { IconLoaderService } from '../../../index'
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AmexioInputHelperComponent } from '../../base/input.helper.component';
 
-describe('NUMBER INPUT', () => {
+describe('Text INPUT', () => {
 
   let comp: AmexioTextInputComponent;
   let fixture: ComponentFixture<AmexioTextInputComponent>;
@@ -80,26 +80,25 @@ describe('NUMBER INPUT', () => {
   it('otherValidation()', () => {
   });
 
-  // it('set validation flag', () => {
-  //   //comp.helpInfoMsg="test";
-  //   let flag: boolean;
-  //   comp.setValidationFlag(flag);
-  //   expect(comp.isValid).toEqual(flag);
-  // })
+  //on focus()
+  it('on focus()', () => {
+    //comp.showToolTip=true;
+    let flag = true;
+    comp.onFocusEvent(event);
+    event.stopPropagation();
+    expect(comp.showToolTip).toEqual(flag);
+  })
 
+  // On Change()
+  it('on change()', () => {
+    comp.onChangeEv(event);
+    event.stopPropagation();
+  })
 
-
-  //set maxerrormsg
-
-
-  //set minerrormsg
-  // it('set minerrormsg', () => {
-  //   let testvalue = comp._minerrormsg;
-  //   comp.minerrormsg = testvalue;
-  //   comp.helpInfoMsg="testMin value: <br/>";
-  //   let str = comp.helpInfoMsg + 'Min value: ' + comp.value+ '<br/>';
-  //   expect(comp.helpInfoMsg).toBe(str);
-  // });
-
+  // On Input()
+  it('on input()', () => {
+    comp.onInput(event);
+    event.stopPropagation();
+  })
 
 });
