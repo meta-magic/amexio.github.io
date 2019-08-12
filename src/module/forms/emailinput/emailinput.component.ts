@@ -205,17 +205,20 @@ description : Sets the error message for validation
     this.onBlur.emit(this.value);
   }
   // THIS METHOD USED FOR FOCUS EVENT .
-  onFocus() {
+  onFocus(event: any) {
+    event.stopPropagation();
     this.showToolTip = true;
     this.focus.emit(this.value);
   }
   // THIS METHOD USED FOR  INPUT EVENT .
-  onInput() {
+  onInput(event: any) {
+    event.stopPropagation();
     this.isValid = this.isFieldValid();
     this.input.emit(this.value);
   }
   // THIS METHOD USED FOR CHANGE EVENT  .
-  onChangeEv() {
+  onChangeEv(event: any) {
+    event.stopPropagation();
     this.change.emit(this.value);
   }
   // THIS METHOD IS USED FOR VALIDATION
