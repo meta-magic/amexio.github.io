@@ -1,4 +1,4 @@
-import { Component, OnInit, } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MinimizeService } from '../../panes/window/minimize-service.service';
 
 @Component({
