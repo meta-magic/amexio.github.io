@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { CeMinimizeService } from './ceMinimize-service.service';
+import { MinimizeService } from '../../panes/window/minimize-service.service';
 
 @Component({
     selector: 'ce-minimize-window',
@@ -10,15 +10,16 @@ export class CeMinimizeWindowComponent implements OnInit {
 
     arrayData: any[] = [];
     ceMiniButton = false;
-    constructor(private _ceService1: CeMinimizeService) {
+    constructor(private _ceService1: MinimizeService) {
     }
 
     ngOnInit() {
-        this._ceService1.observableMessage.subscribe((shareData: any[]) => {
+        this._ceService1.currentMessage.subscribe((shareData: any[]) => {
             this.arrayData = shareData;
             this.ceMiniButton = true;
         });
     }
+
     ceMiniBtnClick(data: any) {
         data.show = true;
         this.ceMiniButton = false;

@@ -93,7 +93,7 @@ export class AmexioCardCEHeaderComponent implements AfterViewInit, OnInit {
     this.textName = this.content.nativeElement.innerText;
   }
 
-  onMinimizebtnClick() {
+  onMinimizeClick() {
     this.closeableBehaiour.next(false);
     this.minimizeWindow.emit(this, this.textName);
   }

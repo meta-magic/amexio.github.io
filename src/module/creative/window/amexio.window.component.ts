@@ -23,7 +23,7 @@ import {
   OnInit, Output, QueryList, Renderer2, SimpleChanges,
 } from '@angular/core';
 
-import { CeMinimizeService } from './ceMinimize-service.service';
+import { MinimizeService } from '../../panes/window/minimize-service.service';
 
 import { CeMinimizeWindowComponent } from './ceMinimize.window.component';
 
@@ -126,7 +126,7 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
   globalClickListenFunc: () => void;
   globalDragListenFunc: () => void;
   transitionOptions = '400ms cubic-bezier(0.86, 0, 0.07, 1)';
-  constructor(private renderer: Renderer2, private _miniService: CeMinimizeService,
+  constructor(private renderer: Renderer2, private _miniService: MinimizeService,
               private componentFactoryResolver: ComponentFactoryResolver,
               private appRef: ApplicationRef,
               private injector: Injector) {
@@ -283,7 +283,7 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
         this.amexioHeader.toArray()[0].minimize = this.minimize;
         this.amexioHeader.toArray()[0].minimizeWindow.subscribe((event: any) => {
           this.textName = event.textName;
-          this._miniService.onMinimizebtnClick(this);
+          this._miniService.onMinimizeClick(this);
         });
         this.amexioHeader.toArray()[0].closeDataEmit.subscribe((event: any) => {
           this._miniService.onCloseClick(this);
