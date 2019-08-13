@@ -269,7 +269,7 @@ description : On field value change event
     this.eventPropagation(event);
     this.change.emit(this.value);
   }
-  eventPropagation(event: any){
+  eventPropagation(event: any) {
     event.stopPropagation();
   }
 

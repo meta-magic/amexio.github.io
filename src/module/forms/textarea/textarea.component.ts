@@ -272,7 +272,7 @@ description : Set enable / disable popover.
     this.change.emit(this.value);
   }
 
-  eventPropagation(event: any){
+  eventPropagation(event: any) {
     event.stopPropagation();
   }
 
