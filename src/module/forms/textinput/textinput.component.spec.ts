@@ -84,20 +84,20 @@ describe('Text INPUT', () => {
   it('on focus()', () => {
     //comp.showToolTip=true;
     let flag = true;
-    comp.onFocusEvent(event);
+    comp.onFocusEventText(event);
     event.stopPropagation();
     expect(comp.showToolTip).toEqual(flag);
   })
 
   // On Change()
   it('on change()', () => {
-    comp.onChangeEv(event);
+    comp.onChangeEvText(event);
     event.stopPropagation();
   })
 
   // On Input()
   it('on input()', () => {
-    comp.onInput(event);
+    comp.onInputText(event);
     event.stopPropagation();
   })
 
