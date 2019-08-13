@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ViewContainerRef, Component, DebugElement } from '@angular/core';
 import { AmexioFormsModule } from '../../module/forms/amexio.forms.module';
 import { By } from '@angular/platform-browser';
+import { notDeepEqual } from 'assert';
 
 // Simple test component that will not in the actual app
 @Component({
@@ -50,5 +51,9 @@ describe('Directive: round-edge', () => {
         dirIn.hostComponent = dirIn._viewContainerRef['_data'].componentView.component;
         dirIn.hostComponent.setRoundEdge();
       });
-   
+      it('onInit()', () => {
+        dirIn.themeStyle = 'round'
+        dirIn.ngOnInit();
+        expect(dirIn.themeStyle).not.toEqual('round-edge');
+      });
 });

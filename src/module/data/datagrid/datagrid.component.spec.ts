@@ -117,18 +117,17 @@ describe('amexio-datagrid', () => {
             row['checkBoxSelectClass'] = comp.checkBoxActive;
         })
     })
-    it('selectAllRecord Check', () => {
+    it('selectAllRecord Check if condition', () => {  
         comp.checkDefaultIcon = 'checkbox default';
-        comp.checkBoxActive = 'checkbox active';
+        comp.checkBoxActive = 'checkbox active';    
         comp.selectAllRecord();
-        comp.selectAll = false;
-        expect(comp.selectAll).toEqual(false);
-        comp.selectAll = true;
+         comp.selectAll = false;
+         comp.selectAll = !comp.selectAll;
         expect(comp.selectAll).toEqual(true);
-        for (const vr of comp.viewRows) {
-            vr.checkBoxSelectClass = comp.checkBoxActive;
-            comp.selectedRows.push(vr);
-        }
+       for (const vr of comp.viewRows) {
+        vr.checkBoxSelectClass = comp.checkBoxActive;
+        comp.selectedRows.push(vr);
+       }
     })
 
     it('selectAllRecord toggle Check', () => {
@@ -138,10 +137,11 @@ describe('amexio-datagrid', () => {
         comp.selectAll = false;
     })
     it('selectAllRecord Else Check', () => {
-        comp.checkDefaultIcon = 'checkbox default';
-        comp.checkBoxActive = 'checkbox active';
-        comp.selectAllRecord();
-        comp.selectAll = false;
+         comp.checkDefaultIcon = 'checkbox default';
+         comp.checkBoxActive = 'checkbox active';
+         comp.selectAllRecord();
+         comp.selectAll = true;
+         comp.selectAll = !comp.selectAll;
         expect(comp.selectAll).toEqual(false);
         for (const vr of comp.viewRows) {
             vr.checkBoxSelectClass = comp.checkDefaultIcon;
