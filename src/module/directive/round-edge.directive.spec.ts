@@ -44,10 +44,9 @@ describe('Directive: round-edge', () => {
         const p: HTMLElement = debugEl.querySelector('p');
     });
 
-    it('setRoundEdge()', () => {
+    it('onInit()', () => {
+        dirIn.ngOnInit();
         expect(dirIn.themeStyle).toEqual('round-edge');
-        console.log('_viewContainerRef *****************', dirIn._viewContainerRef['_data']);
-
         dirIn.hostComponent = dirIn._viewContainerRef['_data'].componentView.component;
         dirIn.hostComponent.setRoundEdge();
       });
