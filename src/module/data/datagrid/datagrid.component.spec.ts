@@ -66,13 +66,6 @@ describe('amexio-datagrid', () => {
         expect(comp.selectAll).toEqual(false);
         return comp.checkDefaultIcon;
     })
-    it('setCheckBoxSelectClass  else if Check', () => {
-        comp.setCheckBoxSelectClass();
-        comp.selectAll = false;
-        expect(comp.selectAll).toEqual(false);
-        expect(comp.selectAll).toEqual(false)
-        return comp.checkDefaultIcon;
-    })
     it('setSelectedRow If Check', () => {
         let rowData: any;
         let event = { classList: {

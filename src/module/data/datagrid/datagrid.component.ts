@@ -1026,7 +1026,7 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
   setCheckBoxSelectClass() {
     if (this.selectAll) {
       return this.checkBoxActive;
-    } else if (!this.selectAll) {
+    } else {
       return this.checkDefaultIcon;
     }
   }
