@@ -54,15 +54,15 @@ describe('amexio-datagrid', () => {
         }
     })
 
-    it('setCheckBoxSelectClass Check', () => {
-        comp.setCheckBoxSelectClass();
+    it('setCheckBoxSelectClass  if Check', () => {
         comp.selectAll = true;
+        comp.setCheckBoxSelectClass();
         expect(comp.selectAll).toEqual(true);
         return comp.checkBoxActive;
     })
     it('setCheckBoxSelectClass else Check', () => {
-        comp.setCheckBoxSelectClass();
         comp.selectAll = false;
+        comp.setCheckBoxSelectClass();
         expect(comp.selectAll).toEqual(false);
         return comp.checkDefaultIcon;
     })
