@@ -253,23 +253,23 @@ description : On field value change event
     this.onBlur.emit(this.value);
   }
   // THIS METHOD USED FOR FOCUS EVENT .
-  onFocusEvent(event: any) {
-    this.eventPropagation(event);
+  onFocusEventText(event: any) {
+    this.eventPropagationText(event);
     this.showToolTip = true;
     this.focus.emit(this.value);
   }
   // THIS METHOD USED FOR  INPUT EVENT .
-  onInput(event: any) {
-    this.eventPropagation(event);
+  onInputText(event: any) {
+    this.eventPropagationText(event);
     this.isValid = this.isFieldValid();
     this.input.emit(this.value);
   }
   // THIS METHOD USED FOR CHANGE EVENT  .
-  onChangeEv(event: any) {
-    this.eventPropagation(event);
+  onChangeEvText(event: any) {
+    this.eventPropagationText(event);
     this.change.emit(this.value);
   }
-  eventPropagation(event: any) {
+  eventPropagationText(event: any) {
     event.stopPropagation();
   }
 
