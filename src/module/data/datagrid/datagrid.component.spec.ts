@@ -121,8 +121,15 @@ describe('amexio-datagrid', () => {
         comp.checkDefaultIcon = 'checkbox default';
         comp.checkBoxActive = 'checkbox active';    
         comp.selectAllRecord();
+        comp.viewRows = [
+            { personName: "Jaydeep Saxena", personAge: "35", designation: "Developer", isSelected: true ,checkBoxSelectClass: ''},
+            { personName: "Shweta Kulkarni", personAge: "24", designation: "Jr. Developer", isSelected: true,checkBoxSelectClass: ''},
+            { personName: "Karan Malohtra", personAge: "35", designation: "Developer", isSelected: true,checkBoxSelectClass: '' },
+            { personName: "Krishna Sethi", personAge: "27", designation: "Software Eng", isSelected: true ,checkBoxSelectClass: ''}
+        ];
+        comp.checkBoxActive = 'checkbox active';   
          comp.selectAll = false;
-         comp.selectAll = !comp.selectAll;
+         comp.selectAll = !comp.selectAll;   
         expect(comp.selectAll).toEqual(true);
        for (const vr of comp.viewRows) {
         vr.checkBoxSelectClass = comp.checkBoxActive;
@@ -137,9 +144,15 @@ describe('amexio-datagrid', () => {
         comp.selectAll = false;
     })
     it('selectAllRecord Else Check', () => {
-         comp.checkDefaultIcon = 'checkbox default';
          comp.checkBoxActive = 'checkbox active';
          comp.selectAllRecord();
+         comp.viewRows = [
+            { personName: "Jaydeep Saxena", personAge: "35", designation: "Developer", isSelected: true ,checkBoxSelectClass: ''},
+            { personName: "Shweta Kulkarni", personAge: "24", designation: "Jr. Developer", isSelected: true,checkBoxSelectClass: ''},
+            { personName: "Karan Malohtra", personAge: "35", designation: "Developer", isSelected: true,checkBoxSelectClass: '' },
+            { personName: "Krishna Sethi", personAge: "27", designation: "Software Eng", isSelected: true ,checkBoxSelectClass: ''}
+        ];
+        comp.checkDefaultIcon = 'checkbox default';
          comp.selectAll = true;
          comp.selectAll = !comp.selectAll;
         expect(comp.selectAll).toEqual(false);
