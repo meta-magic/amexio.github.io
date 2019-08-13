@@ -89,9 +89,7 @@
             <div style="display: inline-flex; flex-flow: wrap;box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);">
   
                 <ng-container *ngFor="let itemdaysArray of  completeDaysArray; index as i">
-                     
-                    <!-- <span [ngStyle]="{'padding-left': ((i+1) > count) ? '28px':'0px'}"> -->
-  
+                       
   
                         <span style="position: relative;" [ngClass]="{'datetimepicker':!inlineDatepicker}">
                             <!-- datepicker starts -->
@@ -121,9 +119,7 @@
                                     </ul>
                                 </div>
   
-  
-                                <!-- <div *ngIf="!drop"> -->
-                                    <ul class="weekdays" [ngStyle]="{'display': datepicker ? 'block' : 'none'}">
+                                      <ul class="weekdays" [ngStyle]="{'display': datepicker ? 'block' : 'none'}">
                                         <li *ngFor="let dayTitle of daysTitle">{{dayTitle.text}}</li>
                                     </ul>
   
@@ -139,13 +135,11 @@
                                             </li>
                                         </ng-container>
                                     </ul>
-                                <!-- </div> -->
                             </span>
                             <!--datepicker ends  -->
   
                         </span>
   
-                    <!-- </span> -->
                  </ng-container>
             </div>
         </div>

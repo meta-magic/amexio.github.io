@@ -6,8 +6,6 @@
       <span tabindex='1' *ngIf="enablecolumnfilter ? true:false" (keyup.enter)="onEnableColumnClick($event)" class="float-right enablecolumnfilter"
         (click)="onEnableColumnClick($event)" style=" cursor: pointer;">
         &nbsp;
-        <!-- <span *ngIf="!show">&#9776;</span>
-        <span *ngIf="show">&#9747;</span> -->
       </span>
     </span>
     <span *ngIf="groupby ? true : false" class="float-right-datagridlist" tabindex="1" (keyup.enter)="showGroupCol()" (click)="groupbyIconClick()"
