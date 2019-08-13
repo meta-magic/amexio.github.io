@@ -256,20 +256,24 @@ description : Set enable / disable popover.
   }
 
   onFocusEvent(event: any) {
-    event.stopPropagation();
+    this.eventPropagation(event);
     this.showToolTip = true;
     this.focus.emit(this.value);
   }
 
   onInputEvent(event: any) {
-    event.stopPropagation();
+    this.eventPropagation(event);
     this.isValid = this.isFieldValid();
     this.input.emit(this.value);
   }
 
   onChangeEv(event: any) {
-    event.stopPropagation();
+    this.eventPropagation(event);
     this.change.emit(this.value);
+  }
+
+  eventPropagation(event: any){
+    event.stopPropagation();
   }
 
   // THIS METHOD IS USED FOR VALIDATION
