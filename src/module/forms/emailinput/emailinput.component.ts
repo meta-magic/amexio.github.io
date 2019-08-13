@@ -206,20 +206,23 @@ description : Sets the error message for validation
   }
   // THIS METHOD USED FOR FOCUS EVENT .
   onFocus(event: any) {
-    event.stopPropagation();
+    this.eventPropagation(event);
     this.showToolTip = true;
     this.focus.emit(this.value);
   }
   // THIS METHOD USED FOR  INPUT EVENT .
   onInput(event: any) {
-    event.stopPropagation();
+    this.eventPropagation(event);
     this.isValid = this.isFieldValid();
     this.input.emit(this.value);
   }
   // THIS METHOD USED FOR CHANGE EVENT  .
   onChangeEv(event: any) {
-    event.stopPropagation();
+    this.eventPropagation(event);
     this.change.emit(this.value);
+  }
+  eventPropagation(event: any) {
+    event.stopPropagation();
   }
   // THIS METHOD IS USED FOR VALIDATION
   isFieldValid(): boolean {
