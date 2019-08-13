@@ -221,7 +221,6 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy, 
   @Input('context-menu') contextmenu: any[];
 
   @Input('width') width: any = '90%';
-  minimizeFlag = false;
   textName: any;
 
   @Output() nodeRightClick: any = new EventEmitter<any>();
@@ -260,7 +259,6 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy, 
         this.y = 0;
       }
     }
-    this.minimizeFlag = false;
   }
 
   ngOnInit() {

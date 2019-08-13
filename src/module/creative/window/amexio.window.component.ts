@@ -63,7 +63,6 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
   @Input('align') align: string;
 
   cclass: string;
-  minimizeFlag = false;
 
   @Input('vertical-position') verticalposition = 'center';
 
@@ -144,15 +143,6 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
         this.y = 0;
       }
     }
-    this.minimizeFlag = false;
-  }
-  onMinimizeClick(event: any) {
-    this.minimizeFlag = true;
-    this.show = !this.show;
-    this.minimizeBtnClick();
-  }
-  minimizeBtnClick() {
-    this.show = !this.show;
   }
 
   ngOnInit() {
