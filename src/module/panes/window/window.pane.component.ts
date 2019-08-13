@@ -301,10 +301,6 @@ export class AmexioWindowPaneComponent implements OnChanges, OnInit, OnDestroy, 
     domElem.setAttribute('id', 'minimizeId');
     document.body.appendChild(domElem);
     // 5. Wait some time and remove it from the component tree and from the DOM
-    // setTimeout(() => {
-    //     this.appRef.detachView(componentRef.hostView);
-    //     componentRef.destroy();
-    // }, 3000);
   }
 
   setMaximizeClass(isFullWindow: boolean) {

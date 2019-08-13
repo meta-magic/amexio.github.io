@@ -1,14 +1,14 @@
 /*
  * Copyright [2019] [Metamagic]
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
+ * distributed under the License is distributed on an 'AS IS' BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
@@ -18,13 +18,20 @@
 
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import {
-  AfterContentInit, AfterViewInit, Component, ContentChildren, ElementRef, EventEmitter, HostListener, Input, OnChanges, OnDestroy,
-  OnInit, Output, QueryList, Renderer2, SimpleChanges, ViewChild,
+  AfterContentInit, AfterViewInit, ApplicationRef, Component, ComponentFactoryResolver, ContentChildren, ElementRef, EmbeddedViewRef,
+  EventEmitter, Injector, Input, OnChanges, OnDestroy,
+  OnInit, Output, QueryList, Renderer2, SimpleChanges,
 } from '@angular/core';
+
+import { CeMinimizeService } from './ceMinimize-service.service';
+
+import { CeMinimizeWindowComponent } from './ceMinimize.window.component';
+
 import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
 import { AmexioCardCEActionComponent } from '../common/amexio.action.component';
 import { AmexioCardCEBodyComponent } from '../common/amexio.body.component';
 import { AmexioCardCEHeaderComponent } from '../common/amexio.header.component';
+
 @Component({
   selector: 'amexio-window-ce',
   templateUrl: './amexio.window.component.html',
@@ -101,6 +108,9 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
   textName: any;
   dummyWidth: string;
 
+  componentRef: any;
+
+  amexioComponentId = 'ce-amexio-window' + Math.floor(Math.random() * 1000 + 999);
   x = 0;
 
   y = 0;
@@ -117,7 +127,10 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
   globalClickListenFunc: () => void;
   globalDragListenFunc: () => void;
   transitionOptions = '400ms cubic-bezier(0.86, 0, 0.07, 1)';
-  constructor(private renderer: Renderer2) {
+  constructor(private renderer: Renderer2, private _miniService: CeMinimizeService,
+              private componentFactoryResolver: ComponentFactoryResolver,
+              private appRef: ApplicationRef,
+              private injector: Injector) {
     super();
   }
   onCloseClick() {
@@ -143,6 +156,7 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
   }
 
   ngOnInit() {
+    this.appendComponentToBody(CeMinimizeWindowComponent);
     if (!this.color) {
       this.cclass = 'card-container-ce-color';
     }
@@ -164,6 +178,33 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
     });
     super.ngOnInit();
 
+  }
+  appendComponentToBody(component: any) {
+    // 1. Create a component reference from the component
+    this.componentRef = this.componentFactoryResolver
+      .resolveComponentFactory(CeMinimizeWindowComponent)
+      .create(this.injector);
+
+    // 2. Attach component to the appRef so that it's inside the ng component tree
+    this.appRef.attachView(this.componentRef.hostView);
+
+    // 3. Get DOM element from component
+    const domElem = (this.componentRef.hostView as EmbeddedViewRef<any>)
+      .rootNodes[0] as HTMLElement;
+
+    const element1 = document.getElementById('minimizeId');
+    if (element1) {
+      element1.parentNode.removeChild(element1);
+    }
+    // 4. Append DOM element to the body
+    domElem.setAttribute('id', 'minimizeId');
+    document.body.appendChild(domElem);
+
+    // 5. Wait some time and remove it from the component tree and from the DOM
+    // setTimeout(() => {
+    //     this.appRef.detachView(componentRef.hostView);
+    //     componentRef.destroy();
+    // }, 3000);
   }
   onWindowPress(event: MouseEvent) {
     if (this.draggable) {
@@ -252,7 +293,10 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
         this.amexioHeader.toArray()[0].minimize = this.minimize;
         this.amexioHeader.toArray()[0].minimizeWindow.subscribe((event: any) => {
           this.textName = event.textName;
-          this.onMinimizeClick(event);
+          this._miniService.onMinimizebtnClick(this);
+        });
+        this.amexioHeader.toArray()[0].closeDataEmit.subscribe((event: any) => {
+          this._miniService.onCloseClick(this);
         });
       }
       setTimeout(() => {

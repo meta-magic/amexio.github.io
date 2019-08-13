@@ -13,11 +13,3 @@
     </div>
   </div>
 </div>
-
-
-<ng-container *ngIf="minimizeFlag && !show">
-  <amexio-button [label]="textName" [type]="'theme-color'"
-    style="bottom: 0px; float:left;left: 0px; position: fixed;z-index: 9999;" [tooltip]="textName"
-    (onClick)="minimizeBtnClick($event)">
-  </amexio-button>
-</ng-container>

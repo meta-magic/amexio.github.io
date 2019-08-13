@@ -53,6 +53,8 @@ export class AmexioCardCEHeaderComponent implements AfterViewInit, OnInit {
 
   @Output() minimizeWindow: any = new EventEmitter<any>();
 
+  @Output() closeDataEmit: any = new EventEmitter<any>();
+
   cclass = '';
 
   closeable = false;
@@ -91,7 +93,7 @@ export class AmexioCardCEHeaderComponent implements AfterViewInit, OnInit {
     this.textName = this.content.nativeElement.innerText;
   }
 
-  onMinimizeClick() {
+  onMinimizebtnClick() {
     this.closeableBehaiour.next(false);
     this.minimizeWindow.emit(this, this.textName);
   }
@@ -109,6 +111,7 @@ export class AmexioCardCEHeaderComponent implements AfterViewInit, OnInit {
 
   onCloseClick() {
     this.closeableBehaiour.next(false);
+    this.closeDataEmit.emit(this);
   }
 
   setIconPosition() {

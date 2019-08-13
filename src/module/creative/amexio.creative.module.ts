@@ -22,11 +22,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AmexioHomePageComponent } from './../creative/homepage/homepage.component';
 
 import { AmexioCarouselCEComponent } from './carousel/amexio.carouselce.component';
-import {ColorPaletteComponent} from './colorpicker/colorpalette/colorpalette.component';
-import {ColorPickerComponent} from './colorpicker/colorpicker.component';
-import {ColorsliderComponent} from './colorpicker/colorslider/colorslider.component';
+import { ColorPaletteComponent } from './colorpicker/colorpalette/colorpalette.component';
+import { ColorPickerComponent } from './colorpicker/colorpicker.component';
+import { ColorsliderComponent } from './colorpicker/colorslider/colorslider.component';
 import { AmexioMenuCEComponent } from './menu/menu.component';
 import { AmexioProgressCEComponent } from './progressbar/progressce.component';
+import { CeMinimizeWindowComponent } from './window/ceMinimize.window.component';
 
 import { AmexioMediaModule } from '../media/amexio.media.module';
 
@@ -84,6 +85,7 @@ const CREATIVE_COMPONENTS = [
   AmexioHomePageNorthPanelComponent,
   AmexioHomePageWestPanelComponent,
   AmexioWindowCEComponent,
+  CeMinimizeWindowComponent,
   ColorPickerComponent,
   ColorPaletteComponent,
   ColorsliderComponent,
@@ -109,6 +111,7 @@ const CREATIVE_COMPONENTS = [
   ],
   exports: CREATIVE_COMPONENTS,
   declarations: CREATIVE_COMPONENTS,
+  entryComponents: [CeMinimizeWindowComponent],
   providers: [IconLoaderService],
 })
 export class AmexioCreativeModule {

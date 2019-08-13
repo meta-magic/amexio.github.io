@@ -1,0 +1,8 @@
+<div   style="display:block;position: fixed;z-index: 999; bottom: 0px;">
+    <ng-container *ngIf="ceMiniButton">
+            <amexio-button *ngFor="let data of arrayData"
+             [label]="data.textName" [type]="'theme-color'"  [tooltip]="data.textName"
+            (onClick)="ceMiniBtnClick(data)">
+        </amexio-button>
+        </ng-container>
+    </div>
