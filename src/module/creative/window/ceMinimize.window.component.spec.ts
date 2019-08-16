@@ -24,18 +24,6 @@ describe('amexio-minimize-ce-window', () => {
         service = TestBed.get(MinimizeService);
     });
 
-    it('should trigger ngOnInit with detectChanges', () => {
-        comp.ngOnInit();
-        comp.ceMiniButton = true;
-        service.currentMessage.subscribe((element: any) => {
-            expect(element).not.toBeNull();
-            comp.arrayData = element;
-            expect(comp.ceMiniButton).toEqual(true);
-
-        });
-
-    });
-
     it('check variables method ', () => {
         comp.arrayData = [];
         comp.ceMiniButton = false;
@@ -53,4 +41,40 @@ describe('amexio-minimize-ce-window', () => {
         expect(comp.ceMiniButton).toEqual(false);
     });
 
+    it('should trigger ngOnInit with detectChanges if condition', () => {
+        comp.ngOnInit();
+         fixture.detectChanges();
+        comp.ceMiniButton = true;
+        service.currentMessage.subscribe((element: any) => {
+            element = [
+                 {
+                    textName: " KEDAR ",
+                    top: "100px",
+                    transitionOptions: "400ms cubic-bezier(0.86, 0, 0.07, 1)",
+                    verticalposition: "flex-start",
+                    width: "400px",
+                 }
+             ]
+            fixture.detectChanges();
+            expect(element).not.toBeNull();
+            expect(element.length).toBeGreaterThan(0);
+            comp.arrayData = element;
+            expect(comp.ceMiniButton).toEqual(true);
+        });
+    });
+    it('should trigger ngOnInit with detectChanges else condition', () => {
+        
+        comp.ngOnInit();
+        fixture.detectChanges();
+        comp.ceMiniButton = false;
+        service.currentMessage.subscribe((element: any) => {
+            element = [
+            ]
+            expect(element).toEqual([]);
+            expect(element.length).toBe(0);
+            comp.arrayData = element;
+            expect(comp.ceMiniButton).toEqual(false);
+        });
+
+    });
 });
