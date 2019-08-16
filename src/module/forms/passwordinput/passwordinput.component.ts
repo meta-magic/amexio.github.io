@@ -17,6 +17,7 @@
 
 import { Component, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
+import {BaseInputEventComponent} from '../../base/base.inputevent.component';
 import { ValueAccessorBase } from '../../base/value-accessor';
 
 @Component({
@@ -28,7 +29,7 @@ import { ValueAccessorBase } from '../../base/value-accessor';
     provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioPasswordComponent), multi: true,
   }],
 })
-export class AmexioPasswordComponent extends ValueAccessorBase<string> implements OnInit, Validators {
+export class AmexioPasswordComponent extends BaseInputEventComponent implements OnInit, Validators {
   /*
   Properties
   name : field-label
@@ -198,34 +199,6 @@ description : Set enable / disable popover.
   default :
   description : On blur event
   */
-  @Output() onBlur: any = new EventEmitter<any>();
-  /*
-Events
-name : input
-datatype : any
-version : none
-default :
-description : 	On input event field.
-*/
-  @Output() input: any = new EventEmitter<any>();
-  /*
-Events
-name : focus
-datatype : any
-version : none
-default :
-description : On focus event field.
-*/
-  @Output() focus: any = new EventEmitter<any>();
-  /*
-Events
-name : change
-datatype : any
-version : none
-default :
-description : On field value change event
-*/
-  @Output() change: any = new EventEmitter<any>();
   @ViewChild(NgModel) model: NgModel;
   @Input('name') name: string;
   componentId: any;
@@ -233,40 +206,10 @@ description : On field value change event
     super();
     this.showToolTip = false;
   }
-
-  // THIS METHOD USED FOR BLUR EVENT.
-  onblur() {
-    this.showToolTip = false;
-    this.onBlur.emit(this.value);
-  }
-  // THIS METHOD USED FOR FOCUS EVENT .
-  onFocus(event: any) {
-    event.stopPropagation();
-    this.showToolTip = true;
-    this.focus.emit(this.value);
-  }
-  // THIS METHOD USED FOR  INPUT EVENT .
-  onInput(event: any) {
-    event.stopPropagation();
-    this.isValid = this.isFieldValid();
-    this.input.emit(this.value);
-  }
-  // THIS METHOD USED FOR CHANGE EVENT  .
-  onChangeEv(event: any) {
-    event.stopPropagation();
-    this.change.emit(this.value);
-  }
-
   ngOnInit() {
     this.componentId = this.createCompId('passwordinput', this.name);
     this.isValid = this.isFieldValid();
     this.name = this.generateName(this.name, this.fieldlabel, 'passwordinput');
-  }
-
-  // THIS METHOD IS USED FOR VALIDATION
-  isFieldValid(): boolean {
-    return (!this.allowblank && (this.value && ((this.value.length >= this.minlength) && this.value.length > 0)) ||
-      (!this.minlength && this.value && this.value.length > 0)) || this.allowblank;
   }
   public validate(c: FormControl) {
     return this.isFieldValid() ? null : {

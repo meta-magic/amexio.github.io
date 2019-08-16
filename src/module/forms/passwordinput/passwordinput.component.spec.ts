@@ -47,29 +47,5 @@ describe('Password INPUT', () => {
     comp.registerOnTouched(fn);
     expect(comp['onTouchedCallback']).toEqual(fn);
   })
-
-
-  //on focus()
-  it('on focus()', () => {
-    //comp.showToolTip=true;
-    let flag = true;
-    comp.onFocus(event);
-    event.stopPropagation();
-    expect(comp.showToolTip).toEqual(flag);
-  })
-
-  // On Change()
-  it('on change()', () => {
-    comp.onChangeEv(event);
-    event.stopPropagation();
-  })
-
-    // On Input()
-    it('on input()', () => {
-      comp.onInput(event);
-      event.stopPropagation();
-    })
-
-
 });
 

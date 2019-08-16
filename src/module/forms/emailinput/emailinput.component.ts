@@ -158,34 +158,6 @@ description : Sets the error message for validation
    default :
    description : On blur event
    */
-  @Output() onBlur: any = new EventEmitter<any>();
-  /*
-   Events
-   name : input
-   datatype : any
-   version : none
-   default :
-   description : 	On input event field.
-   */
-  @Output() input: any = new EventEmitter<any>();
-  /*
-   Events
-   name : focus
-   datatype : any
-   version : none
-   default :
-   description : On focus event field.
-   */
-  @Output() focus: any = new EventEmitter<any>();
-  /*
-   Events
-   name : change
-   datatype : any
-   version : none
-   default :
-   description : On field value change event
-   */
-  @Output() change: any = new EventEmitter<any>();
   componentId: any;
   isValid: boolean;
   @Input('name') name: string;
