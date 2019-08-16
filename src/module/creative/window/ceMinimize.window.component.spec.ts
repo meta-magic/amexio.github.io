@@ -43,18 +43,18 @@ describe('amexio-minimize-ce-window', () => {
 
     it('should trigger ngOnInit with detectChanges if condition', () => {
         comp.ngOnInit();
-         fixture.detectChanges();
+        fixture.detectChanges();
         comp.ceMiniButton = true;
         service.currentMessage.subscribe((element: any) => {
             element = [
-                 {
+                {
                     textName: " KEDAR ",
                     top: "100px",
                     transitionOptions: "400ms cubic-bezier(0.86, 0, 0.07, 1)",
                     verticalposition: "flex-start",
                     width: "400px",
-                 }
-             ]
+                }
+            ]
             fixture.detectChanges();
             expect(element).not.toBeNull();
             expect(element.length).toBeGreaterThan(0);
@@ -62,8 +62,9 @@ describe('amexio-minimize-ce-window', () => {
             expect(comp.ceMiniButton).toEqual(true);
         });
     });
+
     it('should trigger ngOnInit with detectChanges else condition', () => {
-        
+
         comp.ngOnInit();
         fixture.detectChanges();
         comp.ceMiniButton = false;
@@ -76,4 +77,15 @@ describe('amexio-minimize-ce-window', () => {
         });
 
     });
+    it('should trigger ngOnInit with detectChanges else condition undefined check', () => {
+
+        comp.ngOnInit();
+        fixture.detectChanges();
+        comp.ceMiniButton = false;
+        service.currentMessage.subscribe((shareData: any) => {
+            expect(shareData).toBe('');
+            expect(comp.ceMiniButton).toEqual(false);
+        });
+    });
 });
+

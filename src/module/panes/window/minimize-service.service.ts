@@ -29,9 +29,9 @@ export class MinimizeService {
   }
   onCloseClick(data: any) {
     if (this.cureentWidnowData) {
-      this.cureentWidnowData.forEach((item: any) => {
+      this.cureentWidnowData.forEach((item: any, index: number) => {
         if (data.amexioComponentId === item.amexioComponentId) {
-          this.cureentWidnowData.splice(item, 1);
+          this.cureentWidnowData.splice(index, 1);
           this.messageSource.next(this.cureentWidnowData);
         }
       });
