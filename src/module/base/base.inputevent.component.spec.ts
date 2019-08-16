@@ -124,4 +124,17 @@ it('on eventPropagationText()', () => {
     expect( comp1.innerValue).toBeDefined();
     return true;
   });
+
+  it('isFieldValidate min and max defined', () => {
+    comp1.minvalue = '2';
+    comp1.maxvalue = '6';
+    comp1.innerValue = '444';
+    comp1.isFieldValidate();
+    expect(comp1.minvalue).toBeDefined();
+    expect(comp1.maxvalue).toBeDefined();
+    expect(comp1.innerValue).toBeDefined();
+    expect(comp1.innerValue).toBeGreaterThanOrEqual(comp1.minvalue);
+    expect(comp1.innerValue).toBeLessThanOrEqual(comp1.maxvalue);
+    return true;
+  });
 });
