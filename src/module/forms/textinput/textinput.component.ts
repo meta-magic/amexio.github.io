@@ -17,6 +17,7 @@
 
 import { Component, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
+import {BaseInputEvent} from '../../base/base.inputevent.component';
 import { ValueAccessorBase } from '../../base/value-accessor';
 @Component({
   selector: 'amexio-text-input',
@@ -29,7 +30,7 @@ import { ValueAccessorBase } from '../../base/value-accessor';
   encapsulation: ViewEncapsulation.None,
 })
 
-export class AmexioTextInputComponent extends ValueAccessorBase<string> implements OnInit, Validators {
+export class AmexioTextInputComponent extends BaseInputEvent  implements OnInit, Validators {
 
   /*
    Properties
@@ -69,9 +70,6 @@ description : Sets if field is required
   @Input('allow-blank') allowblank: boolean;
 
   regEx: RegExp;
-
-  showToolTip: boolean;
-
   /*
  Properties
  name : min-error-msg
@@ -239,45 +237,11 @@ description : On field value change event
   componentId: any;
   constructor() {
     super();
-    this.showToolTip = false;
   }
 
   ngOnInit() {
     this.componentId = this.createCompId('textinput', this.name);
     this.name = this.generateName(this.name, this.fieldlabel, 'textinput');
-  }
-
-  // THIS METHOD USED FOR BLUR EVENT.
-  onBlurEvent() {
-    this.showToolTip = false;
-    this.onBlur.emit(this.value);
-  }
-  // THIS METHOD USED FOR FOCUS EVENT .
-  onFocusEventText(event: any) {
-    this.eventPropagationText(event);
-    this.showToolTip = true;
-    this.focus.emit(this.value);
-  }
-  // THIS METHOD USED FOR  INPUT EVENT .
-  onInputText(event: any) {
-    this.eventPropagationText(event);
-    this.isValid = this.isFieldValid();
-    this.input.emit(this.value);
-  }
-  // THIS METHOD USED FOR CHANGE EVENT  .
-  onChangeEvText(event: any) {
-    this.eventPropagationText(event);
-    this.change.emit(this.value);
-  }
-  eventPropagationText(event: any) {
-    event.stopPropagation();
-  }
-
-  isFieldValid(): boolean {
-    let valid: boolean;
-    valid = (!this.allowblank && (this.value && ((this.value.length >= this.minlength) && this.value.length > 0)) ||
-      (!this.minlength && this.value && this.value.length > 0)) || this.allowblank;
-    return valid;
   }
   public validate(c: FormControl) {
     return this.isFieldValid() ? null : {

@@ -80,25 +80,25 @@ describe('Text INPUT', () => {
   it('otherValidation()', () => {
   });
 
-  //on focus()
-  it('on focus()', () => {
-    //comp.showToolTip=true;
-    let flag = true;
-    comp.onFocusEventText(event);
-    event.stopPropagation();
-    expect(comp.showToolTip).toEqual(flag);
-  })
+  // //on focus()
+  // it('on focus()', () => {
+  //   //comp.showToolTip=true;
+  //   let flag = true;
+  //   comp.onFocusEventText(event);
+  //   event.stopPropagation();
+  //   expect(comp.showToolTip).toEqual(flag);
+  // })
 
-  // On Change()
-  it('on change()', () => {
-    comp.onChangeEvText(event);
-    event.stopPropagation();
-  })
+  // // On Change()
+  // it('on change()', () => {
+  //   comp.onChangeEvText(event);
+  //   event.stopPropagation();
+  // })
 
-  // On Input()
-  it('on input()', () => {
-    comp.onInputText(event);
-    event.stopPropagation();
-  })
+  // // On Input()
+  // it('on input()', () => {
+  //   comp.onInputText(event);
+  //   event.stopPropagation();
+  // })
 
 });
