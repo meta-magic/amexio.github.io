@@ -80,7 +80,7 @@ describe('amexio-window-ce', () => {
         expect(comp.amexioHeader.toArray().length).toBeGreaterThan(0);
         expect(comp.minimize).toEqual(true);
         comp.amexioHeader.toArray()[0].minimize = comp.minimize;       
-        comp.amexioHeader.toArray()[0].minimizeWindow.subscribe((event: any) => {            
+        comp.amexioHeader.toArray()[0].minimizeWindow.subscribe((event: any) => { 
             comp.textName = event.textName;
             miniservice.onMinimizeClick(this);
         });

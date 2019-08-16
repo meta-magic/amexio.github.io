@@ -48,8 +48,8 @@ describe('amexio-minimize-window', () => {
         comp.ngOnInit();
          fixture.detectChanges();
         comp.minimizeButton = true;
-        service.currentMessage.subscribe((element: any) => {
-            element = [
+        service.currentMessage.subscribe((shareData: any) => {
+            shareData = [
                  {
                     textName: " KEDAR ",
                     top: "100px",
@@ -59,22 +59,32 @@ describe('amexio-minimize-window', () => {
                  }
              ]
             fixture.detectChanges();
-            expect(element).not.toBeNull();
-            expect(element.length).toBeGreaterThan(0);
-            comp.localData = element;
+            expect(shareData).toBeDefined();
+            expect(shareData.length).toBeGreaterThan(0);
+            comp.localData = shareData;
             expect(comp.minimizeButton).toEqual(true);
         });
+    }); it('should trigger ngOnInit with detectChanges else condition undefined check', () => {
+        
+        comp.ngOnInit();
+        fixture.detectChanges();
+        comp.minimizeButton = false;
+        service.currentMessage.subscribe((shareData: any) => {
+            expect(shareData).toBe('');
+            expect(comp.minimizeButton).toEqual(false);
+        });
+
     });
     it('should trigger ngOnInit with detectChanges else condition', () => {
         
         comp.ngOnInit();
         fixture.detectChanges();
         comp.minimizeButton = false;
-        service.currentMessage.subscribe((element: any) => {
-            element = [
-            ]
-            expect(element).toEqual([]);
-            expect(element.length).toBe(0);
+        service.currentMessage.subscribe((shareData: any) => {
+            shareData = [
+            ],
+            expect(shareData).toEqual([]);
+            expect(shareData.length).toEqual(0);
             expect(comp.minimizeButton).toEqual(false);
         });
 
