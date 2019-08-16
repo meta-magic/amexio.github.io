@@ -70,4 +70,58 @@ it('on eventPropagationText()', () => {
     expect(comp1.allowblank).toEqual(true);
 
   });
+  it('isFieldValidate min and max undefined', () => {
+    comp1.minvalue = '1';
+    comp1.maxvalue = undefined;
+    comp1.innerValue = '22';
+    comp1.isFieldValidate();
+    expect( comp1.minvalue).toBeDefined();
+    expect( comp1.maxvalue).toEqual(undefined);
+    expect( comp1.innerValue).toBeDefined();
+    expect(comp1.innerValue.length).toBeGreaterThanOrEqual(comp1.minvalue);
+    return true;
+  });
+  it('isFieldValidate max and min undefined', () => {
+    comp1.minvalue = undefined;
+    comp1.maxvalue = '4';
+    comp1.innerValue = '22';
+    comp1.isFieldValidate();
+    expect( comp1.minvalue).toEqual(undefined);
+    expect( comp1.maxvalue).toBeDefined();
+    expect( comp1.innerValue).toBeDefined();
+    expect(comp1.innerValue.length).toBeLessThanOrEqual(comp1.maxvalue)
+    return true;
+  });
+
+  it('isFieldValidate innervalue and minvalue undefined', () => {
+    comp1.minvalue = undefined;
+    comp1.maxvalue = '4';
+    comp1.innerValue = undefined;
+    comp1.isFieldValidate();
+    expect( comp1.minvalue).toEqual(undefined);
+    expect( comp1.maxvalue).toBeDefined();
+    expect(comp1.innerValue).toBeUndefined();
+    return false;
+  });
+
+  it('isFieldValidate minvalue and innerValue undefined', () => {
+    comp1.minvalue = undefined;
+    comp1.maxvalue = '4';
+    comp1.innerValue = undefined;
+    comp1.isFieldValidate();
+    expect( comp1.minvalue).toEqual(undefined);
+    expect( comp1.maxvalue).toBeDefined();
+    expect( comp1.innerValue).toBeUndefined();
+    return true;
+  });
+  it('isFieldValidate min and max undefined', () => {
+    comp1.minvalue = undefined;
+    comp1.maxvalue = undefined;
+    comp1.innerValue = '44';
+    comp1.isFieldValidate();
+    expect( comp1.minvalue).toBeUndefined();
+    expect( comp1.maxvalue).toBeUndefined();
+    expect( comp1.innerValue).toBeDefined();
+    return true;
+  });
 });
