@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BaseInputEventComponent } from '../base/base.inputevent.component';
-describe('base-input', () => {
+describe('base-inputevent', () => {
   let comp1: BaseInputEventComponent;
   let fixture1: ComponentFixture<BaseInputEventComponent>;
   beforeEach(() => {
@@ -136,5 +136,18 @@ it('on eventPropagationText()', () => {
     expect(comp1.innerValue).toBeGreaterThanOrEqual(comp1.minvalue);
     expect(comp1.innerValue).toBeLessThanOrEqual(comp1.maxvalue);
     return true;
+  });
+
+  it('isFieldValid call', () => {
+    comp1.allowblank = false;
+    comp1.value = 'www';
+    comp1.minlength = 2;
+    comp1.isFieldValid();
+    let valid: boolean;
+    expect(comp1.allowblank).toEqual(false);
+    expect(comp1.value).toBeDefined();
+    expect(comp1.value.length).toBeGreaterThanOrEqual(comp1.minlength);
+    expect(comp1.value.length).toBeGreaterThan(0);
+    return valid;
   });
 });
