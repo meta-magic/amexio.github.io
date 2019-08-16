@@ -17,7 +17,7 @@
 
 import { Component, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
-import {BaseInputEvent} from '../../base/base.inputevent.component';
+import {BaseInputEventComponent} from '../../base/base.inputevent.component';
 import { ValueAccessorBase } from '../../base/value-accessor';
 @Component({
   selector: 'amexio-text-input',
@@ -30,7 +30,7 @@ import { ValueAccessorBase } from '../../base/value-accessor';
   encapsulation: ViewEncapsulation.None,
 })
 
-export class AmexioTextInputComponent extends BaseInputEvent  implements OnInit, Validators {
+export class AmexioTextInputComponent extends BaseInputEventComponent  implements OnInit, Validators {
 
   /*
    Properties

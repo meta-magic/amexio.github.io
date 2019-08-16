@@ -1,12 +1,18 @@
-import { EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { InputValidator } from './input.validator';
 import { ValueAccessorBase } from './value-accessor';
-
-export class BaseInputEvent extends ValueAccessorBase<string>  {
+@Component({
+    selector: 'list.base.datepicker',
+    template: './list.base.datepicker.component.html',
+  })
+export class BaseInputEventComponent extends ValueAccessorBase<string>  {
     showToolTip: boolean;
     isValid = false;
     @Input('allow-blank') allowblank: boolean;
     @Input('min-length') minlength: number;
+    @Input('min-value') minvalue: any;
+    @Input('max-value') maxvalue: any;
     @Output() onBlur: any = new EventEmitter<any>();
     @Output() input: any = new EventEmitter<any>();
     @Output() focus: any = new EventEmitter<any>();
@@ -44,5 +50,29 @@ export class BaseInputEvent extends ValueAccessorBase<string>  {
         valid = (!this.allowblank && (this.value && ((this.value.length >= this.minlength) && this.value.length > 0)) ||
             (!this.minlength && this.value && this.value.length > 0)) || this.allowblank;
         return valid;
+    }
+    isFieldValidate(): boolean {
+        if (this.minvalue && !this.maxvalue) {
+            return this.innerValue && (this.innerValue >= this.minvalue);
+        } else if (!this.minvalue && this.maxvalue) {
+            return this.innerValue && (this.innerValue <= this.maxvalue);
+        } else if (!this.minvalue && !this.maxvalue && this.innerValue) {
+            return true;
+        } else {
+            return this.innerValue && (this.innerValue >= this.minvalue && this.innerValue <= this.maxvalue);
+        }
+    }
+    onNumberInputEvent(event: any) {
+        this.eventPropagationText(event);
+        this.isValid = this.isFieldValidate();
+        this.input.emit(this.value);
+    }
+    public validate(c: FormControl) {
+        const isValid: boolean = (!this.allowblank && this.isFieldValidate()) || this.allowblank;
+        return isValid ? null : {
+            jsonParseError: {
+                valid: true,
+            },
+        };
     }
 }

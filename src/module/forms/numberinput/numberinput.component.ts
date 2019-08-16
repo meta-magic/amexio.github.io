@@ -18,8 +18,8 @@ import {
   Component, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild,
 } from '@angular/core';
 import { FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
+import { BaseInputEventComponent } from '../../base/base.inputevent.component';
 import { ValueAccessorBase } from '../../base/value-accessor';
-
 @Component({
   selector: 'amexio-number-input',
   templateUrl: './numberinput.component.html',
@@ -29,7 +29,7 @@ import { ValueAccessorBase } from '../../base/value-accessor';
     provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioNumberInputComponent), multi: true,
   }],
 })
-export class AmexioNumberInputComponent extends ValueAccessorBase<string> implements OnInit, Validators {
+export class AmexioNumberInputComponent extends BaseInputEventComponent implements OnInit, Validators {
 
   /*
 Properties
@@ -57,17 +57,6 @@ version : 4.0 onwards
 default :
 description : Defines the min range limit for number input.
 */
-  @Input('min-value') minvalue: any;
-  /*
-Properties
-name : max-value
-datatype : number
-version : 4.0 onwards
-default :
-description : Defines the max range limit for number input.
-*/
-  @Input('max-value') maxvalue: any;
-
   regEx: RegExp;
 
   showToolTip: boolean;
@@ -230,34 +219,11 @@ description : Set enable / disable popover.
 
   constructor() {
     super();
-    this.showToolTip = false;
   }
 
   ngOnInit() {
     this.componentId = this.createCompId('numberinput', this.name);
     this.name = this.generateName(this.name, this.fieldlabel, 'numberinput');
-  }
-  // THIS METHOD USED FOR BLUR EVENT.
-  onBlurEvent() {
-    this.showToolTip = false;
-    this.onBlur.emit(this.value);
-  }
-  // THIS METHOD USED FOR FOCUS EVENT .
-  onFocus(event: any) {
-    event.stopPropagation();
-    this.showToolTip = true;
-    this.focus.emit(this.value);
-  }
-  // THIS METHOD USED FOR  INPUT EVENT .
-  onInput(event: any) {
-    event.stopPropagation();
-    this.isValid = this.isFieldValidate();
-    this.input.emit(this.value);
-  }
-  // THIS METHOD USED FOR CHANGE EVENT  .
-  onChangeEv(event: any) {
-    event.stopPropagation();
-    this.change.emit(this.value);
   }
   // THIS METHOD FOR KEYBORAD KEY HOME PRESS.
   onKeyUpHome(event: any) {
@@ -266,26 +232,5 @@ description : Set enable / disable popover.
   // THIS METHOD FOR KEYBORAD KEY END PRESS.
   onKeyUpEnd(event: any) {
     this.value = this.maxvalue;
-  }
-
-  isFieldValidate(): boolean {
-    if (this.minvalue && !this.maxvalue) {
-      return this.innerValue && (this.innerValue >= this.minvalue);
-    } else if (!this.minvalue && this.maxvalue) {
-      return this.innerValue && (this.innerValue <= this.maxvalue);
-    } else if (!this.minvalue && !this.maxvalue && this.innerValue) {
-      return true;
-    } else {
-      return this.innerValue && (this.innerValue >= this.minvalue && this.innerValue <= this.maxvalue);
-    }
-  }
-
-  public validate(c: FormControl) {
-    const isValid: boolean = (!this.allowblank && this.isFieldValidate()) || this.allowblank;
-    return isValid ? null : {
-      jsonParseError: {
-        valid: true,
-      },
-    };
   }
 }
