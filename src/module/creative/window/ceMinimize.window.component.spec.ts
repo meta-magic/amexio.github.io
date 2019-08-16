@@ -72,7 +72,6 @@ describe('amexio-minimize-ce-window', () => {
             ]
             expect(element).toEqual([]);
             expect(element.length).toBe(0);
-            comp.arrayData = element;
             expect(comp.ceMiniButton).toEqual(false);
         });
 

@@ -75,7 +75,6 @@ describe('amexio-minimize-window', () => {
             ]
             expect(element).toEqual([]);
             expect(element.length).toBe(0);
-            comp.localData = element;
             expect(comp.minimizeButton).toEqual(false);
         });
 

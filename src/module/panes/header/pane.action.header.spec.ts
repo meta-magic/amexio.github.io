@@ -35,48 +35,66 @@ describe('AmexioHeaderComponent', () => {
     });
 });
 
-  it('ngAfterViewInit  method check 1st if', () => {
-    comp.textName = comp.content.nativeElement.innerText;
-    comp.ngAfterViewInit();
-    comp.textName = 'kedar';
-    comp.minimizeIcon = 'fa fa-home';
-    expect(comp.textName).toEqual('kedar');
-    expect(comp.minimizeIcon).toEqual('fa fa-home');
-    return comp.textName;
+it('ngAfterViewInit  method check 1st if', () => {
+  comp.textName = comp.content.nativeElement.innerText;
+  comp.ngAfterViewInit();
+  comp.textName = 'kedar';
+  comp.minimizeIcon = 'fa fa-home';
+  expect(comp.textName).toEqual('kedar');
+  expect(comp.minimizeIcon).toEqual('fa fa-home');
+  return comp.textName;
 });
 it('ngAfterViewInit  method check 1st els', () => {
-    comp.textName = comp.content.nativeElement.innerText;
-    comp.ngAfterViewInit();
-    comp.textName = '';
-    comp.minimizeIcon = '';
-    expect(comp.textName).toEqual('');
-    expect(comp.minimizeIcon).toEqual('');
+  comp.textName = comp.content.nativeElement.innerText;
+  comp.ngAfterViewInit();
+  comp.textName = '';
+  comp.minimizeIcon = '';
+  expect(comp.textName).toEqual('');
+  expect(comp.minimizeIcon).toEqual('');
 });
 it('ngAfterViewInit  method check 2nd if', () => {
-    comp.textName = comp.content.nativeElement.innerText;
-    comp.ngAfterViewInit();
-    comp.textName = 'kedar';
-    comp.minimizeIcon = '';
-    expect(comp.textName).toEqual('kedar');
-    expect(comp.minimizeIcon).toEqual('');
-    return comp.textName;
+  comp.textName = comp.content.nativeElement.innerText;
+  comp.ngAfterViewInit();
+  comp.textName = 'kedar';
+  comp.minimizeIcon = 'fa fa-home';
+  expect(comp.textName).toEqual('kedar');
+  expect(comp.minimizeIcon).toEqual('fa fa-home');
+  comp.ngAfterViewInit();
+  comp.textName = 'kedar';
+  comp.minimizeIcon = '';
+  expect(comp.textName).toEqual('kedar');
+  expect(comp.minimizeIcon).toEqual('');
+  return comp.textName;
 });
 it('ngAfterViewInit  method check 2nd else', () => {
-    comp.textName = comp.content.nativeElement.innerText;
-    comp.ngAfterViewInit();
-    comp.textName = '';
-    comp.minimizeIcon = 'fa fa-home'
-    expect(comp.textName).toEqual('');
-    expect(comp.minimizeIcon).toEqual('fa fa-home');
-    return comp.minimizeIcon;
+  comp.textName = comp.content.nativeElement.innerText;
+  comp.ngAfterViewInit();
+  comp.textName = 'kedar';
+  comp.minimizeIcon = 'fa fa-home';
+  expect(comp.textName).toEqual('kedar');
+  expect(comp.minimizeIcon).toEqual('fa fa-home');
+  comp.textName = '';
+  comp.minimizeIcon = 'fa fa-home'
+  expect(comp.textName).toEqual('');
+  expect(comp.minimizeIcon).toEqual('fa fa-home');
+  return comp.minimizeIcon;
 });
 it('ngAfterViewInit  method check !this.minimizeIcon && !this.textName', () => {
-    comp.textName = comp.content.nativeElement.innerText;
-    comp.ngAfterViewInit();
-    comp.textName = '';
-    comp.minimizeIcon = ''
-    expect(comp.textName).toEqual('');
-    expect(comp.minimizeIcon).toEqual('');
-    return comp.minimizeIcon = 'fa fa-file';
+  comp.textName = comp.content.nativeElement.innerText;
+  comp.ngAfterViewInit();
+  comp.textName = '';
+  comp.minimizeIcon = ''
+  expect(comp.textName).toEqual('');
+  expect(comp.minimizeIcon).toEqual('');
+  return comp.minimizeIcon = 'fa fa-file';
+});
+it('ngAfterViewInit  method check this.minimizeIcon && this.textName', () => {
+  comp.textName = comp.content.nativeElement.innerText;
+  comp.ngAfterViewInit();
+  comp.textName = 'kedar';
+  comp.minimizeIcon = 'fa fa-home';
+  expect(comp.textName).toEqual('kedar');
+  expect(comp.minimizeIcon).toEqual('fa fa-home');
+  return comp.textName = 'kedar';
 });
 });

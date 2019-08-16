@@ -101,6 +101,11 @@ describe('amexio-header-ce', () => {
         comp.textName = comp.content.nativeElement.innerText;
         comp.ngAfterViewInit();
         comp.textName = 'kedar';
+        comp.minimizeIcon = 'fa fa-home';
+        expect(comp.textName).toEqual('kedar');
+        expect(comp.minimizeIcon).toEqual('fa fa-home');
+        comp.ngAfterViewInit();
+        comp.textName = 'kedar';
         comp.minimizeIcon = '';
         expect(comp.textName).toEqual('kedar');
         expect(comp.minimizeIcon).toEqual('');
@@ -109,6 +114,10 @@ describe('amexio-header-ce', () => {
     it('ngAfterViewInit  method check 2nd else', () => {
         comp.textName = comp.content.nativeElement.innerText;
         comp.ngAfterViewInit();
+        comp.textName = 'kedar';
+        comp.minimizeIcon = 'fa fa-home';
+        expect(comp.textName).toEqual('kedar');
+        expect(comp.minimizeIcon).toEqual('fa fa-home');
         comp.textName = '';
         comp.minimizeIcon = 'fa fa-home'
         expect(comp.textName).toEqual('');
@@ -123,6 +132,15 @@ describe('amexio-header-ce', () => {
         expect(comp.textName).toEqual('');
         expect(comp.minimizeIcon).toEqual('');
         return comp.minimizeIcon = 'fa fa-file';
+    });
+    it('ngAfterViewInit  method check this.minimizeIcon && this.textName', () => {
+        comp.textName = comp.content.nativeElement.innerText;
+        comp.ngAfterViewInit();
+        comp.textName = 'kedar';
+        comp.minimizeIcon = 'fa fa-home';
+        expect(comp.textName).toEqual('kedar');
+        expect(comp.minimizeIcon).toEqual('fa fa-home');
+        return comp.textName = 'kedar';
     });
     
 });
