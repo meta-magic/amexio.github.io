@@ -52,4 +52,22 @@ it('on eventPropagationText()', () => {
     comp1.isValid = comp1.isFieldValidate();
     comp1.input.emit(comp1.value);
   })
+  it('on onEmailInputEvent()', () => {
+    comp1.onEmailInputEvent(event);
+    comp1.eventPropagationText(event);
+    comp1.isValid = comp1.isEmailFieldValid();
+    comp1.input.emit(comp1.value);
+  })
+  it('should return true from isFieldValid', () => {
+    comp1.allowblank = false;
+    comp1.value = 'kedar@xyz.in';
+    comp1.emailpattern.test(comp1.value)
+    expect(comp1.isEmailFieldValid()).toBeTruthy();
+    expect(comp1.allowblank).toEqual(false);
+    expect(comp1.emailpattern.test(comp1.value)).toBeDefined();
+    comp1.allowblank = true;
+    expect(comp1.isEmailFieldValid()).toBeTruthy();
+    expect(comp1.allowblank).toEqual(true);
+
+  });
 });

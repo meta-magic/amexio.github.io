@@ -17,6 +17,7 @@
 
 import { Component, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgModel, Validators } from '@angular/forms';
+import { BaseInputEventComponent } from '../../base/base.inputevent.component';
 import { ValueAccessorBase } from '../../base/value-accessor';
 
 @Component({
@@ -28,7 +29,7 @@ import { ValueAccessorBase } from '../../base/value-accessor';
     provide: NG_VALIDATORS, useExisting: forwardRef(() => AmexioEmailInputComponent), multi: true,
   }],
 })
-export class AmexioEmailInputComponent extends ValueAccessorBase<string> implements OnInit, Validators {
+export class AmexioEmailInputComponent  extends BaseInputEventComponent implements OnInit, Validators {
 
   /*
    Properties
@@ -127,8 +128,6 @@ description : Sets the error message for validation
    default :
    description : Apply Reg-ex to the field
    */
-  emailpattern: any = /\S+@\S+\.\S+/;
-
   _pattern: string;
 
   get pattern(): string {
@@ -199,37 +198,8 @@ description : Sets the error message for validation
     this.componentId = this.createCompId('emailinput', this.name);
     this.name = this.generateName(this.name, this.fieldlabel, 'emailinput');
   }
-  // THIS METHOD USED FOR BLUR EVENT.
-  onblur() {
-    this.showToolTip = false;
-    this.onBlur.emit(this.value);
-  }
-  // THIS METHOD USED FOR FOCUS EVENT .
-  onFocus(event: any) {
-    this.eventPropagation(event);
-    this.showToolTip = true;
-    this.focus.emit(this.value);
-  }
-  // THIS METHOD USED FOR  INPUT EVENT .
-  onInput(event: any) {
-    this.eventPropagation(event);
-    this.isValid = this.isFieldValid();
-    this.input.emit(this.value);
-  }
-  // THIS METHOD USED FOR CHANGE EVENT  .
-  onChangeEv(event: any) {
-    this.eventPropagation(event);
-    this.change.emit(this.value);
-  }
-  eventPropagation(event: any) {
-    event.stopPropagation();
-  }
-  // THIS METHOD IS USED FOR VALIDATION
-  isFieldValid(): boolean {
-    return (!this.allowblank && this.emailpattern.test(this.value)) || this.allowblank;
-  }
   public validate(c: FormControl) {
-    return this.isFieldValid() ? null : {
+    return this.isEmailFieldValid() ? null : {
       jsonParseError: {
         valid: true,
       },

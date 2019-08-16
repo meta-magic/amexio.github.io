@@ -233,4 +233,12 @@ description : Set enable / disable popover.
   onKeyUpEnd(event: any) {
     this.value = this.maxvalue;
   }
+  public validate(c: FormControl) {
+    const isValid: boolean = (!this.allowblank && this.isFieldValidate()) || this.allowblank;
+    return isValid ? null : {
+        jsonParseError: {
+            valid: true,
+        },
+    };
+}
 }

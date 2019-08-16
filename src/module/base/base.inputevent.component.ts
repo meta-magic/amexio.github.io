@@ -9,6 +9,7 @@ import { ValueAccessorBase } from './value-accessor';
 export class BaseInputEventComponent extends ValueAccessorBase<string>  {
     showToolTip: boolean;
     isValid = false;
+    emailpattern: any = /\S+@\S+\.\S+/;
     @Input('allow-blank') allowblank: boolean;
     @Input('min-length') minlength: number;
     @Input('min-value') minvalue: any;
@@ -67,12 +68,13 @@ export class BaseInputEventComponent extends ValueAccessorBase<string>  {
         this.isValid = this.isFieldValidate();
         this.input.emit(this.value);
     }
-    public validate(c: FormControl) {
-        const isValid: boolean = (!this.allowblank && this.isFieldValidate()) || this.allowblank;
-        return isValid ? null : {
-            jsonParseError: {
-                valid: true,
-            },
-        };
+    onEmailInputEvent(event: any) {
+        this.eventPropagationText(event);
+        this.isValid = this.isEmailFieldValid();
+        this.input.emit(this.value);
+    }
+
+    isEmailFieldValid(): boolean {
+        return (!this.allowblank && this.emailpattern.test(this.value)) || this.allowblank;
     }
 }
