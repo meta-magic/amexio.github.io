@@ -55,6 +55,8 @@ export class AmexioCardCEHeaderComponent implements AfterViewInit, OnInit {
 
   @Output() closeDataEmit: any = new EventEmitter<any>();
 
+  @Input('minimized-icon') minimizeIcon: any;
+
   cclass = '';
 
   closeable = false;
@@ -83,6 +85,8 @@ export class AmexioCardCEHeaderComponent implements AfterViewInit, OnInit {
     bottom: string;
   };
 
+  constructor() {
+  }
   ngOnInit() {
     if (this.borderbottom) {
       this.cclass = 'card-header-border';
@@ -91,11 +95,22 @@ export class AmexioCardCEHeaderComponent implements AfterViewInit, OnInit {
   }
   ngAfterViewInit() {
     this.textName = this.content.nativeElement.innerText;
+    if (this.textName && this.minimizeIcon) {
+      return this.textName;
+    }
+    if (this.textName && !this.minimizeIcon) {
+      return this.textName;
+    } else if (!this.textName && this.minimizeIcon) {
+      return this.minimizeIcon;
+    } else if (!this.minimizeIcon && !this.textName) {
+      this.textName = [];
+      this.minimizeIcon = 'fa fa-file';
+    }
   }
 
   onMinimizeClick() {
     this.closeableBehaiour.next(false);
-    this.minimizeWindow.emit(this, this.textName);
+    this.minimizeWindow.emit(this);
   }
 
   setMaximizeDataCE(maximize: boolean, isFullWindow: boolean) {

@@ -1,8 +1,15 @@
-<div   style="display:block;position: fixed;z-index: 999; bottom: 0px;">
+<div style="  display:block;
+position:fixed;
+z-index: 999; 
+bottom: 0px;
+width: 100%;" [class.minimize-window-bg]="ceMiniButton"
+    [ngStyle]="{'padding': ceMiniButton ? '10px  0px 10px 0px': '0px'}">
+
     <ng-container *ngIf="ceMiniButton">
-            <amexio-button *ngFor="let data of arrayData"
-             [label]="data.textName" [type]="'theme-color'"  [tooltip]="data.textName"
-            (onClick)="ceMiniBtnClick(data)">
-        </amexio-button>
-        </ng-container>
-    </div>
+        <span *ngFor="let data of arrayData">
+            <amexio-button [icon]=data.amexioHeader.first.minimizeIcon [label]="data.textName" [type]="'theme-color'"
+                [tooltip]="data.textName" (onClick)="ceMiniBtnClick(data)">
+            </amexio-button>
+        </span>
+    </ng-container>
+</div>

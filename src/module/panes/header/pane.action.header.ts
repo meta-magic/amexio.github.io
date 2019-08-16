@@ -67,6 +67,8 @@ export class AmexioHeaderComponent implements OnInit, AfterViewInit {
 
   @Output() closeDataEmit: any = new EventEmitter<any>();
 
+  @Input('minimized-icon') minimizeIcon: any;
+
   minimize = false;
 
   closeable = false;
@@ -92,6 +94,17 @@ export class AmexioHeaderComponent implements OnInit, AfterViewInit {
   }
   ngAfterViewInit() {
     this.textName = this.content.nativeElement.textContent;
+    if (this.textName && this.minimizeIcon) {
+      return this.textName;
+    }
+    if (this.textName && !this.minimizeIcon) {
+      return this.textName;
+    } else if (!this.textName && this.minimizeIcon) {
+      return this.minimizeIcon;
+    } else if (!this.minimizeIcon && !this.textName) {
+      this.textName = [];
+      this.minimizeIcon = 'fa fa-file';
+    }
   }
 
   setMaximizeData(maximize: boolean, isFullWindow: boolean) {
@@ -119,6 +132,6 @@ export class AmexioHeaderComponent implements OnInit, AfterViewInit {
 
   onMinimizeClick() {
     this.closeableBehaiour.next(false);
-    this.minimizeWindow.emit(this, this.textName);
+    this.minimizeWindow.emit(this);
   }
 }

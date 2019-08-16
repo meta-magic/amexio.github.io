@@ -25,8 +25,8 @@ describe('amexio-minimize-ce-window', () => {
     });
 
     it('should trigger ngOnInit with detectChanges', () => {
-        comp.ceMiniButton = true;
         comp.ngOnInit();
+        comp.ceMiniButton = true;
         service.currentMessage.subscribe((element: any) => {
             expect(element).not.toBeNull();
             comp.arrayData = element;

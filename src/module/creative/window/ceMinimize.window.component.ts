@@ -15,8 +15,12 @@ export class CeMinimizeWindowComponent implements OnInit {
 
     ngOnInit() {
         this._ceService1.currentMessage.subscribe((shareData: any[]) => {
-            this.arrayData = shareData;
-            this.ceMiniButton = true;
+            if (shareData && shareData.length > 0) {
+                this.arrayData = shareData;
+                this.ceMiniButton = true;
+            } else {
+                this.ceMiniButton = false;
+            }
         });
     }
 
