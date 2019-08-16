@@ -2,7 +2,7 @@
  * Created by pratik on 1/12/17.
  */
 import { AmexioNumberInputComponent } from './numberinput.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormControl } from '@angular/forms';
 import { IconLoaderService } from '../../../index'
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AmexioInputHelperComponent } from '../../base/input.helper.component';
@@ -67,8 +67,43 @@ describe('NUMBER INPUT', () => {
     comp.registerOnTouched(fn);
     expect(comp['onTouchedCallback']).toEqual(fn);
   })
+  it('validate method call allowblank true', () => {
+    comp.allowblank = true;
+    let c:FormControl;
+    comp.validate(c);
+    expect(comp.allowblank).toEqual(true);
+    let isValid = comp.allowblank;
+    expect(isValid).toEqual(true);
+    return null;
+ });
+   it('validate method call allowblank false', () => {
+    comp.allowblank = false;
+    let c:FormControl;
+    comp.validate(c);
+    expect(comp.allowblank).toEqual(false);
+    expect(comp.isFieldValidate()).toHaveBeenCalled;
+    let isValid = comp.allowblank && comp.isFieldValidate();
+    expect(isValid).toEqual(false);
+      return {
+      jsonParseError: {
+          valid: true,
+      },
+  }; ;
+ });
 
+ it('validate method call isvalid true', () => {
 
+  let c:FormControl;
+  comp.validate(c);
+  comp.allowblank = true;
+  expect(comp.allowblank).toEqual(true);
+  expect(comp.isFieldValidate()).toHaveBeenCalled;
+  let isValid = comp.allowblank;
+  expect(isValid).toEqual(true);
+  return null;
+});
+
+   })
   //on focus()
   // it('on focus()', () => {
   //   //comp.showToolTip=true;
@@ -119,4 +154,4 @@ describe('NUMBER INPUT', () => {
   // });
 
 
-});
+
