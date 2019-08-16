@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormControl } from '@angular/forms';
 import { IconLoaderService } from '../../../index';
 import { AmexioButtonComponent } from './../buttons/button.component';
 import { AmexioEmailInputComponent } from './emailinput.component';
@@ -139,5 +139,21 @@ describe('amexio-email-input', () => {
   //   expect(comp.allowblank).toEqual(true);
 
   // });
+  it('validate method call null', () => {
+    let c:FormControl;
+    comp.validate(c);
+    expect(comp.isEmailFieldValid()).toBeTruthy;
+    return null;
+  });
 
+  it('validate method call tobefalsy', () => {
+    let c:FormControl;
+    comp.validate(c);
+    expect(comp.isEmailFieldValid()).toBeFalsy;
+    return {
+      jsonParseError: {
+        valid: true,
+      },
+    };
+  });
 });
