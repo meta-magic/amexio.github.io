@@ -10,19 +10,54 @@ import { CommonIconComponent } from './../../base/components/common.icon.compone
 import { DisplayFieldComponent } from './../../base/display-field/display-field.component';
 import { AmexioContextMenuComponent } from './../../base/base.contextmenu.component';
 import { AmexioPaginatorComponent } from './../paginator/paginator.component';
-import {AmexioRadioGroupComponent} from './../../forms/radio/radiogroup.component';
+import { AmexioRadioGroupComponent } from './../../forms/radio/radiogroup.component';
+import { Component } from '@angular/core';
+
+@Component({
+    selector: 'test-cmp',
+    template: `<amexio-datagrid>
+    <amexio-data-table-column [data-index]="'jobTitle'" [data-type]="'string'" [hidden]="false" [text]="'Job Title'">
+    </amexio-data-table-column>
+    <amexio-data-table-column [data-index]="'salary'" [data-type]="'number'" [hidden]="false" [text]="'Salary'"></amexio-data-table-column>
+    </amexio-datagrid>`,
+})
+class TestWrapperComponent {
+
+}
 describe('amexio-datagrid', () => {
     let comp: AmexioDatagridComponent;
+    let comp2: TestWrapperComponent;
     let fixture: ComponentFixture<AmexioDatagridComponent>;
+    let fixture2: ComponentFixture<TestWrapperComponent>;
 
+    let filterCloneData: any;
+    let columnRefArray: any;
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule, HttpClientModule],
-            declarations: [AmexioDatagridComponent,  AmexioRadioGroupComponent, AmexioPaginatorComponent, AmexioContextMenuComponent, DisplayFieldComponent, CommonIconComponent, DataGridFilterComponent, AmexioGridColumnComponent],
+            declarations: [AmexioGridColumnComponent, AmexioDatagridComponent, TestWrapperComponent, AmexioRadioGroupComponent, AmexioPaginatorComponent, AmexioContextMenuComponent, DisplayFieldComponent, CommonIconComponent, DataGridFilterComponent],
             providers: [IconLoaderService, CommonDataService],
         });
         fixture = TestBed.createComponent(AmexioDatagridComponent);
         comp = fixture.componentInstance;
+        fixture2 = TestBed.createComponent(TestWrapperComponent);
+        comp2 = fixture2.debugElement.children[0].componentInstance;
+
+        filterCloneData = [{
+            checkBoxSelectClass: "checkbox default",
+            emailAddress: "tomhanks@gmail.com",
+            employeeCode: "E3",
+            firstName: "Tom",
+            isSelected: false,
+            jobTitle: "Program Direct",
+            lastName: "Hanks",
+            phoneNumber: "408-2222222",
+            preferredFullName: "Tom Hanks",
+            region: "CA",
+            salary: 14000000,
+            userId: "0",
+        }];
+
 
     });
 
@@ -117,24 +152,24 @@ describe('amexio-datagrid', () => {
             row['checkBoxSelectClass'] = comp.checkBoxActive;
         })
     })
-    it('selectAllRecord Check if condition', () => {  
+    it('selectAllRecord Check if condition', () => {
         comp.checkDefaultIcon = 'checkbox default';
-        comp.checkBoxActive = 'checkbox active';    
+        comp.checkBoxActive = 'checkbox active';
         comp.selectAllRecord();
         comp.viewRows = [
-            { personName: "Jaydeep Saxena", personAge: "35", designation: "Developer", isSelected: true ,checkBoxSelectClass: ''},
-            { personName: "Shweta Kulkarni", personAge: "24", designation: "Jr. Developer", isSelected: true,checkBoxSelectClass: ''},
-            { personName: "Karan Malohtra", personAge: "35", designation: "Developer", isSelected: true,checkBoxSelectClass: '' },
-            { personName: "Krishna Sethi", personAge: "27", designation: "Software Eng", isSelected: true ,checkBoxSelectClass: ''}
+            { personName: "Jaydeep Saxena", personAge: "35", designation: "Developer", isSelected: true, checkBoxSelectClass: '' },
+            { personName: "Shweta Kulkarni", personAge: "24", designation: "Jr. Developer", isSelected: true, checkBoxSelectClass: '' },
+            { personName: "Karan Malohtra", personAge: "35", designation: "Developer", isSelected: true, checkBoxSelectClass: '' },
+            { personName: "Krishna Sethi", personAge: "27", designation: "Software Eng", isSelected: true, checkBoxSelectClass: '' }
         ];
-        comp.checkBoxActive = 'checkbox active';   
-         comp.selectAll = false;
-         comp.selectAll = !comp.selectAll;   
+        comp.checkBoxActive = 'checkbox active';
+        comp.selectAll = false;
+        comp.selectAll = !comp.selectAll;
         expect(comp.selectAll).toEqual(true);
-       for (const vr of comp.viewRows) {
-        vr.checkBoxSelectClass = comp.checkBoxActive;
-        comp.selectedRows.push(vr);
-       }
+        for (const vr of comp.viewRows) {
+            vr.checkBoxSelectClass = comp.checkBoxActive;
+            comp.selectedRows.push(vr);
+        }
     })
 
     it('selectAllRecord toggle Check', () => {
@@ -144,20 +179,107 @@ describe('amexio-datagrid', () => {
         comp.selectAll = false;
     })
     it('selectAllRecord Else Check', () => {
-         comp.checkBoxActive = 'checkbox active';
-         comp.selectAllRecord();
-         comp.viewRows = [
-            { personName: "Jaydeep Saxena", personAge: "35", designation: "Developer", isSelected: true ,checkBoxSelectClass: ''},
-            { personName: "Shweta Kulkarni", personAge: "24", designation: "Jr. Developer", isSelected: true,checkBoxSelectClass: ''},
-            { personName: "Karan Malohtra", personAge: "35", designation: "Developer", isSelected: true,checkBoxSelectClass: '' },
-            { personName: "Krishna Sethi", personAge: "27", designation: "Software Eng", isSelected: true ,checkBoxSelectClass: ''}
+        comp.checkBoxActive = 'checkbox active';
+        comp.selectAllRecord();
+        comp.viewRows = [
+            { personName: "Jaydeep Saxena", personAge: "35", designation: "Developer", isSelected: true, checkBoxSelectClass: '' },
+            { personName: "Shweta Kulkarni", personAge: "24", designation: "Jr. Developer", isSelected: true, checkBoxSelectClass: '' },
+            { personName: "Karan Malohtra", personAge: "35", designation: "Developer", isSelected: true, checkBoxSelectClass: '' },
+            { personName: "Krishna Sethi", personAge: "27", designation: "Software Eng", isSelected: true, checkBoxSelectClass: '' }
         ];
         comp.checkDefaultIcon = 'checkbox default';
-         comp.selectAll = true;
-         comp.selectAll = !comp.selectAll;
+        comp.selectAll = true;
+        comp.selectAll = !comp.selectAll;
         expect(comp.selectAll).toEqual(false);
         for (const vr of comp.viewRows) {
             vr.checkBoxSelectClass = comp.checkDefaultIcon;
         }
     })
+
+    it('filterOperation Method', () => {
+        comp.pagesize = 10;
+        let filteredObj = [{
+            filter: "1",
+            index: 0,
+            key: "preferredFullName",
+            lastColumn: 3,
+            option: "OR",
+            type: "string",
+            value: "a",
+        }]
+        comp.filterOperation(filteredObj, filterCloneData);
+        let resultData: any = [];
+        filterCloneData.forEach((option: any) => {
+            expect(comp.filterOpertion(option, filteredObj)).toEqual(false);
+            resultData.push(option);
+        });
+
+        expect(resultData.length).toBeLessThan(1 * comp.pagesize);
+        comp.currentPage = 1;
+        comp.maxPage = 1;
+
+        comp.data = resultData;
+        comp.filterResultData = resultData;
+    })
+
+    // it('multipleColumnFilter lessthan0 and OR', () => {
+    //     let filteredObj = [{
+    //         filter: "1",
+    //         index: 0,
+    //         key: "preferredFullName",
+    //         lastColumn: 3,
+    //         option: "OR",
+    //         type: "string",
+    //         value: "a",
+    //     }]
+    //     let filterCloneData = [{
+    //         checkBoxSelectClass: "checkbox default",
+    //         emailAddress: "aomhanks@gmail.com",
+    //         employeeCode: "E3",
+    //         firstName: "Anay",
+    //         isSelected: false,
+    //         jobTitle: "Program Direct",
+    //         lastName: "Hanks",
+    //         phoneNumber: "408-2222222",
+    //         preferredFullName: "Aom Hanks",
+    //         region: "CA",
+    //         salary: 14000000,
+    //         userId: "0",
+    //     }]
+    //     fixture.detectChanges();
+    //     comp.multipleColumnFilter(filteredObj)
+    //     filteredObj.sort((a: any, b: any) => {
+    //         return a.index - b.index;
+    //       });
+    //       for (let i = 0; i < filteredObj.length; i++) {
+    //           expect(filteredObj[0].index).toEqual(0)
+    //           expect(filteredObj[0].option).toEqual('OR')
+    //         //   comp.filterOperation(filteredObj, comp.filterCloneData);
+    //       }
+
+    // })
+
+    // it('createConfig method', () => {
+    //     comp.createConfig();
+    //     fixture.detectChanges();
+    //     columnRefArray = comp2.columnRef.toArray();
+    // })
+
+    // it('getFilteredData If Condition Method', () => {
+    //     let filteredObj = [{
+    //         filter: "1",
+    //         index: 0,
+    //         key: "preferredFullName",
+    //         lastColumn: 3,
+    //         option: "OR",
+    //         type: "string",
+    //         value: "a",
+    //     }]
+    //     comp.getFilteredData(filteredObj);
+    //     expect(filteredObj.length).toEqual(1);
+    //     // comp.filterOperation(filteredObj, filterCloneData);
+
+    // })
+
+
 });
