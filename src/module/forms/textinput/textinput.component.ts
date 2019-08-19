@@ -250,4 +250,8 @@ description : On field value change event
       },
     };
   }
+
+  onInputTextEvent(event: any) {
+    super.onInputEvent(event);
+  }
 }

@@ -100,5 +100,8 @@ describe('Text INPUT', () => {
   //   comp.onInputText(event);
   //   event.stopPropagation();
   // })
-
+  it('onInputTextEvent call ', () => {
+    comp.onInputTextEvent(event);
+    comp.onInputEvent(event);
+  })
 });

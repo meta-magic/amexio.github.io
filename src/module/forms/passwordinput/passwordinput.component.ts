@@ -218,4 +218,8 @@ description : Set enable / disable popover.
       },
     };
   }
+
+  onInputPasswordEvent(event: any) {
+    super.onInputEvent(event);
+  }
 }

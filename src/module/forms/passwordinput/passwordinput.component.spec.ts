@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { IconLoaderService } from '../../../index'
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AmexioInputHelperComponent } from '../../base/input.helper.component';
+import {BaseInputEventComponent} from '../../base/base.inputevent.component';
 describe('Password INPUT', () => {
 
   let comp: AmexioPasswordComponent;
@@ -17,7 +18,7 @@ describe('Password INPUT', () => {
       imports: [FormsModule],
       declarations: [AmexioPasswordComponent, AmexioInputHelperComponent],
       providers: [IconLoaderService]
-    });
+    }).compileComponents();
     fixture = TestBed.createComponent(AmexioPasswordComponent);
     comp = fixture.componentInstance;
 
@@ -46,6 +47,11 @@ describe('Password INPUT', () => {
     let fn: any;
     comp.registerOnTouched(fn);
     expect(comp['onTouchedCallback']).toEqual(fn);
+  })
+
+  it('onInputPasswordEvent call ', () => {
+    comp.onInputPasswordEvent(event);
+    comp.onInputEvent(event);
   })
 });
 
