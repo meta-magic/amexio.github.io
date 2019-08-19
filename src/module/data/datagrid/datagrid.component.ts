@@ -373,6 +373,8 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
 
   totalPages: number;
 
+  filterResultData: any;
+
   /*global filter column attribute*/
 
   filterValue: any;
@@ -401,9 +403,9 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
 
   private plusIcon = 'fa fa-plus';
 
- checkDefaultIcon = 'checkbox default';
+  checkDefaultIcon = 'checkbox default';
 
- checkBoxActive = 'checkbox active';
+  checkBoxActive = 'checkbox active';
 
   checkBoxSelectClass = '';
 
@@ -526,9 +528,9 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
 
   createConfig() {
     this.columns = [];
-    let columnRefArray = [];
+    let columnRefArray: any;
     columnRefArray = this.columnRef.toArray();
-    for (const cr of columnRefArray) {
+    columnRefArray.forEach((cr: any, index: any) => {
       const columnConfig = cr;
       let columnData: any;
       if (columnConfig.headerTemplate != null && columnConfig.bodyTemplate != null) {
@@ -542,6 +544,8 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
           sort: columnConfig.sort,
           bodyTemplate: columnConfig.bodyTemplate,
           contextmenu: columnConfig.contextmenu,
+          columnIndex: index,
+          lastColumn: columnRefArray.length,
         };
       } else if (columnConfig.headerTemplate != null && columnConfig.bodyTemplate == null) {
         columnData = {
@@ -553,6 +557,8 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
           sort: columnConfig.sort,
           headerTemplate: columnConfig.headerTemplate,
           contextmenu: columnConfig.contextmenu,
+          columnIndex: index,
+          lastColumn: columnRefArray.length,
         };
       } else if (columnConfig.bodyTemplate != null && columnConfig.headerTemplate == null) {
         columnData = {
@@ -564,6 +570,8 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
           sort: columnConfig.sort,
           bodyTemplate: columnConfig.bodyTemplate,
           contextmenu: columnConfig.contextmenu,
+          columnIndex: index,
+          lastColumn: columnRefArray.length,
         };
       } else if (columnConfig.bodyTemplate == null && columnConfig.headerTemplate == null) {
         columnData = {
@@ -574,6 +582,8 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
           sort: columnConfig.sort,
           datatype: columnConfig.datatype,
           contextmenu: columnConfig.contextmenu,
+          columnIndex: index,
+          lastColumn: columnRefArray.length,
         };
       }
       if (columnConfig.summarytype) {
@@ -586,7 +596,7 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
 
       this.columns.push(columnData);
       this.enableHeaderMethod();
-    }
+    });
   }
 
   // Enables header if text to any of the column is given
@@ -931,22 +941,13 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
 
   getFilteredData(filteredObj: any) {
     this.fliterFlag = true;
-    const resultData: any = [];
-    if (filteredObj.length > 0) {
-      this.filterCloneData.forEach((option: any) => {
-        if (this.filterOpertion(option, filteredObj)) {
-          resultData.push(option);
-        }
-      });
-      if (resultData.length < (1 * this.pagesize)) {
-        this.currentPage = 1;
-        this.maxPage = 1;
-      }
-      this.data = resultData;
+    if (filteredObj.length === 1) {
+      this.filterOperation(filteredObj, this.filterCloneData);
+    } else if (filteredObj.length > 1) {
+      this.multipleColumnFilter(filteredObj);
     } else {
       this.data = this.filterCloneData;
     }
-
     this.renderData();
   }
 
@@ -1329,8 +1330,8 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
     this.showEnableColumnFilter = false;
     this.showGroupByColumn = !this.showGroupByColumn;
     this.showToolTip = false;
-}
-onEnableColumnClick(event: any) {
+  }
+  onEnableColumnClick(event: any) {
     event.stopImmediatePropagation();
     this.addListner();
     this.showToolTip = false;
@@ -1602,5 +1603,40 @@ onEnableColumnClick(event: any) {
 
   setColorPalette(themeClass: any) {
     this.themeCss = themeClass;
+  }
+  filterOperation(filteredObj: any, dataForFilter: any) {
+    const resultData: any = [];
+    dataForFilter.forEach((option: any) => {
+      if (this.filterOpertion(option, filteredObj)) {
+        resultData.push(option);
+      }
+    });
+    if (resultData.length < (1 * this.pagesize)) {
+      this.currentPage = 1;
+      this.maxPage = 1;
+    }
+    this.data = resultData;
+    this.filterResultData = resultData;
+  }
+
+  multipleColumnFilter(filteredObj: any) {
+    filteredObj.sort((a: any, b: any) => {
+      return a.index - b.index;
+    });
+    for (let i = 0; i < filteredObj.length; i++) {
+      if (filteredObj[0].index === 0 && filteredObj[0].option === 'OR') {
+        this.filterOperation(filteredObj, this.filterCloneData);
+      } else if (filteredObj[0].index === 0 && filteredObj[0].option === 'AND') {
+        const filterObj1 = [];
+        filterObj1.push(filteredObj[0]);
+        this.filterOperation(filterObj1, this.filterResultData);
+      } else if (filteredObj[i].index > 0 && filteredObj[i - 1].option === 'OR') {
+        this.filterOperation(filteredObj, this.filterCloneData);
+      } else if (filteredObj[i].index > 0 && filteredObj[i - 1].option === 'AND') {
+        const filterObj1 = [];
+        filterObj1.push(filteredObj[i]);
+        this.filterOperation(filterObj1, this.filterResultData);
+      }
+    }
   }
 }

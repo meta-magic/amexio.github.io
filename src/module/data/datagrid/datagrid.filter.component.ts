@@ -62,7 +62,24 @@ For internal use
 
   globalClickListenFunc: () => void;
 
+  radioGroupData: any;
+
+  model1 = 'OR';
+
+  option: string;
+
   constructor(private dataTableService: CommonDataService, private renderer: Renderer2) {
+
+    this.option = 'OR';
+    this.radioGroupData = {
+      response: {
+        data: [{
+          filterOption: 'AND',
+        }, {
+          filterOption: 'OR',
+        }],
+      },
+    };
 
     this.filterOptions = [{
       key: 'Is Equal To', value: '==', type: 'string', checkedStatus: '',
@@ -101,6 +118,9 @@ For internal use
       value: this.filterValue,
       filter: opt.value,
       type: col.datatype,
+      index: col.columnIndex,
+      option: this.option,
+      lastColumn: col.lastColumn,
     };
     opt.checkedStatus = this.checkIcon;
     if (this.filterValue) {
@@ -120,6 +140,9 @@ For internal use
         key: col.dataindex,
         value: this.filterValue,
         type: col.datatype,
+        index: col.columnIndex,
+        option: this.option,
+        lastColumn: col.lastColumn,
       };
       this.filterOptions.forEach((opt: any) => {
         if (opt.checkedStatus === this.checkIcon && col.datatype === opt.type) {
@@ -223,5 +246,15 @@ For internal use
         this.numberFilterArray.push(element);
       }
     });
+  }
+  // On AND or OR Selection
+  setSelectedOption(col: any, event: any) {
+    if (event.filterOption === 'AND') {
+      this.option = 'AND';
+      this.keyUpSearch(col);
+    } else {
+      this.option = 'OR';
+      this.keyUpSearch(col);
+    }
   }
 }

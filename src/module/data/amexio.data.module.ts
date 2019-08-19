@@ -34,6 +34,8 @@ import { DisplayFieldService } from '../services/data/display.field.service';
 import { IconLoaderService } from '../services/icon/icon.service';
 import { GoogleMapScriptService } from '../services/script/script.data.service';
 
+import { AmexioRadioGroupComponent } from '../forms/radio/radiogroup.component';
+
 export * from '../services/data/common.data.service';
 export * from '../services/script/script.data.service';
 export * from './listbox/listbox.component';
@@ -62,6 +64,7 @@ const DATA_COMPONENTS = [
   TreeDataTableComponent,
   AmexioItemSelectorComponent,
   AmexioVirtualScrollerComponent,
+  AmexioRadioGroupComponent,
 ];
 
 @NgModule({

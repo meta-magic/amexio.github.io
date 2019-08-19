@@ -32,7 +32,6 @@ import { AmexioLabelComponent } from './label/label.component';
 import { AmexioMultipleDatePickerComponent } from './multidatepicker/multidatepicker.component';
 import { AmexioNumberInputComponent } from './numberinput/numberinput.component';
 import { AmexioPasswordComponent } from './passwordinput/passwordinput.component';
-import { AmexioRadioGroupComponent } from './radio/radiogroup.component';
 import { AmexioRangeSliderComponent } from './rangeslider/rangeslider.component';
 import { AmexioRatingComponent } from './rating/rating.component';
 import { RecaptchaComponent } from './recaptcha/recaptcha.component';
@@ -80,7 +79,6 @@ const FORM_COMPONENTS = [
   AmexioDropDownComponent,
   AmexioTypeAheadComponent,
   AmexioInputHelperComponent,
-  AmexioRadioGroupComponent,
   AmexioEmailInputComponent,
   AmexioNumberInputComponent,
   AmexioPasswordComponent,
