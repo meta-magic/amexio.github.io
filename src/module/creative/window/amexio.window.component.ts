@@ -64,6 +64,8 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
 
   cclass: string;
 
+  maximizeflagchanged = true;
+
   @Input('vertical-position') verticalposition = 'center';
 
   @Input('horizontal-position') horizontalposition: string;
@@ -126,10 +128,10 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
   globalClickListenFunc: () => void;
   globalDragListenFunc: () => void;
   transitionOptions = '400ms cubic-bezier(0.86, 0, 0.07, 1)';
-  constructor(private renderer: Renderer2, private _miniService: MinimizeService,
-              private componentFactoryResolver: ComponentFactoryResolver,
-              private appRef: ApplicationRef,
-              private injector: Injector) {
+  constructor(
+    private injector: Injector,
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private appRef: ApplicationRef, private renderer: Renderer2, private miniService: MinimizeService) {
     super();
   }
   onCloseClick() {
@@ -283,12 +285,21 @@ export class AmexioWindowCEComponent extends LifeCycleBaseComponent implements O
         this.amexioHeader.toArray()[0].minimize = this.minimize;
         this.amexioHeader.toArray()[0].minimizeWindow.subscribe((event: any) => {
           this.textName = event.textName;
-          this._miniService.onMinimizeClick(this);
+          this.miniService.onMinimizeClick(this);
         });
         this.amexioHeader.toArray()[0].closeDataEmit.subscribe((event: any) => {
-          this._miniService.onCloseClick(this);
+          this.miniService.onCloseClick(this);
         });
       }
+
+      if (this.maximize) {
+        this.amexioHeader.toArray()[0].maximize = this.maximize;
+        this.amexioHeader.toArray()[0].maximizeWindow.subscribe((event: any) => {
+          this.maximizeflagchanged = event.isFullWindowCe;
+
+        });
+      }
+
       setTimeout(() => {
         this.amexioHeader.toArray()[0].amexioComponentId = 'amexio-window';
         this.amexioHeader.toArray()[0].closeable = this.closable;

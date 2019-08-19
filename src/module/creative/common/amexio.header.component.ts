@@ -53,6 +53,8 @@ export class AmexioCardCEHeaderComponent implements AfterViewInit, OnInit {
 
   @Output() minimizeWindow: any = new EventEmitter<any>();
 
+  @Output() maximizeWindow: any = new EventEmitter<any>();
+
   @Output() closeDataEmit: any = new EventEmitter<any>();
 
   @Input('minimized-icon') minimizeIcon: any;
@@ -79,6 +81,7 @@ export class AmexioCardCEHeaderComponent implements AfterViewInit, OnInit {
 
   amexioComponentId: string;
 
+  maximize = false;
   ribbonType = false;
   iconPosition: {
     top: string;
@@ -122,6 +125,8 @@ export class AmexioCardCEHeaderComponent implements AfterViewInit, OnInit {
   sizeChange() {
     this.isFullWindowCe = !this.isFullWindowCe;
     this.maximizeBehaiourCe.next(this.isFullWindowCe);
+    this.maximizeWindow.emit(this,  this.isFullWindowCe);
+
   }
 
   onCloseClick() {
