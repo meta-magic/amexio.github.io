@@ -43,7 +43,7 @@ describe('amexio-datagrid-filter', () => {
         it('setSelectedOption If Method', () => {
             let col = {
                 columnIndex: 0,
-                contextmenu: undefined,
+                contextmenu: "undefined",
                 dataindex: "preferredFullName",
                 datatype: "string",
                 filterIcon: true,
@@ -51,7 +51,7 @@ describe('amexio-datagrid-filter', () => {
                 lastColumn: 3,
                 sort: true,
                 text: "Full Name",
-                width: undefined,
+                width: "undefined",
             }
 
             let event = {
@@ -70,7 +70,7 @@ describe('amexio-datagrid-filter', () => {
         it('setSelectedOption Else Method', () => {
             let col = {
                 columnIndex: 0,
-                contextmenu: undefined,
+                contextmenu: "undefined",
                 dataindex: "preferredFullName",
                 datatype: "string",
                 filterIcon: true,
@@ -78,7 +78,7 @@ describe('amexio-datagrid-filter', () => {
                 lastColumn: 3,
                 sort: true,
                 text: "Full Name",
-                width: undefined,
+                width: "undefined",
             }
 
             let event = {
