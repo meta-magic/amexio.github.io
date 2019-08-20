@@ -24,7 +24,7 @@ import { Component } from '@angular/core';
 class TestWrapperComponent {
 
 }
-fdescribe('amexio-datagrid', () => {
+describe('amexio-datagrid', () => {
     let comp: AmexioDatagridComponent;
     let fixture: ComponentFixture<TestWrapperComponent>;
 
@@ -463,7 +463,6 @@ fdescribe('amexio-datagrid', () => {
         comp.createConfig();
         fixture.detectChanges();
         columnRefArray = comp.columnRef.toArray();
-        console.log("AAAA*******", columnRefArray);
     })
 
     // it('getFilteredData If Condition Method', () => {
