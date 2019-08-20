@@ -1,0 +1,8 @@
+<div class="mypanel">
+  <div class="title" (click)="toggle.emit()">
+  </div>
+  <div class="body" [ngClass]="{'hidden': !opened}">
+   <div style="text-align: center; font-size: 12px; ">{{title}} </div> <br>
+    <ng-content></ng-content>
+  </div>
+  <div>

@@ -48,6 +48,8 @@ import { AmexioBaseContextMenuModule } from '../base/base.contextmenu.component.
 import { PanelItemComponent } from '../panes/slidingpanel/panelitem.component';
 import { SlidingPanelComponent } from '../panes/slidingpanel/slidingpanel.component';
 
+import { StackableItemComponent } from './stackablePanel/StackablePanel-Item/stackablePanel-item.component';
+import { StackablePanelComponent } from './stackablePanel/stackablePanel/stackablePanel.component';
 import { StepBlockComponent } from './steps/step-block';
 
 export * from './action/pane.action.footer';
@@ -63,6 +65,8 @@ export * from './form/form.component';
 export * from './form/form.header.component';
 export * from './header/pane.action.header';
 export * from './panel/panel.header.component';
+export * from './stackablePanel/StackablePanel-Item/stackablePanel-item.component';
+export * from './stackablePanel/stackablePanel/stackablePanel.component';
 export * from './steps/steps.component';
 export * from './steps/step-block';
 export * from './tab/right-vertical-tab/right.vertical.component';
@@ -111,6 +115,8 @@ const PANE_COMPONENTS = [
   PanelItemComponent,
   SlidingPanelComponent,
   MinimizeWindowComponent,
+  StackablePanelComponent,
+  StackableItemComponent,
 ];
 
 @NgModule({

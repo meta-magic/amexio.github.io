@@ -1,0 +1,11 @@
+<div style="padding-bottom: 5px" >
+  <amexio-button style="float: right;"
+        [label]="'Show ALL'"
+        [type]="'theme-color'"
+        [badge]="badge"
+        [tooltip]="'toolTip'"
+        (onClick)="showAll($event)">
+  </amexio-button>
+  <h2> {{panelName}} ({{totalCount}})</h2>
+<ng-content></ng-content>
+</div>
