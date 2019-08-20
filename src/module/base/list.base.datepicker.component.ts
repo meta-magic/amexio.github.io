@@ -20,9 +20,9 @@ import { BaseInput } from './base.input.component';
 @Component({
     selector: 'list.base.datepicker',
     template: './list.base.datepicker.component.html',
-  })
+})
 
-export class  ListBaseDatepickerComponent<T> extends AmexioFormValidator {
+export class ListBaseDatepickerComponent<T> extends AmexioFormValidator {
 
     self = false;
     itemClick = false;
@@ -31,13 +31,13 @@ export class  ListBaseDatepickerComponent<T> extends AmexioFormValidator {
     roundedgeclass: string;
 
     constructor(public renderer: Renderer2, public element: ElementRef, private cd: ChangeDetectorRef) {
-      super();
-      this.hide();
+        super();
+        this.hide();
     }
 
     focus(event: any) {
         this.self = true;
-        this.dropdownstyle = {visibility: 'visible'};
+        this.dropdownstyle = { visibility: 'visible' };
         this.bindDocumentClickListener();
     }
 
@@ -54,8 +54,8 @@ export class  ListBaseDatepickerComponent<T> extends AmexioFormValidator {
 
     bindDocumentClickListener() {
         if (!this.documentClickListener) {
-             this.documentClickListener = this.renderer
-                                              .listen('document', 'click', (event: any) => this.handleDocumentListener(event));
+            this.documentClickListener = this.renderer
+                .listen('document', 'click', (event: any) => this.handleDocumentListener(event));
 
         }
 
@@ -84,14 +84,14 @@ export class  ListBaseDatepickerComponent<T> extends AmexioFormValidator {
     }
 
     hide() {
-        this.dropdownstyle = {visibility: 'hidden'};
+        this.dropdownstyle = { visibility: 'hidden' };
     }
 
     setRoundEdge(type: any) {
         if (type === 'round-edge') {
-        this.roundedgeclass = 'roundEdgeCommonCss'
-        } else if (type === 'classic'){
-          this.roundedgeclass = 'classicCommonCss'
+            this.roundedgeclass = 'roundEdgeCommonCss';
+        } else if (type === 'classic') {
+            this.roundedgeclass = 'classicCommonCss';
         }
-      }
+    }
 }

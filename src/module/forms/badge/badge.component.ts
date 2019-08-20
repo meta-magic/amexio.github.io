@@ -1,48 +1,48 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'amexio-badge',
-    templateUrl: './badge.component.html',
+  selector: 'amexio-badge',
+  templateUrl: './badge.component.html',
 })
 export class AmexioBadgeComponent implements OnInit {
 
-    @Input('absolute') absolute: boolean;
+  @Input('absolute') absolute: boolean;
 
-    @Input('background') background: string;
+  @Input('background') background: string;
 
-    @Input('color') color: string;
+  @Input('color') color: string;
 
-    @Input('top') top: string;
+  @Input('top') top: string;
 
-    @Input('left') left: string;
+  @Input('left') left: string;
 
-    @Input('right') right: string;
+  @Input('right') right: string;
 
-    @Input('bottom') bottom: string;
+  @Input('bottom') bottom: string;
 
-    @Input('orientation') orientation = 'vertical';
+  @Input('orientation') orientation = 'vertical';
 
-    @Input('height') height: string;
+  @Input('height') height: string;
 
-    @Input('width') width: string;
+  @Input('width') width: string;
 
-    cClass = '';
+  cClass = '';
 
-    roundedgeclass: string;
-    constructor() {
+  roundedgeclass: string;
+  constructor() {
+  }
+
+  ngOnInit() {
+    if (!this.color && !this.background) {
+      this.cClass = 'amexio-badge-color';
     }
+  }
 
-    ngOnInit() {
-      if (!this.color && !this.background) {
-        this.cClass = 'amexio-badge-color';
-      }
+  setRoundEdge(type: any) {
+    if (type === 'round-edge') {
+      this.roundedgeclass = 'roundEdgeCommonCss';
+    } else if (type === 'classic') {
+      this.roundedgeclass = 'classicCommonCss';
     }
-
-    setRoundEdge(type: any) {
-      if (type === 'round-edge') {
-      this.roundedgeclass = 'roundEdgeCommonCss'
-      } else if (type === 'classic'){
-        this.roundedgeclass = 'classicCommonCss'
-      }
-    }
+  }
 }

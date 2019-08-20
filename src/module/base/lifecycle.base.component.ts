@@ -55,9 +55,9 @@ export class LifeCycleBaseComponent implements OnDestroy, OnInit, AfterViewInit 
 
     setRoundEdge(type: any) {
         if (type === 'round-edge') {
-            this.roundedgeclass = 'roundEdgeCommonCss'
+            this.roundedgeclass = 'roundEdgeCommonCss';
         } else if (type === 'classic') {
-            this.roundedgeclass = 'classicCommonCss'
+            this.roundedgeclass = 'classicCommonCss';
         }
     }
 }
