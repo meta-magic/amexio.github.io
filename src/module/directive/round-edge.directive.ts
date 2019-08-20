@@ -13,7 +13,7 @@ export class RoundEdgesDirective implements OnInit {
     }
 
     ngOnInit() {
-        if (this.themeStyle === 'round-edge') {
+        if (this.themeStyle === 'round-edge' || this.themeStyle === 'classic') {
             this.hostComponent = this._viewContainerRef['_data'].componentView.component;
             this.hostComponent.setRoundEdge();
         }

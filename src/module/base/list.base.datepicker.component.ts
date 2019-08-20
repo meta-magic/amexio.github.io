@@ -87,7 +87,11 @@ export class  ListBaseDatepickerComponent<T> extends AmexioFormValidator {
         this.dropdownstyle = {visibility: 'hidden'};
     }
 
-    setRoundEdge() {
-        this.roundedgeclass = 'roundEdgeCommonCss';
+    setRoundEdge(type: any) {
+        if (type === 'round-edge') {
+        this.roundedgeclass = 'roundEdgeCommonCss'
+        } else if (type === 'classic'){
+          this.roundedgeclass = 'classicCommonCss'
+        }
       }
 }

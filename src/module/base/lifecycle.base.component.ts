@@ -16,11 +16,11 @@
 *Created by ashwini on 01/03/19.
 */
 
-import { AfterViewInit, Component, EventEmitter, Input, OnDestroy, OnInit, Output  } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 @Component({
     selector: 'life-cycle',
     template: './lifecycle.base.component.html',
-  })
+})
 export class LifeCycleBaseComponent implements OnDestroy, OnInit, AfterViewInit {
     @Input('enable-lifecycle-events') enableLifeCycleEvents: string;
     @Output() initiated: any = new EventEmitter<any>();
@@ -53,7 +53,11 @@ export class LifeCycleBaseComponent implements OnDestroy, OnInit, AfterViewInit 
         this.destroy.emit();
     }
 
-    setRoundEdge() {
-      this.roundedgeclass = 'roundEdgeCommonCss';
+    setRoundEdge(type: any) {
+        if (type === 'round-edge') {
+            this.roundedgeclass = 'roundEdgeCommonCss'
+        } else if (type === 'classic') {
+            this.roundedgeclass = 'classicCommonCss'
+        }
     }
 }

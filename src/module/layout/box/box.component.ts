@@ -136,7 +136,11 @@ export class AmexioBoxComponent implements OnInit {
     }
   }
 
-  setRoundEdge() {
-    this.roundedgeclass = 'roundEdgeCommonCss';
+  setRoundEdge(type: any) {
+    if (type === 'round-edge') {
+    this.roundedgeclass = 'roundEdgeCommonCss'
+    } else if (type === 'classic'){
+      this.roundedgeclass = 'classicCommonCss'
+    }
   }
 }
