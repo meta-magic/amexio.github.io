@@ -11,9 +11,18 @@ describe('lifecycle', () => {
     comp1 = fixture1.componentInstance;    
   });
 
-  it('setRoundEdge()', () => {
-    comp1.setRoundEdge();
+  it('setRoundEdge If round-edge()', () => {
+    let type = 'round-edge';
+    comp1.setRoundEdge('round-edge');
+    expect(type).toEqual('round-edge')
     comp1.roundedgeclass = 'roundEdgeCommonCss';
+  });
+
+  it('setRoundEdge If classic', () => {
+    let type = 'classic';
+    comp1.setRoundEdge('classic');
+    expect(type).toEqual('classic')
+    comp1.roundedgeclass = 'classicCommonCss';
   });
 
 });

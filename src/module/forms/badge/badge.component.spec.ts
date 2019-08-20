@@ -20,8 +20,18 @@ describe('amexio-badge', () => {
         expect(comp.cClass).toEqual('');
     })
 
-    it('check setRoundEdge method', () => {
-        comp.setRoundEdge();
+    it('setRoundEdge If round-edge()', () => {
+        let type = 'round-edge';
+        comp.setRoundEdge('round-edge');
+        expect(type).toEqual('round-edge')
         comp.roundedgeclass = 'roundEdgeCommonCss';
       });
+    
+      it('setRoundEdge If classic', () => {
+        let type = 'classic';
+        comp.setRoundEdge('classic');
+        expect(type).toEqual('classic')
+        comp.roundedgeclass = 'classicCommonCss';
+      });
+    
 });
