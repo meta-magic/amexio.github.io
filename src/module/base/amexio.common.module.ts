@@ -12,6 +12,10 @@ import { FilterPipe } from '../pipe/filter.pipe';
 import { IconLoaderService } from '../services/icon/icon.service';
 import { CommonIconComponent } from './components/common.icon.component';
 
+import { BaseInputEventComponent } from './base.inputevent.component';
+import { LifeCycleBaseComponent } from './lifecycle.base.component';
+import { ListBaseDatepickerComponent } from './list.base.datepicker.component';
+
 export * from '../services/data/display.field.service';
 
 const COMMON_COMPONENTS = [
@@ -19,6 +23,10 @@ const COMMON_COMPONENTS = [
   DropDownListComponent,
   FilterPipe,
   CommonIconComponent,
+  ListBaseDatepickerComponent,
+  LifeCycleBaseComponent,
+  BaseInputEventComponent,
+
 ];
 
 @NgModule({
