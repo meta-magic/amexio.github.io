@@ -13,7 +13,7 @@ import { LifeCycleBaseComponent } from '../../base/lifecycle.base.component';
 
 @Component({
   selector: 'amexio-ee-content', template: `
-    <div class="main-content {{roundEdgeClass}}" [ngStyle]="{'background-image':'url('+bgImgUrl+')'}" (window:resize)="onResize($event)">
+    <div class="main-content {{roundedgeclass}}" [ngStyle]="{'background-image':'url('+bgImgUrl+')'}" (window:resize)="onResize($event)">
        <span *ngIf="closeEnable" class="close-button">
         <i class="fa fa-times fa-lg" (click)="closeDetailPage()" aria-hidden="true"></i>
       </span>
