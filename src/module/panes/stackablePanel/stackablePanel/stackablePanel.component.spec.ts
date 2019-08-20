@@ -1,19 +1,17 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { StackableItemComponent } from '../StackablePanel-Item/stackablePanel-item.component';
 import { StackablePanelComponent } from './stackablePanel.component';
 
 import { CommonIconComponent } from '../../../base/components/common.icon.component';
 
 import { AmexioButtonComponent } from '../../../forms/buttons/button.component';
-import { Component } from '@angular/core';
 
 @Component({
   selector: 'test-cmp',
-  template: `body
-  <stackable-panel [panel-name]="'User Data'">
-      <stackable-panel-item     title="First stackable-panel-item"> 
-            1 stackable-panel-item
-            this is the content
+  template: `
+  <stackable-panel>
+      <stackable-panel-item>
       </stackable-panel-item>
   </stackable-panel>`,
 })
@@ -25,7 +23,7 @@ describe('StackablePanelComponent', () => {
     TestBed.configureTestingModule({
       schemas: [],
       declarations: [StackablePanelComponent, TestWrapperComponent, StackableItemComponent, AmexioButtonComponent, CommonIconComponent],
-      providers: []
+      providers: [],
     }).compileComponents();
   });
   beforeEach(() => {
@@ -40,7 +38,7 @@ describe('StackablePanelComponent', () => {
     expect(comp).toBeTruthy();
   });
 
-  it('ngAfterContentInit method check', () => {
+  it('ngAfterContentInit method if check', () => {
     fixture.detectChanges();
     comp.ngAfterContentInit();
     comp.totalCount = comp.groups.length;
@@ -49,6 +47,15 @@ describe('StackablePanelComponent', () => {
       items.toggle.subscribe(() => {
         comp.openGroup(items);
       });
+    });
+  });
+  it('ngAfterContentInit method else check', () => {
+    fixture.detectChanges();
+    comp.ngAfterContentInit();
+    comp.totalCount = comp.groups.length;
+    comp.groups.toArray().forEach((items: any) => {
+      items = null;
+      expect(items).toEqual(null);
     });
   });
 
@@ -71,17 +78,16 @@ describe('StackablePanelComponent', () => {
     fixture.detectChanges();
     comp.openGroup(item);
     comp.groups.toArray().forEach((data: any) => {
-      data = [];
-      expect(data).toEqual([]);
+      data = null;
+      expect(data).toEqual(null);
     });
   });
 
-
-  it('check showAll method if check', () => {
+  it('check showAll method check', () => {
     fixture.detectChanges();
     comp.showAll();
     comp.groups.toArray().forEach((data: any) => {
-     data.opened = !data.opened;
+      data.opened = !data.opened;
     });
   });
 });
