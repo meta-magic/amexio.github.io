@@ -34,15 +34,9 @@ export class StackablePanelComponent implements AfterContentInit {
     });
   }
 
-  showAll(item: any) {
-    if (item) {
-      this.groups.toArray().forEach((data: any) => {
-        if (!data.opened) {
-          data.opened = true;
-        } else if (data.opened) {
-          data.opened = !data.opened;
-        }
-      });
-    }
+  showAll() {
+    this.groups.toArray().forEach((data: any) => {
+      data.opened = !data.opened;
+    });
   }
 }

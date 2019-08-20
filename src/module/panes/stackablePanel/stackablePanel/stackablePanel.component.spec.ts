@@ -4,26 +4,52 @@ import { StackablePanelComponent } from './stackablePanel.component';
 
 import { CommonIconComponent } from '../../../base/components/common.icon.component';
 
-import {AmexioButtonComponent} from '../../../forms/buttons/button.component';
+import { AmexioButtonComponent } from '../../../forms/buttons/button.component';
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'test-cmp',
+  template: `body
+  <stackable-panel [panel-name]="'User Data'">
+      <stackable-panel-item     title="First stackable-panel-item"> 
+            1 stackable-panel-item
+            this is the content
+      </stackable-panel-item>
+  </stackable-panel>`,
+})
+class TestWrapperComponent { }
 describe('StackablePanelComponent', () => {
   let comp: StackablePanelComponent;
-  let fixture: ComponentFixture<StackablePanelComponent>;
-
+  let fixture: ComponentFixture<TestWrapperComponent>;
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ StackablePanelComponent , StackableItemComponent, AmexioButtonComponent, CommonIconComponent],
-    })
-    .compileComponents();
+      schemas: [],
+      declarations: [StackablePanelComponent, TestWrapperComponent, StackableItemComponent, AmexioButtonComponent, CommonIconComponent],
+      providers: []
+    }).compileComponents();
   });
-
   beforeEach(() => {
-    fixture = TestBed.createComponent(StackablePanelComponent);
-    comp = fixture.componentInstance;
+
+    fixture = TestBed.createComponent(TestWrapperComponent);
+    comp = fixture.debugElement.children[0].componentInstance;
+    event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(comp).toBeTruthy();
+  });
+
+  it('ngAfterContentInit method check', () => {
+    fixture.detectChanges();
+    comp.ngAfterContentInit();
+    comp.totalCount = comp.groups.length;
+    comp.groups.toArray().forEach((items: any) => {
+      expect(items).not.toBeNull();
+      items.toggle.subscribe(() => {
+        comp.openGroup(items);
+      });
+    });
   });
 
   it('check openGroup method if check', () => {
@@ -32,9 +58,7 @@ describe('StackablePanelComponent', () => {
       title: 'Second stackable-panel-item',
     };
     comp.openGroup(item);
-    const groupsData = [];
-    groupsData.push( comp.groups);
-    groupsData.forEach((data: any) => {
+    comp.groups.toArray().forEach((data: any) => {
       expect(data).not.toBeNull();
       item.opened = !item.opened;
     });
@@ -44,9 +68,20 @@ describe('StackablePanelComponent', () => {
       opened: true,
       title: 'Second stackable-panel-item',
     };
+    fixture.detectChanges();
     comp.openGroup(item);
     comp.groups.toArray().forEach((data: any) => {
-      expect(data).toBeNull();
+      data = [];
+      expect(data).toEqual([]);
+    });
+  });
+
+
+  it('check showAll method if check', () => {
+    fixture.detectChanges();
+    comp.showAll();
+    comp.groups.toArray().forEach((data: any) => {
+     data.opened = !data.opened;
     });
   });
 });
