@@ -24,7 +24,7 @@ import { Component } from '@angular/core';
 class TestWrapperComponent {
 
 }
-describe('amexio-datagrid', () => {
+fdescribe('amexio-datagrid', () => {
     let comp: AmexioDatagridComponent;
     let comp2: TestWrapperComponent;
     let fixture: ComponentFixture<AmexioDatagridComponent>;
@@ -53,6 +53,19 @@ describe('amexio-datagrid', () => {
             lastName: "Hanks",
             phoneNumber: "408-2222222",
             preferredFullName: "Tom Hanks",
+            region: "CA",
+            salary: 14000000,
+            userId: "0",
+        }, {
+            checkBoxSelectClass: "checkbox default",
+            emailAddress: "tomhanks@gmail.com",
+            employeeCode: "E3",
+            firstName: "Tom",
+            isSelected: false,
+            jobTitle: "Architect",
+            lastName: "Hanks",
+            phoneNumber: "408-2222222",
+            preferredFullName: "Anish Hanks",
             region: "CA",
             salary: 14000000,
             userId: "0",
@@ -210,8 +223,10 @@ describe('amexio-datagrid', () => {
         comp.filterOperation(filteredObj, filterCloneData);
         let resultData: any = [];
         filterCloneData.forEach((option: any) => {
-            expect(comp.filterOpertion(option, filteredObj)).toEqual(false);
-            resultData.push(option);
+            if (comp.filterOpertion(option, filteredObj)) {
+                expect(comp.filterOpertion(option, filteredObj)).toEqual(true);
+                resultData.push(option);
+            }
         });
 
         expect(resultData.length).toBeLessThan(1 * comp.pagesize);
@@ -222,42 +237,232 @@ describe('amexio-datagrid', () => {
         comp.filterResultData = resultData;
     })
 
-    // it('multipleColumnFilter lessthan0 and OR', () => {
-    //     let filteredObj = [{
-    //         filter: "1",
-    //         index: 0,
-    //         key: "preferredFullName",
-    //         lastColumn: 3,
-    //         option: "OR",
-    //         type: "string",
-    //         value: "a",
-    //     }]
-    //     let filterCloneData = [{
-    //         checkBoxSelectClass: "checkbox default",
-    //         emailAddress: "aomhanks@gmail.com",
-    //         employeeCode: "E3",
-    //         firstName: "Anay",
-    //         isSelected: false,
-    //         jobTitle: "Program Direct",
-    //         lastName: "Hanks",
-    //         phoneNumber: "408-2222222",
-    //         preferredFullName: "Aom Hanks",
-    //         region: "CA",
-    //         salary: 14000000,
-    //         userId: "0",
-    //     }]
-    //     fixture.detectChanges();
-    //     comp.multipleColumnFilter(filteredObj)
-    //     filteredObj.sort((a: any, b: any) => {
-    //         return a.index - b.index;
-    //       });
-    //       for (let i = 0; i < filteredObj.length; i++) {
-    //           expect(filteredObj[0].index).toEqual(0)
-    //           expect(filteredObj[0].option).toEqual('OR')
-    //         //   comp.filterOperation(filteredObj, comp.filterCloneData);
-    //       }
+    it('multipleColumnFilter lessthan0 and OR', () => {
+        comp.filterCloneData = [{
+            checkBoxSelectClass: "checkbox default",
+            emailAddress: "tomhanks@gmail.com",
+            employeeCode: "E3",
+            firstName: "Tom",
+            isSelected: false,
+            jobTitle: "Program Direct",
+            lastName: "Hanks",
+            phoneNumber: "408-2222222",
+            preferredFullName: "Tom Hanks",
+            region: "CA",
+            salary: 14000000,
+            userId: "0",
+        }, {
+            checkBoxSelectClass: "checkbox default",
+            emailAddress: "tomhanks@gmail.com",
+            employeeCode: "E3",
+            firstName: "Tom",
+            isSelected: false,
+            jobTitle: "Architect",
+            lastName: "Hanks",
+            phoneNumber: "408-2222222",
+            preferredFullName: "Anish Hanks",
+            region: "CA",
+            salary: 14000000,
+            userId: "0",
+        }];
+        let filteredObj = [{
+            filter: "1",
+            index: 0,
+            key: "preferredFullName",
+            lastColumn: 3,
+            option: "OR",
+            type: "string",
+            value: "a",
+        }]
+        fixture.detectChanges();
+        comp.multipleColumnFilter(filteredObj)
+        filteredObj.sort((a: any, b: any) => {
+            return a.index - b.index;
+        });
+        for (let i = 0; i < filteredObj.length; i++) {
+            expect(filteredObj[0].index).toEqual(0)
+            expect(filteredObj[0].option).toEqual('OR')
+            console.log("filterCloneData*******%%%%", comp.filterCloneData);
+            console.log("filteredObj(***&&*&&&&*", filteredObj);
+            comp.filterOperation(filteredObj, comp.filterCloneData);
+        }
+    })
 
-    // })
+    it('multipleColumnFilter lessthan0 and AND', () => {
+        comp.filterResultData = [{
+            checkBoxSelectClass: "checkbox default",
+            emailAddress: "tomhanks@gmail.com",
+            employeeCode: "E3",
+            firstName: "Tom",
+            isSelected: false,
+            jobTitle: "Program Direct",
+            lastName: "Hanks",
+            phoneNumber: "408-2222222",
+            preferredFullName: "Avanti Hanks",
+            region: "CA",
+            salary: 14000000,
+            userId: "0",
+        }, {
+            checkBoxSelectClass: "checkbox default",
+            emailAddress: "tomhanks@gmail.com",
+            employeeCode: "E3",
+            firstName: "Tom",
+            isSelected: false,
+            jobTitle: "Architect",
+            lastName: "Hanks",
+            phoneNumber: "408-2222222",
+            preferredFullName: "Anish Hanks",
+            region: "CA",
+            salary: 14000000,
+            userId: "0",
+        }];
+        let filteredObj = [{
+            filter: "1",
+            index: 0,
+            key: "preferredFullName",
+            lastColumn: 3,
+            option: "AND",
+            type: "string",
+            value: "a",
+        }]
+        fixture.detectChanges();
+        comp.multipleColumnFilter(filteredObj);
+
+        filteredObj.sort((a: any, b: any) => {
+            return a.index - b.index;
+        });
+        for (let i = 0; i < filteredObj.length; i++) {
+            expect(filteredObj[0].index).toEqual(0)
+            expect(filteredObj[0].option).toEqual('AND')
+            const filterObj1 = [];
+            filterObj1.push(filteredObj[0]);
+            comp.filterOperation(filterObj1, comp.filterResultData);
+        }
+    });
+
+    it('multipleColumnFilter greaterthan0 and OR', () => {
+        comp.filterCloneData = [{
+            checkBoxSelectClass: "checkbox default",
+            emailAddress: "tomhanks@gmail.com",
+            employeeCode: "E3",
+            firstName: "Tom",
+            isSelected: false,
+            jobTitle: "Program Direct",
+            lastName: "Hanks",
+            phoneNumber: "408-2222222",
+            preferredFullName: "Anna Hanks",
+            region: "CA",
+            salary: 14000000,
+            userId: "0",
+        }, {
+            checkBoxSelectClass: "checkbox default",
+            emailAddress: "tomhanks@gmail.com",
+            employeeCode: "E3",
+            firstName: "Tom",
+            isSelected: false,
+            jobTitle: "Architect",
+            lastName: "Hanks",
+            phoneNumber: "408-2222222",
+            preferredFullName: "Anish Hanks",
+            region: "CA",
+            salary: 14000000,
+            userId: "0",
+        }];
+        let filteredObj = [{
+            filter: "1",
+            index: 0,
+            key: "preferredFullName",
+            lastColumn: 3,
+            option: "OR",
+            type: "string",
+            value: "a",
+
+        }, {
+            filter: "1",
+            index: 1,
+            key: "jobTitle",
+            lastColumn: 3,
+            option: "OR",
+            type: "string",
+            value: "v",
+        }]
+
+        fixture.detectChanges();
+        comp.multipleColumnFilter(filteredObj)
+        filteredObj.sort((a: any, b: any) => {
+            return a.index - b.index;
+        });
+        for (let i = 0; i < filteredObj.length; i++) {
+            if (i > 0) {
+                expect(filteredObj[i].index).toBeGreaterThan(0)
+                expect(filteredObj[i - 1].option).toEqual('OR')
+                comp.filterOperation(filteredObj, filterCloneData);
+            }  
+        }
+    });
+
+    it ('multipleColumnFilter greaterthan0 and AND', () => {
+        comp.filterResultData = [{
+            checkBoxSelectClass: "checkbox default",
+            emailAddress: "tomhanks@gmail.com",
+            employeeCode: "E3",
+            firstName: "Tom",
+            isSelected: false,
+            jobTitle: "Program Direct",
+            lastName: "Hanks",
+            phoneNumber: "408-2222222",
+            preferredFullName: "Anna Hanks",
+            region: "CA",
+            salary: 14000000,
+            userId: "0",
+        }, {
+            checkBoxSelectClass: "checkbox default",
+            emailAddress: "tomhanks@gmail.com",
+            employeeCode: "E3",
+            firstName: "Tom",
+            isSelected: false,
+            jobTitle: "Architect",
+            lastName: "Hanks",
+            phoneNumber: "408-2222222",
+            preferredFullName: "Anish Hanks",
+            region: "CA",
+            salary: 14000000,
+            userId: "0",
+        }];
+        let filteredObj = [{
+            filter: "1",
+            index: 0,
+            key: "preferredFullName",
+            lastColumn: 3,
+            option: "AND",
+            type: "string",
+            value: "a",
+
+        }, {
+            filter: "1",
+            index: 1,
+            key: "jobTitle",
+            lastColumn: 3,
+            option: "OR",
+            type: "string",
+            value: "a",
+        }]
+        fixture.detectChanges();
+        comp.multipleColumnFilter(filteredObj)
+        filteredObj.sort((a: any, b: any) => {
+            return a.index - b.index;
+        });
+        for (let i = 0; i < filteredObj.length; i++) {
+            if (i > 0) {
+            expect(filteredObj[i].index).toBeGreaterThan(0)
+            expect(filteredObj[i - 1].option).toEqual('AND')
+            let filterObj1 = [];
+            filterObj1.push(filteredObj[i]);
+            comp.filterOperation(filterObj1, comp.filterResultData);
+            }
+        }
+
+    })
 
     // it('createConfig method', () => {
     //     comp.createConfig();
