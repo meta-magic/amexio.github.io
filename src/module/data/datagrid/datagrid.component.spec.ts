@@ -24,11 +24,9 @@ import { Component } from '@angular/core';
 class TestWrapperComponent {
 
 }
-describe('amexio-datagrid', () => {
+fdescribe('amexio-datagrid', () => {
     let comp: AmexioDatagridComponent;
-    let comp2: TestWrapperComponent;
-    let fixture: ComponentFixture<AmexioDatagridComponent>;
-    let fixture2: ComponentFixture<TestWrapperComponent>;
+    let fixture: ComponentFixture<TestWrapperComponent>;
 
     let filterCloneData: any;
     let columnRefArray: any;
@@ -37,12 +35,13 @@ describe('amexio-datagrid', () => {
             imports: [FormsModule, HttpClientModule],
             declarations: [AmexioGridColumnComponent, AmexioDatagridComponent, TestWrapperComponent, AmexioRadioGroupComponent, AmexioPaginatorComponent, AmexioContextMenuComponent, DisplayFieldComponent, CommonIconComponent, DataGridFilterComponent],
             providers: [IconLoaderService, CommonDataService],
-        });
-        fixture = TestBed.createComponent(AmexioDatagridComponent);
-        comp = fixture.componentInstance;
-        fixture2 = TestBed.createComponent(TestWrapperComponent);
-        comp2 = fixture2.debugElement.children[0].componentInstance;
-
+        }).compileComponents();
+    });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(TestWrapperComponent);
+        comp = fixture.debugElement.children[0].componentInstance;
+        event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
+        fixture.detectChanges();
         filterCloneData = [{
             checkBoxSelectClass: "checkbox default",
             emailAddress: "tomhanks@gmail.com",
@@ -70,9 +69,7 @@ describe('amexio-datagrid', () => {
             salary: 14000000,
             userId: "0",
         }];
-
-
-    });
+    })
 
     it('Variabledatagrid check', () => {
         comp.checkDefaultIcon = 'checkbox default';
@@ -462,11 +459,12 @@ describe('amexio-datagrid', () => {
 
     })
 
-    // it('createConfig method', () => {
-    //     comp.createConfig();
-    //     fixture.detectChanges();
-    //     columnRefArray = comp2.columnRef.toArray();
-    // })
+    it('createConfig method', () => {
+        comp.createConfig();
+        fixture.detectChanges();
+        columnRefArray = comp.columnRef.toArray();
+        console.log("AAAA*******", columnRefArray);
+    })
 
     // it('getFilteredData If Condition Method', () => {
     //     let filteredObj = [{
