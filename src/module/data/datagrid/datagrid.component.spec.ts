@@ -24,7 +24,7 @@ import { Component } from '@angular/core';
 class TestWrapperComponent {
 
 }
-fdescribe('amexio-datagrid', () => {
+describe('amexio-datagrid', () => {
     let comp: AmexioDatagridComponent;
     let comp2: TestWrapperComponent;
     let fixture: ComponentFixture<AmexioDatagridComponent>;
@@ -282,8 +282,6 @@ fdescribe('amexio-datagrid', () => {
         for (let i = 0; i < filteredObj.length; i++) {
             expect(filteredObj[0].index).toEqual(0)
             expect(filteredObj[0].option).toEqual('OR')
-            console.log("filterCloneData*******%%%%", comp.filterCloneData);
-            console.log("filteredObj(***&&*&&&&*", filteredObj);
             comp.filterOperation(filteredObj, comp.filterCloneData);
         }
     })
