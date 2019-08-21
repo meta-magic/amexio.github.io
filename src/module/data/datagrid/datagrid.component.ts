@@ -374,7 +374,7 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
   totalPages: number;
 
   filterResultData: any;
-  
+
   filterCloneData1: any;
   /*global filter column attribute*/
 
