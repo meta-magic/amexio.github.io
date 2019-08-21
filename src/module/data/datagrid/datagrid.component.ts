@@ -374,7 +374,8 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
   totalPages: number;
 
   filterResultData: any;
-
+  
+  filterCloneData1: any;
   /*global filter column attribute*/
 
   filterValue: any;
@@ -616,7 +617,7 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
       this.commonMethod(this.cloneData, groups);
     }
     if (this.enabledatafilter) {
-      this.filterCloneData = JSON.parse(JSON.stringify(this.data));
+      this.filterCloneData1 = JSON.parse(JSON.stringify(this.data));
     }
     if (this.globalfilter) {
       this.filterCloneData = JSON.parse(JSON.stringify(this.data));
