@@ -70,6 +70,7 @@ describe('StackablePanelComponent', () => {
       item.opened = !item.opened;
     });
   });
+
   it('check openGroup method else check', () => {
     const item = {
       opened: true,
