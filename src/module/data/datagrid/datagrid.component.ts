@@ -1624,13 +1624,7 @@ export class AmexioDatagridComponent implements OnInit, OnDestroy, AfterContentI
       return a.index - b.index;
     });
     for (let i = 0; i < filteredObj.length; i++) {
-      if (filteredObj[0].index === 0 && filteredObj[0].option === 'OR') {
-        this.filterOperation(filteredObj, this.filterCloneData);
-      } else if (filteredObj[0].index === 0 && filteredObj[0].option === 'AND') {
-        const filterObj1 = [];
-        filterObj1.push(filteredObj[0]);
-        this.filterOperation(filterObj1, this.filterResultData);
-      } else if (filteredObj[i].index > 0 && filteredObj[i - 1].option === 'OR') {
+     if (filteredObj[i].index > 0 && filteredObj[i - 1].option === 'OR') {
         this.filterOperation(filteredObj, this.filterCloneData);
       } else if (filteredObj[i].index > 0 && filteredObj[i - 1].option === 'AND') {
         const filterObj1 = [];
