@@ -2,7 +2,7 @@ import { AfterContentInit, Component, ContentChildren, Input, QueryList } from '
 import { StackableItemComponent } from '../StackablePanel-Item/stackablePanel-item.component';
 
 @Component({
-  selector: 'stackable-panel',
+  selector: 'amexio-stackable-panel',
   templateUrl: './stackablePanel.component.html',
   styleUrls: ['./stackablePanel.component.css'],
 })
